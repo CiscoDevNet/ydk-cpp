@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_ip_rip_oper {
 Rip::Rip()
     :
     vrfs(std::make_shared<Rip::Vrfs>())
-	,protocol(std::make_shared<Rip::Protocol>())
-	,default_vrf(std::make_shared<Rip::DefaultVrf>())
+    , protocol(std::make_shared<Rip::Protocol>())
+    , default_vrf(std::make_shared<Rip::DefaultVrf>())
 {
     vrfs->parent = this;
     protocol->parent = this;
     default_vrf->parent = this;
 
-    yang_name = "rip"; yang_parent_name = "Cisco-IOS-XR-ip-rip-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "rip"; yang_parent_name = "Cisco-IOS-XR-ip-rip-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Rip::~Rip()
@@ -30,6 +30,7 @@ Rip::~Rip()
 
 bool Rip::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrfs !=  nullptr && vrfs->has_data())
 	|| (protocol !=  nullptr && protocol->has_data())
 	|| (default_vrf !=  nullptr && default_vrf->has_data());
@@ -154,9 +155,11 @@ bool Rip::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Rip::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Vrfs::~Vrfs()
@@ -165,7 +168,8 @@ Rip::Vrfs::~Vrfs()
 
 bool Rip::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -175,7 +179,7 @@ bool Rip::Vrfs::has_data() const
 
 bool Rip::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -212,7 +216,7 @@ std::shared_ptr<Entity> Rip::Vrfs::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -224,7 +228,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,12 +257,12 @@ bool Rip::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
 Rip::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     routes(std::make_shared<Rip::Vrfs::Vrf::Routes>())
-	,configuration(std::make_shared<Rip::Vrfs::Vrf::Configuration>())
-	,statistics(std::make_shared<Rip::Vrfs::Vrf::Statistics>())
-	,interfaces(std::make_shared<Rip::Vrfs::Vrf::Interfaces>())
-	,global(std::make_shared<Rip::Vrfs::Vrf::Global>())
+    , configuration(std::make_shared<Rip::Vrfs::Vrf::Configuration>())
+    , statistics(std::make_shared<Rip::Vrfs::Vrf::Statistics>())
+    , interfaces(std::make_shared<Rip::Vrfs::Vrf::Interfaces>())
+    , global(std::make_shared<Rip::Vrfs::Vrf::Global>())
 {
     routes->parent = this;
     configuration->parent = this;
@@ -266,7 +270,7 @@ Rip::Vrfs::Vrf::Vrf()
     interfaces->parent = this;
     global->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Vrfs::Vrf::~Vrf()
@@ -275,6 +279,7 @@ Rip::Vrfs::Vrf::~Vrf()
 
 bool Rip::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (routes !=  nullptr && routes->has_data())
 	|| (configuration !=  nullptr && configuration->has_data())
@@ -304,7 +309,8 @@ std::string Rip::Vrfs::Vrf::get_absolute_path() const
 std::string Rip::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -426,9 +432,11 @@ bool Rip::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Rip::Vrfs::Vrf::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routes"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Routes::~Routes()
@@ -437,7 +445,8 @@ Rip::Vrfs::Vrf::Routes::~Routes()
 
 bool Rip::Vrfs::Vrf::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -447,7 +456,7 @@ bool Rip::Vrfs::Vrf::Routes::has_data() const
 
 bool Rip::Vrfs::Vrf::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -477,7 +486,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Routes::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -489,7 +498,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Routes::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -531,9 +540,11 @@ Rip::Vrfs::Vrf::Routes::Route::Route()
     active{YType::boolean, "active"},
     path_origin{YType::enumeration, "path-origin"},
     hold_down{YType::boolean, "hold-down"}
+        ,
+    paths(this, {})
 {
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Routes::Route::~Route()
@@ -542,7 +553,8 @@ Rip::Vrfs::Vrf::Routes::Route::~Route()
 
 bool Rip::Vrfs::Vrf::Routes::Route::has_data() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<paths.len(); index++)
     {
         if(paths[index]->has_data())
             return true;
@@ -565,7 +577,7 @@ bool Rip::Vrfs::Vrf::Routes::Route::has_data() const
 
 bool Rip::Vrfs::Vrf::Routes::Route::has_operation() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    for (std::size_t index=0; index<paths.len(); index++)
     {
         if(paths[index]->has_operation())
             return true;
@@ -623,7 +635,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Routes::Route::get_child_by_name(const s
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::Routes::Route::Paths>();
         c->parent = this;
-        paths.push_back(c);
+        paths.append(c);
         return c;
     }
 
@@ -635,7 +647,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Routes::Route::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : paths)
+    for (auto c : paths.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -812,7 +824,7 @@ Rip::Vrfs::Vrf::Routes::Route::Paths::Paths()
     is_permanent{YType::boolean, "is-permanent"}
 {
 
-    yang_name = "paths"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Routes::Route::Paths::~Paths()
@@ -821,6 +833,7 @@ Rip::Vrfs::Vrf::Routes::Route::Paths::~Paths()
 
 bool Rip::Vrfs::Vrf::Routes::Route::Paths::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| next_hop_address.is_set
 	|| metric.is_set
@@ -985,7 +998,7 @@ Rip::Vrfs::Vrf::Configuration::Configuration()
     nsf_life_time{YType::uint32, "nsf-life-time"}
 {
 
-    yang_name = "configuration"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configuration"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Configuration::~Configuration()
@@ -994,6 +1007,7 @@ Rip::Vrfs::Vrf::Configuration::~Configuration()
 
 bool Rip::Vrfs::Vrf::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return active.is_set
 	|| vr_fised_socket.is_set
 	|| rip_version.is_set
@@ -1308,7 +1322,7 @@ Rip::Vrfs::Vrf::Statistics::Statistics()
     rib_updates{YType::uint32, "rib-updates"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Statistics::~Statistics()
@@ -1317,6 +1331,7 @@ Rip::Vrfs::Vrf::Statistics::~Statistics()
 
 bool Rip::Vrfs::Vrf::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| discarded_packets.is_set
 	|| discarded_routes.is_set
@@ -1537,9 +1552,11 @@ bool Rip::Vrfs::Vrf::Statistics::has_leaf_or_child_of_name(const std::string & n
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Interfaces::~Interfaces()
@@ -1548,7 +1565,8 @@ Rip::Vrfs::Vrf::Interfaces::~Interfaces()
 
 bool Rip::Vrfs::Vrf::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1558,7 +1576,7 @@ bool Rip::Vrfs::Vrf::Interfaces::has_data() const
 
 bool Rip::Vrfs::Vrf::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1588,7 +1606,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::get_child_by_name(const std:
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1600,7 +1618,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1658,9 +1676,12 @@ Rip::Vrfs::Vrf::Interfaces::Interface::Interface()
     pkt_drop_no_auth{YType::uint32, "pkt-drop-no-auth"},
     pkt_drop_invalid_auth{YType::uint32, "pkt-drop-invalid-auth"},
     pkt_accepted_valid_auth{YType::uint32, "pkt-accepted-valid-auth"}
+        ,
+    rip_summary(this, {})
+    , rip_peer(this, {})
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::~Interface()
@@ -1669,12 +1690,13 @@ Rip::Vrfs::Vrf::Interfaces::Interface::~Interface()
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::has_data() const
 {
-    for (std::size_t index=0; index<rip_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rip_summary.len(); index++)
     {
         if(rip_summary[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<rip_peer.size(); index++)
+    for (std::size_t index=0; index<rip_peer.len(); index++)
     {
         if(rip_peer[index]->has_data())
             return true;
@@ -1713,12 +1735,12 @@ bool Rip::Vrfs::Vrf::Interfaces::Interface::has_data() const
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<rip_summary.size(); index++)
+    for (std::size_t index=0; index<rip_summary.len(); index++)
     {
         if(rip_summary[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<rip_peer.size(); index++)
+    for (std::size_t index=0; index<rip_peer.len(); index++)
     {
         if(rip_peer[index]->has_operation())
             return true;
@@ -1759,7 +1781,8 @@ bool Rip::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 std::string Rip::Vrfs::Vrf::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1808,7 +1831,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::get_child_by_name
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary>();
         c->parent = this;
-        rip_summary.push_back(c);
+        rip_summary.append(c);
         return c;
     }
 
@@ -1816,7 +1839,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::get_child_by_name
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer>();
         c->parent = this;
-        rip_peer.push_back(c);
+        rip_peer.append(c);
         return c;
     }
 
@@ -1828,7 +1851,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Inter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rip_summary)
+    for (auto c : rip_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1837,7 +1860,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Inter
     }
 
     count = 0;
-    for (auto const & c : rip_peer)
+    for (auto c : rip_peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2171,7 +2194,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::RipSummary()
     metric{YType::int32, "metric"}
 {
 
-    yang_name = "rip-summary"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-summary"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::~RipSummary()
@@ -2180,6 +2203,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::~RipSummary()
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| next_hop_address.is_set
@@ -2291,7 +2315,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::RipPeer()
     discarded_peer_routes{YType::uint32, "discarded-peer-routes"}
 {
 
-    yang_name = "rip-peer"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-peer"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::~RipPeer()
@@ -2300,6 +2324,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::~RipPeer()
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_uptime.is_set
 	|| peer_address.is_set
 	|| peer_version.is_set
@@ -2418,10 +2443,11 @@ bool Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::has_leaf_or_child_of_name(c
 Rip::Vrfs::Vrf::Global::Global()
     :
     vrf_summary(std::make_shared<Rip::Vrfs::Vrf::Global::VrfSummary>())
+    , interface_summary(this, {})
 {
     vrf_summary->parent = this;
 
-    yang_name = "global"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Global::~Global()
@@ -2430,7 +2456,8 @@ Rip::Vrfs::Vrf::Global::~Global()
 
 bool Rip::Vrfs::Vrf::Global::has_data() const
 {
-    for (std::size_t index=0; index<interface_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_summary.len(); index++)
     {
         if(interface_summary[index]->has_data())
             return true;
@@ -2440,7 +2467,7 @@ bool Rip::Vrfs::Vrf::Global::has_data() const
 
 bool Rip::Vrfs::Vrf::Global::has_operation() const
 {
-    for (std::size_t index=0; index<interface_summary.size(); index++)
+    for (std::size_t index=0; index<interface_summary.len(); index++)
     {
         if(interface_summary[index]->has_operation())
             return true;
@@ -2480,7 +2507,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Global::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::Global::InterfaceSummary>();
         c->parent = this;
-        interface_summary.push_back(c);
+        interface_summary.append(c);
         return c;
     }
 
@@ -2497,7 +2524,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Global::get_child
     }
 
     count = 0;
-    for (auto const & c : interface_summary)
+    for (auto c : interface_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2539,7 +2566,7 @@ Rip::Vrfs::Vrf::Global::VrfSummary::VrfSummary()
     active_interface_count{YType::uint32, "active-interface-count"}
 {
 
-    yang_name = "vrf-summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf-summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Global::VrfSummary::~VrfSummary()
@@ -2548,6 +2575,7 @@ Rip::Vrfs::Vrf::Global::VrfSummary::~VrfSummary()
 
 bool Rip::Vrfs::Vrf::Global::VrfSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| active.is_set
 	|| oom_flags.is_set
@@ -2767,7 +2795,7 @@ Rip::Vrfs::Vrf::Global::InterfaceSummary::InterfaceSummary()
     neighbor_count{YType::uint32, "neighbor-count"}
 {
 
-    yang_name = "interface-summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Global::InterfaceSummary::~InterfaceSummary()
@@ -2776,6 +2804,7 @@ Rip::Vrfs::Vrf::Global::InterfaceSummary::~InterfaceSummary()
 
 bool Rip::Vrfs::Vrf::Global::InterfaceSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| enabled.is_set
 	|| state.is_set
@@ -2946,12 +2975,12 @@ bool Rip::Vrfs::Vrf::Global::InterfaceSummary::has_leaf_or_child_of_name(const s
 Rip::Protocol::Protocol()
     :
     process(std::make_shared<Rip::Protocol::Process>())
-	,default_vrf(std::make_shared<Rip::Protocol::DefaultVrf>())
+    , default_vrf(std::make_shared<Rip::Protocol::DefaultVrf>())
 {
     process->parent = this;
     default_vrf->parent = this;
 
-    yang_name = "protocol"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocol"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::~Protocol()
@@ -2960,6 +2989,7 @@ Rip::Protocol::~Protocol()
 
 bool Rip::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (process !=  nullptr && process->has_data())
 	|| (default_vrf !=  nullptr && default_vrf->has_data());
 }
@@ -3057,9 +3087,11 @@ Rip::Protocol::Process::Process()
     current_oom_state{YType::int32, "current-oom-state"},
     route_count{YType::uint32, "route-count"},
     path_count{YType::uint32, "path-count"}
+        ,
+    vrf_summary(this, {})
 {
 
-    yang_name = "process"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::Process::~Process()
@@ -3068,7 +3100,8 @@ Rip::Protocol::Process::~Process()
 
 bool Rip::Protocol::Process::has_data() const
 {
-    for (std::size_t index=0; index<vrf_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf_summary.len(); index++)
     {
         if(vrf_summary[index]->has_data())
             return true;
@@ -3083,7 +3116,7 @@ bool Rip::Protocol::Process::has_data() const
 
 bool Rip::Protocol::Process::has_operation() const
 {
-    for (std::size_t index=0; index<vrf_summary.size(); index++)
+    for (std::size_t index=0; index<vrf_summary.len(); index++)
     {
         if(vrf_summary[index]->has_operation())
             return true;
@@ -3132,7 +3165,7 @@ std::shared_ptr<Entity> Rip::Protocol::Process::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Rip::Protocol::Process::VrfSummary>();
         c->parent = this;
-        vrf_summary.push_back(c);
+        vrf_summary.append(c);
         return c;
     }
 
@@ -3144,7 +3177,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::Process::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf_summary)
+    for (auto c : vrf_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3246,7 +3279,7 @@ Rip::Protocol::Process::VrfSummary::VrfSummary()
     active_interface_count{YType::uint32, "active-interface-count"}
 {
 
-    yang_name = "vrf-summary"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf-summary"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::Process::VrfSummary::~VrfSummary()
@@ -3255,6 +3288,7 @@ Rip::Protocol::Process::VrfSummary::~VrfSummary()
 
 bool Rip::Protocol::Process::VrfSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| active.is_set
 	|| oom_flags.is_set
@@ -3471,10 +3505,10 @@ bool Rip::Protocol::Process::VrfSummary::has_leaf_or_child_of_name(const std::st
 Rip::Protocol::DefaultVrf::DefaultVrf()
     :
     routes(std::make_shared<Rip::Protocol::DefaultVrf::Routes>())
-	,configuration(std::make_shared<Rip::Protocol::DefaultVrf::Configuration>())
-	,statistics(std::make_shared<Rip::Protocol::DefaultVrf::Statistics>())
-	,interfaces(std::make_shared<Rip::Protocol::DefaultVrf::Interfaces>())
-	,global(std::make_shared<Rip::Protocol::DefaultVrf::Global>())
+    , configuration(std::make_shared<Rip::Protocol::DefaultVrf::Configuration>())
+    , statistics(std::make_shared<Rip::Protocol::DefaultVrf::Statistics>())
+    , interfaces(std::make_shared<Rip::Protocol::DefaultVrf::Interfaces>())
+    , global(std::make_shared<Rip::Protocol::DefaultVrf::Global>())
 {
     routes->parent = this;
     configuration->parent = this;
@@ -3482,7 +3516,7 @@ Rip::Protocol::DefaultVrf::DefaultVrf()
     interfaces->parent = this;
     global->parent = this;
 
-    yang_name = "default-vrf"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-vrf"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::DefaultVrf::~DefaultVrf()
@@ -3491,6 +3525,7 @@ Rip::Protocol::DefaultVrf::~DefaultVrf()
 
 bool Rip::Protocol::DefaultVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return (routes !=  nullptr && routes->has_data())
 	|| (configuration !=  nullptr && configuration->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
@@ -3629,9 +3664,11 @@ bool Rip::Protocol::DefaultVrf::has_leaf_or_child_of_name(const std::string & na
 }
 
 Rip::Protocol::DefaultVrf::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "routes"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::DefaultVrf::Routes::~Routes()
@@ -3640,7 +3677,8 @@ Rip::Protocol::DefaultVrf::Routes::~Routes()
 
 bool Rip::Protocol::DefaultVrf::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -3650,7 +3688,7 @@ bool Rip::Protocol::DefaultVrf::Routes::has_data() const
 
 bool Rip::Protocol::DefaultVrf::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -3687,7 +3725,7 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Routes::get_child_by_name(con
     {
         auto c = std::make_shared<Rip::Protocol::DefaultVrf::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -3699,7 +3737,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Routes
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3741,9 +3779,11 @@ Rip::Protocol::DefaultVrf::Routes::Route::Route()
     active{YType::boolean, "active"},
     path_origin{YType::enumeration, "path-origin"},
     hold_down{YType::boolean, "hold-down"}
+        ,
+    paths(this, {})
 {
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::DefaultVrf::Routes::Route::~Route()
@@ -3752,7 +3792,8 @@ Rip::Protocol::DefaultVrf::Routes::Route::~Route()
 
 bool Rip::Protocol::DefaultVrf::Routes::Route::has_data() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<paths.len(); index++)
     {
         if(paths[index]->has_data())
             return true;
@@ -3775,7 +3816,7 @@ bool Rip::Protocol::DefaultVrf::Routes::Route::has_data() const
 
 bool Rip::Protocol::DefaultVrf::Routes::Route::has_operation() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    for (std::size_t index=0; index<paths.len(); index++)
     {
         if(paths[index]->has_operation())
             return true;
@@ -3840,7 +3881,7 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Routes::Route::get_child_by_n
     {
         auto c = std::make_shared<Rip::Protocol::DefaultVrf::Routes::Route::Paths>();
         c->parent = this;
-        paths.push_back(c);
+        paths.append(c);
         return c;
     }
 
@@ -3852,7 +3893,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Routes
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : paths)
+    for (auto c : paths.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4029,7 +4070,7 @@ Rip::Protocol::DefaultVrf::Routes::Route::Paths::Paths()
     is_permanent{YType::boolean, "is-permanent"}
 {
 
-    yang_name = "paths"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "paths"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::DefaultVrf::Routes::Route::Paths::~Paths()
@@ -4038,6 +4079,7 @@ Rip::Protocol::DefaultVrf::Routes::Route::Paths::~Paths()
 
 bool Rip::Protocol::DefaultVrf::Routes::Route::Paths::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| next_hop_address.is_set
 	|| metric.is_set
@@ -4209,7 +4251,7 @@ Rip::Protocol::DefaultVrf::Configuration::Configuration()
     nsf_life_time{YType::uint32, "nsf-life-time"}
 {
 
-    yang_name = "configuration"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configuration"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::DefaultVrf::Configuration::~Configuration()
@@ -4218,6 +4260,7 @@ Rip::Protocol::DefaultVrf::Configuration::~Configuration()
 
 bool Rip::Protocol::DefaultVrf::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return active.is_set
 	|| vr_fised_socket.is_set
 	|| rip_version.is_set
@@ -4539,7 +4582,7 @@ Rip::Protocol::DefaultVrf::Statistics::Statistics()
     rib_updates{YType::uint32, "rib-updates"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::DefaultVrf::Statistics::~Statistics()
@@ -4548,6 +4591,7 @@ Rip::Protocol::DefaultVrf::Statistics::~Statistics()
 
 bool Rip::Protocol::DefaultVrf::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| discarded_packets.is_set
 	|| discarded_routes.is_set
@@ -4775,9 +4819,11 @@ bool Rip::Protocol::DefaultVrf::Statistics::has_leaf_or_child_of_name(const std:
 }
 
 Rip::Protocol::DefaultVrf::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::DefaultVrf::Interfaces::~Interfaces()
@@ -4786,7 +4832,8 @@ Rip::Protocol::DefaultVrf::Interfaces::~Interfaces()
 
 bool Rip::Protocol::DefaultVrf::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -4796,7 +4843,7 @@ bool Rip::Protocol::DefaultVrf::Interfaces::has_data() const
 
 bool Rip::Protocol::DefaultVrf::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -4833,7 +4880,7 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::get_child_by_name
     {
         auto c = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -4845,7 +4892,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4903,9 +4950,12 @@ Rip::Protocol::DefaultVrf::Interfaces::Interface::Interface()
     pkt_drop_no_auth{YType::uint32, "pkt-drop-no-auth"},
     pkt_drop_invalid_auth{YType::uint32, "pkt-drop-invalid-auth"},
     pkt_accepted_valid_auth{YType::uint32, "pkt-accepted-valid-auth"}
+        ,
+    rip_summary(this, {})
+    , rip_peer(this, {})
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::DefaultVrf::Interfaces::Interface::~Interface()
@@ -4914,12 +4964,13 @@ Rip::Protocol::DefaultVrf::Interfaces::Interface::~Interface()
 
 bool Rip::Protocol::DefaultVrf::Interfaces::Interface::has_data() const
 {
-    for (std::size_t index=0; index<rip_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rip_summary.len(); index++)
     {
         if(rip_summary[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<rip_peer.size(); index++)
+    for (std::size_t index=0; index<rip_peer.len(); index++)
     {
         if(rip_peer[index]->has_data())
             return true;
@@ -4958,12 +5009,12 @@ bool Rip::Protocol::DefaultVrf::Interfaces::Interface::has_data() const
 
 bool Rip::Protocol::DefaultVrf::Interfaces::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<rip_summary.size(); index++)
+    for (std::size_t index=0; index<rip_summary.len(); index++)
     {
         if(rip_summary[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<rip_peer.size(); index++)
+    for (std::size_t index=0; index<rip_peer.len(); index++)
     {
         if(rip_peer[index]->has_operation())
             return true;
@@ -5011,7 +5062,8 @@ std::string Rip::Protocol::DefaultVrf::Interfaces::Interface::get_absolute_path(
 std::string Rip::Protocol::DefaultVrf::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5060,7 +5112,7 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::get_ch
     {
         auto c = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary>();
         c->parent = this;
-        rip_summary.push_back(c);
+        rip_summary.append(c);
         return c;
     }
 
@@ -5068,7 +5120,7 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::get_ch
     {
         auto c = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer>();
         c->parent = this;
-        rip_peer.push_back(c);
+        rip_peer.append(c);
         return c;
     }
 
@@ -5080,7 +5132,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rip_summary)
+    for (auto c : rip_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5089,7 +5141,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Interf
     }
 
     count = 0;
-    for (auto const & c : rip_peer)
+    for (auto c : rip_peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5423,7 +5475,7 @@ Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::RipSummary()
     metric{YType::int32, "metric"}
 {
 
-    yang_name = "rip-summary"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-summary"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::~RipSummary()
@@ -5432,6 +5484,7 @@ Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::~RipSummary()
 
 bool Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| next_hop_address.is_set
@@ -5543,7 +5596,7 @@ Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::RipPeer()
     discarded_peer_routes{YType::uint32, "discarded-peer-routes"}
 {
 
-    yang_name = "rip-peer"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-peer"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::~RipPeer()
@@ -5552,6 +5605,7 @@ Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::~RipPeer()
 
 bool Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_uptime.is_set
 	|| peer_address.is_set
 	|| peer_version.is_set
@@ -5670,10 +5724,11 @@ bool Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::has_leaf_or_chil
 Rip::Protocol::DefaultVrf::Global::Global()
     :
     vrf_summary(std::make_shared<Rip::Protocol::DefaultVrf::Global::VrfSummary>())
+    , interface_summary(this, {})
 {
     vrf_summary->parent = this;
 
-    yang_name = "global"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::DefaultVrf::Global::~Global()
@@ -5682,7 +5737,8 @@ Rip::Protocol::DefaultVrf::Global::~Global()
 
 bool Rip::Protocol::DefaultVrf::Global::has_data() const
 {
-    for (std::size_t index=0; index<interface_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_summary.len(); index++)
     {
         if(interface_summary[index]->has_data())
             return true;
@@ -5692,7 +5748,7 @@ bool Rip::Protocol::DefaultVrf::Global::has_data() const
 
 bool Rip::Protocol::DefaultVrf::Global::has_operation() const
 {
-    for (std::size_t index=0; index<interface_summary.size(); index++)
+    for (std::size_t index=0; index<interface_summary.len(); index++)
     {
         if(interface_summary[index]->has_operation())
             return true;
@@ -5739,7 +5795,7 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Global::get_child_by_name(con
     {
         auto c = std::make_shared<Rip::Protocol::DefaultVrf::Global::InterfaceSummary>();
         c->parent = this;
-        interface_summary.push_back(c);
+        interface_summary.append(c);
         return c;
     }
 
@@ -5756,7 +5812,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Global
     }
 
     count = 0;
-    for (auto const & c : interface_summary)
+    for (auto c : interface_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5798,7 +5854,7 @@ Rip::Protocol::DefaultVrf::Global::VrfSummary::VrfSummary()
     active_interface_count{YType::uint32, "active-interface-count"}
 {
 
-    yang_name = "vrf-summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf-summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::DefaultVrf::Global::VrfSummary::~VrfSummary()
@@ -5807,6 +5863,7 @@ Rip::Protocol::DefaultVrf::Global::VrfSummary::~VrfSummary()
 
 bool Rip::Protocol::DefaultVrf::Global::VrfSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| active.is_set
 	|| oom_flags.is_set
@@ -6033,7 +6090,7 @@ Rip::Protocol::DefaultVrf::Global::InterfaceSummary::InterfaceSummary()
     neighbor_count{YType::uint32, "neighbor-count"}
 {
 
-    yang_name = "interface-summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Protocol::DefaultVrf::Global::InterfaceSummary::~InterfaceSummary()
@@ -6042,6 +6099,7 @@ Rip::Protocol::DefaultVrf::Global::InterfaceSummary::~InterfaceSummary()
 
 bool Rip::Protocol::DefaultVrf::Global::InterfaceSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| enabled.is_set
 	|| state.is_set
@@ -6219,10 +6277,10 @@ bool Rip::Protocol::DefaultVrf::Global::InterfaceSummary::has_leaf_or_child_of_n
 Rip::DefaultVrf::DefaultVrf()
     :
     routes(std::make_shared<Rip::DefaultVrf::Routes>())
-	,configuration(std::make_shared<Rip::DefaultVrf::Configuration>())
-	,statistics(std::make_shared<Rip::DefaultVrf::Statistics>())
-	,interfaces(std::make_shared<Rip::DefaultVrf::Interfaces>())
-	,global(std::make_shared<Rip::DefaultVrf::Global>())
+    , configuration(std::make_shared<Rip::DefaultVrf::Configuration>())
+    , statistics(std::make_shared<Rip::DefaultVrf::Statistics>())
+    , interfaces(std::make_shared<Rip::DefaultVrf::Interfaces>())
+    , global(std::make_shared<Rip::DefaultVrf::Global>())
 {
     routes->parent = this;
     configuration->parent = this;
@@ -6230,7 +6288,7 @@ Rip::DefaultVrf::DefaultVrf()
     interfaces->parent = this;
     global->parent = this;
 
-    yang_name = "default-vrf"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-vrf"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::~DefaultVrf()
@@ -6239,6 +6297,7 @@ Rip::DefaultVrf::~DefaultVrf()
 
 bool Rip::DefaultVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return (routes !=  nullptr && routes->has_data())
 	|| (configuration !=  nullptr && configuration->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
@@ -6377,9 +6436,11 @@ bool Rip::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Rip::DefaultVrf::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "routes"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Routes::~Routes()
@@ -6388,7 +6449,8 @@ Rip::DefaultVrf::Routes::~Routes()
 
 bool Rip::DefaultVrf::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -6398,7 +6460,7 @@ bool Rip::DefaultVrf::Routes::has_data() const
 
 bool Rip::DefaultVrf::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -6435,7 +6497,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Routes::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Rip::DefaultVrf::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -6447,7 +6509,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Routes::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6489,9 +6551,11 @@ Rip::DefaultVrf::Routes::Route::Route()
     active{YType::boolean, "active"},
     path_origin{YType::enumeration, "path-origin"},
     hold_down{YType::boolean, "hold-down"}
+        ,
+    paths(this, {})
 {
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Routes::Route::~Route()
@@ -6500,7 +6564,8 @@ Rip::DefaultVrf::Routes::Route::~Route()
 
 bool Rip::DefaultVrf::Routes::Route::has_data() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<paths.len(); index++)
     {
         if(paths[index]->has_data())
             return true;
@@ -6523,7 +6588,7 @@ bool Rip::DefaultVrf::Routes::Route::has_data() const
 
 bool Rip::DefaultVrf::Routes::Route::has_operation() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    for (std::size_t index=0; index<paths.len(); index++)
     {
         if(paths[index]->has_operation())
             return true;
@@ -6588,7 +6653,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Routes::Route::get_child_by_name(const 
     {
         auto c = std::make_shared<Rip::DefaultVrf::Routes::Route::Paths>();
         c->parent = this;
-        paths.push_back(c);
+        paths.append(c);
         return c;
     }
 
@@ -6600,7 +6665,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Routes::Route::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : paths)
+    for (auto c : paths.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6777,7 +6842,7 @@ Rip::DefaultVrf::Routes::Route::Paths::Paths()
     is_permanent{YType::boolean, "is-permanent"}
 {
 
-    yang_name = "paths"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "paths"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Routes::Route::Paths::~Paths()
@@ -6786,6 +6851,7 @@ Rip::DefaultVrf::Routes::Route::Paths::~Paths()
 
 bool Rip::DefaultVrf::Routes::Route::Paths::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| next_hop_address.is_set
 	|| metric.is_set
@@ -6957,7 +7023,7 @@ Rip::DefaultVrf::Configuration::Configuration()
     nsf_life_time{YType::uint32, "nsf-life-time"}
 {
 
-    yang_name = "configuration"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configuration"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Configuration::~Configuration()
@@ -6966,6 +7032,7 @@ Rip::DefaultVrf::Configuration::~Configuration()
 
 bool Rip::DefaultVrf::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return active.is_set
 	|| vr_fised_socket.is_set
 	|| rip_version.is_set
@@ -7287,7 +7354,7 @@ Rip::DefaultVrf::Statistics::Statistics()
     rib_updates{YType::uint32, "rib-updates"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Statistics::~Statistics()
@@ -7296,6 +7363,7 @@ Rip::DefaultVrf::Statistics::~Statistics()
 
 bool Rip::DefaultVrf::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| discarded_packets.is_set
 	|| discarded_routes.is_set
@@ -7523,9 +7591,11 @@ bool Rip::DefaultVrf::Statistics::has_leaf_or_child_of_name(const std::string & 
 }
 
 Rip::DefaultVrf::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Interfaces::~Interfaces()
@@ -7534,7 +7604,8 @@ Rip::DefaultVrf::Interfaces::~Interfaces()
 
 bool Rip::DefaultVrf::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -7544,7 +7615,7 @@ bool Rip::DefaultVrf::Interfaces::has_data() const
 
 bool Rip::DefaultVrf::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -7581,7 +7652,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::get_child_by_name(const std
     {
         auto c = std::make_shared<Rip::DefaultVrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -7593,7 +7664,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7651,9 +7722,12 @@ Rip::DefaultVrf::Interfaces::Interface::Interface()
     pkt_drop_no_auth{YType::uint32, "pkt-drop-no-auth"},
     pkt_drop_invalid_auth{YType::uint32, "pkt-drop-invalid-auth"},
     pkt_accepted_valid_auth{YType::uint32, "pkt-accepted-valid-auth"}
+        ,
+    rip_summary(this, {})
+    , rip_peer(this, {})
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Interfaces::Interface::~Interface()
@@ -7662,12 +7736,13 @@ Rip::DefaultVrf::Interfaces::Interface::~Interface()
 
 bool Rip::DefaultVrf::Interfaces::Interface::has_data() const
 {
-    for (std::size_t index=0; index<rip_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rip_summary.len(); index++)
     {
         if(rip_summary[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<rip_peer.size(); index++)
+    for (std::size_t index=0; index<rip_peer.len(); index++)
     {
         if(rip_peer[index]->has_data())
             return true;
@@ -7706,12 +7781,12 @@ bool Rip::DefaultVrf::Interfaces::Interface::has_data() const
 
 bool Rip::DefaultVrf::Interfaces::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<rip_summary.size(); index++)
+    for (std::size_t index=0; index<rip_summary.len(); index++)
     {
         if(rip_summary[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<rip_peer.size(); index++)
+    for (std::size_t index=0; index<rip_peer.len(); index++)
     {
         if(rip_peer[index]->has_operation())
             return true;
@@ -7759,7 +7834,8 @@ std::string Rip::DefaultVrf::Interfaces::Interface::get_absolute_path() const
 std::string Rip::DefaultVrf::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -7808,7 +7884,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::get_child_by_nam
     {
         auto c = std::make_shared<Rip::DefaultVrf::Interfaces::Interface::RipSummary>();
         c->parent = this;
-        rip_summary.push_back(c);
+        rip_summary.append(c);
         return c;
     }
 
@@ -7816,7 +7892,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::get_child_by_nam
     {
         auto c = std::make_shared<Rip::DefaultVrf::Interfaces::Interface::RipPeer>();
         c->parent = this;
-        rip_peer.push_back(c);
+        rip_peer.append(c);
         return c;
     }
 
@@ -7828,7 +7904,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rip_summary)
+    for (auto c : rip_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7837,7 +7913,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Inte
     }
 
     count = 0;
-    for (auto const & c : rip_peer)
+    for (auto c : rip_peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8171,7 +8247,7 @@ Rip::DefaultVrf::Interfaces::Interface::RipSummary::RipSummary()
     metric{YType::int32, "metric"}
 {
 
-    yang_name = "rip-summary"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-summary"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::DefaultVrf::Interfaces::Interface::RipSummary::~RipSummary()
@@ -8180,6 +8256,7 @@ Rip::DefaultVrf::Interfaces::Interface::RipSummary::~RipSummary()
 
 bool Rip::DefaultVrf::Interfaces::Interface::RipSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| next_hop_address.is_set
@@ -8291,7 +8368,7 @@ Rip::DefaultVrf::Interfaces::Interface::RipPeer::RipPeer()
     discarded_peer_routes{YType::uint32, "discarded-peer-routes"}
 {
 
-    yang_name = "rip-peer"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-peer"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::DefaultVrf::Interfaces::Interface::RipPeer::~RipPeer()
@@ -8300,6 +8377,7 @@ Rip::DefaultVrf::Interfaces::Interface::RipPeer::~RipPeer()
 
 bool Rip::DefaultVrf::Interfaces::Interface::RipPeer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_uptime.is_set
 	|| peer_address.is_set
 	|| peer_version.is_set
@@ -8418,10 +8496,11 @@ bool Rip::DefaultVrf::Interfaces::Interface::RipPeer::has_leaf_or_child_of_name(
 Rip::DefaultVrf::Global::Global()
     :
     vrf_summary(std::make_shared<Rip::DefaultVrf::Global::VrfSummary>())
+    , interface_summary(this, {})
 {
     vrf_summary->parent = this;
 
-    yang_name = "global"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Global::~Global()
@@ -8430,7 +8509,8 @@ Rip::DefaultVrf::Global::~Global()
 
 bool Rip::DefaultVrf::Global::has_data() const
 {
-    for (std::size_t index=0; index<interface_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_summary.len(); index++)
     {
         if(interface_summary[index]->has_data())
             return true;
@@ -8440,7 +8520,7 @@ bool Rip::DefaultVrf::Global::has_data() const
 
 bool Rip::DefaultVrf::Global::has_operation() const
 {
-    for (std::size_t index=0; index<interface_summary.size(); index++)
+    for (std::size_t index=0; index<interface_summary.len(); index++)
     {
         if(interface_summary[index]->has_operation())
             return true;
@@ -8487,7 +8567,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Global::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Rip::DefaultVrf::Global::InterfaceSummary>();
         c->parent = this;
-        interface_summary.push_back(c);
+        interface_summary.append(c);
         return c;
     }
 
@@ -8504,7 +8584,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Global::get_chil
     }
 
     count = 0;
-    for (auto const & c : interface_summary)
+    for (auto c : interface_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8546,7 +8626,7 @@ Rip::DefaultVrf::Global::VrfSummary::VrfSummary()
     active_interface_count{YType::uint32, "active-interface-count"}
 {
 
-    yang_name = "vrf-summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf-summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Global::VrfSummary::~VrfSummary()
@@ -8555,6 +8635,7 @@ Rip::DefaultVrf::Global::VrfSummary::~VrfSummary()
 
 bool Rip::DefaultVrf::Global::VrfSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| active.is_set
 	|| oom_flags.is_set
@@ -8781,7 +8862,7 @@ Rip::DefaultVrf::Global::InterfaceSummary::InterfaceSummary()
     neighbor_count{YType::uint32, "neighbor-count"}
 {
 
-    yang_name = "interface-summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Global::InterfaceSummary::~InterfaceSummary()
@@ -8790,6 +8871,7 @@ Rip::DefaultVrf::Global::InterfaceSummary::~InterfaceSummary()
 
 bool Rip::DefaultVrf::Global::InterfaceSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| enabled.is_set
 	|| state.is_set
@@ -8964,17 +9046,17 @@ bool Rip::DefaultVrf::Global::InterfaceSummary::has_leaf_or_child_of_name(const 
     return false;
 }
 
-const Enum::YLeaf InterfaceState::interface_none {0, "interface-none"};
-const Enum::YLeaf InterfaceState::interface_down {1, "interface-down"};
-const Enum::YLeaf InterfaceState::interface_up {2, "interface-up"};
-const Enum::YLeaf InterfaceState::interface_unknown {3, "interface-unknown"};
-
 const Enum::YLeaf RipRouteOrigin::rip_rt_org_runover {0, "rip-rt-org-runover"};
 const Enum::YLeaf RipRouteOrigin::rip_rt_org_redist {1, "rip-rt-org-redist"};
 const Enum::YLeaf RipRouteOrigin::rip_rt_org_auto_summary {2, "rip-rt-org-auto-summary"};
 const Enum::YLeaf RipRouteOrigin::rip_rt_org_rip {3, "rip-rt-org-rip"};
 const Enum::YLeaf RipRouteOrigin::rip_rt_org_intsummary {4, "rip-rt-org-intsummary"};
 const Enum::YLeaf RipRouteOrigin::rip_rt_org_unused {5, "rip-rt-org-unused"};
+
+const Enum::YLeaf InterfaceState::interface_none {0, "interface-none"};
+const Enum::YLeaf InterfaceState::interface_down {1, "interface-down"};
+const Enum::YLeaf InterfaceState::interface_up {2, "interface-up"};
+const Enum::YLeaf InterfaceState::interface_unknown {3, "interface-unknown"};
 
 
 }

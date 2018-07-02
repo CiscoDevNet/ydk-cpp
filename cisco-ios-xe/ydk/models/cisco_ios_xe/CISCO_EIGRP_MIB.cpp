@@ -13,11 +13,11 @@ namespace CISCO_EIGRP_MIB {
 
 CISCOEIGRPMIB::CISCOEIGRPMIB()
     :
-    ceigrpvpntable(std::make_shared<CISCOEIGRPMIB::Ceigrpvpntable>())
-	,ceigrptraffstatstable(std::make_shared<CISCOEIGRPMIB::Ceigrptraffstatstable>())
-	,ceigrptopotable(std::make_shared<CISCOEIGRPMIB::Ceigrptopotable>())
-	,ceigrppeertable(std::make_shared<CISCOEIGRPMIB::Ceigrppeertable>())
-	,ceigrpinterfacetable(std::make_shared<CISCOEIGRPMIB::Ceigrpinterfacetable>())
+    ceigrpvpntable(std::make_shared<CISCOEIGRPMIB::CEigrpVpnTable>())
+    , ceigrptraffstatstable(std::make_shared<CISCOEIGRPMIB::CEigrpTraffStatsTable>())
+    , ceigrptopotable(std::make_shared<CISCOEIGRPMIB::CEigrpTopoTable>())
+    , ceigrppeertable(std::make_shared<CISCOEIGRPMIB::CEigrpPeerTable>())
+    , ceigrpinterfacetable(std::make_shared<CISCOEIGRPMIB::CEigrpInterfaceTable>())
 {
     ceigrpvpntable->parent = this;
     ceigrptraffstatstable->parent = this;
@@ -25,7 +25,7 @@ CISCOEIGRPMIB::CISCOEIGRPMIB()
     ceigrppeertable->parent = this;
     ceigrpinterfacetable->parent = this;
 
-    yang_name = "CISCO-EIGRP-MIB"; yang_parent_name = "CISCO-EIGRP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-EIGRP-MIB"; yang_parent_name = "CISCO-EIGRP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOEIGRPMIB::~CISCOEIGRPMIB()
@@ -34,6 +34,7 @@ CISCOEIGRPMIB::~CISCOEIGRPMIB()
 
 bool CISCOEIGRPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ceigrpvpntable !=  nullptr && ceigrpvpntable->has_data())
 	|| (ceigrptraffstatstable !=  nullptr && ceigrptraffstatstable->has_data())
 	|| (ceigrptopotable !=  nullptr && ceigrptopotable->has_data())
@@ -73,7 +74,7 @@ std::shared_ptr<Entity> CISCOEIGRPMIB::get_child_by_name(const std::string & chi
     {
         if(ceigrpvpntable == nullptr)
         {
-            ceigrpvpntable = std::make_shared<CISCOEIGRPMIB::Ceigrpvpntable>();
+            ceigrpvpntable = std::make_shared<CISCOEIGRPMIB::CEigrpVpnTable>();
         }
         return ceigrpvpntable;
     }
@@ -82,7 +83,7 @@ std::shared_ptr<Entity> CISCOEIGRPMIB::get_child_by_name(const std::string & chi
     {
         if(ceigrptraffstatstable == nullptr)
         {
-            ceigrptraffstatstable = std::make_shared<CISCOEIGRPMIB::Ceigrptraffstatstable>();
+            ceigrptraffstatstable = std::make_shared<CISCOEIGRPMIB::CEigrpTraffStatsTable>();
         }
         return ceigrptraffstatstable;
     }
@@ -91,7 +92,7 @@ std::shared_ptr<Entity> CISCOEIGRPMIB::get_child_by_name(const std::string & chi
     {
         if(ceigrptopotable == nullptr)
         {
-            ceigrptopotable = std::make_shared<CISCOEIGRPMIB::Ceigrptopotable>();
+            ceigrptopotable = std::make_shared<CISCOEIGRPMIB::CEigrpTopoTable>();
         }
         return ceigrptopotable;
     }
@@ -100,7 +101,7 @@ std::shared_ptr<Entity> CISCOEIGRPMIB::get_child_by_name(const std::string & chi
     {
         if(ceigrppeertable == nullptr)
         {
-            ceigrppeertable = std::make_shared<CISCOEIGRPMIB::Ceigrppeertable>();
+            ceigrppeertable = std::make_shared<CISCOEIGRPMIB::CEigrpPeerTable>();
         }
         return ceigrppeertable;
     }
@@ -109,7 +110,7 @@ std::shared_ptr<Entity> CISCOEIGRPMIB::get_child_by_name(const std::string & chi
     {
         if(ceigrpinterfacetable == nullptr)
         {
-            ceigrpinterfacetable = std::make_shared<CISCOEIGRPMIB::Ceigrpinterfacetable>();
+            ceigrpinterfacetable = std::make_shared<CISCOEIGRPMIB::CEigrpInterfaceTable>();
         }
         return ceigrpinterfacetable;
     }
@@ -189,19 +190,22 @@ bool CISCOEIGRPMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpntable()
+CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnTable()
+    :
+    ceigrpvpnentry(this, {"ceigrpvpnid"})
 {
 
-    yang_name = "cEigrpVpnTable"; yang_parent_name = "CISCO-EIGRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cEigrpVpnTable"; yang_parent_name = "CISCO-EIGRP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOEIGRPMIB::Ceigrpvpntable::~Ceigrpvpntable()
+CISCOEIGRPMIB::CEigrpVpnTable::~CEigrpVpnTable()
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrpvpntable::has_data() const
+bool CISCOEIGRPMIB::CEigrpVpnTable::has_data() const
 {
-    for (std::size_t index=0; index<ceigrpvpnentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ceigrpvpnentry.len(); index++)
     {
         if(ceigrpvpnentry[index]->has_data())
             return true;
@@ -209,9 +213,9 @@ bool CISCOEIGRPMIB::Ceigrpvpntable::has_data() const
     return false;
 }
 
-bool CISCOEIGRPMIB::Ceigrpvpntable::has_operation() const
+bool CISCOEIGRPMIB::CEigrpVpnTable::has_operation() const
 {
-    for (std::size_t index=0; index<ceigrpvpnentry.size(); index++)
+    for (std::size_t index=0; index<ceigrpvpnentry.len(); index++)
     {
         if(ceigrpvpnentry[index]->has_operation())
             return true;
@@ -219,21 +223,21 @@ bool CISCOEIGRPMIB::Ceigrpvpntable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOEIGRPMIB::Ceigrpvpntable::get_absolute_path() const
+std::string CISCOEIGRPMIB::CEigrpVpnTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-EIGRP-MIB:CISCO-EIGRP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOEIGRPMIB::Ceigrpvpntable::get_segment_path() const
+std::string CISCOEIGRPMIB::CEigrpVpnTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cEigrpVpnTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrpvpntable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpVpnTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -242,25 +246,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrpvpntable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::Ceigrpvpntable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpVpnTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEigrpVpnEntry")
     {
-        auto c = std::make_shared<CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry>();
+        auto c = std::make_shared<CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry>();
         c->parent = this;
-        ceigrpvpnentry.push_back(c);
+        ceigrpvpnentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrpvpntable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpVpnTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ceigrpvpnentry)
+    for (auto c : ceigrpvpnentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -271,62 +275,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrpvpntable::ge
     return children;
 }
 
-void CISCOEIGRPMIB::Ceigrpvpntable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEIGRPMIB::CEigrpVpnTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOEIGRPMIB::Ceigrpvpntable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEIGRPMIB::CEigrpVpnTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrpvpntable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEIGRPMIB::CEigrpVpnTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEigrpVpnEntry")
         return true;
     return false;
 }
 
-CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::Ceigrpvpnentry()
+CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::CEigrpVpnEntry()
     :
     ceigrpvpnid{YType::uint32, "cEigrpVpnId"},
     ceigrpvpnname{YType::str, "cEigrpVpnName"}
 {
 
-    yang_name = "cEigrpVpnEntry"; yang_parent_name = "cEigrpVpnTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cEigrpVpnEntry"; yang_parent_name = "cEigrpVpnTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::~Ceigrpvpnentry()
+CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::~CEigrpVpnEntry()
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::has_data() const
+bool CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ceigrpvpnid.is_set
 	|| ceigrpvpnname.is_set;
 }
 
-bool CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::has_operation() const
+bool CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ceigrpvpnid.yfilter)
 	|| ydk::is_set(ceigrpvpnname.yfilter);
 }
 
-std::string CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::get_absolute_path() const
+std::string CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-EIGRP-MIB:CISCO-EIGRP-MIB/cEigrpVpnTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::get_segment_path() const
+std::string CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cEigrpVpnEntry" <<"[cEigrpVpnId='" <<ceigrpvpnid <<"']";
+    path_buffer << "cEigrpVpnEntry";
+    ADD_KEY_TOKEN(ceigrpvpnid, "cEigrpVpnId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -337,19 +343,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrpvpntable::Ce
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cEigrpVpnId")
     {
@@ -365,7 +371,7 @@ void CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::set_value(const std::string 
     }
 }
 
-void CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cEigrpVpnId")
     {
@@ -377,26 +383,29 @@ void CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::set_filter(const std::string
     }
 }
 
-bool CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEigrpVpnId" || name == "cEigrpVpnName")
         return true;
     return false;
 }
 
-CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatstable()
+CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsTable()
+    :
+    ceigrptraffstatsentry(this, {"ceigrpvpnid", "ceigrpasnumber"})
 {
 
-    yang_name = "cEigrpTraffStatsTable"; yang_parent_name = "CISCO-EIGRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cEigrpTraffStatsTable"; yang_parent_name = "CISCO-EIGRP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOEIGRPMIB::Ceigrptraffstatstable::~Ceigrptraffstatstable()
+CISCOEIGRPMIB::CEigrpTraffStatsTable::~CEigrpTraffStatsTable()
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrptraffstatstable::has_data() const
+bool CISCOEIGRPMIB::CEigrpTraffStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<ceigrptraffstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ceigrptraffstatsentry.len(); index++)
     {
         if(ceigrptraffstatsentry[index]->has_data())
             return true;
@@ -404,9 +413,9 @@ bool CISCOEIGRPMIB::Ceigrptraffstatstable::has_data() const
     return false;
 }
 
-bool CISCOEIGRPMIB::Ceigrptraffstatstable::has_operation() const
+bool CISCOEIGRPMIB::CEigrpTraffStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<ceigrptraffstatsentry.size(); index++)
+    for (std::size_t index=0; index<ceigrptraffstatsentry.len(); index++)
     {
         if(ceigrptraffstatsentry[index]->has_operation())
             return true;
@@ -414,21 +423,21 @@ bool CISCOEIGRPMIB::Ceigrptraffstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOEIGRPMIB::Ceigrptraffstatstable::get_absolute_path() const
+std::string CISCOEIGRPMIB::CEigrpTraffStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-EIGRP-MIB:CISCO-EIGRP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOEIGRPMIB::Ceigrptraffstatstable::get_segment_path() const
+std::string CISCOEIGRPMIB::CEigrpTraffStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cEigrpTraffStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrptraffstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpTraffStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -437,25 +446,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrptraffstatsta
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::Ceigrptraffstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpTraffStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEigrpTraffStatsEntry")
     {
-        auto c = std::make_shared<CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry>();
+        auto c = std::make_shared<CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry>();
         c->parent = this;
-        ceigrptraffstatsentry.push_back(c);
+        ceigrptraffstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrptraffstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpTraffStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ceigrptraffstatsentry)
+    for (auto c : ceigrptraffstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -466,22 +475,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrptraffstatsta
     return children;
 }
 
-void CISCOEIGRPMIB::Ceigrptraffstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEIGRPMIB::CEigrpTraffStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOEIGRPMIB::Ceigrptraffstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEIGRPMIB::CEigrpTraffStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrptraffstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEIGRPMIB::CEigrpTraffStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEigrpTraffStatsEntry")
         return true;
     return false;
 }
 
-CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::Ceigrptraffstatsentry()
+CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::CEigrpTraffStatsEntry()
     :
     ceigrpvpnid{YType::str, "cEigrpVpnId"},
     ceigrpasnumber{YType::uint32, "cEigrpAsNumber"},
@@ -509,15 +518,16 @@ CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::Ceigrptraffstatsent
     ceigrpxmitdummies{YType::uint32, "cEigrpXmitDummies"}
 {
 
-    yang_name = "cEigrpTraffStatsEntry"; yang_parent_name = "cEigrpTraffStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cEigrpTraffStatsEntry"; yang_parent_name = "cEigrpTraffStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::~Ceigrptraffstatsentry()
+CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::~CEigrpTraffStatsEntry()
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::has_data() const
+bool CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ceigrpvpnid.is_set
 	|| ceigrpasnumber.is_set
 	|| ceigrpnbrcount.is_set
@@ -544,7 +554,7 @@ bool CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::has_data() con
 	|| ceigrpxmitdummies.is_set;
 }
 
-bool CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::has_operation() const
+bool CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ceigrpvpnid.yfilter)
@@ -573,21 +583,23 @@ bool CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::has_operation(
 	|| ydk::is_set(ceigrpxmitdummies.yfilter);
 }
 
-std::string CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::get_absolute_path() const
+std::string CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-EIGRP-MIB:CISCO-EIGRP-MIB/cEigrpTraffStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::get_segment_path() const
+std::string CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cEigrpTraffStatsEntry" <<"[cEigrpVpnId='" <<ceigrpvpnid <<"']" <<"[cEigrpAsNumber='" <<ceigrpasnumber <<"']";
+    path_buffer << "cEigrpTraffStatsEntry";
+    ADD_KEY_TOKEN(ceigrpvpnid, "cEigrpVpnId");
+    ADD_KEY_TOKEN(ceigrpasnumber, "cEigrpAsNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -620,19 +632,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrptraffstatsta
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cEigrpVpnId")
     {
@@ -780,7 +792,7 @@ void CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::set_value(cons
     }
 }
 
-void CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cEigrpVpnId")
     {
@@ -880,26 +892,29 @@ void CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::set_filter(con
     }
 }
 
-bool CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEigrpVpnId" || name == "cEigrpAsNumber" || name == "cEigrpNbrCount" || name == "cEigrpHellosSent" || name == "cEigrpHellosRcvd" || name == "cEigrpUpdatesSent" || name == "cEigrpUpdatesRcvd" || name == "cEigrpQueriesSent" || name == "cEigrpQueriesRcvd" || name == "cEigrpRepliesSent" || name == "cEigrpRepliesRcvd" || name == "cEigrpAcksSent" || name == "cEigrpAcksRcvd" || name == "cEigrpInputQHighMark" || name == "cEigrpInputQDrops" || name == "cEigrpSiaQueriesSent" || name == "cEigrpSiaQueriesRcvd" || name == "cEigrpAsRouterIdType" || name == "cEigrpAsRouterId" || name == "cEigrpTopoRoutes" || name == "cEigrpHeadSerial" || name == "cEigrpNextSerial" || name == "cEigrpXmitPendReplies" || name == "cEigrpXmitDummies")
         return true;
     return false;
 }
 
-CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopotable()
+CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoTable()
+    :
+    ceigrptopoentry(this, {"ceigrpvpnid", "ceigrpasnumber", "ceigrpdestnettype", "ceigrpdestnet", "ceigrpdestnetprefixlen"})
 {
 
-    yang_name = "cEigrpTopoTable"; yang_parent_name = "CISCO-EIGRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cEigrpTopoTable"; yang_parent_name = "CISCO-EIGRP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOEIGRPMIB::Ceigrptopotable::~Ceigrptopotable()
+CISCOEIGRPMIB::CEigrpTopoTable::~CEigrpTopoTable()
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrptopotable::has_data() const
+bool CISCOEIGRPMIB::CEigrpTopoTable::has_data() const
 {
-    for (std::size_t index=0; index<ceigrptopoentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ceigrptopoentry.len(); index++)
     {
         if(ceigrptopoentry[index]->has_data())
             return true;
@@ -907,9 +922,9 @@ bool CISCOEIGRPMIB::Ceigrptopotable::has_data() const
     return false;
 }
 
-bool CISCOEIGRPMIB::Ceigrptopotable::has_operation() const
+bool CISCOEIGRPMIB::CEigrpTopoTable::has_operation() const
 {
-    for (std::size_t index=0; index<ceigrptopoentry.size(); index++)
+    for (std::size_t index=0; index<ceigrptopoentry.len(); index++)
     {
         if(ceigrptopoentry[index]->has_operation())
             return true;
@@ -917,21 +932,21 @@ bool CISCOEIGRPMIB::Ceigrptopotable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOEIGRPMIB::Ceigrptopotable::get_absolute_path() const
+std::string CISCOEIGRPMIB::CEigrpTopoTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-EIGRP-MIB:CISCO-EIGRP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOEIGRPMIB::Ceigrptopotable::get_segment_path() const
+std::string CISCOEIGRPMIB::CEigrpTopoTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cEigrpTopoTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrptopotable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpTopoTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -940,25 +955,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrptopotable::g
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::Ceigrptopotable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpTopoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEigrpTopoEntry")
     {
-        auto c = std::make_shared<CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry>();
+        auto c = std::make_shared<CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry>();
         c->parent = this;
-        ceigrptopoentry.push_back(c);
+        ceigrptopoentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrptopotable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpTopoTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ceigrptopoentry)
+    for (auto c : ceigrptopoentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -969,22 +984,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrptopotable::g
     return children;
 }
 
-void CISCOEIGRPMIB::Ceigrptopotable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEIGRPMIB::CEigrpTopoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOEIGRPMIB::Ceigrptopotable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEIGRPMIB::CEigrpTopoTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrptopotable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEIGRPMIB::CEigrpTopoTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEigrpTopoEntry")
         return true;
     return false;
 }
 
-CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::Ceigrptopoentry()
+CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::CEigrpTopoEntry()
     :
     ceigrpvpnid{YType::str, "cEigrpVpnId"},
     ceigrpasnumber{YType::str, "cEigrpAsNumber"},
@@ -1005,15 +1020,16 @@ CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::Ceigrptopoentry()
     ceigrpreportdistance{YType::uint32, "cEigrpReportDistance"}
 {
 
-    yang_name = "cEigrpTopoEntry"; yang_parent_name = "cEigrpTopoTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cEigrpTopoEntry"; yang_parent_name = "cEigrpTopoTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::~Ceigrptopoentry()
+CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::~CEigrpTopoEntry()
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::has_data() const
+bool CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ceigrpvpnid.is_set
 	|| ceigrpasnumber.is_set
 	|| ceigrpdestnettype.is_set
@@ -1033,7 +1049,7 @@ bool CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::has_data() const
 	|| ceigrpreportdistance.is_set;
 }
 
-bool CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::has_operation() const
+bool CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ceigrpvpnid.yfilter)
@@ -1055,21 +1071,26 @@ bool CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::has_operation() const
 	|| ydk::is_set(ceigrpreportdistance.yfilter);
 }
 
-std::string CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::get_absolute_path() const
+std::string CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-EIGRP-MIB:CISCO-EIGRP-MIB/cEigrpTopoTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::get_segment_path() const
+std::string CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cEigrpTopoEntry" <<"[cEigrpVpnId='" <<ceigrpvpnid <<"']" <<"[cEigrpAsNumber='" <<ceigrpasnumber <<"']" <<"[cEigrpDestNetType='" <<ceigrpdestnettype <<"']" <<"[cEigrpDestNet='" <<ceigrpdestnet <<"']" <<"[cEigrpDestNetPrefixLen='" <<ceigrpdestnetprefixlen <<"']";
+    path_buffer << "cEigrpTopoEntry";
+    ADD_KEY_TOKEN(ceigrpvpnid, "cEigrpVpnId");
+    ADD_KEY_TOKEN(ceigrpasnumber, "cEigrpAsNumber");
+    ADD_KEY_TOKEN(ceigrpdestnettype, "cEigrpDestNetType");
+    ADD_KEY_TOKEN(ceigrpdestnet, "cEigrpDestNet");
+    ADD_KEY_TOKEN(ceigrpdestnetprefixlen, "cEigrpDestNetPrefixLen");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1095,19 +1116,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrptopotable::C
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cEigrpVpnId")
     {
@@ -1213,7 +1234,7 @@ void CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::set_value(const std::strin
     }
 }
 
-void CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cEigrpVpnId")
     {
@@ -1285,26 +1306,29 @@ void CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::set_filter(const std::stri
     }
 }
 
-bool CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEigrpVpnId" || name == "cEigrpAsNumber" || name == "cEigrpDestNetType" || name == "cEigrpDestNet" || name == "cEigrpDestNetPrefixLen" || name == "cEigrpActive" || name == "cEigrpStuckInActive" || name == "cEigrpDestSuccessors" || name == "cEigrpFdistance" || name == "cEigrpRouteOriginType" || name == "cEigrpRouteOriginAddrType" || name == "cEigrpRouteOriginAddr" || name == "cEigrpNextHopAddressType" || name == "cEigrpNextHopAddress" || name == "cEigrpNextHopInterface" || name == "cEigrpDistance" || name == "cEigrpReportDistance")
         return true;
     return false;
 }
 
-CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeertable()
+CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerTable()
+    :
+    ceigrppeerentry(this, {"ceigrpvpnid", "ceigrpasnumber", "ceigrphandle"})
 {
 
-    yang_name = "cEigrpPeerTable"; yang_parent_name = "CISCO-EIGRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cEigrpPeerTable"; yang_parent_name = "CISCO-EIGRP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOEIGRPMIB::Ceigrppeertable::~Ceigrppeertable()
+CISCOEIGRPMIB::CEigrpPeerTable::~CEigrpPeerTable()
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrppeertable::has_data() const
+bool CISCOEIGRPMIB::CEigrpPeerTable::has_data() const
 {
-    for (std::size_t index=0; index<ceigrppeerentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ceigrppeerentry.len(); index++)
     {
         if(ceigrppeerentry[index]->has_data())
             return true;
@@ -1312,9 +1336,9 @@ bool CISCOEIGRPMIB::Ceigrppeertable::has_data() const
     return false;
 }
 
-bool CISCOEIGRPMIB::Ceigrppeertable::has_operation() const
+bool CISCOEIGRPMIB::CEigrpPeerTable::has_operation() const
 {
-    for (std::size_t index=0; index<ceigrppeerentry.size(); index++)
+    for (std::size_t index=0; index<ceigrppeerentry.len(); index++)
     {
         if(ceigrppeerentry[index]->has_operation())
             return true;
@@ -1322,21 +1346,21 @@ bool CISCOEIGRPMIB::Ceigrppeertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOEIGRPMIB::Ceigrppeertable::get_absolute_path() const
+std::string CISCOEIGRPMIB::CEigrpPeerTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-EIGRP-MIB:CISCO-EIGRP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOEIGRPMIB::Ceigrppeertable::get_segment_path() const
+std::string CISCOEIGRPMIB::CEigrpPeerTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cEigrpPeerTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrppeertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpPeerTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1345,25 +1369,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrppeertable::g
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::Ceigrppeertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEigrpPeerEntry")
     {
-        auto c = std::make_shared<CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry>();
+        auto c = std::make_shared<CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry>();
         c->parent = this;
-        ceigrppeerentry.push_back(c);
+        ceigrppeerentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrppeertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpPeerTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ceigrppeerentry)
+    for (auto c : ceigrppeerentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1374,22 +1398,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrppeertable::g
     return children;
 }
 
-void CISCOEIGRPMIB::Ceigrppeertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEIGRPMIB::CEigrpPeerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOEIGRPMIB::Ceigrppeertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEIGRPMIB::CEigrpPeerTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrppeertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEIGRPMIB::CEigrpPeerTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEigrpPeerEntry")
         return true;
     return false;
 }
 
-CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::Ceigrppeerentry()
+CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::CEigrpPeerEntry()
     :
     ceigrpvpnid{YType::str, "cEigrpVpnId"},
     ceigrpasnumber{YType::str, "cEigrpAsNumber"},
@@ -1408,15 +1432,16 @@ CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::Ceigrppeerentry()
     ceigrpretries{YType::uint32, "cEigrpRetries"}
 {
 
-    yang_name = "cEigrpPeerEntry"; yang_parent_name = "cEigrpPeerTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cEigrpPeerEntry"; yang_parent_name = "cEigrpPeerTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::~Ceigrppeerentry()
+CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::~CEigrpPeerEntry()
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::has_data() const
+bool CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ceigrpvpnid.is_set
 	|| ceigrpasnumber.is_set
 	|| ceigrphandle.is_set
@@ -1434,7 +1459,7 @@ bool CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::has_data() const
 	|| ceigrpretries.is_set;
 }
 
-bool CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::has_operation() const
+bool CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ceigrpvpnid.yfilter)
@@ -1454,21 +1479,24 @@ bool CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::has_operation() const
 	|| ydk::is_set(ceigrpretries.yfilter);
 }
 
-std::string CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::get_absolute_path() const
+std::string CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-EIGRP-MIB:CISCO-EIGRP-MIB/cEigrpPeerTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::get_segment_path() const
+std::string CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cEigrpPeerEntry" <<"[cEigrpVpnId='" <<ceigrpvpnid <<"']" <<"[cEigrpAsNumber='" <<ceigrpasnumber <<"']" <<"[cEigrpHandle='" <<ceigrphandle <<"']";
+    path_buffer << "cEigrpPeerEntry";
+    ADD_KEY_TOKEN(ceigrpvpnid, "cEigrpVpnId");
+    ADD_KEY_TOKEN(ceigrpasnumber, "cEigrpAsNumber");
+    ADD_KEY_TOKEN(ceigrphandle, "cEigrpHandle");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1492,19 +1520,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrppeertable::C
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cEigrpVpnId")
     {
@@ -1598,7 +1626,7 @@ void CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::set_value(const std::strin
     }
 }
 
-void CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cEigrpVpnId")
     {
@@ -1662,26 +1690,29 @@ void CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::set_filter(const std::stri
     }
 }
 
-bool CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEigrpVpnId" || name == "cEigrpAsNumber" || name == "cEigrpHandle" || name == "cEigrpPeerAddrType" || name == "cEigrpPeerAddr" || name == "cEigrpPeerIfIndex" || name == "cEigrpHoldTime" || name == "cEigrpUpTime" || name == "cEigrpSrtt" || name == "cEigrpRto" || name == "cEigrpPktsEnqueued" || name == "cEigrpLastSeq" || name == "cEigrpVersion" || name == "cEigrpRetrans" || name == "cEigrpRetries")
         return true;
     return false;
 }
 
-CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfacetable()
+CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceTable()
+    :
+    ceigrpinterfaceentry(this, {"ceigrpvpnid", "ceigrpasnumber", "ifindex"})
 {
 
-    yang_name = "cEigrpInterfaceTable"; yang_parent_name = "CISCO-EIGRP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cEigrpInterfaceTable"; yang_parent_name = "CISCO-EIGRP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOEIGRPMIB::Ceigrpinterfacetable::~Ceigrpinterfacetable()
+CISCOEIGRPMIB::CEigrpInterfaceTable::~CEigrpInterfaceTable()
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrpinterfacetable::has_data() const
+bool CISCOEIGRPMIB::CEigrpInterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<ceigrpinterfaceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ceigrpinterfaceentry.len(); index++)
     {
         if(ceigrpinterfaceentry[index]->has_data())
             return true;
@@ -1689,9 +1720,9 @@ bool CISCOEIGRPMIB::Ceigrpinterfacetable::has_data() const
     return false;
 }
 
-bool CISCOEIGRPMIB::Ceigrpinterfacetable::has_operation() const
+bool CISCOEIGRPMIB::CEigrpInterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<ceigrpinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<ceigrpinterfaceentry.len(); index++)
     {
         if(ceigrpinterfaceentry[index]->has_operation())
             return true;
@@ -1699,21 +1730,21 @@ bool CISCOEIGRPMIB::Ceigrpinterfacetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOEIGRPMIB::Ceigrpinterfacetable::get_absolute_path() const
+std::string CISCOEIGRPMIB::CEigrpInterfaceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-EIGRP-MIB:CISCO-EIGRP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOEIGRPMIB::Ceigrpinterfacetable::get_segment_path() const
+std::string CISCOEIGRPMIB::CEigrpInterfaceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cEigrpInterfaceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrpinterfacetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpInterfaceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1722,25 +1753,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrpinterfacetab
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::Ceigrpinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEigrpInterfaceEntry")
     {
-        auto c = std::make_shared<CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry>();
+        auto c = std::make_shared<CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry>();
         c->parent = this;
-        ceigrpinterfaceentry.push_back(c);
+        ceigrpinterfaceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrpinterfacetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpInterfaceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ceigrpinterfaceentry)
+    for (auto c : ceigrpinterfaceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1751,22 +1782,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrpinterfacetab
     return children;
 }
 
-void CISCOEIGRPMIB::Ceigrpinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEIGRPMIB::CEigrpInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOEIGRPMIB::Ceigrpinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEIGRPMIB::CEigrpInterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrpinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEIGRPMIB::CEigrpInterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEigrpInterfaceEntry")
         return true;
     return false;
 }
 
-CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::Ceigrpinterfaceentry()
+CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::CEigrpInterfaceEntry()
     :
     ceigrpvpnid{YType::str, "cEigrpVpnId"},
     ceigrpasnumber{YType::str, "cEigrpAsNumber"},
@@ -1794,15 +1825,16 @@ CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::Ceigrpinterfaceentry(
     ceigrpauthkeychain{YType::str, "cEigrpAuthKeyChain"}
 {
 
-    yang_name = "cEigrpInterfaceEntry"; yang_parent_name = "cEigrpInterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cEigrpInterfaceEntry"; yang_parent_name = "cEigrpInterfaceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::~Ceigrpinterfaceentry()
+CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::~CEigrpInterfaceEntry()
 {
 }
 
-bool CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::has_data() const
+bool CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ceigrpvpnid.is_set
 	|| ceigrpasnumber.is_set
 	|| ifindex.is_set
@@ -1829,7 +1861,7 @@ bool CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::has_data() const
 	|| ceigrpauthkeychain.is_set;
 }
 
-bool CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::has_operation() const
+bool CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ceigrpvpnid.yfilter)
@@ -1858,21 +1890,24 @@ bool CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::has_operation() 
 	|| ydk::is_set(ceigrpauthkeychain.yfilter);
 }
 
-std::string CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::get_absolute_path() const
+std::string CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-EIGRP-MIB:CISCO-EIGRP-MIB/cEigrpInterfaceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::get_segment_path() const
+std::string CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cEigrpInterfaceEntry" <<"[cEigrpVpnId='" <<ceigrpvpnid <<"']" <<"[cEigrpAsNumber='" <<ceigrpasnumber <<"']" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cEigrpInterfaceEntry";
+    ADD_KEY_TOKEN(ceigrpvpnid, "cEigrpVpnId");
+    ADD_KEY_TOKEN(ceigrpasnumber, "cEigrpAsNumber");
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1905,19 +1940,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::Ceigrpinterfacetab
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cEigrpVpnId")
     {
@@ -2065,7 +2100,7 @@ void CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::set_value(const 
     }
 }
 
-void CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cEigrpVpnId")
     {
@@ -2165,15 +2200,15 @@ void CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::set_filter(const
     }
 }
 
-bool CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEigrpVpnId" || name == "cEigrpAsNumber" || name == "ifIndex" || name == "cEigrpPeerCount" || name == "cEigrpXmitReliableQ" || name == "cEigrpXmitUnreliableQ" || name == "cEigrpMeanSrtt" || name == "cEigrpPacingReliable" || name == "cEigrpPacingUnreliable" || name == "cEigrpMFlowTimer" || name == "cEigrpPendingRoutes" || name == "cEigrpHelloInterval" || name == "cEigrpXmitNextSerial" || name == "cEigrpUMcasts" || name == "cEigrpRMcasts" || name == "cEigrpUUcasts" || name == "cEigrpRUcasts" || name == "cEigrpMcastExcepts" || name == "cEigrpCRpkts" || name == "cEigrpAcksSuppressed" || name == "cEigrpRetransSent" || name == "cEigrpOOSrvcd" || name == "cEigrpAuthMode" || name == "cEigrpAuthKeyChain")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::Ceigrpauthmode::none {1, "none"};
-const Enum::YLeaf CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::Ceigrpauthmode::md5 {2, "md5"};
+const Enum::YLeaf CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::CEigrpAuthMode::none {1, "none"};
+const Enum::YLeaf CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::CEigrpAuthMode::md5 {2, "md5"};
 
 
 }

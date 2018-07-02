@@ -701,7 +701,7 @@ class Native::Template::APINTERFACETEMPLATE::Switchport::PortSecurity::Maximum :
 
         class Range; //type: Native::Template::APINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::APINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
+        ydk::YList range;
         
 }; // Native::Template::APINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 
@@ -1507,7 +1507,7 @@ class Native::Template::DMPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum 
 
         class Range; //type: Native::Template::DMPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::DMPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
+        ydk::YList range;
         
 }; // Native::Template::DMPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 
@@ -2313,7 +2313,7 @@ class Native::Template::IPPHONEINTERFACETEMPLATE::Switchport::PortSecurity::Maxi
 
         class Range; //type: Native::Template::IPPHONEINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::IPPHONEINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
+        ydk::YList range;
         
 }; // Native::Template::IPPHONEINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 
@@ -3119,7 +3119,7 @@ class Native::Template::MSPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Ma
 
         class Range; //type: Native::Template::MSPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::MSPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
+        ydk::YList range;
         
 }; // Native::Template::MSPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 

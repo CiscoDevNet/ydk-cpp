@@ -17,7 +17,7 @@ Exception::Exception()
 {
     enter->parent = this;
 
-    yang_name = "exception"; yang_parent_name = "Cisco-IOS-XR-infra-dumper-exception-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "exception"; yang_parent_name = "Cisco-IOS-XR-infra-dumper-exception-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Exception::~Exception()
@@ -26,6 +26,7 @@ Exception::~Exception()
 
 bool Exception::has_data() const
 {
+    if (is_presence_container) return true;
     return (enter !=  nullptr && enter->has_data());
 }
 
@@ -124,19 +125,19 @@ Exception::Enter::Enter()
     spr_size{YType::str, "spr-size"},
     core_verification{YType::str, "core-verification"},
     dump_time_out{YType::str, "dump-time-out"}
-    	,
+        ,
     display_config1(std::make_shared<Exception::Enter::DisplayConfig1>())
-	,display_config2(std::make_shared<Exception::Enter::DisplayConfig2>())
-	,display_config3(std::make_shared<Exception::Enter::DisplayConfig3>())
-	,display_fall_back_config1(std::make_shared<Exception::Enter::DisplayFallBackConfig1>())
-	,display_fall_back_config2(std::make_shared<Exception::Enter::DisplayFallBackConfig2>())
-	,display_fall_back_config3(std::make_shared<Exception::Enter::DisplayFallBackConfig3>())
-	,kernel_config(std::make_shared<Exception::Enter::KernelConfig>())
-	,kernel_route_config(std::make_shared<Exception::Enter::KernelRouteConfig>())
-	,core_size(std::make_shared<Exception::Enter::CoreSize>())
-	,memory_threshold(std::make_shared<Exception::Enter::MemoryThreshold>())
-	,proc_size(std::make_shared<Exception::Enter::ProcSize>())
-	,qsize(std::make_shared<Exception::Enter::Qsize>())
+    , display_config2(std::make_shared<Exception::Enter::DisplayConfig2>())
+    , display_config3(std::make_shared<Exception::Enter::DisplayConfig3>())
+    , display_fall_back_config1(std::make_shared<Exception::Enter::DisplayFallBackConfig1>())
+    , display_fall_back_config2(std::make_shared<Exception::Enter::DisplayFallBackConfig2>())
+    , display_fall_back_config3(std::make_shared<Exception::Enter::DisplayFallBackConfig3>())
+    , kernel_config(std::make_shared<Exception::Enter::KernelConfig>())
+    , kernel_route_config(std::make_shared<Exception::Enter::KernelRouteConfig>())
+    , core_size(std::make_shared<Exception::Enter::CoreSize>())
+    , memory_threshold(std::make_shared<Exception::Enter::MemoryThreshold>())
+    , proc_size(std::make_shared<Exception::Enter::ProcSize>())
+    , qsize(std::make_shared<Exception::Enter::Qsize>())
 {
     display_config1->parent = this;
     display_config2->parent = this;
@@ -151,7 +152,7 @@ Exception::Enter::Enter()
     proc_size->parent = this;
     qsize->parent = this;
 
-    yang_name = "enter"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "enter"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::~Enter()
@@ -160,6 +161,7 @@ Exception::Enter::~Enter()
 
 bool Exception::Enter::has_data() const
 {
+    if (is_presence_container) return true;
     return pak_mem.is_set
 	|| sparse.is_set
 	|| spr_size.is_set
@@ -484,7 +486,7 @@ Exception::Enter::DisplayConfig1::DisplayConfig1()
     range_high{YType::uint32, "range-high"}
 {
 
-    yang_name = "display-config1"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "display-config1"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::DisplayConfig1::~DisplayConfig1()
@@ -493,6 +495,7 @@ Exception::Enter::DisplayConfig1::~DisplayConfig1()
 
 bool Exception::Enter::DisplayConfig1::has_data() const
 {
+    if (is_presence_container) return true;
     return choice.is_set
 	|| path.is_set
 	|| compress.is_set
@@ -638,7 +641,7 @@ Exception::Enter::DisplayConfig2::DisplayConfig2()
     range_high{YType::uint32, "range-high"}
 {
 
-    yang_name = "display-config2"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "display-config2"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::DisplayConfig2::~DisplayConfig2()
@@ -647,6 +650,7 @@ Exception::Enter::DisplayConfig2::~DisplayConfig2()
 
 bool Exception::Enter::DisplayConfig2::has_data() const
 {
+    if (is_presence_container) return true;
     return choice.is_set
 	|| path.is_set
 	|| compress.is_set
@@ -792,7 +796,7 @@ Exception::Enter::DisplayConfig3::DisplayConfig3()
     range_high{YType::uint32, "range-high"}
 {
 
-    yang_name = "display-config3"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "display-config3"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::DisplayConfig3::~DisplayConfig3()
@@ -801,6 +805,7 @@ Exception::Enter::DisplayConfig3::~DisplayConfig3()
 
 bool Exception::Enter::DisplayConfig3::has_data() const
 {
+    if (is_presence_container) return true;
     return choice.is_set
 	|| path.is_set
 	|| compress.is_set
@@ -947,7 +952,7 @@ Exception::Enter::DisplayFallBackConfig1::DisplayFallBackConfig1()
     range_high{YType::uint32, "range-high"}
 {
 
-    yang_name = "display-fall-back-config1"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "display-fall-back-config1"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::DisplayFallBackConfig1::~DisplayFallBackConfig1()
@@ -956,6 +961,7 @@ Exception::Enter::DisplayFallBackConfig1::~DisplayFallBackConfig1()
 
 bool Exception::Enter::DisplayFallBackConfig1::has_data() const
 {
+    if (is_presence_container) return true;
     return choice_fall_back.is_set
 	|| path.is_set
 	|| compress.is_set
@@ -1115,7 +1121,7 @@ Exception::Enter::DisplayFallBackConfig2::DisplayFallBackConfig2()
     range_high{YType::uint32, "range-high"}
 {
 
-    yang_name = "display-fall-back-config2"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "display-fall-back-config2"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::DisplayFallBackConfig2::~DisplayFallBackConfig2()
@@ -1124,6 +1130,7 @@ Exception::Enter::DisplayFallBackConfig2::~DisplayFallBackConfig2()
 
 bool Exception::Enter::DisplayFallBackConfig2::has_data() const
 {
+    if (is_presence_container) return true;
     return choice_fall_back.is_set
 	|| path.is_set
 	|| compress.is_set
@@ -1283,7 +1290,7 @@ Exception::Enter::DisplayFallBackConfig3::DisplayFallBackConfig3()
     range_high{YType::uint32, "range-high"}
 {
 
-    yang_name = "display-fall-back-config3"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "display-fall-back-config3"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::DisplayFallBackConfig3::~DisplayFallBackConfig3()
@@ -1292,6 +1299,7 @@ Exception::Enter::DisplayFallBackConfig3::~DisplayFallBackConfig3()
 
 bool Exception::Enter::DisplayFallBackConfig3::has_data() const
 {
+    if (is_presence_container) return true;
     return choice_fall_back.is_set
 	|| path.is_set
 	|| compress.is_set
@@ -1448,7 +1456,7 @@ Exception::Enter::KernelConfig::KernelConfig()
     memory{YType::str, "memory"}
 {
 
-    yang_name = "kernel-config"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "kernel-config"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::KernelConfig::~KernelConfig()
@@ -1457,6 +1465,7 @@ Exception::Enter::KernelConfig::~KernelConfig()
 
 bool Exception::Enter::KernelConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return choice_fall_back.is_set
 	|| path.is_set
 	|| file_name.is_set
@@ -1576,7 +1585,7 @@ Exception::Enter::KernelRouteConfig::KernelRouteConfig()
     next_hop{YType::str, "next-hop"}
 {
 
-    yang_name = "kernel-route-config"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "kernel-route-config"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::KernelRouteConfig::~KernelRouteConfig()
@@ -1585,6 +1594,7 @@ Exception::Enter::KernelRouteConfig::~KernelRouteConfig()
 
 bool Exception::Enter::KernelRouteConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return slot.is_set
 	|| port.is_set
 	|| ip_addr.is_set
@@ -1725,7 +1735,7 @@ Exception::Enter::CoreSize::CoreSize()
     string{YType::str, "string"}
 {
 
-    yang_name = "core-size"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "core-size"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::CoreSize::~CoreSize()
@@ -1734,6 +1744,7 @@ Exception::Enter::CoreSize::~CoreSize()
 
 bool Exception::Enter::CoreSize::has_data() const
 {
+    if (is_presence_container) return true;
     return string.is_set;
 }
 
@@ -1809,7 +1820,7 @@ Exception::Enter::MemoryThreshold::MemoryThreshold()
     string{YType::str, "string"}
 {
 
-    yang_name = "memory-threshold"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory-threshold"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::MemoryThreshold::~MemoryThreshold()
@@ -1818,6 +1829,7 @@ Exception::Enter::MemoryThreshold::~MemoryThreshold()
 
 bool Exception::Enter::MemoryThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return string.is_set;
 }
 
@@ -1893,7 +1905,7 @@ Exception::Enter::ProcSize::ProcSize()
     string{YType::str, "string"}
 {
 
-    yang_name = "proc-size"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "proc-size"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::ProcSize::~ProcSize()
@@ -1902,6 +1914,7 @@ Exception::Enter::ProcSize::~ProcSize()
 
 bool Exception::Enter::ProcSize::has_data() const
 {
+    if (is_presence_container) return true;
     return string.is_set;
 }
 
@@ -1977,7 +1990,7 @@ Exception::Enter::Qsize::Qsize()
     string{YType::str, "string"}
 {
 
-    yang_name = "qsize"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "qsize"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Enter::Qsize::~Qsize()
@@ -1986,6 +1999,7 @@ Exception::Enter::Qsize::~Qsize()
 
 bool Exception::Enter::Qsize::has_data() const
 {
+    if (is_presence_container) return true;
     return string.is_set;
 }
 

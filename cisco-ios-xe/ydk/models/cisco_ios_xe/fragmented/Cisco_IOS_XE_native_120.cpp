@@ -12,47 +12,48 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After::After()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After::After()
     :
     session{YType::uint16, "session"},
     time{YType::uint16, "time"}
 {
 
-    yang_name = "after"; yang_parent_name = "expire"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "after"; yang_parent_name = "expire"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After::~After()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After::~After()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After::has_data() const
 {
+    if (is_presence_container) return true;
     return session.is_set
 	|| time.is_set;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session.yfilter)
 	|| ydk::is_set(time.yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/expire/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "after";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -63,19 +64,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session")
     {
@@ -91,7 +92,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::E
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session")
     {
@@ -103,51 +104,52 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::E
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session" || name == "time")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside::Inside()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside::Inside()
     :
     bgp{YType::empty, "bgp"}
 {
 
-    yang_name = "inside"; yang_parent_name = "lrn-Mode__config-pfr-mc-learn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inside"; yang_parent_name = "lrn-Mode__config-pfr-mc-learn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside::~Inside()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside::~Inside()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside::has_data() const
 {
+    if (is_presence_container) return true;
     return bgp.is_set;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bgp.yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inside";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -157,19 +159,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bgp")
     {
@@ -179,7 +181,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::I
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bgp")
     {
@@ -187,52 +189,53 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::I
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgp")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::List()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::List()
     :
-    seq(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq>())
+    seq(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq>())
 {
     seq->parent = this;
 
-    yang_name = "list"; yang_parent_name = "lrn-Mode__config-pfr-mc-learn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "list"; yang_parent_name = "lrn-Mode__config-pfr-mc-learn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::~List()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::~List()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::has_data() const
 {
+    if (is_presence_container) return true;
     return (seq !=  nullptr && seq->has_data());
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::has_operation() const
 {
     return is_set(yfilter)
 	|| (seq !=  nullptr && seq->has_operation());
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "list";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -241,13 +244,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "seq")
     {
         if(seq == nullptr)
         {
-            seq = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq>();
+            seq = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq>();
         }
         return seq;
     }
@@ -255,7 +258,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -267,34 +270,37 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "seq")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::Seq()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::Seq()
+    :
+    pfr_tc(this, {"pfr_tc"})
 {
 
-    yang_name = "seq"; yang_parent_name = "list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "seq"; yang_parent_name = "list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::~Seq()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::~Seq()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::has_data() const
 {
-    for (std::size_t index=0; index<pfr_tc.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pfr_tc.len(); index++)
     {
         if(pfr_tc[index]->has_data())
             return true;
@@ -302,9 +308,9 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::L
     return false;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::has_operation() const
 {
-    for (std::size_t index=0; index<pfr_tc.size(); index++)
+    for (std::size_t index=0; index<pfr_tc.len(); index++)
     {
         if(pfr_tc[index]->has_operation())
             return true;
@@ -312,21 +318,21 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::L
     return is_set(yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "seq";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -335,25 +341,25 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pfr-tc")
     {
-        auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc>();
+        auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc>();
         c->parent = this;
-        pfr_tc.push_back(c);
+        pfr_tc.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pfr_tc)
+    for (auto c : pfr_tc.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -364,62 +370,64 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pfr-tc")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc::PfrTc()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc::PfrTc()
     :
     pfr_tc{YType::uint16, "pfr-tc"},
     refname{YType::empty, "refname"}
 {
 
-    yang_name = "pfr-tc"; yang_parent_name = "seq"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pfr-tc"; yang_parent_name = "seq"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc::~PfrTc()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc::~PfrTc()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc::has_data() const
 {
+    if (is_presence_container) return true;
     return pfr_tc.is_set
 	|| refname.is_set;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pfr_tc.yfilter)
 	|| ydk::is_set(refname.yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/list/seq/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pfr-tc" <<"[pfr-tc='" <<pfr_tc <<"']";
+    path_buffer << "pfr-tc";
+    ADD_KEY_TOKEN(pfr_tc, "pfr-tc");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -430,19 +438,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pfr-tc")
     {
@@ -458,7 +466,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::L
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pfr-tc")
     {
@@ -470,26 +478,29 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::L
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List::Seq::PfrTc::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List::Seq::PfrTc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pfr-tc" || name == "refname")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prefixes()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prefixes()
+    :
+    prnum(this, {"prnum"})
 {
 
-    yang_name = "prefixes"; yang_parent_name = "lrn-Mode__config-pfr-mc-learn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefixes"; yang_parent_name = "lrn-Mode__config-pfr-mc-learn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::~Prefixes()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::~Prefixes()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::has_data() const
 {
-    for (std::size_t index=0; index<prnum.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prnum.len(); index++)
     {
         if(prnum[index]->has_data())
             return true;
@@ -497,9 +508,9 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::P
     return false;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::has_operation() const
 {
-    for (std::size_t index=0; index<prnum.size(); index++)
+    for (std::size_t index=0; index<prnum.len(); index++)
     {
         if(prnum[index]->has_operation())
             return true;
@@ -507,21 +518,21 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::P
     return is_set(yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "prefixes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -530,25 +541,25 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prnum")
     {
-        auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum>();
+        auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum>();
         c->parent = this;
-        prnum.push_back(c);
+        prnum.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prnum)
+    for (auto c : prnum.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -559,62 +570,64 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prnum")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum::Prnum()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum::Prnum()
     :
     prnum{YType::uint32, "prnum"},
     applications{YType::uint16, "applications"}
 {
 
-    yang_name = "prnum"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prnum"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum::~Prnum()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum::~Prnum()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum::has_data() const
 {
+    if (is_presence_container) return true;
     return prnum.is_set
 	|| applications.is_set;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prnum.yfilter)
 	|| ydk::is_set(applications.yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/prefixes/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prnum" <<"[prnum='" <<prnum <<"']";
+    path_buffer << "prnum";
+    ADD_KEY_TOKEN(prnum, "prnum");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -625,19 +638,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prnum")
     {
@@ -653,7 +666,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::P
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prnum")
     {
@@ -665,38 +678,39 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::P
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes::Prnum::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes::Prnum::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prnum" || name == "applications")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::TrafficClass()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::TrafficClass()
     :
-    aggregate(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate>())
-	,filter(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter>())
-	,keys(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys>())
+    aggregate(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate>())
+    , filter(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter>())
+    , keys(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys>())
 {
     aggregate->parent = this;
     filter->parent = this;
     keys->parent = this;
 
-    yang_name = "traffic-class"; yang_parent_name = "lrn-Mode__config-pfr-mc-learn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traffic-class"; yang_parent_name = "lrn-Mode__config-pfr-mc-learn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::~TrafficClass()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::~TrafficClass()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (aggregate !=  nullptr && aggregate->has_data())
 	|| (filter !=  nullptr && filter->has_data())
 	|| (keys !=  nullptr && keys->has_data());
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::has_operation() const
 {
     return is_set(yfilter)
 	|| (aggregate !=  nullptr && aggregate->has_operation())
@@ -704,21 +718,21 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
 	|| (keys !=  nullptr && keys->has_operation());
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "traffic-class";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -727,13 +741,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aggregate")
     {
         if(aggregate == nullptr)
         {
-            aggregate = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate>();
+            aggregate = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate>();
         }
         return aggregate;
     }
@@ -742,7 +756,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     {
         if(filter == nullptr)
         {
-            filter = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter>();
+            filter = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter>();
         }
         return filter;
     }
@@ -751,7 +765,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     {
         if(keys == nullptr)
         {
-            keys = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys>();
+            keys = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys>();
         }
         return keys;
     }
@@ -759,7 +773,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -781,59 +795,60 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "aggregate" || name == "filter" || name == "keys")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate::Aggregate()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate::Aggregate()
     :
     access_list{YType::str, "access-list"}
 {
 
-    yang_name = "aggregate"; yang_parent_name = "traffic-class"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aggregate"; yang_parent_name = "traffic-class"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate::~Aggregate()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate::~Aggregate()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate::has_data() const
 {
+    if (is_presence_container) return true;
     return access_list.is_set;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(access_list.yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/traffic-class/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "aggregate";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -843,19 +858,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list")
     {
@@ -865,7 +880,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "access-list")
     {
@@ -873,51 +888,52 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Aggregate::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Aggregate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "access-list")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter::Filter()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter::Filter()
     :
     access_list{YType::str, "access-list"}
 {
 
-    yang_name = "filter"; yang_parent_name = "traffic-class"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "filter"; yang_parent_name = "traffic-class"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter::~Filter()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter::~Filter()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter::has_data() const
 {
+    if (is_presence_container) return true;
     return access_list.is_set;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(access_list.yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/traffic-class/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "filter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -927,19 +943,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list")
     {
@@ -949,7 +965,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "access-list")
     {
@@ -957,37 +973,38 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Filter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Filter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "access-list")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Keys()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Keys()
     :
     dport(nullptr) // presence node
-	,dscp(nullptr) // presence node
-	,protocol(nullptr) // presence node
-	,sport(nullptr) // presence node
+    , dscp(nullptr) // presence node
+    , protocol(nullptr) // presence node
+    , sport(nullptr) // presence node
 {
 
-    yang_name = "keys"; yang_parent_name = "traffic-class"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "keys"; yang_parent_name = "traffic-class"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::~Keys()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::~Keys()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::has_data() const
 {
+    if (is_presence_container) return true;
     return (dport !=  nullptr && dport->has_data())
 	|| (dscp !=  nullptr && dscp->has_data())
 	|| (protocol !=  nullptr && protocol->has_data())
 	|| (sport !=  nullptr && sport->has_data());
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::has_operation() const
 {
     return is_set(yfilter)
 	|| (dport !=  nullptr && dport->has_operation())
@@ -996,21 +1013,21 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
 	|| (sport !=  nullptr && sport->has_operation());
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/traffic-class/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "keys";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1019,13 +1036,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dport")
     {
         if(dport == nullptr)
         {
-            dport = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport>();
+            dport = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport>();
         }
         return dport;
     }
@@ -1034,7 +1051,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     {
         if(dscp == nullptr)
         {
-            dscp = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp>();
+            dscp = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp>();
         }
         return dscp;
     }
@@ -1043,7 +1060,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     {
         if(protocol == nullptr)
         {
-            protocol = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol>();
+            protocol = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol>();
         }
         return protocol;
     }
@@ -1052,7 +1069,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     {
         if(sport == nullptr)
         {
-            sport = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport>();
+            sport = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport>();
         }
         return sport;
     }
@@ -1060,7 +1077,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1087,43 +1104,44 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dport" || name == "dscp" || name == "protocol" || name == "sport")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport::Dport()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport::Dport()
     :
     dscp{YType::empty, "dscp"},
     protocol{YType::empty, "protocol"},
     sport{YType::empty, "sport"}
 {
 
-    yang_name = "dport"; yang_parent_name = "keys"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dport"; yang_parent_name = "keys"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport::~Dport()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport::~Dport()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp.is_set
 	|| protocol.is_set
 	|| sport.is_set;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dscp.yfilter)
@@ -1131,21 +1149,21 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
 	|| ydk::is_set(sport.yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/traffic-class/keys/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dport";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1157,19 +1175,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dscp")
     {
@@ -1191,7 +1209,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dscp")
     {
@@ -1207,35 +1225,36 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dscp" || name == "protocol" || name == "sport")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp::Dscp()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp::Dscp()
     :
     dport{YType::empty, "dport"},
     protocol{YType::empty, "protocol"},
     sport{YType::empty, "sport"}
 {
 
-    yang_name = "dscp"; yang_parent_name = "keys"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dscp"; yang_parent_name = "keys"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp::~Dscp()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp::~Dscp()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp::has_data() const
 {
+    if (is_presence_container) return true;
     return dport.is_set
 	|| protocol.is_set
 	|| sport.is_set;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dport.yfilter)
@@ -1243,21 +1262,21 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
 	|| ydk::is_set(sport.yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/traffic-class/keys/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dscp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1269,19 +1288,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dport")
     {
@@ -1303,7 +1322,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dport")
     {
@@ -1319,36 +1338,37 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Dscp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Dscp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dport" || name == "protocol" || name == "sport")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Protocol()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Protocol()
     :
     dport{YType::empty, "dport"},
     dscp{YType::empty, "dscp"}
-    	,
+        ,
     sport(nullptr) // presence node
 {
 
-    yang_name = "protocol"; yang_parent_name = "keys"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocol"; yang_parent_name = "keys"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::~Protocol()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::~Protocol()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return dport.is_set
 	|| dscp.is_set
 	|| (sport !=  nullptr && sport->has_data());
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dport.yfilter)
@@ -1356,21 +1376,21 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
 	|| (sport !=  nullptr && sport->has_operation());
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/traffic-class/keys/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1381,13 +1401,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sport")
     {
         if(sport == nullptr)
         {
-            sport = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport>();
+            sport = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport>();
         }
         return sport;
     }
@@ -1395,7 +1415,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1407,7 +1427,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dport")
     {
@@ -1423,7 +1443,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dport")
     {
@@ -1435,54 +1455,55 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sport" || name == "dport" || name == "dscp")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport::Sport()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport::Sport()
     :
     dport{YType::empty, "dport"},
     dscp{YType::empty, "dscp"}
 {
 
-    yang_name = "sport"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sport"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport::~Sport()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport::~Sport()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport::has_data() const
 {
+    if (is_presence_container) return true;
     return dport.is_set
 	|| dscp.is_set;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dport.yfilter)
 	|| ydk::is_set(dscp.yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/traffic-class/keys/protocol/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sport";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1493,19 +1514,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dport")
     {
@@ -1521,7 +1542,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dport")
     {
@@ -1533,35 +1554,36 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Protocol::Sport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Protocol::Sport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dport" || name == "dscp")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport::Sport()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport::Sport()
     :
     dport{YType::empty, "dport"},
     dscp{YType::empty, "dscp"},
     protocol{YType::empty, "protocol"}
 {
 
-    yang_name = "sport"; yang_parent_name = "keys"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sport"; yang_parent_name = "keys"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport::~Sport()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport::~Sport()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport::has_data() const
 {
+    if (is_presence_container) return true;
     return dport.is_set
 	|| dscp.is_set
 	|| protocol.is_set;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dport.yfilter)
@@ -1569,21 +1591,21 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/traffic-class/keys/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sport";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1595,19 +1617,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dport")
     {
@@ -1629,7 +1651,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dport")
     {
@@ -1645,7 +1667,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::T
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass::Keys::Sport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass::Keys::Sport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dport" || name == "dscp" || name == "protocol")
         return true;
@@ -1658,7 +1680,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Loss::Loss()
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "loss"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "loss"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Loss::~Loss()
@@ -1667,6 +1689,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Loss::~Loss()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Loss::has_data() const
 {
+    if (is_presence_container) return true;
     return relative.is_set
 	|| threshold.is_set;
 }
@@ -1753,12 +1776,12 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Loss::has_leaf_or_child_of_name(c
 Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Max()
     :
     prefix(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix>())
-	,range(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Range>())
+    , range(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Range>())
 {
     prefix->parent = this;
     range->parent = this;
 
-    yang_name = "max"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "max"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Max::~Max()
@@ -1767,6 +1790,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Max::~Max()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Max::has_data() const
 {
+    if (is_presence_container) return true;
     return (prefix !=  nullptr && prefix->has_data())
 	|| (range !=  nullptr && range->has_data());
 }
@@ -1862,7 +1886,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Prefix()
 {
     total->parent = this;
 
-    yang_name = "prefix"; yang_parent_name = "max"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix"; yang_parent_name = "max"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::~Prefix()
@@ -1871,6 +1895,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::~Prefix()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (total !=  nullptr && total->has_data());
 }
 
@@ -1945,9 +1970,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::has_leaf_or_child_of
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::Total()
+    :
+    maxpr(this, {"maxpr"})
 {
 
-    yang_name = "total"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "total"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::~Total()
@@ -1956,7 +1983,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::~Total()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::has_data() const
 {
-    for (std::size_t index=0; index<maxpr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<maxpr.len(); index++)
     {
         if(maxpr[index]->has_data())
             return true;
@@ -1966,7 +1994,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::has_data() co
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::has_operation() const
 {
-    for (std::size_t index=0; index<maxpr.size(); index++)
+    for (std::size_t index=0; index<maxpr.len(); index++)
     {
         if(maxpr[index]->has_operation())
             return true;
@@ -2003,7 +2031,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::T
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::Maxpr>();
         c->parent = this;
-        maxpr.push_back(c);
+        maxpr.append(c);
         return c;
     }
 
@@ -2015,7 +2043,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : maxpr)
+    for (auto c : maxpr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2047,7 +2075,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::Maxpr::Maxpr()
     learn{YType::uint32, "learn"}
 {
 
-    yang_name = "maxpr"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maxpr"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::Maxpr::~Maxpr()
@@ -2056,6 +2084,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::Maxpr::~Maxpr()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::Maxpr::has_data() const
 {
+    if (is_presence_container) return true;
     return maxpr.is_set
 	|| learn.is_set;
 }
@@ -2077,7 +2106,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::Maxpr:
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Prefix::Total::Maxpr::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "maxpr" <<"[maxpr='" <<maxpr <<"']";
+    path_buffer << "maxpr";
+    ADD_KEY_TOKEN(maxpr, "maxpr");
     return path_buffer.str();
 }
 
@@ -2145,7 +2175,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Range::Range()
 {
     receive->parent = this;
 
-    yang_name = "range"; yang_parent_name = "max"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "range"; yang_parent_name = "max"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Range::~Range()
@@ -2154,6 +2184,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Range::~Range()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return (receive !=  nullptr && receive->has_data());
 }
 
@@ -2232,7 +2263,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Range::Receive::Receive()
     percent{YType::uint8, "percent"}
 {
 
-    yang_name = "receive"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "receive"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Range::Receive::~Receive()
@@ -2241,6 +2272,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Range::Receive::~Receive()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Max::Range::Receive::has_data() const
 {
+    if (is_presence_container) return true;
     return percent.is_set;
 }
 
@@ -2316,7 +2348,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::MaxRangeUtilization::MaxRangeUtilizati
     percent{YType::uint8, "percent"}
 {
 
-    yang_name = "max-range-utilization"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "max-range-utilization"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::MaxRangeUtilization::~MaxRangeUtilization()
@@ -2325,6 +2357,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::MaxRangeUtilization::~MaxRangeUtilizat
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::MaxRangeUtilization::has_data() const
 {
+    if (is_presence_container) return true;
     return percent.is_set;
 }
 
@@ -2398,16 +2431,17 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::MaxRangeUtilization::has_leaf_or_
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::McPeer()
     :
     description{YType::str, "description"}
-    	,
-    domain(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain>())
-	,eigrp(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp>())
-	,head_end(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd>())
+        ,
+    ipv4(this, {"ipv4"})
+    , domain(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain>())
+    , eigrp(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp>())
+    , head_end(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd>())
 {
     domain->parent = this;
     eigrp->parent = this;
     head_end->parent = this;
 
-    yang_name = "mc-peer"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mc-peer"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::~McPeer()
@@ -2416,7 +2450,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::~McPeer()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
@@ -2429,7 +2464,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::has_data() const
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
@@ -2471,7 +2506,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::get_ch
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -2510,7 +2545,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2564,9 +2599,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::has_leaf_or_child_of_name
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::Ipv4()
     :
     ipv4{YType::str, "ipv4"}
+        ,
+    interface(this, {"interface"})
 {
 
-    yang_name = "ipv4"; yang_parent_name = "mc-peer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "mc-peer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::~Ipv4()
@@ -2575,7 +2612,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::~Ipv4()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -2585,7 +2623,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::has_data() const
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -2604,7 +2642,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::get_absolute
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4='" <<ipv4 <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4, "ipv4");
     return path_buffer.str();
 }
 
@@ -2624,7 +2663,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -2636,7 +2675,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2679,7 +2718,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::Interface::Interface()
     domain{YType::uint16, "domain"}
 {
 
-    yang_name = "interface"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::Interface::~Interface()
@@ -2688,6 +2727,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::Interface::~Interface()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| description.is_set
 	|| domain.is_set;
@@ -2704,7 +2744,8 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::Interface::has_oper
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -2778,9 +2819,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Ipv4::Interface::has_leaf
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Domain()
+    :
+    dmval(this, {"dmval"})
 {
 
-    yang_name = "domain"; yang_parent_name = "mc-peer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "domain"; yang_parent_name = "mc-peer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::~Domain()
@@ -2789,7 +2832,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::~Domain()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::has_data() const
 {
-    for (std::size_t index=0; index<dmval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dmval.len(); index++)
     {
         if(dmval[index]->has_data())
             return true;
@@ -2799,7 +2843,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::has_data() const
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::has_operation() const
 {
-    for (std::size_t index=0; index<dmval.size(); index++)
+    for (std::size_t index=0; index<dmval.len(); index++)
     {
         if(dmval[index]->has_operation())
             return true;
@@ -2836,7 +2880,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval>();
         c->parent = this;
-        dmval.push_back(c);
+        dmval.append(c);
         return c;
     }
 
@@ -2848,7 +2892,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dmval)
+    for (auto c : dmval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2880,9 +2924,11 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::Dmval()
     description{YType::str, "description"},
     eigrp{YType::str, "eigrp"},
     head_end{YType::str, "head-end"}
+        ,
+    ipv4(this, {"ipv4"})
 {
 
-    yang_name = "dmval"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dmval"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::~Dmval()
@@ -2891,7 +2937,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::~Dmval()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
@@ -2904,7 +2951,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::has_data()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
@@ -2926,7 +2973,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::get
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dmval" <<"[dmval='" <<dmval <<"']";
+    path_buffer << "dmval";
+    ADD_KEY_TOKEN(dmval, "dmval");
     return path_buffer.str();
 }
 
@@ -2949,7 +2997,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -2961,7 +3009,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3033,7 +3081,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::Ipv4::Ipv4()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "dmval"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "dmval"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::Ipv4::~Ipv4()
@@ -3042,6 +3090,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::Ipv4::~Ipv4()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| interface.is_set;
 }
@@ -3056,7 +3105,8 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::Ipv4::has_
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4='" <<ipv4 <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4, "ipv4");
     return path_buffer.str();
 }
 
@@ -3119,9 +3169,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Domain::Dmval::Ipv4::has_
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::Eigrp()
+    :
+    interface(this, {"interface"})
 {
 
-    yang_name = "eigrp"; yang_parent_name = "mc-peer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eigrp"; yang_parent_name = "mc-peer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::~Eigrp()
@@ -3130,7 +3182,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::~Eigrp()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -3140,7 +3193,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::has_data() const
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -3177,7 +3230,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp:
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -3189,7 +3242,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3222,7 +3275,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::Interface::Interface()
     domain{YType::uint16, "domain"}
 {
 
-    yang_name = "interface"; yang_parent_name = "eigrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "eigrp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::Interface::~Interface()
@@ -3231,6 +3284,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::Interface::~Interface()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| description.is_set
 	|| domain.is_set;
@@ -3254,7 +3308,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::Interface::
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -3328,9 +3383,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::Eigrp::Interface::has_lea
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::HeadEnd()
+    :
+    interface(this, {"interface"})
 {
 
-    yang_name = "head-end"; yang_parent_name = "mc-peer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "head-end"; yang_parent_name = "mc-peer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::~HeadEnd()
@@ -3339,7 +3396,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::~HeadEnd()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -3349,7 +3407,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::has_data() const
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -3386,7 +3444,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEn
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -3398,7 +3456,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3431,7 +3489,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::Interface::Interface(
     domain{YType::uint16, "domain"}
 {
 
-    yang_name = "interface"; yang_parent_name = "head-end"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "head-end"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::Interface::~Interface()
@@ -3440,6 +3498,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::Interface::~Interface
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| description.is_set
 	|| domain.is_set;
@@ -3463,7 +3522,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::Interface
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -3539,14 +3599,14 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::McPeer::HeadEnd::Interface::has_l
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Mode()
     :
     monitor(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Monitor>())
-	,route(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route>())
-	,verify(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Verify>())
+    , route(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route>())
+    , verify(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Verify>())
 {
     monitor->parent = this;
     route->parent = this;
     verify->parent = this;
 
-    yang_name = "mode"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mode"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::~Mode()
@@ -3555,6 +3615,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::~Mode()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return (monitor !=  nullptr && monitor->has_data())
 	|| (route !=  nullptr && route->has_data())
 	|| (verify !=  nullptr && verify->has_data());
@@ -3665,11 +3726,11 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Monitor::Monitor()
     both{YType::empty, "both"},
     fast{YType::empty, "fast"},
     passive{YType::empty, "passive"}
-    	,
+        ,
     active(nullptr) // presence node
 {
 
-    yang_name = "monitor"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "monitor"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Monitor::~Monitor()
@@ -3678,6 +3739,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Monitor::~Monitor()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Monitor::has_data() const
 {
+    if (is_presence_container) return true;
     return both.is_set
 	|| fast.is_set
 	|| passive.is_set
@@ -3795,7 +3857,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Monitor::Active::Active()
     throughput{YType::empty, "throughput"}
 {
 
-    yang_name = "active"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Monitor::Active::~Active()
@@ -3804,6 +3866,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Monitor::Active::~Active()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Monitor::Active::has_data() const
 {
+    if (is_presence_container) return true;
     return throughput.is_set;
 }
 
@@ -3878,14 +3941,14 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Route()
     :
     control{YType::empty, "control"},
     observe{YType::empty, "observe"}
-    	,
+        ,
     metric(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric>())
-	,protocol(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Protocol>())
+    , protocol(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Protocol>())
 {
     metric->parent = this;
     protocol->parent = this;
 
-    yang_name = "route"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::~Route()
@@ -3894,6 +3957,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::~Route()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return control.is_set
 	|| observe.is_set
 	|| (metric !=  nullptr && metric->has_data())
@@ -4012,14 +4076,14 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::has_leaf_or_child_of
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Metric()
     :
     bgp(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Bgp>())
-	,eigrp(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Eigrp>())
-	,static_(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static>())
+    , eigrp(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Eigrp>())
+    , static_(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static>())
 {
     bgp->parent = this;
     eigrp->parent = this;
     static_->parent = this;
 
-    yang_name = "metric"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "metric"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::~Metric()
@@ -4028,6 +4092,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::~Metric()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return (bgp !=  nullptr && bgp->has_data())
 	|| (eigrp !=  nullptr && eigrp->has_data())
 	|| (static_ !=  nullptr && static_->has_data());
@@ -4138,7 +4203,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Bgp::Bgp()
     local_pref{YType::uint16, "local-pref"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Bgp::~Bgp()
@@ -4147,6 +4212,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Bgp::~Bgp()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return local_pref.is_set;
 }
 
@@ -4222,7 +4288,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Eigrp::Eigrp()
     tag{YType::uint16, "tag"}
 {
 
-    yang_name = "eigrp"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eigrp"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Eigrp::~Eigrp()
@@ -4231,6 +4297,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Eigrp::~Eigrp()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Eigrp::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -4306,7 +4373,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static::Static()
     tag{YType::uint16, "tag"}
 {
 
-    yang_name = "static"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "static"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static::~Static()
@@ -4315,6 +4382,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static::~Static()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -4390,7 +4458,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Protocol::Protocol()
     pbr{YType::empty, "pbr"}
 {
 
-    yang_name = "protocol"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocol"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Protocol::~Protocol()
@@ -4399,6 +4467,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Protocol::~Protocol()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return pbr.is_set;
 }
 
@@ -4474,7 +4543,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Verify::Verify()
     bidirectional{YType::empty, "bidirectional"}
 {
 
-    yang_name = "verify"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "verify"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Verify::~Verify()
@@ -4483,6 +4552,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Verify::~Verify()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Verify::has_data() const
 {
+    if (is_presence_container) return true;
     return bidirectional.is_set;
 }
 
@@ -4559,7 +4629,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Mos()
 {
     threshold->parent = this;
 
-    yang_name = "mos"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mos"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::~Mos()
@@ -4568,6 +4638,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::~Mos()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data());
 }
 
@@ -4642,9 +4713,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::has_leaf_or_child_of_name(co
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::Threshold()
+    :
+    mos_thresh(this, {"mos_thresh"})
 {
 
-    yang_name = "threshold"; yang_parent_name = "mos"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "threshold"; yang_parent_name = "mos"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::~Threshold()
@@ -4653,7 +4726,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::~Threshold()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::has_data() const
 {
-    for (std::size_t index=0; index<mos_thresh.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mos_thresh.len(); index++)
     {
         if(mos_thresh[index]->has_data())
             return true;
@@ -4663,7 +4737,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::has_data() const
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::has_operation() const
 {
-    for (std::size_t index=0; index<mos_thresh.size(); index++)
+    for (std::size_t index=0; index<mos_thresh.len(); index++)
     {
         if(mos_thresh[index]->has_operation())
             return true;
@@ -4700,7 +4774,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::MosThresh>();
         c->parent = this;
-        mos_thresh.push_back(c);
+        mos_thresh.append(c);
         return c;
     }
 
@@ -4712,7 +4786,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mos_thresh)
+    for (auto c : mos_thresh.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4744,7 +4818,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::MosThresh::MosThresh()
     percent{YType::uint8, "percent"}
 {
 
-    yang_name = "mos-thresh"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mos-thresh"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::MosThresh::~MosThresh()
@@ -4753,6 +4827,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::MosThresh::~MosThresh(
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::MosThresh::has_data() const
 {
+    if (is_presence_container) return true;
     return mos_thresh.is_set
 	|| percent.is_set;
 }
@@ -4774,7 +4849,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::MosThresh:
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Mos::Threshold::MosThresh::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mos-thresh" <<"[mos-thresh='" <<mos_thresh <<"']";
+    path_buffer << "mos-thresh";
+    ADD_KEY_TOKEN(mos_thresh, "mos-thresh");
     return path_buffer.str();
 }
 
@@ -4841,7 +4917,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Probe::Probe()
     packets{YType::uint8, "packets"}
 {
 
-    yang_name = "probe"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "probe"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Probe::~Probe()
@@ -4850,6 +4926,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Probe::~Probe()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Probe::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set;
 }
 
@@ -4924,18 +5001,18 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Resolve()
     :
     cost{YType::empty, "cost"},
     equivalent_path_round_robin{YType::empty, "equivalent-path-round-robin"}
-    	,
+        ,
     delay(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay>())
-	,jitter(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter>())
-	,loss(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss>())
-	,mos(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos>())
+    , jitter(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter>())
+    , loss(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss>())
+    , mos(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos>())
 {
     delay->parent = this;
     jitter->parent = this;
     loss->parent = this;
     mos->parent = this;
 
-    yang_name = "resolve"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "resolve"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::~Resolve()
@@ -4944,6 +5021,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::~Resolve()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::has_data() const
 {
+    if (is_presence_container) return true;
     return cost.is_set
 	|| equivalent_path_round_robin.is_set
 	|| (delay !=  nullptr && delay->has_data())
@@ -5097,7 +5175,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Delay()
 {
     priority->parent = this;
 
-    yang_name = "delay"; yang_parent_name = "resolve"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "delay"; yang_parent_name = "resolve"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::~Delay()
@@ -5106,6 +5184,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::~Delay()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return (priority !=  nullptr && priority->has_data());
 }
 
@@ -5180,9 +5259,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::has_leaf_or_child
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::Priority()
+    :
+    del_pol(this, {"del_pol"})
 {
 
-    yang_name = "priority"; yang_parent_name = "delay"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "priority"; yang_parent_name = "delay"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::~Priority()
@@ -5191,7 +5272,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::~Priority()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::has_data() const
 {
-    for (std::size_t index=0; index<del_pol.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<del_pol.len(); index++)
     {
         if(del_pol[index]->has_data())
             return true;
@@ -5201,7 +5283,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::has_dat
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::has_operation() const
 {
-    for (std::size_t index=0; index<del_pol.size(); index++)
+    for (std::size_t index=0; index<del_pol.len(); index++)
     {
         if(del_pol[index]->has_operation())
             return true;
@@ -5238,7 +5320,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::DelPol>();
         c->parent = this;
-        del_pol.push_back(c);
+        del_pol.append(c);
         return c;
     }
 
@@ -5250,7 +5332,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : del_pol)
+    for (auto c : del_pol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5282,7 +5364,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::DelPol::DelP
     variance{YType::uint8, "variance"}
 {
 
-    yang_name = "del-pol"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "del-pol"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::DelPol::~DelPol()
@@ -5291,6 +5373,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::DelPol::~Del
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::DelPol::has_data() const
 {
+    if (is_presence_container) return true;
     return del_pol.is_set
 	|| variance.is_set;
 }
@@ -5312,7 +5395,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Delay::Priority::DelPol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "del-pol" <<"[del-pol='" <<del_pol <<"']";
+    path_buffer << "del-pol";
+    ADD_KEY_TOKEN(del_pol, "del-pol");
     return path_buffer.str();
 }
 
@@ -5380,7 +5464,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Jitter()
 {
     priority->parent = this;
 
-    yang_name = "jitter"; yang_parent_name = "resolve"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "jitter"; yang_parent_name = "resolve"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::~Jitter()
@@ -5389,6 +5473,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::~Jitter()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::has_data() const
 {
+    if (is_presence_container) return true;
     return (priority !=  nullptr && priority->has_data());
 }
 
@@ -5463,9 +5548,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::has_leaf_or_chil
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority::Priority()
+    :
+    jit_pol(this, {"jit_pol"})
 {
 
-    yang_name = "priority"; yang_parent_name = "jitter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "priority"; yang_parent_name = "jitter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority::~Priority()
@@ -5474,7 +5561,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority::~Priority()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority::has_data() const
 {
-    for (std::size_t index=0; index<jit_pol.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<jit_pol.len(); index++)
     {
         if(jit_pol[index]->has_data())
             return true;
@@ -5484,7 +5572,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority::has_da
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority::has_operation() const
 {
-    for (std::size_t index=0; index<jit_pol.size(); index++)
+    for (std::size_t index=0; index<jit_pol.len(); index++)
     {
         if(jit_pol[index]->has_operation())
             return true;
@@ -5521,7 +5609,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitte
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority::JitPol>();
         c->parent = this;
-        jit_pol.push_back(c);
+        jit_pol.append(c);
         return c;
     }
 
@@ -5533,7 +5621,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : jit_pol)
+    for (auto c : jit_pol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5565,7 +5653,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority::JitPol::Jit
     variance{YType::uint8, "variance"}
 {
 
-    yang_name = "jit-pol"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "jit-pol"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority::JitPol::~JitPol()
@@ -5574,6 +5662,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority::JitPol::~Ji
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority::JitPol::has_data() const
 {
+    if (is_presence_container) return true;
     return jit_pol.is_set
 	|| variance.is_set;
 }
@@ -5595,7 +5684,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority:
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Jitter::Priority::JitPol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "jit-pol" <<"[jit-pol='" <<jit_pol <<"']";
+    path_buffer << "jit-pol";
+    ADD_KEY_TOKEN(jit_pol, "jit-pol");
     return path_buffer.str();
 }
 
@@ -5663,7 +5753,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Loss()
 {
     priority->parent = this;
 
-    yang_name = "loss"; yang_parent_name = "resolve"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "loss"; yang_parent_name = "resolve"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::~Loss()
@@ -5672,6 +5762,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::~Loss()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::has_data() const
 {
+    if (is_presence_container) return true;
     return (priority !=  nullptr && priority->has_data());
 }
 
@@ -5746,9 +5837,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::has_leaf_or_child_
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::Priority()
+    :
+    loss_pol(this, {"loss_pol"})
 {
 
-    yang_name = "priority"; yang_parent_name = "loss"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "priority"; yang_parent_name = "loss"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::~Priority()
@@ -5757,7 +5850,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::~Priority()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::has_data() const
 {
-    for (std::size_t index=0; index<loss_pol.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<loss_pol.len(); index++)
     {
         if(loss_pol[index]->has_data())
             return true;
@@ -5767,7 +5861,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::has_data
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::has_operation() const
 {
-    for (std::size_t index=0; index<loss_pol.size(); index++)
+    for (std::size_t index=0; index<loss_pol.len(); index++)
     {
         if(loss_pol[index]->has_operation())
             return true;
@@ -5804,7 +5898,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss:
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::LossPol>();
         c->parent = this;
-        loss_pol.push_back(c);
+        loss_pol.append(c);
         return c;
     }
 
@@ -5816,7 +5910,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : loss_pol)
+    for (auto c : loss_pol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5848,7 +5942,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::LossPol::Loss
     variance{YType::uint8, "variance"}
 {
 
-    yang_name = "loss-pol"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "loss-pol"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::LossPol::~LossPol()
@@ -5857,6 +5951,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::LossPol::~Los
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::LossPol::has_data() const
 {
+    if (is_presence_container) return true;
     return loss_pol.is_set
 	|| variance.is_set;
 }
@@ -5878,7 +5973,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::L
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Loss::Priority::LossPol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "loss-pol" <<"[loss-pol='" <<loss_pol <<"']";
+    path_buffer << "loss-pol";
+    ADD_KEY_TOKEN(loss_pol, "loss-pol");
     return path_buffer.str();
 }
 
@@ -5946,7 +6042,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Mos()
 {
     priority->parent = this;
 
-    yang_name = "mos"; yang_parent_name = "resolve"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mos"; yang_parent_name = "resolve"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::~Mos()
@@ -5955,6 +6051,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::~Mos()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::has_data() const
 {
+    if (is_presence_container) return true;
     return (priority !=  nullptr && priority->has_data());
 }
 
@@ -6029,9 +6126,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::has_leaf_or_child_o
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::Priority()
+    :
+    mos_pol(this, {"mos_pol"})
 {
 
-    yang_name = "priority"; yang_parent_name = "mos"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "priority"; yang_parent_name = "mos"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::~Priority()
@@ -6040,7 +6139,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::~Priority()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::has_data() const
 {
-    for (std::size_t index=0; index<mos_pol.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mos_pol.len(); index++)
     {
         if(mos_pol[index]->has_data())
             return true;
@@ -6050,7 +6150,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::has_data(
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::has_operation() const
 {
-    for (std::size_t index=0; index<mos_pol.size(); index++)
+    for (std::size_t index=0; index<mos_pol.len(); index++)
     {
         if(mos_pol[index]->has_operation())
             return true;
@@ -6087,7 +6187,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::MosPol>();
         c->parent = this;
-        mos_pol.push_back(c);
+        mos_pol.append(c);
         return c;
     }
 
@@ -6099,7 +6199,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mos_pol)
+    for (auto c : mos_pol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6131,7 +6231,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::MosPol::MosPol
     variance{YType::uint8, "variance"}
 {
 
-    yang_name = "mos-pol"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mos-pol"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::MosPol::~MosPol()
@@ -6140,6 +6240,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::MosPol::~MosPo
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::MosPol::has_data() const
 {
+    if (is_presence_container) return true;
     return mos_pol.is_set
 	|| variance.is_set;
 }
@@ -6161,7 +6262,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::Mo
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve::Mos::Priority::MosPol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mos-pol" <<"[mos-pol='" <<mos_pol <<"']";
+    path_buffer << "mos-pol";
+    ADD_KEY_TOKEN(mos_pol, "mos-pol");
     return path_buffer.str();
 }
 
@@ -6229,7 +6331,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Rsvp::Rsvp()
     signaling_retries{YType::uint8, "signaling-retries"}
 {
 
-    yang_name = "rsvp"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvp"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Rsvp::~Rsvp()
@@ -6238,6 +6340,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Rsvp::~Rsvp()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Rsvp::has_data() const
 {
+    if (is_presence_container) return true;
     return post_dial_delay.is_set
 	|| signaling_retries.is_set;
 }
@@ -6327,7 +6430,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::TargetDiscovery()
 {
     responder_list->parent = this;
 
-    yang_name = "target-discovery"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "target-discovery"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::~TargetDiscovery()
@@ -6336,6 +6439,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::~TargetDiscovery()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::has_data() const
 {
+    if (is_presence_container) return true;
     return (responder_list !=  nullptr && responder_list->has_data());
 }
 
@@ -6410,9 +6514,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::has_leaf_or_chil
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::ResponderList::ResponderList()
+    :
+    td_num(this, {"td_num"})
 {
 
-    yang_name = "responder-list"; yang_parent_name = "target-discovery"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "responder-list"; yang_parent_name = "target-discovery"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::ResponderList::~ResponderList()
@@ -6421,7 +6527,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::ResponderList::~Respo
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::ResponderList::has_data() const
 {
-    for (std::size_t index=0; index<td_num.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<td_num.len(); index++)
     {
         if(td_num[index]->has_data())
             return true;
@@ -6431,7 +6538,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::ResponderList::h
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::ResponderList::has_operation() const
 {
-    for (std::size_t index=0; index<td_num.size(); index++)
+    for (std::size_t index=0; index<td_num.len(); index++)
     {
         if(td_num[index]->has_operation())
             return true;
@@ -6468,7 +6575,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscover
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::ResponderList::TdNum>();
         c->parent = this;
-        td_num.push_back(c);
+        td_num.append(c);
         return c;
     }
 
@@ -6480,7 +6587,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : td_num)
+    for (auto c : td_num.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6512,7 +6619,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::ResponderList::TdNum:
     inside_prefixes{YType::str, "inside-prefixes"}
 {
 
-    yang_name = "td-num"; yang_parent_name = "responder-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "td-num"; yang_parent_name = "responder-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::ResponderList::TdNum::~TdNum()
@@ -6521,6 +6628,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::ResponderList::TdNum:
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::ResponderList::TdNum::has_data() const
 {
+    if (is_presence_container) return true;
     return td_num.is_set
 	|| inside_prefixes.is_set;
 }
@@ -6542,7 +6650,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::Responder
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::TargetDiscovery::ResponderList::TdNum::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "td-num" <<"[td-num='" <<td_num <<"']";
+    path_buffer << "td-num";
+    ADD_KEY_TOKEN(td_num, "td-num");
     return path_buffer.str();
 }
 
@@ -6609,7 +6718,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Traceroute::Traceroute()
     probe_delay{YType::uint16, "probe-delay"}
 {
 
-    yang_name = "traceroute"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traceroute"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Traceroute::~Traceroute()
@@ -6618,6 +6727,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Traceroute::~Traceroute()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Traceroute::has_data() const
 {
+    if (is_presence_container) return true;
     return probe_delay.is_set;
 }
 
@@ -6694,7 +6804,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Unreachable::Unreachable()
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "unreachable"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unreachable"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Unreachable::~Unreachable()
@@ -6703,6 +6813,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Unreachable::~Unreachable()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Unreachable::has_data() const
 {
+    if (is_presence_container) return true;
     return relative.is_set
 	|| threshold.is_set;
 }
@@ -6789,14 +6900,14 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Unreachable::has_leaf_or_child_of
 Native::PfrMap::PfrMap()
     :
     pfr_tg{YType::str, "pfr-tg"}
-    	,
+        ,
     match(std::make_shared<Native::PfrMap::Match>())
-	,set(std::make_shared<Native::PfrMap::Set>())
+    , set(std::make_shared<Native::PfrMap::Set>())
 {
     match->parent = this;
     set->parent = this;
 
-    yang_name = "pfr-map"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pfr-map"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::PfrMap::~PfrMap()
@@ -6805,6 +6916,7 @@ Native::PfrMap::~PfrMap()
 
 bool Native::PfrMap::has_data() const
 {
+    if (is_presence_container) return true;
     return pfr_tg.is_set
 	|| (match !=  nullptr && match->has_data())
 	|| (set !=  nullptr && set->has_data());
@@ -6828,7 +6940,8 @@ std::string Native::PfrMap::get_absolute_path() const
 std::string Native::PfrMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pfr-map" <<"[pfr-tg='" <<pfr_tg <<"']";
+    path_buffer << "pfr-map";
+    ADD_KEY_TOKEN(pfr_tg, "pfr-tg");
     return path_buffer.str();
 }
 
@@ -6910,14 +7023,14 @@ bool Native::PfrMap::has_leaf_or_child_of_name(const std::string & name) const
 Native::PfrMap::Match::Match()
     :
     ip(std::make_shared<Native::PfrMap::Match::Ip>())
-	,pfr(std::make_shared<Native::PfrMap::Match::Pfr>())
-	,traffic_class(std::make_shared<Native::PfrMap::Match::TrafficClass>())
+    , pfr(std::make_shared<Native::PfrMap::Match::Pfr>())
+    , traffic_class(std::make_shared<Native::PfrMap::Match::TrafficClass>())
 {
     ip->parent = this;
     pfr->parent = this;
     traffic_class->parent = this;
 
-    yang_name = "match"; yang_parent_name = "pfr-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "pfr-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Match::~Match()
@@ -6926,6 +7039,7 @@ Native::PfrMap::Match::~Match()
 
 bool Native::PfrMap::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data())
 	|| (pfr !=  nullptr && pfr->has_data())
 	|| (traffic_class !=  nullptr && traffic_class->has_data());
@@ -7029,7 +7143,7 @@ Native::PfrMap::Match::Ip::Ip()
     address{YType::empty, "address"}
 {
 
-    yang_name = "ip"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Match::Ip::~Ip()
@@ -7038,6 +7152,7 @@ Native::PfrMap::Match::Ip::~Ip()
 
 bool Native::PfrMap::Match::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -7106,7 +7221,7 @@ Native::PfrMap::Match::Pfr::Pfr()
     learn{YType::empty, "learn"}
 {
 
-    yang_name = "pfr"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pfr"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Match::Pfr::~Pfr()
@@ -7115,6 +7230,7 @@ Native::PfrMap::Match::Pfr::~Pfr()
 
 bool Native::PfrMap::Match::Pfr::has_data() const
 {
+    if (is_presence_container) return true;
     return learn.is_set;
 }
 
@@ -7185,7 +7301,7 @@ Native::PfrMap::Match::TrafficClass::TrafficClass()
     prefix_list{YType::empty, "prefix-list"}
 {
 
-    yang_name = "traffic-class"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-class"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Match::TrafficClass::~TrafficClass()
@@ -7194,6 +7310,7 @@ Native::PfrMap::Match::TrafficClass::~TrafficClass()
 
 bool Native::PfrMap::Match::TrafficClass::has_data() const
 {
+    if (is_presence_container) return true;
     return access_list.is_set
 	|| application.is_set
 	|| prefix_list.is_set;
@@ -7298,12 +7415,12 @@ Native::PfrMap::Set::Set()
     trap_enable{YType::empty, "trap-enable"},
     trigger_log_percentage{YType::empty, "trigger-log-percentage"},
     unreachable{YType::empty, "unreachable"}
-    	,
+        ,
     active_probe(std::make_shared<Native::PfrMap::Set::ActiveProbe>())
-	,backoff(std::make_shared<Native::PfrMap::Set::Backoff>())
-	,delay(std::make_shared<Native::PfrMap::Set::Delay>())
-	,link_group(std::make_shared<Native::PfrMap::Set::LinkGroup>())
-	,loss(std::make_shared<Native::PfrMap::Set::Loss>())
+    , backoff(std::make_shared<Native::PfrMap::Set::Backoff>())
+    , delay(std::make_shared<Native::PfrMap::Set::Delay>())
+    , link_group(std::make_shared<Native::PfrMap::Set::LinkGroup>())
+    , loss(std::make_shared<Native::PfrMap::Set::Loss>())
 {
     active_probe->parent = this;
     backoff->parent = this;
@@ -7311,7 +7428,7 @@ Native::PfrMap::Set::Set()
     link_group->parent = this;
     loss->parent = this;
 
-    yang_name = "set"; yang_parent_name = "pfr-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set"; yang_parent_name = "pfr-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::~Set()
@@ -7320,6 +7437,7 @@ Native::PfrMap::Set::~Set()
 
 bool Native::PfrMap::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return holddown.is_set
 	|| interface.is_set
 	|| jitter.is_set
@@ -7622,16 +7740,16 @@ bool Native::PfrMap::Set::has_leaf_or_child_of_name(const std::string & name) co
 Native::PfrMap::Set::ActiveProbe::ActiveProbe()
     :
     echo(std::make_shared<Native::PfrMap::Set::ActiveProbe::Echo>())
-	,jitter(std::make_shared<Native::PfrMap::Set::ActiveProbe::Jitter>())
-	,tcp_conn(std::make_shared<Native::PfrMap::Set::ActiveProbe::TcpConn>())
-	,udp_echo(std::make_shared<Native::PfrMap::Set::ActiveProbe::UdpEcho>())
+    , jitter(std::make_shared<Native::PfrMap::Set::ActiveProbe::Jitter>())
+    , tcp_conn(std::make_shared<Native::PfrMap::Set::ActiveProbe::TcpConn>())
+    , udp_echo(std::make_shared<Native::PfrMap::Set::ActiveProbe::UdpEcho>())
 {
     echo->parent = this;
     jitter->parent = this;
     tcp_conn->parent = this;
     udp_echo->parent = this;
 
-    yang_name = "active-probe"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "active-probe"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::ActiveProbe::~ActiveProbe()
@@ -7640,6 +7758,7 @@ Native::PfrMap::Set::ActiveProbe::~ActiveProbe()
 
 bool Native::PfrMap::Set::ActiveProbe::has_data() const
 {
+    if (is_presence_container) return true;
     return (echo !=  nullptr && echo->has_data())
 	|| (jitter !=  nullptr && jitter->has_data())
 	|| (tcp_conn !=  nullptr && tcp_conn->has_data())
@@ -7755,9 +7874,11 @@ bool Native::PfrMap::Set::ActiveProbe::has_leaf_or_child_of_name(const std::stri
 }
 
 Native::PfrMap::Set::ActiveProbe::Echo::Echo()
+    :
+    ipv4_or_hostname(this, {"ipv4_or_hostname"})
 {
 
-    yang_name = "echo"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "echo"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::ActiveProbe::Echo::~Echo()
@@ -7766,7 +7887,8 @@ Native::PfrMap::Set::ActiveProbe::Echo::~Echo()
 
 bool Native::PfrMap::Set::ActiveProbe::Echo::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_data())
             return true;
@@ -7776,7 +7898,7 @@ bool Native::PfrMap::Set::ActiveProbe::Echo::has_data() const
 
 bool Native::PfrMap::Set::ActiveProbe::Echo::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_operation())
             return true;
@@ -7806,7 +7928,7 @@ std::shared_ptr<Entity> Native::PfrMap::Set::ActiveProbe::Echo::get_child_by_nam
     {
         auto c = std::make_shared<Native::PfrMap::Set::ActiveProbe::Echo::Ipv4OrHostname>();
         c->parent = this;
-        ipv4_or_hostname.push_back(c);
+        ipv4_or_hostname.append(c);
         return c;
     }
 
@@ -7818,7 +7940,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::PfrMap::Set::ActiveProbe:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_or_hostname)
+    for (auto c : ipv4_or_hostname.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7850,7 +7972,7 @@ Native::PfrMap::Set::ActiveProbe::Echo::Ipv4OrHostname::Ipv4OrHostname()
     dscp{YType::empty, "dscp"}
 {
 
-    yang_name = "ipv4-or-hostname"; yang_parent_name = "echo"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-or-hostname"; yang_parent_name = "echo"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::ActiveProbe::Echo::Ipv4OrHostname::~Ipv4OrHostname()
@@ -7859,6 +7981,7 @@ Native::PfrMap::Set::ActiveProbe::Echo::Ipv4OrHostname::~Ipv4OrHostname()
 
 bool Native::PfrMap::Set::ActiveProbe::Echo::Ipv4OrHostname::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_or_hostname.is_set
 	|| dscp.is_set;
 }
@@ -7873,7 +7996,8 @@ bool Native::PfrMap::Set::ActiveProbe::Echo::Ipv4OrHostname::has_operation() con
 std::string Native::PfrMap::Set::ActiveProbe::Echo::Ipv4OrHostname::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-or-hostname" <<"[ipv4-or-hostname='" <<ipv4_or_hostname <<"']";
+    path_buffer << "ipv4-or-hostname";
+    ADD_KEY_TOKEN(ipv4_or_hostname, "ipv4-or-hostname");
     return path_buffer.str();
 }
 
@@ -7936,9 +8060,11 @@ bool Native::PfrMap::Set::ActiveProbe::Echo::Ipv4OrHostname::has_leaf_or_child_o
 }
 
 Native::PfrMap::Set::ActiveProbe::Jitter::Jitter()
+    :
+    ipv4_or_hostname(this, {"ipv4_or_hostname"})
 {
 
-    yang_name = "jitter"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "jitter"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::ActiveProbe::Jitter::~Jitter()
@@ -7947,7 +8073,8 @@ Native::PfrMap::Set::ActiveProbe::Jitter::~Jitter()
 
 bool Native::PfrMap::Set::ActiveProbe::Jitter::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_data())
             return true;
@@ -7957,7 +8084,7 @@ bool Native::PfrMap::Set::ActiveProbe::Jitter::has_data() const
 
 bool Native::PfrMap::Set::ActiveProbe::Jitter::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_operation())
             return true;
@@ -7987,7 +8114,7 @@ std::shared_ptr<Entity> Native::PfrMap::Set::ActiveProbe::Jitter::get_child_by_n
     {
         auto c = std::make_shared<Native::PfrMap::Set::ActiveProbe::Jitter::Ipv4OrHostname>();
         c->parent = this;
-        ipv4_or_hostname.push_back(c);
+        ipv4_or_hostname.append(c);
         return c;
     }
 
@@ -7999,7 +8126,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::PfrMap::Set::ActiveProbe:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_or_hostname)
+    for (auto c : ipv4_or_hostname.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8031,7 +8158,7 @@ Native::PfrMap::Set::ActiveProbe::Jitter::Ipv4OrHostname::Ipv4OrHostname()
     target_port{YType::empty, "target-port"}
 {
 
-    yang_name = "ipv4-or-hostname"; yang_parent_name = "jitter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-or-hostname"; yang_parent_name = "jitter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::ActiveProbe::Jitter::Ipv4OrHostname::~Ipv4OrHostname()
@@ -8040,6 +8167,7 @@ Native::PfrMap::Set::ActiveProbe::Jitter::Ipv4OrHostname::~Ipv4OrHostname()
 
 bool Native::PfrMap::Set::ActiveProbe::Jitter::Ipv4OrHostname::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_or_hostname.is_set
 	|| target_port.is_set;
 }
@@ -8054,7 +8182,8 @@ bool Native::PfrMap::Set::ActiveProbe::Jitter::Ipv4OrHostname::has_operation() c
 std::string Native::PfrMap::Set::ActiveProbe::Jitter::Ipv4OrHostname::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-or-hostname" <<"[ipv4-or-hostname='" <<ipv4_or_hostname <<"']";
+    path_buffer << "ipv4-or-hostname";
+    ADD_KEY_TOKEN(ipv4_or_hostname, "ipv4-or-hostname");
     return path_buffer.str();
 }
 
@@ -8117,9 +8246,11 @@ bool Native::PfrMap::Set::ActiveProbe::Jitter::Ipv4OrHostname::has_leaf_or_child
 }
 
 Native::PfrMap::Set::ActiveProbe::TcpConn::TcpConn()
+    :
+    ipv4_or_hostname(this, {"ipv4_or_hostname"})
 {
 
-    yang_name = "tcp-conn"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-conn"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::ActiveProbe::TcpConn::~TcpConn()
@@ -8128,7 +8259,8 @@ Native::PfrMap::Set::ActiveProbe::TcpConn::~TcpConn()
 
 bool Native::PfrMap::Set::ActiveProbe::TcpConn::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_data())
             return true;
@@ -8138,7 +8270,7 @@ bool Native::PfrMap::Set::ActiveProbe::TcpConn::has_data() const
 
 bool Native::PfrMap::Set::ActiveProbe::TcpConn::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_operation())
             return true;
@@ -8168,7 +8300,7 @@ std::shared_ptr<Entity> Native::PfrMap::Set::ActiveProbe::TcpConn::get_child_by_
     {
         auto c = std::make_shared<Native::PfrMap::Set::ActiveProbe::TcpConn::Ipv4OrHostname>();
         c->parent = this;
-        ipv4_or_hostname.push_back(c);
+        ipv4_or_hostname.append(c);
         return c;
     }
 
@@ -8180,7 +8312,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::PfrMap::Set::ActiveProbe:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_or_hostname)
+    for (auto c : ipv4_or_hostname.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8212,7 +8344,7 @@ Native::PfrMap::Set::ActiveProbe::TcpConn::Ipv4OrHostname::Ipv4OrHostname()
     target_port{YType::empty, "target-port"}
 {
 
-    yang_name = "ipv4-or-hostname"; yang_parent_name = "tcp-conn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-or-hostname"; yang_parent_name = "tcp-conn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::ActiveProbe::TcpConn::Ipv4OrHostname::~Ipv4OrHostname()
@@ -8221,6 +8353,7 @@ Native::PfrMap::Set::ActiveProbe::TcpConn::Ipv4OrHostname::~Ipv4OrHostname()
 
 bool Native::PfrMap::Set::ActiveProbe::TcpConn::Ipv4OrHostname::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_or_hostname.is_set
 	|| target_port.is_set;
 }
@@ -8235,7 +8368,8 @@ bool Native::PfrMap::Set::ActiveProbe::TcpConn::Ipv4OrHostname::has_operation() 
 std::string Native::PfrMap::Set::ActiveProbe::TcpConn::Ipv4OrHostname::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-or-hostname" <<"[ipv4-or-hostname='" <<ipv4_or_hostname <<"']";
+    path_buffer << "ipv4-or-hostname";
+    ADD_KEY_TOKEN(ipv4_or_hostname, "ipv4-or-hostname");
     return path_buffer.str();
 }
 
@@ -8298,9 +8432,11 @@ bool Native::PfrMap::Set::ActiveProbe::TcpConn::Ipv4OrHostname::has_leaf_or_chil
 }
 
 Native::PfrMap::Set::ActiveProbe::UdpEcho::UdpEcho()
+    :
+    ipv4_or_hostname(this, {"ipv4_or_hostname"})
 {
 
-    yang_name = "udp-echo"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp-echo"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::ActiveProbe::UdpEcho::~UdpEcho()
@@ -8309,7 +8445,8 @@ Native::PfrMap::Set::ActiveProbe::UdpEcho::~UdpEcho()
 
 bool Native::PfrMap::Set::ActiveProbe::UdpEcho::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_data())
             return true;
@@ -8319,7 +8456,7 @@ bool Native::PfrMap::Set::ActiveProbe::UdpEcho::has_data() const
 
 bool Native::PfrMap::Set::ActiveProbe::UdpEcho::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_operation())
             return true;
@@ -8349,7 +8486,7 @@ std::shared_ptr<Entity> Native::PfrMap::Set::ActiveProbe::UdpEcho::get_child_by_
     {
         auto c = std::make_shared<Native::PfrMap::Set::ActiveProbe::UdpEcho::Ipv4OrHostname>();
         c->parent = this;
-        ipv4_or_hostname.push_back(c);
+        ipv4_or_hostname.append(c);
         return c;
     }
 
@@ -8361,7 +8498,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::PfrMap::Set::ActiveProbe:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_or_hostname)
+    for (auto c : ipv4_or_hostname.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8393,7 +8530,7 @@ Native::PfrMap::Set::ActiveProbe::UdpEcho::Ipv4OrHostname::Ipv4OrHostname()
     target_port{YType::empty, "target-port"}
 {
 
-    yang_name = "ipv4-or-hostname"; yang_parent_name = "udp-echo"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-or-hostname"; yang_parent_name = "udp-echo"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::ActiveProbe::UdpEcho::Ipv4OrHostname::~Ipv4OrHostname()
@@ -8402,6 +8539,7 @@ Native::PfrMap::Set::ActiveProbe::UdpEcho::Ipv4OrHostname::~Ipv4OrHostname()
 
 bool Native::PfrMap::Set::ActiveProbe::UdpEcho::Ipv4OrHostname::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_or_hostname.is_set
 	|| target_port.is_set;
 }
@@ -8416,7 +8554,8 @@ bool Native::PfrMap::Set::ActiveProbe::UdpEcho::Ipv4OrHostname::has_operation() 
 std::string Native::PfrMap::Set::ActiveProbe::UdpEcho::Ipv4OrHostname::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-or-hostname" <<"[ipv4-or-hostname='" <<ipv4_or_hostname <<"']";
+    path_buffer << "ipv4-or-hostname";
+    ADD_KEY_TOKEN(ipv4_or_hostname, "ipv4-or-hostname");
     return path_buffer.str();
 }
 
@@ -8479,9 +8618,11 @@ bool Native::PfrMap::Set::ActiveProbe::UdpEcho::Ipv4OrHostname::has_leaf_or_chil
 }
 
 Native::PfrMap::Set::Backoff::Backoff()
+    :
+    boff_t(this, {"boff_t"})
 {
 
-    yang_name = "backoff"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backoff"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::Backoff::~Backoff()
@@ -8490,7 +8631,8 @@ Native::PfrMap::Set::Backoff::~Backoff()
 
 bool Native::PfrMap::Set::Backoff::has_data() const
 {
-    for (std::size_t index=0; index<boff_t.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<boff_t.len(); index++)
     {
         if(boff_t[index]->has_data())
             return true;
@@ -8500,7 +8642,7 @@ bool Native::PfrMap::Set::Backoff::has_data() const
 
 bool Native::PfrMap::Set::Backoff::has_operation() const
 {
-    for (std::size_t index=0; index<boff_t.size(); index++)
+    for (std::size_t index=0; index<boff_t.len(); index++)
     {
         if(boff_t[index]->has_operation())
             return true;
@@ -8530,7 +8672,7 @@ std::shared_ptr<Entity> Native::PfrMap::Set::Backoff::get_child_by_name(const st
     {
         auto c = std::make_shared<Native::PfrMap::Set::Backoff::BoffT>();
         c->parent = this;
-        boff_t.push_back(c);
+        boff_t.append(c);
         return c;
     }
 
@@ -8542,7 +8684,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::PfrMap::Set::Backoff::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : boff_t)
+    for (auto c : boff_t.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8571,9 +8713,11 @@ bool Native::PfrMap::Set::Backoff::has_leaf_or_child_of_name(const std::string &
 Native::PfrMap::Set::Backoff::BoffT::BoffT()
     :
     boff_t{YType::uint16, "boff-t"}
+        ,
+    boff_t0(this, {"boff_t0"})
 {
 
-    yang_name = "boff-t"; yang_parent_name = "backoff"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "boff-t"; yang_parent_name = "backoff"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::Backoff::BoffT::~BoffT()
@@ -8582,7 +8726,8 @@ Native::PfrMap::Set::Backoff::BoffT::~BoffT()
 
 bool Native::PfrMap::Set::Backoff::BoffT::has_data() const
 {
-    for (std::size_t index=0; index<boff_t0.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<boff_t0.len(); index++)
     {
         if(boff_t0[index]->has_data())
             return true;
@@ -8592,7 +8737,7 @@ bool Native::PfrMap::Set::Backoff::BoffT::has_data() const
 
 bool Native::PfrMap::Set::Backoff::BoffT::has_operation() const
 {
-    for (std::size_t index=0; index<boff_t0.size(); index++)
+    for (std::size_t index=0; index<boff_t0.len(); index++)
     {
         if(boff_t0[index]->has_operation())
             return true;
@@ -8604,7 +8749,8 @@ bool Native::PfrMap::Set::Backoff::BoffT::has_operation() const
 std::string Native::PfrMap::Set::Backoff::BoffT::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "boff-t" <<"[boff-t='" <<boff_t <<"']";
+    path_buffer << "boff-t";
+    ADD_KEY_TOKEN(boff_t, "boff-t");
     return path_buffer.str();
 }
 
@@ -8624,7 +8770,7 @@ std::shared_ptr<Entity> Native::PfrMap::Set::Backoff::BoffT::get_child_by_name(c
     {
         auto c = std::make_shared<Native::PfrMap::Set::Backoff::BoffT::BoffT0>();
         c->parent = this;
-        boff_t0.push_back(c);
+        boff_t0.append(c);
         return c;
     }
 
@@ -8636,7 +8782,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::PfrMap::Set::Backoff::Bof
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : boff_t0)
+    for (auto c : boff_t0.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8678,7 +8824,7 @@ Native::PfrMap::Set::Backoff::BoffT::BoffT0::BoffT0()
     boff_rng{YType::uint16, "boff-rng"}
 {
 
-    yang_name = "boff-t0"; yang_parent_name = "boff-t"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "boff-t0"; yang_parent_name = "boff-t"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::Backoff::BoffT::BoffT0::~BoffT0()
@@ -8687,6 +8833,7 @@ Native::PfrMap::Set::Backoff::BoffT::BoffT0::~BoffT0()
 
 bool Native::PfrMap::Set::Backoff::BoffT::BoffT0::has_data() const
 {
+    if (is_presence_container) return true;
     return boff_t0.is_set
 	|| boff_rng.is_set;
 }
@@ -8701,7 +8848,8 @@ bool Native::PfrMap::Set::Backoff::BoffT::BoffT0::has_operation() const
 std::string Native::PfrMap::Set::Backoff::BoffT::BoffT0::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "boff-t0" <<"[boff-t0='" <<boff_t0 <<"']";
+    path_buffer << "boff-t0";
+    ADD_KEY_TOKEN(boff_t0, "boff-t0");
     return path_buffer.str();
 }
 
@@ -8769,7 +8917,7 @@ Native::PfrMap::Set::Delay::Delay()
     threshold{YType::empty, "threshold"}
 {
 
-    yang_name = "delay"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::Delay::~Delay()
@@ -8778,6 +8926,7 @@ Native::PfrMap::Set::Delay::~Delay()
 
 bool Native::PfrMap::Set::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return relative.is_set
 	|| threshold.is_set;
 }
@@ -8855,9 +9004,11 @@ bool Native::PfrMap::Set::Delay::has_leaf_or_child_of_name(const std::string & n
 }
 
 Native::PfrMap::Set::LinkGroup::LinkGroup()
+    :
+    lg_name(this, {"lg_name"})
 {
 
-    yang_name = "link-group"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-group"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::LinkGroup::~LinkGroup()
@@ -8866,7 +9017,8 @@ Native::PfrMap::Set::LinkGroup::~LinkGroup()
 
 bool Native::PfrMap::Set::LinkGroup::has_data() const
 {
-    for (std::size_t index=0; index<lg_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lg_name.len(); index++)
     {
         if(lg_name[index]->has_data())
             return true;
@@ -8876,7 +9028,7 @@ bool Native::PfrMap::Set::LinkGroup::has_data() const
 
 bool Native::PfrMap::Set::LinkGroup::has_operation() const
 {
-    for (std::size_t index=0; index<lg_name.size(); index++)
+    for (std::size_t index=0; index<lg_name.len(); index++)
     {
         if(lg_name[index]->has_operation())
             return true;
@@ -8906,7 +9058,7 @@ std::shared_ptr<Entity> Native::PfrMap::Set::LinkGroup::get_child_by_name(const 
     {
         auto c = std::make_shared<Native::PfrMap::Set::LinkGroup::LgName>();
         c->parent = this;
-        lg_name.push_back(c);
+        lg_name.append(c);
         return c;
     }
 
@@ -8918,7 +9070,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::PfrMap::Set::LinkGroup::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lg_name)
+    for (auto c : lg_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8947,11 +9099,11 @@ bool Native::PfrMap::Set::LinkGroup::has_leaf_or_child_of_name(const std::string
 Native::PfrMap::Set::LinkGroup::LgName::LgName()
     :
     lg_name{YType::str, "lg-name"}
-    	,
+        ,
     fallback(nullptr) // presence node
 {
 
-    yang_name = "lg-name"; yang_parent_name = "link-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lg-name"; yang_parent_name = "link-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::LinkGroup::LgName::~LgName()
@@ -8960,6 +9112,7 @@ Native::PfrMap::Set::LinkGroup::LgName::~LgName()
 
 bool Native::PfrMap::Set::LinkGroup::LgName::has_data() const
 {
+    if (is_presence_container) return true;
     return lg_name.is_set
 	|| (fallback !=  nullptr && fallback->has_data());
 }
@@ -8974,7 +9127,8 @@ bool Native::PfrMap::Set::LinkGroup::LgName::has_operation() const
 std::string Native::PfrMap::Set::LinkGroup::LgName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lg-name" <<"[lg-name='" <<lg_name <<"']";
+    path_buffer << "lg-name";
+    ADD_KEY_TOKEN(lg_name, "lg-name");
     return path_buffer.str();
 }
 
@@ -9044,7 +9198,7 @@ Native::PfrMap::Set::LinkGroup::LgName::Fallback::Fallback()
     fall_name{YType::str, "fall-name"}
 {
 
-    yang_name = "fallback"; yang_parent_name = "lg-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fallback"; yang_parent_name = "lg-name"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::PfrMap::Set::LinkGroup::LgName::Fallback::~Fallback()
@@ -9053,6 +9207,7 @@ Native::PfrMap::Set::LinkGroup::LgName::Fallback::~Fallback()
 
 bool Native::PfrMap::Set::LinkGroup::LgName::Fallback::has_data() const
 {
+    if (is_presence_container) return true;
     return fall_name.is_set;
 }
 
@@ -9122,7 +9277,7 @@ Native::PfrMap::Set::Loss::Loss()
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "loss"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "loss"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PfrMap::Set::Loss::~Loss()
@@ -9131,6 +9286,7 @@ Native::PfrMap::Set::Loss::~Loss()
 
 bool Native::PfrMap::Set::Loss::has_data() const
 {
+    if (is_presence_container) return true;
     return relative.is_set
 	|| threshold.is_set;
 }
@@ -9213,7 +9369,7 @@ Native::FacilityAlarm::FacilityAlarm()
     exceed_action{YType::enumeration, "exceed-action"}
 {
 
-    yang_name = "facility-alarm"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "facility-alarm"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::FacilityAlarm::~FacilityAlarm()
@@ -9222,6 +9378,7 @@ Native::FacilityAlarm::~FacilityAlarm()
 
 bool Native::FacilityAlarm::has_data() const
 {
+    if (is_presence_container) return true;
     return severity.is_set
 	|| exceed_action.is_set;
 }
@@ -9310,7 +9467,7 @@ Native::Setup::Setup()
     express{YType::boolean, "Cisco-IOS-XE-switch:express"}
 {
 
-    yang_name = "setup"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "setup"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Setup::~Setup()
@@ -9319,6 +9476,7 @@ Native::Setup::~Setup()
 
 bool Native::Setup::has_data() const
 {
+    if (is_presence_container) return true;
     return express.is_set;
 }
 
@@ -9395,7 +9553,7 @@ Native::TodClock::TodClock()
 {
     input_source->parent = this;
 
-    yang_name = "tod-clock"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tod-clock"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::TodClock::~TodClock()
@@ -9404,6 +9562,7 @@ Native::TodClock::~TodClock()
 
 bool Native::TodClock::has_data() const
 {
+    if (is_presence_container) return true;
     return (input_source !=  nullptr && input_source->has_data());
 }
 
@@ -9480,12 +9639,12 @@ bool Native::TodClock::has_leaf_or_child_of_name(const std::string & name) const
 Native::TodClock::InputSource::InputSource()
     :
     priority{YType::uint8, "priority"}
-    	,
+        ,
     ptp(std::make_shared<Native::TodClock::InputSource::Ptp>())
 {
     ptp->parent = this;
 
-    yang_name = "input-source"; yang_parent_name = "tod-clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input-source"; yang_parent_name = "tod-clock"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::TodClock::InputSource::~InputSource()
@@ -9494,6 +9653,7 @@ Native::TodClock::InputSource::~InputSource()
 
 bool Native::TodClock::InputSource::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set
 	|| (ptp !=  nullptr && ptp->has_data());
 }
@@ -9585,7 +9745,7 @@ Native::TodClock::InputSource::Ptp::Ptp()
     domain{YType::uint8, "domain"}
 {
 
-    yang_name = "ptp"; yang_parent_name = "input-source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ptp"; yang_parent_name = "input-source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::TodClock::InputSource::Ptp::~Ptp()
@@ -9594,6 +9754,7 @@ Native::TodClock::InputSource::Ptp::~Ptp()
 
 bool Native::TodClock::InputSource::Ptp::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set;
 }
 
@@ -9667,14 +9828,14 @@ bool Native::TodClock::InputSource::Ptp::has_leaf_or_child_of_name(const std::st
 Native::NetworkClock::NetworkClock()
     :
     synchronization(std::make_shared<Native::NetworkClock::Synchronization>())
-	,wait_to_restore(std::make_shared<Native::NetworkClock::WaitToRestore>())
-	,input_source(std::make_shared<Native::NetworkClock::InputSource>())
+    , wait_to_restore(std::make_shared<Native::NetworkClock::WaitToRestore>())
+    , input_source(std::make_shared<Native::NetworkClock::InputSource>())
 {
     synchronization->parent = this;
     wait_to_restore->parent = this;
     input_source->parent = this;
 
-    yang_name = "network-clock"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "network-clock"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::NetworkClock::~NetworkClock()
@@ -9683,6 +9844,7 @@ Native::NetworkClock::~NetworkClock()
 
 bool Native::NetworkClock::has_data() const
 {
+    if (is_presence_container) return true;
     return (synchronization !=  nullptr && synchronization->has_data())
 	|| (wait_to_restore !=  nullptr && wait_to_restore->has_data())
 	|| (input_source !=  nullptr && input_source->has_data());
@@ -9794,7 +9956,7 @@ Native::NetworkClock::Synchronization::Synchronization()
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "synchronization"; yang_parent_name = "network-clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "synchronization"; yang_parent_name = "network-clock"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::NetworkClock::Synchronization::~Synchronization()
@@ -9803,6 +9965,7 @@ Native::NetworkClock::Synchronization::~Synchronization()
 
 bool Native::NetworkClock::Synchronization::has_data() const
 {
+    if (is_presence_container) return true;
     return automatic.is_set
 	|| mode.is_set;
 }
@@ -9892,7 +10055,7 @@ Native::NetworkClock::WaitToRestore::WaitToRestore()
     global{YType::empty, "global"}
 {
 
-    yang_name = "wait-to-restore"; yang_parent_name = "network-clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "wait-to-restore"; yang_parent_name = "network-clock"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::NetworkClock::WaitToRestore::~WaitToRestore()
@@ -9901,6 +10064,7 @@ Native::NetworkClock::WaitToRestore::~WaitToRestore()
 
 bool Native::NetworkClock::WaitToRestore::has_data() const
 {
+    if (is_presence_container) return true;
     return time.is_set
 	|| global.is_set;
 }
@@ -9987,14 +10151,14 @@ bool Native::NetworkClock::WaitToRestore::has_leaf_or_child_of_name(const std::s
 Native::NetworkClock::InputSource::InputSource()
     :
     priority{YType::uint8, "priority"}
-    	,
+        ,
     interface(std::make_shared<Native::NetworkClock::InputSource::Interface>())
-	,ptp(std::make_shared<Native::NetworkClock::InputSource::Ptp>())
+    , ptp(std::make_shared<Native::NetworkClock::InputSource::Ptp>())
 {
     interface->parent = this;
     ptp->parent = this;
 
-    yang_name = "input-source"; yang_parent_name = "network-clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input-source"; yang_parent_name = "network-clock"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::NetworkClock::InputSource::~InputSource()
@@ -10003,6 +10167,7 @@ Native::NetworkClock::InputSource::~InputSource()
 
 bool Native::NetworkClock::InputSource::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set
 	|| (interface !=  nullptr && interface->has_data())
 	|| (ptp !=  nullptr && ptp->has_data());
@@ -10139,18 +10304,18 @@ Native::NetworkClock::InputSource::Interface::Interface()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::NetworkClock::InputSource::Interface::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::NetworkClock::InputSource::Interface::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::NetworkClock::InputSource::Interface::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::NetworkClock::InputSource::Interface::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::NetworkClock::InputSource::Interface::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::NetworkClock::InputSource::Interface::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::NetworkClock::InputSource::Interface::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "input-source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "input-source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::NetworkClock::InputSource::Interface::~Interface()
@@ -10159,6 +10324,7 @@ Native::NetworkClock::InputSource::Interface::~Interface()
 
 bool Native::NetworkClock::InputSource::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -10701,7 +10867,7 @@ Native::NetworkClock::InputSource::Interface::ATMSubinterface::ATMSubinterface()
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::NetworkClock::InputSource::Interface::ATMSubinterface::~ATMSubinterface()
@@ -10710,6 +10876,7 @@ Native::NetworkClock::InputSource::Interface::ATMSubinterface::~ATMSubinterface(
 
 bool Native::NetworkClock::InputSource::Interface::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -10785,7 +10952,7 @@ Native::NetworkClock::InputSource::Interface::ATMACRsubinterface::ATMACRsubinter
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::NetworkClock::InputSource::Interface::ATMACRsubinterface::~ATMACRsubinterface()
@@ -10794,6 +10961,7 @@ Native::NetworkClock::InputSource::Interface::ATMACRsubinterface::~ATMACRsubinte
 
 bool Native::NetworkClock::InputSource::Interface::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -10869,7 +11037,7 @@ Native::NetworkClock::InputSource::Interface::LISPSubinterface::LISPSubinterface
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::NetworkClock::InputSource::Interface::LISPSubinterface::~LISPSubinterface()
@@ -10878,6 +11046,7 @@ Native::NetworkClock::InputSource::Interface::LISPSubinterface::~LISPSubinterfac
 
 bool Native::NetworkClock::InputSource::Interface::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -10953,7 +11122,7 @@ Native::NetworkClock::InputSource::Interface::PortChannelSubinterface::PortChann
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::NetworkClock::InputSource::Interface::PortChannelSubinterface::~PortChannelSubinterface()
@@ -10962,6 +11131,7 @@ Native::NetworkClock::InputSource::Interface::PortChannelSubinterface::~PortChan
 
 bool Native::NetworkClock::InputSource::Interface::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -11037,7 +11207,7 @@ Native::NetworkClock::InputSource::Ptp::Ptp()
     domain{YType::uint8, "domain"}
 {
 
-    yang_name = "ptp"; yang_parent_name = "input-source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ptp"; yang_parent_name = "input-source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::NetworkClock::InputSource::Ptp::~Ptp()
@@ -11046,6 +11216,7 @@ Native::NetworkClock::InputSource::Ptp::~Ptp()
 
 bool Native::NetworkClock::InputSource::Ptp::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set;
 }
 
@@ -11116,31 +11287,32 @@ bool Native::NetworkClock::InputSource::Ptp::has_leaf_or_child_of_name(const std
     return false;
 }
 
-Native::L2Vpn::L2Vpn()
+Native::L2vpn::L2vpn()
     :
-    pseudowire(std::make_shared<Native::L2Vpn::Pseudowire>())
-	,vfi(std::make_shared<Native::L2Vpn::Vfi>())
-	,xconnect(std::make_shared<Native::L2Vpn::Xconnect>())
+    pseudowire(std::make_shared<Native::L2vpn::Pseudowire>())
+    , vfi(std::make_shared<Native::L2vpn::Vfi>())
+    , xconnect(std::make_shared<Native::L2vpn::Xconnect>())
 {
     pseudowire->parent = this;
     vfi->parent = this;
     xconnect->parent = this;
 
-    yang_name = "l2vpn"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "l2vpn"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2Vpn::~L2Vpn()
+Native::L2vpn::~L2vpn()
 {
 }
 
-bool Native::L2Vpn::has_data() const
+bool Native::L2vpn::has_data() const
 {
+    if (is_presence_container) return true;
     return (pseudowire !=  nullptr && pseudowire->has_data())
 	|| (vfi !=  nullptr && vfi->has_data())
 	|| (xconnect !=  nullptr && xconnect->has_data());
 }
 
-bool Native::L2Vpn::has_operation() const
+bool Native::L2vpn::has_operation() const
 {
     return is_set(yfilter)
 	|| (pseudowire !=  nullptr && pseudowire->has_operation())
@@ -11148,21 +11320,21 @@ bool Native::L2Vpn::has_operation() const
 	|| (xconnect !=  nullptr && xconnect->has_operation());
 }
 
-std::string Native::L2Vpn::get_absolute_path() const
+std::string Native::L2vpn::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2Vpn::get_segment_path() const
+std::string Native::L2vpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2vpn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11171,13 +11343,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-l2vpn:pseudowire")
     {
         if(pseudowire == nullptr)
         {
-            pseudowire = std::make_shared<Native::L2Vpn::Pseudowire>();
+            pseudowire = std::make_shared<Native::L2vpn::Pseudowire>();
         }
         return pseudowire;
     }
@@ -11186,7 +11358,7 @@ std::shared_ptr<Entity> Native::L2Vpn::get_child_by_name(const std::string & chi
     {
         if(vfi == nullptr)
         {
-            vfi = std::make_shared<Native::L2Vpn::Vfi>();
+            vfi = std::make_shared<Native::L2vpn::Vfi>();
         }
         return vfi;
     }
@@ -11195,7 +11367,7 @@ std::shared_ptr<Entity> Native::L2Vpn::get_child_by_name(const std::string & chi
     {
         if(xconnect == nullptr)
         {
-            xconnect = std::make_shared<Native::L2Vpn::Xconnect>();
+            xconnect = std::make_shared<Native::L2vpn::Xconnect>();
         }
         return xconnect;
     }
@@ -11203,7 +11375,7 @@ std::shared_ptr<Entity> Native::L2Vpn::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11225,49 +11397,50 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::get_children() con
     return children;
 }
 
-void Native::L2Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pseudowire" || name == "vfi" || name == "xconnect")
         return true;
     return false;
 }
 
-Native::L2Vpn::Pseudowire::Pseudowire()
+Native::L2vpn::Pseudowire::Pseudowire()
     :
     routing{YType::empty, "routing"}
-    	,
-    static_oam(std::make_shared<Native::L2Vpn::Pseudowire::StaticOam>())
-	,tlv(std::make_shared<Native::L2Vpn::Pseudowire::Tlv>())
-	,group(std::make_shared<Native::L2Vpn::Pseudowire::Group>())
+        ,
+    static_oam(std::make_shared<Native::L2vpn::Pseudowire::StaticOam>())
+    , tlv(std::make_shared<Native::L2vpn::Pseudowire::Tlv>())
+    , group(std::make_shared<Native::L2vpn::Pseudowire::Group>())
 {
     static_oam->parent = this;
     tlv->parent = this;
     group->parent = this;
 
-    yang_name = "pseudowire"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pseudowire"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2Vpn::Pseudowire::~Pseudowire()
+Native::L2vpn::Pseudowire::~Pseudowire()
 {
 }
 
-bool Native::L2Vpn::Pseudowire::has_data() const
+bool Native::L2vpn::Pseudowire::has_data() const
 {
+    if (is_presence_container) return true;
     return routing.is_set
 	|| (static_oam !=  nullptr && static_oam->has_data())
 	|| (tlv !=  nullptr && tlv->has_data())
 	|| (group !=  nullptr && group->has_data());
 }
 
-bool Native::L2Vpn::Pseudowire::has_operation() const
+bool Native::L2vpn::Pseudowire::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(routing.yfilter)
@@ -11276,21 +11449,21 @@ bool Native::L2Vpn::Pseudowire::has_operation() const
 	|| (group !=  nullptr && group->has_operation());
 }
 
-std::string Native::L2Vpn::Pseudowire::get_absolute_path() const
+std::string Native::L2vpn::Pseudowire::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2Vpn::Pseudowire::get_segment_path() const
+std::string Native::L2vpn::Pseudowire::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-l2vpn:pseudowire";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Pseudowire::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11300,13 +11473,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::get_na
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Pseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-oam")
     {
         if(static_oam == nullptr)
         {
-            static_oam = std::make_shared<Native::L2Vpn::Pseudowire::StaticOam>();
+            static_oam = std::make_shared<Native::L2vpn::Pseudowire::StaticOam>();
         }
         return static_oam;
     }
@@ -11315,7 +11488,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::get_child_by_name(const std::
     {
         if(tlv == nullptr)
         {
-            tlv = std::make_shared<Native::L2Vpn::Pseudowire::Tlv>();
+            tlv = std::make_shared<Native::L2vpn::Pseudowire::Tlv>();
         }
         return tlv;
     }
@@ -11324,7 +11497,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::get_child_by_name(const std::
     {
         if(group == nullptr)
         {
-            group = std::make_shared<Native::L2Vpn::Pseudowire::Group>();
+            group = std::make_shared<Native::L2vpn::Pseudowire::Group>();
         }
         return group;
     }
@@ -11332,7 +11505,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Pseudowire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11354,7 +11527,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::get_ch
     return children;
 }
 
-void Native::L2Vpn::Pseudowire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Pseudowire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "routing")
     {
@@ -11364,7 +11537,7 @@ void Native::L2Vpn::Pseudowire::set_value(const std::string & value_path, const 
     }
 }
 
-void Native::L2Vpn::Pseudowire::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Pseudowire::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "routing")
     {
@@ -11372,26 +11545,29 @@ void Native::L2Vpn::Pseudowire::set_filter(const std::string & value_path, YFilt
     }
 }
 
-bool Native::L2Vpn::Pseudowire::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Pseudowire::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "static-oam" || name == "tlv" || name == "group" || name == "routing")
         return true;
     return false;
 }
 
-Native::L2Vpn::Pseudowire::StaticOam::StaticOam()
+Native::L2vpn::Pseudowire::StaticOam::StaticOam()
+    :
+    class_(this, {"pw_nm"})
 {
 
-    yang_name = "static-oam"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "static-oam"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2Vpn::Pseudowire::StaticOam::~StaticOam()
+Native::L2vpn::Pseudowire::StaticOam::~StaticOam()
 {
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::has_data() const
+bool Native::L2vpn::Pseudowire::StaticOam::has_data() const
 {
-    for (std::size_t index=0; index<class_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_data())
             return true;
@@ -11399,9 +11575,9 @@ bool Native::L2Vpn::Pseudowire::StaticOam::has_data() const
     return false;
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::has_operation() const
+bool Native::L2vpn::Pseudowire::StaticOam::has_operation() const
 {
-    for (std::size_t index=0; index<class_.size(); index++)
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_operation())
             return true;
@@ -11409,21 +11585,21 @@ bool Native::L2Vpn::Pseudowire::StaticOam::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::L2Vpn::Pseudowire::StaticOam::get_absolute_path() const
+std::string Native::L2vpn::Pseudowire::StaticOam::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn/Cisco-IOS-XE-l2vpn:pseudowire/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2Vpn::Pseudowire::StaticOam::get_segment_path() const
+std::string Native::L2vpn::Pseudowire::StaticOam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static-oam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::StaticOam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Pseudowire::StaticOam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11432,25 +11608,25 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Static
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::StaticOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Pseudowire::StaticOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class")
     {
-        auto c = std::make_shared<Native::L2Vpn::Pseudowire::StaticOam::Class>();
+        auto c = std::make_shared<Native::L2vpn::Pseudowire::StaticOam::Class>();
         c->parent = this;
-        class_.push_back(c);
+        class_.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::StaticOam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Pseudowire::StaticOam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_)
+    for (auto c : class_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11461,64 +11637,66 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Static
     return children;
 }
 
-void Native::L2Vpn::Pseudowire::StaticOam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Pseudowire::StaticOam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::Pseudowire::StaticOam::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Pseudowire::StaticOam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Pseudowire::StaticOam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "class")
         return true;
     return false;
 }
 
-Native::L2Vpn::Pseudowire::StaticOam::Class::Class()
+Native::L2vpn::Pseudowire::StaticOam::Class::Class()
     :
     pw_nm{YType::str, "pw-nm"}
-    	,
-    timeout(std::make_shared<Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout>())
+        ,
+    timeout(std::make_shared<Native::L2vpn::Pseudowire::StaticOam::Class::Timeout>())
 {
     timeout->parent = this;
 
-    yang_name = "class"; yang_parent_name = "static-oam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "class"; yang_parent_name = "static-oam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2Vpn::Pseudowire::StaticOam::Class::~Class()
+Native::L2vpn::Pseudowire::StaticOam::Class::~Class()
 {
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::Class::has_data() const
+bool Native::L2vpn::Pseudowire::StaticOam::Class::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_nm.is_set
 	|| (timeout !=  nullptr && timeout->has_data());
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::Class::has_operation() const
+bool Native::L2vpn::Pseudowire::StaticOam::Class::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_nm.yfilter)
 	|| (timeout !=  nullptr && timeout->has_operation());
 }
 
-std::string Native::L2Vpn::Pseudowire::StaticOam::Class::get_absolute_path() const
+std::string Native::L2vpn::Pseudowire::StaticOam::Class::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn/Cisco-IOS-XE-l2vpn:pseudowire/static-oam/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2Vpn::Pseudowire::StaticOam::Class::get_segment_path() const
+std::string Native::L2vpn::Pseudowire::StaticOam::Class::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "class" <<"[pw-nm='" <<pw_nm <<"']";
+    path_buffer << "class";
+    ADD_KEY_TOKEN(pw_nm, "pw-nm");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::StaticOam::Class::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Pseudowire::StaticOam::Class::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11528,13 +11706,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Static
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::StaticOam::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Pseudowire::StaticOam::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timeout")
     {
         if(timeout == nullptr)
         {
-            timeout = std::make_shared<Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout>();
+            timeout = std::make_shared<Native::L2vpn::Pseudowire::StaticOam::Class::Timeout>();
         }
         return timeout;
     }
@@ -11542,7 +11720,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::StaticOam::Class::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::StaticOam::Class::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Pseudowire::StaticOam::Class::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11554,7 +11732,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Static
     return children;
 }
 
-void Native::L2Vpn::Pseudowire::StaticOam::Class::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Pseudowire::StaticOam::Class::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-nm")
     {
@@ -11564,7 +11742,7 @@ void Native::L2Vpn::Pseudowire::StaticOam::Class::set_value(const std::string & 
     }
 }
 
-void Native::L2Vpn::Pseudowire::StaticOam::Class::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Pseudowire::StaticOam::Class::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-nm")
     {
@@ -11572,45 +11750,46 @@ void Native::L2Vpn::Pseudowire::StaticOam::Class::set_filter(const std::string &
     }
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::Class::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Pseudowire::StaticOam::Class::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "timeout" || name == "pw-nm")
         return true;
     return false;
 }
 
-Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Timeout()
+Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Timeout()
     :
-    refresh(std::make_shared<Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh>())
+    refresh(std::make_shared<Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh>())
 {
     refresh->parent = this;
 
-    yang_name = "timeout"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timeout"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::~Timeout()
+Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::~Timeout()
 {
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::has_data() const
+bool Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::has_data() const
 {
+    if (is_presence_container) return true;
     return (refresh !=  nullptr && refresh->has_data());
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::has_operation() const
+bool Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::has_operation() const
 {
     return is_set(yfilter)
 	|| (refresh !=  nullptr && refresh->has_operation());
 }
 
-std::string Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::get_segment_path() const
+std::string Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "timeout";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11619,13 +11798,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Static
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "refresh")
     {
         if(refresh == nullptr)
         {
-            refresh = std::make_shared<Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh>();
+            refresh = std::make_shared<Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh>();
         }
         return refresh;
     }
@@ -11633,7 +11812,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11645,53 +11824,54 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Static
     return children;
 }
 
-void Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "refresh")
         return true;
     return false;
 }
 
-Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Refresh()
+Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Refresh()
     :
-    send(std::make_shared<Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send>())
+    send(std::make_shared<Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send>())
 {
     send->parent = this;
 
-    yang_name = "refresh"; yang_parent_name = "timeout"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "refresh"; yang_parent_name = "timeout"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::~Refresh()
+Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::~Refresh()
 {
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::has_data() const
+bool Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::has_data() const
 {
+    if (is_presence_container) return true;
     return (send !=  nullptr && send->has_data());
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::has_operation() const
+bool Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::has_operation() const
 {
     return is_set(yfilter)
 	|| (send !=  nullptr && send->has_operation());
 }
 
-std::string Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::get_segment_path() const
+std::string Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "refresh";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11700,13 +11880,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Static
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "send")
     {
         if(send == nullptr)
         {
-            send = std::make_shared<Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send>();
+            send = std::make_shared<Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send>();
         }
         return send;
     }
@@ -11714,7 +11894,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Re
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11726,52 +11906,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Static
     return children;
 }
 
-void Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "send")
         return true;
     return false;
 }
 
-Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::Send()
+Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::Send()
     :
     interval{YType::uint32, "interval"}
 {
 
-    yang_name = "send"; yang_parent_name = "refresh"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "send"; yang_parent_name = "refresh"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::~Send()
+Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::~Send()
 {
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::has_data() const
+bool Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set;
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::has_operation() const
+bool Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interval.yfilter);
 }
 
-std::string Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::get_segment_path() const
+std::string Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "send";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11781,19 +11962,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Static
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interval")
     {
@@ -11803,7 +11984,7 @@ void Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::set_va
     }
 }
 
-void Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interval")
     {
@@ -11811,26 +11992,29 @@ void Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::set_fi
     }
 }
 
-bool Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interval")
         return true;
     return false;
 }
 
-Native::L2Vpn::Pseudowire::Tlv::Tlv()
+Native::L2vpn::Pseudowire::Tlv::Tlv()
+    :
+    template_(this, {"tlv_nm"})
 {
 
-    yang_name = "tlv"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tlv"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2Vpn::Pseudowire::Tlv::~Tlv()
+Native::L2vpn::Pseudowire::Tlv::~Tlv()
 {
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::has_data() const
+bool Native::L2vpn::Pseudowire::Tlv::has_data() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_data())
             return true;
@@ -11838,9 +12022,9 @@ bool Native::L2Vpn::Pseudowire::Tlv::has_data() const
     return false;
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::has_operation() const
+bool Native::L2vpn::Pseudowire::Tlv::has_operation() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_operation())
             return true;
@@ -11848,21 +12032,21 @@ bool Native::L2Vpn::Pseudowire::Tlv::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::L2Vpn::Pseudowire::Tlv::get_absolute_path() const
+std::string Native::L2vpn::Pseudowire::Tlv::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn/Cisco-IOS-XE-l2vpn:pseudowire/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2Vpn::Pseudowire::Tlv::get_segment_path() const
+std::string Native::L2vpn::Pseudowire::Tlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Tlv::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Pseudowire::Tlv::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11871,25 +12055,25 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Tlv::g
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Pseudowire::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "template")
     {
-        auto c = std::make_shared<Native::L2Vpn::Pseudowire::Tlv::Template>();
+        auto c = std::make_shared<Native::L2vpn::Pseudowire::Tlv::Template>();
         c->parent = this;
-        template_.push_back(c);
+        template_.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Tlv::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Pseudowire::Tlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : template_)
+    for (auto c : template_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11900,64 +12084,66 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Tlv::g
     return children;
 }
 
-void Native::L2Vpn::Pseudowire::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Pseudowire::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::Pseudowire::Tlv::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Pseudowire::Tlv::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Pseudowire::Tlv::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "template")
         return true;
     return false;
 }
 
-Native::L2Vpn::Pseudowire::Tlv::Template::Template()
+Native::L2vpn::Pseudowire::Tlv::Template::Template()
     :
     tlv_nm{YType::str, "tlv-nm"}
-    	,
-    tlv(std::make_shared<Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_>())
+        ,
+    tlv(std::make_shared<Native::L2vpn::Pseudowire::Tlv::Template::Tlv_>())
 {
     tlv->parent = this;
 
-    yang_name = "template"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "template"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2Vpn::Pseudowire::Tlv::Template::~Template()
+Native::L2vpn::Pseudowire::Tlv::Template::~Template()
 {
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::Template::has_data() const
+bool Native::L2vpn::Pseudowire::Tlv::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return tlv_nm.is_set
 	|| (tlv !=  nullptr && tlv->has_data());
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::Template::has_operation() const
+bool Native::L2vpn::Pseudowire::Tlv::Template::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tlv_nm.yfilter)
 	|| (tlv !=  nullptr && tlv->has_operation());
 }
 
-std::string Native::L2Vpn::Pseudowire::Tlv::Template::get_absolute_path() const
+std::string Native::L2vpn::Pseudowire::Tlv::Template::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn/Cisco-IOS-XE-l2vpn:pseudowire/tlv/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2Vpn::Pseudowire::Tlv::Template::get_segment_path() const
+std::string Native::L2vpn::Pseudowire::Tlv::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "template" <<"[tlv-nm='" <<tlv_nm <<"']";
+    path_buffer << "template";
+    ADD_KEY_TOKEN(tlv_nm, "tlv-nm");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Tlv::Template::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Pseudowire::Tlv::Template::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11967,13 +12153,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Tlv::T
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::Tlv::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Pseudowire::Tlv::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tlv")
     {
         if(tlv == nullptr)
         {
-            tlv = std::make_shared<Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_>();
+            tlv = std::make_shared<Native::L2vpn::Pseudowire::Tlv::Template::Tlv_>();
         }
         return tlv;
     }
@@ -11981,7 +12167,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::Tlv::Template::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Tlv::Template::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Pseudowire::Tlv::Template::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11993,7 +12179,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Tlv::T
     return children;
 }
 
-void Native::L2Vpn::Pseudowire::Tlv::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Pseudowire::Tlv::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tlv-nm")
     {
@@ -12003,7 +12189,7 @@ void Native::L2Vpn::Pseudowire::Tlv::Template::set_value(const std::string & val
     }
 }
 
-void Native::L2Vpn::Pseudowire::Tlv::Template::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Pseudowire::Tlv::Template::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tlv-nm")
     {
@@ -12011,49 +12197,50 @@ void Native::L2Vpn::Pseudowire::Tlv::Template::set_filter(const std::string & va
     }
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::Template::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Pseudowire::Tlv::Template::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tlv" || name == "tlv-nm")
         return true;
     return false;
 }
 
-Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::Tlv_()
+Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::Tlv_()
     :
-    tlv_type(std::make_shared<Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType>())
-	,tlv_description(std::make_shared<Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription>())
+    tlv_type(std::make_shared<Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType>())
+    , tlv_description(std::make_shared<Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription>())
 {
     tlv_type->parent = this;
     tlv_description->parent = this;
 
-    yang_name = "tlv"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tlv"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::~Tlv_()
+Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::~Tlv_()
 {
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::has_data() const
+bool Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::has_data() const
 {
+    if (is_presence_container) return true;
     return (tlv_type !=  nullptr && tlv_type->has_data())
 	|| (tlv_description !=  nullptr && tlv_description->has_data());
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::has_operation() const
+bool Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::has_operation() const
 {
     return is_set(yfilter)
 	|| (tlv_type !=  nullptr && tlv_type->has_operation())
 	|| (tlv_description !=  nullptr && tlv_description->has_operation());
 }
 
-std::string Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::get_segment_path() const
+std::string Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12062,13 +12249,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Tlv::T
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tlv-type")
     {
         if(tlv_type == nullptr)
         {
-            tlv_type = std::make_shared<Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType>();
+            tlv_type = std::make_shared<Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType>();
         }
         return tlv_type;
     }
@@ -12077,7 +12264,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::get_chil
     {
         if(tlv_description == nullptr)
         {
-            tlv_description = std::make_shared<Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription>();
+            tlv_description = std::make_shared<Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription>();
         }
         return tlv_description;
     }
@@ -12085,7 +12272,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12102,52 +12289,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Tlv::T
     return children;
 }
 
-void Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tlv-type" || name == "tlv-description")
         return true;
     return false;
 }
 
-Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::TlvType()
+Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::TlvType()
     :
     type{YType::uint8, "type"}
 {
 
-    yang_name = "tlv-type"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tlv-type"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::~TlvType()
+Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::~TlvType()
 {
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::has_data() const
+bool Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::has_operation() const
+bool Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter);
 }
 
-std::string Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::get_segment_path() const
+std::string Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv-type";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12157,19 +12345,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Tlv::T
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -12179,7 +12367,7 @@ void Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::set_value(const st
     }
 }
 
-void Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -12187,44 +12375,45 @@ void Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::set_filter(const s
     }
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvType::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "type")
         return true;
     return false;
 }
 
-Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::TlvDescription()
+Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::TlvDescription()
     :
     description{YType::str, "description"}
 {
 
-    yang_name = "tlv-description"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tlv-description"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::~TlvDescription()
+Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::~TlvDescription()
 {
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::has_data() const
+bool Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set;
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::has_operation() const
+bool Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter);
 }
 
-std::string Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::get_segment_path() const
+std::string Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv-description";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12234,19 +12423,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Tlv::T
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -12256,7 +12445,7 @@ void Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::set_value(c
     }
 }
 
-void Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -12264,51 +12453,52 @@ void Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::set_filter(
     }
 }
 
-bool Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "description")
         return true;
     return false;
 }
 
-Native::L2Vpn::Pseudowire::Group::Group()
+Native::L2vpn::Pseudowire::Group::Group()
     :
     status{YType::empty, "status"}
 {
 
-    yang_name = "group"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2Vpn::Pseudowire::Group::~Group()
+Native::L2vpn::Pseudowire::Group::~Group()
 {
 }
 
-bool Native::L2Vpn::Pseudowire::Group::has_data() const
+bool Native::L2vpn::Pseudowire::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return status.is_set;
 }
 
-bool Native::L2Vpn::Pseudowire::Group::has_operation() const
+bool Native::L2vpn::Pseudowire::Group::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(status.yfilter);
 }
 
-std::string Native::L2Vpn::Pseudowire::Group::get_absolute_path() const
+std::string Native::L2vpn::Pseudowire::Group::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn/Cisco-IOS-XE-l2vpn:pseudowire/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2Vpn::Pseudowire::Group::get_segment_path() const
+std::string Native::L2vpn::Pseudowire::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Group::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Pseudowire::Group::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12318,19 +12508,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Pseudowire::Group:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Pseudowire::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Pseudowire::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Pseudowire::Group::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Pseudowire::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Pseudowire::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Pseudowire::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "status")
     {
@@ -12340,7 +12530,7 @@ void Native::L2Vpn::Pseudowire::Group::set_value(const std::string & value_path,
     }
 }
 
-void Native::L2Vpn::Pseudowire::Group::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Pseudowire::Group::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "status")
     {
@@ -12348,26 +12538,29 @@ void Native::L2Vpn::Pseudowire::Group::set_filter(const std::string & value_path
     }
 }
 
-bool Native::L2Vpn::Pseudowire::Group::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Pseudowire::Group::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "status")
         return true;
     return false;
 }
 
-Native::L2Vpn::Vfi::Vfi()
+Native::L2vpn::Vfi::Vfi()
+    :
+    context(this, {"vfi_nm"})
 {
 
-    yang_name = "vfi"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vfi"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2Vpn::Vfi::~Vfi()
+Native::L2vpn::Vfi::~Vfi()
 {
 }
 
-bool Native::L2Vpn::Vfi::has_data() const
+bool Native::L2vpn::Vfi::has_data() const
 {
-    for (std::size_t index=0; index<context.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<context.len(); index++)
     {
         if(context[index]->has_data())
             return true;
@@ -12375,9 +12568,9 @@ bool Native::L2Vpn::Vfi::has_data() const
     return false;
 }
 
-bool Native::L2Vpn::Vfi::has_operation() const
+bool Native::L2vpn::Vfi::has_operation() const
 {
-    for (std::size_t index=0; index<context.size(); index++)
+    for (std::size_t index=0; index<context.len(); index++)
     {
         if(context[index]->has_operation())
             return true;
@@ -12385,21 +12578,21 @@ bool Native::L2Vpn::Vfi::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::L2Vpn::Vfi::get_absolute_path() const
+std::string Native::L2vpn::Vfi::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2Vpn::Vfi::get_segment_path() const
+std::string Native::L2vpn::Vfi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-l2vpn:vfi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Vfi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12408,25 +12601,25 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Vfi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Vfi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context")
     {
-        auto c = std::make_shared<Native::L2Vpn::Vfi::Context>();
+        auto c = std::make_shared<Native::L2vpn::Vfi::Context>();
         c->parent = this;
-        context.push_back(c);
+        context.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Vfi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : context)
+    for (auto c : context.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12437,46 +12630,47 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::get_children(
     return children;
 }
 
-void Native::L2Vpn::Vfi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Vfi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::Vfi::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Vfi::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::Vfi::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Vfi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "context")
         return true;
     return false;
 }
 
-Native::L2Vpn::Vfi::Context::Context()
+Native::L2vpn::Vfi::Context::Context()
     :
     vfi_nm{YType::str, "vfi-nm"}
-    	,
-    autodiscovery(std::make_shared<Native::L2Vpn::Vfi::Context::Autodiscovery>())
-	,vpn(std::make_shared<Native::L2Vpn::Vfi::Context::Vpn>())
+        ,
+    autodiscovery(std::make_shared<Native::L2vpn::Vfi::Context::Autodiscovery>())
+    , vpn(std::make_shared<Native::L2vpn::Vfi::Context::Vpn>())
 {
     autodiscovery->parent = this;
     vpn->parent = this;
 
-    yang_name = "context"; yang_parent_name = "vfi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "context"; yang_parent_name = "vfi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2Vpn::Vfi::Context::~Context()
+Native::L2vpn::Vfi::Context::~Context()
 {
 }
 
-bool Native::L2Vpn::Vfi::Context::has_data() const
+bool Native::L2vpn::Vfi::Context::has_data() const
 {
+    if (is_presence_container) return true;
     return vfi_nm.is_set
 	|| (autodiscovery !=  nullptr && autodiscovery->has_data())
 	|| (vpn !=  nullptr && vpn->has_data());
 }
 
-bool Native::L2Vpn::Vfi::Context::has_operation() const
+bool Native::L2vpn::Vfi::Context::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vfi_nm.yfilter)
@@ -12484,21 +12678,22 @@ bool Native::L2Vpn::Vfi::Context::has_operation() const
 	|| (vpn !=  nullptr && vpn->has_operation());
 }
 
-std::string Native::L2Vpn::Vfi::Context::get_absolute_path() const
+std::string Native::L2vpn::Vfi::Context::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn/Cisco-IOS-XE-l2vpn:vfi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2Vpn::Vfi::Context::get_segment_path() const
+std::string Native::L2vpn::Vfi::Context::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "context" <<"[vfi-nm='" <<vfi_nm <<"']";
+    path_buffer << "context";
+    ADD_KEY_TOKEN(vfi_nm, "vfi-nm");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Vfi::Context::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12508,13 +12703,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::get_
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Vfi::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "autodiscovery")
     {
         if(autodiscovery == nullptr)
         {
-            autodiscovery = std::make_shared<Native::L2Vpn::Vfi::Context::Autodiscovery>();
+            autodiscovery = std::make_shared<Native::L2vpn::Vfi::Context::Autodiscovery>();
         }
         return autodiscovery;
     }
@@ -12523,7 +12718,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::get_child_by_name(const std
     {
         if(vpn == nullptr)
         {
-            vpn = std::make_shared<Native::L2Vpn::Vfi::Context::Vpn>();
+            vpn = std::make_shared<Native::L2vpn::Vfi::Context::Vpn>();
         }
         return vpn;
     }
@@ -12531,7 +12726,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::Context::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Vfi::Context::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12548,7 +12743,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::Context::get_
     return children;
 }
 
-void Native::L2Vpn::Vfi::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Vfi::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vfi-nm")
     {
@@ -12558,7 +12753,7 @@ void Native::L2Vpn::Vfi::Context::set_value(const std::string & value_path, cons
     }
 }
 
-void Native::L2Vpn::Vfi::Context::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Vfi::Context::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vfi-nm")
     {
@@ -12566,45 +12761,46 @@ void Native::L2Vpn::Vfi::Context::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool Native::L2Vpn::Vfi::Context::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Vfi::Context::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "autodiscovery" || name == "vpn" || name == "vfi-nm")
         return true;
     return false;
 }
 
-Native::L2Vpn::Vfi::Context::Autodiscovery::Autodiscovery()
+Native::L2vpn::Vfi::Context::Autodiscovery::Autodiscovery()
     :
-    bgp(std::make_shared<Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp>())
+    bgp(std::make_shared<Native::L2vpn::Vfi::Context::Autodiscovery::Bgp>())
 {
     bgp->parent = this;
 
-    yang_name = "autodiscovery"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autodiscovery"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Vfi::Context::Autodiscovery::~Autodiscovery()
+Native::L2vpn::Vfi::Context::Autodiscovery::~Autodiscovery()
 {
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::has_data() const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::has_data() const
 {
+    if (is_presence_container) return true;
     return (bgp !=  nullptr && bgp->has_data());
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::has_operation() const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::has_operation() const
 {
     return is_set(yfilter)
 	|| (bgp !=  nullptr && bgp->has_operation());
 }
 
-std::string Native::L2Vpn::Vfi::Context::Autodiscovery::get_segment_path() const
+std::string Native::L2vpn::Vfi::Context::Autodiscovery::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "autodiscovery";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::Autodiscovery::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Vfi::Context::Autodiscovery::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12613,13 +12809,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::Auto
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::Autodiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Vfi::Context::Autodiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp")
     {
         if(bgp == nullptr)
         {
-            bgp = std::make_shared<Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp>();
+            bgp = std::make_shared<Native::L2vpn::Vfi::Context::Autodiscovery::Bgp>();
         }
         return bgp;
     }
@@ -12627,7 +12823,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::Autodiscovery::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::Context::Autodiscovery::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Vfi::Context::Autodiscovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12639,53 +12835,54 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::Context::Auto
     return children;
 }
 
-void Native::L2Vpn::Vfi::Context::Autodiscovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Vfi::Context::Autodiscovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::Vfi::Context::Autodiscovery::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Vfi::Context::Autodiscovery::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgp")
         return true;
     return false;
 }
 
-Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Bgp()
+Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Bgp()
     :
-    signaling(std::make_shared<Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling>())
+    signaling(std::make_shared<Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling>())
 {
     signaling->parent = this;
 
-    yang_name = "bgp"; yang_parent_name = "autodiscovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "autodiscovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::~Bgp()
+Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::~Bgp()
 {
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::has_data() const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return (signaling !=  nullptr && signaling->has_data());
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::has_operation() const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::has_operation() const
 {
     return is_set(yfilter)
 	|| (signaling !=  nullptr && signaling->has_operation());
 }
 
-std::string Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::get_segment_path() const
+std::string Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12694,13 +12891,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::Auto
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "signaling")
     {
         if(signaling == nullptr)
         {
-            signaling = std::make_shared<Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling>();
+            signaling = std::make_shared<Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling>();
         }
         return signaling;
     }
@@ -12708,7 +12905,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12720,55 +12917,56 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::Context::Auto
     return children;
 }
 
-void Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "signaling")
         return true;
     return false;
 }
 
-Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Signaling()
+Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Signaling()
     :
     bgp(nullptr) // presence node
-	,ldp(nullptr) // presence node
+    , ldp(nullptr) // presence node
 {
 
-    yang_name = "signaling"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "signaling"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::~Signaling()
+Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::~Signaling()
 {
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::has_data() const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::has_data() const
 {
+    if (is_presence_container) return true;
     return (bgp !=  nullptr && bgp->has_data())
 	|| (ldp !=  nullptr && ldp->has_data());
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::has_operation() const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::has_operation() const
 {
     return is_set(yfilter)
 	|| (bgp !=  nullptr && bgp->has_operation())
 	|| (ldp !=  nullptr && ldp->has_operation());
 }
 
-std::string Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::get_segment_path() const
+std::string Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "signaling";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12777,13 +12975,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::Auto
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp")
     {
         if(bgp == nullptr)
         {
-            bgp = std::make_shared<Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_>();
+            bgp = std::make_shared<Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_>();
         }
         return bgp;
     }
@@ -12792,7 +12990,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signali
     {
         if(ldp == nullptr)
         {
-            ldp = std::make_shared<Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp>();
+            ldp = std::make_shared<Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp>();
         }
         return ldp;
     }
@@ -12800,7 +12998,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signali
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12817,52 +13015,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::Context::Auto
     return children;
 }
 
-void Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgp" || name == "ldp")
         return true;
     return false;
 }
 
-Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::Bgp_()
+Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::Bgp_()
     :
     template_{YType::str, "template"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "signaling"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "signaling"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::~Bgp_()
+Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::~Bgp_()
 {
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::has_data() const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::has_data() const
 {
+    if (is_presence_container) return true;
     return template_.is_set;
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::has_operation() const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(template_.yfilter);
 }
 
-std::string Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::get_segment_path() const
+std::string Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12872,19 +13071,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::Auto
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template")
     {
@@ -12894,7 +13093,7 @@ void Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::set_value
     }
 }
 
-void Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "template")
     {
@@ -12902,44 +13101,45 @@ void Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::set_filte
     }
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Bgp_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "template")
         return true;
     return false;
 }
 
-Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::Ldp()
+Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::Ldp()
     :
     template_{YType::str, "template"}
 {
 
-    yang_name = "ldp"; yang_parent_name = "signaling"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp"; yang_parent_name = "signaling"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::~Ldp()
+Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::~Ldp()
 {
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::has_data() const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::has_data() const
 {
+    if (is_presence_container) return true;
     return template_.is_set;
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::has_operation() const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(template_.yfilter);
 }
 
-std::string Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::get_segment_path() const
+std::string Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ldp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12949,19 +13149,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::Auto
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template")
     {
@@ -12971,7 +13171,7 @@ void Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::set_value(
     }
 }
 
-void Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "template")
     {
@@ -12979,44 +13179,45 @@ void Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::set_filter
     }
 }
 
-bool Native::L2Vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Vfi::Context::Autodiscovery::Bgp::Signaling::Ldp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "template")
         return true;
     return false;
 }
 
-Native::L2Vpn::Vfi::Context::Vpn::Vpn()
+Native::L2vpn::Vfi::Context::Vpn::Vpn()
     :
     id{YType::uint32, "id"}
 {
 
-    yang_name = "vpn"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vpn"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Vfi::Context::Vpn::~Vpn()
+Native::L2vpn::Vfi::Context::Vpn::~Vpn()
 {
 }
 
-bool Native::L2Vpn::Vfi::Context::Vpn::has_data() const
+bool Native::L2vpn::Vfi::Context::Vpn::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set;
 }
 
-bool Native::L2Vpn::Vfi::Context::Vpn::has_operation() const
+bool Native::L2vpn::Vfi::Context::Vpn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter);
 }
 
-std::string Native::L2Vpn::Vfi::Context::Vpn::get_segment_path() const
+std::string Native::L2vpn::Vfi::Context::Vpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vpn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::Vpn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Vfi::Context::Vpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13026,19 +13227,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Vfi::Context::Vpn:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Vfi::Context::Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Vfi::Context::Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Vfi::Context::Vpn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Vfi::Context::Vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Vfi::Context::Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Vfi::Context::Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -13048,7 +13249,7 @@ void Native::L2Vpn::Vfi::Context::Vpn::set_value(const std::string & value_path,
     }
 }
 
-void Native::L2Vpn::Vfi::Context::Vpn::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Vfi::Context::Vpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -13056,26 +13257,29 @@ void Native::L2Vpn::Vfi::Context::Vpn::set_filter(const std::string & value_path
     }
 }
 
-bool Native::L2Vpn::Vfi::Context::Vpn::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Vfi::Context::Vpn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Xconnect()
+Native::L2vpn::Xconnect::Xconnect()
+    :
+    context(this, {"xc_name"})
 {
 
-    yang_name = "xconnect"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "xconnect"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2Vpn::Xconnect::~Xconnect()
+Native::L2vpn::Xconnect::~Xconnect()
 {
 }
 
-bool Native::L2Vpn::Xconnect::has_data() const
+bool Native::L2vpn::Xconnect::has_data() const
 {
-    for (std::size_t index=0; index<context.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<context.len(); index++)
     {
         if(context[index]->has_data())
             return true;
@@ -13083,9 +13287,9 @@ bool Native::L2Vpn::Xconnect::has_data() const
     return false;
 }
 
-bool Native::L2Vpn::Xconnect::has_operation() const
+bool Native::L2vpn::Xconnect::has_operation() const
 {
-    for (std::size_t index=0; index<context.size(); index++)
+    for (std::size_t index=0; index<context.len(); index++)
     {
         if(context[index]->has_operation())
             return true;
@@ -13093,21 +13297,21 @@ bool Native::L2Vpn::Xconnect::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::L2Vpn::Xconnect::get_absolute_path() const
+std::string Native::L2vpn::Xconnect::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2Vpn::Xconnect::get_segment_path() const
+std::string Native::L2vpn::Xconnect::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-l2vpn:xconnect";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13116,25 +13320,25 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::get_name
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context")
     {
-        auto c = std::make_shared<Native::L2Vpn::Xconnect::Context>();
+        auto c = std::make_shared<Native::L2vpn::Xconnect::Context>();
         c->parent = this;
-        context.push_back(c);
+        context.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : context)
+    for (auto c : context.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13145,64 +13349,66 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::get_chil
     return children;
 }
 
-void Native::L2Vpn::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::Xconnect::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::Xconnect::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "context")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::Context()
+Native::L2vpn::Xconnect::Context::Context()
     :
     xc_name{YType::str, "xc-name"}
-    	,
-    xc_mode_config_xconnect(std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect>())
+        ,
+    xc_mode_config_xconnect(std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect>())
 {
     xc_mode_config_xconnect->parent = this;
 
-    yang_name = "context"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "context"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2Vpn::Xconnect::Context::~Context()
+Native::L2vpn::Xconnect::Context::~Context()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::has_data() const
+bool Native::L2vpn::Xconnect::Context::has_data() const
 {
+    if (is_presence_container) return true;
     return xc_name.is_set
 	|| (xc_mode_config_xconnect !=  nullptr && xc_mode_config_xconnect->has_data());
 }
 
-bool Native::L2Vpn::Xconnect::Context::has_operation() const
+bool Native::L2vpn::Xconnect::Context::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(xc_name.yfilter)
 	|| (xc_mode_config_xconnect !=  nullptr && xc_mode_config_xconnect->has_operation());
 }
 
-std::string Native::L2Vpn::Xconnect::Context::get_absolute_path() const
+std::string Native::L2vpn::Xconnect::Context::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn/Cisco-IOS-XE-l2vpn:xconnect/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2Vpn::Xconnect::Context::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "context" <<"[xc-name='" <<xc_name <<"']";
+    path_buffer << "context";
+    ADD_KEY_TOKEN(xc_name, "xc-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13212,13 +13418,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "xc-Mode-config-xconnect")
     {
         if(xc_mode_config_xconnect == nullptr)
         {
-            xc_mode_config_xconnect = std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect>();
+            xc_mode_config_xconnect = std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect>();
         }
         return xc_mode_config_xconnect;
     }
@@ -13226,7 +13432,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13238,7 +13444,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context:
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "xc-name")
     {
@@ -13248,7 +13454,7 @@ void Native::L2Vpn::Xconnect::Context::set_value(const std::string & value_path,
     }
 }
 
-void Native::L2Vpn::Xconnect::Context::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "xc-name")
     {
@@ -13256,23 +13462,23 @@ void Native::L2Vpn::Xconnect::Context::set_filter(const std::string & value_path
     }
 }
 
-bool Native::L2Vpn::Xconnect::Context::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "xc-Mode-config-xconnect" || name == "xc-name")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::XcModeConfigXconnect()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::XcModeConfigXconnect()
     :
     description{YType::str, "description"},
     shutdown{YType::empty, "shutdown"}
-    	,
-    interworking(std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking>())
-	,match(std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match>())
-	,member(std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member>())
-	,redundancy(std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy>())
-	,remote(std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote>())
+        ,
+    interworking(std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking>())
+    , match(std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match>())
+    , member(std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member>())
+    , redundancy(std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy>())
+    , remote(std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote>())
 {
     interworking->parent = this;
     match->parent = this;
@@ -13280,15 +13486,16 @@ Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::XcModeConfigXconnect()
     redundancy->parent = this;
     remote->parent = this;
 
-    yang_name = "xc-Mode-config-xconnect"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xc-Mode-config-xconnect"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::~XcModeConfigXconnect()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::~XcModeConfigXconnect()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::has_data() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| shutdown.is_set
 	|| (interworking !=  nullptr && interworking->has_data())
@@ -13298,7 +13505,7 @@ bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::has_data() const
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::has_operation() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -13310,14 +13517,14 @@ bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::has_operation() con
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "xc-Mode-config-xconnect";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13328,13 +13535,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interworking")
     {
         if(interworking == nullptr)
         {
-            interworking = std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking>();
+            interworking = std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking>();
         }
         return interworking;
     }
@@ -13343,7 +13550,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::
     {
         if(match == nullptr)
         {
-            match = std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match>();
+            match = std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match>();
         }
         return match;
     }
@@ -13352,7 +13559,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::
     {
         if(member == nullptr)
         {
-            member = std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member>();
+            member = std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member>();
         }
         return member;
     }
@@ -13361,7 +13568,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::
     {
         if(redundancy == nullptr)
         {
-            redundancy = std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy>();
+            redundancy = std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy>();
         }
         return redundancy;
     }
@@ -13370,7 +13577,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote>();
+            remote = std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote>();
         }
         return remote;
     }
@@ -13378,7 +13585,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13410,7 +13617,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context:
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -13426,7 +13633,7 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::set_value(const std
     }
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -13438,35 +13645,36 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::set_filter(const st
     }
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interworking" || name == "match" || name == "member" || name == "redundancy" || name == "remote" || name == "description" || name == "shutdown")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::Interworking()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::Interworking()
     :
     ethernet{YType::empty, "ethernet"},
     ip{YType::empty, "ip"},
     vlan{YType::empty, "vlan"}
 {
 
-    yang_name = "interworking"; yang_parent_name = "xc-Mode-config-xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interworking"; yang_parent_name = "xc-Mode-config-xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::~Interworking()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::~Interworking()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::has_data() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::has_data() const
 {
+    if (is_presence_container) return true;
     return ethernet.is_set
 	|| ip.is_set
 	|| vlan.is_set;
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::has_operation() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ethernet.yfilter)
@@ -13474,14 +13682,14 @@ bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::has_o
 	|| ydk::is_set(vlan.yfilter);
 }
 
-std::string Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interworking";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13493,19 +13701,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ethernet")
     {
@@ -13527,7 +13735,7 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::set_v
     }
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ethernet")
     {
@@ -13543,45 +13751,46 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::set_f
     }
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Interworking::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ethernet" || name == "ip" || name == "vlan")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Match()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Match()
     :
-    protocol(std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol>())
+    protocol(std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol>())
 {
     protocol->parent = this;
 
-    yang_name = "match"; yang_parent_name = "xc-Mode-config-xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "xc-Mode-config-xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::~Match()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::~Match()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::has_data() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return (protocol !=  nullptr && protocol->has_data());
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::has_operation() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::has_operation() const
 {
     return is_set(yfilter)
 	|| (protocol !=  nullptr && protocol->has_operation());
 }
 
-std::string Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "match";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13590,13 +13799,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocol")
     {
         if(protocol == nullptr)
         {
-            protocol = std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol>();
+            protocol = std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol>();
         }
         return protocol;
     }
@@ -13604,7 +13813,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13616,52 +13825,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context:
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::Protocol()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::Protocol()
     :
     ipv6{YType::empty, "ipv6"}
 {
 
-    yang_name = "protocol"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::~Protocol()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::~Protocol()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::has_data() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6.is_set;
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::has_operation() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13671,19 +13881,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6")
     {
@@ -13693,7 +13903,7 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::se
     }
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv6")
     {
@@ -13701,33 +13911,37 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::se
     }
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Match::Protocol::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Member()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Member()
     :
     vlan{YType::uint16, "Vlan"}
+        ,
+    ipv4(this, {"ipv4"})
+    , interface(this, {"interface"})
 {
 
-    yang_name = "member"; yang_parent_name = "xc-Mode-config-xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member"; yang_parent_name = "xc-Mode-config-xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::~Member()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::~Member()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::has_data() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -13735,14 +13949,14 @@ bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::has_data() 
     return vlan.is_set;
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::has_operation() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -13751,14 +13965,14 @@ bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::has_operati
 	|| ydk::is_set(vlan.yfilter);
 }
 
-std::string Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "member";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13768,33 +13982,33 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
-        auto c = std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4>();
+        auto c = std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface>();
+        auto c = std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13803,7 +14017,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context:
     }
 
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13814,7 +14028,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context:
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "Vlan")
     {
@@ -13824,7 +14038,7 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::set_value(c
     }
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "Vlan")
     {
@@ -13832,47 +14046,49 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::set_filter(
     }
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4" || name == "interface" || name == "Vlan")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::Ipv4()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::Ipv4()
     :
     ipv4{YType::str, "ipv4"},
     mem_vcid{YType::uint32, "mem-vcid"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::~Ipv4()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::~Ipv4()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::has_data() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| mem_vcid.is_set;
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::has_operation() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv4.yfilter)
 	|| ydk::is_set(mem_vcid.yfilter);
 }
 
-std::string Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4='" <<ipv4 <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4, "ipv4");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13883,19 +14099,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4")
     {
@@ -13911,7 +14127,7 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::set_v
     }
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv4")
     {
@@ -13923,35 +14139,36 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::set_f
     }
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4" || name == "mem-vcid")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::Interface()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::Interface()
     :
     interface{YType::str, "interface"},
     group{YType::empty, "group"},
     service_instance{YType::empty, "service-instance"}
 {
 
-    yang_name = "interface"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::~Interface()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::~Interface()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::has_data() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| group.is_set
 	|| service_instance.is_set;
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::has_operation() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface.yfilter)
@@ -13959,14 +14176,15 @@ bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::
 	|| ydk::is_set(service_instance.yfilter);
 }
 
-std::string Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13978,19 +14196,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
@@ -14012,7 +14230,7 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::
     }
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface")
     {
@@ -14028,49 +14246,50 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::
     }
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Member::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "group" || name == "service-instance")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Redundancy()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Redundancy()
     :
     delay{YType::uint8, "delay"}
-    	,
-    predictive(std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive>())
+        ,
+    predictive(std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive>())
 {
     predictive->parent = this;
 
-    yang_name = "redundancy"; yang_parent_name = "xc-Mode-config-xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redundancy"; yang_parent_name = "xc-Mode-config-xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::~Redundancy()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::~Redundancy()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::has_data() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return delay.is_set
 	|| (predictive !=  nullptr && predictive->has_data());
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::has_operation() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(delay.yfilter)
 	|| (predictive !=  nullptr && predictive->has_operation());
 }
 
-std::string Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "redundancy";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14080,13 +14299,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "predictive")
     {
         if(predictive == nullptr)
         {
-            predictive = std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive>();
+            predictive = std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive>();
         }
         return predictive;
     }
@@ -14094,7 +14313,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14106,7 +14325,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context:
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "delay")
     {
@@ -14116,7 +14335,7 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::set_val
     }
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "delay")
     {
@@ -14124,47 +14343,48 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::set_fil
     }
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "predictive" || name == "delay")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::Predictive()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::Predictive()
     :
     disabled{YType::empty, "disabled"},
     enabled{YType::empty, "enabled"}
 {
 
-    yang_name = "predictive"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "predictive"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::~Predictive()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::~Predictive()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::has_data() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::has_data() const
 {
+    if (is_presence_container) return true;
     return disabled.is_set
 	|| enabled.is_set;
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::has_operation() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disabled.yfilter)
 	|| ydk::is_set(enabled.yfilter);
 }
 
-std::string Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "predictive";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14175,19 +14395,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disabled")
     {
@@ -14203,7 +14423,7 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predict
     }
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disabled")
     {
@@ -14215,49 +14435,50 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predict
     }
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Redundancy::Predictive::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disabled" || name == "enabled")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Remote()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Remote()
     :
-    circuit(std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit>())
-	,link(std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link>())
+    circuit(std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit>())
+    , link(std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link>())
 {
     circuit->parent = this;
     link->parent = this;
 
-    yang_name = "remote"; yang_parent_name = "xc-Mode-config-xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "xc-Mode-config-xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::~Remote()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::~Remote()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::has_data() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return (circuit !=  nullptr && circuit->has_data())
 	|| (link !=  nullptr && link->has_data());
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::has_operation() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| (circuit !=  nullptr && circuit->has_operation())
 	|| (link !=  nullptr && link->has_operation());
 }
 
-std::string Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14266,13 +14487,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "circuit")
     {
         if(circuit == nullptr)
         {
-            circuit = std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit>();
+            circuit = std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit>();
         }
         return circuit;
     }
@@ -14281,7 +14502,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::
     {
         if(link == nullptr)
         {
-            link = std::make_shared<Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link>();
+            link = std::make_shared<Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link>();
         }
         return link;
     }
@@ -14289,7 +14510,7 @@ std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14306,52 +14527,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context:
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "circuit" || name == "link")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::Circuit()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::Circuit()
     :
     id{YType::empty, "id"}
 {
 
-    yang_name = "circuit"; yang_parent_name = "remote"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit"; yang_parent_name = "remote"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::~Circuit()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::~Circuit()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::has_data() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set;
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::has_operation() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter);
 }
 
-std::string Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "circuit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14361,19 +14583,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -14383,7 +14605,7 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::se
     }
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -14391,44 +14613,45 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::se
     }
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Circuit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id")
         return true;
     return false;
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::Link()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::Link()
     :
     failure{YType::empty, "failure"}
 {
 
-    yang_name = "link"; yang_parent_name = "remote"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "remote"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::~Link()
+Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::~Link()
 {
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::has_data() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::has_data() const
 {
+    if (is_presence_container) return true;
     return failure.is_set;
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::has_operation() const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(failure.yfilter);
 }
 
-std::string Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::get_segment_path() const
+std::string Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "link";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14438,19 +14661,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2Vpn::Xconnect::Context:
 
 }
 
-std::shared_ptr<Entity> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "failure")
     {
@@ -14460,7 +14683,7 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::set_v
     }
 }
 
-void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "failure")
     {
@@ -14468,51 +14691,52 @@ void Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::set_f
     }
 }
 
-bool Native::L2Vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpn::Xconnect::Context::XcModeConfigXconnect::Remote::Link::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "failure")
         return true;
     return false;
 }
 
-Native::L2VpnConfig::L2VpnConfig()
+Native::L2vpnConfig::L2vpnConfig()
     :
     l2vpn(nullptr) // presence node
 {
 
-    yang_name = "l2vpn-config"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "l2vpn-config"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2VpnConfig::~L2VpnConfig()
+Native::L2vpnConfig::~L2vpnConfig()
 {
 }
 
-bool Native::L2VpnConfig::has_data() const
+bool Native::L2vpnConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (l2vpn !=  nullptr && l2vpn->has_data());
 }
 
-bool Native::L2VpnConfig::has_operation() const
+bool Native::L2vpnConfig::has_operation() const
 {
     return is_set(yfilter)
 	|| (l2vpn !=  nullptr && l2vpn->has_operation());
 }
 
-std::string Native::L2VpnConfig::get_absolute_path() const
+std::string Native::L2vpnConfig::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2VpnConfig::get_segment_path() const
+std::string Native::L2vpnConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2vpn-config";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2VpnConfig::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpnConfig::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14521,13 +14745,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2VpnConfig::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Native::L2VpnConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpnConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-l2vpn:l2vpn")
     {
         if(l2vpn == nullptr)
         {
-            l2vpn = std::make_shared<Native::L2VpnConfig::L2Vpn>();
+            l2vpn = std::make_shared<Native::L2vpnConfig::L2vpn>();
         }
         return l2vpn;
     }
@@ -14535,7 +14759,7 @@ std::shared_ptr<Entity> Native::L2VpnConfig::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2VpnConfig::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpnConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14547,48 +14771,49 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2VpnConfig::get_children
     return children;
 }
 
-void Native::L2VpnConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpnConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2VpnConfig::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpnConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2VpnConfig::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpnConfig::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2vpn")
         return true;
     return false;
 }
 
-Native::L2VpnConfig::L2Vpn::L2Vpn()
+Native::L2vpnConfig::L2vpn::L2vpn()
     :
     router_id{YType::str, "router-id"},
     shutdown{YType::empty, "shutdown"}
-    	,
-    logging(std::make_shared<Native::L2VpnConfig::L2Vpn::Logging>())
-	,redundancy(std::make_shared<Native::L2VpnConfig::L2Vpn::Redundancy>())
+        ,
+    logging(std::make_shared<Native::L2vpnConfig::L2vpn::Logging>())
+    , redundancy(std::make_shared<Native::L2vpnConfig::L2vpn::Redundancy>())
 {
     logging->parent = this;
     redundancy->parent = this;
 
-    yang_name = "l2vpn"; yang_parent_name = "l2vpn-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "l2vpn"; yang_parent_name = "l2vpn-config"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-Native::L2VpnConfig::L2Vpn::~L2Vpn()
+Native::L2vpnConfig::L2vpn::~L2vpn()
 {
 }
 
-bool Native::L2VpnConfig::L2Vpn::has_data() const
+bool Native::L2vpnConfig::L2vpn::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set
 	|| shutdown.is_set
 	|| (logging !=  nullptr && logging->has_data())
 	|| (redundancy !=  nullptr && redundancy->has_data());
 }
 
-bool Native::L2VpnConfig::L2Vpn::has_operation() const
+bool Native::L2vpnConfig::L2vpn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(router_id.yfilter)
@@ -14597,21 +14822,21 @@ bool Native::L2VpnConfig::L2Vpn::has_operation() const
 	|| (redundancy !=  nullptr && redundancy->has_operation());
 }
 
-std::string Native::L2VpnConfig::L2Vpn::get_absolute_path() const
+std::string Native::L2vpnConfig::L2vpn::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn-config/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2VpnConfig::L2Vpn::get_segment_path() const
+std::string Native::L2vpnConfig::L2vpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-l2vpn:l2vpn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2VpnConfig::L2Vpn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpnConfig::L2vpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14622,13 +14847,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2VpnConfig::L2Vpn::get_n
 
 }
 
-std::shared_ptr<Entity> Native::L2VpnConfig::L2Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpnConfig::L2vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "logging")
     {
         if(logging == nullptr)
         {
-            logging = std::make_shared<Native::L2VpnConfig::L2Vpn::Logging>();
+            logging = std::make_shared<Native::L2vpnConfig::L2vpn::Logging>();
         }
         return logging;
     }
@@ -14637,7 +14862,7 @@ std::shared_ptr<Entity> Native::L2VpnConfig::L2Vpn::get_child_by_name(const std:
     {
         if(redundancy == nullptr)
         {
-            redundancy = std::make_shared<Native::L2VpnConfig::L2Vpn::Redundancy>();
+            redundancy = std::make_shared<Native::L2vpnConfig::L2vpn::Redundancy>();
         }
         return redundancy;
     }
@@ -14645,7 +14870,7 @@ std::shared_ptr<Entity> Native::L2VpnConfig::L2Vpn::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2VpnConfig::L2Vpn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpnConfig::L2vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14662,7 +14887,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2VpnConfig::L2Vpn::get_c
     return children;
 }
 
-void Native::L2VpnConfig::L2Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpnConfig::L2vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "router-id")
     {
@@ -14678,7 +14903,7 @@ void Native::L2VpnConfig::L2Vpn::set_value(const std::string & value_path, const
     }
 }
 
-void Native::L2VpnConfig::L2Vpn::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpnConfig::L2vpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "router-id")
     {
@@ -14690,56 +14915,57 @@ void Native::L2VpnConfig::L2Vpn::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool Native::L2VpnConfig::L2Vpn::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpnConfig::L2vpn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "logging" || name == "redundancy" || name == "router-id" || name == "shutdown")
         return true;
     return false;
 }
 
-Native::L2VpnConfig::L2Vpn::Logging::Logging()
+Native::L2vpnConfig::L2vpn::Logging::Logging()
     :
     redundancy{YType::empty, "redundancy"}
-    	,
-    pseudowire(std::make_shared<Native::L2VpnConfig::L2Vpn::Logging::Pseudowire>())
+        ,
+    pseudowire(std::make_shared<Native::L2vpnConfig::L2vpn::Logging::Pseudowire>())
 {
     pseudowire->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2VpnConfig::L2Vpn::Logging::~Logging()
+Native::L2vpnConfig::L2vpn::Logging::~Logging()
 {
 }
 
-bool Native::L2VpnConfig::L2Vpn::Logging::has_data() const
+bool Native::L2vpnConfig::L2vpn::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return redundancy.is_set
 	|| (pseudowire !=  nullptr && pseudowire->has_data());
 }
 
-bool Native::L2VpnConfig::L2Vpn::Logging::has_operation() const
+bool Native::L2vpnConfig::L2vpn::Logging::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(redundancy.yfilter)
 	|| (pseudowire !=  nullptr && pseudowire->has_operation());
 }
 
-std::string Native::L2VpnConfig::L2Vpn::Logging::get_absolute_path() const
+std::string Native::L2vpnConfig::L2vpn::Logging::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn-config/Cisco-IOS-XE-l2vpn:l2vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2VpnConfig::L2Vpn::Logging::get_segment_path() const
+std::string Native::L2vpnConfig::L2vpn::Logging::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "logging";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2VpnConfig::L2Vpn::Logging::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpnConfig::L2vpn::Logging::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14749,13 +14975,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2VpnConfig::L2Vpn::Loggi
 
 }
 
-std::shared_ptr<Entity> Native::L2VpnConfig::L2Vpn::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpnConfig::L2vpn::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pseudowire")
     {
         if(pseudowire == nullptr)
         {
-            pseudowire = std::make_shared<Native::L2VpnConfig::L2Vpn::Logging::Pseudowire>();
+            pseudowire = std::make_shared<Native::L2vpnConfig::L2vpn::Logging::Pseudowire>();
         }
         return pseudowire;
     }
@@ -14763,7 +14989,7 @@ std::shared_ptr<Entity> Native::L2VpnConfig::L2Vpn::Logging::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2VpnConfig::L2Vpn::Logging::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpnConfig::L2vpn::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14775,7 +15001,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2VpnConfig::L2Vpn::Loggi
     return children;
 }
 
-void Native::L2VpnConfig::L2Vpn::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpnConfig::L2vpn::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "redundancy")
     {
@@ -14785,7 +15011,7 @@ void Native::L2VpnConfig::L2Vpn::Logging::set_value(const std::string & value_pa
     }
 }
 
-void Native::L2VpnConfig::L2Vpn::Logging::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpnConfig::L2vpn::Logging::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "redundancy")
     {
@@ -14793,51 +15019,52 @@ void Native::L2VpnConfig::L2Vpn::Logging::set_filter(const std::string & value_p
     }
 }
 
-bool Native::L2VpnConfig::L2Vpn::Logging::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpnConfig::L2vpn::Logging::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pseudowire" || name == "redundancy")
         return true;
     return false;
 }
 
-Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::Pseudowire()
+Native::L2vpnConfig::L2vpn::Logging::Pseudowire::Pseudowire()
     :
     status{YType::empty, "status"}
 {
 
-    yang_name = "pseudowire"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pseudowire"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::~Pseudowire()
+Native::L2vpnConfig::L2vpn::Logging::Pseudowire::~Pseudowire()
 {
 }
 
-bool Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::has_data() const
+bool Native::L2vpnConfig::L2vpn::Logging::Pseudowire::has_data() const
 {
+    if (is_presence_container) return true;
     return status.is_set;
 }
 
-bool Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::has_operation() const
+bool Native::L2vpnConfig::L2vpn::Logging::Pseudowire::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(status.yfilter);
 }
 
-std::string Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::get_absolute_path() const
+std::string Native::L2vpnConfig::L2vpn::Logging::Pseudowire::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn-config/Cisco-IOS-XE-l2vpn:l2vpn/logging/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::get_segment_path() const
+std::string Native::L2vpnConfig::L2vpn::Logging::Pseudowire::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudowire";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpnConfig::L2vpn::Logging::Pseudowire::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14847,19 +15074,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2VpnConfig::L2Vpn::Loggi
 
 }
 
-std::shared_ptr<Entity> Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpnConfig::L2vpn::Logging::Pseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpnConfig::L2vpn::Logging::Pseudowire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpnConfig::L2vpn::Logging::Pseudowire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "status")
     {
@@ -14869,7 +15096,7 @@ void Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::set_value(const std::strin
     }
 }
 
-void Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpnConfig::L2vpn::Logging::Pseudowire::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "status")
     {
@@ -14877,52 +15104,53 @@ void Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::set_filter(const std::stri
     }
 }
 
-bool Native::L2VpnConfig::L2Vpn::Logging::Pseudowire::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpnConfig::L2vpn::Logging::Pseudowire::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "status")
         return true;
     return false;
 }
 
-Native::L2VpnConfig::L2Vpn::Redundancy::Redundancy()
+Native::L2vpnConfig::L2vpn::Redundancy::Redundancy()
     :
-    predictive(std::make_shared<Native::L2VpnConfig::L2Vpn::Redundancy::Predictive>())
+    predictive(std::make_shared<Native::L2vpnConfig::L2vpn::Redundancy::Predictive>())
 {
     predictive->parent = this;
 
-    yang_name = "redundancy"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "redundancy"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2VpnConfig::L2Vpn::Redundancy::~Redundancy()
+Native::L2vpnConfig::L2vpn::Redundancy::~Redundancy()
 {
 }
 
-bool Native::L2VpnConfig::L2Vpn::Redundancy::has_data() const
+bool Native::L2vpnConfig::L2vpn::Redundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return (predictive !=  nullptr && predictive->has_data());
 }
 
-bool Native::L2VpnConfig::L2Vpn::Redundancy::has_operation() const
+bool Native::L2vpnConfig::L2vpn::Redundancy::has_operation() const
 {
     return is_set(yfilter)
 	|| (predictive !=  nullptr && predictive->has_operation());
 }
 
-std::string Native::L2VpnConfig::L2Vpn::Redundancy::get_absolute_path() const
+std::string Native::L2vpnConfig::L2vpn::Redundancy::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn-config/Cisco-IOS-XE-l2vpn:l2vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2VpnConfig::L2Vpn::Redundancy::get_segment_path() const
+std::string Native::L2vpnConfig::L2vpn::Redundancy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "redundancy";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2VpnConfig::L2Vpn::Redundancy::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpnConfig::L2vpn::Redundancy::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14931,13 +15159,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L2VpnConfig::L2Vpn::Redun
 
 }
 
-std::shared_ptr<Entity> Native::L2VpnConfig::L2Vpn::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpnConfig::L2vpn::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "predictive")
     {
         if(predictive == nullptr)
         {
-            predictive = std::make_shared<Native::L2VpnConfig::L2Vpn::Redundancy::Predictive>();
+            predictive = std::make_shared<Native::L2vpnConfig::L2vpn::Redundancy::Predictive>();
         }
         return predictive;
     }
@@ -14945,7 +15173,7 @@ std::shared_ptr<Entity> Native::L2VpnConfig::L2Vpn::Redundancy::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2VpnConfig::L2Vpn::Redundancy::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpnConfig::L2vpn::Redundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14957,59 +15185,60 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L2VpnConfig::L2Vpn::Redun
     return children;
 }
 
-void Native::L2VpnConfig::L2Vpn::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpnConfig::L2vpn::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L2VpnConfig::L2Vpn::Redundancy::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpnConfig::L2vpn::Redundancy::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L2VpnConfig::L2Vpn::Redundancy::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpnConfig::L2vpn::Redundancy::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "predictive")
         return true;
     return false;
 }
 
-Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::Predictive()
+Native::L2vpnConfig::L2vpn::Redundancy::Predictive::Predictive()
     :
     enabled{YType::empty, "enabled"}
 {
 
-    yang_name = "predictive"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "predictive"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::~Predictive()
+Native::L2vpnConfig::L2vpn::Redundancy::Predictive::~Predictive()
 {
 }
 
-bool Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::has_data() const
+bool Native::L2vpnConfig::L2vpn::Redundancy::Predictive::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set;
 }
 
-bool Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::has_operation() const
+bool Native::L2vpnConfig::L2vpn::Redundancy::Predictive::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enabled.yfilter);
 }
 
-std::string Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::get_absolute_path() const
+std::string Native::L2vpnConfig::L2vpn::Redundancy::Predictive::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l2vpn-config/Cisco-IOS-XE-l2vpn:l2vpn/redundancy/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::get_segment_path() const
+std::string Native::L2vpnConfig::L2vpn::Redundancy::Predictive::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "predictive";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L2vpnConfig::L2vpn::Redundancy::Predictive::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15019,19 +15248,19 @@ std::vector<std::pair<std::string, LeafData> > Native::L2VpnConfig::L2Vpn::Redun
 
 }
 
-std::shared_ptr<Entity> Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L2vpnConfig::L2vpn::Redundancy::Predictive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L2vpnConfig::L2vpn::Redundancy::Predictive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L2vpnConfig::L2vpn::Redundancy::Predictive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
@@ -15041,7 +15270,7 @@ void Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::set_value(const std::st
     }
 }
 
-void Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L2vpnConfig::L2vpn::Redundancy::Predictive::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enabled")
     {
@@ -15049,52 +15278,53 @@ void Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::set_filter(const std::s
     }
 }
 
-bool Native::L2VpnConfig::L2Vpn::Redundancy::Predictive::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L2vpnConfig::L2vpn::Redundancy::Predictive::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enabled")
         return true;
     return false;
 }
 
-Native::L3Vpn::L3Vpn()
+Native::L3vpn::L3vpn()
     :
-    encapsulation(std::make_shared<Native::L3Vpn::Encapsulation>())
+    encapsulation(std::make_shared<Native::L3vpn::Encapsulation>())
 {
     encapsulation->parent = this;
 
-    yang_name = "l3vpn"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "l3vpn"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L3Vpn::~L3Vpn()
+Native::L3vpn::~L3vpn()
 {
 }
 
-bool Native::L3Vpn::has_data() const
+bool Native::L3vpn::has_data() const
 {
+    if (is_presence_container) return true;
     return (encapsulation !=  nullptr && encapsulation->has_data());
 }
 
-bool Native::L3Vpn::has_operation() const
+bool Native::L3vpn::has_operation() const
 {
     return is_set(yfilter)
 	|| (encapsulation !=  nullptr && encapsulation->has_operation());
 }
 
-std::string Native::L3Vpn::get_absolute_path() const
+std::string Native::L3vpn::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L3Vpn::get_segment_path() const
+std::string Native::L3vpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l3vpn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L3Vpn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L3vpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15103,13 +15333,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L3Vpn::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Native::L3Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L3vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-l3vpn:encapsulation")
     {
         if(encapsulation == nullptr)
         {
-            encapsulation = std::make_shared<Native::L3Vpn::Encapsulation>();
+            encapsulation = std::make_shared<Native::L3vpn::Encapsulation>();
         }
         return encapsulation;
     }
@@ -15117,7 +15347,7 @@ std::shared_ptr<Entity> Native::L3Vpn::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L3Vpn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L3vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15129,34 +15359,37 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L3Vpn::get_children() con
     return children;
 }
 
-void Native::L3Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L3vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L3Vpn::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L3vpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L3Vpn::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L3vpn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "encapsulation")
         return true;
     return false;
 }
 
-Native::L3Vpn::Encapsulation::Encapsulation()
+Native::L3vpn::Encapsulation::Encapsulation()
+    :
+    ip(this, {"profile_name"})
 {
 
-    yang_name = "encapsulation"; yang_parent_name = "l3vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "encapsulation"; yang_parent_name = "l3vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L3Vpn::Encapsulation::~Encapsulation()
+Native::L3vpn::Encapsulation::~Encapsulation()
 {
 }
 
-bool Native::L3Vpn::Encapsulation::has_data() const
+bool Native::L3vpn::Encapsulation::has_data() const
 {
-    for (std::size_t index=0; index<ip.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ip.len(); index++)
     {
         if(ip[index]->has_data())
             return true;
@@ -15164,9 +15397,9 @@ bool Native::L3Vpn::Encapsulation::has_data() const
     return false;
 }
 
-bool Native::L3Vpn::Encapsulation::has_operation() const
+bool Native::L3vpn::Encapsulation::has_operation() const
 {
-    for (std::size_t index=0; index<ip.size(); index++)
+    for (std::size_t index=0; index<ip.len(); index++)
     {
         if(ip[index]->has_operation())
             return true;
@@ -15174,21 +15407,21 @@ bool Native::L3Vpn::Encapsulation::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::L3Vpn::Encapsulation::get_absolute_path() const
+std::string Native::L3vpn::Encapsulation::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l3vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L3Vpn::Encapsulation::get_segment_path() const
+std::string Native::L3vpn::Encapsulation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-l3vpn:encapsulation";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L3Vpn::Encapsulation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L3vpn::Encapsulation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15197,25 +15430,25 @@ std::vector<std::pair<std::string, LeafData> > Native::L3Vpn::Encapsulation::get
 
 }
 
-std::shared_ptr<Entity> Native::L3Vpn::Encapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L3vpn::Encapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
-        auto c = std::make_shared<Native::L3Vpn::Encapsulation::Ip>();
+        auto c = std::make_shared<Native::L3vpn::Encapsulation::Ip>();
         c->parent = this;
-        ip.push_back(c);
+        ip.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L3Vpn::Encapsulation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L3vpn::Encapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ip)
+    for (auto c : ip.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15226,49 +15459,50 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L3Vpn::Encapsulation::get
     return children;
 }
 
-void Native::L3Vpn::Encapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L3vpn::Encapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L3Vpn::Encapsulation::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L3vpn::Encapsulation::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L3Vpn::Encapsulation::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L3vpn::Encapsulation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip")
         return true;
     return false;
 }
 
-Native::L3Vpn::Encapsulation::Ip::Ip()
+Native::L3vpn::Encapsulation::Ip::Ip()
     :
     profile_name{YType::str, "profile-name"}
-    	,
-    transport(std::make_shared<Native::L3Vpn::Encapsulation::Ip::Transport>())
-	,protocol(std::make_shared<Native::L3Vpn::Encapsulation::Ip::Protocol>())
-	,mpls(std::make_shared<Native::L3Vpn::Encapsulation::Ip::Mpls>())
+        ,
+    transport(std::make_shared<Native::L3vpn::Encapsulation::Ip::Transport>())
+    , protocol(std::make_shared<Native::L3vpn::Encapsulation::Ip::Protocol>())
+    , mpls(std::make_shared<Native::L3vpn::Encapsulation::Ip::Mpls>())
 {
     transport->parent = this;
     protocol->parent = this;
     mpls->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::L3Vpn::Encapsulation::Ip::~Ip()
+Native::L3vpn::Encapsulation::Ip::~Ip()
 {
 }
 
-bool Native::L3Vpn::Encapsulation::Ip::has_data() const
+bool Native::L3vpn::Encapsulation::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| (transport !=  nullptr && transport->has_data())
 	|| (protocol !=  nullptr && protocol->has_data())
 	|| (mpls !=  nullptr && mpls->has_data());
 }
 
-bool Native::L3Vpn::Encapsulation::Ip::has_operation() const
+bool Native::L3vpn::Encapsulation::Ip::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter)
@@ -15277,21 +15511,22 @@ bool Native::L3Vpn::Encapsulation::Ip::has_operation() const
 	|| (mpls !=  nullptr && mpls->has_operation());
 }
 
-std::string Native::L3Vpn::Encapsulation::Ip::get_absolute_path() const
+std::string Native::L3vpn::Encapsulation::Ip::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/l3vpn/Cisco-IOS-XE-l3vpn:encapsulation/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::L3Vpn::Encapsulation::Ip::get_segment_path() const
+std::string Native::L3vpn::Encapsulation::Ip::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ip" <<"[profile-name='" <<profile_name <<"']";
+    path_buffer << "ip";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L3Vpn::Encapsulation::Ip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L3vpn::Encapsulation::Ip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15301,13 +15536,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L3Vpn::Encapsulation::Ip:
 
 }
 
-std::shared_ptr<Entity> Native::L3Vpn::Encapsulation::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L3vpn::Encapsulation::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transport")
     {
         if(transport == nullptr)
         {
-            transport = std::make_shared<Native::L3Vpn::Encapsulation::Ip::Transport>();
+            transport = std::make_shared<Native::L3vpn::Encapsulation::Ip::Transport>();
         }
         return transport;
     }
@@ -15316,7 +15551,7 @@ std::shared_ptr<Entity> Native::L3Vpn::Encapsulation::Ip::get_child_by_name(cons
     {
         if(protocol == nullptr)
         {
-            protocol = std::make_shared<Native::L3Vpn::Encapsulation::Ip::Protocol>();
+            protocol = std::make_shared<Native::L3vpn::Encapsulation::Ip::Protocol>();
         }
         return protocol;
     }
@@ -15325,7 +15560,7 @@ std::shared_ptr<Entity> Native::L3Vpn::Encapsulation::Ip::get_child_by_name(cons
     {
         if(mpls == nullptr)
         {
-            mpls = std::make_shared<Native::L3Vpn::Encapsulation::Ip::Mpls>();
+            mpls = std::make_shared<Native::L3vpn::Encapsulation::Ip::Mpls>();
         }
         return mpls;
     }
@@ -15333,7 +15568,7 @@ std::shared_ptr<Entity> Native::L3Vpn::Encapsulation::Ip::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L3Vpn::Encapsulation::Ip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L3vpn::Encapsulation::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15355,7 +15590,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L3Vpn::Encapsulation::Ip:
     return children;
 }
 
-void Native::L3Vpn::Encapsulation::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L3vpn::Encapsulation::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
@@ -15365,7 +15600,7 @@ void Native::L3Vpn::Encapsulation::Ip::set_value(const std::string & value_path,
     }
 }
 
-void Native::L3Vpn::Encapsulation::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L3vpn::Encapsulation::Ip::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "profile-name")
     {
@@ -15373,44 +15608,45 @@ void Native::L3Vpn::Encapsulation::Ip::set_filter(const std::string & value_path
     }
 }
 
-bool Native::L3Vpn::Encapsulation::Ip::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L3vpn::Encapsulation::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "transport" || name == "protocol" || name == "mpls" || name == "profile-name")
         return true;
     return false;
 }
 
-Native::L3Vpn::Encapsulation::Ip::Transport::Transport()
+Native::L3vpn::Encapsulation::Ip::Transport::Transport()
     :
     ipv4(nullptr) // presence node
 {
 
-    yang_name = "transport"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::L3Vpn::Encapsulation::Ip::Transport::~Transport()
+Native::L3vpn::Encapsulation::Ip::Transport::~Transport()
 {
 }
 
-bool Native::L3Vpn::Encapsulation::Ip::Transport::has_data() const
+bool Native::L3vpn::Encapsulation::Ip::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data());
 }
 
-bool Native::L3Vpn::Encapsulation::Ip::Transport::has_operation() const
+bool Native::L3vpn::Encapsulation::Ip::Transport::has_operation() const
 {
     return is_set(yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation());
 }
 
-std::string Native::L3Vpn::Encapsulation::Ip::Transport::get_segment_path() const
+std::string Native::L3vpn::Encapsulation::Ip::Transport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "transport";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::L3Vpn::Encapsulation::Ip::Transport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::L3vpn::Encapsulation::Ip::Transport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15419,13 +15655,13 @@ std::vector<std::pair<std::string, LeafData> > Native::L3Vpn::Encapsulation::Ip:
 
 }
 
-std::shared_ptr<Entity> Native::L3Vpn::Encapsulation::Ip::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::L3vpn::Encapsulation::Ip::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
         if(ipv4 == nullptr)
         {
-            ipv4 = std::make_shared<Native::L3Vpn::Encapsulation::Ip::Transport::Ipv4>();
+            ipv4 = std::make_shared<Native::L3vpn::Encapsulation::Ip::Transport::Ipv4>();
         }
         return ipv4;
     }
@@ -15433,7 +15669,7 @@ std::shared_ptr<Entity> Native::L3Vpn::Encapsulation::Ip::Transport::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::L3Vpn::Encapsulation::Ip::Transport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::L3vpn::Encapsulation::Ip::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15445,15 +15681,15 @@ std::map<std::string, std::shared_ptr<Entity>> Native::L3Vpn::Encapsulation::Ip:
     return children;
 }
 
-void Native::L3Vpn::Encapsulation::Ip::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::L3vpn::Encapsulation::Ip::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::L3Vpn::Encapsulation::Ip::Transport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::L3vpn::Encapsulation::Ip::Transport::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::L3Vpn::Encapsulation::Ip::Transport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::L3vpn::Encapsulation::Ip::Transport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4")
         return true;

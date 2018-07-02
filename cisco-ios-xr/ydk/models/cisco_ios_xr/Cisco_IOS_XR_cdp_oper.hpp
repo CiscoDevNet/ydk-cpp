@@ -57,7 +57,7 @@ class Cdp::Nodes : public ydk::Entity
 
         class Node; //type: Cdp::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Cdp::Nodes
 
@@ -136,7 +136,7 @@ class Cdp::Nodes::Node::Neighbors::Details : public ydk::Entity
 
         class Detail; //type: Cdp::Nodes::Node::Neighbors::Details::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Details::Detail> > detail;
+        ydk::YList detail;
         
 }; // Cdp::Nodes::Node::Neighbors::Details
 
@@ -161,7 +161,7 @@ class Cdp::Nodes::Node::Neighbors::Details::Detail : public ydk::Entity
         ydk::YLeaf device_id; //type: string
         class CdpNeighbor; //type: Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor> > cdp_neighbor;
+        ydk::YList cdp_neighbor;
         
 }; // Cdp::Nodes::Node::Neighbors::Details::Detail
 
@@ -244,7 +244,7 @@ class Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::Networ
 
         class CdpAddrEntry; //type: Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry> > cdp_addr_entry;
+        ydk::YList cdp_addr_entry;
         
 }; // Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses
 
@@ -313,7 +313,7 @@ class Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::Protoc
 
         class CdpProtHelloEntry; //type: Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry> > cdp_prot_hello_entry;
+        ydk::YList cdp_prot_hello_entry;
         
 }; // Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList
 
@@ -357,7 +357,7 @@ class Cdp::Nodes::Node::Neighbors::Devices : public ydk::Entity
 
         class Device; //type: Cdp::Nodes::Node::Neighbors::Devices::Device
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Devices::Device> > device;
+        ydk::YList device;
         
 }; // Cdp::Nodes::Node::Neighbors::Devices
 
@@ -381,7 +381,7 @@ class Cdp::Nodes::Node::Neighbors::Devices::Device : public ydk::Entity
         ydk::YLeaf device_id; //type: string
         class CdpNeighbor; //type: Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor> > cdp_neighbor;
+        ydk::YList cdp_neighbor;
         
 }; // Cdp::Nodes::Node::Neighbors::Devices::Device
 
@@ -464,7 +464,7 @@ class Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Network
 
         class CdpAddrEntry; //type: Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry> > cdp_addr_entry;
+        ydk::YList cdp_addr_entry;
         
 }; // Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses
 
@@ -533,7 +533,7 @@ class Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Protoco
 
         class CdpProtHelloEntry; //type: Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry> > cdp_prot_hello_entry;
+        ydk::YList cdp_prot_hello_entry;
         
 }; // Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList
 
@@ -577,7 +577,7 @@ class Cdp::Nodes::Node::Neighbors::Summaries : public ydk::Entity
 
         class Summary; //type: Cdp::Nodes::Node::Neighbors::Summaries::Summary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Summaries::Summary> > summary;
+        ydk::YList summary;
         
 }; // Cdp::Nodes::Node::Neighbors::Summaries
 
@@ -602,7 +602,7 @@ class Cdp::Nodes::Node::Neighbors::Summaries::Summary : public ydk::Entity
         ydk::YLeaf device_id; //type: string
         class CdpNeighbor; //type: Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor> > cdp_neighbor;
+        ydk::YList cdp_neighbor;
         
 }; // Cdp::Nodes::Node::Neighbors::Summaries::Summary
 
@@ -685,7 +685,7 @@ class Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::Netw
 
         class CdpAddrEntry; //type: Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry> > cdp_addr_entry;
+        ydk::YList cdp_addr_entry;
         
 }; // Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses
 
@@ -754,7 +754,7 @@ class Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::Prot
 
         class CdpProtHelloEntry; //type: Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry> > cdp_prot_hello_entry;
+        ydk::YList cdp_prot_hello_entry;
         
 }; // Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList
 
@@ -832,7 +832,7 @@ class Cdp::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: Cdp::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Cdp::Nodes::Node::Interfaces
 

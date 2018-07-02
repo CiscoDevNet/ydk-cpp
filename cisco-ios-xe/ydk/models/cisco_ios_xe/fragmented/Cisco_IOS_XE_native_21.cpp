@@ -6,7 +6,6 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_21.hpp"
 #include "Cisco_IOS_XE_native_23.hpp"
-#include "Cisco_IOS_XE_native_24.hpp"
 #include "Cisco_IOS_XE_native_22.hpp"
 
 using namespace ydk;
@@ -20,7 +19,7 @@ Native::Interface::AppNavUnCompress::StormControl::Broadcast::Level::Threshold::
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Broadcast::Level::Threshold::~Threshold()
@@ -29,6 +28,7 @@ Native::Interface::AppNavUnCompress::StormControl::Broadcast::Level::Threshold::
 
 bool Native::Interface::AppNavUnCompress::StormControl::Broadcast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -111,7 +111,7 @@ Native::Interface::AppNavUnCompress::StormControl::Broadcast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Broadcast::Level::Bps::~Bps()
@@ -120,6 +120,7 @@ Native::Interface::AppNavUnCompress::StormControl::Broadcast::Level::Bps::~Bps()
 
 bool Native::Interface::AppNavUnCompress::StormControl::Broadcast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -202,7 +203,7 @@ Native::Interface::AppNavUnCompress::StormControl::Broadcast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Broadcast::Level::Pps::~Pps()
@@ -211,6 +212,7 @@ Native::Interface::AppNavUnCompress::StormControl::Broadcast::Level::Pps::~Pps()
 
 bool Native::Interface::AppNavUnCompress::StormControl::Broadcast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -293,7 +295,7 @@ Native::Interface::AppNavUnCompress::StormControl::Multicast::Multicast()
 {
     level->parent = this;
 
-    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Multicast::~Multicast()
@@ -302,6 +304,7 @@ Native::Interface::AppNavUnCompress::StormControl::Multicast::~Multicast()
 
 bool Native::Interface::AppNavUnCompress::StormControl::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -371,14 +374,14 @@ bool Native::Interface::AppNavUnCompress::StormControl::Multicast::has_leaf_or_c
 Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::~Level()
@@ -387,6 +390,7 @@ Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::~Level()
 
 bool Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -491,7 +495,7 @@ Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Threshold::
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Threshold::~Threshold()
@@ -500,6 +504,7 @@ Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Threshold::
 
 bool Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -582,7 +587,7 @@ Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Bps::~Bps()
@@ -591,6 +596,7 @@ Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Bps::~Bps()
 
 bool Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -673,7 +679,7 @@ Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Pps::~Pps()
@@ -682,6 +688,7 @@ Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Pps::~Pps()
 
 bool Native::Interface::AppNavUnCompress::StormControl::Multicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -764,7 +771,7 @@ Native::Interface::AppNavUnCompress::StormControl::Unicast::Unicast()
 {
     level->parent = this;
 
-    yang_name = "unicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Unicast::~Unicast()
@@ -773,6 +780,7 @@ Native::Interface::AppNavUnCompress::StormControl::Unicast::~Unicast()
 
 bool Native::Interface::AppNavUnCompress::StormControl::Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -842,14 +850,14 @@ bool Native::Interface::AppNavUnCompress::StormControl::Unicast::has_leaf_or_chi
 Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::~Level()
@@ -858,6 +866,7 @@ Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::~Level()
 
 bool Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -962,7 +971,7 @@ Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Threshold::Th
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Threshold::~Threshold()
@@ -971,6 +980,7 @@ Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Threshold::~T
 
 bool Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -1053,7 +1063,7 @@ Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Bps::~Bps()
@@ -1062,6 +1072,7 @@ Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Bps::~Bps()
 
 bool Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -1144,7 +1155,7 @@ Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Pps::~Pps()
@@ -1153,6 +1164,7 @@ Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Pps::~Pps()
 
 bool Native::Interface::AppNavUnCompress::StormControl::Unicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -1234,7 +1246,7 @@ Native::Interface::AppNavUnCompress::Trust::Trust()
     device{YType::enumeration, "device"}
 {
 
-    yang_name = "trust"; yang_parent_name = "AppNav-UnCompress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trust"; yang_parent_name = "AppNav-UnCompress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::Trust::~Trust()
@@ -1243,6 +1255,7 @@ Native::Interface::AppNavUnCompress::Trust::~Trust()
 
 bool Native::Interface::AppNavUnCompress::Trust::has_data() const
 {
+    if (is_presence_container) return true;
     return device.is_set;
 }
 
@@ -1309,12 +1322,12 @@ bool Native::Interface::AppNavUnCompress::Trust::has_leaf_or_child_of_name(const
 Native::Interface::AppNavUnCompress::PriorityQueue::PriorityQueue()
     :
     out{YType::empty, "out"}
-    	,
+        ,
     cos_map(std::make_shared<Native::Interface::AppNavUnCompress::PriorityQueue::CosMap>())
 {
     cos_map->parent = this;
 
-    yang_name = "priority-queue"; yang_parent_name = "AppNav-UnCompress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-queue"; yang_parent_name = "AppNav-UnCompress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::PriorityQueue::~PriorityQueue()
@@ -1323,6 +1336,7 @@ Native::Interface::AppNavUnCompress::PriorityQueue::~PriorityQueue()
 
 bool Native::Interface::AppNavUnCompress::PriorityQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return out.is_set
 	|| (cos_map !=  nullptr && cos_map->has_data());
 }
@@ -1408,7 +1422,7 @@ Native::Interface::AppNavUnCompress::PriorityQueue::CosMap::CosMap()
     cos_values{YType::uint8, "cos-values"}
 {
 
-    yang_name = "cos-map"; yang_parent_name = "priority-queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-map"; yang_parent_name = "priority-queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::PriorityQueue::CosMap::~CosMap()
@@ -1417,6 +1431,7 @@ Native::Interface::AppNavUnCompress::PriorityQueue::CosMap::~CosMap()
 
 bool Native::Interface::AppNavUnCompress::PriorityQueue::CosMap::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -1502,9 +1517,11 @@ bool Native::Interface::AppNavUnCompress::PriorityQueue::CosMap::has_leaf_or_chi
 }
 
 Native::Interface::AppNavUnCompress::RcvQueue::RcvQueue()
+    :
+    cos_map(this, {"queue_id", "threshold_id"})
 {
 
-    yang_name = "rcv-queue"; yang_parent_name = "AppNav-UnCompress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rcv-queue"; yang_parent_name = "AppNav-UnCompress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::RcvQueue::~RcvQueue()
@@ -1513,7 +1530,8 @@ Native::Interface::AppNavUnCompress::RcvQueue::~RcvQueue()
 
 bool Native::Interface::AppNavUnCompress::RcvQueue::has_data() const
 {
-    for (std::size_t index=0; index<cos_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cos_map.len(); index++)
     {
         if(cos_map[index]->has_data())
             return true;
@@ -1523,7 +1541,7 @@ bool Native::Interface::AppNavUnCompress::RcvQueue::has_data() const
 
 bool Native::Interface::AppNavUnCompress::RcvQueue::has_operation() const
 {
-    for (std::size_t index=0; index<cos_map.size(); index++)
+    for (std::size_t index=0; index<cos_map.len(); index++)
     {
         if(cos_map[index]->has_operation())
             return true;
@@ -1553,7 +1571,7 @@ std::shared_ptr<Entity> Native::Interface::AppNavUnCompress::RcvQueue::get_child
     {
         auto c = std::make_shared<Native::Interface::AppNavUnCompress::RcvQueue::CosMap>();
         c->parent = this;
-        cos_map.push_back(c);
+        cos_map.append(c);
         return c;
     }
 
@@ -1565,7 +1583,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavUnCompre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cos_map)
+    for (auto c : cos_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1598,7 +1616,7 @@ Native::Interface::AppNavUnCompress::RcvQueue::CosMap::CosMap()
     cos_values{YType::uint8, "cos-values"}
 {
 
-    yang_name = "cos-map"; yang_parent_name = "rcv-queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-map"; yang_parent_name = "rcv-queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::RcvQueue::CosMap::~CosMap()
@@ -1607,6 +1625,7 @@ Native::Interface::AppNavUnCompress::RcvQueue::CosMap::~CosMap()
 
 bool Native::Interface::AppNavUnCompress::RcvQueue::CosMap::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -1632,7 +1651,9 @@ bool Native::Interface::AppNavUnCompress::RcvQueue::CosMap::has_operation() cons
 std::string Native::Interface::AppNavUnCompress::RcvQueue::CosMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cos-map" <<"[queue-id='" <<queue_id <<"']" <<"[threshold-id='" <<threshold_id <<"']";
+    path_buffer << "cos-map";
+    ADD_KEY_TOKEN(queue_id, "queue-id");
+    ADD_KEY_TOKEN(threshold_id, "threshold-id");
     return path_buffer.str();
 }
 
@@ -1710,7 +1731,7 @@ Native::Interface::AppNavUnCompress::Peer::Peer()
 {
     default_->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "AppNav-UnCompress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "AppNav-UnCompress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::Peer::~Peer()
@@ -1719,6 +1740,7 @@ Native::Interface::AppNavUnCompress::Peer::~Peer()
 
 bool Native::Interface::AppNavUnCompress::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -1791,7 +1813,7 @@ Native::Interface::AppNavUnCompress::Peer::Default::Default()
 {
     ip->parent = this;
 
-    yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::Peer::Default::~Default()
@@ -1800,6 +1822,7 @@ Native::Interface::AppNavUnCompress::Peer::Default::~Default()
 
 bool Native::Interface::AppNavUnCompress::Peer::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -1872,7 +1895,7 @@ Native::Interface::AppNavUnCompress::Peer::Default::Ip::Ip()
 {
     address->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::Peer::Default::Ip::~Ip()
@@ -1881,6 +1904,7 @@ Native::Interface::AppNavUnCompress::Peer::Default::Ip::~Ip()
 
 bool Native::Interface::AppNavUnCompress::Peer::Default::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -1950,12 +1974,12 @@ bool Native::Interface::AppNavUnCompress::Peer::Default::Ip::has_leaf_or_child_o
 Native::Interface::AppNavUnCompress::Peer::Default::Ip::Address::Address()
     :
     dhcp{YType::empty, "dhcp"}
-    	,
+        ,
     dhcp_pool(nullptr) // presence node
-	,pool(nullptr) // presence node
+    , pool(nullptr) // presence node
 {
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::Peer::Default::Ip::Address::~Address()
@@ -1964,6 +1988,7 @@ Native::Interface::AppNavUnCompress::Peer::Default::Ip::Address::~Address()
 
 bool Native::Interface::AppNavUnCompress::Peer::Default::Ip::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return dhcp.is_set
 	|| (dhcp_pool !=  nullptr && dhcp_pool->has_data())
 	|| (pool !=  nullptr && pool->has_data());
@@ -2064,7 +2089,7 @@ Native::Interface::AppNavUnCompress::Peer::Default::Ip::Address::DhcpPool::DhcpP
     pools{YType::str, "pools"}
 {
 
-    yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::AppNavUnCompress::Peer::Default::Ip::Address::DhcpPool::~DhcpPool()
@@ -2073,6 +2098,7 @@ Native::Interface::AppNavUnCompress::Peer::Default::Ip::Address::DhcpPool::~Dhcp
 
 bool Native::Interface::AppNavUnCompress::Peer::Default::Ip::Address::DhcpPool::has_data() const
 {
+    if (is_presence_container) return true;
     return pools.is_set;
 }
 
@@ -2141,7 +2167,7 @@ Native::Interface::AppNavUnCompress::Peer::Default::Ip::Address::Pool::Pool()
     pools{YType::str, "pools"}
 {
 
-    yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::AppNavUnCompress::Peer::Default::Ip::Address::Pool::~Pool()
@@ -2150,6 +2176,7 @@ Native::Interface::AppNavUnCompress::Peer::Default::Ip::Address::Pool::~Pool()
 
 bool Native::Interface::AppNavUnCompress::Peer::Default::Ip::Address::Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return pools.is_set;
 }
 
@@ -2219,7 +2246,7 @@ Native::Interface::AppNavUnCompress::PmPath::PmPath()
     interface_id{YType::uint8, "interface-id"}
 {
 
-    yang_name = "pm-path"; yang_parent_name = "AppNav-UnCompress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pm-path"; yang_parent_name = "AppNav-UnCompress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavUnCompress::PmPath::~PmPath()
@@ -2228,6 +2255,7 @@ Native::Interface::AppNavUnCompress::PmPath::~PmPath()
 
 bool Native::Interface::AppNavUnCompress::PmPath::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| interface_id.is_set;
 }
@@ -2308,14 +2336,16 @@ Native::Interface::ATM::ATM()
     :
     name{YType::str, "name"},
     load_interval{YType::uint32, "Cisco-IOS-XE-atm:load-interval"}
-    	,
+        ,
     ip(std::make_shared<Native::Interface::ATM::Ip>())
-	,atm(std::make_shared<Native::Interface::ATM::Atm>())
+    , atm(std::make_shared<Native::Interface::ATM::Atm>())
+    , cem(this, {"number"})
+    , pvc(this, {"local_vpi_vci"})
 {
     ip->parent = this;
     atm->parent = this;
 
-    yang_name = "ATM"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::ATM::~ATM()
@@ -2324,12 +2354,13 @@ Native::Interface::ATM::~ATM()
 
 bool Native::Interface::ATM::has_data() const
 {
-    for (std::size_t index=0; index<cem.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pvc.size(); index++)
+    for (std::size_t index=0; index<pvc.len(); index++)
     {
         if(pvc[index]->has_data())
             return true;
@@ -2342,12 +2373,12 @@ bool Native::Interface::ATM::has_data() const
 
 bool Native::Interface::ATM::has_operation() const
 {
-    for (std::size_t index=0; index<cem.size(); index++)
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pvc.size(); index++)
+    for (std::size_t index=0; index<pvc.len(); index++)
     {
         if(pvc[index]->has_operation())
             return true;
@@ -2369,7 +2400,8 @@ std::string Native::Interface::ATM::get_absolute_path() const
 std::string Native::Interface::ATM::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ATM" <<"[name='" <<name <<"']";
+    path_buffer << "ATM";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2408,7 +2440,7 @@ std::shared_ptr<Entity> Native::Interface::ATM::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Native::Interface::ATM::Cem>();
         c->parent = this;
-        cem.push_back(c);
+        cem.append(c);
         return c;
     }
 
@@ -2416,7 +2448,7 @@ std::shared_ptr<Entity> Native::Interface::ATM::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Native::Interface::ATM::Pvc>();
         c->parent = this;
-        pvc.push_back(c);
+        pvc.append(c);
         return c;
     }
 
@@ -2438,7 +2470,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATM::get_child
     }
 
     count = 0;
-    for (auto const & c : cem)
+    for (auto c : cem.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2447,7 +2479,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATM::get_child
     }
 
     count = 0;
-    for (auto const & c : pvc)
+    for (auto c : pvc.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2498,7 +2530,7 @@ Native::Interface::ATM::Ip::Ip()
     address{YType::str, "address"}
 {
 
-    yang_name = "ip"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Ip::~Ip()
@@ -2507,6 +2539,7 @@ Native::Interface::ATM::Ip::~Ip()
 
 bool Native::Interface::ATM::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -2574,9 +2607,11 @@ Native::Interface::ATM::Atm::Atm()
     :
     bandwidth{YType::enumeration, "bandwidth"},
     enable_ilmi_trap{YType::boolean, "enable-ilmi-trap"}
+        ,
+    pvp(this, {"pvp_number"})
 {
 
-    yang_name = "atm"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atm"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Atm::~Atm()
@@ -2585,7 +2620,8 @@ Native::Interface::ATM::Atm::~Atm()
 
 bool Native::Interface::ATM::Atm::has_data() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_data())
             return true;
@@ -2596,7 +2632,7 @@ bool Native::Interface::ATM::Atm::has_data() const
 
 bool Native::Interface::ATM::Atm::has_operation() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_operation())
             return true;
@@ -2630,7 +2666,7 @@ std::shared_ptr<Entity> Native::Interface::ATM::Atm::get_child_by_name(const std
     {
         auto c = std::make_shared<Native::Interface::ATM::Atm::Pvp>();
         c->parent = this;
-        pvp.push_back(c);
+        pvp.append(c);
         return c;
     }
 
@@ -2642,7 +2678,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATM::Atm::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pvp)
+    for (auto c : pvp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2692,14 +2728,14 @@ Native::Interface::ATM::Atm::Pvp::Pvp()
     :
     pvp_number{YType::uint16, "pvp-number"},
     l2transport{YType::empty, "l2transport"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::ATM::Atm::Pvp::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::ATM::Atm::Pvp::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::ATM::Atm::Pvp::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "pvp"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvp"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Atm::Pvp::~Pvp()
@@ -2708,6 +2744,7 @@ Native::Interface::ATM::Atm::Pvp::~Pvp()
 
 bool Native::Interface::ATM::Atm::Pvp::has_data() const
 {
+    if (is_presence_container) return true;
     return pvp_number.is_set
 	|| l2transport.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
@@ -2726,7 +2763,8 @@ bool Native::Interface::ATM::Atm::Pvp::has_operation() const
 std::string Native::Interface::ATM::Atm::Pvp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pvp" <<"[pvp-number='" <<pvp_number <<"']";
+    path_buffer << "pvp";
+    ADD_KEY_TOKEN(pvp_number, "pvp-number");
     return path_buffer.str();
 }
 
@@ -2825,12 +2863,12 @@ Native::Interface::ATM::Atm::Pvp::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::ATM::Atm::Pvp::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Atm::Pvp::Xconnect::~Xconnect()
@@ -2839,6 +2877,7 @@ Native::Interface::ATM::Atm::Pvp::Xconnect::~Xconnect()
 
 bool Native::Interface::ATM::Atm::Pvp::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -2999,12 +3038,12 @@ bool Native::Interface::ATM::Atm::Pvp::Xconnect::has_leaf_or_child_of_name(const
 Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::~Backup()
@@ -3013,6 +3052,7 @@ Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::~Backup()
 
 bool Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -3103,7 +3143,7 @@ Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::Peer::~Peer()
@@ -3112,6 +3152,7 @@ Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -3220,7 +3261,7 @@ Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::Delay::~Delay()
@@ -3229,6 +3270,7 @@ Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::ATM::Atm::Pvp::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -3311,7 +3353,7 @@ Native::Interface::ATM::Atm::Pvp::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Atm::Pvp::XconnectPwClass::~XconnectPwClass()
@@ -3320,6 +3362,7 @@ Native::Interface::ATM::Atm::Pvp::XconnectPwClass::~XconnectPwClass()
 
 bool Native::Interface::ATM::Atm::Pvp::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -3391,12 +3434,12 @@ Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Xconnect()
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::~Xconnect()
@@ -3405,6 +3448,7 @@ Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::~Xconnect()
 
 bool Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -3516,7 +3560,7 @@ Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Udp()
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -3525,6 +3569,7 @@ Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::~Udp()
 
 bool Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -3597,7 +3642,7 @@ Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::Port()
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -3606,6 +3651,7 @@ Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::~Port()
 
 bool Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -3685,14 +3731,14 @@ bool Native::Interface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::has
 Native::Interface::ATM::Cem::Cem()
     :
     number{YType::uint32, "number"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::ATM::Cem::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::ATM::Cem::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::ATM::Cem::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "cem"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Cem::~Cem()
@@ -3701,6 +3747,7 @@ Native::Interface::ATM::Cem::~Cem()
 
 bool Native::Interface::ATM::Cem::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
 	|| (xconnect_pw_class !=  nullptr && xconnect_pw_class->has_data());
@@ -3717,7 +3764,8 @@ bool Native::Interface::ATM::Cem::has_operation() const
 std::string Native::Interface::ATM::Cem::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-atm:cem" <<"[number='" <<number <<"']";
+    path_buffer << "Cisco-IOS-XE-atm:cem";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -3805,12 +3853,12 @@ Native::Interface::ATM::Cem::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::ATM::Cem::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Cem::Xconnect::~Xconnect()
@@ -3819,6 +3867,7 @@ Native::Interface::ATM::Cem::Xconnect::~Xconnect()
 
 bool Native::Interface::ATM::Cem::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -3979,12 +4028,12 @@ bool Native::Interface::ATM::Cem::Xconnect::has_leaf_or_child_of_name(const std:
 Native::Interface::ATM::Cem::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::ATM::Cem::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::ATM::Cem::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::ATM::Cem::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Cem::Xconnect::Backup::~Backup()
@@ -3993,6 +4042,7 @@ Native::Interface::ATM::Cem::Xconnect::Backup::~Backup()
 
 bool Native::Interface::ATM::Cem::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -4083,7 +4133,7 @@ Native::Interface::ATM::Cem::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Cem::Xconnect::Backup::Peer::~Peer()
@@ -4092,6 +4142,7 @@ Native::Interface::ATM::Cem::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::ATM::Cem::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -4200,7 +4251,7 @@ Native::Interface::ATM::Cem::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Cem::Xconnect::Backup::Delay::~Delay()
@@ -4209,6 +4260,7 @@ Native::Interface::ATM::Cem::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::ATM::Cem::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -4291,7 +4343,7 @@ Native::Interface::ATM::Cem::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Cem::XconnectPwClass::~XconnectPwClass()
@@ -4300,6 +4352,7 @@ Native::Interface::ATM::Cem::XconnectPwClass::~XconnectPwClass()
 
 bool Native::Interface::ATM::Cem::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -4371,12 +4424,12 @@ Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::Xconnect()
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::~Xconnect()
@@ -4385,6 +4438,7 @@ Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::~Xconnect()
 
 bool Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -4496,7 +4550,7 @@ Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::Udp::Udp()
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -4505,6 +4559,7 @@ Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::Udp::~Udp()
 
 bool Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -4577,7 +4632,7 @@ Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::Udp::Port::Port()
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -4586,6 +4641,7 @@ Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::Udp::Port::~Port()
 
 bool Native::Interface::ATM::Cem::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -4668,14 +4724,14 @@ Native::Interface::ATM::Pvc::Pvc()
     remote_vpi_vci{YType::str, "remote-vpi-vci"},
     l2transport{YType::empty, "l2transport"},
     ubr{YType::uint32, "ubr"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::ATM::Pvc::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::ATM::Pvc::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::ATM::Pvc::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "pvc"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvc"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Pvc::~Pvc()
@@ -4684,6 +4740,7 @@ Native::Interface::ATM::Pvc::~Pvc()
 
 bool Native::Interface::ATM::Pvc::has_data() const
 {
+    if (is_presence_container) return true;
     return local_vpi_vci.is_set
 	|| remote_vpi_vci.is_set
 	|| l2transport.is_set
@@ -4706,7 +4763,8 @@ bool Native::Interface::ATM::Pvc::has_operation() const
 std::string Native::Interface::ATM::Pvc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-atm:pvc" <<"[local-vpi-vci='" <<local_vpi_vci <<"']";
+    path_buffer << "Cisco-IOS-XE-atm:pvc";
+    ADD_KEY_TOKEN(local_vpi_vci, "local-vpi-vci");
     return path_buffer.str();
 }
 
@@ -4827,12 +4885,12 @@ Native::Interface::ATM::Pvc::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::ATM::Pvc::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Pvc::Xconnect::~Xconnect()
@@ -4841,6 +4899,7 @@ Native::Interface::ATM::Pvc::Xconnect::~Xconnect()
 
 bool Native::Interface::ATM::Pvc::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -5001,12 +5060,12 @@ bool Native::Interface::ATM::Pvc::Xconnect::has_leaf_or_child_of_name(const std:
 Native::Interface::ATM::Pvc::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::ATM::Pvc::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::ATM::Pvc::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::ATM::Pvc::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Pvc::Xconnect::Backup::~Backup()
@@ -5015,6 +5074,7 @@ Native::Interface::ATM::Pvc::Xconnect::Backup::~Backup()
 
 bool Native::Interface::ATM::Pvc::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -5105,7 +5165,7 @@ Native::Interface::ATM::Pvc::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Pvc::Xconnect::Backup::Peer::~Peer()
@@ -5114,6 +5174,7 @@ Native::Interface::ATM::Pvc::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::ATM::Pvc::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -5222,7 +5283,7 @@ Native::Interface::ATM::Pvc::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Pvc::Xconnect::Backup::Delay::~Delay()
@@ -5231,6 +5292,7 @@ Native::Interface::ATM::Pvc::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::ATM::Pvc::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -5313,7 +5375,7 @@ Native::Interface::ATM::Pvc::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Pvc::XconnectPwClass::~XconnectPwClass()
@@ -5322,6 +5384,7 @@ Native::Interface::ATM::Pvc::XconnectPwClass::~XconnectPwClass()
 
 bool Native::Interface::ATM::Pvc::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -5393,12 +5456,12 @@ Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Xconnect()
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::~Xconnect()
@@ -5407,6 +5470,7 @@ Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::~Xconnect()
 
 bool Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -5518,7 +5582,7 @@ Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Udp()
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -5527,6 +5591,7 @@ Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::~Udp()
 
 bool Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -5599,7 +5664,7 @@ Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Port::Port()
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -5608,6 +5673,7 @@ Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Port::~Port()
 
 bool Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -5685,9 +5751,11 @@ bool Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Port::has_leaf
 }
 
 Native::Interface::ATMSubinterface::ATMSubinterface()
+    :
+    atm(this, {"name"})
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::ATMSubinterface::~ATMSubinterface()
@@ -5696,7 +5764,8 @@ Native::Interface::ATMSubinterface::~ATMSubinterface()
 
 bool Native::Interface::ATMSubinterface::has_data() const
 {
-    for (std::size_t index=0; index<atm.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atm.len(); index++)
     {
         if(atm[index]->has_data())
             return true;
@@ -5706,7 +5775,7 @@ bool Native::Interface::ATMSubinterface::has_data() const
 
 bool Native::Interface::ATMSubinterface::has_operation() const
 {
-    for (std::size_t index=0; index<atm.size(); index++)
+    for (std::size_t index=0; index<atm.len(); index++)
     {
         if(atm[index]->has_operation())
             return true;
@@ -5743,7 +5812,7 @@ std::shared_ptr<Entity> Native::Interface::ATMSubinterface::get_child_by_name(co
     {
         auto c = std::make_shared<Native::Interface::ATMSubinterface::ATM>();
         c->parent = this;
-        atm.push_back(c);
+        atm.append(c);
         return c;
     }
 
@@ -5755,7 +5824,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATMSubinterfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atm)
+    for (auto c : atm.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5785,14 +5854,16 @@ Native::Interface::ATMSubinterface::ATM::ATM()
     :
     name{YType::str, "name"},
     load_interval{YType::uint32, "Cisco-IOS-XE-atm:load-interval"}
-    	,
+        ,
     ip(std::make_shared<Native::Interface::ATMSubinterface::ATM::Ip>())
-	,atm(std::make_shared<Native::Interface::ATMSubinterface::ATM::Atm>())
+    , atm(std::make_shared<Native::Interface::ATMSubinterface::ATM::Atm>())
+    , cem(this, {"number"})
+    , pvc(this, {"local_vpi_vci"})
 {
     ip->parent = this;
     atm->parent = this;
 
-    yang_name = "ATM"; yang_parent_name = "ATM-subinterface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM"; yang_parent_name = "ATM-subinterface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::ATMSubinterface::ATM::~ATM()
@@ -5801,12 +5872,13 @@ Native::Interface::ATMSubinterface::ATM::~ATM()
 
 bool Native::Interface::ATMSubinterface::ATM::has_data() const
 {
-    for (std::size_t index=0; index<cem.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pvc.size(); index++)
+    for (std::size_t index=0; index<pvc.len(); index++)
     {
         if(pvc[index]->has_data())
             return true;
@@ -5819,12 +5891,12 @@ bool Native::Interface::ATMSubinterface::ATM::has_data() const
 
 bool Native::Interface::ATMSubinterface::ATM::has_operation() const
 {
-    for (std::size_t index=0; index<cem.size(); index++)
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pvc.size(); index++)
+    for (std::size_t index=0; index<pvc.len(); index++)
     {
         if(pvc[index]->has_operation())
             return true;
@@ -5846,7 +5918,8 @@ std::string Native::Interface::ATMSubinterface::ATM::get_absolute_path() const
 std::string Native::Interface::ATMSubinterface::ATM::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ATM" <<"[name='" <<name <<"']";
+    path_buffer << "ATM";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5885,7 +5958,7 @@ std::shared_ptr<Entity> Native::Interface::ATMSubinterface::ATM::get_child_by_na
     {
         auto c = std::make_shared<Native::Interface::ATMSubinterface::ATM::Cem>();
         c->parent = this;
-        cem.push_back(c);
+        cem.append(c);
         return c;
     }
 
@@ -5893,7 +5966,7 @@ std::shared_ptr<Entity> Native::Interface::ATMSubinterface::ATM::get_child_by_na
     {
         auto c = std::make_shared<Native::Interface::ATMSubinterface::ATM::Pvc>();
         c->parent = this;
-        pvc.push_back(c);
+        pvc.append(c);
         return c;
     }
 
@@ -5915,7 +5988,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATMSubinterfac
     }
 
     count = 0;
-    for (auto const & c : cem)
+    for (auto c : cem.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5924,7 +5997,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATMSubinterfac
     }
 
     count = 0;
-    for (auto const & c : pvc)
+    for (auto c : pvc.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5975,7 +6048,7 @@ Native::Interface::ATMSubinterface::ATM::Ip::Ip()
     address{YType::str, "address"}
 {
 
-    yang_name = "ip"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Ip::~Ip()
@@ -5984,6 +6057,7 @@ Native::Interface::ATMSubinterface::ATM::Ip::~Ip()
 
 bool Native::Interface::ATMSubinterface::ATM::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -6051,9 +6125,11 @@ Native::Interface::ATMSubinterface::ATM::Atm::Atm()
     :
     bandwidth{YType::enumeration, "bandwidth"},
     enable_ilmi_trap{YType::boolean, "enable-ilmi-trap"}
+        ,
+    pvp(this, {"pvp_number"})
 {
 
-    yang_name = "atm"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atm"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Atm::~Atm()
@@ -6062,7 +6138,8 @@ Native::Interface::ATMSubinterface::ATM::Atm::~Atm()
 
 bool Native::Interface::ATMSubinterface::ATM::Atm::has_data() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_data())
             return true;
@@ -6073,7 +6150,7 @@ bool Native::Interface::ATMSubinterface::ATM::Atm::has_data() const
 
 bool Native::Interface::ATMSubinterface::ATM::Atm::has_operation() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_operation())
             return true;
@@ -6107,7 +6184,7 @@ std::shared_ptr<Entity> Native::Interface::ATMSubinterface::ATM::Atm::get_child_
     {
         auto c = std::make_shared<Native::Interface::ATMSubinterface::ATM::Atm::Pvp>();
         c->parent = this;
-        pvp.push_back(c);
+        pvp.append(c);
         return c;
     }
 
@@ -6119,7 +6196,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATMSubinterfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pvp)
+    for (auto c : pvp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6169,14 +6246,14 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Pvp()
     :
     pvp_number{YType::uint16, "pvp-number"},
     l2transport{YType::empty, "l2transport"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "pvp"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvp"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Atm::Pvp::~Pvp()
@@ -6185,6 +6262,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::~Pvp()
 
 bool Native::Interface::ATMSubinterface::ATM::Atm::Pvp::has_data() const
 {
+    if (is_presence_container) return true;
     return pvp_number.is_set
 	|| l2transport.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
@@ -6203,7 +6281,8 @@ bool Native::Interface::ATMSubinterface::ATM::Atm::Pvp::has_operation() const
 std::string Native::Interface::ATMSubinterface::ATM::Atm::Pvp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pvp" <<"[pvp-number='" <<pvp_number <<"']";
+    path_buffer << "pvp";
+    ADD_KEY_TOKEN(pvp_number, "pvp-number");
     return path_buffer.str();
 }
 
@@ -6302,12 +6381,12 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::~Xconnect()
@@ -6316,6 +6395,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::~Xconnect()
 
 bool Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -6476,12 +6556,12 @@ bool Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::has_leaf_or_ch
 Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::~Backup()
@@ -6490,6 +6570,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::~Backup()
 
 bool Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -6580,7 +6661,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::Peer::Peer(
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::Peer::~Peer()
@@ -6589,6 +6670,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::Peer::~Peer
 
 bool Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -6697,7 +6779,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::Delay::Dela
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::Delay::~Delay()
@@ -6706,6 +6788,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::Delay::~Del
 
 bool Native::Interface::ATMSubinterface::ATM::Atm::Pvp::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -6788,7 +6871,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::XconnectPwCl
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::~XconnectPwClass()
@@ -6797,6 +6880,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::~XconnectPwC
 
 bool Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -6868,12 +6952,12 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Xc
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::~Xconnect()
@@ -6882,6 +6966,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::~X
 
 bool Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -6993,7 +7078,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Ud
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -7002,6 +7087,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Ud
 
 bool Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -7074,7 +7160,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Ud
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -7083,6 +7169,7 @@ Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Ud
 
 bool Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -7162,14 +7249,14 @@ bool Native::Interface::ATMSubinterface::ATM::Atm::Pvp::XconnectPwClass::Xconnec
 Native::Interface::ATMSubinterface::ATM::Cem::Cem()
     :
     number{YType::uint32, "number"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::ATMSubinterface::ATM::Cem::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "cem"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Cem::~Cem()
@@ -7178,6 +7265,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::~Cem()
 
 bool Native::Interface::ATMSubinterface::ATM::Cem::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
 	|| (xconnect_pw_class !=  nullptr && xconnect_pw_class->has_data());
@@ -7194,7 +7282,8 @@ bool Native::Interface::ATMSubinterface::ATM::Cem::has_operation() const
 std::string Native::Interface::ATMSubinterface::ATM::Cem::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-atm:cem" <<"[number='" <<number <<"']";
+    path_buffer << "Cisco-IOS-XE-atm:cem";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -7282,12 +7371,12 @@ Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::~Xconnect()
@@ -7296,6 +7385,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::~Xconnect()
 
 bool Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -7456,12 +7546,12 @@ bool Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::has_leaf_or_child_o
 Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::~Backup()
@@ -7470,6 +7560,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::~Backup()
 
 bool Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -7560,7 +7651,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::Peer::~Peer()
@@ -7569,6 +7660,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -7677,7 +7769,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::Delay::~Delay()
@@ -7686,6 +7778,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::ATMSubinterface::ATM::Cem::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -7768,7 +7861,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::~XconnectPwClass()
@@ -7777,6 +7870,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::~XconnectPwClass(
 
 bool Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -7848,12 +7942,12 @@ Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::Xconnec
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::~Xconnect()
@@ -7862,6 +7956,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::~Xconne
 
 bool Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -7973,7 +8068,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::Udp::Ud
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -7982,6 +8077,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::Udp::~U
 
 bool Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -8054,7 +8150,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::Udp::Po
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -8063,6 +8159,7 @@ Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::Udp::Po
 
 bool Native::Interface::ATMSubinterface::ATM::Cem::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -8145,14 +8242,14 @@ Native::Interface::ATMSubinterface::ATM::Pvc::Pvc()
     remote_vpi_vci{YType::str, "remote-vpi-vci"},
     l2transport{YType::empty, "l2transport"},
     ubr{YType::uint32, "ubr"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "pvc"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvc"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Pvc::~Pvc()
@@ -8161,6 +8258,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::~Pvc()
 
 bool Native::Interface::ATMSubinterface::ATM::Pvc::has_data() const
 {
+    if (is_presence_container) return true;
     return local_vpi_vci.is_set
 	|| remote_vpi_vci.is_set
 	|| l2transport.is_set
@@ -8183,7 +8281,8 @@ bool Native::Interface::ATMSubinterface::ATM::Pvc::has_operation() const
 std::string Native::Interface::ATMSubinterface::ATM::Pvc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-atm:pvc" <<"[local-vpi-vci='" <<local_vpi_vci <<"']";
+    path_buffer << "Cisco-IOS-XE-atm:pvc";
+    ADD_KEY_TOKEN(local_vpi_vci, "local-vpi-vci");
     return path_buffer.str();
 }
 
@@ -8304,12 +8403,12 @@ Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::~Xconnect()
@@ -8318,6 +8417,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::~Xconnect()
 
 bool Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -8478,12 +8578,12 @@ bool Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::has_leaf_or_child_o
 Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::~Backup()
@@ -8492,6 +8592,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::~Backup()
 
 bool Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -8582,7 +8683,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::Peer::~Peer()
@@ -8591,6 +8692,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -8699,7 +8801,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::Delay::~Delay()
@@ -8708,6 +8810,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::ATMSubinterface::ATM::Pvc::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -8790,7 +8893,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::~XconnectPwClass()
@@ -8799,6 +8902,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::~XconnectPwClass(
 
 bool Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -8870,12 +8974,12 @@ Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::Xconnec
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::~Xconnect()
@@ -8884,6 +8988,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::~Xconne
 
 bool Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -8995,7 +9100,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Ud
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -9004,6 +9109,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::~U
 
 bool Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -9076,7 +9182,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Po
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -9085,6 +9191,7 @@ Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Po
 
 bool Native::Interface::ATMSubinterface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -9165,14 +9272,16 @@ Native::Interface::ATMACR::ATMACR()
     :
     name{YType::str, "name"},
     load_interval{YType::uint32, "Cisco-IOS-XE-atm:load-interval"}
-    	,
+        ,
     ip(std::make_shared<Native::Interface::ATMACR::Ip>())
-	,atm(std::make_shared<Native::Interface::ATMACR::Atm>())
+    , atm(std::make_shared<Native::Interface::ATMACR::Atm>())
+    , cem(this, {"number"})
+    , pvc(this, {"local_vpi_vci"})
 {
     ip->parent = this;
     atm->parent = this;
 
-    yang_name = "ATM-ACR"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-ACR"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::ATMACR::~ATMACR()
@@ -9181,12 +9290,13 @@ Native::Interface::ATMACR::~ATMACR()
 
 bool Native::Interface::ATMACR::has_data() const
 {
-    for (std::size_t index=0; index<cem.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pvc.size(); index++)
+    for (std::size_t index=0; index<pvc.len(); index++)
     {
         if(pvc[index]->has_data())
             return true;
@@ -9199,12 +9309,12 @@ bool Native::Interface::ATMACR::has_data() const
 
 bool Native::Interface::ATMACR::has_operation() const
 {
-    for (std::size_t index=0; index<cem.size(); index++)
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pvc.size(); index++)
+    for (std::size_t index=0; index<pvc.len(); index++)
     {
         if(pvc[index]->has_operation())
             return true;
@@ -9226,7 +9336,8 @@ std::string Native::Interface::ATMACR::get_absolute_path() const
 std::string Native::Interface::ATMACR::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ATM-ACR" <<"[name='" <<name <<"']";
+    path_buffer << "ATM-ACR";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -9265,7 +9376,7 @@ std::shared_ptr<Entity> Native::Interface::ATMACR::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Interface::ATMACR::Cem>();
         c->parent = this;
-        cem.push_back(c);
+        cem.append(c);
         return c;
     }
 
@@ -9273,7 +9384,7 @@ std::shared_ptr<Entity> Native::Interface::ATMACR::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Interface::ATMACR::Pvc>();
         c->parent = this;
-        pvc.push_back(c);
+        pvc.append(c);
         return c;
     }
 
@@ -9295,7 +9406,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATMACR::get_ch
     }
 
     count = 0;
-    for (auto const & c : cem)
+    for (auto c : cem.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9304,7 +9415,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATMACR::get_ch
     }
 
     count = 0;
-    for (auto const & c : pvc)
+    for (auto c : pvc.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9355,7 +9466,7 @@ Native::Interface::ATMACR::Ip::Ip()
     address{YType::str, "address"}
 {
 
-    yang_name = "ip"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Ip::~Ip()
@@ -9364,6 +9475,7 @@ Native::Interface::ATMACR::Ip::~Ip()
 
 bool Native::Interface::ATMACR::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -9431,9 +9543,11 @@ Native::Interface::ATMACR::Atm::Atm()
     :
     bandwidth{YType::enumeration, "bandwidth"},
     enable_ilmi_trap{YType::boolean, "enable-ilmi-trap"}
+        ,
+    pvp(this, {"pvp_number"})
 {
 
-    yang_name = "atm"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atm"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Atm::~Atm()
@@ -9442,7 +9556,8 @@ Native::Interface::ATMACR::Atm::~Atm()
 
 bool Native::Interface::ATMACR::Atm::has_data() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_data())
             return true;
@@ -9453,7 +9568,7 @@ bool Native::Interface::ATMACR::Atm::has_data() const
 
 bool Native::Interface::ATMACR::Atm::has_operation() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_operation())
             return true;
@@ -9487,7 +9602,7 @@ std::shared_ptr<Entity> Native::Interface::ATMACR::Atm::get_child_by_name(const 
     {
         auto c = std::make_shared<Native::Interface::ATMACR::Atm::Pvp>();
         c->parent = this;
-        pvp.push_back(c);
+        pvp.append(c);
         return c;
     }
 
@@ -9499,7 +9614,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATMACR::Atm::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pvp)
+    for (auto c : pvp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9549,14 +9664,14 @@ Native::Interface::ATMACR::Atm::Pvp::Pvp()
     :
     pvp_number{YType::uint16, "pvp-number"},
     l2transport{YType::empty, "l2transport"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::ATMACR::Atm::Pvp::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "pvp"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvp"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Atm::Pvp::~Pvp()
@@ -9565,6 +9680,7 @@ Native::Interface::ATMACR::Atm::Pvp::~Pvp()
 
 bool Native::Interface::ATMACR::Atm::Pvp::has_data() const
 {
+    if (is_presence_container) return true;
     return pvp_number.is_set
 	|| l2transport.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
@@ -9583,7 +9699,8 @@ bool Native::Interface::ATMACR::Atm::Pvp::has_operation() const
 std::string Native::Interface::ATMACR::Atm::Pvp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pvp" <<"[pvp-number='" <<pvp_number <<"']";
+    path_buffer << "pvp";
+    ADD_KEY_TOKEN(pvp_number, "pvp-number");
     return path_buffer.str();
 }
 
@@ -9682,12 +9799,12 @@ Native::Interface::ATMACR::Atm::Pvp::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Atm::Pvp::Xconnect::~Xconnect()
@@ -9696,6 +9813,7 @@ Native::Interface::ATMACR::Atm::Pvp::Xconnect::~Xconnect()
 
 bool Native::Interface::ATMACR::Atm::Pvp::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -9856,12 +9974,12 @@ bool Native::Interface::ATMACR::Atm::Pvp::Xconnect::has_leaf_or_child_of_name(co
 Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::~Backup()
@@ -9870,6 +9988,7 @@ Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::~Backup()
 
 bool Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -9960,7 +10079,7 @@ Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::Peer::~Peer()
@@ -9969,6 +10088,7 @@ Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -10077,7 +10197,7 @@ Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::Delay::~Delay()
@@ -10086,6 +10206,7 @@ Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::ATMACR::Atm::Pvp::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -10168,7 +10289,7 @@ Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::~XconnectPwClass()
@@ -10177,6 +10298,7 @@ Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::~XconnectPwClass()
 
 bool Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -10248,12 +10370,12 @@ Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Xconnect()
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::~Xconnect()
@@ -10262,6 +10384,7 @@ Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::~Xconnect()
 
 bool Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -10373,7 +10496,7 @@ Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Udp()
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -10382,6 +10505,7 @@ Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::~Udp()
 
 bool Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -10454,7 +10578,7 @@ Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::Port(
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -10463,6 +10587,7 @@ Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::~Port
 
 bool Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -10542,14 +10667,14 @@ bool Native::Interface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::
 Native::Interface::ATMACR::Cem::Cem()
     :
     number{YType::uint32, "number"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::ATMACR::Cem::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::ATMACR::Cem::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::ATMACR::Cem::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "cem"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Cem::~Cem()
@@ -10558,6 +10683,7 @@ Native::Interface::ATMACR::Cem::~Cem()
 
 bool Native::Interface::ATMACR::Cem::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
 	|| (xconnect_pw_class !=  nullptr && xconnect_pw_class->has_data());
@@ -10574,7 +10700,8 @@ bool Native::Interface::ATMACR::Cem::has_operation() const
 std::string Native::Interface::ATMACR::Cem::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-atm:cem" <<"[number='" <<number <<"']";
+    path_buffer << "Cisco-IOS-XE-atm:cem";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -10662,12 +10789,12 @@ Native::Interface::ATMACR::Cem::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::ATMACR::Cem::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Cem::Xconnect::~Xconnect()
@@ -10676,6 +10803,7 @@ Native::Interface::ATMACR::Cem::Xconnect::~Xconnect()
 
 bool Native::Interface::ATMACR::Cem::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -10836,12 +10964,12 @@ bool Native::Interface::ATMACR::Cem::Xconnect::has_leaf_or_child_of_name(const s
 Native::Interface::ATMACR::Cem::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::ATMACR::Cem::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::ATMACR::Cem::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::ATMACR::Cem::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Cem::Xconnect::Backup::~Backup()
@@ -10850,6 +10978,7 @@ Native::Interface::ATMACR::Cem::Xconnect::Backup::~Backup()
 
 bool Native::Interface::ATMACR::Cem::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -10940,7 +11069,7 @@ Native::Interface::ATMACR::Cem::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Cem::Xconnect::Backup::Peer::~Peer()
@@ -10949,6 +11078,7 @@ Native::Interface::ATMACR::Cem::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::ATMACR::Cem::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -11057,7 +11187,7 @@ Native::Interface::ATMACR::Cem::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Cem::Xconnect::Backup::Delay::~Delay()
@@ -11066,6 +11196,7 @@ Native::Interface::ATMACR::Cem::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::ATMACR::Cem::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -11148,7 +11279,7 @@ Native::Interface::ATMACR::Cem::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Cem::XconnectPwClass::~XconnectPwClass()
@@ -11157,6 +11288,7 @@ Native::Interface::ATMACR::Cem::XconnectPwClass::~XconnectPwClass()
 
 bool Native::Interface::ATMACR::Cem::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -11228,12 +11360,12 @@ Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::Xconnect()
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::~Xconnect()
@@ -11242,6 +11374,7 @@ Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::~Xconnect()
 
 bool Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -11353,7 +11486,7 @@ Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp::Udp()
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -11362,6 +11495,7 @@ Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp::~Udp()
 
 bool Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -11434,7 +11568,7 @@ Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp::Port::Port()
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -11443,6 +11577,7 @@ Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp::Port::~Port()
 
 bool Native::Interface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -11525,14 +11660,14 @@ Native::Interface::ATMACR::Pvc::Pvc()
     remote_vpi_vci{YType::str, "remote-vpi-vci"},
     l2transport{YType::empty, "l2transport"},
     ubr{YType::uint32, "ubr"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::ATMACR::Pvc::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::ATMACR::Pvc::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::ATMACR::Pvc::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "pvc"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvc"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Pvc::~Pvc()
@@ -11541,6 +11676,7 @@ Native::Interface::ATMACR::Pvc::~Pvc()
 
 bool Native::Interface::ATMACR::Pvc::has_data() const
 {
+    if (is_presence_container) return true;
     return local_vpi_vci.is_set
 	|| remote_vpi_vci.is_set
 	|| l2transport.is_set
@@ -11563,7 +11699,8 @@ bool Native::Interface::ATMACR::Pvc::has_operation() const
 std::string Native::Interface::ATMACR::Pvc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-atm:pvc" <<"[local-vpi-vci='" <<local_vpi_vci <<"']";
+    path_buffer << "Cisco-IOS-XE-atm:pvc";
+    ADD_KEY_TOKEN(local_vpi_vci, "local-vpi-vci");
     return path_buffer.str();
 }
 
@@ -11684,12 +11821,12 @@ Native::Interface::ATMACR::Pvc::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::ATMACR::Pvc::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Pvc::Xconnect::~Xconnect()
@@ -11698,6 +11835,7 @@ Native::Interface::ATMACR::Pvc::Xconnect::~Xconnect()
 
 bool Native::Interface::ATMACR::Pvc::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -11858,12 +11996,12 @@ bool Native::Interface::ATMACR::Pvc::Xconnect::has_leaf_or_child_of_name(const s
 Native::Interface::ATMACR::Pvc::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::ATMACR::Pvc::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::ATMACR::Pvc::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::ATMACR::Pvc::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Pvc::Xconnect::Backup::~Backup()
@@ -11872,6 +12010,7 @@ Native::Interface::ATMACR::Pvc::Xconnect::Backup::~Backup()
 
 bool Native::Interface::ATMACR::Pvc::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -11962,7 +12101,7 @@ Native::Interface::ATMACR::Pvc::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Pvc::Xconnect::Backup::Peer::~Peer()
@@ -11971,6 +12110,7 @@ Native::Interface::ATMACR::Pvc::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::ATMACR::Pvc::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -12079,7 +12219,7 @@ Native::Interface::ATMACR::Pvc::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Pvc::Xconnect::Backup::Delay::~Delay()
@@ -12088,6 +12228,7 @@ Native::Interface::ATMACR::Pvc::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::ATMACR::Pvc::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -12170,7 +12311,7 @@ Native::Interface::ATMACR::Pvc::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Pvc::XconnectPwClass::~XconnectPwClass()
@@ -12179,6 +12320,7 @@ Native::Interface::ATMACR::Pvc::XconnectPwClass::~XconnectPwClass()
 
 bool Native::Interface::ATMACR::Pvc::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -12250,12 +12392,12 @@ Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::Xconnect()
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::~Xconnect()
@@ -12264,6 +12406,7 @@ Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::~Xconnect()
 
 bool Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -12375,7 +12518,7 @@ Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::Udp()
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -12384,6 +12527,7 @@ Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::~Udp()
 
 bool Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -12456,7 +12600,7 @@ Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::Port::Port()
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -12465,6 +12609,7 @@ Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::Port::~Port()
 
 bool Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -12542,9 +12687,11 @@ bool Native::Interface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::Port::has_l
 }
 
 Native::Interface::ATMACRsubinterface::ATMACRsubinterface()
+    :
+    atm_acr(this, {"name"})
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::ATMACRsubinterface::~ATMACRsubinterface()
@@ -12553,7 +12700,8 @@ Native::Interface::ATMACRsubinterface::~ATMACRsubinterface()
 
 bool Native::Interface::ATMACRsubinterface::has_data() const
 {
-    for (std::size_t index=0; index<atm_acr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atm_acr.len(); index++)
     {
         if(atm_acr[index]->has_data())
             return true;
@@ -12563,7 +12711,7 @@ bool Native::Interface::ATMACRsubinterface::has_data() const
 
 bool Native::Interface::ATMACRsubinterface::has_operation() const
 {
-    for (std::size_t index=0; index<atm_acr.size(); index++)
+    for (std::size_t index=0; index<atm_acr.len(); index++)
     {
         if(atm_acr[index]->has_operation())
             return true;
@@ -12600,7 +12748,7 @@ std::shared_ptr<Entity> Native::Interface::ATMACRsubinterface::get_child_by_name
     {
         auto c = std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR>();
         c->parent = this;
-        atm_acr.push_back(c);
+        atm_acr.append(c);
         return c;
     }
 
@@ -12612,7 +12760,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATMACRsubinter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atm_acr)
+    for (auto c : atm_acr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12642,14 +12790,16 @@ Native::Interface::ATMACRsubinterface::ATMACR::ATMACR()
     :
     name{YType::str, "name"},
     load_interval{YType::uint32, "Cisco-IOS-XE-atm:load-interval"}
-    	,
+        ,
     ip(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Ip>())
-	,atm(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Atm>())
+    , atm(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Atm>())
+    , cem(this, {"number"})
+    , pvc(this, {"local_vpi_vci"})
 {
     ip->parent = this;
     atm->parent = this;
 
-    yang_name = "ATM-ACR"; yang_parent_name = "ATM-ACRsubinterface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-ACR"; yang_parent_name = "ATM-ACRsubinterface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::~ATMACR()
@@ -12658,12 +12808,13 @@ Native::Interface::ATMACRsubinterface::ATMACR::~ATMACR()
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::has_data() const
 {
-    for (std::size_t index=0; index<cem.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pvc.size(); index++)
+    for (std::size_t index=0; index<pvc.len(); index++)
     {
         if(pvc[index]->has_data())
             return true;
@@ -12676,12 +12827,12 @@ bool Native::Interface::ATMACRsubinterface::ATMACR::has_data() const
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::has_operation() const
 {
-    for (std::size_t index=0; index<cem.size(); index++)
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pvc.size(); index++)
+    for (std::size_t index=0; index<pvc.len(); index++)
     {
         if(pvc[index]->has_operation())
             return true;
@@ -12703,7 +12854,8 @@ std::string Native::Interface::ATMACRsubinterface::ATMACR::get_absolute_path() c
 std::string Native::Interface::ATMACRsubinterface::ATMACR::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ATM-ACR" <<"[name='" <<name <<"']";
+    path_buffer << "ATM-ACR";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -12742,7 +12894,7 @@ std::shared_ptr<Entity> Native::Interface::ATMACRsubinterface::ATMACR::get_child
     {
         auto c = std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Cem>();
         c->parent = this;
-        cem.push_back(c);
+        cem.append(c);
         return c;
     }
 
@@ -12750,7 +12902,7 @@ std::shared_ptr<Entity> Native::Interface::ATMACRsubinterface::ATMACR::get_child
     {
         auto c = std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Pvc>();
         c->parent = this;
-        pvc.push_back(c);
+        pvc.append(c);
         return c;
     }
 
@@ -12772,7 +12924,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATMACRsubinter
     }
 
     count = 0;
-    for (auto const & c : cem)
+    for (auto c : cem.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12781,7 +12933,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATMACRsubinter
     }
 
     count = 0;
-    for (auto const & c : pvc)
+    for (auto c : pvc.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12832,7 +12984,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Ip::Ip()
     address{YType::str, "address"}
 {
 
-    yang_name = "ip"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Ip::~Ip()
@@ -12841,6 +12993,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Ip::~Ip()
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -12908,9 +13061,11 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Atm()
     :
     bandwidth{YType::enumeration, "bandwidth"},
     enable_ilmi_trap{YType::boolean, "enable-ilmi-trap"}
+        ,
+    pvp(this, {"pvp_number"})
 {
 
-    yang_name = "atm"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atm"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Atm::~Atm()
@@ -12919,7 +13074,8 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::~Atm()
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::has_data() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_data())
             return true;
@@ -12930,7 +13086,7 @@ bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::has_data() const
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::has_operation() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_operation())
             return true;
@@ -12964,7 +13120,7 @@ std::shared_ptr<Entity> Native::Interface::ATMACRsubinterface::ATMACR::Atm::get_
     {
         auto c = std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp>();
         c->parent = this;
-        pvp.push_back(c);
+        pvp.append(c);
         return c;
     }
 
@@ -12976,7 +13132,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::ATMACRsubinter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pvp)
+    for (auto c : pvp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13026,14 +13182,14 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Pvp()
     :
     pvp_number{YType::uint16, "pvp-number"},
     l2transport{YType::empty, "l2transport"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "pvp"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvp"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::~Pvp()
@@ -13042,6 +13198,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::~Pvp()
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::has_data() const
 {
+    if (is_presence_container) return true;
     return pvp_number.is_set
 	|| l2transport.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
@@ -13060,7 +13217,8 @@ bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::has_operation() co
 std::string Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pvp" <<"[pvp-number='" <<pvp_number <<"']";
+    path_buffer << "pvp";
+    ADD_KEY_TOKEN(pvp_number, "pvp-number");
     return path_buffer.str();
 }
 
@@ -13159,12 +13317,12 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::~Xconnect()
@@ -13173,6 +13331,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::~Xconnect()
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -13333,12 +13492,12 @@ bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::has_leaf
 Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::~Backup()
@@ -13347,6 +13506,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::~Back
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -13437,7 +13597,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::Peer:
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::Peer::~Peer()
@@ -13446,6 +13606,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::Peer:
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -13554,7 +13715,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::Delay
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::Delay::~Delay()
@@ -13563,6 +13724,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::Delay
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -13645,7 +13807,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconne
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::~XconnectPwClass()
@@ -13654,6 +13816,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::~Xconn
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -13725,12 +13888,12 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconne
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::~Xconnect()
@@ -13739,6 +13902,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconne
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -13850,7 +14014,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconne
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -13859,6 +14023,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconne
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -13931,7 +14096,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconne
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -13940,6 +14105,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconne
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -14019,14 +14185,14 @@ bool Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp::XconnectPwClass::X
 Native::Interface::ATMACRsubinterface::ATMACR::Cem::Cem()
     :
     number{YType::uint32, "number"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "cem"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Cem::~Cem()
@@ -14035,6 +14201,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::~Cem()
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Cem::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
 	|| (xconnect_pw_class !=  nullptr && xconnect_pw_class->has_data());
@@ -14051,7 +14218,8 @@ bool Native::Interface::ATMACRsubinterface::ATMACR::Cem::has_operation() const
 std::string Native::Interface::ATMACRsubinterface::ATMACR::Cem::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-atm:cem" <<"[number='" <<number <<"']";
+    path_buffer << "Cisco-IOS-XE-atm:cem";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -14139,12 +14307,12 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::~Xconnect()
@@ -14153,6 +14321,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::~Xconnect()
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -14313,12 +14482,12 @@ bool Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::has_leaf_or_c
 Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::~Backup()
@@ -14327,6 +14496,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::~Backup()
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -14417,7 +14587,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::Peer::Peer
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::Peer::~Peer()
@@ -14426,6 +14596,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::Peer::~Pee
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -14534,7 +14705,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::Delay::Del
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::Delay::~Delay()
@@ -14543,6 +14714,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::Delay::~De
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Cem::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -14625,7 +14797,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::XconnectPwC
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::~XconnectPwClass()
@@ -14634,6 +14806,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::~XconnectPw
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -14705,12 +14878,12 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::X
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::~Xconnect()
@@ -14719,6 +14892,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::~
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -14830,7 +15004,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::U
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -14839,6 +15013,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::U
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -14911,7 +15086,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::U
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -14920,6 +15095,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::U
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Cem::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -15002,14 +15178,14 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Pvc()
     remote_vpi_vci{YType::str, "remote-vpi-vci"},
     l2transport{YType::empty, "l2transport"},
     ubr{YType::uint32, "ubr"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "pvc"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvc"; yang_parent_name = "ATM-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Pvc::~Pvc()
@@ -15018,6 +15194,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::~Pvc()
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Pvc::has_data() const
 {
+    if (is_presence_container) return true;
     return local_vpi_vci.is_set
 	|| remote_vpi_vci.is_set
 	|| l2transport.is_set
@@ -15040,7 +15217,8 @@ bool Native::Interface::ATMACRsubinterface::ATMACR::Pvc::has_operation() const
 std::string Native::Interface::ATMACRsubinterface::ATMACR::Pvc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-atm:pvc" <<"[local-vpi-vci='" <<local_vpi_vci <<"']";
+    path_buffer << "Cisco-IOS-XE-atm:pvc";
+    ADD_KEY_TOKEN(local_vpi_vci, "local-vpi-vci");
     return path_buffer.str();
 }
 
@@ -15161,12 +15339,12 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::~Xconnect()
@@ -15175,6 +15353,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::~Xconnect()
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -15335,12 +15514,12 @@ bool Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::has_leaf_or_c
 Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::~Backup()
@@ -15349,6 +15528,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::~Backup()
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -15439,7 +15619,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::Peer::Peer
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::Peer::~Peer()
@@ -15448,6 +15628,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::Peer::~Pee
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -15556,7 +15737,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::Delay::Del
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::Delay::~Delay()
@@ -15565,6 +15746,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::Delay::~De
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Pvc::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -15647,7 +15829,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::XconnectPwC
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::~XconnectPwClass()
@@ -15656,6 +15838,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::~XconnectPw
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -15727,12 +15910,12 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::X
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::~Xconnect()
@@ -15741,6 +15924,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::~
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -15852,7 +16036,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::U
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -15861,6 +16045,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::U
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -15933,7 +16118,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::U
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -15942,6 +16127,7 @@ Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::U
 
 bool Native::Interface::ATMACRsubinterface::ATMACR::Pvc::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -16033,53 +16219,54 @@ Native::Interface::BDI::BDI()
     service_insertion{YType::enumeration, "service-insertion"},
     channel_protocol{YType::enumeration, "Cisco-IOS-XE-ethernet:channel-protocol"},
     duplex{YType::enumeration, "Cisco-IOS-XE-ethernet:duplex"}
-    	,
+        ,
     switchport_conf(std::make_shared<Native::Interface::BDI::SwitchportConf>())
-	,switchport(std::make_shared<Native::Interface::BDI::Switchport>())
-	,stackwise_virtual(std::make_shared<Native::Interface::BDI::StackwiseVirtual>())
-	,arp(std::make_shared<Native::Interface::BDI::Arp>())
-	,backup(std::make_shared<Native::Interface::BDI::Backup>())
-	,cemoudp(std::make_shared<Native::Interface::BDI::Cemoudp>())
-	,cws_tunnel(std::make_shared<Native::Interface::BDI::CwsTunnel>())
-	,l2protocol_tunnel(nullptr) // presence node
-	,encapsulation(std::make_shared<Native::Interface::BDI::Encapsulation>())
-	,fair_queue_conf(std::make_shared<Native::Interface::BDI::FairQueueConf>())
-	,fair_queue(std::make_shared<Native::Interface::BDI::FairQueue>())
-	,flowcontrol(std::make_shared<Native::Interface::BDI::Flowcontrol>())
-	,isis(std::make_shared<Native::Interface::BDI::Isis>())
-	,keepalive_settings(std::make_shared<Native::Interface::BDI::KeepaliveSettings>())
-	,bfd(std::make_shared<Native::Interface::BDI::Bfd>())
-	,bandwidth(std::make_shared<Native::Interface::BDI::Bandwidth>())
-	,dampening(std::make_shared<Native::Interface::BDI::Dampening>())
-	,domain(std::make_shared<Native::Interface::BDI::Domain>())
-	,mpls(std::make_shared<Native::Interface::BDI::Mpls>())
-	,ip_vrf(std::make_shared<Native::Interface::BDI::IpVrf>())
-	,vrf(std::make_shared<Native::Interface::BDI::Vrf>())
-	,ip(std::make_shared<Native::Interface::BDI::Ip>())
-	,ipv6(std::make_shared<Native::Interface::BDI::Ipv6>())
-	,logging(std::make_shared<Native::Interface::BDI::Logging>())
-	,mdix(std::make_shared<Native::Interface::BDI::Mdix>())
-	,mop(std::make_shared<Native::Interface::BDI::Mop>())
-	,interface_qos(std::make_shared<Native::Interface::BDI::InterfaceQos>())
-	,standby(std::make_shared<Native::Interface::BDI::Standby>())
-	,access_session(std::make_shared<Native::Interface::BDI::AccessSession>())
-	,storm_control(std::make_shared<Native::Interface::BDI::StormControl>())
-	,trust(std::make_shared<Native::Interface::BDI::Trust>())
-	,priority_queue(std::make_shared<Native::Interface::BDI::PriorityQueue>())
-	,rcv_queue(std::make_shared<Native::Interface::BDI::RcvQueue>())
-	,peer(std::make_shared<Native::Interface::BDI::Peer>())
-	,pm_path(std::make_shared<Native::Interface::BDI::PmPath>())
-	,carrier_delay(std::make_shared<Native::Interface::BDI::CarrierDelay>())
-	,channel_group(std::make_shared<Native::Interface::BDI::ChannelGroup>())
-	,ethernet(std::make_shared<Native::Interface::BDI::Ethernet>())
-	,negotiation(std::make_shared<Native::Interface::BDI::Negotiation>())
-	,eapol(std::make_shared<Native::Interface::BDI::Eapol>())
-	,synchronous(std::make_shared<Native::Interface::BDI::Synchronous>())
-	,speed(std::make_shared<Native::Interface::BDI::Speed>())
-	,plim(std::make_shared<Native::Interface::BDI::Plim>())
-	,pppoe(std::make_shared<Native::Interface::BDI::Pppoe>())
-	,service(std::make_shared<Native::Interface::BDI::Service>())
-	,service_policy(std::make_shared<Native::Interface::BDI::ServicePolicy>())
+    , switchport(std::make_shared<Native::Interface::BDI::Switchport>())
+    , stackwise_virtual(std::make_shared<Native::Interface::BDI::StackwiseVirtual>())
+    , arp(std::make_shared<Native::Interface::BDI::Arp>())
+    , backup(std::make_shared<Native::Interface::BDI::Backup>())
+    , cemoudp(std::make_shared<Native::Interface::BDI::Cemoudp>())
+    , cws_tunnel(std::make_shared<Native::Interface::BDI::CwsTunnel>())
+    , l2protocol_tunnel(nullptr) // presence node
+    , encapsulation(std::make_shared<Native::Interface::BDI::Encapsulation>())
+    , fair_queue_conf(std::make_shared<Native::Interface::BDI::FairQueueConf>())
+    , fair_queue(std::make_shared<Native::Interface::BDI::FairQueue>())
+    , flowcontrol(std::make_shared<Native::Interface::BDI::Flowcontrol>())
+    , isis(std::make_shared<Native::Interface::BDI::Isis>())
+    , keepalive_settings(std::make_shared<Native::Interface::BDI::KeepaliveSettings>())
+    , bfd(std::make_shared<Native::Interface::BDI::Bfd>())
+    , bandwidth(std::make_shared<Native::Interface::BDI::Bandwidth>())
+    , dampening(std::make_shared<Native::Interface::BDI::Dampening>())
+    , domain(std::make_shared<Native::Interface::BDI::Domain>())
+    , hold_queue(this, {"direction"})
+    , mpls(std::make_shared<Native::Interface::BDI::Mpls>())
+    , ip_vrf(std::make_shared<Native::Interface::BDI::IpVrf>())
+    , vrf(std::make_shared<Native::Interface::BDI::Vrf>())
+    , ip(std::make_shared<Native::Interface::BDI::Ip>())
+    , ipv6(std::make_shared<Native::Interface::BDI::Ipv6>())
+    , logging(std::make_shared<Native::Interface::BDI::Logging>())
+    , mdix(std::make_shared<Native::Interface::BDI::Mdix>())
+    , mop(std::make_shared<Native::Interface::BDI::Mop>())
+    , interface_qos(std::make_shared<Native::Interface::BDI::InterfaceQos>())
+    , standby(std::make_shared<Native::Interface::BDI::Standby>())
+    , access_session(std::make_shared<Native::Interface::BDI::AccessSession>())
+    , storm_control(std::make_shared<Native::Interface::BDI::StormControl>())
+    , trust(std::make_shared<Native::Interface::BDI::Trust>())
+    , priority_queue(std::make_shared<Native::Interface::BDI::PriorityQueue>())
+    , rcv_queue(std::make_shared<Native::Interface::BDI::RcvQueue>())
+    , peer(std::make_shared<Native::Interface::BDI::Peer>())
+    , pm_path(std::make_shared<Native::Interface::BDI::PmPath>())
+    , service_policy(std::make_shared<Native::Interface::BDI::ServicePolicy>())
+    , carrier_delay(std::make_shared<Native::Interface::BDI::CarrierDelay>())
+    , channel_group(std::make_shared<Native::Interface::BDI::ChannelGroup>())
+    , ethernet(std::make_shared<Native::Interface::BDI::Ethernet>())
+    , negotiation(std::make_shared<Native::Interface::BDI::Negotiation>())
+    , eapol(std::make_shared<Native::Interface::BDI::Eapol>())
+    , synchronous(std::make_shared<Native::Interface::BDI::Synchronous>())
+    , speed(std::make_shared<Native::Interface::BDI::Speed>())
+    , plim(std::make_shared<Native::Interface::BDI::Plim>())
+    , pppoe(std::make_shared<Native::Interface::BDI::Pppoe>())
+    , service(std::make_shared<Native::Interface::BDI::Service>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -16115,6 +16302,7 @@ Native::Interface::BDI::BDI()
     rcv_queue->parent = this;
     peer->parent = this;
     pm_path->parent = this;
+    service_policy->parent = this;
     carrier_delay->parent = this;
     channel_group->parent = this;
     ethernet->parent = this;
@@ -16125,9 +16313,8 @@ Native::Interface::BDI::BDI()
     plim->parent = this;
     pppoe->parent = this;
     service->parent = this;
-    service_policy->parent = this;
 
-    yang_name = "BDI"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "BDI"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::BDI::~BDI()
@@ -16136,7 +16323,8 @@ Native::Interface::BDI::~BDI()
 
 bool Native::Interface::BDI::has_data() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_data())
             return true;
@@ -16189,6 +16377,7 @@ bool Native::Interface::BDI::has_data() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
+	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (carrier_delay !=  nullptr && carrier_delay->has_data())
 	|| (channel_group !=  nullptr && channel_group->has_data())
 	|| (ethernet !=  nullptr && ethernet->has_data())
@@ -16198,13 +16387,12 @@ bool Native::Interface::BDI::has_data() const
 	|| (speed !=  nullptr && speed->has_data())
 	|| (plim !=  nullptr && plim->has_data())
 	|| (pppoe !=  nullptr && pppoe->has_data())
-	|| (service !=  nullptr && service->has_data())
-	|| (service_policy !=  nullptr && service_policy->has_data());
+	|| (service !=  nullptr && service->has_data());
 }
 
 bool Native::Interface::BDI::has_operation() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_operation())
             return true;
@@ -16258,6 +16446,7 @@ bool Native::Interface::BDI::has_operation() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_operation())
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation())
 	|| (carrier_delay !=  nullptr && carrier_delay->has_operation())
 	|| (channel_group !=  nullptr && channel_group->has_operation())
 	|| (ethernet !=  nullptr && ethernet->has_operation())
@@ -16267,8 +16456,7 @@ bool Native::Interface::BDI::has_operation() const
 	|| (speed !=  nullptr && speed->has_operation())
 	|| (plim !=  nullptr && plim->has_operation())
 	|| (pppoe !=  nullptr && pppoe->has_operation())
-	|| (service !=  nullptr && service->has_operation())
-	|| (service_policy !=  nullptr && service_policy->has_operation());
+	|| (service !=  nullptr && service->has_operation());
 }
 
 std::string Native::Interface::BDI::get_absolute_path() const
@@ -16281,7 +16469,8 @@ std::string Native::Interface::BDI::get_absolute_path() const
 std::string Native::Interface::BDI::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "BDI" <<"[name='" <<name <<"']";
+    path_buffer << "BDI";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -16376,7 +16565,7 @@ std::shared_ptr<Entity> Native::Interface::BDI::get_child_by_name(const std::str
     {
         if(l2protocol_tunnel == nullptr)
         {
-            l2protocol_tunnel = std::make_shared<Native::Interface::BDI::L2ProtocolTunnel>();
+            l2protocol_tunnel = std::make_shared<Native::Interface::BDI::L2protocolTunnel>();
         }
         return l2protocol_tunnel;
     }
@@ -16475,7 +16664,7 @@ std::shared_ptr<Entity> Native::Interface::BDI::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Native::Interface::BDI::HoldQueue>();
         c->parent = this;
-        hold_queue.push_back(c);
+        hold_queue.append(c);
         return c;
     }
 
@@ -16632,6 +16821,15 @@ std::shared_ptr<Entity> Native::Interface::BDI::get_child_by_name(const std::str
         return pm_path;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<Native::Interface::BDI::ServicePolicy>();
+        }
+        return service_policy;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-ethernet:carrier-delay")
     {
         if(carrier_delay == nullptr)
@@ -16720,15 +16918,6 @@ std::shared_ptr<Entity> Native::Interface::BDI::get_child_by_name(const std::str
             service = std::make_shared<Native::Interface::BDI::Service>();
         }
         return service;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::BDI::ServicePolicy>();
-        }
-        return service_policy;
     }
 
     return nullptr;
@@ -16829,7 +17018,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::get_child
     }
 
     count = 0;
-    for (auto const & c : hold_queue)
+    for (auto c : hold_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16922,6 +17111,11 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::get_child
         children["pm-path"] = pm_path;
     }
 
+    if(service_policy != nullptr)
+    {
+        children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
+    }
+
     if(carrier_delay != nullptr)
     {
         children["Cisco-IOS-XE-ethernet:carrier-delay"] = carrier_delay;
@@ -16970,11 +17164,6 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::get_child
     if(service != nullptr)
     {
         children["Cisco-IOS-XE-ethernet:service"] = service;
-    }
-
-    if(service_policy != nullptr)
-    {
-        children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
     }
 
     return children;
@@ -17120,7 +17309,7 @@ void Native::Interface::BDI::set_filter(const std::string & value_path, YFilter 
 
 bool Native::Interface::BDI::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "negotiation" || name == "eapol" || name == "synchronous" || name == "speed" || name == "plim" || name == "pppoe" || name == "service" || name == "service-policy" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "service-policy" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "negotiation" || name == "eapol" || name == "synchronous" || name == "speed" || name == "plim" || name == "pppoe" || name == "service" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex")
         return true;
     return false;
 }
@@ -17130,7 +17319,7 @@ Native::Interface::BDI::SwitchportConf::SwitchportConf()
     switchport{YType::boolean, "switchport"}
 {
 
-    yang_name = "switchport-conf"; yang_parent_name = "BDI"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport-conf"; yang_parent_name = "BDI"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::SwitchportConf::~SwitchportConf()
@@ -17139,6 +17328,7 @@ Native::Interface::BDI::SwitchportConf::~SwitchportConf()
 
 bool Native::Interface::BDI::SwitchportConf::has_data() const
 {
+    if (is_presence_container) return true;
     return switchport.is_set;
 }
 
@@ -17205,7 +17395,7 @@ bool Native::Interface::BDI::SwitchportConf::has_leaf_or_child_of_name(const std
 Native::Interface::BDI::Switchport::Switchport()
 {
 
-    yang_name = "switchport"; yang_parent_name = "BDI"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport"; yang_parent_name = "BDI"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Switchport::~Switchport()
@@ -17214,6 +17404,7 @@ Native::Interface::BDI::Switchport::~Switchport()
 
 bool Native::Interface::BDI::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 

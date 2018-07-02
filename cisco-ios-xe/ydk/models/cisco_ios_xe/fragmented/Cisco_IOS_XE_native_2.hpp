@@ -178,7 +178,7 @@ class Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Data : public ydk::Enti
         ydk::YLeaf threshold; //type: uint32
         class Multicast; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Data::Multicast
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Data::Multicast> > multicast;
+        ydk::YList multicast;
         
 }; // Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Data
 
@@ -245,8 +245,8 @@ class Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget : public ydk::En
         class Export; //type: Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Export
         class Import; //type: Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Import
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Export> > export_;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Import> > import;
+        ydk::YList export_;
+        ydk::YList import;
         
 }; // Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget
 
@@ -427,8 +427,8 @@ class Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget : public ydk::En
         class Export; //type: Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Export
         class Import; //type: Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Import
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Export> > export_;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Import> > import;
+        ydk::YList export_;
+        ydk::YList import;
         
 }; // Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget
 
@@ -605,8 +605,8 @@ class Native::Vrf::Definition::RouteTarget : public ydk::Entity
         class Export; //type: Native::Vrf::Definition::RouteTarget::Export
         class Import; //type: Native::Vrf::Definition::RouteTarget::Import
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::RouteTarget::Export> > export_;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::RouteTarget::Import> > import;
+        ydk::YList export_;
+        ydk::YList import;
         
 }; // Native::Vrf::Definition::RouteTarget
 
@@ -694,8 +694,8 @@ class Native::Rmon : public ydk::Entity
         class Alarm; //type: Native::Rmon::Alarm
         class Event; //type: Native::Rmon::Event
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Rmon::Alarm> > alarm;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Rmon::Event> > event;
+        ydk::YList alarm;
+        ydk::YList event;
         
 }; // Native::Rmon
 
@@ -943,9 +943,9 @@ class Native::Flow : public ydk::Entity
         class Exporter; //type: Native::Flow::Exporter
         class Monitor; //type: Native::Flow::Monitor
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record> > record;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter> > exporter;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor> > monitor;
+        ydk::YList record;
+        ydk::YList exporter;
+        ydk::YList monitor;
         
 }; // Native::Flow
 
@@ -2601,21 +2601,21 @@ class Native::Flow::Record::Collect::Datalink : public ydk::Entity
         ydk::YLeaf ethertype; //type: empty
         ydk::YLeaf vlan; //type: Vlan
         ydk::YLeaf source_vlan_id; //type: empty
-        class Dot1Q; //type: Native::Flow::Record::Collect::Datalink::Dot1Q
+        class Dot1q; //type: Native::Flow::Record::Collect::Datalink::Dot1q
         class Mac; //type: Native::Flow::Record::Collect::Datalink::Mac
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Collect::Datalink::Dot1Q> dot1q;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Collect::Datalink::Dot1q> dot1q;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Collect::Datalink::Mac> mac;
                 class Vlan;
 
 }; // Native::Flow::Record::Collect::Datalink
 
 
-class Native::Flow::Record::Collect::Datalink::Dot1Q : public ydk::Entity
+class Native::Flow::Record::Collect::Datalink::Dot1q : public ydk::Entity
 {
     public:
-        Dot1Q();
-        ~Dot1Q();
+        Dot1q();
+        ~Dot1q();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2628,14 +2628,14 @@ class Native::Flow::Record::Collect::Datalink::Dot1Q : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: empty
-        class Vlan; //type: Native::Flow::Record::Collect::Datalink::Dot1Q::Vlan
+        class Vlan; //type: Native::Flow::Record::Collect::Datalink::Dot1q::Vlan
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Collect::Datalink::Dot1Q::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Collect::Datalink::Dot1q::Vlan> vlan;
         
-}; // Native::Flow::Record::Collect::Datalink::Dot1Q
+}; // Native::Flow::Record::Collect::Datalink::Dot1q
 
 
-class Native::Flow::Record::Collect::Datalink::Dot1Q::Vlan : public ydk::Entity
+class Native::Flow::Record::Collect::Datalink::Dot1q::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -2654,7 +2654,7 @@ class Native::Flow::Record::Collect::Datalink::Dot1Q::Vlan : public ydk::Entity
         ydk::YLeaf input; //type: empty
         ydk::YLeaf output; //type: empty
 
-}; // Native::Flow::Record::Collect::Datalink::Dot1Q::Vlan
+}; // Native::Flow::Record::Collect::Datalink::Dot1q::Vlan
 
 
 class Native::Flow::Record::Collect::Datalink::Mac : public ydk::Entity

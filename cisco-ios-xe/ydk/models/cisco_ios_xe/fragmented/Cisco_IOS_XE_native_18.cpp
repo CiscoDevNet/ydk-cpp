@@ -5,40 +5,40 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_18.hpp"
-#include "Cisco_IOS_XE_native_101.hpp"
-#include "Cisco_IOS_XE_native_64.hpp"
-#include "Cisco_IOS_XE_native_87.hpp"
-#include "Cisco_IOS_XE_native_25.hpp"
-#include "Cisco_IOS_XE_native_72.hpp"
-#include "Cisco_IOS_XE_native_90.hpp"
-#include "Cisco_IOS_XE_native_34.hpp"
-#include "Cisco_IOS_XE_native_20.hpp"
-#include "Cisco_IOS_XE_native_39.hpp"
-#include "Cisco_IOS_XE_native_24.hpp"
 #include "Cisco_IOS_XE_native_98.hpp"
-#include "Cisco_IOS_XE_native_85.hpp"
-#include "Cisco_IOS_XE_native_77.hpp"
-#include "Cisco_IOS_XE_native_75.hpp"
-#include "Cisco_IOS_XE_native_30.hpp"
-#include "Cisco_IOS_XE_native_33.hpp"
-#include "Cisco_IOS_XE_native_74.hpp"
-#include "Cisco_IOS_XE_native_86.hpp"
-#include "Cisco_IOS_XE_native_93.hpp"
-#include "Cisco_IOS_XE_native_82.hpp"
-#include "Cisco_IOS_XE_native_19.hpp"
-#include "Cisco_IOS_XE_native_31.hpp"
+#include "Cisco_IOS_XE_native_39.hpp"
 #include "Cisco_IOS_XE_native_104.hpp"
-#include "Cisco_IOS_XE_native_69.hpp"
-#include "Cisco_IOS_XE_native_49.hpp"
-#include "Cisco_IOS_XE_native_92.hpp"
-#include "Cisco_IOS_XE_native_103.hpp"
-#include "Cisco_IOS_XE_native_21.hpp"
-#include "Cisco_IOS_XE_native_44.hpp"
-#include "Cisco_IOS_XE_native_54.hpp"
-#include "Cisco_IOS_XE_native_84.hpp"
-#include "Cisco_IOS_XE_native_59.hpp"
-#include "Cisco_IOS_XE_native_73.hpp"
+#include "Cisco_IOS_XE_native_82.hpp"
 #include "Cisco_IOS_XE_native_91.hpp"
+#include "Cisco_IOS_XE_native_30.hpp"
+#include "Cisco_IOS_XE_native_85.hpp"
+#include "Cisco_IOS_XE_native_93.hpp"
+#include "Cisco_IOS_XE_native_20.hpp"
+#include "Cisco_IOS_XE_native_74.hpp"
+#include "Cisco_IOS_XE_native_69.hpp"
+#include "Cisco_IOS_XE_native_24.hpp"
+#include "Cisco_IOS_XE_native_64.hpp"
+#include "Cisco_IOS_XE_native_44.hpp"
+#include "Cisco_IOS_XE_native_73.hpp"
+#include "Cisco_IOS_XE_native_75.hpp"
+#include "Cisco_IOS_XE_native_72.hpp"
+#include "Cisco_IOS_XE_native_49.hpp"
+#include "Cisco_IOS_XE_native_59.hpp"
+#include "Cisco_IOS_XE_native_86.hpp"
+#include "Cisco_IOS_XE_native_101.hpp"
+#include "Cisco_IOS_XE_native_92.hpp"
+#include "Cisco_IOS_XE_native_84.hpp"
+#include "Cisco_IOS_XE_native_33.hpp"
+#include "Cisco_IOS_XE_native_103.hpp"
+#include "Cisco_IOS_XE_native_90.hpp"
+#include "Cisco_IOS_XE_native_19.hpp"
+#include "Cisco_IOS_XE_native_87.hpp"
+#include "Cisco_IOS_XE_native_77.hpp"
+#include "Cisco_IOS_XE_native_31.hpp"
+#include "Cisco_IOS_XE_native_34.hpp"
+#include "Cisco_IOS_XE_native_21.hpp"
+#include "Cisco_IOS_XE_native_25.hpp"
+#include "Cisco_IOS_XE_native_54.hpp"
 
 using namespace ydk;
 
@@ -51,7 +51,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     table{YType::str, "table"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit::ExceedAction::~ExceedAction()
@@ -60,6 +60,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set
 	|| table.is_set;
 }
@@ -142,7 +143,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit::~ExceedSetQosTransmit()
@@ -151,6 +152,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -222,7 +224,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     set_qos_transmit{YType::str, "set-qos-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit::ExceedAction::~ExceedAction()
@@ -231,6 +233,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set;
 }
 
@@ -300,7 +303,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit::~ExceedTransmit()
@@ -309,6 +312,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -380,7 +384,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     transmit{YType::empty, "transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit::ExceedAction::~ExceedAction()
@@ -389,6 +393,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit.is_set;
 }
 
@@ -458,7 +463,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop::~ExceedDrop()
@@ -467,6 +472,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -538,7 +544,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     drop{YType::empty, "drop"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop::ExceedAction::~ExceedAction()
@@ -547,6 +553,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return drop.is_set;
 }
 
@@ -616,7 +623,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit::~ViolateSetClpTransmit()
@@ -625,6 +632,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -696,7 +704,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     set_clp_transmit{YType::empty, "set-clp-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit::ViolateAction::~ViolateAction()
@@ -705,6 +713,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_clp_transmit.is_set;
 }
 
@@ -774,7 +783,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit::~ViolateSetCosTransmit()
@@ -783,6 +792,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -855,7 +865,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     table{YType::str, "table"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit::ViolateAction::~ViolateAction()
@@ -864,6 +874,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_cos_transmit.is_set
 	|| table.is_set;
 }
@@ -946,7 +957,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit::~ViolateSetDiscardClassTransmit()
@@ -955,6 +966,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -1026,7 +1038,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     set_discard_class_transmit{YType::uint8, "set-discard-class-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit::ViolateAction::~ViolateAction()
@@ -1035,6 +1047,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_discard_class_transmit.is_set;
 }
 
@@ -1104,7 +1117,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit::~ViolateSetDscpTransmit()
@@ -1113,6 +1126,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -1185,7 +1199,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     table{YType::str, "table"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit::ViolateAction::~ViolateAction()
@@ -1194,6 +1208,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_dscp_transmit.is_set
 	|| table.is_set;
 }
@@ -1276,7 +1291,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit::~ViolateSetFrdeTransmit()
@@ -1285,6 +1300,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -1356,7 +1372,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     set_frde_transmit{YType::empty, "set-frde-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit::ViolateAction::~ViolateAction()
@@ -1365,6 +1381,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_frde_transmit.is_set;
 }
 
@@ -1434,7 +1451,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit::~ViolateSetMplsExpImpositionTransmit()
@@ -1443,6 +1460,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -1514,7 +1532,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     set_mpls_exp_imposition_transmit{YType::str, "set-mpls-exp-imposition-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::~ViolateAction()
@@ -1523,6 +1541,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_imposition_transmit.is_set;
 }
 
@@ -1592,7 +1611,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::~ViolateSetMplsExpTopmostTransmit()
@@ -1601,6 +1620,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -1672,7 +1692,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     set_mpls_exp_topmost_transmit{YType::str, "set-mpls-exp-topmost-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::~ViolateAction()
@@ -1681,6 +1701,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set;
 }
 
@@ -1750,7 +1771,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::~ViolateSetPrecTransmit()
@@ -1759,6 +1780,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -1831,7 +1853,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     table{YType::str, "table"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction::~ViolateAction()
@@ -1840,6 +1862,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set
 	|| table.is_set;
 }
@@ -1922,7 +1945,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::~ViolateSetQosTransmit()
@@ -1931,6 +1954,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -2002,7 +2026,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     set_qos_transmit{YType::str, "set-qos-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction::~ViolateAction()
@@ -2011,6 +2035,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set;
 }
 
@@ -2080,7 +2105,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     violate_action->parent = this;
 
-    yang_name = "violate-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::~ViolateTransmit()
@@ -2089,6 +2114,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -2160,7 +2186,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     transmit{YType::empty, "transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction::~ViolateAction()
@@ -2169,6 +2195,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit.is_set;
 }
 
@@ -2238,7 +2265,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 {
     violate_action->parent = this;
 
-    yang_name = "violate-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::~ViolateDrop()
@@ -2247,6 +2274,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -2318,7 +2346,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
     drop{YType::empty, "drop"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction::~ViolateAction()
@@ -2327,6 +2355,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions:
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return drop.is_set;
 }
 
@@ -2396,7 +2425,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::PoliceCatalyst()
 {
     police->parent = this;
 
-    yang_name = "police-catalyst"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-catalyst"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::~PoliceCatalyst()
@@ -2405,6 +2434,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::~PoliceCatalyst()
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::has_data() const
 {
+    if (is_presence_container) return true;
     return (police !=  nullptr && police->has_data());
 }
 
@@ -2477,12 +2507,12 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Police()
     bps{YType::empty, "bps"},
     byte_value{YType::str, "byte-value"},
     byte{YType::empty, "byte"}
-    	,
+        ,
     actions(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions>())
 {
     actions->parent = this;
 
-    yang_name = "police"; yang_parent_name = "police-catalyst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "police-catalyst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::~Police()
@@ -2491,6 +2521,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::~Police()
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::has_data() const
 {
+    if (is_presence_container) return true;
     return bps_value.is_set
 	|| bps.is_set
 	|| byte_value.is_set
@@ -2612,46 +2643,46 @@ bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::has_l
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::Actions()
     :
     conform_set_clp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit>())
-	,conform_set_cos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit>())
-	,conform_set_cos_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable>())
-	,conform_set_discard_class_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit>())
-	,conform_set_dscp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit>())
-	,conform_set_dscp_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable>())
-	,conform_set_frde_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit>())
-	,conform_set_mpls_exp_imposition_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit>())
-	,conform_set_mpls_exp_imposition_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable>())
-	,conform_set_mpls_exp_topmost_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit>())
-	,conform_set_mpls_exp_topmost_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable>())
-	,conform_set_prec_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit>())
-	,conform_set_prec_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable>())
-	,conform_set_qos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit>())
-	,conform_set_qos_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable>())
-	,conform_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit>())
-	,conform_drop(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop>())
-	,exceed_dscp(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp>())
-	,exceed_set_clp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit>())
-	,exceed_set_cos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit>())
-	,exceed_set_discard_class_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit>())
-	,exceed_set_dscp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit>())
-	,exceed_set_dscp_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable>())
-	,exceed_set_frde_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit>())
-	,exceed_set_mpls_exp_imposition_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit>())
-	,exceed_set_mpls_exp_topmost_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit>())
-	,exceed_set_prec_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit>())
-	,exceed_set_qos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit>())
-	,exceed_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit>())
-	,exceed_drop(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop>())
-	,violate_set_clp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit>())
-	,violate_set_cos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit>())
-	,violate_set_discard_class_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit>())
-	,violate_set_dscp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit>())
-	,violate_set_frde_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit>())
-	,violate_set_mpls_exp_imposition_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit>())
-	,violate_set_mpls_exp_topmost_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit>())
-	,violate_set_prec_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit>())
-	,violate_set_qos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit>())
-	,violate_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit>())
-	,violate_drop(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop>())
+    , conform_set_cos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit>())
+    , conform_set_cos_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable>())
+    , conform_set_discard_class_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit>())
+    , conform_set_dscp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit>())
+    , conform_set_dscp_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable>())
+    , conform_set_frde_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit>())
+    , conform_set_mpls_exp_imposition_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit>())
+    , conform_set_mpls_exp_imposition_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable>())
+    , conform_set_mpls_exp_topmost_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit>())
+    , conform_set_mpls_exp_topmost_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable>())
+    , conform_set_prec_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit>())
+    , conform_set_prec_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable>())
+    , conform_set_qos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit>())
+    , conform_set_qos_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable>())
+    , conform_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit>())
+    , conform_drop(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop>())
+    , exceed_dscp(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp>())
+    , exceed_set_clp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit>())
+    , exceed_set_cos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit>())
+    , exceed_set_discard_class_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit>())
+    , exceed_set_dscp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit>())
+    , exceed_set_dscp_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable>())
+    , exceed_set_frde_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit>())
+    , exceed_set_mpls_exp_imposition_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit>())
+    , exceed_set_mpls_exp_topmost_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit>())
+    , exceed_set_prec_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit>())
+    , exceed_set_qos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit>())
+    , exceed_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit>())
+    , exceed_drop(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop>())
+    , violate_set_clp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit>())
+    , violate_set_cos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit>())
+    , violate_set_discard_class_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit>())
+    , violate_set_dscp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit>())
+    , violate_set_frde_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit>())
+    , violate_set_mpls_exp_imposition_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit>())
+    , violate_set_mpls_exp_topmost_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit>())
+    , violate_set_prec_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit>())
+    , violate_set_qos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit>())
+    , violate_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit>())
+    , violate_drop(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop>())
 {
     conform_set_clp_transmit->parent = this;
     conform_set_cos_transmit->parent = this;
@@ -2695,7 +2726,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::A
     violate_transmit->parent = this;
     violate_drop->parent = this;
 
-    yang_name = "actions"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actions"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::~Actions()
@@ -2704,6 +2735,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::~
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_set_clp_transmit !=  nullptr && conform_set_clp_transmit->has_data())
 	|| (conform_set_cos_transmit !=  nullptr && conform_set_cos_transmit->has_data())
 	|| (conform_set_cos_transmit_table !=  nullptr && conform_set_cos_transmit_table->has_data())
@@ -3416,7 +3448,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::~ConformSetClpTransmit()
@@ -3425,6 +3457,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -3496,7 +3529,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     set_clp_transmit{YType::empty, "set-clp-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction::~ConformAction()
@@ -3505,6 +3538,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_clp_transmit.is_set;
 }
 
@@ -3574,7 +3608,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::~ConformSetCosTransmit()
@@ -3583,6 +3617,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -3654,7 +3689,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     set_cos_transmit{YType::str, "set-cos-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction::~ConformAction()
@@ -3663,6 +3698,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_cos_transmit.is_set;
 }
 
@@ -3732,7 +3768,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-cos-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-cos-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::~ConformSetCosTransmitTable()
@@ -3741,6 +3777,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -3813,7 +3850,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-cos-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-cos-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction::~ConformAction()
@@ -3822,6 +3859,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_cos_transmit.is_set
 	|| table.is_set;
 }
@@ -3904,7 +3942,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::~ConformSetDiscardClassTransmit()
@@ -3913,6 +3951,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -3984,7 +4023,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     set_discard_class_transmit{YType::uint8, "set-discard-class-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction::~ConformAction()
@@ -3993,6 +4032,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_discard_class_transmit.is_set;
 }
 
@@ -4062,7 +4102,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::~ConformSetDscpTransmit()
@@ -4071,6 +4111,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -4142,7 +4183,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     set_dscp_transmit{YType::str, "set-dscp-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction::~ConformAction()
@@ -4151,6 +4192,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_dscp_transmit.is_set;
 }
 
@@ -4220,7 +4262,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-dscp-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-dscp-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::~ConformSetDscpTransmitTable()
@@ -4229,6 +4271,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -4301,7 +4344,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-dscp-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-dscp-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction::~ConformAction()
@@ -4310,6 +4353,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_dscp_transmit.is_set
 	|| table.is_set;
 }
@@ -4392,7 +4436,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::~ConformSetFrdeTransmit()
@@ -4401,6 +4445,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -4472,7 +4517,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     set_frde_transmit{YType::empty, "set-frde-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction::~ConformAction()
@@ -4481,6 +4526,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_frde_transmit.is_set;
 }
 
@@ -4550,7 +4596,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::~ConformSetMplsExpImpositionTransmit()
@@ -4559,6 +4605,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -4630,7 +4677,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     set_mpls_exp_imposition_transmit{YType::str, "set-mpls-exp-imposition-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction::~ConformAction()
@@ -4639,6 +4686,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_imposition_transmit.is_set;
 }
 
@@ -4708,7 +4756,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-mpls-exp-imposition-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-mpls-exp-imposition-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::~ConformSetMplsExpImpositionTransmitTable()
@@ -4717,6 +4765,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -4789,7 +4838,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-imposition-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-imposition-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction::~ConformAction()
@@ -4798,6 +4847,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_imposition_transmit.is_set
 	|| table.is_set;
 }
@@ -4880,7 +4930,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::~ConformSetMplsExpTopmostTransmit()
@@ -4889,6 +4939,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -4960,7 +5011,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     set_mpls_exp_topmost_transmit{YType::str, "set-mpls-exp-topmost-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction::~ConformAction()
@@ -4969,6 +5020,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set;
 }
 
@@ -5038,7 +5090,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-mpls-exp-topmost-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-mpls-exp-topmost-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::~ConformSetMplsExpTopmostTransmitTable()
@@ -5047,6 +5099,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -5119,7 +5172,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-topmost-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-topmost-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction::~ConformAction()
@@ -5128,6 +5181,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set
 	|| table.is_set;
 }
@@ -5210,7 +5264,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::~ConformSetPrecTransmit()
@@ -5219,6 +5273,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -5290,7 +5345,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     set_prec_transmit{YType::str, "set-prec-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction::~ConformAction()
@@ -5299,6 +5354,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set;
 }
 
@@ -5368,7 +5424,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-prec-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-prec-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::~ConformSetPrecTransmitTable()
@@ -5377,6 +5433,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -5449,7 +5506,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-prec-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-prec-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction::~ConformAction()
@@ -5458,6 +5515,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set
 	|| table.is_set;
 }
@@ -5540,7 +5598,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::~ConformSetQosTransmit()
@@ -5549,6 +5607,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -5620,7 +5679,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     set_qos_transmit{YType::str, "set-qos-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction::~ConformAction()
@@ -5629,6 +5688,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set;
 }
 
@@ -5698,7 +5758,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-qos-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-qos-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::~ConformSetQosTransmitTable()
@@ -5707,6 +5767,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -5779,7 +5840,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-qos-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-qos-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction::~ConformAction()
@@ -5788,6 +5849,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set
 	|| table.is_set;
 }
@@ -5870,7 +5932,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::~ConformTransmit()
@@ -5879,6 +5941,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -5950,7 +6013,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     transmit{YType::empty, "transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction::~ConformAction()
@@ -5959,6 +6022,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit.is_set;
 }
 
@@ -6028,7 +6092,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 {
     conform_action->parent = this;
 
-    yang_name = "conform-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::~ConformDrop()
@@ -6037,6 +6101,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -6108,7 +6173,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
     drop{YType::empty, "drop"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction::~ConformAction()
@@ -6117,6 +6182,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::C
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return drop.is_set;
 }
 
@@ -6186,7 +6252,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-dscp"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-dscp"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::~ExceedDscp()
@@ -6195,6 +6261,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -6266,7 +6333,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     dscp{YType::str, "dscp"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-dscp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-dscp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction::~ExceedAction()
@@ -6275,6 +6342,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp.is_set;
 }
 
@@ -6344,7 +6412,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::~ExceedSetClpTransmit()
@@ -6353,6 +6421,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -6424,7 +6493,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     set_clp_transmit{YType::empty, "set-clp-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction::~ExceedAction()
@@ -6433,6 +6502,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_clp_transmit.is_set;
 }
 
@@ -6502,7 +6572,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::~ExceedSetCosTransmit()
@@ -6511,6 +6581,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -6583,7 +6654,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     table{YType::str, "table"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction::~ExceedAction()
@@ -6592,6 +6663,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_cos_transmit.is_set
 	|| table.is_set;
 }
@@ -6674,7 +6746,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::~ExceedSetDiscardClassTransmit()
@@ -6683,6 +6755,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -6754,7 +6827,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     set_discard_class_transmit{YType::uint8, "set-discard-class-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction::~ExceedAction()
@@ -6763,6 +6836,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_discard_class_transmit.is_set;
 }
 
@@ -6832,7 +6906,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::~ExceedSetDscpTransmit()
@@ -6841,6 +6915,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -6913,7 +6988,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     set_dscp_transmit->parent = this;
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::~ExceedAction()
@@ -6922,6 +6997,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return (set_dscp_transmit !=  nullptr && set_dscp_transmit->has_data());
 }
 
@@ -6994,7 +7070,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     dscp->parent = this;
 
-    yang_name = "set-dscp-transmit"; yang_parent_name = "exceed-action"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set-dscp-transmit"; yang_parent_name = "exceed-action"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::~SetDscpTransmit()
@@ -7003,6 +7079,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (dscp !=  nullptr && dscp->has_data());
 }
 
@@ -7074,7 +7151,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     table{YType::enumeration, "table"}
 {
 
-    yang_name = "dscp"; yang_parent_name = "set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp"; yang_parent_name = "set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::~Dscp()
@@ -7083,6 +7160,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::has_data() const
 {
+    if (is_presence_container) return true;
     return table.is_set;
 }
 
@@ -7152,7 +7230,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-dscp-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-dscp-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::~ExceedSetDscpTransmitTable()
@@ -7161,6 +7239,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -7233,7 +7312,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     table{YType::str, "table"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-dscp-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-dscp-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction::~ExceedAction()
@@ -7242,6 +7321,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_dscp_transmit.is_set
 	|| table.is_set;
 }
@@ -7324,7 +7404,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::~ExceedSetFrdeTransmit()
@@ -7333,6 +7413,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -7404,7 +7485,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     set_frde_transmit{YType::empty, "set-frde-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction::~ExceedAction()
@@ -7413,6 +7494,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_frde_transmit.is_set;
 }
 
@@ -7482,7 +7564,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::~ExceedSetMplsExpImpositionTransmit()
@@ -7491,6 +7573,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -7562,7 +7645,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     set_mpls_exp_imposition_transmit{YType::str, "set-mpls-exp-imposition-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction::~ExceedAction()
@@ -7571,6 +7654,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_imposition_transmit.is_set;
 }
 
@@ -7640,7 +7724,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::~ExceedSetMplsExpTopmostTransmit()
@@ -7649,6 +7733,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -7720,7 +7805,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     set_mpls_exp_topmost_transmit{YType::str, "set-mpls-exp-topmost-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction::~ExceedAction()
@@ -7729,6 +7814,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set;
 }
 
@@ -7798,7 +7884,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::~ExceedSetPrecTransmit()
@@ -7807,6 +7893,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -7879,7 +7966,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     table{YType::str, "table"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction::~ExceedAction()
@@ -7888,6 +7975,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set
 	|| table.is_set;
 }
@@ -7970,7 +8058,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::~ExceedSetQosTransmit()
@@ -7979,6 +8067,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -8050,7 +8139,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     set_qos_transmit{YType::str, "set-qos-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction::~ExceedAction()
@@ -8059,6 +8148,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set;
 }
 
@@ -8128,7 +8218,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::~ExceedTransmit()
@@ -8137,6 +8227,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -8208,7 +8299,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     transmit{YType::empty, "transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction::~ExceedAction()
@@ -8217,6 +8308,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit.is_set;
 }
 
@@ -8286,7 +8378,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::~ExceedDrop()
@@ -8295,6 +8387,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -8366,7 +8459,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
     drop{YType::empty, "drop"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction::~ExceedAction()
@@ -8375,6 +8468,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::E
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return drop.is_set;
 }
 
@@ -8444,7 +8538,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::~ViolateSetClpTransmit()
@@ -8453,6 +8547,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -8524,7 +8619,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
     set_clp_transmit{YType::empty, "set-clp-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction::~ViolateAction()
@@ -8533,6 +8628,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_clp_transmit.is_set;
 }
 
@@ -8602,7 +8698,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::~ViolateSetCosTransmit()
@@ -8611,6 +8707,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -8683,7 +8780,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
     table{YType::str, "table"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction::~ViolateAction()
@@ -8692,6 +8789,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_cos_transmit.is_set
 	|| table.is_set;
 }
@@ -8774,7 +8872,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::~ViolateSetDiscardClassTransmit()
@@ -8783,6 +8881,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -8854,7 +8953,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
     set_discard_class_transmit{YType::uint8, "set-discard-class-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction::~ViolateAction()
@@ -8863,6 +8962,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_discard_class_transmit.is_set;
 }
 
@@ -8932,7 +9032,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::~ViolateSetDscpTransmit()
@@ -8941,6 +9041,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -9013,7 +9114,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
     table{YType::str, "table"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction::~ViolateAction()
@@ -9022,6 +9123,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_dscp_transmit.is_set
 	|| table.is_set;
 }
@@ -9104,7 +9206,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::~ViolateSetFrdeTransmit()
@@ -9113,6 +9215,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -9184,7 +9287,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
     set_frde_transmit{YType::empty, "set-frde-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction::~ViolateAction()
@@ -9193,6 +9296,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_frde_transmit.is_set;
 }
 
@@ -9262,7 +9366,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::~ViolateSetMplsExpImpositionTransmit()
@@ -9271,6 +9375,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -9342,7 +9447,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
     set_mpls_exp_imposition_transmit{YType::str, "set-mpls-exp-imposition-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::~ViolateAction()
@@ -9351,6 +9456,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_imposition_transmit.is_set;
 }
 
@@ -9420,7 +9526,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::~ViolateSetMplsExpTopmostTransmit()
@@ -9429,6 +9535,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -9500,7 +9607,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
     set_mpls_exp_topmost_transmit{YType::str, "set-mpls-exp-topmost-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::~ViolateAction()
@@ -9509,6 +9616,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set;
 }
 
@@ -9578,7 +9686,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::~ViolateSetPrecTransmit()
@@ -9587,6 +9695,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -9659,7 +9768,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
     table{YType::str, "table"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction::~ViolateAction()
@@ -9668,6 +9777,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set
 	|| table.is_set;
 }
@@ -9750,7 +9860,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::~ViolateSetQosTransmit()
@@ -9759,6 +9869,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -9830,7 +9941,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
     set_qos_transmit{YType::str, "set-qos-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction::~ViolateAction()
@@ -9839,6 +9950,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set;
 }
 
@@ -9908,7 +10020,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 {
     violate_action->parent = this;
 
-    yang_name = "violate-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::~ViolateTransmit()
@@ -9917,6 +10029,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -9988,7 +10101,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
     transmit{YType::empty, "transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction::~ViolateAction()
@@ -9997,6 +10110,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit.is_set;
 }
 
@@ -10066,7 +10180,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 {
     violate_action->parent = this;
 
-    yang_name = "violate-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::~ViolateDrop()
@@ -10075,6 +10189,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -10146,7 +10261,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
     drop{YType::empty, "drop"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction::~ViolateAction()
@@ -10155,6 +10270,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::V
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return drop.is_set;
 }
 
@@ -10224,7 +10340,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::PoliceSwitch()
 {
     police->parent = this;
 
-    yang_name = "police-switch"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-switch"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::~PoliceSwitch()
@@ -10233,6 +10349,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::~PoliceSwitch()
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::has_data() const
 {
+    if (is_presence_container) return true;
     return (police !=  nullptr && police->has_data());
 }
 
@@ -10306,7 +10423,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police::Police()
     exceed_action{YType::enumeration, "exceed-action"}
 {
 
-    yang_name = "police"; yang_parent_name = "police-switch"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "police-switch"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police::~Police()
@@ -10315,6 +10432,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police::~Police()
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police::has_data() const
 {
+    if (is_presence_container) return true;
     return cir.is_set
 	|| bc.is_set
 	|| exceed_action.is_set;
@@ -10412,7 +10530,7 @@ Native::Policy::PolicyMap::Class::ActionList::Priority::Priority()
     burst{YType::uint32, "burst"}
 {
 
-    yang_name = "priority"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Priority::~Priority()
@@ -10421,6 +10539,7 @@ Native::Policy::PolicyMap::Class::ActionList::Priority::~Priority()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Priority::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| kilo_bits.is_set
 	|| percent.is_set
@@ -10528,7 +10647,7 @@ Native::Policy::PolicyMap::Class::ActionList::QueueBuffers::QueueBuffers()
     ratio{YType::uint8, "ratio"}
 {
 
-    yang_name = "queue-buffers"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-buffers"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::QueueBuffers::~QueueBuffers()
@@ -10537,6 +10656,7 @@ Native::Policy::PolicyMap::Class::ActionList::QueueBuffers::~QueueBuffers()
 
 bool Native::Policy::PolicyMap::Class::ActionList::QueueBuffers::has_data() const
 {
+    if (is_presence_container) return true;
     return ratio.is_set;
 }
 
@@ -10606,7 +10726,7 @@ Native::Policy::PolicyMap::Class::ActionList::QueueLimit::QueueLimit()
     queue_limit_type{YType::enumeration, "queue-limit-type"}
 {
 
-    yang_name = "queue-limit"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-limit"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::QueueLimit::~QueueLimit()
@@ -10615,6 +10735,7 @@ Native::Policy::PolicyMap::Class::ActionList::QueueLimit::~QueueLimit()
 
 bool Native::Policy::PolicyMap::Class::ActionList::QueueLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return queue_limit_value.is_set
 	|| queue_limit_type.is_set;
 }
@@ -10692,9 +10813,11 @@ bool Native::Policy::PolicyMap::Class::ActionList::QueueLimit::has_leaf_or_child
 }
 
 Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::QueueLimitDscp()
+    :
+    dscp(this, {"dscp_val"})
 {
 
-    yang_name = "queue-limit-dscp"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-limit-dscp"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::~QueueLimitDscp()
@@ -10703,7 +10826,8 @@ Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::~QueueLimitDscp()
 
 bool Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::has_data() const
 {
-    for (std::size_t index=0; index<dscp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dscp.len(); index++)
     {
         if(dscp[index]->has_data())
             return true;
@@ -10713,7 +10837,7 @@ bool Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::has_data() co
 
 bool Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::has_operation() const
 {
-    for (std::size_t index=0; index<dscp.size(); index++)
+    for (std::size_t index=0; index<dscp.len(); index++)
     {
         if(dscp[index]->has_operation())
             return true;
@@ -10743,7 +10867,7 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::QueueLimit
     {
         auto c = std::make_shared<Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp>();
         c->parent = this;
-        dscp.push_back(c);
+        dscp.append(c);
         return c;
     }
 
@@ -10755,7 +10879,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dscp)
+    for (auto c : dscp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10789,7 +10913,7 @@ Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp::Dscp()
     percent{YType::uint8, "percent"}
 {
 
-    yang_name = "dscp"; yang_parent_name = "queue-limit-dscp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp"; yang_parent_name = "queue-limit-dscp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp::~Dscp()
@@ -10798,6 +10922,7 @@ Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp::~Dscp()
 
 bool Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp_val.is_set
 	|| values.is_set
 	|| dscp_val1.is_set
@@ -10816,7 +10941,8 @@ bool Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp::has_ope
 std::string Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dscp" <<"[dscp-val='" <<dscp_val <<"']";
+    path_buffer << "dscp";
+    ADD_KEY_TOKEN(dscp_val, "dscp-val");
     return path_buffer.str();
 }
 
@@ -10908,17 +11034,18 @@ Native::Policy::PolicyMap::Class::ActionList::RandomDetect::RandomDetect()
     ecn{YType::empty, "ecn"},
     exponential_weighting_constant{YType::uint16, "exponential-weighting-constant"},
     precedence_based{YType::empty, "precedence-based"}
-    	,
+        ,
     aggregate(nullptr) // presence node
-	,cos(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos>())
-	,discard_class(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass>())
-	,precedence(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence>())
+    , cos(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos>())
+    , discard_class(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass>())
+    , dscp(this, {"dscp_val"})
+    , precedence(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence>())
 {
     cos->parent = this;
     discard_class->parent = this;
     precedence->parent = this;
 
-    yang_name = "random-detect"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "random-detect"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::RandomDetect::~RandomDetect()
@@ -10927,7 +11054,8 @@ Native::Policy::PolicyMap::Class::ActionList::RandomDetect::~RandomDetect()
 
 bool Native::Policy::PolicyMap::Class::ActionList::RandomDetect::has_data() const
 {
-    for (std::size_t index=0; index<dscp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dscp.len(); index++)
     {
         if(dscp[index]->has_data())
             return true;
@@ -10946,7 +11074,7 @@ bool Native::Policy::PolicyMap::Class::ActionList::RandomDetect::has_data() cons
 
 bool Native::Policy::PolicyMap::Class::ActionList::RandomDetect::has_operation() const
 {
-    for (std::size_t index=0; index<dscp.size(); index++)
+    for (std::size_t index=0; index<dscp.len(); index++)
     {
         if(dscp[index]->has_operation())
             return true;
@@ -11019,7 +11147,7 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDete
     {
         auto c = std::make_shared<Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp>();
         c->parent = this;
-        dscp.push_back(c);
+        dscp.append(c);
         return c;
     }
 
@@ -11055,7 +11183,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class:
     }
 
     count = 0;
-    for (auto const & c : dscp)
+    for (auto c : dscp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11154,7 +11282,7 @@ Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Aggregate::Aggregate
     denominator{YType::uint32, "denominator"}
 {
 
-    yang_name = "aggregate"; yang_parent_name = "random-detect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregate"; yang_parent_name = "random-detect"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Aggregate::~Aggregate()
@@ -11163,6 +11291,7 @@ Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Aggregate::~Aggregat
 
 bool Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Aggregate::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_thresh.is_set
 	|| maximum_thresh.is_set
 	|| mark_probability.is_set
@@ -11275,7 +11404,7 @@ Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos::Cos()
     denominator{YType::uint16, "denominator"}
 {
 
-    yang_name = "cos"; yang_parent_name = "random-detect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos"; yang_parent_name = "random-detect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos::~Cos()
@@ -11284,6 +11413,7 @@ Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos::~Cos()
 
 bool Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos::has_data() const
 {
+    if (is_presence_container) return true;
     return cos_val.is_set
 	|| min_threshold.is_set
 	|| min_threshold_unit.is_set
@@ -11422,7 +11552,7 @@ Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass::Discar
     denominator{YType::uint16, "denominator"}
 {
 
-    yang_name = "discard-class"; yang_parent_name = "random-detect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discard-class"; yang_parent_name = "random-detect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass::~DiscardClass()
@@ -11431,6 +11561,7 @@ Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass::~Disca
 
 bool Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass::has_data() const
 {
+    if (is_presence_container) return true;
     return dclass.is_set
 	|| min_threshold.is_set
 	|| min_threshold_unit.is_set
@@ -11569,7 +11700,7 @@ Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp::Dscp()
     denominator{YType::uint16, "denominator"}
 {
 
-    yang_name = "dscp"; yang_parent_name = "random-detect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp"; yang_parent_name = "random-detect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp::~Dscp()
@@ -11578,6 +11709,7 @@ Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp::~Dscp()
 
 bool Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp_val.is_set
 	|| min_threshold.is_set
 	|| min_threshold_unit.is_set
@@ -11600,7 +11732,8 @@ bool Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp::has_opera
 std::string Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dscp" <<"[dscp-val='" <<dscp_val <<"']";
+    path_buffer << "dscp";
+    ADD_KEY_TOKEN(dscp_val, "dscp-val");
     return path_buffer.str();
 }
 
@@ -11716,7 +11849,7 @@ Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence::Preceden
     denominator{YType::uint16, "denominator"}
 {
 
-    yang_name = "precedence"; yang_parent_name = "random-detect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "precedence"; yang_parent_name = "random-detect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence::~Precedence()
@@ -11725,6 +11858,7 @@ Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence::~Precede
 
 bool Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence::has_data() const
 {
+    if (is_presence_container) return true;
     return prec.is_set
 	|| min_threshold.is_set
 	|| min_threshold_unit.is_set
@@ -11858,12 +11992,12 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Set()
     atm_clp{YType::empty, "atm-clp"},
     discard_class{YType::uint16, "discard-class"},
     fr_de{YType::empty, "fr-de"}
-    	,
+        ,
     cos(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::Cos>())
-	,dscp(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::Dscp>())
-	,ip(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::Ip>())
-	,mpls(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::Mpls>())
-	,qos_group(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::QosGroup>())
+    , dscp(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::Dscp>())
+    , ip(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::Ip>())
+    , mpls(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::Mpls>())
+    , qos_group(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::QosGroup>())
 {
     cos->parent = this;
     dscp->parent = this;
@@ -11871,7 +12005,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Set()
     mpls->parent = this;
     qos_group->parent = this;
 
-    yang_name = "set"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Set::~Set()
@@ -11880,6 +12014,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::~Set()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_clp.is_set
 	|| discard_class.is_set
 	|| fr_de.is_set
@@ -12057,7 +12192,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Cos::Cos()
     table{YType::str, "table"}
 {
 
-    yang_name = "cos"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Set::Cos::~Cos()
@@ -12066,6 +12201,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Cos::~Cos()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Set::Cos::has_data() const
 {
+    if (is_presence_container) return true;
     return val.is_set
 	|| pack.is_set
 	|| user_priority.is_set
@@ -12172,11 +12308,11 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp()
     :
     tunnel{YType::empty, "tunnel"},
     dscp_val{YType::str, "dscp-val"}
-    	,
+        ,
     dscp(nullptr) // presence node
 {
 
-    yang_name = "dscp"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::~Dscp()
@@ -12185,6 +12321,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::~Dscp()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel.is_set
 	|| dscp_val.is_set
 	|| (dscp !=  nullptr && dscp->has_data());
@@ -12282,7 +12419,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_::Dscp_()
     table{YType::str, "table"}
 {
 
-    yang_name = "dscp"; yang_parent_name = "dscp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp"; yang_parent_name = "dscp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_::~Dscp_()
@@ -12291,6 +12428,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_::~Dscp_()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_::has_data() const
 {
+    if (is_presence_container) return true;
     return table.is_set;
 }
 
@@ -12357,11 +12495,11 @@ bool Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_::has_leaf_or
 Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Ip()
     :
     dscp(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp>())
-	,precedence(nullptr) // presence node
+    , precedence(nullptr) // presence node
 {
     dscp->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Set::Ip::~Ip()
@@ -12370,6 +12508,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Ip::~Ip()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Set::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (dscp !=  nullptr && dscp->has_data())
 	|| (precedence !=  nullptr && precedence->has_data());
 }
@@ -12458,7 +12597,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp::Dscp()
     dscp_val{YType::str, "dscp-val"}
 {
 
-    yang_name = "dscp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp::~Dscp()
@@ -12467,6 +12606,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp::~Dscp()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel.is_set
 	|| dscp_val.is_set;
 }
@@ -12548,7 +12688,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence::Precedence()
     precedence_val{YType::str, "precedence-val"}
 {
 
-    yang_name = "precedence"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "precedence"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence::~Precedence()
@@ -12557,6 +12697,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence::~Precedence()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence::has_data() const
 {
+    if (is_presence_container) return true;
     return precedence_val.is_set;
 }
 
@@ -12626,7 +12767,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Mpls()
 {
     experimental->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::~Mpls()
@@ -12635,6 +12776,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::~Mpls()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (experimental !=  nullptr && experimental->has_data());
 }
 
@@ -12704,12 +12846,12 @@ bool Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::has_leaf_or_child_
 Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Experimental()
     :
     imposition(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Imposition>())
-	,topmost(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Topmost>())
+    , topmost(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Topmost>())
 {
     imposition->parent = this;
     topmost->parent = this;
 
-    yang_name = "experimental"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "experimental"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::~Experimental()
@@ -12718,6 +12860,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::~Experime
 
 bool Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::has_data() const
 {
+    if (is_presence_container) return true;
     return (imposition !=  nullptr && imposition->has_data())
 	|| (topmost !=  nullptr && topmost->has_data());
 }
@@ -12805,7 +12948,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Impositio
     exp_value{YType::uint8, "exp-value"}
 {
 
-    yang_name = "imposition"; yang_parent_name = "experimental"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "imposition"; yang_parent_name = "experimental"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Imposition::~Imposition()
@@ -12814,6 +12957,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Impositio
 
 bool Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Imposition::has_data() const
 {
+    if (is_presence_container) return true;
     return exp_value.is_set;
 }
 
@@ -12882,7 +13026,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Topmost::
     exp_value{YType::uint8, "exp-value"}
 {
 
-    yang_name = "topmost"; yang_parent_name = "experimental"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topmost"; yang_parent_name = "experimental"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Topmost::~Topmost()
@@ -12891,6 +13035,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Topmost::
 
 bool Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Topmost::has_data() const
 {
+    if (is_presence_container) return true;
     return exp_value.is_set;
 }
 
@@ -12959,7 +13104,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::QosGroup::QosGroup()
     qos_group_value{YType::uint8, "qos-group-value"}
 {
 
-    yang_name = "qos-group"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos-group"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Set::QosGroup::~QosGroup()
@@ -12968,6 +13113,7 @@ Native::Policy::PolicyMap::Class::ActionList::Set::QosGroup::~QosGroup()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Set::QosGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return qos_group_value.is_set;
 }
 
@@ -13036,13 +13182,13 @@ Native::Policy::PolicyMap::Class::ActionList::Shape::Shape()
     adaptive{YType::uint32, "adaptive"},
     fecn_adapt{YType::empty, "fecn-adapt"},
     max_buffers{YType::uint16, "max-buffers"}
-    	,
+        ,
     average(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Shape::Average>())
-	,fr_voice_adapt(nullptr) // presence node
+    , fr_voice_adapt(nullptr) // presence node
 {
     average->parent = this;
 
-    yang_name = "shape"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shape"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Shape::~Shape()
@@ -13051,6 +13197,7 @@ Native::Policy::PolicyMap::Class::ActionList::Shape::~Shape()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Shape::has_data() const
 {
+    if (is_presence_container) return true;
     return adaptive.is_set
 	|| fecn_adapt.is_set
 	|| max_buffers.is_set
@@ -13180,14 +13327,14 @@ Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Average()
     percent{YType::uint8, "percent"},
     burst_size_sustained{YType::uint16, "burst-size-sustained"},
     ms{YType::empty, "ms"}
-    	,
+        ,
     account(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Account>())
-	,bse(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Bse>())
+    , bse(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Bse>())
 {
     account->parent = this;
     bse->parent = this;
 
-    yang_name = "average"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "average"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Shape::Average::~Average()
@@ -13196,6 +13343,7 @@ Native::Policy::PolicyMap::Class::ActionList::Shape::Average::~Average()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Shape::Average::has_data() const
 {
+    if (is_presence_container) return true;
     return bit_rate.is_set
 	|| bits_per_interval_sustained.is_set
 	|| bits_per_interval_excess.is_set
@@ -13361,7 +13509,7 @@ Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Account::Account()
     user_defined{YType::int32, "user-defined"}
 {
 
-    yang_name = "account"; yang_parent_name = "average"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account"; yang_parent_name = "average"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Account::~Account()
@@ -13370,6 +13518,7 @@ Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Account::~Account(
 
 bool Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Account::has_data() const
 {
+    if (is_presence_container) return true;
     return user_defined.is_set;
 }
 
@@ -13439,7 +13588,7 @@ Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Bse::Bse()
     ms{YType::empty, "ms"}
 {
 
-    yang_name = "bse"; yang_parent_name = "average"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bse"; yang_parent_name = "average"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Bse::~Bse()
@@ -13448,6 +13597,7 @@ Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Bse::~Bse()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Bse::has_data() const
 {
+    if (is_presence_container) return true;
     return burst_size_excess.is_set
 	|| ms.is_set;
 }
@@ -13529,7 +13679,7 @@ Native::Policy::PolicyMap::Class::ActionList::Shape::FrVoiceAdapt::FrVoiceAdapt(
     deactivation{YType::uint16, "deactivation"}
 {
 
-    yang_name = "fr-voice-adapt"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fr-voice-adapt"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Shape::FrVoiceAdapt::~FrVoiceAdapt()
@@ -13538,6 +13688,7 @@ Native::Policy::PolicyMap::Class::ActionList::Shape::FrVoiceAdapt::~FrVoiceAdapt
 
 bool Native::Policy::PolicyMap::Class::ActionList::Shape::FrVoiceAdapt::has_data() const
 {
+    if (is_presence_container) return true;
     return deactivation.is_set;
 }
 
@@ -13603,17 +13754,53 @@ bool Native::Policy::PolicyMap::Class::ActionList::Shape::FrVoiceAdapt::has_leaf
 
 Native::Interface::Interface()
     :
-    atm_subinterface(std::make_shared<Native::Interface::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Interface::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Interface::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Interface::PortChannelSubinterface>())
+    appnav_compress(this, {"name"})
+    , appnav_uncompress(this, {"name"})
+    , atm(this, {"name"})
+    , atm_subinterface(std::make_shared<Native::Interface::ATMSubinterface>())
+    , atm_acr(this, {"name"})
+    , atm_acrsubinterface(std::make_shared<Native::Interface::ATMACRsubinterface>())
+    , bdi(this, {"name"})
+    , cem(this, {"name"})
+    , cem_acr(this, {"name"})
+    , embedded_service_engine(this, {"name"})
+    , fastethernet(this, {"name"})
+    , ucse(this, {"name"})
+    , ethernet_internal(this, {"name"})
+    , service_engine(this, {"name"})
+    , gigabitethernet(this, {"name"})
+    , twogigabitethernet(this, {"name"})
+    , fivegigabitethernet(this, {"name"})
+    , tengigabitethernet(this, {"name"})
+    , twentyfivegige(this, {"name"})
+    , fortygigabitethernet(this, {"name"})
+    , hundredgige(this, {"name"})
+    , loopback(this, {"name"})
+    , lisp(this, {"name"})
+    , lisp_subinterface(std::make_shared<Native::Interface::LISPSubinterface>())
+    , nve(this, {"name"})
+    , overlay(this, {"name"})
+    , port_channel(this, {"name"})
+    , port_channel_subinterface(std::make_shared<Native::Interface::PortChannelSubinterface>())
+    , pseudowire(this, {"name"})
+    , sm(this, {"name"})
+    , cellular(this, {"name"})
+    , vlan(this, {"name"})
+    , group_async(this, {"name"})
+    , multilink(this, {"name"})
+    , serial(this, {"name"})
+    , tunnel(this, {"name"})
+    , virtual_template(this, {"name"})
+    , virtualportgroup(this, {"name"})
+    , vasileft(this, {"name"})
+    , vasiright(this, {"name"})
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::~Interface()
@@ -13622,182 +13809,183 @@ Native::Interface::~Interface()
 
 bool Native::Interface::has_data() const
 {
-    for (std::size_t index=0; index<appnav_compress.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<appnav_compress.len(); index++)
     {
         if(appnav_compress[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<appnav_uncompress.size(); index++)
+    for (std::size_t index=0; index<appnav_uncompress.len(); index++)
     {
         if(appnav_uncompress[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<atm.size(); index++)
+    for (std::size_t index=0; index<atm.len(); index++)
     {
         if(atm[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<atm_acr.size(); index++)
+    for (std::size_t index=0; index<atm_acr.len(); index++)
     {
         if(atm_acr[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<bdi.size(); index++)
+    for (std::size_t index=0; index<bdi.len(); index++)
     {
         if(bdi[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<cem.size(); index++)
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<cem_acr.size(); index++)
+    for (std::size_t index=0; index<cem_acr.len(); index++)
     {
         if(cem_acr[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<embedded_service_engine.size(); index++)
+    for (std::size_t index=0; index<embedded_service_engine.len(); index++)
     {
         if(embedded_service_engine[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<fastethernet.size(); index++)
+    for (std::size_t index=0; index<fastethernet.len(); index++)
     {
         if(fastethernet[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ucse.size(); index++)
+    for (std::size_t index=0; index<ucse.len(); index++)
     {
         if(ucse[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ethernet_internal.size(); index++)
+    for (std::size_t index=0; index<ethernet_internal.len(); index++)
     {
         if(ethernet_internal[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<service_engine.size(); index++)
+    for (std::size_t index=0; index<service_engine.len(); index++)
     {
         if(service_engine[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<gigabitethernet.size(); index++)
+    for (std::size_t index=0; index<gigabitethernet.len(); index++)
     {
         if(gigabitethernet[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<twogigabitethernet.size(); index++)
+    for (std::size_t index=0; index<twogigabitethernet.len(); index++)
     {
         if(twogigabitethernet[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<fivegigabitethernet.size(); index++)
+    for (std::size_t index=0; index<fivegigabitethernet.len(); index++)
     {
         if(fivegigabitethernet[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<tengigabitethernet.size(); index++)
+    for (std::size_t index=0; index<tengigabitethernet.len(); index++)
     {
         if(tengigabitethernet[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<twentyfivegige.size(); index++)
+    for (std::size_t index=0; index<twentyfivegige.len(); index++)
     {
         if(twentyfivegige[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<fortygigabitethernet.size(); index++)
+    for (std::size_t index=0; index<fortygigabitethernet.len(); index++)
     {
         if(fortygigabitethernet[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<hundredgige.size(); index++)
+    for (std::size_t index=0; index<hundredgige.len(); index++)
     {
         if(hundredgige[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<loopback.size(); index++)
+    for (std::size_t index=0; index<loopback.len(); index++)
     {
         if(loopback[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lisp.size(); index++)
+    for (std::size_t index=0; index<lisp.len(); index++)
     {
         if(lisp[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<nve.size(); index++)
+    for (std::size_t index=0; index<nve.len(); index++)
     {
         if(nve[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<overlay.size(); index++)
+    for (std::size_t index=0; index<overlay.len(); index++)
     {
         if(overlay[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<port_channel.size(); index++)
+    for (std::size_t index=0; index<port_channel.len(); index++)
     {
         if(port_channel[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pseudowire.size(); index++)
+    for (std::size_t index=0; index<pseudowire.len(); index++)
     {
         if(pseudowire[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sm.size(); index++)
+    for (std::size_t index=0; index<sm.len(); index++)
     {
         if(sm[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<cellular.size(); index++)
+    for (std::size_t index=0; index<cellular.len(); index++)
     {
         if(cellular[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<vlan.size(); index++)
+    for (std::size_t index=0; index<vlan.len(); index++)
     {
         if(vlan[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<group_async.size(); index++)
+    for (std::size_t index=0; index<group_async.len(); index++)
     {
         if(group_async[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<multilink.size(); index++)
+    for (std::size_t index=0; index<multilink.len(); index++)
     {
         if(multilink[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<serial.size(); index++)
+    for (std::size_t index=0; index<serial.len(); index++)
     {
         if(serial[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<virtual_template.size(); index++)
+    for (std::size_t index=0; index<virtual_template.len(); index++)
     {
         if(virtual_template[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<virtualportgroup.size(); index++)
+    for (std::size_t index=0; index<virtualportgroup.len(); index++)
     {
         if(virtualportgroup[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<vasileft.size(); index++)
+    for (std::size_t index=0; index<vasileft.len(); index++)
     {
         if(vasileft[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<vasiright.size(); index++)
+    for (std::size_t index=0; index<vasiright.len(); index++)
     {
         if(vasiright[index]->has_data())
             return true;
@@ -13810,182 +13998,182 @@ bool Native::Interface::has_data() const
 
 bool Native::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<appnav_compress.size(); index++)
+    for (std::size_t index=0; index<appnav_compress.len(); index++)
     {
         if(appnav_compress[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<appnav_uncompress.size(); index++)
+    for (std::size_t index=0; index<appnav_uncompress.len(); index++)
     {
         if(appnav_uncompress[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<atm.size(); index++)
+    for (std::size_t index=0; index<atm.len(); index++)
     {
         if(atm[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<atm_acr.size(); index++)
+    for (std::size_t index=0; index<atm_acr.len(); index++)
     {
         if(atm_acr[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<bdi.size(); index++)
+    for (std::size_t index=0; index<bdi.len(); index++)
     {
         if(bdi[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<cem.size(); index++)
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<cem_acr.size(); index++)
+    for (std::size_t index=0; index<cem_acr.len(); index++)
     {
         if(cem_acr[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<embedded_service_engine.size(); index++)
+    for (std::size_t index=0; index<embedded_service_engine.len(); index++)
     {
         if(embedded_service_engine[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<fastethernet.size(); index++)
+    for (std::size_t index=0; index<fastethernet.len(); index++)
     {
         if(fastethernet[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ucse.size(); index++)
+    for (std::size_t index=0; index<ucse.len(); index++)
     {
         if(ucse[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ethernet_internal.size(); index++)
+    for (std::size_t index=0; index<ethernet_internal.len(); index++)
     {
         if(ethernet_internal[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<service_engine.size(); index++)
+    for (std::size_t index=0; index<service_engine.len(); index++)
     {
         if(service_engine[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<gigabitethernet.size(); index++)
+    for (std::size_t index=0; index<gigabitethernet.len(); index++)
     {
         if(gigabitethernet[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<twogigabitethernet.size(); index++)
+    for (std::size_t index=0; index<twogigabitethernet.len(); index++)
     {
         if(twogigabitethernet[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<fivegigabitethernet.size(); index++)
+    for (std::size_t index=0; index<fivegigabitethernet.len(); index++)
     {
         if(fivegigabitethernet[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<tengigabitethernet.size(); index++)
+    for (std::size_t index=0; index<tengigabitethernet.len(); index++)
     {
         if(tengigabitethernet[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<twentyfivegige.size(); index++)
+    for (std::size_t index=0; index<twentyfivegige.len(); index++)
     {
         if(twentyfivegige[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<fortygigabitethernet.size(); index++)
+    for (std::size_t index=0; index<fortygigabitethernet.len(); index++)
     {
         if(fortygigabitethernet[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<hundredgige.size(); index++)
+    for (std::size_t index=0; index<hundredgige.len(); index++)
     {
         if(hundredgige[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<loopback.size(); index++)
+    for (std::size_t index=0; index<loopback.len(); index++)
     {
         if(loopback[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lisp.size(); index++)
+    for (std::size_t index=0; index<lisp.len(); index++)
     {
         if(lisp[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<nve.size(); index++)
+    for (std::size_t index=0; index<nve.len(); index++)
     {
         if(nve[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<overlay.size(); index++)
+    for (std::size_t index=0; index<overlay.len(); index++)
     {
         if(overlay[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<port_channel.size(); index++)
+    for (std::size_t index=0; index<port_channel.len(); index++)
     {
         if(port_channel[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pseudowire.size(); index++)
+    for (std::size_t index=0; index<pseudowire.len(); index++)
     {
         if(pseudowire[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sm.size(); index++)
+    for (std::size_t index=0; index<sm.len(); index++)
     {
         if(sm[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<cellular.size(); index++)
+    for (std::size_t index=0; index<cellular.len(); index++)
     {
         if(cellular[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<vlan.size(); index++)
+    for (std::size_t index=0; index<vlan.len(); index++)
     {
         if(vlan[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<group_async.size(); index++)
+    for (std::size_t index=0; index<group_async.len(); index++)
     {
         if(group_async[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<multilink.size(); index++)
+    for (std::size_t index=0; index<multilink.len(); index++)
     {
         if(multilink[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<serial.size(); index++)
+    for (std::size_t index=0; index<serial.len(); index++)
     {
         if(serial[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<virtual_template.size(); index++)
+    for (std::size_t index=0; index<virtual_template.len(); index++)
     {
         if(virtual_template[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<virtualportgroup.size(); index++)
+    for (std::size_t index=0; index<virtualportgroup.len(); index++)
     {
         if(virtualportgroup[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<vasileft.size(); index++)
+    for (std::size_t index=0; index<vasileft.len(); index++)
     {
         if(vasileft[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<vasiright.size(); index++)
+    for (std::size_t index=0; index<vasiright.len(); index++)
     {
         if(vasiright[index]->has_operation())
             return true;
@@ -14026,7 +14214,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::AppNavCompress>();
         c->parent = this;
-        appnav_compress.push_back(c);
+        appnav_compress.append(c);
         return c;
     }
 
@@ -14034,7 +14222,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::AppNavUnCompress>();
         c->parent = this;
-        appnav_uncompress.push_back(c);
+        appnav_uncompress.append(c);
         return c;
     }
 
@@ -14042,7 +14230,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::ATM>();
         c->parent = this;
-        atm.push_back(c);
+        atm.append(c);
         return c;
     }
 
@@ -14059,7 +14247,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::ATMACR>();
         c->parent = this;
-        atm_acr.push_back(c);
+        atm_acr.append(c);
         return c;
     }
 
@@ -14076,7 +14264,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::BDI>();
         c->parent = this;
-        bdi.push_back(c);
+        bdi.append(c);
         return c;
     }
 
@@ -14084,7 +14272,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::CEM>();
         c->parent = this;
-        cem.push_back(c);
+        cem.append(c);
         return c;
     }
 
@@ -14092,7 +14280,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::CEMACR>();
         c->parent = this;
-        cem_acr.push_back(c);
+        cem_acr.append(c);
         return c;
     }
 
@@ -14100,7 +14288,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::EmbeddedServiceEngine>();
         c->parent = this;
-        embedded_service_engine.push_back(c);
+        embedded_service_engine.append(c);
         return c;
     }
 
@@ -14108,7 +14296,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::FastEthernet>();
         c->parent = this;
-        fastethernet.push_back(c);
+        fastethernet.append(c);
         return c;
     }
 
@@ -14116,7 +14304,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::Ucse>();
         c->parent = this;
-        ucse.push_back(c);
+        ucse.append(c);
         return c;
     }
 
@@ -14124,7 +14312,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::EthernetInternal>();
         c->parent = this;
-        ethernet_internal.push_back(c);
+        ethernet_internal.append(c);
         return c;
     }
 
@@ -14132,7 +14320,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::ServiceEngine>();
         c->parent = this;
-        service_engine.push_back(c);
+        service_engine.append(c);
         return c;
     }
 
@@ -14140,7 +14328,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::GigabitEthernet>();
         c->parent = this;
-        gigabitethernet.push_back(c);
+        gigabitethernet.append(c);
         return c;
     }
 
@@ -14148,7 +14336,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::TwoGigabitEthernet>();
         c->parent = this;
-        twogigabitethernet.push_back(c);
+        twogigabitethernet.append(c);
         return c;
     }
 
@@ -14156,7 +14344,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::FiveGigabitEthernet>();
         c->parent = this;
-        fivegigabitethernet.push_back(c);
+        fivegigabitethernet.append(c);
         return c;
     }
 
@@ -14164,7 +14352,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::TenGigabitEthernet>();
         c->parent = this;
-        tengigabitethernet.push_back(c);
+        tengigabitethernet.append(c);
         return c;
     }
 
@@ -14172,7 +14360,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::TwentyFiveGigE>();
         c->parent = this;
-        twentyfivegige.push_back(c);
+        twentyfivegige.append(c);
         return c;
     }
 
@@ -14180,7 +14368,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::FortyGigabitEthernet>();
         c->parent = this;
-        fortygigabitethernet.push_back(c);
+        fortygigabitethernet.append(c);
         return c;
     }
 
@@ -14188,7 +14376,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::HundredGigE>();
         c->parent = this;
-        hundredgige.push_back(c);
+        hundredgige.append(c);
         return c;
     }
 
@@ -14196,7 +14384,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::Loopback>();
         c->parent = this;
-        loopback.push_back(c);
+        loopback.append(c);
         return c;
     }
 
@@ -14204,7 +14392,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::LISP>();
         c->parent = this;
-        lisp.push_back(c);
+        lisp.append(c);
         return c;
     }
 
@@ -14221,7 +14409,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::Nve>();
         c->parent = this;
-        nve.push_back(c);
+        nve.append(c);
         return c;
     }
 
@@ -14229,7 +14417,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::Overlay>();
         c->parent = this;
-        overlay.push_back(c);
+        overlay.append(c);
         return c;
     }
 
@@ -14237,7 +14425,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::PortChannel>();
         c->parent = this;
-        port_channel.push_back(c);
+        port_channel.append(c);
         return c;
     }
 
@@ -14254,7 +14442,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::Pseudowire>();
         c->parent = this;
-        pseudowire.push_back(c);
+        pseudowire.append(c);
         return c;
     }
 
@@ -14262,7 +14450,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::SM>();
         c->parent = this;
-        sm.push_back(c);
+        sm.append(c);
         return c;
     }
 
@@ -14270,7 +14458,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::Cellular>();
         c->parent = this;
-        cellular.push_back(c);
+        cellular.append(c);
         return c;
     }
 
@@ -14278,7 +14466,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::Vlan>();
         c->parent = this;
-        vlan.push_back(c);
+        vlan.append(c);
         return c;
     }
 
@@ -14286,7 +14474,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::GroupAsync>();
         c->parent = this;
-        group_async.push_back(c);
+        group_async.append(c);
         return c;
     }
 
@@ -14294,7 +14482,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::Multilink>();
         c->parent = this;
-        multilink.push_back(c);
+        multilink.append(c);
         return c;
     }
 
@@ -14302,7 +14490,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::Serial>();
         c->parent = this;
-        serial.push_back(c);
+        serial.append(c);
         return c;
     }
 
@@ -14310,7 +14498,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::Tunnel>();
         c->parent = this;
-        tunnel.push_back(c);
+        tunnel.append(c);
         return c;
     }
 
@@ -14318,7 +14506,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::VirtualTemplate>();
         c->parent = this;
-        virtual_template.push_back(c);
+        virtual_template.append(c);
         return c;
     }
 
@@ -14326,7 +14514,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup>();
         c->parent = this;
-        virtualportgroup.push_back(c);
+        virtualportgroup.append(c);
         return c;
     }
 
@@ -14334,7 +14522,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::Vasileft>();
         c->parent = this;
-        vasileft.push_back(c);
+        vasileft.append(c);
         return c;
     }
 
@@ -14342,7 +14530,7 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Native::Interface::Vasiright>();
         c->parent = this;
-        vasiright.push_back(c);
+        vasiright.append(c);
         return c;
     }
 
@@ -14354,7 +14542,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : appnav_compress)
+    for (auto c : appnav_compress.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14363,7 +14551,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : appnav_uncompress)
+    for (auto c : appnav_uncompress.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14372,7 +14560,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : atm)
+    for (auto c : atm.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14386,7 +14574,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : atm_acr)
+    for (auto c : atm_acr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14400,7 +14588,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : bdi)
+    for (auto c : bdi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14409,7 +14597,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : cem)
+    for (auto c : cem.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14418,7 +14606,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : cem_acr)
+    for (auto c : cem_acr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14427,7 +14615,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : embedded_service_engine)
+    for (auto c : embedded_service_engine.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14436,7 +14624,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : fastethernet)
+    for (auto c : fastethernet.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14445,7 +14633,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : ucse)
+    for (auto c : ucse.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14454,7 +14642,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : ethernet_internal)
+    for (auto c : ethernet_internal.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14463,7 +14651,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : service_engine)
+    for (auto c : service_engine.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14472,7 +14660,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : gigabitethernet)
+    for (auto c : gigabitethernet.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14481,7 +14669,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : twogigabitethernet)
+    for (auto c : twogigabitethernet.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14490,7 +14678,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : fivegigabitethernet)
+    for (auto c : fivegigabitethernet.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14499,7 +14687,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : tengigabitethernet)
+    for (auto c : tengigabitethernet.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14508,7 +14696,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : twentyfivegige)
+    for (auto c : twentyfivegige.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14517,7 +14705,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : fortygigabitethernet)
+    for (auto c : fortygigabitethernet.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14526,7 +14714,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : hundredgige)
+    for (auto c : hundredgige.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14535,7 +14723,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : loopback)
+    for (auto c : loopback.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14544,7 +14732,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : lisp)
+    for (auto c : lisp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14558,7 +14746,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : nve)
+    for (auto c : nve.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14567,7 +14755,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : overlay)
+    for (auto c : overlay.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14576,7 +14764,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : port_channel)
+    for (auto c : port_channel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14590,7 +14778,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : pseudowire)
+    for (auto c : pseudowire.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14599,7 +14787,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : sm)
+    for (auto c : sm.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14608,7 +14796,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : cellular)
+    for (auto c : cellular.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14617,7 +14805,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : vlan)
+    for (auto c : vlan.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14626,7 +14814,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : group_async)
+    for (auto c : group_async.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14635,7 +14823,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : multilink)
+    for (auto c : multilink.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14644,7 +14832,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : serial)
+    for (auto c : serial.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14653,7 +14841,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : tunnel)
+    for (auto c : tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14662,7 +14850,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : virtual_template)
+    for (auto c : virtual_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14671,7 +14859,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : virtualportgroup)
+    for (auto c : virtualportgroup.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14680,7 +14868,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : vasileft)
+    for (auto c : vasileft.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14689,7 +14877,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children()
     }
 
     count = 0;
-    for (auto const & c : vasiright)
+    for (auto c : vasiright.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14728,42 +14916,43 @@ Native::Interface::AppNavCompress::AppNavCompress()
     max_reserved_bandwidth{YType::uint8, "max-reserved-bandwidth"},
     mtu{YType::uint16, "mtu"},
     service_insertion{YType::enumeration, "service-insertion"}
-    	,
+        ,
     switchport_conf(std::make_shared<Native::Interface::AppNavCompress::SwitchportConf>())
-	,switchport(std::make_shared<Native::Interface::AppNavCompress::Switchport>())
-	,stackwise_virtual(std::make_shared<Native::Interface::AppNavCompress::StackwiseVirtual>())
-	,arp(std::make_shared<Native::Interface::AppNavCompress::Arp>())
-	,backup(std::make_shared<Native::Interface::AppNavCompress::Backup>())
-	,cemoudp(std::make_shared<Native::Interface::AppNavCompress::Cemoudp>())
-	,cws_tunnel(std::make_shared<Native::Interface::AppNavCompress::CwsTunnel>())
-	,l2protocol_tunnel(nullptr) // presence node
-	,encapsulation(std::make_shared<Native::Interface::AppNavCompress::Encapsulation>())
-	,fair_queue_conf(std::make_shared<Native::Interface::AppNavCompress::FairQueueConf>())
-	,fair_queue(std::make_shared<Native::Interface::AppNavCompress::FairQueue>())
-	,flowcontrol(std::make_shared<Native::Interface::AppNavCompress::Flowcontrol>())
-	,isis(std::make_shared<Native::Interface::AppNavCompress::Isis>())
-	,keepalive_settings(std::make_shared<Native::Interface::AppNavCompress::KeepaliveSettings>())
-	,bfd(std::make_shared<Native::Interface::AppNavCompress::Bfd>())
-	,bandwidth(std::make_shared<Native::Interface::AppNavCompress::Bandwidth>())
-	,dampening(std::make_shared<Native::Interface::AppNavCompress::Dampening>())
-	,domain(std::make_shared<Native::Interface::AppNavCompress::Domain>())
-	,mpls(std::make_shared<Native::Interface::AppNavCompress::Mpls>())
-	,ip_vrf(std::make_shared<Native::Interface::AppNavCompress::IpVrf>())
-	,vrf(std::make_shared<Native::Interface::AppNavCompress::Vrf>())
-	,ip(std::make_shared<Native::Interface::AppNavCompress::Ip>())
-	,ipv6(std::make_shared<Native::Interface::AppNavCompress::Ipv6>())
-	,logging(std::make_shared<Native::Interface::AppNavCompress::Logging>())
-	,mdix(std::make_shared<Native::Interface::AppNavCompress::Mdix>())
-	,mop(std::make_shared<Native::Interface::AppNavCompress::Mop>())
-	,interface_qos(std::make_shared<Native::Interface::AppNavCompress::InterfaceQos>())
-	,standby(std::make_shared<Native::Interface::AppNavCompress::Standby>())
-	,access_session(std::make_shared<Native::Interface::AppNavCompress::AccessSession>())
-	,storm_control(std::make_shared<Native::Interface::AppNavCompress::StormControl>())
-	,trust(std::make_shared<Native::Interface::AppNavCompress::Trust>())
-	,priority_queue(std::make_shared<Native::Interface::AppNavCompress::PriorityQueue>())
-	,rcv_queue(std::make_shared<Native::Interface::AppNavCompress::RcvQueue>())
-	,peer(std::make_shared<Native::Interface::AppNavCompress::Peer>())
-	,pm_path(std::make_shared<Native::Interface::AppNavCompress::PmPath>())
+    , switchport(std::make_shared<Native::Interface::AppNavCompress::Switchport>())
+    , stackwise_virtual(std::make_shared<Native::Interface::AppNavCompress::StackwiseVirtual>())
+    , arp(std::make_shared<Native::Interface::AppNavCompress::Arp>())
+    , backup(std::make_shared<Native::Interface::AppNavCompress::Backup>())
+    , cemoudp(std::make_shared<Native::Interface::AppNavCompress::Cemoudp>())
+    , cws_tunnel(std::make_shared<Native::Interface::AppNavCompress::CwsTunnel>())
+    , l2protocol_tunnel(nullptr) // presence node
+    , encapsulation(std::make_shared<Native::Interface::AppNavCompress::Encapsulation>())
+    , fair_queue_conf(std::make_shared<Native::Interface::AppNavCompress::FairQueueConf>())
+    , fair_queue(std::make_shared<Native::Interface::AppNavCompress::FairQueue>())
+    , flowcontrol(std::make_shared<Native::Interface::AppNavCompress::Flowcontrol>())
+    , isis(std::make_shared<Native::Interface::AppNavCompress::Isis>())
+    , keepalive_settings(std::make_shared<Native::Interface::AppNavCompress::KeepaliveSettings>())
+    , bfd(std::make_shared<Native::Interface::AppNavCompress::Bfd>())
+    , bandwidth(std::make_shared<Native::Interface::AppNavCompress::Bandwidth>())
+    , dampening(std::make_shared<Native::Interface::AppNavCompress::Dampening>())
+    , domain(std::make_shared<Native::Interface::AppNavCompress::Domain>())
+    , hold_queue(this, {"direction"})
+    , mpls(std::make_shared<Native::Interface::AppNavCompress::Mpls>())
+    , ip_vrf(std::make_shared<Native::Interface::AppNavCompress::IpVrf>())
+    , vrf(std::make_shared<Native::Interface::AppNavCompress::Vrf>())
+    , ip(std::make_shared<Native::Interface::AppNavCompress::Ip>())
+    , ipv6(std::make_shared<Native::Interface::AppNavCompress::Ipv6>())
+    , logging(std::make_shared<Native::Interface::AppNavCompress::Logging>())
+    , mdix(std::make_shared<Native::Interface::AppNavCompress::Mdix>())
+    , mop(std::make_shared<Native::Interface::AppNavCompress::Mop>())
+    , interface_qos(std::make_shared<Native::Interface::AppNavCompress::InterfaceQos>())
+    , standby(std::make_shared<Native::Interface::AppNavCompress::Standby>())
+    , access_session(std::make_shared<Native::Interface::AppNavCompress::AccessSession>())
+    , storm_control(std::make_shared<Native::Interface::AppNavCompress::StormControl>())
+    , trust(std::make_shared<Native::Interface::AppNavCompress::Trust>())
+    , priority_queue(std::make_shared<Native::Interface::AppNavCompress::PriorityQueue>())
+    , rcv_queue(std::make_shared<Native::Interface::AppNavCompress::RcvQueue>())
+    , peer(std::make_shared<Native::Interface::AppNavCompress::Peer>())
+    , pm_path(std::make_shared<Native::Interface::AppNavCompress::PmPath>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -14800,7 +14989,7 @@ Native::Interface::AppNavCompress::AppNavCompress()
     peer->parent = this;
     pm_path->parent = this;
 
-    yang_name = "AppNav-Compress"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "AppNav-Compress"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::AppNavCompress::~AppNavCompress()
@@ -14809,7 +14998,8 @@ Native::Interface::AppNavCompress::~AppNavCompress()
 
 bool Native::Interface::AppNavCompress::has_data() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_data())
             return true;
@@ -14864,7 +15054,7 @@ bool Native::Interface::AppNavCompress::has_data() const
 
 bool Native::Interface::AppNavCompress::has_operation() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_operation())
             return true;
@@ -14928,7 +15118,8 @@ std::string Native::Interface::AppNavCompress::get_absolute_path() const
 std::string Native::Interface::AppNavCompress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "AppNav-Compress" <<"[name='" <<name <<"']";
+    path_buffer << "AppNav-Compress";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -15021,7 +15212,7 @@ std::shared_ptr<Entity> Native::Interface::AppNavCompress::get_child_by_name(con
     {
         if(l2protocol_tunnel == nullptr)
         {
-            l2protocol_tunnel = std::make_shared<Native::Interface::AppNavCompress::L2ProtocolTunnel>();
+            l2protocol_tunnel = std::make_shared<Native::Interface::AppNavCompress::L2protocolTunnel>();
         }
         return l2protocol_tunnel;
     }
@@ -15120,7 +15311,7 @@ std::shared_ptr<Entity> Native::Interface::AppNavCompress::get_child_by_name(con
     {
         auto c = std::make_shared<Native::Interface::AppNavCompress::HoldQueue>();
         c->parent = this;
-        hold_queue.push_back(c);
+        hold_queue.append(c);
         return c;
     }
 
@@ -15375,7 +15566,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress
     }
 
     count = 0;
-    for (auto const & c : hold_queue)
+    for (auto c : hold_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15601,7 +15792,7 @@ Native::Interface::AppNavCompress::SwitchportConf::SwitchportConf()
     switchport{YType::boolean, "switchport"}
 {
 
-    yang_name = "switchport-conf"; yang_parent_name = "AppNav-Compress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport-conf"; yang_parent_name = "AppNav-Compress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavCompress::SwitchportConf::~SwitchportConf()
@@ -15610,6 +15801,7 @@ Native::Interface::AppNavCompress::SwitchportConf::~SwitchportConf()
 
 bool Native::Interface::AppNavCompress::SwitchportConf::has_data() const
 {
+    if (is_presence_container) return true;
     return switchport.is_set;
 }
 
@@ -15676,7 +15868,7 @@ bool Native::Interface::AppNavCompress::SwitchportConf::has_leaf_or_child_of_nam
 Native::Interface::AppNavCompress::Switchport::Switchport()
 {
 
-    yang_name = "switchport"; yang_parent_name = "AppNav-Compress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport"; yang_parent_name = "AppNav-Compress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::AppNavCompress::Switchport::~Switchport()
@@ -15685,6 +15877,7 @@ Native::Interface::AppNavCompress::Switchport::~Switchport()
 
 bool Native::Interface::AppNavCompress::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 

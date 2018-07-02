@@ -17,7 +17,7 @@ Diag::Diag()
 {
     racks->parent = this;
 
-    yang_name = "diag"; yang_parent_name = "Cisco-IOS-XR-sdr-invmgr-diag-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "diag"; yang_parent_name = "Cisco-IOS-XR-sdr-invmgr-diag-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Diag::~Diag()
@@ -26,6 +26,7 @@ Diag::~Diag()
 
 bool Diag::has_data() const
 {
+    if (is_presence_container) return true;
     return (racks !=  nullptr && racks->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Diag::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Diag::Racks::Racks()
+    :
+    rack(this, {"rack_name"})
 {
 
-    yang_name = "racks"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "racks"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Racks::~Racks()
@@ -129,7 +132,8 @@ Diag::Racks::~Racks()
 
 bool Diag::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Diag::Racks::has_data() const
 
 bool Diag::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Diag::Racks::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<Diag::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,18 +221,18 @@ bool Diag::Racks::has_leaf_or_child_of_name(const std::string & name) const
 Diag::Racks::Rack::Rack()
     :
     rack_name{YType::str, "rack-name"}
-    	,
+        ,
     power_shelfs(std::make_shared<Diag::Racks::Rack::PowerShelfs>())
-	,fan_traies(std::make_shared<Diag::Racks::Rack::FanTraies>())
-	,slots(std::make_shared<Diag::Racks::Rack::Slots>())
-	,chassis(std::make_shared<Diag::Racks::Rack::Chassis>())
+    , fan_traies(std::make_shared<Diag::Racks::Rack::FanTraies>())
+    , slots(std::make_shared<Diag::Racks::Rack::Slots>())
+    , chassis(std::make_shared<Diag::Racks::Rack::Chassis>())
 {
     power_shelfs->parent = this;
     fan_traies->parent = this;
     slots->parent = this;
     chassis->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Racks::Rack::~Rack()
@@ -237,6 +241,7 @@ Diag::Racks::Rack::~Rack()
 
 bool Diag::Racks::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_name.is_set
 	|| (power_shelfs !=  nullptr && power_shelfs->has_data())
 	|| (fan_traies !=  nullptr && fan_traies->has_data())
@@ -264,7 +269,8 @@ std::string Diag::Racks::Rack::get_absolute_path() const
 std::string Diag::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack-name='" <<rack_name <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack_name, "rack-name");
     return path_buffer.str();
 }
 
@@ -372,9 +378,11 @@ bool Diag::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelfs()
+    :
+    power_shelf(this, {"power_shelf_name"})
 {
 
-    yang_name = "power-shelfs"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-shelfs"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::PowerShelfs::~PowerShelfs()
@@ -383,7 +391,8 @@ Diag::Racks::Rack::PowerShelfs::~PowerShelfs()
 
 bool Diag::Racks::Rack::PowerShelfs::has_data() const
 {
-    for (std::size_t index=0; index<power_shelf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<power_shelf.len(); index++)
     {
         if(power_shelf[index]->has_data())
             return true;
@@ -393,7 +402,7 @@ bool Diag::Racks::Rack::PowerShelfs::has_data() const
 
 bool Diag::Racks::Rack::PowerShelfs::has_operation() const
 {
-    for (std::size_t index=0; index<power_shelf.size(); index++)
+    for (std::size_t index=0; index<power_shelf.len(); index++)
     {
         if(power_shelf[index]->has_operation())
             return true;
@@ -423,7 +432,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::get_child_by_name(const 
     {
         auto c = std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf>();
         c->parent = this;
-        power_shelf.push_back(c);
+        power_shelf.append(c);
         return c;
     }
 
@@ -435,7 +444,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : power_shelf)
+    for (auto c : power_shelf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -464,12 +473,12 @@ bool Diag::Racks::Rack::PowerShelfs::has_leaf_or_child_of_name(const std::string
 Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerShelf()
     :
     power_shelf_name{YType::str, "power-shelf-name"}
-    	,
+        ,
     power_supplies(std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies>())
 {
     power_supplies->parent = this;
 
-    yang_name = "power-shelf"; yang_parent_name = "power-shelfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-shelf"; yang_parent_name = "power-shelfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelf::~PowerShelf()
@@ -478,6 +487,7 @@ Diag::Racks::Rack::PowerShelfs::PowerShelf::~PowerShelf()
 
 bool Diag::Racks::Rack::PowerShelfs::PowerShelf::has_data() const
 {
+    if (is_presence_container) return true;
     return power_shelf_name.is_set
 	|| (power_supplies !=  nullptr && power_supplies->has_data());
 }
@@ -492,7 +502,8 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::has_operation() const
 std::string Diag::Racks::Rack::PowerShelfs::PowerShelf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "power-shelf" <<"[power-shelf-name='" <<power_shelf_name <<"']";
+    path_buffer << "power-shelf";
+    ADD_KEY_TOKEN(power_shelf_name, "power-shelf-name");
     return path_buffer.str();
 }
 
@@ -558,9 +569,11 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::has_leaf_or_child_of_name(const
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupplies()
+    :
+    power_supply(this, {"power_supply_name"})
 {
 
-    yang_name = "power-supplies"; yang_parent_name = "power-shelf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-supplies"; yang_parent_name = "power-shelf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::~PowerSupplies()
@@ -569,7 +582,8 @@ Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::~PowerSupplies()
 
 bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::has_data() const
 {
-    for (std::size_t index=0; index<power_supply.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<power_supply.len(); index++)
     {
         if(power_supply[index]->has_data())
             return true;
@@ -579,7 +593,7 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::has_data() const
 
 bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::has_operation() const
 {
-    for (std::size_t index=0; index<power_supply.size(); index++)
+    for (std::size_t index=0; index<power_supply.len(); index++)
     {
         if(power_supply[index]->has_operation())
             return true;
@@ -609,7 +623,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplie
     {
         auto c = std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply>();
         c->parent = this;
-        power_supply.push_back(c);
+        power_supply.append(c);
         return c;
     }
 
@@ -621,7 +635,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : power_supply)
+    for (auto c : power_supply.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -650,12 +664,12 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::has_leaf_or_chil
 Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::PowerSupply()
     :
     power_supply_name{YType::str, "power-supply-name"}
-    	,
+        ,
     information(std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information>())
 {
     information->parent = this;
 
-    yang_name = "power-supply"; yang_parent_name = "power-supplies"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-supply"; yang_parent_name = "power-supplies"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::~PowerSupply()
@@ -664,6 +678,7 @@ Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::~PowerSu
 
 bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::has_data() const
 {
+    if (is_presence_container) return true;
     return power_supply_name.is_set
 	|| (information !=  nullptr && information->has_data());
 }
@@ -678,7 +693,8 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::has
 std::string Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "power-supply" <<"[power-supply-name='" <<power_supply_name <<"']";
+    path_buffer << "power-supply";
+    ADD_KEY_TOKEN(power_supply_name, "power-supply-name");
     return path_buffer.str();
 }
 
@@ -801,12 +817,12 @@ Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Informat
     engineer_use{YType::str, "engineer-use"},
     snmpoid{YType::str, "snmpoid"},
     rma_code{YType::str, "rma-code"}
-    	,
+        ,
     rma(std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma>())
 {
     rma->parent = this;
 
-    yang_name = "information"; yang_parent_name = "power-supply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "information"; yang_parent_name = "power-supply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::~Information()
@@ -815,6 +831,7 @@ Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Informat
 
 bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| idprom_format_rev.is_set
 	|| controller_family.is_set
@@ -1616,7 +1633,7 @@ Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Informat
     rma_history{YType::str, "rma-history"}
 {
 
-    yang_name = "rma"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rma"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::~Rma()
@@ -1625,6 +1642,7 @@ Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Informat
 
 bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::has_data() const
 {
+    if (is_presence_container) return true;
     return test_history.is_set
 	|| rma_number.is_set
 	|| rma_history.is_set;
@@ -1715,9 +1733,11 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Inf
 }
 
 Diag::Racks::Rack::FanTraies::FanTraies()
+    :
+    fan_tray(this, {"fan_tray_name"})
 {
 
-    yang_name = "fan-traies"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fan-traies"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::FanTraies::~FanTraies()
@@ -1726,7 +1746,8 @@ Diag::Racks::Rack::FanTraies::~FanTraies()
 
 bool Diag::Racks::Rack::FanTraies::has_data() const
 {
-    for (std::size_t index=0; index<fan_tray.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fan_tray.len(); index++)
     {
         if(fan_tray[index]->has_data())
             return true;
@@ -1736,7 +1757,7 @@ bool Diag::Racks::Rack::FanTraies::has_data() const
 
 bool Diag::Racks::Rack::FanTraies::has_operation() const
 {
-    for (std::size_t index=0; index<fan_tray.size(); index++)
+    for (std::size_t index=0; index<fan_tray.len(); index++)
     {
         if(fan_tray[index]->has_operation())
             return true;
@@ -1766,7 +1787,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::get_child_by_name(const st
     {
         auto c = std::make_shared<Diag::Racks::Rack::FanTraies::FanTray>();
         c->parent = this;
-        fan_tray.push_back(c);
+        fan_tray.append(c);
         return c;
     }
 
@@ -1778,7 +1799,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fan_tray)
+    for (auto c : fan_tray.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1807,12 +1828,12 @@ bool Diag::Racks::Rack::FanTraies::has_leaf_or_child_of_name(const std::string &
 Diag::Racks::Rack::FanTraies::FanTray::FanTray()
     :
     fan_tray_name{YType::str, "fan-tray-name"}
-    	,
+        ,
     fanses(std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses>())
 {
     fanses->parent = this;
 
-    yang_name = "fan-tray"; yang_parent_name = "fan-traies"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fan-tray"; yang_parent_name = "fan-traies"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::FanTraies::FanTray::~FanTray()
@@ -1821,6 +1842,7 @@ Diag::Racks::Rack::FanTraies::FanTray::~FanTray()
 
 bool Diag::Racks::Rack::FanTraies::FanTray::has_data() const
 {
+    if (is_presence_container) return true;
     return fan_tray_name.is_set
 	|| (fanses !=  nullptr && fanses->has_data());
 }
@@ -1835,7 +1857,8 @@ bool Diag::Racks::Rack::FanTraies::FanTray::has_operation() const
 std::string Diag::Racks::Rack::FanTraies::FanTray::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fan-tray" <<"[fan-tray-name='" <<fan_tray_name <<"']";
+    path_buffer << "fan-tray";
+    ADD_KEY_TOKEN(fan_tray_name, "fan-tray-name");
     return path_buffer.str();
 }
 
@@ -1901,9 +1924,11 @@ bool Diag::Racks::Rack::FanTraies::FanTray::has_leaf_or_child_of_name(const std:
 }
 
 Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fanses()
+    :
+    fans(this, {"fans_name"})
 {
 
-    yang_name = "fanses"; yang_parent_name = "fan-tray"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fanses"; yang_parent_name = "fan-tray"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::FanTraies::FanTray::Fanses::~Fanses()
@@ -1912,7 +1937,8 @@ Diag::Racks::Rack::FanTraies::FanTray::Fanses::~Fanses()
 
 bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::has_data() const
 {
-    for (std::size_t index=0; index<fans.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fans.len(); index++)
     {
         if(fans[index]->has_data())
             return true;
@@ -1922,7 +1948,7 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::has_data() const
 
 bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::has_operation() const
 {
-    for (std::size_t index=0; index<fans.size(); index++)
+    for (std::size_t index=0; index<fans.len(); index++)
     {
         if(fans[index]->has_operation())
             return true;
@@ -1952,7 +1978,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_child
     {
         auto c = std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans>();
         c->parent = this;
-        fans.push_back(c);
+        fans.append(c);
         return c;
     }
 
@@ -1964,7 +1990,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::Fan
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fans)
+    for (auto c : fans.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1993,12 +2019,12 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::has_leaf_or_child_of_name(co
 Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Fans()
     :
     fans_name{YType::str, "fans-name"}
-    	,
+        ,
     information(std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information>())
 {
     information->parent = this;
 
-    yang_name = "fans"; yang_parent_name = "fanses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fans"; yang_parent_name = "fanses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::~Fans()
@@ -2007,6 +2033,7 @@ Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::~Fans()
 
 bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::has_data() const
 {
+    if (is_presence_container) return true;
     return fans_name.is_set
 	|| (information !=  nullptr && information->has_data());
 }
@@ -2021,7 +2048,8 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::has_operation() const
 std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fans" <<"[fans-name='" <<fans_name <<"']";
+    path_buffer << "fans";
+    ADD_KEY_TOKEN(fans_name, "fans-name");
     return path_buffer.str();
 }
 
@@ -2144,12 +2172,12 @@ Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Information()
     engineer_use{YType::str, "engineer-use"},
     snmpoid{YType::str, "snmpoid"},
     rma_code{YType::str, "rma-code"}
-    	,
+        ,
     rma(std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma>())
 {
     rma->parent = this;
 
-    yang_name = "information"; yang_parent_name = "fans"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "information"; yang_parent_name = "fans"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::~Information()
@@ -2158,6 +2186,7 @@ Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::~Information()
 
 bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| idprom_format_rev.is_set
 	|| controller_family.is_set
@@ -2959,7 +2988,7 @@ Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::Rma()
     rma_history{YType::str, "rma-history"}
 {
 
-    yang_name = "rma"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rma"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::~Rma()
@@ -2968,6 +2997,7 @@ Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::~Rma()
 
 bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::has_data() const
 {
+    if (is_presence_container) return true;
     return test_history.is_set
 	|| rma_number.is_set
 	|| rma_history.is_set;
@@ -3058,9 +3088,11 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::has_
 }
 
 Diag::Racks::Rack::Slots::Slots()
+    :
+    slot(this, {"slot_name"})
 {
 
-    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::~Slots()
@@ -3069,7 +3101,8 @@ Diag::Racks::Rack::Slots::~Slots()
 
 bool Diag::Racks::Rack::Slots::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -3079,7 +3112,7 @@ bool Diag::Racks::Rack::Slots::has_data() const
 
 bool Diag::Racks::Rack::Slots::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -3109,7 +3142,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
@@ -3121,7 +3154,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3150,12 +3183,12 @@ bool Diag::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string & nam
 Diag::Racks::Rack::Slots::Slot::Slot()
     :
     slot_name{YType::str, "slot-name"}
-    	,
+        ,
     instances(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances>())
 {
     instances->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::~Slot()
@@ -3164,6 +3197,7 @@ Diag::Racks::Rack::Slots::Slot::~Slot()
 
 bool Diag::Racks::Rack::Slots::Slot::has_data() const
 {
+    if (is_presence_container) return true;
     return slot_name.is_set
 	|| (instances !=  nullptr && instances->has_data());
 }
@@ -3178,7 +3212,8 @@ bool Diag::Racks::Rack::Slots::Slot::has_operation() const
 std::string Diag::Racks::Rack::Slots::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[slot-name='" <<slot_name <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(slot_name, "slot-name");
     return path_buffer.str();
 }
 
@@ -3244,9 +3279,11 @@ bool Diag::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::string
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instances()
+    :
+    instance(this, {"name"})
 {
 
-    yang_name = "instances"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instances"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::~Instances()
@@ -3255,7 +3292,8 @@ Diag::Racks::Rack::Slots::Slot::Instances::~Instances()
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -3265,7 +3303,7 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::has_data() const
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -3295,7 +3333,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::get_child_by_
     {
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -3307,7 +3345,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3336,12 +3374,12 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::has_leaf_or_child_of_name(const 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Instance()
     :
     name{YType::str, "name"}
-    	,
+        ,
     detail(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail>())
 {
     detail->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::~Instance()
@@ -3350,6 +3388,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::~Instance()
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (detail !=  nullptr && detail->has_data());
 }
@@ -3364,7 +3403,8 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::has_operation() const
 std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[name='" <<name <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -3432,12 +3472,12 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::has_leaf_or_child_of_n
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Detail()
     :
     node_operational_state{YType::str, "node-operational-state"}
-    	,
+        ,
     card_instance(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance>())
 {
     card_instance->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::~Detail()
@@ -3446,6 +3486,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::~Detail()
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return node_operational_state.is_set
 	|| (card_instance !=  nullptr && card_instance->has_data());
 }
@@ -3583,12 +3624,12 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::CardI
     engineer_use{YType::str, "engineer-use"},
     snmpoid{YType::str, "snmpoid"},
     rma_code{YType::str, "rma-code"}
-    	,
+        ,
     rma(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma>())
 {
     rma->parent = this;
 
-    yang_name = "card-instance"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-instance"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::~CardInstance()
@@ -3597,6 +3638,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::~Card
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| idprom_format_rev.is_set
 	|| controller_family.is_set
@@ -4398,7 +4440,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::
     rma_history{YType::str, "rma-history"}
 {
 
-    yang_name = "rma"; yang_parent_name = "card-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rma"; yang_parent_name = "card-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::~Rma()
@@ -4407,6 +4449,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::has_data() const
 {
+    if (is_presence_container) return true;
     return test_history.is_set
 	|| rma_number.is_set
 	|| rma_history.is_set;
@@ -4554,12 +4597,12 @@ Diag::Racks::Rack::Chassis::Chassis()
     engineer_use{YType::str, "engineer-use"},
     snmpoid{YType::str, "snmpoid"},
     rma_code{YType::str, "rma-code"}
-    	,
+        ,
     rma(std::make_shared<Diag::Racks::Rack::Chassis::Rma>())
 {
     rma->parent = this;
 
-    yang_name = "chassis"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "chassis"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Chassis::~Chassis()
@@ -4568,6 +4611,7 @@ Diag::Racks::Rack::Chassis::~Chassis()
 
 bool Diag::Racks::Rack::Chassis::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| idprom_format_rev.is_set
 	|| controller_family.is_set
@@ -5369,7 +5413,7 @@ Diag::Racks::Rack::Chassis::Rma::Rma()
     rma_history{YType::str, "rma-history"}
 {
 
-    yang_name = "rma"; yang_parent_name = "chassis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rma"; yang_parent_name = "chassis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Chassis::Rma::~Rma()
@@ -5378,6 +5422,7 @@ Diag::Racks::Rack::Chassis::Rma::~Rma()
 
 bool Diag::Racks::Rack::Chassis::Rma::has_data() const
 {
+    if (is_presence_container) return true;
     return test_history.is_set
 	|| rma_number.is_set
 	|| rma_history.is_set;

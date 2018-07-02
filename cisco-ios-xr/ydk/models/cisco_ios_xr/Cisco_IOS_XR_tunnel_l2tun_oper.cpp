@@ -11,15 +11,15 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tunnel_l2tun_oper {
 
-L2Tp::L2Tp()
+L2tp::L2tp()
     :
-    counters(std::make_shared<L2Tp::Counters>())
-	,tunnel_configurations(std::make_shared<L2Tp::TunnelConfigurations>())
-	,counter_hist_fail(std::make_shared<L2Tp::CounterHistFail>())
-	,classes(std::make_shared<L2Tp::Classes>())
-	,tunnels(std::make_shared<L2Tp::Tunnels>())
-	,sessions(std::make_shared<L2Tp::Sessions>())
-	,session(std::make_shared<L2Tp::Session>())
+    counters(std::make_shared<L2tp::Counters>())
+    , tunnel_configurations(std::make_shared<L2tp::TunnelConfigurations>())
+    , counter_hist_fail(std::make_shared<L2tp::CounterHistFail>())
+    , classes(std::make_shared<L2tp::Classes>())
+    , tunnels(std::make_shared<L2tp::Tunnels>())
+    , sessions(std::make_shared<L2tp::Sessions>())
+    , session(std::make_shared<L2tp::Session>())
 {
     counters->parent = this;
     tunnel_configurations->parent = this;
@@ -29,15 +29,16 @@ L2Tp::L2Tp()
     sessions->parent = this;
     session->parent = this;
 
-    yang_name = "l2tp"; yang_parent_name = "Cisco-IOS-XR-tunnel-l2tun-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "l2tp"; yang_parent_name = "Cisco-IOS-XR-tunnel-l2tun-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
-L2Tp::~L2Tp()
+L2tp::~L2tp()
 {
 }
 
-bool L2Tp::has_data() const
+bool L2tp::has_data() const
 {
+    if (is_presence_container) return true;
     return (counters !=  nullptr && counters->has_data())
 	|| (tunnel_configurations !=  nullptr && tunnel_configurations->has_data())
 	|| (counter_hist_fail !=  nullptr && counter_hist_fail->has_data())
@@ -47,7 +48,7 @@ bool L2Tp::has_data() const
 	|| (session !=  nullptr && session->has_data());
 }
 
-bool L2Tp::has_operation() const
+bool L2tp::has_operation() const
 {
     return is_set(yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
@@ -59,14 +60,14 @@ bool L2Tp::has_operation() const
 	|| (session !=  nullptr && session->has_operation());
 }
 
-std::string L2Tp::get_segment_path() const
+std::string L2tp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -75,13 +76,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> L2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
         if(counters == nullptr)
         {
-            counters = std::make_shared<L2Tp::Counters>();
+            counters = std::make_shared<L2tp::Counters>();
         }
         return counters;
     }
@@ -90,7 +91,7 @@ std::shared_ptr<Entity> L2Tp::get_child_by_name(const std::string & child_yang_n
     {
         if(tunnel_configurations == nullptr)
         {
-            tunnel_configurations = std::make_shared<L2Tp::TunnelConfigurations>();
+            tunnel_configurations = std::make_shared<L2tp::TunnelConfigurations>();
         }
         return tunnel_configurations;
     }
@@ -99,7 +100,7 @@ std::shared_ptr<Entity> L2Tp::get_child_by_name(const std::string & child_yang_n
     {
         if(counter_hist_fail == nullptr)
         {
-            counter_hist_fail = std::make_shared<L2Tp::CounterHistFail>();
+            counter_hist_fail = std::make_shared<L2tp::CounterHistFail>();
         }
         return counter_hist_fail;
     }
@@ -108,7 +109,7 @@ std::shared_ptr<Entity> L2Tp::get_child_by_name(const std::string & child_yang_n
     {
         if(classes == nullptr)
         {
-            classes = std::make_shared<L2Tp::Classes>();
+            classes = std::make_shared<L2tp::Classes>();
         }
         return classes;
     }
@@ -117,7 +118,7 @@ std::shared_ptr<Entity> L2Tp::get_child_by_name(const std::string & child_yang_n
     {
         if(tunnels == nullptr)
         {
-            tunnels = std::make_shared<L2Tp::Tunnels>();
+            tunnels = std::make_shared<L2tp::Tunnels>();
         }
         return tunnels;
     }
@@ -126,7 +127,7 @@ std::shared_ptr<Entity> L2Tp::get_child_by_name(const std::string & child_yang_n
     {
         if(sessions == nullptr)
         {
-            sessions = std::make_shared<L2Tp::Sessions>();
+            sessions = std::make_shared<L2tp::Sessions>();
         }
         return sessions;
     }
@@ -135,7 +136,7 @@ std::shared_ptr<Entity> L2Tp::get_child_by_name(const std::string & child_yang_n
     {
         if(session == nullptr)
         {
-            session = std::make_shared<L2Tp::Session>();
+            session = std::make_shared<L2tp::Session>();
         }
         return session;
     }
@@ -143,7 +144,7 @@ std::shared_ptr<Entity> L2Tp::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -185,85 +186,86 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::get_children() const
     return children;
 }
 
-void L2Tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> L2Tp::clone_ptr() const
+std::shared_ptr<Entity> L2tp::clone_ptr() const
 {
-    return std::make_shared<L2Tp>();
+    return std::make_shared<L2tp>();
 }
 
-std::string L2Tp::get_bundle_yang_models_location() const
+std::string L2tp::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string L2Tp::get_bundle_name() const
+std::string L2tp::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function L2Tp::get_augment_capabilities_function() const
+augment_capabilities_function L2tp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> L2Tp::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> L2tp::get_namespace_identity_lookup() const
 {
     return cisco_ios_xr_namespace_identity_lookup;
 }
 
-bool L2Tp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "counters" || name == "tunnel-configurations" || name == "counter-hist-fail" || name == "classes" || name == "tunnels" || name == "sessions" || name == "session")
         return true;
     return false;
 }
 
-L2Tp::Counters::Counters()
+L2tp::Counters::Counters()
     :
-    control(std::make_shared<L2Tp::Counters::Control>())
+    control(std::make_shared<L2tp::Counters::Control>())
 {
     control->parent = this;
 
-    yang_name = "counters"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "counters"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::~Counters()
+L2tp::Counters::~Counters()
 {
 }
 
-bool L2Tp::Counters::has_data() const
+bool L2tp::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return (control !=  nullptr && control->has_data());
 }
 
-bool L2Tp::Counters::has_operation() const
+bool L2tp::Counters::has_operation() const
 {
     return is_set(yfilter)
 	|| (control !=  nullptr && control->has_operation());
 }
 
-std::string L2Tp::Counters::get_absolute_path() const
+std::string L2tp::Counters::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::get_segment_path() const
+std::string L2tp::Counters::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "counters";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -272,13 +274,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "control")
     {
         if(control == nullptr)
         {
-            control = std::make_shared<L2Tp::Counters::Control>();
+            control = std::make_shared<L2tp::Counters::Control>();
         }
         return control;
     }
@@ -286,7 +288,7 @@ std::shared_ptr<Entity> L2Tp::Counters::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -298,64 +300,65 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::get_children() co
     return children;
 }
 
-void L2Tp::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tp::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tp::Counters::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "control")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::Control()
+L2tp::Counters::Control::Control()
     :
-    tunnel_xr(std::make_shared<L2Tp::Counters::Control::TunnelXr>())
-	,tunnels(std::make_shared<L2Tp::Counters::Control::Tunnels>())
+    tunnel_xr(std::make_shared<L2tp::Counters::Control::TunnelXr>())
+    , tunnels(std::make_shared<L2tp::Counters::Control::Tunnels>())
 {
     tunnel_xr->parent = this;
     tunnels->parent = this;
 
-    yang_name = "control"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "control"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::~Control()
+L2tp::Counters::Control::~Control()
 {
 }
 
-bool L2Tp::Counters::Control::has_data() const
+bool L2tp::Counters::Control::has_data() const
 {
+    if (is_presence_container) return true;
     return (tunnel_xr !=  nullptr && tunnel_xr->has_data())
 	|| (tunnels !=  nullptr && tunnels->has_data());
 }
 
-bool L2Tp::Counters::Control::has_operation() const
+bool L2tp::Counters::Control::has_operation() const
 {
     return is_set(yfilter)
 	|| (tunnel_xr !=  nullptr && tunnel_xr->has_operation())
 	|| (tunnels !=  nullptr && tunnels->has_operation());
 }
 
-std::string L2Tp::Counters::Control::get_absolute_path() const
+std::string L2tp::Counters::Control::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::get_segment_path() const
+std::string L2tp::Counters::Control::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "control";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -364,13 +367,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::get_name
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel-xr")
     {
         if(tunnel_xr == nullptr)
         {
-            tunnel_xr = std::make_shared<L2Tp::Counters::Control::TunnelXr>();
+            tunnel_xr = std::make_shared<L2tp::Counters::Control::TunnelXr>();
         }
         return tunnel_xr;
     }
@@ -379,7 +382,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::get_child_by_name(const std::st
     {
         if(tunnels == nullptr)
         {
-            tunnels = std::make_shared<L2Tp::Counters::Control::Tunnels>();
+            tunnels = std::make_shared<L2tp::Counters::Control::Tunnels>();
         }
         return tunnels;
     }
@@ -387,7 +390,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -404,64 +407,65 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::get_chil
     return children;
 }
 
-void L2Tp::Counters::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tp::Counters::Control::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tp::Counters::Control::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnel-xr" || name == "tunnels")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::TunnelXr()
+L2tp::Counters::Control::TunnelXr::TunnelXr()
     :
-    authentication(std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication>())
-	,global(std::make_shared<L2Tp::Counters::Control::TunnelXr::Global>())
+    authentication(std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication>())
+    , global(std::make_shared<L2tp::Counters::Control::TunnelXr::Global>())
 {
     authentication->parent = this;
     global->parent = this;
 
-    yang_name = "tunnel-xr"; yang_parent_name = "control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-xr"; yang_parent_name = "control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::~TunnelXr()
+L2tp::Counters::Control::TunnelXr::~TunnelXr()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::has_data() const
+bool L2tp::Counters::Control::TunnelXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data())
 	|| (global !=  nullptr && global->has_data());
 }
 
-bool L2Tp::Counters::Control::TunnelXr::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::has_operation() const
 {
     return is_set(yfilter)
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (global !=  nullptr && global->has_operation());
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-xr";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -470,13 +474,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication")
     {
         if(authentication == nullptr)
         {
-            authentication = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication>();
+            authentication = std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication>();
         }
         return authentication;
     }
@@ -485,7 +489,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::get_child_by_name(con
     {
         if(global == nullptr)
         {
-            global = std::make_shared<L2Tp::Counters::Control::TunnelXr::Global>();
+            global = std::make_shared<L2tp::Counters::Control::TunnelXr::Global>();
         }
         return global;
     }
@@ -493,7 +497,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -510,32 +514,32 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tp::Counters::Control::TunnelXr::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "authentication" || name == "global")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::Authentication()
+L2tp::Counters::Control::TunnelXr::Authentication::Authentication()
     :
-    nonce_avp(std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp>())
-	,common_digest(std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest>())
-	,primary_digest(std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest>())
-	,secondary_digest(std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest>())
-	,integrity_check(std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck>())
-	,local_secret(std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret>())
-	,challenge_avp(std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp>())
-	,challenge_reponse(std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse>())
-	,overall_statistics(std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics>())
+    nonce_avp(std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp>())
+    , common_digest(std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest>())
+    , primary_digest(std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest>())
+    , secondary_digest(std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest>())
+    , integrity_check(std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck>())
+    , local_secret(std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret>())
+    , challenge_avp(std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp>())
+    , challenge_reponse(std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse>())
+    , overall_statistics(std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics>())
 {
     nonce_avp->parent = this;
     common_digest->parent = this;
@@ -547,15 +551,16 @@ L2Tp::Counters::Control::TunnelXr::Authentication::Authentication()
     challenge_reponse->parent = this;
     overall_statistics->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "tunnel-xr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authentication"; yang_parent_name = "tunnel-xr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::~Authentication()
+L2tp::Counters::Control::TunnelXr::Authentication::~Authentication()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (nonce_avp !=  nullptr && nonce_avp->has_data())
 	|| (common_digest !=  nullptr && common_digest->has_data())
 	|| (primary_digest !=  nullptr && primary_digest->has_data())
@@ -567,7 +572,7 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::has_data() const
 	|| (overall_statistics !=  nullptr && overall_statistics->has_data());
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::has_operation() const
 {
     return is_set(yfilter)
 	|| (nonce_avp !=  nullptr && nonce_avp->has_operation())
@@ -581,21 +586,21 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::has_operation() const
 	|| (overall_statistics !=  nullptr && overall_statistics->has_operation());
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Authentication::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Authentication::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -604,13 +609,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nonce-avp")
     {
         if(nonce_avp == nullptr)
         {
-            nonce_avp = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp>();
+            nonce_avp = std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp>();
         }
         return nonce_avp;
     }
@@ -619,7 +624,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::get_c
     {
         if(common_digest == nullptr)
         {
-            common_digest = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest>();
+            common_digest = std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest>();
         }
         return common_digest;
     }
@@ -628,7 +633,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::get_c
     {
         if(primary_digest == nullptr)
         {
-            primary_digest = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest>();
+            primary_digest = std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest>();
         }
         return primary_digest;
     }
@@ -637,7 +642,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::get_c
     {
         if(secondary_digest == nullptr)
         {
-            secondary_digest = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest>();
+            secondary_digest = std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest>();
         }
         return secondary_digest;
     }
@@ -646,7 +651,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::get_c
     {
         if(integrity_check == nullptr)
         {
-            integrity_check = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck>();
+            integrity_check = std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck>();
         }
         return integrity_check;
     }
@@ -655,7 +660,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::get_c
     {
         if(local_secret == nullptr)
         {
-            local_secret = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret>();
+            local_secret = std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret>();
         }
         return local_secret;
     }
@@ -664,7 +669,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::get_c
     {
         if(challenge_avp == nullptr)
         {
-            challenge_avp = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp>();
+            challenge_avp = std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp>();
         }
         return challenge_avp;
     }
@@ -673,7 +678,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::get_c
     {
         if(challenge_reponse == nullptr)
         {
-            challenge_reponse = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse>();
+            challenge_reponse = std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse>();
         }
         return challenge_reponse;
     }
@@ -682,7 +687,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::get_c
     {
         if(overall_statistics == nullptr)
         {
-            overall_statistics = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics>();
+            overall_statistics = std::make_shared<L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics>();
         }
         return overall_statistics;
     }
@@ -690,7 +695,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -742,22 +747,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nonce-avp" || name == "common-digest" || name == "primary-digest" || name == "secondary-digest" || name == "integrity-check" || name == "local-secret" || name == "challenge-avp" || name == "challenge-reponse" || name == "overall-statistics")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::NonceAvp()
+L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp::NonceAvp()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -772,15 +777,16 @@ L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::NonceAvp()
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "nonce-avp"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nonce-avp"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::~NonceAvp()
+L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp::~NonceAvp()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -794,7 +800,7 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::has_data() con
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -810,21 +816,21 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::has_operation(
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nonce-avp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -844,19 +850,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -926,7 +932,7 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::set_value(cons
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -974,14 +980,14 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::set_filter(con
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::CommonDigest()
+L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest::CommonDigest()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -996,15 +1002,16 @@ L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::CommonDigest()
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "common-digest"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "common-digest"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::~CommonDigest()
+L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest::~CommonDigest()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -1018,7 +1025,7 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::has_data()
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -1034,21 +1041,21 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::has_operat
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "common-digest";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1068,19 +1075,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -1150,7 +1157,7 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::set_value(
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -1198,14 +1205,14 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::set_filter
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::PrimaryDigest()
+L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::PrimaryDigest()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -1220,15 +1227,16 @@ L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::PrimaryDigest(
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "primary-digest"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "primary-digest"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::~PrimaryDigest()
+L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::~PrimaryDigest()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -1242,7 +1250,7 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_data(
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -1258,21 +1266,21 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_opera
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "primary-digest";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1292,19 +1300,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -1374,7 +1382,7 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_value
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -1422,14 +1430,14 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_filte
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::SecondaryDigest()
+L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::SecondaryDigest()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -1444,15 +1452,16 @@ L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::SecondaryDig
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "secondary-digest"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "secondary-digest"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::~SecondaryDigest()
+L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::~SecondaryDigest()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -1466,7 +1475,7 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_dat
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -1482,21 +1491,21 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_ope
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "secondary-digest";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1516,19 +1525,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -1598,7 +1607,7 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_val
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -1646,14 +1655,14 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_fil
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::IntegrityCheck()
+L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::IntegrityCheck()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -1668,15 +1677,16 @@ L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::IntegrityChec
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "integrity-check"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "integrity-check"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::~IntegrityCheck()
+L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::~IntegrityCheck()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -1690,7 +1700,7 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_data
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -1706,21 +1716,21 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_oper
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "integrity-check";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1740,19 +1750,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -1822,7 +1832,7 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_valu
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -1870,14 +1880,14 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_filt
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::LocalSecret()
+L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret::LocalSecret()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -1892,15 +1902,16 @@ L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::LocalSecret()
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "local-secret"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-secret"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::~LocalSecret()
+L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret::~LocalSecret()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -1914,7 +1925,7 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::has_data() 
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -1930,21 +1941,21 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::has_operati
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local-secret";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1964,19 +1975,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -2046,7 +2057,7 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::set_value(c
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -2094,14 +2105,14 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::set_filter(
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::ChallengeAvp()
+L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::ChallengeAvp()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -2116,15 +2127,16 @@ L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::ChallengeAvp()
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "challenge-avp"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "challenge-avp"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::~ChallengeAvp()
+L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::~ChallengeAvp()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -2138,7 +2150,7 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_data()
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -2154,21 +2166,21 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_operat
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "challenge-avp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2188,19 +2200,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -2270,7 +2282,7 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_value(
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -2318,14 +2330,14 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_filter
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::ChallengeReponse()
+L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::ChallengeReponse()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -2340,15 +2352,16 @@ L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::ChallengeRe
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "challenge-reponse"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "challenge-reponse"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::~ChallengeReponse()
+L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::~ChallengeReponse()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -2362,7 +2375,7 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_da
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -2378,21 +2391,21 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_op
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "challenge-reponse";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2412,19 +2425,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -2494,7 +2507,7 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_va
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -2542,14 +2555,14 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_fi
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::OverallStatistics()
+L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::OverallStatistics()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -2564,15 +2577,16 @@ L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::OverallSta
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "overall-statistics"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "overall-statistics"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::~OverallStatistics()
+L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::~OverallStatistics()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -2586,7 +2600,7 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_d
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -2602,21 +2616,21 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_o
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "overall-statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2636,19 +2650,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -2718,7 +2732,7 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_v
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -2766,39 +2780,40 @@ void L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_f
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Global::Global()
+L2tp::Counters::Control::TunnelXr::Global::Global()
     :
     total_transmit{YType::uint32, "total-transmit"},
     total_retransmit{YType::uint32, "total-retransmit"},
     total_received{YType::uint32, "total-received"},
     total_drop{YType::uint32, "total-drop"}
-    	,
-    transmit(std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Transmit>())
-	,retransmit(std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Retransmit>())
-	,received(std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Received>())
-	,drop(std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Drop>())
+        ,
+    transmit(std::make_shared<L2tp::Counters::Control::TunnelXr::Global::Transmit>())
+    , retransmit(std::make_shared<L2tp::Counters::Control::TunnelXr::Global::Retransmit>())
+    , received(std::make_shared<L2tp::Counters::Control::TunnelXr::Global::Received>())
+    , drop(std::make_shared<L2tp::Counters::Control::TunnelXr::Global::Drop>())
 {
     transmit->parent = this;
     retransmit->parent = this;
     received->parent = this;
     drop->parent = this;
 
-    yang_name = "global"; yang_parent_name = "tunnel-xr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "tunnel-xr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Global::~Global()
+L2tp::Counters::Control::TunnelXr::Global::~Global()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return total_transmit.is_set
 	|| total_retransmit.is_set
 	|| total_received.is_set
@@ -2809,7 +2824,7 @@ bool L2Tp::Counters::Control::TunnelXr::Global::has_data() const
 	|| (drop !=  nullptr && drop->has_data());
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Global::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(total_transmit.yfilter)
@@ -2822,21 +2837,21 @@ bool L2Tp::Counters::Control::TunnelXr::Global::has_operation() const
 	|| (drop !=  nullptr && drop->has_operation());
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Global::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Global::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Global::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Global::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "global";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Global::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Global::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2849,13 +2864,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit")
     {
         if(transmit == nullptr)
         {
-            transmit = std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Transmit>();
+            transmit = std::make_shared<L2tp::Counters::Control::TunnelXr::Global::Transmit>();
         }
         return transmit;
     }
@@ -2864,7 +2879,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::get_child_by_
     {
         if(retransmit == nullptr)
         {
-            retransmit = std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Retransmit>();
+            retransmit = std::make_shared<L2tp::Counters::Control::TunnelXr::Global::Retransmit>();
         }
         return retransmit;
     }
@@ -2873,7 +2888,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::get_child_by_
     {
         if(received == nullptr)
         {
-            received = std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Received>();
+            received = std::make_shared<L2tp::Counters::Control::TunnelXr::Global::Received>();
         }
         return received;
     }
@@ -2882,7 +2897,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::get_child_by_
     {
         if(drop == nullptr)
         {
-            drop = std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Drop>();
+            drop = std::make_shared<L2tp::Counters::Control::TunnelXr::Global::Drop>();
         }
         return drop;
     }
@@ -2890,7 +2905,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Global::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2917,7 +2932,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "total-transmit")
     {
@@ -2945,7 +2960,7 @@ void L2Tp::Counters::Control::TunnelXr::Global::set_value(const std::string & va
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Global::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "total-transmit")
     {
@@ -2965,14 +2980,14 @@ void L2Tp::Counters::Control::TunnelXr::Global::set_filter(const std::string & v
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Global::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "transmit" || name == "retransmit" || name == "received" || name == "drop" || name == "total-transmit" || name == "total-retransmit" || name == "total-received" || name == "total-drop")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Global::Transmit::Transmit()
+L2tp::Counters::Control::TunnelXr::Global::Transmit::Transmit()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -2995,15 +3010,16 @@ L2Tp::Counters::Control::TunnelXr::Global::Transmit::Transmit()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "transmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Global::Transmit::~Transmit()
+L2tp::Counters::Control::TunnelXr::Global::Transmit::~Transmit()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::Transmit::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Global::Transmit::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -3025,7 +3041,7 @@ bool L2Tp::Counters::Control::TunnelXr::Global::Transmit::has_data() const
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::Transmit::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Global::Transmit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -3049,21 +3065,21 @@ bool L2Tp::Counters::Control::TunnelXr::Global::Transmit::has_operation() const
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Global::Transmit::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/global/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Global::Transmit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "transmit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Global::Transmit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3091,19 +3107,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Global::Transmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Global::Transmit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::Transmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Global::Transmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -3221,7 +3237,7 @@ void L2Tp::Counters::Control::TunnelXr::Global::Transmit::set_value(const std::s
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::Transmit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Global::Transmit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -3301,14 +3317,14 @@ void L2Tp::Counters::Control::TunnelXr::Global::Transmit::set_filter(const std::
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::Transmit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Global::Transmit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Global::Retransmit::Retransmit()
+L2tp::Counters::Control::TunnelXr::Global::Retransmit::Retransmit()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -3331,15 +3347,16 @@ L2Tp::Counters::Control::TunnelXr::Global::Retransmit::Retransmit()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "retransmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "retransmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Global::Retransmit::~Retransmit()
+L2tp::Counters::Control::TunnelXr::Global::Retransmit::~Retransmit()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::Retransmit::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Global::Retransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -3361,7 +3378,7 @@ bool L2Tp::Counters::Control::TunnelXr::Global::Retransmit::has_data() const
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::Retransmit::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Global::Retransmit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -3385,21 +3402,21 @@ bool L2Tp::Counters::Control::TunnelXr::Global::Retransmit::has_operation() cons
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Global::Retransmit::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/global/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Global::Retransmit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "retransmit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Global::Retransmit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3427,19 +3444,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Global::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Global::Retransmit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Global::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -3557,7 +3574,7 @@ void L2Tp::Counters::Control::TunnelXr::Global::Retransmit::set_value(const std:
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Global::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -3637,14 +3654,14 @@ void L2Tp::Counters::Control::TunnelXr::Global::Retransmit::set_filter(const std
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Global::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Global::Received::Received()
+L2tp::Counters::Control::TunnelXr::Global::Received::Received()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -3667,15 +3684,16 @@ L2Tp::Counters::Control::TunnelXr::Global::Received::Received()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "received"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Global::Received::~Received()
+L2tp::Counters::Control::TunnelXr::Global::Received::~Received()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::Received::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Global::Received::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -3697,7 +3715,7 @@ bool L2Tp::Counters::Control::TunnelXr::Global::Received::has_data() const
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::Received::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Global::Received::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -3721,21 +3739,21 @@ bool L2Tp::Counters::Control::TunnelXr::Global::Received::has_operation() const
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Global::Received::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Global::Received::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/global/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Global::Received::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Global::Received::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "received";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Global::Received::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Global::Received::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3763,19 +3781,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Global::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Global::Received::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Global::Received::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Global::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -3893,7 +3911,7 @@ void L2Tp::Counters::Control::TunnelXr::Global::Received::set_value(const std::s
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::Received::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Global::Received::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -3973,14 +3991,14 @@ void L2Tp::Counters::Control::TunnelXr::Global::Received::set_filter(const std::
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::Received::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Global::Received::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::TunnelXr::Global::Drop::Drop()
+L2tp::Counters::Control::TunnelXr::Global::Drop::Drop()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -4003,15 +4021,16 @@ L2Tp::Counters::Control::TunnelXr::Global::Drop::Drop()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "drop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "drop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::TunnelXr::Global::Drop::~Drop()
+L2tp::Counters::Control::TunnelXr::Global::Drop::~Drop()
 {
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::Drop::has_data() const
+bool L2tp::Counters::Control::TunnelXr::Global::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -4033,7 +4052,7 @@ bool L2Tp::Counters::Control::TunnelXr::Global::Drop::has_data() const
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::Drop::has_operation() const
+bool L2tp::Counters::Control::TunnelXr::Global::Drop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -4057,21 +4076,21 @@ bool L2Tp::Counters::Control::TunnelXr::Global::Drop::has_operation() const
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Global::Drop::get_absolute_path() const
+std::string L2tp::Counters::Control::TunnelXr::Global::Drop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnel-xr/global/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::TunnelXr::Global::Drop::get_segment_path() const
+std::string L2tp::Counters::Control::TunnelXr::Global::Drop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr::Global::Drop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::TunnelXr::Global::Drop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4099,19 +4118,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::TunnelXr
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::TunnelXr::Global::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Global::Drop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::TunnelXr::Global::Drop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::TunnelXr::Global::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -4229,7 +4248,7 @@ void L2Tp::Counters::Control::TunnelXr::Global::Drop::set_value(const std::strin
     }
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::Drop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::TunnelXr::Global::Drop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -4309,26 +4328,29 @@ void L2Tp::Counters::Control::TunnelXr::Global::Drop::set_filter(const std::stri
     }
 }
 
-bool L2Tp::Counters::Control::TunnelXr::Global::Drop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::TunnelXr::Global::Drop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnels()
+L2tp::Counters::Control::Tunnels::Tunnels()
+    :
+    tunnel(this, {"tunnel_id"})
 {
 
-    yang_name = "tunnels"; yang_parent_name = "control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnels"; yang_parent_name = "control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::Tunnels::~Tunnels()
+L2tp::Counters::Control::Tunnels::~Tunnels()
 {
 }
 
-bool L2Tp::Counters::Control::Tunnels::has_data() const
+bool L2tp::Counters::Control::Tunnels::has_data() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_data())
             return true;
@@ -4336,9 +4358,9 @@ bool L2Tp::Counters::Control::Tunnels::has_data() const
     return false;
 }
 
-bool L2Tp::Counters::Control::Tunnels::has_operation() const
+bool L2tp::Counters::Control::Tunnels::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_operation())
             return true;
@@ -4346,21 +4368,21 @@ bool L2Tp::Counters::Control::Tunnels::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Tp::Counters::Control::Tunnels::get_absolute_path() const
+std::string L2tp::Counters::Control::Tunnels::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::Tunnels::get_segment_path() const
+std::string L2tp::Counters::Control::Tunnels::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnels";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::Tunnels::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4369,25 +4391,25 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels:
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel")
     {
-        auto c = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel>();
+        auto c = std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(c);
+        tunnel.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::Tunnels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel)
+    for (auto c : tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4398,46 +4420,47 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels:
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tp::Counters::Control::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tp::Counters::Control::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnel")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Tunnel()
+L2tp::Counters::Control::Tunnels::Tunnel::Tunnel()
     :
-    tunnel_id{YType::int32, "tunnel-id"}
-    	,
-    brief(std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Brief>())
-	,global(std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global>())
+    tunnel_id{YType::uint32, "tunnel-id"}
+        ,
+    brief(std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel::Brief>())
+    , global(std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel::Global>())
 {
     brief->parent = this;
     global->parent = this;
 
-    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::~Tunnel()
+L2tp::Counters::Control::Tunnels::Tunnel::~Tunnel()
 {
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::has_data() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_id.is_set
 	|| (brief !=  nullptr && brief->has_data())
 	|| (global !=  nullptr && global->has_data());
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::has_operation() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tunnel_id.yfilter)
@@ -4445,21 +4468,22 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::has_operation() const
 	|| (global !=  nullptr && global->has_operation());
 }
 
-std::string L2Tp::Counters::Control::Tunnels::Tunnel::get_absolute_path() const
+std::string L2tp::Counters::Control::Tunnels::Tunnel::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/counters/control/tunnels/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Counters::Control::Tunnels::Tunnel::get_segment_path() const
+std::string L2tp::Counters::Control::Tunnels::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel" <<"[tunnel-id='" <<tunnel_id <<"']";
+    path_buffer << "tunnel";
+    ADD_KEY_TOKEN(tunnel_id, "tunnel-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels::Tunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::Tunnels::Tunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4469,13 +4493,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels:
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief")
     {
         if(brief == nullptr)
         {
-            brief = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Brief>();
+            brief = std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel::Brief>();
         }
         return brief;
     }
@@ -4484,7 +4508,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::get_child_by_n
     {
         if(global == nullptr)
         {
-            global = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global>();
+            global = std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel::Global>();
         }
         return global;
     }
@@ -4492,7 +4516,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::Tunnels::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4509,7 +4533,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels:
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tunnel-id")
     {
@@ -4519,7 +4543,7 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::set_value(const std::string & val
     }
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tunnel-id")
     {
@@ -4527,35 +4551,36 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::set_filter(const std::string & va
     }
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "brief" || name == "global" || name == "tunnel-id")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Brief::Brief()
+L2tp::Counters::Control::Tunnels::Tunnel::Brief::Brief()
     :
     remote_tunnel_id{YType::uint32, "remote-tunnel-id"},
     local_address{YType::str, "local-address"},
     remote_address{YType::str, "remote-address"}
 {
 
-    yang_name = "brief"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Brief::~Brief()
+L2tp::Counters::Control::Tunnels::Tunnel::Brief::~Brief()
 {
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Brief::has_data() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_tunnel_id.is_set
 	|| local_address.is_set
 	|| remote_address.is_set;
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Brief::has_operation() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Brief::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(remote_tunnel_id.yfilter)
@@ -4563,14 +4588,14 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Brief::has_operation() const
 	|| ydk::is_set(remote_address.yfilter);
 }
 
-std::string L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_segment_path() const
+std::string L2tp::Counters::Control::Tunnels::Tunnel::Brief::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "brief";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::Tunnels::Tunnel::Brief::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4582,19 +4607,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels:
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::Tunnels::Tunnel::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::Tunnels::Tunnel::Brief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::Tunnels::Tunnel::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "remote-tunnel-id")
     {
@@ -4616,7 +4641,7 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::Brief::set_value(const std::strin
     }
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Brief::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::Tunnels::Tunnel::Brief::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "remote-tunnel-id")
     {
@@ -4632,39 +4657,40 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::Brief::set_filter(const std::stri
     }
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Brief::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Brief::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "remote-tunnel-id" || name == "local-address" || name == "remote-address")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Global::Global()
+L2tp::Counters::Control::Tunnels::Tunnel::Global::Global()
     :
     total_transmit{YType::uint32, "total-transmit"},
     total_retransmit{YType::uint32, "total-retransmit"},
     total_received{YType::uint32, "total-received"},
     total_drop{YType::uint32, "total-drop"}
-    	,
-    transmit(std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit>())
-	,retransmit(std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit>())
-	,received(std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received>())
-	,drop(std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop>())
+        ,
+    transmit(std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit>())
+    , retransmit(std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit>())
+    , received(std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel::Global::Received>())
+    , drop(std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop>())
 {
     transmit->parent = this;
     retransmit->parent = this;
     received->parent = this;
     drop->parent = this;
 
-    yang_name = "global"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Global::~Global()
+L2tp::Counters::Control::Tunnels::Tunnel::Global::~Global()
 {
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::has_data() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return total_transmit.is_set
 	|| total_retransmit.is_set
 	|| total_received.is_set
@@ -4675,7 +4701,7 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::has_data() const
 	|| (drop !=  nullptr && drop->has_data());
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::has_operation() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(total_transmit.yfilter)
@@ -4688,14 +4714,14 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::has_operation() const
 	|| (drop !=  nullptr && drop->has_operation());
 }
 
-std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_segment_path() const
+std::string L2tp::Counters::Control::Tunnels::Tunnel::Global::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "global";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::Tunnels::Tunnel::Global::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4708,13 +4734,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels:
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::Tunnels::Tunnel::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit")
     {
         if(transmit == nullptr)
         {
-            transmit = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit>();
+            transmit = std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit>();
         }
         return transmit;
     }
@@ -4723,7 +4749,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_ch
     {
         if(retransmit == nullptr)
         {
-            retransmit = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit>();
+            retransmit = std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit>();
         }
         return retransmit;
     }
@@ -4732,7 +4758,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_ch
     {
         if(received == nullptr)
         {
-            received = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received>();
+            received = std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel::Global::Received>();
         }
         return received;
     }
@@ -4741,7 +4767,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_ch
     {
         if(drop == nullptr)
         {
-            drop = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop>();
+            drop = std::make_shared<L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop>();
         }
         return drop;
     }
@@ -4749,7 +4775,7 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::Tunnels::Tunnel::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4776,7 +4802,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels:
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::Tunnels::Tunnel::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "total-transmit")
     {
@@ -4804,7 +4830,7 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::Global::set_value(const std::stri
     }
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::Tunnels::Tunnel::Global::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "total-transmit")
     {
@@ -4824,14 +4850,14 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::Global::set_filter(const std::str
     }
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "transmit" || name == "retransmit" || name == "received" || name == "drop" || name == "total-transmit" || name == "total-retransmit" || name == "total-received" || name == "total-drop")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::Transmit()
+L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::Transmit()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -4854,15 +4880,16 @@ L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::Transmit()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "transmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::~Transmit()
+L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::~Transmit()
 {
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_data() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -4884,7 +4911,7 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_data() cons
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_operation() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -4908,14 +4935,14 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_operation()
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_segment_path() const
+std::string L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "transmit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4943,19 +4970,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels:
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -5073,7 +5100,7 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_value(const
     }
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -5153,14 +5180,14 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_filter(cons
     }
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::Retransmit()
+L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::Retransmit()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -5183,15 +5210,16 @@ L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::Retransmit()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "retransmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "retransmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::~Retransmit()
+L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::~Retransmit()
 {
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_data() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -5213,7 +5241,7 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_data() co
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_operation() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -5237,14 +5265,14 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_operation
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_segment_path() const
+std::string L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "retransmit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5272,19 +5300,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels:
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -5402,7 +5430,7 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_value(con
     }
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -5482,14 +5510,14 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_filter(co
     }
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::Received()
+L2tp::Counters::Control::Tunnels::Tunnel::Global::Received::Received()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -5512,15 +5540,16 @@ L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::Received()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "received"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::~Received()
+L2tp::Counters::Control::Tunnels::Tunnel::Global::Received::~Received()
 {
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::has_data() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::Received::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -5542,7 +5571,7 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::has_data() cons
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::has_operation() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::Received::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -5566,14 +5595,14 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::has_operation()
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_segment_path() const
+std::string L2tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "received";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5601,19 +5630,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels:
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::Tunnels::Tunnel::Global::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -5731,7 +5760,7 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::set_value(const
     }
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::Tunnels::Tunnel::Global::Received::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -5811,14 +5840,14 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::set_filter(cons
     }
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::Received::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::Drop()
+L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop::Drop()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -5841,15 +5870,16 @@ L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::Drop()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "drop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::~Drop()
+L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop::~Drop()
 {
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::has_data() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -5871,7 +5901,7 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::has_data() const
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::has_operation() const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -5895,14 +5925,14 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::has_operation() con
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_segment_path() const
+std::string L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5930,19 +5960,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Counters::Control::Tunnels:
 
 }
 
-std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -6060,7 +6090,7 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::set_value(const std
     }
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -6140,26 +6170,29 @@ void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::set_filter(const st
     }
 }
 
-bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tp::TunnelConfigurations::TunnelConfigurations()
+L2tp::TunnelConfigurations::TunnelConfigurations()
+    :
+    tunnel_configuration(this, {"local_tunnel_id"})
 {
 
-    yang_name = "tunnel-configurations"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-configurations"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::TunnelConfigurations::~TunnelConfigurations()
+L2tp::TunnelConfigurations::~TunnelConfigurations()
 {
 }
 
-bool L2Tp::TunnelConfigurations::has_data() const
+bool L2tp::TunnelConfigurations::has_data() const
 {
-    for (std::size_t index=0; index<tunnel_configuration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel_configuration.len(); index++)
     {
         if(tunnel_configuration[index]->has_data())
             return true;
@@ -6167,9 +6200,9 @@ bool L2Tp::TunnelConfigurations::has_data() const
     return false;
 }
 
-bool L2Tp::TunnelConfigurations::has_operation() const
+bool L2tp::TunnelConfigurations::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel_configuration.size(); index++)
+    for (std::size_t index=0; index<tunnel_configuration.len(); index++)
     {
         if(tunnel_configuration[index]->has_operation())
             return true;
@@ -6177,21 +6210,21 @@ bool L2Tp::TunnelConfigurations::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Tp::TunnelConfigurations::get_absolute_path() const
+std::string L2tp::TunnelConfigurations::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::TunnelConfigurations::get_segment_path() const
+std::string L2tp::TunnelConfigurations::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-configurations";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::TunnelConfigurations::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::TunnelConfigurations::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6200,25 +6233,25 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::TunnelConfigurations::get_n
 
 }
 
-std::shared_ptr<Entity> L2Tp::TunnelConfigurations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::TunnelConfigurations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel-configuration")
     {
-        auto c = std::make_shared<L2Tp::TunnelConfigurations::TunnelConfiguration>();
+        auto c = std::make_shared<L2tp::TunnelConfigurations::TunnelConfiguration>();
         c->parent = this;
-        tunnel_configuration.push_back(c);
+        tunnel_configuration.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::TunnelConfigurations::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::TunnelConfigurations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel_configuration)
+    for (auto c : tunnel_configuration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6229,45 +6262,46 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::TunnelConfigurations::get_c
     return children;
 }
 
-void L2Tp::TunnelConfigurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::TunnelConfigurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tp::TunnelConfigurations::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::TunnelConfigurations::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tp::TunnelConfigurations::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::TunnelConfigurations::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnel-configuration")
         return true;
     return false;
 }
 
-L2Tp::TunnelConfigurations::TunnelConfiguration::TunnelConfiguration()
+L2tp::TunnelConfigurations::TunnelConfiguration::TunnelConfiguration()
     :
-    local_tunnel_id{YType::int32, "local-tunnel-id"},
+    local_tunnel_id{YType::uint32, "local-tunnel-id"},
     remote_tunnel_id{YType::uint32, "remote-tunnel-id"}
-    	,
-    l2tp_class(std::make_shared<L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass>())
+        ,
+    l2tp_class(std::make_shared<L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass>())
 {
     l2tp_class->parent = this;
 
-    yang_name = "tunnel-configuration"; yang_parent_name = "tunnel-configurations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-configuration"; yang_parent_name = "tunnel-configurations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::TunnelConfigurations::TunnelConfiguration::~TunnelConfiguration()
+L2tp::TunnelConfigurations::TunnelConfiguration::~TunnelConfiguration()
 {
 }
 
-bool L2Tp::TunnelConfigurations::TunnelConfiguration::has_data() const
+bool L2tp::TunnelConfigurations::TunnelConfiguration::has_data() const
 {
+    if (is_presence_container) return true;
     return local_tunnel_id.is_set
 	|| remote_tunnel_id.is_set
 	|| (l2tp_class !=  nullptr && l2tp_class->has_data());
 }
 
-bool L2Tp::TunnelConfigurations::TunnelConfiguration::has_operation() const
+bool L2tp::TunnelConfigurations::TunnelConfiguration::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(local_tunnel_id.yfilter)
@@ -6275,21 +6309,22 @@ bool L2Tp::TunnelConfigurations::TunnelConfiguration::has_operation() const
 	|| (l2tp_class !=  nullptr && l2tp_class->has_operation());
 }
 
-std::string L2Tp::TunnelConfigurations::TunnelConfiguration::get_absolute_path() const
+std::string L2tp::TunnelConfigurations::TunnelConfiguration::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/tunnel-configurations/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::TunnelConfigurations::TunnelConfiguration::get_segment_path() const
+std::string L2tp::TunnelConfigurations::TunnelConfiguration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel-configuration" <<"[local-tunnel-id='" <<local_tunnel_id <<"']";
+    path_buffer << "tunnel-configuration";
+    ADD_KEY_TOKEN(local_tunnel_id, "local-tunnel-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::TunnelConfigurations::TunnelConfiguration::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::TunnelConfigurations::TunnelConfiguration::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6300,13 +6335,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::TunnelConfigurations::Tunne
 
 }
 
-std::shared_ptr<Entity> L2Tp::TunnelConfigurations::TunnelConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::TunnelConfigurations::TunnelConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2tp-class")
     {
         if(l2tp_class == nullptr)
         {
-            l2tp_class = std::make_shared<L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass>();
+            l2tp_class = std::make_shared<L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass>();
         }
         return l2tp_class;
     }
@@ -6314,7 +6349,7 @@ std::shared_ptr<Entity> L2Tp::TunnelConfigurations::TunnelConfiguration::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::TunnelConfigurations::TunnelConfiguration::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::TunnelConfigurations::TunnelConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6326,7 +6361,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::TunnelConfigurations::Tunne
     return children;
 }
 
-void L2Tp::TunnelConfigurations::TunnelConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::TunnelConfigurations::TunnelConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-tunnel-id")
     {
@@ -6342,7 +6377,7 @@ void L2Tp::TunnelConfigurations::TunnelConfiguration::set_value(const std::strin
     }
 }
 
-void L2Tp::TunnelConfigurations::TunnelConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::TunnelConfigurations::TunnelConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "local-tunnel-id")
     {
@@ -6354,14 +6389,14 @@ void L2Tp::TunnelConfigurations::TunnelConfiguration::set_filter(const std::stri
     }
 }
 
-bool L2Tp::TunnelConfigurations::TunnelConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::TunnelConfigurations::TunnelConfiguration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2tp-class" || name == "local-tunnel-id" || name == "remote-tunnel-id")
         return true;
     return false;
 }
 
-L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::L2TpClass()
+L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass::L2tpClass()
     :
     ip_tos{YType::uint8, "ip-tos"},
     vrf_name{YType::str, "vrf-name"},
@@ -6389,15 +6424,16 @@ L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::L2TpClass()
     is_peer_address_checked{YType::boolean, "is-peer-address-checked"}
 {
 
-    yang_name = "l2tp-class"; yang_parent_name = "tunnel-configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tp-class"; yang_parent_name = "tunnel-configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::~L2TpClass()
+L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass::~L2tpClass()
 {
 }
 
-bool L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_data() const
+bool L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_tos.is_set
 	|| vrf_name.is_set
 	|| receive_window_size.is_set
@@ -6424,7 +6460,7 @@ bool L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_data() cons
 	|| is_peer_address_checked.is_set;
 }
 
-bool L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_operation() const
+bool L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip_tos.yfilter)
@@ -6453,14 +6489,14 @@ bool L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_operation()
 	|| ydk::is_set(is_peer_address_checked.yfilter);
 }
 
-std::string L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_segment_path() const
+std::string L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tp-class";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6493,19 +6529,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::TunnelConfigurations::Tunne
 
 }
 
-std::shared_ptr<Entity> L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-tos")
     {
@@ -6653,7 +6689,7 @@ void L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_value(const
     }
 }
 
-void L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ip-tos")
     {
@@ -6753,14 +6789,14 @@ void L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_filter(cons
     }
 }
 
-bool L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip-tos" || name == "vrf-name" || name == "receive-window-size" || name == "class-name-xr" || name == "digest-hash" || name == "password" || name == "encoded-password" || name == "host-name" || name == "accounting-method-list" || name == "hello-timeout" || name == "setup-timeout" || name == "retransmit-minimum-timeout" || name == "retransmit-maximum-timeout" || name == "initial-retransmit-minimum-timeout" || name == "initial-retransmit-maximum-timeout" || name == "timeout-no-user" || name == "retransmit-retries" || name == "initial-retransmit-retries" || name == "is-authentication-enabled" || name == "is-hidden" || name == "is-digest-enabled" || name == "is-digest-check-enabled" || name == "is-congestion-control-enabled" || name == "is-peer-address-checked")
         return true;
     return false;
 }
 
-L2Tp::CounterHistFail::CounterHistFail()
+L2tp::CounterHistFail::CounterHistFail()
     :
     sess_down_tmout{YType::uint32, "sess-down-tmout"},
     tx_counters{YType::str, "tx-counters"},
@@ -6768,15 +6804,16 @@ L2Tp::CounterHistFail::CounterHistFail()
     pkt_timeout{YType::uint32, "pkt-timeout"}
 {
 
-    yang_name = "counter-hist-fail"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "counter-hist-fail"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::CounterHistFail::~CounterHistFail()
+L2tp::CounterHistFail::~CounterHistFail()
 {
 }
 
-bool L2Tp::CounterHistFail::has_data() const
+bool L2tp::CounterHistFail::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : pkt_timeout.getYLeafs())
     {
         if(leaf.is_set)
@@ -6787,7 +6824,7 @@ bool L2Tp::CounterHistFail::has_data() const
 	|| rx_counters.is_set;
 }
 
-bool L2Tp::CounterHistFail::has_operation() const
+bool L2tp::CounterHistFail::has_operation() const
 {
     for (auto const & leaf : pkt_timeout.getYLeafs())
     {
@@ -6801,21 +6838,21 @@ bool L2Tp::CounterHistFail::has_operation() const
 	|| ydk::is_set(pkt_timeout.yfilter);
 }
 
-std::string L2Tp::CounterHistFail::get_absolute_path() const
+std::string L2tp::CounterHistFail::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::CounterHistFail::get_segment_path() const
+std::string L2tp::CounterHistFail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "counter-hist-fail";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::CounterHistFail::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::CounterHistFail::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6829,19 +6866,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::CounterHistFail::get_name_l
 
 }
 
-std::shared_ptr<Entity> L2Tp::CounterHistFail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::CounterHistFail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::CounterHistFail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::CounterHistFail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::CounterHistFail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::CounterHistFail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sess-down-tmout")
     {
@@ -6867,7 +6904,7 @@ void L2Tp::CounterHistFail::set_value(const std::string & value_path, const std:
     }
 }
 
-void L2Tp::CounterHistFail::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::CounterHistFail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sess-down-tmout")
     {
@@ -6887,26 +6924,29 @@ void L2Tp::CounterHistFail::set_filter(const std::string & value_path, YFilter y
     }
 }
 
-bool L2Tp::CounterHistFail::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::CounterHistFail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sess-down-tmout" || name == "tx-counters" || name == "rx-counters" || name == "pkt-timeout")
         return true;
     return false;
 }
 
-L2Tp::Classes::Classes()
+L2tp::Classes::Classes()
+    :
+    class_(this, {"class_name"})
 {
 
-    yang_name = "classes"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "classes"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Classes::~Classes()
+L2tp::Classes::~Classes()
 {
 }
 
-bool L2Tp::Classes::has_data() const
+bool L2tp::Classes::has_data() const
 {
-    for (std::size_t index=0; index<class_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_data())
             return true;
@@ -6914,9 +6954,9 @@ bool L2Tp::Classes::has_data() const
     return false;
 }
 
-bool L2Tp::Classes::has_operation() const
+bool L2tp::Classes::has_operation() const
 {
-    for (std::size_t index=0; index<class_.size(); index++)
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_operation())
             return true;
@@ -6924,21 +6964,21 @@ bool L2Tp::Classes::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Tp::Classes::get_absolute_path() const
+std::string L2tp::Classes::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Classes::get_segment_path() const
+std::string L2tp::Classes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "classes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Classes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Classes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6947,25 +6987,25 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Classes::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> L2Tp::Classes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Classes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class")
     {
-        auto c = std::make_shared<L2Tp::Classes::Class>();
+        auto c = std::make_shared<L2tp::Classes::Class>();
         c->parent = this;
-        class_.push_back(c);
+        class_.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_)
+    for (auto c : class_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6976,22 +7016,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::get_children() con
     return children;
 }
 
-void L2Tp::Classes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Classes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tp::Classes::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Classes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tp::Classes::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Classes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "class")
         return true;
     return false;
 }
 
-L2Tp::Classes::Class::Class()
+L2tp::Classes::Class::Class()
     :
     class_name{YType::str, "class-name"},
     ip_tos{YType::uint8, "ip-tos"},
@@ -7020,15 +7060,16 @@ L2Tp::Classes::Class::Class()
     is_peer_address_checked{YType::boolean, "is-peer-address-checked"}
 {
 
-    yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Classes::Class::~Class()
+L2tp::Classes::Class::~Class()
 {
 }
 
-bool L2Tp::Classes::Class::has_data() const
+bool L2tp::Classes::Class::has_data() const
 {
+    if (is_presence_container) return true;
     return class_name.is_set
 	|| ip_tos.is_set
 	|| vrf_name.is_set
@@ -7056,7 +7097,7 @@ bool L2Tp::Classes::Class::has_data() const
 	|| is_peer_address_checked.is_set;
 }
 
-bool L2Tp::Classes::Class::has_operation() const
+bool L2tp::Classes::Class::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(class_name.yfilter)
@@ -7086,21 +7127,22 @@ bool L2Tp::Classes::Class::has_operation() const
 	|| ydk::is_set(is_peer_address_checked.yfilter);
 }
 
-std::string L2Tp::Classes::Class::get_absolute_path() const
+std::string L2tp::Classes::Class::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/classes/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Classes::Class::get_segment_path() const
+std::string L2tp::Classes::Class::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "class" <<"[class-name='" <<class_name <<"']";
+    path_buffer << "class";
+    ADD_KEY_TOKEN(class_name, "class-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Classes::Class::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7134,19 +7176,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Classes::Class::get_name_le
 
 }
 
-std::shared_ptr<Entity> L2Tp::Classes::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Classes::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Classes::Class::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Classes::Class::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-name")
     {
@@ -7300,7 +7342,7 @@ void L2Tp::Classes::Class::set_value(const std::string & value_path, const std::
     }
 }
 
-void L2Tp::Classes::Class::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Classes::Class::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "class-name")
     {
@@ -7404,26 +7446,29 @@ void L2Tp::Classes::Class::set_filter(const std::string & value_path, YFilter yf
     }
 }
 
-bool L2Tp::Classes::Class::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Classes::Class::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "class-name" || name == "ip-tos" || name == "vrf-name" || name == "receive-window-size" || name == "class-name-xr" || name == "digest-hash" || name == "password" || name == "encoded-password" || name == "host-name" || name == "accounting-method-list" || name == "hello-timeout" || name == "setup-timeout" || name == "retransmit-minimum-timeout" || name == "retransmit-maximum-timeout" || name == "initial-retransmit-minimum-timeout" || name == "initial-retransmit-maximum-timeout" || name == "timeout-no-user" || name == "retransmit-retries" || name == "initial-retransmit-retries" || name == "is-authentication-enabled" || name == "is-hidden" || name == "is-digest-enabled" || name == "is-digest-check-enabled" || name == "is-congestion-control-enabled" || name == "is-peer-address-checked")
         return true;
     return false;
 }
 
-L2Tp::Tunnels::Tunnels()
+L2tp::Tunnels::Tunnels()
+    :
+    tunnel(this, {"local_tunnel_id"})
 {
 
-    yang_name = "tunnels"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnels"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Tunnels::~Tunnels()
+L2tp::Tunnels::~Tunnels()
 {
 }
 
-bool L2Tp::Tunnels::has_data() const
+bool L2tp::Tunnels::has_data() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_data())
             return true;
@@ -7431,9 +7476,9 @@ bool L2Tp::Tunnels::has_data() const
     return false;
 }
 
-bool L2Tp::Tunnels::has_operation() const
+bool L2tp::Tunnels::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_operation())
             return true;
@@ -7441,21 +7486,21 @@ bool L2Tp::Tunnels::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Tp::Tunnels::get_absolute_path() const
+std::string L2tp::Tunnels::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Tunnels::get_segment_path() const
+std::string L2tp::Tunnels::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnels";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Tunnels::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Tunnels::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7464,25 +7509,25 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Tunnels::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> L2Tp::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel")
     {
-        auto c = std::make_shared<L2Tp::Tunnels::Tunnel>();
+        auto c = std::make_shared<L2tp::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(c);
+        tunnel.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Tunnels::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Tunnels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel)
+    for (auto c : tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7493,24 +7538,24 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Tunnels::get_children() con
     return children;
 }
 
-void L2Tp::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tp::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tp::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnel")
         return true;
     return false;
 }
 
-L2Tp::Tunnels::Tunnel::Tunnel()
+L2tp::Tunnels::Tunnel::Tunnel()
     :
-    local_tunnel_id{YType::int32, "local-tunnel-id"},
+    local_tunnel_id{YType::uint32, "local-tunnel-id"},
     local_address{YType::str, "local-address"},
     remote_address{YType::str, "remote-address"},
     local_port{YType::uint16, "local-port"},
@@ -7545,15 +7590,16 @@ L2Tp::Tunnels::Tunnel::Tunnel()
     retransmit_time{YType::uint16, "retransmit-time"}
 {
 
-    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Tunnels::Tunnel::~Tunnel()
+L2tp::Tunnels::Tunnel::~Tunnel()
 {
 }
 
-bool L2Tp::Tunnels::Tunnel::has_data() const
+bool L2tp::Tunnels::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : retransmit_time.getYLeafs())
     {
         if(leaf.is_set)
@@ -7593,7 +7639,7 @@ bool L2Tp::Tunnels::Tunnel::has_data() const
 	|| is_congestion_control_enabled.is_set;
 }
 
-bool L2Tp::Tunnels::Tunnel::has_operation() const
+bool L2tp::Tunnels::Tunnel::has_operation() const
 {
     for (auto const & leaf : retransmit_time.getYLeafs())
     {
@@ -7636,21 +7682,22 @@ bool L2Tp::Tunnels::Tunnel::has_operation() const
 	|| ydk::is_set(retransmit_time.yfilter);
 }
 
-std::string L2Tp::Tunnels::Tunnel::get_absolute_path() const
+std::string L2tp::Tunnels::Tunnel::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/tunnels/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Tunnels::Tunnel::get_segment_path() const
+std::string L2tp::Tunnels::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel" <<"[local-tunnel-id='" <<local_tunnel_id <<"']";
+    path_buffer << "tunnel";
+    ADD_KEY_TOKEN(local_tunnel_id, "local-tunnel-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Tunnels::Tunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Tunnels::Tunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7693,19 +7740,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Tunnels::Tunnel::get_name_l
 
 }
 
-std::shared_ptr<Entity> L2Tp::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Tunnels::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Tunnels::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-tunnel-id")
     {
@@ -7905,7 +7952,7 @@ void L2Tp::Tunnels::Tunnel::set_value(const std::string & value_path, const std:
     }
 }
 
-void L2Tp::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "local-tunnel-id")
     {
@@ -8041,26 +8088,29 @@ void L2Tp::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter y
     }
 }
 
-bool L2Tp::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local-tunnel-id" || name == "local-address" || name == "remote-address" || name == "local-port" || name == "remote-port" || name == "protocol" || name == "is-pmtu-enabled" || name == "remote-tunnel-id" || name == "local-tunnel-name" || name == "remote-tunnel-name" || name == "class-name" || name == "active-sessions" || name == "sequence-ns" || name == "sequence-nr" || name == "local-window-size" || name == "remote-window-size" || name == "retransmission-time" || name == "maximum-retransmission-time" || name == "unsent-queue-size" || name == "unsent-maximum-queue-size" || name == "resend-queue-size" || name == "resend-maximum-queue-size" || name == "order-queue-size" || name == "packet-queue-check" || name == "digest-secrets" || name == "resends" || name == "zero-length-body-acknowledgement-sent" || name == "total-out-of-order-drop-packets" || name == "total-out-of-order-reorder-packets" || name == "total-peer-authentication-failures" || name == "is-tunnel-up" || name == "is-congestion-control-enabled" || name == "retransmit-time")
         return true;
     return false;
 }
 
-L2Tp::Sessions::Sessions()
+L2tp::Sessions::Sessions()
+    :
+    session(this, {"local_tunnel_id", "local_session_id"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Sessions::~Sessions()
+L2tp::Sessions::~Sessions()
 {
 }
 
-bool L2Tp::Sessions::has_data() const
+bool L2tp::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -8068,9 +8118,9 @@ bool L2Tp::Sessions::has_data() const
     return false;
 }
 
-bool L2Tp::Sessions::has_operation() const
+bool L2tp::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -8078,21 +8128,21 @@ bool L2Tp::Sessions::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Tp::Sessions::get_absolute_path() const
+std::string L2tp::Sessions::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Sessions::get_segment_path() const
+std::string L2tp::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sessions";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Sessions::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Sessions::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8101,25 +8151,25 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Sessions::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> L2Tp::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
-        auto c = std::make_shared<L2Tp::Sessions::Session>();
+        auto c = std::make_shared<L2tp::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8130,25 +8180,25 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::get_children() co
     return children;
 }
 
-void L2Tp::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tp::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tp::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Sessions::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session")
         return true;
     return false;
 }
 
-L2Tp::Sessions::Session::Session()
+L2tp::Sessions::Session::Session()
     :
-    local_tunnel_id{YType::int32, "local-tunnel-id"},
-    local_session_id{YType::int32, "local-session-id"},
+    local_tunnel_id{YType::uint32, "local-tunnel-id"},
+    local_session_id{YType::uint32, "local-session-id"},
     local_ip_address{YType::str, "local-ip-address"},
     remote_ip_address{YType::str, "remote-ip-address"},
     l2tp_sh_sess_udp_lport{YType::uint16, "l2tp-sh-sess-udp-lport"},
@@ -8170,20 +8220,21 @@ L2Tp::Sessions::Session::Session()
     is_conditional_debug_enabled{YType::boolean, "is-conditional-debug-enabled"},
     unique_id{YType::uint32, "unique-id"},
     interface_name{YType::str, "interface-name"}
-    	,
-    session_application_data(std::make_shared<L2Tp::Sessions::Session::SessionApplicationData>())
+        ,
+    session_application_data(std::make_shared<L2tp::Sessions::Session::SessionApplicationData>())
 {
     session_application_data->parent = this;
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Sessions::Session::~Session()
+L2tp::Sessions::Session::~Session()
 {
 }
 
-bool L2Tp::Sessions::Session::has_data() const
+bool L2tp::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return local_tunnel_id.is_set
 	|| local_session_id.is_set
 	|| local_ip_address.is_set
@@ -8210,7 +8261,7 @@ bool L2Tp::Sessions::Session::has_data() const
 	|| (session_application_data !=  nullptr && session_application_data->has_data());
 }
 
-bool L2Tp::Sessions::Session::has_operation() const
+bool L2tp::Sessions::Session::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(local_tunnel_id.yfilter)
@@ -8239,21 +8290,23 @@ bool L2Tp::Sessions::Session::has_operation() const
 	|| (session_application_data !=  nullptr && session_application_data->has_operation());
 }
 
-std::string L2Tp::Sessions::Session::get_absolute_path() const
+std::string L2tp::Sessions::Session::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/sessions/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Sessions::Session::get_segment_path() const
+std::string L2tp::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[local-tunnel-id='" <<local_tunnel_id <<"']" <<"[local-session-id='" <<local_session_id <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(local_tunnel_id, "local-tunnel-id");
+    ADD_KEY_TOKEN(local_session_id, "local-session-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Sessions::Session::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Sessions::Session::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8285,13 +8338,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Sessions::Session::get_name
 
 }
 
-std::shared_ptr<Entity> L2Tp::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-application-data")
     {
         if(session_application_data == nullptr)
         {
-            session_application_data = std::make_shared<L2Tp::Sessions::Session::SessionApplicationData>();
+            session_application_data = std::make_shared<L2tp::Sessions::Session::SessionApplicationData>();
         }
         return session_application_data;
     }
@@ -8299,7 +8352,7 @@ std::shared_ptr<Entity> L2Tp::Sessions::Session::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Sessions::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8311,7 +8364,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::get_chil
     return children;
 }
 
-void L2Tp::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-tunnel-id")
     {
@@ -8453,7 +8506,7 @@ void L2Tp::Sessions::Session::set_value(const std::string & value_path, const st
     }
 }
 
-void L2Tp::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "local-tunnel-id")
     {
@@ -8549,38 +8602,39 @@ void L2Tp::Sessions::Session::set_filter(const std::string & value_path, YFilter
     }
 }
 
-bool L2Tp::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-application-data" || name == "local-tunnel-id" || name == "local-session-id" || name == "local-ip-address" || name == "remote-ip-address" || name == "l2tp-sh-sess-udp-lport" || name == "l2tp-sh-sess-udp-rport" || name == "protocol" || name == "remote-tunnel-id" || name == "call-serial-number" || name == "local-tunnel-name" || name == "remote-tunnel-name" || name == "remote-session-id" || name == "l2tp-sh-sess-tie-breaker-enabled" || name == "l2tp-sh-sess-tie-breaker" || name == "is-session-manual" || name == "is-session-up" || name == "is-udp-checksum-enabled" || name == "is-sequencing-on" || name == "is-session-state-established" || name == "is-session-locally-initiated" || name == "is-conditional-debug-enabled" || name == "unique-id" || name == "interface-name")
         return true;
     return false;
 }
 
-L2Tp::Sessions::Session::SessionApplicationData::SessionApplicationData()
+L2tp::Sessions::Session::SessionApplicationData::SessionApplicationData()
     :
     l2tp_sh_sess_app_type{YType::uint32, "l2tp-sh-sess-app-type"}
-    	,
-    xconnect(std::make_shared<L2Tp::Sessions::Session::SessionApplicationData::Xconnect>())
-	,vpdn(std::make_shared<L2Tp::Sessions::Session::SessionApplicationData::Vpdn>())
+        ,
+    xconnect(std::make_shared<L2tp::Sessions::Session::SessionApplicationData::Xconnect>())
+    , vpdn(std::make_shared<L2tp::Sessions::Session::SessionApplicationData::Vpdn>())
 {
     xconnect->parent = this;
     vpdn->parent = this;
 
-    yang_name = "session-application-data"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-application-data"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tp::Sessions::Session::SessionApplicationData::~SessionApplicationData()
+L2tp::Sessions::Session::SessionApplicationData::~SessionApplicationData()
 {
 }
 
-bool L2Tp::Sessions::Session::SessionApplicationData::has_data() const
+bool L2tp::Sessions::Session::SessionApplicationData::has_data() const
 {
+    if (is_presence_container) return true;
     return l2tp_sh_sess_app_type.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
 	|| (vpdn !=  nullptr && vpdn->has_data());
 }
 
-bool L2Tp::Sessions::Session::SessionApplicationData::has_operation() const
+bool L2tp::Sessions::Session::SessionApplicationData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(l2tp_sh_sess_app_type.yfilter)
@@ -8588,14 +8642,14 @@ bool L2Tp::Sessions::Session::SessionApplicationData::has_operation() const
 	|| (vpdn !=  nullptr && vpdn->has_operation());
 }
 
-std::string L2Tp::Sessions::Session::SessionApplicationData::get_segment_path() const
+std::string L2tp::Sessions::Session::SessionApplicationData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session-application-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Sessions::Session::SessionApplicationData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Sessions::Session::SessionApplicationData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8605,13 +8659,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Sessions::Session::SessionA
 
 }
 
-std::shared_ptr<Entity> L2Tp::Sessions::Session::SessionApplicationData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Sessions::Session::SessionApplicationData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "xconnect")
     {
         if(xconnect == nullptr)
         {
-            xconnect = std::make_shared<L2Tp::Sessions::Session::SessionApplicationData::Xconnect>();
+            xconnect = std::make_shared<L2tp::Sessions::Session::SessionApplicationData::Xconnect>();
         }
         return xconnect;
     }
@@ -8620,7 +8674,7 @@ std::shared_ptr<Entity> L2Tp::Sessions::Session::SessionApplicationData::get_chi
     {
         if(vpdn == nullptr)
         {
-            vpdn = std::make_shared<L2Tp::Sessions::Session::SessionApplicationData::Vpdn>();
+            vpdn = std::make_shared<L2tp::Sessions::Session::SessionApplicationData::Vpdn>();
         }
         return vpdn;
     }
@@ -8628,7 +8682,7 @@ std::shared_ptr<Entity> L2Tp::Sessions::Session::SessionApplicationData::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::SessionApplicationData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Sessions::Session::SessionApplicationData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8645,7 +8699,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::SessionA
     return children;
 }
 
-void L2Tp::Sessions::Session::SessionApplicationData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Sessions::Session::SessionApplicationData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "l2tp-sh-sess-app-type")
     {
@@ -8655,7 +8709,7 @@ void L2Tp::Sessions::Session::SessionApplicationData::set_value(const std::strin
     }
 }
 
-void L2Tp::Sessions::Session::SessionApplicationData::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Sessions::Session::SessionApplicationData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "l2tp-sh-sess-app-type")
     {
@@ -8663,14 +8717,14 @@ void L2Tp::Sessions::Session::SessionApplicationData::set_filter(const std::stri
     }
 }
 
-bool L2Tp::Sessions::Session::SessionApplicationData::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Sessions::Session::SessionApplicationData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "xconnect" || name == "vpdn" || name == "l2tp-sh-sess-app-type")
         return true;
     return false;
 }
 
-L2Tp::Sessions::Session::SessionApplicationData::Xconnect::Xconnect()
+L2tp::Sessions::Session::SessionApplicationData::Xconnect::Xconnect()
     :
     circuit_name{YType::str, "circuit-name"},
     sessionvc_id{YType::uint32, "sessionvc-id"},
@@ -8680,15 +8734,16 @@ L2Tp::Sessions::Session::SessionApplicationData::Xconnect::Xconnect()
     ipv6_protocol_tunneling{YType::boolean, "ipv6-protocol-tunneling"}
 {
 
-    yang_name = "xconnect"; yang_parent_name = "session-application-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "session-application-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tp::Sessions::Session::SessionApplicationData::Xconnect::~Xconnect()
+L2tp::Sessions::Session::SessionApplicationData::Xconnect::~Xconnect()
 {
 }
 
-bool L2Tp::Sessions::Session::SessionApplicationData::Xconnect::has_data() const
+bool L2tp::Sessions::Session::SessionApplicationData::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return circuit_name.is_set
 	|| sessionvc_id.is_set
 	|| is_circuit_state_up.is_set
@@ -8697,7 +8752,7 @@ bool L2Tp::Sessions::Session::SessionApplicationData::Xconnect::has_data() const
 	|| ipv6_protocol_tunneling.is_set;
 }
 
-bool L2Tp::Sessions::Session::SessionApplicationData::Xconnect::has_operation() const
+bool L2tp::Sessions::Session::SessionApplicationData::Xconnect::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(circuit_name.yfilter)
@@ -8708,14 +8763,14 @@ bool L2Tp::Sessions::Session::SessionApplicationData::Xconnect::has_operation() 
 	|| ydk::is_set(ipv6_protocol_tunneling.yfilter);
 }
 
-std::string L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_segment_path() const
+std::string L2tp::Sessions::Session::SessionApplicationData::Xconnect::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "xconnect";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Sessions::Session::SessionApplicationData::Xconnect::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8730,19 +8785,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Sessions::Session::SessionA
 
 }
 
-std::shared_ptr<Entity> L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Sessions::Session::SessionApplicationData::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Sessions::Session::SessionApplicationData::Xconnect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Sessions::Session::SessionApplicationData::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Sessions::Session::SessionApplicationData::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "circuit-name")
     {
@@ -8782,7 +8837,7 @@ void L2Tp::Sessions::Session::SessionApplicationData::Xconnect::set_value(const 
     }
 }
 
-void L2Tp::Sessions::Session::SessionApplicationData::Xconnect::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Sessions::Session::SessionApplicationData::Xconnect::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "circuit-name")
     {
@@ -8810,47 +8865,48 @@ void L2Tp::Sessions::Session::SessionApplicationData::Xconnect::set_filter(const
     }
 }
 
-bool L2Tp::Sessions::Session::SessionApplicationData::Xconnect::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Sessions::Session::SessionApplicationData::Xconnect::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "circuit-name" || name == "sessionvc-id" || name == "is-circuit-state-up" || name == "is-local-circuit-state-up" || name == "is-remote-circuit-state-up" || name == "ipv6-protocol-tunneling")
         return true;
     return false;
 }
 
-L2Tp::Sessions::Session::SessionApplicationData::Vpdn::Vpdn()
+L2tp::Sessions::Session::SessionApplicationData::Vpdn::Vpdn()
     :
     username{YType::str, "username"},
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "vpdn"; yang_parent_name = "session-application-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vpdn"; yang_parent_name = "session-application-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tp::Sessions::Session::SessionApplicationData::Vpdn::~Vpdn()
+L2tp::Sessions::Session::SessionApplicationData::Vpdn::~Vpdn()
 {
 }
 
-bool L2Tp::Sessions::Session::SessionApplicationData::Vpdn::has_data() const
+bool L2tp::Sessions::Session::SessionApplicationData::Vpdn::has_data() const
 {
+    if (is_presence_container) return true;
     return username.is_set
 	|| interface_name.is_set;
 }
 
-bool L2Tp::Sessions::Session::SessionApplicationData::Vpdn::has_operation() const
+bool L2tp::Sessions::Session::SessionApplicationData::Vpdn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(username.yfilter)
 	|| ydk::is_set(interface_name.yfilter);
 }
 
-std::string L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_segment_path() const
+std::string L2tp::Sessions::Session::SessionApplicationData::Vpdn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vpdn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Sessions::Session::SessionApplicationData::Vpdn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8861,19 +8917,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Sessions::Session::SessionA
 
 }
 
-std::shared_ptr<Entity> L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Sessions::Session::SessionApplicationData::Vpdn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Sessions::Session::SessionApplicationData::Vpdn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Sessions::Session::SessionApplicationData::Vpdn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Sessions::Session::SessionApplicationData::Vpdn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "username")
     {
@@ -8889,7 +8945,7 @@ void L2Tp::Sessions::Session::SessionApplicationData::Vpdn::set_value(const std:
     }
 }
 
-void L2Tp::Sessions::Session::SessionApplicationData::Vpdn::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Sessions::Session::SessionApplicationData::Vpdn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "username")
     {
@@ -8901,52 +8957,53 @@ void L2Tp::Sessions::Session::SessionApplicationData::Vpdn::set_filter(const std
     }
 }
 
-bool L2Tp::Sessions::Session::SessionApplicationData::Vpdn::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Sessions::Session::SessionApplicationData::Vpdn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "username" || name == "interface-name")
         return true;
     return false;
 }
 
-L2Tp::Session::Session()
+L2tp::Session::Session()
     :
-    unavailable(std::make_shared<L2Tp::Session::Unavailable>())
+    unavailable(std::make_shared<L2tp::Session::Unavailable>())
 {
     unavailable->parent = this;
 
-    yang_name = "session"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Session::~Session()
+L2tp::Session::~Session()
 {
 }
 
-bool L2Tp::Session::has_data() const
+bool L2tp::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return (unavailable !=  nullptr && unavailable->has_data());
 }
 
-bool L2Tp::Session::has_operation() const
+bool L2tp::Session::has_operation() const
 {
     return is_set(yfilter)
 	|| (unavailable !=  nullptr && unavailable->has_operation());
 }
 
-std::string L2Tp::Session::get_absolute_path() const
+std::string L2tp::Session::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Session::get_segment_path() const
+std::string L2tp::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Session::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Session::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8955,13 +9012,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Session::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> L2Tp::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "unavailable")
     {
         if(unavailable == nullptr)
         {
-            unavailable = std::make_shared<L2Tp::Session::Unavailable>();
+            unavailable = std::make_shared<L2tp::Session::Unavailable>();
         }
         return unavailable;
     }
@@ -8969,7 +9026,7 @@ std::shared_ptr<Entity> L2Tp::Session::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Session::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8981,59 +9038,60 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Session::get_children() con
     return children;
 }
 
-void L2Tp::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tp::Session::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Session::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tp::Session::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unavailable")
         return true;
     return false;
 }
 
-L2Tp::Session::Unavailable::Unavailable()
+L2tp::Session::Unavailable::Unavailable()
     :
     sessions_on_hold{YType::uint32, "sessions-on-hold"}
 {
 
-    yang_name = "unavailable"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unavailable"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tp::Session::Unavailable::~Unavailable()
+L2tp::Session::Unavailable::~Unavailable()
 {
 }
 
-bool L2Tp::Session::Unavailable::has_data() const
+bool L2tp::Session::Unavailable::has_data() const
 {
+    if (is_presence_container) return true;
     return sessions_on_hold.is_set;
 }
 
-bool L2Tp::Session::Unavailable::has_operation() const
+bool L2tp::Session::Unavailable::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sessions_on_hold.yfilter);
 }
 
-std::string L2Tp::Session::Unavailable::get_absolute_path() const
+std::string L2tp::Session::Unavailable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tp/session/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tp::Session::Unavailable::get_segment_path() const
+std::string L2tp::Session::Unavailable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "unavailable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tp::Session::Unavailable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tp::Session::Unavailable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9043,19 +9101,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tp::Session::Unavailable::get_n
 
 }
 
-std::shared_ptr<Entity> L2Tp::Session::Unavailable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tp::Session::Unavailable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tp::Session::Unavailable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tp::Session::Unavailable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tp::Session::Unavailable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tp::Session::Unavailable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sessions-on-hold")
     {
@@ -9065,7 +9123,7 @@ void L2Tp::Session::Unavailable::set_value(const std::string & value_path, const
     }
 }
 
-void L2Tp::Session::Unavailable::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tp::Session::Unavailable::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sessions-on-hold")
     {
@@ -9073,24 +9131,24 @@ void L2Tp::Session::Unavailable::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool L2Tp::Session::Unavailable::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tp::Session::Unavailable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sessions-on-hold")
         return true;
     return false;
 }
 
-L2Tpv2::L2Tpv2()
+L2tpv2::L2tpv2()
     :
-    counters(std::make_shared<L2Tpv2::Counters>())
-	,statistics(std::make_shared<L2Tpv2::Statistics>())
-	,tunnel(std::make_shared<L2Tpv2::Tunnel>())
-	,tunnel_configurations(std::make_shared<L2Tpv2::TunnelConfigurations>())
-	,counter_hist_fail(std::make_shared<L2Tpv2::CounterHistFail>())
-	,classes(std::make_shared<L2Tpv2::Classes>())
-	,tunnels(std::make_shared<L2Tpv2::Tunnels>())
-	,sessions(std::make_shared<L2Tpv2::Sessions>())
-	,session(std::make_shared<L2Tpv2::Session>())
+    counters(std::make_shared<L2tpv2::Counters>())
+    , statistics(std::make_shared<L2tpv2::Statistics>())
+    , tunnel(std::make_shared<L2tpv2::Tunnel>())
+    , tunnel_configurations(std::make_shared<L2tpv2::TunnelConfigurations>())
+    , counter_hist_fail(std::make_shared<L2tpv2::CounterHistFail>())
+    , classes(std::make_shared<L2tpv2::Classes>())
+    , tunnels(std::make_shared<L2tpv2::Tunnels>())
+    , sessions(std::make_shared<L2tpv2::Sessions>())
+    , session(std::make_shared<L2tpv2::Session>())
 {
     counters->parent = this;
     statistics->parent = this;
@@ -9102,15 +9160,16 @@ L2Tpv2::L2Tpv2()
     sessions->parent = this;
     session->parent = this;
 
-    yang_name = "l2tpv2"; yang_parent_name = "Cisco-IOS-XR-tunnel-l2tun-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "l2tpv2"; yang_parent_name = "Cisco-IOS-XR-tunnel-l2tun-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
-L2Tpv2::~L2Tpv2()
+L2tpv2::~L2tpv2()
 {
 }
 
-bool L2Tpv2::has_data() const
+bool L2tpv2::has_data() const
 {
+    if (is_presence_container) return true;
     return (counters !=  nullptr && counters->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (tunnel !=  nullptr && tunnel->has_data())
@@ -9122,7 +9181,7 @@ bool L2Tpv2::has_data() const
 	|| (session !=  nullptr && session->has_data());
 }
 
-bool L2Tpv2::has_operation() const
+bool L2tpv2::has_operation() const
 {
     return is_set(yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
@@ -9136,14 +9195,14 @@ bool L2Tpv2::has_operation() const
 	|| (session !=  nullptr && session->has_operation());
 }
 
-std::string L2Tpv2::get_segment_path() const
+std::string L2tpv2::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9152,13 +9211,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
         if(counters == nullptr)
         {
-            counters = std::make_shared<L2Tpv2::Counters>();
+            counters = std::make_shared<L2tpv2::Counters>();
         }
         return counters;
     }
@@ -9167,7 +9226,7 @@ std::shared_ptr<Entity> L2Tpv2::get_child_by_name(const std::string & child_yang
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<L2Tpv2::Statistics>();
+            statistics = std::make_shared<L2tpv2::Statistics>();
         }
         return statistics;
     }
@@ -9176,7 +9235,7 @@ std::shared_ptr<Entity> L2Tpv2::get_child_by_name(const std::string & child_yang
     {
         if(tunnel == nullptr)
         {
-            tunnel = std::make_shared<L2Tpv2::Tunnel>();
+            tunnel = std::make_shared<L2tpv2::Tunnel>();
         }
         return tunnel;
     }
@@ -9185,7 +9244,7 @@ std::shared_ptr<Entity> L2Tpv2::get_child_by_name(const std::string & child_yang
     {
         if(tunnel_configurations == nullptr)
         {
-            tunnel_configurations = std::make_shared<L2Tpv2::TunnelConfigurations>();
+            tunnel_configurations = std::make_shared<L2tpv2::TunnelConfigurations>();
         }
         return tunnel_configurations;
     }
@@ -9194,7 +9253,7 @@ std::shared_ptr<Entity> L2Tpv2::get_child_by_name(const std::string & child_yang
     {
         if(counter_hist_fail == nullptr)
         {
-            counter_hist_fail = std::make_shared<L2Tpv2::CounterHistFail>();
+            counter_hist_fail = std::make_shared<L2tpv2::CounterHistFail>();
         }
         return counter_hist_fail;
     }
@@ -9203,7 +9262,7 @@ std::shared_ptr<Entity> L2Tpv2::get_child_by_name(const std::string & child_yang
     {
         if(classes == nullptr)
         {
-            classes = std::make_shared<L2Tpv2::Classes>();
+            classes = std::make_shared<L2tpv2::Classes>();
         }
         return classes;
     }
@@ -9212,7 +9271,7 @@ std::shared_ptr<Entity> L2Tpv2::get_child_by_name(const std::string & child_yang
     {
         if(tunnels == nullptr)
         {
-            tunnels = std::make_shared<L2Tpv2::Tunnels>();
+            tunnels = std::make_shared<L2tpv2::Tunnels>();
         }
         return tunnels;
     }
@@ -9221,7 +9280,7 @@ std::shared_ptr<Entity> L2Tpv2::get_child_by_name(const std::string & child_yang
     {
         if(sessions == nullptr)
         {
-            sessions = std::make_shared<L2Tpv2::Sessions>();
+            sessions = std::make_shared<L2tpv2::Sessions>();
         }
         return sessions;
     }
@@ -9230,7 +9289,7 @@ std::shared_ptr<Entity> L2Tpv2::get_child_by_name(const std::string & child_yang
     {
         if(session == nullptr)
         {
-            session = std::make_shared<L2Tpv2::Session>();
+            session = std::make_shared<L2tpv2::Session>();
         }
         return session;
     }
@@ -9238,7 +9297,7 @@ std::shared_ptr<Entity> L2Tpv2::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9290,89 +9349,90 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::get_children() const
     return children;
 }
 
-void L2Tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> L2Tpv2::clone_ptr() const
+std::shared_ptr<Entity> L2tpv2::clone_ptr() const
 {
-    return std::make_shared<L2Tpv2>();
+    return std::make_shared<L2tpv2>();
 }
 
-std::string L2Tpv2::get_bundle_yang_models_location() const
+std::string L2tpv2::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string L2Tpv2::get_bundle_name() const
+std::string L2tpv2::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function L2Tpv2::get_augment_capabilities_function() const
+augment_capabilities_function L2tpv2::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> L2Tpv2::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> L2tpv2::get_namespace_identity_lookup() const
 {
     return cisco_ios_xr_namespace_identity_lookup;
 }
 
-bool L2Tpv2::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "counters" || name == "statistics" || name == "tunnel" || name == "tunnel-configurations" || name == "counter-hist-fail" || name == "classes" || name == "tunnels" || name == "sessions" || name == "session")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Counters()
+L2tpv2::Counters::Counters()
     :
-    forwarding(std::make_shared<L2Tpv2::Counters::Forwarding>())
-	,control(std::make_shared<L2Tpv2::Counters::Control>())
+    forwarding(std::make_shared<L2tpv2::Counters::Forwarding>())
+    , control(std::make_shared<L2tpv2::Counters::Control>())
 {
     forwarding->parent = this;
     control->parent = this;
 
-    yang_name = "counters"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "counters"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::~Counters()
+L2tpv2::Counters::~Counters()
 {
 }
 
-bool L2Tpv2::Counters::has_data() const
+bool L2tpv2::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return (forwarding !=  nullptr && forwarding->has_data())
 	|| (control !=  nullptr && control->has_data());
 }
 
-bool L2Tpv2::Counters::has_operation() const
+bool L2tpv2::Counters::has_operation() const
 {
     return is_set(yfilter)
 	|| (forwarding !=  nullptr && forwarding->has_operation())
 	|| (control !=  nullptr && control->has_operation());
 }
 
-std::string L2Tpv2::Counters::get_absolute_path() const
+std::string L2tpv2::Counters::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::get_segment_path() const
+std::string L2tpv2::Counters::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "counters";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9381,13 +9441,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forwarding")
     {
         if(forwarding == nullptr)
         {
-            forwarding = std::make_shared<L2Tpv2::Counters::Forwarding>();
+            forwarding = std::make_shared<L2tpv2::Counters::Forwarding>();
         }
         return forwarding;
     }
@@ -9396,7 +9456,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::get_child_by_name(const std::string & 
     {
         if(control == nullptr)
         {
-            control = std::make_shared<L2Tpv2::Counters::Control>();
+            control = std::make_shared<L2tpv2::Counters::Control>();
         }
         return control;
     }
@@ -9404,7 +9464,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9421,60 +9481,61 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::get_children() 
     return children;
 }
 
-void L2Tpv2::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Counters::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "forwarding" || name == "control")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Forwarding::Forwarding()
+L2tpv2::Counters::Forwarding::Forwarding()
     :
-    sessions(std::make_shared<L2Tpv2::Counters::Forwarding::Sessions>())
+    sessions(std::make_shared<L2tpv2::Counters::Forwarding::Sessions>())
 {
     sessions->parent = this;
 
-    yang_name = "forwarding"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "forwarding"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Forwarding::~Forwarding()
+L2tpv2::Counters::Forwarding::~Forwarding()
 {
 }
 
-bool L2Tpv2::Counters::Forwarding::has_data() const
+bool L2tpv2::Counters::Forwarding::has_data() const
 {
+    if (is_presence_container) return true;
     return (sessions !=  nullptr && sessions->has_data());
 }
 
-bool L2Tpv2::Counters::Forwarding::has_operation() const
+bool L2tpv2::Counters::Forwarding::has_operation() const
 {
     return is_set(yfilter)
 	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
-std::string L2Tpv2::Counters::Forwarding::get_absolute_path() const
+std::string L2tpv2::Counters::Forwarding::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Forwarding::get_segment_path() const
+std::string L2tpv2::Counters::Forwarding::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "forwarding";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Forwarding::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Forwarding::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9483,13 +9544,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Forwarding::get
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Forwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Forwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sessions")
     {
         if(sessions == nullptr)
         {
-            sessions = std::make_shared<L2Tpv2::Counters::Forwarding::Sessions>();
+            sessions = std::make_shared<L2tpv2::Counters::Forwarding::Sessions>();
         }
         return sessions;
     }
@@ -9497,7 +9558,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Forwarding::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Forwarding::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Forwarding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9509,34 +9570,37 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Forwarding::get
     return children;
 }
 
-void L2Tpv2::Counters::Forwarding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Forwarding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Counters::Forwarding::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Forwarding::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Counters::Forwarding::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Forwarding::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sessions")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Forwarding::Sessions::Sessions()
+L2tpv2::Counters::Forwarding::Sessions::Sessions()
+    :
+    session(this, {"tunnel_id", "session_id"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "forwarding"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "forwarding"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Forwarding::Sessions::~Sessions()
+L2tpv2::Counters::Forwarding::Sessions::~Sessions()
 {
 }
 
-bool L2Tpv2::Counters::Forwarding::Sessions::has_data() const
+bool L2tpv2::Counters::Forwarding::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -9544,9 +9608,9 @@ bool L2Tpv2::Counters::Forwarding::Sessions::has_data() const
     return false;
 }
 
-bool L2Tpv2::Counters::Forwarding::Sessions::has_operation() const
+bool L2tpv2::Counters::Forwarding::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -9554,21 +9618,21 @@ bool L2Tpv2::Counters::Forwarding::Sessions::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Tpv2::Counters::Forwarding::Sessions::get_absolute_path() const
+std::string L2tpv2::Counters::Forwarding::Sessions::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/forwarding/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Forwarding::Sessions::get_segment_path() const
+std::string L2tpv2::Counters::Forwarding::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sessions";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Forwarding::Sessions::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Forwarding::Sessions::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9577,25 +9641,25 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Forwarding::Ses
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Forwarding::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Forwarding::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
-        auto c = std::make_shared<L2Tpv2::Counters::Forwarding::Sessions::Session>();
+        auto c = std::make_shared<L2tpv2::Counters::Forwarding::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Forwarding::Sessions::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Forwarding::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9606,25 +9670,25 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Forwarding::Ses
     return children;
 }
 
-void L2Tpv2::Counters::Forwarding::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Forwarding::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Counters::Forwarding::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Forwarding::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Counters::Forwarding::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Forwarding::Sessions::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Forwarding::Sessions::Session::Session()
+L2tpv2::Counters::Forwarding::Sessions::Session::Session()
     :
-    tunnel_id{YType::int32, "tunnel-id"},
-    session_id{YType::int32, "session-id"},
+    tunnel_id{YType::uint32, "tunnel-id"},
+    session_id{YType::uint32, "session-id"},
     remote_session_id{YType::uint32, "remote-session-id"},
     in_packets{YType::uint64, "in-packets"},
     out_packets{YType::uint64, "out-packets"},
@@ -9632,15 +9696,16 @@ L2Tpv2::Counters::Forwarding::Sessions::Session::Session()
     out_bytes{YType::uint64, "out-bytes"}
 {
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Forwarding::Sessions::Session::~Session()
+L2tpv2::Counters::Forwarding::Sessions::Session::~Session()
 {
 }
 
-bool L2Tpv2::Counters::Forwarding::Sessions::Session::has_data() const
+bool L2tpv2::Counters::Forwarding::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_id.is_set
 	|| session_id.is_set
 	|| remote_session_id.is_set
@@ -9650,7 +9715,7 @@ bool L2Tpv2::Counters::Forwarding::Sessions::Session::has_data() const
 	|| out_bytes.is_set;
 }
 
-bool L2Tpv2::Counters::Forwarding::Sessions::Session::has_operation() const
+bool L2tpv2::Counters::Forwarding::Sessions::Session::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tunnel_id.yfilter)
@@ -9662,21 +9727,23 @@ bool L2Tpv2::Counters::Forwarding::Sessions::Session::has_operation() const
 	|| ydk::is_set(out_bytes.yfilter);
 }
 
-std::string L2Tpv2::Counters::Forwarding::Sessions::Session::get_absolute_path() const
+std::string L2tpv2::Counters::Forwarding::Sessions::Session::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/forwarding/sessions/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Forwarding::Sessions::Session::get_segment_path() const
+std::string L2tpv2::Counters::Forwarding::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[tunnel-id='" <<tunnel_id <<"']" <<"[session-id='" <<session_id <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(tunnel_id, "tunnel-id");
+    ADD_KEY_TOKEN(session_id, "session-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Forwarding::Sessions::Session::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Forwarding::Sessions::Session::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9692,19 +9759,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Forwarding::Ses
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Forwarding::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Forwarding::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Forwarding::Sessions::Session::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Forwarding::Sessions::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Forwarding::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Forwarding::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tunnel-id")
     {
@@ -9750,7 +9817,7 @@ void L2Tpv2::Counters::Forwarding::Sessions::Session::set_value(const std::strin
     }
 }
 
-void L2Tpv2::Counters::Forwarding::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Forwarding::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tunnel-id")
     {
@@ -9782,56 +9849,57 @@ void L2Tpv2::Counters::Forwarding::Sessions::Session::set_filter(const std::stri
     }
 }
 
-bool L2Tpv2::Counters::Forwarding::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Forwarding::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnel-id" || name == "session-id" || name == "remote-session-id" || name == "in-packets" || name == "out-packets" || name == "in-bytes" || name == "out-bytes")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::Control()
+L2tpv2::Counters::Control::Control()
     :
-    tunnel_xr(std::make_shared<L2Tpv2::Counters::Control::TunnelXr>())
-	,tunnels(std::make_shared<L2Tpv2::Counters::Control::Tunnels>())
+    tunnel_xr(std::make_shared<L2tpv2::Counters::Control::TunnelXr>())
+    , tunnels(std::make_shared<L2tpv2::Counters::Control::Tunnels>())
 {
     tunnel_xr->parent = this;
     tunnels->parent = this;
 
-    yang_name = "control"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "control"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::~Control()
+L2tpv2::Counters::Control::~Control()
 {
 }
 
-bool L2Tpv2::Counters::Control::has_data() const
+bool L2tpv2::Counters::Control::has_data() const
 {
+    if (is_presence_container) return true;
     return (tunnel_xr !=  nullptr && tunnel_xr->has_data())
 	|| (tunnels !=  nullptr && tunnels->has_data());
 }
 
-bool L2Tpv2::Counters::Control::has_operation() const
+bool L2tpv2::Counters::Control::has_operation() const
 {
     return is_set(yfilter)
 	|| (tunnel_xr !=  nullptr && tunnel_xr->has_operation())
 	|| (tunnels !=  nullptr && tunnels->has_operation());
 }
 
-std::string L2Tpv2::Counters::Control::get_absolute_path() const
+std::string L2tpv2::Counters::Control::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::get_segment_path() const
+std::string L2tpv2::Counters::Control::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "control";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9840,13 +9908,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::get_na
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel-xr")
     {
         if(tunnel_xr == nullptr)
         {
-            tunnel_xr = std::make_shared<L2Tpv2::Counters::Control::TunnelXr>();
+            tunnel_xr = std::make_shared<L2tpv2::Counters::Control::TunnelXr>();
         }
         return tunnel_xr;
     }
@@ -9855,7 +9923,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::get_child_by_name(const std::
     {
         if(tunnels == nullptr)
         {
-            tunnels = std::make_shared<L2Tpv2::Counters::Control::Tunnels>();
+            tunnels = std::make_shared<L2tpv2::Counters::Control::Tunnels>();
         }
         return tunnels;
     }
@@ -9863,7 +9931,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9880,64 +9948,65 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::get_ch
     return children;
 }
 
-void L2Tpv2::Counters::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Counters::Control::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Counters::Control::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnel-xr" || name == "tunnels")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::TunnelXr()
+L2tpv2::Counters::Control::TunnelXr::TunnelXr()
     :
-    authentication(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication>())
-	,global(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global>())
+    authentication(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication>())
+    , global(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Global>())
 {
     authentication->parent = this;
     global->parent = this;
 
-    yang_name = "tunnel-xr"; yang_parent_name = "control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-xr"; yang_parent_name = "control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::~TunnelXr()
+L2tpv2::Counters::Control::TunnelXr::~TunnelXr()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data())
 	|| (global !=  nullptr && global->has_data());
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::has_operation() const
 {
     return is_set(yfilter)
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (global !=  nullptr && global->has_operation());
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-xr";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9946,13 +10015,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication")
     {
         if(authentication == nullptr)
         {
-            authentication = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication>();
+            authentication = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication>();
         }
         return authentication;
     }
@@ -9961,7 +10030,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::get_child_by_name(c
     {
         if(global == nullptr)
         {
-            global = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global>();
+            global = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Global>();
         }
         return global;
     }
@@ -9969,7 +10038,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9986,32 +10055,32 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "authentication" || name == "global")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::Authentication()
+L2tpv2::Counters::Control::TunnelXr::Authentication::Authentication()
     :
-    nonce_avp(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp>())
-	,common_digest(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest>())
-	,primary_digest(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest>())
-	,secondary_digest(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest>())
-	,integrity_check(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck>())
-	,local_secret(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret>())
-	,challenge_avp(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp>())
-	,challenge_reponse(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse>())
-	,overall_statistics(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics>())
+    nonce_avp(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp>())
+    , common_digest(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest>())
+    , primary_digest(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest>())
+    , secondary_digest(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest>())
+    , integrity_check(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck>())
+    , local_secret(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret>())
+    , challenge_avp(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp>())
+    , challenge_reponse(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse>())
+    , overall_statistics(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics>())
 {
     nonce_avp->parent = this;
     common_digest->parent = this;
@@ -10023,15 +10092,16 @@ L2Tpv2::Counters::Control::TunnelXr::Authentication::Authentication()
     challenge_reponse->parent = this;
     overall_statistics->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "tunnel-xr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authentication"; yang_parent_name = "tunnel-xr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::~Authentication()
+L2tpv2::Counters::Control::TunnelXr::Authentication::~Authentication()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (nonce_avp !=  nullptr && nonce_avp->has_data())
 	|| (common_digest !=  nullptr && common_digest->has_data())
 	|| (primary_digest !=  nullptr && primary_digest->has_data())
@@ -10043,7 +10113,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::has_data() const
 	|| (overall_statistics !=  nullptr && overall_statistics->has_data());
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::has_operation() const
 {
     return is_set(yfilter)
 	|| (nonce_avp !=  nullptr && nonce_avp->has_operation())
@@ -10057,21 +10127,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::has_operation() const
 	|| (overall_statistics !=  nullptr && overall_statistics->has_operation());
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Authentication::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Authentication::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10080,13 +10150,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nonce-avp")
     {
         if(nonce_avp == nullptr)
         {
-            nonce_avp = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp>();
+            nonce_avp = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp>();
         }
         return nonce_avp;
     }
@@ -10095,7 +10165,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::get
     {
         if(common_digest == nullptr)
         {
-            common_digest = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest>();
+            common_digest = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest>();
         }
         return common_digest;
     }
@@ -10104,7 +10174,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::get
     {
         if(primary_digest == nullptr)
         {
-            primary_digest = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest>();
+            primary_digest = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest>();
         }
         return primary_digest;
     }
@@ -10113,7 +10183,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::get
     {
         if(secondary_digest == nullptr)
         {
-            secondary_digest = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest>();
+            secondary_digest = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest>();
         }
         return secondary_digest;
     }
@@ -10122,7 +10192,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::get
     {
         if(integrity_check == nullptr)
         {
-            integrity_check = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck>();
+            integrity_check = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck>();
         }
         return integrity_check;
     }
@@ -10131,7 +10201,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::get
     {
         if(local_secret == nullptr)
         {
-            local_secret = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret>();
+            local_secret = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret>();
         }
         return local_secret;
     }
@@ -10140,7 +10210,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::get
     {
         if(challenge_avp == nullptr)
         {
-            challenge_avp = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp>();
+            challenge_avp = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp>();
         }
         return challenge_avp;
     }
@@ -10149,7 +10219,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::get
     {
         if(challenge_reponse == nullptr)
         {
-            challenge_reponse = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse>();
+            challenge_reponse = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse>();
         }
         return challenge_reponse;
     }
@@ -10158,7 +10228,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::get
     {
         if(overall_statistics == nullptr)
         {
-            overall_statistics = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics>();
+            overall_statistics = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics>();
         }
         return overall_statistics;
     }
@@ -10166,7 +10236,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10218,22 +10288,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nonce-avp" || name == "common-digest" || name == "primary-digest" || name == "secondary-digest" || name == "integrity-check" || name == "local-secret" || name == "challenge-avp" || name == "challenge-reponse" || name == "overall-statistics")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::NonceAvp()
+L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::NonceAvp()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -10248,15 +10318,16 @@ L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::NonceAvp()
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "nonce-avp"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nonce-avp"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::~NonceAvp()
+L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::~NonceAvp()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -10270,7 +10341,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::has_data() c
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -10286,21 +10357,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::has_operatio
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nonce-avp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10320,19 +10391,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -10402,7 +10473,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::set_value(co
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -10450,14 +10521,14 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::set_filter(c
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::CommonDigest()
+L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::CommonDigest()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -10472,15 +10543,16 @@ L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::CommonDigest(
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "common-digest"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "common-digest"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::~CommonDigest()
+L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::~CommonDigest()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -10494,7 +10566,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::has_data
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -10510,21 +10582,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::has_oper
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "common-digest";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10544,19 +10616,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -10626,7 +10698,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::set_valu
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -10674,14 +10746,14 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::set_filt
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::PrimaryDigest()
+L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::PrimaryDigest()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -10696,15 +10768,16 @@ L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::PrimaryDiges
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "primary-digest"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "primary-digest"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::~PrimaryDigest()
+L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::~PrimaryDigest()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -10718,7 +10791,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_dat
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -10734,21 +10807,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_ope
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "primary-digest";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10768,19 +10841,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -10850,7 +10923,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_val
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -10898,14 +10971,14 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_fil
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::SecondaryDigest()
+L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::SecondaryDigest()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -10920,15 +10993,16 @@ L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::SecondaryD
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "secondary-digest"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "secondary-digest"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::~SecondaryDigest()
+L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::~SecondaryDigest()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -10942,7 +11016,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_d
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -10958,21 +11032,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_o
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "secondary-digest";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10992,19 +11066,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -11074,7 +11148,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_v
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -11122,14 +11196,14 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_f
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::IntegrityCheck()
+L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::IntegrityCheck()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -11144,15 +11218,16 @@ L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::IntegrityCh
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "integrity-check"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "integrity-check"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::~IntegrityCheck()
+L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::~IntegrityCheck()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -11166,7 +11241,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_da
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -11182,21 +11257,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_op
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "integrity-check";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11216,19 +11291,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -11298,7 +11373,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_va
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -11346,14 +11421,14 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_fi
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::LocalSecret()
+L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::LocalSecret()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -11368,15 +11443,16 @@ L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::LocalSecret()
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "local-secret"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-secret"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::~LocalSecret()
+L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::~LocalSecret()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -11390,7 +11466,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::has_data(
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -11406,21 +11482,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::has_opera
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local-secret";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11440,19 +11516,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -11522,7 +11598,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::set_value
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -11570,14 +11646,14 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::set_filte
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::ChallengeAvp()
+L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::ChallengeAvp()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -11592,15 +11668,16 @@ L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::ChallengeAvp(
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "challenge-avp"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "challenge-avp"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::~ChallengeAvp()
+L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::~ChallengeAvp()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -11614,7 +11691,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_data
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -11630,21 +11707,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_oper
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "challenge-avp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11664,19 +11741,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -11746,7 +11823,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_valu
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -11794,14 +11871,14 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_filt
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::ChallengeReponse()
+L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::ChallengeReponse()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -11816,15 +11893,16 @@ L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::Challenge
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "challenge-reponse"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "challenge-reponse"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::~ChallengeReponse()
+L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::~ChallengeReponse()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -11838,7 +11916,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -11854,21 +11932,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "challenge-reponse";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11888,19 +11966,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -11970,7 +12048,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -12018,14 +12096,14 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::OverallStatistics()
+L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::OverallStatistics()
     :
     validate{YType::uint32, "validate"},
     bad_hash{YType::uint32, "bad-hash"},
@@ -12040,15 +12118,16 @@ L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::OverallS
     unexpected_zlb{YType::uint32, "unexpected-zlb"}
 {
 
-    yang_name = "overall-statistics"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "overall-statistics"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::~OverallStatistics()
+L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::~OverallStatistics()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set
 	|| bad_hash.is_set
 	|| bad_length.is_set
@@ -12062,7 +12141,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::has
 	|| unexpected_zlb.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(validate.yfilter)
@@ -12078,21 +12157,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::has
 	|| ydk::is_set(unexpected_zlb.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "overall-statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12112,19 +12191,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
@@ -12194,7 +12273,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::set
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "validate")
     {
@@ -12242,39 +12321,40 @@ void L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::set
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate" || name == "bad-hash" || name == "bad-length" || name == "ignored" || name == "missing" || name == "passed" || name == "failed" || name == "skipped" || name == "generate-response-failures" || name == "unexpected" || name == "unexpected-zlb")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Global::Global()
+L2tpv2::Counters::Control::TunnelXr::Global::Global()
     :
     total_transmit{YType::uint32, "total-transmit"},
     total_retransmit{YType::uint32, "total-retransmit"},
     total_received{YType::uint32, "total-received"},
     total_drop{YType::uint32, "total-drop"}
-    	,
-    transmit(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Transmit>())
-	,retransmit(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit>())
-	,received(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Received>())
-	,drop(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Drop>())
+        ,
+    transmit(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Global::Transmit>())
+    , retransmit(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Global::Retransmit>())
+    , received(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Global::Received>())
+    , drop(std::make_shared<L2tpv2::Counters::Control::TunnelXr::Global::Drop>())
 {
     transmit->parent = this;
     retransmit->parent = this;
     received->parent = this;
     drop->parent = this;
 
-    yang_name = "global"; yang_parent_name = "tunnel-xr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "tunnel-xr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Global::~Global()
+L2tpv2::Counters::Control::TunnelXr::Global::~Global()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return total_transmit.is_set
 	|| total_retransmit.is_set
 	|| total_received.is_set
@@ -12285,7 +12365,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::has_data() const
 	|| (drop !=  nullptr && drop->has_data());
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Global::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(total_transmit.yfilter)
@@ -12298,21 +12378,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::has_operation() const
 	|| (drop !=  nullptr && drop->has_operation());
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Global::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Global::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Global::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Global::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "global";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Global::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Global::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12325,13 +12405,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit")
     {
         if(transmit == nullptr)
         {
-            transmit = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Transmit>();
+            transmit = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Global::Transmit>();
         }
         return transmit;
     }
@@ -12340,7 +12420,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::get_child_b
     {
         if(retransmit == nullptr)
         {
-            retransmit = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit>();
+            retransmit = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Global::Retransmit>();
         }
         return retransmit;
     }
@@ -12349,7 +12429,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::get_child_b
     {
         if(received == nullptr)
         {
-            received = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Received>();
+            received = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Global::Received>();
         }
         return received;
     }
@@ -12358,7 +12438,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::get_child_b
     {
         if(drop == nullptr)
         {
-            drop = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Drop>();
+            drop = std::make_shared<L2tpv2::Counters::Control::TunnelXr::Global::Drop>();
         }
         return drop;
     }
@@ -12366,7 +12446,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Global::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12393,7 +12473,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "total-transmit")
     {
@@ -12421,7 +12501,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Global::set_value(const std::string & 
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Global::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "total-transmit")
     {
@@ -12441,14 +12521,14 @@ void L2Tpv2::Counters::Control::TunnelXr::Global::set_filter(const std::string &
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Global::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "transmit" || name == "retransmit" || name == "received" || name == "drop" || name == "total-transmit" || name == "total-retransmit" || name == "total-received" || name == "total-drop")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::Transmit()
+L2tpv2::Counters::Control::TunnelXr::Global::Transmit::Transmit()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -12471,15 +12551,16 @@ L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::Transmit()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "transmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::~Transmit()
+L2tpv2::Counters::Control::TunnelXr::Global::Transmit::~Transmit()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Global::Transmit::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -12501,7 +12582,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::has_data() const
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Global::Transmit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -12525,21 +12606,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::has_operation() cons
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Global::Transmit::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/global/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Global::Transmit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "transmit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Global::Transmit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12567,19 +12648,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Global::Transmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Global::Transmit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Global::Transmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -12697,7 +12778,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::set_value(const std:
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Global::Transmit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -12777,14 +12858,14 @@ void L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::set_filter(const std
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Global::Transmit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::Retransmit()
+L2tpv2::Counters::Control::TunnelXr::Global::Retransmit::Retransmit()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -12807,15 +12888,16 @@ L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::Retransmit()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "retransmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "retransmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::~Retransmit()
+L2tpv2::Counters::Control::TunnelXr::Global::Retransmit::~Retransmit()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Global::Retransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -12837,7 +12919,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::has_data() const
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Global::Retransmit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -12861,21 +12943,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::has_operation() co
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/global/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "retransmit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12903,19 +12985,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Global::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -13033,7 +13115,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::set_value(const st
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Global::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -13113,14 +13195,14 @@ void L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::set_filter(const s
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Global::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Global::Received::Received()
+L2tpv2::Counters::Control::TunnelXr::Global::Received::Received()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -13143,15 +13225,16 @@ L2Tpv2::Counters::Control::TunnelXr::Global::Received::Received()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "received"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Global::Received::~Received()
+L2tpv2::Counters::Control::TunnelXr::Global::Received::~Received()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::Received::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Global::Received::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -13173,7 +13256,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::Received::has_data() const
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::Received::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Global::Received::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -13197,21 +13280,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::Received::has_operation() cons
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Global::Received::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/global/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Global::Received::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "received";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Global::Received::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13239,19 +13322,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Global::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Global::Received::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Global::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -13369,7 +13452,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Global::Received::set_value(const std:
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::Received::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Global::Received::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -13449,14 +13532,14 @@ void L2Tpv2::Counters::Control::TunnelXr::Global::Received::set_filter(const std
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::Received::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Global::Received::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Global::Drop::Drop()
+L2tpv2::Counters::Control::TunnelXr::Global::Drop::Drop()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -13479,15 +13562,16 @@ L2Tpv2::Counters::Control::TunnelXr::Global::Drop::Drop()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "drop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "drop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::TunnelXr::Global::Drop::~Drop()
+L2tpv2::Counters::Control::TunnelXr::Global::Drop::~Drop()
 {
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::Drop::has_data() const
+bool L2tpv2::Counters::Control::TunnelXr::Global::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -13509,7 +13593,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::Drop::has_data() const
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::Drop::has_operation() const
+bool L2tpv2::Counters::Control::TunnelXr::Global::Drop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -13533,21 +13617,21 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::Drop::has_operation() const
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_absolute_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Global::Drop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnel-xr/global/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_segment_path() const
+std::string L2tpv2::Counters::Control::TunnelXr::Global::Drop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::TunnelXr::Global::Drop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13575,19 +13659,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::TunnelXr::Global::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::TunnelXr::Global::Drop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::TunnelXr::Global::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -13705,7 +13789,7 @@ void L2Tpv2::Counters::Control::TunnelXr::Global::Drop::set_value(const std::str
     }
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::Drop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::TunnelXr::Global::Drop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -13785,26 +13869,29 @@ void L2Tpv2::Counters::Control::TunnelXr::Global::Drop::set_filter(const std::st
     }
 }
 
-bool L2Tpv2::Counters::Control::TunnelXr::Global::Drop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::TunnelXr::Global::Drop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnels()
+L2tpv2::Counters::Control::Tunnels::Tunnels()
+    :
+    tunnel(this, {"tunnel_id"})
 {
 
-    yang_name = "tunnels"; yang_parent_name = "control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnels"; yang_parent_name = "control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::Tunnels::~Tunnels()
+L2tpv2::Counters::Control::Tunnels::~Tunnels()
 {
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::has_data() const
+bool L2tpv2::Counters::Control::Tunnels::has_data() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_data())
             return true;
@@ -13812,9 +13899,9 @@ bool L2Tpv2::Counters::Control::Tunnels::has_data() const
     return false;
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::has_operation() const
+bool L2tpv2::Counters::Control::Tunnels::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_operation())
             return true;
@@ -13822,21 +13909,21 @@ bool L2Tpv2::Counters::Control::Tunnels::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::Tunnels::get_absolute_path() const
+std::string L2tpv2::Counters::Control::Tunnels::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::Tunnels::get_segment_path() const
+std::string L2tpv2::Counters::Control::Tunnels::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnels";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnels::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::Tunnels::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13845,25 +13932,25 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel")
     {
-        auto c = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel>();
+        auto c = std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(c);
+        tunnel.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::Tunnels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel)
+    for (auto c : tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13874,46 +13961,47 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Counters::Control::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnel")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Tunnel()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Tunnel()
     :
-    tunnel_id{YType::int32, "tunnel-id"}
-    	,
-    brief(std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief>())
-	,global(std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global>())
+    tunnel_id{YType::uint32, "tunnel-id"}
+        ,
+    brief(std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel::Brief>())
+    , global(std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel::Global>())
 {
     brief->parent = this;
     global->parent = this;
 
-    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::~Tunnel()
+L2tpv2::Counters::Control::Tunnels::Tunnel::~Tunnel()
 {
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::has_data() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_id.is_set
 	|| (brief !=  nullptr && brief->has_data())
 	|| (global !=  nullptr && global->has_data());
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::has_operation() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tunnel_id.yfilter)
@@ -13921,21 +14009,22 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::has_operation() const
 	|| (global !=  nullptr && global->has_operation());
 }
 
-std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::get_absolute_path() const
+std::string L2tpv2::Counters::Control::Tunnels::Tunnel::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/counters/control/tunnels/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::get_segment_path() const
+std::string L2tpv2::Counters::Control::Tunnels::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel" <<"[tunnel-id='" <<tunnel_id <<"']";
+    path_buffer << "tunnel";
+    ADD_KEY_TOKEN(tunnel_id, "tunnel-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnels::Tunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::Tunnels::Tunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13945,13 +14034,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief")
     {
         if(brief == nullptr)
         {
-            brief = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief>();
+            brief = std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel::Brief>();
         }
         return brief;
     }
@@ -13960,7 +14049,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::get_child_by
     {
         if(global == nullptr)
         {
-            global = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global>();
+            global = std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel::Global>();
         }
         return global;
     }
@@ -13968,7 +14057,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::Tunnels::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13985,7 +14074,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tunnel-id")
     {
@@ -13995,7 +14084,7 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::set_value(const std::string & v
     }
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tunnel-id")
     {
@@ -14003,35 +14092,36 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::set_filter(const std::string & 
     }
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "brief" || name == "global" || name == "tunnel-id")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::Brief()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Brief::Brief()
     :
     remote_tunnel_id{YType::uint32, "remote-tunnel-id"},
     local_address{YType::str, "local-address"},
     remote_address{YType::str, "remote-address"}
 {
 
-    yang_name = "brief"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::~Brief()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Brief::~Brief()
 {
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::has_data() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_tunnel_id.is_set
 	|| local_address.is_set
 	|| remote_address.is_set;
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::has_operation() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Brief::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(remote_tunnel_id.yfilter)
@@ -14039,14 +14129,14 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::has_operation() const
 	|| ydk::is_set(remote_address.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_segment_path() const
+std::string L2tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "brief";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14058,19 +14148,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "remote-tunnel-id")
     {
@@ -14092,7 +14182,7 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::set_value(const std::str
     }
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::Brief::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "remote-tunnel-id")
     {
@@ -14108,39 +14198,40 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::set_filter(const std::st
     }
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Brief::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "remote-tunnel-id" || name == "local-address" || name == "remote-address")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Global()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Global()
     :
     total_transmit{YType::uint32, "total-transmit"},
     total_retransmit{YType::uint32, "total-retransmit"},
     total_received{YType::uint32, "total-received"},
     total_drop{YType::uint32, "total-drop"}
-    	,
-    transmit(std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit>())
-	,retransmit(std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit>())
-	,received(std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received>())
-	,drop(std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop>())
+        ,
+    transmit(std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit>())
+    , retransmit(std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit>())
+    , received(std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received>())
+    , drop(std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop>())
 {
     transmit->parent = this;
     retransmit->parent = this;
     received->parent = this;
     drop->parent = this;
 
-    yang_name = "global"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::~Global()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Global::~Global()
 {
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::has_data() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return total_transmit.is_set
 	|| total_retransmit.is_set
 	|| total_received.is_set
@@ -14151,7 +14242,7 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::has_data() const
 	|| (drop !=  nullptr && drop->has_data());
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::has_operation() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(total_transmit.yfilter)
@@ -14164,14 +14255,14 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::has_operation() const
 	|| (drop !=  nullptr && drop->has_operation());
 }
 
-std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_segment_path() const
+std::string L2tpv2::Counters::Control::Tunnels::Tunnel::Global::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "global";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::Tunnels::Tunnel::Global::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14184,13 +14275,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::Tunnels::Tunnel::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit")
     {
         if(transmit == nullptr)
         {
-            transmit = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit>();
+            transmit = std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit>();
         }
         return transmit;
     }
@@ -14199,7 +14290,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_
     {
         if(retransmit == nullptr)
         {
-            retransmit = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit>();
+            retransmit = std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit>();
         }
         return retransmit;
     }
@@ -14208,7 +14299,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_
     {
         if(received == nullptr)
         {
-            received = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received>();
+            received = std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received>();
         }
         return received;
     }
@@ -14217,7 +14308,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_
     {
         if(drop == nullptr)
         {
-            drop = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop>();
+            drop = std::make_shared<L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop>();
         }
         return drop;
     }
@@ -14225,7 +14316,7 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::Tunnels::Tunnel::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14252,7 +14343,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "total-transmit")
     {
@@ -14280,7 +14371,7 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::set_value(const std::st
     }
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::Global::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "total-transmit")
     {
@@ -14300,14 +14391,14 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::set_filter(const std::s
     }
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "transmit" || name == "retransmit" || name == "received" || name == "drop" || name == "total-transmit" || name == "total-retransmit" || name == "total-received" || name == "total-drop")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::Transmit()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::Transmit()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -14330,15 +14421,16 @@ L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::Transmit()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "transmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::~Transmit()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::~Transmit()
 {
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_data() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -14360,7 +14452,7 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_data() co
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_operation() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -14384,14 +14476,14 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_operation
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_segment_path() const
+std::string L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "transmit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14419,19 +14511,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -14549,7 +14641,7 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_value(con
     }
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -14629,14 +14721,14 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_filter(co
     }
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::Retransmit()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::Retransmit()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -14659,15 +14751,16 @@ L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::Retransmit()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "retransmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "retransmit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::~Retransmit()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::~Retransmit()
 {
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_data() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -14689,7 +14782,7 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_data() 
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_operation() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -14713,14 +14806,14 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_operati
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_segment_path() const
+std::string L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "retransmit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14748,19 +14841,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -14878,7 +14971,7 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_value(c
     }
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -14958,14 +15051,14 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_filter(
     }
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::Received()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::Received()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -14988,15 +15081,16 @@ L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::Received()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "received"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::~Received()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::~Received()
 {
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::has_data() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -15018,7 +15112,7 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::has_data() co
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::has_operation() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -15042,14 +15136,14 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::has_operation
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_segment_path() const
+std::string L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "received";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15077,19 +15171,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -15207,7 +15301,7 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::set_value(con
     }
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -15287,14 +15381,14 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::set_filter(co
     }
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::Drop()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::Drop()
     :
     unknown_packets{YType::uint32, "unknown-packets"},
     zero_length_body_packets{YType::uint32, "zero-length-body-packets"},
@@ -15317,15 +15411,16 @@ L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::Drop()
     acknowledgement_packets{YType::uint32, "acknowledgement-packets"}
 {
 
-    yang_name = "drop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::~Drop()
+L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::~Drop()
 {
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::has_data() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_packets.is_set
 	|| zero_length_body_packets.is_set
 	|| start_control_connection_requests.is_set
@@ -15347,7 +15442,7 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::has_data() const
 	|| acknowledgement_packets.is_set;
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::has_operation() const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unknown_packets.yfilter)
@@ -15371,14 +15466,14 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::has_operation() c
 	|| ydk::is_set(acknowledgement_packets.yfilter);
 }
 
-std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_segment_path() const
+std::string L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15406,19 +15501,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Counters::Control::Tunnel
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unknown-packets")
     {
@@ -15536,7 +15631,7 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::set_value(const s
     }
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unknown-packets")
     {
@@ -15616,14 +15711,14 @@ void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::set_filter(const 
     }
 }
 
-bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unknown-packets" || name == "zero-length-body-packets" || name == "start-control-connection-requests" || name == "start-control-connection-replies" || name == "start-control-connection-notifications" || name == "stop-control-connection-notifications" || name == "hello-packets" || name == "outgoing-call-requests" || name == "outgoing-call-replies" || name == "outgoing-call-connected-packets" || name == "incoming-call-requests" || name == "incoming-call-replies" || name == "incoming-call-connected-packets" || name == "call-disconnect-notify-packets" || name == "wan-error-notify-packets" || name == "set-link-info-packets" || name == "service-relay-requests" || name == "service-relay-replies" || name == "acknowledgement-packets")
         return true;
     return false;
 }
 
-L2Tpv2::Statistics::Statistics()
+L2tpv2::Statistics::Statistics()
     :
     tunnels{YType::uint32, "tunnels"},
     sessions{YType::uint32, "sessions"},
@@ -15638,15 +15733,16 @@ L2Tpv2::Statistics::Statistics()
     netio_packets{YType::uint32, "netio-packets"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Statistics::~Statistics()
+L2tpv2::Statistics::~Statistics()
 {
 }
 
-bool L2Tpv2::Statistics::has_data() const
+bool L2tpv2::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnels.is_set
 	|| sessions.is_set
 	|| sent_packets.is_set
@@ -15660,7 +15756,7 @@ bool L2Tpv2::Statistics::has_data() const
 	|| netio_packets.is_set;
 }
 
-bool L2Tpv2::Statistics::has_operation() const
+bool L2tpv2::Statistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tunnels.yfilter)
@@ -15676,21 +15772,21 @@ bool L2Tpv2::Statistics::has_operation() const
 	|| ydk::is_set(netio_packets.yfilter);
 }
 
-std::string L2Tpv2::Statistics::get_absolute_path() const
+std::string L2tpv2::Statistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Statistics::get_segment_path() const
+std::string L2tpv2::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Statistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Statistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15710,19 +15806,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Statistics::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tunnels")
     {
@@ -15792,7 +15888,7 @@ void L2Tpv2::Statistics::set_value(const std::string & value_path, const std::st
     }
 }
 
-void L2Tpv2::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tunnels")
     {
@@ -15840,52 +15936,53 @@ void L2Tpv2::Statistics::set_filter(const std::string & value_path, YFilter yfil
     }
 }
 
-bool L2Tpv2::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnels" || name == "sessions" || name == "sent-packets" || name == "received-packets" || name == "average-packet-processing-time" || name == "received-out-of-order-packets" || name == "reorder-packets" || name == "reorder-deviation-packets" || name == "incoming-dropped-packets" || name == "buffered-packets" || name == "netio-packets")
         return true;
     return false;
 }
 
-L2Tpv2::Tunnel::Tunnel()
+L2tpv2::Tunnel::Tunnel()
     :
-    accounting(std::make_shared<L2Tpv2::Tunnel::Accounting>())
+    accounting(std::make_shared<L2tpv2::Tunnel::Accounting>())
 {
     accounting->parent = this;
 
-    yang_name = "tunnel"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Tunnel::~Tunnel()
+L2tpv2::Tunnel::~Tunnel()
 {
 }
 
-bool L2Tpv2::Tunnel::has_data() const
+bool L2tpv2::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return (accounting !=  nullptr && accounting->has_data());
 }
 
-bool L2Tpv2::Tunnel::has_operation() const
+bool L2tpv2::Tunnel::has_operation() const
 {
     return is_set(yfilter)
 	|| (accounting !=  nullptr && accounting->has_operation());
 }
 
-std::string L2Tpv2::Tunnel::get_absolute_path() const
+std::string L2tpv2::Tunnel::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Tunnel::get_segment_path() const
+std::string L2tpv2::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Tunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Tunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15894,13 +15991,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Tunnel::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accounting")
     {
         if(accounting == nullptr)
         {
-            accounting = std::make_shared<L2Tpv2::Tunnel::Accounting>();
+            accounting = std::make_shared<L2tpv2::Tunnel::Accounting>();
         }
         return accounting;
     }
@@ -15908,7 +16005,7 @@ std::shared_ptr<Entity> L2Tpv2::Tunnel::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15920,60 +16017,61 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnel::get_children() co
     return children;
 }
 
-void L2Tpv2::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "accounting")
         return true;
     return false;
 }
 
-L2Tpv2::Tunnel::Accounting::Accounting()
+L2tpv2::Tunnel::Accounting::Accounting()
     :
-    statistics(std::make_shared<L2Tpv2::Tunnel::Accounting::Statistics>())
+    statistics(std::make_shared<L2tpv2::Tunnel::Accounting::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Tunnel::Accounting::~Accounting()
+L2tpv2::Tunnel::Accounting::~Accounting()
 {
 }
 
-bool L2Tpv2::Tunnel::Accounting::has_data() const
+bool L2tpv2::Tunnel::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data());
 }
 
-bool L2Tpv2::Tunnel::Accounting::has_operation() const
+bool L2tpv2::Tunnel::Accounting::has_operation() const
 {
     return is_set(yfilter)
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
-std::string L2Tpv2::Tunnel::Accounting::get_absolute_path() const
+std::string L2tpv2::Tunnel::Accounting::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/tunnel/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Tunnel::Accounting::get_segment_path() const
+std::string L2tpv2::Tunnel::Accounting::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "accounting";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Tunnel::Accounting::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Tunnel::Accounting::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15982,13 +16080,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Tunnel::Accounting::get_n
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Tunnel::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Tunnel::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<L2Tpv2::Tunnel::Accounting::Statistics>();
+            statistics = std::make_shared<L2tpv2::Tunnel::Accounting::Statistics>();
         }
         return statistics;
     }
@@ -15996,7 +16094,7 @@ std::shared_ptr<Entity> L2Tpv2::Tunnel::Accounting::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnel::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Tunnel::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16008,22 +16106,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnel::Accounting::get_c
     return children;
 }
 
-void L2Tpv2::Tunnel::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Tunnel::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Tunnel::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Tunnel::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Tunnel::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Tunnel::Accounting::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "statistics")
         return true;
     return false;
 }
 
-L2Tpv2::Tunnel::Accounting::Statistics::Statistics()
+L2tpv2::Tunnel::Accounting::Statistics::Statistics()
     :
     records_sent_successfully{YType::uint64, "records-sent-successfully"},
     start{YType::uint64, "start"},
@@ -16042,15 +16140,16 @@ L2Tpv2::Tunnel::Accounting::Statistics::Statistics()
     queue_statistics_size{YType::int32, "queue-statistics-size"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Tunnel::Accounting::Statistics::~Statistics()
+L2tpv2::Tunnel::Accounting::Statistics::~Statistics()
 {
 }
 
-bool L2Tpv2::Tunnel::Accounting::Statistics::has_data() const
+bool L2tpv2::Tunnel::Accounting::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return records_sent_successfully.is_set
 	|| start.is_set
 	|| stop.is_set
@@ -16068,7 +16167,7 @@ bool L2Tpv2::Tunnel::Accounting::Statistics::has_data() const
 	|| queue_statistics_size.is_set;
 }
 
-bool L2Tpv2::Tunnel::Accounting::Statistics::has_operation() const
+bool L2tpv2::Tunnel::Accounting::Statistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(records_sent_successfully.yfilter)
@@ -16088,21 +16187,21 @@ bool L2Tpv2::Tunnel::Accounting::Statistics::has_operation() const
 	|| ydk::is_set(queue_statistics_size.yfilter);
 }
 
-std::string L2Tpv2::Tunnel::Accounting::Statistics::get_absolute_path() const
+std::string L2tpv2::Tunnel::Accounting::Statistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/tunnel/accounting/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Tunnel::Accounting::Statistics::get_segment_path() const
+std::string L2tpv2::Tunnel::Accounting::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Tunnel::Accounting::Statistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Tunnel::Accounting::Statistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16126,19 +16225,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Tunnel::Accounting::Stati
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Tunnel::Accounting::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Tunnel::Accounting::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnel::Accounting::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Tunnel::Accounting::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Tunnel::Accounting::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Tunnel::Accounting::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "records-sent-successfully")
     {
@@ -16232,7 +16331,7 @@ void L2Tpv2::Tunnel::Accounting::Statistics::set_value(const std::string & value
     }
 }
 
-void L2Tpv2::Tunnel::Accounting::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Tunnel::Accounting::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "records-sent-successfully")
     {
@@ -16296,26 +16395,29 @@ void L2Tpv2::Tunnel::Accounting::Statistics::set_filter(const std::string & valu
     }
 }
 
-bool L2Tpv2::Tunnel::Accounting::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Tunnel::Accounting::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "records-sent-successfully" || name == "start" || name == "stop" || name == "reject" || name == "transport-failures" || name == "positive-acknowledgement" || name == "negative-acknowledgement" || name == "records-checkpointed" || name == "records-failed-to-checkpoint" || name == "records-sent-from-queue" || name == "memory-failures" || name == "current-size" || name == "records-recovered-from-checkpoint" || name == "records-fail-to-recover" || name == "queue-statistics-size")
         return true;
     return false;
 }
 
-L2Tpv2::TunnelConfigurations::TunnelConfigurations()
+L2tpv2::TunnelConfigurations::TunnelConfigurations()
+    :
+    tunnel_configuration(this, {"local_tunnel_id"})
 {
 
-    yang_name = "tunnel-configurations"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-configurations"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::TunnelConfigurations::~TunnelConfigurations()
+L2tpv2::TunnelConfigurations::~TunnelConfigurations()
 {
 }
 
-bool L2Tpv2::TunnelConfigurations::has_data() const
+bool L2tpv2::TunnelConfigurations::has_data() const
 {
-    for (std::size_t index=0; index<tunnel_configuration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel_configuration.len(); index++)
     {
         if(tunnel_configuration[index]->has_data())
             return true;
@@ -16323,9 +16425,9 @@ bool L2Tpv2::TunnelConfigurations::has_data() const
     return false;
 }
 
-bool L2Tpv2::TunnelConfigurations::has_operation() const
+bool L2tpv2::TunnelConfigurations::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel_configuration.size(); index++)
+    for (std::size_t index=0; index<tunnel_configuration.len(); index++)
     {
         if(tunnel_configuration[index]->has_operation())
             return true;
@@ -16333,21 +16435,21 @@ bool L2Tpv2::TunnelConfigurations::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Tpv2::TunnelConfigurations::get_absolute_path() const
+std::string L2tpv2::TunnelConfigurations::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::TunnelConfigurations::get_segment_path() const
+std::string L2tpv2::TunnelConfigurations::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-configurations";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::TunnelConfigurations::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::TunnelConfigurations::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16356,25 +16458,25 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::TunnelConfigurations::get
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::TunnelConfigurations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::TunnelConfigurations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel-configuration")
     {
-        auto c = std::make_shared<L2Tpv2::TunnelConfigurations::TunnelConfiguration>();
+        auto c = std::make_shared<L2tpv2::TunnelConfigurations::TunnelConfiguration>();
         c->parent = this;
-        tunnel_configuration.push_back(c);
+        tunnel_configuration.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::TunnelConfigurations::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::TunnelConfigurations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel_configuration)
+    for (auto c : tunnel_configuration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16385,45 +16487,46 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::TunnelConfigurations::get
     return children;
 }
 
-void L2Tpv2::TunnelConfigurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::TunnelConfigurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::TunnelConfigurations::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::TunnelConfigurations::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::TunnelConfigurations::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::TunnelConfigurations::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnel-configuration")
         return true;
     return false;
 }
 
-L2Tpv2::TunnelConfigurations::TunnelConfiguration::TunnelConfiguration()
+L2tpv2::TunnelConfigurations::TunnelConfiguration::TunnelConfiguration()
     :
-    local_tunnel_id{YType::int32, "local-tunnel-id"},
+    local_tunnel_id{YType::uint32, "local-tunnel-id"},
     remote_tunnel_id{YType::uint32, "remote-tunnel-id"}
-    	,
-    l2tp_class(std::make_shared<L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass>())
+        ,
+    l2tp_class(std::make_shared<L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass>())
 {
     l2tp_class->parent = this;
 
-    yang_name = "tunnel-configuration"; yang_parent_name = "tunnel-configurations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-configuration"; yang_parent_name = "tunnel-configurations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::TunnelConfigurations::TunnelConfiguration::~TunnelConfiguration()
+L2tpv2::TunnelConfigurations::TunnelConfiguration::~TunnelConfiguration()
 {
 }
 
-bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::has_data() const
+bool L2tpv2::TunnelConfigurations::TunnelConfiguration::has_data() const
 {
+    if (is_presence_container) return true;
     return local_tunnel_id.is_set
 	|| remote_tunnel_id.is_set
 	|| (l2tp_class !=  nullptr && l2tp_class->has_data());
 }
 
-bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::has_operation() const
+bool L2tpv2::TunnelConfigurations::TunnelConfiguration::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(local_tunnel_id.yfilter)
@@ -16431,21 +16534,22 @@ bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::has_operation() const
 	|| (l2tp_class !=  nullptr && l2tp_class->has_operation());
 }
 
-std::string L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_absolute_path() const
+std::string L2tpv2::TunnelConfigurations::TunnelConfiguration::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/tunnel-configurations/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_segment_path() const
+std::string L2tpv2::TunnelConfigurations::TunnelConfiguration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel-configuration" <<"[local-tunnel-id='" <<local_tunnel_id <<"']";
+    path_buffer << "tunnel-configuration";
+    ADD_KEY_TOKEN(local_tunnel_id, "local-tunnel-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::TunnelConfigurations::TunnelConfiguration::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16456,13 +16560,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::TunnelConfigurations::Tun
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::TunnelConfigurations::TunnelConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2tp-class")
     {
         if(l2tp_class == nullptr)
         {
-            l2tp_class = std::make_shared<L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass>();
+            l2tp_class = std::make_shared<L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass>();
         }
         return l2tp_class;
     }
@@ -16470,7 +16574,7 @@ std::shared_ptr<Entity> L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::TunnelConfigurations::TunnelConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16482,7 +16586,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::TunnelConfigurations::Tun
     return children;
 }
 
-void L2Tpv2::TunnelConfigurations::TunnelConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::TunnelConfigurations::TunnelConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-tunnel-id")
     {
@@ -16498,7 +16602,7 @@ void L2Tpv2::TunnelConfigurations::TunnelConfiguration::set_value(const std::str
     }
 }
 
-void L2Tpv2::TunnelConfigurations::TunnelConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::TunnelConfigurations::TunnelConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "local-tunnel-id")
     {
@@ -16510,14 +16614,14 @@ void L2Tpv2::TunnelConfigurations::TunnelConfiguration::set_filter(const std::st
     }
 }
 
-bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::TunnelConfigurations::TunnelConfiguration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2tp-class" || name == "local-tunnel-id" || name == "remote-tunnel-id")
         return true;
     return false;
 }
 
-L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::L2TpClass()
+L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass::L2tpClass()
     :
     ip_tos{YType::uint8, "ip-tos"},
     vrf_name{YType::str, "vrf-name"},
@@ -16545,15 +16649,16 @@ L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::L2TpClass()
     is_peer_address_checked{YType::boolean, "is-peer-address-checked"}
 {
 
-    yang_name = "l2tp-class"; yang_parent_name = "tunnel-configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tp-class"; yang_parent_name = "tunnel-configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::~L2TpClass()
+L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass::~L2tpClass()
 {
 }
 
-bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_data() const
+bool L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_tos.is_set
 	|| vrf_name.is_set
 	|| receive_window_size.is_set
@@ -16580,7 +16685,7 @@ bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_data() co
 	|| is_peer_address_checked.is_set;
 }
 
-bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_operation() const
+bool L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip_tos.yfilter)
@@ -16609,14 +16714,14 @@ bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_operation
 	|| ydk::is_set(is_peer_address_checked.yfilter);
 }
 
-std::string L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_segment_path() const
+std::string L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tp-class";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16649,19 +16754,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::TunnelConfigurations::Tun
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-tos")
     {
@@ -16809,7 +16914,7 @@ void L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_value(con
     }
 }
 
-void L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ip-tos")
     {
@@ -16909,14 +17014,14 @@ void L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_filter(co
     }
 }
 
-bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip-tos" || name == "vrf-name" || name == "receive-window-size" || name == "class-name-xr" || name == "digest-hash" || name == "password" || name == "encoded-password" || name == "host-name" || name == "accounting-method-list" || name == "hello-timeout" || name == "setup-timeout" || name == "retransmit-minimum-timeout" || name == "retransmit-maximum-timeout" || name == "initial-retransmit-minimum-timeout" || name == "initial-retransmit-maximum-timeout" || name == "timeout-no-user" || name == "retransmit-retries" || name == "initial-retransmit-retries" || name == "is-authentication-enabled" || name == "is-hidden" || name == "is-digest-enabled" || name == "is-digest-check-enabled" || name == "is-congestion-control-enabled" || name == "is-peer-address-checked")
         return true;
     return false;
 }
 
-L2Tpv2::CounterHistFail::CounterHistFail()
+L2tpv2::CounterHistFail::CounterHistFail()
     :
     sess_down_tmout{YType::uint32, "sess-down-tmout"},
     tx_counters{YType::str, "tx-counters"},
@@ -16924,15 +17029,16 @@ L2Tpv2::CounterHistFail::CounterHistFail()
     pkt_timeout{YType::uint32, "pkt-timeout"}
 {
 
-    yang_name = "counter-hist-fail"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "counter-hist-fail"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::CounterHistFail::~CounterHistFail()
+L2tpv2::CounterHistFail::~CounterHistFail()
 {
 }
 
-bool L2Tpv2::CounterHistFail::has_data() const
+bool L2tpv2::CounterHistFail::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : pkt_timeout.getYLeafs())
     {
         if(leaf.is_set)
@@ -16943,7 +17049,7 @@ bool L2Tpv2::CounterHistFail::has_data() const
 	|| rx_counters.is_set;
 }
 
-bool L2Tpv2::CounterHistFail::has_operation() const
+bool L2tpv2::CounterHistFail::has_operation() const
 {
     for (auto const & leaf : pkt_timeout.getYLeafs())
     {
@@ -16957,21 +17063,21 @@ bool L2Tpv2::CounterHistFail::has_operation() const
 	|| ydk::is_set(pkt_timeout.yfilter);
 }
 
-std::string L2Tpv2::CounterHistFail::get_absolute_path() const
+std::string L2tpv2::CounterHistFail::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::CounterHistFail::get_segment_path() const
+std::string L2tpv2::CounterHistFail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "counter-hist-fail";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::CounterHistFail::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::CounterHistFail::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16985,19 +17091,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::CounterHistFail::get_name
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::CounterHistFail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::CounterHistFail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::CounterHistFail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::CounterHistFail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::CounterHistFail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::CounterHistFail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sess-down-tmout")
     {
@@ -17023,7 +17129,7 @@ void L2Tpv2::CounterHistFail::set_value(const std::string & value_path, const st
     }
 }
 
-void L2Tpv2::CounterHistFail::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::CounterHistFail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sess-down-tmout")
     {
@@ -17043,26 +17149,29 @@ void L2Tpv2::CounterHistFail::set_filter(const std::string & value_path, YFilter
     }
 }
 
-bool L2Tpv2::CounterHistFail::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::CounterHistFail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sess-down-tmout" || name == "tx-counters" || name == "rx-counters" || name == "pkt-timeout")
         return true;
     return false;
 }
 
-L2Tpv2::Classes::Classes()
+L2tpv2::Classes::Classes()
+    :
+    class_(this, {"class_name"})
 {
 
-    yang_name = "classes"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "classes"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Classes::~Classes()
+L2tpv2::Classes::~Classes()
 {
 }
 
-bool L2Tpv2::Classes::has_data() const
+bool L2tpv2::Classes::has_data() const
 {
-    for (std::size_t index=0; index<class_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_data())
             return true;
@@ -17070,9 +17179,9 @@ bool L2Tpv2::Classes::has_data() const
     return false;
 }
 
-bool L2Tpv2::Classes::has_operation() const
+bool L2tpv2::Classes::has_operation() const
 {
-    for (std::size_t index=0; index<class_.size(); index++)
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_operation())
             return true;
@@ -17080,21 +17189,21 @@ bool L2Tpv2::Classes::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Tpv2::Classes::get_absolute_path() const
+std::string L2tpv2::Classes::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Classes::get_segment_path() const
+std::string L2tpv2::Classes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "classes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Classes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Classes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17103,25 +17212,25 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Classes::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Classes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Classes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class")
     {
-        auto c = std::make_shared<L2Tpv2::Classes::Class>();
+        auto c = std::make_shared<L2tpv2::Classes::Class>();
         c->parent = this;
-        class_.push_back(c);
+        class_.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Classes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Classes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_)
+    for (auto c : class_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17132,22 +17241,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Classes::get_children() c
     return children;
 }
 
-void L2Tpv2::Classes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Classes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Classes::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Classes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Classes::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Classes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "class")
         return true;
     return false;
 }
 
-L2Tpv2::Classes::Class::Class()
+L2tpv2::Classes::Class::Class()
     :
     class_name{YType::str, "class-name"},
     ip_tos{YType::uint8, "ip-tos"},
@@ -17176,15 +17285,16 @@ L2Tpv2::Classes::Class::Class()
     is_peer_address_checked{YType::boolean, "is-peer-address-checked"}
 {
 
-    yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Classes::Class::~Class()
+L2tpv2::Classes::Class::~Class()
 {
 }
 
-bool L2Tpv2::Classes::Class::has_data() const
+bool L2tpv2::Classes::Class::has_data() const
 {
+    if (is_presence_container) return true;
     return class_name.is_set
 	|| ip_tos.is_set
 	|| vrf_name.is_set
@@ -17212,7 +17322,7 @@ bool L2Tpv2::Classes::Class::has_data() const
 	|| is_peer_address_checked.is_set;
 }
 
-bool L2Tpv2::Classes::Class::has_operation() const
+bool L2tpv2::Classes::Class::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(class_name.yfilter)
@@ -17242,21 +17352,22 @@ bool L2Tpv2::Classes::Class::has_operation() const
 	|| ydk::is_set(is_peer_address_checked.yfilter);
 }
 
-std::string L2Tpv2::Classes::Class::get_absolute_path() const
+std::string L2tpv2::Classes::Class::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/classes/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Classes::Class::get_segment_path() const
+std::string L2tpv2::Classes::Class::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "class" <<"[class-name='" <<class_name <<"']";
+    path_buffer << "class";
+    ADD_KEY_TOKEN(class_name, "class-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Classes::Class::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Classes::Class::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17290,19 +17401,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Classes::Class::get_name_
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Classes::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Classes::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Classes::Class::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Classes::Class::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Classes::Class::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Classes::Class::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-name")
     {
@@ -17456,7 +17567,7 @@ void L2Tpv2::Classes::Class::set_value(const std::string & value_path, const std
     }
 }
 
-void L2Tpv2::Classes::Class::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Classes::Class::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "class-name")
     {
@@ -17560,26 +17671,29 @@ void L2Tpv2::Classes::Class::set_filter(const std::string & value_path, YFilter 
     }
 }
 
-bool L2Tpv2::Classes::Class::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Classes::Class::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "class-name" || name == "ip-tos" || name == "vrf-name" || name == "receive-window-size" || name == "class-name-xr" || name == "digest-hash" || name == "password" || name == "encoded-password" || name == "host-name" || name == "accounting-method-list" || name == "hello-timeout" || name == "setup-timeout" || name == "retransmit-minimum-timeout" || name == "retransmit-maximum-timeout" || name == "initial-retransmit-minimum-timeout" || name == "initial-retransmit-maximum-timeout" || name == "timeout-no-user" || name == "retransmit-retries" || name == "initial-retransmit-retries" || name == "is-authentication-enabled" || name == "is-hidden" || name == "is-digest-enabled" || name == "is-digest-check-enabled" || name == "is-congestion-control-enabled" || name == "is-peer-address-checked")
         return true;
     return false;
 }
 
-L2Tpv2::Tunnels::Tunnels()
+L2tpv2::Tunnels::Tunnels()
+    :
+    tunnel(this, {"local_tunnel_id"})
 {
 
-    yang_name = "tunnels"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnels"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Tunnels::~Tunnels()
+L2tpv2::Tunnels::~Tunnels()
 {
 }
 
-bool L2Tpv2::Tunnels::has_data() const
+bool L2tpv2::Tunnels::has_data() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_data())
             return true;
@@ -17587,9 +17701,9 @@ bool L2Tpv2::Tunnels::has_data() const
     return false;
 }
 
-bool L2Tpv2::Tunnels::has_operation() const
+bool L2tpv2::Tunnels::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_operation())
             return true;
@@ -17597,21 +17711,21 @@ bool L2Tpv2::Tunnels::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Tpv2::Tunnels::get_absolute_path() const
+std::string L2tpv2::Tunnels::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Tunnels::get_segment_path() const
+std::string L2tpv2::Tunnels::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnels";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Tunnels::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Tunnels::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17620,25 +17734,25 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Tunnels::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel")
     {
-        auto c = std::make_shared<L2Tpv2::Tunnels::Tunnel>();
+        auto c = std::make_shared<L2tpv2::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(c);
+        tunnel.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnels::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Tunnels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel)
+    for (auto c : tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17649,24 +17763,24 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnels::get_children() c
     return children;
 }
 
-void L2Tpv2::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnel")
         return true;
     return false;
 }
 
-L2Tpv2::Tunnels::Tunnel::Tunnel()
+L2tpv2::Tunnels::Tunnel::Tunnel()
     :
-    local_tunnel_id{YType::int32, "local-tunnel-id"},
+    local_tunnel_id{YType::uint32, "local-tunnel-id"},
     local_address{YType::str, "local-address"},
     remote_address{YType::str, "remote-address"},
     local_port{YType::uint16, "local-port"},
@@ -17701,15 +17815,16 @@ L2Tpv2::Tunnels::Tunnel::Tunnel()
     retransmit_time{YType::uint16, "retransmit-time"}
 {
 
-    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Tunnels::Tunnel::~Tunnel()
+L2tpv2::Tunnels::Tunnel::~Tunnel()
 {
 }
 
-bool L2Tpv2::Tunnels::Tunnel::has_data() const
+bool L2tpv2::Tunnels::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : retransmit_time.getYLeafs())
     {
         if(leaf.is_set)
@@ -17749,7 +17864,7 @@ bool L2Tpv2::Tunnels::Tunnel::has_data() const
 	|| is_congestion_control_enabled.is_set;
 }
 
-bool L2Tpv2::Tunnels::Tunnel::has_operation() const
+bool L2tpv2::Tunnels::Tunnel::has_operation() const
 {
     for (auto const & leaf : retransmit_time.getYLeafs())
     {
@@ -17792,21 +17907,22 @@ bool L2Tpv2::Tunnels::Tunnel::has_operation() const
 	|| ydk::is_set(retransmit_time.yfilter);
 }
 
-std::string L2Tpv2::Tunnels::Tunnel::get_absolute_path() const
+std::string L2tpv2::Tunnels::Tunnel::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/tunnels/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Tunnels::Tunnel::get_segment_path() const
+std::string L2tpv2::Tunnels::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel" <<"[local-tunnel-id='" <<local_tunnel_id <<"']";
+    path_buffer << "tunnel";
+    ADD_KEY_TOKEN(local_tunnel_id, "local-tunnel-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Tunnels::Tunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Tunnels::Tunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17849,19 +17965,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Tunnels::Tunnel::get_name
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnels::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Tunnels::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-tunnel-id")
     {
@@ -18061,7 +18177,7 @@ void L2Tpv2::Tunnels::Tunnel::set_value(const std::string & value_path, const st
     }
 }
 
-void L2Tpv2::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "local-tunnel-id")
     {
@@ -18197,26 +18313,29 @@ void L2Tpv2::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter
     }
 }
 
-bool L2Tpv2::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local-tunnel-id" || name == "local-address" || name == "remote-address" || name == "local-port" || name == "remote-port" || name == "protocol" || name == "is-pmtu-enabled" || name == "remote-tunnel-id" || name == "local-tunnel-name" || name == "remote-tunnel-name" || name == "class-name" || name == "active-sessions" || name == "sequence-ns" || name == "sequence-nr" || name == "local-window-size" || name == "remote-window-size" || name == "retransmission-time" || name == "maximum-retransmission-time" || name == "unsent-queue-size" || name == "unsent-maximum-queue-size" || name == "resend-queue-size" || name == "resend-maximum-queue-size" || name == "order-queue-size" || name == "packet-queue-check" || name == "digest-secrets" || name == "resends" || name == "zero-length-body-acknowledgement-sent" || name == "total-out-of-order-drop-packets" || name == "total-out-of-order-reorder-packets" || name == "total-peer-authentication-failures" || name == "is-tunnel-up" || name == "is-congestion-control-enabled" || name == "retransmit-time")
         return true;
     return false;
 }
 
-L2Tpv2::Sessions::Sessions()
+L2tpv2::Sessions::Sessions()
+    :
+    session(this, {"local_tunnel_id", "local_session_id"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Sessions::~Sessions()
+L2tpv2::Sessions::~Sessions()
 {
 }
 
-bool L2Tpv2::Sessions::has_data() const
+bool L2tpv2::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -18224,9 +18343,9 @@ bool L2Tpv2::Sessions::has_data() const
     return false;
 }
 
-bool L2Tpv2::Sessions::has_operation() const
+bool L2tpv2::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -18234,21 +18353,21 @@ bool L2Tpv2::Sessions::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Tpv2::Sessions::get_absolute_path() const
+std::string L2tpv2::Sessions::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Sessions::get_segment_path() const
+std::string L2tpv2::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sessions";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Sessions::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Sessions::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18257,25 +18376,25 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Sessions::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
-        auto c = std::make_shared<L2Tpv2::Sessions::Session>();
+        auto c = std::make_shared<L2tpv2::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18286,25 +18405,25 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::get_children() 
     return children;
 }
 
-void L2Tpv2::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Sessions::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session")
         return true;
     return false;
 }
 
-L2Tpv2::Sessions::Session::Session()
+L2tpv2::Sessions::Session::Session()
     :
-    local_tunnel_id{YType::int32, "local-tunnel-id"},
-    local_session_id{YType::int32, "local-session-id"},
+    local_tunnel_id{YType::uint32, "local-tunnel-id"},
+    local_session_id{YType::uint32, "local-session-id"},
     local_ip_address{YType::str, "local-ip-address"},
     remote_ip_address{YType::str, "remote-ip-address"},
     l2tp_sh_sess_udp_lport{YType::uint16, "l2tp-sh-sess-udp-lport"},
@@ -18326,20 +18445,21 @@ L2Tpv2::Sessions::Session::Session()
     is_conditional_debug_enabled{YType::boolean, "is-conditional-debug-enabled"},
     unique_id{YType::uint32, "unique-id"},
     interface_name{YType::str, "interface-name"}
-    	,
-    session_application_data(std::make_shared<L2Tpv2::Sessions::Session::SessionApplicationData>())
+        ,
+    session_application_data(std::make_shared<L2tpv2::Sessions::Session::SessionApplicationData>())
 {
     session_application_data->parent = this;
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Sessions::Session::~Session()
+L2tpv2::Sessions::Session::~Session()
 {
 }
 
-bool L2Tpv2::Sessions::Session::has_data() const
+bool L2tpv2::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return local_tunnel_id.is_set
 	|| local_session_id.is_set
 	|| local_ip_address.is_set
@@ -18366,7 +18486,7 @@ bool L2Tpv2::Sessions::Session::has_data() const
 	|| (session_application_data !=  nullptr && session_application_data->has_data());
 }
 
-bool L2Tpv2::Sessions::Session::has_operation() const
+bool L2tpv2::Sessions::Session::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(local_tunnel_id.yfilter)
@@ -18395,21 +18515,23 @@ bool L2Tpv2::Sessions::Session::has_operation() const
 	|| (session_application_data !=  nullptr && session_application_data->has_operation());
 }
 
-std::string L2Tpv2::Sessions::Session::get_absolute_path() const
+std::string L2tpv2::Sessions::Session::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/sessions/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Sessions::Session::get_segment_path() const
+std::string L2tpv2::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[local-tunnel-id='" <<local_tunnel_id <<"']" <<"[local-session-id='" <<local_session_id <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(local_tunnel_id, "local-tunnel-id");
+    ADD_KEY_TOKEN(local_session_id, "local-session-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Sessions::Session::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Sessions::Session::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18441,13 +18563,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Sessions::Session::get_na
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-application-data")
     {
         if(session_application_data == nullptr)
         {
-            session_application_data = std::make_shared<L2Tpv2::Sessions::Session::SessionApplicationData>();
+            session_application_data = std::make_shared<L2tpv2::Sessions::Session::SessionApplicationData>();
         }
         return session_application_data;
     }
@@ -18455,7 +18577,7 @@ std::shared_ptr<Entity> L2Tpv2::Sessions::Session::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Sessions::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -18467,7 +18589,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::get_ch
     return children;
 }
 
-void L2Tpv2::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-tunnel-id")
     {
@@ -18609,7 +18731,7 @@ void L2Tpv2::Sessions::Session::set_value(const std::string & value_path, const 
     }
 }
 
-void L2Tpv2::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "local-tunnel-id")
     {
@@ -18705,38 +18827,39 @@ void L2Tpv2::Sessions::Session::set_filter(const std::string & value_path, YFilt
     }
 }
 
-bool L2Tpv2::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-application-data" || name == "local-tunnel-id" || name == "local-session-id" || name == "local-ip-address" || name == "remote-ip-address" || name == "l2tp-sh-sess-udp-lport" || name == "l2tp-sh-sess-udp-rport" || name == "protocol" || name == "remote-tunnel-id" || name == "call-serial-number" || name == "local-tunnel-name" || name == "remote-tunnel-name" || name == "remote-session-id" || name == "l2tp-sh-sess-tie-breaker-enabled" || name == "l2tp-sh-sess-tie-breaker" || name == "is-session-manual" || name == "is-session-up" || name == "is-udp-checksum-enabled" || name == "is-sequencing-on" || name == "is-session-state-established" || name == "is-session-locally-initiated" || name == "is-conditional-debug-enabled" || name == "unique-id" || name == "interface-name")
         return true;
     return false;
 }
 
-L2Tpv2::Sessions::Session::SessionApplicationData::SessionApplicationData()
+L2tpv2::Sessions::Session::SessionApplicationData::SessionApplicationData()
     :
     l2tp_sh_sess_app_type{YType::uint32, "l2tp-sh-sess-app-type"}
-    	,
-    xconnect(std::make_shared<L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect>())
-	,vpdn(std::make_shared<L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn>())
+        ,
+    xconnect(std::make_shared<L2tpv2::Sessions::Session::SessionApplicationData::Xconnect>())
+    , vpdn(std::make_shared<L2tpv2::Sessions::Session::SessionApplicationData::Vpdn>())
 {
     xconnect->parent = this;
     vpdn->parent = this;
 
-    yang_name = "session-application-data"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-application-data"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tpv2::Sessions::Session::SessionApplicationData::~SessionApplicationData()
+L2tpv2::Sessions::Session::SessionApplicationData::~SessionApplicationData()
 {
 }
 
-bool L2Tpv2::Sessions::Session::SessionApplicationData::has_data() const
+bool L2tpv2::Sessions::Session::SessionApplicationData::has_data() const
 {
+    if (is_presence_container) return true;
     return l2tp_sh_sess_app_type.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
 	|| (vpdn !=  nullptr && vpdn->has_data());
 }
 
-bool L2Tpv2::Sessions::Session::SessionApplicationData::has_operation() const
+bool L2tpv2::Sessions::Session::SessionApplicationData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(l2tp_sh_sess_app_type.yfilter)
@@ -18744,14 +18867,14 @@ bool L2Tpv2::Sessions::Session::SessionApplicationData::has_operation() const
 	|| (vpdn !=  nullptr && vpdn->has_operation());
 }
 
-std::string L2Tpv2::Sessions::Session::SessionApplicationData::get_segment_path() const
+std::string L2tpv2::Sessions::Session::SessionApplicationData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session-application-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Sessions::Session::SessionApplicationData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Sessions::Session::SessionApplicationData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18761,13 +18884,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Sessions::Session::Sessio
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Sessions::Session::SessionApplicationData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Sessions::Session::SessionApplicationData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "xconnect")
     {
         if(xconnect == nullptr)
         {
-            xconnect = std::make_shared<L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect>();
+            xconnect = std::make_shared<L2tpv2::Sessions::Session::SessionApplicationData::Xconnect>();
         }
         return xconnect;
     }
@@ -18776,7 +18899,7 @@ std::shared_ptr<Entity> L2Tpv2::Sessions::Session::SessionApplicationData::get_c
     {
         if(vpdn == nullptr)
         {
-            vpdn = std::make_shared<L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn>();
+            vpdn = std::make_shared<L2tpv2::Sessions::Session::SessionApplicationData::Vpdn>();
         }
         return vpdn;
     }
@@ -18784,7 +18907,7 @@ std::shared_ptr<Entity> L2Tpv2::Sessions::Session::SessionApplicationData::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::SessionApplicationData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Sessions::Session::SessionApplicationData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -18801,7 +18924,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::Sessio
     return children;
 }
 
-void L2Tpv2::Sessions::Session::SessionApplicationData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Sessions::Session::SessionApplicationData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "l2tp-sh-sess-app-type")
     {
@@ -18811,7 +18934,7 @@ void L2Tpv2::Sessions::Session::SessionApplicationData::set_value(const std::str
     }
 }
 
-void L2Tpv2::Sessions::Session::SessionApplicationData::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Sessions::Session::SessionApplicationData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "l2tp-sh-sess-app-type")
     {
@@ -18819,14 +18942,14 @@ void L2Tpv2::Sessions::Session::SessionApplicationData::set_filter(const std::st
     }
 }
 
-bool L2Tpv2::Sessions::Session::SessionApplicationData::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Sessions::Session::SessionApplicationData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "xconnect" || name == "vpdn" || name == "l2tp-sh-sess-app-type")
         return true;
     return false;
 }
 
-L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::Xconnect()
+L2tpv2::Sessions::Session::SessionApplicationData::Xconnect::Xconnect()
     :
     circuit_name{YType::str, "circuit-name"},
     sessionvc_id{YType::uint32, "sessionvc-id"},
@@ -18836,15 +18959,16 @@ L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::Xconnect()
     ipv6_protocol_tunneling{YType::boolean, "ipv6-protocol-tunneling"}
 {
 
-    yang_name = "xconnect"; yang_parent_name = "session-application-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "session-application-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::~Xconnect()
+L2tpv2::Sessions::Session::SessionApplicationData::Xconnect::~Xconnect()
 {
 }
 
-bool L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::has_data() const
+bool L2tpv2::Sessions::Session::SessionApplicationData::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return circuit_name.is_set
 	|| sessionvc_id.is_set
 	|| is_circuit_state_up.is_set
@@ -18853,7 +18977,7 @@ bool L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::has_data() con
 	|| ipv6_protocol_tunneling.is_set;
 }
 
-bool L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::has_operation() const
+bool L2tpv2::Sessions::Session::SessionApplicationData::Xconnect::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(circuit_name.yfilter)
@@ -18864,14 +18988,14 @@ bool L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::has_operation(
 	|| ydk::is_set(ipv6_protocol_tunneling.yfilter);
 }
 
-std::string L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_segment_path() const
+std::string L2tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "xconnect";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18886,19 +19010,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Sessions::Session::Sessio
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Sessions::Session::SessionApplicationData::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "circuit-name")
     {
@@ -18938,7 +19062,7 @@ void L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::set_value(cons
     }
 }
 
-void L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Sessions::Session::SessionApplicationData::Xconnect::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "circuit-name")
     {
@@ -18966,47 +19090,48 @@ void L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::set_filter(con
     }
 }
 
-bool L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Sessions::Session::SessionApplicationData::Xconnect::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "circuit-name" || name == "sessionvc-id" || name == "is-circuit-state-up" || name == "is-local-circuit-state-up" || name == "is-remote-circuit-state-up" || name == "ipv6-protocol-tunneling")
         return true;
     return false;
 }
 
-L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::Vpdn()
+L2tpv2::Sessions::Session::SessionApplicationData::Vpdn::Vpdn()
     :
     username{YType::str, "username"},
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "vpdn"; yang_parent_name = "session-application-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vpdn"; yang_parent_name = "session-application-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::~Vpdn()
+L2tpv2::Sessions::Session::SessionApplicationData::Vpdn::~Vpdn()
 {
 }
 
-bool L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::has_data() const
+bool L2tpv2::Sessions::Session::SessionApplicationData::Vpdn::has_data() const
 {
+    if (is_presence_container) return true;
     return username.is_set
 	|| interface_name.is_set;
 }
 
-bool L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::has_operation() const
+bool L2tpv2::Sessions::Session::SessionApplicationData::Vpdn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(username.yfilter)
 	|| ydk::is_set(interface_name.yfilter);
 }
 
-std::string L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_segment_path() const
+std::string L2tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vpdn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19017,19 +19142,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Sessions::Session::Sessio
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Sessions::Session::SessionApplicationData::Vpdn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "username")
     {
@@ -19045,7 +19170,7 @@ void L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::set_value(const st
     }
 }
 
-void L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Sessions::Session::SessionApplicationData::Vpdn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "username")
     {
@@ -19057,52 +19182,53 @@ void L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::set_filter(const s
     }
 }
 
-bool L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Sessions::Session::SessionApplicationData::Vpdn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "username" || name == "interface-name")
         return true;
     return false;
 }
 
-L2Tpv2::Session::Session()
+L2tpv2::Session::Session()
     :
-    unavailable(std::make_shared<L2Tpv2::Session::Unavailable>())
+    unavailable(std::make_shared<L2tpv2::Session::Unavailable>())
 {
     unavailable->parent = this;
 
-    yang_name = "session"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Session::~Session()
+L2tpv2::Session::~Session()
 {
 }
 
-bool L2Tpv2::Session::has_data() const
+bool L2tpv2::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return (unavailable !=  nullptr && unavailable->has_data());
 }
 
-bool L2Tpv2::Session::has_operation() const
+bool L2tpv2::Session::has_operation() const
 {
     return is_set(yfilter)
 	|| (unavailable !=  nullptr && unavailable->has_operation());
 }
 
-std::string L2Tpv2::Session::get_absolute_path() const
+std::string L2tpv2::Session::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Session::get_segment_path() const
+std::string L2tpv2::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Session::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Session::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19111,13 +19237,13 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Session::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "unavailable")
     {
         if(unavailable == nullptr)
         {
-            unavailable = std::make_shared<L2Tpv2::Session::Unavailable>();
+            unavailable = std::make_shared<L2tpv2::Session::Unavailable>();
         }
         return unavailable;
     }
@@ -19125,7 +19251,7 @@ std::shared_ptr<Entity> L2Tpv2::Session::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Session::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -19137,59 +19263,60 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Session::get_children() c
     return children;
 }
 
-void L2Tpv2::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Tpv2::Session::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Session::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Tpv2::Session::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "unavailable")
         return true;
     return false;
 }
 
-L2Tpv2::Session::Unavailable::Unavailable()
+L2tpv2::Session::Unavailable::Unavailable()
     :
     sessions_on_hold{YType::uint32, "sessions-on-hold"}
 {
 
-    yang_name = "unavailable"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unavailable"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Tpv2::Session::Unavailable::~Unavailable()
+L2tpv2::Session::Unavailable::~Unavailable()
 {
 }
 
-bool L2Tpv2::Session::Unavailable::has_data() const
+bool L2tpv2::Session::Unavailable::has_data() const
 {
+    if (is_presence_container) return true;
     return sessions_on_hold.is_set;
 }
 
-bool L2Tpv2::Session::Unavailable::has_operation() const
+bool L2tpv2::Session::Unavailable::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sessions_on_hold.yfilter);
 }
 
-std::string L2Tpv2::Session::Unavailable::get_absolute_path() const
+std::string L2tpv2::Session::Unavailable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-l2tun-oper:l2tpv2/session/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Tpv2::Session::Unavailable::get_segment_path() const
+std::string L2tpv2::Session::Unavailable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "unavailable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Tpv2::Session::Unavailable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2tpv2::Session::Unavailable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19199,19 +19326,19 @@ std::vector<std::pair<std::string, LeafData> > L2Tpv2::Session::Unavailable::get
 
 }
 
-std::shared_ptr<Entity> L2Tpv2::Session::Unavailable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2tpv2::Session::Unavailable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Session::Unavailable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2tpv2::Session::Unavailable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Tpv2::Session::Unavailable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2tpv2::Session::Unavailable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sessions-on-hold")
     {
@@ -19221,7 +19348,7 @@ void L2Tpv2::Session::Unavailable::set_value(const std::string & value_path, con
     }
 }
 
-void L2Tpv2::Session::Unavailable::set_filter(const std::string & value_path, YFilter yfilter)
+void L2tpv2::Session::Unavailable::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sessions-on-hold")
     {
@@ -19229,7 +19356,7 @@ void L2Tpv2::Session::Unavailable::set_filter(const std::string & value_path, YF
     }
 }
 
-bool L2Tpv2::Session::Unavailable::has_leaf_or_child_of_name(const std::string & name) const
+bool L2tpv2::Session::Unavailable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sessions-on-hold")
         return true;

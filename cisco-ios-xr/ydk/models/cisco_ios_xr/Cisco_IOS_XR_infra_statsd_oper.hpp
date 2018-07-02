@@ -57,7 +57,7 @@ class InfraStatistics::Interfaces : public ydk::Entity
 
         class Interface; //type: InfraStatistics::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // InfraStatistics::Interfaces
 
@@ -146,7 +146,7 @@ class InfraStatistics::Interfaces::Interface::Cache::Protocols : public ydk::Ent
 
         class Protocol; //type: InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol> > protocol;
+        ydk::YList protocol;
         
 }; // InfraStatistics::Interfaces::Interface::Cache::Protocols
 
@@ -374,7 +374,7 @@ class InfraStatistics::Interfaces::Interface::Latest::Protocols : public ydk::En
 
         class Protocol; //type: InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol> > protocol;
+        ydk::YList protocol;
         
 }; // InfraStatistics::Interfaces::Interface::Latest::Protocols
 
@@ -602,7 +602,7 @@ class InfraStatistics::Interfaces::Interface::Total::Protocols : public ydk::Ent
 
         class Protocol; //type: InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol> > protocol;
+        ydk::YList protocol;
         
 }; // InfraStatistics::Interfaces::Interface::Total::Protocols
 
@@ -801,7 +801,7 @@ class InfraStatistics::Interfaces::Interface::Protocols : public ydk::Entity
 
         class Protocol; //type: InfraStatistics::Interfaces::Interface::Protocols::Protocol
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Protocols::Protocol> > protocol;
+        ydk::YList protocol;
         
 }; // InfraStatistics::Interfaces::Interface::Protocols
 

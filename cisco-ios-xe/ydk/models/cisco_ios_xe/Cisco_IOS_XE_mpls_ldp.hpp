@@ -10,59 +10,23 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_mpls_ldp {
 
-class NsrSyncNackRsn : public virtual ydk::Identity
+class RoutePathLblOwner : public virtual ydk::Identity
 {
     public:
-        NsrSyncNackRsn();
-        ~NsrSyncNackRsn();
+        RoutePathLblOwner();
+        ~RoutePathLblOwner();
 
 
-}; // NsrSyncNackRsn
+}; // RoutePathLblOwner
 
-class NsrPeerSyncErr : public virtual ydk::Identity
+class IgpSyncDownReason : public virtual ydk::Identity
 {
     public:
-        NsrPeerSyncErr();
-        ~NsrPeerSyncErr();
+        IgpSyncDownReason();
+        ~IgpSyncDownReason();
 
 
-}; // NsrPeerSyncErr
-
-class IcpmType : public virtual ydk::Identity
-{
-    public:
-        IcpmType();
-        ~IcpmType();
-
-
-}; // IcpmType
-
-class IccpType : public virtual ydk::Identity
-{
-    public:
-        IccpType();
-        ~IccpType();
-
-
-}; // IccpType
-
-class NsrPeerSyncState : public virtual ydk::Identity
-{
-    public:
-        NsrPeerSyncState();
-        ~NsrPeerSyncState();
-
-
-}; // NsrPeerSyncState
-
-class NsrStatus : public virtual ydk::Identity
-{
-    public:
-        NsrStatus();
-        ~NsrStatus();
-
-
-}; // NsrStatus
+}; // IgpSyncDownReason
 
 class DownNbrReason : public virtual ydk::Identity
 {
@@ -73,14 +37,50 @@ class DownNbrReason : public virtual ydk::Identity
 
 }; // DownNbrReason
 
-class RoutePathLblOwner : public virtual ydk::Identity
+class RoutePathType : public virtual ydk::Identity
 {
     public:
-        RoutePathLblOwner();
-        ~RoutePathLblOwner();
+        RoutePathType();
+        ~RoutePathType();
 
 
-}; // RoutePathLblOwner
+}; // RoutePathType
+
+class IcpmType : public virtual ydk::Identity
+{
+    public:
+        IcpmType();
+        ~IcpmType();
+
+
+}; // IcpmType
+
+class NsrPeerSyncErr : public virtual ydk::Identity
+{
+    public:
+        NsrPeerSyncErr();
+        ~NsrPeerSyncErr();
+
+
+}; // NsrPeerSyncErr
+
+class NsrPeerSyncState : public virtual ydk::Identity
+{
+    public:
+        NsrPeerSyncState();
+        ~NsrPeerSyncState();
+
+
+}; // NsrPeerSyncState
+
+class IccpType : public virtual ydk::Identity
+{
+    public:
+        IccpType();
+        ~IccpType();
+
+
+}; // IccpType
 
 class LabelType : public virtual ydk::Identity
 {
@@ -91,23 +91,23 @@ class LabelType : public virtual ydk::Identity
 
 }; // LabelType
 
-class RoutePathType : public virtual ydk::Identity
+class NsrStatus : public virtual ydk::Identity
 {
     public:
-        RoutePathType();
-        ~RoutePathType();
+        NsrStatus();
+        ~NsrStatus();
 
 
-}; // RoutePathType
+}; // NsrStatus
 
-class IgpSyncDownReason : public virtual ydk::Identity
+class NsrSyncNackRsn : public virtual ydk::Identity
 {
     public:
-        IgpSyncDownReason();
-        ~IgpSyncDownReason();
+        NsrSyncNackRsn();
+        ~NsrSyncNackRsn();
 
 
-}; // IgpSyncDownReason
+}; // NsrSyncNackRsn
 
 class MplsLdp : public ydk::Entity
 {
@@ -519,7 +519,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo : public ydk::Ent
 
         class RedGroup; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup> > red_group;
+        ydk::YList red_group;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
 
@@ -544,7 +544,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup : publi
         ydk::YLeaf rg_id; //type: uint32
         class IcpmProtocols; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols> > icpm_protocols;
+        ydk::YList icpm_protocols;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup
 
@@ -568,7 +568,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmPr
         ydk::YLeaf icpm_type; //type: IcpmType
         class RedunGroups; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups> > redun_groups;
+        ydk::YList redun_groups;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols
 
@@ -595,7 +595,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmPr
         ydk::YLeaf state; //type: string
         class IccpApps; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::IccpApps
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::IccpApps> > iccp_apps;
+        ydk::YList iccp_apps;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups
 
@@ -642,7 +642,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable : public ydk::Enti
 
         class SessionTable; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable> > session_table;
+        ydk::YList session_table;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable
 
@@ -667,7 +667,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable : pu
         ydk::YLeaf session_id; //type: uint32
         class IcpmProtocols; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols> > icpm_protocols;
+        ydk::YList icpm_protocols;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable
 
@@ -691,7 +691,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::Icp
         ydk::YLeaf icpm_type; //type: IcpmType
         class RedunGroups; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups> > redun_groups;
+        ydk::YList redun_groups;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols
 
@@ -718,7 +718,7 @@ class MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::Icp
         ydk::YLeaf state; //type: string
         class IccpApps; //type: MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::IccpApps
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::IccpApps> > iccp_apps;
+        ydk::YList iccp_apps;
         
 }; // MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups
 
@@ -779,7 +779,7 @@ class MplsLdp::MplsLdpState::Parameters : public ydk::Entity
         ydk::YLeafList feature; //type: list of  string
         class AddressFamilyParameter; //type: MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter> > address_family_parameter;
+        ydk::YList address_family_parameter;
         
 }; // MplsLdp::MplsLdpState::Parameters
 
@@ -828,7 +828,7 @@ class MplsLdp::MplsLdpState::Capabilities : public ydk::Entity
 
         class Capability; //type: MplsLdp::MplsLdpState::Capabilities::Capability
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Capabilities::Capability> > capability;
+        ydk::YList capability;
         
 }; // MplsLdp::MplsLdpState::Capabilities
 
@@ -929,7 +929,7 @@ class MplsLdp::MplsLdpState::Vrfs : public ydk::Entity
 
         class Vrf; //type: MplsLdp::MplsLdpState::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // MplsLdp::MplsLdpState::Vrfs
 
@@ -1008,7 +1008,7 @@ class MplsLdp::MplsLdpState::Vrfs::Vrf::Afs : public ydk::Entity
 
         class Af; //type: MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af> > af;
+        ydk::YList af;
         
 }; // MplsLdp::MplsLdpState::Vrfs::Vrf::Afs
 
@@ -1085,7 +1085,7 @@ class MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp : public ydk::Entity
 
         class Sync; //type: MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync> > sync;
+        ydk::YList sync;
         
 }; // MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp
 
@@ -1114,7 +1114,7 @@ class MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync : public ydk::Entity
         ydk::YLeaf igp_sync_down_reason; //type: IgpSyncDownReason
         class Peers; //type: MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers> > peers;
+        ydk::YList peers;
         
 }; // MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync
 
@@ -1216,7 +1216,7 @@ class MplsLdp::MplsLdpState::Discovery::LinkHelloState : public ydk::Entity
 
         class LinkHellos; //type: MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos> > link_hellos;
+        ydk::YList link_hellos;
         
 }; // MplsLdp::MplsLdpState::Discovery::LinkHelloState
 
@@ -1275,7 +1275,7 @@ class MplsLdp::MplsLdpState::Discovery::TargetedHellos : public ydk::Entity
         ydk::YLeaf targeted_hello_hold_time; //type: uint32
         class TargetedHello; //type: MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello> > targeted_hello;
+        ydk::YList targeted_hello;
         
 }; // MplsLdp::MplsLdpState::Discovery::TargetedHellos
 
@@ -1330,7 +1330,7 @@ class MplsLdp::MplsLdpState::Forwarding : public ydk::Entity
         class ForwardingDetail; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingDetail
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms> forwarding_vrf_summs;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail> > forwarding_detail;
+        ydk::YList forwarding_detail;
         
 }; // MplsLdp::MplsLdpState::Forwarding
 
@@ -1354,7 +1354,7 @@ class MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms : public ydk::Entity
 
         class ForwardingVrfSumm; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm> > forwarding_vrf_summ;
+        ydk::YList forwarding_vrf_summ;
         
 }; // MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms
 
@@ -1539,7 +1539,7 @@ class MplsLdp::MplsLdpState::Forwarding::ForwardingDetail : public ydk::Entity
         class Paths; //type: MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route> route;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths> > paths;
+        ydk::YList paths;
         
 }; // MplsLdp::MplsLdpState::Forwarding::ForwardingDetail
 
@@ -1804,7 +1804,7 @@ class MplsLdp::MplsLdpState::Bindings : public ydk::Entity
         class Binding; //type: MplsLdp::MplsLdpState::Bindings::Binding
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::BindingsSumAfs> bindings_sum_afs;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::Binding> > binding;
+        ydk::YList binding;
         
 }; // MplsLdp::MplsLdpState::Bindings
 
@@ -1828,7 +1828,7 @@ class MplsLdp::MplsLdpState::Bindings::BindingsSumAfs : public ydk::Entity
 
         class BindingSumAf; //type: MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf> > binding_sum_af;
+        ydk::YList binding_sum_af;
         
 }; // MplsLdp::MplsLdpState::Bindings::BindingsSumAfs
 
@@ -1900,8 +1900,8 @@ class MplsLdp::MplsLdpState::Bindings::Binding : public ydk::Entity
         class RemoteBinding; //type: MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding
         class PeersAdvertisedTo; //type: MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding> > remote_binding;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo> > peers_advertised_to;
+        ydk::YList remote_binding;
+        ydk::YList peers_advertised_to;
         
 }; // MplsLdp::MplsLdpState::Bindings::Binding
 
@@ -1998,8 +1998,8 @@ class MplsLdp::MplsLdpState::Neighbors : public ydk::Entity
         class Backoffs; //type: MplsLdp::MplsLdpState::Neighbors::Backoffs
         class NsrNbrDetail; //type: MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor> > neighbor;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::NbrAdjs> > nbr_adjs;
+        ydk::YList neighbor;
+        ydk::YList nbr_adjs;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::StatsInfo> stats_info;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Backoffs> backoffs;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail> nsr_nbr_detail;
@@ -2167,8 +2167,8 @@ class MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities : public ydk::Ent
         class SentCaps; //type: MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps
         class ReceivedCaps; //type: MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps> > sent_caps;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps> > received_caps;
+        ydk::YList sent_caps;
+        ydk::YList received_caps;
         
 }; // MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities
 
@@ -2471,7 +2471,7 @@ class MplsLdp::MplsLdpState::LabelRanges : public ydk::Entity
 
         class LabelRange; //type: MplsLdp::MplsLdpState::LabelRanges::LabelRange
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpState::LabelRanges::LabelRange> > label_range;
+        ydk::YList label_range;
         
 }; // MplsLdp::MplsLdpState::LabelRanges
 
@@ -2577,7 +2577,7 @@ class MplsLdp::MplsLdpConfig::GlobalCfg : public ydk::Entity
         class Session; //type: MplsLdp::MplsLdpConfig::GlobalCfg::Session
         class PerAf; //type: MplsLdp::MplsLdpConfig::GlobalCfg::PerAf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::RouterId> > router_id;
+        ydk::YList router_id;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::Session> session;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::PerAf> per_af;
                 class AdminStatus;
@@ -2636,7 +2636,7 @@ class MplsLdp::MplsLdpConfig::GlobalCfg::Session : public ydk::Entity
         class DownstreamOnDemand; //type: MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand
         class Protection; //type: MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand> > downstream_on_demand;
+        ydk::YList downstream_on_demand;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection> protection;
         
 }; // MplsLdp::MplsLdpConfig::GlobalCfg::Session
@@ -2710,7 +2710,7 @@ class MplsLdp::MplsLdpConfig::GlobalCfg::PerAf : public ydk::Entity
 
         class AfCfg; //type: MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg> > af_cfg;
+        ydk::YList af_cfg;
         
 }; // MplsLdp::MplsLdpConfig::GlobalCfg::PerAf
 
@@ -2762,7 +2762,7 @@ class MplsLdp::MplsLdpConfig::NbrTable : public ydk::Entity
 
         class NbrCfg; //type: MplsLdp::MplsLdpConfig::NbrTable::NbrCfg
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::NbrTable::NbrCfg> > nbr_cfg;
+        ydk::YList nbr_cfg;
         
 }; // MplsLdp::MplsLdpConfig::NbrTable
 
@@ -2817,7 +2817,7 @@ class MplsLdp::MplsLdpConfig::Passwords : public ydk::Entity
 
         class Password; //type: MplsLdp::MplsLdpConfig::Passwords::Password
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Passwords::Password> > password;
+        ydk::YList password;
         
 }; // MplsLdp::MplsLdpConfig::Passwords
 
@@ -2840,7 +2840,7 @@ class MplsLdp::MplsLdpConfig::Passwords::Password : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf nbr_vrf; //type: string
-        ydk::YLeaf nbr_id; //type: one of string, union
+        ydk::YLeaf nbr_id; //type: one of union, string
         ydk::YLeaf password_num; //type: uint32
         ydk::YLeaf pass_required; //type: boolean
         ydk::YLeaf clear_pass; //type: string
@@ -2893,7 +2893,7 @@ class MplsLdp::MplsLdpConfig::LabelCfg : public ydk::Entity
 
         class LabelAfCfg; //type: MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg> > label_af_cfg;
+        ydk::YList label_af_cfg;
         
 }; // MplsLdp::MplsLdpConfig::LabelCfg
 
@@ -2921,7 +2921,7 @@ class MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg : public ydk::Entity
         ydk::YLeaf host_route_enable; //type: boolean
         class AdvtFilter; //type: MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter> > advt_filter;
+        ydk::YList advt_filter;
         
 }; // MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg
 
@@ -3072,7 +3072,7 @@ class MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs : public ydk::Entity
 
         class IntTransAddr; //type: MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr> > int_trans_addr;
+        ydk::YList int_trans_addr;
         
 }; // MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs
 
@@ -3127,7 +3127,7 @@ class MplsLdp::MplsLdpConfig::GracefulRestart : public ydk::Entity
         ydk::YLeaf nbr_liveness; //type: uint32
         class Helper; //type: MplsLdp::MplsLdpConfig::GracefulRestart::Helper
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::GracefulRestart::Helper> > helper;
+        ydk::YList helper;
         
 }; // MplsLdp::MplsLdpConfig::GracefulRestart
 
@@ -3275,7 +3275,7 @@ class MplsLdp::MplsLdpConfig::Interfaces : public ydk::Entity
 
         class Interface; //type: MplsLdp::MplsLdpConfig::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MplsLdp::MplsLdpConfig::Interfaces
 
@@ -3330,7 +3330,7 @@ class MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs : public ydk::Entity
 
         class Af; //type: MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af> > af;
+        ydk::YList af;
         
 }; // MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs
 
@@ -3404,7 +3404,7 @@ class MplsLdp::MplsLdpConfig::Routing : public ydk::Entity
 
         class RoutingInst; //type: MplsLdp::MplsLdpConfig::Routing::RoutingInst
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::MplsLdp::MplsLdpConfig::Routing::RoutingInst> > routing_inst;
+        ydk::YList routing_inst;
         
 }; // MplsLdp::MplsLdpConfig::Routing
 
@@ -3683,239 +3683,14 @@ class ClearForwarding::Output : public ydk::Entity
 
 }; // ClearForwarding::Output
 
-class NsrSyncNackRsnNone : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+class DownNbrReasonDiscHello : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::DownNbrReason, virtual ydk::Identity
 {
     public:
-        NsrSyncNackRsnNone();
-        ~NsrSyncNackRsnNone();
+        DownNbrReasonDiscHello();
+        ~DownNbrReasonDiscHello();
 
 
-}; // NsrSyncNackRsnNone
-
-class NsrSyncNackRsnTblIdMismatch : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnTblIdMismatch();
-        ~NsrSyncNackRsnTblIdMismatch();
-
-
-}; // NsrSyncNackRsnTblIdMismatch
-
-class NsrSyncNackRsnPpExists : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnPpExists();
-        ~NsrSyncNackRsnPpExists();
-
-
-}; // NsrSyncNackRsnPpExists
-
-class NsrSyncNackRsnMissingElem : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnMissingElem();
-        ~NsrSyncNackRsnMissingElem();
-
-
-}; // NsrSyncNackRsnMissingElem
-
-class NsrSyncNackRsnNoPEndSock : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnNoPEndSock();
-        ~NsrSyncNackRsnNoPEndSock();
-
-
-}; // NsrSyncNackRsnNoPEndSock
-
-class NsrSyncNackRsnPEndSockNotSynced : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnPEndSockNotSynced();
-        ~NsrSyncNackRsnPEndSockNotSynced();
-
-
-}; // NsrSyncNackRsnPEndSockNotSynced
-
-class NsrSyncNackRsnErrAdjAdd : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnErrAdjAdd();
-        ~NsrSyncNackRsnErrAdjAdd();
-
-
-}; // NsrSyncNackRsnErrAdjAdd
-
-class NsrSyncNackRsnErrDhcAdd : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnErrDhcAdd();
-        ~NsrSyncNackRsnErrDhcAdd();
-
-
-}; // NsrSyncNackRsnErrDhcAdd
-
-class NsrSyncNackRsnEnomem : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnEnomem();
-        ~NsrSyncNackRsnEnomem();
-
-
-}; // NsrSyncNackRsnEnomem
-
-class NsrSyncNackRsnErrTpCreate : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnErrTpCreate();
-        ~NsrSyncNackRsnErrTpCreate();
-
-
-}; // NsrSyncNackRsnErrTpCreate
-
-class NsrSyncNackRsnErrPpCreate : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnErrPpCreate();
-        ~NsrSyncNackRsnErrPpCreate();
-
-
-}; // NsrSyncNackRsnErrPpCreate
-
-class NsrSyncNackRsnErrAddrBind : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnErrAddrBind();
-        ~NsrSyncNackRsnErrAddrBind();
-
-
-}; // NsrSyncNackRsnErrAddrBind
-
-class NsrSyncNackRsnErrRxBadPie : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnErrRxBadPie();
-        ~NsrSyncNackRsnErrRxBadPie();
-
-
-}; // NsrSyncNackRsnErrRxBadPie
-
-class NsrSyncNackRsnErrRxNotif : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnErrRxNotif();
-        ~NsrSyncNackRsnErrRxNotif();
-
-
-}; // NsrSyncNackRsnErrRxNotif
-
-class NsrSyncNackRsnErrRxUnexpOpen : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnErrRxUnexpOpen();
-        ~NsrSyncNackRsnErrRxUnexpOpen();
-
-
-}; // NsrSyncNackRsnErrRxUnexpOpen
-
-class NsrSyncNackRsnErrUnexpPeerDown : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnErrUnexpPeerDown();
-        ~NsrSyncNackRsnErrUnexpPeerDown();
-
-
-}; // NsrSyncNackRsnErrUnexpPeerDown
-
-class NsrSyncNackRsnErrAppNotFound : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnErrAppNotFound();
-        ~NsrSyncNackRsnErrAppNotFound();
-
-
-}; // NsrSyncNackRsnErrAppNotFound
-
-class NsrSyncNackRsnErrAppInvalid : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnErrAppInvalid();
-        ~NsrSyncNackRsnErrAppInvalid();
-
-
-}; // NsrSyncNackRsnErrAppInvalid
-
-class NsrSyncNackRsnNoCtx : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
-{
-    public:
-        NsrSyncNackRsnNoCtx();
-        ~NsrSyncNackRsnNoCtx();
-
-
-}; // NsrSyncNackRsnNoCtx
-
-class NsrPeerSyncErrNone : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
-{
-    public:
-        NsrPeerSyncErrNone();
-        ~NsrPeerSyncErrNone();
-
-
-}; // NsrPeerSyncErrNone
-
-class NsrPeerSyncErrLdpSyncNack : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
-{
-    public:
-        NsrPeerSyncErrLdpSyncNack();
-        ~NsrPeerSyncErrLdpSyncNack();
-
-
-}; // NsrPeerSyncErrLdpSyncNack
-
-class NsrPeerSyncErrSyncPrep : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
-{
-    public:
-        NsrPeerSyncErrSyncPrep();
-        ~NsrPeerSyncErrSyncPrep();
-
-
-}; // NsrPeerSyncErrSyncPrep
-
-class NsrPeerSyncErrTcpPeer : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
-{
-    public:
-        NsrPeerSyncErrTcpPeer();
-        ~NsrPeerSyncErrTcpPeer();
-
-
-}; // NsrPeerSyncErrTcpPeer
-
-class NsrPeerSyncErrTcpGbl : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
-{
-    public:
-        NsrPeerSyncErrTcpGbl();
-        ~NsrPeerSyncErrTcpGbl();
-
-
-}; // NsrPeerSyncErrTcpGbl
-
-class NsrPeerSyncErrLdpPeer : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
-{
-    public:
-        NsrPeerSyncErrLdpPeer();
-        ~NsrPeerSyncErrLdpPeer();
-
-
-}; // NsrPeerSyncErrLdpPeer
-
-class NsrPeerSyncErrLdpGbl : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
-{
-    public:
-        NsrPeerSyncErrLdpGbl();
-        ~NsrPeerSyncErrLdpGbl();
-
-
-}; // NsrPeerSyncErrLdpGbl
+}; // DownNbrReasonDiscHello
 
 class NsrPeerSyncErrAppFail : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
 {
@@ -3926,68 +3701,23 @@ class NsrPeerSyncErrAppFail : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPee
 
 }; // NsrPeerSyncErrAppFail
 
-class IcpmTypeIccp : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IcpmType, virtual ydk::Identity
+class RoutePathLblOwnerBgp : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathLblOwner, virtual ydk::Identity
 {
     public:
-        IcpmTypeIccp();
-        ~IcpmTypeIccp();
+        RoutePathLblOwnerBgp();
+        ~RoutePathLblOwnerBgp();
 
 
-}; // IcpmTypeIccp
+}; // RoutePathLblOwnerBgp
 
-class IccpTypeMlacp : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IccpType, virtual ydk::Identity
+class NsrSyncNackRsnErrAppNotFound : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
 {
     public:
-        IccpTypeMlacp();
-        ~IccpTypeMlacp();
+        NsrSyncNackRsnErrAppNotFound();
+        ~NsrSyncNackRsnErrAppNotFound();
 
 
-}; // IccpTypeMlacp
-
-class LdpNsrPeerSyncStNone : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncState, virtual ydk::Identity
-{
-    public:
-        LdpNsrPeerSyncStNone();
-        ~LdpNsrPeerSyncStNone();
-
-
-}; // LdpNsrPeerSyncStNone
-
-class LdpNsrPeerSyncStWait : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncState, virtual ydk::Identity
-{
-    public:
-        LdpNsrPeerSyncStWait();
-        ~LdpNsrPeerSyncStWait();
-
-
-}; // LdpNsrPeerSyncStWait
-
-class LdpNsrPeerSyncStReady : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncState, virtual ydk::Identity
-{
-    public:
-        LdpNsrPeerSyncStReady();
-        ~LdpNsrPeerSyncStReady();
-
-
-}; // LdpNsrPeerSyncStReady
-
-class LdpNsrPeerSyncStPrep : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncState, virtual ydk::Identity
-{
-    public:
-        LdpNsrPeerSyncStPrep();
-        ~LdpNsrPeerSyncStPrep();
-
-
-}; // LdpNsrPeerSyncStPrep
-
-class LdpNsrPeerSyncStAppWait : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncState, virtual ydk::Identity
-{
-    public:
-        LdpNsrPeerSyncStAppWait();
-        ~LdpNsrPeerSyncStAppWait();
-
-
-}; // LdpNsrPeerSyncStAppWait
+}; // NsrSyncNackRsnErrAppNotFound
 
 class LdpNsrPeerSyncStOper : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncState, virtual ydk::Identity
 {
@@ -3998,41 +3728,32 @@ class LdpNsrPeerSyncStOper : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeer
 
 }; // LdpNsrPeerSyncStOper
 
-class NsrStatusReady : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrStatus, virtual ydk::Identity
+class IgpSyncDownReasonNa : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IgpSyncDownReason, virtual ydk::Identity
 {
     public:
-        NsrStatusReady();
-        ~NsrStatusReady();
+        IgpSyncDownReasonNa();
+        ~IgpSyncDownReasonNa();
 
 
-}; // NsrStatusReady
+}; // IgpSyncDownReasonNa
 
-class NsrStatusNotReady : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrStatus, virtual ydk::Identity
+class NsrSyncNackRsnNoPEndSock : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
 {
     public:
-        NsrStatusNotReady();
-        ~NsrStatusNotReady();
+        NsrSyncNackRsnNoPEndSock();
+        ~NsrSyncNackRsnNoPEndSock();
 
 
-}; // NsrStatusNotReady
+}; // NsrSyncNackRsnNoPEndSock
 
-class NsrStatusDisabled : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrStatus, virtual ydk::Identity
+class NsrPeerSyncErrLdpGbl : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
 {
     public:
-        NsrStatusDisabled();
-        ~NsrStatusDisabled();
+        NsrPeerSyncErrLdpGbl();
+        ~NsrPeerSyncErrLdpGbl();
 
 
-}; // NsrStatusDisabled
-
-class DownNbrReasonNa : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::DownNbrReason, virtual ydk::Identity
-{
-    public:
-        DownNbrReasonNa();
-        ~DownNbrReasonNa();
-
-
-}; // DownNbrReasonNa
+}; // NsrPeerSyncErrLdpGbl
 
 class DownNbrReasonNbrHold : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::DownNbrReason, virtual ydk::Identity
 {
@@ -4043,158 +3764,14 @@ class DownNbrReasonNbrHold : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::DownNbr
 
 }; // DownNbrReasonNbrHold
 
-class DownNbrReasonDiscHello : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::DownNbrReason, virtual ydk::Identity
+class NsrPeerSyncErrTcpGbl : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
 {
     public:
-        DownNbrReasonDiscHello();
-        ~DownNbrReasonDiscHello();
+        NsrPeerSyncErrTcpGbl();
+        ~NsrPeerSyncErrTcpGbl();
 
 
-}; // DownNbrReasonDiscHello
-
-class RoutePathLblOwnerNone : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathLblOwner, virtual ydk::Identity
-{
-    public:
-        RoutePathLblOwnerNone();
-        ~RoutePathLblOwnerNone();
-
-
-}; // RoutePathLblOwnerNone
-
-class RoutePathLblOwnerLdp : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathLblOwner, virtual ydk::Identity
-{
-    public:
-        RoutePathLblOwnerLdp();
-        ~RoutePathLblOwnerLdp();
-
-
-}; // RoutePathLblOwnerLdp
-
-class RoutePathLblOwnerBgp : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathLblOwner, virtual ydk::Identity
-{
-    public:
-        RoutePathLblOwnerBgp();
-        ~RoutePathLblOwnerBgp();
-
-
-}; // RoutePathLblOwnerBgp
-
-class RoutePathLblOwnerStatic : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathLblOwner, virtual ydk::Identity
-{
-    public:
-        RoutePathLblOwnerStatic();
-        ~RoutePathLblOwnerStatic();
-
-
-}; // RoutePathLblOwnerStatic
-
-class LabelTypeMpls : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::LabelType, virtual ydk::Identity
-{
-    public:
-        LabelTypeMpls();
-        ~LabelTypeMpls();
-
-
-}; // LabelTypeMpls
-
-class LabelTypeUnLabeled : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::LabelType, virtual ydk::Identity
-{
-    public:
-        LabelTypeUnLabeled();
-        ~LabelTypeUnLabeled();
-
-
-}; // LabelTypeUnLabeled
-
-class LabelTypeUnknown : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::LabelType, virtual ydk::Identity
-{
-    public:
-        LabelTypeUnknown();
-        ~LabelTypeUnknown();
-
-
-}; // LabelTypeUnknown
-
-class RoutePathIpNoFlag : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathType, virtual ydk::Identity
-{
-    public:
-        RoutePathIpNoFlag();
-        ~RoutePathIpNoFlag();
-
-
-}; // RoutePathIpNoFlag
-
-class RoutePathIpProtected : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathType, virtual ydk::Identity
-{
-    public:
-        RoutePathIpProtected();
-        ~RoutePathIpProtected();
-
-
-}; // RoutePathIpProtected
-
-class RoutePathIpBackup : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathType, virtual ydk::Identity
-{
-    public:
-        RoutePathIpBackup();
-        ~RoutePathIpBackup();
-
-
-}; // RoutePathIpBackup
-
-class RoutePathIpBackupRemote : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathType, virtual ydk::Identity
-{
-    public:
-        RoutePathIpBackupRemote();
-        ~RoutePathIpBackupRemote();
-
-
-}; // RoutePathIpBackupRemote
-
-class RoutePathIpBgpBackup : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathType, virtual ydk::Identity
-{
-    public:
-        RoutePathIpBgpBackup();
-        ~RoutePathIpBgpBackup();
-
-
-}; // RoutePathIpBgpBackup
-
-class IgpSyncDownReasonNa : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IgpSyncDownReason, virtual ydk::Identity
-{
-    public:
-        IgpSyncDownReasonNa();
-        ~IgpSyncDownReasonNa();
-
-
-}; // IgpSyncDownReasonNa
-
-class IgpSyncDownReasonNoHelloAdj : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IgpSyncDownReason, virtual ydk::Identity
-{
-    public:
-        IgpSyncDownReasonNoHelloAdj();
-        ~IgpSyncDownReasonNoHelloAdj();
-
-
-}; // IgpSyncDownReasonNoHelloAdj
-
-class IgpSyncDownReasonNoPeerSess : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IgpSyncDownReason, virtual ydk::Identity
-{
-    public:
-        IgpSyncDownReasonNoPeerSess();
-        ~IgpSyncDownReasonNoPeerSess();
-
-
-}; // IgpSyncDownReasonNoPeerSess
-
-class IgpSyncDownReasonPeerUpdateNotDone : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IgpSyncDownReason, virtual ydk::Identity
-{
-    public:
-        IgpSyncDownReasonPeerUpdateNotDone();
-        ~IgpSyncDownReasonPeerUpdateNotDone();
-
-
-}; // IgpSyncDownReasonPeerUpdateNotDone
+}; // NsrPeerSyncErrTcpGbl
 
 class IgpSyncDownReasonPeerUpdateNotReceived : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IgpSyncDownReason, virtual ydk::Identity
 {
@@ -4205,6 +3782,294 @@ class IgpSyncDownReasonPeerUpdateNotReceived : public cisco_ios_xe::Cisco_IOS_XE
 
 }; // IgpSyncDownReasonPeerUpdateNotReceived
 
+class IcpmTypeIccp : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IcpmType, virtual ydk::Identity
+{
+    public:
+        IcpmTypeIccp();
+        ~IcpmTypeIccp();
+
+
+}; // IcpmTypeIccp
+
+class NsrStatusReady : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrStatus, virtual ydk::Identity
+{
+    public:
+        NsrStatusReady();
+        ~NsrStatusReady();
+
+
+}; // NsrStatusReady
+
+class NsrSyncNackRsnErrAdjAdd : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnErrAdjAdd();
+        ~NsrSyncNackRsnErrAdjAdd();
+
+
+}; // NsrSyncNackRsnErrAdjAdd
+
+class NsrSyncNackRsnErrUnexpPeerDown : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnErrUnexpPeerDown();
+        ~NsrSyncNackRsnErrUnexpPeerDown();
+
+
+}; // NsrSyncNackRsnErrUnexpPeerDown
+
+class NsrSyncNackRsnNone : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnNone();
+        ~NsrSyncNackRsnNone();
+
+
+}; // NsrSyncNackRsnNone
+
+class NsrSyncNackRsnNoCtx : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnNoCtx();
+        ~NsrSyncNackRsnNoCtx();
+
+
+}; // NsrSyncNackRsnNoCtx
+
+class NsrSyncNackRsnMissingElem : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnMissingElem();
+        ~NsrSyncNackRsnMissingElem();
+
+
+}; // NsrSyncNackRsnMissingElem
+
+class NsrPeerSyncErrLdpPeer : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
+{
+    public:
+        NsrPeerSyncErrLdpPeer();
+        ~NsrPeerSyncErrLdpPeer();
+
+
+}; // NsrPeerSyncErrLdpPeer
+
+class NsrSyncNackRsnErrAppInvalid : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnErrAppInvalid();
+        ~NsrSyncNackRsnErrAppInvalid();
+
+
+}; // NsrSyncNackRsnErrAppInvalid
+
+class NsrStatusDisabled : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrStatus, virtual ydk::Identity
+{
+    public:
+        NsrStatusDisabled();
+        ~NsrStatusDisabled();
+
+
+}; // NsrStatusDisabled
+
+class RoutePathIpNoFlag : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathType, virtual ydk::Identity
+{
+    public:
+        RoutePathIpNoFlag();
+        ~RoutePathIpNoFlag();
+
+
+}; // RoutePathIpNoFlag
+
+class NsrPeerSyncErrTcpPeer : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
+{
+    public:
+        NsrPeerSyncErrTcpPeer();
+        ~NsrPeerSyncErrTcpPeer();
+
+
+}; // NsrPeerSyncErrTcpPeer
+
+class NsrPeerSyncErrNone : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
+{
+    public:
+        NsrPeerSyncErrNone();
+        ~NsrPeerSyncErrNone();
+
+
+}; // NsrPeerSyncErrNone
+
+class LdpNsrPeerSyncStNone : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncState, virtual ydk::Identity
+{
+    public:
+        LdpNsrPeerSyncStNone();
+        ~LdpNsrPeerSyncStNone();
+
+
+}; // LdpNsrPeerSyncStNone
+
+class NsrSyncNackRsnErrPpCreate : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnErrPpCreate();
+        ~NsrSyncNackRsnErrPpCreate();
+
+
+}; // NsrSyncNackRsnErrPpCreate
+
+class NsrSyncNackRsnErrRxUnexpOpen : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnErrRxUnexpOpen();
+        ~NsrSyncNackRsnErrRxUnexpOpen();
+
+
+}; // NsrSyncNackRsnErrRxUnexpOpen
+
+class LabelTypeUnknown : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::LabelType, virtual ydk::Identity
+{
+    public:
+        LabelTypeUnknown();
+        ~LabelTypeUnknown();
+
+
+}; // LabelTypeUnknown
+
+class IgpSyncDownReasonNoPeerSess : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IgpSyncDownReason, virtual ydk::Identity
+{
+    public:
+        IgpSyncDownReasonNoPeerSess();
+        ~IgpSyncDownReasonNoPeerSess();
+
+
+}; // IgpSyncDownReasonNoPeerSess
+
+class LdpNsrPeerSyncStPrep : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncState, virtual ydk::Identity
+{
+    public:
+        LdpNsrPeerSyncStPrep();
+        ~LdpNsrPeerSyncStPrep();
+
+
+}; // LdpNsrPeerSyncStPrep
+
+class RoutePathLblOwnerStatic : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathLblOwner, virtual ydk::Identity
+{
+    public:
+        RoutePathLblOwnerStatic();
+        ~RoutePathLblOwnerStatic();
+
+
+}; // RoutePathLblOwnerStatic
+
+class NsrPeerSyncErrLdpSyncNack : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
+{
+    public:
+        NsrPeerSyncErrLdpSyncNack();
+        ~NsrPeerSyncErrLdpSyncNack();
+
+
+}; // NsrPeerSyncErrLdpSyncNack
+
+class NsrSyncNackRsnTblIdMismatch : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnTblIdMismatch();
+        ~NsrSyncNackRsnTblIdMismatch();
+
+
+}; // NsrSyncNackRsnTblIdMismatch
+
+class NsrSyncNackRsnErrAddrBind : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnErrAddrBind();
+        ~NsrSyncNackRsnErrAddrBind();
+
+
+}; // NsrSyncNackRsnErrAddrBind
+
+class RoutePathIpBackup : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathType, virtual ydk::Identity
+{
+    public:
+        RoutePathIpBackup();
+        ~RoutePathIpBackup();
+
+
+}; // RoutePathIpBackup
+
+class LabelTypeMpls : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::LabelType, virtual ydk::Identity
+{
+    public:
+        LabelTypeMpls();
+        ~LabelTypeMpls();
+
+
+}; // LabelTypeMpls
+
+class NsrSyncNackRsnErrDhcAdd : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnErrDhcAdd();
+        ~NsrSyncNackRsnErrDhcAdd();
+
+
+}; // NsrSyncNackRsnErrDhcAdd
+
+class NsrSyncNackRsnErrRxNotif : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnErrRxNotif();
+        ~NsrSyncNackRsnErrRxNotif();
+
+
+}; // NsrSyncNackRsnErrRxNotif
+
+class RoutePathLblOwnerNone : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathLblOwner, virtual ydk::Identity
+{
+    public:
+        RoutePathLblOwnerNone();
+        ~RoutePathLblOwnerNone();
+
+
+}; // RoutePathLblOwnerNone
+
+class LdpNsrPeerSyncStWait : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncState, virtual ydk::Identity
+{
+    public:
+        LdpNsrPeerSyncStWait();
+        ~LdpNsrPeerSyncStWait();
+
+
+}; // LdpNsrPeerSyncStWait
+
+class NsrSyncNackRsnErrTpCreate : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnErrTpCreate();
+        ~NsrSyncNackRsnErrTpCreate();
+
+
+}; // NsrSyncNackRsnErrTpCreate
+
+class NsrStatusNotReady : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrStatus, virtual ydk::Identity
+{
+    public:
+        NsrStatusNotReady();
+        ~NsrStatusNotReady();
+
+
+}; // NsrStatusNotReady
+
+class NsrSyncNackRsnPEndSockNotSynced : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnPEndSockNotSynced();
+        ~NsrSyncNackRsnPEndSockNotSynced();
+
+
+}; // NsrSyncNackRsnPEndSockNotSynced
+
 class IgpSyncDownReasonInternal : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IgpSyncDownReason, virtual ydk::Identity
 {
     public:
@@ -4213,6 +4078,152 @@ class IgpSyncDownReasonInternal : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::Ig
 
 
 }; // IgpSyncDownReasonInternal
+
+class NsrSyncNackRsnPpExists : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnPpExists();
+        ~NsrSyncNackRsnPpExists();
+
+
+}; // NsrSyncNackRsnPpExists
+
+class LdpNsrPeerSyncStReady : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncState, virtual ydk::Identity
+{
+    public:
+        LdpNsrPeerSyncStReady();
+        ~LdpNsrPeerSyncStReady();
+
+
+}; // LdpNsrPeerSyncStReady
+
+class IgpSyncDownReasonNoHelloAdj : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IgpSyncDownReason, virtual ydk::Identity
+{
+    public:
+        IgpSyncDownReasonNoHelloAdj();
+        ~IgpSyncDownReasonNoHelloAdj();
+
+
+}; // IgpSyncDownReasonNoHelloAdj
+
+class LabelTypeUnLabeled : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::LabelType, virtual ydk::Identity
+{
+    public:
+        LabelTypeUnLabeled();
+        ~LabelTypeUnLabeled();
+
+
+}; // LabelTypeUnLabeled
+
+class IccpTypeMlacp : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IccpType, virtual ydk::Identity
+{
+    public:
+        IccpTypeMlacp();
+        ~IccpTypeMlacp();
+
+
+}; // IccpTypeMlacp
+
+class NsrPeerSyncErrSyncPrep : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncErr, virtual ydk::Identity
+{
+    public:
+        NsrPeerSyncErrSyncPrep();
+        ~NsrPeerSyncErrSyncPrep();
+
+
+}; // NsrPeerSyncErrSyncPrep
+
+class LdpNsrPeerSyncStAppWait : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrPeerSyncState, virtual ydk::Identity
+{
+    public:
+        LdpNsrPeerSyncStAppWait();
+        ~LdpNsrPeerSyncStAppWait();
+
+
+}; // LdpNsrPeerSyncStAppWait
+
+class RoutePathIpBgpBackup : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathType, virtual ydk::Identity
+{
+    public:
+        RoutePathIpBgpBackup();
+        ~RoutePathIpBgpBackup();
+
+
+}; // RoutePathIpBgpBackup
+
+class DownNbrReasonNa : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::DownNbrReason, virtual ydk::Identity
+{
+    public:
+        DownNbrReasonNa();
+        ~DownNbrReasonNa();
+
+
+}; // DownNbrReasonNa
+
+class NsrSyncNackRsnErrRxBadPie : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnErrRxBadPie();
+        ~NsrSyncNackRsnErrRxBadPie();
+
+
+}; // NsrSyncNackRsnErrRxBadPie
+
+class IgpSyncDownReasonPeerUpdateNotDone : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::IgpSyncDownReason, virtual ydk::Identity
+{
+    public:
+        IgpSyncDownReasonPeerUpdateNotDone();
+        ~IgpSyncDownReasonPeerUpdateNotDone();
+
+
+}; // IgpSyncDownReasonPeerUpdateNotDone
+
+class NsrSyncNackRsnEnomem : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::NsrSyncNackRsn, virtual ydk::Identity
+{
+    public:
+        NsrSyncNackRsnEnomem();
+        ~NsrSyncNackRsnEnomem();
+
+
+}; // NsrSyncNackRsnEnomem
+
+class RoutePathIpProtected : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathType, virtual ydk::Identity
+{
+    public:
+        RoutePathIpProtected();
+        ~RoutePathIpProtected();
+
+
+}; // RoutePathIpProtected
+
+class RoutePathIpBackupRemote : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathType, virtual ydk::Identity
+{
+    public:
+        RoutePathIpBackupRemote();
+        ~RoutePathIpBackupRemote();
+
+
+}; // RoutePathIpBackupRemote
+
+class RoutePathLblOwnerLdp : public cisco_ios_xe::Cisco_IOS_XE_mpls_ldp::RoutePathLblOwner, virtual ydk::Identity
+{
+    public:
+        RoutePathLblOwnerLdp();
+        ~RoutePathLblOwnerLdp();
+
+
+}; // RoutePathLblOwnerLdp
+
+class SessionState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf nonexistent;
+        static const ydk::Enum::YLeaf initialized;
+        static const ydk::Enum::YLeaf openrec;
+        static const ydk::Enum::YLeaf opensent;
+        static const ydk::Enum::YLeaf operational;
+
+};
 
 class LoopDetectionType : public ydk::Enum
 {
@@ -4225,14 +4236,50 @@ class LoopDetectionType : public ydk::Enum
 
 };
 
-class SessionState : public ydk::Enum
+class AdvLabelType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf nonexistent;
-        static const ydk::Enum::YLeaf initialized;
-        static const ydk::Enum::YLeaf openrec;
-        static const ydk::Enum::YLeaf opensent;
-        static const ydk::Enum::YLeaf operational;
+        static const ydk::Enum::YLeaf use_lable;
+        static const ydk::Enum::YLeaf use_explicit;
+        static const ydk::Enum::YLeaf use_implicit;
+        static const ydk::Enum::YLeaf none;
+
+};
+
+class AfId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ldp_af_id_none;
+        static const ydk::Enum::YLeaf ldp_af_id_ipv4;
+        static const ydk::Enum::YLeaf ldp_af_id_ipv6;
+
+};
+
+class IgpSyncState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isync_ready;
+        static const ydk::Enum::YLeaf isync_not_ready;
+        static const ydk::Enum::YLeaf isync_deferred;
+
+};
+
+class Af : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ldp_af_none;
+        static const ydk::Enum::YLeaf ldp_af_ipv4;
+        static const ydk::Enum::YLeaf ldp_af_ipv6;
+        static const ydk::Enum::YLeaf ldp_af_ipv4_ipv6;
+
+};
+
+class NbrBgpAdvtState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf permit;
+        static const ydk::Enum::YLeaf deny;
 
 };
 
@@ -4248,34 +4295,12 @@ class AdjState : public ydk::Enum
 
 };
 
-class AdvLabelType : public ydk::Enum
+class LocalLabelState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf use_lable;
-        static const ydk::Enum::YLeaf use_explicit;
-        static const ydk::Enum::YLeaf use_implicit;
-        static const ydk::Enum::YLeaf none;
-
-};
-
-class NbrBgpAdvtState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_applicable;
-        static const ydk::Enum::YLeaf permit;
-        static const ydk::Enum::YLeaf deny;
-
-};
-
-class IccpState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf nonexistent;
-        static const ydk::Enum::YLeaf initialized;
-        static const ydk::Enum::YLeaf capsent;
-        static const ydk::Enum::YLeaf caprec;
-        static const ydk::Enum::YLeaf connecting;
-        static const ydk::Enum::YLeaf operational;
+        static const ydk::Enum::YLeaf local_label_state_none;
+        static const ydk::Enum::YLeaf local_label_state_assigned;
+        static const ydk::Enum::YLeaf local_label_state_withdrawn;
 
 };
 
@@ -4289,40 +4314,15 @@ class DhcState : public ydk::Enum
 
 };
 
-class IgpSyncState : public ydk::Enum
+class IccpState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isync_ready;
-        static const ydk::Enum::YLeaf isync_not_ready;
-        static const ydk::Enum::YLeaf isync_deferred;
-
-};
-
-class LocalLabelState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf local_label_state_none;
-        static const ydk::Enum::YLeaf local_label_state_assigned;
-        static const ydk::Enum::YLeaf local_label_state_withdrawn;
-
-};
-
-class Af : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ldp_af_none;
-        static const ydk::Enum::YLeaf ldp_af_ipv4;
-        static const ydk::Enum::YLeaf ldp_af_ipv6;
-        static const ydk::Enum::YLeaf ldp_af_ipv4_ipv6;
-
-};
-
-class AfId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ldp_af_id_none;
-        static const ydk::Enum::YLeaf ldp_af_id_ipv4;
-        static const ydk::Enum::YLeaf ldp_af_id_ipv6;
+        static const ydk::Enum::YLeaf nonexistent;
+        static const ydk::Enum::YLeaf initialized;
+        static const ydk::Enum::YLeaf capsent;
+        static const ydk::Enum::YLeaf caprec;
+        static const ydk::Enum::YLeaf connecting;
+        static const ydk::Enum::YLeaf operational;
 
 };
 

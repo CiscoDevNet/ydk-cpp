@@ -57,7 +57,7 @@ class IpExplicitPaths::Paths : public ydk::Entity
 
         class Path; //type: IpExplicitPaths::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_cfg::IpExplicitPaths::Paths::Path> > path;
+        ydk::YList path;
         
 }; // IpExplicitPaths::Paths
 
@@ -83,8 +83,8 @@ class IpExplicitPaths::Paths::Path : public ydk::Entity
         class Name; //type: IpExplicitPaths::Paths::Path::Name
         class Identifier; //type: IpExplicitPaths::Paths::Path::Identifier
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_cfg::IpExplicitPaths::Paths::Path::Name> > name;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_cfg::IpExplicitPaths::Paths::Path::Identifier> > identifier;
+        ydk::YList name;
+        ydk::YList identifier;
         
 }; // IpExplicitPaths::Paths::Path
 
@@ -132,7 +132,7 @@ class IpExplicitPaths::Paths::Path::Name::Hops : public ydk::Entity
 
         class Hop; //type: IpExplicitPaths::Paths::Path::Name::Hops::Hop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_cfg::IpExplicitPaths::Paths::Path::Name::Hops::Hop> > hop;
+        ydk::YList hop;
         
 }; // IpExplicitPaths::Paths::Path::Name::Hops
 
@@ -156,7 +156,7 @@ class IpExplicitPaths::Paths::Path::Name::Hops::Hop : public ydk::Entity
         ydk::YLeaf index_number; //type: uint32
         ydk::YLeaf ip_address; //type: string
         ydk::YLeaf hop_type; //type: IpIepHop
-        ydk::YLeaf if_index; //type: int32
+        ydk::YLeaf if_index; //type: uint32
         ydk::YLeaf num_type; //type: IpIepNum
         ydk::YLeaf mpls_label; //type: uint32
 
@@ -206,7 +206,7 @@ class IpExplicitPaths::Paths::Path::Identifier::Hops : public ydk::Entity
 
         class Hop; //type: IpExplicitPaths::Paths::Path::Identifier::Hops::Hop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_cfg::IpExplicitPaths::Paths::Path::Identifier::Hops::Hop> > hop;
+        ydk::YList hop;
         
 }; // IpExplicitPaths::Paths::Path::Identifier::Hops
 
@@ -230,17 +230,17 @@ class IpExplicitPaths::Paths::Path::Identifier::Hops::Hop : public ydk::Entity
         ydk::YLeaf index_number; //type: uint32
         ydk::YLeaf ip_address; //type: string
         ydk::YLeaf hop_type; //type: IpIepHop
-        ydk::YLeaf if_index; //type: int32
+        ydk::YLeaf if_index; //type: uint32
         ydk::YLeaf num_type; //type: IpIepNum
         ydk::YLeaf mpls_label; //type: uint32
 
 }; // IpExplicitPaths::Paths::Path::Identifier::Hops::Hop
 
-class IpIepNum : public ydk::Enum
+class IpIepPath : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unnumbered;
-        static const ydk::Enum::YLeaf numbered;
+        static const ydk::Enum::YLeaf identifier;
+        static const ydk::Enum::YLeaf name;
 
 };
 
@@ -255,11 +255,11 @@ class IpIepHop : public ydk::Enum
 
 };
 
-class IpIepPath : public ydk::Enum
+class IpIepNum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf identifier;
-        static const ydk::Enum::YLeaf name;
+        static const ydk::Enum::YLeaf unnumbered;
+        static const ydk::Enum::YLeaf numbered;
 
 };
 

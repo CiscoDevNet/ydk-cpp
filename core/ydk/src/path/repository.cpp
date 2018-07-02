@@ -28,7 +28,6 @@
 #include <string.h>
 
 #include <fstream>
-#include <unordered_set>
 
 #include "path_private.hpp"
 #include "../ydk_yang.hpp"
@@ -466,6 +465,20 @@ ydk::path::RepositoryPtr::load_module(ly_ctx* ctx, const std::string& module_nam
     return load_module(ctx, mod_cap, new_module);
 }
 
+void
+ydk::path::RepositoryPtr::collect_features_from_imported_modules(const lys_module* module, std::set<std::pair<lys_module*, std::string>>& features)
+{
+    for (int i=0; i<module->imp_size; i++) {
+        const lys_module* imp_module = module->imp[i].module;
+        ydk::path::Capability mod_cap = ydk::path::Capability{imp_module->name, ""};
+        get_module_capabilities(mod_cap);
+        for (auto f : mod_cap.features) {
+            features.insert(make_pair((lys_module*)imp_module, f));
+        }
+        collect_features_from_imported_modules(imp_module, features);
+    }
+}
+
 const lys_module*
 ydk::path::RepositoryPtr::load_module(ly_ctx* ctx, const std::string& module, const std::string& revision, const std::vector<std::string>& features, bool& new_module)
 {
@@ -474,21 +487,39 @@ ydk::path::RepositoryPtr::load_module(ly_ctx* ctx, const std::string& module, co
 
     auto p = ly_ctx_get_module(ctx, module.c_str(), revision.empty() ? NULL : revision.c_str(), 1);
 
-    if(!p)
-    {
-        p = ly_ctx_load_module(ctx, module.c_str(), revision.empty() ? NULL : revision.c_str());
-    } else {
-        YLOG_DEBUG("Cache hit Module '{}' Revision '{}'", module, revision);
-        new_module = false;
-    }
-
     if (!p) {
-        YLOG_WARN("Unable to parse module: '{}'. This model cannot be used with YDK", module);
+        p = ly_ctx_load_module(ctx, module.c_str(), revision.empty() ? NULL : revision.c_str());
+        if (!p) {
+            YLOG_WARN("Unable to parse module '{}'. This model cannot be used with YDK", module);
+            return p;
+       }
+    }
+    else {
+        const struct lys_node *last = nullptr;
+        auto q = lys_getnext(last, nullptr, p, 0);
+        if (q && q->priv) {
+            YLOG_DEBUG("The module '{}' schema has already been populated in YDK repository", module);
+            new_module = false;
+        }
+        else {
+            YLOG_DEBUG("The module '{}' schema present in Libyang repository, but not in YDK; consider populate", module);
+        }
     }
 
+    // Collect all module features
+    std::set<std::pair<lys_module*, std::string>> all_features{};
     for (auto f : features) {
-        YLOG_DEBUG("Adding feature '{}'", f.c_str());
-        lys_features_enable(p, f.c_str());
+        all_features.insert(make_pair((lys_module*)p, f));
+    }
+    collect_features_from_imported_modules(p, all_features);
+
+    for (auto elem : all_features) {
+        if (lys_features_enable((const lys_module*)elem.first, elem.second.c_str())) {
+            YLOG_DEBUG("Failed to enable feature '{}' in '{}'", elem.second, elem.first->name);
+        }
+        else {
+            YLOG_DEBUG("Enabled feature '{}' in '{}'", elem.second, elem.first->name);
+        }
     }
     return p;
 }

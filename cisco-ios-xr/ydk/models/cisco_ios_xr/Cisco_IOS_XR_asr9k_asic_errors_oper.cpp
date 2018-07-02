@@ -17,7 +17,7 @@ AsicErrorStats::AsicErrorStats()
 {
     racks->parent = this;
 
-    yang_name = "asic-error-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-asic-errors-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "asic-error-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-asic-errors-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 AsicErrorStats::~AsicErrorStats()
@@ -26,6 +26,7 @@ AsicErrorStats::~AsicErrorStats()
 
 bool AsicErrorStats::has_data() const
 {
+    if (is_presence_container) return true;
     return (racks !=  nullptr && racks->has_data());
 }
 
@@ -118,9 +119,11 @@ bool AsicErrorStats::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 AsicErrorStats::Racks::Racks()
+    :
+    rack(this, {"rack"})
 {
 
-    yang_name = "racks"; yang_parent_name = "asic-error-stats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "racks"; yang_parent_name = "asic-error-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AsicErrorStats::Racks::~Racks()
@@ -129,7 +132,8 @@ AsicErrorStats::Racks::~Racks()
 
 bool AsicErrorStats::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool AsicErrorStats::Racks::has_data() const
 
 bool AsicErrorStats::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<AsicErrorStats::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -216,13 +220,13 @@ bool AsicErrorStats::Racks::has_leaf_or_child_of_name(const std::string & name) 
 
 AsicErrorStats::Racks::Rack::Rack()
     :
-    rack{YType::int32, "rack"}
-    	,
+    rack{YType::uint32, "rack"}
+        ,
     nodes(std::make_shared<AsicErrorStats::Racks::Rack::Nodes>())
 {
     nodes->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AsicErrorStats::Racks::Rack::~Rack()
@@ -231,6 +235,7 @@ AsicErrorStats::Racks::Rack::~Rack()
 
 bool AsicErrorStats::Racks::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| (nodes !=  nullptr && nodes->has_data());
 }
@@ -252,7 +257,8 @@ std::string AsicErrorStats::Racks::Rack::get_absolute_path() const
 std::string AsicErrorStats::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack='" <<rack <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack, "rack");
     return path_buffer.str();
 }
 
@@ -318,9 +324,11 @@ bool AsicErrorStats::Racks::Rack::has_leaf_or_child_of_name(const std::string & 
 }
 
 AsicErrorStats::Racks::Rack::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nodes"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrorStats::Racks::Rack::Nodes::~Nodes()
@@ -329,7 +337,8 @@ AsicErrorStats::Racks::Rack::Nodes::~Nodes()
 
 bool AsicErrorStats::Racks::Rack::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -339,7 +348,7 @@ bool AsicErrorStats::Racks::Rack::Nodes::has_data() const
 
 bool AsicErrorStats::Racks::Rack::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -369,7 +378,7 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::get_child_by_name(co
     {
         auto c = std::make_shared<AsicErrorStats::Racks::Rack::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -381,7 +390,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Node
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -410,12 +419,12 @@ bool AsicErrorStats::Racks::Rack::Nodes::has_leaf_or_child_of_name(const std::st
 AsicErrorStats::Racks::Rack::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     counts(std::make_shared<AsicErrorStats::Racks::Rack::Nodes::Node::Counts>())
 {
     counts->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrorStats::Racks::Rack::Nodes::Node::~Node()
@@ -424,6 +433,7 @@ AsicErrorStats::Racks::Rack::Nodes::Node::~Node()
 
 bool AsicErrorStats::Racks::Rack::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (counts !=  nullptr && counts->has_data());
 }
@@ -438,7 +448,8 @@ bool AsicErrorStats::Racks::Rack::Nodes::Node::has_operation() const
 std::string AsicErrorStats::Racks::Rack::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -504,9 +515,11 @@ bool AsicErrorStats::Racks::Rack::Nodes::Node::has_leaf_or_child_of_name(const s
 }
 
 AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Counts()
+    :
+    count(this, {"type"})
 {
 
-    yang_name = "counts"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counts"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrorStats::Racks::Rack::Nodes::Node::Counts::~Counts()
@@ -515,7 +528,8 @@ AsicErrorStats::Racks::Rack::Nodes::Node::Counts::~Counts()
 
 bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::has_data() const
 {
-    for (std::size_t index=0; index<count.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<count.len(); index++)
     {
         if(count[index]->has_data())
             return true;
@@ -525,7 +539,7 @@ bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::has_data() const
 
 bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::has_operation() const
 {
-    for (std::size_t index=0; index<count.size(); index++)
+    for (std::size_t index=0; index<count.len(); index++)
     {
         if(count[index]->has_operation())
             return true;
@@ -555,7 +569,7 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::get_ch
     {
         auto c = std::make_shared<AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count>();
         c->parent = this;
-        count.push_back(c);
+        count.append(c);
         return c;
     }
 
@@ -567,7 +581,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Node
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : count)
+    for (auto c : count.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -596,9 +610,11 @@ bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::has_leaf_or_child_of_name
 AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::Count()
     :
     type{YType::str, "type"}
+        ,
+    sum_data(this, {})
 {
 
-    yang_name = "count"; yang_parent_name = "counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "count"; yang_parent_name = "counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::~Count()
@@ -607,7 +623,8 @@ AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::~Count()
 
 bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::has_data() const
 {
-    for (std::size_t index=0; index<sum_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sum_data.len(); index++)
     {
         if(sum_data[index]->has_data())
             return true;
@@ -617,7 +634,7 @@ bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::has_data() const
 
 bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::has_operation() const
 {
-    for (std::size_t index=0; index<sum_data.size(); index++)
+    for (std::size_t index=0; index<sum_data.len(); index++)
     {
         if(sum_data[index]->has_operation())
             return true;
@@ -629,7 +646,8 @@ bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::has_operation() co
 std::string AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "count" <<"[type='" <<type <<"']";
+    path_buffer << "count";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -649,7 +667,7 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count:
     {
         auto c = std::make_shared<AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData>();
         c->parent = this;
-        sum_data.push_back(c);
+        sum_data.append(c);
         return c;
     }
 
@@ -661,7 +679,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Node
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sum_data)
+    for (auto c : sum_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -710,7 +728,7 @@ AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::SumData()
     node_key{YType::uint32, "node-key"}
 {
 
-    yang_name = "sum-data"; yang_parent_name = "count"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sum-data"; yang_parent_name = "count"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::~SumData()
@@ -719,6 +737,7 @@ AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::~SumData()
 
 bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : node_key.getYLeafs())
     {
         if(leaf.is_set)

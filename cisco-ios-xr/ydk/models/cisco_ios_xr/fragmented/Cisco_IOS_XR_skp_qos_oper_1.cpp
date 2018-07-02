@@ -14,16 +14,16 @@ namespace Cisco_IOS_XR_skp_qos_oper {
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Config()
     :
     node_config{YType::str, "node-config"}
-    	,
+        ,
     police(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police>())
-	,shape(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape>())
-	,wfq(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq>())
+    , shape(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape>())
+    , wfq(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq>())
 {
     police->parent = this;
     shape->parent = this;
     wfq->parent = this;
 
-    yang_name = "config"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::~Config()
@@ -32,6 +32,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return node_config.is_set
 	|| (police !=  nullptr && police->has_data())
 	|| (shape !=  nullptr && shape->has_data())
@@ -147,14 +148,14 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
     :
     color_aware{YType::boolean, "color-aware"},
     policer_type{YType::enumeration, "policer-type"}
-    	,
+        ,
     cir(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir>())
-	,cbs(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs>())
+    , cbs(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs>())
 {
     cir->parent = this;
     cbs->parent = this;
 
-    yang_name = "police"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::~Police()
@@ -163,6 +164,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_data() const
 {
+    if (is_presence_container) return true;
     return color_aware.is_set
 	|| policer_type.is_set
 	|| (cir !=  nullptr && cir->has_data())
@@ -277,7 +279,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::~Cir()
@@ -286,6 +288,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -368,7 +371,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::~Cbs()
@@ -377,6 +380,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -456,12 +460,12 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Shape()
     :
     pir(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir>())
-	,pbs(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs>())
+    , pbs(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs>())
 {
     pir->parent = this;
     pbs->parent = this;
 
-    yang_name = "shape"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shape"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::~Shape()
@@ -470,6 +474,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_data() const
 {
+    if (is_presence_container) return true;
     return (pir !=  nullptr && pir->has_data())
 	|| (pbs !=  nullptr && pbs->has_data());
 }
@@ -558,7 +563,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::~Pir()
@@ -567,6 +572,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -649,7 +655,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::~Pbs()
@@ -658,6 +664,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -737,14 +744,14 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Wfq()
     :
     excess_ratio{YType::uint16, "excess-ratio"}
-    	,
+        ,
     bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth>())
-	,sum_of_bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth>())
+    , sum_of_bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth>())
 {
     bandwidth->parent = this;
     sum_of_bandwidth->parent = this;
 
-    yang_name = "wfq"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wfq"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::~Wfq()
@@ -753,6 +760,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_data() const
 {
+    if (is_presence_container) return true;
     return excess_ratio.is_set
 	|| (bandwidth !=  nullptr && bandwidth->has_data())
 	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
@@ -854,7 +862,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::~Bandwidth()
@@ -863,6 +871,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -945,7 +954,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "sum-of-bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sum-of-bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::~SumOfBandwidth()
@@ -954,6 +963,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -1033,14 +1043,14 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Result()
     :
     stats_id{YType::uint32, "stats-id"}
-    	,
+        ,
     queue(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue>())
-	,police(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police>())
+    , police(std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police>())
 {
     queue->parent = this;
     police->parent = this;
 
-    yang_name = "result"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::~Result()
@@ -1049,6 +1059,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return stats_id.is_set
 	|| (queue !=  nullptr && queue->has_data())
 	|| (police !=  nullptr && police->has_data());
@@ -1152,7 +1163,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
     drop{YType::uint32, "drop"}
 {
 
-    yang_name = "queue"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::~Queue()
@@ -1161,6 +1172,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_data() const
 {
+    if (is_presence_container) return true;
     return queue_id.is_set
 	|| commit_tx.is_set
 	|| excess_tx.is_set
@@ -1271,7 +1283,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
     violate{YType::uint32, "violate"}
 {
 
-    yang_name = "police"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::~Police()
@@ -1280,6 +1292,7 @@ PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces:
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_data() const
 {
+    if (is_presence_container) return true;
     return token_bucket_id.is_set
 	|| conform.is_set
 	|| exceed.is_set
@@ -1383,9 +1396,11 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::~Interfaces()
@@ -1394,7 +1409,8 @@ PlatformQosEa::Nodes::Node::Interfaces::~Interfaces()
 
 bool PlatformQosEa::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1404,7 +1420,7 @@ bool PlatformQosEa::Nodes::Node::Interfaces::has_data() const
 
 bool PlatformQosEa::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1434,7 +1450,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::get_child_by_nam
     {
         auto c = std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1446,7 +1462,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1475,14 +1491,14 @@ bool PlatformQosEa::Nodes::Node::Interfaces::has_leaf_or_child_of_name(const std
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     output(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output>())
-	,input(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input>())
+    , input(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input>())
 {
     output->parent = this;
     input->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::~Interface()
@@ -1491,6 +1507,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (output !=  nullptr && output->has_data())
 	|| (input !=  nullptr && input->has_data());
@@ -1507,7 +1524,8 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::has_operation() const
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1592,7 +1610,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Output()
 {
     details->parent = this;
 
-    yang_name = "output"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::~Output()
@@ -1601,6 +1619,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::~Output()
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return (details !=  nullptr && details->has_data());
 }
 
@@ -1670,14 +1689,14 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::has_leaf_or_chil
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Details()
     :
     header(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header>())
-	,interface_parameters(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfaceParameters>())
-	,skywarp_qos_policy_class(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass>())
+    , interface_parameters(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfaceParameters>())
+    , skywarp_qos_policy_class(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass>())
 {
     header->parent = this;
     interface_parameters->parent = this;
     skywarp_qos_policy_class->parent = this;
 
-    yang_name = "details"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "details"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::~Details()
@@ -1686,6 +1705,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::~Details()
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (interface_parameters !=  nullptr && interface_parameters->has_data())
 	|| (skywarp_qos_policy_class !=  nullptr && skywarp_qos_policy_class->has_data());
@@ -1792,7 +1812,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header::Head
     classes{YType::uint16, "classes"}
 {
 
-    yang_name = "header"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header::~Header()
@@ -1801,6 +1821,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header::~Hea
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| policy_name.is_set
 	|| direction.is_set
@@ -1919,7 +1940,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfacePar
     policy_map_id{YType::uint16, "policy-map-id"}
 {
 
-    yang_name = "interface-parameters"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-parameters"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfaceParameters::~InterfaceParameters()
@@ -1928,6 +1949,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfacePar
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfaceParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_name.is_set
 	|| hierarchical_depth.is_set
 	|| interface_type.is_set
@@ -2135,9 +2157,11 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Interfa
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::SkywarpQosPolicyClass()
+    :
+    qos_show_ea_pclass_st(this, {})
 {
 
-    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::~SkywarpQosPolicyClass()
@@ -2146,7 +2170,8 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::has_data() const
 {
-    for (std::size_t index=0; index<qos_show_ea_pclass_st.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<qos_show_ea_pclass_st.len(); index++)
     {
         if(qos_show_ea_pclass_st[index]->has_data())
             return true;
@@ -2156,7 +2181,7 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::has_operation() const
 {
-    for (std::size_t index=0; index<qos_show_ea_pclass_st.size(); index++)
+    for (std::size_t index=0; index<qos_show_ea_pclass_st.len(); index++)
     {
         if(qos_show_ea_pclass_st[index]->has_operation())
             return true;
@@ -2186,7 +2211,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
     {
         auto c = std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt>();
         c->parent = this;
-        qos_show_ea_pclass_st.push_back(c);
+        qos_show_ea_pclass_st.append(c);
         return c;
     }
 
@@ -2198,7 +2223,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : qos_show_ea_pclass_st)
+    for (auto c : qos_show_ea_pclass_st.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2232,14 +2257,14 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
     policy_name{YType::str, "policy-name"},
     node_flags{YType::str, "node-flags"},
     stats_flags{YType::str, "stats-flags"}
-    	,
+        ,
     config(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config>())
-	,result(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result>())
+    , result(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result>())
 {
     config->parent = this;
     result->parent = this;
 
-    yang_name = "qos-show-ea-pclass-st"; yang_parent_name = "skywarp-qos-policy-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos-show-ea-pclass-st"; yang_parent_name = "skywarp-qos-policy-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::~QosShowEaPclassSt()
@@ -2248,6 +2273,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| class_level.is_set
 	|| class_name.is_set
@@ -2411,16 +2437,16 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Config()
     :
     node_config{YType::str, "node-config"}
-    	,
+        ,
     police(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police>())
-	,shape(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape>())
-	,wfq(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq>())
+    , shape(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape>())
+    , wfq(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq>())
 {
     police->parent = this;
     shape->parent = this;
     wfq->parent = this;
 
-    yang_name = "config"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::~Config()
@@ -2429,6 +2455,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return node_config.is_set
 	|| (police !=  nullptr && police->has_data())
 	|| (shape !=  nullptr && shape->has_data())
@@ -2544,14 +2571,14 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
     :
     color_aware{YType::boolean, "color-aware"},
     policer_type{YType::enumeration, "policer-type"}
-    	,
+        ,
     cir(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir>())
-	,cbs(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs>())
+    , cbs(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs>())
 {
     cir->parent = this;
     cbs->parent = this;
 
-    yang_name = "police"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::~Police()
@@ -2560,6 +2587,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_data() const
 {
+    if (is_presence_container) return true;
     return color_aware.is_set
 	|| policer_type.is_set
 	|| (cir !=  nullptr && cir->has_data())
@@ -2674,7 +2702,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::~Cir()
@@ -2683,6 +2711,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -2765,7 +2794,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::~Cbs()
@@ -2774,6 +2803,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -2853,12 +2883,12 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Shape()
     :
     pir(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir>())
-	,pbs(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs>())
+    , pbs(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs>())
 {
     pir->parent = this;
     pbs->parent = this;
 
-    yang_name = "shape"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shape"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::~Shape()
@@ -2867,6 +2897,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_data() const
 {
+    if (is_presence_container) return true;
     return (pir !=  nullptr && pir->has_data())
 	|| (pbs !=  nullptr && pbs->has_data());
 }
@@ -2955,7 +2986,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::~Pir()
@@ -2964,6 +2995,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -3046,7 +3078,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::~Pbs()
@@ -3055,6 +3087,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -3134,14 +3167,14 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Wfq()
     :
     excess_ratio{YType::uint16, "excess-ratio"}
-    	,
+        ,
     bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth>())
-	,sum_of_bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth>())
+    , sum_of_bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth>())
 {
     bandwidth->parent = this;
     sum_of_bandwidth->parent = this;
 
-    yang_name = "wfq"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wfq"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::~Wfq()
@@ -3150,6 +3183,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_data() const
 {
+    if (is_presence_container) return true;
     return excess_ratio.is_set
 	|| (bandwidth !=  nullptr && bandwidth->has_data())
 	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
@@ -3251,7 +3285,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::~Bandwidth()
@@ -3260,6 +3294,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -3342,7 +3377,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "sum-of-bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sum-of-bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::~SumOfBandwidth()
@@ -3351,6 +3386,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -3430,14 +3466,14 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Result()
     :
     stats_id{YType::uint32, "stats-id"}
-    	,
+        ,
     queue(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue>())
-	,police(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police>())
+    , police(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police>())
 {
     queue->parent = this;
     police->parent = this;
 
-    yang_name = "result"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::~Result()
@@ -3446,6 +3482,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return stats_id.is_set
 	|| (queue !=  nullptr && queue->has_data())
 	|| (police !=  nullptr && police->has_data());
@@ -3549,7 +3586,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
     drop{YType::uint32, "drop"}
 {
 
-    yang_name = "queue"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::~Queue()
@@ -3558,6 +3595,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_data() const
 {
+    if (is_presence_container) return true;
     return queue_id.is_set
 	|| commit_tx.is_set
 	|| excess_tx.is_set
@@ -3668,7 +3706,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
     violate{YType::uint32, "violate"}
 {
 
-    yang_name = "police"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::~Police()
@@ -3677,6 +3715,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPo
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_data() const
 {
+    if (is_presence_container) return true;
     return token_bucket_id.is_set
 	|| conform.is_set
 	|| exceed.is_set
@@ -3785,7 +3824,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Input()
 {
     details->parent = this;
 
-    yang_name = "input"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::~Input()
@@ -3794,6 +3833,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::~Input()
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (details !=  nullptr && details->has_data());
 }
 
@@ -3863,14 +3903,14 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::has_leaf_or_child
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Details()
     :
     header(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header>())
-	,interface_parameters(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfaceParameters>())
-	,skywarp_qos_policy_class(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass>())
+    , interface_parameters(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfaceParameters>())
+    , skywarp_qos_policy_class(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass>())
 {
     header->parent = this;
     interface_parameters->parent = this;
     skywarp_qos_policy_class->parent = this;
 
-    yang_name = "details"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "details"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::~Details()
@@ -3879,6 +3919,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::~Details()
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (interface_parameters !=  nullptr && interface_parameters->has_data())
 	|| (skywarp_qos_policy_class !=  nullptr && skywarp_qos_policy_class->has_data());
@@ -3985,7 +4026,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::Heade
     classes{YType::uint16, "classes"}
 {
 
-    yang_name = "header"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::~Header()
@@ -3994,6 +4035,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::~Head
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| policy_name.is_set
 	|| direction.is_set
@@ -4112,7 +4154,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfacePara
     policy_map_id{YType::uint16, "policy-map-id"}
 {
 
-    yang_name = "interface-parameters"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-parameters"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfaceParameters::~InterfaceParameters()
@@ -4121,6 +4163,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfacePara
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfaceParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_name.is_set
 	|| hierarchical_depth.is_set
 	|| interface_type.is_set
@@ -4328,9 +4371,11 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Interfac
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::SkywarpQosPolicyClass()
+    :
+    qos_show_ea_pclass_st(this, {})
 {
 
-    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "skywarp-qos-policy-class"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::~SkywarpQosPolicyClass()
@@ -4339,7 +4384,8 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::has_data() const
 {
-    for (std::size_t index=0; index<qos_show_ea_pclass_st.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<qos_show_ea_pclass_st.len(); index++)
     {
         if(qos_show_ea_pclass_st[index]->has_data())
             return true;
@@ -4349,7 +4395,7 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::has_operation() const
 {
-    for (std::size_t index=0; index<qos_show_ea_pclass_st.size(); index++)
+    for (std::size_t index=0; index<qos_show_ea_pclass_st.len(); index++)
     {
         if(qos_show_ea_pclass_st[index]->has_operation())
             return true;
@@ -4379,7 +4425,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
     {
         auto c = std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt>();
         c->parent = this;
-        qos_show_ea_pclass_st.push_back(c);
+        qos_show_ea_pclass_st.append(c);
         return c;
     }
 
@@ -4391,7 +4437,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : qos_show_ea_pclass_st)
+    for (auto c : qos_show_ea_pclass_st.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4425,14 +4471,14 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
     policy_name{YType::str, "policy-name"},
     node_flags{YType::str, "node-flags"},
     stats_flags{YType::str, "stats-flags"}
-    	,
+        ,
     config(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config>())
-	,result(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result>())
+    , result(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result>())
 {
     config->parent = this;
     result->parent = this;
 
-    yang_name = "qos-show-ea-pclass-st"; yang_parent_name = "skywarp-qos-policy-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos-show-ea-pclass-st"; yang_parent_name = "skywarp-qos-policy-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::~QosShowEaPclassSt()
@@ -4441,6 +4487,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| class_level.is_set
 	|| class_name.is_set
@@ -4604,16 +4651,16 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Config()
     :
     node_config{YType::str, "node-config"}
-    	,
+        ,
     police(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police>())
-	,shape(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape>())
-	,wfq(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq>())
+    , shape(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape>())
+    , wfq(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq>())
 {
     police->parent = this;
     shape->parent = this;
     wfq->parent = this;
 
-    yang_name = "config"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::~Config()
@@ -4622,6 +4669,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return node_config.is_set
 	|| (police !=  nullptr && police->has_data())
 	|| (shape !=  nullptr && shape->has_data())
@@ -4737,14 +4785,14 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
     :
     color_aware{YType::boolean, "color-aware"},
     policer_type{YType::enumeration, "policer-type"}
-    	,
+        ,
     cir(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir>())
-	,cbs(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs>())
+    , cbs(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs>())
 {
     cir->parent = this;
     cbs->parent = this;
 
-    yang_name = "police"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::~Police()
@@ -4753,6 +4801,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_data() const
 {
+    if (is_presence_container) return true;
     return color_aware.is_set
 	|| policer_type.is_set
 	|| (cir !=  nullptr && cir->has_data())
@@ -4867,7 +4916,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::~Cir()
@@ -4876,6 +4925,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -4958,7 +5008,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::~Cbs()
@@ -4967,6 +5017,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -5046,12 +5097,12 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Shape()
     :
     pir(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir>())
-	,pbs(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs>())
+    , pbs(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs>())
 {
     pir->parent = this;
     pbs->parent = this;
 
-    yang_name = "shape"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shape"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::~Shape()
@@ -5060,6 +5111,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_data() const
 {
+    if (is_presence_container) return true;
     return (pir !=  nullptr && pir->has_data())
 	|| (pbs !=  nullptr && pbs->has_data());
 }
@@ -5148,7 +5200,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::~Pir()
@@ -5157,6 +5209,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -5239,7 +5292,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::~Pbs()
@@ -5248,6 +5301,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -5327,14 +5381,14 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Wfq()
     :
     excess_ratio{YType::uint16, "excess-ratio"}
-    	,
+        ,
     bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth>())
-	,sum_of_bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth>())
+    , sum_of_bandwidth(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth>())
 {
     bandwidth->parent = this;
     sum_of_bandwidth->parent = this;
 
-    yang_name = "wfq"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wfq"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::~Wfq()
@@ -5343,6 +5397,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_data() const
 {
+    if (is_presence_container) return true;
     return excess_ratio.is_set
 	|| (bandwidth !=  nullptr && bandwidth->has_data())
 	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_data());
@@ -5444,7 +5499,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::~Bandwidth()
@@ -5453,6 +5508,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -5535,7 +5591,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "sum-of-bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sum-of-bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::~SumOfBandwidth()
@@ -5544,6 +5600,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -5623,14 +5680,14 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Result()
     :
     stats_id{YType::uint32, "stats-id"}
-    	,
+        ,
     queue(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue>())
-	,police(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police>())
+    , police(std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police>())
 {
     queue->parent = this;
     police->parent = this;
 
-    yang_name = "result"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "qos-show-ea-pclass-st"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::~Result()
@@ -5639,6 +5696,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return stats_id.is_set
 	|| (queue !=  nullptr && queue->has_data())
 	|| (police !=  nullptr && police->has_data());
@@ -5742,7 +5800,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
     drop{YType::uint32, "drop"}
 {
 
-    yang_name = "queue"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::~Queue()
@@ -5751,6 +5809,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_data() const
 {
+    if (is_presence_container) return true;
     return queue_id.is_set
 	|| commit_tx.is_set
 	|| excess_tx.is_set
@@ -5861,7 +5920,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
     violate{YType::uint32, "violate"}
 {
 
-    yang_name = "police"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::~Police()
@@ -5870,6 +5929,7 @@ PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPol
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_data() const
 {
+    if (is_presence_container) return true;
     return token_bucket_id.is_set
 	|| conform.is_set
 	|| exceed.is_set

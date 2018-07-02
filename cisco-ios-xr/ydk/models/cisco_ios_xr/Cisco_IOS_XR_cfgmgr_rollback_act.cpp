@@ -17,7 +17,7 @@ RollBackConfigurationLast::RollBackConfigurationLast()
 {
     input->parent = this;
 
-    yang_name = "roll-back-configuration-last"; yang_parent_name = "Cisco-IOS-XR-cfgmgr-rollback-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "roll-back-configuration-last"; yang_parent_name = "Cisco-IOS-XR-cfgmgr-rollback-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RollBackConfigurationLast::~RollBackConfigurationLast()
@@ -26,6 +26,7 @@ RollBackConfigurationLast::~RollBackConfigurationLast()
 
 bool RollBackConfigurationLast::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -126,7 +127,7 @@ RollBackConfigurationLast::Input::Input()
     comment{YType::str, "comment"}
 {
 
-    yang_name = "input"; yang_parent_name = "roll-back-configuration-last"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "roll-back-configuration-last"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RollBackConfigurationLast::Input::~Input()
@@ -135,6 +136,7 @@ RollBackConfigurationLast::Input::~Input()
 
 bool RollBackConfigurationLast::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return count.is_set
 	|| force.is_set
 	|| best_effort.is_set
@@ -263,7 +265,7 @@ RollBackConfigurationTo::RollBackConfigurationTo()
 {
     input->parent = this;
 
-    yang_name = "roll-back-configuration-to"; yang_parent_name = "Cisco-IOS-XR-cfgmgr-rollback-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "roll-back-configuration-to"; yang_parent_name = "Cisco-IOS-XR-cfgmgr-rollback-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RollBackConfigurationTo::~RollBackConfigurationTo()
@@ -272,6 +274,7 @@ RollBackConfigurationTo::~RollBackConfigurationTo()
 
 bool RollBackConfigurationTo::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -372,7 +375,7 @@ RollBackConfigurationTo::Input::Input()
     comment{YType::str, "comment"}
 {
 
-    yang_name = "input"; yang_parent_name = "roll-back-configuration-to"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "roll-back-configuration-to"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RollBackConfigurationTo::Input::~Input()
@@ -381,6 +384,7 @@ RollBackConfigurationTo::Input::~Input()
 
 bool RollBackConfigurationTo::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return commit_id.is_set
 	|| force.is_set
 	|| best_effort.is_set
@@ -509,7 +513,7 @@ RollBackConfigurationToExclude::RollBackConfigurationToExclude()
 {
     input->parent = this;
 
-    yang_name = "roll-back-configuration-to-exclude"; yang_parent_name = "Cisco-IOS-XR-cfgmgr-rollback-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "roll-back-configuration-to-exclude"; yang_parent_name = "Cisco-IOS-XR-cfgmgr-rollback-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RollBackConfigurationToExclude::~RollBackConfigurationToExclude()
@@ -518,6 +522,7 @@ RollBackConfigurationToExclude::~RollBackConfigurationToExclude()
 
 bool RollBackConfigurationToExclude::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -618,7 +623,7 @@ RollBackConfigurationToExclude::Input::Input()
     comment{YType::str, "comment"}
 {
 
-    yang_name = "input"; yang_parent_name = "roll-back-configuration-to-exclude"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "roll-back-configuration-to-exclude"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RollBackConfigurationToExclude::Input::~Input()
@@ -627,6 +632,7 @@ RollBackConfigurationToExclude::Input::~Input()
 
 bool RollBackConfigurationToExclude::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return commit_id.is_set
 	|| force.is_set
 	|| best_effort.is_set
@@ -755,7 +761,7 @@ RollBackConfiguration::RollBackConfiguration()
 {
     input->parent = this;
 
-    yang_name = "roll-back-configuration"; yang_parent_name = "Cisco-IOS-XR-cfgmgr-rollback-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "roll-back-configuration"; yang_parent_name = "Cisco-IOS-XR-cfgmgr-rollback-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RollBackConfiguration::~RollBackConfiguration()
@@ -764,6 +770,7 @@ RollBackConfiguration::~RollBackConfiguration()
 
 bool RollBackConfiguration::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -864,7 +871,7 @@ RollBackConfiguration::Input::Input()
     comment{YType::str, "comment"}
 {
 
-    yang_name = "input"; yang_parent_name = "roll-back-configuration"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "roll-back-configuration"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RollBackConfiguration::Input::~Input()
@@ -873,6 +880,7 @@ RollBackConfiguration::Input::~Input()
 
 bool RollBackConfiguration::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return commit_id.is_set
 	|| force.is_set
 	|| best_effort.is_set

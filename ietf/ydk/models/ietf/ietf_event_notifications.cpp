@@ -21,6 +21,26 @@ Stream::~Stream()
 {
 }
 
+Encodings::Encodings()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:encodings")
+{
+
+}
+
+Encodings::~Encodings()
+{
+}
+
+Transport::Transport()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:transport")
+{
+
+}
+
+Transport::~Transport()
+{
+}
+
 SubscriptionResult::SubscriptionResult()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:subscription-result")
 {
@@ -51,35 +71,15 @@ SubscriptionErrors::~SubscriptionErrors()
 {
 }
 
-Encodings::Encodings()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:encodings")
-{
-
-}
-
-Encodings::~Encodings()
-{
-}
-
-Transport::Transport()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:transport")
-{
-
-}
-
-Transport::~Transport()
-{
-}
-
 EstablishSubscription::EstablishSubscription()
     :
     input(std::make_shared<EstablishSubscription::Input>())
-	,output(std::make_shared<EstablishSubscription::Output>())
+    , output(std::make_shared<EstablishSubscription::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "establish-subscription"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "establish-subscription"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EstablishSubscription::~EstablishSubscription()
@@ -88,6 +88,7 @@ EstablishSubscription::~EstablishSubscription()
 
 bool EstablishSubscription::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -215,7 +216,7 @@ EstablishSubscription::Input::Input()
     subscription_dependency{YType::str, "ietf-yang-push:subscription-dependency"}
 {
 
-    yang_name = "input"; yang_parent_name = "establish-subscription"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "establish-subscription"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EstablishSubscription::Input::~Input()
@@ -224,6 +225,7 @@ EstablishSubscription::Input::~Input()
 
 bool EstablishSubscription::Input::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : excluded_change.getYLeafs())
     {
         if(leaf.is_set)
@@ -519,7 +521,7 @@ EstablishSubscription::Output::Output()
     subscription_dependency{YType::str, "ietf-yang-push:subscription-dependency"}
 {
 
-    yang_name = "output"; yang_parent_name = "establish-subscription"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "establish-subscription"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EstablishSubscription::Output::~Output()
@@ -528,6 +530,7 @@ EstablishSubscription::Output::~Output()
 
 bool EstablishSubscription::Output::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : excluded_change.getYLeafs())
     {
         if(leaf.is_set)
@@ -833,7 +836,7 @@ CreateSubscription::CreateSubscription()
 {
     input->parent = this;
 
-    yang_name = "create-subscription"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "create-subscription"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CreateSubscription::~CreateSubscription()
@@ -842,6 +845,7 @@ CreateSubscription::~CreateSubscription()
 
 bool CreateSubscription::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -942,7 +946,7 @@ CreateSubscription::Input::Input()
     stoptime{YType::str, "stopTime"}
 {
 
-    yang_name = "input"; yang_parent_name = "create-subscription"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "create-subscription"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CreateSubscription::Input::~Input()
@@ -951,6 +955,7 @@ CreateSubscription::Input::~Input()
 
 bool CreateSubscription::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return stream.is_set
 	|| encoding.is_set
 	|| filter.is_set
@@ -1076,12 +1081,12 @@ bool CreateSubscription::Input::has_leaf_or_child_of_name(const std::string & na
 ModifySubscription::ModifySubscription()
     :
     input(std::make_shared<ModifySubscription::Input>())
-	,output(std::make_shared<ModifySubscription::Output>())
+    , output(std::make_shared<ModifySubscription::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "modify-subscription"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "modify-subscription"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ModifySubscription::~ModifySubscription()
@@ -1090,6 +1095,7 @@ ModifySubscription::~ModifySubscription()
 
 bool ModifySubscription::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -1213,7 +1219,7 @@ ModifySubscription::Input::Input()
     excluded_change{YType::enumeration, "ietf-yang-push:excluded-change"}
 {
 
-    yang_name = "input"; yang_parent_name = "modify-subscription"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "modify-subscription"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ModifySubscription::Input::~Input()
@@ -1222,6 +1228,7 @@ ModifySubscription::Input::~Input()
 
 bool ModifySubscription::Input::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : excluded_change.getYLeafs())
     {
         if(leaf.is_set)
@@ -1465,7 +1472,7 @@ ModifySubscription::Output::Output()
     subscription_dependency{YType::str, "ietf-yang-push:subscription-dependency"}
 {
 
-    yang_name = "output"; yang_parent_name = "modify-subscription"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "modify-subscription"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ModifySubscription::Output::~Output()
@@ -1474,6 +1481,7 @@ ModifySubscription::Output::~Output()
 
 bool ModifySubscription::Output::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : excluded_change.getYLeafs())
     {
         if(leaf.is_set)
@@ -1776,12 +1784,12 @@ bool ModifySubscription::Output::has_leaf_or_child_of_name(const std::string & n
 DeleteSubscription::DeleteSubscription()
     :
     input(std::make_shared<DeleteSubscription::Input>())
-	,output(std::make_shared<DeleteSubscription::Output>())
+    , output(std::make_shared<DeleteSubscription::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "delete-subscription"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "delete-subscription"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 DeleteSubscription::~DeleteSubscription()
@@ -1790,6 +1798,7 @@ DeleteSubscription::~DeleteSubscription()
 
 bool DeleteSubscription::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -1902,7 +1911,7 @@ DeleteSubscription::Input::Input()
     subscription_id{YType::uint32, "subscription-id"}
 {
 
-    yang_name = "input"; yang_parent_name = "delete-subscription"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "delete-subscription"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DeleteSubscription::Input::~Input()
@@ -1911,6 +1920,7 @@ DeleteSubscription::Input::~Input()
 
 bool DeleteSubscription::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return subscription_id.is_set;
 }
 
@@ -1986,7 +1996,7 @@ DeleteSubscription::Output::Output()
     subscription_result{YType::identityref, "subscription-result"}
 {
 
-    yang_name = "output"; yang_parent_name = "delete-subscription"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "delete-subscription"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DeleteSubscription::Output::~Output()
@@ -1995,6 +2005,7 @@ DeleteSubscription::Output::~Output()
 
 bool DeleteSubscription::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return subscription_result.is_set;
 }
 
@@ -2070,7 +2081,7 @@ Streams::Streams()
     stream{YType::identityref, "stream"}
 {
 
-    yang_name = "streams"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "streams"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Streams::~Streams()
@@ -2079,6 +2090,7 @@ Streams::~Streams()
 
 bool Streams::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : stream.getYLeafs())
     {
         if(leaf.is_set)
@@ -2178,9 +2190,11 @@ bool Streams::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Filters::Filters()
+    :
+    filter(this, {"filter_id"})
 {
 
-    yang_name = "filters"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "filters"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Filters::~Filters()
@@ -2189,7 +2203,8 @@ Filters::~Filters()
 
 bool Filters::has_data() const
 {
-    for (std::size_t index=0; index<filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<filter.len(); index++)
     {
         if(filter[index]->has_data())
             return true;
@@ -2199,7 +2214,7 @@ bool Filters::has_data() const
 
 bool Filters::has_operation() const
 {
-    for (std::size_t index=0; index<filter.size(); index++)
+    for (std::size_t index=0; index<filter.len(); index++)
     {
         if(filter[index]->has_operation())
             return true;
@@ -2229,7 +2244,7 @@ std::shared_ptr<Entity> Filters::get_child_by_name(const std::string & child_yan
     {
         auto c = std::make_shared<Filters::Filter>();
         c->parent = this;
-        filter.push_back(c);
+        filter.append(c);
         return c;
     }
 
@@ -2241,7 +2256,7 @@ std::map<std::string, std::shared_ptr<Entity>> Filters::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : filter)
+    for (auto c : filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2300,7 +2315,7 @@ Filters::Filter::Filter()
     xpath_filter{YType::str, "ietf-yang-push:xpath-filter"}
 {
 
-    yang_name = "filter"; yang_parent_name = "filters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "filter"; yang_parent_name = "filters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Filters::Filter::~Filter()
@@ -2309,6 +2324,7 @@ Filters::Filter::~Filter()
 
 bool Filters::Filter::has_data() const
 {
+    if (is_presence_container) return true;
     return filter_id.is_set
 	|| filter.is_set
 	|| subtree_filter.is_set
@@ -2334,7 +2350,8 @@ std::string Filters::Filter::get_absolute_path() const
 std::string Filters::Filter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "filter" <<"[filter-id='" <<filter_id <<"']";
+    path_buffer << "filter";
+    ADD_KEY_TOKEN(filter_id, "filter-id");
     return path_buffer.str();
 }
 
@@ -2419,9 +2436,11 @@ bool Filters::Filter::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 SubscriptionConfig::SubscriptionConfig()
+    :
+    subscription(this, {"subscription_id"})
 {
 
-    yang_name = "subscription-config"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "subscription-config"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SubscriptionConfig::~SubscriptionConfig()
@@ -2430,7 +2449,8 @@ SubscriptionConfig::~SubscriptionConfig()
 
 bool SubscriptionConfig::has_data() const
 {
-    for (std::size_t index=0; index<subscription.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<subscription.len(); index++)
     {
         if(subscription[index]->has_data())
             return true;
@@ -2440,7 +2460,7 @@ bool SubscriptionConfig::has_data() const
 
 bool SubscriptionConfig::has_operation() const
 {
-    for (std::size_t index=0; index<subscription.size(); index++)
+    for (std::size_t index=0; index<subscription.len(); index++)
     {
         if(subscription[index]->has_operation())
             return true;
@@ -2470,7 +2490,7 @@ std::shared_ptr<Entity> SubscriptionConfig::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<SubscriptionConfig::Subscription>();
         c->parent = this;
-        subscription.push_back(c);
+        subscription.append(c);
         return c;
     }
 
@@ -2482,7 +2502,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriptionConfig::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : subscription)
+    for (auto c : subscription.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2555,12 +2575,12 @@ SubscriptionConfig::Subscription::Subscription()
     dscp{YType::uint8, "ietf-yang-push:dscp"},
     subscription_priority{YType::uint8, "ietf-yang-push:subscription-priority"},
     subscription_dependency{YType::str, "ietf-yang-push:subscription-dependency"}
-    	,
+        ,
     receivers(std::make_shared<SubscriptionConfig::Subscription::Receivers>())
 {
     receivers->parent = this;
 
-    yang_name = "subscription"; yang_parent_name = "subscription-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "subscription"; yang_parent_name = "subscription-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriptionConfig::Subscription::~Subscription()
@@ -2569,6 +2589,7 @@ SubscriptionConfig::Subscription::~Subscription()
 
 bool SubscriptionConfig::Subscription::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : excluded_change.getYLeafs())
     {
         if(leaf.is_set)
@@ -2637,7 +2658,8 @@ std::string SubscriptionConfig::Subscription::get_absolute_path() const
 std::string SubscriptionConfig::Subscription::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "subscription" <<"[subscription-id='" <<subscription_id <<"']";
+    path_buffer << "subscription";
+    ADD_KEY_TOKEN(subscription_id, "subscription-id");
     return path_buffer.str();
 }
 
@@ -2911,9 +2933,11 @@ bool SubscriptionConfig::Subscription::has_leaf_or_child_of_name(const std::stri
 }
 
 SubscriptionConfig::Subscription::Receivers::Receivers()
+    :
+    receiver(this, {"address"})
 {
 
-    yang_name = "receivers"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receivers"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriptionConfig::Subscription::Receivers::~Receivers()
@@ -2922,7 +2946,8 @@ SubscriptionConfig::Subscription::Receivers::~Receivers()
 
 bool SubscriptionConfig::Subscription::Receivers::has_data() const
 {
-    for (std::size_t index=0; index<receiver.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<receiver.len(); index++)
     {
         if(receiver[index]->has_data())
             return true;
@@ -2932,7 +2957,7 @@ bool SubscriptionConfig::Subscription::Receivers::has_data() const
 
 bool SubscriptionConfig::Subscription::Receivers::has_operation() const
 {
-    for (std::size_t index=0; index<receiver.size(); index++)
+    for (std::size_t index=0; index<receiver.len(); index++)
     {
         if(receiver[index]->has_operation())
             return true;
@@ -2962,7 +2987,7 @@ std::shared_ptr<Entity> SubscriptionConfig::Subscription::Receivers::get_child_b
     {
         auto c = std::make_shared<SubscriptionConfig::Subscription::Receivers::Receiver>();
         c->parent = this;
-        receiver.push_back(c);
+        receiver.append(c);
         return c;
     }
 
@@ -2974,7 +2999,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriptionConfig::Subscription:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : receiver)
+    for (auto c : receiver.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3007,7 +3032,7 @@ SubscriptionConfig::Subscription::Receivers::Receiver::Receiver()
     protocol{YType::identityref, "protocol"}
 {
 
-    yang_name = "receiver"; yang_parent_name = "receivers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receiver"; yang_parent_name = "receivers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriptionConfig::Subscription::Receivers::Receiver::~Receiver()
@@ -3016,6 +3041,7 @@ SubscriptionConfig::Subscription::Receivers::Receiver::~Receiver()
 
 bool SubscriptionConfig::Subscription::Receivers::Receiver::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| port.is_set
 	|| protocol.is_set;
@@ -3032,7 +3058,8 @@ bool SubscriptionConfig::Subscription::Receivers::Receiver::has_operation() cons
 std::string SubscriptionConfig::Subscription::Receivers::Receiver::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "receiver" <<"[address='" <<address <<"']";
+    path_buffer << "receiver";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -3106,9 +3133,11 @@ bool SubscriptionConfig::Subscription::Receivers::Receiver::has_leaf_or_child_of
 }
 
 Subscriptions::Subscriptions()
+    :
+    subscription(this, {"subscription_id"})
 {
 
-    yang_name = "subscriptions"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "subscriptions"; yang_parent_name = "ietf-event-notifications"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Subscriptions::~Subscriptions()
@@ -3117,7 +3146,8 @@ Subscriptions::~Subscriptions()
 
 bool Subscriptions::has_data() const
 {
-    for (std::size_t index=0; index<subscription.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<subscription.len(); index++)
     {
         if(subscription[index]->has_data())
             return true;
@@ -3127,7 +3157,7 @@ bool Subscriptions::has_data() const
 
 bool Subscriptions::has_operation() const
 {
-    for (std::size_t index=0; index<subscription.size(); index++)
+    for (std::size_t index=0; index<subscription.len(); index++)
     {
         if(subscription[index]->has_operation())
             return true;
@@ -3157,7 +3187,7 @@ std::shared_ptr<Entity> Subscriptions::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Subscriptions::Subscription>();
         c->parent = this;
-        subscription.push_back(c);
+        subscription.append(c);
         return c;
     }
 
@@ -3169,7 +3199,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriptions::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : subscription)
+    for (auto c : subscription.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3244,12 +3274,12 @@ Subscriptions::Subscription::Subscription()
     dscp{YType::uint8, "ietf-yang-push:dscp"},
     subscription_priority{YType::uint8, "ietf-yang-push:subscription-priority"},
     subscription_dependency{YType::str, "ietf-yang-push:subscription-dependency"}
-    	,
+        ,
     receivers(std::make_shared<Subscriptions::Subscription::Receivers>())
 {
     receivers->parent = this;
 
-    yang_name = "subscription"; yang_parent_name = "subscriptions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "subscription"; yang_parent_name = "subscriptions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Subscriptions::Subscription::~Subscription()
@@ -3258,6 +3288,7 @@ Subscriptions::Subscription::~Subscription()
 
 bool Subscriptions::Subscription::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : excluded_change.getYLeafs())
     {
         if(leaf.is_set)
@@ -3330,7 +3361,8 @@ std::string Subscriptions::Subscription::get_absolute_path() const
 std::string Subscriptions::Subscription::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "subscription" <<"[subscription-id='" <<subscription_id <<"']";
+    path_buffer << "subscription";
+    ADD_KEY_TOKEN(subscription_id, "subscription-id");
     return path_buffer.str();
 }
 
@@ -3626,9 +3658,11 @@ bool Subscriptions::Subscription::has_leaf_or_child_of_name(const std::string & 
 }
 
 Subscriptions::Subscription::Receivers::Receivers()
+    :
+    receiver(this, {"address"})
 {
 
-    yang_name = "receivers"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receivers"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriptions::Subscription::Receivers::~Receivers()
@@ -3637,7 +3671,8 @@ Subscriptions::Subscription::Receivers::~Receivers()
 
 bool Subscriptions::Subscription::Receivers::has_data() const
 {
-    for (std::size_t index=0; index<receiver.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<receiver.len(); index++)
     {
         if(receiver[index]->has_data())
             return true;
@@ -3647,7 +3682,7 @@ bool Subscriptions::Subscription::Receivers::has_data() const
 
 bool Subscriptions::Subscription::Receivers::has_operation() const
 {
-    for (std::size_t index=0; index<receiver.size(); index++)
+    for (std::size_t index=0; index<receiver.len(); index++)
     {
         if(receiver[index]->has_operation())
             return true;
@@ -3677,7 +3712,7 @@ std::shared_ptr<Entity> Subscriptions::Subscription::Receivers::get_child_by_nam
     {
         auto c = std::make_shared<Subscriptions::Subscription::Receivers::Receiver>();
         c->parent = this;
-        receiver.push_back(c);
+        receiver.append(c);
         return c;
     }
 
@@ -3689,7 +3724,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriptions::Subscription::Rece
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : receiver)
+    for (auto c : receiver.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3722,7 +3757,7 @@ Subscriptions::Subscription::Receivers::Receiver::Receiver()
     protocol{YType::identityref, "protocol"}
 {
 
-    yang_name = "receiver"; yang_parent_name = "receivers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receiver"; yang_parent_name = "receivers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriptions::Subscription::Receivers::Receiver::~Receiver()
@@ -3731,6 +3766,7 @@ Subscriptions::Subscription::Receivers::Receiver::~Receiver()
 
 bool Subscriptions::Subscription::Receivers::Receiver::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| port.is_set
 	|| protocol.is_set;
@@ -3747,7 +3783,8 @@ bool Subscriptions::Subscription::Receivers::Receiver::has_operation() const
 std::string Subscriptions::Subscription::Receivers::Receiver::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "receiver" <<"[address='" <<address <<"']";
+    path_buffer << "receiver";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -3820,93 +3857,13 @@ bool Subscriptions::Subscription::Receivers::Receiver::has_leaf_or_child_of_name
     return false;
 }
 
-NETCONF::NETCONF()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:NETCONF")
+NoResources::NoResources()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:no-resources")
 {
 
 }
 
-NETCONF::~NETCONF()
-{
-}
-
-Ok::Ok()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:ok")
-{
-
-}
-
-Ok::~Ok()
-{
-}
-
-Error::Error()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error")
-{
-
-}
-
-Error::~Error()
-{
-}
-
-ErrorNoSuchSubscription::ErrorNoSuchSubscription()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-no-such-subscription")
-{
-
-}
-
-ErrorNoSuchSubscription::~ErrorNoSuchSubscription()
-{
-}
-
-ErrorNoSuchOption::ErrorNoSuchOption()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-no-such-option")
-{
-
-}
-
-ErrorNoSuchOption::~ErrorNoSuchOption()
-{
-}
-
-ErrorInsufficientResources::ErrorInsufficientResources()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-insufficient-resources")
-{
-
-}
-
-ErrorInsufficientResources::~ErrorInsufficientResources()
-{
-}
-
-ErrorConfiguredSubscription::ErrorConfiguredSubscription()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-configured-subscription")
-{
-
-}
-
-ErrorConfiguredSubscription::~ErrorConfiguredSubscription()
-{
-}
-
-ErrorOther::ErrorOther()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-other")
-{
-
-}
-
-ErrorOther::~ErrorOther()
-{
-}
-
-Active::Active()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:active")
-{
-
-}
-
-Active::~Active()
+NoResources::~NoResources()
 {
 }
 
@@ -3930,13 +3887,13 @@ Suspended::~Suspended()
 {
 }
 
-InError::InError()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:in-error")
+EncodeJson::EncodeJson()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:encode-json")
 {
 
 }
 
-InError::~InError()
+EncodeJson::~EncodeJson()
 {
 }
 
@@ -3950,26 +3907,6 @@ InternalError::~InternalError()
 {
 }
 
-NoResources::NoResources()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:no-resources")
-{
-
-}
-
-NoResources::~NoResources()
-{
-}
-
-SubscriptionDeleted::SubscriptionDeleted()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:subscription-deleted")
-{
-
-}
-
-SubscriptionDeleted::~SubscriptionDeleted()
-{
-}
-
 Other::Other()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:other")
 {
@@ -3977,6 +3914,66 @@ Other::Other()
 }
 
 Other::~Other()
+{
+}
+
+InError::InError()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:in-error")
+{
+
+}
+
+InError::~InError()
+{
+}
+
+Netconf::Netconf()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:netconf")
+{
+
+}
+
+Netconf::~Netconf()
+{
+}
+
+Error::Error()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error")
+{
+
+}
+
+Error::~Error()
+{
+}
+
+Active::Active()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:active")
+{
+
+}
+
+Active::~Active()
+{
+}
+
+NETCONF::NETCONF()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:NETCONF")
+{
+
+}
+
+NETCONF::~NETCONF()
+{
+}
+
+Ok::Ok()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:ok")
+{
+
+}
+
+Ok::~Ok()
 {
 }
 
@@ -3990,23 +3987,63 @@ EncodeXml::~EncodeXml()
 {
 }
 
-EncodeJson::EncodeJson()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:encode-json")
+SubscriptionDeleted::SubscriptionDeleted()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:subscription-deleted")
 {
 
 }
 
-EncodeJson::~EncodeJson()
+SubscriptionDeleted::~SubscriptionDeleted()
 {
 }
 
-Netconf::Netconf()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:netconf")
+ErrorNoSuchOption::ErrorNoSuchOption()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-no-such-option")
 {
 
 }
 
-Netconf::~Netconf()
+ErrorNoSuchOption::~ErrorNoSuchOption()
+{
+}
+
+ErrorNoSuchSubscription::ErrorNoSuchSubscription()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-no-such-subscription")
+{
+
+}
+
+ErrorNoSuchSubscription::~ErrorNoSuchSubscription()
+{
+}
+
+ErrorOther::ErrorOther()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-other")
+{
+
+}
+
+ErrorOther::~ErrorOther()
+{
+}
+
+ErrorInsufficientResources::ErrorInsufficientResources()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-insufficient-resources")
+{
+
+}
+
+ErrorInsufficientResources::~ErrorInsufficientResources()
+{
+}
+
+ErrorConfiguredSubscription::ErrorConfiguredSubscription()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-configured-subscription")
+{
+
+}
+
+ErrorConfiguredSubscription::~ErrorConfiguredSubscription()
 {
 }
 

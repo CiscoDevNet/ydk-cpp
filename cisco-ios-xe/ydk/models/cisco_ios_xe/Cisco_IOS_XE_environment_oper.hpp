@@ -33,7 +33,7 @@ class EnvironmentSensors : public ydk::Entity
 
         class EnvironmentSensor; //type: EnvironmentSensors::EnvironmentSensor
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_environment_oper::EnvironmentSensors::EnvironmentSensor> > environment_sensor;
+        ydk::YList environment_sensor;
         
 }; // EnvironmentSensors
 

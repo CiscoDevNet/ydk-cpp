@@ -33,7 +33,7 @@ class MemoryUsageProcesses : public ydk::Entity
 
         class MemoryUsageProcess; //type: MemoryUsageProcesses::MemoryUsageProcess
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_process_memory_oper::MemoryUsageProcesses::MemoryUsageProcess> > memory_usage_process;
+        ydk::YList memory_usage_process;
         
 }; // MemoryUsageProcesses
 

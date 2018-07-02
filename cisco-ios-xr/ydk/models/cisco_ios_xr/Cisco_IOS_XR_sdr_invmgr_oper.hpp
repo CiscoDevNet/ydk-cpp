@@ -57,7 +57,7 @@ class SdrInventory::Racks : public ydk::Entity
 
         class Rack; //type: SdrInventory::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_oper::SdrInventory::Racks::Rack> > rack;
+        ydk::YList rack;
         
 }; // SdrInventory::Racks
 
@@ -82,7 +82,7 @@ class SdrInventory::Racks::Rack : public ydk::Entity
         ydk::YLeaf name; //type: string
         class Slot; //type: SdrInventory::Racks::Rack::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_oper::SdrInventory::Racks::Rack::Slot> > slot;
+        ydk::YList slot;
         
 }; // SdrInventory::Racks::Rack
 
@@ -106,7 +106,7 @@ class SdrInventory::Racks::Rack::Slot : public ydk::Entity
         ydk::YLeaf name; //type: string
         class Card; //type: SdrInventory::Racks::Rack::Slot::Card
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_oper::SdrInventory::Racks::Rack::Slot::Card> > card;
+        ydk::YList card;
         
 }; // SdrInventory::Racks::Rack::Slot
 

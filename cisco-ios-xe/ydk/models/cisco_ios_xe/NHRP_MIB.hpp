@@ -32,38 +32,38 @@ class NHRPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Nhrpgeneralobjects; //type: NHRPMIB::Nhrpgeneralobjects
-        class Nhrpcachetable; //type: NHRPMIB::Nhrpcachetable
-        class Nhrppurgereqtable; //type: NHRPMIB::Nhrppurgereqtable
-        class Nhrpclienttable; //type: NHRPMIB::Nhrpclienttable
-        class Nhrpclientregistrationtable; //type: NHRPMIB::Nhrpclientregistrationtable
-        class Nhrpclientnhstable; //type: NHRPMIB::Nhrpclientnhstable
-        class Nhrpclientstattable; //type: NHRPMIB::Nhrpclientstattable
-        class Nhrpservertable; //type: NHRPMIB::Nhrpservertable
-        class Nhrpservercachetable; //type: NHRPMIB::Nhrpservercachetable
-        class Nhrpservernhctable; //type: NHRPMIB::Nhrpservernhctable
-        class Nhrpserverstattable; //type: NHRPMIB::Nhrpserverstattable
+        class NhrpGeneralObjects; //type: NHRPMIB::NhrpGeneralObjects
+        class NhrpCacheTable; //type: NHRPMIB::NhrpCacheTable
+        class NhrpPurgeReqTable; //type: NHRPMIB::NhrpPurgeReqTable
+        class NhrpClientTable; //type: NHRPMIB::NhrpClientTable
+        class NhrpClientRegistrationTable; //type: NHRPMIB::NhrpClientRegistrationTable
+        class NhrpClientNhsTable; //type: NHRPMIB::NhrpClientNhsTable
+        class NhrpClientStatTable; //type: NHRPMIB::NhrpClientStatTable
+        class NhrpServerTable; //type: NHRPMIB::NhrpServerTable
+        class NhrpServerCacheTable; //type: NHRPMIB::NhrpServerCacheTable
+        class NhrpServerNhcTable; //type: NHRPMIB::NhrpServerNhcTable
+        class NhrpServerStatTable; //type: NHRPMIB::NhrpServerStatTable
 
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpgeneralobjects> nhrpgeneralobjects;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpcachetable> nhrpcachetable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrppurgereqtable> nhrppurgereqtable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclienttable> nhrpclienttable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientregistrationtable> nhrpclientregistrationtable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientnhstable> nhrpclientnhstable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientstattable> nhrpclientstattable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservertable> nhrpservertable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservercachetable> nhrpservercachetable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservernhctable> nhrpservernhctable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpserverstattable> nhrpserverstattable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpGeneralObjects> nhrpgeneralobjects;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpCacheTable> nhrpcachetable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpPurgeReqTable> nhrppurgereqtable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpClientTable> nhrpclienttable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpClientRegistrationTable> nhrpclientregistrationtable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpClientNhsTable> nhrpclientnhstable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpClientStatTable> nhrpclientstattable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpServerTable> nhrpservertable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpServerCacheTable> nhrpservercachetable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpServerNhcTable> nhrpservernhctable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpServerStatTable> nhrpserverstattable;
         
 }; // NHRPMIB
 
 
-class NHRPMIB::Nhrpgeneralobjects : public ydk::Entity
+class NHRPMIB::NhrpGeneralObjects : public ydk::Entity
 {
     public:
-        Nhrpgeneralobjects();
-        ~Nhrpgeneralobjects();
+        NhrpGeneralObjects();
+        ~NhrpGeneralObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -78,14 +78,14 @@ class NHRPMIB::Nhrpgeneralobjects : public ydk::Entity
 
         ydk::YLeaf nhrpnextindex; //type: uint32
 
-}; // NHRPMIB::Nhrpgeneralobjects
+}; // NHRPMIB::NhrpGeneralObjects
 
 
-class NHRPMIB::Nhrpcachetable : public ydk::Entity
+class NHRPMIB::NhrpCacheTable : public ydk::Entity
 {
     public:
-        Nhrpcachetable();
-        ~Nhrpcachetable();
+        NhrpCacheTable();
+        ~NhrpCacheTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -98,18 +98,18 @@ class NHRPMIB::Nhrpcachetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nhrpcacheentry; //type: NHRPMIB::Nhrpcachetable::Nhrpcacheentry
+        class NhrpCacheEntry; //type: NHRPMIB::NhrpCacheTable::NhrpCacheEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpcachetable::Nhrpcacheentry> > nhrpcacheentry;
+        ydk::YList nhrpcacheentry;
         
-}; // NHRPMIB::Nhrpcachetable
+}; // NHRPMIB::NhrpCacheTable
 
 
-class NHRPMIB::Nhrpcachetable::Nhrpcacheentry : public ydk::Entity
+class NHRPMIB::NhrpCacheTable::NhrpCacheEntry : public ydk::Entity
 {
     public:
-        Nhrpcacheentry();
-        ~Nhrpcacheentry();
+        NhrpCacheEntry();
+        ~NhrpCacheEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -124,7 +124,7 @@ class NHRPMIB::Nhrpcachetable::Nhrpcacheentry : public ydk::Entity
 
         ydk::YLeaf nhrpcacheinternetworkaddrtype; //type: AddressFamilyNumbers
         ydk::YLeaf nhrpcacheinternetworkaddr; //type: binary
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf nhrpcacheindex; //type: uint32
         ydk::YLeaf nhrpcacheprefixlength; //type: int32
@@ -132,25 +132,25 @@ class NHRPMIB::Nhrpcachetable::Nhrpcacheentry : public ydk::Entity
         ydk::YLeaf nhrpcachenbmaaddrtype; //type: AddressFamilyNumbers
         ydk::YLeaf nhrpcachenbmaaddr; //type: binary
         ydk::YLeaf nhrpcachenbmasubaddr; //type: binary
-        ydk::YLeaf nhrpcachetype; //type: Nhrpcachetype
-        ydk::YLeaf nhrpcachestate; //type: Nhrpcachestate
+        ydk::YLeaf nhrpcachetype; //type: NhrpCacheType
+        ydk::YLeaf nhrpcachestate; //type: NhrpCacheState
         ydk::YLeaf nhrpcacheholdingtimevalid; //type: boolean
         ydk::YLeaf nhrpcacheholdingtime; //type: uint32
         ydk::YLeaf nhrpcachenegotiatedmtu; //type: int32
         ydk::YLeaf nhrpcachepreference; //type: int32
         ydk::YLeaf nhrpcachestoragetype; //type: StorageType
         ydk::YLeaf nhrpcacherowstatus; //type: RowStatus
-        class Nhrpcachetype;
-        class Nhrpcachestate;
+        class NhrpCacheType;
+        class NhrpCacheState;
 
-}; // NHRPMIB::Nhrpcachetable::Nhrpcacheentry
+}; // NHRPMIB::NhrpCacheTable::NhrpCacheEntry
 
 
-class NHRPMIB::Nhrppurgereqtable : public ydk::Entity
+class NHRPMIB::NhrpPurgeReqTable : public ydk::Entity
 {
     public:
-        Nhrppurgereqtable();
-        ~Nhrppurgereqtable();
+        NhrpPurgeReqTable();
+        ~NhrpPurgeReqTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -163,18 +163,18 @@ class NHRPMIB::Nhrppurgereqtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nhrppurgereqentry; //type: NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry
+        class NhrpPurgeReqEntry; //type: NHRPMIB::NhrpPurgeReqTable::NhrpPurgeReqEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry> > nhrppurgereqentry;
+        ydk::YList nhrppurgereqentry;
         
-}; // NHRPMIB::Nhrppurgereqtable
+}; // NHRPMIB::NhrpPurgeReqTable
 
 
-class NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry : public ydk::Entity
+class NHRPMIB::NhrpPurgeReqTable::NhrpPurgeReqEntry : public ydk::Entity
 {
     public:
-        Nhrppurgereqentry();
-        ~Nhrppurgereqentry();
+        NhrpPurgeReqEntry();
+        ~NhrpPurgeReqEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -194,14 +194,14 @@ class NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry : public ydk::Entity
         ydk::YLeaf nhrppurgereplyexpected; //type: boolean
         ydk::YLeaf nhrppurgerowstatus; //type: RowStatus
 
-}; // NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry
+}; // NHRPMIB::NhrpPurgeReqTable::NhrpPurgeReqEntry
 
 
-class NHRPMIB::Nhrpclienttable : public ydk::Entity
+class NHRPMIB::NhrpClientTable : public ydk::Entity
 {
     public:
-        Nhrpclienttable();
-        ~Nhrpclienttable();
+        NhrpClientTable();
+        ~NhrpClientTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -214,18 +214,18 @@ class NHRPMIB::Nhrpclienttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nhrpcliententry; //type: NHRPMIB::Nhrpclienttable::Nhrpcliententry
+        class NhrpClientEntry; //type: NHRPMIB::NhrpClientTable::NhrpClientEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclienttable::Nhrpcliententry> > nhrpcliententry;
+        ydk::YList nhrpcliententry;
         
-}; // NHRPMIB::Nhrpclienttable
+}; // NHRPMIB::NhrpClientTable
 
 
-class NHRPMIB::Nhrpclienttable::Nhrpcliententry : public ydk::Entity
+class NHRPMIB::NhrpClientTable::NhrpClientEntry : public ydk::Entity
 {
     public:
-        Nhrpcliententry();
-        ~Nhrpcliententry();
+        NhrpClientEntry();
+        ~NhrpClientEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -254,14 +254,14 @@ class NHRPMIB::Nhrpclienttable::Nhrpcliententry : public ydk::Entity
         ydk::YLeaf nhrpclientstoragetype; //type: StorageType
         ydk::YLeaf nhrpclientrowstatus; //type: RowStatus
 
-}; // NHRPMIB::Nhrpclienttable::Nhrpcliententry
+}; // NHRPMIB::NhrpClientTable::NhrpClientEntry
 
 
-class NHRPMIB::Nhrpclientregistrationtable : public ydk::Entity
+class NHRPMIB::NhrpClientRegistrationTable : public ydk::Entity
 {
     public:
-        Nhrpclientregistrationtable();
-        ~Nhrpclientregistrationtable();
+        NhrpClientRegistrationTable();
+        ~NhrpClientRegistrationTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -274,18 +274,18 @@ class NHRPMIB::Nhrpclientregistrationtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nhrpclientregistrationentry; //type: NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry
+        class NhrpClientRegistrationEntry; //type: NHRPMIB::NhrpClientRegistrationTable::NhrpClientRegistrationEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry> > nhrpclientregistrationentry;
+        ydk::YList nhrpclientregistrationentry;
         
-}; // NHRPMIB::Nhrpclientregistrationtable
+}; // NHRPMIB::NhrpClientRegistrationTable
 
 
-class NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry : public ydk::Entity
+class NHRPMIB::NhrpClientRegistrationTable::NhrpClientRegistrationEntry : public ydk::Entity
 {
     public:
-        Nhrpclientregistrationentry();
-        ~Nhrpclientregistrationentry();
+        NhrpClientRegistrationEntry();
+        ~NhrpClientRegistrationEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -298,23 +298,23 @@ class NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclienttable::Nhrpcliententry::nhrpclientindex)
+        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpClientTable::NhrpClientEntry::nhrpclientindex)
         ydk::YLeaf nhrpclientindex;
         ydk::YLeaf nhrpclientregindex; //type: uint32
-        ydk::YLeaf nhrpclientreguniqueness; //type: Nhrpclientreguniqueness
-        ydk::YLeaf nhrpclientregstate; //type: Nhrpclientregstate
+        ydk::YLeaf nhrpclientreguniqueness; //type: NhrpClientRegUniqueness
+        ydk::YLeaf nhrpclientregstate; //type: NhrpClientRegState
         ydk::YLeaf nhrpclientregrowstatus; //type: RowStatus
-        class Nhrpclientreguniqueness;
-        class Nhrpclientregstate;
+        class NhrpClientRegUniqueness;
+        class NhrpClientRegState;
 
-}; // NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry
+}; // NHRPMIB::NhrpClientRegistrationTable::NhrpClientRegistrationEntry
 
 
-class NHRPMIB::Nhrpclientnhstable : public ydk::Entity
+class NHRPMIB::NhrpClientNhsTable : public ydk::Entity
 {
     public:
-        Nhrpclientnhstable();
-        ~Nhrpclientnhstable();
+        NhrpClientNhsTable();
+        ~NhrpClientNhsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -327,18 +327,18 @@ class NHRPMIB::Nhrpclientnhstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nhrpclientnhsentry; //type: NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry
+        class NhrpClientNhsEntry; //type: NHRPMIB::NhrpClientNhsTable::NhrpClientNhsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry> > nhrpclientnhsentry;
+        ydk::YList nhrpclientnhsentry;
         
-}; // NHRPMIB::Nhrpclientnhstable
+}; // NHRPMIB::NhrpClientNhsTable
 
 
-class NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry : public ydk::Entity
+class NHRPMIB::NhrpClientNhsTable::NhrpClientNhsEntry : public ydk::Entity
 {
     public:
-        Nhrpclientnhsentry();
-        ~Nhrpclientnhsentry();
+        NhrpClientNhsEntry();
+        ~NhrpClientNhsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -351,7 +351,7 @@ class NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclienttable::Nhrpcliententry::nhrpclientindex)
+        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpClientTable::NhrpClientEntry::nhrpclientindex)
         ydk::YLeaf nhrpclientindex;
         ydk::YLeaf nhrpclientnhsindex; //type: uint32
         ydk::YLeaf nhrpclientnhsinternetworkaddrtype; //type: AddressFamilyNumbers
@@ -362,14 +362,14 @@ class NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry : public ydk::Entity
         ydk::YLeaf nhrpclientnhsinuse; //type: boolean
         ydk::YLeaf nhrpclientnhsrowstatus; //type: RowStatus
 
-}; // NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry
+}; // NHRPMIB::NhrpClientNhsTable::NhrpClientNhsEntry
 
 
-class NHRPMIB::Nhrpclientstattable : public ydk::Entity
+class NHRPMIB::NhrpClientStatTable : public ydk::Entity
 {
     public:
-        Nhrpclientstattable();
-        ~Nhrpclientstattable();
+        NhrpClientStatTable();
+        ~NhrpClientStatTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -382,18 +382,18 @@ class NHRPMIB::Nhrpclientstattable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nhrpclientstatentry; //type: NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry
+        class NhrpClientStatEntry; //type: NHRPMIB::NhrpClientStatTable::NhrpClientStatEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry> > nhrpclientstatentry;
+        ydk::YList nhrpclientstatentry;
         
-}; // NHRPMIB::Nhrpclientstattable
+}; // NHRPMIB::NhrpClientStatTable
 
 
-class NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry : public ydk::Entity
+class NHRPMIB::NhrpClientStatTable::NhrpClientStatEntry : public ydk::Entity
 {
     public:
-        Nhrpclientstatentry();
-        ~Nhrpclientstatentry();
+        NhrpClientStatEntry();
+        ~NhrpClientStatEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -406,7 +406,7 @@ class NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclienttable::Nhrpcliententry::nhrpclientindex)
+        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpClientTable::NhrpClientEntry::nhrpclientindex)
         ydk::YLeaf nhrpclientindex;
         ydk::YLeaf nhrpclientstattxresolvereq; //type: uint32
         ydk::YLeaf nhrpclientstatrxresolvereplyack; //type: uint32
@@ -434,14 +434,14 @@ class NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry : public ydk::Entity
         ydk::YLeaf nhrpclientstatrxerrhopcountexceeded; //type: uint32
         ydk::YLeaf nhrpclientstatdiscontinuitytime; //type: uint32
 
-}; // NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry
+}; // NHRPMIB::NhrpClientStatTable::NhrpClientStatEntry
 
 
-class NHRPMIB::Nhrpservertable : public ydk::Entity
+class NHRPMIB::NhrpServerTable : public ydk::Entity
 {
     public:
-        Nhrpservertable();
-        ~Nhrpservertable();
+        NhrpServerTable();
+        ~NhrpServerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -454,18 +454,18 @@ class NHRPMIB::Nhrpservertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nhrpserverentry; //type: NHRPMIB::Nhrpservertable::Nhrpserverentry
+        class NhrpServerEntry; //type: NHRPMIB::NhrpServerTable::NhrpServerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservertable::Nhrpserverentry> > nhrpserverentry;
+        ydk::YList nhrpserverentry;
         
-}; // NHRPMIB::Nhrpservertable
+}; // NHRPMIB::NhrpServerTable
 
 
-class NHRPMIB::Nhrpservertable::Nhrpserverentry : public ydk::Entity
+class NHRPMIB::NhrpServerTable::NhrpServerEntry : public ydk::Entity
 {
     public:
-        Nhrpserverentry();
-        ~Nhrpserverentry();
+        NhrpServerEntry();
+        ~NhrpServerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -487,14 +487,14 @@ class NHRPMIB::Nhrpservertable::Nhrpserverentry : public ydk::Entity
         ydk::YLeaf nhrpserverstoragetype; //type: StorageType
         ydk::YLeaf nhrpserverrowstatus; //type: RowStatus
 
-}; // NHRPMIB::Nhrpservertable::Nhrpserverentry
+}; // NHRPMIB::NhrpServerTable::NhrpServerEntry
 
 
-class NHRPMIB::Nhrpservercachetable : public ydk::Entity
+class NHRPMIB::NhrpServerCacheTable : public ydk::Entity
 {
     public:
-        Nhrpservercachetable();
-        ~Nhrpservercachetable();
+        NhrpServerCacheTable();
+        ~NhrpServerCacheTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -507,18 +507,18 @@ class NHRPMIB::Nhrpservercachetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nhrpservercacheentry; //type: NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry
+        class NhrpServerCacheEntry; //type: NHRPMIB::NhrpServerCacheTable::NhrpServerCacheEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry> > nhrpservercacheentry;
+        ydk::YList nhrpservercacheentry;
         
-}; // NHRPMIB::Nhrpservercachetable
+}; // NHRPMIB::NhrpServerCacheTable
 
 
-class NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry : public ydk::Entity
+class NHRPMIB::NhrpServerCacheTable::NhrpServerCacheEntry : public ydk::Entity
 {
     public:
-        Nhrpservercacheentry();
-        ~Nhrpservercacheentry();
+        NhrpServerCacheEntry();
+        ~NhrpServerCacheEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -532,23 +532,23 @@ class NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf nhrpcacheinternetworkaddrtype; //type: AddressFamilyNumbers
-        //type: binary (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpcachetable::Nhrpcacheentry::nhrpcacheinternetworkaddr)
+        //type: binary (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpCacheTable::NhrpCacheEntry::nhrpcacheinternetworkaddr)
         ydk::YLeaf nhrpcacheinternetworkaddr;
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpcachetable::Nhrpcacheentry::nhrpcacheindex)
+        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpCacheTable::NhrpCacheEntry::nhrpcacheindex)
         ydk::YLeaf nhrpcacheindex;
         ydk::YLeaf nhrpservercacheauthoritative; //type: boolean
         ydk::YLeaf nhrpservercacheuniqueness; //type: boolean
 
-}; // NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry
+}; // NHRPMIB::NhrpServerCacheTable::NhrpServerCacheEntry
 
 
-class NHRPMIB::Nhrpservernhctable : public ydk::Entity
+class NHRPMIB::NhrpServerNhcTable : public ydk::Entity
 {
     public:
-        Nhrpservernhctable();
-        ~Nhrpservernhctable();
+        NhrpServerNhcTable();
+        ~NhrpServerNhcTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -561,18 +561,18 @@ class NHRPMIB::Nhrpservernhctable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nhrpservernhcentry; //type: NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry
+        class NhrpServerNhcEntry; //type: NHRPMIB::NhrpServerNhcTable::NhrpServerNhcEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry> > nhrpservernhcentry;
+        ydk::YList nhrpservernhcentry;
         
-}; // NHRPMIB::Nhrpservernhctable
+}; // NHRPMIB::NhrpServerNhcTable
 
 
-class NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry : public ydk::Entity
+class NHRPMIB::NhrpServerNhcTable::NhrpServerNhcEntry : public ydk::Entity
 {
     public:
-        Nhrpservernhcentry();
-        ~Nhrpservernhcentry();
+        NhrpServerNhcEntry();
+        ~NhrpServerNhcEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -585,7 +585,7 @@ class NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservertable::Nhrpserverentry::nhrpserverindex)
+        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpServerTable::NhrpServerEntry::nhrpserverindex)
         ydk::YLeaf nhrpserverindex;
         ydk::YLeaf nhrpservernhcindex; //type: uint32
         ydk::YLeaf nhrpservernhcprefixlength; //type: int32
@@ -597,14 +597,14 @@ class NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry : public ydk::Entity
         ydk::YLeaf nhrpservernhcinuse; //type: boolean
         ydk::YLeaf nhrpservernhcrowstatus; //type: RowStatus
 
-}; // NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry
+}; // NHRPMIB::NhrpServerNhcTable::NhrpServerNhcEntry
 
 
-class NHRPMIB::Nhrpserverstattable : public ydk::Entity
+class NHRPMIB::NhrpServerStatTable : public ydk::Entity
 {
     public:
-        Nhrpserverstattable();
-        ~Nhrpserverstattable();
+        NhrpServerStatTable();
+        ~NhrpServerStatTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -617,18 +617,18 @@ class NHRPMIB::Nhrpserverstattable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nhrpserverstatentry; //type: NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry
+        class NhrpServerStatEntry; //type: NHRPMIB::NhrpServerStatTable::NhrpServerStatEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry> > nhrpserverstatentry;
+        ydk::YList nhrpserverstatentry;
         
-}; // NHRPMIB::Nhrpserverstattable
+}; // NHRPMIB::NhrpServerStatTable
 
 
-class NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry : public ydk::Entity
+class NHRPMIB::NhrpServerStatTable::NhrpServerStatEntry : public ydk::Entity
 {
     public:
-        Nhrpserverstatentry();
-        ~Nhrpserverstatentry();
+        NhrpServerStatEntry();
+        ~NhrpServerStatEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -641,7 +641,7 @@ class NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservertable::Nhrpserverentry::nhrpserverindex)
+        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::NhrpServerTable::NhrpServerEntry::nhrpserverindex)
         ydk::YLeaf nhrpserverindex;
         ydk::YLeaf nhrpserverstatrxresolvereq; //type: uint32
         ydk::YLeaf nhrpserverstattxresolvereplyack; //type: uint32
@@ -684,9 +684,9 @@ class NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry : public ydk::Entity
         ydk::YLeaf nhrpserverstatfwerrorindication; //type: uint32
         ydk::YLeaf nhrpserverstatdiscontinuitytime; //type: uint32
 
-}; // NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry
+}; // NHRPMIB::NhrpServerStatTable::NhrpServerStatEntry
 
-class NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype : public ydk::Enum
+class NHRPMIB::NhrpCacheTable::NhrpCacheEntry::NhrpCacheType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -700,7 +700,7 @@ class NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype : public ydk::Enum
 
 };
 
-class NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachestate : public ydk::Enum
+class NHRPMIB::NhrpCacheTable::NhrpCacheEntry::NhrpCacheState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf incomplete;
@@ -709,7 +709,7 @@ class NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachestate : public ydk::Enum
 
 };
 
-class NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientreguniqueness : public ydk::Enum
+class NHRPMIB::NhrpClientRegistrationTable::NhrpClientRegistrationEntry::NhrpClientRegUniqueness : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf requestUnique;
@@ -717,7 +717,7 @@ class NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpcli
 
 };
 
-class NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::Nhrpclientregstate : public ydk::Enum
+class NHRPMIB::NhrpClientRegistrationTable::NhrpClientRegistrationEntry::NhrpClientRegState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

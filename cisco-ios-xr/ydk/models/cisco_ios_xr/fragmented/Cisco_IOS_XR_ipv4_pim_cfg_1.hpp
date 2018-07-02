@@ -57,7 +57,7 @@ class Pim::DefaultContext::Ipv4::Paths : public ydk::Entity
 
         class Path; //type: Pim::DefaultContext::Ipv4::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::Paths::Path> > path;
+        ydk::YList path;
         
 }; // Pim::DefaultContext::Ipv4::Paths
 

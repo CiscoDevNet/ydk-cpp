@@ -11,16 +11,16 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_IPSLA_TC_MIB {
 
+const Enum::YLeaf IpSlaCodecType::notApplicable {0, "notApplicable"};
+const Enum::YLeaf IpSlaCodecType::g711ulaw {1, "g711ulaw"};
+const Enum::YLeaf IpSlaCodecType::g711alaw {2, "g711alaw"};
+const Enum::YLeaf IpSlaCodecType::g729a {3, "g729a"};
+
 const Enum::YLeaf IpSlaOperType::icmpEcho {1, "icmpEcho"};
 const Enum::YLeaf IpSlaOperType::udpEcho {2, "udpEcho"};
 const Enum::YLeaf IpSlaOperType::tcpConnect {3, "tcpConnect"};
 const Enum::YLeaf IpSlaOperType::udpJitter {4, "udpJitter"};
 const Enum::YLeaf IpSlaOperType::icmpJitter {5, "icmpJitter"};
-
-const Enum::YLeaf IpSlaCodecType::notApplicable {0, "notApplicable"};
-const Enum::YLeaf IpSlaCodecType::g711ulaw {1, "g711ulaw"};
-const Enum::YLeaf IpSlaCodecType::g711alaw {2, "g711alaw"};
-const Enum::YLeaf IpSlaCodecType::g729a {3, "g729a"};
 
 const Enum::YLeaf IpSlaReactVar::rtt {1, "rtt"};
 const Enum::YLeaf IpSlaReactVar::jitterSDAvg {2, "jitterSDAvg"};

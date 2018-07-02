@@ -17,7 +17,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_mpls_exp_topmost_transmit{YType::str, "set-mpls-exp-topmost-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetMplsExpTopmostTransmit::ConformAction::~ConformAction()
@@ -26,6 +26,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetMplsExpTopmostTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set;
 }
 
@@ -95,7 +96,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-mpls-exp-topmost-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-mpls-exp-topmost-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetMplsExpTopmostTransmitTable::~ConformSetMplsExpTopmostTransmitTable()
@@ -104,6 +105,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetMplsExpTopmostTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -176,7 +178,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-topmost-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-topmost-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction::~ConformAction()
@@ -185,6 +187,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set
 	|| table.is_set;
 }
@@ -267,7 +270,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetPrecTransmit::~ConformSetPrecTransmit()
@@ -276,6 +279,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetPrecTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -347,7 +351,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_prec_transmit{YType::str, "set-prec-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetPrecTransmit::ConformAction::~ConformAction()
@@ -356,6 +360,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetPrecTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set;
 }
 
@@ -425,7 +430,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-prec-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-prec-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetPrecTransmitTable::~ConformSetPrecTransmitTable()
@@ -434,6 +439,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetPrecTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -506,7 +512,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-prec-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-prec-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetPrecTransmitTable::ConformAction::~ConformAction()
@@ -515,6 +521,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetPrecTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set
 	|| table.is_set;
 }
@@ -597,7 +604,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetQosTransmit::~ConformSetQosTransmit()
@@ -606,6 +613,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetQosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -677,7 +685,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_qos_transmit{YType::str, "set-qos-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetQosTransmit::ConformAction::~ConformAction()
@@ -686,6 +694,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetQosTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set;
 }
 
@@ -755,7 +764,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-qos-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-qos-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetQosTransmitTable::~ConformSetQosTransmitTable()
@@ -764,6 +773,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetQosTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -836,7 +846,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-qos-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-qos-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetQosTransmitTable::ConformAction::~ConformAction()
@@ -845,6 +855,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformSetQosTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set
 	|| table.is_set;
 }
@@ -927,7 +938,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     conform_action->parent = this;
 
-    yang_name = "conform-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformTransmit::~ConformTransmit()
@@ -936,6 +947,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -1007,7 +1019,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     transmit{YType::empty, "transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformTransmit::ConformAction::~ConformAction()
@@ -1016,6 +1028,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit.is_set;
 }
 
@@ -1085,7 +1098,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     conform_action->parent = this;
 
-    yang_name = "conform-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformDrop::~ConformDrop()
@@ -1094,6 +1107,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -1165,7 +1179,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     drop{YType::empty, "drop"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformDrop::ConformAction::~ConformAction()
@@ -1174,6 +1188,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ConformDrop::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return drop.is_set;
 }
 
@@ -1243,7 +1258,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-dscp"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-dscp"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedDscp::~ExceedDscp()
@@ -1252,6 +1267,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedDscp::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -1323,7 +1339,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     dscp{YType::str, "dscp"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-dscp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-dscp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedDscp::ExceedAction::~ExceedAction()
@@ -1332,6 +1348,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedDscp::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp.is_set;
 }
 
@@ -1401,7 +1418,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetClpTransmit::~ExceedSetClpTransmit()
@@ -1410,6 +1427,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetClpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -1481,7 +1499,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_clp_transmit{YType::empty, "set-clp-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetClpTransmit::ExceedAction::~ExceedAction()
@@ -1490,6 +1508,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetClpTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_clp_transmit.is_set;
 }
 
@@ -1559,7 +1578,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetCosTransmit::~ExceedSetCosTransmit()
@@ -1568,6 +1587,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetCosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -1640,7 +1660,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     table{YType::str, "table"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetCosTransmit::ExceedAction::~ExceedAction()
@@ -1649,6 +1669,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetCosTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_cos_transmit.is_set
 	|| table.is_set;
 }
@@ -1731,7 +1752,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDiscardClassTransmit::~ExceedSetDiscardClassTransmit()
@@ -1740,6 +1761,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDiscardClassTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -1811,7 +1833,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_discard_class_transmit{YType::uint8, "set-discard-class-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDiscardClassTransmit::ExceedAction::~ExceedAction()
@@ -1820,6 +1842,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDiscardClassTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_discard_class_transmit.is_set;
 }
 
@@ -1889,7 +1912,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDscpTransmit::~ExceedSetDscpTransmit()
@@ -1898,6 +1921,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDscpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -1970,7 +1994,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     set_dscp_transmit->parent = this;
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDscpTransmit::ExceedAction::~ExceedAction()
@@ -1979,6 +2003,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDscpTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return (set_dscp_transmit !=  nullptr && set_dscp_transmit->has_data());
 }
 
@@ -2051,7 +2076,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     dscp->parent = this;
 
-    yang_name = "set-dscp-transmit"; yang_parent_name = "exceed-action"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set-dscp-transmit"; yang_parent_name = "exceed-action"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::~SetDscpTransmit()
@@ -2060,6 +2085,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (dscp !=  nullptr && dscp->has_data());
 }
 
@@ -2131,7 +2157,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     table{YType::enumeration, "table"}
 {
 
-    yang_name = "dscp"; yang_parent_name = "set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp"; yang_parent_name = "set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::~Dscp()
@@ -2140,6 +2166,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::has_data() const
 {
+    if (is_presence_container) return true;
     return table.is_set;
 }
 
@@ -2209,7 +2236,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-dscp-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-dscp-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDscpTransmitTable::~ExceedSetDscpTransmitTable()
@@ -2218,6 +2245,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDscpTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -2290,7 +2318,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     table{YType::str, "table"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-dscp-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-dscp-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDscpTransmitTable::ExceedAction::~ExceedAction()
@@ -2299,6 +2327,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetDscpTransmitTable::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_dscp_transmit.is_set
 	|| table.is_set;
 }
@@ -2381,7 +2410,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetFrdeTransmit::~ExceedSetFrdeTransmit()
@@ -2390,6 +2419,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetFrdeTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -2461,7 +2491,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_frde_transmit{YType::empty, "set-frde-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetFrdeTransmit::ExceedAction::~ExceedAction()
@@ -2470,6 +2500,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetFrdeTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_frde_transmit.is_set;
 }
 
@@ -2539,7 +2570,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetMplsExpImpositionTransmit::~ExceedSetMplsExpImpositionTransmit()
@@ -2548,6 +2579,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetMplsExpImpositionTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -2619,7 +2651,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_mpls_exp_imposition_transmit{YType::str, "set-mpls-exp-imposition-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction::~ExceedAction()
@@ -2628,6 +2660,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_imposition_transmit.is_set;
 }
 
@@ -2697,7 +2730,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetMplsExpTopmostTransmit::~ExceedSetMplsExpTopmostTransmit()
@@ -2706,6 +2739,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetMplsExpTopmostTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -2777,7 +2811,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_mpls_exp_topmost_transmit{YType::str, "set-mpls-exp-topmost-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction::~ExceedAction()
@@ -2786,6 +2820,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set;
 }
 
@@ -2855,7 +2890,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetPrecTransmit::~ExceedSetPrecTransmit()
@@ -2864,6 +2899,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetPrecTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -2936,7 +2972,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     table{YType::str, "table"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetPrecTransmit::ExceedAction::~ExceedAction()
@@ -2945,6 +2981,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetPrecTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set
 	|| table.is_set;
 }
@@ -3027,7 +3064,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetQosTransmit::~ExceedSetQosTransmit()
@@ -3036,6 +3073,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetQosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -3107,7 +3145,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_qos_transmit{YType::str, "set-qos-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetQosTransmit::ExceedAction::~ExceedAction()
@@ -3116,6 +3154,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetQosTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set;
 }
 
@@ -3185,7 +3224,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedTransmit::~ExceedTransmit()
@@ -3194,6 +3233,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -3265,7 +3305,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     transmit{YType::empty, "transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedTransmit::ExceedAction::~ExceedAction()
@@ -3274,6 +3314,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit.is_set;
 }
 
@@ -3343,7 +3384,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedDrop::~ExceedDrop()
@@ -3352,6 +3393,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -3423,7 +3465,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     drop{YType::empty, "drop"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedDrop::ExceedAction::~ExceedAction()
@@ -3432,6 +3474,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedDrop::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return drop.is_set;
 }
 
@@ -3501,7 +3544,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetClpTransmit::~ViolateSetClpTransmit()
@@ -3510,6 +3553,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetClpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -3581,7 +3625,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_clp_transmit{YType::empty, "set-clp-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetClpTransmit::ViolateAction::~ViolateAction()
@@ -3590,6 +3634,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetClpTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_clp_transmit.is_set;
 }
 
@@ -3659,7 +3704,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetCosTransmit::~ViolateSetCosTransmit()
@@ -3668,6 +3713,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetCosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -3740,7 +3786,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     table{YType::str, "table"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetCosTransmit::ViolateAction::~ViolateAction()
@@ -3749,6 +3795,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetCosTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_cos_transmit.is_set
 	|| table.is_set;
 }
@@ -3831,7 +3878,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDiscardClassTransmit::~ViolateSetDiscardClassTransmit()
@@ -3840,6 +3887,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDiscardClassTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -3911,7 +3959,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_discard_class_transmit{YType::uint8, "set-discard-class-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDiscardClassTransmit::ViolateAction::~ViolateAction()
@@ -3920,6 +3968,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDiscardClassTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_discard_class_transmit.is_set;
 }
 
@@ -3989,7 +4038,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDscpTransmit::~ViolateSetDscpTransmit()
@@ -3998,6 +4047,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDscpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -4070,7 +4120,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     table{YType::str, "table"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDscpTransmit::ViolateAction::~ViolateAction()
@@ -4079,6 +4129,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDscpTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_dscp_transmit.is_set
 	|| table.is_set;
 }
@@ -4161,7 +4212,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetFrdeTransmit::~ViolateSetFrdeTransmit()
@@ -4170,6 +4221,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetFrdeTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -4241,7 +4293,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_frde_transmit{YType::empty, "set-frde-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetFrdeTransmit::ViolateAction::~ViolateAction()
@@ -4250,6 +4302,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetFrdeTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_frde_transmit.is_set;
 }
 
@@ -4319,7 +4372,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpImpositionTransmit::~ViolateSetMplsExpImpositionTransmit()
@@ -4328,6 +4381,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpImpositionTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -4399,7 +4453,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_mpls_exp_imposition_transmit{YType::str, "set-mpls-exp-imposition-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::~ViolateAction()
@@ -4408,6 +4462,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_imposition_transmit.is_set;
 }
 
@@ -4477,7 +4532,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpTopmostTransmit::~ViolateSetMplsExpTopmostTransmit()
@@ -4486,6 +4541,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpTopmostTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -4557,7 +4613,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_mpls_exp_topmost_transmit{YType::str, "set-mpls-exp-topmost-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::~ViolateAction()
@@ -4566,6 +4622,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set;
 }
 
@@ -4635,7 +4692,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetPrecTransmit::~ViolateSetPrecTransmit()
@@ -4644,6 +4701,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetPrecTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -4716,7 +4774,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     table{YType::str, "table"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetPrecTransmit::ViolateAction::~ViolateAction()
@@ -4725,6 +4783,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetPrecTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set
 	|| table.is_set;
 }
@@ -4807,7 +4866,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetQosTransmit::~ViolateSetQosTransmit()
@@ -4816,6 +4875,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetQosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -4887,7 +4947,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     set_qos_transmit{YType::str, "set-qos-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetQosTransmit::ViolateAction::~ViolateAction()
@@ -4896,6 +4956,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetQosTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set;
 }
 
@@ -4965,7 +5026,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     violate_action->parent = this;
 
-    yang_name = "violate-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateTransmit::~ViolateTransmit()
@@ -4974,6 +5035,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -5045,7 +5107,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     transmit{YType::empty, "transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateTransmit::ViolateAction::~ViolateAction()
@@ -5054,6 +5116,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit.is_set;
 }
 
@@ -5123,7 +5186,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 {
     violate_action->parent = this;
 
-    yang_name = "violate-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateDrop::~ViolateDrop()
@@ -5132,6 +5195,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -5203,7 +5267,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
     drop{YType::empty, "drop"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateDrop::ViolateAction::~ViolateAction()
@@ -5212,6 +5276,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::P
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateDrop::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return drop.is_set;
 }
 
@@ -5281,7 +5346,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::PoliceRatePdp()
 {
     police->parent = this;
 
-    yang_name = "police-rate-pdp"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-rate-pdp"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::~PoliceRatePdp()
@@ -5290,6 +5355,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::~PoliceRatePdp()
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::has_data() const
 {
+    if (is_presence_container) return true;
     return (police !=  nullptr && police->has_data());
 }
 
@@ -5362,7 +5428,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Police()
 {
     rate->parent = this;
 
-    yang_name = "police"; yang_parent_name = "police-rate-pdp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "police-rate-pdp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::~Police()
@@ -5371,6 +5437,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::~Police()
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::has_data() const
 {
+    if (is_presence_container) return true;
     return (rate !=  nullptr && rate->has_data());
 }
 
@@ -5443,7 +5510,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Rate(
 {
     pdp->parent = this;
 
-    yang_name = "rate"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::~Rate()
@@ -5452,6 +5519,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::~Rate
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::has_data() const
 {
+    if (is_presence_container) return true;
     return (pdp !=  nullptr && pdp->has_data());
 }
 
@@ -5523,12 +5591,12 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     burst{YType::uint32, "burst"},
     peak_rate{YType::enumeration, "peak-rate"},
     peak_burst{YType::uint32, "peak-burst"}
-    	,
+        ,
     actions(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions>())
 {
     actions->parent = this;
 
-    yang_name = "pdp"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pdp"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::~Pdp()
@@ -5537,6 +5605,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::has_data() const
 {
+    if (is_presence_container) return true;
     return burst.is_set
 	|| peak_rate.is_set
 	|| peak_burst.is_set
@@ -5645,46 +5714,46 @@ bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::Actions()
     :
     conform_set_clp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetClpTransmit>())
-	,conform_set_cos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmit>())
-	,conform_set_cos_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmitTable>())
-	,conform_set_discard_class_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDiscardClassTransmit>())
-	,conform_set_dscp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmit>())
-	,conform_set_dscp_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmitTable>())
-	,conform_set_frde_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetFrdeTransmit>())
-	,conform_set_mpls_exp_imposition_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmit>())
-	,conform_set_mpls_exp_imposition_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmitTable>())
-	,conform_set_mpls_exp_topmost_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmit>())
-	,conform_set_mpls_exp_topmost_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmitTable>())
-	,conform_set_prec_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmit>())
-	,conform_set_prec_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmitTable>())
-	,conform_set_qos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmit>())
-	,conform_set_qos_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmitTable>())
-	,conform_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformTransmit>())
-	,conform_drop(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformDrop>())
-	,exceed_dscp(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDscp>())
-	,exceed_set_clp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetClpTransmit>())
-	,exceed_set_cos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetCosTransmit>())
-	,exceed_set_discard_class_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDiscardClassTransmit>())
-	,exceed_set_dscp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmit>())
-	,exceed_set_dscp_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmitTable>())
-	,exceed_set_frde_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetFrdeTransmit>())
-	,exceed_set_mpls_exp_imposition_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpImpositionTransmit>())
-	,exceed_set_mpls_exp_topmost_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpTopmostTransmit>())
-	,exceed_set_prec_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetPrecTransmit>())
-	,exceed_set_qos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetQosTransmit>())
-	,exceed_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedTransmit>())
-	,exceed_drop(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDrop>())
-	,violate_set_clp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetClpTransmit>())
-	,violate_set_cos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetCosTransmit>())
-	,violate_set_discard_class_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetDiscardClassTransmit>())
-	,violate_set_dscp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetDscpTransmit>())
-	,violate_set_frde_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetFrdeTransmit>())
-	,violate_set_mpls_exp_imposition_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetMplsExpImpositionTransmit>())
-	,violate_set_mpls_exp_topmost_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetMplsExpTopmostTransmit>())
-	,violate_set_prec_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetPrecTransmit>())
-	,violate_set_qos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetQosTransmit>())
-	,violate_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateTransmit>())
-	,violate_drop(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateDrop>())
+    , conform_set_cos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmit>())
+    , conform_set_cos_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmitTable>())
+    , conform_set_discard_class_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDiscardClassTransmit>())
+    , conform_set_dscp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmit>())
+    , conform_set_dscp_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmitTable>())
+    , conform_set_frde_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetFrdeTransmit>())
+    , conform_set_mpls_exp_imposition_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmit>())
+    , conform_set_mpls_exp_imposition_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmitTable>())
+    , conform_set_mpls_exp_topmost_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmit>())
+    , conform_set_mpls_exp_topmost_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmitTable>())
+    , conform_set_prec_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmit>())
+    , conform_set_prec_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmitTable>())
+    , conform_set_qos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmit>())
+    , conform_set_qos_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmitTable>())
+    , conform_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformTransmit>())
+    , conform_drop(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformDrop>())
+    , exceed_dscp(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDscp>())
+    , exceed_set_clp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetClpTransmit>())
+    , exceed_set_cos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetCosTransmit>())
+    , exceed_set_discard_class_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDiscardClassTransmit>())
+    , exceed_set_dscp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmit>())
+    , exceed_set_dscp_transmit_table(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmitTable>())
+    , exceed_set_frde_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetFrdeTransmit>())
+    , exceed_set_mpls_exp_imposition_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpImpositionTransmit>())
+    , exceed_set_mpls_exp_topmost_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpTopmostTransmit>())
+    , exceed_set_prec_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetPrecTransmit>())
+    , exceed_set_qos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetQosTransmit>())
+    , exceed_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedTransmit>())
+    , exceed_drop(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDrop>())
+    , violate_set_clp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetClpTransmit>())
+    , violate_set_cos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetCosTransmit>())
+    , violate_set_discard_class_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetDiscardClassTransmit>())
+    , violate_set_dscp_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetDscpTransmit>())
+    , violate_set_frde_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetFrdeTransmit>())
+    , violate_set_mpls_exp_imposition_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetMplsExpImpositionTransmit>())
+    , violate_set_mpls_exp_topmost_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetMplsExpTopmostTransmit>())
+    , violate_set_prec_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetPrecTransmit>())
+    , violate_set_qos_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetQosTransmit>())
+    , violate_transmit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateTransmit>())
+    , violate_drop(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateDrop>())
 {
     conform_set_clp_transmit->parent = this;
     conform_set_cos_transmit->parent = this;
@@ -5728,7 +5797,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     violate_transmit->parent = this;
     violate_drop->parent = this;
 
-    yang_name = "actions"; yang_parent_name = "pdp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actions"; yang_parent_name = "pdp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::~Actions()
@@ -5737,6 +5806,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_set_clp_transmit !=  nullptr && conform_set_clp_transmit->has_data())
 	|| (conform_set_cos_transmit !=  nullptr && conform_set_cos_transmit->has_data())
 	|| (conform_set_cos_transmit_table !=  nullptr && conform_set_cos_transmit_table->has_data())
@@ -6449,7 +6519,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetClpTransmit::~ConformSetClpTransmit()
@@ -6458,6 +6528,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetClpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -6529,7 +6600,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_clp_transmit{YType::empty, "set-clp-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetClpTransmit::ConformAction::~ConformAction()
@@ -6538,6 +6609,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetClpTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_clp_transmit.is_set;
 }
 
@@ -6607,7 +6679,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmit::~ConformSetCosTransmit()
@@ -6616,6 +6688,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -6687,7 +6760,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_cos_transmit{YType::str, "set-cos-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmit::ConformAction::~ConformAction()
@@ -6696,6 +6769,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_cos_transmit.is_set;
 }
 
@@ -6765,7 +6839,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-cos-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-cos-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmitTable::~ConformSetCosTransmitTable()
@@ -6774,6 +6848,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -6846,7 +6921,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-cos-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-cos-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmitTable::ConformAction::~ConformAction()
@@ -6855,6 +6930,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetCosTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_cos_transmit.is_set
 	|| table.is_set;
 }
@@ -6937,7 +7013,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDiscardClassTransmit::~ConformSetDiscardClassTransmit()
@@ -6946,6 +7022,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDiscardClassTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -7017,7 +7094,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_discard_class_transmit{YType::uint8, "set-discard-class-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDiscardClassTransmit::ConformAction::~ConformAction()
@@ -7026,6 +7103,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDiscardClassTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_discard_class_transmit.is_set;
 }
 
@@ -7095,7 +7173,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmit::~ConformSetDscpTransmit()
@@ -7104,6 +7182,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -7175,7 +7254,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_dscp_transmit{YType::str, "set-dscp-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmit::ConformAction::~ConformAction()
@@ -7184,6 +7263,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_dscp_transmit.is_set;
 }
 
@@ -7253,7 +7333,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-dscp-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-dscp-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmitTable::~ConformSetDscpTransmitTable()
@@ -7262,6 +7342,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -7334,7 +7415,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-dscp-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-dscp-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmitTable::ConformAction::~ConformAction()
@@ -7343,6 +7424,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetDscpTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_dscp_transmit.is_set
 	|| table.is_set;
 }
@@ -7425,7 +7507,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetFrdeTransmit::~ConformSetFrdeTransmit()
@@ -7434,6 +7516,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetFrdeTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -7505,7 +7588,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_frde_transmit{YType::empty, "set-frde-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetFrdeTransmit::ConformAction::~ConformAction()
@@ -7514,6 +7597,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetFrdeTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_frde_transmit.is_set;
 }
 
@@ -7583,7 +7667,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmit::~ConformSetMplsExpImpositionTransmit()
@@ -7592,6 +7676,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -7663,7 +7748,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_mpls_exp_imposition_transmit{YType::str, "set-mpls-exp-imposition-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmit::ConformAction::~ConformAction()
@@ -7672,6 +7757,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_imposition_transmit.is_set;
 }
 
@@ -7741,7 +7827,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-mpls-exp-imposition-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-mpls-exp-imposition-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmitTable::~ConformSetMplsExpImpositionTransmitTable()
@@ -7750,6 +7836,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -7822,7 +7909,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-imposition-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-imposition-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction::~ConformAction()
@@ -7831,6 +7918,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_imposition_transmit.is_set
 	|| table.is_set;
 }
@@ -7913,7 +8001,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmit::~ConformSetMplsExpTopmostTransmit()
@@ -7922,6 +8010,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -7993,7 +8082,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_mpls_exp_topmost_transmit{YType::str, "set-mpls-exp-topmost-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmit::ConformAction::~ConformAction()
@@ -8002,6 +8091,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set;
 }
 
@@ -8071,7 +8161,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-mpls-exp-topmost-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-mpls-exp-topmost-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmitTable::~ConformSetMplsExpTopmostTransmitTable()
@@ -8080,6 +8170,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -8152,7 +8243,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-topmost-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-mpls-exp-topmost-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction::~ConformAction()
@@ -8161,6 +8252,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set
 	|| table.is_set;
 }
@@ -8243,7 +8335,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmit::~ConformSetPrecTransmit()
@@ -8252,6 +8344,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -8323,7 +8416,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_prec_transmit{YType::str, "set-prec-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmit::ConformAction::~ConformAction()
@@ -8332,6 +8425,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set;
 }
 
@@ -8401,7 +8495,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-prec-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-prec-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmitTable::~ConformSetPrecTransmitTable()
@@ -8410,6 +8504,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -8482,7 +8577,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-prec-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-prec-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmitTable::ConformAction::~ConformAction()
@@ -8491,6 +8586,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetPrecTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set
 	|| table.is_set;
 }
@@ -8573,7 +8669,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmit::~ConformSetQosTransmit()
@@ -8582,6 +8678,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -8653,7 +8750,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_qos_transmit{YType::str, "set-qos-transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmit::ConformAction::~ConformAction()
@@ -8662,6 +8759,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set;
 }
 
@@ -8731,7 +8829,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-set-qos-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-set-qos-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmitTable::~ConformSetQosTransmitTable()
@@ -8740,6 +8838,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -8812,7 +8911,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::str, "table"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-set-qos-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-set-qos-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmitTable::ConformAction::~ConformAction()
@@ -8821,6 +8920,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformSetQosTransmitTable::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set
 	|| table.is_set;
 }
@@ -8903,7 +9003,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformTransmit::~ConformTransmit()
@@ -8912,6 +9012,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -8983,7 +9084,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     transmit{YType::empty, "transmit"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformTransmit::ConformAction::~ConformAction()
@@ -8992,6 +9093,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformTransmit::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit.is_set;
 }
 
@@ -9061,7 +9163,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     conform_action->parent = this;
 
-    yang_name = "conform-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformDrop::~ConformDrop()
@@ -9070,6 +9172,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return (conform_action !=  nullptr && conform_action->has_data());
 }
 
@@ -9141,7 +9244,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     drop{YType::empty, "drop"}
 {
 
-    yang_name = "conform-action"; yang_parent_name = "conform-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-action"; yang_parent_name = "conform-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformDrop::ConformAction::~ConformAction()
@@ -9150,6 +9253,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ConformDrop::ConformAction::has_data() const
 {
+    if (is_presence_container) return true;
     return drop.is_set;
 }
 
@@ -9219,7 +9323,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-dscp"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-dscp"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDscp::~ExceedDscp()
@@ -9228,6 +9332,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDscp::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -9299,7 +9404,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     dscp{YType::str, "dscp"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-dscp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-dscp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDscp::ExceedAction::~ExceedAction()
@@ -9308,6 +9413,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDscp::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp.is_set;
 }
 
@@ -9377,7 +9483,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetClpTransmit::~ExceedSetClpTransmit()
@@ -9386,6 +9492,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetClpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -9457,7 +9564,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_clp_transmit{YType::empty, "set-clp-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetClpTransmit::ExceedAction::~ExceedAction()
@@ -9466,6 +9573,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetClpTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_clp_transmit.is_set;
 }
 
@@ -9535,7 +9643,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetCosTransmit::~ExceedSetCosTransmit()
@@ -9544,6 +9652,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetCosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -9616,7 +9725,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::str, "table"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetCosTransmit::ExceedAction::~ExceedAction()
@@ -9625,6 +9734,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetCosTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_cos_transmit.is_set
 	|| table.is_set;
 }
@@ -9707,7 +9817,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDiscardClassTransmit::~ExceedSetDiscardClassTransmit()
@@ -9716,6 +9826,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDiscardClassTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -9787,7 +9898,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_discard_class_transmit{YType::uint8, "set-discard-class-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDiscardClassTransmit::ExceedAction::~ExceedAction()
@@ -9796,6 +9907,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDiscardClassTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_discard_class_transmit.is_set;
 }
 
@@ -9865,7 +9977,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmit::~ExceedSetDscpTransmit()
@@ -9874,6 +9986,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -9946,7 +10059,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     set_dscp_transmit->parent = this;
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmit::ExceedAction::~ExceedAction()
@@ -9955,6 +10068,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return (set_dscp_transmit !=  nullptr && set_dscp_transmit->has_data());
 }
 
@@ -10027,7 +10141,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     dscp->parent = this;
 
-    yang_name = "set-dscp-transmit"; yang_parent_name = "exceed-action"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set-dscp-transmit"; yang_parent_name = "exceed-action"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::~SetDscpTransmit()
@@ -10036,6 +10150,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (dscp !=  nullptr && dscp->has_data());
 }
 
@@ -10107,7 +10222,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::enumeration, "table"}
 {
 
-    yang_name = "dscp"; yang_parent_name = "set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp"; yang_parent_name = "set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::~Dscp()
@@ -10116,6 +10231,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::has_data() const
 {
+    if (is_presence_container) return true;
     return table.is_set;
 }
 
@@ -10185,7 +10301,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-dscp-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-dscp-transmit-table"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmitTable::~ExceedSetDscpTransmitTable()
@@ -10194,6 +10310,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmitTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -10266,7 +10383,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::str, "table"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-dscp-transmit-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-dscp-transmit-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmitTable::ExceedAction::~ExceedAction()
@@ -10275,6 +10392,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetDscpTransmitTable::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_dscp_transmit.is_set
 	|| table.is_set;
 }
@@ -10357,7 +10475,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetFrdeTransmit::~ExceedSetFrdeTransmit()
@@ -10366,6 +10484,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetFrdeTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -10437,7 +10556,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_frde_transmit{YType::empty, "set-frde-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetFrdeTransmit::ExceedAction::~ExceedAction()
@@ -10446,6 +10565,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetFrdeTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_frde_transmit.is_set;
 }
 
@@ -10515,7 +10635,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpImpositionTransmit::~ExceedSetMplsExpImpositionTransmit()
@@ -10524,6 +10644,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpImpositionTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -10595,7 +10716,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_mpls_exp_imposition_transmit{YType::str, "set-mpls-exp-imposition-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction::~ExceedAction()
@@ -10604,6 +10725,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_imposition_transmit.is_set;
 }
 
@@ -10673,7 +10795,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpTopmostTransmit::~ExceedSetMplsExpTopmostTransmit()
@@ -10682,6 +10804,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpTopmostTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -10753,7 +10876,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_mpls_exp_topmost_transmit{YType::str, "set-mpls-exp-topmost-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction::~ExceedAction()
@@ -10762,6 +10885,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set;
 }
 
@@ -10831,7 +10955,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetPrecTransmit::~ExceedSetPrecTransmit()
@@ -10840,6 +10964,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetPrecTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -10912,7 +11037,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::str, "table"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetPrecTransmit::ExceedAction::~ExceedAction()
@@ -10921,6 +11046,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetPrecTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set
 	|| table.is_set;
 }
@@ -11003,7 +11129,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetQosTransmit::~ExceedSetQosTransmit()
@@ -11012,6 +11138,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetQosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -11083,7 +11210,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_qos_transmit{YType::str, "set-qos-transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetQosTransmit::ExceedAction::~ExceedAction()
@@ -11092,6 +11219,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedSetQosTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set;
 }
 
@@ -11161,7 +11289,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedTransmit::~ExceedTransmit()
@@ -11170,6 +11298,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -11241,7 +11370,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     transmit{YType::empty, "transmit"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedTransmit::ExceedAction::~ExceedAction()
@@ -11250,6 +11379,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedTransmit::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit.is_set;
 }
 
@@ -11319,7 +11449,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     exceed_action->parent = this;
 
-    yang_name = "exceed-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-drop"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDrop::~ExceedDrop()
@@ -11328,6 +11458,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return (exceed_action !=  nullptr && exceed_action->has_data());
 }
 
@@ -11399,7 +11530,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     drop{YType::empty, "drop"}
 {
 
-    yang_name = "exceed-action"; yang_parent_name = "exceed-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-action"; yang_parent_name = "exceed-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDrop::ExceedAction::~ExceedAction()
@@ -11408,6 +11539,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ExceedDrop::ExceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return drop.is_set;
 }
 
@@ -11477,7 +11609,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-clp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetClpTransmit::~ViolateSetClpTransmit()
@@ -11486,6 +11618,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetClpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -11557,7 +11690,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_clp_transmit{YType::empty, "set-clp-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-clp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetClpTransmit::ViolateAction::~ViolateAction()
@@ -11566,6 +11699,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetClpTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_clp_transmit.is_set;
 }
 
@@ -11635,7 +11769,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-cos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetCosTransmit::~ViolateSetCosTransmit()
@@ -11644,6 +11778,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetCosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -11716,7 +11851,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::str, "table"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-cos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetCosTransmit::ViolateAction::~ViolateAction()
@@ -11725,6 +11860,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetCosTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_cos_transmit.is_set
 	|| table.is_set;
 }
@@ -11807,7 +11943,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-discard-class-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetDiscardClassTransmit::~ViolateSetDiscardClassTransmit()
@@ -11816,6 +11952,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetDiscardClassTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -11887,7 +12024,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_discard_class_transmit{YType::uint8, "set-discard-class-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-discard-class-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetDiscardClassTransmit::ViolateAction::~ViolateAction()
@@ -11896,6 +12033,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetDiscardClassTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_discard_class_transmit.is_set;
 }
 
@@ -11965,7 +12103,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-dscp-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetDscpTransmit::~ViolateSetDscpTransmit()
@@ -11974,6 +12112,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetDscpTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -12046,7 +12185,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::str, "table"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-dscp-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetDscpTransmit::ViolateAction::~ViolateAction()
@@ -12055,6 +12194,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetDscpTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_dscp_transmit.is_set
 	|| table.is_set;
 }
@@ -12137,7 +12277,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-frde-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetFrdeTransmit::~ViolateSetFrdeTransmit()
@@ -12146,6 +12286,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetFrdeTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -12217,7 +12358,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_frde_transmit{YType::empty, "set-frde-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-frde-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetFrdeTransmit::ViolateAction::~ViolateAction()
@@ -12226,6 +12367,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetFrdeTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_frde_transmit.is_set;
 }
 
@@ -12295,7 +12437,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-mpls-exp-imposition-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetMplsExpImpositionTransmit::~ViolateSetMplsExpImpositionTransmit()
@@ -12304,6 +12446,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetMplsExpImpositionTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -12375,7 +12518,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_mpls_exp_imposition_transmit{YType::str, "set-mpls-exp-imposition-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-imposition-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::~ViolateAction()
@@ -12384,6 +12527,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_imposition_transmit.is_set;
 }
 
@@ -12453,7 +12597,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-mpls-exp-topmost-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetMplsExpTopmostTransmit::~ViolateSetMplsExpTopmostTransmit()
@@ -12462,6 +12606,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetMplsExpTopmostTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -12533,7 +12678,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_mpls_exp_topmost_transmit{YType::str, "set-mpls-exp-topmost-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-mpls-exp-topmost-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::~ViolateAction()
@@ -12542,6 +12687,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_mpls_exp_topmost_transmit.is_set;
 }
 
@@ -12611,7 +12757,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-prec-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetPrecTransmit::~ViolateSetPrecTransmit()
@@ -12620,6 +12766,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetPrecTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -12692,7 +12839,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     table{YType::str, "table"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-prec-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetPrecTransmit::ViolateAction::~ViolateAction()
@@ -12701,6 +12848,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetPrecTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_prec_transmit.is_set
 	|| table.is_set;
 }
@@ -12783,7 +12931,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 {
     violate_action->parent = this;
 
-    yang_name = "violate-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-set-qos-transmit"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetQosTransmit::~ViolateSetQosTransmit()
@@ -12792,6 +12940,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetQosTransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return (violate_action !=  nullptr && violate_action->has_data());
 }
 
@@ -12863,7 +13012,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
     set_qos_transmit{YType::str, "set-qos-transmit"}
 {
 
-    yang_name = "violate-action"; yang_parent_name = "violate-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "violate-action"; yang_parent_name = "violate-set-qos-transmit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetQosTransmit::ViolateAction::~ViolateAction()
@@ -12872,6 +13021,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp::Police::Rate::Pdp::Actions::ViolateSetQosTransmit::ViolateAction::has_data() const
 {
+    if (is_presence_container) return true;
     return set_qos_transmit.is_set;
 }
 

@@ -19,15 +19,6 @@ class OPTICALAMPLIFIERTYPE : public virtual ydk::Identity
 
 }; // OPTICALAMPLIFIERTYPE
 
-class GAINRANGE : public virtual ydk::Identity
-{
-    public:
-        GAINRANGE();
-        ~GAINRANGE();
-
-
-}; // GAINRANGE
-
 class OPTICALAMPLIFIERMODE : public virtual ydk::Identity
 {
     public:
@@ -36,6 +27,15 @@ class OPTICALAMPLIFIERMODE : public virtual ydk::Identity
 
 
 }; // OPTICALAMPLIFIERMODE
+
+class GAINRANGE : public virtual ydk::Identity
+{
+    public:
+        GAINRANGE();
+        ~GAINRANGE();
+
+
+}; // GAINRANGE
 
 class OpticalAmplifier : public ydk::Entity
 {
@@ -86,7 +86,7 @@ class OpticalAmplifier::Amplifiers : public ydk::Entity
 
         class Amplifier; //type: OpticalAmplifier::Amplifiers::Amplifier
 
-        std::vector<std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier> > amplifier;
+        ydk::YList amplifier;
         
 }; // OpticalAmplifier::Amplifiers
 
@@ -459,7 +459,7 @@ class OpticalAmplifier::SupervisoryChannels : public ydk::Entity
 
         class SupervisoryChannel; //type: OpticalAmplifier::SupervisoryChannels::SupervisoryChannel
 
-        std::vector<std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::SupervisoryChannels::SupervisoryChannel> > supervisory_channel;
+        ydk::YList supervisory_channel;
         
 }; // OpticalAmplifier::SupervisoryChannels
 
@@ -614,23 +614,14 @@ class OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBia
 
 }; // OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent
 
-class EDFA : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTYPE, virtual ydk::Identity
+class LOWGAINRANGE : public openconfig::openconfig_optical_amplifier::GAINRANGE, virtual ydk::Identity
 {
     public:
-        EDFA();
-        ~EDFA();
+        LOWGAINRANGE();
+        ~LOWGAINRANGE();
 
 
-}; // EDFA
-
-class FORWARDRAMAN : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTYPE, virtual ydk::Identity
-{
-    public:
-        FORWARDRAMAN();
-        ~FORWARDRAMAN();
-
-
-}; // FORWARDRAMAN
+}; // LOWGAINRANGE
 
 class BACKWARDRAMAN : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTYPE, virtual ydk::Identity
 {
@@ -641,23 +632,23 @@ class BACKWARDRAMAN : public openconfig::openconfig_optical_amplifier::OPTICALAM
 
 }; // BACKWARDRAMAN
 
-class HYBRID : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTYPE, virtual ydk::Identity
+class CONSTANTGAIN : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERMODE, virtual ydk::Identity
 {
     public:
-        HYBRID();
-        ~HYBRID();
+        CONSTANTGAIN();
+        ~CONSTANTGAIN();
 
 
-}; // HYBRID
+}; // CONSTANTGAIN
 
-class LOWGAINRANGE : public openconfig::openconfig_optical_amplifier::GAINRANGE, virtual ydk::Identity
+class FIXEDGAINRANGE : public openconfig::openconfig_optical_amplifier::GAINRANGE, virtual ydk::Identity
 {
     public:
-        LOWGAINRANGE();
-        ~LOWGAINRANGE();
+        FIXEDGAINRANGE();
+        ~FIXEDGAINRANGE();
 
 
-}; // LOWGAINRANGE
+}; // FIXEDGAINRANGE
 
 class MIDGAINRANGE : public openconfig::openconfig_optical_amplifier::GAINRANGE, virtual ydk::Identity
 {
@@ -677,14 +668,32 @@ class HIGHGAINRANGE : public openconfig::openconfig_optical_amplifier::GAINRANGE
 
 }; // HIGHGAINRANGE
 
-class FIXEDGAINRANGE : public openconfig::openconfig_optical_amplifier::GAINRANGE, virtual ydk::Identity
+class HYBRID : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTYPE, virtual ydk::Identity
 {
     public:
-        FIXEDGAINRANGE();
-        ~FIXEDGAINRANGE();
+        HYBRID();
+        ~HYBRID();
 
 
-}; // FIXEDGAINRANGE
+}; // HYBRID
+
+class FORWARDRAMAN : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTYPE, virtual ydk::Identity
+{
+    public:
+        FORWARDRAMAN();
+        ~FORWARDRAMAN();
+
+
+}; // FORWARDRAMAN
+
+class EDFA : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTYPE, virtual ydk::Identity
+{
+    public:
+        EDFA();
+        ~EDFA();
+
+
+}; // EDFA
 
 class CONSTANTPOWER : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERMODE, virtual ydk::Identity
 {
@@ -694,15 +703,6 @@ class CONSTANTPOWER : public openconfig::openconfig_optical_amplifier::OPTICALAM
 
 
 }; // CONSTANTPOWER
-
-class CONSTANTGAIN : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERMODE, virtual ydk::Identity
-{
-    public:
-        CONSTANTGAIN();
-        ~CONSTANTGAIN();
-
-
-}; // CONSTANTGAIN
 
 
 }

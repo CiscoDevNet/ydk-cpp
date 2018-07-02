@@ -59,7 +59,7 @@ class Cfm::Nodes : public ydk::Entity
 
         class Node; //type: Cfm::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Cfm::Nodes
 
@@ -113,7 +113,7 @@ class Cfm::Nodes::Node::InterfaceAises : public ydk::Entity
 
         class InterfaceAis; //type: Cfm::Nodes::Node::InterfaceAises::InterfaceAis
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::InterfaceAises::InterfaceAis> > interface_ais;
+        ydk::YList interface_ais;
         
 }; // Cfm::Nodes::Node::InterfaceAises
 
@@ -275,7 +275,7 @@ class Cfm::Nodes::Node::InterfaceStatistics : public ydk::Entity
 
         class InterfaceStatistic; //type: Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic> > interface_statistic;
+        ydk::YList interface_statistic;
         
 }; // Cfm::Nodes::Node::InterfaceStatistics
 
@@ -393,7 +393,7 @@ class Cfm::Nodes::Node::CcmLearningDatabases : public ydk::Entity
 
         class CcmLearningDatabase; //type: Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase> > ccm_learning_database;
+        ydk::YList ccm_learning_database;
         
 }; // Cfm::Nodes::Node::CcmLearningDatabases
 
@@ -451,7 +451,7 @@ class Cfm::Global : public ydk::Entity
         class MepConfigurationErrors; //type: Cfm::Global::MepConfigurationErrors
         class TracerouteCaches; //type: Cfm::Global::TracerouteCaches
         class LocalMeps; //type: Cfm::Global::LocalMeps
-        class PeerMePv2S; //type: Cfm::Global::PeerMePv2S
+        class PeerMePv2s; //type: Cfm::Global::PeerMePv2s
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::IncompleteTraceroutes> incomplete_traceroutes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MaintenancePoints> maintenance_points;
@@ -459,7 +459,7 @@ class Cfm::Global : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MepConfigurationErrors> mep_configuration_errors;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches> traceroute_caches;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::LocalMeps> local_meps;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S> peer_me_pv2s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s> peer_me_pv2s;
         
 }; // Cfm::Global
 
@@ -483,7 +483,7 @@ class Cfm::Global::IncompleteTraceroutes : public ydk::Entity
 
         class IncompleteTraceroute; //type: Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute> > incomplete_traceroute;
+        ydk::YList incomplete_traceroute;
         
 }; // Cfm::Global::IncompleteTraceroutes
 
@@ -509,7 +509,7 @@ class Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute : public ydk::Ent
         ydk::YLeaf service; //type: string
         ydk::YLeaf mep_id; //type: uint32
         ydk::YLeaf interface; //type: string
-        ydk::YLeaf transaction_id; //type: int32
+        ydk::YLeaf transaction_id; //type: uint32
         ydk::YLeaf time_left; //type: uint64
         class TracerouteInformation; //type: Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation
 
@@ -643,7 +643,7 @@ class Cfm::Global::MaintenancePoints : public ydk::Entity
 
         class MaintenancePoint; //type: Cfm::Global::MaintenancePoints::MaintenancePoint
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MaintenancePoints::MaintenancePoint> > maintenance_point;
+        ydk::YList maintenance_point;
         
 }; // Cfm::Global::MaintenancePoints
 
@@ -722,7 +722,7 @@ class Cfm::Global::GlobalConfigurationErrors : public ydk::Entity
 
         class GlobalConfigurationError; //type: Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError> > global_configuration_error;
+        ydk::YList global_configuration_error;
         
 }; // Cfm::Global::GlobalConfigurationErrors
 
@@ -803,7 +803,7 @@ class Cfm::Global::MepConfigurationErrors : public ydk::Entity
 
         class MepConfigurationError; //type: Cfm::Global::MepConfigurationErrors::MepConfigurationError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MepConfigurationErrors::MepConfigurationError> > mep_configuration_error;
+        ydk::YList mep_configuration_error;
         
 }; // Cfm::Global::MepConfigurationErrors
 
@@ -1057,7 +1057,7 @@ class Cfm::Global::TracerouteCaches : public ydk::Entity
 
         class TracerouteCache; //type: Cfm::Global::TracerouteCaches::TracerouteCache
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache> > traceroute_cache;
+        ydk::YList traceroute_cache;
         
 }; // Cfm::Global::TracerouteCaches
 
@@ -1083,15 +1083,15 @@ class Cfm::Global::TracerouteCaches::TracerouteCache : public ydk::Entity
         ydk::YLeaf service; //type: string
         ydk::YLeaf mep_id; //type: uint32
         ydk::YLeaf interface; //type: string
-        ydk::YLeaf transaction_id; //type: int32
+        ydk::YLeaf transaction_id; //type: uint32
         ydk::YLeaf replies_dropped; //type: uint32
         class TracerouteInformation; //type: Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation
         class LinktraceReply; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply
         class ExploratoryLinktraceReply; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation> traceroute_information;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply> > linktrace_reply;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply> > exploratory_linktrace_reply;
+        ydk::YList linktrace_reply;
+        ydk::YList exploratory_linktrace_reply;
         
 }; // Cfm::Global::TracerouteCaches::TracerouteCache
 
@@ -1234,8 +1234,8 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply : public yd
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress> reply_ingress;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress> reply_egress;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop> last_hop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv> > organization_specific_tlv;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv> > unknown_tlv;
+        ydk::YList organization_specific_tlv;
+        ydk::YList unknown_tlv;
         
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply
 
@@ -1684,8 +1684,8 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress> reply_ingress;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress> reply_egress;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop> last_hop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv> > organization_specific_tlv;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv> > unknown_tlv;
+        ydk::YList organization_specific_tlv;
+        ydk::YList unknown_tlv;
         
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply
 
@@ -2152,7 +2152,7 @@ class Cfm::Global::LocalMeps : public ydk::Entity
 
         class LocalMep; //type: Cfm::Global::LocalMeps::LocalMep
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::LocalMeps::LocalMep> > local_mep;
+        ydk::YList local_mep;
         
 }; // Cfm::Global::LocalMeps
 
@@ -2399,11 +2399,11 @@ class Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects : public ydk:
 }; // Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects
 
 
-class Cfm::Global::PeerMePv2S : public ydk::Entity
+class Cfm::Global::PeerMePv2s : public ydk::Entity
 {
     public:
-        PeerMePv2S();
-        ~PeerMePv2S();
+        PeerMePv2s();
+        ~PeerMePv2s();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2416,14 +2416,14 @@ class Cfm::Global::PeerMePv2S : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class PeerMePv2; //type: Cfm::Global::PeerMePv2S::PeerMePv2
+        class PeerMePv2; //type: Cfm::Global::PeerMePv2s::PeerMePv2
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2> > peer_me_pv2;
+        ydk::YList peer_me_pv2;
         
-}; // Cfm::Global::PeerMePv2S
+}; // Cfm::Global::PeerMePv2s
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2 : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2 : public ydk::Entity
 {
     public:
         PeerMePv2();
@@ -2453,14 +2453,14 @@ class Cfm::Global::PeerMePv2S::PeerMePv2 : public ydk::Entity
         ydk::YLeaf interface_xr; //type: string
         ydk::YLeaf mep_direction; //type: CfmBagDirection
         ydk::YLeaf standby; //type: boolean
-        class PeerMep; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep
+        class PeerMep; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep> peer_mep;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep> peer_mep;
         
-}; // Cfm::Global::PeerMePv2S::PeerMePv2
+}; // Cfm::Global::PeerMePv2s::PeerMePv2
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep : public ydk::Entity
 {
     public:
         PeerMep();
@@ -2481,20 +2481,20 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep : public ydk::Entity
         ydk::YLeaf cross_check_state; //type: CfmPmRmepXcState
         ydk::YLeaf peer_mep_state; //type: CfmPmRmepState
         ydk::YLeaf ccm_offload; //type: CfmBagCcmOffload
-        class ErrorState; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState
-        class LastUpDownTime; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime
-        class LastCcmReceived; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived
-        class Statistics; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics
+        class ErrorState; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState
+        class LastUpDownTime; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime
+        class LastCcmReceived; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived
+        class Statistics; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState> error_state;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime> last_up_down_time;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived> last_ccm_received;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState> error_state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime> last_up_down_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived> last_ccm_received;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics> statistics;
         
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState : public ydk::Entity
 {
     public:
         ErrorState();
@@ -2518,10 +2518,10 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState : public ydk::Enti
         ydk::YLeaf received_our_mep_id; //type: boolean
         ydk::YLeaf received_rdi; //type: boolean
 
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime : public ydk::Entity
 {
     public:
         LastUpDownTime();
@@ -2540,10 +2540,10 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime : public ydk::
         ydk::YLeaf seconds; //type: uint32
         ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived : public ydk::Entity
 {
     public:
         LastCcmReceived();
@@ -2563,22 +2563,22 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived : public ydk:
         ydk::YLeaf interface_status; //type: CfmPmIntfStatus
         ydk::YLeaf additional_interface_status; //type: CfmPmAddlIntfStatus
         ydk::YLeaf raw_data; //type: string
-        class Header; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header
-        class SenderId; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId
-        class MepName; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName
-        class OrganizationSpecificTlv; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv
-        class UnknownTlv; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv
+        class Header; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header
+        class SenderId; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId
+        class MepName; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName
+        class OrganizationSpecificTlv; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv
+        class UnknownTlv; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header> header;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId> sender_id;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName> mep_name;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv> > organization_specific_tlv;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv> > unknown_tlv;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header> header;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId> sender_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName> mep_name;
+        ydk::YList organization_specific_tlv;
+        ydk::YList unknown_tlv;
         
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header : public ydk::Entity
 {
     public:
         Header();
@@ -2602,16 +2602,16 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header : pub
         ydk::YLeaf mep_id; //type: uint16
         ydk::YLeaf mdid_format; //type: uint8
         ydk::YLeaf short_ma_name_format; //type: uint8
-        class Mdid; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid
-        class ShortMaName; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName
+        class Mdid; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid
+        class ShortMaName; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid> mdid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName> short_ma_name;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid> mdid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName> short_ma_name;
         
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid : public ydk::Entity
 {
     public:
         Mdid();
@@ -2631,14 +2631,14 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid
         ydk::YLeaf dns_like_name; //type: string
         ydk::YLeaf string_name; //type: string
         ydk::YLeaf mdid_data; //type: string
-        class MacName; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName
+        class MacName; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName> mac_name;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName> mac_name;
         
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName : public ydk::Entity
 {
     public:
         MacName();
@@ -2657,10 +2657,10 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf integer; //type: uint16
 
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName : public ydk::Entity
 {
     public:
         ShortMaName();
@@ -2682,14 +2682,14 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Shor
         ydk::YLeaf integer_name; //type: uint16
         ydk::YLeaf icc_based; //type: string
         ydk::YLeaf short_ma_name_data; //type: string
-        class VpnIdName; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName
+        class VpnIdName; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName> vpn_id_name;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName> vpn_id_name;
         
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName : public ydk::Entity
 {
     public:
         VpnIdName();
@@ -2708,10 +2708,10 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Shor
         ydk::YLeaf oui; //type: uint32
         ydk::YLeaf index_; //type: uint32
 
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId : public ydk::Entity
 {
     public:
         SenderId();
@@ -2729,14 +2729,14 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId : p
 
         ydk::YLeaf management_address_domain; //type: string
         ydk::YLeaf management_address; //type: string
-        class ChassisId; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId
+        class ChassisId; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId> chassis_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId> chassis_id;
         
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId : public ydk::Entity
 {
     public:
         ChassisId();
@@ -2755,14 +2755,14 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::Ch
         ydk::YLeaf chassis_id_type; //type: CfmPmChassisIdFmt
         ydk::YLeaf chassis_id_type_value; //type: uint8
         ydk::YLeaf chassis_id; //type: string
-        class ChassisIdValue; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue
+        class ChassisIdValue; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue> chassis_id_value;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue> chassis_id_value;
         
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue : public ydk::Entity
 {
     public:
         ChassisIdValue();
@@ -2783,10 +2783,10 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::Ch
         ydk::YLeaf chassis_id_mac; //type: string
         ydk::YLeaf chassis_id_raw; //type: string
 
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName : public ydk::Entity
 {
     public:
         MepName();
@@ -2804,10 +2804,10 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName : pu
 
         ydk::YLeaf name; //type: string
 
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv : public ydk::Entity
 {
     public:
         OrganizationSpecificTlv();
@@ -2827,10 +2827,10 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Organization
         ydk::YLeaf subtype; //type: uint8
         ydk::YLeaf value_; //type: string
 
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv : public ydk::Entity
 {
     public:
         UnknownTlv();
@@ -2849,10 +2849,10 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv :
         ydk::YLeaf typecode; //type: uint8
         ydk::YLeaf value_; //type: string
 
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -2877,14 +2877,14 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics : public ydk::Enti
         ydk::YLeaf ccms_rdi; //type: uint64
         ydk::YLeaf ccms_out_of_sequence; //type: uint64
         ydk::YLeaf last_ccm_sequence_number; //type: uint32
-        class LastCcmReceivedTime; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime
+        class LastCcmReceivedTime; //type: Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime> last_ccm_received_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime> last_ccm_received_time;
         
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics
 
 
-class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime : public ydk::Entity
+class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime : public ydk::Entity
 {
     public:
         LastCcmReceivedTime();
@@ -2903,13 +2903,24 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTi
         ydk::YLeaf seconds; //type: uint32
         ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime
+}; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime
 
-class CfmAisDir : public ydk::Enum
+class CfmPmElrIngressAction : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf elr_ingress_ok;
+        static const ydk::Enum::YLeaf elr_ingress_down;
+        static const ydk::Enum::YLeaf elr_ingress_blocked;
+        static const ydk::Enum::YLeaf elr_ingress_vid;
+
+};
+
+class CfmPmRelayAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf relay_hit;
+        static const ydk::Enum::YLeaf relay_fdb;
+        static const ydk::Enum::YLeaf relay_mpdb;
 
 };
 
@@ -2925,23 +2936,36 @@ class CfmBagSmanFmt : public ydk::Enum
 
 };
 
-class CfmBagMdidFmt : public ydk::Enum
+class CfmPmMepDefect : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mdid_null;
-        static const ydk::Enum::YLeaf mdid_dns_like;
-        static const ydk::Enum::YLeaf mdid_mac_address;
-        static const ydk::Enum::YLeaf mdid_string;
-        static const ydk::Enum::YLeaf mdid_unknown;
+        static const ydk::Enum::YLeaf defect_none;
+        static const ydk::Enum::YLeaf defect_rdi_ccm;
+        static const ydk::Enum::YLeaf defect_ma_cstatus;
+        static const ydk::Enum::YLeaf defect_remote_ccm;
+        static const ydk::Enum::YLeaf defect_error_ccm;
+        static const ydk::Enum::YLeaf defect_cross_connect_ccm;
 
 };
 
-class CfmBagCcmOffload : public ydk::Enum
+class CfmPmElrEgressAction : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf offload_none;
-        static const ydk::Enum::YLeaf offload_software;
-        static const ydk::Enum::YLeaf offload_hardware;
+        static const ydk::Enum::YLeaf elr_egress_ok;
+        static const ydk::Enum::YLeaf elr_egress_down;
+        static const ydk::Enum::YLeaf elr_egress_blocked;
+        static const ydk::Enum::YLeaf elr_egress_vid;
+        static const ydk::Enum::YLeaf elr_egress_mac;
+
+};
+
+class CfmPmIngressAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ingress_ok;
+        static const ydk::Enum::YLeaf ingress_down;
+        static const ydk::Enum::YLeaf ingress_blocked;
+        static const ydk::Enum::YLeaf ingress_vid;
 
 };
 
@@ -2959,276 +2983,6 @@ class CfmBagCcmInterval : public ydk::Enum
 
 };
 
-class CfmBagBdidFmt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf invalid;
-        static const ydk::Enum::YLeaf bd_id;
-        static const ydk::Enum::YLeaf xc_p2p_id;
-        static const ydk::Enum::YLeaf xc_mp2mp_id;
-        static const ydk::Enum::YLeaf fxc_vlan_aware_id;
-        static const ydk::Enum::YLeaf fxc_vlan_unaware_id;
-        static const ydk::Enum::YLeaf down_only;
-
-};
-
-class CfmMaMpVariety : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mip;
-        static const ydk::Enum::YLeaf up_mep;
-        static const ydk::Enum::YLeaf downmep;
-        static const ydk::Enum::YLeaf unknown_mep;
-
-};
-
-class CfmBagIssuRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf primary;
-        static const ydk::Enum::YLeaf secondary;
-
-};
-
-class CfmBagOpcode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf reserved;
-        static const ydk::Enum::YLeaf ccm;
-        static const ydk::Enum::YLeaf lbr;
-        static const ydk::Enum::YLeaf lbm;
-        static const ydk::Enum::YLeaf ltr;
-        static const ydk::Enum::YLeaf ltm;
-
-};
-
-class CfmBagAisInterval : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ais_interval_none;
-        static const ydk::Enum::YLeaf ais_interval1s;
-        static const ydk::Enum::YLeaf ais_interval1m;
-
-};
-
-class CfmBagMdLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level0;
-        static const ydk::Enum::YLeaf level1;
-        static const ydk::Enum::YLeaf level2;
-        static const ydk::Enum::YLeaf level3;
-        static const ydk::Enum::YLeaf level4;
-        static const ydk::Enum::YLeaf level5;
-        static const ydk::Enum::YLeaf level6;
-        static const ydk::Enum::YLeaf level7;
-        static const ydk::Enum::YLeaf level_invalid;
-
-};
-
-class CfmBagDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf direction_up;
-        static const ydk::Enum::YLeaf direction_down;
-        static const ydk::Enum::YLeaf direction_invalid;
-
-};
-
-class CfmBagStpState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf stp_up;
-        static const ydk::Enum::YLeaf stp_blocked;
-        static const ydk::Enum::YLeaf stp_unknown;
-
-};
-
-class CfmBagIwState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interworking_up;
-        static const ydk::Enum::YLeaf interworking_test;
-
-};
-
-class CfmPmAddlIntfStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf administratively_down;
-        static const ydk::Enum::YLeaf remote_excessive_errors;
-        static const ydk::Enum::YLeaf local_excessive_errors;
-
-};
-
-class CfmPmIntfStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interface_status_up;
-        static const ydk::Enum::YLeaf interface_status_down;
-        static const ydk::Enum::YLeaf interface_status_testing;
-        static const ydk::Enum::YLeaf interface_status_unknown;
-        static const ydk::Enum::YLeaf interface_status_dormant;
-        static const ydk::Enum::YLeaf interface_status_not_present;
-        static const ydk::Enum::YLeaf interface_status_lower_layer_down;
-
-};
-
-class CfmPmPortStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf port_status_blocked;
-        static const ydk::Enum::YLeaf port_status_up;
-        static const ydk::Enum::YLeaf port_status_unknown;
-
-};
-
-class CfmPmRmepState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf peer_mep_idle;
-        static const ydk::Enum::YLeaf peer_mep_start;
-        static const ydk::Enum::YLeaf peer_mep_failed;
-        static const ydk::Enum::YLeaf peer_mep_ok;
-
-};
-
-class CfmPmRmepXcState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cross_check_ok;
-        static const ydk::Enum::YLeaf cross_check_missing;
-        static const ydk::Enum::YLeaf cross_check_extra;
-
-};
-
-class CfmPmAisReceive : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf receive_none;
-        static const ydk::Enum::YLeaf receive_ais;
-        static const ydk::Enum::YLeaf receive_lck;
-        static const ydk::Enum::YLeaf receive_direct;
-
-};
-
-class CfmPmAisTransmit : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf transmit_none;
-        static const ydk::Enum::YLeaf transmit_ais;
-        static const ydk::Enum::YLeaf transmit_ais_direct;
-
-};
-
-class CfmPmMepDefect : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf defect_none;
-        static const ydk::Enum::YLeaf defect_rdi_ccm;
-        static const ydk::Enum::YLeaf defect_ma_cstatus;
-        static const ydk::Enum::YLeaf defect_remote_ccm;
-        static const ydk::Enum::YLeaf defect_error_ccm;
-        static const ydk::Enum::YLeaf defect_cross_connect_ccm;
-
-};
-
-class CfmPmMepFngState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fng_reset;
-        static const ydk::Enum::YLeaf fng_defect;
-        static const ydk::Enum::YLeaf fng_report_defect;
-        static const ydk::Enum::YLeaf fng_defect_reported;
-        static const ydk::Enum::YLeaf fng_defect_clearing;
-
-};
-
-class CfmPmElrEgressAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf elr_egress_ok;
-        static const ydk::Enum::YLeaf elr_egress_down;
-        static const ydk::Enum::YLeaf elr_egress_blocked;
-        static const ydk::Enum::YLeaf elr_egress_vid;
-        static const ydk::Enum::YLeaf elr_egress_mac;
-
-};
-
-class CfmPmElrIngressAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf elr_ingress_ok;
-        static const ydk::Enum::YLeaf elr_ingress_down;
-        static const ydk::Enum::YLeaf elr_ingress_blocked;
-        static const ydk::Enum::YLeaf elr_ingress_vid;
-
-};
-
-class CfmPmElrRelayAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf elr_relay_hit;
-        static const ydk::Enum::YLeaf elr_relay_fdb;
-        static const ydk::Enum::YLeaf elr_relay_flood;
-        static const ydk::Enum::YLeaf elr_relay_drop;
-
-};
-
-class CfmPmLastHopFmt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf last_hop_none;
-        static const ydk::Enum::YLeaf last_hop_host_name;
-        static const ydk::Enum::YLeaf last_hop_egress_id;
-
-};
-
-class CfmPmEgressAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf egress_ok;
-        static const ydk::Enum::YLeaf egress_down;
-        static const ydk::Enum::YLeaf egress_blocked;
-        static const ydk::Enum::YLeaf egress_vid;
-
-};
-
-class CfmPmPortIdFmt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf port_id_interface_alias;
-        static const ydk::Enum::YLeaf port_id_port_component;
-        static const ydk::Enum::YLeaf port_id_mac_address;
-        static const ydk::Enum::YLeaf port_id_network_address;
-        static const ydk::Enum::YLeaf port_id_interface_name;
-        static const ydk::Enum::YLeaf port_id_agent_circuit_id;
-        static const ydk::Enum::YLeaf port_id_local;
-        static const ydk::Enum::YLeaf port_id_unknown;
-
-};
-
-class CfmPmIngressAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ingress_ok;
-        static const ydk::Enum::YLeaf ingress_down;
-        static const ydk::Enum::YLeaf ingress_blocked;
-        static const ydk::Enum::YLeaf ingress_vid;
-
-};
-
-class CfmPmIdFmt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf id_format_is_string;
-        static const ydk::Enum::YLeaf id_format_is_mac_address;
-        static const ydk::Enum::YLeaf id_format_is_raw_hex;
-
-};
-
 class CfmPmChassisIdFmt : public ydk::Enum
 {
     public:
@@ -3243,40 +2997,68 @@ class CfmPmChassisIdFmt : public ydk::Enum
 
 };
 
-class CfmPmRelayAction : public ydk::Enum
+class SlaOperOperation : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf relay_hit;
-        static const ydk::Enum::YLeaf relay_fdb;
-        static const ydk::Enum::YLeaf relay_mpdb;
+        static const ydk::Enum::YLeaf operation_type_configured;
+        static const ydk::Enum::YLeaf operation_type_ondemand;
 
 };
 
-class CfmPmElmReplyFilter : public ydk::Enum
+class CfmPmLastHopFmt : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf reply_filter_not_present;
-        static const ydk::Enum::YLeaf reply_filter_default;
-        static const ydk::Enum::YLeaf reply_filter_vlan_topology;
-        static const ydk::Enum::YLeaf reply_filter_spanning_tree;
-        static const ydk::Enum::YLeaf reply_filter_all_ports;
+        static const ydk::Enum::YLeaf last_hop_none;
+        static const ydk::Enum::YLeaf last_hop_host_name;
+        static const ydk::Enum::YLeaf last_hop_egress_id;
 
 };
 
-class CfmPmEltDelayModel : public ydk::Enum
+class CfmPmIdFmt : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf delay_model_invalid;
-        static const ydk::Enum::YLeaf delay_model_logarithmic;
-        static const ydk::Enum::YLeaf delay_model_constant;
+        static const ydk::Enum::YLeaf id_format_is_string;
+        static const ydk::Enum::YLeaf id_format_is_mac_address;
+        static const ydk::Enum::YLeaf id_format_is_raw_hex;
 
 };
 
-class CfmPmLtMode : public ydk::Enum
+class CfmPmRmepState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cfm_pm_lt_mode_basic;
-        static const ydk::Enum::YLeaf cfm_pm_lt_mode_exploratory;
+        static const ydk::Enum::YLeaf peer_mep_idle;
+        static const ydk::Enum::YLeaf peer_mep_start;
+        static const ydk::Enum::YLeaf peer_mep_failed;
+        static const ydk::Enum::YLeaf peer_mep_ok;
+
+};
+
+class CfmBagCcmOffload : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf offload_none;
+        static const ydk::Enum::YLeaf offload_software;
+        static const ydk::Enum::YLeaf offload_hardware;
+
+};
+
+class CfmPmAisReceive : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf receive_none;
+        static const ydk::Enum::YLeaf receive_ais;
+        static const ydk::Enum::YLeaf receive_lck;
+        static const ydk::Enum::YLeaf receive_direct;
+
+};
+
+class CfmMaMpVariety : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mip;
+        static const ydk::Enum::YLeaf up_mep;
+        static const ydk::Enum::YLeaf downmep;
+        static const ydk::Enum::YLeaf unknown_mep;
 
 };
 
@@ -3379,11 +3161,220 @@ class CfmPmPktAction : public ydk::Enum
 
 };
 
+class SlaBucketSize : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf buckets_per_probe;
+        static const ydk::Enum::YLeaf probes_per_bucket;
+
+};
+
+class CfmPmEltDelayModel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf delay_model_invalid;
+        static const ydk::Enum::YLeaf delay_model_logarithmic;
+        static const ydk::Enum::YLeaf delay_model_constant;
+
+};
+
+class CfmPmAisTransmit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf transmit_none;
+        static const ydk::Enum::YLeaf transmit_ais;
+        static const ydk::Enum::YLeaf transmit_ais_direct;
+
+};
+
+class CfmPmElrRelayAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf elr_relay_hit;
+        static const ydk::Enum::YLeaf elr_relay_fdb;
+        static const ydk::Enum::YLeaf elr_relay_flood;
+        static const ydk::Enum::YLeaf elr_relay_drop;
+
+};
+
+class CfmPmPortStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf port_status_blocked;
+        static const ydk::Enum::YLeaf port_status_up;
+        static const ydk::Enum::YLeaf port_status_unknown;
+
+};
+
+class CfmBagIwState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interworking_up;
+        static const ydk::Enum::YLeaf interworking_test;
+
+};
+
+class CfmBagMdidFmt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mdid_null;
+        static const ydk::Enum::YLeaf mdid_dns_like;
+        static const ydk::Enum::YLeaf mdid_mac_address;
+        static const ydk::Enum::YLeaf mdid_string;
+        static const ydk::Enum::YLeaf mdid_unknown;
+
+};
+
+class CfmBagBdidFmt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf bd_id;
+        static const ydk::Enum::YLeaf xc_p2p_id;
+        static const ydk::Enum::YLeaf xc_mp2mp_id;
+        static const ydk::Enum::YLeaf fxc_vlan_aware_id;
+        static const ydk::Enum::YLeaf fxc_vlan_unaware_id;
+        static const ydk::Enum::YLeaf down_only;
+
+};
+
+class CfmBagIssuRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf secondary;
+
+};
+
+class CfmBagStpState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf stp_up;
+        static const ydk::Enum::YLeaf stp_blocked;
+        static const ydk::Enum::YLeaf stp_unknown;
+
+};
+
+class CfmBagMdLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level0;
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf level3;
+        static const ydk::Enum::YLeaf level4;
+        static const ydk::Enum::YLeaf level5;
+        static const ydk::Enum::YLeaf level6;
+        static const ydk::Enum::YLeaf level7;
+        static const ydk::Enum::YLeaf level_invalid;
+
+};
+
 class SlaOperPacketPriority : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf priority_none;
         static const ydk::Enum::YLeaf priority_cos;
+
+};
+
+class CfmBagAisInterval : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ais_interval_none;
+        static const ydk::Enum::YLeaf ais_interval1s;
+        static const ydk::Enum::YLeaf ais_interval1m;
+
+};
+
+class CfmPmRmepXcState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cross_check_ok;
+        static const ydk::Enum::YLeaf cross_check_missing;
+        static const ydk::Enum::YLeaf cross_check_extra;
+
+};
+
+class CfmPmLtMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cfm_pm_lt_mode_basic;
+        static const ydk::Enum::YLeaf cfm_pm_lt_mode_exploratory;
+
+};
+
+class CfmPmIntfStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interface_status_up;
+        static const ydk::Enum::YLeaf interface_status_down;
+        static const ydk::Enum::YLeaf interface_status_testing;
+        static const ydk::Enum::YLeaf interface_status_unknown;
+        static const ydk::Enum::YLeaf interface_status_dormant;
+        static const ydk::Enum::YLeaf interface_status_not_present;
+        static const ydk::Enum::YLeaf interface_status_lower_layer_down;
+
+};
+
+class CfmBagDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf direction_up;
+        static const ydk::Enum::YLeaf direction_down;
+        static const ydk::Enum::YLeaf direction_invalid;
+
+};
+
+class CfmPmEgressAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf egress_ok;
+        static const ydk::Enum::YLeaf egress_down;
+        static const ydk::Enum::YLeaf egress_blocked;
+        static const ydk::Enum::YLeaf egress_vid;
+
+};
+
+class CfmPmElmReplyFilter : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf reply_filter_not_present;
+        static const ydk::Enum::YLeaf reply_filter_default;
+        static const ydk::Enum::YLeaf reply_filter_vlan_topology;
+        static const ydk::Enum::YLeaf reply_filter_spanning_tree;
+        static const ydk::Enum::YLeaf reply_filter_all_ports;
+
+};
+
+class CfmAisDir : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+
+};
+
+class CfmPmAddlIntfStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf administratively_down;
+        static const ydk::Enum::YLeaf remote_excessive_errors;
+        static const ydk::Enum::YLeaf local_excessive_errors;
+
+};
+
+class CfmBagOpcode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf reserved;
+        static const ydk::Enum::YLeaf ccm;
+        static const ydk::Enum::YLeaf lbr;
+        static const ydk::Enum::YLeaf lbm;
+        static const ydk::Enum::YLeaf ltr;
+        static const ydk::Enum::YLeaf ltm;
 
 };
 
@@ -3395,19 +3386,36 @@ class SlaOperTestPatternScheme : public ydk::Enum
 
 };
 
+class CfmPmMepFngState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fng_reset;
+        static const ydk::Enum::YLeaf fng_defect;
+        static const ydk::Enum::YLeaf fng_report_defect;
+        static const ydk::Enum::YLeaf fng_defect_reported;
+        static const ydk::Enum::YLeaf fng_defect_clearing;
+
+};
+
+class CfmPmPortIdFmt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf port_id_interface_alias;
+        static const ydk::Enum::YLeaf port_id_port_component;
+        static const ydk::Enum::YLeaf port_id_mac_address;
+        static const ydk::Enum::YLeaf port_id_network_address;
+        static const ydk::Enum::YLeaf port_id_interface_name;
+        static const ydk::Enum::YLeaf port_id_agent_circuit_id;
+        static const ydk::Enum::YLeaf port_id_local;
+        static const ydk::Enum::YLeaf port_id_unknown;
+
+};
+
 class SlaOperBucket : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bucket_type_bins;
         static const ydk::Enum::YLeaf bucket_type_samples;
-
-};
-
-class SlaBucketSize : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf buckets_per_probe;
-        static const ydk::Enum::YLeaf probes_per_bucket;
 
 };
 
@@ -3423,14 +3431,6 @@ class SlaRecordableMetric : public ydk::Enum
         static const ydk::Enum::YLeaf metric_one_way_jitter_ds;
         static const ydk::Enum::YLeaf metric_one_way_flr_sd;
         static const ydk::Enum::YLeaf metric_one_way_flr_ds;
-
-};
-
-class SlaOperOperation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf operation_type_configured;
-        static const ydk::Enum::YLeaf operation_type_ondemand;
 
 };
 

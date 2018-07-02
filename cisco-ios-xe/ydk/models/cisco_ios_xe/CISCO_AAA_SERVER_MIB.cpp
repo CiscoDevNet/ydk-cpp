@@ -13,13 +13,13 @@ namespace CISCO_AAA_SERVER_MIB {
 
 CISCOAAASERVERMIB::CISCOAAASERVERMIB()
     :
-    casconfig(std::make_shared<CISCOAAASERVERMIB::Casconfig>())
-	,casconfigtable(std::make_shared<CISCOAAASERVERMIB::Casconfigtable>())
+    casconfig(std::make_shared<CISCOAAASERVERMIB::CasConfig>())
+    , casconfigtable(std::make_shared<CISCOAAASERVERMIB::CasConfigTable>())
 {
     casconfig->parent = this;
     casconfigtable->parent = this;
 
-    yang_name = "CISCO-AAA-SERVER-MIB"; yang_parent_name = "CISCO-AAA-SERVER-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-AAA-SERVER-MIB"; yang_parent_name = "CISCO-AAA-SERVER-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOAAASERVERMIB::~CISCOAAASERVERMIB()
@@ -28,6 +28,7 @@ CISCOAAASERVERMIB::~CISCOAAASERVERMIB()
 
 bool CISCOAAASERVERMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (casconfig !=  nullptr && casconfig->has_data())
 	|| (casconfigtable !=  nullptr && casconfigtable->has_data());
 }
@@ -61,7 +62,7 @@ std::shared_ptr<Entity> CISCOAAASERVERMIB::get_child_by_name(const std::string &
     {
         if(casconfig == nullptr)
         {
-            casconfig = std::make_shared<CISCOAAASERVERMIB::Casconfig>();
+            casconfig = std::make_shared<CISCOAAASERVERMIB::CasConfig>();
         }
         return casconfig;
     }
@@ -70,7 +71,7 @@ std::shared_ptr<Entity> CISCOAAASERVERMIB::get_child_by_name(const std::string &
     {
         if(casconfigtable == nullptr)
         {
-            casconfigtable = std::make_shared<CISCOAAASERVERMIB::Casconfigtable>();
+            casconfigtable = std::make_shared<CISCOAAASERVERMIB::CasConfigTable>();
         }
         return casconfigtable;
     }
@@ -135,44 +136,45 @@ bool CISCOAAASERVERMIB::has_leaf_or_child_of_name(const std::string & name) cons
     return false;
 }
 
-CISCOAAASERVERMIB::Casconfig::Casconfig()
+CISCOAAASERVERMIB::CasConfig::CasConfig()
     :
     casserverstatechangeenable{YType::boolean, "casServerStateChangeEnable"}
 {
 
-    yang_name = "casConfig"; yang_parent_name = "CISCO-AAA-SERVER-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "casConfig"; yang_parent_name = "CISCO-AAA-SERVER-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOAAASERVERMIB::Casconfig::~Casconfig()
+CISCOAAASERVERMIB::CasConfig::~CasConfig()
 {
 }
 
-bool CISCOAAASERVERMIB::Casconfig::has_data() const
+bool CISCOAAASERVERMIB::CasConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return casserverstatechangeenable.is_set;
 }
 
-bool CISCOAAASERVERMIB::Casconfig::has_operation() const
+bool CISCOAAASERVERMIB::CasConfig::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(casserverstatechangeenable.yfilter);
 }
 
-std::string CISCOAAASERVERMIB::Casconfig::get_absolute_path() const
+std::string CISCOAAASERVERMIB::CasConfig::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-AAA-SERVER-MIB:CISCO-AAA-SERVER-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOAAASERVERMIB::Casconfig::get_segment_path() const
+std::string CISCOAAASERVERMIB::CasConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "casConfig";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::Casconfig::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::CasConfig::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -182,19 +184,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::Casconfig::get
 
 }
 
-std::shared_ptr<Entity> CISCOAAASERVERMIB::Casconfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOAAASERVERMIB::CasConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOAAASERVERMIB::Casconfig::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOAAASERVERMIB::CasConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOAAASERVERMIB::Casconfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOAAASERVERMIB::CasConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "casServerStateChangeEnable")
     {
@@ -204,7 +206,7 @@ void CISCOAAASERVERMIB::Casconfig::set_value(const std::string & value_path, con
     }
 }
 
-void CISCOAAASERVERMIB::Casconfig::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOAAASERVERMIB::CasConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "casServerStateChangeEnable")
     {
@@ -212,26 +214,29 @@ void CISCOAAASERVERMIB::Casconfig::set_filter(const std::string & value_path, YF
     }
 }
 
-bool CISCOAAASERVERMIB::Casconfig::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOAAASERVERMIB::CasConfig::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "casServerStateChangeEnable")
         return true;
     return false;
 }
 
-CISCOAAASERVERMIB::Casconfigtable::Casconfigtable()
+CISCOAAASERVERMIB::CasConfigTable::CasConfigTable()
+    :
+    casconfigentry(this, {"casprotocol", "casindex"})
 {
 
-    yang_name = "casConfigTable"; yang_parent_name = "CISCO-AAA-SERVER-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "casConfigTable"; yang_parent_name = "CISCO-AAA-SERVER-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOAAASERVERMIB::Casconfigtable::~Casconfigtable()
+CISCOAAASERVERMIB::CasConfigTable::~CasConfigTable()
 {
 }
 
-bool CISCOAAASERVERMIB::Casconfigtable::has_data() const
+bool CISCOAAASERVERMIB::CasConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<casconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<casconfigentry.len(); index++)
     {
         if(casconfigentry[index]->has_data())
             return true;
@@ -239,9 +244,9 @@ bool CISCOAAASERVERMIB::Casconfigtable::has_data() const
     return false;
 }
 
-bool CISCOAAASERVERMIB::Casconfigtable::has_operation() const
+bool CISCOAAASERVERMIB::CasConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<casconfigentry.size(); index++)
+    for (std::size_t index=0; index<casconfigentry.len(); index++)
     {
         if(casconfigentry[index]->has_operation())
             return true;
@@ -249,21 +254,21 @@ bool CISCOAAASERVERMIB::Casconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOAAASERVERMIB::Casconfigtable::get_absolute_path() const
+std::string CISCOAAASERVERMIB::CasConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-AAA-SERVER-MIB:CISCO-AAA-SERVER-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOAAASERVERMIB::Casconfigtable::get_segment_path() const
+std::string CISCOAAASERVERMIB::CasConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "casConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::Casconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::CasConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -272,25 +277,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::Casconfigtable
 
 }
 
-std::shared_ptr<Entity> CISCOAAASERVERMIB::Casconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOAAASERVERMIB::CasConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "casConfigEntry")
     {
-        auto c = std::make_shared<CISCOAAASERVERMIB::Casconfigtable::Casconfigentry>();
+        auto c = std::make_shared<CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry>();
         c->parent = this;
-        casconfigentry.push_back(c);
+        casconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOAAASERVERMIB::Casconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOAAASERVERMIB::CasConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : casconfigentry)
+    for (auto c : casconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -301,22 +306,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOAAASERVERMIB::Casconfigtable
     return children;
 }
 
-void CISCOAAASERVERMIB::Casconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOAAASERVERMIB::CasConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOAAASERVERMIB::Casconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOAAASERVERMIB::CasConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOAAASERVERMIB::Casconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOAAASERVERMIB::CasConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "casConfigEntry")
         return true;
     return false;
 }
 
-CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::Casconfigentry()
+CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::CasConfigEntry()
     :
     casprotocol{YType::enumeration, "casProtocol"},
     casindex{YType::uint32, "casIndex"},
@@ -357,15 +362,16 @@ CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::Casconfigentry()
     casdeadcount{YType::uint32, "casDeadCount"}
 {
 
-    yang_name = "casConfigEntry"; yang_parent_name = "casConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "casConfigEntry"; yang_parent_name = "casConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::~Casconfigentry()
+CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::~CasConfigEntry()
 {
 }
 
-bool CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::has_data() const
+bool CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return casprotocol.is_set
 	|| casindex.is_set
 	|| casaddress.is_set
@@ -405,7 +411,7 @@ bool CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::has_data() const
 	|| casdeadcount.is_set;
 }
 
-bool CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::has_operation() const
+bool CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(casprotocol.yfilter)
@@ -447,21 +453,23 @@ bool CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::has_operation() const
 	|| ydk::is_set(casdeadcount.yfilter);
 }
 
-std::string CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::get_absolute_path() const
+std::string CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-AAA-SERVER-MIB:CISCO-AAA-SERVER-MIB/casConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::get_segment_path() const
+std::string CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "casConfigEntry" <<"[casProtocol='" <<casprotocol <<"']" <<"[casIndex='" <<casindex <<"']";
+    path_buffer << "casConfigEntry";
+    ADD_KEY_TOKEN(casprotocol, "casProtocol");
+    ADD_KEY_TOKEN(casindex, "casIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -507,19 +515,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::Casconfigtable
 
 }
 
-std::shared_ptr<Entity> CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "casProtocol")
     {
@@ -745,7 +753,7 @@ void CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::set_value(const std::str
     }
 }
 
-void CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "casProtocol")
     {
@@ -897,7 +905,7 @@ void CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::set_filter(const std::st
     }
 }
 
-bool CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "casProtocol" || name == "casIndex" || name == "casAddress" || name == "casAuthenPort" || name == "casAcctPort" || name == "casKey" || name == "casPriority" || name == "casConfigRowStatus" || name == "casAuthenRequests" || name == "casAuthenRequestTimeouts" || name == "casAuthenUnexpectedResponses" || name == "casAuthenServerErrorResponses" || name == "casAuthenIncorrectResponses" || name == "casAuthenResponseTime" || name == "casAuthenTransactionSuccesses" || name == "casAuthenTransactionFailures" || name == "casAuthorRequests" || name == "casAuthorRequestTimeouts" || name == "casAuthorUnexpectedResponses" || name == "casAuthorServerErrorResponses" || name == "casAuthorIncorrectResponses" || name == "casAuthorResponseTime" || name == "casAuthorTransactionSuccesses" || name == "casAuthorTransactionFailures" || name == "casAcctRequests" || name == "casAcctRequestTimeouts" || name == "casAcctUnexpectedResponses" || name == "casAcctServerErrorResponses" || name == "casAcctIncorrectResponses" || name == "casAcctResponseTime" || name == "casAcctTransactionSuccesses" || name == "casAcctTransactionFailures" || name == "casState" || name == "casCurrentStateDuration" || name == "casPreviousStateDuration" || name == "casTotalDeadTime" || name == "casDeadCount")
         return true;
@@ -912,8 +920,8 @@ const Enum::YLeaf CiscoAAAProtocol::ntlm {5, "ntlm"};
 const Enum::YLeaf CiscoAAAProtocol::sdi {6, "sdi"};
 const Enum::YLeaf CiscoAAAProtocol::other {7, "other"};
 
-const Enum::YLeaf CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::Casstate::up {1, "up"};
-const Enum::YLeaf CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::Casstate::dead {2, "dead"};
+const Enum::YLeaf CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::CasState::up {1, "up"};
+const Enum::YLeaf CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::CasState::dead {2, "dead"};
 
 
 }

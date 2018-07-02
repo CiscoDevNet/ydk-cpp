@@ -17,7 +17,7 @@ MplsEa::MplsEa()
 {
     nodes->parent = this;
 
-    yang_name = "mpls-ea"; yang_parent_name = "Cisco-IOS-XR-mpls-io-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpls-ea"; yang_parent_name = "Cisco-IOS-XR-mpls-io-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MplsEa::~MplsEa()
@@ -26,6 +26,7 @@ MplsEa::~MplsEa()
 
 bool MplsEa::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool MplsEa::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 MplsEa::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "mpls-ea"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "mpls-ea"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsEa::Nodes::~Nodes()
@@ -129,7 +132,8 @@ MplsEa::Nodes::~Nodes()
 
 bool MplsEa::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool MplsEa::Nodes::has_data() const
 
 bool MplsEa::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> MplsEa::Nodes::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<MplsEa::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsEa::Nodes::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool MplsEa::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 MplsEa::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     interfaces(std::make_shared<MplsEa::Nodes::Node::Interfaces>())
 {
     interfaces->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsEa::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ MplsEa::Nodes::Node::~Node()
 
 bool MplsEa::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (interfaces !=  nullptr && interfaces->has_data());
 }
@@ -252,7 +257,8 @@ std::string MplsEa::Nodes::Node::get_absolute_path() const
 std::string MplsEa::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -318,9 +324,11 @@ bool MplsEa::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 MplsEa::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsEa::Nodes::Node::Interfaces::~Interfaces()
@@ -329,7 +337,8 @@ MplsEa::Nodes::Node::Interfaces::~Interfaces()
 
 bool MplsEa::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -339,7 +348,7 @@ bool MplsEa::Nodes::Node::Interfaces::has_data() const
 
 bool MplsEa::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -369,7 +378,7 @@ std::shared_ptr<Entity> MplsEa::Nodes::Node::Interfaces::get_child_by_name(const
     {
         auto c = std::make_shared<MplsEa::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -381,7 +390,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsEa::Nodes::Node::Interfaces::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -416,7 +425,7 @@ MplsEa::Nodes::Node::Interfaces::Interface::Interface()
     pri_label_stack_depth{YType::uint8, "pri-label-stack-depth"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsEa::Nodes::Node::Interfaces::Interface::~Interface()
@@ -425,6 +434,7 @@ MplsEa::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool MplsEa::Nodes::Node::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| mtu.is_set
 	|| bkp_label_stack_depth.is_set
@@ -445,7 +455,8 @@ bool MplsEa::Nodes::Node::Interfaces::Interface::has_operation() const
 std::string MplsEa::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -546,7 +557,7 @@ MplsMa::MplsMa()
 {
     nodes->parent = this;
 
-    yang_name = "mpls-ma"; yang_parent_name = "Cisco-IOS-XR-mpls-io-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpls-ma"; yang_parent_name = "Cisco-IOS-XR-mpls-io-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MplsMa::~MplsMa()
@@ -555,6 +566,7 @@ MplsMa::~MplsMa()
 
 bool MplsMa::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -647,9 +659,11 @@ bool MplsMa::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 MplsMa::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "mpls-ma"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "mpls-ma"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsMa::Nodes::~Nodes()
@@ -658,7 +672,8 @@ MplsMa::Nodes::~Nodes()
 
 bool MplsMa::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -668,7 +683,7 @@ bool MplsMa::Nodes::has_data() const
 
 bool MplsMa::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -705,7 +720,7 @@ std::shared_ptr<Entity> MplsMa::Nodes::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<MplsMa::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -717,7 +732,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsMa::Nodes::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -746,12 +761,12 @@ bool MplsMa::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 MplsMa::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     interfaces(std::make_shared<MplsMa::Nodes::Node::Interfaces>())
 {
     interfaces->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsMa::Nodes::Node::~Node()
@@ -760,6 +775,7 @@ MplsMa::Nodes::Node::~Node()
 
 bool MplsMa::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (interfaces !=  nullptr && interfaces->has_data());
 }
@@ -781,7 +797,8 @@ std::string MplsMa::Nodes::Node::get_absolute_path() const
 std::string MplsMa::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -847,9 +864,11 @@ bool MplsMa::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 MplsMa::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsMa::Nodes::Node::Interfaces::~Interfaces()
@@ -858,7 +877,8 @@ MplsMa::Nodes::Node::Interfaces::~Interfaces()
 
 bool MplsMa::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -868,7 +888,7 @@ bool MplsMa::Nodes::Node::Interfaces::has_data() const
 
 bool MplsMa::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -898,7 +918,7 @@ std::shared_ptr<Entity> MplsMa::Nodes::Node::Interfaces::get_child_by_name(const
     {
         auto c = std::make_shared<MplsMa::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -910,7 +930,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsMa::Nodes::Node::Interfaces::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -945,7 +965,7 @@ MplsMa::Nodes::Node::Interfaces::Interface::Interface()
     pri_label_stack_depth{YType::uint8, "pri-label-stack-depth"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsMa::Nodes::Node::Interfaces::Interface::~Interface()
@@ -954,6 +974,7 @@ MplsMa::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool MplsMa::Nodes::Node::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| mtu.is_set
 	|| bkp_label_stack_depth.is_set
@@ -974,7 +995,8 @@ bool MplsMa::Nodes::Node::Interfaces::Interface::has_operation() const
 std::string MplsMa::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 

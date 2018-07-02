@@ -13,13 +13,13 @@ namespace CISCO_VOICE_DNIS_MIB {
 
 CISCOVOICEDNISMIB::CISCOVOICEDNISMIB()
     :
-    cvdnismappingtable(std::make_shared<CISCOVOICEDNISMIB::Cvdnismappingtable>())
-	,cvdnisnodetable(std::make_shared<CISCOVOICEDNISMIB::Cvdnisnodetable>())
+    cvdnismappingtable(std::make_shared<CISCOVOICEDNISMIB::CvDnisMappingTable>())
+    , cvdnisnodetable(std::make_shared<CISCOVOICEDNISMIB::CvDnisNodeTable>())
 {
     cvdnismappingtable->parent = this;
     cvdnisnodetable->parent = this;
 
-    yang_name = "CISCO-VOICE-DNIS-MIB"; yang_parent_name = "CISCO-VOICE-DNIS-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-VOICE-DNIS-MIB"; yang_parent_name = "CISCO-VOICE-DNIS-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOVOICEDNISMIB::~CISCOVOICEDNISMIB()
@@ -28,6 +28,7 @@ CISCOVOICEDNISMIB::~CISCOVOICEDNISMIB()
 
 bool CISCOVOICEDNISMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cvdnismappingtable !=  nullptr && cvdnismappingtable->has_data())
 	|| (cvdnisnodetable !=  nullptr && cvdnisnodetable->has_data());
 }
@@ -61,7 +62,7 @@ std::shared_ptr<Entity> CISCOVOICEDNISMIB::get_child_by_name(const std::string &
     {
         if(cvdnismappingtable == nullptr)
         {
-            cvdnismappingtable = std::make_shared<CISCOVOICEDNISMIB::Cvdnismappingtable>();
+            cvdnismappingtable = std::make_shared<CISCOVOICEDNISMIB::CvDnisMappingTable>();
         }
         return cvdnismappingtable;
     }
@@ -70,7 +71,7 @@ std::shared_ptr<Entity> CISCOVOICEDNISMIB::get_child_by_name(const std::string &
     {
         if(cvdnisnodetable == nullptr)
         {
-            cvdnisnodetable = std::make_shared<CISCOVOICEDNISMIB::Cvdnisnodetable>();
+            cvdnisnodetable = std::make_shared<CISCOVOICEDNISMIB::CvDnisNodeTable>();
         }
         return cvdnisnodetable;
     }
@@ -135,19 +136,22 @@ bool CISCOVOICEDNISMIB::has_leaf_or_child_of_name(const std::string & name) cons
     return false;
 }
 
-CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingtable()
+CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingTable()
+    :
+    cvdnismappingentry(this, {"cvdnismappingname"})
 {
 
-    yang_name = "cvDnisMappingTable"; yang_parent_name = "CISCO-VOICE-DNIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvDnisMappingTable"; yang_parent_name = "CISCO-VOICE-DNIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDNISMIB::Cvdnismappingtable::~Cvdnismappingtable()
+CISCOVOICEDNISMIB::CvDnisMappingTable::~CvDnisMappingTable()
 {
 }
 
-bool CISCOVOICEDNISMIB::Cvdnismappingtable::has_data() const
+bool CISCOVOICEDNISMIB::CvDnisMappingTable::has_data() const
 {
-    for (std::size_t index=0; index<cvdnismappingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvdnismappingentry.len(); index++)
     {
         if(cvdnismappingentry[index]->has_data())
             return true;
@@ -155,9 +159,9 @@ bool CISCOVOICEDNISMIB::Cvdnismappingtable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDNISMIB::Cvdnismappingtable::has_operation() const
+bool CISCOVOICEDNISMIB::CvDnisMappingTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvdnismappingentry.size(); index++)
+    for (std::size_t index=0; index<cvdnismappingentry.len(); index++)
     {
         if(cvdnismappingentry[index]->has_operation())
             return true;
@@ -165,21 +169,21 @@ bool CISCOVOICEDNISMIB::Cvdnismappingtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDNISMIB::Cvdnismappingtable::get_absolute_path() const
+std::string CISCOVOICEDNISMIB::CvDnisMappingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DNIS-MIB:CISCO-VOICE-DNIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDNISMIB::Cvdnismappingtable::get_segment_path() const
+std::string CISCOVOICEDNISMIB::CvDnisMappingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvDnisMappingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::Cvdnismappingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::CvDnisMappingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -188,25 +192,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::Cvdnismappingt
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDNISMIB::Cvdnismappingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDNISMIB::CvDnisMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvDnisMappingEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry>();
+        auto c = std::make_shared<CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry>();
         c->parent = this;
-        cvdnismappingentry.push_back(c);
+        cvdnismappingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::Cvdnismappingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::CvDnisMappingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvdnismappingentry)
+    for (auto c : cvdnismappingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,22 +221,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::Cvdnismappingt
     return children;
 }
 
-void CISCOVOICEDNISMIB::Cvdnismappingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDNISMIB::CvDnisMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDNISMIB::Cvdnismappingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDNISMIB::CvDnisMappingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDNISMIB::Cvdnismappingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDNISMIB::CvDnisMappingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvDnisMappingEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::Cvdnismappingentry()
+CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::CvDnisMappingEntry()
     :
     cvdnismappingname{YType::str, "cvDnisMappingName"},
     cvdnismappingurl{YType::str, "cvDnisMappingUrl"},
@@ -241,15 +245,16 @@ CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::Cvdnismappingentry()
     cvdnismappingstatus{YType::enumeration, "cvDnisMappingStatus"}
 {
 
-    yang_name = "cvDnisMappingEntry"; yang_parent_name = "cvDnisMappingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvDnisMappingEntry"; yang_parent_name = "cvDnisMappingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::~Cvdnismappingentry()
+CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::~CvDnisMappingEntry()
 {
 }
 
-bool CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::has_data() const
+bool CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvdnismappingname.is_set
 	|| cvdnismappingurl.is_set
 	|| cvdnismappingrefresh.is_set
@@ -257,7 +262,7 @@ bool CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::has_data() const
 	|| cvdnismappingstatus.is_set;
 }
 
-bool CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::has_operation() const
+bool CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvdnismappingname.yfilter)
@@ -267,21 +272,22 @@ bool CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::has_operation() 
 	|| ydk::is_set(cvdnismappingstatus.yfilter);
 }
 
-std::string CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::get_absolute_path() const
+std::string CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DNIS-MIB:CISCO-VOICE-DNIS-MIB/cvDnisMappingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::get_segment_path() const
+std::string CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvDnisMappingEntry" <<"[cvDnisMappingName='" <<cvdnismappingname <<"']";
+    path_buffer << "cvDnisMappingEntry";
+    ADD_KEY_TOKEN(cvdnismappingname, "cvDnisMappingName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -295,19 +301,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::Cvdnismappingt
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvDnisMappingName")
     {
@@ -341,7 +347,7 @@ void CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::set_value(const 
     }
 }
 
-void CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvDnisMappingName")
     {
@@ -365,26 +371,29 @@ void CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::set_filter(const
     }
 }
 
-bool CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvDnisMappingName" || name == "cvDnisMappingUrl" || name == "cvDnisMappingRefresh" || name == "cvDnisMappingUrlAccessError" || name == "cvDnisMappingStatus")
         return true;
     return false;
 }
 
-CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodetable()
+CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeTable()
+    :
+    cvdnisnodeentry(this, {"cvdnismappingname", "cvdnisnumber"})
 {
 
-    yang_name = "cvDnisNodeTable"; yang_parent_name = "CISCO-VOICE-DNIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvDnisNodeTable"; yang_parent_name = "CISCO-VOICE-DNIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDNISMIB::Cvdnisnodetable::~Cvdnisnodetable()
+CISCOVOICEDNISMIB::CvDnisNodeTable::~CvDnisNodeTable()
 {
 }
 
-bool CISCOVOICEDNISMIB::Cvdnisnodetable::has_data() const
+bool CISCOVOICEDNISMIB::CvDnisNodeTable::has_data() const
 {
-    for (std::size_t index=0; index<cvdnisnodeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvdnisnodeentry.len(); index++)
     {
         if(cvdnisnodeentry[index]->has_data())
             return true;
@@ -392,9 +401,9 @@ bool CISCOVOICEDNISMIB::Cvdnisnodetable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDNISMIB::Cvdnisnodetable::has_operation() const
+bool CISCOVOICEDNISMIB::CvDnisNodeTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvdnisnodeentry.size(); index++)
+    for (std::size_t index=0; index<cvdnisnodeentry.len(); index++)
     {
         if(cvdnisnodeentry[index]->has_operation())
             return true;
@@ -402,21 +411,21 @@ bool CISCOVOICEDNISMIB::Cvdnisnodetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDNISMIB::Cvdnisnodetable::get_absolute_path() const
+std::string CISCOVOICEDNISMIB::CvDnisNodeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DNIS-MIB:CISCO-VOICE-DNIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDNISMIB::Cvdnisnodetable::get_segment_path() const
+std::string CISCOVOICEDNISMIB::CvDnisNodeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvDnisNodeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::Cvdnisnodetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::CvDnisNodeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -425,25 +434,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::Cvdnisnodetabl
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDNISMIB::Cvdnisnodetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDNISMIB::CvDnisNodeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvDnisNodeEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry>();
+        auto c = std::make_shared<CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry>();
         c->parent = this;
-        cvdnisnodeentry.push_back(c);
+        cvdnisnodeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::Cvdnisnodetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::CvDnisNodeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvdnisnodeentry)
+    for (auto c : cvdnisnodeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -454,22 +463,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::Cvdnisnodetabl
     return children;
 }
 
-void CISCOVOICEDNISMIB::Cvdnisnodetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDNISMIB::CvDnisNodeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDNISMIB::Cvdnisnodetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDNISMIB::CvDnisNodeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDNISMIB::Cvdnisnodetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDNISMIB::CvDnisNodeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvDnisNodeEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::Cvdnisnodeentry()
+CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::CvDnisNodeEntry()
     :
     cvdnismappingname{YType::str, "cvDnisMappingName"},
     cvdnisnumber{YType::str, "cvDnisNumber"},
@@ -478,15 +487,16 @@ CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::Cvdnisnodeentry()
     cvdnisnodestatus{YType::enumeration, "cvDnisNodeStatus"}
 {
 
-    yang_name = "cvDnisNodeEntry"; yang_parent_name = "cvDnisNodeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvDnisNodeEntry"; yang_parent_name = "cvDnisNodeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::~Cvdnisnodeentry()
+CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::~CvDnisNodeEntry()
 {
 }
 
-bool CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::has_data() const
+bool CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvdnismappingname.is_set
 	|| cvdnisnumber.is_set
 	|| cvdnisnodeurl.is_set
@@ -494,7 +504,7 @@ bool CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::has_data() const
 	|| cvdnisnodestatus.is_set;
 }
 
-bool CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::has_operation() const
+bool CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvdnismappingname.yfilter)
@@ -504,21 +514,23 @@ bool CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::has_operation() const
 	|| ydk::is_set(cvdnisnodestatus.yfilter);
 }
 
-std::string CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::get_absolute_path() const
+std::string CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DNIS-MIB:CISCO-VOICE-DNIS-MIB/cvDnisNodeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::get_segment_path() const
+std::string CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvDnisNodeEntry" <<"[cvDnisMappingName='" <<cvdnismappingname <<"']" <<"[cvDnisNumber='" <<cvdnisnumber <<"']";
+    path_buffer << "cvDnisNodeEntry";
+    ADD_KEY_TOKEN(cvdnismappingname, "cvDnisMappingName");
+    ADD_KEY_TOKEN(cvdnisnumber, "cvDnisNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -532,19 +544,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::Cvdnisnodetabl
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvDnisMappingName")
     {
@@ -578,7 +590,7 @@ void CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::set_value(const std::s
     }
 }
 
-void CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvDnisMappingName")
     {
@@ -602,15 +614,15 @@ void CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::set_filter(const std::
     }
 }
 
-bool CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvDnisMappingName" || name == "cvDnisNumber" || name == "cvDnisNodeUrl" || name == "cvDnisNodeModifiable" || name == "cvDnisNodeStatus")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::Cvdnismappingrefresh::idle {1, "idle"};
-const Enum::YLeaf CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::Cvdnismappingrefresh::refresh {2, "refresh"};
+const Enum::YLeaf CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::CvDnisMappingRefresh::idle {1, "idle"};
+const Enum::YLeaf CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::CvDnisMappingRefresh::refresh {2, "refresh"};
 
 
 }

@@ -5,11 +5,11 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_114.hpp"
-#include "Cisco_IOS_XE_native_119.hpp"
-#include "Cisco_IOS_XE_native_118.hpp"
 #include "Cisco_IOS_XE_native_117.hpp"
-#include "Cisco_IOS_XE_native_116.hpp"
+#include "Cisco_IOS_XE_native_118.hpp"
+#include "Cisco_IOS_XE_native_119.hpp"
 #include "Cisco_IOS_XE_native_115.hpp"
+#include "Cisco_IOS_XE_native_116.hpp"
 
 using namespace ydk;
 
@@ -22,7 +22,7 @@ Native::BridgeDomain::BrdId::Ip::Ip()
 {
     igmp->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "brd-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "brd-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Ip::~Ip()
@@ -31,6 +31,7 @@ Native::BridgeDomain::BrdId::Ip::~Ip()
 
 bool Native::BridgeDomain::BrdId::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (igmp !=  nullptr && igmp->has_data());
 }
 
@@ -102,7 +103,7 @@ Native::BridgeDomain::BrdId::Ip::Igmp::Igmp()
     snooping(nullptr) // presence node
 {
 
-    yang_name = "igmp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igmp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Ip::Igmp::~Igmp()
@@ -111,6 +112,7 @@ Native::BridgeDomain::BrdId::Ip::Igmp::~Igmp()
 
 bool Native::BridgeDomain::BrdId::Ip::Igmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (snooping !=  nullptr && snooping->has_data());
 }
 
@@ -185,17 +187,17 @@ Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Snooping()
     report_suppression{YType::empty, "report-suppression"},
     robustness_variable{YType::uint8, "robustness-variable"},
     static_{YType::str, "static"}
-    	,
+        ,
     check(std::make_shared<Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Check>())
-	,explicit_tracking(std::make_shared<Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::ExplicitTracking>())
-	,mrouter(std::make_shared<Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Mrouter>())
-	,querier(nullptr) // presence node
+    , explicit_tracking(std::make_shared<Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::ExplicitTracking>())
+    , mrouter(std::make_shared<Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Mrouter>())
+    , querier(nullptr) // presence node
 {
     check->parent = this;
     explicit_tracking->parent = this;
     mrouter->parent = this;
 
-    yang_name = "snooping"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snooping"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::~Snooping()
@@ -204,6 +206,7 @@ Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::~Snooping()
 
 bool Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::has_data() const
 {
+    if (is_presence_container) return true;
     return immediate_leave.is_set
 	|| last_member_query_count.is_set
 	|| last_member_query_interval.is_set
@@ -402,7 +405,7 @@ Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Check::Check()
     ttl{YType::empty, "ttl"}
 {
 
-    yang_name = "check"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "check"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Check::~Check()
@@ -411,6 +414,7 @@ Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Check::~Check()
 
 bool Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Check::has_data() const
 {
+    if (is_presence_container) return true;
     return rtr_alert_option.is_set
 	|| ttl.is_set;
 }
@@ -492,7 +496,7 @@ Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::ExplicitTracking::ExplicitTrack
     limit{YType::empty, "limit"}
 {
 
-    yang_name = "explicit-tracking"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "explicit-tracking"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::ExplicitTracking::~ExplicitTracking()
@@ -501,6 +505,7 @@ Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::ExplicitTracking::~ExplicitTrac
 
 bool Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::ExplicitTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set;
 }
 
@@ -569,7 +574,7 @@ Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Mrouter::Mrouter()
     interface{YType::empty, "interface"}
 {
 
-    yang_name = "mrouter"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mrouter"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Mrouter::~Mrouter()
@@ -578,6 +583,7 @@ Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Mrouter::~Mrouter()
 
 bool Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Mrouter::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -651,7 +657,7 @@ Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Querier::Querier()
     version{YType::empty, "version"}
 {
 
-    yang_name = "querier"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Querier::~Querier()
@@ -660,6 +666,7 @@ Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Querier::~Querier()
 
 bool Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Querier::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| max_response_time.is_set
 	|| query_interval.is_set
@@ -792,12 +799,12 @@ Native::BridgeDomain::BrdId::Mac::Mac()
     :
     aging_time{YType::uint16, "aging-time"},
     learning{YType::empty, "learning"}
-    	,
+        ,
     limit(std::make_shared<Native::BridgeDomain::BrdId::Mac::Limit>())
 {
     limit->parent = this;
 
-    yang_name = "mac"; yang_parent_name = "brd-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac"; yang_parent_name = "brd-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Mac::~Mac()
@@ -806,6 +813,7 @@ Native::BridgeDomain::BrdId::Mac::~Mac()
 
 bool Native::BridgeDomain::BrdId::Mac::has_data() const
 {
+    if (is_presence_container) return true;
     return aging_time.is_set
 	|| learning.is_set
 	|| (limit !=  nullptr && limit->has_data());
@@ -901,12 +909,12 @@ bool Native::BridgeDomain::BrdId::Mac::has_leaf_or_child_of_name(const std::stri
 Native::BridgeDomain::BrdId::Mac::Limit::Limit()
     :
     action(std::make_shared<Native::BridgeDomain::BrdId::Mac::Limit::Action>())
-	,maximum(std::make_shared<Native::BridgeDomain::BrdId::Mac::Limit::Maximum>())
+    , maximum(std::make_shared<Native::BridgeDomain::BrdId::Mac::Limit::Maximum>())
 {
     action->parent = this;
     maximum->parent = this;
 
-    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Mac::Limit::~Limit()
@@ -915,6 +923,7 @@ Native::BridgeDomain::BrdId::Mac::Limit::~Limit()
 
 bool Native::BridgeDomain::BrdId::Mac::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data())
 	|| (maximum !=  nullptr && maximum->has_data());
 }
@@ -1003,7 +1012,7 @@ Native::BridgeDomain::BrdId::Mac::Limit::Action::Action()
 {
     flooding->parent = this;
 
-    yang_name = "action"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Mac::Limit::Action::~Action()
@@ -1012,6 +1021,7 @@ Native::BridgeDomain::BrdId::Mac::Limit::Action::~Action()
 
 bool Native::BridgeDomain::BrdId::Mac::Limit::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return (flooding !=  nullptr && flooding->has_data());
 }
 
@@ -1083,7 +1093,7 @@ Native::BridgeDomain::BrdId::Mac::Limit::Action::Flooding::Flooding()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "flooding"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooding"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Mac::Limit::Action::Flooding::~Flooding()
@@ -1092,6 +1102,7 @@ Native::BridgeDomain::BrdId::Mac::Limit::Action::Flooding::~Flooding()
 
 bool Native::BridgeDomain::BrdId::Mac::Limit::Action::Flooding::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -1160,7 +1171,7 @@ Native::BridgeDomain::BrdId::Mac::Limit::Maximum::Maximum()
     addresses{YType::uint32, "addresses"}
 {
 
-    yang_name = "maximum"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Mac::Limit::Maximum::~Maximum()
@@ -1169,6 +1180,7 @@ Native::BridgeDomain::BrdId::Mac::Limit::Maximum::~Maximum()
 
 bool Native::BridgeDomain::BrdId::Mac::Limit::Maximum::has_data() const
 {
+    if (is_presence_container) return true;
     return addresses.is_set;
 }
 
@@ -1248,9 +1260,13 @@ Native::BridgeDomain::BrdId::Member::Member()
     vasiright{YType::uint16, "vasiright"},
     vfi{YType::str, "vfi"},
     vni{YType::uint32, "vni"}
+        ,
+    mem_ipv4(this, {"mem_ipv4"})
+    , acr(this, {"acr_int"})
+    , member_interface(this, {"interface"})
 {
 
-    yang_name = "member"; yang_parent_name = "brd-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member"; yang_parent_name = "brd-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Member::~Member()
@@ -1259,17 +1275,18 @@ Native::BridgeDomain::BrdId::Member::~Member()
 
 bool Native::BridgeDomain::BrdId::Member::has_data() const
 {
-    for (std::size_t index=0; index<mem_ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mem_ipv4.len(); index++)
     {
         if(mem_ipv4[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<acr.size(); index++)
+    for (std::size_t index=0; index<acr.len(); index++)
     {
         if(acr[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<member_interface.size(); index++)
+    for (std::size_t index=0; index<member_interface.len(); index++)
     {
         if(member_interface[index]->has_data())
             return true;
@@ -1292,17 +1309,17 @@ bool Native::BridgeDomain::BrdId::Member::has_data() const
 
 bool Native::BridgeDomain::BrdId::Member::has_operation() const
 {
-    for (std::size_t index=0; index<mem_ipv4.size(); index++)
+    for (std::size_t index=0; index<mem_ipv4.len(); index++)
     {
         if(mem_ipv4[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<acr.size(); index++)
+    for (std::size_t index=0; index<acr.len(); index++)
     {
         if(acr[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<member_interface.size(); index++)
+    for (std::size_t index=0; index<member_interface.len(); index++)
     {
         if(member_interface[index]->has_operation())
             return true;
@@ -1360,7 +1377,7 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Member::get_child_by_name(c
     {
         auto c = std::make_shared<Native::BridgeDomain::BrdId::Member::MemIpv4>();
         c->parent = this;
-        mem_ipv4.push_back(c);
+        mem_ipv4.append(c);
         return c;
     }
 
@@ -1368,7 +1385,7 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Member::get_child_by_name(c
     {
         auto c = std::make_shared<Native::BridgeDomain::BrdId::Member::ACR>();
         c->parent = this;
-        acr.push_back(c);
+        acr.append(c);
         return c;
     }
 
@@ -1376,7 +1393,7 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Member::get_child_by_name(c
     {
         auto c = std::make_shared<Native::BridgeDomain::BrdId::Member::MemberInterface>();
         c->parent = this;
-        member_interface.push_back(c);
+        member_interface.append(c);
         return c;
     }
 
@@ -1388,7 +1405,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Memb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mem_ipv4)
+    for (auto c : mem_ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1397,7 +1414,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Memb
     }
 
     count = 0;
-    for (auto const & c : acr)
+    for (auto c : acr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1406,7 +1423,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Memb
     }
 
     count = 0;
-    for (auto const & c : member_interface)
+    for (auto c : member_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1576,12 +1593,13 @@ Native::BridgeDomain::BrdId::Member::MemIpv4::MemIpv4()
     :
     mem_ipv4{YType::str, "mem-ipv4"},
     template_{YType::str, "template"}
-    	,
-    encapsulation(std::make_shared<Native::BridgeDomain::BrdId::Member::MemIpv4::Encapsulation>())
+        ,
+    mem_vcid(this, {"mem_vcid"})
+    , encapsulation(std::make_shared<Native::BridgeDomain::BrdId::Member::MemIpv4::Encapsulation>())
 {
     encapsulation->parent = this;
 
-    yang_name = "mem-ipv4"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mem-ipv4"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Member::MemIpv4::~MemIpv4()
@@ -1590,7 +1608,8 @@ Native::BridgeDomain::BrdId::Member::MemIpv4::~MemIpv4()
 
 bool Native::BridgeDomain::BrdId::Member::MemIpv4::has_data() const
 {
-    for (std::size_t index=0; index<mem_vcid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mem_vcid.len(); index++)
     {
         if(mem_vcid[index]->has_data())
             return true;
@@ -1602,7 +1621,7 @@ bool Native::BridgeDomain::BrdId::Member::MemIpv4::has_data() const
 
 bool Native::BridgeDomain::BrdId::Member::MemIpv4::has_operation() const
 {
-    for (std::size_t index=0; index<mem_vcid.size(); index++)
+    for (std::size_t index=0; index<mem_vcid.len(); index++)
     {
         if(mem_vcid[index]->has_operation())
             return true;
@@ -1616,7 +1635,8 @@ bool Native::BridgeDomain::BrdId::Member::MemIpv4::has_operation() const
 std::string Native::BridgeDomain::BrdId::Member::MemIpv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mem-ipv4" <<"[mem-ipv4='" <<mem_ipv4 <<"']";
+    path_buffer << "mem-ipv4";
+    ADD_KEY_TOKEN(mem_ipv4, "mem-ipv4");
     return path_buffer.str();
 }
 
@@ -1637,7 +1657,7 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Member::MemIpv4::get_child_
     {
         auto c = std::make_shared<Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid>();
         c->parent = this;
-        mem_vcid.push_back(c);
+        mem_vcid.append(c);
         return c;
     }
 
@@ -1658,7 +1678,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Memb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mem_vcid)
+    for (auto c : mem_vcid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1712,12 +1732,12 @@ bool Native::BridgeDomain::BrdId::Member::MemIpv4::has_leaf_or_child_of_name(con
 Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::MemVcid()
     :
     mem_vcid{YType::uint32, "mem-vcid"}
-    	,
+        ,
     encapsulation(nullptr) // presence node
-	,template_(nullptr) // presence node
+    , template_(nullptr) // presence node
 {
 
-    yang_name = "mem-vcid"; yang_parent_name = "mem-ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mem-vcid"; yang_parent_name = "mem-ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::~MemVcid()
@@ -1726,6 +1746,7 @@ Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::~MemVcid()
 
 bool Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::has_data() const
 {
+    if (is_presence_container) return true;
     return mem_vcid.is_set
 	|| (encapsulation !=  nullptr && encapsulation->has_data())
 	|| (template_ !=  nullptr && template_->has_data());
@@ -1742,7 +1763,8 @@ bool Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::has_operation() cons
 std::string Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mem-vcid" <<"[mem-vcid='" <<mem_vcid <<"']";
+    path_buffer << "mem-vcid";
+    ADD_KEY_TOKEN(mem_vcid, "mem-vcid");
     return path_buffer.str();
 }
 
@@ -1826,7 +1848,7 @@ Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Encapsulation::Encapsulat
     mpls{YType::empty, "mpls"}
 {
 
-    yang_name = "encapsulation"; yang_parent_name = "mem-vcid"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "mem-vcid"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Encapsulation::~Encapsulation()
@@ -1835,6 +1857,7 @@ Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Encapsulation::~Encapsula
 
 bool Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return mpls.is_set;
 }
 
@@ -1903,7 +1926,7 @@ Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template::Template()
     template_{YType::str, "template"}
 {
 
-    yang_name = "template"; yang_parent_name = "mem-vcid"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "template"; yang_parent_name = "mem-vcid"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template::~Template()
@@ -1912,6 +1935,7 @@ Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template::~Template()
 
 bool Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_.is_set;
 }
 
@@ -1980,7 +2004,7 @@ Native::BridgeDomain::BrdId::Member::MemIpv4::Encapsulation::Encapsulation()
     mpls{YType::empty, "mpls"}
 {
 
-    yang_name = "encapsulation"; yang_parent_name = "mem-ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "mem-ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Member::MemIpv4::Encapsulation::~Encapsulation()
@@ -1989,6 +2013,7 @@ Native::BridgeDomain::BrdId::Member::MemIpv4::Encapsulation::~Encapsulation()
 
 bool Native::BridgeDomain::BrdId::Member::MemIpv4::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return mpls.is_set;
 }
 
@@ -2055,12 +2080,12 @@ bool Native::BridgeDomain::BrdId::Member::MemIpv4::Encapsulation::has_leaf_or_ch
 Native::BridgeDomain::BrdId::Member::ACR::ACR()
     :
     acr_int{YType::str, "acr-int"}
-    	,
+        ,
     service_instance(std::make_shared<Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance>())
 {
     service_instance->parent = this;
 
-    yang_name = "ACR"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ACR"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Member::ACR::~ACR()
@@ -2069,6 +2094,7 @@ Native::BridgeDomain::BrdId::Member::ACR::~ACR()
 
 bool Native::BridgeDomain::BrdId::Member::ACR::has_data() const
 {
+    if (is_presence_container) return true;
     return acr_int.is_set
 	|| (service_instance !=  nullptr && service_instance->has_data());
 }
@@ -2083,7 +2109,8 @@ bool Native::BridgeDomain::BrdId::Member::ACR::has_operation() const
 std::string Native::BridgeDomain::BrdId::Member::ACR::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ACR" <<"[acr-int='" <<acr_int <<"']";
+    path_buffer << "ACR";
+    ADD_KEY_TOKEN(acr_int, "acr-int");
     return path_buffer.str();
 }
 
@@ -2149,9 +2176,11 @@ bool Native::BridgeDomain::BrdId::Member::ACR::has_leaf_or_child_of_name(const s
 }
 
 Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::ServiceInstance()
+    :
+    id(this, {"id"})
 {
 
-    yang_name = "service-instance"; yang_parent_name = "ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-instance"; yang_parent_name = "ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::~ServiceInstance()
@@ -2160,7 +2189,8 @@ Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::~ServiceInstance()
 
 bool Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::has_data() const
 {
-    for (std::size_t index=0; index<id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<id.len(); index++)
     {
         if(id[index]->has_data())
             return true;
@@ -2170,7 +2200,7 @@ bool Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::has_data() const
 
 bool Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::has_operation() const
 {
-    for (std::size_t index=0; index<id.size(); index++)
+    for (std::size_t index=0; index<id.len(); index++)
     {
         if(id[index]->has_operation())
             return true;
@@ -2200,7 +2230,7 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Member::ACR::ServiceInstanc
     {
         auto c = std::make_shared<Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::Id>();
         c->parent = this;
-        id.push_back(c);
+        id.append(c);
         return c;
     }
 
@@ -2212,7 +2242,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Memb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : id)
+    for (auto c : id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2244,7 +2274,7 @@ Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::Id::Id()
     split_horizon{YType::empty, "split-horizon"}
 {
 
-    yang_name = "id"; yang_parent_name = "service-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "id"; yang_parent_name = "service-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::Id::~Id()
@@ -2253,6 +2283,7 @@ Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::Id::~Id()
 
 bool Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::Id::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| split_horizon.is_set;
 }
@@ -2267,7 +2298,8 @@ bool Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::Id::has_operatio
 std::string Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::Id::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "id" <<"[id='" <<id <<"']";
+    path_buffer << "id";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -2334,12 +2366,12 @@ Native::BridgeDomain::BrdId::Member::MemberInterface::MemberInterface()
     interface{YType::str, "interface"},
     interface_id{YType::str, "interface-id"},
     service_instance{YType::uint32, "service-instance"}
-    	,
+        ,
     split_horizon(std::make_shared<Native::BridgeDomain::BrdId::Member::MemberInterface::SplitHorizon>())
 {
     split_horizon->parent = this;
 
-    yang_name = "member-interface"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-interface"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Member::MemberInterface::~MemberInterface()
@@ -2348,6 +2380,7 @@ Native::BridgeDomain::BrdId::Member::MemberInterface::~MemberInterface()
 
 bool Native::BridgeDomain::BrdId::Member::MemberInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| interface_id.is_set
 	|| service_instance.is_set
@@ -2366,7 +2399,8 @@ bool Native::BridgeDomain::BrdId::Member::MemberInterface::has_operation() const
 std::string Native::BridgeDomain::BrdId::Member::MemberInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "member-interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "member-interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -2458,7 +2492,7 @@ Native::BridgeDomain::BrdId::Member::MemberInterface::SplitHorizon::SplitHorizon
     group{YType::uint8, "group"}
 {
 
-    yang_name = "split-horizon"; yang_parent_name = "member-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "split-horizon"; yang_parent_name = "member-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::BrdId::Member::MemberInterface::SplitHorizon::~SplitHorizon()
@@ -2467,6 +2501,7 @@ Native::BridgeDomain::BrdId::Member::MemberInterface::SplitHorizon::~SplitHorizo
 
 bool Native::BridgeDomain::BrdId::Member::MemberInterface::SplitHorizon::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -2535,7 +2570,7 @@ Native::BridgeDomain::CMac::CMac()
     aging_time{YType::uint16, "aging-time"}
 {
 
-    yang_name = "c-mac"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "c-mac"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::CMac::~CMac()
@@ -2544,6 +2579,7 @@ Native::BridgeDomain::CMac::~CMac()
 
 bool Native::BridgeDomain::CMac::has_data() const
 {
+    if (is_presence_container) return true;
     return aging_time.is_set;
 }
 
@@ -2620,7 +2656,7 @@ Native::BridgeDomain::Otv::Otv()
 {
     default_->parent = this;
 
-    yang_name = "otv"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "otv"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Otv::~Otv()
@@ -2629,6 +2665,7 @@ Native::BridgeDomain::Otv::~Otv()
 
 bool Native::BridgeDomain::Otv::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -2707,7 +2744,7 @@ Native::BridgeDomain::Otv::Default::Default()
     age_time{YType::uint16, "age-time"}
 {
 
-    yang_name = "default"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Otv::Default::~Default()
@@ -2716,6 +2753,7 @@ Native::BridgeDomain::Otv::Default::~Default()
 
 bool Native::BridgeDomain::Otv::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return age_time.is_set;
 }
 
@@ -2791,7 +2829,7 @@ Native::BridgeDomain::Parameterized::Parameterized()
     vlan(nullptr) // presence node
 {
 
-    yang_name = "parameterized"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "parameterized"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::~Parameterized()
@@ -2800,6 +2838,7 @@ Native::BridgeDomain::Parameterized::~Parameterized()
 
 bool Native::BridgeDomain::Parameterized::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -2876,16 +2915,16 @@ bool Native::BridgeDomain::Parameterized::has_leaf_or_child_of_name(const std::s
 Native::BridgeDomain::Parameterized::Vlan::Vlan()
     :
     shutdown{YType::empty, "shutdown"}
-    	,
+        ,
     ip(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Ip>())
-	,mac(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Mac>())
-	,member(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Member>())
+    , mac(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Mac>())
+    , member(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Member>())
 {
     ip->parent = this;
     mac->parent = this;
     member->parent = this;
 
-    yang_name = "vlan"; yang_parent_name = "parameterized"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan"; yang_parent_name = "parameterized"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::BridgeDomain::Parameterized::Vlan::~Vlan()
@@ -2894,6 +2933,7 @@ Native::BridgeDomain::Parameterized::Vlan::~Vlan()
 
 bool Native::BridgeDomain::Parameterized::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return shutdown.is_set
 	|| (ip !=  nullptr && ip->has_data())
 	|| (mac !=  nullptr && mac->has_data())
@@ -3018,7 +3058,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Ip()
 {
     igmp->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Ip::~Ip()
@@ -3027,6 +3067,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::~Ip()
 
 bool Native::BridgeDomain::Parameterized::Vlan::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (igmp !=  nullptr && igmp->has_data());
 }
 
@@ -3105,7 +3146,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Igmp()
     snooping(nullptr) // presence node
 {
 
-    yang_name = "igmp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "igmp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::~Igmp()
@@ -3114,6 +3155,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::~Igmp()
 
 bool Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (snooping !=  nullptr && snooping->has_data());
 }
 
@@ -3195,17 +3237,17 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Snooping()
     report_suppression{YType::empty, "report-suppression"},
     robustness_variable{YType::uint8, "robustness-variable"},
     static_{YType::str, "static"}
-    	,
+        ,
     check(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Check>())
-	,explicit_tracking(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::ExplicitTracking>())
-	,mrouter(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Mrouter>())
-	,querier(nullptr) // presence node
+    , explicit_tracking(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::ExplicitTracking>())
+    , mrouter(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Mrouter>())
+    , querier(nullptr) // presence node
 {
     check->parent = this;
     explicit_tracking->parent = this;
     mrouter->parent = this;
 
-    yang_name = "snooping"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snooping"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::~Snooping()
@@ -3214,6 +3256,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::~Snooping()
 
 bool Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::has_data() const
 {
+    if (is_presence_container) return true;
     return immediate_leave.is_set
 	|| last_member_query_count.is_set
 	|| last_member_query_interval.is_set
@@ -3419,7 +3462,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Check::Check()
     ttl{YType::empty, "ttl"}
 {
 
-    yang_name = "check"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "check"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Check::~Check()
@@ -3428,6 +3471,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Check::~Check()
 
 bool Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Check::has_data() const
 {
+    if (is_presence_container) return true;
     return rtr_alert_option.is_set
 	|| ttl.is_set;
 }
@@ -3516,7 +3560,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::ExplicitTracking:
     limit{YType::empty, "limit"}
 {
 
-    yang_name = "explicit-tracking"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "explicit-tracking"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::ExplicitTracking::~ExplicitTracking()
@@ -3525,6 +3569,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::ExplicitTracking:
 
 bool Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::ExplicitTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set;
 }
 
@@ -3600,7 +3645,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Mrouter::Mrouter(
     interface{YType::empty, "interface"}
 {
 
-    yang_name = "mrouter"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mrouter"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Mrouter::~Mrouter()
@@ -3609,6 +3654,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Mrouter::~Mrouter
 
 bool Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Mrouter::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -3689,7 +3735,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Querier::Querier(
     version{YType::empty, "version"}
 {
 
-    yang_name = "querier"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "querier"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Querier::~Querier()
@@ -3698,6 +3744,7 @@ Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Querier::~Querier
 
 bool Native::BridgeDomain::Parameterized::Vlan::Ip::Igmp::Snooping::Querier::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| max_response_time.is_set
 	|| query_interval.is_set
@@ -3837,12 +3884,12 @@ Native::BridgeDomain::Parameterized::Vlan::Mac::Mac()
     :
     aging_time{YType::uint16, "aging-time"},
     learning{YType::empty, "learning"}
-    	,
+        ,
     limit(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Mac::Limit>())
 {
     limit->parent = this;
 
-    yang_name = "mac"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Mac::~Mac()
@@ -3851,6 +3898,7 @@ Native::BridgeDomain::Parameterized::Vlan::Mac::~Mac()
 
 bool Native::BridgeDomain::Parameterized::Vlan::Mac::has_data() const
 {
+    if (is_presence_container) return true;
     return aging_time.is_set
 	|| learning.is_set
 	|| (limit !=  nullptr && limit->has_data());
@@ -3953,12 +4001,12 @@ bool Native::BridgeDomain::Parameterized::Vlan::Mac::has_leaf_or_child_of_name(c
 Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Limit()
     :
     action(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Action>())
-	,maximum(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Maximum>())
+    , maximum(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Maximum>())
 {
     action->parent = this;
     maximum->parent = this;
 
-    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::~Limit()
@@ -3967,6 +4015,7 @@ Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::~Limit()
 
 bool Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data())
 	|| (maximum !=  nullptr && maximum->has_data());
 }
@@ -4062,7 +4111,7 @@ Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Action::Action()
 {
     flooding->parent = this;
 
-    yang_name = "action"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "action"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Action::~Action()
@@ -4071,6 +4120,7 @@ Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Action::~Action()
 
 bool Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return (flooding !=  nullptr && flooding->has_data());
 }
 
@@ -4149,7 +4199,7 @@ Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Action::Flooding::Floodin
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "flooding"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flooding"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Action::Flooding::~Flooding()
@@ -4158,6 +4208,7 @@ Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Action::Flooding::~Floodi
 
 bool Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Action::Flooding::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -4233,7 +4284,7 @@ Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Maximum::Maximum()
     addresses{YType::uint32, "addresses"}
 {
 
-    yang_name = "maximum"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maximum"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Maximum::~Maximum()
@@ -4242,6 +4293,7 @@ Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Maximum::~Maximum()
 
 bool Native::BridgeDomain::Parameterized::Vlan::Mac::Limit::Maximum::has_data() const
 {
+    if (is_presence_container) return true;
     return addresses.is_set;
 }
 
@@ -4328,9 +4380,13 @@ Native::BridgeDomain::Parameterized::Vlan::Member::Member()
     vasiright{YType::uint16, "vasiright"},
     vfi{YType::str, "vfi"},
     vni{YType::uint32, "vni"}
+        ,
+    mem_ipv4(this, {"mem_ipv4"})
+    , acr(this, {"acr_int"})
+    , member_interface(this, {"interface"})
 {
 
-    yang_name = "member"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "member"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Member::~Member()
@@ -4339,17 +4395,18 @@ Native::BridgeDomain::Parameterized::Vlan::Member::~Member()
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::has_data() const
 {
-    for (std::size_t index=0; index<mem_ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mem_ipv4.len(); index++)
     {
         if(mem_ipv4[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<acr.size(); index++)
+    for (std::size_t index=0; index<acr.len(); index++)
     {
         if(acr[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<member_interface.size(); index++)
+    for (std::size_t index=0; index<member_interface.len(); index++)
     {
         if(member_interface[index]->has_data())
             return true;
@@ -4372,17 +4429,17 @@ bool Native::BridgeDomain::Parameterized::Vlan::Member::has_data() const
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::has_operation() const
 {
-    for (std::size_t index=0; index<mem_ipv4.size(); index++)
+    for (std::size_t index=0; index<mem_ipv4.len(); index++)
     {
         if(mem_ipv4[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<acr.size(); index++)
+    for (std::size_t index=0; index<acr.len(); index++)
     {
         if(acr[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<member_interface.size(); index++)
+    for (std::size_t index=0; index<member_interface.len(); index++)
     {
         if(member_interface[index]->has_operation())
             return true;
@@ -4447,7 +4504,7 @@ std::shared_ptr<Entity> Native::BridgeDomain::Parameterized::Vlan::Member::get_c
     {
         auto c = std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4>();
         c->parent = this;
-        mem_ipv4.push_back(c);
+        mem_ipv4.append(c);
         return c;
     }
 
@@ -4455,7 +4512,7 @@ std::shared_ptr<Entity> Native::BridgeDomain::Parameterized::Vlan::Member::get_c
     {
         auto c = std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Member::ACR>();
         c->parent = this;
-        acr.push_back(c);
+        acr.append(c);
         return c;
     }
 
@@ -4463,7 +4520,7 @@ std::shared_ptr<Entity> Native::BridgeDomain::Parameterized::Vlan::Member::get_c
     {
         auto c = std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface>();
         c->parent = this;
-        member_interface.push_back(c);
+        member_interface.append(c);
         return c;
     }
 
@@ -4475,7 +4532,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::Parameteriz
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mem_ipv4)
+    for (auto c : mem_ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4484,7 +4541,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::Parameteriz
     }
 
     count = 0;
-    for (auto const & c : acr)
+    for (auto c : acr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4493,7 +4550,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::Parameteriz
     }
 
     count = 0;
-    for (auto const & c : member_interface)
+    for (auto c : member_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4663,12 +4720,13 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemIpv4()
     :
     mem_ipv4{YType::str, "mem-ipv4"},
     template_{YType::str, "template"}
-    	,
-    encapsulation(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::Encapsulation>())
+        ,
+    mem_vcid(this, {"mem_vcid"})
+    , encapsulation(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::Encapsulation>())
 {
     encapsulation->parent = this;
 
-    yang_name = "mem-ipv4"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mem-ipv4"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::~MemIpv4()
@@ -4677,7 +4735,8 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::~MemIpv4()
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::has_data() const
 {
-    for (std::size_t index=0; index<mem_vcid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mem_vcid.len(); index++)
     {
         if(mem_vcid[index]->has_data())
             return true;
@@ -4689,7 +4748,7 @@ bool Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::has_data() cons
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::has_operation() const
 {
-    for (std::size_t index=0; index<mem_vcid.size(); index++)
+    for (std::size_t index=0; index<mem_vcid.len(); index++)
     {
         if(mem_vcid[index]->has_operation())
             return true;
@@ -4710,7 +4769,8 @@ std::string Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::get_abso
 std::string Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mem-ipv4" <<"[mem-ipv4='" <<mem_ipv4 <<"']";
+    path_buffer << "mem-ipv4";
+    ADD_KEY_TOKEN(mem_ipv4, "mem-ipv4");
     return path_buffer.str();
 }
 
@@ -4731,7 +4791,7 @@ std::shared_ptr<Entity> Native::BridgeDomain::Parameterized::Vlan::Member::MemIp
     {
         auto c = std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid>();
         c->parent = this;
-        mem_vcid.push_back(c);
+        mem_vcid.append(c);
         return c;
     }
 
@@ -4752,7 +4812,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::Parameteriz
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mem_vcid)
+    for (auto c : mem_vcid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4806,12 +4866,12 @@ bool Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::has_leaf_or_chi
 Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::MemVcid()
     :
     mem_vcid{YType::uint32, "mem-vcid"}
-    	,
+        ,
     encapsulation(nullptr) // presence node
-	,template_(nullptr) // presence node
+    , template_(nullptr) // presence node
 {
 
-    yang_name = "mem-vcid"; yang_parent_name = "mem-ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mem-vcid"; yang_parent_name = "mem-ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::~MemVcid()
@@ -4820,6 +4880,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::~MemVcid()
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::has_data() const
 {
+    if (is_presence_container) return true;
     return mem_vcid.is_set
 	|| (encapsulation !=  nullptr && encapsulation->has_data())
 	|| (template_ !=  nullptr && template_->has_data());
@@ -4836,7 +4897,8 @@ bool Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::has_op
 std::string Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mem-vcid" <<"[mem-vcid='" <<mem_vcid <<"']";
+    path_buffer << "mem-vcid";
+    ADD_KEY_TOKEN(mem_vcid, "mem-vcid");
     return path_buffer.str();
 }
 
@@ -4920,7 +4982,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Encapsulati
     mpls{YType::empty, "mpls"}
 {
 
-    yang_name = "encapsulation"; yang_parent_name = "mem-vcid"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "mem-vcid"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Encapsulation::~Encapsulation()
@@ -4929,6 +4991,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Encapsulati
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return mpls.is_set;
 }
 
@@ -4997,7 +5060,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Template::T
     template_{YType::str, "template"}
 {
 
-    yang_name = "template"; yang_parent_name = "mem-vcid"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "template"; yang_parent_name = "mem-vcid"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Template::~Template()
@@ -5006,6 +5069,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Template::~
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_.is_set;
 }
 
@@ -5074,7 +5138,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::Encapsulation::Encap
     mpls{YType::empty, "mpls"}
 {
 
-    yang_name = "encapsulation"; yang_parent_name = "mem-ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "mem-ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::Encapsulation::~Encapsulation()
@@ -5083,6 +5147,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::Encapsulation::~Enca
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return mpls.is_set;
 }
 
@@ -5149,12 +5214,12 @@ bool Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::Encapsulation::
 Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ACR()
     :
     acr_int{YType::str, "acr-int"}
-    	,
+        ,
     service_instance(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance>())
 {
     service_instance->parent = this;
 
-    yang_name = "ACR"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ACR"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Member::ACR::~ACR()
@@ -5163,6 +5228,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::ACR::~ACR()
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::ACR::has_data() const
 {
+    if (is_presence_container) return true;
     return acr_int.is_set
 	|| (service_instance !=  nullptr && service_instance->has_data());
 }
@@ -5184,7 +5250,8 @@ std::string Native::BridgeDomain::Parameterized::Vlan::Member::ACR::get_absolute
 std::string Native::BridgeDomain::Parameterized::Vlan::Member::ACR::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ACR" <<"[acr-int='" <<acr_int <<"']";
+    path_buffer << "ACR";
+    ADD_KEY_TOKEN(acr_int, "acr-int");
     return path_buffer.str();
 }
 
@@ -5250,9 +5317,11 @@ bool Native::BridgeDomain::Parameterized::Vlan::Member::ACR::has_leaf_or_child_o
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::ServiceInstance()
+    :
+    id(this, {"id"})
 {
 
-    yang_name = "service-instance"; yang_parent_name = "ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-instance"; yang_parent_name = "ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::~ServiceInstance()
@@ -5261,7 +5330,8 @@ Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::~Servic
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::has_data() const
 {
-    for (std::size_t index=0; index<id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<id.len(); index++)
     {
         if(id[index]->has_data())
             return true;
@@ -5271,7 +5341,7 @@ bool Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::ha
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::has_operation() const
 {
-    for (std::size_t index=0; index<id.size(); index++)
+    for (std::size_t index=0; index<id.len(); index++)
     {
         if(id[index]->has_operation())
             return true;
@@ -5301,7 +5371,7 @@ std::shared_ptr<Entity> Native::BridgeDomain::Parameterized::Vlan::Member::ACR::
     {
         auto c = std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::Id>();
         c->parent = this;
-        id.push_back(c);
+        id.append(c);
         return c;
     }
 
@@ -5313,7 +5383,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::Parameteriz
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : id)
+    for (auto c : id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5345,7 +5415,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::Id::Id(
     split_horizon{YType::empty, "split-horizon"}
 {
 
-    yang_name = "id"; yang_parent_name = "service-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "id"; yang_parent_name = "service-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::Id::~Id()
@@ -5354,6 +5424,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::Id::~Id
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::Id::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| split_horizon.is_set;
 }
@@ -5368,7 +5439,8 @@ bool Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::Id
 std::string Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::Id::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "id" <<"[id='" <<id <<"']";
+    path_buffer << "id";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -5435,12 +5507,12 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::MemberInterf
     interface{YType::str, "interface"},
     interface_id{YType::str, "interface-id"},
     service_instance{YType::uint32, "service-instance"}
-    	,
+        ,
     split_horizon(std::make_shared<Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::SplitHorizon>())
 {
     split_horizon->parent = this;
 
-    yang_name = "member-interface"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "member-interface"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::~MemberInterface()
@@ -5449,6 +5521,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::~MemberInter
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| interface_id.is_set
 	|| service_instance.is_set
@@ -5474,7 +5547,8 @@ std::string Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::
 std::string Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "member-interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "member-interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -5566,7 +5640,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::SplitHorizon
     group{YType::uint8, "group"}
 {
 
-    yang_name = "split-horizon"; yang_parent_name = "member-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "split-horizon"; yang_parent_name = "member-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::SplitHorizon::~SplitHorizon()
@@ -5575,6 +5649,7 @@ Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::SplitHorizon
 
 bool Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::SplitHorizon::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -5641,24 +5716,27 @@ bool Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::SplitHo
 Native::Crypto::Crypto()
     :
     xauth{YType::str, "Cisco-IOS-XE-crypto:xauth"}
-    	,
+        ,
     call(std::make_shared<Native::Crypto::Call>())
-	,engine(std::make_shared<Native::Crypto::Engine>())
-	,gdoi(std::make_shared<Native::Crypto::Gdoi>())
-	,ikev2(std::make_shared<Native::Crypto::Ikev2>())
-	,gkm(std::make_shared<Native::Crypto::Gkm>())
-	,ipsec(std::make_shared<Native::Crypto::Ipsec>())
-	,isakmp(std::make_shared<Native::Crypto::Isakmp>())
-	,key(std::make_shared<Native::Crypto::Key>())
-	,logging(std::make_shared<Native::Crypto::Logging>())
-	,crypto_map(std::make_shared<Native::Crypto::CryptoMap>())
-	,map_ipv6_gdoi(std::make_shared<Native::Crypto::MapIpv6Gdoi>())
-	,map_client(std::make_shared<Native::Crypto::MapClient>())
-	,mib(std::make_shared<Native::Crypto::Mib>())
-	,pki(std::make_shared<Native::Crypto::Pki>())
-	,tls_tunnel(std::make_shared<Native::Crypto::TlsTunnel>())
-	,ssl(std::make_shared<Native::Crypto::Ssl>())
-	,vpn(std::make_shared<Native::Crypto::Vpn>())
+    , dynamic_map(this, {"name", "sequence"})
+    , engine(std::make_shared<Native::Crypto::Engine>())
+    , gdoi(std::make_shared<Native::Crypto::Gdoi>())
+    , ikev2(std::make_shared<Native::Crypto::Ikev2>())
+    , gkm(std::make_shared<Native::Crypto::Gkm>())
+    , identity(this, {"name"})
+    , ipsec(std::make_shared<Native::Crypto::Ipsec>())
+    , isakmp(std::make_shared<Native::Crypto::Isakmp>())
+    , key(std::make_shared<Native::Crypto::Key>())
+    , keyring(this, {"name"})
+    , logging(std::make_shared<Native::Crypto::Logging>())
+    , crypto_map(std::make_shared<Native::Crypto::CryptoMap>())
+    , map_ipv6_gdoi(std::make_shared<Native::Crypto::MapIpv6Gdoi>())
+    , map_client(std::make_shared<Native::Crypto::MapClient>())
+    , mib(std::make_shared<Native::Crypto::Mib>())
+    , pki(std::make_shared<Native::Crypto::Pki>())
+    , tls_tunnel(std::make_shared<Native::Crypto::TlsTunnel>())
+    , ssl(std::make_shared<Native::Crypto::Ssl>())
+    , vpn(std::make_shared<Native::Crypto::Vpn>())
 {
     call->parent = this;
     engine->parent = this;
@@ -5678,7 +5756,7 @@ Native::Crypto::Crypto()
     ssl->parent = this;
     vpn->parent = this;
 
-    yang_name = "crypto"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "crypto"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::~Crypto()
@@ -5687,17 +5765,18 @@ Native::Crypto::~Crypto()
 
 bool Native::Crypto::has_data() const
 {
-    for (std::size_t index=0; index<dynamic_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dynamic_map.len(); index++)
     {
         if(dynamic_map[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<identity.size(); index++)
+    for (std::size_t index=0; index<identity.len(); index++)
     {
         if(identity[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<keyring.size(); index++)
+    for (std::size_t index=0; index<keyring.len(); index++)
     {
         if(keyring[index]->has_data())
             return true;
@@ -5724,17 +5803,17 @@ bool Native::Crypto::has_data() const
 
 bool Native::Crypto::has_operation() const
 {
-    for (std::size_t index=0; index<dynamic_map.size(); index++)
+    for (std::size_t index=0; index<dynamic_map.len(); index++)
     {
         if(dynamic_map[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<identity.size(); index++)
+    for (std::size_t index=0; index<identity.len(); index++)
     {
         if(identity[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<keyring.size(); index++)
+    for (std::size_t index=0; index<keyring.len(); index++)
     {
         if(keyring[index]->has_operation())
             return true;
@@ -5799,7 +5878,7 @@ std::shared_ptr<Entity> Native::Crypto::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Native::Crypto::DynamicMap>();
         c->parent = this;
-        dynamic_map.push_back(c);
+        dynamic_map.append(c);
         return c;
     }
 
@@ -5843,7 +5922,7 @@ std::shared_ptr<Entity> Native::Crypto::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Native::Crypto::Identity>();
         c->parent = this;
-        identity.push_back(c);
+        identity.append(c);
         return c;
     }
 
@@ -5878,7 +5957,7 @@ std::shared_ptr<Entity> Native::Crypto::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Native::Crypto::Keyring>();
         c->parent = this;
-        keyring.push_back(c);
+        keyring.append(c);
         return c;
     }
 
@@ -5976,7 +6055,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::get_children() co
     }
 
     count = 0;
-    for (auto const & c : dynamic_map)
+    for (auto c : dynamic_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6005,7 +6084,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::get_children() co
     }
 
     count = 0;
-    for (auto const & c : identity)
+    for (auto c : identity.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6029,7 +6108,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::get_children() co
     }
 
     count = 0;
-    for (auto const & c : keyring)
+    for (auto c : keyring.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6116,7 +6195,7 @@ Native::Crypto::Call::Call()
 {
     admission->parent = this;
 
-    yang_name = "call"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "call"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Call::~Call()
@@ -6125,6 +6204,7 @@ Native::Crypto::Call::~Call()
 
 bool Native::Crypto::Call::has_data() const
 {
+    if (is_presence_container) return true;
     return (admission !=  nullptr && admission->has_data());
 }
 
@@ -6204,7 +6284,7 @@ Native::Crypto::Call::Admission::Admission()
 {
     limit->parent = this;
 
-    yang_name = "admission"; yang_parent_name = "call"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "admission"; yang_parent_name = "call"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Call::Admission::~Admission()
@@ -6213,6 +6293,7 @@ Native::Crypto::Call::Admission::~Admission()
 
 bool Native::Crypto::Call::Admission::has_data() const
 {
+    if (is_presence_container) return true;
     return (limit !=  nullptr && limit->has_data());
 }
 
@@ -6289,14 +6370,14 @@ bool Native::Crypto::Call::Admission::has_leaf_or_child_of_name(const std::strin
 Native::Crypto::Call::Admission::Limit::Limit()
     :
     all(std::make_shared<Native::Crypto::Call::Admission::Limit::All>())
-	,ike(std::make_shared<Native::Crypto::Call::Admission::Limit::Ike>())
-	,ipsec(std::make_shared<Native::Crypto::Call::Admission::Limit::Ipsec>())
+    , ike(std::make_shared<Native::Crypto::Call::Admission::Limit::Ike>())
+    , ipsec(std::make_shared<Native::Crypto::Call::Admission::Limit::Ipsec>())
 {
     all->parent = this;
     ike->parent = this;
     ipsec->parent = this;
 
-    yang_name = "limit"; yang_parent_name = "admission"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "limit"; yang_parent_name = "admission"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Call::Admission::Limit::~Limit()
@@ -6305,6 +6386,7 @@ Native::Crypto::Call::Admission::Limit::~Limit()
 
 bool Native::Crypto::Call::Admission::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return (all !=  nullptr && all->has_data())
 	|| (ike !=  nullptr && ike->has_data())
 	|| (ipsec !=  nullptr && ipsec->has_data());
@@ -6415,7 +6497,7 @@ Native::Crypto::Call::Admission::Limit::All::All()
     in_negotiation_sa{YType::uint32, "in-negotiation-sa"}
 {
 
-    yang_name = "all"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Call::Admission::Limit::All::~All()
@@ -6424,6 +6506,7 @@ Native::Crypto::Call::Admission::Limit::All::~All()
 
 bool Native::Crypto::Call::Admission::Limit::All::has_data() const
 {
+    if (is_presence_container) return true;
     return in_negotiation_sa.is_set;
 }
 
@@ -6500,7 +6583,7 @@ Native::Crypto::Call::Admission::Limit::Ike::Ike()
     sa{YType::uint32, "sa"}
 {
 
-    yang_name = "ike"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ike"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Call::Admission::Limit::Ike::~Ike()
@@ -6509,6 +6592,7 @@ Native::Crypto::Call::Admission::Limit::Ike::~Ike()
 
 bool Native::Crypto::Call::Admission::Limit::Ike::has_data() const
 {
+    if (is_presence_container) return true;
     return in_negotiation_sa.is_set
 	|| sa.is_set;
 }
@@ -6597,7 +6681,7 @@ Native::Crypto::Call::Admission::Limit::Ipsec::Ipsec()
     sa{YType::uint32, "sa"}
 {
 
-    yang_name = "ipsec"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipsec"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Call::Admission::Limit::Ipsec::~Ipsec()
@@ -6606,6 +6690,7 @@ Native::Crypto::Call::Admission::Limit::Ipsec::~Ipsec()
 
 bool Native::Crypto::Call::Admission::Limit::Ipsec::has_data() const
 {
+    if (is_presence_container) return true;
     return sa.is_set;
 }
 
@@ -6681,13 +6766,13 @@ Native::Crypto::DynamicMap::DynamicMap()
     name{YType::str, "name"},
     sequence{YType::uint16, "sequence"},
     description{YType::str, "description"}
-    	,
+        ,
     default_(std::make_shared<Native::Crypto::DynamicMap::Default>())
-	,dialer(std::make_shared<Native::Crypto::DynamicMap::Dialer>())
-	,match(std::make_shared<Native::Crypto::DynamicMap::Match>())
-	,qos(std::make_shared<Native::Crypto::DynamicMap::Qos>())
-	,reverse_route(nullptr) // presence node
-	,set(std::make_shared<Native::Crypto::DynamicMap::Set>())
+    , dialer(std::make_shared<Native::Crypto::DynamicMap::Dialer>())
+    , match(std::make_shared<Native::Crypto::DynamicMap::Match>())
+    , qos(std::make_shared<Native::Crypto::DynamicMap::Qos>())
+    , reverse_route(nullptr) // presence node
+    , set(std::make_shared<Native::Crypto::DynamicMap::Set>())
 {
     default_->parent = this;
     dialer->parent = this;
@@ -6695,7 +6780,7 @@ Native::Crypto::DynamicMap::DynamicMap()
     qos->parent = this;
     set->parent = this;
 
-    yang_name = "dynamic-map"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dynamic-map"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::DynamicMap::~DynamicMap()
@@ -6704,6 +6789,7 @@ Native::Crypto::DynamicMap::~DynamicMap()
 
 bool Native::Crypto::DynamicMap::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| sequence.is_set
 	|| description.is_set
@@ -6739,7 +6825,9 @@ std::string Native::Crypto::DynamicMap::get_absolute_path() const
 std::string Native::Crypto::DynamicMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-crypto:dynamic-map" <<"[name='" <<name <<"']" <<"[sequence='" <<sequence <<"']";
+    path_buffer << "Cisco-IOS-XE-crypto:dynamic-map";
+    ADD_KEY_TOKEN(name, "name");
+    ADD_KEY_TOKEN(sequence, "sequence");
     return path_buffer.str();
 }
 
@@ -6899,19 +6987,19 @@ bool Native::Crypto::DynamicMap::has_leaf_or_child_of_name(const std::string & n
 Native::Crypto::DynamicMap::Default::Default()
     :
     description{YType::empty, "description"}
-    	,
+        ,
     dialer(std::make_shared<Native::Crypto::DynamicMap::Default::Dialer>())
-	,match(std::make_shared<Native::Crypto::DynamicMap::Default::Match>())
-	,qos(std::make_shared<Native::Crypto::DynamicMap::Default::Qos>())
-	,reverse_route(nullptr) // presence node
-	,set(std::make_shared<Native::Crypto::DynamicMap::Default::Set>())
+    , match(std::make_shared<Native::Crypto::DynamicMap::Default::Match>())
+    , qos(std::make_shared<Native::Crypto::DynamicMap::Default::Qos>())
+    , reverse_route(nullptr) // presence node
+    , set(std::make_shared<Native::Crypto::DynamicMap::Default::Set>())
 {
     dialer->parent = this;
     match->parent = this;
     qos->parent = this;
     set->parent = this;
 
-    yang_name = "default"; yang_parent_name = "dynamic-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "dynamic-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Default::~Default()
@@ -6920,6 +7008,7 @@ Native::Crypto::DynamicMap::Default::~Default()
 
 bool Native::Crypto::DynamicMap::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| (dialer !=  nullptr && dialer->has_data())
 	|| (match !=  nullptr && match->has_data())
@@ -7068,7 +7157,7 @@ Native::Crypto::DynamicMap::Default::Dialer::Dialer()
     pre_classify{YType::empty, "pre-classify"}
 {
 
-    yang_name = "dialer"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dialer"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Default::Dialer::~Dialer()
@@ -7077,6 +7166,7 @@ Native::Crypto::DynamicMap::Default::Dialer::~Dialer()
 
 bool Native::Crypto::DynamicMap::Default::Dialer::has_data() const
 {
+    if (is_presence_container) return true;
     return pre_classify.is_set;
 }
 
@@ -7145,7 +7235,7 @@ Native::Crypto::DynamicMap::Default::Match::Match()
     address{YType::empty, "address"}
 {
 
-    yang_name = "match"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Default::Match::~Match()
@@ -7154,6 +7244,7 @@ Native::Crypto::DynamicMap::Default::Match::~Match()
 
 bool Native::Crypto::DynamicMap::Default::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -7222,7 +7313,7 @@ Native::Crypto::DynamicMap::Default::Qos::Qos()
     pre_classify{YType::empty, "pre-classify"}
 {
 
-    yang_name = "qos"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Default::Qos::~Qos()
@@ -7231,6 +7322,7 @@ Native::Crypto::DynamicMap::Default::Qos::~Qos()
 
 bool Native::Crypto::DynamicMap::Default::Qos::has_data() const
 {
+    if (is_presence_container) return true;
     return pre_classify.is_set;
 }
 
@@ -7297,7 +7389,7 @@ bool Native::Crypto::DynamicMap::Default::Qos::has_leaf_or_child_of_name(const s
 Native::Crypto::DynamicMap::Default::ReverseRoute::ReverseRoute()
 {
 
-    yang_name = "reverse-route"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-route"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::DynamicMap::Default::ReverseRoute::~ReverseRoute()
@@ -7306,6 +7398,7 @@ Native::Crypto::DynamicMap::Default::ReverseRoute::~ReverseRoute()
 
 bool Native::Crypto::DynamicMap::Default::ReverseRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -7362,20 +7455,20 @@ Native::Crypto::DynamicMap::Default::Set::Set()
     ikev2_profile{YType::str, "ikev2-profile"},
     isakmp_profile{YType::str, "isakmp-profile"},
     transform_set{YType::empty, "transform-set"}
-    	,
+        ,
     ip(std::make_shared<Native::Crypto::DynamicMap::Default::Set::Ip>())
-	,nat(std::make_shared<Native::Crypto::DynamicMap::Default::Set::Nat>())
-	,peer_container(std::make_shared<Native::Crypto::DynamicMap::Default::Set::PeerContainer>())
-	,pfs(nullptr) // presence node
-	,reverse_route(nullptr) // presence node
-	,security_association(std::make_shared<Native::Crypto::DynamicMap::Default::Set::SecurityAssociation>())
+    , nat(std::make_shared<Native::Crypto::DynamicMap::Default::Set::Nat>())
+    , peer_container(std::make_shared<Native::Crypto::DynamicMap::Default::Set::PeerContainer>())
+    , pfs(nullptr) // presence node
+    , reverse_route(nullptr) // presence node
+    , security_association(std::make_shared<Native::Crypto::DynamicMap::Default::Set::SecurityAssociation>())
 {
     ip->parent = this;
     nat->parent = this;
     peer_container->parent = this;
     security_association->parent = this;
 
-    yang_name = "set"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Default::Set::~Set()
@@ -7384,6 +7477,7 @@ Native::Crypto::DynamicMap::Default::Set::~Set()
 
 bool Native::Crypto::DynamicMap::Default::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| identity.is_set
 	|| ikev2_profile.is_set
@@ -7601,7 +7695,7 @@ Native::Crypto::DynamicMap::Default::Set::Ip::Ip()
     direction{YType::enumeration, "direction"}
 {
 
-    yang_name = "ip"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Default::Set::Ip::~Ip()
@@ -7610,6 +7704,7 @@ Native::Crypto::DynamicMap::Default::Set::Ip::~Ip()
 
 bool Native::Crypto::DynamicMap::Default::Set::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return access_group.is_set
 	|| direction.is_set;
 }
@@ -7691,7 +7786,7 @@ Native::Crypto::DynamicMap::Default::Set::Nat::Nat()
     demux{YType::empty, "demux"}
 {
 
-    yang_name = "nat"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nat"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Default::Set::Nat::~Nat()
@@ -7700,6 +7795,7 @@ Native::Crypto::DynamicMap::Default::Set::Nat::~Nat()
 
 bool Native::Crypto::DynamicMap::Default::Set::Nat::has_data() const
 {
+    if (is_presence_container) return true;
     return demux.is_set;
 }
 
@@ -7769,7 +7865,7 @@ Native::Crypto::DynamicMap::Default::Set::PeerContainer::PeerContainer()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "peer-container"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-container"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Default::Set::PeerContainer::~PeerContainer()
@@ -7778,6 +7874,7 @@ Native::Crypto::DynamicMap::Default::Set::PeerContainer::~PeerContainer()
 
 bool Native::Crypto::DynamicMap::Default::Set::PeerContainer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer.is_set
 	|| default_.is_set;
 }
@@ -7857,7 +7954,7 @@ bool Native::Crypto::DynamicMap::Default::Set::PeerContainer::has_leaf_or_child_
 Native::Crypto::DynamicMap::Default::Set::Pfs::Pfs()
 {
 
-    yang_name = "pfs"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pfs"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::DynamicMap::Default::Set::Pfs::~Pfs()
@@ -7866,6 +7963,7 @@ Native::Crypto::DynamicMap::Default::Set::Pfs::~Pfs()
 
 bool Native::Crypto::DynamicMap::Default::Set::Pfs::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -7918,7 +8016,7 @@ bool Native::Crypto::DynamicMap::Default::Set::Pfs::has_leaf_or_child_of_name(co
 Native::Crypto::DynamicMap::Default::Set::ReverseRoute::ReverseRoute()
 {
 
-    yang_name = "reverse-route"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-route"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::DynamicMap::Default::Set::ReverseRoute::~ReverseRoute()
@@ -7927,6 +8025,7 @@ Native::Crypto::DynamicMap::Default::Set::ReverseRoute::~ReverseRoute()
 
 bool Native::Crypto::DynamicMap::Default::Set::ReverseRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -7980,17 +8079,17 @@ Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::SecurityAssociati
     :
     dfbit{YType::empty, "dfbit"},
     ecn{YType::empty, "ecn"}
-    	,
+        ,
     dummy(nullptr) // presence node
-	,idle_time_container(std::make_shared<Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::IdleTimeContainer>())
-	,lifetime(std::make_shared<Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Lifetime>())
-	,replay(std::make_shared<Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Replay>())
+    , idle_time_container(std::make_shared<Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::IdleTimeContainer>())
+    , lifetime(std::make_shared<Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Lifetime>())
+    , replay(std::make_shared<Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Replay>())
 {
     idle_time_container->parent = this;
     lifetime->parent = this;
     replay->parent = this;
 
-    yang_name = "security-association"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security-association"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::~SecurityAssociation()
@@ -7999,6 +8098,7 @@ Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::~SecurityAssociat
 
 bool Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::has_data() const
 {
+    if (is_presence_container) return true;
     return dfbit.is_set
 	|| ecn.is_set
 	|| (dummy !=  nullptr && dummy->has_data())
@@ -8142,7 +8242,7 @@ bool Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::has_leaf_or_
 Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Dummy::Dummy()
 {
 
-    yang_name = "dummy"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dummy"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Dummy::~Dummy()
@@ -8151,6 +8251,7 @@ Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Dummy::~Dummy()
 
 bool Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Dummy::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -8206,7 +8307,7 @@ Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::IdleTimeContainer
     default_{YType::empty, "default"}
 {
 
-    yang_name = "idle-time-container"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idle-time-container"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::IdleTimeContainer::~IdleTimeContainer()
@@ -8215,6 +8316,7 @@ Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::IdleTimeContainer
 
 bool Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::IdleTimeContainer::has_data() const
 {
+    if (is_presence_container) return true;
     return idle_time.is_set
 	|| default_.is_set;
 }
@@ -8298,7 +8400,7 @@ Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Lifetime::Lifetim
     seconds{YType::empty, "seconds"}
 {
 
-    yang_name = "lifetime"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lifetime"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Lifetime::~Lifetime()
@@ -8307,6 +8409,7 @@ Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Lifetime::~Lifeti
 
 bool Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Lifetime::has_data() const
 {
+    if (is_presence_container) return true;
     return days.is_set
 	|| kilobytes.is_set
 	|| seconds.is_set;
@@ -8402,7 +8505,7 @@ Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Replay::Replay()
     window_size{YType::empty, "window-size"}
 {
 
-    yang_name = "replay"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "replay"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Replay::~Replay()
@@ -8411,6 +8514,7 @@ Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Replay::~Replay()
 
 bool Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Replay::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| window_size.is_set;
 }
@@ -8492,7 +8596,7 @@ Native::Crypto::DynamicMap::Dialer::Dialer()
     pre_classify{YType::empty, "pre-classify"}
 {
 
-    yang_name = "dialer"; yang_parent_name = "dynamic-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dialer"; yang_parent_name = "dynamic-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Dialer::~Dialer()
@@ -8501,6 +8605,7 @@ Native::Crypto::DynamicMap::Dialer::~Dialer()
 
 bool Native::Crypto::DynamicMap::Dialer::has_data() const
 {
+    if (is_presence_container) return true;
     return pre_classify.is_set;
 }
 
@@ -8569,7 +8674,7 @@ Native::Crypto::DynamicMap::Match::Match()
     address{YType::str, "address"}
 {
 
-    yang_name = "match"; yang_parent_name = "dynamic-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "dynamic-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Match::~Match()
@@ -8578,6 +8683,7 @@ Native::Crypto::DynamicMap::Match::~Match()
 
 bool Native::Crypto::DynamicMap::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -8646,7 +8752,7 @@ Native::Crypto::DynamicMap::Qos::Qos()
     pre_classify{YType::empty, "pre-classify"}
 {
 
-    yang_name = "qos"; yang_parent_name = "dynamic-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos"; yang_parent_name = "dynamic-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Qos::~Qos()
@@ -8655,6 +8761,7 @@ Native::Crypto::DynamicMap::Qos::~Qos()
 
 bool Native::Crypto::DynamicMap::Qos::has_data() const
 {
+    if (is_presence_container) return true;
     return pre_classify.is_set;
 }
 
@@ -8721,12 +8828,12 @@ bool Native::Crypto::DynamicMap::Qos::has_leaf_or_child_of_name(const std::strin
 Native::Crypto::DynamicMap::ReverseRoute::ReverseRoute()
     :
     static_{YType::empty, "static"}
-    	,
+        ,
     remote_peer_conatiner(std::make_shared<Native::Crypto::DynamicMap::ReverseRoute::RemotePeerConatiner>())
 {
     remote_peer_conatiner->parent = this;
 
-    yang_name = "reverse-route"; yang_parent_name = "dynamic-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-route"; yang_parent_name = "dynamic-map"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::DynamicMap::ReverseRoute::~ReverseRoute()
@@ -8735,6 +8842,7 @@ Native::Crypto::DynamicMap::ReverseRoute::~ReverseRoute()
 
 bool Native::Crypto::DynamicMap::ReverseRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return static_.is_set
 	|| (remote_peer_conatiner !=  nullptr && remote_peer_conatiner->has_data());
 }
@@ -8821,7 +8929,7 @@ Native::Crypto::DynamicMap::ReverseRoute::RemotePeerConatiner::RemotePeerConatin
     static_{YType::empty, "static"}
 {
 
-    yang_name = "remote-peer-conatiner"; yang_parent_name = "reverse-route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-peer-conatiner"; yang_parent_name = "reverse-route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::ReverseRoute::RemotePeerConatiner::~RemotePeerConatiner()
@@ -8830,6 +8938,7 @@ Native::Crypto::DynamicMap::ReverseRoute::RemotePeerConatiner::~RemotePeerConati
 
 bool Native::Crypto::DynamicMap::ReverseRoute::RemotePeerConatiner::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_peer.is_set
 	|| gateway.is_set
 	|| static_.is_set;
@@ -8926,15 +9035,15 @@ Native::Crypto::DynamicMap::Set::Set()
     ikev2_profile{YType::str, "ikev2-profile"},
     isakmp_profile{YType::str, "isakmp-profile"},
     transform_set{YType::str, "transform-set"}
-    	,
+        ,
     peer(std::make_shared<Native::Crypto::DynamicMap::Set::Peer>())
-	,pfs(nullptr) // presence node
-	,reverse_route(std::make_shared<Native::Crypto::DynamicMap::Set::ReverseRoute>())
-	,ip_in(std::make_shared<Native::Crypto::DynamicMap::Set::IpIn>())
-	,ip_out(std::make_shared<Native::Crypto::DynamicMap::Set::IpOut>())
-	,nat(std::make_shared<Native::Crypto::DynamicMap::Set::Nat>())
-	,peer_container(std::make_shared<Native::Crypto::DynamicMap::Set::PeerContainer>())
-	,security_association(std::make_shared<Native::Crypto::DynamicMap::Set::SecurityAssociation>())
+    , pfs(nullptr) // presence node
+    , reverse_route(std::make_shared<Native::Crypto::DynamicMap::Set::ReverseRoute>())
+    , ip_in(std::make_shared<Native::Crypto::DynamicMap::Set::IpIn>())
+    , ip_out(std::make_shared<Native::Crypto::DynamicMap::Set::IpOut>())
+    , nat(std::make_shared<Native::Crypto::DynamicMap::Set::Nat>())
+    , peer_container(std::make_shared<Native::Crypto::DynamicMap::Set::PeerContainer>())
+    , security_association(std::make_shared<Native::Crypto::DynamicMap::Set::SecurityAssociation>())
 {
     peer->parent = this;
     reverse_route->parent = this;
@@ -8944,7 +9053,7 @@ Native::Crypto::DynamicMap::Set::Set()
     peer_container->parent = this;
     security_association->parent = this;
 
-    yang_name = "set"; yang_parent_name = "dynamic-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set"; yang_parent_name = "dynamic-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::~Set()
@@ -8953,6 +9062,7 @@ Native::Crypto::DynamicMap::Set::~Set()
 
 bool Native::Crypto::DynamicMap::Set::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : transform_set.getYLeafs())
     {
         if(leaf.is_set)
@@ -9211,7 +9321,7 @@ Native::Crypto::DynamicMap::Set::Peer::Peer()
     dynamic{YType::empty, "dynamic"}
 {
 
-    yang_name = "peer"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::Peer::~Peer()
@@ -9220,6 +9330,7 @@ Native::Crypto::DynamicMap::Set::Peer::~Peer()
 
 bool Native::Crypto::DynamicMap::Set::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| default_.is_set
 	|| dynamic.is_set;
@@ -9314,7 +9425,7 @@ Native::Crypto::DynamicMap::Set::Pfs::Pfs()
     group{YType::enumeration, "group"}
 {
 
-    yang_name = "pfs"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pfs"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::DynamicMap::Set::Pfs::~Pfs()
@@ -9323,6 +9434,7 @@ Native::Crypto::DynamicMap::Set::Pfs::~Pfs()
 
 bool Native::Crypto::DynamicMap::Set::Pfs::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -9392,7 +9504,7 @@ Native::Crypto::DynamicMap::Set::ReverseRoute::ReverseRoute()
     tag{YType::uint64, "tag"}
 {
 
-    yang_name = "reverse-route"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-route"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::ReverseRoute::~ReverseRoute()
@@ -9401,6 +9513,7 @@ Native::Crypto::DynamicMap::Set::ReverseRoute::~ReverseRoute()
 
 bool Native::Crypto::DynamicMap::Set::ReverseRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return distance.is_set
 	|| tag.is_set;
 }
@@ -9483,7 +9596,7 @@ Native::Crypto::DynamicMap::Set::IpIn::IpIn()
 {
     ip->parent = this;
 
-    yang_name = "ip-in"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-in"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::IpIn::~IpIn()
@@ -9492,6 +9605,7 @@ Native::Crypto::DynamicMap::Set::IpIn::~IpIn()
 
 bool Native::Crypto::DynamicMap::Set::IpIn::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -9564,7 +9678,7 @@ Native::Crypto::DynamicMap::Set::IpIn::Ip::Ip()
     in{YType::empty, "in"}
 {
 
-    yang_name = "ip"; yang_parent_name = "ip-in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "ip-in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::IpIn::Ip::~Ip()
@@ -9573,6 +9687,7 @@ Native::Crypto::DynamicMap::Set::IpIn::Ip::~Ip()
 
 bool Native::Crypto::DynamicMap::Set::IpIn::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return access_group.is_set
 	|| in.is_set;
 }
@@ -9655,7 +9770,7 @@ Native::Crypto::DynamicMap::Set::IpOut::IpOut()
 {
     ip->parent = this;
 
-    yang_name = "ip-out"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-out"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::IpOut::~IpOut()
@@ -9664,6 +9779,7 @@ Native::Crypto::DynamicMap::Set::IpOut::~IpOut()
 
 bool Native::Crypto::DynamicMap::Set::IpOut::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -9736,7 +9852,7 @@ Native::Crypto::DynamicMap::Set::IpOut::Ip::Ip()
     out{YType::empty, "out"}
 {
 
-    yang_name = "ip"; yang_parent_name = "ip-out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "ip-out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::IpOut::Ip::~Ip()
@@ -9745,6 +9861,7 @@ Native::Crypto::DynamicMap::Set::IpOut::Ip::~Ip()
 
 bool Native::Crypto::DynamicMap::Set::IpOut::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return access_group.is_set
 	|| out.is_set;
 }
@@ -9826,7 +9943,7 @@ Native::Crypto::DynamicMap::Set::Nat::Nat()
     demux{YType::empty, "demux"}
 {
 
-    yang_name = "nat"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nat"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::Nat::~Nat()
@@ -9835,6 +9952,7 @@ Native::Crypto::DynamicMap::Set::Nat::~Nat()
 
 bool Native::Crypto::DynamicMap::Set::Nat::has_data() const
 {
+    if (is_presence_container) return true;
     return demux.is_set;
 }
 
@@ -9904,7 +10022,7 @@ Native::Crypto::DynamicMap::Set::PeerContainer::PeerContainer()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "peer-container"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-container"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::PeerContainer::~PeerContainer()
@@ -9913,6 +10031,7 @@ Native::Crypto::DynamicMap::Set::PeerContainer::~PeerContainer()
 
 bool Native::Crypto::DynamicMap::Set::PeerContainer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer.is_set
 	|| default_.is_set;
 }
@@ -9993,18 +10112,18 @@ Native::Crypto::DynamicMap::Set::SecurityAssociation::SecurityAssociation()
     :
     dfbit{YType::enumeration, "dfbit"},
     ecn{YType::enumeration, "ecn"}
-    	,
+        ,
     dummy(std::make_shared<Native::Crypto::DynamicMap::Set::SecurityAssociation::Dummy>())
-	,idle_time_container(std::make_shared<Native::Crypto::DynamicMap::Set::SecurityAssociation::IdleTimeContainer>())
-	,lifetime(std::make_shared<Native::Crypto::DynamicMap::Set::SecurityAssociation::Lifetime>())
-	,replay(std::make_shared<Native::Crypto::DynamicMap::Set::SecurityAssociation::Replay>())
+    , idle_time_container(std::make_shared<Native::Crypto::DynamicMap::Set::SecurityAssociation::IdleTimeContainer>())
+    , lifetime(std::make_shared<Native::Crypto::DynamicMap::Set::SecurityAssociation::Lifetime>())
+    , replay(std::make_shared<Native::Crypto::DynamicMap::Set::SecurityAssociation::Replay>())
 {
     dummy->parent = this;
     idle_time_container->parent = this;
     lifetime->parent = this;
     replay->parent = this;
 
-    yang_name = "security-association"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security-association"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::SecurityAssociation::~SecurityAssociation()
@@ -10013,6 +10132,7 @@ Native::Crypto::DynamicMap::Set::SecurityAssociation::~SecurityAssociation()
 
 bool Native::Crypto::DynamicMap::Set::SecurityAssociation::has_data() const
 {
+    if (is_presence_container) return true;
     return dfbit.is_set
 	|| ecn.is_set
 	|| (dummy !=  nullptr && dummy->has_data())
@@ -10159,7 +10279,7 @@ Native::Crypto::DynamicMap::Set::SecurityAssociation::Dummy::Dummy()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "dummy"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dummy"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::SecurityAssociation::Dummy::~Dummy()
@@ -10168,6 +10288,7 @@ Native::Crypto::DynamicMap::Set::SecurityAssociation::Dummy::~Dummy()
 
 bool Native::Crypto::DynamicMap::Set::SecurityAssociation::Dummy::has_data() const
 {
+    if (is_presence_container) return true;
     return pps.is_set
 	|| seconds.is_set;
 }
@@ -10250,7 +10371,7 @@ Native::Crypto::DynamicMap::Set::SecurityAssociation::IdleTimeContainer::IdleTim
     default_{YType::empty, "default"}
 {
 
-    yang_name = "idle-time-container"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idle-time-container"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::SecurityAssociation::IdleTimeContainer::~IdleTimeContainer()
@@ -10259,6 +10380,7 @@ Native::Crypto::DynamicMap::Set::SecurityAssociation::IdleTimeContainer::~IdleTi
 
 bool Native::Crypto::DynamicMap::Set::SecurityAssociation::IdleTimeContainer::has_data() const
 {
+    if (is_presence_container) return true;
     return idle_time.is_set
 	|| default_.is_set;
 }
@@ -10342,7 +10464,7 @@ Native::Crypto::DynamicMap::Set::SecurityAssociation::Lifetime::Lifetime()
     seconds{YType::uint64, "seconds"}
 {
 
-    yang_name = "lifetime"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lifetime"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::SecurityAssociation::Lifetime::~Lifetime()
@@ -10351,6 +10473,7 @@ Native::Crypto::DynamicMap::Set::SecurityAssociation::Lifetime::~Lifetime()
 
 bool Native::Crypto::DynamicMap::Set::SecurityAssociation::Lifetime::has_data() const
 {
+    if (is_presence_container) return true;
     return days.is_set
 	|| kilobytes.is_set
 	|| seconds.is_set;
@@ -10446,7 +10569,7 @@ Native::Crypto::DynamicMap::Set::SecurityAssociation::Replay::Replay()
     window_size{YType::enumeration, "window-size"}
 {
 
-    yang_name = "replay"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "replay"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::DynamicMap::Set::SecurityAssociation::Replay::~Replay()
@@ -10455,6 +10578,7 @@ Native::Crypto::DynamicMap::Set::SecurityAssociation::Replay::~Replay()
 
 bool Native::Crypto::DynamicMap::Set::SecurityAssociation::Replay::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| window_size.is_set;
 }
@@ -10536,7 +10660,7 @@ Native::Crypto::Engine::Engine()
     software{YType::enumeration, "software"}
 {
 
-    yang_name = "engine"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "engine"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Engine::~Engine()
@@ -10545,6 +10669,7 @@ Native::Crypto::Engine::~Engine()
 
 bool Native::Crypto::Engine::has_data() const
 {
+    if (is_presence_container) return true;
     return software.is_set;
 }
 
@@ -10616,9 +10741,11 @@ bool Native::Crypto::Engine::has_leaf_or_child_of_name(const std::string & name)
 }
 
 Native::Crypto::Gdoi::Gdoi()
+    :
+    group(this, {"name"})
 {
 
-    yang_name = "gdoi"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "gdoi"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Gdoi::~Gdoi()
@@ -10627,7 +10754,8 @@ Native::Crypto::Gdoi::~Gdoi()
 
 bool Native::Crypto::Gdoi::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -10637,7 +10765,7 @@ bool Native::Crypto::Gdoi::has_data() const
 
 bool Native::Crypto::Gdoi::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -10674,7 +10802,7 @@ std::shared_ptr<Entity> Native::Crypto::Gdoi::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Native::Crypto::Gdoi::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -10686,7 +10814,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gdoi::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10717,18 +10845,18 @@ Native::Crypto::Gdoi::Group::Group()
     name{YType::str, "name"},
     ipv6{YType::empty, "ipv6"},
     passive{YType::empty, "passive"}
-    	,
+        ,
     client(std::make_shared<Native::Crypto::Gdoi::Group::Client>())
-	,identity(std::make_shared<Native::Crypto::Gdoi::Group::Identity>())
-	,server(std::make_shared<Native::Crypto::Gdoi::Group::Server>())
-	,default_(std::make_shared<Native::Crypto::Gdoi::Group::Default>())
+    , identity(std::make_shared<Native::Crypto::Gdoi::Group::Identity>())
+    , server(std::make_shared<Native::Crypto::Gdoi::Group::Server>())
+    , default_(std::make_shared<Native::Crypto::Gdoi::Group::Default>())
 {
     client->parent = this;
     identity->parent = this;
     server->parent = this;
     default_->parent = this;
 
-    yang_name = "group"; yang_parent_name = "gdoi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "gdoi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Gdoi::Group::~Group()
@@ -10737,6 +10865,7 @@ Native::Crypto::Gdoi::Group::~Group()
 
 bool Native::Crypto::Gdoi::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| ipv6.is_set
 	|| passive.is_set
@@ -10768,7 +10897,8 @@ std::string Native::Crypto::Gdoi::Group::get_absolute_path() const
 std::string Native::Crypto::Gdoi::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[name='" <<name <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10902,12 +11032,12 @@ Native::Crypto::Gdoi::Group::Client::Client()
     bypass_policy{YType::empty, "bypass-policy"},
     transform_sets{YType::str, "transform-sets"},
     transport_encrypt_key{YType::enumeration, "transport-encrypt-key"}
-    	,
+        ,
     protocol(std::make_shared<Native::Crypto::Gdoi::Group::Client::Protocol>())
-	,recovery_check(std::make_shared<Native::Crypto::Gdoi::Group::Client::RecoveryCheck>())
-	,registration(std::make_shared<Native::Crypto::Gdoi::Group::Client::Registration>())
-	,rekey(std::make_shared<Native::Crypto::Gdoi::Group::Client::Rekey>())
-	,status(std::make_shared<Native::Crypto::Gdoi::Group::Client::Status>())
+    , recovery_check(std::make_shared<Native::Crypto::Gdoi::Group::Client::RecoveryCheck>())
+    , registration(std::make_shared<Native::Crypto::Gdoi::Group::Client::Registration>())
+    , rekey(std::make_shared<Native::Crypto::Gdoi::Group::Client::Rekey>())
+    , status(std::make_shared<Native::Crypto::Gdoi::Group::Client::Status>())
 {
     protocol->parent = this;
     recovery_check->parent = this;
@@ -10915,7 +11045,7 @@ Native::Crypto::Gdoi::Group::Client::Client()
     rekey->parent = this;
     status->parent = this;
 
-    yang_name = "client"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Client::~Client()
@@ -10924,6 +11054,7 @@ Native::Crypto::Gdoi::Group::Client::~Client()
 
 bool Native::Crypto::Gdoi::Group::Client::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : transform_sets.getYLeafs())
     {
         if(leaf.is_set)
@@ -11107,7 +11238,7 @@ Native::Crypto::Gdoi::Group::Client::Protocol::Protocol()
     gikev2{YType::str, "gikev2"}
 {
 
-    yang_name = "protocol"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Client::Protocol::~Protocol()
@@ -11116,6 +11247,7 @@ Native::Crypto::Gdoi::Group::Client::Protocol::~Protocol()
 
 bool Native::Crypto::Gdoi::Group::Client::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return gdoi.is_set
 	|| gikev2.is_set;
 }
@@ -11197,7 +11329,7 @@ Native::Crypto::Gdoi::Group::Client::RecoveryCheck::RecoveryCheck()
     interval{YType::uint16, "interval"}
 {
 
-    yang_name = "recovery-check"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "recovery-check"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Client::RecoveryCheck::~RecoveryCheck()
@@ -11206,6 +11338,7 @@ Native::Crypto::Gdoi::Group::Client::RecoveryCheck::~RecoveryCheck()
 
 bool Native::Crypto::Gdoi::Group::Client::RecoveryCheck::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set;
 }
 
@@ -11274,7 +11407,7 @@ Native::Crypto::Gdoi::Group::Client::Registration::Registration()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "registration"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "registration"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Client::Registration::~Registration()
@@ -11283,6 +11416,7 @@ Native::Crypto::Gdoi::Group::Client::Registration::~Registration()
 
 bool Native::Crypto::Gdoi::Group::Client::Registration::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -11349,12 +11483,12 @@ bool Native::Crypto::Gdoi::Group::Client::Registration::has_leaf_or_child_of_nam
 Native::Crypto::Gdoi::Group::Client::Rekey::Rekey()
     :
     encryption(std::make_shared<Native::Crypto::Gdoi::Group::Client::Rekey::Encryption>())
-	,hash(std::make_shared<Native::Crypto::Gdoi::Group::Client::Rekey::Hash>())
+    , hash(std::make_shared<Native::Crypto::Gdoi::Group::Client::Rekey::Hash>())
 {
     encryption->parent = this;
     hash->parent = this;
 
-    yang_name = "rekey"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rekey"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Client::Rekey::~Rekey()
@@ -11363,6 +11497,7 @@ Native::Crypto::Gdoi::Group::Client::Rekey::~Rekey()
 
 bool Native::Crypto::Gdoi::Group::Client::Rekey::has_data() const
 {
+    if (is_presence_container) return true;
     return (encryption !=  nullptr && encryption->has_data())
 	|| (hash !=  nullptr && hash->has_data());
 }
@@ -11454,7 +11589,7 @@ Native::Crypto::Gdoi::Group::Client::Rekey::Encryption::Encryption()
     des_cbc{YType::empty, "des-cbc"}
 {
 
-    yang_name = "encryption"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encryption"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Client::Rekey::Encryption::~Encryption()
@@ -11463,6 +11598,7 @@ Native::Crypto::Gdoi::Group::Client::Rekey::Encryption::~Encryption()
 
 bool Native::Crypto::Gdoi::Group::Client::Rekey::Encryption::has_data() const
 {
+    if (is_presence_container) return true;
     return rekey_3des_cbc.is_set
 	|| aes_128.is_set
 	|| aes_192.is_set
@@ -11586,7 +11722,7 @@ Native::Crypto::Gdoi::Group::Client::Rekey::Hash::Hash()
     sha512{YType::empty, "sha512"}
 {
 
-    yang_name = "hash"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hash"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Client::Rekey::Hash::~Hash()
@@ -11595,6 +11731,7 @@ Native::Crypto::Gdoi::Group::Client::Rekey::Hash::~Hash()
 
 bool Native::Crypto::Gdoi::Group::Client::Rekey::Hash::has_data() const
 {
+    if (is_presence_container) return true;
     return sha.is_set
 	|| sha256.is_set
 	|| sha384.is_set
@@ -11703,7 +11840,7 @@ Native::Crypto::Gdoi::Group::Client::Status::Status()
 {
     active_sa->parent = this;
 
-    yang_name = "status"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "status"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Client::Status::~Status()
@@ -11712,6 +11849,7 @@ Native::Crypto::Gdoi::Group::Client::Status::~Status()
 
 bool Native::Crypto::Gdoi::Group::Client::Status::has_data() const
 {
+    if (is_presence_container) return true;
     return (active_sa !=  nullptr && active_sa->has_data());
 }
 
@@ -11783,7 +11921,7 @@ Native::Crypto::Gdoi::Group::Client::Status::ActiveSa::ActiveSa()
     track{YType::uint16, "track"}
 {
 
-    yang_name = "active-sa"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "active-sa"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Client::Status::ActiveSa::~ActiveSa()
@@ -11792,6 +11930,7 @@ Native::Crypto::Gdoi::Group::Client::Status::ActiveSa::~ActiveSa()
 
 bool Native::Crypto::Gdoi::Group::Client::Status::ActiveSa::has_data() const
 {
+    if (is_presence_container) return true;
     return track.is_set;
 }
 
@@ -11858,12 +11997,12 @@ bool Native::Crypto::Gdoi::Group::Client::Status::ActiveSa::has_leaf_or_child_of
 Native::Crypto::Gdoi::Group::Identity::Identity()
     :
     number{YType::uint64, "number"}
-    	,
+        ,
     address(std::make_shared<Native::Crypto::Gdoi::Group::Identity::Address>())
 {
     address->parent = this;
 
-    yang_name = "identity"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "identity"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Identity::~Identity()
@@ -11872,6 +12011,7 @@ Native::Crypto::Gdoi::Group::Identity::~Identity()
 
 bool Native::Crypto::Gdoi::Group::Identity::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (address !=  nullptr && address->has_data());
 }
@@ -11956,7 +12096,7 @@ Native::Crypto::Gdoi::Group::Identity::Address::Address()
     ipv4{YType::str, "ipv4"}
 {
 
-    yang_name = "address"; yang_parent_name = "identity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "identity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Identity::Address::~Address()
@@ -11965,6 +12105,7 @@ Native::Crypto::Gdoi::Group::Identity::Address::~Address()
 
 bool Native::Crypto::Gdoi::Group::Identity::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set;
 }
 
@@ -12031,14 +12172,14 @@ bool Native::Crypto::Gdoi::Group::Identity::Address::has_leaf_or_child_of_name(c
 Native::Crypto::Gdoi::Group::Server::Server()
     :
     address(std::make_shared<Native::Crypto::Gdoi::Group::Server::Address>())
-	,hostname(std::make_shared<Native::Crypto::Gdoi::Group::Server::Hostname>())
-	,local(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local>())
+    , hostname(std::make_shared<Native::Crypto::Gdoi::Group::Server::Hostname>())
+    , local(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local>())
 {
     address->parent = this;
     hostname->parent = this;
     local->parent = this;
 
-    yang_name = "server"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::~Server()
@@ -12047,6 +12188,7 @@ Native::Crypto::Gdoi::Group::Server::~Server()
 
 bool Native::Crypto::Gdoi::Group::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data())
 	|| (hostname !=  nullptr && hostname->has_data())
 	|| (local !=  nullptr && local->has_data());
@@ -12151,7 +12293,7 @@ Native::Crypto::Gdoi::Group::Server::Address::Address()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "address"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Address::~Address()
@@ -12160,6 +12302,7 @@ Native::Crypto::Gdoi::Group::Server::Address::~Address()
 
 bool Native::Crypto::Gdoi::Group::Server::Address::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : ipv4.getYLeafs())
     {
         if(leaf.is_set)
@@ -12258,7 +12401,7 @@ Native::Crypto::Gdoi::Group::Server::Hostname::Hostname()
     ipv4{YType::str, "ipv4"}
 {
 
-    yang_name = "hostname"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hostname"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Hostname::~Hostname()
@@ -12267,6 +12410,7 @@ Native::Crypto::Gdoi::Group::Server::Hostname::~Hostname()
 
 bool Native::Crypto::Gdoi::Group::Server::Hostname::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set;
 }
 
@@ -12334,16 +12478,16 @@ Native::Crypto::Gdoi::Group::Server::Local::Local()
     :
     gdoi{YType::empty, "gdoi"},
     gikev2{YType::str, "gikev2"}
-    	,
+        ,
     address(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Address>())
-	,authorization(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Authorization>())
-	,group(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Group_>())
-	,identifier(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Identifier>())
-	,redundancy(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Redundancy>())
-	,registration(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Registration>())
-	,rekey(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey>())
-	,sa(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa>())
-	,default_(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Default>())
+    , authorization(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Authorization>())
+    , group(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Group_>())
+    , identifier(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Identifier>())
+    , redundancy(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Redundancy>())
+    , registration(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Registration>())
+    , rekey(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey>())
+    , sa(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa>())
+    , default_(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Default>())
 {
     address->parent = this;
     authorization->parent = this;
@@ -12355,7 +12499,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Local()
     sa->parent = this;
     default_->parent = this;
 
-    yang_name = "local"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::~Local()
@@ -12364,6 +12508,7 @@ Native::Crypto::Gdoi::Group::Server::Local::~Local()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return gdoi.is_set
 	|| gikev2.is_set
 	|| (address !=  nullptr && address->has_data())
@@ -12589,7 +12734,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Address::Address()
     ipv4{YType::str, "ipv4"}
 {
 
-    yang_name = "address"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Address::~Address()
@@ -12598,6 +12743,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Address::~Address()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set;
 }
 
@@ -12664,12 +12810,12 @@ bool Native::Crypto::Gdoi::Group::Server::Local::Address::has_leaf_or_child_of_n
 Native::Crypto::Gdoi::Group::Server::Local::Authorization::Authorization()
     :
     identity{YType::str, "identity"}
-    	,
+        ,
     address(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Authorization::Address>())
 {
     address->parent = this;
 
-    yang_name = "authorization"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorization"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Authorization::~Authorization()
@@ -12678,6 +12824,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Authorization::~Authorization()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Authorization::has_data() const
 {
+    if (is_presence_container) return true;
     return identity.is_set
 	|| (address !=  nullptr && address->has_data());
 }
@@ -12762,7 +12909,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Authorization::Address::Address()
     ipv4{YType::str, "ipv4"}
 {
 
-    yang_name = "address"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Authorization::Address::~Address()
@@ -12771,6 +12918,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Authorization::Address::~Address()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Authorization::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set;
 }
 
@@ -12840,7 +12988,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Group_::Group_()
 {
     size->parent = this;
 
-    yang_name = "group"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Group_::~Group_()
@@ -12849,6 +12997,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Group_::~Group_()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Group_::has_data() const
 {
+    if (is_presence_container) return true;
     return (size !=  nullptr && size->has_data());
 }
 
@@ -12922,7 +13071,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Group_::Size::Size()
     small{YType::enumeration, "small"}
 {
 
-    yang_name = "size"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "size"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Group_::Size::~Size()
@@ -12931,6 +13080,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Group_::Size::~Size()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Group_::Size::has_data() const
 {
+    if (is_presence_container) return true;
     return large.is_set
 	|| medium.is_set
 	|| small.is_set;
@@ -13023,14 +13173,14 @@ bool Native::Crypto::Gdoi::Group::Server::Local::Group_::Size::has_leaf_or_child
 Native::Crypto::Gdoi::Group::Server::Local::Identifier::Identifier()
     :
     value_{YType::uint8, "value"}
-    	,
+        ,
     default_(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default>())
-	,range(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Identifier::Range>())
+    , range(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Identifier::Range>())
 {
     default_->parent = this;
     range->parent = this;
 
-    yang_name = "identifier"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "identifier"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Identifier::~Identifier()
@@ -13039,6 +13189,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Identifier::~Identifier()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Identifier::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| (default_ !=  nullptr && default_->has_data())
 	|| (range !=  nullptr && range->has_data());
@@ -13137,12 +13288,12 @@ bool Native::Crypto::Gdoi::Group::Server::Local::Identifier::has_leaf_or_child_o
 Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::Default()
     :
     value_{YType::uint8, "value"}
-    	,
+        ,
     range(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::Range>())
 {
     range->parent = this;
 
-    yang_name = "default"; yang_parent_name = "identifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "identifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::~Default()
@@ -13151,6 +13302,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::~Default()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| (range !=  nullptr && range->has_data());
 }
@@ -13237,7 +13389,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::Range::Range()
     highest{YType::uint8, "highest"}
 {
 
-    yang_name = "range"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::Range::~Range()
@@ -13246,6 +13398,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::Range::~Range()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return lowest.is_set
 	|| hyphen.is_set
 	|| highest.is_set;
@@ -13342,7 +13495,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Identifier::Range::Range()
     highest{YType::uint8, "highest"}
 {
 
-    yang_name = "range"; yang_parent_name = "identifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "identifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Identifier::Range::~Range()
@@ -13351,6 +13504,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Identifier::Range::~Range()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Identifier::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return lowest.is_set
 	|| hyphen.is_set
 	|| highest.is_set;
@@ -13443,14 +13597,14 @@ bool Native::Crypto::Gdoi::Group::Server::Local::Identifier::Range::has_leaf_or_
 Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Redundancy()
     :
     default_(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default>())
-	,local(nullptr) // presence node
-	,peer(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Peer>())
-	,protocol(nullptr) // presence node
+    , local(nullptr) // presence node
+    , peer(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Peer>())
+    , protocol(nullptr) // presence node
 {
     default_->parent = this;
     peer->parent = this;
 
-    yang_name = "redundancy"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redundancy"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Redundancy::~Redundancy()
@@ -13459,6 +13613,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::~Redundancy()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Redundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data())
 	|| (local !=  nullptr && local->has_data())
 	|| (peer !=  nullptr && peer->has_data())
@@ -13576,12 +13731,12 @@ bool Native::Crypto::Gdoi::Group::Server::Local::Redundancy::has_leaf_or_child_o
 Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Default()
     :
     local(nullptr) // presence node
-	,peer(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer>())
-	,protocol(nullptr) // presence node
+    , peer(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer>())
+    , protocol(nullptr) // presence node
 {
     peer->parent = this;
 
-    yang_name = "default"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::~Default()
@@ -13590,6 +13745,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::~Default()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (local !=  nullptr && local->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (protocol !=  nullptr && protocol->has_data());
@@ -13693,7 +13849,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Local_::Local_(
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "local"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Local_::~Local_()
@@ -13702,6 +13858,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Local_::~Local_
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Local_::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set;
 }
 
@@ -13771,7 +13928,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer::Peer()
 {
     address->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer::~Peer()
@@ -13780,6 +13937,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer::~Peer()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -13851,7 +14009,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer::Address::
     ipv4{YType::str, "ipv4"}
 {
 
-    yang_name = "address"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer::Address::~Address()
@@ -13860,6 +14018,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer::Address::
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set;
 }
 
@@ -13929,7 +14088,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Protocol::Proto
     version{YType::enumeration, "version"}
 {
 
-    yang_name = "protocol"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Protocol::~Protocol()
@@ -13938,6 +14097,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Protocol::~Prot
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return pdu.is_set
 	|| version.is_set;
 }
@@ -14019,7 +14179,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Local_::Local_()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "local"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Local_::~Local_()
@@ -14028,6 +14188,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Local_::~Local_()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Local_::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set;
 }
 
@@ -14097,7 +14258,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Peer::Peer()
 {
     address->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Peer::~Peer()
@@ -14106,6 +14267,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Peer::~Peer()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -14177,7 +14339,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Peer::Address::Address()
     ipv4{YType::str, "ipv4"}
 {
 
-    yang_name = "address"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Peer::Address::~Address()
@@ -14186,6 +14348,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Peer::Address::~Address(
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Peer::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set;
 }
 
@@ -14255,7 +14418,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Protocol::Protocol()
     version{YType::enumeration, "version"}
 {
 
-    yang_name = "protocol"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Protocol::~Protocol()
@@ -14264,6 +14427,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Protocol::~Protocol()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return pdu.is_set
 	|| version.is_set;
 }
@@ -14343,12 +14507,12 @@ bool Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Protocol::has_leaf_
 Native::Crypto::Gdoi::Group::Server::Local::Registration::Registration()
     :
     interface{YType::str, "interface"}
-    	,
+        ,
     periodic(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Registration::Periodic>())
 {
     periodic->parent = this;
 
-    yang_name = "registration"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "registration"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Registration::~Registration()
@@ -14357,6 +14521,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Registration::~Registration()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Registration::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| (periodic !=  nullptr && periodic->has_data());
 }
@@ -14442,7 +14607,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Registration::Periodic::Periodic()
 {
     crl->parent = this;
 
-    yang_name = "periodic"; yang_parent_name = "registration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "periodic"; yang_parent_name = "registration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Registration::Periodic::~Periodic()
@@ -14451,6 +14616,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Registration::Periodic::~Periodic()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Registration::Periodic::has_data() const
 {
+    if (is_presence_container) return true;
     return (crl !=  nullptr && crl->has_data());
 }
 
@@ -14522,7 +14688,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Registration::Periodic::Crl::Crl()
     trustpoint{YType::str, "trustpoint"}
 {
 
-    yang_name = "crl"; yang_parent_name = "periodic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crl"; yang_parent_name = "periodic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Registration::Periodic::Crl::~Crl()
@@ -14531,6 +14697,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Registration::Periodic::Crl::~Crl()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Registration::Periodic::Crl::has_data() const
 {
+    if (is_presence_container) return true;
     return trustpoint.is_set;
 }
 
@@ -14597,14 +14764,14 @@ bool Native::Crypto::Gdoi::Group::Server::Local::Registration::Periodic::Crl::ha
 Native::Crypto::Gdoi::Group::Server::Local::Rekey::Rekey()
     :
     acknowledgement{YType::enumeration, "acknowledgement"}
-    	,
+        ,
     address(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::Address>())
-	,algorithm(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::Algorithm>())
-	,authentication(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::Authentication>())
-	,lifetime(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::Lifetime>())
-	,retransmit(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::Retransmit>())
-	,sig_hash(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::SigHash>())
-	,transport(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::Transport>())
+    , algorithm(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::Algorithm>())
+    , authentication(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::Authentication>())
+    , lifetime(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::Lifetime>())
+    , retransmit(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::Retransmit>())
+    , sig_hash(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::SigHash>())
+    , transport(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Rekey::Transport>())
 {
     address->parent = this;
     algorithm->parent = this;
@@ -14614,7 +14781,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Rekey()
     sig_hash->parent = this;
     transport->parent = this;
 
-    yang_name = "rekey"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rekey"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Rekey::~Rekey()
@@ -14623,6 +14790,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::~Rekey()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Rekey::has_data() const
 {
+    if (is_presence_container) return true;
     return acknowledgement.is_set
 	|| (address !=  nullptr && address->has_data())
 	|| (algorithm !=  nullptr && algorithm->has_data())
@@ -14803,7 +14971,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Address::Address()
     ipv4{YType::str, "ipv4"}
 {
 
-    yang_name = "address"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Rekey::Address::~Address()
@@ -14812,6 +14980,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Address::~Address()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Rekey::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set;
 }
 
@@ -14884,7 +15053,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Algorithm::Algorithm()
     des_cbc{YType::empty, "des-cbc"}
 {
 
-    yang_name = "algorithm"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "algorithm"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Rekey::Algorithm::~Algorithm()
@@ -14893,6 +15062,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Algorithm::~Algorithm()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Rekey::Algorithm::has_data() const
 {
+    if (is_presence_container) return true;
     return a3des_cbc.is_set
 	|| aes_128.is_set
 	|| aes_192.is_set
@@ -15014,7 +15184,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Authentication::Authenticatio
 {
     mypubkey->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Rekey::Authentication::~Authentication()
@@ -15023,6 +15193,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Authentication::~Authenticati
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Rekey::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (mypubkey !=  nullptr && mypubkey->has_data());
 }
 
@@ -15094,7 +15265,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Authentication::Mypubkey::Myp
     rsa{YType::str, "rsa"}
 {
 
-    yang_name = "mypubkey"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mypubkey"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Rekey::Authentication::Mypubkey::~Mypubkey()
@@ -15103,6 +15274,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Authentication::Mypubkey::~My
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Rekey::Authentication::Mypubkey::has_data() const
 {
+    if (is_presence_container) return true;
     return rsa.is_set;
 }
 
@@ -15172,7 +15344,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Lifetime::Lifetime()
     seconds{YType::uint64, "seconds"}
 {
 
-    yang_name = "lifetime"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lifetime"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Rekey::Lifetime::~Lifetime()
@@ -15181,6 +15353,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Lifetime::~Lifetime()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Rekey::Lifetime::has_data() const
 {
+    if (is_presence_container) return true;
     return days.is_set
 	|| seconds.is_set;
 }
@@ -15264,7 +15437,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Retransmit::Retransmit()
     periodic{YType::empty, "periodic"}
 {
 
-    yang_name = "retransmit"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "retransmit"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Rekey::Retransmit::~Retransmit()
@@ -15273,6 +15446,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Retransmit::~Retransmit()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Rekey::Retransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| number.is_set
 	|| periodic.is_set;
@@ -15367,7 +15541,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::SigHash::SigHash()
     algorithm{YType::enumeration, "algorithm"}
 {
 
-    yang_name = "sig-hash"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sig-hash"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Rekey::SigHash::~SigHash()
@@ -15376,6 +15550,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::SigHash::~SigHash()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Rekey::SigHash::has_data() const
 {
+    if (is_presence_container) return true;
     return algorithm.is_set;
 }
 
@@ -15444,7 +15619,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Transport::Transport()
     unicast{YType::empty, "unicast"}
 {
 
-    yang_name = "transport"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Rekey::Transport::~Transport()
@@ -15453,6 +15628,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Rekey::Transport::~Transport()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Rekey::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return unicast.is_set;
 }
 
@@ -15519,14 +15695,15 @@ bool Native::Crypto::Gdoi::Group::Server::Local::Rekey::Transport::has_leaf_or_c
 Native::Crypto::Gdoi::Group::Server::Local::Sa::Sa()
     :
     receive_only{YType::empty, "receive-only"}
-    	,
-    d3p(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P>())
-	,pair_wise_keying(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::PairWiseKeying>())
+        ,
+    d3p(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p>())
+    , ipsec(this, {"sequence"})
+    , pair_wise_keying(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::PairWiseKeying>())
 {
     d3p->parent = this;
     pair_wise_keying->parent = this;
 
-    yang_name = "sa"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sa"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Sa::~Sa()
@@ -15535,7 +15712,8 @@ Native::Crypto::Gdoi::Group::Server::Local::Sa::~Sa()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Sa::has_data() const
 {
-    for (std::size_t index=0; index<ipsec.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipsec.len(); index++)
     {
         if(ipsec[index]->has_data())
             return true;
@@ -15547,7 +15725,7 @@ bool Native::Crypto::Gdoi::Group::Server::Local::Sa::has_data() const
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Sa::has_operation() const
 {
-    for (std::size_t index=0; index<ipsec.size(); index++)
+    for (std::size_t index=0; index<ipsec.len(); index++)
     {
         if(ipsec[index]->has_operation())
             return true;
@@ -15581,7 +15759,7 @@ std::shared_ptr<Entity> Native::Crypto::Gdoi::Group::Server::Local::Sa::get_chil
     {
         if(d3p == nullptr)
         {
-            d3p = std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P>();
+            d3p = std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p>();
         }
         return d3p;
     }
@@ -15590,7 +15768,7 @@ std::shared_ptr<Entity> Native::Crypto::Gdoi::Group::Server::Local::Sa::get_chil
     {
         auto c = std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec>();
         c->parent = this;
-        ipsec.push_back(c);
+        ipsec.append(c);
         return c;
     }
 
@@ -15616,7 +15794,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gdoi::Group::Serv
     }
 
     count = 0;
-    for (auto const & c : ipsec)
+    for (auto c : ipsec.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15657,38 +15835,39 @@ bool Native::Crypto::Gdoi::Group::Server::Local::Sa::has_leaf_or_child_of_name(c
     return false;
 }
 
-Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::D3P()
+Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::D3p()
     :
-    window(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window>())
+    window(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window>())
 {
     window->parent = this;
 
-    yang_name = "d3p"; yang_parent_name = "sa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "d3p"; yang_parent_name = "sa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::~D3P()
+Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::~D3p()
 {
 }
 
-bool Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::has_data() const
+bool Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::has_data() const
 {
+    if (is_presence_container) return true;
     return (window !=  nullptr && window->has_data());
 }
 
-bool Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::has_operation() const
+bool Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::has_operation() const
 {
     return is_set(yfilter)
 	|| (window !=  nullptr && window->has_operation());
 }
 
-std::string Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::get_segment_path() const
+std::string Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "d3p";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15697,13 +15876,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gdoi::Group::Serv
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "window")
     {
         if(window == nullptr)
         {
-            window = std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window>();
+            window = std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window>();
         }
         return window;
     }
@@ -15711,7 +15890,7 @@ std::shared_ptr<Entity> Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15723,55 +15902,56 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gdoi::Group::Serv
     return children;
 }
 
-void Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "window")
         return true;
     return false;
 }
 
-Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::Window()
+Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window::Window()
     :
     msec{YType::uint32, "msec"},
     sec{YType::uint8, "sec"}
 {
 
-    yang_name = "window"; yang_parent_name = "d3p"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "window"; yang_parent_name = "d3p"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::~Window()
+Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window::~Window()
 {
 }
 
-bool Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::has_data() const
+bool Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window::has_data() const
 {
+    if (is_presence_container) return true;
     return msec.is_set
 	|| sec.is_set;
 }
 
-bool Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::has_operation() const
+bool Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(msec.yfilter)
 	|| ydk::is_set(sec.yfilter);
 }
 
-std::string Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::get_segment_path() const
+std::string Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "window";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15782,19 +15962,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gdoi::Group::Serv
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "msec")
     {
@@ -15810,7 +15990,7 @@ void Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::set_value(cons
     }
 }
 
-void Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "msec")
     {
@@ -15822,7 +16002,7 @@ void Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::set_filter(con
     }
 }
 
-bool Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msec" || name == "sec")
         return true;
@@ -15833,18 +16013,18 @@ Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Ipsec()
     :
     sequence{YType::uint16, "sequence"},
     profile{YType::str, "profile"}
-    	,
+        ,
     default_(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default>())
-	,match(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Match>())
-	,replay(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Replay>())
-	,tag(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Tag>())
+    , match(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Match>())
+    , replay(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Replay>())
+    , tag(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Tag>())
 {
     default_->parent = this;
     match->parent = this;
     replay->parent = this;
     tag->parent = this;
 
-    yang_name = "ipsec"; yang_parent_name = "sa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipsec"; yang_parent_name = "sa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::~Ipsec()
@@ -15853,6 +16033,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::~Ipsec()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::has_data() const
 {
+    if (is_presence_container) return true;
     return sequence.is_set
 	|| profile.is_set
 	|| (default_ !=  nullptr && default_->has_data())
@@ -15875,7 +16056,8 @@ bool Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::has_operation() cons
 std::string Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipsec" <<"[sequence='" <<sequence <<"']";
+    path_buffer << "ipsec";
+    ADD_KEY_TOKEN(sequence, "sequence");
     return path_buffer.str();
 }
 
@@ -15996,14 +16178,14 @@ bool Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::has_leaf_or_child_of
 Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Default()
     :
     profile{YType::empty, "profile"}
-    	,
+        ,
     match(std::make_shared<Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match>())
-	,replay(nullptr) // presence node
-	,tag(nullptr) // presence node
+    , replay(nullptr) // presence node
+    , tag(nullptr) // presence node
 {
     match->parent = this;
 
-    yang_name = "default"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::~Default()
@@ -16012,6 +16194,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::~Default()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return profile.is_set
 	|| (match !=  nullptr && match->has_data())
 	|| (replay !=  nullptr && replay->has_data())
@@ -16128,7 +16311,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match::Match()
     address(nullptr) // presence node
 {
 
-    yang_name = "match"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match::~Match()
@@ -16137,6 +16320,7 @@ Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match::~Match()
 
 bool Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 

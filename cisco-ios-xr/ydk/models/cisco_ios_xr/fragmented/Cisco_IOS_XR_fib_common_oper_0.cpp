@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_fib_common_oper_0.hpp"
-#include "Cisco_IOS_XR_fib_common_oper_2.hpp"
 #include "Cisco_IOS_XR_fib_common_oper_1.hpp"
+#include "Cisco_IOS_XR_fib_common_oper_2.hpp"
 
 using namespace ydk;
 
@@ -19,7 +19,7 @@ FibStatistics::FibStatistics()
 {
     nodes->parent = this;
 
-    yang_name = "fib-statistics"; yang_parent_name = "Cisco-IOS-XR-fib-common-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fib-statistics"; yang_parent_name = "Cisco-IOS-XR-fib-common-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 FibStatistics::~FibStatistics()
@@ -28,6 +28,7 @@ FibStatistics::~FibStatistics()
 
 bool FibStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -120,9 +121,11 @@ bool FibStatistics::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 FibStatistics::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "fib-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "fib-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FibStatistics::Nodes::~Nodes()
@@ -131,7 +134,8 @@ FibStatistics::Nodes::~Nodes()
 
 bool FibStatistics::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -141,7 +145,7 @@ bool FibStatistics::Nodes::has_data() const
 
 bool FibStatistics::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -178,7 +182,7 @@ std::shared_ptr<Entity> FibStatistics::Nodes::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<FibStatistics::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -190,7 +194,7 @@ std::map<std::string, std::shared_ptr<Entity>> FibStatistics::Nodes::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -219,12 +223,12 @@ bool FibStatistics::Nodes::has_leaf_or_child_of_name(const std::string & name) c
 FibStatistics::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     drops(std::make_shared<FibStatistics::Nodes::Node::Drops>())
 {
     drops->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FibStatistics::Nodes::Node::~Node()
@@ -233,6 +237,7 @@ FibStatistics::Nodes::Node::~Node()
 
 bool FibStatistics::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (drops !=  nullptr && drops->has_data());
 }
@@ -254,7 +259,8 @@ std::string FibStatistics::Nodes::Node::get_absolute_path() const
 std::string FibStatistics::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -346,7 +352,7 @@ FibStatistics::Nodes::Node::Drops::Drops()
     multi_label_drops{YType::uint64, "multi-label-drops"}
 {
 
-    yang_name = "drops"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drops"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FibStatistics::Nodes::Node::Drops::~Drops()
@@ -355,6 +361,7 @@ FibStatistics::Nodes::Node::Drops::~Drops()
 
 bool FibStatistics::Nodes::Node::Drops::has_data() const
 {
+    if (is_presence_container) return true;
     return no_route_packets.is_set
 	|| punt_unreachable_packets.is_set
 	|| df_unreachable_packets.is_set
@@ -710,7 +717,7 @@ Fib::Fib()
 {
     nodes->parent = this;
 
-    yang_name = "fib"; yang_parent_name = "Cisco-IOS-XR-fib-common-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fib"; yang_parent_name = "Cisco-IOS-XR-fib-common-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Fib::~Fib()
@@ -719,6 +726,7 @@ Fib::~Fib()
 
 bool Fib::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -811,9 +819,11 @@ bool Fib::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Fib::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "fib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "fib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Fib::Nodes::~Nodes()
@@ -822,7 +832,8 @@ Fib::Nodes::~Nodes()
 
 bool Fib::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -832,7 +843,7 @@ bool Fib::Nodes::has_data() const
 
 bool Fib::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -869,7 +880,7 @@ std::shared_ptr<Entity> Fib::Nodes::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Fib::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -881,7 +892,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -910,14 +921,14 @@ bool Fib::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Fib::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     global(std::make_shared<Fib::Nodes::Node::Global>())
-	,protocols(std::make_shared<Fib::Nodes::Node::Protocols>())
+    , protocols(std::make_shared<Fib::Nodes::Node::Protocols>())
 {
     global->parent = this;
     protocols->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Fib::Nodes::Node::~Node()
@@ -926,6 +937,7 @@ Fib::Nodes::Node::~Node()
 
 bool Fib::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (global !=  nullptr && global->has_data())
 	|| (protocols !=  nullptr && protocols->has_data());
@@ -949,7 +961,8 @@ std::string Fib::Nodes::Node::get_absolute_path() const
 std::string Fib::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1030,13 +1043,15 @@ bool Fib::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 
 Fib::Nodes::Node::Global::Global()
     :
-    summary(std::make_shared<Fib::Nodes::Node::Global::Summary>())
-	,object_history(std::make_shared<Fib::Nodes::Node::Global::ObjectHistory>())
+    fib_cofo(std::make_shared<Fib::Nodes::Node::Global::FibCofo>())
+    , summary(std::make_shared<Fib::Nodes::Node::Global::Summary>())
+    , object_history(std::make_shared<Fib::Nodes::Node::Global::ObjectHistory>())
 {
+    fib_cofo->parent = this;
     summary->parent = this;
     object_history->parent = this;
 
-    yang_name = "global"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::~Global()
@@ -1045,13 +1060,16 @@ Fib::Nodes::Node::Global::~Global()
 
 bool Fib::Nodes::Node::Global::has_data() const
 {
-    return (summary !=  nullptr && summary->has_data())
+    if (is_presence_container) return true;
+    return (fib_cofo !=  nullptr && fib_cofo->has_data())
+	|| (summary !=  nullptr && summary->has_data())
 	|| (object_history !=  nullptr && object_history->has_data());
 }
 
 bool Fib::Nodes::Node::Global::has_operation() const
 {
     return is_set(yfilter)
+	|| (fib_cofo !=  nullptr && fib_cofo->has_operation())
 	|| (summary !=  nullptr && summary->has_operation())
 	|| (object_history !=  nullptr && object_history->has_operation());
 }
@@ -1074,6 +1092,15 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::get_nam
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "fib-cofo")
+    {
+        if(fib_cofo == nullptr)
+        {
+            fib_cofo = std::make_shared<Fib::Nodes::Node::Global::FibCofo>();
+        }
+        return fib_cofo;
+    }
+
     if(child_yang_name == "summary")
     {
         if(summary == nullptr)
@@ -1099,6 +1126,11 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::get_chi
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(fib_cofo != nullptr)
+    {
+        children["fib-cofo"] = fib_cofo;
+    }
+
     if(summary != nullptr)
     {
         children["summary"] = summary;
@@ -1122,7 +1154,1684 @@ void Fib::Nodes::Node::Global::set_filter(const std::string & value_path, YFilte
 
 bool Fib::Nodes::Node::Global::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "summary" || name == "object-history")
+    if(name == "fib-cofo" || name == "summary" || name == "object-history")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofo()
+    :
+    fib_cofo_idb(std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoIdb>())
+    , fib_cofo_table_id(std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId>())
+{
+    fib_cofo_idb->parent = this;
+    fib_cofo_table_id->parent = this;
+
+    yang_name = "fib-cofo"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Global::FibCofo::~FibCofo()
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::has_data() const
+{
+    if (is_presence_container) return true;
+    return (fib_cofo_idb !=  nullptr && fib_cofo_idb->has_data())
+	|| (fib_cofo_table_id !=  nullptr && fib_cofo_table_id->has_data());
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::has_operation() const
+{
+    return is_set(yfilter)
+	|| (fib_cofo_idb !=  nullptr && fib_cofo_idb->has_operation())
+	|| (fib_cofo_table_id !=  nullptr && fib_cofo_table_id->has_operation());
+}
+
+std::string Fib::Nodes::Node::Global::FibCofo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fib-cofo";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fib-cofo-idb")
+    {
+        if(fib_cofo_idb == nullptr)
+        {
+            fib_cofo_idb = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoIdb>();
+        }
+        return fib_cofo_idb;
+    }
+
+    if(child_yang_name == "fib-cofo-table-id")
+    {
+        if(fib_cofo_table_id == nullptr)
+        {
+            fib_cofo_table_id = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId>();
+        }
+        return fib_cofo_table_id;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(fib_cofo_idb != nullptr)
+    {
+        children["fib-cofo-idb"] = fib_cofo_idb;
+    }
+
+    if(fib_cofo_table_id != nullptr)
+    {
+        children["fib-cofo-table-id"] = fib_cofo_table_id;
+    }
+
+    return children;
+}
+
+void Fib::Nodes::Node::Global::FibCofo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fib::Nodes::Node::Global::FibCofo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fib-cofo-idb" || name == "fib-cofo-table-id")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdb()
+    :
+    fib_cofo_idb_table_entries(std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries>())
+{
+    fib_cofo_idb_table_entries->parent = this;
+
+    yang_name = "fib-cofo-idb"; yang_parent_name = "fib-cofo"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::~FibCofoIdb()
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::has_data() const
+{
+    if (is_presence_container) return true;
+    return (fib_cofo_idb_table_entries !=  nullptr && fib_cofo_idb_table_entries->has_data());
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::has_operation() const
+{
+    return is_set(yfilter)
+	|| (fib_cofo_idb_table_entries !=  nullptr && fib_cofo_idb_table_entries->has_operation());
+}
+
+std::string Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fib-cofo-idb";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fib-cofo-idb-table-entries")
+    {
+        if(fib_cofo_idb_table_entries == nullptr)
+        {
+            fib_cofo_idb_table_entries = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries>();
+        }
+        return fib_cofo_idb_table_entries;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(fib_cofo_idb_table_entries != nullptr)
+    {
+        children["fib-cofo-idb-table-entries"] = fib_cofo_idb_table_entries;
+    }
+
+    return children;
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fib-cofo-idb-table-entries")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntries()
+    :
+    fib_cofo_idb_table_entry(this, {})
+{
+
+    yang_name = "fib-cofo-idb-table-entries"; yang_parent_name = "fib-cofo-idb"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::~FibCofoIdbTableEntries()
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fib_cofo_idb_table_entry.len(); index++)
+    {
+        if(fib_cofo_idb_table_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::has_operation() const
+{
+    for (std::size_t index=0; index<fib_cofo_idb_table_entry.len(); index++)
+    {
+        if(fib_cofo_idb_table_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fib-cofo-idb-table-entries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fib-cofo-idb-table-entry")
+    {
+        auto c = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry>();
+        c->parent = this;
+        fib_cofo_idb_table_entry.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : fib_cofo_idb_table_entry.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fib-cofo-idb-table-entry")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::FibCofoIdbTableEntry()
+    :
+    sdr_id{YType::uint32, "sdr-id"},
+    if_index{YType::uint32, "if-index"},
+    sdrid{YType::uint32, "sdrid"},
+    intf_type{YType::uint32, "intf-type"},
+    intf_index{YType::uint32, "intf-index"},
+    parent_intf_index{YType::uint32, "parent-intf-index"},
+    bundle_member_total_weight{YType::uint16, "bundle-member-total-weight"},
+    main_pointer{YType::uint64, "main-pointer"},
+    table_pointer{YType::uint64, "table-pointer"},
+    hardware_handle{YType::uint64, "hardware-handle"},
+    intf_name{YType::str, "intf-name"},
+    pic{YType::uint64, "pic"}
+        ,
+    object_base(std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase>())
+    , bundle_member_info(this, {})
+{
+    object_base->parent = this;
+
+    yang_name = "fib-cofo-idb-table-entry"; yang_parent_name = "fib-cofo-idb-table-entries"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::~FibCofoIdbTableEntry()
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_member_info.len(); index++)
+    {
+        if(bundle_member_info[index]->has_data())
+            return true;
+    }
+    for (auto const & leaf : pic.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return sdr_id.is_set
+	|| if_index.is_set
+	|| sdrid.is_set
+	|| intf_type.is_set
+	|| intf_index.is_set
+	|| parent_intf_index.is_set
+	|| bundle_member_total_weight.is_set
+	|| main_pointer.is_set
+	|| table_pointer.is_set
+	|| hardware_handle.is_set
+	|| intf_name.is_set
+	|| (object_base !=  nullptr && object_base->has_data());
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::has_operation() const
+{
+    for (std::size_t index=0; index<bundle_member_info.len(); index++)
+    {
+        if(bundle_member_info[index]->has_operation())
+            return true;
+    }
+    for (auto const & leaf : pic.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(sdr_id.yfilter)
+	|| ydk::is_set(if_index.yfilter)
+	|| ydk::is_set(sdrid.yfilter)
+	|| ydk::is_set(intf_type.yfilter)
+	|| ydk::is_set(intf_index.yfilter)
+	|| ydk::is_set(parent_intf_index.yfilter)
+	|| ydk::is_set(bundle_member_total_weight.yfilter)
+	|| ydk::is_set(main_pointer.yfilter)
+	|| ydk::is_set(table_pointer.yfilter)
+	|| ydk::is_set(hardware_handle.yfilter)
+	|| ydk::is_set(intf_name.yfilter)
+	|| ydk::is_set(pic.yfilter)
+	|| (object_base !=  nullptr && object_base->has_operation());
+}
+
+std::string Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fib-cofo-idb-table-entry";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sdr_id.is_set || is_set(sdr_id.yfilter)) leaf_name_data.push_back(sdr_id.get_name_leafdata());
+    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
+    if (sdrid.is_set || is_set(sdrid.yfilter)) leaf_name_data.push_back(sdrid.get_name_leafdata());
+    if (intf_type.is_set || is_set(intf_type.yfilter)) leaf_name_data.push_back(intf_type.get_name_leafdata());
+    if (intf_index.is_set || is_set(intf_index.yfilter)) leaf_name_data.push_back(intf_index.get_name_leafdata());
+    if (parent_intf_index.is_set || is_set(parent_intf_index.yfilter)) leaf_name_data.push_back(parent_intf_index.get_name_leafdata());
+    if (bundle_member_total_weight.is_set || is_set(bundle_member_total_weight.yfilter)) leaf_name_data.push_back(bundle_member_total_weight.get_name_leafdata());
+    if (main_pointer.is_set || is_set(main_pointer.yfilter)) leaf_name_data.push_back(main_pointer.get_name_leafdata());
+    if (table_pointer.is_set || is_set(table_pointer.yfilter)) leaf_name_data.push_back(table_pointer.get_name_leafdata());
+    if (hardware_handle.is_set || is_set(hardware_handle.yfilter)) leaf_name_data.push_back(hardware_handle.get_name_leafdata());
+    if (intf_name.is_set || is_set(intf_name.yfilter)) leaf_name_data.push_back(intf_name.get_name_leafdata());
+
+    auto pic_name_datas = pic.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), pic_name_datas.begin(), pic_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "object-base")
+    {
+        if(object_base == nullptr)
+        {
+            object_base = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase>();
+        }
+        return object_base;
+    }
+
+    if(child_yang_name == "bundle-member-info")
+    {
+        auto c = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo>();
+        c->parent = this;
+        bundle_member_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(object_base != nullptr)
+    {
+        children["object-base"] = object_base;
+    }
+
+    count = 0;
+    for (auto c : bundle_member_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sdr-id")
+    {
+        sdr_id = value;
+        sdr_id.value_namespace = name_space;
+        sdr_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "if-index")
+    {
+        if_index = value;
+        if_index.value_namespace = name_space;
+        if_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sdrid")
+    {
+        sdrid = value;
+        sdrid.value_namespace = name_space;
+        sdrid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intf-type")
+    {
+        intf_type = value;
+        intf_type.value_namespace = name_space;
+        intf_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intf-index")
+    {
+        intf_index = value;
+        intf_index.value_namespace = name_space;
+        intf_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "parent-intf-index")
+    {
+        parent_intf_index = value;
+        parent_intf_index.value_namespace = name_space;
+        parent_intf_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bundle-member-total-weight")
+    {
+        bundle_member_total_weight = value;
+        bundle_member_total_weight.value_namespace = name_space;
+        bundle_member_total_weight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "main-pointer")
+    {
+        main_pointer = value;
+        main_pointer.value_namespace = name_space;
+        main_pointer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "table-pointer")
+    {
+        table_pointer = value;
+        table_pointer.value_namespace = name_space;
+        table_pointer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hardware-handle")
+    {
+        hardware_handle = value;
+        hardware_handle.value_namespace = name_space;
+        hardware_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intf-name")
+    {
+        intf_name = value;
+        intf_name.value_namespace = name_space;
+        intf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pic")
+    {
+        pic.append(value);
+    }
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sdr-id")
+    {
+        sdr_id.yfilter = yfilter;
+    }
+    if(value_path == "if-index")
+    {
+        if_index.yfilter = yfilter;
+    }
+    if(value_path == "sdrid")
+    {
+        sdrid.yfilter = yfilter;
+    }
+    if(value_path == "intf-type")
+    {
+        intf_type.yfilter = yfilter;
+    }
+    if(value_path == "intf-index")
+    {
+        intf_index.yfilter = yfilter;
+    }
+    if(value_path == "parent-intf-index")
+    {
+        parent_intf_index.yfilter = yfilter;
+    }
+    if(value_path == "bundle-member-total-weight")
+    {
+        bundle_member_total_weight.yfilter = yfilter;
+    }
+    if(value_path == "main-pointer")
+    {
+        main_pointer.yfilter = yfilter;
+    }
+    if(value_path == "table-pointer")
+    {
+        table_pointer.yfilter = yfilter;
+    }
+    if(value_path == "hardware-handle")
+    {
+        hardware_handle.yfilter = yfilter;
+    }
+    if(value_path == "intf-name")
+    {
+        intf_name.yfilter = yfilter;
+    }
+    if(value_path == "pic")
+    {
+        pic.yfilter = yfilter;
+    }
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-base" || name == "bundle-member-info" || name == "sdr-id" || name == "if-index" || name == "sdrid" || name == "intf-type" || name == "intf-index" || name == "parent-intf-index" || name == "bundle-member-total-weight" || name == "main-pointer" || name == "table-pointer" || name == "hardware-handle" || name == "intf-name" || name == "pic")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::ObjectBase()
+    :
+    object_reference_count{YType::uint32, "object-reference-count"},
+    object_flags{YType::uint32, "object-flags"},
+    object_type{YType::uint8, "object-type"},
+    object_time_stamp{YType::uint64, "object-time-stamp"},
+    object_pointer{YType::uint64, "object-pointer"}
+{
+
+    yang_name = "object-base"; yang_parent_name = "fib-cofo-idb-table-entry"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::~ObjectBase()
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::has_data() const
+{
+    if (is_presence_container) return true;
+    return object_reference_count.is_set
+	|| object_flags.is_set
+	|| object_type.is_set
+	|| object_time_stamp.is_set
+	|| object_pointer.is_set;
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(object_reference_count.yfilter)
+	|| ydk::is_set(object_flags.yfilter)
+	|| ydk::is_set(object_type.yfilter)
+	|| ydk::is_set(object_time_stamp.yfilter)
+	|| ydk::is_set(object_pointer.yfilter);
+}
+
+std::string Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "object-base";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (object_reference_count.is_set || is_set(object_reference_count.yfilter)) leaf_name_data.push_back(object_reference_count.get_name_leafdata());
+    if (object_flags.is_set || is_set(object_flags.yfilter)) leaf_name_data.push_back(object_flags.get_name_leafdata());
+    if (object_type.is_set || is_set(object_type.yfilter)) leaf_name_data.push_back(object_type.get_name_leafdata());
+    if (object_time_stamp.is_set || is_set(object_time_stamp.yfilter)) leaf_name_data.push_back(object_time_stamp.get_name_leafdata());
+    if (object_pointer.is_set || is_set(object_pointer.yfilter)) leaf_name_data.push_back(object_pointer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "object-reference-count")
+    {
+        object_reference_count = value;
+        object_reference_count.value_namespace = name_space;
+        object_reference_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "object-flags")
+    {
+        object_flags = value;
+        object_flags.value_namespace = name_space;
+        object_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "object-type")
+    {
+        object_type = value;
+        object_type.value_namespace = name_space;
+        object_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "object-time-stamp")
+    {
+        object_time_stamp = value;
+        object_time_stamp.value_namespace = name_space;
+        object_time_stamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "object-pointer")
+    {
+        object_pointer = value;
+        object_pointer.value_namespace = name_space;
+        object_pointer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-reference-count")
+    {
+        object_reference_count.yfilter = yfilter;
+    }
+    if(value_path == "object-flags")
+    {
+        object_flags.yfilter = yfilter;
+    }
+    if(value_path == "object-type")
+    {
+        object_type.yfilter = yfilter;
+    }
+    if(value_path == "object-time-stamp")
+    {
+        object_time_stamp.yfilter = yfilter;
+    }
+    if(value_path == "object-pointer")
+    {
+        object_pointer.yfilter = yfilter;
+    }
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-reference-count" || name == "object-flags" || name == "object-type" || name == "object-time-stamp" || name == "object-pointer")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::BundleMemberInfo()
+    :
+    intf_index{YType::uint32, "intf-index"},
+    unique_id{YType::uint8, "unique-id"},
+    weight{YType::uint8, "weight"},
+    pic{YType::uint64, "pic"}
+{
+
+    yang_name = "bundle-member-info"; yang_parent_name = "fib-cofo-idb-table-entry"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::~BundleMemberInfo()
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return intf_index.is_set
+	|| unique_id.is_set
+	|| weight.is_set
+	|| pic.is_set;
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(intf_index.yfilter)
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(pic.yfilter);
+}
+
+std::string Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bundle-member-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (intf_index.is_set || is_set(intf_index.yfilter)) leaf_name_data.push_back(intf_index.get_name_leafdata());
+    if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (pic.is_set || is_set(pic.yfilter)) leaf_name_data.push_back(pic.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "intf-index")
+    {
+        intf_index = value;
+        intf_index.value_namespace = name_space;
+        intf_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id = value;
+        unique_id.value_namespace = name_space;
+        unique_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight")
+    {
+        weight = value;
+        weight.value_namespace = name_space;
+        weight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pic")
+    {
+        pic = value;
+        pic.value_namespace = name_space;
+        pic.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "intf-index")
+    {
+        intf_index.yfilter = yfilter;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id.yfilter = yfilter;
+    }
+    if(value_path == "weight")
+    {
+        weight.yfilter = yfilter;
+    }
+    if(value_path == "pic")
+    {
+        pic.yfilter = yfilter;
+    }
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "intf-index" || name == "unique-id" || name == "weight" || name == "pic")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableId()
+    :
+    fib_cofo_table_id_entries(std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries>())
+    , fib_cofo_table_id_summary(std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary>())
+{
+    fib_cofo_table_id_entries->parent = this;
+    fib_cofo_table_id_summary->parent = this;
+
+    yang_name = "fib-cofo-table-id"; yang_parent_name = "fib-cofo"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::~FibCofoTableId()
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::has_data() const
+{
+    if (is_presence_container) return true;
+    return (fib_cofo_table_id_entries !=  nullptr && fib_cofo_table_id_entries->has_data())
+	|| (fib_cofo_table_id_summary !=  nullptr && fib_cofo_table_id_summary->has_data());
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::has_operation() const
+{
+    return is_set(yfilter)
+	|| (fib_cofo_table_id_entries !=  nullptr && fib_cofo_table_id_entries->has_operation())
+	|| (fib_cofo_table_id_summary !=  nullptr && fib_cofo_table_id_summary->has_operation());
+}
+
+std::string Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fib-cofo-table-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fib-cofo-table-id-entries")
+    {
+        if(fib_cofo_table_id_entries == nullptr)
+        {
+            fib_cofo_table_id_entries = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries>();
+        }
+        return fib_cofo_table_id_entries;
+    }
+
+    if(child_yang_name == "fib-cofo-table-id-summary")
+    {
+        if(fib_cofo_table_id_summary == nullptr)
+        {
+            fib_cofo_table_id_summary = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary>();
+        }
+        return fib_cofo_table_id_summary;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(fib_cofo_table_id_entries != nullptr)
+    {
+        children["fib-cofo-table-id-entries"] = fib_cofo_table_id_entries;
+    }
+
+    if(fib_cofo_table_id_summary != nullptr)
+    {
+        children["fib-cofo-table-id-summary"] = fib_cofo_table_id_summary;
+    }
+
+    return children;
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fib-cofo-table-id-entries" || name == "fib-cofo-table-id-summary")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntries()
+    :
+    fib_cofo_table_id_entry(this, {})
+{
+
+    yang_name = "fib-cofo-table-id-entries"; yang_parent_name = "fib-cofo-table-id"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::~FibCofoTableIdEntries()
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fib_cofo_table_id_entry.len(); index++)
+    {
+        if(fib_cofo_table_id_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::has_operation() const
+{
+    for (std::size_t index=0; index<fib_cofo_table_id_entry.len(); index++)
+    {
+        if(fib_cofo_table_id_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fib-cofo-table-id-entries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fib-cofo-table-id-entry")
+    {
+        auto c = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry>();
+        c->parent = this;
+        fib_cofo_table_id_entry.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : fib_cofo_table_id_entry.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fib-cofo-table-id-entry")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::FibCofoTableIdEntry()
+    :
+    sdr_id{YType::uint32, "sdr-id"},
+    protocol{YType::enumeration, "protocol"},
+    rd{YType::str, "rd"},
+    table_id{YType::uint32, "table-id"},
+    sdrid{YType::uint32, "sdrid"},
+    protocol_type{YType::uint32, "protocol-type"},
+    route_distinguisher{YType::str, "route-distinguisher"},
+    table_id_xr{YType::uint32, "table-id-xr"},
+    vrf_name{YType::str, "vrf-name"},
+    table_pointer{YType::uint64, "table-pointer"}
+        ,
+    object_base(std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase>())
+{
+    object_base->parent = this;
+
+    yang_name = "fib-cofo-table-id-entry"; yang_parent_name = "fib-cofo-table-id-entries"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::~FibCofoTableIdEntry()
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::has_data() const
+{
+    if (is_presence_container) return true;
+    return sdr_id.is_set
+	|| protocol.is_set
+	|| rd.is_set
+	|| table_id.is_set
+	|| sdrid.is_set
+	|| protocol_type.is_set
+	|| route_distinguisher.is_set
+	|| table_id_xr.is_set
+	|| vrf_name.is_set
+	|| table_pointer.is_set
+	|| (object_base !=  nullptr && object_base->has_data());
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sdr_id.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(rd.yfilter)
+	|| ydk::is_set(table_id.yfilter)
+	|| ydk::is_set(sdrid.yfilter)
+	|| ydk::is_set(protocol_type.yfilter)
+	|| ydk::is_set(route_distinguisher.yfilter)
+	|| ydk::is_set(table_id_xr.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(table_pointer.yfilter)
+	|| (object_base !=  nullptr && object_base->has_operation());
+}
+
+std::string Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fib-cofo-table-id-entry";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sdr_id.is_set || is_set(sdr_id.yfilter)) leaf_name_data.push_back(sdr_id.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
+    if (table_id.is_set || is_set(table_id.yfilter)) leaf_name_data.push_back(table_id.get_name_leafdata());
+    if (sdrid.is_set || is_set(sdrid.yfilter)) leaf_name_data.push_back(sdrid.get_name_leafdata());
+    if (protocol_type.is_set || is_set(protocol_type.yfilter)) leaf_name_data.push_back(protocol_type.get_name_leafdata());
+    if (route_distinguisher.is_set || is_set(route_distinguisher.yfilter)) leaf_name_data.push_back(route_distinguisher.get_name_leafdata());
+    if (table_id_xr.is_set || is_set(table_id_xr.yfilter)) leaf_name_data.push_back(table_id_xr.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (table_pointer.is_set || is_set(table_pointer.yfilter)) leaf_name_data.push_back(table_pointer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "object-base")
+    {
+        if(object_base == nullptr)
+        {
+            object_base = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase>();
+        }
+        return object_base;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(object_base != nullptr)
+    {
+        children["object-base"] = object_base;
+    }
+
+    return children;
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sdr-id")
+    {
+        sdr_id = value;
+        sdr_id.value_namespace = name_space;
+        sdr_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protocol")
+    {
+        protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rd")
+    {
+        rd = value;
+        rd.value_namespace = name_space;
+        rd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "table-id")
+    {
+        table_id = value;
+        table_id.value_namespace = name_space;
+        table_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sdrid")
+    {
+        sdrid = value;
+        sdrid.value_namespace = name_space;
+        sdrid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protocol-type")
+    {
+        protocol_type = value;
+        protocol_type.value_namespace = name_space;
+        protocol_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-distinguisher")
+    {
+        route_distinguisher = value;
+        route_distinguisher.value_namespace = name_space;
+        route_distinguisher.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "table-id-xr")
+    {
+        table_id_xr = value;
+        table_id_xr.value_namespace = name_space;
+        table_id_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "table-pointer")
+    {
+        table_pointer = value;
+        table_pointer.value_namespace = name_space;
+        table_pointer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sdr-id")
+    {
+        sdr_id.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "rd")
+    {
+        rd.yfilter = yfilter;
+    }
+    if(value_path == "table-id")
+    {
+        table_id.yfilter = yfilter;
+    }
+    if(value_path == "sdrid")
+    {
+        sdrid.yfilter = yfilter;
+    }
+    if(value_path == "protocol-type")
+    {
+        protocol_type.yfilter = yfilter;
+    }
+    if(value_path == "route-distinguisher")
+    {
+        route_distinguisher.yfilter = yfilter;
+    }
+    if(value_path == "table-id-xr")
+    {
+        table_id_xr.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "table-pointer")
+    {
+        table_pointer.yfilter = yfilter;
+    }
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-base" || name == "sdr-id" || name == "protocol" || name == "rd" || name == "table-id" || name == "sdrid" || name == "protocol-type" || name == "route-distinguisher" || name == "table-id-xr" || name == "vrf-name" || name == "table-pointer")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::ObjectBase()
+    :
+    object_reference_count{YType::uint32, "object-reference-count"},
+    object_flags{YType::uint32, "object-flags"},
+    object_type{YType::uint8, "object-type"},
+    object_time_stamp{YType::uint64, "object-time-stamp"},
+    object_pointer{YType::uint64, "object-pointer"}
+{
+
+    yang_name = "object-base"; yang_parent_name = "fib-cofo-table-id-entry"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::~ObjectBase()
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::has_data() const
+{
+    if (is_presence_container) return true;
+    return object_reference_count.is_set
+	|| object_flags.is_set
+	|| object_type.is_set
+	|| object_time_stamp.is_set
+	|| object_pointer.is_set;
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(object_reference_count.yfilter)
+	|| ydk::is_set(object_flags.yfilter)
+	|| ydk::is_set(object_type.yfilter)
+	|| ydk::is_set(object_time_stamp.yfilter)
+	|| ydk::is_set(object_pointer.yfilter);
+}
+
+std::string Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "object-base";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (object_reference_count.is_set || is_set(object_reference_count.yfilter)) leaf_name_data.push_back(object_reference_count.get_name_leafdata());
+    if (object_flags.is_set || is_set(object_flags.yfilter)) leaf_name_data.push_back(object_flags.get_name_leafdata());
+    if (object_type.is_set || is_set(object_type.yfilter)) leaf_name_data.push_back(object_type.get_name_leafdata());
+    if (object_time_stamp.is_set || is_set(object_time_stamp.yfilter)) leaf_name_data.push_back(object_time_stamp.get_name_leafdata());
+    if (object_pointer.is_set || is_set(object_pointer.yfilter)) leaf_name_data.push_back(object_pointer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "object-reference-count")
+    {
+        object_reference_count = value;
+        object_reference_count.value_namespace = name_space;
+        object_reference_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "object-flags")
+    {
+        object_flags = value;
+        object_flags.value_namespace = name_space;
+        object_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "object-type")
+    {
+        object_type = value;
+        object_type.value_namespace = name_space;
+        object_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "object-time-stamp")
+    {
+        object_time_stamp = value;
+        object_time_stamp.value_namespace = name_space;
+        object_time_stamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "object-pointer")
+    {
+        object_pointer = value;
+        object_pointer.value_namespace = name_space;
+        object_pointer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-reference-count")
+    {
+        object_reference_count.yfilter = yfilter;
+    }
+    if(value_path == "object-flags")
+    {
+        object_flags.yfilter = yfilter;
+    }
+    if(value_path == "object-type")
+    {
+        object_type.yfilter = yfilter;
+    }
+    if(value_path == "object-time-stamp")
+    {
+        object_time_stamp.yfilter = yfilter;
+    }
+    if(value_path == "object-pointer")
+    {
+        object_pointer.yfilter = yfilter;
+    }
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-reference-count" || name == "object-flags" || name == "object-type" || name == "object-time-stamp" || name == "object-pointer")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::FibCofoTableIdSummary()
+    :
+    number_of_tbl_id_allocated{YType::uint32, "number-of-tbl-id-allocated"},
+    tbl_id_minimum{YType::uint32, "tbl-id-minimum"},
+    tbl_id_maximum{YType::uint32, "tbl-id-maximum"},
+    tbl_id_last_allocated{YType::uint32, "tbl-id-last-allocated"},
+    tbl_id_default_v4{YType::uint32, "tbl-id-default-v4"},
+    tbl_id_default_v6{YType::uint32, "tbl-id-default-v6"},
+    number_of_tbl_id_in_gc{YType::uint32, "number-of-tbl-id-in-gc"}
+        ,
+    per_sdr_stat(this, {})
+{
+
+    yang_name = "fib-cofo-table-id-summary"; yang_parent_name = "fib-cofo-table-id"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::~FibCofoTableIdSummary()
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<per_sdr_stat.len(); index++)
+    {
+        if(per_sdr_stat[index]->has_data())
+            return true;
+    }
+    return number_of_tbl_id_allocated.is_set
+	|| tbl_id_minimum.is_set
+	|| tbl_id_maximum.is_set
+	|| tbl_id_last_allocated.is_set
+	|| tbl_id_default_v4.is_set
+	|| tbl_id_default_v6.is_set
+	|| number_of_tbl_id_in_gc.is_set;
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::has_operation() const
+{
+    for (std::size_t index=0; index<per_sdr_stat.len(); index++)
+    {
+        if(per_sdr_stat[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(number_of_tbl_id_allocated.yfilter)
+	|| ydk::is_set(tbl_id_minimum.yfilter)
+	|| ydk::is_set(tbl_id_maximum.yfilter)
+	|| ydk::is_set(tbl_id_last_allocated.yfilter)
+	|| ydk::is_set(tbl_id_default_v4.yfilter)
+	|| ydk::is_set(tbl_id_default_v6.yfilter)
+	|| ydk::is_set(number_of_tbl_id_in_gc.yfilter);
+}
+
+std::string Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fib-cofo-table-id-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number_of_tbl_id_allocated.is_set || is_set(number_of_tbl_id_allocated.yfilter)) leaf_name_data.push_back(number_of_tbl_id_allocated.get_name_leafdata());
+    if (tbl_id_minimum.is_set || is_set(tbl_id_minimum.yfilter)) leaf_name_data.push_back(tbl_id_minimum.get_name_leafdata());
+    if (tbl_id_maximum.is_set || is_set(tbl_id_maximum.yfilter)) leaf_name_data.push_back(tbl_id_maximum.get_name_leafdata());
+    if (tbl_id_last_allocated.is_set || is_set(tbl_id_last_allocated.yfilter)) leaf_name_data.push_back(tbl_id_last_allocated.get_name_leafdata());
+    if (tbl_id_default_v4.is_set || is_set(tbl_id_default_v4.yfilter)) leaf_name_data.push_back(tbl_id_default_v4.get_name_leafdata());
+    if (tbl_id_default_v6.is_set || is_set(tbl_id_default_v6.yfilter)) leaf_name_data.push_back(tbl_id_default_v6.get_name_leafdata());
+    if (number_of_tbl_id_in_gc.is_set || is_set(number_of_tbl_id_in_gc.yfilter)) leaf_name_data.push_back(number_of_tbl_id_in_gc.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "per-sdr-stat")
+    {
+        auto c = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat>();
+        c->parent = this;
+        per_sdr_stat.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : per_sdr_stat.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number-of-tbl-id-allocated")
+    {
+        number_of_tbl_id_allocated = value;
+        number_of_tbl_id_allocated.value_namespace = name_space;
+        number_of_tbl_id_allocated.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tbl-id-minimum")
+    {
+        tbl_id_minimum = value;
+        tbl_id_minimum.value_namespace = name_space;
+        tbl_id_minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tbl-id-maximum")
+    {
+        tbl_id_maximum = value;
+        tbl_id_maximum.value_namespace = name_space;
+        tbl_id_maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tbl-id-last-allocated")
+    {
+        tbl_id_last_allocated = value;
+        tbl_id_last_allocated.value_namespace = name_space;
+        tbl_id_last_allocated.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tbl-id-default-v4")
+    {
+        tbl_id_default_v4 = value;
+        tbl_id_default_v4.value_namespace = name_space;
+        tbl_id_default_v4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tbl-id-default-v6")
+    {
+        tbl_id_default_v6 = value;
+        tbl_id_default_v6.value_namespace = name_space;
+        tbl_id_default_v6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "number-of-tbl-id-in-gc")
+    {
+        number_of_tbl_id_in_gc = value;
+        number_of_tbl_id_in_gc.value_namespace = name_space;
+        number_of_tbl_id_in_gc.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number-of-tbl-id-allocated")
+    {
+        number_of_tbl_id_allocated.yfilter = yfilter;
+    }
+    if(value_path == "tbl-id-minimum")
+    {
+        tbl_id_minimum.yfilter = yfilter;
+    }
+    if(value_path == "tbl-id-maximum")
+    {
+        tbl_id_maximum.yfilter = yfilter;
+    }
+    if(value_path == "tbl-id-last-allocated")
+    {
+        tbl_id_last_allocated.yfilter = yfilter;
+    }
+    if(value_path == "tbl-id-default-v4")
+    {
+        tbl_id_default_v4.yfilter = yfilter;
+    }
+    if(value_path == "tbl-id-default-v6")
+    {
+        tbl_id_default_v6.yfilter = yfilter;
+    }
+    if(value_path == "number-of-tbl-id-in-gc")
+    {
+        number_of_tbl_id_in_gc.yfilter = yfilter;
+    }
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "per-sdr-stat" || name == "number-of-tbl-id-allocated" || name == "tbl-id-minimum" || name == "tbl-id-maximum" || name == "tbl-id-last-allocated" || name == "tbl-id-default-v4" || name == "tbl-id-default-v6" || name == "number-of-tbl-id-in-gc")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::PerSdrStat()
+    :
+    sdrid{YType::uint32, "sdrid"},
+    num_ofipv4_tables{YType::uint16, "num-ofipv4-tables"},
+    num_ofipv6_tables{YType::uint16, "num-ofipv6-tables"},
+    num_ofmpls_tables{YType::uint16, "num-ofmpls-tables"}
+{
+
+    yang_name = "per-sdr-stat"; yang_parent_name = "fib-cofo-table-id-summary"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::~PerSdrStat()
+{
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::has_data() const
+{
+    if (is_presence_container) return true;
+    return sdrid.is_set
+	|| num_ofipv4_tables.is_set
+	|| num_ofipv6_tables.is_set
+	|| num_ofmpls_tables.is_set;
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sdrid.yfilter)
+	|| ydk::is_set(num_ofipv4_tables.yfilter)
+	|| ydk::is_set(num_ofipv6_tables.yfilter)
+	|| ydk::is_set(num_ofmpls_tables.yfilter);
+}
+
+std::string Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "per-sdr-stat";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sdrid.is_set || is_set(sdrid.yfilter)) leaf_name_data.push_back(sdrid.get_name_leafdata());
+    if (num_ofipv4_tables.is_set || is_set(num_ofipv4_tables.yfilter)) leaf_name_data.push_back(num_ofipv4_tables.get_name_leafdata());
+    if (num_ofipv6_tables.is_set || is_set(num_ofipv6_tables.yfilter)) leaf_name_data.push_back(num_ofipv6_tables.get_name_leafdata());
+    if (num_ofmpls_tables.is_set || is_set(num_ofmpls_tables.yfilter)) leaf_name_data.push_back(num_ofmpls_tables.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sdrid")
+    {
+        sdrid = value;
+        sdrid.value_namespace = name_space;
+        sdrid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-ofipv4-tables")
+    {
+        num_ofipv4_tables = value;
+        num_ofipv4_tables.value_namespace = name_space;
+        num_ofipv4_tables.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-ofipv6-tables")
+    {
+        num_ofipv6_tables = value;
+        num_ofipv6_tables.value_namespace = name_space;
+        num_ofipv6_tables.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-ofmpls-tables")
+    {
+        num_ofmpls_tables = value;
+        num_ofmpls_tables.value_namespace = name_space;
+        num_ofmpls_tables.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sdrid")
+    {
+        sdrid.yfilter = yfilter;
+    }
+    if(value_path == "num-ofipv4-tables")
+    {
+        num_ofipv4_tables.yfilter = yfilter;
+    }
+    if(value_path == "num-ofipv6-tables")
+    {
+        num_ofipv6_tables.yfilter = yfilter;
+    }
+    if(value_path == "num-ofmpls-tables")
+    {
+        num_ofmpls_tables.yfilter = yfilter;
+    }
+}
+
+bool Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sdrid" || name == "num-ofipv4-tables" || name == "num-ofipv6-tables" || name == "num-ofmpls-tables")
         return true;
     return false;
 }
@@ -1130,12 +2839,12 @@ bool Fib::Nodes::Node::Global::has_leaf_or_child_of_name(const std::string & nam
 Fib::Nodes::Node::Global::Summary::Summary()
     :
     total(std::make_shared<Fib::Nodes::Node::Global::Summary::Total>())
-	,protos(std::make_shared<Fib::Nodes::Node::Global::Summary::Protos>())
+    , protos(std::make_shared<Fib::Nodes::Node::Global::Summary::Protos>())
 {
     total->parent = this;
     protos->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::~Summary()
@@ -1144,6 +2853,7 @@ Fib::Nodes::Node::Global::Summary::~Summary()
 
 bool Fib::Nodes::Node::Global::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return (total !=  nullptr && total->has_data())
 	|| (protos !=  nullptr && protos->has_data());
 }
@@ -1229,12 +2939,12 @@ bool Fib::Nodes::Node::Global::Summary::has_leaf_or_child_of_name(const std::str
 Fib::Nodes::Node::Global::Summary::Total::Total()
     :
     common_info(std::make_shared<Fib::Nodes::Node::Global::Summary::Total::CommonInfo>())
-	,total_counters(std::make_shared<Fib::Nodes::Node::Global::Summary::Total::TotalCounters>())
+    , total_counters(std::make_shared<Fib::Nodes::Node::Global::Summary::Total::TotalCounters>())
 {
     common_info->parent = this;
     total_counters->parent = this;
 
-    yang_name = "total"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "total"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Total::~Total()
@@ -1243,6 +2953,7 @@ Fib::Nodes::Node::Global::Summary::Total::~Total()
 
 bool Fib::Nodes::Node::Global::Summary::Total::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_info !=  nullptr && common_info->has_data())
 	|| (total_counters !=  nullptr && total_counters->has_data());
 }
@@ -1330,7 +3041,7 @@ Fib::Nodes::Node::Global::Summary::Total::CommonInfo::CommonInfo()
     count{YType::uint32, "count"}
 {
 
-    yang_name = "common-info"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-info"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Total::CommonInfo::~CommonInfo()
@@ -1339,6 +3050,7 @@ Fib::Nodes::Node::Global::Summary::Total::CommonInfo::~CommonInfo()
 
 bool Fib::Nodes::Node::Global::Summary::Total::CommonInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return count.is_set;
 }
 
@@ -1406,9 +3118,12 @@ Fib::Nodes::Node::Global::Summary::Total::TotalCounters::TotalCounters()
     :
     num_retry_timeouts{YType::uint64, "num-retry-timeouts"},
     num_retry_ojbects{YType::uint32, "num-retry-ojbects"}
+        ,
+    array_number_of_retry(this, {})
+    , array_number_of_object(this, {})
 {
 
-    yang_name = "total-counters"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "total-counters"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Total::TotalCounters::~TotalCounters()
@@ -1417,12 +3132,13 @@ Fib::Nodes::Node::Global::Summary::Total::TotalCounters::~TotalCounters()
 
 bool Fib::Nodes::Node::Global::Summary::Total::TotalCounters::has_data() const
 {
-    for (std::size_t index=0; index<array_number_of_retry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<array_number_of_retry.len(); index++)
     {
         if(array_number_of_retry[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<array_number_of_object.size(); index++)
+    for (std::size_t index=0; index<array_number_of_object.len(); index++)
     {
         if(array_number_of_object[index]->has_data())
             return true;
@@ -1433,12 +3149,12 @@ bool Fib::Nodes::Node::Global::Summary::Total::TotalCounters::has_data() const
 
 bool Fib::Nodes::Node::Global::Summary::Total::TotalCounters::has_operation() const
 {
-    for (std::size_t index=0; index<array_number_of_retry.size(); index++)
+    for (std::size_t index=0; index<array_number_of_retry.len(); index++)
     {
         if(array_number_of_retry[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<array_number_of_object.size(); index++)
+    for (std::size_t index=0; index<array_number_of_object.len(); index++)
     {
         if(array_number_of_object[index]->has_operation())
             return true;
@@ -1472,7 +3188,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters:
     {
         auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry>();
         c->parent = this;
-        array_number_of_retry.push_back(c);
+        array_number_of_retry.append(c);
         return c;
     }
 
@@ -1480,7 +3196,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters:
     {
         auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject>();
         c->parent = this;
-        array_number_of_object.push_back(c);
+        array_number_of_object.append(c);
         return c;
     }
 
@@ -1492,7 +3208,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : array_number_of_retry)
+    for (auto c : array_number_of_retry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1501,7 +3217,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary
     }
 
     count = 0;
-    for (auto const & c : array_number_of_object)
+    for (auto c : array_number_of_object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1553,7 +3269,7 @@ Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::Arr
     num_retries{YType::uint64, "num-retries"}
 {
 
-    yang_name = "array-number-of-retry"; yang_parent_name = "total-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "array-number-of-retry"; yang_parent_name = "total-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::~ArrayNumberOfRetry()
@@ -1562,6 +3278,7 @@ Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::~Ar
 
 bool Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::has_data() const
 {
+    if (is_presence_container) return true;
     return retry_object_type.is_set
 	|| num_retries.is_set;
 }
@@ -1644,7 +3361,7 @@ Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::Ar
     num_objects{YType::uint32, "num-objects"}
 {
 
-    yang_name = "array-number-of-object"; yang_parent_name = "total-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "array-number-of-object"; yang_parent_name = "total-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::~ArrayNumberOfObject()
@@ -1653,6 +3370,7 @@ Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::~A
 
 bool Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::has_data() const
 {
+    if (is_presence_container) return true;
     return object_type.is_set
 	|| num_objects.is_set;
 }
@@ -1730,9 +3448,11 @@ bool Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObjec
 }
 
 Fib::Nodes::Node::Global::Summary::Protos::Protos()
+    :
+    proto(this, {"protocol_name"})
 {
 
-    yang_name = "protos"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protos"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Protos::~Protos()
@@ -1741,7 +3461,8 @@ Fib::Nodes::Node::Global::Summary::Protos::~Protos()
 
 bool Fib::Nodes::Node::Global::Summary::Protos::has_data() const
 {
-    for (std::size_t index=0; index<proto.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<proto.len(); index++)
     {
         if(proto[index]->has_data())
             return true;
@@ -1751,7 +3472,7 @@ bool Fib::Nodes::Node::Global::Summary::Protos::has_data() const
 
 bool Fib::Nodes::Node::Global::Summary::Protos::has_operation() const
 {
-    for (std::size_t index=0; index<proto.size(); index++)
+    for (std::size_t index=0; index<proto.len(); index++)
     {
         if(proto[index]->has_operation())
             return true;
@@ -1781,7 +3502,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::get_child_by_
     {
         auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto>();
         c->parent = this;
-        proto.push_back(c);
+        proto.append(c);
         return c;
     }
 
@@ -1793,7 +3514,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : proto)
+    for (auto c : proto.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1822,14 +3543,14 @@ bool Fib::Nodes::Node::Global::Summary::Protos::has_leaf_or_child_of_name(const 
 Fib::Nodes::Node::Global::Summary::Protos::Proto::Proto()
     :
     protocol_name{YType::enumeration, "protocol-name"}
-    	,
+        ,
     common_info(std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo>())
-	,summary(std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_>())
+    , summary(std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_>())
 {
     common_info->parent = this;
     summary->parent = this;
 
-    yang_name = "proto"; yang_parent_name = "protos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "proto"; yang_parent_name = "protos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Protos::Proto::~Proto()
@@ -1838,6 +3559,7 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::~Proto()
 
 bool Fib::Nodes::Node::Global::Summary::Protos::Proto::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol_name.is_set
 	|| (common_info !=  nullptr && common_info->has_data())
 	|| (summary !=  nullptr && summary->has_data());
@@ -1854,7 +3576,8 @@ bool Fib::Nodes::Node::Global::Summary::Protos::Proto::has_operation() const
 std::string Fib::Nodes::Node::Global::Summary::Protos::Proto::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "proto" <<"[protocol-name='" <<protocol_name <<"']";
+    path_buffer << "proto";
+    ADD_KEY_TOKEN(protocol_name, "protocol-name");
     return path_buffer.str();
 }
 
@@ -1938,7 +3661,7 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::CommonInfo()
     count{YType::uint32, "count"}
 {
 
-    yang_name = "common-info"; yang_parent_name = "proto"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-info"; yang_parent_name = "proto"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::~CommonInfo()
@@ -1947,6 +3670,7 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::~CommonInfo()
 
 bool Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return count.is_set;
 }
 
@@ -2013,14 +3737,14 @@ bool Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::has_leaf_or_c
 Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Summary_()
     :
     base_object(std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject>())
-	,summary_counts(std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts>())
-	,health(std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health>())
+    , summary_counts(std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts>())
+    , health(std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health>())
 {
     base_object->parent = this;
     summary_counts->parent = this;
     health->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "proto"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "proto"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::~Summary_()
@@ -2029,6 +3753,7 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::~Summary_()
 
 bool Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::has_data() const
 {
+    if (is_presence_container) return true;
     return (base_object !=  nullptr && base_object->has_data())
 	|| (summary_counts !=  nullptr && summary_counts->has_data())
 	|| (health !=  nullptr && health->has_data());
@@ -2132,7 +3857,7 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::BaseObje
     protocol{YType::uint32, "protocol"}
 {
 
-    yang_name = "base-object"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base-object"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::~BaseObject()
@@ -2141,6 +3866,7 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::~BaseObj
 
 bool Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set;
 }
 
@@ -2208,9 +3934,12 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::Summa
     :
     num_retry_timeouts{YType::uint64, "num-retry-timeouts"},
     num_retry_ojbects{YType::uint32, "num-retry-ojbects"}
+        ,
+    array_number_of_retry(this, {})
+    , array_number_of_object(this, {})
 {
 
-    yang_name = "summary-counts"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-counts"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::~SummaryCounts()
@@ -2219,12 +3948,13 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::~Summ
 
 bool Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::has_data() const
 {
-    for (std::size_t index=0; index<array_number_of_retry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<array_number_of_retry.len(); index++)
     {
         if(array_number_of_retry[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<array_number_of_object.size(); index++)
+    for (std::size_t index=0; index<array_number_of_object.len(); index++)
     {
         if(array_number_of_object[index]->has_data())
             return true;
@@ -2235,12 +3965,12 @@ bool Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::
 
 bool Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::has_operation() const
 {
-    for (std::size_t index=0; index<array_number_of_retry.size(); index++)
+    for (std::size_t index=0; index<array_number_of_retry.len(); index++)
     {
         if(array_number_of_retry[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<array_number_of_object.size(); index++)
+    for (std::size_t index=0; index<array_number_of_object.len(); index++)
     {
         if(array_number_of_object[index]->has_operation())
             return true;
@@ -2274,7 +4004,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summar
     {
         auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry>();
         c->parent = this;
-        array_number_of_retry.push_back(c);
+        array_number_of_retry.append(c);
         return c;
     }
 
@@ -2282,7 +4012,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summar
     {
         auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject>();
         c->parent = this;
-        array_number_of_object.push_back(c);
+        array_number_of_object.append(c);
         return c;
     }
 
@@ -2294,7 +4024,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : array_number_of_retry)
+    for (auto c : array_number_of_retry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2303,7 +4033,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary
     }
 
     count = 0;
-    for (auto const & c : array_number_of_object)
+    for (auto c : array_number_of_object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2355,7 +4085,7 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::Array
     num_retries{YType::uint64, "num-retries"}
 {
 
-    yang_name = "array-number-of-retry"; yang_parent_name = "summary-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "array-number-of-retry"; yang_parent_name = "summary-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry::~ArrayNumberOfRetry()
@@ -2364,6 +4094,7 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::Array
 
 bool Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry::has_data() const
 {
+    if (is_presence_container) return true;
     return retry_object_type.is_set
 	|| num_retries.is_set;
 }
@@ -2446,7 +4177,7 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::Array
     num_objects{YType::uint32, "num-objects"}
 {
 
-    yang_name = "array-number-of-object"; yang_parent_name = "summary-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "array-number-of-object"; yang_parent_name = "summary-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject::~ArrayNumberOfObject()
@@ -2455,6 +4186,7 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::Array
 
 bool Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject::has_data() const
 {
+    if (is_presence_container) return true;
     return object_type.is_set
 	|| num_objects.is_set;
 }
@@ -2536,7 +4268,7 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::Health()
     is_retry_db_empty{YType::boolean, "is-retry-db-empty"}
 {
 
-    yang_name = "health"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "health"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::~Health()
@@ -2545,6 +4277,7 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::~Health()
 
 bool Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::has_data() const
 {
+    if (is_presence_container) return true;
     return is_retry_db_empty.is_set;
 }
 
@@ -2614,7 +4347,7 @@ Fib::Nodes::Node::Global::ObjectHistory::ObjectHistory()
 {
     obj_history_protos->parent = this;
 
-    yang_name = "object-history"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "object-history"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::ObjectHistory::~ObjectHistory()
@@ -2623,6 +4356,7 @@ Fib::Nodes::Node::Global::ObjectHistory::~ObjectHistory()
 
 bool Fib::Nodes::Node::Global::ObjectHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return (obj_history_protos !=  nullptr && obj_history_protos->has_data());
 }
 
@@ -2690,9 +4424,11 @@ bool Fib::Nodes::Node::Global::ObjectHistory::has_leaf_or_child_of_name(const st
 }
 
 Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProtos()
+    :
+    obj_history_proto(this, {"protocol_name"})
 {
 
-    yang_name = "obj-history-protos"; yang_parent_name = "object-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "obj-history-protos"; yang_parent_name = "object-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::~ObjHistoryProtos()
@@ -2701,7 +4437,8 @@ Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::~ObjHistoryProtos()
 
 bool Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::has_data() const
 {
-    for (std::size_t index=0; index<obj_history_proto.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<obj_history_proto.len(); index++)
     {
         if(obj_history_proto[index]->has_data())
             return true;
@@ -2711,7 +4448,7 @@ bool Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::has_data() const
 
 bool Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::has_operation() const
 {
-    for (std::size_t index=0; index<obj_history_proto.size(); index++)
+    for (std::size_t index=0; index<obj_history_proto.len(); index++)
     {
         if(obj_history_proto[index]->has_operation())
             return true;
@@ -2741,7 +4478,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProto
     {
         auto c = std::make_shared<Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto>();
         c->parent = this;
-        obj_history_proto.push_back(c);
+        obj_history_proto.append(c);
         return c;
     }
 
@@ -2753,7 +4490,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::ObjectH
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : obj_history_proto)
+    for (auto c : obj_history_proto.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2782,14 +4519,14 @@ bool Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::has_leaf_or_chil
 Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjHistoryProto()
     :
     protocol_name{YType::enumeration, "protocol-name"}
-    	,
+        ,
     base_object(std::make_shared<Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject>())
-	,object_history(std::make_shared<Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_>())
+    , object_history(std::make_shared<Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_>())
 {
     base_object->parent = this;
     object_history->parent = this;
 
-    yang_name = "obj-history-proto"; yang_parent_name = "obj-history-protos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "obj-history-proto"; yang_parent_name = "obj-history-protos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::~ObjHistoryProto()
@@ -2798,6 +4535,7 @@ Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::~Obj
 
 bool Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol_name.is_set
 	|| (base_object !=  nullptr && base_object->has_data())
 	|| (object_history !=  nullptr && object_history->has_data());
@@ -2814,7 +4552,8 @@ bool Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto:
 std::string Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "obj-history-proto" <<"[protocol-name='" <<protocol_name <<"']";
+    path_buffer << "obj-history-proto";
+    ADD_KEY_TOKEN(protocol_name, "protocol-name");
     return path_buffer.str();
 }
 
@@ -2898,7 +4637,7 @@ Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::Base
     protocol{YType::uint32, "protocol"}
 {
 
-    yang_name = "base-object"; yang_parent_name = "obj-history-proto"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base-object"; yang_parent_name = "obj-history-proto"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject::~BaseObject()
@@ -2907,6 +4646,7 @@ Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::Base
 
 bool Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set;
 }
 
@@ -2975,7 +4715,7 @@ Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::Obje
     count{YType::uint32, "count"}
 {
 
-    yang_name = "object-history"; yang_parent_name = "obj-history-proto"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "object-history"; yang_parent_name = "obj-history-proto"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_::~ObjectHistory_()
@@ -2984,6 +4724,7 @@ Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::Obje
 
 bool Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_::has_data() const
 {
+    if (is_presence_container) return true;
     return count.is_set;
 }
 
@@ -3048,9 +4789,11 @@ bool Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto:
 }
 
 Fib::Nodes::Node::Protocols::Protocols()
+    :
+    protocol(this, {"protocol_name"})
 {
 
-    yang_name = "protocols"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocols"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::~Protocols()
@@ -3059,7 +4802,8 @@ Fib::Nodes::Node::Protocols::~Protocols()
 
 bool Fib::Nodes::Node::Protocols::has_data() const
 {
-    for (std::size_t index=0; index<protocol.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
         if(protocol[index]->has_data())
             return true;
@@ -3069,7 +4813,7 @@ bool Fib::Nodes::Node::Protocols::has_data() const
 
 bool Fib::Nodes::Node::Protocols::has_operation() const
 {
-    for (std::size_t index=0; index<protocol.size(); index++)
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
         if(protocol[index]->has_operation())
             return true;
@@ -3099,7 +4843,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::get_child_by_name(const std
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol>();
         c->parent = this;
-        protocol.push_back(c);
+        protocol.append(c);
         return c;
     }
 
@@ -3111,7 +4855,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocol)
+    for (auto c : protocol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3140,18 +4884,18 @@ bool Fib::Nodes::Node::Protocols::has_leaf_or_child_of_name(const std::string & 
 Fib::Nodes::Node::Protocols::Protocol::Protocol()
     :
     protocol_name{YType::enumeration, "protocol-name"}
-    	,
+        ,
     issu_state(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::IssuState>())
-	,resource(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource>())
-	,fib_summaries(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries>())
-	,external_summary_all(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll>())
-	,frr_log(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog>())
-	,vrfs(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs>())
-	,exact_routes(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExactRoutes>())
-	,nh_ids(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::NhIds>())
-	,external_client_summaries(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries>())
-	,misc(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc>())
-	,local_label(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::LocalLabel>())
+    , resource(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource>())
+    , fib_summaries(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries>())
+    , external_summary_all(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll>())
+    , frr_log(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog>())
+    , vrfs(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs>())
+    , exact_routes(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExactRoutes>())
+    , nh_ids(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::NhIds>())
+    , external_client_summaries(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries>())
+    , misc(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc>())
+    , local_label(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::LocalLabel>())
 {
     issu_state->parent = this;
     resource->parent = this;
@@ -3165,7 +4909,7 @@ Fib::Nodes::Node::Protocols::Protocol::Protocol()
     misc->parent = this;
     local_label->parent = this;
 
-    yang_name = "protocol"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::~Protocol()
@@ -3174,6 +4918,7 @@ Fib::Nodes::Node::Protocols::Protocol::~Protocol()
 
 bool Fib::Nodes::Node::Protocols::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol_name.is_set
 	|| (issu_state !=  nullptr && issu_state->has_data())
 	|| (resource !=  nullptr && resource->has_data())
@@ -3208,7 +4953,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::has_operation() const
 std::string Fib::Nodes::Node::Protocols::Protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocol" <<"[protocol-name='" <<protocol_name <<"']";
+    path_buffer << "protocol";
+    ADD_KEY_TOKEN(protocol_name, "protocol-name");
     return path_buffer.str();
 }
 
@@ -3426,9 +5172,11 @@ Fib::Nodes::Node::Protocols::Protocol::IssuState::IssuState()
     eod_sent_imdr_time_stamp{YType::str, "eod-sent-imdr-time-stamp"},
     eod_sent_slc_time_stamp{YType::str, "eod-sent-slc-time-stamp"},
     fis_issu_error_ts{YType::uint64, "fis-issu-error-ts"}
+        ,
+    fis_proto_state(this, {})
 {
 
-    yang_name = "issu-state"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "issu-state"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::IssuState::~IssuState()
@@ -3437,7 +5185,8 @@ Fib::Nodes::Node::Protocols::Protocol::IssuState::~IssuState()
 
 bool Fib::Nodes::Node::Protocols::Protocol::IssuState::has_data() const
 {
-    for (std::size_t index=0; index<fis_proto_state.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fis_proto_state.len(); index++)
     {
         if(fis_proto_state[index]->has_data())
             return true;
@@ -3457,7 +5206,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::IssuState::has_data() const
 
 bool Fib::Nodes::Node::Protocols::Protocol::IssuState::has_operation() const
 {
-    for (std::size_t index=0; index<fis_proto_state.size(); index++)
+    for (std::size_t index=0; index<fis_proto_state.len(); index++)
     {
         if(fis_proto_state[index]->has_operation())
             return true;
@@ -3509,7 +5258,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::IssuState::get_ch
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState>();
         c->parent = this;
-        fis_proto_state.push_back(c);
+        fis_proto_state.append(c);
         return c;
     }
 
@@ -3521,7 +5270,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fis_proto_state)
+    for (auto c : fis_proto_state.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3675,7 +5424,7 @@ Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::FisProtoState()
     protocol_eod_time_stamp{YType::str, "protocol-eod-time-stamp"}
 {
 
-    yang_name = "fis-proto-state"; yang_parent_name = "issu-state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fis-proto-state"; yang_parent_name = "issu-state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::~FisProtoState()
@@ -3684,6 +5433,7 @@ Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::~FisProtoState(
 
 bool Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol_name.is_set
 	|| aib_eod_time_stamp.is_set
 	|| rsi_eod_valid.is_set
@@ -3919,16 +5669,16 @@ bool Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::has_leaf_o
 Fib::Nodes::Node::Protocols::Protocol::Resource::Resource()
     :
     resource_detail_info(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo>())
-	,resource_hardware_ingress_info(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo>())
-	,resource_hardware_egress_info(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo>())
-	,resource_summary_info(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo>())
+    , resource_hardware_ingress_info(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo>())
+    , resource_hardware_egress_info(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo>())
+    , resource_summary_info(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo>())
 {
     resource_detail_info->parent = this;
     resource_hardware_ingress_info->parent = this;
     resource_hardware_egress_info->parent = this;
     resource_summary_info->parent = this;
 
-    yang_name = "resource"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resource"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::~Resource()
@@ -3937,6 +5687,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::~Resource()
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::has_data() const
 {
+    if (is_presence_container) return true;
     return (resource_detail_info !=  nullptr && resource_detail_info->has_data())
 	|| (resource_hardware_ingress_info !=  nullptr && resource_hardware_ingress_info->has_data())
 	|| (resource_hardware_egress_info !=  nullptr && resource_hardware_egress_info->has_data())
@@ -4059,9 +5810,12 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::ResourceDet
     sr_hw_oor_count{YType::uint8, "sr-hw-oor-count"},
     sr_in_oor_ts{YType::uint64, "sr-in-oor-ts"},
     sr_out_oor_ts{YType::uint64, "sr-out-oor-ts"}
+        ,
+    sr_hwrsrc_mode(this, {})
+    , sr_shm_state(this, {})
 {
 
-    yang_name = "resource-detail-info"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resource-detail-info"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::~ResourceDetailInfo()
@@ -4070,12 +5824,13 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::~ResourceDe
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::has_data() const
 {
-    for (std::size_t index=0; index<sr_hwrsrc_mode.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sr_hwrsrc_mode.len(); index++)
     {
         if(sr_hwrsrc_mode[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sr_shm_state.size(); index++)
+    for (std::size_t index=0; index<sr_shm_state.len(); index++)
     {
         if(sr_shm_state[index]->has_data())
             return true;
@@ -4090,12 +5845,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::has_da
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::has_operation() const
 {
-    for (std::size_t index=0; index<sr_hwrsrc_mode.size(); index++)
+    for (std::size_t index=0; index<sr_hwrsrc_mode.len(); index++)
     {
         if(sr_hwrsrc_mode[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sr_shm_state.size(); index++)
+    for (std::size_t index=0; index<sr_shm_state.len(); index++)
     {
         if(sr_shm_state[index]->has_operation())
             return true;
@@ -4137,7 +5892,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::Resourc
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrHwrsrcMode>();
         c->parent = this;
-        sr_hwrsrc_mode.push_back(c);
+        sr_hwrsrc_mode.append(c);
         return c;
     }
 
@@ -4145,7 +5900,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::Resourc
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState>();
         c->parent = this;
-        sr_shm_state.push_back(c);
+        sr_shm_state.append(c);
         return c;
     }
 
@@ -4157,7 +5912,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sr_hwrsrc_mode)
+    for (auto c : sr_hwrsrc_mode.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4166,7 +5921,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : sr_shm_state)
+    for (auto c : sr_shm_state.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4257,7 +6012,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrHwrsrcMod
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "sr-hwrsrc-mode"; yang_parent_name = "resource-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-hwrsrc-mode"; yang_parent_name = "resource-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrHwrsrcMode::~SrHwrsrcMode()
@@ -4266,6 +6021,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrHwrsrcMod
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrHwrsrcMode::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -4336,7 +6092,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState:
     srs_max_avail{YType::uint64, "srs-max-avail"}
 {
 
-    yang_name = "sr-shm-state"; yang_parent_name = "resource-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-shm-state"; yang_parent_name = "resource-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState::~SrShmState()
@@ -4345,6 +6101,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState:
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState::has_data() const
 {
+    if (is_presence_container) return true;
     return srs_curr_mode.is_set
 	|| srs_avg_avail.is_set
 	|| srs_max_avail.is_set;
@@ -4442,9 +6199,12 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::Re
     sr_hw_oor_count{YType::uint8, "sr-hw-oor-count"},
     sr_in_oor_ts{YType::uint64, "sr-in-oor-ts"},
     sr_out_oor_ts{YType::uint64, "sr-out-oor-ts"}
+        ,
+    sr_hwrsrc_mode(this, {})
+    , sr_shm_state(this, {})
 {
 
-    yang_name = "resource-hardware-ingress-info"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resource-hardware-ingress-info"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::~ResourceHardwareIngressInfo()
@@ -4453,12 +6213,13 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::~R
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::has_data() const
 {
-    for (std::size_t index=0; index<sr_hwrsrc_mode.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sr_hwrsrc_mode.len(); index++)
     {
         if(sr_hwrsrc_mode[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sr_shm_state.size(); index++)
+    for (std::size_t index=0; index<sr_shm_state.len(); index++)
     {
         if(sr_shm_state[index]->has_data())
             return true;
@@ -4473,12 +6234,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInf
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::has_operation() const
 {
-    for (std::size_t index=0; index<sr_hwrsrc_mode.size(); index++)
+    for (std::size_t index=0; index<sr_hwrsrc_mode.len(); index++)
     {
         if(sr_hwrsrc_mode[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sr_shm_state.size(); index++)
+    for (std::size_t index=0; index<sr_shm_state.len(); index++)
     {
         if(sr_shm_state[index]->has_operation())
             return true;
@@ -4520,7 +6281,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::Resourc
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrHwrsrcMode>();
         c->parent = this;
-        sr_hwrsrc_mode.push_back(c);
+        sr_hwrsrc_mode.append(c);
         return c;
     }
 
@@ -4528,7 +6289,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::Resourc
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState>();
         c->parent = this;
-        sr_shm_state.push_back(c);
+        sr_shm_state.append(c);
         return c;
     }
 
@@ -4540,7 +6301,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sr_hwrsrc_mode)
+    for (auto c : sr_hwrsrc_mode.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4549,7 +6310,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : sr_shm_state)
+    for (auto c : sr_shm_state.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4640,7 +6401,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::Sr
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "sr-hwrsrc-mode"; yang_parent_name = "resource-hardware-ingress-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-hwrsrc-mode"; yang_parent_name = "resource-hardware-ingress-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrHwrsrcMode::~SrHwrsrcMode()
@@ -4649,6 +6410,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::Sr
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrHwrsrcMode::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -4719,7 +6481,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::Sr
     srs_max_avail{YType::uint64, "srs-max-avail"}
 {
 
-    yang_name = "sr-shm-state"; yang_parent_name = "resource-hardware-ingress-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-shm-state"; yang_parent_name = "resource-hardware-ingress-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState::~SrShmState()
@@ -4728,6 +6490,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::Sr
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState::has_data() const
 {
+    if (is_presence_container) return true;
     return srs_curr_mode.is_set
 	|| srs_avg_avail.is_set
 	|| srs_max_avail.is_set;
@@ -4825,9 +6588,12 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::Res
     sr_hw_oor_count{YType::uint8, "sr-hw-oor-count"},
     sr_in_oor_ts{YType::uint64, "sr-in-oor-ts"},
     sr_out_oor_ts{YType::uint64, "sr-out-oor-ts"}
+        ,
+    sr_hwrsrc_mode(this, {})
+    , sr_shm_state(this, {})
 {
 
-    yang_name = "resource-hardware-egress-info"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resource-hardware-egress-info"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::~ResourceHardwareEgressInfo()
@@ -4836,12 +6602,13 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::~Re
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::has_data() const
 {
-    for (std::size_t index=0; index<sr_hwrsrc_mode.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sr_hwrsrc_mode.len(); index++)
     {
         if(sr_hwrsrc_mode[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sr_shm_state.size(); index++)
+    for (std::size_t index=0; index<sr_shm_state.len(); index++)
     {
         if(sr_shm_state[index]->has_data())
             return true;
@@ -4856,12 +6623,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::has_operation() const
 {
-    for (std::size_t index=0; index<sr_hwrsrc_mode.size(); index++)
+    for (std::size_t index=0; index<sr_hwrsrc_mode.len(); index++)
     {
         if(sr_hwrsrc_mode[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sr_shm_state.size(); index++)
+    for (std::size_t index=0; index<sr_shm_state.len(); index++)
     {
         if(sr_shm_state[index]->has_operation())
             return true;
@@ -4903,7 +6670,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::Resourc
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrHwrsrcMode>();
         c->parent = this;
-        sr_hwrsrc_mode.push_back(c);
+        sr_hwrsrc_mode.append(c);
         return c;
     }
 
@@ -4911,7 +6678,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::Resourc
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState>();
         c->parent = this;
-        sr_shm_state.push_back(c);
+        sr_shm_state.append(c);
         return c;
     }
 
@@ -4923,7 +6690,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sr_hwrsrc_mode)
+    for (auto c : sr_hwrsrc_mode.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4932,7 +6699,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : sr_shm_state)
+    for (auto c : sr_shm_state.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5023,7 +6790,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrH
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "sr-hwrsrc-mode"; yang_parent_name = "resource-hardware-egress-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-hwrsrc-mode"; yang_parent_name = "resource-hardware-egress-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrHwrsrcMode::~SrHwrsrcMode()
@@ -5032,6 +6799,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrH
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrHwrsrcMode::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -5102,7 +6870,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrS
     srs_max_avail{YType::uint64, "srs-max-avail"}
 {
 
-    yang_name = "sr-shm-state"; yang_parent_name = "resource-hardware-egress-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-shm-state"; yang_parent_name = "resource-hardware-egress-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState::~SrShmState()
@@ -5111,6 +6879,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrS
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState::has_data() const
 {
+    if (is_presence_container) return true;
     return srs_curr_mode.is_set
 	|| srs_avg_avail.is_set
 	|| srs_max_avail.is_set;
@@ -5208,9 +6977,12 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::ResourceSu
     sr_hw_oor_count{YType::uint8, "sr-hw-oor-count"},
     sr_in_oor_ts{YType::uint64, "sr-in-oor-ts"},
     sr_out_oor_ts{YType::uint64, "sr-out-oor-ts"}
+        ,
+    sr_hwrsrc_mode(this, {})
+    , sr_shm_state(this, {})
 {
 
-    yang_name = "resource-summary-info"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resource-summary-info"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::~ResourceSummaryInfo()
@@ -5219,12 +6991,13 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::~ResourceS
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::has_data() const
 {
-    for (std::size_t index=0; index<sr_hwrsrc_mode.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sr_hwrsrc_mode.len(); index++)
     {
         if(sr_hwrsrc_mode[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sr_shm_state.size(); index++)
+    for (std::size_t index=0; index<sr_shm_state.len(); index++)
     {
         if(sr_shm_state[index]->has_data())
             return true;
@@ -5239,12 +7012,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::has_d
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::has_operation() const
 {
-    for (std::size_t index=0; index<sr_hwrsrc_mode.size(); index++)
+    for (std::size_t index=0; index<sr_hwrsrc_mode.len(); index++)
     {
         if(sr_hwrsrc_mode[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sr_shm_state.size(); index++)
+    for (std::size_t index=0; index<sr_shm_state.len(); index++)
     {
         if(sr_shm_state[index]->has_operation())
             return true;
@@ -5286,7 +7059,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::Resourc
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrHwrsrcMode>();
         c->parent = this;
-        sr_hwrsrc_mode.push_back(c);
+        sr_hwrsrc_mode.append(c);
         return c;
     }
 
@@ -5294,7 +7067,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::Resourc
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState>();
         c->parent = this;
-        sr_shm_state.push_back(c);
+        sr_shm_state.append(c);
         return c;
     }
 
@@ -5306,7 +7079,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sr_hwrsrc_mode)
+    for (auto c : sr_hwrsrc_mode.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5315,7 +7088,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : sr_shm_state)
+    for (auto c : sr_shm_state.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5406,7 +7179,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrHwrsrcMo
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "sr-hwrsrc-mode"; yang_parent_name = "resource-summary-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-hwrsrc-mode"; yang_parent_name = "resource-summary-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrHwrsrcMode::~SrHwrsrcMode()
@@ -5415,6 +7188,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrHwrsrcMo
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrHwrsrcMode::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -5485,7 +7259,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState
     srs_max_avail{YType::uint64, "srs-max-avail"}
 {
 
-    yang_name = "sr-shm-state"; yang_parent_name = "resource-summary-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-shm-state"; yang_parent_name = "resource-summary-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState::~SrShmState()
@@ -5494,6 +7268,7 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState
 
 bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState::has_data() const
 {
+    if (is_presence_container) return true;
     return srs_curr_mode.is_set
 	|| srs_avg_avail.is_set
 	|| srs_max_avail.is_set;
@@ -5584,9 +7359,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShm
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummaries()
+    :
+    fib_summary(this, {})
 {
 
-    yang_name = "fib-summaries"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fib-summaries"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FibSummaries::~FibSummaries()
@@ -5595,7 +7372,8 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::~FibSummaries()
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::has_data() const
 {
-    for (std::size_t index=0; index<fib_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fib_summary.len(); index++)
     {
         if(fib_summary[index]->has_data())
             return true;
@@ -5605,7 +7383,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::has_data() const
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<fib_summary.size(); index++)
+    for (std::size_t index=0; index<fib_summary.len(); index++)
     {
         if(fib_summary[index]->has_operation())
             return true;
@@ -5635,7 +7413,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary>();
         c->parent = this;
-        fib_summary.push_back(c);
+        fib_summary.append(c);
         return c;
     }
 
@@ -5647,7 +7425,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fib_summary)
+    for (auto c : fib_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5714,14 +7492,16 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::FibSummary()
     lisp_eid_prefixes{YType::uint32, "lisp-eid-prefixes"},
     lisp_eid_valid_prefixes{YType::uint32, "lisp-eid-valid-prefixes"},
     lisp_rloc_objects{YType::uint32, "lisp-rloc-objects"},
+    number_routes_srv6_transit{YType::uint32, "number-routes-srv6-transit"},
+    number_routes_srv6_end{YType::uint32, "number-routes-srv6-end"},
     ss_vxlan_ltep_ifh{YType::str, "ss-vxlan-ltep-ifh"},
     ss_drop_pl_count{YType::uint32, "ss-drop-pl-count"}
-    	,
+        ,
     exclusive_load_sharing_element(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement>())
-	,shared_load_sharing_element(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement>())
-	,cross_shared_load_sharing_element(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement>())
-	,label_shared_load_sharing_element(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelSharedLoadSharingElement>())
-	,prefix_masklen_distribution(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution>())
+    , shared_load_sharing_element(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement>())
+    , cross_shared_load_sharing_element(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement>())
+    , label_shared_load_sharing_element(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelSharedLoadSharingElement>())
+    , prefix_masklen_distribution(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution>())
 {
     exclusive_load_sharing_element->parent = this;
     shared_load_sharing_element->parent = this;
@@ -5729,7 +7509,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::FibSummary()
     label_shared_load_sharing_element->parent = this;
     prefix_masklen_distribution->parent = this;
 
-    yang_name = "fib-summary"; yang_parent_name = "fib-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fib-summary"; yang_parent_name = "fib-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::~FibSummary()
@@ -5738,6 +7518,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::~FibSummary()
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| table_id.is_set
 	|| prefix.is_set
@@ -5777,6 +7558,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::has_data()
 	|| lisp_eid_prefixes.is_set
 	|| lisp_eid_valid_prefixes.is_set
 	|| lisp_rloc_objects.is_set
+	|| number_routes_srv6_transit.is_set
+	|| number_routes_srv6_end.is_set
 	|| ss_vxlan_ltep_ifh.is_set
 	|| ss_drop_pl_count.is_set
 	|| (exclusive_load_sharing_element !=  nullptr && exclusive_load_sharing_element->has_data())
@@ -5828,6 +7611,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::has_operat
 	|| ydk::is_set(lisp_eid_prefixes.yfilter)
 	|| ydk::is_set(lisp_eid_valid_prefixes.yfilter)
 	|| ydk::is_set(lisp_rloc_objects.yfilter)
+	|| ydk::is_set(number_routes_srv6_transit.yfilter)
+	|| ydk::is_set(number_routes_srv6_end.yfilter)
 	|| ydk::is_set(ss_vxlan_ltep_ifh.yfilter)
 	|| ydk::is_set(ss_drop_pl_count.yfilter)
 	|| (exclusive_load_sharing_element !=  nullptr && exclusive_load_sharing_element->has_operation())
@@ -5887,6 +7672,8 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
     if (lisp_eid_prefixes.is_set || is_set(lisp_eid_prefixes.yfilter)) leaf_name_data.push_back(lisp_eid_prefixes.get_name_leafdata());
     if (lisp_eid_valid_prefixes.is_set || is_set(lisp_eid_valid_prefixes.yfilter)) leaf_name_data.push_back(lisp_eid_valid_prefixes.get_name_leafdata());
     if (lisp_rloc_objects.is_set || is_set(lisp_rloc_objects.yfilter)) leaf_name_data.push_back(lisp_rloc_objects.get_name_leafdata());
+    if (number_routes_srv6_transit.is_set || is_set(number_routes_srv6_transit.yfilter)) leaf_name_data.push_back(number_routes_srv6_transit.get_name_leafdata());
+    if (number_routes_srv6_end.is_set || is_set(number_routes_srv6_end.yfilter)) leaf_name_data.push_back(number_routes_srv6_end.get_name_leafdata());
     if (ss_vxlan_ltep_ifh.is_set || is_set(ss_vxlan_ltep_ifh.yfilter)) leaf_name_data.push_back(ss_vxlan_ltep_ifh.get_name_leafdata());
     if (ss_drop_pl_count.is_set || is_set(ss_drop_pl_count.yfilter)) leaf_name_data.push_back(ss_drop_pl_count.get_name_leafdata());
 
@@ -6212,6 +7999,18 @@ void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::set_value(
         lisp_rloc_objects.value_namespace = name_space;
         lisp_rloc_objects.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "number-routes-srv6-transit")
+    {
+        number_routes_srv6_transit = value;
+        number_routes_srv6_transit.value_namespace = name_space;
+        number_routes_srv6_transit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "number-routes-srv6-end")
+    {
+        number_routes_srv6_end = value;
+        number_routes_srv6_end.value_namespace = name_space;
+        number_routes_srv6_end.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ss-vxlan-ltep-ifh")
     {
         ss_vxlan_ltep_ifh = value;
@@ -6384,6 +8183,14 @@ void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::set_filter
     {
         lisp_rloc_objects.yfilter = yfilter;
     }
+    if(value_path == "number-routes-srv6-transit")
+    {
+        number_routes_srv6_transit.yfilter = yfilter;
+    }
+    if(value_path == "number-routes-srv6-end")
+    {
+        number_routes_srv6_end.yfilter = yfilter;
+    }
     if(value_path == "ss-vxlan-ltep-ifh")
     {
         ss_vxlan_ltep_ifh.yfilter = yfilter;
@@ -6396,7 +8203,7 @@ void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::set_filter
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "exclusive-load-sharing-element" || name == "shared-load-sharing-element" || name == "cross-shared-load-sharing-element" || name == "label-shared-load-sharing-element" || name == "prefix-masklen-distribution" || name == "vrf-name" || name == "table-id" || name == "prefix" || name == "ss-tbl-id" || name == "ss-tbl-id-ptr" || name == "ss-vrf-id" || name == "ss-vr-id" || name == "load-balancing" || name == "forwarding-elements" || name == "routes" || name == "prefix-in-place-modifications" || name == "stale-prefix-deletes" || name == "load-sharing-elements" || name == "load-sharing-references" || name == "total-load-share-element-bytes" || name == "leaves-used-bytes" || name == "reresolve-entries" || name == "old-unresolve-entries" || name == "new-unresolve-entries" || name == "unresolve-entries" || name == "cef-route-drops" || name == "cef-version-mismatch-route-drops" || name == "delete-cache-num-entries" || name == "existing-leaves-revisions" || name == "fib-default-prefix" || name == "fib-default-prefix-mask-length" || name == "next-hops" || name == "incomplete-next-hops" || name == "resolution-timer" || name == "slow-process-timer" || name == "max-resolution-timer" || name == "imposition-prefixes" || name == "extended-prefixes" || name == "cefl-bl-recycled-routes" || name == "ldi-backwalks" || name == "ss-prot-route-count" || name == "lisp-eid-prefixes" || name == "lisp-eid-valid-prefixes" || name == "lisp-rloc-objects" || name == "ss-vxlan-ltep-ifh" || name == "ss-drop-pl-count")
+    if(name == "exclusive-load-sharing-element" || name == "shared-load-sharing-element" || name == "cross-shared-load-sharing-element" || name == "label-shared-load-sharing-element" || name == "prefix-masklen-distribution" || name == "vrf-name" || name == "table-id" || name == "prefix" || name == "ss-tbl-id" || name == "ss-tbl-id-ptr" || name == "ss-vrf-id" || name == "ss-vr-id" || name == "load-balancing" || name == "forwarding-elements" || name == "routes" || name == "prefix-in-place-modifications" || name == "stale-prefix-deletes" || name == "load-sharing-elements" || name == "load-sharing-references" || name == "total-load-share-element-bytes" || name == "leaves-used-bytes" || name == "reresolve-entries" || name == "old-unresolve-entries" || name == "new-unresolve-entries" || name == "unresolve-entries" || name == "cef-route-drops" || name == "cef-version-mismatch-route-drops" || name == "delete-cache-num-entries" || name == "existing-leaves-revisions" || name == "fib-default-prefix" || name == "fib-default-prefix-mask-length" || name == "next-hops" || name == "incomplete-next-hops" || name == "resolution-timer" || name == "slow-process-timer" || name == "max-resolution-timer" || name == "imposition-prefixes" || name == "extended-prefixes" || name == "cefl-bl-recycled-routes" || name == "ldi-backwalks" || name == "ss-prot-route-count" || name == "lisp-eid-prefixes" || name == "lisp-eid-valid-prefixes" || name == "lisp-rloc-objects" || name == "number-routes-srv6-transit" || name == "number-routes-srv6-end" || name == "ss-vxlan-ltep-ifh" || name == "ss-drop-pl-count")
         return true;
     return false;
 }
@@ -6415,7 +8222,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSh
     xpl_load_info_elements{YType::uint32, "xpl-load-info-elements"}
 {
 
-    yang_name = "exclusive-load-sharing-element"; yang_parent_name = "fib-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclusive-load-sharing-element"; yang_parent_name = "fib-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement::~ExclusiveLoadSharingElement()
@@ -6424,6 +8231,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSh
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement::has_data() const
 {
+    if (is_presence_container) return true;
     return total_load_sharing_element_bytes.is_set
 	|| total_load_sharing_element_references.is_set
 	|| total_path_list_elements.is_set
@@ -6618,7 +8426,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadShari
     xpl_load_info_elements{YType::uint32, "xpl-load-info-elements"}
 {
 
-    yang_name = "shared-load-sharing-element"; yang_parent_name = "fib-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shared-load-sharing-element"; yang_parent_name = "fib-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement::~SharedLoadSharingElement()
@@ -6627,6 +8435,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadShari
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement::has_data() const
 {
+    if (is_presence_container) return true;
     return total_load_sharing_element_bytes.is_set
 	|| total_load_sharing_element_references.is_set
 	|| total_path_list_elements.is_set
@@ -6821,7 +8630,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoad
     xpl_load_info_elements{YType::uint32, "xpl-load-info-elements"}
 {
 
-    yang_name = "cross-shared-load-sharing-element"; yang_parent_name = "fib-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cross-shared-load-sharing-element"; yang_parent_name = "fib-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement::~CrossSharedLoadSharingElement()
@@ -6830,6 +8639,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoad
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement::has_data() const
 {
+    if (is_presence_container) return true;
     return total_load_sharing_element_bytes.is_set
 	|| total_load_sharing_element_references.is_set
 	|| total_path_list_elements.is_set
@@ -7024,7 +8834,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelSharedLoad
     xpl_load_info_elements{YType::uint32, "xpl-load-info-elements"}
 {
 
-    yang_name = "label-shared-load-sharing-element"; yang_parent_name = "fib-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-shared-load-sharing-element"; yang_parent_name = "fib-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelSharedLoadSharingElement::~LabelSharedLoadSharingElement()
@@ -7033,6 +8843,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelSharedLoad
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelSharedLoadSharingElement::has_data() const
 {
+    if (is_presence_container) return true;
     return total_load_sharing_element_bytes.is_set
 	|| total_load_sharing_element_references.is_set
 	|| total_path_list_elements.is_set
@@ -7214,9 +9025,13 @@ bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelShare
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::PrefixMasklenDistribution()
+    :
+    unicast_prefixe(this, {})
+    , broadcast_prefixe(this, {})
+    , multicast_prefix(this, {})
 {
 
-    yang_name = "prefix-masklen-distribution"; yang_parent_name = "fib-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-masklen-distribution"; yang_parent_name = "fib-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::~PrefixMasklenDistribution()
@@ -7225,17 +9040,18 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDi
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::has_data() const
 {
-    for (std::size_t index=0; index<unicast_prefixe.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unicast_prefixe.len(); index++)
     {
         if(unicast_prefixe[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<broadcast_prefixe.size(); index++)
+    for (std::size_t index=0; index<broadcast_prefixe.len(); index++)
     {
         if(broadcast_prefixe[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<multicast_prefix.size(); index++)
+    for (std::size_t index=0; index<multicast_prefix.len(); index++)
     {
         if(multicast_prefix[index]->has_data())
             return true;
@@ -7245,17 +9061,17 @@ bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMask
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::has_operation() const
 {
-    for (std::size_t index=0; index<unicast_prefixe.size(); index++)
+    for (std::size_t index=0; index<unicast_prefixe.len(); index++)
     {
         if(unicast_prefixe[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<broadcast_prefixe.size(); index++)
+    for (std::size_t index=0; index<broadcast_prefixe.len(); index++)
     {
         if(broadcast_prefixe[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<multicast_prefix.size(); index++)
+    for (std::size_t index=0; index<multicast_prefix.len(); index++)
     {
         if(multicast_prefix[index]->has_operation())
             return true;
@@ -7285,7 +9101,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::Fib
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::UnicastPrefixe>();
         c->parent = this;
-        unicast_prefixe.push_back(c);
+        unicast_prefixe.append(c);
         return c;
     }
 
@@ -7293,7 +9109,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::Fib
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::BroadcastPrefixe>();
         c->parent = this;
-        broadcast_prefixe.push_back(c);
+        broadcast_prefixe.append(c);
         return c;
     }
 
@@ -7301,7 +9117,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::Fib
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::MulticastPrefix>();
         c->parent = this;
-        multicast_prefix.push_back(c);
+        multicast_prefix.append(c);
         return c;
     }
 
@@ -7313,7 +9129,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : unicast_prefixe)
+    for (auto c : unicast_prefixe.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7322,7 +9138,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : broadcast_prefixe)
+    for (auto c : broadcast_prefixe.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7331,7 +9147,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : multicast_prefix)
+    for (auto c : multicast_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7363,7 +9179,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDi
     number_of_prefixes{YType::uint32, "number-of-prefixes"}
 {
 
-    yang_name = "unicast-prefixe"; yang_parent_name = "prefix-masklen-distribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast-prefixe"; yang_parent_name = "prefix-masklen-distribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::UnicastPrefixe::~UnicastPrefixe()
@@ -7372,6 +9188,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDi
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::UnicastPrefixe::has_data() const
 {
+    if (is_presence_container) return true;
     return mask_length.is_set
 	|| number_of_prefixes.is_set;
 }
@@ -7454,7 +9271,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDi
     number_of_prefixes{YType::uint32, "number-of-prefixes"}
 {
 
-    yang_name = "broadcast-prefixe"; yang_parent_name = "prefix-masklen-distribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast-prefixe"; yang_parent_name = "prefix-masklen-distribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::BroadcastPrefixe::~BroadcastPrefixe()
@@ -7463,6 +9280,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDi
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::BroadcastPrefixe::has_data() const
 {
+    if (is_presence_container) return true;
     return mask_length.is_set
 	|| number_of_prefixes.is_set;
 }
@@ -7545,7 +9363,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDi
     number_of_prefixes{YType::uint32, "number-of-prefixes"}
 {
 
-    yang_name = "multicast-prefix"; yang_parent_name = "prefix-masklen-distribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast-prefix"; yang_parent_name = "prefix-masklen-distribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::MulticastPrefix::~MulticastPrefix()
@@ -7554,6 +9372,7 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDi
 
 bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::MulticastPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return mask_length.is_set
 	|| number_of_prefixes.is_set;
 }
@@ -7633,12 +9452,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMask
 Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::ExternalSummaryAll()
     :
     sesa_num_client{YType::uint32, "sesa-num-client"}
-    	,
+        ,
     sesa_pl_sum(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum>())
 {
     sesa_pl_sum->parent = this;
 
-    yang_name = "external-summary-all"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "external-summary-all"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::~ExternalSummaryAll()
@@ -7647,6 +9466,7 @@ Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::~ExternalSummaryAll()
 
 bool Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::has_data() const
 {
+    if (is_presence_container) return true;
     return sesa_num_client.is_set
 	|| (sesa_pl_sum !=  nullptr && sesa_pl_sum->has_data());
 }
@@ -7730,9 +9550,11 @@ Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SesaPlSum(
     :
     sep_num_ecd_pathlist{YType::uint32, "sep-num-ecd-pathlist"},
     sep_num_ecd_pl_unresolved{YType::uint32, "sep-num-ecd-pl-unresolved"}
+        ,
+    sep_num_ecd_pl_per_interest(this, {})
 {
 
-    yang_name = "sesa-pl-sum"; yang_parent_name = "external-summary-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sesa-pl-sum"; yang_parent_name = "external-summary-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::~SesaPlSum()
@@ -7741,7 +9563,8 @@ Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::~SesaPlSum
 
 bool Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::has_data() const
 {
-    for (std::size_t index=0; index<sep_num_ecd_pl_per_interest.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sep_num_ecd_pl_per_interest.len(); index++)
     {
         if(sep_num_ecd_pl_per_interest[index]->has_data())
             return true;
@@ -7752,7 +9575,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::has_d
 
 bool Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::has_operation() const
 {
-    for (std::size_t index=0; index<sep_num_ecd_pl_per_interest.size(); index++)
+    for (std::size_t index=0; index<sep_num_ecd_pl_per_interest.len(); index++)
     {
         if(sep_num_ecd_pl_per_interest[index]->has_operation())
             return true;
@@ -7786,7 +9609,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAl
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SepNumEcdPlPerInterest>();
         c->parent = this;
-        sep_num_ecd_pl_per_interest.push_back(c);
+        sep_num_ecd_pl_per_interest.append(c);
         return c;
     }
 
@@ -7798,7 +9621,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sep_num_ecd_pl_per_interest)
+    for (auto c : sep_num_ecd_pl_per_interest.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7849,7 +9672,7 @@ Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SepNumEcdP
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "sep-num-ecd-pl-per-interest"; yang_parent_name = "sesa-pl-sum"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sep-num-ecd-pl-per-interest"; yang_parent_name = "sesa-pl-sum"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SepNumEcdPlPerInterest::~SepNumEcdPlPerInterest()
@@ -7858,6 +9681,7 @@ Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SepNumEcdP
 
 bool Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SepNumEcdPlPerInterest::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -7927,7 +9751,7 @@ Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrLog()
 {
     frr_interfaces->parent = this;
 
-    yang_name = "frr-log"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-log"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FrrLog::~FrrLog()
@@ -7936,6 +9760,7 @@ Fib::Nodes::Node::Protocols::Protocol::FrrLog::~FrrLog()
 
 bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::has_data() const
 {
+    if (is_presence_container) return true;
     return (frr_interfaces !=  nullptr && frr_interfaces->has_data());
 }
 
@@ -8003,9 +9828,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::has_leaf_or_child_of_name(co
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterfaces()
+    :
+    frr_interface(this, {"frr_interface_name"})
 {
 
-    yang_name = "frr-interfaces"; yang_parent_name = "frr-log"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-interfaces"; yang_parent_name = "frr-log"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::~FrrInterfaces()
@@ -8014,7 +9841,8 @@ Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::~FrrInterfaces()
 
 bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<frr_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_interface.len(); index++)
     {
         if(frr_interface[index]->has_data())
             return true;
@@ -8024,7 +9852,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::has_data() co
 
 bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<frr_interface.size(); index++)
+    for (std::size_t index=0; index<frr_interface.len(); index++)
     {
         if(frr_interface[index]->has_operation())
             return true;
@@ -8054,7 +9882,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterf
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface>();
         c->parent = this;
-        frr_interface.push_back(c);
+        frr_interface.append(c);
         return c;
     }
 
@@ -8066,7 +9894,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_interface)
+    for (auto c : frr_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8095,12 +9923,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::has_leaf_or_c
 Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::FrrInterface()
     :
     frr_interface_name{YType::str, "frr-interface-name"}
-    	,
+        ,
     logs(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs>())
 {
     logs->parent = this;
 
-    yang_name = "frr-interface"; yang_parent_name = "frr-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-interface"; yang_parent_name = "frr-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::~FrrInterface()
@@ -8109,6 +9937,7 @@ Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::~Frr
 
 bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return frr_interface_name.is_set
 	|| (logs !=  nullptr && logs->has_data());
 }
@@ -8123,7 +9952,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface:
 std::string Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-interface" <<"[frr-interface-name='" <<frr_interface_name <<"']";
+    path_buffer << "frr-interface";
+    ADD_KEY_TOKEN(frr_interface_name, "frr-interface-name");
     return path_buffer.str();
 }
 
@@ -8189,9 +10019,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface:
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Logs()
+    :
+    log(this, {"log_index"})
 {
 
-    yang_name = "logs"; yang_parent_name = "frr-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logs"; yang_parent_name = "frr-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::~Logs()
@@ -8200,7 +10032,8 @@ Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs
 
 bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::has_data() const
 {
-    for (std::size_t index=0; index<log.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log.len(); index++)
     {
         if(log[index]->has_data())
             return true;
@@ -8210,7 +10043,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface:
 
 bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::has_operation() const
 {
-    for (std::size_t index=0; index<log.size(); index++)
+    for (std::size_t index=0; index<log.len(); index++)
     {
         if(log[index]->has_operation())
             return true;
@@ -8240,7 +10073,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterf
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log>();
         c->parent = this;
-        log.push_back(c);
+        log.append(c);
         return c;
     }
 
@@ -8252,7 +10085,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log)
+    for (auto c : log.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8280,18 +10113,18 @@ bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface:
 
 Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::Log()
     :
-    log_index{YType::int32, "log-index"},
+    log_index{YType::uint32, "log-index"},
     frr_protocol_type{YType::enumeration, "frr-protocol-type"},
     frr_interface_name{YType::str, "frr-interface-name"},
     frr_prefix{YType::str, "frr-prefix"},
     frr_switching_time{YType::uint32, "frr-switching-time"},
     bundle_member_interface_name{YType::str, "bundle-member-interface-name"}
-    	,
+        ,
     frr_timestamp(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp>())
 {
     frr_timestamp->parent = this;
 
-    yang_name = "log"; yang_parent_name = "logs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log"; yang_parent_name = "logs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::~Log()
@@ -8300,6 +10133,7 @@ Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs
 
 bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::has_data() const
 {
+    if (is_presence_container) return true;
     return log_index.is_set
 	|| frr_protocol_type.is_set
 	|| frr_interface_name.is_set
@@ -8324,7 +10158,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface:
 std::string Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "log" <<"[log-index='" <<log_index <<"']";
+    path_buffer << "log";
+    ADD_KEY_TOKEN(log_index, "log-index");
     return path_buffer.str();
 }
 
@@ -8450,7 +10285,7 @@ Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs
     nano_seconds{YType::int32, "nano-seconds"}
 {
 
-    yang_name = "frr-timestamp"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-timestamp"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp::~FrrTimestamp()
@@ -8459,6 +10294,7 @@ Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs
 
 bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nano_seconds.is_set;
 }
@@ -8536,9 +10372,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface:
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::~Vrfs()
@@ -8547,7 +10385,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::~Vrfs()
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -8557,7 +10396,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::has_data() const
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -8587,7 +10426,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_child_b
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -8599,7 +10438,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8628,15 +10467,15 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::has_leaf_or_child_of_name(cons
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     nh_info_detail_hardware_egress(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress>())
-	,ip_prefix_details(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails>())
-	,nh_info_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail>())
-	,summary(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary>())
-	,interface_infos(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos>())
-	,ip_prefix_briefs(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs>())
-	,nh_info_detail_hardware_ingress(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngress>())
-	,nh_info_brief(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief>())
+    , ip_prefix_details(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails>())
+    , nh_info_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail>())
+    , summary(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary>())
+    , interface_infos(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos>())
+    , ip_prefix_briefs(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs>())
+    , nh_info_detail_hardware_ingress(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngress>())
+    , nh_info_brief(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief>())
 {
     nh_info_detail_hardware_egress->parent = this;
     ip_prefix_details->parent = this;
@@ -8647,7 +10486,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Vrf()
     nh_info_detail_hardware_ingress->parent = this;
     nh_info_brief->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::~Vrf()
@@ -8656,6 +10495,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::~Vrf()
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (nh_info_detail_hardware_egress !=  nullptr && nh_info_detail_hardware_egress->has_data())
 	|| (ip_prefix_details !=  nullptr && ip_prefix_details->has_data())
@@ -8684,7 +10524,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::has_operation() const
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -8850,14 +10691,14 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::has_leaf_or_child_of_name
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoDetailHardwareEgress()
     :
     nh_info_special_detail_hardware_egress(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress>())
-	,nh_info_local_detail_hardware_egresses(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses>())
-	,nh_info_remote_detail_hardware_egresses(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses>())
+    , nh_info_local_detail_hardware_egresses(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses>())
+    , nh_info_remote_detail_hardware_egresses(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses>())
 {
     nh_info_special_detail_hardware_egress->parent = this;
     nh_info_local_detail_hardware_egresses->parent = this;
     nh_info_remote_detail_hardware_egresses->parent = this;
 
-    yang_name = "nh-info-detail-hardware-egress"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-detail-hardware-egress"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::~NhInfoDetailHardwareEgress()
@@ -8866,6 +10707,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::~N
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::has_data() const
 {
+    if (is_presence_container) return true;
     return (nh_info_special_detail_hardware_egress !=  nullptr && nh_info_special_detail_hardware_egress->has_data())
 	|| (nh_info_local_detail_hardware_egresses !=  nullptr && nh_info_local_detail_hardware_egresses->has_data())
 	|| (nh_info_remote_detail_hardware_egresses !=  nullptr && nh_info_remote_detail_hardware_egresses->has_data());
@@ -8967,16 +10809,16 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress()
     :
     nh_info_special_null_detail_hardware_egress(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress>())
-	,nh_info_special_punt_detail_hardware_egress(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress>())
-	,nh_info_special_discard_detail_hardware_egress(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress>())
-	,nh_info_special_drop_detail_hardware_egress(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress>())
+    , nh_info_special_punt_detail_hardware_egress(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress>())
+    , nh_info_special_discard_detail_hardware_egress(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress>())
+    , nh_info_special_drop_detail_hardware_egress(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress>())
 {
     nh_info_special_null_detail_hardware_egress->parent = this;
     nh_info_special_punt_detail_hardware_egress->parent = this;
     nh_info_special_discard_detail_hardware_egress->parent = this;
     nh_info_special_drop_detail_hardware_egress->parent = this;
 
-    yang_name = "nh-info-special-detail-hardware-egress"; yang_parent_name = "nh-info-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-special-detail-hardware-egress"; yang_parent_name = "nh-info-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::~NhInfoSpecialDetailHardwareEgress()
@@ -8985,6 +10827,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::has_data() const
 {
+    if (is_presence_container) return true;
     return (nh_info_special_null_detail_hardware_egress !=  nullptr && nh_info_special_null_detail_hardware_egress->has_data())
 	|| (nh_info_special_punt_detail_hardware_egress !=  nullptr && nh_info_special_punt_detail_hardware_egress->has_data())
 	|| (nh_info_special_discard_detail_hardware_egress !=  nullptr && nh_info_special_discard_detail_hardware_egress->has_data())
@@ -9148,14 +10991,14 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     si_gre_dest_addr{YType::str, "si-gre-dest-addr"},
     si_nhid{YType::uint32, "si-nhid"},
     si_upd_ts{YType::uint64, "si-upd-ts"}
-    	,
+        ,
     si_pwhe(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::SiPwhe>())
-	,nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension>())
+    , nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension>())
 {
     si_pwhe->parent = this;
     nh_info_extension->parent = this;
 
-    yang_name = "nh-info-special-null-detail-hardware-egress"; yang_parent_name = "nh-info-special-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-special-null-detail-hardware-egress"; yang_parent_name = "nh-info-special-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::~NhInfoSpecialNullDetailHardwareEgress()
@@ -9164,6 +11007,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::has_data() const
 {
+    if (is_presence_container) return true;
     return si_link_proto.is_set
 	|| si_nhinfo.is_set
 	|| si_nhtype.is_set
@@ -9867,7 +11711,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     dot1q_vlan_tag{YType::uint32, "dot1q-vlan-tag"}
 {
 
-    yang_name = "si-pwhe"; yang_parent_name = "nh-info-special-null-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "si-pwhe"; yang_parent_name = "nh-info-special-null-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::SiPwhe::~SiPwhe()
@@ -9876,6 +11720,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::SiPwhe::has_data() const
 {
+    if (is_presence_container) return true;
     return pwhe_adjacency_client_data.is_set
 	|| vctype.is_set
 	|| vc_internal_label.is_set
@@ -10005,9 +11850,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtension()
+    :
+    nh_info_extension_detail(this, {})
 {
 
-    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-special-null-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-special-null-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::~NhInfoExtension()
@@ -10016,7 +11863,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::has_data() const
 {
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nh_info_extension_detail.len(); index++)
     {
         if(nh_info_extension_detail[index]->has_data())
             return true;
@@ -10026,7 +11874,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::has_operation() const
 {
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
+    for (std::size_t index=0; index<nh_info_extension_detail.len(); index++)
     {
         if(nh_info_extension_detail[index]->has_operation())
             return true;
@@ -10056,7 +11904,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
         c->parent = this;
-        nh_info_extension_detail.push_back(c);
+        nh_info_extension_detail.append(c);
         return c;
     }
 
@@ -10068,7 +11916,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nh_info_extension_detail)
+    for (auto c : nh_info_extension_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10097,12 +11945,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail()
     :
     nh_info_extension_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase>())
-	,nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
+    , nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
 {
     nh_info_extension_base->parent = this;
     nh_info_extension_detail->parent = this;
 
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::~NhInfoExtensionDetail()
@@ -10111,6 +11959,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return (nh_info_extension_base !=  nullptr && nh_info_extension_base->has_data())
 	|| (nh_info_extension_detail !=  nullptr && nh_info_extension_detail->has_data());
 }
@@ -10197,12 +12046,12 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     :
     parent_object_pointer{YType::uint64, "parent-object-pointer"},
     back_object_pointer{YType::uint64, "back-object-pointer"}
-    	,
+        ,
     object_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase>())
 {
     object_base->parent = this;
 
-    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::~NhInfoExtensionBase()
@@ -10211,6 +12060,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::has_data() const
 {
+    if (is_presence_container) return true;
     return parent_object_pointer.is_set
 	|| back_object_pointer.is_set
 	|| (object_base !=  nullptr && object_base->has_data());
@@ -10312,7 +12162,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     object_pointer{YType::uint64, "object-pointer"}
 {
 
-    yang_name = "object-base"; yang_parent_name = "nh-info-extension-base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "object-base"; yang_parent_name = "nh-info-extension-base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::~ObjectBase()
@@ -10321,6 +12171,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::has_data() const
 {
+    if (is_presence_container) return true;
     return object_reference_count.is_set
 	|| object_flags.is_set
 	|| object_type.is_set
@@ -10439,12 +12290,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::NhInfoExtensionDetail_()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     snecd_nhr(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr>())
 {
     snecd_nhr->parent = this;
 
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::~NhInfoExtensionDetail_()
@@ -10453,6 +12304,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (snecd_nhr !=  nullptr && snecd_nhr->has_data());
 }
@@ -10539,7 +12391,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
-    yang_name = "snecd-nhr"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snecd-nhr"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::~SnecdNhr()
@@ -10548,6 +12400,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
 	|| nh_info_replicated_interface.is_set;
@@ -10686,14 +12539,14 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     si_gre_dest_addr{YType::str, "si-gre-dest-addr"},
     si_nhid{YType::uint32, "si-nhid"},
     si_upd_ts{YType::uint64, "si-upd-ts"}
-    	,
+        ,
     si_pwhe(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::SiPwhe>())
-	,nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension>())
+    , nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension>())
 {
     si_pwhe->parent = this;
     nh_info_extension->parent = this;
 
-    yang_name = "nh-info-special-punt-detail-hardware-egress"; yang_parent_name = "nh-info-special-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-special-punt-detail-hardware-egress"; yang_parent_name = "nh-info-special-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::~NhInfoSpecialPuntDetailHardwareEgress()
@@ -10702,6 +12555,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::has_data() const
 {
+    if (is_presence_container) return true;
     return si_link_proto.is_set
 	|| si_nhinfo.is_set
 	|| si_nhtype.is_set
@@ -11405,7 +13259,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     dot1q_vlan_tag{YType::uint32, "dot1q-vlan-tag"}
 {
 
-    yang_name = "si-pwhe"; yang_parent_name = "nh-info-special-punt-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "si-pwhe"; yang_parent_name = "nh-info-special-punt-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::SiPwhe::~SiPwhe()
@@ -11414,6 +13268,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::SiPwhe::has_data() const
 {
+    if (is_presence_container) return true;
     return pwhe_adjacency_client_data.is_set
 	|| vctype.is_set
 	|| vc_internal_label.is_set
@@ -11543,9 +13398,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtension()
+    :
+    nh_info_extension_detail(this, {})
 {
 
-    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-special-punt-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-special-punt-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::~NhInfoExtension()
@@ -11554,7 +13411,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::has_data() const
 {
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nh_info_extension_detail.len(); index++)
     {
         if(nh_info_extension_detail[index]->has_data())
             return true;
@@ -11564,7 +13422,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::has_operation() const
 {
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
+    for (std::size_t index=0; index<nh_info_extension_detail.len(); index++)
     {
         if(nh_info_extension_detail[index]->has_operation())
             return true;
@@ -11594,7 +13452,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
         c->parent = this;
-        nh_info_extension_detail.push_back(c);
+        nh_info_extension_detail.append(c);
         return c;
     }
 
@@ -11606,7 +13464,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nh_info_extension_detail)
+    for (auto c : nh_info_extension_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11635,12 +13493,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail()
     :
     nh_info_extension_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase>())
-	,nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
+    , nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
 {
     nh_info_extension_base->parent = this;
     nh_info_extension_detail->parent = this;
 
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::~NhInfoExtensionDetail()
@@ -11649,6 +13507,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return (nh_info_extension_base !=  nullptr && nh_info_extension_base->has_data())
 	|| (nh_info_extension_detail !=  nullptr && nh_info_extension_detail->has_data());
 }
@@ -11735,12 +13594,12 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     :
     parent_object_pointer{YType::uint64, "parent-object-pointer"},
     back_object_pointer{YType::uint64, "back-object-pointer"}
-    	,
+        ,
     object_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase>())
 {
     object_base->parent = this;
 
-    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::~NhInfoExtensionBase()
@@ -11749,6 +13608,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::has_data() const
 {
+    if (is_presence_container) return true;
     return parent_object_pointer.is_set
 	|| back_object_pointer.is_set
 	|| (object_base !=  nullptr && object_base->has_data());
@@ -11850,7 +13710,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     object_pointer{YType::uint64, "object-pointer"}
 {
 
-    yang_name = "object-base"; yang_parent_name = "nh-info-extension-base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "object-base"; yang_parent_name = "nh-info-extension-base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::~ObjectBase()
@@ -11859,6 +13719,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::has_data() const
 {
+    if (is_presence_container) return true;
     return object_reference_count.is_set
 	|| object_flags.is_set
 	|| object_type.is_set
@@ -11977,12 +13838,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::NhInfoExtensionDetail_()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     snecd_nhr(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr>())
 {
     snecd_nhr->parent = this;
 
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::~NhInfoExtensionDetail_()
@@ -11991,6 +13852,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (snecd_nhr !=  nullptr && snecd_nhr->has_data());
 }
@@ -12077,7 +13939,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
-    yang_name = "snecd-nhr"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snecd-nhr"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::~SnecdNhr()
@@ -12086,6 +13948,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
 	|| nh_info_replicated_interface.is_set;
@@ -12224,14 +14087,14 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     si_gre_dest_addr{YType::str, "si-gre-dest-addr"},
     si_nhid{YType::uint32, "si-nhid"},
     si_upd_ts{YType::uint64, "si-upd-ts"}
-    	,
+        ,
     si_pwhe(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::SiPwhe>())
-	,nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension>())
+    , nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension>())
 {
     si_pwhe->parent = this;
     nh_info_extension->parent = this;
 
-    yang_name = "nh-info-special-discard-detail-hardware-egress"; yang_parent_name = "nh-info-special-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-special-discard-detail-hardware-egress"; yang_parent_name = "nh-info-special-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::~NhInfoSpecialDiscardDetailHardwareEgress()
@@ -12240,6 +14103,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::has_data() const
 {
+    if (is_presence_container) return true;
     return si_link_proto.is_set
 	|| si_nhinfo.is_set
 	|| si_nhtype.is_set
@@ -12943,7 +14807,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     dot1q_vlan_tag{YType::uint32, "dot1q-vlan-tag"}
 {
 
-    yang_name = "si-pwhe"; yang_parent_name = "nh-info-special-discard-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "si-pwhe"; yang_parent_name = "nh-info-special-discard-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::SiPwhe::~SiPwhe()
@@ -12952,6 +14816,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::SiPwhe::has_data() const
 {
+    if (is_presence_container) return true;
     return pwhe_adjacency_client_data.is_set
 	|| vctype.is_set
 	|| vc_internal_label.is_set
@@ -13081,9 +14946,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtension()
+    :
+    nh_info_extension_detail(this, {})
 {
 
-    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-special-discard-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-special-discard-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::~NhInfoExtension()
@@ -13092,7 +14959,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::has_data() const
 {
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nh_info_extension_detail.len(); index++)
     {
         if(nh_info_extension_detail[index]->has_data())
             return true;
@@ -13102,7 +14970,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::has_operation() const
 {
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
+    for (std::size_t index=0; index<nh_info_extension_detail.len(); index++)
     {
         if(nh_info_extension_detail[index]->has_operation())
             return true;
@@ -13132,7 +15000,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
         c->parent = this;
-        nh_info_extension_detail.push_back(c);
+        nh_info_extension_detail.append(c);
         return c;
     }
 
@@ -13144,7 +15012,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nh_info_extension_detail)
+    for (auto c : nh_info_extension_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13173,12 +15041,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail()
     :
     nh_info_extension_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase>())
-	,nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
+    , nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
 {
     nh_info_extension_base->parent = this;
     nh_info_extension_detail->parent = this;
 
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::~NhInfoExtensionDetail()
@@ -13187,6 +15055,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return (nh_info_extension_base !=  nullptr && nh_info_extension_base->has_data())
 	|| (nh_info_extension_detail !=  nullptr && nh_info_extension_detail->has_data());
 }
@@ -13273,12 +15142,12 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     :
     parent_object_pointer{YType::uint64, "parent-object-pointer"},
     back_object_pointer{YType::uint64, "back-object-pointer"}
-    	,
+        ,
     object_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase>())
 {
     object_base->parent = this;
 
-    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::~NhInfoExtensionBase()
@@ -13287,6 +15156,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::has_data() const
 {
+    if (is_presence_container) return true;
     return parent_object_pointer.is_set
 	|| back_object_pointer.is_set
 	|| (object_base !=  nullptr && object_base->has_data());
@@ -13388,7 +15258,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     object_pointer{YType::uint64, "object-pointer"}
 {
 
-    yang_name = "object-base"; yang_parent_name = "nh-info-extension-base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "object-base"; yang_parent_name = "nh-info-extension-base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::~ObjectBase()
@@ -13397,6 +15267,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::has_data() const
 {
+    if (is_presence_container) return true;
     return object_reference_count.is_set
 	|| object_flags.is_set
 	|| object_type.is_set
@@ -13515,12 +15386,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::NhInfoExtensionDetail_()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     snecd_nhr(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr>())
 {
     snecd_nhr->parent = this;
 
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::~NhInfoExtensionDetail_()
@@ -13529,6 +15400,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (snecd_nhr !=  nullptr && snecd_nhr->has_data());
 }
@@ -13615,7 +15487,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
-    yang_name = "snecd-nhr"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snecd-nhr"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::~SnecdNhr()
@@ -13624,6 +15496,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
 	|| nh_info_replicated_interface.is_set;
@@ -13762,14 +15635,14 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     si_gre_dest_addr{YType::str, "si-gre-dest-addr"},
     si_nhid{YType::uint32, "si-nhid"},
     si_upd_ts{YType::uint64, "si-upd-ts"}
-    	,
+        ,
     si_pwhe(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::SiPwhe>())
-	,nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension>())
+    , nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension>())
 {
     si_pwhe->parent = this;
     nh_info_extension->parent = this;
 
-    yang_name = "nh-info-special-drop-detail-hardware-egress"; yang_parent_name = "nh-info-special-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-special-drop-detail-hardware-egress"; yang_parent_name = "nh-info-special-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::~NhInfoSpecialDropDetailHardwareEgress()
@@ -13778,6 +15651,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::has_data() const
 {
+    if (is_presence_container) return true;
     return si_link_proto.is_set
 	|| si_nhinfo.is_set
 	|| si_nhtype.is_set
@@ -14481,7 +16355,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     dot1q_vlan_tag{YType::uint32, "dot1q-vlan-tag"}
 {
 
-    yang_name = "si-pwhe"; yang_parent_name = "nh-info-special-drop-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "si-pwhe"; yang_parent_name = "nh-info-special-drop-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::SiPwhe::~SiPwhe()
@@ -14490,6 +16364,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::SiPwhe::has_data() const
 {
+    if (is_presence_container) return true;
     return pwhe_adjacency_client_data.is_set
 	|| vctype.is_set
 	|| vc_internal_label.is_set
@@ -14619,9 +16494,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtension()
+    :
+    nh_info_extension_detail(this, {})
 {
 
-    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-special-drop-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-special-drop-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::~NhInfoExtension()
@@ -14630,7 +16507,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::has_data() const
 {
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nh_info_extension_detail.len(); index++)
     {
         if(nh_info_extension_detail[index]->has_data())
             return true;
@@ -14640,7 +16518,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::has_operation() const
 {
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
+    for (std::size_t index=0; index<nh_info_extension_detail.len(); index++)
     {
         if(nh_info_extension_detail[index]->has_operation())
             return true;
@@ -14670,7 +16548,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
         c->parent = this;
-        nh_info_extension_detail.push_back(c);
+        nh_info_extension_detail.append(c);
         return c;
     }
 
@@ -14682,7 +16560,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nh_info_extension_detail)
+    for (auto c : nh_info_extension_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14711,12 +16589,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail()
     :
     nh_info_extension_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase>())
-	,nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
+    , nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
 {
     nh_info_extension_base->parent = this;
     nh_info_extension_detail->parent = this;
 
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::~NhInfoExtensionDetail()
@@ -14725,6 +16603,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return (nh_info_extension_base !=  nullptr && nh_info_extension_base->has_data())
 	|| (nh_info_extension_detail !=  nullptr && nh_info_extension_detail->has_data());
 }
@@ -14811,12 +16690,12 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     :
     parent_object_pointer{YType::uint64, "parent-object-pointer"},
     back_object_pointer{YType::uint64, "back-object-pointer"}
-    	,
+        ,
     object_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase>())
 {
     object_base->parent = this;
 
-    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::~NhInfoExtensionBase()
@@ -14825,6 +16704,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::has_data() const
 {
+    if (is_presence_container) return true;
     return parent_object_pointer.is_set
 	|| back_object_pointer.is_set
 	|| (object_base !=  nullptr && object_base->has_data());
@@ -14926,7 +16806,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     object_pointer{YType::uint64, "object-pointer"}
 {
 
-    yang_name = "object-base"; yang_parent_name = "nh-info-extension-base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "object-base"; yang_parent_name = "nh-info-extension-base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::~ObjectBase()
@@ -14935,6 +16815,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::has_data() const
 {
+    if (is_presence_container) return true;
     return object_reference_count.is_set
 	|| object_flags.is_set
 	|| object_type.is_set
@@ -15053,12 +16934,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::NhInfoExtensionDetail_()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     snecd_nhr(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr>())
 {
     snecd_nhr->parent = this;
 
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::~NhInfoExtensionDetail_()
@@ -15067,6 +16948,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (snecd_nhr !=  nullptr && snecd_nhr->has_data());
 }
@@ -15153,7 +17035,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
-    yang_name = "snecd-nhr"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snecd-nhr"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::~SnecdNhr()
@@ -15162,6 +17044,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
 	|| nh_info_replicated_interface.is_set;
@@ -15252,9 +17135,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgresses()
+    :
+    nh_info_local_detail_hardware_egress(this, {})
 {
 
-    yang_name = "nh-info-local-detail-hardware-egresses"; yang_parent_name = "nh-info-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-local-detail-hardware-egresses"; yang_parent_name = "nh-info-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::~NhInfoLocalDetailHardwareEgresses()
@@ -15263,7 +17148,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::has_data() const
 {
-    for (std::size_t index=0; index<nh_info_local_detail_hardware_egress.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nh_info_local_detail_hardware_egress.len(); index++)
     {
         if(nh_info_local_detail_hardware_egress[index]->has_data())
             return true;
@@ -15273,7 +17159,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::has_operation() const
 {
-    for (std::size_t index=0; index<nh_info_local_detail_hardware_egress.size(); index++)
+    for (std::size_t index=0; index<nh_info_local_detail_hardware_egress.len(); index++)
     {
         if(nh_info_local_detail_hardware_egress[index]->has_operation())
             return true;
@@ -15303,7 +17189,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress>();
         c->parent = this;
-        nh_info_local_detail_hardware_egress.push_back(c);
+        nh_info_local_detail_hardware_egress.append(c);
         return c;
     }
 
@@ -15315,7 +17201,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nh_info_local_detail_hardware_egress)
+    for (auto c : nh_info_local_detail_hardware_egress.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15392,14 +17278,14 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     si_gre_dest_addr{YType::str, "si-gre-dest-addr"},
     si_nhid{YType::uint32, "si-nhid"},
     si_upd_ts{YType::uint64, "si-upd-ts"}
-    	,
+        ,
     si_pwhe(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::SiPwhe>())
-	,nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension>())
+    , nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension>())
 {
     si_pwhe->parent = this;
     nh_info_extension->parent = this;
 
-    yang_name = "nh-info-local-detail-hardware-egress"; yang_parent_name = "nh-info-local-detail-hardware-egresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-local-detail-hardware-egress"; yang_parent_name = "nh-info-local-detail-hardware-egresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::~NhInfoLocalDetailHardwareEgress()
@@ -15408,6 +17294,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_interface_name.is_set
 	|| nh_address.is_set
 	|| si_link_proto.is_set
@@ -16137,7 +18024,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     dot1q_vlan_tag{YType::uint32, "dot1q-vlan-tag"}
 {
 
-    yang_name = "si-pwhe"; yang_parent_name = "nh-info-local-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "si-pwhe"; yang_parent_name = "nh-info-local-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::SiPwhe::~SiPwhe()
@@ -16146,6 +18033,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::SiPwhe::has_data() const
 {
+    if (is_presence_container) return true;
     return pwhe_adjacency_client_data.is_set
 	|| vctype.is_set
 	|| vc_internal_label.is_set
@@ -16275,9 +18163,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtension()
+    :
+    nh_info_extension_detail(this, {})
 {
 
-    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-local-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-local-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::~NhInfoExtension()
@@ -16286,7 +18176,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::has_data() const
 {
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nh_info_extension_detail.len(); index++)
     {
         if(nh_info_extension_detail[index]->has_data())
             return true;
@@ -16296,7 +18187,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::has_operation() const
 {
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
+    for (std::size_t index=0; index<nh_info_extension_detail.len(); index++)
     {
         if(nh_info_extension_detail[index]->has_operation())
             return true;
@@ -16326,7 +18217,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
         c->parent = this;
-        nh_info_extension_detail.push_back(c);
+        nh_info_extension_detail.append(c);
         return c;
     }
 
@@ -16338,7 +18229,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nh_info_extension_detail)
+    for (auto c : nh_info_extension_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16367,12 +18258,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail()
     :
     nh_info_extension_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase>())
-	,nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
+    , nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
 {
     nh_info_extension_base->parent = this;
     nh_info_extension_detail->parent = this;
 
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::~NhInfoExtensionDetail()
@@ -16381,6 +18272,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return (nh_info_extension_base !=  nullptr && nh_info_extension_base->has_data())
 	|| (nh_info_extension_detail !=  nullptr && nh_info_extension_detail->has_data());
 }
@@ -16467,12 +18359,12 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     :
     parent_object_pointer{YType::uint64, "parent-object-pointer"},
     back_object_pointer{YType::uint64, "back-object-pointer"}
-    	,
+        ,
     object_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase>())
 {
     object_base->parent = this;
 
-    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::~NhInfoExtensionBase()
@@ -16481,6 +18373,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::has_data() const
 {
+    if (is_presence_container) return true;
     return parent_object_pointer.is_set
 	|| back_object_pointer.is_set
 	|| (object_base !=  nullptr && object_base->has_data());
@@ -16582,7 +18475,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     object_pointer{YType::uint64, "object-pointer"}
 {
 
-    yang_name = "object-base"; yang_parent_name = "nh-info-extension-base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "object-base"; yang_parent_name = "nh-info-extension-base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::~ObjectBase()
@@ -16591,6 +18484,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::has_data() const
 {
+    if (is_presence_container) return true;
     return object_reference_count.is_set
 	|| object_flags.is_set
 	|| object_type.is_set
@@ -16709,12 +18603,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::NhInfoExtensionDetail_()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     snecd_nhr(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr>())
 {
     snecd_nhr->parent = this;
 
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::~NhInfoExtensionDetail_()
@@ -16723,6 +18617,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (snecd_nhr !=  nullptr && snecd_nhr->has_data());
 }
@@ -16809,7 +18704,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
-    yang_name = "snecd-nhr"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snecd-nhr"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::~SnecdNhr()
@@ -16818,6 +18713,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
 	|| nh_info_replicated_interface.is_set;
@@ -16908,9 +18804,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgresses()
+    :
+    nh_info_remote_detail_hardware_egress(this, {})
 {
 
-    yang_name = "nh-info-remote-detail-hardware-egresses"; yang_parent_name = "nh-info-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-remote-detail-hardware-egresses"; yang_parent_name = "nh-info-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::~NhInfoRemoteDetailHardwareEgresses()
@@ -16919,7 +18817,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::has_data() const
 {
-    for (std::size_t index=0; index<nh_info_remote_detail_hardware_egress.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nh_info_remote_detail_hardware_egress.len(); index++)
     {
         if(nh_info_remote_detail_hardware_egress[index]->has_data())
             return true;
@@ -16929,7 +18828,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::has_operation() const
 {
-    for (std::size_t index=0; index<nh_info_remote_detail_hardware_egress.size(); index++)
+    for (std::size_t index=0; index<nh_info_remote_detail_hardware_egress.len(); index++)
     {
         if(nh_info_remote_detail_hardware_egress[index]->has_operation())
             return true;
@@ -16959,7 +18858,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress>();
         c->parent = this;
-        nh_info_remote_detail_hardware_egress.push_back(c);
+        nh_info_remote_detail_hardware_egress.append(c);
         return c;
     }
 
@@ -16971,7 +18870,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nh_info_remote_detail_hardware_egress)
+    for (auto c : nh_info_remote_detail_hardware_egress.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17048,14 +18947,14 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     si_gre_dest_addr{YType::str, "si-gre-dest-addr"},
     si_nhid{YType::uint32, "si-nhid"},
     si_upd_ts{YType::uint64, "si-upd-ts"}
-    	,
+        ,
     si_pwhe(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::SiPwhe>())
-	,nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension>())
+    , nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension>())
 {
     si_pwhe->parent = this;
     nh_info_extension->parent = this;
 
-    yang_name = "nh-info-remote-detail-hardware-egress"; yang_parent_name = "nh-info-remote-detail-hardware-egresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-remote-detail-hardware-egress"; yang_parent_name = "nh-info-remote-detail-hardware-egresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::~NhInfoRemoteDetailHardwareEgress()
@@ -17064,6 +18963,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_interface_name.is_set
 	|| nh_address.is_set
 	|| si_link_proto.is_set
@@ -17793,7 +19693,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     dot1q_vlan_tag{YType::uint32, "dot1q-vlan-tag"}
 {
 
-    yang_name = "si-pwhe"; yang_parent_name = "nh-info-remote-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "si-pwhe"; yang_parent_name = "nh-info-remote-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::SiPwhe::~SiPwhe()
@@ -17802,6 +19702,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::SiPwhe::has_data() const
 {
+    if (is_presence_container) return true;
     return pwhe_adjacency_client_data.is_set
 	|| vctype.is_set
 	|| vc_internal_label.is_set
@@ -17931,9 +19832,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtension()
+    :
+    nh_info_extension_detail(this, {})
 {
 
-    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-remote-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-remote-detail-hardware-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::~NhInfoExtension()
@@ -17942,7 +19845,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::has_data() const
 {
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nh_info_extension_detail.len(); index++)
     {
         if(nh_info_extension_detail[index]->has_data())
             return true;
@@ -17952,7 +19856,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::has_operation() const
 {
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
+    for (std::size_t index=0; index<nh_info_extension_detail.len(); index++)
     {
         if(nh_info_extension_detail[index]->has_operation())
             return true;
@@ -17982,7 +19886,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
         c->parent = this;
-        nh_info_extension_detail.push_back(c);
+        nh_info_extension_detail.append(c);
         return c;
     }
 
@@ -17994,7 +19898,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nh_info_extension_detail)
+    for (auto c : nh_info_extension_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18023,12 +19927,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail()
     :
     nh_info_extension_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase>())
-	,nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
+    , nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
 {
     nh_info_extension_base->parent = this;
     nh_info_extension_detail->parent = this;
 
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::~NhInfoExtensionDetail()
@@ -18037,6 +19941,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return (nh_info_extension_base !=  nullptr && nh_info_extension_base->has_data())
 	|| (nh_info_extension_detail !=  nullptr && nh_info_extension_detail->has_data());
 }
@@ -18123,12 +20028,12 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     :
     parent_object_pointer{YType::uint64, "parent-object-pointer"},
     back_object_pointer{YType::uint64, "back-object-pointer"}
-    	,
+        ,
     object_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase>())
 {
     object_base->parent = this;
 
-    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::~NhInfoExtensionBase()
@@ -18137,6 +20042,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::has_data() const
 {
+    if (is_presence_container) return true;
     return parent_object_pointer.is_set
 	|| back_object_pointer.is_set
 	|| (object_base !=  nullptr && object_base->has_data());
@@ -18238,7 +20144,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     object_pointer{YType::uint64, "object-pointer"}
 {
 
-    yang_name = "object-base"; yang_parent_name = "nh-info-extension-base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "object-base"; yang_parent_name = "nh-info-extension-base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::~ObjectBase()
@@ -18247,6 +20153,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::has_data() const
 {
+    if (is_presence_container) return true;
     return object_reference_count.is_set
 	|| object_flags.is_set
 	|| object_type.is_set
@@ -18365,12 +20272,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::NhInfoExtensionDetail_()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     snecd_nhr(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr>())
 {
     snecd_nhr->parent = this;
 
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::~NhInfoExtensionDetail_()
@@ -18379,6 +20286,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (snecd_nhr !=  nullptr && snecd_nhr->has_data());
 }
@@ -18465,7 +20373,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
-    yang_name = "snecd-nhr"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snecd-nhr"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::~SnecdNhr()
@@ -18474,6 +20382,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::Nh
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
 	|| nh_info_replicated_interface.is_set;
@@ -18564,9 +20473,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgres
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetails()
+    :
+    ip_prefix_detail(this, {})
 {
 
-    yang_name = "ip-prefix-details"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-prefix-details"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::~IpPrefixDetails()
@@ -18575,7 +20486,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::~IpPrefixDeta
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::has_data() const
 {
-    for (std::size_t index=0; index<ip_prefix_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ip_prefix_detail.len(); index++)
     {
         if(ip_prefix_detail[index]->has_data())
             return true;
@@ -18585,7 +20497,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::has_data
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::has_operation() const
 {
-    for (std::size_t index=0; index<ip_prefix_detail.size(); index++)
+    for (std::size_t index=0; index<ip_prefix_detail.len(); index++)
     {
         if(ip_prefix_detail[index]->has_operation())
             return true;
@@ -18615,7 +20527,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail>();
         c->parent = this;
-        ip_prefix_detail.push_back(c);
+        ip_prefix_detail.append(c);
         return c;
     }
 
@@ -18627,7 +20539,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ip_prefix_detail)
+    for (auto c : ip_prefix_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18691,20 +20603,23 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     time_of_last_update_in_msec{YType::uint64, "time-of-last-update-in-msec"},
     l2_subscriber_route{YType::boolean, "l2-subscriber-route"},
     l2_subscriber_xconnect_id{YType::uint32, "l2-subscriber-xconnect-id"},
+    l2_subscriber_flags{YType::uint32, "l2-subscriber-flags"},
     l2_subscriber_ip_protocol{YType::uint32, "l2-subscriber-ip-protocol"},
     l2tpv3_cookie_length_bits{YType::uint32, "l2tpv3-cookie-length-bits"},
     route_for_external_reach_linecard_flag{YType::boolean, "route-for-external-reach-linecard-flag"},
-    route_is_sr_flag{YType::boolean, "route-is-sr-flag"}
-    	,
+    route_is_sr_flag{YType::boolean, "route-is-sr-flag"},
+    route_is_srv6_transit{YType::boolean, "route-is-srv6-transit"},
+    route_is_srv6_end{YType::boolean, "route-is-srv6-end"},
+    srv6_operation_type{YType::str, "srv6-operation-type"}
+        ,
     detail_fib_entry_information(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation>())
-	,fib_entry_path(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath>())
-	,srv6_information(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information>())
+    , fib_entry_path(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath>())
+    , extension_object(this, {})
 {
     detail_fib_entry_information->parent = this;
     fib_entry_path->parent = this;
-    srv6_information->parent = this;
 
-    yang_name = "ip-prefix-detail"; yang_parent_name = "ip-prefix-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-prefix-detail"; yang_parent_name = "ip-prefix-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::~IpPrefixDetail()
@@ -18713,7 +20628,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::has_data() const
 {
-    for (std::size_t index=0; index<extension_object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<extension_object.len(); index++)
     {
         if(extension_object[index]->has_data())
             return true;
@@ -18754,18 +20670,21 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 	|| time_of_last_update_in_msec.is_set
 	|| l2_subscriber_route.is_set
 	|| l2_subscriber_xconnect_id.is_set
+	|| l2_subscriber_flags.is_set
 	|| l2_subscriber_ip_protocol.is_set
 	|| l2tpv3_cookie_length_bits.is_set
 	|| route_for_external_reach_linecard_flag.is_set
 	|| route_is_sr_flag.is_set
+	|| route_is_srv6_transit.is_set
+	|| route_is_srv6_end.is_set
+	|| srv6_operation_type.is_set
 	|| (detail_fib_entry_information !=  nullptr && detail_fib_entry_information->has_data())
-	|| (fib_entry_path !=  nullptr && fib_entry_path->has_data())
-	|| (srv6_information !=  nullptr && srv6_information->has_data());
+	|| (fib_entry_path !=  nullptr && fib_entry_path->has_data());
 }
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::has_operation() const
 {
-    for (std::size_t index=0; index<extension_object.size(); index++)
+    for (std::size_t index=0; index<extension_object.len(); index++)
     {
         if(extension_object[index]->has_operation())
             return true;
@@ -18807,13 +20726,16 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 	|| ydk::is_set(time_of_last_update_in_msec.yfilter)
 	|| ydk::is_set(l2_subscriber_route.yfilter)
 	|| ydk::is_set(l2_subscriber_xconnect_id.yfilter)
+	|| ydk::is_set(l2_subscriber_flags.yfilter)
 	|| ydk::is_set(l2_subscriber_ip_protocol.yfilter)
 	|| ydk::is_set(l2tpv3_cookie_length_bits.yfilter)
 	|| ydk::is_set(route_for_external_reach_linecard_flag.yfilter)
 	|| ydk::is_set(route_is_sr_flag.yfilter)
+	|| ydk::is_set(route_is_srv6_transit.yfilter)
+	|| ydk::is_set(route_is_srv6_end.yfilter)
+	|| ydk::is_set(srv6_operation_type.yfilter)
 	|| (detail_fib_entry_information !=  nullptr && detail_fib_entry_information->has_operation())
-	|| (fib_entry_path !=  nullptr && fib_entry_path->has_operation())
-	|| (srv6_information !=  nullptr && srv6_information->has_operation());
+	|| (fib_entry_path !=  nullptr && fib_entry_path->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::get_segment_path() const
@@ -18863,10 +20785,14 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
     if (time_of_last_update_in_msec.is_set || is_set(time_of_last_update_in_msec.yfilter)) leaf_name_data.push_back(time_of_last_update_in_msec.get_name_leafdata());
     if (l2_subscriber_route.is_set || is_set(l2_subscriber_route.yfilter)) leaf_name_data.push_back(l2_subscriber_route.get_name_leafdata());
     if (l2_subscriber_xconnect_id.is_set || is_set(l2_subscriber_xconnect_id.yfilter)) leaf_name_data.push_back(l2_subscriber_xconnect_id.get_name_leafdata());
+    if (l2_subscriber_flags.is_set || is_set(l2_subscriber_flags.yfilter)) leaf_name_data.push_back(l2_subscriber_flags.get_name_leafdata());
     if (l2_subscriber_ip_protocol.is_set || is_set(l2_subscriber_ip_protocol.yfilter)) leaf_name_data.push_back(l2_subscriber_ip_protocol.get_name_leafdata());
     if (l2tpv3_cookie_length_bits.is_set || is_set(l2tpv3_cookie_length_bits.yfilter)) leaf_name_data.push_back(l2tpv3_cookie_length_bits.get_name_leafdata());
     if (route_for_external_reach_linecard_flag.is_set || is_set(route_for_external_reach_linecard_flag.yfilter)) leaf_name_data.push_back(route_for_external_reach_linecard_flag.get_name_leafdata());
     if (route_is_sr_flag.is_set || is_set(route_is_sr_flag.yfilter)) leaf_name_data.push_back(route_is_sr_flag.get_name_leafdata());
+    if (route_is_srv6_transit.is_set || is_set(route_is_srv6_transit.yfilter)) leaf_name_data.push_back(route_is_srv6_transit.get_name_leafdata());
+    if (route_is_srv6_end.is_set || is_set(route_is_srv6_end.yfilter)) leaf_name_data.push_back(route_is_srv6_end.get_name_leafdata());
+    if (srv6_operation_type.is_set || is_set(srv6_operation_type.yfilter)) leaf_name_data.push_back(srv6_operation_type.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -18892,20 +20818,11 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
         return fib_entry_path;
     }
 
-    if(child_yang_name == "srv6-information")
-    {
-        if(srv6_information == nullptr)
-        {
-            srv6_information = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information>();
-        }
-        return srv6_information;
-    }
-
     if(child_yang_name == "extension-object")
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject>();
         c->parent = this;
-        extension_object.push_back(c);
+        extension_object.append(c);
         return c;
     }
 
@@ -18926,13 +20843,8 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
         children["fib-entry-path"] = fib_entry_path;
     }
 
-    if(srv6_information != nullptr)
-    {
-        children["srv6-information"] = srv6_information;
-    }
-
     count = 0;
-    for (auto const & c : extension_object)
+    for (auto c : extension_object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19161,6 +21073,12 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
         l2_subscriber_xconnect_id.value_namespace = name_space;
         l2_subscriber_xconnect_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "l2-subscriber-flags")
+    {
+        l2_subscriber_flags = value;
+        l2_subscriber_flags.value_namespace = name_space;
+        l2_subscriber_flags.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "l2-subscriber-ip-protocol")
     {
         l2_subscriber_ip_protocol = value;
@@ -19184,6 +21102,24 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
         route_is_sr_flag = value;
         route_is_sr_flag.value_namespace = name_space;
         route_is_sr_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-is-srv6-transit")
+    {
+        route_is_srv6_transit = value;
+        route_is_srv6_transit.value_namespace = name_space;
+        route_is_srv6_transit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-is-srv6-end")
+    {
+        route_is_srv6_end = value;
+        route_is_srv6_end.value_namespace = name_space;
+        route_is_srv6_end.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srv6-operation-type")
+    {
+        srv6_operation_type = value;
+        srv6_operation_type.value_namespace = name_space;
+        srv6_operation_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -19333,6 +21269,10 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
     {
         l2_subscriber_xconnect_id.yfilter = yfilter;
     }
+    if(value_path == "l2-subscriber-flags")
+    {
+        l2_subscriber_flags.yfilter = yfilter;
+    }
     if(value_path == "l2-subscriber-ip-protocol")
     {
         l2_subscriber_ip_protocol.yfilter = yfilter;
@@ -19349,11 +21289,23 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
     {
         route_is_sr_flag.yfilter = yfilter;
     }
+    if(value_path == "route-is-srv6-transit")
+    {
+        route_is_srv6_transit.yfilter = yfilter;
+    }
+    if(value_path == "route-is-srv6-end")
+    {
+        route_is_srv6_end.yfilter = yfilter;
+    }
+    if(value_path == "srv6-operation-type")
+    {
+        srv6_operation_type.yfilter = yfilter;
+    }
 }
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "detail-fib-entry-information" || name == "fib-entry-path" || name == "srv6-information" || name == "extension-object" || name == "prefix" || name == "prefix-length" || name == "protocol-type-fib-entry" || name == "platform-hardware" || name == "number-of-referances-to-path-list" || name == "path-list-flags" || name == "path-list-source" || name == "number-of-referances-to-ldi" || name == "ldi-flags" || name == "flags-external-ldi" || name == "pointer-external-ldi" || name == "exact-path-interface-handle" || name == "exact-path-gre-interface-handle" || name == "exact-route-gre-phys-ifh-avail" || name == "exact-route-result" || name == "prefix-is-static-or-connected" || name == "packet-should-recieve" || name == "prefix-connected" || name == "prefix-for-adjancency" || name == "prefix-for-pic-next-hop" || name == "purgable-after-purge-interval" || name == "broadcast-recive-flag" || name == "broadcast-forward-flag" || name == "zero-by-zero-route-as-default" || name == "external-switch-triggered" || name == "route-attribute-flag" || name == "dummy-real-zero-route" || name == "ldi-lw-flag" || name == "ref-counter-of-ldi-lw-ldi" || name == "type-of-ldi-lw-ldi" || name == "lspa-flags" || name == "version-of-route" || name == "fib-route-download-priority" || name == "time-of-last-update-in-msec" || name == "l2-subscriber-route" || name == "l2-subscriber-xconnect-id" || name == "l2-subscriber-ip-protocol" || name == "l2tpv3-cookie-length-bits" || name == "route-for-external-reach-linecard-flag" || name == "route-is-sr-flag")
+    if(name == "detail-fib-entry-information" || name == "fib-entry-path" || name == "extension-object" || name == "prefix" || name == "prefix-length" || name == "protocol-type-fib-entry" || name == "platform-hardware" || name == "number-of-referances-to-path-list" || name == "path-list-flags" || name == "path-list-source" || name == "number-of-referances-to-ldi" || name == "ldi-flags" || name == "flags-external-ldi" || name == "pointer-external-ldi" || name == "exact-path-interface-handle" || name == "exact-path-gre-interface-handle" || name == "exact-route-gre-phys-ifh-avail" || name == "exact-route-result" || name == "prefix-is-static-or-connected" || name == "packet-should-recieve" || name == "prefix-connected" || name == "prefix-for-adjancency" || name == "prefix-for-pic-next-hop" || name == "purgable-after-purge-interval" || name == "broadcast-recive-flag" || name == "broadcast-forward-flag" || name == "zero-by-zero-route-as-default" || name == "external-switch-triggered" || name == "route-attribute-flag" || name == "dummy-real-zero-route" || name == "ldi-lw-flag" || name == "ref-counter-of-ldi-lw-ldi" || name == "type-of-ldi-lw-ldi" || name == "lspa-flags" || name == "version-of-route" || name == "fib-route-download-priority" || name == "time-of-last-update-in-msec" || name == "l2-subscriber-route" || name == "l2-subscriber-xconnect-id" || name == "l2-subscriber-flags" || name == "l2-subscriber-ip-protocol" || name == "l2tpv3-cookie-length-bits" || name == "route-for-external-reach-linecard-flag" || name == "route-is-sr-flag" || name == "route-is-srv6-transit" || name == "route-is-srv6-end" || name == "srv6-operation-type")
         return true;
     return false;
 }
@@ -19399,12 +21351,12 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     ldi_time_of_last_update_in_msec{YType::uint64, "ldi-time-of-last-update-in-msec"},
     lwldi_time_of_last_update_in_msec{YType::uint64, "lwldi-time-of-last-update-in-msec"},
     pl_time_stamp_type{YType::uint32, "pl-time-stamp-type"}
-    	,
+        ,
     loadshare_information(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation>())
 {
     loadshare_information->parent = this;
 
-    yang_name = "detail-fib-entry-information"; yang_parent_name = "ip-prefix-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-fib-entry-information"; yang_parent_name = "ip-prefix-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::~DetailFibEntryInformation()
@@ -19413,6 +21365,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return fib_entry_version.is_set
 	|| per_prefix_accounting.is_set
 	|| load_sharing_type.is_set
@@ -19999,12 +21952,12 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     load_information_owner_deleted_flag{YType::boolean, "load-information-owner-deleted-flag"},
     loadinfo_sanity_flag{YType::boolean, "loadinfo-sanity-flag"},
     is_owner{YType::boolean, "is-owner"}
-    	,
+        ,
     load_informtion_internal_data(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData>())
 {
     load_informtion_internal_data->parent = this;
 
-    yang_name = "loadshare-information"; yang_parent_name = "detail-fib-entry-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "loadshare-information"; yang_parent_name = "detail-fib-entry-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::~LoadshareInformation()
@@ -20013,6 +21966,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return packets_through_load_information.is_set
 	|| bytes_through_load_information.is_set
 	|| total_packets_through_load_information.is_set
@@ -20239,9 +22193,17 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     round_robin_disable{YType::boolean, "round-robin-disable"},
     ldi_next_hop_buckets{YType::uint8, "ldi-next-hop-buckets"},
     platform_hardware_information{YType::str, "platform-hardware-information"}
+        ,
+    sanity_flag(this, {})
+    , interface_handle(this, {})
+    , weights_of_path(this, {})
+    , adjacency_address(this, {})
+    , pbts_class_is_fallback_mapped(this, {})
+    , pbts_fallback_to_drop(this, {})
+    , tunnel_is_forward_class(this, {})
 {
 
-    yang_name = "load-informtion-internal-data"; yang_parent_name = "loadshare-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-informtion-internal-data"; yang_parent_name = "loadshare-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::~LoadInformtionInternalData()
@@ -20250,37 +22212,38 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::has_data() const
 {
-    for (std::size_t index=0; index<sanity_flag.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sanity_flag.len(); index++)
     {
         if(sanity_flag[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<interface_handle.size(); index++)
+    for (std::size_t index=0; index<interface_handle.len(); index++)
     {
         if(interface_handle[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<weights_of_path.size(); index++)
+    for (std::size_t index=0; index<weights_of_path.len(); index++)
     {
         if(weights_of_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<adjacency_address.size(); index++)
+    for (std::size_t index=0; index<adjacency_address.len(); index++)
     {
         if(adjacency_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pbts_class_is_fallback_mapped.size(); index++)
+    for (std::size_t index=0; index<pbts_class_is_fallback_mapped.len(); index++)
     {
         if(pbts_class_is_fallback_mapped[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pbts_fallback_to_drop.size(); index++)
+    for (std::size_t index=0; index<pbts_fallback_to_drop.len(); index++)
     {
         if(pbts_fallback_to_drop[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<tunnel_is_forward_class.size(); index++)
+    for (std::size_t index=0; index<tunnel_is_forward_class.len(); index++)
     {
         if(tunnel_is_forward_class[index]->has_data())
             return true;
@@ -20304,37 +22267,37 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::has_operation() const
 {
-    for (std::size_t index=0; index<sanity_flag.size(); index++)
+    for (std::size_t index=0; index<sanity_flag.len(); index++)
     {
         if(sanity_flag[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<interface_handle.size(); index++)
+    for (std::size_t index=0; index<interface_handle.len(); index++)
     {
         if(interface_handle[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<weights_of_path.size(); index++)
+    for (std::size_t index=0; index<weights_of_path.len(); index++)
     {
         if(weights_of_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<adjacency_address.size(); index++)
+    for (std::size_t index=0; index<adjacency_address.len(); index++)
     {
         if(adjacency_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pbts_class_is_fallback_mapped.size(); index++)
+    for (std::size_t index=0; index<pbts_class_is_fallback_mapped.len(); index++)
     {
         if(pbts_class_is_fallback_mapped[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pbts_fallback_to_drop.size(); index++)
+    for (std::size_t index=0; index<pbts_fallback_to_drop.len(); index++)
     {
         if(pbts_fallback_to_drop[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<tunnel_is_forward_class.size(); index++)
+    for (std::size_t index=0; index<tunnel_is_forward_class.len(); index++)
     {
         if(tunnel_is_forward_class[index]->has_operation())
             return true;
@@ -20394,7 +22357,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::SanityFlag>();
         c->parent = this;
-        sanity_flag.push_back(c);
+        sanity_flag.append(c);
         return c;
     }
 
@@ -20402,7 +22365,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::InterfaceHandle>();
         c->parent = this;
-        interface_handle.push_back(c);
+        interface_handle.append(c);
         return c;
     }
 
@@ -20410,7 +22373,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::WeightsOfPath>();
         c->parent = this;
-        weights_of_path.push_back(c);
+        weights_of_path.append(c);
         return c;
     }
 
@@ -20418,7 +22381,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress>();
         c->parent = this;
-        adjacency_address.push_back(c);
+        adjacency_address.append(c);
         return c;
     }
 
@@ -20426,7 +22389,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped>();
         c->parent = this;
-        pbts_class_is_fallback_mapped.push_back(c);
+        pbts_class_is_fallback_mapped.append(c);
         return c;
     }
 
@@ -20434,7 +22397,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop>();
         c->parent = this;
-        pbts_fallback_to_drop.push_back(c);
+        pbts_fallback_to_drop.append(c);
         return c;
     }
 
@@ -20442,7 +22405,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass>();
         c->parent = this;
-        tunnel_is_forward_class.push_back(c);
+        tunnel_is_forward_class.append(c);
         return c;
     }
 
@@ -20454,7 +22417,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sanity_flag)
+    for (auto c : sanity_flag.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20463,7 +22426,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : interface_handle)
+    for (auto c : interface_handle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20472,7 +22435,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : weights_of_path)
+    for (auto c : weights_of_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20481,7 +22444,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : adjacency_address)
+    for (auto c : adjacency_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20490,7 +22453,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : pbts_class_is_fallback_mapped)
+    for (auto c : pbts_class_is_fallback_mapped.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20499,7 +22462,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : pbts_fallback_to_drop)
+    for (auto c : pbts_fallback_to_drop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20508,7 +22471,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : tunnel_is_forward_class)
+    for (auto c : tunnel_is_forward_class.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20689,7 +22652,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     entry{YType::boolean, "entry"}
 {
 
-    yang_name = "sanity-flag"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sanity-flag"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::SanityFlag::~SanityFlag()
@@ -20698,6 +22661,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::SanityFlag::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -20766,7 +22730,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     entry{YType::str, "entry"}
 {
 
-    yang_name = "interface-handle"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-handle"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::InterfaceHandle::~InterfaceHandle()
@@ -20775,6 +22739,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::InterfaceHandle::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -20843,7 +22808,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "weights-of-path"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weights-of-path"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::WeightsOfPath::~WeightsOfPath()
@@ -20852,6 +22817,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::WeightsOfPath::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -20920,7 +22886,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     address{YType::str, "address"}
 {
 
-    yang_name = "adjacency-address"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjacency-address"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::~AdjacencyAddress()
@@ -20929,6 +22895,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -20997,7 +22964,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     entry{YType::boolean, "entry"}
 {
 
-    yang_name = "pbts-class-is-fallback-mapped"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbts-class-is-fallback-mapped"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::~PbtsClassIsFallbackMapped()
@@ -21006,6 +22973,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -21074,7 +23042,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     entry{YType::boolean, "entry"}
 {
 
-    yang_name = "pbts-fallback-to-drop"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbts-fallback-to-drop"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::~PbtsFallbackToDrop()
@@ -21083,6 +23051,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -21151,7 +23120,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     entry{YType::boolean, "entry"}
 {
 
-    yang_name = "tunnel-is-forward-class"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-is-forward-class"; yang_parent_name = "load-informtion-internal-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::~TunnelIsForwardClass()
@@ -21160,6 +23129,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -21224,9 +23194,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibEntryPath()
+    :
+    fib_sh_tbl_path(this, {})
 {
 
-    yang_name = "fib-entry-path"; yang_parent_name = "ip-prefix-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fib-entry-path"; yang_parent_name = "ip-prefix-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::~FibEntryPath()
@@ -21235,7 +23207,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::has_data() const
 {
-    for (std::size_t index=0; index<fib_sh_tbl_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fib_sh_tbl_path.len(); index++)
     {
         if(fib_sh_tbl_path[index]->has_data())
             return true;
@@ -21245,7 +23218,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::has_operation() const
 {
-    for (std::size_t index=0; index<fib_sh_tbl_path.size(); index++)
+    for (std::size_t index=0; index<fib_sh_tbl_path.len(); index++)
     {
         if(fib_sh_tbl_path[index]->has_operation())
             return true;
@@ -21275,7 +23248,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath>();
         c->parent = this;
-        fib_sh_tbl_path.push_back(c);
+        fib_sh_tbl_path.append(c);
         return c;
     }
 
@@ -21287,7 +23260,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fib_sh_tbl_path)
+    for (auto c : fib_sh_tbl_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21337,14 +23310,16 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     next_hop_index{YType::uint32, "next-hop-index"},
     parent_interface_handle{YType::str, "parent-interface-handle"},
     recursionvia_len{YType::uint8, "recursionvia-len"}
-    	,
+        ,
     more_detail_about_path(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath>())
-	,mpls_information_for_path(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath>())
+    , mpls_information_for_path(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath>())
+    , srv6_information_for_path(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::Srv6InformationForPath>())
 {
     more_detail_about_path->parent = this;
     mpls_information_for_path->parent = this;
+    srv6_information_for_path->parent = this;
 
-    yang_name = "fib-sh-tbl-path"; yang_parent_name = "fib-entry-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fib-sh-tbl-path"; yang_parent_name = "fib-entry-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::~FibShTblPath()
@@ -21353,6 +23328,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::has_data() const
 {
+    if (is_presence_container) return true;
     return hardware_information.is_set
 	|| brief_interface_handle.is_set
 	|| brief_next_hop_prefix.is_set
@@ -21376,7 +23352,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 	|| parent_interface_handle.is_set
 	|| recursionvia_len.is_set
 	|| (more_detail_about_path !=  nullptr && more_detail_about_path->has_data())
-	|| (mpls_information_for_path !=  nullptr && mpls_information_for_path->has_data());
+	|| (mpls_information_for_path !=  nullptr && mpls_information_for_path->has_data())
+	|| (srv6_information_for_path !=  nullptr && srv6_information_for_path->has_data());
 }
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::has_operation() const
@@ -21405,7 +23382,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 	|| ydk::is_set(parent_interface_handle.yfilter)
 	|| ydk::is_set(recursionvia_len.yfilter)
 	|| (more_detail_about_path !=  nullptr && more_detail_about_path->has_operation())
-	|| (mpls_information_for_path !=  nullptr && mpls_information_for_path->has_operation());
+	|| (mpls_information_for_path !=  nullptr && mpls_information_for_path->has_operation())
+	|| (srv6_information_for_path !=  nullptr && srv6_information_for_path->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::get_segment_path() const
@@ -21466,6 +23444,15 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
         return mpls_information_for_path;
     }
 
+    if(child_yang_name == "srv6-information-for-path")
+    {
+        if(srv6_information_for_path == nullptr)
+        {
+            srv6_information_for_path = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::Srv6InformationForPath>();
+        }
+        return srv6_information_for_path;
+    }
+
     return nullptr;
 }
 
@@ -21481,6 +23468,11 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     if(mpls_information_for_path != nullptr)
     {
         children["mpls-information-for-path"] = mpls_information_for_path;
+    }
+
+    if(srv6_information_for_path != nullptr)
+    {
+        children["srv6-information-for-path"] = srv6_information_for_path;
     }
 
     return children;
@@ -21716,7 +23708,7 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "more-detail-about-path" || name == "mpls-information-for-path" || name == "hardware-information" || name == "brief-interface-handle" || name == "brief-next-hop-prefix" || name == "via-label-to-recurse" || name == "brief-pnode-address" || name == "brief-qnode-address" || name == "brief-lfa-protection-type" || name == "resolved-path" || name == "recursive-path" || name == "packets-received-path" || name == "attached-path" || name == "backup-path" || name == "best-external-path" || name == "protect-ignore" || name == "path-dlb" || name == "path-flags" || name == "path-info-flags" || name == "path-index" || name == "backup-index" || name == "next-hop-index" || name == "parent-interface-handle" || name == "recursionvia-len")
+    if(name == "more-detail-about-path" || name == "mpls-information-for-path" || name == "srv6-information-for-path" || name == "hardware-information" || name == "brief-interface-handle" || name == "brief-next-hop-prefix" || name == "via-label-to-recurse" || name == "brief-pnode-address" || name == "brief-qnode-address" || name == "brief-lfa-protection-type" || name == "resolved-path" || name == "recursive-path" || name == "packets-received-path" || name == "attached-path" || name == "backup-path" || name == "best-external-path" || name == "protect-ignore" || name == "path-dlb" || name == "path-flags" || name == "path-info-flags" || name == "path-index" || name == "backup-index" || name == "next-hop-index" || name == "parent-interface-handle" || name == "recursionvia-len")
         return true;
     return false;
 }
@@ -21749,9 +23741,11 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     weight_of_path{YType::uint32, "weight-of-path"},
     tunnel_class{YType::uint8, "tunnel-class"},
     tunnel_is_forward_class{YType::boolean, "tunnel-is-forward-class"}
+        ,
+    spd_ipencap(this, {})
 {
 
-    yang_name = "more-detail-about-path"; yang_parent_name = "fib-sh-tbl-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "more-detail-about-path"; yang_parent_name = "fib-sh-tbl-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::~MoreDetailAboutPath()
@@ -21760,7 +23754,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::has_data() const
 {
-    for (std::size_t index=0; index<spd_ipencap.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spd_ipencap.len(); index++)
     {
         if(spd_ipencap[index]->has_data())
             return true;
@@ -21795,7 +23790,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::has_operation() const
 {
-    for (std::size_t index=0; index<spd_ipencap.size(); index++)
+    for (std::size_t index=0; index<spd_ipencap.len(); index++)
     {
         if(spd_ipencap[index]->has_operation())
             return true;
@@ -21877,7 +23872,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap>();
         c->parent = this;
-        spd_ipencap.push_back(c);
+        spd_ipencap.append(c);
         return c;
     }
 
@@ -21889,7 +23884,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : spd_ipencap)
+    for (auto c : spd_ipencap.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22186,9 +24181,11 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     ip_encap_payload_mtu{YType::uint16, "ip-encap-payload-mtu"},
     ip_encap_parent{YType::uint32, "ip-encap-parent"},
     ip_encap_parent_type{YType::uint32, "ip-encap-parent-type"}
+        ,
+    ip_encap_hdr(this, {})
 {
 
-    yang_name = "spd-ipencap"; yang_parent_name = "more-detail-about-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spd-ipencap"; yang_parent_name = "more-detail-about-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::~SpdIpencap()
@@ -22197,7 +24194,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::has_data() const
 {
-    for (std::size_t index=0; index<ip_encap_hdr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ip_encap_hdr.len(); index++)
     {
         if(ip_encap_hdr[index]->has_data())
             return true;
@@ -22215,7 +24213,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::has_operation() const
 {
-    for (std::size_t index=0; index<ip_encap_hdr.size(); index++)
+    for (std::size_t index=0; index<ip_encap_hdr.len(); index++)
     {
         if(ip_encap_hdr[index]->has_operation())
             return true;
@@ -22263,7 +24261,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr>();
         c->parent = this;
-        ip_encap_hdr.push_back(c);
+        ip_encap_hdr.append(c);
         return c;
     }
 
@@ -22275,7 +24273,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ip_encap_hdr)
+    for (auto c : ip_encap_hdr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22398,7 +24396,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     ip_encap_hdr_dyn{YType::uint32, "ip-encap-hdr-dyn"}
 {
 
-    yang_name = "ip-encap-hdr"; yang_parent_name = "spd-ipencap"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-encap-hdr"; yang_parent_name = "spd-ipencap"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::~IpEncapHdr()
@@ -22407,6 +24405,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_encap_hdr_type.is_set
 	|| ip_encap_hdrp.is_set
 	|| ip_encap_hdr_dyn.is_set;
@@ -22502,9 +24501,12 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     recursive_fwd_chain{YType::boolean, "recursive-fwd-chain"},
     number_of_igp_paths{YType::uint32, "number-of-igp-paths"},
     remote_backup{YType::boolean, "remote-backup"}
+        ,
+    recursive_lbl_stack(this, {})
+    , igp_label_stack_array(this, {})
 {
 
-    yang_name = "mpls-information-for-path"; yang_parent_name = "fib-sh-tbl-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-information-for-path"; yang_parent_name = "fib-sh-tbl-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::~MplsInformationForPath()
@@ -22513,12 +24515,13 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::has_data() const
 {
-    for (std::size_t index=0; index<recursive_lbl_stack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<recursive_lbl_stack.len(); index++)
     {
         if(recursive_lbl_stack[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<igp_label_stack_array.size(); index++)
+    for (std::size_t index=0; index<igp_label_stack_array.len(); index++)
     {
         if(igp_label_stack_array[index]->has_data())
             return true;
@@ -22531,12 +24534,12 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::has_operation() const
 {
-    for (std::size_t index=0; index<recursive_lbl_stack.size(); index++)
+    for (std::size_t index=0; index<recursive_lbl_stack.len(); index++)
     {
         if(recursive_lbl_stack[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<igp_label_stack_array.size(); index++)
+    for (std::size_t index=0; index<igp_label_stack_array.len(); index++)
     {
         if(igp_label_stack_array[index]->has_operation())
             return true;
@@ -22574,7 +24577,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack>();
         c->parent = this;
-        recursive_lbl_stack.push_back(c);
+        recursive_lbl_stack.append(c);
         return c;
     }
 
@@ -22582,7 +24585,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray>();
         c->parent = this;
-        igp_label_stack_array.push_back(c);
+        igp_label_stack_array.append(c);
         return c;
     }
 
@@ -22594,7 +24597,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : recursive_lbl_stack)
+    for (auto c : recursive_lbl_stack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22603,7 +24606,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     }
 
     count = 0;
-    for (auto const & c : igp_label_stack_array)
+    for (auto c : igp_label_stack_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22674,7 +24677,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "recursive-lbl-stack"; yang_parent_name = "mpls-information-for-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "recursive-lbl-stack"; yang_parent_name = "mpls-information-for-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack::~RecursiveLblStack()
@@ -22683,6 +24686,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -22751,9 +24755,11 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     number_of_labels{YType::uint32, "number-of-labels"},
     out_interface{YType::str, "out-interface"},
     nh_address{YType::str, "nh-address"}
+        ,
+    lstack(this, {})
 {
 
-    yang_name = "igp-label-stack-array"; yang_parent_name = "mpls-information-for-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp-label-stack-array"; yang_parent_name = "mpls-information-for-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::~IgpLabelStackArray()
@@ -22762,7 +24768,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::has_data() const
 {
-    for (std::size_t index=0; index<lstack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lstack.len(); index++)
     {
         if(lstack[index]->has_data())
             return true;
@@ -22774,7 +24781,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::has_operation() const
 {
-    for (std::size_t index=0; index<lstack.size(); index++)
+    for (std::size_t index=0; index<lstack.len(); index++)
     {
         if(lstack[index]->has_operation())
             return true;
@@ -22810,7 +24817,7 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     {
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::Lstack>();
         c->parent = this;
-        lstack.push_back(c);
+        lstack.append(c);
         return c;
     }
 
@@ -22822,7 +24829,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Prot
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lstack)
+    for (auto c : lstack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22878,1974 +24885,11 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
     return false;
 }
 
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::Lstack::Lstack()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "lstack"; yang_parent_name = "igp-label-stack-array"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::Lstack::~Lstack()
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::Lstack::has_data() const
-{
-    return entry.is_set;
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::Lstack::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::Lstack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lstack";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::Lstack::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::Lstack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::Lstack::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::Lstack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::Lstack::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::Lstack::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Information()
-    :
-    route_is_sripv6_flag{YType::boolean, "route-is-sripv6-flag"},
-    srv6_pfx_resolved_via_policy_label{YType::boolean, "srv6-pfx-resolved-via-policy-label"},
-    sripv6_stats_valid_flag{YType::boolean, "sripv6-stats-valid-flag"}
-    	,
-    srv6_statistics(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics>())
-{
-    srv6_statistics->parent = this;
-
-    yang_name = "srv6-information"; yang_parent_name = "ip-prefix-detail"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::~Srv6Information()
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::has_data() const
-{
-    return route_is_sripv6_flag.is_set
-	|| srv6_pfx_resolved_via_policy_label.is_set
-	|| sripv6_stats_valid_flag.is_set
-	|| (srv6_statistics !=  nullptr && srv6_statistics->has_data());
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(route_is_sripv6_flag.yfilter)
-	|| ydk::is_set(srv6_pfx_resolved_via_policy_label.yfilter)
-	|| ydk::is_set(sripv6_stats_valid_flag.yfilter)
-	|| (srv6_statistics !=  nullptr && srv6_statistics->has_operation());
-}
-
-std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "srv6-information";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (route_is_sripv6_flag.is_set || is_set(route_is_sripv6_flag.yfilter)) leaf_name_data.push_back(route_is_sripv6_flag.get_name_leafdata());
-    if (srv6_pfx_resolved_via_policy_label.is_set || is_set(srv6_pfx_resolved_via_policy_label.yfilter)) leaf_name_data.push_back(srv6_pfx_resolved_via_policy_label.get_name_leafdata());
-    if (sripv6_stats_valid_flag.is_set || is_set(sripv6_stats_valid_flag.yfilter)) leaf_name_data.push_back(sripv6_stats_valid_flag.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "srv6-statistics")
-    {
-        if(srv6_statistics == nullptr)
-        {
-            srv6_statistics = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics>();
-        }
-        return srv6_statistics;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(srv6_statistics != nullptr)
-    {
-        children["srv6-statistics"] = srv6_statistics;
-    }
-
-    return children;
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "route-is-sripv6-flag")
-    {
-        route_is_sripv6_flag = value;
-        route_is_sripv6_flag.value_namespace = name_space;
-        route_is_sripv6_flag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srv6-pfx-resolved-via-policy-label")
-    {
-        srv6_pfx_resolved_via_policy_label = value;
-        srv6_pfx_resolved_via_policy_label.value_namespace = name_space;
-        srv6_pfx_resolved_via_policy_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sripv6-stats-valid-flag")
-    {
-        sripv6_stats_valid_flag = value;
-        sripv6_stats_valid_flag.value_namespace = name_space;
-        sripv6_stats_valid_flag.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "route-is-sripv6-flag")
-    {
-        route_is_sripv6_flag.yfilter = yfilter;
-    }
-    if(value_path == "srv6-pfx-resolved-via-policy-label")
-    {
-        srv6_pfx_resolved_via_policy_label.yfilter = yfilter;
-    }
-    if(value_path == "sripv6-stats-valid-flag")
-    {
-        sripv6_stats_valid_flag.yfilter = yfilter;
-    }
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "srv6-statistics" || name == "route-is-sripv6-flag" || name == "srv6-pfx-resolved-via-policy-label" || name == "sripv6-stats-valid-flag")
-        return true;
-    return false;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::Srv6Statistics()
-    :
-    srv6_packets_forwarded{YType::uint64, "srv6-packets-forwarded"},
-    srv6_packets_dropped{YType::uint64, "srv6-packets-dropped"}
-{
-
-    yang_name = "srv6-statistics"; yang_parent_name = "srv6-information"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::~Srv6Statistics()
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::has_data() const
-{
-    return srv6_packets_forwarded.is_set
-	|| srv6_packets_dropped.is_set;
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(srv6_packets_forwarded.yfilter)
-	|| ydk::is_set(srv6_packets_dropped.yfilter);
-}
-
-std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "srv6-statistics";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (srv6_packets_forwarded.is_set || is_set(srv6_packets_forwarded.yfilter)) leaf_name_data.push_back(srv6_packets_forwarded.get_name_leafdata());
-    if (srv6_packets_dropped.is_set || is_set(srv6_packets_dropped.yfilter)) leaf_name_data.push_back(srv6_packets_dropped.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "srv6-packets-forwarded")
-    {
-        srv6_packets_forwarded = value;
-        srv6_packets_forwarded.value_namespace = name_space;
-        srv6_packets_forwarded.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srv6-packets-dropped")
-    {
-        srv6_packets_dropped = value;
-        srv6_packets_dropped.value_namespace = name_space;
-        srv6_packets_dropped.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "srv6-packets-forwarded")
-    {
-        srv6_packets_forwarded.yfilter = yfilter;
-    }
-    if(value_path == "srv6-packets-dropped")
-    {
-        srv6_packets_dropped.yfilter = yfilter;
-    }
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "srv6-packets-forwarded" || name == "srv6-packets-dropped")
-        return true;
-    return false;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::ExtensionObject()
-    :
-    type{YType::enumeration, "type"}
-    	,
-    sfecd_le(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe>())
-{
-    sfecd_le->parent = this;
-
-    yang_name = "extension-object"; yang_parent_name = "ip-prefix-detail"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::~ExtensionObject()
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::has_data() const
-{
-    return type.is_set
-	|| (sfecd_le !=  nullptr && sfecd_le->has_data());
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| (sfecd_le !=  nullptr && sfecd_le->has_operation());
-}
-
-std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "extension-object";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "sfecd-le")
-    {
-        if(sfecd_le == nullptr)
-        {
-            sfecd_le = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe>();
-        }
-        return sfecd_le;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(sfecd_le != nullptr)
-    {
-        children["sfecd-le"] = sfecd_le;
-    }
-
-    return children;
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sfecd-le" || name == "type")
-        return true;
-    return false;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::SfecdLe()
-    :
-    context_label_flag{YType::boolean, "context-label-flag"},
-    context_label{YType::uint32, "context-label"}
-{
-
-    yang_name = "sfecd-le"; yang_parent_name = "extension-object"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::~SfecdLe()
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::has_data() const
-{
-    return context_label_flag.is_set
-	|| context_label.is_set;
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(context_label_flag.yfilter)
-	|| ydk::is_set(context_label.yfilter);
-}
-
-std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sfecd-le";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (context_label_flag.is_set || is_set(context_label_flag.yfilter)) leaf_name_data.push_back(context_label_flag.get_name_leafdata());
-    if (context_label.is_set || is_set(context_label.yfilter)) leaf_name_data.push_back(context_label.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "context-label-flag")
-    {
-        context_label_flag = value;
-        context_label_flag.value_namespace = name_space;
-        context_label_flag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "context-label")
-    {
-        context_label = value;
-        context_label.value_namespace = name_space;
-        context_label.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "context-label-flag")
-    {
-        context_label_flag.yfilter = yfilter;
-    }
-    if(value_path == "context-label")
-    {
-        context_label.yfilter = yfilter;
-    }
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "context-label-flag" || name == "context-label")
-        return true;
-    return false;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoDetail()
-    :
-    nh_info_local_details(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails>())
-	,nh_info_special_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoSpecialDetail>())
-	,nh_info_remote_details(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoRemoteDetails>())
-{
-    nh_info_local_details->parent = this;
-    nh_info_special_detail->parent = this;
-    nh_info_remote_details->parent = this;
-
-    yang_name = "nh-info-detail"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::~NhInfoDetail()
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::has_data() const
-{
-    return (nh_info_local_details !=  nullptr && nh_info_local_details->has_data())
-	|| (nh_info_special_detail !=  nullptr && nh_info_special_detail->has_data())
-	|| (nh_info_remote_details !=  nullptr && nh_info_remote_details->has_data());
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::has_operation() const
-{
-    return is_set(yfilter)
-	|| (nh_info_local_details !=  nullptr && nh_info_local_details->has_operation())
-	|| (nh_info_special_detail !=  nullptr && nh_info_special_detail->has_operation())
-	|| (nh_info_remote_details !=  nullptr && nh_info_remote_details->has_operation());
-}
-
-std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nh-info-detail";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nh-info-local-details")
-    {
-        if(nh_info_local_details == nullptr)
-        {
-            nh_info_local_details = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails>();
-        }
-        return nh_info_local_details;
-    }
-
-    if(child_yang_name == "nh-info-special-detail")
-    {
-        if(nh_info_special_detail == nullptr)
-        {
-            nh_info_special_detail = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoSpecialDetail>();
-        }
-        return nh_info_special_detail;
-    }
-
-    if(child_yang_name == "nh-info-remote-details")
-    {
-        if(nh_info_remote_details == nullptr)
-        {
-            nh_info_remote_details = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoRemoteDetails>();
-        }
-        return nh_info_remote_details;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(nh_info_local_details != nullptr)
-    {
-        children["nh-info-local-details"] = nh_info_local_details;
-    }
-
-    if(nh_info_special_detail != nullptr)
-    {
-        children["nh-info-special-detail"] = nh_info_special_detail;
-    }
-
-    if(nh_info_remote_details != nullptr)
-    {
-        children["nh-info-remote-details"] = nh_info_remote_details;
-    }
-
-    return children;
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nh-info-local-details" || name == "nh-info-special-detail" || name == "nh-info-remote-details")
-        return true;
-    return false;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetails()
-{
-
-    yang_name = "nh-info-local-details"; yang_parent_name = "nh-info-detail"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::~NhInfoLocalDetails()
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::has_data() const
-{
-    for (std::size_t index=0; index<nh_info_local_detail.size(); index++)
-    {
-        if(nh_info_local_detail[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::has_operation() const
-{
-    for (std::size_t index=0; index<nh_info_local_detail.size(); index++)
-    {
-        if(nh_info_local_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nh-info-local-details";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nh-info-local-detail")
-    {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail>();
-        c->parent = this;
-        nh_info_local_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : nh_info_local_detail)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nh-info-local-detail")
-        return true;
-    return false;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoLocalDetail()
-    :
-    nh_interface_name{YType::str, "nh-interface-name"},
-    nh_address{YType::str, "nh-address"},
-    si_link_proto{YType::uint32, "si-link-proto"},
-    si_nhinfo{YType::uint32, "si-nhinfo"},
-    si_nhtype{YType::uint32, "si-nhtype"},
-    si_ifh{YType::uint32, "si-ifh"},
-    si_pfi_interface_type{YType::uint32, "si-pfi-interface-type"},
-    si_adj_ptr{YType::uint32, "si-adj-ptr"},
-    si_adj_present{YType::boolean, "si-adj-present"},
-    si_special_type{YType::uint32, "si-special-type"},
-    si_refcount{YType::uint32, "si-refcount"},
-    si_flags{YType::uint32, "si-flags"},
-    si_adj_if{YType::uint32, "si-adj-if"},
-    si_ext_pfx{YType::str, "si-ext-pfx"},
-    si_ext_pfx_len{YType::uint32, "si-ext-pfx-len"},
-    si_ext_pfx_proto{YType::uint32, "si-ext-pfx-proto"},
-    si_adj_address{YType::str, "si-adj-address"},
-    si_adj_addrlen{YType::uint32, "si-adj-addrlen"},
-    si_adj_addr_proto{YType::uint32, "si-adj-addr-proto"},
-    si_adj_rw_len{YType::uint32, "si-adj-rw-len"},
-    si_adj_rw{YType::str, "si-adj-rw"},
-    si_dep_nhinfo_type{YType::uint32, "si-dep-nhinfo-type"},
-    si_dep_nhinfo{YType::uint32, "si-dep-nhinfo"},
-    si_dep_nhinfo_ifh{YType::uint32, "si-dep-nhinfo-ifh"},
-    si_bkup_frr{YType::uint32, "si-bkup-frr"},
-    si_protect_frr{YType::uint32, "si-protect-frr"},
-    si_bkup_nhinfo{YType::uint32, "si-bkup-nhinfo"},
-    si_bkup_ifh{YType::uint32, "si-bkup-ifh"},
-    si_bkup_addr{YType::str, "si-bkup-addr"},
-    si_bkup_addrlen{YType::uint32, "si-bkup-addrlen"},
-    si_bkup_addr_proto{YType::uint32, "si-bkup-addr-proto"},
-    si_frr_active{YType::boolean, "si-frr-active"},
-    si_attr_is_ext_mgd{YType::boolean, "si-attr-is-ext-mgd"},
-    si_attr_is_incomp{YType::boolean, "si-attr-is-incomp"},
-    si_attr_is_tunnel{YType::boolean, "si-attr-is-tunnel"},
-    si_attr_is_tunnel_srte{YType::boolean, "si-attr-is-tunnel-srte"},
-    si_attr_is_gre_tunnel{YType::boolean, "si-attr-is-gre-tunnel"},
-    si_gre_ti{YType::uint32, "si-gre-ti"},
-    si_gre_ti_flags{YType::uint32, "si-gre-ti-flags"},
-    si_gre_ti_refcnt{YType::uint32, "si-gre-ti-refcnt"},
-    si_gre_tos_propagate{YType::boolean, "si-gre-tos-propagate"},
-    si_hardware{YType::str, "si-hardware"},
-    si_nhinfo_ptr{YType::uint32, "si-nhinfo-ptr"},
-    si_fnb_idb_ptr{YType::uint32, "si-fnb-idb-ptr"},
-    si_anc_ifh{YType::uint32, "si-anc-ifh"},
-    si_gre_ti_resolving_leafp{YType::uint32, "si-gre-ti-resolving-leafp"},
-    si_gre_dest_addr{YType::str, "si-gre-dest-addr"},
-    si_nhid{YType::uint32, "si-nhid"},
-    si_upd_ts{YType::uint64, "si-upd-ts"}
-    	,
-    si_pwhe(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe>())
-	,nh_info_extension(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension>())
-{
-    si_pwhe->parent = this;
-    nh_info_extension->parent = this;
-
-    yang_name = "nh-info-local-detail"; yang_parent_name = "nh-info-local-details"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::~NhInfoLocalDetail()
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::has_data() const
-{
-    return nh_interface_name.is_set
-	|| nh_address.is_set
-	|| si_link_proto.is_set
-	|| si_nhinfo.is_set
-	|| si_nhtype.is_set
-	|| si_ifh.is_set
-	|| si_pfi_interface_type.is_set
-	|| si_adj_ptr.is_set
-	|| si_adj_present.is_set
-	|| si_special_type.is_set
-	|| si_refcount.is_set
-	|| si_flags.is_set
-	|| si_adj_if.is_set
-	|| si_ext_pfx.is_set
-	|| si_ext_pfx_len.is_set
-	|| si_ext_pfx_proto.is_set
-	|| si_adj_address.is_set
-	|| si_adj_addrlen.is_set
-	|| si_adj_addr_proto.is_set
-	|| si_adj_rw_len.is_set
-	|| si_adj_rw.is_set
-	|| si_dep_nhinfo_type.is_set
-	|| si_dep_nhinfo.is_set
-	|| si_dep_nhinfo_ifh.is_set
-	|| si_bkup_frr.is_set
-	|| si_protect_frr.is_set
-	|| si_bkup_nhinfo.is_set
-	|| si_bkup_ifh.is_set
-	|| si_bkup_addr.is_set
-	|| si_bkup_addrlen.is_set
-	|| si_bkup_addr_proto.is_set
-	|| si_frr_active.is_set
-	|| si_attr_is_ext_mgd.is_set
-	|| si_attr_is_incomp.is_set
-	|| si_attr_is_tunnel.is_set
-	|| si_attr_is_tunnel_srte.is_set
-	|| si_attr_is_gre_tunnel.is_set
-	|| si_gre_ti.is_set
-	|| si_gre_ti_flags.is_set
-	|| si_gre_ti_refcnt.is_set
-	|| si_gre_tos_propagate.is_set
-	|| si_hardware.is_set
-	|| si_nhinfo_ptr.is_set
-	|| si_fnb_idb_ptr.is_set
-	|| si_anc_ifh.is_set
-	|| si_gre_ti_resolving_leafp.is_set
-	|| si_gre_dest_addr.is_set
-	|| si_nhid.is_set
-	|| si_upd_ts.is_set
-	|| (si_pwhe !=  nullptr && si_pwhe->has_data())
-	|| (nh_info_extension !=  nullptr && nh_info_extension->has_data());
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nh_interface_name.yfilter)
-	|| ydk::is_set(nh_address.yfilter)
-	|| ydk::is_set(si_link_proto.yfilter)
-	|| ydk::is_set(si_nhinfo.yfilter)
-	|| ydk::is_set(si_nhtype.yfilter)
-	|| ydk::is_set(si_ifh.yfilter)
-	|| ydk::is_set(si_pfi_interface_type.yfilter)
-	|| ydk::is_set(si_adj_ptr.yfilter)
-	|| ydk::is_set(si_adj_present.yfilter)
-	|| ydk::is_set(si_special_type.yfilter)
-	|| ydk::is_set(si_refcount.yfilter)
-	|| ydk::is_set(si_flags.yfilter)
-	|| ydk::is_set(si_adj_if.yfilter)
-	|| ydk::is_set(si_ext_pfx.yfilter)
-	|| ydk::is_set(si_ext_pfx_len.yfilter)
-	|| ydk::is_set(si_ext_pfx_proto.yfilter)
-	|| ydk::is_set(si_adj_address.yfilter)
-	|| ydk::is_set(si_adj_addrlen.yfilter)
-	|| ydk::is_set(si_adj_addr_proto.yfilter)
-	|| ydk::is_set(si_adj_rw_len.yfilter)
-	|| ydk::is_set(si_adj_rw.yfilter)
-	|| ydk::is_set(si_dep_nhinfo_type.yfilter)
-	|| ydk::is_set(si_dep_nhinfo.yfilter)
-	|| ydk::is_set(si_dep_nhinfo_ifh.yfilter)
-	|| ydk::is_set(si_bkup_frr.yfilter)
-	|| ydk::is_set(si_protect_frr.yfilter)
-	|| ydk::is_set(si_bkup_nhinfo.yfilter)
-	|| ydk::is_set(si_bkup_ifh.yfilter)
-	|| ydk::is_set(si_bkup_addr.yfilter)
-	|| ydk::is_set(si_bkup_addrlen.yfilter)
-	|| ydk::is_set(si_bkup_addr_proto.yfilter)
-	|| ydk::is_set(si_frr_active.yfilter)
-	|| ydk::is_set(si_attr_is_ext_mgd.yfilter)
-	|| ydk::is_set(si_attr_is_incomp.yfilter)
-	|| ydk::is_set(si_attr_is_tunnel.yfilter)
-	|| ydk::is_set(si_attr_is_tunnel_srte.yfilter)
-	|| ydk::is_set(si_attr_is_gre_tunnel.yfilter)
-	|| ydk::is_set(si_gre_ti.yfilter)
-	|| ydk::is_set(si_gre_ti_flags.yfilter)
-	|| ydk::is_set(si_gre_ti_refcnt.yfilter)
-	|| ydk::is_set(si_gre_tos_propagate.yfilter)
-	|| ydk::is_set(si_hardware.yfilter)
-	|| ydk::is_set(si_nhinfo_ptr.yfilter)
-	|| ydk::is_set(si_fnb_idb_ptr.yfilter)
-	|| ydk::is_set(si_anc_ifh.yfilter)
-	|| ydk::is_set(si_gre_ti_resolving_leafp.yfilter)
-	|| ydk::is_set(si_gre_dest_addr.yfilter)
-	|| ydk::is_set(si_nhid.yfilter)
-	|| ydk::is_set(si_upd_ts.yfilter)
-	|| (si_pwhe !=  nullptr && si_pwhe->has_operation())
-	|| (nh_info_extension !=  nullptr && nh_info_extension->has_operation());
-}
-
-std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nh-info-local-detail";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nh_interface_name.is_set || is_set(nh_interface_name.yfilter)) leaf_name_data.push_back(nh_interface_name.get_name_leafdata());
-    if (nh_address.is_set || is_set(nh_address.yfilter)) leaf_name_data.push_back(nh_address.get_name_leafdata());
-    if (si_link_proto.is_set || is_set(si_link_proto.yfilter)) leaf_name_data.push_back(si_link_proto.get_name_leafdata());
-    if (si_nhinfo.is_set || is_set(si_nhinfo.yfilter)) leaf_name_data.push_back(si_nhinfo.get_name_leafdata());
-    if (si_nhtype.is_set || is_set(si_nhtype.yfilter)) leaf_name_data.push_back(si_nhtype.get_name_leafdata());
-    if (si_ifh.is_set || is_set(si_ifh.yfilter)) leaf_name_data.push_back(si_ifh.get_name_leafdata());
-    if (si_pfi_interface_type.is_set || is_set(si_pfi_interface_type.yfilter)) leaf_name_data.push_back(si_pfi_interface_type.get_name_leafdata());
-    if (si_adj_ptr.is_set || is_set(si_adj_ptr.yfilter)) leaf_name_data.push_back(si_adj_ptr.get_name_leafdata());
-    if (si_adj_present.is_set || is_set(si_adj_present.yfilter)) leaf_name_data.push_back(si_adj_present.get_name_leafdata());
-    if (si_special_type.is_set || is_set(si_special_type.yfilter)) leaf_name_data.push_back(si_special_type.get_name_leafdata());
-    if (si_refcount.is_set || is_set(si_refcount.yfilter)) leaf_name_data.push_back(si_refcount.get_name_leafdata());
-    if (si_flags.is_set || is_set(si_flags.yfilter)) leaf_name_data.push_back(si_flags.get_name_leafdata());
-    if (si_adj_if.is_set || is_set(si_adj_if.yfilter)) leaf_name_data.push_back(si_adj_if.get_name_leafdata());
-    if (si_ext_pfx.is_set || is_set(si_ext_pfx.yfilter)) leaf_name_data.push_back(si_ext_pfx.get_name_leafdata());
-    if (si_ext_pfx_len.is_set || is_set(si_ext_pfx_len.yfilter)) leaf_name_data.push_back(si_ext_pfx_len.get_name_leafdata());
-    if (si_ext_pfx_proto.is_set || is_set(si_ext_pfx_proto.yfilter)) leaf_name_data.push_back(si_ext_pfx_proto.get_name_leafdata());
-    if (si_adj_address.is_set || is_set(si_adj_address.yfilter)) leaf_name_data.push_back(si_adj_address.get_name_leafdata());
-    if (si_adj_addrlen.is_set || is_set(si_adj_addrlen.yfilter)) leaf_name_data.push_back(si_adj_addrlen.get_name_leafdata());
-    if (si_adj_addr_proto.is_set || is_set(si_adj_addr_proto.yfilter)) leaf_name_data.push_back(si_adj_addr_proto.get_name_leafdata());
-    if (si_adj_rw_len.is_set || is_set(si_adj_rw_len.yfilter)) leaf_name_data.push_back(si_adj_rw_len.get_name_leafdata());
-    if (si_adj_rw.is_set || is_set(si_adj_rw.yfilter)) leaf_name_data.push_back(si_adj_rw.get_name_leafdata());
-    if (si_dep_nhinfo_type.is_set || is_set(si_dep_nhinfo_type.yfilter)) leaf_name_data.push_back(si_dep_nhinfo_type.get_name_leafdata());
-    if (si_dep_nhinfo.is_set || is_set(si_dep_nhinfo.yfilter)) leaf_name_data.push_back(si_dep_nhinfo.get_name_leafdata());
-    if (si_dep_nhinfo_ifh.is_set || is_set(si_dep_nhinfo_ifh.yfilter)) leaf_name_data.push_back(si_dep_nhinfo_ifh.get_name_leafdata());
-    if (si_bkup_frr.is_set || is_set(si_bkup_frr.yfilter)) leaf_name_data.push_back(si_bkup_frr.get_name_leafdata());
-    if (si_protect_frr.is_set || is_set(si_protect_frr.yfilter)) leaf_name_data.push_back(si_protect_frr.get_name_leafdata());
-    if (si_bkup_nhinfo.is_set || is_set(si_bkup_nhinfo.yfilter)) leaf_name_data.push_back(si_bkup_nhinfo.get_name_leafdata());
-    if (si_bkup_ifh.is_set || is_set(si_bkup_ifh.yfilter)) leaf_name_data.push_back(si_bkup_ifh.get_name_leafdata());
-    if (si_bkup_addr.is_set || is_set(si_bkup_addr.yfilter)) leaf_name_data.push_back(si_bkup_addr.get_name_leafdata());
-    if (si_bkup_addrlen.is_set || is_set(si_bkup_addrlen.yfilter)) leaf_name_data.push_back(si_bkup_addrlen.get_name_leafdata());
-    if (si_bkup_addr_proto.is_set || is_set(si_bkup_addr_proto.yfilter)) leaf_name_data.push_back(si_bkup_addr_proto.get_name_leafdata());
-    if (si_frr_active.is_set || is_set(si_frr_active.yfilter)) leaf_name_data.push_back(si_frr_active.get_name_leafdata());
-    if (si_attr_is_ext_mgd.is_set || is_set(si_attr_is_ext_mgd.yfilter)) leaf_name_data.push_back(si_attr_is_ext_mgd.get_name_leafdata());
-    if (si_attr_is_incomp.is_set || is_set(si_attr_is_incomp.yfilter)) leaf_name_data.push_back(si_attr_is_incomp.get_name_leafdata());
-    if (si_attr_is_tunnel.is_set || is_set(si_attr_is_tunnel.yfilter)) leaf_name_data.push_back(si_attr_is_tunnel.get_name_leafdata());
-    if (si_attr_is_tunnel_srte.is_set || is_set(si_attr_is_tunnel_srte.yfilter)) leaf_name_data.push_back(si_attr_is_tunnel_srte.get_name_leafdata());
-    if (si_attr_is_gre_tunnel.is_set || is_set(si_attr_is_gre_tunnel.yfilter)) leaf_name_data.push_back(si_attr_is_gre_tunnel.get_name_leafdata());
-    if (si_gre_ti.is_set || is_set(si_gre_ti.yfilter)) leaf_name_data.push_back(si_gre_ti.get_name_leafdata());
-    if (si_gre_ti_flags.is_set || is_set(si_gre_ti_flags.yfilter)) leaf_name_data.push_back(si_gre_ti_flags.get_name_leafdata());
-    if (si_gre_ti_refcnt.is_set || is_set(si_gre_ti_refcnt.yfilter)) leaf_name_data.push_back(si_gre_ti_refcnt.get_name_leafdata());
-    if (si_gre_tos_propagate.is_set || is_set(si_gre_tos_propagate.yfilter)) leaf_name_data.push_back(si_gre_tos_propagate.get_name_leafdata());
-    if (si_hardware.is_set || is_set(si_hardware.yfilter)) leaf_name_data.push_back(si_hardware.get_name_leafdata());
-    if (si_nhinfo_ptr.is_set || is_set(si_nhinfo_ptr.yfilter)) leaf_name_data.push_back(si_nhinfo_ptr.get_name_leafdata());
-    if (si_fnb_idb_ptr.is_set || is_set(si_fnb_idb_ptr.yfilter)) leaf_name_data.push_back(si_fnb_idb_ptr.get_name_leafdata());
-    if (si_anc_ifh.is_set || is_set(si_anc_ifh.yfilter)) leaf_name_data.push_back(si_anc_ifh.get_name_leafdata());
-    if (si_gre_ti_resolving_leafp.is_set || is_set(si_gre_ti_resolving_leafp.yfilter)) leaf_name_data.push_back(si_gre_ti_resolving_leafp.get_name_leafdata());
-    if (si_gre_dest_addr.is_set || is_set(si_gre_dest_addr.yfilter)) leaf_name_data.push_back(si_gre_dest_addr.get_name_leafdata());
-    if (si_nhid.is_set || is_set(si_nhid.yfilter)) leaf_name_data.push_back(si_nhid.get_name_leafdata());
-    if (si_upd_ts.is_set || is_set(si_upd_ts.yfilter)) leaf_name_data.push_back(si_upd_ts.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "si-pwhe")
-    {
-        if(si_pwhe == nullptr)
-        {
-            si_pwhe = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe>();
-        }
-        return si_pwhe;
-    }
-
-    if(child_yang_name == "nh-info-extension")
-    {
-        if(nh_info_extension == nullptr)
-        {
-            nh_info_extension = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension>();
-        }
-        return nh_info_extension;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(si_pwhe != nullptr)
-    {
-        children["si-pwhe"] = si_pwhe;
-    }
-
-    if(nh_info_extension != nullptr)
-    {
-        children["nh-info-extension"] = nh_info_extension;
-    }
-
-    return children;
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nh-interface-name")
-    {
-        nh_interface_name = value;
-        nh_interface_name.value_namespace = name_space;
-        nh_interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nh-address")
-    {
-        nh_address = value;
-        nh_address.value_namespace = name_space;
-        nh_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-link-proto")
-    {
-        si_link_proto = value;
-        si_link_proto.value_namespace = name_space;
-        si_link_proto.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-nhinfo")
-    {
-        si_nhinfo = value;
-        si_nhinfo.value_namespace = name_space;
-        si_nhinfo.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-nhtype")
-    {
-        si_nhtype = value;
-        si_nhtype.value_namespace = name_space;
-        si_nhtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-ifh")
-    {
-        si_ifh = value;
-        si_ifh.value_namespace = name_space;
-        si_ifh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-pfi-interface-type")
-    {
-        si_pfi_interface_type = value;
-        si_pfi_interface_type.value_namespace = name_space;
-        si_pfi_interface_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-adj-ptr")
-    {
-        si_adj_ptr = value;
-        si_adj_ptr.value_namespace = name_space;
-        si_adj_ptr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-adj-present")
-    {
-        si_adj_present = value;
-        si_adj_present.value_namespace = name_space;
-        si_adj_present.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-special-type")
-    {
-        si_special_type = value;
-        si_special_type.value_namespace = name_space;
-        si_special_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-refcount")
-    {
-        si_refcount = value;
-        si_refcount.value_namespace = name_space;
-        si_refcount.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-flags")
-    {
-        si_flags = value;
-        si_flags.value_namespace = name_space;
-        si_flags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-adj-if")
-    {
-        si_adj_if = value;
-        si_adj_if.value_namespace = name_space;
-        si_adj_if.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-ext-pfx")
-    {
-        si_ext_pfx = value;
-        si_ext_pfx.value_namespace = name_space;
-        si_ext_pfx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-ext-pfx-len")
-    {
-        si_ext_pfx_len = value;
-        si_ext_pfx_len.value_namespace = name_space;
-        si_ext_pfx_len.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-ext-pfx-proto")
-    {
-        si_ext_pfx_proto = value;
-        si_ext_pfx_proto.value_namespace = name_space;
-        si_ext_pfx_proto.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-adj-address")
-    {
-        si_adj_address = value;
-        si_adj_address.value_namespace = name_space;
-        si_adj_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-adj-addrlen")
-    {
-        si_adj_addrlen = value;
-        si_adj_addrlen.value_namespace = name_space;
-        si_adj_addrlen.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-adj-addr-proto")
-    {
-        si_adj_addr_proto = value;
-        si_adj_addr_proto.value_namespace = name_space;
-        si_adj_addr_proto.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-adj-rw-len")
-    {
-        si_adj_rw_len = value;
-        si_adj_rw_len.value_namespace = name_space;
-        si_adj_rw_len.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-adj-rw")
-    {
-        si_adj_rw = value;
-        si_adj_rw.value_namespace = name_space;
-        si_adj_rw.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-dep-nhinfo-type")
-    {
-        si_dep_nhinfo_type = value;
-        si_dep_nhinfo_type.value_namespace = name_space;
-        si_dep_nhinfo_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-dep-nhinfo")
-    {
-        si_dep_nhinfo = value;
-        si_dep_nhinfo.value_namespace = name_space;
-        si_dep_nhinfo.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-dep-nhinfo-ifh")
-    {
-        si_dep_nhinfo_ifh = value;
-        si_dep_nhinfo_ifh.value_namespace = name_space;
-        si_dep_nhinfo_ifh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-bkup-frr")
-    {
-        si_bkup_frr = value;
-        si_bkup_frr.value_namespace = name_space;
-        si_bkup_frr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-protect-frr")
-    {
-        si_protect_frr = value;
-        si_protect_frr.value_namespace = name_space;
-        si_protect_frr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-bkup-nhinfo")
-    {
-        si_bkup_nhinfo = value;
-        si_bkup_nhinfo.value_namespace = name_space;
-        si_bkup_nhinfo.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-bkup-ifh")
-    {
-        si_bkup_ifh = value;
-        si_bkup_ifh.value_namespace = name_space;
-        si_bkup_ifh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-bkup-addr")
-    {
-        si_bkup_addr = value;
-        si_bkup_addr.value_namespace = name_space;
-        si_bkup_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-bkup-addrlen")
-    {
-        si_bkup_addrlen = value;
-        si_bkup_addrlen.value_namespace = name_space;
-        si_bkup_addrlen.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-bkup-addr-proto")
-    {
-        si_bkup_addr_proto = value;
-        si_bkup_addr_proto.value_namespace = name_space;
-        si_bkup_addr_proto.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-frr-active")
-    {
-        si_frr_active = value;
-        si_frr_active.value_namespace = name_space;
-        si_frr_active.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-attr-is-ext-mgd")
-    {
-        si_attr_is_ext_mgd = value;
-        si_attr_is_ext_mgd.value_namespace = name_space;
-        si_attr_is_ext_mgd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-attr-is-incomp")
-    {
-        si_attr_is_incomp = value;
-        si_attr_is_incomp.value_namespace = name_space;
-        si_attr_is_incomp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-attr-is-tunnel")
-    {
-        si_attr_is_tunnel = value;
-        si_attr_is_tunnel.value_namespace = name_space;
-        si_attr_is_tunnel.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-attr-is-tunnel-srte")
-    {
-        si_attr_is_tunnel_srte = value;
-        si_attr_is_tunnel_srte.value_namespace = name_space;
-        si_attr_is_tunnel_srte.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-attr-is-gre-tunnel")
-    {
-        si_attr_is_gre_tunnel = value;
-        si_attr_is_gre_tunnel.value_namespace = name_space;
-        si_attr_is_gre_tunnel.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-gre-ti")
-    {
-        si_gre_ti = value;
-        si_gre_ti.value_namespace = name_space;
-        si_gre_ti.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-gre-ti-flags")
-    {
-        si_gre_ti_flags = value;
-        si_gre_ti_flags.value_namespace = name_space;
-        si_gre_ti_flags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-gre-ti-refcnt")
-    {
-        si_gre_ti_refcnt = value;
-        si_gre_ti_refcnt.value_namespace = name_space;
-        si_gre_ti_refcnt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-gre-tos-propagate")
-    {
-        si_gre_tos_propagate = value;
-        si_gre_tos_propagate.value_namespace = name_space;
-        si_gre_tos_propagate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-hardware")
-    {
-        si_hardware = value;
-        si_hardware.value_namespace = name_space;
-        si_hardware.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-nhinfo-ptr")
-    {
-        si_nhinfo_ptr = value;
-        si_nhinfo_ptr.value_namespace = name_space;
-        si_nhinfo_ptr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-fnb-idb-ptr")
-    {
-        si_fnb_idb_ptr = value;
-        si_fnb_idb_ptr.value_namespace = name_space;
-        si_fnb_idb_ptr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-anc-ifh")
-    {
-        si_anc_ifh = value;
-        si_anc_ifh.value_namespace = name_space;
-        si_anc_ifh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-gre-ti-resolving-leafp")
-    {
-        si_gre_ti_resolving_leafp = value;
-        si_gre_ti_resolving_leafp.value_namespace = name_space;
-        si_gre_ti_resolving_leafp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-gre-dest-addr")
-    {
-        si_gre_dest_addr = value;
-        si_gre_dest_addr.value_namespace = name_space;
-        si_gre_dest_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-nhid")
-    {
-        si_nhid = value;
-        si_nhid.value_namespace = name_space;
-        si_nhid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "si-upd-ts")
-    {
-        si_upd_ts = value;
-        si_upd_ts.value_namespace = name_space;
-        si_upd_ts.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nh-interface-name")
-    {
-        nh_interface_name.yfilter = yfilter;
-    }
-    if(value_path == "nh-address")
-    {
-        nh_address.yfilter = yfilter;
-    }
-    if(value_path == "si-link-proto")
-    {
-        si_link_proto.yfilter = yfilter;
-    }
-    if(value_path == "si-nhinfo")
-    {
-        si_nhinfo.yfilter = yfilter;
-    }
-    if(value_path == "si-nhtype")
-    {
-        si_nhtype.yfilter = yfilter;
-    }
-    if(value_path == "si-ifh")
-    {
-        si_ifh.yfilter = yfilter;
-    }
-    if(value_path == "si-pfi-interface-type")
-    {
-        si_pfi_interface_type.yfilter = yfilter;
-    }
-    if(value_path == "si-adj-ptr")
-    {
-        si_adj_ptr.yfilter = yfilter;
-    }
-    if(value_path == "si-adj-present")
-    {
-        si_adj_present.yfilter = yfilter;
-    }
-    if(value_path == "si-special-type")
-    {
-        si_special_type.yfilter = yfilter;
-    }
-    if(value_path == "si-refcount")
-    {
-        si_refcount.yfilter = yfilter;
-    }
-    if(value_path == "si-flags")
-    {
-        si_flags.yfilter = yfilter;
-    }
-    if(value_path == "si-adj-if")
-    {
-        si_adj_if.yfilter = yfilter;
-    }
-    if(value_path == "si-ext-pfx")
-    {
-        si_ext_pfx.yfilter = yfilter;
-    }
-    if(value_path == "si-ext-pfx-len")
-    {
-        si_ext_pfx_len.yfilter = yfilter;
-    }
-    if(value_path == "si-ext-pfx-proto")
-    {
-        si_ext_pfx_proto.yfilter = yfilter;
-    }
-    if(value_path == "si-adj-address")
-    {
-        si_adj_address.yfilter = yfilter;
-    }
-    if(value_path == "si-adj-addrlen")
-    {
-        si_adj_addrlen.yfilter = yfilter;
-    }
-    if(value_path == "si-adj-addr-proto")
-    {
-        si_adj_addr_proto.yfilter = yfilter;
-    }
-    if(value_path == "si-adj-rw-len")
-    {
-        si_adj_rw_len.yfilter = yfilter;
-    }
-    if(value_path == "si-adj-rw")
-    {
-        si_adj_rw.yfilter = yfilter;
-    }
-    if(value_path == "si-dep-nhinfo-type")
-    {
-        si_dep_nhinfo_type.yfilter = yfilter;
-    }
-    if(value_path == "si-dep-nhinfo")
-    {
-        si_dep_nhinfo.yfilter = yfilter;
-    }
-    if(value_path == "si-dep-nhinfo-ifh")
-    {
-        si_dep_nhinfo_ifh.yfilter = yfilter;
-    }
-    if(value_path == "si-bkup-frr")
-    {
-        si_bkup_frr.yfilter = yfilter;
-    }
-    if(value_path == "si-protect-frr")
-    {
-        si_protect_frr.yfilter = yfilter;
-    }
-    if(value_path == "si-bkup-nhinfo")
-    {
-        si_bkup_nhinfo.yfilter = yfilter;
-    }
-    if(value_path == "si-bkup-ifh")
-    {
-        si_bkup_ifh.yfilter = yfilter;
-    }
-    if(value_path == "si-bkup-addr")
-    {
-        si_bkup_addr.yfilter = yfilter;
-    }
-    if(value_path == "si-bkup-addrlen")
-    {
-        si_bkup_addrlen.yfilter = yfilter;
-    }
-    if(value_path == "si-bkup-addr-proto")
-    {
-        si_bkup_addr_proto.yfilter = yfilter;
-    }
-    if(value_path == "si-frr-active")
-    {
-        si_frr_active.yfilter = yfilter;
-    }
-    if(value_path == "si-attr-is-ext-mgd")
-    {
-        si_attr_is_ext_mgd.yfilter = yfilter;
-    }
-    if(value_path == "si-attr-is-incomp")
-    {
-        si_attr_is_incomp.yfilter = yfilter;
-    }
-    if(value_path == "si-attr-is-tunnel")
-    {
-        si_attr_is_tunnel.yfilter = yfilter;
-    }
-    if(value_path == "si-attr-is-tunnel-srte")
-    {
-        si_attr_is_tunnel_srte.yfilter = yfilter;
-    }
-    if(value_path == "si-attr-is-gre-tunnel")
-    {
-        si_attr_is_gre_tunnel.yfilter = yfilter;
-    }
-    if(value_path == "si-gre-ti")
-    {
-        si_gre_ti.yfilter = yfilter;
-    }
-    if(value_path == "si-gre-ti-flags")
-    {
-        si_gre_ti_flags.yfilter = yfilter;
-    }
-    if(value_path == "si-gre-ti-refcnt")
-    {
-        si_gre_ti_refcnt.yfilter = yfilter;
-    }
-    if(value_path == "si-gre-tos-propagate")
-    {
-        si_gre_tos_propagate.yfilter = yfilter;
-    }
-    if(value_path == "si-hardware")
-    {
-        si_hardware.yfilter = yfilter;
-    }
-    if(value_path == "si-nhinfo-ptr")
-    {
-        si_nhinfo_ptr.yfilter = yfilter;
-    }
-    if(value_path == "si-fnb-idb-ptr")
-    {
-        si_fnb_idb_ptr.yfilter = yfilter;
-    }
-    if(value_path == "si-anc-ifh")
-    {
-        si_anc_ifh.yfilter = yfilter;
-    }
-    if(value_path == "si-gre-ti-resolving-leafp")
-    {
-        si_gre_ti_resolving_leafp.yfilter = yfilter;
-    }
-    if(value_path == "si-gre-dest-addr")
-    {
-        si_gre_dest_addr.yfilter = yfilter;
-    }
-    if(value_path == "si-nhid")
-    {
-        si_nhid.yfilter = yfilter;
-    }
-    if(value_path == "si-upd-ts")
-    {
-        si_upd_ts.yfilter = yfilter;
-    }
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "si-pwhe" || name == "nh-info-extension" || name == "nh-interface-name" || name == "nh-address" || name == "si-link-proto" || name == "si-nhinfo" || name == "si-nhtype" || name == "si-ifh" || name == "si-pfi-interface-type" || name == "si-adj-ptr" || name == "si-adj-present" || name == "si-special-type" || name == "si-refcount" || name == "si-flags" || name == "si-adj-if" || name == "si-ext-pfx" || name == "si-ext-pfx-len" || name == "si-ext-pfx-proto" || name == "si-adj-address" || name == "si-adj-addrlen" || name == "si-adj-addr-proto" || name == "si-adj-rw-len" || name == "si-adj-rw" || name == "si-dep-nhinfo-type" || name == "si-dep-nhinfo" || name == "si-dep-nhinfo-ifh" || name == "si-bkup-frr" || name == "si-protect-frr" || name == "si-bkup-nhinfo" || name == "si-bkup-ifh" || name == "si-bkup-addr" || name == "si-bkup-addrlen" || name == "si-bkup-addr-proto" || name == "si-frr-active" || name == "si-attr-is-ext-mgd" || name == "si-attr-is-incomp" || name == "si-attr-is-tunnel" || name == "si-attr-is-tunnel-srte" || name == "si-attr-is-gre-tunnel" || name == "si-gre-ti" || name == "si-gre-ti-flags" || name == "si-gre-ti-refcnt" || name == "si-gre-tos-propagate" || name == "si-hardware" || name == "si-nhinfo-ptr" || name == "si-fnb-idb-ptr" || name == "si-anc-ifh" || name == "si-gre-ti-resolving-leafp" || name == "si-gre-dest-addr" || name == "si-nhid" || name == "si-upd-ts")
-        return true;
-    return false;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe::SiPwhe()
-    :
-    pwhe_adjacency_client_data{YType::uint32, "pwhe-adjacency-client-data"},
-    vctype{YType::uint32, "vctype"},
-    vc_internal_label{YType::uint32, "vc-internal-label"},
-    cw_enabled{YType::boolean, "cw-enabled"},
-    l2_overhead_bytes{YType::uint16, "l2-overhead-bytes"},
-    dot1q_vlan_tag{YType::uint32, "dot1q-vlan-tag"}
-{
-
-    yang_name = "si-pwhe"; yang_parent_name = "nh-info-local-detail"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe::~SiPwhe()
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe::has_data() const
-{
-    return pwhe_adjacency_client_data.is_set
-	|| vctype.is_set
-	|| vc_internal_label.is_set
-	|| cw_enabled.is_set
-	|| l2_overhead_bytes.is_set
-	|| dot1q_vlan_tag.is_set;
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(pwhe_adjacency_client_data.yfilter)
-	|| ydk::is_set(vctype.yfilter)
-	|| ydk::is_set(vc_internal_label.yfilter)
-	|| ydk::is_set(cw_enabled.yfilter)
-	|| ydk::is_set(l2_overhead_bytes.yfilter)
-	|| ydk::is_set(dot1q_vlan_tag.yfilter);
-}
-
-std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "si-pwhe";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (pwhe_adjacency_client_data.is_set || is_set(pwhe_adjacency_client_data.yfilter)) leaf_name_data.push_back(pwhe_adjacency_client_data.get_name_leafdata());
-    if (vctype.is_set || is_set(vctype.yfilter)) leaf_name_data.push_back(vctype.get_name_leafdata());
-    if (vc_internal_label.is_set || is_set(vc_internal_label.yfilter)) leaf_name_data.push_back(vc_internal_label.get_name_leafdata());
-    if (cw_enabled.is_set || is_set(cw_enabled.yfilter)) leaf_name_data.push_back(cw_enabled.get_name_leafdata());
-    if (l2_overhead_bytes.is_set || is_set(l2_overhead_bytes.yfilter)) leaf_name_data.push_back(l2_overhead_bytes.get_name_leafdata());
-    if (dot1q_vlan_tag.is_set || is_set(dot1q_vlan_tag.yfilter)) leaf_name_data.push_back(dot1q_vlan_tag.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "pwhe-adjacency-client-data")
-    {
-        pwhe_adjacency_client_data = value;
-        pwhe_adjacency_client_data.value_namespace = name_space;
-        pwhe_adjacency_client_data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vctype")
-    {
-        vctype = value;
-        vctype.value_namespace = name_space;
-        vctype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vc-internal-label")
-    {
-        vc_internal_label = value;
-        vc_internal_label.value_namespace = name_space;
-        vc_internal_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cw-enabled")
-    {
-        cw_enabled = value;
-        cw_enabled.value_namespace = name_space;
-        cw_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2-overhead-bytes")
-    {
-        l2_overhead_bytes = value;
-        l2_overhead_bytes.value_namespace = name_space;
-        l2_overhead_bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dot1q-vlan-tag")
-    {
-        dot1q_vlan_tag = value;
-        dot1q_vlan_tag.value_namespace = name_space;
-        dot1q_vlan_tag.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "pwhe-adjacency-client-data")
-    {
-        pwhe_adjacency_client_data.yfilter = yfilter;
-    }
-    if(value_path == "vctype")
-    {
-        vctype.yfilter = yfilter;
-    }
-    if(value_path == "vc-internal-label")
-    {
-        vc_internal_label.yfilter = yfilter;
-    }
-    if(value_path == "cw-enabled")
-    {
-        cw_enabled.yfilter = yfilter;
-    }
-    if(value_path == "l2-overhead-bytes")
-    {
-        l2_overhead_bytes.yfilter = yfilter;
-    }
-    if(value_path == "dot1q-vlan-tag")
-    {
-        dot1q_vlan_tag.yfilter = yfilter;
-    }
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::SiPwhe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pwhe-adjacency-client-data" || name == "vctype" || name == "vc-internal-label" || name == "cw-enabled" || name == "l2-overhead-bytes" || name == "dot1q-vlan-tag")
-        return true;
-    return false;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtension()
-{
-
-    yang_name = "nh-info-extension"; yang_parent_name = "nh-info-local-detail"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::~NhInfoExtension()
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::has_data() const
-{
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
-    {
-        if(nh_info_extension_detail[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::has_operation() const
-{
-    for (std::size_t index=0; index<nh_info_extension_detail.size(); index++)
-    {
-        if(nh_info_extension_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nh-info-extension";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nh-info-extension-detail")
-    {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail>();
-        c->parent = this;
-        nh_info_extension_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : nh_info_extension_detail)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nh-info-extension-detail")
-        return true;
-    return false;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail()
-    :
-    nh_info_extension_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase>())
-	,nh_info_extension_detail(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>())
-{
-    nh_info_extension_base->parent = this;
-    nh_info_extension_detail->parent = this;
-
-    yang_name = "nh-info-extension-detail"; yang_parent_name = "nh-info-extension"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::~NhInfoExtensionDetail()
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::has_data() const
-{
-    return (nh_info_extension_base !=  nullptr && nh_info_extension_base->has_data())
-	|| (nh_info_extension_detail !=  nullptr && nh_info_extension_detail->has_data());
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::has_operation() const
-{
-    return is_set(yfilter)
-	|| (nh_info_extension_base !=  nullptr && nh_info_extension_base->has_operation())
-	|| (nh_info_extension_detail !=  nullptr && nh_info_extension_detail->has_operation());
-}
-
-std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nh-info-extension-detail";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nh-info-extension-base")
-    {
-        if(nh_info_extension_base == nullptr)
-        {
-            nh_info_extension_base = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase>();
-        }
-        return nh_info_extension_base;
-    }
-
-    if(child_yang_name == "nh-info-extension-detail")
-    {
-        if(nh_info_extension_detail == nullptr)
-        {
-            nh_info_extension_detail = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_>();
-        }
-        return nh_info_extension_detail;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(nh_info_extension_base != nullptr)
-    {
-        children["nh-info-extension-base"] = nh_info_extension_base;
-    }
-
-    if(nh_info_extension_detail != nullptr)
-    {
-        children["nh-info-extension-detail"] = nh_info_extension_detail;
-    }
-
-    return children;
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nh-info-extension-base" || name == "nh-info-extension-detail")
-        return true;
-    return false;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::NhInfoExtensionBase()
-    :
-    parent_object_pointer{YType::uint64, "parent-object-pointer"},
-    back_object_pointer{YType::uint64, "back-object-pointer"}
-    	,
-    object_base(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase>())
-{
-    object_base->parent = this;
-
-    yang_name = "nh-info-extension-base"; yang_parent_name = "nh-info-extension-detail"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::~NhInfoExtensionBase()
-{
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::has_data() const
-{
-    return parent_object_pointer.is_set
-	|| back_object_pointer.is_set
-	|| (object_base !=  nullptr && object_base->has_data());
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(parent_object_pointer.yfilter)
-	|| ydk::is_set(back_object_pointer.yfilter)
-	|| (object_base !=  nullptr && object_base->has_operation());
-}
-
-std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nh-info-extension-base";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (parent_object_pointer.is_set || is_set(parent_object_pointer.yfilter)) leaf_name_data.push_back(parent_object_pointer.get_name_leafdata());
-    if (back_object_pointer.is_set || is_set(back_object_pointer.yfilter)) leaf_name_data.push_back(back_object_pointer.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "object-base")
-    {
-        if(object_base == nullptr)
-        {
-            object_base = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase>();
-        }
-        return object_base;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(object_base != nullptr)
-    {
-        children["object-base"] = object_base;
-    }
-
-    return children;
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "parent-object-pointer")
-    {
-        parent_object_pointer = value;
-        parent_object_pointer.value_namespace = name_space;
-        parent_object_pointer.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "back-object-pointer")
-    {
-        back_object_pointer = value;
-        back_object_pointer.value_namespace = name_space;
-        back_object_pointer.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "parent-object-pointer")
-    {
-        parent_object_pointer.yfilter = yfilter;
-    }
-    if(value_path == "back-object-pointer")
-    {
-        back_object_pointer.yfilter = yfilter;
-    }
-}
-
-bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "object-base" || name == "parent-object-pointer" || name == "back-object-pointer")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf FibRouteSource::lsd {5, "lsd"};
-const Enum::YLeaf FibRouteSource::rib {7, "rib"};
-const Enum::YLeaf FibRouteSource::mrib {13, "mrib"};
-
-const Enum::YLeaf FibProtocol::ipv4 {0, "ipv4"};
-const Enum::YLeaf FibProtocol::ipv6 {1, "ipv6"};
-const Enum::YLeaf FibProtocol::mpls {2, "mpls"};
-
-const Enum::YLeaf FibafiProto::ipv4 {0, "ipv4"};
-const Enum::YLeaf FibafiProto::ipv4_mpls {1, "ipv4-mpls"};
-const Enum::YLeaf FibafiProto::ipv6 {2, "ipv6"};
-const Enum::YLeaf FibafiProto::ipv6_mpls {3, "ipv6-mpls"};
-
-const Enum::YLeaf FibllcEntry::xc {1, "xc"};
-const Enum::YLeaf FibllcEntry::pfx {2, "pfx"};
-
-const Enum::YLeaf FibLink::link_ipv4 {0, "link-ipv4"};
-const Enum::YLeaf FibLink::link_ipv6 {1, "link-ipv6"};
-const Enum::YLeaf FibLink::link_mpls {2, "link-mpls"};
-
-const Enum::YLeaf Mplseos::eos0 {0, "eos0"};
-const Enum::YLeaf Mplseos::eos1 {1, "eos1"};
-
-const Enum::YLeaf FibMplsLlcEntryBag::fib_mpls_llc_bag_type_xc {1, "fib-mpls-llc-bag-type-xc"};
-const Enum::YLeaf FibMplsLlcEntryBag::fib_mpls_llc_bag_type_pfx {2, "fib-mpls-llc-bag-type-pfx"};
-const Enum::YLeaf FibMplsLlcEntryBag::fib_mpls_llc_bag_type_lsm {3, "fib-mpls-llc-bag-type-lsm"};
-const Enum::YLeaf FibMplsLlcEntryBag::fib_mpls_llc_bag_type_max {4, "fib-mpls-llc-bag-type-max"};
-
-const Enum::YLeaf FibRpfMode::fib_rpf_mode_strict {0, "fib-rpf-mode-strict"};
-const Enum::YLeaf FibRpfMode::fib_rpf_mode_loose {1, "fib-rpf-mode-loose"};
-const Enum::YLeaf FibRpfMode::fib_rpf_mode_unknown {2, "fib-rpf-mode-unknown"};
-
-const Enum::YLeaf FibidbOper::fibidb_none {0, "fibidb-none"};
-const Enum::YLeaf FibidbOper::fibidb_create {1, "fibidb-create"};
-const Enum::YLeaf FibidbOper::fibidb_delete {2, "fibidb-delete"};
-const Enum::YLeaf FibidbOper::fibidb_modify {3, "fibidb-modify"};
-const Enum::YLeaf FibidbOper::fibidb_max {4, "fibidb-max"};
-
-const Enum::YLeaf FibShTblFibExtBag::leaf_extension {1, "leaf-extension"};
-
-const Enum::YLeaf FibUpdatePathLfaProtection::not_lfa_protected {0, "not-lfa-protected"};
-const Enum::YLeaf FibUpdatePathLfaProtection::local_lfa_protected {1, "local-lfa-protected"};
-const Enum::YLeaf FibUpdatePathLfaProtection::remote_lfa_protected {2, "remote-lfa-protected"};
-const Enum::YLeaf FibUpdatePathLfaProtection::ti_lfa_protected {3, "ti-lfa-protected"};
-
-const Enum::YLeaf FibShIpencapHdr::fib_sh_ip_encap_none {0, "fib-sh-ip-encap-none"};
-const Enum::YLeaf FibShIpencapHdr::fib_sh_ip_encap_ip4 {1, "fib-sh-ip-encap-ip4"};
-const Enum::YLeaf FibShIpencapHdr::fib_sh_ip_encap_ip6 {2, "fib-sh-ip-encap-ip6"};
-const Enum::YLeaf FibShIpencapHdr::fib_sh_ip_encap_udp {3, "fib-sh-ip-encap-udp"};
-const Enum::YLeaf FibShIpencapHdr::fib_sh_ip_encap_lisp {4, "fib-sh-ip-encap-lisp"};
+const Enum::YLeaf MgmtFibMplsFrrState::partial {0, "partial"};
+const Enum::YLeaf MgmtFibMplsFrrState::active {1, "active"};
+const Enum::YLeaf MgmtFibMplsFrrState::ready {2, "ready"};
+const Enum::YLeaf MgmtFibMplsFrrState::complete {3, "complete"};
+const Enum::YLeaf MgmtFibMplsFrrState::any {4, "any"};
 
 const Enum::YLeaf FibNehSpecial::nh_not_found {0, "nh-not-found"};
 const Enum::YLeaf FibNehSpecial::nh_null0 {1, "nh-null0"};
@@ -24859,9 +24903,15 @@ const Enum::YLeaf FibNehSpecial::nh_lisp {8, "nh-lisp"};
 const Enum::YLeaf FibNehSpecial::nh_lookup {9, "nh-lookup"};
 const Enum::YLeaf FibNehSpecial::nh_max_type {10, "nh-max-type"};
 
-const Enum::YLeaf FibNeh::nh_local {0, "nh-local"};
-const Enum::YLeaf FibNeh::nh_remote {1, "nh-remote"};
-const Enum::YLeaf FibNeh::nh_special {2, "nh-special"};
+const Enum::YLeaf Proto::ipv4 {0, "ipv4"};
+const Enum::YLeaf Proto::ipv6 {1, "ipv6"};
+const Enum::YLeaf Proto::mpls {2, "mpls"};
+
+const Enum::YLeaf FibShIpencapHdr::fib_sh_ip_encap_none {0, "fib-sh-ip-encap-none"};
+const Enum::YLeaf FibShIpencapHdr::fib_sh_ip_encap_ip4 {1, "fib-sh-ip-encap-ip4"};
+const Enum::YLeaf FibShIpencapHdr::fib_sh_ip_encap_ip6 {2, "fib-sh-ip-encap-ip6"};
+const Enum::YLeaf FibShIpencapHdr::fib_sh_ip_encap_udp {3, "fib-sh-ip-encap-udp"};
+const Enum::YLeaf FibShIpencapHdr::fib_sh_ip_encap_lisp {4, "fib-sh-ip-encap-lisp"};
 
 const Enum::YLeaf FibAdjacencyShow::fib_adjacency_normal {0, "fib-adjacency-normal"};
 const Enum::YLeaf FibAdjacencyShow::fib_adjacency_null {1, "fib-adjacency-null"};
@@ -24874,36 +24924,75 @@ const Enum::YLeaf FibAdjacencyShow::fib_adjacency_external {7, "fib-adjacency-ex
 const Enum::YLeaf FibAdjacencyShow::fib_adjacency_lisp {8, "fib-adjacency-lisp"};
 const Enum::YLeaf FibAdjacencyShow::fib_adjacency_unknown {9, "fib-adjacency-unknown"};
 
-const Enum::YLeaf FibLoadshareShow::fib_load_share_none {0, "fib-load-share-none"};
-const Enum::YLeaf FibLoadshareShow::fib_load_share_per_packet {1, "fib-load-share-per-packet"};
-const Enum::YLeaf FibLoadshareShow::fib_load_share_dest_sharing {2, "fib-load-share-dest-sharing"};
-
 const Enum::YLeaf FibNhinfoExtBag::replicated_nh_info {0, "replicated-nh-info"};
 const Enum::YLeaf FibNhinfoExtBag::shared_nh_info {1, "shared-nh-info"};
+
+const Enum::YLeaf SsLbaState::l3 {0, "l3"};
+const Enum::YLeaf SsLbaState::l4 {1, "l4"};
+
+const Enum::YLeaf FibRouteSource::lsd {5, "lsd"};
+const Enum::YLeaf FibRouteSource::rib {7, "rib"};
+const Enum::YLeaf FibRouteSource::mrib {13, "mrib"};
+
+const Enum::YLeaf FibMplsLlcEntryBag::fib_mpls_llc_bag_type_xc {1, "fib-mpls-llc-bag-type-xc"};
+const Enum::YLeaf FibMplsLlcEntryBag::fib_mpls_llc_bag_type_pfx {2, "fib-mpls-llc-bag-type-pfx"};
+const Enum::YLeaf FibMplsLlcEntryBag::fib_mpls_llc_bag_type_lsm {3, "fib-mpls-llc-bag-type-lsm"};
+const Enum::YLeaf FibMplsLlcEntryBag::fib_mpls_llc_bag_type_max {4, "fib-mpls-llc-bag-type-max"};
+
+const Enum::YLeaf FibRpfMode::fib_rpf_mode_strict {0, "fib-rpf-mode-strict"};
+const Enum::YLeaf FibRpfMode::fib_rpf_mode_loose {1, "fib-rpf-mode-loose"};
+const Enum::YLeaf FibRpfMode::fib_rpf_mode_unknown {2, "fib-rpf-mode-unknown"};
+
+const Enum::YLeaf FibafiProto::ipv4 {0, "ipv4"};
+const Enum::YLeaf FibafiProto::ipv4_mpls {1, "ipv4-mpls"};
+const Enum::YLeaf FibafiProto::ipv6 {2, "ipv6"};
+const Enum::YLeaf FibafiProto::ipv6_mpls {3, "ipv6-mpls"};
+
+const Enum::YLeaf Mplseos::eos0 {0, "eos0"};
+const Enum::YLeaf Mplseos::eos1 {1, "eos1"};
 
 const Enum::YLeaf FibFrrProtocolShow::frr_protocol_ipv4 {0, "frr-protocol-ipv4"};
 const Enum::YLeaf FibFrrProtocolShow::frr_protocol_ipv6 {1, "frr-protocol-ipv6"};
 const Enum::YLeaf FibFrrProtocolShow::frr_protocol_mpls {2, "frr-protocol-mpls"};
 
-const Enum::YLeaf SsLbaState::l3 {0, "l3"};
-const Enum::YLeaf SsLbaState::l4 {1, "l4"};
+const Enum::YLeaf FibLink::link_ipv4 {0, "link-ipv4"};
+const Enum::YLeaf FibLink::link_ipv6 {1, "link-ipv6"};
+const Enum::YLeaf FibLink::link_mpls {2, "link-mpls"};
+
+const Enum::YLeaf FibUpdatePathLfaProtection::not_lfa_protected {0, "not-lfa-protected"};
+const Enum::YLeaf FibUpdatePathLfaProtection::local_lfa_protected {1, "local-lfa-protected"};
+const Enum::YLeaf FibUpdatePathLfaProtection::remote_lfa_protected {2, "remote-lfa-protected"};
+const Enum::YLeaf FibUpdatePathLfaProtection::ti_lfa_protected {3, "ti-lfa-protected"};
+
+const Enum::YLeaf FibLoadshareShow::fib_load_share_none {0, "fib-load-share-none"};
+const Enum::YLeaf FibLoadshareShow::fib_load_share_per_packet {1, "fib-load-share-per-packet"};
+const Enum::YLeaf FibLoadshareShow::fib_load_share_dest_sharing {2, "fib-load-share-dest-sharing"};
+
+const Enum::YLeaf FibllcEntry::xc {1, "xc"};
+const Enum::YLeaf FibllcEntry::pfx {2, "pfx"};
+
+const Enum::YLeaf FibNeh::nh_local {0, "nh-local"};
+const Enum::YLeaf FibNeh::nh_remote {1, "nh-remote"};
+const Enum::YLeaf FibNeh::nh_special {2, "nh-special"};
 
 const Enum::YLeaf NextHop::tx {0, "tx"};
 const Enum::YLeaf NextHop::rx {1, "rx"};
 const Enum::YLeaf NextHop::special {2, "special"};
 
-const Enum::YLeaf Proto::ipv4 {0, "ipv4"};
-const Enum::YLeaf Proto::ipv6 {1, "ipv6"};
-const Enum::YLeaf Proto::mpls {2, "mpls"};
-
-const Enum::YLeaf MgmtFibMplsFrrState::partial {0, "partial"};
-const Enum::YLeaf MgmtFibMplsFrrState::active {1, "active"};
-const Enum::YLeaf MgmtFibMplsFrrState::ready {2, "ready"};
-const Enum::YLeaf MgmtFibMplsFrrState::complete {3, "complete"};
-const Enum::YLeaf MgmtFibMplsFrrState::any {4, "any"};
-
 const Enum::YLeaf MgmtFibMplsLspRole::head {0, "head"};
 const Enum::YLeaf MgmtFibMplsLspRole::midpoint {1, "midpoint"};
+
+const Enum::YLeaf FibProtocol::ipv4 {0, "ipv4"};
+const Enum::YLeaf FibProtocol::ipv6 {1, "ipv6"};
+const Enum::YLeaf FibProtocol::mpls {2, "mpls"};
+
+const Enum::YLeaf FibidbOper::fibidb_none {0, "fibidb-none"};
+const Enum::YLeaf FibidbOper::fibidb_create {1, "fibidb-create"};
+const Enum::YLeaf FibidbOper::fibidb_delete {2, "fibidb-delete"};
+const Enum::YLeaf FibidbOper::fibidb_modify {3, "fibidb-modify"};
+const Enum::YLeaf FibidbOper::fibidb_max {4, "fibidb-max"};
+
+const Enum::YLeaf FibShTblFibExtBag::leaf_extension {1, "leaf-extension"};
 
 
 }

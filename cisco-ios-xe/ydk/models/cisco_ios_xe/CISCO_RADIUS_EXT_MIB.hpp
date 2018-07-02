@@ -31,22 +31,22 @@ class CISCORADIUSEXTMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Creclientglobal; //type: CISCORADIUSEXTMIB::Creclientglobal
-        class Creclientauthentication; //type: CISCORADIUSEXTMIB::Creclientauthentication
-        class Creclientaccounting; //type: CISCORADIUSEXTMIB::Creclientaccounting
+        class CreClientGlobal; //type: CISCORADIUSEXTMIB::CreClientGlobal
+        class CreClientAuthentication; //type: CISCORADIUSEXTMIB::CreClientAuthentication
+        class CreClientAccounting; //type: CISCORADIUSEXTMIB::CreClientAccounting
 
-        std::shared_ptr<cisco_ios_xe::CISCO_RADIUS_EXT_MIB::CISCORADIUSEXTMIB::Creclientglobal> creclientglobal;
-        std::shared_ptr<cisco_ios_xe::CISCO_RADIUS_EXT_MIB::CISCORADIUSEXTMIB::Creclientauthentication> creclientauthentication;
-        std::shared_ptr<cisco_ios_xe::CISCO_RADIUS_EXT_MIB::CISCORADIUSEXTMIB::Creclientaccounting> creclientaccounting;
+        std::shared_ptr<cisco_ios_xe::CISCO_RADIUS_EXT_MIB::CISCORADIUSEXTMIB::CreClientGlobal> creclientglobal;
+        std::shared_ptr<cisco_ios_xe::CISCO_RADIUS_EXT_MIB::CISCORADIUSEXTMIB::CreClientAuthentication> creclientauthentication;
+        std::shared_ptr<cisco_ios_xe::CISCO_RADIUS_EXT_MIB::CISCORADIUSEXTMIB::CreClientAccounting> creclientaccounting;
         
 }; // CISCORADIUSEXTMIB
 
 
-class CISCORADIUSEXTMIB::Creclientglobal : public ydk::Entity
+class CISCORADIUSEXTMIB::CreClientGlobal : public ydk::Entity
 {
     public:
-        Creclientglobal();
-        ~Creclientglobal();
+        CreClientGlobal();
+        ~CreClientGlobal();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -69,14 +69,14 @@ class CISCORADIUSEXTMIB::Creclientglobal : public ydk::Entity
         ydk::YLeaf creclientlastusedsourceport; //type: uint16
         ydk::YLeaf creclientlastusedsourceid; //type: uint32
 
-}; // CISCORADIUSEXTMIB::Creclientglobal
+}; // CISCORADIUSEXTMIB::CreClientGlobal
 
 
-class CISCORADIUSEXTMIB::Creclientauthentication : public ydk::Entity
+class CISCORADIUSEXTMIB::CreClientAuthentication : public ydk::Entity
 {
     public:
-        Creclientauthentication();
-        ~Creclientauthentication();
+        CreClientAuthentication();
+        ~CreClientAuthentication();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -103,14 +103,14 @@ class CISCORADIUSEXTMIB::Creclientauthentication : public ydk::Entity
         ydk::YLeaf creauthclientmalformedresponses; //type: uint32
         ydk::YLeaf creauthclientlastusedsourceid; //type: uint32
 
-}; // CISCORADIUSEXTMIB::Creclientauthentication
+}; // CISCORADIUSEXTMIB::CreClientAuthentication
 
 
-class CISCORADIUSEXTMIB::Creclientaccounting : public ydk::Entity
+class CISCORADIUSEXTMIB::CreClientAccounting : public ydk::Entity
 {
     public:
-        Creclientaccounting();
-        ~Creclientaccounting();
+        CreClientAccounting();
+        ~CreClientAccounting();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -137,7 +137,7 @@ class CISCORADIUSEXTMIB::Creclientaccounting : public ydk::Entity
         ydk::YLeaf creacctclientmalformedresponses; //type: uint32
         ydk::YLeaf creacctclientlastusedsourceid; //type: uint32
 
-}; // CISCORADIUSEXTMIB::Creclientaccounting
+}; // CISCORADIUSEXTMIB::CreClientAccounting
 
 
 }

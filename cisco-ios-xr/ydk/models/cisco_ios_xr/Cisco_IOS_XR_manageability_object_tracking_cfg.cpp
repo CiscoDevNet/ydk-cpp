@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_manageability_object_tracking_cfg {
 
 ObjectTrackings::ObjectTrackings()
+    :
+    object_tracking(this, {"track_name"})
 {
 
-    yang_name = "object-trackings"; yang_parent_name = "Cisco-IOS-XR-manageability-object-tracking-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "object-trackings"; yang_parent_name = "Cisco-IOS-XR-manageability-object-tracking-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ObjectTrackings::~ObjectTrackings()
@@ -23,7 +25,8 @@ ObjectTrackings::~ObjectTrackings()
 
 bool ObjectTrackings::has_data() const
 {
-    for (std::size_t index=0; index<object_tracking.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<object_tracking.len(); index++)
     {
         if(object_tracking[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool ObjectTrackings::has_data() const
 
 bool ObjectTrackings::has_operation() const
 {
-    for (std::size_t index=0; index<object_tracking.size(); index++)
+    for (std::size_t index=0; index<object_tracking.len(); index++)
     {
         if(object_tracking[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> ObjectTrackings::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<ObjectTrackings::ObjectTracking>();
         c->parent = this;
-        object_tracking.push_back(c);
+        object_tracking.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : object_tracking)
+    for (auto c : object_tracking.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -136,12 +139,12 @@ ObjectTrackings::ObjectTracking::ObjectTracking()
     type_route_enable{YType::empty, "type-route-enable"},
     type_boolean_list_and_enable{YType::empty, "type-boolean-list-and-enable"},
     type_boolean_list_or_enable{YType::empty, "type-boolean-list-or-enable"}
-    	,
+        ,
     type_interface(std::make_shared<ObjectTrackings::ObjectTracking::TypeInterface>())
-	,type_rtr(std::make_shared<ObjectTrackings::ObjectTracking::TypeRtr>())
-	,type_list(std::make_shared<ObjectTrackings::ObjectTracking::TypeList>())
-	,type_route(std::make_shared<ObjectTrackings::ObjectTracking::TypeRoute>())
-	,type_boolean_list(std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList>())
+    , type_rtr(std::make_shared<ObjectTrackings::ObjectTracking::TypeRtr>())
+    , type_list(std::make_shared<ObjectTrackings::ObjectTracking::TypeList>())
+    , type_route(std::make_shared<ObjectTrackings::ObjectTracking::TypeRoute>())
+    , type_boolean_list(std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList>())
 {
     type_interface->parent = this;
     type_rtr->parent = this;
@@ -149,7 +152,7 @@ ObjectTrackings::ObjectTracking::ObjectTracking()
     type_route->parent = this;
     type_boolean_list->parent = this;
 
-    yang_name = "object-tracking"; yang_parent_name = "object-trackings"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "object-tracking"; yang_parent_name = "object-trackings"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTrackings::ObjectTracking::~ObjectTracking()
@@ -158,6 +161,7 @@ ObjectTrackings::ObjectTracking::~ObjectTracking()
 
 bool ObjectTrackings::ObjectTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return track_name.is_set
 	|| delay_up.is_set
 	|| enable.is_set
@@ -201,7 +205,8 @@ std::string ObjectTrackings::ObjectTracking::get_absolute_path() const
 std::string ObjectTrackings::ObjectTracking::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "object-tracking" <<"[track-name='" <<track_name <<"']";
+    path_buffer << "object-tracking";
+    ADD_KEY_TOKEN(track_name, "track-name");
     return path_buffer.str();
 }
 
@@ -404,7 +409,7 @@ ObjectTrackings::ObjectTracking::TypeInterface::TypeInterface()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "type-interface"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "type-interface"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeInterface::~TypeInterface()
@@ -413,6 +418,7 @@ ObjectTrackings::ObjectTracking::TypeInterface::~TypeInterface()
 
 bool ObjectTrackings::ObjectTracking::TypeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -481,7 +487,7 @@ ObjectTrackings::ObjectTracking::TypeRtr::TypeRtr()
     rtr{YType::uint32, "rtr"}
 {
 
-    yang_name = "type-rtr"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "type-rtr"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeRtr::~TypeRtr()
@@ -490,6 +496,7 @@ ObjectTrackings::ObjectTracking::TypeRtr::~TypeRtr()
 
 bool ObjectTrackings::ObjectTracking::TypeRtr::has_data() const
 {
+    if (is_presence_container) return true;
     return rtr.is_set;
 }
 
@@ -556,16 +563,16 @@ bool ObjectTrackings::ObjectTracking::TypeRtr::has_leaf_or_child_of_name(const s
 ObjectTrackings::ObjectTracking::TypeList::TypeList()
     :
     threshold_weight(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight>())
-	,threshold_percentage_object(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject>())
-	,threshold_percentage(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage>())
-	,threshold_weight_object(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject>())
+    , threshold_percentage_object(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject>())
+    , threshold_percentage(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage>())
+    , threshold_weight_object(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject>())
 {
     threshold_weight->parent = this;
     threshold_percentage_object->parent = this;
     threshold_percentage->parent = this;
     threshold_weight_object->parent = this;
 
-    yang_name = "type-list"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "type-list"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::~TypeList()
@@ -574,6 +581,7 @@ ObjectTrackings::ObjectTracking::TypeList::~TypeList()
 
 bool ObjectTrackings::ObjectTracking::TypeList::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold_weight !=  nullptr && threshold_weight->has_data())
 	|| (threshold_percentage_object !=  nullptr && threshold_percentage_object->has_data())
 	|| (threshold_percentage !=  nullptr && threshold_percentage->has_data())
@@ -694,7 +702,7 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdWeight()
 {
     threshold_limits->parent = this;
 
-    yang_name = "threshold-weight"; yang_parent_name = "type-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-weight"; yang_parent_name = "type-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::~ThresholdWeight()
@@ -703,6 +711,7 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::~ThresholdWeight()
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold_limits !=  nullptr && threshold_limits->has_data());
 }
 
@@ -775,7 +784,7 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::Thr
 {
     threshold_up_values->parent = this;
 
-    yang_name = "threshold-limits"; yang_parent_name = "threshold-weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-limits"; yang_parent_name = "threshold-weight"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::~ThresholdLimits()
@@ -784,6 +793,7 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::~Th
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold_up_values !=  nullptr && threshold_up_values->has_data());
 }
 
@@ -851,9 +861,11 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValues()
+    :
+    threshold_up_value(this, {"up"})
 {
 
-    yang_name = "threshold-up-values"; yang_parent_name = "threshold-limits"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-up-values"; yang_parent_name = "threshold-limits"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::~ThresholdUpValues()
@@ -862,7 +874,8 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::Thr
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::has_data() const
 {
-    for (std::size_t index=0; index<threshold_up_value.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold_up_value.len(); index++)
     {
         if(threshold_up_value[index]->has_data())
             return true;
@@ -872,7 +885,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::has_operation() const
 {
-    for (std::size_t index=0; index<threshold_up_value.size(); index++)
+    for (std::size_t index=0; index<threshold_up_value.len(); index++)
     {
         if(threshold_up_value[index]->has_operation())
             return true;
@@ -902,7 +915,7 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeig
     {
         auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue>();
         c->parent = this;
-        threshold_up_value.push_back(c);
+        threshold_up_value.append(c);
         return c;
     }
 
@@ -914,7 +927,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold_up_value)
+    for (auto c : threshold_up_value.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -942,11 +955,11 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::ThresholdUpValue()
     :
-    up{YType::int32, "up"},
-    threshold_down{YType::int32, "threshold-down"}
+    up{YType::uint32, "up"},
+    threshold_down{YType::uint32, "threshold-down"}
 {
 
-    yang_name = "threshold-up-value"; yang_parent_name = "threshold-up-values"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-up-value"; yang_parent_name = "threshold-up-values"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::~ThresholdUpValue()
@@ -955,6 +968,7 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::Thr
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::has_data() const
 {
+    if (is_presence_container) return true;
     return up.is_set
 	|| threshold_down.is_set;
 }
@@ -969,7 +983,8 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "threshold-up-value" <<"[up='" <<up <<"']";
+    path_buffer << "threshold-up-value";
+    ADD_KEY_TOKEN(up, "up");
     return path_buffer.str();
 }
 
@@ -1032,9 +1047,11 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::ThresholdPercentageObject()
+    :
+    object(this, {"object"})
 {
 
-    yang_name = "threshold-percentage-object"; yang_parent_name = "type-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-percentage-object"; yang_parent_name = "type-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::~ThresholdPercentageObject()
@@ -1043,7 +1060,8 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::~Threshold
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::has_data() const
 {
-    for (std::size_t index=0; index<object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<object.len(); index++)
     {
         if(object[index]->has_data())
             return true;
@@ -1053,7 +1071,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::has_d
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::has_operation() const
 {
-    for (std::size_t index=0; index<object.size(); index++)
+    for (std::size_t index=0; index<object.len(); index++)
     {
         if(object[index]->has_operation())
             return true;
@@ -1083,7 +1101,7 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPerc
     {
         auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object>();
         c->parent = this;
-        object.push_back(c);
+        object.append(c);
         return c;
     }
 
@@ -1095,7 +1113,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : object)
+    for (auto c : object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1124,10 +1142,10 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::has_l
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::Object()
     :
     object{YType::str, "object"},
-    object_weight{YType::int32, "object-weight"}
+    object_weight{YType::uint32, "object-weight"}
 {
 
-    yang_name = "object"; yang_parent_name = "threshold-percentage-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "object"; yang_parent_name = "threshold-percentage-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::~Object()
@@ -1136,6 +1154,7 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::~O
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::has_data() const
 {
+    if (is_presence_container) return true;
     return object.is_set
 	|| object_weight.is_set;
 }
@@ -1150,7 +1169,8 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Objec
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "object" <<"[object='" <<object <<"']";
+    path_buffer << "object";
+    ADD_KEY_TOKEN(object, "object");
     return path_buffer.str();
 }
 
@@ -1218,7 +1238,7 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdPercent
 {
     threshold_limits->parent = this;
 
-    yang_name = "threshold-percentage"; yang_parent_name = "type-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-percentage"; yang_parent_name = "type-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::~ThresholdPercentage()
@@ -1227,6 +1247,7 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::~ThresholdPercen
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold_limits !=  nullptr && threshold_limits->has_data());
 }
 
@@ -1299,7 +1320,7 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits:
 {
     threshold_up_values->parent = this;
 
-    yang_name = "threshold-limits"; yang_parent_name = "threshold-percentage"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-limits"; yang_parent_name = "threshold-percentage"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::~ThresholdLimits()
@@ -1308,6 +1329,7 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits:
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold_up_values !=  nullptr && threshold_up_values->has_data());
 }
 
@@ -1375,9 +1397,11 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLi
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValues()
+    :
+    threshold_up_value(this, {"up"})
 {
 
-    yang_name = "threshold-up-values"; yang_parent_name = "threshold-limits"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-up-values"; yang_parent_name = "threshold-limits"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::~ThresholdUpValues()
@@ -1386,7 +1410,8 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits:
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::has_data() const
 {
-    for (std::size_t index=0; index<threshold_up_value.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold_up_value.len(); index++)
     {
         if(threshold_up_value[index]->has_data())
             return true;
@@ -1396,7 +1421,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLi
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::has_operation() const
 {
-    for (std::size_t index=0; index<threshold_up_value.size(); index++)
+    for (std::size_t index=0; index<threshold_up_value.len(); index++)
     {
         if(threshold_up_value[index]->has_operation())
             return true;
@@ -1426,7 +1451,7 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPerc
     {
         auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue>();
         c->parent = this;
-        threshold_up_value.push_back(c);
+        threshold_up_value.append(c);
         return c;
     }
 
@@ -1438,7 +1463,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold_up_value)
+    for (auto c : threshold_up_value.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1466,11 +1491,11 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLi
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::ThresholdUpValue()
     :
-    up{YType::int32, "up"},
-    threshold_down{YType::int32, "threshold-down"}
+    up{YType::uint32, "up"},
+    threshold_down{YType::uint32, "threshold-down"}
 {
 
-    yang_name = "threshold-up-value"; yang_parent_name = "threshold-up-values"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-up-value"; yang_parent_name = "threshold-up-values"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::~ThresholdUpValue()
@@ -1479,6 +1504,7 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits:
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::has_data() const
 {
+    if (is_presence_container) return true;
     return up.is_set
 	|| threshold_down.is_set;
 }
@@ -1493,7 +1519,8 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLi
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "threshold-up-value" <<"[up='" <<up <<"']";
+    path_buffer << "threshold-up-value";
+    ADD_KEY_TOKEN(up, "up");
     return path_buffer.str();
 }
 
@@ -1556,9 +1583,11 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLi
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::ThresholdWeightObject()
+    :
+    object(this, {"object"})
 {
 
-    yang_name = "threshold-weight-object"; yang_parent_name = "type-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-weight-object"; yang_parent_name = "type-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::~ThresholdWeightObject()
@@ -1567,7 +1596,8 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::~ThresholdWeig
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::has_data() const
 {
-    for (std::size_t index=0; index<object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<object.len(); index++)
     {
         if(object[index]->has_data())
             return true;
@@ -1577,7 +1607,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::has_data(
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::has_operation() const
 {
-    for (std::size_t index=0; index<object.size(); index++)
+    for (std::size_t index=0; index<object.len(); index++)
     {
         if(object[index]->has_operation())
             return true;
@@ -1607,7 +1637,7 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeig
     {
         auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object>();
         c->parent = this;
-        object.push_back(c);
+        object.append(c);
         return c;
     }
 
@@ -1619,7 +1649,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : object)
+    for (auto c : object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1648,10 +1678,10 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::has_leaf_
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::Object()
     :
     object{YType::str, "object"},
-    object_weight{YType::int32, "object-weight"}
+    object_weight{YType::uint32, "object-weight"}
 {
 
-    yang_name = "object"; yang_parent_name = "threshold-weight-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "object"; yang_parent_name = "threshold-weight-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::~Object()
@@ -1660,6 +1690,7 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::~Objec
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::has_data() const
 {
+    if (is_presence_container) return true;
     return object.is_set
 	|| object_weight.is_set;
 }
@@ -1674,7 +1705,8 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::h
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "object" <<"[object='" <<object <<"']";
+    path_buffer << "object";
+    ADD_KEY_TOKEN(object, "object");
     return path_buffer.str();
 }
 
@@ -1739,11 +1771,11 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::h
 ObjectTrackings::ObjectTracking::TypeRoute::TypeRoute()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     ip_address(nullptr) // presence node
 {
 
-    yang_name = "type-route"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "type-route"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeRoute::~TypeRoute()
@@ -1752,6 +1784,7 @@ ObjectTrackings::ObjectTracking::TypeRoute::~TypeRoute()
 
 bool ObjectTrackings::ObjectTracking::TypeRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (ip_address !=  nullptr && ip_address->has_data());
 }
@@ -1837,7 +1870,7 @@ ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::IpAddress()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "ip-address"; yang_parent_name = "type-route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-address"; yang_parent_name = "type-route"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::~IpAddress()
@@ -1846,6 +1879,7 @@ ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::~IpAddress()
 
 bool ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set;
 }
@@ -1925,12 +1959,12 @@ bool ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::has_leaf_or_child_of
 ObjectTrackings::ObjectTracking::TypeBooleanList::TypeBooleanList()
     :
     or_objects(std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects>())
-	,and_objects(std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects>())
+    , and_objects(std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects>())
 {
     or_objects->parent = this;
     and_objects->parent = this;
 
-    yang_name = "type-boolean-list"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "type-boolean-list"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeBooleanList::~TypeBooleanList()
@@ -1939,6 +1973,7 @@ ObjectTrackings::ObjectTracking::TypeBooleanList::~TypeBooleanList()
 
 bool ObjectTrackings::ObjectTracking::TypeBooleanList::has_data() const
 {
+    if (is_presence_container) return true;
     return (or_objects !=  nullptr && or_objects->has_data())
 	|| (and_objects !=  nullptr && and_objects->has_data());
 }
@@ -2022,9 +2057,11 @@ bool ObjectTrackings::ObjectTracking::TypeBooleanList::has_leaf_or_child_of_name
 }
 
 ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObjects()
+    :
+    or_object(this, {"object"})
 {
 
-    yang_name = "or-objects"; yang_parent_name = "type-boolean-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "or-objects"; yang_parent_name = "type-boolean-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::~OrObjects()
@@ -2033,7 +2070,8 @@ ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::~OrObjects()
 
 bool ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::has_data() const
 {
-    for (std::size_t index=0; index<or_object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<or_object.len(); index++)
     {
         if(or_object[index]->has_data())
             return true;
@@ -2043,7 +2081,7 @@ bool ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::has_data() con
 
 bool ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::has_operation() const
 {
-    for (std::size_t index=0; index<or_object.size(); index++)
+    for (std::size_t index=0; index<or_object.len(); index++)
     {
         if(or_object[index]->has_operation())
             return true;
@@ -2073,7 +2111,7 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObje
     {
         auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject>();
         c->parent = this;
-        or_object.push_back(c);
+        or_object.append(c);
         return c;
     }
 
@@ -2085,7 +2123,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : or_object)
+    for (auto c : or_object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2117,7 +2155,7 @@ ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::OrObject(
     object_sign{YType::enumeration, "object-sign"}
 {
 
-    yang_name = "or-object"; yang_parent_name = "or-objects"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "or-object"; yang_parent_name = "or-objects"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::~OrObject()
@@ -2126,6 +2164,7 @@ ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::~OrObject
 
 bool ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::has_data() const
 {
+    if (is_presence_container) return true;
     return object.is_set
 	|| object_sign.is_set;
 }
@@ -2140,7 +2179,8 @@ bool ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::has_
 std::string ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "or-object" <<"[object='" <<object <<"']";
+    path_buffer << "or-object";
+    ADD_KEY_TOKEN(object, "object");
     return path_buffer.str();
 }
 
@@ -2203,9 +2243,11 @@ bool ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::has_
 }
 
 ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObjects()
+    :
+    and_object(this, {"object_name"})
 {
 
-    yang_name = "and-objects"; yang_parent_name = "type-boolean-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "and-objects"; yang_parent_name = "type-boolean-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::~AndObjects()
@@ -2214,7 +2256,8 @@ ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::~AndObjects()
 
 bool ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::has_data() const
 {
-    for (std::size_t index=0; index<and_object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<and_object.len(); index++)
     {
         if(and_object[index]->has_data())
             return true;
@@ -2224,7 +2267,7 @@ bool ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::has_data() co
 
 bool ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::has_operation() const
 {
-    for (std::size_t index=0; index<and_object.size(); index++)
+    for (std::size_t index=0; index<and_object.len(); index++)
     {
         if(and_object[index]->has_operation())
             return true;
@@ -2254,7 +2297,7 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObj
     {
         auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject>();
         c->parent = this;
-        and_object.push_back(c);
+        and_object.append(c);
         return c;
     }
 
@@ -2266,7 +2309,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : and_object)
+    for (auto c : and_object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2298,7 +2341,7 @@ ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::AndObje
     object_sign{YType::enumeration, "object-sign"}
 {
 
-    yang_name = "and-object"; yang_parent_name = "and-objects"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "and-object"; yang_parent_name = "and-objects"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::~AndObject()
@@ -2307,6 +2350,7 @@ ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::~AndObj
 
 bool ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| object_sign.is_set;
 }
@@ -2321,7 +2365,8 @@ bool ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::ha
 std::string ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "and-object" <<"[object-name='" <<object_name <<"']";
+    path_buffer << "and-object";
+    ADD_KEY_TOKEN(object_name, "object-name");
     return path_buffer.str();
 }
 

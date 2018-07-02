@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_crypto_ssh_cfg {
 Ssh::Ssh()
     :
     client(std::make_shared<Ssh::Client>())
-	,server(std::make_shared<Ssh::Server>())
+    , server(std::make_shared<Ssh::Server>())
 {
     client->parent = this;
     server->parent = this;
 
-    yang_name = "ssh"; yang_parent_name = "Cisco-IOS-XR-crypto-ssh-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ssh"; yang_parent_name = "Cisco-IOS-XR-crypto-ssh-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ssh::~Ssh()
@@ -28,6 +28,7 @@ Ssh::~Ssh()
 
 bool Ssh::has_data() const
 {
+    if (is_presence_container) return true;
     return (client !=  nullptr && client->has_data())
 	|| (server !=  nullptr && server->has_data());
 }
@@ -143,14 +144,14 @@ Ssh::Client::Client()
     rekey_time{YType::uint32, "rekey-time"},
     source_interface{YType::str, "source-interface"},
     dscp{YType::uint32, "dscp"}
-    	,
+        ,
     client_algo(std::make_shared<Ssh::Client::ClientAlgo>())
-	,client_enable(std::make_shared<Ssh::Client::ClientEnable>())
+    , client_enable(std::make_shared<Ssh::Client::ClientEnable>())
 {
     client_algo->parent = this;
     client_enable->parent = this;
 
-    yang_name = "client"; yang_parent_name = "ssh"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "ssh"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Client::~Client()
@@ -159,6 +160,7 @@ Ssh::Client::~Client()
 
 bool Ssh::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return rekey_volume.is_set
 	|| host_public_key.is_set
 	|| client_vrf.is_set
@@ -328,10 +330,11 @@ bool Ssh::Client::has_leaf_or_child_of_name(const std::string & name) const
 
 Ssh::Client::ClientAlgo::ClientAlgo()
     :
-    key_exchange(nullptr) // presence node
+    key_exchanges(std::make_shared<Ssh::Client::ClientAlgo::KeyExchanges>())
 {
+    key_exchanges->parent = this;
 
-    yang_name = "client-algo"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client-algo"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Client::ClientAlgo::~ClientAlgo()
@@ -340,13 +343,14 @@ Ssh::Client::ClientAlgo::~ClientAlgo()
 
 bool Ssh::Client::ClientAlgo::has_data() const
 {
-    return (key_exchange !=  nullptr && key_exchange->has_data());
+    if (is_presence_container) return true;
+    return (key_exchanges !=  nullptr && key_exchanges->has_data());
 }
 
 bool Ssh::Client::ClientAlgo::has_operation() const
 {
     return is_set(yfilter)
-	|| (key_exchange !=  nullptr && key_exchange->has_operation());
+	|| (key_exchanges !=  nullptr && key_exchanges->has_operation());
 }
 
 std::string Ssh::Client::ClientAlgo::get_absolute_path() const
@@ -374,13 +378,13 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Client::ClientAlgo::get_name
 
 std::shared_ptr<Entity> Ssh::Client::ClientAlgo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "key-exchange")
+    if(child_yang_name == "key-exchanges")
     {
-        if(key_exchange == nullptr)
+        if(key_exchanges == nullptr)
         {
-            key_exchange = std::make_shared<Ssh::Client::ClientAlgo::KeyExchange>();
+            key_exchanges = std::make_shared<Ssh::Client::ClientAlgo::KeyExchanges>();
         }
-        return key_exchange;
+        return key_exchanges;
     }
 
     return nullptr;
@@ -390,9 +394,9 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Client::ClientAlgo::get_chil
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(key_exchange != nullptr)
+    if(key_exchanges != nullptr)
     {
-        children["key-exchange"] = key_exchange;
+        children["key-exchanges"] = key_exchanges;
     }
 
     return children;
@@ -408,147 +412,101 @@ void Ssh::Client::ClientAlgo::set_filter(const std::string & value_path, YFilter
 
 bool Ssh::Client::ClientAlgo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "key-exchange")
+    if(name == "key-exchanges")
         return true;
     return false;
 }
 
-Ssh::Client::ClientAlgo::KeyExchange::KeyExchange()
+Ssh::Client::ClientAlgo::KeyExchanges::KeyExchanges()
     :
-    kex_algo1st{YType::str, "kex-algo1st"},
-    kex_algo2nd{YType::str, "kex-algo2nd"},
-    kex_algo3rd{YType::str, "kex-algo3rd"},
-    kex_algo4th{YType::str, "kex-algo4th"},
-    kex_algo5th{YType::str, "kex-algo5th"}
+    key_exchange{YType::str, "key-exchange"}
 {
 
-    yang_name = "key-exchange"; yang_parent_name = "client-algo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "key-exchanges"; yang_parent_name = "client-algo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ssh::Client::ClientAlgo::KeyExchange::~KeyExchange()
+Ssh::Client::ClientAlgo::KeyExchanges::~KeyExchanges()
 {
 }
 
-bool Ssh::Client::ClientAlgo::KeyExchange::has_data() const
+bool Ssh::Client::ClientAlgo::KeyExchanges::has_data() const
 {
-    return kex_algo1st.is_set
-	|| kex_algo2nd.is_set
-	|| kex_algo3rd.is_set
-	|| kex_algo4th.is_set
-	|| kex_algo5th.is_set;
+    if (is_presence_container) return true;
+    for (auto const & leaf : key_exchange.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
 }
 
-bool Ssh::Client::ClientAlgo::KeyExchange::has_operation() const
+bool Ssh::Client::ClientAlgo::KeyExchanges::has_operation() const
 {
+    for (auto const & leaf : key_exchange.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(kex_algo1st.yfilter)
-	|| ydk::is_set(kex_algo2nd.yfilter)
-	|| ydk::is_set(kex_algo3rd.yfilter)
-	|| ydk::is_set(kex_algo4th.yfilter)
-	|| ydk::is_set(kex_algo5th.yfilter);
+	|| ydk::is_set(key_exchange.yfilter);
 }
 
-std::string Ssh::Client::ClientAlgo::KeyExchange::get_absolute_path() const
+std::string Ssh::Client::ClientAlgo::KeyExchanges::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-crypto-ssh-cfg:ssh/client/client-algo/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ssh::Client::ClientAlgo::KeyExchange::get_segment_path() const
+std::string Ssh::Client::ClientAlgo::KeyExchanges::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "key-exchange";
+    path_buffer << "key-exchanges";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ssh::Client::ClientAlgo::KeyExchange::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ssh::Client::ClientAlgo::KeyExchanges::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (kex_algo1st.is_set || is_set(kex_algo1st.yfilter)) leaf_name_data.push_back(kex_algo1st.get_name_leafdata());
-    if (kex_algo2nd.is_set || is_set(kex_algo2nd.yfilter)) leaf_name_data.push_back(kex_algo2nd.get_name_leafdata());
-    if (kex_algo3rd.is_set || is_set(kex_algo3rd.yfilter)) leaf_name_data.push_back(kex_algo3rd.get_name_leafdata());
-    if (kex_algo4th.is_set || is_set(kex_algo4th.yfilter)) leaf_name_data.push_back(kex_algo4th.get_name_leafdata());
-    if (kex_algo5th.is_set || is_set(kex_algo5th.yfilter)) leaf_name_data.push_back(kex_algo5th.get_name_leafdata());
 
+    auto key_exchange_name_datas = key_exchange.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), key_exchange_name_datas.begin(), key_exchange_name_datas.end());
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Ssh::Client::ClientAlgo::KeyExchange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ssh::Client::ClientAlgo::KeyExchanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Client::ClientAlgo::KeyExchange::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Client::ClientAlgo::KeyExchanges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ssh::Client::ClientAlgo::KeyExchange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ssh::Client::ClientAlgo::KeyExchanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "kex-algo1st")
+    if(value_path == "key-exchange")
     {
-        kex_algo1st = value;
-        kex_algo1st.value_namespace = name_space;
-        kex_algo1st.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "kex-algo2nd")
-    {
-        kex_algo2nd = value;
-        kex_algo2nd.value_namespace = name_space;
-        kex_algo2nd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "kex-algo3rd")
-    {
-        kex_algo3rd = value;
-        kex_algo3rd.value_namespace = name_space;
-        kex_algo3rd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "kex-algo4th")
-    {
-        kex_algo4th = value;
-        kex_algo4th.value_namespace = name_space;
-        kex_algo4th.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "kex-algo5th")
-    {
-        kex_algo5th = value;
-        kex_algo5th.value_namespace = name_space;
-        kex_algo5th.value_namespace_prefix = name_space_prefix;
+        key_exchange.append(value);
     }
 }
 
-void Ssh::Client::ClientAlgo::KeyExchange::set_filter(const std::string & value_path, YFilter yfilter)
+void Ssh::Client::ClientAlgo::KeyExchanges::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "kex-algo1st")
+    if(value_path == "key-exchange")
     {
-        kex_algo1st.yfilter = yfilter;
-    }
-    if(value_path == "kex-algo2nd")
-    {
-        kex_algo2nd.yfilter = yfilter;
-    }
-    if(value_path == "kex-algo3rd")
-    {
-        kex_algo3rd.yfilter = yfilter;
-    }
-    if(value_path == "kex-algo4th")
-    {
-        kex_algo4th.yfilter = yfilter;
-    }
-    if(value_path == "kex-algo5th")
-    {
-        kex_algo5th.yfilter = yfilter;
+        key_exchange.yfilter = yfilter;
     }
 }
 
-bool Ssh::Client::ClientAlgo::KeyExchange::has_leaf_or_child_of_name(const std::string & name) const
+bool Ssh::Client::ClientAlgo::KeyExchanges::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "kex-algo1st" || name == "kex-algo2nd" || name == "kex-algo3rd" || name == "kex-algo4th" || name == "kex-algo5th")
+    if(name == "key-exchange")
         return true;
     return false;
 }
@@ -559,7 +517,7 @@ Ssh::Client::ClientEnable::ClientEnable()
 {
     client_cipher->parent = this;
 
-    yang_name = "client-enable"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client-enable"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Client::ClientEnable::~ClientEnable()
@@ -568,6 +526,7 @@ Ssh::Client::ClientEnable::~ClientEnable()
 
 bool Ssh::Client::ClientEnable::has_data() const
 {
+    if (is_presence_container) return true;
     return (client_cipher !=  nullptr && client_cipher->has_data());
 }
 
@@ -646,7 +605,7 @@ Ssh::Client::ClientEnable::ClientCipher::ClientCipher()
     aescbc{YType::boolean, "aescbc"}
 {
 
-    yang_name = "client-cipher"; yang_parent_name = "client-enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client-cipher"; yang_parent_name = "client-enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Client::ClientEnable::ClientCipher::~ClientCipher()
@@ -655,6 +614,7 @@ Ssh::Client::ClientEnable::ClientCipher::~ClientCipher()
 
 bool Ssh::Client::ClientEnable::ClientCipher::has_data() const
 {
+    if (is_presence_container) return true;
     return aescbc.is_set;
 }
 
@@ -736,13 +696,13 @@ Ssh::Server::Server()
     rate_limit{YType::uint32, "rate-limit"},
     timeout{YType::uint32, "timeout"},
     dscp{YType::uint32, "dscp"}
-    	,
+        ,
     disable(std::make_shared<Ssh::Server::Disable>())
-	,enable(std::make_shared<Ssh::Server::Enable>())
-	,vrf_table(std::make_shared<Ssh::Server::VrfTable>())
-	,server_algo(std::make_shared<Ssh::Server::ServerAlgo>())
-	,capability(std::make_shared<Ssh::Server::Capability>())
-	,netconf_vrf_table(std::make_shared<Ssh::Server::NetconfVrfTable>())
+    , enable(std::make_shared<Ssh::Server::Enable>())
+    , vrf_table(std::make_shared<Ssh::Server::VrfTable>())
+    , server_algo(std::make_shared<Ssh::Server::ServerAlgo>())
+    , capability(std::make_shared<Ssh::Server::Capability>())
+    , netconf_vrf_table(std::make_shared<Ssh::Server::NetconfVrfTable>())
 {
     disable->parent = this;
     enable->parent = this;
@@ -751,7 +711,7 @@ Ssh::Server::Server()
     capability->parent = this;
     netconf_vrf_table->parent = this;
 
-    yang_name = "server"; yang_parent_name = "ssh"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "server"; yang_parent_name = "ssh"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Server::~Server()
@@ -760,6 +720,7 @@ Ssh::Server::~Server()
 
 bool Ssh::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return rekey_volume.is_set
 	|| session_limit.is_set
 	|| netconf.is_set
@@ -1036,7 +997,7 @@ Ssh::Server::Disable::Disable()
 {
     hmac->parent = this;
 
-    yang_name = "disable"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "disable"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Server::Disable::~Disable()
@@ -1045,6 +1006,7 @@ Ssh::Server::Disable::~Disable()
 
 bool Ssh::Server::Disable::has_data() const
 {
+    if (is_presence_container) return true;
     return (hmac !=  nullptr && hmac->has_data());
 }
 
@@ -1123,7 +1085,7 @@ Ssh::Server::Disable::Hmac::Hmac()
     hmac_sha512{YType::boolean, "hmac-sha512"}
 {
 
-    yang_name = "hmac"; yang_parent_name = "disable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hmac"; yang_parent_name = "disable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Server::Disable::Hmac::~Hmac()
@@ -1132,6 +1094,7 @@ Ssh::Server::Disable::Hmac::~Hmac()
 
 bool Ssh::Server::Disable::Hmac::has_data() const
 {
+    if (is_presence_container) return true;
     return hmac_sha512.is_set;
 }
 
@@ -1208,7 +1171,7 @@ Ssh::Server::Enable::Enable()
 {
     cipher->parent = this;
 
-    yang_name = "enable"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "enable"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Server::Enable::~Enable()
@@ -1217,6 +1180,7 @@ Ssh::Server::Enable::~Enable()
 
 bool Ssh::Server::Enable::has_data() const
 {
+    if (is_presence_container) return true;
     return (cipher !=  nullptr && cipher->has_data());
 }
 
@@ -1295,7 +1259,7 @@ Ssh::Server::Enable::Cipher::Cipher()
     aescbc{YType::boolean, "aescbc"}
 {
 
-    yang_name = "cipher"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cipher"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Server::Enable::Cipher::~Cipher()
@@ -1304,6 +1268,7 @@ Ssh::Server::Enable::Cipher::~Cipher()
 
 bool Ssh::Server::Enable::Cipher::has_data() const
 {
+    if (is_presence_container) return true;
     return aescbc.is_set;
 }
 
@@ -1375,9 +1340,11 @@ bool Ssh::Server::Enable::Cipher::has_leaf_or_child_of_name(const std::string & 
 }
 
 Ssh::Server::VrfTable::VrfTable()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrf-table"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf-table"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Server::VrfTable::~VrfTable()
@@ -1386,7 +1353,8 @@ Ssh::Server::VrfTable::~VrfTable()
 
 bool Ssh::Server::VrfTable::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -1396,7 +1364,7 @@ bool Ssh::Server::VrfTable::has_data() const
 
 bool Ssh::Server::VrfTable::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -1433,7 +1401,7 @@ std::shared_ptr<Entity> Ssh::Server::VrfTable::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Ssh::Server::VrfTable::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -1445,7 +1413,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::VrfTable::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1479,7 +1447,7 @@ Ssh::Server::VrfTable::Vrf::Vrf()
     ipv6_access_list{YType::str, "ipv6-access-list"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "vrf-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrf-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Server::VrfTable::Vrf::~Vrf()
@@ -1488,6 +1456,7 @@ Ssh::Server::VrfTable::Vrf::~Vrf()
 
 bool Ssh::Server::VrfTable::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| enable.is_set
 	|| ipv4_access_list.is_set
@@ -1513,7 +1482,8 @@ std::string Ssh::Server::VrfTable::Vrf::get_absolute_path() const
 std::string Ssh::Server::VrfTable::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -1599,10 +1569,11 @@ bool Ssh::Server::VrfTable::Vrf::has_leaf_or_child_of_name(const std::string & n
 
 Ssh::Server::ServerAlgo::ServerAlgo()
     :
-    key_exchange(nullptr) // presence node
+    key_exchanges(std::make_shared<Ssh::Server::ServerAlgo::KeyExchanges>())
 {
+    key_exchanges->parent = this;
 
-    yang_name = "server-algo"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "server-algo"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Server::ServerAlgo::~ServerAlgo()
@@ -1611,13 +1582,14 @@ Ssh::Server::ServerAlgo::~ServerAlgo()
 
 bool Ssh::Server::ServerAlgo::has_data() const
 {
-    return (key_exchange !=  nullptr && key_exchange->has_data());
+    if (is_presence_container) return true;
+    return (key_exchanges !=  nullptr && key_exchanges->has_data());
 }
 
 bool Ssh::Server::ServerAlgo::has_operation() const
 {
     return is_set(yfilter)
-	|| (key_exchange !=  nullptr && key_exchange->has_operation());
+	|| (key_exchanges !=  nullptr && key_exchanges->has_operation());
 }
 
 std::string Ssh::Server::ServerAlgo::get_absolute_path() const
@@ -1645,13 +1617,13 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::ServerAlgo::get_name
 
 std::shared_ptr<Entity> Ssh::Server::ServerAlgo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "key-exchange")
+    if(child_yang_name == "key-exchanges")
     {
-        if(key_exchange == nullptr)
+        if(key_exchanges == nullptr)
         {
-            key_exchange = std::make_shared<Ssh::Server::ServerAlgo::KeyExchange>();
+            key_exchanges = std::make_shared<Ssh::Server::ServerAlgo::KeyExchanges>();
         }
-        return key_exchange;
+        return key_exchanges;
     }
 
     return nullptr;
@@ -1661,9 +1633,9 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::ServerAlgo::get_chil
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(key_exchange != nullptr)
+    if(key_exchanges != nullptr)
     {
-        children["key-exchange"] = key_exchange;
+        children["key-exchanges"] = key_exchanges;
     }
 
     return children;
@@ -1679,147 +1651,101 @@ void Ssh::Server::ServerAlgo::set_filter(const std::string & value_path, YFilter
 
 bool Ssh::Server::ServerAlgo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "key-exchange")
+    if(name == "key-exchanges")
         return true;
     return false;
 }
 
-Ssh::Server::ServerAlgo::KeyExchange::KeyExchange()
+Ssh::Server::ServerAlgo::KeyExchanges::KeyExchanges()
     :
-    kex_algo1st{YType::str, "kex-algo1st"},
-    kex_algo2nd{YType::str, "kex-algo2nd"},
-    kex_algo3rd{YType::str, "kex-algo3rd"},
-    kex_algo4th{YType::str, "kex-algo4th"},
-    kex_algo5th{YType::str, "kex-algo5th"}
+    key_exchange{YType::str, "key-exchange"}
 {
 
-    yang_name = "key-exchange"; yang_parent_name = "server-algo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "key-exchanges"; yang_parent_name = "server-algo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ssh::Server::ServerAlgo::KeyExchange::~KeyExchange()
+Ssh::Server::ServerAlgo::KeyExchanges::~KeyExchanges()
 {
 }
 
-bool Ssh::Server::ServerAlgo::KeyExchange::has_data() const
+bool Ssh::Server::ServerAlgo::KeyExchanges::has_data() const
 {
-    return kex_algo1st.is_set
-	|| kex_algo2nd.is_set
-	|| kex_algo3rd.is_set
-	|| kex_algo4th.is_set
-	|| kex_algo5th.is_set;
+    if (is_presence_container) return true;
+    for (auto const & leaf : key_exchange.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
 }
 
-bool Ssh::Server::ServerAlgo::KeyExchange::has_operation() const
+bool Ssh::Server::ServerAlgo::KeyExchanges::has_operation() const
 {
+    for (auto const & leaf : key_exchange.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(kex_algo1st.yfilter)
-	|| ydk::is_set(kex_algo2nd.yfilter)
-	|| ydk::is_set(kex_algo3rd.yfilter)
-	|| ydk::is_set(kex_algo4th.yfilter)
-	|| ydk::is_set(kex_algo5th.yfilter);
+	|| ydk::is_set(key_exchange.yfilter);
 }
 
-std::string Ssh::Server::ServerAlgo::KeyExchange::get_absolute_path() const
+std::string Ssh::Server::ServerAlgo::KeyExchanges::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/server-algo/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ssh::Server::ServerAlgo::KeyExchange::get_segment_path() const
+std::string Ssh::Server::ServerAlgo::KeyExchanges::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "key-exchange";
+    path_buffer << "key-exchanges";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ssh::Server::ServerAlgo::KeyExchange::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ssh::Server::ServerAlgo::KeyExchanges::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (kex_algo1st.is_set || is_set(kex_algo1st.yfilter)) leaf_name_data.push_back(kex_algo1st.get_name_leafdata());
-    if (kex_algo2nd.is_set || is_set(kex_algo2nd.yfilter)) leaf_name_data.push_back(kex_algo2nd.get_name_leafdata());
-    if (kex_algo3rd.is_set || is_set(kex_algo3rd.yfilter)) leaf_name_data.push_back(kex_algo3rd.get_name_leafdata());
-    if (kex_algo4th.is_set || is_set(kex_algo4th.yfilter)) leaf_name_data.push_back(kex_algo4th.get_name_leafdata());
-    if (kex_algo5th.is_set || is_set(kex_algo5th.yfilter)) leaf_name_data.push_back(kex_algo5th.get_name_leafdata());
 
+    auto key_exchange_name_datas = key_exchange.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), key_exchange_name_datas.begin(), key_exchange_name_datas.end());
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::ServerAlgo::KeyExchange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ssh::Server::ServerAlgo::KeyExchanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::ServerAlgo::KeyExchange::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::ServerAlgo::KeyExchanges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ssh::Server::ServerAlgo::KeyExchange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ssh::Server::ServerAlgo::KeyExchanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "kex-algo1st")
+    if(value_path == "key-exchange")
     {
-        kex_algo1st = value;
-        kex_algo1st.value_namespace = name_space;
-        kex_algo1st.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "kex-algo2nd")
-    {
-        kex_algo2nd = value;
-        kex_algo2nd.value_namespace = name_space;
-        kex_algo2nd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "kex-algo3rd")
-    {
-        kex_algo3rd = value;
-        kex_algo3rd.value_namespace = name_space;
-        kex_algo3rd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "kex-algo4th")
-    {
-        kex_algo4th = value;
-        kex_algo4th.value_namespace = name_space;
-        kex_algo4th.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "kex-algo5th")
-    {
-        kex_algo5th = value;
-        kex_algo5th.value_namespace = name_space;
-        kex_algo5th.value_namespace_prefix = name_space_prefix;
+        key_exchange.append(value);
     }
 }
 
-void Ssh::Server::ServerAlgo::KeyExchange::set_filter(const std::string & value_path, YFilter yfilter)
+void Ssh::Server::ServerAlgo::KeyExchanges::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "kex-algo1st")
+    if(value_path == "key-exchange")
     {
-        kex_algo1st.yfilter = yfilter;
-    }
-    if(value_path == "kex-algo2nd")
-    {
-        kex_algo2nd.yfilter = yfilter;
-    }
-    if(value_path == "kex-algo3rd")
-    {
-        kex_algo3rd.yfilter = yfilter;
-    }
-    if(value_path == "kex-algo4th")
-    {
-        kex_algo4th.yfilter = yfilter;
-    }
-    if(value_path == "kex-algo5th")
-    {
-        kex_algo5th.yfilter = yfilter;
+        key_exchange.yfilter = yfilter;
     }
 }
 
-bool Ssh::Server::ServerAlgo::KeyExchange::has_leaf_or_child_of_name(const std::string & name) const
+bool Ssh::Server::ServerAlgo::KeyExchanges::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "kex-algo1st" || name == "kex-algo2nd" || name == "kex-algo3rd" || name == "kex-algo4th" || name == "kex-algo5th")
+    if(name == "key-exchange")
         return true;
     return false;
 }
@@ -1829,7 +1755,7 @@ Ssh::Server::Capability::Capability()
     netconf_xml{YType::boolean, "netconf-xml"}
 {
 
-    yang_name = "capability"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "capability"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Server::Capability::~Capability()
@@ -1838,6 +1764,7 @@ Ssh::Server::Capability::~Capability()
 
 bool Ssh::Server::Capability::has_data() const
 {
+    if (is_presence_container) return true;
     return netconf_xml.is_set;
 }
 
@@ -1909,9 +1836,11 @@ bool Ssh::Server::Capability::has_leaf_or_child_of_name(const std::string & name
 }
 
 Ssh::Server::NetconfVrfTable::NetconfVrfTable()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "netconf-vrf-table"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "netconf-vrf-table"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Server::NetconfVrfTable::~NetconfVrfTable()
@@ -1920,7 +1849,8 @@ Ssh::Server::NetconfVrfTable::~NetconfVrfTable()
 
 bool Ssh::Server::NetconfVrfTable::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -1930,7 +1860,7 @@ bool Ssh::Server::NetconfVrfTable::has_data() const
 
 bool Ssh::Server::NetconfVrfTable::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -1967,7 +1897,7 @@ std::shared_ptr<Entity> Ssh::Server::NetconfVrfTable::get_child_by_name(const st
     {
         auto c = std::make_shared<Ssh::Server::NetconfVrfTable::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -1979,7 +1909,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::NetconfVrfTable::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2013,7 +1943,7 @@ Ssh::Server::NetconfVrfTable::Vrf::Vrf()
     ipv6_access_list{YType::str, "ipv6-access-list"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "netconf-vrf-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "netconf-vrf-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Server::NetconfVrfTable::Vrf::~Vrf()
@@ -2022,6 +1952,7 @@ Ssh::Server::NetconfVrfTable::Vrf::~Vrf()
 
 bool Ssh::Server::NetconfVrfTable::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| enable.is_set
 	|| ipv4_access_list.is_set
@@ -2047,7 +1978,8 @@ std::string Ssh::Server::NetconfVrfTable::Vrf::get_absolute_path() const
 std::string Ssh::Server::NetconfVrfTable::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 

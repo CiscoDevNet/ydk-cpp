@@ -17,7 +17,7 @@ Udp::Udp()
 {
     nodes->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "Cisco-IOS-XR-ip-udp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "udp"; yang_parent_name = "Cisco-IOS-XR-ip-udp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Udp::~Udp()
@@ -26,6 +26,7 @@ Udp::~Udp()
 
 bool Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Udp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Udp::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Udp::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Udp::Nodes::~Nodes()
 
 bool Udp::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Udp::Nodes::has_data() const
 
 bool Udp::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Udp::Nodes::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Udp::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Udp::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool Udp::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Udp::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     statistics(std::make_shared<Udp::Nodes::Node::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Udp::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ Udp::Nodes::Node::~Node()
 
 bool Udp::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -252,7 +257,8 @@ std::string Udp::Nodes::Node::get_absolute_path() const
 std::string Udp::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -320,12 +326,12 @@ bool Udp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 Udp::Nodes::Node::Statistics::Statistics()
     :
     ipv4_traffic(std::make_shared<Udp::Nodes::Node::Statistics::Ipv4Traffic>())
-	,ipv6_traffic(std::make_shared<Udp::Nodes::Node::Statistics::Ipv6Traffic>())
+    , ipv6_traffic(std::make_shared<Udp::Nodes::Node::Statistics::Ipv6Traffic>())
 {
     ipv4_traffic->parent = this;
     ipv6_traffic->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Udp::Nodes::Node::Statistics::~Statistics()
@@ -334,6 +340,7 @@ Udp::Nodes::Node::Statistics::~Statistics()
 
 bool Udp::Nodes::Node::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4_traffic !=  nullptr && ipv4_traffic->has_data())
 	|| (ipv6_traffic !=  nullptr && ipv6_traffic->has_data());
 }
@@ -426,7 +433,7 @@ Udp::Nodes::Node::Statistics::Ipv4Traffic::Ipv4Traffic()
     udp_dropped_packets{YType::uint32, "udp-dropped-packets"}
 {
 
-    yang_name = "ipv4-traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Udp::Nodes::Node::Statistics::Ipv4Traffic::~Ipv4Traffic()
@@ -435,6 +442,7 @@ Udp::Nodes::Node::Statistics::Ipv4Traffic::~Ipv4Traffic()
 
 bool Udp::Nodes::Node::Statistics::Ipv4Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return udp_input_packets.is_set
 	|| udp_checksum_error_packets.is_set
 	|| udp_no_port_packets.is_set
@@ -573,7 +581,7 @@ Udp::Nodes::Node::Statistics::Ipv6Traffic::Ipv6Traffic()
     udp_dropped_packets{YType::uint32, "udp-dropped-packets"}
 {
 
-    yang_name = "ipv6-traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Udp::Nodes::Node::Statistics::Ipv6Traffic::~Ipv6Traffic()
@@ -582,6 +590,7 @@ Udp::Nodes::Node::Statistics::Ipv6Traffic::~Ipv6Traffic()
 
 bool Udp::Nodes::Node::Statistics::Ipv6Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return udp_input_packets.is_set
 	|| udp_checksum_error_packets.is_set
 	|| udp_no_port_packets.is_set
@@ -716,7 +725,7 @@ UdpConnection::UdpConnection()
 {
     nodes->parent = this;
 
-    yang_name = "udp-connection"; yang_parent_name = "Cisco-IOS-XR-ip-udp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "udp-connection"; yang_parent_name = "Cisco-IOS-XR-ip-udp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 UdpConnection::~UdpConnection()
@@ -725,6 +734,7 @@ UdpConnection::~UdpConnection()
 
 bool UdpConnection::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -817,9 +827,11 @@ bool UdpConnection::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 UdpConnection::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "udp-connection"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "udp-connection"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 UdpConnection::Nodes::~Nodes()
@@ -828,7 +840,8 @@ UdpConnection::Nodes::~Nodes()
 
 bool UdpConnection::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -838,7 +851,7 @@ bool UdpConnection::Nodes::has_data() const
 
 bool UdpConnection::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -875,7 +888,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<UdpConnection::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -887,7 +900,7 @@ std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -916,18 +929,18 @@ bool UdpConnection::Nodes::has_leaf_or_child_of_name(const std::string & name) c
 UdpConnection::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     statistics(std::make_shared<UdpConnection::Nodes::Node::Statistics>())
-	,lpts(std::make_shared<UdpConnection::Nodes::Node::Lpts>())
-	,pcb_details(std::make_shared<UdpConnection::Nodes::Node::PcbDetails>())
-	,pcb_briefs(std::make_shared<UdpConnection::Nodes::Node::PcbBriefs>())
+    , lpts(std::make_shared<UdpConnection::Nodes::Node::Lpts>())
+    , pcb_details(std::make_shared<UdpConnection::Nodes::Node::PcbDetails>())
+    , pcb_briefs(std::make_shared<UdpConnection::Nodes::Node::PcbBriefs>())
 {
     statistics->parent = this;
     lpts->parent = this;
     pcb_details->parent = this;
     pcb_briefs->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 UdpConnection::Nodes::Node::~Node()
@@ -936,6 +949,7 @@ UdpConnection::Nodes::Node::~Node()
 
 bool UdpConnection::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (lpts !=  nullptr && lpts->has_data())
@@ -963,7 +977,8 @@ std::string UdpConnection::Nodes::Node::get_absolute_path() const
 std::string UdpConnection::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1073,14 +1088,14 @@ bool UdpConnection::Nodes::Node::has_leaf_or_child_of_name(const std::string & n
 UdpConnection::Nodes::Node::Statistics::Statistics()
     :
     clients(std::make_shared<UdpConnection::Nodes::Node::Statistics::Clients>())
-	,summary(std::make_shared<UdpConnection::Nodes::Node::Statistics::Summary>())
-	,pcb_statistics(std::make_shared<UdpConnection::Nodes::Node::Statistics::PcbStatistics>())
+    , summary(std::make_shared<UdpConnection::Nodes::Node::Statistics::Summary>())
+    , pcb_statistics(std::make_shared<UdpConnection::Nodes::Node::Statistics::PcbStatistics>())
 {
     clients->parent = this;
     summary->parent = this;
     pcb_statistics->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Statistics::~Statistics()
@@ -1089,6 +1104,7 @@ UdpConnection::Nodes::Node::Statistics::~Statistics()
 
 bool UdpConnection::Nodes::Node::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (clients !=  nullptr && clients->has_data())
 	|| (summary !=  nullptr && summary->has_data())
 	|| (pcb_statistics !=  nullptr && pcb_statistics->has_data());
@@ -1188,9 +1204,11 @@ bool UdpConnection::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std
 }
 
 UdpConnection::Nodes::Node::Statistics::Clients::Clients()
+    :
+    client(this, {"client_id"})
 {
 
-    yang_name = "clients"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clients"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Statistics::Clients::~Clients()
@@ -1199,7 +1217,8 @@ UdpConnection::Nodes::Node::Statistics::Clients::~Clients()
 
 bool UdpConnection::Nodes::Node::Statistics::Clients::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -1209,7 +1228,7 @@ bool UdpConnection::Nodes::Node::Statistics::Clients::has_data() const
 
 bool UdpConnection::Nodes::Node::Statistics::Clients::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -1239,7 +1258,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::Clients::get_chi
     {
         auto c = std::make_shared<UdpConnection::Nodes::Node::Statistics::Clients::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -1251,7 +1270,7 @@ std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Stati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1288,7 +1307,7 @@ UdpConnection::Nodes::Node::Statistics::Clients::Client::Client()
     ipv6_sent_packets{YType::uint32, "ipv6-sent-packets"}
 {
 
-    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Statistics::Clients::Client::~Client()
@@ -1297,6 +1316,7 @@ UdpConnection::Nodes::Node::Statistics::Clients::Client::~Client()
 
 bool UdpConnection::Nodes::Node::Statistics::Clients::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return client_id.is_set
 	|| client_jid.is_set
 	|| client_name.is_set
@@ -1321,7 +1341,8 @@ bool UdpConnection::Nodes::Node::Statistics::Clients::Client::has_operation() co
 std::string UdpConnection::Nodes::Node::Statistics::Clients::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[client-id='" <<client_id <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(client_id, "client-id");
     return path_buffer.str();
 }
 
@@ -1452,7 +1473,7 @@ UdpConnection::Nodes::Node::Statistics::Summary::Summary()
     failed_clone_packets{YType::uint32, "failed-clone-packets"}
 {
 
-    yang_name = "summary"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Statistics::Summary::~Summary()
@@ -1461,6 +1482,7 @@ UdpConnection::Nodes::Node::Statistics::Summary::~Summary()
 
 bool UdpConnection::Nodes::Node::Statistics::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return received_total_packets.is_set
 	|| received_no_port_packets.is_set
 	|| received_bad_checksum_packets.is_set
@@ -1642,9 +1664,11 @@ bool UdpConnection::Nodes::Node::Statistics::Summary::has_leaf_or_child_of_name(
 }
 
 UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistics()
+    :
+    pcb_statistic(this, {"pcb_address"})
 {
 
-    yang_name = "pcb-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcb-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Statistics::PcbStatistics::~PcbStatistics()
@@ -1653,7 +1677,8 @@ UdpConnection::Nodes::Node::Statistics::PcbStatistics::~PcbStatistics()
 
 bool UdpConnection::Nodes::Node::Statistics::PcbStatistics::has_data() const
 {
-    for (std::size_t index=0; index<pcb_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pcb_statistic.len(); index++)
     {
         if(pcb_statistic[index]->has_data())
             return true;
@@ -1663,7 +1688,7 @@ bool UdpConnection::Nodes::Node::Statistics::PcbStatistics::has_data() const
 
 bool UdpConnection::Nodes::Node::Statistics::PcbStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<pcb_statistic.size(); index++)
+    for (std::size_t index=0; index<pcb_statistic.len(); index++)
     {
         if(pcb_statistic[index]->has_operation())
             return true;
@@ -1693,7 +1718,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::PcbStatistics::g
     {
         auto c = std::make_shared<UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic>();
         c->parent = this;
-        pcb_statistic.push_back(c);
+        pcb_statistic.append(c);
         return c;
     }
 
@@ -1705,7 +1730,7 @@ std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Stati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pcb_statistic)
+    for (auto c : pcb_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1736,14 +1761,14 @@ UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::PcbStatisti
     pcb_address{YType::uint32, "pcb-address"},
     vrf_id{YType::uint32, "vrf-id"},
     is_paw_socket{YType::boolean, "is-paw-socket"}
-    	,
+        ,
     send(std::make_shared<UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send>())
-	,receive(std::make_shared<UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive>())
+    , receive(std::make_shared<UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive>())
 {
     send->parent = this;
     receive->parent = this;
 
-    yang_name = "pcb-statistic"; yang_parent_name = "pcb-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcb-statistic"; yang_parent_name = "pcb-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::~PcbStatistic()
@@ -1752,6 +1777,7 @@ UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::~PcbStatist
 
 bool UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return pcb_address.is_set
 	|| vrf_id.is_set
 	|| is_paw_socket.is_set
@@ -1772,7 +1798,8 @@ bool UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::has_op
 std::string UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pcb-statistic" <<"[pcb-address='" <<pcb_address <<"']";
+    path_buffer << "pcb-statistic";
+    ADD_KEY_TOKEN(pcb_address, "pcb-address");
     return path_buffer.str();
 }
 
@@ -1883,7 +1910,7 @@ UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send::Send(
     failed_queued_net_io_packets{YType::uint32, "failed-queued-net-io-packets"}
 {
 
-    yang_name = "send"; yang_parent_name = "pcb-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "send"; yang_parent_name = "pcb-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send::~Send()
@@ -1892,6 +1919,7 @@ UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send::~Send
 
 bool UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send::has_data() const
 {
+    if (is_presence_container) return true;
     return received_application_bytes.is_set
 	|| received_xipc_pulses.is_set
 	|| sent_network_packets.is_set
@@ -2029,7 +2057,7 @@ UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive::Re
     queued_application_socket_packets{YType::uint64, "queued-application-socket-packets"}
 {
 
-    yang_name = "receive"; yang_parent_name = "pcb-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive"; yang_parent_name = "pcb-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive::~Receive()
@@ -2038,6 +2066,7 @@ UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive::~R
 
 bool UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive::has_data() const
 {
+    if (is_presence_container) return true;
     return received_network_packets.is_set
 	|| failed_queued_application_packets.is_set
 	|| queued_application_packets.is_set
@@ -2159,7 +2188,7 @@ UdpConnection::Nodes::Node::Lpts::Lpts()
 {
     queries->parent = this;
 
-    yang_name = "lpts"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpts"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::~Lpts()
@@ -2168,6 +2197,7 @@ UdpConnection::Nodes::Node::Lpts::~Lpts()
 
 bool UdpConnection::Nodes::Node::Lpts::has_data() const
 {
+    if (is_presence_container) return true;
     return (queries !=  nullptr && queries->has_data());
 }
 
@@ -2235,9 +2265,11 @@ bool UdpConnection::Nodes::Node::Lpts::has_leaf_or_child_of_name(const std::stri
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Queries()
+    :
+    query(this, {"query_name"})
 {
 
-    yang_name = "queries"; yang_parent_name = "lpts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queries"; yang_parent_name = "lpts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::~Queries()
@@ -2246,7 +2278,8 @@ UdpConnection::Nodes::Node::Lpts::Queries::~Queries()
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::has_data() const
 {
-    for (std::size_t index=0; index<query.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<query.len(); index++)
     {
         if(query[index]->has_data())
             return true;
@@ -2256,7 +2289,7 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::has_data() const
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::has_operation() const
 {
-    for (std::size_t index=0; index<query.size(); index++)
+    for (std::size_t index=0; index<query.len(); index++)
     {
         if(query[index]->has_operation())
             return true;
@@ -2286,7 +2319,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::get_child_by_
     {
         auto c = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query>();
         c->parent = this;
-        query.push_back(c);
+        query.append(c);
         return c;
     }
 
@@ -2298,7 +2331,7 @@ std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : query)
+    for (auto c : query.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2327,12 +2360,12 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::has_leaf_or_child_of_name(const 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Query()
     :
     query_name{YType::enumeration, "query-name"}
-    	,
+        ,
     pcbs(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs>())
 {
     pcbs->parent = this;
 
-    yang_name = "query"; yang_parent_name = "queries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "query"; yang_parent_name = "queries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::~Query()
@@ -2341,6 +2374,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::~Query()
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::has_data() const
 {
+    if (is_presence_container) return true;
     return query_name.is_set
 	|| (pcbs !=  nullptr && pcbs->has_data());
 }
@@ -2355,7 +2389,8 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::has_operation() const
 std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "query" <<"[query-name='" <<query_name <<"']";
+    path_buffer << "query";
+    ADD_KEY_TOKEN(query_name, "query-name");
     return path_buffer.str();
 }
 
@@ -2421,9 +2456,11 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::has_leaf_or_child_of_name
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcbs()
+    :
+    pcb(this, {"pcb_address"})
 {
 
-    yang_name = "pcbs"; yang_parent_name = "query"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcbs"; yang_parent_name = "query"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::~Pcbs()
@@ -2432,7 +2469,8 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::~Pcbs()
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::has_data() const
 {
-    for (std::size_t index=0; index<pcb.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pcb.len(); index++)
     {
         if(pcb[index]->has_data())
             return true;
@@ -2442,7 +2480,7 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::has_data() const
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::has_operation() const
 {
-    for (std::size_t index=0; index<pcb.size(); index++)
+    for (std::size_t index=0; index<pcb.len(); index++)
     {
         if(pcb[index]->has_operation())
             return true;
@@ -2472,7 +2510,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
     {
         auto c = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb>();
         c->parent = this;
-        pcb.push_back(c);
+        pcb.append(c);
         return c;
     }
 
@@ -2484,7 +2522,7 @@ std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pcb)
+    for (auto c : pcb.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2516,16 +2554,16 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Pcb()
     l4_protocol{YType::uint32, "l4-protocol"},
     local_port{YType::uint16, "local-port"},
     foreign_port{YType::uint16, "foreign-port"}
-    	,
+        ,
     local_address(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress>())
-	,foreign_address(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress>())
-	,common(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common>())
+    , foreign_address(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress>())
+    , common(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common>())
 {
     local_address->parent = this;
     foreign_address->parent = this;
     common->parent = this;
 
-    yang_name = "pcb"; yang_parent_name = "pcbs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcb"; yang_parent_name = "pcbs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::~Pcb()
@@ -2534,6 +2572,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::~Pcb()
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::has_data() const
 {
+    if (is_presence_container) return true;
     return pcb_address.is_set
 	|| l4_protocol.is_set
 	|| local_port.is_set
@@ -2558,7 +2597,8 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::has_operation(
 std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pcb" <<"[pcb-address='" <<pcb_address <<"']";
+    path_buffer << "pcb";
+    ADD_KEY_TOKEN(pcb_address, "pcb-address");
     return path_buffer.str();
 }
 
@@ -2691,7 +2731,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress::Local
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress::~LocalAddress()
@@ -2700,6 +2740,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress::~Loca
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -2796,7 +2837,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress::For
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "foreign-address"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign-address"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress::~ForeignAddress()
@@ -2805,6 +2846,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress::~Fo
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -2897,12 +2939,12 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::Common()
     :
     af_name{YType::enumeration, "af-name"}
-    	,
+        ,
     lpts_pcb(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb>())
 {
     lpts_pcb->parent = this;
 
-    yang_name = "common"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::~Common()
@@ -2911,6 +2953,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::~Common()
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| (lpts_pcb !=  nullptr && lpts_pcb->has_data());
 }
@@ -2994,16 +3037,17 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Lp
     :
     ttl{YType::uint8, "ttl"},
     flow_types_info{YType::uint32, "flow-types-info"}
-    	,
+        ,
     options(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options>())
-	,lpts_flags(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags>())
-	,accept_mask(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask>())
+    , lpts_flags(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags>())
+    , accept_mask(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask>())
+    , filter(this, {})
 {
     options->parent = this;
     lpts_flags->parent = this;
     accept_mask->parent = this;
 
-    yang_name = "lpts-pcb"; yang_parent_name = "common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpts-pcb"; yang_parent_name = "common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::~LptsPcb()
@@ -3012,7 +3056,8 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::~L
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::has_data() const
 {
-    for (std::size_t index=0; index<filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<filter.len(); index++)
     {
         if(filter[index]->has_data())
             return true;
@@ -3026,7 +3071,7 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPc
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::has_operation() const
 {
-    for (std::size_t index=0; index<filter.size(); index++)
+    for (std::size_t index=0; index<filter.len(); index++)
     {
         if(filter[index]->has_operation())
             return true;
@@ -3090,7 +3135,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
     {
         auto c = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter>();
         c->parent = this;
-        filter.push_back(c);
+        filter.append(c);
         return c;
     }
 
@@ -3117,7 +3162,7 @@ std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts:
     }
 
     count = 0;
-    for (auto const & c : filter)
+    for (auto c : filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3169,7 +3214,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Op
     is_ip_sla{YType::boolean, "is-ip-sla"}
 {
 
-    yang_name = "options"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "options"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options::~Options()
@@ -3178,6 +3223,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Op
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options::has_data() const
 {
+    if (is_presence_container) return true;
     return is_receive_filter.is_set
 	|| is_ip_sla.is_set;
 }
@@ -3261,7 +3307,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Lp
     is_ignore_vrf_filter{YType::boolean, "is-ignore-vrf-filter"}
 {
 
-    yang_name = "lpts-flags"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpts-flags"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags::~LptsFlags()
@@ -3270,6 +3316,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Lp
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return is_pcb_bound.is_set
 	|| is_local_address_ignore.is_set
 	|| is_ignore_vrf_filter.is_set;
@@ -3369,7 +3416,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Ac
     is_local_port{YType::boolean, "is-local-port"}
 {
 
-    yang_name = "accept-mask"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accept-mask"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask::~AcceptMask()
@@ -3378,6 +3425,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Ac
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask::has_data() const
 {
+    if (is_presence_container) return true;
     return is_interface.is_set
 	|| is_packet_type.is_set
 	|| is_remote_address.is_set
@@ -3516,16 +3564,16 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Fi
     priority{YType::uint8, "priority"},
     ttl{YType::uint8, "ttl"},
     flow_types_info{YType::uint32, "flow-types-info"}
-    	,
+        ,
     packet_type(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType>())
-	,remote_address(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress>())
-	,local_address(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress>())
+    , remote_address(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress>())
+    , local_address(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress>())
 {
     packet_type->parent = this;
     remote_address->parent = this;
     local_address->parent = this;
 
-    yang_name = "filter"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "filter"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::~Filter()
@@ -3534,6 +3582,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Fi
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| remote_length.is_set
 	|| local_length.is_set
@@ -3745,7 +3794,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Fi
     message_id{YType::uint32, "message-id"}
 {
 
-    yang_name = "packet-type"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-type"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType::~PacketType()
@@ -3754,6 +3803,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Fi
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| icmp_message_type.is_set
 	|| icm_pv6_message_type.is_set
@@ -3876,7 +3926,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Fi
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "remote-address"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-address"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress::~RemoteAddress()
@@ -3885,6 +3935,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Fi
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3981,7 +4032,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Fi
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress::~LocalAddress()
@@ -3990,6 +4041,7 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Fi
 
 bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4080,9 +4132,11 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPc
 }
 
 UdpConnection::Nodes::Node::PcbDetails::PcbDetails()
+    :
+    pcb_detail(this, {"pcb_address"})
 {
 
-    yang_name = "pcb-details"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcb-details"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::PcbDetails::~PcbDetails()
@@ -4091,7 +4145,8 @@ UdpConnection::Nodes::Node::PcbDetails::~PcbDetails()
 
 bool UdpConnection::Nodes::Node::PcbDetails::has_data() const
 {
-    for (std::size_t index=0; index<pcb_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pcb_detail.len(); index++)
     {
         if(pcb_detail[index]->has_data())
             return true;
@@ -4101,7 +4156,7 @@ bool UdpConnection::Nodes::Node::PcbDetails::has_data() const
 
 bool UdpConnection::Nodes::Node::PcbDetails::has_operation() const
 {
-    for (std::size_t index=0; index<pcb_detail.size(); index++)
+    for (std::size_t index=0; index<pcb_detail.len(); index++)
     {
         if(pcb_detail[index]->has_operation())
             return true;
@@ -4131,7 +4186,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbDetails::get_child_by_nam
     {
         auto c = std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail>();
         c->parent = this;
-        pcb_detail.push_back(c);
+        pcb_detail.append(c);
         return c;
     }
 
@@ -4143,7 +4198,7 @@ std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbDe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pcb_detail)
+    for (auto c : pcb_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4179,14 +4234,14 @@ UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbDetail()
     receive_queue{YType::uint32, "receive-queue"},
     send_queue{YType::uint32, "send-queue"},
     vrf_id{YType::uint32, "vrf-id"}
-    	,
+        ,
     local_address(std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress>())
-	,foreign_address(std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress>())
+    , foreign_address(std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress>())
 {
     local_address->parent = this;
     foreign_address->parent = this;
 
-    yang_name = "pcb-detail"; yang_parent_name = "pcb-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcb-detail"; yang_parent_name = "pcb-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::PcbDetails::PcbDetail::~PcbDetail()
@@ -4195,6 +4250,7 @@ UdpConnection::Nodes::Node::PcbDetails::PcbDetail::~PcbDetail()
 
 bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return pcb_address.is_set
 	|| af_name.is_set
 	|| local_process_id.is_set
@@ -4225,7 +4281,8 @@ bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::has_operation() const
 std::string UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pcb-detail" <<"[pcb-address='" <<pcb_address <<"']";
+    path_buffer << "pcb-detail";
+    ADD_KEY_TOKEN(pcb_address, "pcb-address");
     return path_buffer.str();
 }
 
@@ -4388,7 +4445,7 @@ UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::LocalAddress()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "pcb-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "pcb-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::~LocalAddress()
@@ -4397,6 +4454,7 @@ UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::~LocalAddress()
 
 bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4493,7 +4551,7 @@ UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::ForeignAddres
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "foreign-address"; yang_parent_name = "pcb-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign-address"; yang_parent_name = "pcb-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::~ForeignAddress()
@@ -4502,6 +4560,7 @@ UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::~ForeignAddre
 
 bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4592,9 +4651,11 @@ bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::has_leaf
 }
 
 UdpConnection::Nodes::Node::PcbBriefs::PcbBriefs()
+    :
+    pcb_brief(this, {"pcb_address"})
 {
 
-    yang_name = "pcb-briefs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcb-briefs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::PcbBriefs::~PcbBriefs()
@@ -4603,7 +4664,8 @@ UdpConnection::Nodes::Node::PcbBriefs::~PcbBriefs()
 
 bool UdpConnection::Nodes::Node::PcbBriefs::has_data() const
 {
-    for (std::size_t index=0; index<pcb_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pcb_brief.len(); index++)
     {
         if(pcb_brief[index]->has_data())
             return true;
@@ -4613,7 +4675,7 @@ bool UdpConnection::Nodes::Node::PcbBriefs::has_data() const
 
 bool UdpConnection::Nodes::Node::PcbBriefs::has_operation() const
 {
-    for (std::size_t index=0; index<pcb_brief.size(); index++)
+    for (std::size_t index=0; index<pcb_brief.len(); index++)
     {
         if(pcb_brief[index]->has_operation())
             return true;
@@ -4643,7 +4705,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbBriefs::get_child_by_name
     {
         auto c = std::make_shared<UdpConnection::Nodes::Node::PcbBriefs::PcbBrief>();
         c->parent = this;
-        pcb_brief.push_back(c);
+        pcb_brief.append(c);
         return c;
     }
 
@@ -4655,7 +4717,7 @@ std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbBr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pcb_brief)
+    for (auto c : pcb_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4690,14 +4752,14 @@ UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::PcbBrief()
     receive_queue{YType::uint32, "receive-queue"},
     send_queue{YType::uint32, "send-queue"},
     vrf_id{YType::uint32, "vrf-id"}
-    	,
+        ,
     local_address(std::make_shared<UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress>())
-	,foreign_address(std::make_shared<UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress>())
+    , foreign_address(std::make_shared<UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress>())
 {
     local_address->parent = this;
     foreign_address->parent = this;
 
-    yang_name = "pcb-brief"; yang_parent_name = "pcb-briefs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcb-brief"; yang_parent_name = "pcb-briefs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::~PcbBrief()
@@ -4706,6 +4768,7 @@ UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::~PcbBrief()
 
 bool UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return pcb_address.is_set
 	|| af_name.is_set
 	|| local_port.is_set
@@ -4734,7 +4797,8 @@ bool UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::has_operation() const
 std::string UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pcb-brief" <<"[pcb-address='" <<pcb_address <<"']";
+    path_buffer << "pcb-brief";
+    ADD_KEY_TOKEN(pcb_address, "pcb-address");
     return path_buffer.str();
 }
 
@@ -4886,7 +4950,7 @@ UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::LocalAddress()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "pcb-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "pcb-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::~LocalAddress()
@@ -4895,6 +4959,7 @@ UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::~LocalAddress()
 
 bool UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4991,7 +5056,7 @@ UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::ForeignAddress(
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "foreign-address"; yang_parent_name = "pcb-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign-address"; yang_parent_name = "pcb-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::~ForeignAddress()
@@ -5000,6 +5065,7 @@ UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::~ForeignAddress
 
 bool UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -5094,34 +5160,6 @@ const Enum::YLeaf LptsPcbQuery::static_policy {1, "static-policy"};
 const Enum::YLeaf LptsPcbQuery::interface {2, "interface"};
 const Enum::YLeaf LptsPcbQuery::packet {3, "packet"};
 
-const Enum::YLeaf MessageTypeIgmp::membership_query {17, "membership-query"};
-const Enum::YLeaf MessageTypeIgmp::v1_membership_report {18, "v1-membership-report"};
-const Enum::YLeaf MessageTypeIgmp::dvmrp {19, "dvmrp"};
-const Enum::YLeaf MessageTypeIgmp::pi_mv1 {20, "pi-mv1"};
-const Enum::YLeaf MessageTypeIgmp::cisco_trace_messages {21, "cisco-trace-messages"};
-const Enum::YLeaf MessageTypeIgmp::v2_membership_report {22, "v2-membership-report"};
-const Enum::YLeaf MessageTypeIgmp::v2_leave_group {23, "v2-leave-group"};
-const Enum::YLeaf MessageTypeIgmp::multicast_traceroute_response {30, "multicast-traceroute-response"};
-const Enum::YLeaf MessageTypeIgmp::multicast_traceroute {31, "multicast-traceroute"};
-const Enum::YLeaf MessageTypeIgmp::v3_membership_report {34, "v3-membership-report"};
-const Enum::YLeaf MessageTypeIgmp::multicast_router_advertisement {48, "multicast-router-advertisement"};
-const Enum::YLeaf MessageTypeIgmp::multicast_router_solicitation {49, "multicast-router-solicitation"};
-const Enum::YLeaf MessageTypeIgmp::multicast_router_termination {50, "multicast-router-termination"};
-
-const Enum::YLeaf MessageTypeIgmp_::membership_query {17, "membership-query"};
-const Enum::YLeaf MessageTypeIgmp_::v1_membership_report {18, "v1-membership-report"};
-const Enum::YLeaf MessageTypeIgmp_::dvmrp {19, "dvmrp"};
-const Enum::YLeaf MessageTypeIgmp_::pi_mv1 {20, "pi-mv1"};
-const Enum::YLeaf MessageTypeIgmp_::cisco_trace_messages {21, "cisco-trace-messages"};
-const Enum::YLeaf MessageTypeIgmp_::v2_membership_report {22, "v2-membership-report"};
-const Enum::YLeaf MessageTypeIgmp_::v2_leave_group {23, "v2-leave-group"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute_response {30, "multicast-traceroute-response"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute {31, "multicast-traceroute"};
-const Enum::YLeaf MessageTypeIgmp_::v3_membership_report {34, "v3-membership-report"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_router_advertisement {48, "multicast-router-advertisement"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_router_solicitation {49, "multicast-router-solicitation"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_router_termination {50, "multicast-router-termination"};
-
 const Enum::YLeaf MessageTypeIcmpv6::destination_unreachable {1, "destination-unreachable"};
 const Enum::YLeaf MessageTypeIcmpv6::packet_too_big {2, "packet-too-big"};
 const Enum::YLeaf MessageTypeIcmpv6::time_exceeded {3, "time-exceeded"};
@@ -5154,38 +5192,6 @@ const Enum::YLeaf MessageTypeIcmpv6::multicast_router_solicitation {152, "multic
 const Enum::YLeaf MessageTypeIcmpv6::multicast_router_termination {153, "multicast-router-termination"};
 const Enum::YLeaf MessageTypeIcmpv6::fmipv6_messages {154, "fmipv6-messages"};
 
-const Enum::YLeaf MessageTypeIcmpv6_::destination_unreachable {1, "destination-unreachable"};
-const Enum::YLeaf MessageTypeIcmpv6_::packet_too_big {2, "packet-too-big"};
-const Enum::YLeaf MessageTypeIcmpv6_::time_exceeded {3, "time-exceeded"};
-const Enum::YLeaf MessageTypeIcmpv6_::parameter_problem {4, "parameter-problem"};
-const Enum::YLeaf MessageTypeIcmpv6_::echo_request {128, "echo-request"};
-const Enum::YLeaf MessageTypeIcmpv6_::echo_reply {129, "echo-reply"};
-const Enum::YLeaf MessageTypeIcmpv6_::multicast_listener_query {130, "multicast-listener-query"};
-const Enum::YLeaf MessageTypeIcmpv6_::multicast_listener_report {131, "multicast-listener-report"};
-const Enum::YLeaf MessageTypeIcmpv6_::multicast_listener_done {132, "multicast-listener-done"};
-const Enum::YLeaf MessageTypeIcmpv6_::router_solicitation {133, "router-solicitation"};
-const Enum::YLeaf MessageTypeIcmpv6_::router_advertisement {134, "router-advertisement"};
-const Enum::YLeaf MessageTypeIcmpv6_::neighbor_solicitation {135, "neighbor-solicitation"};
-const Enum::YLeaf MessageTypeIcmpv6_::neighbor_advertisement {136, "neighbor-advertisement"};
-const Enum::YLeaf MessageTypeIcmpv6_::redirect_message {137, "redirect-message"};
-const Enum::YLeaf MessageTypeIcmpv6_::router_renumbering {138, "router-renumbering"};
-const Enum::YLeaf MessageTypeIcmpv6_::node_information_query {139, "node-information-query"};
-const Enum::YLeaf MessageTypeIcmpv6_::node_information_reply {140, "node-information-reply"};
-const Enum::YLeaf MessageTypeIcmpv6_::inverse_neighbor_discovery_solicitaion {141, "inverse-neighbor-discovery-solicitaion"};
-const Enum::YLeaf MessageTypeIcmpv6_::inverse_neighbor_discover_advertisement {142, "inverse-neighbor-discover-advertisement"};
-const Enum::YLeaf MessageTypeIcmpv6_::v2_multicast_listener_report {143, "v2-multicast-listener-report"};
-const Enum::YLeaf MessageTypeIcmpv6_::home_agent_address_discovery_request {144, "home-agent-address-discovery-request"};
-const Enum::YLeaf MessageTypeIcmpv6_::home_agent_address_discovery_reply {145, "home-agent-address-discovery-reply"};
-const Enum::YLeaf MessageTypeIcmpv6_::mobile_prefix_solicitation {146, "mobile-prefix-solicitation"};
-const Enum::YLeaf MessageTypeIcmpv6_::mobile_prefix_advertisement {147, "mobile-prefix-advertisement"};
-const Enum::YLeaf MessageTypeIcmpv6_::certification_path_solicitation_message {148, "certification-path-solicitation-message"};
-const Enum::YLeaf MessageTypeIcmpv6_::certification_path_advertisement_message {149, "certification-path-advertisement-message"};
-const Enum::YLeaf MessageTypeIcmpv6_::experimental_mobility_protocols {150, "experimental-mobility-protocols"};
-const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_advertisement {151, "multicast-router-advertisement"};
-const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_solicitation {152, "multicast-router-solicitation"};
-const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_termination {153, "multicast-router-termination"};
-const Enum::YLeaf MessageTypeIcmpv6_::fmipv6_messages {154, "fmipv6-messages"};
-
 const Enum::YLeaf MessageTypeIcmp::echo_reply {0, "echo-reply"};
 const Enum::YLeaf MessageTypeIcmp::destination_unreachable {3, "destination-unreachable"};
 const Enum::YLeaf MessageTypeIcmp::source_quench {4, "source-quench"};
@@ -5211,6 +5217,39 @@ const Enum::YLeaf MessageTypeIcmp::mobile_registration_request {35, "mobile-regi
 const Enum::YLeaf MessageTypeIcmp::mobile_registration_reply {36, "mobile-registration-reply"};
 const Enum::YLeaf MessageTypeIcmp::domain_name_request {37, "domain-name-request"};
 
+const Enum::YLeaf MessageTypeIgmp::membership_query {17, "membership-query"};
+const Enum::YLeaf MessageTypeIgmp::v1_membership_report {18, "v1-membership-report"};
+const Enum::YLeaf MessageTypeIgmp::dvmrp {19, "dvmrp"};
+const Enum::YLeaf MessageTypeIgmp::pi_mv1 {20, "pi-mv1"};
+const Enum::YLeaf MessageTypeIgmp::cisco_trace_messages {21, "cisco-trace-messages"};
+const Enum::YLeaf MessageTypeIgmp::v2_membership_report {22, "v2-membership-report"};
+const Enum::YLeaf MessageTypeIgmp::v2_leave_group {23, "v2-leave-group"};
+const Enum::YLeaf MessageTypeIgmp::multicast_traceroute_response {30, "multicast-traceroute-response"};
+const Enum::YLeaf MessageTypeIgmp::multicast_traceroute {31, "multicast-traceroute"};
+const Enum::YLeaf MessageTypeIgmp::v3_membership_report {34, "v3-membership-report"};
+const Enum::YLeaf MessageTypeIgmp::multicast_router_advertisement {48, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIgmp::multicast_router_solicitation {49, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIgmp::multicast_router_termination {50, "multicast-router-termination"};
+
+const Enum::YLeaf MessageTypeIgmp_::membership_query {17, "membership-query"};
+const Enum::YLeaf MessageTypeIgmp_::v1_membership_report {18, "v1-membership-report"};
+const Enum::YLeaf MessageTypeIgmp_::dvmrp {19, "dvmrp"};
+const Enum::YLeaf MessageTypeIgmp_::pi_mv1 {20, "pi-mv1"};
+const Enum::YLeaf MessageTypeIgmp_::cisco_trace_messages {21, "cisco-trace-messages"};
+const Enum::YLeaf MessageTypeIgmp_::v2_membership_report {22, "v2-membership-report"};
+const Enum::YLeaf MessageTypeIgmp_::v2_leave_group {23, "v2-leave-group"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute_response {30, "multicast-traceroute-response"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute {31, "multicast-traceroute"};
+const Enum::YLeaf MessageTypeIgmp_::v3_membership_report {34, "v3-membership-report"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_router_advertisement {48, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_router_solicitation {49, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_router_termination {50, "multicast-router-termination"};
+
+const Enum::YLeaf Packet::icmp {0, "icmp"};
+const Enum::YLeaf Packet::icm_pv6 {1, "icm-pv6"};
+const Enum::YLeaf Packet::igmp {2, "igmp"};
+const Enum::YLeaf Packet::unknown {3, "unknown"};
+
 const Enum::YLeaf MessageTypeIcmp_::echo_reply {0, "echo-reply"};
 const Enum::YLeaf MessageTypeIcmp_::destination_unreachable {3, "destination-unreachable"};
 const Enum::YLeaf MessageTypeIcmp_::source_quench {4, "source-quench"};
@@ -5235,11 +5274,6 @@ const Enum::YLeaf MessageTypeIcmp_::iam_here {34, "iam-here"};
 const Enum::YLeaf MessageTypeIcmp_::mobile_registration_request {35, "mobile-registration-request"};
 const Enum::YLeaf MessageTypeIcmp_::mobile_registration_reply {36, "mobile-registration-reply"};
 const Enum::YLeaf MessageTypeIcmp_::domain_name_request {37, "domain-name-request"};
-
-const Enum::YLeaf Packet::icmp {0, "icmp"};
-const Enum::YLeaf Packet::icm_pv6 {1, "icm-pv6"};
-const Enum::YLeaf Packet::igmp {2, "igmp"};
-const Enum::YLeaf Packet::unknown {3, "unknown"};
 
 const Enum::YLeaf AddrFamily::unspecified {0, "unspecified"};
 const Enum::YLeaf AddrFamily::local {1, "local"};
@@ -5286,6 +5320,38 @@ const Enum::YLeaf AddrFamily::srp {41, "srp"};
 
 const Enum::YLeaf UdpAddressFamily::ipv4 {2, "ipv4"};
 const Enum::YLeaf UdpAddressFamily::ipv6 {10, "ipv6"};
+
+const Enum::YLeaf MessageTypeIcmpv6_::destination_unreachable {1, "destination-unreachable"};
+const Enum::YLeaf MessageTypeIcmpv6_::packet_too_big {2, "packet-too-big"};
+const Enum::YLeaf MessageTypeIcmpv6_::time_exceeded {3, "time-exceeded"};
+const Enum::YLeaf MessageTypeIcmpv6_::parameter_problem {4, "parameter-problem"};
+const Enum::YLeaf MessageTypeIcmpv6_::echo_request {128, "echo-request"};
+const Enum::YLeaf MessageTypeIcmpv6_::echo_reply {129, "echo-reply"};
+const Enum::YLeaf MessageTypeIcmpv6_::multicast_listener_query {130, "multicast-listener-query"};
+const Enum::YLeaf MessageTypeIcmpv6_::multicast_listener_report {131, "multicast-listener-report"};
+const Enum::YLeaf MessageTypeIcmpv6_::multicast_listener_done {132, "multicast-listener-done"};
+const Enum::YLeaf MessageTypeIcmpv6_::router_solicitation {133, "router-solicitation"};
+const Enum::YLeaf MessageTypeIcmpv6_::router_advertisement {134, "router-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6_::neighbor_solicitation {135, "neighbor-solicitation"};
+const Enum::YLeaf MessageTypeIcmpv6_::neighbor_advertisement {136, "neighbor-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6_::redirect_message {137, "redirect-message"};
+const Enum::YLeaf MessageTypeIcmpv6_::router_renumbering {138, "router-renumbering"};
+const Enum::YLeaf MessageTypeIcmpv6_::node_information_query {139, "node-information-query"};
+const Enum::YLeaf MessageTypeIcmpv6_::node_information_reply {140, "node-information-reply"};
+const Enum::YLeaf MessageTypeIcmpv6_::inverse_neighbor_discovery_solicitaion {141, "inverse-neighbor-discovery-solicitaion"};
+const Enum::YLeaf MessageTypeIcmpv6_::inverse_neighbor_discover_advertisement {142, "inverse-neighbor-discover-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6_::v2_multicast_listener_report {143, "v2-multicast-listener-report"};
+const Enum::YLeaf MessageTypeIcmpv6_::home_agent_address_discovery_request {144, "home-agent-address-discovery-request"};
+const Enum::YLeaf MessageTypeIcmpv6_::home_agent_address_discovery_reply {145, "home-agent-address-discovery-reply"};
+const Enum::YLeaf MessageTypeIcmpv6_::mobile_prefix_solicitation {146, "mobile-prefix-solicitation"};
+const Enum::YLeaf MessageTypeIcmpv6_::mobile_prefix_advertisement {147, "mobile-prefix-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6_::certification_path_solicitation_message {148, "certification-path-solicitation-message"};
+const Enum::YLeaf MessageTypeIcmpv6_::certification_path_advertisement_message {149, "certification-path-advertisement-message"};
+const Enum::YLeaf MessageTypeIcmpv6_::experimental_mobility_protocols {150, "experimental-mobility-protocols"};
+const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_advertisement {151, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_solicitation {152, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_termination {153, "multicast-router-termination"};
+const Enum::YLeaf MessageTypeIcmpv6_::fmipv6_messages {154, "fmipv6-messages"};
 
 
 }

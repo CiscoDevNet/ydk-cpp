@@ -13,11 +13,11 @@ namespace CISCO_BULK_FILE_MIB {
 
 CISCOBULKFILEMIB::CISCOBULKFILEMIB()
     :
-    cbfdefine(std::make_shared<CISCOBULKFILEMIB::Cbfdefine>())
-	,cbfstatus(std::make_shared<CISCOBULKFILEMIB::Cbfstatus>())
-	,cbfdefinefiletable(std::make_shared<CISCOBULKFILEMIB::Cbfdefinefiletable>())
-	,cbfdefineobjecttable(std::make_shared<CISCOBULKFILEMIB::Cbfdefineobjecttable>())
-	,cbfstatusfiletable(std::make_shared<CISCOBULKFILEMIB::Cbfstatusfiletable>())
+    cbfdefine(std::make_shared<CISCOBULKFILEMIB::CbfDefine>())
+    , cbfstatus(std::make_shared<CISCOBULKFILEMIB::CbfStatus>())
+    , cbfdefinefiletable(std::make_shared<CISCOBULKFILEMIB::CbfDefineFileTable>())
+    , cbfdefineobjecttable(std::make_shared<CISCOBULKFILEMIB::CbfDefineObjectTable>())
+    , cbfstatusfiletable(std::make_shared<CISCOBULKFILEMIB::CbfStatusFileTable>())
 {
     cbfdefine->parent = this;
     cbfstatus->parent = this;
@@ -25,7 +25,7 @@ CISCOBULKFILEMIB::CISCOBULKFILEMIB()
     cbfdefineobjecttable->parent = this;
     cbfstatusfiletable->parent = this;
 
-    yang_name = "CISCO-BULK-FILE-MIB"; yang_parent_name = "CISCO-BULK-FILE-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-BULK-FILE-MIB"; yang_parent_name = "CISCO-BULK-FILE-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOBULKFILEMIB::~CISCOBULKFILEMIB()
@@ -34,6 +34,7 @@ CISCOBULKFILEMIB::~CISCOBULKFILEMIB()
 
 bool CISCOBULKFILEMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cbfdefine !=  nullptr && cbfdefine->has_data())
 	|| (cbfstatus !=  nullptr && cbfstatus->has_data())
 	|| (cbfdefinefiletable !=  nullptr && cbfdefinefiletable->has_data())
@@ -73,7 +74,7 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::get_child_by_name(const std::string & 
     {
         if(cbfdefine == nullptr)
         {
-            cbfdefine = std::make_shared<CISCOBULKFILEMIB::Cbfdefine>();
+            cbfdefine = std::make_shared<CISCOBULKFILEMIB::CbfDefine>();
         }
         return cbfdefine;
     }
@@ -82,7 +83,7 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::get_child_by_name(const std::string & 
     {
         if(cbfstatus == nullptr)
         {
-            cbfstatus = std::make_shared<CISCOBULKFILEMIB::Cbfstatus>();
+            cbfstatus = std::make_shared<CISCOBULKFILEMIB::CbfStatus>();
         }
         return cbfstatus;
     }
@@ -91,7 +92,7 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::get_child_by_name(const std::string & 
     {
         if(cbfdefinefiletable == nullptr)
         {
-            cbfdefinefiletable = std::make_shared<CISCOBULKFILEMIB::Cbfdefinefiletable>();
+            cbfdefinefiletable = std::make_shared<CISCOBULKFILEMIB::CbfDefineFileTable>();
         }
         return cbfdefinefiletable;
     }
@@ -100,7 +101,7 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::get_child_by_name(const std::string & 
     {
         if(cbfdefineobjecttable == nullptr)
         {
-            cbfdefineobjecttable = std::make_shared<CISCOBULKFILEMIB::Cbfdefineobjecttable>();
+            cbfdefineobjecttable = std::make_shared<CISCOBULKFILEMIB::CbfDefineObjectTable>();
         }
         return cbfdefineobjecttable;
     }
@@ -109,7 +110,7 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::get_child_by_name(const std::string & 
     {
         if(cbfstatusfiletable == nullptr)
         {
-            cbfstatusfiletable = std::make_shared<CISCOBULKFILEMIB::Cbfstatusfiletable>();
+            cbfstatusfiletable = std::make_shared<CISCOBULKFILEMIB::CbfStatusFileTable>();
         }
         return cbfstatusfiletable;
     }
@@ -189,7 +190,7 @@ bool CISCOBULKFILEMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOBULKFILEMIB::Cbfdefine::Cbfdefine()
+CISCOBULKFILEMIB::CbfDefine::CbfDefine()
     :
     cbfdefinemaxfiles{YType::uint32, "cbfDefineMaxFiles"},
     cbfdefinefiles{YType::uint32, "cbfDefineFiles"},
@@ -201,15 +202,16 @@ CISCOBULKFILEMIB::Cbfdefine::Cbfdefine()
     cbfdefineobjectsrefused{YType::uint32, "cbfDefineObjectsRefused"}
 {
 
-    yang_name = "cbfDefine"; yang_parent_name = "CISCO-BULK-FILE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbfDefine"; yang_parent_name = "CISCO-BULK-FILE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBULKFILEMIB::Cbfdefine::~Cbfdefine()
+CISCOBULKFILEMIB::CbfDefine::~CbfDefine()
 {
 }
 
-bool CISCOBULKFILEMIB::Cbfdefine::has_data() const
+bool CISCOBULKFILEMIB::CbfDefine::has_data() const
 {
+    if (is_presence_container) return true;
     return cbfdefinemaxfiles.is_set
 	|| cbfdefinefiles.is_set
 	|| cbfdefinehighfiles.is_set
@@ -220,7 +222,7 @@ bool CISCOBULKFILEMIB::Cbfdefine::has_data() const
 	|| cbfdefineobjectsrefused.is_set;
 }
 
-bool CISCOBULKFILEMIB::Cbfdefine::has_operation() const
+bool CISCOBULKFILEMIB::CbfDefine::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cbfdefinemaxfiles.yfilter)
@@ -233,21 +235,21 @@ bool CISCOBULKFILEMIB::Cbfdefine::has_operation() const
 	|| ydk::is_set(cbfdefineobjectsrefused.yfilter);
 }
 
-std::string CISCOBULKFILEMIB::Cbfdefine::get_absolute_path() const
+std::string CISCOBULKFILEMIB::CbfDefine::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BULK-FILE-MIB:CISCO-BULK-FILE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBULKFILEMIB::Cbfdefine::get_segment_path() const
+std::string CISCOBULKFILEMIB::CbfDefine::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbfDefine";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfdefine::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::CbfDefine::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -264,19 +266,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfdefine::get_
 
 }
 
-std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfdefine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBULKFILEMIB::CbfDefine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfdefine::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::CbfDefine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBULKFILEMIB::Cbfdefine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBULKFILEMIB::CbfDefine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cbfDefineMaxFiles")
     {
@@ -328,7 +330,7 @@ void CISCOBULKFILEMIB::Cbfdefine::set_value(const std::string & value_path, cons
     }
 }
 
-void CISCOBULKFILEMIB::Cbfdefine::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBULKFILEMIB::CbfDefine::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cbfDefineMaxFiles")
     {
@@ -364,14 +366,14 @@ void CISCOBULKFILEMIB::Cbfdefine::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool CISCOBULKFILEMIB::Cbfdefine::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBULKFILEMIB::CbfDefine::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbfDefineMaxFiles" || name == "cbfDefineFiles" || name == "cbfDefineHighFiles" || name == "cbfDefineFilesRefused" || name == "cbfDefineMaxObjects" || name == "cbfDefineObjects" || name == "cbfDefineHighObjects" || name == "cbfDefineObjectsRefused")
         return true;
     return false;
 }
 
-CISCOBULKFILEMIB::Cbfstatus::Cbfstatus()
+CISCOBULKFILEMIB::CbfStatus::CbfStatus()
     :
     cbfstatusmaxfiles{YType::uint32, "cbfStatusMaxFiles"},
     cbfstatusfiles{YType::uint32, "cbfStatusFiles"},
@@ -379,22 +381,23 @@ CISCOBULKFILEMIB::Cbfstatus::Cbfstatus()
     cbfstatusfilesbumped{YType::uint32, "cbfStatusFilesBumped"}
 {
 
-    yang_name = "cbfStatus"; yang_parent_name = "CISCO-BULK-FILE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbfStatus"; yang_parent_name = "CISCO-BULK-FILE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBULKFILEMIB::Cbfstatus::~Cbfstatus()
+CISCOBULKFILEMIB::CbfStatus::~CbfStatus()
 {
 }
 
-bool CISCOBULKFILEMIB::Cbfstatus::has_data() const
+bool CISCOBULKFILEMIB::CbfStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return cbfstatusmaxfiles.is_set
 	|| cbfstatusfiles.is_set
 	|| cbfstatushighfiles.is_set
 	|| cbfstatusfilesbumped.is_set;
 }
 
-bool CISCOBULKFILEMIB::Cbfstatus::has_operation() const
+bool CISCOBULKFILEMIB::CbfStatus::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cbfstatusmaxfiles.yfilter)
@@ -403,21 +406,21 @@ bool CISCOBULKFILEMIB::Cbfstatus::has_operation() const
 	|| ydk::is_set(cbfstatusfilesbumped.yfilter);
 }
 
-std::string CISCOBULKFILEMIB::Cbfstatus::get_absolute_path() const
+std::string CISCOBULKFILEMIB::CbfStatus::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BULK-FILE-MIB:CISCO-BULK-FILE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBULKFILEMIB::Cbfstatus::get_segment_path() const
+std::string CISCOBULKFILEMIB::CbfStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbfStatus";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfstatus::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::CbfStatus::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -430,19 +433,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfstatus::get_
 
 }
 
-std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfstatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBULKFILEMIB::CbfStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfstatus::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::CbfStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBULKFILEMIB::Cbfstatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBULKFILEMIB::CbfStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cbfStatusMaxFiles")
     {
@@ -470,7 +473,7 @@ void CISCOBULKFILEMIB::Cbfstatus::set_value(const std::string & value_path, cons
     }
 }
 
-void CISCOBULKFILEMIB::Cbfstatus::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBULKFILEMIB::CbfStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cbfStatusMaxFiles")
     {
@@ -490,26 +493,29 @@ void CISCOBULKFILEMIB::Cbfstatus::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool CISCOBULKFILEMIB::Cbfstatus::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBULKFILEMIB::CbfStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbfStatusMaxFiles" || name == "cbfStatusFiles" || name == "cbfStatusHighFiles" || name == "cbfStatusFilesBumped")
         return true;
     return false;
 }
 
-CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefiletable()
+CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileTable()
+    :
+    cbfdefinefileentry(this, {"cbfdefinefileindex"})
 {
 
-    yang_name = "cbfDefineFileTable"; yang_parent_name = "CISCO-BULK-FILE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbfDefineFileTable"; yang_parent_name = "CISCO-BULK-FILE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBULKFILEMIB::Cbfdefinefiletable::~Cbfdefinefiletable()
+CISCOBULKFILEMIB::CbfDefineFileTable::~CbfDefineFileTable()
 {
 }
 
-bool CISCOBULKFILEMIB::Cbfdefinefiletable::has_data() const
+bool CISCOBULKFILEMIB::CbfDefineFileTable::has_data() const
 {
-    for (std::size_t index=0; index<cbfdefinefileentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cbfdefinefileentry.len(); index++)
     {
         if(cbfdefinefileentry[index]->has_data())
             return true;
@@ -517,9 +523,9 @@ bool CISCOBULKFILEMIB::Cbfdefinefiletable::has_data() const
     return false;
 }
 
-bool CISCOBULKFILEMIB::Cbfdefinefiletable::has_operation() const
+bool CISCOBULKFILEMIB::CbfDefineFileTable::has_operation() const
 {
-    for (std::size_t index=0; index<cbfdefinefileentry.size(); index++)
+    for (std::size_t index=0; index<cbfdefinefileentry.len(); index++)
     {
         if(cbfdefinefileentry[index]->has_operation())
             return true;
@@ -527,21 +533,21 @@ bool CISCOBULKFILEMIB::Cbfdefinefiletable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOBULKFILEMIB::Cbfdefinefiletable::get_absolute_path() const
+std::string CISCOBULKFILEMIB::CbfDefineFileTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BULK-FILE-MIB:CISCO-BULK-FILE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBULKFILEMIB::Cbfdefinefiletable::get_segment_path() const
+std::string CISCOBULKFILEMIB::CbfDefineFileTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbfDefineFileTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfdefinefiletable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::CbfDefineFileTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -550,25 +556,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfdefinefileta
 
 }
 
-std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfdefinefiletable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBULKFILEMIB::CbfDefineFileTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbfDefineFileEntry")
     {
-        auto c = std::make_shared<CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry>();
+        auto c = std::make_shared<CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry>();
         c->parent = this;
-        cbfdefinefileentry.push_back(c);
+        cbfdefinefileentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfdefinefiletable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::CbfDefineFileTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cbfdefinefileentry)
+    for (auto c : cbfdefinefileentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -579,22 +585,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfdefinefileta
     return children;
 }
 
-void CISCOBULKFILEMIB::Cbfdefinefiletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBULKFILEMIB::CbfDefineFileTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOBULKFILEMIB::Cbfdefinefiletable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBULKFILEMIB::CbfDefineFileTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOBULKFILEMIB::Cbfdefinefiletable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBULKFILEMIB::CbfDefineFileTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbfDefineFileEntry")
         return true;
     return false;
 }
 
-CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefileentry()
+CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileEntry()
     :
     cbfdefinefileindex{YType::uint32, "cbfDefineFileIndex"},
     cbfdefinefilename{YType::str, "cbfDefineFileName"},
@@ -605,15 +611,16 @@ CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefileentry()
     cbfdefinefilenotifyoncompletion{YType::boolean, "cbfDefineFileNotifyOnCompletion"}
 {
 
-    yang_name = "cbfDefineFileEntry"; yang_parent_name = "cbfDefineFileTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbfDefineFileEntry"; yang_parent_name = "cbfDefineFileTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::~Cbfdefinefileentry()
+CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::~CbfDefineFileEntry()
 {
 }
 
-bool CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::has_data() const
+bool CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cbfdefinefileindex.is_set
 	|| cbfdefinefilename.is_set
 	|| cbfdefinefilestorage.is_set
@@ -623,7 +630,7 @@ bool CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::has_data() const
 	|| cbfdefinefilenotifyoncompletion.is_set;
 }
 
-bool CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::has_operation() const
+bool CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cbfdefinefileindex.yfilter)
@@ -635,21 +642,22 @@ bool CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::has_operation() c
 	|| ydk::is_set(cbfdefinefilenotifyoncompletion.yfilter);
 }
 
-std::string CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::get_absolute_path() const
+std::string CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BULK-FILE-MIB:CISCO-BULK-FILE-MIB/cbfDefineFileTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::get_segment_path() const
+std::string CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cbfDefineFileEntry" <<"[cbfDefineFileIndex='" <<cbfdefinefileindex <<"']";
+    path_buffer << "cbfDefineFileEntry";
+    ADD_KEY_TOKEN(cbfdefinefileindex, "cbfDefineFileIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -665,19 +673,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfdefinefileta
 
 }
 
-std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cbfDefineFileIndex")
     {
@@ -723,7 +731,7 @@ void CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::set_value(const s
     }
 }
 
-void CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cbfDefineFileIndex")
     {
@@ -755,26 +763,29 @@ void CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::set_filter(const 
     }
 }
 
-bool CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbfDefineFileIndex" || name == "cbfDefineFileName" || name == "cbfDefineFileStorage" || name == "cbfDefineFileFormat" || name == "cbfDefineFileNow" || name == "cbfDefineFileEntryStatus" || name == "cbfDefineFileNotifyOnCompletion")
         return true;
     return false;
 }
 
-CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjecttable()
+CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectTable()
+    :
+    cbfdefineobjectentry(this, {"cbfdefinefileindex", "cbfdefineobjectindex"})
 {
 
-    yang_name = "cbfDefineObjectTable"; yang_parent_name = "CISCO-BULK-FILE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbfDefineObjectTable"; yang_parent_name = "CISCO-BULK-FILE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBULKFILEMIB::Cbfdefineobjecttable::~Cbfdefineobjecttable()
+CISCOBULKFILEMIB::CbfDefineObjectTable::~CbfDefineObjectTable()
 {
 }
 
-bool CISCOBULKFILEMIB::Cbfdefineobjecttable::has_data() const
+bool CISCOBULKFILEMIB::CbfDefineObjectTable::has_data() const
 {
-    for (std::size_t index=0; index<cbfdefineobjectentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cbfdefineobjectentry.len(); index++)
     {
         if(cbfdefineobjectentry[index]->has_data())
             return true;
@@ -782,9 +793,9 @@ bool CISCOBULKFILEMIB::Cbfdefineobjecttable::has_data() const
     return false;
 }
 
-bool CISCOBULKFILEMIB::Cbfdefineobjecttable::has_operation() const
+bool CISCOBULKFILEMIB::CbfDefineObjectTable::has_operation() const
 {
-    for (std::size_t index=0; index<cbfdefineobjectentry.size(); index++)
+    for (std::size_t index=0; index<cbfdefineobjectentry.len(); index++)
     {
         if(cbfdefineobjectentry[index]->has_operation())
             return true;
@@ -792,21 +803,21 @@ bool CISCOBULKFILEMIB::Cbfdefineobjecttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOBULKFILEMIB::Cbfdefineobjecttable::get_absolute_path() const
+std::string CISCOBULKFILEMIB::CbfDefineObjectTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BULK-FILE-MIB:CISCO-BULK-FILE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBULKFILEMIB::Cbfdefineobjecttable::get_segment_path() const
+std::string CISCOBULKFILEMIB::CbfDefineObjectTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbfDefineObjectTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfdefineobjecttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::CbfDefineObjectTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -815,25 +826,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfdefineobject
 
 }
 
-std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfdefineobjecttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBULKFILEMIB::CbfDefineObjectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbfDefineObjectEntry")
     {
-        auto c = std::make_shared<CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry>();
+        auto c = std::make_shared<CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry>();
         c->parent = this;
-        cbfdefineobjectentry.push_back(c);
+        cbfdefineobjectentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfdefineobjecttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::CbfDefineObjectTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cbfdefineobjectentry)
+    for (auto c : cbfdefineobjectentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -844,22 +855,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfdefineobject
     return children;
 }
 
-void CISCOBULKFILEMIB::Cbfdefineobjecttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBULKFILEMIB::CbfDefineObjectTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOBULKFILEMIB::Cbfdefineobjecttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBULKFILEMIB::CbfDefineObjectTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOBULKFILEMIB::Cbfdefineobjecttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBULKFILEMIB::CbfDefineObjectTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbfDefineObjectEntry")
         return true;
     return false;
 }
 
-CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::Cbfdefineobjectentry()
+CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::CbfDefineObjectEntry()
     :
     cbfdefinefileindex{YType::str, "cbfDefineFileIndex"},
     cbfdefineobjectindex{YType::uint32, "cbfDefineObjectIndex"},
@@ -871,15 +882,16 @@ CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::Cbfdefineobjectent
     cbfdefineobjectlastpolledinst{YType::str, "cbfDefineObjectLastPolledInst"}
 {
 
-    yang_name = "cbfDefineObjectEntry"; yang_parent_name = "cbfDefineObjectTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbfDefineObjectEntry"; yang_parent_name = "cbfDefineObjectTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::~Cbfdefineobjectentry()
+CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::~CbfDefineObjectEntry()
 {
 }
 
-bool CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::has_data() const
+bool CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cbfdefinefileindex.is_set
 	|| cbfdefineobjectindex.is_set
 	|| cbfdefineobjectclass.is_set
@@ -890,7 +902,7 @@ bool CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::has_data() co
 	|| cbfdefineobjectlastpolledinst.is_set;
 }
 
-bool CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::has_operation() const
+bool CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cbfdefinefileindex.yfilter)
@@ -903,21 +915,23 @@ bool CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::has_operation
 	|| ydk::is_set(cbfdefineobjectlastpolledinst.yfilter);
 }
 
-std::string CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::get_absolute_path() const
+std::string CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BULK-FILE-MIB:CISCO-BULK-FILE-MIB/cbfDefineObjectTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::get_segment_path() const
+std::string CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cbfDefineObjectEntry" <<"[cbfDefineFileIndex='" <<cbfdefinefileindex <<"']" <<"[cbfDefineObjectIndex='" <<cbfdefineobjectindex <<"']";
+    path_buffer << "cbfDefineObjectEntry";
+    ADD_KEY_TOKEN(cbfdefinefileindex, "cbfDefineFileIndex");
+    ADD_KEY_TOKEN(cbfdefineobjectindex, "cbfDefineObjectIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -934,19 +948,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfdefineobject
 
 }
 
-std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cbfDefineFileIndex")
     {
@@ -998,7 +1012,7 @@ void CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::set_value(con
     }
 }
 
-void CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cbfDefineFileIndex")
     {
@@ -1034,26 +1048,29 @@ void CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::set_filter(co
     }
 }
 
-bool CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbfDefineFileIndex" || name == "cbfDefineObjectIndex" || name == "cbfDefineObjectClass" || name == "cbfDefineObjectID" || name == "cbfDefineObjectEntryStatus" || name == "cbfDefineObjectTableInstance" || name == "cbfDefineObjectNumEntries" || name == "cbfDefineObjectLastPolledInst")
         return true;
     return false;
 }
 
-CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfiletable()
+CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileTable()
+    :
+    cbfstatusfileentry(this, {"cbfdefinefileindex", "cbfstatusfileindex"})
 {
 
-    yang_name = "cbfStatusFileTable"; yang_parent_name = "CISCO-BULK-FILE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbfStatusFileTable"; yang_parent_name = "CISCO-BULK-FILE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBULKFILEMIB::Cbfstatusfiletable::~Cbfstatusfiletable()
+CISCOBULKFILEMIB::CbfStatusFileTable::~CbfStatusFileTable()
 {
 }
 
-bool CISCOBULKFILEMIB::Cbfstatusfiletable::has_data() const
+bool CISCOBULKFILEMIB::CbfStatusFileTable::has_data() const
 {
-    for (std::size_t index=0; index<cbfstatusfileentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cbfstatusfileentry.len(); index++)
     {
         if(cbfstatusfileentry[index]->has_data())
             return true;
@@ -1061,9 +1078,9 @@ bool CISCOBULKFILEMIB::Cbfstatusfiletable::has_data() const
     return false;
 }
 
-bool CISCOBULKFILEMIB::Cbfstatusfiletable::has_operation() const
+bool CISCOBULKFILEMIB::CbfStatusFileTable::has_operation() const
 {
-    for (std::size_t index=0; index<cbfstatusfileentry.size(); index++)
+    for (std::size_t index=0; index<cbfstatusfileentry.len(); index++)
     {
         if(cbfstatusfileentry[index]->has_operation())
             return true;
@@ -1071,21 +1088,21 @@ bool CISCOBULKFILEMIB::Cbfstatusfiletable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOBULKFILEMIB::Cbfstatusfiletable::get_absolute_path() const
+std::string CISCOBULKFILEMIB::CbfStatusFileTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BULK-FILE-MIB:CISCO-BULK-FILE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBULKFILEMIB::Cbfstatusfiletable::get_segment_path() const
+std::string CISCOBULKFILEMIB::CbfStatusFileTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbfStatusFileTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfstatusfiletable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::CbfStatusFileTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1094,25 +1111,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfstatusfileta
 
 }
 
-std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfstatusfiletable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBULKFILEMIB::CbfStatusFileTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbfStatusFileEntry")
     {
-        auto c = std::make_shared<CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry>();
+        auto c = std::make_shared<CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry>();
         c->parent = this;
-        cbfstatusfileentry.push_back(c);
+        cbfstatusfileentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfstatusfiletable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::CbfStatusFileTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cbfstatusfileentry)
+    for (auto c : cbfstatusfileentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1123,22 +1140,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfstatusfileta
     return children;
 }
 
-void CISCOBULKFILEMIB::Cbfstatusfiletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBULKFILEMIB::CbfStatusFileTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOBULKFILEMIB::Cbfstatusfiletable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBULKFILEMIB::CbfStatusFileTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOBULKFILEMIB::Cbfstatusfiletable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBULKFILEMIB::CbfStatusFileTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbfStatusFileEntry")
         return true;
     return false;
 }
 
-CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::Cbfstatusfileentry()
+CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileEntry()
     :
     cbfdefinefileindex{YType::str, "cbfDefineFileIndex"},
     cbfstatusfileindex{YType::uint32, "cbfStatusFileIndex"},
@@ -1147,15 +1164,16 @@ CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::Cbfstatusfileentry()
     cbfstatusfileentrystatus{YType::enumeration, "cbfStatusFileEntryStatus"}
 {
 
-    yang_name = "cbfStatusFileEntry"; yang_parent_name = "cbfStatusFileTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbfStatusFileEntry"; yang_parent_name = "cbfStatusFileTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::~Cbfstatusfileentry()
+CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::~CbfStatusFileEntry()
 {
 }
 
-bool CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::has_data() const
+bool CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cbfdefinefileindex.is_set
 	|| cbfstatusfileindex.is_set
 	|| cbfstatusfilestate.is_set
@@ -1163,7 +1181,7 @@ bool CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::has_data() const
 	|| cbfstatusfileentrystatus.is_set;
 }
 
-bool CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::has_operation() const
+bool CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cbfdefinefileindex.yfilter)
@@ -1173,21 +1191,23 @@ bool CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::has_operation() c
 	|| ydk::is_set(cbfstatusfileentrystatus.yfilter);
 }
 
-std::string CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::get_absolute_path() const
+std::string CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BULK-FILE-MIB:CISCO-BULK-FILE-MIB/cbfStatusFileTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::get_segment_path() const
+std::string CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cbfStatusFileEntry" <<"[cbfDefineFileIndex='" <<cbfdefinefileindex <<"']" <<"[cbfStatusFileIndex='" <<cbfstatusfileindex <<"']";
+    path_buffer << "cbfStatusFileEntry";
+    ADD_KEY_TOKEN(cbfdefinefileindex, "cbfDefineFileIndex");
+    ADD_KEY_TOKEN(cbfstatusfileindex, "cbfStatusFileIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1201,19 +1221,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBULKFILEMIB::Cbfstatusfileta
 
 }
 
-std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cbfDefineFileIndex")
     {
@@ -1247,7 +1267,7 @@ void CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::set_value(const s
     }
 }
 
-void CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cbfDefineFileIndex")
     {
@@ -1271,42 +1291,42 @@ void CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::set_filter(const 
     }
 }
 
-bool CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbfDefineFileIndex" || name == "cbfStatusFileIndex" || name == "cbfStatusFileState" || name == "cbfStatusFileCompletionTime" || name == "cbfStatusFileEntryStatus")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilestorage::ephemeral {1, "ephemeral"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilestorage::volatile_ {2, "volatile"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilestorage::permanent {3, "permanent"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileStorage::ephemeral {1, "ephemeral"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileStorage::volatile_ {2, "volatile"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileStorage::permanent {3, "permanent"};
 
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefileformat::standardBER {1, "standardBER"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefileformat::bulkBinary {2, "bulkBinary"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefileformat::bulkASCII {3, "bulkASCII"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefileformat::variantBERWithCksum {4, "variantBERWithCksum"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefileformat::variantBinWithCksum {5, "variantBinWithCksum"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileFormat::standardBER {1, "standardBER"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileFormat::bulkBinary {2, "bulkBinary"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileFormat::bulkASCII {3, "bulkASCII"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileFormat::variantBERWithCksum {4, "variantBERWithCksum"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileFormat::variantBinWithCksum {5, "variantBinWithCksum"};
 
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilenow::notActive {1, "notActive"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilenow::ready {2, "ready"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilenow::create {3, "create"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilenow::running {4, "running"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilenow::forcedCreate {5, "forcedCreate"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileNow::notActive {1, "notActive"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileNow::ready {2, "ready"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileNow::create {3, "create"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileNow::running {4, "running"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileNow::forcedCreate {5, "forcedCreate"};
 
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::Cbfdefineobjectclass::object {1, "object"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::Cbfdefineobjectclass::lexicalTable {2, "lexicalTable"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::Cbfdefineobjectclass::leastCpuTable {3, "leastCpuTable"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::CbfDefineObjectClass::object {1, "object"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::CbfDefineObjectClass::lexicalTable {2, "lexicalTable"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::CbfDefineObjectClass::leastCpuTable {3, "leastCpuTable"};
 
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::Cbfstatusfilestate::running {1, "running"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::Cbfstatusfilestate::ready {2, "ready"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::Cbfstatusfilestate::emptied {3, "emptied"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::Cbfstatusfilestate::noSpace {4, "noSpace"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::Cbfstatusfilestate::badName {5, "badName"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::Cbfstatusfilestate::writeErr {6, "writeErr"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::Cbfstatusfilestate::noMem {7, "noMem"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::Cbfstatusfilestate::buffErr {8, "buffErr"};
-const Enum::YLeaf CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::Cbfstatusfilestate::aborted {9, "aborted"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileState::running {1, "running"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileState::ready {2, "ready"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileState::emptied {3, "emptied"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileState::noSpace {4, "noSpace"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileState::badName {5, "badName"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileState::writeErr {6, "writeErr"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileState::noMem {7, "noMem"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileState::buffErr {8, "buffErr"};
+const Enum::YLeaf CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileState::aborted {9, "aborted"};
 
 
 }

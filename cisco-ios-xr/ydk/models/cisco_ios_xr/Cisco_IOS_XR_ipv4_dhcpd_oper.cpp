@@ -17,7 +17,7 @@ DhcpClient::DhcpClient()
 {
     nodes->parent = this;
 
-    yang_name = "dhcp-client"; yang_parent_name = "Cisco-IOS-XR-ipv4-dhcpd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "dhcp-client"; yang_parent_name = "Cisco-IOS-XR-ipv4-dhcpd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 DhcpClient::~DhcpClient()
@@ -26,6 +26,7 @@ DhcpClient::~DhcpClient()
 
 bool DhcpClient::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool DhcpClient::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 DhcpClient::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "dhcp-client"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "dhcp-client"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DhcpClient::Nodes::~Nodes()
@@ -129,7 +132,8 @@ DhcpClient::Nodes::~Nodes()
 
 bool DhcpClient::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool DhcpClient::Nodes::has_data() const
 
 bool DhcpClient::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> DhcpClient::Nodes::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<DhcpClient::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> DhcpClient::Nodes::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,14 +221,14 @@ bool DhcpClient::Nodes::has_leaf_or_child_of_name(const std::string & name) cons
 DhcpClient::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     client_stats(std::make_shared<DhcpClient::Nodes::Node::ClientStats>())
-	,clients(std::make_shared<DhcpClient::Nodes::Node::Clients>())
+    , clients(std::make_shared<DhcpClient::Nodes::Node::Clients>())
 {
     client_stats->parent = this;
     clients->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DhcpClient::Nodes::Node::~Node()
@@ -233,6 +237,7 @@ DhcpClient::Nodes::Node::~Node()
 
 bool DhcpClient::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (client_stats !=  nullptr && client_stats->has_data())
 	|| (clients !=  nullptr && clients->has_data());
@@ -256,7 +261,8 @@ std::string DhcpClient::Nodes::Node::get_absolute_path() const
 std::string DhcpClient::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -336,9 +342,11 @@ bool DhcpClient::Nodes::Node::has_leaf_or_child_of_name(const std::string & name
 }
 
 DhcpClient::Nodes::Node::ClientStats::ClientStats()
+    :
+    client_stat(this, {"client_ifhandle"})
 {
 
-    yang_name = "client-stats"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-stats"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 DhcpClient::Nodes::Node::ClientStats::~ClientStats()
@@ -347,7 +355,8 @@ DhcpClient::Nodes::Node::ClientStats::~ClientStats()
 
 bool DhcpClient::Nodes::Node::ClientStats::has_data() const
 {
-    for (std::size_t index=0; index<client_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client_stat.len(); index++)
     {
         if(client_stat[index]->has_data())
             return true;
@@ -357,7 +366,7 @@ bool DhcpClient::Nodes::Node::ClientStats::has_data() const
 
 bool DhcpClient::Nodes::Node::ClientStats::has_operation() const
 {
-    for (std::size_t index=0; index<client_stat.size(); index++)
+    for (std::size_t index=0; index<client_stat.len(); index++)
     {
         if(client_stat[index]->has_operation())
             return true;
@@ -387,7 +396,7 @@ std::shared_ptr<Entity> DhcpClient::Nodes::Node::ClientStats::get_child_by_name(
     {
         auto c = std::make_shared<DhcpClient::Nodes::Node::ClientStats::ClientStat>();
         c->parent = this;
-        client_stat.push_back(c);
+        client_stat.append(c);
         return c;
     }
 
@@ -399,7 +408,7 @@ std::map<std::string, std::shared_ptr<Entity>> DhcpClient::Nodes::Node::ClientSt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client_stat)
+    for (auto c : client_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -476,10 +485,11 @@ DhcpClient::Nodes::Node::ClientStats::ClientStat::ClientStat()
     num_invalid_packets{YType::uint32, "num-invalid-packets"},
     num_unicast_failed{YType::uint32, "num-unicast-failed"},
     num_broadcast_failed{YType::uint32, "num-broadcast-failed"},
-    num_xid_mismatch{YType::uint32, "num-xid-mismatch"}
+    num_xid_mismatch{YType::uint32, "num-xid-mismatch"},
+    num_vbind_failed{YType::uint32, "num-vbind-failed"}
 {
 
-    yang_name = "client-stat"; yang_parent_name = "client-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-stat"; yang_parent_name = "client-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 DhcpClient::Nodes::Node::ClientStats::ClientStat::~ClientStat()
@@ -488,6 +498,7 @@ DhcpClient::Nodes::Node::ClientStats::ClientStat::~ClientStat()
 
 bool DhcpClient::Nodes::Node::ClientStats::ClientStat::has_data() const
 {
+    if (is_presence_container) return true;
     return client_ifhandle.is_set
 	|| interface_name.is_set
 	|| num_events_received.is_set
@@ -537,7 +548,8 @@ bool DhcpClient::Nodes::Node::ClientStats::ClientStat::has_data() const
 	|| num_invalid_packets.is_set
 	|| num_unicast_failed.is_set
 	|| num_broadcast_failed.is_set
-	|| num_xid_mismatch.is_set;
+	|| num_xid_mismatch.is_set
+	|| num_vbind_failed.is_set;
 }
 
 bool DhcpClient::Nodes::Node::ClientStats::ClientStat::has_operation() const
@@ -592,13 +604,15 @@ bool DhcpClient::Nodes::Node::ClientStats::ClientStat::has_operation() const
 	|| ydk::is_set(num_invalid_packets.yfilter)
 	|| ydk::is_set(num_unicast_failed.yfilter)
 	|| ydk::is_set(num_broadcast_failed.yfilter)
-	|| ydk::is_set(num_xid_mismatch.yfilter);
+	|| ydk::is_set(num_xid_mismatch.yfilter)
+	|| ydk::is_set(num_vbind_failed.yfilter);
 }
 
 std::string DhcpClient::Nodes::Node::ClientStats::ClientStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client-stat" <<"[client-ifhandle='" <<client_ifhandle <<"']";
+    path_buffer << "client-stat";
+    ADD_KEY_TOKEN(client_ifhandle, "client-ifhandle");
     return path_buffer.str();
 }
 
@@ -656,6 +670,7 @@ std::vector<std::pair<std::string, LeafData> > DhcpClient::Nodes::Node::ClientSt
     if (num_unicast_failed.is_set || is_set(num_unicast_failed.yfilter)) leaf_name_data.push_back(num_unicast_failed.get_name_leafdata());
     if (num_broadcast_failed.is_set || is_set(num_broadcast_failed.yfilter)) leaf_name_data.push_back(num_broadcast_failed.get_name_leafdata());
     if (num_xid_mismatch.is_set || is_set(num_xid_mismatch.yfilter)) leaf_name_data.push_back(num_xid_mismatch.get_name_leafdata());
+    if (num_vbind_failed.is_set || is_set(num_vbind_failed.yfilter)) leaf_name_data.push_back(num_vbind_failed.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -975,6 +990,12 @@ void DhcpClient::Nodes::Node::ClientStats::ClientStat::set_value(const std::stri
         num_xid_mismatch.value_namespace = name_space;
         num_xid_mismatch.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "num-vbind-failed")
+    {
+        num_vbind_failed = value;
+        num_vbind_failed.value_namespace = name_space;
+        num_vbind_failed.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void DhcpClient::Nodes::Node::ClientStats::ClientStat::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1179,19 +1200,25 @@ void DhcpClient::Nodes::Node::ClientStats::ClientStat::set_filter(const std::str
     {
         num_xid_mismatch.yfilter = yfilter;
     }
+    if(value_path == "num-vbind-failed")
+    {
+        num_vbind_failed.yfilter = yfilter;
+    }
 }
 
 bool DhcpClient::Nodes::Node::ClientStats::ClientStat::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-ifhandle" || name == "interface-name" || name == "num-events-received" || name == "num-create-event-received" || name == "num-delete-event-received" || name == "num-reboot-event-received" || name == "num-reinit-event-received" || name == "num-packet-event-received" || name == "num-init-timer-eventi" || name == "num-t1-timer-event" || name == "num-t2-timer-event" || name == "num-lease-timer-event" || name == "num-vbind-timer-event" || name == "num-discovers-sent-successfully" || name == "num-requests-sent-successfully" || name == "num-releases-sent-successfully" || name == "num-renews-sent-successfully" || name == "num-rebinds-sent-successfully" || name == "num-declines-sent-successfully" || name == "num-request-after-reboot-sent" || name == "num-valid-offers-received" || name == "num-valid-acks-received" || name == "num-valid-nacks-received" || name == "num-unicast-packet-sent-successfully" || name == "num-broadcast-packet-sent-success" || name == "num-init-timer-start" || name == "num-init-timer-stop" || name == "num-t1-timer-start" || name == "num-t1-timer-stop" || name == "num-t2-timer-start" || name == "num-t2-timer-stop" || name == "num-lease-timer-start" || name == "num-lease-timer-stop" || name == "num-vbind-timer-start" || name == "num-vbind-timer-stop" || name == "num-invalid-events" || name == "num-discovers-failed" || name == "num-requests-failed" || name == "num-releases-failed" || name == "num-renews-failed" || name == "num-rebinds-failed" || name == "num-declines-failed" || name == "num-request-after-reboot-failed" || name == "num-invalid-offers" || name == "num-invalid-acks" || name == "num-invalid-nacks" || name == "num-invalid-packets" || name == "num-unicast-failed" || name == "num-broadcast-failed" || name == "num-xid-mismatch")
+    if(name == "client-ifhandle" || name == "interface-name" || name == "num-events-received" || name == "num-create-event-received" || name == "num-delete-event-received" || name == "num-reboot-event-received" || name == "num-reinit-event-received" || name == "num-packet-event-received" || name == "num-init-timer-eventi" || name == "num-t1-timer-event" || name == "num-t2-timer-event" || name == "num-lease-timer-event" || name == "num-vbind-timer-event" || name == "num-discovers-sent-successfully" || name == "num-requests-sent-successfully" || name == "num-releases-sent-successfully" || name == "num-renews-sent-successfully" || name == "num-rebinds-sent-successfully" || name == "num-declines-sent-successfully" || name == "num-request-after-reboot-sent" || name == "num-valid-offers-received" || name == "num-valid-acks-received" || name == "num-valid-nacks-received" || name == "num-unicast-packet-sent-successfully" || name == "num-broadcast-packet-sent-success" || name == "num-init-timer-start" || name == "num-init-timer-stop" || name == "num-t1-timer-start" || name == "num-t1-timer-stop" || name == "num-t2-timer-start" || name == "num-t2-timer-stop" || name == "num-lease-timer-start" || name == "num-lease-timer-stop" || name == "num-vbind-timer-start" || name == "num-vbind-timer-stop" || name == "num-invalid-events" || name == "num-discovers-failed" || name == "num-requests-failed" || name == "num-releases-failed" || name == "num-renews-failed" || name == "num-rebinds-failed" || name == "num-declines-failed" || name == "num-request-after-reboot-failed" || name == "num-invalid-offers" || name == "num-invalid-acks" || name == "num-invalid-nacks" || name == "num-invalid-packets" || name == "num-unicast-failed" || name == "num-broadcast-failed" || name == "num-xid-mismatch" || name == "num-vbind-failed")
         return true;
     return false;
 }
 
 DhcpClient::Nodes::Node::Clients::Clients()
+    :
+    client(this, {"client_ifhandle"})
 {
 
-    yang_name = "clients"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clients"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 DhcpClient::Nodes::Node::Clients::~Clients()
@@ -1200,7 +1227,8 @@ DhcpClient::Nodes::Node::Clients::~Clients()
 
 bool DhcpClient::Nodes::Node::Clients::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -1210,7 +1238,7 @@ bool DhcpClient::Nodes::Node::Clients::has_data() const
 
 bool DhcpClient::Nodes::Node::Clients::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -1240,7 +1268,7 @@ std::shared_ptr<Entity> DhcpClient::Nodes::Node::Clients::get_child_by_name(cons
     {
         auto c = std::make_shared<DhcpClient::Nodes::Node::Clients::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -1252,7 +1280,7 @@ std::map<std::string, std::shared_ptr<Entity>> DhcpClient::Nodes::Node::Clients:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1295,7 +1323,7 @@ DhcpClient::Nodes::Node::Clients::Client::Client()
     ipv4_address_configured{YType::boolean, "ipv4-address-configured"}
 {
 
-    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 DhcpClient::Nodes::Node::Clients::Client::~Client()
@@ -1304,6 +1332,7 @@ DhcpClient::Nodes::Node::Clients::Client::~Client()
 
 bool DhcpClient::Nodes::Node::Clients::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return client_ifhandle.is_set
 	|| interface_name.is_set
 	|| client_mac_address.is_set
@@ -1340,7 +1369,8 @@ bool DhcpClient::Nodes::Node::Clients::Client::has_operation() const
 std::string DhcpClient::Nodes::Node::Clients::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[client-ifhandle='" <<client_ifhandle <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(client_ifhandle, "client-ifhandle");
     return path_buffer.str();
 }
 
@@ -1526,12 +1556,12 @@ bool DhcpClient::Nodes::Node::Clients::Client::has_leaf_or_child_of_name(const s
 Ipv4Dhcpd::Ipv4Dhcpd()
     :
     snoop(std::make_shared<Ipv4Dhcpd::Snoop>())
-	,nodes(std::make_shared<Ipv4Dhcpd::Nodes>())
+    , nodes(std::make_shared<Ipv4Dhcpd::Nodes>())
 {
     snoop->parent = this;
     nodes->parent = this;
 
-    yang_name = "ipv4-dhcpd"; yang_parent_name = "Cisco-IOS-XR-ipv4-dhcpd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv4-dhcpd"; yang_parent_name = "Cisco-IOS-XR-ipv4-dhcpd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::~Ipv4Dhcpd()
@@ -1540,6 +1570,7 @@ Ipv4Dhcpd::~Ipv4Dhcpd()
 
 bool Ipv4Dhcpd::has_data() const
 {
+    if (is_presence_container) return true;
     return (snoop !=  nullptr && snoop->has_data())
 	|| (nodes !=  nullptr && nodes->has_data());
 }
@@ -1650,10 +1681,10 @@ bool Ipv4Dhcpd::has_leaf_or_child_of_name(const std::string & name) const
 Ipv4Dhcpd::Snoop::Snoop()
     :
     bindings(std::make_shared<Ipv4Dhcpd::Snoop::Bindings>())
-	,binding_statistics(std::make_shared<Ipv4Dhcpd::Snoop::BindingStatistics>())
-	,statistics_info(std::make_shared<Ipv4Dhcpd::Snoop::StatisticsInfo>())
-	,profiles(std::make_shared<Ipv4Dhcpd::Snoop::Profiles>())
-	,statistics(std::make_shared<Ipv4Dhcpd::Snoop::Statistics>())
+    , binding_statistics(std::make_shared<Ipv4Dhcpd::Snoop::BindingStatistics>())
+    , statistics_info(std::make_shared<Ipv4Dhcpd::Snoop::StatisticsInfo>())
+    , profiles(std::make_shared<Ipv4Dhcpd::Snoop::Profiles>())
+    , statistics(std::make_shared<Ipv4Dhcpd::Snoop::Statistics>())
 {
     bindings->parent = this;
     binding_statistics->parent = this;
@@ -1661,7 +1692,7 @@ Ipv4Dhcpd::Snoop::Snoop()
     profiles->parent = this;
     statistics->parent = this;
 
-    yang_name = "snoop"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snoop"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Snoop::~Snoop()
@@ -1670,6 +1701,7 @@ Ipv4Dhcpd::Snoop::~Snoop()
 
 bool Ipv4Dhcpd::Snoop::has_data() const
 {
+    if (is_presence_container) return true;
     return (bindings !=  nullptr && bindings->has_data())
 	|| (binding_statistics !=  nullptr && binding_statistics->has_data())
 	|| (statistics_info !=  nullptr && statistics_info->has_data())
@@ -1808,9 +1840,11 @@ bool Ipv4Dhcpd::Snoop::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ipv4Dhcpd::Snoop::Bindings::Bindings()
+    :
+    binding(this, {"client_uid"})
 {
 
-    yang_name = "bindings"; yang_parent_name = "snoop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bindings"; yang_parent_name = "snoop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Snoop::Bindings::~Bindings()
@@ -1819,7 +1853,8 @@ Ipv4Dhcpd::Snoop::Bindings::~Bindings()
 
 bool Ipv4Dhcpd::Snoop::Bindings::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -1829,7 +1864,7 @@ bool Ipv4Dhcpd::Snoop::Bindings::has_data() const
 
 bool Ipv4Dhcpd::Snoop::Bindings::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -1866,7 +1901,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::Bindings::get_child_by_name(const std:
     {
         auto c = std::make_shared<Ipv4Dhcpd::Snoop::Bindings::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -1878,7 +1913,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Snoop::Bindings::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1920,7 +1955,7 @@ Ipv4Dhcpd::Snoop::Bindings::Binding::Binding()
     snoop_binding_bridge_name{YType::str, "snoop-binding-bridge-name"}
 {
 
-    yang_name = "binding"; yang_parent_name = "bindings"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "binding"; yang_parent_name = "bindings"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Snoop::Bindings::Binding::~Binding()
@@ -1929,6 +1964,7 @@ Ipv4Dhcpd::Snoop::Bindings::Binding::~Binding()
 
 bool Ipv4Dhcpd::Snoop::Bindings::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return client_uid.is_set
 	|| snoop_binding_ch_addr.is_set
 	|| snoop_binding_ch_addr_len.is_set
@@ -1970,7 +2006,8 @@ std::string Ipv4Dhcpd::Snoop::Bindings::Binding::get_absolute_path() const
 std::string Ipv4Dhcpd::Snoop::Bindings::Binding::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "binding" <<"[client-uid='" <<client_uid <<"']";
+    path_buffer << "binding";
+    ADD_KEY_TOKEN(client_uid, "client-uid");
     return path_buffer.str();
 }
 
@@ -2148,7 +2185,7 @@ Ipv4Dhcpd::Snoop::BindingStatistics::BindingStatistics()
     snoop_binding_timestamp{YType::uint32, "snoop-binding-timestamp"}
 {
 
-    yang_name = "binding-statistics"; yang_parent_name = "snoop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "binding-statistics"; yang_parent_name = "snoop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Snoop::BindingStatistics::~BindingStatistics()
@@ -2157,6 +2194,7 @@ Ipv4Dhcpd::Snoop::BindingStatistics::~BindingStatistics()
 
 bool Ipv4Dhcpd::Snoop::BindingStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return snoop_binding_total.is_set
 	|| snoop_binding_timestamp.is_set;
 }
@@ -2245,7 +2283,7 @@ Ipv4Dhcpd::Snoop::StatisticsInfo::StatisticsInfo()
     snoop_stats_timestamp{YType::uint32, "snoop-stats-timestamp"}
 {
 
-    yang_name = "statistics-info"; yang_parent_name = "snoop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics-info"; yang_parent_name = "snoop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Snoop::StatisticsInfo::~StatisticsInfo()
@@ -2254,6 +2292,7 @@ Ipv4Dhcpd::Snoop::StatisticsInfo::~StatisticsInfo()
 
 bool Ipv4Dhcpd::Snoop::StatisticsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return snoop_stats_timestamp.is_set;
 }
 
@@ -2325,9 +2364,11 @@ bool Ipv4Dhcpd::Snoop::StatisticsInfo::has_leaf_or_child_of_name(const std::stri
 }
 
 Ipv4Dhcpd::Snoop::Profiles::Profiles()
+    :
+    profile(this, {"profile_name"})
 {
 
-    yang_name = "profiles"; yang_parent_name = "snoop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profiles"; yang_parent_name = "snoop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Snoop::Profiles::~Profiles()
@@ -2336,7 +2377,8 @@ Ipv4Dhcpd::Snoop::Profiles::~Profiles()
 
 bool Ipv4Dhcpd::Snoop::Profiles::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_data())
             return true;
@@ -2346,7 +2388,7 @@ bool Ipv4Dhcpd::Snoop::Profiles::has_data() const
 
 bool Ipv4Dhcpd::Snoop::Profiles::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_operation())
             return true;
@@ -2383,7 +2425,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::Profiles::get_child_by_name(const std:
     {
         auto c = std::make_shared<Ipv4Dhcpd::Snoop::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile.append(c);
         return c;
     }
 
@@ -2395,7 +2437,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Snoop::Profiles::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : profile)
+    for (auto c : profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2432,7 +2474,7 @@ Ipv4Dhcpd::Snoop::Profiles::Profile::Profile()
     snoop_profile_trusted{YType::uint8, "snoop-profile-trusted"}
 {
 
-    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Snoop::Profiles::Profile::~Profile()
@@ -2441,6 +2483,7 @@ Ipv4Dhcpd::Snoop::Profiles::Profile::~Profile()
 
 bool Ipv4Dhcpd::Snoop::Profiles::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| snoop_profile_name.is_set
 	|| snoop_profile_uid.is_set
@@ -2472,7 +2515,8 @@ std::string Ipv4Dhcpd::Snoop::Profiles::Profile::get_absolute_path() const
 std::string Ipv4Dhcpd::Snoop::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[profile-name='" <<profile_name <<"']";
+    path_buffer << "profile";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
@@ -2590,9 +2634,11 @@ bool Ipv4Dhcpd::Snoop::Profiles::Profile::has_leaf_or_child_of_name(const std::s
 }
 
 Ipv4Dhcpd::Snoop::Statistics::Statistics()
+    :
+    statistic(this, {"bridge_name"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "snoop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "snoop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Snoop::Statistics::~Statistics()
@@ -2601,7 +2647,8 @@ Ipv4Dhcpd::Snoop::Statistics::~Statistics()
 
 bool Ipv4Dhcpd::Snoop::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_data())
             return true;
@@ -2611,7 +2658,7 @@ bool Ipv4Dhcpd::Snoop::Statistics::has_data() const
 
 bool Ipv4Dhcpd::Snoop::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_operation())
             return true;
@@ -2648,7 +2695,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::Statistics::get_child_by_name(const st
     {
         auto c = std::make_shared<Ipv4Dhcpd::Snoop::Statistics::Statistic>();
         c->parent = this;
-        statistic.push_back(c);
+        statistic.append(c);
         return c;
     }
 
@@ -2660,7 +2707,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Snoop::Statistics::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistic)
+    for (auto c : statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2693,7 +2740,7 @@ Ipv4Dhcpd::Snoop::Statistics::Statistic::Statistic()
     snoop_statistic{YType::uint64, "snoop-statistic"}
 {
 
-    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Snoop::Statistics::Statistic::~Statistic()
@@ -2702,6 +2749,7 @@ Ipv4Dhcpd::Snoop::Statistics::Statistic::~Statistic()
 
 bool Ipv4Dhcpd::Snoop::Statistics::Statistic::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : snoop_statistic.getYLeafs())
     {
         if(leaf.is_set)
@@ -2734,7 +2782,8 @@ std::string Ipv4Dhcpd::Snoop::Statistics::Statistic::get_absolute_path() const
 std::string Ipv4Dhcpd::Snoop::Statistics::Statistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistic" <<"[bridge-name='" <<bridge_name <<"']";
+    path_buffer << "statistic";
+    ADD_KEY_TOKEN(bridge_name, "bridge-name");
     return path_buffer.str();
 }
 
@@ -2807,9 +2856,11 @@ bool Ipv4Dhcpd::Snoop::Statistics::Statistic::has_leaf_or_child_of_name(const st
 }
 
 Ipv4Dhcpd::Nodes::Nodes()
+    :
+    node(this, {"nodeid"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Nodes::~Nodes()
@@ -2818,7 +2869,8 @@ Ipv4Dhcpd::Nodes::~Nodes()
 
 bool Ipv4Dhcpd::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -2828,7 +2880,7 @@ bool Ipv4Dhcpd::Nodes::has_data() const
 
 bool Ipv4Dhcpd::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -2865,7 +2917,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -2877,7 +2929,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2906,12 +2958,12 @@ bool Ipv4Dhcpd::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Ipv4Dhcpd::Nodes::Node::Node()
     :
     nodeid{YType::str, "nodeid"}
-    	,
+        ,
     proxy(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy>())
-	,interfaces(std::make_shared<Ipv4Dhcpd::Nodes::Node::Interfaces>())
-	,base(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base>())
-	,server(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server>())
-	,relay(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay>())
+    , interfaces(std::make_shared<Ipv4Dhcpd::Nodes::Node::Interfaces>())
+    , base(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base>())
+    , server(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server>())
+    , relay(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay>())
 {
     proxy->parent = this;
     interfaces->parent = this;
@@ -2919,7 +2971,7 @@ Ipv4Dhcpd::Nodes::Node::Node()
     server->parent = this;
     relay->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Nodes::Node::~Node()
@@ -2928,6 +2980,7 @@ Ipv4Dhcpd::Nodes::Node::~Node()
 
 bool Ipv4Dhcpd::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return nodeid.is_set
 	|| (proxy !=  nullptr && proxy->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
@@ -2957,7 +3010,8 @@ std::string Ipv4Dhcpd::Nodes::Node::get_absolute_path() const
 std::string Ipv4Dhcpd::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[nodeid='" <<nodeid <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(nodeid, "nodeid");
     return path_buffer.str();
 }
 
@@ -3081,10 +3135,10 @@ bool Ipv4Dhcpd::Nodes::Node::has_leaf_or_child_of_name(const std::string & name)
 Ipv4Dhcpd::Nodes::Node::Proxy::Proxy()
     :
     statistics_info(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo>())
-	,vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs>())
-	,profiles(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles>())
-	,statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Statistics>())
-	,binding(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding>())
+    , vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs>())
+    , profiles(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles>())
+    , statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Statistics>())
+    , binding(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding>())
 {
     statistics_info->parent = this;
     vrfs->parent = this;
@@ -3092,7 +3146,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Proxy()
     statistics->parent = this;
     binding->parent = this;
 
-    yang_name = "proxy"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "proxy"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::~Proxy()
@@ -3101,6 +3155,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::~Proxy()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics_info !=  nullptr && statistics_info->has_data())
 	|| (vrfs !=  nullptr && vrfs->has_data())
 	|| (profiles !=  nullptr && profiles->has_data())
@@ -3236,7 +3291,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo::StatisticsInfo()
     proxy_stats_timestamp{YType::uint32, "proxy-stats-timestamp"}
 {
 
-    yang_name = "statistics-info"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics-info"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo::~StatisticsInfo()
@@ -3245,6 +3300,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo::~StatisticsInfo()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return proxy_stats_timestamp.is_set;
 }
 
@@ -3309,9 +3365,11 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo::has_leaf_or_child_of_name(co
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::~Vrfs()
@@ -3320,7 +3378,8 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::~Vrfs()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -3330,7 +3389,7 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -3360,7 +3419,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::get_child_by_name(c
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -3372,7 +3431,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3401,12 +3460,12 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::has_leaf_or_child_of_name(const std::s
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::~Vrf()
@@ -3415,6 +3474,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::~Vrf()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -3429,7 +3489,8 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::has_operation() const
 std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -3497,19 +3558,19 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::has_leaf_or_child_of_name(const s
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Statistics()
     :
     discover(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover>())
-	,offer(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer>())
-	,request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request>())
-	,decline(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline>())
-	,ack(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack>())
-	,nak(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak>())
-	,release(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release>())
-	,inform(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform>())
-	,lease_query(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery>())
-	,lease_not_assigned(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigned>())
-	,lease_unknown(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown>())
-	,lease_active(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive>())
-	,bootp_request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest>())
-	,bootp_reply(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply>())
+    , offer(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer>())
+    , request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request>())
+    , decline(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline>())
+    , ack(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack>())
+    , nak(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak>())
+    , release(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release>())
+    , inform(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform>())
+    , lease_query(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery>())
+    , lease_not_assigned(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigned>())
+    , lease_unknown(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown>())
+    , lease_active(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive>())
+    , bootp_request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest>())
+    , bootp_reply(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply>())
 {
     discover->parent = this;
     offer->parent = this;
@@ -3526,7 +3587,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Statistics()
     bootp_request->parent = this;
     bootp_reply->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::~Statistics()
@@ -3535,6 +3596,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::~Statistics()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (discover !=  nullptr && discover->has_data())
 	|| (offer !=  nullptr && offer->has_data())
 	|| (request !=  nullptr && request->has_data())
@@ -3816,7 +3878,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover::Discover()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "discover"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discover"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover::~Discover()
@@ -3825,6 +3887,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover::~Discover()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -3921,7 +3984,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer::Offer()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "offer"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "offer"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer::~Offer()
@@ -3930,6 +3993,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer::~Offer()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -4026,7 +4090,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request::Request()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "request"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "request"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request::~Request()
@@ -4035,6 +4099,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request::~Request()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -4131,7 +4196,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline::Decline()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "decline"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "decline"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline::~Decline()
@@ -4140,6 +4205,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline::~Decline()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -4236,7 +4302,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack::Ack()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "ack"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ack"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack::~Ack()
@@ -4245,6 +4311,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack::~Ack()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -4341,7 +4408,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak::Nak()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "nak"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nak"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak::~Nak()
@@ -4350,6 +4417,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak::~Nak()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -4446,7 +4514,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release::Release()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "release"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "release"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release::~Release()
@@ -4455,6 +4523,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release::~Release()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -4551,7 +4620,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform::Inform()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "inform"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inform"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform::~Inform()
@@ -4560,6 +4629,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform::~Inform()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -4656,7 +4726,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery::LeaseQuery()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-query"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-query"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery::~LeaseQuery()
@@ -4665,6 +4735,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery::~LeaseQuery()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -4761,7 +4832,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigned::LeaseNot
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-not-assigned"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-not-assigned"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigned::~LeaseNotAssigned()
@@ -4770,6 +4841,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigned::~LeaseNo
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigned::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -4866,7 +4938,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown::LeaseUnknown
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-unknown"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-unknown"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown::~LeaseUnknown()
@@ -4875,6 +4947,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown::~LeaseUnknow
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -4971,7 +5044,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive::LeaseActive()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-active"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-active"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive::~LeaseActive()
@@ -4980,6 +5053,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive::~LeaseActive(
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -5076,7 +5150,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest::BootpRequest
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "bootp-request"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bootp-request"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest::~BootpRequest()
@@ -5085,6 +5159,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest::~BootpReques
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -5181,7 +5256,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply::BootpReply()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "bootp-reply"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bootp-reply"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply::~BootpReply()
@@ -5190,6 +5265,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply::~BootpReply()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -5280,9 +5356,11 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply::has_leaf_
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profiles()
+    :
+    profile(this, {"profile_name"})
 {
 
-    yang_name = "profiles"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "profiles"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::~Profiles()
@@ -5291,7 +5369,8 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::~Profiles()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_data())
             return true;
@@ -5301,7 +5380,7 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_operation())
             return true;
@@ -5331,7 +5410,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::get_child_by_na
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile.append(c);
         return c;
     }
 
@@ -5343,7 +5422,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Pr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : profile)
+    for (auto c : profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5387,14 +5466,14 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::Profile()
     profile_helper_address{YType::str, "profile-helper-address"},
     vrf_name{YType::str, "vrf-name"},
     gi_addr{YType::str, "gi-addr"}
-    	,
+        ,
     vrf_references(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences>())
-	,interface_references(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences>())
+    , interface_references(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences>())
 {
     vrf_references->parent = this;
     interface_references->parent = this;
 
-    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::~Profile()
@@ -5403,6 +5482,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::~Profile()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : profile_helper_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -5476,7 +5556,8 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::has_operation() const
 std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[profile-name='" <<profile_name <<"']";
+    path_buffer << "profile";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
@@ -5718,9 +5799,11 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::has_leaf_or_child_of_name
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::VrfReferences()
+    :
+    ipv4_dhcpd_proxy_vrf_reference(this, {})
 {
 
-    yang_name = "vrf-references"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf-references"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::~VrfReferences()
@@ -5729,7 +5812,8 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::~VrfReferences(
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_proxy_vrf_reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_dhcpd_proxy_vrf_reference.len(); index++)
     {
         if(ipv4_dhcpd_proxy_vrf_reference[index]->has_data())
             return true;
@@ -5739,7 +5823,7 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::has_data()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_proxy_vrf_reference.size(); index++)
+    for (std::size_t index=0; index<ipv4_dhcpd_proxy_vrf_reference.len(); index++)
     {
         if(ipv4_dhcpd_proxy_vrf_reference[index]->has_operation())
             return true;
@@ -5769,7 +5853,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfRef
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference>();
         c->parent = this;
-        ipv4_dhcpd_proxy_vrf_reference.push_back(c);
+        ipv4_dhcpd_proxy_vrf_reference.append(c);
         return c;
     }
 
@@ -5781,7 +5865,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Pr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_dhcpd_proxy_vrf_reference)
+    for (auto c : ipv4_dhcpd_proxy_vrf_reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5812,7 +5896,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyV
     proxy_reference_vrf_name{YType::str, "proxy-reference-vrf-name"}
 {
 
-    yang_name = "ipv4-dhcpd-proxy-vrf-reference"; yang_parent_name = "vrf-references"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-dhcpd-proxy-vrf-reference"; yang_parent_name = "vrf-references"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::~Ipv4DhcpdProxyVrfReference()
@@ -5821,6 +5905,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyV
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::has_data() const
 {
+    if (is_presence_container) return true;
     return proxy_reference_vrf_name.is_set;
 }
 
@@ -5885,9 +5970,11 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdP
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::InterfaceReferences()
+    :
+    ipv4_dhcpd_proxy_interface_reference(this, {})
 {
 
-    yang_name = "interface-references"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-references"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::~InterfaceReferences()
@@ -5896,7 +5983,8 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::~Interfac
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_proxy_interface_reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_dhcpd_proxy_interface_reference.len(); index++)
     {
         if(ipv4_dhcpd_proxy_interface_reference[index]->has_data())
             return true;
@@ -5906,7 +5994,7 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::has_
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_proxy_interface_reference.size(); index++)
+    for (std::size_t index=0; index<ipv4_dhcpd_proxy_interface_reference.len(); index++)
     {
         if(ipv4_dhcpd_proxy_interface_reference[index]->has_operation())
             return true;
@@ -5936,7 +6024,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::Interf
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference>();
         c->parent = this;
-        ipv4_dhcpd_proxy_interface_reference.push_back(c);
+        ipv4_dhcpd_proxy_interface_reference.append(c);
         return c;
     }
 
@@ -5948,7 +6036,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Pr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_dhcpd_proxy_interface_reference)
+    for (auto c : ipv4_dhcpd_proxy_interface_reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5979,7 +6067,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4Dhcpd
     proxy_reference_interface_name{YType::str, "proxy-reference-interface-name"}
 {
 
-    yang_name = "ipv4-dhcpd-proxy-interface-reference"; yang_parent_name = "interface-references"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-dhcpd-proxy-interface-reference"; yang_parent_name = "interface-references"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::~Ipv4DhcpdProxyInterfaceReference()
@@ -5988,6 +6076,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4Dhcpd
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::has_data() const
 {
+    if (is_presence_container) return true;
     return proxy_reference_interface_name.is_set;
 }
 
@@ -6052,9 +6141,11 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Statistics()
+    :
+    ipv4_dhcpd_proxy_stat(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::~Statistics()
@@ -6063,7 +6154,8 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::~Statistics()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_proxy_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_dhcpd_proxy_stat.len(); index++)
     {
         if(ipv4_dhcpd_proxy_stat[index]->has_data())
             return true;
@@ -6073,7 +6165,7 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_proxy_stat.size(); index++)
+    for (std::size_t index=0; index<ipv4_dhcpd_proxy_stat.len(); index++)
     {
         if(ipv4_dhcpd_proxy_stat[index]->has_operation())
             return true;
@@ -6103,7 +6195,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::get_child_by_
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat>();
         c->parent = this;
-        ipv4_dhcpd_proxy_stat.push_back(c);
+        ipv4_dhcpd_proxy_stat.append(c);
         return c;
     }
 
@@ -6115,7 +6207,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::St
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_dhcpd_proxy_stat)
+    for (auto c : ipv4_dhcpd_proxy_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6144,12 +6236,12 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::has_leaf_or_child_of_name(const 
 Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Ipv4DhcpdProxyStat()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_>())
 {
     statistics->parent = this;
 
-    yang_name = "ipv4-dhcpd-proxy-stat"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-dhcpd-proxy-stat"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::~Ipv4DhcpdProxyStat()
@@ -6158,6 +6250,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::~Ipv4DhcpdProxySt
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -6244,7 +6337,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_::Stat
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "ipv4-dhcpd-proxy-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "ipv4-dhcpd-proxy-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_::~Statistics_()
@@ -6253,6 +6346,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_::~Sta
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -6345,12 +6439,12 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_:
 Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Binding()
     :
     clients(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients>())
-	,summary(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary>())
+    , summary(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary>())
 {
     clients->parent = this;
     summary->parent = this;
 
-    yang_name = "binding"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Binding::~Binding()
@@ -6359,6 +6453,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Binding::~Binding()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return (clients !=  nullptr && clients->has_data())
 	|| (summary !=  nullptr && summary->has_data());
 }
@@ -6442,9 +6537,11 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::has_leaf_or_child_of_name(const std
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Clients()
+    :
+    client(this, {"client_id"})
 {
 
-    yang_name = "clients"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clients"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::~Clients()
@@ -6453,7 +6550,8 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::~Clients()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -6463,7 +6561,7 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -6493,7 +6591,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::get_chi
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -6505,7 +6603,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Bi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6570,7 +6668,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::Client()
     event_history{YType::uint32, "event-history"}
 {
 
-    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::~Client()
@@ -6579,6 +6677,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::~Client()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : event_history.getYLeafs())
     {
         if(leaf.is_set)
@@ -6668,7 +6767,8 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::has_operation() co
 std::string Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[client-id='" <<client_id <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(client_id, "client-id");
     return path_buffer.str();
 }
 
@@ -7115,7 +7215,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary::Summary()
     restarting_clients{YType::uint32, "restarting-clients"}
 {
 
-    yang_name = "summary"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary::~Summary()
@@ -7124,6 +7224,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary::~Summary()
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return clients.is_set
 	|| initializing_clients.is_set
 	|| waiting_for_dpm_init.is_set
@@ -7422,9 +7523,11 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary::has_leaf_or_child_of_name(
 }
 
 Ipv4Dhcpd::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Interfaces::~Interfaces()
@@ -7433,7 +7536,8 @@ Ipv4Dhcpd::Nodes::Node::Interfaces::~Interfaces()
 
 bool Ipv4Dhcpd::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -7443,7 +7547,7 @@ bool Ipv4Dhcpd::Nodes::Node::Interfaces::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -7473,7 +7577,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Interfaces::get_child_by_name(co
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -7485,7 +7589,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Interface
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7525,7 +7629,7 @@ Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::Interface()
     mac_throttle{YType::boolean, "mac-throttle"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::~Interface()
@@ -7534,6 +7638,7 @@ Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| intf_ifhandle.is_set
 	|| vrf_name.is_set
@@ -7564,7 +7669,8 @@ bool Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::has_operation() const
 std::string Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -7717,10 +7823,10 @@ bool Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(co
 Ipv4Dhcpd::Nodes::Node::Base::Base()
     :
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Statistics>())
-	,issu_status(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::IssuStatus>())
-	,vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs>())
-	,profiles(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles>())
-	,database(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Database>())
+    , issu_status(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::IssuStatus>())
+    , vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs>())
+    , profiles(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles>())
+    , database(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Database>())
 {
     statistics->parent = this;
     issu_status->parent = this;
@@ -7728,7 +7834,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Base()
     profiles->parent = this;
     database->parent = this;
 
-    yang_name = "base"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::~Base()
@@ -7737,6 +7843,7 @@ Ipv4Dhcpd::Nodes::Node::Base::~Base()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data())
 	|| (issu_status !=  nullptr && issu_status->has_data())
 	|| (vrfs !=  nullptr && vrfs->has_data())
@@ -7868,9 +7975,11 @@ bool Ipv4Dhcpd::Nodes::Node::Base::has_leaf_or_child_of_name(const std::string &
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Statistics::Statistics()
+    :
+    ipv4_dhcpd_proxy_stat(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Statistics::~Statistics()
@@ -7879,7 +7988,8 @@ Ipv4Dhcpd::Nodes::Node::Base::Statistics::~Statistics()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_proxy_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_dhcpd_proxy_stat.len(); index++)
     {
         if(ipv4_dhcpd_proxy_stat[index]->has_data())
             return true;
@@ -7889,7 +7999,7 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Statistics::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_proxy_stat.size(); index++)
+    for (std::size_t index=0; index<ipv4_dhcpd_proxy_stat.len(); index++)
     {
         if(ipv4_dhcpd_proxy_stat[index]->has_operation())
             return true;
@@ -7919,7 +8029,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Statistics::get_child_by_n
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat>();
         c->parent = this;
-        ipv4_dhcpd_proxy_stat.push_back(c);
+        ipv4_dhcpd_proxy_stat.append(c);
         return c;
     }
 
@@ -7931,7 +8041,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Sta
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_dhcpd_proxy_stat)
+    for (auto c : ipv4_dhcpd_proxy_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7960,12 +8070,12 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Statistics::has_leaf_or_child_of_name(const s
 Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Ipv4DhcpdProxyStat()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statistics_>())
 {
     statistics->parent = this;
 
-    yang_name = "ipv4-dhcpd-proxy-stat"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-dhcpd-proxy-stat"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::~Ipv4DhcpdProxyStat()
@@ -7974,6 +8084,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::~Ipv4DhcpdProxySta
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -8060,7 +8171,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statistics_::Stati
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "ipv4-dhcpd-proxy-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "ipv4-dhcpd-proxy-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statistics_::~Statistics_()
@@ -8069,6 +8180,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statistics_::~Stat
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statistics_::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -8172,7 +8284,7 @@ Ipv4Dhcpd::Nodes::Node::Base::IssuStatus::IssuStatus()
     issu_ready_entries_replicate{YType::boolean, "issu-ready-entries-replicate"}
 {
 
-    yang_name = "issu-status"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "issu-status"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::IssuStatus::~IssuStatus()
@@ -8181,6 +8293,7 @@ Ipv4Dhcpd::Nodes::Node::Base::IssuStatus::~IssuStatus()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::IssuStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return issu_sync_complete_time.is_set
 	|| issu_sync_start_time.is_set
 	|| issu_ready_time.is_set
@@ -8362,9 +8475,11 @@ bool Ipv4Dhcpd::Nodes::Node::Base::IssuStatus::has_leaf_or_child_of_name(const s
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::~Vrfs()
@@ -8373,7 +8488,8 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::~Vrfs()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -8383,7 +8499,7 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -8413,7 +8529,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::get_child_by_name(co
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -8425,7 +8541,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8454,12 +8570,12 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::has_leaf_or_child_of_name(const std::st
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::~Vrf()
@@ -8468,6 +8584,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::~Vrf()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -8482,7 +8599,8 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::has_operation() const
 std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -8550,19 +8668,19 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::has_leaf_or_child_of_name(const st
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Statistics()
     :
     discover(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover>())
-	,offer(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer>())
-	,request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request>())
-	,decline(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline>())
-	,ack(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack>())
-	,nak(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak>())
-	,release(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release>())
-	,inform(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform>())
-	,lease_query(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery>())
-	,lease_not_assigned(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned>())
-	,lease_unknown(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown>())
-	,lease_active(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive>())
-	,bootp_request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest>())
-	,bootp_reply(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply>())
+    , offer(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer>())
+    , request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request>())
+    , decline(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline>())
+    , ack(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack>())
+    , nak(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak>())
+    , release(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release>())
+    , inform(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform>())
+    , lease_query(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery>())
+    , lease_not_assigned(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned>())
+    , lease_unknown(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown>())
+    , lease_active(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive>())
+    , bootp_request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest>())
+    , bootp_reply(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply>())
 {
     discover->parent = this;
     offer->parent = this;
@@ -8579,7 +8697,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Statistics()
     bootp_request->parent = this;
     bootp_reply->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::~Statistics()
@@ -8588,6 +8706,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::~Statistics()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (discover !=  nullptr && discover->has_data())
 	|| (offer !=  nullptr && offer->has_data())
 	|| (request !=  nullptr && request->has_data())
@@ -8869,7 +8988,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover::Discover()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "discover"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discover"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover::~Discover()
@@ -8878,6 +8997,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover::~Discover()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -8974,7 +9094,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer::Offer()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "offer"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "offer"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer::~Offer()
@@ -8983,6 +9103,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer::~Offer()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -9079,7 +9200,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request::Request()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "request"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "request"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request::~Request()
@@ -9088,6 +9209,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request::~Request()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -9184,7 +9306,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline::Decline()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "decline"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "decline"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline::~Decline()
@@ -9193,6 +9315,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline::~Decline()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -9289,7 +9412,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack::Ack()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "ack"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ack"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack::~Ack()
@@ -9298,6 +9421,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack::~Ack()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -9394,7 +9518,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak::Nak()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "nak"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nak"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak::~Nak()
@@ -9403,6 +9527,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak::~Nak()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -9499,7 +9624,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release::Release()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "release"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "release"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release::~Release()
@@ -9508,6 +9633,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release::~Release()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -9604,7 +9730,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform::Inform()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "inform"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inform"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform::~Inform()
@@ -9613,6 +9739,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform::~Inform()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -9709,7 +9836,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery::LeaseQuery()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-query"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-query"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery::~LeaseQuery()
@@ -9718,6 +9845,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery::~LeaseQuery()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -9814,7 +9942,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned::LeaseNotA
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-not-assigned"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-not-assigned"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned::~LeaseNotAssigned()
@@ -9823,6 +9951,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned::~LeaseNot
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -9919,7 +10048,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown::LeaseUnknown(
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-unknown"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-unknown"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown::~LeaseUnknown()
@@ -9928,6 +10057,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown::~LeaseUnknown
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -10024,7 +10154,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive::LeaseActive()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-active"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-active"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive::~LeaseActive()
@@ -10033,6 +10163,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive::~LeaseActive()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -10129,7 +10260,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest::BootpRequest(
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "bootp-request"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bootp-request"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest::~BootpRequest()
@@ -10138,6 +10269,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest::~BootpRequest
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -10234,7 +10366,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply::BootpReply()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "bootp-reply"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bootp-reply"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply::~BootpReply()
@@ -10243,6 +10375,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply::~BootpReply()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -10333,9 +10466,11 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply::has_leaf_o
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profiles()
+    :
+    profile(this, {"profile_name"})
 {
 
-    yang_name = "profiles"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "profiles"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Profiles::~Profiles()
@@ -10344,7 +10479,8 @@ Ipv4Dhcpd::Nodes::Node::Base::Profiles::~Profiles()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_data())
             return true;
@@ -10354,7 +10490,7 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_operation())
             return true;
@@ -10384,7 +10520,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::get_child_by_nam
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile.append(c);
         return c;
     }
 
@@ -10396,7 +10532,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Pro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : profile)
+    for (auto c : profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10431,14 +10567,14 @@ Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::Profile()
     remote_id{YType::str, "remote-id"},
     child_profile_count{YType::uint8, "child-profile-count"},
     intf_ref_count{YType::uint8, "intf-ref-count"}
-    	,
+        ,
     interface_references(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences>())
-	,child_profile_info(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo>())
+    , child_profile_info(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo>())
 {
     interface_references->parent = this;
     child_profile_info->parent = this;
 
-    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::~Profile()
@@ -10447,6 +10583,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::~Profile()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| base_default_profile_name.is_set
 	|| default_profile_mode.is_set
@@ -10475,7 +10612,8 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::has_operation() const
 std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[profile-name='" <<profile_name <<"']";
+    path_buffer << "profile";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
@@ -10621,9 +10759,11 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::has_leaf_or_child_of_name(
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::InterfaceReferences()
+    :
+    ipv4_dhcpd_base_interface_reference(this, {})
 {
 
-    yang_name = "interface-references"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-references"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::~InterfaceReferences()
@@ -10632,7 +10772,8 @@ Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::~Interface
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_base_interface_reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_dhcpd_base_interface_reference.len(); index++)
     {
         if(ipv4_dhcpd_base_interface_reference[index]->has_data())
             return true;
@@ -10642,7 +10783,7 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::has_d
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_base_interface_reference.size(); index++)
+    for (std::size_t index=0; index<ipv4_dhcpd_base_interface_reference.len(); index++)
     {
         if(ipv4_dhcpd_base_interface_reference[index]->has_operation())
             return true;
@@ -10672,7 +10813,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::Interfa
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference>();
         c->parent = this;
-        ipv4_dhcpd_base_interface_reference.push_back(c);
+        ipv4_dhcpd_base_interface_reference.append(c);
         return c;
     }
 
@@ -10684,7 +10825,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Pro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_dhcpd_base_interface_reference)
+    for (auto c : ipv4_dhcpd_base_interface_reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10715,7 +10856,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdB
     base_reference_interface_name{YType::str, "base-reference-interface-name"}
 {
 
-    yang_name = "ipv4-dhcpd-base-interface-reference"; yang_parent_name = "interface-references"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-dhcpd-base-interface-reference"; yang_parent_name = "interface-references"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::~Ipv4DhcpdBaseInterfaceReference()
@@ -10724,6 +10865,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdB
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::has_data() const
 {
+    if (is_presence_container) return true;
     return base_reference_interface_name.is_set;
 }
 
@@ -10788,9 +10930,11 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4D
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::ChildProfileInfo()
+    :
+    ipv4_dhcpd_base_child_profile_info(this, {})
 {
 
-    yang_name = "child-profile-info"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "child-profile-info"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::~ChildProfileInfo()
@@ -10799,7 +10943,8 @@ Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::~ChildProfile
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_base_child_profile_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_dhcpd_base_child_profile_info.len(); index++)
     {
         if(ipv4_dhcpd_base_child_profile_info[index]->has_data())
             return true;
@@ -10809,7 +10954,7 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::has_data
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_base_child_profile_info.size(); index++)
+    for (std::size_t index=0; index<ipv4_dhcpd_base_child_profile_info.len(); index++)
     {
         if(ipv4_dhcpd_base_child_profile_info[index]->has_operation())
             return true;
@@ -10839,7 +10984,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildPr
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo>();
         c->parent = this;
-        ipv4_dhcpd_base_child_profile_info.push_back(c);
+        ipv4_dhcpd_base_child_profile_info.append(c);
         return c;
     }
 
@@ -10851,7 +10996,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Pro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_dhcpd_base_child_profile_info)
+    for (auto c : ipv4_dhcpd_base_child_profile_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10886,7 +11031,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBase
     option_data{YType::str, "option-data"}
 {
 
-    yang_name = "ipv4-dhcpd-base-child-profile-info"; yang_parent_name = "child-profile-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-dhcpd-base-child-profile-info"; yang_parent_name = "child-profile-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::~Ipv4DhcpdBaseChildProfileInfo()
@@ -10895,6 +11040,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBase
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return base_child_profile_name.is_set
 	|| mode.is_set
 	|| matched_option_code.is_set
@@ -11030,7 +11176,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Database::Database()
     last_incremental_file_write_error_timestamp{YType::uint32, "last-incremental-file-write-error-timestamp"}
 {
 
-    yang_name = "database"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "database"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Base::Database::~Database()
@@ -11039,6 +11185,7 @@ Ipv4Dhcpd::Nodes::Node::Base::Database::~Database()
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Database::has_data() const
 {
+    if (is_presence_container) return true;
     return configured.is_set
 	|| version.is_set
 	|| full_file_write_interval.is_set
@@ -11300,10 +11447,10 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Database::has_leaf_or_child_of_name(const std
 Ipv4Dhcpd::Nodes::Node::Server::Server()
     :
     profiles(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Profiles>())
-	,statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Statistics>())
-	,binding(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Binding>())
-	,statistics_info(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo>())
-	,vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs>())
+    , statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Statistics>())
+    , binding(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Binding>())
+    , statistics_info(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo>())
+    , vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs>())
 {
     profiles->parent = this;
     statistics->parent = this;
@@ -11311,7 +11458,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Server()
     statistics_info->parent = this;
     vrfs->parent = this;
 
-    yang_name = "server"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::~Server()
@@ -11320,6 +11467,7 @@ Ipv4Dhcpd::Nodes::Node::Server::~Server()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return (profiles !=  nullptr && profiles->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (binding !=  nullptr && binding->has_data())
@@ -11451,9 +11599,11 @@ bool Ipv4Dhcpd::Nodes::Node::Server::has_leaf_or_child_of_name(const std::string
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profiles()
+    :
+    profile(this, {"server_profile_name"})
 {
 
-    yang_name = "profiles"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "profiles"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Profiles::~Profiles()
@@ -11462,7 +11612,8 @@ Ipv4Dhcpd::Nodes::Node::Server::Profiles::~Profiles()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Profiles::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_data())
             return true;
@@ -11472,7 +11623,7 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Profiles::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Profiles::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_operation())
             return true;
@@ -11502,7 +11653,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Profiles::get_child_by_n
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile.append(c);
         return c;
     }
 
@@ -11514,7 +11665,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : profile)
+    for (auto c : profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11571,7 +11722,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::Profile()
     server_profile_time_server{YType::str, "server-profile-time-server"}
 {
 
-    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::~Profile()
@@ -11580,6 +11731,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::~Profile()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : server_profile_dns.getYLeafs())
     {
         if(leaf.is_set)
@@ -11680,7 +11832,8 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::has_operation() const
 std::string Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[server-profile-name='" <<server_profile_name <<"']";
+    path_buffer << "profile";
+    ADD_KEY_TOKEN(server_profile_name, "server-profile-name");
     return path_buffer.str();
 }
 
@@ -12014,9 +12167,11 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::has_leaf_or_child_of_nam
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Statistics::Statistics()
+    :
+    ipv4_dhcpd_proxy_stat(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Statistics::~Statistics()
@@ -12025,7 +12180,8 @@ Ipv4Dhcpd::Nodes::Node::Server::Statistics::~Statistics()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_proxy_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_dhcpd_proxy_stat.len(); index++)
     {
         if(ipv4_dhcpd_proxy_stat[index]->has_data())
             return true;
@@ -12035,7 +12191,7 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Statistics::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_proxy_stat.size(); index++)
+    for (std::size_t index=0; index<ipv4_dhcpd_proxy_stat.len(); index++)
     {
         if(ipv4_dhcpd_proxy_stat[index]->has_operation())
             return true;
@@ -12065,7 +12221,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Statistics::get_child_by
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat>();
         c->parent = this;
-        ipv4_dhcpd_proxy_stat.push_back(c);
+        ipv4_dhcpd_proxy_stat.append(c);
         return c;
     }
 
@@ -12077,7 +12233,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_dhcpd_proxy_stat)
+    for (auto c : ipv4_dhcpd_proxy_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12106,12 +12262,12 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Statistics::has_leaf_or_child_of_name(const
 Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Ipv4DhcpdProxyStat()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_>())
 {
     statistics->parent = this;
 
-    yang_name = "ipv4-dhcpd-proxy-stat"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-dhcpd-proxy-stat"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::~Ipv4DhcpdProxyStat()
@@ -12120,6 +12276,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::~Ipv4DhcpdProxyS
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -12206,7 +12363,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_::Sta
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "ipv4-dhcpd-proxy-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "ipv4-dhcpd-proxy-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_::~Statistics_()
@@ -12215,6 +12372,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_::~St
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -12307,12 +12465,12 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_
 Ipv4Dhcpd::Nodes::Node::Server::Binding::Binding()
     :
     summary(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary>())
-	,clients(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients>())
+    , clients(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients>())
 {
     summary->parent = this;
     clients->parent = this;
 
-    yang_name = "binding"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Binding::~Binding()
@@ -12321,6 +12479,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Binding::~Binding()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (clients !=  nullptr && clients->has_data());
 }
@@ -12426,7 +12585,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary::Summary()
     restarting_clients{YType::uint32, "restarting-clients"}
 {
 
-    yang_name = "summary"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary::~Summary()
@@ -12435,6 +12594,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary::~Summary()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return clients.is_set
 	|| initializing_clients.is_set
 	|| waiting_for_dpm_init.is_set
@@ -12733,9 +12893,11 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary::has_leaf_or_child_of_name
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Clients()
+    :
+    client(this, {"client_id"})
 {
 
-    yang_name = "clients"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clients"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::~Clients()
@@ -12744,7 +12906,8 @@ Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::~Clients()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -12754,7 +12917,7 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -12784,7 +12947,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::get_ch
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -12796,7 +12959,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::B
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12861,7 +13024,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::Client()
     event_history{YType::uint32, "event-history"}
 {
 
-    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::~Client()
@@ -12870,6 +13033,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::~Client()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : event_history.getYLeafs())
     {
         if(leaf.is_set)
@@ -12959,7 +13123,8 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::has_operation() c
 std::string Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[client-id='" <<client_id <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(client_id, "client-id");
     return path_buffer.str();
 }
 
@@ -13388,7 +13553,7 @@ Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo::StatisticsInfo()
     proxy_stats_timestamp{YType::uint32, "proxy-stats-timestamp"}
 {
 
-    yang_name = "statistics-info"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics-info"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo::~StatisticsInfo()
@@ -13397,6 +13562,7 @@ Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo::~StatisticsInfo()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return proxy_stats_timestamp.is_set;
 }
 
@@ -13461,9 +13627,11 @@ bool Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo::has_leaf_or_child_of_name(c
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::~Vrfs()
@@ -13472,7 +13640,8 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::~Vrfs()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -13482,7 +13651,7 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -13512,7 +13681,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::get_child_by_name(
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -13524,7 +13693,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13553,12 +13722,12 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::has_leaf_or_child_of_name(const std::
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::~Vrf()
@@ -13567,6 +13736,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::~Vrf()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -13581,7 +13751,8 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::has_operation() const
 std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -13649,19 +13820,19 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::has_leaf_or_child_of_name(const 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Statistics()
     :
     discover(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover>())
-	,offer(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer>())
-	,request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request>())
-	,decline(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline>())
-	,ack(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack>())
-	,nak(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak>())
-	,release(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release>())
-	,inform(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform>())
-	,lease_query(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery>())
-	,lease_not_assigned(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssigned>())
-	,lease_unknown(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown>())
-	,lease_active(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive>())
-	,bootp_request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest>())
-	,bootp_reply(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply>())
+    , offer(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer>())
+    , request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request>())
+    , decline(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline>())
+    , ack(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack>())
+    , nak(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak>())
+    , release(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release>())
+    , inform(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform>())
+    , lease_query(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery>())
+    , lease_not_assigned(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssigned>())
+    , lease_unknown(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown>())
+    , lease_active(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive>())
+    , bootp_request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest>())
+    , bootp_reply(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply>())
 {
     discover->parent = this;
     offer->parent = this;
@@ -13678,7 +13849,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Statistics()
     bootp_request->parent = this;
     bootp_reply->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::~Statistics()
@@ -13687,6 +13858,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::~Statistics()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (discover !=  nullptr && discover->has_data())
 	|| (offer !=  nullptr && offer->has_data())
 	|| (request !=  nullptr && request->has_data())
@@ -13968,7 +14140,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover::Discover()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "discover"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discover"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover::~Discover()
@@ -13977,6 +14149,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover::~Discover()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -14073,7 +14246,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer::Offer()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "offer"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "offer"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer::~Offer()
@@ -14082,6 +14255,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer::~Offer()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -14178,7 +14352,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request::Request()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "request"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "request"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request::~Request()
@@ -14187,6 +14361,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request::~Request()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -14283,7 +14458,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline::Decline()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "decline"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "decline"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline::~Decline()
@@ -14292,6 +14467,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline::~Decline()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -14388,7 +14564,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack::Ack()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "ack"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ack"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack::~Ack()
@@ -14397,6 +14573,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack::~Ack()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -14493,7 +14670,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak::Nak()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "nak"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nak"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak::~Nak()
@@ -14502,6 +14679,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak::~Nak()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -14598,7 +14776,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release::Release()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "release"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "release"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release::~Release()
@@ -14607,6 +14785,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release::~Release()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -14703,7 +14882,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform::Inform()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "inform"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inform"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform::~Inform()
@@ -14712,6 +14891,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform::~Inform()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -14808,7 +14988,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery::LeaseQuery()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-query"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-query"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery::~LeaseQuery()
@@ -14817,6 +14997,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery::~LeaseQuery()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -14913,7 +15094,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssigned::LeaseNo
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-not-assigned"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-not-assigned"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssigned::~LeaseNotAssigned()
@@ -14922,6 +15103,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssigned::~LeaseN
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssigned::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -15018,7 +15200,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown::LeaseUnknow
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-unknown"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-unknown"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown::~LeaseUnknown()
@@ -15027,6 +15209,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown::~LeaseUnkno
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -15123,7 +15306,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive::LeaseActive(
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-active"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-active"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive::~LeaseActive()
@@ -15132,6 +15315,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive::~LeaseActive
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -15228,7 +15412,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest::BootpReques
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "bootp-request"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bootp-request"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest::~BootpRequest()
@@ -15237,6 +15421,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest::~BootpReque
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -15333,7 +15518,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply::BootpReply()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "bootp-reply"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bootp-reply"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply::~BootpReply()
@@ -15342,6 +15527,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply::~BootpReply()
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -15434,16 +15620,16 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply::has_leaf
 Ipv4Dhcpd::Nodes::Node::Relay::Relay()
     :
     profiles(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Profiles>())
-	,statistics_info(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo>())
-	,statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Statistics>())
-	,vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs>())
+    , statistics_info(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo>())
+    , statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Statistics>())
+    , vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs>())
 {
     profiles->parent = this;
     statistics_info->parent = this;
     statistics->parent = this;
     vrfs->parent = this;
 
-    yang_name = "relay"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "relay"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::~Relay()
@@ -15452,6 +15638,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::~Relay()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::has_data() const
 {
+    if (is_presence_container) return true;
     return (profiles !=  nullptr && profiles->has_data())
 	|| (statistics_info !=  nullptr && statistics_info->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
@@ -15567,9 +15754,11 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::has_leaf_or_child_of_name(const std::string 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profiles()
+    :
+    profile(this, {"profile_name"})
 {
 
-    yang_name = "profiles"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "profiles"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Profiles::~Profiles()
@@ -15578,7 +15767,8 @@ Ipv4Dhcpd::Nodes::Node::Relay::Profiles::~Profiles()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Profiles::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_data())
             return true;
@@ -15588,7 +15778,7 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::Profiles::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Profiles::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_operation())
             return true;
@@ -15618,7 +15808,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Profiles::get_child_by_na
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile.append(c);
         return c;
     }
 
@@ -15630,7 +15820,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Pr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : profile)
+    for (auto c : profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15676,7 +15866,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::Profile()
     relay_profile_gi_addr{YType::str, "relay-profile-gi-addr"}
 {
 
-    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::~Profile()
@@ -15685,6 +15875,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::~Profile()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : relay_profile_helper_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -15754,7 +15945,8 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::has_operation() const
 std::string Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[profile-name='" <<profile_name <<"']";
+    path_buffer << "profile";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
@@ -15972,7 +16164,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo::StatisticsInfo()
     relay_stats_timestamp{YType::uint32, "relay-stats-timestamp"}
 {
 
-    yang_name = "statistics-info"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics-info"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo::~StatisticsInfo()
@@ -15981,6 +16173,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo::~StatisticsInfo()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return relay_stats_timestamp.is_set;
 }
 
@@ -16045,9 +16238,11 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo::has_leaf_or_child_of_name(co
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Statistics()
+    :
+    ipv4_dhcpd_relay_stat(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Statistics::~Statistics()
@@ -16056,7 +16251,8 @@ Ipv4Dhcpd::Nodes::Node::Relay::Statistics::~Statistics()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_relay_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_dhcpd_relay_stat.len(); index++)
     {
         if(ipv4_dhcpd_relay_stat[index]->has_data())
             return true;
@@ -16066,7 +16262,7 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::Statistics::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_dhcpd_relay_stat.size(); index++)
+    for (std::size_t index=0; index<ipv4_dhcpd_relay_stat.len(); index++)
     {
         if(ipv4_dhcpd_relay_stat[index]->has_operation())
             return true;
@@ -16096,7 +16292,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Statistics::get_child_by_
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat>();
         c->parent = this;
-        ipv4_dhcpd_relay_stat.push_back(c);
+        ipv4_dhcpd_relay_stat.append(c);
         return c;
     }
 
@@ -16108,7 +16304,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::St
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_dhcpd_relay_stat)
+    for (auto c : ipv4_dhcpd_relay_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16137,12 +16333,12 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::Statistics::has_leaf_or_child_of_name(const 
 Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Ipv4DhcpdRelayStat()
     :
     relay_statistics_vrf_name{YType::str, "relay-statistics-vrf-name"}
-    	,
+        ,
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_>())
 {
     statistics->parent = this;
 
-    yang_name = "ipv4-dhcpd-relay-stat"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-dhcpd-relay-stat"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::~Ipv4DhcpdRelayStat()
@@ -16151,6 +16347,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::~Ipv4DhcpdRelaySt
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::has_data() const
 {
+    if (is_presence_container) return true;
     return relay_statistics_vrf_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -16237,7 +16434,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_::Stat
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "ipv4-dhcpd-relay-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "ipv4-dhcpd-relay-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_::~Statistics_()
@@ -16246,6 +16443,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_::~Sta
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -16336,9 +16534,11 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_:
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::~Vrfs()
@@ -16347,7 +16547,8 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::~Vrfs()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -16357,7 +16558,7 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::has_data() const
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -16387,7 +16588,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::get_child_by_name(c
     {
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -16399,7 +16600,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16428,12 +16629,12 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::has_leaf_or_child_of_name(const std::s
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     vrf_statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics>())
 {
     vrf_statistics->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::~Vrf()
@@ -16442,6 +16643,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::~Vrf()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (vrf_statistics !=  nullptr && vrf_statistics->has_data());
 }
@@ -16456,7 +16658,8 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::has_operation() const
 std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -16524,19 +16727,19 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::has_leaf_or_child_of_name(const s
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::VrfStatistics()
     :
     discover(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover>())
-	,offer(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer>())
-	,request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request>())
-	,decline(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline>())
-	,ack(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack>())
-	,nak(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak>())
-	,release(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release>())
-	,inform(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform>())
-	,lease_query(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery>())
-	,lease_not_assigned(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssigned>())
-	,lease_unknown(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown>())
-	,lease_active(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive>())
-	,bootp_request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest>())
-	,bootp_reply(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply>())
+    , offer(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer>())
+    , request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request>())
+    , decline(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline>())
+    , ack(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack>())
+    , nak(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak>())
+    , release(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release>())
+    , inform(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform>())
+    , lease_query(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery>())
+    , lease_not_assigned(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssigned>())
+    , lease_unknown(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown>())
+    , lease_active(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive>())
+    , bootp_request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest>())
+    , bootp_reply(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply>())
 {
     discover->parent = this;
     offer->parent = this;
@@ -16553,7 +16756,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::VrfStatistics()
     bootp_request->parent = this;
     bootp_reply->parent = this;
 
-    yang_name = "vrf-statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf-statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::~VrfStatistics()
@@ -16562,6 +16765,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::~VrfStatistics()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (discover !=  nullptr && discover->has_data())
 	|| (offer !=  nullptr && offer->has_data())
 	|| (request !=  nullptr && request->has_data())
@@ -16843,7 +17047,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover::Discover()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "discover"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discover"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover::~Discover()
@@ -16852,6 +17056,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover::~Discover()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -16948,7 +17153,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer::Offer()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "offer"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "offer"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer::~Offer()
@@ -16957,6 +17162,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer::~Offer()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -17053,7 +17259,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request::Request()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "request"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "request"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request::~Request()
@@ -17062,6 +17268,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request::~Request()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -17158,7 +17365,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline::Decline()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "decline"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "decline"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline::~Decline()
@@ -17167,6 +17374,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline::~Decline()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -17263,7 +17471,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack::Ack()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "ack"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ack"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack::~Ack()
@@ -17272,6 +17480,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack::~Ack()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -17368,7 +17577,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak::Nak()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "nak"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nak"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak::~Nak()
@@ -17377,6 +17586,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak::~Nak()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -17473,7 +17683,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release::Release()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "release"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "release"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release::~Release()
@@ -17482,6 +17692,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release::~Release()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -17578,7 +17789,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform::Inform()
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "inform"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inform"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform::~Inform()
@@ -17587,6 +17798,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform::~Inform()
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -17683,7 +17895,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery::LeaseQuery(
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-query"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-query"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery::~LeaseQuery()
@@ -17692,6 +17904,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery::~LeaseQuery
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -17788,7 +18001,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssigned::Lease
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-not-assigned"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-not-assigned"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssigned::~LeaseNotAssigned()
@@ -17797,6 +18010,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssigned::~Leas
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssigned::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -17893,7 +18107,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown::LeaseUnkn
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-unknown"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-unknown"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown::~LeaseUnknown()
@@ -17902,6 +18116,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown::~LeaseUnk
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -17998,7 +18213,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive::LeaseActiv
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "lease-active"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-active"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive::~LeaseActive()
@@ -18007,6 +18222,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive::~LeaseActi
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -18103,7 +18319,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest::BootpRequ
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "bootp-request"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bootp-request"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest::~BootpRequest()
@@ -18112,6 +18328,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest::~BootpReq
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -18208,7 +18425,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply::BootpReply(
     dropped_packets{YType::uint64, "dropped-packets"}
 {
 
-    yang_name = "bootp-reply"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bootp-reply"; yang_parent_name = "vrf-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply::~BootpReply()
@@ -18217,6 +18434,7 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply::~BootpReply
 
 bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| transmitted_packets.is_set
 	|| dropped_packets.is_set;
@@ -18306,6 +18524,33 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply::has_le
     return false;
 }
 
+const Enum::YLeaf DhcpIssuVersion::version1 {0, "version1"};
+const Enum::YLeaf DhcpIssuVersion::version2 {1, "version2"};
+
+const Enum::YLeaf DhcpIssuRole::role_primary {0, "role-primary"};
+const Enum::YLeaf DhcpIssuRole::role_secondary {1, "role-secondary"};
+
+const Enum::YLeaf ProxyLeaseLimit::none {0, "none"};
+const Enum::YLeaf ProxyLeaseLimit::interface {1, "interface"};
+const Enum::YLeaf ProxyLeaseLimit::circuit_id {2, "circuit-id"};
+const Enum::YLeaf ProxyLeaseLimit::remote_id {3, "remote-id"};
+const Enum::YLeaf ProxyLeaseLimit::remote_id_circuit_id {4, "remote-id-circuit-id"};
+
+const Enum::YLeaf DhcpIssuPhase::phase_not_started {0, "phase-not-started"};
+const Enum::YLeaf DhcpIssuPhase::phase_load {1, "phase-load"};
+const Enum::YLeaf DhcpIssuPhase::phase_run {2, "phase-run"};
+const Enum::YLeaf DhcpIssuPhase::phase_completed {3, "phase-completed"};
+const Enum::YLeaf DhcpIssuPhase::phase_aborted {4, "phase-aborted"};
+
+const Enum::YLeaf RelayInfoPolicy::replace {0, "replace"};
+const Enum::YLeaf RelayInfoPolicy::keep {1, "keep"};
+const Enum::YLeaf RelayInfoPolicy::drop {2, "drop"};
+const Enum::YLeaf RelayInfoPolicy::encapsulate {3, "encapsulate"};
+
+const Enum::YLeaf BagDhcpdIntfSrgRole::none {0, "none"};
+const Enum::YLeaf BagDhcpdIntfSrgRole::master {1, "master"};
+const Enum::YLeaf BagDhcpdIntfSrgRole::slave {2, "slave"};
+
 const Enum::YLeaf DhcpcIpv4State::init {0, "init"};
 const Enum::YLeaf DhcpcIpv4State::init_reboot {1, "init-reboot"};
 const Enum::YLeaf DhcpcIpv4State::rebooting {2, "rebooting"};
@@ -18315,22 +18560,6 @@ const Enum::YLeaf DhcpcIpv4State::bound {5, "bound"};
 const Enum::YLeaf DhcpcIpv4State::renewing {6, "renewing"};
 const Enum::YLeaf DhcpcIpv4State::rebinding {7, "rebinding"};
 const Enum::YLeaf DhcpcIpv4State::invalid {8, "invalid"};
-
-const Enum::YLeaf DhcpIssuVersion::version1 {0, "version1"};
-const Enum::YLeaf DhcpIssuVersion::version2 {1, "version2"};
-
-const Enum::YLeaf DhcpIssuPhase::phase_not_started {0, "phase-not-started"};
-const Enum::YLeaf DhcpIssuPhase::phase_load {1, "phase-load"};
-const Enum::YLeaf DhcpIssuPhase::phase_run {2, "phase-run"};
-const Enum::YLeaf DhcpIssuPhase::phase_completed {3, "phase-completed"};
-const Enum::YLeaf DhcpIssuPhase::phase_aborted {4, "phase-aborted"};
-
-const Enum::YLeaf DhcpIssuRole::role_primary {0, "role-primary"};
-const Enum::YLeaf DhcpIssuRole::role_secondary {1, "role-secondary"};
-
-const Enum::YLeaf BagDhcpdIntfSrgRole::none {0, "none"};
-const Enum::YLeaf BagDhcpdIntfSrgRole::master {1, "master"};
-const Enum::YLeaf BagDhcpdIntfSrgRole::slave {2, "slave"};
 
 const Enum::YLeaf BagDhcpdProxyState::initializing {0, "initializing"};
 const Enum::YLeaf BagDhcpdProxyState::selecting {1, "selecting"};
@@ -18350,26 +18579,15 @@ const Enum::YLeaf BagDhcpdProxyState::request_dpm {14, "request-dpm"};
 const Enum::YLeaf BagDhcpdProxyState::change_addr_dpm {15, "change-addr-dpm"};
 const Enum::YLeaf BagDhcpdProxyState::max {16, "max"};
 
-const Enum::YLeaf ProxyLeaseLimit::none {0, "none"};
-const Enum::YLeaf ProxyLeaseLimit::interface {1, "interface"};
-const Enum::YLeaf ProxyLeaseLimit::circuit_id {2, "circuit-id"};
-const Enum::YLeaf ProxyLeaseLimit::remote_id {3, "remote-id"};
-const Enum::YLeaf ProxyLeaseLimit::remote_id_circuit_id {4, "remote-id-circuit-id"};
-
-const Enum::YLeaf BroadcastFlag::ignore {0, "ignore"};
-const Enum::YLeaf BroadcastFlag::check {1, "check"};
-const Enum::YLeaf BroadcastFlag::unicast_always {2, "unicast-always"};
-
 const Enum::YLeaf RelayInfoVpnMode::rfc {0, "rfc"};
 const Enum::YLeaf RelayInfoVpnMode::cisco {1, "cisco"};
 
 const Enum::YLeaf RelayInfoAuthenticate::received {0, "received"};
 const Enum::YLeaf RelayInfoAuthenticate::inserted {1, "inserted"};
 
-const Enum::YLeaf RelayInfoPolicy::replace {0, "replace"};
-const Enum::YLeaf RelayInfoPolicy::keep {1, "keep"};
-const Enum::YLeaf RelayInfoPolicy::drop {2, "drop"};
-const Enum::YLeaf RelayInfoPolicy::encapsulate {3, "encapsulate"};
+const Enum::YLeaf BroadcastFlag::ignore {0, "ignore"};
+const Enum::YLeaf BroadcastFlag::check {1, "check"};
+const Enum::YLeaf BroadcastFlag::unicast_always {2, "unicast-always"};
 
 
 }

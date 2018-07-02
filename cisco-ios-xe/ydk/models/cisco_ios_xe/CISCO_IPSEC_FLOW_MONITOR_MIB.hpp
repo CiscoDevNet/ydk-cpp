@@ -31,54 +31,54 @@ class CISCOIPSECFLOWMONITORMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cipseclevels; //type: CISCOIPSECFLOWMONITORMIB::Cipseclevels
-        class Cikeglobalstats; //type: CISCOIPSECFLOWMONITORMIB::Cikeglobalstats
-        class Cipsecglobalstats; //type: CISCOIPSECFLOWMONITORMIB::Cipsecglobalstats
-        class Cipsechistglobalcntl; //type: CISCOIPSECFLOWMONITORMIB::Cipsechistglobalcntl
-        class Cipsecfailglobalcntl; //type: CISCOIPSECFLOWMONITORMIB::Cipsecfailglobalcntl
-        class Cipsectrapcntl; //type: CISCOIPSECFLOWMONITORMIB::Cipsectrapcntl
-        class Cikepeertable; //type: CISCOIPSECFLOWMONITORMIB::Cikepeertable
-        class Ciketunneltable; //type: CISCOIPSECFLOWMONITORMIB::Ciketunneltable
-        class Cikepeercorrtable; //type: CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable
-        class Cikephase1Gwstatstable; //type: CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable
-        class Cipsectunneltable; //type: CISCOIPSECFLOWMONITORMIB::Cipsectunneltable
-        class Cipsecendpttable; //type: CISCOIPSECFLOWMONITORMIB::Cipsecendpttable
-        class Cipsecspitable; //type: CISCOIPSECFLOWMONITORMIB::Cipsecspitable
-        class Cipsecphase2Gwstatstable; //type: CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable
-        class Ciketunnelhisttable; //type: CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable
-        class Cipsectunnelhisttable; //type: CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable
-        class Cipsecendpthisttable; //type: CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable
-        class Cikefailtable; //type: CISCOIPSECFLOWMONITORMIB::Cikefailtable
-        class Cipsecfailtable; //type: CISCOIPSECFLOWMONITORMIB::Cipsecfailtable
+        class CipSecLevels; //type: CISCOIPSECFLOWMONITORMIB::CipSecLevels
+        class CikeGlobalStats; //type: CISCOIPSECFLOWMONITORMIB::CikeGlobalStats
+        class CipSecGlobalStats; //type: CISCOIPSECFLOWMONITORMIB::CipSecGlobalStats
+        class CipSecHistGlobalCntl; //type: CISCOIPSECFLOWMONITORMIB::CipSecHistGlobalCntl
+        class CipSecFailGlobalCntl; //type: CISCOIPSECFLOWMONITORMIB::CipSecFailGlobalCntl
+        class CipSecTrapCntl; //type: CISCOIPSECFLOWMONITORMIB::CipSecTrapCntl
+        class CikePeerTable; //type: CISCOIPSECFLOWMONITORMIB::CikePeerTable
+        class CikeTunnelTable; //type: CISCOIPSECFLOWMONITORMIB::CikeTunnelTable
+        class CikePeerCorrTable; //type: CISCOIPSECFLOWMONITORMIB::CikePeerCorrTable
+        class CikePhase1GWStatsTable; //type: CISCOIPSECFLOWMONITORMIB::CikePhase1GWStatsTable
+        class CipSecTunnelTable; //type: CISCOIPSECFLOWMONITORMIB::CipSecTunnelTable
+        class CipSecEndPtTable; //type: CISCOIPSECFLOWMONITORMIB::CipSecEndPtTable
+        class CipSecSpiTable; //type: CISCOIPSECFLOWMONITORMIB::CipSecSpiTable
+        class CipSecPhase2GWStatsTable; //type: CISCOIPSECFLOWMONITORMIB::CipSecPhase2GWStatsTable
+        class CikeTunnelHistTable; //type: CISCOIPSECFLOWMONITORMIB::CikeTunnelHistTable
+        class CipSecTunnelHistTable; //type: CISCOIPSECFLOWMONITORMIB::CipSecTunnelHistTable
+        class CipSecEndPtHistTable; //type: CISCOIPSECFLOWMONITORMIB::CipSecEndPtHistTable
+        class CikeFailTable; //type: CISCOIPSECFLOWMONITORMIB::CikeFailTable
+        class CipSecFailTable; //type: CISCOIPSECFLOWMONITORMIB::CipSecFailTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipseclevels> cipseclevels;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cikeglobalstats> cikeglobalstats;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsecglobalstats> cipsecglobalstats;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsechistglobalcntl> cipsechistglobalcntl;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsecfailglobalcntl> cipsecfailglobalcntl;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsectrapcntl> cipsectrapcntl;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cikepeertable> cikepeertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Ciketunneltable> ciketunneltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable> cikepeercorrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable> cikephase1gwstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsectunneltable> cipsectunneltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsecendpttable> cipsecendpttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsecspitable> cipsecspitable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable> cipsecphase2gwstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable> ciketunnelhisttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable> cipsectunnelhisttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable> cipsecendpthisttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cikefailtable> cikefailtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsecfailtable> cipsecfailtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecLevels> cipseclevels;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CikeGlobalStats> cikeglobalstats;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecGlobalStats> cipsecglobalstats;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecHistGlobalCntl> cipsechistglobalcntl;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecFailGlobalCntl> cipsecfailglobalcntl;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecTrapCntl> cipsectrapcntl;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CikePeerTable> cikepeertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CikeTunnelTable> ciketunneltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CikePeerCorrTable> cikepeercorrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CikePhase1GWStatsTable> cikephase1gwstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecTunnelTable> cipsectunneltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecEndPtTable> cipsecendpttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecSpiTable> cipsecspitable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecPhase2GWStatsTable> cipsecphase2gwstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CikeTunnelHistTable> ciketunnelhisttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecTunnelHistTable> cipsectunnelhisttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecEndPtHistTable> cipsecendpthisttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CikeFailTable> cikefailtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecFailTable> cipsecfailtable;
         
 }; // CISCOIPSECFLOWMONITORMIB
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipseclevels : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecLevels : public ydk::Entity
 {
     public:
-        Cipseclevels();
-        ~Cipseclevels();
+        CipSecLevels();
+        ~CipSecLevels();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -93,14 +93,14 @@ class CISCOIPSECFLOWMONITORMIB::Cipseclevels : public ydk::Entity
 
         ydk::YLeaf cipsecmiblevel; //type: int32
 
-}; // CISCOIPSECFLOWMONITORMIB::Cipseclevels
+}; // CISCOIPSECFLOWMONITORMIB::CipSecLevels
 
 
-class CISCOIPSECFLOWMONITORMIB::Cikeglobalstats : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikeGlobalStats : public ydk::Entity
 {
     public:
-        Cikeglobalstats();
-        ~Cikeglobalstats();
+        CikeGlobalStats();
+        ~CikeGlobalStats();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -140,14 +140,14 @@ class CISCOIPSECFLOWMONITORMIB::Cikeglobalstats : public ydk::Entity
         ydk::YLeaf cikeglobalhashvalidfails; //type: uint32
         ydk::YLeaf cikeglobalnosafails; //type: uint32
 
-}; // CISCOIPSECFLOWMONITORMIB::Cikeglobalstats
+}; // CISCOIPSECFLOWMONITORMIB::CikeGlobalStats
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecglobalstats : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecGlobalStats : public ydk::Entity
 {
     public:
-        Cipsecglobalstats();
-        ~Cipsecglobalstats();
+        CipSecGlobalStats();
+        ~CipSecGlobalStats();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -191,14 +191,14 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecglobalstats : public ydk::Entity
         ydk::YLeaf cipsecglobalnosafails; //type: uint32
         ydk::YLeaf cipsecglobalsyscapfails; //type: uint32
 
-}; // CISCOIPSECFLOWMONITORMIB::Cipsecglobalstats
+}; // CISCOIPSECFLOWMONITORMIB::CipSecGlobalStats
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsechistglobalcntl : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecHistGlobalCntl : public ydk::Entity
 {
     public:
-        Cipsechistglobalcntl();
-        ~Cipsechistglobalcntl();
+        CipSecHistGlobalCntl();
+        ~CipSecHistGlobalCntl();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -212,17 +212,17 @@ class CISCOIPSECFLOWMONITORMIB::Cipsechistglobalcntl : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cipsechisttablesize; //type: int32
-        ydk::YLeaf cipsechistcheckpoint; //type: Cipsechistcheckpoint
-        class Cipsechistcheckpoint;
+        ydk::YLeaf cipsechistcheckpoint; //type: CipSecHistCheckPoint
+        class CipSecHistCheckPoint;
 
-}; // CISCOIPSECFLOWMONITORMIB::Cipsechistglobalcntl
+}; // CISCOIPSECFLOWMONITORMIB::CipSecHistGlobalCntl
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecfailglobalcntl : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecFailGlobalCntl : public ydk::Entity
 {
     public:
-        Cipsecfailglobalcntl();
-        ~Cipsecfailglobalcntl();
+        CipSecFailGlobalCntl();
+        ~CipSecFailGlobalCntl();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -237,14 +237,14 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecfailglobalcntl : public ydk::Entity
 
         ydk::YLeaf cipsecfailtablesize; //type: int32
 
-}; // CISCOIPSECFLOWMONITORMIB::Cipsecfailglobalcntl
+}; // CISCOIPSECFLOWMONITORMIB::CipSecFailGlobalCntl
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsectrapcntl : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecTrapCntl : public ydk::Entity
 {
     public:
-        Cipsectrapcntl();
-        ~Cipsectrapcntl();
+        CipSecTrapCntl();
+        ~CipSecTrapCntl();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -271,14 +271,14 @@ class CISCOIPSECFLOWMONITORMIB::Cipsectrapcntl : public ydk::Entity
         ydk::YLeaf cipsectrapcntlipsecprotocolfail; //type: TrapStatus
         ydk::YLeaf cipsectrapcntlipsecnosa; //type: TrapStatus
 
-}; // CISCOIPSECFLOWMONITORMIB::Cipsectrapcntl
+}; // CISCOIPSECFLOWMONITORMIB::CipSecTrapCntl
 
 
-class CISCOIPSECFLOWMONITORMIB::Cikepeertable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikePeerTable : public ydk::Entity
 {
     public:
-        Cikepeertable();
-        ~Cikepeertable();
+        CikePeerTable();
+        ~CikePeerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -291,18 +291,18 @@ class CISCOIPSECFLOWMONITORMIB::Cikepeertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cikepeerentry; //type: CISCOIPSECFLOWMONITORMIB::Cikepeertable::Cikepeerentry
+        class CikePeerEntry; //type: CISCOIPSECFLOWMONITORMIB::CikePeerTable::CikePeerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cikepeertable::Cikepeerentry> > cikepeerentry;
+        ydk::YList cikepeerentry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Cikepeertable
+}; // CISCOIPSECFLOWMONITORMIB::CikePeerTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Cikepeertable::Cikepeerentry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikePeerTable::CikePeerEntry : public ydk::Entity
 {
     public:
-        Cikepeerentry();
-        ~Cikepeerentry();
+        CikePeerEntry();
+        ~CikePeerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -325,14 +325,14 @@ class CISCOIPSECFLOWMONITORMIB::Cikepeertable::Cikepeerentry : public ydk::Entit
         ydk::YLeaf cikepeeractivetime; //type: int32
         ydk::YLeaf cikepeeractivetunnelindex; //type: int32
 
-}; // CISCOIPSECFLOWMONITORMIB::Cikepeertable::Cikepeerentry
+}; // CISCOIPSECFLOWMONITORMIB::CikePeerTable::CikePeerEntry
 
 
-class CISCOIPSECFLOWMONITORMIB::Ciketunneltable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikeTunnelTable : public ydk::Entity
 {
     public:
-        Ciketunneltable();
-        ~Ciketunneltable();
+        CikeTunnelTable();
+        ~CikeTunnelTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -345,18 +345,18 @@ class CISCOIPSECFLOWMONITORMIB::Ciketunneltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciketunnelentry; //type: CISCOIPSECFLOWMONITORMIB::Ciketunneltable::Ciketunnelentry
+        class CikeTunnelEntry; //type: CISCOIPSECFLOWMONITORMIB::CikeTunnelTable::CikeTunnelEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Ciketunneltable::Ciketunnelentry> > ciketunnelentry;
+        ydk::YList ciketunnelentry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Ciketunneltable
+}; // CISCOIPSECFLOWMONITORMIB::CikeTunnelTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Ciketunneltable::Ciketunnelentry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikeTunnelTable::CikeTunnelEntry : public ydk::Entity
 {
     public:
-        Ciketunnelentry();
-        ~Ciketunnelentry();
+        CikeTunnelEntry();
+        ~CikeTunnelEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -405,14 +405,14 @@ class CISCOIPSECFLOWMONITORMIB::Ciketunneltable::Ciketunnelentry : public ydk::E
         ydk::YLeaf ciketunoutp2sadelrequests; //type: uint32
         ydk::YLeaf ciketunstatus; //type: TunnelStatus
 
-}; // CISCOIPSECFLOWMONITORMIB::Ciketunneltable::Ciketunnelentry
+}; // CISCOIPSECFLOWMONITORMIB::CikeTunnelTable::CikeTunnelEntry
 
 
-class CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikePeerCorrTable : public ydk::Entity
 {
     public:
-        Cikepeercorrtable();
-        ~Cikepeercorrtable();
+        CikePeerCorrTable();
+        ~CikePeerCorrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -425,18 +425,18 @@ class CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cikepeercorrentry; //type: CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable::Cikepeercorrentry
+        class CikePeerCorrEntry; //type: CISCOIPSECFLOWMONITORMIB::CikePeerCorrTable::CikePeerCorrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable::Cikepeercorrentry> > cikepeercorrentry;
+        ydk::YList cikepeercorrentry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable
+}; // CISCOIPSECFLOWMONITORMIB::CikePeerCorrTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable::Cikepeercorrentry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikePeerCorrTable::CikePeerCorrEntry : public ydk::Entity
 {
     public:
-        Cikepeercorrentry();
-        ~Cikepeercorrentry();
+        CikePeerCorrEntry();
+        ~CikePeerCorrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -457,14 +457,14 @@ class CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable::Cikepeercorrentry : public yd
         ydk::YLeaf cikepeercorrseqnum; //type: int32
         ydk::YLeaf cikepeercorripsectunindex; //type: int32
 
-}; // CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable::Cikepeercorrentry
+}; // CISCOIPSECFLOWMONITORMIB::CikePeerCorrTable::CikePeerCorrEntry
 
 
-class CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikePhase1GWStatsTable : public ydk::Entity
 {
     public:
-        Cikephase1Gwstatstable();
-        ~Cikephase1Gwstatstable();
+        CikePhase1GWStatsTable();
+        ~CikePhase1GWStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -477,18 +477,18 @@ class CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cikephase1Gwstatsentry; //type: CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable::Cikephase1Gwstatsentry
+        class CikePhase1GWStatsEntry; //type: CISCOIPSECFLOWMONITORMIB::CikePhase1GWStatsTable::CikePhase1GWStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable::Cikephase1Gwstatsentry> > cikephase1gwstatsentry;
+        ydk::YList cikephase1gwstatsentry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable
+}; // CISCOIPSECFLOWMONITORMIB::CikePhase1GWStatsTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable::Cikephase1Gwstatsentry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikePhase1GWStatsTable::CikePhase1GWStatsEntry : public ydk::Entity
 {
     public:
-        Cikephase1Gwstatsentry();
-        ~Cikephase1Gwstatsentry();
+        CikePhase1GWStatsEntry();
+        ~CikePhase1GWStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -501,7 +501,7 @@ class CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable::Cikephase1Gwstatsentry :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::cmgwindex)
         ydk::YLeaf cmgwindex;
         ydk::YLeaf cikephase1gwactivetunnels; //type: uint32
         ydk::YLeaf cikephase1gwprevioustunnels; //type: uint32
@@ -530,14 +530,14 @@ class CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable::Cikephase1Gwstatsentry :
         ydk::YLeaf cikephase1gwhashvalidfails; //type: uint32
         ydk::YLeaf cikephase1gwnosafails; //type: uint32
 
-}; // CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable::Cikephase1Gwstatsentry
+}; // CISCOIPSECFLOWMONITORMIB::CikePhase1GWStatsTable::CikePhase1GWStatsEntry
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsectunneltable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecTunnelTable : public ydk::Entity
 {
     public:
-        Cipsectunneltable();
-        ~Cipsectunneltable();
+        CipSecTunnelTable();
+        ~CipSecTunnelTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -550,18 +550,18 @@ class CISCOIPSECFLOWMONITORMIB::Cipsectunneltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipsectunnelentry; //type: CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::Cipsectunnelentry
+        class CipSecTunnelEntry; //type: CISCOIPSECFLOWMONITORMIB::CipSecTunnelTable::CipSecTunnelEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::Cipsectunnelentry> > cipsectunnelentry;
+        ydk::YList cipsectunnelentry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Cipsectunneltable
+}; // CISCOIPSECFLOWMONITORMIB::CipSecTunnelTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::Cipsectunnelentry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecTunnelTable::CipSecTunnelEntry : public ydk::Entity
 {
     public:
-        Cipsectunnelentry();
-        ~Cipsectunnelentry();
+        CipSecTunnelEntry();
+        ~CipSecTunnelEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -626,14 +626,14 @@ class CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::Cipsectunnelentry : public yd
         ydk::YLeaf cipsectunoutencryptfails; //type: uint32
         ydk::YLeaf cipsectunstatus; //type: TunnelStatus
 
-}; // CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::Cipsectunnelentry
+}; // CISCOIPSECFLOWMONITORMIB::CipSecTunnelTable::CipSecTunnelEntry
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecendpttable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecEndPtTable : public ydk::Entity
 {
     public:
-        Cipsecendpttable();
-        ~Cipsecendpttable();
+        CipSecEndPtTable();
+        ~CipSecEndPtTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -646,18 +646,18 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecendpttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipsecendptentry; //type: CISCOIPSECFLOWMONITORMIB::Cipsecendpttable::Cipsecendptentry
+        class CipSecEndPtEntry; //type: CISCOIPSECFLOWMONITORMIB::CipSecEndPtTable::CipSecEndPtEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsecendpttable::Cipsecendptentry> > cipsecendptentry;
+        ydk::YList cipsecendptentry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Cipsecendpttable
+}; // CISCOIPSECFLOWMONITORMIB::CipSecEndPtTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecendpttable::Cipsecendptentry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecEndPtTable::CipSecEndPtEntry : public ydk::Entity
 {
     public:
-        Cipsecendptentry();
-        ~Cipsecendptentry();
+        CipSecEndPtEntry();
+        ~CipSecEndPtEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -670,7 +670,7 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecendpttable::Cipsecendptentry : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::Cipsectunnelentry::cipsectunindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecTunnelTable::CipSecTunnelEntry::cipsectunindex)
         ydk::YLeaf cipsectunindex;
         ydk::YLeaf cipsecendptindex; //type: int32
         ydk::YLeaf cipsecendptlocalname; //type: string
@@ -686,14 +686,14 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecendpttable::Cipsecendptentry : public ydk:
         ydk::YLeaf cipsecendptremoteprotocol; //type: int32
         ydk::YLeaf cipsecendptremoteport; //type: int32
 
-}; // CISCOIPSECFLOWMONITORMIB::Cipsecendpttable::Cipsecendptentry
+}; // CISCOIPSECFLOWMONITORMIB::CipSecEndPtTable::CipSecEndPtEntry
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecspitable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecSpiTable : public ydk::Entity
 {
     public:
-        Cipsecspitable();
-        ~Cipsecspitable();
+        CipSecSpiTable();
+        ~CipSecSpiTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -706,18 +706,18 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecspitable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipsecspientry; //type: CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry
+        class CipSecSpiEntry; //type: CISCOIPSECFLOWMONITORMIB::CipSecSpiTable::CipSecSpiEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry> > cipsecspientry;
+        ydk::YList cipsecspientry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Cipsecspitable
+}; // CISCOIPSECFLOWMONITORMIB::CipSecSpiTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecSpiTable::CipSecSpiEntry : public ydk::Entity
 {
     public:
-        Cipsecspientry();
-        ~Cipsecspientry();
+        CipSecSpiEntry();
+        ~CipSecSpiEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -730,25 +730,25 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::Cipsectunnelentry::cipsectunindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::CipSecTunnelTable::CipSecTunnelEntry::cipsectunindex)
         ydk::YLeaf cipsectunindex;
         ydk::YLeaf cipsecspiindex; //type: int32
-        ydk::YLeaf cipsecspidirection; //type: Cipsecspidirection
+        ydk::YLeaf cipsecspidirection; //type: CipSecSpiDirection
         ydk::YLeaf cipsecspivalue; //type: uint32
-        ydk::YLeaf cipsecspiprotocol; //type: Cipsecspiprotocol
-        ydk::YLeaf cipsecspistatus; //type: Cipsecspistatus
-        class Cipsecspidirection;
-        class Cipsecspiprotocol;
-        class Cipsecspistatus;
+        ydk::YLeaf cipsecspiprotocol; //type: CipSecSpiProtocol
+        ydk::YLeaf cipsecspistatus; //type: CipSecSpiStatus
+        class CipSecSpiDirection;
+        class CipSecSpiProtocol;
+        class CipSecSpiStatus;
 
-}; // CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry
+}; // CISCOIPSECFLOWMONITORMIB::CipSecSpiTable::CipSecSpiEntry
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecPhase2GWStatsTable : public ydk::Entity
 {
     public:
-        Cipsecphase2Gwstatstable();
-        ~Cipsecphase2Gwstatstable();
+        CipSecPhase2GWStatsTable();
+        ~CipSecPhase2GWStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -761,18 +761,18 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipsecphase2Gwstatsentry; //type: CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable::Cipsecphase2Gwstatsentry
+        class CipSecPhase2GWStatsEntry; //type: CISCOIPSECFLOWMONITORMIB::CipSecPhase2GWStatsTable::CipSecPhase2GWStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable::Cipsecphase2Gwstatsentry> > cipsecphase2gwstatsentry;
+        ydk::YList cipsecphase2gwstatsentry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable
+}; // CISCOIPSECFLOWMONITORMIB::CipSecPhase2GWStatsTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable::Cipsecphase2Gwstatsentry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecPhase2GWStatsTable::CipSecPhase2GWStatsEntry : public ydk::Entity
 {
     public:
-        Cipsecphase2Gwstatsentry();
-        ~Cipsecphase2Gwstatsentry();
+        CipSecPhase2GWStatsEntry();
+        ~CipSecPhase2GWStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -785,7 +785,7 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable::Cipsecphase2Gwstatsent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::cmgwindex)
         ydk::YLeaf cmgwindex;
         ydk::YLeaf cipsecphase2gwactivetunnels; //type: uint32
         ydk::YLeaf cipsecphase2gwprevioustunnels; //type: uint32
@@ -814,14 +814,14 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable::Cipsecphase2Gwstatsent
         ydk::YLeaf cipsecphase2gwnosafails; //type: uint32
         ydk::YLeaf cipsecphase2gwsyscapfails; //type: uint32
 
-}; // CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable::Cipsecphase2Gwstatsentry
+}; // CISCOIPSECFLOWMONITORMIB::CipSecPhase2GWStatsTable::CipSecPhase2GWStatsEntry
 
 
-class CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikeTunnelHistTable : public ydk::Entity
 {
     public:
-        Ciketunnelhisttable();
-        ~Ciketunnelhisttable();
+        CikeTunnelHistTable();
+        ~CikeTunnelHistTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -834,18 +834,18 @@ class CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciketunnelhistentry; //type: CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::Ciketunnelhistentry
+        class CikeTunnelHistEntry; //type: CISCOIPSECFLOWMONITORMIB::CikeTunnelHistTable::CikeTunnelHistEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::Ciketunnelhistentry> > ciketunnelhistentry;
+        ydk::YList ciketunnelhistentry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable
+}; // CISCOIPSECFLOWMONITORMIB::CikeTunnelHistTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::Ciketunnelhistentry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikeTunnelHistTable::CikeTunnelHistEntry : public ydk::Entity
 {
     public:
-        Ciketunnelhistentry();
-        ~Ciketunnelhistentry();
+        CikeTunnelHistEntry();
+        ~CikeTunnelHistEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -859,7 +859,7 @@ class CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::Ciketunnelhistentry : publi
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ciketunhistindex; //type: int32
-        ydk::YLeaf ciketunhisttermreason; //type: Ciketunhisttermreason
+        ydk::YLeaf ciketunhisttermreason; //type: CikeTunHistTermReason
         ydk::YLeaf ciketunhistactiveindex; //type: int32
         ydk::YLeaf ciketunhistpeerlocaltype; //type: IkePeerType
         ydk::YLeaf ciketunhistpeerlocalvalue; //type: string
@@ -896,16 +896,16 @@ class CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::Ciketunnelhistentry : publi
         ydk::YLeaf ciketunhistoutp2exchginvalids; //type: uint32
         ydk::YLeaf ciketunhistoutp2exchgrejects; //type: uint32
         ydk::YLeaf ciketunhistoutp2sadelrequests; //type: uint32
-        class Ciketunhisttermreason;
+        class CikeTunHistTermReason;
 
-}; // CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::Ciketunnelhistentry
+}; // CISCOIPSECFLOWMONITORMIB::CikeTunnelHistTable::CikeTunnelHistEntry
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecTunnelHistTable : public ydk::Entity
 {
     public:
-        Cipsectunnelhisttable();
-        ~Cipsectunnelhisttable();
+        CipSecTunnelHistTable();
+        ~CipSecTunnelHistTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -918,18 +918,18 @@ class CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipsectunnelhistentry; //type: CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::Cipsectunnelhistentry
+        class CipSecTunnelHistEntry; //type: CISCOIPSECFLOWMONITORMIB::CipSecTunnelHistTable::CipSecTunnelHistEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::Cipsectunnelhistentry> > cipsectunnelhistentry;
+        ydk::YList cipsectunnelhistentry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable
+}; // CISCOIPSECFLOWMONITORMIB::CipSecTunnelHistTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::Cipsectunnelhistentry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecTunnelHistTable::CipSecTunnelHistEntry : public ydk::Entity
 {
     public:
-        Cipsectunnelhistentry();
-        ~Cipsectunnelhistentry();
+        CipSecTunnelHistEntry();
+        ~CipSecTunnelHistEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -943,7 +943,7 @@ class CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::Cipsectunnelhistentry : p
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cipsectunhistindex; //type: int32
-        ydk::YLeaf cipsectunhisttermreason; //type: Cipsectunhisttermreason
+        ydk::YLeaf cipsectunhisttermreason; //type: CipSecTunHistTermReason
         ydk::YLeaf cipsectunhistactiveindex; //type: int32
         ydk::YLeaf cipsectunhistiketunnelindex; //type: int32
         ydk::YLeaf cipsectunhistlocaladdr; //type: binary
@@ -991,16 +991,16 @@ class CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::Cipsectunnelhistentry : p
         ydk::YLeaf cipsectunhistoutauthfails; //type: uint32
         ydk::YLeaf cipsectunhistoutencrypts; //type: uint32
         ydk::YLeaf cipsectunhistoutencryptfails; //type: uint32
-        class Cipsectunhisttermreason;
+        class CipSecTunHistTermReason;
 
-}; // CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::Cipsectunnelhistentry
+}; // CISCOIPSECFLOWMONITORMIB::CipSecTunnelHistTable::CipSecTunnelHistEntry
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecEndPtHistTable : public ydk::Entity
 {
     public:
-        Cipsecendpthisttable();
-        ~Cipsecendpthisttable();
+        CipSecEndPtHistTable();
+        ~CipSecEndPtHistTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1013,18 +1013,18 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipsecendpthistentry; //type: CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable::Cipsecendpthistentry
+        class CipSecEndPtHistEntry; //type: CISCOIPSECFLOWMONITORMIB::CipSecEndPtHistTable::CipSecEndPtHistEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable::Cipsecendpthistentry> > cipsecendpthistentry;
+        ydk::YList cipsecendpthistentry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable
+}; // CISCOIPSECFLOWMONITORMIB::CipSecEndPtHistTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable::Cipsecendpthistentry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecEndPtHistTable::CipSecEndPtHistEntry : public ydk::Entity
 {
     public:
-        Cipsecendpthistentry();
-        ~Cipsecendpthistentry();
+        CipSecEndPtHistEntry();
+        ~CipSecEndPtHistEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1053,14 +1053,14 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable::Cipsecendpthistentry : pub
         ydk::YLeaf cipsecendpthistremoteprotocol; //type: int32
         ydk::YLeaf cipsecendpthistremoteport; //type: int32
 
-}; // CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable::Cipsecendpthistentry
+}; // CISCOIPSECFLOWMONITORMIB::CipSecEndPtHistTable::CipSecEndPtHistEntry
 
 
-class CISCOIPSECFLOWMONITORMIB::Cikefailtable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikeFailTable : public ydk::Entity
 {
     public:
-        Cikefailtable();
-        ~Cikefailtable();
+        CikeFailTable();
+        ~CikeFailTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1073,18 +1073,18 @@ class CISCOIPSECFLOWMONITORMIB::Cikefailtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cikefailentry; //type: CISCOIPSECFLOWMONITORMIB::Cikefailtable::Cikefailentry
+        class CikeFailEntry; //type: CISCOIPSECFLOWMONITORMIB::CikeFailTable::CikeFailEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cikefailtable::Cikefailentry> > cikefailentry;
+        ydk::YList cikefailentry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Cikefailtable
+}; // CISCOIPSECFLOWMONITORMIB::CikeFailTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Cikefailtable::Cikefailentry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CikeFailTable::CikeFailEntry : public ydk::Entity
 {
     public:
-        Cikefailentry();
-        ~Cikefailentry();
+        CikeFailEntry();
+        ~CikeFailEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1098,7 +1098,7 @@ class CISCOIPSECFLOWMONITORMIB::Cikefailtable::Cikefailentry : public ydk::Entit
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cikefailindex; //type: int32
-        ydk::YLeaf cikefailreason; //type: Cikefailreason
+        ydk::YLeaf cikefailreason; //type: CikeFailReason
         ydk::YLeaf cikefailtime; //type: uint32
         ydk::YLeaf cikefaillocaltype; //type: IkePeerType
         ydk::YLeaf cikefaillocalvalue; //type: string
@@ -1106,16 +1106,16 @@ class CISCOIPSECFLOWMONITORMIB::Cikefailtable::Cikefailentry : public ydk::Entit
         ydk::YLeaf cikefailremotevalue; //type: string
         ydk::YLeaf cikefaillocaladdr; //type: binary
         ydk::YLeaf cikefailremoteaddr; //type: binary
-        class Cikefailreason;
+        class CikeFailReason;
 
-}; // CISCOIPSECFLOWMONITORMIB::Cikefailtable::Cikefailentry
+}; // CISCOIPSECFLOWMONITORMIB::CikeFailTable::CikeFailEntry
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecfailtable : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecFailTable : public ydk::Entity
 {
     public:
-        Cipsecfailtable();
-        ~Cipsecfailtable();
+        CipSecFailTable();
+        ~CipSecFailTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1128,18 +1128,18 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecfailtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipsecfailentry; //type: CISCOIPSECFLOWMONITORMIB::Cipsecfailtable::Cipsecfailentry
+        class CipSecFailEntry; //type: CISCOIPSECFLOWMONITORMIB::CipSecFailTable::CipSecFailEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_FLOW_MONITOR_MIB::CISCOIPSECFLOWMONITORMIB::Cipsecfailtable::Cipsecfailentry> > cipsecfailentry;
+        ydk::YList cipsecfailentry;
         
-}; // CISCOIPSECFLOWMONITORMIB::Cipsecfailtable
+}; // CISCOIPSECFLOWMONITORMIB::CipSecFailTable
 
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecfailtable::Cipsecfailentry : public ydk::Entity
+class CISCOIPSECFLOWMONITORMIB::CipSecFailTable::CipSecFailEntry : public ydk::Entity
 {
     public:
-        Cipsecfailentry();
-        ~Cipsecfailentry();
+        CipSecFailEntry();
+        ~CipSecFailEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1153,29 +1153,21 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecfailtable::Cipsecfailentry : public ydk::E
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cipsecfailindex; //type: int32
-        ydk::YLeaf cipsecfailreason; //type: Cipsecfailreason
+        ydk::YLeaf cipsecfailreason; //type: CipSecFailReason
         ydk::YLeaf cipsecfailtime; //type: uint32
         ydk::YLeaf cipsecfailtunnelindex; //type: int32
         ydk::YLeaf cipsecfailsaspi; //type: int32
         ydk::YLeaf cipsecfailpktsrcaddr; //type: binary
         ydk::YLeaf cipsecfailpktdstaddr; //type: binary
-        class Cipsecfailreason;
+        class CipSecFailReason;
 
-}; // CISCOIPSECFLOWMONITORMIB::Cipsecfailtable::Cipsecfailentry
+}; // CISCOIPSECFLOWMONITORMIB::CipSecFailTable::CipSecFailEntry
 
-class IkePeerType : public ydk::Enum
+class TunnelStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipAddrPeer;
-        static const ydk::Enum::YLeaf namePeer;
-
-};
-
-class IkeNegoMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf main;
-        static const ydk::Enum::YLeaf aggressive;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf destroy;
 
 };
 
@@ -1199,15 +1191,6 @@ class IkeAuthMethod : public ydk::Enum
 
 };
 
-class DiffHellmanGrp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf dhGroup1;
-        static const ydk::Enum::YLeaf dhGroup2;
-
-};
-
 class KeyType : public ydk::Enum
 {
     public:
@@ -1216,11 +1199,19 @@ class KeyType : public ydk::Enum
 
 };
 
-class EncapMode : public ydk::Enum
+class TrapStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf tunnel;
-        static const ydk::Enum::YLeaf transport;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+
+};
+
+class CompAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ldf;
 
 };
 
@@ -1233,20 +1224,36 @@ class EncryptAlgo : public ydk::Enum
 
 };
 
+class IkePeerType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipAddrPeer;
+        static const ydk::Enum::YLeaf namePeer;
+
+};
+
+class IkeNegoMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf main;
+        static const ydk::Enum::YLeaf aggressive;
+
+};
+
+class EncapMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf tunnel;
+        static const ydk::Enum::YLeaf transport;
+
+};
+
 class AuthAlgo : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf hmacMd5;
         static const ydk::Enum::YLeaf hmacSha;
-
-};
-
-class CompAlgo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ldf;
 
 };
 
@@ -1259,23 +1266,16 @@ class EndPtType : public ydk::Enum
 
 };
 
-class TunnelStatus : public ydk::Enum
+class DiffHellmanGrp : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf destroy;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf dhGroup1;
+        static const ydk::Enum::YLeaf dhGroup2;
 
 };
 
-class TrapStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-
-};
-
-class CISCOIPSECFLOWMONITORMIB::Cipsechistglobalcntl::Cipsechistcheckpoint : public ydk::Enum
+class CISCOIPSECFLOWMONITORMIB::CipSecHistGlobalCntl::CipSecHistCheckPoint : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ready;
@@ -1283,7 +1283,7 @@ class CISCOIPSECFLOWMONITORMIB::Cipsechistglobalcntl::Cipsechistcheckpoint : pub
 
 };
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry::Cipsecspidirection : public ydk::Enum
+class CISCOIPSECFLOWMONITORMIB::CipSecSpiTable::CipSecSpiEntry::CipSecSpiDirection : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf in;
@@ -1291,7 +1291,7 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry::Cipsecspidirecti
 
 };
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry::Cipsecspiprotocol : public ydk::Enum
+class CISCOIPSECFLOWMONITORMIB::CipSecSpiTable::CipSecSpiEntry::CipSecSpiProtocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ah;
@@ -1300,7 +1300,7 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry::Cipsecspiprotoco
 
 };
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry::Cipsecspistatus : public ydk::Enum
+class CISCOIPSECFLOWMONITORMIB::CipSecSpiTable::CipSecSpiEntry::CipSecSpiStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf active;
@@ -1308,7 +1308,7 @@ class CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry::Cipsecspistatus 
 
 };
 
-class CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::Ciketunnelhistentry::Ciketunhisttermreason : public ydk::Enum
+class CISCOIPSECFLOWMONITORMIB::CikeTunnelHistTable::CikeTunnelHistEntry::CikeTunHistTermReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -1321,7 +1321,7 @@ class CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::Ciketunnelhistentry::Ciketu
 
 };
 
-class CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::Cipsectunnelhistentry::Cipsectunhisttermreason : public ydk::Enum
+class CISCOIPSECFLOWMONITORMIB::CipSecTunnelHistTable::CipSecTunnelHistEntry::CipSecTunHistTermReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -1334,7 +1334,7 @@ class CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::Cipsectunnelhistentry::Ci
 
 };
 
-class CISCOIPSECFLOWMONITORMIB::Cikefailtable::Cikefailentry::Cikefailreason : public ydk::Enum
+class CISCOIPSECFLOWMONITORMIB::CikeFailTable::CikeFailEntry::CikeFailReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -1357,7 +1357,7 @@ class CISCOIPSECFLOWMONITORMIB::Cikefailtable::Cikefailentry::Cikefailreason : p
 
 };
 
-class CISCOIPSECFLOWMONITORMIB::Cipsecfailtable::Cipsecfailentry::Cipsecfailreason : public ydk::Enum
+class CISCOIPSECFLOWMONITORMIB::CipSecFailTable::CipSecFailEntry::CipSecFailReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

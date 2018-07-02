@@ -17,7 +17,7 @@ HwModuleSubslot::HwModuleSubslot()
 {
     input->parent = this;
 
-    yang_name = "hw-module-subslot"; yang_parent_name = "Cisco-IOS-XR-hwmod-mpa-reload-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hw-module-subslot"; yang_parent_name = "Cisco-IOS-XR-hwmod-mpa-reload-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HwModuleSubslot::~HwModuleSubslot()
@@ -26,6 +26,7 @@ HwModuleSubslot::~HwModuleSubslot()
 
 bool HwModuleSubslot::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -123,7 +124,7 @@ HwModuleSubslot::Input::Input()
     reload{YType::empty, "reload"}
 {
 
-    yang_name = "input"; yang_parent_name = "hw-module-subslot"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "hw-module-subslot"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModuleSubslot::Input::~Input()
@@ -132,6 +133,7 @@ HwModuleSubslot::Input::~Input()
 
 bool HwModuleSubslot::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return subslot.is_set
 	|| reload.is_set;
 }

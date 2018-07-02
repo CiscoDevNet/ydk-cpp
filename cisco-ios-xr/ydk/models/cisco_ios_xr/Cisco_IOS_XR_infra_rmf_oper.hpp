@@ -59,7 +59,7 @@ class Redundancy::Nodes : public ydk::Entity
 
         class Node; //type: Redundancy::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rmf_oper::Redundancy::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Redundancy::Nodes
 
@@ -115,7 +115,7 @@ class Redundancy::Nodes::Node::Redundancy_ : public ydk::Entity
         ydk::YLeaf nsr_state; //type: string
         class Groupinfo; //type: Redundancy::Nodes::Node::Redundancy_::Groupinfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rmf_oper::Redundancy::Nodes::Node::Redundancy_::Groupinfo> > groupinfo;
+        ydk::YList groupinfo;
         
 }; // Redundancy::Nodes::Node::Redundancy_
 
@@ -164,7 +164,7 @@ class Redundancy::Summary : public ydk::Entity
         ydk::YLeaf err_log; //type: string
         class RedPair; //type: Redundancy::Summary::RedPair
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rmf_oper::Redundancy::Summary::RedPair> > red_pair;
+        ydk::YList red_pair;
         
 }; // Redundancy::Summary
 
@@ -192,7 +192,7 @@ class Redundancy::Summary::RedPair : public ydk::Entity
         ydk::YLeaf nsr_state; //type: string
         class Groupinfo; //type: Redundancy::Summary::RedPair::Groupinfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rmf_oper::Redundancy::Summary::RedPair::Groupinfo> > groupinfo;
+        ydk::YList groupinfo;
         
 }; // Redundancy::Summary::RedPair
 

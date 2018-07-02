@@ -11,40 +11,41 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_cfg {
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::FlowLabelLoadBalance()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::FlowLabelLoadBalance()
     :
     flow_label{YType::enumeration, "flow-label"},
     static_{YType::empty, "static"}
 {
 
-    yang_name = "flow-label-load-balance"; yang_parent_name = "ldp-signaling-protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-label-load-balance"; yang_parent_name = "ldp-signaling-protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::~FlowLabelLoadBalance()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::~FlowLabelLoadBalance()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::has_data() const
 {
+    if (is_presence_container) return true;
     return flow_label.is_set
 	|| static_.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(flow_label.yfilter)
 	|| ydk::is_set(static_.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flow-label-load-balance";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -55,19 +56,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flow-label")
     {
@@ -83,7 +84,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "flow-label")
     {
@@ -95,44 +96,45 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flow-label" || name == "static")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::BgpRoutePolicy()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::BgpRoutePolicy()
     :
     export_{YType::str, "export"}
 {
 
-    yang_name = "bgp-route-policy"; yang_parent_name = "bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-route-policy"; yang_parent_name = "bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::~BgpRoutePolicy()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::~BgpRoutePolicy()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return export_.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(export_.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-route-policy";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -142,19 +144,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "export")
     {
@@ -164,7 +166,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "export")
     {
@@ -172,14 +174,14 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "export")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::RouteDistinguisher()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::RouteDistinguisher()
     :
     type{YType::enumeration, "type"},
     as{YType::uint32, "as"},
@@ -188,15 +190,16 @@ L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDom
     addr_index{YType::uint32, "addr-index"}
 {
 
-    yang_name = "route-distinguisher"; yang_parent_name = "bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-distinguisher"; yang_parent_name = "bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::~RouteDistinguisher()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::~RouteDistinguisher()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| as.is_set
 	|| as_index.is_set
@@ -204,7 +207,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| addr_index.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -214,14 +217,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| ydk::is_set(addr_index.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route-distinguisher";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -235,19 +238,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -281,7 +284,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -305,39 +308,40 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "type" || name == "as" || name == "as-index" || name == "address" || name == "addr-index")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::BgpSignalingProtocol()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::BgpSignalingProtocol()
     :
     ve_range{YType::uint32, "ve-range"},
     veid{YType::uint32, "veid"},
     enable{YType::empty, "enable"}
-    	,
-    flow_label_load_balance(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance>())
+        ,
+    flow_label_load_balance(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance>())
 {
     flow_label_load_balance->parent = this;
 
-    yang_name = "bgp-signaling-protocol"; yang_parent_name = "bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-signaling-protocol"; yang_parent_name = "bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::~BgpSignalingProtocol()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::~BgpSignalingProtocol()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return ve_range.is_set
 	|| veid.is_set
 	|| enable.is_set
 	|| (flow_label_load_balance !=  nullptr && flow_label_load_balance->has_data());
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ve_range.yfilter)
@@ -346,14 +350,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| (flow_label_load_balance !=  nullptr && flow_label_load_balance->has_operation());
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-signaling-protocol";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -365,13 +369,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-label-load-balance")
     {
         if(flow_label_load_balance == nullptr)
         {
-            flow_label_load_balance = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance>();
+            flow_label_load_balance = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance>();
         }
         return flow_label_load_balance;
     }
@@ -379,7 +383,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -391,7 +395,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ve-range")
     {
@@ -413,7 +417,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ve-range")
     {
@@ -429,47 +433,48 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flow-label-load-balance" || name == "ve-range" || name == "veid" || name == "enable")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::FlowLabelLoadBalance()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::FlowLabelLoadBalance()
     :
     flow_label{YType::enumeration, "flow-label"},
     static_{YType::empty, "static"}
 {
 
-    yang_name = "flow-label-load-balance"; yang_parent_name = "bgp-signaling-protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-label-load-balance"; yang_parent_name = "bgp-signaling-protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::~FlowLabelLoadBalance()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::~FlowLabelLoadBalance()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::has_data() const
 {
+    if (is_presence_container) return true;
     return flow_label.is_set
 	|| static_.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(flow_label.yfilter)
 	|| ydk::is_set(static_.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flow-label-load-balance";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -480,19 +485,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flow-label")
     {
@@ -508,7 +513,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "flow-label")
     {
@@ -520,26 +525,29 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flow-label" || name == "static")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTargets()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTargets()
+    :
+    route_target(this, {"role", "format"})
 {
 
-    yang_name = "route-targets"; yang_parent_name = "bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-targets"; yang_parent_name = "bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::~RouteTargets()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::~RouteTargets()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::has_data() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_data())
             return true;
@@ -547,9 +555,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return false;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::has_operation() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_operation())
             return true;
@@ -557,14 +565,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route-targets";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -573,25 +581,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route-target")
     {
-        auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget>();
+        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget>();
         c->parent = this;
-        route_target.push_back(c);
+        route_target.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route_target)
+    for (auto c : route_target.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -602,42 +610,46 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-target")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::RouteTarget()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::RouteTarget()
     :
     role{YType::enumeration, "role"},
     format{YType::enumeration, "format"}
+        ,
+    two_byte_as_or_four_byte_as(this, {"as", "as_index"})
+    , ipv4_address(this, {"address", "addr_index"})
 {
 
-    yang_name = "route-target"; yang_parent_name = "route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-target"; yang_parent_name = "route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::~RouteTarget()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::~RouteTarget()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::has_data() const
 {
-    for (std::size_t index=0; index<two_byte_as_or_four_byte_as.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<two_byte_as_or_four_byte_as.len(); index++)
     {
         if(two_byte_as_or_four_byte_as[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_data())
             return true;
@@ -646,14 +658,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| format.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::has_operation() const
 {
-    for (std::size_t index=0; index<two_byte_as_or_four_byte_as.size(); index++)
+    for (std::size_t index=0; index<two_byte_as_or_four_byte_as.len(); index++)
     {
         if(two_byte_as_or_four_byte_as[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_operation())
             return true;
@@ -663,14 +675,16 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| ydk::is_set(format.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "route-target" <<"[role='" <<role <<"']" <<"[format='" <<format <<"']";
+    path_buffer << "route-target";
+    ADD_KEY_TOKEN(role, "role");
+    ADD_KEY_TOKEN(format, "format");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -681,33 +695,33 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "two-byte-as-or-four-byte-as")
     {
-        auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs>();
+        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs>();
         c->parent = this;
-        two_byte_as_or_four_byte_as.push_back(c);
+        two_byte_as_or_four_byte_as.append(c);
         return c;
     }
 
     if(child_yang_name == "ipv4-address")
     {
-        auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address>();
+        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address>();
         c->parent = this;
-        ipv4_address.push_back(c);
+        ipv4_address.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : two_byte_as_or_four_byte_as)
+    for (auto c : two_byte_as_or_four_byte_as.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -716,7 +730,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     }
 
     count = 0;
-    for (auto const & c : ipv4_address)
+    for (auto c : ipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -727,7 +741,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "role")
     {
@@ -743,7 +757,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "role")
     {
@@ -755,47 +769,50 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "two-byte-as-or-four-byte-as" || name == "ipv4-address" || name == "role" || name == "format")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::TwoByteAsOrFourByteAs()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::TwoByteAsOrFourByteAs()
     :
     as{YType::uint32, "as"},
     as_index{YType::uint32, "as-index"}
 {
 
-    yang_name = "two-byte-as-or-four-byte-as"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "two-byte-as-or-four-byte-as"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::~TwoByteAsOrFourByteAs()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::~TwoByteAsOrFourByteAs()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| as_index.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(as.yfilter)
 	|| ydk::is_set(as_index.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "two-byte-as-or-four-byte-as" <<"[as='" <<as <<"']" <<"[as-index='" <<as_index <<"']";
+    path_buffer << "two-byte-as-or-four-byte-as";
+    ADD_KEY_TOKEN(as, "as");
+    ADD_KEY_TOKEN(as_index, "as-index");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -806,19 +823,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as")
     {
@@ -834,7 +851,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "as")
     {
@@ -846,47 +863,50 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "as" || name == "as-index")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::Ipv4Address()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::Ipv4Address()
     :
     address{YType::str, "address"},
     addr_index{YType::uint32, "addr-index"}
 {
 
-    yang_name = "ipv4-address"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::~Ipv4Address()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::~Ipv4Address()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| addr_index.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address.yfilter)
 	|| ydk::is_set(addr_index.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-address" <<"[address='" <<address <<"']" <<"[addr-index='" <<addr_index <<"']";
+    path_buffer << "ipv4-address";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(addr_index, "addr-index");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -897,19 +917,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
@@ -925,7 +945,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address")
     {
@@ -937,26 +957,29 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address" || name == "addr-index")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuits()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuits()
+    :
+    bd_attachment_circuit(this, {"name"})
 {
 
-    yang_name = "bd-attachment-circuits"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bd-attachment-circuits"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::~BdAttachmentCircuits()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::~BdAttachmentCircuits()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::has_data() const
 {
-    for (std::size_t index=0; index<bd_attachment_circuit.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bd_attachment_circuit.len(); index++)
     {
         if(bd_attachment_circuit[index]->has_data())
             return true;
@@ -964,9 +987,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return false;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::has_operation() const
 {
-    for (std::size_t index=0; index<bd_attachment_circuit.size(); index++)
+    for (std::size_t index=0; index<bd_attachment_circuit.len(); index++)
     {
         if(bd_attachment_circuit[index]->has_operation())
             return true;
@@ -974,14 +997,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bd-attachment-circuits";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -990,25 +1013,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bd-attachment-circuit")
     {
-        auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit>();
+        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit>();
         c->parent = this;
-        bd_attachment_circuit.push_back(c);
+        bd_attachment_circuit.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bd_attachment_circuit)
+    for (auto c : bd_attachment_circuit.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1019,36 +1042,36 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bd-attachment-circuit")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdAttachmentCircuit()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdAttachmentCircuit()
     :
     name{YType::str, "name"},
     interface_flooding{YType::enumeration, "interface-flooding"},
     interface_igmp_snoop{YType::str, "interface-igmp-snoop"},
     interface_flooding_unknown_unicast{YType::enumeration, "interface-flooding-unknown-unicast"},
     interface_mld_snoop{YType::str, "interface-mld-snoop"}
-    	,
-    interface_ip_source_guard(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard>())
-	,interface_dai(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai>())
-	,interface_profile(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile>())
-	,bdac_storm_control_types(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes>())
-	,split_horizon(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon>())
-	,static_mac_addresses(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses>())
-	,interface_mac(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac>())
+        ,
+    interface_ip_source_guard(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard>())
+    , interface_dai(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai>())
+    , interface_profile(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile>())
+    , bdac_storm_control_types(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes>())
+    , split_horizon(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon>())
+    , static_mac_addresses(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses>())
+    , interface_mac(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac>())
 {
     interface_ip_source_guard->parent = this;
     interface_dai->parent = this;
@@ -1058,15 +1081,16 @@ L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDom
     static_mac_addresses->parent = this;
     interface_mac->parent = this;
 
-    yang_name = "bd-attachment-circuit"; yang_parent_name = "bd-attachment-circuits"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bd-attachment-circuit"; yang_parent_name = "bd-attachment-circuits"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::~BdAttachmentCircuit()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::~BdAttachmentCircuit()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| interface_flooding.is_set
 	|| interface_igmp_snoop.is_set
@@ -1081,7 +1105,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| (interface_mac !=  nullptr && interface_mac->has_data());
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
@@ -1098,14 +1122,15 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| (interface_mac !=  nullptr && interface_mac->has_operation());
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bd-attachment-circuit" <<"[name='" <<name <<"']";
+    path_buffer << "bd-attachment-circuit";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1119,13 +1144,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-ip-source-guard")
     {
         if(interface_ip_source_guard == nullptr)
         {
-            interface_ip_source_guard = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard>();
+            interface_ip_source_guard = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard>();
         }
         return interface_ip_source_guard;
     }
@@ -1134,7 +1159,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     {
         if(interface_dai == nullptr)
         {
-            interface_dai = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai>();
+            interface_dai = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai>();
         }
         return interface_dai;
     }
@@ -1143,7 +1168,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     {
         if(interface_profile == nullptr)
         {
-            interface_profile = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile>();
+            interface_profile = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile>();
         }
         return interface_profile;
     }
@@ -1152,7 +1177,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     {
         if(bdac_storm_control_types == nullptr)
         {
-            bdac_storm_control_types = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes>();
+            bdac_storm_control_types = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes>();
         }
         return bdac_storm_control_types;
     }
@@ -1161,7 +1186,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     {
         if(split_horizon == nullptr)
         {
-            split_horizon = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon>();
+            split_horizon = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon>();
         }
         return split_horizon;
     }
@@ -1170,7 +1195,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     {
         if(static_mac_addresses == nullptr)
         {
-            static_mac_addresses = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses>();
+            static_mac_addresses = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses>();
         }
         return static_mac_addresses;
     }
@@ -1179,7 +1204,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     {
         if(interface_mac == nullptr)
         {
-            interface_mac = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac>();
+            interface_mac = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac>();
         }
         return interface_mac;
     }
@@ -1187,7 +1212,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1229,7 +1254,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -1263,7 +1288,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -1287,35 +1312,36 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-ip-source-guard" || name == "interface-dai" || name == "interface-profile" || name == "bdac-storm-control-types" || name == "split-horizon" || name == "static-mac-addresses" || name == "interface-mac" || name == "name" || name == "interface-flooding" || name == "interface-igmp-snoop" || name == "interface-flooding-unknown-unicast" || name == "interface-mld-snoop")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::InterfaceIpSourceGuard()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::InterfaceIpSourceGuard()
     :
     logging{YType::enumeration, "logging"},
     disable{YType::empty, "disable"},
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "interface-ip-source-guard"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-ip-source-guard"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::~InterfaceIpSourceGuard()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::~InterfaceIpSourceGuard()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return logging.is_set
 	|| disable.is_set
 	|| enable.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(logging.yfilter)
@@ -1323,14 +1349,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-ip-source-guard";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1342,19 +1368,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "logging")
     {
@@ -1376,7 +1402,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "logging")
     {
@@ -1392,39 +1418,40 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "logging" || name == "disable" || name == "enable")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDai()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDai()
     :
     logging{YType::enumeration, "logging"},
     disable{YType::empty, "disable"},
     enable{YType::empty, "enable"}
-    	,
-    interface_dai_address_validation(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation>())
+        ,
+    interface_dai_address_validation(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation>())
 {
     interface_dai_address_validation->parent = this;
 
-    yang_name = "interface-dai"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-dai"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::~InterfaceDai()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::~InterfaceDai()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::has_data() const
 {
+    if (is_presence_container) return true;
     return logging.is_set
 	|| disable.is_set
 	|| enable.is_set
 	|| (interface_dai_address_validation !=  nullptr && interface_dai_address_validation->has_data());
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(logging.yfilter)
@@ -1433,14 +1460,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| (interface_dai_address_validation !=  nullptr && interface_dai_address_validation->has_operation());
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-dai";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1452,13 +1479,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-dai-address-validation")
     {
         if(interface_dai_address_validation == nullptr)
         {
-            interface_dai_address_validation = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation>();
+            interface_dai_address_validation = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation>();
         }
         return interface_dai_address_validation;
     }
@@ -1466,7 +1493,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1478,7 +1505,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "logging")
     {
@@ -1500,7 +1527,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "logging")
     {
@@ -1516,14 +1543,14 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-dai-address-validation" || name == "logging" || name == "disable" || name == "enable")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::InterfaceDaiAddressValidation()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::InterfaceDaiAddressValidation()
     :
     ipv4_verification{YType::enumeration, "ipv4-verification"},
     destination_mac_verification{YType::enumeration, "destination-mac-verification"},
@@ -1531,22 +1558,23 @@ L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDom
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "interface-dai-address-validation"; yang_parent_name = "interface-dai"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-dai-address-validation"; yang_parent_name = "interface-dai"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::~InterfaceDaiAddressValidation()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::~InterfaceDaiAddressValidation()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_verification.is_set
 	|| destination_mac_verification.is_set
 	|| source_mac_verification.is_set
 	|| enable.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv4_verification.yfilter)
@@ -1555,14 +1583,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-dai-address-validation";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1575,19 +1603,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-verification")
     {
@@ -1615,7 +1643,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv4-verification")
     {
@@ -1635,47 +1663,48 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4-verification" || name == "destination-mac-verification" || name == "source-mac-verification" || name == "enable")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::InterfaceProfile()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::InterfaceProfile()
     :
     profile_id{YType::enumeration, "profile-id"},
     dhcp_snooping_id{YType::str, "dhcp-snooping-id"}
 {
 
-    yang_name = "interface-profile"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-profile"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::~InterfaceProfile()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::~InterfaceProfile()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_id.is_set
 	|| dhcp_snooping_id.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_id.yfilter)
 	|| ydk::is_set(dhcp_snooping_id.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-profile";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1686,19 +1715,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-id")
     {
@@ -1714,7 +1743,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "profile-id")
     {
@@ -1726,26 +1755,29 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "profile-id" || name == "dhcp-snooping-id")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlTypes()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlTypes()
+    :
+    bdac_storm_control_type(this, {"sctype"})
 {
 
-    yang_name = "bdac-storm-control-types"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bdac-storm-control-types"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::~BdacStormControlTypes()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::~BdacStormControlTypes()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::has_data() const
 {
-    for (std::size_t index=0; index<bdac_storm_control_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bdac_storm_control_type.len(); index++)
     {
         if(bdac_storm_control_type[index]->has_data())
             return true;
@@ -1753,9 +1785,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return false;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::has_operation() const
 {
-    for (std::size_t index=0; index<bdac_storm_control_type.size(); index++)
+    for (std::size_t index=0; index<bdac_storm_control_type.len(); index++)
     {
         if(bdac_storm_control_type[index]->has_operation())
             return true;
@@ -1763,14 +1795,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bdac-storm-control-types";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1779,25 +1811,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bdac-storm-control-type")
     {
-        auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType>();
+        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType>();
         c->parent = this;
-        bdac_storm_control_type.push_back(c);
+        bdac_storm_control_type.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bdac_storm_control_type)
+    for (auto c : bdac_storm_control_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1808,57 +1840,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bdac-storm-control-type")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::BdacStormControlType()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::BdacStormControlType()
     :
     sctype{YType::enumeration, "sctype"}
-    	,
-    storm_control_unit(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit>())
+        ,
+    storm_control_unit(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit>())
 {
     storm_control_unit->parent = this;
 
-    yang_name = "bdac-storm-control-type"; yang_parent_name = "bdac-storm-control-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bdac-storm-control-type"; yang_parent_name = "bdac-storm-control-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::~BdacStormControlType()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::~BdacStormControlType()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::has_data() const
 {
+    if (is_presence_container) return true;
     return sctype.is_set
 	|| (storm_control_unit !=  nullptr && storm_control_unit->has_data());
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sctype.yfilter)
 	|| (storm_control_unit !=  nullptr && storm_control_unit->has_operation());
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bdac-storm-control-type" <<"[sctype='" <<sctype <<"']";
+    path_buffer << "bdac-storm-control-type";
+    ADD_KEY_TOKEN(sctype, "sctype");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1868,13 +1902,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "storm-control-unit")
     {
         if(storm_control_unit == nullptr)
         {
-            storm_control_unit = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit>();
+            storm_control_unit = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit>();
         }
         return storm_control_unit;
     }
@@ -1882,7 +1916,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1894,7 +1928,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sctype")
     {
@@ -1904,7 +1938,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sctype")
     {
@@ -1912,47 +1946,48 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "storm-control-unit" || name == "sctype")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::StormControlUnit()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::StormControlUnit()
     :
     kbits_per_sec{YType::uint32, "kbits-per-sec"},
     pkts_per_sec{YType::uint32, "pkts-per-sec"}
 {
 
-    yang_name = "storm-control-unit"; yang_parent_name = "bdac-storm-control-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storm-control-unit"; yang_parent_name = "bdac-storm-control-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::~StormControlUnit()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::~StormControlUnit()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::has_data() const
 {
+    if (is_presence_container) return true;
     return kbits_per_sec.is_set
 	|| pkts_per_sec.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(kbits_per_sec.yfilter)
 	|| ydk::is_set(pkts_per_sec.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "storm-control-unit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1963,19 +1998,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "kbits-per-sec")
     {
@@ -1991,7 +2026,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "kbits-per-sec")
     {
@@ -2003,45 +2038,46 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "kbits-per-sec" || name == "pkts-per-sec")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizon()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizon()
     :
-    split_horizon_group_id(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId>())
+    split_horizon_group_id(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId>())
 {
     split_horizon_group_id->parent = this;
 
-    yang_name = "split-horizon"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "split-horizon"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::~SplitHorizon()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::~SplitHorizon()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::has_data() const
 {
+    if (is_presence_container) return true;
     return (split_horizon_group_id !=  nullptr && split_horizon_group_id->has_data());
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::has_operation() const
 {
     return is_set(yfilter)
 	|| (split_horizon_group_id !=  nullptr && split_horizon_group_id->has_operation());
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "split-horizon";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2050,13 +2086,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "split-horizon-group-id")
     {
         if(split_horizon_group_id == nullptr)
         {
-            split_horizon_group_id = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId>();
+            split_horizon_group_id = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId>();
         }
         return split_horizon_group_id;
     }
@@ -2064,7 +2100,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2076,52 +2112,53 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "split-horizon-group-id")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::SplitHorizonGroupId()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::SplitHorizonGroupId()
     :
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "split-horizon-group-id"; yang_parent_name = "split-horizon"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "split-horizon-group-id"; yang_parent_name = "split-horizon"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::~SplitHorizonGroupId()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::~SplitHorizonGroupId()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "split-horizon-group-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2131,19 +2168,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -2153,7 +2190,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -2161,26 +2198,29 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddresses()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddresses()
+    :
+    static_mac_address(this, {"address"})
 {
 
-    yang_name = "static-mac-addresses"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-mac-addresses"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::~StaticMacAddresses()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::~StaticMacAddresses()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::has_data() const
 {
-    for (std::size_t index=0; index<static_mac_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_mac_address.len(); index++)
     {
         if(static_mac_address[index]->has_data())
             return true;
@@ -2188,9 +2228,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return false;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<static_mac_address.size(); index++)
+    for (std::size_t index=0; index<static_mac_address.len(); index++)
     {
         if(static_mac_address[index]->has_operation())
             return true;
@@ -2198,14 +2238,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static-mac-addresses";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2214,25 +2254,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-mac-address")
     {
-        auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress>();
+        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress>();
         c->parent = this;
-        static_mac_address.push_back(c);
+        static_mac_address.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_mac_address)
+    for (auto c : static_mac_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2243,52 +2283,54 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "static-mac-address")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::StaticMacAddress()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::StaticMacAddress()
     :
     address{YType::str, "address"}
 {
 
-    yang_name = "static-mac-address"; yang_parent_name = "static-mac-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-mac-address"; yang_parent_name = "static-mac-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::~StaticMacAddress()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::~StaticMacAddress()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-mac-address" <<"[address='" <<address <<"']";
+    path_buffer << "static-mac-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2298,19 +2340,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
@@ -2320,7 +2362,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address")
     {
@@ -2328,35 +2370,36 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMac()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMac()
     :
     interface_mac_port_down_flush{YType::enumeration, "interface-mac-port-down-flush"},
     interface_mac_learning{YType::enumeration, "interface-mac-learning"}
-    	,
-    interface_mac_aging(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging>())
-	,interface_mac_secure(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure>())
-	,interface_mac_limit(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit>())
+        ,
+    interface_mac_aging(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging>())
+    , interface_mac_secure(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure>())
+    , interface_mac_limit(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit>())
 {
     interface_mac_aging->parent = this;
     interface_mac_secure->parent = this;
     interface_mac_limit->parent = this;
 
-    yang_name = "interface-mac"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-mac"; yang_parent_name = "bd-attachment-circuit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::~InterfaceMac()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::~InterfaceMac()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_mac_port_down_flush.is_set
 	|| interface_mac_learning.is_set
 	|| (interface_mac_aging !=  nullptr && interface_mac_aging->has_data())
@@ -2364,7 +2407,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| (interface_mac_limit !=  nullptr && interface_mac_limit->has_data());
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_mac_port_down_flush.yfilter)
@@ -2374,14 +2417,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| (interface_mac_limit !=  nullptr && interface_mac_limit->has_operation());
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-mac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2392,13 +2435,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-mac-aging")
     {
         if(interface_mac_aging == nullptr)
         {
-            interface_mac_aging = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging>();
+            interface_mac_aging = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging>();
         }
         return interface_mac_aging;
     }
@@ -2407,7 +2450,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     {
         if(interface_mac_secure == nullptr)
         {
-            interface_mac_secure = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure>();
+            interface_mac_secure = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure>();
         }
         return interface_mac_secure;
     }
@@ -2416,7 +2459,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     {
         if(interface_mac_limit == nullptr)
         {
-            interface_mac_limit = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit>();
+            interface_mac_limit = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit>();
         }
         return interface_mac_limit;
     }
@@ -2424,7 +2467,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2446,7 +2489,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-mac-port-down-flush")
     {
@@ -2462,7 +2505,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-mac-port-down-flush")
     {
@@ -2474,47 +2517,48 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-mac-aging" || name == "interface-mac-secure" || name == "interface-mac-limit" || name == "interface-mac-port-down-flush" || name == "interface-mac-learning")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::InterfaceMacAging()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::InterfaceMacAging()
     :
     interface_mac_aging_time{YType::uint32, "interface-mac-aging-time"},
     interface_mac_aging_type{YType::enumeration, "interface-mac-aging-type"}
 {
 
-    yang_name = "interface-mac-aging"; yang_parent_name = "interface-mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-mac-aging"; yang_parent_name = "interface-mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::~InterfaceMacAging()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::~InterfaceMacAging()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_mac_aging_time.is_set
 	|| interface_mac_aging_type.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_mac_aging_time.yfilter)
 	|| ydk::is_set(interface_mac_aging_type.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-mac-aging";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2525,19 +2569,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-mac-aging-time")
     {
@@ -2553,7 +2597,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-mac-aging-time")
     {
@@ -2565,14 +2609,14 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-mac-aging-time" || name == "interface-mac-aging-type")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::InterfaceMacSecure()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::InterfaceMacSecure()
     :
     logging{YType::enumeration, "logging"},
     disable{YType::empty, "disable"},
@@ -2580,22 +2624,23 @@ L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDom
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "interface-mac-secure"; yang_parent_name = "interface-mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-mac-secure"; yang_parent_name = "interface-mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::~InterfaceMacSecure()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::~InterfaceMacSecure()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::has_data() const
 {
+    if (is_presence_container) return true;
     return logging.is_set
 	|| disable.is_set
 	|| action.is_set
 	|| enable.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(logging.yfilter)
@@ -2604,14 +2649,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-mac-secure";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2624,19 +2669,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "logging")
     {
@@ -2664,7 +2709,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "logging")
     {
@@ -2684,35 +2729,36 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "logging" || name == "disable" || name == "action" || name == "enable")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::InterfaceMacLimit()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::InterfaceMacLimit()
     :
     interface_mac_limit_max{YType::uint32, "interface-mac-limit-max"},
     interface_mac_limit_notif{YType::enumeration, "interface-mac-limit-notif"},
     interface_mac_limit_action{YType::enumeration, "interface-mac-limit-action"}
 {
 
-    yang_name = "interface-mac-limit"; yang_parent_name = "interface-mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-mac-limit"; yang_parent_name = "interface-mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::~InterfaceMacLimit()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::~InterfaceMacLimit()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_mac_limit_max.is_set
 	|| interface_mac_limit_notif.is_set
 	|| interface_mac_limit_action.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_mac_limit_max.yfilter)
@@ -2720,14 +2766,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| ydk::is_set(interface_mac_limit_action.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-mac-limit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2739,19 +2785,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-mac-limit-max")
     {
@@ -2773,7 +2819,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-mac-limit-max")
     {
@@ -2789,26 +2835,29 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-mac-limit-max" || name == "interface-mac-limit-notif" || name == "interface-mac-limit-action")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpns()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpns()
+    :
+    bd_pseudowire_evpn(this, {"eviid", "acid"})
 {
 
-    yang_name = "bd-pseudowire-evpns"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bd-pseudowire-evpns"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::~BdPseudowireEvpns()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::~BdPseudowireEvpns()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::has_data() const
 {
-    for (std::size_t index=0; index<bd_pseudowire_evpn.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bd_pseudowire_evpn.len(); index++)
     {
         if(bd_pseudowire_evpn[index]->has_data())
             return true;
@@ -2816,9 +2865,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return false;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::has_operation() const
 {
-    for (std::size_t index=0; index<bd_pseudowire_evpn.size(); index++)
+    for (std::size_t index=0; index<bd_pseudowire_evpn.len(); index++)
     {
         if(bd_pseudowire_evpn[index]->has_operation())
             return true;
@@ -2826,14 +2875,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bd-pseudowire-evpns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2842,25 +2891,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bd-pseudowire-evpn")
     {
-        auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn>();
+        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn>();
         c->parent = this;
-        bd_pseudowire_evpn.push_back(c);
+        bd_pseudowire_evpn.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bd_pseudowire_evpn)
+    for (auto c : bd_pseudowire_evpn.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2871,55 +2920,58 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bd-pseudowire-evpn")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::BdPseudowireEvpn()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::BdPseudowireEvpn()
     :
     eviid{YType::uint32, "eviid"},
     acid{YType::uint32, "acid"}
 {
 
-    yang_name = "bd-pseudowire-evpn"; yang_parent_name = "bd-pseudowire-evpns"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bd-pseudowire-evpn"; yang_parent_name = "bd-pseudowire-evpns"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::~BdPseudowireEvpn()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::~BdPseudowireEvpn()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::has_data() const
 {
+    if (is_presence_container) return true;
     return eviid.is_set
 	|| acid.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(eviid.yfilter)
 	|| ydk::is_set(acid.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bd-pseudowire-evpn" <<"[eviid='" <<eviid <<"']" <<"[acid='" <<acid <<"']";
+    path_buffer << "bd-pseudowire-evpn";
+    ADD_KEY_TOKEN(eviid, "eviid");
+    ADD_KEY_TOKEN(acid, "acid");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2930,19 +2982,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "eviid")
     {
@@ -2958,7 +3010,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "eviid")
     {
@@ -2970,47 +3022,48 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "eviid" || name == "acid")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::IpSourceGuard()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::IpSourceGuard()
     :
     logging{YType::empty, "logging"},
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "ip-source-guard"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-source-guard"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::~IpSourceGuard()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::~IpSourceGuard()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return logging.is_set
 	|| enable.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(logging.yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-source-guard";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3021,19 +3074,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "logging")
     {
@@ -3049,7 +3102,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "logging")
     {
@@ -3061,37 +3114,38 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "logging" || name == "enable")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::Dai()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::Dai()
     :
     logging{YType::empty, "logging"},
     enable{YType::empty, "enable"}
-    	,
-    dai_address_validation(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation>())
+        ,
+    dai_address_validation(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation>())
 {
     dai_address_validation->parent = this;
 
-    yang_name = "dai"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dai"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::~Dai()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::~Dai()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::has_data() const
 {
+    if (is_presence_container) return true;
     return logging.is_set
 	|| enable.is_set
 	|| (dai_address_validation !=  nullptr && dai_address_validation->has_data());
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(logging.yfilter)
@@ -3099,14 +3153,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| (dai_address_validation !=  nullptr && dai_address_validation->has_operation());
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dai";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3117,13 +3171,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dai-address-validation")
     {
         if(dai_address_validation == nullptr)
         {
-            dai_address_validation = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation>();
+            dai_address_validation = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation>();
         }
         return dai_address_validation;
     }
@@ -3131,7 +3185,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3143,7 +3197,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "logging")
     {
@@ -3159,7 +3213,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "logging")
     {
@@ -3171,14 +3225,14 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dai-address-validation" || name == "logging" || name == "enable")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::DaiAddressValidation()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::DaiAddressValidation()
     :
     ipv4_verification{YType::empty, "ipv4-verification"},
     destination_mac_verification{YType::empty, "destination-mac-verification"},
@@ -3186,22 +3240,23 @@ L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDom
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "dai-address-validation"; yang_parent_name = "dai"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dai-address-validation"; yang_parent_name = "dai"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::~DaiAddressValidation()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::~DaiAddressValidation()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_verification.is_set
 	|| destination_mac_verification.is_set
 	|| source_mac_verification.is_set
 	|| enable.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv4_verification.yfilter)
@@ -3210,14 +3265,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dai-address-validation";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3230,19 +3285,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-verification")
     {
@@ -3270,7 +3325,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv4-verification")
     {
@@ -3290,26 +3345,29 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4-verification" || name == "destination-mac-verification" || name == "source-mac-verification" || name == "enable")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterfaces()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterfaces()
+    :
+    routed_interface(this, {"interface_name"})
 {
 
-    yang_name = "routed-interfaces"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routed-interfaces"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::~RoutedInterfaces()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::~RoutedInterfaces()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<routed_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<routed_interface.len(); index++)
     {
         if(routed_interface[index]->has_data())
             return true;
@@ -3317,9 +3375,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return false;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<routed_interface.size(); index++)
+    for (std::size_t index=0; index<routed_interface.len(); index++)
     {
         if(routed_interface[index]->has_operation())
             return true;
@@ -3327,14 +3385,14 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "routed-interfaces";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3343,25 +3401,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "routed-interface")
     {
-        auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface>();
+        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface>();
         c->parent = this;
-        routed_interface.push_back(c);
+        routed_interface.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : routed_interface)
+    for (auto c : routed_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3372,57 +3430,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "routed-interface")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterface()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
-    routed_interface_split_horizon_group(std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup>())
+        ,
+    routed_interface_split_horizon_group(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup>())
 {
     routed_interface_split_horizon_group->parent = this;
 
-    yang_name = "routed-interface"; yang_parent_name = "routed-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routed-interface"; yang_parent_name = "routed-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::~RoutedInterface()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::~RoutedInterface()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (routed_interface_split_horizon_group !=  nullptr && routed_interface_split_horizon_group->has_data());
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
 	|| (routed_interface_split_horizon_group !=  nullptr && routed_interface_split_horizon_group->has_operation());
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "routed-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "routed-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3432,13 +3492,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "routed-interface-split-horizon-group")
     {
         if(routed_interface_split_horizon_group == nullptr)
         {
-            routed_interface_split_horizon_group = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup>();
+            routed_interface_split_horizon_group = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup>();
         }
         return routed_interface_split_horizon_group;
     }
@@ -3446,7 +3506,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3458,7 +3518,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGrou
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -3468,7 +3528,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -3476,44 +3536,45 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "routed-interface-split-horizon-group" || name == "interface-name")
         return true;
     return false;
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::RoutedInterfaceSplitHorizonGroup()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::RoutedInterfaceSplitHorizonGroup()
     :
     routed_interface_split_horizon_group_core{YType::empty, "routed-interface-split-horizon-group-core"}
 {
 
-    yang_name = "routed-interface-split-horizon-group"; yang_parent_name = "routed-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routed-interface-split-horizon-group"; yang_parent_name = "routed-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::~RoutedInterfaceSplitHorizonGroup()
+L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::~RoutedInterfaceSplitHorizonGroup()
 {
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::has_data() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return routed_interface_split_horizon_group_core.is_set;
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::has_operation() const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(routed_interface_split_horizon_group_core.yfilter);
 }
 
-std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_segment_path() const
+std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "routed-interface-split-horizon-group";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3523,19 +3584,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "routed-interface-split-horizon-group-core")
     {
@@ -3545,7 +3606,7 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "routed-interface-split-horizon-group-core")
     {
@@ -3553,26 +3614,29 @@ void L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     }
 }
 
-bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "routed-interface-split-horizon-group-core")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClasses()
+L2vpn::Database::PseudowireClasses::PseudowireClasses()
+    :
+    pseudowire_class(this, {"name"})
 {
 
-    yang_name = "pseudowire-classes"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pseudowire-classes"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Database::PseudowireClasses::~PseudowireClasses()
+L2vpn::Database::PseudowireClasses::~PseudowireClasses()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::has_data() const
+bool L2vpn::Database::PseudowireClasses::has_data() const
 {
-    for (std::size_t index=0; index<pseudowire_class.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pseudowire_class.len(); index++)
     {
         if(pseudowire_class[index]->has_data())
             return true;
@@ -3580,9 +3644,9 @@ bool L2Vpn::Database::PseudowireClasses::has_data() const
     return false;
 }
 
-bool L2Vpn::Database::PseudowireClasses::has_operation() const
+bool L2vpn::Database::PseudowireClasses::has_operation() const
 {
-    for (std::size_t index=0; index<pseudowire_class.size(); index++)
+    for (std::size_t index=0; index<pseudowire_class.len(); index++)
     {
         if(pseudowire_class[index]->has_operation())
             return true;
@@ -3590,21 +3654,21 @@ bool L2Vpn::Database::PseudowireClasses::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::PseudowireClasses::get_absolute_path() const
+std::string L2vpn::Database::PseudowireClasses::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/database/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Database::PseudowireClasses::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudowire-classes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3613,25 +3677,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pseudowire-class")
     {
-        auto c = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass>();
+        auto c = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass>();
         c->parent = this;
-        pseudowire_class.push_back(c);
+        pseudowire_class.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pseudowire_class)
+    for (auto c : pseudowire_class.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3642,44 +3706,45 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasse
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::PseudowireClasses::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pseudowire-class")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::PseudowireClass()
+L2vpn::Database::PseudowireClasses::PseudowireClass::PseudowireClass()
     :
     name{YType::str, "name"},
     mac_withdraw{YType::empty, "mac-withdraw"},
     enable{YType::empty, "enable"}
-    	,
-    l2tpv3_encapsulation(std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation>())
-	,backup_disable_delay(std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay>())
-	,mpls_encapsulation(std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation>())
+        ,
+    l2tpv3_encapsulation(std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation>())
+    , backup_disable_delay(std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay>())
+    , mpls_encapsulation(std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation>())
 {
     l2tpv3_encapsulation->parent = this;
     backup_disable_delay->parent = this;
     mpls_encapsulation->parent = this;
 
-    yang_name = "pseudowire-class"; yang_parent_name = "pseudowire-classes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pseudowire-class"; yang_parent_name = "pseudowire-classes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::~PseudowireClass()
+L2vpn::Database::PseudowireClasses::PseudowireClass::~PseudowireClass()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| mac_withdraw.is_set
 	|| enable.is_set
@@ -3688,7 +3753,7 @@ bool L2Vpn::Database::PseudowireClasses::PseudowireClass::has_data() const
 	|| (mpls_encapsulation !=  nullptr && mpls_encapsulation->has_data());
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
@@ -3699,21 +3764,22 @@ bool L2Vpn::Database::PseudowireClasses::PseudowireClass::has_operation() const
 	|| (mpls_encapsulation !=  nullptr && mpls_encapsulation->has_operation());
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::get_absolute_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/database/pseudowire-classes/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pseudowire-class" <<"[name='" <<name <<"']";
+    path_buffer << "pseudowire-class";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3725,13 +3791,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2tpv3-encapsulation")
     {
         if(l2tpv3_encapsulation == nullptr)
         {
-            l2tpv3_encapsulation = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation>();
+            l2tpv3_encapsulation = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation>();
         }
         return l2tpv3_encapsulation;
     }
@@ -3740,7 +3806,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::get
     {
         if(backup_disable_delay == nullptr)
         {
-            backup_disable_delay = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay>();
+            backup_disable_delay = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay>();
         }
         return backup_disable_delay;
     }
@@ -3749,7 +3815,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::get
     {
         if(mpls_encapsulation == nullptr)
         {
-            mpls_encapsulation = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation>();
+            mpls_encapsulation = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation>();
         }
         return mpls_encapsulation;
     }
@@ -3757,7 +3823,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3779,7 +3845,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasse
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -3801,7 +3867,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::set_value(const std::s
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -3817,14 +3883,14 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::set_filter(const std::
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2tpv3-encapsulation" || name == "backup-disable-delay" || name == "mpls-encapsulation" || name == "name" || name == "mac-withdraw" || name == "enable")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::L2Tpv3Encapsulation()
+L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::L2tpv3Encapsulation()
     :
     df_bit_set{YType::empty, "df-bit-set"},
     cookie_size{YType::enumeration, "cookie-size"},
@@ -3832,26 +3898,27 @@ L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::L2Tpv3
     transport_mode{YType::enumeration, "transport-mode"},
     enable{YType::empty, "enable"},
     time_to_live{YType::uint32, "time-to-live"}
-    	,
-    sequencing(std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing>())
-	,type_of_service(std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService>())
-	,signaling_protocol(std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol>())
-	,path_mtu(std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu>())
+        ,
+    sequencing(std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing>())
+    , type_of_service(std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService>())
+    , signaling_protocol(std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol>())
+    , path_mtu(std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu>())
 {
     sequencing->parent = this;
     type_of_service->parent = this;
     signaling_protocol->parent = this;
     path_mtu->parent = this;
 
-    yang_name = "l2tpv3-encapsulation"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tpv3-encapsulation"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::~L2Tpv3Encapsulation()
+L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::~L2tpv3Encapsulation()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return df_bit_set.is_set
 	|| cookie_size.is_set
 	|| source_address.is_set
@@ -3864,7 +3931,7 @@ bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::h
 	|| (path_mtu !=  nullptr && path_mtu->has_data());
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(df_bit_set.yfilter)
@@ -3879,14 +3946,14 @@ bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::h
 	|| (path_mtu !=  nullptr && path_mtu->has_operation());
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tpv3-encapsulation";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3901,13 +3968,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sequencing")
     {
         if(sequencing == nullptr)
         {
-            sequencing = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing>();
+            sequencing = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing>();
         }
         return sequencing;
     }
@@ -3916,7 +3983,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2T
     {
         if(type_of_service == nullptr)
         {
-            type_of_service = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService>();
+            type_of_service = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService>();
         }
         return type_of_service;
     }
@@ -3925,7 +3992,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2T
     {
         if(signaling_protocol == nullptr)
         {
-            signaling_protocol = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol>();
+            signaling_protocol = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol>();
         }
         return signaling_protocol;
     }
@@ -3934,7 +4001,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2T
     {
         if(path_mtu == nullptr)
         {
-            path_mtu = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu>();
+            path_mtu = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu>();
         }
         return path_mtu;
     }
@@ -3942,7 +4009,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2T
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3969,7 +4036,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasse
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "df-bit-set")
     {
@@ -4009,7 +4076,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::s
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "df-bit-set")
     {
@@ -4037,47 +4104,48 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::s
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sequencing" || name == "type-of-service" || name == "signaling-protocol" || name == "path-mtu" || name == "df-bit-set" || name == "cookie-size" || name == "source-address" || name == "transport-mode" || name == "enable" || name == "time-to-live")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing::Sequencing()
+L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::Sequencing()
     :
     sequencing{YType::enumeration, "sequencing"},
     resync_threshold{YType::uint32, "resync-threshold"}
 {
 
-    yang_name = "sequencing"; yang_parent_name = "l2tpv3-encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sequencing"; yang_parent_name = "l2tpv3-encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing::~Sequencing()
+L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::~Sequencing()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::has_data() const
 {
+    if (is_presence_container) return true;
     return sequencing.is_set
 	|| resync_threshold.is_set;
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sequencing.yfilter)
 	|| ydk::is_set(resync_threshold.yfilter);
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sequencing";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4088,19 +4156,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sequencing")
     {
@@ -4116,7 +4184,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::S
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sequencing")
     {
@@ -4128,47 +4196,48 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::S
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sequencing" || name == "resync-threshold")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService::TypeOfService()
+L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::TypeOfService()
     :
     type_of_service_value{YType::uint32, "type-of-service-value"},
     type_of_service_mode{YType::enumeration, "type-of-service-mode"}
 {
 
-    yang_name = "type-of-service"; yang_parent_name = "l2tpv3-encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "type-of-service"; yang_parent_name = "l2tpv3-encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService::~TypeOfService()
+L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::~TypeOfService()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::has_data() const
 {
+    if (is_presence_container) return true;
     return type_of_service_value.is_set
 	|| type_of_service_mode.is_set;
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type_of_service_value.yfilter)
 	|| ydk::is_set(type_of_service_mode.yfilter);
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "type-of-service";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4179,19 +4248,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type-of-service-value")
     {
@@ -4207,7 +4276,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::T
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type-of-service-value")
     {
@@ -4219,47 +4288,48 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::T
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "type-of-service-value" || name == "type-of-service-mode")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol::SignalingProtocol()
+L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::SignalingProtocol()
     :
     protocol{YType::enumeration, "protocol"},
     l2tpv3_class_name{YType::str, "l2tpv3-class-name"}
 {
 
-    yang_name = "signaling-protocol"; yang_parent_name = "l2tpv3-encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "signaling-protocol"; yang_parent_name = "l2tpv3-encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol::~SignalingProtocol()
+L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::~SignalingProtocol()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| l2tpv3_class_name.is_set;
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(protocol.yfilter)
 	|| ydk::is_set(l2tpv3_class_name.yfilter);
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "signaling-protocol";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4270,19 +4340,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -4298,7 +4368,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::S
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -4310,47 +4380,48 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::S
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol" || name == "l2tpv3-class-name")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu::PathMtu()
+L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::PathMtu()
     :
     enable{YType::empty, "enable"},
     max_path_mtu{YType::uint32, "max-path-mtu"}
 {
 
-    yang_name = "path-mtu"; yang_parent_name = "l2tpv3-encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-mtu"; yang_parent_name = "l2tpv3-encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu::~PathMtu()
+L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::~PathMtu()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| max_path_mtu.is_set;
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(max_path_mtu.yfilter);
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-mtu";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4361,19 +4432,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -4389,7 +4460,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::P
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -4401,47 +4472,48 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::P
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable" || name == "max-path-mtu")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::BackupDisableDelay()
+L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::BackupDisableDelay()
     :
     type{YType::enumeration, "type"},
     disable_backup{YType::uint32, "disable-backup"}
 {
 
-    yang_name = "backup-disable-delay"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-disable-delay"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::~BackupDisableDelay()
+L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::~BackupDisableDelay()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| disable_backup.is_set;
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
 	|| ydk::is_set(disable_backup.yfilter);
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-disable-delay";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4452,19 +4524,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -4480,7 +4552,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::se
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -4492,14 +4564,14 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::se
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "type" || name == "disable-backup")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsEncapsulation()
+L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsEncapsulation()
     :
     pw_switching_tlv{YType::enumeration, "pw-switching-tlv"},
     static_tag_rewrite{YType::uint32, "static-tag-rewrite"},
@@ -4509,26 +4581,27 @@ L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsEnca
     transport_mode{YType::enumeration, "transport-mode"},
     enable{YType::empty, "enable"},
     control_word{YType::enumeration, "control-word"}
-    	,
-    sequencing(std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing>())
-	,mpls_redundancy(std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy>())
-	,preferred_path(std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath>())
-	,load_balance_group(std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup>())
+        ,
+    sequencing(std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing>())
+    , mpls_redundancy(std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy>())
+    , preferred_path(std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath>())
+    , load_balance_group(std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup>())
 {
     sequencing->parent = this;
     mpls_redundancy->parent = this;
     preferred_path->parent = this;
     load_balance_group->parent = this;
 
-    yang_name = "mpls-encapsulation"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-encapsulation"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::~MplsEncapsulation()
+L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::~MplsEncapsulation()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_switching_tlv.is_set
 	|| static_tag_rewrite.is_set
 	|| signaling_protocol.is_set
@@ -4543,7 +4616,7 @@ bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::has
 	|| (load_balance_group !=  nullptr && load_balance_group->has_data());
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_switching_tlv.yfilter)
@@ -4560,14 +4633,14 @@ bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::has
 	|| (load_balance_group !=  nullptr && load_balance_group->has_operation());
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls-encapsulation";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4584,13 +4657,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sequencing")
     {
         if(sequencing == nullptr)
         {
-            sequencing = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing>();
+            sequencing = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing>();
         }
         return sequencing;
     }
@@ -4599,7 +4672,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::Mpl
     {
         if(mpls_redundancy == nullptr)
         {
-            mpls_redundancy = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy>();
+            mpls_redundancy = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy>();
         }
         return mpls_redundancy;
     }
@@ -4608,7 +4681,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::Mpl
     {
         if(preferred_path == nullptr)
         {
-            preferred_path = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath>();
+            preferred_path = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath>();
         }
         return preferred_path;
     }
@@ -4617,7 +4690,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::Mpl
     {
         if(load_balance_group == nullptr)
         {
-            load_balance_group = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup>();
+            load_balance_group = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup>();
         }
         return load_balance_group;
     }
@@ -4625,7 +4698,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::Mpl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4652,7 +4725,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasse
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-switching-tlv")
     {
@@ -4704,7 +4777,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::set
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-switching-tlv")
     {
@@ -4740,47 +4813,48 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::set
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sequencing" || name == "mpls-redundancy" || name == "preferred-path" || name == "load-balance-group" || name == "pw-switching-tlv" || name == "static-tag-rewrite" || name == "signaling-protocol" || name == "vccv-type" || name == "source-address" || name == "transport-mode" || name == "enable" || name == "control-word")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::Sequencing()
+L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::Sequencing()
     :
     sequencing{YType::enumeration, "sequencing"},
     resync_threshold{YType::uint32, "resync-threshold"}
 {
 
-    yang_name = "sequencing"; yang_parent_name = "mpls-encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sequencing"; yang_parent_name = "mpls-encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::~Sequencing()
+L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::~Sequencing()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::has_data() const
 {
+    if (is_presence_container) return true;
     return sequencing.is_set
 	|| resync_threshold.is_set;
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sequencing.yfilter)
 	|| ydk::is_set(resync_threshold.yfilter);
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sequencing";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4791,19 +4865,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sequencing")
     {
@@ -4819,7 +4893,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Seq
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sequencing")
     {
@@ -4831,47 +4905,48 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Seq
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sequencing" || name == "resync-threshold")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::MplsRedundancy()
+L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::MplsRedundancy()
     :
     redundancy_one_way{YType::empty, "redundancy-one-way"},
     redundancy_initial_delay{YType::uint32, "redundancy-initial-delay"}
 {
 
-    yang_name = "mpls-redundancy"; yang_parent_name = "mpls-encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-redundancy"; yang_parent_name = "mpls-encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::~MplsRedundancy()
+L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::~MplsRedundancy()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return redundancy_one_way.is_set
 	|| redundancy_initial_delay.is_set;
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(redundancy_one_way.yfilter)
 	|| ydk::is_set(redundancy_initial_delay.yfilter);
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls-redundancy";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4882,19 +4957,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "redundancy-one-way")
     {
@@ -4910,7 +4985,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Mpl
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "redundancy-one-way")
     {
@@ -4922,14 +4997,14 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Mpl
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "redundancy-one-way" || name == "redundancy-initial-delay")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::PreferredPath()
+L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::PreferredPath()
     :
     type{YType::enumeration, "type"},
     interface_tunnel_number{YType::uint32, "interface-tunnel-number"},
@@ -4937,22 +5012,23 @@ L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Preferre
     srte_policy{YType::str, "srte-policy"}
 {
 
-    yang_name = "preferred-path"; yang_parent_name = "mpls-encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "preferred-path"; yang_parent_name = "mpls-encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::~PreferredPath()
+L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::~PreferredPath()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| interface_tunnel_number.is_set
 	|| fallback_disable.is_set
 	|| srte_policy.is_set;
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -4961,14 +5037,14 @@ bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Pre
 	|| ydk::is_set(srte_policy.yfilter);
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "preferred-path";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4981,19 +5057,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -5021,7 +5097,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Pre
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -5041,37 +5117,38 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Pre
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "type" || name == "interface-tunnel-number" || name == "fallback-disable" || name == "srte-policy")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::LoadBalanceGroup()
+L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::LoadBalanceGroup()
     :
     flow_label_load_balance_code{YType::enumeration, "flow-label-load-balance-code"},
     pw_label_load_balance{YType::enumeration, "pw-label-load-balance"}
-    	,
-    flow_label_load_balance(std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance>())
+        ,
+    flow_label_load_balance(std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance>())
 {
     flow_label_load_balance->parent = this;
 
-    yang_name = "load-balance-group"; yang_parent_name = "mpls-encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-balance-group"; yang_parent_name = "mpls-encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::~LoadBalanceGroup()
+L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::~LoadBalanceGroup()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return flow_label_load_balance_code.is_set
 	|| pw_label_load_balance.is_set
 	|| (flow_label_load_balance !=  nullptr && flow_label_load_balance->has_data());
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(flow_label_load_balance_code.yfilter)
@@ -5079,14 +5156,14 @@ bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Loa
 	|| (flow_label_load_balance !=  nullptr && flow_label_load_balance->has_operation());
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "load-balance-group";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5097,13 +5174,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-label-load-balance")
     {
         if(flow_label_load_balance == nullptr)
         {
-            flow_label_load_balance = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance>();
+            flow_label_load_balance = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance>();
         }
         return flow_label_load_balance;
     }
@@ -5111,7 +5188,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::Mpl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5123,7 +5200,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasse
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flow-label-load-balance-code")
     {
@@ -5139,7 +5216,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Loa
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "flow-label-load-balance-code")
     {
@@ -5151,47 +5228,48 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Loa
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flow-label-load-balance" || name == "flow-label-load-balance-code" || name == "pw-label-load-balance")
         return true;
     return false;
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::FlowLabelLoadBalance()
+L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::FlowLabelLoadBalance()
     :
     flow_label{YType::enumeration, "flow-label"},
     static_{YType::empty, "static"}
 {
 
-    yang_name = "flow-label-load-balance"; yang_parent_name = "load-balance-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-label-load-balance"; yang_parent_name = "load-balance-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::~FlowLabelLoadBalance()
+L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::~FlowLabelLoadBalance()
 {
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::has_data() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::has_data() const
 {
+    if (is_presence_container) return true;
     return flow_label.is_set
 	|| static_.is_set;
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::has_operation() const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(flow_label.yfilter)
 	|| ydk::is_set(static_.yfilter);
 }
 
-std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_segment_path() const
+std::string L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flow-label-load-balance";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5202,19 +5280,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flow-label")
     {
@@ -5230,7 +5308,7 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Loa
     }
 }
 
-void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "flow-label")
     {
@@ -5242,56 +5320,57 @@ void L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Loa
     }
 }
 
-bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flow-label" || name == "static")
         return true;
     return false;
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::FlexibleXconnectServiceTable()
+L2vpn::Database::FlexibleXconnectServiceTable::FlexibleXconnectServiceTable()
     :
-    vlan_unaware_flexible_xconnect_services(std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices>())
-	,vlan_aware_flexible_xconnect_services(std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices>())
+    vlan_unaware_flexible_xconnect_services(std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices>())
+    , vlan_aware_flexible_xconnect_services(std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices>())
 {
     vlan_unaware_flexible_xconnect_services->parent = this;
     vlan_aware_flexible_xconnect_services->parent = this;
 
-    yang_name = "flexible-xconnect-service-table"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flexible-xconnect-service-table"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::~FlexibleXconnectServiceTable()
+L2vpn::Database::FlexibleXconnectServiceTable::~FlexibleXconnectServiceTable()
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::has_data() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan_unaware_flexible_xconnect_services !=  nullptr && vlan_unaware_flexible_xconnect_services->has_data())
 	|| (vlan_aware_flexible_xconnect_services !=  nullptr && vlan_aware_flexible_xconnect_services->has_data());
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::has_operation() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::has_operation() const
 {
     return is_set(yfilter)
 	|| (vlan_unaware_flexible_xconnect_services !=  nullptr && vlan_unaware_flexible_xconnect_services->has_operation())
 	|| (vlan_aware_flexible_xconnect_services !=  nullptr && vlan_aware_flexible_xconnect_services->has_operation());
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::get_absolute_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/database/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::get_segment_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flexible-xconnect-service-table";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnectServiceTable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::FlexibleXconnectServiceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5300,13 +5379,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnect
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::FlexibleXconnectServiceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-unaware-flexible-xconnect-services")
     {
         if(vlan_unaware_flexible_xconnect_services == nullptr)
         {
-            vlan_unaware_flexible_xconnect_services = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices>();
+            vlan_unaware_flexible_xconnect_services = std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices>();
         }
         return vlan_unaware_flexible_xconnect_services;
     }
@@ -5315,7 +5394,7 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::get_child
     {
         if(vlan_aware_flexible_xconnect_services == nullptr)
         {
-            vlan_aware_flexible_xconnect_services = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices>();
+            vlan_aware_flexible_xconnect_services = std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices>();
         }
         return vlan_aware_flexible_xconnect_services;
     }
@@ -5323,7 +5402,7 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::FlexibleXconnectServiceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5340,34 +5419,37 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnect
     return children;
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::FlexibleXconnectServiceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::FlexibleXconnectServiceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::FlexibleXconnectServiceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-unaware-flexible-xconnect-services" || name == "vlan-aware-flexible-xconnect-services")
         return true;
     return false;
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectServices()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectServices()
+    :
+    vlan_unaware_flexible_xconnect_service(this, {"name"})
 {
 
-    yang_name = "vlan-unaware-flexible-xconnect-services"; yang_parent_name = "flexible-xconnect-service-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan-unaware-flexible-xconnect-services"; yang_parent_name = "flexible-xconnect-service-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::~VlanUnawareFlexibleXconnectServices()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::~VlanUnawareFlexibleXconnectServices()
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::has_data() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::has_data() const
 {
-    for (std::size_t index=0; index<vlan_unaware_flexible_xconnect_service.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_unaware_flexible_xconnect_service.len(); index++)
     {
         if(vlan_unaware_flexible_xconnect_service[index]->has_data())
             return true;
@@ -5375,9 +5457,9 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
     return false;
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::has_operation() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_unaware_flexible_xconnect_service.size(); index++)
+    for (std::size_t index=0; index<vlan_unaware_flexible_xconnect_service.len(); index++)
     {
         if(vlan_unaware_flexible_xconnect_service[index]->has_operation())
             return true;
@@ -5385,21 +5467,21 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::get_absolute_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/database/flexible-xconnect-service-table/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::get_segment_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-unaware-flexible-xconnect-services";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5408,25 +5490,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnect
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-unaware-flexible-xconnect-service")
     {
-        auto c = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService>();
+        auto c = std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService>();
         c->parent = this;
-        vlan_unaware_flexible_xconnect_service.push_back(c);
+        vlan_unaware_flexible_xconnect_service.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_unaware_flexible_xconnect_service)
+    for (auto c : vlan_unaware_flexible_xconnect_service.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5437,46 +5519,47 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnect
     return children;
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-unaware-flexible-xconnect-service")
         return true;
     return false;
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFlexibleXconnectService()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFlexibleXconnectService()
     :
     name{YType::str, "name"}
-    	,
-    vlan_unaware_fxc_attachment_circuits(std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits>())
-	,vlan_unaware_fxc_pseudowire_evpns(std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns>())
+        ,
+    vlan_unaware_fxc_attachment_circuits(std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits>())
+    , vlan_unaware_fxc_pseudowire_evpns(std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns>())
 {
     vlan_unaware_fxc_attachment_circuits->parent = this;
     vlan_unaware_fxc_pseudowire_evpns->parent = this;
 
-    yang_name = "vlan-unaware-flexible-xconnect-service"; yang_parent_name = "vlan-unaware-flexible-xconnect-services"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan-unaware-flexible-xconnect-service"; yang_parent_name = "vlan-unaware-flexible-xconnect-services"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::~VlanUnawareFlexibleXconnectService()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::~VlanUnawareFlexibleXconnectService()
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::has_data() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (vlan_unaware_fxc_attachment_circuits !=  nullptr && vlan_unaware_fxc_attachment_circuits->has_data())
 	|| (vlan_unaware_fxc_pseudowire_evpns !=  nullptr && vlan_unaware_fxc_pseudowire_evpns->has_data());
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::has_operation() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
@@ -5484,21 +5567,22 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
 	|| (vlan_unaware_fxc_pseudowire_evpns !=  nullptr && vlan_unaware_fxc_pseudowire_evpns->has_operation());
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::get_absolute_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/database/flexible-xconnect-service-table/vlan-unaware-flexible-xconnect-services/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::get_segment_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-unaware-flexible-xconnect-service" <<"[name='" <<name <<"']";
+    path_buffer << "vlan-unaware-flexible-xconnect-service";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5508,13 +5592,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnect
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-unaware-fxc-attachment-circuits")
     {
         if(vlan_unaware_fxc_attachment_circuits == nullptr)
         {
-            vlan_unaware_fxc_attachment_circuits = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits>();
+            vlan_unaware_fxc_attachment_circuits = std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits>();
         }
         return vlan_unaware_fxc_attachment_circuits;
     }
@@ -5523,7 +5607,7 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawa
     {
         if(vlan_unaware_fxc_pseudowire_evpns == nullptr)
         {
-            vlan_unaware_fxc_pseudowire_evpns = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns>();
+            vlan_unaware_fxc_pseudowire_evpns = std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns>();
         }
         return vlan_unaware_fxc_pseudowire_evpns;
     }
@@ -5531,7 +5615,7 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5548,7 +5632,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnect
     return children;
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -5558,7 +5642,7 @@ void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
     }
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -5566,26 +5650,29 @@ void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
     }
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-unaware-fxc-attachment-circuits" || name == "vlan-unaware-fxc-pseudowire-evpns" || name == "name")
         return true;
     return false;
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuits()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuits()
+    :
+    vlan_unaware_fxc_attachment_circuit(this, {"name"})
 {
 
-    yang_name = "vlan-unaware-fxc-attachment-circuits"; yang_parent_name = "vlan-unaware-flexible-xconnect-service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-unaware-fxc-attachment-circuits"; yang_parent_name = "vlan-unaware-flexible-xconnect-service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::~VlanUnawareFxcAttachmentCircuits()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::~VlanUnawareFxcAttachmentCircuits()
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::has_data() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::has_data() const
 {
-    for (std::size_t index=0; index<vlan_unaware_fxc_attachment_circuit.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_unaware_fxc_attachment_circuit.len(); index++)
     {
         if(vlan_unaware_fxc_attachment_circuit[index]->has_data())
             return true;
@@ -5593,9 +5680,9 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
     return false;
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::has_operation() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_unaware_fxc_attachment_circuit.size(); index++)
+    for (std::size_t index=0; index<vlan_unaware_fxc_attachment_circuit.len(); index++)
     {
         if(vlan_unaware_fxc_attachment_circuit[index]->has_operation())
             return true;
@@ -5603,14 +5690,14 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::get_segment_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-unaware-fxc-attachment-circuits";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5619,25 +5706,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnect
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-unaware-fxc-attachment-circuit")
     {
-        auto c = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit>();
+        auto c = std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit>();
         c->parent = this;
-        vlan_unaware_fxc_attachment_circuit.push_back(c);
+        vlan_unaware_fxc_attachment_circuit.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_unaware_fxc_attachment_circuit)
+    for (auto c : vlan_unaware_fxc_attachment_circuit.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5648,52 +5735,54 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnect
     return children;
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-unaware-fxc-attachment-circuit")
         return true;
     return false;
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::VlanUnawareFxcAttachmentCircuit()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::VlanUnawareFxcAttachmentCircuit()
     :
     name{YType::str, "name"}
 {
 
-    yang_name = "vlan-unaware-fxc-attachment-circuit"; yang_parent_name = "vlan-unaware-fxc-attachment-circuits"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-unaware-fxc-attachment-circuit"; yang_parent_name = "vlan-unaware-fxc-attachment-circuits"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::~VlanUnawareFxcAttachmentCircuit()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::~VlanUnawareFxcAttachmentCircuit()
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::has_data() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::has_operation() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::get_segment_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-unaware-fxc-attachment-circuit" <<"[name='" <<name <<"']";
+    path_buffer << "vlan-unaware-fxc-attachment-circuit";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5703,19 +5792,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnect
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -5725,7 +5814,7 @@ void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
     }
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -5733,26 +5822,29 @@ void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
     }
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
     return false;
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpns()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpns()
+    :
+    vlan_unaware_fxc_pseudowire_evpn(this, {"eviid", "acid"})
 {
 
-    yang_name = "vlan-unaware-fxc-pseudowire-evpns"; yang_parent_name = "vlan-unaware-flexible-xconnect-service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-unaware-fxc-pseudowire-evpns"; yang_parent_name = "vlan-unaware-flexible-xconnect-service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::~VlanUnawareFxcPseudowireEvpns()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::~VlanUnawareFxcPseudowireEvpns()
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::has_data() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::has_data() const
 {
-    for (std::size_t index=0; index<vlan_unaware_fxc_pseudowire_evpn.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_unaware_fxc_pseudowire_evpn.len(); index++)
     {
         if(vlan_unaware_fxc_pseudowire_evpn[index]->has_data())
             return true;
@@ -5760,9 +5852,9 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
     return false;
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::has_operation() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_unaware_fxc_pseudowire_evpn.size(); index++)
+    for (std::size_t index=0; index<vlan_unaware_fxc_pseudowire_evpn.len(); index++)
     {
         if(vlan_unaware_fxc_pseudowire_evpn[index]->has_operation())
             return true;
@@ -5770,14 +5862,14 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::get_segment_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-unaware-fxc-pseudowire-evpns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5786,25 +5878,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnect
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-unaware-fxc-pseudowire-evpn")
     {
-        auto c = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn>();
+        auto c = std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn>();
         c->parent = this;
-        vlan_unaware_fxc_pseudowire_evpn.push_back(c);
+        vlan_unaware_fxc_pseudowire_evpn.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_unaware_fxc_pseudowire_evpn)
+    for (auto c : vlan_unaware_fxc_pseudowire_evpn.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5815,55 +5907,58 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnect
     return children;
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-unaware-fxc-pseudowire-evpn")
         return true;
     return false;
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::VlanUnawareFxcPseudowireEvpn()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::VlanUnawareFxcPseudowireEvpn()
     :
     eviid{YType::uint32, "eviid"},
     acid{YType::uint32, "acid"}
 {
 
-    yang_name = "vlan-unaware-fxc-pseudowire-evpn"; yang_parent_name = "vlan-unaware-fxc-pseudowire-evpns"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-unaware-fxc-pseudowire-evpn"; yang_parent_name = "vlan-unaware-fxc-pseudowire-evpns"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::~VlanUnawareFxcPseudowireEvpn()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::~VlanUnawareFxcPseudowireEvpn()
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::has_data() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::has_data() const
 {
+    if (is_presence_container) return true;
     return eviid.is_set
 	|| acid.is_set;
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::has_operation() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(eviid.yfilter)
 	|| ydk::is_set(acid.yfilter);
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::get_segment_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-unaware-fxc-pseudowire-evpn" <<"[eviid='" <<eviid <<"']" <<"[acid='" <<acid <<"']";
+    path_buffer << "vlan-unaware-fxc-pseudowire-evpn";
+    ADD_KEY_TOKEN(eviid, "eviid");
+    ADD_KEY_TOKEN(acid, "acid");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5874,19 +5969,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnect
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "eviid")
     {
@@ -5902,7 +5997,7 @@ void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
     }
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "eviid")
     {
@@ -5914,26 +6009,29 @@ void L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
     }
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "eviid" || name == "acid")
         return true;
     return false;
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectServices()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectServices()
+    :
+    vlan_aware_flexible_xconnect_service(this, {"eviid"})
 {
 
-    yang_name = "vlan-aware-flexible-xconnect-services"; yang_parent_name = "flexible-xconnect-service-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan-aware-flexible-xconnect-services"; yang_parent_name = "flexible-xconnect-service-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::~VlanAwareFlexibleXconnectServices()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::~VlanAwareFlexibleXconnectServices()
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::has_data() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::has_data() const
 {
-    for (std::size_t index=0; index<vlan_aware_flexible_xconnect_service.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_aware_flexible_xconnect_service.len(); index++)
     {
         if(vlan_aware_flexible_xconnect_service[index]->has_data())
             return true;
@@ -5941,9 +6039,9 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectSer
     return false;
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::has_operation() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_aware_flexible_xconnect_service.size(); index++)
+    for (std::size_t index=0; index<vlan_aware_flexible_xconnect_service.len(); index++)
     {
         if(vlan_aware_flexible_xconnect_service[index]->has_operation())
             return true;
@@ -5951,21 +6049,21 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectSer
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::get_absolute_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/database/flexible-xconnect-service-table/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::get_segment_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-aware-flexible-xconnect-services";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5974,25 +6072,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnect
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-aware-flexible-xconnect-service")
     {
-        auto c = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService>();
+        auto c = std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService>();
         c->parent = this;
-        vlan_aware_flexible_xconnect_service.push_back(c);
+        vlan_aware_flexible_xconnect_service.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_aware_flexible_xconnect_service)
+    for (auto c : vlan_aware_flexible_xconnect_service.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6003,64 +6101,66 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnect
     return children;
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-aware-flexible-xconnect-service")
         return true;
     return false;
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFlexibleXconnectService()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFlexibleXconnectService()
     :
     eviid{YType::uint32, "eviid"}
-    	,
-    vlan_aware_fxc_attachment_circuits(std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits>())
+        ,
+    vlan_aware_fxc_attachment_circuits(std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits>())
 {
     vlan_aware_fxc_attachment_circuits->parent = this;
 
-    yang_name = "vlan-aware-flexible-xconnect-service"; yang_parent_name = "vlan-aware-flexible-xconnect-services"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan-aware-flexible-xconnect-service"; yang_parent_name = "vlan-aware-flexible-xconnect-services"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::~VlanAwareFlexibleXconnectService()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::~VlanAwareFlexibleXconnectService()
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::has_data() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::has_data() const
 {
+    if (is_presence_container) return true;
     return eviid.is_set
 	|| (vlan_aware_fxc_attachment_circuits !=  nullptr && vlan_aware_fxc_attachment_circuits->has_data());
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::has_operation() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(eviid.yfilter)
 	|| (vlan_aware_fxc_attachment_circuits !=  nullptr && vlan_aware_fxc_attachment_circuits->has_operation());
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::get_absolute_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/database/flexible-xconnect-service-table/vlan-aware-flexible-xconnect-services/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::get_segment_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-aware-flexible-xconnect-service" <<"[eviid='" <<eviid <<"']";
+    path_buffer << "vlan-aware-flexible-xconnect-service";
+    ADD_KEY_TOKEN(eviid, "eviid");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6070,13 +6170,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnect
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-aware-fxc-attachment-circuits")
     {
         if(vlan_aware_fxc_attachment_circuits == nullptr)
         {
-            vlan_aware_fxc_attachment_circuits = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits>();
+            vlan_aware_fxc_attachment_circuits = std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits>();
         }
         return vlan_aware_fxc_attachment_circuits;
     }
@@ -6084,7 +6184,7 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAware
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6096,7 +6196,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnect
     return children;
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "eviid")
     {
@@ -6106,7 +6206,7 @@ void L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectSer
     }
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "eviid")
     {
@@ -6114,26 +6214,29 @@ void L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectSer
     }
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-aware-fxc-attachment-circuits" || name == "eviid")
         return true;
     return false;
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuits()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuits()
+    :
+    vlan_aware_fxc_attachment_circuit(this, {"name"})
 {
 
-    yang_name = "vlan-aware-fxc-attachment-circuits"; yang_parent_name = "vlan-aware-flexible-xconnect-service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-aware-fxc-attachment-circuits"; yang_parent_name = "vlan-aware-flexible-xconnect-service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::~VlanAwareFxcAttachmentCircuits()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::~VlanAwareFxcAttachmentCircuits()
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::has_data() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::has_data() const
 {
-    for (std::size_t index=0; index<vlan_aware_fxc_attachment_circuit.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_aware_fxc_attachment_circuit.len(); index++)
     {
         if(vlan_aware_fxc_attachment_circuit[index]->has_data())
             return true;
@@ -6141,9 +6244,9 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectSer
     return false;
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::has_operation() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_aware_fxc_attachment_circuit.size(); index++)
+    for (std::size_t index=0; index<vlan_aware_fxc_attachment_circuit.len(); index++)
     {
         if(vlan_aware_fxc_attachment_circuit[index]->has_operation())
             return true;
@@ -6151,14 +6254,14 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectSer
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::get_segment_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-aware-fxc-attachment-circuits";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6167,25 +6270,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnect
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-aware-fxc-attachment-circuit")
     {
-        auto c = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit>();
+        auto c = std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit>();
         c->parent = this;
-        vlan_aware_fxc_attachment_circuit.push_back(c);
+        vlan_aware_fxc_attachment_circuit.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_aware_fxc_attachment_circuit)
+    for (auto c : vlan_aware_fxc_attachment_circuit.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6196,52 +6299,54 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnect
     return children;
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-aware-fxc-attachment-circuit")
         return true;
     return false;
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::VlanAwareFxcAttachmentCircuit()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::VlanAwareFxcAttachmentCircuit()
     :
     name{YType::str, "name"}
 {
 
-    yang_name = "vlan-aware-fxc-attachment-circuit"; yang_parent_name = "vlan-aware-fxc-attachment-circuits"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-aware-fxc-attachment-circuit"; yang_parent_name = "vlan-aware-fxc-attachment-circuits"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::~VlanAwareFxcAttachmentCircuit()
+L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::~VlanAwareFxcAttachmentCircuit()
 {
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::has_data() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::has_operation() const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::get_segment_path() const
+std::string L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-aware-fxc-attachment-circuit" <<"[name='" <<name <<"']";
+    path_buffer << "vlan-aware-fxc-attachment-circuit";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6251,19 +6356,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::FlexibleXconnect
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -6273,7 +6378,7 @@ void L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectSer
     }
 }
 
-void L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -6281,56 +6386,57 @@ void L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectSer
     }
 }
 
-bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
     return false;
 }
 
-L2Vpn::Database::Redundancy::Redundancy()
+L2vpn::Database::Redundancy::Redundancy()
     :
     enable{YType::empty, "enable"}
-    	,
-    iccp_redundancy_groups(std::make_shared<L2Vpn::Database::Redundancy::IccpRedundancyGroups>())
+        ,
+    iccp_redundancy_groups(std::make_shared<L2vpn::Database::Redundancy::IccpRedundancyGroups>())
 {
     iccp_redundancy_groups->parent = this;
 
-    yang_name = "redundancy"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "redundancy"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Database::Redundancy::~Redundancy()
+L2vpn::Database::Redundancy::~Redundancy()
 {
 }
 
-bool L2Vpn::Database::Redundancy::has_data() const
+bool L2vpn::Database::Redundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (iccp_redundancy_groups !=  nullptr && iccp_redundancy_groups->has_data());
 }
 
-bool L2Vpn::Database::Redundancy::has_operation() const
+bool L2vpn::Database::Redundancy::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| (iccp_redundancy_groups !=  nullptr && iccp_redundancy_groups->has_operation());
 }
 
-std::string L2Vpn::Database::Redundancy::get_absolute_path() const
+std::string L2vpn::Database::Redundancy::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/database/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Database::Redundancy::get_segment_path() const
+std::string L2vpn::Database::Redundancy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "redundancy";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::Redundancy::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::Redundancy::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6340,13 +6446,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::Redundancy::get_
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "iccp-redundancy-groups")
     {
         if(iccp_redundancy_groups == nullptr)
         {
-            iccp_redundancy_groups = std::make_shared<L2Vpn::Database::Redundancy::IccpRedundancyGroups>();
+            iccp_redundancy_groups = std::make_shared<L2vpn::Database::Redundancy::IccpRedundancyGroups>();
         }
         return iccp_redundancy_groups;
     }
@@ -6354,7 +6460,7 @@ std::shared_ptr<Entity> L2Vpn::Database::Redundancy::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::Redundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6366,7 +6472,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::get_
     return children;
 }
 
-void L2Vpn::Database::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -6376,7 +6482,7 @@ void L2Vpn::Database::Redundancy::set_value(const std::string & value_path, cons
     }
 }
 
-void L2Vpn::Database::Redundancy::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::Redundancy::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -6384,26 +6490,29 @@ void L2Vpn::Database::Redundancy::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool L2Vpn::Database::Redundancy::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::Redundancy::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "iccp-redundancy-groups" || name == "enable")
         return true;
     return false;
 }
 
-L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroups()
+L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroups()
+    :
+    iccp_redundancy_group(this, {"group_id"})
 {
 
-    yang_name = "iccp-redundancy-groups"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "iccp-redundancy-groups"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Database::Redundancy::IccpRedundancyGroups::~IccpRedundancyGroups()
+L2vpn::Database::Redundancy::IccpRedundancyGroups::~IccpRedundancyGroups()
 {
 }
 
-bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::has_data() const
+bool L2vpn::Database::Redundancy::IccpRedundancyGroups::has_data() const
 {
-    for (std::size_t index=0; index<iccp_redundancy_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<iccp_redundancy_group.len(); index++)
     {
         if(iccp_redundancy_group[index]->has_data())
             return true;
@@ -6411,9 +6520,9 @@ bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::has_data() const
     return false;
 }
 
-bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::has_operation() const
+bool L2vpn::Database::Redundancy::IccpRedundancyGroups::has_operation() const
 {
-    for (std::size_t index=0; index<iccp_redundancy_group.size(); index++)
+    for (std::size_t index=0; index<iccp_redundancy_group.len(); index++)
     {
         if(iccp_redundancy_group[index]->has_operation())
             return true;
@@ -6421,21 +6530,21 @@ bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::Redundancy::IccpRedundancyGroups::get_absolute_path() const
+std::string L2vpn::Database::Redundancy::IccpRedundancyGroups::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/database/redundancy/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Database::Redundancy::IccpRedundancyGroups::get_segment_path() const
+std::string L2vpn::Database::Redundancy::IccpRedundancyGroups::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "iccp-redundancy-groups";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::Redundancy::IccpRedundancyGroups::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::Redundancy::IccpRedundancyGroups::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6444,25 +6553,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::Redundancy::Iccp
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::Redundancy::IccpRedundancyGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::Redundancy::IccpRedundancyGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "iccp-redundancy-group")
     {
-        auto c = std::make_shared<L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup>();
+        auto c = std::make_shared<L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup>();
         c->parent = this;
-        iccp_redundancy_group.push_back(c);
+        iccp_redundancy_group.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::IccpRedundancyGroups::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::Redundancy::IccpRedundancyGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : iccp_redundancy_group)
+    for (auto c : iccp_redundancy_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6473,45 +6582,46 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::Iccp
     return children;
 }
 
-void L2Vpn::Database::Redundancy::IccpRedundancyGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::Redundancy::IccpRedundancyGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::Redundancy::IccpRedundancyGroups::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::Redundancy::IccpRedundancyGroups::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::Redundancy::IccpRedundancyGroups::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "iccp-redundancy-group")
         return true;
     return false;
 }
 
-L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpRedundancyGroup()
+L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpRedundancyGroup()
     :
     group_id{YType::uint32, "group-id"},
     multi_homing_node_id{YType::uint32, "multi-homing-node-id"}
-    	,
-    iccp_interfaces(std::make_shared<L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces>())
+        ,
+    iccp_interfaces(std::make_shared<L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces>())
 {
     iccp_interfaces->parent = this;
 
-    yang_name = "iccp-redundancy-group"; yang_parent_name = "iccp-redundancy-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "iccp-redundancy-group"; yang_parent_name = "iccp-redundancy-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::~IccpRedundancyGroup()
+L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::~IccpRedundancyGroup()
 {
 }
 
-bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::has_data() const
+bool L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set
 	|| multi_homing_node_id.is_set
 	|| (iccp_interfaces !=  nullptr && iccp_interfaces->has_data());
 }
 
-bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::has_operation() const
+bool L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(group_id.yfilter)
@@ -6519,21 +6629,22 @@ bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::has
 	|| (iccp_interfaces !=  nullptr && iccp_interfaces->has_operation());
 }
 
-std::string L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::get_absolute_path() const
+std::string L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/database/redundancy/iccp-redundancy-groups/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::get_segment_path() const
+std::string L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "iccp-redundancy-group" <<"[group-id='" <<group_id <<"']";
+    path_buffer << "iccp-redundancy-group";
+    ADD_KEY_TOKEN(group_id, "group-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6544,13 +6655,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::Redundancy::Iccp
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "iccp-interfaces")
     {
         if(iccp_interfaces == nullptr)
         {
-            iccp_interfaces = std::make_shared<L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces>();
+            iccp_interfaces = std::make_shared<L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces>();
         }
         return iccp_interfaces;
     }
@@ -6558,7 +6669,7 @@ std::shared_ptr<Entity> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpR
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6570,7 +6681,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::Iccp
     return children;
 }
 
-void L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-id")
     {
@@ -6586,7 +6697,7 @@ void L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::set
     }
 }
 
-void L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "group-id")
     {
@@ -6598,26 +6709,29 @@ void L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::set
     }
 }
 
-bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "iccp-interfaces" || name == "group-id" || name == "multi-homing-node-id")
         return true;
     return false;
 }
 
-L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterfaces()
+L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterfaces()
+    :
+    iccp_interface(this, {"interface_name"})
 {
 
-    yang_name = "iccp-interfaces"; yang_parent_name = "iccp-redundancy-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-interfaces"; yang_parent_name = "iccp-redundancy-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::~IccpInterfaces()
+L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::~IccpInterfaces()
 {
 }
 
-bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::has_data() const
+bool L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<iccp_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<iccp_interface.len(); index++)
     {
         if(iccp_interface[index]->has_data())
             return true;
@@ -6625,9 +6739,9 @@ bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::Icc
     return false;
 }
 
-bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::has_operation() const
+bool L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<iccp_interface.size(); index++)
+    for (std::size_t index=0; index<iccp_interface.len(); index++)
     {
         if(iccp_interface[index]->has_operation())
             return true;
@@ -6635,14 +6749,14 @@ bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::Icc
     return is_set(yfilter);
 }
 
-std::string L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::get_segment_path() const
+std::string L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "iccp-interfaces";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6651,25 +6765,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::Redundancy::Iccp
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "iccp-interface")
     {
-        auto c = std::make_shared<L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface>();
+        auto c = std::make_shared<L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface>();
         c->parent = this;
-        iccp_interface.push_back(c);
+        iccp_interface.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : iccp_interface)
+    for (auto c : iccp_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6680,22 +6794,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::Iccp
     return children;
 }
 
-void L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "iccp-interface")
         return true;
     return false;
 }
 
-L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::IccpInterface()
+L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::IccpInterface()
     :
     interface_name{YType::str, "interface-name"},
     secondary_vlan_range{YType::str, "secondary-vlan-range"},
@@ -6704,15 +6818,16 @@ L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInte
     mac_flush_tcn{YType::empty, "mac-flush-tcn"}
 {
 
-    yang_name = "iccp-interface"; yang_parent_name = "iccp-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-interface"; yang_parent_name = "iccp-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::~IccpInterface()
+L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::~IccpInterface()
 {
 }
 
-bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::has_data() const
+bool L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| secondary_vlan_range.is_set
 	|| recovery_delay.is_set
@@ -6720,7 +6835,7 @@ bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::Icc
 	|| mac_flush_tcn.is_set;
 }
 
-bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::has_operation() const
+bool L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
@@ -6730,14 +6845,15 @@ bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::Icc
 	|| ydk::is_set(mac_flush_tcn.yfilter);
 }
 
-std::string L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::get_segment_path() const
+std::string L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "iccp-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "iccp-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6751,19 +6867,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::Redundancy::Iccp
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -6797,7 +6913,7 @@ void L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::Icc
     }
 }
 
-void L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -6821,51 +6937,52 @@ void L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::Icc
     }
 }
 
-bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "secondary-vlan-range" || name == "recovery-delay" || name == "primary-vlan-range" || name == "mac-flush-tcn")
         return true;
     return false;
 }
 
-L2Vpn::Pbb::Pbb()
+L2vpn::Pbb::Pbb()
     :
     backbone_source_mac{YType::str, "backbone-source-mac"}
 {
 
-    yang_name = "pbb"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pbb"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Pbb::~Pbb()
+L2vpn::Pbb::~Pbb()
 {
 }
 
-bool L2Vpn::Pbb::has_data() const
+bool L2vpn::Pbb::has_data() const
 {
+    if (is_presence_container) return true;
     return backbone_source_mac.is_set;
 }
 
-bool L2Vpn::Pbb::has_operation() const
+bool L2vpn::Pbb::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(backbone_source_mac.yfilter);
 }
 
-std::string L2Vpn::Pbb::get_absolute_path() const
+std::string L2vpn::Pbb::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Pbb::get_segment_path() const
+std::string L2vpn::Pbb::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pbb";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Pbb::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Pbb::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6875,19 +6992,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Pbb::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Pbb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Pbb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Pbb::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Pbb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Pbb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Pbb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "backbone-source-mac")
     {
@@ -6897,7 +7014,7 @@ void L2Vpn::Pbb::set_value(const std::string & value_path, const std::string & v
     }
 }
 
-void L2Vpn::Pbb::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Pbb::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "backbone-source-mac")
     {
@@ -6905,52 +7022,53 @@ void L2Vpn::Pbb::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-bool L2Vpn::Pbb::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Pbb::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "backbone-source-mac")
         return true;
     return false;
 }
 
-L2Vpn::AutoDiscovery::AutoDiscovery()
+L2vpn::AutoDiscovery::AutoDiscovery()
     :
-    bgp_signaling(std::make_shared<L2Vpn::AutoDiscovery::BgpSignaling>())
+    bgp_signaling(std::make_shared<L2vpn::AutoDiscovery::BgpSignaling>())
 {
     bgp_signaling->parent = this;
 
-    yang_name = "auto-discovery"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "auto-discovery"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::AutoDiscovery::~AutoDiscovery()
+L2vpn::AutoDiscovery::~AutoDiscovery()
 {
 }
 
-bool L2Vpn::AutoDiscovery::has_data() const
+bool L2vpn::AutoDiscovery::has_data() const
 {
+    if (is_presence_container) return true;
     return (bgp_signaling !=  nullptr && bgp_signaling->has_data());
 }
 
-bool L2Vpn::AutoDiscovery::has_operation() const
+bool L2vpn::AutoDiscovery::has_operation() const
 {
     return is_set(yfilter)
 	|| (bgp_signaling !=  nullptr && bgp_signaling->has_operation());
 }
 
-std::string L2Vpn::AutoDiscovery::get_absolute_path() const
+std::string L2vpn::AutoDiscovery::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::AutoDiscovery::get_segment_path() const
+std::string L2vpn::AutoDiscovery::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "auto-discovery";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::AutoDiscovery::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::AutoDiscovery::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6959,13 +7077,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::AutoDiscovery::get_name_le
 
 }
 
-std::shared_ptr<Entity> L2Vpn::AutoDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::AutoDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp-signaling")
     {
         if(bgp_signaling == nullptr)
         {
-            bgp_signaling = std::make_shared<L2Vpn::AutoDiscovery::BgpSignaling>();
+            bgp_signaling = std::make_shared<L2vpn::AutoDiscovery::BgpSignaling>();
         }
         return bgp_signaling;
     }
@@ -6973,7 +7091,7 @@ std::shared_ptr<Entity> L2Vpn::AutoDiscovery::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::AutoDiscovery::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::AutoDiscovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6985,59 +7103,60 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::AutoDiscovery::get_childre
     return children;
 }
 
-void L2Vpn::AutoDiscovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::AutoDiscovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::AutoDiscovery::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::AutoDiscovery::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::AutoDiscovery::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::AutoDiscovery::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgp-signaling")
         return true;
     return false;
 }
 
-L2Vpn::AutoDiscovery::BgpSignaling::BgpSignaling()
+L2vpn::AutoDiscovery::BgpSignaling::BgpSignaling()
     :
     mtu_mismatch_ignore{YType::empty, "mtu-mismatch-ignore"}
 {
 
-    yang_name = "bgp-signaling"; yang_parent_name = "auto-discovery"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-signaling"; yang_parent_name = "auto-discovery"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::AutoDiscovery::BgpSignaling::~BgpSignaling()
+L2vpn::AutoDiscovery::BgpSignaling::~BgpSignaling()
 {
 }
 
-bool L2Vpn::AutoDiscovery::BgpSignaling::has_data() const
+bool L2vpn::AutoDiscovery::BgpSignaling::has_data() const
 {
+    if (is_presence_container) return true;
     return mtu_mismatch_ignore.is_set;
 }
 
-bool L2Vpn::AutoDiscovery::BgpSignaling::has_operation() const
+bool L2vpn::AutoDiscovery::BgpSignaling::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mtu_mismatch_ignore.yfilter);
 }
 
-std::string L2Vpn::AutoDiscovery::BgpSignaling::get_absolute_path() const
+std::string L2vpn::AutoDiscovery::BgpSignaling::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/auto-discovery/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::AutoDiscovery::BgpSignaling::get_segment_path() const
+std::string L2vpn::AutoDiscovery::BgpSignaling::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-signaling";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::AutoDiscovery::BgpSignaling::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::AutoDiscovery::BgpSignaling::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7047,19 +7166,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::AutoDiscovery::BgpSignalin
 
 }
 
-std::shared_ptr<Entity> L2Vpn::AutoDiscovery::BgpSignaling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::AutoDiscovery::BgpSignaling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::AutoDiscovery::BgpSignaling::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::AutoDiscovery::BgpSignaling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::AutoDiscovery::BgpSignaling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::AutoDiscovery::BgpSignaling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mtu-mismatch-ignore")
     {
@@ -7069,7 +7188,7 @@ void L2Vpn::AutoDiscovery::BgpSignaling::set_value(const std::string & value_pat
     }
 }
 
-void L2Vpn::AutoDiscovery::BgpSignaling::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::AutoDiscovery::BgpSignaling::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mtu-mismatch-ignore")
     {
@@ -7077,52 +7196,53 @@ void L2Vpn::AutoDiscovery::BgpSignaling::set_filter(const std::string & value_pa
     }
 }
 
-bool L2Vpn::AutoDiscovery::BgpSignaling::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::AutoDiscovery::BgpSignaling::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mtu-mismatch-ignore")
         return true;
     return false;
 }
 
-L2Vpn::Utility::Utility()
+L2vpn::Utility::Utility()
     :
-    logging(std::make_shared<L2Vpn::Utility::Logging>())
+    logging(std::make_shared<L2vpn::Utility::Logging>())
 {
     logging->parent = this;
 
-    yang_name = "utility"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "utility"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Utility::~Utility()
+L2vpn::Utility::~Utility()
 {
 }
 
-bool L2Vpn::Utility::has_data() const
+bool L2vpn::Utility::has_data() const
 {
+    if (is_presence_container) return true;
     return (logging !=  nullptr && logging->has_data());
 }
 
-bool L2Vpn::Utility::has_operation() const
+bool L2vpn::Utility::has_operation() const
 {
     return is_set(yfilter)
 	|| (logging !=  nullptr && logging->has_operation());
 }
 
-std::string L2Vpn::Utility::get_absolute_path() const
+std::string L2vpn::Utility::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Utility::get_segment_path() const
+std::string L2vpn::Utility::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "utility";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Utility::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Utility::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7131,13 +7251,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Utility::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Utility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Utility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "logging")
     {
         if(logging == nullptr)
         {
-            logging = std::make_shared<L2Vpn::Utility::Logging>();
+            logging = std::make_shared<L2vpn::Utility::Logging>();
         }
         return logging;
     }
@@ -7145,7 +7265,7 @@ std::shared_ptr<Entity> L2Vpn::Utility::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Utility::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Utility::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7157,22 +7277,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Utility::get_children() co
     return children;
 }
 
-void L2Vpn::Utility::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Utility::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Utility::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Utility::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Utility::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Utility::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "logging")
         return true;
     return false;
 }
 
-L2Vpn::Utility::Logging::Logging()
+L2vpn::Utility::Logging::Logging()
     :
     bridge_domain_state_change{YType::empty, "bridge-domain-state-change"},
     pseudowire_state_change{YType::empty, "pseudowire-state-change"},
@@ -7181,15 +7301,16 @@ L2Vpn::Utility::Logging::Logging()
     pwhe_replication_state_change{YType::empty, "pwhe-replication-state-change"}
 {
 
-    yang_name = "logging"; yang_parent_name = "utility"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging"; yang_parent_name = "utility"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Utility::Logging::~Logging()
+L2vpn::Utility::Logging::~Logging()
 {
 }
 
-bool L2Vpn::Utility::Logging::has_data() const
+bool L2vpn::Utility::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return bridge_domain_state_change.is_set
 	|| pseudowire_state_change.is_set
 	|| vfi.is_set
@@ -7197,7 +7318,7 @@ bool L2Vpn::Utility::Logging::has_data() const
 	|| pwhe_replication_state_change.is_set;
 }
 
-bool L2Vpn::Utility::Logging::has_operation() const
+bool L2vpn::Utility::Logging::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bridge_domain_state_change.yfilter)
@@ -7207,21 +7328,21 @@ bool L2Vpn::Utility::Logging::has_operation() const
 	|| ydk::is_set(pwhe_replication_state_change.yfilter);
 }
 
-std::string L2Vpn::Utility::Logging::get_absolute_path() const
+std::string L2vpn::Utility::Logging::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/utility/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Utility::Logging::get_segment_path() const
+std::string L2vpn::Utility::Logging::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "logging";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Utility::Logging::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Utility::Logging::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7235,19 +7356,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Utility::Logging::get_name
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Utility::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Utility::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Utility::Logging::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Utility::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Utility::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Utility::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bridge-domain-state-change")
     {
@@ -7281,7 +7402,7 @@ void L2Vpn::Utility::Logging::set_value(const std::string & value_path, const st
     }
 }
 
-void L2Vpn::Utility::Logging::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Utility::Logging::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bridge-domain-state-change")
     {
@@ -7305,52 +7426,53 @@ void L2Vpn::Utility::Logging::set_filter(const std::string & value_path, YFilter
     }
 }
 
-bool L2Vpn::Utility::Logging::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Utility::Logging::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bridge-domain-state-change" || name == "pseudowire-state-change" || name == "vfi" || name == "nsr-state-change" || name == "pwhe-replication-state-change")
         return true;
     return false;
 }
 
-L2Vpn::Snmp::Snmp()
+L2vpn::Snmp::Snmp()
     :
-    mib(std::make_shared<L2Vpn::Snmp::Mib>())
+    mib(std::make_shared<L2vpn::Snmp::Mib>())
 {
     mib->parent = this;
 
-    yang_name = "snmp"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmp"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Snmp::~Snmp()
+L2vpn::Snmp::~Snmp()
 {
 }
 
-bool L2Vpn::Snmp::has_data() const
+bool L2vpn::Snmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (mib !=  nullptr && mib->has_data());
 }
 
-bool L2Vpn::Snmp::has_operation() const
+bool L2vpn::Snmp::has_operation() const
 {
     return is_set(yfilter)
 	|| (mib !=  nullptr && mib->has_operation());
 }
 
-std::string L2Vpn::Snmp::get_absolute_path() const
+std::string L2vpn::Snmp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Snmp::get_segment_path() const
+std::string L2vpn::Snmp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "snmp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Snmp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Snmp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7359,13 +7481,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Snmp::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mib")
     {
         if(mib == nullptr)
         {
-            mib = std::make_shared<L2Vpn::Snmp::Mib>();
+            mib = std::make_shared<L2vpn::Snmp::Mib>();
         }
         return mib;
     }
@@ -7373,7 +7495,7 @@ std::shared_ptr<Entity> L2Vpn::Snmp::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7385,64 +7507,65 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::get_children() const
     return children;
 }
 
-void L2Vpn::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Snmp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Snmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Snmp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Snmp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mib")
         return true;
     return false;
 }
 
-L2Vpn::Snmp::Mib::Mib()
+L2vpn::Snmp::Mib::Mib()
     :
-    mib_interface(std::make_shared<L2Vpn::Snmp::Mib::MibInterface>())
-	,mib_pseudowire(std::make_shared<L2Vpn::Snmp::Mib::MibPseudowire>())
+    mib_interface(std::make_shared<L2vpn::Snmp::Mib::MibInterface>())
+    , mib_pseudowire(std::make_shared<L2vpn::Snmp::Mib::MibPseudowire>())
 {
     mib_interface->parent = this;
     mib_pseudowire->parent = this;
 
-    yang_name = "mib"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mib"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Snmp::Mib::~Mib()
+L2vpn::Snmp::Mib::~Mib()
 {
 }
 
-bool L2Vpn::Snmp::Mib::has_data() const
+bool L2vpn::Snmp::Mib::has_data() const
 {
+    if (is_presence_container) return true;
     return (mib_interface !=  nullptr && mib_interface->has_data())
 	|| (mib_pseudowire !=  nullptr && mib_pseudowire->has_data());
 }
 
-bool L2Vpn::Snmp::Mib::has_operation() const
+bool L2vpn::Snmp::Mib::has_operation() const
 {
     return is_set(yfilter)
 	|| (mib_interface !=  nullptr && mib_interface->has_operation())
 	|| (mib_pseudowire !=  nullptr && mib_pseudowire->has_operation());
 }
 
-std::string L2Vpn::Snmp::Mib::get_absolute_path() const
+std::string L2vpn::Snmp::Mib::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/snmp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Snmp::Mib::get_segment_path() const
+std::string L2vpn::Snmp::Mib::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mib";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Snmp::Mib::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Snmp::Mib::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7451,13 +7574,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Snmp::Mib::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Snmp::Mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Snmp::Mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mib-interface")
     {
         if(mib_interface == nullptr)
         {
-            mib_interface = std::make_shared<L2Vpn::Snmp::Mib::MibInterface>();
+            mib_interface = std::make_shared<L2vpn::Snmp::Mib::MibInterface>();
         }
         return mib_interface;
     }
@@ -7466,7 +7589,7 @@ std::shared_ptr<Entity> L2Vpn::Snmp::Mib::get_child_by_name(const std::string & 
     {
         if(mib_pseudowire == nullptr)
         {
-            mib_pseudowire = std::make_shared<L2Vpn::Snmp::Mib::MibPseudowire>();
+            mib_pseudowire = std::make_shared<L2vpn::Snmp::Mib::MibPseudowire>();
         }
         return mib_pseudowire;
     }
@@ -7474,7 +7597,7 @@ std::shared_ptr<Entity> L2Vpn::Snmp::Mib::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::Mib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Snmp::Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7491,60 +7614,61 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::Mib::get_children() 
     return children;
 }
 
-void L2Vpn::Snmp::Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Snmp::Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Snmp::Mib::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Snmp::Mib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Snmp::Mib::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Snmp::Mib::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mib-interface" || name == "mib-pseudowire")
         return true;
     return false;
 }
 
-L2Vpn::Snmp::Mib::MibInterface::MibInterface()
+L2vpn::Snmp::Mib::MibInterface::MibInterface()
     :
-    format(std::make_shared<L2Vpn::Snmp::Mib::MibInterface::Format>())
+    format(std::make_shared<L2vpn::Snmp::Mib::MibInterface::Format>())
 {
     format->parent = this;
 
-    yang_name = "mib-interface"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mib-interface"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Snmp::Mib::MibInterface::~MibInterface()
+L2vpn::Snmp::Mib::MibInterface::~MibInterface()
 {
 }
 
-bool L2Vpn::Snmp::Mib::MibInterface::has_data() const
+bool L2vpn::Snmp::Mib::MibInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (format !=  nullptr && format->has_data());
 }
 
-bool L2Vpn::Snmp::Mib::MibInterface::has_operation() const
+bool L2vpn::Snmp::Mib::MibInterface::has_operation() const
 {
     return is_set(yfilter)
 	|| (format !=  nullptr && format->has_operation());
 }
 
-std::string L2Vpn::Snmp::Mib::MibInterface::get_absolute_path() const
+std::string L2vpn::Snmp::Mib::MibInterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/snmp/mib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Snmp::Mib::MibInterface::get_segment_path() const
+std::string L2vpn::Snmp::Mib::MibInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mib-interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Snmp::Mib::MibInterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Snmp::Mib::MibInterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7553,13 +7677,13 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Snmp::Mib::MibInterface::g
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Snmp::Mib::MibInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Snmp::Mib::MibInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "format")
     {
         if(format == nullptr)
         {
-            format = std::make_shared<L2Vpn::Snmp::Mib::MibInterface::Format>();
+            format = std::make_shared<L2vpn::Snmp::Mib::MibInterface::Format>();
         }
         return format;
     }
@@ -7567,7 +7691,7 @@ std::shared_ptr<Entity> L2Vpn::Snmp::Mib::MibInterface::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::Mib::MibInterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Snmp::Mib::MibInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7579,59 +7703,60 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::Mib::MibInterface::g
     return children;
 }
 
-void L2Vpn::Snmp::Mib::MibInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Snmp::Mib::MibInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpn::Snmp::Mib::MibInterface::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Snmp::Mib::MibInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpn::Snmp::Mib::MibInterface::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Snmp::Mib::MibInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "format")
         return true;
     return false;
 }
 
-L2Vpn::Snmp::Mib::MibInterface::Format::Format()
+L2vpn::Snmp::Mib::MibInterface::Format::Format()
     :
     external_interface_format{YType::empty, "external-interface-format"}
 {
 
-    yang_name = "format"; yang_parent_name = "mib-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "format"; yang_parent_name = "mib-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Snmp::Mib::MibInterface::Format::~Format()
+L2vpn::Snmp::Mib::MibInterface::Format::~Format()
 {
 }
 
-bool L2Vpn::Snmp::Mib::MibInterface::Format::has_data() const
+bool L2vpn::Snmp::Mib::MibInterface::Format::has_data() const
 {
+    if (is_presence_container) return true;
     return external_interface_format.is_set;
 }
 
-bool L2Vpn::Snmp::Mib::MibInterface::Format::has_operation() const
+bool L2vpn::Snmp::Mib::MibInterface::Format::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(external_interface_format.yfilter);
 }
 
-std::string L2Vpn::Snmp::Mib::MibInterface::Format::get_absolute_path() const
+std::string L2vpn::Snmp::Mib::MibInterface::Format::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/snmp/mib/mib-interface/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Snmp::Mib::MibInterface::Format::get_segment_path() const
+std::string L2vpn::Snmp::Mib::MibInterface::Format::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "format";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Snmp::Mib::MibInterface::Format::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Snmp::Mib::MibInterface::Format::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7641,19 +7766,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Snmp::Mib::MibInterface::F
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Snmp::Mib::MibInterface::Format::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Snmp::Mib::MibInterface::Format::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::Mib::MibInterface::Format::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Snmp::Mib::MibInterface::Format::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Snmp::Mib::MibInterface::Format::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Snmp::Mib::MibInterface::Format::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "external-interface-format")
     {
@@ -7663,7 +7788,7 @@ void L2Vpn::Snmp::Mib::MibInterface::Format::set_value(const std::string & value
     }
 }
 
-void L2Vpn::Snmp::Mib::MibInterface::Format::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Snmp::Mib::MibInterface::Format::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "external-interface-format")
     {
@@ -7671,51 +7796,52 @@ void L2Vpn::Snmp::Mib::MibInterface::Format::set_filter(const std::string & valu
     }
 }
 
-bool L2Vpn::Snmp::Mib::MibInterface::Format::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Snmp::Mib::MibInterface::Format::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "external-interface-format")
         return true;
     return false;
 }
 
-L2Vpn::Snmp::Mib::MibPseudowire::MibPseudowire()
+L2vpn::Snmp::Mib::MibPseudowire::MibPseudowire()
     :
     statistics{YType::empty, "statistics"}
 {
 
-    yang_name = "mib-pseudowire"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mib-pseudowire"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Vpn::Snmp::Mib::MibPseudowire::~MibPseudowire()
+L2vpn::Snmp::Mib::MibPseudowire::~MibPseudowire()
 {
 }
 
-bool L2Vpn::Snmp::Mib::MibPseudowire::has_data() const
+bool L2vpn::Snmp::Mib::MibPseudowire::has_data() const
 {
+    if (is_presence_container) return true;
     return statistics.is_set;
 }
 
-bool L2Vpn::Snmp::Mib::MibPseudowire::has_operation() const
+bool L2vpn::Snmp::Mib::MibPseudowire::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(statistics.yfilter);
 }
 
-std::string L2Vpn::Snmp::Mib::MibPseudowire::get_absolute_path() const
+std::string L2vpn::Snmp::Mib::MibPseudowire::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn/snmp/mib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpn::Snmp::Mib::MibPseudowire::get_segment_path() const
+std::string L2vpn::Snmp::Mib::MibPseudowire::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mib-pseudowire";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpn::Snmp::Mib::MibPseudowire::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpn::Snmp::Mib::MibPseudowire::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7725,19 +7851,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Snmp::Mib::MibPseudowire::
 
 }
 
-std::shared_ptr<Entity> L2Vpn::Snmp::Mib::MibPseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpn::Snmp::Mib::MibPseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::Mib::MibPseudowire::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpn::Snmp::Mib::MibPseudowire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpn::Snmp::Mib::MibPseudowire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpn::Snmp::Mib::MibPseudowire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "statistics")
     {
@@ -7747,7 +7873,7 @@ void L2Vpn::Snmp::Mib::MibPseudowire::set_value(const std::string & value_path, 
     }
 }
 
-void L2Vpn::Snmp::Mib::MibPseudowire::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpn::Snmp::Mib::MibPseudowire::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "statistics")
     {
@@ -7755,7 +7881,7 @@ void L2Vpn::Snmp::Mib::MibPseudowire::set_filter(const std::string & value_path,
     }
 }
 
-bool L2Vpn::Snmp::Mib::MibPseudowire::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpn::Snmp::Mib::MibPseudowire::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "statistics")
         return true;
@@ -7763,9 +7889,11 @@ bool L2Vpn::Snmp::Mib::MibPseudowire::has_leaf_or_child_of_name(const std::strin
 }
 
 GenericInterfaceLists::GenericInterfaceLists()
+    :
+    generic_interface_list(this, {"generic_interface_list_name"})
 {
 
-    yang_name = "generic-interface-lists"; yang_parent_name = "Cisco-IOS-XR-l2vpn-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "generic-interface-lists"; yang_parent_name = "Cisco-IOS-XR-l2vpn-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 GenericInterfaceLists::~GenericInterfaceLists()
@@ -7774,7 +7902,8 @@ GenericInterfaceLists::~GenericInterfaceLists()
 
 bool GenericInterfaceLists::has_data() const
 {
-    for (std::size_t index=0; index<generic_interface_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<generic_interface_list.len(); index++)
     {
         if(generic_interface_list[index]->has_data())
             return true;
@@ -7784,7 +7913,7 @@ bool GenericInterfaceLists::has_data() const
 
 bool GenericInterfaceLists::has_operation() const
 {
-    for (std::size_t index=0; index<generic_interface_list.size(); index++)
+    for (std::size_t index=0; index<generic_interface_list.len(); index++)
     {
         if(generic_interface_list[index]->has_operation())
             return true;
@@ -7814,7 +7943,7 @@ std::shared_ptr<Entity> GenericInterfaceLists::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<GenericInterfaceLists::GenericInterfaceList>();
         c->parent = this;
-        generic_interface_list.push_back(c);
+        generic_interface_list.append(c);
         return c;
     }
 
@@ -7826,7 +7955,7 @@ std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : generic_interface_list)
+    for (auto c : generic_interface_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7881,12 +8010,12 @@ GenericInterfaceLists::GenericInterfaceList::GenericInterfaceList()
     :
     generic_interface_list_name{YType::str, "generic-interface-list-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     interfaces(std::make_shared<GenericInterfaceLists::GenericInterfaceList::Interfaces>())
 {
     interfaces->parent = this;
 
-    yang_name = "generic-interface-list"; yang_parent_name = "generic-interface-lists"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-interface-list"; yang_parent_name = "generic-interface-lists"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 GenericInterfaceLists::GenericInterfaceList::~GenericInterfaceList()
@@ -7895,6 +8024,7 @@ GenericInterfaceLists::GenericInterfaceList::~GenericInterfaceList()
 
 bool GenericInterfaceLists::GenericInterfaceList::has_data() const
 {
+    if (is_presence_container) return true;
     return generic_interface_list_name.is_set
 	|| enable.is_set
 	|| (interfaces !=  nullptr && interfaces->has_data());
@@ -7918,7 +8048,8 @@ std::string GenericInterfaceLists::GenericInterfaceList::get_absolute_path() con
 std::string GenericInterfaceLists::GenericInterfaceList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "generic-interface-list" <<"[generic-interface-list-name='" <<generic_interface_list_name <<"']";
+    path_buffer << "generic-interface-list";
+    ADD_KEY_TOKEN(generic_interface_list_name, "generic-interface-list-name");
     return path_buffer.str();
 }
 
@@ -7995,9 +8126,11 @@ bool GenericInterfaceLists::GenericInterfaceList::has_leaf_or_child_of_name(cons
 }
 
 GenericInterfaceLists::GenericInterfaceList::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "generic-interface-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "generic-interface-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GenericInterfaceLists::GenericInterfaceList::Interfaces::~Interfaces()
@@ -8006,7 +8139,8 @@ GenericInterfaceLists::GenericInterfaceList::Interfaces::~Interfaces()
 
 bool GenericInterfaceLists::GenericInterfaceList::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -8016,7 +8150,7 @@ bool GenericInterfaceLists::GenericInterfaceList::Interfaces::has_data() const
 
 bool GenericInterfaceLists::GenericInterfaceList::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -8046,7 +8180,7 @@ std::shared_ptr<Entity> GenericInterfaceLists::GenericInterfaceList::Interfaces:
     {
         auto c = std::make_shared<GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -8058,7 +8192,7 @@ std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::GenericInt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8090,7 +8224,7 @@ GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::Interface()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::~Interface()
@@ -8099,6 +8233,7 @@ GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::~Interface()
 
 bool GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| enable.is_set;
 }
@@ -8113,7 +8248,8 @@ bool GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::has_ope
 std::string GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -8178,12 +8314,12 @@ bool GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::has_lea
 Evpn::Evpn()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     evpn_tables(std::make_shared<Evpn::EvpnTables>())
 {
     evpn_tables->parent = this;
 
-    yang_name = "evpn"; yang_parent_name = "Cisco-IOS-XR-l2vpn-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "evpn"; yang_parent_name = "Cisco-IOS-XR-l2vpn-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Evpn::~Evpn()
@@ -8192,6 +8328,7 @@ Evpn::~Evpn()
 
 bool Evpn::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (evpn_tables !=  nullptr && evpn_tables->has_data());
 }
@@ -8301,32 +8438,34 @@ Evpn::EvpnTables::EvpnTables()
     evi_cost_out{YType::empty, "evi-cost-out"},
     evpn_source_interface{YType::str, "evpn-source-interface"},
     evpn_cost_in_startup{YType::uint32, "evpn-cost-in-startup"}
-    	,
+        ,
     evpn_timers(std::make_shared<Evpn::EvpnTables::EvpnTimers>())
-	,evpnmac(std::make_shared<Evpn::EvpnTables::Evpnmac>())
-	,evpnevis(std::make_shared<Evpn::EvpnTables::Evpnevis>())
-	,evpn_virtual_access_vfis(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessVfis>())
-	,evpn_load_balancing(std::make_shared<Evpn::EvpnTables::EvpnLoadBalancing>())
-	,evpn_bgp_auto_discovery(std::make_shared<Evpn::EvpnTables::EvpnBgpAutoDiscovery>())
-	,evpn_instances(std::make_shared<Evpn::EvpnTables::EvpnInstances>())
-	,evpn_logging(std::make_shared<Evpn::EvpnTables::EvpnLogging>())
-	,evpn_interfaces(std::make_shared<Evpn::EvpnTables::EvpnInterfaces>())
-	,evpn_virtual_access_pws(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessPws>())
-	,evpn_ethernet_segment(std::make_shared<Evpn::EvpnTables::EvpnEthernetSegment>())
+    , evpnmac(std::make_shared<Evpn::EvpnTables::Evpnmac>())
+    , evpn_evis(std::make_shared<Evpn::EvpnTables::EvpnEvis>())
+    , evpn_virtual_access_vfis(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessVfis>())
+    , evpn_load_balancing(std::make_shared<Evpn::EvpnTables::EvpnLoadBalancing>())
+    , evpn_bgp_auto_discovery(std::make_shared<Evpn::EvpnTables::EvpnBgpAutoDiscovery>())
+    , evpn_groups(std::make_shared<Evpn::EvpnTables::EvpnGroups>())
+    , evpn_instances(std::make_shared<Evpn::EvpnTables::EvpnInstances>())
+    , evpn_logging(std::make_shared<Evpn::EvpnTables::EvpnLogging>())
+    , evpn_interfaces(std::make_shared<Evpn::EvpnTables::EvpnInterfaces>())
+    , evpn_virtual_access_pws(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessPws>())
+    , evpn_ethernet_segment(std::make_shared<Evpn::EvpnTables::EvpnEthernetSegment>())
 {
     evpn_timers->parent = this;
     evpnmac->parent = this;
-    evpnevis->parent = this;
+    evpn_evis->parent = this;
     evpn_virtual_access_vfis->parent = this;
     evpn_load_balancing->parent = this;
     evpn_bgp_auto_discovery->parent = this;
+    evpn_groups->parent = this;
     evpn_instances->parent = this;
     evpn_logging->parent = this;
     evpn_interfaces->parent = this;
     evpn_virtual_access_pws->parent = this;
     evpn_ethernet_segment->parent = this;
 
-    yang_name = "evpn-tables"; yang_parent_name = "evpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-tables"; yang_parent_name = "evpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::~EvpnTables()
@@ -8335,15 +8474,17 @@ Evpn::EvpnTables::~EvpnTables()
 
 bool Evpn::EvpnTables::has_data() const
 {
+    if (is_presence_container) return true;
     return evi_cost_out.is_set
 	|| evpn_source_interface.is_set
 	|| evpn_cost_in_startup.is_set
 	|| (evpn_timers !=  nullptr && evpn_timers->has_data())
 	|| (evpnmac !=  nullptr && evpnmac->has_data())
-	|| (evpnevis !=  nullptr && evpnevis->has_data())
+	|| (evpn_evis !=  nullptr && evpn_evis->has_data())
 	|| (evpn_virtual_access_vfis !=  nullptr && evpn_virtual_access_vfis->has_data())
 	|| (evpn_load_balancing !=  nullptr && evpn_load_balancing->has_data())
 	|| (evpn_bgp_auto_discovery !=  nullptr && evpn_bgp_auto_discovery->has_data())
+	|| (evpn_groups !=  nullptr && evpn_groups->has_data())
 	|| (evpn_instances !=  nullptr && evpn_instances->has_data())
 	|| (evpn_logging !=  nullptr && evpn_logging->has_data())
 	|| (evpn_interfaces !=  nullptr && evpn_interfaces->has_data())
@@ -8359,10 +8500,11 @@ bool Evpn::EvpnTables::has_operation() const
 	|| ydk::is_set(evpn_cost_in_startup.yfilter)
 	|| (evpn_timers !=  nullptr && evpn_timers->has_operation())
 	|| (evpnmac !=  nullptr && evpnmac->has_operation())
-	|| (evpnevis !=  nullptr && evpnevis->has_operation())
+	|| (evpn_evis !=  nullptr && evpn_evis->has_operation())
 	|| (evpn_virtual_access_vfis !=  nullptr && evpn_virtual_access_vfis->has_operation())
 	|| (evpn_load_balancing !=  nullptr && evpn_load_balancing->has_operation())
 	|| (evpn_bgp_auto_discovery !=  nullptr && evpn_bgp_auto_discovery->has_operation())
+	|| (evpn_groups !=  nullptr && evpn_groups->has_operation())
 	|| (evpn_instances !=  nullptr && evpn_instances->has_operation())
 	|| (evpn_logging !=  nullptr && evpn_logging->has_operation())
 	|| (evpn_interfaces !=  nullptr && evpn_interfaces->has_operation())
@@ -8416,13 +8558,13 @@ std::shared_ptr<Entity> Evpn::EvpnTables::get_child_by_name(const std::string & 
         return evpnmac;
     }
 
-    if(child_yang_name == "evpnevis")
+    if(child_yang_name == "evpn-evis")
     {
-        if(evpnevis == nullptr)
+        if(evpn_evis == nullptr)
         {
-            evpnevis = std::make_shared<Evpn::EvpnTables::Evpnevis>();
+            evpn_evis = std::make_shared<Evpn::EvpnTables::EvpnEvis>();
         }
-        return evpnevis;
+        return evpn_evis;
     }
 
     if(child_yang_name == "evpn-virtual-access-vfis")
@@ -8450,6 +8592,15 @@ std::shared_ptr<Entity> Evpn::EvpnTables::get_child_by_name(const std::string & 
             evpn_bgp_auto_discovery = std::make_shared<Evpn::EvpnTables::EvpnBgpAutoDiscovery>();
         }
         return evpn_bgp_auto_discovery;
+    }
+
+    if(child_yang_name == "evpn-groups")
+    {
+        if(evpn_groups == nullptr)
+        {
+            evpn_groups = std::make_shared<Evpn::EvpnTables::EvpnGroups>();
+        }
+        return evpn_groups;
     }
 
     if(child_yang_name == "evpn-instances")
@@ -8514,9 +8665,9 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::get_children() 
         children["evpnmac"] = evpnmac;
     }
 
-    if(evpnevis != nullptr)
+    if(evpn_evis != nullptr)
     {
-        children["evpnevis"] = evpnevis;
+        children["evpn-evis"] = evpn_evis;
     }
 
     if(evpn_virtual_access_vfis != nullptr)
@@ -8532,6 +8683,11 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::get_children() 
     if(evpn_bgp_auto_discovery != nullptr)
     {
         children["evpn-bgp-auto-discovery"] = evpn_bgp_auto_discovery;
+    }
+
+    if(evpn_groups != nullptr)
+    {
+        children["evpn-groups"] = evpn_groups;
     }
 
     if(evpn_instances != nullptr)
@@ -8602,7 +8758,7 @@ void Evpn::EvpnTables::set_filter(const std::string & value_path, YFilter yfilte
 
 bool Evpn::EvpnTables::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-timers" || name == "evpnmac" || name == "evpnevis" || name == "evpn-virtual-access-vfis" || name == "evpn-load-balancing" || name == "evpn-bgp-auto-discovery" || name == "evpn-instances" || name == "evpn-logging" || name == "evpn-interfaces" || name == "evpn-virtual-access-pws" || name == "evpn-ethernet-segment" || name == "evi-cost-out" || name == "evpn-source-interface" || name == "evpn-cost-in-startup")
+    if(name == "evpn-timers" || name == "evpnmac" || name == "evpn-evis" || name == "evpn-virtual-access-vfis" || name == "evpn-load-balancing" || name == "evpn-bgp-auto-discovery" || name == "evpn-groups" || name == "evpn-instances" || name == "evpn-logging" || name == "evpn-interfaces" || name == "evpn-virtual-access-pws" || name == "evpn-ethernet-segment" || name == "evi-cost-out" || name == "evpn-source-interface" || name == "evpn-cost-in-startup")
         return true;
     return false;
 }
@@ -8615,7 +8771,7 @@ Evpn::EvpnTables::EvpnTimers::EvpnTimers()
     evpn_peering{YType::uint32, "evpn-peering"}
 {
 
-    yang_name = "evpn-timers"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-timers"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnTimers::~EvpnTimers()
@@ -8624,6 +8780,7 @@ Evpn::EvpnTables::EvpnTimers::~EvpnTimers()
 
 bool Evpn::EvpnTables::EvpnTimers::has_data() const
 {
+    if (is_presence_container) return true;
     return evpn_carving.is_set
 	|| evpn_recovery.is_set
 	|| enable.is_set
@@ -8736,12 +8893,12 @@ bool Evpn::EvpnTables::EvpnTimers::has_leaf_or_child_of_name(const std::string &
 Evpn::EvpnTables::Evpnmac::Evpnmac()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     evpnmac_secure(std::make_shared<Evpn::EvpnTables::Evpnmac::EvpnmacSecure>())
 {
     evpnmac_secure->parent = this;
 
-    yang_name = "evpnmac"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpnmac"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::Evpnmac::~Evpnmac()
@@ -8750,6 +8907,7 @@ Evpn::EvpnTables::Evpnmac::~Evpnmac()
 
 bool Evpn::EvpnTables::Evpnmac::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (evpnmac_secure !=  nullptr && evpnmac_secure->has_data());
 }
@@ -8845,7 +9003,7 @@ Evpn::EvpnTables::Evpnmac::EvpnmacSecure::EvpnmacSecure()
     evpnmac_secure_move_interval{YType::uint32, "evpnmac-secure-move-interval"}
 {
 
-    yang_name = "evpnmac-secure"; yang_parent_name = "evpnmac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpnmac-secure"; yang_parent_name = "evpnmac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::Evpnmac::EvpnmacSecure::~EvpnmacSecure()
@@ -8854,6 +9012,7 @@ Evpn::EvpnTables::Evpnmac::EvpnmacSecure::~EvpnmacSecure()
 
 bool Evpn::EvpnTables::Evpnmac::EvpnmacSecure::has_data() const
 {
+    if (is_presence_container) return true;
     return evpnmac_secure_freeze_time.is_set
 	|| enable.is_set
 	|| evpnmac_secure_retry_count.is_set
@@ -8976,51 +9135,54 @@ bool Evpn::EvpnTables::Evpnmac::EvpnmacSecure::has_leaf_or_child_of_name(const s
     return false;
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevis()
+Evpn::EvpnTables::EvpnEvis::EvpnEvis()
+    :
+    evpn_evi(this, {"eviid"})
 {
 
-    yang_name = "evpnevis"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-evis"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Evpn::EvpnTables::Evpnevis::~Evpnevis()
+Evpn::EvpnTables::EvpnEvis::~EvpnEvis()
 {
 }
 
-bool Evpn::EvpnTables::Evpnevis::has_data() const
+bool Evpn::EvpnTables::EvpnEvis::has_data() const
 {
-    for (std::size_t index=0; index<evpnevi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<evpn_evi.len(); index++)
     {
-        if(evpnevi[index]->has_data())
+        if(evpn_evi[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Evpn::EvpnTables::Evpnevis::has_operation() const
+bool Evpn::EvpnTables::EvpnEvis::has_operation() const
 {
-    for (std::size_t index=0; index<evpnevi.size(); index++)
+    for (std::size_t index=0; index<evpn_evi.len(); index++)
     {
-        if(evpnevi[index]->has_operation())
+        if(evpn_evi[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Evpn::EvpnTables::Evpnevis::get_absolute_path() const
+std::string Evpn::EvpnTables::EvpnEvis::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Evpn::EvpnTables::Evpnevis::get_segment_path() const
+std::string Evpn::EvpnTables::EvpnEvis::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpnevis";
+    path_buffer << "evpn-evis";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnEvis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9029,25 +9191,25 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::get_n
 
 }
 
-std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEvis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "evpnevi")
+    if(child_yang_name == "evpn-evi")
     {
-        auto c = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi>();
+        auto c = std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi>();
         c->parent = this;
-        evpnevi.push_back(c);
+        evpn_evi.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEvis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : evpnevi)
+    for (auto c : evpn_evi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9058,97 +9220,99 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::get_c
     return children;
 }
 
-void Evpn::EvpnTables::Evpnevis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Evpn::EvpnTables::EvpnEvis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Evpn::EvpnTables::Evpnevis::set_filter(const std::string & value_path, YFilter yfilter)
+void Evpn::EvpnTables::EvpnEvis::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Evpn::EvpnTables::Evpnevis::has_leaf_or_child_of_name(const std::string & name) const
+bool Evpn::EvpnTables::EvpnEvis::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpnevi")
+    if(name == "evpn-evi")
         return true;
     return false;
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::Evpnevi()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEvi()
     :
     eviid{YType::uint32, "eviid"},
     evi_reorig_disable{YType::empty, "evi-reorig-disable"},
     evi_advertise_mac_deprecated{YType::empty, "evi-advertise-mac-deprecated"},
-    evpnevi_description{YType::str, "evpnevi-description"},
+    evpn_evi_description{YType::str, "evpn-evi-description"},
     evi_ecmp_disable{YType::empty, "evi-ecmp-disable"},
     evi_unknown_unicast_flooding_disable{YType::empty, "evi-unknown-unicast-flooding-disable"},
     evpn_evi_cw_disable{YType::empty, "evpn-evi-cw-disable"}
-    	,
-    evi_load_balancing(std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing>())
-	,evpnev_ibgp_auto_discovery(std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery>())
-	,evi_advertise_mac(std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac>())
+        ,
+    evi_load_balancing(std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing>())
+    , evpn_evi_bgp_auto_discovery(std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery>())
+    , evi_advertise_mac(std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac>())
 {
     evi_load_balancing->parent = this;
-    evpnev_ibgp_auto_discovery->parent = this;
+    evpn_evi_bgp_auto_discovery->parent = this;
     evi_advertise_mac->parent = this;
 
-    yang_name = "evpnevi"; yang_parent_name = "evpnevis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-evi"; yang_parent_name = "evpn-evis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::~Evpnevi()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::~EvpnEvi()
 {
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::has_data() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::has_data() const
 {
+    if (is_presence_container) return true;
     return eviid.is_set
 	|| evi_reorig_disable.is_set
 	|| evi_advertise_mac_deprecated.is_set
-	|| evpnevi_description.is_set
+	|| evpn_evi_description.is_set
 	|| evi_ecmp_disable.is_set
 	|| evi_unknown_unicast_flooding_disable.is_set
 	|| evpn_evi_cw_disable.is_set
 	|| (evi_load_balancing !=  nullptr && evi_load_balancing->has_data())
-	|| (evpnev_ibgp_auto_discovery !=  nullptr && evpnev_ibgp_auto_discovery->has_data())
+	|| (evpn_evi_bgp_auto_discovery !=  nullptr && evpn_evi_bgp_auto_discovery->has_data())
 	|| (evi_advertise_mac !=  nullptr && evi_advertise_mac->has_data());
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::has_operation() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(eviid.yfilter)
 	|| ydk::is_set(evi_reorig_disable.yfilter)
 	|| ydk::is_set(evi_advertise_mac_deprecated.yfilter)
-	|| ydk::is_set(evpnevi_description.yfilter)
+	|| ydk::is_set(evpn_evi_description.yfilter)
 	|| ydk::is_set(evi_ecmp_disable.yfilter)
 	|| ydk::is_set(evi_unknown_unicast_flooding_disable.yfilter)
 	|| ydk::is_set(evpn_evi_cw_disable.yfilter)
 	|| (evi_load_balancing !=  nullptr && evi_load_balancing->has_operation())
-	|| (evpnev_ibgp_auto_discovery !=  nullptr && evpnev_ibgp_auto_discovery->has_operation())
+	|| (evpn_evi_bgp_auto_discovery !=  nullptr && evpn_evi_bgp_auto_discovery->has_operation())
 	|| (evi_advertise_mac !=  nullptr && evi_advertise_mac->has_operation());
 }
 
-std::string Evpn::EvpnTables::Evpnevis::Evpnevi::get_absolute_path() const
+std::string Evpn::EvpnTables::EvpnEvis::EvpnEvi::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/evpnevis/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/evpn-evis/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Evpn::EvpnTables::Evpnevis::Evpnevi::get_segment_path() const
+std::string Evpn::EvpnTables::EvpnEvis::EvpnEvi::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpnevi" <<"[eviid='" <<eviid <<"']";
+    path_buffer << "evpn-evi";
+    ADD_KEY_TOKEN(eviid, "eviid");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpnevi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnEvis::EvpnEvi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (eviid.is_set || is_set(eviid.yfilter)) leaf_name_data.push_back(eviid.get_name_leafdata());
     if (evi_reorig_disable.is_set || is_set(evi_reorig_disable.yfilter)) leaf_name_data.push_back(evi_reorig_disable.get_name_leafdata());
     if (evi_advertise_mac_deprecated.is_set || is_set(evi_advertise_mac_deprecated.yfilter)) leaf_name_data.push_back(evi_advertise_mac_deprecated.get_name_leafdata());
-    if (evpnevi_description.is_set || is_set(evpnevi_description.yfilter)) leaf_name_data.push_back(evpnevi_description.get_name_leafdata());
+    if (evpn_evi_description.is_set || is_set(evpn_evi_description.yfilter)) leaf_name_data.push_back(evpn_evi_description.get_name_leafdata());
     if (evi_ecmp_disable.is_set || is_set(evi_ecmp_disable.yfilter)) leaf_name_data.push_back(evi_ecmp_disable.get_name_leafdata());
     if (evi_unknown_unicast_flooding_disable.is_set || is_set(evi_unknown_unicast_flooding_disable.yfilter)) leaf_name_data.push_back(evi_unknown_unicast_flooding_disable.get_name_leafdata());
     if (evpn_evi_cw_disable.is_set || is_set(evpn_evi_cw_disable.yfilter)) leaf_name_data.push_back(evpn_evi_cw_disable.get_name_leafdata());
@@ -9157,31 +9321,31 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpne
 
 }
 
-std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEvis::EvpnEvi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "evi-load-balancing")
     {
         if(evi_load_balancing == nullptr)
         {
-            evi_load_balancing = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing>();
+            evi_load_balancing = std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing>();
         }
         return evi_load_balancing;
     }
 
-    if(child_yang_name == "evpnev-ibgp-auto-discovery")
+    if(child_yang_name == "evpn-evi-bgp-auto-discovery")
     {
-        if(evpnev_ibgp_auto_discovery == nullptr)
+        if(evpn_evi_bgp_auto_discovery == nullptr)
         {
-            evpnev_ibgp_auto_discovery = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery>();
+            evpn_evi_bgp_auto_discovery = std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery>();
         }
-        return evpnev_ibgp_auto_discovery;
+        return evpn_evi_bgp_auto_discovery;
     }
 
     if(child_yang_name == "evi-advertise-mac")
     {
         if(evi_advertise_mac == nullptr)
         {
-            evi_advertise_mac = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac>();
+            evi_advertise_mac = std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac>();
         }
         return evi_advertise_mac;
     }
@@ -9189,7 +9353,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEvis::EvpnEvi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9198,9 +9362,9 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpne
         children["evi-load-balancing"] = evi_load_balancing;
     }
 
-    if(evpnev_ibgp_auto_discovery != nullptr)
+    if(evpn_evi_bgp_auto_discovery != nullptr)
     {
-        children["evpnev-ibgp-auto-discovery"] = evpnev_ibgp_auto_discovery;
+        children["evpn-evi-bgp-auto-discovery"] = evpn_evi_bgp_auto_discovery;
     }
 
     if(evi_advertise_mac != nullptr)
@@ -9211,7 +9375,7 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpne
     return children;
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "eviid")
     {
@@ -9231,11 +9395,11 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::set_value(const std::string & value_pa
         evi_advertise_mac_deprecated.value_namespace = name_space;
         evi_advertise_mac_deprecated.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "evpnevi-description")
+    if(value_path == "evpn-evi-description")
     {
-        evpnevi_description = value;
-        evpnevi_description.value_namespace = name_space;
-        evpnevi_description.value_namespace_prefix = name_space_prefix;
+        evpn_evi_description = value;
+        evpn_evi_description.value_namespace = name_space;
+        evpn_evi_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "evi-ecmp-disable")
     {
@@ -9257,7 +9421,7 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::set_value(const std::string & value_pa
     }
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::set_filter(const std::string & value_path, YFilter yfilter)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "eviid")
     {
@@ -9271,9 +9435,9 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::set_filter(const std::string & value_p
     {
         evi_advertise_mac_deprecated.yfilter = yfilter;
     }
-    if(value_path == "evpnevi-description")
+    if(value_path == "evpn-evi-description")
     {
-        evpnevi_description.yfilter = yfilter;
+        evpn_evi_description.yfilter = yfilter;
     }
     if(value_path == "evi-ecmp-disable")
     {
@@ -9289,47 +9453,48 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::set_filter(const std::string & value_p
     }
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::has_leaf_or_child_of_name(const std::string & name) const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evi-load-balancing" || name == "evpnev-ibgp-auto-discovery" || name == "evi-advertise-mac" || name == "eviid" || name == "evi-reorig-disable" || name == "evi-advertise-mac-deprecated" || name == "evpnevi-description" || name == "evi-ecmp-disable" || name == "evi-unknown-unicast-flooding-disable" || name == "evpn-evi-cw-disable")
+    if(name == "evi-load-balancing" || name == "evpn-evi-bgp-auto-discovery" || name == "evi-advertise-mac" || name == "eviid" || name == "evi-reorig-disable" || name == "evi-advertise-mac-deprecated" || name == "evpn-evi-description" || name == "evi-ecmp-disable" || name == "evi-unknown-unicast-flooding-disable" || name == "evpn-evi-cw-disable")
         return true;
     return false;
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::EviLoadBalancing()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing::EviLoadBalancing()
     :
     enable{YType::empty, "enable"},
     evi_static_flow_label{YType::empty, "evi-static-flow-label"}
 {
 
-    yang_name = "evi-load-balancing"; yang_parent_name = "evpnevi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evi-load-balancing"; yang_parent_name = "evpn-evi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::~EviLoadBalancing()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing::~EviLoadBalancing()
 {
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::has_data() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| evi_static_flow_label.is_set;
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::has_operation() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(evi_static_flow_label.yfilter);
 }
 
-std::string Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::get_segment_path() const
+std::string Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evi-load-balancing";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9340,19 +9505,19 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpne
 
 }
 
-std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -9368,7 +9533,7 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::set_value(const std:
     }
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::set_filter(const std::string & value_path, YFilter yfilter)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -9380,40 +9545,41 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::set_filter(const std
     }
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::has_leaf_or_child_of_name(const std::string & name) const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable" || name == "evi-static-flow-label")
         return true;
     return false;
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnevIbgpAutoDiscovery()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnEviBgpAutoDiscovery()
     :
     enable{YType::empty, "enable"},
     table_policy{YType::str, "table-policy"}
-    	,
-    evpn_route_distinguisher(std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher>())
-	,evpn_route_targets(std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets>())
+        ,
+    evpn_route_distinguisher(std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher>())
+    , evpn_route_targets(std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets>())
 {
     evpn_route_distinguisher->parent = this;
     evpn_route_targets->parent = this;
 
-    yang_name = "evpnev-ibgp-auto-discovery"; yang_parent_name = "evpnevi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-evi-bgp-auto-discovery"; yang_parent_name = "evpn-evi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::~EvpnevIbgpAutoDiscovery()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::~EvpnEviBgpAutoDiscovery()
 {
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::has_data() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| table_policy.is_set
 	|| (evpn_route_distinguisher !=  nullptr && evpn_route_distinguisher->has_data())
 	|| (evpn_route_targets !=  nullptr && evpn_route_targets->has_data());
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::has_operation() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
@@ -9422,14 +9588,14 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::has_operation
 	|| (evpn_route_targets !=  nullptr && evpn_route_targets->has_operation());
 }
 
-std::string Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::get_segment_path() const
+std::string Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpnev-ibgp-auto-discovery";
+    path_buffer << "evpn-evi-bgp-auto-discovery";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9440,13 +9606,13 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpne
 
 }
 
-std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "evpn-route-distinguisher")
     {
         if(evpn_route_distinguisher == nullptr)
         {
-            evpn_route_distinguisher = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher>();
+            evpn_route_distinguisher = std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher>();
         }
         return evpn_route_distinguisher;
     }
@@ -9455,7 +9621,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDisco
     {
         if(evpn_route_targets == nullptr)
         {
-            evpn_route_targets = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets>();
+            evpn_route_targets = std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets>();
         }
         return evpn_route_targets;
     }
@@ -9463,7 +9629,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDisco
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9480,7 +9646,7 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpne
     return children;
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -9496,7 +9662,7 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::set_value(con
     }
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::set_filter(const std::string & value_path, YFilter yfilter)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -9508,14 +9674,14 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::set_filter(co
     }
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::has_leaf_or_child_of_name(const std::string & name) const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "evpn-route-distinguisher" || name == "evpn-route-targets" || name == "enable" || name == "table-policy")
         return true;
     return false;
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher::EvpnRouteDistinguisher()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher::EvpnRouteDistinguisher()
     :
     type{YType::enumeration, "type"},
     as{YType::uint32, "as"},
@@ -9524,15 +9690,16 @@ Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistingui
     addr_index{YType::uint32, "addr-index"}
 {
 
-    yang_name = "evpn-route-distinguisher"; yang_parent_name = "evpnev-ibgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-route-distinguisher"; yang_parent_name = "evpn-evi-bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher::~EvpnRouteDistinguisher()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher::~EvpnRouteDistinguisher()
 {
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher::has_data() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| as.is_set
 	|| as_index.is_set
@@ -9540,7 +9707,7 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDist
 	|| addr_index.is_set;
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher::has_operation() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -9550,14 +9717,14 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDist
 	|| ydk::is_set(addr_index.yfilter);
 }
 
-std::string Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher::get_segment_path() const
+std::string Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evpn-route-distinguisher";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9571,19 +9738,19 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpne
 
 }
 
-std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -9617,7 +9784,7 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDist
     }
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher::set_filter(const std::string & value_path, YFilter yfilter)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -9641,36 +9808,41 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDist
     }
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher::has_leaf_or_child_of_name(const std::string & name) const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "type" || name == "as" || name == "as-index" || name == "address" || name == "addr-index")
         return true;
     return false;
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargets()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargets()
+    :
+    evpn_route_target_as(this, {"format", "role", "as", "as_index", "stitching"})
+    , evpn_route_target_none(this, {"format", "role", "stitching"})
+    , evpn_route_target_ipv4_address(this, {"format", "role", "address", "addr_index", "stitching"})
 {
 
-    yang_name = "evpn-route-targets"; yang_parent_name = "evpnev-ibgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-route-targets"; yang_parent_name = "evpn-evi-bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::~EvpnRouteTargets()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::~EvpnRouteTargets()
 {
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::has_data() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::has_data() const
 {
-    for (std::size_t index=0; index<evpn_route_target_as.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<evpn_route_target_as.len(); index++)
     {
         if(evpn_route_target_as[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<evpn_route_target_none.size(); index++)
+    for (std::size_t index=0; index<evpn_route_target_none.len(); index++)
     {
         if(evpn_route_target_none[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<evpn_route_target_ipv4_address.size(); index++)
+    for (std::size_t index=0; index<evpn_route_target_ipv4_address.len(); index++)
     {
         if(evpn_route_target_ipv4_address[index]->has_data())
             return true;
@@ -9678,19 +9850,19 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
     return false;
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::has_operation() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::has_operation() const
 {
-    for (std::size_t index=0; index<evpn_route_target_as.size(); index++)
+    for (std::size_t index=0; index<evpn_route_target_as.len(); index++)
     {
         if(evpn_route_target_as[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<evpn_route_target_none.size(); index++)
+    for (std::size_t index=0; index<evpn_route_target_none.len(); index++)
     {
         if(evpn_route_target_none[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<evpn_route_target_ipv4_address.size(); index++)
+    for (std::size_t index=0; index<evpn_route_target_ipv4_address.len(); index++)
     {
         if(evpn_route_target_ipv4_address[index]->has_operation())
             return true;
@@ -9698,14 +9870,14 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
     return is_set(yfilter);
 }
 
-std::string Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::get_segment_path() const
+std::string Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evpn-route-targets";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9714,41 +9886,41 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpne
 
 }
 
-std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "evpn-route-target-as")
     {
-        auto c = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs>();
+        auto c = std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs>();
         c->parent = this;
-        evpn_route_target_as.push_back(c);
+        evpn_route_target_as.append(c);
         return c;
     }
 
     if(child_yang_name == "evpn-route-target-none")
     {
-        auto c = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone>();
+        auto c = std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone>();
         c->parent = this;
-        evpn_route_target_none.push_back(c);
+        evpn_route_target_none.append(c);
         return c;
     }
 
     if(child_yang_name == "evpn-route-target-ipv4-address")
     {
-        auto c = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address>();
+        auto c = std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address>();
         c->parent = this;
-        evpn_route_target_ipv4_address.push_back(c);
+        evpn_route_target_ipv4_address.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : evpn_route_target_as)
+    for (auto c : evpn_route_target_as.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9757,7 +9929,7 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpne
     }
 
     count = 0;
-    for (auto const & c : evpn_route_target_none)
+    for (auto c : evpn_route_target_none.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9766,7 +9938,7 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpne
     }
 
     count = 0;
-    for (auto const & c : evpn_route_target_ipv4_address)
+    for (auto c : evpn_route_target_ipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9777,22 +9949,22 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpne
     return children;
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::set_filter(const std::string & value_path, YFilter yfilter)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::has_leaf_or_child_of_name(const std::string & name) const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "evpn-route-target-as" || name == "evpn-route-target-none" || name == "evpn-route-target-ipv4-address")
         return true;
     return false;
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::EvpnRouteTargetAs()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::EvpnRouteTargetAs()
     :
     format{YType::enumeration, "format"},
     role{YType::enumeration, "role"},
@@ -9801,15 +9973,16 @@ Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::
     stitching{YType::enumeration, "stitching"}
 {
 
-    yang_name = "evpn-route-target-as"; yang_parent_name = "evpn-route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-route-target-as"; yang_parent_name = "evpn-route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::~EvpnRouteTargetAs()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::~EvpnRouteTargetAs()
 {
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::has_data() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::has_data() const
 {
+    if (is_presence_container) return true;
     return format.is_set
 	|| role.is_set
 	|| as.is_set
@@ -9817,7 +9990,7 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
 	|| stitching.is_set;
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::has_operation() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(format.yfilter)
@@ -9827,14 +10000,19 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
 	|| ydk::is_set(stitching.yfilter);
 }
 
-std::string Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::get_segment_path() const
+std::string Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpn-route-target-as" <<"[format='" <<format <<"']" <<"[role='" <<role <<"']" <<"[as='" <<as <<"']" <<"[as-index='" <<as_index <<"']" <<"[stitching='" <<stitching <<"']";
+    path_buffer << "evpn-route-target-as";
+    ADD_KEY_TOKEN(format, "format");
+    ADD_KEY_TOKEN(role, "role");
+    ADD_KEY_TOKEN(as, "as");
+    ADD_KEY_TOKEN(as_index, "as-index");
+    ADD_KEY_TOKEN(stitching, "stitching");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9848,19 +10026,19 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpne
 
 }
 
-std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "format")
     {
@@ -9894,7 +10072,7 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
     }
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::set_filter(const std::string & value_path, YFilter yfilter)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "format")
     {
@@ -9918,35 +10096,36 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
     }
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::has_leaf_or_child_of_name(const std::string & name) const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "format" || name == "role" || name == "as" || name == "as-index" || name == "stitching")
         return true;
     return false;
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::EvpnRouteTargetNone()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::EvpnRouteTargetNone()
     :
     format{YType::enumeration, "format"},
     role{YType::enumeration, "role"},
     stitching{YType::enumeration, "stitching"}
 {
 
-    yang_name = "evpn-route-target-none"; yang_parent_name = "evpn-route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-route-target-none"; yang_parent_name = "evpn-route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::~EvpnRouteTargetNone()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::~EvpnRouteTargetNone()
 {
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::has_data() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::has_data() const
 {
+    if (is_presence_container) return true;
     return format.is_set
 	|| role.is_set
 	|| stitching.is_set;
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::has_operation() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(format.yfilter)
@@ -9954,14 +10133,17 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
 	|| ydk::is_set(stitching.yfilter);
 }
 
-std::string Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::get_segment_path() const
+std::string Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpn-route-target-none" <<"[format='" <<format <<"']" <<"[role='" <<role <<"']" <<"[stitching='" <<stitching <<"']";
+    path_buffer << "evpn-route-target-none";
+    ADD_KEY_TOKEN(format, "format");
+    ADD_KEY_TOKEN(role, "role");
+    ADD_KEY_TOKEN(stitching, "stitching");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9973,19 +10155,19 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpne
 
 }
 
-std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "format")
     {
@@ -10007,7 +10189,7 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
     }
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::set_filter(const std::string & value_path, YFilter yfilter)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "format")
     {
@@ -10023,14 +10205,14 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
     }
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::has_leaf_or_child_of_name(const std::string & name) const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "format" || name == "role" || name == "stitching")
         return true;
     return false;
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::EvpnRouteTargetIpv4Address()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::EvpnRouteTargetIpv4Address()
     :
     format{YType::enumeration, "format"},
     role{YType::enumeration, "role"},
@@ -10039,15 +10221,16 @@ Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::
     stitching{YType::enumeration, "stitching"}
 {
 
-    yang_name = "evpn-route-target-ipv4-address"; yang_parent_name = "evpn-route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-route-target-ipv4-address"; yang_parent_name = "evpn-route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::~EvpnRouteTargetIpv4Address()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::~EvpnRouteTargetIpv4Address()
 {
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::has_data() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return format.is_set
 	|| role.is_set
 	|| address.is_set
@@ -10055,7 +10238,7 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
 	|| stitching.is_set;
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::has_operation() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(format.yfilter)
@@ -10065,14 +10248,19 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
 	|| ydk::is_set(stitching.yfilter);
 }
 
-std::string Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::get_segment_path() const
+std::string Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpn-route-target-ipv4-address" <<"[format='" <<format <<"']" <<"[role='" <<role <<"']" <<"[address='" <<address <<"']" <<"[addr-index='" <<addr_index <<"']" <<"[stitching='" <<stitching <<"']";
+    path_buffer << "evpn-route-target-ipv4-address";
+    ADD_KEY_TOKEN(format, "format");
+    ADD_KEY_TOKEN(role, "role");
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(addr_index, "addr-index");
+    ADD_KEY_TOKEN(stitching, "stitching");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10086,19 +10274,19 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpne
 
 }
 
-std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "format")
     {
@@ -10132,7 +10320,7 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
     }
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::set_filter(const std::string & value_path, YFilter yfilter)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "format")
     {
@@ -10156,47 +10344,48 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTarg
     }
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::has_leaf_or_child_of_name(const std::string & name) const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "format" || name == "role" || name == "address" || name == "addr-index" || name == "stitching")
         return true;
     return false;
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::EviAdvertiseMac()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac::EviAdvertiseMac()
     :
     enable{YType::empty, "enable"},
     evi_advertise_mac_bvi{YType::empty, "evi-advertise-mac-bvi"}
 {
 
-    yang_name = "evi-advertise-mac"; yang_parent_name = "evpnevi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evi-advertise-mac"; yang_parent_name = "evpn-evi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::~EviAdvertiseMac()
+Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac::~EviAdvertiseMac()
 {
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::has_data() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| evi_advertise_mac_bvi.is_set;
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::has_operation() const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(evi_advertise_mac_bvi.yfilter);
 }
 
-std::string Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::get_segment_path() const
+std::string Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evi-advertise-mac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10207,19 +10396,19 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpne
 
 }
 
-std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -10235,7 +10424,7 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::set_value(const std::
     }
 }
 
-void Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::set_filter(const std::string & value_path, YFilter yfilter)
+void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -10247,7 +10436,7 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::set_filter(const std:
     }
 }
 
-bool Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::has_leaf_or_child_of_name(const std::string & name) const
+bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviAdvertiseMac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable" || name == "evi-advertise-mac-bvi")
         return true;
@@ -10255,9 +10444,11 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::has_leaf_or_child_of_
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfis()
+    :
+    evpn_virtual_access_vfi(this, {"name"})
 {
 
-    yang_name = "evpn-virtual-access-vfis"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-virtual-access-vfis"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessVfis::~EvpnVirtualAccessVfis()
@@ -10266,7 +10457,8 @@ Evpn::EvpnTables::EvpnVirtualAccessVfis::~EvpnVirtualAccessVfis()
 
 bool Evpn::EvpnTables::EvpnVirtualAccessVfis::has_data() const
 {
-    for (std::size_t index=0; index<evpn_virtual_access_vfi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<evpn_virtual_access_vfi.len(); index++)
     {
         if(evpn_virtual_access_vfi[index]->has_data())
             return true;
@@ -10276,7 +10468,7 @@ bool Evpn::EvpnTables::EvpnVirtualAccessVfis::has_data() const
 
 bool Evpn::EvpnTables::EvpnVirtualAccessVfis::has_operation() const
 {
-    for (std::size_t index=0; index<evpn_virtual_access_vfi.size(); index++)
+    for (std::size_t index=0; index<evpn_virtual_access_vfi.len(); index++)
     {
         if(evpn_virtual_access_vfi[index]->has_operation())
             return true;
@@ -10313,7 +10505,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessVfis::get_child_by_na
     {
         auto c = std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi>();
         c->parent = this;
-        evpn_virtual_access_vfi.push_back(c);
+        evpn_virtual_access_vfi.append(c);
         return c;
     }
 
@@ -10325,7 +10517,7 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAcce
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : evpn_virtual_access_vfi)
+    for (auto c : evpn_virtual_access_vfi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10354,14 +10546,14 @@ bool Evpn::EvpnTables::EvpnVirtualAccessVfis::has_leaf_or_child_of_name(const st
 Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualAccessVfi()
     :
     name{YType::str, "name"}
-    	,
+        ,
     evpn_virtual_access_vfi_timers(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualAccessVfiTimers>())
-	,evpn_virtual_ethernet_segment(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment>())
+    , evpn_virtual_ethernet_segment(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment>())
 {
     evpn_virtual_access_vfi_timers->parent = this;
     evpn_virtual_ethernet_segment->parent = this;
 
-    yang_name = "evpn-virtual-access-vfi"; yang_parent_name = "evpn-virtual-access-vfis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-virtual-access-vfi"; yang_parent_name = "evpn-virtual-access-vfis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::~EvpnVirtualAccessVfi()
@@ -10370,6 +10562,7 @@ Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::~EvpnVirtualAcces
 
 bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (evpn_virtual_access_vfi_timers !=  nullptr && evpn_virtual_access_vfi_timers->has_data())
 	|| (evpn_virtual_ethernet_segment !=  nullptr && evpn_virtual_ethernet_segment->has_data());
@@ -10393,7 +10586,8 @@ std::string Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::get_a
 std::string Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpn-virtual-access-vfi" <<"[name='" <<name <<"']";
+    path_buffer << "evpn-virtual-access-vfi";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10480,7 +10674,7 @@ Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualAccess
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "evpn-virtual-access-vfi-timers"; yang_parent_name = "evpn-virtual-access-vfi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-virtual-access-vfi-timers"; yang_parent_name = "evpn-virtual-access-vfi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualAccessVfiTimers::~EvpnVirtualAccessVfiTimers()
@@ -10489,6 +10683,7 @@ Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualAccess
 
 bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualAccessVfiTimers::has_data() const
 {
+    if (is_presence_container) return true;
     return evpn_virtual_access_vfi_recovery.is_set
 	|| evpn_virtual_access_vfi_peering.is_set
 	|| evpn_virtual_access_vfi_carving.is_set
@@ -10595,13 +10790,13 @@ Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthern
     :
     enable{YType::empty, "enable"},
     es_import_route_target{YType::str, "es-import-route-target"}
-    	,
+        ,
     identifier(nullptr) // presence node
-	,manual_service_carving(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::ManualServiceCarving>())
+    , manual_service_carving(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::ManualServiceCarving>())
 {
     manual_service_carving->parent = this;
 
-    yang_name = "evpn-virtual-ethernet-segment"; yang_parent_name = "evpn-virtual-access-vfi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-virtual-ethernet-segment"; yang_parent_name = "evpn-virtual-access-vfi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::~EvpnVirtualEthernetSegment()
@@ -10610,6 +10805,7 @@ Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthern
 
 bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| es_import_route_target.is_set
 	|| (identifier !=  nullptr && identifier->has_data())
@@ -10728,7 +10924,7 @@ Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthern
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "identifier"; yang_parent_name = "evpn-virtual-ethernet-segment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "identifier"; yang_parent_name = "evpn-virtual-ethernet-segment"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::Identifier::~Identifier()
@@ -10737,6 +10933,7 @@ Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthern
 
 bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::Identifier::has_data() const
 {
+    if (is_presence_container) return true;
     return bytes01.is_set
 	|| bytes23.is_set
 	|| bytes45.is_set
@@ -10868,12 +11065,12 @@ bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualE
 Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::ManualServiceCarving::ManualServiceCarving()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     service_list(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::ManualServiceCarving::ServiceList>())
 {
     service_list->parent = this;
 
-    yang_name = "manual-service-carving"; yang_parent_name = "evpn-virtual-ethernet-segment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manual-service-carving"; yang_parent_name = "evpn-virtual-ethernet-segment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::ManualServiceCarving::~ManualServiceCarving()
@@ -10882,6 +11079,7 @@ Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthern
 
 bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::ManualServiceCarving::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (service_list !=  nullptr && service_list->has_data());
 }
@@ -10967,7 +11165,7 @@ Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthern
     secondary{YType::str, "secondary"}
 {
 
-    yang_name = "service-list"; yang_parent_name = "manual-service-carving"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-list"; yang_parent_name = "manual-service-carving"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::ManualServiceCarving::ServiceList::~ServiceList()
@@ -10976,6 +11174,7 @@ Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthern
 
 bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::ManualServiceCarving::ServiceList::has_data() const
 {
+    if (is_presence_container) return true;
     return primary.is_set
 	|| secondary.is_set;
 }
@@ -11058,7 +11257,7 @@ Evpn::EvpnTables::EvpnLoadBalancing::EvpnLoadBalancing()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "evpn-load-balancing"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-load-balancing"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnLoadBalancing::~EvpnLoadBalancing()
@@ -11067,6 +11266,7 @@ Evpn::EvpnTables::EvpnLoadBalancing::~EvpnLoadBalancing()
 
 bool Evpn::EvpnTables::EvpnLoadBalancing::has_data() const
 {
+    if (is_presence_container) return true;
     return evpn_static_flow_label.is_set
 	|| enable.is_set;
 }
@@ -11153,12 +11353,12 @@ bool Evpn::EvpnTables::EvpnLoadBalancing::has_leaf_or_child_of_name(const std::s
 Evpn::EvpnTables::EvpnBgpAutoDiscovery::EvpnBgpAutoDiscovery()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     evpn_route_distinguisher(std::make_shared<Evpn::EvpnTables::EvpnBgpAutoDiscovery::EvpnRouteDistinguisher>())
 {
     evpn_route_distinguisher->parent = this;
 
-    yang_name = "evpn-bgp-auto-discovery"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-bgp-auto-discovery"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnBgpAutoDiscovery::~EvpnBgpAutoDiscovery()
@@ -11167,6 +11367,7 @@ Evpn::EvpnTables::EvpnBgpAutoDiscovery::~EvpnBgpAutoDiscovery()
 
 bool Evpn::EvpnTables::EvpnBgpAutoDiscovery::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (evpn_route_distinguisher !=  nullptr && evpn_route_distinguisher->has_data());
 }
@@ -11262,7 +11463,7 @@ Evpn::EvpnTables::EvpnBgpAutoDiscovery::EvpnRouteDistinguisher::EvpnRouteDisting
     addr_index{YType::uint32, "addr-index"}
 {
 
-    yang_name = "evpn-route-distinguisher"; yang_parent_name = "evpn-bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-route-distinguisher"; yang_parent_name = "evpn-bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnBgpAutoDiscovery::EvpnRouteDistinguisher::~EvpnRouteDistinguisher()
@@ -11271,6 +11472,7 @@ Evpn::EvpnTables::EvpnBgpAutoDiscovery::EvpnRouteDistinguisher::~EvpnRouteDistin
 
 bool Evpn::EvpnTables::EvpnBgpAutoDiscovery::EvpnRouteDistinguisher::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| as.is_set
 	|| as_index.is_set
@@ -11393,10 +11595,389 @@ bool Evpn::EvpnTables::EvpnBgpAutoDiscovery::EvpnRouteDistinguisher::has_leaf_or
     return false;
 }
 
-Evpn::EvpnTables::EvpnInstances::EvpnInstances()
+Evpn::EvpnTables::EvpnGroups::EvpnGroups()
+    :
+    evpn_group(this, {"group_id"})
 {
 
-    yang_name = "evpn-instances"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-groups"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Evpn::EvpnTables::EvpnGroups::~EvpnGroups()
+{
+}
+
+bool Evpn::EvpnTables::EvpnGroups::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<evpn_group.len(); index++)
+    {
+        if(evpn_group[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Evpn::EvpnTables::EvpnGroups::has_operation() const
+{
+    for (std::size_t index=0; index<evpn_group.len(); index++)
+    {
+        if(evpn_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Evpn::EvpnTables::EvpnGroups::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Evpn::EvpnTables::EvpnGroups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "evpn-groups";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnGroups::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "evpn-group")
+    {
+        auto c = std::make_shared<Evpn::EvpnTables::EvpnGroups::EvpnGroup>();
+        c->parent = this;
+        evpn_group.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnGroups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : evpn_group.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Evpn::EvpnTables::EvpnGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Evpn::EvpnTables::EvpnGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Evpn::EvpnTables::EvpnGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "evpn-group")
+        return true;
+    return false;
+}
+
+Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroup()
+    :
+    group_id{YType::uint32, "group-id"}
+        ,
+    evpn_group_core_interfaces(std::make_shared<Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces>())
+{
+    evpn_group_core_interfaces->parent = this;
+
+    yang_name = "evpn-group"; yang_parent_name = "evpn-groups"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Evpn::EvpnTables::EvpnGroups::EvpnGroup::~EvpnGroup()
+{
+}
+
+bool Evpn::EvpnTables::EvpnGroups::EvpnGroup::has_data() const
+{
+    if (is_presence_container) return true;
+    return group_id.is_set
+	|| (evpn_group_core_interfaces !=  nullptr && evpn_group_core_interfaces->has_data());
+}
+
+bool Evpn::EvpnTables::EvpnGroups::EvpnGroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(group_id.yfilter)
+	|| (evpn_group_core_interfaces !=  nullptr && evpn_group_core_interfaces->has_operation());
+}
+
+std::string Evpn::EvpnTables::EvpnGroups::EvpnGroup::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:evpn/evpn-tables/evpn-groups/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Evpn::EvpnTables::EvpnGroups::EvpnGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "evpn-group";
+    ADD_KEY_TOKEN(group_id, "group-id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnGroups::EvpnGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnGroups::EvpnGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "evpn-group-core-interfaces")
+    {
+        if(evpn_group_core_interfaces == nullptr)
+        {
+            evpn_group_core_interfaces = std::make_shared<Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces>();
+        }
+        return evpn_group_core_interfaces;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnGroups::EvpnGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(evpn_group_core_interfaces != nullptr)
+    {
+        children["evpn-group-core-interfaces"] = evpn_group_core_interfaces;
+    }
+
+    return children;
+}
+
+void Evpn::EvpnTables::EvpnGroups::EvpnGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "group-id")
+    {
+        group_id = value;
+        group_id.value_namespace = name_space;
+        group_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::EvpnTables::EvpnGroups::EvpnGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-id")
+    {
+        group_id.yfilter = yfilter;
+    }
+}
+
+bool Evpn::EvpnTables::EvpnGroups::EvpnGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "evpn-group-core-interfaces" || name == "group-id")
+        return true;
+    return false;
+}
+
+Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterfaces()
+    :
+    evpn_group_core_interface(this, {"interface_name"})
+{
+
+    yang_name = "evpn-group-core-interfaces"; yang_parent_name = "evpn-group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::~EvpnGroupCoreInterfaces()
+{
+}
+
+bool Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<evpn_group_core_interface.len(); index++)
+    {
+        if(evpn_group_core_interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::has_operation() const
+{
+    for (std::size_t index=0; index<evpn_group_core_interface.len(); index++)
+    {
+        if(evpn_group_core_interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "evpn-group-core-interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "evpn-group-core-interface")
+    {
+        auto c = std::make_shared<Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterface>();
+        c->parent = this;
+        evpn_group_core_interface.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : evpn_group_core_interface.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "evpn-group-core-interface")
+        return true;
+    return false;
+}
+
+Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterface::EvpnGroupCoreInterface()
+    :
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "evpn-group-core-interface"; yang_parent_name = "evpn-group-core-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterface::~EvpnGroupCoreInterface()
+{
+}
+
+bool Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_name.is_set;
+}
+
+bool Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "evpn-group-core-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Evpn::EvpnTables::EvpnGroups::EvpnGroup::EvpnGroupCoreInterfaces::EvpnGroupCoreInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
+}
+
+Evpn::EvpnTables::EvpnInstances::EvpnInstances()
+    :
+    evpn_instance(this, {"eviid", "encapsulation", "side"})
+{
+
+    yang_name = "evpn-instances"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnInstances::~EvpnInstances()
@@ -11405,7 +11986,8 @@ Evpn::EvpnTables::EvpnInstances::~EvpnInstances()
 
 bool Evpn::EvpnTables::EvpnInstances::has_data() const
 {
-    for (std::size_t index=0; index<evpn_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<evpn_instance.len(); index++)
     {
         if(evpn_instance[index]->has_data())
             return true;
@@ -11415,7 +11997,7 @@ bool Evpn::EvpnTables::EvpnInstances::has_data() const
 
 bool Evpn::EvpnTables::EvpnInstances::has_operation() const
 {
-    for (std::size_t index=0; index<evpn_instance.size(); index++)
+    for (std::size_t index=0; index<evpn_instance.len(); index++)
     {
         if(evpn_instance[index]->has_operation())
             return true;
@@ -11452,7 +12034,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::get_child_by_name(const
     {
         auto c = std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance>();
         c->parent = this;
-        evpn_instance.push_back(c);
+        evpn_instance.append(c);
         return c;
     }
 
@@ -11464,7 +12046,7 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : evpn_instance)
+    for (auto c : evpn_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11497,20 +12079,20 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstance()
     side{YType::enumeration, "side"},
     evi_reorig_disable{YType::empty, "evi-reorig-disable"},
     evi_advertise_mac_deprecated{YType::empty, "evi-advertise-mac-deprecated"},
-    evpnevi_description{YType::str, "evpnevi-description"},
+    evpn_evi_description{YType::str, "evpn-evi-description"},
     evi_ecmp_disable{YType::empty, "evi-ecmp-disable"},
     evi_unknown_unicast_flooding_disable{YType::empty, "evi-unknown-unicast-flooding-disable"},
     evpn_evi_cw_disable{YType::empty, "evpn-evi-cw-disable"}
-    	,
+        ,
     evpn_instance_bgp_auto_discovery(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery>())
-	,evpn_instance_advertise_mac(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac>())
-	,evpn_instance_load_balancing(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing>())
+    , evpn_instance_advertise_mac(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac>())
+    , evpn_instance_load_balancing(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing>())
 {
     evpn_instance_bgp_auto_discovery->parent = this;
     evpn_instance_advertise_mac->parent = this;
     evpn_instance_load_balancing->parent = this;
 
-    yang_name = "evpn-instance"; yang_parent_name = "evpn-instances"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-instance"; yang_parent_name = "evpn-instances"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::~EvpnInstance()
@@ -11519,12 +12101,13 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::~EvpnInstance()
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return eviid.is_set
 	|| encapsulation.is_set
 	|| side.is_set
 	|| evi_reorig_disable.is_set
 	|| evi_advertise_mac_deprecated.is_set
-	|| evpnevi_description.is_set
+	|| evpn_evi_description.is_set
 	|| evi_ecmp_disable.is_set
 	|| evi_unknown_unicast_flooding_disable.is_set
 	|| evpn_evi_cw_disable.is_set
@@ -11541,7 +12124,7 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::has_operation() const
 	|| ydk::is_set(side.yfilter)
 	|| ydk::is_set(evi_reorig_disable.yfilter)
 	|| ydk::is_set(evi_advertise_mac_deprecated.yfilter)
-	|| ydk::is_set(evpnevi_description.yfilter)
+	|| ydk::is_set(evpn_evi_description.yfilter)
 	|| ydk::is_set(evi_ecmp_disable.yfilter)
 	|| ydk::is_set(evi_unknown_unicast_flooding_disable.yfilter)
 	|| ydk::is_set(evpn_evi_cw_disable.yfilter)
@@ -11560,7 +12143,10 @@ std::string Evpn::EvpnTables::EvpnInstances::EvpnInstance::get_absolute_path() c
 std::string Evpn::EvpnTables::EvpnInstances::EvpnInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpn-instance" <<"[eviid='" <<eviid <<"']" <<"[encapsulation='" <<encapsulation <<"']" <<"[side='" <<side <<"']";
+    path_buffer << "evpn-instance";
+    ADD_KEY_TOKEN(eviid, "eviid");
+    ADD_KEY_TOKEN(encapsulation, "encapsulation");
+    ADD_KEY_TOKEN(side, "side");
     return path_buffer.str();
 }
 
@@ -11573,7 +12159,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnInstances::
     if (side.is_set || is_set(side.yfilter)) leaf_name_data.push_back(side.get_name_leafdata());
     if (evi_reorig_disable.is_set || is_set(evi_reorig_disable.yfilter)) leaf_name_data.push_back(evi_reorig_disable.get_name_leafdata());
     if (evi_advertise_mac_deprecated.is_set || is_set(evi_advertise_mac_deprecated.yfilter)) leaf_name_data.push_back(evi_advertise_mac_deprecated.get_name_leafdata());
-    if (evpnevi_description.is_set || is_set(evpnevi_description.yfilter)) leaf_name_data.push_back(evpnevi_description.get_name_leafdata());
+    if (evpn_evi_description.is_set || is_set(evpn_evi_description.yfilter)) leaf_name_data.push_back(evpn_evi_description.get_name_leafdata());
     if (evi_ecmp_disable.is_set || is_set(evi_ecmp_disable.yfilter)) leaf_name_data.push_back(evi_ecmp_disable.get_name_leafdata());
     if (evi_unknown_unicast_flooding_disable.is_set || is_set(evi_unknown_unicast_flooding_disable.yfilter)) leaf_name_data.push_back(evi_unknown_unicast_flooding_disable.get_name_leafdata());
     if (evpn_evi_cw_disable.is_set || is_set(evpn_evi_cw_disable.yfilter)) leaf_name_data.push_back(evpn_evi_cw_disable.get_name_leafdata());
@@ -11668,11 +12254,11 @@ void Evpn::EvpnTables::EvpnInstances::EvpnInstance::set_value(const std::string 
         evi_advertise_mac_deprecated.value_namespace = name_space;
         evi_advertise_mac_deprecated.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "evpnevi-description")
+    if(value_path == "evpn-evi-description")
     {
-        evpnevi_description = value;
-        evpnevi_description.value_namespace = name_space;
-        evpnevi_description.value_namespace_prefix = name_space_prefix;
+        evpn_evi_description = value;
+        evpn_evi_description.value_namespace = name_space;
+        evpn_evi_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "evi-ecmp-disable")
     {
@@ -11716,9 +12302,9 @@ void Evpn::EvpnTables::EvpnInstances::EvpnInstance::set_filter(const std::string
     {
         evi_advertise_mac_deprecated.yfilter = yfilter;
     }
-    if(value_path == "evpnevi-description")
+    if(value_path == "evpn-evi-description")
     {
-        evpnevi_description.yfilter = yfilter;
+        evpn_evi_description.yfilter = yfilter;
     }
     if(value_path == "evi-ecmp-disable")
     {
@@ -11736,7 +12322,7 @@ void Evpn::EvpnTables::EvpnInstances::EvpnInstance::set_filter(const std::string
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-instance-bgp-auto-discovery" || name == "evpn-instance-advertise-mac" || name == "evpn-instance-load-balancing" || name == "eviid" || name == "encapsulation" || name == "side" || name == "evi-reorig-disable" || name == "evi-advertise-mac-deprecated" || name == "evpnevi-description" || name == "evi-ecmp-disable" || name == "evi-unknown-unicast-flooding-disable" || name == "evpn-evi-cw-disable")
+    if(name == "evpn-instance-bgp-auto-discovery" || name == "evpn-instance-advertise-mac" || name == "evpn-instance-load-balancing" || name == "eviid" || name == "encapsulation" || name == "side" || name == "evi-reorig-disable" || name == "evi-advertise-mac-deprecated" || name == "evpn-evi-description" || name == "evi-ecmp-disable" || name == "evi-unknown-unicast-flooding-disable" || name == "evpn-evi-cw-disable")
         return true;
     return false;
 }
@@ -11745,14 +12331,14 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::Evp
     :
     enable{YType::empty, "enable"},
     table_policy{YType::str, "table-policy"}
-    	,
+        ,
     evpn_route_distinguisher(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteDistinguisher>())
-	,evpn_route_targets(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets>())
+    , evpn_route_targets(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets>())
 {
     evpn_route_distinguisher->parent = this;
     evpn_route_targets->parent = this;
 
-    yang_name = "evpn-instance-bgp-auto-discovery"; yang_parent_name = "evpn-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-instance-bgp-auto-discovery"; yang_parent_name = "evpn-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::~EvpnInstanceBgpAutoDiscovery()
@@ -11761,6 +12347,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::~Ev
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| table_policy.is_set
 	|| (evpn_route_distinguisher !=  nullptr && evpn_route_distinguisher->has_data())
@@ -11878,7 +12465,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::Evp
     addr_index{YType::uint32, "addr-index"}
 {
 
-    yang_name = "evpn-route-distinguisher"; yang_parent_name = "evpn-instance-bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-route-distinguisher"; yang_parent_name = "evpn-instance-bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteDistinguisher::~EvpnRouteDistinguisher()
@@ -11887,6 +12474,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::Evp
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteDistinguisher::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| as.is_set
 	|| as_index.is_set
@@ -12003,9 +12591,13 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery
 }
 
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargets()
+    :
+    evpn_route_target_as(this, {"format", "role", "as", "as_index", "stitching"})
+    , evpn_route_target_none(this, {"format", "role", "stitching"})
+    , evpn_route_target_ipv4_address(this, {"format", "role", "address", "addr_index", "stitching"})
 {
 
-    yang_name = "evpn-route-targets"; yang_parent_name = "evpn-instance-bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-route-targets"; yang_parent_name = "evpn-instance-bgp-auto-discovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::~EvpnRouteTargets()
@@ -12014,17 +12606,18 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::Evp
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::has_data() const
 {
-    for (std::size_t index=0; index<evpn_route_target_as.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<evpn_route_target_as.len(); index++)
     {
         if(evpn_route_target_as[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<evpn_route_target_none.size(); index++)
+    for (std::size_t index=0; index<evpn_route_target_none.len(); index++)
     {
         if(evpn_route_target_none[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<evpn_route_target_ipv4_address.size(); index++)
+    for (std::size_t index=0; index<evpn_route_target_ipv4_address.len(); index++)
     {
         if(evpn_route_target_ipv4_address[index]->has_data())
             return true;
@@ -12034,17 +12627,17 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::has_operation() const
 {
-    for (std::size_t index=0; index<evpn_route_target_as.size(); index++)
+    for (std::size_t index=0; index<evpn_route_target_as.len(); index++)
     {
         if(evpn_route_target_as[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<evpn_route_target_none.size(); index++)
+    for (std::size_t index=0; index<evpn_route_target_none.len(); index++)
     {
         if(evpn_route_target_none[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<evpn_route_target_ipv4_address.size(); index++)
+    for (std::size_t index=0; index<evpn_route_target_ipv4_address.len(); index++)
     {
         if(evpn_route_target_ipv4_address[index]->has_operation())
             return true;
@@ -12074,7 +12667,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
     {
         auto c = std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs>();
         c->parent = this;
-        evpn_route_target_as.push_back(c);
+        evpn_route_target_as.append(c);
         return c;
     }
 
@@ -12082,7 +12675,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
     {
         auto c = std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone>();
         c->parent = this;
-        evpn_route_target_none.push_back(c);
+        evpn_route_target_none.append(c);
         return c;
     }
 
@@ -12090,7 +12683,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
     {
         auto c = std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address>();
         c->parent = this;
-        evpn_route_target_ipv4_address.push_back(c);
+        evpn_route_target_ipv4_address.append(c);
         return c;
     }
 
@@ -12102,7 +12695,7 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : evpn_route_target_as)
+    for (auto c : evpn_route_target_as.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12111,7 +12704,7 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::
     }
 
     count = 0;
-    for (auto const & c : evpn_route_target_none)
+    for (auto c : evpn_route_target_none.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12120,7 +12713,7 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::
     }
 
     count = 0;
-    for (auto const & c : evpn_route_target_ipv4_address)
+    for (auto c : evpn_route_target_ipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12155,7 +12748,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::Evp
     stitching{YType::enumeration, "stitching"}
 {
 
-    yang_name = "evpn-route-target-as"; yang_parent_name = "evpn-route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-route-target-as"; yang_parent_name = "evpn-route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::~EvpnRouteTargetAs()
@@ -12164,6 +12757,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::Evp
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::has_data() const
 {
+    if (is_presence_container) return true;
     return format.is_set
 	|| role.is_set
 	|| as.is_set
@@ -12184,7 +12778,12 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery
 std::string Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpn-route-target-as" <<"[format='" <<format <<"']" <<"[role='" <<role <<"']" <<"[as='" <<as <<"']" <<"[as-index='" <<as_index <<"']" <<"[stitching='" <<stitching <<"']";
+    path_buffer << "evpn-route-target-as";
+    ADD_KEY_TOKEN(format, "format");
+    ADD_KEY_TOKEN(role, "role");
+    ADD_KEY_TOKEN(as, "as");
+    ADD_KEY_TOKEN(as_index, "as-index");
+    ADD_KEY_TOKEN(stitching, "stitching");
     return path_buffer.str();
 }
 
@@ -12286,7 +12885,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::Evp
     stitching{YType::enumeration, "stitching"}
 {
 
-    yang_name = "evpn-route-target-none"; yang_parent_name = "evpn-route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-route-target-none"; yang_parent_name = "evpn-route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::~EvpnRouteTargetNone()
@@ -12295,6 +12894,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::Evp
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::has_data() const
 {
+    if (is_presence_container) return true;
     return format.is_set
 	|| role.is_set
 	|| stitching.is_set;
@@ -12311,7 +12911,10 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery
 std::string Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpn-route-target-none" <<"[format='" <<format <<"']" <<"[role='" <<role <<"']" <<"[stitching='" <<stitching <<"']";
+    path_buffer << "evpn-route-target-none";
+    ADD_KEY_TOKEN(format, "format");
+    ADD_KEY_TOKEN(role, "role");
+    ADD_KEY_TOKEN(stitching, "stitching");
     return path_buffer.str();
 }
 
@@ -12393,7 +12996,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::Evp
     stitching{YType::enumeration, "stitching"}
 {
 
-    yang_name = "evpn-route-target-ipv4-address"; yang_parent_name = "evpn-route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-route-target-ipv4-address"; yang_parent_name = "evpn-route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::~EvpnRouteTargetIpv4Address()
@@ -12402,6 +13005,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::Evp
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return format.is_set
 	|| role.is_set
 	|| address.is_set
@@ -12422,7 +13026,12 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery
 std::string Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpn-route-target-ipv4-address" <<"[format='" <<format <<"']" <<"[role='" <<role <<"']" <<"[address='" <<address <<"']" <<"[addr-index='" <<addr_index <<"']" <<"[stitching='" <<stitching <<"']";
+    path_buffer << "evpn-route-target-ipv4-address";
+    ADD_KEY_TOKEN(format, "format");
+    ADD_KEY_TOKEN(role, "role");
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(addr_index, "addr-index");
+    ADD_KEY_TOKEN(stitching, "stitching");
     return path_buffer.str();
 }
 
@@ -12523,7 +13132,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac::EvpnIns
     evi_advertise_mac_bvi{YType::empty, "evi-advertise-mac-bvi"}
 {
 
-    yang_name = "evpn-instance-advertise-mac"; yang_parent_name = "evpn-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-instance-advertise-mac"; yang_parent_name = "evpn-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac::~EvpnInstanceAdvertiseMac()
@@ -12532,6 +13141,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac::~EvpnIn
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| evi_advertise_mac_bvi.is_set;
 }
@@ -12614,7 +13224,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::EvpnIn
     evi_static_flow_label{YType::empty, "evi-static-flow-label"}
 {
 
-    yang_name = "evpn-instance-load-balancing"; yang_parent_name = "evpn-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-instance-load-balancing"; yang_parent_name = "evpn-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::~EvpnInstanceLoadBalancing()
@@ -12623,6 +13233,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::~EvpnI
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| evi_static_flow_label.is_set;
 }
@@ -12705,7 +13316,7 @@ Evpn::EvpnTables::EvpnLogging::EvpnLogging()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "evpn-logging"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-logging"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnLogging::~EvpnLogging()
@@ -12714,6 +13325,7 @@ Evpn::EvpnTables::EvpnLogging::~EvpnLogging()
 
 bool Evpn::EvpnTables::EvpnLogging::has_data() const
 {
+    if (is_presence_container) return true;
     return evpn_df_election.is_set
 	|| enable.is_set;
 }
@@ -12798,9 +13410,11 @@ bool Evpn::EvpnTables::EvpnLogging::has_leaf_or_child_of_name(const std::string 
 }
 
 Evpn::EvpnTables::EvpnInterfaces::EvpnInterfaces()
+    :
+    evpn_interface(this, {"interface_name"})
 {
 
-    yang_name = "evpn-interfaces"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-interfaces"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnInterfaces::~EvpnInterfaces()
@@ -12809,7 +13423,8 @@ Evpn::EvpnTables::EvpnInterfaces::~EvpnInterfaces()
 
 bool Evpn::EvpnTables::EvpnInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<evpn_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<evpn_interface.len(); index++)
     {
         if(evpn_interface[index]->has_data())
             return true;
@@ -12819,7 +13434,7 @@ bool Evpn::EvpnTables::EvpnInterfaces::has_data() const
 
 bool Evpn::EvpnTables::EvpnInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<evpn_interface.size(); index++)
+    for (std::size_t index=0; index<evpn_interface.len(); index++)
     {
         if(evpn_interface[index]->has_operation())
             return true;
@@ -12856,7 +13471,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInterfaces::get_child_by_name(cons
     {
         auto c = std::make_shared<Evpn::EvpnTables::EvpnInterfaces::EvpnInterface>();
         c->parent = this;
-        evpn_interface.push_back(c);
+        evpn_interface.append(c);
         return c;
     }
 
@@ -12868,7 +13483,7 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInterfaces:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : evpn_interface)
+    for (auto c : evpn_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12897,15 +13512,16 @@ bool Evpn::EvpnTables::EvpnInterfaces::has_leaf_or_child_of_name(const std::stri
 Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnInterface()
     :
     interface_name{YType::str, "interface-name"},
+    evpn_core_isolation_group{YType::uint32, "evpn-core-isolation-group"},
     mac_flush{YType::enumeration, "mac-flush"}
-    	,
+        ,
     evpnac_timers(std::make_shared<Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers>())
-	,ethernet_segment(std::make_shared<Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment>())
+    , ethernet_segment(std::make_shared<Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment>())
 {
     evpnac_timers->parent = this;
     ethernet_segment->parent = this;
 
-    yang_name = "evpn-interface"; yang_parent_name = "evpn-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-interface"; yang_parent_name = "evpn-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::~EvpnInterface()
@@ -12914,7 +13530,9 @@ Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::~EvpnInterface()
 
 bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
+	|| evpn_core_isolation_group.is_set
 	|| mac_flush.is_set
 	|| (evpnac_timers !=  nullptr && evpnac_timers->has_data())
 	|| (ethernet_segment !=  nullptr && ethernet_segment->has_data());
@@ -12924,6 +13542,7 @@ bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(evpn_core_isolation_group.yfilter)
 	|| ydk::is_set(mac_flush.yfilter)
 	|| (evpnac_timers !=  nullptr && evpnac_timers->has_operation())
 	|| (ethernet_segment !=  nullptr && ethernet_segment->has_operation());
@@ -12939,7 +13558,8 @@ std::string Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::get_absolute_path()
 std::string Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpn-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "evpn-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -12948,6 +13568,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnInterfaces:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (evpn_core_isolation_group.is_set || is_set(evpn_core_isolation_group.yfilter)) leaf_name_data.push_back(evpn_core_isolation_group.get_name_leafdata());
     if (mac_flush.is_set || is_set(mac_flush.yfilter)) leaf_name_data.push_back(mac_flush.get_name_leafdata());
 
     return leaf_name_data;
@@ -13002,6 +13623,12 @@ void Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::set_value(const std::strin
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "evpn-core-isolation-group")
+    {
+        evpn_core_isolation_group = value;
+        evpn_core_isolation_group.value_namespace = name_space;
+        evpn_core_isolation_group.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "mac-flush")
     {
         mac_flush = value;
@@ -13016,6 +13643,10 @@ void Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::set_filter(const std::stri
     {
         interface_name.yfilter = yfilter;
     }
+    if(value_path == "evpn-core-isolation-group")
+    {
+        evpn_core_isolation_group.yfilter = yfilter;
+    }
     if(value_path == "mac-flush")
     {
         mac_flush.yfilter = yfilter;
@@ -13024,7 +13655,7 @@ void Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::set_filter(const std::stri
 
 bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpnac-timers" || name == "ethernet-segment" || name == "interface-name" || name == "mac-flush")
+    if(name == "evpnac-timers" || name == "ethernet-segment" || name == "interface-name" || name == "evpn-core-isolation-group" || name == "mac-flush")
         return true;
     return false;
 }
@@ -13037,7 +13668,7 @@ Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::EvpnacTimers()
     evpnac_recovery{YType::uint32, "evpnac-recovery"}
 {
 
-    yang_name = "evpnac-timers"; yang_parent_name = "evpn-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpnac-timers"; yang_parent_name = "evpn-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::~EvpnacTimers()
@@ -13046,6 +13677,7 @@ Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::~EvpnacTimers()
 
 bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::has_data() const
 {
+    if (is_presence_container) return true;
     return evpnac_peering.is_set
 	|| evpnac_carving.is_set
 	|| enable.is_set
@@ -13151,17 +13783,17 @@ bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::has_leaf_or_
 Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::EthernetSegment()
     :
     force_single_homed{YType::empty, "force-single-homed"},
-    load_balancing_single_active{YType::empty, "load-balancing-single-active"},
+    load_balancing_mode{YType::enumeration, "load-balancing-mode"},
     enable{YType::empty, "enable"},
     backbone_source_mac{YType::str, "backbone-source-mac"},
     es_import_route_target{YType::str, "es-import-route-target"}
-    	,
+        ,
     identifier(nullptr) // presence node
-	,manual_service_carving(std::make_shared<Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceCarving>())
+    , manual_service_carving(std::make_shared<Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceCarving>())
 {
     manual_service_carving->parent = this;
 
-    yang_name = "ethernet-segment"; yang_parent_name = "evpn-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet-segment"; yang_parent_name = "evpn-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::~EthernetSegment()
@@ -13170,8 +13802,9 @@ Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::~EthernetSegme
 
 bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::has_data() const
 {
+    if (is_presence_container) return true;
     return force_single_homed.is_set
-	|| load_balancing_single_active.is_set
+	|| load_balancing_mode.is_set
 	|| enable.is_set
 	|| backbone_source_mac.is_set
 	|| es_import_route_target.is_set
@@ -13183,7 +13816,7 @@ bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::has_opera
 {
     return is_set(yfilter)
 	|| ydk::is_set(force_single_homed.yfilter)
-	|| ydk::is_set(load_balancing_single_active.yfilter)
+	|| ydk::is_set(load_balancing_mode.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(backbone_source_mac.yfilter)
 	|| ydk::is_set(es_import_route_target.yfilter)
@@ -13203,7 +13836,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnInterfaces:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (force_single_homed.is_set || is_set(force_single_homed.yfilter)) leaf_name_data.push_back(force_single_homed.get_name_leafdata());
-    if (load_balancing_single_active.is_set || is_set(load_balancing_single_active.yfilter)) leaf_name_data.push_back(load_balancing_single_active.get_name_leafdata());
+    if (load_balancing_mode.is_set || is_set(load_balancing_mode.yfilter)) leaf_name_data.push_back(load_balancing_mode.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (backbone_source_mac.is_set || is_set(backbone_source_mac.yfilter)) leaf_name_data.push_back(backbone_source_mac.get_name_leafdata());
     if (es_import_route_target.is_set || is_set(es_import_route_target.yfilter)) leaf_name_data.push_back(es_import_route_target.get_name_leafdata());
@@ -13260,11 +13893,11 @@ void Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::set_value
         force_single_homed.value_namespace = name_space;
         force_single_homed.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "load-balancing-single-active")
+    if(value_path == "load-balancing-mode")
     {
-        load_balancing_single_active = value;
-        load_balancing_single_active.value_namespace = name_space;
-        load_balancing_single_active.value_namespace_prefix = name_space_prefix;
+        load_balancing_mode = value;
+        load_balancing_mode.value_namespace = name_space;
+        load_balancing_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
@@ -13292,9 +13925,9 @@ void Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::set_filte
     {
         force_single_homed.yfilter = yfilter;
     }
-    if(value_path == "load-balancing-single-active")
+    if(value_path == "load-balancing-mode")
     {
-        load_balancing_single_active.yfilter = yfilter;
+        load_balancing_mode.yfilter = yfilter;
     }
     if(value_path == "enable")
     {
@@ -13312,7 +13945,7 @@ void Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::set_filte
 
 bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "identifier" || name == "manual-service-carving" || name == "force-single-homed" || name == "load-balancing-single-active" || name == "enable" || name == "backbone-source-mac" || name == "es-import-route-target")
+    if(name == "identifier" || name == "manual-service-carving" || name == "force-single-homed" || name == "load-balancing-mode" || name == "enable" || name == "backbone-source-mac" || name == "es-import-route-target")
         return true;
     return false;
 }
@@ -13327,7 +13960,7 @@ Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::Identifier::Id
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "identifier"; yang_parent_name = "ethernet-segment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "identifier"; yang_parent_name = "ethernet-segment"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::Identifier::~Identifier()
@@ -13336,6 +13969,7 @@ Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::Identifier::~I
 
 bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::Identifier::has_data() const
 {
+    if (is_presence_container) return true;
     return bytes01.is_set
 	|| bytes23.is_set
 	|| bytes45.is_set
@@ -13467,12 +14101,12 @@ bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::Identifie
 Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceCarving::ManualServiceCarving()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     service_list(std::make_shared<Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceCarving::ServiceList>())
 {
     service_list->parent = this;
 
-    yang_name = "manual-service-carving"; yang_parent_name = "ethernet-segment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manual-service-carving"; yang_parent_name = "ethernet-segment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceCarving::~ManualServiceCarving()
@@ -13481,6 +14115,7 @@ Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceC
 
 bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceCarving::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (service_list !=  nullptr && service_list->has_data());
 }
@@ -13566,7 +14201,7 @@ Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceC
     secondary{YType::str, "secondary"}
 {
 
-    yang_name = "service-list"; yang_parent_name = "manual-service-carving"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-list"; yang_parent_name = "manual-service-carving"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceCarving::ServiceList::~ServiceList()
@@ -13575,6 +14210,7 @@ Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceC
 
 bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceCarving::ServiceList::has_data() const
 {
+    if (is_presence_container) return true;
     return primary.is_set
 	|| secondary.is_set;
 }
@@ -13652,9 +14288,11 @@ bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualSer
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPws()
+    :
+    evpn_virtual_access_pw(this, {"neighbor", "pseudowire_id"})
 {
 
-    yang_name = "evpn-virtual-access-pws"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-virtual-access-pws"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessPws::~EvpnVirtualAccessPws()
@@ -13663,7 +14301,8 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::~EvpnVirtualAccessPws()
 
 bool Evpn::EvpnTables::EvpnVirtualAccessPws::has_data() const
 {
-    for (std::size_t index=0; index<evpn_virtual_access_pw.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<evpn_virtual_access_pw.len(); index++)
     {
         if(evpn_virtual_access_pw[index]->has_data())
             return true;
@@ -13673,7 +14312,7 @@ bool Evpn::EvpnTables::EvpnVirtualAccessPws::has_data() const
 
 bool Evpn::EvpnTables::EvpnVirtualAccessPws::has_operation() const
 {
-    for (std::size_t index=0; index<evpn_virtual_access_pw.size(); index++)
+    for (std::size_t index=0; index<evpn_virtual_access_pw.len(); index++)
     {
         if(evpn_virtual_access_pw[index]->has_operation())
             return true;
@@ -13710,7 +14349,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessPws::get_child_by_nam
     {
         auto c = std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw>();
         c->parent = this;
-        evpn_virtual_access_pw.push_back(c);
+        evpn_virtual_access_pw.append(c);
         return c;
     }
 
@@ -13722,7 +14361,7 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAcce
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : evpn_virtual_access_pw)
+    for (auto c : evpn_virtual_access_pw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13752,14 +14391,14 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPw
     :
     neighbor{YType::str, "neighbor"},
     pseudowire_id{YType::uint32, "pseudowire-id"}
-    	,
+        ,
     evpn_virtual_access_pw_timers(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPwTimers>())
-	,evpn_virtual_ethernet_segment(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment>())
+    , evpn_virtual_ethernet_segment(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment>())
 {
     evpn_virtual_access_pw_timers->parent = this;
     evpn_virtual_ethernet_segment->parent = this;
 
-    yang_name = "evpn-virtual-access-pw"; yang_parent_name = "evpn-virtual-access-pws"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-virtual-access-pw"; yang_parent_name = "evpn-virtual-access-pws"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::~EvpnVirtualAccessPw()
@@ -13768,6 +14407,7 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::~EvpnVirtualAccessP
 
 bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor.is_set
 	|| pseudowire_id.is_set
 	|| (evpn_virtual_access_pw_timers !=  nullptr && evpn_virtual_access_pw_timers->has_data())
@@ -13793,7 +14433,9 @@ std::string Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::get_abs
 std::string Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpn-virtual-access-pw" <<"[neighbor='" <<neighbor <<"']" <<"[pseudowire-id='" <<pseudowire_id <<"']";
+    path_buffer << "evpn-virtual-access-pw";
+    ADD_KEY_TOKEN(neighbor, "neighbor");
+    ADD_KEY_TOKEN(pseudowire_id, "pseudowire-id");
     return path_buffer.str();
 }
 
@@ -13891,7 +14533,7 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPw
     evpn_virtual_access_pw_carving{YType::uint32, "evpn-virtual-access-pw-carving"}
 {
 
-    yang_name = "evpn-virtual-access-pw-timers"; yang_parent_name = "evpn-virtual-access-pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-virtual-access-pw-timers"; yang_parent_name = "evpn-virtual-access-pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPwTimers::~EvpnVirtualAccessPwTimers()
@@ -13900,6 +14542,7 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPw
 
 bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPwTimers::has_data() const
 {
+    if (is_presence_container) return true;
     return evpn_virtual_access_pw_recovery.is_set
 	|| evpn_virtual_access_pw_peering.is_set
 	|| enable.is_set
@@ -14006,13 +14649,13 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernet
     :
     enable{YType::empty, "enable"},
     es_import_route_target{YType::str, "es-import-route-target"}
-    	,
+        ,
     identifier(nullptr) // presence node
-	,manual_service_carving(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::ManualServiceCarving>())
+    , manual_service_carving(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::ManualServiceCarving>())
 {
     manual_service_carving->parent = this;
 
-    yang_name = "evpn-virtual-ethernet-segment"; yang_parent_name = "evpn-virtual-access-pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-virtual-ethernet-segment"; yang_parent_name = "evpn-virtual-access-pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::~EvpnVirtualEthernetSegment()
@@ -14021,6 +14664,7 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernet
 
 bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| es_import_route_target.is_set
 	|| (identifier !=  nullptr && identifier->has_data())
@@ -14139,7 +14783,7 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernet
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "identifier"; yang_parent_name = "evpn-virtual-ethernet-segment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "identifier"; yang_parent_name = "evpn-virtual-ethernet-segment"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::Identifier::~Identifier()
@@ -14148,6 +14792,7 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernet
 
 bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::Identifier::has_data() const
 {
+    if (is_presence_container) return true;
     return bytes01.is_set
 	|| bytes23.is_set
 	|| bytes45.is_set
@@ -14279,12 +14924,12 @@ bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEth
 Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::ManualServiceCarving::ManualServiceCarving()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     service_list(std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::ManualServiceCarving::ServiceList>())
 {
     service_list->parent = this;
 
-    yang_name = "manual-service-carving"; yang_parent_name = "evpn-virtual-ethernet-segment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manual-service-carving"; yang_parent_name = "evpn-virtual-ethernet-segment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::ManualServiceCarving::~ManualServiceCarving()
@@ -14293,6 +14938,7 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernet
 
 bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::ManualServiceCarving::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (service_list !=  nullptr && service_list->has_data());
 }
@@ -14378,7 +15024,7 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernet
     secondary{YType::str, "secondary"}
 {
 
-    yang_name = "service-list"; yang_parent_name = "manual-service-carving"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-list"; yang_parent_name = "manual-service-carving"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::ManualServiceCarving::ServiceList::~ServiceList()
@@ -14387,6 +15033,7 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernet
 
 bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::ManualServiceCarving::ServiceList::has_data() const
 {
+    if (is_presence_container) return true;
     return primary.is_set
 	|| secondary.is_set;
 }
@@ -14466,12 +15113,12 @@ bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEth
 Evpn::EvpnTables::EvpnEthernetSegment::EvpnEthernetSegment()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     evpn_esi_types(std::make_shared<Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes>())
 {
     evpn_esi_types->parent = this;
 
-    yang_name = "evpn-ethernet-segment"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-ethernet-segment"; yang_parent_name = "evpn-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnEthernetSegment::~EvpnEthernetSegment()
@@ -14480,6 +15127,7 @@ Evpn::EvpnTables::EvpnEthernetSegment::~EvpnEthernetSegment()
 
 bool Evpn::EvpnTables::EvpnEthernetSegment::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (evpn_esi_types !=  nullptr && evpn_esi_types->has_data());
 }
@@ -14567,9 +15215,11 @@ bool Evpn::EvpnTables::EvpnEthernetSegment::has_leaf_or_child_of_name(const std:
 }
 
 Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiTypes()
+    :
+    evpn_esi_type(this, {"esi_type"})
 {
 
-    yang_name = "evpn-esi-types"; yang_parent_name = "evpn-ethernet-segment"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-esi-types"; yang_parent_name = "evpn-ethernet-segment"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::~EvpnEsiTypes()
@@ -14578,7 +15228,8 @@ Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::~EvpnEsiTypes()
 
 bool Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::has_data() const
 {
-    for (std::size_t index=0; index<evpn_esi_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<evpn_esi_type.len(); index++)
     {
         if(evpn_esi_type[index]->has_data())
             return true;
@@ -14588,7 +15239,7 @@ bool Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::has_data() const
 
 bool Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::has_operation() const
 {
-    for (std::size_t index=0; index<evpn_esi_type.size(); index++)
+    for (std::size_t index=0; index<evpn_esi_type.len(); index++)
     {
         if(evpn_esi_type[index]->has_operation())
             return true;
@@ -14625,7 +15276,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::get
     {
         auto c = std::make_shared<Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType>();
         c->parent = this;
-        evpn_esi_type.push_back(c);
+        evpn_esi_type.append(c);
         return c;
     }
 
@@ -14637,7 +15288,7 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEthernetSeg
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : evpn_esi_type)
+    for (auto c : evpn_esi_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14669,7 +15320,7 @@ Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType::EvpnEsiType()
     disable_auto_generation{YType::empty, "disable-auto-generation"}
 {
 
-    yang_name = "evpn-esi-type"; yang_parent_name = "evpn-esi-types"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-esi-type"; yang_parent_name = "evpn-esi-types"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType::~EvpnEsiType()
@@ -14678,6 +15329,7 @@ Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType::~EvpnEsiType()
 
 bool Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType::has_data() const
 {
+    if (is_presence_container) return true;
     return esi_type.is_set
 	|| disable_auto_generation.is_set;
 }
@@ -14699,7 +15351,8 @@ std::string Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType::ge
 std::string Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evpn-esi-type" <<"[esi-type='" <<esi_type <<"']";
+    path_buffer << "evpn-esi-type";
+    ADD_KEY_TOKEN(esi_type, "esi-type");
     return path_buffer.str();
 }
 

@@ -17,7 +17,7 @@ Statistics::Statistics()
 {
     period->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Statistics::~Statistics()
@@ -26,6 +26,7 @@ Statistics::~Statistics()
 
 bool Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (period !=  nullptr && period->has_data());
 }
 
@@ -123,7 +124,7 @@ Statistics::Period::Period()
 {
     service_accounting->parent = this;
 
-    yang_name = "period"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "period"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Statistics::Period::~Period()
@@ -132,6 +133,7 @@ Statistics::Period::~Period()
 
 bool Statistics::Period::has_data() const
 {
+    if (is_presence_container) return true;
     return (service_accounting !=  nullptr && service_accounting->has_data());
 }
 
@@ -211,7 +213,7 @@ Statistics::Period::ServiceAccounting::ServiceAccounting()
     polling_disable{YType::empty, "polling-disable"}
 {
 
-    yang_name = "service-accounting"; yang_parent_name = "period"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service-accounting"; yang_parent_name = "period"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Statistics::Period::ServiceAccounting::~ServiceAccounting()
@@ -220,6 +222,7 @@ Statistics::Period::ServiceAccounting::~ServiceAccounting()
 
 bool Statistics::Period::ServiceAccounting::has_data() const
 {
+    if (is_presence_container) return true;
     return polling_period.is_set
 	|| polling_disable.is_set;
 }

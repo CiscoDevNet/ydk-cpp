@@ -57,7 +57,7 @@ class Ipv6Io::Nodes : public ydk::Entity
 
         class Node; //type: Ipv6Io::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_io_oper::Ipv6Io::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Ipv6Io::Nodes
 

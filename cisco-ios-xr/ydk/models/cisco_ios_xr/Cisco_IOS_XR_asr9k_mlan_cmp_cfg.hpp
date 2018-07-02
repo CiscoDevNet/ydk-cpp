@@ -57,7 +57,7 @@ class MlanDisableCmp::Nodes : public ydk::Entity
 
         class Node; //type: MlanDisableCmp::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_mlan_cmp_cfg::MlanDisableCmp::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // MlanDisableCmp::Nodes
 

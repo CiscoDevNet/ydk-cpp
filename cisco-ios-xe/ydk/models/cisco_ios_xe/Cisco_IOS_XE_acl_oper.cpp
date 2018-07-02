@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_acl_oper {
 
 AccessLists::AccessLists()
+    :
+    access_list(this, {"access_control_list_name"})
 {
 
-    yang_name = "access-lists"; yang_parent_name = "Cisco-IOS-XE-acl-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "access-lists"; yang_parent_name = "Cisco-IOS-XE-acl-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 AccessLists::~AccessLists()
@@ -23,7 +25,8 @@ AccessLists::~AccessLists()
 
 bool AccessLists::has_data() const
 {
-    for (std::size_t index=0; index<access_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_list.len(); index++)
     {
         if(access_list[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool AccessLists::has_data() const
 
 bool AccessLists::has_operation() const
 {
-    for (std::size_t index=0; index<access_list.size(); index++)
+    for (std::size_t index=0; index<access_list.len(); index++)
     {
         if(access_list[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> AccessLists::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<AccessLists::AccessList>();
         c->parent = this;
-        access_list.push_back(c);
+        access_list.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessLists::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access_list)
+    for (auto c : access_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,12 +132,12 @@ bool AccessLists::has_leaf_or_child_of_name(const std::string & name) const
 AccessLists::AccessList::AccessList()
     :
     access_control_list_name{YType::str, "access-control-list-name"}
-    	,
+        ,
     access_list_entries(std::make_shared<AccessLists::AccessList::AccessListEntries>())
 {
     access_list_entries->parent = this;
 
-    yang_name = "access-list"; yang_parent_name = "access-lists"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access-list"; yang_parent_name = "access-lists"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AccessLists::AccessList::~AccessList()
@@ -143,6 +146,7 @@ AccessLists::AccessList::~AccessList()
 
 bool AccessLists::AccessList::has_data() const
 {
+    if (is_presence_container) return true;
     return access_control_list_name.is_set
 	|| (access_list_entries !=  nullptr && access_list_entries->has_data());
 }
@@ -164,7 +168,8 @@ std::string AccessLists::AccessList::get_absolute_path() const
 std::string AccessLists::AccessList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-list" <<"[access-control-list-name='" <<access_control_list_name <<"']";
+    path_buffer << "access-list";
+    ADD_KEY_TOKEN(access_control_list_name, "access-control-list-name");
     return path_buffer.str();
 }
 
@@ -230,9 +235,11 @@ bool AccessLists::AccessList::has_leaf_or_child_of_name(const std::string & name
 }
 
 AccessLists::AccessList::AccessListEntries::AccessListEntries()
+    :
+    access_list_entry(this, {"rule_name"})
 {
 
-    yang_name = "access-list-entries"; yang_parent_name = "access-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-list-entries"; yang_parent_name = "access-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessLists::AccessList::AccessListEntries::~AccessListEntries()
@@ -241,7 +248,8 @@ AccessLists::AccessList::AccessListEntries::~AccessListEntries()
 
 bool AccessLists::AccessList::AccessListEntries::has_data() const
 {
-    for (std::size_t index=0; index<access_list_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_list_entry.len(); index++)
     {
         if(access_list_entry[index]->has_data())
             return true;
@@ -251,7 +259,7 @@ bool AccessLists::AccessList::AccessListEntries::has_data() const
 
 bool AccessLists::AccessList::AccessListEntries::has_operation() const
 {
-    for (std::size_t index=0; index<access_list_entry.size(); index++)
+    for (std::size_t index=0; index<access_list_entry.len(); index++)
     {
         if(access_list_entry[index]->has_operation())
             return true;
@@ -281,7 +289,7 @@ std::shared_ptr<Entity> AccessLists::AccessList::AccessListEntries::get_child_by
     {
         auto c = std::make_shared<AccessLists::AccessList::AccessListEntries::AccessListEntry>();
         c->parent = this;
-        access_list_entry.push_back(c);
+        access_list_entry.append(c);
         return c;
     }
 
@@ -293,7 +301,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessLists::AccessList::AccessLi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access_list_entry)
+    for (auto c : access_list_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -322,12 +330,12 @@ bool AccessLists::AccessList::AccessListEntries::has_leaf_or_child_of_name(const
 AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntry()
     :
     rule_name{YType::uint32, "rule-name"}
-    	,
+        ,
     access_list_entries_oper_data(std::make_shared<AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOperData>())
 {
     access_list_entries_oper_data->parent = this;
 
-    yang_name = "access-list-entry"; yang_parent_name = "access-list-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-list-entry"; yang_parent_name = "access-list-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessLists::AccessList::AccessListEntries::AccessListEntry::~AccessListEntry()
@@ -336,6 +344,7 @@ AccessLists::AccessList::AccessListEntries::AccessListEntry::~AccessListEntry()
 
 bool AccessLists::AccessList::AccessListEntries::AccessListEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return rule_name.is_set
 	|| (access_list_entries_oper_data !=  nullptr && access_list_entries_oper_data->has_data());
 }
@@ -350,7 +359,8 @@ bool AccessLists::AccessList::AccessListEntries::AccessListEntry::has_operation(
 std::string AccessLists::AccessList::AccessListEntries::AccessListEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-list-entry" <<"[rule-name='" <<rule_name <<"']";
+    path_buffer << "access-list-entry";
+    ADD_KEY_TOKEN(rule_name, "rule-name");
     return path_buffer.str();
 }
 
@@ -420,7 +430,7 @@ AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOp
     match_counter{YType::uint64, "match-counter"}
 {
 
-    yang_name = "access-list-entries-oper-data"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-list-entries-oper-data"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOperData::~AccessListEntriesOperData()
@@ -429,6 +439,7 @@ AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOp
 
 bool AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOperData::has_data() const
 {
+    if (is_presence_container) return true;
     return match_counter.is_set;
 }
 

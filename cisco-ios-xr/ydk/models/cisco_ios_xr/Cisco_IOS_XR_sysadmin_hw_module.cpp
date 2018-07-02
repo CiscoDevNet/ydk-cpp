@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_sysadmin_hw_module {
 HwModule::HwModule()
     :
     config(std::make_shared<HwModule::Config>())
-	,oper(std::make_shared<HwModule::Oper>())
-	,shhwfpd(std::make_shared<HwModule::Shhwfpd>())
+    , oper(std::make_shared<HwModule::Oper>())
+    , shhwfpd(std::make_shared<HwModule::Shhwfpd>())
 {
     config->parent = this;
     oper->parent = this;
     shhwfpd->parent = this;
 
-    yang_name = "hw-module"; yang_parent_name = "Cisco-IOS-XR-sysadmin-hw-module"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hw-module"; yang_parent_name = "Cisco-IOS-XR-sysadmin-hw-module"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HwModule::~HwModule()
@@ -30,6 +30,7 @@ HwModule::~HwModule()
 
 bool HwModule::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (oper !=  nullptr && oper->has_data())
 	|| (shhwfpd !=  nullptr && shhwfpd->has_data());
@@ -156,16 +157,17 @@ bool HwModule::has_leaf_or_child_of_name(const std::string & name) const
 HwModule::Config::Config()
     :
     shutdown(std::make_shared<HwModule::Config::Shutdown>())
-	,reset(std::make_shared<HwModule::Config::Reset>())
-	,offline(std::make_shared<HwModule::Config::Offline>())
-	,attention_led(std::make_shared<HwModule::Config::AttentionLed>())
+    , reset(std::make_shared<HwModule::Config::Reset>())
+    , offline(std::make_shared<HwModule::Config::Offline>())
+    , attention_led(std::make_shared<HwModule::Config::AttentionLed>())
+    , location(this, {"location"})
 {
     shutdown->parent = this;
     reset->parent = this;
     offline->parent = this;
     attention_led->parent = this;
 
-    yang_name = "config"; yang_parent_name = "hw-module"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "hw-module"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Config::~Config()
@@ -174,7 +176,8 @@ HwModule::Config::~Config()
 
 bool HwModule::Config::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -187,7 +190,7 @@ bool HwModule::Config::has_data() const
 
 bool HwModule::Config::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -264,7 +267,7 @@ std::shared_ptr<Entity> HwModule::Config::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<HwModule::Config::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -296,7 +299,7 @@ std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::get_children() 
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -323,9 +326,11 @@ bool HwModule::Config::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 HwModule::Config::Shutdown::Shutdown()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "shutdown"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "shutdown"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Config::Shutdown::~Shutdown()
@@ -334,7 +339,8 @@ HwModule::Config::Shutdown::~Shutdown()
 
 bool HwModule::Config::Shutdown::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -344,7 +350,7 @@ bool HwModule::Config::Shutdown::has_data() const
 
 bool HwModule::Config::Shutdown::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -381,7 +387,7 @@ std::shared_ptr<Entity> HwModule::Config::Shutdown::get_child_by_name(const std:
     {
         auto c = std::make_shared<HwModule::Config::Shutdown::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -393,7 +399,7 @@ std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Shutdown::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -424,7 +430,7 @@ HwModule::Config::Shutdown::Location::Location()
     location{YType::str, "location"}
 {
 
-    yang_name = "location"; yang_parent_name = "shutdown"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "shutdown"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Config::Shutdown::Location::~Location()
@@ -433,6 +439,7 @@ HwModule::Config::Shutdown::Location::~Location()
 
 bool HwModule::Config::Shutdown::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set;
 }
 
@@ -452,7 +459,8 @@ std::string HwModule::Config::Shutdown::Location::get_absolute_path() const
 std::string HwModule::Config::Shutdown::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -509,7 +517,7 @@ HwModule::Config::Reset::Reset()
 {
     auto_->parent = this;
 
-    yang_name = "reset"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reset"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Config::Reset::~Reset()
@@ -518,6 +526,7 @@ HwModule::Config::Reset::~Reset()
 
 bool HwModule::Config::Reset::has_data() const
 {
+    if (is_presence_container) return true;
     return (auto_ !=  nullptr && auto_->has_data());
 }
 
@@ -597,7 +606,7 @@ HwModule::Config::Reset::Auto::Auto()
 {
     disable->parent = this;
 
-    yang_name = "auto"; yang_parent_name = "reset"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "auto"; yang_parent_name = "reset"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Config::Reset::Auto::~Auto()
@@ -606,6 +615,7 @@ HwModule::Config::Reset::Auto::~Auto()
 
 bool HwModule::Config::Reset::Auto::has_data() const
 {
+    if (is_presence_container) return true;
     return (disable !=  nullptr && disable->has_data());
 }
 
@@ -680,9 +690,11 @@ bool HwModule::Config::Reset::Auto::has_leaf_or_child_of_name(const std::string 
 }
 
 HwModule::Config::Reset::Auto::Disable::Disable()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "disable"; yang_parent_name = "auto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "disable"; yang_parent_name = "auto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Config::Reset::Auto::Disable::~Disable()
@@ -691,7 +703,8 @@ HwModule::Config::Reset::Auto::Disable::~Disable()
 
 bool HwModule::Config::Reset::Auto::Disable::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -701,7 +714,7 @@ bool HwModule::Config::Reset::Auto::Disable::has_data() const
 
 bool HwModule::Config::Reset::Auto::Disable::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -738,7 +751,7 @@ std::shared_ptr<Entity> HwModule::Config::Reset::Auto::Disable::get_child_by_nam
     {
         auto c = std::make_shared<HwModule::Config::Reset::Auto::Disable::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -750,7 +763,7 @@ std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Reset::Auto::Di
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -781,7 +794,7 @@ HwModule::Config::Reset::Auto::Disable::Location::Location()
     location{YType::str, "location"}
 {
 
-    yang_name = "location"; yang_parent_name = "disable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "disable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Config::Reset::Auto::Disable::Location::~Location()
@@ -790,6 +803,7 @@ HwModule::Config::Reset::Auto::Disable::Location::~Location()
 
 bool HwModule::Config::Reset::Auto::Disable::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set;
 }
 
@@ -809,7 +823,8 @@ std::string HwModule::Config::Reset::Auto::Disable::Location::get_absolute_path(
 std::string HwModule::Config::Reset::Auto::Disable::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -861,9 +876,11 @@ bool HwModule::Config::Reset::Auto::Disable::Location::has_leaf_or_child_of_name
 }
 
 HwModule::Config::Offline::Offline()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "offline"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "offline"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Config::Offline::~Offline()
@@ -872,7 +889,8 @@ HwModule::Config::Offline::~Offline()
 
 bool HwModule::Config::Offline::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -882,7 +900,7 @@ bool HwModule::Config::Offline::has_data() const
 
 bool HwModule::Config::Offline::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -919,7 +937,7 @@ std::shared_ptr<Entity> HwModule::Config::Offline::get_child_by_name(const std::
     {
         auto c = std::make_shared<HwModule::Config::Offline::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -931,7 +949,7 @@ std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Offline::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -962,7 +980,7 @@ HwModule::Config::Offline::Location::Location()
     location{YType::str, "location"}
 {
 
-    yang_name = "location"; yang_parent_name = "offline"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "offline"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Config::Offline::Location::~Location()
@@ -971,6 +989,7 @@ HwModule::Config::Offline::Location::~Location()
 
 bool HwModule::Config::Offline::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set;
 }
 
@@ -990,7 +1009,8 @@ std::string HwModule::Config::Offline::Location::get_absolute_path() const
 std::string HwModule::Config::Offline::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1042,9 +1062,11 @@ bool HwModule::Config::Offline::Location::has_leaf_or_child_of_name(const std::s
 }
 
 HwModule::Config::AttentionLed::AttentionLed()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "attention-led"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "attention-led"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Config::AttentionLed::~AttentionLed()
@@ -1053,7 +1075,8 @@ HwModule::Config::AttentionLed::~AttentionLed()
 
 bool HwModule::Config::AttentionLed::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1063,7 +1086,7 @@ bool HwModule::Config::AttentionLed::has_data() const
 
 bool HwModule::Config::AttentionLed::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1100,7 +1123,7 @@ std::shared_ptr<Entity> HwModule::Config::AttentionLed::get_child_by_name(const 
     {
         auto c = std::make_shared<HwModule::Config::AttentionLed::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1112,7 +1135,7 @@ std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::AttentionLed::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1143,7 +1166,7 @@ HwModule::Config::AttentionLed::Location::Location()
     location{YType::str, "location"}
 {
 
-    yang_name = "location"; yang_parent_name = "attention-led"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "attention-led"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Config::AttentionLed::Location::~Location()
@@ -1152,6 +1175,7 @@ HwModule::Config::AttentionLed::Location::~Location()
 
 bool HwModule::Config::AttentionLed::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set;
 }
 
@@ -1171,7 +1195,8 @@ std::string HwModule::Config::AttentionLed::Location::get_absolute_path() const
 std::string HwModule::Config::AttentionLed::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1225,12 +1250,12 @@ bool HwModule::Config::AttentionLed::Location::has_leaf_or_child_of_name(const s
 HwModule::Config::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     logging(std::make_shared<HwModule::Config::Location::Logging>())
 {
     logging->parent = this;
 
-    yang_name = "location"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Config::Location::~Location()
@@ -1239,6 +1264,7 @@ HwModule::Config::Location::~Location()
 
 bool HwModule::Config::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (logging !=  nullptr && logging->has_data());
 }
@@ -1260,7 +1286,8 @@ std::string HwModule::Config::Location::get_absolute_path() const
 std::string HwModule::Config::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1331,7 +1358,7 @@ HwModule::Config::Location::Logging::Logging()
 {
     onboard->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HwModule::Config::Location::Logging::~Logging()
@@ -1340,6 +1367,7 @@ HwModule::Config::Location::Logging::~Logging()
 
 bool HwModule::Config::Location::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return (onboard !=  nullptr && onboard->has_data());
 }
 
@@ -1411,7 +1439,7 @@ HwModule::Config::Location::Logging::Onboard::Onboard()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "onboard"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "onboard"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HwModule::Config::Location::Logging::Onboard::~Onboard()
@@ -1420,6 +1448,7 @@ HwModule::Config::Location::Logging::Onboard::~Onboard()
 
 bool HwModule::Config::Location::Logging::Onboard::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -1484,9 +1513,11 @@ bool HwModule::Config::Location::Logging::Onboard::has_leaf_or_child_of_name(con
 }
 
 HwModule::Oper::Oper()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "oper"; yang_parent_name = "hw-module"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oper"; yang_parent_name = "hw-module"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Oper::~Oper()
@@ -1495,7 +1526,8 @@ HwModule::Oper::~Oper()
 
 bool HwModule::Oper::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1505,7 +1537,7 @@ bool HwModule::Oper::has_data() const
 
 bool HwModule::Oper::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1542,7 +1574,7 @@ std::shared_ptr<Entity> HwModule::Oper::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<HwModule::Oper::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1554,7 +1586,7 @@ std::map<std::string, std::shared_ptr<Entity>> HwModule::Oper::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1583,14 +1615,14 @@ bool HwModule::Oper::has_leaf_or_child_of_name(const std::string & name) const
 HwModule::Oper::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     actions(std::make_shared<HwModule::Oper::Location::Actions>())
-	,show(std::make_shared<HwModule::Oper::Location::Show>())
+    , show(std::make_shared<HwModule::Oper::Location::Show>())
 {
     actions->parent = this;
     show->parent = this;
 
-    yang_name = "location"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Oper::Location::~Location()
@@ -1599,6 +1631,7 @@ HwModule::Oper::Location::~Location()
 
 bool HwModule::Oper::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (actions !=  nullptr && actions->has_data())
 	|| (show !=  nullptr && show->has_data());
@@ -1622,7 +1655,8 @@ std::string HwModule::Oper::Location::get_absolute_path() const
 std::string HwModule::Oper::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1707,7 +1741,7 @@ HwModule::Oper::Location::Actions::Actions()
 {
     cbootmedia->parent = this;
 
-    yang_name = "actions"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actions"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HwModule::Oper::Location::Actions::~Actions()
@@ -1716,6 +1750,7 @@ HwModule::Oper::Location::Actions::~Actions()
 
 bool HwModule::Oper::Location::Actions::has_data() const
 {
+    if (is_presence_container) return true;
     return (cbootmedia !=  nullptr && cbootmedia->has_data());
 }
 
@@ -1783,9 +1818,11 @@ bool HwModule::Oper::Location::Actions::has_leaf_or_child_of_name(const std::str
 }
 
 HwModule::Oper::Location::Actions::Cbootmedia::Cbootmedia()
+    :
+    bootmedia(this, {"bootmedium"})
 {
 
-    yang_name = "cbootmedia"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbootmedia"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HwModule::Oper::Location::Actions::Cbootmedia::~Cbootmedia()
@@ -1794,7 +1831,8 @@ HwModule::Oper::Location::Actions::Cbootmedia::~Cbootmedia()
 
 bool HwModule::Oper::Location::Actions::Cbootmedia::has_data() const
 {
-    for (std::size_t index=0; index<bootmedia.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bootmedia.len(); index++)
     {
         if(bootmedia[index]->has_data())
             return true;
@@ -1804,7 +1842,7 @@ bool HwModule::Oper::Location::Actions::Cbootmedia::has_data() const
 
 bool HwModule::Oper::Location::Actions::Cbootmedia::has_operation() const
 {
-    for (std::size_t index=0; index<bootmedia.size(); index++)
+    for (std::size_t index=0; index<bootmedia.len(); index++)
     {
         if(bootmedia[index]->has_operation())
             return true;
@@ -1834,7 +1872,7 @@ std::shared_ptr<Entity> HwModule::Oper::Location::Actions::Cbootmedia::get_child
     {
         auto c = std::make_shared<HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia>();
         c->parent = this;
-        bootmedia.push_back(c);
+        bootmedia.append(c);
         return c;
     }
 
@@ -1846,7 +1884,7 @@ std::map<std::string, std::shared_ptr<Entity>> HwModule::Oper::Location::Actions
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bootmedia)
+    for (auto c : bootmedia.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1877,7 +1915,7 @@ HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia::Bootmedia()
     bootmedium{YType::str, "bootmedium"}
 {
 
-    yang_name = "bootmedia"; yang_parent_name = "cbootmedia"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bootmedia"; yang_parent_name = "cbootmedia"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia::~Bootmedia()
@@ -1886,6 +1924,7 @@ HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia::~Bootmedia()
 
 bool HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia::has_data() const
 {
+    if (is_presence_container) return true;
     return bootmedium.is_set;
 }
 
@@ -1898,7 +1937,8 @@ bool HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia::has_operation() c
 std::string HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bootmedia" <<"[bootmedium='" <<bootmedium <<"']";
+    path_buffer << "bootmedia";
+    ADD_KEY_TOKEN(bootmedium, "bootmedium");
     return path_buffer.str();
 }
 
@@ -1952,7 +1992,7 @@ bool HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia::has_leaf_or_child
 HwModule::Oper::Location::Show::Show()
 {
 
-    yang_name = "show"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "show"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HwModule::Oper::Location::Show::~Show()
@@ -1961,6 +2001,7 @@ HwModule::Oper::Location::Show::~Show()
 
 bool HwModule::Oper::Location::Show::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2011,9 +2052,12 @@ bool HwModule::Oper::Location::Show::has_leaf_or_child_of_name(const std::string
 }
 
 HwModule::Shhwfpd::Shhwfpd()
+    :
+    alocation(this, {"locs"})
+    , fpd(this, {"fpdname"})
 {
 
-    yang_name = "shhwfpd"; yang_parent_name = "hw-module"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "shhwfpd"; yang_parent_name = "hw-module"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Shhwfpd::~Shhwfpd()
@@ -2022,12 +2066,13 @@ HwModule::Shhwfpd::~Shhwfpd()
 
 bool HwModule::Shhwfpd::has_data() const
 {
-    for (std::size_t index=0; index<alocation.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alocation.len(); index++)
     {
         if(alocation[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<fpd.size(); index++)
+    for (std::size_t index=0; index<fpd.len(); index++)
     {
         if(fpd[index]->has_data())
             return true;
@@ -2037,12 +2082,12 @@ bool HwModule::Shhwfpd::has_data() const
 
 bool HwModule::Shhwfpd::has_operation() const
 {
-    for (std::size_t index=0; index<alocation.size(); index++)
+    for (std::size_t index=0; index<alocation.len(); index++)
     {
         if(alocation[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<fpd.size(); index++)
+    for (std::size_t index=0; index<fpd.len(); index++)
     {
         if(fpd[index]->has_operation())
             return true;
@@ -2079,7 +2124,7 @@ std::shared_ptr<Entity> HwModule::Shhwfpd::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<HwModule::Shhwfpd::Alocation>();
         c->parent = this;
-        alocation.push_back(c);
+        alocation.append(c);
         return c;
     }
 
@@ -2087,7 +2132,7 @@ std::shared_ptr<Entity> HwModule::Shhwfpd::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<HwModule::Shhwfpd::Fpd>();
         c->parent = this;
-        fpd.push_back(c);
+        fpd.append(c);
         return c;
     }
 
@@ -2099,7 +2144,7 @@ std::map<std::string, std::shared_ptr<Entity>> HwModule::Shhwfpd::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alocation)
+    for (auto c : alocation.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2108,7 +2153,7 @@ std::map<std::string, std::shared_ptr<Entity>> HwModule::Shhwfpd::get_children()
     }
 
     count = 0;
-    for (auto const & c : fpd)
+    for (auto c : fpd.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2137,9 +2182,11 @@ bool HwModule::Shhwfpd::has_leaf_or_child_of_name(const std::string & name) cons
 HwModule::Shhwfpd::Alocation::Alocation()
     :
     locs{YType::str, "locs"}
+        ,
+    fpd(this, {"fpdname"})
 {
 
-    yang_name = "alocation"; yang_parent_name = "shhwfpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alocation"; yang_parent_name = "shhwfpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Shhwfpd::Alocation::~Alocation()
@@ -2148,7 +2195,8 @@ HwModule::Shhwfpd::Alocation::~Alocation()
 
 bool HwModule::Shhwfpd::Alocation::has_data() const
 {
-    for (std::size_t index=0; index<fpd.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fpd.len(); index++)
     {
         if(fpd[index]->has_data())
             return true;
@@ -2158,7 +2206,7 @@ bool HwModule::Shhwfpd::Alocation::has_data() const
 
 bool HwModule::Shhwfpd::Alocation::has_operation() const
 {
-    for (std::size_t index=0; index<fpd.size(); index++)
+    for (std::size_t index=0; index<fpd.len(); index++)
     {
         if(fpd[index]->has_operation())
             return true;
@@ -2177,7 +2225,8 @@ std::string HwModule::Shhwfpd::Alocation::get_absolute_path() const
 std::string HwModule::Shhwfpd::Alocation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alocation" <<"[locs='" <<locs <<"']";
+    path_buffer << "alocation";
+    ADD_KEY_TOKEN(locs, "locs");
     return path_buffer.str();
 }
 
@@ -2197,7 +2246,7 @@ std::shared_ptr<Entity> HwModule::Shhwfpd::Alocation::get_child_by_name(const st
     {
         auto c = std::make_shared<HwModule::Shhwfpd::Alocation::Fpd>();
         c->parent = this;
-        fpd.push_back(c);
+        fpd.append(c);
         return c;
     }
 
@@ -2209,7 +2258,7 @@ std::map<std::string, std::shared_ptr<Entity>> HwModule::Shhwfpd::Alocation::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fpd)
+    for (auto c : fpd.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2256,7 +2305,7 @@ HwModule::Shhwfpd::Alocation::Fpd::Fpd()
     fpddnld{YType::str, "fpddnld"}
 {
 
-    yang_name = "fpd"; yang_parent_name = "alocation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fpd"; yang_parent_name = "alocation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HwModule::Shhwfpd::Alocation::Fpd::~Fpd()
@@ -2265,6 +2314,7 @@ HwModule::Shhwfpd::Alocation::Fpd::~Fpd()
 
 bool HwModule::Shhwfpd::Alocation::Fpd::has_data() const
 {
+    if (is_presence_container) return true;
     return fpdname.is_set
 	|| state.is_set
 	|| hwver.is_set
@@ -2289,7 +2339,8 @@ bool HwModule::Shhwfpd::Alocation::Fpd::has_operation() const
 std::string HwModule::Shhwfpd::Alocation::Fpd::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fpd" <<"[fpdname='" <<fpdname <<"']";
+    path_buffer << "fpd";
+    ADD_KEY_TOKEN(fpdname, "fpdname");
     return path_buffer.str();
 }
 
@@ -2411,7 +2462,7 @@ HwModule::Shhwfpd::Fpd::Fpd()
     fpdname{YType::str, "fpdname"}
 {
 
-    yang_name = "fpd"; yang_parent_name = "shhwfpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fpd"; yang_parent_name = "shhwfpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HwModule::Shhwfpd::Fpd::~Fpd()
@@ -2420,6 +2471,7 @@ HwModule::Shhwfpd::Fpd::~Fpd()
 
 bool HwModule::Shhwfpd::Fpd::has_data() const
 {
+    if (is_presence_container) return true;
     return fpdname.is_set;
 }
 
@@ -2439,7 +2491,8 @@ std::string HwModule::Shhwfpd::Fpd::get_absolute_path() const
 std::string HwModule::Shhwfpd::Fpd::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fpd" <<"[fpdname='" <<fpdname <<"']";
+    path_buffer << "fpd";
+    ADD_KEY_TOKEN(fpdname, "fpdname");
     return path_buffer.str();
 }
 

@@ -32,28 +32,28 @@ class CISCOSESSBORDERCTRLRSTATSMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Csbradiusstatstable; //type: CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable
-        class Csbrfbillrealmstatstable; //type: CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable
-        class Csbsipmthdcurrentstatstable; //type: CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable
-        class Csbsipmthdhistorystatstable; //type: CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable
-        class Csbsipmthdrccurrentstatstable; //type: CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable
-        class Csbsipmthdrchistorystatstable; //type: CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable
+        class CsbRadiusStatsTable; //type: CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable
+        class CsbRfBillRealmStatsTable; //type: CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable
+        class CsbSIPMthdCurrentStatsTable; //type: CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable
+        class CsbSIPMthdHistoryStatsTable; //type: CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable
+        class CsbSIPMthdRCCurrentStatsTable; //type: CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable
+        class CsbSIPMthdRCHistoryStatsTable; //type: CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable> csbradiusstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable> csbrfbillrealmstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable> csbsipmthdcurrentstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable> csbsipmthdhistorystatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable> csbsipmthdrccurrentstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable> csbsipmthdrchistorystatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable> csbradiusstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable> csbrfbillrealmstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable> csbsipmthdcurrentstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable> csbsipmthdhistorystatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable> csbsipmthdrccurrentstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable> csbsipmthdrchistorystatstable;
         
 }; // CISCOSESSBORDERCTRLRSTATSMIB
 
 
-class CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable : public ydk::Entity
+class CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable : public ydk::Entity
 {
     public:
-        Csbradiusstatstable();
-        ~Csbradiusstatstable();
+        CsbRadiusStatsTable();
+        ~CsbRadiusStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -66,18 +66,18 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csbradiusstatsentry; //type: CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry
+        class CsbRadiusStatsEntry; //type: CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::CsbRadiusStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry> > csbradiusstatsentry;
+        ydk::YList csbradiusstatsentry;
         
-}; // CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable
+}; // CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable
 
 
-class CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry : public ydk::Entity
+class CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::CsbRadiusStatsEntry : public ydk::Entity
 {
     public:
-        Csbradiusstatsentry();
-        ~Csbradiusstatsentry();
+        CsbRadiusStatsEntry();
+        ~CsbRadiusStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -90,9 +90,9 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::csbcallstatsinstanceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::csbcallstatsinstanceindex)
         ydk::YLeaf csbcallstatsinstanceindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::csbcallstatsserviceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::csbcallstatsserviceindex)
         ydk::YLeaf csbcallstatsserviceindex;
         ydk::YLeaf csbradiusstatsentindex; //type: uint32
         ydk::YLeaf csbradiusstatsclientname; //type: string
@@ -113,14 +113,14 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry : p
         ydk::YLeaf csbradiusstatsunknowntype; //type: uint64
         ydk::YLeaf csbradiusstatsdropped; //type: uint64
 
-}; // CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry
+}; // CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::CsbRadiusStatsEntry
 
 
-class CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable : public ydk::Entity
+class CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable : public ydk::Entity
 {
     public:
-        Csbrfbillrealmstatstable();
-        ~Csbrfbillrealmstatstable();
+        CsbRfBillRealmStatsTable();
+        ~CsbRfBillRealmStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -133,18 +133,18 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csbrfbillrealmstatsentry; //type: CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry
+        class CsbRfBillRealmStatsEntry; //type: CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::CsbRfBillRealmStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry> > csbrfbillrealmstatsentry;
+        ydk::YList csbrfbillrealmstatsentry;
         
-}; // CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable
+}; // CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable
 
 
-class CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry : public ydk::Entity
+class CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::CsbRfBillRealmStatsEntry : public ydk::Entity
 {
     public:
-        Csbrfbillrealmstatsentry();
-        ~Csbrfbillrealmstatsentry();
+        CsbRfBillRealmStatsEntry();
+        ~CsbRfBillRealmStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -157,9 +157,9 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstat
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::csbcallstatsinstanceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::csbcallstatsinstanceindex)
         ydk::YLeaf csbcallstatsinstanceindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::csbcallstatsserviceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::csbcallstatsserviceindex)
         ydk::YLeaf csbcallstatsserviceindex;
         ydk::YLeaf csbrfbillrealmstatsindex; //type: uint32
         ydk::YLeaf csbrfbillrealmstatsrealmname; //type: string
@@ -176,14 +176,14 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstat
         ydk::YLeaf csbrfbillrealmstatsfailstopacrs; //type: uint32
         ydk::YLeaf csbrfbillrealmstatsfaileventacrs; //type: uint32
 
-}; // CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry
+}; // CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::CsbRfBillRealmStatsEntry
 
 
-class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable : public ydk::Entity
+class CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable : public ydk::Entity
 {
     public:
-        Csbsipmthdcurrentstatstable();
-        ~Csbsipmthdcurrentstatstable();
+        CsbSIPMthdCurrentStatsTable();
+        ~CsbSIPMthdCurrentStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -196,18 +196,18 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csbsipmthdcurrentstatsentry; //type: CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable::Csbsipmthdcurrentstatsentry
+        class CsbSIPMthdCurrentStatsEntry; //type: CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::CsbSIPMthdCurrentStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable::Csbsipmthdcurrentstatsentry> > csbsipmthdcurrentstatsentry;
+        ydk::YList csbsipmthdcurrentstatsentry;
         
-}; // CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable
+}; // CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable
 
 
-class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable::Csbsipmthdcurrentstatsentry : public ydk::Entity
+class CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::CsbSIPMthdCurrentStatsEntry : public ydk::Entity
 {
     public:
-        Csbsipmthdcurrentstatsentry();
-        ~Csbsipmthdcurrentstatsentry();
+        CsbSIPMthdCurrentStatsEntry();
+        ~CsbSIPMthdCurrentStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -220,9 +220,9 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable::Csbsipmthdcurre
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::csbcallstatsinstanceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::csbcallstatsinstanceindex)
         ydk::YLeaf csbcallstatsinstanceindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::csbcallstatsserviceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::csbcallstatsserviceindex)
         ydk::YLeaf csbcallstatsserviceindex;
         ydk::YLeaf csbsipmthdcurrentstatsadjname; //type: string
         ydk::YLeaf csbsipmthdcurrentstatsmethod; //type: CiscoSbcSIPMethod
@@ -243,14 +243,14 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable::Csbsipmthdcurre
         ydk::YLeaf csbsipmthdcurrentstatsresp6xxin; //type: uint32
         ydk::YLeaf csbsipmthdcurrentstatsresp6xxout; //type: uint32
 
-}; // CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable::Csbsipmthdcurrentstatsentry
+}; // CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::CsbSIPMthdCurrentStatsEntry
 
 
-class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable : public ydk::Entity
+class CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable : public ydk::Entity
 {
     public:
-        Csbsipmthdhistorystatstable();
-        ~Csbsipmthdhistorystatstable();
+        CsbSIPMthdHistoryStatsTable();
+        ~CsbSIPMthdHistoryStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -263,18 +263,18 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csbsipmthdhistorystatsentry; //type: CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable::Csbsipmthdhistorystatsentry
+        class CsbSIPMthdHistoryStatsEntry; //type: CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::CsbSIPMthdHistoryStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable::Csbsipmthdhistorystatsentry> > csbsipmthdhistorystatsentry;
+        ydk::YList csbsipmthdhistorystatsentry;
         
-}; // CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable
+}; // CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable
 
 
-class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable::Csbsipmthdhistorystatsentry : public ydk::Entity
+class CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::CsbSIPMthdHistoryStatsEntry : public ydk::Entity
 {
     public:
-        Csbsipmthdhistorystatsentry();
-        ~Csbsipmthdhistorystatsentry();
+        CsbSIPMthdHistoryStatsEntry();
+        ~CsbSIPMthdHistoryStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -287,9 +287,9 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable::Csbsipmthdhisto
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::csbcallstatsinstanceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::csbcallstatsinstanceindex)
         ydk::YLeaf csbcallstatsinstanceindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::csbcallstatsserviceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::csbcallstatsserviceindex)
         ydk::YLeaf csbcallstatsserviceindex;
         ydk::YLeaf csbsipmthdhistorystatsadjname; //type: string
         ydk::YLeaf csbsipmthdhistorystatsmethod; //type: CiscoSbcSIPMethod
@@ -310,14 +310,14 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable::Csbsipmthdhisto
         ydk::YLeaf csbsipmthdhistorystatsresp6xxin; //type: uint32
         ydk::YLeaf csbsipmthdhistorystatsresp6xxout; //type: uint32
 
-}; // CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable::Csbsipmthdhistorystatsentry
+}; // CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::CsbSIPMthdHistoryStatsEntry
 
 
-class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable : public ydk::Entity
+class CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable : public ydk::Entity
 {
     public:
-        Csbsipmthdrccurrentstatstable();
-        ~Csbsipmthdrccurrentstatstable();
+        CsbSIPMthdRCCurrentStatsTable();
+        ~CsbSIPMthdRCCurrentStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -330,18 +330,18 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csbsipmthdrccurrentstatsentry; //type: CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable::Csbsipmthdrccurrentstatsentry
+        class CsbSIPMthdRCCurrentStatsEntry; //type: CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::CsbSIPMthdRCCurrentStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable::Csbsipmthdrccurrentstatsentry> > csbsipmthdrccurrentstatsentry;
+        ydk::YList csbsipmthdrccurrentstatsentry;
         
-}; // CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable
+}; // CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable
 
 
-class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable::Csbsipmthdrccurrentstatsentry : public ydk::Entity
+class CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::CsbSIPMthdRCCurrentStatsEntry : public ydk::Entity
 {
     public:
-        Csbsipmthdrccurrentstatsentry();
-        ~Csbsipmthdrccurrentstatsentry();
+        CsbSIPMthdRCCurrentStatsEntry();
+        ~CsbSIPMthdRCCurrentStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -354,9 +354,9 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable::Csbsipmthdrcc
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::csbcallstatsinstanceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::csbcallstatsinstanceindex)
         ydk::YLeaf csbcallstatsinstanceindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::csbcallstatsserviceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::csbcallstatsserviceindex)
         ydk::YLeaf csbcallstatsserviceindex;
         ydk::YLeaf csbsipmthdrccurrentstatsadjname; //type: string
         ydk::YLeaf csbsipmthdrccurrentstatsmethod; //type: CiscoSbcSIPMethod
@@ -366,14 +366,14 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable::Csbsipmthdrcc
         ydk::YLeaf csbsipmthdrccurrentstatsrespin; //type: uint32
         ydk::YLeaf csbsipmthdrccurrentstatsrespout; //type: uint32
 
-}; // CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable::Csbsipmthdrccurrentstatsentry
+}; // CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::CsbSIPMthdRCCurrentStatsEntry
 
 
-class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable : public ydk::Entity
+class CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable : public ydk::Entity
 {
     public:
-        Csbsipmthdrchistorystatstable();
-        ~Csbsipmthdrchistorystatstable();
+        CsbSIPMthdRCHistoryStatsTable();
+        ~CsbSIPMthdRCHistoryStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -386,18 +386,18 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csbsipmthdrchistorystatsentry; //type: CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable::Csbsipmthdrchistorystatsentry
+        class CsbSIPMthdRCHistoryStatsEntry; //type: CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::CsbSIPMthdRCHistoryStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_STATS_MIB::CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable::Csbsipmthdrchistorystatsentry> > csbsipmthdrchistorystatsentry;
+        ydk::YList csbsipmthdrchistorystatsentry;
         
-}; // CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable
+}; // CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable
 
 
-class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable::Csbsipmthdrchistorystatsentry : public ydk::Entity
+class CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::CsbSIPMthdRCHistoryStatsEntry : public ydk::Entity
 {
     public:
-        Csbsipmthdrchistorystatsentry();
-        ~Csbsipmthdrchistorystatsentry();
+        CsbSIPMthdRCHistoryStatsEntry();
+        ~CsbSIPMthdRCHistoryStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -410,9 +410,9 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable::Csbsipmthdrch
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::csbcallstatsinstanceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::csbcallstatsinstanceindex)
         ydk::YLeaf csbcallstatsinstanceindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::csbcallstatsserviceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::csbcallstatsserviceindex)
         ydk::YLeaf csbcallstatsserviceindex;
         ydk::YLeaf csbsipmthdrchistorystatsadjname; //type: string
         ydk::YLeaf csbsipmthdrchistorystatsmethod; //type: CiscoSbcSIPMethod
@@ -422,7 +422,7 @@ class CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable::Csbsipmthdrch
         ydk::YLeaf csbsipmthdrchistorystatsrespin; //type: uint32
         ydk::YLeaf csbsipmthdrchistorystatsrespout; //type: uint32
 
-}; // CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable::Csbsipmthdrchistorystatsentry
+}; // CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::CsbSIPMthdRCHistoryStatsEntry
 
 class CiscoSbcSIPMethod : public ydk::Enum
 {

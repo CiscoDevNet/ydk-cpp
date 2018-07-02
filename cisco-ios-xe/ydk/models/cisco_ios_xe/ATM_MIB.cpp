@@ -13,16 +13,16 @@ namespace ATM_MIB {
 
 ATMMIB::ATMMIB()
     :
-    atmmibobjects(std::make_shared<ATMMIB::Atmmibobjects>())
-	,atminterfaceconftable(std::make_shared<ATMMIB::Atminterfaceconftable>())
-	,atminterfaceds3plcptable(std::make_shared<ATMMIB::Atminterfaceds3Plcptable>())
-	,atminterfacetctable(std::make_shared<ATMMIB::Atminterfacetctable>())
-	,atmtrafficdescrparamtable(std::make_shared<ATMMIB::Atmtrafficdescrparamtable>())
-	,atmvpltable(std::make_shared<ATMMIB::Atmvpltable>())
-	,atmvcltable(std::make_shared<ATMMIB::Atmvcltable>())
-	,atmvpcrossconnecttable(std::make_shared<ATMMIB::Atmvpcrossconnecttable>())
-	,atmvccrossconnecttable(std::make_shared<ATMMIB::Atmvccrossconnecttable>())
-	,aal5vcctable(std::make_shared<ATMMIB::Aal5Vcctable>())
+    atmmibobjects(std::make_shared<ATMMIB::AtmMIBObjects>())
+    , atminterfaceconftable(std::make_shared<ATMMIB::AtmInterfaceConfTable>())
+    , atminterfaceds3plcptable(std::make_shared<ATMMIB::AtmInterfaceDs3PlcpTable>())
+    , atminterfacetctable(std::make_shared<ATMMIB::AtmInterfaceTCTable>())
+    , atmtrafficdescrparamtable(std::make_shared<ATMMIB::AtmTrafficDescrParamTable>())
+    , atmvpltable(std::make_shared<ATMMIB::AtmVplTable>())
+    , atmvcltable(std::make_shared<ATMMIB::AtmVclTable>())
+    , atmvpcrossconnecttable(std::make_shared<ATMMIB::AtmVpCrossConnectTable>())
+    , atmvccrossconnecttable(std::make_shared<ATMMIB::AtmVcCrossConnectTable>())
+    , aal5vcctable(std::make_shared<ATMMIB::Aal5VccTable>())
 {
     atmmibobjects->parent = this;
     atminterfaceconftable->parent = this;
@@ -35,7 +35,7 @@ ATMMIB::ATMMIB()
     atmvccrossconnecttable->parent = this;
     aal5vcctable->parent = this;
 
-    yang_name = "ATM-MIB"; yang_parent_name = "ATM-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ATM-MIB"; yang_parent_name = "ATM-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ATMMIB::~ATMMIB()
@@ -44,6 +44,7 @@ ATMMIB::~ATMMIB()
 
 bool ATMMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (atmmibobjects !=  nullptr && atmmibobjects->has_data())
 	|| (atminterfaceconftable !=  nullptr && atminterfaceconftable->has_data())
 	|| (atminterfaceds3plcptable !=  nullptr && atminterfaceds3plcptable->has_data())
@@ -93,7 +94,7 @@ std::shared_ptr<Entity> ATMMIB::get_child_by_name(const std::string & child_yang
     {
         if(atmmibobjects == nullptr)
         {
-            atmmibobjects = std::make_shared<ATMMIB::Atmmibobjects>();
+            atmmibobjects = std::make_shared<ATMMIB::AtmMIBObjects>();
         }
         return atmmibobjects;
     }
@@ -102,7 +103,7 @@ std::shared_ptr<Entity> ATMMIB::get_child_by_name(const std::string & child_yang
     {
         if(atminterfaceconftable == nullptr)
         {
-            atminterfaceconftable = std::make_shared<ATMMIB::Atminterfaceconftable>();
+            atminterfaceconftable = std::make_shared<ATMMIB::AtmInterfaceConfTable>();
         }
         return atminterfaceconftable;
     }
@@ -111,7 +112,7 @@ std::shared_ptr<Entity> ATMMIB::get_child_by_name(const std::string & child_yang
     {
         if(atminterfaceds3plcptable == nullptr)
         {
-            atminterfaceds3plcptable = std::make_shared<ATMMIB::Atminterfaceds3Plcptable>();
+            atminterfaceds3plcptable = std::make_shared<ATMMIB::AtmInterfaceDs3PlcpTable>();
         }
         return atminterfaceds3plcptable;
     }
@@ -120,7 +121,7 @@ std::shared_ptr<Entity> ATMMIB::get_child_by_name(const std::string & child_yang
     {
         if(atminterfacetctable == nullptr)
         {
-            atminterfacetctable = std::make_shared<ATMMIB::Atminterfacetctable>();
+            atminterfacetctable = std::make_shared<ATMMIB::AtmInterfaceTCTable>();
         }
         return atminterfacetctable;
     }
@@ -129,7 +130,7 @@ std::shared_ptr<Entity> ATMMIB::get_child_by_name(const std::string & child_yang
     {
         if(atmtrafficdescrparamtable == nullptr)
         {
-            atmtrafficdescrparamtable = std::make_shared<ATMMIB::Atmtrafficdescrparamtable>();
+            atmtrafficdescrparamtable = std::make_shared<ATMMIB::AtmTrafficDescrParamTable>();
         }
         return atmtrafficdescrparamtable;
     }
@@ -138,7 +139,7 @@ std::shared_ptr<Entity> ATMMIB::get_child_by_name(const std::string & child_yang
     {
         if(atmvpltable == nullptr)
         {
-            atmvpltable = std::make_shared<ATMMIB::Atmvpltable>();
+            atmvpltable = std::make_shared<ATMMIB::AtmVplTable>();
         }
         return atmvpltable;
     }
@@ -147,7 +148,7 @@ std::shared_ptr<Entity> ATMMIB::get_child_by_name(const std::string & child_yang
     {
         if(atmvcltable == nullptr)
         {
-            atmvcltable = std::make_shared<ATMMIB::Atmvcltable>();
+            atmvcltable = std::make_shared<ATMMIB::AtmVclTable>();
         }
         return atmvcltable;
     }
@@ -156,7 +157,7 @@ std::shared_ptr<Entity> ATMMIB::get_child_by_name(const std::string & child_yang
     {
         if(atmvpcrossconnecttable == nullptr)
         {
-            atmvpcrossconnecttable = std::make_shared<ATMMIB::Atmvpcrossconnecttable>();
+            atmvpcrossconnecttable = std::make_shared<ATMMIB::AtmVpCrossConnectTable>();
         }
         return atmvpcrossconnecttable;
     }
@@ -165,7 +166,7 @@ std::shared_ptr<Entity> ATMMIB::get_child_by_name(const std::string & child_yang
     {
         if(atmvccrossconnecttable == nullptr)
         {
-            atmvccrossconnecttable = std::make_shared<ATMMIB::Atmvccrossconnecttable>();
+            atmvccrossconnecttable = std::make_shared<ATMMIB::AtmVcCrossConnectTable>();
         }
         return atmvccrossconnecttable;
     }
@@ -174,7 +175,7 @@ std::shared_ptr<Entity> ATMMIB::get_child_by_name(const std::string & child_yang
     {
         if(aal5vcctable == nullptr)
         {
-            aal5vcctable = std::make_shared<ATMMIB::Aal5Vcctable>();
+            aal5vcctable = std::make_shared<ATMMIB::Aal5VccTable>();
         }
         return aal5vcctable;
     }
@@ -279,28 +280,29 @@ bool ATMMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-ATMMIB::Atmmibobjects::Atmmibobjects()
+ATMMIB::AtmMIBObjects::AtmMIBObjects()
     :
     atmvpcrossconnectindexnext{YType::int32, "atmVpCrossConnectIndexNext"},
     atmvccrossconnectindexnext{YType::int32, "atmVcCrossConnectIndexNext"},
     atmtrafficdescrparamindexnext{YType::int32, "atmTrafficDescrParamIndexNext"}
 {
 
-    yang_name = "atmMIBObjects"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmMIBObjects"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atmmibobjects::~Atmmibobjects()
+ATMMIB::AtmMIBObjects::~AtmMIBObjects()
 {
 }
 
-bool ATMMIB::Atmmibobjects::has_data() const
+bool ATMMIB::AtmMIBObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return atmvpcrossconnectindexnext.is_set
 	|| atmvccrossconnectindexnext.is_set
 	|| atmtrafficdescrparamindexnext.is_set;
 }
 
-bool ATMMIB::Atmmibobjects::has_operation() const
+bool ATMMIB::AtmMIBObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(atmvpcrossconnectindexnext.yfilter)
@@ -308,21 +310,21 @@ bool ATMMIB::Atmmibobjects::has_operation() const
 	|| ydk::is_set(atmtrafficdescrparamindexnext.yfilter);
 }
 
-std::string ATMMIB::Atmmibobjects::get_absolute_path() const
+std::string ATMMIB::AtmMIBObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atmmibobjects::get_segment_path() const
+std::string ATMMIB::AtmMIBObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmMIBObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmmibobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmMIBObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -334,19 +336,19 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmmibobjects::get_name_l
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atmmibobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmmibobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmMIBObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ATMMIB::Atmmibobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmMIBObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "atmVpCrossConnectIndexNext")
     {
@@ -368,7 +370,7 @@ void ATMMIB::Atmmibobjects::set_value(const std::string & value_path, const std:
     }
 }
 
-void ATMMIB::Atmmibobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmMIBObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "atmVpCrossConnectIndexNext")
     {
@@ -384,26 +386,29 @@ void ATMMIB::Atmmibobjects::set_filter(const std::string & value_path, YFilter y
     }
 }
 
-bool ATMMIB::Atmmibobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmMIBObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmVpCrossConnectIndexNext" || name == "atmVcCrossConnectIndexNext" || name == "atmTrafficDescrParamIndexNext")
         return true;
     return false;
 }
 
-ATMMIB::Atminterfaceconftable::Atminterfaceconftable()
+ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfTable()
+    :
+    atminterfaceconfentry(this, {"ifindex"})
 {
 
-    yang_name = "atmInterfaceConfTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmInterfaceConfTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atminterfaceconftable::~Atminterfaceconftable()
+ATMMIB::AtmInterfaceConfTable::~AtmInterfaceConfTable()
 {
 }
 
-bool ATMMIB::Atminterfaceconftable::has_data() const
+bool ATMMIB::AtmInterfaceConfTable::has_data() const
 {
-    for (std::size_t index=0; index<atminterfaceconfentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atminterfaceconfentry.len(); index++)
     {
         if(atminterfaceconfentry[index]->has_data())
             return true;
@@ -411,9 +416,9 @@ bool ATMMIB::Atminterfaceconftable::has_data() const
     return false;
 }
 
-bool ATMMIB::Atminterfaceconftable::has_operation() const
+bool ATMMIB::AtmInterfaceConfTable::has_operation() const
 {
-    for (std::size_t index=0; index<atminterfaceconfentry.size(); index++)
+    for (std::size_t index=0; index<atminterfaceconfentry.len(); index++)
     {
         if(atminterfaceconfentry[index]->has_operation())
             return true;
@@ -421,21 +426,21 @@ bool ATMMIB::Atminterfaceconftable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ATMMIB::Atminterfaceconftable::get_absolute_path() const
+std::string ATMMIB::AtmInterfaceConfTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atminterfaceconftable::get_segment_path() const
+std::string ATMMIB::AtmInterfaceConfTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmInterfaceConfTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atminterfaceconftable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceConfTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -444,25 +449,25 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atminterfaceconftable::ge
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atminterfaceconftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmInterfaceConfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmInterfaceConfEntry")
     {
-        auto c = std::make_shared<ATMMIB::Atminterfaceconftable::Atminterfaceconfentry>();
+        auto c = std::make_shared<ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry>();
         c->parent = this;
-        atminterfaceconfentry.push_back(c);
+        atminterfaceconfentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atminterfaceconftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmInterfaceConfTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atminterfaceconfentry)
+    for (auto c : atminterfaceconfentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -473,22 +478,22 @@ std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atminterfaceconftable::ge
     return children;
 }
 
-void ATMMIB::Atminterfaceconftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmInterfaceConfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ATMMIB::Atminterfaceconftable::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmInterfaceConfTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ATMMIB::Atminterfaceconftable::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmInterfaceConfTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmInterfaceConfEntry")
         return true;
     return false;
 }
 
-ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::Atminterfaceconfentry()
+ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::AtmInterfaceConfEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atminterfacemaxvpcs{YType::int32, "atmInterfaceMaxVpcs"},
@@ -539,15 +544,16 @@ ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::Atminterfaceconfentry()
     atmintfcurrentlyoamfailingpvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyOAMFailingPVcls"}
 {
 
-    yang_name = "atmInterfaceConfEntry"; yang_parent_name = "atmInterfaceConfTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmInterfaceConfEntry"; yang_parent_name = "atmInterfaceConfTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::~Atminterfaceconfentry()
+ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::~AtmInterfaceConfEntry()
 {
 }
 
-bool ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::has_data() const
+bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atminterfacemaxvpcs.is_set
 	|| atminterfacemaxvccs.is_set
@@ -597,7 +603,7 @@ bool ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::has_data() const
 	|| atmintfcurrentlyoamfailingpvcls.is_set;
 }
 
-bool ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::has_operation() const
+bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -649,21 +655,22 @@ bool ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::has_operation() const
 	|| ydk::is_set(atmintfcurrentlyoamfailingpvcls.yfilter);
 }
 
-std::string ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::get_absolute_path() const
+std::string ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/atmInterfaceConfTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::get_segment_path() const
+std::string ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "atmInterfaceConfEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "atmInterfaceConfEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -719,19 +726,19 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atminterfaceconftable::At
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1017,7 +1024,7 @@ void ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::set_value(const std::
     }
 }
 
-void ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1209,26 +1216,29 @@ void ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::set_filter(const std:
     }
 }
 
-bool ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmInterfaceMaxVpcs" || name == "atmInterfaceMaxVccs" || name == "atmInterfaceConfVpcs" || name == "atmInterfaceConfVccs" || name == "atmInterfaceMaxActiveVpiBits" || name == "atmInterfaceMaxActiveVciBits" || name == "atmInterfaceIlmiVpi" || name == "atmInterfaceIlmiVci" || name == "atmInterfaceAddressType" || name == "atmInterfaceAdminAddress" || name == "atmInterfaceMyNeighborIpAddress" || name == "atmInterfaceMyNeighborIfName" || name == "atmInterfaceCurrentMaxVpiBits" || name == "atmInterfaceCurrentMaxVciBits" || name == "atmInterfaceSubscrAddress" || name == "atmIntfPvcFailures" || name == "atmIntfCurrentlyFailingPVcls" || name == "atmIntfPvcFailuresTrapEnable" || name == "atmIntfPvcNotificationInterval" || name == "atmPreviouslyFailedPVclInterval" || name == "catmIntfCurrentlyDownToUpPVcls" || name == "catmIntfOAMFailedPVcls" || name == "catmIntfCurrentOAMFailingPVcls" || name == "catmIntfSegCCOAMFailedPVcls" || name == "catmIntfCurSegCCOAMFailingPVcls" || name == "catmIntfEndCCOAMFailedPVcls" || name == "catmIntfCurEndCCOAMFailingPVcls" || name == "catmIntfAISRDIOAMFailedPVcls" || name == "catmIntfCurAISRDIOAMFailingPVcls" || name == "catmIntfAnyOAMFailedPVcls" || name == "catmIntfCurAnyOAMFailingPVcls" || name == "catmIntfTypeOfOAMFailure" || name == "catmIntfOAMRcovedPVcls" || name == "catmIntfCurrentOAMRcovingPVcls" || name == "catmIntfSegCCOAMRcovedPVcls" || name == "catmIntfCurSegCCOAMRcovingPVcls" || name == "catmIntfEndCCOAMRcovedPVcls" || name == "catmIntfCurEndCCOAMRcovingPVcls" || name == "catmIntfAISRDIOAMRcovedPVcls" || name == "catmIntfCurAISRDIOAMRcovingPVcls" || name == "catmIntfAnyOAMRcovedPVcls" || name == "catmIntfCurAnyOAMRcovingPVcls" || name == "catmIntfTypeOfOAMRecover" || name == "atmIntfCurrentlyDownToUpPVcls" || name == "atmIntfOAMFailedPVcls" || name == "atmIntfCurrentlyOAMFailingPVcls")
         return true;
     return false;
 }
 
-ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcptable()
+ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpTable()
+    :
+    atminterfaceds3plcpentry(this, {"ifindex"})
 {
 
-    yang_name = "atmInterfaceDs3PlcpTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmInterfaceDs3PlcpTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atminterfaceds3Plcptable::~Atminterfaceds3Plcptable()
+ATMMIB::AtmInterfaceDs3PlcpTable::~AtmInterfaceDs3PlcpTable()
 {
 }
 
-bool ATMMIB::Atminterfaceds3Plcptable::has_data() const
+bool ATMMIB::AtmInterfaceDs3PlcpTable::has_data() const
 {
-    for (std::size_t index=0; index<atminterfaceds3plcpentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atminterfaceds3plcpentry.len(); index++)
     {
         if(atminterfaceds3plcpentry[index]->has_data())
             return true;
@@ -1236,9 +1246,9 @@ bool ATMMIB::Atminterfaceds3Plcptable::has_data() const
     return false;
 }
 
-bool ATMMIB::Atminterfaceds3Plcptable::has_operation() const
+bool ATMMIB::AtmInterfaceDs3PlcpTable::has_operation() const
 {
-    for (std::size_t index=0; index<atminterfaceds3plcpentry.size(); index++)
+    for (std::size_t index=0; index<atminterfaceds3plcpentry.len(); index++)
     {
         if(atminterfaceds3plcpentry[index]->has_operation())
             return true;
@@ -1246,21 +1256,21 @@ bool ATMMIB::Atminterfaceds3Plcptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ATMMIB::Atminterfaceds3Plcptable::get_absolute_path() const
+std::string ATMMIB::AtmInterfaceDs3PlcpTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atminterfaceds3Plcptable::get_segment_path() const
+std::string ATMMIB::AtmInterfaceDs3PlcpTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmInterfaceDs3PlcpTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atminterfaceds3Plcptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceDs3PlcpTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1269,25 +1279,25 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atminterfaceds3Plcptable:
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atminterfaceds3Plcptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmInterfaceDs3PlcpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmInterfaceDs3PlcpEntry")
     {
-        auto c = std::make_shared<ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry>();
+        auto c = std::make_shared<ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry>();
         c->parent = this;
-        atminterfaceds3plcpentry.push_back(c);
+        atminterfaceds3plcpentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atminterfaceds3Plcptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmInterfaceDs3PlcpTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atminterfaceds3plcpentry)
+    for (auto c : atminterfaceds3plcpentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1298,22 +1308,22 @@ std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atminterfaceds3Plcptable:
     return children;
 }
 
-void ATMMIB::Atminterfaceds3Plcptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmInterfaceDs3PlcpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ATMMIB::Atminterfaceds3Plcptable::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmInterfaceDs3PlcpTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ATMMIB::Atminterfaceds3Plcptable::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmInterfaceDs3PlcpTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmInterfaceDs3PlcpEntry")
         return true;
     return false;
 }
 
-ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::Atminterfaceds3Plcpentry()
+ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::AtmInterfaceDs3PlcpEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atminterfaceds3plcpsefss{YType::uint32, "atmInterfaceDs3PlcpSEFSs"},
@@ -1321,22 +1331,23 @@ ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::Atminterfaceds3Plcpe
     atminterfaceds3plcpuass{YType::uint32, "atmInterfaceDs3PlcpUASs"}
 {
 
-    yang_name = "atmInterfaceDs3PlcpEntry"; yang_parent_name = "atmInterfaceDs3PlcpTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmInterfaceDs3PlcpEntry"; yang_parent_name = "atmInterfaceDs3PlcpTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::~Atminterfaceds3Plcpentry()
+ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::~AtmInterfaceDs3PlcpEntry()
 {
 }
 
-bool ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::has_data() const
+bool ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atminterfaceds3plcpsefss.is_set
 	|| atminterfaceds3plcpalarmstate.is_set
 	|| atminterfaceds3plcpuass.is_set;
 }
 
-bool ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::has_operation() const
+bool ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1345,21 +1356,22 @@ bool ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::has_operation()
 	|| ydk::is_set(atminterfaceds3plcpuass.yfilter);
 }
 
-std::string ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::get_absolute_path() const
+std::string ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/atmInterfaceDs3PlcpTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::get_segment_path() const
+std::string ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "atmInterfaceDs3PlcpEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "atmInterfaceDs3PlcpEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1372,19 +1384,19 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atminterfaceds3Plcptable:
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1412,7 +1424,7 @@ void ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::set_value(const
     }
 }
 
-void ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1432,26 +1444,29 @@ void ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::set_filter(cons
     }
 }
 
-bool ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmInterfaceDs3PlcpSEFSs" || name == "atmInterfaceDs3PlcpAlarmState" || name == "atmInterfaceDs3PlcpUASs")
         return true;
     return false;
 }
 
-ATMMIB::Atminterfacetctable::Atminterfacetctable()
+ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCTable()
+    :
+    atminterfacetcentry(this, {"ifindex"})
 {
 
-    yang_name = "atmInterfaceTCTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmInterfaceTCTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atminterfacetctable::~Atminterfacetctable()
+ATMMIB::AtmInterfaceTCTable::~AtmInterfaceTCTable()
 {
 }
 
-bool ATMMIB::Atminterfacetctable::has_data() const
+bool ATMMIB::AtmInterfaceTCTable::has_data() const
 {
-    for (std::size_t index=0; index<atminterfacetcentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atminterfacetcentry.len(); index++)
     {
         if(atminterfacetcentry[index]->has_data())
             return true;
@@ -1459,9 +1474,9 @@ bool ATMMIB::Atminterfacetctable::has_data() const
     return false;
 }
 
-bool ATMMIB::Atminterfacetctable::has_operation() const
+bool ATMMIB::AtmInterfaceTCTable::has_operation() const
 {
-    for (std::size_t index=0; index<atminterfacetcentry.size(); index++)
+    for (std::size_t index=0; index<atminterfacetcentry.len(); index++)
     {
         if(atminterfacetcentry[index]->has_operation())
             return true;
@@ -1469,21 +1484,21 @@ bool ATMMIB::Atminterfacetctable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ATMMIB::Atminterfacetctable::get_absolute_path() const
+std::string ATMMIB::AtmInterfaceTCTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atminterfacetctable::get_segment_path() const
+std::string ATMMIB::AtmInterfaceTCTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmInterfaceTCTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atminterfacetctable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceTCTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1492,25 +1507,25 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atminterfacetctable::get_
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atminterfacetctable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmInterfaceTCTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmInterfaceTCEntry")
     {
-        auto c = std::make_shared<ATMMIB::Atminterfacetctable::Atminterfacetcentry>();
+        auto c = std::make_shared<ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry>();
         c->parent = this;
-        atminterfacetcentry.push_back(c);
+        atminterfacetcentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atminterfacetctable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmInterfaceTCTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atminterfacetcentry)
+    for (auto c : atminterfacetcentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1521,43 +1536,44 @@ std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atminterfacetctable::get_
     return children;
 }
 
-void ATMMIB::Atminterfacetctable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmInterfaceTCTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ATMMIB::Atminterfacetctable::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmInterfaceTCTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ATMMIB::Atminterfacetctable::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmInterfaceTCTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmInterfaceTCEntry")
         return true;
     return false;
 }
 
-ATMMIB::Atminterfacetctable::Atminterfacetcentry::Atminterfacetcentry()
+ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::AtmInterfaceTCEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atminterfaceocdevents{YType::uint32, "atmInterfaceOCDEvents"},
     atminterfacetcalarmstate{YType::enumeration, "atmInterfaceTCAlarmState"}
 {
 
-    yang_name = "atmInterfaceTCEntry"; yang_parent_name = "atmInterfaceTCTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmInterfaceTCEntry"; yang_parent_name = "atmInterfaceTCTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atminterfacetctable::Atminterfacetcentry::~Atminterfacetcentry()
+ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::~AtmInterfaceTCEntry()
 {
 }
 
-bool ATMMIB::Atminterfacetctable::Atminterfacetcentry::has_data() const
+bool ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atminterfaceocdevents.is_set
 	|| atminterfacetcalarmstate.is_set;
 }
 
-bool ATMMIB::Atminterfacetctable::Atminterfacetcentry::has_operation() const
+bool ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1565,21 +1581,22 @@ bool ATMMIB::Atminterfacetctable::Atminterfacetcentry::has_operation() const
 	|| ydk::is_set(atminterfacetcalarmstate.yfilter);
 }
 
-std::string ATMMIB::Atminterfacetctable::Atminterfacetcentry::get_absolute_path() const
+std::string ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/atmInterfaceTCTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atminterfacetctable::Atminterfacetcentry::get_segment_path() const
+std::string ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "atmInterfaceTCEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "atmInterfaceTCEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atminterfacetctable::Atminterfacetcentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1591,19 +1608,19 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atminterfacetctable::Atmi
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atminterfacetctable::Atminterfacetcentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atminterfacetctable::Atminterfacetcentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ATMMIB::Atminterfacetctable::Atminterfacetcentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1625,7 +1642,7 @@ void ATMMIB::Atminterfacetctable::Atminterfacetcentry::set_value(const std::stri
     }
 }
 
-void ATMMIB::Atminterfacetctable::Atminterfacetcentry::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1641,26 +1658,29 @@ void ATMMIB::Atminterfacetctable::Atminterfacetcentry::set_filter(const std::str
     }
 }
 
-bool ATMMIB::Atminterfacetctable::Atminterfacetcentry::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmInterfaceOCDEvents" || name == "atmInterfaceTCAlarmState")
         return true;
     return false;
 }
 
-ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamtable()
+ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamTable()
+    :
+    atmtrafficdescrparamentry(this, {"atmtrafficdescrparamindex"})
 {
 
-    yang_name = "atmTrafficDescrParamTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmTrafficDescrParamTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atmtrafficdescrparamtable::~Atmtrafficdescrparamtable()
+ATMMIB::AtmTrafficDescrParamTable::~AtmTrafficDescrParamTable()
 {
 }
 
-bool ATMMIB::Atmtrafficdescrparamtable::has_data() const
+bool ATMMIB::AtmTrafficDescrParamTable::has_data() const
 {
-    for (std::size_t index=0; index<atmtrafficdescrparamentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atmtrafficdescrparamentry.len(); index++)
     {
         if(atmtrafficdescrparamentry[index]->has_data())
             return true;
@@ -1668,9 +1688,9 @@ bool ATMMIB::Atmtrafficdescrparamtable::has_data() const
     return false;
 }
 
-bool ATMMIB::Atmtrafficdescrparamtable::has_operation() const
+bool ATMMIB::AtmTrafficDescrParamTable::has_operation() const
 {
-    for (std::size_t index=0; index<atmtrafficdescrparamentry.size(); index++)
+    for (std::size_t index=0; index<atmtrafficdescrparamentry.len(); index++)
     {
         if(atmtrafficdescrparamentry[index]->has_operation())
             return true;
@@ -1678,21 +1698,21 @@ bool ATMMIB::Atmtrafficdescrparamtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ATMMIB::Atmtrafficdescrparamtable::get_absolute_path() const
+std::string ATMMIB::AtmTrafficDescrParamTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atmtrafficdescrparamtable::get_segment_path() const
+std::string ATMMIB::AtmTrafficDescrParamTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmTrafficDescrParamTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmtrafficdescrparamtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmTrafficDescrParamTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1701,25 +1721,25 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmtrafficdescrparamtable
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atmtrafficdescrparamtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmTrafficDescrParamTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmTrafficDescrParamEntry")
     {
-        auto c = std::make_shared<ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry>();
+        auto c = std::make_shared<ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry>();
         c->parent = this;
-        atmtrafficdescrparamentry.push_back(c);
+        atmtrafficdescrparamentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmtrafficdescrparamtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmTrafficDescrParamTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atmtrafficdescrparamentry)
+    for (auto c : atmtrafficdescrparamentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1730,22 +1750,22 @@ std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmtrafficdescrparamtable
     return children;
 }
 
-void ATMMIB::Atmtrafficdescrparamtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmTrafficDescrParamTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ATMMIB::Atmtrafficdescrparamtable::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmTrafficDescrParamTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ATMMIB::Atmtrafficdescrparamtable::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmTrafficDescrParamTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmTrafficDescrParamEntry")
         return true;
     return false;
 }
 
-ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::Atmtrafficdescrparamentry()
+ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::AtmTrafficDescrParamEntry()
     :
     atmtrafficdescrparamindex{YType::int32, "atmTrafficDescrParamIndex"},
     atmtrafficdescrtype{YType::str, "atmTrafficDescrType"},
@@ -1760,15 +1780,16 @@ ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::Atmtrafficdescrpar
     atmtrafficframediscard{YType::boolean, "atmTrafficFrameDiscard"}
 {
 
-    yang_name = "atmTrafficDescrParamEntry"; yang_parent_name = "atmTrafficDescrParamTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmTrafficDescrParamEntry"; yang_parent_name = "atmTrafficDescrParamTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::~Atmtrafficdescrparamentry()
+ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::~AtmTrafficDescrParamEntry()
 {
 }
 
-bool ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::has_data() const
+bool ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return atmtrafficdescrparamindex.is_set
 	|| atmtrafficdescrtype.is_set
 	|| atmtrafficdescrparam1.is_set
@@ -1782,7 +1803,7 @@ bool ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::has_data() co
 	|| atmtrafficframediscard.is_set;
 }
 
-bool ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::has_operation() const
+bool ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(atmtrafficdescrparamindex.yfilter)
@@ -1798,21 +1819,22 @@ bool ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::has_operation
 	|| ydk::is_set(atmtrafficframediscard.yfilter);
 }
 
-std::string ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::get_absolute_path() const
+std::string ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/atmTrafficDescrParamTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::get_segment_path() const
+std::string ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "atmTrafficDescrParamEntry" <<"[atmTrafficDescrParamIndex='" <<atmtrafficdescrparamindex <<"']";
+    path_buffer << "atmTrafficDescrParamEntry";
+    ADD_KEY_TOKEN(atmtrafficdescrparamindex, "atmTrafficDescrParamIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1832,19 +1854,19 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmtrafficdescrparamtable
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "atmTrafficDescrParamIndex")
     {
@@ -1914,7 +1936,7 @@ void ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::set_value(con
     }
 }
 
-void ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "atmTrafficDescrParamIndex")
     {
@@ -1962,26 +1984,29 @@ void ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::set_filter(co
     }
 }
 
-bool ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmTrafficDescrParamIndex" || name == "atmTrafficDescrType" || name == "atmTrafficDescrParam1" || name == "atmTrafficDescrParam2" || name == "atmTrafficDescrParam3" || name == "atmTrafficDescrParam4" || name == "atmTrafficDescrParam5" || name == "atmTrafficQoSClass" || name == "atmTrafficDescrRowStatus" || name == "atmServiceCategory" || name == "atmTrafficFrameDiscard")
         return true;
     return false;
 }
 
-ATMMIB::Atmvpltable::Atmvpltable()
+ATMMIB::AtmVplTable::AtmVplTable()
+    :
+    atmvplentry(this, {"ifindex", "atmvplvpi"})
 {
 
-    yang_name = "atmVplTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmVplTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atmvpltable::~Atmvpltable()
+ATMMIB::AtmVplTable::~AtmVplTable()
 {
 }
 
-bool ATMMIB::Atmvpltable::has_data() const
+bool ATMMIB::AtmVplTable::has_data() const
 {
-    for (std::size_t index=0; index<atmvplentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atmvplentry.len(); index++)
     {
         if(atmvplentry[index]->has_data())
             return true;
@@ -1989,9 +2014,9 @@ bool ATMMIB::Atmvpltable::has_data() const
     return false;
 }
 
-bool ATMMIB::Atmvpltable::has_operation() const
+bool ATMMIB::AtmVplTable::has_operation() const
 {
-    for (std::size_t index=0; index<atmvplentry.size(); index++)
+    for (std::size_t index=0; index<atmvplentry.len(); index++)
     {
         if(atmvplentry[index]->has_operation())
             return true;
@@ -1999,21 +2024,21 @@ bool ATMMIB::Atmvpltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ATMMIB::Atmvpltable::get_absolute_path() const
+std::string ATMMIB::AtmVplTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atmvpltable::get_segment_path() const
+std::string ATMMIB::AtmVplTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmVplTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvpltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVplTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2022,25 +2047,25 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvpltable::get_name_lea
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atmvpltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmVplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmVplEntry")
     {
-        auto c = std::make_shared<ATMMIB::Atmvpltable::Atmvplentry>();
+        auto c = std::make_shared<ATMMIB::AtmVplTable::AtmVplEntry>();
         c->parent = this;
-        atmvplentry.push_back(c);
+        atmvplentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmvpltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVplTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atmvplentry)
+    for (auto c : atmvplentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2051,22 +2076,22 @@ std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmvpltable::get_children
     return children;
 }
 
-void ATMMIB::Atmvpltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmVplTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ATMMIB::Atmvpltable::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmVplTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ATMMIB::Atmvpltable::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmVplTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmVplEntry")
         return true;
     return false;
 }
 
-ATMMIB::Atmvpltable::Atmvplentry::Atmvplentry()
+ATMMIB::AtmVplTable::AtmVplEntry::AtmVplEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvplvpi{YType::int32, "atmVplVpi"},
@@ -2081,15 +2106,16 @@ ATMMIB::Atmvpltable::Atmvplentry::Atmvplentry()
     atmvplconnkind{YType::enumeration, "atmVplConnKind"}
 {
 
-    yang_name = "atmVplEntry"; yang_parent_name = "atmVplTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmVplEntry"; yang_parent_name = "atmVplTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atmvpltable::Atmvplentry::~Atmvplentry()
+ATMMIB::AtmVplTable::AtmVplEntry::~AtmVplEntry()
 {
 }
 
-bool ATMMIB::Atmvpltable::Atmvplentry::has_data() const
+bool ATMMIB::AtmVplTable::AtmVplEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvplvpi.is_set
 	|| atmvpladminstatus.is_set
@@ -2103,7 +2129,7 @@ bool ATMMIB::Atmvpltable::Atmvplentry::has_data() const
 	|| atmvplconnkind.is_set;
 }
 
-bool ATMMIB::Atmvpltable::Atmvplentry::has_operation() const
+bool ATMMIB::AtmVplTable::AtmVplEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2119,21 +2145,23 @@ bool ATMMIB::Atmvpltable::Atmvplentry::has_operation() const
 	|| ydk::is_set(atmvplconnkind.yfilter);
 }
 
-std::string ATMMIB::Atmvpltable::Atmvplentry::get_absolute_path() const
+std::string ATMMIB::AtmVplTable::AtmVplEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/atmVplTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atmvpltable::Atmvplentry::get_segment_path() const
+std::string ATMMIB::AtmVplTable::AtmVplEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "atmVplEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVplVpi='" <<atmvplvpi <<"']";
+    path_buffer << "atmVplEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvplvpi, "atmVplVpi");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvpltable::Atmvplentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVplTable::AtmVplEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2153,19 +2181,19 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvpltable::Atmvplentry:
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atmvpltable::Atmvplentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmVplTable::AtmVplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmvpltable::Atmvplentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVplTable::AtmVplEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ATMMIB::Atmvpltable::Atmvplentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmVplTable::AtmVplEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2235,7 +2263,7 @@ void ATMMIB::Atmvpltable::Atmvplentry::set_value(const std::string & value_path,
     }
 }
 
-void ATMMIB::Atmvpltable::Atmvplentry::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmVplTable::AtmVplEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2283,26 +2311,29 @@ void ATMMIB::Atmvpltable::Atmvplentry::set_filter(const std::string & value_path
     }
 }
 
-bool ATMMIB::Atmvpltable::Atmvplentry::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmVplTable::AtmVplEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVplVpi" || name == "atmVplAdminStatus" || name == "atmVplOperStatus" || name == "atmVplLastChange" || name == "atmVplReceiveTrafficDescrIndex" || name == "atmVplTransmitTrafficDescrIndex" || name == "atmVplCrossConnectIdentifier" || name == "atmVplRowStatus" || name == "atmVplCastType" || name == "atmVplConnKind")
         return true;
     return false;
 }
 
-ATMMIB::Atmvcltable::Atmvcltable()
+ATMMIB::AtmVclTable::AtmVclTable()
+    :
+    atmvclentry(this, {"ifindex", "atmvclvpi", "atmvclvci"})
 {
 
-    yang_name = "atmVclTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmVclTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atmvcltable::~Atmvcltable()
+ATMMIB::AtmVclTable::~AtmVclTable()
 {
 }
 
-bool ATMMIB::Atmvcltable::has_data() const
+bool ATMMIB::AtmVclTable::has_data() const
 {
-    for (std::size_t index=0; index<atmvclentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atmvclentry.len(); index++)
     {
         if(atmvclentry[index]->has_data())
             return true;
@@ -2310,9 +2341,9 @@ bool ATMMIB::Atmvcltable::has_data() const
     return false;
 }
 
-bool ATMMIB::Atmvcltable::has_operation() const
+bool ATMMIB::AtmVclTable::has_operation() const
 {
-    for (std::size_t index=0; index<atmvclentry.size(); index++)
+    for (std::size_t index=0; index<atmvclentry.len(); index++)
     {
         if(atmvclentry[index]->has_operation())
             return true;
@@ -2320,21 +2351,21 @@ bool ATMMIB::Atmvcltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ATMMIB::Atmvcltable::get_absolute_path() const
+std::string ATMMIB::AtmVclTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atmvcltable::get_segment_path() const
+std::string ATMMIB::AtmVclTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmVclTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvcltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVclTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2343,25 +2374,25 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvcltable::get_name_lea
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atmvcltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmVclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmVclEntry")
     {
-        auto c = std::make_shared<ATMMIB::Atmvcltable::Atmvclentry>();
+        auto c = std::make_shared<ATMMIB::AtmVclTable::AtmVclEntry>();
         c->parent = this;
-        atmvclentry.push_back(c);
+        atmvclentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmvcltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVclTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atmvclentry)
+    for (auto c : atmvclentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2372,22 +2403,22 @@ std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmvcltable::get_children
     return children;
 }
 
-void ATMMIB::Atmvcltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmVclTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ATMMIB::Atmvcltable::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmVclTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ATMMIB::Atmvcltable::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmVclTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmVclEntry")
         return true;
     return false;
 }
 
-ATMMIB::Atmvcltable::Atmvclentry::Atmvclentry()
+ATMMIB::AtmVclTable::AtmVclEntry::AtmVclEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::int32, "atmVclVpi"},
@@ -2431,15 +2462,16 @@ ATMMIB::Atmvcltable::Atmvclentry::Atmvclentry()
     catmxvcloamoutf5rdi{YType::uint32, "CISCO-ATM-EXT-MIB:catmxVclOamOutF5rdi"}
 {
 
-    yang_name = "atmVclEntry"; yang_parent_name = "atmVclTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmVclEntry"; yang_parent_name = "atmVclTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atmvcltable::Atmvclentry::~Atmvclentry()
+ATMMIB::AtmVclTable::AtmVclEntry::~AtmVclEntry()
 {
 }
 
-bool ATMMIB::Atmvcltable::Atmvclentry::has_data() const
+bool ATMMIB::AtmVclTable::AtmVclEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| atmvclvci.is_set
@@ -2482,7 +2514,7 @@ bool ATMMIB::Atmvcltable::Atmvclentry::has_data() const
 	|| catmxvcloamoutf5rdi.is_set;
 }
 
-bool ATMMIB::Atmvcltable::Atmvclentry::has_operation() const
+bool ATMMIB::AtmVclTable::AtmVclEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2527,21 +2559,24 @@ bool ATMMIB::Atmvcltable::Atmvclentry::has_operation() const
 	|| ydk::is_set(catmxvcloamoutf5rdi.yfilter);
 }
 
-std::string ATMMIB::Atmvcltable::Atmvclentry::get_absolute_path() const
+std::string ATMMIB::AtmVclTable::AtmVclEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/atmVclTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atmvcltable::Atmvclentry::get_segment_path() const
+std::string ATMMIB::AtmVclTable::AtmVclEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "atmVclEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[atmVclVci='" <<atmvclvci <<"']";
+    path_buffer << "atmVclEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(atmvclvci, "atmVclVci");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvcltable::Atmvclentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVclTable::AtmVclEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2590,19 +2625,19 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvcltable::Atmvclentry:
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atmvcltable::Atmvclentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmVclTable::AtmVclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmvcltable::Atmvclentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVclTable::AtmVclEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ATMMIB::Atmvcltable::Atmvclentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmVclTable::AtmVclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2846,7 +2881,7 @@ void ATMMIB::Atmvcltable::Atmvclentry::set_value(const std::string & value_path,
     }
 }
 
-void ATMMIB::Atmvcltable::Atmvclentry::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmVclTable::AtmVclEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -3010,26 +3045,29 @@ void ATMMIB::Atmvcltable::Atmvclentry::set_filter(const std::string & value_path
     }
 }
 
-bool ATMMIB::Atmvcltable::Atmvclentry::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmVclTable::AtmVclEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "atmVclVci" || name == "atmVclAdminStatus" || name == "atmVclOperStatus" || name == "atmVclLastChange" || name == "atmVclReceiveTrafficDescrIndex" || name == "atmVclTransmitTrafficDescrIndex" || name == "atmVccAalType" || name == "atmVccAal5CpcsTransmitSduSize" || name == "atmVccAal5CpcsReceiveSduSize" || name == "atmVccAal5EncapsType" || name == "atmVclCrossConnectIdentifier" || name == "atmVclRowStatus" || name == "atmVclCastType" || name == "atmVclConnKind" || name == "catmxVclOamLoopbackFreq" || name == "catmxVclOamRetryFreq" || name == "catmxVclOamUpRetryCount" || name == "catmxVclOamDownRetryCount" || name == "catmxVclOamEndCCActCount" || name == "catmxVclOamEndCCDeActCount" || name == "catmxVclOamEndCCRetryFreq" || name == "catmxVclOamSegCCActCount" || name == "catmxVclOamSegCCDeActCount" || name == "catmxVclOamSegCCRetryFreq" || name == "catmxVclOamManage" || name == "catmxVclOamLoopBkStatus" || name == "catmxVclOamVcState" || name == "catmxVclOamEndCCStatus" || name == "catmxVclOamSegCCStatus" || name == "catmxVclOamEndCCVcState" || name == "catmxVclOamSegCCVcState" || name == "catmxVclOamCellsReceived" || name == "catmxVclOamCellsSent" || name == "catmxVclOamCellsDropped" || name == "catmxVclOamInF5ais" || name == "catmxVclOamOutF5ais" || name == "catmxVclOamInF5rdi" || name == "catmxVclOamOutF5rdi")
         return true;
     return false;
 }
 
-ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnecttable()
+ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectTable()
+    :
+    atmvpcrossconnectentry(this, {"atmvpcrossconnectindex", "atmvpcrossconnectlowifindex", "atmvpcrossconnectlowvpi", "atmvpcrossconnecthighifindex", "atmvpcrossconnecthighvpi"})
 {
 
-    yang_name = "atmVpCrossConnectTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmVpCrossConnectTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atmvpcrossconnecttable::~Atmvpcrossconnecttable()
+ATMMIB::AtmVpCrossConnectTable::~AtmVpCrossConnectTable()
 {
 }
 
-bool ATMMIB::Atmvpcrossconnecttable::has_data() const
+bool ATMMIB::AtmVpCrossConnectTable::has_data() const
 {
-    for (std::size_t index=0; index<atmvpcrossconnectentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atmvpcrossconnectentry.len(); index++)
     {
         if(atmvpcrossconnectentry[index]->has_data())
             return true;
@@ -3037,9 +3075,9 @@ bool ATMMIB::Atmvpcrossconnecttable::has_data() const
     return false;
 }
 
-bool ATMMIB::Atmvpcrossconnecttable::has_operation() const
+bool ATMMIB::AtmVpCrossConnectTable::has_operation() const
 {
-    for (std::size_t index=0; index<atmvpcrossconnectentry.size(); index++)
+    for (std::size_t index=0; index<atmvpcrossconnectentry.len(); index++)
     {
         if(atmvpcrossconnectentry[index]->has_operation())
             return true;
@@ -3047,21 +3085,21 @@ bool ATMMIB::Atmvpcrossconnecttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ATMMIB::Atmvpcrossconnecttable::get_absolute_path() const
+std::string ATMMIB::AtmVpCrossConnectTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atmvpcrossconnecttable::get_segment_path() const
+std::string ATMMIB::AtmVpCrossConnectTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmVpCrossConnectTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvpcrossconnecttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVpCrossConnectTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3070,25 +3108,25 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvpcrossconnecttable::g
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atmvpcrossconnecttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmVpCrossConnectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmVpCrossConnectEntry")
     {
-        auto c = std::make_shared<ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry>();
+        auto c = std::make_shared<ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry>();
         c->parent = this;
-        atmvpcrossconnectentry.push_back(c);
+        atmvpcrossconnectentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmvpcrossconnecttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVpCrossConnectTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atmvpcrossconnectentry)
+    for (auto c : atmvpcrossconnectentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3099,22 +3137,22 @@ std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmvpcrossconnecttable::g
     return children;
 }
 
-void ATMMIB::Atmvpcrossconnecttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmVpCrossConnectTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ATMMIB::Atmvpcrossconnecttable::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmVpCrossConnectTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ATMMIB::Atmvpcrossconnecttable::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmVpCrossConnectTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmVpCrossConnectEntry")
         return true;
     return false;
 }
 
-ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::Atmvpcrossconnectentry()
+ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::AtmVpCrossConnectEntry()
     :
     atmvpcrossconnectindex{YType::int32, "atmVpCrossConnectIndex"},
     atmvpcrossconnectlowifindex{YType::int32, "atmVpCrossConnectLowIfIndex"},
@@ -3129,15 +3167,16 @@ ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::Atmvpcrossconnectentry()
     atmvpcrossconnectrowstatus{YType::enumeration, "atmVpCrossConnectRowStatus"}
 {
 
-    yang_name = "atmVpCrossConnectEntry"; yang_parent_name = "atmVpCrossConnectTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmVpCrossConnectEntry"; yang_parent_name = "atmVpCrossConnectTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::~Atmvpcrossconnectentry()
+ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::~AtmVpCrossConnectEntry()
 {
 }
 
-bool ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::has_data() const
+bool ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return atmvpcrossconnectindex.is_set
 	|| atmvpcrossconnectlowifindex.is_set
 	|| atmvpcrossconnectlowvpi.is_set
@@ -3151,7 +3190,7 @@ bool ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::has_data() const
 	|| atmvpcrossconnectrowstatus.is_set;
 }
 
-bool ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::has_operation() const
+bool ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(atmvpcrossconnectindex.yfilter)
@@ -3167,21 +3206,26 @@ bool ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::has_operation() con
 	|| ydk::is_set(atmvpcrossconnectrowstatus.yfilter);
 }
 
-std::string ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::get_absolute_path() const
+std::string ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/atmVpCrossConnectTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::get_segment_path() const
+std::string ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "atmVpCrossConnectEntry" <<"[atmVpCrossConnectIndex='" <<atmvpcrossconnectindex <<"']" <<"[atmVpCrossConnectLowIfIndex='" <<atmvpcrossconnectlowifindex <<"']" <<"[atmVpCrossConnectLowVpi='" <<atmvpcrossconnectlowvpi <<"']" <<"[atmVpCrossConnectHighIfIndex='" <<atmvpcrossconnecthighifindex <<"']" <<"[atmVpCrossConnectHighVpi='" <<atmvpcrossconnecthighvpi <<"']";
+    path_buffer << "atmVpCrossConnectEntry";
+    ADD_KEY_TOKEN(atmvpcrossconnectindex, "atmVpCrossConnectIndex");
+    ADD_KEY_TOKEN(atmvpcrossconnectlowifindex, "atmVpCrossConnectLowIfIndex");
+    ADD_KEY_TOKEN(atmvpcrossconnectlowvpi, "atmVpCrossConnectLowVpi");
+    ADD_KEY_TOKEN(atmvpcrossconnecthighifindex, "atmVpCrossConnectHighIfIndex");
+    ADD_KEY_TOKEN(atmvpcrossconnecthighvpi, "atmVpCrossConnectHighVpi");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3201,19 +3245,19 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvpcrossconnecttable::A
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "atmVpCrossConnectIndex")
     {
@@ -3283,7 +3327,7 @@ void ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::set_value(const std
     }
 }
 
-void ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "atmVpCrossConnectIndex")
     {
@@ -3331,26 +3375,29 @@ void ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::set_filter(const st
     }
 }
 
-bool ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmVpCrossConnectIndex" || name == "atmVpCrossConnectLowIfIndex" || name == "atmVpCrossConnectLowVpi" || name == "atmVpCrossConnectHighIfIndex" || name == "atmVpCrossConnectHighVpi" || name == "atmVpCrossConnectAdminStatus" || name == "atmVpCrossConnectL2HOperStatus" || name == "atmVpCrossConnectH2LOperStatus" || name == "atmVpCrossConnectL2HLastChange" || name == "atmVpCrossConnectH2LLastChange" || name == "atmVpCrossConnectRowStatus")
         return true;
     return false;
 }
 
-ATMMIB::Atmvccrossconnecttable::Atmvccrossconnecttable()
+ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectTable()
+    :
+    atmvccrossconnectentry(this, {"atmvccrossconnectindex", "atmvccrossconnectlowifindex", "atmvccrossconnectlowvpi", "atmvccrossconnectlowvci", "atmvccrossconnecthighifindex", "atmvccrossconnecthighvpi", "atmvccrossconnecthighvci"})
 {
 
-    yang_name = "atmVcCrossConnectTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmVcCrossConnectTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atmvccrossconnecttable::~Atmvccrossconnecttable()
+ATMMIB::AtmVcCrossConnectTable::~AtmVcCrossConnectTable()
 {
 }
 
-bool ATMMIB::Atmvccrossconnecttable::has_data() const
+bool ATMMIB::AtmVcCrossConnectTable::has_data() const
 {
-    for (std::size_t index=0; index<atmvccrossconnectentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atmvccrossconnectentry.len(); index++)
     {
         if(atmvccrossconnectentry[index]->has_data())
             return true;
@@ -3358,9 +3405,9 @@ bool ATMMIB::Atmvccrossconnecttable::has_data() const
     return false;
 }
 
-bool ATMMIB::Atmvccrossconnecttable::has_operation() const
+bool ATMMIB::AtmVcCrossConnectTable::has_operation() const
 {
-    for (std::size_t index=0; index<atmvccrossconnectentry.size(); index++)
+    for (std::size_t index=0; index<atmvccrossconnectentry.len(); index++)
     {
         if(atmvccrossconnectentry[index]->has_operation())
             return true;
@@ -3368,21 +3415,21 @@ bool ATMMIB::Atmvccrossconnecttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ATMMIB::Atmvccrossconnecttable::get_absolute_path() const
+std::string ATMMIB::AtmVcCrossConnectTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atmvccrossconnecttable::get_segment_path() const
+std::string ATMMIB::AtmVcCrossConnectTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmVcCrossConnectTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvccrossconnecttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVcCrossConnectTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3391,25 +3438,25 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvccrossconnecttable::g
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atmvccrossconnecttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmVcCrossConnectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmVcCrossConnectEntry")
     {
-        auto c = std::make_shared<ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry>();
+        auto c = std::make_shared<ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry>();
         c->parent = this;
-        atmvccrossconnectentry.push_back(c);
+        atmvccrossconnectentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmvccrossconnecttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVcCrossConnectTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atmvccrossconnectentry)
+    for (auto c : atmvccrossconnectentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3420,22 +3467,22 @@ std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmvccrossconnecttable::g
     return children;
 }
 
-void ATMMIB::Atmvccrossconnecttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmVcCrossConnectTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ATMMIB::Atmvccrossconnecttable::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmVcCrossConnectTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ATMMIB::Atmvccrossconnecttable::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmVcCrossConnectTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmVcCrossConnectEntry")
         return true;
     return false;
 }
 
-ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::Atmvccrossconnectentry()
+ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::AtmVcCrossConnectEntry()
     :
     atmvccrossconnectindex{YType::int32, "atmVcCrossConnectIndex"},
     atmvccrossconnectlowifindex{YType::int32, "atmVcCrossConnectLowIfIndex"},
@@ -3452,15 +3499,16 @@ ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::Atmvccrossconnectentry()
     atmvccrossconnectrowstatus{YType::enumeration, "atmVcCrossConnectRowStatus"}
 {
 
-    yang_name = "atmVcCrossConnectEntry"; yang_parent_name = "atmVcCrossConnectTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmVcCrossConnectEntry"; yang_parent_name = "atmVcCrossConnectTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::~Atmvccrossconnectentry()
+ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::~AtmVcCrossConnectEntry()
 {
 }
 
-bool ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::has_data() const
+bool ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return atmvccrossconnectindex.is_set
 	|| atmvccrossconnectlowifindex.is_set
 	|| atmvccrossconnectlowvpi.is_set
@@ -3476,7 +3524,7 @@ bool ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::has_data() const
 	|| atmvccrossconnectrowstatus.is_set;
 }
 
-bool ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::has_operation() const
+bool ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(atmvccrossconnectindex.yfilter)
@@ -3494,21 +3542,28 @@ bool ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::has_operation() con
 	|| ydk::is_set(atmvccrossconnectrowstatus.yfilter);
 }
 
-std::string ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::get_absolute_path() const
+std::string ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/atmVcCrossConnectTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::get_segment_path() const
+std::string ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "atmVcCrossConnectEntry" <<"[atmVcCrossConnectIndex='" <<atmvccrossconnectindex <<"']" <<"[atmVcCrossConnectLowIfIndex='" <<atmvccrossconnectlowifindex <<"']" <<"[atmVcCrossConnectLowVpi='" <<atmvccrossconnectlowvpi <<"']" <<"[atmVcCrossConnectLowVci='" <<atmvccrossconnectlowvci <<"']" <<"[atmVcCrossConnectHighIfIndex='" <<atmvccrossconnecthighifindex <<"']" <<"[atmVcCrossConnectHighVpi='" <<atmvccrossconnecthighvpi <<"']" <<"[atmVcCrossConnectHighVci='" <<atmvccrossconnecthighvci <<"']";
+    path_buffer << "atmVcCrossConnectEntry";
+    ADD_KEY_TOKEN(atmvccrossconnectindex, "atmVcCrossConnectIndex");
+    ADD_KEY_TOKEN(atmvccrossconnectlowifindex, "atmVcCrossConnectLowIfIndex");
+    ADD_KEY_TOKEN(atmvccrossconnectlowvpi, "atmVcCrossConnectLowVpi");
+    ADD_KEY_TOKEN(atmvccrossconnectlowvci, "atmVcCrossConnectLowVci");
+    ADD_KEY_TOKEN(atmvccrossconnecthighifindex, "atmVcCrossConnectHighIfIndex");
+    ADD_KEY_TOKEN(atmvccrossconnecthighvpi, "atmVcCrossConnectHighVpi");
+    ADD_KEY_TOKEN(atmvccrossconnecthighvci, "atmVcCrossConnectHighVci");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3530,19 +3585,19 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Atmvccrossconnecttable::A
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "atmVcCrossConnectIndex")
     {
@@ -3624,7 +3679,7 @@ void ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::set_value(const std
     }
 }
 
-void ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "atmVcCrossConnectIndex")
     {
@@ -3680,26 +3735,29 @@ void ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::set_filter(const st
     }
 }
 
-bool ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmVcCrossConnectIndex" || name == "atmVcCrossConnectLowIfIndex" || name == "atmVcCrossConnectLowVpi" || name == "atmVcCrossConnectLowVci" || name == "atmVcCrossConnectHighIfIndex" || name == "atmVcCrossConnectHighVpi" || name == "atmVcCrossConnectHighVci" || name == "atmVcCrossConnectAdminStatus" || name == "atmVcCrossConnectL2HOperStatus" || name == "atmVcCrossConnectH2LOperStatus" || name == "atmVcCrossConnectL2HLastChange" || name == "atmVcCrossConnectH2LLastChange" || name == "atmVcCrossConnectRowStatus")
         return true;
     return false;
 }
 
-ATMMIB::Aal5Vcctable::Aal5Vcctable()
+ATMMIB::Aal5VccTable::Aal5VccTable()
+    :
+    aal5vccentry(this, {"ifindex", "aal5vccvpi", "aal5vccvci"})
 {
 
-    yang_name = "aal5VccTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aal5VccTable"; yang_parent_name = "ATM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Aal5Vcctable::~Aal5Vcctable()
+ATMMIB::Aal5VccTable::~Aal5VccTable()
 {
 }
 
-bool ATMMIB::Aal5Vcctable::has_data() const
+bool ATMMIB::Aal5VccTable::has_data() const
 {
-    for (std::size_t index=0; index<aal5vccentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<aal5vccentry.len(); index++)
     {
         if(aal5vccentry[index]->has_data())
             return true;
@@ -3707,9 +3765,9 @@ bool ATMMIB::Aal5Vcctable::has_data() const
     return false;
 }
 
-bool ATMMIB::Aal5Vcctable::has_operation() const
+bool ATMMIB::Aal5VccTable::has_operation() const
 {
-    for (std::size_t index=0; index<aal5vccentry.size(); index++)
+    for (std::size_t index=0; index<aal5vccentry.len(); index++)
     {
         if(aal5vccentry[index]->has_operation())
             return true;
@@ -3717,21 +3775,21 @@ bool ATMMIB::Aal5Vcctable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ATMMIB::Aal5Vcctable::get_absolute_path() const
+std::string ATMMIB::Aal5VccTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Aal5Vcctable::get_segment_path() const
+std::string ATMMIB::Aal5VccTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "aal5VccTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Aal5Vcctable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::Aal5VccTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3740,25 +3798,25 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Aal5Vcctable::get_name_le
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Aal5Vcctable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::Aal5VccTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aal5VccEntry")
     {
-        auto c = std::make_shared<ATMMIB::Aal5Vcctable::Aal5Vccentry>();
+        auto c = std::make_shared<ATMMIB::Aal5VccTable::Aal5VccEntry>();
         c->parent = this;
-        aal5vccentry.push_back(c);
+        aal5vccentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Aal5Vcctable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Aal5VccTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : aal5vccentry)
+    for (auto c : aal5vccentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3769,22 +3827,22 @@ std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Aal5Vcctable::get_childre
     return children;
 }
 
-void ATMMIB::Aal5Vcctable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::Aal5VccTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ATMMIB::Aal5Vcctable::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::Aal5VccTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ATMMIB::Aal5Vcctable::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::Aal5VccTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "aal5VccEntry")
         return true;
     return false;
 }
 
-ATMMIB::Aal5Vcctable::Aal5Vccentry::Aal5Vccentry()
+ATMMIB::Aal5VccTable::Aal5VccEntry::Aal5VccEntry()
     :
     ifindex{YType::str, "ifIndex"},
     aal5vccvpi{YType::int32, "aal5VccVpi"},
@@ -3792,6 +3850,10 @@ ATMMIB::Aal5Vcctable::Aal5Vccentry::Aal5Vccentry()
     aal5vcccrcerrors{YType::uint32, "aal5VccCrcErrors"},
     aal5vccsartimeouts{YType::uint32, "aal5VccSarTimeOuts"},
     aal5vccoversizedsdus{YType::uint32, "aal5VccOverSizedSDUs"},
+    caal5vccextcompenabled{YType::boolean, "CISCO-ATM-EXT-MIB:cAal5VccExtCompEnabled"},
+    caal5vccextvoice{YType::boolean, "CISCO-ATM-EXT-MIB:cAal5VccExtVoice"},
+    caal5vccextinf5oamcells{YType::uint32, "CISCO-ATM-EXT-MIB:cAal5VccExtInF5OamCells"},
+    caal5vccextoutf5oamcells{YType::uint32, "CISCO-ATM-EXT-MIB:cAal5VccExtOutF5OamCells"},
     caal5vccinpkts{YType::uint32, "CISCO-AAL5-MIB:cAal5VccInPkts"},
     caal5vccoutpkts{YType::uint32, "CISCO-AAL5-MIB:cAal5VccOutPkts"},
     caal5vccinoctets{YType::uint32, "CISCO-AAL5-MIB:cAal5VccInOctets"},
@@ -3803,28 +3865,29 @@ ATMMIB::Aal5Vcctable::Aal5Vccentry::Aal5Vccentry()
     caal5vcchcinpkts{YType::uint64, "CISCO-AAL5-MIB:cAal5VccHCInPkts"},
     caal5vcchcoutpkts{YType::uint64, "CISCO-AAL5-MIB:cAal5VccHCOutPkts"},
     caal5vcchcinoctets{YType::uint64, "CISCO-AAL5-MIB:cAal5VccHCInOctets"},
-    caal5vcchcoutoctets{YType::uint64, "CISCO-AAL5-MIB:cAal5VccHCOutOctets"},
-    caal5vccextcompenabled{YType::boolean, "CISCO-ATM-EXT-MIB:cAal5VccExtCompEnabled"},
-    caal5vccextvoice{YType::boolean, "CISCO-ATM-EXT-MIB:cAal5VccExtVoice"},
-    caal5vccextinf5oamcells{YType::uint32, "CISCO-ATM-EXT-MIB:cAal5VccExtInF5OamCells"},
-    caal5vccextoutf5oamcells{YType::uint32, "CISCO-ATM-EXT-MIB:cAal5VccExtOutF5OamCells"}
+    caal5vcchcoutoctets{YType::uint64, "CISCO-AAL5-MIB:cAal5VccHCOutOctets"}
 {
 
-    yang_name = "aal5VccEntry"; yang_parent_name = "aal5VccTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aal5VccEntry"; yang_parent_name = "aal5VccTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ATMMIB::Aal5Vcctable::Aal5Vccentry::~Aal5Vccentry()
+ATMMIB::Aal5VccTable::Aal5VccEntry::~Aal5VccEntry()
 {
 }
 
-bool ATMMIB::Aal5Vcctable::Aal5Vccentry::has_data() const
+bool ATMMIB::Aal5VccTable::Aal5VccEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| aal5vccvpi.is_set
 	|| aal5vccvci.is_set
 	|| aal5vcccrcerrors.is_set
 	|| aal5vccsartimeouts.is_set
 	|| aal5vccoversizedsdus.is_set
+	|| caal5vccextcompenabled.is_set
+	|| caal5vccextvoice.is_set
+	|| caal5vccextinf5oamcells.is_set
+	|| caal5vccextoutf5oamcells.is_set
 	|| caal5vccinpkts.is_set
 	|| caal5vccoutpkts.is_set
 	|| caal5vccinoctets.is_set
@@ -3836,14 +3899,10 @@ bool ATMMIB::Aal5Vcctable::Aal5Vccentry::has_data() const
 	|| caal5vcchcinpkts.is_set
 	|| caal5vcchcoutpkts.is_set
 	|| caal5vcchcinoctets.is_set
-	|| caal5vcchcoutoctets.is_set
-	|| caal5vccextcompenabled.is_set
-	|| caal5vccextvoice.is_set
-	|| caal5vccextinf5oamcells.is_set
-	|| caal5vccextoutf5oamcells.is_set;
+	|| caal5vcchcoutoctets.is_set;
 }
 
-bool ATMMIB::Aal5Vcctable::Aal5Vccentry::has_operation() const
+bool ATMMIB::Aal5VccTable::Aal5VccEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -3852,6 +3911,10 @@ bool ATMMIB::Aal5Vcctable::Aal5Vccentry::has_operation() const
 	|| ydk::is_set(aal5vcccrcerrors.yfilter)
 	|| ydk::is_set(aal5vccsartimeouts.yfilter)
 	|| ydk::is_set(aal5vccoversizedsdus.yfilter)
+	|| ydk::is_set(caal5vccextcompenabled.yfilter)
+	|| ydk::is_set(caal5vccextvoice.yfilter)
+	|| ydk::is_set(caal5vccextinf5oamcells.yfilter)
+	|| ydk::is_set(caal5vccextoutf5oamcells.yfilter)
 	|| ydk::is_set(caal5vccinpkts.yfilter)
 	|| ydk::is_set(caal5vccoutpkts.yfilter)
 	|| ydk::is_set(caal5vccinoctets.yfilter)
@@ -3863,28 +3926,27 @@ bool ATMMIB::Aal5Vcctable::Aal5Vccentry::has_operation() const
 	|| ydk::is_set(caal5vcchcinpkts.yfilter)
 	|| ydk::is_set(caal5vcchcoutpkts.yfilter)
 	|| ydk::is_set(caal5vcchcinoctets.yfilter)
-	|| ydk::is_set(caal5vcchcoutoctets.yfilter)
-	|| ydk::is_set(caal5vccextcompenabled.yfilter)
-	|| ydk::is_set(caal5vccextvoice.yfilter)
-	|| ydk::is_set(caal5vccextinf5oamcells.yfilter)
-	|| ydk::is_set(caal5vccextoutf5oamcells.yfilter);
+	|| ydk::is_set(caal5vcchcoutoctets.yfilter);
 }
 
-std::string ATMMIB::Aal5Vcctable::Aal5Vccentry::get_absolute_path() const
+std::string ATMMIB::Aal5VccTable::Aal5VccEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-MIB:ATM-MIB/aal5VccTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ATMMIB::Aal5Vcctable::Aal5Vccentry::get_segment_path() const
+std::string ATMMIB::Aal5VccTable::Aal5VccEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "aal5VccEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[aal5VccVpi='" <<aal5vccvpi <<"']" <<"[aal5VccVci='" <<aal5vccvci <<"']";
+    path_buffer << "aal5VccEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(aal5vccvpi, "aal5VccVpi");
+    ADD_KEY_TOKEN(aal5vccvci, "aal5VccVci");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ATMMIB::Aal5Vcctable::Aal5Vccentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ATMMIB::Aal5VccTable::Aal5VccEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3894,6 +3956,10 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Aal5Vcctable::Aal5Vccentr
     if (aal5vcccrcerrors.is_set || is_set(aal5vcccrcerrors.yfilter)) leaf_name_data.push_back(aal5vcccrcerrors.get_name_leafdata());
     if (aal5vccsartimeouts.is_set || is_set(aal5vccsartimeouts.yfilter)) leaf_name_data.push_back(aal5vccsartimeouts.get_name_leafdata());
     if (aal5vccoversizedsdus.is_set || is_set(aal5vccoversizedsdus.yfilter)) leaf_name_data.push_back(aal5vccoversizedsdus.get_name_leafdata());
+    if (caal5vccextcompenabled.is_set || is_set(caal5vccextcompenabled.yfilter)) leaf_name_data.push_back(caal5vccextcompenabled.get_name_leafdata());
+    if (caal5vccextvoice.is_set || is_set(caal5vccextvoice.yfilter)) leaf_name_data.push_back(caal5vccextvoice.get_name_leafdata());
+    if (caal5vccextinf5oamcells.is_set || is_set(caal5vccextinf5oamcells.yfilter)) leaf_name_data.push_back(caal5vccextinf5oamcells.get_name_leafdata());
+    if (caal5vccextoutf5oamcells.is_set || is_set(caal5vccextoutf5oamcells.yfilter)) leaf_name_data.push_back(caal5vccextoutf5oamcells.get_name_leafdata());
     if (caal5vccinpkts.is_set || is_set(caal5vccinpkts.yfilter)) leaf_name_data.push_back(caal5vccinpkts.get_name_leafdata());
     if (caal5vccoutpkts.is_set || is_set(caal5vccoutpkts.yfilter)) leaf_name_data.push_back(caal5vccoutpkts.get_name_leafdata());
     if (caal5vccinoctets.is_set || is_set(caal5vccinoctets.yfilter)) leaf_name_data.push_back(caal5vccinoctets.get_name_leafdata());
@@ -3906,28 +3972,24 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Aal5Vcctable::Aal5Vccentr
     if (caal5vcchcoutpkts.is_set || is_set(caal5vcchcoutpkts.yfilter)) leaf_name_data.push_back(caal5vcchcoutpkts.get_name_leafdata());
     if (caal5vcchcinoctets.is_set || is_set(caal5vcchcinoctets.yfilter)) leaf_name_data.push_back(caal5vcchcinoctets.get_name_leafdata());
     if (caal5vcchcoutoctets.is_set || is_set(caal5vcchcoutoctets.yfilter)) leaf_name_data.push_back(caal5vcchcoutoctets.get_name_leafdata());
-    if (caal5vccextcompenabled.is_set || is_set(caal5vccextcompenabled.yfilter)) leaf_name_data.push_back(caal5vccextcompenabled.get_name_leafdata());
-    if (caal5vccextvoice.is_set || is_set(caal5vccextvoice.yfilter)) leaf_name_data.push_back(caal5vccextvoice.get_name_leafdata());
-    if (caal5vccextinf5oamcells.is_set || is_set(caal5vccextinf5oamcells.yfilter)) leaf_name_data.push_back(caal5vccextinf5oamcells.get_name_leafdata());
-    if (caal5vccextoutf5oamcells.is_set || is_set(caal5vccextoutf5oamcells.yfilter)) leaf_name_data.push_back(caal5vccextoutf5oamcells.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Aal5Vcctable::Aal5Vccentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ATMMIB::Aal5VccTable::Aal5VccEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Aal5Vcctable::Aal5Vccentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Aal5VccTable::Aal5VccEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ATMMIB::Aal5Vcctable::Aal5Vccentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ATMMIB::Aal5VccTable::Aal5VccEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -3964,6 +4026,30 @@ void ATMMIB::Aal5Vcctable::Aal5Vccentry::set_value(const std::string & value_pat
         aal5vccoversizedsdus = value;
         aal5vccoversizedsdus.value_namespace = name_space;
         aal5vccoversizedsdus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtCompEnabled")
+    {
+        caal5vccextcompenabled = value;
+        caal5vccextcompenabled.value_namespace = name_space;
+        caal5vccextcompenabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtVoice")
+    {
+        caal5vccextvoice = value;
+        caal5vccextvoice.value_namespace = name_space;
+        caal5vccextvoice.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtInF5OamCells")
+    {
+        caal5vccextinf5oamcells = value;
+        caal5vccextinf5oamcells.value_namespace = name_space;
+        caal5vccextinf5oamcells.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtOutF5OamCells")
+    {
+        caal5vccextoutf5oamcells = value;
+        caal5vccextoutf5oamcells.value_namespace = name_space;
+        caal5vccextoutf5oamcells.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "CISCO-AAL5-MIB:cAal5VccInPkts")
     {
@@ -4037,33 +4123,9 @@ void ATMMIB::Aal5Vcctable::Aal5Vccentry::set_value(const std::string & value_pat
         caal5vcchcoutoctets.value_namespace = name_space;
         caal5vcchcoutoctets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtCompEnabled")
-    {
-        caal5vccextcompenabled = value;
-        caal5vccextcompenabled.value_namespace = name_space;
-        caal5vccextcompenabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtVoice")
-    {
-        caal5vccextvoice = value;
-        caal5vccextvoice.value_namespace = name_space;
-        caal5vccextvoice.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtInF5OamCells")
-    {
-        caal5vccextinf5oamcells = value;
-        caal5vccextinf5oamcells.value_namespace = name_space;
-        caal5vccextinf5oamcells.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtOutF5OamCells")
-    {
-        caal5vccextoutf5oamcells = value;
-        caal5vccextoutf5oamcells.value_namespace = name_space;
-        caal5vccextoutf5oamcells.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void ATMMIB::Aal5Vcctable::Aal5Vccentry::set_filter(const std::string & value_path, YFilter yfilter)
+void ATMMIB::Aal5VccTable::Aal5VccEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -4088,6 +4150,22 @@ void ATMMIB::Aal5Vcctable::Aal5Vccentry::set_filter(const std::string & value_pa
     if(value_path == "aal5VccOverSizedSDUs")
     {
         aal5vccoversizedsdus.yfilter = yfilter;
+    }
+    if(value_path == "cAal5VccExtCompEnabled")
+    {
+        caal5vccextcompenabled.yfilter = yfilter;
+    }
+    if(value_path == "cAal5VccExtVoice")
+    {
+        caal5vccextvoice.yfilter = yfilter;
+    }
+    if(value_path == "cAal5VccExtInF5OamCells")
+    {
+        caal5vccextinf5oamcells.yfilter = yfilter;
+    }
+    if(value_path == "cAal5VccExtOutF5OamCells")
+    {
+        caal5vccextoutf5oamcells.yfilter = yfilter;
     }
     if(value_path == "cAal5VccInPkts")
     {
@@ -4137,73 +4215,57 @@ void ATMMIB::Aal5Vcctable::Aal5Vccentry::set_filter(const std::string & value_pa
     {
         caal5vcchcoutoctets.yfilter = yfilter;
     }
-    if(value_path == "cAal5VccExtCompEnabled")
-    {
-        caal5vccextcompenabled.yfilter = yfilter;
-    }
-    if(value_path == "cAal5VccExtVoice")
-    {
-        caal5vccextvoice.yfilter = yfilter;
-    }
-    if(value_path == "cAal5VccExtInF5OamCells")
-    {
-        caal5vccextinf5oamcells.yfilter = yfilter;
-    }
-    if(value_path == "cAal5VccExtOutF5OamCells")
-    {
-        caal5vccextoutf5oamcells.yfilter = yfilter;
-    }
 }
 
-bool ATMMIB::Aal5Vcctable::Aal5Vccentry::has_leaf_or_child_of_name(const std::string & name) const
+bool ATMMIB::Aal5VccTable::Aal5VccEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ifIndex" || name == "aal5VccVpi" || name == "aal5VccVci" || name == "aal5VccCrcErrors" || name == "aal5VccSarTimeOuts" || name == "aal5VccOverSizedSDUs" || name == "cAal5VccInPkts" || name == "cAal5VccOutPkts" || name == "cAal5VccInOctets" || name == "cAal5VccOutOctets" || name == "cAal5VccInDroppedPkts" || name == "cAal5VccOutDroppedPkts" || name == "cAal5VccInDroppedOctets" || name == "cAal5VccOutDroppedOctets" || name == "cAal5VccHCInPkts" || name == "cAal5VccHCOutPkts" || name == "cAal5VccHCInOctets" || name == "cAal5VccHCOutOctets" || name == "cAal5VccExtCompEnabled" || name == "cAal5VccExtVoice" || name == "cAal5VccExtInF5OamCells" || name == "cAal5VccExtOutF5OamCells")
+    if(name == "ifIndex" || name == "aal5VccVpi" || name == "aal5VccVci" || name == "aal5VccCrcErrors" || name == "aal5VccSarTimeOuts" || name == "aal5VccOverSizedSDUs" || name == "cAal5VccExtCompEnabled" || name == "cAal5VccExtVoice" || name == "cAal5VccExtInF5OamCells" || name == "cAal5VccExtOutF5OamCells" || name == "cAal5VccInPkts" || name == "cAal5VccOutPkts" || name == "cAal5VccInOctets" || name == "cAal5VccOutOctets" || name == "cAal5VccInDroppedPkts" || name == "cAal5VccOutDroppedPkts" || name == "cAal5VccInDroppedOctets" || name == "cAal5VccOutDroppedOctets" || name == "cAal5VccHCInPkts" || name == "cAal5VccHCOutPkts" || name == "cAal5VccHCInOctets" || name == "cAal5VccHCOutOctets")
         return true;
     return false;
 }
 
-const Enum::YLeaf ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::Atminterfaceaddresstype::private_ {1, "private"};
-const Enum::YLeaf ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::Atminterfaceaddresstype::nsapE164 {2, "nsapE164"};
-const Enum::YLeaf ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::Atminterfaceaddresstype::nativeE164 {3, "nativeE164"};
-const Enum::YLeaf ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::Atminterfaceaddresstype::other {4, "other"};
+const Enum::YLeaf ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::AtmInterfaceAddressType::private_ {1, "private"};
+const Enum::YLeaf ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::AtmInterfaceAddressType::nsapE164 {2, "nsapE164"};
+const Enum::YLeaf ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::AtmInterfaceAddressType::nativeE164 {3, "nativeE164"};
+const Enum::YLeaf ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::AtmInterfaceAddressType::other {4, "other"};
 
-const Enum::YLeaf ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::Atminterfaceds3Plcpalarmstate::noAlarm {1, "noAlarm"};
-const Enum::YLeaf ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::Atminterfaceds3Plcpalarmstate::receivedFarEndAlarm {2, "receivedFarEndAlarm"};
-const Enum::YLeaf ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::Atminterfaceds3Plcpalarmstate::incomingLOF {3, "incomingLOF"};
+const Enum::YLeaf ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::AtmInterfaceDs3PlcpAlarmState::noAlarm {1, "noAlarm"};
+const Enum::YLeaf ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::AtmInterfaceDs3PlcpAlarmState::receivedFarEndAlarm {2, "receivedFarEndAlarm"};
+const Enum::YLeaf ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::AtmInterfaceDs3PlcpAlarmState::incomingLOF {3, "incomingLOF"};
 
-const Enum::YLeaf ATMMIB::Atminterfacetctable::Atminterfacetcentry::Atminterfacetcalarmstate::noAlarm {1, "noAlarm"};
-const Enum::YLeaf ATMMIB::Atminterfacetctable::Atminterfacetcentry::Atminterfacetcalarmstate::lcdFailure {2, "lcdFailure"};
+const Enum::YLeaf ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::AtmInterfaceTCAlarmState::noAlarm {1, "noAlarm"};
+const Enum::YLeaf ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::AtmInterfaceTCAlarmState::lcdFailure {2, "lcdFailure"};
 
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaaltype::aal1 {1, "aal1"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaaltype::aal34 {2, "aal34"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaaltype::aal5 {3, "aal5"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaaltype::other {4, "other"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaaltype::unknown {5, "unknown"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaaltype::aal2 {6, "aal2"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAalType::aal1 {1, "aal1"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAalType::aal34 {2, "aal34"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAalType::aal5 {3, "aal5"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAalType::other {4, "other"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAalType::unknown {5, "unknown"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAalType::aal2 {6, "aal2"};
 
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaal5Encapstype::vcMultiplexRoutedProtocol {1, "vcMultiplexRoutedProtocol"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaal5Encapstype::vcMultiplexBridgedProtocol8023 {2, "vcMultiplexBridgedProtocol8023"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaal5Encapstype::vcMultiplexBridgedProtocol8025 {3, "vcMultiplexBridgedProtocol8025"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaal5Encapstype::vcMultiplexBridgedProtocol8026 {4, "vcMultiplexBridgedProtocol8026"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaal5Encapstype::vcMultiplexLANemulation8023 {5, "vcMultiplexLANemulation8023"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaal5Encapstype::vcMultiplexLANemulation8025 {6, "vcMultiplexLANemulation8025"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaal5Encapstype::llcEncapsulation {7, "llcEncapsulation"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaal5Encapstype::multiprotocolFrameRelaySscs {8, "multiprotocolFrameRelaySscs"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaal5Encapstype::other {9, "other"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Atmvccaal5Encapstype::unknown {10, "unknown"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType::vcMultiplexRoutedProtocol {1, "vcMultiplexRoutedProtocol"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType::vcMultiplexBridgedProtocol8023 {2, "vcMultiplexBridgedProtocol8023"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType::vcMultiplexBridgedProtocol8025 {3, "vcMultiplexBridgedProtocol8025"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType::vcMultiplexBridgedProtocol8026 {4, "vcMultiplexBridgedProtocol8026"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType::vcMultiplexLANemulation8023 {5, "vcMultiplexLANemulation8023"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType::vcMultiplexLANemulation8025 {6, "vcMultiplexLANemulation8025"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType::llcEncapsulation {7, "llcEncapsulation"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType::multiprotocolFrameRelaySscs {8, "multiprotocolFrameRelaySscs"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType::other {9, "other"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType::unknown {10, "unknown"};
 
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamloopbkstatus::disabled {1, "disabled"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamloopbkstatus::sent {2, "sent"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamloopbkstatus::received {3, "received"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamloopbkstatus::failed {4, "failed"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamLoopBkStatus::disabled {1, "disabled"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamLoopBkStatus::sent {2, "sent"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamLoopBkStatus::received {3, "received"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamLoopBkStatus::failed {4, "failed"};
 
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamvcstate::downRetry {1, "downRetry"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamvcstate::verified {2, "verified"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamvcstate::notVerified {3, "notVerified"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamvcstate::upRetry {4, "upRetry"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamvcstate::aisRDI {5, "aisRDI"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamvcstate::aisOut {6, "aisOut"};
-const Enum::YLeaf ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamvcstate::notManaged {7, "notManaged"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamVcState::downRetry {1, "downRetry"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamVcState::verified {2, "verified"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamVcState::notVerified {3, "notVerified"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamVcState::upRetry {4, "upRetry"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamVcState::aisRDI {5, "aisRDI"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamVcState::aisOut {6, "aisOut"};
+const Enum::YLeaf ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamVcState::notManaged {7, "notManaged"};
 
 
 }

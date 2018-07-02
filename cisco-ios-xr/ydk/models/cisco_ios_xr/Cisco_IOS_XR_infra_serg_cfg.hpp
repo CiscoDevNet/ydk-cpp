@@ -64,7 +64,7 @@ class SessionRedundancy::Groups : public ydk::Entity
 
         class Group; //type: SessionRedundancy::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_cfg::SessionRedundancy::Groups::Group> > group;
+        ydk::YList group;
         
 }; // SessionRedundancy::Groups
 
@@ -217,7 +217,7 @@ class SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges : public 
 
         class InterfaceRange; //type: SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_cfg::SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange> > interface_range;
+        ydk::YList interface_range;
         
 }; // SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges
 
@@ -265,7 +265,7 @@ class SessionRedundancy::Groups::Group::InterfaceList::Interfaces : public ydk::
 
         class Interface; //type: SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_cfg::SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // SessionRedundancy::Groups::Group::InterfaceList::Interfaces
 
@@ -314,19 +314,19 @@ class SessionRedundancy::RevertiveTimer : public ydk::Entity
 
 }; // SessionRedundancy::RevertiveTimer
 
-class SessionRedundancyGroupRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
-
-};
-
 class SergAddrFamily : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class SessionRedundancyGroupRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
 
 };
 

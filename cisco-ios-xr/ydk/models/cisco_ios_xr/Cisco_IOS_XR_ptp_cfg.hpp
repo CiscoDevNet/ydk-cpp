@@ -152,7 +152,7 @@ class Ptp::Profiles : public ydk::Entity
 
         class Profile; //type: Ptp::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // Ptp::Profiles
 
@@ -274,7 +274,7 @@ class Ptp::Profiles::Profile::Slaves : public ydk::Entity
 
         class Slave; //type: Ptp::Profiles::Profile::Slaves::Slave
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Slaves::Slave> > slave;
+        ydk::YList slave;
         
 }; // Ptp::Profiles::Profile::Slaves
 
@@ -299,8 +299,8 @@ class Ptp::Profiles::Profile::Slaves::Slave : public ydk::Entity
         class Ethernet; //type: Ptp::Profiles::Profile::Slaves::Slave::Ethernet
         class Ipv4OrIpv6; //type: Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Slaves::Slave::Ethernet> > ethernet;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6> > ipv4_or_ipv6;
+        ydk::YList ethernet;
+        ydk::YList ipv4_or_ipv6;
         
 }; // Ptp::Profiles::Profile::Slaves::Slave
 
@@ -389,7 +389,7 @@ class Ptp::Profiles::Profile::Masters : public ydk::Entity
 
         class Master; //type: Ptp::Profiles::Profile::Masters::Master
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Masters::Master> > master;
+        ydk::YList master;
         
 }; // Ptp::Profiles::Profile::Masters
 
@@ -414,8 +414,8 @@ class Ptp::Profiles::Profile::Masters::Master : public ydk::Entity
         class Ethernet; //type: Ptp::Profiles::Profile::Masters::Master::Ethernet
         class Ipv4OrIpv6; //type: Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Masters::Master::Ethernet> > ethernet;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6> > ipv4_or_ipv6;
+        ydk::YList ethernet;
+        ydk::YList ipv4_or_ipv6;
         
 }; // Ptp::Profiles::Profile::Masters::Master
 
@@ -656,7 +656,7 @@ class Ptp::UtcOffset::ScheduledOffsets : public ydk::Entity
 
         class ScheduledOffset; //type: Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset> > scheduled_offset;
+        ydk::YList scheduled_offset;
         
 }; // Ptp::UtcOffset::ScheduledOffsets
 
@@ -797,7 +797,7 @@ class Ptp::TransparentClock::Domains : public ydk::Entity
 
         class Domain; //type: Ptp::TransparentClock::Domains::Domain
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::TransparentClock::Domains::Domain> > domain;
+        ydk::YList domain;
         
 }; // Ptp::TransparentClock::Domains
 

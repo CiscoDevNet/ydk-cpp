@@ -33,7 +33,7 @@ class SystemMonitoring : public ydk::Entity
 
         class CpuUtilization; //type: SystemMonitoring::CpuUtilization
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wdsysmon_fd_oper::SystemMonitoring::CpuUtilization> > cpu_utilization;
+        ydk::YList cpu_utilization;
         
 }; // SystemMonitoring
 
@@ -61,7 +61,7 @@ class SystemMonitoring::CpuUtilization : public ydk::Entity
         ydk::YLeaf total_cpu_fifteen_minute; //type: uint32
         class ProcessCpu; //type: SystemMonitoring::CpuUtilization::ProcessCpu
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wdsysmon_fd_oper::SystemMonitoring::CpuUtilization::ProcessCpu> > process_cpu;
+        ydk::YList process_cpu;
         
 }; // SystemMonitoring::CpuUtilization
 

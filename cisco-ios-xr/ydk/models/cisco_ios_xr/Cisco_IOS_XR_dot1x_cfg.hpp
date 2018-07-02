@@ -10,11 +10,11 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_dot1x_cfg {
 
-class Dot1X : public ydk::Entity
+class Dot1x : public ydk::Entity
 {
     public:
-        Dot1X();
-        ~Dot1X();
+        Dot1x();
+        ~Dot1x();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -31,18 +31,18 @@ class Dot1X : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Dot1XProfile; //type: Dot1X::Dot1XProfile
+        class Dot1xProfile; //type: Dot1x::Dot1xProfile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_cfg::Dot1X::Dot1XProfile> > dot1x_profile;
+        ydk::YList dot1x_profile;
         
-}; // Dot1X
+}; // Dot1x
 
 
-class Dot1X::Dot1XProfile : public ydk::Entity
+class Dot1x::Dot1xProfile : public ydk::Entity
 {
     public:
-        Dot1XProfile();
-        ~Dot1XProfile();
+        Dot1xProfile();
+        ~Dot1xProfile();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -57,16 +57,16 @@ class Dot1X::Dot1XProfile : public ydk::Entity
 
         ydk::YLeaf profile_name; //type: string
         ydk::YLeaf pae; //type: string
-        class Supplicant; //type: Dot1X::Dot1XProfile::Supplicant
-        class Authenticator; //type: Dot1X::Dot1XProfile::Authenticator
+        class Supplicant; //type: Dot1x::Dot1xProfile::Supplicant
+        class Authenticator; //type: Dot1x::Dot1xProfile::Authenticator
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_cfg::Dot1X::Dot1XProfile::Supplicant> supplicant;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_cfg::Dot1X::Dot1XProfile::Authenticator> authenticator;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_cfg::Dot1x::Dot1xProfile::Supplicant> supplicant;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_cfg::Dot1x::Dot1xProfile::Authenticator> authenticator;
         
-}; // Dot1X::Dot1XProfile
+}; // Dot1x::Dot1xProfile
 
 
-class Dot1X::Dot1XProfile::Supplicant : public ydk::Entity
+class Dot1x::Dot1xProfile::Supplicant : public ydk::Entity
 {
     public:
         Supplicant();
@@ -84,10 +84,10 @@ class Dot1X::Dot1XProfile::Supplicant : public ydk::Entity
 
         ydk::YLeaf eap_profile; //type: string
 
-}; // Dot1X::Dot1XProfile::Supplicant
+}; // Dot1x::Dot1xProfile::Supplicant
 
 
-class Dot1X::Dot1XProfile::Authenticator : public ydk::Entity
+class Dot1x::Dot1xProfile::Authenticator : public ydk::Entity
 {
     public:
         Authenticator();
@@ -103,14 +103,14 @@ class Dot1X::Dot1XProfile::Authenticator : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Timers; //type: Dot1X::Dot1XProfile::Authenticator::Timers
+        class Timers; //type: Dot1x::Dot1xProfile::Authenticator::Timers
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_cfg::Dot1X::Dot1XProfile::Authenticator::Timers> timers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_cfg::Dot1x::Dot1xProfile::Authenticator::Timers> timers;
         
-}; // Dot1X::Dot1XProfile::Authenticator
+}; // Dot1x::Dot1xProfile::Authenticator
 
 
-class Dot1X::Dot1XProfile::Authenticator::Timers : public ydk::Entity
+class Dot1x::Dot1xProfile::Authenticator::Timers : public ydk::Entity
 {
     public:
         Timers();
@@ -126,14 +126,14 @@ class Dot1X::Dot1XProfile::Authenticator::Timers : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ReauthTime; //type: Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime
+        class ReauthTime; //type: Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_cfg::Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime> reauth_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_cfg::Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime> reauth_time;
         
-}; // Dot1X::Dot1XProfile::Authenticator::Timers
+}; // Dot1x::Dot1xProfile::Authenticator::Timers
 
 
-class Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime : public ydk::Entity
+class Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime : public ydk::Entity
 {
     public:
         ReauthTime();
@@ -152,7 +152,7 @@ class Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime : public ydk::Entit
         ydk::YLeaf server; //type: boolean
         ydk::YLeaf local; //type: uint32
 
-}; // Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime
+}; // Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime
 
 class Eap : public ydk::Entity
 {
@@ -177,7 +177,7 @@ class Eap : public ydk::Entity
 
         class EapProfile; //type: Eap::EapProfile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_cfg::Eap::EapProfile> > eap_profile;
+        ydk::YList eap_profile;
         
 }; // Eap
 

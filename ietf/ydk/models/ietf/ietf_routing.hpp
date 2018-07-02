@@ -11,14 +11,14 @@
 namespace ietf {
 namespace ietf_routing {
 
-class AddressFamily : public virtual ydk::Identity
+class RoutingProtocol : public virtual ydk::Identity
 {
     public:
-        AddressFamily();
-        ~AddressFamily();
+        RoutingProtocol();
+        ~RoutingProtocol();
 
 
-}; // AddressFamily
+}; // RoutingProtocol
 
 class RoutingInstance : public virtual ydk::Identity
 {
@@ -29,14 +29,14 @@ class RoutingInstance : public virtual ydk::Identity
 
 }; // RoutingInstance
 
-class RoutingProtocol : public virtual ydk::Identity
+class AddressFamily : public virtual ydk::Identity
 {
     public:
-        RoutingProtocol();
-        ~RoutingProtocol();
+        AddressFamily();
+        ~AddressFamily();
 
 
-}; // RoutingProtocol
+}; // AddressFamily
 
 class RoutingState : public ydk::Entity
 {
@@ -61,7 +61,7 @@ class RoutingState : public ydk::Entity
 
         class RoutingInstance; //type: RoutingState::RoutingInstance
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance> > routing_instance;
+        ydk::YList routing_instance;
         
 }; // RoutingState
 
@@ -137,7 +137,7 @@ class RoutingState::RoutingInstance::RoutingProtocols : public ydk::Entity
 
         class RoutingProtocol; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol> > routing_protocol;
+        ydk::YList routing_protocol;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols
 
@@ -186,7 +186,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf : p
         ydk::YLeaf operation_mode; //type: OperationMode
         class Instance; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance> > instance;
+        ydk::YList instance;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf
 
@@ -213,9 +213,9 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         class AsScopeLsas; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area> > area;
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas> > as_scope_lsas;
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology> > topology;
+        ydk::YList area;
+        ydk::YList as_scope_lsas;
+        ydk::YList topology;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
@@ -240,8 +240,8 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         class Interfaces; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces
         class AreaScopeLsas; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces> > interfaces;
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas> > area_scope_lsas;
+        ydk::YList interfaces;
+        ydk::YList area_scope_lsas;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area
 
@@ -296,9 +296,9 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute> fast_reroute;
         std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::TtlSecurity> ttl_security;
         std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication> authentication;
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Neighbor> > neighbor;
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas> > link_scope_lsas;
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Topology> > topology;
+        ydk::YList neighbor;
+        ydk::YList link_scope_lsas;
+        ydk::YList topology;
                 class NetworkType;
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces
@@ -344,7 +344,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         class Neighbor; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::Neighbor
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors
 
@@ -563,7 +563,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf lsa_type; //type: uint8
         class LinkScopeLsa; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa> > link_scope_lsa;
+        ydk::YList link_scope_lsa;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas
 
@@ -584,7 +584,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf lsa_id; //type: one of uint32, string
+        ydk::YLeaf lsa_id; //type: one of string, uint32
         ydk::YLeaf adv_router; //type: string
         ydk::YLeaf decoded_completed; //type: boolean
         ydk::YLeaf raw_data; //type: string
@@ -703,7 +703,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf num_of_links; //type: uint16
         class Link; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link> > link;
+        ydk::YList link;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router
 
@@ -725,11 +725,11 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf link_id; //type: string
-        ydk::YLeaf link_data; //type: one of uint32, string
+        ydk::YLeaf link_data; //type: one of string, uint32
         ydk::YLeaf type; //type: uint8
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology> > topology;
+        ydk::YList topology;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link
 
@@ -797,7 +797,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf network_mask; //type: string
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology> > topology;
+        ydk::YList topology;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary
 
@@ -843,7 +843,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf network_mask; //type: string
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology> > topology;
+        ydk::YList topology;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External
 
@@ -893,7 +893,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         class RouterAddressTlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv
         class LinkTlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::UnknownTlv> > unknown_tlv;
+        ydk::YList unknown_tlv;
         std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv> router_address_tlv;
         std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv> link_tlv;
         
@@ -971,7 +971,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeafList local_remote_ipv4_addr; //type: list of  string
         class UnknownSubtlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv> > unknown_subtlv;
+        ydk::YList unknown_subtlv;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv
 
@@ -1109,7 +1109,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf options; //type: Options
         class Link; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link> > link;
+        ydk::YList link;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router
 
@@ -1285,7 +1285,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf num_of_prefixes; //type: uint32
         class PrefixList; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList> > prefix_list;
+        ydk::YList prefix_list;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link
 
@@ -1334,7 +1334,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf num_of_prefixes; //type: uint16
         class PrefixList; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList> > prefix_list;
+        ydk::YList prefix_list;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix
 
@@ -1403,7 +1403,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf lsa_type; //type: uint8
         class AreaScopeLsa; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa> > area_scope_lsa;
+        ydk::YList area_scope_lsa;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas
 
@@ -1424,7 +1424,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf lsa_id; //type: one of uint32, string
+        ydk::YLeaf lsa_id; //type: one of string, uint32
         ydk::YLeaf adv_router; //type: string
         ydk::YLeaf decoded_completed; //type: boolean
         ydk::YLeaf raw_data; //type: string
@@ -1543,7 +1543,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf num_of_links; //type: uint16
         class Link; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link> > link;
+        ydk::YList link;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router
 
@@ -1565,11 +1565,11 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf link_id; //type: string
-        ydk::YLeaf link_data; //type: one of uint32, string
+        ydk::YLeaf link_data; //type: one of string, uint32
         ydk::YLeaf type; //type: uint8
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology> > topology;
+        ydk::YList topology;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link
 
@@ -1637,7 +1637,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf network_mask; //type: string
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology> > topology;
+        ydk::YList topology;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary
 
@@ -1683,7 +1683,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf network_mask; //type: string
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology> > topology;
+        ydk::YList topology;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External
 
@@ -1733,7 +1733,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         class RouterAddressTlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv
         class LinkTlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::UnknownTlv> > unknown_tlv;
+        ydk::YList unknown_tlv;
         std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv> router_address_tlv;
         std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv> link_tlv;
         
@@ -1811,7 +1811,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeafList local_remote_ipv4_addr; //type: list of  string
         class UnknownSubtlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv> > unknown_subtlv;
+        ydk::YList unknown_subtlv;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv
 
@@ -1949,7 +1949,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf options; //type: Options
         class Link; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link> > link;
+        ydk::YList link;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router
 
@@ -2125,7 +2125,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf num_of_prefixes; //type: uint32
         class PrefixList; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList> > prefix_list;
+        ydk::YList prefix_list;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link
 
@@ -2174,7 +2174,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf num_of_prefixes; //type: uint16
         class PrefixList; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList> > prefix_list;
+        ydk::YList prefix_list;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix
 
@@ -2221,7 +2221,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf lsa_type; //type: uint8
         class AsScopeLsa; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa> > as_scope_lsa;
+        ydk::YList as_scope_lsa;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas
 
@@ -2242,7 +2242,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf lsa_id; //type: one of uint32, string
+        ydk::YLeaf lsa_id; //type: one of string, uint32
         ydk::YLeaf adv_router; //type: string
         ydk::YLeaf decoded_completed; //type: boolean
         ydk::YLeaf raw_data; //type: string
@@ -2361,7 +2361,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf num_of_links; //type: uint16
         class Link; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link> > link;
+        ydk::YList link;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router
 
@@ -2383,11 +2383,11 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf link_id; //type: string
-        ydk::YLeaf link_data; //type: one of uint32, string
+        ydk::YLeaf link_data; //type: one of string, uint32
         ydk::YLeaf type; //type: uint8
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology> > topology;
+        ydk::YList topology;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link
 
@@ -2455,7 +2455,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf network_mask; //type: string
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology> > topology;
+        ydk::YList topology;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary
 
@@ -2501,7 +2501,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf network_mask; //type: string
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology> > topology;
+        ydk::YList topology;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External
 
@@ -2551,7 +2551,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         class RouterAddressTlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv
         class LinkTlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::UnknownTlv> > unknown_tlv;
+        ydk::YList unknown_tlv;
         std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv> router_address_tlv;
         std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv> link_tlv;
         
@@ -2629,7 +2629,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeafList local_remote_ipv4_addr; //type: list of  string
         class UnknownSubtlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv> > unknown_subtlv;
+        ydk::YList unknown_subtlv;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv
 
@@ -2767,7 +2767,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf options; //type: Options
         class Link; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link> > link;
+        ydk::YList link;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router
 
@@ -2943,7 +2943,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf num_of_prefixes; //type: uint32
         class PrefixList; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList> > prefix_list;
+        ydk::YList prefix_list;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link
 
@@ -2992,7 +2992,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf num_of_prefixes; //type: uint16
         class PrefixList; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList> > prefix_list;
+        ydk::YList prefix_list;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix
 
@@ -3040,7 +3040,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         ydk::YLeaf name;
         class Area; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area> > area;
+        ydk::YList area;
         
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology
 
@@ -3084,7 +3084,7 @@ class RoutingState::RoutingInstance::Ribs : public ydk::Entity
 
         class Rib; //type: RoutingState::RoutingInstance::Ribs::Rib
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::Ribs::Rib> > rib;
+        ydk::YList rib;
         
 }; // RoutingState::RoutingInstance::Ribs
 
@@ -3133,7 +3133,7 @@ class RoutingState::RoutingInstance::Ribs::Rib::Routes : public ydk::Entity
 
         class Route; //type: RoutingState::RoutingInstance::Ribs::Rib::Routes::Route
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::RoutingState::RoutingInstance::Ribs::Rib::Routes::Route> > route;
+        ydk::YList route;
         
 }; // RoutingState::RoutingInstance::Ribs::Rib::Routes
 
@@ -3217,7 +3217,7 @@ class Routing : public ydk::Entity
 
         class RoutingInstance; //type: Routing::RoutingInstance
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance> > routing_instance;
+        ydk::YList routing_instance;
         
 }; // Routing
 
@@ -3295,7 +3295,7 @@ class Routing::RoutingInstance::RoutingProtocols : public ydk::Entity
 
         class RoutingProtocol; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol> > routing_protocol;
+        ydk::YList routing_protocol;
         
 }; // Routing::RoutingInstance::RoutingProtocols
 
@@ -3344,85 +3344,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv4; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4
         class Ipv6; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6
+        class Ipv4; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4
 
-        std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4> ipv4;
         std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6> ipv6;
+        std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4> ipv4;
         
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes
-
-
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4 : public ydk::Entity
-{
-    public:
-        Ipv4();
-        ~Ipv4();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Route; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route
-
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route> > route;
-        
-}; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4
-
-
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route : public ydk::Entity
-{
-    public:
-        Route();
-        ~Route();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf destination_prefix; //type: string
-        ydk::YLeaf description; //type: string
-        class NextHop; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop
-
-        std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop> next_hop;
-        
-}; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route
-
-
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop : public ydk::Entity
-{
-    public:
-        NextHop();
-        ~NextHop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf outgoing_interface; //type: string
-        ydk::YLeaf special_next_hop; //type: SpecialNextHop
-        ydk::YLeaf next_hop_address; //type: string
-        class SpecialNextHop;
-
-}; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop
 
 
 class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6 : public ydk::Entity
@@ -3443,7 +3371,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 
         class Route; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route> > route;
+        ydk::YList route;
         
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6
 
@@ -3497,6 +3425,78 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop
 
 
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4 : public ydk::Entity
+{
+    public:
+        Ipv4();
+        ~Ipv4();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Route; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route
+
+        ydk::YList route;
+        
+}; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4
+
+
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route : public ydk::Entity
+{
+    public:
+        Route();
+        ~Route();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf destination_prefix; //type: string
+        ydk::YLeaf description; //type: string
+        class NextHop; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop
+
+        std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop> next_hop;
+        
+}; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route
+
+
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop : public ydk::Entity
+{
+    public:
+        NextHop();
+        ~NextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf special_next_hop; //type: SpecialNextHop
+        ydk::YLeaf next_hop_address; //type: string
+        class SpecialNextHop;
+
+}; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop
+
+
 class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf : public ydk::Entity
 {
     public:
@@ -3518,7 +3518,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf : public
         class Instance; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
         std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit> all_instances_inherit;
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance> > instance;
+        ydk::YList instance;
         
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf
 
@@ -3630,8 +3630,8 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls> mpls;
         std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute> fast_reroute;
         std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit> all_areas_inherit;
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area> > area;
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology> > topology;
+        ydk::YList area;
+        ydk::YList topology;
         
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
@@ -3993,11 +3993,11 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         class ShamLink; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink
         class Interface; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Range> > range;
+        ydk::YList range;
         std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit> all_interfaces_inherit;
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink> > virtual_link;
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink> > sham_link;
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface> > interface;
+        ydk::YList virtual_link;
+        ydk::YList sham_link;
+        ydk::YList interface;
         
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area
 
@@ -4339,7 +4339,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute> fast_reroute;
         std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::TtlSecurity> ttl_security;
         std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication> authentication;
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Topology> > topology;
+        ydk::YList topology;
                 class NetworkType;
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface
@@ -4385,7 +4385,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         class Neighbor; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::Neighbor
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors
 
@@ -4603,7 +4603,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         ydk::YLeaf name;
         class Area; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area> > area;
+        ydk::YList area;
         
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology
 
@@ -4630,7 +4630,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         ydk::YLeaf default_cost; //type: uint32
         class Range; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range> > range;
+        ydk::YList range;
         
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area
 
@@ -4676,7 +4676,7 @@ class Routing::RoutingInstance::Ribs : public ydk::Entity
 
         class Rib; //type: Routing::RoutingInstance::Ribs::Rib
 
-        std::vector<std::shared_ptr<ietf::ietf_routing::Routing::RoutingInstance::Ribs::Rib> > rib;
+        ydk::YList rib;
         
 }; // Routing::RoutingInstance::Ribs
 
@@ -4776,8 +4776,8 @@ class FibRoute::Input::DestinationAddress : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf address_family; //type: AddressFamily
-        ydk::YLeaf ietf_ipv4_unicast_routing_address; //type: string
         ydk::YLeaf ietf_ipv6_unicast_routing_address; //type: string
+        ydk::YLeaf ietf_ipv4_unicast_routing_address; //type: string
 
 }; // FibRoute::Input::DestinationAddress
 
@@ -4827,8 +4827,8 @@ class FibRoute::Output::Route : public ydk::Entity
         ydk::YLeaf source_protocol; //type: RoutingProtocol
         ydk::YLeaf active; //type: empty
         ydk::YLeaf last_updated; //type: string
-        ydk::YLeaf ietf_ipv4_unicast_routing_destination_prefix; //type: string
         ydk::YLeaf ietf_ipv6_unicast_routing_destination_prefix; //type: string
+        ydk::YLeaf ietf_ipv4_unicast_routing_destination_prefix; //type: string
         class NextHop; //type: FibRoute::Output::Route::NextHop
 
         std::shared_ptr<ietf::ietf_routing::FibRoute::Output::Route::NextHop> next_hop;
@@ -4855,39 +4855,12 @@ class FibRoute::Output::Route::NextHop : public ydk::Entity
 
         ydk::YLeaf outgoing_interface; //type: string
         ydk::YLeaf ietf_routing_next_hop_address; //type: string
-        ydk::YLeaf ietf_ipv4_unicast_routing_next_hop_address; //type: string
         ydk::YLeaf ietf_ipv6_unicast_routing_next_hop_address; //type: string
+        ydk::YLeaf ietf_ipv4_unicast_routing_next_hop_address; //type: string
         ydk::YLeaf special_next_hop; //type: SpecialNextHop
         class SpecialNextHop;
 
 }; // FibRoute::Output::Route::NextHop
-
-class Ipv4 : public ietf::ietf_routing::AddressFamily, virtual ydk::Identity
-{
-    public:
-        Ipv4();
-        ~Ipv4();
-
-
-}; // Ipv4
-
-class Ipv6 : public ietf::ietf_routing::AddressFamily, virtual ydk::Identity
-{
-    public:
-        Ipv6();
-        ~Ipv6();
-
-
-}; // Ipv6
-
-class DefaultRoutingInstance : public ietf::ietf_routing::RoutingInstance, virtual ydk::Identity
-{
-    public:
-        DefaultRoutingInstance();
-        ~DefaultRoutingInstance();
-
-
-}; // DefaultRoutingInstance
 
 class VrfRoutingInstance : public ietf::ietf_routing::RoutingInstance, virtual ydk::Identity
 {
@@ -4907,6 +4880,15 @@ class Direct : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 }; // Direct
 
+class DefaultRoutingInstance : public ietf::ietf_routing::RoutingInstance, virtual ydk::Identity
+{
+    public:
+        DefaultRoutingInstance();
+        ~DefaultRoutingInstance();
+
+
+}; // DefaultRoutingInstance
+
 class Static : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
@@ -4915,6 +4897,24 @@ class Static : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 
 }; // Static
+
+class Ipv4 : public ietf::ietf_routing::AddressFamily, virtual ydk::Identity
+{
+    public:
+        Ipv4();
+        ~Ipv4();
+
+
+}; // Ipv4
+
+class Ipv6 : public ietf::ietf_routing::AddressFamily, virtual ydk::Identity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+
+}; // Ipv6
 
 class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::NetworkType : public ydk::Enum
 {
@@ -4948,7 +4948,7 @@ class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::SpecialN
 
 };
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop : public ydk::Enum
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf blackhole;
@@ -4958,7 +4958,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 
 };
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop : public ydk::Enum
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf blackhole;

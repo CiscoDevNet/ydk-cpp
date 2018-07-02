@@ -17,7 +17,7 @@ HardwareModule::HardwareModule()
 {
     loadbalancing->parent = this;
 
-    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-prm-hwmod-loadbalance-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-prm-hwmod-loadbalance-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HardwareModule::~HardwareModule()
@@ -26,6 +26,7 @@ HardwareModule::~HardwareModule()
 
 bool HardwareModule::has_data() const
 {
+    if (is_presence_container) return true;
     return (loadbalancing !=  nullptr && loadbalancing->has_data());
 }
 
@@ -123,7 +124,7 @@ HardwareModule::Loadbalancing::Loadbalancing()
 {
     bgp3107->parent = this;
 
-    yang_name = "loadbalancing"; yang_parent_name = "hardware-module"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "loadbalancing"; yang_parent_name = "hardware-module"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModule::Loadbalancing::~Loadbalancing()
@@ -132,6 +133,7 @@ HardwareModule::Loadbalancing::~Loadbalancing()
 
 bool HardwareModule::Loadbalancing::has_data() const
 {
+    if (is_presence_container) return true;
     return (bgp3107 !=  nullptr && bgp3107->has_data());
 }
 
@@ -211,7 +213,7 @@ HardwareModule::Loadbalancing::Bgp3107::Bgp3107()
 {
     ecmp->parent = this;
 
-    yang_name = "bgp3107"; yang_parent_name = "loadbalancing"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp3107"; yang_parent_name = "loadbalancing"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModule::Loadbalancing::Bgp3107::~Bgp3107()
@@ -220,6 +222,7 @@ HardwareModule::Loadbalancing::Bgp3107::~Bgp3107()
 
 bool HardwareModule::Loadbalancing::Bgp3107::has_data() const
 {
+    if (is_presence_container) return true;
     return (ecmp !=  nullptr && ecmp->has_data());
 }
 
@@ -298,7 +301,7 @@ HardwareModule::Loadbalancing::Bgp3107::Ecmp::Ecmp()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "ecmp"; yang_parent_name = "bgp3107"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ecmp"; yang_parent_name = "bgp3107"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModule::Loadbalancing::Bgp3107::Ecmp::~Ecmp()
@@ -307,6 +310,7 @@ HardwareModule::Loadbalancing::Bgp3107::Ecmp::~Ecmp()
 
 bool HardwareModule::Loadbalancing::Bgp3107::Ecmp::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 

@@ -36,6 +36,7 @@ class Ntp : public ydk::Entity
         ydk::YLeaf broadcast_delay; //type: uint32
         ydk::YLeaf log_internal_sync; //type: empty
         ydk::YLeaf update_calendar; //type: empty
+        class AdminTypes; //type: Ntp::AdminTypes
         class PeerVrfs; //type: Ntp::PeerVrfs
         class DscpIpv4; //type: Ntp::DscpIpv4
         class DscpIpv6; //type: Ntp::DscpIpv6
@@ -46,6 +47,7 @@ class Ntp : public ydk::Entity
         class InterfaceTables; //type: Ntp::InterfaceTables
         class AccessGroupTables; //type: Ntp::AccessGroupTables
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::AdminTypes> admin_types;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::PeerVrfs> peer_vrfs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::DscpIpv4> dscp_ipv4; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::DscpIpv6> dscp_ipv6; // presence node
@@ -57,6 +59,59 @@ class Ntp : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::AccessGroupTables> access_group_tables;
         
 }; // Ntp
+
+
+class Ntp::AdminTypes : public ydk::Entity
+{
+    public:
+        AdminTypes();
+        ~AdminTypes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class AdminType; //type: Ntp::AdminTypes::AdminType
+
+        ydk::YList admin_type;
+        
+}; // Ntp::AdminTypes
+
+
+class Ntp::AdminTypes::AdminType : public ydk::Entity
+{
+    public:
+        AdminType();
+        ~AdminType();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf peer_type; //type: NtpPeer
+        ydk::YLeaf ntp_version; //type: uint32
+        ydk::YLeaf authentication_key; //type: uint32
+        ydk::YLeaf min_poll; //type: uint32
+        ydk::YLeaf max_poll; //type: uint32
+        ydk::YLeaf preferred_peer; //type: empty
+        ydk::YLeaf burst; //type: empty
+        ydk::YLeaf iburst; //type: empty
+
+}; // Ntp::AdminTypes::AdminType
 
 
 class Ntp::PeerVrfs : public ydk::Entity
@@ -78,7 +133,7 @@ class Ntp::PeerVrfs : public ydk::Entity
 
         class PeerVrf; //type: Ntp::PeerVrfs::PeerVrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::PeerVrfs::PeerVrf> > peer_vrf;
+        ydk::YList peer_vrf;
         
 }; // Ntp::PeerVrfs
 
@@ -101,20 +156,20 @@ class Ntp::PeerVrfs::PeerVrf : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
-        class PeerIpv4S; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv4S
-        class PeerIpv6S; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv6S
+        class PeerIpv4s; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv4s
+        class PeerIpv6s; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv6s
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::PeerVrfs::PeerVrf::PeerIpv4S> peer_ipv4s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::PeerVrfs::PeerVrf::PeerIpv6S> peer_ipv6s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::PeerVrfs::PeerVrf::PeerIpv4s> peer_ipv4s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::PeerVrfs::PeerVrf::PeerIpv6s> peer_ipv6s;
         
 }; // Ntp::PeerVrfs::PeerVrf
 
 
-class Ntp::PeerVrfs::PeerVrf::PeerIpv4S : public ydk::Entity
+class Ntp::PeerVrfs::PeerVrf::PeerIpv4s : public ydk::Entity
 {
     public:
-        PeerIpv4S();
-        ~PeerIpv4S();
+        PeerIpv4s();
+        ~PeerIpv4s();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -126,14 +181,14 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv4S : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PeerIpv4; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4
+        class PeerIpv4; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4> > peer_ipv4;
+        ydk::YList peer_ipv4;
         
-}; // Ntp::PeerVrfs::PeerVrf::PeerIpv4S
+}; // Ntp::PeerVrfs::PeerVrf::PeerIpv4s
 
 
-class Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4 : public ydk::Entity
+class Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4 : public ydk::Entity
 {
     public:
         PeerIpv4();
@@ -150,14 +205,14 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address_ipv4; //type: string
-        class PeerTypeIpv4; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4
+        class PeerTypeIpv4; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::PeerTypeIpv4
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4> > peer_type_ipv4;
+        ydk::YList peer_type_ipv4;
         
-}; // Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4
+}; // Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4
 
 
-class Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4 : public ydk::Entity
+class Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::PeerTypeIpv4 : public ydk::Entity
 {
     public:
         PeerTypeIpv4();
@@ -183,14 +238,14 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4 : public ydk::En
         ydk::YLeaf burst; //type: empty
         ydk::YLeaf iburst; //type: empty
 
-}; // Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4
+}; // Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::PeerTypeIpv4
 
 
-class Ntp::PeerVrfs::PeerVrf::PeerIpv6S : public ydk::Entity
+class Ntp::PeerVrfs::PeerVrf::PeerIpv6s : public ydk::Entity
 {
     public:
-        PeerIpv6S();
-        ~PeerIpv6S();
+        PeerIpv6s();
+        ~PeerIpv6s();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -202,14 +257,14 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv6S : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PeerIpv6; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6
+        class PeerIpv6; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6> > peer_ipv6;
+        ydk::YList peer_ipv6;
         
-}; // Ntp::PeerVrfs::PeerVrf::PeerIpv6S
+}; // Ntp::PeerVrfs::PeerVrf::PeerIpv6s
 
 
-class Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6 : public ydk::Entity
+class Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6 : public ydk::Entity
 {
     public:
         PeerIpv6();
@@ -226,14 +281,14 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address_ipv6; //type: string
-        class PeerTypeIpv6; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6
+        class PeerTypeIpv6; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::PeerTypeIpv6
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6> > peer_type_ipv6;
+        ydk::YList peer_type_ipv6;
         
-}; // Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6
+}; // Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6
 
 
-class Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6 : public ydk::Entity
+class Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::PeerTypeIpv6 : public ydk::Entity
 {
     public:
         PeerTypeIpv6();
@@ -260,7 +315,7 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6 : public ydk::En
         ydk::YLeaf iburst; //type: empty
         ydk::YLeaf address_ipv6; //type: string
 
-}; // Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6
+}; // Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::PeerTypeIpv6
 
 
 class Ntp::DscpIpv4 : public ydk::Entity
@@ -328,7 +383,7 @@ class Ntp::Sources : public ydk::Entity
 
         class Source; //type: Ntp::Sources::Source
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::Sources::Source> > source;
+        ydk::YList source;
         
 }; // Ntp::Sources
 
@@ -450,7 +505,7 @@ class Ntp::Authentication::Keies : public ydk::Entity
 
         class Key; //type: Ntp::Authentication::Keies::Key
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::Authentication::Keies::Key> > key;
+        ydk::YList key;
         
 }; // Ntp::Authentication::Keies
 
@@ -497,7 +552,7 @@ class Ntp::Authentication::TrustedKeies : public ydk::Entity
 
         class TrustedKey; //type: Ntp::Authentication::TrustedKeies::TrustedKey
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::Authentication::TrustedKeies::TrustedKey> > trusted_key;
+        ydk::YList trusted_key;
         
 }; // Ntp::Authentication::TrustedKeies
 
@@ -565,7 +620,7 @@ class Ntp::InterfaceTables : public ydk::Entity
 
         class InterfaceTable; //type: Ntp::InterfaceTables::InterfaceTable
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::InterfaceTables::InterfaceTable> > interface_table;
+        ydk::YList interface_table;
         
 }; // Ntp::InterfaceTables
 
@@ -590,7 +645,7 @@ class Ntp::InterfaceTables::InterfaceTable : public ydk::Entity
         ydk::YLeaf vrf_name; //type: string
         class Interface; //type: Ntp::InterfaceTables::InterfaceTable::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::InterfaceTables::InterfaceTable::Interface> > interface;
+        ydk::YList interface;
         
 }; // Ntp::InterfaceTables::InterfaceTable
 
@@ -665,7 +720,7 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::Multi
 
         class MulticastClient; //type: Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient> > multicast_client;
+        ydk::YList multicast_client;
         
 }; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients
 
@@ -709,7 +764,7 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::Multi
 
         class MulticastServer; //type: Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer> > multicast_server;
+        ydk::YList multicast_server;
         
 }; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers
 
@@ -755,18 +810,18 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf broadcast_client; //type: empty
-        class Broadcast; //type: Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast
+        class BroadcastServers; //type: Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast> broadcast;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers> broadcast_servers;
         
 }; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast
 
 
-class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast : public ydk::Entity
+class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers : public ydk::Entity
 {
     public:
-        Broadcast();
-        ~Broadcast();
+        BroadcastServers();
+        ~BroadcastServers();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -778,11 +833,35 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broad
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        class BroadcastServer; //type: Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::BroadcastServer
+
+        ydk::YList broadcast_server;
+        
+}; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers
+
+
+class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::BroadcastServer : public ydk::Entity
+{
+    public:
+        BroadcastServer();
+        ~BroadcastServer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf broadcast_type; //type: string
         ydk::YLeaf address; //type: string
         ydk::YLeaf authentication_key; //type: uint32
         ydk::YLeaf ntp_version; //type: uint32
 
-}; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast
+}; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::BroadcastServer
 
 
 class Ntp::AccessGroupTables : public ydk::Entity
@@ -804,7 +883,7 @@ class Ntp::AccessGroupTables : public ydk::Entity
 
         class AccessGroupTable; //type: Ntp::AccessGroupTables::AccessGroupTable
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::AccessGroupTables::AccessGroupTable> > access_group_table;
+        ydk::YList access_group_table;
         
 }; // Ntp::AccessGroupTables
 
@@ -829,7 +908,7 @@ class Ntp::AccessGroupTables::AccessGroupTable : public ydk::Entity
         ydk::YLeaf vrf_name; //type: string
         class AccessGroupAfTable; //type: Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable> > access_group_af_table;
+        ydk::YList access_group_af_table;
         
 }; // Ntp::AccessGroupTables::AccessGroupTable
 
@@ -853,7 +932,7 @@ class Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable : public ydk:
         ydk::YLeaf af; //type: NtpAccessAf
         class AccessGroup; //type: Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup> > access_group;
+        ydk::YList access_group;
         
 }; // Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable
 
@@ -879,11 +958,11 @@ class Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup 
 
 }; // Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup
 
-class Ntpdscp : public ydk::Enum
+class NtpAccessAf : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ntp_precedence;
-        static const ydk::Enum::YLeaf ntpdscp;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
@@ -895,11 +974,11 @@ class NtpPeer : public ydk::Enum
 
 };
 
-class NtpAccessAf : public ydk::Enum
+class Ntpdscp : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ntp_precedence;
+        static const ydk::Enum::YLeaf ntpdscp;
 
 };
 

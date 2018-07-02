@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace fit {
 
 Set::Set()
+    :
+    asic(this, {"asic_name"})
 {
 
-    yang_name = "set"; yang_parent_name = "fit"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "fit"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Set::~Set()
@@ -23,7 +25,8 @@ Set::~Set()
 
 bool Set::has_data() const
 {
-    for (std::size_t index=0; index<asic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic.len(); index++)
     {
         if(asic[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Set::has_data() const
 
 bool Set::has_operation() const
 {
-    for (std::size_t index=0; index<asic.size(); index++)
+    for (std::size_t index=0; index<asic.len(); index++)
     {
         if(asic[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Set::get_child_by_name(const std::string & child_yang_na
     {
         auto c = std::make_shared<Set::Asic>();
         c->parent = this;
-        asic.push_back(c);
+        asic.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic)
+    for (auto c : asic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool Set::has_leaf_or_child_of_name(const std::string & name) const
 Set::Asic::Asic()
     :
     asic_name{YType::str, "asic-name"}
+        ,
+    instance(this, {"instance_ids"})
 {
 
-    yang_name = "asic"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "asic"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Set::Asic::~Asic()
@@ -140,7 +145,8 @@ Set::Asic::~Asic()
 
 bool Set::Asic::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool Set::Asic::has_data() const
 
 bool Set::Asic::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string Set::Asic::get_absolute_path() const
 std::string Set::Asic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic" <<"[asic-name='" <<asic_name <<"']";
+    path_buffer << "asic";
+    ADD_KEY_TOKEN(asic_name, "asic-name");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> Set::Asic::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Set::Asic::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -240,12 +247,12 @@ bool Set::Asic::has_leaf_or_child_of_name(const std::string & name) const
 Set::Asic::Instance::Instance()
     :
     instance_ids{YType::uint32, "instance-ids"}
-    	,
+        ,
     fault_injection(std::make_shared<Set::Asic::Instance::FaultInjection>())
 {
     fault_injection->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "asic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "asic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::~Instance()
@@ -254,6 +261,7 @@ Set::Asic::Instance::~Instance()
 
 bool Set::Asic::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_ids.is_set
 	|| (fault_injection !=  nullptr && fault_injection->has_data());
 }
@@ -268,7 +276,8 @@ bool Set::Asic::Instance::has_operation() const
 std::string Set::Asic::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[instance-ids='" <<instance_ids <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(instance_ids, "instance-ids");
     return path_buffer.str();
 }
 
@@ -334,9 +343,11 @@ bool Set::Asic::Instance::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Set::Asic::Instance::FaultInjection::FaultInjection()
+    :
+    module(this, {"module_name"})
 {
 
-    yang_name = "fault-injection"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fault-injection"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::~FaultInjection()
@@ -345,7 +356,8 @@ Set::Asic::Instance::FaultInjection::~FaultInjection()
 
 bool Set::Asic::Instance::FaultInjection::has_data() const
 {
-    for (std::size_t index=0; index<module.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<module.len(); index++)
     {
         if(module[index]->has_data())
             return true;
@@ -355,7 +367,7 @@ bool Set::Asic::Instance::FaultInjection::has_data() const
 
 bool Set::Asic::Instance::FaultInjection::has_operation() const
 {
-    for (std::size_t index=0; index<module.size(); index++)
+    for (std::size_t index=0; index<module.len(); index++)
     {
         if(module[index]->has_operation())
             return true;
@@ -385,7 +397,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::get_child_by_name(c
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module>();
         c->parent = this;
-        module.push_back(c);
+        module.append(c);
         return c;
     }
 
@@ -397,7 +409,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : module)
+    for (auto c : module.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -426,12 +438,12 @@ bool Set::Asic::Instance::FaultInjection::has_leaf_or_child_of_name(const std::s
 Set::Asic::Instance::FaultInjection::Module::Module()
     :
     module_name{YType::str, "module-name"}
-    	,
+        ,
     fault_type(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType>())
 {
     fault_type->parent = this;
 
-    yang_name = "module"; yang_parent_name = "fault-injection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module"; yang_parent_name = "fault-injection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::~Module()
@@ -440,6 +452,7 @@ Set::Asic::Instance::FaultInjection::Module::~Module()
 
 bool Set::Asic::Instance::FaultInjection::Module::has_data() const
 {
+    if (is_presence_container) return true;
     return module_name.is_set
 	|| (fault_type !=  nullptr && fault_type->has_data());
 }
@@ -454,7 +467,8 @@ bool Set::Asic::Instance::FaultInjection::Module::has_operation() const
 std::string Set::Asic::Instance::FaultInjection::Module::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "module" <<"[module-name='" <<module_name <<"']";
+    path_buffer << "module";
+    ADD_KEY_TOKEN(module_name, "module-name");
     return path_buffer.str();
 }
 
@@ -522,14 +536,14 @@ bool Set::Asic::Instance::FaultInjection::Module::has_leaf_or_child_of_name(cons
 Set::Asic::Instance::FaultInjection::Module::FaultType::FaultType()
     :
     ecc(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc>())
-	,parity(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity>())
-	,other(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other>())
+    , parity(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity>())
+    , other(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other>())
 {
     ecc->parent = this;
     parity->parent = this;
     other->parent = this;
 
-    yang_name = "fault-type"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fault-type"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::~FaultType()
@@ -538,6 +552,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::~FaultType()
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::has_data() const
 {
+    if (is_presence_container) return true;
     return (ecc !=  nullptr && ecc->has_data())
 	|| (parity !=  nullptr && parity->has_data())
 	|| (other !=  nullptr && other->has_data());
@@ -639,10 +654,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::has_leaf_or_child_o
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Ecc()
     :
     all(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All>())
+    , block_name_lst(this, {"block_name"})
 {
     all->parent = this;
 
-    yang_name = "ecc"; yang_parent_name = "fault-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ecc"; yang_parent_name = "fault-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::~Ecc()
@@ -651,7 +667,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::~Ecc()
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::has_data() const
 {
-    for (std::size_t index=0; index<block_name_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<block_name_lst.len(); index++)
     {
         if(block_name_lst[index]->has_data())
             return true;
@@ -661,7 +678,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::has_data() con
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::has_operation() const
 {
-    for (std::size_t index=0; index<block_name_lst.size(); index++)
+    for (std::size_t index=0; index<block_name_lst.len(); index++)
     {
         if(block_name_lst[index]->has_operation())
             return true;
@@ -701,7 +718,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst>();
         c->parent = this;
-        block_name_lst.push_back(c);
+        block_name_lst.append(c);
         return c;
     }
 
@@ -718,7 +735,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     }
 
     count = 0;
-    for (auto const & c : block_name_lst)
+    for (auto c : block_name_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -745,9 +762,12 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::has_leaf_or_ch
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::All()
+    :
+    threshold(this, {"num_seconds"})
+    , location(this, {"fit_location_name"})
 {
 
-    yang_name = "all"; yang_parent_name = "ecc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "ecc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::~All()
@@ -756,12 +776,13 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::~All()
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::has_data() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -771,12 +792,12 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::has_data(
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::has_operation() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -806,7 +827,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold>();
         c->parent = this;
-        threshold.push_back(c);
+        threshold.append(c);
         return c;
     }
 
@@ -814,7 +835,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -826,7 +847,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold)
+    for (auto c : threshold.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -835,7 +856,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -864,9 +885,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::has_leaf_
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Threshold()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "threshold"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::~Threshold()
@@ -875,7 +898,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::~Th
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -885,7 +909,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -897,7 +921,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "threshold" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "threshold";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -917,7 +942,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -929,7 +954,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -970,7 +995,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Loc
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location::~Location()
@@ -979,6 +1004,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Loc
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -991,7 +1017,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -1047,7 +1074,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location::Loca
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location::~Location()
@@ -1056,6 +1083,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location::~Loc
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -1068,7 +1096,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location:
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -1122,16 +1151,16 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location:
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::BlockNameLst()
     :
     block_name{YType::str, "block-name"}
-    	,
+        ,
     one(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One>())
-	,continuous(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous>())
-	,stop(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop>())
+    , continuous(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous>())
+    , stop(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop>())
 {
     one->parent = this;
     continuous->parent = this;
     stop->parent = this;
 
-    yang_name = "block-name-lst"; yang_parent_name = "ecc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block-name-lst"; yang_parent_name = "ecc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::~BlockNameLst()
@@ -1140,6 +1169,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::~Bloc
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::has_data() const
 {
+    if (is_presence_container) return true;
     return block_name.is_set
 	|| (one !=  nullptr && one->has_data())
 	|| (continuous !=  nullptr && continuous->has_data())
@@ -1158,7 +1188,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "block-name-lst" <<"[block-name='" <<block_name <<"']";
+    path_buffer << "block-name-lst";
+    ADD_KEY_TOKEN(block_name, "block-name");
     return path_buffer.str();
 }
 
@@ -1254,10 +1285,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::One()
     :
     rate(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate>())
+    , location(this, {"fit_location_name"})
 {
     rate->parent = this;
 
-    yang_name = "one"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "one"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::~One()
@@ -1266,7 +1298,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1276,7 +1309,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1316,7 +1349,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1333,7 +1366,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1360,9 +1393,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::Rate()
+    :
+    error_number(this, {"num_errs"})
 {
 
-    yang_name = "rate"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::~Rate()
@@ -1371,7 +1406,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::has_data() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_data())
             return true;
@@ -1381,7 +1417,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::has_operation() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_operation())
             return true;
@@ -1411,7 +1447,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber>();
         c->parent = this;
-        error_number.push_back(c);
+        error_number.append(c);
         return c;
     }
 
@@ -1423,7 +1459,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_number)
+    for (auto c : error_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1452,9 +1488,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::ErrorNumber()
     :
     num_errs{YType::uint32, "num-errs"}
+        ,
+    duration(this, {"num_seconds"})
 {
 
-    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::~ErrorNumber()
@@ -1463,7 +1501,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::has_data() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_data())
             return true;
@@ -1473,7 +1512,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::has_operation() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_operation())
             return true;
@@ -1485,7 +1524,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "error-number" <<"[num-errs='" <<num_errs <<"']";
+    path_buffer << "error-number";
+    ADD_KEY_TOKEN(num_errs, "num-errs");
     return path_buffer.str();
 }
 
@@ -1505,7 +1545,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration>();
         c->parent = this;
-        duration.push_back(c);
+        duration.append(c);
         return c;
     }
 
@@ -1517,7 +1557,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : duration)
+    for (auto c : duration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1556,9 +1596,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Duration()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::~Duration()
@@ -1567,7 +1609,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1577,7 +1620,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1589,7 +1632,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "duration" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "duration";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -1609,7 +1653,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1621,7 +1665,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1662,7 +1706,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::~Location()
@@ -1671,6 +1715,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -1683,7 +1728,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -1739,7 +1785,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location::~Location()
@@ -1748,6 +1794,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -1760,7 +1807,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -1814,10 +1862,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Continuous()
     :
     rate(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate>())
+    , location(this, {"fit_location_name"})
 {
     rate->parent = this;
 
-    yang_name = "continuous"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "continuous"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::~Continuous()
@@ -1826,7 +1875,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Conti
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1836,7 +1886,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1876,7 +1926,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1893,7 +1943,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1920,9 +1970,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::Rate()
+    :
+    error_number(this, {"num_errs"})
 {
 
-    yang_name = "rate"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::~Rate()
@@ -1931,7 +1983,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Conti
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::has_data() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_data())
             return true;
@@ -1941,7 +1994,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::has_operation() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_operation())
             return true;
@@ -1971,7 +2024,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber>();
         c->parent = this;
-        error_number.push_back(c);
+        error_number.append(c);
         return c;
     }
 
@@ -1983,7 +2036,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_number)
+    for (auto c : error_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2012,9 +2065,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::ErrorNumber()
     :
     num_errs{YType::uint32, "num-errs"}
+        ,
+    duration(this, {"num_seconds"})
 {
 
-    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::~ErrorNumber()
@@ -2023,7 +2078,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Conti
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::has_data() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_data())
             return true;
@@ -2033,7 +2089,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::has_operation() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_operation())
             return true;
@@ -2045,7 +2101,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "error-number" <<"[num-errs='" <<num_errs <<"']";
+    path_buffer << "error-number";
+    ADD_KEY_TOKEN(num_errs, "num-errs");
     return path_buffer.str();
 }
 
@@ -2065,7 +2122,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration>();
         c->parent = this;
-        duration.push_back(c);
+        duration.append(c);
         return c;
     }
 
@@ -2077,7 +2134,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : duration)
+    for (auto c : duration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2116,9 +2173,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Duration()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::~Duration()
@@ -2127,7 +2186,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Conti
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2137,7 +2197,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2149,7 +2209,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "duration" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "duration";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -2169,7 +2230,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2181,7 +2242,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2222,7 +2283,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Conti
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::~Location()
@@ -2231,6 +2292,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Conti
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -2243,7 +2305,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -2299,7 +2362,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Conti
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location::~Location()
@@ -2308,6 +2371,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Conti
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -2320,7 +2384,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -2372,9 +2437,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Stop()
+    :
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "stop"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::~Stop()
@@ -2383,7 +2450,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop:
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2393,7 +2461,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2423,7 +2491,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2435,7 +2503,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2466,7 +2534,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop:
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location::~Location()
@@ -2475,6 +2543,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop:
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -2487,7 +2556,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -2541,10 +2611,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::Parity()
     :
     all(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All>())
+    , block_name_lst(this, {"block_name"})
 {
     all->parent = this;
 
-    yang_name = "parity"; yang_parent_name = "fault-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parity"; yang_parent_name = "fault-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::~Parity()
@@ -2553,7 +2624,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::~Parity()
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::has_data() const
 {
-    for (std::size_t index=0; index<block_name_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<block_name_lst.len(); index++)
     {
         if(block_name_lst[index]->has_data())
             return true;
@@ -2563,7 +2635,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::has_data() 
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::has_operation() const
 {
-    for (std::size_t index=0; index<block_name_lst.size(); index++)
+    for (std::size_t index=0; index<block_name_lst.len(); index++)
     {
         if(block_name_lst[index]->has_operation())
             return true;
@@ -2603,7 +2675,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst>();
         c->parent = this;
-        block_name_lst.push_back(c);
+        block_name_lst.append(c);
         return c;
     }
 
@@ -2620,7 +2692,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     }
 
     count = 0;
-    for (auto const & c : block_name_lst)
+    for (auto c : block_name_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2647,9 +2719,12 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::has_leaf_or
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::All()
+    :
+    threshold(this, {"num_seconds"})
+    , location(this, {"fit_location_name"})
 {
 
-    yang_name = "all"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::~All()
@@ -2658,12 +2733,13 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::~All()
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::has_data() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2673,12 +2749,12 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::has_da
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::has_operation() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2708,7 +2784,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold>();
         c->parent = this;
-        threshold.push_back(c);
+        threshold.append(c);
         return c;
     }
 
@@ -2716,7 +2792,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2728,7 +2804,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold)
+    for (auto c : threshold.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2737,7 +2813,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2766,9 +2842,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::has_le
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Threshold()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "threshold"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::~Threshold()
@@ -2777,7 +2855,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2787,7 +2866,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Thresh
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2799,7 +2878,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Thresh
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "threshold" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "threshold";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -2819,7 +2899,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2831,7 +2911,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2872,7 +2952,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location::~Location()
@@ -2881,6 +2961,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -2893,7 +2974,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Thresh
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -2949,7 +3031,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location::L
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location::~Location()
@@ -2958,6 +3040,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location::~
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -2970,7 +3053,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Locati
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -3024,16 +3108,16 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Locati
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::BlockNameLst()
     :
     block_name{YType::str, "block-name"}
-    	,
+        ,
     one(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One>())
-	,continuous(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous>())
-	,stop(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop>())
+    , continuous(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous>())
+    , stop(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop>())
 {
     one->parent = this;
     continuous->parent = this;
     stop->parent = this;
 
-    yang_name = "block-name-lst"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block-name-lst"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::~BlockNameLst()
@@ -3042,6 +3126,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::~B
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::has_data() const
 {
+    if (is_presence_container) return true;
     return block_name.is_set
 	|| (one !=  nullptr && one->has_data())
 	|| (continuous !=  nullptr && continuous->has_data())
@@ -3060,7 +3145,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "block-name-lst" <<"[block-name='" <<block_name <<"']";
+    path_buffer << "block-name-lst";
+    ADD_KEY_TOKEN(block_name, "block-name");
     return path_buffer.str();
 }
 
@@ -3156,10 +3242,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::One()
     :
     rate(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate>())
+    , location(this, {"fit_location_name"})
 {
     rate->parent = this;
 
-    yang_name = "one"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "one"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::~One()
@@ -3168,7 +3255,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::On
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3178,7 +3266,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3218,7 +3306,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3235,7 +3323,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3262,9 +3350,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::Rate()
+    :
+    error_number(this, {"num_errs"})
 {
 
-    yang_name = "rate"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::~Rate()
@@ -3273,7 +3363,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::On
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::has_data() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_data())
             return true;
@@ -3283,7 +3374,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::has_operation() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_operation())
             return true;
@@ -3313,7 +3404,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber>();
         c->parent = this;
-        error_number.push_back(c);
+        error_number.append(c);
         return c;
     }
 
@@ -3325,7 +3416,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_number)
+    for (auto c : error_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3354,9 +3445,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::ErrorNumber()
     :
     num_errs{YType::uint32, "num-errs"}
+        ,
+    duration(this, {"num_seconds"})
 {
 
-    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::~ErrorNumber()
@@ -3365,7 +3458,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::On
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::has_data() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_data())
             return true;
@@ -3375,7 +3469,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::has_operation() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_operation())
             return true;
@@ -3387,7 +3481,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "error-number" <<"[num-errs='" <<num_errs <<"']";
+    path_buffer << "error-number";
+    ADD_KEY_TOKEN(num_errs, "num-errs");
     return path_buffer.str();
 }
 
@@ -3407,7 +3502,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration>();
         c->parent = this;
-        duration.push_back(c);
+        duration.append(c);
         return c;
     }
 
@@ -3419,7 +3514,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : duration)
+    for (auto c : duration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3458,9 +3553,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Duration()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::~Duration()
@@ -3469,7 +3566,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::On
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3479,7 +3577,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3491,7 +3589,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "duration" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "duration";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -3511,7 +3610,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3523,7 +3622,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3564,7 +3663,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::On
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::~Location()
@@ -3573,6 +3672,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::On
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -3585,7 +3685,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -3641,7 +3742,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::On
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location::~Location()
@@ -3650,6 +3751,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::On
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -3662,7 +3764,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -3716,10 +3819,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Continuous()
     :
     rate(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate>())
+    , location(this, {"fit_location_name"})
 {
     rate->parent = this;
 
-    yang_name = "continuous"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "continuous"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::~Continuous()
@@ -3728,7 +3832,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Co
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3738,7 +3843,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3778,7 +3883,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3795,7 +3900,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3822,9 +3927,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::Rate()
+    :
+    error_number(this, {"num_errs"})
 {
 
-    yang_name = "rate"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::~Rate()
@@ -3833,7 +3940,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Co
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::has_data() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_data())
             return true;
@@ -3843,7 +3951,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::has_operation() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_operation())
             return true;
@@ -3873,7 +3981,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber>();
         c->parent = this;
-        error_number.push_back(c);
+        error_number.append(c);
         return c;
     }
 
@@ -3885,7 +3993,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_number)
+    for (auto c : error_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3914,9 +4022,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::ErrorNumber()
     :
     num_errs{YType::uint32, "num-errs"}
+        ,
+    duration(this, {"num_seconds"})
 {
 
-    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::~ErrorNumber()
@@ -3925,7 +4035,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Co
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::has_data() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_data())
             return true;
@@ -3935,7 +4046,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::has_operation() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_operation())
             return true;
@@ -3947,7 +4058,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "error-number" <<"[num-errs='" <<num_errs <<"']";
+    path_buffer << "error-number";
+    ADD_KEY_TOKEN(num_errs, "num-errs");
     return path_buffer.str();
 }
 
@@ -3967,7 +4079,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration>();
         c->parent = this;
-        duration.push_back(c);
+        duration.append(c);
         return c;
     }
 
@@ -3979,7 +4091,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : duration)
+    for (auto c : duration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4018,9 +4130,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Duration()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::~Duration()
@@ -4029,7 +4143,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Co
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4039,7 +4154,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4051,7 +4166,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "duration" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "duration";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -4071,7 +4187,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4083,7 +4199,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4124,7 +4240,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Co
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::~Location()
@@ -4133,6 +4249,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Co
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -4145,7 +4262,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -4201,7 +4319,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Co
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location::~Location()
@@ -4210,6 +4328,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Co
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -4222,7 +4341,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -4274,9 +4394,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Stop()
+    :
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "stop"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::~Stop()
@@ -4285,7 +4407,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::St
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4295,7 +4418,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4325,7 +4448,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4337,7 +4460,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4368,7 +4491,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::St
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location::~Location()
@@ -4377,6 +4500,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::St
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -4389,7 +4513,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -4443,10 +4568,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLs
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::Other()
     :
     all(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All>())
+    , block_name_lst(this, {"block_name"})
 {
     all->parent = this;
 
-    yang_name = "other"; yang_parent_name = "fault-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "other"; yang_parent_name = "fault-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::~Other()
@@ -4455,7 +4581,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::~Other()
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::has_data() const
 {
-    for (std::size_t index=0; index<block_name_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<block_name_lst.len(); index++)
     {
         if(block_name_lst[index]->has_data())
             return true;
@@ -4465,7 +4592,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::has_data() c
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::has_operation() const
 {
-    for (std::size_t index=0; index<block_name_lst.size(); index++)
+    for (std::size_t index=0; index<block_name_lst.len(); index++)
     {
         if(block_name_lst[index]->has_operation())
             return true;
@@ -4505,7 +4632,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst>();
         c->parent = this;
-        block_name_lst.push_back(c);
+        block_name_lst.append(c);
         return c;
     }
 
@@ -4522,7 +4649,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     }
 
     count = 0;
-    for (auto const & c : block_name_lst)
+    for (auto c : block_name_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4549,9 +4676,12 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::has_leaf_or_
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::All()
+    :
+    threshold(this, {"num_seconds"})
+    , location(this, {"fit_location_name"})
 {
 
-    yang_name = "all"; yang_parent_name = "other"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "other"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::~All()
@@ -4560,12 +4690,13 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::~All()
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::has_data() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4575,12 +4706,12 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::has_dat
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::has_operation() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4610,7 +4741,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold>();
         c->parent = this;
-        threshold.push_back(c);
+        threshold.append(c);
         return c;
     }
 
@@ -4618,7 +4749,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4630,7 +4761,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold)
+    for (auto c : threshold.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4639,7 +4770,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4668,9 +4799,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::has_lea
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Threshold()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "threshold"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::~Threshold()
@@ -4679,7 +4812,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::~
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4689,7 +4823,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Thresho
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4701,7 +4835,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Thresho
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "threshold" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "threshold";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -4721,7 +4856,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4733,7 +4868,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4774,7 +4909,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::L
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location::~Location()
@@ -4783,6 +4918,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::L
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -4795,7 +4931,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Thresho
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -4851,7 +4988,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location::Lo
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location::~Location()
@@ -4860,6 +4997,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location::~L
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -4872,7 +5010,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Locatio
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -4926,16 +5065,16 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Locatio
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::BlockNameLst()
     :
     block_name{YType::str, "block-name"}
-    	,
+        ,
     one(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One>())
-	,continuous(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous>())
-	,stop(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop>())
+    , continuous(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous>())
+    , stop(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop>())
 {
     one->parent = this;
     continuous->parent = this;
     stop->parent = this;
 
-    yang_name = "block-name-lst"; yang_parent_name = "other"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block-name-lst"; yang_parent_name = "other"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::~BlockNameLst()
@@ -4944,6 +5083,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::~Bl
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::has_data() const
 {
+    if (is_presence_container) return true;
     return block_name.is_set
 	|| (one !=  nullptr && one->has_data())
 	|| (continuous !=  nullptr && continuous->has_data())
@@ -4962,7 +5102,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "block-name-lst" <<"[block-name='" <<block_name <<"']";
+    path_buffer << "block-name-lst";
+    ADD_KEY_TOKEN(block_name, "block-name");
     return path_buffer.str();
 }
 
@@ -5058,10 +5199,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::One()
     :
     rate(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate>())
+    , location(this, {"fit_location_name"})
 {
     rate->parent = this;
 
-    yang_name = "one"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "one"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::~One()
@@ -5070,7 +5212,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5080,7 +5223,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5120,7 +5263,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5137,7 +5280,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5164,9 +5307,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::Rate()
+    :
+    error_number(this, {"num_errs"})
 {
 
-    yang_name = "rate"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::~Rate()
@@ -5175,7 +5320,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::has_data() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_data())
             return true;
@@ -5185,7 +5331,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::has_operation() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_operation())
             return true;
@@ -5215,7 +5361,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber>();
         c->parent = this;
-        error_number.push_back(c);
+        error_number.append(c);
         return c;
     }
 
@@ -5227,7 +5373,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_number)
+    for (auto c : error_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5256,9 +5402,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::ErrorNumber()
     :
     num_errs{YType::uint32, "num-errs"}
+        ,
+    duration(this, {"num_seconds"})
 {
 
-    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::~ErrorNumber()
@@ -5267,7 +5415,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::has_data() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_data())
             return true;
@@ -5277,7 +5426,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::has_operation() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_operation())
             return true;
@@ -5289,7 +5438,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "error-number" <<"[num-errs='" <<num_errs <<"']";
+    path_buffer << "error-number";
+    ADD_KEY_TOKEN(num_errs, "num-errs");
     return path_buffer.str();
 }
 
@@ -5309,7 +5459,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration>();
         c->parent = this;
-        duration.push_back(c);
+        duration.append(c);
         return c;
     }
 
@@ -5321,7 +5471,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : duration)
+    for (auto c : duration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5360,9 +5510,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Duration()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::~Duration()
@@ -5371,7 +5523,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5381,7 +5534,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5393,7 +5546,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "duration" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "duration";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -5413,7 +5567,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5425,7 +5579,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5466,7 +5620,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::~Location()
@@ -5475,6 +5629,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -5487,7 +5642,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -5543,7 +5699,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location::~Location()
@@ -5552,6 +5708,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -5564,7 +5721,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -5618,10 +5776,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Continuous()
     :
     rate(std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate>())
+    , location(this, {"fit_location_name"})
 {
     rate->parent = this;
 
-    yang_name = "continuous"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "continuous"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::~Continuous()
@@ -5630,7 +5789,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Con
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5640,7 +5800,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5680,7 +5840,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5697,7 +5857,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5724,9 +5884,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::Rate()
+    :
+    error_number(this, {"num_errs"})
 {
 
-    yang_name = "rate"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::~Rate()
@@ -5735,7 +5897,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Con
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::has_data() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_data())
             return true;
@@ -5745,7 +5908,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::has_operation() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_operation())
             return true;
@@ -5775,7 +5938,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber>();
         c->parent = this;
-        error_number.push_back(c);
+        error_number.append(c);
         return c;
     }
 
@@ -5787,7 +5950,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_number)
+    for (auto c : error_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5816,9 +5979,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::ErrorNumber()
     :
     num_errs{YType::uint32, "num-errs"}
+        ,
+    duration(this, {"num_seconds"})
 {
 
-    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::~ErrorNumber()
@@ -5827,7 +5992,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Con
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::has_data() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_data())
             return true;
@@ -5837,7 +6003,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::has_operation() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_operation())
             return true;
@@ -5849,7 +6015,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "error-number" <<"[num-errs='" <<num_errs <<"']";
+    path_buffer << "error-number";
+    ADD_KEY_TOKEN(num_errs, "num-errs");
     return path_buffer.str();
 }
 
@@ -5869,7 +6036,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration>();
         c->parent = this;
-        duration.push_back(c);
+        duration.append(c);
         return c;
     }
 
@@ -5881,7 +6048,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : duration)
+    for (auto c : duration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5920,9 +6087,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Duration()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::~Duration()
@@ -5931,7 +6100,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Con
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5941,7 +6111,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5953,7 +6123,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "duration" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "duration";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -5973,7 +6144,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5985,7 +6156,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6026,7 +6197,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Con
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::~Location()
@@ -6035,6 +6206,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Con
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -6047,7 +6219,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -6103,7 +6276,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Con
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location::~Location()
@@ -6112,6 +6285,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Con
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -6124,7 +6298,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -6176,9 +6351,11 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Stop()
+    :
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "stop"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::~Stop()
@@ -6187,7 +6364,8 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Sto
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6197,7 +6375,7 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6227,7 +6405,7 @@ std::shared_ptr<Entity> Set::Asic::Instance::FaultInjection::Module::FaultType::
     {
         auto c = std::make_shared<Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6239,7 +6417,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Asic::Instance::FaultInjecti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6270,7 +6448,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Sto
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location::~Location()
@@ -6279,6 +6457,7 @@ Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Sto
 
 bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -6291,7 +6470,8 @@ bool Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 std::string Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 

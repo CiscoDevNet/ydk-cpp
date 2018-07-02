@@ -59,20 +59,20 @@ class Lpts::Ipolicer : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf enable; //type: empty
-        class Ipv4Acls; //type: Lpts::Ipolicer::Ipv4Acls
+        class Acls; //type: Lpts::Ipolicer::Acls
         class Flows; //type: Lpts::Ipolicer::Flows
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls> ipv4acls;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Acls> acls;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Flows> flows;
         
 }; // Lpts::Ipolicer
 
 
-class Lpts::Ipolicer::Ipv4Acls : public ydk::Entity
+class Lpts::Ipolicer::Acls : public ydk::Entity
 {
     public:
-        Ipv4Acls();
-        ~Ipv4Acls();
+        Acls();
+        ~Acls();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -85,18 +85,18 @@ class Lpts::Ipolicer::Ipv4Acls : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv4Acl; //type: Lpts::Ipolicer::Ipv4Acls::Ipv4Acl
+        class Acl; //type: Lpts::Ipolicer::Acls::Acl
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls::Ipv4Acl> > ipv4acl;
+        ydk::YList acl;
         
-}; // Lpts::Ipolicer::Ipv4Acls
+}; // Lpts::Ipolicer::Acls
 
 
-class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl : public ydk::Entity
+class Lpts::Ipolicer::Acls::Acl : public ydk::Entity
 {
     public:
-        Ipv4Acl();
-        ~Ipv4Acl();
+        Acl();
+        ~Acl();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -110,18 +110,18 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf acl_name; //type: string
-        class Ipv4VrfNames; //type: Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames
+        class AfiTypes; //type: Lpts::Ipolicer::Acls::Acl::AfiTypes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames> ipv4vrf_names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Acls::Acl::AfiTypes> afi_types;
         
-}; // Lpts::Ipolicer::Ipv4Acls::Ipv4Acl
+}; // Lpts::Ipolicer::Acls::Acl
 
 
-class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames : public ydk::Entity
+class Lpts::Ipolicer::Acls::Acl::AfiTypes : public ydk::Entity
 {
     public:
-        Ipv4VrfNames();
-        ~Ipv4VrfNames();
+        AfiTypes();
+        ~AfiTypes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -133,18 +133,65 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv4VrfName; //type: Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName
+        class AfiType; //type: Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName> > ipv4vrf_name;
+        ydk::YList afi_type;
         
-}; // Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames
+}; // Lpts::Ipolicer::Acls::Acl::AfiTypes
 
 
-class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName : public ydk::Entity
+class Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType : public ydk::Entity
 {
     public:
-        Ipv4VrfName();
-        ~Ipv4VrfName();
+        AfiType();
+        ~AfiType();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf afi_family_type; //type: Lptsafi
+        class VrfNames; //type: Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames> vrf_names;
+        
+}; // Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType
+
+
+class Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames : public ydk::Entity
+{
+    public:
+        VrfNames();
+        ~VrfNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class VrfName; //type: Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName
+
+        ydk::YList vrf_name;
+        
+}; // Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames
+
+
+class Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName : public ydk::Entity
+{
+    public:
+        VrfName();
+        ~VrfName();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -159,7 +206,7 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName : public ydk:
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf acl_rate; //type: uint32
 
-}; // Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName
+}; // Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName
 
 
 class Lpts::Ipolicer::Flows : public ydk::Entity
@@ -181,7 +228,7 @@ class Lpts::Ipolicer::Flows : public ydk::Entity
 
         class Flow; //type: Lpts::Ipolicer::Flows::Flow
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Flows::Flow> > flow;
+        ydk::YList flow;
         
 }; // Lpts::Ipolicer::Flows
 
@@ -278,7 +325,7 @@ class Lpts::Punt::Flowtrap : public ydk::Entity
         ydk::YLeaf et_size; //type: uint32
         ydk::YLeaf eviction_threshold; //type: uint32
         ydk::YLeaf report_threshold; //type: uint16
-        ydk::YLeaf non_subscriber_interfaces; //type: int32
+        ydk::YLeaf non_subscriber_interfaces; //type: uint32
         ydk::YLeaf sample_prob; //type: string
         ydk::YLeaf eviction_search_limit; //type: uint32
         ydk::YLeaf routing_protocols_enable; //type: boolean
@@ -315,7 +362,7 @@ class Lpts::Punt::Flowtrap::PenaltyRates : public ydk::Entity
 
         class PenaltyRate; //type: Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate> > penalty_rate;
+        ydk::YList penalty_rate;
         
 }; // Lpts::Punt::Flowtrap::PenaltyRates
 
@@ -362,7 +409,7 @@ class Lpts::Punt::Flowtrap::PenaltyTimeouts : public ydk::Entity
 
         class PenaltyTimeout; //type: Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout> > penalty_timeout;
+        ydk::YList penalty_timeout;
         
 }; // Lpts::Punt::Flowtrap::PenaltyTimeouts
 
@@ -433,7 +480,7 @@ class Lpts::Punt::Flowtrap::Exclude::InterfaceNames : public ydk::Entity
 
         class InterfaceName; //type: Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName> > interface_name;
+        ydk::YList interface_name;
         
 }; // Lpts::Punt::Flowtrap::Exclude::InterfaceNames
 

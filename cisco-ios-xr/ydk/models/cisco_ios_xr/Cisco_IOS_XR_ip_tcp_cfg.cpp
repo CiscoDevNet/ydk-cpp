@@ -20,14 +20,14 @@ IpTcp::IpTcp()
     maximum_segment_size{YType::uint32, "maximum-segment-size"},
     syn_wait_time{YType::uint32, "syn-wait-time"},
     timestamp{YType::empty, "timestamp"},
-    path_mtu_discovery{YType::int32, "path-mtu-discovery"}
-    	,
+    path_mtu_discovery{YType::uint32, "path-mtu-discovery"}
+        ,
     directory(nullptr) // presence node
-	,throttle(nullptr) // presence node
-	,num_thread(nullptr) // presence node
+    , throttle(nullptr) // presence node
+    , num_thread(nullptr) // presence node
 {
 
-    yang_name = "ip-tcp"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ip-tcp"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-cfg"; is_top_level_class = true; has_list_ancestor = false; is_presence_container = true;
 }
 
 IpTcp::~IpTcp()
@@ -36,6 +36,7 @@ IpTcp::~IpTcp()
 
 bool IpTcp::has_data() const
 {
+    if (is_presence_container) return true;
     return accept_rate.is_set
 	|| selective_ack.is_set
 	|| window_size.is_set
@@ -270,7 +271,7 @@ IpTcp::Directory::Directory()
     max_file_size_files{YType::uint32, "max-file-size-files"}
 {
 
-    yang_name = "directory"; yang_parent_name = "ip-tcp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "directory"; yang_parent_name = "ip-tcp"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 IpTcp::Directory::~Directory()
@@ -279,6 +280,7 @@ IpTcp::Directory::~Directory()
 
 bool IpTcp::Directory::has_data() const
 {
+    if (is_presence_container) return true;
     return directoryname.is_set
 	|| max_debug_files.is_set
 	|| max_file_size_files.is_set;
@@ -381,7 +383,7 @@ IpTcp::Throttle::Throttle()
     tcpmaxthrottle{YType::uint32, "tcpmaxthrottle"}
 {
 
-    yang_name = "throttle"; yang_parent_name = "ip-tcp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "throttle"; yang_parent_name = "ip-tcp"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 IpTcp::Throttle::~Throttle()
@@ -390,6 +392,7 @@ IpTcp::Throttle::~Throttle()
 
 bool IpTcp::Throttle::has_data() const
 {
+    if (is_presence_container) return true;
     return tcpmin_throttle.is_set
 	|| tcpmaxthrottle.is_set;
 }
@@ -479,7 +482,7 @@ IpTcp::NumThread::NumThread()
     tcp_out_q_threads{YType::uint32, "tcp-out-q-threads"}
 {
 
-    yang_name = "num-thread"; yang_parent_name = "ip-tcp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "num-thread"; yang_parent_name = "ip-tcp"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 IpTcp::NumThread::~NumThread()
@@ -488,6 +491,7 @@ IpTcp::NumThread::~NumThread()
 
 bool IpTcp::NumThread::has_data() const
 {
+    if (is_presence_container) return true;
     return tcp_in_q_threads.is_set
 	|| tcp_out_q_threads.is_set;
 }
@@ -574,12 +578,12 @@ bool IpTcp::NumThread::has_leaf_or_child_of_name(const std::string & name) const
 Ip::Ip()
     :
     cinetd(std::make_shared<Ip::Cinetd>())
-	,forward_protocol(std::make_shared<Ip::ForwardProtocol>())
+    , forward_protocol(std::make_shared<Ip::ForwardProtocol>())
 {
     cinetd->parent = this;
     forward_protocol->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ip::~Ip()
@@ -588,6 +592,7 @@ Ip::~Ip()
 
 bool Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (cinetd !=  nullptr && cinetd->has_data())
 	|| (forward_protocol !=  nullptr && forward_protocol->has_data());
 }
@@ -698,12 +703,12 @@ bool Ip::has_leaf_or_child_of_name(const std::string & name) const
 Ip::Cinetd::Cinetd()
     :
     rate_limit{YType::uint32, "Cisco-IOS-XR-ipv4-cinetd-cfg:rate-limit"}
-    	,
+        ,
     services(std::make_shared<Ip::Cinetd::Services>())
 {
     services->parent = this;
 
-    yang_name = "cinetd"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cinetd"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ip::Cinetd::~Cinetd()
@@ -712,6 +717,7 @@ Ip::Cinetd::~Cinetd()
 
 bool Ip::Cinetd::has_data() const
 {
+    if (is_presence_container) return true;
     return rate_limit.is_set
 	|| (services !=  nullptr && services->has_data());
 }
@@ -801,14 +807,14 @@ bool Ip::Cinetd::has_leaf_or_child_of_name(const std::string & name) const
 Ip::Cinetd::Services::Services()
     :
     ipv4(std::make_shared<Ip::Cinetd::Services::Ipv4>())
-	,vrfs(std::make_shared<Ip::Cinetd::Services::Vrfs>())
-	,ipv6(std::make_shared<Ip::Cinetd::Services::Ipv6>())
+    , vrfs(std::make_shared<Ip::Cinetd::Services::Vrfs>())
+    , ipv6(std::make_shared<Ip::Cinetd::Services::Ipv6>())
 {
     ipv4->parent = this;
     vrfs->parent = this;
     ipv6->parent = this;
 
-    yang_name = "services"; yang_parent_name = "cinetd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "services"; yang_parent_name = "cinetd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ip::Cinetd::Services::~Services()
@@ -817,6 +823,7 @@ Ip::Cinetd::Services::~Services()
 
 bool Ip::Cinetd::Services::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (vrfs !=  nullptr && vrfs->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
@@ -928,7 +935,7 @@ Ip::Cinetd::Services::Ipv4::Ipv4()
 {
     small_servers->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ip::Cinetd::Services::Ipv4::~Ipv4()
@@ -937,6 +944,7 @@ Ip::Cinetd::Services::Ipv4::~Ipv4()
 
 bool Ip::Cinetd::Services::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (small_servers !=  nullptr && small_servers->has_data());
 }
 
@@ -1013,10 +1021,10 @@ bool Ip::Cinetd::Services::Ipv4::has_leaf_or_child_of_name(const std::string & n
 Ip::Cinetd::Services::Ipv4::SmallServers::SmallServers()
     :
     tcp_small_servers(nullptr) // presence node
-	,udp_small_servers(nullptr) // presence node
+    , udp_small_servers(nullptr) // presence node
 {
 
-    yang_name = "small-servers"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "small-servers"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ip::Cinetd::Services::Ipv4::SmallServers::~SmallServers()
@@ -1025,6 +1033,7 @@ Ip::Cinetd::Services::Ipv4::SmallServers::~SmallServers()
 
 bool Ip::Cinetd::Services::Ipv4::SmallServers::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcp_small_servers !=  nullptr && tcp_small_servers->has_data())
 	|| (udp_small_servers !=  nullptr && udp_small_servers->has_data());
 }
@@ -1120,7 +1129,7 @@ Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::TcpSmallServers()
     small_server{YType::str, "small-server"}
 {
 
-    yang_name = "tcp-small-servers"; yang_parent_name = "small-servers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tcp-small-servers"; yang_parent_name = "small-servers"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::~TcpSmallServers()
@@ -1129,6 +1138,7 @@ Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::~TcpSmallServers()
 
 bool Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::has_data() const
 {
+    if (is_presence_container) return true;
     return access_control_list_name.is_set
 	|| small_server.is_set;
 }
@@ -1218,7 +1228,7 @@ Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::UdpSmallServers()
     small_server{YType::str, "small-server"}
 {
 
-    yang_name = "udp-small-servers"; yang_parent_name = "small-servers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udp-small-servers"; yang_parent_name = "small-servers"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::~UdpSmallServers()
@@ -1227,6 +1237,7 @@ Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::~UdpSmallServers()
 
 bool Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::has_data() const
 {
+    if (is_presence_container) return true;
     return access_control_list_name.is_set
 	|| small_server.is_set;
 }
@@ -1311,9 +1322,11 @@ bool Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::has_leaf_or_chil
 }
 
 Ip::Cinetd::Services::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ip::Cinetd::Services::Vrfs::~Vrfs()
@@ -1322,7 +1335,8 @@ Ip::Cinetd::Services::Vrfs::~Vrfs()
 
 bool Ip::Cinetd::Services::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -1332,7 +1346,7 @@ bool Ip::Cinetd::Services::Vrfs::has_data() const
 
 bool Ip::Cinetd::Services::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -1369,7 +1383,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::get_child_by_name(const std:
     {
         auto c = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -1381,7 +1395,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1410,14 +1424,14 @@ bool Ip::Cinetd::Services::Vrfs::has_leaf_or_child_of_name(const std::string & n
 Ip::Cinetd::Services::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     ipv6(std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv6>())
-	,ipv4(std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv4>())
+    , ipv4(std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv4>())
 {
     ipv6->parent = this;
     ipv4->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::~Vrf()
@@ -1426,6 +1440,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::~Vrf()
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (ipv6 !=  nullptr && ipv6->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data());
@@ -1449,7 +1464,8 @@ std::string Ip::Cinetd::Services::Vrfs::Vrf::get_absolute_path() const
 std::string Ip::Cinetd::Services::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -1531,12 +1547,12 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::has_leaf_or_child_of_name(const std::strin
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Ipv6()
     :
     telnet(std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet>())
-	,tftp(std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp>())
+    , tftp(std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp>())
 {
     telnet->parent = this;
     tftp->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::~Ipv6()
@@ -1545,6 +1561,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::~Ipv6()
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (telnet !=  nullptr && telnet->has_data())
 	|| (tftp !=  nullptr && tftp->has_data());
 }
@@ -1632,7 +1649,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Telnet()
     tcp(nullptr) // presence node
 {
 
-    yang_name = "telnet"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "telnet"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::~Telnet()
@@ -1641,6 +1658,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::~Telnet()
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcp !=  nullptr && tcp->has_data());
 }
 
@@ -1713,7 +1731,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::Tcp()
     maximum_server{YType::uint32, "maximum-server"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "telnet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "telnet"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::~Tcp()
@@ -1722,6 +1740,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::~Tcp()
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return access_list_name.is_set
 	|| maximum_server.is_set;
 }
@@ -1803,7 +1822,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Tftp()
     udp(nullptr) // presence node
 {
 
-    yang_name = "tftp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tftp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::~Tftp()
@@ -1812,6 +1831,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::~Tftp()
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::has_data() const
 {
+    if (is_presence_container) return true;
     return (udp !=  nullptr && udp->has_data());
 }
 
@@ -1883,10 +1903,10 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::Udp()
     access_list_name{YType::str, "access-list-name"},
     maximum_server{YType::uint32, "maximum-server"},
     home_directory{YType::str, "home-directory"},
-    dscp_value{YType::int32, "dscp-value"}
+    dscp_value{YType::uint32, "dscp-value"}
 {
 
-    yang_name = "udp"; yang_parent_name = "tftp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "tftp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::~Udp()
@@ -1895,6 +1915,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::~Udp()
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return access_list_name.is_set
 	|| maximum_server.is_set
 	|| home_directory.is_set
@@ -2000,12 +2021,12 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::has_leaf_or_child_of_name
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Ipv4()
     :
     telnet(std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet>())
-	,tftp(std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp>())
+    , tftp(std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp>())
 {
     telnet->parent = this;
     tftp->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::~Ipv4()
@@ -2014,6 +2035,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::~Ipv4()
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (telnet !=  nullptr && telnet->has_data())
 	|| (tftp !=  nullptr && tftp->has_data());
 }
@@ -2101,7 +2123,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Telnet()
     tcp(nullptr) // presence node
 {
 
-    yang_name = "telnet"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "telnet"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::~Telnet()
@@ -2110,6 +2132,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::~Telnet()
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcp !=  nullptr && tcp->has_data());
 }
 
@@ -2182,7 +2205,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::Tcp()
     maximum_server{YType::uint32, "maximum-server"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "telnet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "telnet"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::~Tcp()
@@ -2191,6 +2214,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::~Tcp()
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return access_list_name.is_set
 	|| maximum_server.is_set;
 }
@@ -2272,7 +2296,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Tftp()
     udp(nullptr) // presence node
 {
 
-    yang_name = "tftp"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tftp"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::~Tftp()
@@ -2281,6 +2305,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::~Tftp()
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::has_data() const
 {
+    if (is_presence_container) return true;
     return (udp !=  nullptr && udp->has_data());
 }
 
@@ -2352,10 +2377,10 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::Udp()
     access_list_name{YType::str, "access-list-name"},
     maximum_server{YType::uint32, "maximum-server"},
     home_directory{YType::str, "home-directory"},
-    dscp_value{YType::int32, "dscp-value"}
+    dscp_value{YType::uint32, "dscp-value"}
 {
 
-    yang_name = "udp"; yang_parent_name = "tftp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "tftp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::~Udp()
@@ -2364,6 +2389,7 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::~Udp()
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return access_list_name.is_set
 	|| maximum_server.is_set
 	|| home_directory.is_set
@@ -2472,7 +2498,7 @@ Ip::Cinetd::Services::Ipv6::Ipv6()
 {
     small_servers->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ip::Cinetd::Services::Ipv6::~Ipv6()
@@ -2481,6 +2507,7 @@ Ip::Cinetd::Services::Ipv6::~Ipv6()
 
 bool Ip::Cinetd::Services::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (small_servers !=  nullptr && small_servers->has_data());
 }
 
@@ -2557,10 +2584,10 @@ bool Ip::Cinetd::Services::Ipv6::has_leaf_or_child_of_name(const std::string & n
 Ip::Cinetd::Services::Ipv6::SmallServers::SmallServers()
     :
     tcp_small_servers(nullptr) // presence node
-	,udp_small_servers(nullptr) // presence node
+    , udp_small_servers(nullptr) // presence node
 {
 
-    yang_name = "small-servers"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "small-servers"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ip::Cinetd::Services::Ipv6::SmallServers::~SmallServers()
@@ -2569,6 +2596,7 @@ Ip::Cinetd::Services::Ipv6::SmallServers::~SmallServers()
 
 bool Ip::Cinetd::Services::Ipv6::SmallServers::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcp_small_servers !=  nullptr && tcp_small_servers->has_data())
 	|| (udp_small_servers !=  nullptr && udp_small_servers->has_data());
 }
@@ -2664,7 +2692,7 @@ Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::TcpSmallServers()
     small_server{YType::str, "small-server"}
 {
 
-    yang_name = "tcp-small-servers"; yang_parent_name = "small-servers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tcp-small-servers"; yang_parent_name = "small-servers"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::~TcpSmallServers()
@@ -2673,6 +2701,7 @@ Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::~TcpSmallServers()
 
 bool Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::has_data() const
 {
+    if (is_presence_container) return true;
     return access_control_list_name.is_set
 	|| small_server.is_set;
 }
@@ -2762,7 +2791,7 @@ Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::UdpSmallServers()
     small_server{YType::str, "small-server"}
 {
 
-    yang_name = "udp-small-servers"; yang_parent_name = "small-servers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udp-small-servers"; yang_parent_name = "small-servers"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::~UdpSmallServers()
@@ -2771,6 +2800,7 @@ Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::~UdpSmallServers()
 
 bool Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::has_data() const
 {
+    if (is_presence_container) return true;
     return access_control_list_name.is_set
 	|| small_server.is_set;
 }
@@ -2860,7 +2890,7 @@ Ip::ForwardProtocol::ForwardProtocol()
 {
     udp->parent = this;
 
-    yang_name = "forward-protocol"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "forward-protocol"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ip::ForwardProtocol::~ForwardProtocol()
@@ -2869,6 +2899,7 @@ Ip::ForwardProtocol::~ForwardProtocol()
 
 bool Ip::ForwardProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (udp !=  nullptr && udp->has_data());
 }
 
@@ -2945,12 +2976,12 @@ bool Ip::ForwardProtocol::has_leaf_or_child_of_name(const std::string & name) co
 Ip::ForwardProtocol::Udp::Udp()
     :
     disable{YType::empty, "disable"}
-    	,
+        ,
     ports(std::make_shared<Ip::ForwardProtocol::Udp::Ports>())
 {
     ports->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "forward-protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udp"; yang_parent_name = "forward-protocol"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ip::ForwardProtocol::Udp::~Udp()
@@ -2959,6 +2990,7 @@ Ip::ForwardProtocol::Udp::~Udp()
 
 bool Ip::ForwardProtocol::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| (ports !=  nullptr && ports->has_data());
 }
@@ -3046,9 +3078,11 @@ bool Ip::ForwardProtocol::Udp::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Ip::ForwardProtocol::Udp::Ports::Ports()
+    :
+    port(this, {"port_id"})
 {
 
-    yang_name = "ports"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ports"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ip::ForwardProtocol::Udp::Ports::~Ports()
@@ -3057,7 +3091,8 @@ Ip::ForwardProtocol::Udp::Ports::~Ports()
 
 bool Ip::ForwardProtocol::Udp::Ports::has_data() const
 {
-    for (std::size_t index=0; index<port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port.len(); index++)
     {
         if(port[index]->has_data())
             return true;
@@ -3067,7 +3102,7 @@ bool Ip::ForwardProtocol::Udp::Ports::has_data() const
 
 bool Ip::ForwardProtocol::Udp::Ports::has_operation() const
 {
-    for (std::size_t index=0; index<port.size(); index++)
+    for (std::size_t index=0; index<port.len(); index++)
     {
         if(port[index]->has_operation())
             return true;
@@ -3104,7 +3139,7 @@ std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::Ports::get_child_by_name(const
     {
         auto c = std::make_shared<Ip::ForwardProtocol::Udp::Ports::Port>();
         c->parent = this;
-        port.push_back(c);
+        port.append(c);
         return c;
     }
 
@@ -3116,7 +3151,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::Ports::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port)
+    for (auto c : port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3148,7 +3183,7 @@ Ip::ForwardProtocol::Udp::Ports::Port::Port()
     enable{YType::boolean, "enable"}
 {
 
-    yang_name = "port"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ip::ForwardProtocol::Udp::Ports::Port::~Port()
@@ -3157,6 +3192,7 @@ Ip::ForwardProtocol::Udp::Ports::Port::~Port()
 
 bool Ip::ForwardProtocol::Udp::Ports::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return port_id.is_set
 	|| enable.is_set;
 }
@@ -3178,7 +3214,8 @@ std::string Ip::ForwardProtocol::Udp::Ports::Port::get_absolute_path() const
 std::string Ip::ForwardProtocol::Udp::Ports::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port" <<"[port-id='" <<port_id <<"']";
+    path_buffer << "port";
+    ADD_KEY_TOKEN(port_id, "port-id");
     return path_buffer.str();
 }
 

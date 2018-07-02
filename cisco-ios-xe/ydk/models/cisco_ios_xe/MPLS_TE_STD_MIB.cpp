@@ -13,14 +13,14 @@ namespace MPLS_TE_STD_MIB {
 
 MPLSTESTDMIB::MPLSTESTDMIB()
     :
-    mplstescalars(std::make_shared<MPLSTESTDMIB::Mplstescalars>())
-	,mplsteobjects(std::make_shared<MPLSTESTDMIB::Mplsteobjects>())
-	,mplstunneltable(std::make_shared<MPLSTESTDMIB::Mplstunneltable>())
-	,mplstunnelhoptable(std::make_shared<MPLSTESTDMIB::Mplstunnelhoptable>())
-	,mplstunnelresourcetable(std::make_shared<MPLSTESTDMIB::Mplstunnelresourcetable>())
-	,mplstunnelarhoptable(std::make_shared<MPLSTESTDMIB::Mplstunnelarhoptable>())
-	,mplstunnelchoptable(std::make_shared<MPLSTESTDMIB::Mplstunnelchoptable>())
-	,mplstunnelcrldprestable(std::make_shared<MPLSTESTDMIB::Mplstunnelcrldprestable>())
+    mplstescalars(std::make_shared<MPLSTESTDMIB::MplsTeScalars>())
+    , mplsteobjects(std::make_shared<MPLSTESTDMIB::MplsTeObjects>())
+    , mplstunneltable(std::make_shared<MPLSTESTDMIB::MplsTunnelTable>())
+    , mplstunnelhoptable(std::make_shared<MPLSTESTDMIB::MplsTunnelHopTable>())
+    , mplstunnelresourcetable(std::make_shared<MPLSTESTDMIB::MplsTunnelResourceTable>())
+    , mplstunnelarhoptable(std::make_shared<MPLSTESTDMIB::MplsTunnelARHopTable>())
+    , mplstunnelchoptable(std::make_shared<MPLSTESTDMIB::MplsTunnelCHopTable>())
+    , mplstunnelcrldprestable(std::make_shared<MPLSTESTDMIB::MplsTunnelCRLDPResTable>())
 {
     mplstescalars->parent = this;
     mplsteobjects->parent = this;
@@ -31,7 +31,7 @@ MPLSTESTDMIB::MPLSTESTDMIB()
     mplstunnelchoptable->parent = this;
     mplstunnelcrldprestable->parent = this;
 
-    yang_name = "MPLS-TE-STD-MIB"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "MPLS-TE-STD-MIB"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MPLSTESTDMIB::~MPLSTESTDMIB()
@@ -40,6 +40,7 @@ MPLSTESTDMIB::~MPLSTESTDMIB()
 
 bool MPLSTESTDMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (mplstescalars !=  nullptr && mplstescalars->has_data())
 	|| (mplsteobjects !=  nullptr && mplsteobjects->has_data())
 	|| (mplstunneltable !=  nullptr && mplstunneltable->has_data())
@@ -85,7 +86,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::get_child_by_name(const std::string & chil
     {
         if(mplstescalars == nullptr)
         {
-            mplstescalars = std::make_shared<MPLSTESTDMIB::Mplstescalars>();
+            mplstescalars = std::make_shared<MPLSTESTDMIB::MplsTeScalars>();
         }
         return mplstescalars;
     }
@@ -94,7 +95,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::get_child_by_name(const std::string & chil
     {
         if(mplsteobjects == nullptr)
         {
-            mplsteobjects = std::make_shared<MPLSTESTDMIB::Mplsteobjects>();
+            mplsteobjects = std::make_shared<MPLSTESTDMIB::MplsTeObjects>();
         }
         return mplsteobjects;
     }
@@ -103,7 +104,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::get_child_by_name(const std::string & chil
     {
         if(mplstunneltable == nullptr)
         {
-            mplstunneltable = std::make_shared<MPLSTESTDMIB::Mplstunneltable>();
+            mplstunneltable = std::make_shared<MPLSTESTDMIB::MplsTunnelTable>();
         }
         return mplstunneltable;
     }
@@ -112,7 +113,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::get_child_by_name(const std::string & chil
     {
         if(mplstunnelhoptable == nullptr)
         {
-            mplstunnelhoptable = std::make_shared<MPLSTESTDMIB::Mplstunnelhoptable>();
+            mplstunnelhoptable = std::make_shared<MPLSTESTDMIB::MplsTunnelHopTable>();
         }
         return mplstunnelhoptable;
     }
@@ -121,7 +122,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::get_child_by_name(const std::string & chil
     {
         if(mplstunnelresourcetable == nullptr)
         {
-            mplstunnelresourcetable = std::make_shared<MPLSTESTDMIB::Mplstunnelresourcetable>();
+            mplstunnelresourcetable = std::make_shared<MPLSTESTDMIB::MplsTunnelResourceTable>();
         }
         return mplstunnelresourcetable;
     }
@@ -130,7 +131,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::get_child_by_name(const std::string & chil
     {
         if(mplstunnelarhoptable == nullptr)
         {
-            mplstunnelarhoptable = std::make_shared<MPLSTESTDMIB::Mplstunnelarhoptable>();
+            mplstunnelarhoptable = std::make_shared<MPLSTESTDMIB::MplsTunnelARHopTable>();
         }
         return mplstunnelarhoptable;
     }
@@ -139,7 +140,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::get_child_by_name(const std::string & chil
     {
         if(mplstunnelchoptable == nullptr)
         {
-            mplstunnelchoptable = std::make_shared<MPLSTESTDMIB::Mplstunnelchoptable>();
+            mplstunnelchoptable = std::make_shared<MPLSTESTDMIB::MplsTunnelCHopTable>();
         }
         return mplstunnelchoptable;
     }
@@ -148,7 +149,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::get_child_by_name(const std::string & chil
     {
         if(mplstunnelcrldprestable == nullptr)
         {
-            mplstunnelcrldprestable = std::make_shared<MPLSTESTDMIB::Mplstunnelcrldprestable>();
+            mplstunnelcrldprestable = std::make_shared<MPLSTESTDMIB::MplsTunnelCRLDPResTable>();
         }
         return mplstunnelcrldprestable;
     }
@@ -243,7 +244,7 @@ bool MPLSTESTDMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-MPLSTESTDMIB::Mplstescalars::Mplstescalars()
+MPLSTESTDMIB::MplsTeScalars::MplsTeScalars()
     :
     mplstunnelconfigured{YType::uint32, "mplsTunnelConfigured"},
     mplstunnelactive{YType::uint32, "mplsTunnelActive"},
@@ -252,15 +253,16 @@ MPLSTESTDMIB::Mplstescalars::Mplstescalars()
     mplstunnelnotificationmaxrate{YType::uint32, "mplsTunnelNotificationMaxRate"}
 {
 
-    yang_name = "mplsTeScalars"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTeScalars"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstescalars::~Mplstescalars()
+MPLSTESTDMIB::MplsTeScalars::~MplsTeScalars()
 {
 }
 
-bool MPLSTESTDMIB::Mplstescalars::has_data() const
+bool MPLSTESTDMIB::MplsTeScalars::has_data() const
 {
+    if (is_presence_container) return true;
     return mplstunnelconfigured.is_set
 	|| mplstunnelactive.is_set
 	|| mplstunneltedistproto.is_set
@@ -268,7 +270,7 @@ bool MPLSTESTDMIB::Mplstescalars::has_data() const
 	|| mplstunnelnotificationmaxrate.is_set;
 }
 
-bool MPLSTESTDMIB::Mplstescalars::has_operation() const
+bool MPLSTESTDMIB::MplsTeScalars::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplstunnelconfigured.yfilter)
@@ -278,21 +280,21 @@ bool MPLSTESTDMIB::Mplstescalars::has_operation() const
 	|| ydk::is_set(mplstunnelnotificationmaxrate.yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstescalars::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTeScalars::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstescalars::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTeScalars::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsTeScalars";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstescalars::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTeScalars::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -306,19 +308,19 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstescalars::get_
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstescalars::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTeScalars::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstescalars::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTeScalars::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MPLSTESTDMIB::Mplstescalars::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTeScalars::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsTunnelConfigured")
     {
@@ -350,7 +352,7 @@ void MPLSTESTDMIB::Mplstescalars::set_value(const std::string & value_path, cons
     }
 }
 
-void MPLSTESTDMIB::Mplstescalars::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTeScalars::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsTunnelConfigured")
     {
@@ -374,14 +376,14 @@ void MPLSTESTDMIB::Mplstescalars::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool MPLSTESTDMIB::Mplstescalars::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTeScalars::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelConfigured" || name == "mplsTunnelActive" || name == "mplsTunnelTEDistProto" || name == "mplsTunnelMaxHops" || name == "mplsTunnelNotificationMaxRate")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplsteobjects::Mplsteobjects()
+MPLSTESTDMIB::MplsTeObjects::MplsTeObjects()
     :
     mplstunnelindexnext{YType::uint32, "mplsTunnelIndexNext"},
     mplstunnelhoplistindexnext{YType::uint32, "mplsTunnelHopListIndexNext"},
@@ -389,22 +391,23 @@ MPLSTESTDMIB::Mplsteobjects::Mplsteobjects()
     mplstunnelnotificationenable{YType::boolean, "mplsTunnelNotificationEnable"}
 {
 
-    yang_name = "mplsTeObjects"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTeObjects"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplsteobjects::~Mplsteobjects()
+MPLSTESTDMIB::MplsTeObjects::~MplsTeObjects()
 {
 }
 
-bool MPLSTESTDMIB::Mplsteobjects::has_data() const
+bool MPLSTESTDMIB::MplsTeObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return mplstunnelindexnext.is_set
 	|| mplstunnelhoplistindexnext.is_set
 	|| mplstunnelresourceindexnext.is_set
 	|| mplstunnelnotificationenable.is_set;
 }
 
-bool MPLSTESTDMIB::Mplsteobjects::has_operation() const
+bool MPLSTESTDMIB::MplsTeObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplstunnelindexnext.yfilter)
@@ -413,21 +416,21 @@ bool MPLSTESTDMIB::Mplsteobjects::has_operation() const
 	|| ydk::is_set(mplstunnelnotificationenable.yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplsteobjects::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTeObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplsteobjects::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTeObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsTeObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplsteobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTeObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -440,19 +443,19 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplsteobjects::get_
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplsteobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTeObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplsteobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTeObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MPLSTESTDMIB::Mplsteobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTeObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsTunnelIndexNext")
     {
@@ -480,7 +483,7 @@ void MPLSTESTDMIB::Mplsteobjects::set_value(const std::string & value_path, cons
     }
 }
 
-void MPLSTESTDMIB::Mplsteobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTeObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsTunnelIndexNext")
     {
@@ -500,26 +503,29 @@ void MPLSTESTDMIB::Mplsteobjects::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool MPLSTESTDMIB::Mplsteobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTeObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelIndexNext" || name == "mplsTunnelHopListIndexNext" || name == "mplsTunnelResourceIndexNext" || name == "mplsTunnelNotificationEnable")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplstunneltable::Mplstunneltable()
+MPLSTESTDMIB::MplsTunnelTable::MplsTunnelTable()
+    :
+    mplstunnelentry(this, {"mplstunnelindex", "mplstunnelinstance", "mplstunnelingresslsrid", "mplstunnelegresslsrid"})
 {
 
-    yang_name = "mplsTunnelTable"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTunnelTable"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstunneltable::~Mplstunneltable()
+MPLSTESTDMIB::MplsTunnelTable::~MplsTunnelTable()
 {
 }
 
-bool MPLSTESTDMIB::Mplstunneltable::has_data() const
+bool MPLSTESTDMIB::MplsTunnelTable::has_data() const
 {
-    for (std::size_t index=0; index<mplstunnelentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplstunnelentry.len(); index++)
     {
         if(mplstunnelentry[index]->has_data())
             return true;
@@ -527,9 +533,9 @@ bool MPLSTESTDMIB::Mplstunneltable::has_data() const
     return false;
 }
 
-bool MPLSTESTDMIB::Mplstunneltable::has_operation() const
+bool MPLSTESTDMIB::MplsTunnelTable::has_operation() const
 {
-    for (std::size_t index=0; index<mplstunnelentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelentry.len(); index++)
     {
         if(mplstunnelentry[index]->has_operation())
             return true;
@@ -537,21 +543,21 @@ bool MPLSTESTDMIB::Mplstunneltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstunneltable::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTunnelTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstunneltable::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTunnelTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsTunnelTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunneltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -560,25 +566,25 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunneltable::ge
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunneltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTunnelEntry")
     {
-        auto c = std::make_shared<MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry>();
+        auto c = std::make_shared<MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry>();
         c->parent = this;
-        mplstunnelentry.push_back(c);
+        mplstunnelentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunneltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplstunnelentry)
+    for (auto c : mplstunnelentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -589,22 +595,22 @@ std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunneltable::ge
     return children;
 }
 
-void MPLSTESTDMIB::Mplstunneltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTunnelTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MPLSTESTDMIB::Mplstunneltable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTunnelTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MPLSTESTDMIB::Mplstunneltable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTunnelTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelEntry")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelentry()
+MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelEntry()
     :
     mplstunnelindex{YType::uint32, "mplsTunnelIndex"},
     mplstunnelinstance{YType::uint32, "mplsTunnelInstance"},
@@ -650,15 +656,16 @@ MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelentry()
     mplstunnelperfhcbytes{YType::uint64, "mplsTunnelPerfHCBytes"}
 {
 
-    yang_name = "mplsTunnelEntry"; yang_parent_name = "mplsTunnelTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTunnelEntry"; yang_parent_name = "mplsTunnelTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::~Mplstunnelentry()
+MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::~MplsTunnelEntry()
 {
 }
 
-bool MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::has_data() const
+bool MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return mplstunnelindex.is_set
 	|| mplstunnelinstance.is_set
 	|| mplstunnelingresslsrid.is_set
@@ -703,7 +710,7 @@ bool MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::has_data() const
 	|| mplstunnelperfhcbytes.is_set;
 }
 
-bool MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::has_operation() const
+bool MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplstunnelindex.yfilter)
@@ -750,21 +757,25 @@ bool MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::has_operation() const
 	|| ydk::is_set(mplstunnelperfhcbytes.yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/mplsTunnelTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mplsTunnelEntry" <<"[mplsTunnelIndex='" <<mplstunnelindex <<"']" <<"[mplsTunnelInstance='" <<mplstunnelinstance <<"']" <<"[mplsTunnelIngressLSRId='" <<mplstunnelingresslsrid <<"']" <<"[mplsTunnelEgressLSRId='" <<mplstunnelegresslsrid <<"']";
+    path_buffer << "mplsTunnelEntry";
+    ADD_KEY_TOKEN(mplstunnelindex, "mplsTunnelIndex");
+    ADD_KEY_TOKEN(mplstunnelinstance, "mplsTunnelInstance");
+    ADD_KEY_TOKEN(mplstunnelingresslsrid, "mplsTunnelIngressLSRId");
+    ADD_KEY_TOKEN(mplstunnelegresslsrid, "mplsTunnelEgressLSRId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -815,19 +826,19 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunneltable::Mp
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsTunnelIndex")
     {
@@ -1081,7 +1092,7 @@ void MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::set_value(const std::string
     }
 }
 
-void MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsTunnelIndex")
     {
@@ -1253,26 +1264,29 @@ void MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::set_filter(const std::strin
     }
 }
 
-bool MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelIndex" || name == "mplsTunnelInstance" || name == "mplsTunnelIngressLSRId" || name == "mplsTunnelEgressLSRId" || name == "mplsTunnelName" || name == "mplsTunnelDescr" || name == "mplsTunnelIsIf" || name == "mplsTunnelIfIndex" || name == "mplsTunnelOwner" || name == "mplsTunnelRole" || name == "mplsTunnelXCPointer" || name == "mplsTunnelSignallingProto" || name == "mplsTunnelSetupPrio" || name == "mplsTunnelHoldingPrio" || name == "mplsTunnelSessionAttributes" || name == "mplsTunnelLocalProtectInUse" || name == "mplsTunnelResourcePointer" || name == "mplsTunnelPrimaryInstance" || name == "mplsTunnelInstancePriority" || name == "mplsTunnelHopTableIndex" || name == "mplsTunnelPathInUse" || name == "mplsTunnelARHopTableIndex" || name == "mplsTunnelCHopTableIndex" || name == "mplsTunnelIncludeAnyAffinity" || name == "mplsTunnelIncludeAllAffinity" || name == "mplsTunnelExcludeAnyAffinity" || name == "mplsTunnelTotalUpTime" || name == "mplsTunnelInstanceUpTime" || name == "mplsTunnelPrimaryUpTime" || name == "mplsTunnelPathChanges" || name == "mplsTunnelLastPathChange" || name == "mplsTunnelCreationTime" || name == "mplsTunnelStateTransitions" || name == "mplsTunnelAdminStatus" || name == "mplsTunnelOperStatus" || name == "mplsTunnelRowStatus" || name == "mplsTunnelStorageType" || name == "mplsTunnelPerfPackets" || name == "mplsTunnelPerfHCPackets" || name == "mplsTunnelPerfErrors" || name == "mplsTunnelPerfBytes" || name == "mplsTunnelPerfHCBytes")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhoptable()
+MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopTable()
+    :
+    mplstunnelhopentry(this, {"mplstunnelhoplistindex", "mplstunnelhoppathoptionindex", "mplstunnelhopindex"})
 {
 
-    yang_name = "mplsTunnelHopTable"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTunnelHopTable"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstunnelhoptable::~Mplstunnelhoptable()
+MPLSTESTDMIB::MplsTunnelHopTable::~MplsTunnelHopTable()
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelhoptable::has_data() const
+bool MPLSTESTDMIB::MplsTunnelHopTable::has_data() const
 {
-    for (std::size_t index=0; index<mplstunnelhopentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplstunnelhopentry.len(); index++)
     {
         if(mplstunnelhopentry[index]->has_data())
             return true;
@@ -1280,9 +1294,9 @@ bool MPLSTESTDMIB::Mplstunnelhoptable::has_data() const
     return false;
 }
 
-bool MPLSTESTDMIB::Mplstunnelhoptable::has_operation() const
+bool MPLSTESTDMIB::MplsTunnelHopTable::has_operation() const
 {
-    for (std::size_t index=0; index<mplstunnelhopentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelhopentry.len(); index++)
     {
         if(mplstunnelhopentry[index]->has_operation())
             return true;
@@ -1290,21 +1304,21 @@ bool MPLSTESTDMIB::Mplstunnelhoptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstunnelhoptable::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTunnelHopTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstunnelhoptable::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTunnelHopTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsTunnelHopTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelhoptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelHopTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1313,25 +1327,25 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelhoptable:
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelhoptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTunnelHopEntry")
     {
-        auto c = std::make_shared<MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry>();
+        auto c = std::make_shared<MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry>();
         c->parent = this;
-        mplstunnelhopentry.push_back(c);
+        mplstunnelhopentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelhoptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelHopTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplstunnelhopentry)
+    for (auto c : mplstunnelhopentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1342,22 +1356,22 @@ std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelhoptable:
     return children;
 }
 
-void MPLSTESTDMIB::Mplstunnelhoptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTunnelHopTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MPLSTESTDMIB::Mplstunnelhoptable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTunnelHopTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelhoptable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTunnelHopTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelHopEntry")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::Mplstunnelhopentry()
+MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::MplsTunnelHopEntry()
     :
     mplstunnelhoplistindex{YType::uint32, "mplsTunnelHopListIndex"},
     mplstunnelhoppathoptionindex{YType::uint32, "mplsTunnelHopPathOptionIndex"},
@@ -1376,15 +1390,16 @@ MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::Mplstunnelhopentry()
     mplstunnelhopstoragetype{YType::enumeration, "mplsTunnelHopStorageType"}
 {
 
-    yang_name = "mplsTunnelHopEntry"; yang_parent_name = "mplsTunnelHopTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTunnelHopEntry"; yang_parent_name = "mplsTunnelHopTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::~Mplstunnelhopentry()
+MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::~MplsTunnelHopEntry()
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::has_data() const
+bool MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return mplstunnelhoplistindex.is_set
 	|| mplstunnelhoppathoptionindex.is_set
 	|| mplstunnelhopindex.is_set
@@ -1402,7 +1417,7 @@ bool MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::has_data() const
 	|| mplstunnelhopstoragetype.is_set;
 }
 
-bool MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::has_operation() const
+bool MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplstunnelhoplistindex.yfilter)
@@ -1422,21 +1437,24 @@ bool MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::has_operation() const
 	|| ydk::is_set(mplstunnelhopstoragetype.yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/mplsTunnelHopTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mplsTunnelHopEntry" <<"[mplsTunnelHopListIndex='" <<mplstunnelhoplistindex <<"']" <<"[mplsTunnelHopPathOptionIndex='" <<mplstunnelhoppathoptionindex <<"']" <<"[mplsTunnelHopIndex='" <<mplstunnelhopindex <<"']";
+    path_buffer << "mplsTunnelHopEntry";
+    ADD_KEY_TOKEN(mplstunnelhoplistindex, "mplsTunnelHopListIndex");
+    ADD_KEY_TOKEN(mplstunnelhoppathoptionindex, "mplsTunnelHopPathOptionIndex");
+    ADD_KEY_TOKEN(mplstunnelhopindex, "mplsTunnelHopIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1460,19 +1478,19 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelhoptable:
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsTunnelHopListIndex")
     {
@@ -1566,7 +1584,7 @@ void MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::set_value(const std::
     }
 }
 
-void MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsTunnelHopListIndex")
     {
@@ -1630,26 +1648,29 @@ void MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::set_filter(const std:
     }
 }
 
-bool MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelHopListIndex" || name == "mplsTunnelHopPathOptionIndex" || name == "mplsTunnelHopIndex" || name == "mplsTunnelHopAddrType" || name == "mplsTunnelHopIpAddr" || name == "mplsTunnelHopIpPrefixLen" || name == "mplsTunnelHopAsNumber" || name == "mplsTunnelHopAddrUnnum" || name == "mplsTunnelHopLspId" || name == "mplsTunnelHopType" || name == "mplsTunnelHopInclude" || name == "mplsTunnelHopPathOptionName" || name == "mplsTunnelHopEntryPathComp" || name == "mplsTunnelHopRowStatus" || name == "mplsTunnelHopStorageType")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourcetable()
+MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceTable()
+    :
+    mplstunnelresourceentry(this, {"mplstunnelresourceindex"})
 {
 
-    yang_name = "mplsTunnelResourceTable"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTunnelResourceTable"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstunnelresourcetable::~Mplstunnelresourcetable()
+MPLSTESTDMIB::MplsTunnelResourceTable::~MplsTunnelResourceTable()
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelresourcetable::has_data() const
+bool MPLSTESTDMIB::MplsTunnelResourceTable::has_data() const
 {
-    for (std::size_t index=0; index<mplstunnelresourceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplstunnelresourceentry.len(); index++)
     {
         if(mplstunnelresourceentry[index]->has_data())
             return true;
@@ -1657,9 +1678,9 @@ bool MPLSTESTDMIB::Mplstunnelresourcetable::has_data() const
     return false;
 }
 
-bool MPLSTESTDMIB::Mplstunnelresourcetable::has_operation() const
+bool MPLSTESTDMIB::MplsTunnelResourceTable::has_operation() const
 {
-    for (std::size_t index=0; index<mplstunnelresourceentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelresourceentry.len(); index++)
     {
         if(mplstunnelresourceentry[index]->has_operation())
             return true;
@@ -1667,21 +1688,21 @@ bool MPLSTESTDMIB::Mplstunnelresourcetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstunnelresourcetable::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTunnelResourceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstunnelresourcetable::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTunnelResourceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsTunnelResourceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelresourcetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelResourceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1690,25 +1711,25 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelresourcet
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelresourcetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelResourceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTunnelResourceEntry")
     {
-        auto c = std::make_shared<MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry>();
+        auto c = std::make_shared<MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry>();
         c->parent = this;
-        mplstunnelresourceentry.push_back(c);
+        mplstunnelresourceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelresourcetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelResourceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplstunnelresourceentry)
+    for (auto c : mplstunnelresourceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1719,22 +1740,22 @@ std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelresourcet
     return children;
 }
 
-void MPLSTESTDMIB::Mplstunnelresourcetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTunnelResourceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MPLSTESTDMIB::Mplstunnelresourcetable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTunnelResourceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelresourcetable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTunnelResourceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelResourceEntry")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::Mplstunnelresourceentry()
+MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::MplsTunnelResourceEntry()
     :
     mplstunnelresourceindex{YType::uint32, "mplsTunnelResourceIndex"},
     mplstunnelresourcemaxrate{YType::uint32, "mplsTunnelResourceMaxRate"},
@@ -1748,15 +1769,16 @@ MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::Mplstunnelresour
     mplstunnelresourcestoragetype{YType::enumeration, "mplsTunnelResourceStorageType"}
 {
 
-    yang_name = "mplsTunnelResourceEntry"; yang_parent_name = "mplsTunnelResourceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTunnelResourceEntry"; yang_parent_name = "mplsTunnelResourceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::~Mplstunnelresourceentry()
+MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::~MplsTunnelResourceEntry()
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::has_data() const
+bool MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return mplstunnelresourceindex.is_set
 	|| mplstunnelresourcemaxrate.is_set
 	|| mplstunnelresourcemeanrate.is_set
@@ -1769,7 +1791,7 @@ bool MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::has_data() 
 	|| mplstunnelresourcestoragetype.is_set;
 }
 
-bool MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::has_operation() const
+bool MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplstunnelresourceindex.yfilter)
@@ -1784,21 +1806,22 @@ bool MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::has_operati
 	|| ydk::is_set(mplstunnelresourcestoragetype.yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/mplsTunnelResourceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mplsTunnelResourceEntry" <<"[mplsTunnelResourceIndex='" <<mplstunnelresourceindex <<"']";
+    path_buffer << "mplsTunnelResourceEntry";
+    ADD_KEY_TOKEN(mplstunnelresourceindex, "mplsTunnelResourceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1817,19 +1840,19 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelresourcet
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsTunnelResourceIndex")
     {
@@ -1893,7 +1916,7 @@ void MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::set_value(c
     }
 }
 
-void MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsTunnelResourceIndex")
     {
@@ -1937,26 +1960,29 @@ void MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::set_filter(
     }
 }
 
-bool MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelResourceIndex" || name == "mplsTunnelResourceMaxRate" || name == "mplsTunnelResourceMeanRate" || name == "mplsTunnelResourceMaxBurstSize" || name == "mplsTunnelResourceMeanBurstSize" || name == "mplsTunnelResourceExBurstSize" || name == "mplsTunnelResourceFrequency" || name == "mplsTunnelResourceWeight" || name == "mplsTunnelResourceRowStatus" || name == "mplsTunnelResourceStorageType")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhoptable()
+MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopTable()
+    :
+    mplstunnelarhopentry(this, {"mplstunnelarhoplistindex", "mplstunnelarhopindex"})
 {
 
-    yang_name = "mplsTunnelARHopTable"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTunnelARHopTable"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstunnelarhoptable::~Mplstunnelarhoptable()
+MPLSTESTDMIB::MplsTunnelARHopTable::~MplsTunnelARHopTable()
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelarhoptable::has_data() const
+bool MPLSTESTDMIB::MplsTunnelARHopTable::has_data() const
 {
-    for (std::size_t index=0; index<mplstunnelarhopentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplstunnelarhopentry.len(); index++)
     {
         if(mplstunnelarhopentry[index]->has_data())
             return true;
@@ -1964,9 +1990,9 @@ bool MPLSTESTDMIB::Mplstunnelarhoptable::has_data() const
     return false;
 }
 
-bool MPLSTESTDMIB::Mplstunnelarhoptable::has_operation() const
+bool MPLSTESTDMIB::MplsTunnelARHopTable::has_operation() const
 {
-    for (std::size_t index=0; index<mplstunnelarhopentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelarhopentry.len(); index++)
     {
         if(mplstunnelarhopentry[index]->has_operation())
             return true;
@@ -1974,21 +2000,21 @@ bool MPLSTESTDMIB::Mplstunnelarhoptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstunnelarhoptable::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTunnelARHopTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstunnelarhoptable::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTunnelARHopTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsTunnelARHopTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelarhoptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelARHopTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1997,25 +2023,25 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelarhoptabl
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelarhoptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelARHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTunnelARHopEntry")
     {
-        auto c = std::make_shared<MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry>();
+        auto c = std::make_shared<MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry>();
         c->parent = this;
-        mplstunnelarhopentry.push_back(c);
+        mplstunnelarhopentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelarhoptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelARHopTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplstunnelarhopentry)
+    for (auto c : mplstunnelarhopentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2026,22 +2052,22 @@ std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelarhoptabl
     return children;
 }
 
-void MPLSTESTDMIB::Mplstunnelarhoptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTunnelARHopTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MPLSTESTDMIB::Mplstunnelarhoptable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTunnelARHopTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelarhoptable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTunnelARHopTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelARHopEntry")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::Mplstunnelarhopentry()
+MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::MplsTunnelARHopEntry()
     :
     mplstunnelarhoplistindex{YType::uint32, "mplsTunnelARHopListIndex"},
     mplstunnelarhopindex{YType::uint32, "mplsTunnelARHopIndex"},
@@ -2051,15 +2077,16 @@ MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::Mplstunnelarhopentry()
     mplstunnelarhoplspid{YType::str, "mplsTunnelARHopLspId"}
 {
 
-    yang_name = "mplsTunnelARHopEntry"; yang_parent_name = "mplsTunnelARHopTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTunnelARHopEntry"; yang_parent_name = "mplsTunnelARHopTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::~Mplstunnelarhopentry()
+MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::~MplsTunnelARHopEntry()
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::has_data() const
+bool MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return mplstunnelarhoplistindex.is_set
 	|| mplstunnelarhopindex.is_set
 	|| mplstunnelarhopaddrtype.is_set
@@ -2068,7 +2095,7 @@ bool MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::has_data() const
 	|| mplstunnelarhoplspid.is_set;
 }
 
-bool MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::has_operation() const
+bool MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplstunnelarhoplistindex.yfilter)
@@ -2079,21 +2106,23 @@ bool MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::has_operation() c
 	|| ydk::is_set(mplstunnelarhoplspid.yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/mplsTunnelARHopTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mplsTunnelARHopEntry" <<"[mplsTunnelARHopListIndex='" <<mplstunnelarhoplistindex <<"']" <<"[mplsTunnelARHopIndex='" <<mplstunnelarhopindex <<"']";
+    path_buffer << "mplsTunnelARHopEntry";
+    ADD_KEY_TOKEN(mplstunnelarhoplistindex, "mplsTunnelARHopListIndex");
+    ADD_KEY_TOKEN(mplstunnelarhopindex, "mplsTunnelARHopIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2108,19 +2137,19 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelarhoptabl
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsTunnelARHopListIndex")
     {
@@ -2160,7 +2189,7 @@ void MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::set_value(const s
     }
 }
 
-void MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsTunnelARHopListIndex")
     {
@@ -2188,26 +2217,29 @@ void MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::set_filter(const 
     }
 }
 
-bool MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelARHopListIndex" || name == "mplsTunnelARHopIndex" || name == "mplsTunnelARHopAddrType" || name == "mplsTunnelARHopIpAddr" || name == "mplsTunnelARHopAddrUnnum" || name == "mplsTunnelARHopLspId")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchoptable()
+MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopTable()
+    :
+    mplstunnelchopentry(this, {"mplstunnelchoplistindex", "mplstunnelchopindex"})
 {
 
-    yang_name = "mplsTunnelCHopTable"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTunnelCHopTable"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstunnelchoptable::~Mplstunnelchoptable()
+MPLSTESTDMIB::MplsTunnelCHopTable::~MplsTunnelCHopTable()
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelchoptable::has_data() const
+bool MPLSTESTDMIB::MplsTunnelCHopTable::has_data() const
 {
-    for (std::size_t index=0; index<mplstunnelchopentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplstunnelchopentry.len(); index++)
     {
         if(mplstunnelchopentry[index]->has_data())
             return true;
@@ -2215,9 +2247,9 @@ bool MPLSTESTDMIB::Mplstunnelchoptable::has_data() const
     return false;
 }
 
-bool MPLSTESTDMIB::Mplstunnelchoptable::has_operation() const
+bool MPLSTESTDMIB::MplsTunnelCHopTable::has_operation() const
 {
-    for (std::size_t index=0; index<mplstunnelchopentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelchopentry.len(); index++)
     {
         if(mplstunnelchopentry[index]->has_operation())
             return true;
@@ -2225,21 +2257,21 @@ bool MPLSTESTDMIB::Mplstunnelchoptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstunnelchoptable::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTunnelCHopTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstunnelchoptable::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTunnelCHopTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsTunnelCHopTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelchoptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelCHopTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2248,25 +2280,25 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelchoptable
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelchoptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelCHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTunnelCHopEntry")
     {
-        auto c = std::make_shared<MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry>();
+        auto c = std::make_shared<MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry>();
         c->parent = this;
-        mplstunnelchopentry.push_back(c);
+        mplstunnelchopentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelchoptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelCHopTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplstunnelchopentry)
+    for (auto c : mplstunnelchopentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2277,22 +2309,22 @@ std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelchoptable
     return children;
 }
 
-void MPLSTESTDMIB::Mplstunnelchoptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTunnelCHopTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MPLSTESTDMIB::Mplstunnelchoptable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTunnelCHopTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelchoptable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTunnelCHopTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelCHopEntry")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::Mplstunnelchopentry()
+MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::MplsTunnelCHopEntry()
     :
     mplstunnelchoplistindex{YType::uint32, "mplsTunnelCHopListIndex"},
     mplstunnelchopindex{YType::uint32, "mplsTunnelCHopIndex"},
@@ -2305,15 +2337,16 @@ MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::Mplstunnelchopentry()
     mplstunnelchoptype{YType::enumeration, "mplsTunnelCHopType"}
 {
 
-    yang_name = "mplsTunnelCHopEntry"; yang_parent_name = "mplsTunnelCHopTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTunnelCHopEntry"; yang_parent_name = "mplsTunnelCHopTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::~Mplstunnelchopentry()
+MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::~MplsTunnelCHopEntry()
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::has_data() const
+bool MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return mplstunnelchoplistindex.is_set
 	|| mplstunnelchopindex.is_set
 	|| mplstunnelchopaddrtype.is_set
@@ -2325,7 +2358,7 @@ bool MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::has_data() const
 	|| mplstunnelchoptype.is_set;
 }
 
-bool MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::has_operation() const
+bool MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplstunnelchoplistindex.yfilter)
@@ -2339,21 +2372,23 @@ bool MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::has_operation() con
 	|| ydk::is_set(mplstunnelchoptype.yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/mplsTunnelCHopTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mplsTunnelCHopEntry" <<"[mplsTunnelCHopListIndex='" <<mplstunnelchoplistindex <<"']" <<"[mplsTunnelCHopIndex='" <<mplstunnelchopindex <<"']";
+    path_buffer << "mplsTunnelCHopEntry";
+    ADD_KEY_TOKEN(mplstunnelchoplistindex, "mplsTunnelCHopListIndex");
+    ADD_KEY_TOKEN(mplstunnelchopindex, "mplsTunnelCHopIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2371,19 +2406,19 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelchoptable
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsTunnelCHopListIndex")
     {
@@ -2441,7 +2476,7 @@ void MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::set_value(const std
     }
 }
 
-void MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsTunnelCHopListIndex")
     {
@@ -2481,26 +2516,29 @@ void MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::set_filter(const st
     }
 }
 
-bool MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelCHopListIndex" || name == "mplsTunnelCHopIndex" || name == "mplsTunnelCHopAddrType" || name == "mplsTunnelCHopIpAddr" || name == "mplsTunnelCHopIpPrefixLen" || name == "mplsTunnelCHopAsNumber" || name == "mplsTunnelCHopAddrUnnum" || name == "mplsTunnelCHopLspId" || name == "mplsTunnelCHopType")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldprestable()
+MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResTable()
+    :
+    mplstunnelcrldpresentry(this, {"mplstunnelresourceindex"})
 {
 
-    yang_name = "mplsTunnelCRLDPResTable"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTunnelCRLDPResTable"; yang_parent_name = "MPLS-TE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstunnelcrldprestable::~Mplstunnelcrldprestable()
+MPLSTESTDMIB::MplsTunnelCRLDPResTable::~MplsTunnelCRLDPResTable()
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelcrldprestable::has_data() const
+bool MPLSTESTDMIB::MplsTunnelCRLDPResTable::has_data() const
 {
-    for (std::size_t index=0; index<mplstunnelcrldpresentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplstunnelcrldpresentry.len(); index++)
     {
         if(mplstunnelcrldpresentry[index]->has_data())
             return true;
@@ -2508,9 +2546,9 @@ bool MPLSTESTDMIB::Mplstunnelcrldprestable::has_data() const
     return false;
 }
 
-bool MPLSTESTDMIB::Mplstunnelcrldprestable::has_operation() const
+bool MPLSTESTDMIB::MplsTunnelCRLDPResTable::has_operation() const
 {
-    for (std::size_t index=0; index<mplstunnelcrldpresentry.size(); index++)
+    for (std::size_t index=0; index<mplstunnelcrldpresentry.len(); index++)
     {
         if(mplstunnelcrldpresentry[index]->has_operation())
             return true;
@@ -2518,21 +2556,21 @@ bool MPLSTESTDMIB::Mplstunnelcrldprestable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstunnelcrldprestable::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTunnelCRLDPResTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstunnelcrldprestable::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTunnelCRLDPResTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsTunnelCRLDPResTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelcrldprestable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelCRLDPResTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2541,25 +2579,25 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelcrldprest
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelcrldprestable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelCRLDPResTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTunnelCRLDPResEntry")
     {
-        auto c = std::make_shared<MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry>();
+        auto c = std::make_shared<MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry>();
         c->parent = this;
-        mplstunnelcrldpresentry.push_back(c);
+        mplstunnelcrldpresentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelcrldprestable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelCRLDPResTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplstunnelcrldpresentry)
+    for (auto c : mplstunnelcrldpresentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2570,22 +2608,22 @@ std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelcrldprest
     return children;
 }
 
-void MPLSTESTDMIB::Mplstunnelcrldprestable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTunnelCRLDPResTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MPLSTESTDMIB::Mplstunnelcrldprestable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTunnelCRLDPResTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelcrldprestable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTunnelCRLDPResTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelCRLDPResEntry")
         return true;
     return false;
 }
 
-MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::Mplstunnelcrldpresentry()
+MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::MplsTunnelCRLDPResEntry()
     :
     mplstunnelresourceindex{YType::str, "mplsTunnelResourceIndex"},
     mplstunnelcrldpresmeanburstsize{YType::uint32, "mplsTunnelCRLDPResMeanBurstSize"},
@@ -2597,15 +2635,16 @@ MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::Mplstunnelcrldpr
     mplstunnelcrldpresstoragetype{YType::enumeration, "mplsTunnelCRLDPResStorageType"}
 {
 
-    yang_name = "mplsTunnelCRLDPResEntry"; yang_parent_name = "mplsTunnelCRLDPResTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mplsTunnelCRLDPResEntry"; yang_parent_name = "mplsTunnelCRLDPResTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::~Mplstunnelcrldpresentry()
+MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::~MplsTunnelCRLDPResEntry()
 {
 }
 
-bool MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::has_data() const
+bool MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return mplstunnelresourceindex.is_set
 	|| mplstunnelcrldpresmeanburstsize.is_set
 	|| mplstunnelcrldpresexburstsize.is_set
@@ -2616,7 +2655,7 @@ bool MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::has_data() 
 	|| mplstunnelcrldpresstoragetype.is_set;
 }
 
-bool MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::has_operation() const
+bool MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplstunnelresourceindex.yfilter)
@@ -2629,21 +2668,22 @@ bool MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::has_operati
 	|| ydk::is_set(mplstunnelcrldpresstoragetype.yfilter);
 }
 
-std::string MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::get_absolute_path() const
+std::string MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-TE-STD-MIB:MPLS-TE-STD-MIB/mplsTunnelCRLDPResTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::get_segment_path() const
+std::string MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mplsTunnelCRLDPResEntry" <<"[mplsTunnelResourceIndex='" <<mplstunnelresourceindex <<"']";
+    path_buffer << "mplsTunnelCRLDPResEntry";
+    ADD_KEY_TOKEN(mplstunnelresourceindex, "mplsTunnelResourceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2660,19 +2700,19 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::Mplstunnelcrldprest
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsTunnelResourceIndex")
     {
@@ -2724,7 +2764,7 @@ void MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::set_value(c
     }
 }
 
-void MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsTunnelResourceIndex")
     {
@@ -2760,51 +2800,51 @@ void MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::set_filter(
     }
 }
 
-bool MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsTunnelResourceIndex" || name == "mplsTunnelCRLDPResMeanBurstSize" || name == "mplsTunnelCRLDPResExBurstSize" || name == "mplsTunnelCRLDPResFrequency" || name == "mplsTunnelCRLDPResWeight" || name == "mplsTunnelCRLDPResFlags" || name == "mplsTunnelCRLDPResRowStatus" || name == "mplsTunnelCRLDPResStorageType")
         return true;
     return false;
 }
 
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelrole::head {1, "head"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelrole::transit {2, "transit"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelrole::tail {3, "tail"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelrole::headTail {4, "headTail"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelRole::head {1, "head"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelRole::transit {2, "transit"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelRole::tail {3, "tail"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelRole::headTail {4, "headTail"};
 
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelsignallingproto::none {1, "none"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelsignallingproto::rsvp {2, "rsvp"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelsignallingproto::crldp {3, "crldp"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelsignallingproto::other {4, "other"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelSignallingProto::none {1, "none"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelSignallingProto::rsvp {2, "rsvp"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelSignallingProto::crldp {3, "crldp"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelSignallingProto::other {4, "other"};
 
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneladminstatus::up {1, "up"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneladminstatus::down {2, "down"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneladminstatus::testing {3, "testing"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelAdminStatus::up {1, "up"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelAdminStatus::down {2, "down"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelAdminStatus::testing {3, "testing"};
 
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneloperstatus::up {1, "up"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneloperstatus::down {2, "down"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneloperstatus::testing {3, "testing"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneloperstatus::unknown {4, "unknown"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneloperstatus::dormant {5, "dormant"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneloperstatus::notPresent {6, "notPresent"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneloperstatus::lowerLayerDown {7, "lowerLayerDown"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelOperStatus::up {1, "up"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelOperStatus::down {2, "down"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelOperStatus::testing {3, "testing"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelOperStatus::unknown {4, "unknown"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelOperStatus::dormant {5, "dormant"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelOperStatus::notPresent {6, "notPresent"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelOperStatus::lowerLayerDown {7, "lowerLayerDown"};
 
-const Enum::YLeaf MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::Mplstunnelhoptype::strict {1, "strict"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::Mplstunnelhoptype::loose {2, "loose"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::MplsTunnelHopType::strict {1, "strict"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::MplsTunnelHopType::loose {2, "loose"};
 
-const Enum::YLeaf MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::Mplstunnelhopentrypathcomp::dynamic {1, "dynamic"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::Mplstunnelhopentrypathcomp::explicit_ {2, "explicit"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::MplsTunnelHopEntryPathComp::dynamic {1, "dynamic"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::MplsTunnelHopEntryPathComp::explicit_ {2, "explicit"};
 
-const Enum::YLeaf MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::Mplstunnelresourcefrequency::unspecified {1, "unspecified"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::Mplstunnelresourcefrequency::frequent {2, "frequent"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::Mplstunnelresourcefrequency::veryFrequent {3, "veryFrequent"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::MplsTunnelResourceFrequency::unspecified {1, "unspecified"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::MplsTunnelResourceFrequency::frequent {2, "frequent"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::MplsTunnelResourceFrequency::veryFrequent {3, "veryFrequent"};
 
-const Enum::YLeaf MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::Mplstunnelchoptype::strict {1, "strict"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::Mplstunnelchoptype::loose {2, "loose"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::MplsTunnelCHopType::strict {1, "strict"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::MplsTunnelCHopType::loose {2, "loose"};
 
-const Enum::YLeaf MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::Mplstunnelcrldpresfrequency::unspecified {1, "unspecified"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::Mplstunnelcrldpresfrequency::frequent {2, "frequent"};
-const Enum::YLeaf MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::Mplstunnelcrldpresfrequency::veryFrequent {3, "veryFrequent"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::MplsTunnelCRLDPResFrequency::unspecified {1, "unspecified"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::MplsTunnelCRLDPResFrequency::frequent {2, "frequent"};
+const Enum::YLeaf MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::MplsTunnelCRLDPResFrequency::veryFrequent {3, "veryFrequent"};
 
 
 }

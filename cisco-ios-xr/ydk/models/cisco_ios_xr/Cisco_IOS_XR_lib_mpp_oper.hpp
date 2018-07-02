@@ -116,7 +116,7 @@ class ManagementPlaneProtection::Outband::Interfaces : public ydk::Entity
 
         class Interface; //type: ManagementPlaneProtection::Outband::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_oper::ManagementPlaneProtection::Outband::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // ManagementPlaneProtection::Outband::Interfaces
 
@@ -141,7 +141,7 @@ class ManagementPlaneProtection::Outband::Interfaces::Interface : public ydk::En
         ydk::YLeaf interface_name; //type: string
         class Protocol; //type: ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_oper::ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol> > protocol;
+        ydk::YList protocol;
         
 }; // ManagementPlaneProtection::Outband::Interfaces::Interface
 
@@ -166,7 +166,7 @@ class ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol : publ
         ydk::YLeaf is_all_peers_allowed; //type: boolean
         class PeerAddress; //type: ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_oper::ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress> > peer_address;
+        ydk::YList peer_address;
         
 }; // ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol
 
@@ -237,7 +237,7 @@ class ManagementPlaneProtection::Inband::Interfaces : public ydk::Entity
 
         class Interface; //type: ManagementPlaneProtection::Inband::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_oper::ManagementPlaneProtection::Inband::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // ManagementPlaneProtection::Inband::Interfaces
 
@@ -262,7 +262,7 @@ class ManagementPlaneProtection::Inband::Interfaces::Interface : public ydk::Ent
         ydk::YLeaf interface_name; //type: string
         class Protocol; //type: ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_oper::ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol> > protocol;
+        ydk::YList protocol;
         
 }; // ManagementPlaneProtection::Inband::Interfaces::Interface
 
@@ -287,7 +287,7 @@ class ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol : publi
         ydk::YLeaf is_all_peers_allowed; //type: boolean
         class PeerAddress; //type: ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_oper::ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress> > peer_address;
+        ydk::YList peer_address;
         
 }; // ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol
 

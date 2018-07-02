@@ -88,7 +88,7 @@ class Ipv4AclAndPrefixList::AccessListManager::Prefixes : public ydk::Entity
 
         class Prefix; //type: Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_oper::Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix> > prefix;
+        ydk::YList prefix;
         
 }; // Ipv4AclAndPrefixList::AccessListManager::Prefixes
 
@@ -136,7 +136,7 @@ class Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSeque
 
         class PrefixListSequence; //type: Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_oper::Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence> > prefix_list_sequence;
+        ydk::YList prefix_list_sequence;
         
 }; // Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences
 
@@ -192,7 +192,7 @@ class Ipv4AclAndPrefixList::AccessListManager::Accesses : public ydk::Entity
 
         class Access; //type: Ipv4AclAndPrefixList::AccessListManager::Accesses::Access
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_oper::Ipv4AclAndPrefixList::AccessListManager::Accesses::Access> > access;
+        ydk::YList access;
         
 }; // Ipv4AclAndPrefixList::AccessListManager::Accesses
 
@@ -242,7 +242,7 @@ class Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSeque
 
         class AccessListSequence; //type: Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_oper::Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence> > access_list_sequence;
+        ydk::YList access_list_sequence;
         
 }; // Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences
 
@@ -325,8 +325,8 @@ class Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSeque
         class Udf; //type: Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_oper::Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::HwNextHopInfo> hw_next_hop_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_oper::Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo> > next_hop_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_oper::Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf> > udf;
+        ydk::YList next_hop_info;
+        ydk::YList udf;
         
 }; // Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence
 
@@ -420,7 +420,7 @@ class Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup : p
 
         class ObjGrpInfo; //type: Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::ObjGrpInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_oper::Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::ObjGrpInfo> > obj_grp_info;
+        ydk::YList obj_grp_info;
         
 }; // Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup
 
@@ -466,7 +466,7 @@ class Ipv4AclAndPrefixList::AccessListManager::Usages : public ydk::Entity
 
         class Usage; //type: Ipv4AclAndPrefixList::AccessListManager::Usages::Usage
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_oper::Ipv4AclAndPrefixList::AccessListManager::Usages::Usage> > usage;
+        ydk::YList usage;
         
 }; // Ipv4AclAndPrefixList::AccessListManager::Usages
 
@@ -576,7 +576,7 @@ class Ipv4AclAndPrefixList::Oor::OorPrefixes : public ydk::Entity
 
         class OorPrefix; //type: Ipv4AclAndPrefixList::Oor::OorPrefixes::OorPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_oper::Ipv4AclAndPrefixList::Oor::OorPrefixes::OorPrefix> > oor_prefix;
+        ydk::YList oor_prefix;
         
 }; // Ipv4AclAndPrefixList::Oor::OorPrefixes
 
@@ -630,7 +630,7 @@ class Ipv4AclAndPrefixList::Oor::OorAccesses : public ydk::Entity
 
         class OorAccess; //type: Ipv4AclAndPrefixList::Oor::OorAccesses::OorAccess
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_oper::Ipv4AclAndPrefixList::Oor::OorAccesses::OorAccess> > oor_access;
+        ydk::YList oor_access;
         
 }; // Ipv4AclAndPrefixList::Oor::OorAccesses
 
@@ -770,7 +770,40 @@ class Ipv4AclAndPrefixList::Oor::PrefixListSummary::Details : public ydk::Entity
 
 }; // Ipv4AclAndPrefixList::Oor::PrefixListSummary::Details
 
+class AclTcpflagsOperator : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf match_none;
+        static const ydk::Enum::YLeaf match_all;
+        static const ydk::Enum::YLeaf match_any_old;
+        static const ydk::Enum::YLeaf match_any;
+
+};
+
 class AclPortOperator : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf eq;
+        static const ydk::Enum::YLeaf gt;
+        static const ydk::Enum::YLeaf lt;
+        static const ydk::Enum::YLeaf neq;
+        static const ydk::Enum::YLeaf range;
+        static const ydk::Enum::YLeaf onebyte;
+        static const ydk::Enum::YLeaf twobytes;
+
+};
+
+class AclAce1 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf remark;
+        static const ydk::Enum::YLeaf abf;
+
+};
+
+class AclPortOperator_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -795,17 +828,6 @@ class BagAclNhAtStatus : public ydk::Enum
 
 };
 
-class BagAclNhStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_present;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf max;
-
-};
-
 class BagAclNh : public ydk::Enum
 {
     public:
@@ -815,54 +837,7 @@ class BagAclNh : public ydk::Enum
 
 };
 
-class AclPortOperator_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf eq;
-        static const ydk::Enum::YLeaf gt;
-        static const ydk::Enum::YLeaf lt;
-        static const ydk::Enum::YLeaf neq;
-        static const ydk::Enum::YLeaf range;
-        static const ydk::Enum::YLeaf onebyte;
-        static const ydk::Enum::YLeaf twobytes;
-
-};
-
 class AclPortOperator__ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf eq;
-        static const ydk::Enum::YLeaf gt;
-        static const ydk::Enum::YLeaf lt;
-        static const ydk::Enum::YLeaf neq;
-        static const ydk::Enum::YLeaf range;
-        static const ydk::Enum::YLeaf onebyte;
-        static const ydk::Enum::YLeaf twobytes;
-
-};
-
-class AclTcpflagsOperator : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf match_none;
-        static const ydk::Enum::YLeaf match_all;
-        static const ydk::Enum::YLeaf match_any_old;
-        static const ydk::Enum::YLeaf match_any;
-
-};
-
-class AclLog : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf log_none;
-        static const ydk::Enum::YLeaf log;
-        static const ydk::Enum::YLeaf log_input;
-
-};
-
-class AclPortOperator___ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -888,12 +863,37 @@ class AclAction : public ydk::Enum
 
 };
 
-class AclAce1 : public ydk::Enum
+class BagAclNhStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf remark;
-        static const ydk::Enum::YLeaf abf;
+        static const ydk::Enum::YLeaf not_present;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf max;
+
+};
+
+class AclPortOperator___ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf eq;
+        static const ydk::Enum::YLeaf gt;
+        static const ydk::Enum::YLeaf lt;
+        static const ydk::Enum::YLeaf neq;
+        static const ydk::Enum::YLeaf range;
+        static const ydk::Enum::YLeaf onebyte;
+        static const ydk::Enum::YLeaf twobytes;
+
+};
+
+class AclLog : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf log_none;
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf log_input;
 
 };
 

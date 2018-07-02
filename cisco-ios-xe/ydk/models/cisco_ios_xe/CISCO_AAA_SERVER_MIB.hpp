@@ -32,20 +32,20 @@ class CISCOAAASERVERMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Casconfig; //type: CISCOAAASERVERMIB::Casconfig
-        class Casconfigtable; //type: CISCOAAASERVERMIB::Casconfigtable
+        class CasConfig; //type: CISCOAAASERVERMIB::CasConfig
+        class CasConfigTable; //type: CISCOAAASERVERMIB::CasConfigTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SERVER_MIB::CISCOAAASERVERMIB::Casconfig> casconfig;
-        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SERVER_MIB::CISCOAAASERVERMIB::Casconfigtable> casconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SERVER_MIB::CISCOAAASERVERMIB::CasConfig> casconfig;
+        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SERVER_MIB::CISCOAAASERVERMIB::CasConfigTable> casconfigtable;
         
 }; // CISCOAAASERVERMIB
 
 
-class CISCOAAASERVERMIB::Casconfig : public ydk::Entity
+class CISCOAAASERVERMIB::CasConfig : public ydk::Entity
 {
     public:
-        Casconfig();
-        ~Casconfig();
+        CasConfig();
+        ~CasConfig();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -60,14 +60,14 @@ class CISCOAAASERVERMIB::Casconfig : public ydk::Entity
 
         ydk::YLeaf casserverstatechangeenable; //type: boolean
 
-}; // CISCOAAASERVERMIB::Casconfig
+}; // CISCOAAASERVERMIB::CasConfig
 
 
-class CISCOAAASERVERMIB::Casconfigtable : public ydk::Entity
+class CISCOAAASERVERMIB::CasConfigTable : public ydk::Entity
 {
     public:
-        Casconfigtable();
-        ~Casconfigtable();
+        CasConfigTable();
+        ~CasConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -80,18 +80,18 @@ class CISCOAAASERVERMIB::Casconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Casconfigentry; //type: CISCOAAASERVERMIB::Casconfigtable::Casconfigentry
+        class CasConfigEntry; //type: CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_AAA_SERVER_MIB::CISCOAAASERVERMIB::Casconfigtable::Casconfigentry> > casconfigentry;
+        ydk::YList casconfigentry;
         
-}; // CISCOAAASERVERMIB::Casconfigtable
+}; // CISCOAAASERVERMIB::CasConfigTable
 
 
-class CISCOAAASERVERMIB::Casconfigtable::Casconfigentry : public ydk::Entity
+class CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry : public ydk::Entity
 {
     public:
-        Casconfigentry();
-        ~Casconfigentry();
+        CasConfigEntry();
+        ~CasConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -136,14 +136,14 @@ class CISCOAAASERVERMIB::Casconfigtable::Casconfigentry : public ydk::Entity
         ydk::YLeaf casacctresponsetime; //type: int32
         ydk::YLeaf casaccttransactionsuccesses; //type: uint32
         ydk::YLeaf casaccttransactionfailures; //type: uint32
-        ydk::YLeaf casstate; //type: Casstate
+        ydk::YLeaf casstate; //type: CasState
         ydk::YLeaf cascurrentstateduration; //type: int32
         ydk::YLeaf caspreviousstateduration; //type: int32
         ydk::YLeaf castotaldeadtime; //type: int32
         ydk::YLeaf casdeadcount; //type: uint32
-        class Casstate;
+        class CasState;
 
-}; // CISCOAAASERVERMIB::Casconfigtable::Casconfigentry
+}; // CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry
 
 class CiscoAAAProtocol : public ydk::Enum
 {
@@ -158,7 +158,7 @@ class CiscoAAAProtocol : public ydk::Enum
 
 };
 
-class CISCOAAASERVERMIB::Casconfigtable::Casconfigentry::Casstate : public ydk::Enum
+class CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::CasState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;

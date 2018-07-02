@@ -17,7 +17,7 @@ FabricStats::FabricStats()
 {
     nodes->parent = this;
 
-    yang_name = "fabric-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-fsi-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fabric-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-fsi-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 FabricStats::~FabricStats()
@@ -26,6 +26,7 @@ FabricStats::~FabricStats()
 
 bool FabricStats::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool FabricStats::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 FabricStats::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "fabric-stats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "fabric-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FabricStats::Nodes::~Nodes()
@@ -129,7 +132,8 @@ FabricStats::Nodes::~Nodes()
 
 bool FabricStats::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool FabricStats::Nodes::has_data() const
 
 bool FabricStats::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> FabricStats::Nodes::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<FabricStats::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool FabricStats::Nodes::has_leaf_or_child_of_name(const std::string & name) con
 FabricStats::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     statses(std::make_shared<FabricStats::Nodes::Node::Statses>())
 {
     statses->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FabricStats::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ FabricStats::Nodes::Node::~Node()
 
 bool FabricStats::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (statses !=  nullptr && statses->has_data());
 }
@@ -252,7 +257,8 @@ std::string FabricStats::Nodes::Node::get_absolute_path() const
 std::string FabricStats::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -318,9 +324,11 @@ bool FabricStats::Nodes::Node::has_leaf_or_child_of_name(const std::string & nam
 }
 
 FabricStats::Nodes::Node::Statses::Statses()
+    :
+    stats(this, {"type"})
 {
 
-    yang_name = "statses"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statses"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FabricStats::Nodes::Node::Statses::~Statses()
@@ -329,7 +337,8 @@ FabricStats::Nodes::Node::Statses::~Statses()
 
 bool FabricStats::Nodes::Node::Statses::has_data() const
 {
-    for (std::size_t index=0; index<stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stats.len(); index++)
     {
         if(stats[index]->has_data())
             return true;
@@ -339,7 +348,7 @@ bool FabricStats::Nodes::Node::Statses::has_data() const
 
 bool FabricStats::Nodes::Node::Statses::has_operation() const
 {
-    for (std::size_t index=0; index<stats.size(); index++)
+    for (std::size_t index=0; index<stats.len(); index++)
     {
         if(stats[index]->has_operation())
             return true;
@@ -369,7 +378,7 @@ std::shared_ptr<Entity> FabricStats::Nodes::Node::Statses::get_child_by_name(con
     {
         auto c = std::make_shared<FabricStats::Nodes::Node::Statses::Stats>();
         c->parent = this;
-        stats.push_back(c);
+        stats.append(c);
         return c;
     }
 
@@ -381,7 +390,7 @@ std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::Statses
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stats)
+    for (auto c : stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -412,9 +421,11 @@ FabricStats::Nodes::Node::Statses::Stats::Stats()
     type{YType::str, "type"},
     last_clear_time{YType::uint64, "last-clear-time"},
     stat_table_name{YType::str, "stat-table-name"}
+        ,
+    stats_table(this, {})
 {
 
-    yang_name = "stats"; yang_parent_name = "statses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "statses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FabricStats::Nodes::Node::Statses::Stats::~Stats()
@@ -423,7 +434,8 @@ FabricStats::Nodes::Node::Statses::Stats::~Stats()
 
 bool FabricStats::Nodes::Node::Statses::Stats::has_data() const
 {
-    for (std::size_t index=0; index<stats_table.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stats_table.len(); index++)
     {
         if(stats_table[index]->has_data())
             return true;
@@ -435,7 +447,7 @@ bool FabricStats::Nodes::Node::Statses::Stats::has_data() const
 
 bool FabricStats::Nodes::Node::Statses::Stats::has_operation() const
 {
-    for (std::size_t index=0; index<stats_table.size(); index++)
+    for (std::size_t index=0; index<stats_table.len(); index++)
     {
         if(stats_table[index]->has_operation())
             return true;
@@ -449,7 +461,8 @@ bool FabricStats::Nodes::Node::Statses::Stats::has_operation() const
 std::string FabricStats::Nodes::Node::Statses::Stats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stats" <<"[type='" <<type <<"']";
+    path_buffer << "stats";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -471,7 +484,7 @@ std::shared_ptr<Entity> FabricStats::Nodes::Node::Statses::Stats::get_child_by_n
     {
         auto c = std::make_shared<FabricStats::Nodes::Node::Statses::Stats::StatsTable>();
         c->parent = this;
-        stats_table.push_back(c);
+        stats_table.append(c);
         return c;
     }
 
@@ -483,7 +496,7 @@ std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::Statses
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stats_table)
+    for (auto c : stats_table.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -540,9 +553,11 @@ bool FabricStats::Nodes::Node::Statses::Stats::has_leaf_or_child_of_name(const s
 }
 
 FabricStats::Nodes::Node::Statses::Stats::StatsTable::StatsTable()
+    :
+    fsi_stat(this, {})
 {
 
-    yang_name = "stats-table"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats-table"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FabricStats::Nodes::Node::Statses::Stats::StatsTable::~StatsTable()
@@ -551,7 +566,8 @@ FabricStats::Nodes::Node::Statses::Stats::StatsTable::~StatsTable()
 
 bool FabricStats::Nodes::Node::Statses::Stats::StatsTable::has_data() const
 {
-    for (std::size_t index=0; index<fsi_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fsi_stat.len(); index++)
     {
         if(fsi_stat[index]->has_data())
             return true;
@@ -561,7 +577,7 @@ bool FabricStats::Nodes::Node::Statses::Stats::StatsTable::has_data() const
 
 bool FabricStats::Nodes::Node::Statses::Stats::StatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<fsi_stat.size(); index++)
+    for (std::size_t index=0; index<fsi_stat.len(); index++)
     {
         if(fsi_stat[index]->has_operation())
             return true;
@@ -591,7 +607,7 @@ std::shared_ptr<Entity> FabricStats::Nodes::Node::Statses::Stats::StatsTable::ge
     {
         auto c = std::make_shared<FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat>();
         c->parent = this;
-        fsi_stat.push_back(c);
+        fsi_stat.append(c);
         return c;
     }
 
@@ -603,7 +619,7 @@ std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::Statses
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fsi_stat)
+    for (auto c : fsi_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -635,7 +651,7 @@ FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::FsiStat()
     counter_name{YType::str, "counter-name"}
 {
 
-    yang_name = "fsi-stat"; yang_parent_name = "stats-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fsi-stat"; yang_parent_name = "stats-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::~FsiStat()
@@ -644,6 +660,7 @@ FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::~FsiStat()
 
 bool FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::has_data() const
 {
+    if (is_presence_container) return true;
     return count.is_set
 	|| counter_name.is_set;
 }

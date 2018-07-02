@@ -32,36 +32,36 @@ class CISCOPROCESSMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cpmcpuhistory; //type: CISCOPROCESSMIB::Cpmcpuhistory
-        class Cpmcputotaltable; //type: CISCOPROCESSMIB::Cpmcputotaltable
-        class Cpmcoretable; //type: CISCOPROCESSMIB::Cpmcoretable
-        class Cpmprocesstable; //type: CISCOPROCESSMIB::Cpmprocesstable
-        class Cpmprocessextrevtable; //type: CISCOPROCESSMIB::Cpmprocessextrevtable
-        class Cpmcputhresholdtable; //type: CISCOPROCESSMIB::Cpmcputhresholdtable
-        class Cpmcpuhistorytable; //type: CISCOPROCESSMIB::Cpmcpuhistorytable
-        class Cpmcpuprocesshistorytable; //type: CISCOPROCESSMIB::Cpmcpuprocesshistorytable
-        class Cpmthreadtable; //type: CISCOPROCESSMIB::Cpmthreadtable
-        class Cpmvirtualprocesstable; //type: CISCOPROCESSMIB::Cpmvirtualprocesstable
+        class CpmCPUHistory; //type: CISCOPROCESSMIB::CpmCPUHistory
+        class CpmCPUTotalTable; //type: CISCOPROCESSMIB::CpmCPUTotalTable
+        class CpmCoreTable; //type: CISCOPROCESSMIB::CpmCoreTable
+        class CpmProcessTable; //type: CISCOPROCESSMIB::CpmProcessTable
+        class CpmProcessExtRevTable; //type: CISCOPROCESSMIB::CpmProcessExtRevTable
+        class CpmCPUThresholdTable; //type: CISCOPROCESSMIB::CpmCPUThresholdTable
+        class CpmCPUHistoryTable; //type: CISCOPROCESSMIB::CpmCPUHistoryTable
+        class CpmCPUProcessHistoryTable; //type: CISCOPROCESSMIB::CpmCPUProcessHistoryTable
+        class CpmThreadTable; //type: CISCOPROCESSMIB::CpmThreadTable
+        class CpmVirtualProcessTable; //type: CISCOPROCESSMIB::CpmVirtualProcessTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcpuhistory> cpmcpuhistory;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable> cpmcputotaltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcoretable> cpmcoretable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocesstable> cpmprocesstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocessextrevtable> cpmprocessextrevtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputhresholdtable> cpmcputhresholdtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcpuhistorytable> cpmcpuhistorytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcpuprocesshistorytable> cpmcpuprocesshistorytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmthreadtable> cpmthreadtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmvirtualprocesstable> cpmvirtualprocesstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUHistory> cpmcpuhistory;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUTotalTable> cpmcputotaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCoreTable> cpmcoretable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmProcessTable> cpmprocesstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmProcessExtRevTable> cpmprocessextrevtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUThresholdTable> cpmcputhresholdtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUHistoryTable> cpmcpuhistorytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUProcessHistoryTable> cpmcpuprocesshistorytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmThreadTable> cpmthreadtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmVirtualProcessTable> cpmvirtualprocesstable;
         
 }; // CISCOPROCESSMIB
 
 
-class CISCOPROCESSMIB::Cpmcpuhistory : public ydk::Entity
+class CISCOPROCESSMIB::CpmCPUHistory : public ydk::Entity
 {
     public:
-        Cpmcpuhistory();
-        ~Cpmcpuhistory();
+        CpmCPUHistory();
+        ~CpmCPUHistory();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -77,14 +77,14 @@ class CISCOPROCESSMIB::Cpmcpuhistory : public ydk::Entity
         ydk::YLeaf cpmcpuhistorythreshold; //type: uint32
         ydk::YLeaf cpmcpuhistorysize; //type: uint32
 
-}; // CISCOPROCESSMIB::Cpmcpuhistory
+}; // CISCOPROCESSMIB::CpmCPUHistory
 
 
-class CISCOPROCESSMIB::Cpmcputotaltable : public ydk::Entity
+class CISCOPROCESSMIB::CpmCPUTotalTable : public ydk::Entity
 {
     public:
-        Cpmcputotaltable();
-        ~Cpmcputotaltable();
+        CpmCPUTotalTable();
+        ~CpmCPUTotalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -97,18 +97,18 @@ class CISCOPROCESSMIB::Cpmcputotaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpmcputotalentry; //type: CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry
+        class CpmCPUTotalEntry; //type: CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry> > cpmcputotalentry;
+        ydk::YList cpmcputotalentry;
         
-}; // CISCOPROCESSMIB::Cpmcputotaltable
+}; // CISCOPROCESSMIB::CpmCPUTotalTable
 
 
-class CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry : public ydk::Entity
+class CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry : public ydk::Entity
 {
     public:
-        Cpmcputotalentry();
-        ~Cpmcputotalentry();
+        CpmCPUTotalEntry();
+        ~CpmCPUTotalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -151,14 +151,14 @@ class CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry : public ydk::Entity
         ydk::YLeaf cpmcpumemorycommittedovrflw; //type: uint32
         ydk::YLeaf cpmcpumemoryhccommitted; //type: uint64
 
-}; // CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry
+}; // CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry
 
 
-class CISCOPROCESSMIB::Cpmcoretable : public ydk::Entity
+class CISCOPROCESSMIB::CpmCoreTable : public ydk::Entity
 {
     public:
-        Cpmcoretable();
-        ~Cpmcoretable();
+        CpmCoreTable();
+        ~CpmCoreTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -171,18 +171,18 @@ class CISCOPROCESSMIB::Cpmcoretable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpmcoreentry; //type: CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry
+        class CpmCoreEntry; //type: CISCOPROCESSMIB::CpmCoreTable::CpmCoreEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry> > cpmcoreentry;
+        ydk::YList cpmcoreentry;
         
-}; // CISCOPROCESSMIB::Cpmcoretable
+}; // CISCOPROCESSMIB::CpmCoreTable
 
 
-class CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry : public ydk::Entity
+class CISCOPROCESSMIB::CpmCoreTable::CpmCoreEntry : public ydk::Entity
 {
     public:
-        Cpmcoreentry();
-        ~Cpmcoreentry();
+        CpmCoreEntry();
+        ~CpmCoreEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -195,7 +195,7 @@ class CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::cpmcputotalindex)
         ydk::YLeaf cpmcputotalindex;
         ydk::YLeaf cpmcoreindex; //type: uint32
         ydk::YLeaf cpmcorephysicalindex; //type: int32
@@ -206,14 +206,14 @@ class CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry : public ydk::Entity
         ydk::YLeaf cpmcoreloadavg5min; //type: uint32
         ydk::YLeaf cpmcoreloadavg15min; //type: uint32
 
-}; // CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry
+}; // CISCOPROCESSMIB::CpmCoreTable::CpmCoreEntry
 
 
-class CISCOPROCESSMIB::Cpmprocesstable : public ydk::Entity
+class CISCOPROCESSMIB::CpmProcessTable : public ydk::Entity
 {
     public:
-        Cpmprocesstable();
-        ~Cpmprocesstable();
+        CpmProcessTable();
+        ~CpmProcessTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -226,18 +226,18 @@ class CISCOPROCESSMIB::Cpmprocesstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpmprocessentry; //type: CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry
+        class CpmProcessEntry; //type: CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry> > cpmprocessentry;
+        ydk::YList cpmprocessentry;
         
-}; // CISCOPROCESSMIB::Cpmprocesstable
+}; // CISCOPROCESSMIB::CpmProcessTable
 
 
-class CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry : public ydk::Entity
+class CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry : public ydk::Entity
 {
     public:
-        Cpmprocessentry();
-        ~Cpmprocessentry();
+        CpmProcessEntry();
+        ~CpmProcessEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -250,7 +250,7 @@ class CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::cpmcputotalindex)
         ydk::YLeaf cpmcputotalindex;
         ydk::YLeaf cpmprocesspid; //type: uint32
         ydk::YLeaf cpmprocessname; //type: string
@@ -264,17 +264,17 @@ class CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry : public ydk::Entity
         ydk::YLeaf cpmprocextutil5sec; //type: uint32
         ydk::YLeaf cpmprocextutil1min; //type: uint32
         ydk::YLeaf cpmprocextutil5min; //type: uint32
-        ydk::YLeaf cpmprocextpriority; //type: Cpmprocextpriority
-        class Cpmprocextpriority;
+        ydk::YLeaf cpmprocextpriority; //type: CpmProcExtPriority
+        class CpmProcExtPriority;
 
-}; // CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry
+}; // CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry
 
 
-class CISCOPROCESSMIB::Cpmprocessextrevtable : public ydk::Entity
+class CISCOPROCESSMIB::CpmProcessExtRevTable : public ydk::Entity
 {
     public:
-        Cpmprocessextrevtable();
-        ~Cpmprocessextrevtable();
+        CpmProcessExtRevTable();
+        ~CpmProcessExtRevTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -287,18 +287,18 @@ class CISCOPROCESSMIB::Cpmprocessextrevtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpmprocessextreventry; //type: CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry
+        class CpmProcessExtRevEntry; //type: CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry> > cpmprocessextreventry;
+        ydk::YList cpmprocessextreventry;
         
-}; // CISCOPROCESSMIB::Cpmprocessextrevtable
+}; // CISCOPROCESSMIB::CpmProcessExtRevTable
 
 
-class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry : public ydk::Entity
+class CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry : public ydk::Entity
 {
     public:
-        Cpmprocessextreventry();
-        ~Cpmprocessextreventry();
+        CpmProcessExtRevEntry();
+        ~CpmProcessExtRevEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -311,9 +311,9 @@ class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::cpmcputotalindex)
         ydk::YLeaf cpmcputotalindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::cpmprocesspid)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry::cpmprocesspid)
         ydk::YLeaf cpmprocesspid;
         ydk::YLeaf cpmprocextmemallocatedrev; //type: uint32
         ydk::YLeaf cpmprocextmemfreedrev; //type: uint32
@@ -322,12 +322,12 @@ class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry : public ydk
         ydk::YLeaf cpmprocextutil5secrev; //type: uint32
         ydk::YLeaf cpmprocextutil1minrev; //type: uint32
         ydk::YLeaf cpmprocextutil5minrev; //type: uint32
-        ydk::YLeaf cpmprocextpriorityrev; //type: Cpmprocextpriorityrev
-        ydk::YLeaf cpmprocesstype; //type: Cpmprocesstype
+        ydk::YLeaf cpmprocextpriorityrev; //type: CpmProcExtPriorityRev
+        ydk::YLeaf cpmprocesstype; //type: CpmProcessType
         ydk::YLeaf cpmprocessrespawn; //type: uint32
         ydk::YLeaf cpmprocessrespawncount; //type: uint32
         ydk::YLeaf cpmprocessrespawnafterlastpatch; //type: uint32
-        ydk::YLeaf cpmprocessmemorycore; //type: Cpmprocessmemorycore
+        ydk::YLeaf cpmprocessmemorycore; //type: CpmProcessMemoryCore
         ydk::YLeaf cpmprocesslastrestartuser; //type: string
         ydk::YLeaf cpmprocesstextsegmentsize; //type: uint32
         ydk::YLeaf cpmprocessdatasegmentsize; //type: uint32
@@ -345,18 +345,18 @@ class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry : public ydk
         ydk::YLeaf cpmprocesshcstacksize; //type: uint64
         ydk::YLeaf cpmprocessdynamicmemorysizeovrflw; //type: uint32
         ydk::YLeaf cpmprocesshcdynamicmemorysize; //type: uint64
-        class Cpmprocextpriorityrev;
-        class Cpmprocesstype;
-        class Cpmprocessmemorycore;
+        class CpmProcExtPriorityRev;
+        class CpmProcessType;
+        class CpmProcessMemoryCore;
 
-}; // CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry
+}; // CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry
 
 
-class CISCOPROCESSMIB::Cpmcputhresholdtable : public ydk::Entity
+class CISCOPROCESSMIB::CpmCPUThresholdTable : public ydk::Entity
 {
     public:
-        Cpmcputhresholdtable();
-        ~Cpmcputhresholdtable();
+        CpmCPUThresholdTable();
+        ~CpmCPUThresholdTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -369,18 +369,18 @@ class CISCOPROCESSMIB::Cpmcputhresholdtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpmcputhresholdentry; //type: CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry
+        class CpmCPUThresholdEntry; //type: CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry> > cpmcputhresholdentry;
+        ydk::YList cpmcputhresholdentry;
         
-}; // CISCOPROCESSMIB::Cpmcputhresholdtable
+}; // CISCOPROCESSMIB::CpmCPUThresholdTable
 
 
-class CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry : public ydk::Entity
+class CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry : public ydk::Entity
 {
     public:
-        Cpmcputhresholdentry();
-        ~Cpmcputhresholdentry();
+        CpmCPUThresholdEntry();
+        ~CpmCPUThresholdEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -393,24 +393,24 @@ class CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::cpmcputotalindex)
         ydk::YLeaf cpmcputotalindex;
-        ydk::YLeaf cpmcputhresholdclass; //type: Cpmcputhresholdclass
+        ydk::YLeaf cpmcputhresholdclass; //type: CpmCPUThresholdClass
         ydk::YLeaf cpmcpurisingthresholdvalue; //type: uint32
         ydk::YLeaf cpmcpurisingthresholdperiod; //type: uint32
         ydk::YLeaf cpmcpufallingthresholdvalue; //type: uint32
         ydk::YLeaf cpmcpufallingthresholdperiod; //type: uint32
         ydk::YLeaf cpmcputhresholdentrystatus; //type: RowStatus
-        class Cpmcputhresholdclass;
+        class CpmCPUThresholdClass;
 
-}; // CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry
+}; // CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry
 
 
-class CISCOPROCESSMIB::Cpmcpuhistorytable : public ydk::Entity
+class CISCOPROCESSMIB::CpmCPUHistoryTable : public ydk::Entity
 {
     public:
-        Cpmcpuhistorytable();
-        ~Cpmcpuhistorytable();
+        CpmCPUHistoryTable();
+        ~CpmCPUHistoryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -423,18 +423,18 @@ class CISCOPROCESSMIB::Cpmcpuhistorytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpmcpuhistoryentry; //type: CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry
+        class CpmCPUHistoryEntry; //type: CISCOPROCESSMIB::CpmCPUHistoryTable::CpmCPUHistoryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry> > cpmcpuhistoryentry;
+        ydk::YList cpmcpuhistoryentry;
         
-}; // CISCOPROCESSMIB::Cpmcpuhistorytable
+}; // CISCOPROCESSMIB::CpmCPUHistoryTable
 
 
-class CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry : public ydk::Entity
+class CISCOPROCESSMIB::CpmCPUHistoryTable::CpmCPUHistoryEntry : public ydk::Entity
 {
     public:
-        Cpmcpuhistoryentry();
-        ~Cpmcpuhistoryentry();
+        CpmCPUHistoryEntry();
+        ~CpmCPUHistoryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -447,7 +447,7 @@ class CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::cpmcputotalindex)
         ydk::YLeaf cpmcputotalindex;
         ydk::YLeaf cpmcpuhistoryreportid; //type: uint32
         ydk::YLeaf cpmcpuhistoryreportsize; //type: uint32
@@ -455,14 +455,14 @@ class CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry : public ydk::Enti
         ydk::YLeaf cpmcpuhistoryinterruptutil; //type: uint32
         ydk::YLeaf cpmcpuhistorycreatedtime; //type: uint32
 
-}; // CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry
+}; // CISCOPROCESSMIB::CpmCPUHistoryTable::CpmCPUHistoryEntry
 
 
-class CISCOPROCESSMIB::Cpmcpuprocesshistorytable : public ydk::Entity
+class CISCOPROCESSMIB::CpmCPUProcessHistoryTable : public ydk::Entity
 {
     public:
-        Cpmcpuprocesshistorytable();
-        ~Cpmcpuprocesshistorytable();
+        CpmCPUProcessHistoryTable();
+        ~CpmCPUProcessHistoryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -475,18 +475,18 @@ class CISCOPROCESSMIB::Cpmcpuprocesshistorytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpmcpuprocesshistoryentry; //type: CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry
+        class CpmCPUProcessHistoryEntry; //type: CISCOPROCESSMIB::CpmCPUProcessHistoryTable::CpmCPUProcessHistoryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry> > cpmcpuprocesshistoryentry;
+        ydk::YList cpmcpuprocesshistoryentry;
         
-}; // CISCOPROCESSMIB::Cpmcpuprocesshistorytable
+}; // CISCOPROCESSMIB::CpmCPUProcessHistoryTable
 
 
-class CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry : public ydk::Entity
+class CISCOPROCESSMIB::CpmCPUProcessHistoryTable::CpmCPUProcessHistoryEntry : public ydk::Entity
 {
     public:
-        Cpmcpuprocesshistoryentry();
-        ~Cpmcpuprocesshistoryentry();
+        CpmCPUProcessHistoryEntry();
+        ~CpmCPUProcessHistoryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -499,9 +499,9 @@ class CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::cpmcputotalindex)
         ydk::YLeaf cpmcputotalindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcpuhistorytable::Cpmcpuhistoryentry::cpmcpuhistoryreportid)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUHistoryTable::CpmCPUHistoryEntry::cpmcpuhistoryreportid)
         ydk::YLeaf cpmcpuhistoryreportid;
         ydk::YLeaf cpmcpuprocesshistoryindex; //type: uint32
         ydk::YLeaf cpmcpuhistoryprocid; //type: uint32
@@ -509,14 +509,14 @@ class CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry : pu
         ydk::YLeaf cpmcpuhistoryproccreated; //type: uint32
         ydk::YLeaf cpmcpuhistoryprocutil; //type: uint32
 
-}; // CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry
+}; // CISCOPROCESSMIB::CpmCPUProcessHistoryTable::CpmCPUProcessHistoryEntry
 
 
-class CISCOPROCESSMIB::Cpmthreadtable : public ydk::Entity
+class CISCOPROCESSMIB::CpmThreadTable : public ydk::Entity
 {
     public:
-        Cpmthreadtable();
-        ~Cpmthreadtable();
+        CpmThreadTable();
+        ~CpmThreadTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -529,18 +529,18 @@ class CISCOPROCESSMIB::Cpmthreadtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpmthreadentry; //type: CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry
+        class CpmThreadEntry; //type: CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry> > cpmthreadentry;
+        ydk::YList cpmthreadentry;
         
-}; // CISCOPROCESSMIB::Cpmthreadtable
+}; // CISCOPROCESSMIB::CpmThreadTable
 
 
-class CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry : public ydk::Entity
+class CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry : public ydk::Entity
 {
     public:
-        Cpmthreadentry();
-        ~Cpmthreadentry();
+        CpmThreadEntry();
+        ~CpmThreadEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -553,29 +553,29 @@ class CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::cpmcputotalindex)
         ydk::YLeaf cpmcputotalindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::cpmprocesspid)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry::cpmprocesspid)
         ydk::YLeaf cpmprocesspid;
         ydk::YLeaf cpmthreadid; //type: uint32
         ydk::YLeaf cpmthreadname; //type: string
         ydk::YLeaf cpmthreadpriority; //type: uint32
-        ydk::YLeaf cpmthreadstate; //type: Cpmthreadstate
+        ydk::YLeaf cpmthreadstate; //type: CpmThreadState
         ydk::YLeaf cpmthreadblockingprocess; //type: string
         ydk::YLeaf cpmthreadcpuutilization; //type: uint32
         ydk::YLeaf cpmthreadstacksize; //type: uint32
         ydk::YLeaf cpmthreadstacksizeovrflw; //type: uint32
         ydk::YLeaf cpmthreadhcstacksize; //type: uint64
-        class Cpmthreadstate;
+        class CpmThreadState;
 
-}; // CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry
+}; // CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry
 
 
-class CISCOPROCESSMIB::Cpmvirtualprocesstable : public ydk::Entity
+class CISCOPROCESSMIB::CpmVirtualProcessTable : public ydk::Entity
 {
     public:
-        Cpmvirtualprocesstable();
-        ~Cpmvirtualprocesstable();
+        CpmVirtualProcessTable();
+        ~CpmVirtualProcessTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -588,18 +588,18 @@ class CISCOPROCESSMIB::Cpmvirtualprocesstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpmvirtualprocessentry; //type: CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry
+        class CpmVirtualProcessEntry; //type: CISCOPROCESSMIB::CpmVirtualProcessTable::CpmVirtualProcessEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry> > cpmvirtualprocessentry;
+        ydk::YList cpmvirtualprocessentry;
         
-}; // CISCOPROCESSMIB::Cpmvirtualprocesstable
+}; // CISCOPROCESSMIB::CpmVirtualProcessTable
 
 
-class CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry : public ydk::Entity
+class CISCOPROCESSMIB::CpmVirtualProcessTable::CpmVirtualProcessEntry : public ydk::Entity
 {
     public:
-        Cpmvirtualprocessentry();
-        ~Cpmvirtualprocessentry();
+        CpmVirtualProcessEntry();
+        ~CpmVirtualProcessEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -612,9 +612,9 @@ class CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::cpmcputotalindex)
         ydk::YLeaf cpmcputotalindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::cpmprocesspid)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry::cpmprocesspid)
         ydk::YLeaf cpmprocesspid;
         ydk::YLeaf cpmvirtualprocessid; //type: uint32
         ydk::YLeaf cpmvirtualprocessname; //type: string
@@ -630,9 +630,9 @@ class CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry : public y
         ydk::YLeaf cpmvirtualprocessmemfreedovrflw; //type: uint32
         ydk::YLeaf cpmvirtualprocesshcmemfreed; //type: uint64
 
-}; // CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry
+}; // CISCOPROCESSMIB::CpmVirtualProcessTable::CpmVirtualProcessEntry
 
-class CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority : public ydk::Enum
+class CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry::CpmProcExtPriority : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf critical;
@@ -643,7 +643,7 @@ class CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority : pu
 
 };
 
-class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocextpriorityrev : public ydk::Enum
+class CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::CpmProcExtPriorityRev : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf critical;
@@ -654,7 +654,7 @@ class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocextp
 
 };
 
-class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocesstype : public ydk::Enum
+class CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::CpmProcessType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -664,7 +664,7 @@ class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocesst
 
 };
 
-class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessmemorycore : public ydk::Enum
+class CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::CpmProcessMemoryCore : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -679,7 +679,7 @@ class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessm
 
 };
 
-class CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::Cpmcputhresholdclass : public ydk::Enum
+class CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry::CpmCPUThresholdClass : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf total;
@@ -688,7 +688,7 @@ class CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::Cpmcputhresho
 
 };
 
-class CISCOPROCESSMIB::Cpmthreadtable::Cpmthreadentry::Cpmthreadstate : public ydk::Enum
+class CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry::CpmThreadState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

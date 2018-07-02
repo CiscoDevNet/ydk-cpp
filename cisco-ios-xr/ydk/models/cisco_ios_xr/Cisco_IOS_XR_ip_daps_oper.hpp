@@ -57,7 +57,7 @@ class AddressPoolService::Nodes : public ydk::Entity
 
         class Node; //type: AddressPoolService::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // AddressPoolService::Nodes
 
@@ -109,7 +109,7 @@ class AddressPoolService::Nodes::Node::Pools : public ydk::Entity
 
         class Pool; //type: AddressPoolService::Nodes::Node::Pools::Pool
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool> > pool;
+        ydk::YList pool;
         
 }; // AddressPoolService::Nodes::Node::Pools
 
@@ -160,7 +160,7 @@ class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges : public ydk::
 
         class AddressRange; //type: AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange> > address_range;
+        ydk::YList address_range;
         
 }; // AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges
 
@@ -360,8 +360,8 @@ class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses : public 
         class InUseAddress; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations> pool_allocations;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange> > address_range;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress> > in_use_address;
+        ydk::YList address_range;
+        ydk::YList in_use_address;
         
 }; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses
 
@@ -704,7 +704,7 @@ class AddressPoolService::Nodes::Node::Vrfs : public ydk::Entity
 
         class Vrf; //type: AddressPoolService::Nodes::Node::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // AddressPoolService::Nodes::Node::Vrfs
 
@@ -755,7 +755,7 @@ class AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4 : public ydk::Entity
         class Pools; //type: AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary> allocation_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools> > pools;
+        ydk::YList pools;
         
 }; // AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4
 
@@ -833,7 +833,7 @@ class AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6 : public ydk::Entity
         class Pools; //type: AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary> allocation_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools> > pools;
+        ydk::YList pools;
         
 }; // AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6
 

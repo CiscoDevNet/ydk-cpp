@@ -357,7 +357,7 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold : public y
 
         class ThresholdArray; //type: Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray> > threshold_array;
+        ydk::YList threshold_array;
         
 }; // Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold
 

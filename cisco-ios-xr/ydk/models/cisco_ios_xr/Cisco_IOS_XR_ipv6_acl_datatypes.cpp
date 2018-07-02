@@ -11,31 +11,8 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_acl_datatypes {
 
-const Enum::YLeaf Ipv6PrefixMatchExactLength::match_exact_length {1, "match-exact-length"};
-
-const Enum::YLeaf Ipv6AclGrantEnum::deny {0, "deny"};
-const Enum::YLeaf Ipv6AclGrantEnum::permit {1, "permit"};
-
-const Enum::YLeaf Ipv6AclLoggingEnum::log {1, "log"};
-const Enum::YLeaf Ipv6AclLoggingEnum::log_input {2, "log-input"};
-
-const Enum::YLeaf Ipv6AclProtocolNumber::ip {0, "ip"};
-const Enum::YLeaf Ipv6AclProtocolNumber::icmp {1, "icmp"};
-const Enum::YLeaf Ipv6AclProtocolNumber::igmp {2, "igmp"};
-const Enum::YLeaf Ipv6AclProtocolNumber::ip_in_ip {4, "ip-in-ip"};
-const Enum::YLeaf Ipv6AclProtocolNumber::tcp {6, "tcp"};
-const Enum::YLeaf Ipv6AclProtocolNumber::igrp {9, "igrp"};
-const Enum::YLeaf Ipv6AclProtocolNumber::udp {17, "udp"};
-const Enum::YLeaf Ipv6AclProtocolNumber::gre {47, "gre"};
-const Enum::YLeaf Ipv6AclProtocolNumber::esp {50, "esp"};
-const Enum::YLeaf Ipv6AclProtocolNumber::ahp {51, "ahp"};
-const Enum::YLeaf Ipv6AclProtocolNumber::icmpv6 {58, "icmpv6"};
-const Enum::YLeaf Ipv6AclProtocolNumber::eigrp {88, "eigrp"};
-const Enum::YLeaf Ipv6AclProtocolNumber::ospf {89, "ospf"};
-const Enum::YLeaf Ipv6AclProtocolNumber::nos {94, "nos"};
-const Enum::YLeaf Ipv6AclProtocolNumber::pim {103, "pim"};
-const Enum::YLeaf Ipv6AclProtocolNumber::pcp {108, "pcp"};
-const Enum::YLeaf Ipv6AclProtocolNumber::sctp {132, "sctp"};
+const Enum::YLeaf Ipv6AclTcpMatchOperatorEnum::match_all {1, "match-all"};
+const Enum::YLeaf Ipv6AclTcpMatchOperatorEnum::match_any {3, "match-any"};
 
 const Enum::YLeaf Ipv6AclIcmpTypeCodeEnum::no_route_to_destination {65536, "no-route-to-destination"};
 const Enum::YLeaf Ipv6AclIcmpTypeCodeEnum::administratively_prohibited {65537, "administratively-prohibited"};
@@ -74,6 +51,31 @@ const Enum::YLeaf Ipv6AclIcmpTypeCodeEnum::node_information_request_is_refused {
 const Enum::YLeaf Ipv6AclIcmpTypeCodeEnum::unknown_query_type {9175042, "unknown-query-type"};
 const Enum::YLeaf Ipv6AclIcmpTypeCodeEnum::who_are_you_reply {9240575, "who-are-you-reply"};
 
+const Enum::YLeaf Ipv6AclProtocolNumber::ip {0, "ip"};
+const Enum::YLeaf Ipv6AclProtocolNumber::icmp {1, "icmp"};
+const Enum::YLeaf Ipv6AclProtocolNumber::igmp {2, "igmp"};
+const Enum::YLeaf Ipv6AclProtocolNumber::ip_in_ip {4, "ip-in-ip"};
+const Enum::YLeaf Ipv6AclProtocolNumber::tcp {6, "tcp"};
+const Enum::YLeaf Ipv6AclProtocolNumber::igrp {9, "igrp"};
+const Enum::YLeaf Ipv6AclProtocolNumber::udp {17, "udp"};
+const Enum::YLeaf Ipv6AclProtocolNumber::gre {47, "gre"};
+const Enum::YLeaf Ipv6AclProtocolNumber::esp {50, "esp"};
+const Enum::YLeaf Ipv6AclProtocolNumber::ahp {51, "ahp"};
+const Enum::YLeaf Ipv6AclProtocolNumber::icmpv6 {58, "icmpv6"};
+const Enum::YLeaf Ipv6AclProtocolNumber::eigrp {88, "eigrp"};
+const Enum::YLeaf Ipv6AclProtocolNumber::ospf {89, "ospf"};
+const Enum::YLeaf Ipv6AclProtocolNumber::nos {94, "nos"};
+const Enum::YLeaf Ipv6AclProtocolNumber::pim {103, "pim"};
+const Enum::YLeaf Ipv6AclProtocolNumber::pcp {108, "pcp"};
+const Enum::YLeaf Ipv6AclProtocolNumber::sctp {132, "sctp"};
+
+const Enum::YLeaf Ipv6PrefixMatchMinLength::match_min_length {2, "match-min-length"};
+
+const Enum::YLeaf Ipv6AclGrantEnum::deny {0, "deny"};
+const Enum::YLeaf Ipv6AclGrantEnum::permit {1, "permit"};
+
+const Enum::YLeaf Ipv6PrefixMatchMaxLength::match_max_length {3, "match-max-length"};
+
 const Enum::YLeaf Ipv6AclPrecedenceNumber::critical {5, "critical"};
 const Enum::YLeaf Ipv6AclPrecedenceNumber::flash {3, "flash"};
 const Enum::YLeaf Ipv6AclPrecedenceNumber::flash_override {4, "flash-override"};
@@ -83,10 +85,11 @@ const Enum::YLeaf Ipv6AclPrecedenceNumber::network {7, "network"};
 const Enum::YLeaf Ipv6AclPrecedenceNumber::priority {1, "priority"};
 const Enum::YLeaf Ipv6AclPrecedenceNumber::routine {0, "routine"};
 
-const Enum::YLeaf Ipv6AclTypeEnum::acl {1, "acl"};
-const Enum::YLeaf Ipv6AclTypeEnum::prefix_list {2, "prefix-list"};
-
-const Enum::YLeaf Ipv6PrefixMatchMinLength::match_min_length {2, "match-min-length"};
+const Enum::YLeaf Ipv6AclOperatorEnum::equal {1, "equal"};
+const Enum::YLeaf Ipv6AclOperatorEnum::greater_than {2, "greater-than"};
+const Enum::YLeaf Ipv6AclOperatorEnum::less_than {3, "less-than"};
+const Enum::YLeaf Ipv6AclOperatorEnum::not_equal {4, "not-equal"};
+const Enum::YLeaf Ipv6AclOperatorEnum::range {5, "range"};
 
 const Enum::YLeaf Ipv6AclDscpNumber::default_ {0, "default"};
 const Enum::YLeaf Ipv6AclDscpNumber::af11 {10, "af11"};
@@ -110,15 +113,7 @@ const Enum::YLeaf Ipv6AclDscpNumber::cs6 {48, "cs6"};
 const Enum::YLeaf Ipv6AclDscpNumber::cs7 {56, "cs7"};
 const Enum::YLeaf Ipv6AclDscpNumber::ef {46, "ef"};
 
-const Enum::YLeaf Ipv6AclTcpBitsNumber::established {20, "established"};
-const Enum::YLeaf Ipv6AclTcpBitsNumber::ack {16, "ack"};
-const Enum::YLeaf Ipv6AclTcpBitsNumber::rst {4, "rst"};
-const Enum::YLeaf Ipv6AclTcpBitsNumber::fin {1, "fin"};
-const Enum::YLeaf Ipv6AclTcpBitsNumber::psh {8, "psh"};
-const Enum::YLeaf Ipv6AclTcpBitsNumber::syn {2, "syn"};
-const Enum::YLeaf Ipv6AclTcpBitsNumber::urg {32, "urg"};
-
-const Enum::YLeaf Ipv6PrefixMatchMaxLength::match_max_length {3, "match-max-length"};
+const Enum::YLeaf Ipv6PrefixMatchExactLength::match_exact_length {1, "match-exact-length"};
 
 const Enum::YLeaf Ipv6AclPortNumber::echo {7, "echo"};
 const Enum::YLeaf Ipv6AclPortNumber::discard {9, "discard"};
@@ -169,17 +164,22 @@ const Enum::YLeaf Ipv6AclPortNumber::klogin {543, "klogin"};
 const Enum::YLeaf Ipv6AclPortNumber::kshell {544, "kshell"};
 const Enum::YLeaf Ipv6AclPortNumber::ldp {646, "ldp"};
 
+const Enum::YLeaf Ipv6AclLoggingEnum::log {1, "log"};
+const Enum::YLeaf Ipv6AclLoggingEnum::log_input {2, "log-input"};
+
+const Enum::YLeaf Ipv6AclTypeEnum::acl {1, "acl"};
+const Enum::YLeaf Ipv6AclTypeEnum::prefix_list {2, "prefix-list"};
+
 const Enum::YLeaf Ipv6AclStatusEnum::disabled {0, "disabled"};
 const Enum::YLeaf Ipv6AclStatusEnum::enabled {1, "enabled"};
 
-const Enum::YLeaf Ipv6AclOperatorEnum::equal {1, "equal"};
-const Enum::YLeaf Ipv6AclOperatorEnum::greater_than {2, "greater-than"};
-const Enum::YLeaf Ipv6AclOperatorEnum::less_than {3, "less-than"};
-const Enum::YLeaf Ipv6AclOperatorEnum::not_equal {4, "not-equal"};
-const Enum::YLeaf Ipv6AclOperatorEnum::range {5, "range"};
-
-const Enum::YLeaf Ipv6AclTcpMatchOperatorEnum::match_all {1, "match-all"};
-const Enum::YLeaf Ipv6AclTcpMatchOperatorEnum::match_any {3, "match-any"};
+const Enum::YLeaf Ipv6AclTcpBitsNumber::established {20, "established"};
+const Enum::YLeaf Ipv6AclTcpBitsNumber::ack {16, "ack"};
+const Enum::YLeaf Ipv6AclTcpBitsNumber::rst {4, "rst"};
+const Enum::YLeaf Ipv6AclTcpBitsNumber::fin {1, "fin"};
+const Enum::YLeaf Ipv6AclTcpBitsNumber::psh {8, "psh"};
+const Enum::YLeaf Ipv6AclTcpBitsNumber::syn {2, "syn"};
+const Enum::YLeaf Ipv6AclTcpBitsNumber::urg {32, "urg"};
 
 
 }

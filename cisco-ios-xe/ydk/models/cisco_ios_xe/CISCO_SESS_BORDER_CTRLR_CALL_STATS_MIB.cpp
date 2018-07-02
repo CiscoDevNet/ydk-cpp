@@ -13,13 +13,13 @@ namespace CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB {
 
 CISCOSESSBORDERCTRLRCALLSTATSMIB::CISCOSESSBORDERCTRLRCALLSTATSMIB()
     :
-    csbcallstatsinstancetable(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable>())
-	,csbcallstatstable(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable>())
-	,csbcurrperiodicstatstable(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable>())
-	,csbhistorystatstable(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable>())
-	,csbperflowstatstable(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable>())
-	,csbh248statstable(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable>())
-	,csbh248statsrev1table(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table>())
+    csbcallstatsinstancetable(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable>())
+    , csbcallstatstable(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable>())
+    , csbcurrperiodicstatstable(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable>())
+    , csbhistorystatstable(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable>())
+    , csbperflowstatstable(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable>())
+    , csbh248statstable(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable>())
+    , csbh248statsrev1table(std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table>())
 {
     csbcallstatsinstancetable->parent = this;
     csbcallstatstable->parent = this;
@@ -29,7 +29,7 @@ CISCOSESSBORDERCTRLRCALLSTATSMIB::CISCOSESSBORDERCTRLRCALLSTATSMIB()
     csbh248statstable->parent = this;
     csbh248statsrev1table->parent = this;
 
-    yang_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOSESSBORDERCTRLRCALLSTATSMIB::~CISCOSESSBORDERCTRLRCALLSTATSMIB()
@@ -38,6 +38,7 @@ CISCOSESSBORDERCTRLRCALLSTATSMIB::~CISCOSESSBORDERCTRLRCALLSTATSMIB()
 
 bool CISCOSESSBORDERCTRLRCALLSTATSMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (csbcallstatsinstancetable !=  nullptr && csbcallstatsinstancetable->has_data())
 	|| (csbcallstatstable !=  nullptr && csbcallstatstable->has_data())
 	|| (csbcurrperiodicstatstable !=  nullptr && csbcurrperiodicstatstable->has_data())
@@ -81,7 +82,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::get_child_by_name(cons
     {
         if(csbcallstatsinstancetable == nullptr)
         {
-            csbcallstatsinstancetable = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable>();
+            csbcallstatsinstancetable = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable>();
         }
         return csbcallstatsinstancetable;
     }
@@ -90,7 +91,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::get_child_by_name(cons
     {
         if(csbcallstatstable == nullptr)
         {
-            csbcallstatstable = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable>();
+            csbcallstatstable = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable>();
         }
         return csbcallstatstable;
     }
@@ -99,7 +100,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::get_child_by_name(cons
     {
         if(csbcurrperiodicstatstable == nullptr)
         {
-            csbcurrperiodicstatstable = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable>();
+            csbcurrperiodicstatstable = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable>();
         }
         return csbcurrperiodicstatstable;
     }
@@ -108,7 +109,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::get_child_by_name(cons
     {
         if(csbhistorystatstable == nullptr)
         {
-            csbhistorystatstable = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable>();
+            csbhistorystatstable = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable>();
         }
         return csbhistorystatstable;
     }
@@ -117,7 +118,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::get_child_by_name(cons
     {
         if(csbperflowstatstable == nullptr)
         {
-            csbperflowstatstable = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable>();
+            csbperflowstatstable = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable>();
         }
         return csbperflowstatstable;
     }
@@ -126,7 +127,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::get_child_by_name(cons
     {
         if(csbh248statstable == nullptr)
         {
-            csbh248statstable = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable>();
+            csbh248statstable = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable>();
         }
         return csbh248statstable;
     }
@@ -135,7 +136,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::get_child_by_name(cons
     {
         if(csbh248statsrev1table == nullptr)
         {
-            csbh248statsrev1table = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table>();
+            csbh248statsrev1table = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table>();
         }
         return csbh248statsrev1table;
     }
@@ -225,19 +226,22 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstancetable()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceTable()
+    :
+    csbcallstatsinstanceentry(this, {"csbcallstatsinstanceindex"})
 {
 
-    yang_name = "csbCallStatsInstanceTable"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbCallStatsInstanceTable"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::~Csbcallstatsinstancetable()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::~CsbCallStatsInstanceTable()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::has_data() const
 {
-    for (std::size_t index=0; index<csbcallstatsinstanceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csbcallstatsinstanceentry.len(); index++)
     {
         if(csbcallstatsinstanceentry[index]->has_data())
             return true;
@@ -245,9 +249,9 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::has_data() con
     return false;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::has_operation() const
 {
-    for (std::size_t index=0; index<csbcallstatsinstanceentry.size(); index++)
+    for (std::size_t index=0; index<csbcallstatsinstanceentry.len(); index++)
     {
         if(csbcallstatsinstanceentry[index]->has_operation())
             return true;
@@ -255,21 +259,21 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::has_operation(
     return is_set(yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csbCallStatsInstanceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -278,25 +282,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbCallStatsInstanceEntry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry>();
+        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry>();
         c->parent = this;
-        csbcallstatsinstanceentry.push_back(c);
+        csbcallstatsinstanceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csbcallstatsinstanceentry)
+    for (auto c : csbcallstatsinstanceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -307,62 +311,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB:
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbCallStatsInstanceEntry")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::Csbcallstatsinstanceentry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::CsbCallStatsInstanceEntry()
     :
     csbcallstatsinstanceindex{YType::uint32, "csbCallStatsInstanceIndex"},
     csbcallstatsinstancephysicalindex{YType::int32, "csbCallStatsInstancePhysicalIndex"}
 {
 
-    yang_name = "csbCallStatsInstanceEntry"; yang_parent_name = "csbCallStatsInstanceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbCallStatsInstanceEntry"; yang_parent_name = "csbCallStatsInstanceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::~Csbcallstatsinstanceentry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::~CsbCallStatsInstanceEntry()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csbcallstatsinstanceindex.is_set
 	|| csbcallstatsinstancephysicalindex.is_set;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csbcallstatsinstanceindex.yfilter)
 	|| ydk::is_set(csbcallstatsinstancephysicalindex.yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/csbCallStatsInstanceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csbCallStatsInstanceEntry" <<"[csbCallStatsInstanceIndex='" <<csbcallstatsinstanceindex <<"']";
+    path_buffer << "csbCallStatsInstanceEntry";
+    ADD_KEY_TOKEN(csbcallstatsinstanceindex, "csbCallStatsInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -373,19 +379,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -401,7 +407,7 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsin
     }
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -413,26 +419,29 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsin
     }
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsInstanceTable::CsbCallStatsInstanceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbCallStatsInstanceIndex" || name == "csbCallStatsInstancePhysicalIndex")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatstable()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsTable()
+    :
+    csbcallstatsentry(this, {"csbcallstatsinstanceindex", "csbcallstatsserviceindex"})
 {
 
-    yang_name = "csbCallStatsTable"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbCallStatsTable"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::~Csbcallstatstable()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::~CsbCallStatsTable()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<csbcallstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csbcallstatsentry.len(); index++)
     {
         if(csbcallstatsentry[index]->has_data())
             return true;
@@ -440,9 +449,9 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::has_data() const
     return false;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<csbcallstatsentry.size(); index++)
+    for (std::size_t index=0; index<csbcallstatsentry.len(); index++)
     {
         if(csbcallstatsentry[index]->has_operation())
             return true;
@@ -450,21 +459,21 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csbCallStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -473,25 +482,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbCallStatsEntry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry>();
+        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry>();
         c->parent = this;
-        csbcallstatsentry.push_back(c);
+        csbcallstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csbcallstatsentry)
+    for (auto c : csbcallstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -502,22 +511,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB:
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbCallStatsEntry")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::Csbcallstatsentry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::CsbCallStatsEntry()
     :
     csbcallstatsinstanceindex{YType::str, "csbCallStatsInstanceIndex"},
     csbcallstatsserviceindex{YType::uint32, "csbCallStatsServiceIndex"},
@@ -548,15 +557,16 @@ CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::Csbcalls
     csbcallstatstotaltranscodeflows{YType::uint32, "csbCallStatsTotalTranscodeFlows"}
 {
 
-    yang_name = "csbCallStatsEntry"; yang_parent_name = "csbCallStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbCallStatsEntry"; yang_parent_name = "csbCallStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::~Csbcallstatsentry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::~CsbCallStatsEntry()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csbcallstatsinstanceindex.is_set
 	|| csbcallstatsserviceindex.is_set
 	|| csbcallstatssbcname.is_set
@@ -586,7 +596,7 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::has
 	|| csbcallstatstotaltranscodeflows.is_set;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csbcallstatsinstanceindex.yfilter)
@@ -618,21 +628,23 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::has
 	|| ydk::is_set(csbcallstatstotaltranscodeflows.yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/csbCallStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csbCallStatsEntry" <<"[csbCallStatsInstanceIndex='" <<csbcallstatsinstanceindex <<"']" <<"[csbCallStatsServiceIndex='" <<csbcallstatsserviceindex <<"']";
+    path_buffer << "csbCallStatsEntry";
+    ADD_KEY_TOKEN(csbcallstatsinstanceindex, "csbCallStatsInstanceIndex");
+    ADD_KEY_TOKEN(csbcallstatsserviceindex, "csbCallStatsServiceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -668,19 +680,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -846,7 +858,7 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::set
     }
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -958,26 +970,29 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::set
     }
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCallStatsTable::CsbCallStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbCallStatsInstanceIndex" || name == "csbCallStatsServiceIndex" || name == "csbCallStatsSbcName" || name == "csbCallStatsCallsHigh" || name == "csbCallStatsRate1Sec" || name == "csbCallStatsCallsLow" || name == "csbCallStatsAvailableFlows" || name == "csbCallStatsUsedFlows" || name == "csbCallStatsPeakFlows" || name == "csbCallStatsTotalFlows" || name == "csbCallStatsUsedSigFlows" || name == "csbCallStatsPeakSigFlows" || name == "csbCallStatsTotalSigFlows" || name == "csbCallStatsAvailablePktRate" || name == "csbCallStatsUnclassifiedPkts" || name == "csbCallStatsRTPPktsSent" || name == "csbCallStatsRTPPktsRcvd" || name == "csbCallStatsRTPPktsDiscard" || name == "csbCallStatsRTPOctetsSent" || name == "csbCallStatsRTPOctetsRcvd" || name == "csbCallStatsRTPOctetsDiscard" || name == "csbCallStatsNoMediaCount" || name == "csbCallStatsRouteErrors" || name == "csbCallStatsAvailableTranscodeFlows" || name == "csbCallStatsActiveTranscodeFlows" || name == "csbCallStatsPeakTranscodeFlows" || name == "csbCallStatsTotalTranscodeFlows")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatstable()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsTable()
+    :
+    csbcurrperiodicstatsentry(this, {"csbcallstatsinstanceindex", "csbcallstatsserviceindex", "csbcurrperiodicstatsinterval"})
 {
 
-    yang_name = "csbCurrPeriodicStatsTable"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbCurrPeriodicStatsTable"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::~Csbcurrperiodicstatstable()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::~CsbCurrPeriodicStatsTable()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<csbcurrperiodicstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csbcurrperiodicstatsentry.len(); index++)
     {
         if(csbcurrperiodicstatsentry[index]->has_data())
             return true;
@@ -985,9 +1000,9 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::has_data() con
     return false;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<csbcurrperiodicstatsentry.size(); index++)
+    for (std::size_t index=0; index<csbcurrperiodicstatsentry.len(); index++)
     {
         if(csbcurrperiodicstatsentry[index]->has_operation())
             return true;
@@ -995,21 +1010,21 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::has_operation(
     return is_set(yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csbCurrPeriodicStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1018,25 +1033,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbCurrPeriodicStatsEntry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry>();
+        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry>();
         c->parent = this;
-        csbcurrperiodicstatsentry.push_back(c);
+        csbcurrperiodicstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csbcurrperiodicstatsentry)
+    for (auto c : csbcurrperiodicstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1047,22 +1062,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB:
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbCurrPeriodicStatsEntry")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry::Csbcurrperiodicstatsentry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry::CsbCurrPeriodicStatsEntry()
     :
     csbcallstatsinstanceindex{YType::str, "csbCallStatsInstanceIndex"},
     csbcallstatsserviceindex{YType::str, "csbCallStatsServiceIndex"},
@@ -1114,15 +1129,16 @@ CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstat
     csbcurrperiodicipseccalls{YType::uint32, "csbCurrPeriodicIpsecCalls"}
 {
 
-    yang_name = "csbCurrPeriodicStatsEntry"; yang_parent_name = "csbCurrPeriodicStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbCurrPeriodicStatsEntry"; yang_parent_name = "csbCurrPeriodicStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry::~Csbcurrperiodicstatsentry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry::~CsbCurrPeriodicStatsEntry()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csbcallstatsinstanceindex.is_set
 	|| csbcallstatsserviceindex.is_set
 	|| csbcurrperiodicstatsinterval.is_set
@@ -1173,7 +1189,7 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodi
 	|| csbcurrperiodicipseccalls.is_set;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csbcallstatsinstanceindex.yfilter)
@@ -1226,21 +1242,24 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodi
 	|| ydk::is_set(csbcurrperiodicipseccalls.yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/csbCurrPeriodicStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csbCurrPeriodicStatsEntry" <<"[csbCallStatsInstanceIndex='" <<csbcallstatsinstanceindex <<"']" <<"[csbCallStatsServiceIndex='" <<csbcallstatsserviceindex <<"']" <<"[csbCurrPeriodicStatsInterval='" <<csbcurrperiodicstatsinterval <<"']";
+    path_buffer << "csbCurrPeriodicStatsEntry";
+    ADD_KEY_TOKEN(csbcallstatsinstanceindex, "csbCallStatsInstanceIndex");
+    ADD_KEY_TOKEN(csbcallstatsserviceindex, "csbCallStatsServiceIndex");
+    ADD_KEY_TOKEN(csbcurrperiodicstatsinterval, "csbCurrPeriodicStatsInterval");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1297,19 +1316,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -1601,7 +1620,7 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodi
     }
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -1797,26 +1816,29 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodi
     }
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbCurrPeriodicStatsTable::CsbCurrPeriodicStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbCallStatsInstanceIndex" || name == "csbCallStatsServiceIndex" || name == "csbCurrPeriodicStatsInterval" || name == "csbCurrPeriodicStatsActiveCalls" || name == "csbCurrPeriodicStatsActivatingCalls" || name == "csbCurrPeriodicStatsDeactivatingCalls" || name == "csbCurrPeriodicStatsTotalCallAttempts" || name == "csbCurrPeriodicStatsFailedCallAttempts" || name == "csbCurrPeriodicStatsCallRoutingFailure" || name == "csbCurrPeriodicStatsCallResourceFailure" || name == "csbCurrPeriodicStatsCallMediaFailure" || name == "csbCurrPeriodicStatsCallSigFailure" || name == "csbCurrPeriodicStatsActiveCallFailure" || name == "csbCurrPeriodicStatsCongestionFailure" || name == "csbCurrPeriodicStatsCallSetupPolicyFailure" || name == "csbCurrPeriodicStatsCallSetupNAPolicyFailure" || name == "csbCurrPeriodicStatsCallSetupRoutingPolicyFailure" || name == "csbCurrPeriodicStatsCallSetupCACPolicyFailure" || name == "csbCurrPeriodicStatsCallSetupCACCallLimitFailure" || name == "csbCurrPeriodicStatsCallSetupCACRateLimitFailure" || name == "csbCurrPeriodicStatsCallSetupCACBandwidthFailure" || name == "csbCurrPeriodicStatsCallSetupCACMediaLimitFailure" || name == "csbCurrPeriodicStatsCallSetupCACMediaUpdateFailure" || name == "csbCurrPeriodicStatsTimestamp" || name == "csbCurrPeriodicStatsTranscodedCalls" || name == "csbCurrPeriodicStatsTransratedCalls" || name == "csbCurrPeriodicStatsTotalCallUpdateFailure" || name == "csbCurrPeriodicStatsActiveIpv6Calls" || name == "csbCurrPeriodicStatsActiveEmergencyCalls" || name == "csbCurrPeriodicStatsActiveE2EmergencyCalls" || name == "csbCurrPeriodicStatsImsRxActiveCalls" || name == "csbCurrPeriodicStatsImsRxCallSetupFaiures" || name == "csbCurrPeriodicStatsImsRxCallRenegotiationAttempts" || name == "csbCurrPeriodicStatsImsRxCallRenegotiationFailures" || name == "csbCurrPeriodicStatsAudioTranscodedCalls" || name == "csbCurrPeriodicStatsFaxTranscodedCalls" || name == "csbCurrPeriodicStatsRtpDisallowedFailures" || name == "csbCurrPeriodicStatsSrtpDisallowedFailures" || name == "csbCurrPeriodicStatsNonSrtpCalls" || name == "csbCurrPeriodicStatsSrtpNonIwCalls" || name == "csbCurrPeriodicStatsSrtpIwCalls" || name == "csbCurrPeriodicStatsDtmfIw2833Calls" || name == "csbCurrPeriodicStatsDtmfIwInbandCalls" || name == "csbCurrPeriodicStatsDtmfIw2833InbandCalls" || name == "csbCurrPeriodicStatsTotalTapsRequested" || name == "csbCurrPeriodicStatsTotalTapsSucceeded" || name == "csbCurrPeriodicStatsCurrentTaps" || name == "csbCurrPeriodicIpsecCalls")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatstable()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsTable()
+    :
+    csbhistorystatsentry(this, {"csbcallstatsinstanceindex", "csbcallstatsserviceindex", "csbhistorystatsinterval", "csbhistorystatselements"})
 {
 
-    yang_name = "csbHistoryStatsTable"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbHistoryStatsTable"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::~Csbhistorystatstable()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::~CsbHistoryStatsTable()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<csbhistorystatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csbhistorystatsentry.len(); index++)
     {
         if(csbhistorystatsentry[index]->has_data())
             return true;
@@ -1824,9 +1846,9 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::has_data() const
     return false;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<csbhistorystatsentry.size(); index++)
+    for (std::size_t index=0; index<csbhistorystatsentry.len(); index++)
     {
         if(csbhistorystatsentry[index]->has_operation())
             return true;
@@ -1834,21 +1856,21 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::has_operation() con
     return is_set(yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csbHistoryStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1857,25 +1879,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbHistoryStatsEntry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry>();
+        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry>();
         c->parent = this;
-        csbhistorystatsentry.push_back(c);
+        csbhistorystatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csbhistorystatsentry)
+    for (auto c : csbhistorystatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1886,22 +1908,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB:
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbHistoryStatsEntry")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::Csbhistorystatsentry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry::CsbHistoryStatsEntry()
     :
     csbcallstatsinstanceindex{YType::str, "csbCallStatsInstanceIndex"},
     csbcallstatsserviceindex{YType::str, "csbCallStatsServiceIndex"},
@@ -1952,15 +1974,16 @@ CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::Cs
     csbhistorystatsipseccalls{YType::uint32, "csbHistoryStatsIpsecCalls"}
 {
 
-    yang_name = "csbHistoryStatsEntry"; yang_parent_name = "csbHistoryStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbHistoryStatsEntry"; yang_parent_name = "csbHistoryStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::~Csbhistorystatsentry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry::~CsbHistoryStatsEntry()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csbcallstatsinstanceindex.is_set
 	|| csbcallstatsserviceindex.is_set
 	|| csbhistorystatsinterval.is_set
@@ -2010,7 +2033,7 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentr
 	|| csbhistorystatsipseccalls.is_set;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csbcallstatsinstanceindex.yfilter)
@@ -2062,21 +2085,25 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentr
 	|| ydk::is_set(csbhistorystatsipseccalls.yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/csbHistoryStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csbHistoryStatsEntry" <<"[csbCallStatsInstanceIndex='" <<csbcallstatsinstanceindex <<"']" <<"[csbCallStatsServiceIndex='" <<csbcallstatsserviceindex <<"']" <<"[csbHistoryStatsInterval='" <<csbhistorystatsinterval <<"']" <<"[csbHistoryStatsElements='" <<csbhistorystatselements <<"']";
+    path_buffer << "csbHistoryStatsEntry";
+    ADD_KEY_TOKEN(csbcallstatsinstanceindex, "csbCallStatsInstanceIndex");
+    ADD_KEY_TOKEN(csbcallstatsserviceindex, "csbCallStatsServiceIndex");
+    ADD_KEY_TOKEN(csbhistorystatsinterval, "csbHistoryStatsInterval");
+    ADD_KEY_TOKEN(csbhistorystatselements, "csbHistoryStatsElements");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2132,19 +2159,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -2430,7 +2457,7 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentr
     }
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -2622,26 +2649,29 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentr
     }
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable::Csbhistorystatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbHistoryStatsTable::CsbHistoryStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbCallStatsInstanceIndex" || name == "csbCallStatsServiceIndex" || name == "csbHistoryStatsInterval" || name == "csbHistoryStatsElements" || name == "csbHistoryStatsActiveCalls" || name == "csbHistoryStatsTotalCallAttempts" || name == "csbHistoryStatsFailedCallAttempts" || name == "csbHistoryStatsCallRoutingFailure" || name == "csbHistoryStatsCallResourceFailure" || name == "csbHistoryStatsCallMediaFailure" || name == "csbHistoryStatsFailSigFailure" || name == "csbHistoryStatsActiveCallFailure" || name == "csbHistoryStatsCongestionFailure" || name == "csbHistoryStatsCallSetupPolicyFailure" || name == "csbHistoryStatsCallSetupNAPolicyFailure" || name == "csbHistoryStatsCallSetupRoutingPolicyFailure" || name == "csbHistoryStatsCallSetupCACPolicyFailure" || name == "csbHistoryStatsCallSetupCACCallLimitFailure" || name == "csbHistoryStatsCallSetupCACRateLimitFailure" || name == "csbHistoryStatsCallSetupCACBandwidthFailure" || name == "csbHistoryStatsCallSetupCACMediaLimitFailure" || name == "csbHistoryStatsCallSetupCACMediaUpdateFailure" || name == "csbHistoryStatsTimestamp" || name == "csbHistroyStatsTranscodedCalls" || name == "csbHistroyStatsTransratedCalls" || name == "csbHistoryStatsTotalCallUpdateFailure" || name == "csbHistoryStatsActiveIpv6Calls" || name == "csbHistoryStatsActiveEmergencyCalls" || name == "csbHistoryStatsActiveE2EmergencyCalls" || name == "csbHistoryStatsImsRxActiveCalls" || name == "csbHistoryStatsImsRxCallSetupFailures" || name == "csbHistoryStatsImsRxCallRenegotiationAttempts" || name == "csbHistoryStatsImsRxCallRenegotiationFailures" || name == "csbHistoryStatsAudioTranscodedCalls" || name == "csbHistoryStatsFaxTranscodedCalls" || name == "csbHistoryStatsRtpDisallowedFailures" || name == "csbHistoryStatsSrtpDisallowedFailures" || name == "csbHistoryStatsNonSrtpCalls" || name == "csbHistoryStatsSrtpNonIwCalls" || name == "csbHistoryStatsSrtpIwCalls" || name == "csbHistoryStatsDtmfIw2833Calls" || name == "csbHistoryStatsDtmfIwInbandCalls" || name == "csbHistoryStatsDtmfIw2833InbandCalls" || name == "csbHistoryStatsTotalTapsRequested" || name == "csbHistoryStatsTotalTapsSucceeded" || name == "csbHistoryStatsCurrentTaps" || name == "csbHistoryStatsIpsecCalls")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatstable()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsTable()
+    :
+    csbperflowstatsentry(this, {"csbcallstatsinstanceindex", "csbcallstatsserviceindex", "csbperflowstatsvdbeid", "csbperflowstatsgateid", "csbperflowstatsflowpairid", "csbperflowstatssideid"})
 {
 
-    yang_name = "csbPerFlowStatsTable"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbPerFlowStatsTable"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::~Csbperflowstatstable()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::~CsbPerFlowStatsTable()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<csbperflowstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csbperflowstatsentry.len(); index++)
     {
         if(csbperflowstatsentry[index]->has_data())
             return true;
@@ -2649,9 +2679,9 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::has_data() const
     return false;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<csbperflowstatsentry.size(); index++)
+    for (std::size_t index=0; index<csbperflowstatsentry.len(); index++)
     {
         if(csbperflowstatsentry[index]->has_operation())
             return true;
@@ -2659,21 +2689,21 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::has_operation() con
     return is_set(yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csbPerFlowStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2682,25 +2712,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbPerFlowStatsEntry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry>();
+        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry>();
         c->parent = this;
-        csbperflowstatsentry.push_back(c);
+        csbperflowstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csbperflowstatsentry)
+    for (auto c : csbperflowstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2711,22 +2741,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB:
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbPerFlowStatsEntry")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::Csbperflowstatsentry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::CsbPerFlowStatsEntry()
     :
     csbcallstatsinstanceindex{YType::str, "csbCallStatsInstanceIndex"},
     csbcallstatsserviceindex{YType::str, "csbCallStatsServiceIndex"},
@@ -2753,15 +2783,16 @@ CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::Cs
     csbperflowstatsrtppktslost{YType::uint64, "csbPerFlowStatsRTPPktsLost"}
 {
 
-    yang_name = "csbPerFlowStatsEntry"; yang_parent_name = "csbPerFlowStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbPerFlowStatsEntry"; yang_parent_name = "csbPerFlowStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::~Csbperflowstatsentry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::~CsbPerFlowStatsEntry()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csbcallstatsinstanceindex.is_set
 	|| csbcallstatsserviceindex.is_set
 	|| csbperflowstatsvdbeid.is_set
@@ -2787,7 +2818,7 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentr
 	|| csbperflowstatsrtppktslost.is_set;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csbcallstatsinstanceindex.yfilter)
@@ -2815,21 +2846,27 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentr
 	|| ydk::is_set(csbperflowstatsrtppktslost.yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/csbPerFlowStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csbPerFlowStatsEntry" <<"[csbCallStatsInstanceIndex='" <<csbcallstatsinstanceindex <<"']" <<"[csbCallStatsServiceIndex='" <<csbcallstatsserviceindex <<"']" <<"[csbPerFlowStatsVdbeId='" <<csbperflowstatsvdbeid <<"']" <<"[csbPerFlowStatsGateId='" <<csbperflowstatsgateid <<"']" <<"[csbPerFlowStatsFlowPairId='" <<csbperflowstatsflowpairid <<"']" <<"[csbPerFlowStatsSideId='" <<csbperflowstatssideid <<"']";
+    path_buffer << "csbPerFlowStatsEntry";
+    ADD_KEY_TOKEN(csbcallstatsinstanceindex, "csbCallStatsInstanceIndex");
+    ADD_KEY_TOKEN(csbcallstatsserviceindex, "csbCallStatsServiceIndex");
+    ADD_KEY_TOKEN(csbperflowstatsvdbeid, "csbPerFlowStatsVdbeId");
+    ADD_KEY_TOKEN(csbperflowstatsgateid, "csbPerFlowStatsGateId");
+    ADD_KEY_TOKEN(csbperflowstatsflowpairid, "csbPerFlowStatsFlowPairId");
+    ADD_KEY_TOKEN(csbperflowstatssideid, "csbPerFlowStatsSideId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2861,19 +2898,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -3015,7 +3052,7 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentr
     }
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -3111,26 +3148,29 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentr
     }
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbCallStatsInstanceIndex" || name == "csbCallStatsServiceIndex" || name == "csbPerFlowStatsVdbeId" || name == "csbPerFlowStatsGateId" || name == "csbPerFlowStatsFlowPairId" || name == "csbPerFlowStatsSideId" || name == "csbPerFlowStatsFlowType" || name == "csbPerFlowStatsRTPPktsSent" || name == "csbPerFlowStatsRTPPktsRcvd" || name == "csbPerFlowStatsRTPPktsDiscard" || name == "csbPerFlowStatsRTPOctetsSent" || name == "csbPerFlowStatsRTPOctetsRcvd" || name == "csbPerFlowStatsRTPOctetsDiscard" || name == "csbPerFlowStatsRTCPPktsSent" || name == "csbPerFlowStatsRTCPPktsRcvd" || name == "csbPerFlowStatsRTCPPktsLost" || name == "csbPerFlowStatsEPJitter" || name == "csbPerFlowStatsTmanPerMbs" || name == "csbPerFlowStatsTmanPerSdr" || name == "csbPerFlowStatsDscpSettings" || name == "csbPerFlowStatsAdrStatus" || name == "csbPerFlowStatsQASettings" || name == "csbPerFlowStatsRTPPktsLost")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statstable()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsTable()
+    :
+    csbh248statsentry(this, {"csbcallstatsinstanceindex", "csbcallstatsserviceindex", "csbh248statsctrlrindex"})
 {
 
-    yang_name = "csbH248StatsTable"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbH248StatsTable"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::~Csbh248Statstable()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::~CsbH248StatsTable()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::has_data() const
 {
-    for (std::size_t index=0; index<csbh248statsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csbh248statsentry.len(); index++)
     {
         if(csbh248statsentry[index]->has_data())
             return true;
@@ -3138,9 +3178,9 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::has_data() const
     return false;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<csbh248statsentry.size(); index++)
+    for (std::size_t index=0; index<csbh248statsentry.len(); index++)
     {
         if(csbh248statsentry[index]->has_operation())
             return true;
@@ -3148,21 +3188,21 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csbH248StatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3171,25 +3211,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbH248StatsEntry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry>();
+        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry>();
         c->parent = this;
-        csbh248statsentry.push_back(c);
+        csbh248statsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csbh248statsentry)
+    for (auto c : csbh248statsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3200,22 +3240,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB:
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbH248StatsEntry")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::Csbh248Statsentry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry::CsbH248StatsEntry()
     :
     csbcallstatsinstanceindex{YType::str, "csbCallStatsInstanceIndex"},
     csbcallstatsserviceindex{YType::str, "csbCallStatsServiceIndex"},
@@ -3235,15 +3275,16 @@ CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::Csbh248S
     csbh248statslt{YType::uint32, "csbH248StatsLT"}
 {
 
-    yang_name = "csbH248StatsEntry"; yang_parent_name = "csbH248StatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbH248StatsEntry"; yang_parent_name = "csbH248StatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::~Csbh248Statsentry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry::~CsbH248StatsEntry()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csbcallstatsinstanceindex.is_set
 	|| csbcallstatsserviceindex.is_set
 	|| csbh248statsctrlrindex.is_set
@@ -3262,7 +3303,7 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::has
 	|| csbh248statslt.is_set;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csbcallstatsinstanceindex.yfilter)
@@ -3283,21 +3324,24 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::has
 	|| ydk::is_set(csbh248statslt.yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/csbH248StatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csbH248StatsEntry" <<"[csbCallStatsInstanceIndex='" <<csbcallstatsinstanceindex <<"']" <<"[csbCallStatsServiceIndex='" <<csbcallstatsserviceindex <<"']" <<"[csbH248StatsCtrlrIndex='" <<csbh248statsctrlrindex <<"']";
+    path_buffer << "csbH248StatsEntry";
+    ADD_KEY_TOKEN(csbcallstatsinstanceindex, "csbCallStatsInstanceIndex");
+    ADD_KEY_TOKEN(csbcallstatsserviceindex, "csbCallStatsServiceIndex");
+    ADD_KEY_TOKEN(csbh248statsctrlrindex, "csbH248StatsCtrlrIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3322,19 +3366,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -3434,7 +3478,7 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::set
     }
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -3502,26 +3546,29 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::set
     }
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsTable::CsbH248StatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbCallStatsInstanceIndex" || name == "csbCallStatsServiceIndex" || name == "csbH248StatsCtrlrIndex" || name == "csbH248StatsRequestsSent" || name == "csbH248StatsRequestsRcvd" || name == "csbH248StatsRequestsFailed" || name == "csbH248StatsRequestsRetried" || name == "csbH248StatsRepliesSent" || name == "csbH248StatsRepliesRcvd" || name == "csbH248StatsRepliesRetried" || name == "csbH248StatsSegPktsSent" || name == "csbH248StatsSegPktsRcvd" || name == "csbH248StatsEstablishedTime" || name == "csbH248StatsTMaxTimeoutVal" || name == "csbH248StatsRTT" || name == "csbH248StatsLT")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Table()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Table()
+    :
+    csbh248statsrev1entry(this, {"csbcallstatsinstanceindex", "csbcallstatsserviceindex", "csbh248statsvdbeid"})
 {
 
-    yang_name = "csbH248StatsRev1Table"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbH248StatsRev1Table"; yang_parent_name = "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::~Csbh248Statsrev1Table()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::~CsbH248StatsRev1Table()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::has_data() const
 {
-    for (std::size_t index=0; index<csbh248statsrev1entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csbh248statsrev1entry.len(); index++)
     {
         if(csbh248statsrev1entry[index]->has_data())
             return true;
@@ -3529,9 +3576,9 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::has_data() const
     return false;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::has_operation() const
 {
-    for (std::size_t index=0; index<csbh248statsrev1entry.size(); index++)
+    for (std::size_t index=0; index<csbh248statsrev1entry.len(); index++)
     {
         if(csbh248statsrev1entry[index]->has_operation())
             return true;
@@ -3539,21 +3586,21 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::has_operation() co
     return is_set(yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csbH248StatsRev1Table";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3562,25 +3609,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbH248StatsRev1Entry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry>();
+        auto c = std::make_shared<CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry>();
         c->parent = this;
-        csbh248statsrev1entry.push_back(c);
+        csbh248statsrev1entry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csbh248statsrev1entry)
+    for (auto c : csbh248statsrev1entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3591,22 +3638,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB:
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbH248StatsRev1Entry")
         return true;
     return false;
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::Csbh248Statsrev1Entry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry::CsbH248StatsRev1Entry()
     :
     csbcallstatsinstanceindex{YType::str, "csbCallStatsInstanceIndex"},
     csbcallstatsserviceindex{YType::str, "csbCallStatsServiceIndex"},
@@ -3626,15 +3673,16 @@ CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::
     csbh248statsltrev1{YType::uint32, "csbH248StatsLTRev1"}
 {
 
-    yang_name = "csbH248StatsRev1Entry"; yang_parent_name = "csbH248StatsRev1Table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csbH248StatsRev1Entry"; yang_parent_name = "csbH248StatsRev1Table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::~Csbh248Statsrev1Entry()
+CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry::~CsbH248StatsRev1Entry()
 {
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::has_data() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry::has_data() const
 {
+    if (is_presence_container) return true;
     return csbcallstatsinstanceindex.is_set
 	|| csbcallstatsserviceindex.is_set
 	|| csbh248statsvdbeid.is_set
@@ -3653,7 +3701,7 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1En
 	|| csbh248statsltrev1.is_set;
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::has_operation() const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csbcallstatsinstanceindex.yfilter)
@@ -3674,21 +3722,24 @@ bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1En
 	|| ydk::is_set(csbh248statsltrev1.yfilter);
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::get_absolute_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB:CISCO-SESS-BORDER-CTRLR-CALL-STATS-MIB/csbH248StatsRev1Table/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::get_segment_path() const
+std::string CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csbH248StatsRev1Entry" <<"[csbCallStatsInstanceIndex='" <<csbcallstatsinstanceindex <<"']" <<"[csbCallStatsServiceIndex='" <<csbcallstatsserviceindex <<"']" <<"[csbH248StatsVdbeId='" <<csbh248statsvdbeid <<"']";
+    path_buffer << "csbH248StatsRev1Entry";
+    ADD_KEY_TOKEN(csbcallstatsinstanceindex, "csbCallStatsInstanceIndex");
+    ADD_KEY_TOKEN(csbcallstatsserviceindex, "csbCallStatsServiceIndex");
+    ADD_KEY_TOKEN(csbh248statsvdbeid, "csbH248StatsVdbeId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3713,19 +3764,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRCALLSTATSMIB:
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -3825,7 +3876,7 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1En
     }
 }
 
-void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csbCallStatsInstanceIndex")
     {
@@ -3893,7 +3944,7 @@ void CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1En
     }
 }
 
-bool CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbH248StatsRev1Table::CsbH248StatsRev1Entry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csbCallStatsInstanceIndex" || name == "csbCallStatsServiceIndex" || name == "csbH248StatsVdbeId" || name == "csbH248StatsRequestsSentRev1" || name == "csbH248StatsRequestsRcvdRev1" || name == "csbH248StatsRequestsFailedRev1" || name == "csbH248StatsRequestsRetriedRev1" || name == "csbH248StatsRepliesSentRev1" || name == "csbH248StatsRepliesRcvdRev1" || name == "csbH248StatsRepliesRetriedRev1" || name == "csbH248StatsSegPktsSentRev1" || name == "csbH248StatsSegPktsRcvdRev1" || name == "csbH248StatsEstablishedTimeRev1" || name == "csbH248StatsTMaxTimeoutValRev1" || name == "csbH248StatsRTTRev1" || name == "csbH248StatsLTRev1")
         return true;
@@ -3905,11 +3956,11 @@ const Enum::YLeaf CiscoSbcPeriodicStatsInterval::fifteenMinute {2, "fifteenMinut
 const Enum::YLeaf CiscoSbcPeriodicStatsInterval::oneHour {3, "oneHour"};
 const Enum::YLeaf CiscoSbcPeriodicStatsInterval::oneDay {4, "oneDay"};
 
-const Enum::YLeaf CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::Csbperflowstatssideid::sideA {1, "sideA"};
-const Enum::YLeaf CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::Csbperflowstatssideid::sideB {2, "sideB"};
+const Enum::YLeaf CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::CsbPerFlowStatsSideId::sideA {1, "sideA"};
+const Enum::YLeaf CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::CsbPerFlowStatsSideId::sideB {2, "sideB"};
 
-const Enum::YLeaf CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::Csbperflowstatsflowtype::media {1, "media"};
-const Enum::YLeaf CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry::Csbperflowstatsflowtype::signalling {2, "signalling"};
+const Enum::YLeaf CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::CsbPerFlowStatsFlowType::media {1, "media"};
+const Enum::YLeaf CISCOSESSBORDERCTRLRCALLSTATSMIB::CsbPerFlowStatsTable::CsbPerFlowStatsEntry::CsbPerFlowStatsFlowType::signalling {2, "signalling"};
 
 
 }

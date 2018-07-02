@@ -35,7 +35,7 @@ class AlarmMgr : public ydk::Entity
         class Brief; //type: AlarmMgr::Brief
         class Detail; //type: AlarmMgr::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Trace> > trace;
+        ydk::YList trace;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail> detail;
         
@@ -62,7 +62,7 @@ class AlarmMgr::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: AlarmMgr::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Trace::Location> > location;
+        ydk::YList location;
         
 }; // AlarmMgr::Trace
 
@@ -86,7 +86,7 @@ class AlarmMgr::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: AlarmMgr::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // AlarmMgr::Trace::Location
 
@@ -110,7 +110,7 @@ class AlarmMgr::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: AlarmMgr::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // AlarmMgr::Trace::Location::AllOptions
 
@@ -183,7 +183,7 @@ class AlarmMgr::Brief::Card : public ydk::Entity
 
         class Location; //type: AlarmMgr::Brief::Card::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Brief::Card::Location> > location;
+        ydk::YList location;
         
 }; // AlarmMgr::Brief::Card
 
@@ -210,9 +210,9 @@ class AlarmMgr::Brief::Card::Location : public ydk::Entity
         class History; //type: AlarmMgr::Brief::Card::Location::History
         class Suppressed; //type: AlarmMgr::Brief::Card::Location::Suppressed
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Brief::Card::Location::Active> > active;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Brief::Card::Location::History> > history;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Brief::Card::Location::Suppressed> > suppressed;
+        ydk::YList active;
+        ydk::YList history;
+        ydk::YList suppressed;
         
 }; // AlarmMgr::Brief::Card::Location
 
@@ -325,7 +325,7 @@ class AlarmMgr::Brief::Rack : public ydk::Entity
 
         class RackLocations; //type: AlarmMgr::Brief::Rack::RackLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Brief::Rack::RackLocations> > rack_locations;
+        ydk::YList rack_locations;
         
 }; // AlarmMgr::Brief::Rack
 
@@ -352,9 +352,9 @@ class AlarmMgr::Brief::Rack::RackLocations : public ydk::Entity
         class History; //type: AlarmMgr::Brief::Rack::RackLocations::History
         class Suppressed; //type: AlarmMgr::Brief::Rack::RackLocations::Suppressed
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Brief::Rack::RackLocations::Active> > active;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Brief::Rack::RackLocations::History> > history;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Brief::Rack::RackLocations::Suppressed> > suppressed;
+        ydk::YList active;
+        ydk::YList history;
+        ydk::YList suppressed;
         
 }; // AlarmMgr::Brief::Rack::RackLocations
 
@@ -469,9 +469,9 @@ class AlarmMgr::Brief::System : public ydk::Entity
         class History; //type: AlarmMgr::Brief::System::History
         class Suppressed; //type: AlarmMgr::Brief::System::Suppressed
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Brief::System::Active> > active;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Brief::System::History> > history;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Brief::System::Suppressed> > suppressed;
+        ydk::YList active;
+        ydk::YList history;
+        ydk::YList suppressed;
         
 }; // AlarmMgr::Brief::System
 
@@ -615,7 +615,7 @@ class AlarmMgr::Detail::Card : public ydk::Entity
 
         class Location; //type: AlarmMgr::Detail::Card::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::Card::Location> > location;
+        ydk::YList location;
         
 }; // AlarmMgr::Detail::Card
 
@@ -644,11 +644,11 @@ class AlarmMgr::Detail::Card::Location : public ydk::Entity
         class Clients; //type: AlarmMgr::Detail::Card::Location::Clients
         class Suppressed; //type: AlarmMgr::Detail::Card::Location::Suppressed
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::Card::Location::Active> > active;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::Card::Location::History> > history;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::Card::Location::Stats> > stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::Card::Location::Clients> > clients;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::Card::Location::Suppressed> > suppressed;
+        ydk::YList active;
+        ydk::YList history;
+        ydk::YList stats;
+        ydk::YList clients;
+        ydk::YList suppressed;
         
 }; // AlarmMgr::Detail::Card::Location
 
@@ -844,7 +844,7 @@ class AlarmMgr::Detail::Rack : public ydk::Entity
 
         class RackLocations; //type: AlarmMgr::Detail::Rack::RackLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::Rack::RackLocations> > rack_locations;
+        ydk::YList rack_locations;
         
 }; // AlarmMgr::Detail::Rack
 
@@ -873,11 +873,11 @@ class AlarmMgr::Detail::Rack::RackLocations : public ydk::Entity
         class Clients; //type: AlarmMgr::Detail::Rack::RackLocations::Clients
         class Suppressed; //type: AlarmMgr::Detail::Rack::RackLocations::Suppressed
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::Rack::RackLocations::Active> > active;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::Rack::RackLocations::History> > history;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::Rack::RackLocations::Stats> > stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::Rack::RackLocations::Clients> > clients;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::Rack::RackLocations::Suppressed> > suppressed;
+        ydk::YList active;
+        ydk::YList history;
+        ydk::YList stats;
+        ydk::YList clients;
+        ydk::YList suppressed;
         
 }; // AlarmMgr::Detail::Rack::RackLocations
 
@@ -1077,11 +1077,11 @@ class AlarmMgr::Detail::System : public ydk::Entity
         class Clients; //type: AlarmMgr::Detail::System::Clients
         class Suppressed; //type: AlarmMgr::Detail::System::Suppressed
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::System::Active> > active;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::System::History> > history;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::System::Stats> > stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::System::Clients> > clients;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_alarm_mgr::AlarmMgr::Detail::System::Suppressed> > suppressed;
+        ydk::YList active;
+        ydk::YList history;
+        ydk::YList stats;
+        ydk::YList clients;
+        ydk::YList suppressed;
         
 }; // AlarmMgr::Detail::System
 
@@ -1262,28 +1262,6 @@ class AlarmMgr::Detail::System::Suppressed : public ydk::Entity
 
 }; // AlarmMgr::Detail::System::Suppressed
 
-class SeverityTd : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf not_reported;
-        static const ydk::Enum::YLeaf not_alarmed;
-        static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf major_;
-        static const ydk::Enum::YLeaf critical;
-
-};
-
-class StatusTd : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf set;
-        static const ydk::Enum::YLeaf clear;
-        static const ydk::Enum::YLeaf suppress;
-
-};
-
 class GroupTd : public ydk::Enum
 {
     public:
@@ -1309,6 +1287,16 @@ class GroupTd : public ydk::Enum
 
 };
 
+class StatusTd : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf set;
+        static const ydk::Enum::YLeaf clear;
+        static const ydk::Enum::YLeaf suppress;
+
+};
+
 class AgentStateTd : public ydk::Enum
 {
     public:
@@ -1328,6 +1316,18 @@ class AgentTypeTd : public ydk::Enum
         static const ydk::Enum::YLeaf producer;
         static const ydk::Enum::YLeaf consumer;
         static const ydk::Enum::YLeaf subscriber;
+
+};
+
+class SeverityTd : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_reported;
+        static const ydk::Enum::YLeaf not_alarmed;
+        static const ydk::Enum::YLeaf minor;
+        static const ydk::Enum::YLeaf major_;
+        static const ydk::Enum::YLeaf critical;
 
 };
 

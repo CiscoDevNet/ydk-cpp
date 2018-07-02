@@ -12,9 +12,14 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_cellwan_oper {
 
 CellwanOperData::CellwanOperData()
+    :
+    cellwan_hardware(this, {"cellular_interface"})
+    , cellwan_radio(this, {"cellular_interface"})
+    , cellwan_network(this, {"cellular_interface"})
+    , cellwan_connection(this, {"cellular_interface"})
 {
 
-    yang_name = "cellwan-oper-data"; yang_parent_name = "Cisco-IOS-XE-cellwan-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cellwan-oper-data"; yang_parent_name = "Cisco-IOS-XE-cellwan-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CellwanOperData::~CellwanOperData()
@@ -23,22 +28,23 @@ CellwanOperData::~CellwanOperData()
 
 bool CellwanOperData::has_data() const
 {
-    for (std::size_t index=0; index<cellwan_hardware.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cellwan_hardware.len(); index++)
     {
         if(cellwan_hardware[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<cellwan_radio.size(); index++)
+    for (std::size_t index=0; index<cellwan_radio.len(); index++)
     {
         if(cellwan_radio[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<cellwan_network.size(); index++)
+    for (std::size_t index=0; index<cellwan_network.len(); index++)
     {
         if(cellwan_network[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<cellwan_connection.size(); index++)
+    for (std::size_t index=0; index<cellwan_connection.len(); index++)
     {
         if(cellwan_connection[index]->has_data())
             return true;
@@ -48,22 +54,22 @@ bool CellwanOperData::has_data() const
 
 bool CellwanOperData::has_operation() const
 {
-    for (std::size_t index=0; index<cellwan_hardware.size(); index++)
+    for (std::size_t index=0; index<cellwan_hardware.len(); index++)
     {
         if(cellwan_hardware[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<cellwan_radio.size(); index++)
+    for (std::size_t index=0; index<cellwan_radio.len(); index++)
     {
         if(cellwan_radio[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<cellwan_network.size(); index++)
+    for (std::size_t index=0; index<cellwan_network.len(); index++)
     {
         if(cellwan_network[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<cellwan_connection.size(); index++)
+    for (std::size_t index=0; index<cellwan_connection.len(); index++)
     {
         if(cellwan_connection[index]->has_operation())
             return true;
@@ -93,7 +99,7 @@ std::shared_ptr<Entity> CellwanOperData::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<CellwanOperData::CellwanHardware>();
         c->parent = this;
-        cellwan_hardware.push_back(c);
+        cellwan_hardware.append(c);
         return c;
     }
 
@@ -101,7 +107,7 @@ std::shared_ptr<Entity> CellwanOperData::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<CellwanOperData::CellwanRadio>();
         c->parent = this;
-        cellwan_radio.push_back(c);
+        cellwan_radio.append(c);
         return c;
     }
 
@@ -109,7 +115,7 @@ std::shared_ptr<Entity> CellwanOperData::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<CellwanOperData::CellwanNetwork>();
         c->parent = this;
-        cellwan_network.push_back(c);
+        cellwan_network.append(c);
         return c;
     }
 
@@ -117,7 +123,7 @@ std::shared_ptr<Entity> CellwanOperData::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<CellwanOperData::CellwanConnection>();
         c->parent = this;
-        cellwan_connection.push_back(c);
+        cellwan_connection.append(c);
         return c;
     }
 
@@ -129,7 +135,7 @@ std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cellwan_hardware)
+    for (auto c : cellwan_hardware.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -138,7 +144,7 @@ std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::get_children() c
     }
 
     count = 0;
-    for (auto const & c : cellwan_radio)
+    for (auto c : cellwan_radio.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -147,7 +153,7 @@ std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::get_children() c
     }
 
     count = 0;
-    for (auto const & c : cellwan_network)
+    for (auto c : cellwan_network.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -156,7 +162,7 @@ std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::get_children() c
     }
 
     count = 0;
-    for (auto const & c : cellwan_connection)
+    for (auto c : cellwan_connection.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -227,7 +233,7 @@ CellwanOperData::CellwanHardware::CellwanHardware()
     cellular_oem_pri_version{YType::str, "cellular-oem-pri-version"}
 {
 
-    yang_name = "cellwan-hardware"; yang_parent_name = "cellwan-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cellwan-hardware"; yang_parent_name = "cellwan-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CellwanOperData::CellwanHardware::~CellwanHardware()
@@ -236,6 +242,7 @@ CellwanOperData::CellwanHardware::~CellwanHardware()
 
 bool CellwanOperData::CellwanHardware::has_data() const
 {
+    if (is_presence_container) return true;
     return cellular_interface.is_set
 	|| cellular_firmware_version.is_set
 	|| cellular_firmware_build_time.is_set
@@ -285,7 +292,8 @@ std::string CellwanOperData::CellwanHardware::get_absolute_path() const
 std::string CellwanOperData::CellwanHardware::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cellwan-hardware" <<"[cellular-interface='" <<cellular_interface <<"']";
+    path_buffer << "cellwan-hardware";
+    ADD_KEY_TOKEN(cellular_interface, "cellular-interface");
     return path_buffer.str();
 }
 
@@ -518,7 +526,7 @@ CellwanOperData::CellwanRadio::CellwanRadio()
     radio_rat_selected{YType::enumeration, "radio-rat-selected"}
 {
 
-    yang_name = "cellwan-radio"; yang_parent_name = "cellwan-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cellwan-radio"; yang_parent_name = "cellwan-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CellwanOperData::CellwanRadio::~CellwanRadio()
@@ -527,6 +535,7 @@ CellwanOperData::CellwanRadio::~CellwanRadio()
 
 bool CellwanOperData::CellwanRadio::has_data() const
 {
+    if (is_presence_container) return true;
     return cellular_interface.is_set
 	|| technology.is_set
 	|| radio_power_mode.is_set
@@ -570,7 +579,8 @@ std::string CellwanOperData::CellwanRadio::get_absolute_path() const
 std::string CellwanOperData::CellwanRadio::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cellwan-radio" <<"[cellular-interface='" <<cellular_interface <<"']";
+    path_buffer << "cellwan-radio";
+    ADD_KEY_TOKEN(cellular_interface, "cellular-interface");
     return path_buffer.str();
 }
 
@@ -778,7 +788,7 @@ CellwanOperData::CellwanNetwork::CellwanNetwork()
     negotiated_network_mtu{YType::uint16, "negotiated-network-mtu"}
 {
 
-    yang_name = "cellwan-network"; yang_parent_name = "cellwan-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cellwan-network"; yang_parent_name = "cellwan-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CellwanOperData::CellwanNetwork::~CellwanNetwork()
@@ -787,6 +797,7 @@ CellwanOperData::CellwanNetwork::~CellwanNetwork()
 
 bool CellwanOperData::CellwanNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return cellular_interface.is_set
 	|| cellular_modem_time.is_set
 	|| radio_access_technology_selected.is_set
@@ -846,7 +857,8 @@ std::string CellwanOperData::CellwanNetwork::get_absolute_path() const
 std::string CellwanOperData::CellwanNetwork::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cellwan-network" <<"[cellular-interface='" <<cellular_interface <<"']";
+    path_buffer << "cellwan-network";
+    ADD_KEY_TOKEN(cellular_interface, "cellular-interface");
     return path_buffer.str();
 }
 
@@ -1135,7 +1147,7 @@ CellwanOperData::CellwanConnection::CellwanConnection()
     scope{YType::enumeration, "scope"}
 {
 
-    yang_name = "cellwan-connection"; yang_parent_name = "cellwan-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cellwan-connection"; yang_parent_name = "cellwan-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CellwanOperData::CellwanConnection::~CellwanConnection()
@@ -1144,6 +1156,7 @@ CellwanOperData::CellwanConnection::~CellwanConnection()
 
 bool CellwanOperData::CellwanConnection::has_data() const
 {
+    if (is_presence_container) return true;
     return cellular_interface.is_set
 	|| active_profile.is_set
 	|| cellular_packet_status.is_set
@@ -1189,7 +1202,8 @@ std::string CellwanOperData::CellwanConnection::get_absolute_path() const
 std::string CellwanOperData::CellwanConnection::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cellwan-connection" <<"[cellular-interface='" <<cellular_interface <<"']";
+    path_buffer << "cellwan-connection";
+    ADD_KEY_TOKEN(cellular_interface, "cellular-interface");
     return path_buffer.str();
 }
 
@@ -1383,20 +1397,16 @@ bool CellwanOperData::CellwanConnection::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
-const Enum::YLeaf ModemStatus::modem_status_offline {0, "modem-status-offline"};
-const Enum::YLeaf ModemStatus::modem_status_online {1, "modem-status-online"};
-const Enum::YLeaf ModemStatus::modem_status_low_power {2, "modem-status-low-power"};
-const Enum::YLeaf ModemStatus::modem_status_power_off {3, "modem-status-power-off"};
-const Enum::YLeaf ModemStatus::modem_status_boot_ready {4, "modem-status-boot-ready"};
-const Enum::YLeaf ModemStatus::modem_status_unknown {5, "modem-status-unknown"};
+const Enum::YLeaf ModemService::service_type_circuit_switched {0, "service-type-circuit-switched"};
+const Enum::YLeaf ModemService::service_type_packet_switched {1, "service-type-packet-switched"};
+const Enum::YLeaf ModemService::service_type_combined {2, "service-type-combined"};
+const Enum::YLeaf ModemService::service_type_invalid {3, "service-type-invalid"};
+const Enum::YLeaf ModemService::service_type_unknown {4, "service-type-unknown"};
 
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_online {0, "radio-power-mode-online"};
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_low_power {1, "radio-power-mode-low-power"};
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_factory_test {2, "radio-power-mode-factory-test"};
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_offline {3, "radio-power-mode-offline"};
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_reset {4, "radio-power-mode-reset"};
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_off {5, "radio-power-mode-off"};
-const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_persistent_low_power {6, "radio-power-mode-persistent-low-power"};
+const Enum::YLeaf ServiceStatus::service_status_normal {0, "service-status-normal"};
+const Enum::YLeaf ServiceStatus::service_status_emergency {1, "service-status-emergency"};
+const Enum::YLeaf ServiceStatus::service_status_no_service {2, "service-status-no-service"};
+const Enum::YLeaf ServiceStatus::service_status_unknown {3, "service-status-unknown"};
 
 const Enum::YLeaf RadioBandwidth::bandwidth_1_dot_4_mhz {0, "bandwidth-1-dot-4-mhz"};
 const Enum::YLeaf RadioBandwidth::bandwidth_3_mhz {1, "bandwidth-3-mhz"};
@@ -1407,9 +1417,29 @@ const Enum::YLeaf RadioBandwidth::bandwidth_20_mhz {5, "bandwidth-20-mhz"};
 const Enum::YLeaf RadioBandwidth::bandwidth_invalid {6, "bandwidth-invalid"};
 const Enum::YLeaf RadioBandwidth::bandwidth_unknown {7, "bandwidth-unknown"};
 
-const Enum::YLeaf ModemTechnology::cdma_evdo_1x_rtt {0, "cdma-evdo-1x-rtt"};
-const Enum::YLeaf ModemTechnology::gsm_umts_gprs {1, "gsm-umts-gprs"};
-const Enum::YLeaf ModemTechnology::tech_unknown {2, "tech-unknown"};
+const Enum::YLeaf RatTechnology::system_mode_none {0, "system-mode-none"};
+const Enum::YLeaf RatTechnology::system_mode_gprs {1, "system-mode-gprs"};
+const Enum::YLeaf RatTechnology::system_mode_edge {2, "system-mode-edge"};
+const Enum::YLeaf RatTechnology::system_mode_umts {3, "system-mode-umts"};
+const Enum::YLeaf RatTechnology::system_mode_hsdpa {4, "system-mode-hsdpa"};
+const Enum::YLeaf RatTechnology::system_mode_hsupa {5, "system-mode-hsupa"};
+const Enum::YLeaf RatTechnology::system_mode_hspa {6, "system-mode-hspa"};
+const Enum::YLeaf RatTechnology::system_mode_hspa_plus {7, "system-mode-hspa-plus"};
+const Enum::YLeaf RatTechnology::system_mode_lte_fdd {8, "system-mode-lte-fdd"};
+const Enum::YLeaf RatTechnology::system_mode_lte_tdd {9, "system-mode-lte-tdd"};
+const Enum::YLeaf RatTechnology::system_mode_lte_e_hrpd_1x_rtt {10, "system-mode-lte-e-hrpd-1x-rtt"};
+const Enum::YLeaf RatTechnology::system_mode_lte_e_hrpd_evdo {11, "system-mode-lte-e-hrpd-evdo"};
+const Enum::YLeaf RatTechnology::system_mode_evdo {12, "system-mode-evdo"};
+const Enum::YLeaf RatTechnology::system_mode_evdo_reva {13, "system-mode-evdo-reva"};
+const Enum::YLeaf RatTechnology::system_mode_hsdpa_n_wcdma {14, "system-mode-hsdpa-n-wcdma"};
+const Enum::YLeaf RatTechnology::system_mode_wcdma_n_hsupa {15, "system-mode-wcdma-n-hsupa"};
+const Enum::YLeaf RatTechnology::system_mode_hsdpa_n_hsupa {16, "system-mode-hsdpa-n-hsupa"};
+const Enum::YLeaf RatTechnology::system_mode_hsdpa_plus_n_wcdma {17, "system-mode-hsdpa-plus-n-wcdma"};
+const Enum::YLeaf RatTechnology::system_mode_hsdpa_plus_n_hsupa {18, "system-mode-hsdpa-plus-n-hsupa"};
+const Enum::YLeaf RatTechnology::system_mode_dc_hsdpa_plus_n_wcdma {19, "system-mode-dc-hsdpa-plus-n-wcdma"};
+const Enum::YLeaf RatTechnology::system_mode_dc_hsdpa_plus_n_hsupa {20, "system-mode-dc-hsdpa-plus-n-hsupa"};
+const Enum::YLeaf RatTechnology::sysyem_mode_null_bearer {21, "sysyem-mode-null-bearer"};
+const Enum::YLeaf RatTechnology::system_mode_unknown {22, "system-mode-unknown"};
 
 const Enum::YLeaf RatPreference::lte_radio_tech_no_svc {0, "lte-radio-tech-no-svc"};
 const Enum::YLeaf RatPreference::lte_radio_tech_cdma_1_xrtt {1, "lte-radio-tech-cdma-1-xrtt"};
@@ -1436,57 +1466,41 @@ const Enum::YLeaf RatPreference::lte_radio_tech_null_bearer {21, "lte-radio-tech
 const Enum::YLeaf RatPreference::lte_radio_tech_unknown {22, "lte-radio-tech-unknown"};
 const Enum::YLeaf RatPreference::lte_radio_tech_no_change {23, "lte-radio-tech-no-change"};
 
-const Enum::YLeaf RatTechnology::system_mode_none {0, "system-mode-none"};
-const Enum::YLeaf RatTechnology::system_mode_gprs {1, "system-mode-gprs"};
-const Enum::YLeaf RatTechnology::system_mode_edge {2, "system-mode-edge"};
-const Enum::YLeaf RatTechnology::system_mode_umts {3, "system-mode-umts"};
-const Enum::YLeaf RatTechnology::system_mode_hsdpa {4, "system-mode-hsdpa"};
-const Enum::YLeaf RatTechnology::system_mode_hsupa {5, "system-mode-hsupa"};
-const Enum::YLeaf RatTechnology::system_mode_hspa {6, "system-mode-hspa"};
-const Enum::YLeaf RatTechnology::system_mode_hspa_plus {7, "system-mode-hspa-plus"};
-const Enum::YLeaf RatTechnology::system_mode_lte_fdd {8, "system-mode-lte-fdd"};
-const Enum::YLeaf RatTechnology::system_mode_lte_tdd {9, "system-mode-lte-tdd"};
-const Enum::YLeaf RatTechnology::system_mode_lte_e_hrpd_1x_rtt {10, "system-mode-lte-e-hrpd-1x-rtt"};
-const Enum::YLeaf RatTechnology::system_mode_lte_e_hrpd_evdo {11, "system-mode-lte-e-hrpd-evdo"};
-const Enum::YLeaf RatTechnology::system_mode_evdo {12, "system-mode-evdo"};
-const Enum::YLeaf RatTechnology::system_mode_evdo_reva {13, "system-mode-evdo-reva"};
-const Enum::YLeaf RatTechnology::system_mode_hsdpa_n_wcdma {14, "system-mode-hsdpa-n-wcdma"};
-const Enum::YLeaf RatTechnology::system_mode_wcdma_n_hsupa {15, "system-mode-wcdma-n-hsupa"};
-const Enum::YLeaf RatTechnology::system_mode_hsdpa_n_hsupa {16, "system-mode-hsdpa-n-hsupa"};
-const Enum::YLeaf RatTechnology::system_mode_hsdpa_plus_n_wcdma {17, "system-mode-hsdpa-plus-n-wcdma"};
-const Enum::YLeaf RatTechnology::system_mode_hsdpa_plus_n_hsupa {18, "system-mode-hsdpa-plus-n-hsupa"};
-const Enum::YLeaf RatTechnology::system_mode_dc_hsdpa_plus_n_wcdma {19, "system-mode-dc-hsdpa-plus-n-wcdma"};
-const Enum::YLeaf RatTechnology::system_mode_dc_hsdpa_plus_n_hsupa {20, "system-mode-dc-hsdpa-plus-n-hsupa"};
-const Enum::YLeaf RatTechnology::sysyem_mode_null_bearer {21, "sysyem-mode-null-bearer"};
-const Enum::YLeaf RatTechnology::system_mode_unknown {22, "system-mode-unknown"};
+const Enum::YLeaf PacketSessStatus::packet_session_status_inactive {0, "packet-session-status-inactive"};
+const Enum::YLeaf PacketSessStatus::packet_session_status_active {1, "packet-session-status-active"};
 
-const Enum::YLeaf ServiceStatus::service_status_normal {0, "service-status-normal"};
-const Enum::YLeaf ServiceStatus::service_status_emergency {1, "service-status-emergency"};
-const Enum::YLeaf ServiceStatus::service_status_no_service {2, "service-status-no-service"};
-const Enum::YLeaf ServiceStatus::service_status_unknown {3, "service-status-unknown"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_online {0, "radio-power-mode-online"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_low_power {1, "radio-power-mode-low-power"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_factory_test {2, "radio-power-mode-factory-test"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_offline {3, "radio-power-mode-offline"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_reset {4, "radio-power-mode-reset"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_off {5, "radio-power-mode-off"};
+const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_persistent_low_power {6, "radio-power-mode-persistent-low-power"};
 
-const Enum::YLeaf ModemService::service_type_circuit_switched {0, "service-type-circuit-switched"};
-const Enum::YLeaf ModemService::service_type_packet_switched {1, "service-type-packet-switched"};
-const Enum::YLeaf ModemService::service_type_combined {2, "service-type-combined"};
-const Enum::YLeaf ModemService::service_type_invalid {3, "service-type-invalid"};
-const Enum::YLeaf ModemService::service_type_unknown {4, "service-type-unknown"};
+const Enum::YLeaf ModemTechnology::cdma_evdo_1x_rtt {0, "cdma-evdo-1x-rtt"};
+const Enum::YLeaf ModemTechnology::gsm_umts_gprs {1, "gsm-umts-gprs"};
+const Enum::YLeaf ModemTechnology::tech_unknown {2, "tech-unknown"};
+
+const Enum::YLeaf ProfileScope::scope_global {0, "scope-global"};
+const Enum::YLeaf ProfileScope::scope_link {1, "scope-link"};
 
 const Enum::YLeaf LteCa::lte_ca_deconfigured {0, "lte-ca-deconfigured"};
 const Enum::YLeaf LteCa::lte_ca_deactivated {1, "lte-ca-deactivated"};
 const Enum::YLeaf LteCa::lte_ca_activated {2, "lte-ca-activated"};
 const Enum::YLeaf LteCa::lte_ca_unsupported {3, "lte-ca-unsupported"};
 
+const Enum::YLeaf ModemStatus::modem_status_offline {0, "modem-status-offline"};
+const Enum::YLeaf ModemStatus::modem_status_online {1, "modem-status-online"};
+const Enum::YLeaf ModemStatus::modem_status_low_power {2, "modem-status-low-power"};
+const Enum::YLeaf ModemStatus::modem_status_power_off {3, "modem-status-power-off"};
+const Enum::YLeaf ModemStatus::modem_status_boot_ready {4, "modem-status-boot-ready"};
+const Enum::YLeaf ModemStatus::modem_status_unknown {5, "modem-status-unknown"};
+
 const Enum::YLeaf RegState::reg_status_not_registered {0, "reg-status-not-registered"};
 const Enum::YLeaf RegState::reg_status_registered {1, "reg-status-registered"};
 const Enum::YLeaf RegState::reg_status_searching {2, "reg-status-searching"};
 const Enum::YLeaf RegState::reg_status_registration_denied {3, "reg-status-registration-denied"};
 const Enum::YLeaf RegState::reg_status_unsupported {4, "reg-status-unsupported"};
-
-const Enum::YLeaf PacketSessStatus::packet_session_status_inactive {0, "packet-session-status-inactive"};
-const Enum::YLeaf PacketSessStatus::packet_session_status_active {1, "packet-session-status-active"};
-
-const Enum::YLeaf ProfileScope::scope_global {0, "scope-global"};
-const Enum::YLeaf ProfileScope::scope_link {1, "scope-link"};
 
 
 }

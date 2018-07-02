@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_efp_oper {
 
 EfpStats::EfpStats()
+    :
+    efp_stat(this, {"id", "interface"})
 {
 
-    yang_name = "efp-stats"; yang_parent_name = "Cisco-IOS-XE-efp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "efp-stats"; yang_parent_name = "Cisco-IOS-XE-efp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EfpStats::~EfpStats()
@@ -23,7 +25,8 @@ EfpStats::~EfpStats()
 
 bool EfpStats::has_data() const
 {
-    for (std::size_t index=0; index<efp_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<efp_stat.len(); index++)
     {
         if(efp_stat[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool EfpStats::has_data() const
 
 bool EfpStats::has_operation() const
 {
-    for (std::size_t index=0; index<efp_stat.size(); index++)
+    for (std::size_t index=0; index<efp_stat.len(); index++)
     {
         if(efp_stat[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> EfpStats::get_child_by_name(const std::string & child_ya
     {
         auto c = std::make_shared<EfpStats::EfpStat>();
         c->parent = this;
-        efp_stat.push_back(c);
+        efp_stat.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> EfpStats::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : efp_stat)
+    for (auto c : efp_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -136,7 +139,7 @@ EfpStats::EfpStat::EfpStat()
     out_bytes{YType::uint64, "out-bytes"}
 {
 
-    yang_name = "efp-stat"; yang_parent_name = "efp-stats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "efp-stat"; yang_parent_name = "efp-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EfpStats::EfpStat::~EfpStat()
@@ -145,6 +148,7 @@ EfpStats::EfpStat::~EfpStat()
 
 bool EfpStats::EfpStat::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| interface.is_set
 	|| in_pkts.is_set
@@ -174,7 +178,9 @@ std::string EfpStats::EfpStat::get_absolute_path() const
 std::string EfpStats::EfpStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "efp-stat" <<"[id='" <<id <<"']" <<"[interface='" <<interface <<"']";
+    path_buffer << "efp-stat";
+    ADD_KEY_TOKEN(id, "id");
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 

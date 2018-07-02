@@ -59,7 +59,7 @@ class Fpd_::Nodes : public ydk::Entity
 
         class Node; //type: Fpd_::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_upgrade_fpd_oper::Fpd_::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Fpd_::Nodes
 
@@ -107,7 +107,7 @@ class Fpd_::Nodes::Node::Devices : public ydk::Entity
 
         class Device; //type: Fpd_::Nodes::Node::Devices::Device
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_upgrade_fpd_oper::Fpd_::Nodes::Node::Devices::Device> > device;
+        ydk::YList device;
         
 }; // Fpd_::Nodes::Node::Devices
 
@@ -129,7 +129,7 @@ class Fpd_::Nodes::Node::Devices::Device : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf fpd_type; //type: Fpd
-        ydk::YLeaf instance; //type: int32
+        ydk::YLeaf instance; //type: uint32
         ydk::YLeaf sub_type; //type: FpdSub
         ydk::YLeaf card_type; //type: string
         ydk::YLeaf hardware_version; //type: string
@@ -158,7 +158,7 @@ class Fpd_::Packages : public ydk::Entity
 
         class AllPackage; //type: Fpd_::Packages::AllPackage
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_upgrade_fpd_oper::Fpd_::Packages::AllPackage> > all_package;
+        ydk::YList all_package;
         
 }; // Fpd_::Packages
 
@@ -190,13 +190,13 @@ class Fpd_::Packages::AllPackage : public ydk::Entity
 
 }; // Fpd_::Packages::AllPackage
 
-class FpdSub : public ydk::Enum
+class FpdSub1 : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf fpga1;
         static const ydk::Enum::YLeaf rommon;
         static const ydk::Enum::YLeaf rommona;
-        static const ydk::Enum::YLeaf fabldr;
+        static const ydk::Enum::YLeaf fabric_loader;
         static const ydk::Enum::YLeaf fpga2;
         static const ydk::Enum::YLeaf fpga3;
         static const ydk::Enum::YLeaf fpga4;
@@ -239,13 +239,22 @@ class Fpd : public ydk::Enum
 
 };
 
-class FpdSub1 : public ydk::Enum
+class Fpd1 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf spa;
+        static const ydk::Enum::YLeaf lc;
+        static const ydk::Enum::YLeaf sam;
+
+};
+
+class FpdSub : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf fpga1;
         static const ydk::Enum::YLeaf rommon;
         static const ydk::Enum::YLeaf rommona;
-        static const ydk::Enum::YLeaf fabric_loader;
+        static const ydk::Enum::YLeaf fabldr;
         static const ydk::Enum::YLeaf fpga2;
         static const ydk::Enum::YLeaf fpga3;
         static const ydk::Enum::YLeaf fpga4;
@@ -276,15 +285,6 @@ class FpdSub1 : public ydk::Enum
         static const ydk::Enum::YLeaf fpga16;
         static const ydk::Enum::YLeaf fc_fsbl;
         static const ydk::Enum::YLeaf fc_lnx;
-
-};
-
-class Fpd1 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf spa;
-        static const ydk::Enum::YLeaf lc;
-        static const ydk::Enum::YLeaf sam;
 
 };
 

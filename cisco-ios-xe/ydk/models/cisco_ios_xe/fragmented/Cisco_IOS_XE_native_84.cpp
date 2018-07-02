@@ -12,13 +12,3824 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
+Native::Interface::PortChannelSubinterface::PortChannel::DualActive::DualActive()
+    :
+    fast_hello{YType::empty, "fast-hello"}
+{
+
+    yang_name = "dual-active"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::DualActive::~DualActive()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::DualActive::has_data() const
+{
+    if (is_presence_container) return true;
+    return fast_hello.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::DualActive::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(fast_hello.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::DualActive::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-switch:dual-active";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::DualActive::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fast_hello.is_set || is_set(fast_hello.yfilter)) leaf_name_data.push_back(fast_hello.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::DualActive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::DualActive::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::DualActive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fast-hello")
+    {
+        fast_hello = value;
+        fast_hello.value_namespace = name_space;
+        fast_hello.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::DualActive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fast-hello")
+    {
+        fast_hello.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::DualActive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fast-hello")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::LoadBalancing()
+    :
+    flow{YType::empty, "flow"},
+    vlan{YType::empty, "vlan"}
+{
+
+    yang_name = "load-balancing"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::~LoadBalancing()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::has_data() const
+{
+    if (is_presence_container) return true;
+    return flow.is_set
+	|| vlan.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(flow.yfilter)
+	|| ydk::is_set(vlan.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-switch:load-balancing";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (flow.is_set || is_set(flow.yfilter)) leaf_name_data.push_back(flow.get_name_leafdata());
+    if (vlan.is_set || is_set(vlan.yfilter)) leaf_name_data.push_back(vlan.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "flow")
+    {
+        flow = value;
+        flow.value_namespace = name_space;
+        flow.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan")
+    {
+        vlan = value;
+        vlan.value_namespace = name_space;
+        vlan.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flow")
+    {
+        flow.yfilter = yfilter;
+    }
+    if(value_path == "vlan")
+    {
+        vlan.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow" || name == "vlan")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::VlanRange()
+    :
+    id{YType::str, "id"}
+        ,
+    service_policy(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy>())
+{
+    service_policy->parent = this;
+
+    yang_name = "vlan-range"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::~VlanRange()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| (service_policy !=  nullptr && service_policy->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| (service_policy !=  nullptr && service_policy->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-switch:vlan-range";
+    ADD_KEY_TOKEN(id, "id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy>();
+        }
+        return service_policy;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(service_policy != nullptr)
+    {
+        children["service-policy"] = service_policy;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-policy" || name == "id")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::ServicePolicy()
+    :
+    input{YType::str, "input"},
+    output{YType::str, "output"}
+{
+
+    yang_name = "service-policy"; yang_parent_name = "vlan-range"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::~ServicePolicy()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::has_data() const
+{
+    if (is_presence_container) return true;
+    return input.is_set
+	|| output.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(input.yfilter)
+	|| ydk::is_set(output.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "service-policy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
+    if (output.is_set || is_set(output.yfilter)) leaf_name_data.push_back(output.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "input")
+    {
+        input = value;
+        input.value_namespace = name_space;
+        input.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output")
+    {
+        output = value;
+        output.value_namespace = name_space;
+        output.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "input")
+    {
+        input.yfilter = yfilter;
+    }
+    if(value_path == "output")
+    {
+        output.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Switch::Switch()
+    :
+    virtual_(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual>())
+{
+    virtual_->parent = this;
+
+    yang_name = "switch"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Switch::~Switch()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Switch::has_data() const
+{
+    if (is_presence_container) return true;
+    return (virtual_ !=  nullptr && virtual_->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Switch::has_operation() const
+{
+    return is_set(yfilter)
+	|| (virtual_ !=  nullptr && virtual_->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Switch::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-switch:switch";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Switch::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "virtual")
+    {
+        if(virtual_ == nullptr)
+        {
+            virtual_ = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual>();
+        }
+        return virtual_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Switch::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(virtual_ != nullptr)
+    {
+        children["virtual"] = virtual_;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Switch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Switch::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Switch::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "virtual")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::Virtual()
+    :
+    link{YType::uint8, "link"}
+{
+
+    yang_name = "virtual"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::~Virtual()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::has_data() const
+{
+    if (is_presence_container) return true;
+    return link.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(link.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "virtual";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (link.is_set || is_set(link.yfilter)) leaf_name_data.push_back(link.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "link")
+    {
+        link = value;
+        link.value_namespace = name_space;
+        link.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link")
+    {
+        link.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::SrrQueue()
+    :
+    bandwidth(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth>())
+{
+    bandwidth->parent = this;
+
+    yang_name = "srr-queue"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::~SrrQueue()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::has_data() const
+{
+    if (is_presence_container) return true;
+    return (bandwidth !=  nullptr && bandwidth->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::has_operation() const
+{
+    return is_set(yfilter)
+	|| (bandwidth !=  nullptr && bandwidth->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-switch:srr-queue";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bandwidth")
+    {
+        if(bandwidth == nullptr)
+        {
+            bandwidth = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth>();
+        }
+        return bandwidth;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(bandwidth != nullptr)
+    {
+        children["bandwidth"] = bandwidth;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Bandwidth()
+    :
+    shape(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape>())
+    , share(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share>())
+{
+    shape->parent = this;
+    share->parent = this;
+
+    yang_name = "bandwidth"; yang_parent_name = "srr-queue"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::~Bandwidth()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::has_data() const
+{
+    if (is_presence_container) return true;
+    return (shape !=  nullptr && shape->has_data())
+	|| (share !=  nullptr && share->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::has_operation() const
+{
+    return is_set(yfilter)
+	|| (shape !=  nullptr && shape->has_operation())
+	|| (share !=  nullptr && share->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bandwidth";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "shape")
+    {
+        if(shape == nullptr)
+        {
+            shape = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape>();
+        }
+        return shape;
+    }
+
+    if(child_yang_name == "share")
+    {
+        if(share == nullptr)
+        {
+            share = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share>();
+        }
+        return share;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(shape != nullptr)
+    {
+        children["shape"] = shape;
+    }
+
+    if(share != nullptr)
+    {
+        children["share"] = share;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "shape" || name == "share")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::Shape()
+    :
+    weight1{YType::uint16, "weight1"},
+    weight2{YType::uint16, "weight2"},
+    weight3{YType::uint16, "weight3"},
+    weight4{YType::uint16, "weight4"}
+{
+
+    yang_name = "shape"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::~Shape()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::has_data() const
+{
+    if (is_presence_container) return true;
+    return weight1.is_set
+	|| weight2.is_set
+	|| weight3.is_set
+	|| weight4.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(weight1.yfilter)
+	|| ydk::is_set(weight2.yfilter)
+	|| ydk::is_set(weight3.yfilter)
+	|| ydk::is_set(weight4.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "shape";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (weight1.is_set || is_set(weight1.yfilter)) leaf_name_data.push_back(weight1.get_name_leafdata());
+    if (weight2.is_set || is_set(weight2.yfilter)) leaf_name_data.push_back(weight2.get_name_leafdata());
+    if (weight3.is_set || is_set(weight3.yfilter)) leaf_name_data.push_back(weight3.get_name_leafdata());
+    if (weight4.is_set || is_set(weight4.yfilter)) leaf_name_data.push_back(weight4.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "weight1")
+    {
+        weight1 = value;
+        weight1.value_namespace = name_space;
+        weight1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight2")
+    {
+        weight2 = value;
+        weight2.value_namespace = name_space;
+        weight2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight3")
+    {
+        weight3 = value;
+        weight3.value_namespace = name_space;
+        weight3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight4")
+    {
+        weight4 = value;
+        weight4.value_namespace = name_space;
+        weight4.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "weight1")
+    {
+        weight1.yfilter = yfilter;
+    }
+    if(value_path == "weight2")
+    {
+        weight2.yfilter = yfilter;
+    }
+    if(value_path == "weight3")
+    {
+        weight3.yfilter = yfilter;
+    }
+    if(value_path == "weight4")
+    {
+        weight4.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "weight1" || name == "weight2" || name == "weight3" || name == "weight4")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::Share()
+    :
+    weight1{YType::uint8, "weight1"},
+    weight2{YType::uint8, "weight2"},
+    weight3{YType::uint8, "weight3"},
+    weight4{YType::uint8, "weight4"}
+{
+
+    yang_name = "share"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::~Share()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::has_data() const
+{
+    if (is_presence_container) return true;
+    return weight1.is_set
+	|| weight2.is_set
+	|| weight3.is_set
+	|| weight4.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(weight1.yfilter)
+	|| ydk::is_set(weight2.yfilter)
+	|| ydk::is_set(weight3.yfilter)
+	|| ydk::is_set(weight4.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "share";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (weight1.is_set || is_set(weight1.yfilter)) leaf_name_data.push_back(weight1.get_name_leafdata());
+    if (weight2.is_set || is_set(weight2.yfilter)) leaf_name_data.push_back(weight2.get_name_leafdata());
+    if (weight3.is_set || is_set(weight3.yfilter)) leaf_name_data.push_back(weight3.get_name_leafdata());
+    if (weight4.is_set || is_set(weight4.yfilter)) leaf_name_data.push_back(weight4.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "weight1")
+    {
+        weight1 = value;
+        weight1.value_namespace = name_space;
+        weight1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight2")
+    {
+        weight2 = value;
+        weight2.value_namespace = name_space;
+        weight2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight3")
+    {
+        weight3 = value;
+        weight3.value_namespace = name_space;
+        weight3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight4")
+    {
+        weight4 = value;
+        weight4.value_namespace = name_space;
+        weight4.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "weight1")
+    {
+        weight1.yfilter = yfilter;
+    }
+    if(value_path == "weight2")
+    {
+        weight2.yfilter = yfilter;
+    }
+    if(value_path == "weight3")
+    {
+        weight3.yfilter = yfilter;
+    }
+    if(value_path == "weight4")
+    {
+        weight4.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "weight1" || name == "weight2" || name == "weight3" || name == "weight4")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::MacsecOption()
+    :
+    macsec(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec>())
+{
+    macsec->parent = this;
+
+    yang_name = "macsec-option"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::~MacsecOption()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::has_data() const
+{
+    if (is_presence_container) return true;
+    return (macsec !=  nullptr && macsec->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::has_operation() const
+{
+    return is_set(yfilter)
+	|| (macsec !=  nullptr && macsec->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-switch:macsec-option";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "macsec")
+    {
+        if(macsec == nullptr)
+        {
+            macsec = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec>();
+        }
+        return macsec;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(macsec != nullptr)
+    {
+        children["macsec"] = macsec;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "macsec")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::Macsec()
+    :
+    network_link{YType::empty, "network-link"}
+        ,
+    replay_protection(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection>())
+{
+    replay_protection->parent = this;
+
+    yang_name = "macsec"; yang_parent_name = "macsec-option"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::~Macsec()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::has_data() const
+{
+    if (is_presence_container) return true;
+    return network_link.is_set
+	|| (replay_protection !=  nullptr && replay_protection->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(network_link.yfilter)
+	|| (replay_protection !=  nullptr && replay_protection->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "macsec";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (network_link.is_set || is_set(network_link.yfilter)) leaf_name_data.push_back(network_link.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "replay-protection")
+    {
+        if(replay_protection == nullptr)
+        {
+            replay_protection = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection>();
+        }
+        return replay_protection;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(replay_protection != nullptr)
+    {
+        children["replay-protection"] = replay_protection;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "network-link")
+    {
+        network_link = value;
+        network_link.value_namespace = name_space;
+        network_link.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "network-link")
+    {
+        network_link.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "replay-protection" || name == "network-link")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::ReplayProtection()
+    :
+    window_size{YType::uint32, "window-size"}
+{
+
+    yang_name = "replay-protection"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::~ReplayProtection()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::has_data() const
+{
+    if (is_presence_container) return true;
+    return window_size.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window_size.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "replay-protection";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window_size.is_set || is_set(window_size.yfilter)) leaf_name_data.push_back(window_size.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window-size")
+    {
+        window_size = value;
+        window_size.value_namespace = name_space;
+        window_size.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window-size")
+    {
+        window_size.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "window-size")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::CarrierDelay()
+    :
+    seconds{YType::uint8, "seconds"},
+    msec{YType::uint16, "msec"}
+        ,
+    down(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down>())
+    , up(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up>())
+{
+    down->parent = this;
+    up->parent = this;
+
+    yang_name = "carrier-delay"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::~CarrierDelay()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::has_data() const
+{
+    if (is_presence_container) return true;
+    return seconds.is_set
+	|| msec.is_set
+	|| (down !=  nullptr && down->has_data())
+	|| (up !=  nullptr && up->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(seconds.yfilter)
+	|| ydk::is_set(msec.yfilter)
+	|| (down !=  nullptr && down->has_operation())
+	|| (up !=  nullptr && up->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ethernet:carrier-delay";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (msec.is_set || is_set(msec.yfilter)) leaf_name_data.push_back(msec.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "down")
+    {
+        if(down == nullptr)
+        {
+            down = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down>();
+        }
+        return down;
+    }
+
+    if(child_yang_name == "up")
+    {
+        if(up == nullptr)
+        {
+            up = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up>();
+        }
+        return up;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(down != nullptr)
+    {
+        children["down"] = down;
+    }
+
+    if(up != nullptr)
+    {
+        children["up"] = up;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msec")
+    {
+        msec = value;
+        msec.value_namespace = name_space;
+        msec.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+    if(value_path == "msec")
+    {
+        msec.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "down" || name == "up" || name == "seconds" || name == "msec")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down::Down()
+    :
+    seconds{YType::uint8, "seconds"},
+    msec{YType::uint16, "msec"}
+{
+
+    yang_name = "down"; yang_parent_name = "carrier-delay"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down::~Down()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down::has_data() const
+{
+    if (is_presence_container) return true;
+    return seconds.is_set
+	|| msec.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(seconds.yfilter)
+	|| ydk::is_set(msec.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "down";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (msec.is_set || is_set(msec.yfilter)) leaf_name_data.push_back(msec.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msec")
+    {
+        msec = value;
+        msec.value_namespace = name_space;
+        msec.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+    if(value_path == "msec")
+    {
+        msec.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "seconds" || name == "msec")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up::Up()
+    :
+    seconds{YType::uint8, "seconds"},
+    msec{YType::uint16, "msec"}
+{
+
+    yang_name = "up"; yang_parent_name = "carrier-delay"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up::~Up()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up::has_data() const
+{
+    if (is_presence_container) return true;
+    return seconds.is_set
+	|| msec.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(seconds.yfilter)
+	|| ydk::is_set(msec.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "up";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (msec.is_set || is_set(msec.yfilter)) leaf_name_data.push_back(msec.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msec")
+    {
+        msec = value;
+        msec.value_namespace = name_space;
+        msec.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+    if(value_path == "msec")
+    {
+        msec.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "seconds" || name == "msec")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::ChannelGroup()
+    :
+    number{YType::uint16, "number"},
+    mode{YType::enumeration, "mode"},
+    non_silent{YType::empty, "non-silent"},
+    link{YType::uint8, "link"},
+    auto_{YType::empty, "auto"}
+{
+
+    yang_name = "channel-group"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::~ChannelGroup()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::has_data() const
+{
+    if (is_presence_container) return true;
+    return number.is_set
+	|| mode.is_set
+	|| non_silent.is_set
+	|| link.is_set
+	|| auto_.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(non_silent.yfilter)
+	|| ydk::is_set(link.yfilter)
+	|| ydk::is_set(auto_.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ethernet:channel-group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (non_silent.is_set || is_set(non_silent.yfilter)) leaf_name_data.push_back(non_silent.get_name_leafdata());
+    if (link.is_set || is_set(link.yfilter)) leaf_name_data.push_back(link.get_name_leafdata());
+    if (auto_.is_set || is_set(auto_.yfilter)) leaf_name_data.push_back(auto_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number")
+    {
+        number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "non-silent")
+    {
+        non_silent = value;
+        non_silent.value_namespace = name_space;
+        non_silent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link")
+    {
+        link = value;
+        link.value_namespace = name_space;
+        link.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "auto")
+    {
+        auto_ = value;
+        auto_.value_namespace = name_space;
+        auto_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "non-silent")
+    {
+        non_silent.yfilter = yfilter;
+    }
+    if(value_path == "link")
+    {
+        link.yfilter = yfilter;
+    }
+    if(value_path == "auto")
+    {
+        auto_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "number" || name == "mode" || name == "non-silent" || name == "link" || name == "auto")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Ethernet()
+    :
+    oam(nullptr) // presence node
+{
+
+    yang_name = "ethernet"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::~Ethernet()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::has_data() const
+{
+    if (is_presence_container) return true;
+    return (oam !=  nullptr && oam->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::has_operation() const
+{
+    return is_set(yfilter)
+	|| (oam !=  nullptr && oam->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ethernet:ethernet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "oam")
+    {
+        if(oam == nullptr)
+        {
+            oam = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam>();
+        }
+        return oam;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(oam != nullptr)
+    {
+        children["oam"] = oam;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "oam")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::Oam()
+    :
+    max_rate{YType::uint8, "max-rate"},
+    min_rate{YType::uint8, "min-rate"},
+    mode{YType::enumeration, "mode"},
+    timeout{YType::uint8, "timeout"}
+        ,
+    link_monitor(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor>())
+    , remote_failure(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure>())
+    , remote_loopback(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteLoopback>())
+{
+    link_monitor->parent = this;
+    remote_failure->parent = this;
+    remote_loopback->parent = this;
+
+    yang_name = "oam"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::~Oam()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::has_data() const
+{
+    if (is_presence_container) return true;
+    return max_rate.is_set
+	|| min_rate.is_set
+	|| mode.is_set
+	|| timeout.is_set
+	|| (link_monitor !=  nullptr && link_monitor->has_data())
+	|| (remote_failure !=  nullptr && remote_failure->has_data())
+	|| (remote_loopback !=  nullptr && remote_loopback->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_rate.yfilter)
+	|| ydk::is_set(min_rate.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| (link_monitor !=  nullptr && link_monitor->has_operation())
+	|| (remote_failure !=  nullptr && remote_failure->has_operation())
+	|| (remote_loopback !=  nullptr && remote_loopback->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oam";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_rate.is_set || is_set(max_rate.yfilter)) leaf_name_data.push_back(max_rate.get_name_leafdata());
+    if (min_rate.is_set || is_set(min_rate.yfilter)) leaf_name_data.push_back(min_rate.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "link-monitor")
+    {
+        if(link_monitor == nullptr)
+        {
+            link_monitor = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor>();
+        }
+        return link_monitor;
+    }
+
+    if(child_yang_name == "remote-failure")
+    {
+        if(remote_failure == nullptr)
+        {
+            remote_failure = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure>();
+        }
+        return remote_failure;
+    }
+
+    if(child_yang_name == "remote-loopback")
+    {
+        if(remote_loopback == nullptr)
+        {
+            remote_loopback = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteLoopback>();
+        }
+        return remote_loopback;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(link_monitor != nullptr)
+    {
+        children["link-monitor"] = link_monitor;
+    }
+
+    if(remote_failure != nullptr)
+    {
+        children["remote-failure"] = remote_failure;
+    }
+
+    if(remote_loopback != nullptr)
+    {
+        children["remote-loopback"] = remote_loopback;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-rate")
+    {
+        max_rate = value;
+        max_rate.value_namespace = name_space;
+        max_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "min-rate")
+    {
+        min_rate = value;
+        min_rate.value_namespace = name_space;
+        min_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-rate")
+    {
+        max_rate.yfilter = yfilter;
+    }
+    if(value_path == "min-rate")
+    {
+        min_rate.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-monitor" || name == "remote-failure" || name == "remote-loopback" || name == "max-rate" || name == "min-rate" || name == "mode" || name == "timeout")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::LinkMonitor()
+    :
+    on{YType::empty, "on"},
+    supported{YType::empty, "supported"}
+        ,
+    frame(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame>())
+    , frame_period(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod>())
+    , frame_seconds(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds>())
+    , high_threshold(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold>())
+    , receive_crc(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc>())
+    , symbol_period(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod>())
+{
+    frame->parent = this;
+    frame_period->parent = this;
+    frame_seconds->parent = this;
+    high_threshold->parent = this;
+    receive_crc->parent = this;
+    symbol_period->parent = this;
+
+    yang_name = "link-monitor"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::~LinkMonitor()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::has_data() const
+{
+    if (is_presence_container) return true;
+    return on.is_set
+	|| supported.is_set
+	|| (frame !=  nullptr && frame->has_data())
+	|| (frame_period !=  nullptr && frame_period->has_data())
+	|| (frame_seconds !=  nullptr && frame_seconds->has_data())
+	|| (high_threshold !=  nullptr && high_threshold->has_data())
+	|| (receive_crc !=  nullptr && receive_crc->has_data())
+	|| (symbol_period !=  nullptr && symbol_period->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(on.yfilter)
+	|| ydk::is_set(supported.yfilter)
+	|| (frame !=  nullptr && frame->has_operation())
+	|| (frame_period !=  nullptr && frame_period->has_operation())
+	|| (frame_seconds !=  nullptr && frame_seconds->has_operation())
+	|| (high_threshold !=  nullptr && high_threshold->has_operation())
+	|| (receive_crc !=  nullptr && receive_crc->has_operation())
+	|| (symbol_period !=  nullptr && symbol_period->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-monitor";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (on.is_set || is_set(on.yfilter)) leaf_name_data.push_back(on.get_name_leafdata());
+    if (supported.is_set || is_set(supported.yfilter)) leaf_name_data.push_back(supported.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "frame")
+    {
+        if(frame == nullptr)
+        {
+            frame = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame>();
+        }
+        return frame;
+    }
+
+    if(child_yang_name == "frame-period")
+    {
+        if(frame_period == nullptr)
+        {
+            frame_period = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod>();
+        }
+        return frame_period;
+    }
+
+    if(child_yang_name == "frame-seconds")
+    {
+        if(frame_seconds == nullptr)
+        {
+            frame_seconds = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds>();
+        }
+        return frame_seconds;
+    }
+
+    if(child_yang_name == "high-threshold")
+    {
+        if(high_threshold == nullptr)
+        {
+            high_threshold = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold>();
+        }
+        return high_threshold;
+    }
+
+    if(child_yang_name == "receive-crc")
+    {
+        if(receive_crc == nullptr)
+        {
+            receive_crc = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc>();
+        }
+        return receive_crc;
+    }
+
+    if(child_yang_name == "symbol-period")
+    {
+        if(symbol_period == nullptr)
+        {
+            symbol_period = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod>();
+        }
+        return symbol_period;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(frame != nullptr)
+    {
+        children["frame"] = frame;
+    }
+
+    if(frame_period != nullptr)
+    {
+        children["frame-period"] = frame_period;
+    }
+
+    if(frame_seconds != nullptr)
+    {
+        children["frame-seconds"] = frame_seconds;
+    }
+
+    if(high_threshold != nullptr)
+    {
+        children["high-threshold"] = high_threshold;
+    }
+
+    if(receive_crc != nullptr)
+    {
+        children["receive-crc"] = receive_crc;
+    }
+
+    if(symbol_period != nullptr)
+    {
+        children["symbol-period"] = symbol_period;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "on")
+    {
+        on = value;
+        on.value_namespace = name_space;
+        on.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "supported")
+    {
+        supported = value;
+        supported.value_namespace = name_space;
+        supported.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "on")
+    {
+        on.yfilter = yfilter;
+    }
+    if(value_path == "supported")
+    {
+        supported.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frame" || name == "frame-period" || name == "frame-seconds" || name == "high-threshold" || name == "receive-crc" || name == "symbol-period" || name == "on" || name == "supported")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Frame()
+    :
+    window{YType::uint16, "window"}
+        ,
+    threshold(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold>())
+{
+    threshold->parent = this;
+
+    yang_name = "frame"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::~Frame()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::has_data() const
+{
+    if (is_presence_container) return true;
+    return window.is_set
+	|| (threshold !=  nullptr && threshold->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| (threshold !=  nullptr && threshold->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frame";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold")
+    {
+        if(threshold == nullptr)
+        {
+            threshold = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold>();
+        }
+        return threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(threshold != nullptr)
+    {
+        children["threshold"] = threshold;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::Threshold()
+    :
+    low{YType::uint16, "low"}
+        ,
+    high(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High>())
+{
+    high->parent = this;
+
+    yang_name = "threshold"; yang_parent_name = "frame"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::~Threshold()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return low.is_set
+	|| (high !=  nullptr && high->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(low.yfilter)
+	|| (high !=  nullptr && high->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (low.is_set || is_set(low.yfilter)) leaf_name_data.push_back(low.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "high")
+    {
+        if(high == nullptr)
+        {
+            high = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High>();
+        }
+        return high;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(high != nullptr)
+    {
+        children["high"] = high;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "low")
+    {
+        low = value;
+        low.value_namespace = name_space;
+        low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "low")
+    {
+        low.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high" || name == "low")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::High()
+    :
+    thresh{YType::uint16, "thresh"},
+    none{YType::empty, "none"}
+{
+
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::~High()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_data() const
+{
+    if (is_presence_container) return true;
+    return thresh.is_set
+	|| none.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(thresh.yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (thresh.is_set || is_set(thresh.yfilter)) leaf_name_data.push_back(thresh.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "thresh")
+    {
+        thresh = value;
+        thresh.value_namespace = name_space;
+        thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "thresh")
+    {
+        thresh.yfilter = yfilter;
+    }
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "thresh" || name == "none")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::FramePeriod()
+    :
+    window{YType::uint16, "window"}
+        ,
+    threshold(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold>())
+{
+    threshold->parent = this;
+
+    yang_name = "frame-period"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::~FramePeriod()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::has_data() const
+{
+    if (is_presence_container) return true;
+    return window.is_set
+	|| (threshold !=  nullptr && threshold->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| (threshold !=  nullptr && threshold->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frame-period";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold")
+    {
+        if(threshold == nullptr)
+        {
+            threshold = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold>();
+        }
+        return threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(threshold != nullptr)
+    {
+        children["threshold"] = threshold;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::Threshold()
+    :
+    low{YType::uint16, "low"}
+        ,
+    high(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High>())
+{
+    high->parent = this;
+
+    yang_name = "threshold"; yang_parent_name = "frame-period"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::~Threshold()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return low.is_set
+	|| (high !=  nullptr && high->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(low.yfilter)
+	|| (high !=  nullptr && high->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (low.is_set || is_set(low.yfilter)) leaf_name_data.push_back(low.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "high")
+    {
+        if(high == nullptr)
+        {
+            high = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High>();
+        }
+        return high;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(high != nullptr)
+    {
+        children["high"] = high;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "low")
+    {
+        low = value;
+        low.value_namespace = name_space;
+        low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "low")
+    {
+        low.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high" || name == "low")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::High()
+    :
+    f_thresh{YType::uint16, "f-thresh"},
+    none{YType::empty, "none"}
+{
+
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::~High()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_data() const
+{
+    if (is_presence_container) return true;
+    return f_thresh.is_set
+	|| none.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(f_thresh.yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (f_thresh.is_set || is_set(f_thresh.yfilter)) leaf_name_data.push_back(f_thresh.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "f-thresh")
+    {
+        f_thresh = value;
+        f_thresh.value_namespace = name_space;
+        f_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "f-thresh")
+    {
+        f_thresh.yfilter = yfilter;
+    }
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "f-thresh" || name == "none")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::FrameSeconds()
+    :
+    window{YType::uint16, "window"}
+        ,
+    threshold(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold>())
+{
+    threshold->parent = this;
+
+    yang_name = "frame-seconds"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::~FrameSeconds()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::has_data() const
+{
+    if (is_presence_container) return true;
+    return window.is_set
+	|| (threshold !=  nullptr && threshold->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| (threshold !=  nullptr && threshold->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frame-seconds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold")
+    {
+        if(threshold == nullptr)
+        {
+            threshold = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold>();
+        }
+        return threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(threshold != nullptr)
+    {
+        children["threshold"] = threshold;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::Threshold()
+    :
+    low{YType::uint16, "low"}
+        ,
+    high(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High>())
+{
+    high->parent = this;
+
+    yang_name = "threshold"; yang_parent_name = "frame-seconds"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::~Threshold()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return low.is_set
+	|| (high !=  nullptr && high->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(low.yfilter)
+	|| (high !=  nullptr && high->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (low.is_set || is_set(low.yfilter)) leaf_name_data.push_back(low.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "high")
+    {
+        if(high == nullptr)
+        {
+            high = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High>();
+        }
+        return high;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(high != nullptr)
+    {
+        children["high"] = high;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "low")
+    {
+        low = value;
+        low.value_namespace = name_space;
+        low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "low")
+    {
+        low.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high" || name == "low")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::High()
+    :
+    e_thresh{YType::uint16, "e-thresh"},
+    none{YType::empty, "none"}
+{
+
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::~High()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_data() const
+{
+    if (is_presence_container) return true;
+    return e_thresh.is_set
+	|| none.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(e_thresh.yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (e_thresh.is_set || is_set(e_thresh.yfilter)) leaf_name_data.push_back(e_thresh.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "e-thresh")
+    {
+        e_thresh = value;
+        e_thresh.value_namespace = name_space;
+        e_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "e-thresh")
+    {
+        e_thresh.yfilter = yfilter;
+    }
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "e-thresh" || name == "none")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::HighThreshold()
+    :
+    action(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action>())
+{
+    action->parent = this;
+
+    yang_name = "high-threshold"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::~HighThreshold()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return (action !=  nullptr && action->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| (action !=  nullptr && action->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action")
+    {
+        if(action == nullptr)
+        {
+            action = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action>();
+        }
+        return action;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(action != nullptr)
+    {
+        children["action"] = action;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action::Action()
+    :
+    error_disable_interface{YType::empty, "error-disable-interface"}
+{
+
+    yang_name = "action"; yang_parent_name = "high-threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action::~Action()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return error_disable_interface.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error_disable_interface.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error_disable_interface.is_set || is_set(error_disable_interface.yfilter)) leaf_name_data.push_back(error_disable_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error-disable-interface")
+    {
+        error_disable_interface = value;
+        error_disable_interface.value_namespace = name_space;
+        error_disable_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error-disable-interface")
+    {
+        error_disable_interface.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error-disable-interface")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::ReceiveCrc()
+    :
+    window{YType::uint16, "window"}
+        ,
+    threshold(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold>())
+{
+    threshold->parent = this;
+
+    yang_name = "receive-crc"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::~ReceiveCrc()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_data() const
+{
+    if (is_presence_container) return true;
+    return window.is_set
+	|| (threshold !=  nullptr && threshold->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| (threshold !=  nullptr && threshold->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "receive-crc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold")
+    {
+        if(threshold == nullptr)
+        {
+            threshold = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold>();
+        }
+        return threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(threshold != nullptr)
+    {
+        children["threshold"] = threshold;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::Threshold()
+    :
+    low{YType::uint16, "low"}
+        ,
+    high(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High>())
+{
+    high->parent = this;
+
+    yang_name = "threshold"; yang_parent_name = "receive-crc"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::~Threshold()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return low.is_set
+	|| (high !=  nullptr && high->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(low.yfilter)
+	|| (high !=  nullptr && high->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (low.is_set || is_set(low.yfilter)) leaf_name_data.push_back(low.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "high")
+    {
+        if(high == nullptr)
+        {
+            high = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High>();
+        }
+        return high;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(high != nullptr)
+    {
+        children["high"] = high;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "low")
+    {
+        low = value;
+        low.value_namespace = name_space;
+        low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "low")
+    {
+        low.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high" || name == "low")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::High()
+    :
+    crc_thresh{YType::uint16, "crc-thresh"},
+    none{YType::empty, "none"}
+{
+
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::~High()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_data() const
+{
+    if (is_presence_container) return true;
+    return crc_thresh.is_set
+	|| none.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(crc_thresh.yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (crc_thresh.is_set || is_set(crc_thresh.yfilter)) leaf_name_data.push_back(crc_thresh.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "crc-thresh")
+    {
+        crc_thresh = value;
+        crc_thresh.value_namespace = name_space;
+        crc_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "crc-thresh")
+    {
+        crc_thresh.yfilter = yfilter;
+    }
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "crc-thresh" || name == "none")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::SymbolPeriod()
+    :
+    window{YType::uint16, "window"}
+        ,
+    threshold(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold>())
+{
+    threshold->parent = this;
+
+    yang_name = "symbol-period"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::~SymbolPeriod()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_data() const
+{
+    if (is_presence_container) return true;
+    return window.is_set
+	|| (threshold !=  nullptr && threshold->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| (threshold !=  nullptr && threshold->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "symbol-period";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold")
+    {
+        if(threshold == nullptr)
+        {
+            threshold = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold>();
+        }
+        return threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(threshold != nullptr)
+    {
+        children["threshold"] = threshold;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::Threshold()
+    :
+    low{YType::uint16, "low"}
+        ,
+    high(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High>())
+{
+    high->parent = this;
+
+    yang_name = "threshold"; yang_parent_name = "symbol-period"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::~Threshold()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return low.is_set
+	|| (high !=  nullptr && high->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(low.yfilter)
+	|| (high !=  nullptr && high->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (low.is_set || is_set(low.yfilter)) leaf_name_data.push_back(low.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "high")
+    {
+        if(high == nullptr)
+        {
+            high = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High>();
+        }
+        return high;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(high != nullptr)
+    {
+        children["high"] = high;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "low")
+    {
+        low = value;
+        low.value_namespace = name_space;
+        low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "low")
+    {
+        low.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high" || name == "low")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::High()
+    :
+    err_thresh{YType::uint16, "err-thresh"},
+    none{YType::empty, "none"}
+{
+
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::~High()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_data() const
+{
+    if (is_presence_container) return true;
+    return err_thresh.is_set
+	|| none.is_set;
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(err_thresh.yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (err_thresh.is_set || is_set(err_thresh.yfilter)) leaf_name_data.push_back(err_thresh.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "err-thresh")
+    {
+        err_thresh = value;
+        err_thresh.value_namespace = name_space;
+        err_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "err-thresh")
+    {
+        err_thresh.yfilter = yfilter;
+    }
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "err-thresh" || name == "none")
+        return true;
+    return false;
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::RemoteFailure()
+    :
+    critical_event(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::CriticalEvent>())
+    , dying_gasp(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::DyingGasp>())
+    , link_fault(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::LinkFault>())
+{
+    critical_event->parent = this;
+    dying_gasp->parent = this;
+    link_fault->parent = this;
+
+    yang_name = "remote-failure"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::~RemoteFailure()
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::has_data() const
+{
+    if (is_presence_container) return true;
+    return (critical_event !=  nullptr && critical_event->has_data())
+	|| (dying_gasp !=  nullptr && dying_gasp->has_data())
+	|| (link_fault !=  nullptr && link_fault->has_data());
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::has_operation() const
+{
+    return is_set(yfilter)
+	|| (critical_event !=  nullptr && critical_event->has_operation())
+	|| (dying_gasp !=  nullptr && dying_gasp->has_operation())
+	|| (link_fault !=  nullptr && link_fault->has_operation());
+}
+
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-failure";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "critical-event")
+    {
+        if(critical_event == nullptr)
+        {
+            critical_event = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::CriticalEvent>();
+        }
+        return critical_event;
+    }
+
+    if(child_yang_name == "dying-gasp")
+    {
+        if(dying_gasp == nullptr)
+        {
+            dying_gasp = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::DyingGasp>();
+        }
+        return dying_gasp;
+    }
+
+    if(child_yang_name == "link-fault")
+    {
+        if(link_fault == nullptr)
+        {
+            link_fault = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::LinkFault>();
+        }
+        return link_fault;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(critical_event != nullptr)
+    {
+        children["critical-event"] = critical_event;
+    }
+
+    if(dying_gasp != nullptr)
+    {
+        children["dying-gasp"] = dying_gasp;
+    }
+
+    if(link_fault != nullptr)
+    {
+        children["link-fault"] = link_fault;
+    }
+
+    return children;
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "critical-event" || name == "dying-gasp" || name == "link-fault")
+        return true;
+    return false;
+}
+
 Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::CriticalEvent::CriticalEvent()
     :
     action(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::CriticalEvent::Action>())
 {
     action->parent = this;
 
-    yang_name = "critical-event"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "critical-event"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::CriticalEvent::~CriticalEvent()
@@ -27,6 +3838,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFa
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::CriticalEvent::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data());
 }
 
@@ -98,7 +3910,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFa
     error_disable_interface{YType::empty, "error-disable-interface"}
 {
 
-    yang_name = "action"; yang_parent_name = "critical-event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "critical-event"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::~Action()
@@ -107,6 +3919,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFa
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return error_disable_interface.is_set;
 }
 
@@ -175,7 +3988,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFa
     action(nullptr) // presence node
 {
 
-    yang_name = "dying-gasp"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dying-gasp"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::DyingGasp::~DyingGasp()
@@ -184,6 +3997,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFa
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::DyingGasp::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data());
 }
 
@@ -255,7 +4069,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFa
     error_disable_interface{YType::empty, "error-disable-interface"}
 {
 
-    yang_name = "action"; yang_parent_name = "dying-gasp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "dying-gasp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::DyingGasp::Action::~Action()
@@ -264,6 +4078,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFa
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return error_disable_interface.is_set;
 }
 
@@ -332,7 +4147,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFa
     action(nullptr) // presence node
 {
 
-    yang_name = "link-fault"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-fault"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::LinkFault::~LinkFault()
@@ -341,6 +4156,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFa
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::LinkFault::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data());
 }
 
@@ -412,7 +4228,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFa
     error_disable_interface{YType::empty, "error-disable-interface"}
 {
 
-    yang_name = "action"; yang_parent_name = "link-fault"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "link-fault"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::LinkFault::Action::~Action()
@@ -421,6 +4237,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFa
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return error_disable_interface.is_set;
 }
 
@@ -490,7 +4307,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteLo
     timeout{YType::uint8, "timeout"}
 {
 
-    yang_name = "remote-loopback"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-loopback"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteLoopback::~RemoteLoopback()
@@ -499,6 +4316,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteLo
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteLoopback::has_data() const
 {
+    if (is_presence_container) return true;
     return supported.is_set
 	|| timeout.is_set;
 }
@@ -580,7 +4398,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Negotiation::Negotiatio
     auto_{YType::boolean, "auto"}
 {
 
-    yang_name = "negotiation"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "negotiation"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Negotiation::~Negotiation()
@@ -589,6 +4407,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Negotiation::~Negotiati
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Negotiation::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -658,7 +4477,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Eapol::Eapol()
 {
     destination_address->parent = this;
 
-    yang_name = "eapol"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eapol"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Eapol::~Eapol()
@@ -667,6 +4486,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Eapol::~Eapol()
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Eapol::has_data() const
 {
+    if (is_presence_container) return true;
     return (destination_address !=  nullptr && destination_address->has_data());
 }
 
@@ -738,7 +4558,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Eapol::DestinationAddre
     broadcast_address{YType::empty, "broadcast-address"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "eapol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "eapol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Eapol::DestinationAddress::~DestinationAddress()
@@ -747,6 +4567,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Eapol::DestinationAddre
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Eapol::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast_address.is_set;
 }
 
@@ -815,7 +4636,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Synchronous::Synchronou
     mode{YType::empty, "mode"}
 {
 
-    yang_name = "synchronous"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "synchronous"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Synchronous::~Synchronous()
@@ -824,6 +4645,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Synchronous::~Synchrono
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Synchronous::has_data() const
 {
+    if (is_presence_container) return true;
     return mode.is_set;
 }
 
@@ -897,7 +4719,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Speed::Speed()
     nonegotiate{YType::empty, "nonegotiate"}
 {
 
-    yang_name = "speed"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "speed"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Speed::~Speed()
@@ -906,6 +4728,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Speed::~Speed()
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Speed::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set
 	|| value_10.is_set
 	|| value_100.is_set
@@ -1037,12 +4860,12 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Speed::has_leaf_or
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::Plim()
     :
     ethernet(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet>())
-	,qos(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos>())
+    , qos(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos>())
 {
     ethernet->parent = this;
     qos->parent = this;
 
-    yang_name = "plim"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "plim"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::~Plim()
@@ -1051,6 +4874,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::~Plim()
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::has_data() const
 {
+    if (is_presence_container) return true;
     return (ethernet !=  nullptr && ethernet->has_data())
 	|| (qos !=  nullptr && qos->has_data());
 }
@@ -1139,7 +4963,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::Etherne
 {
     vlan->parent = this;
 
-    yang_name = "ethernet"; yang_parent_name = "plim"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet"; yang_parent_name = "plim"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::~Ethernet()
@@ -1148,6 +4972,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::~Ethern
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -1220,7 +5045,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::Vlan::V
 {
     filter->parent = this;
 
-    yang_name = "vlan"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::Vlan::~Vlan()
@@ -1229,6 +5054,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::Vlan::~
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (filter !=  nullptr && filter->has_data());
 }
 
@@ -1300,7 +5126,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::Vlan::F
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "filter"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "filter"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::Vlan::Filter::~Filter()
@@ -1309,6 +5135,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::Vlan::F
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::Vlan::Filter::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -1378,7 +5205,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Qos()
 {
     input->parent = this;
 
-    yang_name = "qos"; yang_parent_name = "plim"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos"; yang_parent_name = "plim"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::~Qos()
@@ -1387,6 +5214,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::~Qos()
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1459,7 +5287,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Input
 {
     queue->parent = this;
 
-    yang_name = "input"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::~Input()
@@ -1468,6 +5296,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::~Inpu
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (queue !=  nullptr && queue->has_data());
 }
 
@@ -1537,12 +5366,12 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::Queue()
     :
     zero(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::Zero>())
-	,strict_priority(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::StrictPriority>())
+    , strict_priority(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::StrictPriority>())
 {
     zero->parent = this;
     strict_priority->parent = this;
 
-    yang_name = "queue"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::~Queue()
@@ -1551,6 +5380,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::has_data() const
 {
+    if (is_presence_container) return true;
     return (zero !=  nullptr && zero->has_data())
 	|| (strict_priority !=  nullptr && strict_priority->has_data());
 }
@@ -1639,7 +5469,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue
 {
     pause->parent = this;
 
-    yang_name = "zero"; yang_parent_name = "queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "zero"; yang_parent_name = "queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::Zero::~Zero()
@@ -1648,6 +5478,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::Zero::has_data() const
 {
+    if (is_presence_container) return true;
     return (pause !=  nullptr && pause->has_data());
 }
 
@@ -1720,7 +5551,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue
     threshold{YType::uint8, "threshold"}
 {
 
-    yang_name = "pause"; yang_parent_name = "zero"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pause"; yang_parent_name = "zero"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::Zero::Pause::~Pause()
@@ -1729,6 +5560,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::Zero::Pause::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| threshold.is_set;
 }
@@ -1811,7 +5643,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue
 {
     pause->parent = this;
 
-    yang_name = "strict-priority"; yang_parent_name = "queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "strict-priority"; yang_parent_name = "queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::StrictPriority::~StrictPriority()
@@ -1820,6 +5652,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::StrictPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return (pause !=  nullptr && pause->has_data());
 }
 
@@ -1892,7 +5725,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue
     threshold{YType::uint8, "threshold"}
 {
 
-    yang_name = "pause"; yang_parent_name = "strict-priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pause"; yang_parent_name = "strict-priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::StrictPriority::Pause::~Pause()
@@ -1901,6 +5734,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::StrictPriority::Pause::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| threshold.is_set;
 }
@@ -1980,11 +5814,11 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::
 Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::Pppoe()
     :
     max_sessions{YType::uint16, "max-sessions"}
-    	,
+        ,
     enable(nullptr) // presence node
 {
 
-    yang_name = "pppoe"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::~Pppoe()
@@ -1993,6 +5827,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::~Pppoe()
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return max_sessions.is_set
 	|| (enable !=  nullptr && enable->has_data());
 }
@@ -2077,7 +5912,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::Enable::Enable()
     group{YType::str, "group"}
 {
 
-    yang_name = "enable"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "enable"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::Enable::~Enable()
@@ -2086,6 +5921,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::Enable::~Enable(
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::Enable::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -2150,9 +5986,11 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::Enable::has
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Service()
+    :
+    instance(this, {"id"})
 {
 
-    yang_name = "service"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::~Service()
@@ -2161,7 +5999,8 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::~Service()
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -2171,7 +6010,7 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::has_data(
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -2201,7 +6040,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         auto c = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -2213,7 +6052,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSub
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2250,19 +6089,19 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Inst
     evc_name{YType::str, "evc-name"},
     group{YType::uint32, "group"},
     shutdown{YType::empty, "shutdown"}
-    	,
+        ,
     encapsulation(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation>())
-	,ip(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip>())
-	,ipv6(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ipv6>())
-	,rewrite(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite>())
-	,errdisable(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errdisable>())
-	,ethernet_container(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer>())
-	,snmp(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp>())
-	,bridge_domain(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::BridgeDomain>())
-	,mac(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac>())
-	,service_policy(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy>())
-	,cfm(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm>())
-	,l2protocol(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol>())
+    , ip(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip>())
+    , ipv6(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ipv6>())
+    , rewrite(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite>())
+    , errdisable(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errdisable>())
+    , ethernet_container(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer>())
+    , snmp(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp>())
+    , bridge_domain(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::BridgeDomain>())
+    , mac(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac>())
+    , service_policy(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy>())
+    , cfm(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm>())
+    , l2protocol(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol>())
 {
     encapsulation->parent = this;
     ip->parent = this;
@@ -2277,7 +6116,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Inst
     cfm->parent = this;
     l2protocol->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::~Instance()
@@ -2286,6 +6125,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::~Ins
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| trunk.is_set
 	|| gigabitethernet.is_set
@@ -2338,7 +6178,8 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[id='" <<id <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -2465,7 +6306,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         if(l2protocol == nullptr)
         {
-            l2protocol = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol>();
+            l2protocol = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol>();
         }
         return l2protocol;
     }
@@ -2648,17 +6489,17 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Encapsulation()
     :
     default_{YType::empty, "default"}
-    	,
-    dot1ad(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad>())
-	,dot1q(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q>())
-	,priority_tagged(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged>())
-	,untagged(nullptr) // presence node
+        ,
+    dot1ad(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad>())
+    , dot1q(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q>())
+    , priority_tagged(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged>())
+    , untagged(nullptr) // presence node
 {
     dot1ad->parent = this;
     dot1q->parent = this;
     priority_tagged->parent = this;
 
-    yang_name = "encapsulation"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::~Encapsulation()
@@ -2667,6 +6508,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Enca
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set
 	|| (dot1ad !=  nullptr && dot1ad->has_data())
 	|| (dot1q !=  nullptr && dot1q->has_data())
@@ -2707,7 +6549,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         if(dot1ad == nullptr)
         {
-            dot1ad = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad>();
+            dot1ad = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad>();
         }
         return dot1ad;
     }
@@ -2716,7 +6558,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         if(dot1q == nullptr)
         {
-            dot1q = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q>();
+            dot1q = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q>();
         }
         return dot1q;
     }
@@ -2794,27 +6636,28 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Dot1Ad()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Dot1ad()
     :
     id{YType::str, "id"},
     cos{YType::uint8, "cos"},
     dot1q{YType::str, "dot1q"},
     etype{YType::enumeration, "etype"},
     exact{YType::empty, "exact"}
-    	,
-    cos2(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2>())
+        ,
+    cos2(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2>())
 {
     cos2->parent = this;
 
-    yang_name = "dot1ad"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1ad"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::~Dot1Ad()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::~Dot1ad()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : id.getYLeafs())
     {
         if(leaf.is_set)
@@ -2839,7 +6682,7 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| (cos2 !=  nullptr && cos2->has_data());
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::has_operation() const
 {
     for (auto const & leaf : id.getYLeafs())
     {
@@ -2870,14 +6713,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| (cos2 !=  nullptr && cos2->has_operation());
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1ad";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2895,13 +6738,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cos2")
     {
         if(cos2 == nullptr)
         {
-            cos2 = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2>();
+            cos2 = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2>();
         }
         return cos2;
     }
@@ -2909,7 +6752,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2921,7 +6764,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSub
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -2947,7 +6790,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -2971,27 +6814,28 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cos2" || name == "id" || name == "cos" || name == "dot1q" || name == "etype" || name == "exact")
         return true;
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2::Cos2()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2::Cos2()
     :
     cos{YType::uint8, "cos"}
 {
 
-    yang_name = "cos2"; yang_parent_name = "dot1ad"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos2"; yang_parent_name = "dot1ad"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2::~Cos2()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2::~Cos2()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos.getYLeafs())
     {
         if(leaf.is_set)
@@ -3000,7 +6844,7 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     return false;
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2::has_operation() const
 {
     for (auto const & leaf : cos.getYLeafs())
     {
@@ -3011,14 +6855,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| ydk::is_set(cos.yfilter);
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cos2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3029,19 +6873,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cos")
     {
@@ -3049,7 +6893,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cos")
     {
@@ -3057,14 +6901,14 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Cos2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cos")
         return true;
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Dot1Q()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Dot1q()
     :
     id{YType::str, "id"},
     cos{YType::uint8, "cos"},
@@ -3072,20 +6916,21 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Enca
     etype{YType::enumeration, "etype"},
     exact{YType::empty, "exact"},
     vlan_type{YType::enumeration, "vlan-type"}
-    	,
-    cos2(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2>())
+        ,
+    cos2(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2>())
 {
     cos2->parent = this;
 
-    yang_name = "dot1q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::~Dot1Q()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::~Dot1q()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : id.getYLeafs())
     {
         if(leaf.is_set)
@@ -3111,7 +6956,7 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| (cos2 !=  nullptr && cos2->has_data());
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::has_operation() const
 {
     for (auto const & leaf : id.getYLeafs())
     {
@@ -3143,14 +6988,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| (cos2 !=  nullptr && cos2->has_operation());
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1q";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3169,13 +7014,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cos2")
     {
         if(cos2 == nullptr)
         {
-            cos2 = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2>();
+            cos2 = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2>();
         }
         return cos2;
     }
@@ -3183,7 +7028,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3195,7 +7040,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSub
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -3227,7 +7072,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -3255,27 +7100,28 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cos2" || name == "id" || name == "cos" || name == "second-dot1q" || name == "etype" || name == "exact" || name == "vlan-type")
         return true;
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2::Cos2()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2::Cos2()
     :
     cos{YType::uint8, "cos"}
 {
 
-    yang_name = "cos2"; yang_parent_name = "dot1q"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos2"; yang_parent_name = "dot1q"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2::~Cos2()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2::~Cos2()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos.getYLeafs())
     {
         if(leaf.is_set)
@@ -3284,7 +7130,7 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     return false;
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2::has_operation() const
 {
     for (auto const & leaf : cos.getYLeafs())
     {
@@ -3295,14 +7141,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| ydk::is_set(cos.yfilter);
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cos2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3313,19 +7159,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cos")
     {
@@ -3333,7 +7179,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cos")
     {
@@ -3341,7 +7187,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Cos2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cos")
         return true;
@@ -3351,12 +7197,12 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged::PriorityTagged()
     :
     etype{YType::enumeration, "etype"}
-    	,
+        ,
     cos_container(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged::CosContainer>())
 {
     cos_container->parent = this;
 
-    yang_name = "priority-tagged"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-tagged"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged::~PriorityTagged()
@@ -3365,6 +7211,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Enca
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : etype.getYLeafs())
     {
         if(leaf.is_set)
@@ -3457,7 +7304,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Enca
     cos{YType::uint8, "cos"}
 {
 
-    yang_name = "cos-container"; yang_parent_name = "priority-tagged"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-container"; yang_parent_name = "priority-tagged"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged::CosContainer::~CosContainer()
@@ -3466,6 +7313,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Enca
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged::CosContainer::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos.getYLeafs())
     {
         if(leaf.is_set)
@@ -3541,7 +7389,7 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Untagged::Untagged()
 {
 
-    yang_name = "untagged"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "untagged"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Untagged::~Untagged()
@@ -3550,6 +7398,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Enca
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Untagged::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3602,14 +7451,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Ip()
     :
     acl(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Acl>())
-	,dhcp(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp>())
-	,verify(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Verify>())
+    , dhcp(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp>())
+    , verify(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Verify>())
 {
     acl->parent = this;
     dhcp->parent = this;
     verify->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::~Ip()
@@ -3618,6 +7467,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (acl !=  nullptr && acl->has_data())
 	|| (dhcp !=  nullptr && dhcp->has_data())
 	|| (verify !=  nullptr && verify->has_data());
@@ -3723,7 +7573,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
     out{YType::empty, "out"}
 {
 
-    yang_name = "acl"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Acl::~Acl()
@@ -3732,6 +7582,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return access_group.is_set
 	|| in.is_set
 	|| out.is_set;
@@ -3827,7 +7678,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
 {
     relay->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp::~Dhcp()
@@ -3836,6 +7687,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return (relay !=  nullptr && relay->has_data());
 }
 
@@ -3908,7 +7760,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
 {
     information->parent = this;
 
-    yang_name = "relay"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "relay"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp::Relay::~Relay()
@@ -3917,6 +7769,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp::Relay::has_data() const
 {
+    if (is_presence_container) return true;
     return (information !=  nullptr && information->has_data());
 }
 
@@ -3989,7 +7842,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
 {
     option->parent = this;
 
-    yang_name = "information"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "information"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp::Relay::Information::~Information()
@@ -3998,6 +7851,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp::Relay::Information::has_data() const
 {
+    if (is_presence_container) return true;
     return (option !=  nullptr && option->has_data());
 }
 
@@ -4069,7 +7923,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
     subscriber_id{YType::str, "subscriber-id"}
 {
 
-    yang_name = "option"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp::Relay::Information::Option::~Option()
@@ -4078,6 +7932,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp::Relay::Information::Option::has_data() const
 {
+    if (is_presence_container) return true;
     return subscriber_id.is_set;
 }
 
@@ -4149,7 +8004,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
     port_security{YType::empty, "port-security"}
 {
 
-    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Verify::~Verify()
@@ -4158,6 +8013,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Verify::has_data() const
 {
+    if (is_presence_container) return true;
     return source.is_set
 	|| vlan.is_set
 	|| dhcp_snooping.is_set
@@ -4267,7 +8123,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ipv6
     out{YType::empty, "out"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ipv6::~Ipv6()
@@ -4276,6 +8132,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ipv6
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_filter.is_set
 	|| in.is_set
 	|| out.is_set;
@@ -4371,7 +8228,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
 {
     ingress->parent = this;
 
-    yang_name = "rewrite"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rewrite"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::~Rewrite()
@@ -4380,6 +8237,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::has_data() const
 {
+    if (is_presence_container) return true;
     return (ingress !=  nullptr && ingress->has_data());
 }
 
@@ -4452,7 +8310,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
 {
     tag->parent = this;
 
-    yang_name = "ingress"; yang_parent_name = "rewrite"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ingress"; yang_parent_name = "rewrite"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::~Ingress()
@@ -4461,6 +8319,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::has_data() const
 {
+    if (is_presence_container) return true;
     return (tag !=  nullptr && tag->has_data());
 }
 
@@ -4530,14 +8389,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Tag()
     :
     pop(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Pop>())
-	,push(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Push>())
-	,translate(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate>())
+    , push(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Push>())
+    , translate(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate>())
 {
     pop->parent = this;
     push->parent = this;
     translate->parent = this;
 
-    yang_name = "tag"; yang_parent_name = "ingress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tag"; yang_parent_name = "ingress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::~Tag()
@@ -4546,6 +8405,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::has_data() const
 {
+    if (is_presence_container) return true;
     return (pop !=  nullptr && pop->has_data())
 	|| (push !=  nullptr && push->has_data())
 	|| (translate !=  nullptr && translate->has_data());
@@ -4650,7 +8510,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "pop"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pop"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Pop::~Pop()
@@ -4659,6 +8519,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Pop::has_data() const
 {
+    if (is_presence_container) return true;
     return way.is_set
 	|| mode.is_set;
 }
@@ -4741,7 +8602,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "push"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "push"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Push::~Push()
@@ -4750,6 +8611,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Push::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| mode.is_set;
 }
@@ -4829,16 +8691,16 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::Translate()
     :
     t1_to_1(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1>())
-	,t1_to_2(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2>())
-	,t2_to_1(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1>())
-	,t2_to_2(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2>())
+    , t1_to_2(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2>())
+    , t2_to_1(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1>())
+    , t2_to_2(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2>())
 {
     t1_to_1->parent = this;
     t1_to_2->parent = this;
     t2_to_1->parent = this;
     t2_to_2->parent = this;
 
-    yang_name = "translate"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "translate"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::~Translate()
@@ -4847,6 +8709,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::has_data() const
 {
+    if (is_presence_container) return true;
     return (t1_to_1 !=  nullptr && t1_to_1->has_data())
 	|| (t1_to_2 !=  nullptr && t1_to_2->has_data())
 	|| (t2_to_1 !=  nullptr && t2_to_1->has_data())
@@ -4967,7 +8830,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "t1-to-1"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "t1-to-1"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1::~T1To1()
@@ -4976,6 +8839,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| mode.is_set;
 }
@@ -5059,7 +8923,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "t1-to-2"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "t1-to-2"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2::~T1To2()
@@ -5068,6 +8932,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| second_dot1q.is_set
 	|| mode.is_set;
@@ -5163,7 +9028,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "t2-to-1"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "t2-to-1"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1::~T2To1()
@@ -5172,6 +9037,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| mode.is_set;
 }
@@ -5255,7 +9121,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "t2-to-2"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "t2-to-2"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2::~T2To2()
@@ -5264,6 +9130,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewr
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| second_dot1q.is_set
 	|| mode.is_set;
@@ -5359,7 +9226,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errd
 {
     recovery->parent = this;
 
-    yang_name = "errdisable"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "errdisable"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errdisable::~Errdisable()
@@ -5368,6 +9235,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errd
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errdisable::has_data() const
 {
+    if (is_presence_container) return true;
     return (recovery !=  nullptr && recovery->has_data());
 }
 
@@ -5440,7 +9308,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errd
 {
     cause->parent = this;
 
-    yang_name = "recovery"; yang_parent_name = "errdisable"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "recovery"; yang_parent_name = "errdisable"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errdisable::Recovery::~Recovery()
@@ -5449,6 +9317,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errd
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errdisable::Recovery::has_data() const
 {
+    if (is_presence_container) return true;
     return (cause !=  nullptr && cause->has_data());
 }
 
@@ -5520,7 +9389,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errd
     mac_security{YType::uint32, "mac-security"}
 {
 
-    yang_name = "cause"; yang_parent_name = "recovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cause"; yang_parent_name = "recovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errdisable::Recovery::Cause::~Cause()
@@ -5529,6 +9398,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errd
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errdisable::Recovery::Cause::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_security.is_set;
 }
 
@@ -5598,7 +9468,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
 {
     ethernet->parent = this;
 
-    yang_name = "ethernet-container"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet-container"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::~EthernetContainer()
@@ -5607,6 +9477,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::has_data() const
 {
+    if (is_presence_container) return true;
     return (ethernet !=  nullptr && ethernet->has_data());
 }
 
@@ -5676,12 +9547,12 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Ethernet()
     :
     lmi(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Lmi>())
-	,loopback(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Loopback>())
+    , loopback(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Loopback>())
 {
     lmi->parent = this;
     loopback->parent = this;
 
-    yang_name = "ethernet"; yang_parent_name = "ethernet-container"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet"; yang_parent_name = "ethernet-container"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::~Ethernet()
@@ -5690,6 +9561,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return (lmi !=  nullptr && lmi->has_data())
 	|| (loopback !=  nullptr && loopback->has_data());
 }
@@ -5778,7 +9650,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
 {
     ce_vlan->parent = this;
 
-    yang_name = "lmi"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lmi"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Lmi::~Lmi()
@@ -5787,6 +9659,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Lmi::has_data() const
 {
+    if (is_presence_container) return true;
     return (ce_vlan !=  nullptr && ce_vlan->has_data());
 }
 
@@ -5859,7 +9732,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
 {
     map->parent = this;
 
-    yang_name = "ce-vlan"; yang_parent_name = "lmi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ce-vlan"; yang_parent_name = "lmi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::~CeVlan()
@@ -5868,6 +9741,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (map !=  nullptr && map->has_data());
 }
 
@@ -5942,7 +9816,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
     vlan_range{YType::str, "vlan-range"}
 {
 
-    yang_name = "map"; yang_parent_name = "ce-vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map"; yang_parent_name = "ce-vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::Map::~Map()
@@ -5951,6 +9825,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::Map::has_data() const
 {
+    if (is_presence_container) return true;
     return any.is_set
 	|| default_.is_set
 	|| untagged.is_set
@@ -6059,7 +9934,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
 {
     permit->parent = this;
 
-    yang_name = "loopback"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "loopback"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Loopback::~Loopback()
@@ -6068,6 +9943,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Loopback::has_data() const
 {
+    if (is_presence_container) return true;
     return (permit !=  nullptr && permit->has_data());
 }
 
@@ -6140,7 +10016,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
     internal{YType::empty, "internal"}
 {
 
-    yang_name = "permit"; yang_parent_name = "loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "permit"; yang_parent_name = "loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Loopback::Permit::~Permit()
@@ -6149,6 +10025,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ethe
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Loopback::Permit::has_data() const
 {
+    if (is_presence_container) return true;
     return external.is_set
 	|| internal.is_set;
 }
@@ -6228,12 +10105,12 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::Snmp()
     :
     trap(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::Trap>())
-	,ifindex(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::Ifindex>())
+    , ifindex(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::Ifindex>())
 {
     trap->parent = this;
     ifindex->parent = this;
 
-    yang_name = "snmp"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snmp"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::~Snmp()
@@ -6242,6 +10119,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (trap !=  nullptr && trap->has_data())
 	|| (ifindex !=  nullptr && ifindex->has_data());
 }
@@ -6329,7 +10207,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp
     link_status{YType::empty, "link-status"}
 {
 
-    yang_name = "trap"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trap"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::Trap::~Trap()
@@ -6338,6 +10216,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::Trap::has_data() const
 {
+    if (is_presence_container) return true;
     return link_status.is_set;
 }
 
@@ -6406,7 +10285,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp
     persist{YType::empty, "persist"}
 {
 
-    yang_name = "ifindex"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifindex"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::Ifindex::~Ifindex()
@@ -6415,6 +10294,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::Ifindex::has_data() const
 {
+    if (is_presence_container) return true;
     return persist.is_set;
 }
 
@@ -6482,12 +10362,12 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Brid
     :
     bridge_id{YType::uint16, "bridge-id"},
     from_encapsulation{YType::empty, "from-encapsulation"}
-    	,
+        ,
     split_horizon(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::BridgeDomain::SplitHorizon>())
 {
     split_horizon->parent = this;
 
-    yang_name = "bridge-domain"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bridge-domain"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::BridgeDomain::~BridgeDomain()
@@ -6496,6 +10376,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Brid
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::BridgeDomain::has_data() const
 {
+    if (is_presence_container) return true;
     return bridge_id.is_set
 	|| from_encapsulation.is_set
 	|| (split_horizon !=  nullptr && split_horizon->has_data());
@@ -6593,7 +10474,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Brid
     group{YType::uint8, "group"}
 {
 
-    yang_name = "split-horizon"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "split-horizon"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::BridgeDomain::SplitHorizon::~SplitHorizon()
@@ -6602,6 +10483,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Brid
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::BridgeDomain::SplitHorizon::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -6668,9 +10550,10 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::Mac()
     :
     security(nullptr) // presence node
+    , access_group(this, {"acl_name"})
 {
 
-    yang_name = "mac"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::~Mac()
@@ -6679,7 +10562,8 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac:
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::has_data() const
 {
-    for (std::size_t index=0; index<access_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_group.len(); index++)
     {
         if(access_group[index]->has_data())
             return true;
@@ -6689,7 +10573,7 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::has_operation() const
 {
-    for (std::size_t index=0; index<access_group.size(); index++)
+    for (std::size_t index=0; index<access_group.len(); index++)
     {
         if(access_group[index]->has_operation())
             return true;
@@ -6729,7 +10613,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         auto c = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::AccessGroup>();
         c->parent = this;
-        access_group.push_back(c);
+        access_group.append(c);
         return c;
     }
 
@@ -6746,7 +10630,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSub
     }
 
     count = 0;
-    for (auto const & c : access_group)
+    for (auto c : access_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6775,12 +10659,12 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::Security::Security()
     :
     violation{YType::enumeration, "violation"}
-    	,
+        ,
     maximum(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::Security::Maximum>())
 {
     maximum->parent = this;
 
-    yang_name = "security"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::Security::~Security()
@@ -6789,6 +10673,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac:
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::Security::has_data() const
 {
+    if (is_presence_container) return true;
     return violation.is_set
 	|| (maximum !=  nullptr && maximum->has_data());
 }
@@ -6873,7 +10758,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac:
     addresses{YType::uint16, "addresses"}
 {
 
-    yang_name = "maximum"; yang_parent_name = "security"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum"; yang_parent_name = "security"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::Security::Maximum::~Maximum()
@@ -6882,6 +10767,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac:
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::Security::Maximum::has_data() const
 {
+    if (is_presence_container) return true;
     return addresses.is_set;
 }
 
@@ -6952,7 +10838,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac:
     out{YType::empty, "out"}
 {
 
-    yang_name = "access-group"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-group"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::AccessGroup::~AccessGroup()
@@ -6961,6 +10847,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac:
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::AccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| in.is_set
 	|| out.is_set;
@@ -6977,7 +10864,8 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::AccessGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-group" <<"[acl-name='" <<acl_name <<"']";
+    path_buffer << "access-group";
+    ADD_KEY_TOKEN(acl_name, "acl-name");
     return path_buffer.str();
 }
 
@@ -7051,9 +10939,12 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::ServicePolicy()
+    :
+    input(this, {"name"})
+    , output(this, {"name"})
 {
 
-    yang_name = "service-policy"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::~ServicePolicy()
@@ -7062,12 +10953,13 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Serv
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::has_data() const
 {
-    for (std::size_t index=0; index<input.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<input.len(); index++)
     {
         if(input[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<output.size(); index++)
+    for (std::size_t index=0; index<output.len(); index++)
     {
         if(output[index]->has_data())
             return true;
@@ -7077,12 +10969,12 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::has_operation() const
 {
-    for (std::size_t index=0; index<input.size(); index++)
+    for (std::size_t index=0; index<input.len(); index++)
     {
         if(input[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<output.size(); index++)
+    for (std::size_t index=0; index<output.len(); index++)
     {
         if(output[index]->has_operation())
             return true;
@@ -7112,7 +11004,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         auto c = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::Input>();
         c->parent = this;
-        input.push_back(c);
+        input.append(c);
         return c;
     }
 
@@ -7120,7 +11012,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         auto c = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::Output>();
         c->parent = this;
-        output.push_back(c);
+        output.append(c);
         return c;
     }
 
@@ -7132,7 +11024,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSub
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : input)
+    for (auto c : input.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7141,7 +11033,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSub
     }
 
     count = 0;
-    for (auto const & c : output)
+    for (auto c : output.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7172,7 +11064,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Serv
     name{YType::str, "name"}
 {
 
-    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::Input::~Input()
@@ -7181,6 +11073,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Serv
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -7193,7 +11086,8 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "input" <<"[name='" <<name <<"']";
+    path_buffer << "input";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -7249,7 +11143,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Serv
     name{YType::str, "name"}
 {
 
-    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::Output::~Output()
@@ -7258,6 +11152,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Serv
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -7270,7 +11165,8 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "output" <<"[name='" <<name <<"']";
+    path_buffer << "output";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -7324,14 +11220,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Cfm()
     :
     encapsulation(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation>())
-	,mep(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Mep>())
-	,mip(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Mip>())
+    , mep(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Mep>())
+    , mip(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Mip>())
 {
     encapsulation->parent = this;
     mep->parent = this;
     mip->parent = this;
 
-    yang_name = "cfm"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cfm"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::~Cfm()
@@ -7340,6 +11236,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm:
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::has_data() const
 {
+    if (is_presence_container) return true;
     return (encapsulation !=  nullptr && encapsulation->has_data())
 	|| (mep !=  nullptr && mep->has_data())
 	|| (mip !=  nullptr && mip->has_data());
@@ -7440,13 +11337,13 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Encapsulation()
     :
-    dot1ad(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad>())
-	,dot1q(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q>())
+    dot1ad(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad>())
+    , dot1q(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q>())
 {
     dot1ad->parent = this;
     dot1q->parent = this;
 
-    yang_name = "encapsulation"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::~Encapsulation()
@@ -7455,6 +11352,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm:
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot1ad !=  nullptr && dot1ad->has_data())
 	|| (dot1q !=  nullptr && dot1q->has_data());
 }
@@ -7488,7 +11386,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         if(dot1ad == nullptr)
         {
-            dot1ad = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad>();
+            dot1ad = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad>();
         }
         return dot1ad;
     }
@@ -7497,7 +11395,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         if(dot1q == nullptr)
         {
-            dot1q = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q>();
+            dot1q = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q>();
         }
         return dot1q;
     }
@@ -7537,28 +11435,29 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad::Dot1Ad()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad::Dot1ad()
     :
     vlan_id{YType::uint16, "vlan-id"},
     cos{YType::uint8, "cos"},
     dot1q{YType::uint16, "dot1q"}
 {
 
-    yang_name = "dot1ad"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1ad"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad::~Dot1Ad()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad::~Dot1ad()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| cos.is_set
 	|| dot1q.is_set;
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vlan_id.yfilter)
@@ -7566,14 +11465,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| ydk::is_set(dot1q.yfilter);
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1ad";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7585,19 +11484,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlan-id")
     {
@@ -7619,7 +11518,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vlan-id")
     {
@@ -7635,35 +11534,36 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1ad::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-id" || name == "cos" || name == "dot1q")
         return true;
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q::Dot1Q()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q::Dot1q()
     :
     vlan_id{YType::uint16, "vlan-id"},
     cos{YType::uint8, "cos"},
     second_dot1q{YType::uint16, "second-dot1q"}
 {
 
-    yang_name = "dot1q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q::~Dot1Q()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q::~Dot1q()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| cos.is_set
 	|| second_dot1q.is_set;
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vlan_id.yfilter)
@@ -7671,14 +11571,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| ydk::is_set(second_dot1q.yfilter);
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1q";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7690,19 +11590,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlan-id")
     {
@@ -7724,7 +11624,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vlan-id")
     {
@@ -7740,7 +11640,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1q::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-id" || name == "cos" || name == "second-dot1q")
         return true;
@@ -7753,7 +11653,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm:
     mpid{YType::uint16, "mpid"}
 {
 
-    yang_name = "mep"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mep"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Mep::~Mep()
@@ -7762,6 +11662,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm:
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Mep::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| mpid.is_set;
 }
@@ -7843,7 +11744,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm:
     level{YType::uint8, "level"}
 {
 
-    yang_name = "mip"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mip"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Mip::~Mip()
@@ -7852,6 +11753,7 @@ Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm:
 
 bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Mip::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set;
 }
 
@@ -7915,30 +11817,31 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::L2Protocol()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::L2protocol()
     :
     discard(nullptr) // presence node
-	,peer(nullptr) // presence node
-	,forward(nullptr) // presence node
-	,tunnel(nullptr) // presence node
+    , peer(nullptr) // presence node
+    , forward(nullptr) // presence node
+    , tunnel(nullptr) // presence node
 {
 
-    yang_name = "l2protocol"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2protocol"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::~L2Protocol()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::~L2protocol()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (discard !=  nullptr && discard->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (forward !=  nullptr && forward->has_data())
 	|| (tunnel !=  nullptr && tunnel->has_data());
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::has_operation() const
 {
     return is_set(yfilter)
 	|| (discard !=  nullptr && discard->has_operation())
@@ -7947,14 +11850,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| (tunnel !=  nullptr && tunnel->has_operation());
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2protocol";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7963,13 +11866,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "discard")
     {
         if(discard == nullptr)
         {
-            discard = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard>();
+            discard = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard>();
         }
         return discard;
     }
@@ -7978,7 +11881,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         if(peer == nullptr)
         {
-            peer = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer>();
+            peer = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer>();
         }
         return peer;
     }
@@ -7987,7 +11890,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         if(forward == nullptr)
         {
-            forward = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward>();
+            forward = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward>();
         }
         return forward;
     }
@@ -7996,7 +11899,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         if(tunnel == nullptr)
         {
-            tunnel = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel>();
+            tunnel = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel>();
         }
         return tunnel;
     }
@@ -8004,7 +11907,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8031,35 +11934,36 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSub
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "discard" || name == "peer" || name == "forward" || name == "tunnel")
         return true;
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Discard()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Discard()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "discard"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discard"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::~Discard()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::~Discard()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
@@ -8068,7 +11972,7 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     return false;
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::has_operation() const
 {
     for (auto const & leaf : protocol.getYLeafs())
     {
@@ -8079,14 +11983,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "discard";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8097,19 +12001,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -8117,7 +12021,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -8125,27 +12029,28 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Peer()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Peer()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "peer"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::~Peer()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::~Peer()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
@@ -8154,7 +12059,7 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     return false;
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::has_operation() const
 {
     for (auto const & leaf : protocol.getYLeafs())
     {
@@ -8165,14 +12070,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8183,19 +12088,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -8203,7 +12108,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -8211,27 +12116,28 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Forward()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Forward()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "forward"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forward"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::~Forward()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::~Forward()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
@@ -8240,7 +12146,7 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     return false;
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::has_operation() const
 {
     for (auto const & leaf : protocol.getYLeafs())
     {
@@ -8251,14 +12157,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "forward";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8269,19 +12175,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -8289,7 +12195,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -8297,27 +12203,28 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Tunnel()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Tunnel()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "tunnel"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::~Tunnel()
+Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::~Tunnel()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
@@ -8326,7 +12233,7 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     return false;
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::has_operation() const
 {
     for (auto const & leaf : protocol.getYLeafs())
     {
@@ -8337,14 +12244,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8355,19 +12262,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -8375,7 +12282,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -8383,3529 +12290,9 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance:
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Auto::Auto()
-    :
-    qos(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos>())
-{
-    qos->parent = this;
-
-    yang_name = "auto"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Auto::~Auto()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::has_data() const
-{
-    return (qos !=  nullptr && qos->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::has_operation() const
-{
-    return is_set(yfilter)
-	|| (qos !=  nullptr && qos->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Auto::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:auto";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Auto::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "qos")
-    {
-        if(qos == nullptr)
-        {
-            qos = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos>();
-        }
-        return qos;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Auto::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(qos != nullptr)
-    {
-        children["qos"] = qos;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Auto::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "qos")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Qos()
-    :
-    classify(nullptr) // presence node
-	,trust(nullptr) // presence node
-	,video(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video>())
-	,voip(nullptr) // presence node
-{
-    video->parent = this;
-
-    yang_name = "qos"; yang_parent_name = "auto"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::~Qos()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::has_data() const
-{
-    return (classify !=  nullptr && classify->has_data())
-	|| (trust !=  nullptr && trust->has_data())
-	|| (video !=  nullptr && video->has_data())
-	|| (voip !=  nullptr && voip->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::has_operation() const
-{
-    return is_set(yfilter)
-	|| (classify !=  nullptr && classify->has_operation())
-	|| (trust !=  nullptr && trust->has_operation())
-	|| (video !=  nullptr && video->has_operation())
-	|| (voip !=  nullptr && voip->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "qos";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "classify")
-    {
-        if(classify == nullptr)
-        {
-            classify = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Classify>();
-        }
-        return classify;
-    }
-
-    if(child_yang_name == "trust")
-    {
-        if(trust == nullptr)
-        {
-            trust = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Trust>();
-        }
-        return trust;
-    }
-
-    if(child_yang_name == "video")
-    {
-        if(video == nullptr)
-        {
-            video = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video>();
-        }
-        return video;
-    }
-
-    if(child_yang_name == "voip")
-    {
-        if(voip == nullptr)
-        {
-            voip = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Voip>();
-        }
-        return voip;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(classify != nullptr)
-    {
-        children["classify"] = classify;
-    }
-
-    if(trust != nullptr)
-    {
-        children["trust"] = trust;
-    }
-
-    if(video != nullptr)
-    {
-        children["video"] = video;
-    }
-
-    if(voip != nullptr)
-    {
-        children["voip"] = voip;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "classify" || name == "trust" || name == "video" || name == "voip")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Classify::Classify()
-    :
-    police{YType::empty, "police"}
-{
-
-    yang_name = "classify"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Classify::~Classify()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Classify::has_data() const
-{
-    return police.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Classify::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(police.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Classify::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "classify";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Classify::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (police.is_set || is_set(police.yfilter)) leaf_name_data.push_back(police.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Classify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Classify::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Classify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "police")
-    {
-        police = value;
-        police.value_namespace = name_space;
-        police.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Classify::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "police")
-    {
-        police.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Classify::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "police")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Trust::Trust()
-    :
-    cos{YType::empty, "cos"},
-    dscp{YType::empty, "dscp"}
-{
-
-    yang_name = "trust"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Trust::~Trust()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Trust::has_data() const
-{
-    return cos.is_set
-	|| dscp.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Trust::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cos.yfilter)
-	|| ydk::is_set(dscp.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Trust::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trust";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Trust::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Trust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Trust::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Trust::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cos")
-    {
-        cos = value;
-        cos.value_namespace = name_space;
-        cos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dscp")
-    {
-        dscp = value;
-        dscp.value_namespace = name_space;
-        dscp.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Trust::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cos")
-    {
-        cos.yfilter = yfilter;
-    }
-    if(value_path == "dscp")
-    {
-        dscp.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Trust::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cos" || name == "dscp")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video::Video()
-    :
-    cts{YType::empty, "cts"},
-    ip_camera{YType::empty, "ip-camera"},
-    media_player{YType::empty, "media-player"}
-{
-
-    yang_name = "video"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video::~Video()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video::has_data() const
-{
-    return cts.is_set
-	|| ip_camera.is_set
-	|| media_player.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cts.yfilter)
-	|| ydk::is_set(ip_camera.yfilter)
-	|| ydk::is_set(media_player.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "video";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cts.is_set || is_set(cts.yfilter)) leaf_name_data.push_back(cts.get_name_leafdata());
-    if (ip_camera.is_set || is_set(ip_camera.yfilter)) leaf_name_data.push_back(ip_camera.get_name_leafdata());
-    if (media_player.is_set || is_set(media_player.yfilter)) leaf_name_data.push_back(media_player.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cts")
-    {
-        cts = value;
-        cts.value_namespace = name_space;
-        cts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip-camera")
-    {
-        ip_camera = value;
-        ip_camera.value_namespace = name_space;
-        ip_camera.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "media-player")
-    {
-        media_player = value;
-        media_player.value_namespace = name_space;
-        media_player.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cts")
-    {
-        cts.yfilter = yfilter;
-    }
-    if(value_path == "ip-camera")
-    {
-        ip_camera.yfilter = yfilter;
-    }
-    if(value_path == "media-player")
-    {
-        media_player.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Video::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cts" || name == "ip-camera" || name == "media-player")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Voip::Voip()
-    :
-    cisco_phone{YType::empty, "cisco-phone"},
-    cisco_softphone{YType::empty, "cisco-softphone"},
-    trust{YType::empty, "trust"}
-{
-
-    yang_name = "voip"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Voip::~Voip()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Voip::has_data() const
-{
-    return cisco_phone.is_set
-	|| cisco_softphone.is_set
-	|| trust.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Voip::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cisco_phone.yfilter)
-	|| ydk::is_set(cisco_softphone.yfilter)
-	|| ydk::is_set(trust.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Voip::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "voip";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Voip::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cisco_phone.is_set || is_set(cisco_phone.yfilter)) leaf_name_data.push_back(cisco_phone.get_name_leafdata());
-    if (cisco_softphone.is_set || is_set(cisco_softphone.yfilter)) leaf_name_data.push_back(cisco_softphone.get_name_leafdata());
-    if (trust.is_set || is_set(trust.yfilter)) leaf_name_data.push_back(trust.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Voip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Voip::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Voip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cisco-phone")
-    {
-        cisco_phone = value;
-        cisco_phone.value_namespace = name_space;
-        cisco_phone.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cisco-softphone")
-    {
-        cisco_softphone = value;
-        cisco_softphone.value_namespace = name_space;
-        cisco_softphone.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "trust")
-    {
-        trust = value;
-        trust.value_namespace = name_space;
-        trust.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Voip::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cisco-phone")
-    {
-        cisco_phone.yfilter = yfilter;
-    }
-    if(value_path == "cisco-softphone")
-    {
-        cisco_softphone.yfilter = yfilter;
-    }
-    if(value_path == "trust")
-    {
-        trust.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Auto::Qos::Voip::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cisco-phone" || name == "cisco-softphone" || name == "trust")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Datalink()
-    :
-    flow(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow>())
-{
-    flow->parent = this;
-
-    yang_name = "datalink"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Datalink::~Datalink()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Datalink::has_data() const
-{
-    return (flow !=  nullptr && flow->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Datalink::has_operation() const
-{
-    return is_set(yfilter)
-	|| (flow !=  nullptr && flow->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Datalink::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:datalink";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Datalink::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Datalink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "flow")
-    {
-        if(flow == nullptr)
-        {
-            flow = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow>();
-        }
-        return flow;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Datalink::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(flow != nullptr)
-    {
-        children["flow"] = flow;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Datalink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Datalink::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Datalink::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flow")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Flow()
-    :
-    monitor(nullptr) // presence node
-{
-
-    yang_name = "flow"; yang_parent_name = "datalink"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::~Flow()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::has_data() const
-{
-    return (monitor !=  nullptr && monitor->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::has_operation() const
-{
-    return is_set(yfilter)
-	|| (monitor !=  nullptr && monitor->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flow";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "monitor")
-    {
-        if(monitor == nullptr)
-        {
-            monitor = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor>();
-        }
-        return monitor;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(monitor != nullptr)
-    {
-        children["monitor"] = monitor;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "monitor")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::Monitor()
-    :
-    user_defined_flow{YType::str, "User-defined-flow"},
-    input_output{YType::enumeration, "input-output"}
-{
-
-    yang_name = "monitor"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::~Monitor()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::has_data() const
-{
-    return user_defined_flow.is_set
-	|| input_output.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(user_defined_flow.yfilter)
-	|| ydk::is_set(input_output.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "monitor";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (user_defined_flow.is_set || is_set(user_defined_flow.yfilter)) leaf_name_data.push_back(user_defined_flow.get_name_leafdata());
-    if (input_output.is_set || is_set(input_output.yfilter)) leaf_name_data.push_back(input_output.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "User-defined-flow")
-    {
-        user_defined_flow = value;
-        user_defined_flow.value_namespace = name_space;
-        user_defined_flow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "input-output")
-    {
-        input_output = value;
-        input_output.value_namespace = name_space;
-        input_output.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "User-defined-flow")
-    {
-        user_defined_flow.yfilter = yfilter;
-    }
-    if(value_path == "input-output")
-    {
-        input_output.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "User-defined-flow" || name == "input-output")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Energywise()
-    :
-    activitycheck{YType::empty, "activitycheck"}
-{
-
-    yang_name = "energywise"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Energywise::~Energywise()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::has_data() const
-{
-    for (std::size_t index=0; index<level.size(); index++)
-    {
-        if(level[index]->has_data())
-            return true;
-    }
-    return activitycheck.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::has_operation() const
-{
-    for (std::size_t index=0; index<level.size(); index++)
-    {
-        if(level[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(activitycheck.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Energywise::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:energywise";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Energywise::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activitycheck.is_set || is_set(activitycheck.yfilter)) leaf_name_data.push_back(activitycheck.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Energywise::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "level")
-    {
-        auto c = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level>();
-        c->parent = this;
-        level.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Energywise::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : level)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Energywise::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activitycheck")
-    {
-        activitycheck = value;
-        activitycheck.value_namespace = name_space;
-        activitycheck.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Energywise::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activitycheck")
-    {
-        activitycheck.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "activitycheck")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Level()
-    :
-    range{YType::uint8, "range"}
-    	,
-    recurrence(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence>())
-{
-    recurrence->parent = this;
-
-    yang_name = "level"; yang_parent_name = "energywise"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::~Level()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::has_data() const
-{
-    return range.is_set
-	|| (recurrence !=  nullptr && recurrence->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(range.yfilter)
-	|| (recurrence !=  nullptr && recurrence->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "level" <<"[range='" <<range <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "recurrence")
-    {
-        if(recurrence == nullptr)
-        {
-            recurrence = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence>();
-        }
-        return recurrence;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(recurrence != nullptr)
-    {
-        children["recurrence"] = recurrence;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "range")
-    {
-        range = value;
-        range.value_namespace = name_space;
-        range.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "range")
-    {
-        range.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "recurrence" || name == "range")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Recurrence()
-{
-
-    yang_name = "recurrence"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::~Recurrence()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::has_data() const
-{
-    for (std::size_t index=0; index<importance.size(); index++)
-    {
-        if(importance[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::has_operation() const
-{
-    for (std::size_t index=0; index<importance.size(); index++)
-    {
-        if(importance[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "recurrence";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "importance")
-    {
-        auto c = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance>();
-        c->parent = this;
-        importance.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : importance)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "importance")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::Importance()
-    :
-    range{YType::uint16, "range"}
-    	,
-    at(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At>())
-{
-    at->parent = this;
-
-    yang_name = "importance"; yang_parent_name = "recurrence"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::~Importance()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::has_data() const
-{
-    return range.is_set
-	|| (at !=  nullptr && at->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(range.yfilter)
-	|| (at !=  nullptr && at->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "importance" <<"[range='" <<range <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "at")
-    {
-        if(at == nullptr)
-        {
-            at = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At>();
-        }
-        return at;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(at != nullptr)
-    {
-        children["at"] = at;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "range")
-    {
-        range = value;
-        range.value_namespace = name_space;
-        range.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "range")
-    {
-        range.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "at" || name == "range")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At::At()
-    :
-    minute{YType::str, "minute"},
-    hour{YType::str, "hour"},
-    day{YType::str, "day"},
-    month{YType::str, "month"},
-    weekday{YType::str, "weekday"}
-{
-
-    yang_name = "at"; yang_parent_name = "importance"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At::~At()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At::has_data() const
-{
-    return minute.is_set
-	|| hour.is_set
-	|| day.is_set
-	|| month.is_set
-	|| weekday.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(minute.yfilter)
-	|| ydk::is_set(hour.yfilter)
-	|| ydk::is_set(day.yfilter)
-	|| ydk::is_set(month.yfilter)
-	|| ydk::is_set(weekday.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "at";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (minute.is_set || is_set(minute.yfilter)) leaf_name_data.push_back(minute.get_name_leafdata());
-    if (hour.is_set || is_set(hour.yfilter)) leaf_name_data.push_back(hour.get_name_leafdata());
-    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
-    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
-    if (weekday.is_set || is_set(weekday.yfilter)) leaf_name_data.push_back(weekday.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "minute")
-    {
-        minute = value;
-        minute.value_namespace = name_space;
-        minute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hour")
-    {
-        hour = value;
-        hour.value_namespace = name_space;
-        hour.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "day")
-    {
-        day = value;
-        day.value_namespace = name_space;
-        day.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "month")
-    {
-        month = value;
-        month.value_namespace = name_space;
-        month.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weekday")
-    {
-        weekday = value;
-        weekday.value_namespace = name_space;
-        weekday.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "minute")
-    {
-        minute.yfilter = yfilter;
-    }
-    if(value_path == "hour")
-    {
-        hour.yfilter = yfilter;
-    }
-    if(value_path == "day")
-    {
-        day.yfilter = yfilter;
-    }
-    if(value_path == "month")
-    {
-        month.yfilter = yfilter;
-    }
-    if(value_path == "weekday")
-    {
-        weekday.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Energywise::Level::Recurrence::Importance::At::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "minute" || name == "hour" || name == "day" || name == "month" || name == "weekday")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Location::Location()
-    :
-    civic_location_id(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId>())
-{
-    civic_location_id->parent = this;
-
-    yang_name = "location"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Location::~Location()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Location::has_data() const
-{
-    return (civic_location_id !=  nullptr && civic_location_id->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Location::has_operation() const
-{
-    return is_set(yfilter)
-	|| (civic_location_id !=  nullptr && civic_location_id->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Location::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:location";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Location::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "civic-location-id")
-    {
-        if(civic_location_id == nullptr)
-        {
-            civic_location_id = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId>();
-        }
-        return civic_location_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Location::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(civic_location_id != nullptr)
-    {
-        children["civic-location-id"] = civic_location_id;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Location::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Location::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "civic-location-id")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::CivicLocationId()
-    :
-    location_identifier{YType::str, "location-identifier"}
-    	,
-    host(nullptr) // presence node
-	,none(nullptr) // presence node
-{
-
-    yang_name = "civic-location-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::~CivicLocationId()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::has_data() const
-{
-    return location_identifier.is_set
-	|| (host !=  nullptr && host->has_data())
-	|| (none !=  nullptr && none->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(location_identifier.yfilter)
-	|| (host !=  nullptr && host->has_operation())
-	|| (none !=  nullptr && none->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "civic-location-id";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (location_identifier.is_set || is_set(location_identifier.yfilter)) leaf_name_data.push_back(location_identifier.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "host")
-    {
-        if(host == nullptr)
-        {
-            host = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::Host>();
-        }
-        return host;
-    }
-
-    if(child_yang_name == "none")
-    {
-        if(none == nullptr)
-        {
-            none = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::None>();
-        }
-        return none;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(host != nullptr)
-    {
-        children["host"] = host;
-    }
-
-    if(none != nullptr)
-    {
-        children["none"] = none;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "location-identifier")
-    {
-        location_identifier = value;
-        location_identifier.value_namespace = name_space;
-        location_identifier.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "location-identifier")
-    {
-        location_identifier.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "host" || name == "none" || name == "location-identifier")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::Host::Host()
-    :
-    port_location{YType::str, "port-location"}
-{
-
-    yang_name = "host"; yang_parent_name = "civic-location-id"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::Host::~Host()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::Host::has_data() const
-{
-    return port_location.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::Host::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port_location.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::Host::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "host";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::Host::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port_location.is_set || is_set(port_location.yfilter)) leaf_name_data.push_back(port_location.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::Host::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port-location")
-    {
-        port_location = value;
-        port_location.value_namespace = name_space;
-        port_location.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::Host::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port-location")
-    {
-        port_location.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::Host::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port-location")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::None::None()
-    :
-    port_location{YType::str, "port-location"}
-{
-
-    yang_name = "none"; yang_parent_name = "civic-location-id"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::None::~None()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::None::has_data() const
-{
-    return port_location.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::None::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port_location.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::None::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "none";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::None::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port_location.is_set || is_set(port_location.yfilter)) leaf_name_data.push_back(port_location.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::None::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::None::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::None::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port-location")
-    {
-        port_location = value;
-        port_location.value_namespace = name_space;
-        port_location.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::None::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port-location")
-    {
-        port_location.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Location::CivicLocationId::None::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port-location")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Mac::Mac()
-{
-
-    yang_name = "mac"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Mac::~Mac()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Mac::has_data() const
-{
-    for (std::size_t index=0; index<access_group.size(); index++)
-    {
-        if(access_group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Mac::has_operation() const
-{
-    for (std::size_t index=0; index<access_group.size(); index++)
-    {
-        if(access_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Mac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:mac";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Mac::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "access-group")
-    {
-        auto c = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup>();
-        c->parent = this;
-        access_group.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Mac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : access_group)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Mac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Mac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "access-group")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::AccessGroup()
-    :
-    direction{YType::enumeration, "direction"},
-    acl_name{YType::str, "acl-name"}
-{
-
-    yang_name = "access-group"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::~AccessGroup()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::has_data() const
-{
-    return direction.is_set
-	|| acl_name.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(acl_name.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "access-group" <<"[direction='" <<direction <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (acl_name.is_set || is_set(acl_name.yfilter)) leaf_name_data.push_back(acl_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acl-name")
-    {
-        acl_name = value;
-        acl_name.value_namespace = name_space;
-        acl_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-    if(value_path == "acl-name")
-    {
-        acl_name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "direction" || name == "acl-name")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Macro::Macro()
-    :
-    description{YType::str, "description"}
-    	,
-    auto_(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto>())
-{
-    auto_->parent = this;
-
-    yang_name = "macro"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Macro::~Macro()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::has_data() const
-{
-    return description.is_set
-	|| (auto_ !=  nullptr && auto_->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| (auto_ !=  nullptr && auto_->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Macro::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:macro";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Macro::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Macro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "auto")
-    {
-        if(auto_ == nullptr)
-        {
-            auto_ = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto>();
-        }
-        return auto_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Macro::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(auto_ != nullptr)
-    {
-        children["auto"] = auto_;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Macro::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Macro::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "auto" || name == "description")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Auto()
-    :
-    processing{YType::boolean, "processing"}
-    	,
-    port(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port>())
-	,control(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control>())
-{
-    port->parent = this;
-    control->parent = this;
-
-    yang_name = "auto"; yang_parent_name = "macro"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::~Auto()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::has_data() const
-{
-    return processing.is_set
-	|| (port !=  nullptr && port->has_data())
-	|| (control !=  nullptr && control->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(processing.yfilter)
-	|| (port !=  nullptr && port->has_operation())
-	|| (control !=  nullptr && control->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "auto";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (processing.is_set || is_set(processing.yfilter)) leaf_name_data.push_back(processing.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "port")
-    {
-        if(port == nullptr)
-        {
-            port = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port>();
-        }
-        return port;
-    }
-
-    if(child_yang_name == "control")
-    {
-        if(control == nullptr)
-        {
-            control = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control>();
-        }
-        return control;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(port != nullptr)
-    {
-        children["port"] = port;
-    }
-
-    if(control != nullptr)
-    {
-        children["control"] = control;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "processing")
-    {
-        processing = value;
-        processing.value_namespace = name_space;
-        processing.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "processing")
-    {
-        processing.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port" || name == "control" || name == "processing")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port::Port()
-    :
-    sticky{YType::empty, "sticky"}
-{
-
-    yang_name = "port"; yang_parent_name = "auto"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port::~Port()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port::has_data() const
-{
-    return sticky.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sticky.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "port";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sticky.is_set || is_set(sticky.yfilter)) leaf_name_data.push_back(sticky.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sticky")
-    {
-        sticky = value;
-        sticky.value_namespace = name_space;
-        sticky.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sticky")
-    {
-        sticky.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Port::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sticky")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Control()
-    :
-    device(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device>())
-{
-    device->parent = this;
-
-    yang_name = "control"; yang_parent_name = "auto"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::~Control()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::has_data() const
-{
-    return (device !=  nullptr && device->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::has_operation() const
-{
-    return is_set(yfilter)
-	|| (device !=  nullptr && device->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "control";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "device")
-    {
-        if(device == nullptr)
-        {
-            device = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device>();
-        }
-        return device;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(device != nullptr)
-    {
-        children["device"] = device;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "device")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device::Device()
-    :
-    phone{YType::empty, "phone"}
-{
-
-    yang_name = "device"; yang_parent_name = "control"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device::~Device()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device::has_data() const
-{
-    return phone.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(phone.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "device";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (phone.is_set || is_set(phone.yfilter)) leaf_name_data.push_back(phone.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "phone")
-    {
-        phone = value;
-        phone.value_namespace = name_space;
-        phone.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "phone")
-    {
-        phone.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Macro::Auto::Control::Device::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "phone")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::DualActive::DualActive()
-    :
-    fast_hello{YType::empty, "fast-hello"}
-{
-
-    yang_name = "dual-active"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::DualActive::~DualActive()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::DualActive::has_data() const
-{
-    return fast_hello.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::DualActive::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(fast_hello.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::DualActive::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:dual-active";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::DualActive::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (fast_hello.is_set || is_set(fast_hello.yfilter)) leaf_name_data.push_back(fast_hello.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::DualActive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::DualActive::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::DualActive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "fast-hello")
-    {
-        fast_hello = value;
-        fast_hello.value_namespace = name_space;
-        fast_hello.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::DualActive::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "fast-hello")
-    {
-        fast_hello.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::DualActive::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fast-hello")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::LoadBalancing()
-    :
-    flow{YType::empty, "flow"},
-    vlan{YType::empty, "vlan"}
-{
-
-    yang_name = "load-balancing"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::~LoadBalancing()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::has_data() const
-{
-    return flow.is_set
-	|| vlan.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(flow.yfilter)
-	|| ydk::is_set(vlan.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:load-balancing";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (flow.is_set || is_set(flow.yfilter)) leaf_name_data.push_back(flow.get_name_leafdata());
-    if (vlan.is_set || is_set(vlan.yfilter)) leaf_name_data.push_back(vlan.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "flow")
-    {
-        flow = value;
-        flow.value_namespace = name_space;
-        flow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vlan")
-    {
-        vlan = value;
-        vlan.value_namespace = name_space;
-        vlan.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "flow")
-    {
-        flow.yfilter = yfilter;
-    }
-    if(value_path == "vlan")
-    {
-        vlan.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::LoadBalancing::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flow" || name == "vlan")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::VlanRange()
-    :
-    id{YType::str, "id"}
-    	,
-    service_policy(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy>())
-{
-    service_policy->parent = this;
-
-    yang_name = "vlan-range"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::~VlanRange()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::has_data() const
-{
-    return id.is_set
-	|| (service_policy !=  nullptr && service_policy->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| (service_policy !=  nullptr && service_policy->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:vlan-range" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy>();
-        }
-        return service_policy;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(service_policy != nullptr)
-    {
-        children["service-policy"] = service_policy;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "service-policy" || name == "id")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::ServicePolicy()
-    :
-    input{YType::str, "input"},
-    output{YType::str, "output"}
-{
-
-    yang_name = "service-policy"; yang_parent_name = "vlan-range"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::~ServicePolicy()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::has_data() const
-{
-    return input.is_set
-	|| output.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(input.yfilter)
-	|| ydk::is_set(output.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "service-policy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
-    if (output.is_set || is_set(output.yfilter)) leaf_name_data.push_back(output.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "input")
-    {
-        input = value;
-        input.value_namespace = name_space;
-        input.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "output")
-    {
-        output = value;
-        output.value_namespace = name_space;
-        output.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "input")
-    {
-        input.yfilter = yfilter;
-    }
-    if(value_path == "output")
-    {
-        output.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::VlanRange::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input" || name == "output")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Switch::Switch()
-    :
-    virtual_(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual>())
-{
-    virtual_->parent = this;
-
-    yang_name = "switch"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Switch::~Switch()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Switch::has_data() const
-{
-    return (virtual_ !=  nullptr && virtual_->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Switch::has_operation() const
-{
-    return is_set(yfilter)
-	|| (virtual_ !=  nullptr && virtual_->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Switch::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:switch";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Switch::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "virtual")
-    {
-        if(virtual_ == nullptr)
-        {
-            virtual_ = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual>();
-        }
-        return virtual_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Switch::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(virtual_ != nullptr)
-    {
-        children["virtual"] = virtual_;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Switch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Switch::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Switch::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "virtual")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::Virtual()
-    :
-    link{YType::uint8, "link"}
-{
-
-    yang_name = "virtual"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::~Virtual()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::has_data() const
-{
-    return link.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(link.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "virtual";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (link.is_set || is_set(link.yfilter)) leaf_name_data.push_back(link.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "link")
-    {
-        link = value;
-        link.value_namespace = name_space;
-        link.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "link")
-    {
-        link.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::Switch::Virtual::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "link")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::SrrQueue()
-    :
-    bandwidth(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth>())
-{
-    bandwidth->parent = this;
-
-    yang_name = "srr-queue"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::~SrrQueue()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::has_data() const
-{
-    return (bandwidth !=  nullptr && bandwidth->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::has_operation() const
-{
-    return is_set(yfilter)
-	|| (bandwidth !=  nullptr && bandwidth->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:srr-queue";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bandwidth")
-    {
-        if(bandwidth == nullptr)
-        {
-            bandwidth = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth>();
-        }
-        return bandwidth;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(bandwidth != nullptr)
-    {
-        children["bandwidth"] = bandwidth;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bandwidth")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Bandwidth()
-    :
-    shape(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape>())
-	,share(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share>())
-{
-    shape->parent = this;
-    share->parent = this;
-
-    yang_name = "bandwidth"; yang_parent_name = "srr-queue"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::~Bandwidth()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::has_data() const
-{
-    return (shape !=  nullptr && shape->has_data())
-	|| (share !=  nullptr && share->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::has_operation() const
-{
-    return is_set(yfilter)
-	|| (shape !=  nullptr && shape->has_operation())
-	|| (share !=  nullptr && share->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bandwidth";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "shape")
-    {
-        if(shape == nullptr)
-        {
-            shape = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape>();
-        }
-        return shape;
-    }
-
-    if(child_yang_name == "share")
-    {
-        if(share == nullptr)
-        {
-            share = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share>();
-        }
-        return share;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(shape != nullptr)
-    {
-        children["shape"] = shape;
-    }
-
-    if(share != nullptr)
-    {
-        children["share"] = share;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "shape" || name == "share")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::Shape()
-    :
-    weight1{YType::uint16, "weight1"},
-    weight2{YType::uint16, "weight2"},
-    weight3{YType::uint16, "weight3"},
-    weight4{YType::uint16, "weight4"}
-{
-
-    yang_name = "shape"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::~Shape()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::has_data() const
-{
-    return weight1.is_set
-	|| weight2.is_set
-	|| weight3.is_set
-	|| weight4.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(weight1.yfilter)
-	|| ydk::is_set(weight2.yfilter)
-	|| ydk::is_set(weight3.yfilter)
-	|| ydk::is_set(weight4.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "shape";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (weight1.is_set || is_set(weight1.yfilter)) leaf_name_data.push_back(weight1.get_name_leafdata());
-    if (weight2.is_set || is_set(weight2.yfilter)) leaf_name_data.push_back(weight2.get_name_leafdata());
-    if (weight3.is_set || is_set(weight3.yfilter)) leaf_name_data.push_back(weight3.get_name_leafdata());
-    if (weight4.is_set || is_set(weight4.yfilter)) leaf_name_data.push_back(weight4.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "weight1")
-    {
-        weight1 = value;
-        weight1.value_namespace = name_space;
-        weight1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight2")
-    {
-        weight2 = value;
-        weight2.value_namespace = name_space;
-        weight2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight3")
-    {
-        weight3 = value;
-        weight3.value_namespace = name_space;
-        weight3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight4")
-    {
-        weight4 = value;
-        weight4.value_namespace = name_space;
-        weight4.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "weight1")
-    {
-        weight1.yfilter = yfilter;
-    }
-    if(value_path == "weight2")
-    {
-        weight2.yfilter = yfilter;
-    }
-    if(value_path == "weight3")
-    {
-        weight3.yfilter = yfilter;
-    }
-    if(value_path == "weight4")
-    {
-        weight4.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Shape::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "weight1" || name == "weight2" || name == "weight3" || name == "weight4")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::Share()
-    :
-    weight1{YType::uint8, "weight1"},
-    weight2{YType::uint8, "weight2"},
-    weight3{YType::uint8, "weight3"},
-    weight4{YType::uint8, "weight4"}
-{
-
-    yang_name = "share"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::~Share()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::has_data() const
-{
-    return weight1.is_set
-	|| weight2.is_set
-	|| weight3.is_set
-	|| weight4.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(weight1.yfilter)
-	|| ydk::is_set(weight2.yfilter)
-	|| ydk::is_set(weight3.yfilter)
-	|| ydk::is_set(weight4.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "share";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (weight1.is_set || is_set(weight1.yfilter)) leaf_name_data.push_back(weight1.get_name_leafdata());
-    if (weight2.is_set || is_set(weight2.yfilter)) leaf_name_data.push_back(weight2.get_name_leafdata());
-    if (weight3.is_set || is_set(weight3.yfilter)) leaf_name_data.push_back(weight3.get_name_leafdata());
-    if (weight4.is_set || is_set(weight4.yfilter)) leaf_name_data.push_back(weight4.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "weight1")
-    {
-        weight1 = value;
-        weight1.value_namespace = name_space;
-        weight1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight2")
-    {
-        weight2 = value;
-        weight2.value_namespace = name_space;
-        weight2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight3")
-    {
-        weight3 = value;
-        weight3.value_namespace = name_space;
-        weight3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight4")
-    {
-        weight4 = value;
-        weight4.value_namespace = name_space;
-        weight4.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "weight1")
-    {
-        weight1.yfilter = yfilter;
-    }
-    if(value_path == "weight2")
-    {
-        weight2.yfilter = yfilter;
-    }
-    if(value_path == "weight3")
-    {
-        weight3.yfilter = yfilter;
-    }
-    if(value_path == "weight4")
-    {
-        weight4.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::SrrQueue::Bandwidth::Share::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "weight1" || name == "weight2" || name == "weight3" || name == "weight4")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::MacsecOption()
-    :
-    macsec(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec>())
-{
-    macsec->parent = this;
-
-    yang_name = "macsec-option"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::~MacsecOption()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::has_data() const
-{
-    return (macsec !=  nullptr && macsec->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::has_operation() const
-{
-    return is_set(yfilter)
-	|| (macsec !=  nullptr && macsec->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:macsec-option";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "macsec")
-    {
-        if(macsec == nullptr)
-        {
-            macsec = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec>();
-        }
-        return macsec;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(macsec != nullptr)
-    {
-        children["macsec"] = macsec;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "macsec")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::Macsec()
-    :
-    network_link{YType::empty, "network-link"}
-    	,
-    replay_protection(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection>())
-{
-    replay_protection->parent = this;
-
-    yang_name = "macsec"; yang_parent_name = "macsec-option"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::~Macsec()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::has_data() const
-{
-    return network_link.is_set
-	|| (replay_protection !=  nullptr && replay_protection->has_data());
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(network_link.yfilter)
-	|| (replay_protection !=  nullptr && replay_protection->has_operation());
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "macsec";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (network_link.is_set || is_set(network_link.yfilter)) leaf_name_data.push_back(network_link.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "replay-protection")
-    {
-        if(replay_protection == nullptr)
-        {
-            replay_protection = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection>();
-        }
-        return replay_protection;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(replay_protection != nullptr)
-    {
-        children["replay-protection"] = replay_protection;
-    }
-
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "network-link")
-    {
-        network_link = value;
-        network_link.value_namespace = name_space;
-        network_link.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "network-link")
-    {
-        network_link.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "replay-protection" || name == "network-link")
-        return true;
-    return false;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::ReplayProtection()
-    :
-    window_size{YType::uint32, "window-size"}
-{
-
-    yang_name = "replay-protection"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::~ReplayProtection()
-{
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::has_data() const
-{
-    return window_size.is_set;
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(window_size.yfilter);
-}
-
-std::string Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "replay-protection";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (window_size.is_set || is_set(window_size.yfilter)) leaf_name_data.push_back(window_size.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "window-size")
-    {
-        window_size = value;
-        window_size.value_namespace = name_space;
-        window_size.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "window-size")
-    {
-        window_size.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::PortChannelSubinterface::PortChannel::MacsecOption::Macsec::ReplayProtection::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "window-size")
         return true;
     return false;
 }
@@ -11917,16 +12304,16 @@ Native::Interface::Pseudowire::Pseudowire()
     control_word{YType::empty, "Cisco-IOS-XE-l2vpn:control-word"},
     interworking{YType::enumeration, "Cisco-IOS-XE-l2vpn:interworking"},
     sequencing{YType::enumeration, "Cisco-IOS-XE-l2vpn:sequencing"}
-    	,
+        ,
     ip(std::make_shared<Native::Interface::Pseudowire::Ip>())
-	,load_balance(std::make_shared<Native::Interface::Pseudowire::LoadBalance>())
-	,monitor(std::make_shared<Native::Interface::Pseudowire::Monitor>())
-	,preferred_path(std::make_shared<Native::Interface::Pseudowire::PreferredPath>())
-	,protocol_mpls(std::make_shared<Native::Interface::Pseudowire::ProtocolMpls>())
-	,protocol_l2tpv2(std::make_shared<Native::Interface::Pseudowire::ProtocolL2Tpv2>())
-	,protocol_l2tpv3(std::make_shared<Native::Interface::Pseudowire::ProtocolL2Tpv3>())
-	,status(nullptr) // presence node
-	,switching(std::make_shared<Native::Interface::Pseudowire::Switching>())
+    , load_balance(std::make_shared<Native::Interface::Pseudowire::LoadBalance>())
+    , monitor(std::make_shared<Native::Interface::Pseudowire::Monitor>())
+    , preferred_path(std::make_shared<Native::Interface::Pseudowire::PreferredPath>())
+    , protocol_mpls(std::make_shared<Native::Interface::Pseudowire::ProtocolMpls>())
+    , protocol_l2tpv2(std::make_shared<Native::Interface::Pseudowire::ProtocolL2tpv2>())
+    , protocol_l2tpv3(std::make_shared<Native::Interface::Pseudowire::ProtocolL2tpv3>())
+    , status(nullptr) // presence node
+    , switching(std::make_shared<Native::Interface::Pseudowire::Switching>())
 {
     ip->parent = this;
     load_balance->parent = this;
@@ -11937,7 +12324,7 @@ Native::Interface::Pseudowire::Pseudowire()
     protocol_l2tpv3->parent = this;
     switching->parent = this;
 
-    yang_name = "pseudowire"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pseudowire"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::Pseudowire::~Pseudowire()
@@ -11946,6 +12333,7 @@ Native::Interface::Pseudowire::~Pseudowire()
 
 bool Native::Interface::Pseudowire::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| encapsulation.is_set
 	|| control_word.is_set
@@ -11991,7 +12379,8 @@ std::string Native::Interface::Pseudowire::get_absolute_path() const
 std::string Native::Interface::Pseudowire::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pseudowire" <<"[name='" <<name <<"']";
+    path_buffer << "pseudowire";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -12060,7 +12449,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::get_child_by_name(const s
     {
         if(protocol_l2tpv2 == nullptr)
         {
-            protocol_l2tpv2 = std::make_shared<Native::Interface::Pseudowire::ProtocolL2Tpv2>();
+            protocol_l2tpv2 = std::make_shared<Native::Interface::Pseudowire::ProtocolL2tpv2>();
         }
         return protocol_l2tpv2;
     }
@@ -12069,7 +12458,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::get_child_by_name(const s
     {
         if(protocol_l2tpv3 == nullptr)
         {
-            protocol_l2tpv3 = std::make_shared<Native::Interface::Pseudowire::ProtocolL2Tpv3>();
+            protocol_l2tpv3 = std::make_shared<Native::Interface::Pseudowire::ProtocolL2tpv3>();
         }
         return protocol_l2tpv3;
     }
@@ -12216,17 +12605,17 @@ Native::Interface::Pseudowire::Ip::Ip()
     :
     protocol{YType::enumeration, "protocol"},
     ttl{YType::uint8, "ttl"}
-    	,
+        ,
     dfbit(std::make_shared<Native::Interface::Pseudowire::Ip::Dfbit>())
-	,local(std::make_shared<Native::Interface::Pseudowire::Ip::Local>())
-	,pmtu(nullptr) // presence node
-	,tos(std::make_shared<Native::Interface::Pseudowire::Ip::Tos>())
+    , local(std::make_shared<Native::Interface::Pseudowire::Ip::Local>())
+    , pmtu(nullptr) // presence node
+    , tos(std::make_shared<Native::Interface::Pseudowire::Ip::Tos>())
 {
     dfbit->parent = this;
     local->parent = this;
     tos->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Ip::~Ip()
@@ -12235,6 +12624,7 @@ Native::Interface::Pseudowire::Ip::~Ip()
 
 bool Native::Interface::Pseudowire::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| ttl.is_set
 	|| (dfbit !=  nullptr && dfbit->has_data())
@@ -12380,7 +12770,7 @@ Native::Interface::Pseudowire::Ip::Dfbit::Dfbit()
     set{YType::empty, "set"}
 {
 
-    yang_name = "dfbit"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dfbit"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Ip::Dfbit::~Dfbit()
@@ -12389,6 +12779,7 @@ Native::Interface::Pseudowire::Ip::Dfbit::~Dfbit()
 
 bool Native::Interface::Pseudowire::Ip::Dfbit::has_data() const
 {
+    if (is_presence_container) return true;
     return set.is_set;
 }
 
@@ -12458,7 +12849,7 @@ Native::Interface::Pseudowire::Ip::Local::Local()
 {
     interface->parent = this;
 
-    yang_name = "local"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Ip::Local::~Local()
@@ -12467,6 +12858,7 @@ Native::Interface::Pseudowire::Ip::Local::~Local()
 
 bool Native::Interface::Pseudowire::Ip::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface !=  nullptr && interface->has_data());
 }
 
@@ -12567,18 +12959,18 @@ Native::Interface::Pseudowire::Ip::Local::Interface_::Interface_()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::Interface::Pseudowire::Ip::Local::Interface_::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Interface::Pseudowire::Ip::Local::Interface_::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Interface::Pseudowire::Ip::Local::Interface_::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Interface::Pseudowire::Ip::Local::Interface_::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Interface::Pseudowire::Ip::Local::Interface_::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Interface::Pseudowire::Ip::Local::Interface_::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Interface::Pseudowire::Ip::Local::Interface_::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Ip::Local::Interface_::~Interface_()
@@ -12587,6 +12979,7 @@ Native::Interface::Pseudowire::Ip::Local::Interface_::~Interface_()
 
 bool Native::Interface::Pseudowire::Ip::Local::Interface_::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -13122,7 +13515,7 @@ Native::Interface::Pseudowire::Ip::Local::Interface_::ATMSubinterface::ATMSubint
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Ip::Local::Interface_::ATMSubinterface::~ATMSubinterface()
@@ -13131,6 +13524,7 @@ Native::Interface::Pseudowire::Ip::Local::Interface_::ATMSubinterface::~ATMSubin
 
 bool Native::Interface::Pseudowire::Ip::Local::Interface_::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -13199,7 +13593,7 @@ Native::Interface::Pseudowire::Ip::Local::Interface_::ATMACRsubinterface::ATMACR
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Ip::Local::Interface_::ATMACRsubinterface::~ATMACRsubinterface()
@@ -13208,6 +13602,7 @@ Native::Interface::Pseudowire::Ip::Local::Interface_::ATMACRsubinterface::~ATMAC
 
 bool Native::Interface::Pseudowire::Ip::Local::Interface_::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -13276,7 +13671,7 @@ Native::Interface::Pseudowire::Ip::Local::Interface_::LISPSubinterface::LISPSubi
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Ip::Local::Interface_::LISPSubinterface::~LISPSubinterface()
@@ -13285,6 +13680,7 @@ Native::Interface::Pseudowire::Ip::Local::Interface_::LISPSubinterface::~LISPSub
 
 bool Native::Interface::Pseudowire::Ip::Local::Interface_::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -13353,7 +13749,7 @@ Native::Interface::Pseudowire::Ip::Local::Interface_::PortChannelSubinterface::P
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Ip::Local::Interface_::PortChannelSubinterface::~PortChannelSubinterface()
@@ -13362,6 +13758,7 @@ Native::Interface::Pseudowire::Ip::Local::Interface_::PortChannelSubinterface::~
 
 bool Native::Interface::Pseudowire::Ip::Local::Interface_::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -13430,7 +13827,7 @@ Native::Interface::Pseudowire::Ip::Pmtu::Pmtu()
     max{YType::uint16, "max"}
 {
 
-    yang_name = "pmtu"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pmtu"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Pseudowire::Ip::Pmtu::~Pmtu()
@@ -13439,6 +13836,7 @@ Native::Interface::Pseudowire::Ip::Pmtu::~Pmtu()
 
 bool Native::Interface::Pseudowire::Ip::Pmtu::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set;
 }
 
@@ -13508,7 +13906,7 @@ Native::Interface::Pseudowire::Ip::Tos::Tos()
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "tos"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tos"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Ip::Tos::~Tos()
@@ -13517,6 +13915,7 @@ Native::Interface::Pseudowire::Ip::Tos::~Tos()
 
 bool Native::Interface::Pseudowire::Ip::Tos::has_data() const
 {
+    if (is_presence_container) return true;
     return reflect.is_set
 	|| value_.is_set;
 }
@@ -13598,7 +13997,7 @@ Native::Interface::Pseudowire::LoadBalance::LoadBalance()
     flow(nullptr) // presence node
 {
 
-    yang_name = "load-balance"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-balance"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::LoadBalance::~LoadBalance()
@@ -13607,6 +14006,7 @@ Native::Interface::Pseudowire::LoadBalance::~LoadBalance()
 
 bool Native::Interface::Pseudowire::LoadBalance::has_data() const
 {
+    if (is_presence_container) return true;
     return (flow !=  nullptr && flow->has_data());
 }
 
@@ -13678,7 +14078,7 @@ Native::Interface::Pseudowire::LoadBalance::Flow::Flow()
     ethernet{YType::enumeration, "ethernet"}
 {
 
-    yang_name = "flow"; yang_parent_name = "load-balance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow"; yang_parent_name = "load-balance"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Pseudowire::LoadBalance::Flow::~Flow()
@@ -13687,6 +14087,7 @@ Native::Interface::Pseudowire::LoadBalance::Flow::~Flow()
 
 bool Native::Interface::Pseudowire::LoadBalance::Flow::has_data() const
 {
+    if (is_presence_container) return true;
     return ethernet.is_set;
 }
 
@@ -13756,7 +14157,7 @@ Native::Interface::Pseudowire::Monitor::Monitor()
 {
     peer->parent = this;
 
-    yang_name = "monitor"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "monitor"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Monitor::~Monitor()
@@ -13765,6 +14166,7 @@ Native::Interface::Pseudowire::Monitor::~Monitor()
 
 bool Native::Interface::Pseudowire::Monitor::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data());
 }
 
@@ -13836,7 +14238,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Peer()
     bfd(nullptr) // presence node
 {
 
-    yang_name = "peer"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Monitor::Peer::~Peer()
@@ -13845,6 +14247,7 @@ Native::Interface::Pseudowire::Monitor::Peer::~Peer()
 
 bool Native::Interface::Pseudowire::Monitor::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return (bfd !=  nullptr && bfd->has_data());
 }
 
@@ -13917,7 +14320,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Bfd()
 {
     local->parent = this;
 
-    yang_name = "bfd"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Pseudowire::Monitor::Peer::Bfd::~Bfd()
@@ -13926,6 +14329,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::~Bfd()
 
 bool Native::Interface::Pseudowire::Monitor::Peer::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return (local !=  nullptr && local->has_data());
 }
 
@@ -13998,7 +14402,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Local()
 {
     interface->parent = this;
 
-    yang_name = "local"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::~Local()
@@ -14007,6 +14411,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::~Local()
 
 bool Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface !=  nullptr && interface->has_data());
 }
 
@@ -14107,18 +14512,18 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::Interface_
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::~Interface_()
@@ -14127,6 +14532,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::~Interface
 
 bool Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -14662,7 +15068,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::ATMSubinte
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::ATMSubinterface::~ATMSubinterface()
@@ -14671,6 +15077,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::ATMSubinte
 
 bool Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -14739,7 +15146,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::ATMACRsubi
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::ATMACRsubinterface::~ATMACRsubinterface()
@@ -14748,6 +15155,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::ATMACRsubi
 
 bool Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -14816,7 +15224,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::LISPSubint
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::LISPSubinterface::~LISPSubinterface()
@@ -14825,6 +15233,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::LISPSubint
 
 bool Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -14893,7 +15302,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::PortChanne
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::PortChannelSubinterface::~PortChannelSubinterface()
@@ -14902,6 +15311,7 @@ Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::PortChanne
 
 bool Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -14968,12 +15378,12 @@ bool Native::Interface::Pseudowire::Monitor::Peer::Bfd::Local::Interface_::PortC
 Native::Interface::Pseudowire::PreferredPath::PreferredPath()
     :
     interface(std::make_shared<Native::Interface::Pseudowire::PreferredPath::Interface_>())
-	,peer_container(std::make_shared<Native::Interface::Pseudowire::PreferredPath::PeerContainer>())
+    , peer_container(std::make_shared<Native::Interface::Pseudowire::PreferredPath::PeerContainer>())
 {
     interface->parent = this;
     peer_container->parent = this;
 
-    yang_name = "preferred-path"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "preferred-path"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::PreferredPath::~PreferredPath()
@@ -14982,6 +15392,7 @@ Native::Interface::Pseudowire::PreferredPath::~PreferredPath()
 
 bool Native::Interface::Pseudowire::PreferredPath::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface !=  nullptr && interface->has_data())
 	|| (peer_container !=  nullptr && peer_container->has_data());
 }
@@ -15071,7 +15482,7 @@ Native::Interface::Pseudowire::PreferredPath::Interface_::Interface_()
     disable_fallback{YType::empty, "disable-fallback"}
 {
 
-    yang_name = "interface"; yang_parent_name = "preferred-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "preferred-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::PreferredPath::Interface_::~Interface_()
@@ -15080,6 +15491,7 @@ Native::Interface::Pseudowire::PreferredPath::Interface_::~Interface_()
 
 bool Native::Interface::Pseudowire::PreferredPath::Interface_::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel.is_set
 	|| tunnel_tp.is_set
 	|| disable_fallback.is_set;
@@ -15175,7 +15587,7 @@ Native::Interface::Pseudowire::PreferredPath::PeerContainer::PeerContainer()
     disable_fallback{YType::empty, "disable-fallback"}
 {
 
-    yang_name = "peer-container"; yang_parent_name = "preferred-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-container"; yang_parent_name = "preferred-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::PreferredPath::PeerContainer::~PeerContainer()
@@ -15184,6 +15596,7 @@ Native::Interface::Pseudowire::PreferredPath::PeerContainer::~PeerContainer()
 
 bool Native::Interface::Pseudowire::PreferredPath::PeerContainer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer.is_set
 	|| disable_fallback.is_set;
 }
@@ -15265,7 +15678,7 @@ Native::Interface::Pseudowire::ProtocolMpls::ProtocolMpls()
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "protocol-mpls"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-mpls"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Pseudowire::ProtocolMpls::~ProtocolMpls()
@@ -15274,6 +15687,7 @@ Native::Interface::Pseudowire::ProtocolMpls::~ProtocolMpls()
 
 bool Native::Interface::Pseudowire::ProtocolMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set;
 }
 
@@ -15337,31 +15751,40 @@ bool Native::Interface::Pseudowire::ProtocolMpls::has_leaf_or_child_of_name(cons
     return false;
 }
 
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::Mode::active {0, "active"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::Mode::auto_ {1, "auto"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::Mode::desirable {2, "desirable"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::Mode::on {3, "on"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::Mode::passive {4, "passive"};
+
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::Mode::active {0, "active"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::Mode::passive {1, "passive"};
+
 const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::Enable::Group::global {0, "global"};
 
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Id::any {0, "any"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Id::any {0, "any"};
 
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Dot1Q::any {0, "any"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Dot1q::any {0, "any"};
 
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Etype::ipv4 {0, "ipv4"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Etype::ipv6 {1, "ipv6"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Etype::pppoe_all {2, "pppoe-all"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Etype::pppoe_discovery {3, "pppoe-discovery"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Etype::pppoe_session {4, "pppoe-session"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Etype::ipv4 {0, "ipv4"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Etype::ipv6 {1, "ipv6"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Etype::pppoe_all {2, "pppoe-all"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Etype::pppoe_discovery {3, "pppoe-discovery"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1ad::Etype::pppoe_session {4, "pppoe-session"};
 
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Id::any {0, "any"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Id::any {0, "any"};
 
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::SecondDot1Q::any {0, "any"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::SecondDot1q::any {0, "any"};
 
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Etype::ipv4 {0, "ipv4"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Etype::ipv6 {1, "ipv6"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Etype::pppoe_all {2, "pppoe-all"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Etype::pppoe_discovery {3, "pppoe-discovery"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Etype::pppoe_session {4, "pppoe-session"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Etype::ipv4 {0, "ipv4"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Etype::ipv6 {1, "ipv6"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Etype::pppoe_all {2, "pppoe-all"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Etype::pppoe_discovery {3, "pppoe-discovery"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::Etype::pppoe_session {4, "pppoe-session"};
 
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::VlanType::Y_0x88A8 {0, "0x88A8"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::VlanType::Y_0x9100 {1, "0x9100"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::VlanType::Y_0x9200 {2, "0x9200"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::VlanType::Y_0x88A8 {0, "0x88A8"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::VlanType::Y_0x9100 {1, "0x9100"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1q::VlanType::Y_0x9200 {2, "0x9200"};
 
 const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged::Etype::ipv4 {0, "ipv4"};
 const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged::Etype::ipv6 {1, "ipv6"};
@@ -15387,103 +15810,97 @@ const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Servi
 const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::Security::Violation::protect {0, "protect"};
 const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::Security::Violation::restrict {1, "restrict"};
 
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::Protocol::vtp {21, "vtp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::R4 {0, "R4"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::R5 {1, "R5"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::R6 {2, "R6"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::R8 {3, "R8"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::R9 {4, "R9"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::RA {5, "RA"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::RB {6, "RB"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::RC {7, "RC"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::RD {8, "RD"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::RF {9, "RF"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::cdp {10, "cdp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::dtp {11, "dtp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::elmi {12, "elmi"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::esmc {13, "esmc"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::lacp {14, "lacp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::lldp {15, "lldp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::loam {16, "loam"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::pagp {17, "pagp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::ptppd {18, "ptppd"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::stp {19, "stp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::udld {20, "udld"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Discard::Protocol::vtp {21, "vtp"};
 
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::Protocol::vtp {21, "vtp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::R4 {0, "R4"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::R5 {1, "R5"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::R6 {2, "R6"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::R8 {3, "R8"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::R9 {4, "R9"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::RA {5, "RA"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::RB {6, "RB"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::RC {7, "RC"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::RD {8, "RD"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::RF {9, "RF"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::cdp {10, "cdp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::dtp {11, "dtp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::elmi {12, "elmi"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::esmc {13, "esmc"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::lacp {14, "lacp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::lldp {15, "lldp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::loam {16, "loam"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::pagp {17, "pagp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::ptppd {18, "ptppd"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::stp {19, "stp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::udld {20, "udld"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Peer::Protocol::vtp {21, "vtp"};
 
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::Protocol::vtp {21, "vtp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::R4 {0, "R4"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::R5 {1, "R5"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::R6 {2, "R6"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::R8 {3, "R8"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::R9 {4, "R9"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::RA {5, "RA"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::RB {6, "RB"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::RC {7, "RC"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::RD {8, "RD"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::RF {9, "RF"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::cdp {10, "cdp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::dtp {11, "dtp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::elmi {12, "elmi"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::esmc {13, "esmc"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::lacp {14, "lacp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::lldp {15, "lldp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::loam {16, "loam"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::pagp {17, "pagp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::ptppd {18, "ptppd"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::stp {19, "stp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::udld {20, "udld"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Forward::Protocol::vtp {21, "vtp"};
 
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::Protocol::vtp {21, "vtp"};
-
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::InputOutput::input {0, "input"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Datalink::Flow::Monitor::InputOutput::output {1, "output"};
-
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::Direction::in {0, "in"};
-const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Mac::AccessGroup::Direction::out {1, "out"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::R4 {0, "R4"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::R5 {1, "R5"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::R6 {2, "R6"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::R8 {3, "R8"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::R9 {4, "R9"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::RA {5, "RA"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::RB {6, "RB"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::RC {7, "RC"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::RD {8, "RD"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::RF {9, "RF"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::cdp {10, "cdp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::dtp {11, "dtp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::elmi {12, "elmi"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::esmc {13, "esmc"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::lacp {14, "lacp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::lldp {15, "lldp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::loam {16, "loam"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::pagp {17, "pagp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::ptppd {18, "ptppd"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::stp {19, "stp"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::udld {20, "udld"};
+const Enum::YLeaf Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2protocol::Tunnel::Protocol::vtp {21, "vtp"};
 
 const Enum::YLeaf Native::Interface::Pseudowire::Encapsulation::l2tpv2 {0, "l2tpv2"};
 const Enum::YLeaf Native::Interface::Pseudowire::Encapsulation::l2tpv3 {1, "l2tpv3"};

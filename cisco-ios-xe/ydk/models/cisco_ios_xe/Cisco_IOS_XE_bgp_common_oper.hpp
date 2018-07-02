@@ -10,6 +10,23 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_bgp_common_oper {
 
+class TcpFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf closed;
+        static const ydk::Enum::YLeaf listen;
+        static const ydk::Enum::YLeaf synsent;
+        static const ydk::Enum::YLeaf synrcvd;
+        static const ydk::Enum::YLeaf established;
+        static const ydk::Enum::YLeaf finwait1;
+        static const ydk::Enum::YLeaf finwait2;
+        static const ydk::Enum::YLeaf closewait;
+        static const ydk::Enum::YLeaf lastack;
+        static const ydk::Enum::YLeaf closing;
+        static const ydk::Enum::YLeaf timewait;
+
+};
+
 class AfiSafi : public ydk::Enum
 {
     public:
@@ -32,23 +49,6 @@ class AfiSafi : public ydk::Enum
         static const ydk::Enum::YLeaf vpnv6_multicast;
         static const ydk::Enum::YLeaf vpnv4_flowspec;
         static const ydk::Enum::YLeaf vpnv6_flowspec;
-
-};
-
-class TcpFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf closed;
-        static const ydk::Enum::YLeaf listen;
-        static const ydk::Enum::YLeaf synsent;
-        static const ydk::Enum::YLeaf synrcvd;
-        static const ydk::Enum::YLeaf established;
-        static const ydk::Enum::YLeaf finwait1;
-        static const ydk::Enum::YLeaf finwait2;
-        static const ydk::Enum::YLeaf closewait;
-        static const ydk::Enum::YLeaf lastack;
-        static const ydk::Enum::YLeaf closing;
-        static const ydk::Enum::YLeaf timewait;
 
 };
 

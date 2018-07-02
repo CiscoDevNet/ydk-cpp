@@ -15,14 +15,14 @@ namespace Cisco_IOS_XR_policy_repository_oper {
 RoutingPolicy::RoutingPolicy()
     :
     limits(std::make_shared<RoutingPolicy::Limits>())
-	,policies(std::make_shared<RoutingPolicy::Policies>())
-	,sets(std::make_shared<RoutingPolicy::Sets>())
+    , policies(std::make_shared<RoutingPolicy::Policies>())
+    , sets(std::make_shared<RoutingPolicy::Sets>())
 {
     limits->parent = this;
     policies->parent = this;
     sets->parent = this;
 
-    yang_name = "routing-policy"; yang_parent_name = "Cisco-IOS-XR-policy-repository-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-policy"; yang_parent_name = "Cisco-IOS-XR-policy-repository-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingPolicy::~RoutingPolicy()
@@ -31,6 +31,7 @@ RoutingPolicy::~RoutingPolicy()
 
 bool RoutingPolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return (limits !=  nullptr && limits->has_data())
 	|| (policies !=  nullptr && policies->has_data())
 	|| (sets !=  nullptr && sets->has_data());
@@ -165,7 +166,7 @@ RoutingPolicy::Limits::Limits()
     compiled_policies_length{YType::uint32, "compiled-policies-length"}
 {
 
-    yang_name = "limits"; yang_parent_name = "routing-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "limits"; yang_parent_name = "routing-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Limits::~Limits()
@@ -174,6 +175,7 @@ RoutingPolicy::Limits::~Limits()
 
 bool RoutingPolicy::Limits::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_lines_of_policy.is_set
 	|| current_lines_of_policy_limit.is_set
 	|| current_lines_of_policy_used.is_set
@@ -325,16 +327,16 @@ bool RoutingPolicy::Limits::has_leaf_or_child_of_name(const std::string & name) 
 RoutingPolicy::Policies::Policies()
     :
     route_policies(std::make_shared<RoutingPolicy::Policies::RoutePolicies>())
-	,unused(std::make_shared<RoutingPolicy::Policies::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Policies::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Policies::Active>())
+    , unused(std::make_shared<RoutingPolicy::Policies::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Policies::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Policies::Active>())
 {
     route_policies->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "policies"; yang_parent_name = "routing-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policies"; yang_parent_name = "routing-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Policies::~Policies()
@@ -343,6 +345,7 @@ RoutingPolicy::Policies::~Policies()
 
 bool RoutingPolicy::Policies::has_data() const
 {
+    if (is_presence_container) return true;
     return (route_policies !=  nullptr && route_policies->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -465,9 +468,11 @@ bool RoutingPolicy::Policies::has_leaf_or_child_of_name(const std::string & name
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicies()
+    :
+    route_policy(this, {"route_policy_name"})
 {
 
-    yang_name = "route-policies"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-policies"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::~RoutePolicies()
@@ -476,7 +481,8 @@ RoutingPolicy::Policies::RoutePolicies::~RoutePolicies()
 
 bool RoutingPolicy::Policies::RoutePolicies::has_data() const
 {
-    for (std::size_t index=0; index<route_policy.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route_policy.len(); index++)
     {
         if(route_policy[index]->has_data())
             return true;
@@ -486,7 +492,7 @@ bool RoutingPolicy::Policies::RoutePolicies::has_data() const
 
 bool RoutingPolicy::Policies::RoutePolicies::has_operation() const
 {
-    for (std::size_t index=0; index<route_policy.size(); index++)
+    for (std::size_t index=0; index<route_policy.len(); index++)
     {
         if(route_policy[index]->has_operation())
             return true;
@@ -523,7 +529,7 @@ std::shared_ptr<Entity> RoutingPolicy::Policies::RoutePolicies::get_child_by_nam
     {
         auto c = std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy>();
         c->parent = this;
-        route_policy.push_back(c);
+        route_policy.append(c);
         return c;
     }
 
@@ -535,7 +541,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route_policy)
+    for (auto c : route_policy.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -564,16 +570,16 @@ bool RoutingPolicy::Policies::RoutePolicies::has_leaf_or_child_of_name(const std
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::RoutePolicy()
     :
     route_policy_name{YType::str, "route-policy-name"}
-    	,
+        ,
     policy_uses(std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses>())
-	,used_by(std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached>())
+    , used_by(std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy>())
+    , attached(std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached>())
 {
     policy_uses->parent = this;
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "route-policy"; yang_parent_name = "route-policies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-policy"; yang_parent_name = "route-policies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::~RoutePolicy()
@@ -582,6 +588,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::~RoutePolicy()
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| (policy_uses !=  nullptr && policy_uses->has_data())
 	|| (used_by !=  nullptr && used_by->has_data())
@@ -607,7 +614,8 @@ std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::get_absolute_pa
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "route-policy" <<"[route-policy-name='" <<route_policy_name <<"']";
+    path_buffer << "route-policy";
+    ADD_KEY_TOKEN(route_policy_name, "route-policy-name");
     return path_buffer.str();
 }
 
@@ -703,16 +711,16 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::has_leaf_or_child_of_n
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::PolicyUses()
     :
     directly_used_policies(std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies>())
-	,all_used_sets(std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets>())
-	,directly_used_sets(std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets>())
-	,all_used_policies(std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies>())
+    , all_used_sets(std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets>())
+    , directly_used_sets(std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets>())
+    , all_used_policies(std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies>())
 {
     directly_used_policies->parent = this;
     all_used_sets->parent = this;
     directly_used_sets->parent = this;
     all_used_policies->parent = this;
 
-    yang_name = "policy-uses"; yang_parent_name = "route-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-uses"; yang_parent_name = "route-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::~PolicyUses()
@@ -721,6 +729,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::~PolicyUses()
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::has_data() const
 {
+    if (is_presence_container) return true;
     return (directly_used_policies !=  nullptr && directly_used_policies->has_data())
 	|| (all_used_sets !=  nullptr && all_used_sets->has_data())
 	|| (directly_used_sets !=  nullptr && directly_used_sets->has_data())
@@ -840,7 +849,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPol
     object{YType::str, "object"}
 {
 
-    yang_name = "directly-used-policies"; yang_parent_name = "policy-uses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "directly-used-policies"; yang_parent_name = "policy-uses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies::~DirectlyUsedPolicies()
@@ -849,6 +858,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPol
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -922,9 +932,11 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUs
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::AllUsedSets()
+    :
+    sets(this, {})
 {
 
-    yang_name = "all-used-sets"; yang_parent_name = "policy-uses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-used-sets"; yang_parent_name = "policy-uses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::~AllUsedSets()
@@ -933,7 +945,8 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::~A
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::has_data() const
 {
-    for (std::size_t index=0; index<sets.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sets.len(); index++)
     {
         if(sets[index]->has_data())
             return true;
@@ -943,7 +956,7 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSet
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::has_operation() const
 {
-    for (std::size_t index=0; index<sets.size(); index++)
+    for (std::size_t index=0; index<sets.len(); index++)
     {
         if(sets[index]->has_operation())
             return true;
@@ -973,7 +986,7 @@ std::shared_ptr<Entity> RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Pol
     {
         auto c = std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets>();
         c->parent = this;
-        sets.push_back(c);
+        sets.append(c);
         return c;
     }
 
@@ -985,7 +998,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sets)
+    for (auto c : sets.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1017,7 +1030,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Se
     set_name{YType::str, "set-name"}
 {
 
-    yang_name = "sets"; yang_parent_name = "all-used-sets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sets"; yang_parent_name = "all-used-sets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets::~Sets()
@@ -1026,6 +1039,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Se
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : set_name.getYLeafs())
     {
         if(leaf.is_set)
@@ -1111,9 +1125,11 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSet
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::DirectlyUsedSets()
+    :
+    sets(this, {})
 {
 
-    yang_name = "directly-used-sets"; yang_parent_name = "policy-uses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "directly-used-sets"; yang_parent_name = "policy-uses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::~DirectlyUsedSets()
@@ -1122,7 +1138,8 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSet
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::has_data() const
 {
-    for (std::size_t index=0; index<sets.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sets.len(); index++)
     {
         if(sets[index]->has_data())
             return true;
@@ -1132,7 +1149,7 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUs
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::has_operation() const
 {
-    for (std::size_t index=0; index<sets.size(); index++)
+    for (std::size_t index=0; index<sets.len(); index++)
     {
         if(sets[index]->has_operation())
             return true;
@@ -1162,7 +1179,7 @@ std::shared_ptr<Entity> RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Pol
     {
         auto c = std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets>();
         c->parent = this;
-        sets.push_back(c);
+        sets.append(c);
         return c;
     }
 
@@ -1174,7 +1191,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sets)
+    for (auto c : sets.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1206,7 +1223,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSet
     set_name{YType::str, "set-name"}
 {
 
-    yang_name = "sets"; yang_parent_name = "directly-used-sets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sets"; yang_parent_name = "directly-used-sets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets::~Sets()
@@ -1215,6 +1232,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSet
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : set_name.getYLeafs())
     {
         if(leaf.is_set)
@@ -1304,7 +1322,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies
     object{YType::str, "object"}
 {
 
-    yang_name = "all-used-policies"; yang_parent_name = "policy-uses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-used-policies"; yang_parent_name = "policy-uses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies::~AllUsedPolicies()
@@ -1313,6 +1331,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -1386,9 +1405,11 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPol
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "route-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "route-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::~UsedBy()
@@ -1397,7 +1418,8 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -1407,7 +1429,7 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::has_data() con
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -1437,7 +1459,7 @@ std::shared_ptr<Entity> RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Use
     {
         auto c = std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -1449,7 +1471,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1482,7 +1504,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::Referenc
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::~Reference()
@@ -1491,6 +1513,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::~Referen
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -1581,9 +1604,11 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::has
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "route-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "route-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::~Attached()
@@ -1592,7 +1617,8 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::~Attached()
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -1602,7 +1628,7 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::has_data() c
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -1632,7 +1658,7 @@ std::shared_ptr<Entity> RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Att
     {
         auto c = std::make_shared<RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -1644,7 +1670,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1694,7 +1720,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding::Binding(
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding::~Binding()
@@ -1703,6 +1729,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding::~Binding
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -2018,7 +2045,7 @@ RoutingPolicy::Policies::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Policies::Unused::~Unused()
@@ -2027,6 +2054,7 @@ RoutingPolicy::Policies::Unused::~Unused()
 
 bool RoutingPolicy::Policies::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -2111,7 +2139,7 @@ RoutingPolicy::Policies::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Policies::Inactive::~Inactive()
@@ -2120,6 +2148,7 @@ RoutingPolicy::Policies::Inactive::~Inactive()
 
 bool RoutingPolicy::Policies::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -2204,7 +2233,7 @@ RoutingPolicy::Policies::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Policies::Active::~Active()
@@ -2213,6 +2242,7 @@ RoutingPolicy::Policies::Active::~Active()
 
 bool RoutingPolicy::Policies::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -2295,21 +2325,21 @@ bool RoutingPolicy::Policies::Active::has_leaf_or_child_of_name(const std::strin
 RoutingPolicy::Sets::Sets()
     :
     etag(std::make_shared<RoutingPolicy::Sets::Etag>())
-	,ospf_area(std::make_shared<RoutingPolicy::Sets::OspfArea>())
-	,extended_community_opaque(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque>())
-	,extended_community_seg_nh(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh>())
-	,extended_community_soo(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo>())
-	,tag(std::make_shared<RoutingPolicy::Sets::Tag>())
-	,prefix(std::make_shared<RoutingPolicy::Sets::Prefix>())
-	,community(std::make_shared<RoutingPolicy::Sets::Community>())
-	,as_path(std::make_shared<RoutingPolicy::Sets::AsPath>())
-	,large_community(std::make_shared<RoutingPolicy::Sets::LargeCommunity>())
-	,esi(std::make_shared<RoutingPolicy::Sets::Esi>())
-	,extended_community_bandwidth(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth>())
-	,extended_community_rt(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt>())
-	,rd(std::make_shared<RoutingPolicy::Sets::Rd>())
-	,mac(std::make_shared<RoutingPolicy::Sets::Mac>())
-	,extended_community_cost(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityCost>())
+    , ospf_area(std::make_shared<RoutingPolicy::Sets::OspfArea>())
+    , extended_community_opaque(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque>())
+    , extended_community_seg_nh(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh>())
+    , extended_community_soo(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo>())
+    , tag(std::make_shared<RoutingPolicy::Sets::Tag>())
+    , prefix(std::make_shared<RoutingPolicy::Sets::Prefix>())
+    , community(std::make_shared<RoutingPolicy::Sets::Community>())
+    , as_path(std::make_shared<RoutingPolicy::Sets::AsPath>())
+    , large_community(std::make_shared<RoutingPolicy::Sets::LargeCommunity>())
+    , esi(std::make_shared<RoutingPolicy::Sets::Esi>())
+    , extended_community_bandwidth(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth>())
+    , extended_community_rt(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt>())
+    , rd(std::make_shared<RoutingPolicy::Sets::Rd>())
+    , mac(std::make_shared<RoutingPolicy::Sets::Mac>())
+    , extended_community_cost(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityCost>())
 {
     etag->parent = this;
     ospf_area->parent = this;
@@ -2328,7 +2358,7 @@ RoutingPolicy::Sets::Sets()
     mac->parent = this;
     extended_community_cost->parent = this;
 
-    yang_name = "sets"; yang_parent_name = "routing-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "routing-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::~Sets()
@@ -2337,6 +2367,7 @@ RoutingPolicy::Sets::~Sets()
 
 bool RoutingPolicy::Sets::has_data() const
 {
+    if (is_presence_container) return true;
     return (etag !=  nullptr && etag->has_data())
 	|| (ospf_area !=  nullptr && ospf_area->has_data())
 	|| (extended_community_opaque !=  nullptr && extended_community_opaque->has_data())
@@ -2653,16 +2684,16 @@ bool RoutingPolicy::Sets::has_leaf_or_child_of_name(const std::string & name) co
 RoutingPolicy::Sets::Etag::Etag()
     :
     sets(std::make_shared<RoutingPolicy::Sets::Etag::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::Etag::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::Etag::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::Etag::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::Etag::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::Etag::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::Etag::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "etag"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "etag"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Etag::~Etag()
@@ -2671,6 +2702,7 @@ RoutingPolicy::Sets::Etag::~Etag()
 
 bool RoutingPolicy::Sets::Etag::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -2793,9 +2825,11 @@ bool RoutingPolicy::Sets::Etag::has_leaf_or_child_of_name(const std::string & na
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "etag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "etag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Etag::Sets_::~Sets_()
@@ -2804,7 +2838,8 @@ RoutingPolicy::Sets::Etag::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::Etag::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -2814,7 +2849,7 @@ bool RoutingPolicy::Sets::Etag::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::Etag::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -2851,7 +2886,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Etag::Sets_::get_child_by_name(cons
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Etag::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -2863,7 +2898,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::Sets_:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2892,14 +2927,14 @@ bool RoutingPolicy::Sets::Etag::Sets_::has_leaf_or_child_of_name(const std::stri
 RoutingPolicy::Sets::Etag::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::Etag::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::Etag::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Set::~Set()
@@ -2908,6 +2943,7 @@ RoutingPolicy::Sets::Etag::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::Etag::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -2931,7 +2967,8 @@ std::string RoutingPolicy::Sets::Etag::Sets_::Set::get_absolute_path() const
 std::string RoutingPolicy::Sets::Etag::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -3011,9 +3048,11 @@ bool RoutingPolicy::Sets::Etag::Sets_::Set::has_leaf_or_child_of_name(const std:
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::~UsedBy()
@@ -3022,7 +3061,8 @@ RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -3032,7 +3072,7 @@ bool RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::has_data() const
 
 bool RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -3062,7 +3102,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::get_child
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -3074,7 +3114,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::Sets_:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3107,7 +3147,7 @@ RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::Reference()
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::~Reference()
@@ -3116,6 +3156,7 @@ RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::~Reference()
 
 bool RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -3206,9 +3247,11 @@ bool RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::has_leaf_or_child
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Set::Attached::~Attached()
@@ -3217,7 +3260,8 @@ RoutingPolicy::Sets::Etag::Sets_::Set::Attached::~Attached()
 
 bool RoutingPolicy::Sets::Etag::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -3227,7 +3271,7 @@ bool RoutingPolicy::Sets::Etag::Sets_::Set::Attached::has_data() const
 
 bool RoutingPolicy::Sets::Etag::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -3257,7 +3301,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Etag::Sets_::Set::Attached::get_chi
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -3269,7 +3313,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::Sets_:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3319,7 +3363,7 @@ RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::Binding()
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::~Binding()
@@ -3328,6 +3372,7 @@ RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::~Binding()
 
 bool RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -3643,7 +3688,7 @@ RoutingPolicy::Sets::Etag::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "etag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "etag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Etag::Unused::~Unused()
@@ -3652,6 +3697,7 @@ RoutingPolicy::Sets::Etag::Unused::~Unused()
 
 bool RoutingPolicy::Sets::Etag::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -3736,7 +3782,7 @@ RoutingPolicy::Sets::Etag::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "etag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "etag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Etag::Inactive::~Inactive()
@@ -3745,6 +3791,7 @@ RoutingPolicy::Sets::Etag::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::Etag::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -3829,7 +3876,7 @@ RoutingPolicy::Sets::Etag::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "etag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "etag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Etag::Active::~Active()
@@ -3838,6 +3885,7 @@ RoutingPolicy::Sets::Etag::Active::~Active()
 
 bool RoutingPolicy::Sets::Etag::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -3920,16 +3968,16 @@ bool RoutingPolicy::Sets::Etag::Active::has_leaf_or_child_of_name(const std::str
 RoutingPolicy::Sets::OspfArea::OspfArea()
     :
     sets(std::make_shared<RoutingPolicy::Sets::OspfArea::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::OspfArea::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::OspfArea::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::OspfArea::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::OspfArea::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::OspfArea::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::OspfArea::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "ospf-area"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf-area"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::OspfArea::~OspfArea()
@@ -3938,6 +3986,7 @@ RoutingPolicy::Sets::OspfArea::~OspfArea()
 
 bool RoutingPolicy::Sets::OspfArea::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -4060,9 +4109,11 @@ bool RoutingPolicy::Sets::OspfArea::has_leaf_or_child_of_name(const std::string 
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "ospf-area"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "ospf-area"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::~Sets_()
@@ -4071,7 +4122,8 @@ RoutingPolicy::Sets::OspfArea::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::OspfArea::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -4081,7 +4133,7 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::OspfArea::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -4118,7 +4170,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::OspfArea::Sets_::get_child_by_name(
     {
         auto c = std::make_shared<RoutingPolicy::Sets::OspfArea::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -4130,7 +4182,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::Se
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4159,14 +4211,14 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::has_leaf_or_child_of_name(const std::
 RoutingPolicy::Sets::OspfArea::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Set::~Set()
@@ -4175,6 +4227,7 @@ RoutingPolicy::Sets::OspfArea::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::OspfArea::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -4198,7 +4251,8 @@ std::string RoutingPolicy::Sets::OspfArea::Sets_::Set::get_absolute_path() const
 std::string RoutingPolicy::Sets::OspfArea::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -4278,9 +4332,11 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::Set::has_leaf_or_child_of_name(const 
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::~UsedBy()
@@ -4289,7 +4345,8 @@ RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -4299,7 +4356,7 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::has_data() const
 
 bool RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -4329,7 +4386,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::get_c
     {
         auto c = std::make_shared<RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -4341,7 +4398,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::Se
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4374,7 +4431,7 @@ RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::Reference()
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::~Reference()
@@ -4383,6 +4440,7 @@ RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::~Reference()
 
 bool RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -4473,9 +4531,11 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::has_leaf_or_c
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::~Attached()
@@ -4484,7 +4544,8 @@ RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::~Attached()
 
 bool RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -4494,7 +4555,7 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::has_data() const
 
 bool RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -4524,7 +4585,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::get
     {
         auto c = std::make_shared<RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -4536,7 +4597,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::Se
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4586,7 +4647,7 @@ RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::Binding()
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::~Binding()
@@ -4595,6 +4656,7 @@ RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::~Binding()
 
 bool RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -4910,7 +4972,7 @@ RoutingPolicy::Sets::OspfArea::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "ospf-area"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "ospf-area"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::OspfArea::Unused::~Unused()
@@ -4919,6 +4981,7 @@ RoutingPolicy::Sets::OspfArea::Unused::~Unused()
 
 bool RoutingPolicy::Sets::OspfArea::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -5003,7 +5066,7 @@ RoutingPolicy::Sets::OspfArea::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "ospf-area"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "ospf-area"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::OspfArea::Inactive::~Inactive()
@@ -5012,6 +5075,7 @@ RoutingPolicy::Sets::OspfArea::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::OspfArea::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -5096,7 +5160,7 @@ RoutingPolicy::Sets::OspfArea::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "ospf-area"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "ospf-area"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::OspfArea::Active::~Active()
@@ -5105,6 +5169,7 @@ RoutingPolicy::Sets::OspfArea::Active::~Active()
 
 bool RoutingPolicy::Sets::OspfArea::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -5187,16 +5252,16 @@ bool RoutingPolicy::Sets::OspfArea::Active::has_leaf_or_child_of_name(const std:
 RoutingPolicy::Sets::ExtendedCommunityOpaque::ExtendedCommunityOpaque()
     :
     sets(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "extended-community-opaque"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "extended-community-opaque"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::~ExtendedCommunityOpaque()
@@ -5205,6 +5270,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::~ExtendedCommunityOpaque()
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -5327,9 +5393,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::has_leaf_or_child_of_name(con
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "extended-community-opaque"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "extended-community-opaque"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::~Sets_()
@@ -5338,7 +5406,8 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -5348,7 +5417,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -5385,7 +5454,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::get
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -5397,7 +5466,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5426,14 +5495,14 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::has_leaf_or_child_of_n
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::~Set()
@@ -5442,6 +5511,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -5465,7 +5535,8 @@ std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::get_absolu
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -5545,9 +5616,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::has_leaf_or_child
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::~UsedBy()
@@ -5556,7 +5629,8 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -5566,7 +5640,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::has_data(
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -5596,7 +5670,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -5608,7 +5682,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5641,7 +5715,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference::Ref
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference::~Reference()
@@ -5650,6 +5724,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference::~Re
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -5740,9 +5815,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::~Attached()
@@ -5751,7 +5828,8 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::~Attached()
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -5761,7 +5839,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::has_dat
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -5791,7 +5869,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -5803,7 +5881,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5853,7 +5931,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding::Bin
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding::~Binding()
@@ -5862,6 +5940,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding::~Bi
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -6177,7 +6256,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "extended-community-opaque"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "extended-community-opaque"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::~Unused()
@@ -6186,6 +6265,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::~Unused()
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -6270,7 +6350,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "extended-community-opaque"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "extended-community-opaque"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::~Inactive()
@@ -6279,6 +6359,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -6363,7 +6444,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "extended-community-opaque"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "extended-community-opaque"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::~Active()
@@ -6372,6 +6453,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::~Active()
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -6454,16 +6536,16 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::has_leaf_or_child_of_
 RoutingPolicy::Sets::ExtendedCommunitySegNh::ExtendedCommunitySegNh()
     :
     sets(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "extended-community-seg-nh"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "extended-community-seg-nh"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::~ExtendedCommunitySegNh()
@@ -6472,6 +6554,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::~ExtendedCommunitySegNh()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -6594,9 +6677,11 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::has_leaf_or_child_of_name(cons
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "extended-community-seg-nh"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "extended-community-seg-nh"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::~Sets_()
@@ -6605,7 +6690,8 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -6615,7 +6701,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -6652,7 +6738,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::get_
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -6664,7 +6750,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6693,14 +6779,14 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::has_leaf_or_child_of_na
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::~Set()
@@ -6709,6 +6795,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -6732,7 +6819,8 @@ std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::get_absolut
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -6812,9 +6900,11 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::has_leaf_or_child_
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::~UsedBy()
@@ -6823,7 +6913,8 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -6833,7 +6924,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::has_data()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -6863,7 +6954,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set:
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -6875,7 +6966,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6908,7 +6999,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference::Refe
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference::~Reference()
@@ -6917,6 +7008,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference::~Ref
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -7007,9 +7099,11 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference:
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::~Attached()
@@ -7018,7 +7112,8 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::~Attached()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -7028,7 +7123,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::has_data
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -7058,7 +7153,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set:
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -7070,7 +7165,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7120,7 +7215,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding::Bind
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding::~Binding()
@@ -7129,6 +7224,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding::~Bin
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -7444,7 +7540,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "extended-community-seg-nh"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "extended-community-seg-nh"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::~Unused()
@@ -7453,6 +7549,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::~Unused()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -7537,7 +7634,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "extended-community-seg-nh"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "extended-community-seg-nh"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::~Inactive()
@@ -7546,6 +7643,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -7630,7 +7728,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "extended-community-seg-nh"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "extended-community-seg-nh"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::~Active()
@@ -7639,6 +7737,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::~Active()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -7721,16 +7820,16 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::has_leaf_or_child_of_n
 RoutingPolicy::Sets::ExtendedCommunitySoo::ExtendedCommunitySoo()
     :
     sets(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "extended-community-soo"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "extended-community-soo"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::~ExtendedCommunitySoo()
@@ -7739,6 +7838,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::~ExtendedCommunitySoo()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -7861,9 +7961,11 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::has_leaf_or_child_of_name(const 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "extended-community-soo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "extended-community-soo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::~Sets_()
@@ -7872,7 +7974,8 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -7882,7 +7985,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -7919,7 +8022,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::get_ch
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -7931,7 +8034,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7960,14 +8063,14 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::has_leaf_or_child_of_name
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::~Set()
@@ -7976,6 +8079,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -7999,7 +8103,8 @@ std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::get_absolute_
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -8079,9 +8184,11 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::has_leaf_or_child_of
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::~UsedBy()
@@ -8090,7 +8197,8 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -8100,7 +8208,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::has_data() c
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -8130,7 +8238,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::U
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -8142,7 +8250,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8175,7 +8283,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::Refere
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::~Reference()
@@ -8184,6 +8292,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::~Refer
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -8274,9 +8383,11 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::h
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::~Attached()
@@ -8285,7 +8396,8 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::~Attached()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -8295,7 +8407,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::has_data()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -8325,7 +8437,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::A
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -8337,7 +8449,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8387,7 +8499,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding::Bindin
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding::~Binding()
@@ -8396,6 +8508,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding::~Bindi
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -8711,7 +8824,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "extended-community-soo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "extended-community-soo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::~Unused()
@@ -8720,6 +8833,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::~Unused()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -8804,7 +8918,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "extended-community-soo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "extended-community-soo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::~Inactive()
@@ -8813,6 +8927,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -8897,7 +9012,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "extended-community-soo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "extended-community-soo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Active::~Active()
@@ -8906,6 +9021,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Active::~Active()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -8988,16 +9104,16 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Active::has_leaf_or_child_of_nam
 RoutingPolicy::Sets::Tag::Tag()
     :
     sets(std::make_shared<RoutingPolicy::Sets::Tag::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::Tag::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::Tag::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::Tag::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::Tag::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::Tag::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::Tag::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "tag"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tag"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Tag::~Tag()
@@ -9006,6 +9122,7 @@ RoutingPolicy::Sets::Tag::~Tag()
 
 bool RoutingPolicy::Sets::Tag::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -9128,9 +9245,11 @@ bool RoutingPolicy::Sets::Tag::has_leaf_or_child_of_name(const std::string & nam
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Tag::Sets_::~Sets_()
@@ -9139,7 +9258,8 @@ RoutingPolicy::Sets::Tag::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::Tag::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -9149,7 +9269,7 @@ bool RoutingPolicy::Sets::Tag::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::Tag::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -9186,7 +9306,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Tag::Sets_::get_child_by_name(const
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Tag::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -9198,7 +9318,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::Sets_::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9227,14 +9347,14 @@ bool RoutingPolicy::Sets::Tag::Sets_::has_leaf_or_child_of_name(const std::strin
 RoutingPolicy::Sets::Tag::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::Tag::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::Tag::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Set::~Set()
@@ -9243,6 +9363,7 @@ RoutingPolicy::Sets::Tag::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::Tag::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -9266,7 +9387,8 @@ std::string RoutingPolicy::Sets::Tag::Sets_::Set::get_absolute_path() const
 std::string RoutingPolicy::Sets::Tag::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -9346,9 +9468,11 @@ bool RoutingPolicy::Sets::Tag::Sets_::Set::has_leaf_or_child_of_name(const std::
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::~UsedBy()
@@ -9357,7 +9481,8 @@ RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -9367,7 +9492,7 @@ bool RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::has_data() const
 
 bool RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -9397,7 +9522,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::get_child_
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -9409,7 +9534,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::Sets_::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9442,7 +9567,7 @@ RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::Reference()
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::~Reference()
@@ -9451,6 +9576,7 @@ RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::~Reference()
 
 bool RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -9541,9 +9667,11 @@ bool RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::has_leaf_or_child_
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Set::Attached::~Attached()
@@ -9552,7 +9680,8 @@ RoutingPolicy::Sets::Tag::Sets_::Set::Attached::~Attached()
 
 bool RoutingPolicy::Sets::Tag::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -9562,7 +9691,7 @@ bool RoutingPolicy::Sets::Tag::Sets_::Set::Attached::has_data() const
 
 bool RoutingPolicy::Sets::Tag::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -9592,7 +9721,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Tag::Sets_::Set::Attached::get_chil
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -9604,7 +9733,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::Sets_::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9654,7 +9783,7 @@ RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::Binding()
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::~Binding()
@@ -9663,6 +9792,7 @@ RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::~Binding()
 
 bool RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -9978,7 +10108,7 @@ RoutingPolicy::Sets::Tag::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Tag::Unused::~Unused()
@@ -9987,6 +10117,7 @@ RoutingPolicy::Sets::Tag::Unused::~Unused()
 
 bool RoutingPolicy::Sets::Tag::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -10071,7 +10202,7 @@ RoutingPolicy::Sets::Tag::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Tag::Inactive::~Inactive()
@@ -10080,6 +10211,7 @@ RoutingPolicy::Sets::Tag::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::Tag::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -10164,7 +10296,7 @@ RoutingPolicy::Sets::Tag::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Tag::Active::~Active()
@@ -10173,6 +10305,7 @@ RoutingPolicy::Sets::Tag::Active::~Active()
 
 bool RoutingPolicy::Sets::Tag::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -10255,16 +10388,16 @@ bool RoutingPolicy::Sets::Tag::Active::has_leaf_or_child_of_name(const std::stri
 RoutingPolicy::Sets::Prefix::Prefix()
     :
     sets(std::make_shared<RoutingPolicy::Sets::Prefix::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::Prefix::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::Prefix::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::Prefix::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::Prefix::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::Prefix::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::Prefix::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "prefix"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Prefix::~Prefix()
@@ -10273,6 +10406,7 @@ RoutingPolicy::Sets::Prefix::~Prefix()
 
 bool RoutingPolicy::Sets::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -10395,9 +10529,11 @@ bool RoutingPolicy::Sets::Prefix::has_leaf_or_child_of_name(const std::string & 
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::~Sets_()
@@ -10406,7 +10542,8 @@ RoutingPolicy::Sets::Prefix::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::Prefix::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -10416,7 +10553,7 @@ bool RoutingPolicy::Sets::Prefix::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::Prefix::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -10453,7 +10590,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Prefix::Sets_::get_child_by_name(co
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Prefix::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -10465,7 +10602,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::Sets
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10494,14 +10631,14 @@ bool RoutingPolicy::Sets::Prefix::Sets_::has_leaf_or_child_of_name(const std::st
 RoutingPolicy::Sets::Prefix::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::Prefix::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::Prefix::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Set::~Set()
@@ -10510,6 +10647,7 @@ RoutingPolicy::Sets::Prefix::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::Prefix::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -10533,7 +10671,8 @@ std::string RoutingPolicy::Sets::Prefix::Sets_::Set::get_absolute_path() const
 std::string RoutingPolicy::Sets::Prefix::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -10613,9 +10752,11 @@ bool RoutingPolicy::Sets::Prefix::Sets_::Set::has_leaf_or_child_of_name(const st
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::~UsedBy()
@@ -10624,7 +10765,8 @@ RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -10634,7 +10776,7 @@ bool RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::has_data() const
 
 bool RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -10664,7 +10806,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::get_chi
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -10676,7 +10818,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::Sets
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10709,7 +10851,7 @@ RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::Reference()
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::~Reference()
@@ -10718,6 +10860,7 @@ RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::~Reference()
 
 bool RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -10808,9 +10951,11 @@ bool RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::has_leaf_or_chi
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::~Attached()
@@ -10819,7 +10964,8 @@ RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::~Attached()
 
 bool RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -10829,7 +10975,7 @@ bool RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::has_data() const
 
 bool RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -10859,7 +11005,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::get_c
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -10871,7 +11017,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::Sets
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10921,7 +11067,7 @@ RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::Binding()
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::~Binding()
@@ -10930,6 +11076,7 @@ RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::~Binding()
 
 bool RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -11245,7 +11392,7 @@ RoutingPolicy::Sets::Prefix::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Prefix::Unused::~Unused()
@@ -11254,6 +11401,7 @@ RoutingPolicy::Sets::Prefix::Unused::~Unused()
 
 bool RoutingPolicy::Sets::Prefix::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -11338,7 +11486,7 @@ RoutingPolicy::Sets::Prefix::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Prefix::Inactive::~Inactive()
@@ -11347,6 +11495,7 @@ RoutingPolicy::Sets::Prefix::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::Prefix::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -11431,7 +11580,7 @@ RoutingPolicy::Sets::Prefix::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Prefix::Active::~Active()
@@ -11440,6 +11589,7 @@ RoutingPolicy::Sets::Prefix::Active::~Active()
 
 bool RoutingPolicy::Sets::Prefix::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -11522,16 +11672,16 @@ bool RoutingPolicy::Sets::Prefix::Active::has_leaf_or_child_of_name(const std::s
 RoutingPolicy::Sets::Community::Community()
     :
     sets(std::make_shared<RoutingPolicy::Sets::Community::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::Community::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::Community::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::Community::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::Community::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::Community::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::Community::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "community"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "community"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Community::~Community()
@@ -11540,6 +11690,7 @@ RoutingPolicy::Sets::Community::~Community()
 
 bool RoutingPolicy::Sets::Community::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -11662,9 +11813,11 @@ bool RoutingPolicy::Sets::Community::has_leaf_or_child_of_name(const std::string
 }
 
 RoutingPolicy::Sets::Community::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "community"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "community"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Community::Sets_::~Sets_()
@@ -11673,7 +11826,8 @@ RoutingPolicy::Sets::Community::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::Community::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -11683,7 +11837,7 @@ bool RoutingPolicy::Sets::Community::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::Community::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -11720,7 +11874,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Community::Sets_::get_child_by_name
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Community::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -11732,7 +11886,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11761,14 +11915,14 @@ bool RoutingPolicy::Sets::Community::Sets_::has_leaf_or_child_of_name(const std:
 RoutingPolicy::Sets::Community::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::Community::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::Community::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::Community::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Community::Sets_::Set::~Set()
@@ -11777,6 +11931,7 @@ RoutingPolicy::Sets::Community::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::Community::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -11800,7 +11955,8 @@ std::string RoutingPolicy::Sets::Community::Sets_::Set::get_absolute_path() cons
 std::string RoutingPolicy::Sets::Community::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -11880,9 +12036,11 @@ bool RoutingPolicy::Sets::Community::Sets_::Set::has_leaf_or_child_of_name(const
 }
 
 RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::~UsedBy()
@@ -11891,7 +12049,8 @@ RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -11901,7 +12060,7 @@ bool RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::has_data() const
 
 bool RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -11931,7 +12090,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::get_
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -11943,7 +12102,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11976,7 +12135,7 @@ RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::Reference()
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::~Reference()
@@ -11985,6 +12144,7 @@ RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::~Reference()
 
 bool RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -12075,9 +12235,11 @@ bool RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::has_leaf_or_
 }
 
 RoutingPolicy::Sets::Community::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Community::Sets_::Set::Attached::~Attached()
@@ -12086,7 +12248,8 @@ RoutingPolicy::Sets::Community::Sets_::Set::Attached::~Attached()
 
 bool RoutingPolicy::Sets::Community::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -12096,7 +12259,7 @@ bool RoutingPolicy::Sets::Community::Sets_::Set::Attached::has_data() const
 
 bool RoutingPolicy::Sets::Community::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -12126,7 +12289,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Community::Sets_::Set::Attached::ge
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -12138,7 +12301,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12188,7 +12351,7 @@ RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::Binding()
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::~Binding()
@@ -12197,6 +12360,7 @@ RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::~Binding()
 
 bool RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -12512,7 +12676,7 @@ RoutingPolicy::Sets::Community::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "community"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "community"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Community::Unused::~Unused()
@@ -12521,6 +12685,7 @@ RoutingPolicy::Sets::Community::Unused::~Unused()
 
 bool RoutingPolicy::Sets::Community::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -12605,7 +12770,7 @@ RoutingPolicy::Sets::Community::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "community"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "community"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Community::Inactive::~Inactive()
@@ -12614,6 +12779,7 @@ RoutingPolicy::Sets::Community::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::Community::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -12698,7 +12864,7 @@ RoutingPolicy::Sets::Community::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "community"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "community"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Community::Active::~Active()
@@ -12707,6 +12873,7 @@ RoutingPolicy::Sets::Community::Active::~Active()
 
 bool RoutingPolicy::Sets::Community::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -12789,16 +12956,16 @@ bool RoutingPolicy::Sets::Community::Active::has_leaf_or_child_of_name(const std
 RoutingPolicy::Sets::AsPath::AsPath()
     :
     sets(std::make_shared<RoutingPolicy::Sets::AsPath::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::AsPath::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::AsPath::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::AsPath::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::AsPath::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::AsPath::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::AsPath::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "as-path"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "as-path"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::AsPath::~AsPath()
@@ -12807,6 +12974,7 @@ RoutingPolicy::Sets::AsPath::~AsPath()
 
 bool RoutingPolicy::Sets::AsPath::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -12929,9 +13097,11 @@ bool RoutingPolicy::Sets::AsPath::has_leaf_or_child_of_name(const std::string & 
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "as-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "as-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::~Sets_()
@@ -12940,7 +13110,8 @@ RoutingPolicy::Sets::AsPath::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::AsPath::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -12950,7 +13121,7 @@ bool RoutingPolicy::Sets::AsPath::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::AsPath::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -12987,7 +13158,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::AsPath::Sets_::get_child_by_name(co
     {
         auto c = std::make_shared<RoutingPolicy::Sets::AsPath::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -12999,7 +13170,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::Sets
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13028,14 +13199,14 @@ bool RoutingPolicy::Sets::AsPath::Sets_::has_leaf_or_child_of_name(const std::st
 RoutingPolicy::Sets::AsPath::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::AsPath::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::AsPath::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Set::~Set()
@@ -13044,6 +13215,7 @@ RoutingPolicy::Sets::AsPath::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::AsPath::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -13067,7 +13239,8 @@ std::string RoutingPolicy::Sets::AsPath::Sets_::Set::get_absolute_path() const
 std::string RoutingPolicy::Sets::AsPath::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -13147,9 +13320,11 @@ bool RoutingPolicy::Sets::AsPath::Sets_::Set::has_leaf_or_child_of_name(const st
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::~UsedBy()
@@ -13158,7 +13333,8 @@ RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -13168,7 +13344,7 @@ bool RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::has_data() const
 
 bool RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -13198,7 +13374,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::get_chi
     {
         auto c = std::make_shared<RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -13210,7 +13386,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::Sets
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13243,7 +13419,7 @@ RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::Reference()
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::~Reference()
@@ -13252,6 +13428,7 @@ RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::~Reference()
 
 bool RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -13342,9 +13519,11 @@ bool RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::has_leaf_or_chi
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::~Attached()
@@ -13353,7 +13532,8 @@ RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::~Attached()
 
 bool RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -13363,7 +13543,7 @@ bool RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::has_data() const
 
 bool RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -13393,7 +13573,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::get_c
     {
         auto c = std::make_shared<RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -13405,7 +13585,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::Sets
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13455,7 +13635,7 @@ RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::Binding()
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::~Binding()
@@ -13464,6 +13644,7 @@ RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::~Binding()
 
 bool RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -13779,7 +13960,7 @@ RoutingPolicy::Sets::AsPath::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "as-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "as-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::AsPath::Unused::~Unused()
@@ -13788,6 +13969,7 @@ RoutingPolicy::Sets::AsPath::Unused::~Unused()
 
 bool RoutingPolicy::Sets::AsPath::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -13872,7 +14054,7 @@ RoutingPolicy::Sets::AsPath::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "as-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "as-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::AsPath::Inactive::~Inactive()
@@ -13881,6 +14063,7 @@ RoutingPolicy::Sets::AsPath::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::AsPath::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -13965,7 +14148,7 @@ RoutingPolicy::Sets::AsPath::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "as-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "as-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::AsPath::Active::~Active()
@@ -13974,6 +14157,7 @@ RoutingPolicy::Sets::AsPath::Active::~Active()
 
 bool RoutingPolicy::Sets::AsPath::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -14056,16 +14240,16 @@ bool RoutingPolicy::Sets::AsPath::Active::has_leaf_or_child_of_name(const std::s
 RoutingPolicy::Sets::LargeCommunity::LargeCommunity()
     :
     sets(std::make_shared<RoutingPolicy::Sets::LargeCommunity::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::LargeCommunity::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::LargeCommunity::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::LargeCommunity::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::LargeCommunity::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::LargeCommunity::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::LargeCommunity::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "large-community"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "large-community"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::LargeCommunity::~LargeCommunity()
@@ -14074,6 +14258,7 @@ RoutingPolicy::Sets::LargeCommunity::~LargeCommunity()
 
 bool RoutingPolicy::Sets::LargeCommunity::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -14196,9 +14381,11 @@ bool RoutingPolicy::Sets::LargeCommunity::has_leaf_or_child_of_name(const std::s
 }
 
 RoutingPolicy::Sets::LargeCommunity::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "large-community"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "large-community"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::LargeCommunity::Sets_::~Sets_()
@@ -14207,7 +14394,8 @@ RoutingPolicy::Sets::LargeCommunity::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::LargeCommunity::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -14217,7 +14405,7 @@ bool RoutingPolicy::Sets::LargeCommunity::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::LargeCommunity::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -14254,7 +14442,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::LargeCommunity::Sets_::get_child_by
     {
         auto c = std::make_shared<RoutingPolicy::Sets::LargeCommunity::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -14266,7 +14454,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::LargeCommuni
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14295,14 +14483,14 @@ bool RoutingPolicy::Sets::LargeCommunity::Sets_::has_leaf_or_child_of_name(const
 RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::LargeCommunity::Sets_::Set::~Set()
@@ -14311,6 +14499,7 @@ RoutingPolicy::Sets::LargeCommunity::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::LargeCommunity::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -14334,7 +14523,8 @@ std::string RoutingPolicy::Sets::LargeCommunity::Sets_::Set::get_absolute_path()
 std::string RoutingPolicy::Sets::LargeCommunity::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -14414,9 +14604,11 @@ bool RoutingPolicy::Sets::LargeCommunity::Sets_::Set::has_leaf_or_child_of_name(
 }
 
 RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::~UsedBy()
@@ -14425,7 +14617,8 @@ RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -14435,7 +14628,7 @@ bool RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::has_data() const
 
 bool RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -14465,7 +14658,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy:
     {
         auto c = std::make_shared<RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -14477,7 +14670,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::LargeCommuni
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14510,7 +14703,7 @@ RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::Reference::Reference()
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::Reference::~Reference()
@@ -14519,6 +14712,7 @@ RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::Reference::~Reference()
 
 bool RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -14609,9 +14803,11 @@ bool RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::Reference::has_lea
 }
 
 RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::~Attached()
@@ -14620,7 +14816,8 @@ RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::~Attached()
 
 bool RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -14630,7 +14827,7 @@ bool RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::has_data() const
 
 bool RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -14660,7 +14857,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attache
     {
         auto c = std::make_shared<RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -14672,7 +14869,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::LargeCommuni
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14722,7 +14919,7 @@ RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::Binding::Binding()
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::Binding::~Binding()
@@ -14731,6 +14928,7 @@ RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::Binding::~Binding()
 
 bool RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -15046,7 +15244,7 @@ RoutingPolicy::Sets::LargeCommunity::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "large-community"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "large-community"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::LargeCommunity::Unused::~Unused()
@@ -15055,6 +15253,7 @@ RoutingPolicy::Sets::LargeCommunity::Unused::~Unused()
 
 bool RoutingPolicy::Sets::LargeCommunity::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -15139,7 +15338,7 @@ RoutingPolicy::Sets::LargeCommunity::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "large-community"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "large-community"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::LargeCommunity::Inactive::~Inactive()
@@ -15148,6 +15347,7 @@ RoutingPolicy::Sets::LargeCommunity::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::LargeCommunity::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -15232,7 +15432,7 @@ RoutingPolicy::Sets::LargeCommunity::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "large-community"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "large-community"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::LargeCommunity::Active::~Active()
@@ -15241,6 +15441,7 @@ RoutingPolicy::Sets::LargeCommunity::Active::~Active()
 
 bool RoutingPolicy::Sets::LargeCommunity::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -15323,16 +15524,16 @@ bool RoutingPolicy::Sets::LargeCommunity::Active::has_leaf_or_child_of_name(cons
 RoutingPolicy::Sets::Esi::Esi()
     :
     sets(std::make_shared<RoutingPolicy::Sets::Esi::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::Esi::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::Esi::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::Esi::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::Esi::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::Esi::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::Esi::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "esi"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "esi"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Esi::~Esi()
@@ -15341,6 +15542,7 @@ RoutingPolicy::Sets::Esi::~Esi()
 
 bool RoutingPolicy::Sets::Esi::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -15463,9 +15665,11 @@ bool RoutingPolicy::Sets::Esi::has_leaf_or_child_of_name(const std::string & nam
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Esi::Sets_::~Sets_()
@@ -15474,7 +15678,8 @@ RoutingPolicy::Sets::Esi::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::Esi::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -15484,7 +15689,7 @@ bool RoutingPolicy::Sets::Esi::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::Esi::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -15521,7 +15726,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Esi::Sets_::get_child_by_name(const
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Esi::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -15533,7 +15738,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::Sets_::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15562,14 +15767,14 @@ bool RoutingPolicy::Sets::Esi::Sets_::has_leaf_or_child_of_name(const std::strin
 RoutingPolicy::Sets::Esi::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::Esi::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::Esi::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Set::~Set()
@@ -15578,6 +15783,7 @@ RoutingPolicy::Sets::Esi::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::Esi::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -15601,7 +15807,8 @@ std::string RoutingPolicy::Sets::Esi::Sets_::Set::get_absolute_path() const
 std::string RoutingPolicy::Sets::Esi::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -15681,9 +15888,11 @@ bool RoutingPolicy::Sets::Esi::Sets_::Set::has_leaf_or_child_of_name(const std::
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::~UsedBy()
@@ -15692,7 +15901,8 @@ RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -15702,7 +15912,7 @@ bool RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::has_data() const
 
 bool RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -15732,7 +15942,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::get_child_
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -15744,7 +15954,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::Sets_::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15777,7 +15987,7 @@ RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::Reference()
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::~Reference()
@@ -15786,6 +15996,7 @@ RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::~Reference()
 
 bool RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -15876,9 +16087,11 @@ bool RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::has_leaf_or_child_
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Set::Attached::~Attached()
@@ -15887,7 +16100,8 @@ RoutingPolicy::Sets::Esi::Sets_::Set::Attached::~Attached()
 
 bool RoutingPolicy::Sets::Esi::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -15897,7 +16111,7 @@ bool RoutingPolicy::Sets::Esi::Sets_::Set::Attached::has_data() const
 
 bool RoutingPolicy::Sets::Esi::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -15927,7 +16141,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Esi::Sets_::Set::Attached::get_chil
     {
         auto c = std::make_shared<RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -15939,7 +16153,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::Sets_::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15989,7 +16203,7 @@ RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::Binding()
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::~Binding()
@@ -15998,6 +16212,7 @@ RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::~Binding()
 
 bool RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -16313,7 +16528,7 @@ RoutingPolicy::Sets::Esi::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Esi::Unused::~Unused()
@@ -16322,6 +16537,7 @@ RoutingPolicy::Sets::Esi::Unused::~Unused()
 
 bool RoutingPolicy::Sets::Esi::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -16406,7 +16622,7 @@ RoutingPolicy::Sets::Esi::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Esi::Inactive::~Inactive()
@@ -16415,6 +16631,7 @@ RoutingPolicy::Sets::Esi::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::Esi::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -16499,7 +16716,7 @@ RoutingPolicy::Sets::Esi::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Esi::Active::~Active()
@@ -16508,6 +16725,7 @@ RoutingPolicy::Sets::Esi::Active::~Active()
 
 bool RoutingPolicy::Sets::Esi::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -16590,14 +16808,14 @@ bool RoutingPolicy::Sets::Esi::Active::has_leaf_or_child_of_name(const std::stri
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::ExtendedCommunityBandwidth()
     :
     sets(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive>())
+    , unused(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
 
-    yang_name = "extended-community-bandwidth"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "extended-community-bandwidth"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::~ExtendedCommunityBandwidth()
@@ -16606,6 +16824,7 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::~ExtendedCommunityBandwidth()
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data());
@@ -16712,9 +16931,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::has_leaf_or_child_of_name(
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "extended-community-bandwidth"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "extended-community-bandwidth"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::~Sets_()
@@ -16723,7 +16944,8 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -16733,7 +16955,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -16770,7 +16992,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -16782,7 +17004,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16811,14 +17033,14 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::has_leaf_or_child_o
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::~Set()
@@ -16827,6 +17049,7 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -16850,7 +17073,8 @@ std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::get_abs
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -16930,9 +17154,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::has_leaf_or_ch
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::~UsedBy()
@@ -16941,7 +17167,8 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -16951,7 +17178,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::has_da
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -16981,7 +17208,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -16993,7 +17220,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17026,7 +17253,7 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::~Reference()
@@ -17035,6 +17262,7 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -17125,9 +17353,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Refere
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::~Attached()
@@ -17136,7 +17366,8 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::~Attached
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -17146,7 +17377,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::has_
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -17176,7 +17407,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -17188,7 +17419,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17238,7 +17469,7 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::~Binding()
@@ -17247,6 +17478,7 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -17562,7 +17794,7 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "extended-community-bandwidth"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "extended-community-bandwidth"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::~Unused()
@@ -17571,6 +17803,7 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::~Unused()
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -17655,7 +17888,7 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "extended-community-bandwidth"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "extended-community-bandwidth"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::~Inactive()
@@ -17664,6 +17897,7 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -17746,16 +17980,16 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::has_leaf_or_chil
 RoutingPolicy::Sets::ExtendedCommunityRt::ExtendedCommunityRt()
     :
     sets(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "extended-community-rt"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "extended-community-rt"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::~ExtendedCommunityRt()
@@ -17764,6 +17998,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::~ExtendedCommunityRt()
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
@@ -17886,9 +18121,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::has_leaf_or_child_of_name(const s
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Sets_()
+    :
+    set(this, {"set_name"})
 {
 
-    yang_name = "sets"; yang_parent_name = "extended-community-rt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sets"; yang_parent_name = "extended-community-rt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::~Sets_()
@@ -17897,7 +18134,8 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::~Sets_()
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::has_data() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_data())
             return true;
@@ -17907,7 +18145,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::has_operation() const
 {
-    for (std::size_t index=0; index<set.size(); index++)
+    for (std::size_t index=0; index<set.len(); index++)
     {
         if(set[index]->has_operation())
             return true;
@@ -17944,7 +18182,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::get_chi
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set>();
         c->parent = this;
-        set.push_back(c);
+        set.append(c);
         return c;
     }
 
@@ -17956,7 +18194,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : set)
+    for (auto c : set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17985,14 +18223,14 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::has_leaf_or_child_of_name(
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Set()
     :
     set_name{YType::str, "set-name"}
-    	,
+        ,
     used_by(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy>())
-	,attached(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached>())
+    , attached(std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached>())
 {
     used_by->parent = this;
     attached->parent = this;
 
-    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::~Set()
@@ -18001,6 +18239,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::~Set()
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return set_name.is_set
 	|| (used_by !=  nullptr && used_by->has_data())
 	|| (attached !=  nullptr && attached->has_data());
@@ -18024,7 +18263,8 @@ std::string RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::get_absolute_p
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "set" <<"[set-name='" <<set_name <<"']";
+    path_buffer << "set";
+    ADD_KEY_TOKEN(set_name, "set-name");
     return path_buffer.str();
 }
 
@@ -18104,9 +18344,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::has_leaf_or_child_of_
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::UsedBy()
+    :
+    reference(this, {})
 {
 
-    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "used-by"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::~UsedBy()
@@ -18115,7 +18357,8 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::~UsedBy()
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -18125,7 +18368,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::has_data() co
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -18155,7 +18398,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Us
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -18167,7 +18410,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18200,7 +18443,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::Referen
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "used-by"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::~Reference()
@@ -18209,6 +18452,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::~Refere
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| used_directly.is_set
 	|| status.is_set;
@@ -18299,9 +18543,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::ha
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Attached()
+    :
+    binding(this, {})
 {
 
-    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::~Attached()
@@ -18310,7 +18556,8 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::~Attached()
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -18320,7 +18567,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::has_data() 
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -18350,7 +18597,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::At
     {
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -18362,7 +18609,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18412,7 +18659,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::Binding
     attach_point{YType::str, "attach-point"}
 {
 
-    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding"; yang_parent_name = "attached"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::~Binding()
@@ -18421,6 +18668,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::~Bindin
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| vrf_name.is_set
 	|| proto_instance.is_set
@@ -18736,7 +18984,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Unused::Unused()
     object{YType::str, "object"}
 {
 
-    yang_name = "unused"; yang_parent_name = "extended-community-rt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unused"; yang_parent_name = "extended-community-rt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Unused::~Unused()
@@ -18745,6 +18993,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Unused::~Unused()
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Unused::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -18829,7 +19078,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::Inactive()
     object{YType::str, "object"}
 {
 
-    yang_name = "inactive"; yang_parent_name = "extended-community-rt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "extended-community-rt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::~Inactive()
@@ -18838,6 +19087,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -18922,7 +19172,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Active::Active()
     object{YType::str, "object"}
 {
 
-    yang_name = "active"; yang_parent_name = "extended-community-rt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "extended-community-rt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Active::~Active()
@@ -18931,6 +19181,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Active::~Active()
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Active::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
@@ -19013,16 +19264,16 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Active::has_leaf_or_child_of_name
 RoutingPolicy::Sets::Rd::Rd()
     :
     sets(std::make_shared<RoutingPolicy::Sets::Rd::Sets_>())
-	,unused(std::make_shared<RoutingPolicy::Sets::Rd::Unused>())
-	,inactive(std::make_shared<RoutingPolicy::Sets::Rd::Inactive>())
-	,active(std::make_shared<RoutingPolicy::Sets::Rd::Active>())
+    , unused(std::make_shared<RoutingPolicy::Sets::Rd::Unused>())
+    , inactive(std::make_shared<RoutingPolicy::Sets::Rd::Inactive>())
+    , active(std::make_shared<RoutingPolicy::Sets::Rd::Active>())
 {
     sets->parent = this;
     unused->parent = this;
     inactive->parent = this;
     active->parent = this;
 
-    yang_name = "rd"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rd"; yang_parent_name = "sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::Sets::Rd::~Rd()
@@ -19031,6 +19282,7 @@ RoutingPolicy::Sets::Rd::~Rd()
 
 bool RoutingPolicy::Sets::Rd::has_data() const
 {
+    if (is_presence_container) return true;
     return (sets !=  nullptr && sets->has_data())
 	|| (unused !=  nullptr && unused->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())

@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_segment_routing_ms_oper {
 Srms::Srms()
     :
     mapping(std::make_shared<Srms::Mapping>())
-	,adjacency_sid(std::make_shared<Srms::AdjacencySid>())
-	,policy(std::make_shared<Srms::Policy>())
+    , adjacency_sid(std::make_shared<Srms::AdjacencySid>())
+    , policy(std::make_shared<Srms::Policy>())
 {
     mapping->parent = this;
     adjacency_sid->parent = this;
     policy->parent = this;
 
-    yang_name = "srms"; yang_parent_name = "Cisco-IOS-XR-segment-routing-ms-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "srms"; yang_parent_name = "Cisco-IOS-XR-segment-routing-ms-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Srms::~Srms()
@@ -30,6 +30,7 @@ Srms::~Srms()
 
 bool Srms::has_data() const
 {
+    if (is_presence_container) return true;
     return (mapping !=  nullptr && mapping->has_data())
 	|| (adjacency_sid !=  nullptr && adjacency_sid->has_data())
 	|| (policy !=  nullptr && policy->has_data());
@@ -156,12 +157,12 @@ bool Srms::has_leaf_or_child_of_name(const std::string & name) const
 Srms::Mapping::Mapping()
     :
     mapping_ipv4(std::make_shared<Srms::Mapping::MappingIpv4>())
-	,mapping_ipv6(std::make_shared<Srms::Mapping::MappingIpv6>())
+    , mapping_ipv6(std::make_shared<Srms::Mapping::MappingIpv6>())
 {
     mapping_ipv4->parent = this;
     mapping_ipv6->parent = this;
 
-    yang_name = "mapping"; yang_parent_name = "srms"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mapping"; yang_parent_name = "srms"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Mapping::~Mapping()
@@ -170,6 +171,7 @@ Srms::Mapping::~Mapping()
 
 bool Srms::Mapping::has_data() const
 {
+    if (is_presence_container) return true;
     return (mapping_ipv4 !=  nullptr && mapping_ipv4->has_data())
 	|| (mapping_ipv6 !=  nullptr && mapping_ipv6->has_data());
 }
@@ -260,9 +262,11 @@ bool Srms::Mapping::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Srms::Mapping::MappingIpv4::MappingIpv4()
+    :
+    mapping_mi(this, {})
 {
 
-    yang_name = "mapping-ipv4"; yang_parent_name = "mapping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mapping-ipv4"; yang_parent_name = "mapping"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Mapping::MappingIpv4::~MappingIpv4()
@@ -271,7 +275,8 @@ Srms::Mapping::MappingIpv4::~MappingIpv4()
 
 bool Srms::Mapping::MappingIpv4::has_data() const
 {
-    for (std::size_t index=0; index<mapping_mi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mapping_mi.len(); index++)
     {
         if(mapping_mi[index]->has_data())
             return true;
@@ -281,7 +286,7 @@ bool Srms::Mapping::MappingIpv4::has_data() const
 
 bool Srms::Mapping::MappingIpv4::has_operation() const
 {
-    for (std::size_t index=0; index<mapping_mi.size(); index++)
+    for (std::size_t index=0; index<mapping_mi.len(); index++)
     {
         if(mapping_mi[index]->has_operation())
             return true;
@@ -318,7 +323,7 @@ std::shared_ptr<Entity> Srms::Mapping::MappingIpv4::get_child_by_name(const std:
     {
         auto c = std::make_shared<Srms::Mapping::MappingIpv4::MappingMi>();
         c->parent = this;
-        mapping_mi.push_back(c);
+        mapping_mi.append(c);
         return c;
     }
 
@@ -330,7 +335,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv4::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mapping_mi)
+    for (auto c : mapping_mi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -359,7 +364,7 @@ bool Srms::Mapping::MappingIpv4::has_leaf_or_child_of_name(const std::string & n
 Srms::Mapping::MappingIpv4::MappingMi::MappingMi()
     :
     ip{YType::str, "ip"},
-    prefix{YType::int32, "prefix"},
+    prefix{YType::uint32, "prefix"},
     src{YType::enumeration, "src"},
     router{YType::str, "router"},
     area{YType::str, "area"},
@@ -369,12 +374,12 @@ Srms::Mapping::MappingIpv4::MappingMi::MappingMi()
     last_prefix{YType::str, "last-prefix"},
     last_sid_index{YType::uint32, "last-sid-index"},
     flag_attached{YType::enumeration, "flag-attached"}
-    	,
+        ,
     addr(std::make_shared<Srms::Mapping::MappingIpv4::MappingMi::Addr>())
 {
     addr->parent = this;
 
-    yang_name = "mapping-mi"; yang_parent_name = "mapping-ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mapping-mi"; yang_parent_name = "mapping-ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Mapping::MappingIpv4::MappingMi::~MappingMi()
@@ -383,6 +388,7 @@ Srms::Mapping::MappingIpv4::MappingMi::~MappingMi()
 
 bool Srms::Mapping::MappingIpv4::MappingMi::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| prefix.is_set
 	|| src.is_set
@@ -606,7 +612,7 @@ Srms::Mapping::MappingIpv4::MappingMi::Addr::Addr()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "addr"; yang_parent_name = "mapping-mi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "addr"; yang_parent_name = "mapping-mi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Mapping::MappingIpv4::MappingMi::Addr::~Addr()
@@ -615,6 +621,7 @@ Srms::Mapping::MappingIpv4::MappingMi::Addr::~Addr()
 
 bool Srms::Mapping::MappingIpv4::MappingMi::Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -712,9 +719,11 @@ bool Srms::Mapping::MappingIpv4::MappingMi::Addr::has_leaf_or_child_of_name(cons
 }
 
 Srms::Mapping::MappingIpv6::MappingIpv6()
+    :
+    mapping_mi(this, {})
 {
 
-    yang_name = "mapping-ipv6"; yang_parent_name = "mapping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mapping-ipv6"; yang_parent_name = "mapping"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Mapping::MappingIpv6::~MappingIpv6()
@@ -723,7 +732,8 @@ Srms::Mapping::MappingIpv6::~MappingIpv6()
 
 bool Srms::Mapping::MappingIpv6::has_data() const
 {
-    for (std::size_t index=0; index<mapping_mi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mapping_mi.len(); index++)
     {
         if(mapping_mi[index]->has_data())
             return true;
@@ -733,7 +743,7 @@ bool Srms::Mapping::MappingIpv6::has_data() const
 
 bool Srms::Mapping::MappingIpv6::has_operation() const
 {
-    for (std::size_t index=0; index<mapping_mi.size(); index++)
+    for (std::size_t index=0; index<mapping_mi.len(); index++)
     {
         if(mapping_mi[index]->has_operation())
             return true;
@@ -770,7 +780,7 @@ std::shared_ptr<Entity> Srms::Mapping::MappingIpv6::get_child_by_name(const std:
     {
         auto c = std::make_shared<Srms::Mapping::MappingIpv6::MappingMi>();
         c->parent = this;
-        mapping_mi.push_back(c);
+        mapping_mi.append(c);
         return c;
     }
 
@@ -782,7 +792,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv6::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mapping_mi)
+    for (auto c : mapping_mi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -811,7 +821,7 @@ bool Srms::Mapping::MappingIpv6::has_leaf_or_child_of_name(const std::string & n
 Srms::Mapping::MappingIpv6::MappingMi::MappingMi()
     :
     ip{YType::str, "ip"},
-    prefix{YType::int32, "prefix"},
+    prefix{YType::uint32, "prefix"},
     src{YType::enumeration, "src"},
     router{YType::str, "router"},
     area{YType::str, "area"},
@@ -821,12 +831,12 @@ Srms::Mapping::MappingIpv6::MappingMi::MappingMi()
     last_prefix{YType::str, "last-prefix"},
     last_sid_index{YType::uint32, "last-sid-index"},
     flag_attached{YType::enumeration, "flag-attached"}
-    	,
+        ,
     addr(std::make_shared<Srms::Mapping::MappingIpv6::MappingMi::Addr>())
 {
     addr->parent = this;
 
-    yang_name = "mapping-mi"; yang_parent_name = "mapping-ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mapping-mi"; yang_parent_name = "mapping-ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Mapping::MappingIpv6::MappingMi::~MappingMi()
@@ -835,6 +845,7 @@ Srms::Mapping::MappingIpv6::MappingMi::~MappingMi()
 
 bool Srms::Mapping::MappingIpv6::MappingMi::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| prefix.is_set
 	|| src.is_set
@@ -1058,7 +1069,7 @@ Srms::Mapping::MappingIpv6::MappingMi::Addr::Addr()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "addr"; yang_parent_name = "mapping-mi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "addr"; yang_parent_name = "mapping-mi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Mapping::MappingIpv6::MappingMi::Addr::~Addr()
@@ -1067,6 +1078,7 @@ Srms::Mapping::MappingIpv6::MappingMi::Addr::~Addr()
 
 bool Srms::Mapping::MappingIpv6::MappingMi::Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -1169,7 +1181,7 @@ Srms::AdjacencySid::AdjacencySid()
 {
     l2_adjacency->parent = this;
 
-    yang_name = "adjacency-sid"; yang_parent_name = "srms"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "adjacency-sid"; yang_parent_name = "srms"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::AdjacencySid::~AdjacencySid()
@@ -1178,6 +1190,7 @@ Srms::AdjacencySid::~AdjacencySid()
 
 bool Srms::AdjacencySid::has_data() const
 {
+    if (is_presence_container) return true;
     return (l2_adjacency !=  nullptr && l2_adjacency->has_data());
 }
 
@@ -1257,7 +1270,7 @@ Srms::AdjacencySid::L2Adjacency::L2Adjacency()
 {
     interfaces->parent = this;
 
-    yang_name = "l2-adjacency"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "l2-adjacency"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::AdjacencySid::L2Adjacency::~L2Adjacency()
@@ -1266,6 +1279,7 @@ Srms::AdjacencySid::L2Adjacency::~L2Adjacency()
 
 bool Srms::AdjacencySid::L2Adjacency::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data());
 }
 
@@ -1340,9 +1354,11 @@ bool Srms::AdjacencySid::L2Adjacency::has_leaf_or_child_of_name(const std::strin
 }
 
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "l2-adjacency"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "l2-adjacency"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::AdjacencySid::L2Adjacency::Interfaces::~Interfaces()
@@ -1351,7 +1367,8 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::~Interfaces()
 
 bool Srms::AdjacencySid::L2Adjacency::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1361,7 +1378,7 @@ bool Srms::AdjacencySid::L2Adjacency::Interfaces::has_data() const
 
 bool Srms::AdjacencySid::L2Adjacency::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1398,7 +1415,7 @@ std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::get_child_b
     {
         auto c = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1410,7 +1427,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1439,12 +1456,12 @@ bool Srms::AdjacencySid::L2Adjacency::Interfaces::has_leaf_or_child_of_name(cons
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     address_family(std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily>())
 {
     address_family->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::~Interface()
@@ -1453,6 +1470,7 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::~Interface()
 
 bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (address_family !=  nullptr && address_family->has_data());
 }
@@ -1474,7 +1492,8 @@ std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::get_absolute
 std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1542,12 +1561,12 @@ bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::has_leaf_or_child_o
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::AddressFamily()
     :
     ipv4(std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4>())
-	,ipv6(std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6>())
+    , ipv6(std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6>())
 {
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "address-family"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::~AddressFamily()
@@ -1556,6 +1575,7 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::~AddressF
 
 bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
@@ -1639,9 +1659,11 @@ bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::has_
 }
 
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::Ipv4()
+    :
+    sid_record(this, {})
 {
 
-    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::~Ipv4()
@@ -1650,7 +1672,8 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::~Ip
 
 bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::has_data() const
 {
-    for (std::size_t index=0; index<sid_record.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sid_record.len(); index++)
     {
         if(sid_record[index]->has_data())
             return true;
@@ -1660,7 +1683,7 @@ bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4
 
 bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::has_operation() const
 {
-    for (std::size_t index=0; index<sid_record.size(); index++)
+    for (std::size_t index=0; index<sid_record.len(); index++)
     {
         if(sid_record[index]->has_operation())
             return true;
@@ -1690,7 +1713,7 @@ std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::
     {
         auto c = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord>();
         c->parent = this;
-        sid_record.push_back(c);
+        sid_record.append(c);
         return c;
     }
 
@@ -1702,7 +1725,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sid_record)
+    for (auto c : sid_record.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1731,7 +1754,7 @@ bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::SidRecord()
     :
     sid_type{YType::enumeration, "sid-type"},
-    sid_value{YType::int32, "sid-value"},
+    sid_value{YType::uint32, "sid-value"},
     interface_name{YType::str, "interface-name"},
     sid_value_xr{YType::uint32, "sid-value-xr"},
     sid_type_xr{YType::uint32, "sid-type-xr"},
@@ -1739,12 +1762,12 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::Sid
     has_nexthop{YType::boolean, "has-nexthop"},
     interface_count{YType::int32, "interface-count"},
     interface_delete_count{YType::int32, "interface-delete-count"}
-    	,
+        ,
     nexthop_address(std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress>())
 {
     nexthop_address->parent = this;
 
-    yang_name = "sid-record"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sid-record"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::~SidRecord()
@@ -1753,6 +1776,7 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::Sid
 
 bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::has_data() const
 {
+    if (is_presence_container) return true;
     return sid_type.is_set
 	|| sid_value.is_set
 	|| interface_name.is_set
@@ -1943,7 +1967,7 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::Sid
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "nexthop-address"; yang_parent_name = "sid-record"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop-address"; yang_parent_name = "sid-record"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::~NexthopAddress()
@@ -1952,6 +1976,7 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::Sid
 
 bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -2042,9 +2067,11 @@ bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4
 }
 
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::Ipv6()
+    :
+    sid_record(this, {})
 {
 
-    yang_name = "ipv6"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::~Ipv6()
@@ -2053,7 +2080,8 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::~Ip
 
 bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::has_data() const
 {
-    for (std::size_t index=0; index<sid_record.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sid_record.len(); index++)
     {
         if(sid_record[index]->has_data())
             return true;
@@ -2063,7 +2091,7 @@ bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6
 
 bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::has_operation() const
 {
-    for (std::size_t index=0; index<sid_record.size(); index++)
+    for (std::size_t index=0; index<sid_record.len(); index++)
     {
         if(sid_record[index]->has_operation())
             return true;
@@ -2093,7 +2121,7 @@ std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::
     {
         auto c = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord>();
         c->parent = this;
-        sid_record.push_back(c);
+        sid_record.append(c);
         return c;
     }
 
@@ -2105,7 +2133,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sid_record)
+    for (auto c : sid_record.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2134,7 +2162,7 @@ bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::SidRecord()
     :
     sid_type{YType::enumeration, "sid-type"},
-    sid_value{YType::int32, "sid-value"},
+    sid_value{YType::uint32, "sid-value"},
     interface_name{YType::str, "interface-name"},
     sid_value_xr{YType::uint32, "sid-value-xr"},
     sid_type_xr{YType::uint32, "sid-type-xr"},
@@ -2142,12 +2170,12 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::Sid
     has_nexthop{YType::boolean, "has-nexthop"},
     interface_count{YType::int32, "interface-count"},
     interface_delete_count{YType::int32, "interface-delete-count"}
-    	,
+        ,
     nexthop_address(std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress>())
 {
     nexthop_address->parent = this;
 
-    yang_name = "sid-record"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sid-record"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::~SidRecord()
@@ -2156,6 +2184,7 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::Sid
 
 bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::has_data() const
 {
+    if (is_presence_container) return true;
     return sid_type.is_set
 	|| sid_value.is_set
 	|| interface_name.is_set
@@ -2346,7 +2375,7 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::Sid
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "nexthop-address"; yang_parent_name = "sid-record"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop-address"; yang_parent_name = "sid-record"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::~NexthopAddress()
@@ -2355,6 +2384,7 @@ Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::Sid
 
 bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -2447,12 +2477,12 @@ bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6
 Srms::Policy::Policy()
     :
     policy_ipv4(std::make_shared<Srms::Policy::PolicyIpv4>())
-	,policy_ipv6(std::make_shared<Srms::Policy::PolicyIpv6>())
+    , policy_ipv6(std::make_shared<Srms::Policy::PolicyIpv6>())
 {
     policy_ipv4->parent = this;
     policy_ipv6->parent = this;
 
-    yang_name = "policy"; yang_parent_name = "srms"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy"; yang_parent_name = "srms"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Policy::~Policy()
@@ -2461,6 +2491,7 @@ Srms::Policy::~Policy()
 
 bool Srms::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return (policy_ipv4 !=  nullptr && policy_ipv4->has_data())
 	|| (policy_ipv6 !=  nullptr && policy_ipv6->has_data());
 }
@@ -2553,12 +2584,12 @@ bool Srms::Policy::has_leaf_or_child_of_name(const std::string & name) const
 Srms::Policy::PolicyIpv4::PolicyIpv4()
     :
     policy_ipv4_backup(std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Backup>())
-	,policy_ipv4_active(std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active>())
+    , policy_ipv4_active(std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active>())
 {
     policy_ipv4_backup->parent = this;
     policy_ipv4_active->parent = this;
 
-    yang_name = "policy-ipv4"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-ipv4"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Policy::PolicyIpv4::~PolicyIpv4()
@@ -2567,6 +2598,7 @@ Srms::Policy::PolicyIpv4::~PolicyIpv4()
 
 bool Srms::Policy::PolicyIpv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (policy_ipv4_backup !=  nullptr && policy_ipv4_backup->has_data())
 	|| (policy_ipv4_active !=  nullptr && policy_ipv4_active->has_data());
 }
@@ -2657,9 +2689,11 @@ bool Srms::Policy::PolicyIpv4::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyIpv4Backup()
+    :
+    policy_mi(this, {"mi_id"})
 {
 
-    yang_name = "policy-ipv4-backup"; yang_parent_name = "policy-ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-ipv4-backup"; yang_parent_name = "policy-ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Policy::PolicyIpv4::PolicyIpv4Backup::~PolicyIpv4Backup()
@@ -2668,7 +2702,8 @@ Srms::Policy::PolicyIpv4::PolicyIpv4Backup::~PolicyIpv4Backup()
 
 bool Srms::Policy::PolicyIpv4::PolicyIpv4Backup::has_data() const
 {
-    for (std::size_t index=0; index<policy_mi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_mi.len(); index++)
     {
         if(policy_mi[index]->has_data())
             return true;
@@ -2678,7 +2713,7 @@ bool Srms::Policy::PolicyIpv4::PolicyIpv4Backup::has_data() const
 
 bool Srms::Policy::PolicyIpv4::PolicyIpv4Backup::has_operation() const
 {
-    for (std::size_t index=0; index<policy_mi.size(); index++)
+    for (std::size_t index=0; index<policy_mi.len(); index++)
     {
         if(policy_mi[index]->has_operation())
             return true;
@@ -2715,7 +2750,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_child_by
     {
         auto c = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi>();
         c->parent = this;
-        policy_mi.push_back(c);
+        policy_mi.append(c);
         return c;
     }
 
@@ -2727,7 +2762,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_mi)
+    for (auto c : policy_mi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2765,12 +2800,12 @@ Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::PolicyMi()
     last_prefix{YType::str, "last-prefix"},
     last_sid_index{YType::uint32, "last-sid-index"},
     flag_attached{YType::enumeration, "flag-attached"}
-    	,
+        ,
     addr(std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr>())
 {
     addr->parent = this;
 
-    yang_name = "policy-mi"; yang_parent_name = "policy-ipv4-backup"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-mi"; yang_parent_name = "policy-ipv4-backup"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::~PolicyMi()
@@ -2779,6 +2814,7 @@ Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::~PolicyMi()
 
 bool Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::has_data() const
 {
+    if (is_presence_container) return true;
     return mi_id.is_set
 	|| src.is_set
 	|| router.is_set
@@ -2818,7 +2854,8 @@ std::string Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_absolute_p
 std::string Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy-mi" <<"[mi-id='" <<mi_id <<"']";
+    path_buffer << "policy-mi";
+    ADD_KEY_TOKEN(mi_id, "mi-id");
     return path_buffer.str();
 }
 
@@ -2989,7 +3026,7 @@ Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::Addr()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "addr"; yang_parent_name = "policy-mi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addr"; yang_parent_name = "policy-mi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::~Addr()
@@ -2998,6 +3035,7 @@ Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::~Addr()
 
 bool Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -3088,9 +3126,11 @@ bool Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::has_leaf_or_chi
 }
 
 Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyIpv4Active()
+    :
+    policy_mi(this, {"mi_id"})
 {
 
-    yang_name = "policy-ipv4-active"; yang_parent_name = "policy-ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-ipv4-active"; yang_parent_name = "policy-ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Policy::PolicyIpv4::PolicyIpv4Active::~PolicyIpv4Active()
@@ -3099,7 +3139,8 @@ Srms::Policy::PolicyIpv4::PolicyIpv4Active::~PolicyIpv4Active()
 
 bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::has_data() const
 {
-    for (std::size_t index=0; index<policy_mi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_mi.len(); index++)
     {
         if(policy_mi[index]->has_data())
             return true;
@@ -3109,7 +3150,7 @@ bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::has_data() const
 
 bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::has_operation() const
 {
-    for (std::size_t index=0; index<policy_mi.size(); index++)
+    for (std::size_t index=0; index<policy_mi.len(); index++)
     {
         if(policy_mi[index]->has_operation())
             return true;
@@ -3146,7 +3187,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_child_by
     {
         auto c = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi>();
         c->parent = this;
-        policy_mi.push_back(c);
+        policy_mi.append(c);
         return c;
     }
 
@@ -3158,7 +3199,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_mi)
+    for (auto c : policy_mi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3196,12 +3237,12 @@ Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::PolicyMi()
     last_prefix{YType::str, "last-prefix"},
     last_sid_index{YType::uint32, "last-sid-index"},
     flag_attached{YType::enumeration, "flag-attached"}
-    	,
+        ,
     addr(std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr>())
 {
     addr->parent = this;
 
-    yang_name = "policy-mi"; yang_parent_name = "policy-ipv4-active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-mi"; yang_parent_name = "policy-ipv4-active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::~PolicyMi()
@@ -3210,6 +3251,7 @@ Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::~PolicyMi()
 
 bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::has_data() const
 {
+    if (is_presence_container) return true;
     return mi_id.is_set
 	|| src.is_set
 	|| router.is_set
@@ -3249,7 +3291,8 @@ std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_absolute_p
 std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy-mi" <<"[mi-id='" <<mi_id <<"']";
+    path_buffer << "policy-mi";
+    ADD_KEY_TOKEN(mi_id, "mi-id");
     return path_buffer.str();
 }
 
@@ -3420,7 +3463,7 @@ Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::Addr()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "addr"; yang_parent_name = "policy-mi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addr"; yang_parent_name = "policy-mi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::~Addr()
@@ -3429,6 +3472,7 @@ Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::~Addr()
 
 bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -3521,12 +3565,12 @@ bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::has_leaf_or_chi
 Srms::Policy::PolicyIpv6::PolicyIpv6()
     :
     policy_ipv6_backup(std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Backup>())
-	,policy_ipv6_active(std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active>())
+    , policy_ipv6_active(std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active>())
 {
     policy_ipv6_backup->parent = this;
     policy_ipv6_active->parent = this;
 
-    yang_name = "policy-ipv6"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-ipv6"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Policy::PolicyIpv6::~PolicyIpv6()
@@ -3535,6 +3579,7 @@ Srms::Policy::PolicyIpv6::~PolicyIpv6()
 
 bool Srms::Policy::PolicyIpv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (policy_ipv6_backup !=  nullptr && policy_ipv6_backup->has_data())
 	|| (policy_ipv6_active !=  nullptr && policy_ipv6_active->has_data());
 }
@@ -3625,9 +3670,11 @@ bool Srms::Policy::PolicyIpv6::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyIpv6Backup()
+    :
+    policy_mi(this, {"mi_id"})
 {
 
-    yang_name = "policy-ipv6-backup"; yang_parent_name = "policy-ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-ipv6-backup"; yang_parent_name = "policy-ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Policy::PolicyIpv6::PolicyIpv6Backup::~PolicyIpv6Backup()
@@ -3636,7 +3683,8 @@ Srms::Policy::PolicyIpv6::PolicyIpv6Backup::~PolicyIpv6Backup()
 
 bool Srms::Policy::PolicyIpv6::PolicyIpv6Backup::has_data() const
 {
-    for (std::size_t index=0; index<policy_mi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_mi.len(); index++)
     {
         if(policy_mi[index]->has_data())
             return true;
@@ -3646,7 +3694,7 @@ bool Srms::Policy::PolicyIpv6::PolicyIpv6Backup::has_data() const
 
 bool Srms::Policy::PolicyIpv6::PolicyIpv6Backup::has_operation() const
 {
-    for (std::size_t index=0; index<policy_mi.size(); index++)
+    for (std::size_t index=0; index<policy_mi.len(); index++)
     {
         if(policy_mi[index]->has_operation())
             return true;
@@ -3683,7 +3731,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_child_by
     {
         auto c = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi>();
         c->parent = this;
-        policy_mi.push_back(c);
+        policy_mi.append(c);
         return c;
     }
 
@@ -3695,7 +3743,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_mi)
+    for (auto c : policy_mi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3733,12 +3781,12 @@ Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::PolicyMi()
     last_prefix{YType::str, "last-prefix"},
     last_sid_index{YType::uint32, "last-sid-index"},
     flag_attached{YType::enumeration, "flag-attached"}
-    	,
+        ,
     addr(std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr>())
 {
     addr->parent = this;
 
-    yang_name = "policy-mi"; yang_parent_name = "policy-ipv6-backup"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-mi"; yang_parent_name = "policy-ipv6-backup"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::~PolicyMi()
@@ -3747,6 +3795,7 @@ Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::~PolicyMi()
 
 bool Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::has_data() const
 {
+    if (is_presence_container) return true;
     return mi_id.is_set
 	|| src.is_set
 	|| router.is_set
@@ -3786,7 +3835,8 @@ std::string Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_absolute_p
 std::string Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy-mi" <<"[mi-id='" <<mi_id <<"']";
+    path_buffer << "policy-mi";
+    ADD_KEY_TOKEN(mi_id, "mi-id");
     return path_buffer.str();
 }
 
@@ -3957,7 +4007,7 @@ Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::Addr()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "addr"; yang_parent_name = "policy-mi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addr"; yang_parent_name = "policy-mi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::~Addr()
@@ -3966,6 +4016,7 @@ Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::~Addr()
 
 bool Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -4056,9 +4107,11 @@ bool Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::has_leaf_or_chi
 }
 
 Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyIpv6Active()
+    :
+    policy_mi(this, {"mi_id"})
 {
 
-    yang_name = "policy-ipv6-active"; yang_parent_name = "policy-ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-ipv6-active"; yang_parent_name = "policy-ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Policy::PolicyIpv6::PolicyIpv6Active::~PolicyIpv6Active()
@@ -4067,7 +4120,8 @@ Srms::Policy::PolicyIpv6::PolicyIpv6Active::~PolicyIpv6Active()
 
 bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::has_data() const
 {
-    for (std::size_t index=0; index<policy_mi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_mi.len(); index++)
     {
         if(policy_mi[index]->has_data())
             return true;
@@ -4077,7 +4131,7 @@ bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::has_data() const
 
 bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::has_operation() const
 {
-    for (std::size_t index=0; index<policy_mi.size(); index++)
+    for (std::size_t index=0; index<policy_mi.len(); index++)
     {
         if(policy_mi[index]->has_operation())
             return true;
@@ -4114,7 +4168,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_child_by
     {
         auto c = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi>();
         c->parent = this;
-        policy_mi.push_back(c);
+        policy_mi.append(c);
         return c;
     }
 
@@ -4126,7 +4180,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_mi)
+    for (auto c : policy_mi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4164,12 +4218,12 @@ Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::PolicyMi()
     last_prefix{YType::str, "last-prefix"},
     last_sid_index{YType::uint32, "last-sid-index"},
     flag_attached{YType::enumeration, "flag-attached"}
-    	,
+        ,
     addr(std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr>())
 {
     addr->parent = this;
 
-    yang_name = "policy-mi"; yang_parent_name = "policy-ipv6-active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-mi"; yang_parent_name = "policy-ipv6-active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::~PolicyMi()
@@ -4178,6 +4232,7 @@ Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::~PolicyMi()
 
 bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::has_data() const
 {
+    if (is_presence_container) return true;
     return mi_id.is_set
 	|| src.is_set
 	|| router.is_set
@@ -4217,7 +4272,8 @@ std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_absolute_p
 std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy-mi" <<"[mi-id='" <<mi_id <<"']";
+    path_buffer << "policy-mi";
+    ADD_KEY_TOKEN(mi_id, "mi-id");
     return path_buffer.str();
 }
 
@@ -4388,7 +4444,7 @@ Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::Addr()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "addr"; yang_parent_name = "policy-mi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addr"; yang_parent_name = "policy-mi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::~Addr()
@@ -4397,6 +4453,7 @@ Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::~Addr()
 
 bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -4492,7 +4549,7 @@ Srlb::Srlb()
 {
     srlb_inconsistency->parent = this;
 
-    yang_name = "srlb"; yang_parent_name = "Cisco-IOS-XR-segment-routing-ms-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "srlb"; yang_parent_name = "Cisco-IOS-XR-segment-routing-ms-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Srlb::~Srlb()
@@ -4501,6 +4558,7 @@ Srlb::~Srlb()
 
 bool Srlb::has_data() const
 {
+    if (is_presence_container) return true;
     return (srlb_inconsistency !=  nullptr && srlb_inconsistency->has_data());
 }
 
@@ -4598,7 +4656,7 @@ Srlb::SrlbInconsistency::SrlbInconsistency()
     end_srlb_range{YType::uint32, "end-srlb-range"}
 {
 
-    yang_name = "srlb-inconsistency"; yang_parent_name = "srlb"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "srlb-inconsistency"; yang_parent_name = "srlb"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srlb::SrlbInconsistency::~SrlbInconsistency()
@@ -4607,6 +4665,7 @@ Srlb::SrlbInconsistency::~SrlbInconsistency()
 
 bool Srlb::SrlbInconsistency::has_data() const
 {
+    if (is_presence_container) return true;
     return start_srlb_range.is_set
 	|| end_srlb_range.is_set;
 }
@@ -4690,8 +4749,9 @@ bool Srlb::SrlbInconsistency::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-const Enum::YLeaf SidTypeEnum::absolute {1, "absolute"};
-const Enum::YLeaf SidTypeEnum::index_ {2, "index"};
+const Enum::YLeaf SrmsAf::none {0, "none"};
+const Enum::YLeaf SrmsAf::ipv4 {1, "ipv4"};
+const Enum::YLeaf SrmsAf::ipv6 {2, "ipv6"};
 
 const Enum::YLeaf SrmsMiFlagEB::false_ {0, "false"};
 const Enum::YLeaf SrmsMiFlagEB::true_ {1, "true"};
@@ -4704,9 +4764,8 @@ const Enum::YLeaf SrmsMiSrcEB::none {0, "none"};
 const Enum::YLeaf SrmsMiSrcEB::local {1, "local"};
 const Enum::YLeaf SrmsMiSrcEB::remote {2, "remote"};
 
-const Enum::YLeaf SrmsAf::none {0, "none"};
-const Enum::YLeaf SrmsAf::ipv4 {1, "ipv4"};
-const Enum::YLeaf SrmsAf::ipv6 {2, "ipv6"};
+const Enum::YLeaf SidTypeEnum::absolute {1, "absolute"};
+const Enum::YLeaf SidTypeEnum::index_ {2, "index"};
 
 
 }

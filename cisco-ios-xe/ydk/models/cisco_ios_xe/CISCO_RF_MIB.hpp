@@ -31,28 +31,28 @@ class CISCORFMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Crfstatus; //type: CISCORFMIB::Crfstatus
-        class Crfcfg; //type: CISCORFMIB::Crfcfg
-        class Crfhistory; //type: CISCORFMIB::Crfhistory
-        class Crfstatusrfmodecapstable; //type: CISCORFMIB::Crfstatusrfmodecapstable
-        class Crfhistoryswitchovertable; //type: CISCORFMIB::Crfhistoryswitchovertable
-        class Crfstatusrfclienttable; //type: CISCORFMIB::Crfstatusrfclienttable
+        class CRFStatus; //type: CISCORFMIB::CRFStatus
+        class CRFCfg; //type: CISCORFMIB::CRFCfg
+        class CRFHistory; //type: CISCORFMIB::CRFHistory
+        class CRFStatusRFModeCapsTable; //type: CISCORFMIB::CRFStatusRFModeCapsTable
+        class CRFHistorySwitchOverTable; //type: CISCORFMIB::CRFHistorySwitchOverTable
+        class CRFStatusRFClientTable; //type: CISCORFMIB::CRFStatusRFClientTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::Crfstatus> crfstatus;
-        std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::Crfcfg> crfcfg;
-        std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::Crfhistory> crfhistory;
-        std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::Crfstatusrfmodecapstable> crfstatusrfmodecapstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::Crfhistoryswitchovertable> crfhistoryswitchovertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::Crfstatusrfclienttable> crfstatusrfclienttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::CRFStatus> crfstatus;
+        std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::CRFCfg> crfcfg;
+        std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::CRFHistory> crfhistory;
+        std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::CRFStatusRFModeCapsTable> crfstatusrfmodecapstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::CRFHistorySwitchOverTable> crfhistoryswitchovertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::CRFStatusRFClientTable> crfstatusrfclienttable;
         
 }; // CISCORFMIB
 
 
-class CISCORFMIB::Crfstatus : public ydk::Entity
+class CISCORFMIB::CRFStatus : public ydk::Entity
 {
     public:
-        Crfstatus();
-        ~Crfstatus();
+        CRFStatus();
+        ~CRFStatus();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -80,14 +80,14 @@ class CISCORFMIB::Crfstatus : public ydk::Entity
         ydk::YLeaf crfstatusissufromversion; //type: string
         ydk::YLeaf crfstatusissutoversion; //type: string
 
-}; // CISCORFMIB::Crfstatus
+}; // CISCORFMIB::CRFStatus
 
 
-class CISCORFMIB::Crfcfg : public ydk::Entity
+class CISCORFMIB::CRFCfg : public ydk::Entity
 {
     public:
-        Crfcfg();
-        ~Crfcfg();
+        CRFCfg();
+        ~CRFCfg();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -117,14 +117,14 @@ class CISCORFMIB::Crfcfg : public ydk::Entity
         ydk::YLeaf crfcfgredundancymodedescr; //type: string
         ydk::YLeaf crfcfgredundancyopermode; //type: RFMode
 
-}; // CISCORFMIB::Crfcfg
+}; // CISCORFMIB::CRFCfg
 
 
-class CISCORFMIB::Crfhistory : public ydk::Entity
+class CISCORFMIB::CRFHistory : public ydk::Entity
 {
     public:
-        Crfhistory();
-        ~Crfhistory();
+        CRFHistory();
+        ~CRFHistory();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -141,14 +141,14 @@ class CISCORFMIB::Crfhistory : public ydk::Entity
         ydk::YLeaf crfhistorycoldstarts; //type: uint32
         ydk::YLeaf crfhistorystandbyavailtime; //type: int32
 
-}; // CISCORFMIB::Crfhistory
+}; // CISCORFMIB::CRFHistory
 
 
-class CISCORFMIB::Crfstatusrfmodecapstable : public ydk::Entity
+class CISCORFMIB::CRFStatusRFModeCapsTable : public ydk::Entity
 {
     public:
-        Crfstatusrfmodecapstable();
-        ~Crfstatusrfmodecapstable();
+        CRFStatusRFModeCapsTable();
+        ~CRFStatusRFModeCapsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -161,18 +161,18 @@ class CISCORFMIB::Crfstatusrfmodecapstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Crfstatusrfmodecapsentry; //type: CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry
+        class CRFStatusRFModeCapsEntry; //type: CISCORFMIB::CRFStatusRFModeCapsTable::CRFStatusRFModeCapsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry> > crfstatusrfmodecapsentry;
+        ydk::YList crfstatusrfmodecapsentry;
         
-}; // CISCORFMIB::Crfstatusrfmodecapstable
+}; // CISCORFMIB::CRFStatusRFModeCapsTable
 
 
-class CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry : public ydk::Entity
+class CISCORFMIB::CRFStatusRFModeCapsTable::CRFStatusRFModeCapsEntry : public ydk::Entity
 {
     public:
-        Crfstatusrfmodecapsentry();
-        ~Crfstatusrfmodecapsentry();
+        CRFStatusRFModeCapsEntry();
+        ~CRFStatusRFModeCapsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -188,14 +188,14 @@ class CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry : public yd
         ydk::YLeaf crfstatusrfmodecapsmode; //type: RFMode
         ydk::YLeaf crfstatusrfmodecapsmodedescr; //type: string
 
-}; // CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry
+}; // CISCORFMIB::CRFStatusRFModeCapsTable::CRFStatusRFModeCapsEntry
 
 
-class CISCORFMIB::Crfhistoryswitchovertable : public ydk::Entity
+class CISCORFMIB::CRFHistorySwitchOverTable : public ydk::Entity
 {
     public:
-        Crfhistoryswitchovertable();
-        ~Crfhistoryswitchovertable();
+        CRFHistorySwitchOverTable();
+        ~CRFHistorySwitchOverTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -208,18 +208,18 @@ class CISCORFMIB::Crfhistoryswitchovertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Crfhistoryswitchoverentry; //type: CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry
+        class CRFHistorySwitchOverEntry; //type: CISCORFMIB::CRFHistorySwitchOverTable::CRFHistorySwitchOverEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry> > crfhistoryswitchoverentry;
+        ydk::YList crfhistoryswitchoverentry;
         
-}; // CISCORFMIB::Crfhistoryswitchovertable
+}; // CISCORFMIB::CRFHistorySwitchOverTable
 
 
-class CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry : public ydk::Entity
+class CISCORFMIB::CRFHistorySwitchOverTable::CRFHistorySwitchOverEntry : public ydk::Entity
 {
     public:
-        Crfhistoryswitchoverentry();
-        ~Crfhistoryswitchoverentry();
+        CRFHistorySwitchOverEntry();
+        ~CRFHistorySwitchOverEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -238,14 +238,14 @@ class CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry : public 
         ydk::YLeaf crfhistoryswitchoverreason; //type: RFSwactReasonType
         ydk::YLeaf crfhistoryswacttime; //type: string
 
-}; // CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry
+}; // CISCORFMIB::CRFHistorySwitchOverTable::CRFHistorySwitchOverEntry
 
 
-class CISCORFMIB::Crfstatusrfclienttable : public ydk::Entity
+class CISCORFMIB::CRFStatusRFClientTable : public ydk::Entity
 {
     public:
-        Crfstatusrfclienttable();
-        ~Crfstatusrfclienttable();
+        CRFStatusRFClientTable();
+        ~CRFStatusRFClientTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -258,18 +258,18 @@ class CISCORFMIB::Crfstatusrfclienttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Crfstatusrfcliententry; //type: CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry
+        class CRFStatusRFClientEntry; //type: CISCORFMIB::CRFStatusRFClientTable::CRFStatusRFClientEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RF_MIB::CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry> > crfstatusrfcliententry;
+        ydk::YList crfstatusrfcliententry;
         
-}; // CISCORFMIB::Crfstatusrfclienttable
+}; // CISCORFMIB::CRFStatusRFClientTable
 
 
-class CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry : public ydk::Entity
+class CISCORFMIB::CRFStatusRFClientTable::CRFStatusRFClientEntry : public ydk::Entity
 {
     public:
-        Crfstatusrfcliententry();
-        ~Crfstatusrfcliententry();
+        CRFStatusRFClientEntry();
+        ~CRFStatusRFClientEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -288,7 +288,7 @@ class CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry : public ydk::E
         ydk::YLeaf crfstatusrfclientredtime; //type: uint32
         ydk::YLeaf crfstatusrfclientstatus; //type: RFClientStatus
 
-}; // CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry
+}; // CISCORFMIB::CRFStatusRFClientTable::CRFStatusRFClientEntry
 
 class RFState : public ydk::Enum
 {
@@ -312,6 +312,28 @@ class RFState : public ydk::Enum
 
 };
 
+class RFIssuState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unset;
+        static const ydk::Enum::YLeaf init;
+        static const ydk::Enum::YLeaf loadVersion;
+        static const ydk::Enum::YLeaf runVersion;
+        static const ydk::Enum::YLeaf commitVersion;
+
+};
+
+class RFAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf noAction;
+        static const ydk::Enum::YLeaf reloadPeer;
+        static const ydk::Enum::YLeaf reloadShelf;
+        static const ydk::Enum::YLeaf switchActivity;
+        static const ydk::Enum::YLeaf forceSwitchActivity;
+
+};
+
 class RFMode : public ydk::Enum
 {
     public:
@@ -326,14 +348,13 @@ class RFMode : public ydk::Enum
 
 };
 
-class RFAction : public ydk::Enum
+class RFClientStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf noAction;
-        static const ydk::Enum::YLeaf reloadPeer;
-        static const ydk::Enum::YLeaf reloadShelf;
-        static const ydk::Enum::YLeaf switchActivity;
-        static const ydk::Enum::YLeaf forceSwitchActivity;
+        static const ydk::Enum::YLeaf noStatus;
+        static const ydk::Enum::YLeaf clientNotRedundant;
+        static const ydk::Enum::YLeaf clientRedundancyInProgress;
+        static const ydk::Enum::YLeaf clientRedundant;
 
 };
 
@@ -350,17 +371,6 @@ class RFSwactReasonType : public ydk::Enum
 
 };
 
-class RFIssuState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unset;
-        static const ydk::Enum::YLeaf init;
-        static const ydk::Enum::YLeaf loadVersion;
-        static const ydk::Enum::YLeaf runVersion;
-        static const ydk::Enum::YLeaf commitVersion;
-
-};
-
 class RFIssuStateRev1 : public ydk::Enum
 {
     public:
@@ -371,16 +381,6 @@ class RFIssuStateRev1 : public ydk::Enum
         static const ydk::Enum::YLeaf runVersion;
         static const ydk::Enum::YLeaf runVersionSwitchover;
         static const ydk::Enum::YLeaf commitVersion;
-
-};
-
-class RFClientStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf noStatus;
-        static const ydk::Enum::YLeaf clientNotRedundant;
-        static const ydk::Enum::YLeaf clientRedundancyInProgress;
-        static const ydk::Enum::YLeaf clientRedundant;
 
 };
 

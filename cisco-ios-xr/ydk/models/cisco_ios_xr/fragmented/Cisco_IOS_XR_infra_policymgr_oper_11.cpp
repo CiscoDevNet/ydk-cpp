@@ -19,7 +19,7 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "ip-bit-rate"; yang_parent_name = "mdi-rtp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-bit-rate"; yang_parent_name = "mdi-rtp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::MdiRtp::IpBitRate::~IpBitRate()
@@ -28,6 +28,7 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::MdiRtp::IpBitRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -109,7 +110,7 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
     fmm_name{YType::str, "fmm-name"}
 {
 
-    yang_name = "fmm"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fmm"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Fmm::~Fmm()
@@ -118,6 +119,7 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Fmm::has_data() const
 {
+    if (is_presence_container) return true;
     return fmm_name.is_set;
 }
 
@@ -182,9 +184,11 @@ bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::Pbf()
+    :
+    action_pbf_info_array(this, {})
 {
 
-    yang_name = "pbf"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbf"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::~Pbf()
@@ -193,7 +197,8 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::has_data() const
 {
-    for (std::size_t index=0; index<action_pbf_info_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<action_pbf_info_array.len(); index++)
     {
         if(action_pbf_info_array[index]->has_data())
             return true;
@@ -203,7 +208,7 @@ bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::has_operation() const
 {
-    for (std::size_t index=0; index<action_pbf_info_array.size(); index++)
+    for (std::size_t index=0; index<action_pbf_info_array.len(); index++)
     {
         if(action_pbf_info_array[index]->has_operation())
             return true;
@@ -233,7 +238,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapA
     {
         auto c = std::make_shared<PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::ActionPbfInfoArray>();
         c->parent = this;
-        action_pbf_info_array.push_back(c);
+        action_pbf_info_array.append(c);
         return c;
     }
 
@@ -245,7 +250,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMapA
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : action_pbf_info_array)
+    for (auto c : action_pbf_info_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -279,7 +284,7 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
     rt{YType::str, "rt"}
 {
 
-    yang_name = "action-pbf-info-array"; yang_parent_name = "pbf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action-pbf-info-array"; yang_parent_name = "pbf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::ActionPbfInfoArray::~ActionPbfInfoArray()
@@ -288,6 +293,7 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::ActionPbfInfoArray::has_data() const
 {
+    if (is_presence_container) return true;
     return addr.is_set
 	|| vrf.is_set
 	|| rt_type.is_set
@@ -391,9 +397,11 @@ bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::Ipv4Nh()
+    :
+    action_ipv4_nh_info_array(this, {})
 {
 
-    yang_name = "ipv4-nh"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-nh"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::~Ipv4Nh()
@@ -402,7 +410,8 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::has_data() const
 {
-    for (std::size_t index=0; index<action_ipv4_nh_info_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<action_ipv4_nh_info_array.len(); index++)
     {
         if(action_ipv4_nh_info_array[index]->has_data())
             return true;
@@ -412,7 +421,7 @@ bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::has_operation() const
 {
-    for (std::size_t index=0; index<action_ipv4_nh_info_array.size(); index++)
+    for (std::size_t index=0; index<action_ipv4_nh_info_array.len(); index++)
     {
         if(action_ipv4_nh_info_array[index]->has_operation())
             return true;
@@ -442,7 +451,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapA
     {
         auto c = std::make_shared<PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::ActionIpv4NhInfoArray>();
         c->parent = this;
-        action_ipv4_nh_info_array.push_back(c);
+        action_ipv4_nh_info_array.append(c);
         return c;
     }
 
@@ -454,7 +463,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMapA
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : action_ipv4_nh_info_array)
+    for (auto c : action_ipv4_nh_info_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -486,7 +495,7 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "action-ipv4-nh-info-array"; yang_parent_name = "ipv4-nh"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action-ipv4-nh-info-array"; yang_parent_name = "ipv4-nh"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::ActionIpv4NhInfoArray::~ActionIpv4NhInfoArray()
@@ -495,6 +504,7 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::ActionIpv4NhInfoArray::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_addr.is_set
 	|| vrf_name.is_set;
 }
@@ -572,9 +582,11 @@ bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::Ipv6Nh()
+    :
+    action_ipv6_nh_info_array(this, {})
 {
 
-    yang_name = "ipv6-nh"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-nh"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::~Ipv6Nh()
@@ -583,7 +595,8 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::has_data() const
 {
-    for (std::size_t index=0; index<action_ipv6_nh_info_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<action_ipv6_nh_info_array.len(); index++)
     {
         if(action_ipv6_nh_info_array[index]->has_data())
             return true;
@@ -593,7 +606,7 @@ bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::has_operation() const
 {
-    for (std::size_t index=0; index<action_ipv6_nh_info_array.size(); index++)
+    for (std::size_t index=0; index<action_ipv6_nh_info_array.len(); index++)
     {
         if(action_ipv6_nh_info_array[index]->has_operation())
             return true;
@@ -623,7 +636,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapA
     {
         auto c = std::make_shared<PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::ActionIpv6NhInfoArray>();
         c->parent = this;
-        action_ipv6_nh_info_array.push_back(c);
+        action_ipv6_nh_info_array.append(c);
         return c;
     }
 
@@ -635,7 +648,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMapA
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : action_ipv6_nh_info_array)
+    for (auto c : action_ipv6_nh_info_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -667,7 +680,7 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "action-ipv6-nh-info-array"; yang_parent_name = "ipv6-nh"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action-ipv6-nh-info-array"; yang_parent_name = "ipv6-nh"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::ActionIpv6NhInfoArray::~ActionIpv6NhInfoArray()
@@ -676,6 +689,7 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::ActionIpv6NhInfoArray::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_addr.is_set
 	|| vrf_name.is_set;
 }
@@ -753,9 +767,11 @@ bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::PmapVarList::PmapVarList()
+    :
+    var_list(this, {})
 {
 
-    yang_name = "pmap-var-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pmap-var-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::PmapVarList::~PmapVarList()
@@ -764,7 +780,8 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::PmapVarList::has_data() const
 {
-    for (std::size_t index=0; index<var_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<var_list.len(); index++)
     {
         if(var_list[index]->has_data())
             return true;
@@ -774,7 +791,7 @@ bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::PmapVarList::has_operation() const
 {
-    for (std::size_t index=0; index<var_list.size(); index++)
+    for (std::size_t index=0; index<var_list.len(); index++)
     {
         if(var_list[index]->has_operation())
             return true;
@@ -804,7 +821,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapA
     {
         auto c = std::make_shared<PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::PmapVarList::VarList>();
         c->parent = this;
-        var_list.push_back(c);
+        var_list.append(c);
         return c;
     }
 
@@ -816,7 +833,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMapA
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : var_list)
+    for (auto c : var_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -854,7 +871,7 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
     prec_val{YType::uint8, "prec-val"}
 {
 
-    yang_name = "var-list"; yang_parent_name = "pmap-var-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "var-list"; yang_parent_name = "pmap-var-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::PmapVarList::VarList::~VarList()
@@ -863,6 +880,7 @@ PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfN
 
 bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames::IfName::Output::Detail::PmapVarList::VarList::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| class_name.is_set
 	|| uint8_val.is_set
@@ -1018,9 +1036,11 @@ bool PolicyManager::Global::PolicyMapAppliedTypes::PolicyMapAppliedType::IfNames
 }
 
 PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsTypes()
+    :
+    transient_policy_map_targets_type(this, {"type"})
 {
 
-    yang_name = "transient-policy-map-targets-types"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transient-policy-map-targets-types"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PolicyManager::Global::TransientPolicyMapTargetsTypes::~TransientPolicyMapTargetsTypes()
@@ -1029,7 +1049,8 @@ PolicyManager::Global::TransientPolicyMapTargetsTypes::~TransientPolicyMapTarget
 
 bool PolicyManager::Global::TransientPolicyMapTargetsTypes::has_data() const
 {
-    for (std::size_t index=0; index<transient_policy_map_targets_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<transient_policy_map_targets_type.len(); index++)
     {
         if(transient_policy_map_targets_type[index]->has_data())
             return true;
@@ -1039,7 +1060,7 @@ bool PolicyManager::Global::TransientPolicyMapTargetsTypes::has_data() const
 
 bool PolicyManager::Global::TransientPolicyMapTargetsTypes::has_operation() const
 {
-    for (std::size_t index=0; index<transient_policy_map_targets_type.size(); index++)
+    for (std::size_t index=0; index<transient_policy_map_targets_type.len(); index++)
     {
         if(transient_policy_map_targets_type[index]->has_operation())
             return true;
@@ -1076,7 +1097,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapTargetsTypes::g
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType>();
         c->parent = this;
-        transient_policy_map_targets_type.push_back(c);
+        transient_policy_map_targets_type.append(c);
         return c;
     }
 
@@ -1088,7 +1109,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : transient_policy_map_targets_type)
+    for (auto c : transient_policy_map_targets_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1117,16 +1138,16 @@ bool PolicyManager::Global::TransientPolicyMapTargetsTypes::has_leaf_or_child_of
 PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargetsType()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     transient_target_summary_per_policy_maps(std::make_shared<PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientTargetSummaryPerPolicyMaps>())
-	,transient_policy_map_target_summary(std::make_shared<PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargetSummary>())
-	,transient_policy_map_targets(std::make_shared<PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargets>())
+    , transient_policy_map_target_summary(std::make_shared<PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargetSummary>())
+    , transient_policy_map_targets(std::make_shared<PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargets>())
 {
     transient_target_summary_per_policy_maps->parent = this;
     transient_policy_map_target_summary->parent = this;
     transient_policy_map_targets->parent = this;
 
-    yang_name = "transient-policy-map-targets-type"; yang_parent_name = "transient-policy-map-targets-types"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transient-policy-map-targets-type"; yang_parent_name = "transient-policy-map-targets-types"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::~TransientPolicyMapTargetsType()
@@ -1135,6 +1156,7 @@ PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargets
 
 bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (transient_target_summary_per_policy_maps !=  nullptr && transient_target_summary_per_policy_maps->has_data())
 	|| (transient_policy_map_target_summary !=  nullptr && transient_policy_map_target_summary->has_data())
@@ -1160,7 +1182,8 @@ std::string PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPoli
 std::string PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "transient-policy-map-targets-type" <<"[type='" <<type <<"']";
+    path_buffer << "transient-policy-map-targets-type";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -1254,9 +1277,11 @@ bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTa
 }
 
 PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientTargetSummaryPerPolicyMaps::TransientTargetSummaryPerPolicyMaps()
+    :
+    transient_target_summary_per_policy_map(this, {"policy_map_name"})
 {
 
-    yang_name = "transient-target-summary-per-policy-maps"; yang_parent_name = "transient-policy-map-targets-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transient-target-summary-per-policy-maps"; yang_parent_name = "transient-policy-map-targets-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientTargetSummaryPerPolicyMaps::~TransientTargetSummaryPerPolicyMaps()
@@ -1265,7 +1290,8 @@ PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargets
 
 bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientTargetSummaryPerPolicyMaps::has_data() const
 {
-    for (std::size_t index=0; index<transient_target_summary_per_policy_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<transient_target_summary_per_policy_map.len(); index++)
     {
         if(transient_target_summary_per_policy_map[index]->has_data())
             return true;
@@ -1275,7 +1301,7 @@ bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTa
 
 bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientTargetSummaryPerPolicyMaps::has_operation() const
 {
-    for (std::size_t index=0; index<transient_target_summary_per_policy_map.size(); index++)
+    for (std::size_t index=0; index<transient_target_summary_per_policy_map.len(); index++)
     {
         if(transient_target_summary_per_policy_map[index]->has_operation())
             return true;
@@ -1305,7 +1331,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapTargetsTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientTargetSummaryPerPolicyMaps::TransientTargetSummaryPerPolicyMap>();
         c->parent = this;
-        transient_target_summary_per_policy_map.push_back(c);
+        transient_target_summary_per_policy_map.append(c);
         return c;
     }
 
@@ -1317,7 +1343,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : transient_target_summary_per_policy_map)
+    for (auto c : transient_target_summary_per_policy_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1354,7 +1380,7 @@ PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargets
     total_interfaces_output_direction{YType::uint32, "total-interfaces-output-direction"}
 {
 
-    yang_name = "transient-target-summary-per-policy-map"; yang_parent_name = "transient-target-summary-per-policy-maps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transient-target-summary-per-policy-map"; yang_parent_name = "transient-target-summary-per-policy-maps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientTargetSummaryPerPolicyMaps::TransientTargetSummaryPerPolicyMap::~TransientTargetSummaryPerPolicyMap()
@@ -1363,6 +1389,7 @@ PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargets
 
 bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientTargetSummaryPerPolicyMaps::TransientTargetSummaryPerPolicyMap::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_map_name.is_set
 	|| total_policy_maps_input_direction.is_set
 	|| total_policy_maps_output_direction.is_set
@@ -1387,7 +1414,8 @@ bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTa
 std::string PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientTargetSummaryPerPolicyMaps::TransientTargetSummaryPerPolicyMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "transient-target-summary-per-policy-map" <<"[policy-map-name='" <<policy_map_name <<"']";
+    path_buffer << "transient-target-summary-per-policy-map";
+    ADD_KEY_TOKEN(policy_map_name, "policy-map-name");
     return path_buffer.str();
 }
 
@@ -1514,7 +1542,7 @@ PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargets
     total_interfaces_output_direction{YType::uint32, "total-interfaces-output-direction"}
 {
 
-    yang_name = "transient-policy-map-target-summary"; yang_parent_name = "transient-policy-map-targets-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transient-policy-map-target-summary"; yang_parent_name = "transient-policy-map-targets-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargetSummary::~TransientPolicyMapTargetSummary()
@@ -1523,6 +1551,7 @@ PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargets
 
 bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargetSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return total_policy_maps_input_direction.is_set
 	|| total_policy_maps_output_direction.is_set
 	|| total_child_policy_maps_input_direction.is_set
@@ -1652,9 +1681,11 @@ bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTa
 }
 
 PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargets::TransientPolicyMapTargets()
+    :
+    transient_policy_map_target(this, {"policy_map_name"})
 {
 
-    yang_name = "transient-policy-map-targets"; yang_parent_name = "transient-policy-map-targets-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transient-policy-map-targets"; yang_parent_name = "transient-policy-map-targets-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargets::~TransientPolicyMapTargets()
@@ -1663,7 +1694,8 @@ PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargets
 
 bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargets::has_data() const
 {
-    for (std::size_t index=0; index<transient_policy_map_target.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<transient_policy_map_target.len(); index++)
     {
         if(transient_policy_map_target[index]->has_data())
             return true;
@@ -1673,7 +1705,7 @@ bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTa
 
 bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargets::has_operation() const
 {
-    for (std::size_t index=0; index<transient_policy_map_target.size(); index++)
+    for (std::size_t index=0; index<transient_policy_map_target.len(); index++)
     {
         if(transient_policy_map_target[index]->has_operation())
             return true;
@@ -1703,7 +1735,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapTargetsTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargets::TransientPolicyMapTarget>();
         c->parent = this;
-        transient_policy_map_target.push_back(c);
+        transient_policy_map_target.append(c);
         return c;
     }
 
@@ -1715,7 +1747,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : transient_policy_map_target)
+    for (auto c : transient_policy_map_target.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1748,7 +1780,7 @@ PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargets
     parent_targets{YType::str, "parent-targets"}
 {
 
-    yang_name = "transient-policy-map-target"; yang_parent_name = "transient-policy-map-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transient-policy-map-target"; yang_parent_name = "transient-policy-map-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargets::TransientPolicyMapTarget::~TransientPolicyMapTarget()
@@ -1757,6 +1789,7 @@ PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargets
 
 bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargets::TransientPolicyMapTarget::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : targets.getYLeafs())
     {
         if(leaf.is_set)
@@ -1791,7 +1824,8 @@ bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTa
 std::string PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTargetsType::TransientPolicyMapTargets::TransientPolicyMapTarget::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "transient-policy-map-target" <<"[policy-map-name='" <<policy_map_name <<"']";
+    path_buffer << "transient-policy-map-target";
+    ADD_KEY_TOKEN(policy_map_name, "policy-map-name");
     return path_buffer.str();
 }
 
@@ -1863,9 +1897,11 @@ bool PolicyManager::Global::TransientPolicyMapTargetsTypes::TransientPolicyMapTa
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedTypes()
+    :
+    transient_policy_map_applied_type(this, {"type"})
 {
 
-    yang_name = "transient-policy-map-applied-types"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transient-policy-map-applied-types"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::~TransientPolicyMapAppliedTypes()
@@ -1874,7 +1910,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::~TransientPolicyMapApplie
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::has_data() const
 {
-    for (std::size_t index=0; index<transient_policy_map_applied_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<transient_policy_map_applied_type.len(); index++)
     {
         if(transient_policy_map_applied_type[index]->has_data())
             return true;
@@ -1884,7 +1921,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::has_data() const
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::has_operation() const
 {
-    for (std::size_t index=0; index<transient_policy_map_applied_type.size(); index++)
+    for (std::size_t index=0; index<transient_policy_map_applied_type.len(); index++)
     {
         if(transient_policy_map_applied_type[index]->has_operation())
             return true;
@@ -1921,7 +1958,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::g
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType>();
         c->parent = this;
-        transient_policy_map_applied_type.push_back(c);
+        transient_policy_map_applied_type.append(c);
         return c;
     }
 
@@ -1933,7 +1970,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : transient_policy_map_applied_type)
+    for (auto c : transient_policy_map_applied_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1962,12 +1999,12 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::has_leaf_or_child_of
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientPolicyMapAppliedType()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     transient_interface_names(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames>())
 {
     transient_interface_names->parent = this;
 
-    yang_name = "transient-policy-map-applied-type"; yang_parent_name = "transient-policy-map-applied-types"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transient-policy-map-applied-type"; yang_parent_name = "transient-policy-map-applied-types"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::~TransientPolicyMapAppliedType()
@@ -1976,6 +2013,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (transient_interface_names !=  nullptr && transient_interface_names->has_data());
 }
@@ -1997,7 +2035,8 @@ std::string PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPoli
 std::string PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "transient-policy-map-applied-type" <<"[type='" <<type <<"']";
+    path_buffer << "transient-policy-map-applied-type";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -2063,9 +2102,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceNames()
+    :
+    transient_interface_name(this, {"interface_name"})
 {
 
-    yang_name = "transient-interface-names"; yang_parent_name = "transient-policy-map-applied-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transient-interface-names"; yang_parent_name = "transient-policy-map-applied-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::~TransientInterfaceNames()
@@ -2074,7 +2115,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::has_data() const
 {
-    for (std::size_t index=0; index<transient_interface_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<transient_interface_name.len(); index++)
     {
         if(transient_interface_name[index]->has_data())
             return true;
@@ -2084,7 +2126,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::has_operation() const
 {
-    for (std::size_t index=0; index<transient_interface_name.size(); index++)
+    for (std::size_t index=0; index<transient_interface_name.len(); index++)
     {
         if(transient_interface_name[index]->has_operation())
             return true;
@@ -2114,7 +2156,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName>();
         c->parent = this;
-        transient_interface_name.push_back(c);
+        transient_interface_name.append(c);
         return c;
     }
 
@@ -2126,7 +2168,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : transient_interface_name)
+    for (auto c : transient_interface_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2155,14 +2197,14 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientInterfaceName()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     transient_output(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput>())
-	,transient_input(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientInput>())
+    , transient_input(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientInput>())
 {
     transient_output->parent = this;
     transient_input->parent = this;
 
-    yang_name = "transient-interface-name"; yang_parent_name = "transient-interface-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transient-interface-name"; yang_parent_name = "transient-interface-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::~TransientInterfaceName()
@@ -2171,6 +2213,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (transient_output !=  nullptr && transient_output->has_data())
 	|| (transient_input !=  nullptr && transient_input->has_data());
@@ -2187,7 +2230,8 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 std::string PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "transient-interface-name" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "transient-interface-name";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2272,7 +2316,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 {
     detail->parent = this;
 
-    yang_name = "transient-output"; yang_parent_name = "transient-interface-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transient-output"; yang_parent_name = "transient-interface-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::~TransientOutput()
@@ -2281,6 +2325,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::has_data() const
 {
+    if (is_presence_container) return true;
     return (detail !=  nullptr && detail->has_data());
 }
 
@@ -2352,9 +2397,12 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     parent_pmap_name{YType::str, "parent-pmap-name"},
     pmap_type{YType::enumeration, "pmap-type"},
     subscriber_grp{YType::str, "subscriber-grp"}
+        ,
+    pmaps(this, {})
+    , pmap_var_list(this, {})
 {
 
-    yang_name = "detail"; yang_parent_name = "transient-output"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "transient-output"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::~Detail()
@@ -2363,12 +2411,13 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::has_data() const
 {
-    for (std::size_t index=0; index<pmaps.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pmaps.len(); index++)
     {
         if(pmaps[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pmap_var_list.size(); index++)
+    for (std::size_t index=0; index<pmap_var_list.len(); index++)
     {
         if(pmap_var_list[index]->has_data())
             return true;
@@ -2384,12 +2433,12 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<pmaps.size(); index++)
+    for (std::size_t index=0; index<pmaps.len(); index++)
     {
         if(pmaps[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pmap_var_list.size(); index++)
+    for (std::size_t index=0; index<pmap_var_list.len(); index++)
     {
         if(pmap_var_list[index]->has_operation())
             return true;
@@ -2431,7 +2480,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps>();
         c->parent = this;
-        pmaps.push_back(c);
+        pmaps.append(c);
         return c;
     }
 
@@ -2439,7 +2488,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::PmapVarList>();
         c->parent = this;
-        pmap_var_list.push_back(c);
+        pmap_var_list.append(c);
         return c;
     }
 
@@ -2451,7 +2500,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pmaps)
+    for (auto c : pmaps.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2460,7 +2509,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     }
 
     count = 0;
-    for (auto const & c : pmap_var_list)
+    for (auto c : pmap_var_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2515,9 +2564,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::Pmaps()
+    :
+    policy_map_bg(this, {})
 {
 
-    yang_name = "pmaps"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pmaps"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::~Pmaps()
@@ -2526,7 +2577,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::has_data() const
 {
-    for (std::size_t index=0; index<policy_map_bg.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_map_bg.len(); index++)
     {
         if(policy_map_bg[index]->has_data())
             return true;
@@ -2536,7 +2588,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::has_operation() const
 {
-    for (std::size_t index=0; index<policy_map_bg.size(); index++)
+    for (std::size_t index=0; index<policy_map_bg.len(); index++)
     {
         if(policy_map_bg[index]->has_operation())
             return true;
@@ -2566,7 +2618,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg>();
         c->parent = this;
-        policy_map_bg.push_back(c);
+        policy_map_bg.append(c);
         return c;
     }
 
@@ -2578,7 +2630,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_map_bg)
+    for (auto c : policy_map_bg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2609,14 +2661,14 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     name{YType::str, "name"},
     type{YType::enumeration, "type"},
     description{YType::str, "description"}
-    	,
+        ,
     pmap_var_list(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::PmapVarList>())
-	,event_infop(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop>())
+    , event_infop(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop>())
 {
     pmap_var_list->parent = this;
     event_infop->parent = this;
 
-    yang_name = "policy-map-bg"; yang_parent_name = "pmaps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-map-bg"; yang_parent_name = "pmaps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::~PolicyMapBg()
@@ -2625,6 +2677,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| type.is_set
 	|| description.is_set
@@ -2747,9 +2800,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::PmapVarList::PmapVarList()
+    :
+    pmap_var_list_arr(this, {})
 {
 
-    yang_name = "pmap-var-list"; yang_parent_name = "policy-map-bg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pmap-var-list"; yang_parent_name = "policy-map-bg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::PmapVarList::~PmapVarList()
@@ -2758,7 +2813,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::PmapVarList::has_data() const
 {
-    for (std::size_t index=0; index<pmap_var_list_arr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pmap_var_list_arr.len(); index++)
     {
         if(pmap_var_list_arr[index]->has_data())
             return true;
@@ -2768,7 +2824,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::PmapVarList::has_operation() const
 {
-    for (std::size_t index=0; index<pmap_var_list_arr.size(); index++)
+    for (std::size_t index=0; index<pmap_var_list_arr.len(); index++)
     {
         if(pmap_var_list_arr[index]->has_operation())
             return true;
@@ -2798,7 +2854,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::PmapVarList::PmapVarListArr>();
         c->parent = this;
-        pmap_var_list_arr.push_back(c);
+        pmap_var_list_arr.append(c);
         return c;
     }
 
@@ -2810,7 +2866,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pmap_var_list_arr)
+    for (auto c : pmap_var_list_arr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2840,12 +2896,12 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     :
     name{YType::str, "name"},
     id{YType::uint32, "id"}
-    	,
+        ,
     val(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::PmapVarList::PmapVarListArr::Val>())
 {
     val->parent = this;
 
-    yang_name = "pmap-var-list-arr"; yang_parent_name = "pmap-var-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pmap-var-list-arr"; yang_parent_name = "pmap-var-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::PmapVarList::PmapVarListArr::~PmapVarListArr()
@@ -2854,6 +2910,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::PmapVarList::PmapVarListArr::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set
 	|| (val !=  nullptr && val->has_data());
@@ -2958,7 +3015,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     prec_val{YType::uint8, "prec-val"}
 {
 
-    yang_name = "val"; yang_parent_name = "pmap-var-list-arr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "val"; yang_parent_name = "pmap-var-list-arr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::PmapVarList::PmapVarListArr::Val::~Val()
@@ -2967,6 +3024,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::PmapVarList::PmapVarListArr::Val::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| class_name.is_set
 	|| uint8_val.is_set
@@ -3122,9 +3180,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::EventInfop()
+    :
+    policy_event_info_bg(this, {})
 {
 
-    yang_name = "event-infop"; yang_parent_name = "policy-map-bg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event-infop"; yang_parent_name = "policy-map-bg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::~EventInfop()
@@ -3133,7 +3193,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::has_data() const
 {
-    for (std::size_t index=0; index<policy_event_info_bg.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_event_info_bg.len(); index++)
     {
         if(policy_event_info_bg[index]->has_data())
             return true;
@@ -3143,7 +3204,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::has_operation() const
 {
-    for (std::size_t index=0; index<policy_event_info_bg.size(); index++)
+    for (std::size_t index=0; index<policy_event_info_bg.len(); index++)
     {
         if(policy_event_info_bg[index]->has_operation())
             return true;
@@ -3173,7 +3234,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg>();
         c->parent = this;
-        policy_event_info_bg.push_back(c);
+        policy_event_info_bg.append(c);
         return c;
     }
 
@@ -3185,7 +3246,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_event_info_bg)
+    for (auto c : policy_event_info_bg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3215,12 +3276,12 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     :
     event_type{YType::enumeration, "event-type"},
     cond_eval{YType::enumeration, "cond-eval"}
-    	,
+        ,
     class_infop(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop>())
 {
     class_infop->parent = this;
 
-    yang_name = "policy-event-info-bg"; yang_parent_name = "event-infop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-event-info-bg"; yang_parent_name = "event-infop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::~PolicyEventInfoBg()
@@ -3229,6 +3290,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| cond_eval.is_set
 	|| (class_infop !=  nullptr && class_infop->has_data());
@@ -3322,9 +3384,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::ClassInfop()
+    :
+    policy_class_info_bg(this, {})
 {
 
-    yang_name = "class-infop"; yang_parent_name = "policy-event-info-bg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-infop"; yang_parent_name = "policy-event-info-bg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::~ClassInfop()
@@ -3333,7 +3397,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::has_data() const
 {
-    for (std::size_t index=0; index<policy_class_info_bg.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_class_info_bg.len(); index++)
     {
         if(policy_class_info_bg[index]->has_data())
             return true;
@@ -3343,7 +3408,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::has_operation() const
 {
-    for (std::size_t index=0; index<policy_class_info_bg.size(); index++)
+    for (std::size_t index=0; index<policy_class_info_bg.len(); index++)
     {
         if(policy_class_info_bg[index]->has_operation())
             return true;
@@ -3373,7 +3438,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg>();
         c->parent = this;
-        policy_class_info_bg.push_back(c);
+        policy_class_info_bg.append(c);
         return c;
     }
 
@@ -3385,7 +3450,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_class_info_bg)
+    for (auto c : policy_class_info_bg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3420,16 +3485,16 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     num_actions{YType::uint16, "num-actions"},
     version{YType::uint8, "version"},
     exe_strat{YType::enumeration, "exe-strat"}
-    	,
+        ,
     cl_encode(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode>())
-	,clmp_p(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClmpP>())
-	,act_infop(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop>())
+    , clmp_p(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClmpP>())
+    , act_infop(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop>())
 {
     cl_encode->parent = this;
     clmp_p->parent = this;
     act_infop->parent = this;
 
-    yang_name = "policy-class-info-bg"; yang_parent_name = "class-infop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-class-info-bg"; yang_parent_name = "class-infop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::~PolicyClassInfoBg()
@@ -3438,6 +3503,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_class_hd.is_set
 	|| seq.is_set
 	|| flags.is_set
@@ -3633,12 +3699,12 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     class_name{YType::str, "class-name"},
     hd{YType::uint64, "hd"},
     idx{YType::uint8, "idx"}
-    	,
+        ,
     inline_cmap(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap>())
 {
     inline_cmap->parent = this;
 
-    yang_name = "cl-encode"; yang_parent_name = "policy-class-info-bg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cl-encode"; yang_parent_name = "policy-class-info-bg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::~ClEncode()
@@ -3647,6 +3713,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::has_data() const
 {
+    if (is_presence_container) return true;
     return enc.is_set
 	|| class_name.is_set
 	|| hd.is_set
@@ -3770,12 +3837,12 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     mode{YType::enumeration, "mode"},
     flags{YType::uint32, "flags"},
     match_count{YType::uint32, "match-count"}
-    	,
+        ,
     match_infop(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop>())
 {
     match_infop->parent = this;
 
-    yang_name = "inline-cmap"; yang_parent_name = "cl-encode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inline-cmap"; yang_parent_name = "cl-encode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::~InlineCmap()
@@ -3784,6 +3851,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::has_data() const
 {
+    if (is_presence_container) return true;
     return mode.is_set
 	|| flags.is_set
 	|| match_count.is_set
@@ -3890,9 +3958,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::MatchInfop()
+    :
+    class_match_info_st(this, {})
 {
 
-    yang_name = "match-infop"; yang_parent_name = "inline-cmap"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match-infop"; yang_parent_name = "inline-cmap"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::~MatchInfop()
@@ -3901,7 +3971,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::has_data() const
 {
-    for (std::size_t index=0; index<class_match_info_st.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_match_info_st.len(); index++)
     {
         if(class_match_info_st[index]->has_data())
             return true;
@@ -3911,7 +3982,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::has_operation() const
 {
-    for (std::size_t index=0; index<class_match_info_st.size(); index++)
+    for (std::size_t index=0; index<class_match_info_st.len(); index++)
     {
         if(class_match_info_st[index]->has_operation())
             return true;
@@ -3941,7 +4012,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt>();
         c->parent = this;
-        class_match_info_st.push_back(c);
+        class_match_info_st.append(c);
         return c;
     }
 
@@ -3953,7 +4024,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_match_info_st)
+    for (auto c : class_match_info_st.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3982,12 +4053,12 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::ClassMatchInfoSt()
     :
     flags{YType::uint32, "flags"}
-    	,
+        ,
     match_data(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData>())
 {
     match_data->parent = this;
 
-    yang_name = "class-match-info-st"; yang_parent_name = "match-infop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-match-info-st"; yang_parent_name = "match-infop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::~ClassMatchInfoSt()
@@ -3996,6 +4067,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::has_data() const
 {
+    if (is_presence_container) return true;
     return flags.is_set
 	|| (match_data !=  nullptr && match_data->has_data());
 }
@@ -4082,91 +4154,91 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     fragment_type{YType::uint8, "fragment-type"},
     authen_status{YType::enumeration, "authen-status"},
     mlp_negotiated{YType::enumeration, "mlp-negotiated"}
-    	,
+        ,
     ipv4_dscp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Dscp>())
-	,ipv6_dscp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Dscp>())
-	,dscp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dscp>())
-	,ipv4_prec(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Prec>())
-	,ipv6_prec(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Prec>())
-	,prec(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Prec>())
-	,discard_class(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DiscardClass>())
-	,qos_group(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::QosGroup>())
-	,traffic_class(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TrafficClass>())
-	,proto(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Proto>())
-	,icmp_v4(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::IcmpV4>())
-	,icmp_v6(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::IcmpV6>())
-	,ipv4_packet_len(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4PacketLen>())
-	,ipv6_packet_len(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6PacketLen>())
-	,packet_len(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::PacketLen>())
-	,flow_tag(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowTag>())
-	,tcp_flag(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TcpFlag>())
-	,icmpv4_type(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Type>())
-	,icmpv4_code(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Code>())
-	,icmpv6_type(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Type>())
-	,icmpv6_code(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Code>())
-	,mpls_exp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsExp>())
-	,mpls_exp_imp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsExpImp>())
-	,mpls_disp_ipv4_acl(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsDispIpv4Acl>())
-	,mpls_disp_ipv6_acl(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsDispIpv6Acl>())
-	,mpls_top_label(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsTopLabel>())
-	,cos(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Cos>())
-	,cos_inr(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::CosInr>())
-	,dei(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dei>())
-	,dei_inr(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DeiInr>())
-	,vlan(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Vlan>())
-	,vlan_inr(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VlanInr>())
-	,fr_dlci(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDlci>())
-	,src_mac(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcMac>())
-	,dst_mac(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstMac>())
-	,atm_clp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AtmClp>())
-	,fr_de(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDe>())
-	,ipv4_acl(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Acl>())
-	,ipv6_acl(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Acl>())
-	,ether_service_acl(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::EtherServiceAcl>())
-	,avail_id(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AvailId>())
-	,media_type(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MediaType>())
-	,subs_protocol(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SubsProtocol>())
-	,dnis(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dnis>())
-	,dnis_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DnisRegex>())
-	,domain(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Domain>())
-	,domain_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DomainRegex>())
-	,nas_port(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::NasPort>())
-	,service_name(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::ServiceName>())
-	,service_name_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::ServiceNameRegex>())
-	,src_addr_ipv4(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv4>())
-	,dst_addr_ipv4(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv4>())
-	,src_addr_ipv6(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv6>())
-	,dst_addr_ipv6(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv6>())
-	,src_addr_mac(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrMac>())
-	,timer(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Timer>())
-	,timer_regexp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TimerRegexp>())
-	,tunnel_name(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TunnelName>())
-	,tunnel_name_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TunnelNameRegex>())
-	,user_name(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UserName>())
-	,user_name_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UserNameRegex>())
-	,auth_username(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthUsername>())
-	,auth_username_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthUsernameRegex>())
-	,unauth_username(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthUsername>())
-	,unauth_username_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthUsernameRegex>())
-	,auth_domain(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthDomain>())
-	,auth_domain_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthDomainRegex>())
-	,unauth_domain(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthDomain>())
-	,unauth_domain_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthDomainRegex>())
-	,vendor_id(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VendorId>())
-	,vendor_id_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VendorIdRegex>())
-	,access_interface(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AccessInterface>())
-	,input_interface(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::InputInterface>())
-	,input_intfhdl(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::InputIntfhdl>())
-	,ethertype(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype>())
-	,flow_key_data(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowKeyData>())
-	,dhcp_client_id(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DhcpClientId>())
-	,dhcp_client_id_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DhcpClientIdRegex>())
-	,circuit_id(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::CircuitId>())
-	,circuit_id_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::CircuitIdRegex>())
-	,remote_id(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::RemoteId>())
-	,remote_id_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::RemoteIdRegex>())
-	,src_port(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort>())
-	,dst_port(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstPort>())
+    , ipv6_dscp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Dscp>())
+    , dscp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dscp>())
+    , ipv4_prec(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Prec>())
+    , ipv6_prec(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Prec>())
+    , prec(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Prec>())
+    , discard_class(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DiscardClass>())
+    , qos_group(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::QosGroup>())
+    , traffic_class(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TrafficClass>())
+    , proto(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Proto>())
+    , icmp_v4(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::IcmpV4>())
+    , icmp_v6(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::IcmpV6>())
+    , ipv4_packet_len(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4PacketLen>())
+    , ipv6_packet_len(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6PacketLen>())
+    , packet_len(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::PacketLen>())
+    , flow_tag(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowTag>())
+    , tcp_flag(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TcpFlag>())
+    , icmpv4_type(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Type>())
+    , icmpv4_code(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Code>())
+    , icmpv6_type(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Type>())
+    , icmpv6_code(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Code>())
+    , mpls_exp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsExp>())
+    , mpls_exp_imp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsExpImp>())
+    , mpls_disp_ipv4_acl(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsDispIpv4Acl>())
+    , mpls_disp_ipv6_acl(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsDispIpv6Acl>())
+    , mpls_top_label(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsTopLabel>())
+    , cos(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Cos>())
+    , cos_inr(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::CosInr>())
+    , dei(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dei>())
+    , dei_inr(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DeiInr>())
+    , vlan(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Vlan>())
+    , vlan_inr(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VlanInr>())
+    , fr_dlci(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDlci>())
+    , src_mac(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcMac>())
+    , dst_mac(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstMac>())
+    , atm_clp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AtmClp>())
+    , fr_de(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDe>())
+    , ipv4_acl(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Acl>())
+    , ipv6_acl(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Acl>())
+    , ether_service_acl(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::EtherServiceAcl>())
+    , avail_id(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AvailId>())
+    , media_type(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MediaType>())
+    , subs_protocol(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SubsProtocol>())
+    , dnis(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dnis>())
+    , dnis_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DnisRegex>())
+    , domain(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Domain>())
+    , domain_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DomainRegex>())
+    , nas_port(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::NasPort>())
+    , service_name(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::ServiceName>())
+    , service_name_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::ServiceNameRegex>())
+    , src_addr_ipv4(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv4>())
+    , dst_addr_ipv4(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv4>())
+    , src_addr_ipv6(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv6>())
+    , dst_addr_ipv6(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv6>())
+    , src_addr_mac(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrMac>())
+    , timer(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Timer>())
+    , timer_regexp(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TimerRegexp>())
+    , tunnel_name(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TunnelName>())
+    , tunnel_name_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TunnelNameRegex>())
+    , user_name(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UserName>())
+    , user_name_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UserNameRegex>())
+    , auth_username(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthUsername>())
+    , auth_username_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthUsernameRegex>())
+    , unauth_username(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthUsername>())
+    , unauth_username_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthUsernameRegex>())
+    , auth_domain(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthDomain>())
+    , auth_domain_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthDomainRegex>())
+    , unauth_domain(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthDomain>())
+    , unauth_domain_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthDomainRegex>())
+    , vendor_id(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VendorId>())
+    , vendor_id_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VendorIdRegex>())
+    , access_interface(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AccessInterface>())
+    , input_interface(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::InputInterface>())
+    , input_intfhdl(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::InputIntfhdl>())
+    , ethertype(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype>())
+    , flow_key_data(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowKeyData>())
+    , dhcp_client_id(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DhcpClientId>())
+    , dhcp_client_id_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DhcpClientIdRegex>())
+    , circuit_id(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::CircuitId>())
+    , circuit_id_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::CircuitIdRegex>())
+    , remote_id(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::RemoteId>())
+    , remote_id_regex(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::RemoteIdRegex>())
+    , src_port(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort>())
+    , dst_port(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstPort>())
 {
     ipv4_dscp->parent = this;
     ipv6_dscp->parent = this;
@@ -4253,7 +4325,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     src_port->parent = this;
     dst_port->parent = this;
 
-    yang_name = "match-data"; yang_parent_name = "class-match-info-st"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match-data"; yang_parent_name = "class-match-info-st"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::~MatchData()
@@ -4262,6 +4334,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| mpls_top_eos.is_set
 	|| fragment_type.is_set
@@ -5722,9 +5795,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Dscp::Ipv4Dscp()
+    :
+    uint8_rng_array(this, {})
 {
 
-    yang_name = "ipv4-dscp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-dscp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Dscp::~Ipv4Dscp()
@@ -5733,7 +5808,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Dscp::has_data() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_data())
             return true;
@@ -5743,7 +5819,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Dscp::has_operation() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_operation())
             return true;
@@ -5773,7 +5849,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Dscp::Uint8RngArray>();
         c->parent = this;
-        uint8_rng_array.push_back(c);
+        uint8_rng_array.append(c);
         return c;
     }
 
@@ -5785,7 +5861,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint8_rng_array)
+    for (auto c : uint8_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5817,7 +5893,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint8, "max"}
 {
 
-    yang_name = "uint8_rng_array"; yang_parent_name = "ipv4-dscp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint8_rng_array"; yang_parent_name = "ipv4-dscp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Dscp::Uint8RngArray::~Uint8RngArray()
@@ -5826,6 +5902,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Dscp::Uint8RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -5903,9 +5980,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Dscp::Ipv6Dscp()
+    :
+    uint8_rng_array(this, {})
 {
 
-    yang_name = "ipv6-dscp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-dscp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Dscp::~Ipv6Dscp()
@@ -5914,7 +5993,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Dscp::has_data() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_data())
             return true;
@@ -5924,7 +6004,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Dscp::has_operation() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_operation())
             return true;
@@ -5954,7 +6034,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Dscp::Uint8RngArray>();
         c->parent = this;
-        uint8_rng_array.push_back(c);
+        uint8_rng_array.append(c);
         return c;
     }
 
@@ -5966,7 +6046,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint8_rng_array)
+    for (auto c : uint8_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5998,7 +6078,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint8, "max"}
 {
 
-    yang_name = "uint8_rng_array"; yang_parent_name = "ipv6-dscp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint8_rng_array"; yang_parent_name = "ipv6-dscp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Dscp::Uint8RngArray::~Uint8RngArray()
@@ -6007,6 +6087,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Dscp::Uint8RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -6084,9 +6165,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dscp::Dscp()
+    :
+    uint8_rng_array(this, {})
 {
 
-    yang_name = "dscp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dscp::~Dscp()
@@ -6095,7 +6178,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dscp::has_data() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_data())
             return true;
@@ -6105,7 +6189,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dscp::has_operation() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_operation())
             return true;
@@ -6135,7 +6219,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dscp::Uint8RngArray>();
         c->parent = this;
-        uint8_rng_array.push_back(c);
+        uint8_rng_array.append(c);
         return c;
     }
 
@@ -6147,7 +6231,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint8_rng_array)
+    for (auto c : uint8_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6179,7 +6263,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint8, "max"}
 {
 
-    yang_name = "uint8_rng_array"; yang_parent_name = "dscp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint8_rng_array"; yang_parent_name = "dscp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dscp::Uint8RngArray::~Uint8RngArray()
@@ -6188,6 +6272,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dscp::Uint8RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -6269,7 +6354,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "ipv4-prec"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-prec"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Prec::~Ipv4Prec()
@@ -6278,6 +6363,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Prec::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -6355,7 +6441,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "ipv6-prec"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-prec"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Prec::~Ipv6Prec()
@@ -6364,6 +6450,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Prec::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -6441,7 +6528,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "prec"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prec"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Prec::~Prec()
@@ -6450,6 +6537,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Prec::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -6527,7 +6615,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "discard-class"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discard-class"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DiscardClass::~DiscardClass()
@@ -6536,6 +6624,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DiscardClass::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -6609,9 +6698,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::QosGroup::QosGroup()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "qos-group"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos-group"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::QosGroup::~QosGroup()
@@ -6620,7 +6711,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::QosGroup::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -6630,7 +6722,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::QosGroup::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -6660,7 +6752,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::QosGroup::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -6672,7 +6764,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6704,7 +6796,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint16, "max"}
 {
 
-    yang_name = "uint16_rng_array"; yang_parent_name = "qos-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint16_rng_array"; yang_parent_name = "qos-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::QosGroup::Uint16RngArray::~Uint16RngArray()
@@ -6713,6 +6805,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::QosGroup::Uint16RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -6790,9 +6883,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TrafficClass::TrafficClass()
+    :
+    uint8_rng_array(this, {})
 {
 
-    yang_name = "traffic-class"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-class"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TrafficClass::~TrafficClass()
@@ -6801,7 +6896,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TrafficClass::has_data() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_data())
             return true;
@@ -6811,7 +6907,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TrafficClass::has_operation() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_operation())
             return true;
@@ -6841,7 +6937,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TrafficClass::Uint8RngArray>();
         c->parent = this;
-        uint8_rng_array.push_back(c);
+        uint8_rng_array.append(c);
         return c;
     }
 
@@ -6853,7 +6949,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint8_rng_array)
+    for (auto c : uint8_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6885,7 +6981,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint8, "max"}
 {
 
-    yang_name = "uint8_rng_array"; yang_parent_name = "traffic-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint8_rng_array"; yang_parent_name = "traffic-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TrafficClass::Uint8RngArray::~Uint8RngArray()
@@ -6894,6 +6990,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TrafficClass::Uint8RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -6971,9 +7068,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Proto::Proto()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "proto"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "proto"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Proto::~Proto()
@@ -6982,7 +7081,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Proto::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -6992,7 +7092,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Proto::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -7022,7 +7122,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Proto::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -7034,7 +7134,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7066,7 +7166,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint16, "max"}
 {
 
-    yang_name = "uint16_rng_array"; yang_parent_name = "proto"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint16_rng_array"; yang_parent_name = "proto"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Proto::Uint16RngArray::~Uint16RngArray()
@@ -7075,6 +7175,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Proto::Uint16RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -7157,7 +7258,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     code{YType::uint8, "code"}
 {
 
-    yang_name = "icmp-v4"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp-v4"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::IcmpV4::~IcmpV4()
@@ -7166,6 +7267,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::IcmpV4::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| code.is_set;
 }
@@ -7248,7 +7350,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     code{YType::uint8, "code"}
 {
 
-    yang_name = "icmp-v6"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp-v6"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::IcmpV6::~IcmpV6()
@@ -7257,6 +7359,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::IcmpV6::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| code.is_set;
 }
@@ -7334,9 +7437,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4PacketLen::Ipv4PacketLen()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "ipv4-packet-len"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-packet-len"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4PacketLen::~Ipv4PacketLen()
@@ -7345,7 +7450,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4PacketLen::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -7355,7 +7461,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4PacketLen::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -7385,7 +7491,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4PacketLen::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -7397,7 +7503,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7429,7 +7535,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint16, "max"}
 {
 
-    yang_name = "uint16_rng_array"; yang_parent_name = "ipv4-packet-len"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint16_rng_array"; yang_parent_name = "ipv4-packet-len"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4PacketLen::Uint16RngArray::~Uint16RngArray()
@@ -7438,6 +7544,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4PacketLen::Uint16RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -7515,9 +7622,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6PacketLen::Ipv6PacketLen()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "ipv6-packet-len"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-packet-len"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6PacketLen::~Ipv6PacketLen()
@@ -7526,7 +7635,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6PacketLen::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -7536,7 +7646,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6PacketLen::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -7566,7 +7676,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6PacketLen::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -7578,7 +7688,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7610,7 +7720,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint16, "max"}
 {
 
-    yang_name = "uint16_rng_array"; yang_parent_name = "ipv6-packet-len"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint16_rng_array"; yang_parent_name = "ipv6-packet-len"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6PacketLen::Uint16RngArray::~Uint16RngArray()
@@ -7619,6 +7729,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6PacketLen::Uint16RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -7696,9 +7807,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::PacketLen::PacketLen()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "packet-len"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-len"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::PacketLen::~PacketLen()
@@ -7707,7 +7820,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::PacketLen::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -7717,7 +7831,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::PacketLen::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -7747,7 +7861,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::PacketLen::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -7759,7 +7873,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7791,7 +7905,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint16, "max"}
 {
 
-    yang_name = "uint16_rng_array"; yang_parent_name = "packet-len"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint16_rng_array"; yang_parent_name = "packet-len"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::PacketLen::Uint16RngArray::~Uint16RngArray()
@@ -7800,6 +7914,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::PacketLen::Uint16RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -7877,9 +7992,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowTag::FlowTag()
+    :
+    uint8_rng_array(this, {})
 {
 
-    yang_name = "flow-tag"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-tag"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowTag::~FlowTag()
@@ -7888,7 +8005,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowTag::has_data() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_data())
             return true;
@@ -7898,7 +8016,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowTag::has_operation() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_operation())
             return true;
@@ -7928,7 +8046,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowTag::Uint8RngArray>();
         c->parent = this;
-        uint8_rng_array.push_back(c);
+        uint8_rng_array.append(c);
         return c;
     }
 
@@ -7940,7 +8058,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint8_rng_array)
+    for (auto c : uint8_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7972,7 +8090,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint8, "max"}
 {
 
-    yang_name = "uint8_rng_array"; yang_parent_name = "flow-tag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint8_rng_array"; yang_parent_name = "flow-tag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowTag::Uint8RngArray::~Uint8RngArray()
@@ -7981,6 +8099,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowTag::Uint8RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -8063,7 +8182,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     match_any{YType::boolean, "match-any"}
 {
 
-    yang_name = "tcp-flag"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flag"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TcpFlag::~TcpFlag()
@@ -8072,6 +8191,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TcpFlag::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| match_any.is_set;
 }
@@ -8149,9 +8269,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Type::Icmpv4Type()
+    :
+    uint8_rng_array(this, {})
 {
 
-    yang_name = "icmpv4-type"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmpv4-type"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Type::~Icmpv4Type()
@@ -8160,7 +8282,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Type::has_data() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_data())
             return true;
@@ -8170,7 +8293,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Type::has_operation() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_operation())
             return true;
@@ -8200,7 +8323,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Type::Uint8RngArray>();
         c->parent = this;
-        uint8_rng_array.push_back(c);
+        uint8_rng_array.append(c);
         return c;
     }
 
@@ -8212,7 +8335,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint8_rng_array)
+    for (auto c : uint8_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8244,7 +8367,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint8, "max"}
 {
 
-    yang_name = "uint8_rng_array"; yang_parent_name = "icmpv4-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint8_rng_array"; yang_parent_name = "icmpv4-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Type::Uint8RngArray::~Uint8RngArray()
@@ -8253,6 +8376,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Type::Uint8RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -8330,9 +8454,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Code::Icmpv4Code()
+    :
+    uint8_rng_array(this, {})
 {
 
-    yang_name = "icmpv4-code"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmpv4-code"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Code::~Icmpv4Code()
@@ -8341,7 +8467,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Code::has_data() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_data())
             return true;
@@ -8351,7 +8478,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Code::has_operation() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_operation())
             return true;
@@ -8381,7 +8508,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Code::Uint8RngArray>();
         c->parent = this;
-        uint8_rng_array.push_back(c);
+        uint8_rng_array.append(c);
         return c;
     }
 
@@ -8393,7 +8520,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint8_rng_array)
+    for (auto c : uint8_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8425,7 +8552,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint8, "max"}
 {
 
-    yang_name = "uint8_rng_array"; yang_parent_name = "icmpv4-code"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint8_rng_array"; yang_parent_name = "icmpv4-code"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Code::Uint8RngArray::~Uint8RngArray()
@@ -8434,6 +8561,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Code::Uint8RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -8511,9 +8639,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Type::Icmpv6Type()
+    :
+    uint8_rng_array(this, {})
 {
 
-    yang_name = "icmpv6-type"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmpv6-type"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Type::~Icmpv6Type()
@@ -8522,7 +8652,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Type::has_data() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_data())
             return true;
@@ -8532,7 +8663,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Type::has_operation() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_operation())
             return true;
@@ -8562,7 +8693,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Type::Uint8RngArray>();
         c->parent = this;
-        uint8_rng_array.push_back(c);
+        uint8_rng_array.append(c);
         return c;
     }
 
@@ -8574,7 +8705,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint8_rng_array)
+    for (auto c : uint8_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8606,7 +8737,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint8, "max"}
 {
 
-    yang_name = "uint8_rng_array"; yang_parent_name = "icmpv6-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint8_rng_array"; yang_parent_name = "icmpv6-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Type::Uint8RngArray::~Uint8RngArray()
@@ -8615,6 +8746,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Type::Uint8RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -8692,9 +8824,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Code::Icmpv6Code()
+    :
+    uint8_rng_array(this, {})
 {
 
-    yang_name = "icmpv6-code"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmpv6-code"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Code::~Icmpv6Code()
@@ -8703,7 +8837,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Code::has_data() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_data())
             return true;
@@ -8713,7 +8848,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Code::has_operation() const
 {
-    for (std::size_t index=0; index<uint8_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint8_rng_array.len(); index++)
     {
         if(uint8_rng_array[index]->has_operation())
             return true;
@@ -8743,7 +8878,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Code::Uint8RngArray>();
         c->parent = this;
-        uint8_rng_array.push_back(c);
+        uint8_rng_array.append(c);
         return c;
     }
 
@@ -8755,7 +8890,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint8_rng_array)
+    for (auto c : uint8_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8787,7 +8922,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint8, "max"}
 {
 
-    yang_name = "uint8_rng_array"; yang_parent_name = "icmpv6-code"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint8_rng_array"; yang_parent_name = "icmpv6-code"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Code::Uint8RngArray::~Uint8RngArray()
@@ -8796,6 +8931,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Code::Uint8RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -8877,7 +9013,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "mpls-exp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-exp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsExp::~MplsExp()
@@ -8886,6 +9022,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsExp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -8963,7 +9100,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "mpls-exp-imp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-exp-imp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsExpImp::~MplsExpImp()
@@ -8972,6 +9109,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsExpImp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -9049,7 +9187,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "mpls-disp-ipv4-acl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-disp-ipv4-acl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsDispIpv4Acl::~MplsDispIpv4Acl()
@@ -9058,6 +9196,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsDispIpv4Acl::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -9135,7 +9274,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "mpls-disp-ipv6-acl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-disp-ipv6-acl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsDispIpv6Acl::~MplsDispIpv6Acl()
@@ -9144,6 +9283,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsDispIpv6Acl::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -9217,9 +9357,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsTopLabel::MplsTopLabel()
+    :
+    uint32_rng_array(this, {})
 {
 
-    yang_name = "mpls-top-label"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-top-label"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsTopLabel::~MplsTopLabel()
@@ -9228,7 +9370,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsTopLabel::has_data() const
 {
-    for (std::size_t index=0; index<uint32_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint32_rng_array.len(); index++)
     {
         if(uint32_rng_array[index]->has_data())
             return true;
@@ -9238,7 +9381,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsTopLabel::has_operation() const
 {
-    for (std::size_t index=0; index<uint32_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint32_rng_array.len(); index++)
     {
         if(uint32_rng_array[index]->has_operation())
             return true;
@@ -9268,7 +9411,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsTopLabel::Uint32RngArray>();
         c->parent = this;
-        uint32_rng_array.push_back(c);
+        uint32_rng_array.append(c);
         return c;
     }
 
@@ -9280,7 +9423,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint32_rng_array)
+    for (auto c : uint32_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9312,7 +9455,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint32, "max"}
 {
 
-    yang_name = "uint32_rng_array"; yang_parent_name = "mpls-top-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint32_rng_array"; yang_parent_name = "mpls-top-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsTopLabel::Uint32RngArray::~Uint32RngArray()
@@ -9321,6 +9464,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MplsTopLabel::Uint32RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -9402,7 +9546,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "cos"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Cos::~Cos()
@@ -9411,6 +9555,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Cos::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -9488,7 +9633,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "cos-inr"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-inr"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::CosInr::~CosInr()
@@ -9497,6 +9642,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::CosInr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -9574,7 +9720,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     bit_value{YType::uint32, "bit-value"}
 {
 
-    yang_name = "dei"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dei"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dei::~Dei()
@@ -9583,6 +9729,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dei::has_data() const
 {
+    if (is_presence_container) return true;
     return bit_value.is_set;
 }
 
@@ -9651,7 +9798,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     bit_value{YType::uint32, "bit-value"}
 {
 
-    yang_name = "dei-inr"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dei-inr"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DeiInr::~DeiInr()
@@ -9660,6 +9807,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DeiInr::has_data() const
 {
+    if (is_presence_container) return true;
     return bit_value.is_set;
 }
 
@@ -9724,9 +9872,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Vlan::Vlan()
+    :
+    vlan_id_array(this, {})
 {
 
-    yang_name = "vlan"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Vlan::~Vlan()
@@ -9735,7 +9885,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Vlan::has_data() const
 {
-    for (std::size_t index=0; index<vlan_id_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_id_array.len(); index++)
     {
         if(vlan_id_array[index]->has_data())
             return true;
@@ -9745,7 +9896,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Vlan::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_id_array.size(); index++)
+    for (std::size_t index=0; index<vlan_id_array.len(); index++)
     {
         if(vlan_id_array[index]->has_operation())
             return true;
@@ -9775,7 +9926,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Vlan::VlanIdArray>();
         c->parent = this;
-        vlan_id_array.push_back(c);
+        vlan_id_array.append(c);
         return c;
     }
 
@@ -9787,7 +9938,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_id_array)
+    for (auto c : vlan_id_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9820,7 +9971,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     mask{YType::uint16, "mask"}
 {
 
-    yang_name = "vlan-id-array"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-id-array"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Vlan::VlanIdArray::~VlanIdArray()
@@ -9829,6 +9980,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Vlan::VlanIdArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set
 	|| mask.is_set;
@@ -9919,9 +10071,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VlanInr::VlanInr()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "vlan-inr"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-inr"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VlanInr::~VlanInr()
@@ -9930,7 +10084,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VlanInr::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -9940,7 +10095,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VlanInr::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -9970,7 +10125,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VlanInr::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -9982,7 +10137,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10014,7 +10169,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint16, "max"}
 {
 
-    yang_name = "uint16_rng_array"; yang_parent_name = "vlan-inr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint16_rng_array"; yang_parent_name = "vlan-inr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VlanInr::Uint16RngArray::~Uint16RngArray()
@@ -10023,6 +10178,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VlanInr::Uint16RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -10100,9 +10256,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDlci::FrDlci()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "fr-dlci"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fr-dlci"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDlci::~FrDlci()
@@ -10111,7 +10269,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDlci::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -10121,7 +10280,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDlci::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -10151,7 +10310,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDlci::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -10163,7 +10322,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10195,7 +10354,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint16, "max"}
 {
 
-    yang_name = "uint16_rng_array"; yang_parent_name = "fr-dlci"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint16_rng_array"; yang_parent_name = "fr-dlci"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDlci::Uint16RngArray::~Uint16RngArray()
@@ -10204,6 +10363,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDlci::Uint16RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -10286,7 +10446,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     mask{YType::uint16, "mask"}
 {
 
-    yang_name = "src-mac"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "src-mac"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcMac::~SrcMac()
@@ -10295,6 +10455,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcMac::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : mac_addr.getYLeafs())
     {
         if(leaf.is_set)
@@ -10394,7 +10555,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     mask{YType::uint16, "mask"}
 {
 
-    yang_name = "dst-mac"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dst-mac"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstMac::~DstMac()
@@ -10403,6 +10564,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstMac::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : mac_addr.getYLeafs())
     {
         if(leaf.is_set)
@@ -10501,7 +10663,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "atm-clp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atm-clp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AtmClp::~AtmClp()
@@ -10510,6 +10672,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AtmClp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -10587,7 +10750,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "fr-de"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fr-de"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDe::~FrDe()
@@ -10596,6 +10759,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FrDe::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -10673,7 +10837,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "ipv4-acl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-acl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Acl::~Ipv4Acl()
@@ -10682,6 +10846,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Acl::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -10759,7 +10924,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "ipv6-acl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-acl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Acl::~Ipv6Acl()
@@ -10768,6 +10933,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Acl::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -10845,7 +11011,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "ether-service-acl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ether-service-acl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::EtherServiceAcl::~EtherServiceAcl()
@@ -10854,6 +11020,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::EtherServiceAcl::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -10931,7 +11098,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "avail-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "avail-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AvailId::~AvailId()
@@ -10940,6 +11107,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AvailId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -11017,7 +11185,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "media-type"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "media-type"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MediaType::~MediaType()
@@ -11026,6 +11194,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::MediaType::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -11103,7 +11272,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint8_array{YType::uint8, "uint8_array"}
 {
 
-    yang_name = "subs-protocol"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subs-protocol"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SubsProtocol::~SubsProtocol()
@@ -11112,6 +11281,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SubsProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint8_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -11189,7 +11359,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "dnis"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dnis"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dnis::~Dnis()
@@ -11198,6 +11368,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Dnis::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -11275,7 +11446,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "dnis-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dnis-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DnisRegex::~DnisRegex()
@@ -11284,6 +11455,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DnisRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -11357,9 +11529,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Domain::Domain()
+    :
+    domain_array(this, {})
 {
 
-    yang_name = "domain"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "domain"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Domain::~Domain()
@@ -11368,7 +11542,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Domain::has_data() const
 {
-    for (std::size_t index=0; index<domain_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<domain_array.len(); index++)
     {
         if(domain_array[index]->has_data())
             return true;
@@ -11378,7 +11553,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Domain::has_operation() const
 {
-    for (std::size_t index=0; index<domain_array.size(); index++)
+    for (std::size_t index=0; index<domain_array.len(); index++)
     {
         if(domain_array[index]->has_operation())
             return true;
@@ -11408,7 +11583,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Domain::DomainArray>();
         c->parent = this;
-        domain_array.push_back(c);
+        domain_array.append(c);
         return c;
     }
 
@@ -11420,7 +11595,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : domain_array)
+    for (auto c : domain_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11452,7 +11627,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     format_name{YType::str, "format-name"}
 {
 
-    yang_name = "domain-array"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "domain-array"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Domain::DomainArray::~DomainArray()
@@ -11461,6 +11636,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Domain::DomainArray::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_name.is_set
 	|| format_name.is_set;
 }
@@ -11538,9 +11714,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DomainRegex::DomainRegex()
+    :
+    domain_array(this, {})
 {
 
-    yang_name = "domain-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "domain-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DomainRegex::~DomainRegex()
@@ -11549,7 +11727,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DomainRegex::has_data() const
 {
-    for (std::size_t index=0; index<domain_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<domain_array.len(); index++)
     {
         if(domain_array[index]->has_data())
             return true;
@@ -11559,7 +11738,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DomainRegex::has_operation() const
 {
-    for (std::size_t index=0; index<domain_array.size(); index++)
+    for (std::size_t index=0; index<domain_array.len(); index++)
     {
         if(domain_array[index]->has_operation())
             return true;
@@ -11589,7 +11768,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DomainRegex::DomainArray>();
         c->parent = this;
-        domain_array.push_back(c);
+        domain_array.append(c);
         return c;
     }
 
@@ -11601,7 +11780,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : domain_array)
+    for (auto c : domain_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11633,7 +11812,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     format_name{YType::str, "format-name"}
 {
 
-    yang_name = "domain-array"; yang_parent_name = "domain-regex"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "domain-array"; yang_parent_name = "domain-regex"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DomainRegex::DomainArray::~DomainArray()
@@ -11642,6 +11821,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DomainRegex::DomainArray::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_name.is_set
 	|| format_name.is_set;
 }
@@ -11719,9 +11899,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::NasPort::NasPort()
+    :
+    nas_port_array(this, {})
 {
 
-    yang_name = "nas-port"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nas-port"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::NasPort::~NasPort()
@@ -11730,7 +11912,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::NasPort::has_data() const
 {
-    for (std::size_t index=0; index<nas_port_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nas_port_array.len(); index++)
     {
         if(nas_port_array[index]->has_data())
             return true;
@@ -11740,7 +11923,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::NasPort::has_operation() const
 {
-    for (std::size_t index=0; index<nas_port_array.size(); index++)
+    for (std::size_t index=0; index<nas_port_array.len(); index++)
     {
         if(nas_port_array[index]->has_operation())
             return true;
@@ -11770,7 +11953,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::NasPort::NasPortArray>();
         c->parent = this;
-        nas_port_array.push_back(c);
+        nas_port_array.append(c);
         return c;
     }
 
@@ -11782,7 +11965,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nas_port_array)
+    for (auto c : nas_port_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11815,7 +11998,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     value_{YType::uint32, "value"}
 {
 
-    yang_name = "nas-port-array"; yang_parent_name = "nas-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nas-port-array"; yang_parent_name = "nas-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::NasPort::NasPortArray::~NasPortArray()
@@ -11824,6 +12007,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::NasPort::NasPortArray::has_data() const
 {
+    if (is_presence_container) return true;
     return sub_id.is_set
 	|| operator_.is_set
 	|| value_.is_set;
@@ -11918,7 +12102,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "service-name"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-name"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::ServiceName::~ServiceName()
@@ -11927,6 +12111,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::ServiceName::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -12004,7 +12189,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "service-name-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-name-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::ServiceNameRegex::~ServiceNameRegex()
@@ -12013,6 +12198,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::ServiceNameRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -12086,9 +12272,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv4::SrcAddrIpv4()
+    :
+    ipv4_addr_array(this, {})
 {
 
-    yang_name = "src-addr-ipv4"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "src-addr-ipv4"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv4::~SrcAddrIpv4()
@@ -12097,7 +12285,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv4::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_addr_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_addr_array.len(); index++)
     {
         if(ipv4_addr_array[index]->has_data())
             return true;
@@ -12107,7 +12296,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv4::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_addr_array.size(); index++)
+    for (std::size_t index=0; index<ipv4_addr_array.len(); index++)
     {
         if(ipv4_addr_array[index]->has_operation())
             return true;
@@ -12137,7 +12326,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv4::Ipv4AddrArray>();
         c->parent = this;
-        ipv4_addr_array.push_back(c);
+        ipv4_addr_array.append(c);
         return c;
     }
 
@@ -12149,7 +12338,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_addr_array)
+    for (auto c : ipv4_addr_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12181,7 +12370,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     mask{YType::str, "mask"}
 {
 
-    yang_name = "ipv4-addr-array"; yang_parent_name = "src-addr-ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-addr-array"; yang_parent_name = "src-addr-ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv4::Ipv4AddrArray::~Ipv4AddrArray()
@@ -12190,6 +12379,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv4::Ipv4AddrArray::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| mask.is_set;
 }
@@ -12267,9 +12457,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv4::DstAddrIpv4()
+    :
+    ipv4_addr_array(this, {})
 {
 
-    yang_name = "dst-addr-ipv4"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dst-addr-ipv4"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv4::~DstAddrIpv4()
@@ -12278,7 +12470,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv4::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_addr_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_addr_array.len(); index++)
     {
         if(ipv4_addr_array[index]->has_data())
             return true;
@@ -12288,7 +12481,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv4::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_addr_array.size(); index++)
+    for (std::size_t index=0; index<ipv4_addr_array.len(); index++)
     {
         if(ipv4_addr_array[index]->has_operation())
             return true;
@@ -12318,7 +12511,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv4::Ipv4AddrArray>();
         c->parent = this;
-        ipv4_addr_array.push_back(c);
+        ipv4_addr_array.append(c);
         return c;
     }
 
@@ -12330,7 +12523,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_addr_array)
+    for (auto c : ipv4_addr_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12362,7 +12555,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     mask{YType::str, "mask"}
 {
 
-    yang_name = "ipv4-addr-array"; yang_parent_name = "dst-addr-ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-addr-array"; yang_parent_name = "dst-addr-ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv4::Ipv4AddrArray::~Ipv4AddrArray()
@@ -12371,6 +12564,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv4::Ipv4AddrArray::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| mask.is_set;
 }
@@ -12448,9 +12642,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv6::SrcAddrIpv6()
+    :
+    ipv6_addr_array(this, {})
 {
 
-    yang_name = "src-addr-ipv6"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "src-addr-ipv6"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv6::~SrcAddrIpv6()
@@ -12459,7 +12655,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv6::has_data() const
 {
-    for (std::size_t index=0; index<ipv6_addr_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6_addr_array.len(); index++)
     {
         if(ipv6_addr_array[index]->has_data())
             return true;
@@ -12469,7 +12666,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv6::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6_addr_array.size(); index++)
+    for (std::size_t index=0; index<ipv6_addr_array.len(); index++)
     {
         if(ipv6_addr_array[index]->has_operation())
             return true;
@@ -12499,7 +12696,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv6::Ipv6AddrArray>();
         c->parent = this;
-        ipv6_addr_array.push_back(c);
+        ipv6_addr_array.append(c);
         return c;
     }
 
@@ -12511,7 +12708,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6_addr_array)
+    for (auto c : ipv6_addr_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12543,7 +12740,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     mask{YType::uint32, "mask"}
 {
 
-    yang_name = "ipv6-addr-array"; yang_parent_name = "src-addr-ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-addr-array"; yang_parent_name = "src-addr-ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv6::Ipv6AddrArray::~Ipv6AddrArray()
@@ -12552,6 +12749,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv6::Ipv6AddrArray::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| mask.is_set;
 }
@@ -12629,9 +12827,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv6::DstAddrIpv6()
+    :
+    ipv6_addr_array(this, {})
 {
 
-    yang_name = "dst-addr-ipv6"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dst-addr-ipv6"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv6::~DstAddrIpv6()
@@ -12640,7 +12840,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv6::has_data() const
 {
-    for (std::size_t index=0; index<ipv6_addr_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6_addr_array.len(); index++)
     {
         if(ipv6_addr_array[index]->has_data())
             return true;
@@ -12650,7 +12851,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv6::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6_addr_array.size(); index++)
+    for (std::size_t index=0; index<ipv6_addr_array.len(); index++)
     {
         if(ipv6_addr_array[index]->has_operation())
             return true;
@@ -12680,7 +12881,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv6::Ipv6AddrArray>();
         c->parent = this;
-        ipv6_addr_array.push_back(c);
+        ipv6_addr_array.append(c);
         return c;
     }
 
@@ -12692,7 +12893,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6_addr_array)
+    for (auto c : ipv6_addr_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12724,7 +12925,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     mask{YType::uint32, "mask"}
 {
 
-    yang_name = "ipv6-addr-array"; yang_parent_name = "dst-addr-ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-addr-array"; yang_parent_name = "dst-addr-ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv6::Ipv6AddrArray::~Ipv6AddrArray()
@@ -12733,6 +12934,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv6::Ipv6AddrArray::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| mask.is_set;
 }
@@ -12810,9 +13012,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrMac::SrcAddrMac()
+    :
+    mac_addr_array(this, {})
 {
 
-    yang_name = "src-addr-mac"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "src-addr-mac"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrMac::~SrcAddrMac()
@@ -12821,7 +13025,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrMac::has_data() const
 {
-    for (std::size_t index=0; index<mac_addr_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_addr_array.len(); index++)
     {
         if(mac_addr_array[index]->has_data())
             return true;
@@ -12831,7 +13036,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrMac::has_operation() const
 {
-    for (std::size_t index=0; index<mac_addr_array.size(); index++)
+    for (std::size_t index=0; index<mac_addr_array.len(); index++)
     {
         if(mac_addr_array[index]->has_operation())
             return true;
@@ -12861,7 +13066,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrMac::MacAddrArray>();
         c->parent = this;
-        mac_addr_array.push_back(c);
+        mac_addr_array.append(c);
         return c;
     }
 
@@ -12873,7 +13078,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mac_addr_array)
+    for (auto c : mac_addr_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12905,7 +13110,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     mask{YType::uint16, "mask"}
 {
 
-    yang_name = "mac-addr-array"; yang_parent_name = "src-addr-mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-addr-array"; yang_parent_name = "src-addr-mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrMac::MacAddrArray::~MacAddrArray()
@@ -12914,6 +13119,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrMac::MacAddrArray::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : mac_addr.getYLeafs())
     {
         if(leaf.is_set)
@@ -13012,7 +13218,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "timer"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timer"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Timer::~Timer()
@@ -13021,6 +13227,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Timer::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -13098,7 +13305,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "timer-regexp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timer-regexp"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TimerRegexp::~TimerRegexp()
@@ -13107,6 +13314,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TimerRegexp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -13184,7 +13392,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "tunnel-name"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-name"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TunnelName::~TunnelName()
@@ -13193,6 +13401,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TunnelName::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -13270,7 +13479,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "tunnel-name-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-name-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TunnelNameRegex::~TunnelNameRegex()
@@ -13279,6 +13488,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::TunnelNameRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -13356,7 +13566,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "user-name"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "user-name"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UserName::~UserName()
@@ -13365,6 +13575,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UserName::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -13442,7 +13653,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "user-name-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "user-name-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UserNameRegex::~UserNameRegex()
@@ -13451,6 +13662,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UserNameRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -13528,7 +13740,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "auth-username"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auth-username"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthUsername::~AuthUsername()
@@ -13537,6 +13749,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthUsername::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -13614,7 +13827,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "auth-username-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auth-username-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthUsernameRegex::~AuthUsernameRegex()
@@ -13623,6 +13836,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthUsernameRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -13700,7 +13914,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "unauth-username"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unauth-username"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthUsername::~UnauthUsername()
@@ -13709,6 +13923,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthUsername::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -13786,7 +14001,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "unauth-username-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unauth-username-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthUsernameRegex::~UnauthUsernameRegex()
@@ -13795,6 +14010,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthUsernameRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -13872,7 +14088,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "auth-domain"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auth-domain"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthDomain::~AuthDomain()
@@ -13881,6 +14097,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthDomain::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -13958,7 +14175,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "auth-domain-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auth-domain-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthDomainRegex::~AuthDomainRegex()
@@ -13967,6 +14184,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AuthDomainRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -14044,7 +14262,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "unauth-domain"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unauth-domain"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthDomain::~UnauthDomain()
@@ -14053,6 +14271,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthDomain::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -14130,7 +14349,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "unauth-domain-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unauth-domain-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthDomainRegex::~UnauthDomainRegex()
@@ -14139,6 +14358,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::UnauthDomainRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -14216,7 +14436,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "vendor-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vendor-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VendorId::~VendorId()
@@ -14225,6 +14445,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VendorId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -14302,7 +14523,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "vendor-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vendor-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VendorIdRegex::~VendorIdRegex()
@@ -14311,6 +14532,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::VendorIdRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -14388,7 +14610,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "access-interface"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-interface"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AccessInterface::~AccessInterface()
@@ -14397,6 +14619,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::AccessInterface::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -14474,7 +14697,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "input-interface"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-interface"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::InputInterface::~InputInterface()
@@ -14483,6 +14706,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::InputInterface::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -14560,7 +14784,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     uint64_array{YType::uint64, "uint64_array"}
 {
 
-    yang_name = "input-intfhdl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-intfhdl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::InputIntfhdl::~InputIntfhdl()
@@ -14569,6 +14793,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::InputIntfhdl::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint64_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -14642,9 +14867,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::Ethertype()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "ethertype"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethertype"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::~Ethertype()
@@ -14653,7 +14880,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -14663,7 +14891,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -14693,7 +14921,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -14705,7 +14933,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14737,7 +14965,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint16, "max"}
 {
 
-    yang_name = "uint16_rng_array"; yang_parent_name = "ethertype"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint16_rng_array"; yang_parent_name = "ethertype"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::Uint16RngArray::~Uint16RngArray()
@@ -14746,6 +14974,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::Uint16RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -14826,12 +15055,12 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     :
     max_count{YType::uint16, "max-count"},
     idle_timeout{YType::uint16, "idle-timeout"}
-    	,
+        ,
     flow_keys(std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowKeyData::FlowKeys>())
 {
     flow_keys->parent = this;
 
-    yang_name = "flow-key-data"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-key-data"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowKeyData::~FlowKeyData()
@@ -14840,6 +15069,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowKeyData::has_data() const
 {
+    if (is_presence_container) return true;
     return max_count.is_set
 	|| idle_timeout.is_set
 	|| (flow_keys !=  nullptr && flow_keys->has_data());
@@ -14938,7 +15168,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     num{YType::uint8, "num"}
 {
 
-    yang_name = "flow-keys"; yang_parent_name = "flow-key-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-keys"; yang_parent_name = "flow-key-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowKeyData::FlowKeys::~FlowKeys()
@@ -14947,6 +15177,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::FlowKeyData::FlowKeys::has_data() const
 {
+    if (is_presence_container) return true;
     return keys.is_set
 	|| num.is_set;
 }
@@ -15028,7 +15259,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "dhcp-client-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-client-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DhcpClientId::~DhcpClientId()
@@ -15037,6 +15268,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DhcpClientId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -15114,7 +15346,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "dhcp-client-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-client-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DhcpClientIdRegex::~DhcpClientIdRegex()
@@ -15123,6 +15355,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DhcpClientIdRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -15200,7 +15433,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "circuit-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::CircuitId::~CircuitId()
@@ -15209,6 +15442,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::CircuitId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -15286,7 +15520,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "circuit-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::CircuitIdRegex::~CircuitIdRegex()
@@ -15295,6 +15529,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::CircuitIdRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -15372,7 +15607,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "remote-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::RemoteId::~RemoteId()
@@ -15381,6 +15616,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::RemoteId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -15458,7 +15694,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "remote-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::RemoteIdRegex::~RemoteIdRegex()
@@ -15467,6 +15703,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::RemoteIdRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -15540,9 +15777,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::SrcPort()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "src-port"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "src-port"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::~SrcPort()
@@ -15551,7 +15790,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -15561,7 +15801,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -15591,7 +15831,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -15603,7 +15843,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15635,7 +15875,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
     max{YType::uint16, "max"}
 {
 
-    yang_name = "uint16_rng_array"; yang_parent_name = "src-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint16_rng_array"; yang_parent_name = "src-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::Uint16RngArray::~Uint16RngArray()
@@ -15644,6 +15884,7 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::Uint16RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -15721,9 +15962,11 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstPort::DstPort()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "dst-port"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dst-port"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstPort::~DstPort()
@@ -15732,7 +15975,8 @@ PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapApplied
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstPort::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -15742,7 +15986,7 @@ bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAp
 
 bool PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstPort::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -15772,7 +16016,7 @@ std::shared_ptr<Entity> PolicyManager::Global::TransientPolicyMapAppliedTypes::T
     {
         auto c = std::make_shared<PolicyManager::Global::TransientPolicyMapAppliedTypes::TransientPolicyMapAppliedType::TransientInterfaceNames::TransientInterfaceName::TransientOutput::Detail::Pmaps::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ClEncode::InlineCmap::MatchInfop::ClassMatchInfoSt::MatchData::DstPort::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -15784,7 +16028,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::TransientP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;

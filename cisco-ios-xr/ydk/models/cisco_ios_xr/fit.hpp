@@ -33,7 +33,7 @@ class Set : public ydk::Entity
 
         class Asic; //type: Set::Asic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic> > asic;
+        ydk::YList asic;
         
 }; // Set
 
@@ -58,7 +58,7 @@ class Set::Asic : public ydk::Entity
         ydk::YLeaf asic_name; //type: string
         class Instance; //type: Set::Asic::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance> > instance;
+        ydk::YList instance;
         
 }; // Set::Asic
 
@@ -105,7 +105,7 @@ class Set::Asic::Instance::FaultInjection : public ydk::Entity
 
         class Module; //type: Set::Asic::Instance::FaultInjection::Module
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module> > module;
+        ydk::YList module;
         
 }; // Set::Asic::Instance::FaultInjection
 
@@ -181,7 +181,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc : public ydk::
         class BlockNameLst; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst
 
         std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All> all;
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst> > block_name_lst;
+        ydk::YList block_name_lst;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc
 
@@ -205,8 +205,8 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All : public 
         class Threshold; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold> > threshold;
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location> > location;
+        ydk::YList threshold;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All
 
@@ -230,7 +230,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshol
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold
 
@@ -325,7 +325,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst:
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location
 
         std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One
 
@@ -348,7 +348,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst:
 
         class ErrorNumber; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate
 
@@ -372,7 +372,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst:
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber
 
@@ -396,7 +396,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst:
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration
 
@@ -463,7 +463,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst:
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location
 
         std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous
 
@@ -486,7 +486,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst:
 
         class ErrorNumber; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate
 
@@ -510,7 +510,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst:
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber
 
@@ -534,7 +534,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst:
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
@@ -599,7 +599,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst:
 
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop
 
@@ -645,7 +645,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Parity : public yd
         class BlockNameLst; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst
 
         std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All> all;
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst> > block_name_lst;
+        ydk::YList block_name_lst;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Parity
 
@@ -669,8 +669,8 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All : publ
         class Threshold; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold> > threshold;
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location> > location;
+        ydk::YList threshold;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All
 
@@ -694,7 +694,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Thres
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold
 
@@ -789,7 +789,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameL
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location
 
         std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One
 
@@ -812,7 +812,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameL
 
         class ErrorNumber; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate
 
@@ -836,7 +836,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameL
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber
 
@@ -860,7 +860,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameL
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration
 
@@ -927,7 +927,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameL
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location
 
         std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous
 
@@ -950,7 +950,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameL
 
         class ErrorNumber; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate
 
@@ -974,7 +974,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameL
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber
 
@@ -998,7 +998,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameL
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
@@ -1063,7 +1063,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameL
 
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop
 
@@ -1109,7 +1109,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Other : public ydk
         class BlockNameLst; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 
         std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All> all;
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst> > block_name_lst;
+        ydk::YList block_name_lst;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Other
 
@@ -1133,8 +1133,8 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All : publi
         class Threshold; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold> > threshold;
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location> > location;
+        ydk::YList threshold;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All
 
@@ -1158,7 +1158,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Thresh
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold
 
@@ -1253,7 +1253,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLs
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location
 
         std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One
 
@@ -1276,7 +1276,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLs
 
         class ErrorNumber; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate
 
@@ -1300,7 +1300,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLs
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber
 
@@ -1324,7 +1324,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLs
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration
 
@@ -1391,7 +1391,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLs
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location
 
         std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous
 
@@ -1414,7 +1414,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLs
 
         class ErrorNumber; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate
 
@@ -1438,7 +1438,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLs
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber
 
@@ -1462,7 +1462,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLs
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
@@ -1527,7 +1527,7 @@ class Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLs
 
         class Location; //type: Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::fit::Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location> > location;
+        ydk::YList location;
         
 }; // Set::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop
 

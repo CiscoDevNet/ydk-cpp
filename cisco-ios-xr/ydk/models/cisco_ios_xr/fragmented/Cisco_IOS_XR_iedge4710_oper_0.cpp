@@ -15,12 +15,12 @@ namespace Cisco_IOS_XR_iedge4710_oper {
 Subscriber::Subscriber()
     :
     manager(std::make_shared<Subscriber::Manager>())
-	,session(std::make_shared<Subscriber::Session>())
+    , session(std::make_shared<Subscriber::Session>())
 {
     manager->parent = this;
     session->parent = this;
 
-    yang_name = "subscriber"; yang_parent_name = "Cisco-IOS-XR-iedge4710-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "subscriber"; yang_parent_name = "Cisco-IOS-XR-iedge4710-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Subscriber::~Subscriber()
@@ -29,6 +29,7 @@ Subscriber::~Subscriber()
 
 bool Subscriber::has_data() const
 {
+    if (is_presence_container) return true;
     return (manager !=  nullptr && manager->has_data())
 	|| (session !=  nullptr && session->has_data());
 }
@@ -142,7 +143,7 @@ Subscriber::Manager::Manager()
 {
     nodes->parent = this;
 
-    yang_name = "manager"; yang_parent_name = "subscriber"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "manager"; yang_parent_name = "subscriber"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Subscriber::Manager::~Manager()
@@ -151,6 +152,7 @@ Subscriber::Manager::~Manager()
 
 bool Subscriber::Manager::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -225,9 +227,11 @@ bool Subscriber::Manager::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Subscriber::Manager::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Subscriber::Manager::Nodes::~Nodes()
@@ -236,7 +240,8 @@ Subscriber::Manager::Nodes::~Nodes()
 
 bool Subscriber::Manager::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -246,7 +251,7 @@ bool Subscriber::Manager::Nodes::has_data() const
 
 bool Subscriber::Manager::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -283,7 +288,7 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::get_child_by_name(const std:
     {
         auto c = std::make_shared<Subscriber::Manager::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -295,7 +300,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -324,12 +329,12 @@ bool Subscriber::Manager::Nodes::has_leaf_or_child_of_name(const std::string & n
 Subscriber::Manager::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Subscriber::Manager::Nodes::Node::~Node()
@@ -338,6 +343,7 @@ Subscriber::Manager::Nodes::Node::~Node()
 
 bool Subscriber::Manager::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -359,7 +365,8 @@ std::string Subscriber::Manager::Nodes::Node::get_absolute_path() const
 std::string Subscriber::Manager::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -427,14 +434,14 @@ bool Subscriber::Manager::Nodes::Node::has_leaf_or_child_of_name(const std::stri
 Subscriber::Manager::Nodes::Node::Statistics::Statistics()
     :
     aaa(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa>())
-	,aggregate_summary(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::AggregateSummary>())
-	,srg(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Srg>())
+    , aggregate_summary(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::AggregateSummary>())
+    , srg(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Srg>())
 {
     aaa->parent = this;
     aggregate_summary->parent = this;
     srg->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::~Statistics()
@@ -443,6 +450,7 @@ Subscriber::Manager::Nodes::Node::Statistics::~Statistics()
 
 bool Subscriber::Manager::Nodes::Node::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (aaa !=  nullptr && aaa->has_data())
 	|| (aggregate_summary !=  nullptr && aggregate_summary->has_data())
 	|| (srg !=  nullptr && srg->has_data());
@@ -544,17 +552,17 @@ bool Subscriber::Manager::Nodes::Node::Statistics::has_leaf_or_child_of_name(con
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::Aaa()
     :
     aggregate_accounting(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting>())
-	,authentication(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authentication>())
-	,aggregate_mobility(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateMobility>())
-	,aggregate_authentication(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentication>())
-	,accounting_stats_all(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll>())
-	,change_of_authorization(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization>())
-	,authorization(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authorization>())
-	,aggregate_authorization(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthorization>())
-	,aggregate_accounting_stats_all(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll>())
-	,accounting(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting>())
-	,mobility(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Mobility>())
-	,aggregate_change_of_authorization(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization>())
+    , authentication(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authentication>())
+    , aggregate_mobility(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateMobility>())
+    , aggregate_authentication(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentication>())
+    , accounting_stats_all(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll>())
+    , change_of_authorization(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization>())
+    , authorization(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authorization>())
+    , aggregate_authorization(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthorization>())
+    , aggregate_accounting_stats_all(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll>())
+    , accounting(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting>())
+    , mobility(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Mobility>())
+    , aggregate_change_of_authorization(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization>())
 {
     aggregate_accounting->parent = this;
     authentication->parent = this;
@@ -569,7 +577,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Aaa()
     mobility->parent = this;
     aggregate_change_of_authorization->parent = this;
 
-    yang_name = "aaa"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aaa"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::~Aaa()
@@ -578,6 +586,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::~Aaa()
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::has_data() const
 {
+    if (is_presence_container) return true;
     return (aggregate_accounting !=  nullptr && aggregate_accounting->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (aggregate_mobility !=  nullptr && aggregate_mobility->has_data())
@@ -827,13 +836,13 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Aggregat
     stopped_sessions{YType::uint64, "stopped-sessions"},
     policy_plane_errored_requests{YType::uint64, "policy-plane-errored-requests"},
     policy_plane_unknown_requests{YType::uint64, "policy-plane-unknown-requests"}
-    	,
+        ,
     start(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Start>())
-	,stop(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Stop>())
-	,interim(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Interim>())
-	,pass_through(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::PassThrough>())
-	,update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Update>())
-	,interim_inflight(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::InterimInflight>())
+    , stop(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Stop>())
+    , interim(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Interim>())
+    , pass_through(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::PassThrough>())
+    , update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Update>())
+    , interim_inflight(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::InterimInflight>())
 {
     start->parent = this;
     stop->parent = this;
@@ -842,7 +851,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Aggregat
     update->parent = this;
     interim_inflight->parent = this;
 
-    yang_name = "aggregate-accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregate-accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::~AggregateAccounting()
@@ -851,6 +860,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::~Aggrega
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::has_data() const
 {
+    if (is_presence_container) return true;
     return active_sessions.is_set
 	|| started_sessions.is_set
 	|| stopped_sessions.is_set
@@ -1072,7 +1082,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Start::S
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "start"; yang_parent_name = "aggregate-accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start"; yang_parent_name = "aggregate-accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Start::~Start()
@@ -1081,6 +1091,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Start::~
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Start::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -1219,7 +1230,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Stop::St
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "stop"; yang_parent_name = "aggregate-accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop"; yang_parent_name = "aggregate-accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Stop::~Stop()
@@ -1228,6 +1239,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Stop::~S
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Stop::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -1366,7 +1378,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Interim:
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "interim"; yang_parent_name = "aggregate-accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interim"; yang_parent_name = "aggregate-accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Interim::~Interim()
@@ -1375,6 +1387,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Interim:
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Interim::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -1513,7 +1526,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::PassThro
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "pass-through"; yang_parent_name = "aggregate-accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pass-through"; yang_parent_name = "aggregate-accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::PassThrough::~PassThrough()
@@ -1522,6 +1535,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::PassThro
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::PassThrough::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -1660,7 +1674,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Update::
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "update"; yang_parent_name = "aggregate-accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "update"; yang_parent_name = "aggregate-accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Update::~Update()
@@ -1669,6 +1683,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Update::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Update::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -1807,7 +1822,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::InterimI
     low_water_mark_quota_of_requests{YType::uint32, "low-water-mark-quota-of-requests"}
 {
 
-    yang_name = "interim-inflight"; yang_parent_name = "aggregate-accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interim-inflight"; yang_parent_name = "aggregate-accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::InterimInflight::~InterimInflight()
@@ -1816,6 +1831,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::InterimI
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::InterimInflight::has_data() const
 {
+    if (is_presence_container) return true;
     return quota_exhausts.is_set
 	|| denied_requests.is_set
 	|| accepted_requests.is_set
@@ -1956,7 +1972,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authentication::Authenticatio
     terminated_requests{YType::uint64, "terminated-requests"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authentication::~Authentication()
@@ -1965,6 +1981,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authentication::~Authenticati
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_requests.is_set
 	|| accepted_requests.is_set
 	|| successful_requests.is_set
@@ -2127,7 +2144,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateMobility::AggregateM
     receive_response_failures{YType::uint64, "receive-response-failures"}
 {
 
-    yang_name = "aggregate-mobility"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregate-mobility"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateMobility::~AggregateMobility()
@@ -2136,6 +2153,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateMobility::~Aggregate
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateMobility::has_data() const
 {
+    if (is_presence_container) return true;
     return send_request_successes.is_set
 	|| send_request_failures.is_set
 	|| receive_response_successes.is_set
@@ -2250,7 +2268,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentication::Aggr
     terminated_requests{YType::uint64, "terminated-requests"}
 {
 
-    yang_name = "aggregate-authentication"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregate-authentication"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentication::~AggregateAuthentication()
@@ -2259,6 +2277,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentication::~Agg
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentication::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_requests.is_set
 	|| accepted_requests.is_set
 	|| successful_requests.is_set
@@ -2416,10 +2435,10 @@ bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentication:
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatsAll()
     :
     accounting_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics>())
-	,authentication_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthenticationStatistics>())
-	,authorization_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthorizationStatistics>())
-	,change_of_authorization_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics>())
-	,mobility_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::MobilityStatistics>())
+    , authentication_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthenticationStatistics>())
+    , authorization_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthorizationStatistics>())
+    , change_of_authorization_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics>())
+    , mobility_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::MobilityStatistics>())
 {
     accounting_statistics->parent = this;
     authentication_statistics->parent = this;
@@ -2427,7 +2446,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
     change_of_authorization_statistics->parent = this;
     mobility_statistics->parent = this;
 
-    yang_name = "accounting-stats-all"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting-stats-all"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::~AccountingStatsAll()
@@ -2436,6 +2455,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::~Accounti
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::has_data() const
 {
+    if (is_presence_container) return true;
     return (accounting_statistics !=  nullptr && accounting_statistics->has_data())
 	|| (authentication_statistics !=  nullptr && authentication_statistics->has_data())
 	|| (authorization_statistics !=  nullptr && authorization_statistics->has_data())
@@ -2573,13 +2593,13 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
     stopped_sessions{YType::uint64, "stopped-sessions"},
     policy_plane_errored_requests{YType::uint64, "policy-plane-errored-requests"},
     policy_plane_unknown_requests{YType::uint64, "policy-plane-unknown-requests"}
-    	,
+        ,
     start(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Start>())
-	,stop(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Stop>())
-	,interim(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Interim>())
-	,pass_through(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::PassThrough>())
-	,update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Update>())
-	,interim_inflight(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::InterimInflight>())
+    , stop(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Stop>())
+    , interim(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Interim>())
+    , pass_through(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::PassThrough>())
+    , update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Update>())
+    , interim_inflight(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::InterimInflight>())
 {
     start->parent = this;
     stop->parent = this;
@@ -2588,7 +2608,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
     update->parent = this;
     interim_inflight->parent = this;
 
-    yang_name = "accounting-statistics"; yang_parent_name = "accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting-statistics"; yang_parent_name = "accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::~AccountingStatistics()
@@ -2597,6 +2617,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return active_sessions.is_set
 	|| started_sessions.is_set
 	|| stopped_sessions.is_set
@@ -2818,7 +2839,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "start"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Start::~Start()
@@ -2827,6 +2848,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Start::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -2965,7 +2987,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "stop"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Stop::~Stop()
@@ -2974,6 +2996,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Stop::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -3112,7 +3135,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "interim"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interim"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Interim::~Interim()
@@ -3121,6 +3144,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Interim::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -3259,7 +3283,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "pass-through"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pass-through"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::PassThrough::~PassThrough()
@@ -3268,6 +3292,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::PassThrough::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -3406,7 +3431,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "update"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "update"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Update::~Update()
@@ -3415,6 +3440,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Update::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -3553,7 +3579,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
     low_water_mark_quota_of_requests{YType::uint32, "low-water-mark-quota-of-requests"}
 {
 
-    yang_name = "interim-inflight"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interim-inflight"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::InterimInflight::~InterimInflight()
@@ -3562,6 +3588,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Accountin
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::InterimInflight::has_data() const
 {
+    if (is_presence_container) return true;
     return quota_exhausts.is_set
 	|| denied_requests.is_set
 	|| accepted_requests.is_set
@@ -3702,7 +3729,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Authentic
     terminated_requests{YType::uint64, "terminated-requests"}
 {
 
-    yang_name = "authentication-statistics"; yang_parent_name = "accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication-statistics"; yang_parent_name = "accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthenticationStatistics::~AuthenticationStatistics()
@@ -3711,6 +3738,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Authentic
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthenticationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_requests.is_set
 	|| accepted_requests.is_set
 	|| successful_requests.is_set
@@ -3877,7 +3905,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Authoriza
     terminated_requests{YType::uint64, "terminated-requests"}
 {
 
-    yang_name = "authorization-statistics"; yang_parent_name = "accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorization-statistics"; yang_parent_name = "accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthorizationStatistics::~AuthorizationStatistics()
@@ -3886,6 +3914,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::Authoriza
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthorizationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_requests.is_set
 	|| accepted_requests.is_set
 	|| successful_requests.is_set
@@ -4052,15 +4081,15 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
     no_cmd_resps{YType::uint64, "no-cmd-resps"},
     no_session_found_resps{YType::uint64, "no-session-found-resps"},
     no_session_peer_resps{YType::uint64, "no-session-peer-resps"}
-    	,
+        ,
     account_logon(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon>())
-	,account_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff>())
-	,account_update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate>())
-	,session_disconnect(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect>())
-	,single_service_logon(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon>())
-	,single_service_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff>())
-	,single_service_modify(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify>())
-	,service_multi(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti>())
+    , account_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff>())
+    , account_update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate>())
+    , session_disconnect(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect>())
+    , single_service_logon(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon>())
+    , single_service_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff>())
+    , single_service_modify(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify>())
+    , service_multi(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti>())
 {
     account_logon->parent = this;
     account_logoff->parent = this;
@@ -4071,7 +4100,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
     single_service_modify->parent = this;
     service_multi->parent = this;
 
-    yang_name = "change-of-authorization-statistics"; yang_parent_name = "accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "change-of-authorization-statistics"; yang_parent_name = "accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::~ChangeOfAuthorizationStatistics()
@@ -4080,6 +4109,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_account_cmd_resps.is_set
 	|| unknown_service_cmd_resps.is_set
 	|| unknown_cmd_resps.is_set
@@ -4395,7 +4425,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "account-logon"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account-logon"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::~AccountLogon()
@@ -4404,6 +4434,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -4500,7 +4531,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "account-logoff"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account-logoff"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::~AccountLogoff()
@@ -4509,6 +4540,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -4605,7 +4637,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "account-update"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account-update"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::~AccountUpdate()
@@ -4614,6 +4646,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -4710,7 +4743,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "session-disconnect"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-disconnect"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::~SessionDisconnect()
@@ -4719,6 +4752,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -4815,7 +4849,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "single-service-logon"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-service-logon"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::~SingleServiceLogon()
@@ -4824,6 +4858,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -4920,7 +4955,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "single-service-logoff"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-service-logoff"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::~SingleServiceLogoff()
@@ -4929,6 +4964,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -5025,7 +5061,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "single-service-modify"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-service-modify"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::~SingleServiceModify()
@@ -5034,6 +5070,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -5130,7 +5167,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "service-multi"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-multi"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::~ServiceMulti()
@@ -5139,6 +5176,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfA
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -5236,7 +5274,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::MobilityS
     receive_response_failures{YType::uint64, "receive-response-failures"}
 {
 
-    yang_name = "mobility-statistics"; yang_parent_name = "accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mobility-statistics"; yang_parent_name = "accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::MobilityStatistics::~MobilityStatistics()
@@ -5245,6 +5283,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::MobilityS
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::MobilityStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return send_request_successes.is_set
 	|| send_request_failures.is_set
 	|| receive_response_successes.is_set
@@ -5359,15 +5398,15 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Change
     no_cmd_resps{YType::uint64, "no-cmd-resps"},
     no_session_found_resps{YType::uint64, "no-session-found-resps"},
     no_session_peer_resps{YType::uint64, "no-session-peer-resps"}
-    	,
+        ,
     account_logon(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogon>())
-	,account_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogoff>())
-	,account_update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountUpdate>())
-	,session_disconnect(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SessionDisconnect>())
-	,single_service_logon(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogon>())
-	,single_service_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogoff>())
-	,single_service_modify(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceModify>())
-	,service_multi(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::ServiceMulti>())
+    , account_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogoff>())
+    , account_update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountUpdate>())
+    , session_disconnect(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SessionDisconnect>())
+    , single_service_logon(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogon>())
+    , single_service_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogoff>())
+    , single_service_modify(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceModify>())
+    , service_multi(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::ServiceMulti>())
 {
     account_logon->parent = this;
     account_logoff->parent = this;
@@ -5378,7 +5417,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Change
     single_service_modify->parent = this;
     service_multi->parent = this;
 
-    yang_name = "change-of-authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "change-of-authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::~ChangeOfAuthorization()
@@ -5387,6 +5426,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::~Chang
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_account_cmd_resps.is_set
 	|| unknown_service_cmd_resps.is_set
 	|| unknown_cmd_resps.is_set
@@ -5702,7 +5742,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Accoun
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "account-logon"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account-logon"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogon::~AccountLogon()
@@ -5711,6 +5751,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Accoun
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogon::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -5807,7 +5848,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Accoun
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "account-logoff"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account-logoff"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogoff::~AccountLogoff()
@@ -5816,6 +5857,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Accoun
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogoff::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -5912,7 +5954,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Accoun
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "account-update"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account-update"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountUpdate::~AccountUpdate()
@@ -5921,6 +5963,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Accoun
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountUpdate::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -6017,7 +6060,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Sessio
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "session-disconnect"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-disconnect"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SessionDisconnect::~SessionDisconnect()
@@ -6026,6 +6069,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Sessio
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SessionDisconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -6122,7 +6166,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Single
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "single-service-logon"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-service-logon"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogon::~SingleServiceLogon()
@@ -6131,6 +6175,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Single
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogon::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -6227,7 +6272,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Single
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "single-service-logoff"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-service-logoff"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogoff::~SingleServiceLogoff()
@@ -6236,6 +6281,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Single
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogoff::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -6332,7 +6378,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Single
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "single-service-modify"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-service-modify"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceModify::~SingleServiceModify()
@@ -6341,6 +6387,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Single
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceModify::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -6437,7 +6484,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Servic
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "service-multi"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-multi"; yang_parent_name = "change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::ServiceMulti::~ServiceMulti()
@@ -6446,6 +6493,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::Servic
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::ServiceMulti::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -6547,7 +6595,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authorization::Authorization(
     terminated_requests{YType::uint64, "terminated-requests"}
 {
 
-    yang_name = "authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authorization::~Authorization()
@@ -6556,6 +6604,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authorization::~Authorization
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authorization::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_requests.is_set
 	|| accepted_requests.is_set
 	|| successful_requests.is_set
@@ -6722,7 +6771,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthorization::Aggre
     terminated_requests{YType::uint64, "terminated-requests"}
 {
 
-    yang_name = "aggregate-authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregate-authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthorization::~AggregateAuthorization()
@@ -6731,6 +6780,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthorization::~Aggr
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthorization::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_requests.is_set
 	|| accepted_requests.is_set
 	|| successful_requests.is_set
@@ -6888,10 +6938,10 @@ bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthorization::
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AggregateAccountingStatsAll()
     :
     accounting_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics>())
-	,authentication_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthenticationStatistics>())
-	,authorization_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthorizationStatistics>())
-	,change_of_authorization_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics>())
-	,mobility_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::MobilityStatistics>())
+    , authentication_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthenticationStatistics>())
+    , authorization_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthorizationStatistics>())
+    , change_of_authorization_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics>())
+    , mobility_statistics(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::MobilityStatistics>())
 {
     accounting_statistics->parent = this;
     authentication_statistics->parent = this;
@@ -6899,7 +6949,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     change_of_authorization_statistics->parent = this;
     mobility_statistics->parent = this;
 
-    yang_name = "aggregate-accounting-stats-all"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregate-accounting-stats-all"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::~AggregateAccountingStatsAll()
@@ -6908,6 +6958,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::has_data() const
 {
+    if (is_presence_container) return true;
     return (accounting_statistics !=  nullptr && accounting_statistics->has_data())
 	|| (authentication_statistics !=  nullptr && authentication_statistics->has_data())
 	|| (authorization_statistics !=  nullptr && authorization_statistics->has_data())
@@ -7045,13 +7096,13 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     stopped_sessions{YType::uint64, "stopped-sessions"},
     policy_plane_errored_requests{YType::uint64, "policy-plane-errored-requests"},
     policy_plane_unknown_requests{YType::uint64, "policy-plane-unknown-requests"}
-    	,
+        ,
     start(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Start>())
-	,stop(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Stop>())
-	,interim(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Interim>())
-	,pass_through(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::PassThrough>())
-	,update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Update>())
-	,interim_inflight(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::InterimInflight>())
+    , stop(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Stop>())
+    , interim(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Interim>())
+    , pass_through(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::PassThrough>())
+    , update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Update>())
+    , interim_inflight(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::InterimInflight>())
 {
     start->parent = this;
     stop->parent = this;
@@ -7060,7 +7111,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     update->parent = this;
     interim_inflight->parent = this;
 
-    yang_name = "accounting-statistics"; yang_parent_name = "aggregate-accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting-statistics"; yang_parent_name = "aggregate-accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::~AccountingStatistics()
@@ -7069,6 +7120,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return active_sessions.is_set
 	|| started_sessions.is_set
 	|| stopped_sessions.is_set
@@ -7290,7 +7342,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "start"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Start::~Start()
@@ -7299,6 +7351,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Start::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -7437,7 +7490,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "stop"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Stop::~Stop()
@@ -7446,6 +7499,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Stop::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -7584,7 +7638,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "interim"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interim"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Interim::~Interim()
@@ -7593,6 +7647,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Interim::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -7731,7 +7786,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "pass-through"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pass-through"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::PassThrough::~PassThrough()
@@ -7740,6 +7795,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::PassThrough::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -7878,7 +7934,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "update"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "update"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Update::~Update()
@@ -7887,6 +7943,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Update::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -8025,7 +8082,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     low_water_mark_quota_of_requests{YType::uint32, "low-water-mark-quota-of-requests"}
 {
 
-    yang_name = "interim-inflight"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interim-inflight"; yang_parent_name = "accounting-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::InterimInflight::~InterimInflight()
@@ -8034,6 +8091,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::InterimInflight::has_data() const
 {
+    if (is_presence_container) return true;
     return quota_exhausts.is_set
 	|| denied_requests.is_set
 	|| accepted_requests.is_set
@@ -8174,7 +8232,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     terminated_requests{YType::uint64, "terminated-requests"}
 {
 
-    yang_name = "authentication-statistics"; yang_parent_name = "aggregate-accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication-statistics"; yang_parent_name = "aggregate-accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthenticationStatistics::~AuthenticationStatistics()
@@ -8183,6 +8241,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthenticationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_requests.is_set
 	|| accepted_requests.is_set
 	|| successful_requests.is_set
@@ -8349,7 +8408,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     terminated_requests{YType::uint64, "terminated-requests"}
 {
 
-    yang_name = "authorization-statistics"; yang_parent_name = "aggregate-accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorization-statistics"; yang_parent_name = "aggregate-accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthorizationStatistics::~AuthorizationStatistics()
@@ -8358,6 +8417,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthorizationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_requests.is_set
 	|| accepted_requests.is_set
 	|| successful_requests.is_set
@@ -8524,15 +8584,15 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     no_cmd_resps{YType::uint64, "no-cmd-resps"},
     no_session_found_resps{YType::uint64, "no-session-found-resps"},
     no_session_peer_resps{YType::uint64, "no-session-peer-resps"}
-    	,
+        ,
     account_logon(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon>())
-	,account_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff>())
-	,account_update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate>())
-	,session_disconnect(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect>())
-	,single_service_logon(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon>())
-	,single_service_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff>())
-	,single_service_modify(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify>())
-	,service_multi(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti>())
+    , account_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff>())
+    , account_update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate>())
+    , session_disconnect(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect>())
+    , single_service_logon(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon>())
+    , single_service_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff>())
+    , single_service_modify(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify>())
+    , service_multi(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti>())
 {
     account_logon->parent = this;
     account_logoff->parent = this;
@@ -8543,7 +8603,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     single_service_modify->parent = this;
     service_multi->parent = this;
 
-    yang_name = "change-of-authorization-statistics"; yang_parent_name = "aggregate-accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "change-of-authorization-statistics"; yang_parent_name = "aggregate-accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::~ChangeOfAuthorizationStatistics()
@@ -8552,6 +8612,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_account_cmd_resps.is_set
 	|| unknown_service_cmd_resps.is_set
 	|| unknown_cmd_resps.is_set
@@ -8867,7 +8928,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "account-logon"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account-logon"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::~AccountLogon()
@@ -8876,6 +8937,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -8972,7 +9034,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "account-logoff"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account-logoff"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::~AccountLogoff()
@@ -8981,6 +9043,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -9077,7 +9140,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "account-update"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account-update"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::~AccountUpdate()
@@ -9086,6 +9149,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -9182,7 +9246,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "session-disconnect"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-disconnect"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::~SessionDisconnect()
@@ -9191,6 +9255,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -9287,7 +9352,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "single-service-logon"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-service-logon"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::~SingleServiceLogon()
@@ -9296,6 +9361,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -9392,7 +9458,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "single-service-logoff"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-service-logoff"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::~SingleServiceLogoff()
@@ -9401,6 +9467,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -9497,7 +9564,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "single-service-modify"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-service-modify"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::~SingleServiceModify()
@@ -9506,6 +9573,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -9602,7 +9670,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "service-multi"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-multi"; yang_parent_name = "change-of-authorization-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::~ServiceMulti()
@@ -9611,6 +9679,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -9708,7 +9777,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
     receive_response_failures{YType::uint64, "receive-response-failures"}
 {
 
-    yang_name = "mobility-statistics"; yang_parent_name = "aggregate-accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mobility-statistics"; yang_parent_name = "aggregate-accounting-stats-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::MobilityStatistics::~MobilityStatistics()
@@ -9717,6 +9786,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::MobilityStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return send_request_successes.is_set
 	|| send_request_failures.is_set
 	|| receive_response_successes.is_set
@@ -9826,13 +9896,13 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Accounting()
     stopped_sessions{YType::uint64, "stopped-sessions"},
     policy_plane_errored_requests{YType::uint64, "policy-plane-errored-requests"},
     policy_plane_unknown_requests{YType::uint64, "policy-plane-unknown-requests"}
-    	,
+        ,
     start(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Start>())
-	,stop(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Stop>())
-	,interim(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interim>())
-	,pass_through(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::PassThrough>())
-	,update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Update>())
-	,interim_inflight(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::InterimInflight>())
+    , stop(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Stop>())
+    , interim(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interim>())
+    , pass_through(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::PassThrough>())
+    , update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Update>())
+    , interim_inflight(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::InterimInflight>())
 {
     start->parent = this;
     stop->parent = this;
@@ -9841,7 +9911,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Accounting()
     update->parent = this;
     interim_inflight->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::~Accounting()
@@ -9850,6 +9920,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::~Accounting()
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return active_sessions.is_set
 	|| started_sessions.is_set
 	|| stopped_sessions.is_set
@@ -10071,7 +10142,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Start::Start()
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "start"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Start::~Start()
@@ -10080,6 +10151,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Start::~Start()
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Start::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -10218,7 +10290,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Stop::Stop()
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "stop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Stop::~Stop()
@@ -10227,6 +10299,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Stop::~Stop()
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Stop::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -10365,7 +10438,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interim::Interim(
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "interim"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interim"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interim::~Interim()
@@ -10374,6 +10447,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interim::~Interim
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interim::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -10512,7 +10586,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::PassThrough::Pass
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "pass-through"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pass-through"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::PassThrough::~PassThrough()
@@ -10521,6 +10595,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::PassThrough::~Pas
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::PassThrough::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -10659,7 +10734,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Update::Update()
     aaa_failed_responses{YType::uint64, "aaa-failed-responses"}
 {
 
-    yang_name = "update"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "update"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Update::~Update()
@@ -10668,6 +10743,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Update::~Update()
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Update::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| errored_requests.is_set
 	|| aaa_errored_requests.is_set
@@ -10806,7 +10882,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::InterimInflight::
     low_water_mark_quota_of_requests{YType::uint32, "low-water-mark-quota-of-requests"}
 {
 
-    yang_name = "interim-inflight"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interim-inflight"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::InterimInflight::~InterimInflight()
@@ -10815,6 +10891,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::InterimInflight::
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::InterimInflight::has_data() const
 {
+    if (is_presence_container) return true;
     return quota_exhausts.is_set
 	|| denied_requests.is_set
 	|| accepted_requests.is_set
@@ -10951,7 +11028,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Mobility::Mobility()
     receive_response_failures{YType::uint64, "receive-response-failures"}
 {
 
-    yang_name = "mobility"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mobility"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::Mobility::~Mobility()
@@ -10960,6 +11037,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::Mobility::~Mobility()
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::Mobility::has_data() const
 {
+    if (is_presence_container) return true;
     return send_request_successes.is_set
 	|| send_request_failures.is_set
 	|| receive_response_successes.is_set
@@ -11074,15 +11152,15 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
     no_cmd_resps{YType::uint64, "no-cmd-resps"},
     no_session_found_resps{YType::uint64, "no-session-found-resps"},
     no_session_peer_resps{YType::uint64, "no-session-peer-resps"}
-    	,
+        ,
     account_logon(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogon>())
-	,account_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogoff>())
-	,account_update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountUpdate>())
-	,session_disconnect(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SessionDisconnect>())
-	,single_service_logon(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogon>())
-	,single_service_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogoff>())
-	,single_service_modify(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceModify>())
-	,service_multi(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::ServiceMulti>())
+    , account_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogoff>())
+    , account_update(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountUpdate>())
+    , session_disconnect(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SessionDisconnect>())
+    , single_service_logon(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogon>())
+    , single_service_logoff(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogoff>())
+    , single_service_modify(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceModify>())
+    , service_multi(std::make_shared<Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::ServiceMulti>())
 {
     account_logon->parent = this;
     account_logoff->parent = this;
@@ -11093,7 +11171,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
     single_service_modify->parent = this;
     service_multi->parent = this;
 
-    yang_name = "aggregate-change-of-authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregate-change-of-authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::~AggregateChangeOfAuthorization()
@@ -11102,6 +11180,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_account_cmd_resps.is_set
 	|| unknown_service_cmd_resps.is_set
 	|| unknown_cmd_resps.is_set
@@ -11417,7 +11496,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "account-logon"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account-logon"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogon::~AccountLogon()
@@ -11426,6 +11505,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogon::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -11522,7 +11602,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "account-logoff"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account-logoff"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogoff::~AccountLogoff()
@@ -11531,6 +11611,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogoff::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -11627,7 +11708,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "account-update"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account-update"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountUpdate::~AccountUpdate()
@@ -11636,6 +11717,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountUpdate::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -11732,7 +11814,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "session-disconnect"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-disconnect"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SessionDisconnect::~SessionDisconnect()
@@ -11741,6 +11823,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SessionDisconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -11837,7 +11920,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "single-service-logon"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-service-logon"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogon::~SingleServiceLogon()
@@ -11846,6 +11929,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogon::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -11942,7 +12026,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "single-service-logoff"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-service-logoff"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogoff::~SingleServiceLogoff()
@@ -11951,6 +12035,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogoff::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -12047,7 +12132,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "single-service-modify"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-service-modify"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceModify::~SingleServiceModify()
@@ -12056,6 +12141,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceModify::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -12152,7 +12238,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
     non_acknowledged_requests{YType::uint64, "non-acknowledged-requests"}
 {
 
-    yang_name = "service-multi"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-multi"; yang_parent_name = "aggregate-change-of-authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::ServiceMulti::~ServiceMulti()
@@ -12161,6 +12247,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorizatio
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::ServiceMulti::has_data() const
 {
+    if (is_presence_container) return true;
     return received_requests.is_set
 	|| acknowledged_requests.is_set
 	|| non_acknowledged_requests.is_set;
@@ -12273,7 +12360,7 @@ Subscriber::Manager::Nodes::Node::Statistics::AggregateSummary::AggregateSummary
     sess_disc_q_count{YType::uint32, "sess-disc-q-count"}
 {
 
-    yang_name = "aggregate-summary"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregate-summary"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::AggregateSummary::~AggregateSummary()
@@ -12282,6 +12369,7 @@ Subscriber::Manager::Nodes::Node::Statistics::AggregateSummary::~AggregateSummar
 
 bool Subscriber::Manager::Nodes::Node::Statistics::AggregateSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return no_subscriber_control_policy_on_interface.is_set
 	|| no_class_match_in_start_request.is_set
 	|| nas_port_attribute_format_warnings.is_set
@@ -12635,7 +12723,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Srg::Srg()
     last_resume_time{YType::uint64, "last-resume-time"}
 {
 
-    yang_name = "srg"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srg"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Manager::Nodes::Node::Statistics::Srg::~Srg()
@@ -12644,6 +12732,7 @@ Subscriber::Manager::Nodes::Node::Statistics::Srg::~Srg()
 
 bool Subscriber::Manager::Nodes::Node::Statistics::Srg::has_data() const
 {
+    if (is_presence_container) return true;
     return txlist_send_triggered.is_set
 	|| txlist_send_failed.is_set
 	|| txlist_send_failed_notactive.is_set
@@ -13376,7 +13465,7 @@ Subscriber::Session::Session()
 {
     nodes->parent = this;
 
-    yang_name = "session"; yang_parent_name = "subscriber"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "subscriber"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Subscriber::Session::~Session()
@@ -13385,6 +13474,7 @@ Subscriber::Session::~Session()
 
 bool Subscriber::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -13459,9 +13549,11 @@ bool Subscriber::Session::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Subscriber::Session::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Subscriber::Session::Nodes::~Nodes()
@@ -13470,7 +13562,8 @@ Subscriber::Session::Nodes::~Nodes()
 
 bool Subscriber::Session::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -13480,7 +13573,7 @@ bool Subscriber::Session::Nodes::has_data() const
 
 bool Subscriber::Session::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -13517,7 +13610,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::get_child_by_name(const std:
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -13529,7 +13622,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13558,20 +13651,20 @@ bool Subscriber::Session::Nodes::has_leaf_or_child_of_name(const std::string & n
 Subscriber::Session::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     author_summaries(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries>())
-	,summary(std::make_shared<Subscriber::Session::Nodes::Node::Summary>())
-	,mac_summaries(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries>())
-	,interface_summaries(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries>())
-	,authentication_summaries(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries>())
-	,state_summaries(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries>())
-	,ipv4_address_vrf_summaries(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries>())
-	,address_family_summaries(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries>())
-	,username_summaries(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries>())
-	,access_interface_summaries(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries>())
-	,ipv4_address_summaries(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries>())
-	,vrf_summaries(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries>())
-	,sessions(std::make_shared<Subscriber::Session::Nodes::Node::Sessions>())
+    , summary(std::make_shared<Subscriber::Session::Nodes::Node::Summary>())
+    , mac_summaries(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries>())
+    , interface_summaries(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries>())
+    , authentication_summaries(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries>())
+    , state_summaries(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries>())
+    , ipv4_address_vrf_summaries(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries>())
+    , address_family_summaries(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries>())
+    , username_summaries(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries>())
+    , access_interface_summaries(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries>())
+    , ipv4_address_summaries(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries>())
+    , vrf_summaries(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries>())
+    , sessions(std::make_shared<Subscriber::Session::Nodes::Node::Sessions>())
 {
     author_summaries->parent = this;
     summary->parent = this;
@@ -13587,7 +13680,7 @@ Subscriber::Session::Nodes::Node::Node()
     vrf_summaries->parent = this;
     sessions->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Subscriber::Session::Nodes::Node::~Node()
@@ -13596,6 +13689,7 @@ Subscriber::Session::Nodes::Node::~Node()
 
 bool Subscriber::Session::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (author_summaries !=  nullptr && author_summaries->has_data())
 	|| (summary !=  nullptr && summary->has_data())
@@ -13641,7 +13735,8 @@ std::string Subscriber::Session::Nodes::Node::get_absolute_path() const
 std::string Subscriber::Session::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -13875,9 +13970,11 @@ bool Subscriber::Session::Nodes::Node::has_leaf_or_child_of_name(const std::stri
 }
 
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummaries()
+    :
+    author_summary(this, {"author_state"})
 {
 
-    yang_name = "author-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "author-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthorSummaries::~AuthorSummaries()
@@ -13886,7 +13983,8 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::~AuthorSummaries()
 
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::has_data() const
 {
-    for (std::size_t index=0; index<author_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<author_summary.len(); index++)
     {
         if(author_summary[index]->has_data())
             return true;
@@ -13896,7 +13994,7 @@ bool Subscriber::Session::Nodes::Node::AuthorSummaries::has_data() const
 
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<author_summary.size(); index++)
+    for (std::size_t index=0; index<author_summary.len(); index++)
     {
         if(author_summary[index]->has_operation())
             return true;
@@ -13926,7 +14024,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::get_c
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary>();
         c->parent = this;
-        author_summary.push_back(c);
+        author_summary.append(c);
         return c;
     }
 
@@ -13938,7 +14036,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : author_summary)
+    for (auto c : author_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13967,14 +14065,14 @@ bool Subscriber::Session::Nodes::Node::AuthorSummaries::has_leaf_or_child_of_nam
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AuthorSummary()
     :
     author_state{YType::enumeration, "author-state"}
-    	,
+        ,
     state_xr(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr>())
-	,address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr>())
+    , address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr>())
 {
     state_xr->parent = this;
     address_family_xr->parent = this;
 
-    yang_name = "author-summary"; yang_parent_name = "author-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "author-summary"; yang_parent_name = "author-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::~AuthorSummary()
@@ -13983,6 +14081,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::~AuthorSummary
 
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return author_state.is_set
 	|| (state_xr !=  nullptr && state_xr->has_data())
 	|| (address_family_xr !=  nullptr && address_family_xr->has_data());
@@ -13999,7 +14098,8 @@ bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::has_opera
 std::string Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "author-summary" <<"[author-state='" <<author_state <<"']";
+    path_buffer << "author-summary";
+    ADD_KEY_TOKEN(author_state, "author-state");
     return path_buffer.str();
 }
 
@@ -14081,14 +14181,14 @@ bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::has_leaf_
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::StateXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "author-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-xr"; yang_parent_name = "author-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::~StateXr()
@@ -14097,6 +14197,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::~Stat
 
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -14206,7 +14307,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::Pppoe
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::Pppoe::~Pppoe()
@@ -14215,6 +14316,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::Pppoe
 
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -14367,7 +14469,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSub
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -14376,6 +14478,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSub
 
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -14528,7 +14631,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSub
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -14537,6 +14640,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSub
 
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -14681,14 +14785,14 @@ bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::AddressFamilyXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "address-family-xr"; yang_parent_name = "author-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-xr"; yang_parent_name = "author-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::~AddressFamilyXr()
@@ -14697,6 +14801,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyX
 
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -14805,7 +14910,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyX
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::Pppoe::~Pppoe()
@@ -14814,6 +14919,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyX
 
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -14952,7 +15058,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyX
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -14961,6 +15067,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyX
 
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -15099,7 +15206,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyX
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -15108,6 +15215,7 @@ Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyX
 
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -15239,12 +15347,12 @@ bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFa
 Subscriber::Session::Nodes::Node::Summary::Summary()
     :
     state_xr(std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr>())
-	,address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr>())
+    , address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr>())
 {
     state_xr->parent = this;
     address_family_xr->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Summary::~Summary()
@@ -15253,6 +15361,7 @@ Subscriber::Session::Nodes::Node::Summary::~Summary()
 
 bool Subscriber::Session::Nodes::Node::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return (state_xr !=  nullptr && state_xr->has_data())
 	|| (address_family_xr !=  nullptr && address_family_xr->has_data());
 }
@@ -15338,14 +15447,14 @@ bool Subscriber::Session::Nodes::Node::Summary::has_leaf_or_child_of_name(const 
 Subscriber::Session::Nodes::Node::Summary::StateXr::StateXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-xr"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Summary::StateXr::~StateXr()
@@ -15354,6 +15463,7 @@ Subscriber::Session::Nodes::Node::Summary::StateXr::~StateXr()
 
 bool Subscriber::Session::Nodes::Node::Summary::StateXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -15463,7 +15573,7 @@ Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::Pppoe()
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::~Pppoe()
@@ -15472,6 +15582,7 @@ Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::~Pppoe()
 
 bool Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -15624,7 +15735,7 @@ Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::IpSubscrib
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -15633,6 +15744,7 @@ Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::~IpSubscri
 
 bool Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -15785,7 +15897,7 @@ Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::IpSubscr
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -15794,6 +15906,7 @@ Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::~IpSubsc
 
 bool Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -15938,14 +16051,14 @@ bool Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::has
 Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::AddressFamilyXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "address-family-xr"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-xr"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::~AddressFamilyXr()
@@ -15954,6 +16067,7 @@ Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::~AddressFamilyXr()
 
 bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -16062,7 +16176,7 @@ Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::Pppoe()
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::~Pppoe()
@@ -16071,6 +16185,7 @@ Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::~Pppoe()
 
 bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -16209,7 +16324,7 @@ Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::Ip
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -16218,6 +16333,7 @@ Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::~I
 
 bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -16356,7 +16472,7 @@ Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -16365,6 +16481,7 @@ Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::
 
 bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -16494,9 +16611,11 @@ bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPac
 }
 
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummaries()
+    :
+    mac_summary(this, {"mac_address"})
 {
 
-    yang_name = "mac-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::MacSummaries::~MacSummaries()
@@ -16505,7 +16624,8 @@ Subscriber::Session::Nodes::Node::MacSummaries::~MacSummaries()
 
 bool Subscriber::Session::Nodes::Node::MacSummaries::has_data() const
 {
-    for (std::size_t index=0; index<mac_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_summary.len(); index++)
     {
         if(mac_summary[index]->has_data())
             return true;
@@ -16515,7 +16635,7 @@ bool Subscriber::Session::Nodes::Node::MacSummaries::has_data() const
 
 bool Subscriber::Session::Nodes::Node::MacSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<mac_summary.size(); index++)
+    for (std::size_t index=0; index<mac_summary.len(); index++)
     {
         if(mac_summary[index]->has_operation())
             return true;
@@ -16545,7 +16665,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::get_chil
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary>();
         c->parent = this;
-        mac_summary.push_back(c);
+        mac_summary.append(c);
         return c;
     }
 
@@ -16557,7 +16677,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mac_summary)
+    for (auto c : mac_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16586,14 +16706,14 @@ bool Subscriber::Session::Nodes::Node::MacSummaries::has_leaf_or_child_of_name(c
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::MacSummary()
     :
     mac_address{YType::str, "mac-address"}
-    	,
+        ,
     state_xr(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr>())
-	,address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr>())
+    , address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr>())
 {
     state_xr->parent = this;
     address_family_xr->parent = this;
 
-    yang_name = "mac-summary"; yang_parent_name = "mac-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-summary"; yang_parent_name = "mac-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::~MacSummary()
@@ -16602,6 +16722,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::~MacSummary()
 
 bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| (state_xr !=  nullptr && state_xr->has_data())
 	|| (address_family_xr !=  nullptr && address_family_xr->has_data());
@@ -16618,7 +16739,8 @@ bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::has_operation()
 std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mac-summary" <<"[mac-address='" <<mac_address <<"']";
+    path_buffer << "mac-summary";
+    ADD_KEY_TOKEN(mac_address, "mac-address");
     return path_buffer.str();
 }
 
@@ -16700,14 +16822,14 @@ bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::has_leaf_or_chi
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::StateXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "mac-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-xr"; yang_parent_name = "mac-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::~StateXr()
@@ -16716,6 +16838,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::~StateXr()
 
 bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -16825,7 +16948,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::Pppo
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::~Pppoe()
@@ -16834,6 +16957,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::~Ppp
 
 bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -16986,7 +17110,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscribe
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -16995,6 +17119,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscribe
 
 bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -17147,7 +17272,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscribe
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -17156,6 +17281,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscribe
 
 bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -17300,14 +17426,14 @@ bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubs
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::AddressFamilyXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "address-family-xr"; yang_parent_name = "mac-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-xr"; yang_parent_name = "mac-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::~AddressFamilyXr()
@@ -17316,6 +17442,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::~Ad
 
 bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -17424,7 +17551,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Ppp
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::~Pppoe()
@@ -17433,6 +17560,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Ppp
 
 bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -17571,7 +17699,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpS
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -17580,6 +17708,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpS
 
 bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -17718,7 +17847,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpS
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -17727,6 +17856,7 @@ Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpS
 
 bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -17856,9 +17986,11 @@ bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr
 }
 
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummaries()
+    :
+    interface_summary(this, {"interface_name"})
 {
 
-    yang_name = "interface-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::InterfaceSummaries::~InterfaceSummaries()
@@ -17867,7 +17999,8 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::~InterfaceSummaries()
 
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::has_data() const
 {
-    for (std::size_t index=0; index<interface_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_summary.len(); index++)
     {
         if(interface_summary[index]->has_data())
             return true;
@@ -17877,7 +18010,7 @@ bool Subscriber::Session::Nodes::Node::InterfaceSummaries::has_data() const
 
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<interface_summary.size(); index++)
+    for (std::size_t index=0; index<interface_summary.len(); index++)
     {
         if(interface_summary[index]->has_operation())
             return true;
@@ -17907,7 +18040,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::ge
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary>();
         c->parent = this;
-        interface_summary.push_back(c);
+        interface_summary.append(c);
         return c;
     }
 
@@ -17919,7 +18052,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_summary)
+    for (auto c : interface_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17948,14 +18081,14 @@ bool Subscriber::Session::Nodes::Node::InterfaceSummaries::has_leaf_or_child_of_
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::InterfaceSummary()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     state_xr(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr>())
-	,address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr>())
+    , address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr>())
 {
     state_xr->parent = this;
     address_family_xr->parent = this;
 
-    yang_name = "interface-summary"; yang_parent_name = "interface-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-summary"; yang_parent_name = "interface-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::~InterfaceSummary()
@@ -17964,6 +18097,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::~Interfa
 
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (state_xr !=  nullptr && state_xr->has_data())
 	|| (address_family_xr !=  nullptr && address_family_xr->has_data());
@@ -17980,7 +18114,8 @@ bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::has
 std::string Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-summary" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-summary";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -18062,14 +18197,14 @@ bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::has
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::StateXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "interface-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-xr"; yang_parent_name = "interface-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::~StateXr()
@@ -18078,6 +18213,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr:
 
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -18187,7 +18323,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr:
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::Pppoe::~Pppoe()
@@ -18196,6 +18332,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr:
 
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -18348,7 +18485,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr:
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -18357,6 +18494,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr:
 
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -18509,7 +18647,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr:
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -18518,6 +18656,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr:
 
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -18662,14 +18801,14 @@ bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::Sta
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::AddressFamilyXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "address-family-xr"; yang_parent_name = "interface-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-xr"; yang_parent_name = "interface-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::~AddressFamilyXr()
@@ -18678,6 +18817,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressF
 
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -18786,7 +18926,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressF
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::Pppoe::~Pppoe()
@@ -18795,6 +18935,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressF
 
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -18933,7 +19074,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressF
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -18942,6 +19083,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressF
 
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -19080,7 +19222,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressF
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -19089,6 +19231,7 @@ Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressF
 
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -19218,9 +19361,11 @@ bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::Add
 }
 
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummaries()
+    :
+    authentication_summary(this, {"authentication_state"})
 {
 
-    yang_name = "authentication-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::~AuthenticationSummaries()
@@ -19229,7 +19374,8 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::~AuthenticationSummar
 
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::has_data() const
 {
-    for (std::size_t index=0; index<authentication_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<authentication_summary.len(); index++)
     {
         if(authentication_summary[index]->has_data())
             return true;
@@ -19239,7 +19385,7 @@ bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::has_data() const
 
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<authentication_summary.size(); index++)
+    for (std::size_t index=0; index<authentication_summary.len(); index++)
     {
         if(authentication_summary[index]->has_operation())
             return true;
@@ -19269,7 +19415,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummarie
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary>();
         c->parent = this;
-        authentication_summary.push_back(c);
+        authentication_summary.append(c);
         return c;
     }
 
@@ -19281,7 +19427,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : authentication_summary)
+    for (auto c : authentication_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19310,14 +19456,14 @@ bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::has_leaf_or_chil
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AuthenticationSummary()
     :
     authentication_state{YType::enumeration, "authentication-state"}
-    	,
+        ,
     state_xr(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr>())
-	,address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr>())
+    , address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr>())
 {
     state_xr->parent = this;
     address_family_xr->parent = this;
 
-    yang_name = "authentication-summary"; yang_parent_name = "authentication-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication-summary"; yang_parent_name = "authentication-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::~AuthenticationSummary()
@@ -19326,6 +19472,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
 
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return authentication_state.is_set
 	|| (state_xr !=  nullptr && state_xr->has_data())
 	|| (address_family_xr !=  nullptr && address_family_xr->has_data());
@@ -19342,7 +19489,8 @@ bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSu
 std::string Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "authentication-summary" <<"[authentication-state='" <<authentication_state <<"']";
+    path_buffer << "authentication-summary";
+    ADD_KEY_TOKEN(authentication_state, "authentication-state");
     return path_buffer.str();
 }
 
@@ -19424,14 +19572,14 @@ bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSu
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::StateXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "authentication-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-xr"; yang_parent_name = "authentication-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::~StateXr()
@@ -19440,6 +19588,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
 
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -19549,7 +19698,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::Pppoe::~Pppoe()
@@ -19558,6 +19707,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
 
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -19710,7 +19860,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -19719,6 +19869,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
 
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -19871,7 +20022,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -19880,6 +20031,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
 
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -20024,14 +20176,14 @@ bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSu
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::AddressFamilyXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "address-family-xr"; yang_parent_name = "authentication-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-xr"; yang_parent_name = "authentication-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::~AddressFamilyXr()
@@ -20040,6 +20192,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
 
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -20148,7 +20301,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::Pppoe::~Pppoe()
@@ -20157,6 +20310,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
 
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -20295,7 +20449,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -20304,6 +20458,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
 
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -20442,7 +20597,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -20451,6 +20606,7 @@ Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
 
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -20580,9 +20736,11 @@ bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSu
 }
 
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummaries()
+    :
+    state_summary(this, {"state"})
 {
 
-    yang_name = "state-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::StateSummaries::~StateSummaries()
@@ -20591,7 +20749,8 @@ Subscriber::Session::Nodes::Node::StateSummaries::~StateSummaries()
 
 bool Subscriber::Session::Nodes::Node::StateSummaries::has_data() const
 {
-    for (std::size_t index=0; index<state_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<state_summary.len(); index++)
     {
         if(state_summary[index]->has_data())
             return true;
@@ -20601,7 +20760,7 @@ bool Subscriber::Session::Nodes::Node::StateSummaries::has_data() const
 
 bool Subscriber::Session::Nodes::Node::StateSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<state_summary.size(); index++)
+    for (std::size_t index=0; index<state_summary.len(); index++)
     {
         if(state_summary[index]->has_operation())
             return true;
@@ -20631,7 +20790,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::get_ch
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary>();
         c->parent = this;
-        state_summary.push_back(c);
+        state_summary.append(c);
         return c;
     }
 
@@ -20643,7 +20802,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : state_summary)
+    for (auto c : state_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20672,14 +20831,14 @@ bool Subscriber::Session::Nodes::Node::StateSummaries::has_leaf_or_child_of_name
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateSummary()
     :
     state{YType::enumeration, "state"}
-    	,
+        ,
     state_xr(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr>())
-	,address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr>())
+    , address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr>())
 {
     state_xr->parent = this;
     address_family_xr->parent = this;
 
-    yang_name = "state-summary"; yang_parent_name = "state-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-summary"; yang_parent_name = "state-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::~StateSummary()
@@ -20688,6 +20847,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::~StateSummary()
 
 bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| (state_xr !=  nullptr && state_xr->has_data())
 	|| (address_family_xr !=  nullptr && address_family_xr->has_data());
@@ -20704,7 +20864,8 @@ bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::has_operati
 std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "state-summary" <<"[state='" <<state <<"']";
+    path_buffer << "state-summary";
+    ADD_KEY_TOKEN(state, "state");
     return path_buffer.str();
 }
 
@@ -20786,14 +20947,14 @@ bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::has_leaf_or
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::StateXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "state-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-xr"; yang_parent_name = "state-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::~StateXr()
@@ -20802,6 +20963,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::~StateX
 
 bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -20911,7 +21073,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::~Pppoe()
@@ -20920,6 +21082,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::
 
 bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -21072,7 +21235,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubsc
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -21081,6 +21244,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubsc
 
 bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -21233,7 +21397,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubsc
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -21242,6 +21406,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubsc
 
 bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -21386,14 +21551,14 @@ bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Ip
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::AddressFamilyXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "address-family-xr"; yang_parent_name = "state-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-xr"; yang_parent_name = "state-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::~AddressFamilyXr()
@@ -21402,6 +21567,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr:
 
 bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -21510,7 +21676,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr:
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::~Pppoe()
@@ -21519,6 +21685,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr:
 
 bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -21657,7 +21824,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr:
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -21666,6 +21833,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr:
 
 bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -21804,7 +21972,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr:
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -21813,6 +21981,7 @@ Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr:
 
 bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -21942,9 +22111,11 @@ bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFami
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummaries()
+    :
+    ipv4_address_vrf_summary(this, {})
 {
 
-    yang_name = "ipv4-address-vrf-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address-vrf-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::~Ipv4AddressVrfSummaries()
@@ -21953,7 +22124,8 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::~Ipv4AddressVrfSummar
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_address_vrf_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_address_vrf_summary.len(); index++)
     {
         if(ipv4_address_vrf_summary[index]->has_data())
             return true;
@@ -21963,7 +22135,7 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::has_data() const
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_address_vrf_summary.size(); index++)
+    for (std::size_t index=0; index<ipv4_address_vrf_summary.len(); index++)
     {
         if(ipv4_address_vrf_summary[index]->has_operation())
             return true;
@@ -21993,7 +22165,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummarie
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary>();
         c->parent = this;
-        ipv4_address_vrf_summary.push_back(c);
+        ipv4_address_vrf_summary.append(c);
         return c;
     }
 
@@ -22005,7 +22177,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_address_vrf_summary)
+    for (auto c : ipv4_address_vrf_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22035,14 +22207,14 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
     :
     vrf_name{YType::str, "vrf-name"},
     address{YType::str, "address"}
-    	,
+        ,
     state_xr(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr>())
-	,address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr>())
+    , address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr>())
 {
     state_xr->parent = this;
     address_family_xr->parent = this;
 
-    yang_name = "ipv4-address-vrf-summary"; yang_parent_name = "ipv4-address-vrf-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address-vrf-summary"; yang_parent_name = "ipv4-address-vrf-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::~Ipv4AddressVrfSummary()
@@ -22051,6 +22223,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| address.is_set
 	|| (state_xr !=  nullptr && state_xr->has_data())
@@ -22159,33 +22332,20 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSu
     return false;
 }
 
-const Enum::YLeaf SubscriberAuthorStateFilterFlag::un_authorized {0, "un-authorized"};
-const Enum::YLeaf SubscriberAuthorStateFilterFlag::authorized {1, "authorized"};
-
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv4_only {0, "ipv4-only"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv6_only {1, "ipv6-only"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv4_all {2, "ipv4-all"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv6_all {3, "ipv6-all"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::dual_all {4, "dual-all"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::dual_part_up {5, "dual-part-up"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::dual_up {6, "dual-up"};
-const Enum::YLeaf SubscriberAddressFamilyFilterFlag::lac {7, "lac"};
-
-const Enum::YLeaf SubscriberStateFilterFlag::initializing {0, "initializing"};
-const Enum::YLeaf SubscriberStateFilterFlag::connecting {1, "connecting"};
-const Enum::YLeaf SubscriberStateFilterFlag::connected {2, "connected"};
-const Enum::YLeaf SubscriberStateFilterFlag::activated {3, "activated"};
-const Enum::YLeaf SubscriberStateFilterFlag::idle {4, "idle"};
-const Enum::YLeaf SubscriberStateFilterFlag::disconnecting {5, "disconnecting"};
-const Enum::YLeaf SubscriberStateFilterFlag::end {6, "end"};
-
-const Enum::YLeaf SubscriberAuthenStateFilterFlag::un_authenticated {0, "un-authenticated"};
-const Enum::YLeaf SubscriberAuthenStateFilterFlag::authenticated {1, "authenticated"};
-
-const Enum::YLeaf IedgeOperSessionAfState::not_started {0, "not-started"};
-const Enum::YLeaf IedgeOperSessionAfState::down {1, "down"};
-const Enum::YLeaf IedgeOperSessionAfState::up_pending {2, "up-pending"};
-const Enum::YLeaf IedgeOperSessionAfState::up {3, "up"};
+const Enum::YLeaf AaaTunnelProto::none {0, "none"};
+const Enum::YLeaf AaaTunnelProto::pptp {1, "pptp"};
+const Enum::YLeaf AaaTunnelProto::l2f {2, "l2f"};
+const Enum::YLeaf AaaTunnelProto::l2tp {3, "l2tp"};
+const Enum::YLeaf AaaTunnelProto::atmp {4, "atmp"};
+const Enum::YLeaf AaaTunnelProto::vtp {5, "vtp"};
+const Enum::YLeaf AaaTunnelProto::ah {6, "ah"};
+const Enum::YLeaf AaaTunnelProto::ip_over_ip {7, "ip-over-ip"};
+const Enum::YLeaf AaaTunnelProto::minimum_ip_over_ip {8, "minimum-ip-over-ip"};
+const Enum::YLeaf AaaTunnelProto::esp {9, "esp"};
+const Enum::YLeaf AaaTunnelProto::gre {10, "gre"};
+const Enum::YLeaf AaaTunnelProto::bay_dvs {11, "bay-dvs"};
+const Enum::YLeaf AaaTunnelProto::ip_in_ip {12, "ip-in-ip"};
+const Enum::YLeaf AaaTunnelProto::vlan {13, "vlan"};
 
 const Enum::YLeaf AaaTerminateCause::none {0, "none"};
 const Enum::YLeaf AaaTerminateCause::user_request {1, "user-request"};
@@ -22210,6 +22370,47 @@ const Enum::YLeaf AaaTerminateCause::supplicant_restart {19, "supplicant-restart
 const Enum::YLeaf AaaTerminateCause::reauthorization_failure {20, "reauthorization-failure"};
 const Enum::YLeaf AaaTerminateCause::port_reinitialized {21, "port-reinitialized"};
 const Enum::YLeaf AaaTerminateCause::admin_disabled {22, "admin-disabled"};
+
+const Enum::YLeaf SubscriberAuthorStateFilterFlag::un_authorized {0, "un-authorized"};
+const Enum::YLeaf SubscriberAuthorStateFilterFlag::authorized {1, "authorized"};
+
+const Enum::YLeaf IedgeOperSessionState::initialize {0, "initialize"};
+const Enum::YLeaf IedgeOperSessionState::connecting {1, "connecting"};
+const Enum::YLeaf IedgeOperSessionState::connected {2, "connected"};
+const Enum::YLeaf IedgeOperSessionState::activated {3, "activated"};
+const Enum::YLeaf IedgeOperSessionState::idle {4, "idle"};
+const Enum::YLeaf IedgeOperSessionState::disconnecting {5, "disconnecting"};
+const Enum::YLeaf IedgeOperSessionState::end {6, "end"};
+
+const Enum::YLeaf IedgeOperSessionAfState::not_started {0, "not-started"};
+const Enum::YLeaf IedgeOperSessionAfState::down {1, "down"};
+const Enum::YLeaf IedgeOperSessionAfState::up_pending {2, "up-pending"};
+const Enum::YLeaf IedgeOperSessionAfState::up {3, "up"};
+
+const Enum::YLeaf SubscriberStateFilterFlag::initializing {0, "initializing"};
+const Enum::YLeaf SubscriberStateFilterFlag::connecting {1, "connecting"};
+const Enum::YLeaf SubscriberStateFilterFlag::connected {2, "connected"};
+const Enum::YLeaf SubscriberStateFilterFlag::activated {3, "activated"};
+const Enum::YLeaf SubscriberStateFilterFlag::idle {4, "idle"};
+const Enum::YLeaf SubscriberStateFilterFlag::disconnecting {5, "disconnecting"};
+const Enum::YLeaf SubscriberStateFilterFlag::end {6, "end"};
+
+const Enum::YLeaf AaaAuthService::none {0, "none"};
+const Enum::YLeaf AaaAuthService::login {1, "login"};
+const Enum::YLeaf AaaAuthService::framed {2, "framed"};
+const Enum::YLeaf AaaAuthService::callback_login {3, "callback-login"};
+const Enum::YLeaf AaaAuthService::callback_framed {4, "callback-framed"};
+const Enum::YLeaf AaaAuthService::outbound {5, "outbound"};
+const Enum::YLeaf AaaAuthService::administrator {6, "administrator"};
+const Enum::YLeaf AaaAuthService::prompt {7, "prompt"};
+const Enum::YLeaf AaaAuthService::authentication_only {8, "authentication-only"};
+const Enum::YLeaf AaaAuthService::callback_nas_prompt {9, "callback-nas-prompt"};
+const Enum::YLeaf AaaAuthService::call_check {10, "call-check"};
+const Enum::YLeaf AaaAuthService::callback_administrator {11, "callback-administrator"};
+const Enum::YLeaf AaaAuthService::voice {12, "voice"};
+const Enum::YLeaf AaaAuthService::fax {13, "fax"};
+const Enum::YLeaf AaaAuthService::modem_relay {14, "modem-relay"};
+const Enum::YLeaf AaaAuthService::eap_over_udp {15, "eap-over-udp"};
 
 const Enum::YLeaf AaaInterface::none {0, "none"};
 const Enum::YLeaf AaaInterface::primary_rate {1, "primary-rate"};
@@ -22240,20 +22441,14 @@ const Enum::YLeaf AaaInterface::virtual_i_po_e_over_ethernet {25, "virtual-i-po-
 const Enum::YLeaf AaaInterface::virtual_i_po_e_over_vlan {26, "virtual-i-po-e-over-vlan"};
 const Enum::YLeaf AaaInterface::virtual_i_po_e_over_qinq {27, "virtual-i-po-e-over-qinq"};
 
-const Enum::YLeaf AaaTunnelProto::none {0, "none"};
-const Enum::YLeaf AaaTunnelProto::pptp {1, "pptp"};
-const Enum::YLeaf AaaTunnelProto::l2f {2, "l2f"};
-const Enum::YLeaf AaaTunnelProto::l2tp {3, "l2tp"};
-const Enum::YLeaf AaaTunnelProto::atmp {4, "atmp"};
-const Enum::YLeaf AaaTunnelProto::vtp {5, "vtp"};
-const Enum::YLeaf AaaTunnelProto::ah {6, "ah"};
-const Enum::YLeaf AaaTunnelProto::ip_over_ip {7, "ip-over-ip"};
-const Enum::YLeaf AaaTunnelProto::minimum_ip_over_ip {8, "minimum-ip-over-ip"};
-const Enum::YLeaf AaaTunnelProto::esp {9, "esp"};
-const Enum::YLeaf AaaTunnelProto::gre {10, "gre"};
-const Enum::YLeaf AaaTunnelProto::bay_dvs {11, "bay-dvs"};
-const Enum::YLeaf AaaTunnelProto::ip_in_ip {12, "ip-in-ip"};
-const Enum::YLeaf AaaTunnelProto::vlan {13, "vlan"};
+const Enum::YLeaf SubscriberAuthenStateFilterFlag::un_authenticated {0, "un-authenticated"};
+const Enum::YLeaf SubscriberAuthenStateFilterFlag::authenticated {1, "authenticated"};
+
+const Enum::YLeaf IedgeOperSession::unknown {0, "unknown"};
+const Enum::YLeaf IedgeOperSession::pppoe {1, "pppoe"};
+const Enum::YLeaf IedgeOperSession::ppp {2, "ppp"};
+const Enum::YLeaf IedgeOperSession::ip_packet_trigger {3, "ip-packet-trigger"};
+const Enum::YLeaf IedgeOperSession::ip_packet_dhcp_trigger {4, "ip-packet-dhcp-trigger"};
 
 const Enum::YLeaf AaaTunnelMedium::none {0, "none"};
 const Enum::YLeaf AaaTunnelMedium::ipv4 {1, "ipv4"};
@@ -22263,39 +22458,17 @@ const Enum::YLeaf AaaTunnelMedium::hdlc {4, "hdlc"};
 const Enum::YLeaf AaaTunnelMedium::bbn {5, "bbn"};
 const Enum::YLeaf AaaTunnelMedium::all802 {6, "all802"};
 
-const Enum::YLeaf AaaAuthService::none {0, "none"};
-const Enum::YLeaf AaaAuthService::login {1, "login"};
-const Enum::YLeaf AaaAuthService::framed {2, "framed"};
-const Enum::YLeaf AaaAuthService::callback_login {3, "callback-login"};
-const Enum::YLeaf AaaAuthService::callback_framed {4, "callback-framed"};
-const Enum::YLeaf AaaAuthService::outbound {5, "outbound"};
-const Enum::YLeaf AaaAuthService::administrator {6, "administrator"};
-const Enum::YLeaf AaaAuthService::prompt {7, "prompt"};
-const Enum::YLeaf AaaAuthService::authentication_only {8, "authentication-only"};
-const Enum::YLeaf AaaAuthService::callback_nas_prompt {9, "callback-nas-prompt"};
-const Enum::YLeaf AaaAuthService::call_check {10, "call-check"};
-const Enum::YLeaf AaaAuthService::callback_administrator {11, "callback-administrator"};
-const Enum::YLeaf AaaAuthService::voice {12, "voice"};
-const Enum::YLeaf AaaAuthService::fax {13, "fax"};
-const Enum::YLeaf AaaAuthService::modem_relay {14, "modem-relay"};
-const Enum::YLeaf AaaAuthService::eap_over_udp {15, "eap-over-udp"};
-
-const Enum::YLeaf IedgeOperSessionState::initialize {0, "initialize"};
-const Enum::YLeaf IedgeOperSessionState::connecting {1, "connecting"};
-const Enum::YLeaf IedgeOperSessionState::connected {2, "connected"};
-const Enum::YLeaf IedgeOperSessionState::activated {3, "activated"};
-const Enum::YLeaf IedgeOperSessionState::idle {4, "idle"};
-const Enum::YLeaf IedgeOperSessionState::disconnecting {5, "disconnecting"};
-const Enum::YLeaf IedgeOperSessionState::end {6, "end"};
-
 const Enum::YLeaf IedgePppSub::pta {0, "pta"};
 const Enum::YLeaf IedgePppSub::lac {1, "lac"};
 
-const Enum::YLeaf IedgeOperSession::unknown {0, "unknown"};
-const Enum::YLeaf IedgeOperSession::pppoe {1, "pppoe"};
-const Enum::YLeaf IedgeOperSession::ppp {2, "ppp"};
-const Enum::YLeaf IedgeOperSession::ip_packet_trigger {3, "ip-packet-trigger"};
-const Enum::YLeaf IedgeOperSession::ip_packet_dhcp_trigger {4, "ip-packet-dhcp-trigger"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv4_only {0, "ipv4-only"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv6_only {1, "ipv6-only"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv4_all {2, "ipv4-all"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::ipv6_all {3, "ipv6-all"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::dual_all {4, "dual-all"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::dual_part_up {5, "dual-part-up"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::dual_up {6, "dual-up"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlag::lac {7, "lac"};
 
 
 }

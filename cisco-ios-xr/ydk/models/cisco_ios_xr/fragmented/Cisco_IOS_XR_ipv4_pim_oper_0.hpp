@@ -111,7 +111,7 @@ class PimMa::Active::InterfaceTable::InterfaceByHandles : public ydk::Entity
 
         class InterfaceByHandle; //type: PimMa::Active::InterfaceTable::InterfaceByHandles::InterfaceByHandle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::PimMa::Active::InterfaceTable::InterfaceByHandles::InterfaceByHandle> > interface_by_handle;
+        ydk::YList interface_by_handle;
         
 }; // PimMa::Active::InterfaceTable::InterfaceByHandles
 
@@ -133,7 +133,7 @@ class PimMa::Active::InterfaceTable::InterfaceByHandles::InterfaceByHandle : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf interface_handle; //type: int32
+        ydk::YLeaf interface_handle; //type: uint32
         ydk::YLeaf interface_name_xr; //type: string
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf interface_type; //type: PimInterface
@@ -211,7 +211,7 @@ class PimMa::Active::InterfaceTable::InterfaceByNames : public ydk::Entity
 
         class InterfaceByName; //type: PimMa::Active::InterfaceTable::InterfaceByNames::InterfaceByName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::PimMa::Active::InterfaceTable::InterfaceByNames::InterfaceByName> > interface_by_name;
+        ydk::YList interface_by_name;
         
 }; // PimMa::Active::InterfaceTable::InterfaceByNames
 
@@ -391,7 +391,7 @@ class PimMa::Standby::InterfaceTable::InterfaceByHandles : public ydk::Entity
 
         class InterfaceByHandle; //type: PimMa::Standby::InterfaceTable::InterfaceByHandles::InterfaceByHandle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::PimMa::Standby::InterfaceTable::InterfaceByHandles::InterfaceByHandle> > interface_by_handle;
+        ydk::YList interface_by_handle;
         
 }; // PimMa::Standby::InterfaceTable::InterfaceByHandles
 
@@ -413,7 +413,7 @@ class PimMa::Standby::InterfaceTable::InterfaceByHandles::InterfaceByHandle : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf interface_handle; //type: int32
+        ydk::YLeaf interface_handle; //type: uint32
         ydk::YLeaf interface_name_xr; //type: string
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf interface_type; //type: PimInterface
@@ -491,7 +491,7 @@ class PimMa::Standby::InterfaceTable::InterfaceByNames : public ydk::Entity
 
         class InterfaceByName; //type: PimMa::Standby::InterfaceTable::InterfaceByNames::InterfaceByName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::PimMa::Standby::InterfaceTable::InterfaceByNames::InterfaceByName> > interface_by_name;
+        ydk::YList interface_by_name;
         
 }; // PimMa::Standby::InterfaceTable::InterfaceByNames
 
@@ -768,7 +768,7 @@ class Pim::Standby::DefaultContext::GlobalInterfaces : public ydk::Entity
 
         class GlobalInterface; //type: Pim::Standby::DefaultContext::GlobalInterfaces::GlobalInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::GlobalInterfaces::GlobalInterface> > global_interface;
+        ydk::YList global_interface;
         
 }; // Pim::Standby::DefaultContext::GlobalInterfaces
 
@@ -826,7 +826,7 @@ class Pim::Standby::DefaultContext::GlobalInterfaces::GlobalInterface : public y
         class InterfaceAddress; //type: Pim::Standby::DefaultContext::GlobalInterfaces::GlobalInterface::InterfaceAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::GlobalInterfaces::GlobalInterface::DrAddress> dr_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::GlobalInterfaces::GlobalInterface::InterfaceAddress> > interface_address;
+        ydk::YList interface_address;
         
 }; // Pim::Standby::DefaultContext::GlobalInterfaces::GlobalInterface
 
@@ -896,7 +896,7 @@ class Pim::Standby::DefaultContext::IfrsInterfaces : public ydk::Entity
 
         class IfrsInterface; //type: Pim::Standby::DefaultContext::IfrsInterfaces::IfrsInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::IfrsInterfaces::IfrsInterface> > ifrs_interface;
+        ydk::YList ifrs_interface;
         
 }; // Pim::Standby::DefaultContext::IfrsInterfaces
 
@@ -954,7 +954,7 @@ class Pim::Standby::DefaultContext::IfrsInterfaces::IfrsInterface : public ydk::
         class InterfaceAddress; //type: Pim::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::InterfaceAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::DrAddress> dr_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::InterfaceAddress> > interface_address;
+        ydk::YList interface_address;
         
 }; // Pim::Standby::DefaultContext::IfrsInterfaces::IfrsInterface
 
@@ -1024,7 +1024,7 @@ class Pim::Standby::DefaultContext::Safs : public ydk::Entity
 
         class Saf; //type: Pim::Standby::DefaultContext::Safs::Saf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Safs::Saf> > saf;
+        ydk::YList saf;
         
 }; // Pim::Standby::DefaultContext::Safs
 
@@ -1078,7 +1078,7 @@ class Pim::Standby::DefaultContext::Safs::Saf::RpfHashSourceGroups : public ydk:
 
         class RpfHashSourceGroup; //type: Pim::Standby::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup> > rpf_hash_source_group;
+        ydk::YList rpf_hash_source_group;
         
 }; // Pim::Standby::DefaultContext::Safs::Saf::RpfHashSourceGroups
 
@@ -1102,8 +1102,8 @@ class Pim::Standby::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSourc
 
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf mask_length; //type: int32
-        ydk::YLeaf mofrr; //type: int32
+        ydk::YLeaf mask_length; //type: uint32
+        ydk::YLeaf mofrr; //type: uint32
         ydk::YLeaf next_hop_multipath_enabled; //type: boolean
         ydk::YLeaf next_hop_interface; //type: string
         ydk::YLeaf secondary_next_hop_interface; //type: string
@@ -1183,7 +1183,7 @@ class Pim::Standby::DefaultContext::Safs::Saf::RpfHashSources : public ydk::Enti
 
         class RpfHashSource; //type: Pim::Standby::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource> > rpf_hash_source;
+        ydk::YList rpf_hash_source;
         
 }; // Pim::Standby::DefaultContext::Safs::Saf::RpfHashSources
 
@@ -1206,7 +1206,7 @@ class Pim::Standby::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource : p
         std::string get_absolute_path() const override;
 
         ydk::YLeaf source_address; //type: string
-        ydk::YLeaf mofrr; //type: int32
+        ydk::YLeaf mofrr; //type: uint32
         ydk::YLeaf next_hop_multipath_enabled; //type: boolean
         ydk::YLeaf next_hop_interface; //type: string
         ydk::YLeaf secondary_next_hop_interface; //type: string
@@ -1286,7 +1286,7 @@ class Pim::Standby::DefaultContext::Safs::Saf::Rpfs : public ydk::Entity
 
         class Rpf; //type: Pim::Standby::DefaultContext::Safs::Saf::Rpfs::Rpf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Safs::Saf::Rpfs::Rpf> > rpf;
+        ydk::YList rpf;
         
 }; // Pim::Standby::DefaultContext::Safs::Saf::Rpfs
 
@@ -1317,7 +1317,7 @@ class Pim::Standby::DefaultContext::Safs::Saf::Rpfs::Rpf : public ydk::Entity
         class RpfPath; //type: Pim::Standby::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr> registered_address_xr;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath> > rpf_path;
+        ydk::YList rpf_path;
         
 }; // Pim::Standby::DefaultContext::Safs::Saf::Rpfs::Rpf
 
@@ -1442,7 +1442,7 @@ class Pim::Standby::DefaultContext::InterfaceStatistics : public ydk::Entity
 
         class InterfaceStatistic; //type: Pim::Standby::DefaultContext::InterfaceStatistics::InterfaceStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::InterfaceStatistics::InterfaceStatistic> > interface_statistic;
+        ydk::YList interface_statistic;
         
 }; // Pim::Standby::DefaultContext::InterfaceStatistics
 
@@ -1536,7 +1536,7 @@ class Pim::Standby::DefaultContext::JpStatistics : public ydk::Entity
 
         class JpStatistic; //type: Pim::Standby::DefaultContext::JpStatistics::JpStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::JpStatistics::JpStatistic> > jp_statistic;
+        ydk::YList jp_statistic;
         
 }; // Pim::Standby::DefaultContext::JpStatistics
 
@@ -1594,7 +1594,7 @@ class Pim::Standby::DefaultContext::MibDatabases : public ydk::Entity
 
         class MibDatabase; //type: Pim::Standby::DefaultContext::MibDatabases::MibDatabase
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::MibDatabases::MibDatabase> > mib_database;
+        ydk::YList mib_database;
         
 }; // Pim::Standby::DefaultContext::MibDatabases
 
@@ -1618,7 +1618,7 @@ class Pim::Standby::DefaultContext::MibDatabases::MibDatabase : public ydk::Enti
 
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf source_netmask; //type: int32
+        ydk::YLeaf source_netmask; //type: uint32
         ydk::YLeaf upstream_assert_timer; //type: int32
         ydk::YLeaf assert_metric; //type: uint32
         ydk::YLeaf assert_metric_preference; //type: uint32
@@ -1762,7 +1762,7 @@ class Pim::Standby::DefaultContext::NeighborOldFormats : public ydk::Entity
 
         class NeighborOldFormat; //type: Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat> > neighbor_old_format;
+        ydk::YList neighbor_old_format;
         
 }; // Pim::Standby::DefaultContext::NeighborOldFormats
 
@@ -1803,7 +1803,7 @@ class Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat : publ
         ydk::YLeaf override_interval; //type: uint16
         class NeighborAddressXr; //type: Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr> > neighbor_address_xr;
+        ydk::YList neighbor_address_xr;
         
 }; // Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat
 
@@ -1874,7 +1874,7 @@ class Pim::Standby::DefaultContext::Ranges : public ydk::Entity
 
         class Range; //type: Pim::Standby::DefaultContext::Ranges::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Ranges::Range> > range;
+        ydk::YList range;
         
 }; // Pim::Standby::DefaultContext::Ranges
 
@@ -1907,7 +1907,7 @@ class Pim::Standby::DefaultContext::Ranges::Range : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Ranges::Range::RpAddressXr> rp_address_xr;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Ranges::Range::SourceOfInformation> source_of_information;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Ranges::Range::GroupRange> > group_range;
+        ydk::YList group_range;
         
 }; // Pim::Standby::DefaultContext::Ranges::Range
 
@@ -2056,7 +2056,7 @@ class Pim::Standby::DefaultContext::InterfaceOldFormats : public ydk::Entity
 
         class InterfaceOldFormat; //type: Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat> > interface_old_format;
+        ydk::YList interface_old_format;
         
 }; // Pim::Standby::DefaultContext::InterfaceOldFormats
 
@@ -2114,7 +2114,7 @@ class Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat : pu
         class InterfaceAddress; //type: Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::DrAddress> dr_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress> > interface_address;
+        ydk::YList interface_address;
         
 }; // Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat
 
@@ -2212,7 +2212,7 @@ class Pim::Standby::DefaultContext::Bsr::RpCaches : public ydk::Entity
 
         class RpCache; //type: Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache> > rp_cache;
+        ydk::YList rp_cache;
         
 }; // Pim::Standby::DefaultContext::Bsr::RpCaches
 
@@ -2287,7 +2287,7 @@ class Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList : pu
 
         class PimBsrCrpBag; //type: Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag> > pim_bsr_crp_bag;
+        ydk::YList pim_bsr_crp_bag;
         
 }; // Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList
 
@@ -2362,7 +2362,7 @@ class Pim::Standby::DefaultContext::Bsr::CandidateRps : public ydk::Entity
 
         class CandidateRp; //type: Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp> > candidate_rp;
+        ydk::YList candidate_rp;
         
 }; // Pim::Standby::DefaultContext::Bsr::CandidateRps
 
@@ -2396,7 +2396,7 @@ class Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp : public ydk:
         class CrpAccess; //type: Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CrpAccess
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CandidateRp_> candidate_rp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CrpAccess> > crp_access;
+        ydk::YList crp_access;
         
 }; // Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp
 
@@ -2465,7 +2465,7 @@ class Pim::Standby::DefaultContext::Bsr::BsrElections : public ydk::Entity
 
         class BsrElection; //type: Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection> > bsr_election;
+        ydk::YList bsr_election;
         
 }; // Pim::Standby::DefaultContext::Bsr::BsrElections
 
@@ -2487,7 +2487,7 @@ class Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf pim_scope; //type: int32
+        ydk::YLeaf pim_scope; //type: uint32
         ydk::YLeaf bsr_priority; //type: uint8
         ydk::YLeaf bsr_mask_length; //type: uint8
         ydk::YLeaf bsr_up_time; //type: uint16
@@ -2625,7 +2625,7 @@ class Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests : public ydk::
 
         class RoutePolicyTest; //type: Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest> > route_policy_test;
+        ydk::YList route_policy_test;
         
 }; // Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests
 
@@ -2774,7 +2774,7 @@ class Pim::Standby::DefaultContext::Interfaces : public ydk::Entity
 
         class Interface; //type: Pim::Standby::DefaultContext::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Pim::Standby::DefaultContext::Interfaces
 
@@ -2832,7 +2832,7 @@ class Pim::Standby::DefaultContext::Interfaces::Interface : public ydk::Entity
         class InterfaceAddress; //type: Pim::Standby::DefaultContext::Interfaces::Interface::InterfaceAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Interfaces::Interface::DrAddress> dr_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Interfaces::Interface::InterfaceAddress> > interface_address;
+        ydk::YList interface_address;
         
 }; // Pim::Standby::DefaultContext::Interfaces::Interface
 
@@ -2902,7 +2902,7 @@ class Pim::Standby::DefaultContext::NetIoTunnels : public ydk::Entity
 
         class NetIoTunnel; //type: Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel> > net_io_tunnel;
+        ydk::YList net_io_tunnel;
         
 }; // Pim::Standby::DefaultContext::NetIoTunnels
 
@@ -3050,7 +3050,7 @@ class Pim::Standby::DefaultContext::BidirDfStates : public ydk::Entity
 
         class BidirDfState; //type: Pim::Standby::DefaultContext::BidirDfStates::BidirDfState
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::BidirDfStates::BidirDfState> > bidir_df_state;
+        ydk::YList bidir_df_state;
         
 }; // Pim::Standby::DefaultContext::BidirDfStates
 
@@ -3130,7 +3130,7 @@ class Pim::Standby::DefaultContext::Topologies : public ydk::Entity
 
         class Topology; //type: Pim::Standby::DefaultContext::Topologies::Topology
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Topologies::Topology> > topology;
+        ydk::YList topology;
         
 }; // Pim::Standby::DefaultContext::Topologies
 
@@ -3154,7 +3154,7 @@ class Pim::Standby::DefaultContext::Topologies::Topology : public ydk::Entity
 
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf rpt; //type: int32
+        ydk::YLeaf rpt; //type: uint32
         ydk::YLeaf limit_reached; //type: boolean
         ydk::YLeaf low_memory; //type: boolean
         ydk::YLeaf protocol; //type: PimShowProtocol
@@ -3227,7 +3227,7 @@ class Pim::Standby::DefaultContext::Topologies::Topology : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Topologies::Topology::RpfRoot> rpf_root;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Topologies::Topology::ProxyAddress> proxy_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Topologies::Topology::OrigSrcAddress> orig_src_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface> > outgoing_interface;
+        ydk::YList outgoing_interface;
         
 }; // Pim::Standby::DefaultContext::Topologies::Topology
 
@@ -3519,7 +3519,7 @@ class Pim::Standby::DefaultContext::BgpAfs : public ydk::Entity
 
         class BgpAf; //type: Pim::Standby::DefaultContext::BgpAfs::BgpAf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::BgpAfs::BgpAf> > bgp_af;
+        ydk::YList bgp_af;
         
 }; // Pim::Standby::DefaultContext::BgpAfs
 
@@ -3669,7 +3669,7 @@ class Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts : public yd
 
         class TopologyInterfaceFlagRouteCount; //type: Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount> > topology_interface_flag_route_count;
+        ydk::YList topology_interface_flag_route_count;
         
 }; // Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts
 
@@ -3721,7 +3721,7 @@ class Pim::Standby::DefaultContext::GroupMapSources : public ydk::Entity
 
         class GroupMapSource; //type: Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource> > group_map_source;
+        ydk::YList group_map_source;
         
 }; // Pim::Standby::DefaultContext::GroupMapSources
 
@@ -3744,11 +3744,11 @@ class Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource : public ydk
         std::string get_absolute_path() const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf client; //type: PimClient
         ydk::YLeaf protocol; //type: PimProtocol
         ydk::YLeaf rp_address; //type: string
-        ydk::YLeaf priority; //type: int32
+        ydk::YLeaf priority; //type: uint32
         ydk::YLeaf holdtime; //type: int32
         ydk::YLeaf expires; //type: uint64
         ydk::YLeaf uptime; //type: uint64
@@ -3950,7 +3950,7 @@ class Pim::Standby::DefaultContext::TrafficCounters : public ydk::Entity
         ydk::YLeaf truncated_pim_packets; //type: uint32
         class PacketQueue; //type: Pim::Standby::DefaultContext::TrafficCounters::PacketQueue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::TrafficCounters::PacketQueue> > packet_queue;
+        ydk::YList packet_queue;
         
 }; // Pim::Standby::DefaultContext::TrafficCounters
 
@@ -4051,7 +4051,7 @@ class Pim::Standby::DefaultContext::GroupMapRpfs : public ydk::Entity
 
         class GroupMapRpf; //type: Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf> > group_map_rpf;
+        ydk::YList group_map_rpf;
         
 }; // Pim::Standby::DefaultContext::GroupMapRpfs
 
@@ -4074,11 +4074,11 @@ class Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf : public ydk::Enti
         std::string get_absolute_path() const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf client; //type: PimClient
         ydk::YLeaf protocol; //type: PimProtocol
         ydk::YLeaf rp_address; //type: string
-        ydk::YLeaf rp_priority; //type: int32
+        ydk::YLeaf rp_priority; //type: uint32
         ydk::YLeaf are_we_rp; //type: boolean
         ydk::YLeaf rpf_interface_name; //type: string
         ydk::YLeaf rpf_vrf_name; //type: string
@@ -4303,47 +4303,9 @@ class Pim::Standby::DefaultContext::Gre::GreHashes : public ydk::Entity
 
         class GreHash; //type: Pim::Standby::DefaultContext::Gre::GreHashes::GreHash
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::DefaultContext::Gre::GreHashes::GreHash> > gre_hash;
+        ydk::YList gre_hash;
         
 }; // Pim::Standby::DefaultContext::Gre::GreHashes
-
-class PimTopologyInterfaceFlag : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lh;
-        static const ydk::Enum::YLeaf ld;
-        static const ydk::Enum::YLeaf li;
-        static const ydk::Enum::YLeaf ii;
-        static const ydk::Enum::YLeaf id;
-        static const ydk::Enum::YLeaf as;
-        static const ydk::Enum::YLeaf ab;
-        static const ydk::Enum::YLeaf ex;
-
-};
-
-class PimSafi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf default_;
-
-};
-
-class PimClient : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf configured_embedded_rp;
-        static const ydk::Enum::YLeaf embedded;
-        static const ydk::Enum::YLeaf permanent;
-        static const ydk::Enum::YLeaf auto_rp;
-        static const ydk::Enum::YLeaf bsr;
-        static const ydk::Enum::YLeaf configured;
-        static const ydk::Enum::YLeaf static_;
-
-};
 
 class PimTopologyEntryFlag : public ydk::Enum
 {
@@ -4368,19 +4330,6 @@ class PimTopologyEntryFlag : public ydk::Enum
 
 };
 
-class PimProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf non_routable;
-        static const ydk::Enum::YLeaf sparse_mode;
-        static const ydk::Enum::YLeaf dense_mode;
-        static const ydk::Enum::YLeaf bidir;
-        static const ydk::Enum::YLeaf ssm;
-        static const ydk::Enum::YLeaf maximum;
-        static const ydk::Enum::YLeaf any;
-
-};
-
 class PimAfi : public ydk::Enum
 {
     public:
@@ -4398,24 +4347,6 @@ class PimInterface : public ydk::Enum
 
 };
 
-class PimShowLocalInterest : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf null;
-        static const ydk::Enum::YLeaf li;
-        static const ydk::Enum::YLeaf ld;
-
-};
-
-class PimInternalInterestInfo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf null;
-        static const ydk::Enum::YLeaf ii;
-        static const ydk::Enum::YLeaf id;
-
-};
-
 class PimShowRangeClient : public ydk::Enum
 {
     public:
@@ -4430,6 +4361,61 @@ class PimShowRangeClient : public ydk::Enum
 
 };
 
+class PimInternalInterestInfo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf null;
+        static const ydk::Enum::YLeaf ii;
+        static const ydk::Enum::YLeaf id;
+
+};
+
+class PimProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf non_routable;
+        static const ydk::Enum::YLeaf sparse_mode;
+        static const ydk::Enum::YLeaf dense_mode;
+        static const ydk::Enum::YLeaf bidir;
+        static const ydk::Enum::YLeaf ssm;
+        static const ydk::Enum::YLeaf maximum;
+        static const ydk::Enum::YLeaf any;
+
+};
+
+class PimSafi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf default_;
+
+};
+
+class PimShowLocalInterest : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf null;
+        static const ydk::Enum::YLeaf li;
+        static const ydk::Enum::YLeaf ld;
+
+};
+
+class PimClient : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf configured_embedded_rp;
+        static const ydk::Enum::YLeaf embedded;
+        static const ydk::Enum::YLeaf permanent;
+        static const ydk::Enum::YLeaf auto_rp;
+        static const ydk::Enum::YLeaf bsr;
+        static const ydk::Enum::YLeaf configured;
+        static const ydk::Enum::YLeaf static_;
+
+};
+
 class PimShowProtocol : public ydk::Enum
 {
     public:
@@ -4440,6 +4426,20 @@ class PimShowProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf ssm;
         static const ydk::Enum::YLeaf maximum;
         static const ydk::Enum::YLeaf any;
+
+};
+
+class PimTopologyInterfaceFlag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lh;
+        static const ydk::Enum::YLeaf ld;
+        static const ydk::Enum::YLeaf li;
+        static const ydk::Enum::YLeaf ii;
+        static const ydk::Enum::YLeaf id;
+        static const ydk::Enum::YLeaf as;
+        static const ydk::Enum::YLeaf ab;
+        static const ydk::Enum::YLeaf ex;
 
 };
 

@@ -13,15 +13,15 @@ namespace CISCO_NTP_MIB {
 
 CISCONTPMIB::CISCONTPMIB()
     :
-    cntpsystem(std::make_shared<CISCONTPMIB::Cntpsystem>())
-	,cntppeersvartable(std::make_shared<CISCONTPMIB::Cntppeersvartable>())
-	,cntpfilterregistertable(std::make_shared<CISCONTPMIB::Cntpfilterregistertable>())
+    cntpsystem(std::make_shared<CISCONTPMIB::CntpSystem>())
+    , cntppeersvartable(std::make_shared<CISCONTPMIB::CntpPeersVarTable>())
+    , cntpfilterregistertable(std::make_shared<CISCONTPMIB::CntpFilterRegisterTable>())
 {
     cntpsystem->parent = this;
     cntppeersvartable->parent = this;
     cntpfilterregistertable->parent = this;
 
-    yang_name = "CISCO-NTP-MIB"; yang_parent_name = "CISCO-NTP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-NTP-MIB"; yang_parent_name = "CISCO-NTP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCONTPMIB::~CISCONTPMIB()
@@ -30,6 +30,7 @@ CISCONTPMIB::~CISCONTPMIB()
 
 bool CISCONTPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cntpsystem !=  nullptr && cntpsystem->has_data())
 	|| (cntppeersvartable !=  nullptr && cntppeersvartable->has_data())
 	|| (cntpfilterregistertable !=  nullptr && cntpfilterregistertable->has_data());
@@ -65,7 +66,7 @@ std::shared_ptr<Entity> CISCONTPMIB::get_child_by_name(const std::string & child
     {
         if(cntpsystem == nullptr)
         {
-            cntpsystem = std::make_shared<CISCONTPMIB::Cntpsystem>();
+            cntpsystem = std::make_shared<CISCONTPMIB::CntpSystem>();
         }
         return cntpsystem;
     }
@@ -74,7 +75,7 @@ std::shared_ptr<Entity> CISCONTPMIB::get_child_by_name(const std::string & child
     {
         if(cntppeersvartable == nullptr)
         {
-            cntppeersvartable = std::make_shared<CISCONTPMIB::Cntppeersvartable>();
+            cntppeersvartable = std::make_shared<CISCONTPMIB::CntpPeersVarTable>();
         }
         return cntppeersvartable;
     }
@@ -83,7 +84,7 @@ std::shared_ptr<Entity> CISCONTPMIB::get_child_by_name(const std::string & child
     {
         if(cntpfilterregistertable == nullptr)
         {
-            cntpfilterregistertable = std::make_shared<CISCONTPMIB::Cntpfilterregistertable>();
+            cntpfilterregistertable = std::make_shared<CISCONTPMIB::CntpFilterRegisterTable>();
         }
         return cntpfilterregistertable;
     }
@@ -153,7 +154,7 @@ bool CISCONTPMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCONTPMIB::Cntpsystem::Cntpsystem()
+CISCONTPMIB::CntpSystem::CntpSystem()
     :
     cntpsysleap{YType::enumeration, "cntpSysLeap"},
     cntpsysstratum{YType::int32, "cntpSysStratum"},
@@ -168,15 +169,16 @@ CISCONTPMIB::Cntpsystem::Cntpsystem()
     cntpsyssrvstatus{YType::enumeration, "cntpSysSrvStatus"}
 {
 
-    yang_name = "cntpSystem"; yang_parent_name = "CISCO-NTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cntpSystem"; yang_parent_name = "CISCO-NTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONTPMIB::Cntpsystem::~Cntpsystem()
+CISCONTPMIB::CntpSystem::~CntpSystem()
 {
 }
 
-bool CISCONTPMIB::Cntpsystem::has_data() const
+bool CISCONTPMIB::CntpSystem::has_data() const
 {
+    if (is_presence_container) return true;
     return cntpsysleap.is_set
 	|| cntpsysstratum.is_set
 	|| cntpsysprecision.is_set
@@ -190,7 +192,7 @@ bool CISCONTPMIB::Cntpsystem::has_data() const
 	|| cntpsyssrvstatus.is_set;
 }
 
-bool CISCONTPMIB::Cntpsystem::has_operation() const
+bool CISCONTPMIB::CntpSystem::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cntpsysleap.yfilter)
@@ -206,21 +208,21 @@ bool CISCONTPMIB::Cntpsystem::has_operation() const
 	|| ydk::is_set(cntpsyssrvstatus.yfilter);
 }
 
-std::string CISCONTPMIB::Cntpsystem::get_absolute_path() const
+std::string CISCONTPMIB::CntpSystem::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NTP-MIB:CISCO-NTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONTPMIB::Cntpsystem::get_segment_path() const
+std::string CISCONTPMIB::CntpSystem::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cntpSystem";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::Cntpsystem::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::CntpSystem::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -240,19 +242,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::Cntpsystem::get_name
 
 }
 
-std::shared_ptr<Entity> CISCONTPMIB::Cntpsystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONTPMIB::CntpSystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::Cntpsystem::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::CntpSystem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONTPMIB::Cntpsystem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONTPMIB::CntpSystem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cntpSysLeap")
     {
@@ -322,7 +324,7 @@ void CISCONTPMIB::Cntpsystem::set_value(const std::string & value_path, const st
     }
 }
 
-void CISCONTPMIB::Cntpsystem::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONTPMIB::CntpSystem::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cntpSysLeap")
     {
@@ -370,26 +372,29 @@ void CISCONTPMIB::Cntpsystem::set_filter(const std::string & value_path, YFilter
     }
 }
 
-bool CISCONTPMIB::Cntpsystem::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONTPMIB::CntpSystem::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cntpSysLeap" || name == "cntpSysStratum" || name == "cntpSysPrecision" || name == "cntpSysRootDelay" || name == "cntpSysRootDispersion" || name == "cntpSysRefId" || name == "cntpSysRefTime" || name == "cntpSysPoll" || name == "cntpSysPeer" || name == "cntpSysClock" || name == "cntpSysSrvStatus")
         return true;
     return false;
 }
 
-CISCONTPMIB::Cntppeersvartable::Cntppeersvartable()
+CISCONTPMIB::CntpPeersVarTable::CntpPeersVarTable()
+    :
+    cntppeersvarentry(this, {"cntppeersassocid"})
 {
 
-    yang_name = "cntpPeersVarTable"; yang_parent_name = "CISCO-NTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cntpPeersVarTable"; yang_parent_name = "CISCO-NTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONTPMIB::Cntppeersvartable::~Cntppeersvartable()
+CISCONTPMIB::CntpPeersVarTable::~CntpPeersVarTable()
 {
 }
 
-bool CISCONTPMIB::Cntppeersvartable::has_data() const
+bool CISCONTPMIB::CntpPeersVarTable::has_data() const
 {
-    for (std::size_t index=0; index<cntppeersvarentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cntppeersvarentry.len(); index++)
     {
         if(cntppeersvarentry[index]->has_data())
             return true;
@@ -397,9 +402,9 @@ bool CISCONTPMIB::Cntppeersvartable::has_data() const
     return false;
 }
 
-bool CISCONTPMIB::Cntppeersvartable::has_operation() const
+bool CISCONTPMIB::CntpPeersVarTable::has_operation() const
 {
-    for (std::size_t index=0; index<cntppeersvarentry.size(); index++)
+    for (std::size_t index=0; index<cntppeersvarentry.len(); index++)
     {
         if(cntppeersvarentry[index]->has_operation())
             return true;
@@ -407,21 +412,21 @@ bool CISCONTPMIB::Cntppeersvartable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCONTPMIB::Cntppeersvartable::get_absolute_path() const
+std::string CISCONTPMIB::CntpPeersVarTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NTP-MIB:CISCO-NTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONTPMIB::Cntppeersvartable::get_segment_path() const
+std::string CISCONTPMIB::CntpPeersVarTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cntpPeersVarTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::Cntppeersvartable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::CntpPeersVarTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -430,25 +435,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::Cntppeersvartable::g
 
 }
 
-std::shared_ptr<Entity> CISCONTPMIB::Cntppeersvartable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONTPMIB::CntpPeersVarTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cntpPeersVarEntry")
     {
-        auto c = std::make_shared<CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry>();
+        auto c = std::make_shared<CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry>();
         c->parent = this;
-        cntppeersvarentry.push_back(c);
+        cntppeersvarentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::Cntppeersvartable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::CntpPeersVarTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cntppeersvarentry)
+    for (auto c : cntppeersvarentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -459,22 +464,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::Cntppeersvartable::g
     return children;
 }
 
-void CISCONTPMIB::Cntppeersvartable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONTPMIB::CntpPeersVarTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONTPMIB::Cntppeersvartable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONTPMIB::CntpPeersVarTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONTPMIB::Cntppeersvartable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONTPMIB::CntpPeersVarTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cntpPeersVarEntry")
         return true;
     return false;
 }
 
-CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::Cntppeersvarentry()
+CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::CntpPeersVarEntry()
     :
     cntppeersassocid{YType::int32, "cntpPeersAssocId"},
     cntppeersconfigured{YType::boolean, "cntpPeersConfigured"},
@@ -509,15 +514,16 @@ CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::Cntppeersvarentry()
     cntppeerspeername{YType::str, "cntpPeersPeerName"}
 {
 
-    yang_name = "cntpPeersVarEntry"; yang_parent_name = "cntpPeersVarTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cntpPeersVarEntry"; yang_parent_name = "cntpPeersVarTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::~Cntppeersvarentry()
+CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::~CntpPeersVarEntry()
 {
 }
 
-bool CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::has_data() const
+bool CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cntppeersassocid.is_set
 	|| cntppeersconfigured.is_set
 	|| cntppeerspeeraddress.is_set
@@ -551,7 +557,7 @@ bool CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::has_data() const
 	|| cntppeerspeername.is_set;
 }
 
-bool CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::has_operation() const
+bool CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cntppeersassocid.yfilter)
@@ -587,21 +593,22 @@ bool CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::has_operation() const
 	|| ydk::is_set(cntppeerspeername.yfilter);
 }
 
-std::string CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::get_absolute_path() const
+std::string CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NTP-MIB:CISCO-NTP-MIB/cntpPeersVarTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::get_segment_path() const
+std::string CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cntpPeersVarEntry" <<"[cntpPeersAssocId='" <<cntppeersassocid <<"']";
+    path_buffer << "cntpPeersVarEntry";
+    ADD_KEY_TOKEN(cntppeersassocid, "cntpPeersAssocId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -641,19 +648,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::Cntppeersvartable::C
 
 }
 
-std::shared_ptr<Entity> CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cntpPeersAssocId")
     {
@@ -843,7 +850,7 @@ void CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::set_value(const std::str
     }
 }
 
-void CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cntpPeersAssocId")
     {
@@ -971,26 +978,29 @@ void CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::set_filter(const std::st
     }
 }
 
-bool CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cntpPeersAssocId" || name == "cntpPeersConfigured" || name == "cntpPeersPeerAddress" || name == "cntpPeersPeerPort" || name == "cntpPeersHostAddress" || name == "cntpPeersHostPort" || name == "cntpPeersLeap" || name == "cntpPeersMode" || name == "cntpPeersStratum" || name == "cntpPeersPeerPoll" || name == "cntpPeersHostPoll" || name == "cntpPeersPrecision" || name == "cntpPeersRootDelay" || name == "cntpPeersRootDispersion" || name == "cntpPeersRefId" || name == "cntpPeersRefTime" || name == "cntpPeersOrgTime" || name == "cntpPeersReceiveTime" || name == "cntpPeersTransmitTime" || name == "cntpPeersUpdateTime" || name == "cntpPeersReach" || name == "cntpPeersTimer" || name == "cntpPeersOffset" || name == "cntpPeersDelay" || name == "cntpPeersDispersion" || name == "cntpPeersFilterValidEntries" || name == "cntpPeersEntryStatus" || name == "cntpPeersUpdateTimeRev1" || name == "cntpPeersPrefPeer" || name == "cntpPeersPeerType" || name == "cntpPeersPeerName")
         return true;
     return false;
 }
 
-CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregistertable()
+CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterTable()
+    :
+    cntpfilterregisterentry(this, {"cntppeersassocid", "cntpfilterindex"})
 {
 
-    yang_name = "cntpFilterRegisterTable"; yang_parent_name = "CISCO-NTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cntpFilterRegisterTable"; yang_parent_name = "CISCO-NTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONTPMIB::Cntpfilterregistertable::~Cntpfilterregistertable()
+CISCONTPMIB::CntpFilterRegisterTable::~CntpFilterRegisterTable()
 {
 }
 
-bool CISCONTPMIB::Cntpfilterregistertable::has_data() const
+bool CISCONTPMIB::CntpFilterRegisterTable::has_data() const
 {
-    for (std::size_t index=0; index<cntpfilterregisterentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cntpfilterregisterentry.len(); index++)
     {
         if(cntpfilterregisterentry[index]->has_data())
             return true;
@@ -998,9 +1008,9 @@ bool CISCONTPMIB::Cntpfilterregistertable::has_data() const
     return false;
 }
 
-bool CISCONTPMIB::Cntpfilterregistertable::has_operation() const
+bool CISCONTPMIB::CntpFilterRegisterTable::has_operation() const
 {
-    for (std::size_t index=0; index<cntpfilterregisterentry.size(); index++)
+    for (std::size_t index=0; index<cntpfilterregisterentry.len(); index++)
     {
         if(cntpfilterregisterentry[index]->has_operation())
             return true;
@@ -1008,21 +1018,21 @@ bool CISCONTPMIB::Cntpfilterregistertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCONTPMIB::Cntpfilterregistertable::get_absolute_path() const
+std::string CISCONTPMIB::CntpFilterRegisterTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NTP-MIB:CISCO-NTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONTPMIB::Cntpfilterregistertable::get_segment_path() const
+std::string CISCONTPMIB::CntpFilterRegisterTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cntpFilterRegisterTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::Cntpfilterregistertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::CntpFilterRegisterTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1031,25 +1041,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::Cntpfilterregisterta
 
 }
 
-std::shared_ptr<Entity> CISCONTPMIB::Cntpfilterregistertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONTPMIB::CntpFilterRegisterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cntpFilterRegisterEntry")
     {
-        auto c = std::make_shared<CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry>();
+        auto c = std::make_shared<CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry>();
         c->parent = this;
-        cntpfilterregisterentry.push_back(c);
+        cntpfilterregisterentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::Cntpfilterregistertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::CntpFilterRegisterTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cntpfilterregisterentry)
+    for (auto c : cntpfilterregisterentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1060,22 +1070,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::Cntpfilterregisterta
     return children;
 }
 
-void CISCONTPMIB::Cntpfilterregistertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONTPMIB::CntpFilterRegisterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONTPMIB::Cntpfilterregistertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONTPMIB::CntpFilterRegisterTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONTPMIB::Cntpfilterregistertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONTPMIB::CntpFilterRegisterTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cntpFilterRegisterEntry")
         return true;
     return false;
 }
 
-CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::Cntpfilterregisterentry()
+CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::CntpFilterRegisterEntry()
     :
     cntppeersassocid{YType::str, "cntpPeersAssocId"},
     cntpfilterindex{YType::int32, "cntpFilterIndex"},
@@ -1084,15 +1094,16 @@ CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::Cntpfilterregiste
     cntpfilterpeersdispersion{YType::str, "cntpFilterPeersDispersion"}
 {
 
-    yang_name = "cntpFilterRegisterEntry"; yang_parent_name = "cntpFilterRegisterTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cntpFilterRegisterEntry"; yang_parent_name = "cntpFilterRegisterTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::~Cntpfilterregisterentry()
+CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::~CntpFilterRegisterEntry()
 {
 }
 
-bool CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::has_data() const
+bool CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cntppeersassocid.is_set
 	|| cntpfilterindex.is_set
 	|| cntpfilterpeersoffset.is_set
@@ -1100,7 +1111,7 @@ bool CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::has_data() c
 	|| cntpfilterpeersdispersion.is_set;
 }
 
-bool CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::has_operation() const
+bool CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cntppeersassocid.yfilter)
@@ -1110,21 +1121,23 @@ bool CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::has_operatio
 	|| ydk::is_set(cntpfilterpeersdispersion.yfilter);
 }
 
-std::string CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::get_absolute_path() const
+std::string CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NTP-MIB:CISCO-NTP-MIB/cntpFilterRegisterTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::get_segment_path() const
+std::string CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cntpFilterRegisterEntry" <<"[cntpPeersAssocId='" <<cntppeersassocid <<"']" <<"[cntpFilterIndex='" <<cntpfilterindex <<"']";
+    path_buffer << "cntpFilterRegisterEntry";
+    ADD_KEY_TOKEN(cntppeersassocid, "cntpPeersAssocId");
+    ADD_KEY_TOKEN(cntpfilterindex, "cntpFilterIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1138,19 +1151,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::Cntpfilterregisterta
 
 }
 
-std::shared_ptr<Entity> CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cntpPeersAssocId")
     {
@@ -1184,7 +1197,7 @@ void CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::set_value(co
     }
 }
 
-void CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cntpPeersAssocId")
     {
@@ -1208,7 +1221,7 @@ void CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::set_filter(c
     }
 }
 
-bool CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cntpPeersAssocId" || name == "cntpFilterIndex" || name == "cntpFilterPeersOffset" || name == "cntpFilterPeersDelay" || name == "cntpFilterPeersDispersion")
         return true;
@@ -1220,21 +1233,21 @@ const Enum::YLeaf NTPLeapIndicator::addSecond {1, "addSecond"};
 const Enum::YLeaf NTPLeapIndicator::subtractSecond {2, "subtractSecond"};
 const Enum::YLeaf NTPLeapIndicator::alarm {3, "alarm"};
 
-const Enum::YLeaf CISCONTPMIB::Cntpsystem::Cntpsyssrvstatus::unknown {1, "unknown"};
-const Enum::YLeaf CISCONTPMIB::Cntpsystem::Cntpsyssrvstatus::notRunning {2, "notRunning"};
-const Enum::YLeaf CISCONTPMIB::Cntpsystem::Cntpsyssrvstatus::notSynchronized {3, "notSynchronized"};
-const Enum::YLeaf CISCONTPMIB::Cntpsystem::Cntpsyssrvstatus::syncToLocal {4, "syncToLocal"};
-const Enum::YLeaf CISCONTPMIB::Cntpsystem::Cntpsyssrvstatus::syncToRefclock {5, "syncToRefclock"};
-const Enum::YLeaf CISCONTPMIB::Cntpsystem::Cntpsyssrvstatus::syncToRemoteServer {6, "syncToRemoteServer"};
+const Enum::YLeaf CISCONTPMIB::CntpSystem::CntpSysSrvStatus::unknown {1, "unknown"};
+const Enum::YLeaf CISCONTPMIB::CntpSystem::CntpSysSrvStatus::notRunning {2, "notRunning"};
+const Enum::YLeaf CISCONTPMIB::CntpSystem::CntpSysSrvStatus::notSynchronized {3, "notSynchronized"};
+const Enum::YLeaf CISCONTPMIB::CntpSystem::CntpSysSrvStatus::syncToLocal {4, "syncToLocal"};
+const Enum::YLeaf CISCONTPMIB::CntpSystem::CntpSysSrvStatus::syncToRefclock {5, "syncToRefclock"};
+const Enum::YLeaf CISCONTPMIB::CntpSystem::CntpSysSrvStatus::syncToRemoteServer {6, "syncToRemoteServer"};
 
-const Enum::YLeaf CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::unspecified {0, "unspecified"};
-const Enum::YLeaf CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::symmetricActive {1, "symmetricActive"};
-const Enum::YLeaf CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::symmetricPassive {2, "symmetricPassive"};
-const Enum::YLeaf CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::client {3, "client"};
-const Enum::YLeaf CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::server {4, "server"};
-const Enum::YLeaf CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::broadcast {5, "broadcast"};
-const Enum::YLeaf CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::reservedControl {6, "reservedControl"};
-const Enum::YLeaf CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::reservedPrivate {7, "reservedPrivate"};
+const Enum::YLeaf CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::CntpPeersMode::unspecified {0, "unspecified"};
+const Enum::YLeaf CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::CntpPeersMode::symmetricActive {1, "symmetricActive"};
+const Enum::YLeaf CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::CntpPeersMode::symmetricPassive {2, "symmetricPassive"};
+const Enum::YLeaf CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::CntpPeersMode::client {3, "client"};
+const Enum::YLeaf CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::CntpPeersMode::server {4, "server"};
+const Enum::YLeaf CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::CntpPeersMode::broadcast {5, "broadcast"};
+const Enum::YLeaf CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::CntpPeersMode::reservedControl {6, "reservedControl"};
+const Enum::YLeaf CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::CntpPeersMode::reservedPrivate {7, "reservedPrivate"};
 
 
 }

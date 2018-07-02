@@ -11,73 +11,13 @@ using namespace ydk;
 namespace openconfig {
 namespace openconfig_mpls_types {
 
-PathSetupProtocol::PathSetupProtocol()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:path-setup-protocol")
+PROTECTIONTYPE::PROTECTIONTYPE()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:PROTECTION_TYPE")
 {
 
 }
 
-PathSetupProtocol::~PathSetupProtocol()
-{
-}
-
-ProtectionType::ProtectionType()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:protection-type")
-{
-
-}
-
-ProtectionType::~ProtectionType()
-{
-}
-
-LspRole::LspRole()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:lsp-role")
-{
-
-}
-
-LspRole::~LspRole()
-{
-}
-
-TunnelType::TunnelType()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:tunnel-type")
-{
-
-}
-
-TunnelType::~TunnelType()
-{
-}
-
-LspOperStatus::LspOperStatus()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:lsp-oper-status")
-{
-
-}
-
-LspOperStatus::~LspOperStatus()
-{
-}
-
-TunnelAdminStatus::TunnelAdminStatus()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:tunnel-admin-status")
-{
-
-}
-
-TunnelAdminStatus::~TunnelAdminStatus()
-{
-}
-
-NullLabelType::NullLabelType()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:null-label-type")
-{
-
-}
-
-NullLabelType::~NullLabelType()
+PROTECTIONTYPE::~PROTECTIONTYPE()
 {
 }
 
@@ -91,113 +31,83 @@ PATHSETUPPROTOCOL::~PATHSETUPPROTOCOL()
 {
 }
 
-PathSetupRsvp::PathSetupRsvp()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:path-setup-rsvp")
+PATHCOMPUTATIONMETHOD::PATHCOMPUTATIONMETHOD()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:PATH_COMPUTATION_METHOD")
 {
 
 }
 
-PathSetupRsvp::~PathSetupRsvp()
+PATHCOMPUTATIONMETHOD::~PATHCOMPUTATIONMETHOD()
 {
 }
 
-PathSetupSr::PathSetupSr()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:path-setup-sr")
-{
-
-}
-
-PathSetupSr::~PathSetupSr()
-{
-}
-
-PathSetupLdp::PathSetupLdp()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:path-setup-ldp")
+TUNNELADMINSTATUS::TUNNELADMINSTATUS()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:TUNNEL_ADMIN_STATUS")
 {
 
 }
 
-PathSetupLdp::~PathSetupLdp()
+TUNNELADMINSTATUS::~TUNNELADMINSTATUS()
 {
 }
 
-Unprotected::Unprotected()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:unprotected")
-{
-
-}
-
-Unprotected::~Unprotected()
-{
-}
-
-LinkProtectionRequested::LinkProtectionRequested()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:link-protection-requested")
+TUNNELTYPE::TUNNELTYPE()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:TUNNEL_TYPE")
 {
 
 }
 
-LinkProtectionRequested::~LinkProtectionRequested()
+TUNNELTYPE::~TUNNELTYPE()
 {
 }
 
-LinkNodeProtectionRequested::LinkNodeProtectionRequested()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:link-node-protection-requested")
-{
-
-}
-
-LinkNodeProtectionRequested::~LinkNodeProtectionRequested()
-{
-}
-
-INGRESS::INGRESS()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:INGRESS")
+NULLLABELTYPE::NULLLABELTYPE()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:NULL_LABEL_TYPE")
 {
 
 }
 
-INGRESS::~INGRESS()
+NULLLABELTYPE::~NULLLABELTYPE()
 {
 }
 
-EGRESS::EGRESS()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:EGRESS")
-{
-
-}
-
-EGRESS::~EGRESS()
-{
-}
-
-TRANSIT::TRANSIT()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:TRANSIT")
+LSPOPERSTATUS::LSPOPERSTATUS()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:LSP_OPER_STATUS")
 {
 
 }
 
-TRANSIT::~TRANSIT()
+LSPOPERSTATUS::~LSPOPERSTATUS()
 {
 }
 
-P2P::P2P()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:P2P")
-{
-
-}
-
-P2P::~P2P()
-{
-}
-
-P2MP::P2MP()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:P2MP")
+LSPMETRICTYPE::LSPMETRICTYPE()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:LSP_METRIC_TYPE")
 {
 
 }
 
-P2MP::~P2MP()
+LSPMETRICTYPE::~LSPMETRICTYPE()
+{
+}
+
+LSPROLE::LSPROLE()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:LSP_ROLE")
+{
+
+}
+
+LSPROLE::~LSPROLE()
+{
+}
+
+LSPMETRICINHERITED::LSPMETRICINHERITED()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:LSP_METRIC_INHERITED")
+{
+
+}
+
+LSPMETRICINHERITED::~LSPMETRICINHERITED()
 {
 }
 
@@ -211,33 +121,63 @@ DOWN::~DOWN()
 {
 }
 
-UP::UP()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:UP")
+LOCALLYCOMPUTED::LOCALLYCOMPUTED()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:LOCALLY_COMPUTED")
 {
 
 }
 
-UP::~UP()
+LOCALLYCOMPUTED::~LOCALLYCOMPUTED()
 {
 }
 
-ADMINDOWN::ADMINDOWN()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:ADMIN_DOWN")
-{
-
-}
-
-ADMINDOWN::~ADMINDOWN()
-{
-}
-
-ADMINUP::ADMINUP()
-     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:ADMIN_UP")
+P2P::P2P()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:P2P")
 {
 
 }
 
-ADMINUP::~ADMINUP()
+P2P::~P2P()
+{
+}
+
+PATHSETUPSR::PATHSETUPSR()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:PATH_SETUP_SR")
+{
+
+}
+
+PATHSETUPSR::~PATHSETUPSR()
+{
+}
+
+INGRESS::INGRESS()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:INGRESS")
+{
+
+}
+
+INGRESS::~INGRESS()
+{
+}
+
+PATHSETUPRSVP::PATHSETUPRSVP()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:PATH_SETUP_RSVP")
+{
+
+}
+
+PATHSETUPRSVP::~PATHSETUPRSVP()
+{
+}
+
+PATHSETUPLDP::PATHSETUPLDP()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:PATH_SETUP_LDP")
+{
+
+}
+
+PATHSETUPLDP::~PATHSETUPLDP()
 {
 }
 
@@ -251,6 +191,46 @@ EXPLICIT::~EXPLICIT()
 {
 }
 
+ADMINUP::ADMINUP()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:ADMIN_UP")
+{
+
+}
+
+ADMINUP::~ADMINUP()
+{
+}
+
+P2MP::P2MP()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:P2MP")
+{
+
+}
+
+P2MP::~P2MP()
+{
+}
+
+LINKPROTECTIONREQUIRED::LINKPROTECTIONREQUIRED()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:LINK_PROTECTION_REQUIRED")
+{
+
+}
+
+LINKPROTECTIONREQUIRED::~LINKPROTECTIONREQUIRED()
+{
+}
+
+EGRESS::EGRESS()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:EGRESS")
+{
+
+}
+
+EGRESS::~EGRESS()
+{
+}
+
 IMPLICIT::IMPLICIT()
      : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:IMPLICIT")
 {
@@ -261,15 +241,106 @@ IMPLICIT::~IMPLICIT()
 {
 }
 
+LINKNODEPROTECTIONREQUESTED::LINKNODEPROTECTIONREQUESTED()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:LINK_NODE_PROTECTION_REQUESTED")
+{
+
+}
+
+LINKNODEPROTECTIONREQUESTED::~LINKNODEPROTECTIONREQUESTED()
+{
+}
+
+LSPMETRICABSOLUTE::LSPMETRICABSOLUTE()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:LSP_METRIC_ABSOLUTE")
+{
+
+}
+
+LSPMETRICABSOLUTE::~LSPMETRICABSOLUTE()
+{
+}
+
+EXTERNALLYQUERIED::EXTERNALLYQUERIED()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:EXTERNALLY_QUERIED")
+{
+
+}
+
+EXTERNALLYQUERIED::~EXTERNALLYQUERIED()
+{
+}
+
+ADMINDOWN::ADMINDOWN()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:ADMIN_DOWN")
+{
+
+}
+
+ADMINDOWN::~ADMINDOWN()
+{
+}
+
+EXPLICITLYDEFINED::EXPLICITLYDEFINED()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:EXPLICITLY_DEFINED")
+{
+
+}
+
+EXPLICITLYDEFINED::~EXPLICITLYDEFINED()
+{
+}
+
+TRANSIT::TRANSIT()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:TRANSIT")
+{
+
+}
+
+TRANSIT::~TRANSIT()
+{
+}
+
+UP::UP()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:UP")
+{
+
+}
+
+UP::~UP()
+{
+}
+
+LSPMETRICRELATIVE::LSPMETRICRELATIVE()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:LSP_METRIC_RELATIVE")
+{
+
+}
+
+LSPMETRICRELATIVE::~LSPMETRICRELATIVE()
+{
+}
+
+UNPROTECTED::UNPROTECTED()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:UNPROTECTED")
+{
+
+}
+
+UNPROTECTED::~UNPROTECTED()
+{
+}
+
+const Enum::YLeaf TunnelType::P2P {0, "P2P"};
+const Enum::YLeaf TunnelType::P2MP {1, "P2MP"};
+const Enum::YLeaf TunnelType::MP2MP {2, "MP2MP"};
+
 const Enum::YLeaf MplsLabel::IPV4_EXPLICIT_NULL {0, "IPV4_EXPLICIT_NULL"};
 const Enum::YLeaf MplsLabel::ROUTER_ALERT {1, "ROUTER_ALERT"};
 const Enum::YLeaf MplsLabel::IPV6_EXPLICIT_NULL {2, "IPV6_EXPLICIT_NULL"};
 const Enum::YLeaf MplsLabel::IMPLICIT_NULL {3, "IMPLICIT_NULL"};
 const Enum::YLeaf MplsLabel::ENTROPY_LABEL_INDICATOR {7, "ENTROPY_LABEL_INDICATOR"};
-
-const Enum::YLeaf TunnelType_::P2P {0, "P2P"};
-const Enum::YLeaf TunnelType_::P2MP {1, "P2MP"};
-const Enum::YLeaf TunnelType_::MP2MP {2, "MP2MP"};
+const Enum::YLeaf MplsLabel::NO_LABEL {8, "NO_LABEL"};
 
 
 }

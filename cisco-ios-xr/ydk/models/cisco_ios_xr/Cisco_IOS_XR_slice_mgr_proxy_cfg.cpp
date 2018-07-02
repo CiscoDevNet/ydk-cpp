@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_slice_mgr_proxy_cfg {
 
 NodePath::NodePath()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "node-path"; yang_parent_name = "Cisco-IOS-XR-slice-mgr-proxy-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "node-path"; yang_parent_name = "Cisco-IOS-XR-slice-mgr-proxy-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NodePath::~NodePath()
@@ -23,7 +25,8 @@ NodePath::~NodePath()
 
 bool NodePath::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool NodePath::has_data() const
 
 bool NodePath::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> NodePath::get_child_by_name(const std::string & child_ya
     {
         auto c = std::make_shared<NodePath::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> NodePath::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,12 +132,12 @@ bool NodePath::has_leaf_or_child_of_name(const std::string & name) const
 NodePath::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     slice_ids(std::make_shared<NodePath::Node::SliceIds>())
 {
     slice_ids->parent = this;
 
-    yang_name = "node"; yang_parent_name = "node-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "node-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NodePath::Node::~Node()
@@ -143,6 +146,7 @@ NodePath::Node::~Node()
 
 bool NodePath::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (slice_ids !=  nullptr && slice_ids->has_data());
 }
@@ -164,7 +168,8 @@ std::string NodePath::Node::get_absolute_path() const
 std::string NodePath::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -230,9 +235,11 @@ bool NodePath::Node::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 NodePath::Node::SliceIds::SliceIds()
+    :
+    slice_id(this, {"slice_id"})
 {
 
-    yang_name = "slice-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slice-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NodePath::Node::SliceIds::~SliceIds()
@@ -241,7 +248,8 @@ NodePath::Node::SliceIds::~SliceIds()
 
 bool NodePath::Node::SliceIds::has_data() const
 {
-    for (std::size_t index=0; index<slice_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slice_id.len(); index++)
     {
         if(slice_id[index]->has_data())
             return true;
@@ -251,7 +259,7 @@ bool NodePath::Node::SliceIds::has_data() const
 
 bool NodePath::Node::SliceIds::has_operation() const
 {
-    for (std::size_t index=0; index<slice_id.size(); index++)
+    for (std::size_t index=0; index<slice_id.len(); index++)
     {
         if(slice_id[index]->has_operation())
             return true;
@@ -281,7 +289,7 @@ std::shared_ptr<Entity> NodePath::Node::SliceIds::get_child_by_name(const std::s
     {
         auto c = std::make_shared<NodePath::Node::SliceIds::SliceId>();
         c->parent = this;
-        slice_id.push_back(c);
+        slice_id.append(c);
         return c;
     }
 
@@ -293,7 +301,7 @@ std::map<std::string, std::shared_ptr<Entity>> NodePath::Node::SliceIds::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slice_id)
+    for (auto c : slice_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -322,12 +330,12 @@ bool NodePath::Node::SliceIds::has_leaf_or_child_of_name(const std::string & nam
 NodePath::Node::SliceIds::SliceId::SliceId()
     :
     slice_id{YType::uint32, "slice-id"},
-    state{YType::int32, "state"},
-    breakout{YType::int32, "breakout"},
-    mode{YType::int32, "mode"}
+    state{YType::uint32, "state"},
+    breakout{YType::uint32, "breakout"},
+    mode{YType::uint32, "mode"}
 {
 
-    yang_name = "slice-id"; yang_parent_name = "slice-ids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slice-id"; yang_parent_name = "slice-ids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NodePath::Node::SliceIds::SliceId::~SliceId()
@@ -336,6 +344,7 @@ NodePath::Node::SliceIds::SliceId::~SliceId()
 
 bool NodePath::Node::SliceIds::SliceId::has_data() const
 {
+    if (is_presence_container) return true;
     return slice_id.is_set
 	|| state.is_set
 	|| breakout.is_set
@@ -354,7 +363,8 @@ bool NodePath::Node::SliceIds::SliceId::has_operation() const
 std::string NodePath::Node::SliceIds::SliceId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slice-id" <<"[slice-id='" <<slice_id <<"']";
+    path_buffer << "slice-id";
+    ADD_KEY_TOKEN(slice_id, "slice-id");
     return path_buffer.str();
 }
 

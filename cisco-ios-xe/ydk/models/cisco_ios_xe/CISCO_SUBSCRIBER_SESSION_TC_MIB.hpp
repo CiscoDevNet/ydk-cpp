@@ -29,15 +29,6 @@ class SubSessionType : public ydk::Enum
 
 };
 
-class SubSessionState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf pending;
-        static const ydk::Enum::YLeaf up;
-
-};
-
 class SubSessionRedundancyMode : public ydk::Enum
 {
     public:
@@ -45,6 +36,15 @@ class SubSessionRedundancyMode : public ydk::Enum
         static const ydk::Enum::YLeaf other;
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf standby;
+
+};
+
+class SubSessionState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf pending;
+        static const ydk::Enum::YLeaf up;
 
 };
 

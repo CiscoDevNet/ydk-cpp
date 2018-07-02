@@ -17,7 +17,7 @@ Ntp::Ntp()
 {
     nodes->parent = this;
 
-    yang_name = "ntp"; yang_parent_name = "Cisco-IOS-XR-ip-ntp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ntp"; yang_parent_name = "Cisco-IOS-XR-ip-ntp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ntp::~Ntp()
@@ -26,6 +26,7 @@ Ntp::~Ntp()
 
 bool Ntp::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Ntp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ntp::Nodes::Nodes()
+    :
+    node(this, {"node"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ntp::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Ntp::Nodes::~Nodes()
 
 bool Ntp::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Ntp::Nodes::has_data() const
 
 bool Ntp::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Ntp::Nodes::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Ntp::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,16 +221,16 @@ bool Ntp::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Ntp::Nodes::Node::Node()
     :
     node{YType::str, "node"}
-    	,
+        ,
     associations_detail(std::make_shared<Ntp::Nodes::Node::AssociationsDetail>())
-	,status(std::make_shared<Ntp::Nodes::Node::Status>())
-	,associations(std::make_shared<Ntp::Nodes::Node::Associations>())
+    , status(std::make_shared<Ntp::Nodes::Node::Status>())
+    , associations(std::make_shared<Ntp::Nodes::Node::Associations>())
 {
     associations_detail->parent = this;
     status->parent = this;
     associations->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ntp::Nodes::Node::~Node()
@@ -235,6 +239,7 @@ Ntp::Nodes::Node::~Node()
 
 bool Ntp::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| (associations_detail !=  nullptr && associations_detail->has_data())
 	|| (status !=  nullptr && status->has_data())
@@ -260,7 +265,8 @@ std::string Ntp::Nodes::Node::get_absolute_path() const
 std::string Ntp::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node='" <<node <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node, "node");
     return path_buffer.str();
 }
 
@@ -357,9 +363,11 @@ Ntp::Nodes::Node::AssociationsDetail::AssociationsDetail()
     :
     is_ntp_enabled{YType::boolean, "is-ntp-enabled"},
     sys_leap{YType::enumeration, "sys-leap"}
+        ,
+    peer_detail_info(this, {})
 {
 
-    yang_name = "associations-detail"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "associations-detail"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::~AssociationsDetail()
@@ -368,7 +376,8 @@ Ntp::Nodes::Node::AssociationsDetail::~AssociationsDetail()
 
 bool Ntp::Nodes::Node::AssociationsDetail::has_data() const
 {
-    for (std::size_t index=0; index<peer_detail_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_detail_info.len(); index++)
     {
         if(peer_detail_info[index]->has_data())
             return true;
@@ -379,7 +388,7 @@ bool Ntp::Nodes::Node::AssociationsDetail::has_data() const
 
 bool Ntp::Nodes::Node::AssociationsDetail::has_operation() const
 {
-    for (std::size_t index=0; index<peer_detail_info.size(); index++)
+    for (std::size_t index=0; index<peer_detail_info.len(); index++)
     {
         if(peer_detail_info[index]->has_operation())
             return true;
@@ -413,7 +422,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::get_child_by_name(
     {
         auto c = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo>();
         c->parent = this;
-        peer_detail_info.push_back(c);
+        peer_detail_info.append(c);
         return c;
     }
 
@@ -425,7 +434,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDet
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_detail_info)
+    for (auto c : peer_detail_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -484,12 +493,13 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerDetailInfo()
     precision{YType::int8, "precision"},
     version{YType::uint8, "version"},
     filter_index{YType::uint32, "filter-index"}
-    	,
+        ,
     peer_info_common(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon>())
-	,ref_time(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime>())
-	,originate_time(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime>())
-	,receive_time(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime>())
-	,transmit_time(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime>())
+    , ref_time(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime>())
+    , originate_time(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime>())
+    , receive_time(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime>())
+    , transmit_time(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime>())
+    , filter_detail(this, {})
 {
     peer_info_common->parent = this;
     ref_time->parent = this;
@@ -497,7 +507,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerDetailInfo()
     receive_time->parent = this;
     transmit_time->parent = this;
 
-    yang_name = "peer-detail-info"; yang_parent_name = "associations-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-detail-info"; yang_parent_name = "associations-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::~PeerDetailInfo()
@@ -506,7 +516,8 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::~PeerDetailInfo()
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::has_data() const
 {
-    for (std::size_t index=0; index<filter_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<filter_detail.len(); index++)
     {
         if(filter_detail[index]->has_data())
             return true;
@@ -531,7 +542,7 @@ bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::has_data() const
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::has_operation() const
 {
-    for (std::size_t index=0; index<filter_detail.size(); index++)
+    for (std::size_t index=0; index<filter_detail.len(); index++)
     {
         if(filter_detail[index]->has_operation())
             return true;
@@ -633,7 +644,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ge
     {
         auto c = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail>();
         c->parent = this;
-        filter_detail.push_back(c);
+        filter_detail.append(c);
         return c;
     }
 
@@ -670,7 +681,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDet
     }
 
     count = 0;
-    for (auto const & c : filter_detail)
+    for (auto c : filter_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -822,7 +833,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::PeerInfoCo
     is_sys_peer{YType::boolean, "is-sys-peer"}
 {
 
-    yang_name = "peer-info-common"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-info-common"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::~PeerInfoCommon()
@@ -831,6 +842,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::~PeerInfoC
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::has_data() const
 {
+    if (is_presence_container) return true;
     return host_mode.is_set
 	|| is_configured.is_set
 	|| address.is_set
@@ -1040,12 +1052,12 @@ bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::has_l
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::RefTime()
     :
     sec(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec>())
-	,frac_secs(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs>())
+    , frac_secs(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs>())
 {
     sec->parent = this;
     frac_secs->parent = this;
 
-    yang_name = "ref-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ref-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::~RefTime()
@@ -1054,6 +1066,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::~RefTime()
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::has_data() const
 {
+    if (is_presence_container) return true;
     return (sec !=  nullptr && sec->has_data())
 	|| (frac_secs !=  nullptr && frac_secs->has_data());
 }
@@ -1141,7 +1154,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::Sec()
     int_{YType::uint32, "int"}
 {
 
-    yang_name = "sec"; yang_parent_name = "ref-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sec"; yang_parent_name = "ref-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::~Sec()
@@ -1150,6 +1163,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::~Sec()
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::has_data() const
 {
+    if (is_presence_container) return true;
     return int_.is_set;
 }
 
@@ -1218,7 +1232,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::FracSec
     frac{YType::uint32, "frac"}
 {
 
-    yang_name = "frac-secs"; yang_parent_name = "ref-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frac-secs"; yang_parent_name = "ref-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::~FracSecs()
@@ -1227,6 +1241,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::~FracSe
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::has_data() const
 {
+    if (is_presence_container) return true;
     return frac.is_set;
 }
 
@@ -1293,12 +1308,12 @@ bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::ha
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::OriginateTime()
     :
     sec(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec>())
-	,frac_secs(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs>())
+    , frac_secs(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs>())
 {
     sec->parent = this;
     frac_secs->parent = this;
 
-    yang_name = "originate-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "originate-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::~OriginateTime()
@@ -1307,6 +1322,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::~OriginateT
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::has_data() const
 {
+    if (is_presence_container) return true;
     return (sec !=  nullptr && sec->has_data())
 	|| (frac_secs !=  nullptr && frac_secs->has_data());
 }
@@ -1394,7 +1410,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::Sec()
     int_{YType::uint32, "int"}
 {
 
-    yang_name = "sec"; yang_parent_name = "originate-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sec"; yang_parent_name = "originate-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::~Sec()
@@ -1403,6 +1419,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::~Sec()
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::has_data() const
 {
+    if (is_presence_container) return true;
     return int_.is_set;
 }
 
@@ -1471,7 +1488,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::F
     frac{YType::uint32, "frac"}
 {
 
-    yang_name = "frac-secs"; yang_parent_name = "originate-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frac-secs"; yang_parent_name = "originate-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::~FracSecs()
@@ -1480,6 +1497,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::~
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::has_data() const
 {
+    if (is_presence_container) return true;
     return frac.is_set;
 }
 
@@ -1546,12 +1564,12 @@ bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSe
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::ReceiveTime()
     :
     sec(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec>())
-	,frac_secs(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs>())
+    , frac_secs(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs>())
 {
     sec->parent = this;
     frac_secs->parent = this;
 
-    yang_name = "receive-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::~ReceiveTime()
@@ -1560,6 +1578,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::~ReceiveTime(
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::has_data() const
 {
+    if (is_presence_container) return true;
     return (sec !=  nullptr && sec->has_data())
 	|| (frac_secs !=  nullptr && frac_secs->has_data());
 }
@@ -1647,7 +1666,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::Sec()
     int_{YType::uint32, "int"}
 {
 
-    yang_name = "sec"; yang_parent_name = "receive-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sec"; yang_parent_name = "receive-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::~Sec()
@@ -1656,6 +1675,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::~Sec()
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::has_data() const
 {
+    if (is_presence_container) return true;
     return int_.is_set;
 }
 
@@ -1724,7 +1744,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::Fra
     frac{YType::uint32, "frac"}
 {
 
-    yang_name = "frac-secs"; yang_parent_name = "receive-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frac-secs"; yang_parent_name = "receive-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::~FracSecs()
@@ -1733,6 +1753,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::~Fr
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::has_data() const
 {
+    if (is_presence_container) return true;
     return frac.is_set;
 }
 
@@ -1799,12 +1820,12 @@ bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::TransmitTime()
     :
     sec(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec>())
-	,frac_secs(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs>())
+    , frac_secs(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs>())
 {
     sec->parent = this;
     frac_secs->parent = this;
 
-    yang_name = "transmit-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::~TransmitTime()
@@ -1813,6 +1834,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::~TransmitTim
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::has_data() const
 {
+    if (is_presence_container) return true;
     return (sec !=  nullptr && sec->has_data())
 	|| (frac_secs !=  nullptr && frac_secs->has_data());
 }
@@ -1900,7 +1922,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::Sec()
     int_{YType::uint32, "int"}
 {
 
-    yang_name = "sec"; yang_parent_name = "transmit-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sec"; yang_parent_name = "transmit-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::~Sec()
@@ -1909,6 +1931,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::~Sec()
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::has_data() const
 {
+    if (is_presence_container) return true;
     return int_.is_set;
 }
 
@@ -1977,7 +2000,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::Fr
     frac{YType::uint32, "frac"}
 {
 
-    yang_name = "frac-secs"; yang_parent_name = "transmit-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frac-secs"; yang_parent_name = "transmit-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::~FracSecs()
@@ -1986,6 +2009,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::~F
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::has_data() const
 {
+    if (is_presence_container) return true;
     return frac.is_set;
 }
 
@@ -2056,7 +2080,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::FilterDetail
     filter_disp{YType::str, "filter-disp"}
 {
 
-    yang_name = "filter-detail"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "filter-detail"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::~FilterDetail()
@@ -2065,6 +2089,7 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::~FilterDetai
 
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return filter_delay.is_set
 	|| filter_offset.is_set
 	|| filter_disp.is_set;
@@ -2169,15 +2194,16 @@ Ntp::Nodes::Node::Status::Status()
     loop_filter_state{YType::enumeration, "loop-filter-state"},
     poll_interval{YType::uint8, "poll-interval"},
     is_updated{YType::enumeration, "is-updated"},
-    last_update{YType::int32, "last-update"}
-    	,
+    last_update{YType::int32, "last-update"},
+    is_auth_enabled{YType::boolean, "is-auth-enabled"}
+        ,
     sys_ref_time(std::make_shared<Ntp::Nodes::Node::Status::SysRefTime>())
-	,sys_drift(std::make_shared<Ntp::Nodes::Node::Status::SysDrift>())
+    , sys_drift(std::make_shared<Ntp::Nodes::Node::Status::SysDrift>())
 {
     sys_ref_time->parent = this;
     sys_drift->parent = this;
 
-    yang_name = "status"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "status"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::Status::~Status()
@@ -2186,6 +2212,7 @@ Ntp::Nodes::Node::Status::~Status()
 
 bool Ntp::Nodes::Node::Status::has_data() const
 {
+    if (is_presence_container) return true;
     return is_ntp_enabled.is_set
 	|| sys_dispersion.is_set
 	|| sys_offset.is_set
@@ -2200,6 +2227,7 @@ bool Ntp::Nodes::Node::Status::has_data() const
 	|| poll_interval.is_set
 	|| is_updated.is_set
 	|| last_update.is_set
+	|| is_auth_enabled.is_set
 	|| (sys_ref_time !=  nullptr && sys_ref_time->has_data())
 	|| (sys_drift !=  nullptr && sys_drift->has_data());
 }
@@ -2221,6 +2249,7 @@ bool Ntp::Nodes::Node::Status::has_operation() const
 	|| ydk::is_set(poll_interval.yfilter)
 	|| ydk::is_set(is_updated.yfilter)
 	|| ydk::is_set(last_update.yfilter)
+	|| ydk::is_set(is_auth_enabled.yfilter)
 	|| (sys_ref_time !=  nullptr && sys_ref_time->has_operation())
 	|| (sys_drift !=  nullptr && sys_drift->has_operation());
 }
@@ -2250,6 +2279,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Nodes::Node::Status::get_nam
     if (poll_interval.is_set || is_set(poll_interval.yfilter)) leaf_name_data.push_back(poll_interval.get_name_leafdata());
     if (is_updated.is_set || is_set(is_updated.yfilter)) leaf_name_data.push_back(is_updated.get_name_leafdata());
     if (last_update.is_set || is_set(last_update.yfilter)) leaf_name_data.push_back(last_update.get_name_leafdata());
+    if (is_auth_enabled.is_set || is_set(is_auth_enabled.yfilter)) leaf_name_data.push_back(is_auth_enabled.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2381,6 +2411,12 @@ void Ntp::Nodes::Node::Status::set_value(const std::string & value_path, const s
         last_update.value_namespace = name_space;
         last_update.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "is-auth-enabled")
+    {
+        is_auth_enabled = value;
+        is_auth_enabled.value_namespace = name_space;
+        is_auth_enabled.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ntp::Nodes::Node::Status::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2441,11 +2477,15 @@ void Ntp::Nodes::Node::Status::set_filter(const std::string & value_path, YFilte
     {
         last_update.yfilter = yfilter;
     }
+    if(value_path == "is-auth-enabled")
+    {
+        is_auth_enabled.yfilter = yfilter;
+    }
 }
 
 bool Ntp::Nodes::Node::Status::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sys-ref-time" || name == "sys-drift" || name == "is-ntp-enabled" || name == "sys-dispersion" || name == "sys-offset" || name == "clock-period" || name == "sys-leap" || name == "sys-precision" || name == "sys-stratum" || name == "sys-ref-id" || name == "sys-root-delay" || name == "sys-root-dispersion" || name == "loop-filter-state" || name == "poll-interval" || name == "is-updated" || name == "last-update")
+    if(name == "sys-ref-time" || name == "sys-drift" || name == "is-ntp-enabled" || name == "sys-dispersion" || name == "sys-offset" || name == "clock-period" || name == "sys-leap" || name == "sys-precision" || name == "sys-stratum" || name == "sys-ref-id" || name == "sys-root-delay" || name == "sys-root-dispersion" || name == "loop-filter-state" || name == "poll-interval" || name == "is-updated" || name == "last-update" || name == "is-auth-enabled")
         return true;
     return false;
 }
@@ -2453,12 +2493,12 @@ bool Ntp::Nodes::Node::Status::has_leaf_or_child_of_name(const std::string & nam
 Ntp::Nodes::Node::Status::SysRefTime::SysRefTime()
     :
     sec(std::make_shared<Ntp::Nodes::Node::Status::SysRefTime::Sec>())
-	,frac_secs(std::make_shared<Ntp::Nodes::Node::Status::SysRefTime::FracSecs>())
+    , frac_secs(std::make_shared<Ntp::Nodes::Node::Status::SysRefTime::FracSecs>())
 {
     sec->parent = this;
     frac_secs->parent = this;
 
-    yang_name = "sys-ref-time"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sys-ref-time"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::Status::SysRefTime::~SysRefTime()
@@ -2467,6 +2507,7 @@ Ntp::Nodes::Node::Status::SysRefTime::~SysRefTime()
 
 bool Ntp::Nodes::Node::Status::SysRefTime::has_data() const
 {
+    if (is_presence_container) return true;
     return (sec !=  nullptr && sec->has_data())
 	|| (frac_secs !=  nullptr && frac_secs->has_data());
 }
@@ -2554,7 +2595,7 @@ Ntp::Nodes::Node::Status::SysRefTime::Sec::Sec()
     int_{YType::uint32, "int"}
 {
 
-    yang_name = "sec"; yang_parent_name = "sys-ref-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sec"; yang_parent_name = "sys-ref-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::Status::SysRefTime::Sec::~Sec()
@@ -2563,6 +2604,7 @@ Ntp::Nodes::Node::Status::SysRefTime::Sec::~Sec()
 
 bool Ntp::Nodes::Node::Status::SysRefTime::Sec::has_data() const
 {
+    if (is_presence_container) return true;
     return int_.is_set;
 }
 
@@ -2631,7 +2673,7 @@ Ntp::Nodes::Node::Status::SysRefTime::FracSecs::FracSecs()
     frac{YType::uint32, "frac"}
 {
 
-    yang_name = "frac-secs"; yang_parent_name = "sys-ref-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frac-secs"; yang_parent_name = "sys-ref-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::Status::SysRefTime::FracSecs::~FracSecs()
@@ -2640,6 +2682,7 @@ Ntp::Nodes::Node::Status::SysRefTime::FracSecs::~FracSecs()
 
 bool Ntp::Nodes::Node::Status::SysRefTime::FracSecs::has_data() const
 {
+    if (is_presence_container) return true;
     return frac.is_set;
 }
 
@@ -2706,12 +2749,12 @@ bool Ntp::Nodes::Node::Status::SysRefTime::FracSecs::has_leaf_or_child_of_name(c
 Ntp::Nodes::Node::Status::SysDrift::SysDrift()
     :
     sec(std::make_shared<Ntp::Nodes::Node::Status::SysDrift::Sec>())
-	,frac_secs(std::make_shared<Ntp::Nodes::Node::Status::SysDrift::FracSecs>())
+    , frac_secs(std::make_shared<Ntp::Nodes::Node::Status::SysDrift::FracSecs>())
 {
     sec->parent = this;
     frac_secs->parent = this;
 
-    yang_name = "sys-drift"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sys-drift"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::Status::SysDrift::~SysDrift()
@@ -2720,6 +2763,7 @@ Ntp::Nodes::Node::Status::SysDrift::~SysDrift()
 
 bool Ntp::Nodes::Node::Status::SysDrift::has_data() const
 {
+    if (is_presence_container) return true;
     return (sec !=  nullptr && sec->has_data())
 	|| (frac_secs !=  nullptr && frac_secs->has_data());
 }
@@ -2807,7 +2851,7 @@ Ntp::Nodes::Node::Status::SysDrift::Sec::Sec()
     int_{YType::uint32, "int"}
 {
 
-    yang_name = "sec"; yang_parent_name = "sys-drift"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sec"; yang_parent_name = "sys-drift"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::Status::SysDrift::Sec::~Sec()
@@ -2816,6 +2860,7 @@ Ntp::Nodes::Node::Status::SysDrift::Sec::~Sec()
 
 bool Ntp::Nodes::Node::Status::SysDrift::Sec::has_data() const
 {
+    if (is_presence_container) return true;
     return int_.is_set;
 }
 
@@ -2884,7 +2929,7 @@ Ntp::Nodes::Node::Status::SysDrift::FracSecs::FracSecs()
     frac{YType::uint32, "frac"}
 {
 
-    yang_name = "frac-secs"; yang_parent_name = "sys-drift"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frac-secs"; yang_parent_name = "sys-drift"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::Status::SysDrift::FracSecs::~FracSecs()
@@ -2893,6 +2938,7 @@ Ntp::Nodes::Node::Status::SysDrift::FracSecs::~FracSecs()
 
 bool Ntp::Nodes::Node::Status::SysDrift::FracSecs::has_data() const
 {
+    if (is_presence_container) return true;
     return frac.is_set;
 }
 
@@ -2960,9 +3006,11 @@ Ntp::Nodes::Node::Associations::Associations()
     :
     is_ntp_enabled{YType::boolean, "is-ntp-enabled"},
     sys_leap{YType::enumeration, "sys-leap"}
+        ,
+    peer_summary_info(this, {})
 {
 
-    yang_name = "associations"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "associations"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::Associations::~Associations()
@@ -2971,7 +3019,8 @@ Ntp::Nodes::Node::Associations::~Associations()
 
 bool Ntp::Nodes::Node::Associations::has_data() const
 {
-    for (std::size_t index=0; index<peer_summary_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_summary_info.len(); index++)
     {
         if(peer_summary_info[index]->has_data())
             return true;
@@ -2982,7 +3031,7 @@ bool Ntp::Nodes::Node::Associations::has_data() const
 
 bool Ntp::Nodes::Node::Associations::has_operation() const
 {
-    for (std::size_t index=0; index<peer_summary_info.size(); index++)
+    for (std::size_t index=0; index<peer_summary_info.len(); index++)
     {
         if(peer_summary_info[index]->has_operation())
             return true;
@@ -3016,7 +3065,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Associations::get_child_by_name(const 
     {
         auto c = std::make_shared<Ntp::Nodes::Node::Associations::PeerSummaryInfo>();
         c->parent = this;
-        peer_summary_info.push_back(c);
+        peer_summary_info.append(c);
         return c;
     }
 
@@ -3028,7 +3077,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Associations::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_summary_info)
+    for (auto c : peer_summary_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3077,12 +3126,12 @@ bool Ntp::Nodes::Node::Associations::has_leaf_or_child_of_name(const std::string
 Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerSummaryInfo()
     :
     time_since{YType::int32, "time-since"}
-    	,
+        ,
     peer_info_common(std::make_shared<Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon>())
 {
     peer_info_common->parent = this;
 
-    yang_name = "peer-summary-info"; yang_parent_name = "associations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-summary-info"; yang_parent_name = "associations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::Associations::PeerSummaryInfo::~PeerSummaryInfo()
@@ -3091,6 +3140,7 @@ Ntp::Nodes::Node::Associations::PeerSummaryInfo::~PeerSummaryInfo()
 
 bool Ntp::Nodes::Node::Associations::PeerSummaryInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return time_since.is_set
 	|| (peer_info_common !=  nullptr && peer_info_common->has_data());
 }
@@ -3186,7 +3236,7 @@ Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::PeerInfoCommon(
     is_sys_peer{YType::boolean, "is-sys-peer"}
 {
 
-    yang_name = "peer-info-common"; yang_parent_name = "peer-summary-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-info-common"; yang_parent_name = "peer-summary-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::~PeerInfoCommon()
@@ -3195,6 +3245,7 @@ Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::~PeerInfoCommon
 
 bool Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::has_data() const
 {
+    if (is_presence_container) return true;
     return host_mode.is_set
 	|| is_configured.is_set
 	|| address.is_set
@@ -3401,17 +3452,6 @@ bool Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::has_leaf_o
     return false;
 }
 
-const Enum::YLeaf ClockUpdateNode::clk_never_updated {0, "clk-never-updated"};
-const Enum::YLeaf ClockUpdateNode::clk_updated {1, "clk-updated"};
-const Enum::YLeaf ClockUpdateNode::clk_no_update_info {2, "clk-no-update-info"};
-
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_n_set {0, "ntp-loop-flt-n-set"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_f_set {1, "ntp-loop-flt-f-set"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_spik {2, "ntp-loop-flt-spik"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_freq {3, "ntp-loop-flt-freq"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_sync {4, "ntp-loop-flt-sync"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_unkn {5, "ntp-loop-flt-unkn"};
-
 const Enum::YLeaf NtpPeerStatus::ntp_ctl_pst_sel_reject {0, "ntp-ctl-pst-sel-reject"};
 const Enum::YLeaf NtpPeerStatus::ntp_ctl_pst_sel_sane {1, "ntp-ctl-pst-sel-sane"};
 const Enum::YLeaf NtpPeerStatus::ntp_ctl_pst_sel_correct {2, "ntp-ctl-pst-sel-correct"};
@@ -3430,6 +3470,17 @@ const Enum::YLeaf NtpMode::ntp_mode_xcast_server {5, "ntp-mode-xcast-server"};
 const Enum::YLeaf NtpMode::ntp_mode_control {6, "ntp-mode-control"};
 const Enum::YLeaf NtpMode::ntp_mode_private {7, "ntp-mode-private"};
 const Enum::YLeaf NtpMode::ntp_mode_xcast_client {8, "ntp-mode-xcast-client"};
+
+const Enum::YLeaf ClockUpdateNode::clk_never_updated {0, "clk-never-updated"};
+const Enum::YLeaf ClockUpdateNode::clk_updated {1, "clk-updated"};
+const Enum::YLeaf ClockUpdateNode::clk_no_update_info {2, "clk-no-update-info"};
+
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_n_set {0, "ntp-loop-flt-n-set"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_f_set {1, "ntp-loop-flt-f-set"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_spik {2, "ntp-loop-flt-spik"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_freq {3, "ntp-loop-flt-freq"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_sync {4, "ntp-loop-flt-sync"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_unkn {5, "ntp-loop-flt-unkn"};
 
 const Enum::YLeaf NtpLeap::ntp_leap_no_warning {0, "ntp-leap-no-warning"};
 const Enum::YLeaf NtpLeap::ntp_leap_addse_cond {1, "ntp-leap-addse-cond"};

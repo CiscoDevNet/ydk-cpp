@@ -33,7 +33,7 @@ class FileSystem : public ydk::Entity
 
         class Node; //type: FileSystem::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_shellutil_filesystem_oper::FileSystem::Node> > node;
+        ydk::YList node;
         
 }; // FileSystem
 
@@ -58,7 +58,7 @@ class FileSystem::Node : public ydk::Entity
         ydk::YLeaf node_name; //type: string
         class FileSystem_; //type: FileSystem::Node::FileSystem_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_shellutil_filesystem_oper::FileSystem::Node::FileSystem_> > file_system;
+        ydk::YList file_system;
         
 }; // FileSystem::Node
 

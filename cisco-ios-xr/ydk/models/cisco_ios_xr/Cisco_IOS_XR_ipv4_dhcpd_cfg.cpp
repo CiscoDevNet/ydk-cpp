@@ -17,13 +17,13 @@ Ipv4Dhcpd::Ipv4Dhcpd()
     outer_cos{YType::uint32, "outer-cos"},
     allow_client_id_change{YType::empty, "allow-client-id-change"},
     inner_cos{YType::uint32, "inner-cos"}
-    	,
+        ,
     vrfs(std::make_shared<Ipv4Dhcpd::Vrfs>())
-	,profiles(std::make_shared<Ipv4Dhcpd::Profiles>())
-	,database(std::make_shared<Ipv4Dhcpd::Database>())
-	,interfaces(std::make_shared<Ipv4Dhcpd::Interfaces>())
-	,duplicate_mac_allowed(nullptr) // presence node
-	,rate_limit(std::make_shared<Ipv4Dhcpd::RateLimit>())
+    , profiles(std::make_shared<Ipv4Dhcpd::Profiles>())
+    , database(std::make_shared<Ipv4Dhcpd::Database>())
+    , interfaces(std::make_shared<Ipv4Dhcpd::Interfaces>())
+    , duplicate_mac_allowed(nullptr) // presence node
+    , rate_limit(std::make_shared<Ipv4Dhcpd::RateLimit>())
 {
     vrfs->parent = this;
     profiles->parent = this;
@@ -31,7 +31,7 @@ Ipv4Dhcpd::Ipv4Dhcpd()
     interfaces->parent = this;
     rate_limit->parent = this;
 
-    yang_name = "ipv4-dhcpd"; yang_parent_name = "Cisco-IOS-XR-ipv4-dhcpd-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv4-dhcpd"; yang_parent_name = "Cisco-IOS-XR-ipv4-dhcpd-cfg"; is_top_level_class = true; has_list_ancestor = false; is_presence_container = true;
 }
 
 Ipv4Dhcpd::~Ipv4Dhcpd()
@@ -40,6 +40,7 @@ Ipv4Dhcpd::~Ipv4Dhcpd()
 
 bool Ipv4Dhcpd::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| outer_cos.is_set
 	|| allow_client_id_change.is_set
@@ -264,9 +265,11 @@ bool Ipv4Dhcpd::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ipv4Dhcpd::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Vrfs::~Vrfs()
@@ -275,7 +278,8 @@ Ipv4Dhcpd::Vrfs::~Vrfs()
 
 bool Ipv4Dhcpd::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -285,7 +289,7 @@ bool Ipv4Dhcpd::Vrfs::has_data() const
 
 bool Ipv4Dhcpd::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -322,7 +326,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Vrfs::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Ipv4Dhcpd::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -334,7 +338,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Vrfs::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -363,11 +367,11 @@ bool Ipv4Dhcpd::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
 Ipv4Dhcpd::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     profile(nullptr) // presence node
 {
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Vrfs::Vrf::~Vrf()
@@ -376,6 +380,7 @@ Ipv4Dhcpd::Vrfs::Vrf::~Vrf()
 
 bool Ipv4Dhcpd::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (profile !=  nullptr && profile->has_data());
 }
@@ -397,7 +402,8 @@ std::string Ipv4Dhcpd::Vrfs::Vrf::get_absolute_path() const
 std::string Ipv4Dhcpd::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -468,7 +474,7 @@ Ipv4Dhcpd::Vrfs::Vrf::Profile::Profile()
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "profile"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "profile"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Vrfs::Vrf::Profile::~Profile()
@@ -477,6 +483,7 @@ Ipv4Dhcpd::Vrfs::Vrf::Profile::~Profile()
 
 bool Ipv4Dhcpd::Vrfs::Vrf::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_profile_name.is_set
 	|| mode.is_set;
 }
@@ -554,9 +561,11 @@ bool Ipv4Dhcpd::Vrfs::Vrf::Profile::has_leaf_or_child_of_name(const std::string 
 }
 
 Ipv4Dhcpd::Profiles::Profiles()
+    :
+    profile(this, {"profile_name"})
 {
 
-    yang_name = "profiles"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profiles"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Profiles::~Profiles()
@@ -565,7 +574,8 @@ Ipv4Dhcpd::Profiles::~Profiles()
 
 bool Ipv4Dhcpd::Profiles::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_data())
             return true;
@@ -575,7 +585,7 @@ bool Ipv4Dhcpd::Profiles::has_data() const
 
 bool Ipv4Dhcpd::Profiles::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_operation())
             return true;
@@ -612,7 +622,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile.append(c);
         return c;
     }
 
@@ -624,7 +634,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : profile)
+    for (auto c : profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -653,12 +663,12 @@ bool Ipv4Dhcpd::Profiles::has_leaf_or_child_of_name(const std::string & name) co
 Ipv4Dhcpd::Profiles::Profile::Profile()
     :
     profile_name{YType::str, "profile-name"}
-    	,
+        ,
     modes(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes>())
 {
     modes->parent = this;
 
-    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::~Profile()
@@ -667,6 +677,7 @@ Ipv4Dhcpd::Profiles::Profile::~Profile()
 
 bool Ipv4Dhcpd::Profiles::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| (modes !=  nullptr && modes->has_data());
 }
@@ -688,7 +699,8 @@ std::string Ipv4Dhcpd::Profiles::Profile::get_absolute_path() const
 std::string Ipv4Dhcpd::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[profile-name='" <<profile_name <<"']";
+    path_buffer << "profile";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
@@ -754,9 +766,11 @@ bool Ipv4Dhcpd::Profiles::Profile::has_leaf_or_child_of_name(const std::string &
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Modes()
+    :
+    mode(this, {"mode"})
 {
 
-    yang_name = "modes"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "modes"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::~Modes()
@@ -765,7 +779,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::~Modes()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::has_data() const
 {
-    for (std::size_t index=0; index<mode.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mode.len(); index++)
     {
         if(mode[index]->has_data())
             return true;
@@ -775,7 +790,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::has_data() const
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::has_operation() const
 {
-    for (std::size_t index=0; index<mode.size(); index++)
+    for (std::size_t index=0; index<mode.len(); index++)
     {
         if(mode[index]->has_operation())
             return true;
@@ -805,7 +820,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::get_child_by_name(c
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode>();
         c->parent = this;
-        mode.push_back(c);
+        mode.append(c);
         return c;
     }
 
@@ -817,7 +832,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mode)
+    for (auto c : mode.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -847,20 +862,17 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Mode()
     :
     mode{YType::enumeration, "mode"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     snoop(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop>())
-	,base(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base>())
-	,server(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server>())
-	,relay(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay>())
-	,proxy(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy>())
+    , base(nullptr) // presence node
+    , server(nullptr) // presence node
+    , relay(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay>())
+    , proxy(nullptr) // presence node
 {
     snoop->parent = this;
-    base->parent = this;
-    server->parent = this;
     relay->parent = this;
-    proxy->parent = this;
 
-    yang_name = "mode"; yang_parent_name = "modes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "modes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::~Mode()
@@ -869,6 +881,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::~Mode()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return mode.is_set
 	|| enable.is_set
 	|| (snoop !=  nullptr && snoop->has_data())
@@ -893,7 +906,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::has_operation() const
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mode" <<"[mode='" <<mode <<"']";
+    path_buffer << "mode";
+    ADD_KEY_TOKEN(mode, "mode");
     return path_buffer.str();
 }
 
@@ -1028,12 +1042,12 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::has_leaf_or_child_of_name(const 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::Snoop()
     :
     trusted{YType::empty, "trusted"}
-    	,
+        ,
     relay_information_option(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption>())
 {
     relay_information_option->parent = this;
 
-    yang_name = "snoop"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snoop"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::~Snoop()
@@ -1042,6 +1056,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::~Snoop()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::has_data() const
 {
+    if (is_presence_container) return true;
     return trusted.is_set
 	|| (relay_information_option !=  nullptr && relay_information_option->has_data());
 }
@@ -1126,12 +1141,12 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption::RelayI
     insert{YType::empty, "insert"},
     allow_untrusted{YType::empty, "allow-untrusted"},
     policy{YType::enumeration, "policy"}
-    	,
+        ,
     remote_id(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption::RemoteId>())
 {
     remote_id->parent = this;
 
-    yang_name = "relay-information-option"; yang_parent_name = "snoop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "relay-information-option"; yang_parent_name = "snoop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption::~RelayInformationOption()
@@ -1140,6 +1155,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption::~Relay
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption::has_data() const
 {
+    if (is_presence_container) return true;
     return insert.is_set
 	|| allow_untrusted.is_set
 	|| policy.is_set
@@ -1251,7 +1267,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption::Remote
     remote_id_value{YType::str, "remote-id-value"}
 {
 
-    yang_name = "remote-id"; yang_parent_name = "relay-information-option"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id"; yang_parent_name = "relay-information-option"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption::RemoteId::~RemoteId()
@@ -1260,6 +1276,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption::Remote
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption::RemoteId::has_data() const
 {
+    if (is_presence_container) return true;
     return format_type.is_set
 	|| remote_id_value.is_set;
 }
@@ -1339,18 +1356,18 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption::R
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Base()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     default_profile(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DefaultProfile>())
-	,match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match>())
-	,base_relay_opt(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt>())
-	,base_match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch>())
+    , match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match>())
+    , base_relay_opt(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt>())
+    , base_match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch>())
 {
     default_profile->parent = this;
     match->parent = this;
     base_relay_opt->parent = this;
     base_match->parent = this;
 
-    yang_name = "base"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::~Base()
@@ -1359,6 +1376,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::~Base()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (default_profile !=  nullptr && default_profile->has_data())
 	|| (match !=  nullptr && match->has_data())
@@ -1489,10 +1507,10 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::has_leaf_or_child_of_name(
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DefaultProfile::DefaultProfile()
     :
     profile_name{YType::str, "profile-name"},
-    profile_mode{YType::int32, "profile-mode"}
+    profile_mode{YType::uint32, "profile-mode"}
 {
 
-    yang_name = "default-profile"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-profile"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DefaultProfile::~DefaultProfile()
@@ -1501,6 +1519,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DefaultProfile::~DefaultProfile
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DefaultProfile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| profile_mode.is_set;
 }
@@ -1580,12 +1599,12 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DefaultProfile::has_leaf_o
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::Match()
     :
     option_filters(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters>())
-	,def_options(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions>())
+    , def_options(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions>())
 {
     option_filters->parent = this;
     def_options->parent = this;
 
-    yang_name = "match"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::~Match()
@@ -1594,6 +1613,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::~Match()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return (option_filters !=  nullptr && option_filters->has_data())
 	|| (def_options !=  nullptr && def_options->has_data());
 }
@@ -1677,9 +1697,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::has_leaf_or_child_o
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::OptionFilters()
+    :
+    option_filter(this, {"matchoption", "pattern", "format"})
 {
 
-    yang_name = "option-filters"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option-filters"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::~OptionFilters()
@@ -1688,7 +1710,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::~OptionFi
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::has_data() const
 {
-    for (std::size_t index=0; index<option_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<option_filter.len(); index++)
     {
         if(option_filter[index]->has_data())
             return true;
@@ -1698,7 +1721,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::has_
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::has_operation() const
 {
-    for (std::size_t index=0; index<option_filter.size(); index++)
+    for (std::size_t index=0; index<option_filter.len(); index++)
     {
         if(option_filter[index]->has_operation())
             return true;
@@ -1728,7 +1751,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::OptionFilter>();
         c->parent = this;
-        option_filter.push_back(c);
+        option_filter.append(c);
         return c;
     }
 
@@ -1740,7 +1763,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : option_filter)
+    for (auto c : option_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1768,13 +1791,13 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::has_
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::OptionFilter::OptionFilter()
     :
-    matchoption{YType::int32, "matchoption"},
+    matchoption{YType::uint32, "matchoption"},
     pattern{YType::str, "pattern"},
-    format{YType::int32, "format"},
+    format{YType::uint32, "format"},
     option_action{YType::enumeration, "option-action"}
 {
 
-    yang_name = "option-filter"; yang_parent_name = "option-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option-filter"; yang_parent_name = "option-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::OptionFilter::~OptionFilter()
@@ -1783,6 +1806,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::OptionFil
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::OptionFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return matchoption.is_set
 	|| pattern.is_set
 	|| format.is_set
@@ -1801,7 +1825,10 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::Opti
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::OptionFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "option-filter" <<"[matchoption='" <<matchoption <<"']" <<"[pattern='" <<pattern <<"']" <<"[format='" <<format <<"']";
+    path_buffer << "option-filter";
+    ADD_KEY_TOKEN(matchoption, "matchoption");
+    ADD_KEY_TOKEN(pattern, "pattern");
+    ADD_KEY_TOKEN(format, "format");
     return path_buffer.str();
 }
 
@@ -1886,9 +1913,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::Opti
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOptions()
+    :
+    def_option(this, {"def_matchoption"})
 {
 
-    yang_name = "def-options"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "def-options"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::~DefOptions()
@@ -1897,7 +1926,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::~DefOptions(
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::has_data() const
 {
-    for (std::size_t index=0; index<def_option.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<def_option.len(); index++)
     {
         if(def_option[index]->has_data())
             return true;
@@ -1907,7 +1937,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::has_dat
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::has_operation() const
 {
-    for (std::size_t index=0; index<def_option.size(); index++)
+    for (std::size_t index=0; index<def_option.len(); index++)
     {
         if(def_option[index]->has_operation())
             return true;
@@ -1937,7 +1967,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOption>();
         c->parent = this;
-        def_option.push_back(c);
+        def_option.append(c);
         return c;
     }
 
@@ -1949,7 +1979,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : def_option)
+    for (auto c : def_option.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1977,11 +2007,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::has_lea
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOption::DefOption()
     :
-    def_matchoption{YType::int32, "def-matchoption"},
+    def_matchoption{YType::uint32, "def-matchoption"},
     def_matchaction{YType::enumeration, "def-matchaction"}
 {
 
-    yang_name = "def-option"; yang_parent_name = "def-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "def-option"; yang_parent_name = "def-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOption::~DefOption()
@@ -1990,6 +2020,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOption::~
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOption::has_data() const
 {
+    if (is_presence_container) return true;
     return def_matchoption.is_set
 	|| def_matchaction.is_set;
 }
@@ -2004,7 +2035,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOpti
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOption::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "def-option" <<"[def-matchoption='" <<def_matchoption <<"']";
+    path_buffer << "def-option";
+    ADD_KEY_TOKEN(def_matchoption, "def-matchoption");
     return path_buffer.str();
 }
 
@@ -2069,10 +2101,10 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOpti
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt::BaseRelayOpt()
     :
     remote_id{YType::str, "remote-id"},
-    authenticate{YType::int32, "authenticate"}
+    authenticate{YType::uint32, "authenticate"}
 {
 
-    yang_name = "base-relay-opt"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base-relay-opt"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt::~BaseRelayOpt()
@@ -2081,6 +2113,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt::~BaseRelayOpt()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_id.is_set
 	|| authenticate.is_set;
 }
@@ -2163,7 +2196,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::BaseMatch()
 {
     options->parent = this;
 
-    yang_name = "base-match"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base-match"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::~BaseMatch()
@@ -2172,6 +2205,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::~BaseMatch()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::has_data() const
 {
+    if (is_presence_container) return true;
     return (options !=  nullptr && options->has_data());
 }
 
@@ -2239,9 +2273,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::has_leaf_or_chi
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Options()
+    :
+    option(this, {"opt60", "opt60_hex_str", "format"})
 {
 
-    yang_name = "options"; yang_parent_name = "base-match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "options"; yang_parent_name = "base-match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::~Options()
@@ -2250,7 +2286,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::~Options()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::has_data() const
 {
-    for (std::size_t index=0; index<option.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<option.len(); index++)
     {
         if(option[index]->has_data())
             return true;
@@ -2260,7 +2297,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::has_da
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::has_operation() const
 {
-    for (std::size_t index=0; index<option.size(); index++)
+    for (std::size_t index=0; index<option.len(); index++)
     {
         if(option[index]->has_operation())
             return true;
@@ -2290,7 +2327,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMat
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option>();
         c->parent = this;
-        option.push_back(c);
+        option.append(c);
         return c;
     }
 
@@ -2302,7 +2339,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : option)
+    for (auto c : option.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2330,15 +2367,15 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::has_le
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::Option()
     :
-    opt60{YType::int32, "opt60"},
+    opt60{YType::uint32, "opt60"},
     opt60_hex_str{YType::str, "opt60-hex-str"},
-    format{YType::int32, "format"}
-    	,
+    format{YType::uint32, "format"}
+        ,
     option_profile(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::OptionProfile>())
 {
     option_profile->parent = this;
 
-    yang_name = "option"; yang_parent_name = "options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option"; yang_parent_name = "options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::~Option()
@@ -2347,6 +2384,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::~Op
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::has_data() const
 {
+    if (is_presence_container) return true;
     return opt60.is_set
 	|| opt60_hex_str.is_set
 	|| format.is_set
@@ -2365,7 +2403,10 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "option" <<"[opt60='" <<opt60 <<"']" <<"[opt60-hex-str='" <<opt60_hex_str <<"']" <<"[format='" <<format <<"']";
+    path_buffer << "option";
+    ADD_KEY_TOKEN(opt60, "opt60");
+    ADD_KEY_TOKEN(opt60_hex_str, "opt60-hex-str");
+    ADD_KEY_TOKEN(format, "format");
     return path_buffer.str();
 }
 
@@ -2455,10 +2496,10 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::OptionProfile::OptionProfile()
     :
     profile_name{YType::str, "profile-name"},
-    profile_mode{YType::int32, "profile-mode"}
+    profile_mode{YType::uint32, "profile-mode"}
 {
 
-    yang_name = "option-profile"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option-profile"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::OptionProfile::~OptionProfile()
@@ -2467,6 +2508,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::Opt
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::OptionProfile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| profile_mode.is_set;
 }
@@ -2553,22 +2595,23 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Server()
     secure_arp{YType::empty, "secure-arp"},
     boot_filename{YType::str, "boot-filename"},
     next_server{YType::str, "next-server"}
-    	,
+        ,
     server_id_check(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::ServerIdCheck>())
-	,lease_limit(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::LeaseLimit>())
-	,requested_ip_address(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::RequestedIpAddress>())
-	,aaa_server(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer>())
-	,default_routers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters>())
-	,net_bios_name_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBiosNameServers>())
-	,match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match>())
-	,broadcast_flag(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::BroadcastFlag>())
-	,session(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session>())
-	,classes(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes>())
-	,relay(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Relay>())
-	,lease(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Lease>())
-	,netbios_node_type(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetbiosNodeType>())
-	,dns_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsServers>())
-	,option_codes(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes>())
+    , lease_limit(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::LeaseLimit>())
+    , requested_ip_address(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::RequestedIpAddress>())
+    , aaa_server(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer>())
+    , default_routers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters>())
+    , net_bios_name_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBiosNameServers>())
+    , match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match>())
+    , broadcast_flag(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::BroadcastFlag>())
+    , session(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session>())
+    , classes(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes>())
+    , relay(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Relay>())
+    , lease(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Lease>())
+    , netbios_node_type(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetbiosNodeType>())
+    , dns_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsServers>())
+    , dhcp_to_aaa(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa>())
+    , option_codes(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes>())
 {
     server_id_check->parent = this;
     lease_limit->parent = this;
@@ -2584,9 +2627,10 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Server()
     lease->parent = this;
     netbios_node_type->parent = this;
     dns_servers->parent = this;
+    dhcp_to_aaa->parent = this;
     option_codes->parent = this;
 
-    yang_name = "server"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::~Server()
@@ -2595,6 +2639,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::~Server()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return server_allow_move.is_set
 	|| enable.is_set
 	|| subnet_mask.is_set
@@ -2617,6 +2662,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::has_data() const
 	|| (lease !=  nullptr && lease->has_data())
 	|| (netbios_node_type !=  nullptr && netbios_node_type->has_data())
 	|| (dns_servers !=  nullptr && dns_servers->has_data())
+	|| (dhcp_to_aaa !=  nullptr && dhcp_to_aaa->has_data())
 	|| (option_codes !=  nullptr && option_codes->has_data());
 }
 
@@ -2645,6 +2691,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::has_operation() const
 	|| (lease !=  nullptr && lease->has_operation())
 	|| (netbios_node_type !=  nullptr && netbios_node_type->has_operation())
 	|| (dns_servers !=  nullptr && dns_servers->has_operation())
+	|| (dhcp_to_aaa !=  nullptr && dhcp_to_aaa->has_operation())
 	|| (option_codes !=  nullptr && option_codes->has_operation());
 }
 
@@ -2800,6 +2847,15 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::get_c
         return dns_servers;
     }
 
+    if(child_yang_name == "dhcp-to-aaa")
+    {
+        if(dhcp_to_aaa == nullptr)
+        {
+            dhcp_to_aaa = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa>();
+        }
+        return dhcp_to_aaa;
+    }
+
     if(child_yang_name == "option-codes")
     {
         if(option_codes == nullptr)
@@ -2884,6 +2940,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     if(dns_servers != nullptr)
     {
         children["dns-servers"] = dns_servers;
+    }
+
+    if(dhcp_to_aaa != nullptr)
+    {
+        children["dhcp-to-aaa"] = dhcp_to_aaa;
     }
 
     if(option_codes != nullptr)
@@ -2984,7 +3045,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::set_filter(const std::st
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "server-id-check" || name == "lease-limit" || name == "requested-ip-address" || name == "aaa-server" || name == "default-routers" || name == "net-bios-name-servers" || name == "match" || name == "broadcast-flag" || name == "session" || name == "classes" || name == "relay" || name == "lease" || name == "netbios-node-type" || name == "dns-servers" || name == "option-codes" || name == "server-allow-move" || name == "enable" || name == "subnet-mask" || name == "pool" || name == "domain-name" || name == "secure-arp" || name == "boot-filename" || name == "next-server")
+    if(name == "server-id-check" || name == "lease-limit" || name == "requested-ip-address" || name == "aaa-server" || name == "default-routers" || name == "net-bios-name-servers" || name == "match" || name == "broadcast-flag" || name == "session" || name == "classes" || name == "relay" || name == "lease" || name == "netbios-node-type" || name == "dns-servers" || name == "dhcp-to-aaa" || name == "option-codes" || name == "server-allow-move" || name == "enable" || name == "subnet-mask" || name == "pool" || name == "domain-name" || name == "secure-arp" || name == "boot-filename" || name == "next-server")
         return true;
     return false;
 }
@@ -2994,7 +3055,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::ServerIdCheck::ServerIdCheck(
     check{YType::empty, "check"}
 {
 
-    yang_name = "server-id-check"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server-id-check"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::ServerIdCheck::~ServerIdCheck()
@@ -3003,6 +3064,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::ServerIdCheck::~ServerIdCheck
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::ServerIdCheck::has_data() const
 {
+    if (is_presence_container) return true;
     return check.is_set;
 }
 
@@ -3072,7 +3134,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::LeaseLimit::LeaseLimit()
     range{YType::uint32, "range"}
 {
 
-    yang_name = "lease-limit"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-limit"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::LeaseLimit::~LeaseLimit()
@@ -3081,6 +3143,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::LeaseLimit::~LeaseLimit()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::LeaseLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return lease_limit_value.is_set
 	|| range.is_set;
 }
@@ -3162,7 +3225,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::RequestedIpAddress::Requested
     check{YType::empty, "check"}
 {
 
-    yang_name = "requested-ip-address"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "requested-ip-address"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::RequestedIpAddress::~RequestedIpAddress()
@@ -3171,6 +3234,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::RequestedIpAddress::~Requeste
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::RequestedIpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return check.is_set;
 }
 
@@ -3240,7 +3304,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer::AaaServer()
 {
     dhcp_option->parent = this;
 
-    yang_name = "aaa-server"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aaa-server"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer::~AaaServer()
@@ -3249,6 +3313,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer::~AaaServer()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp_option !=  nullptr && dhcp_option->has_data());
 }
 
@@ -3320,7 +3385,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer::DhcpOption::DhcpOp
     force_insert{YType::empty, "force-insert"}
 {
 
-    yang_name = "dhcp-option"; yang_parent_name = "aaa-server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-option"; yang_parent_name = "aaa-server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer::DhcpOption::~DhcpOption()
@@ -3329,6 +3394,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer::DhcpOption::~DhcpO
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer::DhcpOption::has_data() const
 {
+    if (is_presence_container) return true;
     return force_insert.is_set;
 }
 
@@ -3397,7 +3463,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters::DefaultRouter
     default_router{YType::str, "default-router"}
 {
 
-    yang_name = "default-routers"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-routers"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters::~DefaultRouters()
@@ -3406,6 +3472,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters::~DefaultRoute
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : default_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -3483,7 +3550,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBiosNameServers::NetBiosNa
     net_bios_name_server{YType::str, "net-bios-name-server"}
 {
 
-    yang_name = "net-bios-name-servers"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "net-bios-name-servers"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBiosNameServers::~NetBiosNameServers()
@@ -3492,6 +3559,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBiosNameServers::~NetBiosN
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBiosNameServers::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : net_bios_name_server.getYLeafs())
     {
         if(leaf.is_set)
@@ -3567,12 +3635,12 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBiosNameServers::has_
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Match()
     :
     option_defaults(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults>())
-	,options(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options>())
+    , options(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options>())
 {
     option_defaults->parent = this;
     options->parent = this;
 
-    yang_name = "match"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::~Match()
@@ -3581,6 +3649,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::~Match()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return (option_defaults !=  nullptr && option_defaults->has_data())
 	|| (options !=  nullptr && options->has_data());
 }
@@ -3664,9 +3733,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::has_leaf_or_child
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::OptionDefaults()
+    :
+    option_default(this, {"matchoption"})
 {
 
-    yang_name = "option-defaults"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option-defaults"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::~OptionDefaults()
@@ -3675,7 +3746,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::~Optio
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::has_data() const
 {
-    for (std::size_t index=0; index<option_default.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<option_default.len(); index++)
     {
         if(option_default[index]->has_data())
             return true;
@@ -3685,7 +3757,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::h
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::has_operation() const
 {
-    for (std::size_t index=0; index<option_default.size(); index++)
+    for (std::size_t index=0; index<option_default.len(); index++)
     {
         if(option_default[index]->has_operation())
             return true;
@@ -3715,7 +3787,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::OptionDefault>();
         c->parent = this;
-        option_default.push_back(c);
+        option_default.append(c);
         return c;
     }
 
@@ -3727,7 +3799,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : option_default)
+    for (auto c : option_default.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3759,7 +3831,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::Option
     matchaction{YType::enumeration, "matchaction"}
 {
 
-    yang_name = "option-default"; yang_parent_name = "option-defaults"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option-default"; yang_parent_name = "option-defaults"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::OptionDefault::~OptionDefault()
@@ -3768,6 +3840,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::Option
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::OptionDefault::has_data() const
 {
+    if (is_presence_container) return true;
     return matchoption.is_set
 	|| matchaction.is_set;
 }
@@ -3782,7 +3855,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::O
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::OptionDefault::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "option-default" <<"[matchoption='" <<matchoption <<"']";
+    path_buffer << "option-default";
+    ADD_KEY_TOKEN(matchoption, "matchoption");
     return path_buffer.str();
 }
 
@@ -3845,9 +3919,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::O
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Options()
+    :
+    option(this, {"matchoption", "pattern", "format"})
 {
 
-    yang_name = "options"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "options"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::~Options()
@@ -3856,7 +3932,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::~Options()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::has_data() const
 {
-    for (std::size_t index=0; index<option.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<option.len(); index++)
     {
         if(option[index]->has_data())
             return true;
@@ -3866,7 +3943,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::has_data
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::has_operation() const
 {
-    for (std::size_t index=0; index<option.size(); index++)
+    for (std::size_t index=0; index<option.len(); index++)
     {
         if(option[index]->has_operation())
             return true;
@@ -3896,7 +3973,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option>();
         c->parent = this;
-        option.push_back(c);
+        option.append(c);
         return c;
     }
 
@@ -3908,7 +3985,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : option)
+    for (auto c : option.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3938,11 +4015,11 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option::Optio
     :
     matchoption{YType::enumeration, "matchoption"},
     pattern{YType::str, "pattern"},
-    format{YType::int32, "format"},
+    format{YType::uint32, "format"},
     matchaction{YType::enumeration, "matchaction"}
 {
 
-    yang_name = "option"; yang_parent_name = "options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option"; yang_parent_name = "options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option::~Option()
@@ -3951,6 +4028,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option::~Opti
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option::has_data() const
 {
+    if (is_presence_container) return true;
     return matchoption.is_set
 	|| pattern.is_set
 	|| format.is_set
@@ -3969,7 +4047,10 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option::
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "option" <<"[matchoption='" <<matchoption <<"']" <<"[pattern='" <<pattern <<"']" <<"[format='" <<format <<"']";
+    path_buffer << "option";
+    ADD_KEY_TOKEN(matchoption, "matchoption");
+    ADD_KEY_TOKEN(pattern, "pattern");
+    ADD_KEY_TOKEN(format, "format");
     return path_buffer.str();
 }
 
@@ -4058,7 +4139,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::BroadcastFlag::BroadcastFlag(
     policy{YType::enumeration, "policy"}
 {
 
-    yang_name = "broadcast-flag"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast-flag"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::BroadcastFlag::~BroadcastFlag()
@@ -4067,6 +4148,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::BroadcastFlag::~BroadcastFlag
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::BroadcastFlag::has_data() const
 {
+    if (is_presence_container) return true;
     return policy.is_set;
 }
 
@@ -4136,7 +4218,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::Session()
 {
     throttle_type->parent = this;
 
-    yang_name = "session"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::~Session()
@@ -4145,6 +4227,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::~Session()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return (throttle_type !=  nullptr && throttle_type->has_data());
 }
 
@@ -4217,7 +4300,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::ThrottleType::Thrott
 {
     mac_throttle->parent = this;
 
-    yang_name = "throttle-type"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "throttle-type"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::ThrottleType::~ThrottleType()
@@ -4226,6 +4309,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::ThrottleType::~Throt
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::ThrottleType::has_data() const
 {
+    if (is_presence_container) return true;
     return (mac_throttle !=  nullptr && mac_throttle->has_data());
 }
 
@@ -4299,7 +4383,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::ThrottleType::MacThr
     num_block{YType::uint32, "num-block"}
 {
 
-    yang_name = "mac-throttle"; yang_parent_name = "throttle-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-throttle"; yang_parent_name = "throttle-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::ThrottleType::MacThrottle::~MacThrottle()
@@ -4308,6 +4392,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::ThrottleType::MacThr
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::ThrottleType::MacThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return num_discover.is_set
 	|| num_request.is_set
 	|| num_block.is_set;
@@ -4398,9 +4483,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::ThrottleType::M
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Classes()
+    :
+    class_(this, {"class_name"})
 {
 
-    yang_name = "classes"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "classes"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::~Classes()
@@ -4409,7 +4496,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::~Classes()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::has_data() const
 {
-    for (std::size_t index=0; index<class_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_data())
             return true;
@@ -4419,7 +4507,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::has_data() cons
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::has_operation() const
 {
-    for (std::size_t index=0; index<class_.size(); index++)
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_operation())
             return true;
@@ -4449,7 +4537,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class>();
         c->parent = this;
-        class_.push_back(c);
+        class_.append(c);
         return c;
     }
 
@@ -4461,7 +4549,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_)
+    for (auto c : class_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4496,14 +4584,14 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Class()
     domain_name{YType::str, "domain-name"},
     boot_filename{YType::str, "boot-filename"},
     next_server{YType::str, "next-server"}
-    	,
+        ,
     default_routers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters>())
-	,net_bios_name_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers>())
-	,class_match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch>())
-	,lease(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease>())
-	,netbios_node_type(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType>())
-	,dns_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers>())
-	,option_codes(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes>())
+    , net_bios_name_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers>())
+    , class_match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch>())
+    , lease(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease>())
+    , netbios_node_type(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType>())
+    , dns_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers>())
+    , option_codes(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes>())
 {
     default_routers->parent = this;
     net_bios_name_servers->parent = this;
@@ -4513,7 +4601,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Class()
     dns_servers->parent = this;
     option_codes->parent = this;
 
-    yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::~Class()
@@ -4522,6 +4610,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::~Class()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::has_data() const
 {
+    if (is_presence_container) return true;
     return class_name.is_set
 	|| subnet_mask.is_set
 	|| pool.is_set
@@ -4560,7 +4649,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::has_oper
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "class" <<"[class-name='" <<class_name <<"']";
+    path_buffer << "class";
+    ADD_KEY_TOKEN(class_name, "class-name");
     return path_buffer.str();
 }
 
@@ -4780,7 +4870,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouter
     default_router{YType::str, "default-router"}
 {
 
-    yang_name = "default-routers"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-routers"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::~DefaultRouters()
@@ -4789,6 +4879,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouter
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : default_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -4866,7 +4957,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameSe
     net_bios_name_server{YType::str, "net-bios-name-server"}
 {
 
-    yang_name = "net-bios-name-servers"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "net-bios-name-servers"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::~NetBiosNameServers()
@@ -4875,6 +4966,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameSe
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : net_bios_name_server.getYLeafs())
     {
         if(leaf.is_set)
@@ -4951,12 +5043,12 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::C
     :
     l2_interface{YType::str, "l2-interface"},
     vrf{YType::str, "vrf"}
-    	,
+        ,
     class_options(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions>())
 {
     class_options->parent = this;
 
-    yang_name = "class-match"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-match"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::~ClassMatch()
@@ -4965,6 +5057,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::~
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::has_data() const
 {
+    if (is_presence_container) return true;
     return l2_interface.is_set
 	|| vrf.is_set
 	|| (class_options !=  nullptr && class_options->has_data());
@@ -5058,9 +5151,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMat
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOptions()
+    :
+    class_option(this, {"matchoption"})
 {
 
-    yang_name = "class-options"; yang_parent_name = "class-match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-options"; yang_parent_name = "class-match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::~ClassOptions()
@@ -5069,7 +5164,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::C
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::has_data() const
 {
-    for (std::size_t index=0; index<class_option.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_option.len(); index++)
     {
         if(class_option[index]->has_data())
             return true;
@@ -5079,7 +5175,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMat
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::has_operation() const
 {
-    for (std::size_t index=0; index<class_option.size(); index++)
+    for (std::size_t index=0; index<class_option.len(); index++)
     {
         if(class_option[index]->has_operation())
             return true;
@@ -5109,7 +5205,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption>();
         c->parent = this;
-        class_option.push_back(c);
+        class_option.append(c);
         return c;
     }
 
@@ -5121,7 +5217,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_option)
+    for (auto c : class_option.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5154,7 +5250,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::C
     bit_mask{YType::str, "bit-mask"}
 {
 
-    yang_name = "class-option"; yang_parent_name = "class-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-option"; yang_parent_name = "class-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::~ClassOption()
@@ -5163,6 +5259,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::C
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::has_data() const
 {
+    if (is_presence_container) return true;
     return matchoption.is_set
 	|| pattern.is_set
 	|| bit_mask.is_set;
@@ -5179,7 +5276,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMat
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "class-option" <<"[matchoption='" <<matchoption <<"']";
+    path_buffer << "class-option";
+    ADD_KEY_TOKEN(matchoption, "matchoption");
     return path_buffer.str();
 }
 
@@ -5260,7 +5358,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::Lease(
     minutes{YType::uint32, "minutes"}
 {
 
-    yang_name = "lease"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::~Lease()
@@ -5269,6 +5367,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::~Lease
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::has_data() const
 {
+    if (is_presence_container) return true;
     return infinite.is_set
 	|| days.is_set
 	|| hours.is_set
@@ -5380,7 +5479,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeTy
     hexadecimal{YType::str, "hexadecimal"}
 {
 
-    yang_name = "netbios-node-type"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "netbios-node-type"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::~NetbiosNodeType()
@@ -5389,6 +5488,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeTy
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast_node.is_set
 	|| hybrid_node.is_set
 	|| mixed_node.is_set
@@ -5509,7 +5609,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::D
     dns_server{YType::str, "dns-server"}
 {
 
-    yang_name = "dns-servers"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dns-servers"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::~DnsServers()
@@ -5518,6 +5618,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::~
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : dns_server.getYLeafs())
     {
         if(leaf.is_set)
@@ -5591,9 +5692,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServe
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCodes()
+    :
+    option_code(this, {"option_code"})
 {
 
-    yang_name = "option-codes"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option-codes"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::~OptionCodes()
@@ -5602,7 +5705,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::has_data() const
 {
-    for (std::size_t index=0; index<option_code.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<option_code.len(); index++)
     {
         if(option_code[index]->has_data())
             return true;
@@ -5612,7 +5716,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCo
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::has_operation() const
 {
-    for (std::size_t index=0; index<option_code.size(); index++)
+    for (std::size_t index=0; index<option_code.len(); index++)
     {
         if(option_code[index]->has_operation())
             return true;
@@ -5642,7 +5746,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode>();
         c->parent = this;
-        option_code.push_back(c);
+        option_code.append(c);
         return c;
     }
 
@@ -5654,7 +5758,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : option_code)
+    for (auto c : option_code.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5685,11 +5789,11 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::
     option_code{YType::uint32, "option-code"},
     ascii_string{YType::str, "ascii-string"},
     hex_string{YType::str, "hex-string"},
-    force_insert{YType::int32, "force-insert"},
+    force_insert{YType::uint32, "force-insert"},
     ip_address{YType::str, "ip-address"}
 {
 
-    yang_name = "option-code"; yang_parent_name = "option-codes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option-code"; yang_parent_name = "option-codes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::~OptionCode()
@@ -5698,6 +5802,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : ip_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -5727,7 +5832,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCo
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "option-code" <<"[option-code='" <<option_code <<"']";
+    path_buffer << "option-code";
+    ADD_KEY_TOKEN(option_code, "option-code");
     return path_buffer.str();
 }
 
@@ -5823,10 +5929,10 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCo
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Relay::Relay()
     :
-    authenticate{YType::int32, "authenticate"}
+    authenticate{YType::uint32, "authenticate"}
 {
 
-    yang_name = "relay"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "relay"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Relay::~Relay()
@@ -5835,6 +5941,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Relay::~Relay()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Relay::has_data() const
 {
+    if (is_presence_container) return true;
     return authenticate.is_set;
 }
 
@@ -5906,7 +6013,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Lease::Lease()
     minutes{YType::uint32, "minutes"}
 {
 
-    yang_name = "lease"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Lease::~Lease()
@@ -5915,6 +6022,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Lease::~Lease()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Lease::has_data() const
 {
+    if (is_presence_container) return true;
     return infinite.is_set
 	|| days.is_set
 	|| hours.is_set
@@ -6026,7 +6134,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetbiosNodeType::NetbiosNodeT
     hexadecimal{YType::str, "hexadecimal"}
 {
 
-    yang_name = "netbios-node-type"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "netbios-node-type"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetbiosNodeType::~NetbiosNodeType()
@@ -6035,6 +6143,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetbiosNodeType::~NetbiosNode
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetbiosNodeType::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast_node.is_set
 	|| hybrid_node.is_set
 	|| mixed_node.is_set
@@ -6155,7 +6264,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsServers::DnsServers()
     dns_server{YType::str, "dns-server"}
 {
 
-    yang_name = "dns-servers"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dns-servers"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsServers::~DnsServers()
@@ -6164,6 +6273,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsServers::~DnsServers()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsServers::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : dns_server.getYLeafs())
     {
         if(leaf.is_set)
@@ -6236,10 +6346,268 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsServers::has_leaf_or_
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCodes()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::DhcpToAaa()
+    :
+    option(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option>())
+{
+    option->parent = this;
+
+    yang_name = "dhcp-to-aaa"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::~DhcpToAaa()
+{
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::has_data() const
+{
+    if (is_presence_container) return true;
+    return (option !=  nullptr && option->has_data());
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::has_operation() const
+{
+    return is_set(yfilter)
+	|| (option !=  nullptr && option->has_operation());
+}
+
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dhcp-to-aaa";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "option")
+    {
+        if(option == nullptr)
+        {
+            option = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option>();
+        }
+        return option;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(option != nullptr)
+    {
+        children["option"] = option;
+    }
+
+    return children;
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option")
+        return true;
+    return false;
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::Option()
+    :
+    list(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List>())
+{
+    list->parent = this;
+
+    yang_name = "option"; yang_parent_name = "dhcp-to-aaa"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::~Option()
+{
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::has_data() const
+{
+    if (is_presence_container) return true;
+    return (list !=  nullptr && list->has_data());
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::has_operation() const
+{
+    return is_set(yfilter)
+	|| (list !=  nullptr && list->has_operation());
+}
+
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "option";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "list")
+    {
+        if(list == nullptr)
+        {
+            list = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List>();
+        }
+        return list;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(list != nullptr)
+    {
+        children["list"] = list;
+    }
+
+    return children;
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "list")
+        return true;
+    return false;
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List::List()
+    :
+    option_all{YType::uint32, "option-all"},
+    option_number{YType::uint32, "option-number"}
 {
 
-    yang_name = "option-codes"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "list"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List::~List()
+{
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List::has_data() const
+{
+    if (is_presence_container) return true;
+    return option_all.is_set
+	|| option_number.is_set;
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(option_all.yfilter)
+	|| ydk::is_set(option_number.yfilter);
+}
+
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "list";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (option_all.is_set || is_set(option_all.yfilter)) leaf_name_data.push_back(option_all.get_name_leafdata());
+    if (option_number.is_set || is_set(option_number.yfilter)) leaf_name_data.push_back(option_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "option-all")
+    {
+        option_all = value;
+        option_all.value_namespace = name_space;
+        option_all.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option-number")
+    {
+        option_number = value;
+        option_number.value_namespace = name_space;
+        option_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "option-all")
+    {
+        option_all.yfilter = yfilter;
+    }
+    if(value_path == "option-number")
+    {
+        option_number.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option-all" || name == "option-number")
+        return true;
+    return false;
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCodes()
+    :
+    option_code(this, {"option_code"})
+{
+
+    yang_name = "option-codes"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::~OptionCodes()
@@ -6248,7 +6616,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::~OptionCodes()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::has_data() const
 {
-    for (std::size_t index=0; index<option_code.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<option_code.len(); index++)
     {
         if(option_code[index]->has_data())
             return true;
@@ -6258,7 +6627,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::has_data() 
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::has_operation() const
 {
-    for (std::size_t index=0; index<option_code.size(); index++)
+    for (std::size_t index=0; index<option_code.len(); index++)
     {
         if(option_code[index]->has_operation())
             return true;
@@ -6288,7 +6657,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Optio
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode>();
         c->parent = this;
-        option_code.push_back(c);
+        option_code.append(c);
         return c;
     }
 
@@ -6300,7 +6669,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : option_code)
+    for (auto c : option_code.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6331,11 +6700,11 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode::Opti
     option_code{YType::uint32, "option-code"},
     ascii_string{YType::str, "ascii-string"},
     hex_string{YType::str, "hex-string"},
-    force_insert{YType::int32, "force-insert"},
+    force_insert{YType::uint32, "force-insert"},
     ip_address{YType::str, "ip-address"}
 {
 
-    yang_name = "option-code"; yang_parent_name = "option-codes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option-code"; yang_parent_name = "option-codes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode::~OptionCode()
@@ -6344,6 +6713,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode::~Opt
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : ip_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -6373,7 +6743,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode:
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "option-code" <<"[option-code='" <<option_code <<"']";
+    path_buffer << "option-code";
+    ADD_KEY_TOKEN(option_code, "option-code");
     return path_buffer.str();
 }
 
@@ -6470,18 +6841,16 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode:
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Relay()
     :
     mac_mismatch_action{YType::enumeration, "mac-mismatch-action"}
-    	,
-    gi_addr_policy(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy>())
-	,vrfs(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs>())
-	,relay_information_option(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption>())
-	,broadcast_policy(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::BroadcastPolicy>())
+        ,
+    gi_addr_policy(nullptr) // presence node
+    , vrfs(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs>())
+    , relay_information_option(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption>())
+    , broadcast_policy(nullptr) // presence node
 {
-    gi_addr_policy->parent = this;
     vrfs->parent = this;
     relay_information_option->parent = this;
-    broadcast_policy->parent = this;
 
-    yang_name = "relay"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "relay"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::~Relay()
@@ -6490,6 +6859,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::~Relay()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_mismatch_action.is_set
 	|| (gi_addr_policy !=  nullptr && gi_addr_policy->has_data())
 	|| (vrfs !=  nullptr && vrfs->has_data())
@@ -6622,7 +6992,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy::GiAddrPolicy()
     policy{YType::enumeration, "policy"}
 {
 
-    yang_name = "gi-addr-policy"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "gi-addr-policy"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy::~GiAddrPolicy()
@@ -6631,6 +7001,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy::~GiAddrPolicy()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return policy.is_set;
 }
 
@@ -6695,9 +7066,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy::has_leaf_or
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::~Vrfs()
@@ -6706,7 +7079,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::~Vrfs()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -6716,7 +7090,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::has_data() const
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -6746,7 +7120,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -6758,7 +7132,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6787,12 +7161,12 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::has_leaf_or_child_o
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     helper_addresses(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses>())
 {
     helper_addresses->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::~Vrf()
@@ -6801,6 +7175,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::~Vrf()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (helper_addresses !=  nullptr && helper_addresses->has_data());
 }
@@ -6815,7 +7190,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::has_operation(
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -6881,9 +7257,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::has_leaf_or_ch
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::HelperAddresses()
+    :
+    helper_address(this, {"ip_address"})
 {
 
-    yang_name = "helper-addresses"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-addresses"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::~HelperAddresses()
@@ -6892,7 +7270,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::~H
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::has_data() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_data())
             return true;
@@ -6902,7 +7281,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresse
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_operation())
             return true;
@@ -6932,7 +7311,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::HelperAddress>();
         c->parent = this;
-        helper_address.push_back(c);
+        helper_address.append(c);
         return c;
     }
 
@@ -6944,7 +7323,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : helper_address)
+    for (auto c : helper_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6977,7 +7356,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::He
     gateway_address{YType::str, "gateway-address"}
 {
 
-    yang_name = "helper-address"; yang_parent_name = "helper-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-address"; yang_parent_name = "helper-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::HelperAddress::~HelperAddress()
@@ -6986,6 +7365,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::He
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::HelperAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| enable.is_set
 	|| gateway_address.is_set;
@@ -7002,7 +7382,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresse
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::HelperAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[ip-address='" <<ip_address <<"']";
+    path_buffer << "helper-address";
+    ADD_KEY_TOKEN(ip_address, "ip-address");
     return path_buffer.str();
 }
 
@@ -7086,7 +7467,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption::RelayI
     policy{YType::enumeration, "policy"}
 {
 
-    yang_name = "relay-information-option"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "relay-information-option"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption::~RelayInformationOption()
@@ -7095,6 +7476,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption::~Relay
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption::has_data() const
 {
+    if (is_presence_container) return true;
     return vpn_mode.is_set
 	|| subscriber_id.is_set
 	|| insert.is_set
@@ -7241,7 +7623,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::BroadcastPolicy::BroadcastPoli
     policy{YType::enumeration, "policy"}
 {
 
-    yang_name = "broadcast-policy"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast-policy"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::BroadcastPolicy::~BroadcastPolicy()
@@ -7250,6 +7632,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::BroadcastPolicy::~BroadcastPol
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::BroadcastPolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return policy.is_set;
 }
 
@@ -7319,30 +7702,28 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Proxy()
     secure_arp{YType::empty, "secure-arp"},
     delayed_authen_proxy{YType::empty, "delayed-authen-proxy"},
     enable{YType::empty, "enable"}
-    	,
-    giaddr(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Giaddr>())
-	,classes(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes>())
-	,auth_username(nullptr) // presence node
-	,relay_information(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation>())
-	,dhcp_to_aaa(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa>())
-	,vrfs(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs>())
-	,sessions(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions>())
-	,limit_lease(nullptr) // presence node
-	,lease_proxy(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LeaseProxy>())
-	,broadcast_flag(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::BroadcastFlag>())
-	,match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match>())
+        ,
+    giaddr(nullptr) // presence node
+    , classes(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes>())
+    , auth_username(nullptr) // presence node
+    , relay_information(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation>())
+    , dhcp_to_aaa(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa>())
+    , vrfs(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs>())
+    , sessions(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions>())
+    , limit_lease(nullptr) // presence node
+    , lease_proxy(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LeaseProxy>())
+    , broadcast_flag(nullptr) // presence node
+    , match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match>())
 {
-    giaddr->parent = this;
     classes->parent = this;
     relay_information->parent = this;
     dhcp_to_aaa->parent = this;
     vrfs->parent = this;
     sessions->parent = this;
     lease_proxy->parent = this;
-    broadcast_flag->parent = this;
     match->parent = this;
 
-    yang_name = "proxy"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "proxy"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::~Proxy()
@@ -7351,6 +7732,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::~Proxy()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::has_data() const
 {
+    if (is_presence_container) return true;
     return proxy_allow_move.is_set
 	|| secure_arp.is_set
 	|| delayed_authen_proxy.is_set
@@ -7634,7 +8016,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Giaddr::Giaddr()
     policy{YType::enumeration, "policy"}
 {
 
-    yang_name = "giaddr"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "giaddr"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Giaddr::~Giaddr()
@@ -7643,6 +8025,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Giaddr::~Giaddr()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Giaddr::has_data() const
 {
+    if (is_presence_container) return true;
     return policy.is_set;
 }
 
@@ -7707,9 +8090,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Giaddr::has_leaf_or_child
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Classes()
+    :
+    class_(this, {"class_name"})
 {
 
-    yang_name = "classes"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "classes"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::~Classes()
@@ -7718,7 +8103,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::~Classes()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::has_data() const
 {
-    for (std::size_t index=0; index<class_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_data())
             return true;
@@ -7728,7 +8114,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::has_data() const
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::has_operation() const
 {
-    for (std::size_t index=0; index<class_.size(); index++)
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_operation())
             return true;
@@ -7758,7 +8144,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classe
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class>();
         c->parent = this;
-        class_.push_back(c);
+        class_.append(c);
         return c;
     }
 
@@ -7770,7 +8156,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_)
+    for (auto c : class_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7800,14 +8186,14 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Class()
     :
     class_name{YType::str, "class-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match>())
-	,vrfs(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs>())
+    , vrfs(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs>())
 {
     match->parent = this;
     vrfs->parent = this;
 
-    yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::~Class()
@@ -7816,6 +8202,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::~Class()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::has_data() const
 {
+    if (is_presence_container) return true;
     return class_name.is_set
 	|| enable.is_set
 	|| (match !=  nullptr && match->has_data())
@@ -7834,7 +8221,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::has_opera
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "class" <<"[class-name='" <<class_name <<"']";
+    path_buffer << "class";
+    ADD_KEY_TOKEN(class_name, "class-name");
     return path_buffer.str();
 }
 
@@ -7927,12 +8315,12 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::has_leaf_
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Match()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     option(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option>())
 {
     option->parent = this;
 
-    yang_name = "match"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::~Match()
@@ -7941,6 +8329,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::~Match(
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (option !=  nullptr && option->has_data());
 }
@@ -8027,7 +8416,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option:
     bit_mask{YType::str, "bit-mask"}
 {
 
-    yang_name = "option"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::~Option()
@@ -8036,6 +8425,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option:
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::has_data() const
 {
+    if (is_presence_container) return true;
     return option_type.is_set
 	|| pattern.is_set
 	|| bit_mask.is_set;
@@ -8126,9 +8516,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Op
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::~Vrfs()
@@ -8137,7 +8529,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::~Vrfs()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -8147,7 +8540,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::has
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -8177,7 +8570,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classe
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -8189,7 +8582,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8218,12 +8611,12 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::has
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     helper_addresses(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses>())
 {
     helper_addresses->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::~Vrf()
@@ -8232,6 +8625,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::~Vr
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (helper_addresses !=  nullptr && helper_addresses->has_data());
 }
@@ -8246,7 +8640,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -8312,9 +8707,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddresses()
+    :
+    helper_address(this, {"server_address"})
 {
 
-    yang_name = "helper-addresses"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-addresses"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::~HelperAddresses()
@@ -8323,7 +8720,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::Hel
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::has_data() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_data())
             return true;
@@ -8333,7 +8731,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_operation())
             return true;
@@ -8363,7 +8761,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classe
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress>();
         c->parent = this;
-        helper_address.push_back(c);
+        helper_address.append(c);
         return c;
     }
 
@@ -8375,7 +8773,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : helper_address)
+    for (auto c : helper_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8407,7 +8805,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::Hel
     gateway_address{YType::str, "gateway-address"}
 {
 
-    yang_name = "helper-address"; yang_parent_name = "helper-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-address"; yang_parent_name = "helper-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::~HelperAddress()
@@ -8416,6 +8814,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::Hel
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return server_address.is_set
 	|| gateway_address.is_set;
 }
@@ -8430,7 +8829,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[server-address='" <<server_address <<"']";
+    path_buffer << "helper-address";
+    ADD_KEY_TOKEN(server_address, "server-address");
     return path_buffer.str();
 }
 
@@ -8498,7 +8898,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::AuthUsername::AuthUsername()
     arg2{YType::enumeration, "arg2"}
 {
 
-    yang_name = "auth-username"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auth-username"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::AuthUsername::~AuthUsername()
@@ -8507,6 +8907,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::AuthUsername::~AuthUsername()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::AuthUsername::has_data() const
 {
+    if (is_presence_container) return true;
     return arg1.is_set
 	|| arg2.is_set;
 }
@@ -8598,7 +8999,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation::RelayInforma
     authenticate{YType::enumeration, "authenticate"}
 {
 
-    yang_name = "relay-information"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "relay-information"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation::~RelayInformation()
@@ -8607,6 +9008,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation::~RelayInform
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return option.is_set
 	|| vpn.is_set
 	|| allow_untrusted.is_set
@@ -8806,7 +9208,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::DhcpToAaa()
 {
     option->parent = this;
 
-    yang_name = "dhcp-to-aaa"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-to-aaa"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::~DhcpToAaa()
@@ -8815,6 +9217,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::~DhcpToAaa()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::has_data() const
 {
+    if (is_presence_container) return true;
     return (option !=  nullptr && option->has_data());
 }
 
@@ -8887,7 +9290,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::Option()
 {
     list->parent = this;
 
-    yang_name = "option"; yang_parent_name = "dhcp-to-aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option"; yang_parent_name = "dhcp-to-aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::~Option()
@@ -8896,6 +9299,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::~Option()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::has_data() const
 {
+    if (is_presence_container) return true;
     return (list !=  nullptr && list->has_data());
 }
 
@@ -8964,11 +9368,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::has_le
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::List()
     :
-    option_all{YType::int32, "option-all"},
+    option_all{YType::uint32, "option-all"},
     option{YType::uint32, "option"}
 {
 
-    yang_name = "list"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "list"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::~List()
@@ -8977,6 +9381,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::~List
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : option.getYLeafs())
     {
         if(leaf.is_set)
@@ -9062,9 +9467,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::~Vrfs()
@@ -9073,7 +9480,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::~Vrfs()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -9083,7 +9491,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::has_data() const
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -9113,7 +9521,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -9125,7 +9533,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9154,12 +9562,12 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::has_leaf_or_child_o
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     helper_addresses(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses>())
 {
     helper_addresses->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::~Vrf()
@@ -9168,6 +9576,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::~Vrf()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (helper_addresses !=  nullptr && helper_addresses->has_data());
 }
@@ -9182,7 +9591,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::has_operation(
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -9248,9 +9658,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::has_leaf_or_ch
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddresses()
+    :
+    helper_address(this, {"server_address"})
 {
 
-    yang_name = "helper-addresses"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-addresses"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::~HelperAddresses()
@@ -9259,7 +9671,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::~H
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::has_data() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_data())
             return true;
@@ -9269,7 +9682,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresse
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_operation())
             return true;
@@ -9299,7 +9712,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress>();
         c->parent = this;
-        helper_address.push_back(c);
+        helper_address.append(c);
         return c;
     }
 
@@ -9311,7 +9724,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : helper_address)
+    for (auto c : helper_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9343,7 +9756,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::He
     gateway_address{YType::str, "gateway-address"}
 {
 
-    yang_name = "helper-address"; yang_parent_name = "helper-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-address"; yang_parent_name = "helper-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::~HelperAddress()
@@ -9352,6 +9765,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::He
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return server_address.is_set
 	|| gateway_address.is_set;
 }
@@ -9366,7 +9780,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresse
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[server-address='" <<server_address <<"']";
+    path_buffer << "helper-address";
+    ADD_KEY_TOKEN(server_address, "server-address");
     return path_buffer.str();
 }
 
@@ -9434,7 +9849,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::Sessions()
 {
     proxy_throttle_type->parent = this;
 
-    yang_name = "sessions"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sessions"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::~Sessions()
@@ -9443,6 +9858,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::~Sessions()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::has_data() const
 {
+    if (is_presence_container) return true;
     return (proxy_throttle_type !=  nullptr && proxy_throttle_type->has_data());
 }
 
@@ -9515,7 +9931,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::ProxyThrottleType::P
 {
     proxy_mac_throttle->parent = this;
 
-    yang_name = "proxy-throttle-type"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "proxy-throttle-type"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::ProxyThrottleType::~ProxyThrottleType()
@@ -9524,6 +9940,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::ProxyThrottleType::~
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::ProxyThrottleType::has_data() const
 {
+    if (is_presence_container) return true;
     return (proxy_mac_throttle !=  nullptr && proxy_mac_throttle->has_data());
 }
 
@@ -9597,7 +10014,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::ProxyThrottleType::P
     num_block{YType::uint32, "num-block"}
 {
 
-    yang_name = "proxy-mac-throttle"; yang_parent_name = "proxy-throttle-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "proxy-mac-throttle"; yang_parent_name = "proxy-throttle-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::ProxyThrottleType::ProxyMacThrottle::~ProxyMacThrottle()
@@ -9606,6 +10023,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::ProxyThrottleType::P
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::ProxyThrottleType::ProxyMacThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return num_discover.is_set
 	|| num_request.is_set
 	|| num_block.is_set;
@@ -9701,7 +10119,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LimitLease::LimitLease()
     limit_lease_count{YType::uint32, "limit-lease-count"}
 {
 
-    yang_name = "limit-lease"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit-lease"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LimitLease::~LimitLease()
@@ -9710,6 +10128,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LimitLease::~LimitLease()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LimitLease::has_data() const
 {
+    if (is_presence_container) return true;
     return limit_type.is_set
 	|| limit_lease_count.is_set;
 }
@@ -9792,7 +10211,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LeaseProxy::LeaseProxy()
     set_server_options{YType::empty, "set-server-options"}
 {
 
-    yang_name = "lease-proxy"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-proxy"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LeaseProxy::~LeaseProxy()
@@ -9801,6 +10220,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LeaseProxy::~LeaseProxy()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LeaseProxy::has_data() const
 {
+    if (is_presence_container) return true;
     return client_lease_time.is_set
 	|| set_server_options.is_set;
 }
@@ -9882,7 +10302,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::BroadcastFlag::BroadcastFlag()
     policy{YType::enumeration, "policy"}
 {
 
-    yang_name = "broadcast-flag"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast-flag"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::BroadcastFlag::~BroadcastFlag()
@@ -9891,6 +10311,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::BroadcastFlag::~BroadcastFlag(
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::BroadcastFlag::has_data() const
 {
+    if (is_presence_container) return true;
     return policy.is_set;
 }
 
@@ -9957,12 +10378,12 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::BroadcastFlag::has_leaf_o
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::Match()
     :
     def_options(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions>())
-	,option_filters(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters>())
+    , option_filters(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters>())
 {
     def_options->parent = this;
     option_filters->parent = this;
 
-    yang_name = "match"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::~Match()
@@ -9971,6 +10392,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::~Match()
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return (def_options !=  nullptr && def_options->has_data())
 	|| (option_filters !=  nullptr && option_filters->has_data());
 }
@@ -10054,9 +10476,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::has_leaf_or_child_
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOptions()
+    :
+    def_option(this, {"def_matchoption"})
 {
 
-    yang_name = "def-options"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "def-options"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::~DefOptions()
@@ -10065,7 +10489,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::~DefOptions
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::has_data() const
 {
-    for (std::size_t index=0; index<def_option.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<def_option.len(); index++)
     {
         if(def_option[index]->has_data())
             return true;
@@ -10075,7 +10500,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::has_da
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::has_operation() const
 {
-    for (std::size_t index=0; index<def_option.size(); index++)
+    for (std::size_t index=0; index<def_option.len(); index++)
     {
         if(def_option[index]->has_operation())
             return true;
@@ -10105,7 +10530,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match:
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOption>();
         c->parent = this;
-        def_option.push_back(c);
+        def_option.append(c);
         return c;
     }
 
@@ -10117,7 +10542,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : def_option)
+    for (auto c : def_option.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10145,11 +10570,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::has_le
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOption::DefOption()
     :
-    def_matchoption{YType::int32, "def-matchoption"},
+    def_matchoption{YType::uint32, "def-matchoption"},
     def_matchaction{YType::enumeration, "def-matchaction"}
 {
 
-    yang_name = "def-option"; yang_parent_name = "def-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "def-option"; yang_parent_name = "def-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOption::~DefOption()
@@ -10158,6 +10583,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOption::
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOption::has_data() const
 {
+    if (is_presence_container) return true;
     return def_matchoption.is_set
 	|| def_matchaction.is_set;
 }
@@ -10172,7 +10598,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOpt
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOption::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "def-option" <<"[def-matchoption='" <<def_matchoption <<"']";
+    path_buffer << "def-option";
+    ADD_KEY_TOKEN(def_matchoption, "def-matchoption");
     return path_buffer.str();
 }
 
@@ -10235,9 +10662,11 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOpt
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::OptionFilters()
+    :
+    option_filter(this, {"matchoption", "pattern", "format"})
 {
 
-    yang_name = "option-filters"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option-filters"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::~OptionFilters()
@@ -10246,7 +10675,8 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::~OptionF
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::has_data() const
 {
-    for (std::size_t index=0; index<option_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<option_filter.len(); index++)
     {
         if(option_filter[index]->has_data())
             return true;
@@ -10256,7 +10686,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::has
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::has_operation() const
 {
-    for (std::size_t index=0; index<option_filter.size(); index++)
+    for (std::size_t index=0; index<option_filter.len(); index++)
     {
         if(option_filter[index]->has_operation())
             return true;
@@ -10286,7 +10716,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match:
     {
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::OptionFilter>();
         c->parent = this;
-        option_filter.push_back(c);
+        option_filter.append(c);
         return c;
     }
 
@@ -10298,7 +10728,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : option_filter)
+    for (auto c : option_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10326,13 +10756,13 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::has
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::OptionFilter::OptionFilter()
     :
-    matchoption{YType::int32, "matchoption"},
+    matchoption{YType::uint32, "matchoption"},
     pattern{YType::str, "pattern"},
-    format{YType::int32, "format"},
+    format{YType::uint32, "format"},
     matchaction{YType::enumeration, "matchaction"}
 {
 
-    yang_name = "option-filter"; yang_parent_name = "option-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option-filter"; yang_parent_name = "option-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::OptionFilter::~OptionFilter()
@@ -10341,6 +10771,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::OptionFi
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::OptionFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return matchoption.is_set
 	|| pattern.is_set
 	|| format.is_set
@@ -10359,7 +10790,10 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::Opt
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::OptionFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "option-filter" <<"[matchoption='" <<matchoption <<"']" <<"[pattern='" <<pattern <<"']" <<"[format='" <<format <<"']";
+    path_buffer << "option-filter";
+    ADD_KEY_TOKEN(matchoption, "matchoption");
+    ADD_KEY_TOKEN(pattern, "pattern");
+    ADD_KEY_TOKEN(format, "format");
     return path_buffer.str();
 }
 
@@ -10452,7 +10886,7 @@ Ipv4Dhcpd::Database::Database()
     incremental_write_interval{YType::uint32, "incremental-write-interval"}
 {
 
-    yang_name = "database"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "database"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Database::~Database()
@@ -10461,6 +10895,7 @@ Ipv4Dhcpd::Database::~Database()
 
 bool Ipv4Dhcpd::Database::has_data() const
 {
+    if (is_presence_container) return true;
     return proxy.is_set
 	|| server.is_set
 	|| snoop.is_set
@@ -10584,9 +11019,11 @@ bool Ipv4Dhcpd::Database::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Ipv4Dhcpd::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Interfaces::~Interfaces()
@@ -10595,7 +11032,8 @@ Ipv4Dhcpd::Interfaces::~Interfaces()
 
 bool Ipv4Dhcpd::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -10605,7 +11043,7 @@ bool Ipv4Dhcpd::Interfaces::has_data() const
 
 bool Ipv4Dhcpd::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -10642,7 +11080,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Ipv4Dhcpd::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -10654,7 +11092,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10683,14 +11121,14 @@ bool Ipv4Dhcpd::Interfaces::has_leaf_or_child_of_name(const std::string & name) 
 Ipv4Dhcpd::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     proxy_interface(std::make_shared<Ipv4Dhcpd::Interfaces::Interface::ProxyInterface>())
-	,base_interface(std::make_shared<Ipv4Dhcpd::Interfaces::Interface::BaseInterface>())
-	,relay_interface(std::make_shared<Ipv4Dhcpd::Interfaces::Interface::RelayInterface>())
-	,static_mode(std::make_shared<Ipv4Dhcpd::Interfaces::Interface::StaticMode>())
-	,profile(nullptr) // presence node
-	,server_interface(std::make_shared<Ipv4Dhcpd::Interfaces::Interface::ServerInterface>())
-	,snoop_interface(std::make_shared<Ipv4Dhcpd::Interfaces::Interface::SnoopInterface>())
+    , base_interface(std::make_shared<Ipv4Dhcpd::Interfaces::Interface::BaseInterface>())
+    , relay_interface(std::make_shared<Ipv4Dhcpd::Interfaces::Interface::RelayInterface>())
+    , static_mode(std::make_shared<Ipv4Dhcpd::Interfaces::Interface::StaticMode>())
+    , profile(nullptr) // presence node
+    , server_interface(std::make_shared<Ipv4Dhcpd::Interfaces::Interface::ServerInterface>())
+    , snoop_interface(std::make_shared<Ipv4Dhcpd::Interfaces::Interface::SnoopInterface>())
 {
     proxy_interface->parent = this;
     base_interface->parent = this;
@@ -10699,7 +11137,7 @@ Ipv4Dhcpd::Interfaces::Interface::Interface()
     server_interface->parent = this;
     snoop_interface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::Interfaces::Interface::~Interface()
@@ -10708,6 +11146,7 @@ Ipv4Dhcpd::Interfaces::Interface::~Interface()
 
 bool Ipv4Dhcpd::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (proxy_interface !=  nullptr && proxy_interface->has_data())
 	|| (base_interface !=  nullptr && base_interface->has_data())
@@ -10741,7 +11180,8 @@ std::string Ipv4Dhcpd::Interfaces::Interface::get_absolute_path() const
 std::string Ipv4Dhcpd::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -10893,11 +11333,11 @@ bool Ipv4Dhcpd::Interfaces::Interface::has_leaf_or_child_of_name(const std::stri
 Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::ProxyInterface()
     :
     profile{YType::str, "profile"}
-    	,
+        ,
     dhcp_circuit_id(nullptr) // presence node
 {
 
-    yang_name = "proxy-interface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "proxy-interface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::~ProxyInterface()
@@ -10906,6 +11346,7 @@ Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::~ProxyInterface()
 
 bool Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return profile.is_set
 	|| (dhcp_circuit_id !=  nullptr && dhcp_circuit_id->has_data());
 }
@@ -11007,7 +11448,7 @@ Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::DhcpCircuitId::DhcpCircuitId()
     argument16{YType::enumeration, "argument16"}
 {
 
-    yang_name = "dhcp-circuit-id"; yang_parent_name = "proxy-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-circuit-id"; yang_parent_name = "proxy-interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::DhcpCircuitId::~DhcpCircuitId()
@@ -11016,6 +11457,7 @@ Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::DhcpCircuitId::~DhcpCircuitId(
 
 bool Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::DhcpCircuitId::has_data() const
 {
+    if (is_presence_container) return true;
     return circuit_id.is_set
 	|| format.is_set
 	|| argument1.is_set
@@ -11303,11 +11745,11 @@ bool Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::DhcpCircuitId::has_leaf_o
 Ipv4Dhcpd::Interfaces::Interface::BaseInterface::BaseInterface()
     :
     profile{YType::str, "profile"}
-    	,
+        ,
     base_dhcp_circuit_id(nullptr) // presence node
 {
 
-    yang_name = "base-interface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base-interface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Interfaces::Interface::BaseInterface::~BaseInterface()
@@ -11316,6 +11758,7 @@ Ipv4Dhcpd::Interfaces::Interface::BaseInterface::~BaseInterface()
 
 bool Ipv4Dhcpd::Interfaces::Interface::BaseInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return profile.is_set
 	|| (base_dhcp_circuit_id !=  nullptr && base_dhcp_circuit_id->has_data());
 }
@@ -11417,7 +11860,7 @@ Ipv4Dhcpd::Interfaces::Interface::BaseInterface::BaseDhcpCircuitId::BaseDhcpCirc
     argument16{YType::enumeration, "argument16"}
 {
 
-    yang_name = "base-dhcp-circuit-id"; yang_parent_name = "base-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base-dhcp-circuit-id"; yang_parent_name = "base-interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Interfaces::Interface::BaseInterface::BaseDhcpCircuitId::~BaseDhcpCircuitId()
@@ -11426,6 +11869,7 @@ Ipv4Dhcpd::Interfaces::Interface::BaseInterface::BaseDhcpCircuitId::~BaseDhcpCir
 
 bool Ipv4Dhcpd::Interfaces::Interface::BaseInterface::BaseDhcpCircuitId::has_data() const
 {
+    if (is_presence_container) return true;
     return circuit_id.is_set
 	|| format.is_set
 	|| argument1.is_set
@@ -11715,7 +12159,7 @@ Ipv4Dhcpd::Interfaces::Interface::RelayInterface::RelayInterface()
     relay_dhcp_circuit_id(nullptr) // presence node
 {
 
-    yang_name = "relay-interface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "relay-interface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Interfaces::Interface::RelayInterface::~RelayInterface()
@@ -11724,6 +12168,7 @@ Ipv4Dhcpd::Interfaces::Interface::RelayInterface::~RelayInterface()
 
 bool Ipv4Dhcpd::Interfaces::Interface::RelayInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (relay_dhcp_circuit_id !=  nullptr && relay_dhcp_circuit_id->has_data());
 }
 
@@ -11812,7 +12257,7 @@ Ipv4Dhcpd::Interfaces::Interface::RelayInterface::RelayDhcpCircuitId::RelayDhcpC
     argument16{YType::enumeration, "argument16"}
 {
 
-    yang_name = "relay-dhcp-circuit-id"; yang_parent_name = "relay-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "relay-dhcp-circuit-id"; yang_parent_name = "relay-interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Interfaces::Interface::RelayInterface::RelayDhcpCircuitId::~RelayDhcpCircuitId()
@@ -11821,6 +12266,7 @@ Ipv4Dhcpd::Interfaces::Interface::RelayInterface::RelayDhcpCircuitId::~RelayDhcp
 
 bool Ipv4Dhcpd::Interfaces::Interface::RelayInterface::RelayDhcpCircuitId::has_data() const
 {
+    if (is_presence_container) return true;
     return circuit_id.is_set
 	|| format.is_set
 	|| argument1.is_set
@@ -12111,7 +12557,7 @@ Ipv4Dhcpd::Interfaces::Interface::StaticMode::StaticMode()
 {
     statics->parent = this;
 
-    yang_name = "static-mode"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-mode"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Interfaces::Interface::StaticMode::~StaticMode()
@@ -12120,6 +12566,7 @@ Ipv4Dhcpd::Interfaces::Interface::StaticMode::~StaticMode()
 
 bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::has_data() const
 {
+    if (is_presence_container) return true;
     return (statics !=  nullptr && statics->has_data());
 }
 
@@ -12187,9 +12634,11 @@ bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::has_leaf_or_child_of_name(con
 }
 
 Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Statics()
+    :
+    static_(this, {"mac_address", "client_id", "layer"})
 {
 
-    yang_name = "statics"; yang_parent_name = "static-mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statics"; yang_parent_name = "static-mode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::~Statics()
@@ -12198,7 +12647,8 @@ Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::~Statics()
 
 bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::has_data() const
 {
-    for (std::size_t index=0; index<static_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_.len(); index++)
     {
         if(static_[index]->has_data())
             return true;
@@ -12208,7 +12658,7 @@ bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::has_data() const
 
 bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::has_operation() const
 {
-    for (std::size_t index=0; index<static_.size(); index++)
+    for (std::size_t index=0; index<static_.len(); index++)
     {
         if(static_[index]->has_operation())
             return true;
@@ -12238,7 +12688,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::g
     {
         auto c = std::make_shared<Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static>();
         c->parent = this;
-        static_.push_back(c);
+        static_.append(c);
         return c;
     }
 
@@ -12250,7 +12700,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_)
+    for (auto c : static_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12284,7 +12734,7 @@ Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::Static()
     static_address{YType::str, "static-address"}
 {
 
-    yang_name = "static"; yang_parent_name = "statics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static"; yang_parent_name = "statics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::~Static()
@@ -12293,6 +12743,7 @@ Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::~Static()
 
 bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| client_id.is_set
 	|| layer.is_set
@@ -12311,7 +12762,10 @@ bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::has_operatio
 std::string Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static" <<"[mac-address='" <<mac_address <<"']" <<"[client-id='" <<client_id <<"']" <<"[layer='" <<layer <<"']";
+    path_buffer << "static";
+    ADD_KEY_TOKEN(mac_address, "mac-address");
+    ADD_KEY_TOKEN(client_id, "client-id");
+    ADD_KEY_TOKEN(layer, "layer");
     return path_buffer.str();
 }
 
@@ -12401,7 +12855,7 @@ Ipv4Dhcpd::Interfaces::Interface::Profile::Profile()
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "profile"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "profile"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Interfaces::Interface::Profile::~Profile()
@@ -12410,6 +12864,7 @@ Ipv4Dhcpd::Interfaces::Interface::Profile::~Profile()
 
 bool Ipv4Dhcpd::Interfaces::Interface::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| mode.is_set;
 }
@@ -12489,11 +12944,11 @@ bool Ipv4Dhcpd::Interfaces::Interface::Profile::has_leaf_or_child_of_name(const 
 Ipv4Dhcpd::Interfaces::Interface::ServerInterface::ServerInterface()
     :
     profile{YType::str, "profile"}
-    	,
+        ,
     server_dhcp_circuit_id(nullptr) // presence node
 {
 
-    yang_name = "server-interface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server-interface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Interfaces::Interface::ServerInterface::~ServerInterface()
@@ -12502,6 +12957,7 @@ Ipv4Dhcpd::Interfaces::Interface::ServerInterface::~ServerInterface()
 
 bool Ipv4Dhcpd::Interfaces::Interface::ServerInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return profile.is_set
 	|| (server_dhcp_circuit_id !=  nullptr && server_dhcp_circuit_id->has_data());
 }
@@ -12603,7 +13059,7 @@ Ipv4Dhcpd::Interfaces::Interface::ServerInterface::ServerDhcpCircuitId::ServerDh
     argument16{YType::enumeration, "argument16"}
 {
 
-    yang_name = "server-dhcp-circuit-id"; yang_parent_name = "server-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server-dhcp-circuit-id"; yang_parent_name = "server-interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Dhcpd::Interfaces::Interface::ServerInterface::ServerDhcpCircuitId::~ServerDhcpCircuitId()
@@ -12612,6 +13068,7 @@ Ipv4Dhcpd::Interfaces::Interface::ServerInterface::ServerDhcpCircuitId::~ServerD
 
 bool Ipv4Dhcpd::Interfaces::Interface::ServerInterface::ServerDhcpCircuitId::has_data() const
 {
+    if (is_presence_container) return true;
     return circuit_id.is_set
 	|| format.is_set
 	|| argument1.is_set
@@ -12902,7 +13359,7 @@ Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::SnoopInterface()
 {
     snoop_circuit_id->parent = this;
 
-    yang_name = "snoop-interface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snoop-interface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::~SnoopInterface()
@@ -12911,6 +13368,7 @@ Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::~SnoopInterface()
 
 bool Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (snoop_circuit_id !=  nullptr && snoop_circuit_id->has_data());
 }
 
@@ -12983,7 +13441,7 @@ Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::SnoopCircuitId::SnoopCircuitId
     circuit_id_value{YType::str, "circuit-id-value"}
 {
 
-    yang_name = "snoop-circuit-id"; yang_parent_name = "snoop-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snoop-circuit-id"; yang_parent_name = "snoop-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::SnoopCircuitId::~SnoopCircuitId()
@@ -12992,6 +13450,7 @@ Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::SnoopCircuitId::~SnoopCircuitI
 
 bool Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::SnoopCircuitId::has_data() const
 {
+    if (is_presence_container) return true;
     return format_type.is_set
 	|| circuit_id_value.is_set;
 }
@@ -13075,7 +13534,7 @@ Ipv4Dhcpd::DuplicateMacAllowed::DuplicateMacAllowed()
     include_giaddr{YType::empty, "include-giaddr"}
 {
 
-    yang_name = "duplicate-mac-allowed"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "duplicate-mac-allowed"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Ipv4Dhcpd::DuplicateMacAllowed::~DuplicateMacAllowed()
@@ -13084,6 +13543,7 @@ Ipv4Dhcpd::DuplicateMacAllowed::~DuplicateMacAllowed()
 
 bool Ipv4Dhcpd::DuplicateMacAllowed::has_data() const
 {
+    if (is_presence_container) return true;
     return duplicate_mac.is_set
 	|| exclude_vlan.is_set
 	|| include_giaddr.is_set;
@@ -13186,7 +13646,7 @@ Ipv4Dhcpd::RateLimit::RateLimit()
     num_discover{YType::uint32, "num-discover"}
 {
 
-    yang_name = "rate-limit"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rate-limit"; yang_parent_name = "ipv4-dhcpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Dhcpd::RateLimit::~RateLimit()
@@ -13195,6 +13655,7 @@ Ipv4Dhcpd::RateLimit::~RateLimit()
 
 bool Ipv4Dhcpd::RateLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return num_period.is_set
 	|| num_discover.is_set;
 }
@@ -13278,73 +13739,17 @@ bool Ipv4Dhcpd::RateLimit::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
-const Enum::YLeaf Dhcpv4MatchOption::Y_60__FWD_SLASH__60 {60, "60/60"};
-const Enum::YLeaf Dhcpv4MatchOption::Y_77__FWD_SLASH__77 {77, "77/77"};
-const Enum::YLeaf Dhcpv4MatchOption::Y_124__FWD_SLASH__124 {124, "124/124"};
-const Enum::YLeaf Dhcpv4MatchOption::Y_125__FWD_SLASH__125 {125, "125/125"};
-
-const Enum::YLeaf Ipv4dhcpdLayer::layer2 {2, "layer2"};
-const Enum::YLeaf Ipv4dhcpdLayer::layer3 {3, "layer3"};
-
 const Enum::YLeaf Dhcpv4LimitLease1::interface {1, "interface"};
 const Enum::YLeaf Dhcpv4LimitLease1::circuit_id {2, "circuit-id"};
 const Enum::YLeaf Dhcpv4LimitLease1::remote_id {3, "remote-id"};
 const Enum::YLeaf Dhcpv4LimitLease1::circuit_id_remote_id {4, "circuit-id-remote-id"};
 
-const Enum::YLeaf Matchoption::circuitid {1, "circuitid"};
-const Enum::YLeaf Matchoption::remoteid {2, "remoteid"};
-const Enum::YLeaf Matchoption::Y_60 {60, "60"};
-const Enum::YLeaf Matchoption::Y_77 {77, "77"};
-const Enum::YLeaf Matchoption::Y_124 {124, "124"};
-const Enum::YLeaf Matchoption::Y_125 {125, "125"};
-
-const Enum::YLeaf Ipv4dhcpdGiaddrPolicy::giaddr_policy_keep {0, "giaddr-policy-keep"};
-
-const Enum::YLeaf LeaseLimitValue::per_interface {1, "per-interface"};
-const Enum::YLeaf LeaseLimitValue::per_circuit_id {2, "per-circuit-id"};
-const Enum::YLeaf LeaseLimitValue::per_remote_id {3, "per-remote-id"};
-
-const Enum::YLeaf Dhcpv4AuthUsername::auth_username_mac {1, "auth-username-mac"};
-const Enum::YLeaf Dhcpv4AuthUsername::auth_username_giaddr {2, "auth-username-giaddr"};
-
 const Enum::YLeaf ProxyAction::allow {0, "allow"};
 const Enum::YLeaf ProxyAction::drop {1, "drop"};
 const Enum::YLeaf ProxyAction::relay {2, "relay"};
 
-const Enum::YLeaf Ipv4dhcpdBroadcastFlagPolicy::ignore {0, "ignore"};
-const Enum::YLeaf Ipv4dhcpdBroadcastFlagPolicy::check {1, "check"};
-const Enum::YLeaf Ipv4dhcpdBroadcastFlagPolicy::unicast_always {2, "unicast-always"};
-
-const Enum::YLeaf BaseAction::allow {0, "allow"};
-const Enum::YLeaf BaseAction::drop {1, "drop"};
-
-const Enum::YLeaf Ipv4dhcpdMode::base {0, "base"};
-const Enum::YLeaf Ipv4dhcpdMode::relay {1, "relay"};
-const Enum::YLeaf Ipv4dhcpdMode::snoop {2, "snoop"};
-const Enum::YLeaf Ipv4dhcpdMode::server {3, "server"};
-const Enum::YLeaf Ipv4dhcpdMode::proxy {4, "proxy"};
-const Enum::YLeaf Ipv4dhcpdMode::base2 {5, "base2"};
-
-const Enum::YLeaf Matchaction::allow {0, "allow"};
-const Enum::YLeaf Matchaction::drop {1, "drop"};
-
-const Enum::YLeaf Policy::ignore {0, "ignore"};
-const Enum::YLeaf Policy::check {1, "check"};
-const Enum::YLeaf Policy::unicastalways {2, "unicastalways"};
-
-const Enum::YLeaf Ipv4dhcpdRelayInfoOptionvpnMode::rfc {0, "rfc"};
-const Enum::YLeaf Ipv4dhcpdRelayInfoOptionvpnMode::cisco {1, "cisco"};
-
-const Enum::YLeaf Ipv4dhcpdFmt::no_format {0, "no-format"};
-const Enum::YLeaf Ipv4dhcpdFmt::format {1, "format"};
-
-const Enum::YLeaf Ipv4dhcpdRelayInfoOptionAuthenticate::received {0, "received"};
-const Enum::YLeaf Ipv4dhcpdRelayInfoOptionAuthenticate::inserted {1, "inserted"};
-
-const Enum::YLeaf Ipv4dhcpdRelayInfoOptionPolicy::replace {0, "replace"};
-const Enum::YLeaf Ipv4dhcpdRelayInfoOptionPolicy::keep {1, "keep"};
-const Enum::YLeaf Ipv4dhcpdRelayInfoOptionPolicy::drop {2, "drop"};
-const Enum::YLeaf Ipv4dhcpdRelayInfoOptionPolicy::encapsulate {3, "encapsulate"};
+const Enum::YLeaf Ipv4dhcpdLayer::layer2 {2, "layer2"};
+const Enum::YLeaf Ipv4dhcpdLayer::layer3 {3, "layer3"};
 
 const Enum::YLeaf Ipv4dhcpdFmtSpecifier::physical_chassis {1, "physical-chassis"};
 const Enum::YLeaf Ipv4dhcpdFmtSpecifier::physical_slot {2, "physical-slot"};
@@ -13355,8 +13760,64 @@ const Enum::YLeaf Ipv4dhcpdFmtSpecifier::inner_vlan_id {6, "inner-vlan-id"};
 const Enum::YLeaf Ipv4dhcpdFmtSpecifier::outer_vlan_id {7, "outer-vlan-id"};
 const Enum::YLeaf Ipv4dhcpdFmtSpecifier::l2_interface {8, "l2-interface"};
 
+const Enum::YLeaf Matchaction::allow {0, "allow"};
+const Enum::YLeaf Matchaction::drop {1, "drop"};
+
+const Enum::YLeaf Dhcpv4AuthUsername::auth_username_mac {1, "auth-username-mac"};
+const Enum::YLeaf Dhcpv4AuthUsername::auth_username_giaddr {2, "auth-username-giaddr"};
+
+const Enum::YLeaf LeaseLimitValue::per_interface {1, "per-interface"};
+const Enum::YLeaf LeaseLimitValue::per_circuit_id {2, "per-circuit-id"};
+const Enum::YLeaf LeaseLimitValue::per_remote_id {3, "per-remote-id"};
+
+const Enum::YLeaf Ipv4dhcpdRelayInfoOptionPolicy::replace {0, "replace"};
+const Enum::YLeaf Ipv4dhcpdRelayInfoOptionPolicy::keep {1, "keep"};
+const Enum::YLeaf Ipv4dhcpdRelayInfoOptionPolicy::drop {2, "drop"};
+const Enum::YLeaf Ipv4dhcpdRelayInfoOptionPolicy::encapsulate {3, "encapsulate"};
+
+const Enum::YLeaf Ipv4dhcpdRelayInfoOptionAuthenticate::received {0, "received"};
+const Enum::YLeaf Ipv4dhcpdRelayInfoOptionAuthenticate::inserted {1, "inserted"};
+
+const Enum::YLeaf Policy::ignore {0, "ignore"};
+const Enum::YLeaf Policy::check {1, "check"};
+const Enum::YLeaf Policy::unicastalways {2, "unicastalways"};
+
+const Enum::YLeaf Ipv4dhcpdBroadcastFlagPolicy::ignore {0, "ignore"};
+const Enum::YLeaf Ipv4dhcpdBroadcastFlagPolicy::check {1, "check"};
+const Enum::YLeaf Ipv4dhcpdBroadcastFlagPolicy::unicast_always {2, "unicast-always"};
+
+const Enum::YLeaf Dhcpv4MatchOption::Y_60__FWD_SLASH__60 {60, "60/60"};
+const Enum::YLeaf Dhcpv4MatchOption::Y_77__FWD_SLASH__77 {77, "77/77"};
+const Enum::YLeaf Dhcpv4MatchOption::Y_124__FWD_SLASH__124 {124, "124/124"};
+const Enum::YLeaf Dhcpv4MatchOption::Y_125__FWD_SLASH__125 {125, "125/125"};
+
+const Enum::YLeaf Ipv4dhcpdRelayInfoOptionvpnMode::rfc {0, "rfc"};
+const Enum::YLeaf Ipv4dhcpdRelayInfoOptionvpnMode::cisco {1, "cisco"};
+
+const Enum::YLeaf Ipv4dhcpdGiaddrPolicy::giaddr_policy_keep {0, "giaddr-policy-keep"};
+
+const Enum::YLeaf Ipv4dhcpdFmt::no_format {0, "no-format"};
+const Enum::YLeaf Ipv4dhcpdFmt::format {1, "format"};
+
+const Enum::YLeaf Matchoption::circuitid {1, "circuitid"};
+const Enum::YLeaf Matchoption::remoteid {2, "remoteid"};
+const Enum::YLeaf Matchoption::Y_60 {60, "60"};
+const Enum::YLeaf Matchoption::Y_77 {77, "77"};
+const Enum::YLeaf Matchoption::Y_124 {124, "124"};
+const Enum::YLeaf Matchoption::Y_125 {125, "125"};
+
 const Enum::YLeaf MacMismatchAction::forward {0, "forward"};
 const Enum::YLeaf MacMismatchAction::drop {1, "drop"};
+
+const Enum::YLeaf BaseAction::allow {0, "allow"};
+const Enum::YLeaf BaseAction::drop {1, "drop"};
+
+const Enum::YLeaf Ipv4dhcpdMode::base {0, "base"};
+const Enum::YLeaf Ipv4dhcpdMode::relay {1, "relay"};
+const Enum::YLeaf Ipv4dhcpdMode::snoop {2, "snoop"};
+const Enum::YLeaf Ipv4dhcpdMode::server {3, "server"};
+const Enum::YLeaf Ipv4dhcpdMode::proxy {4, "proxy"};
+const Enum::YLeaf Ipv4dhcpdMode::base2 {5, "base2"};
 
 
 }

@@ -32,26 +32,26 @@ class CISCOEIGRPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ceigrpvpntable; //type: CISCOEIGRPMIB::Ceigrpvpntable
-        class Ceigrptraffstatstable; //type: CISCOEIGRPMIB::Ceigrptraffstatstable
-        class Ceigrptopotable; //type: CISCOEIGRPMIB::Ceigrptopotable
-        class Ceigrppeertable; //type: CISCOEIGRPMIB::Ceigrppeertable
-        class Ceigrpinterfacetable; //type: CISCOEIGRPMIB::Ceigrpinterfacetable
+        class CEigrpVpnTable; //type: CISCOEIGRPMIB::CEigrpVpnTable
+        class CEigrpTraffStatsTable; //type: CISCOEIGRPMIB::CEigrpTraffStatsTable
+        class CEigrpTopoTable; //type: CISCOEIGRPMIB::CEigrpTopoTable
+        class CEigrpPeerTable; //type: CISCOEIGRPMIB::CEigrpPeerTable
+        class CEigrpInterfaceTable; //type: CISCOEIGRPMIB::CEigrpInterfaceTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpvpntable> ceigrpvpntable;
-        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptraffstatstable> ceigrptraffstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptopotable> ceigrptopotable;
-        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrppeertable> ceigrppeertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpinterfacetable> ceigrpinterfacetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::CEigrpVpnTable> ceigrpvpntable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::CEigrpTraffStatsTable> ceigrptraffstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::CEigrpTopoTable> ceigrptopotable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::CEigrpPeerTable> ceigrppeertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::CEigrpInterfaceTable> ceigrpinterfacetable;
         
 }; // CISCOEIGRPMIB
 
 
-class CISCOEIGRPMIB::Ceigrpvpntable : public ydk::Entity
+class CISCOEIGRPMIB::CEigrpVpnTable : public ydk::Entity
 {
     public:
-        Ceigrpvpntable();
-        ~Ceigrpvpntable();
+        CEigrpVpnTable();
+        ~CEigrpVpnTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -64,18 +64,18 @@ class CISCOEIGRPMIB::Ceigrpvpntable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceigrpvpnentry; //type: CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry
+        class CEigrpVpnEntry; //type: CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry> > ceigrpvpnentry;
+        ydk::YList ceigrpvpnentry;
         
-}; // CISCOEIGRPMIB::Ceigrpvpntable
+}; // CISCOEIGRPMIB::CEigrpVpnTable
 
 
-class CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry : public ydk::Entity
+class CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry : public ydk::Entity
 {
     public:
-        Ceigrpvpnentry();
-        ~Ceigrpvpnentry();
+        CEigrpVpnEntry();
+        ~CEigrpVpnEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -91,14 +91,14 @@ class CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry : public ydk::Entity
         ydk::YLeaf ceigrpvpnid; //type: uint32
         ydk::YLeaf ceigrpvpnname; //type: string
 
-}; // CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry
+}; // CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry
 
 
-class CISCOEIGRPMIB::Ceigrptraffstatstable : public ydk::Entity
+class CISCOEIGRPMIB::CEigrpTraffStatsTable : public ydk::Entity
 {
     public:
-        Ceigrptraffstatstable();
-        ~Ceigrptraffstatstable();
+        CEigrpTraffStatsTable();
+        ~CEigrpTraffStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -111,18 +111,18 @@ class CISCOEIGRPMIB::Ceigrptraffstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceigrptraffstatsentry; //type: CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry
+        class CEigrpTraffStatsEntry; //type: CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry> > ceigrptraffstatsentry;
+        ydk::YList ceigrptraffstatsentry;
         
-}; // CISCOEIGRPMIB::Ceigrptraffstatstable
+}; // CISCOEIGRPMIB::CEigrpTraffStatsTable
 
 
-class CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry : public ydk::Entity
+class CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry : public ydk::Entity
 {
     public:
-        Ceigrptraffstatsentry();
-        ~Ceigrptraffstatsentry();
+        CEigrpTraffStatsEntry();
+        ~CEigrpTraffStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -135,7 +135,7 @@ class CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::ceigrpvpnid)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::ceigrpvpnid)
         ydk::YLeaf ceigrpvpnid;
         ydk::YLeaf ceigrpasnumber; //type: uint32
         ydk::YLeaf ceigrpnbrcount; //type: uint32
@@ -161,14 +161,14 @@ class CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry : public ydk::
         ydk::YLeaf ceigrpxmitpendreplies; //type: uint32
         ydk::YLeaf ceigrpxmitdummies; //type: uint32
 
-}; // CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry
+}; // CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry
 
 
-class CISCOEIGRPMIB::Ceigrptopotable : public ydk::Entity
+class CISCOEIGRPMIB::CEigrpTopoTable : public ydk::Entity
 {
     public:
-        Ceigrptopotable();
-        ~Ceigrptopotable();
+        CEigrpTopoTable();
+        ~CEigrpTopoTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -181,18 +181,18 @@ class CISCOEIGRPMIB::Ceigrptopotable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceigrptopoentry; //type: CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry
+        class CEigrpTopoEntry; //type: CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry> > ceigrptopoentry;
+        ydk::YList ceigrptopoentry;
         
-}; // CISCOEIGRPMIB::Ceigrptopotable
+}; // CISCOEIGRPMIB::CEigrpTopoTable
 
 
-class CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry : public ydk::Entity
+class CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry : public ydk::Entity
 {
     public:
-        Ceigrptopoentry();
-        ~Ceigrptopoentry();
+        CEigrpTopoEntry();
+        ~CEigrpTopoEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -205,9 +205,9 @@ class CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::ceigrpvpnid)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::ceigrpvpnid)
         ydk::YLeaf ceigrpvpnid;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::ceigrpasnumber)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::ceigrpasnumber)
         ydk::YLeaf ceigrpasnumber;
         ydk::YLeaf ceigrpdestnettype; //type: InetAddressType
         ydk::YLeaf ceigrpdestnet; //type: binary
@@ -225,14 +225,14 @@ class CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry : public ydk::Entity
         ydk::YLeaf ceigrpdistance; //type: uint32
         ydk::YLeaf ceigrpreportdistance; //type: uint32
 
-}; // CISCOEIGRPMIB::Ceigrptopotable::Ceigrptopoentry
+}; // CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry
 
 
-class CISCOEIGRPMIB::Ceigrppeertable : public ydk::Entity
+class CISCOEIGRPMIB::CEigrpPeerTable : public ydk::Entity
 {
     public:
-        Ceigrppeertable();
-        ~Ceigrppeertable();
+        CEigrpPeerTable();
+        ~CEigrpPeerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -245,18 +245,18 @@ class CISCOEIGRPMIB::Ceigrppeertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceigrppeerentry; //type: CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry
+        class CEigrpPeerEntry; //type: CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry> > ceigrppeerentry;
+        ydk::YList ceigrppeerentry;
         
-}; // CISCOEIGRPMIB::Ceigrppeertable
+}; // CISCOEIGRPMIB::CEigrpPeerTable
 
 
-class CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry : public ydk::Entity
+class CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry : public ydk::Entity
 {
     public:
-        Ceigrppeerentry();
-        ~Ceigrppeerentry();
+        CEigrpPeerEntry();
+        ~CEigrpPeerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -269,9 +269,9 @@ class CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::ceigrpvpnid)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::ceigrpvpnid)
         ydk::YLeaf ceigrpvpnid;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::ceigrpasnumber)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::ceigrpasnumber)
         ydk::YLeaf ceigrpasnumber;
         ydk::YLeaf ceigrphandle; //type: uint32
         ydk::YLeaf ceigrppeeraddrtype; //type: InetAddressType
@@ -287,14 +287,14 @@ class CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry : public ydk::Entity
         ydk::YLeaf ceigrpretrans; //type: uint32
         ydk::YLeaf ceigrpretries; //type: uint32
 
-}; // CISCOEIGRPMIB::Ceigrppeertable::Ceigrppeerentry
+}; // CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry
 
 
-class CISCOEIGRPMIB::Ceigrpinterfacetable : public ydk::Entity
+class CISCOEIGRPMIB::CEigrpInterfaceTable : public ydk::Entity
 {
     public:
-        Ceigrpinterfacetable();
-        ~Ceigrpinterfacetable();
+        CEigrpInterfaceTable();
+        ~CEigrpInterfaceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -307,18 +307,18 @@ class CISCOEIGRPMIB::Ceigrpinterfacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceigrpinterfaceentry; //type: CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry
+        class CEigrpInterfaceEntry; //type: CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry> > ceigrpinterfaceentry;
+        ydk::YList ceigrpinterfaceentry;
         
-}; // CISCOEIGRPMIB::Ceigrpinterfacetable
+}; // CISCOEIGRPMIB::CEigrpInterfaceTable
 
 
-class CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry : public ydk::Entity
+class CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry : public ydk::Entity
 {
     public:
-        Ceigrpinterfaceentry();
-        ~Ceigrpinterfaceentry();
+        CEigrpInterfaceEntry();
+        ~CEigrpInterfaceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -331,11 +331,11 @@ class CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrpvpntable::Ceigrpvpnentry::ceigrpvpnid)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::ceigrpvpnid)
         ydk::YLeaf ceigrpvpnid;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::Ceigrptraffstatstable::Ceigrptraffstatsentry::ceigrpasnumber)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_EIGRP_MIB::CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::ceigrpasnumber)
         ydk::YLeaf ceigrpasnumber;
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf ceigrppeercount; //type: uint32
         ydk::YLeaf ceigrpxmitreliableq; //type: uint32
@@ -356,13 +356,13 @@ class CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry : public ydk::En
         ydk::YLeaf ceigrpackssuppressed; //type: uint32
         ydk::YLeaf ceigrpretranssent; //type: uint32
         ydk::YLeaf ceigrpoosrvcd; //type: uint32
-        ydk::YLeaf ceigrpauthmode; //type: Ceigrpauthmode
+        ydk::YLeaf ceigrpauthmode; //type: CEigrpAuthMode
         ydk::YLeaf ceigrpauthkeychain; //type: string
-        class Ceigrpauthmode;
+        class CEigrpAuthMode;
 
-}; // CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry
+}; // CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry
 
-class CISCOEIGRPMIB::Ceigrpinterfacetable::Ceigrpinterfaceentry::Ceigrpauthmode : public ydk::Enum
+class CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::CEigrpAuthMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;

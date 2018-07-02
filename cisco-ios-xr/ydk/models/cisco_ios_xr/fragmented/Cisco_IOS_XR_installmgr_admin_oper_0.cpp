@@ -15,15 +15,15 @@ namespace Cisco_IOS_XR_installmgr_admin_oper {
 Install::Install()
     :
     log_size{YType::int32, "log-size"}
-    	,
+        ,
     configuration_registers(std::make_shared<Install::ConfigurationRegisters>())
-	,request_statuses(std::make_shared<Install::RequestStatuses>())
-	,boot_variables(std::make_shared<Install::BootVariables>())
-	,software(std::make_shared<Install::Software>())
-	,software_inventory(std::make_shared<Install::SoftwareInventory>())
-	,issu(std::make_shared<Install::Issu>())
-	,boot_image(std::make_shared<Install::BootImage>())
-	,logs(std::make_shared<Install::Logs>())
+    , request_statuses(std::make_shared<Install::RequestStatuses>())
+    , boot_variables(std::make_shared<Install::BootVariables>())
+    , software(std::make_shared<Install::Software>())
+    , software_inventory(std::make_shared<Install::SoftwareInventory>())
+    , issu(std::make_shared<Install::Issu>())
+    , boot_image(std::make_shared<Install::BootImage>())
+    , logs(std::make_shared<Install::Logs>())
 {
     configuration_registers->parent = this;
     request_statuses->parent = this;
@@ -34,7 +34,7 @@ Install::Install()
     boot_image->parent = this;
     logs->parent = this;
 
-    yang_name = "install"; yang_parent_name = "Cisco-IOS-XR-installmgr-admin-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "install"; yang_parent_name = "Cisco-IOS-XR-installmgr-admin-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Install::~Install()
@@ -43,6 +43,7 @@ Install::~Install()
 
 bool Install::has_data() const
 {
+    if (is_presence_container) return true;
     return log_size.is_set
 	|| (configuration_registers !=  nullptr && configuration_registers->has_data())
 	|| (request_statuses !=  nullptr && request_statuses->has_data())
@@ -260,9 +261,11 @@ bool Install::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Install::ConfigurationRegisters::ConfigurationRegisters()
+    :
+    configuration_register(this, {"node_name"})
 {
 
-    yang_name = "configuration-registers"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configuration-registers"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::ConfigurationRegisters::~ConfigurationRegisters()
@@ -271,7 +274,8 @@ Install::ConfigurationRegisters::~ConfigurationRegisters()
 
 bool Install::ConfigurationRegisters::has_data() const
 {
-    for (std::size_t index=0; index<configuration_register.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<configuration_register.len(); index++)
     {
         if(configuration_register[index]->has_data())
             return true;
@@ -281,7 +285,7 @@ bool Install::ConfigurationRegisters::has_data() const
 
 bool Install::ConfigurationRegisters::has_operation() const
 {
-    for (std::size_t index=0; index<configuration_register.size(); index++)
+    for (std::size_t index=0; index<configuration_register.len(); index++)
     {
         if(configuration_register[index]->has_operation())
             return true;
@@ -318,7 +322,7 @@ std::shared_ptr<Entity> Install::ConfigurationRegisters::get_child_by_name(const
     {
         auto c = std::make_shared<Install::ConfigurationRegisters::ConfigurationRegister>();
         c->parent = this;
-        configuration_register.push_back(c);
+        configuration_register.append(c);
         return c;
     }
 
@@ -330,7 +334,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::ConfigurationRegisters::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : configuration_register)
+    for (auto c : configuration_register.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -362,7 +366,7 @@ Install::ConfigurationRegisters::ConfigurationRegister::ConfigurationRegister()
     config_register{YType::str, "config-register"}
 {
 
-    yang_name = "configuration-register"; yang_parent_name = "configuration-registers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configuration-register"; yang_parent_name = "configuration-registers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::ConfigurationRegisters::ConfigurationRegister::~ConfigurationRegister()
@@ -371,6 +375,7 @@ Install::ConfigurationRegisters::ConfigurationRegister::~ConfigurationRegister()
 
 bool Install::ConfigurationRegisters::ConfigurationRegister::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| config_register.is_set;
 }
@@ -392,7 +397,8 @@ std::string Install::ConfigurationRegisters::ConfigurationRegister::get_absolute
 std::string Install::ConfigurationRegisters::ConfigurationRegister::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "configuration-register" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "configuration-register";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -455,9 +461,11 @@ bool Install::ConfigurationRegisters::ConfigurationRegister::has_leaf_or_child_o
 }
 
 Install::RequestStatuses::RequestStatuses()
+    :
+    request_status(this, {"request_id"})
 {
 
-    yang_name = "request-statuses"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "request-statuses"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::RequestStatuses::~RequestStatuses()
@@ -466,7 +474,8 @@ Install::RequestStatuses::~RequestStatuses()
 
 bool Install::RequestStatuses::has_data() const
 {
-    for (std::size_t index=0; index<request_status.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<request_status.len(); index++)
     {
         if(request_status[index]->has_data())
             return true;
@@ -476,7 +485,7 @@ bool Install::RequestStatuses::has_data() const
 
 bool Install::RequestStatuses::has_operation() const
 {
-    for (std::size_t index=0; index<request_status.size(); index++)
+    for (std::size_t index=0; index<request_status.len(); index++)
     {
         if(request_status[index]->has_operation())
             return true;
@@ -513,7 +522,7 @@ std::shared_ptr<Entity> Install::RequestStatuses::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Install::RequestStatuses::RequestStatus>();
         c->parent = this;
-        request_status.push_back(c);
+        request_status.append(c);
         return c;
     }
 
@@ -525,7 +534,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : request_status)
+    for (auto c : request_status.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -559,16 +568,18 @@ Install::RequestStatuses::RequestStatus::RequestStatus()
     downloaded_bytes{YType::uint32, "downloaded-bytes"},
     unanswered_query{YType::boolean, "unanswered-query"},
     operation_phase{YType::enumeration, "operation-phase"}
-    	,
+        ,
     request_information(std::make_shared<Install::RequestStatuses::RequestStatus::RequestInformation>())
-	,abort_status(std::make_shared<Install::RequestStatuses::RequestStatus::AbortStatus>())
-	,incremental_install_information(std::make_shared<Install::RequestStatuses::RequestStatus::IncrementalInstallInformation>())
+    , abort_status(std::make_shared<Install::RequestStatuses::RequestStatus::AbortStatus>())
+    , incremental_install_information(std::make_shared<Install::RequestStatuses::RequestStatus::IncrementalInstallInformation>())
+    , issu_message(this, {})
+    , message(this, {})
 {
     request_information->parent = this;
     abort_status->parent = this;
     incremental_install_information->parent = this;
 
-    yang_name = "request-status"; yang_parent_name = "request-statuses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "request-status"; yang_parent_name = "request-statuses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::RequestStatuses::RequestStatus::~RequestStatus()
@@ -577,12 +588,13 @@ Install::RequestStatuses::RequestStatus::~RequestStatus()
 
 bool Install::RequestStatuses::RequestStatus::has_data() const
 {
-    for (std::size_t index=0; index<issu_message.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<issu_message.len(); index++)
     {
         if(issu_message[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<message.size(); index++)
+    for (std::size_t index=0; index<message.len(); index++)
     {
         if(message[index]->has_data())
             return true;
@@ -600,12 +612,12 @@ bool Install::RequestStatuses::RequestStatus::has_data() const
 
 bool Install::RequestStatuses::RequestStatus::has_operation() const
 {
-    for (std::size_t index=0; index<issu_message.size(); index++)
+    for (std::size_t index=0; index<issu_message.len(); index++)
     {
         if(issu_message[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<message.size(); index++)
+    for (std::size_t index=0; index<message.len(); index++)
     {
         if(message[index]->has_operation())
             return true;
@@ -632,7 +644,8 @@ std::string Install::RequestStatuses::RequestStatus::get_absolute_path() const
 std::string Install::RequestStatuses::RequestStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "request-status" <<"[request-id='" <<request_id <<"']";
+    path_buffer << "request-status";
+    ADD_KEY_TOKEN(request_id, "request-id");
     return path_buffer.str();
 }
 
@@ -684,7 +697,7 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::get_child_by_na
     {
         auto c = std::make_shared<Install::RequestStatuses::RequestStatus::IssuMessage>();
         c->parent = this;
-        issu_message.push_back(c);
+        issu_message.append(c);
         return c;
     }
 
@@ -692,7 +705,7 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::get_child_by_na
     {
         auto c = std::make_shared<Install::RequestStatuses::RequestStatus::Message>();
         c->parent = this;
-        message.push_back(c);
+        message.append(c);
         return c;
     }
 
@@ -719,7 +732,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::Request
     }
 
     count = 0;
-    for (auto const & c : issu_message)
+    for (auto c : issu_message.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -728,7 +741,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::Request
     }
 
     count = 0;
-    for (auto const & c : message)
+    for (auto c : message.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -824,7 +837,7 @@ Install::RequestStatuses::RequestStatus::RequestInformation::RequestInformation(
     operation_detail{YType::str, "operation-detail"}
 {
 
-    yang_name = "request-information"; yang_parent_name = "request-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "request-information"; yang_parent_name = "request-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::RequestStatuses::RequestStatus::RequestInformation::~RequestInformation()
@@ -833,6 +846,7 @@ Install::RequestStatuses::RequestStatus::RequestInformation::~RequestInformation
 
 bool Install::RequestStatuses::RequestStatus::RequestInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return request_id.is_set
 	|| user_id.is_set
 	|| trigger_type.is_set
@@ -967,7 +981,7 @@ Install::RequestStatuses::RequestStatus::AbortStatus::AbortStatus()
     abort_impact{YType::enumeration, "abort-impact"}
 {
 
-    yang_name = "abort-status"; yang_parent_name = "request-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "abort-status"; yang_parent_name = "request-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::RequestStatuses::RequestStatus::AbortStatus::~AbortStatus()
@@ -976,6 +990,7 @@ Install::RequestStatuses::RequestStatus::AbortStatus::~AbortStatus()
 
 bool Install::RequestStatuses::RequestStatus::AbortStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return abort_method.is_set
 	|| abort_impact.is_set;
 }
@@ -1056,9 +1071,11 @@ Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Incremen
     :
     direction{YType::enumeration, "direction"},
     ii_error{YType::str, "ii-error"}
+        ,
+    nodes(this, {})
 {
 
-    yang_name = "incremental-install-information"; yang_parent_name = "request-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "incremental-install-information"; yang_parent_name = "request-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::~IncrementalInstallInformation()
@@ -1067,7 +1084,8 @@ Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::~Increme
 
 bool Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::has_data() const
 {
-    for (std::size_t index=0; index<nodes.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nodes.len(); index++)
     {
         if(nodes[index]->has_data())
             return true;
@@ -1078,7 +1096,7 @@ bool Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::has
 
 bool Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::has_operation() const
 {
-    for (std::size_t index=0; index<nodes.size(); index++)
+    for (std::size_t index=0; index<nodes.len(); index++)
     {
         if(nodes[index]->has_operation())
             return true;
@@ -1112,7 +1130,7 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::IncrementalInst
     {
         auto c = std::make_shared<Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes>();
         c->parent = this;
-        nodes.push_back(c);
+        nodes.append(c);
         return c;
     }
 
@@ -1124,7 +1142,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::Request
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nodes)
+    for (auto c : nodes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1176,7 +1194,7 @@ Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes::N
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "nodes"; yang_parent_name = "incremental-install-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nodes"; yang_parent_name = "incremental-install-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes::~Nodes()
@@ -1185,6 +1203,7 @@ Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes::~
 
 bool Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| state.is_set;
 }
@@ -1265,12 +1284,12 @@ Install::RequestStatuses::RequestStatus::IssuMessage::IssuMessage()
     :
     category{YType::enumeration, "category"},
     message{YType::str, "message"}
-    	,
+        ,
     scope(std::make_shared<Install::RequestStatuses::RequestStatus::IssuMessage::Scope>())
 {
     scope->parent = this;
 
-    yang_name = "issu-message"; yang_parent_name = "request-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "issu-message"; yang_parent_name = "request-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::RequestStatuses::RequestStatus::IssuMessage::~IssuMessage()
@@ -1279,6 +1298,7 @@ Install::RequestStatuses::RequestStatus::IssuMessage::~IssuMessage()
 
 bool Install::RequestStatuses::RequestStatus::IssuMessage::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| message.is_set
 	|| (scope !=  nullptr && scope->has_data());
@@ -1377,7 +1397,7 @@ Install::RequestStatuses::RequestStatus::IssuMessage::Scope::Scope()
     affected_sd_rs{YType::uint32, "affected-sd-rs"}
 {
 
-    yang_name = "scope"; yang_parent_name = "issu-message"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "issu-message"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::RequestStatuses::RequestStatus::IssuMessage::Scope::~Scope()
@@ -1386,6 +1406,7 @@ Install::RequestStatuses::RequestStatus::IssuMessage::Scope::~Scope()
 
 bool Install::RequestStatuses::RequestStatus::IssuMessage::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return admin_read.is_set
 	|| affected_sd_rs.is_set;
 }
@@ -1466,12 +1487,12 @@ Install::RequestStatuses::RequestStatus::Message::Message()
     :
     category{YType::enumeration, "category"},
     message{YType::str, "message"}
-    	,
+        ,
     scope(std::make_shared<Install::RequestStatuses::RequestStatus::Message::Scope>())
 {
     scope->parent = this;
 
-    yang_name = "message"; yang_parent_name = "request-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "message"; yang_parent_name = "request-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::RequestStatuses::RequestStatus::Message::~Message()
@@ -1480,6 +1501,7 @@ Install::RequestStatuses::RequestStatus::Message::~Message()
 
 bool Install::RequestStatuses::RequestStatus::Message::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| message.is_set
 	|| (scope !=  nullptr && scope->has_data());
@@ -1578,7 +1600,7 @@ Install::RequestStatuses::RequestStatus::Message::Scope::Scope()
     affected_sd_rs{YType::uint32, "affected-sd-rs"}
 {
 
-    yang_name = "scope"; yang_parent_name = "message"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "message"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::RequestStatuses::RequestStatus::Message::Scope::~Scope()
@@ -1587,6 +1609,7 @@ Install::RequestStatuses::RequestStatus::Message::Scope::~Scope()
 
 bool Install::RequestStatuses::RequestStatus::Message::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return admin_read.is_set
 	|| affected_sd_rs.is_set;
 }
@@ -1664,9 +1687,11 @@ bool Install::RequestStatuses::RequestStatus::Message::Scope::has_leaf_or_child_
 }
 
 Install::BootVariables::BootVariables()
+    :
+    boot_variable(this, {"node_name"})
 {
 
-    yang_name = "boot-variables"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "boot-variables"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::BootVariables::~BootVariables()
@@ -1675,7 +1700,8 @@ Install::BootVariables::~BootVariables()
 
 bool Install::BootVariables::has_data() const
 {
-    for (std::size_t index=0; index<boot_variable.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<boot_variable.len(); index++)
     {
         if(boot_variable[index]->has_data())
             return true;
@@ -1685,7 +1711,7 @@ bool Install::BootVariables::has_data() const
 
 bool Install::BootVariables::has_operation() const
 {
-    for (std::size_t index=0; index<boot_variable.size(); index++)
+    for (std::size_t index=0; index<boot_variable.len(); index++)
     {
         if(boot_variable[index]->has_operation())
             return true;
@@ -1722,7 +1748,7 @@ std::shared_ptr<Entity> Install::BootVariables::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Install::BootVariables::BootVariable>();
         c->parent = this;
-        boot_variable.push_back(c);
+        boot_variable.append(c);
         return c;
     }
 
@@ -1734,7 +1760,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::BootVariables::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : boot_variable)
+    for (auto c : boot_variable.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1766,7 +1792,7 @@ Install::BootVariables::BootVariable::BootVariable()
     boot_variable{YType::str, "boot-variable"}
 {
 
-    yang_name = "boot-variable"; yang_parent_name = "boot-variables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "boot-variable"; yang_parent_name = "boot-variables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::BootVariables::BootVariable::~BootVariable()
@@ -1775,6 +1801,7 @@ Install::BootVariables::BootVariable::~BootVariable()
 
 bool Install::BootVariables::BootVariable::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| boot_variable.is_set;
 }
@@ -1796,7 +1823,8 @@ std::string Install::BootVariables::BootVariable::get_absolute_path() const
 std::string Install::BootVariables::BootVariable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "boot-variable" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "boot-variable";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1861,14 +1889,14 @@ bool Install::BootVariables::BootVariable::has_leaf_or_child_of_name(const std::
 Install::Software::Software()
     :
     alias_devices(std::make_shared<Install::Software::AliasDevices>())
-	,package_devices(std::make_shared<Install::Software::PackageDevices>())
-	,component_devices(std::make_shared<Install::Software::ComponentDevices>())
+    , package_devices(std::make_shared<Install::Software::PackageDevices>())
+    , component_devices(std::make_shared<Install::Software::ComponentDevices>())
 {
     alias_devices->parent = this;
     package_devices->parent = this;
     component_devices->parent = this;
 
-    yang_name = "software"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "software"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Software::~Software()
@@ -1877,6 +1905,7 @@ Install::Software::~Software()
 
 bool Install::Software::has_data() const
 {
+    if (is_presence_container) return true;
     return (alias_devices !=  nullptr && alias_devices->has_data())
 	|| (package_devices !=  nullptr && package_devices->has_data())
 	|| (component_devices !=  nullptr && component_devices->has_data());
@@ -1983,9 +2012,11 @@ bool Install::Software::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 Install::Software::AliasDevices::AliasDevices()
+    :
+    alias_device(this, {"device_name"})
 {
 
-    yang_name = "alias-devices"; yang_parent_name = "software"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alias-devices"; yang_parent_name = "software"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Software::AliasDevices::~AliasDevices()
@@ -1994,7 +2025,8 @@ Install::Software::AliasDevices::~AliasDevices()
 
 bool Install::Software::AliasDevices::has_data() const
 {
-    for (std::size_t index=0; index<alias_device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alias_device.len(); index++)
     {
         if(alias_device[index]->has_data())
             return true;
@@ -2004,7 +2036,7 @@ bool Install::Software::AliasDevices::has_data() const
 
 bool Install::Software::AliasDevices::has_operation() const
 {
-    for (std::size_t index=0; index<alias_device.size(); index++)
+    for (std::size_t index=0; index<alias_device.len(); index++)
     {
         if(alias_device[index]->has_operation())
             return true;
@@ -2041,7 +2073,7 @@ std::shared_ptr<Entity> Install::Software::AliasDevices::get_child_by_name(const
     {
         auto c = std::make_shared<Install::Software::AliasDevices::AliasDevice>();
         c->parent = this;
-        alias_device.push_back(c);
+        alias_device.append(c);
         return c;
     }
 
@@ -2053,7 +2085,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Software::AliasDevices::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alias_device)
+    for (auto c : alias_device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2082,12 +2114,12 @@ bool Install::Software::AliasDevices::has_leaf_or_child_of_name(const std::strin
 Install::Software::AliasDevices::AliasDevice::AliasDevice()
     :
     device_name{YType::str, "device-name"}
-    	,
+        ,
     aliases(std::make_shared<Install::Software::AliasDevices::AliasDevice::Aliases>())
 {
     aliases->parent = this;
 
-    yang_name = "alias-device"; yang_parent_name = "alias-devices"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alias-device"; yang_parent_name = "alias-devices"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Software::AliasDevices::AliasDevice::~AliasDevice()
@@ -2096,6 +2128,7 @@ Install::Software::AliasDevices::AliasDevice::~AliasDevice()
 
 bool Install::Software::AliasDevices::AliasDevice::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| (aliases !=  nullptr && aliases->has_data());
 }
@@ -2117,7 +2150,8 @@ std::string Install::Software::AliasDevices::AliasDevice::get_absolute_path() co
 std::string Install::Software::AliasDevices::AliasDevice::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alias-device" <<"[device-name='" <<device_name <<"']";
+    path_buffer << "alias-device";
+    ADD_KEY_TOKEN(device_name, "device-name");
     return path_buffer.str();
 }
 
@@ -2183,9 +2217,11 @@ bool Install::Software::AliasDevices::AliasDevice::has_leaf_or_child_of_name(con
 }
 
 Install::Software::AliasDevices::AliasDevice::Aliases::Aliases()
+    :
+    alias(this, {"package_name"})
 {
 
-    yang_name = "aliases"; yang_parent_name = "alias-device"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aliases"; yang_parent_name = "alias-device"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Software::AliasDevices::AliasDevice::Aliases::~Aliases()
@@ -2194,7 +2230,8 @@ Install::Software::AliasDevices::AliasDevice::Aliases::~Aliases()
 
 bool Install::Software::AliasDevices::AliasDevice::Aliases::has_data() const
 {
-    for (std::size_t index=0; index<alias.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alias.len(); index++)
     {
         if(alias[index]->has_data())
             return true;
@@ -2204,7 +2241,7 @@ bool Install::Software::AliasDevices::AliasDevice::Aliases::has_data() const
 
 bool Install::Software::AliasDevices::AliasDevice::Aliases::has_operation() const
 {
-    for (std::size_t index=0; index<alias.size(); index++)
+    for (std::size_t index=0; index<alias.len(); index++)
     {
         if(alias[index]->has_operation())
             return true;
@@ -2234,7 +2271,7 @@ std::shared_ptr<Entity> Install::Software::AliasDevices::AliasDevice::Aliases::g
     {
         auto c = std::make_shared<Install::Software::AliasDevices::AliasDevice::Aliases::Alias>();
         c->parent = this;
-        alias.push_back(c);
+        alias.append(c);
         return c;
     }
 
@@ -2246,7 +2283,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Software::AliasDevices::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alias)
+    for (auto c : alias.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2278,7 +2315,7 @@ Install::Software::AliasDevices::AliasDevice::Aliases::Alias::Alias()
     alias_names{YType::str, "alias-names"}
 {
 
-    yang_name = "alias"; yang_parent_name = "aliases"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "alias"; yang_parent_name = "aliases"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Software::AliasDevices::AliasDevice::Aliases::Alias::~Alias()
@@ -2287,6 +2324,7 @@ Install::Software::AliasDevices::AliasDevice::Aliases::Alias::~Alias()
 
 bool Install::Software::AliasDevices::AliasDevice::Aliases::Alias::has_data() const
 {
+    if (is_presence_container) return true;
     return package_name.is_set
 	|| alias_names.is_set;
 }
@@ -2301,7 +2339,8 @@ bool Install::Software::AliasDevices::AliasDevice::Aliases::Alias::has_operation
 std::string Install::Software::AliasDevices::AliasDevice::Aliases::Alias::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alias" <<"[package-name='" <<package_name <<"']";
+    path_buffer << "alias";
+    ADD_KEY_TOKEN(package_name, "package-name");
     return path_buffer.str();
 }
 
@@ -2364,9 +2403,11 @@ bool Install::Software::AliasDevices::AliasDevice::Aliases::Alias::has_leaf_or_c
 }
 
 Install::Software::PackageDevices::PackageDevices()
+    :
+    package_device(this, {"device_name"})
 {
 
-    yang_name = "package-devices"; yang_parent_name = "software"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package-devices"; yang_parent_name = "software"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Software::PackageDevices::~PackageDevices()
@@ -2375,7 +2416,8 @@ Install::Software::PackageDevices::~PackageDevices()
 
 bool Install::Software::PackageDevices::has_data() const
 {
-    for (std::size_t index=0; index<package_device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<package_device.len(); index++)
     {
         if(package_device[index]->has_data())
             return true;
@@ -2385,7 +2427,7 @@ bool Install::Software::PackageDevices::has_data() const
 
 bool Install::Software::PackageDevices::has_operation() const
 {
-    for (std::size_t index=0; index<package_device.size(); index++)
+    for (std::size_t index=0; index<package_device.len(); index++)
     {
         if(package_device[index]->has_operation())
             return true;
@@ -2422,7 +2464,7 @@ std::shared_ptr<Entity> Install::Software::PackageDevices::get_child_by_name(con
     {
         auto c = std::make_shared<Install::Software::PackageDevices::PackageDevice>();
         c->parent = this;
-        package_device.push_back(c);
+        package_device.append(c);
         return c;
     }
 
@@ -2434,7 +2476,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Software::PackageDevices
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : package_device)
+    for (auto c : package_device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2463,12 +2505,12 @@ bool Install::Software::PackageDevices::has_leaf_or_child_of_name(const std::str
 Install::Software::PackageDevices::PackageDevice::PackageDevice()
     :
     device_name{YType::str, "device-name"}
-    	,
+        ,
     packages(std::make_shared<Install::Software::PackageDevices::PackageDevice::Packages>())
 {
     packages->parent = this;
 
-    yang_name = "package-device"; yang_parent_name = "package-devices"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package-device"; yang_parent_name = "package-devices"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Software::PackageDevices::PackageDevice::~PackageDevice()
@@ -2477,6 +2519,7 @@ Install::Software::PackageDevices::PackageDevice::~PackageDevice()
 
 bool Install::Software::PackageDevices::PackageDevice::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| (packages !=  nullptr && packages->has_data());
 }
@@ -2498,7 +2541,8 @@ std::string Install::Software::PackageDevices::PackageDevice::get_absolute_path(
 std::string Install::Software::PackageDevices::PackageDevice::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "package-device" <<"[device-name='" <<device_name <<"']";
+    path_buffer << "package-device";
+    ADD_KEY_TOKEN(device_name, "device-name");
     return path_buffer.str();
 }
 
@@ -2564,9 +2608,11 @@ bool Install::Software::PackageDevices::PackageDevice::has_leaf_or_child_of_name
 }
 
 Install::Software::PackageDevices::PackageDevice::Packages::Packages()
+    :
+    package(this, {"package_name"})
 {
 
-    yang_name = "packages"; yang_parent_name = "package-device"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packages"; yang_parent_name = "package-device"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Software::PackageDevices::PackageDevice::Packages::~Packages()
@@ -2575,7 +2621,8 @@ Install::Software::PackageDevices::PackageDevice::Packages::~Packages()
 
 bool Install::Software::PackageDevices::PackageDevice::Packages::has_data() const
 {
-    for (std::size_t index=0; index<package.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<package.len(); index++)
     {
         if(package[index]->has_data())
             return true;
@@ -2585,7 +2632,7 @@ bool Install::Software::PackageDevices::PackageDevice::Packages::has_data() cons
 
 bool Install::Software::PackageDevices::PackageDevice::Packages::has_operation() const
 {
-    for (std::size_t index=0; index<package.size(); index++)
+    for (std::size_t index=0; index<package.len(); index++)
     {
         if(package[index]->has_operation())
             return true;
@@ -2615,7 +2662,7 @@ std::shared_ptr<Entity> Install::Software::PackageDevices::PackageDevice::Packag
     {
         auto c = std::make_shared<Install::Software::PackageDevices::PackageDevice::Packages::Package>();
         c->parent = this;
-        package.push_back(c);
+        package.append(c);
         return c;
     }
 
@@ -2627,7 +2674,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Software::PackageDevices
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : package)
+    for (auto c : package.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2673,9 +2720,11 @@ Install::Software::PackageDevices::PackageDevice::Packages::Package::Package()
     uncompressed_size{YType::uint32, "uncompressed-size"},
     compressed_size{YType::uint32, "compressed-size"},
     cards{YType::str, "cards"}
+        ,
+    sub_pkg(this, {})
 {
 
-    yang_name = "package"; yang_parent_name = "packages"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "package"; yang_parent_name = "packages"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Software::PackageDevices::PackageDevice::Packages::Package::~Package()
@@ -2684,7 +2733,8 @@ Install::Software::PackageDevices::PackageDevice::Packages::Package::~Package()
 
 bool Install::Software::PackageDevices::PackageDevice::Packages::Package::has_data() const
 {
-    for (std::size_t index=0; index<sub_pkg.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sub_pkg.len(); index++)
     {
         if(sub_pkg[index]->has_data())
             return true;
@@ -2715,7 +2765,7 @@ bool Install::Software::PackageDevices::PackageDevice::Packages::Package::has_da
 
 bool Install::Software::PackageDevices::PackageDevice::Packages::Package::has_operation() const
 {
-    for (std::size_t index=0; index<sub_pkg.size(); index++)
+    for (std::size_t index=0; index<sub_pkg.len(); index++)
     {
         if(sub_pkg[index]->has_operation())
             return true;
@@ -2749,7 +2799,8 @@ bool Install::Software::PackageDevices::PackageDevice::Packages::Package::has_op
 std::string Install::Software::PackageDevices::PackageDevice::Packages::Package::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "package" <<"[package-name='" <<package_name <<"']";
+    path_buffer << "package";
+    ADD_KEY_TOKEN(package_name, "package-name");
     return path_buffer.str();
 }
 
@@ -2787,7 +2838,7 @@ std::shared_ptr<Entity> Install::Software::PackageDevices::PackageDevice::Packag
     {
         auto c = std::make_shared<Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg>();
         c->parent = this;
-        sub_pkg.push_back(c);
+        sub_pkg.append(c);
         return c;
     }
 
@@ -2799,7 +2850,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Software::PackageDevices
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sub_pkg)
+    for (auto c : sub_pkg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3009,7 +3060,7 @@ Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg::Sub
     node_types{YType::uint64, "node-types"}
 {
 
-    yang_name = "sub-pkg"; yang_parent_name = "package"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-pkg"; yang_parent_name = "package"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg::~SubPkg()
@@ -3018,6 +3069,7 @@ Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg::~Su
 
 bool Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| node_types.is_set;
 }
@@ -3095,9 +3147,11 @@ bool Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg
 }
 
 Install::Software::ComponentDevices::ComponentDevices()
+    :
+    component_device(this, {"device_name"})
 {
 
-    yang_name = "component-devices"; yang_parent_name = "software"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "component-devices"; yang_parent_name = "software"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Software::ComponentDevices::~ComponentDevices()
@@ -3106,7 +3160,8 @@ Install::Software::ComponentDevices::~ComponentDevices()
 
 bool Install::Software::ComponentDevices::has_data() const
 {
-    for (std::size_t index=0; index<component_device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<component_device.len(); index++)
     {
         if(component_device[index]->has_data())
             return true;
@@ -3116,7 +3171,7 @@ bool Install::Software::ComponentDevices::has_data() const
 
 bool Install::Software::ComponentDevices::has_operation() const
 {
-    for (std::size_t index=0; index<component_device.size(); index++)
+    for (std::size_t index=0; index<component_device.len(); index++)
     {
         if(component_device[index]->has_operation())
             return true;
@@ -3153,7 +3208,7 @@ std::shared_ptr<Entity> Install::Software::ComponentDevices::get_child_by_name(c
     {
         auto c = std::make_shared<Install::Software::ComponentDevices::ComponentDevice>();
         c->parent = this;
-        component_device.push_back(c);
+        component_device.append(c);
         return c;
     }
 
@@ -3165,7 +3220,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Software::ComponentDevic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : component_device)
+    for (auto c : component_device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3194,12 +3249,12 @@ bool Install::Software::ComponentDevices::has_leaf_or_child_of_name(const std::s
 Install::Software::ComponentDevices::ComponentDevice::ComponentDevice()
     :
     device_name{YType::str, "device-name"}
-    	,
+        ,
     component_packages(std::make_shared<Install::Software::ComponentDevices::ComponentDevice::ComponentPackages>())
 {
     component_packages->parent = this;
 
-    yang_name = "component-device"; yang_parent_name = "component-devices"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "component-device"; yang_parent_name = "component-devices"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Software::ComponentDevices::ComponentDevice::~ComponentDevice()
@@ -3208,6 +3263,7 @@ Install::Software::ComponentDevices::ComponentDevice::~ComponentDevice()
 
 bool Install::Software::ComponentDevices::ComponentDevice::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| (component_packages !=  nullptr && component_packages->has_data());
 }
@@ -3229,7 +3285,8 @@ std::string Install::Software::ComponentDevices::ComponentDevice::get_absolute_p
 std::string Install::Software::ComponentDevices::ComponentDevice::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "component-device" <<"[device-name='" <<device_name <<"']";
+    path_buffer << "component-device";
+    ADD_KEY_TOKEN(device_name, "device-name");
     return path_buffer.str();
 }
 
@@ -3295,9 +3352,11 @@ bool Install::Software::ComponentDevices::ComponentDevice::has_leaf_or_child_of_
 }
 
 Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackages()
+    :
+    component_package(this, {"package_name"})
 {
 
-    yang_name = "component-packages"; yang_parent_name = "component-device"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "component-packages"; yang_parent_name = "component-device"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::~ComponentPackages()
@@ -3306,7 +3365,8 @@ Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::~Compon
 
 bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::has_data() const
 {
-    for (std::size_t index=0; index<component_package.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<component_package.len(); index++)
     {
         if(component_package[index]->has_data())
             return true;
@@ -3316,7 +3376,7 @@ bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ha
 
 bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::has_operation() const
 {
-    for (std::size_t index=0; index<component_package.size(); index++)
+    for (std::size_t index=0; index<component_package.len(); index++)
     {
         if(component_package[index]->has_operation())
             return true;
@@ -3346,7 +3406,7 @@ std::shared_ptr<Entity> Install::Software::ComponentDevices::ComponentDevice::Co
     {
         auto c = std::make_shared<Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage>();
         c->parent = this;
-        component_package.push_back(c);
+        component_package.append(c);
         return c;
     }
 
@@ -3358,7 +3418,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Software::ComponentDevic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : component_package)
+    for (auto c : component_package.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3387,9 +3447,11 @@ bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ha
 Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::ComponentPackage()
     :
     package_name{YType::str, "package-name"}
+        ,
+    component(this, {"component_name"})
 {
 
-    yang_name = "component-package"; yang_parent_name = "component-packages"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "component-package"; yang_parent_name = "component-packages"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::~ComponentPackage()
@@ -3398,7 +3460,8 @@ Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::Compone
 
 bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::has_data() const
 {
-    for (std::size_t index=0; index<component.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<component.len(); index++)
     {
         if(component[index]->has_data())
             return true;
@@ -3408,7 +3471,7 @@ bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::Co
 
 bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::has_operation() const
 {
-    for (std::size_t index=0; index<component.size(); index++)
+    for (std::size_t index=0; index<component.len(); index++)
     {
         if(component[index]->has_operation())
             return true;
@@ -3420,7 +3483,8 @@ bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::Co
 std::string Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "component-package" <<"[package-name='" <<package_name <<"']";
+    path_buffer << "component-package";
+    ADD_KEY_TOKEN(package_name, "package-name");
     return path_buffer.str();
 }
 
@@ -3440,7 +3504,7 @@ std::shared_ptr<Entity> Install::Software::ComponentDevices::ComponentDevice::Co
     {
         auto c = std::make_shared<Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component>();
         c->parent = this;
-        component.push_back(c);
+        component.append(c);
         return c;
     }
 
@@ -3452,7 +3516,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Software::ComponentDevic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : component)
+    for (auto c : component.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3498,7 +3562,7 @@ Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::Compone
     files{YType::str, "files"}
 {
 
-    yang_name = "component"; yang_parent_name = "component-package"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "component"; yang_parent_name = "component-package"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component::~Component()
@@ -3507,6 +3571,7 @@ Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::Compone
 
 bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : files.getYLeafs())
     {
         if(leaf.is_set)
@@ -3538,7 +3603,8 @@ bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::Co
 std::string Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "component" <<"[component-name='" <<component_name <<"']";
+    path_buffer << "component";
+    ADD_KEY_TOKEN(component_name, "component-name");
     return path_buffer.str();
 }
 
@@ -3646,16 +3712,16 @@ bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::Co
 Install::SoftwareInventory::SoftwareInventory()
     :
     committed(std::make_shared<Install::SoftwareInventory::Committed>())
-	,inactive(std::make_shared<Install::SoftwareInventory::Inactive>())
-	,requests(std::make_shared<Install::SoftwareInventory::Requests>())
-	,active(std::make_shared<Install::SoftwareInventory::Active>())
+    , inactive(std::make_shared<Install::SoftwareInventory::Inactive>())
+    , requests(std::make_shared<Install::SoftwareInventory::Requests>())
+    , active(std::make_shared<Install::SoftwareInventory::Active>())
 {
     committed->parent = this;
     inactive->parent = this;
     requests->parent = this;
     active->parent = this;
 
-    yang_name = "software-inventory"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "software-inventory"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::~SoftwareInventory()
@@ -3664,6 +3730,7 @@ Install::SoftwareInventory::~SoftwareInventory()
 
 bool Install::SoftwareInventory::has_data() const
 {
+    if (is_presence_container) return true;
     return (committed !=  nullptr && committed->has_data())
 	|| (inactive !=  nullptr && inactive->has_data())
 	|| (requests !=  nullptr && requests->has_data())
@@ -3788,12 +3855,12 @@ bool Install::SoftwareInventory::has_leaf_or_child_of_name(const std::string & n
 Install::SoftwareInventory::Committed::Committed()
     :
     summary(std::make_shared<Install::SoftwareInventory::Committed::Summary>())
-	,inventories(std::make_shared<Install::SoftwareInventory::Committed::Inventories>())
+    , inventories(std::make_shared<Install::SoftwareInventory::Committed::Inventories>())
 {
     summary->parent = this;
     inventories->parent = this;
 
-    yang_name = "committed"; yang_parent_name = "software-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "committed"; yang_parent_name = "software-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::~Committed()
@@ -3802,6 +3869,7 @@ Install::SoftwareInventory::Committed::~Committed()
 
 bool Install::SoftwareInventory::Committed::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (inventories !=  nullptr && inventories->has_data());
 }
@@ -3894,12 +3962,14 @@ bool Install::SoftwareInventory::Committed::has_leaf_or_child_of_name(const std:
 Install::SoftwareInventory::Committed::Summary::Summary()
     :
     default_load_path(std::make_shared<Install::SoftwareInventory::Committed::Summary::DefaultLoadPath>())
-	,admin_load_path(std::make_shared<Install::SoftwareInventory::Committed::Summary::AdminLoadPath>())
+    , admin_load_path(std::make_shared<Install::SoftwareInventory::Committed::Summary::AdminLoadPath>())
+    , sdr_load_path(this, {})
+    , location_load_path(this, {})
 {
     default_load_path->parent = this;
     admin_load_path->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "committed"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "committed"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::~Summary()
@@ -3908,12 +3978,13 @@ Install::SoftwareInventory::Committed::Summary::~Summary()
 
 bool Install::SoftwareInventory::Committed::Summary::has_data() const
 {
-    for (std::size_t index=0; index<sdr_load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_load_path.len(); index++)
     {
         if(sdr_load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<location_load_path.size(); index++)
+    for (std::size_t index=0; index<location_load_path.len(); index++)
     {
         if(location_load_path[index]->has_data())
             return true;
@@ -3924,12 +3995,12 @@ bool Install::SoftwareInventory::Committed::Summary::has_data() const
 
 bool Install::SoftwareInventory::Committed::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_load_path.size(); index++)
+    for (std::size_t index=0; index<sdr_load_path.len(); index++)
     {
         if(sdr_load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<location_load_path.size(); index++)
+    for (std::size_t index=0; index<location_load_path.len(); index++)
     {
         if(location_load_path[index]->has_operation())
             return true;
@@ -3986,7 +4057,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::get_chil
     {
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::SdrLoadPath>();
         c->parent = this;
-        sdr_load_path.push_back(c);
+        sdr_load_path.append(c);
         return c;
     }
 
@@ -3994,7 +4065,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::get_chil
     {
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::LocationLoadPath>();
         c->parent = this;
-        location_load_path.push_back(c);
+        location_load_path.append(c);
         return c;
     }
 
@@ -4016,7 +4087,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
     }
 
     count = 0;
-    for (auto const & c : sdr_load_path)
+    for (auto c : sdr_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4025,7 +4096,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
     }
 
     count = 0;
-    for (auto const & c : location_load_path)
+    for (auto c : location_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4056,9 +4127,12 @@ Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::DefaultLoadPath
     request_id{YType::uint32, "request-id"},
     admin_match{YType::boolean, "admin-match"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"}
+        ,
+    load_path(this, {})
+    , standby_load_path(this, {})
 {
 
-    yang_name = "default-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::~DefaultLoadPath()
@@ -4067,12 +4141,13 @@ Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::~DefaultLoadPat
 
 bool Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_data())
             return true;
@@ -4088,12 +4163,12 @@ bool Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::has_data()
 
 bool Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_operation())
             return true;
@@ -4142,7 +4217,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::DefaultL
     {
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -4150,7 +4225,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::DefaultL
     {
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath>();
         c->parent = this;
-        standby_load_path.push_back(c);
+        standby_load_path.append(c);
         return c;
     }
 
@@ -4162,7 +4237,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4171,7 +4246,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
     }
 
     count = 0;
-    for (auto const & c : standby_load_path)
+    for (auto c : standby_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4229,12 +4304,12 @@ Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::LoadP
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "default-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-path"; yang_parent_name = "default-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::~LoadPath()
@@ -4243,6 +4318,7 @@ Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::~Load
 
 bool Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -4348,7 +4424,7 @@ Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Packa
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Package::~Package()
@@ -4357,6 +4433,7 @@ Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Packa
 
 bool Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -4444,12 +4521,12 @@ Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "standby-load-path"; yang_parent_name = "default-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby-load-path"; yang_parent_name = "default-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::~StandbyLoadPath()
@@ -4458,6 +4535,7 @@ Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath
 
 bool Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -4563,7 +4641,7 @@ Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::Package::~Package()
@@ -4572,6 +4650,7 @@ Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath
 
 bool Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -4658,9 +4737,12 @@ bool Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoa
 Install::SoftwareInventory::Committed::Summary::AdminLoadPath::AdminLoadPath()
     :
     request_id{YType::uint32, "request-id"}
+        ,
+    load_path(this, {})
+    , standby_load_path(this, {})
 {
 
-    yang_name = "admin-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "admin-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::AdminLoadPath::~AdminLoadPath()
@@ -4669,12 +4751,13 @@ Install::SoftwareInventory::Committed::Summary::AdminLoadPath::~AdminLoadPath()
 
 bool Install::SoftwareInventory::Committed::Summary::AdminLoadPath::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_data())
             return true;
@@ -4684,12 +4767,12 @@ bool Install::SoftwareInventory::Committed::Summary::AdminLoadPath::has_data() c
 
 bool Install::SoftwareInventory::Committed::Summary::AdminLoadPath::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_operation())
             return true;
@@ -4728,7 +4811,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::AdminLoa
     {
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -4736,7 +4819,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::AdminLoa
     {
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath>();
         c->parent = this;
-        standby_load_path.push_back(c);
+        standby_load_path.append(c);
         return c;
     }
 
@@ -4748,7 +4831,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4757,7 +4840,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
     }
 
     count = 0;
-    for (auto const & c : standby_load_path)
+    for (auto c : standby_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4797,12 +4880,12 @@ Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::LoadPat
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "admin-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-path"; yang_parent_name = "admin-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::~LoadPath()
@@ -4811,6 +4894,7 @@ Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::~LoadPa
 
 bool Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -4916,7 +5000,7 @@ Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package::~Package()
@@ -4925,6 +5009,7 @@ Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package
 
 bool Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -5012,12 +5097,12 @@ Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "standby-load-path"; yang_parent_name = "admin-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby-load-path"; yang_parent_name = "admin-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::~StandbyLoadPath()
@@ -5026,6 +5111,7 @@ Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::
 
 bool Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -5131,7 +5217,7 @@ Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::Package::~Package()
@@ -5140,6 +5226,7 @@ Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::
 
 bool Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -5227,9 +5314,12 @@ Install::SoftwareInventory::Committed::Summary::SdrLoadPath::SdrLoadPath()
     :
     request_id{YType::uint32, "request-id"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"}
+        ,
+    load_path(this, {})
+    , standby_load_path(this, {})
 {
 
-    yang_name = "sdr-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::SdrLoadPath::~SdrLoadPath()
@@ -5238,12 +5328,13 @@ Install::SoftwareInventory::Committed::Summary::SdrLoadPath::~SdrLoadPath()
 
 bool Install::SoftwareInventory::Committed::Summary::SdrLoadPath::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_data())
             return true;
@@ -5254,12 +5345,12 @@ bool Install::SoftwareInventory::Committed::Summary::SdrLoadPath::has_data() con
 
 bool Install::SoftwareInventory::Committed::Summary::SdrLoadPath::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_operation())
             return true;
@@ -5300,7 +5391,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::SdrLoadP
     {
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -5308,7 +5399,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::SdrLoadP
     {
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath>();
         c->parent = this;
-        standby_load_path.push_back(c);
+        standby_load_path.append(c);
         return c;
     }
 
@@ -5320,7 +5411,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5329,7 +5420,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
     }
 
     count = 0;
-    for (auto const & c : standby_load_path)
+    for (auto c : standby_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5379,12 +5470,12 @@ Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::LoadPath(
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "sdr-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-path"; yang_parent_name = "sdr-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::~LoadPath()
@@ -5393,6 +5484,7 @@ Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::~LoadPath
 
 bool Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -5498,7 +5590,7 @@ Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package::
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package::~Package()
@@ -5507,6 +5599,7 @@ Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package::
 
 bool Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -5594,12 +5687,12 @@ Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::St
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "standby-load-path"; yang_parent_name = "sdr-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby-load-path"; yang_parent_name = "sdr-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::~StandbyLoadPath()
@@ -5608,6 +5701,7 @@ Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::~S
 
 bool Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -5713,7 +5807,7 @@ Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Pa
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Package::~Package()
@@ -5722,6 +5816,7 @@ Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Pa
 
 bool Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -5810,9 +5905,12 @@ Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LocationLoadPa
     request_id{YType::uint32, "request-id"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"},
     node_name{YType::str, "node-name"}
+        ,
+    load_path(this, {})
+    , standby_load_path(this, {})
 {
 
-    yang_name = "location-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::LocationLoadPath::~LocationLoadPath()
@@ -5821,12 +5919,13 @@ Install::SoftwareInventory::Committed::Summary::LocationLoadPath::~LocationLoadP
 
 bool Install::SoftwareInventory::Committed::Summary::LocationLoadPath::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_data())
             return true;
@@ -5838,12 +5937,12 @@ bool Install::SoftwareInventory::Committed::Summary::LocationLoadPath::has_data(
 
 bool Install::SoftwareInventory::Committed::Summary::LocationLoadPath::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_operation())
             return true;
@@ -5886,7 +5985,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::Location
     {
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -5894,7 +5993,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::Location
     {
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath>();
         c->parent = this;
-        standby_load_path.push_back(c);
+        standby_load_path.append(c);
         return c;
     }
 
@@ -5906,7 +6005,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5915,7 +6014,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
     }
 
     count = 0;
-    for (auto const & c : standby_load_path)
+    for (auto c : standby_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5975,12 +6074,12 @@ Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Load
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "location-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-path"; yang_parent_name = "location-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::~LoadPath()
@@ -5989,6 +6088,7 @@ Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::~Loa
 
 bool Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -6094,7 +6194,7 @@ Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Pack
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Package::~Package()
@@ -6103,6 +6203,7 @@ Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Pack
 
 bool Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -6190,12 +6291,12 @@ Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPat
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "standby-load-path"; yang_parent_name = "location-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby-load-path"; yang_parent_name = "location-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::~StandbyLoadPath()
@@ -6204,6 +6305,7 @@ Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPat
 
 bool Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -6309,7 +6411,7 @@ Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPat
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::Package::~Package()
@@ -6318,6 +6420,7 @@ Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPat
 
 bool Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -6402,9 +6505,11 @@ bool Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLo
 }
 
 Install::SoftwareInventory::Committed::Inventories::Inventories()
+    :
+    inventory(this, {"node_name"})
 {
 
-    yang_name = "inventories"; yang_parent_name = "committed"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inventories"; yang_parent_name = "committed"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Inventories::~Inventories()
@@ -6413,7 +6518,8 @@ Install::SoftwareInventory::Committed::Inventories::~Inventories()
 
 bool Install::SoftwareInventory::Committed::Inventories::has_data() const
 {
-    for (std::size_t index=0; index<inventory.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<inventory.len(); index++)
     {
         if(inventory[index]->has_data())
             return true;
@@ -6423,7 +6529,7 @@ bool Install::SoftwareInventory::Committed::Inventories::has_data() const
 
 bool Install::SoftwareInventory::Committed::Inventories::has_operation() const
 {
-    for (std::size_t index=0; index<inventory.size(); index++)
+    for (std::size_t index=0; index<inventory.len(); index++)
     {
         if(inventory[index]->has_operation())
             return true;
@@ -6460,7 +6566,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Inventories::get_
     {
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Inventories::Inventory>();
         c->parent = this;
-        inventory.push_back(c);
+        inventory.append(c);
         return c;
     }
 
@@ -6472,7 +6578,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : inventory)
+    for (auto c : inventory.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6506,9 +6612,11 @@ Install::SoftwareInventory::Committed::Inventories::Inventory::Inventory()
     boot_image_name{YType::str, "boot-image-name"},
     node_type{YType::uint64, "node-type"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"}
+        ,
+    load_path(this, {})
 {
 
-    yang_name = "inventory"; yang_parent_name = "inventories"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inventory"; yang_parent_name = "inventories"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Committed::Inventories::Inventory::~Inventory()
@@ -6517,7 +6625,8 @@ Install::SoftwareInventory::Committed::Inventories::Inventory::~Inventory()
 
 bool Install::SoftwareInventory::Committed::Inventories::Inventory::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
@@ -6532,7 +6641,7 @@ bool Install::SoftwareInventory::Committed::Inventories::Inventory::has_data() c
 
 bool Install::SoftwareInventory::Committed::Inventories::Inventory::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
@@ -6556,7 +6665,8 @@ std::string Install::SoftwareInventory::Committed::Inventories::Inventory::get_a
 std::string Install::SoftwareInventory::Committed::Inventories::Inventory::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "inventory" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "inventory";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -6581,7 +6691,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Inventories::Inve
     {
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -6593,7 +6703,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6683,12 +6793,12 @@ Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::LoadPat
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-path"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::~LoadPath()
@@ -6697,6 +6807,7 @@ Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::~LoadPa
 
 bool Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -6795,7 +6906,7 @@ Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package::~Package()
@@ -6804,6 +6915,7 @@ Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package
 
 bool Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -6883,12 +6995,12 @@ bool Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Pa
 Install::SoftwareInventory::Inactive::Inactive()
     :
     summary(std::make_shared<Install::SoftwareInventory::Inactive::Summary>())
-	,inventories(std::make_shared<Install::SoftwareInventory::Inactive::Inventories>())
+    , inventories(std::make_shared<Install::SoftwareInventory::Inactive::Inventories>())
 {
     summary->parent = this;
     inventories->parent = this;
 
-    yang_name = "inactive"; yang_parent_name = "software-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inactive"; yang_parent_name = "software-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::~Inactive()
@@ -6897,6 +7009,7 @@ Install::SoftwareInventory::Inactive::~Inactive()
 
 bool Install::SoftwareInventory::Inactive::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (inventories !=  nullptr && inventories->has_data());
 }
@@ -6989,12 +7102,14 @@ bool Install::SoftwareInventory::Inactive::has_leaf_or_child_of_name(const std::
 Install::SoftwareInventory::Inactive::Summary::Summary()
     :
     default_load_path(std::make_shared<Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath>())
-	,admin_load_path(std::make_shared<Install::SoftwareInventory::Inactive::Summary::AdminLoadPath>())
+    , admin_load_path(std::make_shared<Install::SoftwareInventory::Inactive::Summary::AdminLoadPath>())
+    , sdr_load_path(this, {})
+    , location_load_path(this, {})
 {
     default_load_path->parent = this;
     admin_load_path->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "inactive"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "inactive"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::~Summary()
@@ -7003,12 +7118,13 @@ Install::SoftwareInventory::Inactive::Summary::~Summary()
 
 bool Install::SoftwareInventory::Inactive::Summary::has_data() const
 {
-    for (std::size_t index=0; index<sdr_load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_load_path.len(); index++)
     {
         if(sdr_load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<location_load_path.size(); index++)
+    for (std::size_t index=0; index<location_load_path.len(); index++)
     {
         if(location_load_path[index]->has_data())
             return true;
@@ -7019,12 +7135,12 @@ bool Install::SoftwareInventory::Inactive::Summary::has_data() const
 
 bool Install::SoftwareInventory::Inactive::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_load_path.size(); index++)
+    for (std::size_t index=0; index<sdr_load_path.len(); index++)
     {
         if(sdr_load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<location_load_path.size(); index++)
+    for (std::size_t index=0; index<location_load_path.len(); index++)
     {
         if(location_load_path[index]->has_operation())
             return true;
@@ -7081,7 +7197,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::get_child
     {
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::SdrLoadPath>();
         c->parent = this;
-        sdr_load_path.push_back(c);
+        sdr_load_path.append(c);
         return c;
     }
 
@@ -7089,7 +7205,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::get_child
     {
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::LocationLoadPath>();
         c->parent = this;
-        location_load_path.push_back(c);
+        location_load_path.append(c);
         return c;
     }
 
@@ -7111,7 +7227,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
     }
 
     count = 0;
-    for (auto const & c : sdr_load_path)
+    for (auto c : sdr_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7120,7 +7236,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
     }
 
     count = 0;
-    for (auto const & c : location_load_path)
+    for (auto c : location_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7151,9 +7267,12 @@ Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::DefaultLoadPath(
     request_id{YType::uint32, "request-id"},
     admin_match{YType::boolean, "admin-match"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"}
+        ,
+    load_path(this, {})
+    , standby_load_path(this, {})
 {
 
-    yang_name = "default-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::~DefaultLoadPath()
@@ -7162,12 +7281,13 @@ Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::~DefaultLoadPath
 
 bool Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_data())
             return true;
@@ -7183,12 +7303,12 @@ bool Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::has_data() 
 
 bool Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_operation())
             return true;
@@ -7237,7 +7357,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::DefaultLo
     {
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -7245,7 +7365,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::DefaultLo
     {
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath>();
         c->parent = this;
-        standby_load_path.push_back(c);
+        standby_load_path.append(c);
         return c;
     }
 
@@ -7257,7 +7377,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7266,7 +7386,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
     }
 
     count = 0;
-    for (auto const & c : standby_load_path)
+    for (auto c : standby_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7324,12 +7444,12 @@ Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::LoadPa
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "default-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-path"; yang_parent_name = "default-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::~LoadPath()
@@ -7338,6 +7458,7 @@ Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::~LoadP
 
 bool Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -7443,7 +7564,7 @@ Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Packag
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Package::~Package()
@@ -7452,6 +7573,7 @@ Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Packag
 
 bool Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -7539,12 +7661,12 @@ Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath:
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "standby-load-path"; yang_parent_name = "default-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby-load-path"; yang_parent_name = "default-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::~StandbyLoadPath()
@@ -7553,6 +7675,7 @@ Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath:
 
 bool Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -7658,7 +7781,7 @@ Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath:
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::Package::~Package()
@@ -7667,6 +7790,7 @@ Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath:
 
 bool Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -7753,9 +7877,12 @@ bool Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoad
 Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::AdminLoadPath()
     :
     request_id{YType::uint32, "request-id"}
+        ,
+    load_path(this, {})
+    , standby_load_path(this, {})
 {
 
-    yang_name = "admin-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "admin-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::~AdminLoadPath()
@@ -7764,12 +7891,13 @@ Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::~AdminLoadPath()
 
 bool Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_data())
             return true;
@@ -7779,12 +7907,12 @@ bool Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::has_data() co
 
 bool Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_operation())
             return true;
@@ -7823,7 +7951,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::AdminLoad
     {
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -7831,7 +7959,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::AdminLoad
     {
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath>();
         c->parent = this;
-        standby_load_path.push_back(c);
+        standby_load_path.append(c);
         return c;
     }
 
@@ -7843,7 +7971,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7852,7 +7980,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
     }
 
     count = 0;
-    for (auto const & c : standby_load_path)
+    for (auto c : standby_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7892,12 +8020,12 @@ Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::LoadPath
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "admin-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-path"; yang_parent_name = "admin-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::~LoadPath()
@@ -7906,6 +8034,7 @@ Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::~LoadPat
 
 bool Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -8011,7 +8140,7 @@ Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package:
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package::~Package()
@@ -8020,6 +8149,7 @@ Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package:
 
 bool Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -8107,12 +8237,12 @@ Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::S
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "standby-load-path"; yang_parent_name = "admin-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby-load-path"; yang_parent_name = "admin-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::~StandbyLoadPath()
@@ -8121,6 +8251,7 @@ Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::~
 
 bool Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -8226,7 +8357,7 @@ Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::P
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::Package::~Package()
@@ -8235,6 +8366,7 @@ Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::P
 
 bool Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -8322,9 +8454,12 @@ Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::SdrLoadPath()
     :
     request_id{YType::uint32, "request-id"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"}
+        ,
+    load_path(this, {})
+    , standby_load_path(this, {})
 {
 
-    yang_name = "sdr-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::~SdrLoadPath()
@@ -8333,12 +8468,13 @@ Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::~SdrLoadPath()
 
 bool Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_data())
             return true;
@@ -8349,12 +8485,12 @@ bool Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::has_data() cons
 
 bool Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_operation())
             return true;
@@ -8395,7 +8531,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::SdrLoadPa
     {
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -8403,7 +8539,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::SdrLoadPa
     {
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath>();
         c->parent = this;
-        standby_load_path.push_back(c);
+        standby_load_path.append(c);
         return c;
     }
 
@@ -8415,7 +8551,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8424,7 +8560,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
     }
 
     count = 0;
-    for (auto const & c : standby_load_path)
+    for (auto c : standby_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8474,12 +8610,12 @@ Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::LoadPath()
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "sdr-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-path"; yang_parent_name = "sdr-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::~LoadPath()
@@ -8488,6 +8624,7 @@ Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::~LoadPath(
 
 bool Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -8593,7 +8730,7 @@ Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package::P
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package::~Package()
@@ -8602,6 +8739,7 @@ Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package::~
 
 bool Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -8689,12 +8827,12 @@ Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Sta
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "standby-load-path"; yang_parent_name = "sdr-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby-load-path"; yang_parent_name = "sdr-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::~StandbyLoadPath()
@@ -8703,6 +8841,7 @@ Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::~St
 
 bool Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -8808,7 +8947,7 @@ Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Pac
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Package::~Package()
@@ -8817,6 +8956,7 @@ Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Pac
 
 bool Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -8905,9 +9045,12 @@ Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LocationLoadPat
     request_id{YType::uint32, "request-id"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"},
     node_name{YType::str, "node-name"}
+        ,
+    load_path(this, {})
+    , standby_load_path(this, {})
 {
 
-    yang_name = "location-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::~LocationLoadPath()
@@ -8916,12 +9059,13 @@ Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::~LocationLoadPa
 
 bool Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_data())
             return true;
@@ -8933,12 +9077,12 @@ bool Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::has_data()
 
 bool Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_operation())
             return true;
@@ -8981,7 +9125,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::LocationL
     {
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -8989,7 +9133,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::LocationL
     {
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath>();
         c->parent = this;
-        standby_load_path.push_back(c);
+        standby_load_path.append(c);
         return c;
     }
 
@@ -9001,7 +9145,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9010,7 +9154,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
     }
 
     count = 0;
-    for (auto const & c : standby_load_path)
+    for (auto c : standby_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9070,12 +9214,12 @@ Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::LoadP
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "location-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-path"; yang_parent_name = "location-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::~LoadPath()
@@ -9084,6 +9228,7 @@ Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::~Load
 
 bool Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -9189,7 +9334,7 @@ Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Packa
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Package::~Package()
@@ -9198,6 +9343,7 @@ Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Packa
 
 bool Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -9285,12 +9431,12 @@ Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "standby-load-path"; yang_parent_name = "location-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby-load-path"; yang_parent_name = "location-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::~StandbyLoadPath()
@@ -9299,6 +9445,7 @@ Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath
 
 bool Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -9404,7 +9551,7 @@ Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::Package::~Package()
@@ -9413,6 +9560,7 @@ Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath
 
 bool Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -9497,9 +9645,11 @@ bool Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoa
 }
 
 Install::SoftwareInventory::Inactive::Inventories::Inventories()
+    :
+    inventory(this, {"node_name"})
 {
 
-    yang_name = "inventories"; yang_parent_name = "inactive"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inventories"; yang_parent_name = "inactive"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Inventories::~Inventories()
@@ -9508,7 +9658,8 @@ Install::SoftwareInventory::Inactive::Inventories::~Inventories()
 
 bool Install::SoftwareInventory::Inactive::Inventories::has_data() const
 {
-    for (std::size_t index=0; index<inventory.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<inventory.len(); index++)
     {
         if(inventory[index]->has_data())
             return true;
@@ -9518,7 +9669,7 @@ bool Install::SoftwareInventory::Inactive::Inventories::has_data() const
 
 bool Install::SoftwareInventory::Inactive::Inventories::has_operation() const
 {
-    for (std::size_t index=0; index<inventory.size(); index++)
+    for (std::size_t index=0; index<inventory.len(); index++)
     {
         if(inventory[index]->has_operation())
             return true;
@@ -9555,7 +9706,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Inventories::get_c
     {
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Inventories::Inventory>();
         c->parent = this;
-        inventory.push_back(c);
+        inventory.append(c);
         return c;
     }
 
@@ -9567,7 +9718,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : inventory)
+    for (auto c : inventory.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9601,9 +9752,11 @@ Install::SoftwareInventory::Inactive::Inventories::Inventory::Inventory()
     boot_image_name{YType::str, "boot-image-name"},
     node_type{YType::uint64, "node-type"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"}
+        ,
+    load_path(this, {})
 {
 
-    yang_name = "inventory"; yang_parent_name = "inventories"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inventory"; yang_parent_name = "inventories"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Inactive::Inventories::Inventory::~Inventory()
@@ -9612,7 +9765,8 @@ Install::SoftwareInventory::Inactive::Inventories::Inventory::~Inventory()
 
 bool Install::SoftwareInventory::Inactive::Inventories::Inventory::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
@@ -9627,7 +9781,7 @@ bool Install::SoftwareInventory::Inactive::Inventories::Inventory::has_data() co
 
 bool Install::SoftwareInventory::Inactive::Inventories::Inventory::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
@@ -9651,7 +9805,8 @@ std::string Install::SoftwareInventory::Inactive::Inventories::Inventory::get_ab
 std::string Install::SoftwareInventory::Inactive::Inventories::Inventory::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "inventory" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "inventory";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -9676,7 +9831,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Inventories::Inven
     {
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -9688,7 +9843,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9778,12 +9933,12 @@ Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::LoadPath
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-path"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::~LoadPath()
@@ -9792,6 +9947,7 @@ Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::~LoadPat
 
 bool Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -9890,7 +10046,7 @@ Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package:
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package::~Package()
@@ -9899,6 +10055,7 @@ Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package:
 
 bool Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -9981,7 +10138,7 @@ Install::SoftwareInventory::Requests::Requests()
 {
     requests->parent = this;
 
-    yang_name = "requests"; yang_parent_name = "software-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "requests"; yang_parent_name = "software-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Requests::~Requests()
@@ -9990,6 +10147,7 @@ Install::SoftwareInventory::Requests::~Requests()
 
 bool Install::SoftwareInventory::Requests::has_data() const
 {
+    if (is_presence_container) return true;
     return (requests !=  nullptr && requests->has_data());
 }
 
@@ -10064,9 +10222,11 @@ bool Install::SoftwareInventory::Requests::has_leaf_or_child_of_name(const std::
 }
 
 Install::SoftwareInventory::Requests::Requests_::Requests_()
+    :
+    request(this, {"request_id"})
 {
 
-    yang_name = "requests"; yang_parent_name = "requests"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "requests"; yang_parent_name = "requests"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Requests::Requests_::~Requests_()
@@ -10075,7 +10235,8 @@ Install::SoftwareInventory::Requests::Requests_::~Requests_()
 
 bool Install::SoftwareInventory::Requests::Requests_::has_data() const
 {
-    for (std::size_t index=0; index<request.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<request.len(); index++)
     {
         if(request[index]->has_data())
             return true;
@@ -10085,7 +10246,7 @@ bool Install::SoftwareInventory::Requests::Requests_::has_data() const
 
 bool Install::SoftwareInventory::Requests::Requests_::has_operation() const
 {
-    for (std::size_t index=0; index<request.size(); index++)
+    for (std::size_t index=0; index<request.len(); index++)
     {
         if(request[index]->has_operation())
             return true;
@@ -10122,7 +10283,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::get_chi
     {
         auto c = std::make_shared<Install::SoftwareInventory::Requests::Requests_::Request>();
         c->parent = this;
-        request.push_back(c);
+        request.append(c);
         return c;
     }
 
@@ -10134,7 +10295,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Reque
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : request)
+    for (auto c : request.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10163,12 +10324,12 @@ bool Install::SoftwareInventory::Requests::Requests_::has_leaf_or_child_of_name(
 Install::SoftwareInventory::Requests::Requests_::Request::Request()
     :
     request_id{YType::int32, "request-id"}
-    	,
+        ,
     inventories(std::make_shared<Install::SoftwareInventory::Requests::Requests_::Request::Inventories>())
 {
     inventories->parent = this;
 
-    yang_name = "request"; yang_parent_name = "requests"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "request"; yang_parent_name = "requests"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Requests::Requests_::Request::~Request()
@@ -10177,6 +10338,7 @@ Install::SoftwareInventory::Requests::Requests_::Request::~Request()
 
 bool Install::SoftwareInventory::Requests::Requests_::Request::has_data() const
 {
+    if (is_presence_container) return true;
     return request_id.is_set
 	|| (inventories !=  nullptr && inventories->has_data());
 }
@@ -10198,7 +10360,8 @@ std::string Install::SoftwareInventory::Requests::Requests_::Request::get_absolu
 std::string Install::SoftwareInventory::Requests::Requests_::Request::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "request" <<"[request-id='" <<request_id <<"']";
+    path_buffer << "request";
+    ADD_KEY_TOKEN(request_id, "request-id");
     return path_buffer.str();
 }
 
@@ -10264,9 +10427,11 @@ bool Install::SoftwareInventory::Requests::Requests_::Request::has_leaf_or_child
 }
 
 Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventories()
+    :
+    inventory(this, {"node_name"})
 {
 
-    yang_name = "inventories"; yang_parent_name = "request"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inventories"; yang_parent_name = "request"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::SoftwareInventory::Requests::Requests_::Request::Inventories::~Inventories()
@@ -10275,7 +10440,8 @@ Install::SoftwareInventory::Requests::Requests_::Request::Inventories::~Inventor
 
 bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::has_data() const
 {
-    for (std::size_t index=0; index<inventory.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<inventory.len(); index++)
     {
         if(inventory[index]->has_data())
             return true;
@@ -10285,7 +10451,7 @@ bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::has_
 
 bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::has_operation() const
 {
-    for (std::size_t index=0; index<inventory.size(); index++)
+    for (std::size_t index=0; index<inventory.len(); index++)
     {
         if(inventory[index]->has_operation())
             return true;
@@ -10315,7 +10481,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::Request
     {
         auto c = std::make_shared<Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory>();
         c->parent = this;
-        inventory.push_back(c);
+        inventory.append(c);
         return c;
     }
 
@@ -10327,7 +10493,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Reque
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : inventory)
+    for (auto c : inventory.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10361,9 +10527,11 @@ Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory
     boot_image_name{YType::str, "boot-image-name"},
     node_type{YType::uint64, "node-type"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"}
+        ,
+    load_path(this, {})
 {
 
-    yang_name = "inventory"; yang_parent_name = "inventories"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inventory"; yang_parent_name = "inventories"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::~Inventory()
@@ -10372,7 +10540,8 @@ Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory
 
 bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
@@ -10387,7 +10556,7 @@ bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inve
 
 bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
@@ -10404,7 +10573,8 @@ bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inve
 std::string Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "inventory" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "inventory";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -10429,7 +10599,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::Request
     {
         auto c = std::make_shared<Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -10441,7 +10611,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Reque
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10531,12 +10701,12 @@ Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-path"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::~LoadPath()
@@ -10545,6 +10715,7 @@ Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory
 
 bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -10643,7 +10814,7 @@ Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::~Package()
@@ -10652,6 +10823,7 @@ Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory
 
 bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -10731,12 +10903,12 @@ bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inve
 Install::SoftwareInventory::Active::Active()
     :
     summary(std::make_shared<Install::SoftwareInventory::Active::Summary>())
-	,inventories(std::make_shared<Install::SoftwareInventory::Active::Inventories>())
+    , inventories(std::make_shared<Install::SoftwareInventory::Active::Inventories>())
 {
     summary->parent = this;
     inventories->parent = this;
 
-    yang_name = "active"; yang_parent_name = "software-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "software-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::~Active()
@@ -10745,6 +10917,7 @@ Install::SoftwareInventory::Active::~Active()
 
 bool Install::SoftwareInventory::Active::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (inventories !=  nullptr && inventories->has_data());
 }
@@ -10837,12 +11010,14 @@ bool Install::SoftwareInventory::Active::has_leaf_or_child_of_name(const std::st
 Install::SoftwareInventory::Active::Summary::Summary()
     :
     default_load_path(std::make_shared<Install::SoftwareInventory::Active::Summary::DefaultLoadPath>())
-	,admin_load_path(std::make_shared<Install::SoftwareInventory::Active::Summary::AdminLoadPath>())
+    , admin_load_path(std::make_shared<Install::SoftwareInventory::Active::Summary::AdminLoadPath>())
+    , sdr_load_path(this, {})
+    , location_load_path(this, {})
 {
     default_load_path->parent = this;
     admin_load_path->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::~Summary()
@@ -10851,12 +11026,13 @@ Install::SoftwareInventory::Active::Summary::~Summary()
 
 bool Install::SoftwareInventory::Active::Summary::has_data() const
 {
-    for (std::size_t index=0; index<sdr_load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_load_path.len(); index++)
     {
         if(sdr_load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<location_load_path.size(); index++)
+    for (std::size_t index=0; index<location_load_path.len(); index++)
     {
         if(location_load_path[index]->has_data())
             return true;
@@ -10867,12 +11043,12 @@ bool Install::SoftwareInventory::Active::Summary::has_data() const
 
 bool Install::SoftwareInventory::Active::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_load_path.size(); index++)
+    for (std::size_t index=0; index<sdr_load_path.len(); index++)
     {
         if(sdr_load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<location_load_path.size(); index++)
+    for (std::size_t index=0; index<location_load_path.len(); index++)
     {
         if(location_load_path[index]->has_operation())
             return true;
@@ -10929,7 +11105,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::get_child_b
     {
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::SdrLoadPath>();
         c->parent = this;
-        sdr_load_path.push_back(c);
+        sdr_load_path.append(c);
         return c;
     }
 
@@ -10937,7 +11113,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::get_child_b
     {
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::LocationLoadPath>();
         c->parent = this;
-        location_load_path.push_back(c);
+        location_load_path.append(c);
         return c;
     }
 
@@ -10959,7 +11135,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
     }
 
     count = 0;
-    for (auto const & c : sdr_load_path)
+    for (auto c : sdr_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10968,7 +11144,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
     }
 
     count = 0;
-    for (auto const & c : location_load_path)
+    for (auto c : location_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10999,9 +11175,12 @@ Install::SoftwareInventory::Active::Summary::DefaultLoadPath::DefaultLoadPath()
     request_id{YType::uint32, "request-id"},
     admin_match{YType::boolean, "admin-match"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"}
+        ,
+    load_path(this, {})
+    , standby_load_path(this, {})
 {
 
-    yang_name = "default-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::DefaultLoadPath::~DefaultLoadPath()
@@ -11010,12 +11189,13 @@ Install::SoftwareInventory::Active::Summary::DefaultLoadPath::~DefaultLoadPath()
 
 bool Install::SoftwareInventory::Active::Summary::DefaultLoadPath::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_data())
             return true;
@@ -11031,12 +11211,12 @@ bool Install::SoftwareInventory::Active::Summary::DefaultLoadPath::has_data() co
 
 bool Install::SoftwareInventory::Active::Summary::DefaultLoadPath::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_operation())
             return true;
@@ -11085,7 +11265,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::DefaultLoad
     {
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -11093,7 +11273,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::DefaultLoad
     {
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath>();
         c->parent = this;
-        standby_load_path.push_back(c);
+        standby_load_path.append(c);
         return c;
     }
 
@@ -11105,7 +11285,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11114,7 +11294,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
     }
 
     count = 0;
-    for (auto const & c : standby_load_path)
+    for (auto c : standby_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11172,12 +11352,12 @@ Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::LoadPath
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "default-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-path"; yang_parent_name = "default-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::~LoadPath()
@@ -11186,6 +11366,7 @@ Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::~LoadPat
 
 bool Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -11291,7 +11472,7 @@ Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package:
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package::~Package()
@@ -11300,6 +11481,7 @@ Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package:
 
 bool Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -11387,12 +11569,12 @@ Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::S
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "standby-load-path"; yang_parent_name = "default-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby-load-path"; yang_parent_name = "default-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::~StandbyLoadPath()
@@ -11401,6 +11583,7 @@ Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::~
 
 bool Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -11506,7 +11689,7 @@ Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::P
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::Package::~Package()
@@ -11515,6 +11698,7 @@ Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::P
 
 bool Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -11601,9 +11785,12 @@ bool Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPa
 Install::SoftwareInventory::Active::Summary::AdminLoadPath::AdminLoadPath()
     :
     request_id{YType::uint32, "request-id"}
+        ,
+    load_path(this, {})
+    , standby_load_path(this, {})
 {
 
-    yang_name = "admin-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "admin-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::AdminLoadPath::~AdminLoadPath()
@@ -11612,12 +11799,13 @@ Install::SoftwareInventory::Active::Summary::AdminLoadPath::~AdminLoadPath()
 
 bool Install::SoftwareInventory::Active::Summary::AdminLoadPath::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_data())
             return true;
@@ -11627,12 +11815,12 @@ bool Install::SoftwareInventory::Active::Summary::AdminLoadPath::has_data() cons
 
 bool Install::SoftwareInventory::Active::Summary::AdminLoadPath::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_operation())
             return true;
@@ -11671,7 +11859,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::AdminLoadPa
     {
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -11679,7 +11867,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::AdminLoadPa
     {
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath>();
         c->parent = this;
-        standby_load_path.push_back(c);
+        standby_load_path.append(c);
         return c;
     }
 
@@ -11691,7 +11879,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11700,7 +11888,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
     }
 
     count = 0;
-    for (auto const & c : standby_load_path)
+    for (auto c : standby_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11740,12 +11928,12 @@ Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::LoadPath()
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "admin-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-path"; yang_parent_name = "admin-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::~LoadPath()
@@ -11754,6 +11942,7 @@ Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::~LoadPath(
 
 bool Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -11859,7 +12048,7 @@ Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package::P
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package::~Package()
@@ -11868,6 +12057,7 @@ Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package::~
 
 bool Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -11955,12 +12145,12 @@ Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Sta
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "standby-load-path"; yang_parent_name = "admin-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby-load-path"; yang_parent_name = "admin-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::~StandbyLoadPath()
@@ -11969,6 +12159,7 @@ Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::~St
 
 bool Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -12074,7 +12265,7 @@ Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Pac
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Package::~Package()
@@ -12083,6 +12274,7 @@ Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Pac
 
 bool Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -12170,9 +12362,12 @@ Install::SoftwareInventory::Active::Summary::SdrLoadPath::SdrLoadPath()
     :
     request_id{YType::uint32, "request-id"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"}
+        ,
+    load_path(this, {})
+    , standby_load_path(this, {})
 {
 
-    yang_name = "sdr-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::SdrLoadPath::~SdrLoadPath()
@@ -12181,12 +12376,13 @@ Install::SoftwareInventory::Active::Summary::SdrLoadPath::~SdrLoadPath()
 
 bool Install::SoftwareInventory::Active::Summary::SdrLoadPath::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_data())
             return true;
@@ -12197,12 +12393,12 @@ bool Install::SoftwareInventory::Active::Summary::SdrLoadPath::has_data() const
 
 bool Install::SoftwareInventory::Active::Summary::SdrLoadPath::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_operation())
             return true;
@@ -12243,7 +12439,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::SdrLoadPath
     {
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -12251,7 +12447,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::SdrLoadPath
     {
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath>();
         c->parent = this;
-        standby_load_path.push_back(c);
+        standby_load_path.append(c);
         return c;
     }
 
@@ -12263,7 +12459,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12272,7 +12468,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
     }
 
     count = 0;
-    for (auto const & c : standby_load_path)
+    for (auto c : standby_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12322,12 +12518,12 @@ Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::LoadPath()
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "sdr-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-path"; yang_parent_name = "sdr-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::~LoadPath()
@@ -12336,6 +12532,7 @@ Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::~LoadPath()
 
 bool Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -12441,7 +12638,7 @@ Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package::Pac
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package::~Package()
@@ -12450,6 +12647,7 @@ Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package::~Pa
 
 bool Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -12537,12 +12735,12 @@ Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Stand
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "standby-load-path"; yang_parent_name = "sdr-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby-load-path"; yang_parent_name = "sdr-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::~StandbyLoadPath()
@@ -12551,6 +12749,7 @@ Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::~Stan
 
 bool Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -12656,7 +12855,7 @@ Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Packa
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Package::~Package()
@@ -12665,6 +12864,7 @@ Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Packa
 
 bool Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -12753,9 +12953,12 @@ Install::SoftwareInventory::Active::Summary::LocationLoadPath::LocationLoadPath(
     request_id{YType::uint32, "request-id"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"},
     node_name{YType::str, "node-name"}
+        ,
+    load_path(this, {})
+    , standby_load_path(this, {})
 {
 
-    yang_name = "location-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location-load-path"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::LocationLoadPath::~LocationLoadPath()
@@ -12764,12 +12967,13 @@ Install::SoftwareInventory::Active::Summary::LocationLoadPath::~LocationLoadPath
 
 bool Install::SoftwareInventory::Active::Summary::LocationLoadPath::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_data())
             return true;
@@ -12781,12 +12985,12 @@ bool Install::SoftwareInventory::Active::Summary::LocationLoadPath::has_data() c
 
 bool Install::SoftwareInventory::Active::Summary::LocationLoadPath::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<standby_load_path.size(); index++)
+    for (std::size_t index=0; index<standby_load_path.len(); index++)
     {
         if(standby_load_path[index]->has_operation())
             return true;
@@ -12829,7 +13033,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::LocationLoa
     {
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -12837,7 +13041,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::LocationLoa
     {
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath>();
         c->parent = this;
-        standby_load_path.push_back(c);
+        standby_load_path.append(c);
         return c;
     }
 
@@ -12849,7 +13053,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12858,7 +13062,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
     }
 
     count = 0;
-    for (auto const & c : standby_load_path)
+    for (auto c : standby_load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12918,12 +13122,12 @@ Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::LoadPat
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "location-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-path"; yang_parent_name = "location-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::~LoadPath()
@@ -12932,6 +13136,7 @@ Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::~LoadPa
 
 bool Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -13037,7 +13242,7 @@ Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package::~Package()
@@ -13046,6 +13251,7 @@ Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package
 
 bool Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -13133,12 +13339,12 @@ Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "standby-load-path"; yang_parent_name = "location-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby-load-path"; yang_parent_name = "location-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::~StandbyLoadPath()
@@ -13147,6 +13353,7 @@ Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::
 
 bool Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -13252,7 +13459,7 @@ Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "standby-load-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::Package::~Package()
@@ -13261,6 +13468,7 @@ Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::
 
 bool Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -13345,9 +13553,11 @@ bool Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadP
 }
 
 Install::SoftwareInventory::Active::Inventories::Inventories()
+    :
+    inventory(this, {"node_name"})
 {
 
-    yang_name = "inventories"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inventories"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Inventories::~Inventories()
@@ -13356,7 +13566,8 @@ Install::SoftwareInventory::Active::Inventories::~Inventories()
 
 bool Install::SoftwareInventory::Active::Inventories::has_data() const
 {
-    for (std::size_t index=0; index<inventory.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<inventory.len(); index++)
     {
         if(inventory[index]->has_data())
             return true;
@@ -13366,7 +13577,7 @@ bool Install::SoftwareInventory::Active::Inventories::has_data() const
 
 bool Install::SoftwareInventory::Active::Inventories::has_operation() const
 {
-    for (std::size_t index=0; index<inventory.size(); index++)
+    for (std::size_t index=0; index<inventory.len(); index++)
     {
         if(inventory[index]->has_operation())
             return true;
@@ -13403,7 +13614,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Inventories::get_chi
     {
         auto c = std::make_shared<Install::SoftwareInventory::Active::Inventories::Inventory>();
         c->parent = this;
-        inventory.push_back(c);
+        inventory.append(c);
         return c;
     }
 
@@ -13415,7 +13626,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : inventory)
+    for (auto c : inventory.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13449,9 +13660,11 @@ Install::SoftwareInventory::Active::Inventories::Inventory::Inventory()
     boot_image_name{YType::str, "boot-image-name"},
     node_type{YType::uint64, "node-type"},
     secure_domain_router_name{YType::str, "secure-domain-router-name"}
+        ,
+    load_path(this, {})
 {
 
-    yang_name = "inventory"; yang_parent_name = "inventories"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inventory"; yang_parent_name = "inventories"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::SoftwareInventory::Active::Inventories::Inventory::~Inventory()
@@ -13460,7 +13673,8 @@ Install::SoftwareInventory::Active::Inventories::Inventory::~Inventory()
 
 bool Install::SoftwareInventory::Active::Inventories::Inventory::has_data() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_data())
             return true;
@@ -13475,7 +13689,7 @@ bool Install::SoftwareInventory::Active::Inventories::Inventory::has_data() cons
 
 bool Install::SoftwareInventory::Active::Inventories::Inventory::has_operation() const
 {
-    for (std::size_t index=0; index<load_path.size(); index++)
+    for (std::size_t index=0; index<load_path.len(); index++)
     {
         if(load_path[index]->has_operation())
             return true;
@@ -13499,7 +13713,8 @@ std::string Install::SoftwareInventory::Active::Inventories::Inventory::get_abso
 std::string Install::SoftwareInventory::Active::Inventories::Inventory::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "inventory" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "inventory";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -13524,7 +13739,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Inventories::Invento
     {
         auto c = std::make_shared<Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath>();
         c->parent = this;
-        load_path.push_back(c);
+        load_path.append(c);
         return c;
     }
 
@@ -13536,7 +13751,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_path)
+    for (auto c : load_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13626,12 +13841,12 @@ Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::LoadPath()
     :
     version{YType::str, "version"},
     build_information{YType::str, "build-information"}
-    	,
+        ,
     package(std::make_shared<Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package>())
 {
     package->parent = this;
 
-    yang_name = "load-path"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-path"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::~LoadPath()
@@ -13640,6 +13855,7 @@ Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::~LoadPath(
 
 bool Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| build_information.is_set
 	|| (package !=  nullptr && package->has_data());
@@ -13738,7 +13954,7 @@ Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package::P
     name{YType::str, "name"}
 {
 
-    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "package"; yang_parent_name = "load-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package::~Package()
@@ -13747,6 +13963,7 @@ Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package::~
 
 bool Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| name.is_set;
 }
@@ -13826,12 +14043,12 @@ bool Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Packa
 Install::Issu::Issu()
     :
     card_inventories(std::make_shared<Install::Issu::CardInventories>())
-	,stage(std::make_shared<Install::Issu::Stage>())
+    , stage(std::make_shared<Install::Issu::Stage>())
 {
     card_inventories->parent = this;
     stage->parent = this;
 
-    yang_name = "issu"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "issu"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Issu::~Issu()
@@ -13840,6 +14057,7 @@ Install::Issu::~Issu()
 
 bool Install::Issu::has_data() const
 {
+    if (is_presence_container) return true;
     return (card_inventories !=  nullptr && card_inventories->has_data())
 	|| (stage !=  nullptr && stage->has_data());
 }
@@ -13930,9 +14148,11 @@ bool Install::Issu::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Install::Issu::CardInventories::CardInventories()
+    :
+    card_inventory(this, {"card_type_id"})
 {
 
-    yang_name = "card-inventories"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "card-inventories"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Issu::CardInventories::~CardInventories()
@@ -13941,7 +14161,8 @@ Install::Issu::CardInventories::~CardInventories()
 
 bool Install::Issu::CardInventories::has_data() const
 {
-    for (std::size_t index=0; index<card_inventory.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<card_inventory.len(); index++)
     {
         if(card_inventory[index]->has_data())
             return true;
@@ -13951,7 +14172,7 @@ bool Install::Issu::CardInventories::has_data() const
 
 bool Install::Issu::CardInventories::has_operation() const
 {
-    for (std::size_t index=0; index<card_inventory.size(); index++)
+    for (std::size_t index=0; index<card_inventory.len(); index++)
     {
         if(card_inventory[index]->has_operation())
             return true;
@@ -13988,7 +14209,7 @@ std::shared_ptr<Entity> Install::Issu::CardInventories::get_child_by_name(const 
     {
         auto c = std::make_shared<Install::Issu::CardInventories::CardInventory>();
         c->parent = this;
-        card_inventory.push_back(c);
+        card_inventory.append(c);
         return c;
     }
 
@@ -14000,7 +14221,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Issu::CardInventories::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : card_inventory)
+    for (auto c : card_inventory.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14029,9 +14250,11 @@ bool Install::Issu::CardInventories::has_leaf_or_child_of_name(const std::string
 Install::Issu::CardInventories::CardInventory::CardInventory()
     :
     card_type_id{YType::enumeration, "card-type-id"}
+        ,
+    summary(this, {})
 {
 
-    yang_name = "card-inventory"; yang_parent_name = "card-inventories"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "card-inventory"; yang_parent_name = "card-inventories"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Issu::CardInventories::CardInventory::~CardInventory()
@@ -14040,7 +14263,8 @@ Install::Issu::CardInventories::CardInventory::~CardInventory()
 
 bool Install::Issu::CardInventories::CardInventory::has_data() const
 {
-    for (std::size_t index=0; index<summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<summary.len(); index++)
     {
         if(summary[index]->has_data())
             return true;
@@ -14050,7 +14274,7 @@ bool Install::Issu::CardInventories::CardInventory::has_data() const
 
 bool Install::Issu::CardInventories::CardInventory::has_operation() const
 {
-    for (std::size_t index=0; index<summary.size(); index++)
+    for (std::size_t index=0; index<summary.len(); index++)
     {
         if(summary[index]->has_operation())
             return true;
@@ -14069,7 +14293,8 @@ std::string Install::Issu::CardInventories::CardInventory::get_absolute_path() c
 std::string Install::Issu::CardInventories::CardInventory::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "card-inventory" <<"[card-type-id='" <<card_type_id <<"']";
+    path_buffer << "card-inventory";
+    ADD_KEY_TOKEN(card_type_id, "card-type-id");
     return path_buffer.str();
 }
 
@@ -14089,7 +14314,7 @@ std::shared_ptr<Entity> Install::Issu::CardInventories::CardInventory::get_child
     {
         auto c = std::make_shared<Install::Issu::CardInventories::CardInventory::Summary>();
         c->parent = this;
-        summary.push_back(c);
+        summary.append(c);
         return c;
     }
 
@@ -14101,7 +14326,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Issu::CardInventories::C
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : summary)
+    for (auto c : summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14153,7 +14378,7 @@ Install::Issu::CardInventories::CardInventory::Summary::Summary()
     is_node_upgraded{YType::boolean, "is-node-upgraded"}
 {
 
-    yang_name = "summary"; yang_parent_name = "card-inventory"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "card-inventory"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Issu::CardInventories::CardInventory::Summary::~Summary()
@@ -14162,6 +14387,7 @@ Install::Issu::CardInventories::CardInventory::Summary::~Summary()
 
 bool Install::Issu::CardInventories::CardInventory::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| partner_node_name.is_set
 	|| node_state.is_set
@@ -14381,18 +14607,18 @@ Install::Issu::Stage::Stage()
     num_of_nodes_in_load{YType::uint32, "num-of-nodes-in-load"},
     num_of_nodes_in_run{YType::uint32, "num-of-nodes-in-run"},
     numof_nc_nodes{YType::uint32, "numof-nc-nodes"}
-    	,
+        ,
     node_in_progress(std::make_shared<Install::Issu::Stage::NodeInProgress>())
-	,nodes_in_load(std::make_shared<Install::Issu::Stage::NodesInLoad>())
-	,nodes_in_run(std::make_shared<Install::Issu::Stage::NodesInRun>())
-	,nc_nodes(std::make_shared<Install::Issu::Stage::NcNodes>())
+    , nodes_in_load(std::make_shared<Install::Issu::Stage::NodesInLoad>())
+    , nodes_in_run(std::make_shared<Install::Issu::Stage::NodesInRun>())
+    , nc_nodes(std::make_shared<Install::Issu::Stage::NcNodes>())
 {
     node_in_progress->parent = this;
     nodes_in_load->parent = this;
     nodes_in_run->parent = this;
     nc_nodes->parent = this;
 
-    yang_name = "stage"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stage"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Issu::Stage::~Stage()
@@ -14401,6 +14627,7 @@ Install::Issu::Stage::~Stage()
 
 bool Install::Issu::Stage::has_data() const
 {
+    if (is_presence_container) return true;
     return issu_state.is_set
 	|| issu_op_id.is_set
 	|| percentage.is_set
@@ -14670,7 +14897,7 @@ Install::Issu::Stage::NodeInProgress::NodeInProgress()
     node{YType::str, "node"}
 {
 
-    yang_name = "node-in-progress"; yang_parent_name = "stage"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-in-progress"; yang_parent_name = "stage"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Issu::Stage::NodeInProgress::~NodeInProgress()
@@ -14679,6 +14906,7 @@ Install::Issu::Stage::NodeInProgress::~NodeInProgress()
 
 bool Install::Issu::Stage::NodeInProgress::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : node.getYLeafs())
     {
         if(leaf.is_set)
@@ -14763,7 +14991,7 @@ Install::Issu::Stage::NodesInLoad::NodesInLoad()
     node{YType::str, "node"}
 {
 
-    yang_name = "nodes-in-load"; yang_parent_name = "stage"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes-in-load"; yang_parent_name = "stage"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Issu::Stage::NodesInLoad::~NodesInLoad()
@@ -14772,6 +15000,7 @@ Install::Issu::Stage::NodesInLoad::~NodesInLoad()
 
 bool Install::Issu::Stage::NodesInLoad::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : node.getYLeafs())
     {
         if(leaf.is_set)
@@ -14856,7 +15085,7 @@ Install::Issu::Stage::NodesInRun::NodesInRun()
     node{YType::str, "node"}
 {
 
-    yang_name = "nodes-in-run"; yang_parent_name = "stage"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes-in-run"; yang_parent_name = "stage"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Issu::Stage::NodesInRun::~NodesInRun()
@@ -14865,6 +15094,7 @@ Install::Issu::Stage::NodesInRun::~NodesInRun()
 
 bool Install::Issu::Stage::NodesInRun::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : node.getYLeafs())
     {
         if(leaf.is_set)
@@ -14949,7 +15179,7 @@ Install::Issu::Stage::NcNodes::NcNodes()
     node{YType::str, "node"}
 {
 
-    yang_name = "nc-nodes"; yang_parent_name = "stage"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nc-nodes"; yang_parent_name = "stage"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Issu::Stage::NcNodes::~NcNodes()
@@ -14958,6 +15188,7 @@ Install::Issu::Stage::NcNodes::~NcNodes()
 
 bool Install::Issu::Stage::NcNodes::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : node.getYLeafs())
     {
         if(leaf.is_set)
@@ -15042,7 +15273,7 @@ Install::BootImage::BootImage()
     system_image_file{YType::str, "system-image-file"}
 {
 
-    yang_name = "boot-image"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "boot-image"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::BootImage::~BootImage()
@@ -15051,6 +15282,7 @@ Install::BootImage::~BootImage()
 
 bool Install::BootImage::has_data() const
 {
+    if (is_presence_container) return true;
     return system_image_file.is_set;
 }
 
@@ -15122,9 +15354,11 @@ bool Install::BootImage::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 Install::Logs::Logs()
+    :
+    log(this, {"request_id"})
 {
 
-    yang_name = "logs"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logs"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Logs::~Logs()
@@ -15133,7 +15367,8 @@ Install::Logs::~Logs()
 
 bool Install::Logs::has_data() const
 {
-    for (std::size_t index=0; index<log.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log.len(); index++)
     {
         if(log[index]->has_data())
             return true;
@@ -15143,7 +15378,7 @@ bool Install::Logs::has_data() const
 
 bool Install::Logs::has_operation() const
 {
-    for (std::size_t index=0; index<log.size(); index++)
+    for (std::size_t index=0; index<log.len(); index++)
     {
         if(log[index]->has_operation())
             return true;
@@ -15180,7 +15415,7 @@ std::shared_ptr<Entity> Install::Logs::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Install::Logs::Log>();
         c->parent = this;
-        log.push_back(c);
+        log.append(c);
         return c;
     }
 
@@ -15192,7 +15427,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Logs::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log)
+    for (auto c : log.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15221,9 +15456,16 @@ bool Install::Logs::has_leaf_or_child_of_name(const std::string & name) const
 Install::Logs::Log::Log()
     :
     request_id{YType::int32, "request-id"}
+        ,
+    header(this, {})
+    , summary(this, {})
+    , message(this, {})
+    , change(this, {})
+    , detail(this, {})
+    , communication(this, {})
 {
 
-    yang_name = "log"; yang_parent_name = "logs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "log"; yang_parent_name = "logs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Install::Logs::Log::~Log()
@@ -15232,32 +15474,33 @@ Install::Logs::Log::~Log()
 
 bool Install::Logs::Log::has_data() const
 {
-    for (std::size_t index=0; index<header.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<header.len(); index++)
     {
         if(header[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<summary.size(); index++)
+    for (std::size_t index=0; index<summary.len(); index++)
     {
         if(summary[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<message.size(); index++)
+    for (std::size_t index=0; index<message.len(); index++)
     {
         if(message[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<change.size(); index++)
+    for (std::size_t index=0; index<change.len(); index++)
     {
         if(change[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<communication.size(); index++)
+    for (std::size_t index=0; index<communication.len(); index++)
     {
         if(communication[index]->has_data())
             return true;
@@ -15267,32 +15510,32 @@ bool Install::Logs::Log::has_data() const
 
 bool Install::Logs::Log::has_operation() const
 {
-    for (std::size_t index=0; index<header.size(); index++)
+    for (std::size_t index=0; index<header.len(); index++)
     {
         if(header[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<summary.size(); index++)
+    for (std::size_t index=0; index<summary.len(); index++)
     {
         if(summary[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<message.size(); index++)
+    for (std::size_t index=0; index<message.len(); index++)
     {
         if(message[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<change.size(); index++)
+    for (std::size_t index=0; index<change.len(); index++)
     {
         if(change[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<communication.size(); index++)
+    for (std::size_t index=0; index<communication.len(); index++)
     {
         if(communication[index]->has_operation())
             return true;
@@ -15311,7 +15554,8 @@ std::string Install::Logs::Log::get_absolute_path() const
 std::string Install::Logs::Log::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "log" <<"[request-id='" <<request_id <<"']";
+    path_buffer << "log";
+    ADD_KEY_TOKEN(request_id, "request-id");
     return path_buffer.str();
 }
 
@@ -15331,7 +15575,7 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Install::Logs::Log::Header>();
         c->parent = this;
-        header.push_back(c);
+        header.append(c);
         return c;
     }
 
@@ -15339,7 +15583,7 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Install::Logs::Log::Summary>();
         c->parent = this;
-        summary.push_back(c);
+        summary.append(c);
         return c;
     }
 
@@ -15347,7 +15591,7 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Install::Logs::Log::Message>();
         c->parent = this;
-        message.push_back(c);
+        message.append(c);
         return c;
     }
 
@@ -15355,7 +15599,7 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Install::Logs::Log::Change>();
         c->parent = this;
-        change.push_back(c);
+        change.append(c);
         return c;
     }
 
@@ -15363,7 +15607,7 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Install::Logs::Log::Detail>();
         c->parent = this;
-        detail.push_back(c);
+        detail.append(c);
         return c;
     }
 
@@ -15371,7 +15615,7 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Install::Logs::Log::Communication>();
         c->parent = this;
-        communication.push_back(c);
+        communication.append(c);
         return c;
     }
 
@@ -15383,7 +15627,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : header)
+    for (auto c : header.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15392,7 +15636,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::get_children(
     }
 
     count = 0;
-    for (auto const & c : summary)
+    for (auto c : summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15401,7 +15645,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::get_children(
     }
 
     count = 0;
-    for (auto const & c : message)
+    for (auto c : message.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15410,7 +15654,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::get_children(
     }
 
     count = 0;
-    for (auto const & c : change)
+    for (auto c : change.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15419,7 +15663,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::get_children(
     }
 
     count = 0;
-    for (auto const & c : detail)
+    for (auto c : detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15428,7 +15672,7 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::get_children(
     }
 
     count = 0;
-    for (auto const & c : communication)
+    for (auto c : communication.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15470,7 +15714,7 @@ Install::Logs::Log::Header::Header()
 {
     log_contents->parent = this;
 
-    yang_name = "header"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Header::~Header()
@@ -15479,6 +15723,7 @@ Install::Logs::Log::Header::~Header()
 
 bool Install::Logs::Log::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return (log_contents !=  nullptr && log_contents->has_data());
 }
 
@@ -15548,12 +15793,12 @@ bool Install::Logs::Log::Header::has_leaf_or_child_of_name(const std::string & n
 Install::Logs::Log::Header::LogContents::LogContents()
     :
     version{YType::uint32, "version"}
-    	,
+        ,
     v3(std::make_shared<Install::Logs::Log::Header::LogContents::V3>())
 {
     v3->parent = this;
 
-    yang_name = "log-contents"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-contents"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Header::LogContents::~LogContents()
@@ -15562,6 +15807,7 @@ Install::Logs::Log::Header::LogContents::~LogContents()
 
 bool Install::Logs::Log::Header::LogContents::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| (v3 !=  nullptr && v3->has_data());
 }
@@ -15645,12 +15891,12 @@ Install::Logs::Log::Header::LogContents::V3::V3()
     :
     category{YType::enumeration, "category"},
     message{YType::str, "message"}
-    	,
+        ,
     scope(std::make_shared<Install::Logs::Log::Header::LogContents::V3::Scope>())
 {
     scope->parent = this;
 
-    yang_name = "v3"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v3"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Header::LogContents::V3::~V3()
@@ -15659,6 +15905,7 @@ Install::Logs::Log::Header::LogContents::V3::~V3()
 
 bool Install::Logs::Log::Header::LogContents::V3::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| message.is_set
 	|| (scope !=  nullptr && scope->has_data());
@@ -15757,7 +16004,7 @@ Install::Logs::Log::Header::LogContents::V3::Scope::Scope()
     affected_sd_rs{YType::uint32, "affected-sd-rs"}
 {
 
-    yang_name = "scope"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Header::LogContents::V3::Scope::~Scope()
@@ -15766,6 +16013,7 @@ Install::Logs::Log::Header::LogContents::V3::Scope::~Scope()
 
 bool Install::Logs::Log::Header::LogContents::V3::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return admin_read.is_set
 	|| affected_sd_rs.is_set;
 }
@@ -15848,7 +16096,7 @@ Install::Logs::Log::Summary::Summary()
 {
     log_contents->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Summary::~Summary()
@@ -15857,6 +16105,7 @@ Install::Logs::Log::Summary::~Summary()
 
 bool Install::Logs::Log::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return (log_contents !=  nullptr && log_contents->has_data());
 }
 
@@ -15926,12 +16175,12 @@ bool Install::Logs::Log::Summary::has_leaf_or_child_of_name(const std::string & 
 Install::Logs::Log::Summary::LogContents::LogContents()
     :
     version{YType::uint32, "version"}
-    	,
+        ,
     v3(std::make_shared<Install::Logs::Log::Summary::LogContents::V3>())
 {
     v3->parent = this;
 
-    yang_name = "log-contents"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-contents"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Summary::LogContents::~LogContents()
@@ -15940,6 +16189,7 @@ Install::Logs::Log::Summary::LogContents::~LogContents()
 
 bool Install::Logs::Log::Summary::LogContents::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| (v3 !=  nullptr && v3->has_data());
 }
@@ -16023,12 +16273,12 @@ Install::Logs::Log::Summary::LogContents::V3::V3()
     :
     category{YType::enumeration, "category"},
     message{YType::str, "message"}
-    	,
+        ,
     scope(std::make_shared<Install::Logs::Log::Summary::LogContents::V3::Scope>())
 {
     scope->parent = this;
 
-    yang_name = "v3"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v3"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Summary::LogContents::V3::~V3()
@@ -16037,6 +16287,7 @@ Install::Logs::Log::Summary::LogContents::V3::~V3()
 
 bool Install::Logs::Log::Summary::LogContents::V3::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| message.is_set
 	|| (scope !=  nullptr && scope->has_data());
@@ -16135,7 +16386,7 @@ Install::Logs::Log::Summary::LogContents::V3::Scope::Scope()
     affected_sd_rs{YType::uint32, "affected-sd-rs"}
 {
 
-    yang_name = "scope"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Summary::LogContents::V3::Scope::~Scope()
@@ -16144,6 +16395,7 @@ Install::Logs::Log::Summary::LogContents::V3::Scope::~Scope()
 
 bool Install::Logs::Log::Summary::LogContents::V3::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return admin_read.is_set
 	|| affected_sd_rs.is_set;
 }
@@ -16226,7 +16478,7 @@ Install::Logs::Log::Message::Message()
 {
     log_contents->parent = this;
 
-    yang_name = "message"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "message"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Message::~Message()
@@ -16235,6 +16487,7 @@ Install::Logs::Log::Message::~Message()
 
 bool Install::Logs::Log::Message::has_data() const
 {
+    if (is_presence_container) return true;
     return (log_contents !=  nullptr && log_contents->has_data());
 }
 
@@ -16304,12 +16557,12 @@ bool Install::Logs::Log::Message::has_leaf_or_child_of_name(const std::string & 
 Install::Logs::Log::Message::LogContents::LogContents()
     :
     version{YType::uint32, "version"}
-    	,
+        ,
     v3(std::make_shared<Install::Logs::Log::Message::LogContents::V3>())
 {
     v3->parent = this;
 
-    yang_name = "log-contents"; yang_parent_name = "message"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-contents"; yang_parent_name = "message"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Message::LogContents::~LogContents()
@@ -16318,6 +16571,7 @@ Install::Logs::Log::Message::LogContents::~LogContents()
 
 bool Install::Logs::Log::Message::LogContents::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| (v3 !=  nullptr && v3->has_data());
 }
@@ -16401,12 +16655,12 @@ Install::Logs::Log::Message::LogContents::V3::V3()
     :
     category{YType::enumeration, "category"},
     message{YType::str, "message"}
-    	,
+        ,
     scope(std::make_shared<Install::Logs::Log::Message::LogContents::V3::Scope>())
 {
     scope->parent = this;
 
-    yang_name = "v3"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v3"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Message::LogContents::V3::~V3()
@@ -16415,6 +16669,7 @@ Install::Logs::Log::Message::LogContents::V3::~V3()
 
 bool Install::Logs::Log::Message::LogContents::V3::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| message.is_set
 	|| (scope !=  nullptr && scope->has_data());
@@ -16513,7 +16768,7 @@ Install::Logs::Log::Message::LogContents::V3::Scope::Scope()
     affected_sd_rs{YType::uint32, "affected-sd-rs"}
 {
 
-    yang_name = "scope"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Message::LogContents::V3::Scope::~Scope()
@@ -16522,6 +16777,7 @@ Install::Logs::Log::Message::LogContents::V3::Scope::~Scope()
 
 bool Install::Logs::Log::Message::LogContents::V3::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return admin_read.is_set
 	|| affected_sd_rs.is_set;
 }
@@ -16604,7 +16860,7 @@ Install::Logs::Log::Change::Change()
 {
     log_contents->parent = this;
 
-    yang_name = "change"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "change"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Change::~Change()
@@ -16613,6 +16869,7 @@ Install::Logs::Log::Change::~Change()
 
 bool Install::Logs::Log::Change::has_data() const
 {
+    if (is_presence_container) return true;
     return (log_contents !=  nullptr && log_contents->has_data());
 }
 
@@ -16682,12 +16939,12 @@ bool Install::Logs::Log::Change::has_leaf_or_child_of_name(const std::string & n
 Install::Logs::Log::Change::LogContents::LogContents()
     :
     version{YType::uint32, "version"}
-    	,
+        ,
     v3(std::make_shared<Install::Logs::Log::Change::LogContents::V3>())
 {
     v3->parent = this;
 
-    yang_name = "log-contents"; yang_parent_name = "change"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-contents"; yang_parent_name = "change"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Change::LogContents::~LogContents()
@@ -16696,6 +16953,7 @@ Install::Logs::Log::Change::LogContents::~LogContents()
 
 bool Install::Logs::Log::Change::LogContents::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| (v3 !=  nullptr && v3->has_data());
 }
@@ -16779,12 +17037,12 @@ Install::Logs::Log::Change::LogContents::V3::V3()
     :
     category{YType::enumeration, "category"},
     message{YType::str, "message"}
-    	,
+        ,
     scope(std::make_shared<Install::Logs::Log::Change::LogContents::V3::Scope>())
 {
     scope->parent = this;
 
-    yang_name = "v3"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v3"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Change::LogContents::V3::~V3()
@@ -16793,6 +17051,7 @@ Install::Logs::Log::Change::LogContents::V3::~V3()
 
 bool Install::Logs::Log::Change::LogContents::V3::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| message.is_set
 	|| (scope !=  nullptr && scope->has_data());
@@ -16891,7 +17150,7 @@ Install::Logs::Log::Change::LogContents::V3::Scope::Scope()
     affected_sd_rs{YType::uint32, "affected-sd-rs"}
 {
 
-    yang_name = "scope"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Change::LogContents::V3::Scope::~Scope()
@@ -16900,6 +17159,7 @@ Install::Logs::Log::Change::LogContents::V3::Scope::~Scope()
 
 bool Install::Logs::Log::Change::LogContents::V3::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return admin_read.is_set
 	|| affected_sd_rs.is_set;
 }
@@ -16982,7 +17242,7 @@ Install::Logs::Log::Detail::Detail()
 {
     log_contents->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Detail::~Detail()
@@ -16991,6 +17251,7 @@ Install::Logs::Log::Detail::~Detail()
 
 bool Install::Logs::Log::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return (log_contents !=  nullptr && log_contents->has_data());
 }
 
@@ -17060,12 +17321,12 @@ bool Install::Logs::Log::Detail::has_leaf_or_child_of_name(const std::string & n
 Install::Logs::Log::Detail::LogContents::LogContents()
     :
     version{YType::uint32, "version"}
-    	,
+        ,
     v3(std::make_shared<Install::Logs::Log::Detail::LogContents::V3>())
 {
     v3->parent = this;
 
-    yang_name = "log-contents"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-contents"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Detail::LogContents::~LogContents()
@@ -17074,6 +17335,7 @@ Install::Logs::Log::Detail::LogContents::~LogContents()
 
 bool Install::Logs::Log::Detail::LogContents::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| (v3 !=  nullptr && v3->has_data());
 }
@@ -17157,12 +17419,12 @@ Install::Logs::Log::Detail::LogContents::V3::V3()
     :
     category{YType::enumeration, "category"},
     message{YType::str, "message"}
-    	,
+        ,
     scope(std::make_shared<Install::Logs::Log::Detail::LogContents::V3::Scope>())
 {
     scope->parent = this;
 
-    yang_name = "v3"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v3"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Detail::LogContents::V3::~V3()
@@ -17171,6 +17433,7 @@ Install::Logs::Log::Detail::LogContents::V3::~V3()
 
 bool Install::Logs::Log::Detail::LogContents::V3::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| message.is_set
 	|| (scope !=  nullptr && scope->has_data());
@@ -17269,7 +17532,7 @@ Install::Logs::Log::Detail::LogContents::V3::Scope::Scope()
     affected_sd_rs{YType::uint32, "affected-sd-rs"}
 {
 
-    yang_name = "scope"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Detail::LogContents::V3::Scope::~Scope()
@@ -17278,6 +17541,7 @@ Install::Logs::Log::Detail::LogContents::V3::Scope::~Scope()
 
 bool Install::Logs::Log::Detail::LogContents::V3::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return admin_read.is_set
 	|| affected_sd_rs.is_set;
 }
@@ -17360,7 +17624,7 @@ Install::Logs::Log::Communication::Communication()
 {
     log_contents->parent = this;
 
-    yang_name = "communication"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "communication"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Communication::~Communication()
@@ -17369,6 +17633,7 @@ Install::Logs::Log::Communication::~Communication()
 
 bool Install::Logs::Log::Communication::has_data() const
 {
+    if (is_presence_container) return true;
     return (log_contents !=  nullptr && log_contents->has_data());
 }
 
@@ -17438,12 +17703,12 @@ bool Install::Logs::Log::Communication::has_leaf_or_child_of_name(const std::str
 Install::Logs::Log::Communication::LogContents::LogContents()
     :
     version{YType::uint32, "version"}
-    	,
+        ,
     v3(std::make_shared<Install::Logs::Log::Communication::LogContents::V3>())
 {
     v3->parent = this;
 
-    yang_name = "log-contents"; yang_parent_name = "communication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-contents"; yang_parent_name = "communication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Communication::LogContents::~LogContents()
@@ -17452,6 +17717,7 @@ Install::Logs::Log::Communication::LogContents::~LogContents()
 
 bool Install::Logs::Log::Communication::LogContents::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| (v3 !=  nullptr && v3->has_data());
 }
@@ -17531,6 +17797,21 @@ bool Install::Logs::Log::Communication::LogContents::has_leaf_or_child_of_name(c
     return false;
 }
 
+const Enum::YLeaf InstmgrIssuAbortMethod::method_undefined {0, "method-undefined"};
+const Enum::YLeaf InstmgrIssuAbortMethod::method_no_operation {1, "method-no-operation"};
+const Enum::YLeaf InstmgrIssuAbortMethod::method_standby_reload {2, "method-standby-reload"};
+const Enum::YLeaf InstmgrIssuAbortMethod::method_system_reload {3, "method-system-reload"};
+const Enum::YLeaf InstmgrIssuAbortMethod::method_rollback {4, "method-rollback"};
+const Enum::YLeaf InstmgrIssuAbortMethod::method_not_possible {5, "method-not-possible"};
+const Enum::YLeaf InstmgrIssuAbortMethod::method_admin_only {6, "method-admin-only"};
+
+const Enum::YLeaf InstmgrBagRequestTrigger::cli {1, "cli"};
+const Enum::YLeaf InstmgrBagRequestTrigger::xr_xml {2, "xr-xml"};
+
+const Enum::YLeaf InstmgrGroup::inst_pkg_group_undefined {0, "inst-pkg-group-undefined"};
+const Enum::YLeaf InstmgrGroup::inst_pkg_group_grouped {1, "inst-pkg-group-grouped"};
+const Enum::YLeaf InstmgrGroup::inst_pkg_group_individual {2, "inst-pkg-group-individual"};
+
 const Enum::YLeaf IsmCardTypeFamily::ndsc_active_rp {1, "ndsc-active-rp"};
 const Enum::YLeaf IsmCardTypeFamily::ndsc_standby_rp {2, "ndsc-standby-rp"};
 const Enum::YLeaf IsmCardTypeFamily::active_drp {3, "active-drp"};
@@ -17546,44 +17827,30 @@ const Enum::YLeaf IsmCardTypeFamily::sp {12, "sp"};
 const Enum::YLeaf IsmCardTypeFamily::fabric_sp {13, "fabric-sp"};
 const Enum::YLeaf IsmCardTypeFamily::spa {14, "spa"};
 
-const Enum::YLeaf InstmgrIsmFsmState::idle {0, "idle"};
-const Enum::YLeaf InstmgrIsmFsmState::init_done {1, "init-done"};
-const Enum::YLeaf InstmgrIsmFsmState::load_shut {2, "load-shut"};
-const Enum::YLeaf InstmgrIsmFsmState::load_wait {3, "load-wait"};
-const Enum::YLeaf InstmgrIsmFsmState::load_stp_root_before {4, "load-stp-root-before"};
-const Enum::YLeaf InstmgrIsmFsmState::load_standby_root_sc_upgrade {5, "load-standby-root-sc-upgrade"};
-const Enum::YLeaf InstmgrIsmFsmState::load_standby_management_upgrade {6, "load-standby-management-upgrade"};
-const Enum::YLeaf InstmgrIsmFsmState::load_stp_root_after {7, "load-stp-root-after"};
-const Enum::YLeaf InstmgrIsmFsmState::load_fabric_upgrade {8, "load-fabric-upgrade"};
-const Enum::YLeaf InstmgrIsmFsmState::load_management_issu_ready {9, "load-management-issu-ready"};
-const Enum::YLeaf InstmgrIsmFsmState::load_done {10, "load-done"};
-const Enum::YLeaf InstmgrIsmFsmState::run_prep {11, "run-prep"};
-const Enum::YLeaf InstmgrIsmFsmState::run_wait {12, "run-wait"};
-const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_prep {13, "runi-mdr-prep"};
-const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_start {14, "runi-mdr-start"};
-const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_complete {15, "runi-mdr-complete"};
-const Enum::YLeaf InstmgrIsmFsmState::run_make_standby_ready {16, "run-make-standby-ready"};
-const Enum::YLeaf InstmgrIsmFsmState::run_root_scfo {17, "run-root-scfo"};
-const Enum::YLeaf InstmgrIsmFsmState::run_ndscfo {18, "run-ndscfo"};
-const Enum::YLeaf InstmgrIsmFsmState::run_transient1 {19, "run-transient1"};
-const Enum::YLeaf InstmgrIsmFsmState::run_dscfo {20, "run-dscfo"};
-const Enum::YLeaf InstmgrIsmFsmState::run_fo_complete {21, "run-fo-complete"};
-const Enum::YLeaf InstmgrIsmFsmState::run_stp_root_return {22, "run-stp-root-return"};
-const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_continue {23, "runi-mdr-continue"};
-const Enum::YLeaf InstmgrIsmFsmState::run_am_i_ready_afteri_mdr {24, "run-am-i-ready-afteri-mdr"};
-const Enum::YLeaf InstmgrIsmFsmState::run_nsf_ready {25, "run-nsf-ready"};
-const Enum::YLeaf InstmgrIsmFsmState::run_nsf_begin {26, "run-nsf-begin"};
-const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_done {27, "runi-mdr-done"};
-const Enum::YLeaf InstmgrIsmFsmState::run_management_issu_ready {28, "run-management-issu-ready"};
-const Enum::YLeaf InstmgrIsmFsmState::run_un_shut {29, "run-un-shut"};
-const Enum::YLeaf InstmgrIsmFsmState::run_is_done {30, "run-is-done"};
-const Enum::YLeaf InstmgrIsmFsmState::state_max {31, "state-max"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::user_error {1, "user-error"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::non_specific {2, "non-specific"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::warning {3, "warning"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::information {4, "information"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::user_prompt {5, "user-prompt"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::log {6, "log"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::system_error {7, "system-error"};
+const Enum::YLeaf InstmgrBagUserMsgCategory::user_response {8, "user-response"};
 
 const Enum::YLeaf InstallmgrIsmNodeConforming::conforming {0, "conforming"};
 const Enum::YLeaf InstallmgrIsmNodeConforming::none_conforming {1, "none-conforming"};
 const Enum::YLeaf InstallmgrIsmNodeConforming::upgrade_fail {2, "upgrade-fail"};
 const Enum::YLeaf InstallmgrIsmNodeConforming::none_conforming_spa {3, "none-conforming-spa"};
 const Enum::YLeaf InstallmgrIsmNodeConforming::spa_upgrade_fail {4, "spa-upgrade-fail"};
+
+const Enum::YLeaf InstmgrInstallPhase::inst_phase_unknown {0, "inst-phase-unknown"};
+const Enum::YLeaf InstmgrInstallPhase::inst_phase_download {10, "inst-phase-download"};
+const Enum::YLeaf InstmgrInstallPhase::inst_phase_sw_change {50, "inst-phase-sw-change"};
+const Enum::YLeaf InstmgrInstallPhase::inst_phase_cleaning_up {1000, "inst-phase-cleaning-up"};
+
+const Enum::YLeaf InstmgrIssuAbortImpact::undefined {0, "undefined"};
+const Enum::YLeaf InstmgrIssuAbortImpact::hitless {1, "hitless"};
+const Enum::YLeaf InstmgrIssuAbortImpact::traffic_outage {2, "traffic-outage"};
+const Enum::YLeaf InstmgrIssuAbortImpact::not_applicable {3, "not-applicable"};
 
 const Enum::YLeaf InstmgrIsmNodeState::none {0, "none"};
 const Enum::YLeaf InstmgrIsmNodeState::issu_node_gsp_ready {1, "issu-node-gsp-ready"};
@@ -17618,17 +17885,10 @@ const Enum::YLeaf InstmgrIsmNodeState::unsupported_hw {29, "unsupported-hw"};
 const Enum::YLeaf InstmgrIsmNodeState::not_reachable {30, "not-reachable"};
 const Enum::YLeaf InstmgrIsmNodeState::max {32, "max"};
 
-const Enum::YLeaf InstmgrPiCard::type_rp {0, "type-rp"};
-const Enum::YLeaf InstmgrPiCard::type_drp {1, "type-drp"};
-const Enum::YLeaf InstmgrPiCard::type_lc {2, "type-lc"};
-const Enum::YLeaf InstmgrPiCard::type_sc {3, "type-sc"};
-const Enum::YLeaf InstmgrPiCard::type_sp {4, "type-sp"};
-const Enum::YLeaf InstmgrPiCard::type_other {5, "type-other"};
-
-const Enum::YLeaf InstmgrNodeRole::redundency_unknown {0, "redundency-unknown"};
-const Enum::YLeaf InstmgrNodeRole::redundency_active {1, "redundency-active"};
-const Enum::YLeaf InstmgrNodeRole::redundency_standby {2, "redundency-standby"};
-const Enum::YLeaf InstmgrNodeRole::redundency_unusable {3, "redundency-unusable"};
+const Enum::YLeaf InstmgrPkg::inst_pkg_type_undefined {0, "inst-pkg-type-undefined"};
+const Enum::YLeaf InstmgrPkg::inst_pkg_type_root {1, "inst-pkg-type-root"};
+const Enum::YLeaf InstmgrPkg::inst_pkg_type_standard {2, "inst-pkg-type-standard"};
+const Enum::YLeaf InstmgrPkg::inst_pkg_type_internal {3, "inst-pkg-type-internal"};
 
 const Enum::YLeaf InstmgrCardState::instmgr_card_not_present {0, "instmgr-card-not-present"};
 const Enum::YLeaf InstmgrCardState::instmgr_card_present {1, "instmgr-card-present"};
@@ -17669,56 +17929,10 @@ const Enum::YLeaf InstmgrCardState::instmgr_card_fpd_hold {35, "instmgr-card-fpd
 const Enum::YLeaf InstmgrCardState::instmgr_card_updating_fpd {37, "instmgr-card-updating-fpd"};
 const Enum::YLeaf InstmgrCardState::instmgr_card_num_states {38, "instmgr-card-num-states"};
 
-const Enum::YLeaf InstmgrGroup::inst_pkg_group_undefined {0, "inst-pkg-group-undefined"};
-const Enum::YLeaf InstmgrGroup::inst_pkg_group_grouped {1, "inst-pkg-group-grouped"};
-const Enum::YLeaf InstmgrGroup::inst_pkg_group_individual {2, "inst-pkg-group-individual"};
-
-const Enum::YLeaf InstmgrPkg::inst_pkg_type_undefined {0, "inst-pkg-type-undefined"};
-const Enum::YLeaf InstmgrPkg::inst_pkg_type_root {1, "inst-pkg-type-root"};
-const Enum::YLeaf InstmgrPkg::inst_pkg_type_standard {2, "inst-pkg-type-standard"};
-const Enum::YLeaf InstmgrPkg::inst_pkg_type_internal {3, "inst-pkg-type-internal"};
-
-const Enum::YLeaf InstmgrInstallPhase::inst_phase_unknown {0, "inst-phase-unknown"};
-const Enum::YLeaf InstmgrInstallPhase::inst_phase_download {10, "inst-phase-download"};
-const Enum::YLeaf InstmgrInstallPhase::inst_phase_sw_change {50, "inst-phase-sw-change"};
-const Enum::YLeaf InstmgrInstallPhase::inst_phase_cleaning_up {1000, "inst-phase-cleaning-up"};
-
-const Enum::YLeaf InstmgrBagIiState::idle {1, "idle"};
-const Enum::YLeaf InstmgrBagIiState::in_progress {2, "in-progress"};
-const Enum::YLeaf InstmgrBagIiState::completed {3, "completed"};
-const Enum::YLeaf InstmgrBagIiState::aborted {4, "aborted"};
-const Enum::YLeaf InstmgrBagIiState::rebooted {5, "rebooted"};
-
-const Enum::YLeaf InstmgrBagIiDirection::not_incremental {0, "not-incremental"};
-const Enum::YLeaf InstmgrBagIiDirection::installing {1, "installing"};
-const Enum::YLeaf InstmgrBagIiDirection::unwinding {2, "unwinding"};
-
-const Enum::YLeaf InstmgrBagUserMsgCategory::user_error {1, "user-error"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::non_specific {2, "non-specific"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::warning {3, "warning"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::information {4, "information"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::user_prompt {5, "user-prompt"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::log {6, "log"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::system_error {7, "system-error"};
-const Enum::YLeaf InstmgrBagUserMsgCategory::user_response {8, "user-response"};
-
-const Enum::YLeaf InstmgrIssuAbortImpact::undefined {0, "undefined"};
-const Enum::YLeaf InstmgrIssuAbortImpact::hitless {1, "hitless"};
-const Enum::YLeaf InstmgrIssuAbortImpact::traffic_outage {2, "traffic-outage"};
-const Enum::YLeaf InstmgrIssuAbortImpact::not_applicable {3, "not-applicable"};
-
-const Enum::YLeaf InstmgrIssuAbortMethod::method_undefined {0, "method-undefined"};
-const Enum::YLeaf InstmgrIssuAbortMethod::method_no_operation {1, "method-no-operation"};
-const Enum::YLeaf InstmgrIssuAbortMethod::method_standby_reload {2, "method-standby-reload"};
-const Enum::YLeaf InstmgrIssuAbortMethod::method_system_reload {3, "method-system-reload"};
-const Enum::YLeaf InstmgrIssuAbortMethod::method_rollback {4, "method-rollback"};
-const Enum::YLeaf InstmgrIssuAbortMethod::method_not_possible {5, "method-not-possible"};
-const Enum::YLeaf InstmgrIssuAbortMethod::method_admin_only {6, "method-admin-only"};
-
-const Enum::YLeaf InstmgrBagAbortState::abortable {1, "abortable"};
-const Enum::YLeaf InstmgrBagAbortState::no_longer_abortable {2, "no-longer-abortable"};
-const Enum::YLeaf InstmgrBagAbortState::never_abortable {3, "never-abortable"};
-const Enum::YLeaf InstmgrBagAbortState::already_aborted {4, "already-aborted"};
+const Enum::YLeaf InstmgrNodeRole::redundency_unknown {0, "redundency-unknown"};
+const Enum::YLeaf InstmgrNodeRole::redundency_active {1, "redundency-active"};
+const Enum::YLeaf InstmgrNodeRole::redundency_standby {2, "redundency-standby"};
+const Enum::YLeaf InstmgrNodeRole::redundency_unusable {3, "redundency-unusable"};
 
 const Enum::YLeaf InstmgrRequest::add {1, "add"};
 const Enum::YLeaf InstmgrRequest::accept {2, "accept"};
@@ -17737,8 +17951,55 @@ const Enum::YLeaf InstmgrRequest::label {14, "label"};
 const Enum::YLeaf InstmgrRequest::clear_label {15, "clear-label"};
 const Enum::YLeaf InstmgrRequest::extend {16, "extend"};
 
-const Enum::YLeaf InstmgrBagRequestTrigger::cli {1, "cli"};
-const Enum::YLeaf InstmgrBagRequestTrigger::xr_xml {2, "xr-xml"};
+const Enum::YLeaf InstmgrIsmFsmState::idle {0, "idle"};
+const Enum::YLeaf InstmgrIsmFsmState::init_done {1, "init-done"};
+const Enum::YLeaf InstmgrIsmFsmState::load_shut {2, "load-shut"};
+const Enum::YLeaf InstmgrIsmFsmState::load_wait {3, "load-wait"};
+const Enum::YLeaf InstmgrIsmFsmState::load_stp_root_before {4, "load-stp-root-before"};
+const Enum::YLeaf InstmgrIsmFsmState::load_standby_root_sc_upgrade {5, "load-standby-root-sc-upgrade"};
+const Enum::YLeaf InstmgrIsmFsmState::load_standby_management_upgrade {6, "load-standby-management-upgrade"};
+const Enum::YLeaf InstmgrIsmFsmState::load_stp_root_after {7, "load-stp-root-after"};
+const Enum::YLeaf InstmgrIsmFsmState::load_fabric_upgrade {8, "load-fabric-upgrade"};
+const Enum::YLeaf InstmgrIsmFsmState::load_management_issu_ready {9, "load-management-issu-ready"};
+const Enum::YLeaf InstmgrIsmFsmState::load_done {10, "load-done"};
+const Enum::YLeaf InstmgrIsmFsmState::run_prep {11, "run-prep"};
+const Enum::YLeaf InstmgrIsmFsmState::run_wait {12, "run-wait"};
+const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_prep {13, "runi-mdr-prep"};
+const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_start {14, "runi-mdr-start"};
+const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_complete {15, "runi-mdr-complete"};
+const Enum::YLeaf InstmgrIsmFsmState::run_make_standby_ready {16, "run-make-standby-ready"};
+const Enum::YLeaf InstmgrIsmFsmState::run_root_scfo {17, "run-root-scfo"};
+const Enum::YLeaf InstmgrIsmFsmState::run_ndscfo {18, "run-ndscfo"};
+const Enum::YLeaf InstmgrIsmFsmState::run_transient1 {19, "run-transient1"};
+const Enum::YLeaf InstmgrIsmFsmState::run_dscfo {20, "run-dscfo"};
+const Enum::YLeaf InstmgrIsmFsmState::run_fo_complete {21, "run-fo-complete"};
+const Enum::YLeaf InstmgrIsmFsmState::run_stp_root_return {22, "run-stp-root-return"};
+const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_continue {23, "runi-mdr-continue"};
+const Enum::YLeaf InstmgrIsmFsmState::run_am_i_ready_afteri_mdr {24, "run-am-i-ready-afteri-mdr"};
+const Enum::YLeaf InstmgrIsmFsmState::run_nsf_ready {25, "run-nsf-ready"};
+const Enum::YLeaf InstmgrIsmFsmState::run_nsf_begin {26, "run-nsf-begin"};
+const Enum::YLeaf InstmgrIsmFsmState::runi_mdr_done {27, "runi-mdr-done"};
+const Enum::YLeaf InstmgrIsmFsmState::run_management_issu_ready {28, "run-management-issu-ready"};
+const Enum::YLeaf InstmgrIsmFsmState::run_un_shut {29, "run-un-shut"};
+const Enum::YLeaf InstmgrIsmFsmState::run_is_done {30, "run-is-done"};
+const Enum::YLeaf InstmgrIsmFsmState::state_max {31, "state-max"};
+
+const Enum::YLeaf InstmgrBagIiDirection::not_incremental {0, "not-incremental"};
+const Enum::YLeaf InstmgrBagIiDirection::installing {1, "installing"};
+const Enum::YLeaf InstmgrBagIiDirection::unwinding {2, "unwinding"};
+
+const Enum::YLeaf InstmgrPiCard::type_rp {0, "type-rp"};
+const Enum::YLeaf InstmgrPiCard::type_drp {1, "type-drp"};
+const Enum::YLeaf InstmgrPiCard::type_lc {2, "type-lc"};
+const Enum::YLeaf InstmgrPiCard::type_sc {3, "type-sc"};
+const Enum::YLeaf InstmgrPiCard::type_sp {4, "type-sp"};
+const Enum::YLeaf InstmgrPiCard::type_other {5, "type-other"};
+
+const Enum::YLeaf InstmgrBagIiState::idle {1, "idle"};
+const Enum::YLeaf InstmgrBagIiState::in_progress {2, "in-progress"};
+const Enum::YLeaf InstmgrBagIiState::completed {3, "completed"};
+const Enum::YLeaf InstmgrBagIiState::aborted {4, "aborted"};
+const Enum::YLeaf InstmgrBagIiState::rebooted {5, "rebooted"};
 
 const Enum::YLeaf InstmgrBagLogEntryUserMsgCategory::user_error {1, "user-error"};
 const Enum::YLeaf InstmgrBagLogEntryUserMsgCategory::non_specific {2, "non-specific"};
@@ -17748,6 +18009,11 @@ const Enum::YLeaf InstmgrBagLogEntryUserMsgCategory::user_prompt {5, "user-promp
 const Enum::YLeaf InstmgrBagLogEntryUserMsgCategory::log {6, "log"};
 const Enum::YLeaf InstmgrBagLogEntryUserMsgCategory::system_error {7, "system-error"};
 const Enum::YLeaf InstmgrBagLogEntryUserMsgCategory::user_response {8, "user-response"};
+
+const Enum::YLeaf InstmgrBagAbortState::abortable {1, "abortable"};
+const Enum::YLeaf InstmgrBagAbortState::no_longer_abortable {2, "no-longer-abortable"};
+const Enum::YLeaf InstmgrBagAbortState::never_abortable {3, "never-abortable"};
+const Enum::YLeaf InstmgrBagAbortState::already_aborted {4, "already-aborted"};
 
 
 }

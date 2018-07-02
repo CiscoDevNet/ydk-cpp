@@ -18,11 +18,13 @@ class Ipv6SelfPing : public ydk::Enum
 
 };
 
-class Ipv6Reachable : public ydk::Enum
+class Ipv6Qppb : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf any;
-        static const ydk::Enum::YLeaf received;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ip_precedence;
+        static const ydk::Enum::YLeaf qos_group;
+        static const ydk::Enum::YLeaf both;
 
 };
 
@@ -34,13 +36,11 @@ class Ipv6DefaultPing : public ydk::Enum
 
 };
 
-class Ipv6Qppb : public ydk::Enum
+class Ipv6Reachable : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ip_precedence;
-        static const ydk::Enum::YLeaf qos_group;
-        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf any;
+        static const ydk::Enum::YLeaf received;
 
 };
 

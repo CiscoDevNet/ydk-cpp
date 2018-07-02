@@ -57,7 +57,7 @@ class Dwdm::Ports : public ydk::Entity
 
         class Port; //type: Dwdm::Ports::Port
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dwdm_ui_oper::Dwdm::Ports::Port> > port;
+        ydk::YList port;
         
 }; // Dwdm::Ports
 
@@ -159,7 +159,7 @@ class Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics 
         ydk::YLeaf prbs_config_mode; //type: G709prbsMode
         class PrbsEntry; //type: Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dwdm_ui_oper::Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry> > prbs_entry;
+        ydk::YList prbs_entry;
         
 }; // Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics
 
@@ -237,7 +237,7 @@ class Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics : 
         ydk::YLeaf prbs_config_mode; //type: G709prbsMode
         class PrbsEntry; //type: Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dwdm_ui_oper::Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry> > prbs_entry;
+        ydk::YList prbs_entry;
         
 }; // Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics
 
@@ -1957,7 +1957,7 @@ class Vtxp::DwdmVtxp::PortVtxps : public ydk::Entity
 
         class PortVtxp; //type: Vtxp::DwdmVtxp::PortVtxps::PortVtxp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dwdm_ui_oper::Vtxp::DwdmVtxp::PortVtxps::PortVtxp> > port_vtxp;
+        ydk::YList port_vtxp;
         
 }; // Vtxp::DwdmVtxp::PortVtxps
 
@@ -2007,24 +2007,50 @@ class Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info : public ydk::Entity
 
 }; // Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info
 
-class G709apsByte : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pp_no_protect;
-        static const ydk::Enum::YLeaf pp_no_request;
-        static const ydk::Enum::YLeaf pp_regen_degrade;
-        static const ydk::Enum::YLeaf pp_sig_degrade;
-        static const ydk::Enum::YLeaf pp_remote_main;
-        static const ydk::Enum::YLeaf pp_aps_unknown;
-
-};
-
 class G709ppintfState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf pp_intf_up;
         static const ydk::Enum::YLeaf pp_intf_failing;
         static const ydk::Enum::YLeaf pp_intf_down;
+
+};
+
+class G709ppfsmMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pp_disable;
+        static const ydk::Enum::YLeaf pp_default_mode;
+        static const ydk::Enum::YLeaf pp_graceful_mode;
+
+};
+
+class DwdmControllerState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dwdm_ui_state_up;
+        static const ydk::Enum::YLeaf dwdm_ui_state_down;
+        static const ydk::Enum::YLeaf dwdm_ui_state_admin_down;
+
+};
+
+class DwdmtasState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf tas_oos;
+        static const ydk::Enum::YLeaf tas_is;
+        static const ydk::Enum::YLeaf tas_oos_mt;
+        static const ydk::Enum::YLeaf tas_is_cfg;
+
+};
+
+class G709prbsMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mode_source;
+        static const ydk::Enum::YLeaf mode_sink;
+        static const ydk::Enum::YLeaf mode_source_sink;
+        static const ydk::Enum::YLeaf mode_invalid;
 
 };
 
@@ -2042,73 +2068,6 @@ class G709ppfsmState : public ydk::Enum
         static const ydk::Enum::YLeaf remote_failed;
         static const ydk::Enum::YLeaf main_t_failed;
         static const ydk::Enum::YLeaf regen_failed;
-
-};
-
-class G709ppfsmMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pp_disable;
-        static const ydk::Enum::YLeaf pp_default_mode;
-        static const ydk::Enum::YLeaf pp_graceful_mode;
-
-};
-
-class DwdmWaveChannelOwner : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf configuration;
-        static const ydk::Enum::YLeaf gmpls;
-
-};
-
-class G709efecMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf g975_none;
-        static const ydk::Enum::YLeaf g975_1_i4;
-        static const ydk::Enum::YLeaf g975_1_i7;
-
-};
-
-class DwdmtasState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf tas_oos;
-        static const ydk::Enum::YLeaf tas_is;
-        static const ydk::Enum::YLeaf tas_oos_mt;
-        static const ydk::Enum::YLeaf tas_is_cfg;
-
-};
-
-class DwdmControllerState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf dwdm_ui_state_up;
-        static const ydk::Enum::YLeaf dwdm_ui_state_down;
-        static const ydk::Enum::YLeaf dwdm_ui_state_admin_down;
-
-};
-
-class G709prbsMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mode_source;
-        static const ydk::Enum::YLeaf mode_sink;
-        static const ydk::Enum::YLeaf mode_source_sink;
-        static const ydk::Enum::YLeaf mode_invalid;
-
-};
-
-class G709prbsPattern : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pattern_none;
-        static const ydk::Enum::YLeaf pattern_null;
-        static const ydk::Enum::YLeaf pattern_pn11;
-        static const ydk::Enum::YLeaf pattern_pn23;
-        static const ydk::Enum::YLeaf pattern_pn31;
 
 };
 
@@ -2148,6 +2107,47 @@ class G709prbsInterval : public ydk::Enum
         static const ydk::Enum::YLeaf previous_interval30;
         static const ydk::Enum::YLeaf previous_interval31;
         static const ydk::Enum::YLeaf previous_interval32;
+
+};
+
+class DwdmWaveChannelOwner : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf configuration;
+        static const ydk::Enum::YLeaf gmpls;
+
+};
+
+class G709efecMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf g975_none;
+        static const ydk::Enum::YLeaf g975_1_i4;
+        static const ydk::Enum::YLeaf g975_1_i7;
+
+};
+
+class G709prbsPattern : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pattern_none;
+        static const ydk::Enum::YLeaf pattern_null;
+        static const ydk::Enum::YLeaf pattern_pn11;
+        static const ydk::Enum::YLeaf pattern_pn23;
+        static const ydk::Enum::YLeaf pattern_pn31;
+
+};
+
+class G709apsByte : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pp_no_protect;
+        static const ydk::Enum::YLeaf pp_no_request;
+        static const ydk::Enum::YLeaf pp_regen_degrade;
+        static const ydk::Enum::YLeaf pp_sig_degrade;
+        static const ydk::Enum::YLeaf pp_remote_main;
+        static const ydk::Enum::YLeaf pp_aps_unknown;
 
 };
 

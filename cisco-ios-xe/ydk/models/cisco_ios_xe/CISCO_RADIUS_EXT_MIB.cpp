@@ -13,15 +13,15 @@ namespace CISCO_RADIUS_EXT_MIB {
 
 CISCORADIUSEXTMIB::CISCORADIUSEXTMIB()
     :
-    creclientglobal(std::make_shared<CISCORADIUSEXTMIB::Creclientglobal>())
-	,creclientauthentication(std::make_shared<CISCORADIUSEXTMIB::Creclientauthentication>())
-	,creclientaccounting(std::make_shared<CISCORADIUSEXTMIB::Creclientaccounting>())
+    creclientglobal(std::make_shared<CISCORADIUSEXTMIB::CreClientGlobal>())
+    , creclientauthentication(std::make_shared<CISCORADIUSEXTMIB::CreClientAuthentication>())
+    , creclientaccounting(std::make_shared<CISCORADIUSEXTMIB::CreClientAccounting>())
 {
     creclientglobal->parent = this;
     creclientauthentication->parent = this;
     creclientaccounting->parent = this;
 
-    yang_name = "CISCO-RADIUS-EXT-MIB"; yang_parent_name = "CISCO-RADIUS-EXT-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-RADIUS-EXT-MIB"; yang_parent_name = "CISCO-RADIUS-EXT-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCORADIUSEXTMIB::~CISCORADIUSEXTMIB()
@@ -30,6 +30,7 @@ CISCORADIUSEXTMIB::~CISCORADIUSEXTMIB()
 
 bool CISCORADIUSEXTMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (creclientglobal !=  nullptr && creclientglobal->has_data())
 	|| (creclientauthentication !=  nullptr && creclientauthentication->has_data())
 	|| (creclientaccounting !=  nullptr && creclientaccounting->has_data());
@@ -65,7 +66,7 @@ std::shared_ptr<Entity> CISCORADIUSEXTMIB::get_child_by_name(const std::string &
     {
         if(creclientglobal == nullptr)
         {
-            creclientglobal = std::make_shared<CISCORADIUSEXTMIB::Creclientglobal>();
+            creclientglobal = std::make_shared<CISCORADIUSEXTMIB::CreClientGlobal>();
         }
         return creclientglobal;
     }
@@ -74,7 +75,7 @@ std::shared_ptr<Entity> CISCORADIUSEXTMIB::get_child_by_name(const std::string &
     {
         if(creclientauthentication == nullptr)
         {
-            creclientauthentication = std::make_shared<CISCORADIUSEXTMIB::Creclientauthentication>();
+            creclientauthentication = std::make_shared<CISCORADIUSEXTMIB::CreClientAuthentication>();
         }
         return creclientauthentication;
     }
@@ -83,7 +84,7 @@ std::shared_ptr<Entity> CISCORADIUSEXTMIB::get_child_by_name(const std::string &
     {
         if(creclientaccounting == nullptr)
         {
-            creclientaccounting = std::make_shared<CISCORADIUSEXTMIB::Creclientaccounting>();
+            creclientaccounting = std::make_shared<CISCORADIUSEXTMIB::CreClientAccounting>();
         }
         return creclientaccounting;
     }
@@ -153,7 +154,7 @@ bool CISCORADIUSEXTMIB::has_leaf_or_child_of_name(const std::string & name) cons
     return false;
 }
 
-CISCORADIUSEXTMIB::Creclientglobal::Creclientglobal()
+CISCORADIUSEXTMIB::CreClientGlobal::CreClientGlobal()
     :
     creclienttotalmaxinqlength{YType::uint32, "creClientTotalMaxInQLength"},
     creclienttotalmaxwaitqlength{YType::uint32, "creClientTotalMaxWaitQLength"},
@@ -166,15 +167,16 @@ CISCORADIUSEXTMIB::Creclientglobal::Creclientglobal()
     creclientlastusedsourceid{YType::uint32, "creClientLastUsedSourceId"}
 {
 
-    yang_name = "creClientGlobal"; yang_parent_name = "CISCO-RADIUS-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "creClientGlobal"; yang_parent_name = "CISCO-RADIUS-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCORADIUSEXTMIB::Creclientglobal::~Creclientglobal()
+CISCORADIUSEXTMIB::CreClientGlobal::~CreClientGlobal()
 {
 }
 
-bool CISCORADIUSEXTMIB::Creclientglobal::has_data() const
+bool CISCORADIUSEXTMIB::CreClientGlobal::has_data() const
 {
+    if (is_presence_container) return true;
     return creclienttotalmaxinqlength.is_set
 	|| creclienttotalmaxwaitqlength.is_set
 	|| creclienttotalmaxdoneqlength.is_set
@@ -186,7 +188,7 @@ bool CISCORADIUSEXTMIB::Creclientglobal::has_data() const
 	|| creclientlastusedsourceid.is_set;
 }
 
-bool CISCORADIUSEXTMIB::Creclientglobal::has_operation() const
+bool CISCORADIUSEXTMIB::CreClientGlobal::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(creclienttotalmaxinqlength.yfilter)
@@ -200,21 +202,21 @@ bool CISCORADIUSEXTMIB::Creclientglobal::has_operation() const
 	|| ydk::is_set(creclientlastusedsourceid.yfilter);
 }
 
-std::string CISCORADIUSEXTMIB::Creclientglobal::get_absolute_path() const
+std::string CISCORADIUSEXTMIB::CreClientGlobal::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-RADIUS-EXT-MIB:CISCO-RADIUS-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCORADIUSEXTMIB::Creclientglobal::get_segment_path() const
+std::string CISCORADIUSEXTMIB::CreClientGlobal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "creClientGlobal";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCORADIUSEXTMIB::Creclientglobal::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCORADIUSEXTMIB::CreClientGlobal::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -232,19 +234,19 @@ std::vector<std::pair<std::string, LeafData> > CISCORADIUSEXTMIB::Creclientgloba
 
 }
 
-std::shared_ptr<Entity> CISCORADIUSEXTMIB::Creclientglobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORADIUSEXTMIB::CreClientGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORADIUSEXTMIB::Creclientglobal::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORADIUSEXTMIB::CreClientGlobal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCORADIUSEXTMIB::Creclientglobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORADIUSEXTMIB::CreClientGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "creClientTotalMaxInQLength")
     {
@@ -302,7 +304,7 @@ void CISCORADIUSEXTMIB::Creclientglobal::set_value(const std::string & value_pat
     }
 }
 
-void CISCORADIUSEXTMIB::Creclientglobal::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORADIUSEXTMIB::CreClientGlobal::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "creClientTotalMaxInQLength")
     {
@@ -342,14 +344,14 @@ void CISCORADIUSEXTMIB::Creclientglobal::set_filter(const std::string & value_pa
     }
 }
 
-bool CISCORADIUSEXTMIB::Creclientglobal::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORADIUSEXTMIB::CreClientGlobal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "creClientTotalMaxInQLength" || name == "creClientTotalMaxWaitQLength" || name == "creClientTotalMaxDoneQLength" || name == "creClientTotalAccessRejects" || name == "creClientTotalAverageResponseDelay" || name == "creClientSourcePortRangeStart" || name == "creClientSourcePortRangeEnd" || name == "creClientLastUsedSourcePort" || name == "creClientLastUsedSourceId")
         return true;
     return false;
 }
 
-CISCORADIUSEXTMIB::Creclientauthentication::Creclientauthentication()
+CISCORADIUSEXTMIB::CreClientAuthentication::CreClientAuthentication()
     :
     creauthclientbadauthenticators{YType::uint32, "creAuthClientBadAuthenticators"},
     creauthclientunknownresponses{YType::uint32, "creAuthClientUnknownResponses"},
@@ -366,15 +368,16 @@ CISCORADIUSEXTMIB::Creclientauthentication::Creclientauthentication()
     creauthclientlastusedsourceid{YType::uint32, "creAuthClientLastUsedSourceId"}
 {
 
-    yang_name = "creClientAuthentication"; yang_parent_name = "CISCO-RADIUS-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "creClientAuthentication"; yang_parent_name = "CISCO-RADIUS-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCORADIUSEXTMIB::Creclientauthentication::~Creclientauthentication()
+CISCORADIUSEXTMIB::CreClientAuthentication::~CreClientAuthentication()
 {
 }
 
-bool CISCORADIUSEXTMIB::Creclientauthentication::has_data() const
+bool CISCORADIUSEXTMIB::CreClientAuthentication::has_data() const
 {
+    if (is_presence_container) return true;
     return creauthclientbadauthenticators.is_set
 	|| creauthclientunknownresponses.is_set
 	|| creauthclienttotalpacketswithresponses.is_set
@@ -390,7 +393,7 @@ bool CISCORADIUSEXTMIB::Creclientauthentication::has_data() const
 	|| creauthclientlastusedsourceid.is_set;
 }
 
-bool CISCORADIUSEXTMIB::Creclientauthentication::has_operation() const
+bool CISCORADIUSEXTMIB::CreClientAuthentication::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(creauthclientbadauthenticators.yfilter)
@@ -408,21 +411,21 @@ bool CISCORADIUSEXTMIB::Creclientauthentication::has_operation() const
 	|| ydk::is_set(creauthclientlastusedsourceid.yfilter);
 }
 
-std::string CISCORADIUSEXTMIB::Creclientauthentication::get_absolute_path() const
+std::string CISCORADIUSEXTMIB::CreClientAuthentication::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-RADIUS-EXT-MIB:CISCO-RADIUS-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCORADIUSEXTMIB::Creclientauthentication::get_segment_path() const
+std::string CISCORADIUSEXTMIB::CreClientAuthentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "creClientAuthentication";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCORADIUSEXTMIB::Creclientauthentication::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCORADIUSEXTMIB::CreClientAuthentication::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -444,19 +447,19 @@ std::vector<std::pair<std::string, LeafData> > CISCORADIUSEXTMIB::Creclientauthe
 
 }
 
-std::shared_ptr<Entity> CISCORADIUSEXTMIB::Creclientauthentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORADIUSEXTMIB::CreClientAuthentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORADIUSEXTMIB::Creclientauthentication::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORADIUSEXTMIB::CreClientAuthentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCORADIUSEXTMIB::Creclientauthentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORADIUSEXTMIB::CreClientAuthentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "creAuthClientBadAuthenticators")
     {
@@ -538,7 +541,7 @@ void CISCORADIUSEXTMIB::Creclientauthentication::set_value(const std::string & v
     }
 }
 
-void CISCORADIUSEXTMIB::Creclientauthentication::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORADIUSEXTMIB::CreClientAuthentication::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "creAuthClientBadAuthenticators")
     {
@@ -594,14 +597,14 @@ void CISCORADIUSEXTMIB::Creclientauthentication::set_filter(const std::string & 
     }
 }
 
-bool CISCORADIUSEXTMIB::Creclientauthentication::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORADIUSEXTMIB::CreClientAuthentication::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "creAuthClientBadAuthenticators" || name == "creAuthClientUnknownResponses" || name == "creAuthClientTotalPacketsWithResponses" || name == "creAuthClientBufferAllocFailures" || name == "creAuthClientTotalResponses" || name == "creAuthClientTotalPacketsWithoutResponses" || name == "creAuthClientAverageResponseDelay" || name == "creAuthClientMaxResponseDelay" || name == "creAuthClientMaxBufferSize" || name == "creAuthClientTimeouts" || name == "creAuthClientDupIDs" || name == "creAuthClientMalformedResponses" || name == "creAuthClientLastUsedSourceId")
         return true;
     return false;
 }
 
-CISCORADIUSEXTMIB::Creclientaccounting::Creclientaccounting()
+CISCORADIUSEXTMIB::CreClientAccounting::CreClientAccounting()
     :
     creacctclientbadauthenticators{YType::uint32, "creAcctClientBadAuthenticators"},
     creacctclientunknownresponses{YType::uint32, "creAcctClientUnknownResponses"},
@@ -618,15 +621,16 @@ CISCORADIUSEXTMIB::Creclientaccounting::Creclientaccounting()
     creacctclientlastusedsourceid{YType::uint32, "creAcctClientLastUsedSourceId"}
 {
 
-    yang_name = "creClientAccounting"; yang_parent_name = "CISCO-RADIUS-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "creClientAccounting"; yang_parent_name = "CISCO-RADIUS-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCORADIUSEXTMIB::Creclientaccounting::~Creclientaccounting()
+CISCORADIUSEXTMIB::CreClientAccounting::~CreClientAccounting()
 {
 }
 
-bool CISCORADIUSEXTMIB::Creclientaccounting::has_data() const
+bool CISCORADIUSEXTMIB::CreClientAccounting::has_data() const
 {
+    if (is_presence_container) return true;
     return creacctclientbadauthenticators.is_set
 	|| creacctclientunknownresponses.is_set
 	|| creacctclienttotalpacketswithresponses.is_set
@@ -642,7 +646,7 @@ bool CISCORADIUSEXTMIB::Creclientaccounting::has_data() const
 	|| creacctclientlastusedsourceid.is_set;
 }
 
-bool CISCORADIUSEXTMIB::Creclientaccounting::has_operation() const
+bool CISCORADIUSEXTMIB::CreClientAccounting::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(creacctclientbadauthenticators.yfilter)
@@ -660,21 +664,21 @@ bool CISCORADIUSEXTMIB::Creclientaccounting::has_operation() const
 	|| ydk::is_set(creacctclientlastusedsourceid.yfilter);
 }
 
-std::string CISCORADIUSEXTMIB::Creclientaccounting::get_absolute_path() const
+std::string CISCORADIUSEXTMIB::CreClientAccounting::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-RADIUS-EXT-MIB:CISCO-RADIUS-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCORADIUSEXTMIB::Creclientaccounting::get_segment_path() const
+std::string CISCORADIUSEXTMIB::CreClientAccounting::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "creClientAccounting";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCORADIUSEXTMIB::Creclientaccounting::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCORADIUSEXTMIB::CreClientAccounting::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -696,19 +700,19 @@ std::vector<std::pair<std::string, LeafData> > CISCORADIUSEXTMIB::Creclientaccou
 
 }
 
-std::shared_ptr<Entity> CISCORADIUSEXTMIB::Creclientaccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORADIUSEXTMIB::CreClientAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORADIUSEXTMIB::Creclientaccounting::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORADIUSEXTMIB::CreClientAccounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCORADIUSEXTMIB::Creclientaccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORADIUSEXTMIB::CreClientAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "creAcctClientBadAuthenticators")
     {
@@ -790,7 +794,7 @@ void CISCORADIUSEXTMIB::Creclientaccounting::set_value(const std::string & value
     }
 }
 
-void CISCORADIUSEXTMIB::Creclientaccounting::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORADIUSEXTMIB::CreClientAccounting::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "creAcctClientBadAuthenticators")
     {
@@ -846,7 +850,7 @@ void CISCORADIUSEXTMIB::Creclientaccounting::set_filter(const std::string & valu
     }
 }
 
-bool CISCORADIUSEXTMIB::Creclientaccounting::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORADIUSEXTMIB::CreClientAccounting::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "creAcctClientBadAuthenticators" || name == "creAcctClientUnknownResponses" || name == "creAcctClientTotalPacketsWithResponses" || name == "creAcctClientBufferAllocFailures" || name == "creAcctClientTotalResponses" || name == "creAcctClientTotalPacketsWithoutResponses" || name == "creAcctClientAverageResponseDelay" || name == "creAcctClientMaxResponseDelay" || name == "creAcctClientMaxBufferSize" || name == "creAcctClientTimeouts" || name == "creAcctClientDupIDs" || name == "creAcctClientMalformedResponses" || name == "creAcctClientLastUsedSourceId")
         return true;

@@ -63,7 +63,7 @@ class NetFlow::FlowExporterMaps : public ydk::Entity
 
         class FlowExporterMap; //type: NetFlow::FlowExporterMaps::FlowExporterMap
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowExporterMaps::FlowExporterMap> > flow_exporter_map;
+        ydk::YList flow_exporter_map;
         
 }; // NetFlow::FlowExporterMaps
 
@@ -213,7 +213,7 @@ class NetFlow::FlowSamplerMaps : public ydk::Entity
 
         class FlowSamplerMap; //type: NetFlow::FlowSamplerMaps::FlowSamplerMap
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowSamplerMaps::FlowSamplerMap> > flow_sampler_map;
+        ydk::YList flow_sampler_map;
         
 }; // NetFlow::FlowSamplerMaps
 
@@ -261,7 +261,7 @@ class NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes : public ydk::Enti
 
         class SamplingMode; //type: NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode> > sampling_mode;
+        ydk::YList sampling_mode;
         
 }; // NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes
 
@@ -308,7 +308,7 @@ class NetFlow::FlowMonitorMapTable : public ydk::Entity
 
         class FlowMonitorMap; //type: NetFlow::FlowMonitorMapTable::FlowMonitorMap
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowMonitorMapTable::FlowMonitorMap> > flow_monitor_map;
+        ydk::YList flow_monitor_map;
         
 }; // NetFlow::FlowMonitorMapTable
 
@@ -390,7 +390,7 @@ class NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters : public ydk::Enti
 
         class Exporter; //type: NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter> > exporter;
+        ydk::YList exporter;
         
 }; // NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters
 
@@ -457,7 +457,7 @@ class NetFlow::FlowMonitorMapPerformanceTable : public ydk::Entity
 
         class FlowMonitorMap; //type: NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap> > flow_monitor_map;
+        ydk::YList flow_monitor_map;
         
 }; // NetFlow::FlowMonitorMapPerformanceTable
 
@@ -539,7 +539,7 @@ class NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters : publi
 
         class Exporter; //type: NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter> > exporter;
+        ydk::YList exporter;
         
 }; // NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters
 
@@ -586,19 +586,19 @@ class NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record : public y
 
 }; // NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record
 
+class NfSamplingMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf random;
+
+};
+
 class NfCacheAgingMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf permanent;
         static const ydk::Enum::YLeaf immediate;
-
-};
-
-class NfSamplingMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf random;
 
 };
 

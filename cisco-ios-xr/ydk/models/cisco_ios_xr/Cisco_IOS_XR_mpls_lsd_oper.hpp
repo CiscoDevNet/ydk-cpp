@@ -33,7 +33,7 @@ class MplsLsdNodes : public ydk::Entity
 
         class MplsLsdNode; //type: MplsLsdNodes::MplsLsdNode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode> > mpls_lsd_node;
+        ydk::YList mpls_lsd_node;
         
 }; // MplsLsdNodes
 
@@ -101,7 +101,7 @@ class MplsLsdNodes::MplsLsdNode::Clients : public ydk::Entity
 
         class Client; //type: MplsLsdNodes::MplsLsdNode::Clients::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Clients::Client> > client;
+        ydk::YList client;
         
 }; // MplsLsdNodes::MplsLsdNode::Clients
 
@@ -225,7 +225,7 @@ class MplsLsdNodes::MplsLsdNode::LabelSummary : public ydk::Entity
         ydk::YLeaf rsi_connected; //type: int32
         class OwnerCount; //type: MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount> > owner_count;
+        ydk::YList owner_count;
         
 }; // MplsLsdNodes::MplsLsdNode::LabelSummary
 
@@ -273,7 +273,7 @@ class MplsLsdNodes::MplsLsdNode::Labels : public ydk::Entity
 
         class Label; //type: MplsLsdNodes::MplsLsdNode::Labels::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label> > label;
+        ydk::YList label;
         
 }; // MplsLsdNodes::MplsLsdNode::Labels
 
@@ -294,7 +294,7 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf label_id; //type: int32
+        ydk::YLeaf label_id; //type: uint32
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf rewrite_is_bound; //type: int32
         ydk::YLeaf rewrite_owners; //type: uint32
@@ -304,7 +304,7 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label : public ydk::Entity
         class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext> label_context;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label
 
@@ -353,26 +353,26 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key : public ydk::
         class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data
         class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data
         class Tev4Data; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data
-        class Ipv4L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData
-        class Ipv6L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData
-        class VrfL3VpnData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData
-        class Cev4L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData
-        class Cev6L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData
+        class Ipv4l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData
+        class Ipv6l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData
+        class VrfL3vpnData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData
+        class Cev4l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData
+        class Cev6l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData
         class PseudowireData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireData
         class LabelBlockData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockData
         class IpSubData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData
-        class Tev4P2MpData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData
+        class Tev4p2mpData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData
         class MldPv4Data; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data
         class PseudowireHeadEndData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireHeadEndData
         class TpData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData
         class GenericRoutingEncapsulation; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericRoutingEncapsulation
         class Ipv6GenericRoutingEncapsulation; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6GenericRoutingEncapsulation
         class EvpnData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData
-        class Ipv4BlbData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData
-        class Ipv6BlbData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData
+        class Ipv4blbData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData
+        class Ipv6blbData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData
         class PiMiPmsiData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData
         class PiMsPmsiData; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData
-        class NextHopSetL3Vpn; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn
+        class NextHopSetL3vpn; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn
         class SrPrefixSegment; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegment
         class SrAdjSegmentIpv4; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4
         class SrAdjSegmentIpv6; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6
@@ -383,26 +383,26 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key : public ydk::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data> ipv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data> ipv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData> ipv4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData> ipv6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData> vrf_l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData> cev4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData> cev6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData> ipv4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData> ipv6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData> vrf_l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData> cev4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData> cev6l3vpn_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireData> pseudowire_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockData> label_block_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData> tev4p2mp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData> tev4p2mp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data> mld_pv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireHeadEndData> pseudowire_head_end_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData> tp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericRoutingEncapsulation> generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData> evpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData> ipv4blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData> ipv6blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData> ipv4blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData> ipv6blb_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData> pi_mi_pmsi_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData> pi_ms_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn> next_hop_set_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn> next_hop_set_l3vpn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegment> sr_prefix_segment;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
@@ -490,11 +490,11 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data : pu
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData : public ydk::Entity
 {
     public:
-        Ipv4L3VpnData();
-        ~Ipv4L3VpnData();
+        Ipv4l3vpnData();
+        ~Ipv4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -510,14 +510,14 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData : public ydk::Entity
 {
     public:
-        Ipv6L3VpnData();
-        ~Ipv6L3VpnData();
+        Ipv6l3vpnData();
+        ~Ipv6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -533,14 +533,14 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData : public ydk::Entity
 {
     public:
-        VrfL3VpnData();
-        ~VrfL3VpnData();
+        VrfL3vpnData();
+        ~VrfL3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -555,14 +555,14 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData 
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData : public ydk::Entity
 {
     public:
-        Cev4L3VpnData();
-        ~Cev4L3VpnData();
+        Cev4l3vpnData();
+        ~Cev4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -578,14 +578,14 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData
         ydk::YLeaf ipv4_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData : public ydk::Entity
 {
     public:
-        Cev6L3VpnData();
-        ~Cev6L3VpnData();
+        Cev6l3vpnData();
+        ~Cev6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -601,7 +601,7 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData
 
 
 class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireData : public ydk::Entity
@@ -675,11 +675,11 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData : p
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData : public ydk::Entity
 {
     public:
-        Tev4P2MpData();
-        ~Tev4P2MpData();
+        Tev4p2mpData();
+        ~Tev4p2mpData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -699,7 +699,7 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData 
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf previous_hop; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData
+}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData
 
 
 class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data : public ydk::Entity
@@ -840,11 +840,11 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData : pu
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData : public ydk::Entity
 {
     public:
-        Ipv4BlbData();
-        ~Ipv4BlbData();
+        Ipv4blbData();
+        ~Ipv4blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -859,14 +859,14 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData :
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData
+}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData : public ydk::Entity
 {
     public:
-        Ipv6BlbData();
-        ~Ipv6BlbData();
+        Ipv6blbData();
+        ~Ipv6blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -881,7 +881,7 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData :
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData
+}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData
 
 
 class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData : public ydk::Entity
@@ -933,11 +933,11 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn : public ydk::Entity
 {
     public:
-        NextHopSetL3Vpn();
-        ~NextHopSetL3Vpn();
+        NextHopSetL3vpn();
+        ~NextHopSetL3vpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -952,7 +952,7 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3V
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf next_hop_set_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn
+}; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn
 
 
 class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegment : public ydk::Entity
@@ -1169,7 +1169,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints : public ydk::Enti
 
         class TunnelMidpoint; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint> > tunnel_midpoint;
+        ydk::YList tunnel_midpoint;
         
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints
 
@@ -1190,7 +1190,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf label; //type: int32
+        ydk::YLeaf label; //type: uint32
         ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf input_label; //type: uint32
         ydk::YLeaf entry_frr_state; //type: MgmtLsdFrrState
@@ -1198,7 +1198,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint : 
         class OutPath; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId> frr_entry_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath> > out_path;
+        ydk::YList out_path;
         
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint
 
@@ -1317,7 +1317,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads : public ydk::Entity
 
         class TunnelHead; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead> > tunnel_head;
+        ydk::YList tunnel_head;
         
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads
 
@@ -1346,7 +1346,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead : public y
         class OutPath; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId> frr_entry_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath> > out_path;
+        ydk::YList out_path;
         
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead
 
@@ -1489,7 +1489,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces : publi
 
         class SummaryProtectedInterface; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterface> > summary_protected_interface;
+        ydk::YList summary_protected_interface;
         
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces
 
@@ -1584,12 +1584,12 @@ class MplsLsdNodes::MplsLsdNode::Rewrite : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RewritePws; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws
-        class RewriteIpv4S; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S
+        class RewriteIpv4s; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s
         class RewriteTes; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes
         class RewriteLabels; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws> rewrite_pws;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S> rewrite_ipv4s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s> rewrite_ipv4s;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes> rewrite_tes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels> rewrite_labels;
         
@@ -1614,7 +1614,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws : public ydk::Entity
 
         class RewritePw; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw> > rewrite_pw;
+        ydk::YList rewrite_pw;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws
 
@@ -1635,7 +1635,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pw_list_id; //type: int32
+        ydk::YLeaf pw_list_id; //type: uint32
         ydk::YLeaf rewrite_version; //type: uint64
         ydk::YLeaf bcdl_priority; //type: uint8
         ydk::YLeaf lsd_queue; //type: uint8
@@ -1652,10 +1652,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw : public ydk::En
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey> fpi_key;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId> rewrite_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi> > associated_fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V4Rpf> > v4_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V6Rpf> > v6_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois> > mois;
+        ydk::YList associated_fpi;
+        ydk::YList v4_rpf;
+        ydk::YList v6_rpf;
+        ydk::YList mois;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw
 
@@ -1680,7 +1680,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey : public
         class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey
 
@@ -1950,26 +1950,26 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
         class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data
         class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data
         class Tev4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data
-        class Ipv4L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
-        class Ipv6L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
-        class VrfL3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
-        class Cev4L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
-        class Cev6L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+        class Ipv4l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
+        class Ipv6l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
+        class VrfL3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
+        class Cev4l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
+        class Cev6l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
         class PseudowireData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData
         class LabelBlockData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData
         class IpSubData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData
-        class Tev4P2MpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+        class Tev4p2mpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
         class MldPv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data
         class PseudowireHeadEndData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
         class TpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData
         class GenericRoutingEncapsulation; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
         class Ipv6GenericRoutingEncapsulation; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
         class EvpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData
-        class Ipv4BlbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
-        class Ipv6BlbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+        class Ipv4blbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData
+        class Ipv6blbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData
         class PiMiPmsiData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
         class PiMsPmsiData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
-        class NextHopSetL3Vpn; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+        class NextHopSetL3vpn; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
         class SrPrefixSegment; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
         class SrAdjSegmentIpv4; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
         class SrAdjSegmentIpv6; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
@@ -1980,26 +1980,26 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData> ipv4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData> ipv6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData> cev4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData> cev6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData> ipv4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData> ipv6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData> vrf_l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData> cev4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData> cev6l3vpn_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData> tev4p2mp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData> ipv4blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData> ipv6blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData> ipv4blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData> ipv6blb_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn> next_hop_set_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn> next_hop_set_l3vpn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
@@ -2087,11 +2087,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData : public ydk::Entity
 {
     public:
-        Ipv4L3VpnData();
-        ~Ipv4L3VpnData();
+        Ipv4l3vpnData();
+        ~Ipv4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2107,14 +2107,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData : public ydk::Entity
 {
     public:
-        Ipv6L3VpnData();
-        ~Ipv6L3VpnData();
+        Ipv6l3vpnData();
+        ~Ipv6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2130,14 +2130,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData : public ydk::Entity
 {
     public:
-        VrfL3VpnData();
-        ~VrfL3VpnData();
+        VrfL3vpnData();
+        ~VrfL3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2152,14 +2152,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData : public ydk::Entity
 {
     public:
-        Cev4L3VpnData();
-        ~Cev4L3VpnData();
+        Cev4l3vpnData();
+        ~Cev4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2175,14 +2175,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
         ydk::YLeaf ipv4_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData : public ydk::Entity
 {
     public:
-        Cev6L3VpnData();
-        ~Cev6L3VpnData();
+        Cev6l3vpnData();
+        ~Cev6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2198,7 +2198,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
@@ -2272,11 +2272,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData : public ydk::Entity
 {
     public:
-        Tev4P2MpData();
-        ~Tev4P2MpData();
+        Tev4p2mpData();
+        ~Tev4p2mpData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2296,7 +2296,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf previous_hop; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
@@ -2437,11 +2437,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData : public ydk::Entity
 {
     public:
-        Ipv4BlbData();
-        ~Ipv4BlbData();
+        Ipv4blbData();
+        ~Ipv4blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2456,14 +2456,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData : public ydk::Entity
 {
     public:
-        Ipv6BlbData();
-        ~Ipv6BlbData();
+        Ipv6blbData();
+        ~Ipv6blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2478,7 +2478,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
@@ -2530,11 +2530,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn : public ydk::Entity
 {
     public:
-        NextHopSetL3Vpn();
-        ~NextHopSetL3Vpn();
+        NextHopSetL3vpn();
+        ~NextHopSetL3vpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2549,7 +2549,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf next_hop_set_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
@@ -2708,7 +2708,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         class LabelData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::LabelData> > label_data;
+        ydk::YList label_data;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite
 
@@ -2754,7 +2754,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi :
         class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi
 
@@ -3019,7 +3019,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois : public y
         class MoiArray; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource> application_resource;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray> > moi_array;
+        ydk::YList moi_array;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois
 
@@ -3103,6 +3103,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
         class Stackv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data
         class TeHeadData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData
         class DmtcData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData
+        class NnhStackv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
@@ -3118,6 +3119,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData> te_head_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData> dmtc_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data> nnh_stackv4_data;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi
 
@@ -3288,6 +3290,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
         ydk::YLeaf tunnel_weight; //type: uint32
         ydk::YLeaf data_out_parent_interface; //type: string
         ydk::YLeaf tunnel_class; //type: uint32
+        ydk::YLeaf ipv4_next_next_hop; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data
 
@@ -3483,8 +3486,8 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
         class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
         class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
@@ -3609,8 +3612,8 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
         class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
         class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
@@ -3706,11 +3709,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data : public ydk::Entity
 {
     public:
-        RewriteIpv4S();
-        ~RewriteIpv4S();
+        NnhStackv4Data();
+        ~NnhStackv4Data();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3722,14 +3725,192 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class RewriteIpv4; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4
+        class Ipv4Stack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+        class NextNextHop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4> > rewrite_ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack> ipv4_stack;
+        ydk::YList next_next_hop;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4 : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack : public ydk::Entity
+{
+    public:
+        Ipv4Stack();
+        ~Ipv4Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf owner_application_type; //type: MgmtLsdApp
+        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+        class InnerStack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack> inner_stack;
+        
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_interface_parent; //type: string
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack : public ydk::Entity
+{
+    public:
+        InnerStack();
+        ~InnerStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf num_nexthops; //type: uint8
+        ydk::YLeaf num_lbls; //type: uint8
+        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+        class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+        ydk::YList nexthop;
+        ydk::YList label;
+        
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label : public ydk::Entity
+{
+    public:
+        Label();
+        ~Label();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf outgoing_label_str; //type: string
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop : public ydk::Entity
+{
+    public:
+        NextNextHop();
+        ~NextNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nnh_type; //type: MplsLsdNnh
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s : public ydk::Entity
+{
+    public:
+        RewriteIpv4s();
+        ~RewriteIpv4s();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RewriteIpv4; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4
+
+        ydk::YList rewrite_ipv4;
+        
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4 : public ydk::Entity
 {
     public:
         RewriteIpv4();
@@ -3748,7 +3929,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4 : public ydk
         ydk::YLeaf rsi_table_name; //type: string
         ydk::YLeaf rsi_table_id; //type: string
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf rewrite_version; //type: uint64
         ydk::YLeaf bcdl_priority; //type: uint8
         ydk::YLeaf lsd_queue; //type: uint8
@@ -3756,24 +3937,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4 : public ydk
         ydk::YLeaf rw_install_age; //type: uint64
         ydk::YLeaf rw_updated; //type: int32
         ydk::YLeaf priority_updated; //type: int32
-        class FpiKey; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
-        class RewriteId; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId
-        class AssociatedFpi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi
-        class V4Rpf; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V4Rpf
-        class V6Rpf; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V6Rpf
-        class Mois; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois
+        class FpiKey; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey
+        class RewriteId; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId
+        class AssociatedFpi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi
+        class V4Rpf; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::V4Rpf
+        class V6Rpf; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::V6Rpf
+        class Mois; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey> fpi_key;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId> rewrite_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi> > associated_fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V4Rpf> > v4_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V6Rpf> > v6_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois> > mois;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey> fpi_key;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId> rewrite_id;
+        ydk::YList associated_fpi;
+        ydk::YList v4_rpf;
+        ydk::YList v6_rpf;
+        ydk::YList mois;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey : public ydk::Entity
 {
     public:
         FpiKey();
@@ -3789,16 +3970,16 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Fpi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
-        class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner
+        class Fpi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi
+        class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::ApplicationOwner
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner> > application_owner;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi> fpi;
+        ydk::YList application_owner;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi : public ydk::Entity
 {
     public:
         Fpi();
@@ -3815,24 +3996,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf fpi_type; //type: MgmtLsdFpi
-        class LabelData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData
-        class TeData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData
-        class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data
-        class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data
-        class PwListData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData
-        class DmtcExtIntfData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData
+        class LabelData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelData
+        class TeData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::TeData
+        class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv4Data
+        class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv6Data
+        class PwListData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::PwListData
+        class DmtcExtIntfData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData> label_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData> te_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data> ipv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data> ipv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData> pw_list_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelData> label_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::TeData> te_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::PwListData> pw_list_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelData : public ydk::Entity
 {
     public:
         LabelData();
@@ -3852,10 +4033,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
         ydk::YLeaf security_id; //type: uint32
         ydk::YLeaf elc; //type: int32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::TeData : public ydk::Entity
 {
     public:
         TeData();
@@ -3874,10 +4055,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
         ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::TeData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -3899,10 +4080,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
         ydk::YLeaf version; //type: uint32
         ydk::YLeaf sr_local_label; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -3924,10 +4105,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
         ydk::YLeaf prefix_len; //type: uint8
         ydk::YLeaf version; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv6Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::PwListData : public ydk::Entity
 {
     public:
         PwListData();
@@ -3945,10 +4126,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
 
         ydk::YLeaf pwhe_list_id; //type: uint16
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::PwListData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData : public ydk::Entity
 {
     public:
         DmtcExtIntfData();
@@ -3966,10 +4147,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
 
         ydk::YLeaf dmtc_ext_ifh; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::ApplicationOwner : public ydk::Entity
 {
     public:
         ApplicationOwner();
@@ -3991,10 +4172,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::App
         ydk::YLeaf application_instance; //type: string
         ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::ApplicationOwner
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId : public ydk::Entity
 {
     public:
         RewriteId();
@@ -4010,14 +4191,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class RewriteId_; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_
+        class RewriteId_; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_> rewrite_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_> rewrite_id;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_ : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_ : public ydk::Entity
 {
     public:
         RewriteId_();
@@ -4034,16 +4215,16 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf rewrite_id_type; //type: MgmtLsdRwId
-        class LabelContext; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext
-        class LocalLabelRewrite; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite
+        class LabelContext; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext
+        class LocalLabelRewrite; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext> label_context;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext> label_context;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext : public ydk::Entity
 {
     public:
         LabelContext();
@@ -4060,70 +4241,70 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf label_context_type; //type: MgmtLsdLblCtx
-        class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data
-        class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data
-        class Tev4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data
-        class Ipv4L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
-        class Ipv6L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
-        class VrfL3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
-        class Cev4L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
-        class Cev6L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
-        class PseudowireData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData
-        class LabelBlockData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData
-        class IpSubData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData
-        class Tev4P2MpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
-        class MldPv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data
-        class PseudowireHeadEndData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
-        class TpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData
-        class GenericRoutingEncapsulation; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
-        class Ipv6GenericRoutingEncapsulation; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
-        class EvpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData
-        class Ipv4BlbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
-        class Ipv6BlbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
-        class PiMiPmsiData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
-        class PiMsPmsiData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
-        class NextHopSetL3Vpn; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
-        class SrPrefixSegment; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
-        class SrAdjSegmentIpv4; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
-        class SrAdjSegmentIpv6; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
-        class LabelBlockSrgbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
-        class TeBinding; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding
-        class LabelBlockSrlbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
+        class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data
+        class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data
+        class Tev4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data
+        class Ipv4l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
+        class Ipv6l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
+        class VrfL3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
+        class Cev4l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
+        class Cev6l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
+        class PseudowireData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData
+        class LabelBlockData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData
+        class IpSubData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData
+        class Tev4p2mpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
+        class MldPv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data
+        class PseudowireHeadEndData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
+        class TpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData
+        class GenericRoutingEncapsulation; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
+        class Ipv6GenericRoutingEncapsulation; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
+        class EvpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData
+        class Ipv4blbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4blbData
+        class Ipv6blbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6blbData
+        class PiMiPmsiData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
+        class PiMsPmsiData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
+        class NextHopSetL3vpn; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
+        class SrPrefixSegment; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
+        class SrAdjSegmentIpv4; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
+        class SrAdjSegmentIpv6; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
+        class LabelBlockSrgbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
+        class TeBinding; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding
+        class LabelBlockSrlbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData> ipv4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData> ipv6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData> cev4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData> cev6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4BlbData> ipv4blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6BlbData> ipv6blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn> next_hop_set_l3vpn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData> label_block_srgb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding> te_binding;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData> label_block_srlb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData> ipv4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData> ipv6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3vpnData> vrf_l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData> cev4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData> cev6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4p2mpData> tev4p2mp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4blbData> ipv4blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6blbData> ipv6blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn> next_hop_set_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData> label_block_srgb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding> te_binding;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData> label_block_srlb_data;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -4145,10 +4326,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf security_id; //type: uint32
         ydk::YLeaf vrf_name; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -4170,10 +4351,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf security_id; //type: uint32
         ydk::YLeaf vrf_name; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data : public ydk::Entity
 {
     public:
         Tev4Data();
@@ -4197,14 +4378,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf is_srte; //type: int32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData : public ydk::Entity
 {
     public:
-        Ipv4L3VpnData();
-        ~Ipv4L3VpnData();
+        Ipv4l3vpnData();
+        ~Ipv4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4220,14 +4401,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData : public ydk::Entity
 {
     public:
-        Ipv6L3VpnData();
-        ~Ipv6L3VpnData();
+        Ipv6l3vpnData();
+        ~Ipv6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4243,14 +4424,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3vpnData : public ydk::Entity
 {
     public:
-        VrfL3VpnData();
-        ~VrfL3VpnData();
+        VrfL3vpnData();
+        ~VrfL3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4265,14 +4446,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData : public ydk::Entity
 {
     public:
-        Cev4L3VpnData();
-        ~Cev4L3VpnData();
+        Cev4l3vpnData();
+        ~Cev4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4288,14 +4469,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf ipv4_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData : public ydk::Entity
 {
     public:
-        Cev6L3VpnData();
-        ~Cev6L3VpnData();
+        Cev6l3vpnData();
+        ~Cev6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4311,10 +4492,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
 {
     public:
         PseudowireData();
@@ -4335,10 +4516,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf remote_l2_router_id; //type: uint32
         ydk::YLeaf subinterface; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData : public ydk::Entity
 {
     public:
         LabelBlockData();
@@ -4360,10 +4541,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf offset; //type: uint32
         ydk::YLeaf size; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData : public ydk::Entity
 {
     public:
         IpSubData();
@@ -4382,14 +4563,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf parent_interface; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4P2MpData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4p2mpData : public ydk::Entity
 {
     public:
-        Tev4P2MpData();
-        ~Tev4P2MpData();
+        Tev4p2mpData();
+        ~Tev4p2mpData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4409,10 +4590,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf previous_hop; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
 {
     public:
         MldPv4Data();
@@ -4434,10 +4615,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf peer_lsrid; //type: string
         ydk::YLeaf peer_label_space_id; //type: uint16
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData : public ydk::Entity
 {
     public:
         PseudowireHeadEndData();
@@ -4455,10 +4636,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
 
         ydk::YLeaf pwhe_intf; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData : public ydk::Entity
 {
     public:
         TpData();
@@ -4482,10 +4663,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf dest_tunnel_id; //type: uint16
         ydk::YLeaf lsp_id; //type: uint16
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation : public ydk::Entity
 {
     public:
         GenericRoutingEncapsulation();
@@ -4503,10 +4684,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
 
         ydk::YLeaf gre_interface; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation : public ydk::Entity
 {
     public:
         Ipv6GenericRoutingEncapsulation();
@@ -4524,10 +4705,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
 
         ydk::YLeaf greipv6_interface; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData : public ydk::Entity
 {
     public:
         EvpnData();
@@ -4547,14 +4728,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf evpn_tag; //type: uint32
         ydk::YLeaf ethernet_segment; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4BlbData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4blbData : public ydk::Entity
 {
     public:
-        Ipv4BlbData();
-        ~Ipv4BlbData();
+        Ipv4blbData();
+        ~Ipv4blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4569,14 +4750,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4blbData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6BlbData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6blbData : public ydk::Entity
 {
     public:
-        Ipv6BlbData();
-        ~Ipv6BlbData();
+        Ipv6blbData();
+        ~Ipv6blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4591,10 +4772,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6blbData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
 {
     public:
         PiMiPmsiData();
@@ -4614,10 +4795,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf head; //type: int32
         ydk::YLeaf v6; //type: int32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData : public ydk::Entity
 {
     public:
         PiMsPmsiData();
@@ -4640,14 +4821,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf hli; //type: uint32
         ydk::YLeaf seg; //type: int32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn : public ydk::Entity
 {
     public:
-        NextHopSetL3Vpn();
-        ~NextHopSetL3Vpn();
+        NextHopSetL3vpn();
+        ~NextHopSetL3vpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4662,10 +4843,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf next_hop_set_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
 {
     public:
         SrPrefixSegment();
@@ -4684,10 +4865,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf segment_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4 : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4 : public ydk::Entity
 {
     public:
         SrAdjSegmentIpv4();
@@ -4708,10 +4889,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf intf; //type: string
         ydk::YLeaf addr; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6 : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6 : public ydk::Entity
 {
     public:
         SrAdjSegmentIpv6();
@@ -4732,10 +4913,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf intf; //type: string
         ydk::YLeaf addr; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData : public ydk::Entity
 {
     public:
         LabelBlockSrgbData();
@@ -4755,10 +4936,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf offset; //type: uint32
         ydk::YLeaf size; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding : public ydk::Entity
 {
     public:
         TeBinding();
@@ -4777,10 +4958,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf te_identifier; //type: uint32
         ydk::YLeaf te_type; //type: MgmtLsdTeBinding
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData : public ydk::Entity
 {
     public:
         LabelBlockSrlbData();
@@ -4800,10 +4981,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         ydk::YLeaf offset; //type: uint32
         ydk::YLeaf size; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite : public ydk::Entity
 {
     public:
         LocalLabelRewrite();
@@ -4819,14 +5000,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LabelData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
+        class LabelData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData> > label_data;
+        ydk::YList label_data;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData : public ydk::Entity
 {
     public:
         LabelData();
@@ -4844,10 +5025,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi : public ydk::Entity
 {
     public:
         AssociatedFpi();
@@ -4863,16 +5044,16 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedF
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Fpi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi
-        class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::ApplicationOwner
+        class Fpi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi
+        class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::ApplicationOwner
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::ApplicationOwner> > application_owner;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi> fpi;
+        ydk::YList application_owner;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi : public ydk::Entity
 {
     public:
         Fpi();
@@ -4889,24 +5070,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedF
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf fpi_type; //type: MgmtLsdFpi
-        class LabelData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::LabelData
-        class TeData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::TeData
-        class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data
-        class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data
-        class PwListData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::PwListData
-        class DmtcExtIntfData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData
+        class LabelData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelData
+        class TeData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::TeData
+        class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data
+        class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data
+        class PwListData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::PwListData
+        class DmtcExtIntfData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::LabelData> label_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::TeData> te_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data> ipv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data> ipv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::PwListData> pw_list_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelData> label_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::TeData> te_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::PwListData> pw_list_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::LabelData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelData : public ydk::Entity
 {
     public:
         LabelData();
@@ -4926,10 +5107,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedF
         ydk::YLeaf security_id; //type: uint32
         ydk::YLeaf elc; //type: int32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::LabelData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::TeData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::TeData : public ydk::Entity
 {
     public:
         TeData();
@@ -4948,10 +5129,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedF
         ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::TeData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::TeData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -4973,10 +5154,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedF
         ydk::YLeaf version; //type: uint32
         ydk::YLeaf sr_local_label; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -4998,10 +5179,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedF
         ydk::YLeaf prefix_len; //type: uint8
         ydk::YLeaf version; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::PwListData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::PwListData : public ydk::Entity
 {
     public:
         PwListData();
@@ -5019,10 +5200,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedF
 
         ydk::YLeaf pwhe_list_id; //type: uint16
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::PwListData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::PwListData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData : public ydk::Entity
 {
     public:
         DmtcExtIntfData();
@@ -5040,10 +5221,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedF
 
         ydk::YLeaf dmtc_ext_ifh; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::ApplicationOwner : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::ApplicationOwner : public ydk::Entity
 {
     public:
         ApplicationOwner();
@@ -5065,10 +5246,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedF
         ydk::YLeaf application_instance; //type: string
         ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::ApplicationOwner
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::ApplicationOwner
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V4Rpf : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::V4Rpf : public ydk::Entity
 {
     public:
         V4Rpf();
@@ -5087,10 +5268,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V4Rpf : pub
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf v4_rpf_neighbor; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V4Rpf
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::V4Rpf
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V6Rpf : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::V6Rpf : public ydk::Entity
 {
     public:
         V6Rpf();
@@ -5109,10 +5290,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V6Rpf : pub
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf v6_rpf_neighbor; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V6Rpf
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::V6Rpf
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois : public ydk::Entity
 {
     public:
         Mois();
@@ -5128,16 +5309,16 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ApplicationResource; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::ApplicationResource
-        class MoiArray; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray
+        class ApplicationResource; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::ApplicationResource
+        class MoiArray; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::ApplicationResource> application_resource;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray> > moi_array;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::ApplicationResource> application_resource;
+        ydk::YList moi_array;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::ApplicationResource : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::ApplicationResource : public ydk::Entity
 {
     public:
         ApplicationResource();
@@ -5159,10 +5340,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::Appli
         ydk::YLeaf application_instance; //type: string
         ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::ApplicationResource
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::ApplicationResource
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray : public ydk::Entity
 {
     public:
         MoiArray();
@@ -5178,14 +5359,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Moi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi
+        class Moi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi> moi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi> moi;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi : public ydk::Entity
 {
     public:
         Moi();
@@ -5202,40 +5383,42 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf moi_type; //type: MgmtLsdMoi
-        class PopAndLookupIpv4; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4
-        class PopAndLookupTp; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp
-        class PopAndLookupIpv6; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6
-        class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data
-        class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data
-        class Tev4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data
-        class PseudowireData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData
-        class IpSubData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::IpSubData
-        class PseudowireHeadEndData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData
-        class PwListData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PwListData
-        class Stackv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data
-        class Stackv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data
-        class TeHeadData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData
-        class DmtcData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::DmtcData
+        class PopAndLookupIpv4; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4
+        class PopAndLookupTp; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp
+        class PopAndLookupIpv6; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6
+        class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data
+        class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data
+        class Tev4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data
+        class PseudowireData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData
+        class IpSubData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::IpSubData
+        class PseudowireHeadEndData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData
+        class PwListData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PwListData
+        class Stackv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data
+        class Stackv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data
+        class TeHeadData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData
+        class DmtcData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::DmtcData
+        class NnhStackv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6> pop_and_lookup_ipv6;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data> ipv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data> ipv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData> pseudowire_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData> pseudowire_head_end_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PwListData> pw_list_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data> stackv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData> te_head_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::DmtcData> dmtc_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6> pop_and_lookup_ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data> tev4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData> pseudowire_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::IpSubData> ip_sub_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData> pseudowire_head_end_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PwListData> pw_list_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data> stackv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData> te_head_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::DmtcData> dmtc_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data> nnh_stackv4_data;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4 : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4 : public ydk::Entity
 {
     public:
         PopAndLookupIpv4();
@@ -5255,10 +5438,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf table_name; //type: string
         ydk::YLeaf path_flags_decode; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp : public ydk::Entity
 {
     public:
         PopAndLookupTp();
@@ -5279,10 +5462,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf path_flags_decode; //type: string
         ydk::YLeaf out_label; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6 : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6 : public ydk::Entity
 {
     public:
         PopAndLookupIpv6();
@@ -5302,10 +5485,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf table_name; //type: string
         ydk::YLeaf path_flags_decode; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -5336,10 +5519,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -5367,10 +5550,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf out_interface_parent; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data : public ydk::Entity
 {
     public:
         Tev4Data();
@@ -5401,11 +5584,12 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf tunnel_weight; //type: uint32
         ydk::YLeaf data_out_parent_interface; //type: string
         ydk::YLeaf tunnel_class; //type: uint32
+        ydk::YLeaf ipv4_next_next_hop; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData : public ydk::Entity
 {
     public:
         PseudowireData();
@@ -5432,10 +5616,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf bridge_id; //type: uint32
         ydk::YLeaf split_horizon_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::IpSubData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::IpSubData : public ydk::Entity
 {
     public:
         IpSubData();
@@ -5456,10 +5640,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf out_interface; //type: string
         ydk::YLeaf path_flags_decode; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::IpSubData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::IpSubData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData : public ydk::Entity
 {
     public:
         PseudowireHeadEndData();
@@ -5487,10 +5671,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf pw_list_id; //type: uint16
         ydk::YLeaf pwhe_interface; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PwListData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PwListData : public ydk::Entity
 {
     public:
         PwListData();
@@ -5512,10 +5696,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf l2_interface; //type: string
         ydk::YLeaf path_flags_decode; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PwListData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PwListData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data : public ydk::Entity
 {
     public:
         Stackv4Data();
@@ -5532,16 +5716,16 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf owner_application_type; //type: MgmtLsdApp
-        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop
-        class InnerStack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack
+        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop
+        class InnerStack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -5572,10 +5756,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack : public ydk::Entity
 {
     public:
         InnerStack();
@@ -5593,16 +5777,16 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 
         ydk::YLeaf num_nexthops; //type: uint8
         ydk::YLeaf num_lbls; //type: uint8
-        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
-        class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
+        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
+        class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -5620,10 +5804,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 
         ydk::YLeaf entry; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label : public ydk::Entity
 {
     public:
         Label();
@@ -5642,10 +5826,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf outgoing_label; //type: uint32
         ydk::YLeaf outgoing_label_str; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data : public ydk::Entity
 {
     public:
         Stackv6Data();
@@ -5661,16 +5845,16 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop
-        class InnerStack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack
+        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop
+        class InnerStack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop> nexthop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack> inner_stack;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack> inner_stack;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -5698,10 +5882,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf out_interface_parent; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack : public ydk::Entity
 {
     public:
         InnerStack();
@@ -5719,16 +5903,16 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 
         ydk::YLeaf num_nexthops; //type: uint8
         ydk::YLeaf num_lbls; //type: uint8
-        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
-        class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
+        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
+        class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -5746,10 +5930,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 
         ydk::YLeaf entry; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label : public ydk::Entity
 {
     public:
         Label();
@@ -5768,10 +5952,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf outgoing_label; //type: uint32
         ydk::YLeaf outgoing_label_str; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData : public ydk::Entity
 {
     public:
         TeHeadData();
@@ -5795,10 +5979,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
         ydk::YLeaf tunnel_load_metric; //type: uint32
         ydk::YLeaf flags_decode; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::DmtcData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::DmtcData : public ydk::Entity
 {
     public:
         DmtcData();
@@ -5816,7 +6000,185 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 
         ydk::YLeaf dmtc_ext_ifh; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::DmtcData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::DmtcData
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data : public ydk::Entity
+{
+    public:
+        NnhStackv4Data();
+        ~NnhStackv4Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ipv4Stack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+        class NextNextHop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack> ipv4_stack;
+        ydk::YList next_next_hop;
+        
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack : public ydk::Entity
+{
+    public:
+        Ipv4Stack();
+        ~Ipv4Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf owner_application_type; //type: MgmtLsdApp
+        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+        class InnerStack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack> inner_stack;
+        
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_interface_parent; //type: string
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack : public ydk::Entity
+{
+    public:
+        InnerStack();
+        ~InnerStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf num_nexthops; //type: uint8
+        ydk::YLeaf num_lbls; //type: uint8
+        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+        class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+        ydk::YList nexthop;
+        ydk::YList label;
+        
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label : public ydk::Entity
+{
+    public:
+        Label();
+        ~Label();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf outgoing_label_str; //type: string
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop : public ydk::Entity
+{
+    public:
+        NextNextHop();
+        ~NextNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nnh_type; //type: MplsLsdNnh
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes : public ydk::Entity
@@ -5837,7 +6199,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes : public ydk::Entity
 
         class RewriteTe; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe> > rewrite_te;
+        ydk::YList rewrite_te;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes
 
@@ -5875,10 +6237,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe : public ydk::En
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey> fpi_key;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId> rewrite_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi> > associated_fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::V4Rpf> > v4_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::V6Rpf> > v6_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois> > mois;
+        ydk::YList associated_fpi;
+        ydk::YList v4_rpf;
+        ydk::YList v6_rpf;
+        ydk::YList mois;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe
 
@@ -5903,7 +6265,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey : public
         class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey
 
@@ -6173,26 +6535,26 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
         class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4Data
         class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6Data
         class Tev4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4Data
-        class Ipv4L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
-        class Ipv6L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
-        class VrfL3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
-        class Cev4L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
-        class Cev6L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+        class Ipv4l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
+        class Ipv6l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
+        class VrfL3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
+        class Cev4l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
+        class Cev6l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
         class PseudowireData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PseudowireData
         class LabelBlockData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::LabelBlockData
         class IpSubData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::IpSubData
-        class Tev4P2MpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+        class Tev4p2mpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
         class MldPv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::MldPv4Data
         class PseudowireHeadEndData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
         class TpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::TpData
         class GenericRoutingEncapsulation; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
         class Ipv6GenericRoutingEncapsulation; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
         class EvpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::EvpnData
-        class Ipv4BlbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
-        class Ipv6BlbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+        class Ipv4blbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4blbData
+        class Ipv6blbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6blbData
         class PiMiPmsiData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
         class PiMsPmsiData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
-        class NextHopSetL3Vpn; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+        class NextHopSetL3vpn; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
         class SrPrefixSegment; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
         class SrAdjSegmentIpv4; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
         class SrAdjSegmentIpv6; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
@@ -6203,26 +6565,26 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData> ipv4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData> ipv6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData> cev4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData> cev6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData> ipv4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData> ipv6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3vpnData> vrf_l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData> cev4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData> cev6l3vpn_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4p2mpData> tev4p2mp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4BlbData> ipv4blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6BlbData> ipv6blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4blbData> ipv4blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6blbData> ipv6blb_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn> next_hop_set_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn> next_hop_set_l3vpn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
@@ -6310,11 +6672,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData : public ydk::Entity
 {
     public:
-        Ipv4L3VpnData();
-        ~Ipv4L3VpnData();
+        Ipv4l3vpnData();
+        ~Ipv4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -6330,14 +6692,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData : public ydk::Entity
 {
     public:
-        Ipv6L3VpnData();
-        ~Ipv6L3VpnData();
+        Ipv6l3vpnData();
+        ~Ipv6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -6353,14 +6715,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3vpnData : public ydk::Entity
 {
     public:
-        VrfL3VpnData();
-        ~VrfL3VpnData();
+        VrfL3vpnData();
+        ~VrfL3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -6375,14 +6737,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData : public ydk::Entity
 {
     public:
-        Cev4L3VpnData();
-        ~Cev4L3VpnData();
+        Cev4l3vpnData();
+        ~Cev4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -6398,14 +6760,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
         ydk::YLeaf ipv4_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData : public ydk::Entity
 {
     public:
-        Cev6L3VpnData();
-        ~Cev6L3VpnData();
+        Cev6l3vpnData();
+        ~Cev6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -6421,7 +6783,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
@@ -6495,11 +6857,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::IpSubData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4P2MpData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4p2mpData : public ydk::Entity
 {
     public:
-        Tev4P2MpData();
-        ~Tev4P2MpData();
+        Tev4p2mpData();
+        ~Tev4p2mpData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -6519,7 +6881,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf previous_hop; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
@@ -6660,11 +7022,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::EvpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4BlbData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4blbData : public ydk::Entity
 {
     public:
-        Ipv4BlbData();
-        ~Ipv4BlbData();
+        Ipv4blbData();
+        ~Ipv4blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -6679,14 +7041,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4blbData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6BlbData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6blbData : public ydk::Entity
 {
     public:
-        Ipv6BlbData();
-        ~Ipv6BlbData();
+        Ipv6blbData();
+        ~Ipv6blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -6701,7 +7063,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6blbData
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
@@ -6753,11 +7115,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn : public ydk::Entity
 {
     public:
-        NextHopSetL3Vpn();
-        ~NextHopSetL3Vpn();
+        NextHopSetL3vpn();
+        ~NextHopSetL3vpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -6772,7 +7134,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf next_hop_set_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
@@ -6931,7 +7293,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 
         class LabelData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite::LabelData> > label_data;
+        ydk::YList label_data;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite
 
@@ -6977,7 +7339,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi :
         class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi
 
@@ -7242,7 +7604,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois : public y
         class MoiArray; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::ApplicationResource> application_resource;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray> > moi_array;
+        ydk::YList moi_array;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois
 
@@ -7326,6 +7688,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
         class Stackv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data
         class TeHeadData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::TeHeadData
         class DmtcData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::DmtcData
+        class NnhStackv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
@@ -7341,6 +7704,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::TeHeadData> te_head_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::DmtcData> dmtc_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data> nnh_stackv4_data;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi
 
@@ -7511,6 +7875,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
         ydk::YLeaf tunnel_weight; //type: uint32
         ydk::YLeaf data_out_parent_interface; //type: string
         ydk::YLeaf tunnel_class; //type: uint32
+        ydk::YLeaf ipv4_next_next_hop; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Tev4Data
 
@@ -7706,8 +8071,8 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
         class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
         class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
@@ -7832,8 +8197,8 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
         class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
         class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
@@ -7929,6 +8294,184 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::DmtcData
 
 
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data : public ydk::Entity
+{
+    public:
+        NnhStackv4Data();
+        ~NnhStackv4Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ipv4Stack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+        class NextNextHop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack> ipv4_stack;
+        ydk::YList next_next_hop;
+        
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack : public ydk::Entity
+{
+    public:
+        Ipv4Stack();
+        ~Ipv4Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf owner_application_type; //type: MgmtLsdApp
+        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+        class InnerStack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack> inner_stack;
+        
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_interface_parent; //type: string
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack : public ydk::Entity
+{
+    public:
+        InnerStack();
+        ~InnerStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf num_nexthops; //type: uint8
+        ydk::YLeaf num_lbls; //type: uint8
+        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+        class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+        ydk::YList nexthop;
+        ydk::YList label;
+        
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label : public ydk::Entity
+{
+    public:
+        Label();
+        ~Label();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf outgoing_label_str; //type: string
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop : public ydk::Entity
+{
+    public:
+        NextNextHop();
+        ~NextNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nnh_type; //type: MplsLsdNnh
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+
+
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels : public ydk::Entity
 {
     public:
@@ -7947,7 +8490,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels : public ydk::Entity
 
         class RewriteLabel; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel> > rewrite_label;
+        ydk::YList rewrite_label;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels
 
@@ -7968,7 +8511,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf label_id; //type: int32
+        ydk::YLeaf label_id; //type: uint32
         ydk::YLeaf rewrite_version; //type: uint64
         ydk::YLeaf bcdl_priority; //type: uint8
         ydk::YLeaf lsd_queue; //type: uint8
@@ -7985,10 +8528,10 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel : public y
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey> fpi_key;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId> rewrite_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi> > associated_fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::V4Rpf> > v4_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::V6Rpf> > v6_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois> > mois;
+        ydk::YList associated_fpi;
+        ydk::YList v4_rpf;
+        ydk::YList v6_rpf;
+        ydk::YList mois;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel
 
@@ -8013,7 +8556,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey : 
         class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey
 
@@ -8283,26 +8826,26 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
         class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4Data
         class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6Data
         class Tev4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4Data
-        class Ipv4L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
-        class Ipv6L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
-        class VrfL3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
-        class Cev4L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
-        class Cev6L3VpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+        class Ipv4l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
+        class Ipv6l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
+        class VrfL3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
+        class Cev4l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
+        class Cev6l3vpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
         class PseudowireData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireData
         class LabelBlockData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockData
         class IpSubData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::IpSubData
-        class Tev4P2MpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+        class Tev4p2mpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
         class MldPv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::MldPv4Data
         class PseudowireHeadEndData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
         class TpData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TpData
         class GenericRoutingEncapsulation; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
         class Ipv6GenericRoutingEncapsulation; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
         class EvpnData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::EvpnData
-        class Ipv4BlbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
-        class Ipv6BlbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+        class Ipv4blbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4blbData
+        class Ipv6blbData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6blbData
         class PiMiPmsiData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
         class PiMsPmsiData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
-        class NextHopSetL3Vpn; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+        class NextHopSetL3vpn; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
         class SrPrefixSegment; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
         class SrAdjSegmentIpv4; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
         class SrAdjSegmentIpv6; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
@@ -8313,26 +8856,26 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData> ipv4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData> ipv6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData> cev4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData> cev6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData> ipv4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData> ipv6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3vpnData> vrf_l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData> cev4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData> cev6l3vpn_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4p2mpData> tev4p2mp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4BlbData> ipv4blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6BlbData> ipv6blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4blbData> ipv4blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6blbData> ipv6blb_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn> next_hop_set_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn> next_hop_set_l3vpn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
@@ -8420,11 +8963,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData : public ydk::Entity
 {
     public:
-        Ipv4L3VpnData();
-        ~Ipv4L3VpnData();
+        Ipv4l3vpnData();
+        ~Ipv4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -8440,14 +8983,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData : public ydk::Entity
 {
     public:
-        Ipv6L3VpnData();
-        ~Ipv6L3VpnData();
+        Ipv6l3vpnData();
+        ~Ipv6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -8463,14 +9006,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3vpnData : public ydk::Entity
 {
     public:
-        VrfL3VpnData();
-        ~VrfL3VpnData();
+        VrfL3vpnData();
+        ~VrfL3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -8485,14 +9028,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData : public ydk::Entity
 {
     public:
-        Cev4L3VpnData();
-        ~Cev4L3VpnData();
+        Cev4l3vpnData();
+        ~Cev4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -8508,14 +9051,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
         ydk::YLeaf ipv4_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData : public ydk::Entity
 {
     public:
-        Cev6L3VpnData();
-        ~Cev6L3VpnData();
+        Cev6l3vpnData();
+        ~Cev6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -8531,7 +9074,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
@@ -8605,11 +9148,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::IpSubData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4P2MpData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4p2mpData : public ydk::Entity
 {
     public:
-        Tev4P2MpData();
-        ~Tev4P2MpData();
+        Tev4p2mpData();
+        ~Tev4p2mpData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -8629,7 +9172,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf previous_hop; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
@@ -8770,11 +9313,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::EvpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4BlbData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4blbData : public ydk::Entity
 {
     public:
-        Ipv4BlbData();
-        ~Ipv4BlbData();
+        Ipv4blbData();
+        ~Ipv4blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -8789,14 +9332,14 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4blbData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6BlbData : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6blbData : public ydk::Entity
 {
     public:
-        Ipv6BlbData();
-        ~Ipv6BlbData();
+        Ipv6blbData();
+        ~Ipv6blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -8811,7 +9354,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6blbData
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
@@ -8863,11 +9406,11 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn : public ydk::Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn : public ydk::Entity
 {
     public:
-        NextHopSetL3Vpn();
-        ~NextHopSetL3Vpn();
+        NextHopSetL3vpn();
+        ~NextHopSetL3vpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -8882,7 +9425,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf next_hop_set_id; //type: uint32
 
-}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
 
 
 class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
@@ -9041,7 +9584,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 
         class LabelData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::LabelData> > label_data;
+        ydk::YList label_data;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite
 
@@ -9087,7 +9630,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Associate
         class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi
 
@@ -9352,7 +9895,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois : pu
         class MoiArray; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::ApplicationResource> application_resource;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray> > moi_array;
+        ydk::YList moi_array;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
 
@@ -9436,6 +9979,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::Moi
         class Stackv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data
         class TeHeadData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData
         class DmtcData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData
+        class NnhStackv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
@@ -9451,6 +9995,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::Moi
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData> te_head_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData> dmtc_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data> nnh_stackv4_data;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi
 
@@ -9621,6 +10166,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::Moi
         ydk::YLeaf tunnel_weight; //type: uint32
         ydk::YLeaf data_out_parent_interface; //type: string
         ydk::YLeaf tunnel_class; //type: uint32
+        ydk::YLeaf ipv4_next_next_hop; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Tev4Data
 
@@ -9816,8 +10362,8 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::Moi
         class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
         class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
@@ -9942,8 +10488,8 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::Moi
         class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
         class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
@@ -10037,6 +10583,184 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::Moi
         ydk::YLeaf dmtc_ext_ifh; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data : public ydk::Entity
+{
+    public:
+        NnhStackv4Data();
+        ~NnhStackv4Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ipv4Stack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+        class NextNextHop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack> ipv4_stack;
+        ydk::YList next_next_hop;
+        
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack : public ydk::Entity
+{
+    public:
+        Ipv4Stack();
+        ~Ipv4Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf owner_application_type; //type: MgmtLsdApp
+        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+        class InnerStack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack> inner_stack;
+        
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_interface_parent; //type: string
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack : public ydk::Entity
+{
+    public:
+        InnerStack();
+        ~InnerStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf num_nexthops; //type: uint8
+        ydk::YLeaf num_lbls; //type: uint8
+        class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+        class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+        ydk::YList nexthop;
+        ydk::YList label;
+        
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label : public ydk::Entity
+{
+    public:
+        Label();
+        ~Label();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf outgoing_label_str; //type: string
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop : public ydk::Entity
+{
+    public:
+        NextNextHop();
+        ~NextNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nnh_type; //type: MplsLsdNnh
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
+
+}; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
 
 
 class MplsLsdNodes::MplsLsdNode::RewriteSummary : public ydk::Entity
@@ -10151,7 +10875,7 @@ class MplsLsdNodes::MplsLsdNode::Applications : public ydk::Entity
 
         class Application; //type: MplsLsdNodes::MplsLsdNode::Applications::Application
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Applications::Application> > application;
+        ydk::YList application;
         
 }; // MplsLsdNodes::MplsLsdNode::Applications
 
@@ -10219,8 +10943,8 @@ class MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistic
         class LabelContextPendingCount; //type: MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistics::LabelContextPendingCount
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistics::Connected> connected;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistics::LabelContextCount> > label_context_count;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistics::LabelContextPendingCount> > label_context_pending_count;
+        ydk::YList label_context_count;
+        ydk::YList label_context_pending_count;
         
 }; // MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistics
 
@@ -10309,7 +11033,7 @@ class MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs : public ydk::Entity
 
         class LabelSummaryVrf; //type: MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs::LabelSummaryVrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs::LabelSummaryVrf> > label_summary_vrf;
+        ydk::YList label_summary_vrf;
         
 }; // MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs
 
@@ -10336,7 +11060,7 @@ class MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs::LabelSummaryVrf : public ydk:
         ydk::YLeaf rsi_connected; //type: int32
         class OwnerCount; //type: MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount> > owner_count;
+        ydk::YList owner_count;
         
 }; // MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs::LabelSummaryVrf
 
@@ -10408,7 +11132,7 @@ class MplsLsdNodes::MplsLsdNode::RewriteSummaryVrfs : public ydk::Entity
 
         class RewriteSummaryVrf; //type: MplsLsdNodes::MplsLsdNode::RewriteSummaryVrfs::RewriteSummaryVrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::RewriteSummaryVrfs::RewriteSummaryVrf> > rewrite_summary_vrf;
+        ydk::YList rewrite_summary_vrf;
         
 }; // MplsLsdNodes::MplsLsdNode::RewriteSummaryVrfs
 
@@ -10526,7 +11250,7 @@ class MplsLsdNodes::MplsLsdNode::Interfaces : public ydk::Entity
 
         class Interface; //type: MplsLsdNodes::MplsLsdNode::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MplsLsdNodes::MplsLsdNode::Interfaces
 
@@ -10552,7 +11276,7 @@ class MplsLsdNodes::MplsLsdNode::Interfaces::Interface : public ydk::Entity
         ydk::YLeaf interface_state; //type: MgmtLsdIntfState
         class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Interfaces::Interface::ApplicationOwner
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Interfaces::Interface::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsdNodes::MplsLsdNode::Interfaces::Interface
 
@@ -10648,7 +11372,7 @@ class MplsLsd::Clients : public ydk::Entity
 
         class Client; //type: MplsLsd::Clients::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Clients::Client> > client;
+        ydk::YList client;
         
 }; // MplsLsd::Clients
 
@@ -10774,7 +11498,7 @@ class MplsLsd::LabelSummary : public ydk::Entity
         ydk::YLeaf rsi_connected; //type: int32
         class OwnerCount; //type: MplsLsd::LabelSummary::OwnerCount
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::LabelSummary::OwnerCount> > owner_count;
+        ydk::YList owner_count;
         
 }; // MplsLsd::LabelSummary
 
@@ -10824,7 +11548,7 @@ class MplsLsd::Labels : public ydk::Entity
 
         class Label; //type: MplsLsd::Labels::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label> > label;
+        ydk::YList label;
         
 }; // MplsLsd::Labels
 
@@ -10846,7 +11570,7 @@ class MplsLsd::Labels::Label : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf label_id; //type: int32
+        ydk::YLeaf label_id; //type: uint32
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf rewrite_is_bound; //type: int32
         ydk::YLeaf rewrite_owners; //type: uint32
@@ -10856,7 +11580,7 @@ class MplsLsd::Labels::Label : public ydk::Entity
         class ApplicationOwner; //type: MplsLsd::Labels::Label::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext> label_context;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsd::Labels::Label
 
@@ -10905,26 +11629,26 @@ class MplsLsd::Labels::Label::LabelContext::Key : public ydk::Entity
         class Ipv4Data; //type: MplsLsd::Labels::Label::LabelContext::Key::Ipv4Data
         class Ipv6Data; //type: MplsLsd::Labels::Label::LabelContext::Key::Ipv6Data
         class Tev4Data; //type: MplsLsd::Labels::Label::LabelContext::Key::Tev4Data
-        class Ipv4L3VpnData; //type: MplsLsd::Labels::Label::LabelContext::Key::Ipv4L3VpnData
-        class Ipv6L3VpnData; //type: MplsLsd::Labels::Label::LabelContext::Key::Ipv6L3VpnData
-        class VrfL3VpnData; //type: MplsLsd::Labels::Label::LabelContext::Key::VrfL3VpnData
-        class Cev4L3VpnData; //type: MplsLsd::Labels::Label::LabelContext::Key::Cev4L3VpnData
-        class Cev6L3VpnData; //type: MplsLsd::Labels::Label::LabelContext::Key::Cev6L3VpnData
+        class Ipv4l3vpnData; //type: MplsLsd::Labels::Label::LabelContext::Key::Ipv4l3vpnData
+        class Ipv6l3vpnData; //type: MplsLsd::Labels::Label::LabelContext::Key::Ipv6l3vpnData
+        class VrfL3vpnData; //type: MplsLsd::Labels::Label::LabelContext::Key::VrfL3vpnData
+        class Cev4l3vpnData; //type: MplsLsd::Labels::Label::LabelContext::Key::Cev4l3vpnData
+        class Cev6l3vpnData; //type: MplsLsd::Labels::Label::LabelContext::Key::Cev6l3vpnData
         class PseudowireData; //type: MplsLsd::Labels::Label::LabelContext::Key::PseudowireData
         class LabelBlockData; //type: MplsLsd::Labels::Label::LabelContext::Key::LabelBlockData
         class IpSubData; //type: MplsLsd::Labels::Label::LabelContext::Key::IpSubData
-        class Tev4P2MpData; //type: MplsLsd::Labels::Label::LabelContext::Key::Tev4P2MpData
+        class Tev4p2mpData; //type: MplsLsd::Labels::Label::LabelContext::Key::Tev4p2mpData
         class MldPv4Data; //type: MplsLsd::Labels::Label::LabelContext::Key::MldPv4Data
         class PseudowireHeadEndData; //type: MplsLsd::Labels::Label::LabelContext::Key::PseudowireHeadEndData
         class TpData; //type: MplsLsd::Labels::Label::LabelContext::Key::TpData
         class GenericRoutingEncapsulation; //type: MplsLsd::Labels::Label::LabelContext::Key::GenericRoutingEncapsulation
         class Ipv6GenericRoutingEncapsulation; //type: MplsLsd::Labels::Label::LabelContext::Key::Ipv6GenericRoutingEncapsulation
         class EvpnData; //type: MplsLsd::Labels::Label::LabelContext::Key::EvpnData
-        class Ipv4BlbData; //type: MplsLsd::Labels::Label::LabelContext::Key::Ipv4BlbData
-        class Ipv6BlbData; //type: MplsLsd::Labels::Label::LabelContext::Key::Ipv6BlbData
+        class Ipv4blbData; //type: MplsLsd::Labels::Label::LabelContext::Key::Ipv4blbData
+        class Ipv6blbData; //type: MplsLsd::Labels::Label::LabelContext::Key::Ipv6blbData
         class PiMiPmsiData; //type: MplsLsd::Labels::Label::LabelContext::Key::PiMiPmsiData
         class PiMsPmsiData; //type: MplsLsd::Labels::Label::LabelContext::Key::PiMsPmsiData
-        class NextHopSetL3Vpn; //type: MplsLsd::Labels::Label::LabelContext::Key::NextHopSetL3Vpn
+        class NextHopSetL3vpn; //type: MplsLsd::Labels::Label::LabelContext::Key::NextHopSetL3vpn
         class SrPrefixSegment; //type: MplsLsd::Labels::Label::LabelContext::Key::SrPrefixSegment
         class SrAdjSegmentIpv4; //type: MplsLsd::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4
         class SrAdjSegmentIpv6; //type: MplsLsd::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6
@@ -10935,26 +11659,26 @@ class MplsLsd::Labels::Label::LabelContext::Key : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Ipv4Data> ipv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Ipv6Data> ipv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Ipv4L3VpnData> ipv4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Ipv6L3VpnData> ipv6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::VrfL3VpnData> vrf_l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Cev4L3VpnData> cev4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Cev6L3VpnData> cev6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Ipv4l3vpnData> ipv4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Ipv6l3vpnData> ipv6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::VrfL3vpnData> vrf_l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Cev4l3vpnData> cev4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Cev6l3vpnData> cev6l3vpn_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::PseudowireData> pseudowire_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::LabelBlockData> label_block_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Tev4P2MpData> tev4p2mp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Tev4p2mpData> tev4p2mp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::MldPv4Data> mld_pv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::PseudowireHeadEndData> pseudowire_head_end_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::TpData> tp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::GenericRoutingEncapsulation> generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::EvpnData> evpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Ipv4BlbData> ipv4blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Ipv6BlbData> ipv6blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Ipv4blbData> ipv4blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Ipv6blbData> ipv6blb_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::PiMiPmsiData> pi_mi_pmsi_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::PiMsPmsiData> pi_ms_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::NextHopSetL3Vpn> next_hop_set_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::NextHopSetL3vpn> next_hop_set_l3vpn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::SrPrefixSegment> sr_prefix_segment;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
@@ -11042,11 +11766,11 @@ class MplsLsd::Labels::Label::LabelContext::Key::Tev4Data : public ydk::Entity
 }; // MplsLsd::Labels::Label::LabelContext::Key::Tev4Data
 
 
-class MplsLsd::Labels::Label::LabelContext::Key::Ipv4L3VpnData : public ydk::Entity
+class MplsLsd::Labels::Label::LabelContext::Key::Ipv4l3vpnData : public ydk::Entity
 {
     public:
-        Ipv4L3VpnData();
-        ~Ipv4L3VpnData();
+        Ipv4l3vpnData();
+        ~Ipv4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -11062,14 +11786,14 @@ class MplsLsd::Labels::Label::LabelContext::Key::Ipv4L3VpnData : public ydk::Ent
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsd::Labels::Label::LabelContext::Key::Ipv4L3VpnData
+}; // MplsLsd::Labels::Label::LabelContext::Key::Ipv4l3vpnData
 
 
-class MplsLsd::Labels::Label::LabelContext::Key::Ipv6L3VpnData : public ydk::Entity
+class MplsLsd::Labels::Label::LabelContext::Key::Ipv6l3vpnData : public ydk::Entity
 {
     public:
-        Ipv6L3VpnData();
-        ~Ipv6L3VpnData();
+        Ipv6l3vpnData();
+        ~Ipv6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -11085,14 +11809,14 @@ class MplsLsd::Labels::Label::LabelContext::Key::Ipv6L3VpnData : public ydk::Ent
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsd::Labels::Label::LabelContext::Key::Ipv6L3VpnData
+}; // MplsLsd::Labels::Label::LabelContext::Key::Ipv6l3vpnData
 
 
-class MplsLsd::Labels::Label::LabelContext::Key::VrfL3VpnData : public ydk::Entity
+class MplsLsd::Labels::Label::LabelContext::Key::VrfL3vpnData : public ydk::Entity
 {
     public:
-        VrfL3VpnData();
-        ~VrfL3VpnData();
+        VrfL3vpnData();
+        ~VrfL3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -11107,14 +11831,14 @@ class MplsLsd::Labels::Label::LabelContext::Key::VrfL3VpnData : public ydk::Enti
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Labels::Label::LabelContext::Key::VrfL3VpnData
+}; // MplsLsd::Labels::Label::LabelContext::Key::VrfL3vpnData
 
 
-class MplsLsd::Labels::Label::LabelContext::Key::Cev4L3VpnData : public ydk::Entity
+class MplsLsd::Labels::Label::LabelContext::Key::Cev4l3vpnData : public ydk::Entity
 {
     public:
-        Cev4L3VpnData();
-        ~Cev4L3VpnData();
+        Cev4l3vpnData();
+        ~Cev4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -11130,14 +11854,14 @@ class MplsLsd::Labels::Label::LabelContext::Key::Cev4L3VpnData : public ydk::Ent
         ydk::YLeaf ipv4_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Labels::Label::LabelContext::Key::Cev4L3VpnData
+}; // MplsLsd::Labels::Label::LabelContext::Key::Cev4l3vpnData
 
 
-class MplsLsd::Labels::Label::LabelContext::Key::Cev6L3VpnData : public ydk::Entity
+class MplsLsd::Labels::Label::LabelContext::Key::Cev6l3vpnData : public ydk::Entity
 {
     public:
-        Cev6L3VpnData();
-        ~Cev6L3VpnData();
+        Cev6l3vpnData();
+        ~Cev6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -11153,7 +11877,7 @@ class MplsLsd::Labels::Label::LabelContext::Key::Cev6L3VpnData : public ydk::Ent
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Labels::Label::LabelContext::Key::Cev6L3VpnData
+}; // MplsLsd::Labels::Label::LabelContext::Key::Cev6l3vpnData
 
 
 class MplsLsd::Labels::Label::LabelContext::Key::PseudowireData : public ydk::Entity
@@ -11227,11 +11951,11 @@ class MplsLsd::Labels::Label::LabelContext::Key::IpSubData : public ydk::Entity
 }; // MplsLsd::Labels::Label::LabelContext::Key::IpSubData
 
 
-class MplsLsd::Labels::Label::LabelContext::Key::Tev4P2MpData : public ydk::Entity
+class MplsLsd::Labels::Label::LabelContext::Key::Tev4p2mpData : public ydk::Entity
 {
     public:
-        Tev4P2MpData();
-        ~Tev4P2MpData();
+        Tev4p2mpData();
+        ~Tev4p2mpData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -11251,7 +11975,7 @@ class MplsLsd::Labels::Label::LabelContext::Key::Tev4P2MpData : public ydk::Enti
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf previous_hop; //type: string
 
-}; // MplsLsd::Labels::Label::LabelContext::Key::Tev4P2MpData
+}; // MplsLsd::Labels::Label::LabelContext::Key::Tev4p2mpData
 
 
 class MplsLsd::Labels::Label::LabelContext::Key::MldPv4Data : public ydk::Entity
@@ -11392,11 +12116,11 @@ class MplsLsd::Labels::Label::LabelContext::Key::EvpnData : public ydk::Entity
 }; // MplsLsd::Labels::Label::LabelContext::Key::EvpnData
 
 
-class MplsLsd::Labels::Label::LabelContext::Key::Ipv4BlbData : public ydk::Entity
+class MplsLsd::Labels::Label::LabelContext::Key::Ipv4blbData : public ydk::Entity
 {
     public:
-        Ipv4BlbData();
-        ~Ipv4BlbData();
+        Ipv4blbData();
+        ~Ipv4blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -11411,14 +12135,14 @@ class MplsLsd::Labels::Label::LabelContext::Key::Ipv4BlbData : public ydk::Entit
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsd::Labels::Label::LabelContext::Key::Ipv4BlbData
+}; // MplsLsd::Labels::Label::LabelContext::Key::Ipv4blbData
 
 
-class MplsLsd::Labels::Label::LabelContext::Key::Ipv6BlbData : public ydk::Entity
+class MplsLsd::Labels::Label::LabelContext::Key::Ipv6blbData : public ydk::Entity
 {
     public:
-        Ipv6BlbData();
-        ~Ipv6BlbData();
+        Ipv6blbData();
+        ~Ipv6blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -11433,7 +12157,7 @@ class MplsLsd::Labels::Label::LabelContext::Key::Ipv6BlbData : public ydk::Entit
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsd::Labels::Label::LabelContext::Key::Ipv6BlbData
+}; // MplsLsd::Labels::Label::LabelContext::Key::Ipv6blbData
 
 
 class MplsLsd::Labels::Label::LabelContext::Key::PiMiPmsiData : public ydk::Entity
@@ -11485,11 +12209,11 @@ class MplsLsd::Labels::Label::LabelContext::Key::PiMsPmsiData : public ydk::Enti
 }; // MplsLsd::Labels::Label::LabelContext::Key::PiMsPmsiData
 
 
-class MplsLsd::Labels::Label::LabelContext::Key::NextHopSetL3Vpn : public ydk::Entity
+class MplsLsd::Labels::Label::LabelContext::Key::NextHopSetL3vpn : public ydk::Entity
 {
     public:
-        NextHopSetL3Vpn();
-        ~NextHopSetL3Vpn();
+        NextHopSetL3vpn();
+        ~NextHopSetL3vpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -11504,7 +12228,7 @@ class MplsLsd::Labels::Label::LabelContext::Key::NextHopSetL3Vpn : public ydk::E
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf next_hop_set_id; //type: uint32
 
-}; // MplsLsd::Labels::Label::LabelContext::Key::NextHopSetL3Vpn
+}; // MplsLsd::Labels::Label::LabelContext::Key::NextHopSetL3vpn
 
 
 class MplsLsd::Labels::Label::LabelContext::Key::SrPrefixSegment : public ydk::Entity
@@ -11723,7 +12447,7 @@ class MplsLsd::FrrDatabase::TunnelMidpoints : public ydk::Entity
 
         class TunnelMidpoint; //type: MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint> > tunnel_midpoint;
+        ydk::YList tunnel_midpoint;
         
 }; // MplsLsd::FrrDatabase::TunnelMidpoints
 
@@ -11745,7 +12469,7 @@ class MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf label; //type: int32
+        ydk::YLeaf label; //type: uint32
         ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf input_label; //type: uint32
         ydk::YLeaf entry_frr_state; //type: MgmtLsdFrrState
@@ -11753,7 +12477,7 @@ class MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint : public ydk::Entity
         class OutPath; //type: MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId> frr_entry_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath> > out_path;
+        ydk::YList out_path;
         
 }; // MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint
 
@@ -11873,7 +12597,7 @@ class MplsLsd::FrrDatabase::TunnelHeads : public ydk::Entity
 
         class TunnelHead; //type: MplsLsd::FrrDatabase::TunnelHeads::TunnelHead
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelHeads::TunnelHead> > tunnel_head;
+        ydk::YList tunnel_head;
         
 }; // MplsLsd::FrrDatabase::TunnelHeads
 
@@ -11903,7 +12627,7 @@ class MplsLsd::FrrDatabase::TunnelHeads::TunnelHead : public ydk::Entity
         class OutPath; //type: MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::OutPath
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId> frr_entry_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::OutPath> > out_path;
+        ydk::YList out_path;
         
 }; // MplsLsd::FrrDatabase::TunnelHeads::TunnelHead
 
@@ -12048,7 +12772,7 @@ class MplsLsd::FrrDatabase::SummaryProtectedInterfaces : public ydk::Entity
 
         class SummaryProtectedInterface; //type: MplsLsd::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterface> > summary_protected_interface;
+        ydk::YList summary_protected_interface;
         
 }; // MplsLsd::FrrDatabase::SummaryProtectedInterfaces
 
@@ -12147,12 +12871,12 @@ class MplsLsd::Rewrite : public ydk::Entity
         std::string get_absolute_path() const override;
 
         class RewritePws; //type: MplsLsd::Rewrite::RewritePws
-        class RewriteIpv4S; //type: MplsLsd::Rewrite::RewriteIpv4S
+        class RewriteIpv4s; //type: MplsLsd::Rewrite::RewriteIpv4s
         class RewriteTes; //type: MplsLsd::Rewrite::RewriteTes
         class RewriteLabels; //type: MplsLsd::Rewrite::RewriteLabels
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws> rewrite_pws;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S> rewrite_ipv4s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s> rewrite_ipv4s;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes> rewrite_tes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels> rewrite_labels;
         
@@ -12178,7 +12902,7 @@ class MplsLsd::Rewrite::RewritePws : public ydk::Entity
 
         class RewritePw; //type: MplsLsd::Rewrite::RewritePws::RewritePw
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw> > rewrite_pw;
+        ydk::YList rewrite_pw;
         
 }; // MplsLsd::Rewrite::RewritePws
 
@@ -12200,7 +12924,7 @@ class MplsLsd::Rewrite::RewritePws::RewritePw : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf pw_list_id; //type: int32
+        ydk::YLeaf pw_list_id; //type: uint32
         ydk::YLeaf rewrite_version; //type: uint64
         ydk::YLeaf bcdl_priority; //type: uint8
         ydk::YLeaf lsd_queue; //type: uint8
@@ -12217,10 +12941,10 @@ class MplsLsd::Rewrite::RewritePws::RewritePw : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey> fpi_key;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId> rewrite_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi> > associated_fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::V4Rpf> > v4_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::V6Rpf> > v6_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois> > mois;
+        ydk::YList associated_fpi;
+        ydk::YList v4_rpf;
+        ydk::YList v6_rpf;
+        ydk::YList mois;
         
 }; // MplsLsd::Rewrite::RewritePws::RewritePw
 
@@ -12245,7 +12969,7 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey : public ydk::Entity
         class ApplicationOwner; //type: MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey
 
@@ -12515,26 +13239,26 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
         class Ipv4Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data
         class Ipv6Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data
         class Tev4Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data
-        class Ipv4L3VpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
-        class Ipv6L3VpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
-        class VrfL3VpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
-        class Cev4L3VpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
-        class Cev6L3VpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+        class Ipv4l3vpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
+        class Ipv6l3vpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
+        class VrfL3vpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
+        class Cev4l3vpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
+        class Cev6l3vpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
         class PseudowireData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData
         class LabelBlockData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData
         class IpSubData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData
-        class Tev4P2MpData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+        class Tev4p2mpData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
         class MldPv4Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data
         class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
         class TpData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData
         class GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
         class Ipv6GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
         class EvpnData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData
-        class Ipv4BlbData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
-        class Ipv6BlbData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+        class Ipv4blbData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData
+        class Ipv6blbData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData
         class PiMiPmsiData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
         class PiMsPmsiData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
-        class NextHopSetL3Vpn; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+        class NextHopSetL3vpn; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
         class SrPrefixSegment; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
         class SrAdjSegmentIpv4; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
         class SrAdjSegmentIpv6; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
@@ -12545,26 +13269,26 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData> ipv4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData> ipv6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData> cev4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData> cev6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData> ipv4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData> ipv6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData> vrf_l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData> cev4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData> cev6l3vpn_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData> tev4p2mp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData> ipv4blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData> ipv6blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData> ipv4blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData> ipv6blb_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn> next_hop_set_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn> next_hop_set_l3vpn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
@@ -12652,11 +13376,11 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data
 
 
-class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData : public ydk::Entity
 {
     public:
-        Ipv4L3VpnData();
-        ~Ipv4L3VpnData();
+        Ipv4l3vpnData();
+        ~Ipv4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -12672,14 +13396,14 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
 
 
-class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData : public ydk::Entity
 {
     public:
-        Ipv6L3VpnData();
-        ~Ipv6L3VpnData();
+        Ipv6l3vpnData();
+        ~Ipv6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -12695,14 +13419,14 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
 
 
-class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData : public ydk::Entity
 {
     public:
-        VrfL3VpnData();
-        ~VrfL3VpnData();
+        VrfL3vpnData();
+        ~VrfL3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -12717,14 +13441,14 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
 
 
-class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData : public ydk::Entity
 {
     public:
-        Cev4L3VpnData();
-        ~Cev4L3VpnData();
+        Cev4l3vpnData();
+        ~Cev4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -12740,14 +13464,14 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf ipv4_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
 
 
-class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData : public ydk::Entity
 {
     public:
-        Cev6L3VpnData();
-        ~Cev6L3VpnData();
+        Cev6l3vpnData();
+        ~Cev6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -12763,7 +13487,7 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
 
 
 class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
@@ -12837,11 +13561,11 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData
 
 
-class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData : public ydk::Entity
 {
     public:
-        Tev4P2MpData();
-        ~Tev4P2MpData();
+        Tev4p2mpData();
+        ~Tev4p2mpData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -12861,7 +13585,7 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf previous_hop; //type: string
 
-}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
 
 
 class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
@@ -13002,11 +13726,11 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData
 
 
-class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData : public ydk::Entity
 {
     public:
-        Ipv4BlbData();
-        ~Ipv4BlbData();
+        Ipv4blbData();
+        ~Ipv4blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -13021,14 +13745,14 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData
 
 
-class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData : public ydk::Entity
 {
     public:
-        Ipv6BlbData();
-        ~Ipv6BlbData();
+        Ipv6blbData();
+        ~Ipv6blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -13043,7 +13767,7 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData
 
 
 class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
@@ -13095,11 +13819,11 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
 
 
-class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn : public ydk::Entity
 {
     public:
-        NextHopSetL3Vpn();
-        ~NextHopSetL3Vpn();
+        NextHopSetL3vpn();
+        ~NextHopSetL3vpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -13114,7 +13838,7 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf next_hop_set_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
 
 
 class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
@@ -13273,7 +13997,7 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabel
 
         class LabelData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::LabelData> > label_data;
+        ydk::YList label_data;
         
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite
 
@@ -13319,7 +14043,7 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi : public ydk::Entit
         class ApplicationOwner; //type: MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi
 
@@ -13584,7 +14308,7 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::Mois : public ydk::Entity
         class MoiArray; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource> application_resource;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray> > moi_array;
+        ydk::YList moi_array;
         
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois
 
@@ -13668,6 +14392,7 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi : public ydk:
         class Stackv6Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data
         class TeHeadData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData
         class DmtcData; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData
+        class NnhStackv4Data; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
@@ -13683,6 +14408,7 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi : public ydk:
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData> te_head_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData> dmtc_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data> nnh_stackv4_data;
         
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi
 
@@ -13853,6 +14579,7 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data : p
         ydk::YLeaf tunnel_weight; //type: uint32
         ydk::YLeaf data_out_parent_interface; //type: string
         ydk::YLeaf tunnel_class; //type: uint32
+        ydk::YLeaf ipv4_next_next_hop; //type: string
 
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data
 
@@ -14048,8 +14775,8 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data:
         class Nexthop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
         class Label; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
@@ -14174,8 +14901,8 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data:
         class Nexthop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
         class Label; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
@@ -14271,11 +14998,189 @@ class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData : p
 }; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S : public ydk::Entity
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data : public ydk::Entity
 {
     public:
-        RewriteIpv4S();
-        ~RewriteIpv4S();
+        NnhStackv4Data();
+        ~NnhStackv4Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ipv4Stack; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+        class NextNextHop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack> ipv4_stack;
+        ydk::YList next_next_hop;
+        
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data
+
+
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack : public ydk::Entity
+{
+    public:
+        Ipv4Stack();
+        ~Ipv4Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf owner_application_type; //type: MgmtLsdApp
+        class Nexthop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+        class InnerStack; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack> inner_stack;
+        
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+
+
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_interface_parent; //type: string
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
+
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+
+
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack : public ydk::Entity
+{
+    public:
+        InnerStack();
+        ~InnerStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf num_nexthops; //type: uint8
+        ydk::YLeaf num_lbls; //type: uint8
+        class Nexthop; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+        class Label; //type: MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+        ydk::YList nexthop;
+        ydk::YList label;
+        
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+
+
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label : public ydk::Entity
+{
+    public:
+        Label();
+        ~Label();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf outgoing_label_str; //type: string
+
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+
+class MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop : public ydk::Entity
+{
+    public:
+        NextNextHop();
+        ~NextNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nnh_type; //type: MplsLsdNnh
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
+
+}; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+
+
+class MplsLsd::Rewrite::RewriteIpv4s : public ydk::Entity
+{
+    public:
+        RewriteIpv4s();
+        ~RewriteIpv4s();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -14288,14 +15193,14 @@ class MplsLsd::Rewrite::RewriteIpv4S : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RewriteIpv4; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4
+        class RewriteIpv4; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4> > rewrite_ipv4;
+        ydk::YList rewrite_ipv4;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S
+}; // MplsLsd::Rewrite::RewriteIpv4s
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4 : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4 : public ydk::Entity
 {
     public:
         RewriteIpv4();
@@ -14315,7 +15220,7 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4 : public ydk::Entity
         ydk::YLeaf rsi_table_name; //type: string
         ydk::YLeaf rsi_table_id; //type: string
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf rewrite_version; //type: uint64
         ydk::YLeaf bcdl_priority; //type: uint8
         ydk::YLeaf lsd_queue; //type: uint8
@@ -14323,24 +15228,24 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4 : public ydk::Entity
         ydk::YLeaf rw_install_age; //type: uint64
         ydk::YLeaf rw_updated; //type: int32
         ydk::YLeaf priority_updated; //type: int32
-        class FpiKey; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
-        class RewriteId; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId
-        class AssociatedFpi; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi
-        class V4Rpf; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::V4Rpf
-        class V6Rpf; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::V6Rpf
-        class Mois; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois
+        class FpiKey; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey
+        class RewriteId; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId
+        class AssociatedFpi; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi
+        class V4Rpf; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V4Rpf
+        class V6Rpf; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V6Rpf
+        class Mois; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey> fpi_key;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId> rewrite_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi> > associated_fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::V4Rpf> > v4_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::V6Rpf> > v6_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois> > mois;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey> fpi_key;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId> rewrite_id;
+        ydk::YList associated_fpi;
+        ydk::YList v4_rpf;
+        ydk::YList v6_rpf;
+        ydk::YList mois;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey : public ydk::Entity
 {
     public:
         FpiKey();
@@ -14357,16 +15262,16 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Fpi; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
-        class ApplicationOwner; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner
+        class Fpi; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi
+        class ApplicationOwner; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::ApplicationOwner
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner> > application_owner;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi> fpi;
+        ydk::YList application_owner;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi : public ydk::Entity
 {
     public:
         Fpi();
@@ -14384,24 +15289,24 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi : public ydk::Ent
         std::string get_absolute_path() const override;
 
         ydk::YLeaf fpi_type; //type: MgmtLsdFpi
-        class LabelData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData
-        class TeData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData
-        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data
-        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data
-        class PwListData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData
-        class DmtcExtIntfData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData
+        class LabelData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelData
+        class TeData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::TeData
+        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv4Data
+        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv6Data
+        class PwListData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::PwListData
+        class DmtcExtIntfData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData> label_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData> te_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data> ipv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data> ipv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData> pw_list_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelData> label_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::TeData> te_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::PwListData> pw_list_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelData : public ydk::Entity
 {
     public:
         LabelData();
@@ -14422,10 +15327,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData : publ
         ydk::YLeaf security_id; //type: uint32
         ydk::YLeaf elc; //type: int32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::LabelData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::TeData : public ydk::Entity
 {
     public:
         TeData();
@@ -14445,10 +15350,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData : public 
         ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::TeData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -14471,10 +15376,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data : publi
         ydk::YLeaf version; //type: uint32
         ydk::YLeaf sr_local_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv4Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -14497,10 +15402,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data : publi
         ydk::YLeaf prefix_len; //type: uint8
         ydk::YLeaf version; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::Ipv6Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::PwListData : public ydk::Entity
 {
     public:
         PwListData();
@@ -14519,10 +15424,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData : pub
 
         ydk::YLeaf pwhe_list_id; //type: uint16
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::PwListData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData : public ydk::Entity
 {
     public:
         DmtcExtIntfData();
@@ -14541,10 +15446,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData 
 
         ydk::YLeaf dmtc_ext_ifh; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::ApplicationOwner : public ydk::Entity
 {
     public:
         ApplicationOwner();
@@ -14567,10 +15472,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner : pu
         ydk::YLeaf application_instance; //type: string
         ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::ApplicationOwner
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId : public ydk::Entity
 {
     public:
         RewriteId();
@@ -14587,14 +15492,14 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RewriteId_; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_
+        class RewriteId_; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_> rewrite_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_> rewrite_id;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_ : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_ : public ydk::Entity
 {
     public:
         RewriteId_();
@@ -14612,16 +15517,16 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_ : publi
         std::string get_absolute_path() const override;
 
         ydk::YLeaf rewrite_id_type; //type: MgmtLsdRwId
-        class LabelContext; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext
-        class LocalLabelRewrite; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite
+        class LabelContext; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext
+        class LocalLabelRewrite; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext> label_context;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext> label_context;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext : public ydk::Entity
 {
     public:
         LabelContext();
@@ -14639,70 +15544,70 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         std::string get_absolute_path() const override;
 
         ydk::YLeaf label_context_type; //type: MgmtLsdLblCtx
-        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data
-        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data
-        class Tev4Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data
-        class Ipv4L3VpnData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
-        class Ipv6L3VpnData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
-        class VrfL3VpnData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
-        class Cev4L3VpnData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
-        class Cev6L3VpnData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
-        class PseudowireData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData
-        class LabelBlockData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData
-        class IpSubData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData
-        class Tev4P2MpData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
-        class MldPv4Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data
-        class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
-        class TpData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData
-        class GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
-        class Ipv6GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
-        class EvpnData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData
-        class Ipv4BlbData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
-        class Ipv6BlbData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
-        class PiMiPmsiData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
-        class PiMsPmsiData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
-        class NextHopSetL3Vpn; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
-        class SrPrefixSegment; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
-        class SrAdjSegmentIpv4; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
-        class SrAdjSegmentIpv6; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
-        class LabelBlockSrgbData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
-        class TeBinding; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding
-        class LabelBlockSrlbData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
+        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data
+        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data
+        class Tev4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data
+        class Ipv4l3vpnData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
+        class Ipv6l3vpnData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
+        class VrfL3vpnData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
+        class Cev4l3vpnData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
+        class Cev6l3vpnData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
+        class PseudowireData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData
+        class LabelBlockData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData
+        class IpSubData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData
+        class Tev4p2mpData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
+        class MldPv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data
+        class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
+        class TpData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData
+        class GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
+        class Ipv6GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
+        class EvpnData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData
+        class Ipv4blbData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4blbData
+        class Ipv6blbData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6blbData
+        class PiMiPmsiData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
+        class PiMsPmsiData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
+        class NextHopSetL3vpn; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
+        class SrPrefixSegment; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
+        class SrAdjSegmentIpv4; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
+        class SrAdjSegmentIpv6; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
+        class LabelBlockSrgbData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
+        class TeBinding; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding
+        class LabelBlockSrlbData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData> ipv4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData> ipv6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData> cev4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData> cev6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4BlbData> ipv4blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6BlbData> ipv6blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn> next_hop_set_l3vpn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData> label_block_srgb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding> te_binding;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData> label_block_srlb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData> ipv4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData> ipv6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3vpnData> vrf_l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData> cev4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData> cev6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4p2mpData> tev4p2mp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4blbData> ipv4blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6blbData> ipv6blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn> next_hop_set_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData> label_block_srgb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding> te_binding;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData> label_block_srlb_data;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -14725,10 +15630,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf security_id; //type: uint32
         ydk::YLeaf vrf_name; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -14751,10 +15656,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf security_id; //type: uint32
         ydk::YLeaf vrf_name; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data : public ydk::Entity
 {
     public:
         Tev4Data();
@@ -14779,14 +15684,14 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf is_srte; //type: int32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData : public ydk::Entity
 {
     public:
-        Ipv4L3VpnData();
-        ~Ipv4L3VpnData();
+        Ipv4l3vpnData();
+        ~Ipv4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -14803,14 +15708,14 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData : public ydk::Entity
 {
     public:
-        Ipv6L3VpnData();
-        ~Ipv6L3VpnData();
+        Ipv6l3vpnData();
+        ~Ipv6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -14827,14 +15732,14 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3vpnData : public ydk::Entity
 {
     public:
-        VrfL3VpnData();
-        ~VrfL3VpnData();
+        VrfL3vpnData();
+        ~VrfL3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -14850,14 +15755,14 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData : public ydk::Entity
 {
     public:
-        Cev4L3VpnData();
-        ~Cev4L3VpnData();
+        Cev4l3vpnData();
+        ~Cev4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -14874,14 +15779,14 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf ipv4_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData : public ydk::Entity
 {
     public:
-        Cev6L3VpnData();
-        ~Cev6L3VpnData();
+        Cev6l3vpnData();
+        ~Cev6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -14898,10 +15803,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
 {
     public:
         PseudowireData();
@@ -14923,10 +15828,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf remote_l2_router_id; //type: uint32
         ydk::YLeaf subinterface; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData : public ydk::Entity
 {
     public:
         LabelBlockData();
@@ -14949,10 +15854,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf offset; //type: uint32
         ydk::YLeaf size; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData : public ydk::Entity
 {
     public:
         IpSubData();
@@ -14972,14 +15877,14 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf parent_interface; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::IpSubData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4P2MpData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4p2mpData : public ydk::Entity
 {
     public:
-        Tev4P2MpData();
-        ~Tev4P2MpData();
+        Tev4p2mpData();
+        ~Tev4p2mpData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -15000,10 +15905,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf previous_hop; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
 {
     public:
         MldPv4Data();
@@ -15026,10 +15931,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf peer_lsrid; //type: string
         ydk::YLeaf peer_label_space_id; //type: uint16
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::MldPv4Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData : public ydk::Entity
 {
     public:
         PseudowireHeadEndData();
@@ -15048,10 +15953,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
 
         ydk::YLeaf pwhe_intf; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData : public ydk::Entity
 {
     public:
         TpData();
@@ -15076,10 +15981,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf dest_tunnel_id; //type: uint16
         ydk::YLeaf lsp_id; //type: uint16
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation : public ydk::Entity
 {
     public:
         GenericRoutingEncapsulation();
@@ -15098,10 +16003,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
 
         ydk::YLeaf gre_interface; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation : public ydk::Entity
 {
     public:
         Ipv6GenericRoutingEncapsulation();
@@ -15120,10 +16025,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
 
         ydk::YLeaf greipv6_interface; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData : public ydk::Entity
 {
     public:
         EvpnData();
@@ -15144,14 +16049,14 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf evpn_tag; //type: uint32
         ydk::YLeaf ethernet_segment; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::EvpnData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4BlbData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4blbData : public ydk::Entity
 {
     public:
-        Ipv4BlbData();
-        ~Ipv4BlbData();
+        Ipv4blbData();
+        ~Ipv4blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -15167,14 +16072,14 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv4blbData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6BlbData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6blbData : public ydk::Entity
 {
     public:
-        Ipv6BlbData();
-        ~Ipv6BlbData();
+        Ipv6blbData();
+        ~Ipv6blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -15190,10 +16095,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Ipv6blbData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
 {
     public:
         PiMiPmsiData();
@@ -15214,10 +16119,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf head; //type: int32
         ydk::YLeaf v6; //type: int32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData : public ydk::Entity
 {
     public:
         PiMsPmsiData();
@@ -15241,14 +16146,14 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf hli; //type: uint32
         ydk::YLeaf seg; //type: int32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn : public ydk::Entity
 {
     public:
-        NextHopSetL3Vpn();
-        ~NextHopSetL3Vpn();
+        NextHopSetL3vpn();
+        ~NextHopSetL3vpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -15264,10 +16169,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf next_hop_set_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
 {
     public:
         SrPrefixSegment();
@@ -15287,10 +16192,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf segment_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4 : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4 : public ydk::Entity
 {
     public:
         SrAdjSegmentIpv4();
@@ -15312,10 +16217,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf intf; //type: string
         ydk::YLeaf addr; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6 : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6 : public ydk::Entity
 {
     public:
         SrAdjSegmentIpv6();
@@ -15337,10 +16242,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf intf; //type: string
         ydk::YLeaf addr; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData : public ydk::Entity
 {
     public:
         LabelBlockSrgbData();
@@ -15361,10 +16266,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf offset; //type: uint32
         ydk::YLeaf size; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding : public ydk::Entity
 {
     public:
         TeBinding();
@@ -15384,10 +16289,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf te_identifier; //type: uint32
         ydk::YLeaf te_type; //type: MgmtLsdTeBinding
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData : public ydk::Entity
 {
     public:
         LabelBlockSrlbData();
@@ -15408,10 +16313,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelC
         ydk::YLeaf offset; //type: uint32
         ydk::YLeaf size; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite : public ydk::Entity
 {
     public:
         LocalLabelRewrite();
@@ -15428,14 +16333,14 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class LabelData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
+        class LabelData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData> > label_data;
+        ydk::YList label_data;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData : public ydk::Entity
 {
     public:
         LabelData();
@@ -15454,10 +16359,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalL
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi : public ydk::Entity
 {
     public:
         AssociatedFpi();
@@ -15474,16 +16379,16 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Fpi; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi
-        class ApplicationOwner; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::ApplicationOwner
+        class Fpi; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi
+        class ApplicationOwner; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::ApplicationOwner
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::ApplicationOwner> > application_owner;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi> fpi;
+        ydk::YList application_owner;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi : public ydk::Entity
 {
     public:
         Fpi();
@@ -15501,24 +16406,24 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi : public y
         std::string get_absolute_path() const override;
 
         ydk::YLeaf fpi_type; //type: MgmtLsdFpi
-        class LabelData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::LabelData
-        class TeData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::TeData
-        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data
-        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data
-        class PwListData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::PwListData
-        class DmtcExtIntfData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData
+        class LabelData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelData
+        class TeData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::TeData
+        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data
+        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data
+        class PwListData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::PwListData
+        class DmtcExtIntfData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::LabelData> label_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::TeData> te_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data> ipv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data> ipv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::PwListData> pw_list_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelData> label_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::TeData> te_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::PwListData> pw_list_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData> dmtc_ext_intf_data;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::LabelData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelData : public ydk::Entity
 {
     public:
         LabelData();
@@ -15539,10 +16444,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::LabelData
         ydk::YLeaf security_id; //type: uint32
         ydk::YLeaf elc; //type: int32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::LabelData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::LabelData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::TeData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::TeData : public ydk::Entity
 {
     public:
         TeData();
@@ -15562,10 +16467,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::TeData : 
         ydk::YLeaf tunnel_interface; //type: string
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::TeData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::TeData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -15588,10 +16493,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data 
         ydk::YLeaf version; //type: uint32
         ydk::YLeaf sr_local_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv4Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -15614,10 +16519,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data 
         ydk::YLeaf prefix_len; //type: uint8
         ydk::YLeaf version; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::Ipv6Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::PwListData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::PwListData : public ydk::Entity
 {
     public:
         PwListData();
@@ -15636,10 +16541,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::PwListDat
 
         ydk::YLeaf pwhe_list_id; //type: uint16
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::PwListData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::PwListData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData : public ydk::Entity
 {
     public:
         DmtcExtIntfData();
@@ -15658,10 +16563,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIn
 
         ydk::YLeaf dmtc_ext_ifh; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Fpi::DmtcExtIntfData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::ApplicationOwner : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::ApplicationOwner : public ydk::Entity
 {
     public:
         ApplicationOwner();
@@ -15684,10 +16589,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::ApplicationOwn
         ydk::YLeaf application_instance; //type: string
         ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::ApplicationOwner
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::ApplicationOwner
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::V4Rpf : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V4Rpf : public ydk::Entity
 {
     public:
         V4Rpf();
@@ -15707,10 +16612,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::V4Rpf : public ydk::Entity
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf v4_rpf_neighbor; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::V4Rpf
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V4Rpf
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::V6Rpf : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V6Rpf : public ydk::Entity
 {
     public:
         V6Rpf();
@@ -15730,10 +16635,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::V6Rpf : public ydk::Entity
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf v6_rpf_neighbor; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::V6Rpf
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V6Rpf
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois : public ydk::Entity
 {
     public:
         Mois();
@@ -15750,16 +16655,16 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class ApplicationResource; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::ApplicationResource
-        class MoiArray; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray
+        class ApplicationResource; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::ApplicationResource
+        class MoiArray; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::ApplicationResource> application_resource;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray> > moi_array;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::ApplicationResource> application_resource;
+        ydk::YList moi_array;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::ApplicationResource : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::ApplicationResource : public ydk::Entity
 {
     public:
         ApplicationResource();
@@ -15782,10 +16687,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::ApplicationResource : p
         ydk::YLeaf application_instance; //type: string
         ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::ApplicationResource
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::ApplicationResource
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray : public ydk::Entity
 {
     public:
         MoiArray();
@@ -15802,14 +16707,14 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Moi; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi
+        class Moi; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi> moi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi> moi;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi : public ydk::Entity
 {
     public:
         Moi();
@@ -15827,40 +16732,42 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi : public 
         std::string get_absolute_path() const override;
 
         ydk::YLeaf moi_type; //type: MgmtLsdMoi
-        class PopAndLookupIpv4; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4
-        class PopAndLookupTp; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp
-        class PopAndLookupIpv6; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6
-        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data
-        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data
-        class Tev4Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data
-        class PseudowireData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData
-        class IpSubData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::IpSubData
-        class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData
-        class PwListData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PwListData
-        class Stackv4Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data
-        class Stackv6Data; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data
-        class TeHeadData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData
-        class DmtcData; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::DmtcData
+        class PopAndLookupIpv4; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4
+        class PopAndLookupTp; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp
+        class PopAndLookupIpv6; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6
+        class Ipv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data
+        class Ipv6Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data
+        class Tev4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data
+        class PseudowireData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData
+        class IpSubData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::IpSubData
+        class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData
+        class PwListData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PwListData
+        class Stackv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data
+        class Stackv6Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data
+        class TeHeadData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData
+        class DmtcData; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::DmtcData
+        class NnhStackv4Data; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6> pop_and_lookup_ipv6;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data> ipv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data> ipv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData> pseudowire_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData> pseudowire_head_end_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PwListData> pw_list_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data> stackv4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData> te_head_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::DmtcData> dmtc_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6> pop_and_lookup_ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data> ipv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data> ipv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data> tev4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData> pseudowire_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::IpSubData> ip_sub_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData> pseudowire_head_end_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PwListData> pw_list_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data> stackv4_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData> te_head_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::DmtcData> dmtc_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data> nnh_stackv4_data;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4 : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4 : public ydk::Entity
 {
     public:
         PopAndLookupIpv4();
@@ -15881,10 +16788,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLo
         ydk::YLeaf table_name; //type: string
         ydk::YLeaf path_flags_decode; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv4
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp : public ydk::Entity
 {
     public:
         PopAndLookupTp();
@@ -15906,10 +16813,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLo
         ydk::YLeaf path_flags_decode; //type: string
         ydk::YLeaf out_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupTp
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6 : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6 : public ydk::Entity
 {
     public:
         PopAndLookupIpv6();
@@ -15930,10 +16837,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLo
         ydk::YLeaf table_name; //type: string
         ydk::YLeaf path_flags_decode; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PopAndLookupIpv6
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -15965,10 +16872,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv4Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -15997,10 +16904,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf out_interface_parent; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data : public ydk::Entity
 {
     public:
         Tev4Data();
@@ -16032,11 +16939,12 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data
         ydk::YLeaf tunnel_weight; //type: uint32
         ydk::YLeaf data_out_parent_interface; //type: string
         ydk::YLeaf tunnel_class; //type: uint32
+        ydk::YLeaf ipv4_next_next_hop; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData : public ydk::Entity
 {
     public:
         PseudowireData();
@@ -16064,10 +16972,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Pseudowi
         ydk::YLeaf bridge_id; //type: uint32
         ydk::YLeaf split_horizon_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::IpSubData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::IpSubData : public ydk::Entity
 {
     public:
         IpSubData();
@@ -16089,10 +16997,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::IpSubDat
         ydk::YLeaf out_interface; //type: string
         ydk::YLeaf path_flags_decode; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::IpSubData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::IpSubData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData : public ydk::Entity
 {
     public:
         PseudowireHeadEndData();
@@ -16121,10 +17029,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Pseudowi
         ydk::YLeaf pw_list_id; //type: uint16
         ydk::YLeaf pwhe_interface; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PwListData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PwListData : public ydk::Entity
 {
     public:
         PwListData();
@@ -16147,10 +17055,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PwListDa
         ydk::YLeaf l2_interface; //type: string
         ydk::YLeaf path_flags_decode; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PwListData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::PwListData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data : public ydk::Entity
 {
     public:
         Stackv4Data();
@@ -16168,16 +17076,16 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4D
         std::string get_absolute_path() const override;
 
         ydk::YLeaf owner_application_type; //type: MgmtLsdApp
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop
-        class InnerStack; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack
+        class Nexthop; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop
+        class InnerStack; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -16209,10 +17117,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4D
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack : public ydk::Entity
 {
     public:
         InnerStack();
@@ -16231,16 +17139,16 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4D
 
         ydk::YLeaf num_nexthops; //type: uint8
         ydk::YLeaf num_lbls; //type: uint8
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
-        class Label; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
+        class Nexthop; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
+        class Label; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -16259,10 +17167,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4D
 
         ydk::YLeaf entry; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label : public ydk::Entity
 {
     public:
         Label();
@@ -16282,10 +17190,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4D
         ydk::YLeaf outgoing_label; //type: uint32
         ydk::YLeaf outgoing_label_str; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data : public ydk::Entity
 {
     public:
         Stackv6Data();
@@ -16302,16 +17210,16 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6D
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop
-        class InnerStack; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack
+        class Nexthop; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop
+        class InnerStack; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop> nexthop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack> inner_stack;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack> inner_stack;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -16340,10 +17248,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6D
         ydk::YLeaf next_hop_id; //type: uint32
         ydk::YLeaf out_interface_parent; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack : public ydk::Entity
 {
     public:
         InnerStack();
@@ -16362,16 +17270,16 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6D
 
         ydk::YLeaf num_nexthops; //type: uint8
         ydk::YLeaf num_lbls; //type: uint8
-        class Nexthop; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
-        class Label; //type: MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
+        class Nexthop; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
+        class Label; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -16390,10 +17298,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6D
 
         ydk::YLeaf entry; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label : public ydk::Entity
 {
     public:
         Label();
@@ -16413,10 +17321,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6D
         ydk::YLeaf outgoing_label; //type: uint32
         ydk::YLeaf outgoing_label_str; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData : public ydk::Entity
 {
     public:
         TeHeadData();
@@ -16441,10 +17349,10 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::TeHeadDa
         ydk::YLeaf tunnel_load_metric; //type: uint32
         ydk::YLeaf flags_decode; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData
 
 
-class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::DmtcData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::DmtcData : public ydk::Entity
 {
     public:
         DmtcData();
@@ -16463,7 +17371,192 @@ class MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::DmtcData
 
         ydk::YLeaf dmtc_ext_ifh; //type: string
 
-}; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::DmtcData
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::DmtcData
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data : public ydk::Entity
+{
+    public:
+        NnhStackv4Data();
+        ~NnhStackv4Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ipv4Stack; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+        class NextNextHop; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack> ipv4_stack;
+        ydk::YList next_next_hop;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack : public ydk::Entity
+{
+    public:
+        Ipv4Stack();
+        ~Ipv4Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf owner_application_type; //type: MgmtLsdApp
+        class Nexthop; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+        class InnerStack; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack> inner_stack;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_interface_parent; //type: string
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack : public ydk::Entity
+{
+    public:
+        InnerStack();
+        ~InnerStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf num_nexthops; //type: uint8
+        ydk::YLeaf num_lbls; //type: uint8
+        class Nexthop; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+        class Label; //type: MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+        ydk::YList nexthop;
+        ydk::YList label;
+        
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label : public ydk::Entity
+{
+    public:
+        Label();
+        ~Label();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf outgoing_label_str; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+
+class MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop : public ydk::Entity
+{
+    public:
+        NextNextHop();
+        ~NextNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf nnh_type; //type: MplsLsdNnh
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
+
+}; // MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
 
 
 class MplsLsd::Rewrite::RewriteTes : public ydk::Entity
@@ -16485,7 +17578,7 @@ class MplsLsd::Rewrite::RewriteTes : public ydk::Entity
 
         class RewriteTe; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe> > rewrite_te;
+        ydk::YList rewrite_te;
         
 }; // MplsLsd::Rewrite::RewriteTes
 
@@ -16524,10 +17617,10 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey> fpi_key;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId> rewrite_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi> > associated_fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::V4Rpf> > v4_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::V6Rpf> > v6_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois> > mois;
+        ydk::YList associated_fpi;
+        ydk::YList v4_rpf;
+        ydk::YList v6_rpf;
+        ydk::YList mois;
         
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe
 
@@ -16552,7 +17645,7 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey : public ydk::Entity
         class ApplicationOwner; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey
 
@@ -16822,26 +17915,26 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
         class Ipv4Data; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4Data
         class Ipv6Data; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6Data
         class Tev4Data; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4Data
-        class Ipv4L3VpnData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
-        class Ipv6L3VpnData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
-        class VrfL3VpnData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
-        class Cev4L3VpnData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
-        class Cev6L3VpnData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+        class Ipv4l3vpnData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
+        class Ipv6l3vpnData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
+        class VrfL3vpnData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
+        class Cev4l3vpnData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
+        class Cev6l3vpnData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
         class PseudowireData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PseudowireData
         class LabelBlockData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::LabelBlockData
         class IpSubData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::IpSubData
-        class Tev4P2MpData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+        class Tev4p2mpData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
         class MldPv4Data; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::MldPv4Data
         class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
         class TpData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::TpData
         class GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
         class Ipv6GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
         class EvpnData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::EvpnData
-        class Ipv4BlbData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
-        class Ipv6BlbData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+        class Ipv4blbData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4blbData
+        class Ipv6blbData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6blbData
         class PiMiPmsiData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
         class PiMsPmsiData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
-        class NextHopSetL3Vpn; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+        class NextHopSetL3vpn; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
         class SrPrefixSegment; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
         class SrAdjSegmentIpv4; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
         class SrAdjSegmentIpv6; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
@@ -16852,26 +17945,26 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData> ipv4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData> ipv6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData> cev4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData> cev6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData> ipv4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData> ipv6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3vpnData> vrf_l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData> cev4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData> cev6l3vpn_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4p2mpData> tev4p2mp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4BlbData> ipv4blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6BlbData> ipv6blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4blbData> ipv4blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6blbData> ipv6blb_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn> next_hop_set_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn> next_hop_set_l3vpn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
@@ -16959,11 +18052,11 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4Data
 
 
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData : public ydk::Entity
 {
     public:
-        Ipv4L3VpnData();
-        ~Ipv4L3VpnData();
+        Ipv4l3vpnData();
+        ~Ipv4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -16979,14 +18072,14 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData : public ydk::Entity
 {
     public:
-        Ipv6L3VpnData();
-        ~Ipv6L3VpnData();
+        Ipv6l3vpnData();
+        ~Ipv6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -17002,14 +18095,14 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3vpnData : public ydk::Entity
 {
     public:
-        VrfL3VpnData();
-        ~VrfL3VpnData();
+        VrfL3vpnData();
+        ~VrfL3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -17024,14 +18117,14 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
 
 
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData : public ydk::Entity
 {
     public:
-        Cev4L3VpnData();
-        ~Cev4L3VpnData();
+        Cev4l3vpnData();
+        ~Cev4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -17047,14 +18140,14 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf ipv4_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData : public ydk::Entity
 {
     public:
-        Cev6L3VpnData();
-        ~Cev6L3VpnData();
+        Cev6l3vpnData();
+        ~Cev6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -17070,7 +18163,7 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
 
 
 class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
@@ -17144,11 +18237,11 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::IpSubData
 
 
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4P2MpData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4p2mpData : public ydk::Entity
 {
     public:
-        Tev4P2MpData();
-        ~Tev4P2MpData();
+        Tev4p2mpData();
+        ~Tev4p2mpData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -17168,7 +18261,7 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf previous_hop; //type: string
 
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
 
 
 class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
@@ -17309,11 +18402,11 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::EvpnData
 
 
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4BlbData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4blbData : public ydk::Entity
 {
     public:
-        Ipv4BlbData();
-        ~Ipv4BlbData();
+        Ipv4blbData();
+        ~Ipv4blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -17328,14 +18421,14 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4blbData
 
 
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6BlbData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6blbData : public ydk::Entity
 {
     public:
-        Ipv6BlbData();
-        ~Ipv6BlbData();
+        Ipv6blbData();
+        ~Ipv6blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -17350,7 +18443,7 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6blbData
 
 
 class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
@@ -17402,11 +18495,11 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
 
 
-class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn : public ydk::Entity
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn : public ydk::Entity
 {
     public:
-        NextHopSetL3Vpn();
-        ~NextHopSetL3Vpn();
+        NextHopSetL3vpn();
+        ~NextHopSetL3vpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -17421,7 +18514,7 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelConte
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf next_hop_set_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
 
 
 class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
@@ -17580,7 +18673,7 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabel
 
         class LabelData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite::LabelData> > label_data;
+        ydk::YList label_data;
         
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite
 
@@ -17626,7 +18719,7 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi : public ydk::Entit
         class ApplicationOwner; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi
 
@@ -17891,7 +18984,7 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois : public ydk::Entity
         class MoiArray; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::ApplicationResource> application_resource;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray> > moi_array;
+        ydk::YList moi_array;
         
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois
 
@@ -17975,6 +19068,7 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi : public ydk:
         class Stackv6Data; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data
         class TeHeadData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::TeHeadData
         class DmtcData; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::DmtcData
+        class NnhStackv4Data; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
@@ -17990,6 +19084,7 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi : public ydk:
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::TeHeadData> te_head_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::DmtcData> dmtc_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data> nnh_stackv4_data;
         
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi
 
@@ -18160,6 +19255,7 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Tev4Data : p
         ydk::YLeaf tunnel_weight; //type: uint32
         ydk::YLeaf data_out_parent_interface; //type: string
         ydk::YLeaf tunnel_class; //type: uint32
+        ydk::YLeaf ipv4_next_next_hop; //type: string
 
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Tev4Data
 
@@ -18355,8 +19451,8 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data:
         class Nexthop; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
         class Label; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
@@ -18481,8 +19577,8 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data:
         class Nexthop; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
         class Label; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
@@ -18578,6 +19674,184 @@ class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::DmtcData : p
 }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::DmtcData
 
 
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data : public ydk::Entity
+{
+    public:
+        NnhStackv4Data();
+        ~NnhStackv4Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ipv4Stack; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+        class NextNextHop; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack> ipv4_stack;
+        ydk::YList next_next_hop;
+        
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data
+
+
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack : public ydk::Entity
+{
+    public:
+        Ipv4Stack();
+        ~Ipv4Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf owner_application_type; //type: MgmtLsdApp
+        class Nexthop; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+        class InnerStack; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack> inner_stack;
+        
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+
+
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_interface_parent; //type: string
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+
+
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack : public ydk::Entity
+{
+    public:
+        InnerStack();
+        ~InnerStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf num_nexthops; //type: uint8
+        ydk::YLeaf num_lbls; //type: uint8
+        class Nexthop; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+        class Label; //type: MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+        ydk::YList nexthop;
+        ydk::YList label;
+        
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+
+
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label : public ydk::Entity
+{
+    public:
+        Label();
+        ~Label();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf outgoing_label_str; //type: string
+
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+
+class MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop : public ydk::Entity
+{
+    public:
+        NextNextHop();
+        ~NextNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nnh_type; //type: MplsLsdNnh
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
+
+}; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+
+
 class MplsLsd::Rewrite::RewriteLabels : public ydk::Entity
 {
     public:
@@ -18597,7 +19871,7 @@ class MplsLsd::Rewrite::RewriteLabels : public ydk::Entity
 
         class RewriteLabel; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel> > rewrite_label;
+        ydk::YList rewrite_label;
         
 }; // MplsLsd::Rewrite::RewriteLabels
 
@@ -18619,7 +19893,7 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf label_id; //type: int32
+        ydk::YLeaf label_id; //type: uint32
         ydk::YLeaf rewrite_version; //type: uint64
         ydk::YLeaf bcdl_priority; //type: uint8
         ydk::YLeaf lsd_queue; //type: uint8
@@ -18636,10 +19910,10 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey> fpi_key;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId> rewrite_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi> > associated_fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V4Rpf> > v4_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V6Rpf> > v6_rpf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois> > mois;
+        ydk::YList associated_fpi;
+        ydk::YList v4_rpf;
+        ydk::YList v6_rpf;
+        ydk::YList mois;
         
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel
 
@@ -18664,7 +19938,7 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey : public ydk::Entity
         class ApplicationOwner; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey
 
@@ -18934,26 +20208,26 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         class Ipv4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4Data
         class Ipv6Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6Data
         class Tev4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4Data
-        class Ipv4L3VpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
-        class Ipv6L3VpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
-        class VrfL3VpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
-        class Cev4L3VpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
-        class Cev6L3VpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+        class Ipv4l3vpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
+        class Ipv6l3vpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
+        class VrfL3vpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
+        class Cev4l3vpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
+        class Cev6l3vpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
         class PseudowireData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireData
         class LabelBlockData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockData
         class IpSubData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::IpSubData
-        class Tev4P2MpData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+        class Tev4p2mpData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
         class MldPv4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::MldPv4Data
         class PseudowireHeadEndData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
         class TpData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TpData
         class GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
         class Ipv6GenericRoutingEncapsulation; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
         class EvpnData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::EvpnData
-        class Ipv4BlbData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
-        class Ipv6BlbData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+        class Ipv4blbData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4blbData
+        class Ipv6blbData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6blbData
         class PiMiPmsiData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
         class PiMsPmsiData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
-        class NextHopSetL3Vpn; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+        class NextHopSetL3vpn; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
         class SrPrefixSegment; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
         class SrAdjSegmentIpv4; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
         class SrAdjSegmentIpv6; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
@@ -18964,26 +20238,26 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4Data> ipv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6Data> ipv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4Data> tev4_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData> ipv4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData> ipv6l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData> cev4l3vpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData> cev6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData> ipv4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData> ipv6l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3vpnData> vrf_l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData> cev4l3vpn_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData> cev6l3vpn_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireData> pseudowire_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockData> label_block_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::IpSubData> ip_sub_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4p2mpData> tev4p2mp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::MldPv4Data> mld_pv4_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData> pseudowire_head_end_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation> generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation> ipv6_generic_routing_encapsulation;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::EvpnData> evpn_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4BlbData> ipv4blb_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6BlbData> ipv6blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4blbData> ipv4blb_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6blbData> ipv6blb_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMiPmsiData> pi_mi_pmsi_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMsPmsiData> pi_ms_pmsi_data;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn> next_hop_set_l3vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn> next_hop_set_l3vpn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrPrefixSegment> sr_prefix_segment;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4> sr_adj_segment_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6> sr_adj_segment_ipv6;
@@ -19071,11 +20345,11 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4Data
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData : public ydk::Entity
 {
     public:
-        Ipv4L3VpnData();
-        ~Ipv4L3VpnData();
+        Ipv4l3vpnData();
+        ~Ipv4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -19091,14 +20365,14 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData : public ydk::Entity
 {
     public:
-        Ipv6L3VpnData();
-        ~Ipv6L3VpnData();
+        Ipv6l3vpnData();
+        ~Ipv6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -19114,14 +20388,14 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf route_distinguisher; //type: uint64
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3vpnData : public ydk::Entity
 {
     public:
-        VrfL3VpnData();
-        ~VrfL3VpnData();
+        VrfL3vpnData();
+        ~VrfL3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -19136,14 +20410,14 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3vpnData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData : public ydk::Entity
 {
     public:
-        Cev4L3VpnData();
-        ~Cev4L3VpnData();
+        Cev4l3vpnData();
+        ~Cev4l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -19159,14 +20433,14 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf ipv4_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData : public ydk::Entity
 {
     public:
-        Cev6L3VpnData();
-        ~Cev6L3VpnData();
+        Cev6l3vpnData();
+        ~Cev6l3vpnData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -19182,7 +20456,7 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf ipv6_next_hop; //type: string
         ydk::YLeaf security_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData
 
 
 class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
@@ -19256,11 +20530,11 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::IpSubData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4P2MpData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4p2mpData : public ydk::Entity
 {
     public:
-        Tev4P2MpData();
-        ~Tev4P2MpData();
+        Tev4p2mpData();
+        ~Tev4p2mpData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -19280,7 +20554,7 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf tunnel_lsp_id; //type: uint32
         ydk::YLeaf previous_hop; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4p2mpData
 
 
 class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
@@ -19421,11 +20695,11 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::EvpnData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4BlbData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4blbData : public ydk::Entity
 {
     public:
-        Ipv4BlbData();
-        ~Ipv4BlbData();
+        Ipv4blbData();
+        ~Ipv4blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -19440,14 +20714,14 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4blbData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6BlbData : public ydk::Entity
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6blbData : public ydk::Entity
 {
     public:
-        Ipv6BlbData();
-        ~Ipv6BlbData();
+        Ipv6blbData();
+        ~Ipv6blbData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -19462,7 +20736,7 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf blb_intf; //type: string
         ydk::YLeaf prefix; //type: string
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6blbData
 
 
 class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
@@ -19514,11 +20788,11 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
 
 
-class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn : public ydk::Entity
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn : public ydk::Entity
 {
     public:
-        NextHopSetL3Vpn();
-        ~NextHopSetL3Vpn();
+        NextHopSetL3vpn();
+        ~NextHopSetL3vpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -19533,7 +20807,7 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Labe
         ydk::YLeaf table_id; //type: uint32
         ydk::YLeaf next_hop_set_id; //type: uint32
 
-}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn
 
 
 class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
@@ -19692,7 +20966,7 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Loca
 
         class LabelData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::LabelData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::LabelData> > label_data;
+        ydk::YList label_data;
         
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite
 
@@ -19738,7 +21012,7 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi : public ydk:
         class ApplicationOwner; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::ApplicationOwner
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi> fpi;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi
 
@@ -20003,7 +21277,7 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois : public ydk::Entity
         class MoiArray; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::ApplicationResource> application_resource;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray> > moi_array;
+        ydk::YList moi_array;
         
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois
 
@@ -20087,6 +21361,7 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi : publi
         class Stackv6Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data
         class TeHeadData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData
         class DmtcData; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData
+        class NnhStackv4Data; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupIpv4> pop_and_lookup_ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PopAndLookupTp> pop_and_lookup_tp;
@@ -20102,6 +21377,7 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi : publi
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData> te_head_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData> dmtc_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data> nnh_stackv4_data;
         
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi
 
@@ -20272,6 +21548,7 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Tev4Da
         ydk::YLeaf tunnel_weight; //type: uint32
         ydk::YLeaf data_out_parent_interface; //type: string
         ydk::YLeaf tunnel_class; //type: uint32
+        ydk::YLeaf ipv4_next_next_hop; //type: string
 
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Tev4Data
 
@@ -20467,8 +21744,8 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv
         class Nexthop; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop
         class Label; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
@@ -20593,8 +21870,8 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv
         class Nexthop; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop
         class Label; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop> > nexthop;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label> > label;
+        ydk::YList nexthop;
+        ydk::YList label;
         
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
@@ -20688,6 +21965,184 @@ class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcDa
         ydk::YLeaf dmtc_ext_ifh; //type: string
 
 }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData
+
+
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data : public ydk::Entity
+{
+    public:
+        NnhStackv4Data();
+        ~NnhStackv4Data();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ipv4Stack; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+        class NextNextHop; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack> ipv4_stack;
+        ydk::YList next_next_hop;
+        
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data
+
+
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack : public ydk::Entity
+{
+    public:
+        Ipv4Stack();
+        ~Ipv4Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf owner_application_type; //type: MgmtLsdApp
+        class Nexthop; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+        class InnerStack; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack> inner_stack;
+        
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack
+
+
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_interface_parent; //type: string
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
+
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop
+
+
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack : public ydk::Entity
+{
+    public:
+        InnerStack();
+        ~InnerStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf num_nexthops; //type: uint8
+        ydk::YLeaf num_lbls; //type: uint8
+        class Nexthop; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+        class Label; //type: MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+        ydk::YList nexthop;
+        ydk::YList label;
+        
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
+
+
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop : public ydk::Entity
+{
+    public:
+        Nexthop();
+        ~Nexthop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop
+
+
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label : public ydk::Entity
+{
+    public:
+        Label();
+        ~Label();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf outgoing_label_str; //type: string
+
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label
+
+
+class MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop : public ydk::Entity
+{
+    public:
+        NextNextHop();
+        ~NextNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nnh_type; //type: MplsLsdNnh
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
+
+}; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop
 
 
 class MplsLsd::RewriteSummary : public ydk::Entity
@@ -20806,7 +22261,7 @@ class MplsLsd::Applications : public ydk::Entity
 
         class Application; //type: MplsLsd::Applications::Application
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Applications::Application> > application;
+        ydk::YList application;
         
 }; // MplsLsd::Applications
 
@@ -20875,8 +22330,8 @@ class MplsLsd::Applications::Application::ApplicationStatistics : public ydk::En
         class LabelContextPendingCount; //type: MplsLsd::Applications::Application::ApplicationStatistics::LabelContextPendingCount
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Applications::Application::ApplicationStatistics::Connected> connected;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Applications::Application::ApplicationStatistics::LabelContextCount> > label_context_count;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Applications::Application::ApplicationStatistics::LabelContextPendingCount> > label_context_pending_count;
+        ydk::YList label_context_count;
+        ydk::YList label_context_pending_count;
         
 }; // MplsLsd::Applications::Application::ApplicationStatistics
 
@@ -20966,7 +22421,7 @@ class MplsLsd::LabelSummaryVrfs : public ydk::Entity
 
         class LabelSummaryVrf; //type: MplsLsd::LabelSummaryVrfs::LabelSummaryVrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::LabelSummaryVrfs::LabelSummaryVrf> > label_summary_vrf;
+        ydk::YList label_summary_vrf;
         
 }; // MplsLsd::LabelSummaryVrfs
 
@@ -20994,7 +22449,7 @@ class MplsLsd::LabelSummaryVrfs::LabelSummaryVrf : public ydk::Entity
         ydk::YLeaf rsi_connected; //type: int32
         class OwnerCount; //type: MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount> > owner_count;
+        ydk::YList owner_count;
         
 }; // MplsLsd::LabelSummaryVrfs::LabelSummaryVrf
 
@@ -21068,7 +22523,7 @@ class MplsLsd::RewriteSummaryVrfs : public ydk::Entity
 
         class RewriteSummaryVrf; //type: MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf> > rewrite_summary_vrf;
+        ydk::YList rewrite_summary_vrf;
         
 }; // MplsLsd::RewriteSummaryVrfs
 
@@ -21188,7 +22643,7 @@ class MplsLsd::Interfaces : public ydk::Entity
 
         class Interface; //type: MplsLsd::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MplsLsd::Interfaces
 
@@ -21215,7 +22670,7 @@ class MplsLsd::Interfaces::Interface : public ydk::Entity
         ydk::YLeaf interface_state; //type: MgmtLsdIntfState
         class ApplicationOwner; //type: MplsLsd::Interfaces::Interface::ApplicationOwner
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Interfaces::Interface::ApplicationOwner> > application_owner;
+        ydk::YList application_owner;
         
 }; // MplsLsd::Interfaces::Interface
 
@@ -21244,30 +22699,23 @@ class MplsLsd::Interfaces::Interface::ApplicationOwner : public ydk::Entity
 
 }; // MplsLsd::Interfaces::Interface::ApplicationOwner
 
-class MgmtLsdIntfState : public ydk::Enum
+class MgmtLsdClient : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_unknown;
-        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_up;
-        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_down;
+        static const ydk::Enum::YLeaf mgmt_lsd_client_type_app;
+        static const ydk::Enum::YLeaf mgmt_lsd_client_type_ba;
 
 };
 
-class MgmtLsdAppState : public ydk::Enum
+class MgmtLsdFrrState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_lsd_app_state_active;
-        static const ydk::Enum::YLeaf mgmt_lsd_app_state_zombie;
-        static const ydk::Enum::YLeaf mgmt_lsd_app_state_recover;
-
-};
-
-class MgmtLsdRwId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_none;
-        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_lbl_ctx;
-        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_loc_lbl;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_partial;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_active;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_ready;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_complete;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_any;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_igp;
 
 };
 
@@ -21288,6 +22736,7 @@ class MgmtLsdMoi : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_moi_type_ipv6_stack;
         static const ydk::Enum::YLeaf mgmt_lsd_moi_type_te_head;
         static const ydk::Enum::YLeaf mgmt_lsd_moi_type_dmtc_ext_intf;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_ipv4_nnh_stack;
 
 };
 
@@ -21301,36 +22750,6 @@ class MgmtLsdFpi : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_fpi_type_pw_list;
         static const ydk::Enum::YLeaf mgmt_lsd_fpi_type_te_v2;
         static const ydk::Enum::YLeaf mgmt_lsd_fpi_type_dmtc_ext_intf;
-
-};
-
-class MgmtLsdFrrState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_partial;
-        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_active;
-        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_ready;
-        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_complete;
-        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_any;
-        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_igp;
-
-};
-
-class MgmtLsdLspRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_lsd_lsp_role_head;
-        static const ydk::Enum::YLeaf mgmt_lsd_lsp_role_mid;
-
-};
-
-class MgmtLsdTeBinding : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2p_tun_id;
-        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2p_grp_id;
-        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2mp_tun_id;
-        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2mp_grp_id;
 
 };
 
@@ -21371,12 +22790,29 @@ class MgmtLsdLblCtx : public ydk::Enum
 
 };
 
+class MgmtLsdLspRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_lsd_lsp_role_head;
+        static const ydk::Enum::YLeaf mgmt_lsd_lsp_role_mid;
+
+};
+
 class MgmtLsdAppRsrcState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf mgmt_lsd_app_rsrc_state_active;
         static const ydk::Enum::YLeaf mgmt_lsd_app_rsrc_state_pnd;
         static const ydk::Enum::YLeaf mgmt_lsd_app_rsrc_state_pnd_svr;
+
+};
+
+class MplsLsdNnh : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ipv4_address;
+        static const ydk::Enum::YLeaf interface_name;
 
 };
 
@@ -21406,11 +22842,40 @@ class MgmtLsdApp : public ydk::Enum
 
 };
 
-class MgmtLsdClient : public ydk::Enum
+class MgmtLsdTeBinding : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_lsd_client_type_app;
-        static const ydk::Enum::YLeaf mgmt_lsd_client_type_ba;
+        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2p_tun_id;
+        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2p_grp_id;
+        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2mp_tun_id;
+        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2mp_grp_id;
+
+};
+
+class MgmtLsdAppState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_lsd_app_state_active;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_state_zombie;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_state_recover;
+
+};
+
+class MgmtLsdIntfState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_unknown;
+        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_up;
+        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_down;
+
+};
+
+class MgmtLsdRwId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_none;
+        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_lbl_ctx;
+        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_loc_lbl;
 
 };
 

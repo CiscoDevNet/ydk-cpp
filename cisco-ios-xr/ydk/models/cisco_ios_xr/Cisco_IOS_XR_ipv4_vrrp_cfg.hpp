@@ -81,7 +81,7 @@ class Vrrp::Interfaces : public ydk::Entity
 
         class Interface; //type: Vrrp::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Vrrp::Interfaces
 
@@ -184,7 +184,7 @@ class Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters : public ydk::
 
         class VirtualRouter; //type: Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter> > virtual_router;
+        ydk::YList virtual_router;
         
 }; // Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters
 
@@ -244,7 +244,7 @@ class Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter
 
         class GlobalIpv6Address; //type: Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address> > global_ipv6_address;
+        ydk::YList global_ipv6_address;
         
 }; // Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses
 
@@ -288,7 +288,7 @@ class Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter
 
         class Track; //type: Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::Track
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::Track> > track;
+        ydk::YList track;
         
 }; // Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks
 
@@ -357,7 +357,7 @@ class Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter
 
         class TrackedObject; //type: Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject> > tracked_object;
+        ydk::YList tracked_object;
         
 }; // Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects
 
@@ -424,7 +424,7 @@ class Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters : public ydk::Entit
 
         class SlaveVirtualRouter; //type: Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter> > slave_virtual_router;
+        ydk::YList slave_virtual_router;
         
 }; // Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters
 
@@ -497,7 +497,7 @@ class Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter
 
         class GlobalIpv6Address; //type: Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address> > global_ipv6_address;
+        ydk::YList global_ipv6_address;
         
 }; // Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses
 
@@ -613,7 +613,7 @@ class Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters : public ydk::
 
         class VirtualRouter; //type: Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter> > virtual_router;
+        ydk::YList virtual_router;
         
 }; // Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters
 
@@ -696,7 +696,7 @@ class Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter
 
         class SecondaryIpv4Address; //type: Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address> > secondary_ipv4_address;
+        ydk::YList secondary_ipv4_address;
         
 }; // Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses
 
@@ -740,7 +740,7 @@ class Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter
 
         class TrackedObject; //type: Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject> > tracked_object;
+        ydk::YList tracked_object;
         
 }; // Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects
 
@@ -785,7 +785,7 @@ class Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter
 
         class Track; //type: Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::Track
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::Track> > track;
+        ydk::YList track;
         
 }; // Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks
 
@@ -830,7 +830,7 @@ class Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters : public ydk::Entit
 
         class SlaveVirtualRouter; //type: Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter> > slave_virtual_router;
+        ydk::YList slave_virtual_router;
         
 }; // Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters
 
@@ -880,7 +880,7 @@ class Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter
 
         class SecondaryIpv4Address; //type: Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address> > secondary_ipv4_address;
+        ydk::YList secondary_ipv4_address;
         
 }; // Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses
 
@@ -947,7 +947,7 @@ class Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters : public ydk::
 
         class VirtualRouter; //type: Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter> > virtual_router;
+        ydk::YList virtual_router;
         
 }; // Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters
 
@@ -1031,7 +1031,7 @@ class Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter
 
         class SecondaryIpv4Address; //type: Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address> > secondary_ipv4_address;
+        ydk::YList secondary_ipv4_address;
         
 }; // Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses
 
@@ -1075,7 +1075,7 @@ class Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter
 
         class Track; //type: Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::Track
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::Track> > track;
+        ydk::YList track;
         
 }; // Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks
 
@@ -1120,7 +1120,7 @@ class Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter
 
         class TrackedObject; //type: Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_cfg::Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject> > tracked_object;
+        ydk::YList tracked_object;
         
 }; // Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects
 

@@ -14,10 +14,10 @@ namespace Cisco_IOS_XR_freqsync_oper {
 FrequencySynchronization::FrequencySynchronization()
     :
     global_nodes(std::make_shared<FrequencySynchronization::GlobalNodes>())
-	,global_interfaces(std::make_shared<FrequencySynchronization::GlobalInterfaces>())
-	,summary(std::make_shared<FrequencySynchronization::Summary>())
-	,interface_datas(std::make_shared<FrequencySynchronization::InterfaceDatas>())
-	,nodes(std::make_shared<FrequencySynchronization::Nodes>())
+    , global_interfaces(std::make_shared<FrequencySynchronization::GlobalInterfaces>())
+    , summary(std::make_shared<FrequencySynchronization::Summary>())
+    , interface_datas(std::make_shared<FrequencySynchronization::InterfaceDatas>())
+    , nodes(std::make_shared<FrequencySynchronization::Nodes>())
 {
     global_nodes->parent = this;
     global_interfaces->parent = this;
@@ -25,7 +25,7 @@ FrequencySynchronization::FrequencySynchronization()
     interface_datas->parent = this;
     nodes->parent = this;
 
-    yang_name = "frequency-synchronization"; yang_parent_name = "Cisco-IOS-XR-freqsync-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "frequency-synchronization"; yang_parent_name = "Cisco-IOS-XR-freqsync-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::~FrequencySynchronization()
@@ -34,6 +34,7 @@ FrequencySynchronization::~FrequencySynchronization()
 
 bool FrequencySynchronization::has_data() const
 {
+    if (is_presence_container) return true;
     return (global_nodes !=  nullptr && global_nodes->has_data())
 	|| (global_interfaces !=  nullptr && global_interfaces->has_data())
 	|| (summary !=  nullptr && summary->has_data())
@@ -190,9 +191,11 @@ bool FrequencySynchronization::has_leaf_or_child_of_name(const std::string & nam
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNodes()
+    :
+    global_node(this, {"node"})
 {
 
-    yang_name = "global-nodes"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-nodes"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::GlobalNodes::~GlobalNodes()
@@ -201,7 +204,8 @@ FrequencySynchronization::GlobalNodes::~GlobalNodes()
 
 bool FrequencySynchronization::GlobalNodes::has_data() const
 {
-    for (std::size_t index=0; index<global_node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<global_node.len(); index++)
     {
         if(global_node[index]->has_data())
             return true;
@@ -211,7 +215,7 @@ bool FrequencySynchronization::GlobalNodes::has_data() const
 
 bool FrequencySynchronization::GlobalNodes::has_operation() const
 {
-    for (std::size_t index=0; index<global_node.size(); index++)
+    for (std::size_t index=0; index<global_node.len(); index++)
     {
         if(global_node[index]->has_operation())
             return true;
@@ -248,7 +252,7 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::get_child_by_name
     {
         auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode>();
         c->parent = this;
-        global_node.push_back(c);
+        global_node.append(c);
         return c;
     }
 
@@ -260,7 +264,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : global_node)
+    for (auto c : global_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -289,12 +293,12 @@ bool FrequencySynchronization::GlobalNodes::has_leaf_or_child_of_name(const std:
 FrequencySynchronization::GlobalNodes::GlobalNode::GlobalNode()
     :
     node{YType::str, "node"}
-    	,
+        ,
     clock_interface_selection_back_traces(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces>())
-	,clock_interface_selection_forward_traces(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces>())
-	,time_of_day_back_trace(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace>())
-	,ntp_selection_forward_trace(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace>())
-	,ptp_selection_forward_trace(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace>())
+    , clock_interface_selection_forward_traces(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces>())
+    , time_of_day_back_trace(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace>())
+    , ntp_selection_forward_trace(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace>())
+    , ptp_selection_forward_trace(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace>())
 {
     clock_interface_selection_back_traces->parent = this;
     clock_interface_selection_forward_traces->parent = this;
@@ -302,7 +306,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::GlobalNode()
     ntp_selection_forward_trace->parent = this;
     ptp_selection_forward_trace->parent = this;
 
-    yang_name = "global-node"; yang_parent_name = "global-nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-node"; yang_parent_name = "global-nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::~GlobalNode()
@@ -311,6 +315,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::~GlobalNode()
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| (clock_interface_selection_back_traces !=  nullptr && clock_interface_selection_back_traces->has_data())
 	|| (clock_interface_selection_forward_traces !=  nullptr && clock_interface_selection_forward_traces->has_data())
@@ -340,7 +345,8 @@ std::string FrequencySynchronization::GlobalNodes::GlobalNode::get_absolute_path
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "global-node" <<"[node='" <<node <<"']";
+    path_buffer << "global-node";
+    ADD_KEY_TOKEN(node, "node");
     return path_buffer.str();
 }
 
@@ -462,9 +468,11 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::has_leaf_or_child_of_nam
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTraces()
+    :
+    clock_interface_selection_back_trace(this, {"clock_type", "id"})
 {
 
-    yang_name = "clock-interface-selection-back-traces"; yang_parent_name = "global-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-interface-selection-back-traces"; yang_parent_name = "global-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::~ClockInterfaceSelectionBackTraces()
@@ -473,7 +481,8 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTr
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::has_data() const
 {
-    for (std::size_t index=0; index<clock_interface_selection_back_trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clock_interface_selection_back_trace.len(); index++)
     {
         if(clock_interface_selection_back_trace[index]->has_data())
             return true;
@@ -483,7 +492,7 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionB
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::has_operation() const
 {
-    for (std::size_t index=0; index<clock_interface_selection_back_trace.size(); index++)
+    for (std::size_t index=0; index<clock_interface_selection_back_trace.len(); index++)
     {
         if(clock_interface_selection_back_trace[index]->has_operation())
             return true;
@@ -513,7 +522,7 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::Clock
     {
         auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace>();
         c->parent = this;
-        clock_interface_selection_back_trace.push_back(c);
+        clock_interface_selection_back_trace.append(c);
         return c;
     }
 
@@ -525,7 +534,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clock_interface_selection_back_trace)
+    for (auto c : clock_interface_selection_back_trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -554,13 +563,14 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionB
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::ClockInterfaceSelectionBackTrace()
     :
     clock_type{YType::enumeration, "clock-type"},
-    port{YType::int32, "port"}
-    	,
+    id{YType::uint32, "id"}
+        ,
     selected_source(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource>())
+    , selection_point(this, {})
 {
     selected_source->parent = this;
 
-    yang_name = "clock-interface-selection-back-trace"; yang_parent_name = "clock-interface-selection-back-traces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-interface-selection-back-trace"; yang_parent_name = "clock-interface-selection-back-traces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::~ClockInterfaceSelectionBackTrace()
@@ -569,33 +579,36 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTr
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::has_data() const
 {
-    for (std::size_t index=0; index<selection_point.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<selection_point.len(); index++)
     {
         if(selection_point[index]->has_data())
             return true;
     }
     return clock_type.is_set
-	|| port.is_set
+	|| id.is_set
 	|| (selected_source !=  nullptr && selected_source->has_data());
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::has_operation() const
 {
-    for (std::size_t index=0; index<selection_point.size(); index++)
+    for (std::size_t index=0; index<selection_point.len(); index++)
     {
         if(selection_point[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
 	|| ydk::is_set(clock_type.yfilter)
-	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(id.yfilter)
 	|| (selected_source !=  nullptr && selected_source->has_operation());
 }
 
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clock-interface-selection-back-trace" <<"[clock-type='" <<clock_type <<"']" <<"[port='" <<port <<"']";
+    path_buffer << "clock-interface-selection-back-trace";
+    ADD_KEY_TOKEN(clock_type, "clock-type");
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -604,7 +617,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (clock_type.is_set || is_set(clock_type.yfilter)) leaf_name_data.push_back(clock_type.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -625,7 +638,7 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::Clock
     {
         auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectionPoint>();
         c->parent = this;
-        selection_point.push_back(c);
+        selection_point.append(c);
         return c;
     }
 
@@ -642,7 +655,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     }
 
     count = 0;
-    for (auto const & c : selection_point)
+    for (auto c : selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -661,11 +674,11 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionB
         clock_type.value_namespace = name_space;
         clock_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -675,15 +688,15 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionB
     {
         clock_type.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "selected-source" || name == "selection-point" || name == "clock-type" || name == "port")
+    if(name == "selected-source" || name == "selection-point" || name == "clock-type" || name == "id")
         return true;
     return false;
 }
@@ -697,12 +710,14 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTr
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "selected-source"; yang_parent_name = "clock-interface-selection-back-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selected-source"; yang_parent_name = "clock-interface-selection-back-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::~SelectedSource()
@@ -711,6 +726,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTr
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -718,7 +734,8 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionB
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::has_operation() const
@@ -731,7 +748,8 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionB
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::get_segment_path() const
@@ -768,6 +786,15 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::Clock
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -778,6 +805,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -863,7 +895,7 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionB
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -871,10 +903,11 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionB
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::ClockId::~ClockId()
@@ -883,15 +916,18 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTr
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::ClockId::get_segment_path() const
@@ -906,7 +942,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -932,11 +969,17 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionB
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -946,15 +989,125 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionB
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -966,7 +1119,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTr
     node{YType::str, "node"}
 {
 
-    yang_name = "selection-point"; yang_parent_name = "clock-interface-selection-back-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point"; yang_parent_name = "clock-interface-selection-back-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectionPoint::~SelectionPoint()
@@ -975,6 +1128,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTr
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point_type.is_set
 	|| selection_point_description.is_set
 	|| node.is_set;
@@ -1065,9 +1219,11 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionB
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTraces()
+    :
+    clock_interface_selection_forward_trace(this, {"clock_type", "port"})
 {
 
-    yang_name = "clock-interface-selection-forward-traces"; yang_parent_name = "global-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-interface-selection-forward-traces"; yang_parent_name = "global-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::~ClockInterfaceSelectionForwardTraces()
@@ -1076,7 +1232,8 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwar
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::has_data() const
 {
-    for (std::size_t index=0; index<clock_interface_selection_forward_trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clock_interface_selection_forward_trace.len(); index++)
     {
         if(clock_interface_selection_forward_trace[index]->has_data())
             return true;
@@ -1086,7 +1243,7 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionF
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::has_operation() const
 {
-    for (std::size_t index=0; index<clock_interface_selection_forward_trace.size(); index++)
+    for (std::size_t index=0; index<clock_interface_selection_forward_trace.len(); index++)
     {
         if(clock_interface_selection_forward_trace[index]->has_operation())
             return true;
@@ -1116,7 +1273,7 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::Clock
     {
         auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace>();
         c->parent = this;
-        clock_interface_selection_forward_trace.push_back(c);
+        clock_interface_selection_forward_trace.append(c);
         return c;
     }
 
@@ -1128,7 +1285,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clock_interface_selection_forward_trace)
+    for (auto c : clock_interface_selection_forward_trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1157,10 +1314,12 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionF
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ClockInterfaceSelectionForwardTrace()
     :
     clock_type{YType::enumeration, "clock-type"},
-    port{YType::int32, "port"}
+    port{YType::uint32, "port"}
+        ,
+    forward_trace(this, {})
 {
 
-    yang_name = "clock-interface-selection-forward-trace"; yang_parent_name = "clock-interface-selection-forward-traces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-interface-selection-forward-trace"; yang_parent_name = "clock-interface-selection-forward-traces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::~ClockInterfaceSelectionForwardTrace()
@@ -1169,7 +1328,8 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwar
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::has_data() const
 {
-    for (std::size_t index=0; index<forward_trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<forward_trace.len(); index++)
     {
         if(forward_trace[index]->has_data())
             return true;
@@ -1180,7 +1340,7 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionF
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::has_operation() const
 {
-    for (std::size_t index=0; index<forward_trace.size(); index++)
+    for (std::size_t index=0; index<forward_trace.len(); index++)
     {
         if(forward_trace[index]->has_operation())
             return true;
@@ -1193,7 +1353,9 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionF
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clock-interface-selection-forward-trace" <<"[clock-type='" <<clock_type <<"']" <<"[port='" <<port <<"']";
+    path_buffer << "clock-interface-selection-forward-trace";
+    ADD_KEY_TOKEN(clock_type, "clock-type");
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -1214,7 +1376,7 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::Clock
     {
         auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace>();
         c->parent = this;
-        forward_trace.push_back(c);
+        forward_trace.append(c);
         return c;
     }
 
@@ -1226,7 +1388,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : forward_trace)
+    for (auto c : forward_trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1278,7 +1440,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwar
 {
     forward_trace_node->parent = this;
 
-    yang_name = "forward-trace"; yang_parent_name = "clock-interface-selection-forward-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forward-trace"; yang_parent_name = "clock-interface-selection-forward-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::~ForwardTrace()
@@ -1287,6 +1449,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwar
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::has_data() const
 {
+    if (is_presence_container) return true;
     return (forward_trace_node !=  nullptr && forward_trace_node->has_data());
 }
 
@@ -1356,14 +1519,14 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionF
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::ForwardTraceNode()
     :
     node_type{YType::enumeration, "node-type"}
-    	,
+        ,
     selection_point(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint>())
-	,source(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source>())
+    , source(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source>())
 {
     selection_point->parent = this;
     source->parent = this;
 
-    yang_name = "forward-trace-node"; yang_parent_name = "forward-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forward-trace-node"; yang_parent_name = "forward-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::~ForwardTraceNode()
@@ -1372,6 +1535,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwar
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::has_data() const
 {
+    if (is_presence_container) return true;
     return node_type.is_set
 	|| (selection_point !=  nullptr && selection_point->has_data())
 	|| (source !=  nullptr && source->has_data());
@@ -1474,7 +1638,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwar
     node{YType::str, "node"}
 {
 
-    yang_name = "selection-point"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::~SelectionPoint()
@@ -1483,6 +1647,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwar
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point_type.is_set
 	|| selection_point_description.is_set
 	|| node.is_set;
@@ -1581,12 +1746,14 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwar
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "source"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::~Source()
@@ -1595,6 +1762,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwar
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -1602,7 +1770,8 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionF
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::has_operation() const
@@ -1615,7 +1784,8 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionF
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_segment_path() const
@@ -1652,6 +1822,15 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::Clock
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -1662,6 +1841,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -1747,7 +1931,7 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionF
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -1755,10 +1939,11 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionF
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::~ClockId()
@@ -1767,15 +1952,18 @@ FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwar
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_segment_path() const
@@ -1790,7 +1978,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1816,11 +2005,17 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionF
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1830,15 +2025,125 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionF
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -1846,10 +2151,11 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionF
 FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::TimeOfDayBackTrace()
     :
     selected_source(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource>())
+    , selection_point(this, {})
 {
     selected_source->parent = this;
 
-    yang_name = "time-of-day-back-trace"; yang_parent_name = "global-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time-of-day-back-trace"; yang_parent_name = "global-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::~TimeOfDayBackTrace()
@@ -1858,7 +2164,8 @@ FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::~TimeOfDa
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::has_data() const
 {
-    for (std::size_t index=0; index<selection_point.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<selection_point.len(); index++)
     {
         if(selection_point[index]->has_data())
             return true;
@@ -1868,7 +2175,7 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::has_
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::has_operation() const
 {
-    for (std::size_t index=0; index<selection_point.size(); index++)
+    for (std::size_t index=0; index<selection_point.len(); index++)
     {
         if(selection_point[index]->has_operation())
             return true;
@@ -1908,7 +2215,7 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeO
     {
         auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectionPoint>();
         c->parent = this;
-        selection_point.push_back(c);
+        selection_point.append(c);
         return c;
     }
 
@@ -1925,7 +2232,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     }
 
     count = 0;
-    for (auto const & c : selection_point)
+    for (auto c : selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1960,12 +2267,14 @@ FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedS
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "selected-source"; yang_parent_name = "time-of-day-back-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selected-source"; yang_parent_name = "time-of-day-back-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::~SelectedSource()
@@ -1974,6 +2283,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedS
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -1981,7 +2291,8 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::Sele
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::has_operation() const
@@ -1994,7 +2305,8 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::Sele
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::get_segment_path() const
@@ -2031,6 +2343,15 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeO
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -2041,6 +2362,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -2126,7 +2452,7 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::Sele
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -2134,10 +2460,11 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::Sele
 FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::ClockId::~ClockId()
@@ -2146,15 +2473,18 @@ FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedS
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::ClockId::get_segment_path() const
@@ -2169,7 +2499,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2195,11 +2526,17 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::Sele
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -2209,15 +2546,125 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::Sele
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -2229,7 +2676,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::Selection
     node{YType::str, "node"}
 {
 
-    yang_name = "selection-point"; yang_parent_name = "time-of-day-back-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point"; yang_parent_name = "time-of-day-back-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectionPoint::~SelectionPoint()
@@ -2238,6 +2685,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::Selection
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point_type.is_set
 	|| selection_point_description.is_set
 	|| node.is_set;
@@ -2328,9 +2776,11 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::Sele
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::NtpSelectionForwardTrace()
+    :
+    forward_trace(this, {})
 {
 
-    yang_name = "ntp-selection-forward-trace"; yang_parent_name = "global-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ntp-selection-forward-trace"; yang_parent_name = "global-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::~NtpSelectionForwardTrace()
@@ -2339,7 +2789,8 @@ FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::~Nt
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::has_data() const
 {
-    for (std::size_t index=0; index<forward_trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<forward_trace.len(); index++)
     {
         if(forward_trace[index]->has_data())
             return true;
@@ -2349,7 +2800,7 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::has_operation() const
 {
-    for (std::size_t index=0; index<forward_trace.size(); index++)
+    for (std::size_t index=0; index<forward_trace.len(); index++)
     {
         if(forward_trace[index]->has_operation())
             return true;
@@ -2379,7 +2830,7 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSe
     {
         auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace>();
         c->parent = this;
-        forward_trace.push_back(c);
+        forward_trace.append(c);
         return c;
     }
 
@@ -2391,7 +2842,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : forward_trace)
+    for (auto c : forward_trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2423,7 +2874,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::For
 {
     forward_trace_node->parent = this;
 
-    yang_name = "forward-trace"; yang_parent_name = "ntp-selection-forward-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forward-trace"; yang_parent_name = "ntp-selection-forward-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::~ForwardTrace()
@@ -2432,6 +2883,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::For
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::has_data() const
 {
+    if (is_presence_container) return true;
     return (forward_trace_node !=  nullptr && forward_trace_node->has_data());
 }
 
@@ -2501,14 +2953,14 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace
 FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::ForwardTraceNode()
     :
     node_type{YType::enumeration, "node-type"}
-    	,
+        ,
     selection_point(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint>())
-	,source(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source>())
+    , source(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source>())
 {
     selection_point->parent = this;
     source->parent = this;
 
-    yang_name = "forward-trace-node"; yang_parent_name = "forward-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forward-trace-node"; yang_parent_name = "forward-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::~ForwardTraceNode()
@@ -2517,6 +2969,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::For
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::has_data() const
 {
+    if (is_presence_container) return true;
     return node_type.is_set
 	|| (selection_point !=  nullptr && selection_point->has_data())
 	|| (source !=  nullptr && source->has_data());
@@ -2619,7 +3072,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::For
     node{YType::str, "node"}
 {
 
-    yang_name = "selection-point"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::~SelectionPoint()
@@ -2628,6 +3081,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::For
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point_type.is_set
 	|| selection_point_description.is_set
 	|| node.is_set;
@@ -2726,12 +3180,14 @@ FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::For
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "source"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::~Source()
@@ -2740,6 +3196,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::For
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -2747,7 +3204,8 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::has_operation() const
@@ -2760,7 +3218,8 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_segment_path() const
@@ -2797,6 +3256,15 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSe
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -2807,6 +3275,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -2892,7 +3365,7 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -2900,10 +3373,11 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace
 FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::~ClockId()
@@ -2912,15 +3386,18 @@ FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::For
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_segment_path() const
@@ -2935,7 +3412,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2961,11 +3439,17 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -2975,23 +3459,135 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::PtpSelectionForwardTrace()
+    :
+    forward_trace(this, {})
 {
 
-    yang_name = "ptp-selection-forward-trace"; yang_parent_name = "global-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ptp-selection-forward-trace"; yang_parent_name = "global-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::~PtpSelectionForwardTrace()
@@ -3000,7 +3596,8 @@ FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::~Pt
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::has_data() const
 {
-    for (std::size_t index=0; index<forward_trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<forward_trace.len(); index++)
     {
         if(forward_trace[index]->has_data())
             return true;
@@ -3010,7 +3607,7 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::has_operation() const
 {
-    for (std::size_t index=0; index<forward_trace.size(); index++)
+    for (std::size_t index=0; index<forward_trace.len(); index++)
     {
         if(forward_trace[index]->has_operation())
             return true;
@@ -3040,7 +3637,7 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSe
     {
         auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace>();
         c->parent = this;
-        forward_trace.push_back(c);
+        forward_trace.append(c);
         return c;
     }
 
@@ -3052,7 +3649,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : forward_trace)
+    for (auto c : forward_trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3084,7 +3681,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::For
 {
     forward_trace_node->parent = this;
 
-    yang_name = "forward-trace"; yang_parent_name = "ptp-selection-forward-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forward-trace"; yang_parent_name = "ptp-selection-forward-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::~ForwardTrace()
@@ -3093,6 +3690,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::For
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::has_data() const
 {
+    if (is_presence_container) return true;
     return (forward_trace_node !=  nullptr && forward_trace_node->has_data());
 }
 
@@ -3162,14 +3760,14 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace
 FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::ForwardTraceNode()
     :
     node_type{YType::enumeration, "node-type"}
-    	,
+        ,
     selection_point(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint>())
-	,source(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source>())
+    , source(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source>())
 {
     selection_point->parent = this;
     source->parent = this;
 
-    yang_name = "forward-trace-node"; yang_parent_name = "forward-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forward-trace-node"; yang_parent_name = "forward-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::~ForwardTraceNode()
@@ -3178,6 +3776,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::For
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::has_data() const
 {
+    if (is_presence_container) return true;
     return node_type.is_set
 	|| (selection_point !=  nullptr && selection_point->has_data())
 	|| (source !=  nullptr && source->has_data());
@@ -3280,7 +3879,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::For
     node{YType::str, "node"}
 {
 
-    yang_name = "selection-point"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::~SelectionPoint()
@@ -3289,6 +3888,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::For
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point_type.is_set
 	|| selection_point_description.is_set
 	|| node.is_set;
@@ -3387,12 +3987,14 @@ FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::For
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "source"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::~Source()
@@ -3401,6 +4003,7 @@ FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::For
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -3408,7 +4011,8 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::has_operation() const
@@ -3421,7 +4025,8 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_segment_path() const
@@ -3458,6 +4063,15 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSe
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -3468,6 +4082,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalN
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -3553,7 +4172,7 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -3561,10 +4180,11 @@ bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace
 FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::~ClockId()
@@ -3573,15 +4193,18 @@ FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::For
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_segment_path() const
@@ -3596,7 +4219,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3622,11 +4246,17 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -3636,23 +4266,135 @@ void FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterfaces()
+    :
+    global_interface(this, {"interface_name"})
 {
 
-    yang_name = "global-interfaces"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-interfaces"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::GlobalInterfaces::~GlobalInterfaces()
@@ -3661,7 +4403,8 @@ FrequencySynchronization::GlobalInterfaces::~GlobalInterfaces()
 
 bool FrequencySynchronization::GlobalInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<global_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<global_interface.len(); index++)
     {
         if(global_interface[index]->has_data())
             return true;
@@ -3671,7 +4414,7 @@ bool FrequencySynchronization::GlobalInterfaces::has_data() const
 
 bool FrequencySynchronization::GlobalInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<global_interface.size(); index++)
+    for (std::size_t index=0; index<global_interface.len(); index++)
     {
         if(global_interface[index]->has_operation())
             return true;
@@ -3708,7 +4451,7 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::get_child_by
     {
         auto c = std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface>();
         c->parent = this;
-        global_interface.push_back(c);
+        global_interface.append(c);
         return c;
     }
 
@@ -3720,7 +4463,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : global_interface)
+    for (auto c : global_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3749,14 +4492,14 @@ bool FrequencySynchronization::GlobalInterfaces::has_leaf_or_child_of_name(const
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::GlobalInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     interface_selection_forward_trace(std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace>())
-	,interface_selection_back_trace(std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace>())
+    , interface_selection_back_trace(std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace>())
 {
     interface_selection_forward_trace->parent = this;
     interface_selection_back_trace->parent = this;
 
-    yang_name = "global-interface"; yang_parent_name = "global-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-interface"; yang_parent_name = "global-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::~GlobalInterface()
@@ -3765,6 +4508,7 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::~GlobalInterface()
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (interface_selection_forward_trace !=  nullptr && interface_selection_forward_trace->has_data())
 	|| (interface_selection_back_trace !=  nullptr && interface_selection_back_trace->has_data());
@@ -3788,7 +4532,8 @@ std::string FrequencySynchronization::GlobalInterfaces::GlobalInterface::get_abs
 std::string FrequencySynchronization::GlobalInterfaces::GlobalInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "global-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "global-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3868,9 +4613,11 @@ bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::has_leaf_or_ch
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::InterfaceSelectionForwardTrace()
+    :
+    forward_trace(this, {})
 {
 
-    yang_name = "interface-selection-forward-trace"; yang_parent_name = "global-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-selection-forward-trace"; yang_parent_name = "global-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::~InterfaceSelectionForwardTrace()
@@ -3879,7 +4626,8 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionF
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::has_data() const
 {
-    for (std::size_t index=0; index<forward_trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<forward_trace.len(); index++)
     {
         if(forward_trace[index]->has_data())
             return true;
@@ -3889,7 +4637,7 @@ bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::has_operation() const
 {
-    for (std::size_t index=0; index<forward_trace.size(); index++)
+    for (std::size_t index=0; index<forward_trace.len(); index++)
     {
         if(forward_trace[index]->has_operation())
             return true;
@@ -3919,7 +4667,7 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterf
     {
         auto c = std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace>();
         c->parent = this;
-        forward_trace.push_back(c);
+        forward_trace.append(c);
         return c;
     }
 
@@ -3931,7 +4679,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : forward_trace)
+    for (auto c : forward_trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3963,7 +4711,7 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionF
 {
     forward_trace_node->parent = this;
 
-    yang_name = "forward-trace"; yang_parent_name = "interface-selection-forward-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forward-trace"; yang_parent_name = "interface-selection-forward-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::~ForwardTrace()
@@ -3972,6 +4720,7 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionF
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::has_data() const
 {
+    if (is_presence_container) return true;
     return (forward_trace_node !=  nullptr && forward_trace_node->has_data());
 }
 
@@ -4041,14 +4790,14 @@ bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::ForwardTraceNode()
     :
     node_type{YType::enumeration, "node-type"}
-    	,
+        ,
     selection_point(std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint>())
-	,source(std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source>())
+    , source(std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source>())
 {
     selection_point->parent = this;
     source->parent = this;
 
-    yang_name = "forward-trace-node"; yang_parent_name = "forward-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forward-trace-node"; yang_parent_name = "forward-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::~ForwardTraceNode()
@@ -4057,6 +4806,7 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionF
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::has_data() const
 {
+    if (is_presence_container) return true;
     return node_type.is_set
 	|| (selection_point !=  nullptr && selection_point->has_data())
 	|| (source !=  nullptr && source->has_data());
@@ -4159,7 +4909,7 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionF
     node{YType::str, "node"}
 {
 
-    yang_name = "selection-point"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::~SelectionPoint()
@@ -4168,6 +4918,7 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionF
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point_type.is_set
 	|| selection_point_description.is_set
 	|| node.is_set;
@@ -4266,12 +5017,14 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionF
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "source"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "forward-trace-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::~Source()
@@ -4280,6 +5033,7 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionF
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -4287,7 +5041,8 @@ bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::has_operation() const
@@ -4300,7 +5055,8 @@ bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_segment_path() const
@@ -4337,6 +5093,15 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterf
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -4347,6 +5112,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalI
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -4432,7 +5202,7 @@ void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -4440,10 +5210,11 @@ bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::~ClockId()
@@ -4452,15 +5223,18 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionF
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_segment_path() const
@@ -4475,7 +5249,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4501,11 +5276,17 @@ void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -4515,15 +5296,125 @@ void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -4531,10 +5422,11 @@ bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::InterfaceSelectionBackTrace()
     :
     selected_source(std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource>())
+    , selection_point(this, {})
 {
     selected_source->parent = this;
 
-    yang_name = "interface-selection-back-trace"; yang_parent_name = "global-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-selection-back-trace"; yang_parent_name = "global-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::~InterfaceSelectionBackTrace()
@@ -4543,7 +5435,8 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionB
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::has_data() const
 {
-    for (std::size_t index=0; index<selection_point.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<selection_point.len(); index++)
     {
         if(selection_point[index]->has_data())
             return true;
@@ -4553,7 +5446,7 @@ bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::has_operation() const
 {
-    for (std::size_t index=0; index<selection_point.size(); index++)
+    for (std::size_t index=0; index<selection_point.len(); index++)
     {
         if(selection_point[index]->has_operation())
             return true;
@@ -4593,7 +5486,7 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterf
     {
         auto c = std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectionPoint>();
         c->parent = this;
-        selection_point.push_back(c);
+        selection_point.append(c);
         return c;
     }
 
@@ -4610,7 +5503,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalI
     }
 
     count = 0;
-    for (auto const & c : selection_point)
+    for (auto c : selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4645,12 +5538,14 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionB
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "selected-source"; yang_parent_name = "interface-selection-back-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selected-source"; yang_parent_name = "interface-selection-back-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::~SelectedSource()
@@ -4659,6 +5554,7 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionB
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -4666,7 +5562,8 @@ bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::has_operation() const
@@ -4679,7 +5576,8 @@ bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::get_segment_path() const
@@ -4716,6 +5614,15 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterf
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -4726,6 +5633,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalI
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -4811,7 +5723,7 @@ void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -4819,10 +5731,11 @@ bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::ClockId::~ClockId()
@@ -4831,15 +5744,18 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionB
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::ClockId::get_segment_path() const
@@ -4854,7 +5770,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4880,11 +5797,17 @@ void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -4894,15 +5817,125 @@ void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -4914,7 +5947,7 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionB
     node{YType::str, "node"}
 {
 
-    yang_name = "selection-point"; yang_parent_name = "interface-selection-back-trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point"; yang_parent_name = "interface-selection-back-trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectionPoint::~SelectionPoint()
@@ -4923,6 +5956,7 @@ FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionB
 
 bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point_type.is_set
 	|| selection_point_description.is_set
 	|| node.is_set;
@@ -5013,9 +6047,12 @@ bool FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelec
 }
 
 FrequencySynchronization::Summary::Summary()
+    :
+    frequency_summary(this, {})
+    , time_of_day_summary(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::Summary::~Summary()
@@ -5024,12 +6061,13 @@ FrequencySynchronization::Summary::~Summary()
 
 bool FrequencySynchronization::Summary::has_data() const
 {
-    for (std::size_t index=0; index<frequency_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frequency_summary.len(); index++)
     {
         if(frequency_summary[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<time_of_day_summary.size(); index++)
+    for (std::size_t index=0; index<time_of_day_summary.len(); index++)
     {
         if(time_of_day_summary[index]->has_data())
             return true;
@@ -5039,12 +6077,12 @@ bool FrequencySynchronization::Summary::has_data() const
 
 bool FrequencySynchronization::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<frequency_summary.size(); index++)
+    for (std::size_t index=0; index<frequency_summary.len(); index++)
     {
         if(frequency_summary[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<time_of_day_summary.size(); index++)
+    for (std::size_t index=0; index<time_of_day_summary.len(); index++)
     {
         if(time_of_day_summary[index]->has_operation())
             return true;
@@ -5081,7 +6119,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Summary::get_child_by_name(con
     {
         auto c = std::make_shared<FrequencySynchronization::Summary::FrequencySummary>();
         c->parent = this;
-        frequency_summary.push_back(c);
+        frequency_summary.append(c);
         return c;
     }
 
@@ -5089,7 +6127,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Summary::get_child_by_name(con
     {
         auto c = std::make_shared<FrequencySynchronization::Summary::TimeOfDaySummary>();
         c->parent = this;
-        time_of_day_summary.push_back(c);
+        time_of_day_summary.append(c);
         return c;
     }
 
@@ -5101,7 +6139,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frequency_summary)
+    for (auto c : frequency_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5110,7 +6148,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary
     }
 
     count = 0;
-    for (auto const & c : time_of_day_summary)
+    for (auto c : time_of_day_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5141,12 +6179,12 @@ FrequencySynchronization::Summary::FrequencySummary::FrequencySummary()
     clock_count{YType::uint32, "clock-count"},
     ethernet_count{YType::uint32, "ethernet-count"},
     sonet_count{YType::uint32, "sonet-count"}
-    	,
+        ,
     source(std::make_shared<FrequencySynchronization::Summary::FrequencySummary::Source>())
 {
     source->parent = this;
 
-    yang_name = "frequency-summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "frequency-summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::Summary::FrequencySummary::~FrequencySummary()
@@ -5155,6 +6193,7 @@ FrequencySynchronization::Summary::FrequencySummary::~FrequencySummary()
 
 bool FrequencySynchronization::Summary::FrequencySummary::has_data() const
 {
+    if (is_presence_container) return true;
     return clock_count.is_set
 	|| ethernet_count.is_set
 	|| sonet_count.is_set
@@ -5276,12 +6315,14 @@ FrequencySynchronization::Summary::FrequencySummary::Source::Source()
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::Summary::FrequencySummary::Source::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "source"; yang_parent_name = "frequency-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source"; yang_parent_name = "frequency-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::Summary::FrequencySummary::Source::~Source()
@@ -5290,6 +6331,7 @@ FrequencySynchronization::Summary::FrequencySummary::Source::~Source()
 
 bool FrequencySynchronization::Summary::FrequencySummary::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -5297,7 +6339,8 @@ bool FrequencySynchronization::Summary::FrequencySummary::Source::has_data() con
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::Summary::FrequencySummary::Source::has_operation() const
@@ -5310,7 +6353,8 @@ bool FrequencySynchronization::Summary::FrequencySummary::Source::has_operation(
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::Summary::FrequencySummary::Source::get_absolute_path() const
@@ -5354,6 +6398,15 @@ std::shared_ptr<Entity> FrequencySynchronization::Summary::FrequencySummary::Sou
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -5364,6 +6417,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -5449,7 +6507,7 @@ void FrequencySynchronization::Summary::FrequencySummary::Source::set_filter(con
 
 bool FrequencySynchronization::Summary::FrequencySummary::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -5457,10 +6515,11 @@ bool FrequencySynchronization::Summary::FrequencySummary::Source::has_leaf_or_ch
 FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::~ClockId()
@@ -5469,15 +6528,18 @@ FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::~ClockId()
 
 bool FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::get_absolute_path() const
@@ -5499,7 +6561,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5525,11 +6588,17 @@ void FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::set_v
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -5539,15 +6608,132 @@ void FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::set_f
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-freqsync-oper:frequency-synchronization/summary/frequency-summary/source/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -5555,12 +6741,12 @@ bool FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::has_l
 FrequencySynchronization::Summary::TimeOfDaySummary::TimeOfDaySummary()
     :
     node_count{YType::uint32, "node-count"}
-    	,
+        ,
     source(std::make_shared<FrequencySynchronization::Summary::TimeOfDaySummary::Source>())
 {
     source->parent = this;
 
-    yang_name = "time-of-day-summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "time-of-day-summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::Summary::TimeOfDaySummary::~TimeOfDaySummary()
@@ -5569,6 +6755,7 @@ FrequencySynchronization::Summary::TimeOfDaySummary::~TimeOfDaySummary()
 
 bool FrequencySynchronization::Summary::TimeOfDaySummary::has_data() const
 {
+    if (is_presence_container) return true;
     return node_count.is_set
 	|| (source !=  nullptr && source->has_data());
 }
@@ -5664,12 +6851,14 @@ FrequencySynchronization::Summary::TimeOfDaySummary::Source::Source()
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "source"; yang_parent_name = "time-of-day-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source"; yang_parent_name = "time-of-day-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::Summary::TimeOfDaySummary::Source::~Source()
@@ -5678,6 +6867,7 @@ FrequencySynchronization::Summary::TimeOfDaySummary::Source::~Source()
 
 bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -5685,7 +6875,8 @@ bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::has_data() con
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::has_operation() const
@@ -5698,7 +6889,8 @@ bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::has_operation(
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::Summary::TimeOfDaySummary::Source::get_absolute_path() const
@@ -5742,6 +6934,15 @@ std::shared_ptr<Entity> FrequencySynchronization::Summary::TimeOfDaySummary::Sou
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -5752,6 +6953,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -5837,7 +7043,7 @@ void FrequencySynchronization::Summary::TimeOfDaySummary::Source::set_filter(con
 
 bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -5845,10 +7051,11 @@ bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::has_leaf_or_ch
 FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::~ClockId()
@@ -5857,15 +7064,18 @@ FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::~ClockId()
 
 bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::get_absolute_path() const
@@ -5887,7 +7097,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5913,11 +7124,17 @@ void FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::set_v
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -5927,23 +7144,142 @@ void FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::set_f
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-freqsync-oper:frequency-synchronization/summary/time-of-day-summary/source/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceDatas()
+    :
+    interface_data(this, {"interface_name"})
 {
 
-    yang_name = "interface-datas"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-datas"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::InterfaceDatas::~InterfaceDatas()
@@ -5952,7 +7288,8 @@ FrequencySynchronization::InterfaceDatas::~InterfaceDatas()
 
 bool FrequencySynchronization::InterfaceDatas::has_data() const
 {
-    for (std::size_t index=0; index<interface_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_data.len(); index++)
     {
         if(interface_data[index]->has_data())
             return true;
@@ -5962,7 +7299,7 @@ bool FrequencySynchronization::InterfaceDatas::has_data() const
 
 bool FrequencySynchronization::InterfaceDatas::has_operation() const
 {
-    for (std::size_t index=0; index<interface_data.size(); index++)
+    for (std::size_t index=0; index<interface_data.len(); index++)
     {
         if(interface_data[index]->has_operation())
             return true;
@@ -5999,7 +7336,7 @@ std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::get_child_by_n
     {
         auto c = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData>();
         c->parent = this;
-        interface_data.push_back(c);
+        interface_data.append(c);
         return c;
     }
 
@@ -6011,7 +7348,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_data)
+    for (auto c : interface_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6052,16 +7389,18 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::InterfaceData()
     wait_to_restore_time{YType::uint16, "wait-to-restore-time"},
     supports_frequency{YType::boolean, "supports-frequency"},
     supports_time_of_day{YType::boolean, "supports-time-of-day"}
-    	,
+        ,
     source(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::Source>())
-	,selected_source(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource>())
-	,quality_level_received(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived>())
-	,quality_level_damped(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped>())
-	,quality_level_effective_input(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput>())
-	,quality_level_effective_output(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput>())
-	,quality_level_selected_source(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource>())
-	,ethernet_peer_information(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation>())
-	,esmc_statistics(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics>())
+    , selected_source(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource>())
+    , quality_level_received(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived>())
+    , quality_level_damped(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped>())
+    , quality_level_effective_input(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput>())
+    , quality_level_effective_output(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput>())
+    , quality_level_selected_source(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource>())
+    , ethernet_peer_information(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation>())
+    , esmc_statistics(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics>())
+    , spa_selection_point(this, {})
+    , node_selection_point(this, {})
 {
     source->parent = this;
     selected_source->parent = this;
@@ -6073,7 +7412,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::InterfaceData()
     ethernet_peer_information->parent = this;
     esmc_statistics->parent = this;
 
-    yang_name = "interface-data"; yang_parent_name = "interface-datas"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-data"; yang_parent_name = "interface-datas"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::~InterfaceData()
@@ -6082,12 +7421,13 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::~InterfaceData()
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::has_data() const
 {
-    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spa_selection_point.len(); index++)
     {
         if(spa_selection_point[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    for (std::size_t index=0; index<node_selection_point.len(); index++)
     {
         if(node_selection_point[index]->has_data())
             return true;
@@ -6118,12 +7458,12 @@ bool FrequencySynchronization::InterfaceDatas::InterfaceData::has_data() const
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::has_operation() const
 {
-    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    for (std::size_t index=0; index<spa_selection_point.len(); index++)
     {
         if(spa_selection_point[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    for (std::size_t index=0; index<node_selection_point.len(); index++)
     {
         if(node_selection_point[index]->has_operation())
             return true;
@@ -6163,7 +7503,8 @@ std::string FrequencySynchronization::InterfaceDatas::InterfaceData::get_absolut
 std::string FrequencySynchronization::InterfaceDatas::InterfaceData::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-data" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-data";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -6276,7 +7617,7 @@ std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData:
     {
         auto c = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint>();
         c->parent = this;
-        spa_selection_point.push_back(c);
+        spa_selection_point.append(c);
         return c;
     }
 
@@ -6284,7 +7625,7 @@ std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData:
     {
         auto c = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint>();
         c->parent = this;
-        node_selection_point.push_back(c);
+        node_selection_point.append(c);
         return c;
     }
 
@@ -6341,7 +7682,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfa
     }
 
     count = 0;
-    for (auto const & c : spa_selection_point)
+    for (auto c : spa_selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6350,7 +7691,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfa
     }
 
     count = 0;
-    for (auto const & c : node_selection_point)
+    for (auto c : node_selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6515,12 +7856,14 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::Source::Source()
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "source"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::Source::~Source()
@@ -6529,6 +7872,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::Source::~Source()
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -6536,7 +7880,8 @@ bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::has_data()
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::has_operation() const
@@ -6549,7 +7894,8 @@ bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::has_operat
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::InterfaceDatas::InterfaceData::Source::get_segment_path() const
@@ -6586,6 +7932,15 @@ std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData:
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -6596,6 +7951,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfa
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -6681,7 +8041,7 @@ void FrequencySynchronization::InterfaceDatas::InterfaceData::Source::set_filter
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -6689,10 +8049,11 @@ bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::has_leaf_o
 FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::~ClockId()
@@ -6701,15 +8062,18 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::~Clock
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::get_segment_path() const
@@ -6724,7 +8088,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6750,11 +8115,17 @@ void FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::s
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -6764,15 +8135,125 @@ void FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::s
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -6786,12 +8267,14 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::Selecte
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "selected-source"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selected-source"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::~SelectedSource()
@@ -6800,6 +8283,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::~Select
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -6807,7 +8291,8 @@ bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ha
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::has_operation() const
@@ -6820,7 +8305,8 @@ bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ha
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::get_segment_path() const
@@ -6857,6 +8343,15 @@ std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData:
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -6867,6 +8362,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfa
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -6952,7 +8452,7 @@ void FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::se
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -6960,10 +8460,11 @@ bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ha
 FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::~ClockId()
@@ -6972,15 +8473,18 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::get_segment_path() const
@@ -6995,7 +8499,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7021,11 +8526,17 @@ void FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::Cl
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -7035,15 +8546,125 @@ void FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::Cl
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -7056,7 +8677,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::Q
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-received"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-received"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::~QualityLevelReceived()
@@ -7065,6 +8686,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::~
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -7175,7 +8797,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::Qua
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-damped"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-damped"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::~QualityLevelDamped()
@@ -7184,6 +8806,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::~Qu
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -7294,7 +8917,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveIn
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-effective-input"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-effective-input"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::~QualityLevelEffectiveInput()
@@ -7303,6 +8926,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveIn
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -7413,7 +9037,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOu
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-effective-output"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-effective-output"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::~QualityLevelEffectiveOutput()
@@ -7422,6 +9046,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOu
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -7532,7 +9157,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSou
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-selected-source"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-selected-source"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::~QualityLevelSelectedSource()
@@ -7541,6 +9166,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSou
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -7648,14 +9274,14 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation
     peer_state{YType::enumeration, "peer-state"},
     peer_up_count{YType::uint16, "peer-up-count"},
     peer_timeout_count{YType::uint16, "peer-timeout-count"}
-    	,
+        ,
     peer_state_time(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime>())
-	,last_ssm(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm>())
+    , last_ssm(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm>())
 {
     peer_state_time->parent = this;
     last_ssm->parent = this;
 
-    yang_name = "ethernet-peer-information"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet-peer-information"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::~EthernetPeerInformation()
@@ -7664,6 +9290,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_state.is_set
 	|| peer_up_count.is_set
 	|| peer_timeout_count.is_set
@@ -7791,7 +9418,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "peer-state-time"; yang_parent_name = "ethernet-peer-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-state-time"; yang_parent_name = "ethernet-peer-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::~PeerStateTime()
@@ -7800,6 +9427,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -7882,7 +9510,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "last-ssm"; yang_parent_name = "ethernet-peer-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-ssm"; yang_parent_name = "ethernet-peer-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::~LastSsm()
@@ -7891,6 +9519,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -7979,7 +9608,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::EsmcSta
     esmc_received_error{YType::uint16, "esmc-received-error"}
 {
 
-    yang_name = "esmc-statistics"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esmc-statistics"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::~EsmcStatistics()
@@ -7988,6 +9617,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::~EsmcSt
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return esmc_events_sent.is_set
 	|| esmc_events_received.is_set
 	|| esmc_infos_sent.is_set
@@ -8148,7 +9778,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::SpaS
     selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "spa-selection-point"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spa-selection-point"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::~SpaSelectionPoint()
@@ -8157,6 +9787,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::~Spa
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_description.is_set;
 }
@@ -8239,7 +9870,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::Nod
     selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "node-selection-point"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-selection-point"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::~NodeSelectionPoint()
@@ -8248,6 +9879,7 @@ FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::~No
 
 bool FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_description.is_set;
 }
@@ -8325,9 +9957,11 @@ bool FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint
 }
 
 FrequencySynchronization::Nodes::Nodes()
+    :
+    node(this, {"node"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::Nodes::~Nodes()
@@ -8336,7 +9970,8 @@ FrequencySynchronization::Nodes::~Nodes()
 
 bool FrequencySynchronization::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -8346,7 +9981,7 @@ bool FrequencySynchronization::Nodes::has_data() const
 
 bool FrequencySynchronization::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -8383,7 +10018,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::get_child_by_name(const
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -8395,7 +10030,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8424,14 +10059,14 @@ bool FrequencySynchronization::Nodes::has_leaf_or_child_of_name(const std::strin
 FrequencySynchronization::Nodes::Node::Node()
     :
     node{YType::str, "node"}
-    	,
+        ,
     ntp_data(std::make_shared<FrequencySynchronization::Nodes::Node::NtpData>())
-	,selection_point_datas(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas>())
-	,configuration_errors(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors>())
-	,ptp_data(std::make_shared<FrequencySynchronization::Nodes::Node::PtpData>())
-	,ssm_summary(std::make_shared<FrequencySynchronization::Nodes::Node::SsmSummary>())
-	,clock_datas(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas>())
-	,selection_point_inputs(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs>())
+    , selection_point_datas(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas>())
+    , configuration_errors(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors>())
+    , ptp_data(std::make_shared<FrequencySynchronization::Nodes::Node::PtpData>())
+    , ssm_summary(std::make_shared<FrequencySynchronization::Nodes::Node::SsmSummary>())
+    , clock_datas(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas>())
+    , selection_point_inputs(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs>())
 {
     ntp_data->parent = this;
     selection_point_datas->parent = this;
@@ -8441,7 +10076,7 @@ FrequencySynchronization::Nodes::Node::Node()
     clock_datas->parent = this;
     selection_point_inputs->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FrequencySynchronization::Nodes::Node::~Node()
@@ -8450,6 +10085,7 @@ FrequencySynchronization::Nodes::Node::~Node()
 
 bool FrequencySynchronization::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| (ntp_data !=  nullptr && ntp_data->has_data())
 	|| (selection_point_datas !=  nullptr && selection_point_datas->has_data())
@@ -8483,7 +10119,8 @@ std::string FrequencySynchronization::Nodes::Node::get_absolute_path() const
 std::string FrequencySynchronization::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node='" <<node <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node, "node");
     return path_buffer.str();
 }
 
@@ -8639,12 +10276,14 @@ FrequencySynchronization::Nodes::Node::NtpData::NtpData()
     supports_time_of_day{YType::boolean, "supports-time-of-day"},
     frequency_priority{YType::uint8, "frequency-priority"},
     time_of_day_priority{YType::uint8, "time-of-day-priority"}
-    	,
+        ,
     quality_level_effective_input(std::make_shared<FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput>())
+    , spa_selection_point(this, {})
+    , node_selection_point(this, {})
 {
     quality_level_effective_input->parent = this;
 
-    yang_name = "ntp-data"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ntp-data"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::NtpData::~NtpData()
@@ -8653,12 +10292,13 @@ FrequencySynchronization::Nodes::Node::NtpData::~NtpData()
 
 bool FrequencySynchronization::Nodes::Node::NtpData::has_data() const
 {
-    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spa_selection_point.len(); index++)
     {
         if(spa_selection_point[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    for (std::size_t index=0; index<node_selection_point.len(); index++)
     {
         if(node_selection_point[index]->has_data())
             return true;
@@ -8673,12 +10313,12 @@ bool FrequencySynchronization::Nodes::Node::NtpData::has_data() const
 
 bool FrequencySynchronization::Nodes::Node::NtpData::has_operation() const
 {
-    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    for (std::size_t index=0; index<spa_selection_point.len(); index++)
     {
         if(spa_selection_point[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    for (std::size_t index=0; index<node_selection_point.len(); index++)
     {
         if(node_selection_point[index]->has_operation())
             return true;
@@ -8728,7 +10368,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::NtpData::get_chil
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint>();
         c->parent = this;
-        spa_selection_point.push_back(c);
+        spa_selection_point.append(c);
         return c;
     }
 
@@ -8736,7 +10376,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::NtpData::get_chil
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint>();
         c->parent = this;
-        node_selection_point.push_back(c);
+        node_selection_point.append(c);
         return c;
     }
 
@@ -8753,7 +10393,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     }
 
     count = 0;
-    for (auto const & c : spa_selection_point)
+    for (auto c : spa_selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8762,7 +10402,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     }
 
     count = 0;
-    for (auto const & c : node_selection_point)
+    for (auto c : node_selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8846,7 +10486,7 @@ FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::Qual
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-effective-input"; yang_parent_name = "ntp-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-effective-input"; yang_parent_name = "ntp-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::~QualityLevelEffectiveInput()
@@ -8855,6 +10495,7 @@ FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::~Qua
 
 bool FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -8963,7 +10604,7 @@ FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::SpaSelectionP
     selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "spa-selection-point"; yang_parent_name = "ntp-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spa-selection-point"; yang_parent_name = "ntp-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::~SpaSelectionPoint()
@@ -8972,6 +10613,7 @@ FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::~SpaSelection
 
 bool FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_description.is_set;
 }
@@ -9054,7 +10696,7 @@ FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::NodeSelectio
     selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "node-selection-point"; yang_parent_name = "ntp-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-selection-point"; yang_parent_name = "ntp-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::~NodeSelectionPoint()
@@ -9063,6 +10705,7 @@ FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::~NodeSelecti
 
 bool FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_description.is_set;
 }
@@ -9140,9 +10783,11 @@ bool FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::has_lea
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointDatas()
+    :
+    selection_point_data(this, {"selection_point"})
 {
 
-    yang_name = "selection-point-datas"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point-datas"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointDatas::~SelectionPointDatas()
@@ -9151,7 +10796,8 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::~SelectionPointDatas
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::has_data() const
 {
-    for (std::size_t index=0; index<selection_point_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<selection_point_data.len(); index++)
     {
         if(selection_point_data[index]->has_data())
             return true;
@@ -9161,7 +10807,7 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::has_data() cons
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::has_operation() const
 {
-    for (std::size_t index=0; index<selection_point_data.size(); index++)
+    for (std::size_t index=0; index<selection_point_data.len(); index++)
     {
         if(selection_point_data[index]->has_operation())
             return true;
@@ -9191,7 +10837,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDat
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData>();
         c->parent = this;
-        selection_point_data.push_back(c);
+        selection_point_data.append(c);
         return c;
     }
 
@@ -9203,7 +10849,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : selection_point_data)
+    for (auto c : selection_point_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9231,22 +10877,22 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::has_leaf_or_chi
 
 FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::SelectionPointData()
     :
-    selection_point{YType::int32, "selection-point"},
+    selection_point{YType::uint32, "selection-point"},
     selection_point_type{YType::uint8, "selection-point-type"},
     description{YType::str, "description"},
     inputs{YType::uint32, "inputs"},
     inputs_selected{YType::uint32, "inputs-selected"},
     time_of_day_selection{YType::boolean, "time-of-day-selection"}
-    	,
+        ,
     output(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output>())
-	,last_programmed(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed>())
-	,last_selection(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection>())
+    , last_programmed(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed>())
+    , last_selection(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection>())
 {
     output->parent = this;
     last_programmed->parent = this;
     last_selection->parent = this;
 
-    yang_name = "selection-point-data"; yang_parent_name = "selection-point-datas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point-data"; yang_parent_name = "selection-point-datas"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::~SelectionPointData()
@@ -9255,6 +10901,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_type.is_set
 	|| description.is_set
@@ -9283,7 +10930,8 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointD
 std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "selection-point-data" <<"[selection-point='" <<selection_point <<"']";
+    path_buffer << "selection-point-data";
+    ADD_KEY_TOKEN(selection_point, "selection-point");
     return path_buffer.str();
 }
 
@@ -9436,9 +11084,14 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
     local_clock_ouput{YType::boolean, "local-clock-ouput"},
     local_line_output{YType::boolean, "local-line-output"},
     local_time_of_day_output{YType::boolean, "local-time-of-day-output"}
+        ,
+    spa_selection_point(this, {})
+    , node_selection_point(this, {})
+    , chassis_selection_point(this, {})
+    , router_selection_point(this, {})
 {
 
-    yang_name = "output"; yang_parent_name = "selection-point-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "selection-point-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::~Output()
@@ -9447,22 +11100,23 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::has_data() const
 {
-    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spa_selection_point.len(); index++)
     {
         if(spa_selection_point[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    for (std::size_t index=0; index<node_selection_point.len(); index++)
     {
         if(node_selection_point[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<chassis_selection_point.size(); index++)
+    for (std::size_t index=0; index<chassis_selection_point.len(); index++)
     {
         if(chassis_selection_point[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<router_selection_point.size(); index++)
+    for (std::size_t index=0; index<router_selection_point.len(); index++)
     {
         if(router_selection_point[index]->has_data())
             return true;
@@ -9474,22 +11128,22 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointD
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::has_operation() const
 {
-    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    for (std::size_t index=0; index<spa_selection_point.len(); index++)
     {
         if(spa_selection_point[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    for (std::size_t index=0; index<node_selection_point.len(); index++)
     {
         if(node_selection_point[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<chassis_selection_point.size(); index++)
+    for (std::size_t index=0; index<chassis_selection_point.len(); index++)
     {
         if(chassis_selection_point[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<router_selection_point.size(); index++)
+    for (std::size_t index=0; index<router_selection_point.len(); index++)
     {
         if(router_selection_point[index]->has_operation())
             return true;
@@ -9525,7 +11179,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDat
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint>();
         c->parent = this;
-        spa_selection_point.push_back(c);
+        spa_selection_point.append(c);
         return c;
     }
 
@@ -9533,7 +11187,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDat
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint>();
         c->parent = this;
-        node_selection_point.push_back(c);
+        node_selection_point.append(c);
         return c;
     }
 
@@ -9541,7 +11195,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDat
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint>();
         c->parent = this;
-        chassis_selection_point.push_back(c);
+        chassis_selection_point.append(c);
         return c;
     }
 
@@ -9549,7 +11203,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDat
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint>();
         c->parent = this;
-        router_selection_point.push_back(c);
+        router_selection_point.append(c);
         return c;
     }
 
@@ -9561,7 +11215,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : spa_selection_point)
+    for (auto c : spa_selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9570,7 +11224,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     }
 
     count = 0;
-    for (auto const & c : node_selection_point)
+    for (auto c : node_selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9579,7 +11233,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     }
 
     count = 0;
-    for (auto const & c : chassis_selection_point)
+    for (auto c : chassis_selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9588,7 +11242,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     }
 
     count = 0;
-    for (auto const & c : router_selection_point)
+    for (auto c : router_selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9650,7 +11304,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
     selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "spa-selection-point"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spa-selection-point"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::~SpaSelectionPoint()
@@ -9659,6 +11313,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_description.is_set;
 }
@@ -9741,7 +11396,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
     selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "node-selection-point"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-selection-point"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::~NodeSelectionPoint()
@@ -9750,6 +11405,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_description.is_set;
 }
@@ -9832,7 +11488,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
     selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "chassis-selection-point"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "chassis-selection-point"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::~ChassisSelectionPoint()
@@ -9841,6 +11497,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_description.is_set;
 }
@@ -9923,7 +11580,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
     selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "router-selection-point"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router-selection-point"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::~RouterSelectionPoint()
@@ -9932,6 +11589,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_description.is_set;
 }
@@ -10014,7 +11672,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "last-programmed"; yang_parent_name = "selection-point-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-programmed"; yang_parent_name = "selection-point-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::~LastProgrammed()
@@ -10023,6 +11681,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -10105,7 +11764,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "last-selection"; yang_parent_name = "selection-point-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-selection"; yang_parent_name = "selection-point-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::~LastSelection()
@@ -10114,6 +11773,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -10191,9 +11851,11 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointD
 }
 
 FrequencySynchronization::Nodes::Node::ConfigurationErrors::ConfigurationErrors()
+    :
+    error_source(this, {})
 {
 
-    yang_name = "configuration-errors"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configuration-errors"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ConfigurationErrors::~ConfigurationErrors()
@@ -10202,7 +11864,8 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::~ConfigurationErrors
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::has_data() const
 {
-    for (std::size_t index=0; index<error_source.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_source.len(); index++)
     {
         if(error_source[index]->has_data())
             return true;
@@ -10212,7 +11875,7 @@ bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::has_data() cons
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error_source.size(); index++)
+    for (std::size_t index=0; index<error_source.len(); index++)
     {
         if(error_source[index]->has_operation())
             return true;
@@ -10242,7 +11905,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErro
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource>();
         c->parent = this;
-        error_source.push_back(c);
+        error_source.append(c);
         return c;
     }
 
@@ -10254,7 +11917,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_source)
+    for (auto c : error_source.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10290,14 +11953,14 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::ErrorSo
     output_exact_error{YType::boolean, "output-exact-error"},
     output_max_error{YType::boolean, "output-max-error"},
     input_output_mismatch{YType::boolean, "input-output-mismatch"}
-    	,
+        ,
     source(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source>())
-	,input_min_ql(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMinQl>())
-	,input_exact_ql(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputExactQl>())
-	,input_max_ql(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMaxQl>())
-	,output_min_ql(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMinQl>())
-	,output_exact_ql(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputExactQl>())
-	,output_max_ql(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMaxQl>())
+    , input_min_ql(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMinQl>())
+    , input_exact_ql(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputExactQl>())
+    , input_max_ql(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMaxQl>())
+    , output_min_ql(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMinQl>())
+    , output_exact_ql(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputExactQl>())
+    , output_max_ql(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMaxQl>())
 {
     source->parent = this;
     input_min_ql->parent = this;
@@ -10307,7 +11970,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::ErrorSo
     output_exact_ql->parent = this;
     output_max_ql->parent = this;
 
-    yang_name = "error-source"; yang_parent_name = "configuration-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-source"; yang_parent_name = "configuration-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::~ErrorSource()
@@ -10316,6 +11979,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::~ErrorS
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::has_data() const
 {
+    if (is_presence_container) return true;
     return enable_error.is_set
 	|| input_min_error.is_set
 	|| input_exact_error.is_set
@@ -10591,12 +12255,14 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source:
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "source"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::~Source()
@@ -10605,6 +12271,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source:
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -10612,7 +12279,8 @@ bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::So
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::has_operation() const
@@ -10625,7 +12293,8 @@ bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::So
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::get_segment_path() const
@@ -10662,6 +12331,15 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErro
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -10672,6 +12350,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -10757,7 +12440,7 @@ void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::So
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -10765,10 +12448,11 @@ bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::So
 FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::ClockId::~ClockId()
@@ -10777,15 +12461,18 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source:
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::ClockId::get_segment_path() const
@@ -10800,7 +12487,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10826,11 +12514,17 @@ void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::So
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -10840,15 +12534,125 @@ void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::So
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -10861,7 +12665,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMi
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "input-min-ql"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-min-ql"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMinQl::~InputMinQl()
@@ -10870,6 +12674,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMi
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMinQl::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -10980,7 +12785,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputEx
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "input-exact-ql"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-exact-ql"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputExactQl::~InputExactQl()
@@ -10989,6 +12794,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputEx
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputExactQl::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -11099,7 +12905,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMa
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "input-max-ql"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-max-ql"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMaxQl::~InputMaxQl()
@@ -11108,6 +12914,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMa
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMaxQl::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -11218,7 +13025,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputM
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "output-min-ql"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-min-ql"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMinQl::~OutputMinQl()
@@ -11227,6 +13034,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputM
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMinQl::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -11337,7 +13145,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputE
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "output-exact-ql"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-exact-ql"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputExactQl::~OutputExactQl()
@@ -11346,6 +13154,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputE
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputExactQl::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -11456,7 +13265,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputM
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "output-max-ql"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-max-ql"; yang_parent_name = "error-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMaxQl::~OutputMaxQl()
@@ -11465,6 +13274,7 @@ FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputM
 
 bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMaxQl::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -11574,12 +13384,14 @@ FrequencySynchronization::Nodes::Node::PtpData::PtpData()
     supports_time_of_day{YType::boolean, "supports-time-of-day"},
     frequency_priority{YType::uint8, "frequency-priority"},
     time_of_day_priority{YType::uint8, "time-of-day-priority"}
-    	,
+        ,
     quality_level_effective_input(std::make_shared<FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput>())
+    , spa_selection_point(this, {})
+    , node_selection_point(this, {})
 {
     quality_level_effective_input->parent = this;
 
-    yang_name = "ptp-data"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ptp-data"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::PtpData::~PtpData()
@@ -11588,12 +13400,13 @@ FrequencySynchronization::Nodes::Node::PtpData::~PtpData()
 
 bool FrequencySynchronization::Nodes::Node::PtpData::has_data() const
 {
-    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spa_selection_point.len(); index++)
     {
         if(spa_selection_point[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    for (std::size_t index=0; index<node_selection_point.len(); index++)
     {
         if(node_selection_point[index]->has_data())
             return true;
@@ -11608,12 +13421,12 @@ bool FrequencySynchronization::Nodes::Node::PtpData::has_data() const
 
 bool FrequencySynchronization::Nodes::Node::PtpData::has_operation() const
 {
-    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    for (std::size_t index=0; index<spa_selection_point.len(); index++)
     {
         if(spa_selection_point[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    for (std::size_t index=0; index<node_selection_point.len(); index++)
     {
         if(node_selection_point[index]->has_operation())
             return true;
@@ -11663,7 +13476,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::PtpData::get_chil
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint>();
         c->parent = this;
-        spa_selection_point.push_back(c);
+        spa_selection_point.append(c);
         return c;
     }
 
@@ -11671,7 +13484,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::PtpData::get_chil
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint>();
         c->parent = this;
-        node_selection_point.push_back(c);
+        node_selection_point.append(c);
         return c;
     }
 
@@ -11688,7 +13501,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     }
 
     count = 0;
-    for (auto const & c : spa_selection_point)
+    for (auto c : spa_selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11697,7 +13510,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     }
 
     count = 0;
-    for (auto const & c : node_selection_point)
+    for (auto c : node_selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11781,7 +13594,7 @@ FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::Qual
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-effective-input"; yang_parent_name = "ptp-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-effective-input"; yang_parent_name = "ptp-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::~QualityLevelEffectiveInput()
@@ -11790,6 +13603,7 @@ FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::~Qua
 
 bool FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -11898,7 +13712,7 @@ FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::SpaSelectionP
     selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "spa-selection-point"; yang_parent_name = "ptp-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spa-selection-point"; yang_parent_name = "ptp-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::~SpaSelectionPoint()
@@ -11907,6 +13721,7 @@ FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::~SpaSelection
 
 bool FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_description.is_set;
 }
@@ -11989,7 +13804,7 @@ FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::NodeSelectio
     selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "node-selection-point"; yang_parent_name = "ptp-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-selection-point"; yang_parent_name = "ptp-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::~NodeSelectionPoint()
@@ -11998,6 +13813,7 @@ FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::~NodeSelecti
 
 bool FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_description.is_set;
 }
@@ -12090,7 +13906,7 @@ FrequencySynchronization::Nodes::Node::SsmSummary::SsmSummary()
     dn_us_received{YType::uint32, "dn-us-received"}
 {
 
-    yang_name = "ssm-summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SsmSummary::~SsmSummary()
@@ -12099,6 +13915,7 @@ FrequencySynchronization::Nodes::Node::SsmSummary::~SsmSummary()
 
 bool FrequencySynchronization::Nodes::Node::SsmSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return ethernet_sources.is_set
 	|| ethernet_sources_select.is_set
 	|| ethernet_sources_enabled.is_set
@@ -12306,9 +14123,11 @@ bool FrequencySynchronization::Nodes::Node::SsmSummary::has_leaf_or_child_of_nam
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockDatas()
+    :
+    clock_data(this, {"clock_type", "id"})
 {
 
-    yang_name = "clock-datas"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-datas"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::~ClockDatas()
@@ -12317,7 +14136,8 @@ FrequencySynchronization::Nodes::Node::ClockDatas::~ClockDatas()
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::has_data() const
 {
-    for (std::size_t index=0; index<clock_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clock_data.len(); index++)
     {
         if(clock_data[index]->has_data())
             return true;
@@ -12327,7 +14147,7 @@ bool FrequencySynchronization::Nodes::Node::ClockDatas::has_data() const
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::has_operation() const
 {
-    for (std::size_t index=0; index<clock_data.size(); index++)
+    for (std::size_t index=0; index<clock_data.len(); index++)
     {
         if(clock_data[index]->has_operation())
             return true;
@@ -12357,7 +14177,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::get_c
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData>();
         c->parent = this;
-        clock_data.push_back(c);
+        clock_data.append(c);
         return c;
     }
 
@@ -12369,7 +14189,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clock_data)
+    for (auto c : clock_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12398,7 +14218,7 @@ bool FrequencySynchronization::Nodes::Node::ClockDatas::has_leaf_or_child_of_nam
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::ClockData()
     :
     clock_type{YType::enumeration, "clock-type"},
-    port{YType::int32, "port"},
+    id{YType::uint32, "id"},
     state{YType::enumeration, "state"},
     down_reason{YType::str, "down-reason"},
     description{YType::str, "description"},
@@ -12417,14 +14237,16 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::ClockData()
     clock_type_xr{YType::enumeration, "clock-type-xr"},
     supports_frequency{YType::boolean, "supports-frequency"},
     supports_time_of_day{YType::boolean, "supports-time-of-day"}
-    	,
+        ,
     source(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source>())
-	,selected_source(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource>())
-	,quality_level_received(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived>())
-	,quality_level_damped(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped>())
-	,quality_level_effective_input(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput>())
-	,quality_level_effective_output(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput>())
-	,quality_level_selected_source(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource>())
+    , selected_source(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource>())
+    , quality_level_received(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived>())
+    , quality_level_damped(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped>())
+    , quality_level_effective_input(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput>())
+    , quality_level_effective_output(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput>())
+    , quality_level_selected_source(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource>())
+    , spa_selection_point(this, {})
+    , node_selection_point(this, {})
 {
     source->parent = this;
     selected_source->parent = this;
@@ -12434,7 +14256,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::ClockData()
     quality_level_effective_output->parent = this;
     quality_level_selected_source->parent = this;
 
-    yang_name = "clock-data"; yang_parent_name = "clock-datas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-data"; yang_parent_name = "clock-datas"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::~ClockData()
@@ -12443,18 +14265,19 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::~ClockData()
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::has_data() const
 {
-    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spa_selection_point.len(); index++)
     {
         if(spa_selection_point[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    for (std::size_t index=0; index<node_selection_point.len(); index++)
     {
         if(node_selection_point[index]->has_data())
             return true;
     }
     return clock_type.is_set
-	|| port.is_set
+	|| id.is_set
 	|| state.is_set
 	|| down_reason.is_set
 	|| description.is_set
@@ -12484,19 +14307,19 @@ bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::has_data() co
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::has_operation() const
 {
-    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    for (std::size_t index=0; index<spa_selection_point.len(); index++)
     {
         if(spa_selection_point[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    for (std::size_t index=0; index<node_selection_point.len(); index++)
     {
         if(node_selection_point[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
 	|| ydk::is_set(clock_type.yfilter)
-	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(id.yfilter)
 	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(down_reason.yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -12527,7 +14350,9 @@ bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::has_operation
 std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clock-data" <<"[clock-type='" <<clock_type <<"']" <<"[port='" <<port <<"']";
+    path_buffer << "clock-data";
+    ADD_KEY_TOKEN(clock_type, "clock-type");
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -12536,7 +14361,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (clock_type.is_set || is_set(clock_type.yfilter)) leaf_name_data.push_back(clock_type.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (down_reason.is_set || is_set(down_reason.yfilter)) leaf_name_data.push_back(down_reason.get_name_leafdata());
     if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
@@ -12629,7 +14454,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::Clock
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint>();
         c->parent = this;
-        spa_selection_point.push_back(c);
+        spa_selection_point.append(c);
         return c;
     }
 
@@ -12637,7 +14462,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::Clock
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint>();
         c->parent = this;
-        node_selection_point.push_back(c);
+        node_selection_point.append(c);
         return c;
     }
 
@@ -12684,7 +14509,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     }
 
     count = 0;
-    for (auto const & c : spa_selection_point)
+    for (auto c : spa_selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12693,7 +14518,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     }
 
     count = 0;
-    for (auto const & c : node_selection_point)
+    for (auto c : node_selection_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12712,11 +14537,11 @@ void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::set_value(con
         clock_type.value_namespace = name_space;
         clock_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
@@ -12834,9 +14659,9 @@ void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::set_filter(co
     {
         clock_type.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
     }
     if(value_path == "state")
     {
@@ -12914,7 +14739,7 @@ void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::set_filter(co
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "source" || name == "selected-source" || name == "quality-level-received" || name == "quality-level-damped" || name == "quality-level-effective-input" || name == "quality-level-effective-output" || name == "quality-level-selected-source" || name == "spa-selection-point" || name == "node-selection-point" || name == "clock-type" || name == "port" || name == "state" || name == "down-reason" || name == "description" || name == "priority" || name == "time-of-day-priority" || name == "ssm-support" || name == "ssm-enabled" || name == "loopback" || name == "selection-input" || name == "squelched" || name == "damping-state" || name == "damping-time" || name == "input-disabled" || name == "output-disabled" || name == "wait-to-restore-time" || name == "clock-type-xr" || name == "supports-frequency" || name == "supports-time-of-day")
+    if(name == "source" || name == "selected-source" || name == "quality-level-received" || name == "quality-level-damped" || name == "quality-level-effective-input" || name == "quality-level-effective-output" || name == "quality-level-selected-source" || name == "spa-selection-point" || name == "node-selection-point" || name == "clock-type" || name == "id" || name == "state" || name == "down-reason" || name == "description" || name == "priority" || name == "time-of-day-priority" || name == "ssm-support" || name == "ssm-enabled" || name == "loopback" || name == "selection-input" || name == "squelched" || name == "damping-state" || name == "damping-time" || name == "input-disabled" || name == "output-disabled" || name == "wait-to-restore-time" || name == "clock-type-xr" || name == "supports-frequency" || name == "supports-time-of-day")
         return true;
     return false;
 }
@@ -12928,12 +14753,14 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::Source()
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "source"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::~Source()
@@ -12942,6 +14769,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::~Source()
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -12949,7 +14777,8 @@ bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::has_d
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::has_operation() const
@@ -12962,7 +14791,8 @@ bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::has_o
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::get_segment_path() const
@@ -12999,6 +14829,15 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::Clock
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -13009,6 +14848,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -13094,7 +14938,7 @@ void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::set_f
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -13102,10 +14946,11 @@ bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::has_l
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::~ClockId()
@@ -13114,15 +14959,18 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::~
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::get_segment_path() const
@@ -13137,7 +14985,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -13163,11 +15012,17 @@ void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::Clock
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -13177,15 +15032,125 @@ void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::Clock
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -13199,12 +15164,14 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::Se
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "selected-source"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selected-source"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::~SelectedSource()
@@ -13213,6 +15180,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::~S
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -13220,7 +15188,8 @@ bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSourc
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::has_operation() const
@@ -13233,7 +15202,8 @@ bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSourc
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::get_segment_path() const
@@ -13270,6 +15240,15 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::Clock
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -13280,6 +15259,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -13365,7 +15349,7 @@ void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSourc
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -13373,10 +15357,11 @@ bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSourc
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::~ClockId()
@@ -13385,15 +15370,18 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::Cl
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::get_segment_path() const
@@ -13408,7 +15396,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -13434,11 +15423,17 @@ void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSourc
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -13448,15 +15443,125 @@ void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSourc
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -13469,7 +15574,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceiv
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-received"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-received"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::~QualityLevelReceived()
@@ -13478,6 +15583,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceiv
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -13588,7 +15694,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-damped"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-damped"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::~QualityLevelDamped()
@@ -13597,6 +15703,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -13707,7 +15814,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffect
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-effective-input"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-effective-input"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::~QualityLevelEffectiveInput()
@@ -13716,6 +15823,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffect
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -13826,7 +15934,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffect
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-effective-output"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-effective-output"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::~QualityLevelEffectiveOutput()
@@ -13835,6 +15943,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffect
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -13945,7 +16054,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelect
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-selected-source"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-selected-source"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::~QualityLevelSelectedSource()
@@ -13954,6 +16063,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelect
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -14062,7 +16172,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint:
     selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "spa-selection-point"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spa-selection-point"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::~SpaSelectionPoint()
@@ -14071,6 +16181,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint:
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_description.is_set;
 }
@@ -14153,7 +16264,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint
     selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "node-selection-point"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-selection-point"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::~NodeSelectionPoint()
@@ -14162,6 +16273,7 @@ FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint
 
 bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| selection_point_description.is_set;
 }
@@ -14239,9 +16351,11 @@ bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelection
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInputs()
+    :
+    selection_point_input(this, {})
 {
 
-    yang_name = "selection-point-inputs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point-inputs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::~SelectionPointInputs()
@@ -14250,7 +16364,8 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::~SelectionPointInpu
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::has_data() const
 {
-    for (std::size_t index=0; index<selection_point_input.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<selection_point_input.len(); index++)
     {
         if(selection_point_input[index]->has_data())
             return true;
@@ -14260,7 +16375,7 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::has_data() con
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::has_operation() const
 {
-    for (std::size_t index=0; index<selection_point_input.size(); index++)
+    for (std::size_t index=0; index<selection_point_input.len(); index++)
     {
         if(selection_point_input[index]->has_operation())
             return true;
@@ -14290,7 +16405,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInp
     {
         auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput>();
         c->parent = this;
-        selection_point_input.push_back(c);
+        selection_point_input.append(c);
         return c;
     }
 
@@ -14302,7 +16417,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : selection_point_input)
+    for (auto c : selection_point_input.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14330,14 +16445,14 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::has_leaf_or_ch
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::SelectionPointInput()
     :
-    selection_point{YType::int32, "selection-point"},
+    selection_point{YType::uint32, "selection-point"},
     stream_type{YType::enumeration, "stream-type"},
     source_type{YType::enumeration, "source-type"},
     interface{YType::str, "interface"},
-    clock_port{YType::int32, "clock-port"},
+    clock_port{YType::uint32, "clock-port"},
     last_node{YType::str, "last-node"},
-    last_selection_point{YType::int32, "last-selection-point"},
-    output_id{YType::int32, "output-id"},
+    last_selection_point{YType::uint32, "last-selection-point"},
+    output_id{YType::uint32, "output-id"},
     supports_frequency{YType::boolean, "supports-frequency"},
     supports_time_of_day{YType::boolean, "supports-time-of-day"},
     priority{YType::uint8, "priority"},
@@ -14346,18 +16461,18 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
     output_id_xr{YType::uint8, "output-id-xr"},
     platform_status{YType::enumeration, "platform-status"},
     platform_failed_reason{YType::str, "platform-failed-reason"}
-    	,
+        ,
     input_selection_point(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::InputSelectionPoint>())
-	,stream(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream>())
-	,original_source(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource>())
-	,quality_level(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::QualityLevel>())
+    , stream(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream>())
+    , original_source(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource>())
+    , quality_level(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::QualityLevel>())
 {
     input_selection_point->parent = this;
     stream->parent = this;
     original_source->parent = this;
     quality_level->parent = this;
 
-    yang_name = "selection-point-input"; yang_parent_name = "selection-point-inputs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point-input"; yang_parent_name = "selection-point-inputs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::~SelectionPointInput()
@@ -14366,6 +16481,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point.is_set
 	|| stream_type.is_set
 	|| source_type.is_set
@@ -14695,7 +16811,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
     node{YType::str, "node"}
 {
 
-    yang_name = "input-selection-point"; yang_parent_name = "selection-point-input"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-selection-point"; yang_parent_name = "selection-point-input"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::InputSelectionPoint::~InputSelectionPoint()
@@ -14704,6 +16820,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::InputSelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point_type.is_set
 	|| selection_point_description.is_set
 	|| node.is_set;
@@ -14796,14 +16913,14 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::Stream()
     :
     stream_input{YType::enumeration, "stream-input"}
-    	,
+        ,
     source_id(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId>())
-	,selection_point_id(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId>())
+    , selection_point_id(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId>())
 {
     source_id->parent = this;
     selection_point_id->parent = this;
 
-    yang_name = "stream"; yang_parent_name = "selection-point-input"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stream"; yang_parent_name = "selection-point-input"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::~Stream()
@@ -14812,6 +16929,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::has_data() const
 {
+    if (is_presence_container) return true;
     return stream_input.is_set
 	|| (source_id !=  nullptr && source_id->has_data())
 	|| (selection_point_id !=  nullptr && selection_point_id->has_data());
@@ -14916,12 +17034,14 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "source-id"; yang_parent_name = "stream"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-id"; yang_parent_name = "stream"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::~SourceId()
@@ -14930,6 +17050,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -14937,7 +17058,8 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::has_operation() const
@@ -14950,7 +17072,8 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::get_segment_path() const
@@ -14987,6 +17110,15 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInp
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -14997,6 +17129,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -15082,7 +17219,7 @@ void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -15090,10 +17227,11 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "source-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "source-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::ClockId::~ClockId()
@@ -15102,15 +17240,18 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::ClockId::get_segment_path() const
@@ -15125,7 +17266,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15151,11 +17293,17 @@ void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -15165,15 +17313,125 @@ void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "source-id"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -15181,12 +17439,12 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::SelectionPointId()
     :
     output_id{YType::uint8, "output-id"}
-    	,
+        ,
     selection_point(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::SelectionPoint>())
 {
     selection_point->parent = this;
 
-    yang_name = "selection-point-id"; yang_parent_name = "stream"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point-id"; yang_parent_name = "stream"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::~SelectionPointId()
@@ -15195,6 +17453,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::has_data() const
 {
+    if (is_presence_container) return true;
     return output_id.is_set
 	|| (selection_point !=  nullptr && selection_point->has_data());
 }
@@ -15281,7 +17540,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
     node{YType::str, "node"}
 {
 
-    yang_name = "selection-point"; yang_parent_name = "selection-point-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point"; yang_parent_name = "selection-point-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::SelectionPoint::~SelectionPoint()
@@ -15290,6 +17549,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::SelectionPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return selection_point_type.is_set
 	|| selection_point_description.is_set
 	|| node.is_set;
@@ -15388,12 +17648,14 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
     ptp_node{YType::str, "ptp-node"},
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
-    	,
+        ,
     clock_id(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::ClockId>())
+    , gnss_receiver_id(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId>())
 {
     clock_id->parent = this;
+    gnss_receiver_id->parent = this;
 
-    yang_name = "original-source"; yang_parent_name = "selection-point-input"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "original-source"; yang_parent_name = "selection-point-input"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::~OriginalSource()
@@ -15402,6 +17664,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::has_data() const
 {
+    if (is_presence_container) return true;
     return source_class.is_set
 	|| ethernet_interface.is_set
 	|| sonet_interface.is_set
@@ -15409,7 +17672,8 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
 	|| ptp_node.is_set
 	|| satellite_access_interface.is_set
 	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+	|| (clock_id !=  nullptr && clock_id->has_data())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_data());
 }
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::has_operation() const
@@ -15422,7 +17686,8 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
 	|| ydk::is_set(ptp_node.yfilter)
 	|| ydk::is_set(satellite_access_interface.yfilter)
 	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| (clock_id !=  nullptr && clock_id->has_operation())
+	|| (gnss_receiver_id !=  nullptr && gnss_receiver_id->has_operation());
 }
 
 std::string FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::get_segment_path() const
@@ -15459,6 +17724,15 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInp
         return clock_id;
     }
 
+    if(child_yang_name == "gnss-receiver-id")
+    {
+        if(gnss_receiver_id == nullptr)
+        {
+            gnss_receiver_id = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId>();
+        }
+        return gnss_receiver_id;
+    }
+
     return nullptr;
 }
 
@@ -15469,6 +17743,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     if(clock_id != nullptr)
     {
         children["clock-id"] = clock_id;
+    }
+
+    if(gnss_receiver_id != nullptr)
+    {
+        children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
     return children;
@@ -15554,7 +17833,7 @@ void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "clock-id" || name == "gnss-receiver-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
@@ -15562,10 +17841,11 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::ClockId::ClockId()
     :
     node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "original-source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-id"; yang_parent_name = "original-source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::ClockId::~ClockId()
@@ -15574,15 +17854,18 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::ClockId::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
-	|| port.is_set;
+	|| id.is_set
+	|| clock_name.is_set;
 }
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
 }
 
 std::string FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::ClockId::get_segment_path() const
@@ -15597,7 +17880,8 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15623,11 +17907,17 @@ void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
         node.value_namespace = name_space;
         node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -15637,15 +17927,125 @@ void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
     {
         node.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "id")
     {
-        port.yfilter = yfilter;
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
     }
 }
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "node" || name == "id" || name == "clock-name")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::GnssReceiverId()
+    :
+    node{YType::str, "node"},
+    id{YType::uint32, "id"},
+    clock_name{YType::str, "clock-name"}
+{
+
+    yang_name = "gnss-receiver-id"; yang_parent_name = "original-source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::~GnssReceiverId()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| id.is_set
+	|| clock_name.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(clock_name.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gnss-receiver-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (clock_name.is_set || is_set(clock_name.yfilter)) leaf_name_data.push_back(clock_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name = value;
+        clock_name.value_namespace = name_space;
+        clock_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "clock-name")
+    {
+        clock_name.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "id" || name == "clock-name")
         return true;
     return false;
 }
@@ -15658,7 +18058,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level"; yang_parent_name = "selection-point-input"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level"; yang_parent_name = "selection-point-input"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::QualityLevel::~QualityLevel()
@@ -15667,6 +18067,7 @@ FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput
 
 bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::QualityLevel::has_data() const
 {
+    if (is_presence_container) return true;
     return quality_level_option.is_set
 	|| option1_value.is_set
 	|| option2_generation1_value.is_set
@@ -15769,16 +18170,10 @@ bool FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPoint
     return false;
 }
 
-const Enum::YLeaf FsyncStream::local {1, "local"};
-const Enum::YLeaf FsyncStream::selection_point {2, "selection-point"};
-
-const Enum::YLeaf FsyncSource::ethernet {1, "ethernet"};
-const Enum::YLeaf FsyncSource::sonet {2, "sonet"};
-const Enum::YLeaf FsyncSource::clock_ {3, "clock"};
-const Enum::YLeaf FsyncSource::internal {4, "internal"};
-const Enum::YLeaf FsyncSource::ptp {5, "ptp"};
-const Enum::YLeaf FsyncSource::satellite_access {6, "satellite-access"};
-const Enum::YLeaf FsyncSource::ntp {7, "ntp"};
+const Enum::YLeaf FsyncBagDampingState::damping_state_down {0, "damping-state-down"};
+const Enum::YLeaf FsyncBagDampingState::damping_state_coming_up {1, "damping-state-coming-up"};
+const Enum::YLeaf FsyncBagDampingState::damping_state_up {2, "damping-state-up"};
+const Enum::YLeaf FsyncBagDampingState::damping_state_going_down {3, "damping-state-going-down"};
 
 const Enum::YLeaf FsyncBagStreamState::stream_invalid {0, "stream-invalid"};
 const Enum::YLeaf FsyncBagStreamState::stream_unqualified {1, "stream-unqualified"};
@@ -15791,73 +18186,10 @@ const Enum::YLeaf FsyncBagStreamState::stream_failed {7, "stream-failed"};
 const Enum::YLeaf FsyncBagStreamState::stream_unmonitored {8, "stream-unmonitored"};
 const Enum::YLeaf FsyncBagStreamState::stream_error {9, "stream-error"};
 
-const Enum::YLeaf FsyncBagStreamInput::invalid_input {0, "invalid-input"};
-const Enum::YLeaf FsyncBagStreamInput::source_input {1, "source-input"};
-const Enum::YLeaf FsyncBagStreamInput::selection_point_input {2, "selection-point-input"};
-
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitst1 {0, "clock-class-bitst1"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitse1 {1, "clock-class-bitse1"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bits2m {2, "clock-class-bits2m"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bits6m {3, "clock-class-bits6m"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bits64k {4, "clock-class-bits64k"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_dti {5, "clock-class-dti"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_gps {6, "clock-class-gps"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_chassis_sync {7, "clock-class-chassis-sync"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitsj1 {8, "clock-class-bitsj1"};
-const Enum::YLeaf FsyncBagClockIntfClass::clock_class_unknown {255, "clock-class-unknown"};
-
-const Enum::YLeaf FsyncBagSourceState::source_state_unknown {0, "source-state-unknown"};
-const Enum::YLeaf FsyncBagSourceState::source_state_up {1, "source-state-up"};
-const Enum::YLeaf FsyncBagSourceState::source_state_down {2, "source-state-down"};
-
 const Enum::YLeaf FsyncBagEsmcPeerState::peer_down {1808240398, "peer-down"};
 const Enum::YLeaf FsyncBagEsmcPeerState::peer_up {1808240399, "peer-up"};
 const Enum::YLeaf FsyncBagEsmcPeerState::peer_timed_out {1808240400, "peer-timed-out"};
 const Enum::YLeaf FsyncBagEsmcPeerState::peer_unknown {1808240401, "peer-unknown"};
-
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_invalid {0, "option2-generation2-invalid"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_do_not_use {1, "option2-generation2-do-not-use"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_failed {2, "option2-generation2-failed"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_none {3, "option2-generation2-none"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2prs {30, "option2-generation2prs"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2stu {31, "option2-generation2stu"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum2 {32, "option2-generation2-stratum2"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum3 {33, "option2-generation2-stratum3"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2tnc {34, "option2-generation2tnc"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum3e {35, "option2-generation2-stratum3e"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2smc {36, "option2-generation2smc"};
-const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum4 {37, "option2-generation2-stratum4"};
-
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_invalid {0, "option2-generation1-invalid"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_do_not_use {1, "option2-generation1-do-not-use"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_failed {2, "option2-generation1-failed"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_none {3, "option2-generation1-none"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1prs {20, "option2-generation1prs"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1stu {21, "option2-generation1stu"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_stratum2 {22, "option2-generation1-stratum2"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_stratum3 {23, "option2-generation1-stratum3"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1smc {24, "option2-generation1smc"};
-const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_stratum4 {25, "option2-generation1-stratum4"};
-
-const Enum::YLeaf FsyncBagQlO1Value::option1_invalid {0, "option1-invalid"};
-const Enum::YLeaf FsyncBagQlO1Value::option1_do_not_use {1, "option1-do-not-use"};
-const Enum::YLeaf FsyncBagQlO1Value::option1_failed {2, "option1-failed"};
-const Enum::YLeaf FsyncBagQlO1Value::option1_none {3, "option1-none"};
-const Enum::YLeaf FsyncBagQlO1Value::option1prc {10, "option1prc"};
-const Enum::YLeaf FsyncBagQlO1Value::option1ssu_a {11, "option1ssu-a"};
-const Enum::YLeaf FsyncBagQlO1Value::option1ssu_b {12, "option1ssu-b"};
-const Enum::YLeaf FsyncBagQlO1Value::option1sec {13, "option1sec"};
-
-const Enum::YLeaf FsyncBagQlOption::no_quality_level_option {0, "no-quality-level-option"};
-const Enum::YLeaf FsyncBagQlOption::option1 {1, "option1"};
-const Enum::YLeaf FsyncBagQlOption::option2_generation1 {2, "option2-generation1"};
-const Enum::YLeaf FsyncBagQlOption::option2_generation2 {3, "option2-generation2"};
-const Enum::YLeaf FsyncBagQlOption::invalid_quality_level_option {4, "invalid-quality-level-option"};
-
-const Enum::YLeaf FsyncBagDampingState::damping_state_down {0, "damping-state-down"};
-const Enum::YLeaf FsyncBagDampingState::damping_state_coming_up {1, "damping-state-coming-up"};
-const Enum::YLeaf FsyncBagDampingState::damping_state_up {2, "damping-state-up"};
-const Enum::YLeaf FsyncBagDampingState::damping_state_going_down {3, "damping-state-going-down"};
 
 const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
 const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
@@ -15879,8 +18211,55 @@ const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-opera
 const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
 const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
 
-const Enum::YLeaf FsyncBagForwardtraceNode::forward_trace_node_selection_point {0, "forward-trace-node-selection-point"};
-const Enum::YLeaf FsyncBagForwardtraceNode::forward_trace_node_source {1, "forward-trace-node-source"};
+const Enum::YLeaf FsyncBagStreamInput::invalid_input {0, "invalid-input"};
+const Enum::YLeaf FsyncBagStreamInput::source_input {1, "source-input"};
+const Enum::YLeaf FsyncBagStreamInput::selection_point_input {2, "selection-point-input"};
+
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_invalid {0, "option2-generation2-invalid"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_do_not_use {1, "option2-generation2-do-not-use"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_failed {2, "option2-generation2-failed"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_none {3, "option2-generation2-none"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2prs {30, "option2-generation2prs"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2stu {31, "option2-generation2stu"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum2 {32, "option2-generation2-stratum2"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum3 {33, "option2-generation2-stratum3"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2tnc {34, "option2-generation2tnc"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum3e {35, "option2-generation2-stratum3e"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2smc {36, "option2-generation2smc"};
+const Enum::YLeaf FsyncBagQlO2G2Value::option2_generation2_stratum4 {37, "option2-generation2-stratum4"};
+
+const Enum::YLeaf FsyncBagQlOption::no_quality_level_option {0, "no-quality-level-option"};
+const Enum::YLeaf FsyncBagQlOption::option1 {1, "option1"};
+const Enum::YLeaf FsyncBagQlOption::option2_generation1 {2, "option2-generation1"};
+const Enum::YLeaf FsyncBagQlOption::option2_generation2 {3, "option2-generation2"};
+const Enum::YLeaf FsyncBagQlOption::invalid_quality_level_option {4, "invalid-quality-level-option"};
+
+const Enum::YLeaf FsyncBagSourceState::source_state_unknown {0, "source-state-unknown"};
+const Enum::YLeaf FsyncBagSourceState::source_state_up {1, "source-state-up"};
+const Enum::YLeaf FsyncBagSourceState::source_state_down {2, "source-state-down"};
+
+const Enum::YLeaf FsyncStream::local {1, "local"};
+const Enum::YLeaf FsyncStream::selection_point {2, "selection-point"};
+
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitst1 {0, "clock-class-bitst1"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitse1 {1, "clock-class-bitse1"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bits2m {2, "clock-class-bits2m"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bits6m {3, "clock-class-bits6m"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bits64k {4, "clock-class-bits64k"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_dti {5, "clock-class-dti"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_gps {6, "clock-class-gps"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_chassis_sync {7, "clock-class-chassis-sync"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitsj1 {8, "clock-class-bitsj1"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_unknown {255, "clock-class-unknown"};
+
+const Enum::YLeaf FsyncBagQlO1Value::option1_invalid {0, "option1-invalid"};
+const Enum::YLeaf FsyncBagQlO1Value::option1_do_not_use {1, "option1-do-not-use"};
+const Enum::YLeaf FsyncBagQlO1Value::option1_failed {2, "option1-failed"};
+const Enum::YLeaf FsyncBagQlO1Value::option1_none {3, "option1-none"};
+const Enum::YLeaf FsyncBagQlO1Value::option1prc {10, "option1prc"};
+const Enum::YLeaf FsyncBagQlO1Value::option1ssu_a {11, "option1ssu-a"};
+const Enum::YLeaf FsyncBagQlO1Value::option1ssu_b {12, "option1ssu-b"};
+const Enum::YLeaf FsyncBagQlO1Value::option1sec {13, "option1sec"};
 
 const Enum::YLeaf FsyncBagSourceClass::invalid_source {0, "invalid-source"};
 const Enum::YLeaf FsyncBagSourceClass::ethernet_interface_source {1, "ethernet-interface-source"};
@@ -15890,6 +18269,29 @@ const Enum::YLeaf FsyncBagSourceClass::internal_clock_source {4, "internal-clock
 const Enum::YLeaf FsyncBagSourceClass::ptp_source {5, "ptp-source"};
 const Enum::YLeaf FsyncBagSourceClass::satellite_access_interface_source {6, "satellite-access-interface-source"};
 const Enum::YLeaf FsyncBagSourceClass::ntp_source {7, "ntp-source"};
+const Enum::YLeaf FsyncBagSourceClass::gnss_receiver {8, "gnss-receiver"};
+
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_invalid {0, "option2-generation1-invalid"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_do_not_use {1, "option2-generation1-do-not-use"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_failed {2, "option2-generation1-failed"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_none {3, "option2-generation1-none"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1prs {20, "option2-generation1prs"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1stu {21, "option2-generation1stu"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_stratum2 {22, "option2-generation1-stratum2"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_stratum3 {23, "option2-generation1-stratum3"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1smc {24, "option2-generation1smc"};
+const Enum::YLeaf FsyncBagQlO2G1Value::option2_generation1_stratum4 {25, "option2-generation1-stratum4"};
+
+const Enum::YLeaf FsyncBagForwardtraceNode::forward_trace_node_selection_point {0, "forward-trace-node-selection-point"};
+const Enum::YLeaf FsyncBagForwardtraceNode::forward_trace_node_source {1, "forward-trace-node-source"};
+
+const Enum::YLeaf FsyncSource::ethernet {1, "ethernet"};
+const Enum::YLeaf FsyncSource::sonet {2, "sonet"};
+const Enum::YLeaf FsyncSource::clock_ {3, "clock"};
+const Enum::YLeaf FsyncSource::internal {4, "internal"};
+const Enum::YLeaf FsyncSource::ptp {5, "ptp"};
+const Enum::YLeaf FsyncSource::satellite_access {6, "satellite-access"};
+const Enum::YLeaf FsyncSource::ntp {7, "ntp"};
 
 
 }

@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_aaa_oper {
 
 AaaData::AaaData()
+    :
+    aaa_users(this, {"username"})
 {
 
-    yang_name = "aaa-data"; yang_parent_name = "Cisco-IOS-XE-aaa-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "aaa-data"; yang_parent_name = "Cisco-IOS-XE-aaa-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 AaaData::~AaaData()
@@ -23,7 +25,8 @@ AaaData::~AaaData()
 
 bool AaaData::has_data() const
 {
-    for (std::size_t index=0; index<aaa_users.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<aaa_users.len(); index++)
     {
         if(aaa_users[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool AaaData::has_data() const
 
 bool AaaData::has_operation() const
 {
-    for (std::size_t index=0; index<aaa_users.size(); index++)
+    for (std::size_t index=0; index<aaa_users.len(); index++)
     {
         if(aaa_users[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> AaaData::get_child_by_name(const std::string & child_yan
     {
         auto c = std::make_shared<AaaData::AaaUsers>();
         c->parent = this;
-        aaa_users.push_back(c);
+        aaa_users.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> AaaData::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : aaa_users)
+    for (auto c : aaa_users.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool AaaData::has_leaf_or_child_of_name(const std::string & name) const
 AaaData::AaaUsers::AaaUsers()
     :
     username{YType::str, "username"}
+        ,
+    aaa_sessions(this, {"aaa_uid"})
 {
 
-    yang_name = "aaa-users"; yang_parent_name = "aaa-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aaa-users"; yang_parent_name = "aaa-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AaaData::AaaUsers::~AaaUsers()
@@ -140,7 +145,8 @@ AaaData::AaaUsers::~AaaUsers()
 
 bool AaaData::AaaUsers::has_data() const
 {
-    for (std::size_t index=0; index<aaa_sessions.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<aaa_sessions.len(); index++)
     {
         if(aaa_sessions[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool AaaData::AaaUsers::has_data() const
 
 bool AaaData::AaaUsers::has_operation() const
 {
-    for (std::size_t index=0; index<aaa_sessions.size(); index++)
+    for (std::size_t index=0; index<aaa_sessions.len(); index++)
     {
         if(aaa_sessions[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string AaaData::AaaUsers::get_absolute_path() const
 std::string AaaData::AaaUsers::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "aaa-users" <<"[username='" <<username <<"']";
+    path_buffer << "aaa-users";
+    ADD_KEY_TOKEN(username, "username");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> AaaData::AaaUsers::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<AaaData::AaaUsers::AaaSessions>();
         c->parent = this;
-        aaa_sessions.push_back(c);
+        aaa_sessions.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> AaaData::AaaUsers::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : aaa_sessions)
+    for (auto c : aaa_sessions.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -246,7 +253,7 @@ AaaData::AaaUsers::AaaSessions::AaaSessions()
     login_time{YType::str, "login-time"}
 {
 
-    yang_name = "aaa-sessions"; yang_parent_name = "aaa-users"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aaa-sessions"; yang_parent_name = "aaa-users"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AaaData::AaaUsers::AaaSessions::~AaaSessions()
@@ -255,6 +262,7 @@ AaaData::AaaUsers::AaaSessions::~AaaSessions()
 
 bool AaaData::AaaUsers::AaaSessions::has_data() const
 {
+    if (is_presence_container) return true;
     return aaa_uid.is_set
 	|| session_id.is_set
 	|| ip_addr.is_set
@@ -275,7 +283,8 @@ bool AaaData::AaaUsers::AaaSessions::has_operation() const
 std::string AaaData::AaaUsers::AaaSessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "aaa-sessions" <<"[aaa-uid='" <<aaa_uid <<"']";
+    path_buffer << "aaa-sessions";
+    ADD_KEY_TOKEN(aaa_uid, "aaa-uid");
     return path_buffer.str();
 }
 

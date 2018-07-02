@@ -12,24 +12,6 @@
 namespace cisco_ios_xe {
 namespace cisco_routing_ext {
 
-class Rip : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
-{
-    public:
-        Rip();
-        ~Rip();
-
-
-}; // Rip
-
-class IsIs : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
-{
-    public:
-        IsIs();
-        ~IsIs();
-
-
-}; // IsIs
-
 class Bgp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
@@ -38,6 +20,15 @@ class Bgp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 
 }; // Bgp
+
+class Mobile : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
+{
+    public:
+        Mobile();
+        ~Mobile();
+
+
+}; // Mobile
 
 class Eigrp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
@@ -48,14 +39,23 @@ class Eigrp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 }; // Eigrp
 
-class Mobile : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
+class IsIs : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        Mobile();
-        ~Mobile();
+        IsIs();
+        ~IsIs();
 
 
-}; // Mobile
+}; // IsIs
+
+class Rip : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
+{
+    public:
+        Rip();
+        ~Rip();
+
+
+}; // Rip
 
 
 }

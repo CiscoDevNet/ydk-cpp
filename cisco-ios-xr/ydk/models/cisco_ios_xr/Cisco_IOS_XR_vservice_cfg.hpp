@@ -89,7 +89,7 @@ class Vservice::ServiceFunctionLocator::Names : public ydk::Entity
 
         class Name; //type: Vservice::ServiceFunctionLocator::Names::Name
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionLocator::Names::Name> > name;
+        ydk::YList name;
         
 }; // Vservice::ServiceFunctionLocator::Names
 
@@ -163,7 +163,7 @@ class Vservice::MetadataDispositions : public ydk::Entity
 
         class MetadataDisposition; //type: Vservice::MetadataDispositions::MetadataDisposition
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::MetadataDispositions::MetadataDisposition> > metadata_disposition;
+        ydk::YList metadata_disposition;
         
 }; // Vservice::MetadataDispositions
 
@@ -189,7 +189,7 @@ class Vservice::MetadataDispositions::MetadataDisposition : public ydk::Entity
         ydk::YLeaf format; //type: SfcMetadataType1AllocFormat
         class MatchEntry; //type: Vservice::MetadataDispositions::MetadataDisposition::MatchEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::MetadataDispositions::MetadataDisposition::MatchEntry> > match_entry;
+        ydk::YList match_entry;
         
 }; // Vservice::MetadataDispositions::MetadataDisposition
 
@@ -286,7 +286,7 @@ class Vservice::ServiceFunctionForwardLocator::Names : public ydk::Entity
 
         class Name; //type: Vservice::ServiceFunctionForwardLocator::Names::Name
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionForwardLocator::Names::Name> > name;
+        ydk::YList name;
         
 }; // Vservice::ServiceFunctionForwardLocator::Names
 
@@ -360,7 +360,7 @@ class Vservice::MetadataTemplates : public ydk::Entity
 
         class MetadataTemplate; //type: Vservice::MetadataTemplates::MetadataTemplate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::MetadataTemplates::MetadataTemplate> > metadata_template;
+        ydk::YList metadata_template;
         
 }; // Vservice::MetadataTemplates
 
@@ -433,7 +433,7 @@ class Vservice::ServiceFunctionPath::Paths : public ydk::Entity
 
         class Path; //type: Vservice::ServiceFunctionPath::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path> > path;
+        ydk::YList path;
         
 }; // Vservice::ServiceFunctionPath::Paths
 
@@ -458,7 +458,7 @@ class Vservice::ServiceFunctionPath::Paths::Path : public ydk::Entity
         ydk::YLeaf path_id; //type: uint32
         class ServiceIndex; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex> > service_index;
+        ydk::YList service_index;
         
 }; // Vservice::ServiceFunctionPath::Paths::Path
 
@@ -556,7 +556,7 @@ class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames : publi
 
         class SffName; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName> > sff_name;
+        ydk::YList sff_name;
         
 }; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames
 
@@ -625,7 +625,7 @@ class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames : public
 
         class SfName; //type: Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_vservice_cfg::Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName> > sf_name;
+        ydk::YList sf_name;
         
 }; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames
 
@@ -675,13 +675,6 @@ class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName:
 
 }; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node
 
-class SfcMetadataType1AllocFormat : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf dc_allocation;
-
-};
-
 class SfcSfTransport : public ydk::Enum
 {
     public:
@@ -696,17 +689,24 @@ class SfcMetadataDispositionMatch : public ydk::Enum
 
 };
 
-class SfcMetadataDispositionAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf redirect_nexthop;
-
-};
-
 class SfcMetadataAlloc : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf type1;
+
+};
+
+class SfcMetadataType1AllocFormat : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dc_allocation;
+
+};
+
+class SfcMetadataDispositionAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf redirect_nexthop;
 
 };
 

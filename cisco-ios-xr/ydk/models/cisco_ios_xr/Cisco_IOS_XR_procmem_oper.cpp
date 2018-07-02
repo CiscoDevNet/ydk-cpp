@@ -17,7 +17,7 @@ ProcessesMemory::ProcessesMemory()
 {
     nodes->parent = this;
 
-    yang_name = "processes-memory"; yang_parent_name = "Cisco-IOS-XR-procmem-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "processes-memory"; yang_parent_name = "Cisco-IOS-XR-procmem-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ProcessesMemory::~ProcessesMemory()
@@ -26,6 +26,7 @@ ProcessesMemory::~ProcessesMemory()
 
 bool ProcessesMemory::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool ProcessesMemory::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 ProcessesMemory::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "processes-memory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "processes-memory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ProcessesMemory::Nodes::~Nodes()
@@ -129,7 +132,8 @@ ProcessesMemory::Nodes::~Nodes()
 
 bool ProcessesMemory::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool ProcessesMemory::Nodes::has_data() const
 
 bool ProcessesMemory::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::get_child_by_name(const std::str
     {
         auto c = std::make_shared<ProcessesMemory::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool ProcessesMemory::Nodes::has_leaf_or_child_of_name(const std::string & name)
 ProcessesMemory::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     process_ids(std::make_shared<ProcessesMemory::Nodes::Node::ProcessIds>())
 {
     process_ids->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ProcessesMemory::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ ProcessesMemory::Nodes::Node::~Node()
 
 bool ProcessesMemory::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (process_ids !=  nullptr && process_ids->has_data());
 }
@@ -252,7 +257,8 @@ std::string ProcessesMemory::Nodes::Node::get_absolute_path() const
 std::string ProcessesMemory::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -318,9 +324,11 @@ bool ProcessesMemory::Nodes::Node::has_leaf_or_child_of_name(const std::string &
 }
 
 ProcessesMemory::Nodes::Node::ProcessIds::ProcessIds()
+    :
+    process_id(this, {"process_id"})
 {
 
-    yang_name = "process-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "process-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ProcessesMemory::Nodes::Node::ProcessIds::~ProcessIds()
@@ -329,7 +337,8 @@ ProcessesMemory::Nodes::Node::ProcessIds::~ProcessIds()
 
 bool ProcessesMemory::Nodes::Node::ProcessIds::has_data() const
 {
-    for (std::size_t index=0; index<process_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process_id.len(); index++)
     {
         if(process_id[index]->has_data())
             return true;
@@ -339,7 +348,7 @@ bool ProcessesMemory::Nodes::Node::ProcessIds::has_data() const
 
 bool ProcessesMemory::Nodes::Node::ProcessIds::has_operation() const
 {
-    for (std::size_t index=0; index<process_id.size(); index++)
+    for (std::size_t index=0; index<process_id.len(); index++)
     {
         if(process_id[index]->has_operation())
             return true;
@@ -369,7 +378,7 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::ProcessIds::get_child_by_n
     {
         auto c = std::make_shared<ProcessesMemory::Nodes::Node::ProcessIds::ProcessId>();
         c->parent = this;
-        process_id.push_back(c);
+        process_id.append(c);
         return c;
     }
 
@@ -381,7 +390,7 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::Pro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process_id)
+    for (auto c : process_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -409,7 +418,7 @@ bool ProcessesMemory::Nodes::Node::ProcessIds::has_leaf_or_child_of_name(const s
 
 ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::ProcessId()
     :
-    process_id{YType::int32, "process-id"},
+    process_id{YType::uint32, "process-id"},
     name{YType::str, "name"},
     jid{YType::uint32, "jid"},
     pid{YType::uint32, "pid"},
@@ -422,7 +431,7 @@ ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::ProcessId()
     physical_mem{YType::uint32, "physical-mem"}
 {
 
-    yang_name = "process-id"; yang_parent_name = "process-ids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "process-id"; yang_parent_name = "process-ids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::~ProcessId()
@@ -431,6 +440,7 @@ ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::~ProcessId()
 
 bool ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::has_data() const
 {
+    if (is_presence_container) return true;
     return process_id.is_set
 	|| name.is_set
 	|| jid.is_set
@@ -463,7 +473,8 @@ bool ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::has_operation() const
 std::string ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "process-id" <<"[process-id='" <<process_id <<"']";
+    path_buffer << "process-id";
+    ADD_KEY_TOKEN(process_id, "process-id");
     return path_buffer.str();
 }
 

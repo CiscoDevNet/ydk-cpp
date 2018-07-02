@@ -134,7 +134,7 @@ class Clear::Controller::Switch::Oper::Fdb : public ydk::Entity
 
         class Location; //type: Clear::Controller::Switch::Oper::Fdb::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear_asr9k::Clear::Controller::Switch::Oper::Fdb::Location> > location;
+        ydk::YList location;
         
 }; // Clear::Controller::Switch::Oper::Fdb
 
@@ -182,7 +182,7 @@ class Clear::Controller::Switch::Oper::Statistics : public ydk::Entity
 
         class Location; //type: Clear::Controller::Switch::Oper::Statistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear_asr9k::Clear::Controller::Switch::Oper::Statistics::Location> > location;
+        ydk::YList location;
         
 }; // Clear::Controller::Switch::Oper::Statistics
 
@@ -254,7 +254,7 @@ class Clear::Plugin::Slot : public ydk::Entity
 
         class Location; //type: Clear::Plugin::Slot::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear_asr9k::Clear::Plugin::Slot::Location> > location;
+        ydk::YList location;
         
 }; // Clear::Plugin::Slot
 

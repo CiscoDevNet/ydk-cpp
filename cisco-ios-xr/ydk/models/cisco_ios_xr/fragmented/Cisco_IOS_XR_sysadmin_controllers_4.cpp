@@ -13,2669 +13,12 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_controllers {
 
-Controller::Zen::ZenOper::ZenLocation::ZenLocation()
-    :
-    zen_location{YType::str, "zen_location"},
-    zen_pci_base_address{YType::str, "zen_pci_base_address"},
-    zen_pci_dev_vendor_id{YType::str, "zen_pci_dev_vendor_id"},
-    zen_pci_dev_device_id{YType::str, "zen_pci_dev_device_id"},
-    zen_hp_desc{YType::str, "zen_hp_desc"},
-    zen_handle{YType::str, "zen_handle"},
-    zen_msi{YType::uint32, "zen_msi"},
-    zen_irq{YType::str, "zen_irq"},
-    zen_regs{YType::str, "zen_regs"},
-    zen_trace{YType::str, "zen_trace"},
-    zen_levm{YType::str, "zen_levm"},
-    zen_sensor_poll_timer_tree{YType::str, "zen_sensor_poll_timer_tree"},
-    zen_sensor_poll_timer{YType::str, "zen_sensor_poll_timer"},
-    zen_sensor_data{YType::str, "zen_sensor_data"},
-    zen_sim{YType::boolean, "zen_sim"},
-    zen_debug{YType::boolean, "zen_debug"},
-    zen_card_type{YType::uint32, "zen_card_type"},
-    zen_slot_num{YType::uint32, "zen_slot_num"},
-    zen_pm_hdl{YType::str, "zen_pm_hdl"},
-    zen_hdl{YType::str, "zen_hdl"},
-    zen_ccc_hdl{YType::str, "zen_ccc_hdl"},
-    zen_platform_local_hdl{YType::str, "zen_platform_local_hdl"},
-    zen_cdui_srvr_hdl{YType::str, "zen_cdui_srvr_hdl"}
-    	,
-    zen_temp_sensor_default(std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault>())
-	,zen_volt_sensor_default(std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault>())
-	,zen_curr_sensor_default(std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault>())
-{
-    zen_temp_sensor_default->parent = this;
-    zen_volt_sensor_default->parent = this;
-    zen_curr_sensor_default->parent = this;
-
-    yang_name = "zen_location"; yang_parent_name = "zen_oper"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Controller::Zen::ZenOper::ZenLocation::~ZenLocation()
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::has_data() const
-{
-    return zen_location.is_set
-	|| zen_pci_base_address.is_set
-	|| zen_pci_dev_vendor_id.is_set
-	|| zen_pci_dev_device_id.is_set
-	|| zen_hp_desc.is_set
-	|| zen_handle.is_set
-	|| zen_msi.is_set
-	|| zen_irq.is_set
-	|| zen_regs.is_set
-	|| zen_trace.is_set
-	|| zen_levm.is_set
-	|| zen_sensor_poll_timer_tree.is_set
-	|| zen_sensor_poll_timer.is_set
-	|| zen_sensor_data.is_set
-	|| zen_sim.is_set
-	|| zen_debug.is_set
-	|| zen_card_type.is_set
-	|| zen_slot_num.is_set
-	|| zen_pm_hdl.is_set
-	|| zen_hdl.is_set
-	|| zen_ccc_hdl.is_set
-	|| zen_platform_local_hdl.is_set
-	|| zen_cdui_srvr_hdl.is_set
-	|| (zen_temp_sensor_default !=  nullptr && zen_temp_sensor_default->has_data())
-	|| (zen_volt_sensor_default !=  nullptr && zen_volt_sensor_default->has_data())
-	|| (zen_curr_sensor_default !=  nullptr && zen_curr_sensor_default->has_data());
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(zen_location.yfilter)
-	|| ydk::is_set(zen_pci_base_address.yfilter)
-	|| ydk::is_set(zen_pci_dev_vendor_id.yfilter)
-	|| ydk::is_set(zen_pci_dev_device_id.yfilter)
-	|| ydk::is_set(zen_hp_desc.yfilter)
-	|| ydk::is_set(zen_handle.yfilter)
-	|| ydk::is_set(zen_msi.yfilter)
-	|| ydk::is_set(zen_irq.yfilter)
-	|| ydk::is_set(zen_regs.yfilter)
-	|| ydk::is_set(zen_trace.yfilter)
-	|| ydk::is_set(zen_levm.yfilter)
-	|| ydk::is_set(zen_sensor_poll_timer_tree.yfilter)
-	|| ydk::is_set(zen_sensor_poll_timer.yfilter)
-	|| ydk::is_set(zen_sensor_data.yfilter)
-	|| ydk::is_set(zen_sim.yfilter)
-	|| ydk::is_set(zen_debug.yfilter)
-	|| ydk::is_set(zen_card_type.yfilter)
-	|| ydk::is_set(zen_slot_num.yfilter)
-	|| ydk::is_set(zen_pm_hdl.yfilter)
-	|| ydk::is_set(zen_hdl.yfilter)
-	|| ydk::is_set(zen_ccc_hdl.yfilter)
-	|| ydk::is_set(zen_platform_local_hdl.yfilter)
-	|| ydk::is_set(zen_cdui_srvr_hdl.yfilter)
-	|| (zen_temp_sensor_default !=  nullptr && zen_temp_sensor_default->has_operation())
-	|| (zen_volt_sensor_default !=  nullptr && zen_volt_sensor_default->has_operation())
-	|| (zen_curr_sensor_default !=  nullptr && zen_curr_sensor_default->has_operation());
-}
-
-std::string Controller::Zen::ZenOper::ZenLocation::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/zen/zen_oper/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Controller::Zen::ZenOper::ZenLocation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "zen_location" <<"[zen_location='" <<zen_location <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::ZenOper::ZenLocation::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (zen_location.is_set || is_set(zen_location.yfilter)) leaf_name_data.push_back(zen_location.get_name_leafdata());
-    if (zen_pci_base_address.is_set || is_set(zen_pci_base_address.yfilter)) leaf_name_data.push_back(zen_pci_base_address.get_name_leafdata());
-    if (zen_pci_dev_vendor_id.is_set || is_set(zen_pci_dev_vendor_id.yfilter)) leaf_name_data.push_back(zen_pci_dev_vendor_id.get_name_leafdata());
-    if (zen_pci_dev_device_id.is_set || is_set(zen_pci_dev_device_id.yfilter)) leaf_name_data.push_back(zen_pci_dev_device_id.get_name_leafdata());
-    if (zen_hp_desc.is_set || is_set(zen_hp_desc.yfilter)) leaf_name_data.push_back(zen_hp_desc.get_name_leafdata());
-    if (zen_handle.is_set || is_set(zen_handle.yfilter)) leaf_name_data.push_back(zen_handle.get_name_leafdata());
-    if (zen_msi.is_set || is_set(zen_msi.yfilter)) leaf_name_data.push_back(zen_msi.get_name_leafdata());
-    if (zen_irq.is_set || is_set(zen_irq.yfilter)) leaf_name_data.push_back(zen_irq.get_name_leafdata());
-    if (zen_regs.is_set || is_set(zen_regs.yfilter)) leaf_name_data.push_back(zen_regs.get_name_leafdata());
-    if (zen_trace.is_set || is_set(zen_trace.yfilter)) leaf_name_data.push_back(zen_trace.get_name_leafdata());
-    if (zen_levm.is_set || is_set(zen_levm.yfilter)) leaf_name_data.push_back(zen_levm.get_name_leafdata());
-    if (zen_sensor_poll_timer_tree.is_set || is_set(zen_sensor_poll_timer_tree.yfilter)) leaf_name_data.push_back(zen_sensor_poll_timer_tree.get_name_leafdata());
-    if (zen_sensor_poll_timer.is_set || is_set(zen_sensor_poll_timer.yfilter)) leaf_name_data.push_back(zen_sensor_poll_timer.get_name_leafdata());
-    if (zen_sensor_data.is_set || is_set(zen_sensor_data.yfilter)) leaf_name_data.push_back(zen_sensor_data.get_name_leafdata());
-    if (zen_sim.is_set || is_set(zen_sim.yfilter)) leaf_name_data.push_back(zen_sim.get_name_leafdata());
-    if (zen_debug.is_set || is_set(zen_debug.yfilter)) leaf_name_data.push_back(zen_debug.get_name_leafdata());
-    if (zen_card_type.is_set || is_set(zen_card_type.yfilter)) leaf_name_data.push_back(zen_card_type.get_name_leafdata());
-    if (zen_slot_num.is_set || is_set(zen_slot_num.yfilter)) leaf_name_data.push_back(zen_slot_num.get_name_leafdata());
-    if (zen_pm_hdl.is_set || is_set(zen_pm_hdl.yfilter)) leaf_name_data.push_back(zen_pm_hdl.get_name_leafdata());
-    if (zen_hdl.is_set || is_set(zen_hdl.yfilter)) leaf_name_data.push_back(zen_hdl.get_name_leafdata());
-    if (zen_ccc_hdl.is_set || is_set(zen_ccc_hdl.yfilter)) leaf_name_data.push_back(zen_ccc_hdl.get_name_leafdata());
-    if (zen_platform_local_hdl.is_set || is_set(zen_platform_local_hdl.yfilter)) leaf_name_data.push_back(zen_platform_local_hdl.get_name_leafdata());
-    if (zen_cdui_srvr_hdl.is_set || is_set(zen_cdui_srvr_hdl.yfilter)) leaf_name_data.push_back(zen_cdui_srvr_hdl.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::ZenOper::ZenLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "zen_temp_sensor_default")
-    {
-        if(zen_temp_sensor_default == nullptr)
-        {
-            zen_temp_sensor_default = std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault>();
-        }
-        return zen_temp_sensor_default;
-    }
-
-    if(child_yang_name == "zen_volt_sensor_default")
-    {
-        if(zen_volt_sensor_default == nullptr)
-        {
-            zen_volt_sensor_default = std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault>();
-        }
-        return zen_volt_sensor_default;
-    }
-
-    if(child_yang_name == "zen_curr_sensor_default")
-    {
-        if(zen_curr_sensor_default == nullptr)
-        {
-            zen_curr_sensor_default = std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault>();
-        }
-        return zen_curr_sensor_default;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::ZenOper::ZenLocation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(zen_temp_sensor_default != nullptr)
-    {
-        children["zen_temp_sensor_default"] = zen_temp_sensor_default;
-    }
-
-    if(zen_volt_sensor_default != nullptr)
-    {
-        children["zen_volt_sensor_default"] = zen_volt_sensor_default;
-    }
-
-    if(zen_curr_sensor_default != nullptr)
-    {
-        children["zen_curr_sensor_default"] = zen_curr_sensor_default;
-    }
-
-    return children;
-}
-
-void Controller::Zen::ZenOper::ZenLocation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "zen_location")
-    {
-        zen_location = value;
-        zen_location.value_namespace = name_space;
-        zen_location.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_pci_base_address")
-    {
-        zen_pci_base_address = value;
-        zen_pci_base_address.value_namespace = name_space;
-        zen_pci_base_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_pci_dev_vendor_id")
-    {
-        zen_pci_dev_vendor_id = value;
-        zen_pci_dev_vendor_id.value_namespace = name_space;
-        zen_pci_dev_vendor_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_pci_dev_device_id")
-    {
-        zen_pci_dev_device_id = value;
-        zen_pci_dev_device_id.value_namespace = name_space;
-        zen_pci_dev_device_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_hp_desc")
-    {
-        zen_hp_desc = value;
-        zen_hp_desc.value_namespace = name_space;
-        zen_hp_desc.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_handle")
-    {
-        zen_handle = value;
-        zen_handle.value_namespace = name_space;
-        zen_handle.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_msi")
-    {
-        zen_msi = value;
-        zen_msi.value_namespace = name_space;
-        zen_msi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_irq")
-    {
-        zen_irq = value;
-        zen_irq.value_namespace = name_space;
-        zen_irq.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_regs")
-    {
-        zen_regs = value;
-        zen_regs.value_namespace = name_space;
-        zen_regs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_trace")
-    {
-        zen_trace = value;
-        zen_trace.value_namespace = name_space;
-        zen_trace.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_levm")
-    {
-        zen_levm = value;
-        zen_levm.value_namespace = name_space;
-        zen_levm.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_sensor_poll_timer_tree")
-    {
-        zen_sensor_poll_timer_tree = value;
-        zen_sensor_poll_timer_tree.value_namespace = name_space;
-        zen_sensor_poll_timer_tree.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_sensor_poll_timer")
-    {
-        zen_sensor_poll_timer = value;
-        zen_sensor_poll_timer.value_namespace = name_space;
-        zen_sensor_poll_timer.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_sensor_data")
-    {
-        zen_sensor_data = value;
-        zen_sensor_data.value_namespace = name_space;
-        zen_sensor_data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_sim")
-    {
-        zen_sim = value;
-        zen_sim.value_namespace = name_space;
-        zen_sim.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_debug")
-    {
-        zen_debug = value;
-        zen_debug.value_namespace = name_space;
-        zen_debug.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_card_type")
-    {
-        zen_card_type = value;
-        zen_card_type.value_namespace = name_space;
-        zen_card_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_slot_num")
-    {
-        zen_slot_num = value;
-        zen_slot_num.value_namespace = name_space;
-        zen_slot_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_pm_hdl")
-    {
-        zen_pm_hdl = value;
-        zen_pm_hdl.value_namespace = name_space;
-        zen_pm_hdl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_hdl")
-    {
-        zen_hdl = value;
-        zen_hdl.value_namespace = name_space;
-        zen_hdl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_ccc_hdl")
-    {
-        zen_ccc_hdl = value;
-        zen_ccc_hdl.value_namespace = name_space;
-        zen_ccc_hdl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_platform_local_hdl")
-    {
-        zen_platform_local_hdl = value;
-        zen_platform_local_hdl.value_namespace = name_space;
-        zen_platform_local_hdl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_cdui_srvr_hdl")
-    {
-        zen_cdui_srvr_hdl = value;
-        zen_cdui_srvr_hdl.value_namespace = name_space;
-        zen_cdui_srvr_hdl.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Controller::Zen::ZenOper::ZenLocation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "zen_location")
-    {
-        zen_location.yfilter = yfilter;
-    }
-    if(value_path == "zen_pci_base_address")
-    {
-        zen_pci_base_address.yfilter = yfilter;
-    }
-    if(value_path == "zen_pci_dev_vendor_id")
-    {
-        zen_pci_dev_vendor_id.yfilter = yfilter;
-    }
-    if(value_path == "zen_pci_dev_device_id")
-    {
-        zen_pci_dev_device_id.yfilter = yfilter;
-    }
-    if(value_path == "zen_hp_desc")
-    {
-        zen_hp_desc.yfilter = yfilter;
-    }
-    if(value_path == "zen_handle")
-    {
-        zen_handle.yfilter = yfilter;
-    }
-    if(value_path == "zen_msi")
-    {
-        zen_msi.yfilter = yfilter;
-    }
-    if(value_path == "zen_irq")
-    {
-        zen_irq.yfilter = yfilter;
-    }
-    if(value_path == "zen_regs")
-    {
-        zen_regs.yfilter = yfilter;
-    }
-    if(value_path == "zen_trace")
-    {
-        zen_trace.yfilter = yfilter;
-    }
-    if(value_path == "zen_levm")
-    {
-        zen_levm.yfilter = yfilter;
-    }
-    if(value_path == "zen_sensor_poll_timer_tree")
-    {
-        zen_sensor_poll_timer_tree.yfilter = yfilter;
-    }
-    if(value_path == "zen_sensor_poll_timer")
-    {
-        zen_sensor_poll_timer.yfilter = yfilter;
-    }
-    if(value_path == "zen_sensor_data")
-    {
-        zen_sensor_data.yfilter = yfilter;
-    }
-    if(value_path == "zen_sim")
-    {
-        zen_sim.yfilter = yfilter;
-    }
-    if(value_path == "zen_debug")
-    {
-        zen_debug.yfilter = yfilter;
-    }
-    if(value_path == "zen_card_type")
-    {
-        zen_card_type.yfilter = yfilter;
-    }
-    if(value_path == "zen_slot_num")
-    {
-        zen_slot_num.yfilter = yfilter;
-    }
-    if(value_path == "zen_pm_hdl")
-    {
-        zen_pm_hdl.yfilter = yfilter;
-    }
-    if(value_path == "zen_hdl")
-    {
-        zen_hdl.yfilter = yfilter;
-    }
-    if(value_path == "zen_ccc_hdl")
-    {
-        zen_ccc_hdl.yfilter = yfilter;
-    }
-    if(value_path == "zen_platform_local_hdl")
-    {
-        zen_platform_local_hdl.yfilter = yfilter;
-    }
-    if(value_path == "zen_cdui_srvr_hdl")
-    {
-        zen_cdui_srvr_hdl.yfilter = yfilter;
-    }
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "zen_temp_sensor_default" || name == "zen_volt_sensor_default" || name == "zen_curr_sensor_default" || name == "zen_location" || name == "zen_pci_base_address" || name == "zen_pci_dev_vendor_id" || name == "zen_pci_dev_device_id" || name == "zen_hp_desc" || name == "zen_handle" || name == "zen_msi" || name == "zen_irq" || name == "zen_regs" || name == "zen_trace" || name == "zen_levm" || name == "zen_sensor_poll_timer_tree" || name == "zen_sensor_poll_timer" || name == "zen_sensor_data" || name == "zen_sim" || name == "zen_debug" || name == "zen_card_type" || name == "zen_slot_num" || name == "zen_pm_hdl" || name == "zen_hdl" || name == "zen_ccc_hdl" || name == "zen_platform_local_hdl" || name == "zen_cdui_srvr_hdl")
-        return true;
-    return false;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorDefault()
-    :
-    zen_temp_sensor_data(std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData>())
-{
-    zen_temp_sensor_data->parent = this;
-
-    yang_name = "zen_temp_sensor_default"; yang_parent_name = "zen_location"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::~ZenTempSensorDefault()
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::has_data() const
-{
-    return (zen_temp_sensor_data !=  nullptr && zen_temp_sensor_data->has_data());
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::has_operation() const
-{
-    return is_set(yfilter)
-	|| (zen_temp_sensor_data !=  nullptr && zen_temp_sensor_data->has_operation());
-}
-
-std::string Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "zen_temp_sensor_default";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "zen_temp_sensor_data")
-    {
-        if(zen_temp_sensor_data == nullptr)
-        {
-            zen_temp_sensor_data = std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData>();
-        }
-        return zen_temp_sensor_data;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(zen_temp_sensor_data != nullptr)
-    {
-        children["zen_temp_sensor_data"] = zen_temp_sensor_data;
-    }
-
-    return children;
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "zen_temp_sensor_data")
-        return true;
-    return false;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensorData()
-{
-
-    yang_name = "zen_temp_sensor_data"; yang_parent_name = "zen_temp_sensor_default"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::~ZenTempSensorData()
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::has_data() const
-{
-    for (std::size_t index=0; index<zen_temp_sensor.size(); index++)
-    {
-        if(zen_temp_sensor[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::has_operation() const
-{
-    for (std::size_t index=0; index<zen_temp_sensor.size(); index++)
-    {
-        if(zen_temp_sensor[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "zen_temp_sensor_data";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "zen_temp_sensor")
-    {
-        auto c = std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor>();
-        c->parent = this;
-        zen_temp_sensor.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : zen_temp_sensor)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "zen_temp_sensor")
-        return true;
-    return false;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor::ZenTempSensor()
-    :
-    zen_temp_sensor{YType::str, "zen_temp_sensor"},
-    zen_temp_sensor_id{YType::str, "zen_temp_sensor_id"},
-    zen_temp_dev_addr{YType::uint32, "zen_temp_dev_addr"},
-    zen_temp_poll_intvl{YType::uint32, "zen_temp_poll_intvl"},
-    zen_temp_delta{YType::uint32, "zen_temp_delta"},
-    zen_temp_raw_data{YType::uint32, "zen_temp_raw_data"},
-    zen_temp_sensor_value{YType::int32, "zen_temp_sensor_value"},
-    zen_temp_unit{YType::int32, "zen_temp_unit"},
-    zen_temp_last_value{YType::uint32, "zen_temp_last_value"},
-    zen_temp_send_update{YType::boolean, "zen_temp_send_update"},
-    zen_temp_num_1sec_intervals{YType::int32, "zen_temp_num_1sec_intervals"}
-{
-
-    yang_name = "zen_temp_sensor"; yang_parent_name = "zen_temp_sensor_data"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor::~ZenTempSensor()
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor::has_data() const
-{
-    return zen_temp_sensor.is_set
-	|| zen_temp_sensor_id.is_set
-	|| zen_temp_dev_addr.is_set
-	|| zen_temp_poll_intvl.is_set
-	|| zen_temp_delta.is_set
-	|| zen_temp_raw_data.is_set
-	|| zen_temp_sensor_value.is_set
-	|| zen_temp_unit.is_set
-	|| zen_temp_last_value.is_set
-	|| zen_temp_send_update.is_set
-	|| zen_temp_num_1sec_intervals.is_set;
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(zen_temp_sensor.yfilter)
-	|| ydk::is_set(zen_temp_sensor_id.yfilter)
-	|| ydk::is_set(zen_temp_dev_addr.yfilter)
-	|| ydk::is_set(zen_temp_poll_intvl.yfilter)
-	|| ydk::is_set(zen_temp_delta.yfilter)
-	|| ydk::is_set(zen_temp_raw_data.yfilter)
-	|| ydk::is_set(zen_temp_sensor_value.yfilter)
-	|| ydk::is_set(zen_temp_unit.yfilter)
-	|| ydk::is_set(zen_temp_last_value.yfilter)
-	|| ydk::is_set(zen_temp_send_update.yfilter)
-	|| ydk::is_set(zen_temp_num_1sec_intervals.yfilter);
-}
-
-std::string Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "zen_temp_sensor" <<"[zen_temp_sensor='" <<zen_temp_sensor <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (zen_temp_sensor.is_set || is_set(zen_temp_sensor.yfilter)) leaf_name_data.push_back(zen_temp_sensor.get_name_leafdata());
-    if (zen_temp_sensor_id.is_set || is_set(zen_temp_sensor_id.yfilter)) leaf_name_data.push_back(zen_temp_sensor_id.get_name_leafdata());
-    if (zen_temp_dev_addr.is_set || is_set(zen_temp_dev_addr.yfilter)) leaf_name_data.push_back(zen_temp_dev_addr.get_name_leafdata());
-    if (zen_temp_poll_intvl.is_set || is_set(zen_temp_poll_intvl.yfilter)) leaf_name_data.push_back(zen_temp_poll_intvl.get_name_leafdata());
-    if (zen_temp_delta.is_set || is_set(zen_temp_delta.yfilter)) leaf_name_data.push_back(zen_temp_delta.get_name_leafdata());
-    if (zen_temp_raw_data.is_set || is_set(zen_temp_raw_data.yfilter)) leaf_name_data.push_back(zen_temp_raw_data.get_name_leafdata());
-    if (zen_temp_sensor_value.is_set || is_set(zen_temp_sensor_value.yfilter)) leaf_name_data.push_back(zen_temp_sensor_value.get_name_leafdata());
-    if (zen_temp_unit.is_set || is_set(zen_temp_unit.yfilter)) leaf_name_data.push_back(zen_temp_unit.get_name_leafdata());
-    if (zen_temp_last_value.is_set || is_set(zen_temp_last_value.yfilter)) leaf_name_data.push_back(zen_temp_last_value.get_name_leafdata());
-    if (zen_temp_send_update.is_set || is_set(zen_temp_send_update.yfilter)) leaf_name_data.push_back(zen_temp_send_update.get_name_leafdata());
-    if (zen_temp_num_1sec_intervals.is_set || is_set(zen_temp_num_1sec_intervals.yfilter)) leaf_name_data.push_back(zen_temp_num_1sec_intervals.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "zen_temp_sensor")
-    {
-        zen_temp_sensor = value;
-        zen_temp_sensor.value_namespace = name_space;
-        zen_temp_sensor.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_temp_sensor_id")
-    {
-        zen_temp_sensor_id = value;
-        zen_temp_sensor_id.value_namespace = name_space;
-        zen_temp_sensor_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_temp_dev_addr")
-    {
-        zen_temp_dev_addr = value;
-        zen_temp_dev_addr.value_namespace = name_space;
-        zen_temp_dev_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_temp_poll_intvl")
-    {
-        zen_temp_poll_intvl = value;
-        zen_temp_poll_intvl.value_namespace = name_space;
-        zen_temp_poll_intvl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_temp_delta")
-    {
-        zen_temp_delta = value;
-        zen_temp_delta.value_namespace = name_space;
-        zen_temp_delta.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_temp_raw_data")
-    {
-        zen_temp_raw_data = value;
-        zen_temp_raw_data.value_namespace = name_space;
-        zen_temp_raw_data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_temp_sensor_value")
-    {
-        zen_temp_sensor_value = value;
-        zen_temp_sensor_value.value_namespace = name_space;
-        zen_temp_sensor_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_temp_unit")
-    {
-        zen_temp_unit = value;
-        zen_temp_unit.value_namespace = name_space;
-        zen_temp_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_temp_last_value")
-    {
-        zen_temp_last_value = value;
-        zen_temp_last_value.value_namespace = name_space;
-        zen_temp_last_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_temp_send_update")
-    {
-        zen_temp_send_update = value;
-        zen_temp_send_update.value_namespace = name_space;
-        zen_temp_send_update.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_temp_num_1sec_intervals")
-    {
-        zen_temp_num_1sec_intervals = value;
-        zen_temp_num_1sec_intervals.value_namespace = name_space;
-        zen_temp_num_1sec_intervals.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "zen_temp_sensor")
-    {
-        zen_temp_sensor.yfilter = yfilter;
-    }
-    if(value_path == "zen_temp_sensor_id")
-    {
-        zen_temp_sensor_id.yfilter = yfilter;
-    }
-    if(value_path == "zen_temp_dev_addr")
-    {
-        zen_temp_dev_addr.yfilter = yfilter;
-    }
-    if(value_path == "zen_temp_poll_intvl")
-    {
-        zen_temp_poll_intvl.yfilter = yfilter;
-    }
-    if(value_path == "zen_temp_delta")
-    {
-        zen_temp_delta.yfilter = yfilter;
-    }
-    if(value_path == "zen_temp_raw_data")
-    {
-        zen_temp_raw_data.yfilter = yfilter;
-    }
-    if(value_path == "zen_temp_sensor_value")
-    {
-        zen_temp_sensor_value.yfilter = yfilter;
-    }
-    if(value_path == "zen_temp_unit")
-    {
-        zen_temp_unit.yfilter = yfilter;
-    }
-    if(value_path == "zen_temp_last_value")
-    {
-        zen_temp_last_value.yfilter = yfilter;
-    }
-    if(value_path == "zen_temp_send_update")
-    {
-        zen_temp_send_update.yfilter = yfilter;
-    }
-    if(value_path == "zen_temp_num_1sec_intervals")
-    {
-        zen_temp_num_1sec_intervals.yfilter = yfilter;
-    }
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "zen_temp_sensor" || name == "zen_temp_sensor_id" || name == "zen_temp_dev_addr" || name == "zen_temp_poll_intvl" || name == "zen_temp_delta" || name == "zen_temp_raw_data" || name == "zen_temp_sensor_value" || name == "zen_temp_unit" || name == "zen_temp_last_value" || name == "zen_temp_send_update" || name == "zen_temp_num_1sec_intervals")
-        return true;
-    return false;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorDefault()
-    :
-    zen_volt_sensor_data(std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData>())
-{
-    zen_volt_sensor_data->parent = this;
-
-    yang_name = "zen_volt_sensor_default"; yang_parent_name = "zen_location"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::~ZenVoltSensorDefault()
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::has_data() const
-{
-    return (zen_volt_sensor_data !=  nullptr && zen_volt_sensor_data->has_data());
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::has_operation() const
-{
-    return is_set(yfilter)
-	|| (zen_volt_sensor_data !=  nullptr && zen_volt_sensor_data->has_operation());
-}
-
-std::string Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "zen_volt_sensor_default";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "zen_volt_sensor_data")
-    {
-        if(zen_volt_sensor_data == nullptr)
-        {
-            zen_volt_sensor_data = std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData>();
-        }
-        return zen_volt_sensor_data;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(zen_volt_sensor_data != nullptr)
-    {
-        children["zen_volt_sensor_data"] = zen_volt_sensor_data;
-    }
-
-    return children;
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "zen_volt_sensor_data")
-        return true;
-    return false;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensorData()
-{
-
-    yang_name = "zen_volt_sensor_data"; yang_parent_name = "zen_volt_sensor_default"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::~ZenVoltSensorData()
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::has_data() const
-{
-    for (std::size_t index=0; index<zen_volt_sensor.size(); index++)
-    {
-        if(zen_volt_sensor[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::has_operation() const
-{
-    for (std::size_t index=0; index<zen_volt_sensor.size(); index++)
-    {
-        if(zen_volt_sensor[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "zen_volt_sensor_data";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "zen_volt_sensor")
-    {
-        auto c = std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor>();
-        c->parent = this;
-        zen_volt_sensor.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : zen_volt_sensor)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "zen_volt_sensor")
-        return true;
-    return false;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor::ZenVoltSensor()
-    :
-    zen_volt_sensor{YType::int32, "zen_volt_sensor"},
-    zen_volt_sensor_id{YType::str, "zen_volt_sensor_id"},
-    zen_volt_dev_addr{YType::uint32, "zen_volt_dev_addr"},
-    zen_volt_poll_intvl{YType::uint32, "zen_volt_poll_intvl"},
-    zen_volt_delta{YType::uint32, "zen_volt_delta"},
-    zen_volt_raw_data{YType::uint32, "zen_volt_raw_data"},
-    zen_volt_sensor_value{YType::int32, "zen_volt_sensor_value"},
-    zen_volt_unit{YType::int32, "zen_volt_unit"},
-    zen_volt_last_value{YType::uint32, "zen_volt_last_value"},
-    zen_volt_send_update{YType::boolean, "zen_volt_send_update"},
-    zen_volt_num_1sec_intervals{YType::int32, "zen_volt_num_1sec_intervals"}
-{
-
-    yang_name = "zen_volt_sensor"; yang_parent_name = "zen_volt_sensor_data"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor::~ZenVoltSensor()
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor::has_data() const
-{
-    return zen_volt_sensor.is_set
-	|| zen_volt_sensor_id.is_set
-	|| zen_volt_dev_addr.is_set
-	|| zen_volt_poll_intvl.is_set
-	|| zen_volt_delta.is_set
-	|| zen_volt_raw_data.is_set
-	|| zen_volt_sensor_value.is_set
-	|| zen_volt_unit.is_set
-	|| zen_volt_last_value.is_set
-	|| zen_volt_send_update.is_set
-	|| zen_volt_num_1sec_intervals.is_set;
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(zen_volt_sensor.yfilter)
-	|| ydk::is_set(zen_volt_sensor_id.yfilter)
-	|| ydk::is_set(zen_volt_dev_addr.yfilter)
-	|| ydk::is_set(zen_volt_poll_intvl.yfilter)
-	|| ydk::is_set(zen_volt_delta.yfilter)
-	|| ydk::is_set(zen_volt_raw_data.yfilter)
-	|| ydk::is_set(zen_volt_sensor_value.yfilter)
-	|| ydk::is_set(zen_volt_unit.yfilter)
-	|| ydk::is_set(zen_volt_last_value.yfilter)
-	|| ydk::is_set(zen_volt_send_update.yfilter)
-	|| ydk::is_set(zen_volt_num_1sec_intervals.yfilter);
-}
-
-std::string Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "zen_volt_sensor" <<"[zen_volt_sensor='" <<zen_volt_sensor <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (zen_volt_sensor.is_set || is_set(zen_volt_sensor.yfilter)) leaf_name_data.push_back(zen_volt_sensor.get_name_leafdata());
-    if (zen_volt_sensor_id.is_set || is_set(zen_volt_sensor_id.yfilter)) leaf_name_data.push_back(zen_volt_sensor_id.get_name_leafdata());
-    if (zen_volt_dev_addr.is_set || is_set(zen_volt_dev_addr.yfilter)) leaf_name_data.push_back(zen_volt_dev_addr.get_name_leafdata());
-    if (zen_volt_poll_intvl.is_set || is_set(zen_volt_poll_intvl.yfilter)) leaf_name_data.push_back(zen_volt_poll_intvl.get_name_leafdata());
-    if (zen_volt_delta.is_set || is_set(zen_volt_delta.yfilter)) leaf_name_data.push_back(zen_volt_delta.get_name_leafdata());
-    if (zen_volt_raw_data.is_set || is_set(zen_volt_raw_data.yfilter)) leaf_name_data.push_back(zen_volt_raw_data.get_name_leafdata());
-    if (zen_volt_sensor_value.is_set || is_set(zen_volt_sensor_value.yfilter)) leaf_name_data.push_back(zen_volt_sensor_value.get_name_leafdata());
-    if (zen_volt_unit.is_set || is_set(zen_volt_unit.yfilter)) leaf_name_data.push_back(zen_volt_unit.get_name_leafdata());
-    if (zen_volt_last_value.is_set || is_set(zen_volt_last_value.yfilter)) leaf_name_data.push_back(zen_volt_last_value.get_name_leafdata());
-    if (zen_volt_send_update.is_set || is_set(zen_volt_send_update.yfilter)) leaf_name_data.push_back(zen_volt_send_update.get_name_leafdata());
-    if (zen_volt_num_1sec_intervals.is_set || is_set(zen_volt_num_1sec_intervals.yfilter)) leaf_name_data.push_back(zen_volt_num_1sec_intervals.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "zen_volt_sensor")
-    {
-        zen_volt_sensor = value;
-        zen_volt_sensor.value_namespace = name_space;
-        zen_volt_sensor.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_volt_sensor_id")
-    {
-        zen_volt_sensor_id = value;
-        zen_volt_sensor_id.value_namespace = name_space;
-        zen_volt_sensor_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_volt_dev_addr")
-    {
-        zen_volt_dev_addr = value;
-        zen_volt_dev_addr.value_namespace = name_space;
-        zen_volt_dev_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_volt_poll_intvl")
-    {
-        zen_volt_poll_intvl = value;
-        zen_volt_poll_intvl.value_namespace = name_space;
-        zen_volt_poll_intvl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_volt_delta")
-    {
-        zen_volt_delta = value;
-        zen_volt_delta.value_namespace = name_space;
-        zen_volt_delta.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_volt_raw_data")
-    {
-        zen_volt_raw_data = value;
-        zen_volt_raw_data.value_namespace = name_space;
-        zen_volt_raw_data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_volt_sensor_value")
-    {
-        zen_volt_sensor_value = value;
-        zen_volt_sensor_value.value_namespace = name_space;
-        zen_volt_sensor_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_volt_unit")
-    {
-        zen_volt_unit = value;
-        zen_volt_unit.value_namespace = name_space;
-        zen_volt_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_volt_last_value")
-    {
-        zen_volt_last_value = value;
-        zen_volt_last_value.value_namespace = name_space;
-        zen_volt_last_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_volt_send_update")
-    {
-        zen_volt_send_update = value;
-        zen_volt_send_update.value_namespace = name_space;
-        zen_volt_send_update.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_volt_num_1sec_intervals")
-    {
-        zen_volt_num_1sec_intervals = value;
-        zen_volt_num_1sec_intervals.value_namespace = name_space;
-        zen_volt_num_1sec_intervals.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "zen_volt_sensor")
-    {
-        zen_volt_sensor.yfilter = yfilter;
-    }
-    if(value_path == "zen_volt_sensor_id")
-    {
-        zen_volt_sensor_id.yfilter = yfilter;
-    }
-    if(value_path == "zen_volt_dev_addr")
-    {
-        zen_volt_dev_addr.yfilter = yfilter;
-    }
-    if(value_path == "zen_volt_poll_intvl")
-    {
-        zen_volt_poll_intvl.yfilter = yfilter;
-    }
-    if(value_path == "zen_volt_delta")
-    {
-        zen_volt_delta.yfilter = yfilter;
-    }
-    if(value_path == "zen_volt_raw_data")
-    {
-        zen_volt_raw_data.yfilter = yfilter;
-    }
-    if(value_path == "zen_volt_sensor_value")
-    {
-        zen_volt_sensor_value.yfilter = yfilter;
-    }
-    if(value_path == "zen_volt_unit")
-    {
-        zen_volt_unit.yfilter = yfilter;
-    }
-    if(value_path == "zen_volt_last_value")
-    {
-        zen_volt_last_value.yfilter = yfilter;
-    }
-    if(value_path == "zen_volt_send_update")
-    {
-        zen_volt_send_update.yfilter = yfilter;
-    }
-    if(value_path == "zen_volt_num_1sec_intervals")
-    {
-        zen_volt_num_1sec_intervals.yfilter = yfilter;
-    }
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "zen_volt_sensor" || name == "zen_volt_sensor_id" || name == "zen_volt_dev_addr" || name == "zen_volt_poll_intvl" || name == "zen_volt_delta" || name == "zen_volt_raw_data" || name == "zen_volt_sensor_value" || name == "zen_volt_unit" || name == "zen_volt_last_value" || name == "zen_volt_send_update" || name == "zen_volt_num_1sec_intervals")
-        return true;
-    return false;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorDefault()
-    :
-    zen_curr_sensor_data(std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData>())
-{
-    zen_curr_sensor_data->parent = this;
-
-    yang_name = "zen_curr_sensor_default"; yang_parent_name = "zen_location"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::~ZenCurrSensorDefault()
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::has_data() const
-{
-    return (zen_curr_sensor_data !=  nullptr && zen_curr_sensor_data->has_data());
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::has_operation() const
-{
-    return is_set(yfilter)
-	|| (zen_curr_sensor_data !=  nullptr && zen_curr_sensor_data->has_operation());
-}
-
-std::string Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "zen_curr_sensor_default";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "zen_curr_sensor_data")
-    {
-        if(zen_curr_sensor_data == nullptr)
-        {
-            zen_curr_sensor_data = std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData>();
-        }
-        return zen_curr_sensor_data;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(zen_curr_sensor_data != nullptr)
-    {
-        children["zen_curr_sensor_data"] = zen_curr_sensor_data;
-    }
-
-    return children;
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "zen_curr_sensor_data")
-        return true;
-    return false;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensorData()
-{
-
-    yang_name = "zen_curr_sensor_data"; yang_parent_name = "zen_curr_sensor_default"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::~ZenCurrSensorData()
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::has_data() const
-{
-    for (std::size_t index=0; index<zen_curr_sensor.size(); index++)
-    {
-        if(zen_curr_sensor[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::has_operation() const
-{
-    for (std::size_t index=0; index<zen_curr_sensor.size(); index++)
-    {
-        if(zen_curr_sensor[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "zen_curr_sensor_data";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "zen_curr_sensor")
-    {
-        auto c = std::make_shared<Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor>();
-        c->parent = this;
-        zen_curr_sensor.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : zen_curr_sensor)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "zen_curr_sensor")
-        return true;
-    return false;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor::ZenCurrSensor()
-    :
-    zen_curr_sensor{YType::str, "zen_curr_sensor"},
-    zen_curr_sensor_id{YType::str, "zen_curr_sensor_id"},
-    zen_curr_dev_addr{YType::uint32, "zen_curr_dev_addr"},
-    zen_curr_poll_intvl{YType::uint32, "zen_curr_poll_intvl"},
-    zen_curr_delta{YType::uint32, "zen_curr_delta"},
-    zen_curr_raw_data{YType::uint32, "zen_curr_raw_data"},
-    zen_curr_sensor_value{YType::int32, "zen_curr_sensor_value"},
-    zen_curr_unit{YType::int32, "zen_curr_unit"},
-    zen_curr_last_value{YType::uint32, "zen_curr_last_value"},
-    zen_curr_send_update{YType::boolean, "zen_curr_send_update"},
-    zen_curr_num_1sec_intervals{YType::int32, "zen_curr_num_1sec_intervals"}
-{
-
-    yang_name = "zen_curr_sensor"; yang_parent_name = "zen_curr_sensor_data"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor::~ZenCurrSensor()
-{
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor::has_data() const
-{
-    return zen_curr_sensor.is_set
-	|| zen_curr_sensor_id.is_set
-	|| zen_curr_dev_addr.is_set
-	|| zen_curr_poll_intvl.is_set
-	|| zen_curr_delta.is_set
-	|| zen_curr_raw_data.is_set
-	|| zen_curr_sensor_value.is_set
-	|| zen_curr_unit.is_set
-	|| zen_curr_last_value.is_set
-	|| zen_curr_send_update.is_set
-	|| zen_curr_num_1sec_intervals.is_set;
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(zen_curr_sensor.yfilter)
-	|| ydk::is_set(zen_curr_sensor_id.yfilter)
-	|| ydk::is_set(zen_curr_dev_addr.yfilter)
-	|| ydk::is_set(zen_curr_poll_intvl.yfilter)
-	|| ydk::is_set(zen_curr_delta.yfilter)
-	|| ydk::is_set(zen_curr_raw_data.yfilter)
-	|| ydk::is_set(zen_curr_sensor_value.yfilter)
-	|| ydk::is_set(zen_curr_unit.yfilter)
-	|| ydk::is_set(zen_curr_last_value.yfilter)
-	|| ydk::is_set(zen_curr_send_update.yfilter)
-	|| ydk::is_set(zen_curr_num_1sec_intervals.yfilter);
-}
-
-std::string Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "zen_curr_sensor" <<"[zen_curr_sensor='" <<zen_curr_sensor <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (zen_curr_sensor.is_set || is_set(zen_curr_sensor.yfilter)) leaf_name_data.push_back(zen_curr_sensor.get_name_leafdata());
-    if (zen_curr_sensor_id.is_set || is_set(zen_curr_sensor_id.yfilter)) leaf_name_data.push_back(zen_curr_sensor_id.get_name_leafdata());
-    if (zen_curr_dev_addr.is_set || is_set(zen_curr_dev_addr.yfilter)) leaf_name_data.push_back(zen_curr_dev_addr.get_name_leafdata());
-    if (zen_curr_poll_intvl.is_set || is_set(zen_curr_poll_intvl.yfilter)) leaf_name_data.push_back(zen_curr_poll_intvl.get_name_leafdata());
-    if (zen_curr_delta.is_set || is_set(zen_curr_delta.yfilter)) leaf_name_data.push_back(zen_curr_delta.get_name_leafdata());
-    if (zen_curr_raw_data.is_set || is_set(zen_curr_raw_data.yfilter)) leaf_name_data.push_back(zen_curr_raw_data.get_name_leafdata());
-    if (zen_curr_sensor_value.is_set || is_set(zen_curr_sensor_value.yfilter)) leaf_name_data.push_back(zen_curr_sensor_value.get_name_leafdata());
-    if (zen_curr_unit.is_set || is_set(zen_curr_unit.yfilter)) leaf_name_data.push_back(zen_curr_unit.get_name_leafdata());
-    if (zen_curr_last_value.is_set || is_set(zen_curr_last_value.yfilter)) leaf_name_data.push_back(zen_curr_last_value.get_name_leafdata());
-    if (zen_curr_send_update.is_set || is_set(zen_curr_send_update.yfilter)) leaf_name_data.push_back(zen_curr_send_update.get_name_leafdata());
-    if (zen_curr_num_1sec_intervals.is_set || is_set(zen_curr_num_1sec_intervals.yfilter)) leaf_name_data.push_back(zen_curr_num_1sec_intervals.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "zen_curr_sensor")
-    {
-        zen_curr_sensor = value;
-        zen_curr_sensor.value_namespace = name_space;
-        zen_curr_sensor.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_curr_sensor_id")
-    {
-        zen_curr_sensor_id = value;
-        zen_curr_sensor_id.value_namespace = name_space;
-        zen_curr_sensor_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_curr_dev_addr")
-    {
-        zen_curr_dev_addr = value;
-        zen_curr_dev_addr.value_namespace = name_space;
-        zen_curr_dev_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_curr_poll_intvl")
-    {
-        zen_curr_poll_intvl = value;
-        zen_curr_poll_intvl.value_namespace = name_space;
-        zen_curr_poll_intvl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_curr_delta")
-    {
-        zen_curr_delta = value;
-        zen_curr_delta.value_namespace = name_space;
-        zen_curr_delta.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_curr_raw_data")
-    {
-        zen_curr_raw_data = value;
-        zen_curr_raw_data.value_namespace = name_space;
-        zen_curr_raw_data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_curr_sensor_value")
-    {
-        zen_curr_sensor_value = value;
-        zen_curr_sensor_value.value_namespace = name_space;
-        zen_curr_sensor_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_curr_unit")
-    {
-        zen_curr_unit = value;
-        zen_curr_unit.value_namespace = name_space;
-        zen_curr_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_curr_last_value")
-    {
-        zen_curr_last_value = value;
-        zen_curr_last_value.value_namespace = name_space;
-        zen_curr_last_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_curr_send_update")
-    {
-        zen_curr_send_update = value;
-        zen_curr_send_update.value_namespace = name_space;
-        zen_curr_send_update.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zen_curr_num_1sec_intervals")
-    {
-        zen_curr_num_1sec_intervals = value;
-        zen_curr_num_1sec_intervals.value_namespace = name_space;
-        zen_curr_num_1sec_intervals.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "zen_curr_sensor")
-    {
-        zen_curr_sensor.yfilter = yfilter;
-    }
-    if(value_path == "zen_curr_sensor_id")
-    {
-        zen_curr_sensor_id.yfilter = yfilter;
-    }
-    if(value_path == "zen_curr_dev_addr")
-    {
-        zen_curr_dev_addr.yfilter = yfilter;
-    }
-    if(value_path == "zen_curr_poll_intvl")
-    {
-        zen_curr_poll_intvl.yfilter = yfilter;
-    }
-    if(value_path == "zen_curr_delta")
-    {
-        zen_curr_delta.yfilter = yfilter;
-    }
-    if(value_path == "zen_curr_raw_data")
-    {
-        zen_curr_raw_data.yfilter = yfilter;
-    }
-    if(value_path == "zen_curr_sensor_value")
-    {
-        zen_curr_sensor_value.yfilter = yfilter;
-    }
-    if(value_path == "zen_curr_unit")
-    {
-        zen_curr_unit.yfilter = yfilter;
-    }
-    if(value_path == "zen_curr_last_value")
-    {
-        zen_curr_last_value.yfilter = yfilter;
-    }
-    if(value_path == "zen_curr_send_update")
-    {
-        zen_curr_send_update.yfilter = yfilter;
-    }
-    if(value_path == "zen_curr_num_1sec_intervals")
-    {
-        zen_curr_num_1sec_intervals.yfilter = yfilter;
-    }
-}
-
-bool Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "zen_curr_sensor" || name == "zen_curr_sensor_id" || name == "zen_curr_dev_addr" || name == "zen_curr_poll_intvl" || name == "zen_curr_delta" || name == "zen_curr_raw_data" || name == "zen_curr_sensor_value" || name == "zen_curr_unit" || name == "zen_curr_last_value" || name == "zen_curr_send_update" || name == "zen_curr_num_1sec_intervals")
-        return true;
-    return false;
-}
-
-Controller::Zen::Trace::Trace()
-    :
-    buffer{YType::str, "buffer"}
-{
-
-    yang_name = "trace"; yang_parent_name = "zen"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Controller::Zen::Trace::~Trace()
-{
-}
-
-bool Controller::Zen::Trace::has_data() const
-{
-    for (std::size_t index=0; index<location.size(); index++)
-    {
-        if(location[index]->has_data())
-            return true;
-    }
-    return buffer.is_set;
-}
-
-bool Controller::Zen::Trace::has_operation() const
-{
-    for (std::size_t index=0; index<location.size(); index++)
-    {
-        if(location[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(buffer.yfilter);
-}
-
-std::string Controller::Zen::Trace::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/zen/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Controller::Zen::Trace::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::Trace::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (buffer.is_set || is_set(buffer.yfilter)) leaf_name_data.push_back(buffer.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "location")
-    {
-        auto c = std::make_shared<Controller::Zen::Trace::Location>();
-        c->parent = this;
-        location.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::Trace::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : location)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Controller::Zen::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "buffer")
-    {
-        buffer = value;
-        buffer.value_namespace = name_space;
-        buffer.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Controller::Zen::Trace::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "buffer")
-    {
-        buffer.yfilter = yfilter;
-    }
-}
-
-bool Controller::Zen::Trace::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "location" || name == "buffer")
-        return true;
-    return false;
-}
-
-Controller::Zen::Trace::Location::Location()
-    :
-    location_name{YType::str, "location_name"}
-{
-
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::Zen::Trace::Location::~Location()
-{
-}
-
-bool Controller::Zen::Trace::Location::has_data() const
-{
-    for (std::size_t index=0; index<all_options.size(); index++)
-    {
-        if(all_options[index]->has_data())
-            return true;
-    }
-    return location_name.is_set;
-}
-
-bool Controller::Zen::Trace::Location::has_operation() const
-{
-    for (std::size_t index=0; index<all_options.size(); index++)
-    {
-        if(all_options[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(location_name.yfilter);
-}
-
-std::string Controller::Zen::Trace::Location::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::Trace::Location::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (location_name.is_set || is_set(location_name.yfilter)) leaf_name_data.push_back(location_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "all-options")
-    {
-        auto c = std::make_shared<Controller::Zen::Trace::Location::AllOptions>();
-        c->parent = this;
-        all_options.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::Trace::Location::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : all_options)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Controller::Zen::Trace::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "location_name")
-    {
-        location_name = value;
-        location_name.value_namespace = name_space;
-        location_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Controller::Zen::Trace::Location::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "location_name")
-    {
-        location_name.yfilter = yfilter;
-    }
-}
-
-bool Controller::Zen::Trace::Location::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "all-options" || name == "location_name")
-        return true;
-    return false;
-}
-
-Controller::Zen::Trace::Location::AllOptions::AllOptions()
-    :
-    option{YType::str, "option"}
-{
-
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::Zen::Trace::Location::AllOptions::~AllOptions()
-{
-}
-
-bool Controller::Zen::Trace::Location::AllOptions::has_data() const
-{
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
-    {
-        if(trace_blocks[index]->has_data())
-            return true;
-    }
-    return option.is_set;
-}
-
-bool Controller::Zen::Trace::Location::AllOptions::has_operation() const
-{
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
-    {
-        if(trace_blocks[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(option.yfilter);
-}
-
-std::string Controller::Zen::Trace::Location::AllOptions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::Trace::Location::AllOptions::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (option.is_set || is_set(option.yfilter)) leaf_name_data.push_back(option.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "trace-blocks")
-    {
-        auto c = std::make_shared<Controller::Zen::Trace::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::Trace::Location::AllOptions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : trace_blocks)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Controller::Zen::Trace::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "option")
-    {
-        option = value;
-        option.value_namespace = name_space;
-        option.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Controller::Zen::Trace::Location::AllOptions::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "option")
-    {
-        option.yfilter = yfilter;
-    }
-}
-
-bool Controller::Zen::Trace::Location::AllOptions::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "trace-blocks" || name == "option")
-        return true;
-    return false;
-}
-
-Controller::Zen::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
-    :
-    data{YType::str, "data"}
-{
-
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::Zen::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
-{
-}
-
-bool Controller::Zen::Trace::Location::AllOptions::TraceBlocks::has_data() const
-{
-    return data.is_set;
-}
-
-bool Controller::Zen::Trace::Location::AllOptions::TraceBlocks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter);
-}
-
-std::string Controller::Zen::Trace::Location::AllOptions::TraceBlocks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trace-blocks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::Zen::Trace::Location::AllOptions::TraceBlocks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::Zen::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::Zen::Trace::Location::AllOptions::TraceBlocks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Controller::Zen::Trace::Location::AllOptions::TraceBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Controller::Zen::Trace::Location::AllOptions::TraceBlocks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-}
-
-bool Controller::Zen::Trace::Location::AllOptions::TraceBlocks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data")
-        return true;
-    return false;
-}
-
-Controller::CccDriver::CccDriver()
-    :
-    bootflash(std::make_shared<Controller::CccDriver::Bootflash>())
-	,inventory(std::make_shared<Controller::CccDriver::Inventory>())
-	,power(std::make_shared<Controller::CccDriver::Power>())
-	,reset_history(std::make_shared<Controller::CccDriver::ResetHistory>())
-	,register_(std::make_shared<Controller::CccDriver::Register>())
-	,ejector(std::make_shared<Controller::CccDriver::Ejector>())
-	,i2c_dev(std::make_shared<Controller::CccDriver::I2CDev>())
-	,ethernet(std::make_shared<Controller::CccDriver::Ethernet>())
-	,event_history(std::make_shared<Controller::CccDriver::EventHistory>())
-	,oir_history(std::make_shared<Controller::CccDriver::OirHistory>())
-	,notif_history(std::make_shared<Controller::CccDriver::NotifHistory>())
-	,slave(std::make_shared<Controller::CccDriver::Slave>())
-	,action(std::make_shared<Controller::CccDriver::Action>())
-{
-    bootflash->parent = this;
-    inventory->parent = this;
-    power->parent = this;
-    reset_history->parent = this;
-    register_->parent = this;
-    ejector->parent = this;
-    i2c_dev->parent = this;
-    ethernet->parent = this;
-    event_history->parent = this;
-    oir_history->parent = this;
-    notif_history->parent = this;
-    slave->parent = this;
-    action->parent = this;
-
-    yang_name = "ccc_driver"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Controller::CccDriver::~CccDriver()
-{
-}
-
-bool Controller::CccDriver::has_data() const
-{
-    for (std::size_t index=0; index<trace.size(); index++)
-    {
-        if(trace[index]->has_data())
-            return true;
-    }
-    return (bootflash !=  nullptr && bootflash->has_data())
-	|| (inventory !=  nullptr && inventory->has_data())
-	|| (power !=  nullptr && power->has_data())
-	|| (reset_history !=  nullptr && reset_history->has_data())
-	|| (register_ !=  nullptr && register_->has_data())
-	|| (ejector !=  nullptr && ejector->has_data())
-	|| (i2c_dev !=  nullptr && i2c_dev->has_data())
-	|| (ethernet !=  nullptr && ethernet->has_data())
-	|| (event_history !=  nullptr && event_history->has_data())
-	|| (oir_history !=  nullptr && oir_history->has_data())
-	|| (notif_history !=  nullptr && notif_history->has_data())
-	|| (slave !=  nullptr && slave->has_data())
-	|| (action !=  nullptr && action->has_data());
-}
-
-bool Controller::CccDriver::has_operation() const
-{
-    for (std::size_t index=0; index<trace.size(); index++)
-    {
-        if(trace[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| (bootflash !=  nullptr && bootflash->has_operation())
-	|| (inventory !=  nullptr && inventory->has_operation())
-	|| (power !=  nullptr && power->has_operation())
-	|| (reset_history !=  nullptr && reset_history->has_operation())
-	|| (register_ !=  nullptr && register_->has_operation())
-	|| (ejector !=  nullptr && ejector->has_operation())
-	|| (i2c_dev !=  nullptr && i2c_dev->has_operation())
-	|| (ethernet !=  nullptr && ethernet->has_operation())
-	|| (event_history !=  nullptr && event_history->has_operation())
-	|| (oir_history !=  nullptr && oir_history->has_operation())
-	|| (notif_history !=  nullptr && notif_history->has_operation())
-	|| (slave !=  nullptr && slave->has_operation())
-	|| (action !=  nullptr && action->has_operation());
-}
-
-std::string Controller::CccDriver::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Controller::CccDriver::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ccc_driver";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::CccDriver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "trace")
-    {
-        auto c = std::make_shared<Controller::CccDriver::Trace>();
-        c->parent = this;
-        trace.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "bootflash")
-    {
-        if(bootflash == nullptr)
-        {
-            bootflash = std::make_shared<Controller::CccDriver::Bootflash>();
-        }
-        return bootflash;
-    }
-
-    if(child_yang_name == "inventory")
-    {
-        if(inventory == nullptr)
-        {
-            inventory = std::make_shared<Controller::CccDriver::Inventory>();
-        }
-        return inventory;
-    }
-
-    if(child_yang_name == "power")
-    {
-        if(power == nullptr)
-        {
-            power = std::make_shared<Controller::CccDriver::Power>();
-        }
-        return power;
-    }
-
-    if(child_yang_name == "reset-history")
-    {
-        if(reset_history == nullptr)
-        {
-            reset_history = std::make_shared<Controller::CccDriver::ResetHistory>();
-        }
-        return reset_history;
-    }
-
-    if(child_yang_name == "register")
-    {
-        if(register_ == nullptr)
-        {
-            register_ = std::make_shared<Controller::CccDriver::Register>();
-        }
-        return register_;
-    }
-
-    if(child_yang_name == "ejector")
-    {
-        if(ejector == nullptr)
-        {
-            ejector = std::make_shared<Controller::CccDriver::Ejector>();
-        }
-        return ejector;
-    }
-
-    if(child_yang_name == "i2c-dev")
-    {
-        if(i2c_dev == nullptr)
-        {
-            i2c_dev = std::make_shared<Controller::CccDriver::I2CDev>();
-        }
-        return i2c_dev;
-    }
-
-    if(child_yang_name == "ethernet")
-    {
-        if(ethernet == nullptr)
-        {
-            ethernet = std::make_shared<Controller::CccDriver::Ethernet>();
-        }
-        return ethernet;
-    }
-
-    if(child_yang_name == "event-history")
-    {
-        if(event_history == nullptr)
-        {
-            event_history = std::make_shared<Controller::CccDriver::EventHistory>();
-        }
-        return event_history;
-    }
-
-    if(child_yang_name == "oir-history")
-    {
-        if(oir_history == nullptr)
-        {
-            oir_history = std::make_shared<Controller::CccDriver::OirHistory>();
-        }
-        return oir_history;
-    }
-
-    if(child_yang_name == "notif-history")
-    {
-        if(notif_history == nullptr)
-        {
-            notif_history = std::make_shared<Controller::CccDriver::NotifHistory>();
-        }
-        return notif_history;
-    }
-
-    if(child_yang_name == "slave")
-    {
-        if(slave == nullptr)
-        {
-            slave = std::make_shared<Controller::CccDriver::Slave>();
-        }
-        return slave;
-    }
-
-    if(child_yang_name == "action")
-    {
-        if(action == nullptr)
-        {
-            action = std::make_shared<Controller::CccDriver::Action>();
-        }
-        return action;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : trace)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    if(bootflash != nullptr)
-    {
-        children["bootflash"] = bootflash;
-    }
-
-    if(inventory != nullptr)
-    {
-        children["inventory"] = inventory;
-    }
-
-    if(power != nullptr)
-    {
-        children["power"] = power;
-    }
-
-    if(reset_history != nullptr)
-    {
-        children["reset-history"] = reset_history;
-    }
-
-    if(register_ != nullptr)
-    {
-        children["register"] = register_;
-    }
-
-    if(ejector != nullptr)
-    {
-        children["ejector"] = ejector;
-    }
-
-    if(i2c_dev != nullptr)
-    {
-        children["i2c-dev"] = i2c_dev;
-    }
-
-    if(ethernet != nullptr)
-    {
-        children["ethernet"] = ethernet;
-    }
-
-    if(event_history != nullptr)
-    {
-        children["event-history"] = event_history;
-    }
-
-    if(oir_history != nullptr)
-    {
-        children["oir-history"] = oir_history;
-    }
-
-    if(notif_history != nullptr)
-    {
-        children["notif-history"] = notif_history;
-    }
-
-    if(slave != nullptr)
-    {
-        children["slave"] = slave;
-    }
-
-    if(action != nullptr)
-    {
-        children["action"] = action;
-    }
-
-    return children;
-}
-
-void Controller::CccDriver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Controller::CccDriver::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Controller::CccDriver::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "trace" || name == "bootflash" || name == "inventory" || name == "power" || name == "reset-history" || name == "register" || name == "ejector" || name == "i2c-dev" || name == "ethernet" || name == "event-history" || name == "oir-history" || name == "notif-history" || name == "slave" || name == "action")
-        return true;
-    return false;
-}
-
-Controller::CccDriver::Trace::Trace()
-    :
-    buffer{YType::str, "buffer"}
-{
-
-    yang_name = "trace"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Controller::CccDriver::Trace::~Trace()
-{
-}
-
-bool Controller::CccDriver::Trace::has_data() const
-{
-    for (std::size_t index=0; index<location.size(); index++)
-    {
-        if(location[index]->has_data())
-            return true;
-    }
-    return buffer.is_set;
-}
-
-bool Controller::CccDriver::Trace::has_operation() const
-{
-    for (std::size_t index=0; index<location.size(); index++)
-    {
-        if(location[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(buffer.yfilter);
-}
-
-std::string Controller::CccDriver::Trace::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/ccc_driver/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Controller::CccDriver::Trace::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::Trace::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (buffer.is_set || is_set(buffer.yfilter)) leaf_name_data.push_back(buffer.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::CccDriver::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "location")
-    {
-        auto c = std::make_shared<Controller::CccDriver::Trace::Location>();
-        c->parent = this;
-        location.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Trace::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : location)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Controller::CccDriver::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "buffer")
-    {
-        buffer = value;
-        buffer.value_namespace = name_space;
-        buffer.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Controller::CccDriver::Trace::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "buffer")
-    {
-        buffer.yfilter = yfilter;
-    }
-}
-
-bool Controller::CccDriver::Trace::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "location" || name == "buffer")
-        return true;
-    return false;
-}
-
-Controller::CccDriver::Trace::Location::Location()
-    :
-    location_name{YType::str, "location_name"}
-{
-
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::CccDriver::Trace::Location::~Location()
-{
-}
-
-bool Controller::CccDriver::Trace::Location::has_data() const
-{
-    for (std::size_t index=0; index<all_options.size(); index++)
-    {
-        if(all_options[index]->has_data())
-            return true;
-    }
-    return location_name.is_set;
-}
-
-bool Controller::CccDriver::Trace::Location::has_operation() const
-{
-    for (std::size_t index=0; index<all_options.size(); index++)
-    {
-        if(all_options[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(location_name.yfilter);
-}
-
-std::string Controller::CccDriver::Trace::Location::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::Trace::Location::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (location_name.is_set || is_set(location_name.yfilter)) leaf_name_data.push_back(location_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::CccDriver::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "all-options")
-    {
-        auto c = std::make_shared<Controller::CccDriver::Trace::Location::AllOptions>();
-        c->parent = this;
-        all_options.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Trace::Location::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : all_options)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Controller::CccDriver::Trace::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "location_name")
-    {
-        location_name = value;
-        location_name.value_namespace = name_space;
-        location_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Controller::CccDriver::Trace::Location::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "location_name")
-    {
-        location_name.yfilter = yfilter;
-    }
-}
-
-bool Controller::CccDriver::Trace::Location::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "all-options" || name == "location_name")
-        return true;
-    return false;
-}
-
-Controller::CccDriver::Trace::Location::AllOptions::AllOptions()
-    :
-    option{YType::str, "option"}
-{
-
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::CccDriver::Trace::Location::AllOptions::~AllOptions()
-{
-}
-
-bool Controller::CccDriver::Trace::Location::AllOptions::has_data() const
-{
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
-    {
-        if(trace_blocks[index]->has_data())
-            return true;
-    }
-    return option.is_set;
-}
-
-bool Controller::CccDriver::Trace::Location::AllOptions::has_operation() const
-{
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
-    {
-        if(trace_blocks[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(option.yfilter);
-}
-
-std::string Controller::CccDriver::Trace::Location::AllOptions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::Trace::Location::AllOptions::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (option.is_set || is_set(option.yfilter)) leaf_name_data.push_back(option.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::CccDriver::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "trace-blocks")
-    {
-        auto c = std::make_shared<Controller::CccDriver::Trace::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Trace::Location::AllOptions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : trace_blocks)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Controller::CccDriver::Trace::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "option")
-    {
-        option = value;
-        option.value_namespace = name_space;
-        option.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Controller::CccDriver::Trace::Location::AllOptions::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "option")
-    {
-        option.yfilter = yfilter;
-    }
-}
-
-bool Controller::CccDriver::Trace::Location::AllOptions::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "trace-blocks" || name == "option")
-        return true;
-    return false;
-}
-
 Controller::CccDriver::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
     :
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -2684,6 +27,7 @@ Controller::CccDriver::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool Controller::CccDriver::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -2750,14 +94,14 @@ bool Controller::CccDriver::Trace::Location::AllOptions::TraceBlocks::has_leaf_o
 Controller::CccDriver::Bootflash::Bootflash()
     :
     info(std::make_shared<Controller::CccDriver::Bootflash::Info>())
-	,status(std::make_shared<Controller::CccDriver::Bootflash::Status>())
-	,cre_status(std::make_shared<Controller::CccDriver::Bootflash::CreStatus>())
+    , status(std::make_shared<Controller::CccDriver::Bootflash::Status>())
+    , cre_status(std::make_shared<Controller::CccDriver::Bootflash::CreStatus>())
 {
     info->parent = this;
     status->parent = this;
     cre_status->parent = this;
 
-    yang_name = "bootflash"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bootflash"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Bootflash::~Bootflash()
@@ -2766,6 +110,7 @@ Controller::CccDriver::Bootflash::~Bootflash()
 
 bool Controller::CccDriver::Bootflash::has_data() const
 {
+    if (is_presence_container) return true;
     return (info !=  nullptr && info->has_data())
 	|| (status !=  nullptr && status->has_data())
 	|| (cre_status !=  nullptr && cre_status->has_data());
@@ -2872,9 +217,11 @@ bool Controller::CccDriver::Bootflash::has_leaf_or_child_of_name(const std::stri
 }
 
 Controller::CccDriver::Bootflash::Info::Info()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "info"; yang_parent_name = "bootflash"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "info"; yang_parent_name = "bootflash"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Bootflash::Info::~Info()
@@ -2883,7 +230,8 @@ Controller::CccDriver::Bootflash::Info::~Info()
 
 bool Controller::CccDriver::Bootflash::Info::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2893,7 +241,7 @@ bool Controller::CccDriver::Bootflash::Info::has_data() const
 
 bool Controller::CccDriver::Bootflash::Info::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2930,7 +278,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Bootflash::Info::get_child_by_nam
     {
         auto c = std::make_shared<Controller::CccDriver::Bootflash::Info::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2942,7 +290,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Bootflash:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2971,12 +319,12 @@ bool Controller::CccDriver::Bootflash::Info::has_leaf_or_child_of_name(const std
 Controller::CccDriver::Bootflash::Info::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     bf_info(std::make_shared<Controller::CccDriver::Bootflash::Info::Location::BfInfo>())
 {
     bf_info->parent = this;
 
-    yang_name = "location"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Bootflash::Info::Location::~Location()
@@ -2985,6 +333,7 @@ Controller::CccDriver::Bootflash::Info::Location::~Location()
 
 bool Controller::CccDriver::Bootflash::Info::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (bf_info !=  nullptr && bf_info->has_data());
 }
@@ -3006,7 +355,8 @@ std::string Controller::CccDriver::Bootflash::Info::Location::get_absolute_path(
 std::string Controller::CccDriver::Bootflash::Info::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -3076,7 +426,7 @@ Controller::CccDriver::Bootflash::Info::Location::BfInfo::BfInfo()
     bf_info_values{YType::str, "bf_info_values"}
 {
 
-    yang_name = "bf_info"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bf_info"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Bootflash::Info::Location::BfInfo::~BfInfo()
@@ -3085,6 +435,7 @@ Controller::CccDriver::Bootflash::Info::Location::BfInfo::~BfInfo()
 
 bool Controller::CccDriver::Bootflash::Info::Location::BfInfo::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : bf_info_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -3158,9 +509,11 @@ bool Controller::CccDriver::Bootflash::Info::Location::BfInfo::has_leaf_or_child
 }
 
 Controller::CccDriver::Bootflash::Status::Status()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "status"; yang_parent_name = "bootflash"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "status"; yang_parent_name = "bootflash"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Bootflash::Status::~Status()
@@ -3169,7 +522,8 @@ Controller::CccDriver::Bootflash::Status::~Status()
 
 bool Controller::CccDriver::Bootflash::Status::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3179,7 +533,7 @@ bool Controller::CccDriver::Bootflash::Status::has_data() const
 
 bool Controller::CccDriver::Bootflash::Status::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3216,7 +570,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Bootflash::Status::get_child_by_n
     {
         auto c = std::make_shared<Controller::CccDriver::Bootflash::Status::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3228,7 +582,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Bootflash:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3257,12 +611,12 @@ bool Controller::CccDriver::Bootflash::Status::has_leaf_or_child_of_name(const s
 Controller::CccDriver::Bootflash::Status::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     bf_status(std::make_shared<Controller::CccDriver::Bootflash::Status::Location::BfStatus>())
 {
     bf_status->parent = this;
 
-    yang_name = "location"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Bootflash::Status::Location::~Location()
@@ -3271,6 +625,7 @@ Controller::CccDriver::Bootflash::Status::Location::~Location()
 
 bool Controller::CccDriver::Bootflash::Status::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (bf_status !=  nullptr && bf_status->has_data());
 }
@@ -3292,7 +647,8 @@ std::string Controller::CccDriver::Bootflash::Status::Location::get_absolute_pat
 std::string Controller::CccDriver::Bootflash::Status::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -3362,7 +718,7 @@ Controller::CccDriver::Bootflash::Status::Location::BfStatus::BfStatus()
     bf_status_values{YType::str, "bf_status_values"}
 {
 
-    yang_name = "bf_status"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bf_status"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Bootflash::Status::Location::BfStatus::~BfStatus()
@@ -3371,6 +727,7 @@ Controller::CccDriver::Bootflash::Status::Location::BfStatus::~BfStatus()
 
 bool Controller::CccDriver::Bootflash::Status::Location::BfStatus::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : bf_status_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -3444,9 +801,11 @@ bool Controller::CccDriver::Bootflash::Status::Location::BfStatus::has_leaf_or_c
 }
 
 Controller::CccDriver::Bootflash::CreStatus::CreStatus()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "cre_status"; yang_parent_name = "bootflash"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cre_status"; yang_parent_name = "bootflash"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Bootflash::CreStatus::~CreStatus()
@@ -3455,7 +814,8 @@ Controller::CccDriver::Bootflash::CreStatus::~CreStatus()
 
 bool Controller::CccDriver::Bootflash::CreStatus::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3465,7 +825,7 @@ bool Controller::CccDriver::Bootflash::CreStatus::has_data() const
 
 bool Controller::CccDriver::Bootflash::CreStatus::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3502,7 +862,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Bootflash::CreStatus::get_child_b
     {
         auto c = std::make_shared<Controller::CccDriver::Bootflash::CreStatus::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3514,7 +874,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Bootflash:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3543,12 +903,12 @@ bool Controller::CccDriver::Bootflash::CreStatus::has_leaf_or_child_of_name(cons
 Controller::CccDriver::Bootflash::CreStatus::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     bf_status(std::make_shared<Controller::CccDriver::Bootflash::CreStatus::Location::BfStatus>())
 {
     bf_status->parent = this;
 
-    yang_name = "location"; yang_parent_name = "cre_status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "cre_status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Bootflash::CreStatus::Location::~Location()
@@ -3557,6 +917,7 @@ Controller::CccDriver::Bootflash::CreStatus::Location::~Location()
 
 bool Controller::CccDriver::Bootflash::CreStatus::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (bf_status !=  nullptr && bf_status->has_data());
 }
@@ -3578,7 +939,8 @@ std::string Controller::CccDriver::Bootflash::CreStatus::Location::get_absolute_
 std::string Controller::CccDriver::Bootflash::CreStatus::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -3648,7 +1010,7 @@ Controller::CccDriver::Bootflash::CreStatus::Location::BfStatus::BfStatus()
     bf_status_values{YType::str, "bf_status_values"}
 {
 
-    yang_name = "bf_status"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bf_status"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Bootflash::CreStatus::Location::BfStatus::~BfStatus()
@@ -3657,6 +1019,7 @@ Controller::CccDriver::Bootflash::CreStatus::Location::BfStatus::~BfStatus()
 
 bool Controller::CccDriver::Bootflash::CreStatus::Location::BfStatus::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : bf_status_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -3732,16 +1095,16 @@ bool Controller::CccDriver::Bootflash::CreStatus::Location::BfStatus::has_leaf_o
 Controller::CccDriver::Inventory::Inventory()
     :
     summary(std::make_shared<Controller::CccDriver::Inventory::Summary>())
-	,version(std::make_shared<Controller::CccDriver::Inventory::Version>())
-	,status(std::make_shared<Controller::CccDriver::Inventory::Status>())
-	,detail(std::make_shared<Controller::CccDriver::Inventory::Detail>())
+    , version(std::make_shared<Controller::CccDriver::Inventory::Version>())
+    , status(std::make_shared<Controller::CccDriver::Inventory::Status>())
+    , detail(std::make_shared<Controller::CccDriver::Inventory::Detail>())
 {
     summary->parent = this;
     version->parent = this;
     status->parent = this;
     detail->parent = this;
 
-    yang_name = "inventory"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inventory"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Inventory::~Inventory()
@@ -3750,6 +1113,7 @@ Controller::CccDriver::Inventory::~Inventory()
 
 bool Controller::CccDriver::Inventory::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (version !=  nullptr && version->has_data())
 	|| (status !=  nullptr && status->has_data())
@@ -3872,9 +1236,11 @@ bool Controller::CccDriver::Inventory::has_leaf_or_child_of_name(const std::stri
 }
 
 Controller::CccDriver::Inventory::Summary::Summary()
+    :
+    ccc_inv_summary(this, {"location"})
 {
 
-    yang_name = "summary"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Inventory::Summary::~Summary()
@@ -3883,7 +1249,8 @@ Controller::CccDriver::Inventory::Summary::~Summary()
 
 bool Controller::CccDriver::Inventory::Summary::has_data() const
 {
-    for (std::size_t index=0; index<ccc_inv_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_inv_summary.len(); index++)
     {
         if(ccc_inv_summary[index]->has_data())
             return true;
@@ -3893,7 +1260,7 @@ bool Controller::CccDriver::Inventory::Summary::has_data() const
 
 bool Controller::CccDriver::Inventory::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_inv_summary.size(); index++)
+    for (std::size_t index=0; index<ccc_inv_summary.len(); index++)
     {
         if(ccc_inv_summary[index]->has_operation())
             return true;
@@ -3930,7 +1297,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Inventory::Summary::get_child_by_
     {
         auto c = std::make_shared<Controller::CccDriver::Inventory::Summary::CccInvSummary>();
         c->parent = this;
-        ccc_inv_summary.push_back(c);
+        ccc_inv_summary.append(c);
         return c;
     }
 
@@ -3942,7 +1309,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Inventory:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_inv_summary)
+    for (auto c : ccc_inv_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3978,7 +1345,7 @@ Controller::CccDriver::Inventory::Summary::CccInvSummary::CccInvSummary()
     ccc_inv_card_state{YType::str, "ccc_inv_card_state"}
 {
 
-    yang_name = "ccc_inv_summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ccc_inv_summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Inventory::Summary::CccInvSummary::~CccInvSummary()
@@ -3987,6 +1354,7 @@ Controller::CccDriver::Inventory::Summary::CccInvSummary::~CccInvSummary()
 
 bool Controller::CccDriver::Inventory::Summary::CccInvSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| ccc_inv_pid_string.is_set
 	|| ccc_inv_slot_number.is_set
@@ -4016,7 +1384,8 @@ std::string Controller::CccDriver::Inventory::Summary::CccInvSummary::get_absolu
 std::string Controller::CccDriver::Inventory::Summary::CccInvSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccc_inv_summary" <<"[location='" <<location <<"']";
+    path_buffer << "ccc_inv_summary";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -4123,9 +1492,11 @@ bool Controller::CccDriver::Inventory::Summary::CccInvSummary::has_leaf_or_child
 }
 
 Controller::CccDriver::Inventory::Version::Version()
+    :
+    ccc_inv_version(this, {"location"})
 {
 
-    yang_name = "version"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "version"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Inventory::Version::~Version()
@@ -4134,7 +1505,8 @@ Controller::CccDriver::Inventory::Version::~Version()
 
 bool Controller::CccDriver::Inventory::Version::has_data() const
 {
-    for (std::size_t index=0; index<ccc_inv_version.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_inv_version.len(); index++)
     {
         if(ccc_inv_version[index]->has_data())
             return true;
@@ -4144,7 +1516,7 @@ bool Controller::CccDriver::Inventory::Version::has_data() const
 
 bool Controller::CccDriver::Inventory::Version::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_inv_version.size(); index++)
+    for (std::size_t index=0; index<ccc_inv_version.len(); index++)
     {
         if(ccc_inv_version[index]->has_operation())
             return true;
@@ -4181,7 +1553,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Inventory::Version::get_child_by_
     {
         auto c = std::make_shared<Controller::CccDriver::Inventory::Version::CccInvVersion>();
         c->parent = this;
-        ccc_inv_version.push_back(c);
+        ccc_inv_version.append(c);
         return c;
     }
 
@@ -4193,7 +1565,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Inventory:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_inv_version)
+    for (auto c : ccc_inv_version.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4229,7 +1601,7 @@ Controller::CccDriver::Inventory::Version::CccInvVersion::CccInvVersion()
     ccc_inv_switch_version{YType::str, "ccc_inv_switch_version"}
 {
 
-    yang_name = "ccc_inv_version"; yang_parent_name = "version"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ccc_inv_version"; yang_parent_name = "version"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Inventory::Version::CccInvVersion::~CccInvVersion()
@@ -4238,6 +1610,7 @@ Controller::CccDriver::Inventory::Version::CccInvVersion::~CccInvVersion()
 
 bool Controller::CccDriver::Inventory::Version::CccInvVersion::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| ccc_inv_pid_string.is_set
 	|| ccc_inv_ccc_version.is_set
@@ -4267,7 +1640,8 @@ std::string Controller::CccDriver::Inventory::Version::CccInvVersion::get_absolu
 std::string Controller::CccDriver::Inventory::Version::CccInvVersion::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccc_inv_version" <<"[location='" <<location <<"']";
+    path_buffer << "ccc_inv_version";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -4374,9 +1748,11 @@ bool Controller::CccDriver::Inventory::Version::CccInvVersion::has_leaf_or_child
 }
 
 Controller::CccDriver::Inventory::Status::Status()
+    :
+    ccc_inv_status(this, {"location"})
 {
 
-    yang_name = "status"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "status"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Inventory::Status::~Status()
@@ -4385,7 +1761,8 @@ Controller::CccDriver::Inventory::Status::~Status()
 
 bool Controller::CccDriver::Inventory::Status::has_data() const
 {
-    for (std::size_t index=0; index<ccc_inv_status.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_inv_status.len(); index++)
     {
         if(ccc_inv_status[index]->has_data())
             return true;
@@ -4395,7 +1772,7 @@ bool Controller::CccDriver::Inventory::Status::has_data() const
 
 bool Controller::CccDriver::Inventory::Status::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_inv_status.size(); index++)
+    for (std::size_t index=0; index<ccc_inv_status.len(); index++)
     {
         if(ccc_inv_status[index]->has_operation())
             return true;
@@ -4432,7 +1809,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Inventory::Status::get_child_by_n
     {
         auto c = std::make_shared<Controller::CccDriver::Inventory::Status::CccInvStatus>();
         c->parent = this;
-        ccc_inv_status.push_back(c);
+        ccc_inv_status.append(c);
         return c;
     }
 
@@ -4444,7 +1821,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Inventory:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_inv_status)
+    for (auto c : ccc_inv_status.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4473,12 +1850,12 @@ bool Controller::CccDriver::Inventory::Status::has_leaf_or_child_of_name(const s
 Controller::CccDriver::Inventory::Status::CccInvStatus::CccInvStatus()
     :
     location{YType::str, "location"}
-    	,
+        ,
     ccc_inv_status_list(std::make_shared<Controller::CccDriver::Inventory::Status::CccInvStatus::CccInvStatusList>())
 {
     ccc_inv_status_list->parent = this;
 
-    yang_name = "ccc_inv_status"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ccc_inv_status"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Inventory::Status::CccInvStatus::~CccInvStatus()
@@ -4487,6 +1864,7 @@ Controller::CccDriver::Inventory::Status::CccInvStatus::~CccInvStatus()
 
 bool Controller::CccDriver::Inventory::Status::CccInvStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (ccc_inv_status_list !=  nullptr && ccc_inv_status_list->has_data());
 }
@@ -4508,7 +1886,8 @@ std::string Controller::CccDriver::Inventory::Status::CccInvStatus::get_absolute
 std::string Controller::CccDriver::Inventory::Status::CccInvStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccc_inv_status" <<"[location='" <<location <<"']";
+    path_buffer << "ccc_inv_status";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -4578,7 +1957,7 @@ Controller::CccDriver::Inventory::Status::CccInvStatus::CccInvStatusList::CccInv
     ccc_inv_status_values{YType::str, "ccc_inv_status_values"}
 {
 
-    yang_name = "ccc_inv_status_list"; yang_parent_name = "ccc_inv_status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccc_inv_status_list"; yang_parent_name = "ccc_inv_status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Inventory::Status::CccInvStatus::CccInvStatusList::~CccInvStatusList()
@@ -4587,6 +1966,7 @@ Controller::CccDriver::Inventory::Status::CccInvStatus::CccInvStatusList::~CccIn
 
 bool Controller::CccDriver::Inventory::Status::CccInvStatus::CccInvStatusList::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : ccc_inv_status_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -4660,9 +2040,11 @@ bool Controller::CccDriver::Inventory::Status::CccInvStatus::CccInvStatusList::h
 }
 
 Controller::CccDriver::Inventory::Detail::Detail()
+    :
+    ccc_inv_detail(this, {"location"})
 {
 
-    yang_name = "detail"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Inventory::Detail::~Detail()
@@ -4671,7 +2053,8 @@ Controller::CccDriver::Inventory::Detail::~Detail()
 
 bool Controller::CccDriver::Inventory::Detail::has_data() const
 {
-    for (std::size_t index=0; index<ccc_inv_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_inv_detail.len(); index++)
     {
         if(ccc_inv_detail[index]->has_data())
             return true;
@@ -4681,7 +2064,7 @@ bool Controller::CccDriver::Inventory::Detail::has_data() const
 
 bool Controller::CccDriver::Inventory::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_inv_detail.size(); index++)
+    for (std::size_t index=0; index<ccc_inv_detail.len(); index++)
     {
         if(ccc_inv_detail[index]->has_operation())
             return true;
@@ -4718,7 +2101,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Inventory::Detail::get_child_by_n
     {
         auto c = std::make_shared<Controller::CccDriver::Inventory::Detail::CccInvDetail>();
         c->parent = this;
-        ccc_inv_detail.push_back(c);
+        ccc_inv_detail.append(c);
         return c;
     }
 
@@ -4730,7 +2113,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Inventory:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_inv_detail)
+    for (auto c : ccc_inv_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4759,12 +2142,12 @@ bool Controller::CccDriver::Inventory::Detail::has_leaf_or_child_of_name(const s
 Controller::CccDriver::Inventory::Detail::CccInvDetail::CccInvDetail()
     :
     location{YType::str, "location"}
-    	,
+        ,
     ccc_inv_detail_list(std::make_shared<Controller::CccDriver::Inventory::Detail::CccInvDetail::CccInvDetailList>())
 {
     ccc_inv_detail_list->parent = this;
 
-    yang_name = "ccc_inv_detail"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ccc_inv_detail"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Inventory::Detail::CccInvDetail::~CccInvDetail()
@@ -4773,6 +2156,7 @@ Controller::CccDriver::Inventory::Detail::CccInvDetail::~CccInvDetail()
 
 bool Controller::CccDriver::Inventory::Detail::CccInvDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (ccc_inv_detail_list !=  nullptr && ccc_inv_detail_list->has_data());
 }
@@ -4794,7 +2178,8 @@ std::string Controller::CccDriver::Inventory::Detail::CccInvDetail::get_absolute
 std::string Controller::CccDriver::Inventory::Detail::CccInvDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccc_inv_detail" <<"[location='" <<location <<"']";
+    path_buffer << "ccc_inv_detail";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -4864,7 +2249,7 @@ Controller::CccDriver::Inventory::Detail::CccInvDetail::CccInvDetailList::CccInv
     ccc_inv_detail_values{YType::str, "ccc_inv_detail_values"}
 {
 
-    yang_name = "ccc_inv_detail_list"; yang_parent_name = "ccc_inv_detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccc_inv_detail_list"; yang_parent_name = "ccc_inv_detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Inventory::Detail::CccInvDetail::CccInvDetailList::~CccInvDetailList()
@@ -4873,6 +2258,7 @@ Controller::CccDriver::Inventory::Detail::CccInvDetail::CccInvDetailList::~CccIn
 
 bool Controller::CccDriver::Inventory::Detail::CccInvDetail::CccInvDetailList::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : ccc_inv_detail_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -4951,7 +2337,7 @@ Controller::CccDriver::Power::Power()
 {
     master_access->parent = this;
 
-    yang_name = "power"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "power"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Power::~Power()
@@ -4960,6 +2346,7 @@ Controller::CccDriver::Power::~Power()
 
 bool Controller::CccDriver::Power::has_data() const
 {
+    if (is_presence_container) return true;
     return (master_access !=  nullptr && master_access->has_data());
 }
 
@@ -5036,12 +2423,12 @@ bool Controller::CccDriver::Power::has_leaf_or_child_of_name(const std::string &
 Controller::CccDriver::Power::MasterAccess::MasterAccess()
     :
     summary(std::make_shared<Controller::CccDriver::Power::MasterAccess::Summary>())
-	,detail(std::make_shared<Controller::CccDriver::Power::MasterAccess::Detail>())
+    , detail(std::make_shared<Controller::CccDriver::Power::MasterAccess::Detail>())
 {
     summary->parent = this;
     detail->parent = this;
 
-    yang_name = "master-access"; yang_parent_name = "power"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "master-access"; yang_parent_name = "power"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Power::MasterAccess::~MasterAccess()
@@ -5050,6 +2437,7 @@ Controller::CccDriver::Power::MasterAccess::~MasterAccess()
 
 bool Controller::CccDriver::Power::MasterAccess::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (detail !=  nullptr && detail->has_data());
 }
@@ -5140,9 +2528,11 @@ bool Controller::CccDriver::Power::MasterAccess::has_leaf_or_child_of_name(const
 }
 
 Controller::CccDriver::Power::MasterAccess::Summary::Summary()
+    :
+    power_summary(this, {"ccc_power_location"})
 {
 
-    yang_name = "summary"; yang_parent_name = "master-access"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "master-access"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Power::MasterAccess::Summary::~Summary()
@@ -5151,7 +2541,8 @@ Controller::CccDriver::Power::MasterAccess::Summary::~Summary()
 
 bool Controller::CccDriver::Power::MasterAccess::Summary::has_data() const
 {
-    for (std::size_t index=0; index<power_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<power_summary.len(); index++)
     {
         if(power_summary[index]->has_data())
             return true;
@@ -5161,7 +2552,7 @@ bool Controller::CccDriver::Power::MasterAccess::Summary::has_data() const
 
 bool Controller::CccDriver::Power::MasterAccess::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<power_summary.size(); index++)
+    for (std::size_t index=0; index<power_summary.len(); index++)
     {
         if(power_summary[index]->has_operation())
             return true;
@@ -5198,7 +2589,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Power::MasterAccess::Summary::get
     {
         auto c = std::make_shared<Controller::CccDriver::Power::MasterAccess::Summary::PowerSummary>();
         c->parent = this;
-        power_summary.push_back(c);
+        power_summary.append(c);
         return c;
     }
 
@@ -5210,7 +2601,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Power::Mas
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : power_summary)
+    for (auto c : power_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5243,7 +2634,7 @@ Controller::CccDriver::Power::MasterAccess::Summary::PowerSummary::PowerSummary(
     power_state{YType::str, "power_state"}
 {
 
-    yang_name = "power_summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "power_summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Power::MasterAccess::Summary::PowerSummary::~PowerSummary()
@@ -5252,6 +2643,7 @@ Controller::CccDriver::Power::MasterAccess::Summary::PowerSummary::~PowerSummary
 
 bool Controller::CccDriver::Power::MasterAccess::Summary::PowerSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return ccc_power_location.is_set
 	|| card_type.is_set
 	|| power_state.is_set;
@@ -5275,7 +2667,8 @@ std::string Controller::CccDriver::Power::MasterAccess::Summary::PowerSummary::g
 std::string Controller::CccDriver::Power::MasterAccess::Summary::PowerSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "power_summary" <<"[ccc_power_location='" <<ccc_power_location <<"']";
+    path_buffer << "power_summary";
+    ADD_KEY_TOKEN(ccc_power_location, "ccc_power_location");
     return path_buffer.str();
 }
 
@@ -5349,9 +2742,11 @@ bool Controller::CccDriver::Power::MasterAccess::Summary::PowerSummary::has_leaf
 }
 
 Controller::CccDriver::Power::MasterAccess::Detail::Detail()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "detail"; yang_parent_name = "master-access"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "master-access"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Power::MasterAccess::Detail::~Detail()
@@ -5360,7 +2755,8 @@ Controller::CccDriver::Power::MasterAccess::Detail::~Detail()
 
 bool Controller::CccDriver::Power::MasterAccess::Detail::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5370,7 +2766,7 @@ bool Controller::CccDriver::Power::MasterAccess::Detail::has_data() const
 
 bool Controller::CccDriver::Power::MasterAccess::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5407,7 +2803,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Power::MasterAccess::Detail::get_
     {
         auto c = std::make_shared<Controller::CccDriver::Power::MasterAccess::Detail::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5419,7 +2815,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Power::Mas
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5448,12 +2844,12 @@ bool Controller::CccDriver::Power::MasterAccess::Detail::has_leaf_or_child_of_na
 Controller::CccDriver::Power::MasterAccess::Detail::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     power_details(std::make_shared<Controller::CccDriver::Power::MasterAccess::Detail::Location::PowerDetails>())
 {
     power_details->parent = this;
 
-    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Power::MasterAccess::Detail::Location::~Location()
@@ -5462,6 +2858,7 @@ Controller::CccDriver::Power::MasterAccess::Detail::Location::~Location()
 
 bool Controller::CccDriver::Power::MasterAccess::Detail::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (power_details !=  nullptr && power_details->has_data());
 }
@@ -5483,7 +2880,8 @@ std::string Controller::CccDriver::Power::MasterAccess::Detail::Location::get_ab
 std::string Controller::CccDriver::Power::MasterAccess::Detail::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -5553,7 +2951,7 @@ Controller::CccDriver::Power::MasterAccess::Detail::Location::PowerDetails::Powe
     power_details_values{YType::str, "power_details_values"}
 {
 
-    yang_name = "power_details"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power_details"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Power::MasterAccess::Detail::Location::PowerDetails::~PowerDetails()
@@ -5562,6 +2960,7 @@ Controller::CccDriver::Power::MasterAccess::Detail::Location::PowerDetails::~Pow
 
 bool Controller::CccDriver::Power::MasterAccess::Detail::Location::PowerDetails::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : power_details_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -5637,12 +3036,12 @@ bool Controller::CccDriver::Power::MasterAccess::Detail::Location::PowerDetails:
 Controller::CccDriver::ResetHistory::ResetHistory()
     :
     onchip(std::make_shared<Controller::CccDriver::ResetHistory::Onchip>())
-	,onboard(std::make_shared<Controller::CccDriver::ResetHistory::Onboard>())
+    , onboard(std::make_shared<Controller::CccDriver::ResetHistory::Onboard>())
 {
     onchip->parent = this;
     onboard->parent = this;
 
-    yang_name = "reset-history"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reset-history"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::ResetHistory::~ResetHistory()
@@ -5651,6 +3050,7 @@ Controller::CccDriver::ResetHistory::~ResetHistory()
 
 bool Controller::CccDriver::ResetHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return (onchip !=  nullptr && onchip->has_data())
 	|| (onboard !=  nullptr && onboard->has_data());
 }
@@ -5741,9 +3141,11 @@ bool Controller::CccDriver::ResetHistory::has_leaf_or_child_of_name(const std::s
 }
 
 Controller::CccDriver::ResetHistory::Onchip::Onchip()
+    :
+    location(this, {"loc"})
 {
 
-    yang_name = "onchip"; yang_parent_name = "reset-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "onchip"; yang_parent_name = "reset-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::ResetHistory::Onchip::~Onchip()
@@ -5752,7 +3154,8 @@ Controller::CccDriver::ResetHistory::Onchip::~Onchip()
 
 bool Controller::CccDriver::ResetHistory::Onchip::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5762,7 +3165,7 @@ bool Controller::CccDriver::ResetHistory::Onchip::has_data() const
 
 bool Controller::CccDriver::ResetHistory::Onchip::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5799,7 +3202,7 @@ std::shared_ptr<Entity> Controller::CccDriver::ResetHistory::Onchip::get_child_b
     {
         auto c = std::make_shared<Controller::CccDriver::ResetHistory::Onchip::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5811,7 +3214,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::ResetHisto
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5843,9 +3246,11 @@ Controller::CccDriver::ResetHistory::Onchip::Location::Location()
     ccc_reset_timeofday{YType::str, "ccc_reset_timeofday"},
     ccc_reset_uptime{YType::str, "ccc_reset_uptime"},
     ccc_hw_reset_count{YType::uint32, "ccc_hw_reset_count"}
+        ,
+    ccc_reset_entry(this, {"ccc_reset_entry"})
 {
 
-    yang_name = "location"; yang_parent_name = "onchip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "onchip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::ResetHistory::Onchip::Location::~Location()
@@ -5854,7 +3259,8 @@ Controller::CccDriver::ResetHistory::Onchip::Location::~Location()
 
 bool Controller::CccDriver::ResetHistory::Onchip::Location::has_data() const
 {
-    for (std::size_t index=0; index<ccc_reset_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_reset_entry.len(); index++)
     {
         if(ccc_reset_entry[index]->has_data())
             return true;
@@ -5867,7 +3273,7 @@ bool Controller::CccDriver::ResetHistory::Onchip::Location::has_data() const
 
 bool Controller::CccDriver::ResetHistory::Onchip::Location::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_reset_entry.size(); index++)
+    for (std::size_t index=0; index<ccc_reset_entry.len(); index++)
     {
         if(ccc_reset_entry[index]->has_operation())
             return true;
@@ -5889,7 +3295,8 @@ std::string Controller::CccDriver::ResetHistory::Onchip::Location::get_absolute_
 std::string Controller::CccDriver::ResetHistory::Onchip::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc='" <<loc <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc, "loc");
     return path_buffer.str();
 }
 
@@ -5912,7 +3319,7 @@ std::shared_ptr<Entity> Controller::CccDriver::ResetHistory::Onchip::Location::g
     {
         auto c = std::make_shared<Controller::CccDriver::ResetHistory::Onchip::Location::CccResetEntry>();
         c->parent = this;
-        ccc_reset_entry.push_back(c);
+        ccc_reset_entry.append(c);
         return c;
     }
 
@@ -5924,7 +3331,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::ResetHisto
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_reset_entry)
+    for (auto c : ccc_reset_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6009,7 +3416,7 @@ Controller::CccDriver::ResetHistory::Onchip::Location::CccResetEntry::CccResetEn
     ccc_reset_date{YType::str, "ccc_reset_date"}
 {
 
-    yang_name = "ccc_reset_entry"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccc_reset_entry"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::ResetHistory::Onchip::Location::CccResetEntry::~CccResetEntry()
@@ -6018,6 +3425,7 @@ Controller::CccDriver::ResetHistory::Onchip::Location::CccResetEntry::~CccResetE
 
 bool Controller::CccDriver::ResetHistory::Onchip::Location::CccResetEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ccc_reset_entry.is_set
 	|| ccc_reset_pos.is_set
 	|| ccc_reset_idx.is_set
@@ -6058,7 +3466,8 @@ bool Controller::CccDriver::ResetHistory::Onchip::Location::CccResetEntry::has_o
 std::string Controller::CccDriver::ResetHistory::Onchip::Location::CccResetEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccc_reset_entry" <<"[ccc_reset_entry='" <<ccc_reset_entry <<"']";
+    path_buffer << "ccc_reset_entry";
+    ADD_KEY_TOKEN(ccc_reset_entry, "ccc_reset_entry");
     return path_buffer.str();
 }
 
@@ -6264,9 +3673,11 @@ bool Controller::CccDriver::ResetHistory::Onchip::Location::CccResetEntry::has_l
 }
 
 Controller::CccDriver::ResetHistory::Onboard::Onboard()
+    :
+    location(this, {"loc"})
 {
 
-    yang_name = "onboard"; yang_parent_name = "reset-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "onboard"; yang_parent_name = "reset-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::ResetHistory::Onboard::~Onboard()
@@ -6275,7 +3686,8 @@ Controller::CccDriver::ResetHistory::Onboard::~Onboard()
 
 bool Controller::CccDriver::ResetHistory::Onboard::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6285,7 +3697,7 @@ bool Controller::CccDriver::ResetHistory::Onboard::has_data() const
 
 bool Controller::CccDriver::ResetHistory::Onboard::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6322,7 +3734,7 @@ std::shared_ptr<Entity> Controller::CccDriver::ResetHistory::Onboard::get_child_
     {
         auto c = std::make_shared<Controller::CccDriver::ResetHistory::Onboard::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6334,7 +3746,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::ResetHisto
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6367,9 +3779,11 @@ Controller::CccDriver::ResetHistory::Onboard::Location::Location()
     ccc_reset_scratch_version{YType::uint32, "ccc_reset_scratch_version"},
     ccc_reset_history_sig{YType::str, "ccc_reset_history_sig"},
     ccc_reset_history_count{YType::uint32, "ccc_reset_history_count"}
+        ,
+    ccc_reset_onboard_entry(this, {"ccc_reset_onboard_entry"})
 {
 
-    yang_name = "location"; yang_parent_name = "onboard"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "onboard"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::ResetHistory::Onboard::Location::~Location()
@@ -6378,7 +3792,8 @@ Controller::CccDriver::ResetHistory::Onboard::Location::~Location()
 
 bool Controller::CccDriver::ResetHistory::Onboard::Location::has_data() const
 {
-    for (std::size_t index=0; index<ccc_reset_onboard_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_reset_onboard_entry.len(); index++)
     {
         if(ccc_reset_onboard_entry[index]->has_data())
             return true;
@@ -6392,7 +3807,7 @@ bool Controller::CccDriver::ResetHistory::Onboard::Location::has_data() const
 
 bool Controller::CccDriver::ResetHistory::Onboard::Location::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_reset_onboard_entry.size(); index++)
+    for (std::size_t index=0; index<ccc_reset_onboard_entry.len(); index++)
     {
         if(ccc_reset_onboard_entry[index]->has_operation())
             return true;
@@ -6415,7 +3830,8 @@ std::string Controller::CccDriver::ResetHistory::Onboard::Location::get_absolute
 std::string Controller::CccDriver::ResetHistory::Onboard::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc='" <<loc <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc, "loc");
     return path_buffer.str();
 }
 
@@ -6439,7 +3855,7 @@ std::shared_ptr<Entity> Controller::CccDriver::ResetHistory::Onboard::Location::
     {
         auto c = std::make_shared<Controller::CccDriver::ResetHistory::Onboard::Location::CccResetOnboardEntry>();
         c->parent = this;
-        ccc_reset_onboard_entry.push_back(c);
+        ccc_reset_onboard_entry.append(c);
         return c;
     }
 
@@ -6451,7 +3867,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::ResetHisto
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_reset_onboard_entry)
+    for (auto c : ccc_reset_onboard_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6546,7 +3962,7 @@ Controller::CccDriver::ResetHistory::Onboard::Location::CccResetOnboardEntry::Cc
     ccc_reset_date{YType::str, "ccc_reset_date"}
 {
 
-    yang_name = "ccc_reset_onboard_entry"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccc_reset_onboard_entry"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::ResetHistory::Onboard::Location::CccResetOnboardEntry::~CccResetOnboardEntry()
@@ -6555,6 +3971,7 @@ Controller::CccDriver::ResetHistory::Onboard::Location::CccResetOnboardEntry::~C
 
 bool Controller::CccDriver::ResetHistory::Onboard::Location::CccResetOnboardEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ccc_reset_onboard_entry.is_set
 	|| ccc_reset_pos.is_set
 	|| ccc_reset_idx.is_set
@@ -6595,7 +4012,8 @@ bool Controller::CccDriver::ResetHistory::Onboard::Location::CccResetOnboardEntr
 std::string Controller::CccDriver::ResetHistory::Onboard::Location::CccResetOnboardEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccc_reset_onboard_entry" <<"[ccc_reset_onboard_entry='" <<ccc_reset_onboard_entry <<"']";
+    path_buffer << "ccc_reset_onboard_entry";
+    ADD_KEY_TOKEN(ccc_reset_onboard_entry, "ccc_reset_onboard_entry");
     return path_buffer.str();
 }
 
@@ -6801,9 +4219,11 @@ bool Controller::CccDriver::ResetHistory::Onboard::Location::CccResetOnboardEntr
 }
 
 Controller::CccDriver::Register::Register()
+    :
+    register_location(this, {"register_location"})
 {
 
-    yang_name = "register"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "register"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Register::~Register()
@@ -6812,7 +4232,8 @@ Controller::CccDriver::Register::~Register()
 
 bool Controller::CccDriver::Register::has_data() const
 {
-    for (std::size_t index=0; index<register_location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<register_location.len(); index++)
     {
         if(register_location[index]->has_data())
             return true;
@@ -6822,7 +4243,7 @@ bool Controller::CccDriver::Register::has_data() const
 
 bool Controller::CccDriver::Register::has_operation() const
 {
-    for (std::size_t index=0; index<register_location.size(); index++)
+    for (std::size_t index=0; index<register_location.len(); index++)
     {
         if(register_location[index]->has_operation())
             return true;
@@ -6859,7 +4280,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Register::get_child_by_name(const
     {
         auto c = std::make_shared<Controller::CccDriver::Register::RegisterLocation>();
         c->parent = this;
-        register_location.push_back(c);
+        register_location.append(c);
         return c;
     }
 
@@ -6871,7 +4292,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Register::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : register_location)
+    for (auto c : register_location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6900,9 +4321,13 @@ bool Controller::CccDriver::Register::has_leaf_or_child_of_name(const std::strin
 Controller::CccDriver::Register::RegisterLocation::RegisterLocation()
     :
     register_location{YType::str, "register_location"}
+        ,
+    ccc_block_number(this, {"ccc_block_num"})
+    , ccc_offset(this, {"hex_offset"})
+    , ccc_address(this, {"start_hex_addr", "end_hex_addr"})
 {
 
-    yang_name = "register_location"; yang_parent_name = "register"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "register_location"; yang_parent_name = "register"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Register::RegisterLocation::~RegisterLocation()
@@ -6911,17 +4336,18 @@ Controller::CccDriver::Register::RegisterLocation::~RegisterLocation()
 
 bool Controller::CccDriver::Register::RegisterLocation::has_data() const
 {
-    for (std::size_t index=0; index<ccc_block_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_block_number.len(); index++)
     {
         if(ccc_block_number[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ccc_offset.size(); index++)
+    for (std::size_t index=0; index<ccc_offset.len(); index++)
     {
         if(ccc_offset[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ccc_address.size(); index++)
+    for (std::size_t index=0; index<ccc_address.len(); index++)
     {
         if(ccc_address[index]->has_data())
             return true;
@@ -6931,17 +4357,17 @@ bool Controller::CccDriver::Register::RegisterLocation::has_data() const
 
 bool Controller::CccDriver::Register::RegisterLocation::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_block_number.size(); index++)
+    for (std::size_t index=0; index<ccc_block_number.len(); index++)
     {
         if(ccc_block_number[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ccc_offset.size(); index++)
+    for (std::size_t index=0; index<ccc_offset.len(); index++)
     {
         if(ccc_offset[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ccc_address.size(); index++)
+    for (std::size_t index=0; index<ccc_address.len(); index++)
     {
         if(ccc_address[index]->has_operation())
             return true;
@@ -6960,7 +4386,8 @@ std::string Controller::CccDriver::Register::RegisterLocation::get_absolute_path
 std::string Controller::CccDriver::Register::RegisterLocation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "register_location" <<"[register_location='" <<register_location <<"']";
+    path_buffer << "register_location";
+    ADD_KEY_TOKEN(register_location, "register_location");
     return path_buffer.str();
 }
 
@@ -6980,7 +4407,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Register::RegisterLocation::get_c
     {
         auto c = std::make_shared<Controller::CccDriver::Register::RegisterLocation::CccBlockNumber>();
         c->parent = this;
-        ccc_block_number.push_back(c);
+        ccc_block_number.append(c);
         return c;
     }
 
@@ -6988,7 +4415,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Register::RegisterLocation::get_c
     {
         auto c = std::make_shared<Controller::CccDriver::Register::RegisterLocation::CccOffset>();
         c->parent = this;
-        ccc_offset.push_back(c);
+        ccc_offset.append(c);
         return c;
     }
 
@@ -6996,7 +4423,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Register::RegisterLocation::get_c
     {
         auto c = std::make_shared<Controller::CccDriver::Register::RegisterLocation::CccAddress>();
         c->parent = this;
-        ccc_address.push_back(c);
+        ccc_address.append(c);
         return c;
     }
 
@@ -7008,7 +4435,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Register::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_block_number)
+    for (auto c : ccc_block_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7017,7 +4444,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Register::
     }
 
     count = 0;
-    for (auto const & c : ccc_offset)
+    for (auto c : ccc_offset.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7026,7 +4453,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Register::
     }
 
     count = 0;
-    for (auto const & c : ccc_address)
+    for (auto c : ccc_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7067,9 +4494,11 @@ Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccBlockNumbe
     ccc_block_num{YType::uint32, "ccc_block_num"},
     block_location{YType::str, "block_location"},
     ccc_block_nm{YType::str, "ccc_block_nm"}
+        ,
+    ccc_register_number(this, {"index_"})
 {
 
-    yang_name = "ccc_block_number"; yang_parent_name = "register_location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccc_block_number"; yang_parent_name = "register_location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::~CccBlockNumber()
@@ -7078,7 +4507,8 @@ Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::~CccBlockNumb
 
 bool Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::has_data() const
 {
-    for (std::size_t index=0; index<ccc_register_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_register_number.len(); index++)
     {
         if(ccc_register_number[index]->has_data())
             return true;
@@ -7090,7 +4520,7 @@ bool Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::has_data
 
 bool Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_register_number.size(); index++)
+    for (std::size_t index=0; index<ccc_register_number.len(); index++)
     {
         if(ccc_register_number[index]->has_operation())
             return true;
@@ -7104,7 +4534,8 @@ bool Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::has_oper
 std::string Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccc_block_number" <<"[ccc_block_num='" <<ccc_block_num <<"']";
+    path_buffer << "ccc_block_number";
+    ADD_KEY_TOKEN(ccc_block_num, "ccc_block_num");
     return path_buffer.str();
 }
 
@@ -7126,7 +4557,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Register::RegisterLocation::CccBl
     {
         auto c = std::make_shared<Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber>();
         c->parent = this;
-        ccc_register_number.push_back(c);
+        ccc_register_number.append(c);
         return c;
     }
 
@@ -7138,7 +4569,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Register::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_register_number)
+    for (auto c : ccc_register_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7198,9 +4629,11 @@ Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNu
     :
     index_{YType::uint32, "index"},
     ccc_register_name{YType::str, "ccc_register_name"}
+        ,
+    ccc_data(this, {})
 {
 
-    yang_name = "ccc_register_number"; yang_parent_name = "ccc_block_number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccc_register_number"; yang_parent_name = "ccc_block_number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber::~CccRegisterNumber()
@@ -7209,7 +4642,8 @@ Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNu
 
 bool Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber::has_data() const
 {
-    for (std::size_t index=0; index<ccc_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_data.len(); index++)
     {
         if(ccc_data[index]->has_data())
             return true;
@@ -7220,7 +4654,7 @@ bool Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegis
 
 bool Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_data.size(); index++)
+    for (std::size_t index=0; index<ccc_data.len(); index++)
     {
         if(ccc_data[index]->has_operation())
             return true;
@@ -7233,7 +4667,8 @@ bool Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegis
 std::string Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccc_register_number" <<"[index='" <<index_ <<"']";
+    path_buffer << "ccc_register_number";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -7254,7 +4689,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Register::RegisterLocation::CccBl
     {
         auto c = std::make_shared<Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber::CccData>();
         c->parent = this;
-        ccc_data.push_back(c);
+        ccc_data.append(c);
         return c;
     }
 
@@ -7266,7 +4701,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Register::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_data)
+    for (auto c : ccc_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7319,7 +4754,7 @@ Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNu
     value_{YType::uint32, "value"}
 {
 
-    yang_name = "ccc_data"; yang_parent_name = "ccc_register_number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccc_data"; yang_parent_name = "ccc_register_number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber::CccData::~CccData()
@@ -7328,6 +4763,7 @@ Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNu
 
 bool Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber::CccData::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| offset.is_set
 	|| value_.is_set;
@@ -7420,9 +4856,11 @@ bool Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegis
 Controller::CccDriver::Register::RegisterLocation::CccOffset::CccOffset()
     :
     hex_offset{YType::str, "hex_offset"}
+        ,
+    ccc_reg_offset_data(this, {})
 {
 
-    yang_name = "ccc_offset"; yang_parent_name = "register_location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccc_offset"; yang_parent_name = "register_location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Register::RegisterLocation::CccOffset::~CccOffset()
@@ -7431,7 +4869,8 @@ Controller::CccDriver::Register::RegisterLocation::CccOffset::~CccOffset()
 
 bool Controller::CccDriver::Register::RegisterLocation::CccOffset::has_data() const
 {
-    for (std::size_t index=0; index<ccc_reg_offset_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_reg_offset_data.len(); index++)
     {
         if(ccc_reg_offset_data[index]->has_data())
             return true;
@@ -7441,7 +4880,7 @@ bool Controller::CccDriver::Register::RegisterLocation::CccOffset::has_data() co
 
 bool Controller::CccDriver::Register::RegisterLocation::CccOffset::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_reg_offset_data.size(); index++)
+    for (std::size_t index=0; index<ccc_reg_offset_data.len(); index++)
     {
         if(ccc_reg_offset_data[index]->has_operation())
             return true;
@@ -7453,7 +4892,8 @@ bool Controller::CccDriver::Register::RegisterLocation::CccOffset::has_operation
 std::string Controller::CccDriver::Register::RegisterLocation::CccOffset::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccc_offset" <<"[hex_offset='" <<hex_offset <<"']";
+    path_buffer << "ccc_offset";
+    ADD_KEY_TOKEN(hex_offset, "hex_offset");
     return path_buffer.str();
 }
 
@@ -7473,7 +4913,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Register::RegisterLocation::CccOf
     {
         auto c = std::make_shared<Controller::CccDriver::Register::RegisterLocation::CccOffset::CccRegOffsetData>();
         c->parent = this;
-        ccc_reg_offset_data.push_back(c);
+        ccc_reg_offset_data.append(c);
         return c;
     }
 
@@ -7485,7 +4925,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Register::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_reg_offset_data)
+    for (auto c : ccc_reg_offset_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7527,7 +4967,7 @@ Controller::CccDriver::Register::RegisterLocation::CccOffset::CccRegOffsetData::
     reg_off_value{YType::str, "reg_off_value"}
 {
 
-    yang_name = "ccc_reg_offset_data"; yang_parent_name = "ccc_offset"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccc_reg_offset_data"; yang_parent_name = "ccc_offset"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Register::RegisterLocation::CccOffset::CccRegOffsetData::~CccRegOffsetData()
@@ -7536,6 +4976,7 @@ Controller::CccDriver::Register::RegisterLocation::CccOffset::CccRegOffsetData::
 
 bool Controller::CccDriver::Register::RegisterLocation::CccOffset::CccRegOffsetData::has_data() const
 {
+    if (is_presence_container) return true;
     return ccc_reg_off_addr.is_set
 	|| reg_off_value.is_set;
 }
@@ -7616,9 +5057,11 @@ Controller::CccDriver::Register::RegisterLocation::CccAddress::CccAddress()
     :
     start_hex_addr{YType::str, "start_hex_addr"},
     end_hex_addr{YType::str, "end_hex_addr"}
+        ,
+    ccc_reg_range_addr_list(this, {"ccc_reg_range_addr"})
 {
 
-    yang_name = "ccc_address"; yang_parent_name = "register_location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccc_address"; yang_parent_name = "register_location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Register::RegisterLocation::CccAddress::~CccAddress()
@@ -7627,7 +5070,8 @@ Controller::CccDriver::Register::RegisterLocation::CccAddress::~CccAddress()
 
 bool Controller::CccDriver::Register::RegisterLocation::CccAddress::has_data() const
 {
-    for (std::size_t index=0; index<ccc_reg_range_addr_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_reg_range_addr_list.len(); index++)
     {
         if(ccc_reg_range_addr_list[index]->has_data())
             return true;
@@ -7638,7 +5082,7 @@ bool Controller::CccDriver::Register::RegisterLocation::CccAddress::has_data() c
 
 bool Controller::CccDriver::Register::RegisterLocation::CccAddress::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_reg_range_addr_list.size(); index++)
+    for (std::size_t index=0; index<ccc_reg_range_addr_list.len(); index++)
     {
         if(ccc_reg_range_addr_list[index]->has_operation())
             return true;
@@ -7651,7 +5095,9 @@ bool Controller::CccDriver::Register::RegisterLocation::CccAddress::has_operatio
 std::string Controller::CccDriver::Register::RegisterLocation::CccAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccc_address" <<"[start_hex_addr='" <<start_hex_addr <<"']" <<"[end_hex_addr='" <<end_hex_addr <<"']";
+    path_buffer << "ccc_address";
+    ADD_KEY_TOKEN(start_hex_addr, "start_hex_addr");
+    ADD_KEY_TOKEN(end_hex_addr, "end_hex_addr");
     return path_buffer.str();
 }
 
@@ -7672,7 +5118,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Register::RegisterLocation::CccAd
     {
         auto c = std::make_shared<Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList>();
         c->parent = this;
-        ccc_reg_range_addr_list.push_back(c);
+        ccc_reg_range_addr_list.append(c);
         return c;
     }
 
@@ -7684,7 +5130,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Register::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_reg_range_addr_list)
+    for (auto c : ccc_reg_range_addr_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7733,9 +5179,11 @@ bool Controller::CccDriver::Register::RegisterLocation::CccAddress::has_leaf_or_
 Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList::CccRegRangeAddrList()
     :
     ccc_reg_range_addr{YType::uint32, "ccc_reg_range_addr"}
+        ,
+    ccc_reg_data(this, {})
 {
 
-    yang_name = "ccc_reg_range_addr_list"; yang_parent_name = "ccc_address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccc_reg_range_addr_list"; yang_parent_name = "ccc_address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList::~CccRegRangeAddrList()
@@ -7744,7 +5192,8 @@ Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrLi
 
 bool Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList::has_data() const
 {
-    for (std::size_t index=0; index<ccc_reg_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_reg_data.len(); index++)
     {
         if(ccc_reg_data[index]->has_data())
             return true;
@@ -7754,7 +5203,7 @@ bool Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeA
 
 bool Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_reg_data.size(); index++)
+    for (std::size_t index=0; index<ccc_reg_data.len(); index++)
     {
         if(ccc_reg_data[index]->has_operation())
             return true;
@@ -7766,7 +5215,8 @@ bool Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeA
 std::string Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccc_reg_range_addr_list" <<"[ccc_reg_range_addr='" <<ccc_reg_range_addr <<"']";
+    path_buffer << "ccc_reg_range_addr_list";
+    ADD_KEY_TOKEN(ccc_reg_range_addr, "ccc_reg_range_addr");
     return path_buffer.str();
 }
 
@@ -7786,7 +5236,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Register::RegisterLocation::CccAd
     {
         auto c = std::make_shared<Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList::CccRegData>();
         c->parent = this;
-        ccc_reg_data.push_back(c);
+        ccc_reg_data.append(c);
         return c;
     }
 
@@ -7798,7 +5248,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Register::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_reg_data)
+    for (auto c : ccc_reg_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7840,7 +5290,7 @@ Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrLi
     reg_value{YType::str, "reg_value"}
 {
 
-    yang_name = "ccc_reg_data"; yang_parent_name = "ccc_reg_range_addr_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccc_reg_data"; yang_parent_name = "ccc_reg_range_addr_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList::CccRegData::~CccRegData()
@@ -7849,6 +5299,7 @@ Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrLi
 
 bool Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList::CccRegData::has_data() const
 {
+    if (is_presence_container) return true;
     return ccc_reg_addr.is_set
 	|| reg_value.is_set;
 }
@@ -7931,7 +5382,7 @@ Controller::CccDriver::Ejector::Ejector()
 {
     status->parent = this;
 
-    yang_name = "ejector"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ejector"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Ejector::~Ejector()
@@ -7940,6 +5391,7 @@ Controller::CccDriver::Ejector::~Ejector()
 
 bool Controller::CccDriver::Ejector::has_data() const
 {
+    if (is_presence_container) return true;
     return (status !=  nullptr && status->has_data());
 }
 
@@ -8014,9 +5466,11 @@ bool Controller::CccDriver::Ejector::has_leaf_or_child_of_name(const std::string
 }
 
 Controller::CccDriver::Ejector::Status::Status()
+    :
+    ccc_ejector_status(this, {"location"})
 {
 
-    yang_name = "status"; yang_parent_name = "ejector"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "status"; yang_parent_name = "ejector"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Ejector::Status::~Status()
@@ -8025,7 +5479,8 @@ Controller::CccDriver::Ejector::Status::~Status()
 
 bool Controller::CccDriver::Ejector::Status::has_data() const
 {
-    for (std::size_t index=0; index<ccc_ejector_status.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccc_ejector_status.len(); index++)
     {
         if(ccc_ejector_status[index]->has_data())
             return true;
@@ -8035,7 +5490,7 @@ bool Controller::CccDriver::Ejector::Status::has_data() const
 
 bool Controller::CccDriver::Ejector::Status::has_operation() const
 {
-    for (std::size_t index=0; index<ccc_ejector_status.size(); index++)
+    for (std::size_t index=0; index<ccc_ejector_status.len(); index++)
     {
         if(ccc_ejector_status[index]->has_operation())
             return true;
@@ -8072,7 +5527,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Ejector::Status::get_child_by_nam
     {
         auto c = std::make_shared<Controller::CccDriver::Ejector::Status::CccEjectorStatus>();
         c->parent = this;
-        ccc_ejector_status.push_back(c);
+        ccc_ejector_status.append(c);
         return c;
     }
 
@@ -8084,7 +5539,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Ejector::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccc_ejector_status)
+    for (auto c : ccc_ejector_status.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8137,7 +5592,7 @@ Controller::CccDriver::Ejector::Status::CccEjectorStatus::CccEjectorStatus()
     ccc_ejc_lc_ejector_support{YType::str, "ccc_ejc_lc_ejector_support"}
 {
 
-    yang_name = "ccc_ejector_status"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ccc_ejector_status"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Ejector::Status::CccEjectorStatus::~CccEjectorStatus()
@@ -8146,6 +5601,7 @@ Controller::CccDriver::Ejector::Status::CccEjectorStatus::~CccEjectorStatus()
 
 bool Controller::CccDriver::Ejector::Status::CccEjectorStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| ccc_is_fc_card_type.is_set
 	|| ccc_is_lc_card_type.is_set
@@ -8209,7 +5665,8 @@ std::string Controller::CccDriver::Ejector::Status::CccEjectorStatus::get_absolu
 std::string Controller::CccDriver::Ejector::Status::CccEjectorStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccc_ejector_status" <<"[location='" <<location <<"']";
+    path_buffer << "ccc_ejector_status";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -8502,49 +5959,50 @@ bool Controller::CccDriver::Ejector::Status::CccEjectorStatus::has_leaf_or_child
     return false;
 }
 
-Controller::CccDriver::I2CDev::I2CDev()
+Controller::CccDriver::I2cDev::I2cDev()
     :
-    cpu_complex(std::make_shared<Controller::CccDriver::I2CDev::CpuComplex>())
-	,ioexpander(std::make_shared<Controller::CccDriver::I2CDev::Ioexpander>())
+    cpu_complex(std::make_shared<Controller::CccDriver::I2cDev::CpuComplex>())
+    , ioexpander(std::make_shared<Controller::CccDriver::I2cDev::Ioexpander>())
 {
     cpu_complex->parent = this;
     ioexpander->parent = this;
 
-    yang_name = "i2c-dev"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "i2c-dev"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Controller::CccDriver::I2CDev::~I2CDev()
+Controller::CccDriver::I2cDev::~I2cDev()
 {
 }
 
-bool Controller::CccDriver::I2CDev::has_data() const
+bool Controller::CccDriver::I2cDev::has_data() const
 {
+    if (is_presence_container) return true;
     return (cpu_complex !=  nullptr && cpu_complex->has_data())
 	|| (ioexpander !=  nullptr && ioexpander->has_data());
 }
 
-bool Controller::CccDriver::I2CDev::has_operation() const
+bool Controller::CccDriver::I2cDev::has_operation() const
 {
     return is_set(yfilter)
 	|| (cpu_complex !=  nullptr && cpu_complex->has_operation())
 	|| (ioexpander !=  nullptr && ioexpander->has_operation());
 }
 
-std::string Controller::CccDriver::I2CDev::get_absolute_path() const
+std::string Controller::CccDriver::I2cDev::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/ccc_driver/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Controller::CccDriver::I2CDev::get_segment_path() const
+std::string Controller::CccDriver::I2cDev::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "i2c-dev";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2cDev::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8553,13 +6011,13 @@ std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::ge
 
 }
 
-std::shared_ptr<Entity> Controller::CccDriver::I2CDev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Controller::CccDriver::I2cDev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpu-complex")
     {
         if(cpu_complex == nullptr)
         {
-            cpu_complex = std::make_shared<Controller::CccDriver::I2CDev::CpuComplex>();
+            cpu_complex = std::make_shared<Controller::CccDriver::I2cDev::CpuComplex>();
         }
         return cpu_complex;
     }
@@ -8568,7 +6026,7 @@ std::shared_ptr<Entity> Controller::CccDriver::I2CDev::get_child_by_name(const s
     {
         if(ioexpander == nullptr)
         {
-            ioexpander = std::make_shared<Controller::CccDriver::I2CDev::Ioexpander>();
+            ioexpander = std::make_shared<Controller::CccDriver::I2cDev::Ioexpander>();
         }
         return ioexpander;
     }
@@ -8576,7 +6034,7 @@ std::shared_ptr<Entity> Controller::CccDriver::I2CDev::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2CDev::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2cDev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8593,34 +6051,37 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2CDev::ge
     return children;
 }
 
-void Controller::CccDriver::I2CDev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Controller::CccDriver::I2cDev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Controller::CccDriver::I2CDev::set_filter(const std::string & value_path, YFilter yfilter)
+void Controller::CccDriver::I2cDev::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Controller::CccDriver::I2CDev::has_leaf_or_child_of_name(const std::string & name) const
+bool Controller::CccDriver::I2cDev::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpu-complex" || name == "ioexpander")
         return true;
     return false;
 }
 
-Controller::CccDriver::I2CDev::CpuComplex::CpuComplex()
+Controller::CccDriver::I2cDev::CpuComplex::CpuComplex()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "cpu-complex"; yang_parent_name = "i2c-dev"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu-complex"; yang_parent_name = "i2c-dev"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Controller::CccDriver::I2CDev::CpuComplex::~CpuComplex()
+Controller::CccDriver::I2cDev::CpuComplex::~CpuComplex()
 {
 }
 
-bool Controller::CccDriver::I2CDev::CpuComplex::has_data() const
+bool Controller::CccDriver::I2cDev::CpuComplex::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8628,9 +6089,9 @@ bool Controller::CccDriver::I2CDev::CpuComplex::has_data() const
     return false;
 }
 
-bool Controller::CccDriver::I2CDev::CpuComplex::has_operation() const
+bool Controller::CccDriver::I2cDev::CpuComplex::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8638,21 +6099,21 @@ bool Controller::CccDriver::I2CDev::CpuComplex::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Controller::CccDriver::I2CDev::CpuComplex::get_absolute_path() const
+std::string Controller::CccDriver::I2cDev::CpuComplex::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/ccc_driver/i2c-dev/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Controller::CccDriver::I2CDev::CpuComplex::get_segment_path() const
+std::string Controller::CccDriver::I2cDev::CpuComplex::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpu-complex";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::CpuComplex::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2cDev::CpuComplex::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8661,25 +6122,25 @@ std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::Cp
 
 }
 
-std::shared_ptr<Entity> Controller::CccDriver::I2CDev::CpuComplex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Controller::CccDriver::I2cDev::CpuComplex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Controller::CccDriver::I2CDev::CpuComplex::Location>();
+        auto c = std::make_shared<Controller::CccDriver::I2cDev::CpuComplex::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2CDev::CpuComplex::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2cDev::CpuComplex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8690,64 +6151,66 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2CDev::Cp
     return children;
 }
 
-void Controller::CccDriver::I2CDev::CpuComplex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Controller::CccDriver::I2cDev::CpuComplex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Controller::CccDriver::I2CDev::CpuComplex::set_filter(const std::string & value_path, YFilter yfilter)
+void Controller::CccDriver::I2cDev::CpuComplex::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Controller::CccDriver::I2CDev::CpuComplex::has_leaf_or_child_of_name(const std::string & name) const
+bool Controller::CccDriver::I2cDev::CpuComplex::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "location")
         return true;
     return false;
 }
 
-Controller::CccDriver::I2CDev::CpuComplex::Location::Location()
+Controller::CccDriver::I2cDev::CpuComplex::Location::Location()
     :
     location{YType::str, "location"}
-    	,
-    cpu_complex_detail(std::make_shared<Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail>())
+        ,
+    cpu_complex_detail(std::make_shared<Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail>())
 {
     cpu_complex_detail->parent = this;
 
-    yang_name = "location"; yang_parent_name = "cpu-complex"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "cpu-complex"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Controller::CccDriver::I2CDev::CpuComplex::Location::~Location()
+Controller::CccDriver::I2cDev::CpuComplex::Location::~Location()
 {
 }
 
-bool Controller::CccDriver::I2CDev::CpuComplex::Location::has_data() const
+bool Controller::CccDriver::I2cDev::CpuComplex::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (cpu_complex_detail !=  nullptr && cpu_complex_detail->has_data());
 }
 
-bool Controller::CccDriver::I2CDev::CpuComplex::Location::has_operation() const
+bool Controller::CccDriver::I2cDev::CpuComplex::Location::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(location.yfilter)
 	|| (cpu_complex_detail !=  nullptr && cpu_complex_detail->has_operation());
 }
 
-std::string Controller::CccDriver::I2CDev::CpuComplex::Location::get_absolute_path() const
+std::string Controller::CccDriver::I2cDev::CpuComplex::Location::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/ccc_driver/i2c-dev/cpu-complex/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Controller::CccDriver::I2CDev::CpuComplex::Location::get_segment_path() const
+std::string Controller::CccDriver::I2cDev::CpuComplex::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::CpuComplex::Location::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2cDev::CpuComplex::Location::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8757,13 +6220,13 @@ std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::Cp
 
 }
 
-std::shared_ptr<Entity> Controller::CccDriver::I2CDev::CpuComplex::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Controller::CccDriver::I2cDev::CpuComplex::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpu_complex_detail")
     {
         if(cpu_complex_detail == nullptr)
         {
-            cpu_complex_detail = std::make_shared<Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail>();
+            cpu_complex_detail = std::make_shared<Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail>();
         }
         return cpu_complex_detail;
     }
@@ -8771,7 +6234,7 @@ std::shared_ptr<Entity> Controller::CccDriver::I2CDev::CpuComplex::Location::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2CDev::CpuComplex::Location::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2cDev::CpuComplex::Location::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8783,7 +6246,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2CDev::Cp
     return children;
 }
 
-void Controller::CccDriver::I2CDev::CpuComplex::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Controller::CccDriver::I2cDev::CpuComplex::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location")
     {
@@ -8793,7 +6256,7 @@ void Controller::CccDriver::I2CDev::CpuComplex::Location::set_value(const std::s
     }
 }
 
-void Controller::CccDriver::I2CDev::CpuComplex::Location::set_filter(const std::string & value_path, YFilter yfilter)
+void Controller::CccDriver::I2cDev::CpuComplex::Location::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "location")
     {
@@ -8801,27 +6264,28 @@ void Controller::CccDriver::I2CDev::CpuComplex::Location::set_filter(const std::
     }
 }
 
-bool Controller::CccDriver::I2CDev::CpuComplex::Location::has_leaf_or_child_of_name(const std::string & name) const
+bool Controller::CccDriver::I2cDev::CpuComplex::Location::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpu_complex_detail" || name == "location")
         return true;
     return false;
 }
 
-Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::CpuComplexDetail()
+Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail::CpuComplexDetail()
     :
     cpu_complex_values{YType::str, "cpu_complex_values"}
 {
 
-    yang_name = "cpu_complex_detail"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cpu_complex_detail"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::~CpuComplexDetail()
+Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail::~CpuComplexDetail()
 {
 }
 
-bool Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::has_data() const
+bool Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cpu_complex_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -8830,7 +6294,7 @@ bool Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::has_
     return false;
 }
 
-bool Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::has_operation() const
+bool Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail::has_operation() const
 {
     for (auto const & leaf : cpu_complex_values.getYLeafs())
     {
@@ -8841,14 +6305,14 @@ bool Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::has_
 	|| ydk::is_set(cpu_complex_values.yfilter);
 }
 
-std::string Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::get_segment_path() const
+std::string Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpu_complex_detail";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8859,19 +6323,19 @@ std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::Cp
 
 }
 
-std::shared_ptr<Entity> Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpu_complex_values")
     {
@@ -8879,7 +6343,7 @@ void Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::set_
     }
 }
 
-void Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpu_complex_values")
     {
@@ -8887,26 +6351,29 @@ void Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::set_
     }
 }
 
-bool Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpu_complex_values")
         return true;
     return false;
 }
 
-Controller::CccDriver::I2CDev::Ioexpander::Ioexpander()
+Controller::CccDriver::I2cDev::Ioexpander::Ioexpander()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "ioexpander"; yang_parent_name = "i2c-dev"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ioexpander"; yang_parent_name = "i2c-dev"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Controller::CccDriver::I2CDev::Ioexpander::~Ioexpander()
+Controller::CccDriver::I2cDev::Ioexpander::~Ioexpander()
 {
 }
 
-bool Controller::CccDriver::I2CDev::Ioexpander::has_data() const
+bool Controller::CccDriver::I2cDev::Ioexpander::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8914,9 +6381,9 @@ bool Controller::CccDriver::I2CDev::Ioexpander::has_data() const
     return false;
 }
 
-bool Controller::CccDriver::I2CDev::Ioexpander::has_operation() const
+bool Controller::CccDriver::I2cDev::Ioexpander::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8924,21 +6391,21 @@ bool Controller::CccDriver::I2CDev::Ioexpander::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Controller::CccDriver::I2CDev::Ioexpander::get_absolute_path() const
+std::string Controller::CccDriver::I2cDev::Ioexpander::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/ccc_driver/i2c-dev/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Controller::CccDriver::I2CDev::Ioexpander::get_segment_path() const
+std::string Controller::CccDriver::I2cDev::Ioexpander::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ioexpander";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::Ioexpander::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2cDev::Ioexpander::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8947,25 +6414,25 @@ std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::Io
 
 }
 
-std::shared_ptr<Entity> Controller::CccDriver::I2CDev::Ioexpander::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Controller::CccDriver::I2cDev::Ioexpander::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Controller::CccDriver::I2CDev::Ioexpander::Location>();
+        auto c = std::make_shared<Controller::CccDriver::I2cDev::Ioexpander::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2CDev::Ioexpander::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2cDev::Ioexpander::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8976,64 +6443,66 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2CDev::Io
     return children;
 }
 
-void Controller::CccDriver::I2CDev::Ioexpander::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Controller::CccDriver::I2cDev::Ioexpander::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Controller::CccDriver::I2CDev::Ioexpander::set_filter(const std::string & value_path, YFilter yfilter)
+void Controller::CccDriver::I2cDev::Ioexpander::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Controller::CccDriver::I2CDev::Ioexpander::has_leaf_or_child_of_name(const std::string & name) const
+bool Controller::CccDriver::I2cDev::Ioexpander::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "location")
         return true;
     return false;
 }
 
-Controller::CccDriver::I2CDev::Ioexpander::Location::Location()
+Controller::CccDriver::I2cDev::Ioexpander::Location::Location()
     :
     location{YType::str, "location"}
-    	,
-    io_exp_val(std::make_shared<Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal>())
+        ,
+    io_exp_val(std::make_shared<Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal>())
 {
     io_exp_val->parent = this;
 
-    yang_name = "location"; yang_parent_name = "ioexpander"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "ioexpander"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Controller::CccDriver::I2CDev::Ioexpander::Location::~Location()
+Controller::CccDriver::I2cDev::Ioexpander::Location::~Location()
 {
 }
 
-bool Controller::CccDriver::I2CDev::Ioexpander::Location::has_data() const
+bool Controller::CccDriver::I2cDev::Ioexpander::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (io_exp_val !=  nullptr && io_exp_val->has_data());
 }
 
-bool Controller::CccDriver::I2CDev::Ioexpander::Location::has_operation() const
+bool Controller::CccDriver::I2cDev::Ioexpander::Location::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(location.yfilter)
 	|| (io_exp_val !=  nullptr && io_exp_val->has_operation());
 }
 
-std::string Controller::CccDriver::I2CDev::Ioexpander::Location::get_absolute_path() const
+std::string Controller::CccDriver::I2cDev::Ioexpander::Location::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/ccc_driver/i2c-dev/ioexpander/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Controller::CccDriver::I2CDev::Ioexpander::Location::get_segment_path() const
+std::string Controller::CccDriver::I2cDev::Ioexpander::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::Ioexpander::Location::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2cDev::Ioexpander::Location::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9043,13 +6512,13 @@ std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::Io
 
 }
 
-std::shared_ptr<Entity> Controller::CccDriver::I2CDev::Ioexpander::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Controller::CccDriver::I2cDev::Ioexpander::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "io_exp_val")
     {
         if(io_exp_val == nullptr)
         {
-            io_exp_val = std::make_shared<Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal>();
+            io_exp_val = std::make_shared<Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal>();
         }
         return io_exp_val;
     }
@@ -9057,7 +6526,7 @@ std::shared_ptr<Entity> Controller::CccDriver::I2CDev::Ioexpander::Location::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2CDev::Ioexpander::Location::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2cDev::Ioexpander::Location::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9069,7 +6538,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2CDev::Io
     return children;
 }
 
-void Controller::CccDriver::I2CDev::Ioexpander::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Controller::CccDriver::I2cDev::Ioexpander::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location")
     {
@@ -9079,7 +6548,7 @@ void Controller::CccDriver::I2CDev::Ioexpander::Location::set_value(const std::s
     }
 }
 
-void Controller::CccDriver::I2CDev::Ioexpander::Location::set_filter(const std::string & value_path, YFilter yfilter)
+void Controller::CccDriver::I2cDev::Ioexpander::Location::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "location")
     {
@@ -9087,27 +6556,28 @@ void Controller::CccDriver::I2CDev::Ioexpander::Location::set_filter(const std::
     }
 }
 
-bool Controller::CccDriver::I2CDev::Ioexpander::Location::has_leaf_or_child_of_name(const std::string & name) const
+bool Controller::CccDriver::I2cDev::Ioexpander::Location::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "io_exp_val" || name == "location")
         return true;
     return false;
 }
 
-Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::IoExpVal()
+Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal::IoExpVal()
     :
     io_exp_details{YType::str, "io_exp_details"}
 {
 
-    yang_name = "io_exp_val"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "io_exp_val"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::~IoExpVal()
+Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal::~IoExpVal()
 {
 }
 
-bool Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::has_data() const
+bool Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : io_exp_details.getYLeafs())
     {
         if(leaf.is_set)
@@ -9116,7 +6586,7 @@ bool Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::has_data() c
     return false;
 }
 
-bool Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::has_operation() const
+bool Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal::has_operation() const
 {
     for (auto const & leaf : io_exp_details.getYLeafs())
     {
@@ -9127,14 +6597,14 @@ bool Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::has_operatio
 	|| ydk::is_set(io_exp_details.yfilter);
 }
 
-std::string Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::get_segment_path() const
+std::string Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "io_exp_val";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9145,19 +6615,19 @@ std::vector<std::pair<std::string, LeafData> > Controller::CccDriver::I2CDev::Io
 
 }
 
-std::shared_ptr<Entity> Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "io_exp_details")
     {
@@ -9165,7 +6635,7 @@ void Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::set_value(co
     }
 }
 
-void Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::set_filter(const std::string & value_path, YFilter yfilter)
+void Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "io_exp_details")
     {
@@ -9173,7 +6643,7 @@ void Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::set_filter(c
     }
 }
 
-bool Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::has_leaf_or_child_of_name(const std::string & name) const
+bool Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "io_exp_details")
         return true;
@@ -9183,12 +6653,12 @@ bool Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal::has_leaf_or_
 Controller::CccDriver::Ethernet::Ethernet()
     :
     ethernet_status(std::make_shared<Controller::CccDriver::Ethernet::EthernetStatus>())
-	,ethernet_counters(std::make_shared<Controller::CccDriver::Ethernet::EthernetCounters>())
+    , ethernet_counters(std::make_shared<Controller::CccDriver::Ethernet::EthernetCounters>())
 {
     ethernet_status->parent = this;
     ethernet_counters->parent = this;
 
-    yang_name = "ethernet"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ethernet"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Ethernet::~Ethernet()
@@ -9197,6 +6667,7 @@ Controller::CccDriver::Ethernet::~Ethernet()
 
 bool Controller::CccDriver::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return (ethernet_status !=  nullptr && ethernet_status->has_data())
 	|| (ethernet_counters !=  nullptr && ethernet_counters->has_data());
 }
@@ -9287,9 +6758,11 @@ bool Controller::CccDriver::Ethernet::has_leaf_or_child_of_name(const std::strin
 }
 
 Controller::CccDriver::Ethernet::EthernetStatus::EthernetStatus()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "ethernet_status"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ethernet_status"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Ethernet::EthernetStatus::~EthernetStatus()
@@ -9298,7 +6771,8 @@ Controller::CccDriver::Ethernet::EthernetStatus::~EthernetStatus()
 
 bool Controller::CccDriver::Ethernet::EthernetStatus::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9308,7 +6782,7 @@ bool Controller::CccDriver::Ethernet::EthernetStatus::has_data() const
 
 bool Controller::CccDriver::Ethernet::EthernetStatus::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9345,7 +6819,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Ethernet::EthernetStatus::get_chi
     {
         auto c = std::make_shared<Controller::CccDriver::Ethernet::EthernetStatus::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9357,7 +6831,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Ethernet::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9386,12 +6860,12 @@ bool Controller::CccDriver::Ethernet::EthernetStatus::has_leaf_or_child_of_name(
 Controller::CccDriver::Ethernet::EthernetStatus::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     ethernet_status(std::make_shared<Controller::CccDriver::Ethernet::EthernetStatus::Location::EthernetStatus_>())
 {
     ethernet_status->parent = this;
 
-    yang_name = "location"; yang_parent_name = "ethernet_status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "ethernet_status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Ethernet::EthernetStatus::Location::~Location()
@@ -9400,6 +6874,7 @@ Controller::CccDriver::Ethernet::EthernetStatus::Location::~Location()
 
 bool Controller::CccDriver::Ethernet::EthernetStatus::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (ethernet_status !=  nullptr && ethernet_status->has_data());
 }
@@ -9421,7 +6896,8 @@ std::string Controller::CccDriver::Ethernet::EthernetStatus::Location::get_absol
 std::string Controller::CccDriver::Ethernet::EthernetStatus::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -9491,7 +6967,7 @@ Controller::CccDriver::Ethernet::EthernetStatus::Location::EthernetStatus_::Ethe
     ethernet_status_values{YType::str, "ethernet_status_values"}
 {
 
-    yang_name = "ethernet_status"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet_status"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Ethernet::EthernetStatus::Location::EthernetStatus_::~EthernetStatus_()
@@ -9500,6 +6976,7 @@ Controller::CccDriver::Ethernet::EthernetStatus::Location::EthernetStatus_::~Eth
 
 bool Controller::CccDriver::Ethernet::EthernetStatus::Location::EthernetStatus_::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : ethernet_status_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -9573,9 +7050,11 @@ bool Controller::CccDriver::Ethernet::EthernetStatus::Location::EthernetStatus_:
 }
 
 Controller::CccDriver::Ethernet::EthernetCounters::EthernetCounters()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "ethernet_counters"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ethernet_counters"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Ethernet::EthernetCounters::~EthernetCounters()
@@ -9584,7 +7063,8 @@ Controller::CccDriver::Ethernet::EthernetCounters::~EthernetCounters()
 
 bool Controller::CccDriver::Ethernet::EthernetCounters::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9594,7 +7074,7 @@ bool Controller::CccDriver::Ethernet::EthernetCounters::has_data() const
 
 bool Controller::CccDriver::Ethernet::EthernetCounters::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9631,7 +7111,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Ethernet::EthernetCounters::get_c
     {
         auto c = std::make_shared<Controller::CccDriver::Ethernet::EthernetCounters::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9643,7 +7123,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Ethernet::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9672,12 +7152,12 @@ bool Controller::CccDriver::Ethernet::EthernetCounters::has_leaf_or_child_of_nam
 Controller::CccDriver::Ethernet::EthernetCounters::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     ethernet_counters(std::make_shared<Controller::CccDriver::Ethernet::EthernetCounters::Location::EthernetCounters_>())
 {
     ethernet_counters->parent = this;
 
-    yang_name = "location"; yang_parent_name = "ethernet_counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "ethernet_counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Ethernet::EthernetCounters::Location::~Location()
@@ -9686,6 +7166,7 @@ Controller::CccDriver::Ethernet::EthernetCounters::Location::~Location()
 
 bool Controller::CccDriver::Ethernet::EthernetCounters::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (ethernet_counters !=  nullptr && ethernet_counters->has_data());
 }
@@ -9707,7 +7188,8 @@ std::string Controller::CccDriver::Ethernet::EthernetCounters::Location::get_abs
 std::string Controller::CccDriver::Ethernet::EthernetCounters::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -9777,7 +7259,7 @@ Controller::CccDriver::Ethernet::EthernetCounters::Location::EthernetCounters_::
     ethernet_counter_values{YType::str, "ethernet_counter_values"}
 {
 
-    yang_name = "ethernet_counters"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet_counters"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Ethernet::EthernetCounters::Location::EthernetCounters_::~EthernetCounters_()
@@ -9786,6 +7268,7 @@ Controller::CccDriver::Ethernet::EthernetCounters::Location::EthernetCounters_::
 
 bool Controller::CccDriver::Ethernet::EthernetCounters::Location::EthernetCounters_::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : ethernet_counter_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -9861,12 +7344,12 @@ bool Controller::CccDriver::Ethernet::EthernetCounters::Location::EthernetCounte
 Controller::CccDriver::EventHistory::EventHistory()
     :
     brief(std::make_shared<Controller::CccDriver::EventHistory::Brief>())
-	,detail(std::make_shared<Controller::CccDriver::EventHistory::Detail>())
+    , detail(std::make_shared<Controller::CccDriver::EventHistory::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "event-history"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "event-history"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::EventHistory::~EventHistory()
@@ -9875,6 +7358,7 @@ Controller::CccDriver::EventHistory::~EventHistory()
 
 bool Controller::CccDriver::EventHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return (brief !=  nullptr && brief->has_data())
 	|| (detail !=  nullptr && detail->has_data());
 }
@@ -9965,9 +7449,11 @@ bool Controller::CccDriver::EventHistory::has_leaf_or_child_of_name(const std::s
 }
 
 Controller::CccDriver::EventHistory::Brief::Brief()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "brief"; yang_parent_name = "event-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief"; yang_parent_name = "event-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::EventHistory::Brief::~Brief()
@@ -9976,7 +7462,8 @@ Controller::CccDriver::EventHistory::Brief::~Brief()
 
 bool Controller::CccDriver::EventHistory::Brief::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9986,7 +7473,7 @@ bool Controller::CccDriver::EventHistory::Brief::has_data() const
 
 bool Controller::CccDriver::EventHistory::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -10023,7 +7510,7 @@ std::shared_ptr<Entity> Controller::CccDriver::EventHistory::Brief::get_child_by
     {
         auto c = std::make_shared<Controller::CccDriver::EventHistory::Brief::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -10035,7 +7522,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::EventHisto
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10064,12 +7551,12 @@ bool Controller::CccDriver::EventHistory::Brief::has_leaf_or_child_of_name(const
 Controller::CccDriver::EventHistory::Brief::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     card_event_hist_brief(std::make_shared<Controller::CccDriver::EventHistory::Brief::Location::CardEventHistBrief>())
 {
     card_event_hist_brief->parent = this;
 
-    yang_name = "location"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::EventHistory::Brief::Location::~Location()
@@ -10078,6 +7565,7 @@ Controller::CccDriver::EventHistory::Brief::Location::~Location()
 
 bool Controller::CccDriver::EventHistory::Brief::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (card_event_hist_brief !=  nullptr && card_event_hist_brief->has_data());
 }
@@ -10099,7 +7587,8 @@ std::string Controller::CccDriver::EventHistory::Brief::Location::get_absolute_p
 std::string Controller::CccDriver::EventHistory::Brief::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -10169,7 +7658,7 @@ Controller::CccDriver::EventHistory::Brief::Location::CardEventHistBrief::CardEv
     card_event_hist_brief_values{YType::str, "card_event_hist_brief_values"}
 {
 
-    yang_name = "card_event_hist_brief"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card_event_hist_brief"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::EventHistory::Brief::Location::CardEventHistBrief::~CardEventHistBrief()
@@ -10178,6 +7667,7 @@ Controller::CccDriver::EventHistory::Brief::Location::CardEventHistBrief::~CardE
 
 bool Controller::CccDriver::EventHistory::Brief::Location::CardEventHistBrief::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : card_event_hist_brief_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -10251,9 +7741,11 @@ bool Controller::CccDriver::EventHistory::Brief::Location::CardEventHistBrief::h
 }
 
 Controller::CccDriver::EventHistory::Detail::Detail()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "detail"; yang_parent_name = "event-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "event-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::EventHistory::Detail::~Detail()
@@ -10262,7 +7754,8 @@ Controller::CccDriver::EventHistory::Detail::~Detail()
 
 bool Controller::CccDriver::EventHistory::Detail::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -10272,7 +7765,7 @@ bool Controller::CccDriver::EventHistory::Detail::has_data() const
 
 bool Controller::CccDriver::EventHistory::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -10309,7 +7802,7 @@ std::shared_ptr<Entity> Controller::CccDriver::EventHistory::Detail::get_child_b
     {
         auto c = std::make_shared<Controller::CccDriver::EventHistory::Detail::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -10321,7 +7814,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::EventHisto
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10350,12 +7843,12 @@ bool Controller::CccDriver::EventHistory::Detail::has_leaf_or_child_of_name(cons
 Controller::CccDriver::EventHistory::Detail::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     card_event_hist_detail(std::make_shared<Controller::CccDriver::EventHistory::Detail::Location::CardEventHistDetail>())
 {
     card_event_hist_detail->parent = this;
 
-    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::EventHistory::Detail::Location::~Location()
@@ -10364,6 +7857,7 @@ Controller::CccDriver::EventHistory::Detail::Location::~Location()
 
 bool Controller::CccDriver::EventHistory::Detail::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (card_event_hist_detail !=  nullptr && card_event_hist_detail->has_data());
 }
@@ -10385,7 +7879,8 @@ std::string Controller::CccDriver::EventHistory::Detail::Location::get_absolute_
 std::string Controller::CccDriver::EventHistory::Detail::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -10455,7 +7950,7 @@ Controller::CccDriver::EventHistory::Detail::Location::CardEventHistDetail::Card
     card_event_hist_detail_values{YType::str, "card_event_hist_detail_values"}
 {
 
-    yang_name = "card_event_hist_detail"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card_event_hist_detail"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::EventHistory::Detail::Location::CardEventHistDetail::~CardEventHistDetail()
@@ -10464,6 +7959,7 @@ Controller::CccDriver::EventHistory::Detail::Location::CardEventHistDetail::~Car
 
 bool Controller::CccDriver::EventHistory::Detail::Location::CardEventHistDetail::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : card_event_hist_detail_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -10537,9 +8033,11 @@ bool Controller::CccDriver::EventHistory::Detail::Location::CardEventHistDetail:
 }
 
 Controller::CccDriver::OirHistory::OirHistory()
+    :
+    rack(this, {"rack"})
 {
 
-    yang_name = "oir-history"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oir-history"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::OirHistory::~OirHistory()
@@ -10548,7 +8046,8 @@ Controller::CccDriver::OirHistory::~OirHistory()
 
 bool Controller::CccDriver::OirHistory::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -10558,7 +8057,7 @@ bool Controller::CccDriver::OirHistory::has_data() const
 
 bool Controller::CccDriver::OirHistory::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -10595,7 +8094,7 @@ std::shared_ptr<Entity> Controller::CccDriver::OirHistory::get_child_by_name(con
     {
         auto c = std::make_shared<Controller::CccDriver::OirHistory::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -10607,7 +8106,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::OirHistory
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10636,12 +8135,12 @@ bool Controller::CccDriver::OirHistory::has_leaf_or_child_of_name(const std::str
 Controller::CccDriver::OirHistory::Rack::Rack()
     :
     rack{YType::str, "rack"}
-    	,
+        ,
     card_oir_hist(std::make_shared<Controller::CccDriver::OirHistory::Rack::CardOirHist>())
 {
     card_oir_hist->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "oir-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "oir-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::OirHistory::Rack::~Rack()
@@ -10650,6 +8149,7 @@ Controller::CccDriver::OirHistory::Rack::~Rack()
 
 bool Controller::CccDriver::OirHistory::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| (card_oir_hist !=  nullptr && card_oir_hist->has_data());
 }
@@ -10671,7 +8171,8 @@ std::string Controller::CccDriver::OirHistory::Rack::get_absolute_path() const
 std::string Controller::CccDriver::OirHistory::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack='" <<rack <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack, "rack");
     return path_buffer.str();
 }
 
@@ -10741,7 +8242,7 @@ Controller::CccDriver::OirHistory::Rack::CardOirHist::CardOirHist()
     card_oir_events{YType::str, "card_oir_events"}
 {
 
-    yang_name = "card_oir_hist"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card_oir_hist"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::OirHistory::Rack::CardOirHist::~CardOirHist()
@@ -10750,6 +8251,7 @@ Controller::CccDriver::OirHistory::Rack::CardOirHist::~CardOirHist()
 
 bool Controller::CccDriver::OirHistory::Rack::CardOirHist::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : card_oir_events.getYLeafs())
     {
         if(leaf.is_set)
@@ -10825,12 +8327,12 @@ bool Controller::CccDriver::OirHistory::Rack::CardOirHist::has_leaf_or_child_of_
 Controller::CccDriver::NotifHistory::NotifHistory()
     :
     brief(std::make_shared<Controller::CccDriver::NotifHistory::Brief>())
-	,detail(std::make_shared<Controller::CccDriver::NotifHistory::Detail>())
+    , detail(std::make_shared<Controller::CccDriver::NotifHistory::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "notif-history"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "notif-history"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::NotifHistory::~NotifHistory()
@@ -10839,6 +8341,7 @@ Controller::CccDriver::NotifHistory::~NotifHistory()
 
 bool Controller::CccDriver::NotifHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return (brief !=  nullptr && brief->has_data())
 	|| (detail !=  nullptr && detail->has_data());
 }
@@ -10929,9 +8432,11 @@ bool Controller::CccDriver::NotifHistory::has_leaf_or_child_of_name(const std::s
 }
 
 Controller::CccDriver::NotifHistory::Brief::Brief()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "brief"; yang_parent_name = "notif-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief"; yang_parent_name = "notif-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::NotifHistory::Brief::~Brief()
@@ -10940,7 +8445,8 @@ Controller::CccDriver::NotifHistory::Brief::~Brief()
 
 bool Controller::CccDriver::NotifHistory::Brief::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -10950,7 +8456,7 @@ bool Controller::CccDriver::NotifHistory::Brief::has_data() const
 
 bool Controller::CccDriver::NotifHistory::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -10987,7 +8493,7 @@ std::shared_ptr<Entity> Controller::CccDriver::NotifHistory::Brief::get_child_by
     {
         auto c = std::make_shared<Controller::CccDriver::NotifHistory::Brief::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -10999,7 +8505,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::NotifHisto
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11028,12 +8534,12 @@ bool Controller::CccDriver::NotifHistory::Brief::has_leaf_or_child_of_name(const
 Controller::CccDriver::NotifHistory::Brief::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     card_notif_hist_brief(std::make_shared<Controller::CccDriver::NotifHistory::Brief::Location::CardNotifHistBrief>())
 {
     card_notif_hist_brief->parent = this;
 
-    yang_name = "location"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::NotifHistory::Brief::Location::~Location()
@@ -11042,6 +8548,7 @@ Controller::CccDriver::NotifHistory::Brief::Location::~Location()
 
 bool Controller::CccDriver::NotifHistory::Brief::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (card_notif_hist_brief !=  nullptr && card_notif_hist_brief->has_data());
 }
@@ -11063,7 +8570,8 @@ std::string Controller::CccDriver::NotifHistory::Brief::Location::get_absolute_p
 std::string Controller::CccDriver::NotifHistory::Brief::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -11133,7 +8641,7 @@ Controller::CccDriver::NotifHistory::Brief::Location::CardNotifHistBrief::CardNo
     card_notif_hist_brief_values{YType::str, "card_notif_hist_brief_values"}
 {
 
-    yang_name = "card_notif_hist_brief"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card_notif_hist_brief"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::NotifHistory::Brief::Location::CardNotifHistBrief::~CardNotifHistBrief()
@@ -11142,6 +8650,7 @@ Controller::CccDriver::NotifHistory::Brief::Location::CardNotifHistBrief::~CardN
 
 bool Controller::CccDriver::NotifHistory::Brief::Location::CardNotifHistBrief::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : card_notif_hist_brief_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -11215,9 +8724,11 @@ bool Controller::CccDriver::NotifHistory::Brief::Location::CardNotifHistBrief::h
 }
 
 Controller::CccDriver::NotifHistory::Detail::Detail()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "detail"; yang_parent_name = "notif-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "notif-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::NotifHistory::Detail::~Detail()
@@ -11226,7 +8737,8 @@ Controller::CccDriver::NotifHistory::Detail::~Detail()
 
 bool Controller::CccDriver::NotifHistory::Detail::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -11236,7 +8748,7 @@ bool Controller::CccDriver::NotifHistory::Detail::has_data() const
 
 bool Controller::CccDriver::NotifHistory::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -11273,7 +8785,7 @@ std::shared_ptr<Entity> Controller::CccDriver::NotifHistory::Detail::get_child_b
     {
         auto c = std::make_shared<Controller::CccDriver::NotifHistory::Detail::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -11285,7 +8797,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::NotifHisto
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11314,12 +8826,12 @@ bool Controller::CccDriver::NotifHistory::Detail::has_leaf_or_child_of_name(cons
 Controller::CccDriver::NotifHistory::Detail::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     card_notif_hist_detail(std::make_shared<Controller::CccDriver::NotifHistory::Detail::Location::CardNotifHistDetail>())
 {
     card_notif_hist_detail->parent = this;
 
-    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::NotifHistory::Detail::Location::~Location()
@@ -11328,6 +8840,7 @@ Controller::CccDriver::NotifHistory::Detail::Location::~Location()
 
 bool Controller::CccDriver::NotifHistory::Detail::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (card_notif_hist_detail !=  nullptr && card_notif_hist_detail->has_data());
 }
@@ -11349,7 +8862,8 @@ std::string Controller::CccDriver::NotifHistory::Detail::Location::get_absolute_
 std::string Controller::CccDriver::NotifHistory::Detail::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -11419,7 +8933,7 @@ Controller::CccDriver::NotifHistory::Detail::Location::CardNotifHistDetail::Card
     card_notif_hist_detail_values{YType::str, "card_notif_hist_detail_values"}
 {
 
-    yang_name = "card_notif_hist_detail"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card_notif_hist_detail"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::NotifHistory::Detail::Location::CardNotifHistDetail::~CardNotifHistDetail()
@@ -11428,6 +8942,7 @@ Controller::CccDriver::NotifHistory::Detail::Location::CardNotifHistDetail::~Car
 
 bool Controller::CccDriver::NotifHistory::Detail::Location::CardNotifHistDetail::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : card_notif_hist_detail_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -11503,14 +9018,14 @@ bool Controller::CccDriver::NotifHistory::Detail::Location::CardNotifHistDetail:
 Controller::CccDriver::Slave::Slave()
     :
     event_history(std::make_shared<Controller::CccDriver::Slave::EventHistory>())
-	,notif_history(std::make_shared<Controller::CccDriver::Slave::NotifHistory>())
-	,oir_history(std::make_shared<Controller::CccDriver::Slave::OirHistory>())
+    , notif_history(std::make_shared<Controller::CccDriver::Slave::NotifHistory>())
+    , oir_history(std::make_shared<Controller::CccDriver::Slave::OirHistory>())
 {
     event_history->parent = this;
     notif_history->parent = this;
     oir_history->parent = this;
 
-    yang_name = "slave"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "slave"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::~Slave()
@@ -11519,6 +9034,7 @@ Controller::CccDriver::Slave::~Slave()
 
 bool Controller::CccDriver::Slave::has_data() const
 {
+    if (is_presence_container) return true;
     return (event_history !=  nullptr && event_history->has_data())
 	|| (notif_history !=  nullptr && notif_history->has_data())
 	|| (oir_history !=  nullptr && oir_history->has_data());
@@ -11627,12 +9143,12 @@ bool Controller::CccDriver::Slave::has_leaf_or_child_of_name(const std::string &
 Controller::CccDriver::Slave::EventHistory::EventHistory()
     :
     brief(std::make_shared<Controller::CccDriver::Slave::EventHistory::Brief>())
-	,detail(std::make_shared<Controller::CccDriver::Slave::EventHistory::Detail>())
+    , detail(std::make_shared<Controller::CccDriver::Slave::EventHistory::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "event-history"; yang_parent_name = "slave"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "event-history"; yang_parent_name = "slave"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::EventHistory::~EventHistory()
@@ -11641,6 +9157,7 @@ Controller::CccDriver::Slave::EventHistory::~EventHistory()
 
 bool Controller::CccDriver::Slave::EventHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return (brief !=  nullptr && brief->has_data())
 	|| (detail !=  nullptr && detail->has_data());
 }
@@ -11731,9 +9248,11 @@ bool Controller::CccDriver::Slave::EventHistory::has_leaf_or_child_of_name(const
 }
 
 Controller::CccDriver::Slave::EventHistory::Brief::Brief()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "brief"; yang_parent_name = "event-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief"; yang_parent_name = "event-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::EventHistory::Brief::~Brief()
@@ -11742,7 +9261,8 @@ Controller::CccDriver::Slave::EventHistory::Brief::~Brief()
 
 bool Controller::CccDriver::Slave::EventHistory::Brief::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -11752,7 +9272,7 @@ bool Controller::CccDriver::Slave::EventHistory::Brief::has_data() const
 
 bool Controller::CccDriver::Slave::EventHistory::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -11789,7 +9309,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Slave::EventHistory::Brief::get_c
     {
         auto c = std::make_shared<Controller::CccDriver::Slave::EventHistory::Brief::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -11801,7 +9321,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Slave::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11830,12 +9350,12 @@ bool Controller::CccDriver::Slave::EventHistory::Brief::has_leaf_or_child_of_nam
 Controller::CccDriver::Slave::EventHistory::Brief::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     card_event_hist_brief(std::make_shared<Controller::CccDriver::Slave::EventHistory::Brief::Location::CardEventHistBrief>())
 {
     card_event_hist_brief->parent = this;
 
-    yang_name = "location"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::EventHistory::Brief::Location::~Location()
@@ -11844,6 +9364,7 @@ Controller::CccDriver::Slave::EventHistory::Brief::Location::~Location()
 
 bool Controller::CccDriver::Slave::EventHistory::Brief::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (card_event_hist_brief !=  nullptr && card_event_hist_brief->has_data());
 }
@@ -11865,7 +9386,8 @@ std::string Controller::CccDriver::Slave::EventHistory::Brief::Location::get_abs
 std::string Controller::CccDriver::Slave::EventHistory::Brief::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -11935,7 +9457,7 @@ Controller::CccDriver::Slave::EventHistory::Brief::Location::CardEventHistBrief:
     card_event_hist_brief_values{YType::str, "card_event_hist_brief_values"}
 {
 
-    yang_name = "card_event_hist_brief"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card_event_hist_brief"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Slave::EventHistory::Brief::Location::CardEventHistBrief::~CardEventHistBrief()
@@ -11944,6 +9466,7 @@ Controller::CccDriver::Slave::EventHistory::Brief::Location::CardEventHistBrief:
 
 bool Controller::CccDriver::Slave::EventHistory::Brief::Location::CardEventHistBrief::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : card_event_hist_brief_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -12017,9 +9540,11 @@ bool Controller::CccDriver::Slave::EventHistory::Brief::Location::CardEventHistB
 }
 
 Controller::CccDriver::Slave::EventHistory::Detail::Detail()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "detail"; yang_parent_name = "event-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "event-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::EventHistory::Detail::~Detail()
@@ -12028,7 +9553,8 @@ Controller::CccDriver::Slave::EventHistory::Detail::~Detail()
 
 bool Controller::CccDriver::Slave::EventHistory::Detail::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -12038,7 +9564,7 @@ bool Controller::CccDriver::Slave::EventHistory::Detail::has_data() const
 
 bool Controller::CccDriver::Slave::EventHistory::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -12075,7 +9601,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Slave::EventHistory::Detail::get_
     {
         auto c = std::make_shared<Controller::CccDriver::Slave::EventHistory::Detail::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -12087,7 +9613,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Slave::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12116,12 +9642,12 @@ bool Controller::CccDriver::Slave::EventHistory::Detail::has_leaf_or_child_of_na
 Controller::CccDriver::Slave::EventHistory::Detail::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     card_event_hist_detail(std::make_shared<Controller::CccDriver::Slave::EventHistory::Detail::Location::CardEventHistDetail>())
 {
     card_event_hist_detail->parent = this;
 
-    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::EventHistory::Detail::Location::~Location()
@@ -12130,6 +9656,7 @@ Controller::CccDriver::Slave::EventHistory::Detail::Location::~Location()
 
 bool Controller::CccDriver::Slave::EventHistory::Detail::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (card_event_hist_detail !=  nullptr && card_event_hist_detail->has_data());
 }
@@ -12151,7 +9678,8 @@ std::string Controller::CccDriver::Slave::EventHistory::Detail::Location::get_ab
 std::string Controller::CccDriver::Slave::EventHistory::Detail::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -12221,7 +9749,7 @@ Controller::CccDriver::Slave::EventHistory::Detail::Location::CardEventHistDetai
     card_event_hist_detail_values{YType::str, "card_event_hist_detail_values"}
 {
 
-    yang_name = "card_event_hist_detail"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card_event_hist_detail"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Slave::EventHistory::Detail::Location::CardEventHistDetail::~CardEventHistDetail()
@@ -12230,6 +9758,7 @@ Controller::CccDriver::Slave::EventHistory::Detail::Location::CardEventHistDetai
 
 bool Controller::CccDriver::Slave::EventHistory::Detail::Location::CardEventHistDetail::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : card_event_hist_detail_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -12305,12 +9834,12 @@ bool Controller::CccDriver::Slave::EventHistory::Detail::Location::CardEventHist
 Controller::CccDriver::Slave::NotifHistory::NotifHistory()
     :
     brief(std::make_shared<Controller::CccDriver::Slave::NotifHistory::Brief>())
-	,detail(std::make_shared<Controller::CccDriver::Slave::NotifHistory::Detail>())
+    , detail(std::make_shared<Controller::CccDriver::Slave::NotifHistory::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "notif-history"; yang_parent_name = "slave"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "notif-history"; yang_parent_name = "slave"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::NotifHistory::~NotifHistory()
@@ -12319,6 +9848,7 @@ Controller::CccDriver::Slave::NotifHistory::~NotifHistory()
 
 bool Controller::CccDriver::Slave::NotifHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return (brief !=  nullptr && brief->has_data())
 	|| (detail !=  nullptr && detail->has_data());
 }
@@ -12409,9 +9939,11 @@ bool Controller::CccDriver::Slave::NotifHistory::has_leaf_or_child_of_name(const
 }
 
 Controller::CccDriver::Slave::NotifHistory::Brief::Brief()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "brief"; yang_parent_name = "notif-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief"; yang_parent_name = "notif-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::NotifHistory::Brief::~Brief()
@@ -12420,7 +9952,8 @@ Controller::CccDriver::Slave::NotifHistory::Brief::~Brief()
 
 bool Controller::CccDriver::Slave::NotifHistory::Brief::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -12430,7 +9963,7 @@ bool Controller::CccDriver::Slave::NotifHistory::Brief::has_data() const
 
 bool Controller::CccDriver::Slave::NotifHistory::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -12467,7 +10000,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Slave::NotifHistory::Brief::get_c
     {
         auto c = std::make_shared<Controller::CccDriver::Slave::NotifHistory::Brief::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -12479,7 +10012,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Slave::Not
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12508,12 +10041,12 @@ bool Controller::CccDriver::Slave::NotifHistory::Brief::has_leaf_or_child_of_nam
 Controller::CccDriver::Slave::NotifHistory::Brief::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     card_notif_hist_brief(std::make_shared<Controller::CccDriver::Slave::NotifHistory::Brief::Location::CardNotifHistBrief>())
 {
     card_notif_hist_brief->parent = this;
 
-    yang_name = "location"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::NotifHistory::Brief::Location::~Location()
@@ -12522,6 +10055,7 @@ Controller::CccDriver::Slave::NotifHistory::Brief::Location::~Location()
 
 bool Controller::CccDriver::Slave::NotifHistory::Brief::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (card_notif_hist_brief !=  nullptr && card_notif_hist_brief->has_data());
 }
@@ -12543,7 +10077,8 @@ std::string Controller::CccDriver::Slave::NotifHistory::Brief::Location::get_abs
 std::string Controller::CccDriver::Slave::NotifHistory::Brief::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -12613,7 +10148,7 @@ Controller::CccDriver::Slave::NotifHistory::Brief::Location::CardNotifHistBrief:
     card_notif_hist_brief_values{YType::str, "card_notif_hist_brief_values"}
 {
 
-    yang_name = "card_notif_hist_brief"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card_notif_hist_brief"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Slave::NotifHistory::Brief::Location::CardNotifHistBrief::~CardNotifHistBrief()
@@ -12622,6 +10157,7 @@ Controller::CccDriver::Slave::NotifHistory::Brief::Location::CardNotifHistBrief:
 
 bool Controller::CccDriver::Slave::NotifHistory::Brief::Location::CardNotifHistBrief::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : card_notif_hist_brief_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -12695,9 +10231,11 @@ bool Controller::CccDriver::Slave::NotifHistory::Brief::Location::CardNotifHistB
 }
 
 Controller::CccDriver::Slave::NotifHistory::Detail::Detail()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "detail"; yang_parent_name = "notif-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "notif-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::NotifHistory::Detail::~Detail()
@@ -12706,7 +10244,8 @@ Controller::CccDriver::Slave::NotifHistory::Detail::~Detail()
 
 bool Controller::CccDriver::Slave::NotifHistory::Detail::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -12716,7 +10255,7 @@ bool Controller::CccDriver::Slave::NotifHistory::Detail::has_data() const
 
 bool Controller::CccDriver::Slave::NotifHistory::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -12753,7 +10292,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Slave::NotifHistory::Detail::get_
     {
         auto c = std::make_shared<Controller::CccDriver::Slave::NotifHistory::Detail::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -12765,7 +10304,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Slave::Not
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12794,12 +10333,12 @@ bool Controller::CccDriver::Slave::NotifHistory::Detail::has_leaf_or_child_of_na
 Controller::CccDriver::Slave::NotifHistory::Detail::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     card_notif_hist_detail(std::make_shared<Controller::CccDriver::Slave::NotifHistory::Detail::Location::CardNotifHistDetail>())
 {
     card_notif_hist_detail->parent = this;
 
-    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::NotifHistory::Detail::Location::~Location()
@@ -12808,6 +10347,7 @@ Controller::CccDriver::Slave::NotifHistory::Detail::Location::~Location()
 
 bool Controller::CccDriver::Slave::NotifHistory::Detail::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (card_notif_hist_detail !=  nullptr && card_notif_hist_detail->has_data());
 }
@@ -12829,7 +10369,8 @@ std::string Controller::CccDriver::Slave::NotifHistory::Detail::Location::get_ab
 std::string Controller::CccDriver::Slave::NotifHistory::Detail::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -12899,7 +10440,7 @@ Controller::CccDriver::Slave::NotifHistory::Detail::Location::CardNotifHistDetai
     card_notif_hist_detail_values{YType::str, "card_notif_hist_detail_values"}
 {
 
-    yang_name = "card_notif_hist_detail"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card_notif_hist_detail"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Slave::NotifHistory::Detail::Location::CardNotifHistDetail::~CardNotifHistDetail()
@@ -12908,6 +10449,7 @@ Controller::CccDriver::Slave::NotifHistory::Detail::Location::CardNotifHistDetai
 
 bool Controller::CccDriver::Slave::NotifHistory::Detail::Location::CardNotifHistDetail::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : card_notif_hist_detail_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -12981,9 +10523,11 @@ bool Controller::CccDriver::Slave::NotifHistory::Detail::Location::CardNotifHist
 }
 
 Controller::CccDriver::Slave::OirHistory::OirHistory()
+    :
+    rack(this, {"rack"})
 {
 
-    yang_name = "oir-history"; yang_parent_name = "slave"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oir-history"; yang_parent_name = "slave"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::OirHistory::~OirHistory()
@@ -12992,7 +10536,8 @@ Controller::CccDriver::Slave::OirHistory::~OirHistory()
 
 bool Controller::CccDriver::Slave::OirHistory::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -13002,7 +10547,7 @@ bool Controller::CccDriver::Slave::OirHistory::has_data() const
 
 bool Controller::CccDriver::Slave::OirHistory::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -13039,7 +10584,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Slave::OirHistory::get_child_by_n
     {
         auto c = std::make_shared<Controller::CccDriver::Slave::OirHistory::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -13051,7 +10596,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Slave::Oir
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13080,12 +10625,12 @@ bool Controller::CccDriver::Slave::OirHistory::has_leaf_or_child_of_name(const s
 Controller::CccDriver::Slave::OirHistory::Rack::Rack()
     :
     rack{YType::str, "rack"}
-    	,
+        ,
     card_oir_hist(std::make_shared<Controller::CccDriver::Slave::OirHistory::Rack::CardOirHist>())
 {
     card_oir_hist->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "oir-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "oir-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Slave::OirHistory::Rack::~Rack()
@@ -13094,6 +10639,7 @@ Controller::CccDriver::Slave::OirHistory::Rack::~Rack()
 
 bool Controller::CccDriver::Slave::OirHistory::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| (card_oir_hist !=  nullptr && card_oir_hist->has_data());
 }
@@ -13115,7 +10661,8 @@ std::string Controller::CccDriver::Slave::OirHistory::Rack::get_absolute_path() 
 std::string Controller::CccDriver::Slave::OirHistory::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack='" <<rack <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack, "rack");
     return path_buffer.str();
 }
 
@@ -13185,7 +10732,7 @@ Controller::CccDriver::Slave::OirHistory::Rack::CardOirHist::CardOirHist()
     card_oir_events{YType::str, "card_oir_events"}
 {
 
-    yang_name = "card_oir_hist"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card_oir_hist"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::CccDriver::Slave::OirHistory::Rack::CardOirHist::~CardOirHist()
@@ -13194,6 +10741,7 @@ Controller::CccDriver::Slave::OirHistory::Rack::CardOirHist::~CardOirHist()
 
 bool Controller::CccDriver::Slave::OirHistory::Rack::CardOirHist::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : card_oir_events.getYLeafs())
     {
         if(leaf.is_set)
@@ -13272,7 +10820,7 @@ Controller::CccDriver::Action::Action()
 {
     register_->parent = this;
 
-    yang_name = "action"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "action"; yang_parent_name = "ccc_driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Action::~Action()
@@ -13281,6 +10829,7 @@ Controller::CccDriver::Action::~Action()
 
 bool Controller::CccDriver::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return (register_ !=  nullptr && register_->has_data());
 }
 
@@ -13355,9 +10904,11 @@ bool Controller::CccDriver::Action::has_leaf_or_child_of_name(const std::string 
 }
 
 Controller::CccDriver::Action::Register::Register()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "register"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "register"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Action::Register::~Register()
@@ -13366,7 +10917,8 @@ Controller::CccDriver::Action::Register::~Register()
 
 bool Controller::CccDriver::Action::Register::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -13376,7 +10928,7 @@ bool Controller::CccDriver::Action::Register::has_data() const
 
 bool Controller::CccDriver::Action::Register::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -13413,7 +10965,7 @@ std::shared_ptr<Entity> Controller::CccDriver::Action::Register::get_child_by_na
     {
         auto c = std::make_shared<Controller::CccDriver::Action::Register::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -13425,7 +10977,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::CccDriver::Action::Re
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13456,7 +11008,7 @@ Controller::CccDriver::Action::Register::Location::Location()
     location{YType::str, "location"}
 {
 
-    yang_name = "location"; yang_parent_name = "register"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "register"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::CccDriver::Action::Register::Location::~Location()
@@ -13465,6 +11017,7 @@ Controller::CccDriver::Action::Register::Location::~Location()
 
 bool Controller::CccDriver::Action::Register::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set;
 }
 
@@ -13484,7 +11037,8 @@ std::string Controller::CccDriver::Action::Register::Location::get_absolute_path
 std::string Controller::CccDriver::Action::Register::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -13541,7 +11095,7 @@ Controller::Switch::Switch()
 {
     oper->parent = this;
 
-    yang_name = "switch"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "switch"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::~Switch()
@@ -13550,6 +11104,7 @@ Controller::Switch::~Switch()
 
 bool Controller::Switch::has_data() const
 {
+    if (is_presence_container) return true;
     return (oper !=  nullptr && oper->has_data());
 }
 
@@ -13626,21 +11181,21 @@ bool Controller::Switch::has_leaf_or_child_of_name(const std::string & name) con
 Controller::Switch::Oper::Oper()
     :
     reachable(std::make_shared<Controller::Switch::Oper::Reachable>())
-	,summary(std::make_shared<Controller::Switch::Oper::Summary>())
-	,statistics(std::make_shared<Controller::Switch::Oper::Statistics>())
-	,serdes(std::make_shared<Controller::Switch::Oper::Serdes>())
-	,mac(std::make_shared<Controller::Switch::Oper::Mac>())
-	,bridge(std::make_shared<Controller::Switch::Oper::Bridge>())
-	,fdb(std::make_shared<Controller::Switch::Oper::Fdb>())
-	,vlan(std::make_shared<Controller::Switch::Oper::Vlan>())
-	,sdr(std::make_shared<Controller::Switch::Oper::Sdr>())
-	,sfp(std::make_shared<Controller::Switch::Oper::Sfp>())
-	,mlap(std::make_shared<Controller::Switch::Oper::Mlap>())
-	,switch_debug_cont(std::make_shared<Controller::Switch::Oper::SwitchDebugCont>())
-	,esd(std::make_shared<Controller::Switch::Oper::Esd>())
-	,mgmt_agent(std::make_shared<Controller::Switch::Oper::MgmtAgent>())
-	,port_state(std::make_shared<Controller::Switch::Oper::PortState>())
-	,trunk(std::make_shared<Controller::Switch::Oper::Trunk>())
+    , summary(std::make_shared<Controller::Switch::Oper::Summary>())
+    , statistics(std::make_shared<Controller::Switch::Oper::Statistics>())
+    , serdes(std::make_shared<Controller::Switch::Oper::Serdes>())
+    , mac(std::make_shared<Controller::Switch::Oper::Mac>())
+    , bridge(std::make_shared<Controller::Switch::Oper::Bridge>())
+    , fdb(std::make_shared<Controller::Switch::Oper::Fdb>())
+    , vlan(std::make_shared<Controller::Switch::Oper::Vlan>())
+    , sdr(std::make_shared<Controller::Switch::Oper::Sdr>())
+    , sfp(std::make_shared<Controller::Switch::Oper::Sfp>())
+    , mlap(std::make_shared<Controller::Switch::Oper::Mlap>())
+    , switch_debug_cont(std::make_shared<Controller::Switch::Oper::SwitchDebugCont>())
+    , esd(std::make_shared<Controller::Switch::Oper::Esd>())
+    , mgmt_agent(std::make_shared<Controller::Switch::Oper::MgmtAgent>())
+    , port_state(std::make_shared<Controller::Switch::Oper::PortState>())
+    , trunk(std::make_shared<Controller::Switch::Oper::Trunk>())
 {
     reachable->parent = this;
     summary->parent = this;
@@ -13659,7 +11214,7 @@ Controller::Switch::Oper::Oper()
     port_state->parent = this;
     trunk->parent = this;
 
-    yang_name = "oper"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oper"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::~Oper()
@@ -13668,6 +11223,7 @@ Controller::Switch::Oper::~Oper()
 
 bool Controller::Switch::Oper::has_data() const
 {
+    if (is_presence_container) return true;
     return (reachable !=  nullptr && reachable->has_data())
 	|| (summary !=  nullptr && summary->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
@@ -13982,9 +11538,11 @@ bool Controller::Switch::Oper::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Controller::Switch::Oper::Reachable::Reachable()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "reachable"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reachable"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Reachable::~Reachable()
@@ -13993,7 +11551,8 @@ Controller::Switch::Oper::Reachable::~Reachable()
 
 bool Controller::Switch::Oper::Reachable::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -14003,7 +11562,7 @@ bool Controller::Switch::Oper::Reachable::has_data() const
 
 bool Controller::Switch::Oper::Reachable::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -14040,7 +11599,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Reachable::get_child_by_name(c
     {
         auto c = std::make_shared<Controller::Switch::Oper::Reachable::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -14052,7 +11611,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Reachab
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14085,7 +11644,7 @@ Controller::Switch::Oper::Reachable::Location::Location()
     switch_id{YType::enumeration, "switch-id"}
 {
 
-    yang_name = "location"; yang_parent_name = "reachable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "reachable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Reachable::Location::~Location()
@@ -14094,6 +11653,7 @@ Controller::Switch::Oper::Reachable::Location::~Location()
 
 bool Controller::Switch::Oper::Reachable::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set;
@@ -14117,7 +11677,10 @@ std::string Controller::Switch::Oper::Reachable::Location::get_absolute_path() c
 std::string Controller::Switch::Oper::Reachable::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -14191,9 +11754,11 @@ bool Controller::Switch::Oper::Reachable::Location::has_leaf_or_child_of_name(co
 }
 
 Controller::Switch::Oper::Summary::Summary()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "summary"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Summary::~Summary()
@@ -14202,7 +11767,8 @@ Controller::Switch::Oper::Summary::~Summary()
 
 bool Controller::Switch::Oper::Summary::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -14212,7 +11778,7 @@ bool Controller::Switch::Oper::Summary::has_data() const
 
 bool Controller::Switch::Oper::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -14249,7 +11815,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Summary::get_child_by_name(con
     {
         auto c = std::make_shared<Controller::Switch::Oper::Summary::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -14261,7 +11827,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Summary
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14293,9 +11859,11 @@ Controller::Switch::Oper::Summary::Location::Location()
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"},
     serial_num{YType::str, "serial-num"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Summary::Location::~Location()
@@ -14304,7 +11872,8 @@ Controller::Switch::Oper::Summary::Location::~Location()
 
 bool Controller::Switch::Oper::Summary::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -14317,7 +11886,7 @@ bool Controller::Switch::Oper::Summary::Location::has_data() const
 
 bool Controller::Switch::Oper::Summary::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -14339,7 +11908,10 @@ std::string Controller::Switch::Oper::Summary::Location::get_absolute_path() con
 std::string Controller::Switch::Oper::Summary::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -14362,7 +11934,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Summary::Location::get_child_b
     {
         auto c = std::make_shared<Controller::Switch::Oper::Summary::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -14374,7 +11946,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Summary
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14451,7 +12023,7 @@ Controller::Switch::Oper::Summary::Location::PortIter::PortIter()
     connects_to{YType::str, "connects-to"}
 {
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Summary::Location::PortIter::~PortIter()
@@ -14460,6 +12032,7 @@ Controller::Switch::Oper::Summary::Location::PortIter::~PortIter()
 
 bool Controller::Switch::Oper::Summary::Location::PortIter::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| phys_state.is_set
 	|| admin_state.is_set
@@ -14484,7 +12057,8 @@ bool Controller::Switch::Oper::Summary::Location::PortIter::has_operation() cons
 std::string Controller::Switch::Oper::Summary::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -14604,12 +12178,12 @@ bool Controller::Switch::Oper::Summary::Location::PortIter::has_leaf_or_child_of
 Controller::Switch::Oper::Statistics::Statistics()
     :
     summary_statistics(std::make_shared<Controller::Switch::Oper::Statistics::SummaryStatistics>())
-	,detail(std::make_shared<Controller::Switch::Oper::Statistics::Detail>())
+    , detail(std::make_shared<Controller::Switch::Oper::Statistics::Detail>())
 {
     summary_statistics->parent = this;
     detail->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Statistics::~Statistics()
@@ -14618,6 +12192,7 @@ Controller::Switch::Oper::Statistics::~Statistics()
 
 bool Controller::Switch::Oper::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary_statistics !=  nullptr && summary_statistics->has_data())
 	|| (detail !=  nullptr && detail->has_data());
 }
@@ -14708,9 +12283,11 @@ bool Controller::Switch::Oper::Statistics::has_leaf_or_child_of_name(const std::
 }
 
 Controller::Switch::Oper::Statistics::SummaryStatistics::SummaryStatistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "summary-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Statistics::SummaryStatistics::~SummaryStatistics()
@@ -14719,7 +12296,8 @@ Controller::Switch::Oper::Statistics::SummaryStatistics::~SummaryStatistics()
 
 bool Controller::Switch::Oper::Statistics::SummaryStatistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -14729,7 +12307,7 @@ bool Controller::Switch::Oper::Statistics::SummaryStatistics::has_data() const
 
 bool Controller::Switch::Oper::Statistics::SummaryStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -14766,7 +12344,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Statistics::SummaryStatistics:
     {
         auto c = std::make_shared<Controller::Switch::Oper::Statistics::SummaryStatistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -14778,7 +12356,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14810,9 +12388,11 @@ Controller::Switch::Oper::Statistics::SummaryStatistics::Location::Location()
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"},
     serial_num{YType::str, "serial-num"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "summary-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "summary-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Statistics::SummaryStatistics::Location::~Location()
@@ -14821,7 +12401,8 @@ Controller::Switch::Oper::Statistics::SummaryStatistics::Location::~Location()
 
 bool Controller::Switch::Oper::Statistics::SummaryStatistics::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -14834,7 +12415,7 @@ bool Controller::Switch::Oper::Statistics::SummaryStatistics::Location::has_data
 
 bool Controller::Switch::Oper::Statistics::SummaryStatistics::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -14856,7 +12437,10 @@ std::string Controller::Switch::Oper::Statistics::SummaryStatistics::Location::g
 std::string Controller::Switch::Oper::Statistics::SummaryStatistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -14879,7 +12463,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Statistics::SummaryStatistics:
     {
         auto c = std::make_shared<Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -14891,7 +12475,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14969,7 +12553,7 @@ Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter::Por
     connects_to{YType::str, "connects-to"}
 {
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter::~PortIter()
@@ -14978,6 +12562,7 @@ Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter::~Po
 
 bool Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| phys_state.is_set
 	|| state_changes.is_set
@@ -15004,7 +12589,8 @@ bool Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter
 std::string Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -15133,9 +12719,11 @@ bool Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter
 }
 
 Controller::Switch::Oper::Statistics::Detail::Detail()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "detail"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Statistics::Detail::~Detail()
@@ -15144,7 +12732,8 @@ Controller::Switch::Oper::Statistics::Detail::~Detail()
 
 bool Controller::Switch::Oper::Statistics::Detail::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -15154,7 +12743,7 @@ bool Controller::Switch::Oper::Statistics::Detail::has_data() const
 
 bool Controller::Switch::Oper::Statistics::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -15191,7 +12780,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Statistics::Detail::get_child_
     {
         auto c = std::make_shared<Controller::Switch::Oper::Statistics::Detail::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -15203,7 +12792,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15234,9 +12823,11 @@ Controller::Switch::Oper::Statistics::Detail::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Statistics::Detail::Location::~Location()
@@ -15245,7 +12836,8 @@ Controller::Switch::Oper::Statistics::Detail::Location::~Location()
 
 bool Controller::Switch::Oper::Statistics::Detail::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -15257,7 +12849,7 @@ bool Controller::Switch::Oper::Statistics::Detail::Location::has_data() const
 
 bool Controller::Switch::Oper::Statistics::Detail::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -15278,7 +12870,10 @@ std::string Controller::Switch::Oper::Statistics::Detail::Location::get_absolute
 std::string Controller::Switch::Oper::Statistics::Detail::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -15300,7 +12895,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Statistics::Detail::Location::
     {
         auto c = std::make_shared<Controller::Switch::Oper::Statistics::Detail::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -15312,7 +12907,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15374,12 +12969,12 @@ Controller::Switch::Oper::Statistics::Detail::Location::PortIter::PortIter()
     phys_state{YType::enumeration, "phys-state"},
     port_speed{YType::str, "port-speed"},
     connects_to{YType::str, "connects-to"}
-    	,
+        ,
     counters(std::make_shared<Controller::Switch::Oper::Statistics::Detail::Location::PortIter::Counters>())
 {
     counters->parent = this;
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Statistics::Detail::Location::PortIter::~PortIter()
@@ -15388,6 +12983,7 @@ Controller::Switch::Oper::Statistics::Detail::Location::PortIter::~PortIter()
 
 bool Controller::Switch::Oper::Statistics::Detail::Location::PortIter::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| phys_state.is_set
 	|| port_speed.is_set
@@ -15408,7 +13004,8 @@ bool Controller::Switch::Oper::Statistics::Detail::Location::PortIter::has_opera
 std::string Controller::Switch::Oper::Statistics::Detail::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -15543,7 +13140,7 @@ Controller::Switch::Oper::Statistics::Detail::Location::PortIter::Counters::Coun
     sw_det_rxtx_packets_1024_max{YType::uint64, "sw-det-rxtx-packets-1024-max"}
 {
 
-    yang_name = "counters"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Statistics::Detail::Location::PortIter::Counters::~Counters()
@@ -15552,6 +13149,7 @@ Controller::Switch::Oper::Statistics::Detail::Location::PortIter::Counters::~Cou
 
 bool Controller::Switch::Oper::Statistics::Detail::Location::PortIter::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return sw_det_rx_ucast_packets.is_set
 	|| sw_det_rx_mcast_packets.is_set
 	|| sw_det_rx_bcast_packets.is_set
@@ -16037,7 +13635,7 @@ Controller::Switch::Oper::Serdes::Serdes()
 {
     serdes_statistics->parent = this;
 
-    yang_name = "serdes"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "serdes"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Serdes::~Serdes()
@@ -16046,6 +13644,7 @@ Controller::Switch::Oper::Serdes::~Serdes()
 
 bool Controller::Switch::Oper::Serdes::has_data() const
 {
+    if (is_presence_container) return true;
     return (serdes_statistics !=  nullptr && serdes_statistics->has_data());
 }
 
@@ -16120,9 +13719,11 @@ bool Controller::Switch::Oper::Serdes::has_leaf_or_child_of_name(const std::stri
 }
 
 Controller::Switch::Oper::Serdes::SerdesStatistics::SerdesStatistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "serdes-statistics"; yang_parent_name = "serdes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "serdes-statistics"; yang_parent_name = "serdes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Serdes::SerdesStatistics::~SerdesStatistics()
@@ -16131,7 +13732,8 @@ Controller::Switch::Oper::Serdes::SerdesStatistics::~SerdesStatistics()
 
 bool Controller::Switch::Oper::Serdes::SerdesStatistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -16141,7 +13743,7 @@ bool Controller::Switch::Oper::Serdes::SerdesStatistics::has_data() const
 
 bool Controller::Switch::Oper::Serdes::SerdesStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -16178,7 +13780,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Serdes::SerdesStatistics::get_
     {
         auto c = std::make_shared<Controller::Switch::Oper::Serdes::SerdesStatistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -16190,7 +13792,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Serdes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16221,9 +13823,11 @@ Controller::Switch::Oper::Serdes::SerdesStatistics::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "serdes-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "serdes-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Serdes::SerdesStatistics::Location::~Location()
@@ -16232,7 +13836,8 @@ Controller::Switch::Oper::Serdes::SerdesStatistics::Location::~Location()
 
 bool Controller::Switch::Oper::Serdes::SerdesStatistics::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -16244,7 +13849,7 @@ bool Controller::Switch::Oper::Serdes::SerdesStatistics::Location::has_data() co
 
 bool Controller::Switch::Oper::Serdes::SerdesStatistics::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -16265,7 +13870,10 @@ std::string Controller::Switch::Oper::Serdes::SerdesStatistics::Location::get_ab
 std::string Controller::Switch::Oper::Serdes::SerdesStatistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -16287,7 +13895,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Serdes::SerdesStatistics::Loca
     {
         auto c = std::make_shared<Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -16299,7 +13907,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Serdes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16358,9 +13966,11 @@ bool Controller::Switch::Oper::Serdes::SerdesStatistics::Location::has_leaf_or_c
 Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::PortIter()
     :
     port{YType::int32, "port"}
+        ,
+    serdes_entry(this, {"id"})
 {
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::~PortIter()
@@ -16369,7 +13979,8 @@ Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::~PortIte
 
 bool Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::has_data() const
 {
-    for (std::size_t index=0; index<serdes_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<serdes_entry.len(); index++)
     {
         if(serdes_entry[index]->has_data())
             return true;
@@ -16379,7 +13990,7 @@ bool Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::has
 
 bool Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::has_operation() const
 {
-    for (std::size_t index=0; index<serdes_entry.size(); index++)
+    for (std::size_t index=0; index<serdes_entry.len(); index++)
     {
         if(serdes_entry[index]->has_operation())
             return true;
@@ -16391,7 +14002,8 @@ bool Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::has
 std::string Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -16411,7 +14023,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Serdes::SerdesStatistics::Loca
     {
         auto c = std::make_shared<Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::SerdesEntry>();
         c->parent = this;
-        serdes_entry.push_back(c);
+        serdes_entry.append(c);
         return c;
     }
 
@@ -16423,7 +14035,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Serdes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : serdes_entry)
+    for (auto c : serdes_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16470,7 +14082,7 @@ Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::SerdesEn
     lane_3{YType::str, "lane-3"}
 {
 
-    yang_name = "serdes-entry"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "serdes-entry"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::SerdesEntry::~SerdesEntry()
@@ -16479,6 +14091,7 @@ Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::SerdesEn
 
 bool Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::SerdesEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| base_reg.is_set
 	|| desc.is_set
@@ -16503,7 +14116,8 @@ bool Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::Ser
 std::string Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::SerdesEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "serdes-entry" <<"[id='" <<id <<"']";
+    path_buffer << "serdes-entry";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -16626,7 +14240,7 @@ Controller::Switch::Oper::Mac::Mac()
 {
     mac_statistics->parent = this;
 
-    yang_name = "mac"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Mac::~Mac()
@@ -16635,6 +14249,7 @@ Controller::Switch::Oper::Mac::~Mac()
 
 bool Controller::Switch::Oper::Mac::has_data() const
 {
+    if (is_presence_container) return true;
     return (mac_statistics !=  nullptr && mac_statistics->has_data());
 }
 
@@ -16709,9 +14324,11 @@ bool Controller::Switch::Oper::Mac::has_leaf_or_child_of_name(const std::string 
 }
 
 Controller::Switch::Oper::Mac::MacStatistics::MacStatistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "mac-statistics"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-statistics"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Mac::MacStatistics::~MacStatistics()
@@ -16720,7 +14337,8 @@ Controller::Switch::Oper::Mac::MacStatistics::~MacStatistics()
 
 bool Controller::Switch::Oper::Mac::MacStatistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -16730,7 +14348,7 @@ bool Controller::Switch::Oper::Mac::MacStatistics::has_data() const
 
 bool Controller::Switch::Oper::Mac::MacStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -16767,7 +14385,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Mac::MacStatistics::get_child_
     {
         auto c = std::make_shared<Controller::Switch::Oper::Mac::MacStatistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -16779,7 +14397,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Mac::Ma
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16810,9 +14428,11 @@ Controller::Switch::Oper::Mac::MacStatistics::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "mac-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "mac-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Mac::MacStatistics::Location::~Location()
@@ -16821,7 +14441,8 @@ Controller::Switch::Oper::Mac::MacStatistics::Location::~Location()
 
 bool Controller::Switch::Oper::Mac::MacStatistics::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -16833,7 +14454,7 @@ bool Controller::Switch::Oper::Mac::MacStatistics::Location::has_data() const
 
 bool Controller::Switch::Oper::Mac::MacStatistics::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -16854,7 +14475,10 @@ std::string Controller::Switch::Oper::Mac::MacStatistics::Location::get_absolute
 std::string Controller::Switch::Oper::Mac::MacStatistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -16876,7 +14500,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Mac::MacStatistics::Location::
     {
         auto c = std::make_shared<Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -16888,7 +14512,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Mac::Ma
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16947,9 +14571,11 @@ bool Controller::Switch::Oper::Mac::MacStatistics::Location::has_leaf_or_child_o
 Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::PortIter()
     :
     port{YType::int32, "port"}
+        ,
+    mac_entry(this, {"id"})
 {
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::~PortIter()
@@ -16958,7 +14584,8 @@ Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::~PortIter()
 
 bool Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::has_data() const
 {
-    for (std::size_t index=0; index<mac_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_entry.len(); index++)
     {
         if(mac_entry[index]->has_data())
             return true;
@@ -16968,7 +14595,7 @@ bool Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::has_data(
 
 bool Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::has_operation() const
 {
-    for (std::size_t index=0; index<mac_entry.size(); index++)
+    for (std::size_t index=0; index<mac_entry.len(); index++)
     {
         if(mac_entry[index]->has_operation())
             return true;
@@ -16980,7 +14607,8 @@ bool Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::has_opera
 std::string Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -17000,7 +14628,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Mac::MacStatistics::Location::
     {
         auto c = std::make_shared<Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry>();
         c->parent = this;
-        mac_entry.push_back(c);
+        mac_entry.append(c);
         return c;
     }
 
@@ -17012,7 +14640,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Mac::Ma
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mac_entry)
+    for (auto c : mac_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17056,7 +14684,7 @@ Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry::MacE
     value_{YType::str, "value"}
 {
 
-    yang_name = "mac-entry"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-entry"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry::~MacEntry()
@@ -17065,6 +14693,7 @@ Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry::~Mac
 
 bool Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| base_reg.is_set
 	|| desc.is_set
@@ -17083,7 +14712,8 @@ bool Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry:
 std::string Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mac-entry" <<"[id='" <<id <<"']";
+    path_buffer << "mac-entry";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -17173,7 +14803,7 @@ Controller::Switch::Oper::Bridge::Bridge()
 {
     statistics->parent = this;
 
-    yang_name = "bridge"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bridge"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Bridge::~Bridge()
@@ -17182,6 +14812,7 @@ Controller::Switch::Oper::Bridge::~Bridge()
 
 bool Controller::Switch::Oper::Bridge::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data());
 }
 
@@ -17256,9 +14887,11 @@ bool Controller::Switch::Oper::Bridge::has_leaf_or_child_of_name(const std::stri
 }
 
 Controller::Switch::Oper::Bridge::Statistics::Statistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "bridge"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "bridge"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Bridge::Statistics::~Statistics()
@@ -17267,7 +14900,8 @@ Controller::Switch::Oper::Bridge::Statistics::~Statistics()
 
 bool Controller::Switch::Oper::Bridge::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -17277,7 +14911,7 @@ bool Controller::Switch::Oper::Bridge::Statistics::has_data() const
 
 bool Controller::Switch::Oper::Bridge::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -17314,7 +14948,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Bridge::Statistics::get_child_
     {
         auto c = std::make_shared<Controller::Switch::Oper::Bridge::Statistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -17326,7 +14960,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Bridge:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17357,9 +14991,12 @@ Controller::Switch::Oper::Bridge::Statistics::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    ingress_set_id(this, {"ingress_set"})
+    , egress_set_id(this, {"egress_set"})
 {
 
-    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Bridge::Statistics::Location::~Location()
@@ -17368,12 +15005,13 @@ Controller::Switch::Oper::Bridge::Statistics::Location::~Location()
 
 bool Controller::Switch::Oper::Bridge::Statistics::Location::has_data() const
 {
-    for (std::size_t index=0; index<ingress_set_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ingress_set_id.len(); index++)
     {
         if(ingress_set_id[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<egress_set_id.size(); index++)
+    for (std::size_t index=0; index<egress_set_id.len(); index++)
     {
         if(egress_set_id[index]->has_data())
             return true;
@@ -17385,12 +15023,12 @@ bool Controller::Switch::Oper::Bridge::Statistics::Location::has_data() const
 
 bool Controller::Switch::Oper::Bridge::Statistics::Location::has_operation() const
 {
-    for (std::size_t index=0; index<ingress_set_id.size(); index++)
+    for (std::size_t index=0; index<ingress_set_id.len(); index++)
     {
         if(ingress_set_id[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<egress_set_id.size(); index++)
+    for (std::size_t index=0; index<egress_set_id.len(); index++)
     {
         if(egress_set_id[index]->has_operation())
             return true;
@@ -17411,7 +15049,10 @@ std::string Controller::Switch::Oper::Bridge::Statistics::Location::get_absolute
 std::string Controller::Switch::Oper::Bridge::Statistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -17433,7 +15074,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Bridge::Statistics::Location::
     {
         auto c = std::make_shared<Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId>();
         c->parent = this;
-        ingress_set_id.push_back(c);
+        ingress_set_id.append(c);
         return c;
     }
 
@@ -17441,7 +15082,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Bridge::Statistics::Location::
     {
         auto c = std::make_shared<Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId>();
         c->parent = this;
-        egress_set_id.push_back(c);
+        egress_set_id.append(c);
         return c;
     }
 
@@ -17453,7 +15094,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Bridge:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ingress_set_id)
+    for (auto c : ingress_set_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17462,7 +15103,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Bridge:
     }
 
     count = 0;
-    for (auto const & c : egress_set_id)
+    for (auto c : egress_set_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17528,7 +15169,7 @@ Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId::IngressSet
     ingress_other_discards{YType::uint64, "ingress-other-discards"}
 {
 
-    yang_name = "ingress-set-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ingress-set-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId::~IngressSetId()
@@ -17537,6 +15178,7 @@ Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId::~IngressSe
 
 bool Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId::has_data() const
 {
+    if (is_presence_container) return true;
     return ingress_set.is_set
 	|| ingress_set_name.is_set
 	|| ingress_frames.is_set
@@ -17559,7 +15201,8 @@ bool Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId::has_o
 std::string Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ingress-set-id" <<"[ingress-set='" <<ingress_set <<"']";
+    path_buffer << "ingress-set-id";
+    ADD_KEY_TOKEN(ingress_set, "ingress-set");
     return path_buffer.str();
 }
 
@@ -17678,7 +15321,7 @@ Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::EgressSetId
     egress_other_drops{YType::uint64, "egress-other-drops"}
 {
 
-    yang_name = "egress-set-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "egress-set-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::~EgressSetId()
@@ -17687,6 +15330,7 @@ Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::~EgressSetI
 
 bool Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::has_data() const
 {
+    if (is_presence_container) return true;
     return egress_set.is_set
 	|| egress_set_name.is_set
 	|| egress_ucast_frames.is_set
@@ -17715,7 +15359,8 @@ bool Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::has_op
 std::string Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "egress-set-id" <<"[egress-set='" <<egress_set <<"']";
+    path_buffer << "egress-set-id";
+    ADD_KEY_TOKEN(egress_set, "egress-set");
     return path_buffer.str();
 }
 
@@ -17857,10 +15502,10 @@ bool Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::has_le
 Controller::Switch::Oper::Fdb::Fdb()
     :
     vlan(std::make_shared<Controller::Switch::Oper::Fdb::Vlan>())
-	,mac(std::make_shared<Controller::Switch::Oper::Fdb::Mac>())
-	,port(std::make_shared<Controller::Switch::Oper::Fdb::Port>())
-	,statistics(std::make_shared<Controller::Switch::Oper::Fdb::Statistics>())
-	,switch_fdb_common(std::make_shared<Controller::Switch::Oper::Fdb::SwitchFdbCommon>())
+    , mac(std::make_shared<Controller::Switch::Oper::Fdb::Mac>())
+    , port(std::make_shared<Controller::Switch::Oper::Fdb::Port>())
+    , statistics(std::make_shared<Controller::Switch::Oper::Fdb::Statistics>())
+    , switch_fdb_common(std::make_shared<Controller::Switch::Oper::Fdb::SwitchFdbCommon>())
 {
     vlan->parent = this;
     mac->parent = this;
@@ -17868,7 +15513,7 @@ Controller::Switch::Oper::Fdb::Fdb()
     statistics->parent = this;
     switch_fdb_common->parent = this;
 
-    yang_name = "fdb"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fdb"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Fdb::~Fdb()
@@ -17877,6 +15522,7 @@ Controller::Switch::Oper::Fdb::~Fdb()
 
 bool Controller::Switch::Oper::Fdb::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data())
 	|| (mac !=  nullptr && mac->has_data())
 	|| (port !=  nullptr && port->has_data())
@@ -18010,6 +15656,2244 @@ void Controller::Switch::Oper::Fdb::set_filter(const std::string & value_path, Y
 bool Controller::Switch::Oper::Fdb::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan" || name == "mac" || name == "port" || name == "statistics" || name == "switch-fdb-common")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Vlan::Vlan()
+    :
+    vlan_iter(this, {"vlan"})
+{
+
+    yang_name = "vlan"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Controller::Switch::Oper::Fdb::Vlan::~Vlan()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_iter.len(); index++)
+    {
+        if(vlan_iter[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::has_operation() const
+{
+    for (std::size_t index=0; index<vlan_iter.len(); index++)
+    {
+        if(vlan_iter[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Controller::Switch::Oper::Fdb::Vlan::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/switch/oper/fdb/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Controller::Switch::Oper::Fdb::Vlan::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Vlan::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vlan-iter")
+    {
+        auto c = std::make_shared<Controller::Switch::Oper::Fdb::Vlan::VlanIter>();
+        c->parent = this;
+        vlan_iter.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Vlan::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : vlan_iter.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Controller::Switch::Oper::Fdb::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-iter")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Vlan::VlanIter::VlanIter()
+    :
+    vlan{YType::uint16, "vlan"}
+        ,
+    switch_fdb_common(std::make_shared<Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon>())
+{
+    switch_fdb_common->parent = this;
+
+    yang_name = "vlan-iter"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Controller::Switch::Oper::Fdb::Vlan::VlanIter::~VlanIter()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::has_data() const
+{
+    if (is_presence_container) return true;
+    return vlan.is_set
+	|| (switch_fdb_common !=  nullptr && switch_fdb_common->has_data());
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vlan.yfilter)
+	|| (switch_fdb_common !=  nullptr && switch_fdb_common->has_operation());
+}
+
+std::string Controller::Switch::Oper::Fdb::Vlan::VlanIter::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/switch/oper/fdb/vlan/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Controller::Switch::Oper::Fdb::Vlan::VlanIter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-iter";
+    ADD_KEY_TOKEN(vlan, "vlan");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Vlan::VlanIter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vlan.is_set || is_set(vlan.yfilter)) leaf_name_data.push_back(vlan.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Vlan::VlanIter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "switch-fdb-common")
+    {
+        if(switch_fdb_common == nullptr)
+        {
+            switch_fdb_common = std::make_shared<Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon>();
+        }
+        return switch_fdb_common;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Vlan::VlanIter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(switch_fdb_common != nullptr)
+    {
+        children["switch-fdb-common"] = switch_fdb_common;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Vlan::VlanIter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vlan")
+    {
+        vlan = value;
+        vlan.value_namespace = name_space;
+        vlan.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Controller::Switch::Oper::Fdb::Vlan::VlanIter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlan")
+    {
+        vlan.yfilter = yfilter;
+    }
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "switch-fdb-common" || name == "vlan")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::SwitchFdbCommon()
+    :
+    location(this, {"rack", "card", "switch_id"})
+{
+
+    yang_name = "switch-fdb-common"; yang_parent_name = "vlan-iter"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::~SwitchFdbCommon()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
+    {
+        if(location[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::has_operation() const
+{
+    for (std::size_t index=0; index<location.len(); index++)
+    {
+        if(location[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "switch-fdb-common";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "location")
+    {
+        auto c = std::make_shared<Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location>();
+        c->parent = this;
+        location.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : location.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::Location()
+    :
+    rack{YType::enumeration, "rack"},
+    card{YType::enumeration, "card"},
+    switch_id{YType::enumeration, "switch-id"},
+    num_entries{YType::uint32, "num-entries"},
+    has_trunk_entry{YType::uint8, "has-trunk-entry"},
+    trunk_entry_message{YType::str, "trunk-entry-message"}
+        ,
+    fdb_block(std::make_shared<Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock>())
+{
+    fdb_block->parent = this;
+
+    yang_name = "location"; yang_parent_name = "switch-fdb-common"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::~Location()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::has_data() const
+{
+    if (is_presence_container) return true;
+    return rack.is_set
+	|| card.is_set
+	|| switch_id.is_set
+	|| num_entries.is_set
+	|| has_trunk_entry.is_set
+	|| trunk_entry_message.is_set
+	|| (fdb_block !=  nullptr && fdb_block->has_data());
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rack.yfilter)
+	|| ydk::is_set(card.yfilter)
+	|| ydk::is_set(switch_id.yfilter)
+	|| ydk::is_set(num_entries.yfilter)
+	|| ydk::is_set(has_trunk_entry.yfilter)
+	|| ydk::is_set(trunk_entry_message.yfilter)
+	|| (fdb_block !=  nullptr && fdb_block->has_operation());
+}
+
+std::string Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rack.is_set || is_set(rack.yfilter)) leaf_name_data.push_back(rack.get_name_leafdata());
+    if (card.is_set || is_set(card.yfilter)) leaf_name_data.push_back(card.get_name_leafdata());
+    if (switch_id.is_set || is_set(switch_id.yfilter)) leaf_name_data.push_back(switch_id.get_name_leafdata());
+    if (num_entries.is_set || is_set(num_entries.yfilter)) leaf_name_data.push_back(num_entries.get_name_leafdata());
+    if (has_trunk_entry.is_set || is_set(has_trunk_entry.yfilter)) leaf_name_data.push_back(has_trunk_entry.get_name_leafdata());
+    if (trunk_entry_message.is_set || is_set(trunk_entry_message.yfilter)) leaf_name_data.push_back(trunk_entry_message.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fdb-block")
+    {
+        if(fdb_block == nullptr)
+        {
+            fdb_block = std::make_shared<Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock>();
+        }
+        return fdb_block;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(fdb_block != nullptr)
+    {
+        children["fdb-block"] = fdb_block;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rack")
+    {
+        rack = value;
+        rack.value_namespace = name_space;
+        rack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "card")
+    {
+        card = value;
+        card.value_namespace = name_space;
+        card.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "switch-id")
+    {
+        switch_id = value;
+        switch_id.value_namespace = name_space;
+        switch_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-entries")
+    {
+        num_entries = value;
+        num_entries.value_namespace = name_space;
+        num_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-trunk-entry")
+    {
+        has_trunk_entry = value;
+        has_trunk_entry.value_namespace = name_space;
+        has_trunk_entry.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trunk-entry-message")
+    {
+        trunk_entry_message = value;
+        trunk_entry_message.value_namespace = name_space;
+        trunk_entry_message.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rack")
+    {
+        rack.yfilter = yfilter;
+    }
+    if(value_path == "card")
+    {
+        card.yfilter = yfilter;
+    }
+    if(value_path == "switch-id")
+    {
+        switch_id.yfilter = yfilter;
+    }
+    if(value_path == "num-entries")
+    {
+        num_entries.yfilter = yfilter;
+    }
+    if(value_path == "has-trunk-entry")
+    {
+        has_trunk_entry.yfilter = yfilter;
+    }
+    if(value_path == "trunk-entry-message")
+    {
+        trunk_entry_message.yfilter = yfilter;
+    }
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fdb-block" || name == "rack" || name == "card" || name == "switch-id" || name == "num-entries" || name == "has-trunk-entry" || name == "trunk-entry-message")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbBlock()
+    :
+    fdb_entry(this, {"fdb_index"})
+{
+
+    yang_name = "fdb-block"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::~FdbBlock()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
+    {
+        if(fdb_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::has_operation() const
+{
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
+    {
+        if(fdb_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fdb-block";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fdb-entry")
+    {
+        auto c = std::make_shared<Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry>();
+        c->parent = this;
+        fdb_entry.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : fdb_entry.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fdb-entry")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::FdbEntry()
+    :
+    fdb_index{YType::uint32, "fdb-index"},
+    fdb_mac_addr{YType::str, "fdb-mac-addr"},
+    fdb_vlan{YType::uint16, "fdb-vlan"},
+    fdb_vlan_hex{YType::str, "fdb-vlan-hex"},
+    fdb_port{YType::int32, "fdb-port"},
+    fdb_trap_entry{YType::enumeration, "fdb-trap-entry"},
+    fdb_static_entry{YType::enumeration, "fdb-static-entry"},
+    fdb_synced_cores{YType::uint8, "fdb-synced-cores"}
+{
+
+    yang_name = "fdb-entry"; yang_parent_name = "fdb-block"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::~FdbEntry()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : fdb_synced_cores.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return fdb_index.is_set
+	|| fdb_mac_addr.is_set
+	|| fdb_vlan.is_set
+	|| fdb_vlan_hex.is_set
+	|| fdb_port.is_set
+	|| fdb_trap_entry.is_set
+	|| fdb_static_entry.is_set;
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_operation() const
+{
+    for (auto const & leaf : fdb_synced_cores.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(fdb_index.yfilter)
+	|| ydk::is_set(fdb_mac_addr.yfilter)
+	|| ydk::is_set(fdb_vlan.yfilter)
+	|| ydk::is_set(fdb_vlan_hex.yfilter)
+	|| ydk::is_set(fdb_port.yfilter)
+	|| ydk::is_set(fdb_trap_entry.yfilter)
+	|| ydk::is_set(fdb_static_entry.yfilter)
+	|| ydk::is_set(fdb_synced_cores.yfilter);
+}
+
+std::string Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fdb-entry";
+    ADD_KEY_TOKEN(fdb_index, "fdb-index");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fdb_index.is_set || is_set(fdb_index.yfilter)) leaf_name_data.push_back(fdb_index.get_name_leafdata());
+    if (fdb_mac_addr.is_set || is_set(fdb_mac_addr.yfilter)) leaf_name_data.push_back(fdb_mac_addr.get_name_leafdata());
+    if (fdb_vlan.is_set || is_set(fdb_vlan.yfilter)) leaf_name_data.push_back(fdb_vlan.get_name_leafdata());
+    if (fdb_vlan_hex.is_set || is_set(fdb_vlan_hex.yfilter)) leaf_name_data.push_back(fdb_vlan_hex.get_name_leafdata());
+    if (fdb_port.is_set || is_set(fdb_port.yfilter)) leaf_name_data.push_back(fdb_port.get_name_leafdata());
+    if (fdb_trap_entry.is_set || is_set(fdb_trap_entry.yfilter)) leaf_name_data.push_back(fdb_trap_entry.get_name_leafdata());
+    if (fdb_static_entry.is_set || is_set(fdb_static_entry.yfilter)) leaf_name_data.push_back(fdb_static_entry.get_name_leafdata());
+
+    auto fdb_synced_cores_name_datas = fdb_synced_cores.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), fdb_synced_cores_name_datas.begin(), fdb_synced_cores_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fdb-index")
+    {
+        fdb_index = value;
+        fdb_index.value_namespace = name_space;
+        fdb_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-mac-addr")
+    {
+        fdb_mac_addr = value;
+        fdb_mac_addr.value_namespace = name_space;
+        fdb_mac_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-vlan")
+    {
+        fdb_vlan = value;
+        fdb_vlan.value_namespace = name_space;
+        fdb_vlan.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-vlan-hex")
+    {
+        fdb_vlan_hex = value;
+        fdb_vlan_hex.value_namespace = name_space;
+        fdb_vlan_hex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-port")
+    {
+        fdb_port = value;
+        fdb_port.value_namespace = name_space;
+        fdb_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-trap-entry")
+    {
+        fdb_trap_entry = value;
+        fdb_trap_entry.value_namespace = name_space;
+        fdb_trap_entry.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-static-entry")
+    {
+        fdb_static_entry = value;
+        fdb_static_entry.value_namespace = name_space;
+        fdb_static_entry.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-synced-cores")
+    {
+        fdb_synced_cores.append(value);
+    }
+}
+
+void Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fdb-index")
+    {
+        fdb_index.yfilter = yfilter;
+    }
+    if(value_path == "fdb-mac-addr")
+    {
+        fdb_mac_addr.yfilter = yfilter;
+    }
+    if(value_path == "fdb-vlan")
+    {
+        fdb_vlan.yfilter = yfilter;
+    }
+    if(value_path == "fdb-vlan-hex")
+    {
+        fdb_vlan_hex.yfilter = yfilter;
+    }
+    if(value_path == "fdb-port")
+    {
+        fdb_port.yfilter = yfilter;
+    }
+    if(value_path == "fdb-trap-entry")
+    {
+        fdb_trap_entry.yfilter = yfilter;
+    }
+    if(value_path == "fdb-static-entry")
+    {
+        fdb_static_entry.yfilter = yfilter;
+    }
+    if(value_path == "fdb-synced-cores")
+    {
+        fdb_synced_cores.yfilter = yfilter;
+    }
+}
+
+bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fdb-index" || name == "fdb-mac-addr" || name == "fdb-vlan" || name == "fdb-vlan-hex" || name == "fdb-port" || name == "fdb-trap-entry" || name == "fdb-static-entry" || name == "fdb-synced-cores")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Mac::Mac()
+    :
+    mac_iter(this, {"mac"})
+{
+
+    yang_name = "mac"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Controller::Switch::Oper::Fdb::Mac::~Mac()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_iter.len(); index++)
+    {
+        if(mac_iter[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::has_operation() const
+{
+    for (std::size_t index=0; index<mac_iter.len(); index++)
+    {
+        if(mac_iter[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Controller::Switch::Oper::Fdb::Mac::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/switch/oper/fdb/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Controller::Switch::Oper::Fdb::Mac::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Mac::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mac-iter")
+    {
+        auto c = std::make_shared<Controller::Switch::Oper::Fdb::Mac::MacIter>();
+        c->parent = this;
+        mac_iter.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Mac::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : mac_iter.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Controller::Switch::Oper::Fdb::Mac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac-iter")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Mac::MacIter::MacIter()
+    :
+    mac{YType::str, "mac"}
+        ,
+    switch_fdb_common(std::make_shared<Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon>())
+{
+    switch_fdb_common->parent = this;
+
+    yang_name = "mac-iter"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Controller::Switch::Oper::Fdb::Mac::MacIter::~MacIter()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::has_data() const
+{
+    if (is_presence_container) return true;
+    return mac.is_set
+	|| (switch_fdb_common !=  nullptr && switch_fdb_common->has_data());
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mac.yfilter)
+	|| (switch_fdb_common !=  nullptr && switch_fdb_common->has_operation());
+}
+
+std::string Controller::Switch::Oper::Fdb::Mac::MacIter::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/switch/oper/fdb/mac/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Controller::Switch::Oper::Fdb::Mac::MacIter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac-iter";
+    ADD_KEY_TOKEN(mac, "mac");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Mac::MacIter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mac.is_set || is_set(mac.yfilter)) leaf_name_data.push_back(mac.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Mac::MacIter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "switch-fdb-common")
+    {
+        if(switch_fdb_common == nullptr)
+        {
+            switch_fdb_common = std::make_shared<Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon>();
+        }
+        return switch_fdb_common;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Mac::MacIter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(switch_fdb_common != nullptr)
+    {
+        children["switch-fdb-common"] = switch_fdb_common;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Mac::MacIter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mac")
+    {
+        mac = value;
+        mac.value_namespace = name_space;
+        mac.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Controller::Switch::Oper::Fdb::Mac::MacIter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mac")
+    {
+        mac.yfilter = yfilter;
+    }
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "switch-fdb-common" || name == "mac")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::SwitchFdbCommon()
+    :
+    location(this, {"rack", "card", "switch_id"})
+{
+
+    yang_name = "switch-fdb-common"; yang_parent_name = "mac-iter"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::~SwitchFdbCommon()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
+    {
+        if(location[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::has_operation() const
+{
+    for (std::size_t index=0; index<location.len(); index++)
+    {
+        if(location[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "switch-fdb-common";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "location")
+    {
+        auto c = std::make_shared<Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location>();
+        c->parent = this;
+        location.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : location.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::Location()
+    :
+    rack{YType::enumeration, "rack"},
+    card{YType::enumeration, "card"},
+    switch_id{YType::enumeration, "switch-id"},
+    num_entries{YType::uint32, "num-entries"},
+    has_trunk_entry{YType::uint8, "has-trunk-entry"},
+    trunk_entry_message{YType::str, "trunk-entry-message"}
+        ,
+    fdb_block(std::make_shared<Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock>())
+{
+    fdb_block->parent = this;
+
+    yang_name = "location"; yang_parent_name = "switch-fdb-common"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::~Location()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::has_data() const
+{
+    if (is_presence_container) return true;
+    return rack.is_set
+	|| card.is_set
+	|| switch_id.is_set
+	|| num_entries.is_set
+	|| has_trunk_entry.is_set
+	|| trunk_entry_message.is_set
+	|| (fdb_block !=  nullptr && fdb_block->has_data());
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rack.yfilter)
+	|| ydk::is_set(card.yfilter)
+	|| ydk::is_set(switch_id.yfilter)
+	|| ydk::is_set(num_entries.yfilter)
+	|| ydk::is_set(has_trunk_entry.yfilter)
+	|| ydk::is_set(trunk_entry_message.yfilter)
+	|| (fdb_block !=  nullptr && fdb_block->has_operation());
+}
+
+std::string Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rack.is_set || is_set(rack.yfilter)) leaf_name_data.push_back(rack.get_name_leafdata());
+    if (card.is_set || is_set(card.yfilter)) leaf_name_data.push_back(card.get_name_leafdata());
+    if (switch_id.is_set || is_set(switch_id.yfilter)) leaf_name_data.push_back(switch_id.get_name_leafdata());
+    if (num_entries.is_set || is_set(num_entries.yfilter)) leaf_name_data.push_back(num_entries.get_name_leafdata());
+    if (has_trunk_entry.is_set || is_set(has_trunk_entry.yfilter)) leaf_name_data.push_back(has_trunk_entry.get_name_leafdata());
+    if (trunk_entry_message.is_set || is_set(trunk_entry_message.yfilter)) leaf_name_data.push_back(trunk_entry_message.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fdb-block")
+    {
+        if(fdb_block == nullptr)
+        {
+            fdb_block = std::make_shared<Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock>();
+        }
+        return fdb_block;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(fdb_block != nullptr)
+    {
+        children["fdb-block"] = fdb_block;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rack")
+    {
+        rack = value;
+        rack.value_namespace = name_space;
+        rack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "card")
+    {
+        card = value;
+        card.value_namespace = name_space;
+        card.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "switch-id")
+    {
+        switch_id = value;
+        switch_id.value_namespace = name_space;
+        switch_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-entries")
+    {
+        num_entries = value;
+        num_entries.value_namespace = name_space;
+        num_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-trunk-entry")
+    {
+        has_trunk_entry = value;
+        has_trunk_entry.value_namespace = name_space;
+        has_trunk_entry.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trunk-entry-message")
+    {
+        trunk_entry_message = value;
+        trunk_entry_message.value_namespace = name_space;
+        trunk_entry_message.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rack")
+    {
+        rack.yfilter = yfilter;
+    }
+    if(value_path == "card")
+    {
+        card.yfilter = yfilter;
+    }
+    if(value_path == "switch-id")
+    {
+        switch_id.yfilter = yfilter;
+    }
+    if(value_path == "num-entries")
+    {
+        num_entries.yfilter = yfilter;
+    }
+    if(value_path == "has-trunk-entry")
+    {
+        has_trunk_entry.yfilter = yfilter;
+    }
+    if(value_path == "trunk-entry-message")
+    {
+        trunk_entry_message.yfilter = yfilter;
+    }
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fdb-block" || name == "rack" || name == "card" || name == "switch-id" || name == "num-entries" || name == "has-trunk-entry" || name == "trunk-entry-message")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbBlock()
+    :
+    fdb_entry(this, {"fdb_index"})
+{
+
+    yang_name = "fdb-block"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::~FdbBlock()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
+    {
+        if(fdb_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::has_operation() const
+{
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
+    {
+        if(fdb_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fdb-block";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fdb-entry")
+    {
+        auto c = std::make_shared<Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry>();
+        c->parent = this;
+        fdb_entry.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : fdb_entry.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fdb-entry")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::FdbEntry()
+    :
+    fdb_index{YType::uint32, "fdb-index"},
+    fdb_mac_addr{YType::str, "fdb-mac-addr"},
+    fdb_vlan{YType::uint16, "fdb-vlan"},
+    fdb_vlan_hex{YType::str, "fdb-vlan-hex"},
+    fdb_port{YType::int32, "fdb-port"},
+    fdb_trap_entry{YType::enumeration, "fdb-trap-entry"},
+    fdb_static_entry{YType::enumeration, "fdb-static-entry"},
+    fdb_synced_cores{YType::uint8, "fdb-synced-cores"}
+{
+
+    yang_name = "fdb-entry"; yang_parent_name = "fdb-block"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::~FdbEntry()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : fdb_synced_cores.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return fdb_index.is_set
+	|| fdb_mac_addr.is_set
+	|| fdb_vlan.is_set
+	|| fdb_vlan_hex.is_set
+	|| fdb_port.is_set
+	|| fdb_trap_entry.is_set
+	|| fdb_static_entry.is_set;
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_operation() const
+{
+    for (auto const & leaf : fdb_synced_cores.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(fdb_index.yfilter)
+	|| ydk::is_set(fdb_mac_addr.yfilter)
+	|| ydk::is_set(fdb_vlan.yfilter)
+	|| ydk::is_set(fdb_vlan_hex.yfilter)
+	|| ydk::is_set(fdb_port.yfilter)
+	|| ydk::is_set(fdb_trap_entry.yfilter)
+	|| ydk::is_set(fdb_static_entry.yfilter)
+	|| ydk::is_set(fdb_synced_cores.yfilter);
+}
+
+std::string Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fdb-entry";
+    ADD_KEY_TOKEN(fdb_index, "fdb-index");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fdb_index.is_set || is_set(fdb_index.yfilter)) leaf_name_data.push_back(fdb_index.get_name_leafdata());
+    if (fdb_mac_addr.is_set || is_set(fdb_mac_addr.yfilter)) leaf_name_data.push_back(fdb_mac_addr.get_name_leafdata());
+    if (fdb_vlan.is_set || is_set(fdb_vlan.yfilter)) leaf_name_data.push_back(fdb_vlan.get_name_leafdata());
+    if (fdb_vlan_hex.is_set || is_set(fdb_vlan_hex.yfilter)) leaf_name_data.push_back(fdb_vlan_hex.get_name_leafdata());
+    if (fdb_port.is_set || is_set(fdb_port.yfilter)) leaf_name_data.push_back(fdb_port.get_name_leafdata());
+    if (fdb_trap_entry.is_set || is_set(fdb_trap_entry.yfilter)) leaf_name_data.push_back(fdb_trap_entry.get_name_leafdata());
+    if (fdb_static_entry.is_set || is_set(fdb_static_entry.yfilter)) leaf_name_data.push_back(fdb_static_entry.get_name_leafdata());
+
+    auto fdb_synced_cores_name_datas = fdb_synced_cores.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), fdb_synced_cores_name_datas.begin(), fdb_synced_cores_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fdb-index")
+    {
+        fdb_index = value;
+        fdb_index.value_namespace = name_space;
+        fdb_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-mac-addr")
+    {
+        fdb_mac_addr = value;
+        fdb_mac_addr.value_namespace = name_space;
+        fdb_mac_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-vlan")
+    {
+        fdb_vlan = value;
+        fdb_vlan.value_namespace = name_space;
+        fdb_vlan.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-vlan-hex")
+    {
+        fdb_vlan_hex = value;
+        fdb_vlan_hex.value_namespace = name_space;
+        fdb_vlan_hex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-port")
+    {
+        fdb_port = value;
+        fdb_port.value_namespace = name_space;
+        fdb_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-trap-entry")
+    {
+        fdb_trap_entry = value;
+        fdb_trap_entry.value_namespace = name_space;
+        fdb_trap_entry.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-static-entry")
+    {
+        fdb_static_entry = value;
+        fdb_static_entry.value_namespace = name_space;
+        fdb_static_entry.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-synced-cores")
+    {
+        fdb_synced_cores.append(value);
+    }
+}
+
+void Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fdb-index")
+    {
+        fdb_index.yfilter = yfilter;
+    }
+    if(value_path == "fdb-mac-addr")
+    {
+        fdb_mac_addr.yfilter = yfilter;
+    }
+    if(value_path == "fdb-vlan")
+    {
+        fdb_vlan.yfilter = yfilter;
+    }
+    if(value_path == "fdb-vlan-hex")
+    {
+        fdb_vlan_hex.yfilter = yfilter;
+    }
+    if(value_path == "fdb-port")
+    {
+        fdb_port.yfilter = yfilter;
+    }
+    if(value_path == "fdb-trap-entry")
+    {
+        fdb_trap_entry.yfilter = yfilter;
+    }
+    if(value_path == "fdb-static-entry")
+    {
+        fdb_static_entry.yfilter = yfilter;
+    }
+    if(value_path == "fdb-synced-cores")
+    {
+        fdb_synced_cores.yfilter = yfilter;
+    }
+}
+
+bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fdb-index" || name == "fdb-mac-addr" || name == "fdb-vlan" || name == "fdb-vlan-hex" || name == "fdb-port" || name == "fdb-trap-entry" || name == "fdb-static-entry" || name == "fdb-synced-cores")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Port::Port()
+    :
+    port_iter(this, {"port"})
+{
+
+    yang_name = "port"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Controller::Switch::Oper::Fdb::Port::~Port()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Port::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
+    {
+        if(port_iter[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Controller::Switch::Oper::Fdb::Port::has_operation() const
+{
+    for (std::size_t index=0; index<port_iter.len(); index++)
+    {
+        if(port_iter[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Controller::Switch::Oper::Fdb::Port::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/switch/oper/fdb/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Controller::Switch::Oper::Fdb::Port::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Port::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "port-iter")
+    {
+        auto c = std::make_shared<Controller::Switch::Oper::Fdb::Port::PortIter>();
+        c->parent = this;
+        port_iter.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Port::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : port_iter.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Controller::Switch::Oper::Fdb::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port-iter")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Port::PortIter::PortIter()
+    :
+    port{YType::int32, "port"}
+        ,
+    switch_fdb_common(std::make_shared<Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon>())
+{
+    switch_fdb_common->parent = this;
+
+    yang_name = "port-iter"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Controller::Switch::Oper::Fdb::Port::PortIter::~PortIter()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::has_data() const
+{
+    if (is_presence_container) return true;
+    return port.is_set
+	|| (switch_fdb_common !=  nullptr && switch_fdb_common->has_data());
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| (switch_fdb_common !=  nullptr && switch_fdb_common->has_operation());
+}
+
+std::string Controller::Switch::Oper::Fdb::Port::PortIter::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sysadmin-controllers:controller/switch/oper/fdb/port/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Controller::Switch::Oper::Fdb::Port::PortIter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Port::PortIter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Port::PortIter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "switch-fdb-common")
+    {
+        if(switch_fdb_common == nullptr)
+        {
+            switch_fdb_common = std::make_shared<Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon>();
+        }
+        return switch_fdb_common;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Port::PortIter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(switch_fdb_common != nullptr)
+    {
+        children["switch-fdb-common"] = switch_fdb_common;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Port::PortIter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Controller::Switch::Oper::Fdb::Port::PortIter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "switch-fdb-common" || name == "port")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::SwitchFdbCommon()
+    :
+    location(this, {"rack", "card", "switch_id"})
+{
+
+    yang_name = "switch-fdb-common"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::~SwitchFdbCommon()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
+    {
+        if(location[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::has_operation() const
+{
+    for (std::size_t index=0; index<location.len(); index++)
+    {
+        if(location[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "switch-fdb-common";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "location")
+    {
+        auto c = std::make_shared<Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location>();
+        c->parent = this;
+        location.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : location.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::Location()
+    :
+    rack{YType::enumeration, "rack"},
+    card{YType::enumeration, "card"},
+    switch_id{YType::enumeration, "switch-id"},
+    num_entries{YType::uint32, "num-entries"},
+    has_trunk_entry{YType::uint8, "has-trunk-entry"},
+    trunk_entry_message{YType::str, "trunk-entry-message"}
+        ,
+    fdb_block(std::make_shared<Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock>())
+{
+    fdb_block->parent = this;
+
+    yang_name = "location"; yang_parent_name = "switch-fdb-common"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::~Location()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::has_data() const
+{
+    if (is_presence_container) return true;
+    return rack.is_set
+	|| card.is_set
+	|| switch_id.is_set
+	|| num_entries.is_set
+	|| has_trunk_entry.is_set
+	|| trunk_entry_message.is_set
+	|| (fdb_block !=  nullptr && fdb_block->has_data());
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rack.yfilter)
+	|| ydk::is_set(card.yfilter)
+	|| ydk::is_set(switch_id.yfilter)
+	|| ydk::is_set(num_entries.yfilter)
+	|| ydk::is_set(has_trunk_entry.yfilter)
+	|| ydk::is_set(trunk_entry_message.yfilter)
+	|| (fdb_block !=  nullptr && fdb_block->has_operation());
+}
+
+std::string Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rack.is_set || is_set(rack.yfilter)) leaf_name_data.push_back(rack.get_name_leafdata());
+    if (card.is_set || is_set(card.yfilter)) leaf_name_data.push_back(card.get_name_leafdata());
+    if (switch_id.is_set || is_set(switch_id.yfilter)) leaf_name_data.push_back(switch_id.get_name_leafdata());
+    if (num_entries.is_set || is_set(num_entries.yfilter)) leaf_name_data.push_back(num_entries.get_name_leafdata());
+    if (has_trunk_entry.is_set || is_set(has_trunk_entry.yfilter)) leaf_name_data.push_back(has_trunk_entry.get_name_leafdata());
+    if (trunk_entry_message.is_set || is_set(trunk_entry_message.yfilter)) leaf_name_data.push_back(trunk_entry_message.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fdb-block")
+    {
+        if(fdb_block == nullptr)
+        {
+            fdb_block = std::make_shared<Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock>();
+        }
+        return fdb_block;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(fdb_block != nullptr)
+    {
+        children["fdb-block"] = fdb_block;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rack")
+    {
+        rack = value;
+        rack.value_namespace = name_space;
+        rack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "card")
+    {
+        card = value;
+        card.value_namespace = name_space;
+        card.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "switch-id")
+    {
+        switch_id = value;
+        switch_id.value_namespace = name_space;
+        switch_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-entries")
+    {
+        num_entries = value;
+        num_entries.value_namespace = name_space;
+        num_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-trunk-entry")
+    {
+        has_trunk_entry = value;
+        has_trunk_entry.value_namespace = name_space;
+        has_trunk_entry.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trunk-entry-message")
+    {
+        trunk_entry_message = value;
+        trunk_entry_message.value_namespace = name_space;
+        trunk_entry_message.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rack")
+    {
+        rack.yfilter = yfilter;
+    }
+    if(value_path == "card")
+    {
+        card.yfilter = yfilter;
+    }
+    if(value_path == "switch-id")
+    {
+        switch_id.yfilter = yfilter;
+    }
+    if(value_path == "num-entries")
+    {
+        num_entries.yfilter = yfilter;
+    }
+    if(value_path == "has-trunk-entry")
+    {
+        has_trunk_entry.yfilter = yfilter;
+    }
+    if(value_path == "trunk-entry-message")
+    {
+        trunk_entry_message.yfilter = yfilter;
+    }
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fdb-block" || name == "rack" || name == "card" || name == "switch-id" || name == "num-entries" || name == "has-trunk-entry" || name == "trunk-entry-message")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbBlock()
+    :
+    fdb_entry(this, {"fdb_index"})
+{
+
+    yang_name = "fdb-block"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::~FdbBlock()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
+    {
+        if(fdb_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::has_operation() const
+{
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
+    {
+        if(fdb_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fdb-block";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fdb-entry")
+    {
+        auto c = std::make_shared<Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry>();
+        c->parent = this;
+        fdb_entry.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : fdb_entry.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fdb-entry")
+        return true;
+    return false;
+}
+
+Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::FdbEntry()
+    :
+    fdb_index{YType::uint32, "fdb-index"},
+    fdb_mac_addr{YType::str, "fdb-mac-addr"},
+    fdb_vlan{YType::uint16, "fdb-vlan"},
+    fdb_vlan_hex{YType::str, "fdb-vlan-hex"},
+    fdb_port{YType::int32, "fdb-port"},
+    fdb_trap_entry{YType::enumeration, "fdb-trap-entry"},
+    fdb_static_entry{YType::enumeration, "fdb-static-entry"},
+    fdb_synced_cores{YType::uint8, "fdb-synced-cores"}
+{
+
+    yang_name = "fdb-entry"; yang_parent_name = "fdb-block"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::~FdbEntry()
+{
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : fdb_synced_cores.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return fdb_index.is_set
+	|| fdb_mac_addr.is_set
+	|| fdb_vlan.is_set
+	|| fdb_vlan_hex.is_set
+	|| fdb_port.is_set
+	|| fdb_trap_entry.is_set
+	|| fdb_static_entry.is_set;
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_operation() const
+{
+    for (auto const & leaf : fdb_synced_cores.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(fdb_index.yfilter)
+	|| ydk::is_set(fdb_mac_addr.yfilter)
+	|| ydk::is_set(fdb_vlan.yfilter)
+	|| ydk::is_set(fdb_vlan_hex.yfilter)
+	|| ydk::is_set(fdb_port.yfilter)
+	|| ydk::is_set(fdb_trap_entry.yfilter)
+	|| ydk::is_set(fdb_static_entry.yfilter)
+	|| ydk::is_set(fdb_synced_cores.yfilter);
+}
+
+std::string Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fdb-entry";
+    ADD_KEY_TOKEN(fdb_index, "fdb-index");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fdb_index.is_set || is_set(fdb_index.yfilter)) leaf_name_data.push_back(fdb_index.get_name_leafdata());
+    if (fdb_mac_addr.is_set || is_set(fdb_mac_addr.yfilter)) leaf_name_data.push_back(fdb_mac_addr.get_name_leafdata());
+    if (fdb_vlan.is_set || is_set(fdb_vlan.yfilter)) leaf_name_data.push_back(fdb_vlan.get_name_leafdata());
+    if (fdb_vlan_hex.is_set || is_set(fdb_vlan_hex.yfilter)) leaf_name_data.push_back(fdb_vlan_hex.get_name_leafdata());
+    if (fdb_port.is_set || is_set(fdb_port.yfilter)) leaf_name_data.push_back(fdb_port.get_name_leafdata());
+    if (fdb_trap_entry.is_set || is_set(fdb_trap_entry.yfilter)) leaf_name_data.push_back(fdb_trap_entry.get_name_leafdata());
+    if (fdb_static_entry.is_set || is_set(fdb_static_entry.yfilter)) leaf_name_data.push_back(fdb_static_entry.get_name_leafdata());
+
+    auto fdb_synced_cores_name_datas = fdb_synced_cores.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), fdb_synced_cores_name_datas.begin(), fdb_synced_cores_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fdb-index")
+    {
+        fdb_index = value;
+        fdb_index.value_namespace = name_space;
+        fdb_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-mac-addr")
+    {
+        fdb_mac_addr = value;
+        fdb_mac_addr.value_namespace = name_space;
+        fdb_mac_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-vlan")
+    {
+        fdb_vlan = value;
+        fdb_vlan.value_namespace = name_space;
+        fdb_vlan.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-vlan-hex")
+    {
+        fdb_vlan_hex = value;
+        fdb_vlan_hex.value_namespace = name_space;
+        fdb_vlan_hex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-port")
+    {
+        fdb_port = value;
+        fdb_port.value_namespace = name_space;
+        fdb_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-trap-entry")
+    {
+        fdb_trap_entry = value;
+        fdb_trap_entry.value_namespace = name_space;
+        fdb_trap_entry.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-static-entry")
+    {
+        fdb_static_entry = value;
+        fdb_static_entry.value_namespace = name_space;
+        fdb_static_entry.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdb-synced-cores")
+    {
+        fdb_synced_cores.append(value);
+    }
+}
+
+void Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fdb-index")
+    {
+        fdb_index.yfilter = yfilter;
+    }
+    if(value_path == "fdb-mac-addr")
+    {
+        fdb_mac_addr.yfilter = yfilter;
+    }
+    if(value_path == "fdb-vlan")
+    {
+        fdb_vlan.yfilter = yfilter;
+    }
+    if(value_path == "fdb-vlan-hex")
+    {
+        fdb_vlan_hex.yfilter = yfilter;
+    }
+    if(value_path == "fdb-port")
+    {
+        fdb_port.yfilter = yfilter;
+    }
+    if(value_path == "fdb-trap-entry")
+    {
+        fdb_trap_entry.yfilter = yfilter;
+    }
+    if(value_path == "fdb-static-entry")
+    {
+        fdb_static_entry.yfilter = yfilter;
+    }
+    if(value_path == "fdb-synced-cores")
+    {
+        fdb_synced_cores.yfilter = yfilter;
+    }
+}
+
+bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fdb-index" || name == "fdb-mac-addr" || name == "fdb-vlan" || name == "fdb-vlan-hex" || name == "fdb-port" || name == "fdb-trap-entry" || name == "fdb-static-entry" || name == "fdb-synced-cores")
         return true;
     return false;
 }

@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_environment_oper {
 
 EnvironmentSensors::EnvironmentSensors()
+    :
+    environment_sensor(this, {"name", "location"})
 {
 
-    yang_name = "environment-sensors"; yang_parent_name = "Cisco-IOS-XE-environment-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "environment-sensors"; yang_parent_name = "Cisco-IOS-XE-environment-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EnvironmentSensors::~EnvironmentSensors()
@@ -23,7 +25,8 @@ EnvironmentSensors::~EnvironmentSensors()
 
 bool EnvironmentSensors::has_data() const
 {
-    for (std::size_t index=0; index<environment_sensor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<environment_sensor.len(); index++)
     {
         if(environment_sensor[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool EnvironmentSensors::has_data() const
 
 bool EnvironmentSensors::has_operation() const
 {
-    for (std::size_t index=0; index<environment_sensor.size(); index++)
+    for (std::size_t index=0; index<environment_sensor.len(); index++)
     {
         if(environment_sensor[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> EnvironmentSensors::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<EnvironmentSensors::EnvironmentSensor>();
         c->parent = this;
-        environment_sensor.push_back(c);
+        environment_sensor.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentSensors::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : environment_sensor)
+    for (auto c : environment_sensor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -139,7 +142,7 @@ EnvironmentSensors::EnvironmentSensor::EnvironmentSensor()
     high_critical_threshold{YType::int32, "high-critical-threshold"}
 {
 
-    yang_name = "environment-sensor"; yang_parent_name = "environment-sensors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "environment-sensor"; yang_parent_name = "environment-sensors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EnvironmentSensors::EnvironmentSensor::~EnvironmentSensor()
@@ -148,6 +151,7 @@ EnvironmentSensors::EnvironmentSensor::~EnvironmentSensor()
 
 bool EnvironmentSensors::EnvironmentSensor::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| location.is_set
 	|| state.is_set
@@ -183,7 +187,9 @@ std::string EnvironmentSensors::EnvironmentSensor::get_absolute_path() const
 std::string EnvironmentSensors::EnvironmentSensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "environment-sensor" <<"[name='" <<name <<"']" <<"[location='" <<location <<"']";
+    path_buffer << "environment-sensor";
+    ADD_KEY_TOKEN(name, "name");
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 

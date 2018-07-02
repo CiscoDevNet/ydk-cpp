@@ -33,7 +33,7 @@ class MplsForwardingTable : public ydk::Entity
 
         class LocalLabelEntry; //type: MplsForwardingTable::LocalLabelEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry> > local_label_entry;
+        ydk::YList local_label_entry;
         
 }; // MplsForwardingTable
 
@@ -58,7 +58,7 @@ class MplsForwardingTable::LocalLabelEntry : public ydk::Entity
         ydk::YLeaf local_label; //type: uint32
         class ForwardingInfo; //type: MplsForwardingTable::LocalLabelEntry::ForwardingInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo> > forwarding_info;
+        ydk::YList forwarding_info;
         
 }; // MplsForwardingTable::LocalLabelEntry
 
@@ -79,10 +79,10 @@ class MplsForwardingTable::LocalLabelEntry::ForwardingInfo : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf outgoing_interface; //type: one of enumeration, string
+        ydk::YLeaf outgoing_interface; //type: one of string, enumeration
         ydk::YLeaf outgoing_label; //type: one of uint32, enumeration
         ydk::YLeaf label_switched_bytes; //type: uint64
-        ydk::YLeaf next_hop; //type: one of enumeration, string, union
+        ydk::YLeaf next_hop; //type: one of union, string, enumeration
         class ConnectionInfo; //type: MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo> connection_info;

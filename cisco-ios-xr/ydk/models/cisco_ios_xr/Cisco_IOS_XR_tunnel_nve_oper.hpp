@@ -59,7 +59,7 @@ class Nve::Vnis : public ydk::Entity
 
         class Vni; //type: Nve::Vnis::Vni
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_nve_oper::Nve::Vnis::Vni> > vni;
+        ydk::YList vni;
         
 }; // Nve::Vnis
 
@@ -125,7 +125,7 @@ class Nve::Interfaces : public ydk::Entity
 
         class Interface; //type: Nve::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_nve_oper::Nve::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Nve::Interfaces
 

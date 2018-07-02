@@ -17,7 +17,7 @@ InfraStatistics::InfraStatistics()
 {
     interfaces->parent = this;
 
-    yang_name = "infra-statistics"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "infra-statistics"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InfraStatistics::~InfraStatistics()
@@ -26,6 +26,7 @@ InfraStatistics::~InfraStatistics()
 
 bool InfraStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data());
 }
 
@@ -118,9 +119,11 @@ bool InfraStatistics::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 InfraStatistics::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "infra-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "infra-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 InfraStatistics::Interfaces::~Interfaces()
@@ -129,7 +132,8 @@ InfraStatistics::Interfaces::~Interfaces()
 
 bool InfraStatistics::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool InfraStatistics::Interfaces::has_data() const
 
 bool InfraStatistics::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::get_child_by_name(const std
     {
         auto c = std::make_shared<InfraStatistics::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,14 +221,14 @@ bool InfraStatistics::Interfaces::has_leaf_or_child_of_name(const std::string & 
 InfraStatistics::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     cache(std::make_shared<InfraStatistics::Interfaces::Interface::Cache>())
-	,latest(std::make_shared<InfraStatistics::Interfaces::Interface::Latest>())
-	,total(std::make_shared<InfraStatistics::Interfaces::Interface::Total>())
-	,protocols(std::make_shared<InfraStatistics::Interfaces::Interface::Protocols>())
-	,interfaces_mib_counters(std::make_shared<InfraStatistics::Interfaces::Interface::InterfacesMibCounters>())
-	,data_rate(std::make_shared<InfraStatistics::Interfaces::Interface::DataRate>())
-	,generic_counters(std::make_shared<InfraStatistics::Interfaces::Interface::GenericCounters>())
+    , latest(std::make_shared<InfraStatistics::Interfaces::Interface::Latest>())
+    , total(std::make_shared<InfraStatistics::Interfaces::Interface::Total>())
+    , protocols(std::make_shared<InfraStatistics::Interfaces::Interface::Protocols>())
+    , interfaces_mib_counters(std::make_shared<InfraStatistics::Interfaces::Interface::InterfacesMibCounters>())
+    , data_rate(std::make_shared<InfraStatistics::Interfaces::Interface::DataRate>())
+    , generic_counters(std::make_shared<InfraStatistics::Interfaces::Interface::GenericCounters>())
 {
     cache->parent = this;
     latest->parent = this;
@@ -234,7 +238,7 @@ InfraStatistics::Interfaces::Interface::Interface()
     data_rate->parent = this;
     generic_counters->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 InfraStatistics::Interfaces::Interface::~Interface()
@@ -243,6 +247,7 @@ InfraStatistics::Interfaces::Interface::~Interface()
 
 bool InfraStatistics::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (cache !=  nullptr && cache->has_data())
 	|| (latest !=  nullptr && latest->has_data())
@@ -276,7 +281,8 @@ std::string InfraStatistics::Interfaces::Interface::get_absolute_path() const
 std::string InfraStatistics::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -428,16 +434,16 @@ bool InfraStatistics::Interfaces::Interface::has_leaf_or_child_of_name(const std
 InfraStatistics::Interfaces::Interface::Cache::Cache()
     :
     protocols(std::make_shared<InfraStatistics::Interfaces::Interface::Cache::Protocols>())
-	,interfaces_mib_counters(std::make_shared<InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters>())
-	,data_rate(std::make_shared<InfraStatistics::Interfaces::Interface::Cache::DataRate>())
-	,generic_counters(std::make_shared<InfraStatistics::Interfaces::Interface::Cache::GenericCounters>())
+    , interfaces_mib_counters(std::make_shared<InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters>())
+    , data_rate(std::make_shared<InfraStatistics::Interfaces::Interface::Cache::DataRate>())
+    , generic_counters(std::make_shared<InfraStatistics::Interfaces::Interface::Cache::GenericCounters>())
 {
     protocols->parent = this;
     interfaces_mib_counters->parent = this;
     data_rate->parent = this;
     generic_counters->parent = this;
 
-    yang_name = "cache"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cache"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Cache::~Cache()
@@ -446,6 +452,7 @@ InfraStatistics::Interfaces::Interface::Cache::~Cache()
 
 bool InfraStatistics::Interfaces::Interface::Cache::has_data() const
 {
+    if (is_presence_container) return true;
     return (protocols !=  nullptr && protocols->has_data())
 	|| (interfaces_mib_counters !=  nullptr && interfaces_mib_counters->has_data())
 	|| (data_rate !=  nullptr && data_rate->has_data())
@@ -561,9 +568,11 @@ bool InfraStatistics::Interfaces::Interface::Cache::has_leaf_or_child_of_name(co
 }
 
 InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocols()
+    :
+    protocol(this, {"protocol_name"})
 {
 
-    yang_name = "protocols"; yang_parent_name = "cache"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocols"; yang_parent_name = "cache"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Cache::Protocols::~Protocols()
@@ -572,7 +581,8 @@ InfraStatistics::Interfaces::Interface::Cache::Protocols::~Protocols()
 
 bool InfraStatistics::Interfaces::Interface::Cache::Protocols::has_data() const
 {
-    for (std::size_t index=0; index<protocol.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
         if(protocol[index]->has_data())
             return true;
@@ -582,7 +592,7 @@ bool InfraStatistics::Interfaces::Interface::Cache::Protocols::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::Cache::Protocols::has_operation() const
 {
-    for (std::size_t index=0; index<protocol.size(); index++)
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
         if(protocol[index]->has_operation())
             return true;
@@ -612,7 +622,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Cache::Protocols
     {
         auto c = std::make_shared<InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol>();
         c->parent = this;
-        protocol.push_back(c);
+        protocol.append(c);
         return c;
     }
 
@@ -624,7 +634,7 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocol)
+    for (auto c : protocol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -665,7 +675,7 @@ InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::Protocol()
     output_packet_rate{YType::uint64, "output-packet-rate"}
 {
 
-    yang_name = "protocol"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::~Protocol()
@@ -674,6 +684,7 @@ InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::~Protocol()
 
 bool InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol_name.is_set
 	|| bytes_received.is_set
 	|| packets_received.is_set
@@ -706,7 +717,8 @@ bool InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::has_ope
 std::string InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocol" <<"[protocol-name='" <<protocol_name <<"']";
+    path_buffer << "protocol";
+    ADD_KEY_TOKEN(protocol_name, "protocol-name");
     return path_buffer.str();
 }
 
@@ -907,7 +919,7 @@ InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::Interfaces
     seconds_since_packet_sent{YType::uint32, "seconds-since-packet-sent"}
 {
 
-    yang_name = "interfaces-mib-counters"; yang_parent_name = "cache"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces-mib-counters"; yang_parent_name = "cache"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::~InterfacesMibCounters()
@@ -916,6 +928,7 @@ InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::~Interface
 
 bool InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return packets_received.is_set
 	|| bytes_received.is_set
 	|| packets_sent.is_set
@@ -1451,7 +1464,7 @@ InfraStatistics::Interfaces::Interface::Cache::DataRate::DataRate()
     reliability{YType::uint8, "reliability"}
 {
 
-    yang_name = "data-rate"; yang_parent_name = "cache"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-rate"; yang_parent_name = "cache"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Cache::DataRate::~DataRate()
@@ -1460,6 +1473,7 @@ InfraStatistics::Interfaces::Interface::Cache::DataRate::~DataRate()
 
 bool InfraStatistics::Interfaces::Interface::Cache::DataRate::has_data() const
 {
+    if (is_presence_container) return true;
     return input_data_rate.is_set
 	|| input_packet_rate.is_set
 	|| output_data_rate.is_set
@@ -1719,7 +1733,7 @@ InfraStatistics::Interfaces::Interface::Cache::GenericCounters::GenericCounters(
     seconds_since_packet_sent{YType::uint32, "seconds-since-packet-sent"}
 {
 
-    yang_name = "generic-counters"; yang_parent_name = "cache"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic-counters"; yang_parent_name = "cache"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Cache::GenericCounters::~GenericCounters()
@@ -1728,6 +1742,7 @@ InfraStatistics::Interfaces::Interface::Cache::GenericCounters::~GenericCounters
 
 bool InfraStatistics::Interfaces::Interface::Cache::GenericCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return packets_received.is_set
 	|| bytes_received.is_set
 	|| packets_sent.is_set
@@ -2249,16 +2264,16 @@ bool InfraStatistics::Interfaces::Interface::Cache::GenericCounters::has_leaf_or
 InfraStatistics::Interfaces::Interface::Latest::Latest()
     :
     protocols(std::make_shared<InfraStatistics::Interfaces::Interface::Latest::Protocols>())
-	,interfaces_mib_counters(std::make_shared<InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters>())
-	,data_rate(std::make_shared<InfraStatistics::Interfaces::Interface::Latest::DataRate>())
-	,generic_counters(std::make_shared<InfraStatistics::Interfaces::Interface::Latest::GenericCounters>())
+    , interfaces_mib_counters(std::make_shared<InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters>())
+    , data_rate(std::make_shared<InfraStatistics::Interfaces::Interface::Latest::DataRate>())
+    , generic_counters(std::make_shared<InfraStatistics::Interfaces::Interface::Latest::GenericCounters>())
 {
     protocols->parent = this;
     interfaces_mib_counters->parent = this;
     data_rate->parent = this;
     generic_counters->parent = this;
 
-    yang_name = "latest"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "latest"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Latest::~Latest()
@@ -2267,6 +2282,7 @@ InfraStatistics::Interfaces::Interface::Latest::~Latest()
 
 bool InfraStatistics::Interfaces::Interface::Latest::has_data() const
 {
+    if (is_presence_container) return true;
     return (protocols !=  nullptr && protocols->has_data())
 	|| (interfaces_mib_counters !=  nullptr && interfaces_mib_counters->has_data())
 	|| (data_rate !=  nullptr && data_rate->has_data())
@@ -2382,9 +2398,11 @@ bool InfraStatistics::Interfaces::Interface::Latest::has_leaf_or_child_of_name(c
 }
 
 InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocols()
+    :
+    protocol(this, {"protocol_name"})
 {
 
-    yang_name = "protocols"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocols"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Latest::Protocols::~Protocols()
@@ -2393,7 +2411,8 @@ InfraStatistics::Interfaces::Interface::Latest::Protocols::~Protocols()
 
 bool InfraStatistics::Interfaces::Interface::Latest::Protocols::has_data() const
 {
-    for (std::size_t index=0; index<protocol.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
         if(protocol[index]->has_data())
             return true;
@@ -2403,7 +2422,7 @@ bool InfraStatistics::Interfaces::Interface::Latest::Protocols::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::Latest::Protocols::has_operation() const
 {
-    for (std::size_t index=0; index<protocol.size(); index++)
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
         if(protocol[index]->has_operation())
             return true;
@@ -2433,7 +2452,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Latest::Protocol
     {
         auto c = std::make_shared<InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol>();
         c->parent = this;
-        protocol.push_back(c);
+        protocol.append(c);
         return c;
     }
 
@@ -2445,7 +2464,7 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocol)
+    for (auto c : protocol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2486,7 +2505,7 @@ InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::Protocol()
     output_packet_rate{YType::uint64, "output-packet-rate"}
 {
 
-    yang_name = "protocol"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::~Protocol()
@@ -2495,6 +2514,7 @@ InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::~Protocol()
 
 bool InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol_name.is_set
 	|| bytes_received.is_set
 	|| packets_received.is_set
@@ -2527,7 +2547,8 @@ bool InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::has_op
 std::string InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocol" <<"[protocol-name='" <<protocol_name <<"']";
+    path_buffer << "protocol";
+    ADD_KEY_TOKEN(protocol_name, "protocol-name");
     return path_buffer.str();
 }
 
@@ -2728,7 +2749,7 @@ InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::Interface
     seconds_since_packet_sent{YType::uint32, "seconds-since-packet-sent"}
 {
 
-    yang_name = "interfaces-mib-counters"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces-mib-counters"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::~InterfacesMibCounters()
@@ -2737,6 +2758,7 @@ InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::~Interfac
 
 bool InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return packets_received.is_set
 	|| bytes_received.is_set
 	|| packets_sent.is_set
@@ -3272,7 +3294,7 @@ InfraStatistics::Interfaces::Interface::Latest::DataRate::DataRate()
     reliability{YType::uint8, "reliability"}
 {
 
-    yang_name = "data-rate"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-rate"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Latest::DataRate::~DataRate()
@@ -3281,6 +3303,7 @@ InfraStatistics::Interfaces::Interface::Latest::DataRate::~DataRate()
 
 bool InfraStatistics::Interfaces::Interface::Latest::DataRate::has_data() const
 {
+    if (is_presence_container) return true;
     return input_data_rate.is_set
 	|| input_packet_rate.is_set
 	|| output_data_rate.is_set
@@ -3540,7 +3563,7 @@ InfraStatistics::Interfaces::Interface::Latest::GenericCounters::GenericCounters
     seconds_since_packet_sent{YType::uint32, "seconds-since-packet-sent"}
 {
 
-    yang_name = "generic-counters"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic-counters"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Latest::GenericCounters::~GenericCounters()
@@ -3549,6 +3572,7 @@ InfraStatistics::Interfaces::Interface::Latest::GenericCounters::~GenericCounter
 
 bool InfraStatistics::Interfaces::Interface::Latest::GenericCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return packets_received.is_set
 	|| bytes_received.is_set
 	|| packets_sent.is_set
@@ -4070,16 +4094,16 @@ bool InfraStatistics::Interfaces::Interface::Latest::GenericCounters::has_leaf_o
 InfraStatistics::Interfaces::Interface::Total::Total()
     :
     protocols(std::make_shared<InfraStatistics::Interfaces::Interface::Total::Protocols>())
-	,interfaces_mib_counters(std::make_shared<InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters>())
-	,data_rate(std::make_shared<InfraStatistics::Interfaces::Interface::Total::DataRate>())
-	,generic_counters(std::make_shared<InfraStatistics::Interfaces::Interface::Total::GenericCounters>())
+    , interfaces_mib_counters(std::make_shared<InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters>())
+    , data_rate(std::make_shared<InfraStatistics::Interfaces::Interface::Total::DataRate>())
+    , generic_counters(std::make_shared<InfraStatistics::Interfaces::Interface::Total::GenericCounters>())
 {
     protocols->parent = this;
     interfaces_mib_counters->parent = this;
     data_rate->parent = this;
     generic_counters->parent = this;
 
-    yang_name = "total"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "total"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Total::~Total()
@@ -4088,6 +4112,7 @@ InfraStatistics::Interfaces::Interface::Total::~Total()
 
 bool InfraStatistics::Interfaces::Interface::Total::has_data() const
 {
+    if (is_presence_container) return true;
     return (protocols !=  nullptr && protocols->has_data())
 	|| (interfaces_mib_counters !=  nullptr && interfaces_mib_counters->has_data())
 	|| (data_rate !=  nullptr && data_rate->has_data())
@@ -4203,9 +4228,11 @@ bool InfraStatistics::Interfaces::Interface::Total::has_leaf_or_child_of_name(co
 }
 
 InfraStatistics::Interfaces::Interface::Total::Protocols::Protocols()
+    :
+    protocol(this, {"protocol_name"})
 {
 
-    yang_name = "protocols"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocols"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Total::Protocols::~Protocols()
@@ -4214,7 +4241,8 @@ InfraStatistics::Interfaces::Interface::Total::Protocols::~Protocols()
 
 bool InfraStatistics::Interfaces::Interface::Total::Protocols::has_data() const
 {
-    for (std::size_t index=0; index<protocol.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
         if(protocol[index]->has_data())
             return true;
@@ -4224,7 +4252,7 @@ bool InfraStatistics::Interfaces::Interface::Total::Protocols::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::Total::Protocols::has_operation() const
 {
-    for (std::size_t index=0; index<protocol.size(); index++)
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
         if(protocol[index]->has_operation())
             return true;
@@ -4254,7 +4282,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Total::Protocols
     {
         auto c = std::make_shared<InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol>();
         c->parent = this;
-        protocol.push_back(c);
+        protocol.append(c);
         return c;
     }
 
@@ -4266,7 +4294,7 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocol)
+    for (auto c : protocol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4307,7 +4335,7 @@ InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::Protocol()
     output_packet_rate{YType::uint64, "output-packet-rate"}
 {
 
-    yang_name = "protocol"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::~Protocol()
@@ -4316,6 +4344,7 @@ InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::~Protocol()
 
 bool InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol_name.is_set
 	|| bytes_received.is_set
 	|| packets_received.is_set
@@ -4348,7 +4377,8 @@ bool InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::has_ope
 std::string InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocol" <<"[protocol-name='" <<protocol_name <<"']";
+    path_buffer << "protocol";
+    ADD_KEY_TOKEN(protocol_name, "protocol-name");
     return path_buffer.str();
 }
 
@@ -4549,7 +4579,7 @@ InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::Interfaces
     seconds_since_packet_sent{YType::uint32, "seconds-since-packet-sent"}
 {
 
-    yang_name = "interfaces-mib-counters"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces-mib-counters"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::~InterfacesMibCounters()
@@ -4558,6 +4588,7 @@ InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::~Interface
 
 bool InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return packets_received.is_set
 	|| bytes_received.is_set
 	|| packets_sent.is_set
@@ -5093,7 +5124,7 @@ InfraStatistics::Interfaces::Interface::Total::DataRate::DataRate()
     reliability{YType::uint8, "reliability"}
 {
 
-    yang_name = "data-rate"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-rate"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Total::DataRate::~DataRate()
@@ -5102,6 +5133,7 @@ InfraStatistics::Interfaces::Interface::Total::DataRate::~DataRate()
 
 bool InfraStatistics::Interfaces::Interface::Total::DataRate::has_data() const
 {
+    if (is_presence_container) return true;
     return input_data_rate.is_set
 	|| input_packet_rate.is_set
 	|| output_data_rate.is_set
@@ -5361,7 +5393,7 @@ InfraStatistics::Interfaces::Interface::Total::GenericCounters::GenericCounters(
     seconds_since_packet_sent{YType::uint32, "seconds-since-packet-sent"}
 {
 
-    yang_name = "generic-counters"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic-counters"; yang_parent_name = "total"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Total::GenericCounters::~GenericCounters()
@@ -5370,6 +5402,7 @@ InfraStatistics::Interfaces::Interface::Total::GenericCounters::~GenericCounters
 
 bool InfraStatistics::Interfaces::Interface::Total::GenericCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return packets_received.is_set
 	|| bytes_received.is_set
 	|| packets_sent.is_set
@@ -5889,9 +5922,11 @@ bool InfraStatistics::Interfaces::Interface::Total::GenericCounters::has_leaf_or
 }
 
 InfraStatistics::Interfaces::Interface::Protocols::Protocols()
+    :
+    protocol(this, {"protocol_name"})
 {
 
-    yang_name = "protocols"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocols"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Protocols::~Protocols()
@@ -5900,7 +5935,8 @@ InfraStatistics::Interfaces::Interface::Protocols::~Protocols()
 
 bool InfraStatistics::Interfaces::Interface::Protocols::has_data() const
 {
-    for (std::size_t index=0; index<protocol.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
         if(protocol[index]->has_data())
             return true;
@@ -5910,7 +5946,7 @@ bool InfraStatistics::Interfaces::Interface::Protocols::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::Protocols::has_operation() const
 {
-    for (std::size_t index=0; index<protocol.size(); index++)
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
         if(protocol[index]->has_operation())
             return true;
@@ -5940,7 +5976,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Protocols::get_c
     {
         auto c = std::make_shared<InfraStatistics::Interfaces::Interface::Protocols::Protocol>();
         c->parent = this;
-        protocol.push_back(c);
+        protocol.append(c);
         return c;
     }
 
@@ -5952,7 +5988,7 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocol)
+    for (auto c : protocol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5993,7 +6029,7 @@ InfraStatistics::Interfaces::Interface::Protocols::Protocol::Protocol()
     output_packet_rate{YType::uint64, "output-packet-rate"}
 {
 
-    yang_name = "protocol"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::Protocols::Protocol::~Protocol()
@@ -6002,6 +6038,7 @@ InfraStatistics::Interfaces::Interface::Protocols::Protocol::~Protocol()
 
 bool InfraStatistics::Interfaces::Interface::Protocols::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol_name.is_set
 	|| bytes_received.is_set
 	|| packets_received.is_set
@@ -6034,7 +6071,8 @@ bool InfraStatistics::Interfaces::Interface::Protocols::Protocol::has_operation(
 std::string InfraStatistics::Interfaces::Interface::Protocols::Protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocol" <<"[protocol-name='" <<protocol_name <<"']";
+    path_buffer << "protocol";
+    ADD_KEY_TOKEN(protocol_name, "protocol-name");
     return path_buffer.str();
 }
 
@@ -6235,7 +6273,7 @@ InfraStatistics::Interfaces::Interface::InterfacesMibCounters::InterfacesMibCoun
     seconds_since_packet_sent{YType::uint32, "seconds-since-packet-sent"}
 {
 
-    yang_name = "interfaces-mib-counters"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces-mib-counters"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::InterfacesMibCounters::~InterfacesMibCounters()
@@ -6244,6 +6282,7 @@ InfraStatistics::Interfaces::Interface::InterfacesMibCounters::~InterfacesMibCou
 
 bool InfraStatistics::Interfaces::Interface::InterfacesMibCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return packets_received.is_set
 	|| bytes_received.is_set
 	|| packets_sent.is_set
@@ -6779,7 +6818,7 @@ InfraStatistics::Interfaces::Interface::DataRate::DataRate()
     reliability{YType::uint8, "reliability"}
 {
 
-    yang_name = "data-rate"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-rate"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::DataRate::~DataRate()
@@ -6788,6 +6827,7 @@ InfraStatistics::Interfaces::Interface::DataRate::~DataRate()
 
 bool InfraStatistics::Interfaces::Interface::DataRate::has_data() const
 {
+    if (is_presence_container) return true;
     return input_data_rate.is_set
 	|| input_packet_rate.is_set
 	|| output_data_rate.is_set
@@ -7047,7 +7087,7 @@ InfraStatistics::Interfaces::Interface::GenericCounters::GenericCounters()
     seconds_since_packet_sent{YType::uint32, "seconds-since-packet-sent"}
 {
 
-    yang_name = "generic-counters"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic-counters"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InfraStatistics::Interfaces::Interface::GenericCounters::~GenericCounters()
@@ -7056,6 +7096,7 @@ InfraStatistics::Interfaces::Interface::GenericCounters::~GenericCounters()
 
 bool InfraStatistics::Interfaces::Interface::GenericCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return packets_received.is_set
 	|| bytes_received.is_set
 	|| packets_sent.is_set

@@ -33,40 +33,40 @@ class IPMIB : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Ip; //type: IPMIB::Ip
-        class Iptrafficstats; //type: IPMIB::Iptrafficstats
+        class IpTrafficStats; //type: IPMIB::IpTrafficStats
         class Icmp; //type: IPMIB::Icmp
-        class Ipaddrtable; //type: IPMIB::Ipaddrtable
-        class Ipnettomediatable; //type: IPMIB::Ipnettomediatable
-        class Ipv4Interfacetable; //type: IPMIB::Ipv4Interfacetable
-        class Ipv6Interfacetable; //type: IPMIB::Ipv6Interfacetable
-        class Ipsystemstatstable; //type: IPMIB::Ipsystemstatstable
-        class Ipifstatstable; //type: IPMIB::Ipifstatstable
-        class Ipaddressprefixtable; //type: IPMIB::Ipaddressprefixtable
-        class Ipaddresstable; //type: IPMIB::Ipaddresstable
-        class Ipnettophysicaltable; //type: IPMIB::Ipnettophysicaltable
-        class Ipv6Scopezoneindextable; //type: IPMIB::Ipv6Scopezoneindextable
-        class Ipdefaultroutertable; //type: IPMIB::Ipdefaultroutertable
-        class Ipv6Routeradverttable; //type: IPMIB::Ipv6Routeradverttable
-        class Icmpstatstable; //type: IPMIB::Icmpstatstable
-        class Icmpmsgstatstable; //type: IPMIB::Icmpmsgstatstable
+        class IpAddrTable; //type: IPMIB::IpAddrTable
+        class IpNetToMediaTable; //type: IPMIB::IpNetToMediaTable
+        class Ipv4InterfaceTable; //type: IPMIB::Ipv4InterfaceTable
+        class Ipv6InterfaceTable; //type: IPMIB::Ipv6InterfaceTable
+        class IpSystemStatsTable; //type: IPMIB::IpSystemStatsTable
+        class IpIfStatsTable; //type: IPMIB::IpIfStatsTable
+        class IpAddressPrefixTable; //type: IPMIB::IpAddressPrefixTable
+        class IpAddressTable; //type: IPMIB::IpAddressTable
+        class IpNetToPhysicalTable; //type: IPMIB::IpNetToPhysicalTable
+        class Ipv6ScopeZoneIndexTable; //type: IPMIB::Ipv6ScopeZoneIndexTable
+        class IpDefaultRouterTable; //type: IPMIB::IpDefaultRouterTable
+        class Ipv6RouterAdvertTable; //type: IPMIB::Ipv6RouterAdvertTable
+        class IcmpStatsTable; //type: IPMIB::IcmpStatsTable
+        class IcmpMsgStatsTable; //type: IPMIB::IcmpMsgStatsTable
 
         std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ip> ip;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Iptrafficstats> iptrafficstats;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::IpTrafficStats> iptrafficstats;
         std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Icmp> icmp;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipaddrtable> ipaddrtable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipnettomediatable> ipnettomediatable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipv4Interfacetable> ipv4interfacetable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipv6Interfacetable> ipv6interfacetable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipsystemstatstable> ipsystemstatstable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipifstatstable> ipifstatstable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipaddressprefixtable> ipaddressprefixtable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipaddresstable> ipaddresstable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipnettophysicaltable> ipnettophysicaltable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipv6Scopezoneindextable> ipv6scopezoneindextable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipdefaultroutertable> ipdefaultroutertable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipv6Routeradverttable> ipv6routeradverttable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Icmpstatstable> icmpstatstable;
-        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Icmpmsgstatstable> icmpmsgstatstable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::IpAddrTable> ipaddrtable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::IpNetToMediaTable> ipnettomediatable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipv4InterfaceTable> ipv4interfacetable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipv6InterfaceTable> ipv6interfacetable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::IpSystemStatsTable> ipsystemstatstable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::IpIfStatsTable> ipifstatstable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::IpAddressPrefixTable> ipaddressprefixtable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::IpAddressTable> ipaddresstable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::IpNetToPhysicalTable> ipnettophysicaltable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipv6ScopeZoneIndexTable> ipv6scopezoneindextable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::IpDefaultRouterTable> ipdefaultroutertable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipv6RouterAdvertTable> ipv6routeradverttable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::IcmpStatsTable> icmpstatstable;
+        std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::IcmpMsgStatsTable> icmpmsgstatstable;
         
 }; // IPMIB
 
@@ -88,7 +88,7 @@ class IPMIB::Ip : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipforwarding; //type: Ipforwarding
+        ydk::YLeaf ipforwarding; //type: IpForwarding
         ydk::YLeaf ipdefaultttl; //type: int32
         ydk::YLeaf ipinreceives; //type: uint32
         ydk::YLeaf ipinhdrerrors; //type: uint32
@@ -108,23 +108,23 @@ class IPMIB::Ip : public ydk::Entity
         ydk::YLeaf ipfragfails; //type: uint32
         ydk::YLeaf ipfragcreates; //type: uint32
         ydk::YLeaf iproutingdiscards; //type: uint32
-        ydk::YLeaf ipv6ipforwarding; //type: Ipv6Ipforwarding
+        ydk::YLeaf ipv6ipforwarding; //type: Ipv6IpForwarding
         ydk::YLeaf ipv6ipdefaulthoplimit; //type: int32
         ydk::YLeaf ipv4interfacetablelastchange; //type: uint32
         ydk::YLeaf ipv6interfacetablelastchange; //type: uint32
         ydk::YLeaf ipaddressspinlock; //type: int32
         ydk::YLeaf ipv6routeradvertspinlock; //type: int32
-        class Ipforwarding;
-        class Ipv6Ipforwarding;
+        class IpForwarding;
+        class Ipv6IpForwarding;
 
 }; // IPMIB::Ip
 
 
-class IPMIB::Iptrafficstats : public ydk::Entity
+class IPMIB::IpTrafficStats : public ydk::Entity
 {
     public:
-        Iptrafficstats();
-        ~Iptrafficstats();
+        IpTrafficStats();
+        ~IpTrafficStats();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -139,7 +139,7 @@ class IPMIB::Iptrafficstats : public ydk::Entity
 
         ydk::YLeaf ipifstatstablelastchange; //type: uint32
 
-}; // IPMIB::Iptrafficstats
+}; // IPMIB::IpTrafficStats
 
 
 class IPMIB::Icmp : public ydk::Entity
@@ -189,11 +189,11 @@ class IPMIB::Icmp : public ydk::Entity
 }; // IPMIB::Icmp
 
 
-class IPMIB::Ipaddrtable : public ydk::Entity
+class IPMIB::IpAddrTable : public ydk::Entity
 {
     public:
-        Ipaddrtable();
-        ~Ipaddrtable();
+        IpAddrTable();
+        ~IpAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -206,18 +206,18 @@ class IPMIB::Ipaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipaddrentry; //type: IPMIB::Ipaddrtable::Ipaddrentry
+        class IpAddrEntry; //type: IPMIB::IpAddrTable::IpAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipaddrtable::Ipaddrentry> > ipaddrentry;
+        ydk::YList ipaddrentry;
         
-}; // IPMIB::Ipaddrtable
+}; // IPMIB::IpAddrTable
 
 
-class IPMIB::Ipaddrtable::Ipaddrentry : public ydk::Entity
+class IPMIB::IpAddrTable::IpAddrEntry : public ydk::Entity
 {
     public:
-        Ipaddrentry();
-        ~Ipaddrentry();
+        IpAddrEntry();
+        ~IpAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -236,14 +236,14 @@ class IPMIB::Ipaddrtable::Ipaddrentry : public ydk::Entity
         ydk::YLeaf ipadentbcastaddr; //type: int32
         ydk::YLeaf ipadentreasmmaxsize; //type: int32
 
-}; // IPMIB::Ipaddrtable::Ipaddrentry
+}; // IPMIB::IpAddrTable::IpAddrEntry
 
 
-class IPMIB::Ipnettomediatable : public ydk::Entity
+class IPMIB::IpNetToMediaTable : public ydk::Entity
 {
     public:
-        Ipnettomediatable();
-        ~Ipnettomediatable();
+        IpNetToMediaTable();
+        ~IpNetToMediaTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -256,18 +256,18 @@ class IPMIB::Ipnettomediatable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipnettomediaentry; //type: IPMIB::Ipnettomediatable::Ipnettomediaentry
+        class IpNetToMediaEntry; //type: IPMIB::IpNetToMediaTable::IpNetToMediaEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipnettomediatable::Ipnettomediaentry> > ipnettomediaentry;
+        ydk::YList ipnettomediaentry;
         
-}; // IPMIB::Ipnettomediatable
+}; // IPMIB::IpNetToMediaTable
 
 
-class IPMIB::Ipnettomediatable::Ipnettomediaentry : public ydk::Entity
+class IPMIB::IpNetToMediaTable::IpNetToMediaEntry : public ydk::Entity
 {
     public:
-        Ipnettomediaentry();
-        ~Ipnettomediaentry();
+        IpNetToMediaEntry();
+        ~IpNetToMediaEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -283,17 +283,17 @@ class IPMIB::Ipnettomediatable::Ipnettomediaentry : public ydk::Entity
         ydk::YLeaf ipnettomediaifindex; //type: int32
         ydk::YLeaf ipnettomedianetaddress; //type: string
         ydk::YLeaf ipnettomediaphysaddress; //type: string
-        ydk::YLeaf ipnettomediatype; //type: Ipnettomediatype
-        class Ipnettomediatype;
+        ydk::YLeaf ipnettomediatype; //type: IpNetToMediaType
+        class IpNetToMediaType;
 
-}; // IPMIB::Ipnettomediatable::Ipnettomediaentry
+}; // IPMIB::IpNetToMediaTable::IpNetToMediaEntry
 
 
-class IPMIB::Ipv4Interfacetable : public ydk::Entity
+class IPMIB::Ipv4InterfaceTable : public ydk::Entity
 {
     public:
-        Ipv4Interfacetable();
-        ~Ipv4Interfacetable();
+        Ipv4InterfaceTable();
+        ~Ipv4InterfaceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -306,18 +306,18 @@ class IPMIB::Ipv4Interfacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv4Interfaceentry; //type: IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry
+        class Ipv4InterfaceEntry; //type: IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry> > ipv4interfaceentry;
+        ydk::YList ipv4interfaceentry;
         
-}; // IPMIB::Ipv4Interfacetable
+}; // IPMIB::Ipv4InterfaceTable
 
 
-class IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry : public ydk::Entity
+class IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry : public ydk::Entity
 {
     public:
-        Ipv4Interfaceentry();
-        ~Ipv4Interfaceentry();
+        Ipv4InterfaceEntry();
+        ~Ipv4InterfaceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -332,18 +332,18 @@ class IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry : public ydk::Entity
 
         ydk::YLeaf ipv4interfaceifindex; //type: int32
         ydk::YLeaf ipv4interfacereasmmaxsize; //type: int32
-        ydk::YLeaf ipv4interfaceenablestatus; //type: Ipv4Interfaceenablestatus
+        ydk::YLeaf ipv4interfaceenablestatus; //type: Ipv4InterfaceEnableStatus
         ydk::YLeaf ipv4interfaceretransmittime; //type: uint32
-        class Ipv4Interfaceenablestatus;
+        class Ipv4InterfaceEnableStatus;
 
-}; // IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry
+}; // IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry
 
 
-class IPMIB::Ipv6Interfacetable : public ydk::Entity
+class IPMIB::Ipv6InterfaceTable : public ydk::Entity
 {
     public:
-        Ipv6Interfacetable();
-        ~Ipv6Interfacetable();
+        Ipv6InterfaceTable();
+        ~Ipv6InterfaceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -356,18 +356,18 @@ class IPMIB::Ipv6Interfacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv6Interfaceentry; //type: IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry
+        class Ipv6InterfaceEntry; //type: IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry> > ipv6interfaceentry;
+        ydk::YList ipv6interfaceentry;
         
-}; // IPMIB::Ipv6Interfacetable
+}; // IPMIB::Ipv6InterfaceTable
 
 
-class IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry : public ydk::Entity
+class IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry : public ydk::Entity
 {
     public:
-        Ipv6Interfaceentry();
-        ~Ipv6Interfaceentry();
+        Ipv6InterfaceEntry();
+        ~Ipv6InterfaceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -383,21 +383,21 @@ class IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry : public ydk::Entity
         ydk::YLeaf ipv6interfaceifindex; //type: int32
         ydk::YLeaf ipv6interfacereasmmaxsize; //type: uint32
         ydk::YLeaf ipv6interfaceidentifier; //type: string
-        ydk::YLeaf ipv6interfaceenablestatus; //type: Ipv6Interfaceenablestatus
+        ydk::YLeaf ipv6interfaceenablestatus; //type: Ipv6InterfaceEnableStatus
         ydk::YLeaf ipv6interfacereachabletime; //type: uint32
         ydk::YLeaf ipv6interfaceretransmittime; //type: uint32
-        ydk::YLeaf ipv6interfaceforwarding; //type: Ipv6Interfaceforwarding
-        class Ipv6Interfaceenablestatus;
-        class Ipv6Interfaceforwarding;
+        ydk::YLeaf ipv6interfaceforwarding; //type: Ipv6InterfaceForwarding
+        class Ipv6InterfaceEnableStatus;
+        class Ipv6InterfaceForwarding;
 
-}; // IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry
+}; // IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry
 
 
-class IPMIB::Ipsystemstatstable : public ydk::Entity
+class IPMIB::IpSystemStatsTable : public ydk::Entity
 {
     public:
-        Ipsystemstatstable();
-        ~Ipsystemstatstable();
+        IpSystemStatsTable();
+        ~IpSystemStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -410,18 +410,18 @@ class IPMIB::Ipsystemstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipsystemstatsentry; //type: IPMIB::Ipsystemstatstable::Ipsystemstatsentry
+        class IpSystemStatsEntry; //type: IPMIB::IpSystemStatsTable::IpSystemStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipsystemstatstable::Ipsystemstatsentry> > ipsystemstatsentry;
+        ydk::YList ipsystemstatsentry;
         
-}; // IPMIB::Ipsystemstatstable
+}; // IPMIB::IpSystemStatsTable
 
 
-class IPMIB::Ipsystemstatstable::Ipsystemstatsentry : public ydk::Entity
+class IPMIB::IpSystemStatsTable::IpSystemStatsEntry : public ydk::Entity
 {
     public:
-        Ipsystemstatsentry();
-        ~Ipsystemstatsentry();
+        IpSystemStatsEntry();
+        ~IpSystemStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -481,14 +481,14 @@ class IPMIB::Ipsystemstatstable::Ipsystemstatsentry : public ydk::Entity
         ydk::YLeaf ipsystemstatsdiscontinuitytime; //type: uint32
         ydk::YLeaf ipsystemstatsrefreshrate; //type: uint32
 
-}; // IPMIB::Ipsystemstatstable::Ipsystemstatsentry
+}; // IPMIB::IpSystemStatsTable::IpSystemStatsEntry
 
 
-class IPMIB::Ipifstatstable : public ydk::Entity
+class IPMIB::IpIfStatsTable : public ydk::Entity
 {
     public:
-        Ipifstatstable();
-        ~Ipifstatstable();
+        IpIfStatsTable();
+        ~IpIfStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -501,18 +501,18 @@ class IPMIB::Ipifstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipifstatsentry; //type: IPMIB::Ipifstatstable::Ipifstatsentry
+        class IpIfStatsEntry; //type: IPMIB::IpIfStatsTable::IpIfStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipifstatstable::Ipifstatsentry> > ipifstatsentry;
+        ydk::YList ipifstatsentry;
         
-}; // IPMIB::Ipifstatstable
+}; // IPMIB::IpIfStatsTable
 
 
-class IPMIB::Ipifstatstable::Ipifstatsentry : public ydk::Entity
+class IPMIB::IpIfStatsTable::IpIfStatsEntry : public ydk::Entity
 {
     public:
-        Ipifstatsentry();
-        ~Ipifstatsentry();
+        IpIfStatsEntry();
+        ~IpIfStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -572,14 +572,14 @@ class IPMIB::Ipifstatstable::Ipifstatsentry : public ydk::Entity
         ydk::YLeaf ipifstatsdiscontinuitytime; //type: uint32
         ydk::YLeaf ipifstatsrefreshrate; //type: uint32
 
-}; // IPMIB::Ipifstatstable::Ipifstatsentry
+}; // IPMIB::IpIfStatsTable::IpIfStatsEntry
 
 
-class IPMIB::Ipaddressprefixtable : public ydk::Entity
+class IPMIB::IpAddressPrefixTable : public ydk::Entity
 {
     public:
-        Ipaddressprefixtable();
-        ~Ipaddressprefixtable();
+        IpAddressPrefixTable();
+        ~IpAddressPrefixTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -592,18 +592,18 @@ class IPMIB::Ipaddressprefixtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipaddressprefixentry; //type: IPMIB::Ipaddressprefixtable::Ipaddressprefixentry
+        class IpAddressPrefixEntry; //type: IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipaddressprefixtable::Ipaddressprefixentry> > ipaddressprefixentry;
+        ydk::YList ipaddressprefixentry;
         
-}; // IPMIB::Ipaddressprefixtable
+}; // IPMIB::IpAddressPrefixTable
 
 
-class IPMIB::Ipaddressprefixtable::Ipaddressprefixentry : public ydk::Entity
+class IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry : public ydk::Entity
 {
     public:
-        Ipaddressprefixentry();
-        ~Ipaddressprefixentry();
+        IpAddressPrefixEntry();
+        ~IpAddressPrefixEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -626,14 +626,14 @@ class IPMIB::Ipaddressprefixtable::Ipaddressprefixentry : public ydk::Entity
         ydk::YLeaf ipaddressprefixadvpreferredlifetime; //type: uint32
         ydk::YLeaf ipaddressprefixadvvalidlifetime; //type: uint32
 
-}; // IPMIB::Ipaddressprefixtable::Ipaddressprefixentry
+}; // IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry
 
 
-class IPMIB::Ipaddresstable : public ydk::Entity
+class IPMIB::IpAddressTable : public ydk::Entity
 {
     public:
-        Ipaddresstable();
-        ~Ipaddresstable();
+        IpAddressTable();
+        ~IpAddressTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -646,18 +646,18 @@ class IPMIB::Ipaddresstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipaddressentry; //type: IPMIB::Ipaddresstable::Ipaddressentry
+        class IpAddressEntry; //type: IPMIB::IpAddressTable::IpAddressEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipaddresstable::Ipaddressentry> > ipaddressentry;
+        ydk::YList ipaddressentry;
         
-}; // IPMIB::Ipaddresstable
+}; // IPMIB::IpAddressTable
 
 
-class IPMIB::Ipaddresstable::Ipaddressentry : public ydk::Entity
+class IPMIB::IpAddressTable::IpAddressEntry : public ydk::Entity
 {
     public:
-        Ipaddressentry();
-        ~Ipaddressentry();
+        IpAddressEntry();
+        ~IpAddressEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -673,7 +673,7 @@ class IPMIB::Ipaddresstable::Ipaddressentry : public ydk::Entity
         ydk::YLeaf ipaddressaddrtype; //type: InetAddressType
         ydk::YLeaf ipaddressaddr; //type: binary
         ydk::YLeaf ipaddressifindex; //type: int32
-        ydk::YLeaf ipaddresstype; //type: Ipaddresstype
+        ydk::YLeaf ipaddresstype; //type: IpAddressType
         ydk::YLeaf ipaddressprefix; //type: string
         ydk::YLeaf ipaddressorigin; //type: IpAddressOriginTC
         ydk::YLeaf ipaddressstatus; //type: IpAddressStatusTC
@@ -681,16 +681,16 @@ class IPMIB::Ipaddresstable::Ipaddressentry : public ydk::Entity
         ydk::YLeaf ipaddresslastchanged; //type: uint32
         ydk::YLeaf ipaddressrowstatus; //type: RowStatus
         ydk::YLeaf ipaddressstoragetype; //type: StorageType
-        class Ipaddresstype;
+        class IpAddressType;
 
-}; // IPMIB::Ipaddresstable::Ipaddressentry
+}; // IPMIB::IpAddressTable::IpAddressEntry
 
 
-class IPMIB::Ipnettophysicaltable : public ydk::Entity
+class IPMIB::IpNetToPhysicalTable : public ydk::Entity
 {
     public:
-        Ipnettophysicaltable();
-        ~Ipnettophysicaltable();
+        IpNetToPhysicalTable();
+        ~IpNetToPhysicalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -703,18 +703,18 @@ class IPMIB::Ipnettophysicaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipnettophysicalentry; //type: IPMIB::Ipnettophysicaltable::Ipnettophysicalentry
+        class IpNetToPhysicalEntry; //type: IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipnettophysicaltable::Ipnettophysicalentry> > ipnettophysicalentry;
+        ydk::YList ipnettophysicalentry;
         
-}; // IPMIB::Ipnettophysicaltable
+}; // IPMIB::IpNetToPhysicalTable
 
 
-class IPMIB::Ipnettophysicaltable::Ipnettophysicalentry : public ydk::Entity
+class IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry : public ydk::Entity
 {
     public:
-        Ipnettophysicalentry();
-        ~Ipnettophysicalentry();
+        IpNetToPhysicalEntry();
+        ~IpNetToPhysicalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -732,20 +732,20 @@ class IPMIB::Ipnettophysicaltable::Ipnettophysicalentry : public ydk::Entity
         ydk::YLeaf ipnettophysicalnetaddress; //type: binary
         ydk::YLeaf ipnettophysicalphysaddress; //type: string
         ydk::YLeaf ipnettophysicallastupdated; //type: uint32
-        ydk::YLeaf ipnettophysicaltype; //type: Ipnettophysicaltype
-        ydk::YLeaf ipnettophysicalstate; //type: Ipnettophysicalstate
+        ydk::YLeaf ipnettophysicaltype; //type: IpNetToPhysicalType
+        ydk::YLeaf ipnettophysicalstate; //type: IpNetToPhysicalState
         ydk::YLeaf ipnettophysicalrowstatus; //type: RowStatus
-        class Ipnettophysicaltype;
-        class Ipnettophysicalstate;
+        class IpNetToPhysicalType;
+        class IpNetToPhysicalState;
 
-}; // IPMIB::Ipnettophysicaltable::Ipnettophysicalentry
+}; // IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry
 
 
-class IPMIB::Ipv6Scopezoneindextable : public ydk::Entity
+class IPMIB::Ipv6ScopeZoneIndexTable : public ydk::Entity
 {
     public:
-        Ipv6Scopezoneindextable();
-        ~Ipv6Scopezoneindextable();
+        Ipv6ScopeZoneIndexTable();
+        ~Ipv6ScopeZoneIndexTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -758,18 +758,18 @@ class IPMIB::Ipv6Scopezoneindextable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv6Scopezoneindexentry; //type: IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry
+        class Ipv6ScopeZoneIndexEntry; //type: IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry> > ipv6scopezoneindexentry;
+        ydk::YList ipv6scopezoneindexentry;
         
-}; // IPMIB::Ipv6Scopezoneindextable
+}; // IPMIB::Ipv6ScopeZoneIndexTable
 
 
-class IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry : public ydk::Entity
+class IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry : public ydk::Entity
 {
     public:
-        Ipv6Scopezoneindexentry();
-        ~Ipv6Scopezoneindexentry();
+        Ipv6ScopeZoneIndexEntry();
+        ~Ipv6ScopeZoneIndexEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -796,14 +796,14 @@ class IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry : public ydk::Enti
         ydk::YLeaf ipv6scopezoneindexc; //type: uint32
         ydk::YLeaf ipv6scopezoneindexd; //type: uint32
 
-}; // IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry
+}; // IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry
 
 
-class IPMIB::Ipdefaultroutertable : public ydk::Entity
+class IPMIB::IpDefaultRouterTable : public ydk::Entity
 {
     public:
-        Ipdefaultroutertable();
-        ~Ipdefaultroutertable();
+        IpDefaultRouterTable();
+        ~IpDefaultRouterTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -816,18 +816,18 @@ class IPMIB::Ipdefaultroutertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipdefaultrouterentry; //type: IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry
+        class IpDefaultRouterEntry; //type: IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry> > ipdefaultrouterentry;
+        ydk::YList ipdefaultrouterentry;
         
-}; // IPMIB::Ipdefaultroutertable
+}; // IPMIB::IpDefaultRouterTable
 
 
-class IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry : public ydk::Entity
+class IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry : public ydk::Entity
 {
     public:
-        Ipdefaultrouterentry();
-        ~Ipdefaultrouterentry();
+        IpDefaultRouterEntry();
+        ~IpDefaultRouterEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -844,17 +844,17 @@ class IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry : public ydk::Entity
         ydk::YLeaf ipdefaultrouteraddress; //type: binary
         ydk::YLeaf ipdefaultrouterifindex; //type: int32
         ydk::YLeaf ipdefaultrouterlifetime; //type: uint32
-        ydk::YLeaf ipdefaultrouterpreference; //type: Ipdefaultrouterpreference
-        class Ipdefaultrouterpreference;
+        ydk::YLeaf ipdefaultrouterpreference; //type: IpDefaultRouterPreference
+        class IpDefaultRouterPreference;
 
-}; // IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry
+}; // IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry
 
 
-class IPMIB::Ipv6Routeradverttable : public ydk::Entity
+class IPMIB::Ipv6RouterAdvertTable : public ydk::Entity
 {
     public:
-        Ipv6Routeradverttable();
-        ~Ipv6Routeradverttable();
+        Ipv6RouterAdvertTable();
+        ~Ipv6RouterAdvertTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -867,18 +867,18 @@ class IPMIB::Ipv6Routeradverttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv6Routeradvertentry; //type: IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry
+        class Ipv6RouterAdvertEntry; //type: IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry> > ipv6routeradvertentry;
+        ydk::YList ipv6routeradvertentry;
         
-}; // IPMIB::Ipv6Routeradverttable
+}; // IPMIB::Ipv6RouterAdvertTable
 
 
-class IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry : public ydk::Entity
+class IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry : public ydk::Entity
 {
     public:
-        Ipv6Routeradvertentry();
-        ~Ipv6Routeradvertentry();
+        Ipv6RouterAdvertEntry();
+        ~Ipv6RouterAdvertEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -904,14 +904,14 @@ class IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry : public ydk::Entity
         ydk::YLeaf ipv6routeradvertdefaultlifetime; //type: uint32
         ydk::YLeaf ipv6routeradvertrowstatus; //type: RowStatus
 
-}; // IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry
+}; // IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry
 
 
-class IPMIB::Icmpstatstable : public ydk::Entity
+class IPMIB::IcmpStatsTable : public ydk::Entity
 {
     public:
-        Icmpstatstable();
-        ~Icmpstatstable();
+        IcmpStatsTable();
+        ~IcmpStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -924,18 +924,18 @@ class IPMIB::Icmpstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Icmpstatsentry; //type: IPMIB::Icmpstatstable::Icmpstatsentry
+        class IcmpStatsEntry; //type: IPMIB::IcmpStatsTable::IcmpStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Icmpstatstable::Icmpstatsentry> > icmpstatsentry;
+        ydk::YList icmpstatsentry;
         
-}; // IPMIB::Icmpstatstable
+}; // IPMIB::IcmpStatsTable
 
 
-class IPMIB::Icmpstatstable::Icmpstatsentry : public ydk::Entity
+class IPMIB::IcmpStatsTable::IcmpStatsEntry : public ydk::Entity
 {
     public:
-        Icmpstatsentry();
-        ~Icmpstatsentry();
+        IcmpStatsEntry();
+        ~IcmpStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -954,14 +954,14 @@ class IPMIB::Icmpstatstable::Icmpstatsentry : public ydk::Entity
         ydk::YLeaf icmpstatsoutmsgs; //type: uint32
         ydk::YLeaf icmpstatsouterrors; //type: uint32
 
-}; // IPMIB::Icmpstatstable::Icmpstatsentry
+}; // IPMIB::IcmpStatsTable::IcmpStatsEntry
 
 
-class IPMIB::Icmpmsgstatstable : public ydk::Entity
+class IPMIB::IcmpMsgStatsTable : public ydk::Entity
 {
     public:
-        Icmpmsgstatstable();
-        ~Icmpmsgstatstable();
+        IcmpMsgStatsTable();
+        ~IcmpMsgStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -974,18 +974,18 @@ class IPMIB::Icmpmsgstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Icmpmsgstatsentry; //type: IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry
+        class IcmpMsgStatsEntry; //type: IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_MIB::IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry> > icmpmsgstatsentry;
+        ydk::YList icmpmsgstatsentry;
         
-}; // IPMIB::Icmpmsgstatstable
+}; // IPMIB::IcmpMsgStatsTable
 
 
-class IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry : public ydk::Entity
+class IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry : public ydk::Entity
 {
     public:
-        Icmpmsgstatsentry();
-        ~Icmpmsgstatsentry();
+        IcmpMsgStatsEntry();
+        ~IcmpMsgStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1003,7 +1003,18 @@ class IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry : public ydk::Entity
         ydk::YLeaf icmpmsgstatsinpkts; //type: uint32
         ydk::YLeaf icmpmsgstatsoutpkts; //type: uint32
 
-}; // IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry
+}; // IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry
+
+class IpAddressPrefixOriginTC : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf manual;
+        static const ydk::Enum::YLeaf wellknown;
+        static const ydk::Enum::YLeaf dhcp;
+        static const ydk::Enum::YLeaf routeradv;
+
+};
 
 class IpAddressOriginTC : public ydk::Enum
 {
@@ -1030,18 +1041,7 @@ class IpAddressStatusTC : public ydk::Enum
 
 };
 
-class IpAddressPrefixOriginTC : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf manual;
-        static const ydk::Enum::YLeaf wellknown;
-        static const ydk::Enum::YLeaf dhcp;
-        static const ydk::Enum::YLeaf routeradv;
-
-};
-
-class IPMIB::Ip::Ipforwarding : public ydk::Enum
+class IPMIB::Ip::IpForwarding : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf forwarding;
@@ -1049,7 +1049,7 @@ class IPMIB::Ip::Ipforwarding : public ydk::Enum
 
 };
 
-class IPMIB::Ip::Ipv6Ipforwarding : public ydk::Enum
+class IPMIB::Ip::Ipv6IpForwarding : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf forwarding;
@@ -1057,7 +1057,7 @@ class IPMIB::Ip::Ipv6Ipforwarding : public ydk::Enum
 
 };
 
-class IPMIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype : public ydk::Enum
+class IPMIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -1067,7 +1067,7 @@ class IPMIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype : public ydk
 
 };
 
-class IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::Ipv4Interfaceenablestatus : public ydk::Enum
+class IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::Ipv4InterfaceEnableStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -1075,7 +1075,7 @@ class IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::Ipv4Interfaceenablestatus :
 
 };
 
-class IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceenablestatus : public ydk::Enum
+class IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::Ipv6InterfaceEnableStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -1083,7 +1083,7 @@ class IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceenablestatus :
 
 };
 
-class IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceforwarding : public ydk::Enum
+class IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::Ipv6InterfaceForwarding : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf forwarding;
@@ -1091,7 +1091,7 @@ class IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceforwarding : p
 
 };
 
-class IPMIB::Ipaddresstable::Ipaddressentry::Ipaddresstype : public ydk::Enum
+class IPMIB::IpAddressTable::IpAddressEntry::IpAddressType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unicast;
@@ -1100,7 +1100,7 @@ class IPMIB::Ipaddresstable::Ipaddressentry::Ipaddresstype : public ydk::Enum
 
 };
 
-class IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicaltype : public ydk::Enum
+class IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -1111,7 +1111,7 @@ class IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicaltype : p
 
 };
 
-class IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate : public ydk::Enum
+class IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf reachable;
@@ -1124,7 +1124,7 @@ class IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate : 
 
 };
 
-class IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::Ipdefaultrouterpreference : public ydk::Enum
+class IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::IpDefaultRouterPreference : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf reserved;

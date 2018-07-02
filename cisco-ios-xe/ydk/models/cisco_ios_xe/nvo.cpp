@@ -22,9 +22,11 @@ OverlayEncapType::~OverlayEncapType()
 }
 
 NvoInstances::NvoInstances()
+    :
+    nvo_instance(this, {"nvo_id"})
 {
 
-    yang_name = "nvo-instances"; yang_parent_name = "nvo"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "nvo-instances"; yang_parent_name = "nvo"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NvoInstances::~NvoInstances()
@@ -33,7 +35,8 @@ NvoInstances::~NvoInstances()
 
 bool NvoInstances::has_data() const
 {
-    for (std::size_t index=0; index<nvo_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nvo_instance.len(); index++)
     {
         if(nvo_instance[index]->has_data())
             return true;
@@ -43,7 +46,7 @@ bool NvoInstances::has_data() const
 
 bool NvoInstances::has_operation() const
 {
-    for (std::size_t index=0; index<nvo_instance.size(); index++)
+    for (std::size_t index=0; index<nvo_instance.len(); index++)
     {
         if(nvo_instance[index]->has_operation())
             return true;
@@ -73,7 +76,7 @@ std::shared_ptr<Entity> NvoInstances::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<NvoInstances::NvoInstance>();
         c->parent = this;
-        nvo_instance.push_back(c);
+        nvo_instance.append(c);
         return c;
     }
 
@@ -85,7 +88,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvoInstances::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nvo_instance)
+    for (auto c : nvo_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -141,9 +144,11 @@ NvoInstances::NvoInstance::NvoInstance()
     nvo_id{YType::uint16, "nvo-id"},
     source_interface{YType::str, "source-interface"},
     overlay_encapsulation{YType::identityref, "overlay-encapsulation"}
+        ,
+    virtual_network(this, {"vni_start", "vni_end"})
 {
 
-    yang_name = "nvo-instance"; yang_parent_name = "nvo-instances"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nvo-instance"; yang_parent_name = "nvo-instances"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvoInstances::NvoInstance::~NvoInstance()
@@ -152,7 +157,8 @@ NvoInstances::NvoInstance::~NvoInstance()
 
 bool NvoInstances::NvoInstance::has_data() const
 {
-    for (std::size_t index=0; index<virtual_network.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<virtual_network.len(); index++)
     {
         if(virtual_network[index]->has_data())
             return true;
@@ -164,7 +170,7 @@ bool NvoInstances::NvoInstance::has_data() const
 
 bool NvoInstances::NvoInstance::has_operation() const
 {
-    for (std::size_t index=0; index<virtual_network.size(); index++)
+    for (std::size_t index=0; index<virtual_network.len(); index++)
     {
         if(virtual_network[index]->has_operation())
             return true;
@@ -185,7 +191,8 @@ std::string NvoInstances::NvoInstance::get_absolute_path() const
 std::string NvoInstances::NvoInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nvo-instance" <<"[nvo-id='" <<nvo_id <<"']";
+    path_buffer << "nvo-instance";
+    ADD_KEY_TOKEN(nvo_id, "nvo-id");
     return path_buffer.str();
 }
 
@@ -207,7 +214,7 @@ std::shared_ptr<Entity> NvoInstances::NvoInstance::get_child_by_name(const std::
     {
         auto c = std::make_shared<NvoInstances::NvoInstance::VirtualNetwork>();
         c->parent = this;
-        virtual_network.push_back(c);
+        virtual_network.append(c);
         return c;
     }
 
@@ -219,7 +226,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvoInstances::NvoInstance::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : virtual_network)
+    for (auto c : virtual_network.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -279,16 +286,17 @@ NvoInstances::NvoInstance::VirtualNetwork::VirtualNetwork()
     :
     vni_start{YType::uint32, "vni-start"},
     vni_end{YType::uint32, "vni-end"},
-    routing_instance{YType::str, "routing-instance"},
     suppress_arp{YType::empty, "suppress-arp"},
+    routing_instance{YType::str, "routing-instance"},
     bgp{YType::empty, "bgp"},
     end_host_discovery{YType::enumeration, "end-host-discovery"}
-    	,
+        ,
     multicast(std::make_shared<NvoInstances::NvoInstance::VirtualNetwork::Multicast>())
+    , peers(this, {"peer_ip"})
 {
     multicast->parent = this;
 
-    yang_name = "virtual-network"; yang_parent_name = "nvo-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-network"; yang_parent_name = "nvo-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvoInstances::NvoInstance::VirtualNetwork::~VirtualNetwork()
@@ -297,15 +305,16 @@ NvoInstances::NvoInstance::VirtualNetwork::~VirtualNetwork()
 
 bool NvoInstances::NvoInstance::VirtualNetwork::has_data() const
 {
-    for (std::size_t index=0; index<peers.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peers.len(); index++)
     {
         if(peers[index]->has_data())
             return true;
     }
     return vni_start.is_set
 	|| vni_end.is_set
-	|| routing_instance.is_set
 	|| suppress_arp.is_set
+	|| routing_instance.is_set
 	|| bgp.is_set
 	|| end_host_discovery.is_set
 	|| (multicast !=  nullptr && multicast->has_data());
@@ -313,7 +322,7 @@ bool NvoInstances::NvoInstance::VirtualNetwork::has_data() const
 
 bool NvoInstances::NvoInstance::VirtualNetwork::has_operation() const
 {
-    for (std::size_t index=0; index<peers.size(); index++)
+    for (std::size_t index=0; index<peers.len(); index++)
     {
         if(peers[index]->has_operation())
             return true;
@@ -321,8 +330,8 @@ bool NvoInstances::NvoInstance::VirtualNetwork::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(vni_start.yfilter)
 	|| ydk::is_set(vni_end.yfilter)
-	|| ydk::is_set(routing_instance.yfilter)
 	|| ydk::is_set(suppress_arp.yfilter)
+	|| ydk::is_set(routing_instance.yfilter)
 	|| ydk::is_set(bgp.yfilter)
 	|| ydk::is_set(end_host_discovery.yfilter)
 	|| (multicast !=  nullptr && multicast->has_operation());
@@ -331,7 +340,9 @@ bool NvoInstances::NvoInstance::VirtualNetwork::has_operation() const
 std::string NvoInstances::NvoInstance::VirtualNetwork::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "virtual-network" <<"[vni-start='" <<vni_start <<"']" <<"[vni-end='" <<vni_end <<"']";
+    path_buffer << "virtual-network";
+    ADD_KEY_TOKEN(vni_start, "vni-start");
+    ADD_KEY_TOKEN(vni_end, "vni-end");
     return path_buffer.str();
 }
 
@@ -341,8 +352,8 @@ std::vector<std::pair<std::string, LeafData> > NvoInstances::NvoInstance::Virtua
 
     if (vni_start.is_set || is_set(vni_start.yfilter)) leaf_name_data.push_back(vni_start.get_name_leafdata());
     if (vni_end.is_set || is_set(vni_end.yfilter)) leaf_name_data.push_back(vni_end.get_name_leafdata());
-    if (routing_instance.is_set || is_set(routing_instance.yfilter)) leaf_name_data.push_back(routing_instance.get_name_leafdata());
     if (suppress_arp.is_set || is_set(suppress_arp.yfilter)) leaf_name_data.push_back(suppress_arp.get_name_leafdata());
+    if (routing_instance.is_set || is_set(routing_instance.yfilter)) leaf_name_data.push_back(routing_instance.get_name_leafdata());
     if (bgp.is_set || is_set(bgp.yfilter)) leaf_name_data.push_back(bgp.get_name_leafdata());
     if (end_host_discovery.is_set || is_set(end_host_discovery.yfilter)) leaf_name_data.push_back(end_host_discovery.get_name_leafdata());
 
@@ -352,14 +363,6 @@ std::vector<std::pair<std::string, LeafData> > NvoInstances::NvoInstance::Virtua
 
 std::shared_ptr<Entity> NvoInstances::NvoInstance::VirtualNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "peers")
-    {
-        auto c = std::make_shared<NvoInstances::NvoInstance::VirtualNetwork::Peers>();
-        c->parent = this;
-        peers.push_back(c);
-        return c;
-    }
-
     if(child_yang_name == "multicast")
     {
         if(multicast == nullptr)
@@ -369,6 +372,14 @@ std::shared_ptr<Entity> NvoInstances::NvoInstance::VirtualNetwork::get_child_by_
         return multicast;
     }
 
+    if(child_yang_name == "peers")
+    {
+        auto c = std::make_shared<NvoInstances::NvoInstance::VirtualNetwork::Peers>();
+        c->parent = this;
+        peers.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -376,18 +387,18 @@ std::map<std::string, std::shared_ptr<Entity>> NvoInstances::NvoInstance::Virtua
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(multicast != nullptr)
+    {
+        children["multicast"] = multicast;
+    }
+
     count = 0;
-    for (auto const & c : peers)
+    for (auto c : peers.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
         else
             children[c->get_segment_path()+count++] = c;
-    }
-
-    if(multicast != nullptr)
-    {
-        children["multicast"] = multicast;
     }
 
     return children;
@@ -407,17 +418,17 @@ void NvoInstances::NvoInstance::VirtualNetwork::set_value(const std::string & va
         vni_end.value_namespace = name_space;
         vni_end.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "routing-instance")
-    {
-        routing_instance = value;
-        routing_instance.value_namespace = name_space;
-        routing_instance.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "suppress-arp")
     {
         suppress_arp = value;
         suppress_arp.value_namespace = name_space;
         suppress_arp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "routing-instance")
+    {
+        routing_instance = value;
+        routing_instance.value_namespace = name_space;
+        routing_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp")
     {
@@ -443,13 +454,13 @@ void NvoInstances::NvoInstance::VirtualNetwork::set_filter(const std::string & v
     {
         vni_end.yfilter = yfilter;
     }
-    if(value_path == "routing-instance")
-    {
-        routing_instance.yfilter = yfilter;
-    }
     if(value_path == "suppress-arp")
     {
         suppress_arp.yfilter = yfilter;
+    }
+    if(value_path == "routing-instance")
+    {
+        routing_instance.yfilter = yfilter;
     }
     if(value_path == "bgp")
     {
@@ -463,84 +474,7 @@ void NvoInstances::NvoInstance::VirtualNetwork::set_filter(const std::string & v
 
 bool NvoInstances::NvoInstance::VirtualNetwork::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "peers" || name == "multicast" || name == "vni-start" || name == "vni-end" || name == "routing-instance" || name == "suppress-arp" || name == "bgp" || name == "end-host-discovery")
-        return true;
-    return false;
-}
-
-NvoInstances::NvoInstance::VirtualNetwork::Peers::Peers()
-    :
-    peer_ip{YType::str, "peer-ip"}
-{
-
-    yang_name = "peers"; yang_parent_name = "virtual-network"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NvoInstances::NvoInstance::VirtualNetwork::Peers::~Peers()
-{
-}
-
-bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_data() const
-{
-    return peer_ip.is_set;
-}
-
-bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(peer_ip.yfilter);
-}
-
-std::string NvoInstances::NvoInstance::VirtualNetwork::Peers::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "peers" <<"[peer-ip='" <<peer_ip <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NvoInstances::NvoInstance::VirtualNetwork::Peers::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (peer_ip.is_set || is_set(peer_ip.yfilter)) leaf_name_data.push_back(peer_ip.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NvoInstances::NvoInstance::VirtualNetwork::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NvoInstances::NvoInstance::VirtualNetwork::Peers::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void NvoInstances::NvoInstance::VirtualNetwork::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "peer-ip")
-    {
-        peer_ip = value;
-        peer_ip.value_namespace = name_space;
-        peer_ip.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NvoInstances::NvoInstance::VirtualNetwork::Peers::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "peer-ip")
-    {
-        peer_ip.yfilter = yfilter;
-    }
-}
-
-bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "peer-ip")
+    if(name == "multicast" || name == "peers" || name == "vni-start" || name == "vni-end" || name == "suppress-arp" || name == "routing-instance" || name == "bgp" || name == "end-host-discovery")
         return true;
     return false;
 }
@@ -551,7 +485,7 @@ NvoInstances::NvoInstance::VirtualNetwork::Multicast::Multicast()
     multicast_group_max{YType::str, "multicast-group-max"}
 {
 
-    yang_name = "multicast"; yang_parent_name = "virtual-network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast"; yang_parent_name = "virtual-network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvoInstances::NvoInstance::VirtualNetwork::Multicast::~Multicast()
@@ -560,6 +494,7 @@ NvoInstances::NvoInstance::VirtualNetwork::Multicast::~Multicast()
 
 bool NvoInstances::NvoInstance::VirtualNetwork::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return multicast_group_min.is_set
 	|| multicast_group_max.is_set;
 }
@@ -636,14 +571,83 @@ bool NvoInstances::NvoInstance::VirtualNetwork::Multicast::has_leaf_or_child_of_
     return false;
 }
 
-VxlanType::VxlanType()
-     : Identity("urn:ietf:params:xml:ns:yang:nvo", "nvo", "nvo:vxlan-type")
+NvoInstances::NvoInstance::VirtualNetwork::Peers::Peers()
+    :
+    peer_ip{YType::str, "peer-ip"}
 {
+
+    yang_name = "peers"; yang_parent_name = "virtual-network"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+NvoInstances::NvoInstance::VirtualNetwork::Peers::~Peers()
+{
+}
+
+bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_data() const
+{
+    if (is_presence_container) return true;
+    return peer_ip.is_set;
+}
+
+bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(peer_ip.yfilter);
+}
+
+std::string NvoInstances::NvoInstance::VirtualNetwork::Peers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "peers";
+    ADD_KEY_TOKEN(peer_ip, "peer-ip");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NvoInstances::NvoInstance::VirtualNetwork::Peers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (peer_ip.is_set || is_set(peer_ip.yfilter)) leaf_name_data.push_back(peer_ip.get_name_leafdata());
+
+    return leaf_name_data;
 
 }
 
-VxlanType::~VxlanType()
+std::shared_ptr<Entity> NvoInstances::NvoInstance::VirtualNetwork::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NvoInstances::NvoInstance::VirtualNetwork::Peers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void NvoInstances::NvoInstance::VirtualNetwork::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "peer-ip")
+    {
+        peer_ip = value;
+        peer_ip.value_namespace = name_space;
+        peer_ip.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NvoInstances::NvoInstance::VirtualNetwork::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-ip")
+    {
+        peer_ip.yfilter = yfilter;
+    }
+}
+
+bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-ip")
+        return true;
+    return false;
 }
 
 NvgreType::NvgreType()
@@ -653,6 +657,16 @@ NvgreType::NvgreType()
 }
 
 NvgreType::~NvgreType()
+{
+}
+
+VxlanType::VxlanType()
+     : Identity("urn:ietf:params:xml:ns:yang:nvo", "nvo", "nvo:vxlan-type")
+{
+
+}
+
+VxlanType::~VxlanType()
 {
 }
 

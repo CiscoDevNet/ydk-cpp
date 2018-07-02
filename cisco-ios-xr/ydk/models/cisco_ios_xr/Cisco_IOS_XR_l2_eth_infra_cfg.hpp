@@ -134,7 +134,7 @@ class EthernetFeatures::Cfm::Domains : public ydk::Entity
 
         class Domain; //type: EthernetFeatures::Cfm::Domains::Domain
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain> > domain;
+        ydk::YList domain;
         
 }; // EthernetFeatures::Cfm::Domains
 
@@ -184,7 +184,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services : public ydk::Entity
 
         class Service; //type: EthernetFeatures::Cfm::Domains::Domain::Services::Service
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service> > service;
+        ydk::YList service;
         
 }; // EthernetFeatures::Cfm::Domains::Domain::Services
 
@@ -385,7 +385,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::Cro
 
         class CrossCheckMep; //type: EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep> > cross_check_mep;
+        ydk::YList cross_check_mep;
         
 }; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps
 
@@ -439,7 +439,7 @@ class EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperti
         ydk::YLeaf short_ma_name_string; //type: string
         ydk::YLeaf short_ma_name_number; //type: uint32
         ydk::YLeaf short_ma_name_oui; //type: uint32
-        ydk::YLeaf short_ma_name_vpn_index; //type: int32
+        ydk::YLeaf short_ma_name_vpn_index; //type: uint32
         ydk::YLeaf short_ma_name_icc; //type: string
         ydk::YLeaf short_ma_name_umc; //type: string
 
@@ -514,7 +514,7 @@ class EthernetFeatures::EtherLinkOam::Profiles : public ydk::Entity
 
         class Profile; //type: EthernetFeatures::EtherLinkOam::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // EthernetFeatures::EtherLinkOam::Profiles
 
@@ -877,6 +877,15 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::
 
 }; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold
 
+class EgressFiltering : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf egress_filtering_type_strict;
+        static const ydk::Enum::YLeaf egress_filtering_type_disable;
+        static const ydk::Enum::YLeaf egress_filtering_type_default;
+
+};
+
 class L2ProtocolName : public ydk::Enum
 {
     public:
@@ -888,6 +897,14 @@ class L2ProtocolName : public ydk::Enum
 
 };
 
+class Filtering : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf filtering_type_dot1q;
+        static const ydk::Enum::YLeaf filtering_type_dot1ad;
+
+};
+
 class L2ProtocolMode : public ydk::Enum
 {
     public:
@@ -895,23 +912,6 @@ class L2ProtocolMode : public ydk::Enum
         static const ydk::Enum::YLeaf drop;
         static const ydk::Enum::YLeaf tunnel;
         static const ydk::Enum::YLeaf reverse_tunnel;
-
-};
-
-class EgressFiltering : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf egress_filtering_type_strict;
-        static const ydk::Enum::YLeaf egress_filtering_type_disable;
-        static const ydk::Enum::YLeaf egress_filtering_type_default;
-
-};
-
-class Filtering : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf filtering_type_dot1q;
-        static const ydk::Enum::YLeaf filtering_type_dot1ad;
 
 };
 

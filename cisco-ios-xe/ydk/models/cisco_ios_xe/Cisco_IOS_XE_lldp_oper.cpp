@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_lldp_oper {
 
 LldpEntries::LldpEntries()
+    :
+    lldp_entry(this, {"device_id", "local_interface", "connecting_interface"})
 {
 
-    yang_name = "lldp-entries"; yang_parent_name = "Cisco-IOS-XE-lldp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lldp-entries"; yang_parent_name = "Cisco-IOS-XE-lldp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 LldpEntries::~LldpEntries()
@@ -23,7 +25,8 @@ LldpEntries::~LldpEntries()
 
 bool LldpEntries::has_data() const
 {
-    for (std::size_t index=0; index<lldp_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_entry.len(); index++)
     {
         if(lldp_entry[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool LldpEntries::has_data() const
 
 bool LldpEntries::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_entry.len(); index++)
     {
         if(lldp_entry[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> LldpEntries::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<LldpEntries::LldpEntry>();
         c->parent = this;
-        lldp_entry.push_back(c);
+        lldp_entry.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> LldpEntries::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_entry)
+    for (auto c : lldp_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -132,12 +135,12 @@ LldpEntries::LldpEntry::LldpEntry()
     local_interface{YType::str, "local-interface"},
     connecting_interface{YType::str, "connecting-interface"},
     ttl{YType::uint32, "ttl"}
-    	,
+        ,
     capabilities(std::make_shared<LldpEntries::LldpEntry::Capabilities>())
 {
     capabilities->parent = this;
 
-    yang_name = "lldp-entry"; yang_parent_name = "lldp-entries"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldp-entry"; yang_parent_name = "lldp-entries"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LldpEntries::LldpEntry::~LldpEntry()
@@ -146,6 +149,7 @@ LldpEntries::LldpEntry::~LldpEntry()
 
 bool LldpEntries::LldpEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return device_id.is_set
 	|| local_interface.is_set
 	|| connecting_interface.is_set
@@ -173,7 +177,10 @@ std::string LldpEntries::LldpEntry::get_absolute_path() const
 std::string LldpEntries::LldpEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lldp-entry" <<"[device-id='" <<device_id <<"']" <<"[local-interface='" <<local_interface <<"']" <<"[connecting-interface='" <<connecting_interface <<"']";
+    path_buffer << "lldp-entry";
+    ADD_KEY_TOKEN(device_id, "device-id");
+    ADD_KEY_TOKEN(local_interface, "local-interface");
+    ADD_KEY_TOKEN(connecting_interface, "connecting-interface");
     return path_buffer.str();
 }
 
@@ -283,7 +290,7 @@ LldpEntries::LldpEntry::Capabilities::Capabilities()
     other{YType::empty, "other"}
 {
 
-    yang_name = "capabilities"; yang_parent_name = "lldp-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capabilities"; yang_parent_name = "lldp-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LldpEntries::LldpEntry::Capabilities::~Capabilities()
@@ -292,6 +299,7 @@ LldpEntries::LldpEntry::Capabilities::~Capabilities()
 
 bool LldpEntries::LldpEntry::Capabilities::has_data() const
 {
+    if (is_presence_container) return true;
     return repeater.is_set
 	|| bridge.is_set
 	|| access_point.is_set

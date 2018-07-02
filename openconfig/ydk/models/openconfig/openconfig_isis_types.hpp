@@ -19,15 +19,6 @@ class OVERLOADRESETTRIGGERTYPE : public virtual ydk::Identity
 
 }; // OVERLOADRESETTRIGGERTYPE
 
-class MTTYPE : public virtual ydk::Identity
-{
-    public:
-        MTTYPE();
-        ~MTTYPE();
-
-
-}; // MTTYPE
-
 class SAFITYPE : public virtual ydk::Identity
 {
     public:
@@ -37,14 +28,14 @@ class SAFITYPE : public virtual ydk::Identity
 
 }; // SAFITYPE
 
-class AFITYPE : public virtual ydk::Identity
+class MTTYPE : public virtual ydk::Identity
 {
     public:
-        AFITYPE();
-        ~AFITYPE();
+        MTTYPE();
+        ~MTTYPE();
 
 
-}; // AFITYPE
+}; // MTTYPE
 
 class AFISAFITYPE : public virtual ydk::Identity
 {
@@ -55,14 +46,14 @@ class AFISAFITYPE : public virtual ydk::Identity
 
 }; // AFISAFITYPE
 
-class WAITFORBGP : public openconfig::openconfig_isis_types::OVERLOADRESETTRIGGERTYPE, virtual ydk::Identity
+class AFITYPE : public virtual ydk::Identity
 {
     public:
-        WAITFORBGP();
-        ~WAITFORBGP();
+        AFITYPE();
+        ~AFITYPE();
 
 
-}; // WAITFORBGP
+}; // AFITYPE
 
 class WAITFORSYSTEM : public openconfig::openconfig_isis_types::OVERLOADRESETTRIGGERTYPE, virtual ydk::Identity
 {
@@ -72,33 +63,6 @@ class WAITFORSYSTEM : public openconfig::openconfig_isis_types::OVERLOADRESETTRI
 
 
 }; // WAITFORSYSTEM
-
-class IPV4UNICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
-{
-    public:
-        IPV4UNICAST();
-        ~IPV4UNICAST();
-
-
-}; // IPV4UNICAST
-
-class IPV6MULTICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
-{
-    public:
-        IPV6MULTICAST();
-        ~IPV6MULTICAST();
-
-
-}; // IPV6MULTICAST
-
-class IPV4MULTICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
-{
-    public:
-        IPV4MULTICAST();
-        ~IPV4MULTICAST();
-
-
-}; // IPV4MULTICAST
 
 class IPV6UNICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
 {
@@ -145,6 +109,52 @@ class IPV6 : public openconfig::openconfig_isis_types::AFITYPE, virtual ydk::Ide
 
 }; // IPV6
 
+class IPV4MULTICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
+{
+    public:
+        IPV4MULTICAST();
+        ~IPV4MULTICAST();
+
+
+}; // IPV4MULTICAST
+
+class WAITFORBGP : public openconfig::openconfig_isis_types::OVERLOADRESETTRIGGERTYPE, virtual ydk::Identity
+{
+    public:
+        WAITFORBGP();
+        ~WAITFORBGP();
+
+
+}; // WAITFORBGP
+
+class IPV6MULTICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
+{
+    public:
+        IPV6MULTICAST();
+        ~IPV6MULTICAST();
+
+
+}; // IPV6MULTICAST
+
+class IPV4UNICAST : public openconfig::openconfig_isis_types::AFISAFITYPE, virtual ydk::Identity
+{
+    public:
+        IPV4UNICAST();
+        ~IPV4UNICAST();
+
+
+}; // IPV4UNICAST
+
+class IsisInterfaceAdjState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf UP;
+        static const ydk::Enum::YLeaf DOWN;
+        static const ydk::Enum::YLeaf INIT;
+        static const ydk::Enum::YLeaf FAILED;
+
+};
+
 class LevelType : public ydk::Enum
 {
     public:
@@ -154,11 +164,11 @@ class LevelType : public ydk::Enum
 
 };
 
-class AdaptiveTimerType : public ydk::Enum
+class MetricType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf LINEAR;
-        static const ydk::Enum::YLeaf EXPONENTIAL;
+        static const ydk::Enum::YLeaf INTERNAL;
+        static const ydk::Enum::YLeaf EXTERNAL;
 
 };
 
@@ -172,6 +182,14 @@ class HelloPaddingType : public ydk::Enum
 
 };
 
+class AdaptiveTimerType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf LINEAR;
+        static const ydk::Enum::YLeaf EXPONENTIAL;
+
+};
+
 class CircuitType : public ydk::Enum
 {
     public:
@@ -180,29 +198,11 @@ class CircuitType : public ydk::Enum
 
 };
 
-class MetricType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf INTERNAL;
-        static const ydk::Enum::YLeaf EXTERNAL;
-
-};
-
 class MetricStyle : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf NARROW_METRIC;
         static const ydk::Enum::YLeaf WIDE_METRIC;
-
-};
-
-class IsisInterfaceAdjState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf UP;
-        static const ydk::Enum::YLeaf DOWN;
-        static const ydk::Enum::YLeaf INIT;
-        static const ydk::Enum::YLeaf FAILED;
 
 };
 

@@ -118,7 +118,7 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents : public ydk::Entity
 
         class StatisticsOnDemandCurrent; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent> > statistics_on_demand_current;
+        ydk::YList statistics_on_demand_current;
         
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents
 
@@ -155,7 +155,7 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions> specific_options;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule> operation_schedule;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric> > operation_metric;
+        ydk::YList operation_metric;
         
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent
 
@@ -278,7 +278,7 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
         class Bucket; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config> config;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket> > bucket;
+        ydk::YList bucket;
         
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric
 
@@ -411,7 +411,7 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         class Bins; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins> > bins;
+        ydk::YList bins;
         
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated
 
@@ -462,7 +462,7 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         class Sample; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample> > sample;
+        ydk::YList sample;
         
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated
 
@@ -516,7 +516,7 @@ class Sla::Protocols::Ethernet::Operations : public ydk::Entity
 
         class Operation; //type: Sla::Protocols::Ethernet::Operations::Operation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation> > operation_;
+        ydk::YList operation_;
         
 }; // Sla::Protocols::Ethernet::Operations
 
@@ -586,7 +586,7 @@ class Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions : public y
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding> packet_padding;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority> priority;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule> operation_schedule;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric> > operation_metric;
+        ydk::YList operation_metric;
         
 }; // Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions
 
@@ -806,7 +806,7 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals : public ydk::Entity
 
         class StatisticsHistorical; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical> > statistics_historical;
+        ydk::YList statistics_historical;
         
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals
 
@@ -843,7 +843,7 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical : pu
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions> specific_options;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule> operation_schedule;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric> > operation_metric;
+        ydk::YList operation_metric;
         
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical
 
@@ -966,7 +966,7 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
         class Bucket; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config> config;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket> > bucket;
+        ydk::YList bucket;
         
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric
 
@@ -1099,7 +1099,7 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
 
         class Bins; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins> > bins;
+        ydk::YList bins;
         
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated
 
@@ -1150,7 +1150,7 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
 
         class Sample; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample> > sample;
+        ydk::YList sample;
         
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated
 
@@ -1204,7 +1204,7 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals : public ydk::Enti
 
         class StatisticsOnDemandHistorical; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical> > statistics_on_demand_historical;
+        ydk::YList statistics_on_demand_historical;
         
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals
 
@@ -1241,7 +1241,7 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions> specific_options;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule> operation_schedule;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric> > operation_metric;
+        ydk::YList operation_metric;
         
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical
 
@@ -1364,7 +1364,7 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
         class Bucket; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config> config;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket> > bucket;
+        ydk::YList bucket;
         
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric
 
@@ -1497,7 +1497,7 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         class Bins; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins> > bins;
+        ydk::YList bins;
         
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated
 
@@ -1548,7 +1548,7 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         class Sample; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample> > sample;
+        ydk::YList sample;
         
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated
 
@@ -1602,7 +1602,7 @@ class Sla::Protocols::Ethernet::ConfigErrors : public ydk::Entity
 
         class ConfigError; //type: Sla::Protocols::Ethernet::ConfigErrors::ConfigError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::ConfigErrors::ConfigError> > config_error;
+        ydk::YList config_error;
         
 }; // Sla::Protocols::Ethernet::ConfigErrors
 
@@ -1671,7 +1671,7 @@ class Sla::Protocols::Ethernet::OnDemandOperations : public ydk::Entity
 
         class OnDemandOperation; //type: Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation> > on_demand_operation;
+        ydk::YList on_demand_operation;
         
 }; // Sla::Protocols::Ethernet::OnDemandOperations
 
@@ -1741,7 +1741,7 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOp
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding> packet_padding;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority> priority;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule> operation_schedule;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric> > operation_metric;
+        ydk::YList operation_metric;
         
 }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions
 
@@ -1961,7 +1961,7 @@ class Sla::Protocols::Ethernet::StatisticsCurrents : public ydk::Entity
 
         class StatisticsCurrent; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent> > statistics_current;
+        ydk::YList statistics_current;
         
 }; // Sla::Protocols::Ethernet::StatisticsCurrents
 
@@ -1998,7 +1998,7 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent : public y
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions> specific_options;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule> operation_schedule;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric> > operation_metric;
+        ydk::YList operation_metric;
         
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
@@ -2121,7 +2121,7 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
         class Bucket; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config> config;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket> > bucket;
+        ydk::YList bucket;
         
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
 
@@ -2254,7 +2254,7 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
 
         class Bins; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins> > bins;
+        ydk::YList bins;
         
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated
 
@@ -2305,7 +2305,7 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
 
         class Sample; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample> > sample;
+        ydk::YList sample;
         
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated
 

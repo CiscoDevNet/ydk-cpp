@@ -13,11 +13,11 @@ namespace CISCO_SYSLOG_MIB {
 
 CISCOSYSLOGMIB::CISCOSYSLOGMIB()
     :
-    clogbasic(std::make_shared<CISCOSYSLOGMIB::Clogbasic>())
-	,cloghistory(std::make_shared<CISCOSYSLOGMIB::Cloghistory>())
-	,clogserver(std::make_shared<CISCOSYSLOGMIB::Clogserver>())
-	,cloghistorytable(std::make_shared<CISCOSYSLOGMIB::Cloghistorytable>())
-	,clogserverconfigtable(std::make_shared<CISCOSYSLOGMIB::Clogserverconfigtable>())
+    clogbasic(std::make_shared<CISCOSYSLOGMIB::ClogBasic>())
+    , cloghistory(std::make_shared<CISCOSYSLOGMIB::ClogHistory>())
+    , clogserver(std::make_shared<CISCOSYSLOGMIB::ClogServer>())
+    , cloghistorytable(std::make_shared<CISCOSYSLOGMIB::ClogHistoryTable>())
+    , clogserverconfigtable(std::make_shared<CISCOSYSLOGMIB::ClogServerConfigTable>())
 {
     clogbasic->parent = this;
     cloghistory->parent = this;
@@ -25,7 +25,7 @@ CISCOSYSLOGMIB::CISCOSYSLOGMIB()
     cloghistorytable->parent = this;
     clogserverconfigtable->parent = this;
 
-    yang_name = "CISCO-SYSLOG-MIB"; yang_parent_name = "CISCO-SYSLOG-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-SYSLOG-MIB"; yang_parent_name = "CISCO-SYSLOG-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOSYSLOGMIB::~CISCOSYSLOGMIB()
@@ -34,6 +34,7 @@ CISCOSYSLOGMIB::~CISCOSYSLOGMIB()
 
 bool CISCOSYSLOGMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (clogbasic !=  nullptr && clogbasic->has_data())
 	|| (cloghistory !=  nullptr && cloghistory->has_data())
 	|| (clogserver !=  nullptr && clogserver->has_data())
@@ -73,7 +74,7 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::get_child_by_name(const std::string & ch
     {
         if(clogbasic == nullptr)
         {
-            clogbasic = std::make_shared<CISCOSYSLOGMIB::Clogbasic>();
+            clogbasic = std::make_shared<CISCOSYSLOGMIB::ClogBasic>();
         }
         return clogbasic;
     }
@@ -82,7 +83,7 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::get_child_by_name(const std::string & ch
     {
         if(cloghistory == nullptr)
         {
-            cloghistory = std::make_shared<CISCOSYSLOGMIB::Cloghistory>();
+            cloghistory = std::make_shared<CISCOSYSLOGMIB::ClogHistory>();
         }
         return cloghistory;
     }
@@ -91,7 +92,7 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::get_child_by_name(const std::string & ch
     {
         if(clogserver == nullptr)
         {
-            clogserver = std::make_shared<CISCOSYSLOGMIB::Clogserver>();
+            clogserver = std::make_shared<CISCOSYSLOGMIB::ClogServer>();
         }
         return clogserver;
     }
@@ -100,7 +101,7 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::get_child_by_name(const std::string & ch
     {
         if(cloghistorytable == nullptr)
         {
-            cloghistorytable = std::make_shared<CISCOSYSLOGMIB::Cloghistorytable>();
+            cloghistorytable = std::make_shared<CISCOSYSLOGMIB::ClogHistoryTable>();
         }
         return cloghistorytable;
     }
@@ -109,7 +110,7 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::get_child_by_name(const std::string & ch
     {
         if(clogserverconfigtable == nullptr)
         {
-            clogserverconfigtable = std::make_shared<CISCOSYSLOGMIB::Clogserverconfigtable>();
+            clogserverconfigtable = std::make_shared<CISCOSYSLOGMIB::ClogServerConfigTable>();
         }
         return clogserverconfigtable;
     }
@@ -189,7 +190,7 @@ bool CISCOSYSLOGMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOSYSLOGMIB::Clogbasic::Clogbasic()
+CISCOSYSLOGMIB::ClogBasic::ClogBasic()
     :
     clognotificationssent{YType::uint32, "clogNotificationsSent"},
     clognotificationsenabled{YType::boolean, "clogNotificationsEnabled"},
@@ -200,15 +201,16 @@ CISCOSYSLOGMIB::Clogbasic::Clogbasic()
     clogoriginid{YType::str, "clogOriginID"}
 {
 
-    yang_name = "clogBasic"; yang_parent_name = "CISCO-SYSLOG-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clogBasic"; yang_parent_name = "CISCO-SYSLOG-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSYSLOGMIB::Clogbasic::~Clogbasic()
+CISCOSYSLOGMIB::ClogBasic::~ClogBasic()
 {
 }
 
-bool CISCOSYSLOGMIB::Clogbasic::has_data() const
+bool CISCOSYSLOGMIB::ClogBasic::has_data() const
 {
+    if (is_presence_container) return true;
     return clognotificationssent.is_set
 	|| clognotificationsenabled.is_set
 	|| clogmaxseverity.is_set
@@ -218,7 +220,7 @@ bool CISCOSYSLOGMIB::Clogbasic::has_data() const
 	|| clogoriginid.is_set;
 }
 
-bool CISCOSYSLOGMIB::Clogbasic::has_operation() const
+bool CISCOSYSLOGMIB::ClogBasic::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clognotificationssent.yfilter)
@@ -230,21 +232,21 @@ bool CISCOSYSLOGMIB::Clogbasic::has_operation() const
 	|| ydk::is_set(clogoriginid.yfilter);
 }
 
-std::string CISCOSYSLOGMIB::Clogbasic::get_absolute_path() const
+std::string CISCOSYSLOGMIB::ClogBasic::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SYSLOG-MIB:CISCO-SYSLOG-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSYSLOGMIB::Clogbasic::get_segment_path() const
+std::string CISCOSYSLOGMIB::ClogBasic::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clogBasic";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Clogbasic::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::ClogBasic::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -260,19 +262,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Clogbasic::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOSYSLOGMIB::Clogbasic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSYSLOGMIB::ClogBasic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Clogbasic::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::ClogBasic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSYSLOGMIB::Clogbasic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSYSLOGMIB::ClogBasic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clogNotificationsSent")
     {
@@ -318,7 +320,7 @@ void CISCOSYSLOGMIB::Clogbasic::set_value(const std::string & value_path, const 
     }
 }
 
-void CISCOSYSLOGMIB::Clogbasic::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSYSLOGMIB::ClogBasic::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clogNotificationsSent")
     {
@@ -350,54 +352,55 @@ void CISCOSYSLOGMIB::Clogbasic::set_filter(const std::string & value_path, YFilt
     }
 }
 
-bool CISCOSYSLOGMIB::Clogbasic::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSYSLOGMIB::ClogBasic::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clogNotificationsSent" || name == "clogNotificationsEnabled" || name == "clogMaxSeverity" || name == "clogMsgIgnores" || name == "clogMsgDrops" || name == "clogOriginIDType" || name == "clogOriginID")
         return true;
     return false;
 }
 
-CISCOSYSLOGMIB::Cloghistory::Cloghistory()
+CISCOSYSLOGMIB::ClogHistory::ClogHistory()
     :
     cloghisttablemaxlength{YType::int32, "clogHistTableMaxLength"},
     cloghistmsgsflushed{YType::uint32, "clogHistMsgsFlushed"}
 {
 
-    yang_name = "clogHistory"; yang_parent_name = "CISCO-SYSLOG-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clogHistory"; yang_parent_name = "CISCO-SYSLOG-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSYSLOGMIB::Cloghistory::~Cloghistory()
+CISCOSYSLOGMIB::ClogHistory::~ClogHistory()
 {
 }
 
-bool CISCOSYSLOGMIB::Cloghistory::has_data() const
+bool CISCOSYSLOGMIB::ClogHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return cloghisttablemaxlength.is_set
 	|| cloghistmsgsflushed.is_set;
 }
 
-bool CISCOSYSLOGMIB::Cloghistory::has_operation() const
+bool CISCOSYSLOGMIB::ClogHistory::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cloghisttablemaxlength.yfilter)
 	|| ydk::is_set(cloghistmsgsflushed.yfilter);
 }
 
-std::string CISCOSYSLOGMIB::Cloghistory::get_absolute_path() const
+std::string CISCOSYSLOGMIB::ClogHistory::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SYSLOG-MIB:CISCO-SYSLOG-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSYSLOGMIB::Cloghistory::get_segment_path() const
+std::string CISCOSYSLOGMIB::ClogHistory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clogHistory";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Cloghistory::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::ClogHistory::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -408,19 +411,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Cloghistory::get_
 
 }
 
-std::shared_ptr<Entity> CISCOSYSLOGMIB::Cloghistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSYSLOGMIB::ClogHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Cloghistory::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::ClogHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSYSLOGMIB::Cloghistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSYSLOGMIB::ClogHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clogHistTableMaxLength")
     {
@@ -436,7 +439,7 @@ void CISCOSYSLOGMIB::Cloghistory::set_value(const std::string & value_path, cons
     }
 }
 
-void CISCOSYSLOGMIB::Cloghistory::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSYSLOGMIB::ClogHistory::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clogHistTableMaxLength")
     {
@@ -448,51 +451,52 @@ void CISCOSYSLOGMIB::Cloghistory::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool CISCOSYSLOGMIB::Cloghistory::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSYSLOGMIB::ClogHistory::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clogHistTableMaxLength" || name == "clogHistMsgsFlushed")
         return true;
     return false;
 }
 
-CISCOSYSLOGMIB::Clogserver::Clogserver()
+CISCOSYSLOGMIB::ClogServer::ClogServer()
     :
     clogmaxservers{YType::uint32, "clogMaxServers"}
 {
 
-    yang_name = "clogServer"; yang_parent_name = "CISCO-SYSLOG-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clogServer"; yang_parent_name = "CISCO-SYSLOG-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSYSLOGMIB::Clogserver::~Clogserver()
+CISCOSYSLOGMIB::ClogServer::~ClogServer()
 {
 }
 
-bool CISCOSYSLOGMIB::Clogserver::has_data() const
+bool CISCOSYSLOGMIB::ClogServer::has_data() const
 {
+    if (is_presence_container) return true;
     return clogmaxservers.is_set;
 }
 
-bool CISCOSYSLOGMIB::Clogserver::has_operation() const
+bool CISCOSYSLOGMIB::ClogServer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clogmaxservers.yfilter);
 }
 
-std::string CISCOSYSLOGMIB::Clogserver::get_absolute_path() const
+std::string CISCOSYSLOGMIB::ClogServer::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SYSLOG-MIB:CISCO-SYSLOG-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSYSLOGMIB::Clogserver::get_segment_path() const
+std::string CISCOSYSLOGMIB::ClogServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clogServer";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Clogserver::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::ClogServer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -502,19 +506,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Clogserver::get_n
 
 }
 
-std::shared_ptr<Entity> CISCOSYSLOGMIB::Clogserver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSYSLOGMIB::ClogServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Clogserver::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::ClogServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSYSLOGMIB::Clogserver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSYSLOGMIB::ClogServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clogMaxServers")
     {
@@ -524,7 +528,7 @@ void CISCOSYSLOGMIB::Clogserver::set_value(const std::string & value_path, const
     }
 }
 
-void CISCOSYSLOGMIB::Clogserver::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSYSLOGMIB::ClogServer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clogMaxServers")
     {
@@ -532,26 +536,29 @@ void CISCOSYSLOGMIB::Clogserver::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool CISCOSYSLOGMIB::Clogserver::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSYSLOGMIB::ClogServer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clogMaxServers")
         return true;
     return false;
 }
 
-CISCOSYSLOGMIB::Cloghistorytable::Cloghistorytable()
+CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryTable()
+    :
+    cloghistoryentry(this, {"cloghistindex"})
 {
 
-    yang_name = "clogHistoryTable"; yang_parent_name = "CISCO-SYSLOG-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clogHistoryTable"; yang_parent_name = "CISCO-SYSLOG-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSYSLOGMIB::Cloghistorytable::~Cloghistorytable()
+CISCOSYSLOGMIB::ClogHistoryTable::~ClogHistoryTable()
 {
 }
 
-bool CISCOSYSLOGMIB::Cloghistorytable::has_data() const
+bool CISCOSYSLOGMIB::ClogHistoryTable::has_data() const
 {
-    for (std::size_t index=0; index<cloghistoryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cloghistoryentry.len(); index++)
     {
         if(cloghistoryentry[index]->has_data())
             return true;
@@ -559,9 +566,9 @@ bool CISCOSYSLOGMIB::Cloghistorytable::has_data() const
     return false;
 }
 
-bool CISCOSYSLOGMIB::Cloghistorytable::has_operation() const
+bool CISCOSYSLOGMIB::ClogHistoryTable::has_operation() const
 {
-    for (std::size_t index=0; index<cloghistoryentry.size(); index++)
+    for (std::size_t index=0; index<cloghistoryentry.len(); index++)
     {
         if(cloghistoryentry[index]->has_operation())
             return true;
@@ -569,21 +576,21 @@ bool CISCOSYSLOGMIB::Cloghistorytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSYSLOGMIB::Cloghistorytable::get_absolute_path() const
+std::string CISCOSYSLOGMIB::ClogHistoryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SYSLOG-MIB:CISCO-SYSLOG-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSYSLOGMIB::Cloghistorytable::get_segment_path() const
+std::string CISCOSYSLOGMIB::ClogHistoryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clogHistoryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Cloghistorytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::ClogHistoryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -592,25 +599,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Cloghistorytable:
 
 }
 
-std::shared_ptr<Entity> CISCOSYSLOGMIB::Cloghistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSYSLOGMIB::ClogHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clogHistoryEntry")
     {
-        auto c = std::make_shared<CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry>();
+        auto c = std::make_shared<CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry>();
         c->parent = this;
-        cloghistoryentry.push_back(c);
+        cloghistoryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Cloghistorytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::ClogHistoryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cloghistoryentry)
+    for (auto c : cloghistoryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -621,22 +628,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Cloghistorytable:
     return children;
 }
 
-void CISCOSYSLOGMIB::Cloghistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSYSLOGMIB::ClogHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSYSLOGMIB::Cloghistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSYSLOGMIB::ClogHistoryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSYSLOGMIB::Cloghistorytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSYSLOGMIB::ClogHistoryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clogHistoryEntry")
         return true;
     return false;
 }
 
-CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::Cloghistoryentry()
+CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry::ClogHistoryEntry()
     :
     cloghistindex{YType::int32, "clogHistIndex"},
     cloghistfacility{YType::str, "clogHistFacility"},
@@ -646,15 +653,16 @@ CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::Cloghistoryentry()
     cloghisttimestamp{YType::uint32, "clogHistTimestamp"}
 {
 
-    yang_name = "clogHistoryEntry"; yang_parent_name = "clogHistoryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clogHistoryEntry"; yang_parent_name = "clogHistoryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::~Cloghistoryentry()
+CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry::~ClogHistoryEntry()
 {
 }
 
-bool CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::has_data() const
+bool CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cloghistindex.is_set
 	|| cloghistfacility.is_set
 	|| cloghistseverity.is_set
@@ -663,7 +671,7 @@ bool CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::has_data() const
 	|| cloghisttimestamp.is_set;
 }
 
-bool CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::has_operation() const
+bool CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cloghistindex.yfilter)
@@ -674,21 +682,22 @@ bool CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::has_operation() const
 	|| ydk::is_set(cloghisttimestamp.yfilter);
 }
 
-std::string CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::get_absolute_path() const
+std::string CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SYSLOG-MIB:CISCO-SYSLOG-MIB/clogHistoryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::get_segment_path() const
+std::string CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clogHistoryEntry" <<"[clogHistIndex='" <<cloghistindex <<"']";
+    path_buffer << "clogHistoryEntry";
+    ADD_KEY_TOKEN(cloghistindex, "clogHistIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -703,19 +712,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Cloghistorytable:
 
 }
 
-std::shared_ptr<Entity> CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clogHistIndex")
     {
@@ -755,7 +764,7 @@ void CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::set_value(const std::st
     }
 }
 
-void CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clogHistIndex")
     {
@@ -783,26 +792,29 @@ void CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::set_filter(const std::s
     }
 }
 
-bool CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clogHistIndex" || name == "clogHistFacility" || name == "clogHistSeverity" || name == "clogHistMsgName" || name == "clogHistMsgText" || name == "clogHistTimestamp")
         return true;
     return false;
 }
 
-CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigtable()
+CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigTable()
+    :
+    clogserverconfigentry(this, {"clogserveraddrtype", "clogserveraddr"})
 {
 
-    yang_name = "clogServerConfigTable"; yang_parent_name = "CISCO-SYSLOG-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clogServerConfigTable"; yang_parent_name = "CISCO-SYSLOG-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSYSLOGMIB::Clogserverconfigtable::~Clogserverconfigtable()
+CISCOSYSLOGMIB::ClogServerConfigTable::~ClogServerConfigTable()
 {
 }
 
-bool CISCOSYSLOGMIB::Clogserverconfigtable::has_data() const
+bool CISCOSYSLOGMIB::ClogServerConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<clogserverconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clogserverconfigentry.len(); index++)
     {
         if(clogserverconfigentry[index]->has_data())
             return true;
@@ -810,9 +822,9 @@ bool CISCOSYSLOGMIB::Clogserverconfigtable::has_data() const
     return false;
 }
 
-bool CISCOSYSLOGMIB::Clogserverconfigtable::has_operation() const
+bool CISCOSYSLOGMIB::ClogServerConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<clogserverconfigentry.size(); index++)
+    for (std::size_t index=0; index<clogserverconfigentry.len(); index++)
     {
         if(clogserverconfigentry[index]->has_operation())
             return true;
@@ -820,21 +832,21 @@ bool CISCOSYSLOGMIB::Clogserverconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSYSLOGMIB::Clogserverconfigtable::get_absolute_path() const
+std::string CISCOSYSLOGMIB::ClogServerConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SYSLOG-MIB:CISCO-SYSLOG-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSYSLOGMIB::Clogserverconfigtable::get_segment_path() const
+std::string CISCOSYSLOGMIB::ClogServerConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clogServerConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Clogserverconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::ClogServerConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -843,25 +855,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Clogserverconfigt
 
 }
 
-std::shared_ptr<Entity> CISCOSYSLOGMIB::Clogserverconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSYSLOGMIB::ClogServerConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clogServerConfigEntry")
     {
-        auto c = std::make_shared<CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry>();
+        auto c = std::make_shared<CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry>();
         c->parent = this;
-        clogserverconfigentry.push_back(c);
+        clogserverconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Clogserverconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::ClogServerConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clogserverconfigentry)
+    for (auto c : clogserverconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -872,43 +884,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Clogserverconfigt
     return children;
 }
 
-void CISCOSYSLOGMIB::Clogserverconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSYSLOGMIB::ClogServerConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSYSLOGMIB::Clogserverconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSYSLOGMIB::ClogServerConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSYSLOGMIB::Clogserverconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSYSLOGMIB::ClogServerConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clogServerConfigEntry")
         return true;
     return false;
 }
 
-CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::Clogserverconfigentry()
+CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry::ClogServerConfigEntry()
     :
     clogserveraddrtype{YType::enumeration, "clogServerAddrType"},
     clogserveraddr{YType::str, "clogServerAddr"},
     clogserverstatus{YType::enumeration, "clogServerStatus"}
 {
 
-    yang_name = "clogServerConfigEntry"; yang_parent_name = "clogServerConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clogServerConfigEntry"; yang_parent_name = "clogServerConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::~Clogserverconfigentry()
+CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry::~ClogServerConfigEntry()
 {
 }
 
-bool CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::has_data() const
+bool CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return clogserveraddrtype.is_set
 	|| clogserveraddr.is_set
 	|| clogserverstatus.is_set;
 }
 
-bool CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::has_operation() const
+bool CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clogserveraddrtype.yfilter)
@@ -916,21 +929,23 @@ bool CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::has_operation
 	|| ydk::is_set(clogserverstatus.yfilter);
 }
 
-std::string CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::get_absolute_path() const
+std::string CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SYSLOG-MIB:CISCO-SYSLOG-MIB/clogServerConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::get_segment_path() const
+std::string CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clogServerConfigEntry" <<"[clogServerAddrType='" <<clogserveraddrtype <<"']" <<"[clogServerAddr='" <<clogserveraddr <<"']";
+    path_buffer << "clogServerConfigEntry";
+    ADD_KEY_TOKEN(clogserveraddrtype, "clogServerAddrType");
+    ADD_KEY_TOKEN(clogserveraddr, "clogServerAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -942,19 +957,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSYSLOGMIB::Clogserverconfigt
 
 }
 
-std::shared_ptr<Entity> CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clogServerAddrType")
     {
@@ -976,7 +991,7 @@ void CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::set_value(con
     }
 }
 
-void CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clogServerAddrType")
     {
@@ -992,7 +1007,7 @@ void CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::set_filter(co
     }
 }
 
-bool CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clogServerAddrType" || name == "clogServerAddr" || name == "clogServerStatus")
         return true;
@@ -1008,12 +1023,12 @@ const Enum::YLeaf SyslogSeverity::notice {6, "notice"};
 const Enum::YLeaf SyslogSeverity::info {7, "info"};
 const Enum::YLeaf SyslogSeverity::debug {8, "debug"};
 
-const Enum::YLeaf CISCOSYSLOGMIB::Clogbasic::Clogoriginidtype::none {1, "none"};
-const Enum::YLeaf CISCOSYSLOGMIB::Clogbasic::Clogoriginidtype::other {2, "other"};
-const Enum::YLeaf CISCOSYSLOGMIB::Clogbasic::Clogoriginidtype::hostName {3, "hostName"};
-const Enum::YLeaf CISCOSYSLOGMIB::Clogbasic::Clogoriginidtype::ipv4Address {4, "ipv4Address"};
-const Enum::YLeaf CISCOSYSLOGMIB::Clogbasic::Clogoriginidtype::contextName {5, "contextName"};
-const Enum::YLeaf CISCOSYSLOGMIB::Clogbasic::Clogoriginidtype::userDefined {6, "userDefined"};
+const Enum::YLeaf CISCOSYSLOGMIB::ClogBasic::ClogOriginIDType::none {1, "none"};
+const Enum::YLeaf CISCOSYSLOGMIB::ClogBasic::ClogOriginIDType::other {2, "other"};
+const Enum::YLeaf CISCOSYSLOGMIB::ClogBasic::ClogOriginIDType::hostName {3, "hostName"};
+const Enum::YLeaf CISCOSYSLOGMIB::ClogBasic::ClogOriginIDType::ipv4Address {4, "ipv4Address"};
+const Enum::YLeaf CISCOSYSLOGMIB::ClogBasic::ClogOriginIDType::contextName {5, "contextName"};
+const Enum::YLeaf CISCOSYSLOGMIB::ClogBasic::ClogOriginIDType::userDefined {6, "userDefined"};
 
 
 }

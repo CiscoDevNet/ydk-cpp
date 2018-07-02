@@ -13,15 +13,15 @@ namespace CISCO_AAA_SESSION_MIB {
 
 CISCOAAASESSIONMIB::CISCOAAASESSIONMIB()
     :
-    casnactive(std::make_shared<CISCOAAASESSIONMIB::Casnactive>())
-	,casngeneral(std::make_shared<CISCOAAASESSIONMIB::Casngeneral>())
-	,casnactivetable(std::make_shared<CISCOAAASESSIONMIB::Casnactivetable>())
+    casnactive(std::make_shared<CISCOAAASESSIONMIB::CasnActive>())
+    , casngeneral(std::make_shared<CISCOAAASESSIONMIB::CasnGeneral>())
+    , casnactivetable(std::make_shared<CISCOAAASESSIONMIB::CasnActiveTable>())
 {
     casnactive->parent = this;
     casngeneral->parent = this;
     casnactivetable->parent = this;
 
-    yang_name = "CISCO-AAA-SESSION-MIB"; yang_parent_name = "CISCO-AAA-SESSION-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-AAA-SESSION-MIB"; yang_parent_name = "CISCO-AAA-SESSION-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOAAASESSIONMIB::~CISCOAAASESSIONMIB()
@@ -30,6 +30,7 @@ CISCOAAASESSIONMIB::~CISCOAAASESSIONMIB()
 
 bool CISCOAAASESSIONMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (casnactive !=  nullptr && casnactive->has_data())
 	|| (casngeneral !=  nullptr && casngeneral->has_data())
 	|| (casnactivetable !=  nullptr && casnactivetable->has_data());
@@ -65,7 +66,7 @@ std::shared_ptr<Entity> CISCOAAASESSIONMIB::get_child_by_name(const std::string 
     {
         if(casnactive == nullptr)
         {
-            casnactive = std::make_shared<CISCOAAASESSIONMIB::Casnactive>();
+            casnactive = std::make_shared<CISCOAAASESSIONMIB::CasnActive>();
         }
         return casnactive;
     }
@@ -74,7 +75,7 @@ std::shared_ptr<Entity> CISCOAAASESSIONMIB::get_child_by_name(const std::string 
     {
         if(casngeneral == nullptr)
         {
-            casngeneral = std::make_shared<CISCOAAASESSIONMIB::Casngeneral>();
+            casngeneral = std::make_shared<CISCOAAASESSIONMIB::CasnGeneral>();
         }
         return casngeneral;
     }
@@ -83,7 +84,7 @@ std::shared_ptr<Entity> CISCOAAASESSIONMIB::get_child_by_name(const std::string 
     {
         if(casnactivetable == nullptr)
         {
-            casnactivetable = std::make_shared<CISCOAAASESSIONMIB::Casnactivetable>();
+            casnactivetable = std::make_shared<CISCOAAASESSIONMIB::CasnActiveTable>();
         }
         return casnactivetable;
     }
@@ -153,47 +154,48 @@ bool CISCOAAASESSIONMIB::has_leaf_or_child_of_name(const std::string & name) con
     return false;
 }
 
-CISCOAAASESSIONMIB::Casnactive::Casnactive()
+CISCOAAASESSIONMIB::CasnActive::CasnActive()
     :
     casnactivetableentries{YType::uint32, "casnActiveTableEntries"},
     casnactivetablehighwatermark{YType::uint32, "casnActiveTableHighWaterMark"}
 {
 
-    yang_name = "casnActive"; yang_parent_name = "CISCO-AAA-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "casnActive"; yang_parent_name = "CISCO-AAA-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOAAASESSIONMIB::Casnactive::~Casnactive()
+CISCOAAASESSIONMIB::CasnActive::~CasnActive()
 {
 }
 
-bool CISCOAAASESSIONMIB::Casnactive::has_data() const
+bool CISCOAAASESSIONMIB::CasnActive::has_data() const
 {
+    if (is_presence_container) return true;
     return casnactivetableentries.is_set
 	|| casnactivetablehighwatermark.is_set;
 }
 
-bool CISCOAAASESSIONMIB::Casnactive::has_operation() const
+bool CISCOAAASESSIONMIB::CasnActive::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(casnactivetableentries.yfilter)
 	|| ydk::is_set(casnactivetablehighwatermark.yfilter);
 }
 
-std::string CISCOAAASESSIONMIB::Casnactive::get_absolute_path() const
+std::string CISCOAAASESSIONMIB::CasnActive::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-AAA-SESSION-MIB:CISCO-AAA-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOAAASESSIONMIB::Casnactive::get_segment_path() const
+std::string CISCOAAASESSIONMIB::CasnActive::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "casnActive";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::Casnactive::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::CasnActive::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -204,19 +206,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::Casnactive::g
 
 }
 
-std::shared_ptr<Entity> CISCOAAASESSIONMIB::Casnactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOAAASESSIONMIB::CasnActive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOAAASESSIONMIB::Casnactive::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOAAASESSIONMIB::CasnActive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOAAASESSIONMIB::Casnactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOAAASESSIONMIB::CasnActive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "casnActiveTableEntries")
     {
@@ -232,7 +234,7 @@ void CISCOAAASESSIONMIB::Casnactive::set_value(const std::string & value_path, c
     }
 }
 
-void CISCOAAASESSIONMIB::Casnactive::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOAAASESSIONMIB::CasnActive::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "casnActiveTableEntries")
     {
@@ -244,54 +246,55 @@ void CISCOAAASESSIONMIB::Casnactive::set_filter(const std::string & value_path, 
     }
 }
 
-bool CISCOAAASESSIONMIB::Casnactive::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOAAASESSIONMIB::CasnActive::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "casnActiveTableEntries" || name == "casnActiveTableHighWaterMark")
         return true;
     return false;
 }
 
-CISCOAAASESSIONMIB::Casngeneral::Casngeneral()
+CISCOAAASESSIONMIB::CasnGeneral::CasnGeneral()
     :
     casntotalsessions{YType::uint32, "casnTotalSessions"},
     casndisconnectedsessions{YType::uint32, "casnDisconnectedSessions"}
 {
 
-    yang_name = "casnGeneral"; yang_parent_name = "CISCO-AAA-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "casnGeneral"; yang_parent_name = "CISCO-AAA-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOAAASESSIONMIB::Casngeneral::~Casngeneral()
+CISCOAAASESSIONMIB::CasnGeneral::~CasnGeneral()
 {
 }
 
-bool CISCOAAASESSIONMIB::Casngeneral::has_data() const
+bool CISCOAAASESSIONMIB::CasnGeneral::has_data() const
 {
+    if (is_presence_container) return true;
     return casntotalsessions.is_set
 	|| casndisconnectedsessions.is_set;
 }
 
-bool CISCOAAASESSIONMIB::Casngeneral::has_operation() const
+bool CISCOAAASESSIONMIB::CasnGeneral::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(casntotalsessions.yfilter)
 	|| ydk::is_set(casndisconnectedsessions.yfilter);
 }
 
-std::string CISCOAAASESSIONMIB::Casngeneral::get_absolute_path() const
+std::string CISCOAAASESSIONMIB::CasnGeneral::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-AAA-SESSION-MIB:CISCO-AAA-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOAAASESSIONMIB::Casngeneral::get_segment_path() const
+std::string CISCOAAASESSIONMIB::CasnGeneral::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "casnGeneral";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::Casngeneral::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::CasnGeneral::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -302,19 +305,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::Casngeneral::
 
 }
 
-std::shared_ptr<Entity> CISCOAAASESSIONMIB::Casngeneral::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOAAASESSIONMIB::CasnGeneral::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOAAASESSIONMIB::Casngeneral::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOAAASESSIONMIB::CasnGeneral::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOAAASESSIONMIB::Casngeneral::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOAAASESSIONMIB::CasnGeneral::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "casnTotalSessions")
     {
@@ -330,7 +333,7 @@ void CISCOAAASESSIONMIB::Casngeneral::set_value(const std::string & value_path, 
     }
 }
 
-void CISCOAAASESSIONMIB::Casngeneral::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOAAASESSIONMIB::CasnGeneral::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "casnTotalSessions")
     {
@@ -342,26 +345,29 @@ void CISCOAAASESSIONMIB::Casngeneral::set_filter(const std::string & value_path,
     }
 }
 
-bool CISCOAAASESSIONMIB::Casngeneral::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOAAASESSIONMIB::CasnGeneral::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "casnTotalSessions" || name == "casnDisconnectedSessions")
         return true;
     return false;
 }
 
-CISCOAAASESSIONMIB::Casnactivetable::Casnactivetable()
+CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveTable()
+    :
+    casnactiveentry(this, {"casnsessionid"})
 {
 
-    yang_name = "casnActiveTable"; yang_parent_name = "CISCO-AAA-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "casnActiveTable"; yang_parent_name = "CISCO-AAA-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOAAASESSIONMIB::Casnactivetable::~Casnactivetable()
+CISCOAAASESSIONMIB::CasnActiveTable::~CasnActiveTable()
 {
 }
 
-bool CISCOAAASESSIONMIB::Casnactivetable::has_data() const
+bool CISCOAAASESSIONMIB::CasnActiveTable::has_data() const
 {
-    for (std::size_t index=0; index<casnactiveentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<casnactiveentry.len(); index++)
     {
         if(casnactiveentry[index]->has_data())
             return true;
@@ -369,9 +375,9 @@ bool CISCOAAASESSIONMIB::Casnactivetable::has_data() const
     return false;
 }
 
-bool CISCOAAASESSIONMIB::Casnactivetable::has_operation() const
+bool CISCOAAASESSIONMIB::CasnActiveTable::has_operation() const
 {
-    for (std::size_t index=0; index<casnactiveentry.size(); index++)
+    for (std::size_t index=0; index<casnactiveentry.len(); index++)
     {
         if(casnactiveentry[index]->has_operation())
             return true;
@@ -379,21 +385,21 @@ bool CISCOAAASESSIONMIB::Casnactivetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOAAASESSIONMIB::Casnactivetable::get_absolute_path() const
+std::string CISCOAAASESSIONMIB::CasnActiveTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-AAA-SESSION-MIB:CISCO-AAA-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOAAASESSIONMIB::Casnactivetable::get_segment_path() const
+std::string CISCOAAASESSIONMIB::CasnActiveTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "casnActiveTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::Casnactivetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::CasnActiveTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -402,25 +408,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::Casnactivetab
 
 }
 
-std::shared_ptr<Entity> CISCOAAASESSIONMIB::Casnactivetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOAAASESSIONMIB::CasnActiveTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "casnActiveEntry")
     {
-        auto c = std::make_shared<CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry>();
+        auto c = std::make_shared<CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry>();
         c->parent = this;
-        casnactiveentry.push_back(c);
+        casnactiveentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOAAASESSIONMIB::Casnactivetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOAAASESSIONMIB::CasnActiveTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : casnactiveentry)
+    for (auto c : casnactiveentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -431,22 +437,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOAAASESSIONMIB::Casnactivetab
     return children;
 }
 
-void CISCOAAASESSIONMIB::Casnactivetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOAAASESSIONMIB::CasnActiveTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOAAASESSIONMIB::Casnactivetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOAAASESSIONMIB::CasnActiveTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOAAASESSIONMIB::Casnactivetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOAAASESSIONMIB::CasnActiveTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "casnActiveEntry")
         return true;
     return false;
 }
 
-CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::Casnactiveentry()
+CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry::CasnActiveEntry()
     :
     casnsessionid{YType::uint32, "casnSessionId"},
     casnuserid{YType::str, "casnUserId"},
@@ -458,15 +464,16 @@ CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::Casnactiveentry()
     casnvaiifindex{YType::int32, "casnVaiIfIndex"}
 {
 
-    yang_name = "casnActiveEntry"; yang_parent_name = "casnActiveTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "casnActiveEntry"; yang_parent_name = "casnActiveTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::~Casnactiveentry()
+CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry::~CasnActiveEntry()
 {
 }
 
-bool CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::has_data() const
+bool CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return casnsessionid.is_set
 	|| casnuserid.is_set
 	|| casnipaddr.is_set
@@ -477,7 +484,7 @@ bool CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::has_data() const
 	|| casnvaiifindex.is_set;
 }
 
-bool CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::has_operation() const
+bool CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(casnsessionid.yfilter)
@@ -490,21 +497,22 @@ bool CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::has_operation() const
 	|| ydk::is_set(casnvaiifindex.yfilter);
 }
 
-std::string CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::get_absolute_path() const
+std::string CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-AAA-SESSION-MIB:CISCO-AAA-SESSION-MIB/casnActiveTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::get_segment_path() const
+std::string CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "casnActiveEntry" <<"[casnSessionId='" <<casnsessionid <<"']";
+    path_buffer << "casnActiveEntry";
+    ADD_KEY_TOKEN(casnsessionid, "casnSessionId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -521,19 +529,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::Casnactivetab
 
 }
 
-std::shared_ptr<Entity> CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "casnSessionId")
     {
@@ -585,7 +593,7 @@ void CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::set_value(const std::
     }
 }
 
-void CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "casnSessionId")
     {
@@ -621,7 +629,7 @@ void CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::set_filter(const std:
     }
 }
 
-bool CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "casnSessionId" || name == "casnUserId" || name == "casnIpAddr" || name == "casnIdleTime" || name == "casnDisconnect" || name == "casnCallTrackerId" || name == "casnNasPort" || name == "casnVaiIfIndex")
         return true;

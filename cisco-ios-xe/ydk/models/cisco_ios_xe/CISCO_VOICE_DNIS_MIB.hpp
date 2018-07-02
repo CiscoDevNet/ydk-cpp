@@ -32,20 +32,20 @@ class CISCOVOICEDNISMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cvdnismappingtable; //type: CISCOVOICEDNISMIB::Cvdnismappingtable
-        class Cvdnisnodetable; //type: CISCOVOICEDNISMIB::Cvdnisnodetable
+        class CvDnisMappingTable; //type: CISCOVOICEDNISMIB::CvDnisMappingTable
+        class CvDnisNodeTable; //type: CISCOVOICEDNISMIB::CvDnisNodeTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DNIS_MIB::CISCOVOICEDNISMIB::Cvdnismappingtable> cvdnismappingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DNIS_MIB::CISCOVOICEDNISMIB::Cvdnisnodetable> cvdnisnodetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DNIS_MIB::CISCOVOICEDNISMIB::CvDnisMappingTable> cvdnismappingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DNIS_MIB::CISCOVOICEDNISMIB::CvDnisNodeTable> cvdnisnodetable;
         
 }; // CISCOVOICEDNISMIB
 
 
-class CISCOVOICEDNISMIB::Cvdnismappingtable : public ydk::Entity
+class CISCOVOICEDNISMIB::CvDnisMappingTable : public ydk::Entity
 {
     public:
-        Cvdnismappingtable();
-        ~Cvdnismappingtable();
+        CvDnisMappingTable();
+        ~CvDnisMappingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -58,18 +58,18 @@ class CISCOVOICEDNISMIB::Cvdnismappingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvdnismappingentry; //type: CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry
+        class CvDnisMappingEntry; //type: CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DNIS_MIB::CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry> > cvdnismappingentry;
+        ydk::YList cvdnismappingentry;
         
-}; // CISCOVOICEDNISMIB::Cvdnismappingtable
+}; // CISCOVOICEDNISMIB::CvDnisMappingTable
 
 
-class CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry : public ydk::Entity
+class CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry : public ydk::Entity
 {
     public:
-        Cvdnismappingentry();
-        ~Cvdnismappingentry();
+        CvDnisMappingEntry();
+        ~CvDnisMappingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -84,19 +84,19 @@ class CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry : public ydk::En
 
         ydk::YLeaf cvdnismappingname; //type: string
         ydk::YLeaf cvdnismappingurl; //type: string
-        ydk::YLeaf cvdnismappingrefresh; //type: Cvdnismappingrefresh
+        ydk::YLeaf cvdnismappingrefresh; //type: CvDnisMappingRefresh
         ydk::YLeaf cvdnismappingurlaccesserror; //type: string
         ydk::YLeaf cvdnismappingstatus; //type: RowStatus
-        class Cvdnismappingrefresh;
+        class CvDnisMappingRefresh;
 
-}; // CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry
+}; // CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry
 
 
-class CISCOVOICEDNISMIB::Cvdnisnodetable : public ydk::Entity
+class CISCOVOICEDNISMIB::CvDnisNodeTable : public ydk::Entity
 {
     public:
-        Cvdnisnodetable();
-        ~Cvdnisnodetable();
+        CvDnisNodeTable();
+        ~CvDnisNodeTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -109,18 +109,18 @@ class CISCOVOICEDNISMIB::Cvdnisnodetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvdnisnodeentry; //type: CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry
+        class CvDnisNodeEntry; //type: CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DNIS_MIB::CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry> > cvdnisnodeentry;
+        ydk::YList cvdnisnodeentry;
         
-}; // CISCOVOICEDNISMIB::Cvdnisnodetable
+}; // CISCOVOICEDNISMIB::CvDnisNodeTable
 
 
-class CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry : public ydk::Entity
+class CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry : public ydk::Entity
 {
     public:
-        Cvdnisnodeentry();
-        ~Cvdnisnodeentry();
+        CvDnisNodeEntry();
+        ~CvDnisNodeEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -133,16 +133,16 @@ class CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::CISCO_VOICE_DNIS_MIB::CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::cvdnismappingname)
+        //type: string (refers to cisco_ios_xe::CISCO_VOICE_DNIS_MIB::CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::cvdnismappingname)
         ydk::YLeaf cvdnismappingname;
         ydk::YLeaf cvdnisnumber; //type: string
         ydk::YLeaf cvdnisnodeurl; //type: string
         ydk::YLeaf cvdnisnodemodifiable; //type: boolean
         ydk::YLeaf cvdnisnodestatus; //type: RowStatus
 
-}; // CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry
+}; // CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry
 
-class CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::Cvdnismappingrefresh : public ydk::Enum
+class CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::CvDnisMappingRefresh : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf idle;

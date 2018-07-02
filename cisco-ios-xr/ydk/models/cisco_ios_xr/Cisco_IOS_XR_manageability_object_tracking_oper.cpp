@@ -14,13 +14,13 @@ namespace Cisco_IOS_XR_manageability_object_tracking_oper {
 ObjectTracking::ObjectTracking()
     :
     track_type_interface(std::make_shared<ObjectTracking::TrackTypeInterface>())
-	,track_briefs(std::make_shared<ObjectTracking::TrackBriefs>())
-	,track_type_rtr_reachability(std::make_shared<ObjectTracking::TrackTypeRtrReachability>())
-	,track_type_rtr_reachability_brief(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief>())
-	,tracks(std::make_shared<ObjectTracking::Tracks>())
-	,track_type_ipv4_route_brief(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief>())
-	,track_type_ipv4_route(std::make_shared<ObjectTracking::TrackTypeIpv4Route>())
-	,track_type_interface_brief(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief>())
+    , track_briefs(std::make_shared<ObjectTracking::TrackBriefs>())
+    , track_type_rtr_reachability(std::make_shared<ObjectTracking::TrackTypeRtrReachability>())
+    , track_type_rtr_reachability_brief(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief>())
+    , tracks(std::make_shared<ObjectTracking::Tracks>())
+    , track_type_ipv4_route_brief(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief>())
+    , track_type_ipv4_route(std::make_shared<ObjectTracking::TrackTypeIpv4Route>())
+    , track_type_interface_brief(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief>())
 {
     track_type_interface->parent = this;
     track_briefs->parent = this;
@@ -31,7 +31,7 @@ ObjectTracking::ObjectTracking()
     track_type_ipv4_route->parent = this;
     track_type_interface_brief->parent = this;
 
-    yang_name = "object-tracking"; yang_parent_name = "Cisco-IOS-XR-manageability-object-tracking-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "object-tracking"; yang_parent_name = "Cisco-IOS-XR-manageability-object-tracking-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ObjectTracking::~ObjectTracking()
@@ -40,6 +40,7 @@ ObjectTracking::~ObjectTracking()
 
 bool ObjectTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return (track_type_interface !=  nullptr && track_type_interface->has_data())
 	|| (track_briefs !=  nullptr && track_briefs->has_data())
 	|| (track_type_rtr_reachability !=  nullptr && track_type_rtr_reachability->has_data())
@@ -244,9 +245,11 @@ bool ObjectTracking::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 ObjectTracking::TrackTypeInterface::TrackTypeInterface()
+    :
+    track_info(this, {})
 {
 
-    yang_name = "track-type-interface"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-type-interface"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::~TrackTypeInterface()
@@ -255,7 +258,8 @@ ObjectTracking::TrackTypeInterface::~TrackTypeInterface()
 
 bool ObjectTracking::TrackTypeInterface::has_data() const
 {
-    for (std::size_t index=0; index<track_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track_info.len(); index++)
     {
         if(track_info[index]->has_data())
             return true;
@@ -265,7 +269,7 @@ bool ObjectTracking::TrackTypeInterface::has_data() const
 
 bool ObjectTracking::TrackTypeInterface::has_operation() const
 {
-    for (std::size_t index=0; index<track_info.size(); index++)
+    for (std::size_t index=0; index<track_info.len(); index++)
     {
         if(track_info[index]->has_operation())
             return true;
@@ -302,7 +306,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::get_child_by_name(co
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo>();
         c->parent = this;
-        track_info.push_back(c);
+        track_info.append(c);
         return c;
     }
 
@@ -314,7 +318,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track_info)
+    for (auto c : track_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -349,12 +353,12 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackInfo()
     seconds_last_change{YType::uint64, "seconds-last-change"},
     threshold_up{YType::uint32, "threshold-up"},
     threshold_down{YType::uint32, "threshold-down"}
-    	,
+        ,
     track_type_info(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo>())
-	,bool_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks>())
-	,threshold_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks>())
-	,tracking_interaces(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces>())
-	,delayed(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::Delayed>())
+    , bool_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks>())
+    , threshold_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks>())
+    , tracking_interaces(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces>())
+    , delayed(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::Delayed>())
 {
     track_type_info->parent = this;
     bool_tracks->parent = this;
@@ -362,7 +366,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackInfo()
     tracking_interaces->parent = this;
     delayed->parent = this;
 
-    yang_name = "track-info"; yang_parent_name = "track-type-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-info"; yang_parent_name = "track-type-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::~TrackInfo()
@@ -371,6 +375,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::~TrackInfo()
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tracke_name.is_set
 	|| type.is_set
 	|| track_state.is_set
@@ -602,18 +607,18 @@ bool ObjectTracking::TrackTypeInterface::TrackInfo::has_leaf_or_child_of_name(co
 ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::TrackTypeInfo()
     :
     discriminant{YType::enumeration, "discriminant"}
-    	,
+        ,
     interface_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks>())
-	,bfd_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks>())
+    , route_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks>())
+    , ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks>())
+    , bfd_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks>())
 {
     interface_tracks->parent = this;
     route_tracks->parent = this;
     ipsla_tracks->parent = this;
     bfd_tracks->parent = this;
 
-    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
@@ -622,6 +627,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return discriminant.is_set
 	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
 	|| (route_tracks !=  nullptr && route_tracks->has_data())
@@ -761,7 +767,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::I
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
@@ -770,6 +776,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::~
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -848,7 +855,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::Route
     next_hop{YType::str, "next-hop"}
 {
 
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTracks()
@@ -857,6 +864,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::~Rout
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| vrf.is_set
@@ -973,7 +981,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::Ipsla
     return_code{YType::uint32, "return-code"}
 {
 
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTracks()
@@ -982,6 +990,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::~Ipsl
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
 	|| return_code.is_set;
@@ -1086,7 +1095,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::BfdTrac
     debounce_count{YType::uint32, "debounce-count"}
 {
 
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
@@ -1095,6 +1104,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTra
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| destination_address.is_set
 	|| rate.is_set
@@ -1205,9 +1215,11 @@ bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::ha
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTracks()
+    :
+    bool_track_info(this, {})
 {
 
-    yang_name = "bool-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bool-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::~BoolTracks()
@@ -1216,7 +1228,8 @@ ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::~BoolTracks()
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::has_data() const
 {
-    for (std::size_t index=0; index<bool_track_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bool_track_info.len(); index++)
     {
         if(bool_track_info[index]->has_data())
             return true;
@@ -1226,7 +1239,7 @@ bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::has_data() const
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::has_operation() const
 {
-    for (std::size_t index=0; index<bool_track_info.size(); index++)
+    for (std::size_t index=0; index<bool_track_info.len(); index++)
     {
         if(bool_track_info[index]->has_operation())
             return true;
@@ -1263,7 +1276,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTrack
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo>();
         c->parent = this;
-        bool_track_info.push_back(c);
+        bool_track_info.append(c);
         return c;
     }
 
@@ -1275,7 +1288,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bool_track_info)
+    for (auto c : bool_track_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1308,7 +1321,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::BoolTr
     with_not{YType::boolean, "with-not"}
 {
 
-    yang_name = "bool-track-info"; yang_parent_name = "bool-tracks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bool-track-info"; yang_parent_name = "bool-tracks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::~BoolTrackInfo()
@@ -1317,6 +1330,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::~BoolT
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| track_state.is_set
 	|| with_not.is_set;
@@ -1414,9 +1428,11 @@ bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::h
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTracks()
+    :
+    threshold_track_info(this, {})
 {
 
-    yang_name = "threshold-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "threshold-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::~ThresholdTracks()
@@ -1425,7 +1441,8 @@ ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::~ThresholdTracks
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::has_data() const
 {
-    for (std::size_t index=0; index<threshold_track_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold_track_info.len(); index++)
     {
         if(threshold_track_info[index]->has_data())
             return true;
@@ -1435,7 +1452,7 @@ bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::has_data() 
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::has_operation() const
 {
-    for (std::size_t index=0; index<threshold_track_info.size(); index++)
+    for (std::size_t index=0; index<threshold_track_info.len(); index++)
     {
         if(threshold_track_info[index]->has_operation())
             return true;
@@ -1472,7 +1489,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::Threshold
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
         c->parent = this;
-        threshold_track_info.push_back(c);
+        threshold_track_info.append(c);
         return c;
     }
 
@@ -1484,7 +1501,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold_track_info)
+    for (auto c : threshold_track_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1517,7 +1534,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackIn
     weight{YType::uint32, "weight"}
 {
 
-    yang_name = "threshold-track-info"; yang_parent_name = "threshold-tracks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "threshold-track-info"; yang_parent_name = "threshold-tracks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::~ThresholdTrackInfo()
@@ -1526,6 +1543,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackIn
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| track_state.is_set
 	|| weight.is_set;
@@ -1623,9 +1641,11 @@ bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTr
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::TrackingInteraces()
+    :
+    interface_tracking_info(this, {})
 {
 
-    yang_name = "tracking-interaces"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tracking-interaces"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::~TrackingInteraces()
@@ -1634,7 +1654,8 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::~TrackingInter
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::has_data() const
 {
-    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_tracking_info.len(); index++)
     {
         if(interface_tracking_info[index]->has_data())
             return true;
@@ -1644,7 +1665,7 @@ bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::has_data(
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::has_operation() const
 {
-    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
+    for (std::size_t index=0; index<interface_tracking_info.len(); index++)
     {
         if(interface_tracking_info[index]->has_operation())
             return true;
@@ -1681,7 +1702,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingI
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
         c->parent = this;
-        interface_tracking_info.push_back(c);
+        interface_tracking_info.append(c);
         return c;
     }
 
@@ -1693,7 +1714,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_tracking_info)
+    for (auto c : interface_tracking_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1724,7 +1745,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrack
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-tracking-info"; yang_parent_name = "tracking-interaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-tracking-info"; yang_parent_name = "tracking-interaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::~InterfaceTrackingInfo()
@@ -1733,6 +1754,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrack
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -1809,7 +1831,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::Delayed()
     track_state{YType::boolean, "track-state"}
 {
 
-    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::~Delayed()
@@ -1818,6 +1840,7 @@ ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::~Delayed()
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::has_data() const
 {
+    if (is_presence_container) return true;
     return time_remaining.is_set
 	|| track_state.is_set;
 }
@@ -1902,9 +1925,11 @@ bool ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::has_leaf_or_child_o
 }
 
 ObjectTracking::TrackBriefs::TrackBriefs()
+    :
+    track_brief(this, {"track_name"})
 {
 
-    yang_name = "track-briefs"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-briefs"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackBriefs::~TrackBriefs()
@@ -1913,7 +1938,8 @@ ObjectTracking::TrackBriefs::~TrackBriefs()
 
 bool ObjectTracking::TrackBriefs::has_data() const
 {
-    for (std::size_t index=0; index<track_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track_brief.len(); index++)
     {
         if(track_brief[index]->has_data())
             return true;
@@ -1923,7 +1949,7 @@ bool ObjectTracking::TrackBriefs::has_data() const
 
 bool ObjectTracking::TrackBriefs::has_operation() const
 {
-    for (std::size_t index=0; index<track_brief.size(); index++)
+    for (std::size_t index=0; index<track_brief.len(); index++)
     {
         if(track_brief[index]->has_operation())
             return true;
@@ -1960,7 +1986,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackBriefs::get_child_by_name(const std
     {
         auto c = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief>();
         c->parent = this;
-        track_brief.push_back(c);
+        track_brief.append(c);
         return c;
     }
 
@@ -1972,7 +1998,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track_brief)
+    for (auto c : track_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2001,9 +2027,11 @@ bool ObjectTracking::TrackBriefs::has_leaf_or_child_of_name(const std::string & 
 ObjectTracking::TrackBriefs::TrackBrief::TrackBrief()
     :
     track_name{YType::str, "track-name"}
+        ,
+    track_info_brief(this, {})
 {
 
-    yang_name = "track-brief"; yang_parent_name = "track-briefs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-brief"; yang_parent_name = "track-briefs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackBriefs::TrackBrief::~TrackBrief()
@@ -2012,7 +2040,8 @@ ObjectTracking::TrackBriefs::TrackBrief::~TrackBrief()
 
 bool ObjectTracking::TrackBriefs::TrackBrief::has_data() const
 {
-    for (std::size_t index=0; index<track_info_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track_info_brief.len(); index++)
     {
         if(track_info_brief[index]->has_data())
             return true;
@@ -2022,7 +2051,7 @@ bool ObjectTracking::TrackBriefs::TrackBrief::has_data() const
 
 bool ObjectTracking::TrackBriefs::TrackBrief::has_operation() const
 {
-    for (std::size_t index=0; index<track_info_brief.size(); index++)
+    for (std::size_t index=0; index<track_info_brief.len(); index++)
     {
         if(track_info_brief[index]->has_operation())
             return true;
@@ -2041,7 +2070,8 @@ std::string ObjectTracking::TrackBriefs::TrackBrief::get_absolute_path() const
 std::string ObjectTracking::TrackBriefs::TrackBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "track-brief" <<"[track-name='" <<track_name <<"']";
+    path_buffer << "track-brief";
+    ADD_KEY_TOKEN(track_name, "track-name");
     return path_buffer.str();
 }
 
@@ -2061,7 +2091,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::get_child_by_na
     {
         auto c = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief>();
         c->parent = this;
-        track_info_brief.push_back(c);
+        track_info_brief.append(c);
         return c;
     }
 
@@ -2073,7 +2103,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::Trac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track_info_brief)
+    for (auto c : track_info_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2114,12 +2144,12 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackInfoBrief()
     tracke_name{YType::str, "tracke-name"},
     type{YType::enumeration, "type"},
     track_state{YType::boolean, "track-state"}
-    	,
+        ,
     track_type_info(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo>())
 {
     track_type_info->parent = this;
 
-    yang_name = "track-info-brief"; yang_parent_name = "track-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track-info-brief"; yang_parent_name = "track-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::~TrackInfoBrief()
@@ -2128,6 +2158,7 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::~TrackInfoBrief()
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return tracke_name.is_set
 	|| type.is_set
 	|| track_state.is_set
@@ -2236,18 +2267,18 @@ bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::has_leaf_or_child_
 ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::TrackTypeInfo()
     :
     discriminant{YType::enumeration, "discriminant"}
-    	,
+        ,
     interface_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
-	,bfd_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
+    , route_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
+    , ipsla_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
+    , bfd_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
 {
     interface_tracks->parent = this;
     route_tracks->parent = this;
     ipsla_tracks->parent = this;
     bfd_tracks->parent = this;
 
-    yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::~TrackTypeInfo()
@@ -2256,6 +2287,7 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::~TrackTy
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return discriminant.is_set
 	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
 	|| (route_tracks !=  nullptr && route_tracks->has_data())
@@ -2388,7 +2420,7 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Interfac
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
@@ -2397,6 +2429,7 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Interfac
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -2468,7 +2501,7 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTra
     next_hop{YType::str, "next-hop"}
 {
 
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::~RouteTracks()
@@ -2477,6 +2510,7 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTra
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| vrf.is_set
@@ -2586,7 +2620,7 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTra
     return_code{YType::uint32, "return-code"}
 {
 
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::~IpslaTracks()
@@ -2595,6 +2629,7 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTra
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
 	|| return_code.is_set;
@@ -2692,7 +2727,7 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTrack
     debounce_count{YType::uint32, "debounce-count"}
 {
 
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::~BfdTracks()
@@ -2701,6 +2736,7 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTrack
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| destination_address.is_set
 	|| rate.is_set
@@ -2804,9 +2840,11 @@ bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Bfd
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackTypeRtrReachability()
+    :
+    track_info(this, {})
 {
 
-    yang_name = "track-type-rtr-reachability"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-type-rtr-reachability"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::~TrackTypeRtrReachability()
@@ -2815,7 +2853,8 @@ ObjectTracking::TrackTypeRtrReachability::~TrackTypeRtrReachability()
 
 bool ObjectTracking::TrackTypeRtrReachability::has_data() const
 {
-    for (std::size_t index=0; index<track_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track_info.len(); index++)
     {
         if(track_info[index]->has_data())
             return true;
@@ -2825,7 +2864,7 @@ bool ObjectTracking::TrackTypeRtrReachability::has_data() const
 
 bool ObjectTracking::TrackTypeRtrReachability::has_operation() const
 {
-    for (std::size_t index=0; index<track_info.size(); index++)
+    for (std::size_t index=0; index<track_info.len(); index++)
     {
         if(track_info[index]->has_operation())
             return true;
@@ -2862,7 +2901,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::get_child_by_n
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo>();
         c->parent = this;
-        track_info.push_back(c);
+        track_info.append(c);
         return c;
     }
 
@@ -2874,7 +2913,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReach
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track_info)
+    for (auto c : track_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2909,12 +2948,12 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackInfo()
     seconds_last_change{YType::uint64, "seconds-last-change"},
     threshold_up{YType::uint32, "threshold-up"},
     threshold_down{YType::uint32, "threshold-down"}
-    	,
+        ,
     track_type_info(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo>())
-	,bool_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks>())
-	,threshold_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks>())
-	,tracking_interaces(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces>())
-	,delayed(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed>())
+    , bool_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks>())
+    , threshold_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks>())
+    , tracking_interaces(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces>())
+    , delayed(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed>())
 {
     track_type_info->parent = this;
     bool_tracks->parent = this;
@@ -2922,7 +2961,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackInfo()
     tracking_interaces->parent = this;
     delayed->parent = this;
 
-    yang_name = "track-info"; yang_parent_name = "track-type-rtr-reachability"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-info"; yang_parent_name = "track-type-rtr-reachability"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::~TrackInfo()
@@ -2931,6 +2970,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::~TrackInfo()
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tracke_name.is_set
 	|| type.is_set
 	|| track_state.is_set
@@ -3162,18 +3202,18 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::has_leaf_or_child_of_n
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::TrackTypeInfo()
     :
     discriminant{YType::enumeration, "discriminant"}
-    	,
+        ,
     interface_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks>())
-	,bfd_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks>())
+    , route_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks>())
+    , ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks>())
+    , bfd_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks>())
 {
     interface_tracks->parent = this;
     route_tracks->parent = this;
     ipsla_tracks->parent = this;
     bfd_tracks->parent = this;
 
-    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
@@ -3182,6 +3222,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::~TrackTypeIn
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return discriminant.is_set
 	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
 	|| (route_tracks !=  nullptr && route_tracks->has_data())
@@ -3321,7 +3362,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTra
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
@@ -3330,6 +3371,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTra
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -3408,7 +3450,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks:
     next_hop{YType::str, "next-hop"}
 {
 
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTracks()
@@ -3417,6 +3459,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks:
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| vrf.is_set
@@ -3533,7 +3576,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks:
     return_code{YType::uint32, "return-code"}
 {
 
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTracks()
@@ -3542,6 +3585,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks:
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
 	|| return_code.is_set;
@@ -3646,7 +3690,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::B
     debounce_count{YType::uint32, "debounce-count"}
 {
 
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
@@ -3655,6 +3699,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::~
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| destination_address.is_set
 	|| rate.is_set
@@ -3765,9 +3810,11 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTrac
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTracks()
+    :
+    bool_track_info(this, {})
 {
 
-    yang_name = "bool-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bool-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::~BoolTracks()
@@ -3776,7 +3823,8 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::~BoolTracks()
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::has_data() const
 {
-    for (std::size_t index=0; index<bool_track_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bool_track_info.len(); index++)
     {
         if(bool_track_info[index]->has_data())
             return true;
@@ -3786,7 +3834,7 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::has_data()
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::has_operation() const
 {
-    for (std::size_t index=0; index<bool_track_info.size(); index++)
+    for (std::size_t index=0; index<bool_track_info.len(); index++)
     {
         if(bool_track_info[index]->has_operation())
             return true;
@@ -3823,7 +3871,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Boo
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo>();
         c->parent = this;
-        bool_track_info.push_back(c);
+        bool_track_info.append(c);
         return c;
     }
 
@@ -3835,7 +3883,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReach
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bool_track_info)
+    for (auto c : bool_track_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3868,7 +3916,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::
     with_not{YType::boolean, "with-not"}
 {
 
-    yang_name = "bool-track-info"; yang_parent_name = "bool-tracks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bool-track-info"; yang_parent_name = "bool-tracks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::~BoolTrackInfo()
@@ -3877,6 +3925,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| track_state.is_set
 	|| with_not.is_set;
@@ -3974,9 +4023,11 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackI
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTracks()
+    :
+    threshold_track_info(this, {})
 {
 
-    yang_name = "threshold-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "threshold-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::~ThresholdTracks()
@@ -3985,7 +4036,8 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::~Threshold
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::has_data() const
 {
-    for (std::size_t index=0; index<threshold_track_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold_track_info.len(); index++)
     {
         if(threshold_track_info[index]->has_data())
             return true;
@@ -3995,7 +4047,7 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::has_d
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::has_operation() const
 {
-    for (std::size_t index=0; index<threshold_track_info.size(); index++)
+    for (std::size_t index=0; index<threshold_track_info.len(); index++)
     {
         if(threshold_track_info[index]->has_operation())
             return true;
@@ -4032,7 +4084,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Thr
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
         c->parent = this;
-        threshold_track_info.push_back(c);
+        threshold_track_info.append(c);
         return c;
     }
 
@@ -4044,7 +4096,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReach
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold_track_info)
+    for (auto c : threshold_track_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4077,7 +4129,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdT
     weight{YType::uint32, "weight"}
 {
 
-    yang_name = "threshold-track-info"; yang_parent_name = "threshold-tracks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "threshold-track-info"; yang_parent_name = "threshold-tracks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo::~ThresholdTrackInfo()
@@ -4086,6 +4138,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdT
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| track_state.is_set
 	|| weight.is_set;
@@ -4183,9 +4236,11 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::Thres
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::TrackingInteraces()
+    :
+    interface_tracking_info(this, {})
 {
 
-    yang_name = "tracking-interaces"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tracking-interaces"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::~TrackingInteraces()
@@ -4194,7 +4249,8 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::~Trackin
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::has_data() const
 {
-    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_tracking_info.len(); index++)
     {
         if(interface_tracking_info[index]->has_data())
             return true;
@@ -4204,7 +4260,7 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::has
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::has_operation() const
 {
-    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
+    for (std::size_t index=0; index<interface_tracking_info.len(); index++)
     {
         if(interface_tracking_info[index]->has_operation())
             return true;
@@ -4241,7 +4297,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Tra
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
         c->parent = this;
-        interface_tracking_info.push_back(c);
+        interface_tracking_info.append(c);
         return c;
     }
 
@@ -4253,7 +4309,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReach
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_tracking_info)
+    for (auto c : interface_tracking_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4284,7 +4340,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::Interfac
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-tracking-info"; yang_parent_name = "tracking-interaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-tracking-info"; yang_parent_name = "tracking-interaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::~InterfaceTrackingInfo()
@@ -4293,6 +4349,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::Interfac
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -4369,7 +4426,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::Delayed()
     track_state{YType::boolean, "track-state"}
 {
 
-    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::~Delayed()
@@ -4378,6 +4435,7 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::~Delayed()
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::has_data() const
 {
+    if (is_presence_container) return true;
     return time_remaining.is_set
 	|| track_state.is_set;
 }
@@ -4462,9 +4520,11 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::has_leaf_or_c
 }
 
 ObjectTracking::TrackTypeRtrReachabilityBrief::TrackTypeRtrReachabilityBrief()
+    :
+    track_info_brief(this, {})
 {
 
-    yang_name = "track-type-rtr-reachability-brief"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-type-rtr-reachability-brief"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachabilityBrief::~TrackTypeRtrReachabilityBrief()
@@ -4473,7 +4533,8 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::~TrackTypeRtrReachabilityBrief()
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::has_data() const
 {
-    for (std::size_t index=0; index<track_info_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track_info_brief.len(); index++)
     {
         if(track_info_brief[index]->has_data())
             return true;
@@ -4483,7 +4544,7 @@ bool ObjectTracking::TrackTypeRtrReachabilityBrief::has_data() const
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::has_operation() const
 {
-    for (std::size_t index=0; index<track_info_brief.size(); index++)
+    for (std::size_t index=0; index<track_info_brief.len(); index++)
     {
         if(track_info_brief[index]->has_operation())
             return true;
@@ -4520,7 +4581,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::get_child
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief>();
         c->parent = this;
-        track_info_brief.push_back(c);
+        track_info_brief.append(c);
         return c;
     }
 
@@ -4532,7 +4593,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReach
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track_info_brief)
+    for (auto c : track_info_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4563,12 +4624,12 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackInfoBrief()
     tracke_name{YType::str, "tracke-name"},
     type{YType::enumeration, "type"},
     track_state{YType::boolean, "track-state"}
-    	,
+        ,
     track_type_info(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo>())
 {
     track_type_info->parent = this;
 
-    yang_name = "track-info-brief"; yang_parent_name = "track-type-rtr-reachability-brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-info-brief"; yang_parent_name = "track-type-rtr-reachability-brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::~TrackInfoBrief()
@@ -4577,6 +4638,7 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::~TrackInfoBrief()
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return tracke_name.is_set
 	|| type.is_set
 	|| track_state.is_set
@@ -4692,18 +4754,18 @@ bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::has_leaf_or_
 ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::TrackTypeInfo()
     :
     discriminant{YType::enumeration, "discriminant"}
-    	,
+        ,
     interface_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
-	,bfd_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
+    , route_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
+    , ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
+    , bfd_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
 {
     interface_tracks->parent = this;
     route_tracks->parent = this;
     ipsla_tracks->parent = this;
     bfd_tracks->parent = this;
 
-    yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::~TrackTypeInfo()
@@ -4712,6 +4774,7 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::~T
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return discriminant.is_set
 	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
 	|| (route_tracks !=  nullptr && route_tracks->has_data())
@@ -4851,7 +4914,7 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::In
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
@@ -4860,6 +4923,7 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::In
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -4938,7 +5002,7 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::Ro
     next_hop{YType::str, "next-hop"}
 {
 
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::~RouteTracks()
@@ -4947,6 +5011,7 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::Ro
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| vrf.is_set
@@ -5063,7 +5128,7 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::Ip
     return_code{YType::uint32, "return-code"}
 {
 
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::~IpslaTracks()
@@ -5072,6 +5137,7 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::Ip
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
 	|| return_code.is_set;
@@ -5176,7 +5242,7 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::Bf
     debounce_count{YType::uint32, "debounce-count"}
 {
 
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::~BfdTracks()
@@ -5185,6 +5251,7 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::Bf
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| destination_address.is_set
 	|| rate.is_set
@@ -5295,9 +5362,11 @@ bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInf
 }
 
 ObjectTracking::Tracks::Tracks()
+    :
+    track(this, {"track_name"})
 {
 
-    yang_name = "tracks"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tracks"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::Tracks::~Tracks()
@@ -5306,7 +5375,8 @@ ObjectTracking::Tracks::~Tracks()
 
 bool ObjectTracking::Tracks::has_data() const
 {
-    for (std::size_t index=0; index<track.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track.len(); index++)
     {
         if(track[index]->has_data())
             return true;
@@ -5316,7 +5386,7 @@ bool ObjectTracking::Tracks::has_data() const
 
 bool ObjectTracking::Tracks::has_operation() const
 {
-    for (std::size_t index=0; index<track.size(); index++)
+    for (std::size_t index=0; index<track.len(); index++)
     {
         if(track[index]->has_operation())
             return true;
@@ -5353,7 +5423,7 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::get_child_by_name(const std::str
     {
         auto c = std::make_shared<ObjectTracking::Tracks::Track>();
         c->parent = this;
-        track.push_back(c);
+        track.append(c);
         return c;
     }
 
@@ -5365,7 +5435,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track)
+    for (auto c : track.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5394,9 +5464,11 @@ bool ObjectTracking::Tracks::has_leaf_or_child_of_name(const std::string & name)
 ObjectTracking::Tracks::Track::Track()
     :
     track_name{YType::str, "track-name"}
+        ,
+    track_info(this, {})
 {
 
-    yang_name = "track"; yang_parent_name = "tracks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track"; yang_parent_name = "tracks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::Tracks::Track::~Track()
@@ -5405,7 +5477,8 @@ ObjectTracking::Tracks::Track::~Track()
 
 bool ObjectTracking::Tracks::Track::has_data() const
 {
-    for (std::size_t index=0; index<track_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track_info.len(); index++)
     {
         if(track_info[index]->has_data())
             return true;
@@ -5415,7 +5488,7 @@ bool ObjectTracking::Tracks::Track::has_data() const
 
 bool ObjectTracking::Tracks::Track::has_operation() const
 {
-    for (std::size_t index=0; index<track_info.size(); index++)
+    for (std::size_t index=0; index<track_info.len(); index++)
     {
         if(track_info[index]->has_operation())
             return true;
@@ -5434,7 +5507,8 @@ std::string ObjectTracking::Tracks::Track::get_absolute_path() const
 std::string ObjectTracking::Tracks::Track::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "track" <<"[track-name='" <<track_name <<"']";
+    path_buffer << "track";
+    ADD_KEY_TOKEN(track_name, "track-name");
     return path_buffer.str();
 }
 
@@ -5454,7 +5528,7 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::get_child_by_name(const s
     {
         auto c = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo>();
         c->parent = this;
-        track_info.push_back(c);
+        track_info.append(c);
         return c;
     }
 
@@ -5466,7 +5540,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track_info)
+    for (auto c : track_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5511,12 +5585,12 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackInfo()
     seconds_last_change{YType::uint64, "seconds-last-change"},
     threshold_up{YType::uint32, "threshold-up"},
     threshold_down{YType::uint32, "threshold-down"}
-    	,
+        ,
     track_type_info(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo>())
-	,bool_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::BoolTracks>())
-	,threshold_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks>())
-	,tracking_interaces(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces>())
-	,delayed(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::Delayed>())
+    , bool_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::BoolTracks>())
+    , threshold_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks>())
+    , tracking_interaces(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces>())
+    , delayed(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::Delayed>())
 {
     track_type_info->parent = this;
     bool_tracks->parent = this;
@@ -5524,7 +5598,7 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackInfo()
     tracking_interaces->parent = this;
     delayed->parent = this;
 
-    yang_name = "track-info"; yang_parent_name = "track"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track-info"; yang_parent_name = "track"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::~TrackInfo()
@@ -5533,6 +5607,7 @@ ObjectTracking::Tracks::Track::TrackInfo::~TrackInfo()
 
 bool ObjectTracking::Tracks::Track::TrackInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tracke_name.is_set
 	|| type.is_set
 	|| track_state.is_set
@@ -5757,18 +5832,18 @@ bool ObjectTracking::Tracks::Track::TrackInfo::has_leaf_or_child_of_name(const s
 ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::TrackTypeInfo()
     :
     discriminant{YType::enumeration, "discriminant"}
-    	,
+        ,
     interface_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks>())
-	,bfd_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks>())
+    , route_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks>())
+    , ipsla_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks>())
+    , bfd_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks>())
 {
     interface_tracks->parent = this;
     route_tracks->parent = this;
     ipsla_tracks->parent = this;
     bfd_tracks->parent = this;
 
-    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
@@ -5777,6 +5852,7 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
 
 bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return discriminant.is_set
 	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
 	|| (route_tracks !=  nullptr && route_tracks->has_data())
@@ -5909,7 +5985,7 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::Interf
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
@@ -5918,6 +5994,7 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::~Inter
 
 bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -5989,7 +6066,7 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::RouteTrack
     next_hop{YType::str, "next-hop"}
 {
 
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTracks()
@@ -5998,6 +6075,7 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTrac
 
 bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| vrf.is_set
@@ -6107,7 +6185,7 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::IpslaTrack
     return_code{YType::uint32, "return-code"}
 {
 
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTracks()
@@ -6116,6 +6194,7 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTrac
 
 bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
 	|| return_code.is_set;
@@ -6213,7 +6292,7 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::BfdTracks()
     debounce_count{YType::uint32, "debounce-count"}
 {
 
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
@@ -6222,6 +6301,7 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
 
 bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| destination_address.is_set
 	|| rate.is_set
@@ -6325,9 +6405,11 @@ bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::has_lea
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTracks()
+    :
+    bool_track_info(this, {})
 {
 
-    yang_name = "bool-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bool-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::~BoolTracks()
@@ -6336,7 +6418,8 @@ ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::~BoolTracks()
 
 bool ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::has_data() const
 {
-    for (std::size_t index=0; index<bool_track_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bool_track_info.len(); index++)
     {
         if(bool_track_info[index]->has_data())
             return true;
@@ -6346,7 +6429,7 @@ bool ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::has_data() const
 
 bool ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::has_operation() const
 {
-    for (std::size_t index=0; index<bool_track_info.size(); index++)
+    for (std::size_t index=0; index<bool_track_info.len(); index++)
     {
         if(bool_track_info[index]->has_operation())
             return true;
@@ -6376,7 +6459,7 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::ge
     {
         auto c = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo>();
         c->parent = this;
-        bool_track_info.push_back(c);
+        bool_track_info.append(c);
         return c;
     }
 
@@ -6388,7 +6471,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::Tr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bool_track_info)
+    for (auto c : bool_track_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6421,7 +6504,7 @@ ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::BoolTrackIn
     with_not{YType::boolean, "with-not"}
 {
 
-    yang_name = "bool-track-info"; yang_parent_name = "bool-tracks"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bool-track-info"; yang_parent_name = "bool-tracks"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::~BoolTrackInfo()
@@ -6430,6 +6513,7 @@ ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::~BoolTrackI
 
 bool ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| track_state.is_set
 	|| with_not.is_set;
@@ -6520,9 +6604,11 @@ bool ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::has_le
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTracks()
+    :
+    threshold_track_info(this, {})
 {
 
-    yang_name = "threshold-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::~ThresholdTracks()
@@ -6531,7 +6617,8 @@ ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::~ThresholdTracks()
 
 bool ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::has_data() const
 {
-    for (std::size_t index=0; index<threshold_track_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold_track_info.len(); index++)
     {
         if(threshold_track_info[index]->has_data())
             return true;
@@ -6541,7 +6628,7 @@ bool ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::has_data() const
 
 bool ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::has_operation() const
 {
-    for (std::size_t index=0; index<threshold_track_info.size(); index++)
+    for (std::size_t index=0; index<threshold_track_info.len(); index++)
     {
         if(threshold_track_info[index]->has_operation())
             return true;
@@ -6571,7 +6658,7 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTrack
     {
         auto c = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
         c->parent = this;
-        threshold_track_info.push_back(c);
+        threshold_track_info.append(c);
         return c;
     }
 
@@ -6583,7 +6670,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::Tr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold_track_info)
+    for (auto c : threshold_track_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6616,7 +6703,7 @@ ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::T
     weight{YType::uint32, "weight"}
 {
 
-    yang_name = "threshold-track-info"; yang_parent_name = "threshold-tracks"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-track-info"; yang_parent_name = "threshold-tracks"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::~ThresholdTrackInfo()
@@ -6625,6 +6712,7 @@ ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::~
 
 bool ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| track_state.is_set
 	|| weight.is_set;
@@ -6715,9 +6803,11 @@ bool ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackIn
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::TrackingInteraces()
+    :
+    interface_tracking_info(this, {})
 {
 
-    yang_name = "tracking-interaces"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracking-interaces"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::~TrackingInteraces()
@@ -6726,7 +6816,8 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::~TrackingInteraces(
 
 bool ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::has_data() const
 {
-    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_tracking_info.len(); index++)
     {
         if(interface_tracking_info[index]->has_data())
             return true;
@@ -6736,7 +6827,7 @@ bool ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::has_data() con
 
 bool ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::has_operation() const
 {
-    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
+    for (std::size_t index=0; index<interface_tracking_info.len(); index++)
     {
         if(interface_tracking_info[index]->has_operation())
             return true;
@@ -6766,7 +6857,7 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackingIntera
     {
         auto c = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
         c->parent = this;
-        interface_tracking_info.push_back(c);
+        interface_tracking_info.append(c);
         return c;
     }
 
@@ -6778,7 +6869,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::Tr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_tracking_info)
+    for (auto c : interface_tracking_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6809,7 +6900,7 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingIn
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-tracking-info"; yang_parent_name = "tracking-interaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-tracking-info"; yang_parent_name = "tracking-interaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::~InterfaceTrackingInfo()
@@ -6818,6 +6909,7 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingIn
 
 bool ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -6887,7 +6979,7 @@ ObjectTracking::Tracks::Track::TrackInfo::Delayed::Delayed()
     track_state{YType::boolean, "track-state"}
 {
 
-    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectTracking::Tracks::Track::TrackInfo::Delayed::~Delayed()
@@ -6896,6 +6988,7 @@ ObjectTracking::Tracks::Track::TrackInfo::Delayed::~Delayed()
 
 bool ObjectTracking::Tracks::Track::TrackInfo::Delayed::has_data() const
 {
+    if (is_presence_container) return true;
     return time_remaining.is_set
 	|| track_state.is_set;
 }
@@ -6973,9 +7066,11 @@ bool ObjectTracking::Tracks::Track::TrackInfo::Delayed::has_leaf_or_child_of_nam
 }
 
 ObjectTracking::TrackTypeIpv4RouteBrief::TrackTypeIpv4RouteBrief()
+    :
+    track_info_brief(this, {})
 {
 
-    yang_name = "track-type-ipv4-route-brief"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-type-ipv4-route-brief"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4RouteBrief::~TrackTypeIpv4RouteBrief()
@@ -6984,7 +7079,8 @@ ObjectTracking::TrackTypeIpv4RouteBrief::~TrackTypeIpv4RouteBrief()
 
 bool ObjectTracking::TrackTypeIpv4RouteBrief::has_data() const
 {
-    for (std::size_t index=0; index<track_info_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track_info_brief.len(); index++)
     {
         if(track_info_brief[index]->has_data())
             return true;
@@ -6994,7 +7090,7 @@ bool ObjectTracking::TrackTypeIpv4RouteBrief::has_data() const
 
 bool ObjectTracking::TrackTypeIpv4RouteBrief::has_operation() const
 {
-    for (std::size_t index=0; index<track_info_brief.size(); index++)
+    for (std::size_t index=0; index<track_info_brief.len(); index++)
     {
         if(track_info_brief[index]->has_operation())
             return true;
@@ -7031,7 +7127,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::get_child_by_na
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief>();
         c->parent = this;
-        track_info_brief.push_back(c);
+        track_info_brief.append(c);
         return c;
     }
 
@@ -7043,7 +7139,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Rout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track_info_brief)
+    for (auto c : track_info_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7074,12 +7170,12 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackInfoBrief()
     tracke_name{YType::str, "tracke-name"},
     type{YType::enumeration, "type"},
     track_state{YType::boolean, "track-state"}
-    	,
+        ,
     track_type_info(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo>())
 {
     track_type_info->parent = this;
 
-    yang_name = "track-info-brief"; yang_parent_name = "track-type-ipv4-route-brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-info-brief"; yang_parent_name = "track-type-ipv4-route-brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::~TrackInfoBrief()
@@ -7088,6 +7184,7 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::~TrackInfoBrief()
 
 bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return tracke_name.is_set
 	|| type.is_set
 	|| track_state.is_set
@@ -7203,18 +7300,18 @@ bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::has_leaf_or_child_
 ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::TrackTypeInfo()
     :
     discriminant{YType::enumeration, "discriminant"}
-    	,
+        ,
     interface_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
-	,bfd_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
+    , route_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
+    , ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
+    , bfd_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
 {
     interface_tracks->parent = this;
     route_tracks->parent = this;
     ipsla_tracks->parent = this;
     bfd_tracks->parent = this;
 
-    yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::~TrackTypeInfo()
@@ -7223,6 +7320,7 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::~TrackTy
 
 bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return discriminant.is_set
 	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
 	|| (route_tracks !=  nullptr && route_tracks->has_data())
@@ -7362,7 +7460,7 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::Interfac
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
@@ -7371,6 +7469,7 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::Interfac
 
 bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -7449,7 +7548,7 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTra
     next_hop{YType::str, "next-hop"}
 {
 
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::~RouteTracks()
@@ -7458,6 +7557,7 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTra
 
 bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| vrf.is_set
@@ -7574,7 +7674,7 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTra
     return_code{YType::uint32, "return-code"}
 {
 
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::~IpslaTracks()
@@ -7583,6 +7683,7 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTra
 
 bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
 	|| return_code.is_set;
@@ -7687,7 +7788,7 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTrack
     debounce_count{YType::uint32, "debounce-count"}
 {
 
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::~BfdTracks()
@@ -7696,6 +7797,7 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTrack
 
 bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| destination_address.is_set
 	|| rate.is_set
@@ -7806,9 +7908,11 @@ bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::Bfd
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackTypeIpv4Route()
+    :
+    track_info(this, {})
 {
 
-    yang_name = "track-type-ipv4-route"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-type-ipv4-route"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::~TrackTypeIpv4Route()
@@ -7817,7 +7921,8 @@ ObjectTracking::TrackTypeIpv4Route::~TrackTypeIpv4Route()
 
 bool ObjectTracking::TrackTypeIpv4Route::has_data() const
 {
-    for (std::size_t index=0; index<track_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track_info.len(); index++)
     {
         if(track_info[index]->has_data())
             return true;
@@ -7827,7 +7932,7 @@ bool ObjectTracking::TrackTypeIpv4Route::has_data() const
 
 bool ObjectTracking::TrackTypeIpv4Route::has_operation() const
 {
-    for (std::size_t index=0; index<track_info.size(); index++)
+    for (std::size_t index=0; index<track_info.len(); index++)
     {
         if(track_info[index]->has_operation())
             return true;
@@ -7864,7 +7969,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::get_child_by_name(co
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo>();
         c->parent = this;
-        track_info.push_back(c);
+        track_info.append(c);
         return c;
     }
 
@@ -7876,7 +7981,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Rout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track_info)
+    for (auto c : track_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7911,12 +8016,12 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackInfo()
     seconds_last_change{YType::uint64, "seconds-last-change"},
     threshold_up{YType::uint32, "threshold-up"},
     threshold_down{YType::uint32, "threshold-down"}
-    	,
+        ,
     track_type_info(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo>())
-	,bool_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks>())
-	,threshold_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks>())
-	,tracking_interaces(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces>())
-	,delayed(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed>())
+    , bool_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks>())
+    , threshold_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks>())
+    , tracking_interaces(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces>())
+    , delayed(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed>())
 {
     track_type_info->parent = this;
     bool_tracks->parent = this;
@@ -7924,7 +8029,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackInfo()
     tracking_interaces->parent = this;
     delayed->parent = this;
 
-    yang_name = "track-info"; yang_parent_name = "track-type-ipv4-route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-info"; yang_parent_name = "track-type-ipv4-route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::~TrackInfo()
@@ -7933,6 +8038,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::~TrackInfo()
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tracke_name.is_set
 	|| type.is_set
 	|| track_state.is_set
@@ -8164,18 +8270,18 @@ bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::has_leaf_or_child_of_name(co
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::TrackTypeInfo()
     :
     discriminant{YType::enumeration, "discriminant"}
-    	,
+        ,
     interface_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks>())
-	,bfd_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks>())
+    , route_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks>())
+    , ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks>())
+    , bfd_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks>())
 {
     interface_tracks->parent = this;
     route_tracks->parent = this;
     ipsla_tracks->parent = this;
     bfd_tracks->parent = this;
 
-    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
@@ -8184,6 +8290,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return discriminant.is_set
 	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
 	|| (route_tracks !=  nullptr && route_tracks->has_data())
@@ -8323,7 +8430,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::I
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
@@ -8332,6 +8439,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::~
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -8410,7 +8518,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::Route
     next_hop{YType::str, "next-hop"}
 {
 
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTracks()
@@ -8419,6 +8527,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::~Rout
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| vrf.is_set
@@ -8535,7 +8644,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::Ipsla
     return_code{YType::uint32, "return-code"}
 {
 
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTracks()
@@ -8544,6 +8653,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::~Ipsl
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
 	|| return_code.is_set;
@@ -8648,7 +8758,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::BfdTrac
     debounce_count{YType::uint32, "debounce-count"}
 {
 
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
@@ -8657,6 +8767,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTra
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| destination_address.is_set
 	|| rate.is_set
@@ -8767,9 +8878,11 @@ bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::ha
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTracks()
+    :
+    bool_track_info(this, {})
 {
 
-    yang_name = "bool-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bool-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::~BoolTracks()
@@ -8778,7 +8891,8 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::~BoolTracks()
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::has_data() const
 {
-    for (std::size_t index=0; index<bool_track_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bool_track_info.len(); index++)
     {
         if(bool_track_info[index]->has_data())
             return true;
@@ -8788,7 +8902,7 @@ bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::has_data() const
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::has_operation() const
 {
-    for (std::size_t index=0; index<bool_track_info.size(); index++)
+    for (std::size_t index=0; index<bool_track_info.len(); index++)
     {
         if(bool_track_info[index]->has_operation())
             return true;
@@ -8825,7 +8939,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTrack
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo>();
         c->parent = this;
-        bool_track_info.push_back(c);
+        bool_track_info.append(c);
         return c;
     }
 
@@ -8837,7 +8951,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Rout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bool_track_info)
+    for (auto c : bool_track_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8870,7 +8984,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::BoolTr
     with_not{YType::boolean, "with-not"}
 {
 
-    yang_name = "bool-track-info"; yang_parent_name = "bool-tracks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bool-track-info"; yang_parent_name = "bool-tracks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::~BoolTrackInfo()
@@ -8879,6 +8993,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::~BoolT
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| track_state.is_set
 	|| with_not.is_set;
@@ -8976,9 +9091,11 @@ bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::h
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTracks()
+    :
+    threshold_track_info(this, {})
 {
 
-    yang_name = "threshold-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "threshold-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::~ThresholdTracks()
@@ -8987,7 +9104,8 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::~ThresholdTracks
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::has_data() const
 {
-    for (std::size_t index=0; index<threshold_track_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold_track_info.len(); index++)
     {
         if(threshold_track_info[index]->has_data())
             return true;
@@ -8997,7 +9115,7 @@ bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::has_data() 
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::has_operation() const
 {
-    for (std::size_t index=0; index<threshold_track_info.size(); index++)
+    for (std::size_t index=0; index<threshold_track_info.len(); index++)
     {
         if(threshold_track_info[index]->has_operation())
             return true;
@@ -9034,7 +9152,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::Threshold
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
         c->parent = this;
-        threshold_track_info.push_back(c);
+        threshold_track_info.append(c);
         return c;
     }
 
@@ -9046,7 +9164,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Rout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold_track_info)
+    for (auto c : threshold_track_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9079,7 +9197,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackIn
     weight{YType::uint32, "weight"}
 {
 
-    yang_name = "threshold-track-info"; yang_parent_name = "threshold-tracks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "threshold-track-info"; yang_parent_name = "threshold-tracks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::~ThresholdTrackInfo()
@@ -9088,6 +9206,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackIn
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| track_state.is_set
 	|| weight.is_set;
@@ -9185,9 +9304,11 @@ bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTr
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::TrackingInteraces()
+    :
+    interface_tracking_info(this, {})
 {
 
-    yang_name = "tracking-interaces"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tracking-interaces"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::~TrackingInteraces()
@@ -9196,7 +9317,8 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::~TrackingInter
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::has_data() const
 {
-    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_tracking_info.len(); index++)
     {
         if(interface_tracking_info[index]->has_data())
             return true;
@@ -9206,7 +9328,7 @@ bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::has_data(
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::has_operation() const
 {
-    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
+    for (std::size_t index=0; index<interface_tracking_info.len(); index++)
     {
         if(interface_tracking_info[index]->has_operation())
             return true;
@@ -9243,7 +9365,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingI
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
         c->parent = this;
-        interface_tracking_info.push_back(c);
+        interface_tracking_info.append(c);
         return c;
     }
 
@@ -9255,7 +9377,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Rout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_tracking_info)
+    for (auto c : interface_tracking_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9286,7 +9408,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrack
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-tracking-info"; yang_parent_name = "tracking-interaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-tracking-info"; yang_parent_name = "tracking-interaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::~InterfaceTrackingInfo()
@@ -9295,6 +9417,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrack
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -9371,7 +9494,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::Delayed()
     track_state{YType::boolean, "track-state"}
 {
 
-    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::~Delayed()
@@ -9380,6 +9503,7 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::~Delayed()
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::has_data() const
 {
+    if (is_presence_container) return true;
     return time_remaining.is_set
 	|| track_state.is_set;
 }
@@ -9464,9 +9588,11 @@ bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::has_leaf_or_child_o
 }
 
 ObjectTracking::TrackTypeInterfaceBrief::TrackTypeInterfaceBrief()
+    :
+    track_info_brief(this, {})
 {
 
-    yang_name = "track-type-interface-brief"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-type-interface-brief"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterfaceBrief::~TrackTypeInterfaceBrief()
@@ -9475,7 +9601,8 @@ ObjectTracking::TrackTypeInterfaceBrief::~TrackTypeInterfaceBrief()
 
 bool ObjectTracking::TrackTypeInterfaceBrief::has_data() const
 {
-    for (std::size_t index=0; index<track_info_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track_info_brief.len(); index++)
     {
         if(track_info_brief[index]->has_data())
             return true;
@@ -9485,7 +9612,7 @@ bool ObjectTracking::TrackTypeInterfaceBrief::has_data() const
 
 bool ObjectTracking::TrackTypeInterfaceBrief::has_operation() const
 {
-    for (std::size_t index=0; index<track_info_brief.size(); index++)
+    for (std::size_t index=0; index<track_info_brief.len(); index++)
     {
         if(track_info_brief[index]->has_operation())
             return true;
@@ -9522,7 +9649,7 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::get_child_by_na
     {
         auto c = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief>();
         c->parent = this;
-        track_info_brief.push_back(c);
+        track_info_brief.append(c);
         return c;
     }
 
@@ -9534,7 +9661,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track_info_brief)
+    for (auto c : track_info_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9565,12 +9692,12 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackInfoBrief()
     tracke_name{YType::str, "tracke-name"},
     type{YType::enumeration, "type"},
     track_state{YType::boolean, "track-state"}
-    	,
+        ,
     track_type_info(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo>())
 {
     track_type_info->parent = this;
 
-    yang_name = "track-info-brief"; yang_parent_name = "track-type-interface-brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-info-brief"; yang_parent_name = "track-type-interface-brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::~TrackInfoBrief()
@@ -9579,6 +9706,7 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::~TrackInfoBrief()
 
 bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return tracke_name.is_set
 	|| type.is_set
 	|| track_state.is_set
@@ -9694,18 +9822,18 @@ bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::has_leaf_or_child_
 ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::TrackTypeInfo()
     :
     discriminant{YType::enumeration, "discriminant"}
-    	,
+        ,
     interface_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
-	,bfd_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
+    , route_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
+    , ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
+    , bfd_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
 {
     interface_tracks->parent = this;
     route_tracks->parent = this;
     ipsla_tracks->parent = this;
     bfd_tracks->parent = this;
 
-    yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::~TrackTypeInfo()
@@ -9714,6 +9842,7 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::~TrackTy
 
 bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return discriminant.is_set
 	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
 	|| (route_tracks !=  nullptr && route_tracks->has_data())
@@ -9853,7 +9982,7 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::Interfac
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
@@ -9862,6 +9991,7 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::Interfac
 
 bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -9940,7 +10070,7 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTra
     next_hop{YType::str, "next-hop"}
 {
 
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::~RouteTracks()
@@ -9949,6 +10079,7 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTra
 
 bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| vrf.is_set
@@ -10065,7 +10196,7 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTra
     return_code{YType::uint32, "return-code"}
 {
 
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::~IpslaTracks()
@@ -10074,6 +10205,7 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTra
 
 bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
 	|| return_code.is_set;
@@ -10178,7 +10310,7 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTrack
     debounce_count{YType::uint32, "debounce-count"}
 {
 
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::~BfdTracks()
@@ -10187,6 +10319,7 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTrack
 
 bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| destination_address.is_set
 	|| rate.is_set

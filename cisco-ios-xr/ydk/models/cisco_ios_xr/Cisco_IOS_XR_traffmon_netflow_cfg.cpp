@@ -14,16 +14,16 @@ namespace Cisco_IOS_XR_traffmon_netflow_cfg {
 NetFlow::NetFlow()
     :
     flow_exporter_maps(std::make_shared<NetFlow::FlowExporterMaps>())
-	,flow_sampler_maps(std::make_shared<NetFlow::FlowSamplerMaps>())
-	,flow_monitor_map_table(std::make_shared<NetFlow::FlowMonitorMapTable>())
-	,flow_monitor_map_performance_table(std::make_shared<NetFlow::FlowMonitorMapPerformanceTable>())
+    , flow_sampler_maps(std::make_shared<NetFlow::FlowSamplerMaps>())
+    , flow_monitor_map_table(std::make_shared<NetFlow::FlowMonitorMapTable>())
+    , flow_monitor_map_performance_table(std::make_shared<NetFlow::FlowMonitorMapPerformanceTable>())
 {
     flow_exporter_maps->parent = this;
     flow_sampler_maps->parent = this;
     flow_monitor_map_table->parent = this;
     flow_monitor_map_performance_table->parent = this;
 
-    yang_name = "net-flow"; yang_parent_name = "Cisco-IOS-XR-traffmon-netflow-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "net-flow"; yang_parent_name = "Cisco-IOS-XR-traffmon-netflow-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NetFlow::~NetFlow()
@@ -32,6 +32,7 @@ NetFlow::~NetFlow()
 
 bool NetFlow::has_data() const
 {
+    if (is_presence_container) return true;
     return (flow_exporter_maps !=  nullptr && flow_exporter_maps->has_data())
 	|| (flow_sampler_maps !=  nullptr && flow_sampler_maps->has_data())
 	|| (flow_monitor_map_table !=  nullptr && flow_monitor_map_table->has_data())
@@ -172,9 +173,11 @@ bool NetFlow::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 NetFlow::FlowExporterMaps::FlowExporterMaps()
+    :
+    flow_exporter_map(this, {"exporter_map_name"})
 {
 
-    yang_name = "flow-exporter-maps"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow-exporter-maps"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetFlow::FlowExporterMaps::~FlowExporterMaps()
@@ -183,7 +186,8 @@ NetFlow::FlowExporterMaps::~FlowExporterMaps()
 
 bool NetFlow::FlowExporterMaps::has_data() const
 {
-    for (std::size_t index=0; index<flow_exporter_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flow_exporter_map.len(); index++)
     {
         if(flow_exporter_map[index]->has_data())
             return true;
@@ -193,7 +197,7 @@ bool NetFlow::FlowExporterMaps::has_data() const
 
 bool NetFlow::FlowExporterMaps::has_operation() const
 {
-    for (std::size_t index=0; index<flow_exporter_map.size(); index++)
+    for (std::size_t index=0; index<flow_exporter_map.len(); index++)
     {
         if(flow_exporter_map[index]->has_operation())
             return true;
@@ -230,7 +234,7 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::get_child_by_name(const std::
     {
         auto c = std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap>();
         c->parent = this;
-        flow_exporter_map.push_back(c);
+        flow_exporter_map.append(c);
         return c;
     }
 
@@ -242,7 +246,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flow_exporter_map)
+    for (auto c : flow_exporter_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -274,16 +278,16 @@ NetFlow::FlowExporterMaps::FlowExporterMap::FlowExporterMap()
     source_interface{YType::str, "source-interface"},
     dscp{YType::uint32, "dscp"},
     packet_length{YType::uint32, "packet-length"}
-    	,
+        ,
     udp(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Udp>())
-	,destination(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Destination>())
-	,version(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Version>())
+    , destination(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Destination>())
+    , version(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Version>())
 {
     udp->parent = this;
     destination->parent = this;
     version->parent = this;
 
-    yang_name = "flow-exporter-map"; yang_parent_name = "flow-exporter-maps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow-exporter-map"; yang_parent_name = "flow-exporter-maps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetFlow::FlowExporterMaps::FlowExporterMap::~FlowExporterMap()
@@ -292,6 +296,7 @@ NetFlow::FlowExporterMaps::FlowExporterMap::~FlowExporterMap()
 
 bool NetFlow::FlowExporterMaps::FlowExporterMap::has_data() const
 {
+    if (is_presence_container) return true;
     return exporter_map_name.is_set
 	|| source_interface.is_set
 	|| dscp.is_set
@@ -323,7 +328,8 @@ std::string NetFlow::FlowExporterMaps::FlowExporterMap::get_absolute_path() cons
 std::string NetFlow::FlowExporterMaps::FlowExporterMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flow-exporter-map" <<"[exporter-map-name='" <<exporter_map_name <<"']";
+    path_buffer << "flow-exporter-map";
+    ADD_KEY_TOKEN(exporter_map_name, "exporter-map-name");
     return path_buffer.str();
 }
 
@@ -454,7 +460,7 @@ NetFlow::FlowExporterMaps::FlowExporterMap::Udp::Udp()
     destination_port{YType::uint32, "destination-port"}
 {
 
-    yang_name = "udp"; yang_parent_name = "flow-exporter-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "flow-exporter-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::FlowExporterMaps::FlowExporterMap::Udp::~Udp()
@@ -463,6 +469,7 @@ NetFlow::FlowExporterMaps::FlowExporterMap::Udp::~Udp()
 
 bool NetFlow::FlowExporterMaps::FlowExporterMap::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_port.is_set;
 }
 
@@ -533,7 +540,7 @@ NetFlow::FlowExporterMaps::FlowExporterMap::Destination::Destination()
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "destination"; yang_parent_name = "flow-exporter-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "flow-exporter-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::FlowExporterMaps::FlowExporterMap::Destination::~Destination()
@@ -542,6 +549,7 @@ NetFlow::FlowExporterMaps::FlowExporterMap::Destination::~Destination()
 
 bool NetFlow::FlowExporterMaps::FlowExporterMap::Destination::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| ipv6_address.is_set
 	|| vrf_name.is_set;
@@ -637,12 +645,12 @@ NetFlow::FlowExporterMaps::FlowExporterMap::Version::Version()
     options_template_timeout{YType::uint32, "options-template-timeout"},
     common_template_timeout{YType::uint32, "common-template-timeout"},
     data_template_timeout{YType::uint32, "data-template-timeout"}
-    	,
+        ,
     options(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options>())
 {
     options->parent = this;
 
-    yang_name = "version"; yang_parent_name = "flow-exporter-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "version"; yang_parent_name = "flow-exporter-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::FlowExporterMaps::FlowExporterMap::Version::~Version()
@@ -651,6 +659,7 @@ NetFlow::FlowExporterMaps::FlowExporterMap::Version::~Version()
 
 bool NetFlow::FlowExporterMaps::FlowExporterMap::Version::has_data() const
 {
+    if (is_presence_container) return true;
     return version_type.is_set
 	|| options_template_timeout.is_set
 	|| common_template_timeout.is_set
@@ -776,7 +785,7 @@ NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::Options()
     vrf_table_export_timeout{YType::uint32, "vrf-table-export-timeout"}
 {
 
-    yang_name = "options"; yang_parent_name = "version"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "options"; yang_parent_name = "version"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::~Options()
@@ -785,6 +794,7 @@ NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::~Options()
 
 bool NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_table_export_timeout.is_set
 	|| sampler_table_export_timeout.is_set
 	|| vrf_table_export_timeout.is_set;
@@ -875,9 +885,11 @@ bool NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::has_leaf_or_c
 }
 
 NetFlow::FlowSamplerMaps::FlowSamplerMaps()
+    :
+    flow_sampler_map(this, {"sampler_map_name"})
 {
 
-    yang_name = "flow-sampler-maps"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow-sampler-maps"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetFlow::FlowSamplerMaps::~FlowSamplerMaps()
@@ -886,7 +898,8 @@ NetFlow::FlowSamplerMaps::~FlowSamplerMaps()
 
 bool NetFlow::FlowSamplerMaps::has_data() const
 {
-    for (std::size_t index=0; index<flow_sampler_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flow_sampler_map.len(); index++)
     {
         if(flow_sampler_map[index]->has_data())
             return true;
@@ -896,7 +909,7 @@ bool NetFlow::FlowSamplerMaps::has_data() const
 
 bool NetFlow::FlowSamplerMaps::has_operation() const
 {
-    for (std::size_t index=0; index<flow_sampler_map.size(); index++)
+    for (std::size_t index=0; index<flow_sampler_map.len(); index++)
     {
         if(flow_sampler_map[index]->has_operation())
             return true;
@@ -933,7 +946,7 @@ std::shared_ptr<Entity> NetFlow::FlowSamplerMaps::get_child_by_name(const std::s
     {
         auto c = std::make_shared<NetFlow::FlowSamplerMaps::FlowSamplerMap>();
         c->parent = this;
-        flow_sampler_map.push_back(c);
+        flow_sampler_map.append(c);
         return c;
     }
 
@@ -945,7 +958,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowSamplerMaps::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flow_sampler_map)
+    for (auto c : flow_sampler_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -974,12 +987,12 @@ bool NetFlow::FlowSamplerMaps::has_leaf_or_child_of_name(const std::string & nam
 NetFlow::FlowSamplerMaps::FlowSamplerMap::FlowSamplerMap()
     :
     sampler_map_name{YType::str, "sampler-map-name"}
-    	,
+        ,
     sampling_modes(std::make_shared<NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes>())
 {
     sampling_modes->parent = this;
 
-    yang_name = "flow-sampler-map"; yang_parent_name = "flow-sampler-maps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow-sampler-map"; yang_parent_name = "flow-sampler-maps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetFlow::FlowSamplerMaps::FlowSamplerMap::~FlowSamplerMap()
@@ -988,6 +1001,7 @@ NetFlow::FlowSamplerMaps::FlowSamplerMap::~FlowSamplerMap()
 
 bool NetFlow::FlowSamplerMaps::FlowSamplerMap::has_data() const
 {
+    if (is_presence_container) return true;
     return sampler_map_name.is_set
 	|| (sampling_modes !=  nullptr && sampling_modes->has_data());
 }
@@ -1009,7 +1023,8 @@ std::string NetFlow::FlowSamplerMaps::FlowSamplerMap::get_absolute_path() const
 std::string NetFlow::FlowSamplerMaps::FlowSamplerMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flow-sampler-map" <<"[sampler-map-name='" <<sampler_map_name <<"']";
+    path_buffer << "flow-sampler-map";
+    ADD_KEY_TOKEN(sampler_map_name, "sampler-map-name");
     return path_buffer.str();
 }
 
@@ -1075,9 +1090,11 @@ bool NetFlow::FlowSamplerMaps::FlowSamplerMap::has_leaf_or_child_of_name(const s
 }
 
 NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingModes()
+    :
+    sampling_mode(this, {"mode"})
 {
 
-    yang_name = "sampling-modes"; yang_parent_name = "flow-sampler-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sampling-modes"; yang_parent_name = "flow-sampler-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::~SamplingModes()
@@ -1086,7 +1103,8 @@ NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::~SamplingModes()
 
 bool NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::has_data() const
 {
-    for (std::size_t index=0; index<sampling_mode.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sampling_mode.len(); index++)
     {
         if(sampling_mode[index]->has_data())
             return true;
@@ -1096,7 +1114,7 @@ bool NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::has_data() const
 
 bool NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::has_operation() const
 {
-    for (std::size_t index=0; index<sampling_mode.size(); index++)
+    for (std::size_t index=0; index<sampling_mode.len(); index++)
     {
         if(sampling_mode[index]->has_operation())
             return true;
@@ -1126,7 +1144,7 @@ std::shared_ptr<Entity> NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes:
     {
         auto c = std::make_shared<NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode>();
         c->parent = this;
-        sampling_mode.push_back(c);
+        sampling_mode.append(c);
         return c;
     }
 
@@ -1138,7 +1156,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowSamplerMaps::FlowSam
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sampling_mode)
+    for (auto c : sampling_mode.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1171,7 +1189,7 @@ NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::SamplingM
     interval{YType::uint32, "interval"}
 {
 
-    yang_name = "sampling-mode"; yang_parent_name = "sampling-modes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sampling-mode"; yang_parent_name = "sampling-modes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::~SamplingMode()
@@ -1180,6 +1198,7 @@ NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::~Sampling
 
 bool NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::has_data() const
 {
+    if (is_presence_container) return true;
     return mode.is_set
 	|| sample_number.is_set
 	|| interval.is_set;
@@ -1196,7 +1215,8 @@ bool NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::has_
 std::string NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sampling-mode" <<"[mode='" <<mode <<"']";
+    path_buffer << "sampling-mode";
+    ADD_KEY_TOKEN(mode, "mode");
     return path_buffer.str();
 }
 
@@ -1270,9 +1290,11 @@ bool NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::has_
 }
 
 NetFlow::FlowMonitorMapTable::FlowMonitorMapTable()
+    :
+    flow_monitor_map(this, {"monitor_map_name"})
 {
 
-    yang_name = "flow-monitor-map-table"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow-monitor-map-table"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetFlow::FlowMonitorMapTable::~FlowMonitorMapTable()
@@ -1281,7 +1303,8 @@ NetFlow::FlowMonitorMapTable::~FlowMonitorMapTable()
 
 bool NetFlow::FlowMonitorMapTable::has_data() const
 {
-    for (std::size_t index=0; index<flow_monitor_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flow_monitor_map.len(); index++)
     {
         if(flow_monitor_map[index]->has_data())
             return true;
@@ -1291,7 +1314,7 @@ bool NetFlow::FlowMonitorMapTable::has_data() const
 
 bool NetFlow::FlowMonitorMapTable::has_operation() const
 {
-    for (std::size_t index=0; index<flow_monitor_map.size(); index++)
+    for (std::size_t index=0; index<flow_monitor_map.len(); index++)
     {
         if(flow_monitor_map[index]->has_operation())
             return true;
@@ -1328,7 +1351,7 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::get_child_by_name(const st
     {
         auto c = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap>();
         c->parent = this;
-        flow_monitor_map.push_back(c);
+        flow_monitor_map.append(c);
         return c;
     }
 
@@ -1340,7 +1363,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flow_monitor_map)
+    for (auto c : flow_monitor_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1375,15 +1398,15 @@ NetFlow::FlowMonitorMapTable::FlowMonitorMap::FlowMonitorMap()
     cache_active_aging_timeout{YType::uint32, "cache-active-aging-timeout"},
     cache_timeout_rate_limit{YType::uint32, "cache-timeout-rate-limit"},
     cache_aging_mode{YType::enumeration, "cache-aging-mode"}
-    	,
+        ,
     option(std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option>())
-	,exporters(std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters>())
-	,record(nullptr) // presence node
+    , exporters(std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters>())
+    , record(nullptr) // presence node
 {
     option->parent = this;
     exporters->parent = this;
 
-    yang_name = "flow-monitor-map"; yang_parent_name = "flow-monitor-map-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow-monitor-map"; yang_parent_name = "flow-monitor-map-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetFlow::FlowMonitorMapTable::FlowMonitorMap::~FlowMonitorMap()
@@ -1392,6 +1415,7 @@ NetFlow::FlowMonitorMapTable::FlowMonitorMap::~FlowMonitorMap()
 
 bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::has_data() const
 {
+    if (is_presence_container) return true;
     return monitor_map_name.is_set
 	|| cache_update_aging_timeout.is_set
 	|| cache_entries.is_set
@@ -1429,7 +1453,8 @@ std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_absolute_path() co
 std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flow-monitor-map" <<"[monitor-map-name='" <<monitor_map_name <<"']";
+    path_buffer << "flow-monitor-map";
+    ADD_KEY_TOKEN(monitor_map_name, "monitor-map-name");
     return path_buffer.str();
 }
 
@@ -1596,7 +1621,7 @@ NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::Option()
     bgp_attr{YType::empty, "bgp-attr"}
 {
 
-    yang_name = "option"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::~Option()
@@ -1605,6 +1630,7 @@ NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::~Option()
 
 bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::has_data() const
 {
+    if (is_presence_container) return true;
     return filtered.is_set
 	|| out_bundle_member.is_set
 	|| out_phys_int.is_set
@@ -1708,9 +1734,11 @@ bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::has_leaf_or_child_of_
 }
 
 NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporters()
+    :
+    exporter(this, {"exporter_name"})
 {
 
-    yang_name = "exporters"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exporters"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::~Exporters()
@@ -1719,7 +1747,8 @@ NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::~Exporters()
 
 bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::has_data() const
 {
-    for (std::size_t index=0; index<exporter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exporter.len(); index++)
     {
         if(exporter[index]->has_data())
             return true;
@@ -1729,7 +1758,7 @@ bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::has_data() const
 
 bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::has_operation() const
 {
-    for (std::size_t index=0; index<exporter.size(); index++)
+    for (std::size_t index=0; index<exporter.len(); index++)
     {
         if(exporter[index]->has_operation())
             return true;
@@ -1759,7 +1788,7 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters:
     {
         auto c = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter>();
         c->parent = this;
-        exporter.push_back(c);
+        exporter.append(c);
         return c;
     }
 
@@ -1771,7 +1800,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::Flo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exporter)
+    for (auto c : exporter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1802,7 +1831,7 @@ NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::Exporter()
     exporter_name{YType::str, "exporter-name"}
 {
 
-    yang_name = "exporter"; yang_parent_name = "exporters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exporter"; yang_parent_name = "exporters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::~Exporter()
@@ -1811,6 +1840,7 @@ NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::~Exporter()
 
 bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::has_data() const
 {
+    if (is_presence_container) return true;
     return exporter_name.is_set;
 }
 
@@ -1823,7 +1853,8 @@ bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::has_oper
 std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exporter" <<"[exporter-name='" <<exporter_name <<"']";
+    path_buffer << "exporter";
+    ADD_KEY_TOKEN(exporter_name, "exporter-name");
     return path_buffer.str();
 }
 
@@ -1880,7 +1911,7 @@ NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::Record()
     label{YType::uint32, "label"}
 {
 
-    yang_name = "record"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "record"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::~Record()
@@ -1889,6 +1920,7 @@ NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::~Record()
 
 bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::has_data() const
 {
+    if (is_presence_container) return true;
     return record_name.is_set
 	|| label.is_set;
 }
@@ -1966,9 +1998,11 @@ bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::has_leaf_or_child_of_
 }
 
 NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMapPerformanceTable()
+    :
+    flow_monitor_map(this, {"monitor_map_name"})
 {
 
-    yang_name = "flow-monitor-map-performance-table"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow-monitor-map-performance-table"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetFlow::FlowMonitorMapPerformanceTable::~FlowMonitorMapPerformanceTable()
@@ -1977,7 +2011,8 @@ NetFlow::FlowMonitorMapPerformanceTable::~FlowMonitorMapPerformanceTable()
 
 bool NetFlow::FlowMonitorMapPerformanceTable::has_data() const
 {
-    for (std::size_t index=0; index<flow_monitor_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flow_monitor_map.len(); index++)
     {
         if(flow_monitor_map[index]->has_data())
             return true;
@@ -1987,7 +2022,7 @@ bool NetFlow::FlowMonitorMapPerformanceTable::has_data() const
 
 bool NetFlow::FlowMonitorMapPerformanceTable::has_operation() const
 {
-    for (std::size_t index=0; index<flow_monitor_map.size(); index++)
+    for (std::size_t index=0; index<flow_monitor_map.len(); index++)
     {
         if(flow_monitor_map[index]->has_operation())
             return true;
@@ -2024,7 +2059,7 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::get_child_by_na
     {
         auto c = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap>();
         c->parent = this;
-        flow_monitor_map.push_back(c);
+        flow_monitor_map.append(c);
         return c;
     }
 
@@ -2036,7 +2071,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flow_monitor_map)
+    for (auto c : flow_monitor_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2071,15 +2106,15 @@ NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::FlowMonitorMap()
     cache_active_aging_timeout{YType::uint32, "cache-active-aging-timeout"},
     cache_timeout_rate_limit{YType::uint32, "cache-timeout-rate-limit"},
     cache_aging_mode{YType::enumeration, "cache-aging-mode"}
-    	,
+        ,
     option(std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option>())
-	,exporters(std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters>())
-	,record(nullptr) // presence node
+    , exporters(std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters>())
+    , record(nullptr) // presence node
 {
     option->parent = this;
     exporters->parent = this;
 
-    yang_name = "flow-monitor-map"; yang_parent_name = "flow-monitor-map-performance-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow-monitor-map"; yang_parent_name = "flow-monitor-map-performance-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::~FlowMonitorMap()
@@ -2088,6 +2123,7 @@ NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::~FlowMonitorMap()
 
 bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::has_data() const
 {
+    if (is_presence_container) return true;
     return monitor_map_name.is_set
 	|| cache_update_aging_timeout.is_set
 	|| cache_entries.is_set
@@ -2125,7 +2161,8 @@ std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_absolut
 std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flow-monitor-map" <<"[monitor-map-name='" <<monitor_map_name <<"']";
+    path_buffer << "flow-monitor-map";
+    ADD_KEY_TOKEN(monitor_map_name, "monitor-map-name");
     return path_buffer.str();
 }
 
@@ -2292,7 +2329,7 @@ NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::Option()
     bgp_attr{YType::empty, "bgp-attr"}
 {
 
-    yang_name = "option"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::~Option()
@@ -2301,6 +2338,7 @@ NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::~Option()
 
 bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::has_data() const
 {
+    if (is_presence_container) return true;
     return filtered.is_set
 	|| out_bundle_member.is_set
 	|| out_phys_int.is_set
@@ -2404,9 +2442,11 @@ bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::has_leaf_o
 }
 
 NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporters()
+    :
+    exporter(this, {"exporter_name"})
 {
 
-    yang_name = "exporters"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exporters"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::~Exporters()
@@ -2415,7 +2455,8 @@ NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::~Exporters()
 
 bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::has_data() const
 {
-    for (std::size_t index=0; index<exporter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exporter.len(); index++)
     {
         if(exporter[index]->has_data())
             return true;
@@ -2425,7 +2466,7 @@ bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::has_dat
 
 bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::has_operation() const
 {
-    for (std::size_t index=0; index<exporter.size(); index++)
+    for (std::size_t index=0; index<exporter.len(); index++)
     {
         if(exporter[index]->has_operation())
             return true;
@@ -2455,7 +2496,7 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap:
     {
         auto c = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter>();
         c->parent = this;
-        exporter.push_back(c);
+        exporter.append(c);
         return c;
     }
 
@@ -2467,7 +2508,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exporter)
+    for (auto c : exporter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2498,7 +2539,7 @@ NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::Ex
     exporter_name{YType::str, "exporter-name"}
 {
 
-    yang_name = "exporter"; yang_parent_name = "exporters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exporter"; yang_parent_name = "exporters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::~Exporter()
@@ -2507,6 +2548,7 @@ NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::~E
 
 bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::has_data() const
 {
+    if (is_presence_container) return true;
     return exporter_name.is_set;
 }
 
@@ -2519,7 +2561,8 @@ bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporte
 std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exporter" <<"[exporter-name='" <<exporter_name <<"']";
+    path_buffer << "exporter";
+    ADD_KEY_TOKEN(exporter_name, "exporter-name");
     return path_buffer.str();
 }
 
@@ -2576,7 +2619,7 @@ NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::Record()
     label{YType::uint32, "label"}
 {
 
-    yang_name = "record"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "record"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::~Record()
@@ -2585,6 +2628,7 @@ NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::~Record()
 
 bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::has_data() const
 {
+    if (is_presence_container) return true;
     return record_name.is_set
 	|| label.is_set;
 }
@@ -2661,11 +2705,11 @@ bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::has_leaf_o
     return false;
 }
 
+const Enum::YLeaf NfSamplingMode::random {2, "random"};
+
 const Enum::YLeaf NfCacheAgingMode::normal {0, "normal"};
 const Enum::YLeaf NfCacheAgingMode::permanent {1, "permanent"};
 const Enum::YLeaf NfCacheAgingMode::immediate {2, "immediate"};
-
-const Enum::YLeaf NfSamplingMode::random {2, "random"};
 
 
 }

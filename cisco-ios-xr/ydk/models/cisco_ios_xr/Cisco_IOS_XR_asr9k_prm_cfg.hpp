@@ -57,7 +57,7 @@ class HardwareModuleQosMode::Nodes : public ydk::Entity
 
         class Node; //type: HardwareModuleQosMode::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleQosMode::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // HardwareModuleQosMode::Nodes
 
@@ -132,7 +132,7 @@ class HardwareModuleTcpMssAdjust::Nodes : public ydk::Entity
 
         class Node; //type: HardwareModuleTcpMssAdjust::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleTcpMssAdjust::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // HardwareModuleTcpMssAdjust::Nodes
 
@@ -180,7 +180,7 @@ class HardwareModuleTcpMssAdjust::Nodes::Node::Nps : public ydk::Entity
 
         class Np; //type: HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np> > np;
+        ydk::YList np;
         
 }; // HardwareModuleTcpMssAdjust::Nodes::Node::Nps
 
@@ -205,6 +205,79 @@ class HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np : public ydk::Entity
         ydk::YLeaf adjust_value; //type: uint32
 
 }; // HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np
+
+class HardwareModuleLoadBalance : public ydk::Entity
+{
+    public:
+        HardwareModuleLoadBalance();
+        ~HardwareModuleLoadBalance();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        class Bundle; //type: HardwareModuleLoadBalance::Bundle
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleLoadBalance::Bundle> bundle;
+        
+}; // HardwareModuleLoadBalance
+
+
+class HardwareModuleLoadBalance::Bundle : public ydk::Entity
+{
+    public:
+        Bundle();
+        ~Bundle();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class L2Service; //type: HardwareModuleLoadBalance::Bundle::L2Service
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleLoadBalance::Bundle::L2Service> l2_service;
+        
+}; // HardwareModuleLoadBalance::Bundle
+
+
+class HardwareModuleLoadBalance::Bundle::L2Service : public ydk::Entity
+{
+    public:
+        L2Service();
+        ~L2Service();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf l3_parameters; //type: empty
+
+}; // HardwareModuleLoadBalance::Bundle::L2Service
 
 class HardwareModuleTcam : public ydk::Entity
 {
@@ -254,7 +327,7 @@ class HardwareModuleTcam::Nodes : public ydk::Entity
 
         class Node; //type: HardwareModuleTcam::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleTcam::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // HardwareModuleTcam::Nodes
 
@@ -522,7 +595,7 @@ class HardwareModuleEfd::Nodes : public ydk::Entity
 
         class Node; //type: HardwareModuleEfd::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // HardwareModuleEfd::Nodes
 
@@ -713,19 +786,19 @@ class HardwareModuleEfd::Nodes::Node::MplsExp : public ydk::Entity
 
 }; // HardwareModuleEfd::Nodes::Node::MplsExp
 
-class Asr9kEfdOperation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf less_than;
-        static const ydk::Enum::YLeaf greater_than_or_equal;
-
-};
-
 class Asr9kEfdMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf only_outer_encap;
         static const ydk::Enum::YLeaf include_inner_encap;
+
+};
+
+class Asr9kEfdOperation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf less_than;
+        static const ydk::Enum::YLeaf greater_than_or_equal;
 
 };
 

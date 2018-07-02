@@ -42,7 +42,7 @@ class DiffservInterfacesState : public ydk::Entity
 
         class DiffservInterface; //type: DiffservInterfacesState::DiffservInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface> > diffserv_interface;
+        ydk::YList diffserv_interface;
         
 }; // DiffservInterfacesState
 
@@ -67,7 +67,7 @@ class DiffservInterfacesState::DiffservInterface : public ydk::Entity
         ydk::YLeaf name; //type: string
         class DiffservTargetEntry; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry> > diffserv_target_entry;
+        ydk::YList diffserv_target_entry;
         
 }; // DiffservInterfacesState::DiffservInterface
 
@@ -92,7 +92,7 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry : public y
         ydk::YLeaf policy_name; //type: string
         class DiffservTargetClassifierStatistics; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics> > diffserv_target_classifier_statistics;
+        ydk::YList diffserv_target_classifier_statistics;
         
 }; // DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
 
@@ -120,7 +120,7 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservT
         class QueuingStatistics; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics> classifier_entry_statistics;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics> > meter_statistics;
+        ydk::YList meter_statistics;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics> queuing_statistics;
         
 }; // DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics

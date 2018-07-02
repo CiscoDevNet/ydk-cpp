@@ -13,28 +13,28 @@ namespace CISCO_IETF_ISIS_MIB {
 
 CISCOIETFISISMIB::CISCOIETFISISMIB()
     :
-    ciisysobject(std::make_shared<CISCOIETFISISMIB::Ciisysobject>())
-	,ciicirc(std::make_shared<CISCOIETFISISMIB::Ciicirc>())
-	,ciimanareaaddrtable(std::make_shared<CISCOIETFISISMIB::Ciimanareaaddrtable>())
-	,ciiareaaddrtable(std::make_shared<CISCOIETFISISMIB::Ciiareaaddrtable>())
-	,ciisysprotsupptable(std::make_shared<CISCOIETFISISMIB::Ciisysprotsupptable>())
-	,ciisummaddrtable(std::make_shared<CISCOIETFISISMIB::Ciisummaddrtable>())
-	,ciiredistributeaddrtable(std::make_shared<CISCOIETFISISMIB::Ciiredistributeaddrtable>())
-	,ciiroutertable(std::make_shared<CISCOIETFISISMIB::Ciiroutertable>())
-	,ciisysleveltable(std::make_shared<CISCOIETFISISMIB::Ciisysleveltable>())
-	,ciicirctable(std::make_shared<CISCOIETFISISMIB::Ciicirctable>())
-	,ciicircleveltable(std::make_shared<CISCOIETFISISMIB::Ciicircleveltable>())
-	,ciisystemcountertable(std::make_shared<CISCOIETFISISMIB::Ciisystemcountertable>())
-	,ciicircuitcountertable(std::make_shared<CISCOIETFISISMIB::Ciicircuitcountertable>())
-	,ciipacketcountertable(std::make_shared<CISCOIETFISISMIB::Ciipacketcountertable>())
-	,ciiisadjtable(std::make_shared<CISCOIETFISISMIB::Ciiisadjtable>())
-	,ciiisadjareaaddrtable(std::make_shared<CISCOIETFISISMIB::Ciiisadjareaaddrtable>())
-	,ciiisadjipaddrtable(std::make_shared<CISCOIETFISISMIB::Ciiisadjipaddrtable>())
-	,ciiisadjprotsupptable(std::make_shared<CISCOIETFISISMIB::Ciiisadjprotsupptable>())
-	,ciiratable(std::make_shared<CISCOIETFISISMIB::Ciiratable>())
-	,ciiipratable(std::make_shared<CISCOIETFISISMIB::Ciiipratable>())
-	,ciilspsummarytable(std::make_shared<CISCOIETFISISMIB::Ciilspsummarytable>())
-	,ciilsptlvtable(std::make_shared<CISCOIETFISISMIB::Ciilsptlvtable>())
+    ciisysobject(std::make_shared<CISCOIETFISISMIB::CiiSysObject>())
+    , ciicirc(std::make_shared<CISCOIETFISISMIB::CiiCirc>())
+    , ciimanareaaddrtable(std::make_shared<CISCOIETFISISMIB::CiiManAreaAddrTable>())
+    , ciiareaaddrtable(std::make_shared<CISCOIETFISISMIB::CiiAreaAddrTable>())
+    , ciisysprotsupptable(std::make_shared<CISCOIETFISISMIB::CiiSysProtSuppTable>())
+    , ciisummaddrtable(std::make_shared<CISCOIETFISISMIB::CiiSummAddrTable>())
+    , ciiredistributeaddrtable(std::make_shared<CISCOIETFISISMIB::CiiRedistributeAddrTable>())
+    , ciiroutertable(std::make_shared<CISCOIETFISISMIB::CiiRouterTable>())
+    , ciisysleveltable(std::make_shared<CISCOIETFISISMIB::CiiSysLevelTable>())
+    , ciicirctable(std::make_shared<CISCOIETFISISMIB::CiiCircTable>())
+    , ciicircleveltable(std::make_shared<CISCOIETFISISMIB::CiiCircLevelTable>())
+    , ciisystemcountertable(std::make_shared<CISCOIETFISISMIB::CiiSystemCounterTable>())
+    , ciicircuitcountertable(std::make_shared<CISCOIETFISISMIB::CiiCircuitCounterTable>())
+    , ciipacketcountertable(std::make_shared<CISCOIETFISISMIB::CiiPacketCounterTable>())
+    , ciiisadjtable(std::make_shared<CISCOIETFISISMIB::CiiISAdjTable>())
+    , ciiisadjareaaddrtable(std::make_shared<CISCOIETFISISMIB::CiiISAdjAreaAddrTable>())
+    , ciiisadjipaddrtable(std::make_shared<CISCOIETFISISMIB::CiiISAdjIPAddrTable>())
+    , ciiisadjprotsupptable(std::make_shared<CISCOIETFISISMIB::CiiISAdjProtSuppTable>())
+    , ciiratable(std::make_shared<CISCOIETFISISMIB::CiiRATable>())
+    , ciiipratable(std::make_shared<CISCOIETFISISMIB::CiiIPRATable>())
+    , ciilspsummarytable(std::make_shared<CISCOIETFISISMIB::CiiLSPSummaryTable>())
+    , ciilsptlvtable(std::make_shared<CISCOIETFISISMIB::CiiLSPTLVTable>())
 {
     ciisysobject->parent = this;
     ciicirc->parent = this;
@@ -59,7 +59,7 @@ CISCOIETFISISMIB::CISCOIETFISISMIB()
     ciilspsummarytable->parent = this;
     ciilsptlvtable->parent = this;
 
-    yang_name = "CISCO-IETF-ISIS-MIB"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-IETF-ISIS-MIB"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOIETFISISMIB::~CISCOIETFISISMIB()
@@ -68,6 +68,7 @@ CISCOIETFISISMIB::~CISCOIETFISISMIB()
 
 bool CISCOIETFISISMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ciisysobject !=  nullptr && ciisysobject->has_data())
 	|| (ciicirc !=  nullptr && ciicirc->has_data())
 	|| (ciimanareaaddrtable !=  nullptr && ciimanareaaddrtable->has_data())
@@ -141,7 +142,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciisysobject == nullptr)
         {
-            ciisysobject = std::make_shared<CISCOIETFISISMIB::Ciisysobject>();
+            ciisysobject = std::make_shared<CISCOIETFISISMIB::CiiSysObject>();
         }
         return ciisysobject;
     }
@@ -150,7 +151,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciicirc == nullptr)
         {
-            ciicirc = std::make_shared<CISCOIETFISISMIB::Ciicirc>();
+            ciicirc = std::make_shared<CISCOIETFISISMIB::CiiCirc>();
         }
         return ciicirc;
     }
@@ -159,7 +160,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciimanareaaddrtable == nullptr)
         {
-            ciimanareaaddrtable = std::make_shared<CISCOIETFISISMIB::Ciimanareaaddrtable>();
+            ciimanareaaddrtable = std::make_shared<CISCOIETFISISMIB::CiiManAreaAddrTable>();
         }
         return ciimanareaaddrtable;
     }
@@ -168,7 +169,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciiareaaddrtable == nullptr)
         {
-            ciiareaaddrtable = std::make_shared<CISCOIETFISISMIB::Ciiareaaddrtable>();
+            ciiareaaddrtable = std::make_shared<CISCOIETFISISMIB::CiiAreaAddrTable>();
         }
         return ciiareaaddrtable;
     }
@@ -177,7 +178,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciisysprotsupptable == nullptr)
         {
-            ciisysprotsupptable = std::make_shared<CISCOIETFISISMIB::Ciisysprotsupptable>();
+            ciisysprotsupptable = std::make_shared<CISCOIETFISISMIB::CiiSysProtSuppTable>();
         }
         return ciisysprotsupptable;
     }
@@ -186,7 +187,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciisummaddrtable == nullptr)
         {
-            ciisummaddrtable = std::make_shared<CISCOIETFISISMIB::Ciisummaddrtable>();
+            ciisummaddrtable = std::make_shared<CISCOIETFISISMIB::CiiSummAddrTable>();
         }
         return ciisummaddrtable;
     }
@@ -195,7 +196,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciiredistributeaddrtable == nullptr)
         {
-            ciiredistributeaddrtable = std::make_shared<CISCOIETFISISMIB::Ciiredistributeaddrtable>();
+            ciiredistributeaddrtable = std::make_shared<CISCOIETFISISMIB::CiiRedistributeAddrTable>();
         }
         return ciiredistributeaddrtable;
     }
@@ -204,7 +205,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciiroutertable == nullptr)
         {
-            ciiroutertable = std::make_shared<CISCOIETFISISMIB::Ciiroutertable>();
+            ciiroutertable = std::make_shared<CISCOIETFISISMIB::CiiRouterTable>();
         }
         return ciiroutertable;
     }
@@ -213,7 +214,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciisysleveltable == nullptr)
         {
-            ciisysleveltable = std::make_shared<CISCOIETFISISMIB::Ciisysleveltable>();
+            ciisysleveltable = std::make_shared<CISCOIETFISISMIB::CiiSysLevelTable>();
         }
         return ciisysleveltable;
     }
@@ -222,7 +223,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciicirctable == nullptr)
         {
-            ciicirctable = std::make_shared<CISCOIETFISISMIB::Ciicirctable>();
+            ciicirctable = std::make_shared<CISCOIETFISISMIB::CiiCircTable>();
         }
         return ciicirctable;
     }
@@ -231,7 +232,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciicircleveltable == nullptr)
         {
-            ciicircleveltable = std::make_shared<CISCOIETFISISMIB::Ciicircleveltable>();
+            ciicircleveltable = std::make_shared<CISCOIETFISISMIB::CiiCircLevelTable>();
         }
         return ciicircleveltable;
     }
@@ -240,7 +241,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciisystemcountertable == nullptr)
         {
-            ciisystemcountertable = std::make_shared<CISCOIETFISISMIB::Ciisystemcountertable>();
+            ciisystemcountertable = std::make_shared<CISCOIETFISISMIB::CiiSystemCounterTable>();
         }
         return ciisystemcountertable;
     }
@@ -249,7 +250,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciicircuitcountertable == nullptr)
         {
-            ciicircuitcountertable = std::make_shared<CISCOIETFISISMIB::Ciicircuitcountertable>();
+            ciicircuitcountertable = std::make_shared<CISCOIETFISISMIB::CiiCircuitCounterTable>();
         }
         return ciicircuitcountertable;
     }
@@ -258,7 +259,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciipacketcountertable == nullptr)
         {
-            ciipacketcountertable = std::make_shared<CISCOIETFISISMIB::Ciipacketcountertable>();
+            ciipacketcountertable = std::make_shared<CISCOIETFISISMIB::CiiPacketCounterTable>();
         }
         return ciipacketcountertable;
     }
@@ -267,7 +268,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciiisadjtable == nullptr)
         {
-            ciiisadjtable = std::make_shared<CISCOIETFISISMIB::Ciiisadjtable>();
+            ciiisadjtable = std::make_shared<CISCOIETFISISMIB::CiiISAdjTable>();
         }
         return ciiisadjtable;
     }
@@ -276,7 +277,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciiisadjareaaddrtable == nullptr)
         {
-            ciiisadjareaaddrtable = std::make_shared<CISCOIETFISISMIB::Ciiisadjareaaddrtable>();
+            ciiisadjareaaddrtable = std::make_shared<CISCOIETFISISMIB::CiiISAdjAreaAddrTable>();
         }
         return ciiisadjareaaddrtable;
     }
@@ -285,7 +286,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciiisadjipaddrtable == nullptr)
         {
-            ciiisadjipaddrtable = std::make_shared<CISCOIETFISISMIB::Ciiisadjipaddrtable>();
+            ciiisadjipaddrtable = std::make_shared<CISCOIETFISISMIB::CiiISAdjIPAddrTable>();
         }
         return ciiisadjipaddrtable;
     }
@@ -294,7 +295,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciiisadjprotsupptable == nullptr)
         {
-            ciiisadjprotsupptable = std::make_shared<CISCOIETFISISMIB::Ciiisadjprotsupptable>();
+            ciiisadjprotsupptable = std::make_shared<CISCOIETFISISMIB::CiiISAdjProtSuppTable>();
         }
         return ciiisadjprotsupptable;
     }
@@ -303,7 +304,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciiratable == nullptr)
         {
-            ciiratable = std::make_shared<CISCOIETFISISMIB::Ciiratable>();
+            ciiratable = std::make_shared<CISCOIETFISISMIB::CiiRATable>();
         }
         return ciiratable;
     }
@@ -312,7 +313,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciiipratable == nullptr)
         {
-            ciiipratable = std::make_shared<CISCOIETFISISMIB::Ciiipratable>();
+            ciiipratable = std::make_shared<CISCOIETFISISMIB::CiiIPRATable>();
         }
         return ciiipratable;
     }
@@ -321,7 +322,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciilspsummarytable == nullptr)
         {
-            ciilspsummarytable = std::make_shared<CISCOIETFISISMIB::Ciilspsummarytable>();
+            ciilspsummarytable = std::make_shared<CISCOIETFISISMIB::CiiLSPSummaryTable>();
         }
         return ciilspsummarytable;
     }
@@ -330,7 +331,7 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     {
         if(ciilsptlvtable == nullptr)
         {
-            ciilsptlvtable = std::make_shared<CISCOIETFISISMIB::Ciilsptlvtable>();
+            ciilsptlvtable = std::make_shared<CISCOIETFISISMIB::CiiLSPTLVTable>();
         }
         return ciilsptlvtable;
     }
@@ -495,7 +496,7 @@ bool CISCOIETFISISMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOIETFISISMIB::Ciisysobject::Ciisysobject()
+CISCOIETFISISMIB::CiiSysObject::CiiSysObject()
     :
     ciisysversion{YType::enumeration, "ciiSysVersion"},
     ciisystype{YType::enumeration, "ciiSysType"},
@@ -510,15 +511,16 @@ CISCOIETFISISMIB::Ciisysobject::Ciisysobject()
     ciisysreceivelspbuffersize{YType::uint32, "ciiSysReceiveLSPBufferSize"}
 {
 
-    yang_name = "ciiSysObject"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiSysObject"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciisysobject::~Ciisysobject()
+CISCOIETFISISMIB::CiiSysObject::~CiiSysObject()
 {
 }
 
-bool CISCOIETFISISMIB::Ciisysobject::has_data() const
+bool CISCOIETFISISMIB::CiiSysObject::has_data() const
 {
+    if (is_presence_container) return true;
     return ciisysversion.is_set
 	|| ciisystype.is_set
 	|| ciisysid.is_set
@@ -532,7 +534,7 @@ bool CISCOIETFISISMIB::Ciisysobject::has_data() const
 	|| ciisysreceivelspbuffersize.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciisysobject::has_operation() const
+bool CISCOIETFISISMIB::CiiSysObject::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciisysversion.yfilter)
@@ -548,21 +550,21 @@ bool CISCOIETFISISMIB::Ciisysobject::has_operation() const
 	|| ydk::is_set(ciisysreceivelspbuffersize.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciisysobject::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiSysObject::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciisysobject::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiSysObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiSysObject";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisysobject::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSysObject::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -582,19 +584,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisysobject::g
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciisysobject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSysObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisysobject::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSysObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciisysobject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiSysObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiSysVersion")
     {
@@ -664,7 +666,7 @@ void CISCOIETFISISMIB::Ciisysobject::set_value(const std::string & value_path, c
     }
 }
 
-void CISCOIETFISISMIB::Ciisysobject::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiSysObject::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiSysVersion")
     {
@@ -712,51 +714,52 @@ void CISCOIETFISISMIB::Ciisysobject::set_filter(const std::string & value_path, 
     }
 }
 
-bool CISCOIETFISISMIB::Ciisysobject::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiSysObject::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiSysVersion" || name == "ciiSysType" || name == "ciiSysID" || name == "ciiSysMaxPathSplits" || name == "ciiSysMaxLSPGenInt" || name == "ciiSysPollESHelloRate" || name == "ciiSysWaitTime" || name == "ciiSysAdminState" || name == "ciiSysL2toL1Leaking" || name == "ciiSysMaxAge" || name == "ciiSysReceiveLSPBufferSize")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciicirc::Ciicirc()
+CISCOIETFISISMIB::CiiCirc::CiiCirc()
     :
     ciinextcircindex{YType::uint32, "ciiNextCircIndex"}
 {
 
-    yang_name = "ciiCirc"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiCirc"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciicirc::~Ciicirc()
+CISCOIETFISISMIB::CiiCirc::~CiiCirc()
 {
 }
 
-bool CISCOIETFISISMIB::Ciicirc::has_data() const
+bool CISCOIETFISISMIB::CiiCirc::has_data() const
 {
+    if (is_presence_container) return true;
     return ciinextcircindex.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciicirc::has_operation() const
+bool CISCOIETFISISMIB::CiiCirc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciinextcircindex.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciicirc::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiCirc::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciicirc::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiCirc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiCirc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicirc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCirc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -766,19 +769,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicirc::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciicirc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCirc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciicirc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCirc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciicirc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiCirc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiNextCircIndex")
     {
@@ -788,7 +791,7 @@ void CISCOIETFISISMIB::Ciicirc::set_value(const std::string & value_path, const 
     }
 }
 
-void CISCOIETFISISMIB::Ciicirc::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiCirc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiNextCircIndex")
     {
@@ -796,26 +799,29 @@ void CISCOIETFISISMIB::Ciicirc::set_filter(const std::string & value_path, YFilt
     }
 }
 
-bool CISCOIETFISISMIB::Ciicirc::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiCirc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiNextCircIndex")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrtable()
+CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrTable()
+    :
+    ciimanareaaddrentry(this, {"ciimanareaaddr"})
 {
 
-    yang_name = "ciiManAreaAddrTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiManAreaAddrTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciimanareaaddrtable::~Ciimanareaaddrtable()
+CISCOIETFISISMIB::CiiManAreaAddrTable::~CiiManAreaAddrTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciimanareaaddrtable::has_data() const
+bool CISCOIETFISISMIB::CiiManAreaAddrTable::has_data() const
 {
-    for (std::size_t index=0; index<ciimanareaaddrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciimanareaaddrentry.len(); index++)
     {
         if(ciimanareaaddrentry[index]->has_data())
             return true;
@@ -823,9 +829,9 @@ bool CISCOIETFISISMIB::Ciimanareaaddrtable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciimanareaaddrtable::has_operation() const
+bool CISCOIETFISISMIB::CiiManAreaAddrTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciimanareaaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciimanareaaddrentry.len(); index++)
     {
         if(ciimanareaaddrentry[index]->has_operation())
             return true;
@@ -833,21 +839,21 @@ bool CISCOIETFISISMIB::Ciimanareaaddrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciimanareaaddrtable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiManAreaAddrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciimanareaaddrtable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiManAreaAddrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiManAreaAddrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciimanareaaddrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiManAreaAddrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -856,25 +862,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciimanareaaddrt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciimanareaaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiManAreaAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiManAreaAddrEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry>();
         c->parent = this;
-        ciimanareaaddrentry.push_back(c);
+        ciimanareaaddrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciimanareaaddrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiManAreaAddrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciimanareaaddrentry)
+    for (auto c : ciimanareaaddrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -885,62 +891,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciimanareaaddrt
     return children;
 }
 
-void CISCOIETFISISMIB::Ciimanareaaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiManAreaAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciimanareaaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiManAreaAddrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciimanareaaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiManAreaAddrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiManAreaAddrEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::Ciimanareaaddrentry()
+CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::CiiManAreaAddrEntry()
     :
     ciimanareaaddr{YType::str, "ciiManAreaAddr"},
     ciimanareaaddrexiststate{YType::enumeration, "ciiManAreaAddrExistState"}
 {
 
-    yang_name = "ciiManAreaAddrEntry"; yang_parent_name = "ciiManAreaAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiManAreaAddrEntry"; yang_parent_name = "ciiManAreaAddrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::~Ciimanareaaddrentry()
+CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::~CiiManAreaAddrEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::has_data() const
+bool CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciimanareaaddr.is_set
 	|| ciimanareaaddrexiststate.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::has_operation() const
+bool CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciimanareaaddr.yfilter)
 	|| ydk::is_set(ciimanareaaddrexiststate.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiManAreaAddrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiManAreaAddrEntry" <<"[ciiManAreaAddr='" <<ciimanareaaddr <<"']";
+    path_buffer << "ciiManAreaAddrEntry";
+    ADD_KEY_TOKEN(ciimanareaaddr, "ciiManAreaAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -951,19 +959,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciimanareaaddrt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiManAreaAddr")
     {
@@ -979,7 +987,7 @@ void CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::set_value(const
     }
 }
 
-void CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiManAreaAddr")
     {
@@ -991,26 +999,29 @@ void CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::set_filter(cons
     }
 }
 
-bool CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiManAreaAddr" || name == "ciiManAreaAddrExistState")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrtable()
+CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrTable()
+    :
+    ciiareaaddrentry(this, {"ciiareaaddr"})
 {
 
-    yang_name = "ciiAreaAddrTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiAreaAddrTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiareaaddrtable::~Ciiareaaddrtable()
+CISCOIETFISISMIB::CiiAreaAddrTable::~CiiAreaAddrTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiareaaddrtable::has_data() const
+bool CISCOIETFISISMIB::CiiAreaAddrTable::has_data() const
 {
-    for (std::size_t index=0; index<ciiareaaddrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciiareaaddrentry.len(); index++)
     {
         if(ciiareaaddrentry[index]->has_data())
             return true;
@@ -1018,9 +1029,9 @@ bool CISCOIETFISISMIB::Ciiareaaddrtable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciiareaaddrtable::has_operation() const
+bool CISCOIETFISISMIB::CiiAreaAddrTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiareaaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciiareaaddrentry.len(); index++)
     {
         if(ciiareaaddrentry[index]->has_operation())
             return true;
@@ -1028,21 +1039,21 @@ bool CISCOIETFISISMIB::Ciiareaaddrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiareaaddrtable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiAreaAddrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiareaaddrtable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiAreaAddrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiAreaAddrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiareaaddrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiAreaAddrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1051,25 +1062,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiareaaddrtabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiareaaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiAreaAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiAreaAddrEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry>();
         c->parent = this;
-        ciiareaaddrentry.push_back(c);
+        ciiareaaddrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiareaaddrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiAreaAddrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciiareaaddrentry)
+    for (auto c : ciiareaaddrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1080,59 +1091,61 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiareaaddrtabl
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiareaaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiAreaAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciiareaaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiAreaAddrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciiareaaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiAreaAddrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiAreaAddrEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::Ciiareaaddrentry()
+CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::CiiAreaAddrEntry()
     :
     ciiareaaddr{YType::str, "ciiAreaAddr"}
 {
 
-    yang_name = "ciiAreaAddrEntry"; yang_parent_name = "ciiAreaAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiAreaAddrEntry"; yang_parent_name = "ciiAreaAddrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::~Ciiareaaddrentry()
+CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::~CiiAreaAddrEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::has_data() const
+bool CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciiareaaddr.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::has_operation() const
+bool CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciiareaaddr.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiAreaAddrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiAreaAddrEntry" <<"[ciiAreaAddr='" <<ciiareaaddr <<"']";
+    path_buffer << "ciiAreaAddrEntry";
+    ADD_KEY_TOKEN(ciiareaaddr, "ciiAreaAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1142,19 +1155,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiareaaddrtabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiAreaAddr")
     {
@@ -1164,7 +1177,7 @@ void CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::set_value(const std::
     }
 }
 
-void CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiAreaAddr")
     {
@@ -1172,26 +1185,29 @@ void CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::set_filter(const std:
     }
 }
 
-bool CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiAreaAddr")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsupptable()
+CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppTable()
+    :
+    ciisysprotsuppentry(this, {"ciisysprotsuppprotocol"})
 {
 
-    yang_name = "ciiSysProtSuppTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiSysProtSuppTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciisysprotsupptable::~Ciisysprotsupptable()
+CISCOIETFISISMIB::CiiSysProtSuppTable::~CiiSysProtSuppTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciisysprotsupptable::has_data() const
+bool CISCOIETFISISMIB::CiiSysProtSuppTable::has_data() const
 {
-    for (std::size_t index=0; index<ciisysprotsuppentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciisysprotsuppentry.len(); index++)
     {
         if(ciisysprotsuppentry[index]->has_data())
             return true;
@@ -1199,9 +1215,9 @@ bool CISCOIETFISISMIB::Ciisysprotsupptable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciisysprotsupptable::has_operation() const
+bool CISCOIETFISISMIB::CiiSysProtSuppTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciisysprotsuppentry.size(); index++)
+    for (std::size_t index=0; index<ciisysprotsuppentry.len(); index++)
     {
         if(ciisysprotsuppentry[index]->has_operation())
             return true;
@@ -1209,21 +1225,21 @@ bool CISCOIETFISISMIB::Ciisysprotsupptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciisysprotsupptable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiSysProtSuppTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciisysprotsupptable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiSysProtSuppTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiSysProtSuppTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisysprotsupptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSysProtSuppTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1232,25 +1248,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisysprotsuppt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciisysprotsupptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSysProtSuppTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiSysProtSuppEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry>();
         c->parent = this;
-        ciisysprotsuppentry.push_back(c);
+        ciisysprotsuppentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisysprotsupptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSysProtSuppTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciisysprotsuppentry)
+    for (auto c : ciisysprotsuppentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1261,62 +1277,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisysprotsuppt
     return children;
 }
 
-void CISCOIETFISISMIB::Ciisysprotsupptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiSysProtSuppTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciisysprotsupptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiSysProtSuppTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciisysprotsupptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiSysProtSuppTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiSysProtSuppEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::Ciisysprotsuppentry()
+CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::CiiSysProtSuppEntry()
     :
     ciisysprotsuppprotocol{YType::enumeration, "ciiSysProtSuppProtocol"},
     ciisysprotsuppexiststate{YType::enumeration, "ciiSysProtSuppExistState"}
 {
 
-    yang_name = "ciiSysProtSuppEntry"; yang_parent_name = "ciiSysProtSuppTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiSysProtSuppEntry"; yang_parent_name = "ciiSysProtSuppTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::~Ciisysprotsuppentry()
+CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::~CiiSysProtSuppEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::has_data() const
+bool CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciisysprotsuppprotocol.is_set
 	|| ciisysprotsuppexiststate.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::has_operation() const
+bool CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciisysprotsuppprotocol.yfilter)
 	|| ydk::is_set(ciisysprotsuppexiststate.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiSysProtSuppTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiSysProtSuppEntry" <<"[ciiSysProtSuppProtocol='" <<ciisysprotsuppprotocol <<"']";
+    path_buffer << "ciiSysProtSuppEntry";
+    ADD_KEY_TOKEN(ciisysprotsuppprotocol, "ciiSysProtSuppProtocol");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1327,19 +1345,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisysprotsuppt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiSysProtSuppProtocol")
     {
@@ -1355,7 +1373,7 @@ void CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::set_value(const
     }
 }
 
-void CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiSysProtSuppProtocol")
     {
@@ -1367,26 +1385,29 @@ void CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::set_filter(cons
     }
 }
 
-bool CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiSysProtSuppProtocol" || name == "ciiSysProtSuppExistState")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrtable()
+CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrTable()
+    :
+    ciisummaddrentry(this, {"ciisummaddresstype", "ciisummaddress", "ciisummaddrprefixlen"})
 {
 
-    yang_name = "ciiSummAddrTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiSummAddrTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciisummaddrtable::~Ciisummaddrtable()
+CISCOIETFISISMIB::CiiSummAddrTable::~CiiSummAddrTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciisummaddrtable::has_data() const
+bool CISCOIETFISISMIB::CiiSummAddrTable::has_data() const
 {
-    for (std::size_t index=0; index<ciisummaddrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciisummaddrentry.len(); index++)
     {
         if(ciisummaddrentry[index]->has_data())
             return true;
@@ -1394,9 +1415,9 @@ bool CISCOIETFISISMIB::Ciisummaddrtable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciisummaddrtable::has_operation() const
+bool CISCOIETFISISMIB::CiiSummAddrTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciisummaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciisummaddrentry.len(); index++)
     {
         if(ciisummaddrentry[index]->has_operation())
             return true;
@@ -1404,21 +1425,21 @@ bool CISCOIETFISISMIB::Ciisummaddrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciisummaddrtable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiSummAddrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciisummaddrtable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiSummAddrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiSummAddrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisummaddrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSummAddrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1427,25 +1448,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisummaddrtabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciisummaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSummAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiSummAddrEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry>();
         c->parent = this;
-        ciisummaddrentry.push_back(c);
+        ciisummaddrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisummaddrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSummAddrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciisummaddrentry)
+    for (auto c : ciisummaddrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1456,22 +1477,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisummaddrtabl
     return children;
 }
 
-void CISCOIETFISISMIB::Ciisummaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiSummAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciisummaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiSummAddrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciisummaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiSummAddrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiSummAddrEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::Ciisummaddrentry()
+CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::CiiSummAddrEntry()
     :
     ciisummaddresstype{YType::enumeration, "ciiSummAddressType"},
     ciisummaddress{YType::str, "ciiSummAddress"},
@@ -1481,15 +1502,16 @@ CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::Ciisummaddrentry()
     ciisummaddrfullmetric{YType::uint32, "ciiSummAddrFullMetric"}
 {
 
-    yang_name = "ciiSummAddrEntry"; yang_parent_name = "ciiSummAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiSummAddrEntry"; yang_parent_name = "ciiSummAddrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::~Ciisummaddrentry()
+CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::~CiiSummAddrEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::has_data() const
+bool CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciisummaddresstype.is_set
 	|| ciisummaddress.is_set
 	|| ciisummaddrprefixlen.is_set
@@ -1498,7 +1520,7 @@ bool CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::has_data() const
 	|| ciisummaddrfullmetric.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::has_operation() const
+bool CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciisummaddresstype.yfilter)
@@ -1509,21 +1531,24 @@ bool CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::has_operation() const
 	|| ydk::is_set(ciisummaddrfullmetric.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiSummAddrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiSummAddrEntry" <<"[ciiSummAddressType='" <<ciisummaddresstype <<"']" <<"[ciiSummAddress='" <<ciisummaddress <<"']" <<"[ciiSummAddrPrefixLen='" <<ciisummaddrprefixlen <<"']";
+    path_buffer << "ciiSummAddrEntry";
+    ADD_KEY_TOKEN(ciisummaddresstype, "ciiSummAddressType");
+    ADD_KEY_TOKEN(ciisummaddress, "ciiSummAddress");
+    ADD_KEY_TOKEN(ciisummaddrprefixlen, "ciiSummAddrPrefixLen");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1538,19 +1563,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisummaddrtabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiSummAddressType")
     {
@@ -1590,7 +1615,7 @@ void CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::set_value(const std::
     }
 }
 
-void CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiSummAddressType")
     {
@@ -1618,26 +1643,29 @@ void CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::set_filter(const std:
     }
 }
 
-bool CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiSummAddressType" || name == "ciiSummAddress" || name == "ciiSummAddrPrefixLen" || name == "ciiSummAddrExistState" || name == "ciiSummAddrMetric" || name == "ciiSummAddrFullMetric")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrtable()
+CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrTable()
+    :
+    ciiredistributeaddrentry(this, {"ciiredistributeaddrtype", "ciiredistributeaddraddress", "ciiredistributeaddrprefixlen"})
 {
 
-    yang_name = "ciiRedistributeAddrTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiRedistributeAddrTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiredistributeaddrtable::~Ciiredistributeaddrtable()
+CISCOIETFISISMIB::CiiRedistributeAddrTable::~CiiRedistributeAddrTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiredistributeaddrtable::has_data() const
+bool CISCOIETFISISMIB::CiiRedistributeAddrTable::has_data() const
 {
-    for (std::size_t index=0; index<ciiredistributeaddrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciiredistributeaddrentry.len(); index++)
     {
         if(ciiredistributeaddrentry[index]->has_data())
             return true;
@@ -1645,9 +1673,9 @@ bool CISCOIETFISISMIB::Ciiredistributeaddrtable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciiredistributeaddrtable::has_operation() const
+bool CISCOIETFISISMIB::CiiRedistributeAddrTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiredistributeaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciiredistributeaddrentry.len(); index++)
     {
         if(ciiredistributeaddrentry[index]->has_operation())
             return true;
@@ -1655,21 +1683,21 @@ bool CISCOIETFISISMIB::Ciiredistributeaddrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiredistributeaddrtable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiRedistributeAddrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiredistributeaddrtable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiRedistributeAddrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiRedistributeAddrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiredistributeaddrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiRedistributeAddrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1678,25 +1706,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiredistribute
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiredistributeaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiRedistributeAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiRedistributeAddrEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry>();
         c->parent = this;
-        ciiredistributeaddrentry.push_back(c);
+        ciiredistributeaddrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiredistributeaddrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiRedistributeAddrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciiredistributeaddrentry)
+    for (auto c : ciiredistributeaddrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1707,22 +1735,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiredistribute
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiredistributeaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiRedistributeAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciiredistributeaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiRedistributeAddrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciiredistributeaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiRedistributeAddrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiRedistributeAddrEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::Ciiredistributeaddrentry()
+CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::CiiRedistributeAddrEntry()
     :
     ciiredistributeaddrtype{YType::enumeration, "ciiRedistributeAddrType"},
     ciiredistributeaddraddress{YType::str, "ciiRedistributeAddrAddress"},
@@ -1730,22 +1758,23 @@ CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::Ciiredistr
     ciiredistributeaddrexiststate{YType::enumeration, "ciiRedistributeAddrExistState"}
 {
 
-    yang_name = "ciiRedistributeAddrEntry"; yang_parent_name = "ciiRedistributeAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiRedistributeAddrEntry"; yang_parent_name = "ciiRedistributeAddrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::~Ciiredistributeaddrentry()
+CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::~CiiRedistributeAddrEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::has_data() const
+bool CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciiredistributeaddrtype.is_set
 	|| ciiredistributeaddraddress.is_set
 	|| ciiredistributeaddrprefixlen.is_set
 	|| ciiredistributeaddrexiststate.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::has_operation() const
+bool CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciiredistributeaddrtype.yfilter)
@@ -1754,21 +1783,24 @@ bool CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::has_o
 	|| ydk::is_set(ciiredistributeaddrexiststate.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiRedistributeAddrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiRedistributeAddrEntry" <<"[ciiRedistributeAddrType='" <<ciiredistributeaddrtype <<"']" <<"[ciiRedistributeAddrAddress='" <<ciiredistributeaddraddress <<"']" <<"[ciiRedistributeAddrPrefixLen='" <<ciiredistributeaddrprefixlen <<"']";
+    path_buffer << "ciiRedistributeAddrEntry";
+    ADD_KEY_TOKEN(ciiredistributeaddrtype, "ciiRedistributeAddrType");
+    ADD_KEY_TOKEN(ciiredistributeaddraddress, "ciiRedistributeAddrAddress");
+    ADD_KEY_TOKEN(ciiredistributeaddrprefixlen, "ciiRedistributeAddrPrefixLen");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1781,19 +1813,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiredistribute
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiRedistributeAddrType")
     {
@@ -1821,7 +1853,7 @@ void CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::set_v
     }
 }
 
-void CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiRedistributeAddrType")
     {
@@ -1841,26 +1873,29 @@ void CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::set_f
     }
 }
 
-bool CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiRedistributeAddrType" || name == "ciiRedistributeAddrAddress" || name == "ciiRedistributeAddrPrefixLen" || name == "ciiRedistributeAddrExistState")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiroutertable::Ciiroutertable()
+CISCOIETFISISMIB::CiiRouterTable::CiiRouterTable()
+    :
+    ciirouterentry(this, {"ciiroutersysid", "ciirouterlevel"})
 {
 
-    yang_name = "ciiRouterTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiRouterTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiroutertable::~Ciiroutertable()
+CISCOIETFISISMIB::CiiRouterTable::~CiiRouterTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiroutertable::has_data() const
+bool CISCOIETFISISMIB::CiiRouterTable::has_data() const
 {
-    for (std::size_t index=0; index<ciirouterentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciirouterentry.len(); index++)
     {
         if(ciirouterentry[index]->has_data())
             return true;
@@ -1868,9 +1903,9 @@ bool CISCOIETFISISMIB::Ciiroutertable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciiroutertable::has_operation() const
+bool CISCOIETFISISMIB::CiiRouterTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciirouterentry.size(); index++)
+    for (std::size_t index=0; index<ciirouterentry.len(); index++)
     {
         if(ciirouterentry[index]->has_operation())
             return true;
@@ -1878,21 +1913,21 @@ bool CISCOIETFISISMIB::Ciiroutertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiroutertable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiRouterTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiroutertable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiRouterTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiRouterTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiroutertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiRouterTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1901,25 +1936,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiroutertable:
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiroutertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiRouterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiRouterEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry>();
         c->parent = this;
-        ciirouterentry.push_back(c);
+        ciirouterentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiroutertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiRouterTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciirouterentry)
+    for (auto c : ciirouterentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1930,22 +1965,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiroutertable:
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiroutertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiRouterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciiroutertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiRouterTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciiroutertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiRouterTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiRouterEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::Ciirouterentry()
+CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::CiiRouterEntry()
     :
     ciiroutersysid{YType::str, "ciiRouterSysID"},
     ciirouterlevel{YType::enumeration, "ciiRouterLevel"},
@@ -1953,22 +1988,23 @@ CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::Ciirouterentry()
     ciirouterid{YType::uint32, "ciiRouterID"}
 {
 
-    yang_name = "ciiRouterEntry"; yang_parent_name = "ciiRouterTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiRouterEntry"; yang_parent_name = "ciiRouterTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::~Ciirouterentry()
+CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::~CiiRouterEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::has_data() const
+bool CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciiroutersysid.is_set
 	|| ciirouterlevel.is_set
 	|| ciirouterhostname.is_set
 	|| ciirouterid.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::has_operation() const
+bool CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciiroutersysid.yfilter)
@@ -1977,21 +2013,23 @@ bool CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::has_operation() const
 	|| ydk::is_set(ciirouterid.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiRouterTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiRouterEntry" <<"[ciiRouterSysID='" <<ciiroutersysid <<"']" <<"[ciiRouterLevel='" <<ciirouterlevel <<"']";
+    path_buffer << "ciiRouterEntry";
+    ADD_KEY_TOKEN(ciiroutersysid, "ciiRouterSysID");
+    ADD_KEY_TOKEN(ciirouterlevel, "ciiRouterLevel");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2004,19 +2042,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiroutertable:
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiRouterSysID")
     {
@@ -2044,7 +2082,7 @@ void CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::set_value(const std::stri
     }
 }
 
-void CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiRouterSysID")
     {
@@ -2064,26 +2102,29 @@ void CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::set_filter(const std::str
     }
 }
 
-bool CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiRouterSysID" || name == "ciiRouterLevel" || name == "ciiRouterHostName" || name == "ciiRouterID")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciisysleveltable::Ciisysleveltable()
+CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelTable()
+    :
+    ciisyslevelentry(this, {"ciisyslevelindex"})
 {
 
-    yang_name = "ciiSysLevelTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiSysLevelTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciisysleveltable::~Ciisysleveltable()
+CISCOIETFISISMIB::CiiSysLevelTable::~CiiSysLevelTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciisysleveltable::has_data() const
+bool CISCOIETFISISMIB::CiiSysLevelTable::has_data() const
 {
-    for (std::size_t index=0; index<ciisyslevelentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciisyslevelentry.len(); index++)
     {
         if(ciisyslevelentry[index]->has_data())
             return true;
@@ -2091,9 +2132,9 @@ bool CISCOIETFISISMIB::Ciisysleveltable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciisysleveltable::has_operation() const
+bool CISCOIETFISISMIB::CiiSysLevelTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciisyslevelentry.size(); index++)
+    for (std::size_t index=0; index<ciisyslevelentry.len(); index++)
     {
         if(ciisyslevelentry[index]->has_operation())
             return true;
@@ -2101,21 +2142,21 @@ bool CISCOIETFISISMIB::Ciisysleveltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciisysleveltable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiSysLevelTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciisysleveltable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiSysLevelTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiSysLevelTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisysleveltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSysLevelTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2124,25 +2165,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisysleveltabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciisysleveltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSysLevelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiSysLevelEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry>();
         c->parent = this;
-        ciisyslevelentry.push_back(c);
+        ciisyslevelentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisysleveltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSysLevelTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciisyslevelentry)
+    for (auto c : ciisyslevelentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2153,22 +2194,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisysleveltabl
     return children;
 }
 
-void CISCOIETFISISMIB::Ciisysleveltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiSysLevelTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciisysleveltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiSysLevelTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciisysleveltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiSysLevelTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiSysLevelEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::Ciisyslevelentry()
+CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::CiiSysLevelEntry()
     :
     ciisyslevelindex{YType::enumeration, "ciiSysLevelIndex"},
     ciisysleveloriglspbuffsize{YType::int32, "ciiSysLevelOrigLSPBuffSize"},
@@ -2181,15 +2222,16 @@ CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::Ciisyslevelentry()
     ciisyslevelteenabled{YType::boolean, "ciiSysLevelTEEnabled"}
 {
 
-    yang_name = "ciiSysLevelEntry"; yang_parent_name = "ciiSysLevelTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiSysLevelEntry"; yang_parent_name = "ciiSysLevelTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::~Ciisyslevelentry()
+CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::~CiiSysLevelEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::has_data() const
+bool CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciisyslevelindex.is_set
 	|| ciisysleveloriglspbuffsize.is_set
 	|| ciisyslevelminlspgenint.is_set
@@ -2201,7 +2243,7 @@ bool CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::has_data() const
 	|| ciisyslevelteenabled.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::has_operation() const
+bool CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciisyslevelindex.yfilter)
@@ -2215,21 +2257,22 @@ bool CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::has_operation() const
 	|| ydk::is_set(ciisyslevelteenabled.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiSysLevelTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiSysLevelEntry" <<"[ciiSysLevelIndex='" <<ciisyslevelindex <<"']";
+    path_buffer << "ciiSysLevelEntry";
+    ADD_KEY_TOKEN(ciisyslevelindex, "ciiSysLevelIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2247,19 +2290,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisysleveltabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiSysLevelIndex")
     {
@@ -2317,7 +2360,7 @@ void CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::set_value(const std::
     }
 }
 
-void CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiSysLevelIndex")
     {
@@ -2357,26 +2400,29 @@ void CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::set_filter(const std:
     }
 }
 
-bool CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiSysLevelIndex" || name == "ciiSysLevelOrigLSPBuffSize" || name == "ciiSysLevelMinLSPGenInt" || name == "ciiSysLevelOverloadState" || name == "ciiSysLevelSetOverload" || name == "ciiSysLevelSetOverloadUntil" || name == "ciiSysLevelMetricStyle" || name == "ciiSysLevelSPFConsiders" || name == "ciiSysLevelTEEnabled")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciicirctable::Ciicirctable()
+CISCOIETFISISMIB::CiiCircTable::CiiCircTable()
+    :
+    ciicircentry(this, {"ciicircindex"})
 {
 
-    yang_name = "ciiCircTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiCircTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciicirctable::~Ciicirctable()
+CISCOIETFISISMIB::CiiCircTable::~CiiCircTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciicirctable::has_data() const
+bool CISCOIETFISISMIB::CiiCircTable::has_data() const
 {
-    for (std::size_t index=0; index<ciicircentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciicircentry.len(); index++)
     {
         if(ciicircentry[index]->has_data())
             return true;
@@ -2384,9 +2430,9 @@ bool CISCOIETFISISMIB::Ciicirctable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciicirctable::has_operation() const
+bool CISCOIETFISISMIB::CiiCircTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciicircentry.size(); index++)
+    for (std::size_t index=0; index<ciicircentry.len(); index++)
     {
         if(ciicircentry[index]->has_operation())
             return true;
@@ -2394,21 +2440,21 @@ bool CISCOIETFISISMIB::Ciicirctable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciicirctable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiCircTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciicirctable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiCircTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiCircTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicirctable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCircTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2417,25 +2463,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicirctable::g
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciicirctable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCircTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiCircEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciicirctable::Ciicircentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiCircTable::CiiCircEntry>();
         c->parent = this;
-        ciicircentry.push_back(c);
+        ciicircentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciicirctable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCircTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciicircentry)
+    for (auto c : ciicircentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2446,22 +2492,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciicirctable::g
     return children;
 }
 
-void CISCOIETFISISMIB::Ciicirctable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiCircTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciicirctable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiCircTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciicirctable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiCircTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiCircEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicircentry()
+CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircEntry()
     :
     ciicircindex{YType::int32, "ciiCircIndex"},
     ciicircifindex{YType::int32, "ciiCircIfIndex"},
@@ -2480,15 +2526,16 @@ CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicircentry()
     ciicircextendedcircid{YType::uint32, "ciiCircExtendedCircID"}
 {
 
-    yang_name = "ciiCircEntry"; yang_parent_name = "ciiCircTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiCircEntry"; yang_parent_name = "ciiCircTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciicirctable::Ciicircentry::~Ciicircentry()
+CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::~CiiCircEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciicirctable::Ciicircentry::has_data() const
+bool CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciicircindex.is_set
 	|| ciicircifindex.is_set
 	|| ciicircifsubindex.is_set
@@ -2506,7 +2553,7 @@ bool CISCOIETFISISMIB::Ciicirctable::Ciicircentry::has_data() const
 	|| ciicircextendedcircid.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciicirctable::Ciicircentry::has_operation() const
+bool CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciicircindex.yfilter)
@@ -2526,21 +2573,22 @@ bool CISCOIETFISISMIB::Ciicirctable::Ciicircentry::has_operation() const
 	|| ydk::is_set(ciicircextendedcircid.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciicirctable::Ciicircentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiCircTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciicirctable::Ciicircentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiCircEntry" <<"[ciiCircIndex='" <<ciicircindex <<"']";
+    path_buffer << "ciiCircEntry";
+    ADD_KEY_TOKEN(ciicircindex, "ciiCircIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicirctable::Ciicircentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2564,19 +2612,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicirctable::C
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciicirctable::Ciicircentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciicirctable::Ciicircentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciicirctable::Ciicircentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -2670,7 +2718,7 @@ void CISCOIETFISISMIB::Ciicirctable::Ciicircentry::set_value(const std::string &
     }
 }
 
-void CISCOIETFISISMIB::Ciicirctable::Ciicircentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -2734,26 +2782,29 @@ void CISCOIETFISISMIB::Ciicirctable::Ciicircentry::set_filter(const std::string 
     }
 }
 
-bool CISCOIETFISISMIB::Ciicirctable::Ciicircentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiCircIndex" || name == "ciiCircIfIndex" || name == "ciiCircIfSubIndex" || name == "ciiCircAdminState" || name == "ciiCircExistState" || name == "ciiCircType" || name == "ciiCircExtDomain" || name == "ciiCircLevel" || name == "ciiCircPassiveCircuit" || name == "ciiCircMeshGroupEnabled" || name == "ciiCircMeshGroup" || name == "ciiCircSmallHellos" || name == "ciiCircLastUpTime" || name == "ciiCirc3WayEnabled" || name == "ciiCircExtendedCircID")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciicircleveltable::Ciicircleveltable()
+CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelTable()
+    :
+    ciicirclevelentry(this, {"ciicircindex", "ciicirclevelindex"})
 {
 
-    yang_name = "ciiCircLevelTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiCircLevelTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciicircleveltable::~Ciicircleveltable()
+CISCOIETFISISMIB::CiiCircLevelTable::~CiiCircLevelTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciicircleveltable::has_data() const
+bool CISCOIETFISISMIB::CiiCircLevelTable::has_data() const
 {
-    for (std::size_t index=0; index<ciicirclevelentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciicirclevelentry.len(); index++)
     {
         if(ciicirclevelentry[index]->has_data())
             return true;
@@ -2761,9 +2812,9 @@ bool CISCOIETFISISMIB::Ciicircleveltable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciicircleveltable::has_operation() const
+bool CISCOIETFISISMIB::CiiCircLevelTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciicirclevelentry.size(); index++)
+    for (std::size_t index=0; index<ciicirclevelentry.len(); index++)
     {
         if(ciicirclevelentry[index]->has_operation())
             return true;
@@ -2771,21 +2822,21 @@ bool CISCOIETFISISMIB::Ciicircleveltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciicircleveltable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiCircLevelTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciicircleveltable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiCircLevelTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiCircLevelTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicircleveltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCircLevelTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2794,25 +2845,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicircleveltab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciicircleveltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCircLevelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiCircLevelEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry>();
         c->parent = this;
-        ciicirclevelentry.push_back(c);
+        ciicirclevelentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciicircleveltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCircLevelTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciicirclevelentry)
+    for (auto c : ciicirclevelentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2823,22 +2874,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciicircleveltab
     return children;
 }
 
-void CISCOIETFISISMIB::Ciicircleveltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiCircLevelTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciicircleveltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiCircLevelTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciicircleveltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiCircLevelTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiCircLevelEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::Ciicirclevelentry()
+CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::CiiCircLevelEntry()
     :
     ciicircindex{YType::str, "ciiCircIndex"},
     ciicirclevelindex{YType::enumeration, "ciiCircLevelIndex"},
@@ -2857,15 +2908,16 @@ CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::Ciicirclevelentry()
     ciicirclevelpartsnpinterval{YType::int32, "ciiCircLevelPartSNPInterval"}
 {
 
-    yang_name = "ciiCircLevelEntry"; yang_parent_name = "ciiCircLevelTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiCircLevelEntry"; yang_parent_name = "ciiCircLevelTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::~Ciicirclevelentry()
+CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::~CiiCircLevelEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::has_data() const
+bool CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciicircindex.is_set
 	|| ciicirclevelindex.is_set
 	|| ciicirclevelmetric.is_set
@@ -2883,7 +2935,7 @@ bool CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::has_data() const
 	|| ciicirclevelpartsnpinterval.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::has_operation() const
+bool CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciicircindex.yfilter)
@@ -2903,21 +2955,23 @@ bool CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::has_operation() con
 	|| ydk::is_set(ciicirclevelpartsnpinterval.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiCircLevelTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiCircLevelEntry" <<"[ciiCircIndex='" <<ciicircindex <<"']" <<"[ciiCircLevelIndex='" <<ciicirclevelindex <<"']";
+    path_buffer << "ciiCircLevelEntry";
+    ADD_KEY_TOKEN(ciicircindex, "ciiCircIndex");
+    ADD_KEY_TOKEN(ciicirclevelindex, "ciiCircLevelIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2941,19 +2995,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicircleveltab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -3047,7 +3101,7 @@ void CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::set_value(const std
     }
 }
 
-void CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -3111,26 +3165,29 @@ void CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::set_filter(const st
     }
 }
 
-bool CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiCircIndex" || name == "ciiCircLevelIndex" || name == "ciiCircLevelMetric" || name == "ciiCircLevelWideMetric" || name == "ciiCircLevelISPriority" || name == "ciiCircLevelIDOctet" || name == "ciiCircLevelID" || name == "ciiCircLevelDesIS" || name == "ciiCircLevelHelloMultiplier" || name == "ciiCircLevelHelloTimer" || name == "ciiCircLevelDRHelloTimer" || name == "ciiCircLevelLSPThrottle" || name == "ciiCircLevelMinLSPRetransInt" || name == "ciiCircLevelCSNPInterval" || name == "ciiCircLevelPartSNPInterval")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcountertable()
+CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterTable()
+    :
+    ciisystemcounterentry(this, {"ciisysstatlevel"})
 {
 
-    yang_name = "ciiSystemCounterTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiSystemCounterTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciisystemcountertable::~Ciisystemcountertable()
+CISCOIETFISISMIB::CiiSystemCounterTable::~CiiSystemCounterTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciisystemcountertable::has_data() const
+bool CISCOIETFISISMIB::CiiSystemCounterTable::has_data() const
 {
-    for (std::size_t index=0; index<ciisystemcounterentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciisystemcounterentry.len(); index++)
     {
         if(ciisystemcounterentry[index]->has_data())
             return true;
@@ -3138,9 +3195,9 @@ bool CISCOIETFISISMIB::Ciisystemcountertable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciisystemcountertable::has_operation() const
+bool CISCOIETFISISMIB::CiiSystemCounterTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciisystemcounterentry.size(); index++)
+    for (std::size_t index=0; index<ciisystemcounterentry.len(); index++)
     {
         if(ciisystemcounterentry[index]->has_operation())
             return true;
@@ -3148,21 +3205,21 @@ bool CISCOIETFISISMIB::Ciisystemcountertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciisystemcountertable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiSystemCounterTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciisystemcountertable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiSystemCounterTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiSystemCounterTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisystemcountertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSystemCounterTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3171,25 +3228,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisystemcounte
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciisystemcountertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSystemCounterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiSystemCounterEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry>();
         c->parent = this;
-        ciisystemcounterentry.push_back(c);
+        ciisystemcounterentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisystemcountertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSystemCounterTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciisystemcounterentry)
+    for (auto c : ciisystemcounterentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3200,22 +3257,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisystemcounte
     return children;
 }
 
-void CISCOIETFISISMIB::Ciisystemcountertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiSystemCounterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciisystemcountertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiSystemCounterTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciisystemcountertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiSystemCounterTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiSystemCounterEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::Ciisystemcounterentry()
+CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::CiiSystemCounterEntry()
     :
     ciisysstatlevel{YType::enumeration, "ciiSysStatLevel"},
     ciisysstatcorrlsps{YType::uint32, "ciiSysStatCorrLSPs"},
@@ -3232,15 +3289,16 @@ CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::Ciisystemcounter
     ciisysstatlsperrors{YType::uint32, "ciiSysStatLSPErrors"}
 {
 
-    yang_name = "ciiSystemCounterEntry"; yang_parent_name = "ciiSystemCounterTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiSystemCounterEntry"; yang_parent_name = "ciiSystemCounterTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::~Ciisystemcounterentry()
+CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::~CiiSystemCounterEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::has_data() const
+bool CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciisysstatlevel.is_set
 	|| ciisysstatcorrlsps.is_set
 	|| ciisysstatauthtypefails.is_set
@@ -3256,7 +3314,7 @@ bool CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::has_data() 
 	|| ciisysstatlsperrors.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::has_operation() const
+bool CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciisysstatlevel.yfilter)
@@ -3274,21 +3332,22 @@ bool CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::has_operati
 	|| ydk::is_set(ciisysstatlsperrors.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiSystemCounterTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiSystemCounterEntry" <<"[ciiSysStatLevel='" <<ciisysstatlevel <<"']";
+    path_buffer << "ciiSystemCounterEntry";
+    ADD_KEY_TOKEN(ciisysstatlevel, "ciiSysStatLevel");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3310,19 +3369,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciisystemcounte
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiSysStatLevel")
     {
@@ -3404,7 +3463,7 @@ void CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::set_value(c
     }
 }
 
-void CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiSysStatLevel")
     {
@@ -3460,26 +3519,29 @@ void CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::set_filter(
     }
 }
 
-bool CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiSysStatLevel" || name == "ciiSysStatCorrLSPs" || name == "ciiSysStatAuthTypeFails" || name == "ciiSysStatAuthFails" || name == "ciiSysStatLSPDbaseOloads" || name == "ciiSysStatManAddrDropFromAreas" || name == "ciiSysStatAttmptToExMaxSeqNums" || name == "ciiSysStatSeqNumSkips" || name == "ciiSysStatOwnLSPPurges" || name == "ciiSysStatIDFieldLenMismatches" || name == "ciiSysStatPartChanges" || name == "ciiSysStatSPFRuns" || name == "ciiSysStatLSPErrors")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcountertable()
+CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterTable()
+    :
+    ciicircuitcounterentry(this, {"ciicircindex", "ciicircuittype"})
 {
 
-    yang_name = "ciiCircuitCounterTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiCircuitCounterTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciicircuitcountertable::~Ciicircuitcountertable()
+CISCOIETFISISMIB::CiiCircuitCounterTable::~CiiCircuitCounterTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciicircuitcountertable::has_data() const
+bool CISCOIETFISISMIB::CiiCircuitCounterTable::has_data() const
 {
-    for (std::size_t index=0; index<ciicircuitcounterentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciicircuitcounterentry.len(); index++)
     {
         if(ciicircuitcounterentry[index]->has_data())
             return true;
@@ -3487,9 +3549,9 @@ bool CISCOIETFISISMIB::Ciicircuitcountertable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciicircuitcountertable::has_operation() const
+bool CISCOIETFISISMIB::CiiCircuitCounterTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciicircuitcounterentry.size(); index++)
+    for (std::size_t index=0; index<ciicircuitcounterentry.len(); index++)
     {
         if(ciicircuitcounterentry[index]->has_operation())
             return true;
@@ -3497,21 +3559,21 @@ bool CISCOIETFISISMIB::Ciicircuitcountertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciicircuitcountertable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiCircuitCounterTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciicircuitcountertable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiCircuitCounterTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiCircuitCounterTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicircuitcountertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCircuitCounterTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3520,25 +3582,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicircuitcount
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciicircuitcountertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCircuitCounterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiCircuitCounterEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry>();
         c->parent = this;
-        ciicircuitcounterentry.push_back(c);
+        ciicircuitcounterentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciicircuitcountertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCircuitCounterTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciicircuitcounterentry)
+    for (auto c : ciicircuitcounterentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3549,22 +3611,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciicircuitcount
     return children;
 }
 
-void CISCOIETFISISMIB::Ciicircuitcountertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiCircuitCounterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciicircuitcountertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiCircuitCounterTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciicircuitcountertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiCircuitCounterTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiCircuitCounterEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::Ciicircuitcounterentry()
+CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::CiiCircuitCounterEntry()
     :
     ciicircindex{YType::str, "ciiCircIndex"},
     ciicircuittype{YType::enumeration, "ciiCircuitType"},
@@ -3579,15 +3641,16 @@ CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::Ciicircuitcoun
     ciicirclandesischanges{YType::uint32, "ciiCircLANDesISChanges"}
 {
 
-    yang_name = "ciiCircuitCounterEntry"; yang_parent_name = "ciiCircuitCounterTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiCircuitCounterEntry"; yang_parent_name = "ciiCircuitCounterTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::~Ciicircuitcounterentry()
+CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::~CiiCircuitCounterEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::has_data() const
+bool CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciicircindex.is_set
 	|| ciicircuittype.is_set
 	|| ciicircadjchanges.is_set
@@ -3601,7 +3664,7 @@ bool CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::has_data(
 	|| ciicirclandesischanges.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::has_operation() const
+bool CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciicircindex.yfilter)
@@ -3617,21 +3680,23 @@ bool CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::has_opera
 	|| ydk::is_set(ciicirclandesischanges.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiCircuitCounterTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiCircuitCounterEntry" <<"[ciiCircIndex='" <<ciicircindex <<"']" <<"[ciiCircuitType='" <<ciicircuittype <<"']";
+    path_buffer << "ciiCircuitCounterEntry";
+    ADD_KEY_TOKEN(ciicircindex, "ciiCircIndex");
+    ADD_KEY_TOKEN(ciicircuittype, "ciiCircuitType");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3651,19 +3716,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciicircuitcount
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -3733,7 +3798,7 @@ void CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::set_value
     }
 }
 
-void CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -3781,26 +3846,29 @@ void CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::set_filte
     }
 }
 
-bool CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiCircIndex" || name == "ciiCircuitType" || name == "ciiCircAdjChanges" || name == "ciiCircNumAdj" || name == "ciiCircInitFails" || name == "ciiCircRejAdjs" || name == "ciiCircIDFieldLenMismatches" || name == "ciiCircMaxAreaAddrMismatches" || name == "ciiCircAuthTypeFails" || name == "ciiCircAuthFails" || name == "ciiCircLANDesISChanges")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcountertable()
+CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterTable()
+    :
+    ciipacketcounterentry(this, {"ciicircindex", "ciipacketcountlevel", "ciipacketcountdirection"})
 {
 
-    yang_name = "ciiPacketCounterTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiPacketCounterTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciipacketcountertable::~Ciipacketcountertable()
+CISCOIETFISISMIB::CiiPacketCounterTable::~CiiPacketCounterTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciipacketcountertable::has_data() const
+bool CISCOIETFISISMIB::CiiPacketCounterTable::has_data() const
 {
-    for (std::size_t index=0; index<ciipacketcounterentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciipacketcounterentry.len(); index++)
     {
         if(ciipacketcounterentry[index]->has_data())
             return true;
@@ -3808,9 +3876,9 @@ bool CISCOIETFISISMIB::Ciipacketcountertable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciipacketcountertable::has_operation() const
+bool CISCOIETFISISMIB::CiiPacketCounterTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciipacketcounterentry.size(); index++)
+    for (std::size_t index=0; index<ciipacketcounterentry.len(); index++)
     {
         if(ciipacketcounterentry[index]->has_operation())
             return true;
@@ -3818,21 +3886,21 @@ bool CISCOIETFISISMIB::Ciipacketcountertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciipacketcountertable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiPacketCounterTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciipacketcountertable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiPacketCounterTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiPacketCounterTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciipacketcountertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiPacketCounterTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3841,25 +3909,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciipacketcounte
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciipacketcountertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiPacketCounterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiPacketCounterEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry>();
         c->parent = this;
-        ciipacketcounterentry.push_back(c);
+        ciipacketcounterentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciipacketcountertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiPacketCounterTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciipacketcounterentry)
+    for (auto c : ciipacketcounterentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3870,22 +3938,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciipacketcounte
     return children;
 }
 
-void CISCOIETFISISMIB::Ciipacketcountertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiPacketCounterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciipacketcountertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiPacketCounterTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciipacketcountertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiPacketCounterTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiPacketCounterEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::Ciipacketcounterentry()
+CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::CiiPacketCounterEntry()
     :
     ciicircindex{YType::str, "ciiCircIndex"},
     ciipacketcountlevel{YType::enumeration, "ciiPacketCountLevel"},
@@ -3899,15 +3967,16 @@ CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::Ciipacketcounter
     ciipacketcountunknowns{YType::uint32, "ciiPacketCountUnknowns"}
 {
 
-    yang_name = "ciiPacketCounterEntry"; yang_parent_name = "ciiPacketCounterTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiPacketCounterEntry"; yang_parent_name = "ciiPacketCounterTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::~Ciipacketcounterentry()
+CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::~CiiPacketCounterEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::has_data() const
+bool CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciicircindex.is_set
 	|| ciipacketcountlevel.is_set
 	|| ciipacketcountdirection.is_set
@@ -3920,7 +3989,7 @@ bool CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::has_data() 
 	|| ciipacketcountunknowns.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::has_operation() const
+bool CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciicircindex.yfilter)
@@ -3935,21 +4004,24 @@ bool CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::has_operati
 	|| ydk::is_set(ciipacketcountunknowns.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiPacketCounterTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiPacketCounterEntry" <<"[ciiCircIndex='" <<ciicircindex <<"']" <<"[ciiPacketCountLevel='" <<ciipacketcountlevel <<"']" <<"[ciiPacketCountDirection='" <<ciipacketcountdirection <<"']";
+    path_buffer << "ciiPacketCounterEntry";
+    ADD_KEY_TOKEN(ciicircindex, "ciiCircIndex");
+    ADD_KEY_TOKEN(ciipacketcountlevel, "ciiPacketCountLevel");
+    ADD_KEY_TOKEN(ciipacketcountdirection, "ciiPacketCountDirection");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3968,19 +4040,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciipacketcounte
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -4044,7 +4116,7 @@ void CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::set_value(c
     }
 }
 
-void CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -4088,26 +4160,29 @@ void CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::set_filter(
     }
 }
 
-bool CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiCircIndex" || name == "ciiPacketCountLevel" || name == "ciiPacketCountDirection" || name == "ciiPacketCountIIHellos" || name == "ciiPacketCountISHellos" || name == "ciiPacketCountESHellos" || name == "ciiPacketCountLSPs" || name == "ciiPacketCountCSNPs" || name == "ciiPacketCountPSNPs" || name == "ciiPacketCountUnknowns")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjtable()
+CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjTable()
+    :
+    ciiisadjentry(this, {"ciicircindex", "ciiisadjindex"})
 {
 
-    yang_name = "ciiISAdjTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiISAdjTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiisadjtable::~Ciiisadjtable()
+CISCOIETFISISMIB::CiiISAdjTable::~CiiISAdjTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiisadjtable::has_data() const
+bool CISCOIETFISISMIB::CiiISAdjTable::has_data() const
 {
-    for (std::size_t index=0; index<ciiisadjentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciiisadjentry.len(); index++)
     {
         if(ciiisadjentry[index]->has_data())
             return true;
@@ -4115,9 +4190,9 @@ bool CISCOIETFISISMIB::Ciiisadjtable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciiisadjtable::has_operation() const
+bool CISCOIETFISISMIB::CiiISAdjTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiisadjentry.size(); index++)
+    for (std::size_t index=0; index<ciiisadjentry.len(); index++)
     {
         if(ciiisadjentry[index]->has_operation())
             return true;
@@ -4125,21 +4200,21 @@ bool CISCOIETFISISMIB::Ciiisadjtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjtable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiISAdjTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjtable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiISAdjTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiISAdjTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4148,25 +4223,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjtable::
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiisadjtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiISAdjEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry>();
         c->parent = this;
-        ciiisadjentry.push_back(c);
+        ciiisadjentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiisadjtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciiisadjentry)
+    for (auto c : ciiisadjentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4177,22 +4252,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiisadjtable::
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiisadjtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiISAdjTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciiisadjtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiISAdjTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciiisadjtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiISAdjTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiISAdjEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjentry()
+CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjEntry()
     :
     ciicircindex{YType::str, "ciiCircIndex"},
     ciiisadjindex{YType::int32, "ciiISAdjIndex"},
@@ -4208,15 +4283,16 @@ CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjentry()
     ciiisadjlastuptime{YType::uint32, "ciiISAdjLastUpTime"}
 {
 
-    yang_name = "ciiISAdjEntry"; yang_parent_name = "ciiISAdjTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiISAdjEntry"; yang_parent_name = "ciiISAdjTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::~Ciiisadjentry()
+CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::~CiiISAdjEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::has_data() const
+bool CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciicircindex.is_set
 	|| ciiisadjindex.is_set
 	|| ciiisadjstate.is_set
@@ -4231,7 +4307,7 @@ bool CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::has_data() const
 	|| ciiisadjlastuptime.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::has_operation() const
+bool CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciicircindex.yfilter)
@@ -4248,21 +4324,23 @@ bool CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::has_operation() const
 	|| ydk::is_set(ciiisadjlastuptime.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiISAdjTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiISAdjEntry" <<"[ciiCircIndex='" <<ciicircindex <<"']" <<"[ciiISAdjIndex='" <<ciiisadjindex <<"']";
+    path_buffer << "ciiISAdjEntry";
+    ADD_KEY_TOKEN(ciicircindex, "ciiCircIndex");
+    ADD_KEY_TOKEN(ciiisadjindex, "ciiISAdjIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4283,19 +4361,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjtable::
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -4371,7 +4449,7 @@ void CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::set_value(const std::string
     }
 }
 
-void CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -4423,26 +4501,29 @@ void CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::set_filter(const std::strin
     }
 }
 
-bool CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiCircIndex" || name == "ciiISAdjIndex" || name == "ciiISAdjState" || name == "ciiISAdj3WayState" || name == "ciiISAdjNeighSNPAAddress" || name == "ciiISAdjNeighSysType" || name == "ciiISAdjNeighSysID" || name == "ciiISAdjNbrExtendedCircID" || name == "ciiISAdjUsage" || name == "ciiISAdjHoldTimer" || name == "ciiISAdjNeighPriority" || name == "ciiISAdjLastUpTime")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrtable()
+CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrTable()
+    :
+    ciiisadjareaaddrentry(this, {"ciicircindex", "ciiisadjindex", "ciiisadjareaaddrindex"})
 {
 
-    yang_name = "ciiISAdjAreaAddrTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiISAdjAreaAddrTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiisadjareaaddrtable::~Ciiisadjareaaddrtable()
+CISCOIETFISISMIB::CiiISAdjAreaAddrTable::~CiiISAdjAreaAddrTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiisadjareaaddrtable::has_data() const
+bool CISCOIETFISISMIB::CiiISAdjAreaAddrTable::has_data() const
 {
-    for (std::size_t index=0; index<ciiisadjareaaddrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciiisadjareaaddrentry.len(); index++)
     {
         if(ciiisadjareaaddrentry[index]->has_data())
             return true;
@@ -4450,9 +4531,9 @@ bool CISCOIETFISISMIB::Ciiisadjareaaddrtable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciiisadjareaaddrtable::has_operation() const
+bool CISCOIETFISISMIB::CiiISAdjAreaAddrTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiisadjareaaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciiisadjareaaddrentry.len(); index++)
     {
         if(ciiisadjareaaddrentry[index]->has_operation())
             return true;
@@ -4460,21 +4541,21 @@ bool CISCOIETFISISMIB::Ciiisadjareaaddrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjareaaddrtable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiISAdjAreaAddrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjareaaddrtable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiISAdjAreaAddrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiISAdjAreaAddrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjareaaddrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjAreaAddrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4483,25 +4564,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjareaadd
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiisadjareaaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjAreaAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiISAdjAreaAddrEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry>();
         c->parent = this;
-        ciiisadjareaaddrentry.push_back(c);
+        ciiisadjareaaddrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiisadjareaaddrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjAreaAddrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciiisadjareaaddrentry)
+    for (auto c : ciiisadjareaaddrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4512,22 +4593,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiisadjareaadd
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiisadjareaaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiISAdjAreaAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciiisadjareaaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiISAdjAreaAddrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciiisadjareaaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiISAdjAreaAddrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiISAdjAreaAddrEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::Ciiisadjareaaddrentry()
+CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::CiiISAdjAreaAddrEntry()
     :
     ciicircindex{YType::str, "ciiCircIndex"},
     ciiisadjindex{YType::str, "ciiISAdjIndex"},
@@ -4535,22 +4616,23 @@ CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::Ciiisadjareaaddr
     ciiisadjareaaddress{YType::str, "ciiISAdjAreaAddress"}
 {
 
-    yang_name = "ciiISAdjAreaAddrEntry"; yang_parent_name = "ciiISAdjAreaAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiISAdjAreaAddrEntry"; yang_parent_name = "ciiISAdjAreaAddrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::~Ciiisadjareaaddrentry()
+CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::~CiiISAdjAreaAddrEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::has_data() const
+bool CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciicircindex.is_set
 	|| ciiisadjindex.is_set
 	|| ciiisadjareaaddrindex.is_set
 	|| ciiisadjareaaddress.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::has_operation() const
+bool CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciicircindex.yfilter)
@@ -4559,21 +4641,24 @@ bool CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::has_operati
 	|| ydk::is_set(ciiisadjareaaddress.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiISAdjAreaAddrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiISAdjAreaAddrEntry" <<"[ciiCircIndex='" <<ciicircindex <<"']" <<"[ciiISAdjIndex='" <<ciiisadjindex <<"']" <<"[ciiISAdjAreaAddrIndex='" <<ciiisadjareaaddrindex <<"']";
+    path_buffer << "ciiISAdjAreaAddrEntry";
+    ADD_KEY_TOKEN(ciicircindex, "ciiCircIndex");
+    ADD_KEY_TOKEN(ciiisadjindex, "ciiISAdjIndex");
+    ADD_KEY_TOKEN(ciiisadjareaaddrindex, "ciiISAdjAreaAddrIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4586,19 +4671,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjareaadd
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -4626,7 +4711,7 @@ void CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::set_value(c
     }
 }
 
-void CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -4646,26 +4731,29 @@ void CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::set_filter(
     }
 }
 
-bool CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiCircIndex" || name == "ciiISAdjIndex" || name == "ciiISAdjAreaAddrIndex" || name == "ciiISAdjAreaAddress")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrtable()
+CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrTable()
+    :
+    ciiisadjipaddrentry(this, {"ciicircindex", "ciiisadjindex", "ciiisadjipaddrindex"})
 {
 
-    yang_name = "ciiISAdjIPAddrTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiISAdjIPAddrTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiisadjipaddrtable::~Ciiisadjipaddrtable()
+CISCOIETFISISMIB::CiiISAdjIPAddrTable::~CiiISAdjIPAddrTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiisadjipaddrtable::has_data() const
+bool CISCOIETFISISMIB::CiiISAdjIPAddrTable::has_data() const
 {
-    for (std::size_t index=0; index<ciiisadjipaddrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciiisadjipaddrentry.len(); index++)
     {
         if(ciiisadjipaddrentry[index]->has_data())
             return true;
@@ -4673,9 +4761,9 @@ bool CISCOIETFISISMIB::Ciiisadjipaddrtable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciiisadjipaddrtable::has_operation() const
+bool CISCOIETFISISMIB::CiiISAdjIPAddrTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiisadjipaddrentry.size(); index++)
+    for (std::size_t index=0; index<ciiisadjipaddrentry.len(); index++)
     {
         if(ciiisadjipaddrentry[index]->has_operation())
             return true;
@@ -4683,21 +4771,21 @@ bool CISCOIETFISISMIB::Ciiisadjipaddrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjipaddrtable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiISAdjIPAddrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjipaddrtable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiISAdjIPAddrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiISAdjIPAddrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjipaddrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjIPAddrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4706,25 +4794,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjipaddrt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiisadjipaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjIPAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiISAdjIPAddrEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry>();
         c->parent = this;
-        ciiisadjipaddrentry.push_back(c);
+        ciiisadjipaddrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiisadjipaddrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjIPAddrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciiisadjipaddrentry)
+    for (auto c : ciiisadjipaddrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4735,22 +4823,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiisadjipaddrt
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiisadjipaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiISAdjIPAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciiisadjipaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiISAdjIPAddrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciiisadjipaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiISAdjIPAddrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiISAdjIPAddrEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::Ciiisadjipaddrentry()
+CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::CiiISAdjIPAddrEntry()
     :
     ciicircindex{YType::str, "ciiCircIndex"},
     ciiisadjindex{YType::str, "ciiISAdjIndex"},
@@ -4759,15 +4847,16 @@ CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::Ciiisadjipaddrentry(
     ciiisadjipaddraddress{YType::str, "ciiISAdjIPAddrAddress"}
 {
 
-    yang_name = "ciiISAdjIPAddrEntry"; yang_parent_name = "ciiISAdjIPAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiISAdjIPAddrEntry"; yang_parent_name = "ciiISAdjIPAddrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::~Ciiisadjipaddrentry()
+CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::~CiiISAdjIPAddrEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::has_data() const
+bool CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciicircindex.is_set
 	|| ciiisadjindex.is_set
 	|| ciiisadjipaddrindex.is_set
@@ -4775,7 +4864,7 @@ bool CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::has_data() cons
 	|| ciiisadjipaddraddress.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::has_operation() const
+bool CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciicircindex.yfilter)
@@ -4785,21 +4874,24 @@ bool CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::has_operation()
 	|| ydk::is_set(ciiisadjipaddraddress.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiISAdjIPAddrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiISAdjIPAddrEntry" <<"[ciiCircIndex='" <<ciicircindex <<"']" <<"[ciiISAdjIndex='" <<ciiisadjindex <<"']" <<"[ciiISAdjIPAddrIndex='" <<ciiisadjipaddrindex <<"']";
+    path_buffer << "ciiISAdjIPAddrEntry";
+    ADD_KEY_TOKEN(ciicircindex, "ciiCircIndex");
+    ADD_KEY_TOKEN(ciiisadjindex, "ciiISAdjIndex");
+    ADD_KEY_TOKEN(ciiisadjipaddrindex, "ciiISAdjIPAddrIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4813,19 +4905,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjipaddrt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -4859,7 +4951,7 @@ void CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::set_value(const
     }
 }
 
-void CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -4883,26 +4975,29 @@ void CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::set_filter(cons
     }
 }
 
-bool CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiCircIndex" || name == "ciiISAdjIndex" || name == "ciiISAdjIPAddrIndex" || name == "ciiISAdjIPAddrType" || name == "ciiISAdjIPAddrAddress")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsupptable()
+CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppTable()
+    :
+    ciiisadjprotsuppentry(this, {"ciicircindex", "ciiisadjindex", "ciiisadjprotsuppprotocol"})
 {
 
-    yang_name = "ciiISAdjProtSuppTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiISAdjProtSuppTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiisadjprotsupptable::~Ciiisadjprotsupptable()
+CISCOIETFISISMIB::CiiISAdjProtSuppTable::~CiiISAdjProtSuppTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiisadjprotsupptable::has_data() const
+bool CISCOIETFISISMIB::CiiISAdjProtSuppTable::has_data() const
 {
-    for (std::size_t index=0; index<ciiisadjprotsuppentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciiisadjprotsuppentry.len(); index++)
     {
         if(ciiisadjprotsuppentry[index]->has_data())
             return true;
@@ -4910,9 +5005,9 @@ bool CISCOIETFISISMIB::Ciiisadjprotsupptable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciiisadjprotsupptable::has_operation() const
+bool CISCOIETFISISMIB::CiiISAdjProtSuppTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiisadjprotsuppentry.size(); index++)
+    for (std::size_t index=0; index<ciiisadjprotsuppentry.len(); index++)
     {
         if(ciiisadjprotsuppentry[index]->has_operation())
             return true;
@@ -4920,21 +5015,21 @@ bool CISCOIETFISISMIB::Ciiisadjprotsupptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjprotsupptable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiISAdjProtSuppTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjprotsupptable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiISAdjProtSuppTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiISAdjProtSuppTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjprotsupptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjProtSuppTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4943,25 +5038,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjprotsup
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiisadjprotsupptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjProtSuppTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiISAdjProtSuppEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry>();
         c->parent = this;
-        ciiisadjprotsuppentry.push_back(c);
+        ciiisadjprotsuppentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiisadjprotsupptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjProtSuppTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciiisadjprotsuppentry)
+    for (auto c : ciiisadjprotsuppentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4972,43 +5067,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiisadjprotsup
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiisadjprotsupptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiISAdjProtSuppTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciiisadjprotsupptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiISAdjProtSuppTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciiisadjprotsupptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiISAdjProtSuppTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiISAdjProtSuppEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::Ciiisadjprotsuppentry()
+CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::CiiISAdjProtSuppEntry()
     :
     ciicircindex{YType::str, "ciiCircIndex"},
     ciiisadjindex{YType::str, "ciiISAdjIndex"},
     ciiisadjprotsuppprotocol{YType::enumeration, "ciiISAdjProtSuppProtocol"}
 {
 
-    yang_name = "ciiISAdjProtSuppEntry"; yang_parent_name = "ciiISAdjProtSuppTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiISAdjProtSuppEntry"; yang_parent_name = "ciiISAdjProtSuppTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::~Ciiisadjprotsuppentry()
+CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::~CiiISAdjProtSuppEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::has_data() const
+bool CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciicircindex.is_set
 	|| ciiisadjindex.is_set
 	|| ciiisadjprotsuppprotocol.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::has_operation() const
+bool CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciicircindex.yfilter)
@@ -5016,21 +5112,24 @@ bool CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::has_operati
 	|| ydk::is_set(ciiisadjprotsuppprotocol.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiISAdjProtSuppTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiISAdjProtSuppEntry" <<"[ciiCircIndex='" <<ciicircindex <<"']" <<"[ciiISAdjIndex='" <<ciiisadjindex <<"']" <<"[ciiISAdjProtSuppProtocol='" <<ciiisadjprotsuppprotocol <<"']";
+    path_buffer << "ciiISAdjProtSuppEntry";
+    ADD_KEY_TOKEN(ciicircindex, "ciiCircIndex");
+    ADD_KEY_TOKEN(ciiisadjindex, "ciiISAdjIndex");
+    ADD_KEY_TOKEN(ciiisadjprotsuppprotocol, "ciiISAdjProtSuppProtocol");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5042,19 +5141,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiisadjprotsup
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -5076,7 +5175,7 @@ void CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::set_value(c
     }
 }
 
-void CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -5092,26 +5191,29 @@ void CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::set_filter(
     }
 }
 
-bool CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiCircIndex" || name == "ciiISAdjIndex" || name == "ciiISAdjProtSuppProtocol")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiratable::Ciiratable()
+CISCOIETFISISMIB::CiiRATable::CiiRATable()
+    :
+    ciiraentry(this, {"ciicircindex", "ciiraindex"})
 {
 
-    yang_name = "ciiRATable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiRATable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiratable::~Ciiratable()
+CISCOIETFISISMIB::CiiRATable::~CiiRATable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiratable::has_data() const
+bool CISCOIETFISISMIB::CiiRATable::has_data() const
 {
-    for (std::size_t index=0; index<ciiraentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciiraentry.len(); index++)
     {
         if(ciiraentry[index]->has_data())
             return true;
@@ -5119,9 +5221,9 @@ bool CISCOIETFISISMIB::Ciiratable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciiratable::has_operation() const
+bool CISCOIETFISISMIB::CiiRATable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiraentry.size(); index++)
+    for (std::size_t index=0; index<ciiraentry.len(); index++)
     {
         if(ciiraentry[index]->has_operation())
             return true;
@@ -5129,21 +5231,21 @@ bool CISCOIETFISISMIB::Ciiratable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiratable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiRATable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiratable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiRATable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiRATable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiratable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiRATable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5152,25 +5254,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiratable::get
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiratable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiRATable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiRAEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciiratable::Ciiraentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiRATable::CiiRAEntry>();
         c->parent = this;
-        ciiraentry.push_back(c);
+        ciiraentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiratable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiRATable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciiraentry)
+    for (auto c : ciiraentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5181,22 +5283,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiratable::get
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiratable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiRATable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciiratable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiRATable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciiratable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiRATable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiRAEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiratable::Ciiraentry::Ciiraentry()
+CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAEntry()
     :
     ciicircindex{YType::str, "ciiCircIndex"},
     ciiraindex{YType::int32, "ciiRAIndex"},
@@ -5212,15 +5314,16 @@ CISCOIETFISISMIB::Ciiratable::Ciiraentry::Ciiraentry()
     ciiratype{YType::enumeration, "ciiRAType"}
 {
 
-    yang_name = "ciiRAEntry"; yang_parent_name = "ciiRATable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiRAEntry"; yang_parent_name = "ciiRATable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiratable::Ciiraentry::~Ciiraentry()
+CISCOIETFISISMIB::CiiRATable::CiiRAEntry::~CiiRAEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiratable::Ciiraentry::has_data() const
+bool CISCOIETFISISMIB::CiiRATable::CiiRAEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciicircindex.is_set
 	|| ciiraindex.is_set
 	|| ciiraexiststate.is_set
@@ -5235,7 +5338,7 @@ bool CISCOIETFISISMIB::Ciiratable::Ciiraentry::has_data() const
 	|| ciiratype.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciiratable::Ciiraentry::has_operation() const
+bool CISCOIETFISISMIB::CiiRATable::CiiRAEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciicircindex.yfilter)
@@ -5252,21 +5355,23 @@ bool CISCOIETFISISMIB::Ciiratable::Ciiraentry::has_operation() const
 	|| ydk::is_set(ciiratype.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiratable::Ciiraentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiRATable::CiiRAEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiRATable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiratable::Ciiraentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiRATable::CiiRAEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiRAEntry" <<"[ciiCircIndex='" <<ciicircindex <<"']" <<"[ciiRAIndex='" <<ciiraindex <<"']";
+    path_buffer << "ciiRAEntry";
+    ADD_KEY_TOKEN(ciicircindex, "ciiCircIndex");
+    ADD_KEY_TOKEN(ciiraindex, "ciiRAIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiratable::Ciiraentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiRATable::CiiRAEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5287,19 +5392,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiratable::Cii
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiratable::Ciiraentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiRATable::CiiRAEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiratable::Ciiraentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiRATable::CiiRAEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiratable::Ciiraentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiRATable::CiiRAEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -5375,7 +5480,7 @@ void CISCOIETFISISMIB::Ciiratable::Ciiraentry::set_value(const std::string & val
     }
 }
 
-void CISCOIETFISISMIB::Ciiratable::Ciiraentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiRATable::CiiRAEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiCircIndex")
     {
@@ -5427,26 +5532,29 @@ void CISCOIETFISISMIB::Ciiratable::Ciiraentry::set_filter(const std::string & va
     }
 }
 
-bool CISCOIETFISISMIB::Ciiratable::Ciiraentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiRATable::CiiRAEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiCircIndex" || name == "ciiRAIndex" || name == "ciiRAExistState" || name == "ciiRAAdminState" || name == "ciiRAAddrPrefix" || name == "ciiRAMapType" || name == "ciiRAMetric" || name == "ciiRAMetricType" || name == "ciiRASNPAAddress" || name == "ciiRASNPAMask" || name == "ciiRASNPAPrefix" || name == "ciiRAType")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiipratable::Ciiipratable()
+CISCOIETFISISMIB::CiiIPRATable::CiiIPRATable()
+    :
+    ciiipraentry(this, {"ciiipradesttype", "ciiipradest", "ciiipradestprefixlen", "ciiipranexthopindex"})
 {
 
-    yang_name = "ciiIPRATable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiIPRATable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiipratable::~Ciiipratable()
+CISCOIETFISISMIB::CiiIPRATable::~CiiIPRATable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiipratable::has_data() const
+bool CISCOIETFISISMIB::CiiIPRATable::has_data() const
 {
-    for (std::size_t index=0; index<ciiipraentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciiipraentry.len(); index++)
     {
         if(ciiipraentry[index]->has_data())
             return true;
@@ -5454,9 +5562,9 @@ bool CISCOIETFISISMIB::Ciiipratable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciiipratable::has_operation() const
+bool CISCOIETFISISMIB::CiiIPRATable::has_operation() const
 {
-    for (std::size_t index=0; index<ciiipraentry.size(); index++)
+    for (std::size_t index=0; index<ciiipraentry.len(); index++)
     {
         if(ciiipraentry[index]->has_operation())
             return true;
@@ -5464,21 +5572,21 @@ bool CISCOIETFISISMIB::Ciiipratable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiipratable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiIPRATable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiipratable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiIPRATable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiIPRATable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiipratable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiIPRATable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5487,25 +5595,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiipratable::g
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiipratable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiIPRATable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiIPRAEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciiipratable::Ciiipraentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry>();
         c->parent = this;
-        ciiipraentry.push_back(c);
+        ciiipraentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiipratable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiIPRATable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciiipraentry)
+    for (auto c : ciiipraentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5516,22 +5624,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiipratable::g
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiipratable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiIPRATable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciiipratable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiIPRATable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciiipratable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiIPRATable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiIPRAEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiipraentry()
+CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRAEntry()
     :
     ciiipradesttype{YType::enumeration, "ciiIPRADestType"},
     ciiipradest{YType::str, "ciiIPRADest"},
@@ -5549,15 +5657,16 @@ CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiipraentry()
     ciiiprasourcetype{YType::enumeration, "ciiIPRASourceType"}
 {
 
-    yang_name = "ciiIPRAEntry"; yang_parent_name = "ciiIPRATable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiIPRAEntry"; yang_parent_name = "ciiIPRATable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::~Ciiipraentry()
+CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::~CiiIPRAEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::has_data() const
+bool CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciiipradesttype.is_set
 	|| ciiipradest.is_set
 	|| ciiipradestprefixlen.is_set
@@ -5574,7 +5683,7 @@ bool CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::has_data() const
 	|| ciiiprasourcetype.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::has_operation() const
+bool CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciiipradesttype.yfilter)
@@ -5593,21 +5702,25 @@ bool CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::has_operation() const
 	|| ydk::is_set(ciiiprasourcetype.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiIPRATable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiIPRAEntry" <<"[ciiIPRADestType='" <<ciiipradesttype <<"']" <<"[ciiIPRADest='" <<ciiipradest <<"']" <<"[ciiIPRADestPrefixLen='" <<ciiipradestprefixlen <<"']" <<"[ciiIPRANextHopIndex='" <<ciiipranexthopindex <<"']";
+    path_buffer << "ciiIPRAEntry";
+    ADD_KEY_TOKEN(ciiipradesttype, "ciiIPRADestType");
+    ADD_KEY_TOKEN(ciiipradest, "ciiIPRADest");
+    ADD_KEY_TOKEN(ciiipradestprefixlen, "ciiIPRADestPrefixLen");
+    ADD_KEY_TOKEN(ciiipranexthopindex, "ciiIPRANextHopIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5630,19 +5743,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciiipratable::C
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiIPRADestType")
     {
@@ -5730,7 +5843,7 @@ void CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::set_value(const std::string &
     }
 }
 
-void CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiIPRADestType")
     {
@@ -5790,26 +5903,29 @@ void CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::set_filter(const std::string 
     }
 }
 
-bool CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiIPRADestType" || name == "ciiIPRADest" || name == "ciiIPRADestPrefixLen" || name == "ciiIPRANextHopIndex" || name == "ciiIPRANextHopType" || name == "ciiIPRANextHop" || name == "ciiIPRAType" || name == "ciiIPRAExistState" || name == "ciiIPRAAdminState" || name == "ciiIPRAMetric" || name == "ciiIPRAMetricType" || name == "ciiIPRAFullMetric" || name == "ciiIPRASNPAAddress" || name == "ciiIPRASourceType")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummarytable()
+CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryTable()
+    :
+    ciilspsummaryentry(this, {"ciilsplevel", "ciilspid"})
 {
 
-    yang_name = "ciiLSPSummaryTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiLSPSummaryTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciilspsummarytable::~Ciilspsummarytable()
+CISCOIETFISISMIB::CiiLSPSummaryTable::~CiiLSPSummaryTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciilspsummarytable::has_data() const
+bool CISCOIETFISISMIB::CiiLSPSummaryTable::has_data() const
 {
-    for (std::size_t index=0; index<ciilspsummaryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciilspsummaryentry.len(); index++)
     {
         if(ciilspsummaryentry[index]->has_data())
             return true;
@@ -5817,9 +5933,9 @@ bool CISCOIETFISISMIB::Ciilspsummarytable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciilspsummarytable::has_operation() const
+bool CISCOIETFISISMIB::CiiLSPSummaryTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciilspsummaryentry.size(); index++)
+    for (std::size_t index=0; index<ciilspsummaryentry.len(); index++)
     {
         if(ciilspsummaryentry[index]->has_operation())
             return true;
@@ -5827,21 +5943,21 @@ bool CISCOIETFISISMIB::Ciilspsummarytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciilspsummarytable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiLSPSummaryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciilspsummarytable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiLSPSummaryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiLSPSummaryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciilspsummarytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiLSPSummaryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5850,25 +5966,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciilspsummaryta
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciilspsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiLSPSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiLSPSummaryEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry>();
         c->parent = this;
-        ciilspsummaryentry.push_back(c);
+        ciilspsummaryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciilspsummarytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiLSPSummaryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciilspsummaryentry)
+    for (auto c : ciilspsummaryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5879,22 +5995,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciilspsummaryta
     return children;
 }
 
-void CISCOIETFISISMIB::Ciilspsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiLSPSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciilspsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiLSPSummaryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciilspsummarytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiLSPSummaryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiLSPSummaryEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::Ciilspsummaryentry()
+CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::CiiLSPSummaryEntry()
     :
     ciilsplevel{YType::enumeration, "ciiLSPLevel"},
     ciilspid{YType::str, "ciiLSPID"},
@@ -5906,15 +6022,16 @@ CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::Ciilspsummaryentry()
     ciilspattributes{YType::uint32, "ciiLSPAttributes"}
 {
 
-    yang_name = "ciiLSPSummaryEntry"; yang_parent_name = "ciiLSPSummaryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiLSPSummaryEntry"; yang_parent_name = "ciiLSPSummaryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::~Ciilspsummaryentry()
+CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::~CiiLSPSummaryEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::has_data() const
+bool CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciilsplevel.is_set
 	|| ciilspid.is_set
 	|| ciilspseq.is_set
@@ -5925,7 +6042,7 @@ bool CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::has_data() const
 	|| ciilspattributes.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::has_operation() const
+bool CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciilsplevel.yfilter)
@@ -5938,21 +6055,23 @@ bool CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::has_operation() c
 	|| ydk::is_set(ciilspattributes.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiLSPSummaryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiLSPSummaryEntry" <<"[ciiLSPLevel='" <<ciilsplevel <<"']" <<"[ciiLSPID='" <<ciilspid <<"']";
+    path_buffer << "ciiLSPSummaryEntry";
+    ADD_KEY_TOKEN(ciilsplevel, "ciiLSPLevel");
+    ADD_KEY_TOKEN(ciilspid, "ciiLSPID");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5969,19 +6088,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciilspsummaryta
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiLSPLevel")
     {
@@ -6033,7 +6152,7 @@ void CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::set_value(const s
     }
 }
 
-void CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiLSPLevel")
     {
@@ -6069,26 +6188,29 @@ void CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::set_filter(const 
     }
 }
 
-bool CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiLSPLevel" || name == "ciiLSPID" || name == "ciiLSPSeq" || name == "ciiLSPZeroLife" || name == "ciiLSPChecksum" || name == "ciiLSPLifetimeRemain" || name == "ciiLSPPDULength" || name == "ciiLSPAttributes")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlvtable()
+CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVTable()
+    :
+    ciilsptlventry(this, {"ciilsplevel", "ciilspid", "ciilsptlvindex"})
 {
 
-    yang_name = "ciiLSPTLVTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiLSPTLVTable"; yang_parent_name = "CISCO-IETF-ISIS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciilsptlvtable::~Ciilsptlvtable()
+CISCOIETFISISMIB::CiiLSPTLVTable::~CiiLSPTLVTable()
 {
 }
 
-bool CISCOIETFISISMIB::Ciilsptlvtable::has_data() const
+bool CISCOIETFISISMIB::CiiLSPTLVTable::has_data() const
 {
-    for (std::size_t index=0; index<ciilsptlventry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciilsptlventry.len(); index++)
     {
         if(ciilsptlventry[index]->has_data())
             return true;
@@ -6096,9 +6218,9 @@ bool CISCOIETFISISMIB::Ciilsptlvtable::has_data() const
     return false;
 }
 
-bool CISCOIETFISISMIB::Ciilsptlvtable::has_operation() const
+bool CISCOIETFISISMIB::CiiLSPTLVTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciilsptlventry.size(); index++)
+    for (std::size_t index=0; index<ciilsptlventry.len(); index++)
     {
         if(ciilsptlventry[index]->has_operation())
             return true;
@@ -6106,21 +6228,21 @@ bool CISCOIETFISISMIB::Ciilsptlvtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciilsptlvtable::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiLSPTLVTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciilsptlvtable::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiLSPTLVTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciiLSPTLVTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciilsptlvtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiLSPTLVTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6129,25 +6251,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciilsptlvtable:
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciilsptlvtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiLSPTLVTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiLSPTLVEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry>();
+        auto c = std::make_shared<CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry>();
         c->parent = this;
-        ciilsptlventry.push_back(c);
+        ciilsptlventry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciilsptlvtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiLSPTLVTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciilsptlventry)
+    for (auto c : ciilsptlventry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6158,22 +6280,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciilsptlvtable:
     return children;
 }
 
-void CISCOIETFISISMIB::Ciilsptlvtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiLSPTLVTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFISISMIB::Ciilsptlvtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiLSPTLVTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFISISMIB::Ciilsptlvtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiLSPTLVTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiLSPTLVEntry")
         return true;
     return false;
 }
 
-CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::Ciilsptlventry()
+CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::CiiLSPTLVEntry()
     :
     ciilsplevel{YType::enumeration, "ciiLSPLevel"},
     ciilspid{YType::str, "ciiLSPID"},
@@ -6185,15 +6307,16 @@ CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::Ciilsptlventry()
     ciilsptlvvalue{YType::str, "ciiLSPTLVValue"}
 {
 
-    yang_name = "ciiLSPTLVEntry"; yang_parent_name = "ciiLSPTLVTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciiLSPTLVEntry"; yang_parent_name = "ciiLSPTLVTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::~Ciilsptlventry()
+CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::~CiiLSPTLVEntry()
 {
 }
 
-bool CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::has_data() const
+bool CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciilsplevel.is_set
 	|| ciilspid.is_set
 	|| ciilsptlvindex.is_set
@@ -6204,7 +6327,7 @@ bool CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::has_data() const
 	|| ciilsptlvvalue.is_set;
 }
 
-bool CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::has_operation() const
+bool CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciilsplevel.yfilter)
@@ -6217,21 +6340,24 @@ bool CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::has_operation() const
 	|| ydk::is_set(ciilsptlvvalue.yfilter);
 }
 
-std::string CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::get_absolute_path() const
+std::string CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ISIS-MIB:CISCO-IETF-ISIS-MIB/ciiLSPTLVTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::get_segment_path() const
+std::string CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciiLSPTLVEntry" <<"[ciiLSPLevel='" <<ciilsplevel <<"']" <<"[ciiLSPID='" <<ciilspid <<"']" <<"[ciiLSPTLVIndex='" <<ciilsptlvindex <<"']";
+    path_buffer << "ciiLSPTLVEntry";
+    ADD_KEY_TOKEN(ciilsplevel, "ciiLSPLevel");
+    ADD_KEY_TOKEN(ciilspid, "ciiLSPID");
+    ADD_KEY_TOKEN(ciilsptlvindex, "ciiLSPTLVIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6248,19 +6374,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::Ciilsptlvtable:
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciiLSPLevel")
     {
@@ -6312,7 +6438,7 @@ void CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::set_value(const std::stri
     }
 }
 
-void CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciiLSPLevel")
     {
@@ -6348,15 +6474,16 @@ void CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::set_filter(const std::str
     }
 }
 
-bool CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciiLSPLevel" || name == "ciiLSPID" || name == "ciiLSPTLVIndex" || name == "ciiLSPTLVSeq" || name == "ciiLSPTLVChecksum" || name == "ciiLSPTLVType" || name == "ciiLSPTLVLen" || name == "ciiLSPTLVValue")
         return true;
     return false;
 }
 
-const Enum::YLeaf CiiAdminState::on {1, "on"};
-const Enum::YLeaf CiiAdminState::off {2, "off"};
+const Enum::YLeaf CiiMetricStyle::narrow {1, "narrow"};
+const Enum::YLeaf CiiMetricStyle::wide {2, "wide"};
+const Enum::YLeaf CiiMetricStyle::both {3, "both"};
 
 const Enum::YLeaf CiiLevelState::off {1, "off"};
 const Enum::YLeaf CiiLevelState::on {2, "on"};
@@ -6367,97 +6494,96 @@ const Enum::YLeaf CiiSupportedProtocol::iso8473 {129, "iso8473"};
 const Enum::YLeaf CiiSupportedProtocol::ipV6 {142, "ipV6"};
 const Enum::YLeaf CiiSupportedProtocol::ip {204, "ip"};
 
+const Enum::YLeaf CiiAdminState::on {1, "on"};
+const Enum::YLeaf CiiAdminState::off {2, "off"};
+
 const Enum::YLeaf CiiMetricType::internal {1, "internal"};
 const Enum::YLeaf CiiMetricType::external {2, "external"};
-
-const Enum::YLeaf CiiMetricStyle::narrow {1, "narrow"};
-const Enum::YLeaf CiiMetricStyle::wide {2, "wide"};
-const Enum::YLeaf CiiMetricStyle::both {3, "both"};
 
 const Enum::YLeaf CiiISLevel::none {0, "none"};
 const Enum::YLeaf CiiISLevel::area {1, "area"};
 const Enum::YLeaf CiiISLevel::domain {2, "domain"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciisysobject::Ciisysversion::unknown {0, "unknown"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciisysobject::Ciisysversion::one {1, "one"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiSysObject::CiiSysVersion::unknown {0, "unknown"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiSysObject::CiiSysVersion::one {1, "one"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciisysobject::Ciisystype::level1IS {1, "level1IS"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciisysobject::Ciisystype::level2IS {2, "level2IS"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciisysobject::Ciisystype::level1L2IS {3, "level1L2IS"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiSysObject::CiiSysType::level1IS {1, "level1IS"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiSysObject::CiiSysType::level2IS {2, "level2IS"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiSysObject::CiiSysType::level1L2IS {3, "level1L2IS"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::Ciisyslevelindex::level1IS {1, "level1IS"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::Ciisyslevelindex::level2IS {2, "level2IS"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::CiiSysLevelIndex::level1IS {1, "level1IS"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::CiiSysLevelIndex::level2IS {2, "level2IS"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicirctype::broadcast {1, "broadcast"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicirctype::ptToPt {2, "ptToPt"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicirctype::staticIn {3, "staticIn"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicirctype::staticOut {4, "staticOut"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicirctype::dA {5, "dA"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircType::broadcast {1, "broadcast"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircType::ptToPt {2, "ptToPt"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircType::staticIn {3, "staticIn"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircType::staticOut {4, "staticOut"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircType::dA {5, "dA"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicirclevel::level1 {1, "level1"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicirclevel::level2 {2, "level2"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicirclevel::level1L2 {3, "level1L2"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircLevel::level1 {1, "level1"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircLevel::level2 {2, "level2"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircLevel::level1L2 {3, "level1L2"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicircmeshgroupenabled::inactive {1, "inactive"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicircmeshgroupenabled::blocked {2, "blocked"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicircmeshgroupenabled::set {3, "set"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircMeshGroupEnabled::inactive {1, "inactive"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircMeshGroupEnabled::blocked {2, "blocked"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircMeshGroupEnabled::set {3, "set"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::Ciicirclevelindex::level1IS {1, "level1IS"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::Ciicirclevelindex::level2IS {2, "level2IS"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::CiiCircLevelIndex::level1IS {1, "level1IS"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::CiiCircLevelIndex::level2IS {2, "level2IS"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::Ciisysstatlevel::level1IS {1, "level1IS"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::Ciisysstatlevel::level2IS {2, "level2IS"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::CiiSysStatLevel::level1IS {1, "level1IS"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::CiiSysStatLevel::level2IS {2, "level2IS"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::Ciicircuittype::lanlevel1 {1, "lanlevel1"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::Ciicircuittype::lanlevel2 {2, "lanlevel2"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::Ciicircuittype::p2pcircuit {3, "p2pcircuit"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::CiiCircuitType::lanlevel1 {1, "lanlevel1"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::CiiCircuitType::lanlevel2 {2, "lanlevel2"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::CiiCircuitType::p2pcircuit {3, "p2pcircuit"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::Ciipacketcountlevel::level1 {1, "level1"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::Ciipacketcountlevel::level2 {2, "level2"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::CiiPacketCountLevel::level1 {1, "level1"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::CiiPacketCountLevel::level2 {2, "level2"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::Ciipacketcountdirection::sending {1, "sending"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::Ciipacketcountdirection::receiving {2, "receiving"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::CiiPacketCountDirection::sending {1, "sending"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::CiiPacketCountDirection::receiving {2, "receiving"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjstate::down {1, "down"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjstate::initializing {2, "initializing"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjstate::up {3, "up"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjstate::failed {4, "failed"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjState::down {1, "down"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjState::initializing {2, "initializing"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjState::up {3, "up"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjState::failed {4, "failed"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadj3Waystate::up {0, "up"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadj3Waystate::initializing {1, "initializing"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadj3Waystate::down {2, "down"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadj3Waystate::failed {3, "failed"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdj3WayState::up {0, "up"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdj3WayState::initializing {1, "initializing"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdj3WayState::down {2, "down"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdj3WayState::failed {3, "failed"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjneighsystype::l1IntermediateSystem {1, "l1IntermediateSystem"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjneighsystype::l2IntermediateSystem {2, "l2IntermediateSystem"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjneighsystype::l1L2IntermediateSystem {3, "l1L2IntermediateSystem"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjneighsystype::unknown {4, "unknown"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjNeighSysType::l1IntermediateSystem {1, "l1IntermediateSystem"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjNeighSysType::l2IntermediateSystem {2, "l2IntermediateSystem"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjNeighSysType::l1L2IntermediateSystem {3, "l1L2IntermediateSystem"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjNeighSysType::unknown {4, "unknown"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjusage::level1 {1, "level1"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjusage::level2 {2, "level2"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjusage::level1and2 {3, "level1and2"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjUsage::level1 {1, "level1"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjUsage::level2 {2, "level2"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjUsage::level1and2 {3, "level1and2"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciiratable::Ciiraentry::Ciiramaptype::none {1, "none"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiratable::Ciiraentry::Ciiramaptype::explicit_ {2, "explicit"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiratable::Ciiraentry::Ciiramaptype::extractIDI {3, "extractIDI"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiratable::Ciiraentry::Ciiramaptype::extractDSP {4, "extractDSP"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAMapType::none {1, "none"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAMapType::explicit_ {2, "explicit"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAMapType::extractIDI {3, "extractIDI"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAMapType::extractDSP {4, "extractDSP"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciiratable::Ciiraentry::Ciiratype::manual {1, "manual"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiratable::Ciiraentry::Ciiratype::automatic {2, "automatic"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAType::manual {1, "manual"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAType::automatic {2, "automatic"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiipratype::manual {1, "manual"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiipratype::automatic {2, "automatic"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRAType::manual {1, "manual"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRAType::automatic {2, "automatic"};
 
-const Enum::YLeaf CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiiprasourcetype::static_ {1, "static"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiiprasourcetype::direct {2, "direct"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiiprasourcetype::ospfv2 {3, "ospfv2"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiiprasourcetype::ospfv3 {4, "ospfv3"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiiprasourcetype::isis {5, "isis"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiiprasourcetype::rip {6, "rip"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiiprasourcetype::igrp {7, "igrp"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiiprasourcetype::eigrp {8, "eigrp"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiiprasourcetype::bgp {9, "bgp"};
-const Enum::YLeaf CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiiprasourcetype::other {10, "other"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType::static_ {1, "static"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType::direct {2, "direct"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType::ospfv2 {3, "ospfv2"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType::ospfv3 {4, "ospfv3"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType::isis {5, "isis"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType::rip {6, "rip"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType::igrp {7, "igrp"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType::eigrp {8, "eigrp"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType::bgp {9, "bgp"};
+const Enum::YLeaf CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType::other {10, "other"};
 
 
 }

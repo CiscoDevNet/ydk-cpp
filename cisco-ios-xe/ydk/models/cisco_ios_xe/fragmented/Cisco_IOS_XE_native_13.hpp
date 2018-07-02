@@ -446,7 +446,7 @@ class Native::Avc::SdService::Controller::Address : public ydk::Entity
 
         class Ipv4OrHostname; //type: Native::Avc::SdService::Controller::Address::Ipv4OrHostname
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Avc::SdService::Controller::Address::Ipv4OrHostname> > ipv4_or_hostname;
+        ydk::YList ipv4_or_hostname;
         
 }; // Native::Avc::SdService::Controller::Address
 
@@ -468,8 +468,8 @@ class Native::Avc::SdService::Controller::Address::Ipv4OrHostname : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_or_hostname; //type: one of string, union
-        ydk::YLeaf ipv4_or_hostname0; //type: one of string, union
+        ydk::YLeaf ipv4_or_hostname; //type: one of union, string
+        ydk::YLeaf ipv4_or_hostname0; //type: one of union, string
 
 }; // Native::Avc::SdService::Controller::Address::Ipv4OrHostname
 
@@ -516,8 +516,8 @@ class Native::Policy : public ydk::Entity
         class ClassMap; //type: Native::Policy::ClassMap
         class PolicyMap; //type: Native::Policy::PolicyMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap> > class_map;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap> > policy_map;
+        ydk::YList class_map;
+        ydk::YList policy_map;
         
 }; // Native::Policy
 
@@ -631,10 +631,10 @@ class Native::Policy::ClassMap::Match : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Packet> packet;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Protocol> protocol;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::SecurityGroup> security_group;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Service> > service;
+        ydk::YList service;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::SourceAddress> source_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Vlan> vlan;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::ActivatedServiceTemplate> > activated_service_template;
+        ydk::YList activated_service_template;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::AuthorizationStatus> authorization_status;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::AuthorizingMethodPriority> authorizing_method_priority;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Method> method;
@@ -848,7 +848,7 @@ class Native::Policy::ClassMap::Match::Ip : public ydk::Entity
         ydk::YLeafList precedence; //type: list of  one of uint8, enumeration
         class Rtp; //type: Native::Policy::ClassMap::Match::Ip::Rtp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Ip::Rtp> > rtp;
+        ydk::YList rtp;
         
 }; // Native::Policy::ClassMap::Match::Ip
 
@@ -983,7 +983,7 @@ class Native::Policy::ClassMap::Match::Protocol : public ydk::Entity
         class ProtocolsList; //type: Native::Policy::ClassMap::Match::Protocol::ProtocolsList
         class Attribute; //type: Native::Policy::ClassMap::Match::Protocol::Attribute
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Protocol::ProtocolsList> > protocols_list;
+        ydk::YList protocols_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Protocol::Attribute> attribute;
         
 }; // Native::Policy::ClassMap::Match::Protocol
@@ -1035,14 +1035,14 @@ class Native::Policy::ClassMap::Match::Protocol::Attribute : public ydk::Entity
         class TrafficClass; //type: Native::Policy::ClassMap::Match::Protocol::Attribute::TrafficClass
         class Tunnel; //type: Native::Policy::ClassMap::Match::Protocol::Attribute::Tunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationGroup> > application_group;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationSet> > application_set;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Protocol::Attribute::BusinessRelevance> > business_relevance;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Protocol::Attribute::Category> > category;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Protocol::Attribute::Encrypted> > encrypted;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Protocol::Attribute::SubCategory> > sub_category;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Protocol::Attribute::TrafficClass> > traffic_class;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Protocol::Attribute::Tunnel> > tunnel;
+        ydk::YList application_group;
+        ydk::YList application_set;
+        ydk::YList business_relevance;
+        ydk::YList category;
+        ydk::YList encrypted;
+        ydk::YList sub_category;
+        ydk::YList traffic_class;
+        ydk::YList tunnel;
         
 }; // Native::Policy::ClassMap::Match::Protocol::Attribute
 
@@ -1482,22 +1482,22 @@ class Native::Policy::ClassMap::Match::ResultType::Method : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Dot1X; //type: Native::Policy::ClassMap::Match::ResultType::Method::Dot1X
+        class Dot1x; //type: Native::Policy::ClassMap::Match::ResultType::Method::Dot1x
         class Mab; //type: Native::Policy::ClassMap::Match::ResultType::Method::Mab
         class Webauth; //type: Native::Policy::ClassMap::Match::ResultType::Method::Webauth
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::ResultType::Method::Dot1X> dot1x;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::ResultType::Method::Dot1x> dot1x;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::ResultType::Method::Mab> mab;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::ResultType::Method::Webauth> webauth;
         
 }; // Native::Policy::ClassMap::Match::ResultType::Method
 
 
-class Native::Policy::ClassMap::Match::ResultType::Method::Dot1X : public ydk::Entity
+class Native::Policy::ClassMap::Match::ResultType::Method::Dot1x : public ydk::Entity
 {
     public:
-        Dot1X();
-        ~Dot1X();
+        Dot1x();
+        ~Dot1x();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1516,7 +1516,7 @@ class Native::Policy::ClassMap::Match::ResultType::Method::Dot1X : public ydk::E
         ydk::YLeaf none; //type: empty
         ydk::YLeaf success; //type: empty
 
-}; // Native::Policy::ClassMap::Match::ResultType::Method::Dot1X
+}; // Native::Policy::ClassMap::Match::ResultType::Method::Dot1x
 
 
 class Native::Policy::ClassMap::Match::ResultType::Method::Mab : public ydk::Entity
@@ -1623,7 +1623,7 @@ class Native::Policy::ClassMap::Match::Not : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Packet> packet;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Protocol> protocol;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::SecurityGroup> security_group;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Service> > service;
+        ydk::YList service;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::SourceAddress> source_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Vlan> vlan;
         
@@ -1831,7 +1831,7 @@ class Native::Policy::ClassMap::Match::Not::Ip : public ydk::Entity
         ydk::YLeafList precedence; //type: list of  one of uint8, enumeration
         class Rtp; //type: Native::Policy::ClassMap::Match::Not::Ip::Rtp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Ip::Rtp> > rtp;
+        ydk::YList rtp;
         
 }; // Native::Policy::ClassMap::Match::Not::Ip
 
@@ -1966,7 +1966,7 @@ class Native::Policy::ClassMap::Match::Not::Protocol : public ydk::Entity
         class ProtocolsList; //type: Native::Policy::ClassMap::Match::Not::Protocol::ProtocolsList
         class Attribute; //type: Native::Policy::ClassMap::Match::Not::Protocol::Attribute
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Protocol::ProtocolsList> > protocols_list;
+        ydk::YList protocols_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Protocol::Attribute> attribute;
         
 }; // Native::Policy::ClassMap::Match::Not::Protocol
@@ -2018,14 +2018,14 @@ class Native::Policy::ClassMap::Match::Not::Protocol::Attribute : public ydk::En
         class TrafficClass; //type: Native::Policy::ClassMap::Match::Not::Protocol::Attribute::TrafficClass
         class Tunnel; //type: Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Tunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationGroup> > application_group;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationSet> > application_set;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Protocol::Attribute::BusinessRelevance> > business_relevance;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Category> > category;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Encrypted> > encrypted;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Protocol::Attribute::SubCategory> > sub_category;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Protocol::Attribute::TrafficClass> > traffic_class;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Tunnel> > tunnel;
+        ydk::YList application_group;
+        ydk::YList application_set;
+        ydk::YList business_relevance;
+        ydk::YList category;
+        ydk::YList encrypted;
+        ydk::YList sub_category;
+        ydk::YList traffic_class;
+        ydk::YList tunnel;
         
 }; // Native::Policy::ClassMap::Match::Not::Protocol::Attribute
 
@@ -2369,7 +2369,7 @@ class Native::Policy::ClassMap::NoMatch : public ydk::Entity
         class Method; //type: Native::Policy::ClassMap::NoMatch::Method
         class ResultType; //type: Native::Policy::ClassMap::NoMatch::ResultType
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::NoMatch::ActivatedServiceTemplate> > activated_service_template;
+        ydk::YList activated_service_template;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::NoMatch::AuthorizationStatus> authorization_status;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::NoMatch::AuthorizingMethodPriority> authorizing_method_priority;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::NoMatch::Method> method;
@@ -2515,22 +2515,22 @@ class Native::Policy::ClassMap::NoMatch::ResultType::Method : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Dot1X; //type: Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X
+        class Dot1x; //type: Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x
         class Mab; //type: Native::Policy::ClassMap::NoMatch::ResultType::Method::Mab
         class Webauth; //type: Native::Policy::ClassMap::NoMatch::ResultType::Method::Webauth
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X> dot1x;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x> dot1x;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::NoMatch::ResultType::Method::Mab> mab;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::ClassMap::NoMatch::ResultType::Method::Webauth> webauth;
         
 }; // Native::Policy::ClassMap::NoMatch::ResultType::Method
 
 
-class Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X : public ydk::Entity
+class Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x : public ydk::Entity
 {
     public:
-        Dot1X();
-        ~Dot1X();
+        Dot1x();
+        ~Dot1x();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2549,7 +2549,7 @@ class Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X : public ydk:
         ydk::YLeaf none; //type: empty
         ydk::YLeaf success; //type: empty
 
-}; // Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X
+}; // Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x
 
 
 class Native::Policy::ClassMap::NoMatch::ResultType::Method::Mab : public ydk::Entity
@@ -2630,8 +2630,8 @@ class Native::Policy::PolicyMap : public ydk::Entity
         class Event; //type: Native::Policy::PolicyMap::Event
         class Class; //type: Native::Policy::PolicyMap::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Event> > event;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class> > class_;
+        ydk::YList event;
+        ydk::YList class_;
                 class Type;
         class Protocol;
 
@@ -2658,7 +2658,7 @@ class Native::Policy::PolicyMap::Event : public ydk::Entity
         ydk::YLeaf match_type; //type: MatchType
         class ClassNumber; //type: Native::Policy::PolicyMap::Event::ClassNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Event::ClassNumber> > class_number;
+        ydk::YList class_number;
                 class EventType;
         class MatchType;
 
@@ -2682,11 +2682,11 @@ class Native::Policy::PolicyMap::Event::ClassNumber : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number; //type: uint8
-        ydk::YLeaf class_; //type: one of enumeration, string
+        ydk::YLeaf class_; //type: one of string, enumeration
         ydk::YLeaf execution_type; //type: ExecutionType
         class ActionNumber; //type: Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber> > action_number;
+        ydk::YList action_number;
                 class Class_;
         class ExecutionType;
 
@@ -2927,7 +2927,7 @@ class Native::Policy::PolicyMap::Class : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of enumeration, string
+        ydk::YLeaf name; //type: one of string, enumeration
         ydk::YLeaf type; //type: Type
         ydk::YLeaf insert_before; //type: string
         ydk::YLeaf random_detect; //type: empty
@@ -2941,7 +2941,7 @@ class Native::Policy::PolicyMap::Class : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::Policy_> policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::PmPolicy> pm_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::InspectPolice> inspect_police;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList> > action_list;
+        ydk::YList action_list;
                 class Type;
 
 }; // Native::Policy::PolicyMap::Class
@@ -2967,7 +2967,7 @@ class Native::Policy::PolicyMap::Class::AppnavPolicy : public ydk::Entity
         ydk::YLeaf pass_through; //type: empty
         class Distribute; //type: Native::Policy::PolicyMap::Class::AppnavPolicy::Distribute
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::AppnavPolicy::Distribute> > distribute;
+        ydk::YList distribute;
                 class MonitorLoad;
 
 }; // Native::Policy::PolicyMap::Class::AppnavPolicy
@@ -3013,7 +3013,7 @@ class Native::Policy::PolicyMap::Class::Policy_ : public ydk::Entity
 
         ydk::YLeaf action; //type: Action
         ydk::YLeaf log; //type: empty
-        ydk::YLeaf parameter_map; //type: one of enumeration, string
+        ydk::YLeaf parameter_map; //type: one of string, enumeration
         class Dpi; //type: Native::Policy::PolicyMap::Class::Policy_::Dpi
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::Policy_::Dpi> dpi;
@@ -3068,7 +3068,7 @@ class Native::Policy::PolicyMap::Class::PmPolicy : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::PmPolicy::Flow> flow;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::PmPolicy::Monitor> monitor;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::PmPolicy::React> > react;
+        ydk::YList react;
         
 }; // Native::Policy::PolicyMap::Class::PmPolicy
 
@@ -3158,7 +3158,7 @@ class Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp : public 
 
         class ClockRate; //type: Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::ClockRate
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::ClockRate> > clock_rate;
+        ydk::YList clock_rate;
         
 }; // Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp
 

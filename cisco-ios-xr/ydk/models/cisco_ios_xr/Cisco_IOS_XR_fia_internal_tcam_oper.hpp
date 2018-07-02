@@ -81,7 +81,7 @@ class Controller::Dpa::Nodes : public ydk::Entity
 
         class Node; //type: Controller::Dpa::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Controller::Dpa::Nodes
 
@@ -131,7 +131,7 @@ class Controller::Dpa::Nodes::Node::ExternalTcamResources : public ydk::Entity
 
         class NpuTcam; //type: Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam> > npu_tcam;
+        ydk::YList npu_tcam;
         
 }; // Controller::Dpa::Nodes::Node::ExternalTcamResources
 
@@ -155,7 +155,7 @@ class Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam : public ydk:
         ydk::YLeaf npu_id; //type: uint32
         class TcamBank; //type: Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank> > tcam_bank;
+        ydk::YList tcam_bank;
         
 }; // Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam
 
@@ -184,7 +184,7 @@ class Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank : p
         ydk::YLeaf nof_dbs; //type: uint32
         class BankDb; //type: Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb> > bank_db;
+        ydk::YList bank_db;
         
 }; // Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank
 
@@ -230,7 +230,7 @@ class Controller::Dpa::Nodes::Node::InternalTcamResources : public ydk::Entity
 
         class NpuTcam; //type: Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam> > npu_tcam;
+        ydk::YList npu_tcam;
         
 }; // Controller::Dpa::Nodes::Node::InternalTcamResources
 
@@ -254,7 +254,7 @@ class Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam : public ydk:
         ydk::YLeaf npu_id; //type: uint32
         class TcamBank; //type: Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank> > tcam_bank;
+        ydk::YList tcam_bank;
         
 }; // Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam
 
@@ -283,7 +283,7 @@ class Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank : p
         ydk::YLeaf nof_dbs; //type: uint32
         class BankDb; //type: Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb> > bank_db;
+        ydk::YList bank_db;
         
 }; // Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank
 

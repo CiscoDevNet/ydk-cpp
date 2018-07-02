@@ -17,7 +17,7 @@ RedundancyGroupManager::RedundancyGroupManager()
 {
     controllers->parent = this;
 
-    yang_name = "redundancy-group-manager"; yang_parent_name = "Cisco-IOS-XR-rgmgr-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "redundancy-group-manager"; yang_parent_name = "Cisco-IOS-XR-rgmgr-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RedundancyGroupManager::~RedundancyGroupManager()
@@ -26,6 +26,7 @@ RedundancyGroupManager::~RedundancyGroupManager()
 
 bool RedundancyGroupManager::has_data() const
 {
+    if (is_presence_container) return true;
     return (controllers !=  nullptr && controllers->has_data());
 }
 
@@ -118,9 +119,11 @@ bool RedundancyGroupManager::has_leaf_or_child_of_name(const std::string & name)
 }
 
 RedundancyGroupManager::Controllers::Controllers()
+    :
+    controller(this, {"controller_name"})
 {
 
-    yang_name = "controllers"; yang_parent_name = "redundancy-group-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controllers"; yang_parent_name = "redundancy-group-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RedundancyGroupManager::Controllers::~Controllers()
@@ -129,7 +132,8 @@ RedundancyGroupManager::Controllers::~Controllers()
 
 bool RedundancyGroupManager::Controllers::has_data() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool RedundancyGroupManager::Controllers::has_data() const
 
 bool RedundancyGroupManager::Controllers::has_operation() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> RedundancyGroupManager::Controllers::get_child_by_name(c
     {
         auto c = std::make_shared<RedundancyGroupManager::Controllers::Controller>();
         c->parent = this;
-        controller.push_back(c);
+        controller.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Controlle
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : controller)
+    for (auto c : controller.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -226,7 +230,7 @@ RedundancyGroupManager::Controllers::Controller::Controller()
     inter_chassis_group_state{YType::str, "inter-chassis-group-state"}
 {
 
-    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RedundancyGroupManager::Controllers::Controller::~Controller()
@@ -235,6 +239,7 @@ RedundancyGroupManager::Controllers::Controller::~Controller()
 
 bool RedundancyGroupManager::Controllers::Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return controller_name.is_set
 	|| multi_router_aps_group_number.is_set
 	|| controller_name_xr.is_set
@@ -268,7 +273,8 @@ std::string RedundancyGroupManager::Controllers::Controller::get_absolute_path()
 std::string RedundancyGroupManager::Controllers::Controller::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "controller" <<"[controller-name='" <<controller_name <<"']";
+    path_buffer << "controller";
+    ADD_KEY_TOKEN(controller_name, "controller-name");
     return path_buffer.str();
 }
 

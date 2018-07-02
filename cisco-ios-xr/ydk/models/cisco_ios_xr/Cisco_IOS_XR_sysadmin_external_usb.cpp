@@ -17,7 +17,7 @@ ExternalUsb::ExternalUsb()
 {
     config->parent = this;
 
-    yang_name = "external-usb"; yang_parent_name = "Cisco-IOS-XR-sysadmin-external-usb"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "external-usb"; yang_parent_name = "Cisco-IOS-XR-sysadmin-external-usb"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ExternalUsb::~ExternalUsb()
@@ -26,6 +26,7 @@ ExternalUsb::~ExternalUsb()
 
 bool ExternalUsb::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data());
 }
 
@@ -122,7 +123,7 @@ ExternalUsb::Config::Config()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "config"; yang_parent_name = "external-usb"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "external-usb"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ExternalUsb::Config::~Config()
@@ -131,6 +132,7 @@ ExternalUsb::Config::~Config()
 
 bool ExternalUsb::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 

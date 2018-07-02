@@ -13,15 +13,15 @@ namespace CISCO_BGP4_MIB {
 
 CISCOBGP4MIB::CISCOBGP4MIB()
     :
-    cbgpglobal(std::make_shared<CISCOBGP4MIB::Cbgpglobal>())
-	,cbgproutetable(std::make_shared<CISCOBGP4MIB::Cbgproutetable>())
-	,cbgppeercapstable(std::make_shared<CISCOBGP4MIB::Cbgppeercapstable>())
-	,cbgppeeraddrfamilytable(std::make_shared<CISCOBGP4MIB::Cbgppeeraddrfamilytable>())
-	,cbgppeeraddrfamilyprefixtable(std::make_shared<CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable>())
-	,cbgppeer2table(std::make_shared<CISCOBGP4MIB::Cbgppeer2Table>())
-	,cbgppeer2capstable(std::make_shared<CISCOBGP4MIB::Cbgppeer2Capstable>())
-	,cbgppeer2addrfamilytable(std::make_shared<CISCOBGP4MIB::Cbgppeer2Addrfamilytable>())
-	,cbgppeer2addrfamilyprefixtable(std::make_shared<CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable>())
+    cbgpglobal(std::make_shared<CISCOBGP4MIB::CbgpGlobal>())
+    , cbgproutetable(std::make_shared<CISCOBGP4MIB::CbgpRouteTable>())
+    , cbgppeercapstable(std::make_shared<CISCOBGP4MIB::CbgpPeerCapsTable>())
+    , cbgppeeraddrfamilytable(std::make_shared<CISCOBGP4MIB::CbgpPeerAddrFamilyTable>())
+    , cbgppeeraddrfamilyprefixtable(std::make_shared<CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable>())
+    , cbgppeer2table(std::make_shared<CISCOBGP4MIB::CbgpPeer2Table>())
+    , cbgppeer2capstable(std::make_shared<CISCOBGP4MIB::CbgpPeer2CapsTable>())
+    , cbgppeer2addrfamilytable(std::make_shared<CISCOBGP4MIB::CbgpPeer2AddrFamilyTable>())
+    , cbgppeer2addrfamilyprefixtable(std::make_shared<CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable>())
 {
     cbgpglobal->parent = this;
     cbgproutetable->parent = this;
@@ -33,7 +33,7 @@ CISCOBGP4MIB::CISCOBGP4MIB()
     cbgppeer2addrfamilytable->parent = this;
     cbgppeer2addrfamilyprefixtable->parent = this;
 
-    yang_name = "CISCO-BGP4-MIB"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-BGP4-MIB"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOBGP4MIB::~CISCOBGP4MIB()
@@ -42,6 +42,7 @@ CISCOBGP4MIB::~CISCOBGP4MIB()
 
 bool CISCOBGP4MIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cbgpglobal !=  nullptr && cbgpglobal->has_data())
 	|| (cbgproutetable !=  nullptr && cbgproutetable->has_data())
 	|| (cbgppeercapstable !=  nullptr && cbgppeercapstable->has_data())
@@ -89,7 +90,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::get_child_by_name(const std::string & chil
     {
         if(cbgpglobal == nullptr)
         {
-            cbgpglobal = std::make_shared<CISCOBGP4MIB::Cbgpglobal>();
+            cbgpglobal = std::make_shared<CISCOBGP4MIB::CbgpGlobal>();
         }
         return cbgpglobal;
     }
@@ -98,7 +99,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::get_child_by_name(const std::string & chil
     {
         if(cbgproutetable == nullptr)
         {
-            cbgproutetable = std::make_shared<CISCOBGP4MIB::Cbgproutetable>();
+            cbgproutetable = std::make_shared<CISCOBGP4MIB::CbgpRouteTable>();
         }
         return cbgproutetable;
     }
@@ -107,7 +108,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::get_child_by_name(const std::string & chil
     {
         if(cbgppeercapstable == nullptr)
         {
-            cbgppeercapstable = std::make_shared<CISCOBGP4MIB::Cbgppeercapstable>();
+            cbgppeercapstable = std::make_shared<CISCOBGP4MIB::CbgpPeerCapsTable>();
         }
         return cbgppeercapstable;
     }
@@ -116,7 +117,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::get_child_by_name(const std::string & chil
     {
         if(cbgppeeraddrfamilytable == nullptr)
         {
-            cbgppeeraddrfamilytable = std::make_shared<CISCOBGP4MIB::Cbgppeeraddrfamilytable>();
+            cbgppeeraddrfamilytable = std::make_shared<CISCOBGP4MIB::CbgpPeerAddrFamilyTable>();
         }
         return cbgppeeraddrfamilytable;
     }
@@ -125,7 +126,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::get_child_by_name(const std::string & chil
     {
         if(cbgppeeraddrfamilyprefixtable == nullptr)
         {
-            cbgppeeraddrfamilyprefixtable = std::make_shared<CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable>();
+            cbgppeeraddrfamilyprefixtable = std::make_shared<CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable>();
         }
         return cbgppeeraddrfamilyprefixtable;
     }
@@ -134,7 +135,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::get_child_by_name(const std::string & chil
     {
         if(cbgppeer2table == nullptr)
         {
-            cbgppeer2table = std::make_shared<CISCOBGP4MIB::Cbgppeer2Table>();
+            cbgppeer2table = std::make_shared<CISCOBGP4MIB::CbgpPeer2Table>();
         }
         return cbgppeer2table;
     }
@@ -143,7 +144,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::get_child_by_name(const std::string & chil
     {
         if(cbgppeer2capstable == nullptr)
         {
-            cbgppeer2capstable = std::make_shared<CISCOBGP4MIB::Cbgppeer2Capstable>();
+            cbgppeer2capstable = std::make_shared<CISCOBGP4MIB::CbgpPeer2CapsTable>();
         }
         return cbgppeer2capstable;
     }
@@ -152,7 +153,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::get_child_by_name(const std::string & chil
     {
         if(cbgppeer2addrfamilytable == nullptr)
         {
-            cbgppeer2addrfamilytable = std::make_shared<CISCOBGP4MIB::Cbgppeer2Addrfamilytable>();
+            cbgppeer2addrfamilytable = std::make_shared<CISCOBGP4MIB::CbgpPeer2AddrFamilyTable>();
         }
         return cbgppeer2addrfamilytable;
     }
@@ -161,7 +162,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::get_child_by_name(const std::string & chil
     {
         if(cbgppeer2addrfamilyprefixtable == nullptr)
         {
-            cbgppeer2addrfamilyprefixtable = std::make_shared<CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable>();
+            cbgppeer2addrfamilyprefixtable = std::make_shared<CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable>();
         }
         return cbgppeer2addrfamilyprefixtable;
     }
@@ -261,47 +262,48 @@ bool CISCOBGP4MIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOBGP4MIB::Cbgpglobal::Cbgpglobal()
+CISCOBGP4MIB::CbgpGlobal::CbgpGlobal()
     :
     cbgpnotifsenable{YType::bits, "cbgpNotifsEnable"},
     cbgplocalas{YType::uint32, "cbgpLocalAs"}
 {
 
-    yang_name = "cbgpGlobal"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpGlobal"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgpglobal::~Cbgpglobal()
+CISCOBGP4MIB::CbgpGlobal::~CbgpGlobal()
 {
 }
 
-bool CISCOBGP4MIB::Cbgpglobal::has_data() const
+bool CISCOBGP4MIB::CbgpGlobal::has_data() const
 {
+    if (is_presence_container) return true;
     return cbgpnotifsenable.is_set
 	|| cbgplocalas.is_set;
 }
 
-bool CISCOBGP4MIB::Cbgpglobal::has_operation() const
+bool CISCOBGP4MIB::CbgpGlobal::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cbgpnotifsenable.yfilter)
 	|| ydk::is_set(cbgplocalas.yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgpglobal::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpGlobal::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgpglobal::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpGlobal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbgpGlobal";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgpglobal::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpGlobal::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -312,19 +314,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgpglobal::get_nam
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgpglobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgpglobal::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpGlobal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBGP4MIB::Cbgpglobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cbgpNotifsEnable")
     {
@@ -338,7 +340,7 @@ void CISCOBGP4MIB::Cbgpglobal::set_value(const std::string & value_path, const s
     }
 }
 
-void CISCOBGP4MIB::Cbgpglobal::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpGlobal::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cbgpNotifsEnable")
     {
@@ -350,26 +352,29 @@ void CISCOBGP4MIB::Cbgpglobal::set_filter(const std::string & value_path, YFilte
     }
 }
 
-bool CISCOBGP4MIB::Cbgpglobal::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpGlobal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpNotifsEnable" || name == "cbgpLocalAs")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgproutetable::Cbgproutetable()
+CISCOBGP4MIB::CbgpRouteTable::CbgpRouteTable()
+    :
+    cbgprouteentry(this, {"cbgprouteafi", "cbgproutesafi", "cbgproutepeertype", "cbgproutepeer", "cbgprouteaddrprefix", "cbgprouteaddrprefixlen"})
 {
 
-    yang_name = "cbgpRouteTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpRouteTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgproutetable::~Cbgproutetable()
+CISCOBGP4MIB::CbgpRouteTable::~CbgpRouteTable()
 {
 }
 
-bool CISCOBGP4MIB::Cbgproutetable::has_data() const
+bool CISCOBGP4MIB::CbgpRouteTable::has_data() const
 {
-    for (std::size_t index=0; index<cbgprouteentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cbgprouteentry.len(); index++)
     {
         if(cbgprouteentry[index]->has_data())
             return true;
@@ -377,9 +382,9 @@ bool CISCOBGP4MIB::Cbgproutetable::has_data() const
     return false;
 }
 
-bool CISCOBGP4MIB::Cbgproutetable::has_operation() const
+bool CISCOBGP4MIB::CbgpRouteTable::has_operation() const
 {
-    for (std::size_t index=0; index<cbgprouteentry.size(); index++)
+    for (std::size_t index=0; index<cbgprouteentry.len(); index++)
     {
         if(cbgprouteentry[index]->has_operation())
             return true;
@@ -387,21 +392,21 @@ bool CISCOBGP4MIB::Cbgproutetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgproutetable::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpRouteTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgproutetable::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpRouteTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbgpRouteTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgproutetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpRouteTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -410,25 +415,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgproutetable::get
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgproutetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbgpRouteEntry")
     {
-        auto c = std::make_shared<CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry>();
+        auto c = std::make_shared<CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry>();
         c->parent = this;
-        cbgprouteentry.push_back(c);
+        cbgprouteentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgproutetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpRouteTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cbgprouteentry)
+    for (auto c : cbgprouteentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -439,22 +444,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgproutetable::get
     return children;
 }
 
-void CISCOBGP4MIB::Cbgproutetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpRouteTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOBGP4MIB::Cbgproutetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpRouteTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOBGP4MIB::Cbgproutetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpRouteTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpRouteEntry")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteentry()
+CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::CbgpRouteEntry()
     :
     cbgprouteafi{YType::enumeration, "cbgpRouteAfi"},
     cbgproutesafi{YType::enumeration, "cbgpRouteSafi"},
@@ -477,15 +482,16 @@ CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteentry()
     cbgprouteunknownattr{YType::str, "cbgpRouteUnknownAttr"}
 {
 
-    yang_name = "cbgpRouteEntry"; yang_parent_name = "cbgpRouteTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpRouteEntry"; yang_parent_name = "cbgpRouteTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::~Cbgprouteentry()
+CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::~CbgpRouteEntry()
 {
 }
 
-bool CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::has_data() const
+bool CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cbgprouteafi.is_set
 	|| cbgproutesafi.is_set
 	|| cbgproutepeertype.is_set
@@ -507,7 +513,7 @@ bool CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::has_data() const
 	|| cbgprouteunknownattr.is_set;
 }
 
-bool CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::has_operation() const
+bool CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cbgprouteafi.yfilter)
@@ -531,21 +537,27 @@ bool CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::has_operation() const
 	|| ydk::is_set(cbgprouteunknownattr.yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/cbgpRouteTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cbgpRouteEntry" <<"[cbgpRouteAfi='" <<cbgprouteafi <<"']" <<"[cbgpRouteSafi='" <<cbgproutesafi <<"']" <<"[cbgpRoutePeerType='" <<cbgproutepeertype <<"']" <<"[cbgpRoutePeer='" <<cbgproutepeer <<"']" <<"[cbgpRouteAddrPrefix='" <<cbgprouteaddrprefix <<"']" <<"[cbgpRouteAddrPrefixLen='" <<cbgprouteaddrprefixlen <<"']";
+    path_buffer << "cbgpRouteEntry";
+    ADD_KEY_TOKEN(cbgprouteafi, "cbgpRouteAfi");
+    ADD_KEY_TOKEN(cbgproutesafi, "cbgpRouteSafi");
+    ADD_KEY_TOKEN(cbgproutepeertype, "cbgpRoutePeerType");
+    ADD_KEY_TOKEN(cbgproutepeer, "cbgpRoutePeer");
+    ADD_KEY_TOKEN(cbgprouteaddrprefix, "cbgpRouteAddrPrefix");
+    ADD_KEY_TOKEN(cbgprouteaddrprefixlen, "cbgpRouteAddrPrefixLen");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -573,19 +585,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgproutetable::Cbg
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cbgpRouteAfi")
     {
@@ -703,7 +715,7 @@ void CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::set_value(const std::string &
     }
 }
 
-void CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cbgpRouteAfi")
     {
@@ -783,26 +795,29 @@ void CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::set_filter(const std::string 
     }
 }
 
-bool CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpRouteAfi" || name == "cbgpRouteSafi" || name == "cbgpRoutePeerType" || name == "cbgpRoutePeer" || name == "cbgpRouteAddrPrefix" || name == "cbgpRouteAddrPrefixLen" || name == "cbgpRouteOrigin" || name == "cbgpRouteASPathSegment" || name == "cbgpRouteNextHop" || name == "cbgpRouteMedPresent" || name == "cbgpRouteMultiExitDisc" || name == "cbgpRouteLocalPrefPresent" || name == "cbgpRouteLocalPref" || name == "cbgpRouteAtomicAggregate" || name == "cbgpRouteAggregatorAS" || name == "cbgpRouteAggregatorAddrType" || name == "cbgpRouteAggregatorAddr" || name == "cbgpRouteBest" || name == "cbgpRouteUnknownAttr")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapstable()
+CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsTable()
+    :
+    cbgppeercapsentry(this, {"bgppeerremoteaddr", "cbgppeercapcode", "cbgppeercapindex"})
 {
 
-    yang_name = "cbgpPeerCapsTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeerCapsTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeercapstable::~Cbgppeercapstable()
+CISCOBGP4MIB::CbgpPeerCapsTable::~CbgpPeerCapsTable()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeercapstable::has_data() const
+bool CISCOBGP4MIB::CbgpPeerCapsTable::has_data() const
 {
-    for (std::size_t index=0; index<cbgppeercapsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cbgppeercapsentry.len(); index++)
     {
         if(cbgppeercapsentry[index]->has_data())
             return true;
@@ -810,9 +825,9 @@ bool CISCOBGP4MIB::Cbgppeercapstable::has_data() const
     return false;
 }
 
-bool CISCOBGP4MIB::Cbgppeercapstable::has_operation() const
+bool CISCOBGP4MIB::CbgpPeerCapsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cbgppeercapsentry.size(); index++)
+    for (std::size_t index=0; index<cbgppeercapsentry.len(); index++)
     {
         if(cbgppeercapsentry[index]->has_operation())
             return true;
@@ -820,21 +835,21 @@ bool CISCOBGP4MIB::Cbgppeercapstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeercapstable::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeerCapsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeercapstable::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeerCapsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbgpPeerCapsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeercapstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeerCapsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -843,25 +858,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeercapstable::
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeercapstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeerCapsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbgpPeerCapsEntry")
     {
-        auto c = std::make_shared<CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry>();
+        auto c = std::make_shared<CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry>();
         c->parent = this;
-        cbgppeercapsentry.push_back(c);
+        cbgppeercapsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeercapstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeerCapsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cbgppeercapsentry)
+    for (auto c : cbgppeercapsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -872,22 +887,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeercapstable::
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeercapstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeerCapsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOBGP4MIB::Cbgppeercapstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeerCapsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeercapstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeerCapsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpPeerCapsEntry")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::Cbgppeercapsentry()
+CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::CbgpPeerCapsEntry()
     :
     bgppeerremoteaddr{YType::str, "bgpPeerRemoteAddr"},
     cbgppeercapcode{YType::enumeration, "cbgpPeerCapCode"},
@@ -895,22 +910,23 @@ CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::Cbgppeercapsentry()
     cbgppeercapvalue{YType::str, "cbgpPeerCapValue"}
 {
 
-    yang_name = "cbgpPeerCapsEntry"; yang_parent_name = "cbgpPeerCapsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeerCapsEntry"; yang_parent_name = "cbgpPeerCapsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::~Cbgppeercapsentry()
+CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::~CbgpPeerCapsEntry()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::has_data() const
+bool CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return bgppeerremoteaddr.is_set
 	|| cbgppeercapcode.is_set
 	|| cbgppeercapindex.is_set
 	|| cbgppeercapvalue.is_set;
 }
 
-bool CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::has_operation() const
+bool CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bgppeerremoteaddr.yfilter)
@@ -919,21 +935,24 @@ bool CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::has_operation() const
 	|| ydk::is_set(cbgppeercapvalue.yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/cbgpPeerCapsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cbgpPeerCapsEntry" <<"[bgpPeerRemoteAddr='" <<bgppeerremoteaddr <<"']" <<"[cbgpPeerCapCode='" <<cbgppeercapcode <<"']" <<"[cbgpPeerCapIndex='" <<cbgppeercapindex <<"']";
+    path_buffer << "cbgpPeerCapsEntry";
+    ADD_KEY_TOKEN(bgppeerremoteaddr, "bgpPeerRemoteAddr");
+    ADD_KEY_TOKEN(cbgppeercapcode, "cbgpPeerCapCode");
+    ADD_KEY_TOKEN(cbgppeercapindex, "cbgpPeerCapIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -946,19 +965,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeercapstable::
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bgpPeerRemoteAddr")
     {
@@ -986,7 +1005,7 @@ void CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::set_value(const std::st
     }
 }
 
-void CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bgpPeerRemoteAddr")
     {
@@ -1006,26 +1025,29 @@ void CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::set_filter(const std::s
     }
 }
 
-bool CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgpPeerRemoteAddr" || name == "cbgpPeerCapCode" || name == "cbgpPeerCapIndex" || name == "cbgpPeerCapValue")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilytable()
+CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyTable()
+    :
+    cbgppeeraddrfamilyentry(this, {"bgppeerremoteaddr", "cbgppeeraddrfamilyafi", "cbgppeeraddrfamilysafi"})
 {
 
-    yang_name = "cbgpPeerAddrFamilyTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeerAddrFamilyTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeeraddrfamilytable::~Cbgppeeraddrfamilytable()
+CISCOBGP4MIB::CbgpPeerAddrFamilyTable::~CbgpPeerAddrFamilyTable()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeeraddrfamilytable::has_data() const
+bool CISCOBGP4MIB::CbgpPeerAddrFamilyTable::has_data() const
 {
-    for (std::size_t index=0; index<cbgppeeraddrfamilyentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cbgppeeraddrfamilyentry.len(); index++)
     {
         if(cbgppeeraddrfamilyentry[index]->has_data())
             return true;
@@ -1033,9 +1055,9 @@ bool CISCOBGP4MIB::Cbgppeeraddrfamilytable::has_data() const
     return false;
 }
 
-bool CISCOBGP4MIB::Cbgppeeraddrfamilytable::has_operation() const
+bool CISCOBGP4MIB::CbgpPeerAddrFamilyTable::has_operation() const
 {
-    for (std::size_t index=0; index<cbgppeeraddrfamilyentry.size(); index++)
+    for (std::size_t index=0; index<cbgppeeraddrfamilyentry.len(); index++)
     {
         if(cbgppeeraddrfamilyentry[index]->has_operation())
             return true;
@@ -1043,21 +1065,21 @@ bool CISCOBGP4MIB::Cbgppeeraddrfamilytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeeraddrfamilytable::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeerAddrFamilyTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeeraddrfamilytable::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeerAddrFamilyTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbgpPeerAddrFamilyTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeeraddrfamilytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeerAddrFamilyTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1066,25 +1088,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeeraddrfamilyt
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeeraddrfamilytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeerAddrFamilyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbgpPeerAddrFamilyEntry")
     {
-        auto c = std::make_shared<CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry>();
+        auto c = std::make_shared<CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry>();
         c->parent = this;
-        cbgppeeraddrfamilyentry.push_back(c);
+        cbgppeeraddrfamilyentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeeraddrfamilytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeerAddrFamilyTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cbgppeeraddrfamilyentry)
+    for (auto c : cbgppeeraddrfamilyentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1095,22 +1117,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeeraddrfamilyt
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeeraddrfamilytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeerAddrFamilyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOBGP4MIB::Cbgppeeraddrfamilytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeerAddrFamilyTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeeraddrfamilytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeerAddrFamilyTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpPeerAddrFamilyEntry")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::Cbgppeeraddrfamilyentry()
+CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry::CbgpPeerAddrFamilyEntry()
     :
     bgppeerremoteaddr{YType::str, "bgpPeerRemoteAddr"},
     cbgppeeraddrfamilyafi{YType::enumeration, "cbgpPeerAddrFamilyAfi"},
@@ -1118,22 +1140,23 @@ CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::Cbgppeeraddrfami
     cbgppeeraddrfamilyname{YType::str, "cbgpPeerAddrFamilyName"}
 {
 
-    yang_name = "cbgpPeerAddrFamilyEntry"; yang_parent_name = "cbgpPeerAddrFamilyTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeerAddrFamilyEntry"; yang_parent_name = "cbgpPeerAddrFamilyTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::~Cbgppeeraddrfamilyentry()
+CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry::~CbgpPeerAddrFamilyEntry()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::has_data() const
+bool CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return bgppeerremoteaddr.is_set
 	|| cbgppeeraddrfamilyafi.is_set
 	|| cbgppeeraddrfamilysafi.is_set
 	|| cbgppeeraddrfamilyname.is_set;
 }
 
-bool CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::has_operation() const
+bool CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bgppeerremoteaddr.yfilter)
@@ -1142,21 +1165,24 @@ bool CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::has_operati
 	|| ydk::is_set(cbgppeeraddrfamilyname.yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/cbgpPeerAddrFamilyTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cbgpPeerAddrFamilyEntry" <<"[bgpPeerRemoteAddr='" <<bgppeerremoteaddr <<"']" <<"[cbgpPeerAddrFamilyAfi='" <<cbgppeeraddrfamilyafi <<"']" <<"[cbgpPeerAddrFamilySafi='" <<cbgppeeraddrfamilysafi <<"']";
+    path_buffer << "cbgpPeerAddrFamilyEntry";
+    ADD_KEY_TOKEN(bgppeerremoteaddr, "bgpPeerRemoteAddr");
+    ADD_KEY_TOKEN(cbgppeeraddrfamilyafi, "cbgpPeerAddrFamilyAfi");
+    ADD_KEY_TOKEN(cbgppeeraddrfamilysafi, "cbgpPeerAddrFamilySafi");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1169,19 +1195,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeeraddrfamilyt
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bgpPeerRemoteAddr")
     {
@@ -1209,7 +1235,7 @@ void CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::set_value(c
     }
 }
 
-void CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bgpPeerRemoteAddr")
     {
@@ -1229,26 +1255,29 @@ void CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::set_filter(
     }
 }
 
-bool CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgpPeerRemoteAddr" || name == "cbgpPeerAddrFamilyAfi" || name == "cbgpPeerAddrFamilySafi" || name == "cbgpPeerAddrFamilyName")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixtable()
+CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixTable()
+    :
+    cbgppeeraddrfamilyprefixentry(this, {"bgppeerremoteaddr", "cbgppeeraddrfamilyafi", "cbgppeeraddrfamilysafi"})
 {
 
-    yang_name = "cbgpPeerAddrFamilyPrefixTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeerAddrFamilyPrefixTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::~Cbgppeeraddrfamilyprefixtable()
+CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::~CbgpPeerAddrFamilyPrefixTable()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::has_data() const
+bool CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::has_data() const
 {
-    for (std::size_t index=0; index<cbgppeeraddrfamilyprefixentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cbgppeeraddrfamilyprefixentry.len(); index++)
     {
         if(cbgppeeraddrfamilyprefixentry[index]->has_data())
             return true;
@@ -1256,9 +1285,9 @@ bool CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::has_data() const
     return false;
 }
 
-bool CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::has_operation() const
+bool CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::has_operation() const
 {
-    for (std::size_t index=0; index<cbgppeeraddrfamilyprefixentry.size(); index++)
+    for (std::size_t index=0; index<cbgppeeraddrfamilyprefixentry.len(); index++)
     {
         if(cbgppeeraddrfamilyprefixentry[index]->has_operation())
             return true;
@@ -1266,21 +1295,21 @@ bool CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbgpPeerAddrFamilyPrefixTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1289,25 +1318,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeeraddrfamilyp
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbgpPeerAddrFamilyPrefixEntry")
     {
-        auto c = std::make_shared<CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry>();
+        auto c = std::make_shared<CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry>();
         c->parent = this;
-        cbgppeeraddrfamilyprefixentry.push_back(c);
+        cbgppeeraddrfamilyprefixentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cbgppeeraddrfamilyprefixentry)
+    for (auto c : cbgppeeraddrfamilyprefixentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1318,22 +1347,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeeraddrfamilyp
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpPeerAddrFamilyPrefixEntry")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::Cbgppeeraddrfamilyprefixentry()
+CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry::CbgpPeerAddrFamilyPrefixEntry()
     :
     bgppeerremoteaddr{YType::str, "bgpPeerRemoteAddr"},
     cbgppeeraddrfamilyafi{YType::enumeration, "cbgpPeerAddrFamilyAfi"},
@@ -1348,15 +1377,16 @@ CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::Cbgp
     cbgppeerwithdrawnprefixes{YType::uint32, "cbgpPeerWithdrawnPrefixes"}
 {
 
-    yang_name = "cbgpPeerAddrFamilyPrefixEntry"; yang_parent_name = "cbgpPeerAddrFamilyPrefixTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeerAddrFamilyPrefixEntry"; yang_parent_name = "cbgpPeerAddrFamilyPrefixTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::~Cbgppeeraddrfamilyprefixentry()
+CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry::~CbgpPeerAddrFamilyPrefixEntry()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::has_data() const
+bool CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return bgppeerremoteaddr.is_set
 	|| cbgppeeraddrfamilyafi.is_set
 	|| cbgppeeraddrfamilysafi.is_set
@@ -1370,7 +1400,7 @@ bool CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry:
 	|| cbgppeerwithdrawnprefixes.is_set;
 }
 
-bool CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::has_operation() const
+bool CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bgppeerremoteaddr.yfilter)
@@ -1386,21 +1416,24 @@ bool CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry:
 	|| ydk::is_set(cbgppeerwithdrawnprefixes.yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/cbgpPeerAddrFamilyPrefixTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cbgpPeerAddrFamilyPrefixEntry" <<"[bgpPeerRemoteAddr='" <<bgppeerremoteaddr <<"']" <<"[cbgpPeerAddrFamilyAfi='" <<cbgppeeraddrfamilyafi <<"']" <<"[cbgpPeerAddrFamilySafi='" <<cbgppeeraddrfamilysafi <<"']";
+    path_buffer << "cbgpPeerAddrFamilyPrefixEntry";
+    ADD_KEY_TOKEN(bgppeerremoteaddr, "bgpPeerRemoteAddr");
+    ADD_KEY_TOKEN(cbgppeeraddrfamilyafi, "cbgpPeerAddrFamilyAfi");
+    ADD_KEY_TOKEN(cbgppeeraddrfamilysafi, "cbgpPeerAddrFamilySafi");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1420,19 +1453,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeeraddrfamilyp
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bgpPeerRemoteAddr")
     {
@@ -1502,7 +1535,7 @@ void CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry:
     }
 }
 
-void CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bgpPeerRemoteAddr")
     {
@@ -1550,26 +1583,29 @@ void CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry:
     }
 }
 
-bool CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgpPeerRemoteAddr" || name == "cbgpPeerAddrFamilyAfi" || name == "cbgpPeerAddrFamilySafi" || name == "cbgpPeerAcceptedPrefixes" || name == "cbgpPeerDeniedPrefixes" || name == "cbgpPeerPrefixAdminLimit" || name == "cbgpPeerPrefixThreshold" || name == "cbgpPeerPrefixClearThreshold" || name == "cbgpPeerAdvertisedPrefixes" || name == "cbgpPeerSuppressedPrefixes" || name == "cbgpPeerWithdrawnPrefixes")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Table()
+CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Table()
+    :
+    cbgppeer2entry(this, {"cbgppeer2type", "cbgppeer2remoteaddr"})
 {
 
-    yang_name = "cbgpPeer2Table"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeer2Table"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeer2Table::~Cbgppeer2Table()
+CISCOBGP4MIB::CbgpPeer2Table::~CbgpPeer2Table()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Table::has_data() const
+bool CISCOBGP4MIB::CbgpPeer2Table::has_data() const
 {
-    for (std::size_t index=0; index<cbgppeer2entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cbgppeer2entry.len(); index++)
     {
         if(cbgppeer2entry[index]->has_data())
             return true;
@@ -1577,9 +1613,9 @@ bool CISCOBGP4MIB::Cbgppeer2Table::has_data() const
     return false;
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Table::has_operation() const
+bool CISCOBGP4MIB::CbgpPeer2Table::has_operation() const
 {
-    for (std::size_t index=0; index<cbgppeer2entry.size(); index++)
+    for (std::size_t index=0; index<cbgppeer2entry.len(); index++)
     {
         if(cbgppeer2entry[index]->has_operation())
             return true;
@@ -1587,21 +1623,21 @@ bool CISCOBGP4MIB::Cbgppeer2Table::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Table::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeer2Table::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Table::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeer2Table::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbgpPeer2Table";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Table::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeer2Table::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1610,25 +1646,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Table::get
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Table::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeer2Table::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbgpPeer2Entry")
     {
-        auto c = std::make_shared<CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry>();
+        auto c = std::make_shared<CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry>();
         c->parent = this;
-        cbgppeer2entry.push_back(c);
+        cbgppeer2entry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Table::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeer2Table::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cbgppeer2entry)
+    for (auto c : cbgppeer2entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1639,22 +1675,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Table::get
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeer2Table::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeer2Table::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOBGP4MIB::Cbgppeer2Table::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeer2Table::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Table::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeer2Table::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpPeer2Entry")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Entry()
+CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2Entry()
     :
     cbgppeer2type{YType::enumeration, "cbgpPeer2Type"},
     cbgppeer2remoteaddr{YType::str, "cbgpPeer2RemoteAddr"},
@@ -1687,15 +1723,16 @@ CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Entry()
     cbgppeer2prevstate{YType::enumeration, "cbgpPeer2PrevState"}
 {
 
-    yang_name = "cbgpPeer2Entry"; yang_parent_name = "cbgpPeer2Table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeer2Entry"; yang_parent_name = "cbgpPeer2Table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::~Cbgppeer2Entry()
+CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::~CbgpPeer2Entry()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::has_data() const
+bool CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::has_data() const
 {
+    if (is_presence_container) return true;
     return cbgppeer2type.is_set
 	|| cbgppeer2remoteaddr.is_set
 	|| cbgppeer2state.is_set
@@ -1727,7 +1764,7 @@ bool CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::has_data() const
 	|| cbgppeer2prevstate.is_set;
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::has_operation() const
+bool CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cbgppeer2type.yfilter)
@@ -1761,21 +1798,23 @@ bool CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::has_operation() const
 	|| ydk::is_set(cbgppeer2prevstate.yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/cbgpPeer2Table/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cbgpPeer2Entry" <<"[cbgpPeer2Type='" <<cbgppeer2type <<"']" <<"[cbgpPeer2RemoteAddr='" <<cbgppeer2remoteaddr <<"']";
+    path_buffer << "cbgpPeer2Entry";
+    ADD_KEY_TOKEN(cbgppeer2type, "cbgpPeer2Type");
+    ADD_KEY_TOKEN(cbgppeer2remoteaddr, "cbgpPeer2RemoteAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1813,19 +1852,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Table::Cbg
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cbgpPeer2Type")
     {
@@ -2003,7 +2042,7 @@ void CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::set_value(const std::string &
     }
 }
 
-void CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cbgpPeer2Type")
     {
@@ -2123,26 +2162,29 @@ void CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::set_filter(const std::string 
     }
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpPeer2Type" || name == "cbgpPeer2RemoteAddr" || name == "cbgpPeer2State" || name == "cbgpPeer2AdminStatus" || name == "cbgpPeer2NegotiatedVersion" || name == "cbgpPeer2LocalAddr" || name == "cbgpPeer2LocalPort" || name == "cbgpPeer2LocalAs" || name == "cbgpPeer2LocalIdentifier" || name == "cbgpPeer2RemotePort" || name == "cbgpPeer2RemoteAs" || name == "cbgpPeer2RemoteIdentifier" || name == "cbgpPeer2InUpdates" || name == "cbgpPeer2OutUpdates" || name == "cbgpPeer2InTotalMessages" || name == "cbgpPeer2OutTotalMessages" || name == "cbgpPeer2LastError" || name == "cbgpPeer2FsmEstablishedTransitions" || name == "cbgpPeer2FsmEstablishedTime" || name == "cbgpPeer2ConnectRetryInterval" || name == "cbgpPeer2HoldTime" || name == "cbgpPeer2KeepAlive" || name == "cbgpPeer2HoldTimeConfigured" || name == "cbgpPeer2KeepAliveConfigured" || name == "cbgpPeer2MinASOriginationInterval" || name == "cbgpPeer2MinRouteAdvertisementInterval" || name == "cbgpPeer2InUpdateElapsedTime" || name == "cbgpPeer2LastErrorTxt" || name == "cbgpPeer2PrevState")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capstable()
+CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsTable()
+    :
+    cbgppeer2capsentry(this, {"cbgppeer2type", "cbgppeer2remoteaddr", "cbgppeer2capcode", "cbgppeer2capindex"})
 {
 
-    yang_name = "cbgpPeer2CapsTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeer2CapsTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeer2Capstable::~Cbgppeer2Capstable()
+CISCOBGP4MIB::CbgpPeer2CapsTable::~CbgpPeer2CapsTable()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Capstable::has_data() const
+bool CISCOBGP4MIB::CbgpPeer2CapsTable::has_data() const
 {
-    for (std::size_t index=0; index<cbgppeer2capsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cbgppeer2capsentry.len(); index++)
     {
         if(cbgppeer2capsentry[index]->has_data())
             return true;
@@ -2150,9 +2192,9 @@ bool CISCOBGP4MIB::Cbgppeer2Capstable::has_data() const
     return false;
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Capstable::has_operation() const
+bool CISCOBGP4MIB::CbgpPeer2CapsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cbgppeer2capsentry.size(); index++)
+    for (std::size_t index=0; index<cbgppeer2capsentry.len(); index++)
     {
         if(cbgppeer2capsentry[index]->has_operation())
             return true;
@@ -2160,21 +2202,21 @@ bool CISCOBGP4MIB::Cbgppeer2Capstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Capstable::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeer2CapsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Capstable::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeer2CapsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbgpPeer2CapsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Capstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeer2CapsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2183,25 +2225,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Capstable:
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Capstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeer2CapsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbgpPeer2CapsEntry")
     {
-        auto c = std::make_shared<CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry>();
+        auto c = std::make_shared<CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry>();
         c->parent = this;
-        cbgppeer2capsentry.push_back(c);
+        cbgppeer2capsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Capstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeer2CapsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cbgppeer2capsentry)
+    for (auto c : cbgppeer2capsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2212,22 +2254,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Capstable:
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeer2Capstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeer2CapsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOBGP4MIB::Cbgppeer2Capstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeer2CapsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Capstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeer2CapsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpPeer2CapsEntry")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::Cbgppeer2Capsentry()
+CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::CbgpPeer2CapsEntry()
     :
     cbgppeer2type{YType::enumeration, "cbgpPeer2Type"},
     cbgppeer2remoteaddr{YType::str, "cbgpPeer2RemoteAddr"},
@@ -2236,15 +2278,16 @@ CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::Cbgppeer2Capsentry()
     cbgppeer2capvalue{YType::str, "cbgpPeer2CapValue"}
 {
 
-    yang_name = "cbgpPeer2CapsEntry"; yang_parent_name = "cbgpPeer2CapsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeer2CapsEntry"; yang_parent_name = "cbgpPeer2CapsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::~Cbgppeer2Capsentry()
+CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::~CbgpPeer2CapsEntry()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::has_data() const
+bool CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cbgppeer2type.is_set
 	|| cbgppeer2remoteaddr.is_set
 	|| cbgppeer2capcode.is_set
@@ -2252,7 +2295,7 @@ bool CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::has_data() const
 	|| cbgppeer2capvalue.is_set;
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::has_operation() const
+bool CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cbgppeer2type.yfilter)
@@ -2262,21 +2305,25 @@ bool CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::has_operation() const
 	|| ydk::is_set(cbgppeer2capvalue.yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/cbgpPeer2CapsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cbgpPeer2CapsEntry" <<"[cbgpPeer2Type='" <<cbgppeer2type <<"']" <<"[cbgpPeer2RemoteAddr='" <<cbgppeer2remoteaddr <<"']" <<"[cbgpPeer2CapCode='" <<cbgppeer2capcode <<"']" <<"[cbgpPeer2CapIndex='" <<cbgppeer2capindex <<"']";
+    path_buffer << "cbgpPeer2CapsEntry";
+    ADD_KEY_TOKEN(cbgppeer2type, "cbgpPeer2Type");
+    ADD_KEY_TOKEN(cbgppeer2remoteaddr, "cbgpPeer2RemoteAddr");
+    ADD_KEY_TOKEN(cbgppeer2capcode, "cbgpPeer2CapCode");
+    ADD_KEY_TOKEN(cbgppeer2capindex, "cbgpPeer2CapIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2290,19 +2337,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Capstable:
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cbgpPeer2Type")
     {
@@ -2336,7 +2383,7 @@ void CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::set_value(const std::
     }
 }
 
-void CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cbgpPeer2Type")
     {
@@ -2360,26 +2407,29 @@ void CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::set_filter(const std:
     }
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpPeer2Type" || name == "cbgpPeer2RemoteAddr" || name == "cbgpPeer2CapCode" || name == "cbgpPeer2CapIndex" || name == "cbgpPeer2CapValue")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilytable()
+CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyTable()
+    :
+    cbgppeer2addrfamilyentry(this, {"cbgppeer2type", "cbgppeer2remoteaddr", "cbgppeer2addrfamilyafi", "cbgppeer2addrfamilysafi"})
 {
 
-    yang_name = "cbgpPeer2AddrFamilyTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeer2AddrFamilyTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeer2Addrfamilytable::~Cbgppeer2Addrfamilytable()
+CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::~CbgpPeer2AddrFamilyTable()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Addrfamilytable::has_data() const
+bool CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::has_data() const
 {
-    for (std::size_t index=0; index<cbgppeer2addrfamilyentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cbgppeer2addrfamilyentry.len(); index++)
     {
         if(cbgppeer2addrfamilyentry[index]->has_data())
             return true;
@@ -2387,9 +2437,9 @@ bool CISCOBGP4MIB::Cbgppeer2Addrfamilytable::has_data() const
     return false;
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Addrfamilytable::has_operation() const
+bool CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::has_operation() const
 {
-    for (std::size_t index=0; index<cbgppeer2addrfamilyentry.size(); index++)
+    for (std::size_t index=0; index<cbgppeer2addrfamilyentry.len(); index++)
     {
         if(cbgppeer2addrfamilyentry[index]->has_operation())
             return true;
@@ -2397,21 +2447,21 @@ bool CISCOBGP4MIB::Cbgppeer2Addrfamilytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Addrfamilytable::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Addrfamilytable::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbgpPeer2AddrFamilyTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Addrfamilytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2420,25 +2470,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Addrfamily
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Addrfamilytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbgpPeer2AddrFamilyEntry")
     {
-        auto c = std::make_shared<CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry>();
+        auto c = std::make_shared<CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry>();
         c->parent = this;
-        cbgppeer2addrfamilyentry.push_back(c);
+        cbgppeer2addrfamilyentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Addrfamilytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cbgppeer2addrfamilyentry)
+    for (auto c : cbgppeer2addrfamilyentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2449,22 +2499,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Addrfamily
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeer2Addrfamilytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOBGP4MIB::Cbgppeer2Addrfamilytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Addrfamilytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpPeer2AddrFamilyEntry")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::Cbgppeer2Addrfamilyentry()
+CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry::CbgpPeer2AddrFamilyEntry()
     :
     cbgppeer2type{YType::enumeration, "cbgpPeer2Type"},
     cbgppeer2remoteaddr{YType::str, "cbgpPeer2RemoteAddr"},
@@ -2473,15 +2523,16 @@ CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::Cbgppeer2Addrf
     cbgppeer2addrfamilyname{YType::str, "cbgpPeer2AddrFamilyName"}
 {
 
-    yang_name = "cbgpPeer2AddrFamilyEntry"; yang_parent_name = "cbgpPeer2AddrFamilyTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeer2AddrFamilyEntry"; yang_parent_name = "cbgpPeer2AddrFamilyTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::~Cbgppeer2Addrfamilyentry()
+CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry::~CbgpPeer2AddrFamilyEntry()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::has_data() const
+bool CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cbgppeer2type.is_set
 	|| cbgppeer2remoteaddr.is_set
 	|| cbgppeer2addrfamilyafi.is_set
@@ -2489,7 +2540,7 @@ bool CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::has_data(
 	|| cbgppeer2addrfamilyname.is_set;
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::has_operation() const
+bool CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cbgppeer2type.yfilter)
@@ -2499,21 +2550,25 @@ bool CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::has_opera
 	|| ydk::is_set(cbgppeer2addrfamilyname.yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/cbgpPeer2AddrFamilyTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cbgpPeer2AddrFamilyEntry" <<"[cbgpPeer2Type='" <<cbgppeer2type <<"']" <<"[cbgpPeer2RemoteAddr='" <<cbgppeer2remoteaddr <<"']" <<"[cbgpPeer2AddrFamilyAfi='" <<cbgppeer2addrfamilyafi <<"']" <<"[cbgpPeer2AddrFamilySafi='" <<cbgppeer2addrfamilysafi <<"']";
+    path_buffer << "cbgpPeer2AddrFamilyEntry";
+    ADD_KEY_TOKEN(cbgppeer2type, "cbgpPeer2Type");
+    ADD_KEY_TOKEN(cbgppeer2remoteaddr, "cbgpPeer2RemoteAddr");
+    ADD_KEY_TOKEN(cbgppeer2addrfamilyafi, "cbgpPeer2AddrFamilyAfi");
+    ADD_KEY_TOKEN(cbgppeer2addrfamilysafi, "cbgpPeer2AddrFamilySafi");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2527,19 +2582,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Addrfamily
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cbgpPeer2Type")
     {
@@ -2573,7 +2628,7 @@ void CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::set_value
     }
 }
 
-void CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cbgpPeer2Type")
     {
@@ -2597,26 +2652,29 @@ void CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::set_filte
     }
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpPeer2Type" || name == "cbgpPeer2RemoteAddr" || name == "cbgpPeer2AddrFamilyAfi" || name == "cbgpPeer2AddrFamilySafi" || name == "cbgpPeer2AddrFamilyName")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixtable()
+CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixTable()
+    :
+    cbgppeer2addrfamilyprefixentry(this, {"cbgppeer2type", "cbgppeer2remoteaddr", "cbgppeer2addrfamilyafi", "cbgppeer2addrfamilysafi"})
 {
 
-    yang_name = "cbgpPeer2AddrFamilyPrefixTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeer2AddrFamilyPrefixTable"; yang_parent_name = "CISCO-BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::~Cbgppeer2Addrfamilyprefixtable()
+CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::~CbgpPeer2AddrFamilyPrefixTable()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::has_data() const
+bool CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::has_data() const
 {
-    for (std::size_t index=0; index<cbgppeer2addrfamilyprefixentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cbgppeer2addrfamilyprefixentry.len(); index++)
     {
         if(cbgppeer2addrfamilyprefixentry[index]->has_data())
             return true;
@@ -2624,9 +2682,9 @@ bool CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::has_data() const
     return false;
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::has_operation() const
+bool CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::has_operation() const
 {
-    for (std::size_t index=0; index<cbgppeer2addrfamilyprefixentry.size(); index++)
+    for (std::size_t index=0; index<cbgppeer2addrfamilyprefixentry.len(); index++)
     {
         if(cbgppeer2addrfamilyprefixentry[index]->has_operation())
             return true;
@@ -2634,21 +2692,21 @@ bool CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbgpPeer2AddrFamilyPrefixTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2657,25 +2715,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Addrfamily
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbgpPeer2AddrFamilyPrefixEntry")
     {
-        auto c = std::make_shared<CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry>();
+        auto c = std::make_shared<CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry>();
         c->parent = this;
-        cbgppeer2addrfamilyprefixentry.push_back(c);
+        cbgppeer2addrfamilyprefixentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cbgppeer2addrfamilyprefixentry)
+    for (auto c : cbgppeer2addrfamilyprefixentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2686,22 +2744,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Addrfamily
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpPeer2AddrFamilyPrefixEntry")
         return true;
     return false;
 }
 
-CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::Cbgppeer2Addrfamilyprefixentry()
+CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry::CbgpPeer2AddrFamilyPrefixEntry()
     :
     cbgppeer2type{YType::enumeration, "cbgpPeer2Type"},
     cbgppeer2remoteaddr{YType::str, "cbgpPeer2RemoteAddr"},
@@ -2717,15 +2775,16 @@ CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::Cb
     cbgppeer2withdrawnprefixes{YType::uint32, "cbgpPeer2WithdrawnPrefixes"}
 {
 
-    yang_name = "cbgpPeer2AddrFamilyPrefixEntry"; yang_parent_name = "cbgpPeer2AddrFamilyPrefixTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbgpPeer2AddrFamilyPrefixEntry"; yang_parent_name = "cbgpPeer2AddrFamilyPrefixTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::~Cbgppeer2Addrfamilyprefixentry()
+CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry::~CbgpPeer2AddrFamilyPrefixEntry()
 {
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::has_data() const
+bool CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cbgppeer2type.is_set
 	|| cbgppeer2remoteaddr.is_set
 	|| cbgppeer2addrfamilyafi.is_set
@@ -2740,7 +2799,7 @@ bool CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentr
 	|| cbgppeer2withdrawnprefixes.is_set;
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::has_operation() const
+bool CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cbgppeer2type.yfilter)
@@ -2757,21 +2816,25 @@ bool CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentr
 	|| ydk::is_set(cbgppeer2withdrawnprefixes.yfilter);
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::get_absolute_path() const
+std::string CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP4-MIB:CISCO-BGP4-MIB/cbgpPeer2AddrFamilyPrefixTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::get_segment_path() const
+std::string CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cbgpPeer2AddrFamilyPrefixEntry" <<"[cbgpPeer2Type='" <<cbgppeer2type <<"']" <<"[cbgpPeer2RemoteAddr='" <<cbgppeer2remoteaddr <<"']" <<"[cbgpPeer2AddrFamilyAfi='" <<cbgppeer2addrfamilyafi <<"']" <<"[cbgpPeer2AddrFamilySafi='" <<cbgppeer2addrfamilysafi <<"']";
+    path_buffer << "cbgpPeer2AddrFamilyPrefixEntry";
+    ADD_KEY_TOKEN(cbgppeer2type, "cbgpPeer2Type");
+    ADD_KEY_TOKEN(cbgppeer2remoteaddr, "cbgpPeer2RemoteAddr");
+    ADD_KEY_TOKEN(cbgppeer2addrfamilyafi, "cbgpPeer2AddrFamilyAfi");
+    ADD_KEY_TOKEN(cbgppeer2addrfamilysafi, "cbgpPeer2AddrFamilySafi");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2792,19 +2855,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGP4MIB::Cbgppeer2Addrfamily
 
 }
 
-std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cbgpPeer2Type")
     {
@@ -2880,7 +2943,7 @@ void CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentr
     }
 }
 
-void CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cbgpPeer2Type")
     {
@@ -2932,7 +2995,7 @@ void CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentr
     }
 }
 
-bool CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbgpPeer2Type" || name == "cbgpPeer2RemoteAddr" || name == "cbgpPeer2AddrFamilyAfi" || name == "cbgpPeer2AddrFamilySafi" || name == "cbgpPeer2AcceptedPrefixes" || name == "cbgpPeer2DeniedPrefixes" || name == "cbgpPeer2PrefixAdminLimit" || name == "cbgpPeer2PrefixThreshold" || name == "cbgpPeer2PrefixClearThreshold" || name == "cbgpPeer2AdvertisedPrefixes" || name == "cbgpPeer2SuppressedPrefixes" || name == "cbgpPeer2WithdrawnPrefixes")
         return true;
@@ -2944,42 +3007,42 @@ const Enum::YLeaf CbgpSafi::multicast {2, "multicast"};
 const Enum::YLeaf CbgpSafi::unicastAndMulticast {3, "unicastAndMulticast"};
 const Enum::YLeaf CbgpSafi::vpn {128, "vpn"};
 
-const Enum::YLeaf CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteorigin::igp {1, "igp"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteorigin::egp {2, "egp"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteorigin::incomplete {3, "incomplete"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::CbgpRouteOrigin::igp {1, "igp"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::CbgpRouteOrigin::egp {2, "egp"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::CbgpRouteOrigin::incomplete {3, "incomplete"};
 
-const Enum::YLeaf CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteatomicaggregate::lessSpecificRouteNotSelected {1, "lessSpecificRouteNotSelected"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteatomicaggregate::lessSpecificRouteSelected {2, "lessSpecificRouteSelected"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::CbgpRouteAtomicAggregate::lessSpecificRouteNotSelected {1, "lessSpecificRouteNotSelected"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::CbgpRouteAtomicAggregate::lessSpecificRouteSelected {2, "lessSpecificRouteSelected"};
 
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::Cbgppeercapcode::multiProtocol {1, "multiProtocol"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::Cbgppeercapcode::routeRefresh {2, "routeRefresh"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::Cbgppeercapcode::gracefulRestart {64, "gracefulRestart"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::Cbgppeercapcode::routeRefreshOld {128, "routeRefreshOld"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::CbgpPeerCapCode::multiProtocol {1, "multiProtocol"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::CbgpPeerCapCode::routeRefresh {2, "routeRefresh"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::CbgpPeerCapCode::gracefulRestart {64, "gracefulRestart"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::CbgpPeerCapCode::routeRefreshOld {128, "routeRefreshOld"};
 
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2State::idle {1, "idle"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2State::connect {2, "connect"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2State::active {3, "active"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2State::opensent {4, "opensent"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2State::openconfirm {5, "openconfirm"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2State::established {6, "established"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2State::idle {1, "idle"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2State::connect {2, "connect"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2State::active {3, "active"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2State::opensent {4, "opensent"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2State::openconfirm {5, "openconfirm"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2State::established {6, "established"};
 
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Adminstatus::stop {1, "stop"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Adminstatus::start {2, "start"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2AdminStatus::stop {1, "stop"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2AdminStatus::start {2, "start"};
 
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Prevstate::none {0, "none"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Prevstate::idle {1, "idle"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Prevstate::connect {2, "connect"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Prevstate::active {3, "active"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Prevstate::opensent {4, "opensent"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Prevstate::openconfirm {5, "openconfirm"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Prevstate::established {6, "established"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2PrevState::none {0, "none"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2PrevState::idle {1, "idle"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2PrevState::connect {2, "connect"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2PrevState::active {3, "active"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2PrevState::opensent {4, "opensent"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2PrevState::openconfirm {5, "openconfirm"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2PrevState::established {6, "established"};
 
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::Cbgppeer2Capcode::multiProtocol {1, "multiProtocol"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::Cbgppeer2Capcode::routeRefresh {2, "routeRefresh"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::Cbgppeer2Capcode::gracefulRestart {64, "gracefulRestart"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::Cbgppeer2Capcode::fourByteAs {65, "fourByteAs"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::Cbgppeer2Capcode::addPath {69, "addPath"};
-const Enum::YLeaf CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::Cbgppeer2Capcode::routeRefreshOld {128, "routeRefreshOld"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::CbgpPeer2CapCode::multiProtocol {1, "multiProtocol"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::CbgpPeer2CapCode::routeRefresh {2, "routeRefresh"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::CbgpPeer2CapCode::gracefulRestart {64, "gracefulRestart"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::CbgpPeer2CapCode::fourByteAs {65, "fourByteAs"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::CbgpPeer2CapCode::addPath {69, "addPath"};
+const Enum::YLeaf CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::CbgpPeer2CapCode::routeRefreshOld {128, "routeRefreshOld"};
 
 
 }

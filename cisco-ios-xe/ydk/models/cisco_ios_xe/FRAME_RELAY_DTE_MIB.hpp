@@ -32,24 +32,24 @@ class FRAMERELAYDTEMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Framerelaytrapcontrol; //type: FRAMERELAYDTEMIB::Framerelaytrapcontrol
-        class Frdlcmitable; //type: FRAMERELAYDTEMIB::Frdlcmitable
-        class Frcircuittable; //type: FRAMERELAYDTEMIB::Frcircuittable
-        class Frerrtable; //type: FRAMERELAYDTEMIB::Frerrtable
+        class FrameRelayTrapControl; //type: FRAMERELAYDTEMIB::FrameRelayTrapControl
+        class FrDlcmiTable; //type: FRAMERELAYDTEMIB::FrDlcmiTable
+        class FrCircuitTable; //type: FRAMERELAYDTEMIB::FrCircuitTable
+        class FrErrTable; //type: FRAMERELAYDTEMIB::FrErrTable
 
-        std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Framerelaytrapcontrol> framerelaytrapcontrol;
-        std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Frdlcmitable> frdlcmitable;
-        std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Frcircuittable> frcircuittable;
-        std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Frerrtable> frerrtable;
+        std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::FrameRelayTrapControl> framerelaytrapcontrol;
+        std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::FrDlcmiTable> frdlcmitable;
+        std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::FrCircuitTable> frcircuittable;
+        std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::FrErrTable> frerrtable;
         
 }; // FRAMERELAYDTEMIB
 
 
-class FRAMERELAYDTEMIB::Framerelaytrapcontrol : public ydk::Entity
+class FRAMERELAYDTEMIB::FrameRelayTrapControl : public ydk::Entity
 {
     public:
-        Framerelaytrapcontrol();
-        ~Framerelaytrapcontrol();
+        FrameRelayTrapControl();
+        ~FrameRelayTrapControl();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -62,18 +62,18 @@ class FRAMERELAYDTEMIB::Framerelaytrapcontrol : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf frtrapstate; //type: Frtrapstate
+        ydk::YLeaf frtrapstate; //type: FrTrapState
         ydk::YLeaf frtrapmaxrate; //type: int32
-        class Frtrapstate;
+        class FrTrapState;
 
-}; // FRAMERELAYDTEMIB::Framerelaytrapcontrol
+}; // FRAMERELAYDTEMIB::FrameRelayTrapControl
 
 
-class FRAMERELAYDTEMIB::Frdlcmitable : public ydk::Entity
+class FRAMERELAYDTEMIB::FrDlcmiTable : public ydk::Entity
 {
     public:
-        Frdlcmitable();
-        ~Frdlcmitable();
+        FrDlcmiTable();
+        ~FrDlcmiTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -86,18 +86,18 @@ class FRAMERELAYDTEMIB::Frdlcmitable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Frdlcmientry; //type: FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry
+        class FrDlcmiEntry; //type: FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry> > frdlcmientry;
+        ydk::YList frdlcmientry;
         
-}; // FRAMERELAYDTEMIB::Frdlcmitable
+}; // FRAMERELAYDTEMIB::FrDlcmiTable
 
 
-class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry : public ydk::Entity
+class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry : public ydk::Entity
 {
     public:
-        Frdlcmientry();
-        ~Frdlcmientry();
+        FrDlcmiEntry();
+        ~FrDlcmiEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -111,31 +111,31 @@ class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf frdlcmiifindex; //type: int32
-        ydk::YLeaf frdlcmistate; //type: Frdlcmistate
-        ydk::YLeaf frdlcmiaddress; //type: Frdlcmiaddress
-        ydk::YLeaf frdlcmiaddresslen; //type: Frdlcmiaddresslen
+        ydk::YLeaf frdlcmistate; //type: FrDlcmiState
+        ydk::YLeaf frdlcmiaddress; //type: FrDlcmiAddress
+        ydk::YLeaf frdlcmiaddresslen; //type: FrDlcmiAddressLen
         ydk::YLeaf frdlcmipollinginterval; //type: int32
         ydk::YLeaf frdlcmifullenquiryinterval; //type: int32
         ydk::YLeaf frdlcmierrorthreshold; //type: int32
         ydk::YLeaf frdlcmimonitoredevents; //type: int32
         ydk::YLeaf frdlcmimaxsupportedvcs; //type: int32
-        ydk::YLeaf frdlcmimulticast; //type: Frdlcmimulticast
-        ydk::YLeaf frdlcmistatus; //type: Frdlcmistatus
+        ydk::YLeaf frdlcmimulticast; //type: FrDlcmiMulticast
+        ydk::YLeaf frdlcmistatus; //type: FrDlcmiStatus
         ydk::YLeaf frdlcmirowstatus; //type: RowStatus
-        class Frdlcmistate;
-        class Frdlcmiaddress;
-        class Frdlcmiaddresslen;
-        class Frdlcmimulticast;
-        class Frdlcmistatus;
+        class FrDlcmiState;
+        class FrDlcmiAddress;
+        class FrDlcmiAddressLen;
+        class FrDlcmiMulticast;
+        class FrDlcmiStatus;
 
-}; // FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry
+}; // FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry
 
 
-class FRAMERELAYDTEMIB::Frcircuittable : public ydk::Entity
+class FRAMERELAYDTEMIB::FrCircuitTable : public ydk::Entity
 {
     public:
-        Frcircuittable();
-        ~Frcircuittable();
+        FrCircuitTable();
+        ~FrCircuitTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -148,18 +148,18 @@ class FRAMERELAYDTEMIB::Frcircuittable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Frcircuitentry; //type: FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry
+        class FrCircuitEntry; //type: FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry> > frcircuitentry;
+        ydk::YList frcircuitentry;
         
-}; // FRAMERELAYDTEMIB::Frcircuittable
+}; // FRAMERELAYDTEMIB::FrCircuitTable
 
 
-class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry : public ydk::Entity
+class FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry : public ydk::Entity
 {
     public:
-        Frcircuitentry();
-        ~Frcircuitentry();
+        FrCircuitEntry();
+        ~FrCircuitEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -174,7 +174,7 @@ class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry : public ydk::Entity
 
         ydk::YLeaf frcircuitifindex; //type: int32
         ydk::YLeaf frcircuitdlci; //type: int32
-        ydk::YLeaf frcircuitstate; //type: Frcircuitstate
+        ydk::YLeaf frcircuitstate; //type: FrCircuitState
         ydk::YLeaf frcircuitreceivedfecns; //type: uint32
         ydk::YLeaf frcircuitreceivedbecns; //type: uint32
         ydk::YLeaf frcircuitsentframes; //type: uint32
@@ -186,25 +186,25 @@ class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry : public ydk::Entity
         ydk::YLeaf frcircuitcommittedburst; //type: int32
         ydk::YLeaf frcircuitexcessburst; //type: int32
         ydk::YLeaf frcircuitthroughput; //type: int32
-        ydk::YLeaf frcircuitmulticast; //type: Frcircuitmulticast
-        ydk::YLeaf frcircuittype; //type: Frcircuittype
+        ydk::YLeaf frcircuitmulticast; //type: FrCircuitMulticast
+        ydk::YLeaf frcircuittype; //type: FrCircuitType
         ydk::YLeaf frcircuitdiscards; //type: uint32
         ydk::YLeaf frcircuitreceiveddes; //type: uint32
         ydk::YLeaf frcircuitsentdes; //type: uint32
         ydk::YLeaf frcircuitlogicalifindex; //type: int32
         ydk::YLeaf frcircuitrowstatus; //type: RowStatus
-        class Frcircuitstate;
-        class Frcircuitmulticast;
-        class Frcircuittype;
+        class FrCircuitState;
+        class FrCircuitMulticast;
+        class FrCircuitType;
 
-}; // FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry
+}; // FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry
 
 
-class FRAMERELAYDTEMIB::Frerrtable : public ydk::Entity
+class FRAMERELAYDTEMIB::FrErrTable : public ydk::Entity
 {
     public:
-        Frerrtable();
-        ~Frerrtable();
+        FrErrTable();
+        ~FrErrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -217,18 +217,18 @@ class FRAMERELAYDTEMIB::Frerrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Frerrentry; //type: FRAMERELAYDTEMIB::Frerrtable::Frerrentry
+        class FrErrEntry; //type: FRAMERELAYDTEMIB::FrErrTable::FrErrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Frerrtable::Frerrentry> > frerrentry;
+        ydk::YList frerrentry;
         
-}; // FRAMERELAYDTEMIB::Frerrtable
+}; // FRAMERELAYDTEMIB::FrErrTable
 
 
-class FRAMERELAYDTEMIB::Frerrtable::Frerrentry : public ydk::Entity
+class FRAMERELAYDTEMIB::FrErrTable::FrErrEntry : public ydk::Entity
 {
     public:
-        Frerrentry();
-        ~Frerrentry();
+        FrErrEntry();
+        ~FrErrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -242,16 +242,16 @@ class FRAMERELAYDTEMIB::Frerrtable::Frerrentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf frerrifindex; //type: int32
-        ydk::YLeaf frerrtype; //type: Frerrtype
+        ydk::YLeaf frerrtype; //type: FrErrType
         ydk::YLeaf frerrdata; //type: binary
         ydk::YLeaf frerrtime; //type: uint32
         ydk::YLeaf frerrfaults; //type: uint32
         ydk::YLeaf frerrfaulttime; //type: uint32
-        class Frerrtype;
+        class FrErrType;
 
-}; // FRAMERELAYDTEMIB::Frerrtable::Frerrentry
+}; // FRAMERELAYDTEMIB::FrErrTable::FrErrEntry
 
-class FRAMERELAYDTEMIB::Framerelaytrapcontrol::Frtrapstate : public ydk::Enum
+class FRAMERELAYDTEMIB::FrameRelayTrapControl::FrTrapState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -259,7 +259,7 @@ class FRAMERELAYDTEMIB::Framerelaytrapcontrol::Frtrapstate : public ydk::Enum
 
 };
 
-class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::Frdlcmistate : public ydk::Enum
+class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noLmiConfigured;
@@ -271,7 +271,7 @@ class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::Frdlcmistate : public ydk::E
 
 };
 
-class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddress : public ydk::Enum
+class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddress : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf q921;
@@ -281,7 +281,7 @@ class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddress : public ydk:
 
 };
 
-class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen : public ydk::Enum
+class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddressLen : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf twoOctets;
@@ -290,7 +290,7 @@ class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen : public y
 
 };
 
-class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::Frdlcmimulticast : public ydk::Enum
+class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiMulticast : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf nonBroadcast;
@@ -298,7 +298,7 @@ class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::Frdlcmimulticast : public yd
 
 };
 
-class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::Frdlcmistatus : public ydk::Enum
+class FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf running;
@@ -307,7 +307,7 @@ class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::Frdlcmistatus : public ydk::
 
 };
 
-class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::Frcircuitstate : public ydk::Enum
+class FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::FrCircuitState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf invalid;
@@ -316,7 +316,7 @@ class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::Frcircuitstate : public 
 
 };
 
-class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::Frcircuitmulticast : public ydk::Enum
+class FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::FrCircuitMulticast : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unicast;
@@ -326,7 +326,7 @@ class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::Frcircuitmulticast : pub
 
 };
 
-class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::Frcircuittype : public ydk::Enum
+class FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::FrCircuitType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf static_;
@@ -334,7 +334,7 @@ class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::Frcircuittype : public y
 
 };
 
-class FRAMERELAYDTEMIB::Frerrtable::Frerrentry::Frerrtype : public ydk::Enum
+class FRAMERELAYDTEMIB::FrErrTable::FrErrEntry::FrErrType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknownError;

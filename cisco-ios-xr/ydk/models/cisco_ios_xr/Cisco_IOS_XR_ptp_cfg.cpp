@@ -20,12 +20,12 @@ Ptp::Ptp()
     min_clock_class{YType::uint32, "min-clock-class"},
     uncalibrated_clock_class{YType::uint32, "uncalibrated-clock-class"},
     freerun_clock_class{YType::uint32, "freerun-clock-class"}
-    	,
+        ,
     clock_(std::make_shared<Ptp::Clock>())
-	,profiles(std::make_shared<Ptp::Profiles>())
-	,utc_offset(std::make_shared<Ptp::UtcOffset>())
-	,logging(std::make_shared<Ptp::Logging>())
-	,transparent_clock(std::make_shared<Ptp::TransparentClock>())
+    , profiles(std::make_shared<Ptp::Profiles>())
+    , utc_offset(std::make_shared<Ptp::UtcOffset>())
+    , logging(std::make_shared<Ptp::Logging>())
+    , transparent_clock(std::make_shared<Ptp::TransparentClock>())
 {
     clock_->parent = this;
     profiles->parent = this;
@@ -33,7 +33,7 @@ Ptp::Ptp()
     logging->parent = this;
     transparent_clock->parent = this;
 
-    yang_name = "ptp"; yang_parent_name = "Cisco-IOS-XR-ptp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ptp"; yang_parent_name = "Cisco-IOS-XR-ptp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ptp::~Ptp()
@@ -42,6 +42,7 @@ Ptp::~Ptp()
 
 bool Ptp::has_data() const
 {
+    if (is_presence_container) return true;
     return time_of_day_priority.is_set
 	|| frequency_priority.is_set
 	|| startup_clock_class.is_set
@@ -296,14 +297,14 @@ Ptp::Clock::Clock()
     time_source{YType::enumeration, "time-source"},
     priority1{YType::uint32, "priority1"},
     clock_class{YType::uint32, "clock-class"}
-    	,
+        ,
     profile(std::make_shared<Ptp::Clock::Profile>())
-	,identity(std::make_shared<Ptp::Clock::Identity>())
+    , identity(std::make_shared<Ptp::Clock::Identity>())
 {
     profile->parent = this;
     identity->parent = this;
 
-    yang_name = "clock"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clock"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::Clock::~Clock()
@@ -312,6 +313,7 @@ Ptp::Clock::~Clock()
 
 bool Ptp::Clock::has_data() const
 {
+    if (is_presence_container) return true;
     return timescale.is_set
 	|| domain.is_set
 	|| priority2.is_set
@@ -485,7 +487,7 @@ Ptp::Clock::Profile::Profile()
     telecom_clock_type{YType::enumeration, "telecom-clock-type"}
 {
 
-    yang_name = "profile"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::Clock::Profile::~Profile()
@@ -494,6 +496,7 @@ Ptp::Clock::Profile::~Profile()
 
 bool Ptp::Clock::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return clock_profile.is_set
 	|| telecom_clock_type.is_set;
 }
@@ -584,7 +587,7 @@ Ptp::Clock::Identity::Identity()
     eui{YType::str, "eui"}
 {
 
-    yang_name = "identity"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "identity"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::Clock::Identity::~Identity()
@@ -593,6 +596,7 @@ Ptp::Clock::Identity::~Identity()
 
 bool Ptp::Clock::Identity::has_data() const
 {
+    if (is_presence_container) return true;
     return clock_id_type.is_set
 	|| mac_address.is_set
 	|| eui.is_set;
@@ -690,9 +694,11 @@ bool Ptp::Clock::Identity::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 Ptp::Profiles::Profiles()
+    :
+    profile(this, {"profile_name"})
 {
 
-    yang_name = "profiles"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profiles"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::Profiles::~Profiles()
@@ -701,7 +707,8 @@ Ptp::Profiles::~Profiles()
 
 bool Ptp::Profiles::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_data())
             return true;
@@ -711,7 +718,7 @@ bool Ptp::Profiles::has_data() const
 
 bool Ptp::Profiles::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_operation())
             return true;
@@ -748,7 +755,7 @@ std::shared_ptr<Entity> Ptp::Profiles::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Ptp::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile.append(c);
         return c;
     }
 
@@ -760,7 +767,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : profile)
+    for (auto c : profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -805,15 +812,15 @@ Ptp::Profiles::Profile::Profile()
     announce_grant_duration{YType::uint32, "announce-grant-duration"},
     unicast_grant_invalid_request{YType::enumeration, "unicast-grant-invalid-request"},
     event_dscp{YType::uint32, "event-dscp"}
-    	,
+        ,
     announce_interval(std::make_shared<Ptp::Profiles::Profile::AnnounceInterval>())
-	,source_ipv4_address(std::make_shared<Ptp::Profiles::Profile::SourceIpv4Address>())
-	,slaves(std::make_shared<Ptp::Profiles::Profile::Slaves>())
-	,sync_interval(std::make_shared<Ptp::Profiles::Profile::SyncInterval>())
-	,masters(std::make_shared<Ptp::Profiles::Profile::Masters>())
-	,communication(std::make_shared<Ptp::Profiles::Profile::Communication>())
-	,delay_request_minimum_interval(std::make_shared<Ptp::Profiles::Profile::DelayRequestMinimumInterval>())
-	,source_ipv6_address(std::make_shared<Ptp::Profiles::Profile::SourceIpv6Address>())
+    , source_ipv4_address(std::make_shared<Ptp::Profiles::Profile::SourceIpv4Address>())
+    , slaves(std::make_shared<Ptp::Profiles::Profile::Slaves>())
+    , sync_interval(std::make_shared<Ptp::Profiles::Profile::SyncInterval>())
+    , masters(std::make_shared<Ptp::Profiles::Profile::Masters>())
+    , communication(std::make_shared<Ptp::Profiles::Profile::Communication>())
+    , delay_request_minimum_interval(std::make_shared<Ptp::Profiles::Profile::DelayRequestMinimumInterval>())
+    , source_ipv6_address(std::make_shared<Ptp::Profiles::Profile::SourceIpv6Address>())
 {
     announce_interval->parent = this;
     source_ipv4_address->parent = this;
@@ -824,7 +831,7 @@ Ptp::Profiles::Profile::Profile()
     delay_request_minimum_interval->parent = this;
     source_ipv6_address->parent = this;
 
-    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::Profiles::Profile::~Profile()
@@ -833,6 +840,7 @@ Ptp::Profiles::Profile::~Profile()
 
 bool Ptp::Profiles::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| sync_grant_duration.is_set
 	|| general_cos.is_set
@@ -900,7 +908,8 @@ std::string Ptp::Profiles::Profile::get_absolute_path() const
 std::string Ptp::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[profile-name='" <<profile_name <<"']";
+    path_buffer << "profile";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
@@ -1245,7 +1254,7 @@ Ptp::Profiles::Profile::AnnounceInterval::AnnounceInterval()
     time_period{YType::enumeration, "time-period"}
 {
 
-    yang_name = "announce-interval"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "announce-interval"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::AnnounceInterval::~AnnounceInterval()
@@ -1254,6 +1263,7 @@ Ptp::Profiles::Profile::AnnounceInterval::~AnnounceInterval()
 
 bool Ptp::Profiles::Profile::AnnounceInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return time_type.is_set
 	|| time_period.is_set;
 }
@@ -1336,7 +1346,7 @@ Ptp::Profiles::Profile::SourceIpv4Address::SourceIpv4Address()
     source_ip{YType::str, "source-ip"}
 {
 
-    yang_name = "source-ipv4-address"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-ipv4-address"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::SourceIpv4Address::~SourceIpv4Address()
@@ -1345,6 +1355,7 @@ Ptp::Profiles::Profile::SourceIpv4Address::~SourceIpv4Address()
 
 bool Ptp::Profiles::Profile::SourceIpv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| source_ip.is_set;
 }
@@ -1422,9 +1433,11 @@ bool Ptp::Profiles::Profile::SourceIpv4Address::has_leaf_or_child_of_name(const 
 }
 
 Ptp::Profiles::Profile::Slaves::Slaves()
+    :
+    slave(this, {"transport"})
 {
 
-    yang_name = "slaves"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slaves"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::Slaves::~Slaves()
@@ -1433,7 +1446,8 @@ Ptp::Profiles::Profile::Slaves::~Slaves()
 
 bool Ptp::Profiles::Profile::Slaves::has_data() const
 {
-    for (std::size_t index=0; index<slave.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slave.len(); index++)
     {
         if(slave[index]->has_data())
             return true;
@@ -1443,7 +1457,7 @@ bool Ptp::Profiles::Profile::Slaves::has_data() const
 
 bool Ptp::Profiles::Profile::Slaves::has_operation() const
 {
-    for (std::size_t index=0; index<slave.size(); index++)
+    for (std::size_t index=0; index<slave.len(); index++)
     {
         if(slave[index]->has_operation())
             return true;
@@ -1473,7 +1487,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Slaves::get_child_by_name(const 
     {
         auto c = std::make_shared<Ptp::Profiles::Profile::Slaves::Slave>();
         c->parent = this;
-        slave.push_back(c);
+        slave.append(c);
         return c;
     }
 
@@ -1485,7 +1499,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Slaves::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slave)
+    for (auto c : slave.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1514,9 +1528,12 @@ bool Ptp::Profiles::Profile::Slaves::has_leaf_or_child_of_name(const std::string
 Ptp::Profiles::Profile::Slaves::Slave::Slave()
     :
     transport{YType::enumeration, "transport"}
+        ,
+    ethernet(this, {"slave_mac_address"})
+    , ipv4_or_ipv6(this, {"slave_ip_address"})
 {
 
-    yang_name = "slave"; yang_parent_name = "slaves"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slave"; yang_parent_name = "slaves"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::Slaves::Slave::~Slave()
@@ -1525,12 +1542,13 @@ Ptp::Profiles::Profile::Slaves::Slave::~Slave()
 
 bool Ptp::Profiles::Profile::Slaves::Slave::has_data() const
 {
-    for (std::size_t index=0; index<ethernet.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ethernet.len(); index++)
     {
         if(ethernet[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_or_ipv6.size(); index++)
+    for (std::size_t index=0; index<ipv4_or_ipv6.len(); index++)
     {
         if(ipv4_or_ipv6[index]->has_data())
             return true;
@@ -1540,12 +1558,12 @@ bool Ptp::Profiles::Profile::Slaves::Slave::has_data() const
 
 bool Ptp::Profiles::Profile::Slaves::Slave::has_operation() const
 {
-    for (std::size_t index=0; index<ethernet.size(); index++)
+    for (std::size_t index=0; index<ethernet.len(); index++)
     {
         if(ethernet[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_or_ipv6.size(); index++)
+    for (std::size_t index=0; index<ipv4_or_ipv6.len(); index++)
     {
         if(ipv4_or_ipv6[index]->has_operation())
             return true;
@@ -1557,7 +1575,8 @@ bool Ptp::Profiles::Profile::Slaves::Slave::has_operation() const
 std::string Ptp::Profiles::Profile::Slaves::Slave::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slave" <<"[transport='" <<transport <<"']";
+    path_buffer << "slave";
+    ADD_KEY_TOKEN(transport, "transport");
     return path_buffer.str();
 }
 
@@ -1577,7 +1596,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Slaves::Slave::get_child_by_name
     {
         auto c = std::make_shared<Ptp::Profiles::Profile::Slaves::Slave::Ethernet>();
         c->parent = this;
-        ethernet.push_back(c);
+        ethernet.append(c);
         return c;
     }
 
@@ -1585,7 +1604,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Slaves::Slave::get_child_by_name
     {
         auto c = std::make_shared<Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6>();
         c->parent = this;
-        ipv4_or_ipv6.push_back(c);
+        ipv4_or_ipv6.append(c);
         return c;
     }
 
@@ -1597,7 +1616,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Slaves::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ethernet)
+    for (auto c : ethernet.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1606,7 +1625,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Slaves::S
     }
 
     count = 0;
-    for (auto const & c : ipv4_or_ipv6)
+    for (auto c : ipv4_or_ipv6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1648,7 +1667,7 @@ Ptp::Profiles::Profile::Slaves::Slave::Ethernet::Ethernet()
     non_negotiated{YType::boolean, "non-negotiated"}
 {
 
-    yang_name = "ethernet"; yang_parent_name = "slave"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet"; yang_parent_name = "slave"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::Slaves::Slave::Ethernet::~Ethernet()
@@ -1657,6 +1676,7 @@ Ptp::Profiles::Profile::Slaves::Slave::Ethernet::~Ethernet()
 
 bool Ptp::Profiles::Profile::Slaves::Slave::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return slave_mac_address.is_set
 	|| non_negotiated.is_set;
 }
@@ -1671,7 +1691,8 @@ bool Ptp::Profiles::Profile::Slaves::Slave::Ethernet::has_operation() const
 std::string Ptp::Profiles::Profile::Slaves::Slave::Ethernet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ethernet" <<"[slave-mac-address='" <<slave_mac_address <<"']";
+    path_buffer << "ethernet";
+    ADD_KEY_TOKEN(slave_mac_address, "slave-mac-address");
     return path_buffer.str();
 }
 
@@ -1739,7 +1760,7 @@ Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6::Ipv4OrIpv6()
     non_negotiated{YType::boolean, "non-negotiated"}
 {
 
-    yang_name = "ipv4-or-ipv6"; yang_parent_name = "slave"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-or-ipv6"; yang_parent_name = "slave"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6::~Ipv4OrIpv6()
@@ -1748,6 +1769,7 @@ Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6::~Ipv4OrIpv6()
 
 bool Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6::has_data() const
 {
+    if (is_presence_container) return true;
     return slave_ip_address.is_set
 	|| non_negotiated.is_set;
 }
@@ -1762,7 +1784,8 @@ bool Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6::has_operation() const
 std::string Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-or-ipv6" <<"[slave-ip-address='" <<slave_ip_address <<"']";
+    path_buffer << "ipv4-or-ipv6";
+    ADD_KEY_TOKEN(slave_ip_address, "slave-ip-address");
     return path_buffer.str();
 }
 
@@ -1830,7 +1853,7 @@ Ptp::Profiles::Profile::SyncInterval::SyncInterval()
     time_period{YType::enumeration, "time-period"}
 {
 
-    yang_name = "sync-interval"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sync-interval"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::SyncInterval::~SyncInterval()
@@ -1839,6 +1862,7 @@ Ptp::Profiles::Profile::SyncInterval::~SyncInterval()
 
 bool Ptp::Profiles::Profile::SyncInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return time_type.is_set
 	|| time_period.is_set;
 }
@@ -1916,9 +1940,11 @@ bool Ptp::Profiles::Profile::SyncInterval::has_leaf_or_child_of_name(const std::
 }
 
 Ptp::Profiles::Profile::Masters::Masters()
+    :
+    master(this, {"transport"})
 {
 
-    yang_name = "masters"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "masters"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::Masters::~Masters()
@@ -1927,7 +1953,8 @@ Ptp::Profiles::Profile::Masters::~Masters()
 
 bool Ptp::Profiles::Profile::Masters::has_data() const
 {
-    for (std::size_t index=0; index<master.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<master.len(); index++)
     {
         if(master[index]->has_data())
             return true;
@@ -1937,7 +1964,7 @@ bool Ptp::Profiles::Profile::Masters::has_data() const
 
 bool Ptp::Profiles::Profile::Masters::has_operation() const
 {
-    for (std::size_t index=0; index<master.size(); index++)
+    for (std::size_t index=0; index<master.len(); index++)
     {
         if(master[index]->has_operation())
             return true;
@@ -1967,7 +1994,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Masters::get_child_by_name(const
     {
         auto c = std::make_shared<Ptp::Profiles::Profile::Masters::Master>();
         c->parent = this;
-        master.push_back(c);
+        master.append(c);
         return c;
     }
 
@@ -1979,7 +2006,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Masters::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : master)
+    for (auto c : master.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2008,9 +2035,12 @@ bool Ptp::Profiles::Profile::Masters::has_leaf_or_child_of_name(const std::strin
 Ptp::Profiles::Profile::Masters::Master::Master()
     :
     transport{YType::enumeration, "transport"}
+        ,
+    ethernet(this, {"master_mac_address"})
+    , ipv4_or_ipv6(this, {"master_ip_address"})
 {
 
-    yang_name = "master"; yang_parent_name = "masters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "master"; yang_parent_name = "masters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::Masters::Master::~Master()
@@ -2019,12 +2049,13 @@ Ptp::Profiles::Profile::Masters::Master::~Master()
 
 bool Ptp::Profiles::Profile::Masters::Master::has_data() const
 {
-    for (std::size_t index=0; index<ethernet.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ethernet.len(); index++)
     {
         if(ethernet[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_or_ipv6.size(); index++)
+    for (std::size_t index=0; index<ipv4_or_ipv6.len(); index++)
     {
         if(ipv4_or_ipv6[index]->has_data())
             return true;
@@ -2034,12 +2065,12 @@ bool Ptp::Profiles::Profile::Masters::Master::has_data() const
 
 bool Ptp::Profiles::Profile::Masters::Master::has_operation() const
 {
-    for (std::size_t index=0; index<ethernet.size(); index++)
+    for (std::size_t index=0; index<ethernet.len(); index++)
     {
         if(ethernet[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_or_ipv6.size(); index++)
+    for (std::size_t index=0; index<ipv4_or_ipv6.len(); index++)
     {
         if(ipv4_or_ipv6[index]->has_operation())
             return true;
@@ -2051,7 +2082,8 @@ bool Ptp::Profiles::Profile::Masters::Master::has_operation() const
 std::string Ptp::Profiles::Profile::Masters::Master::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "master" <<"[transport='" <<transport <<"']";
+    path_buffer << "master";
+    ADD_KEY_TOKEN(transport, "transport");
     return path_buffer.str();
 }
 
@@ -2071,7 +2103,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Masters::Master::get_child_by_na
     {
         auto c = std::make_shared<Ptp::Profiles::Profile::Masters::Master::Ethernet>();
         c->parent = this;
-        ethernet.push_back(c);
+        ethernet.append(c);
         return c;
     }
 
@@ -2079,7 +2111,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Masters::Master::get_child_by_na
     {
         auto c = std::make_shared<Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6>();
         c->parent = this;
-        ipv4_or_ipv6.push_back(c);
+        ipv4_or_ipv6.append(c);
         return c;
     }
 
@@ -2091,7 +2123,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Masters::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ethernet)
+    for (auto c : ethernet.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2100,7 +2132,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Masters::
     }
 
     count = 0;
-    for (auto const & c : ipv4_or_ipv6)
+    for (auto c : ipv4_or_ipv6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2143,11 +2175,11 @@ Ptp::Profiles::Profile::Masters::Master::Ethernet::Ethernet()
     non_negotiated{YType::boolean, "non-negotiated"},
     priority{YType::uint32, "priority"},
     communication{YType::enumeration, "communication"}
-    	,
+        ,
     delay_asymmetry(nullptr) // presence node
 {
 
-    yang_name = "ethernet"; yang_parent_name = "master"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet"; yang_parent_name = "master"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::Masters::Master::Ethernet::~Ethernet()
@@ -2156,6 +2188,7 @@ Ptp::Profiles::Profile::Masters::Master::Ethernet::~Ethernet()
 
 bool Ptp::Profiles::Profile::Masters::Master::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return master_mac_address.is_set
 	|| master_clock_class.is_set
 	|| non_negotiated.is_set
@@ -2178,7 +2211,8 @@ bool Ptp::Profiles::Profile::Masters::Master::Ethernet::has_operation() const
 std::string Ptp::Profiles::Profile::Masters::Master::Ethernet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ethernet" <<"[master-mac-address='" <<master_mac_address <<"']";
+    path_buffer << "ethernet";
+    ADD_KEY_TOKEN(master_mac_address, "master-mac-address");
     return path_buffer.str();
 }
 
@@ -2293,7 +2327,7 @@ Ptp::Profiles::Profile::Masters::Master::Ethernet::DelayAsymmetry::DelayAsymmetr
     units{YType::enumeration, "units"}
 {
 
-    yang_name = "delay-asymmetry"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay-asymmetry"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ptp::Profiles::Profile::Masters::Master::Ethernet::DelayAsymmetry::~DelayAsymmetry()
@@ -2302,6 +2336,7 @@ Ptp::Profiles::Profile::Masters::Master::Ethernet::DelayAsymmetry::~DelayAsymmet
 
 bool Ptp::Profiles::Profile::Masters::Master::Ethernet::DelayAsymmetry::has_data() const
 {
+    if (is_presence_container) return true;
     return magnitude.is_set
 	|| units.is_set;
 }
@@ -2385,11 +2420,11 @@ Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::Ipv4OrIpv6()
     non_negotiated{YType::boolean, "non-negotiated"},
     priority{YType::uint32, "priority"},
     communication{YType::enumeration, "communication"}
-    	,
+        ,
     delay_asymmetry(nullptr) // presence node
 {
 
-    yang_name = "ipv4-or-ipv6"; yang_parent_name = "master"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-or-ipv6"; yang_parent_name = "master"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::~Ipv4OrIpv6()
@@ -2398,6 +2433,7 @@ Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::~Ipv4OrIpv6()
 
 bool Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::has_data() const
 {
+    if (is_presence_container) return true;
     return master_ip_address.is_set
 	|| master_clock_class.is_set
 	|| non_negotiated.is_set
@@ -2420,7 +2456,8 @@ bool Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::has_operation() const
 std::string Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-or-ipv6" <<"[master-ip-address='" <<master_ip_address <<"']";
+    path_buffer << "ipv4-or-ipv6";
+    ADD_KEY_TOKEN(master_ip_address, "master-ip-address");
     return path_buffer.str();
 }
 
@@ -2535,7 +2572,7 @@ Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::DelayAsymmetry::DelayAsymme
     units{YType::enumeration, "units"}
 {
 
-    yang_name = "delay-asymmetry"; yang_parent_name = "ipv4-or-ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay-asymmetry"; yang_parent_name = "ipv4-or-ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::DelayAsymmetry::~DelayAsymmetry()
@@ -2544,6 +2581,7 @@ Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::DelayAsymmetry::~DelayAsymm
 
 bool Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::DelayAsymmetry::has_data() const
 {
+    if (is_presence_container) return true;
     return magnitude.is_set
 	|| units.is_set;
 }
@@ -2627,7 +2665,7 @@ Ptp::Profiles::Profile::Communication::Communication()
     target_address{YType::str, "target-address"}
 {
 
-    yang_name = "communication"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "communication"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::Communication::~Communication()
@@ -2636,6 +2674,7 @@ Ptp::Profiles::Profile::Communication::~Communication()
 
 bool Ptp::Profiles::Profile::Communication::has_data() const
 {
+    if (is_presence_container) return true;
     return model.is_set
 	|| target_address_set.is_set
 	|| target_address.is_set;
@@ -2731,7 +2770,7 @@ Ptp::Profiles::Profile::DelayRequestMinimumInterval::DelayRequestMinimumInterval
     time_period{YType::enumeration, "time-period"}
 {
 
-    yang_name = "delay-request-minimum-interval"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay-request-minimum-interval"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::DelayRequestMinimumInterval::~DelayRequestMinimumInterval()
@@ -2740,6 +2779,7 @@ Ptp::Profiles::Profile::DelayRequestMinimumInterval::~DelayRequestMinimumInterva
 
 bool Ptp::Profiles::Profile::DelayRequestMinimumInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return time_type.is_set
 	|| time_period.is_set;
 }
@@ -2822,7 +2862,7 @@ Ptp::Profiles::Profile::SourceIpv6Address::SourceIpv6Address()
     source_ipv6{YType::str, "source-ipv6"}
 {
 
-    yang_name = "source-ipv6-address"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-ipv6-address"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ptp::Profiles::Profile::SourceIpv6Address::~SourceIpv6Address()
@@ -2831,6 +2871,7 @@ Ptp::Profiles::Profile::SourceIpv6Address::~SourceIpv6Address()
 
 bool Ptp::Profiles::Profile::SourceIpv6Address::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| source_ipv6.is_set;
 }
@@ -2910,13 +2951,13 @@ bool Ptp::Profiles::Profile::SourceIpv6Address::has_leaf_or_child_of_name(const 
 Ptp::UtcOffset::UtcOffset()
     :
     base_offset{YType::uint32, "base-offset"}
-    	,
+        ,
     leap_second_file(nullptr) // presence node
-	,scheduled_offsets(std::make_shared<Ptp::UtcOffset::ScheduledOffsets>())
+    , scheduled_offsets(std::make_shared<Ptp::UtcOffset::ScheduledOffsets>())
 {
     scheduled_offsets->parent = this;
 
-    yang_name = "utc-offset"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "utc-offset"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::UtcOffset::~UtcOffset()
@@ -2925,6 +2966,7 @@ Ptp::UtcOffset::~UtcOffset()
 
 bool Ptp::UtcOffset::has_data() const
 {
+    if (is_presence_container) return true;
     return base_offset.is_set
 	|| (leap_second_file !=  nullptr && leap_second_file->has_data())
 	|| (scheduled_offsets !=  nullptr && scheduled_offsets->has_data());
@@ -3033,7 +3075,7 @@ Ptp::UtcOffset::LeapSecondFile::LeapSecondFile()
     polling_frequency{YType::uint32, "polling-frequency"}
 {
 
-    yang_name = "leap-second-file"; yang_parent_name = "utc-offset"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "leap-second-file"; yang_parent_name = "utc-offset"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Ptp::UtcOffset::LeapSecondFile::~LeapSecondFile()
@@ -3042,6 +3084,7 @@ Ptp::UtcOffset::LeapSecondFile::~LeapSecondFile()
 
 bool Ptp::UtcOffset::LeapSecondFile::has_data() const
 {
+    if (is_presence_container) return true;
     return source_url.is_set
 	|| polling_frequency.is_set;
 }
@@ -3126,9 +3169,11 @@ bool Ptp::UtcOffset::LeapSecondFile::has_leaf_or_child_of_name(const std::string
 }
 
 Ptp::UtcOffset::ScheduledOffsets::ScheduledOffsets()
+    :
+    scheduled_offset(this, {"date"})
 {
 
-    yang_name = "scheduled-offsets"; yang_parent_name = "utc-offset"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scheduled-offsets"; yang_parent_name = "utc-offset"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::UtcOffset::ScheduledOffsets::~ScheduledOffsets()
@@ -3137,7 +3182,8 @@ Ptp::UtcOffset::ScheduledOffsets::~ScheduledOffsets()
 
 bool Ptp::UtcOffset::ScheduledOffsets::has_data() const
 {
-    for (std::size_t index=0; index<scheduled_offset.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<scheduled_offset.len(); index++)
     {
         if(scheduled_offset[index]->has_data())
             return true;
@@ -3147,7 +3193,7 @@ bool Ptp::UtcOffset::ScheduledOffsets::has_data() const
 
 bool Ptp::UtcOffset::ScheduledOffsets::has_operation() const
 {
-    for (std::size_t index=0; index<scheduled_offset.size(); index++)
+    for (std::size_t index=0; index<scheduled_offset.len(); index++)
     {
         if(scheduled_offset[index]->has_operation())
             return true;
@@ -3184,7 +3230,7 @@ std::shared_ptr<Entity> Ptp::UtcOffset::ScheduledOffsets::get_child_by_name(cons
     {
         auto c = std::make_shared<Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset>();
         c->parent = this;
-        scheduled_offset.push_back(c);
+        scheduled_offset.append(c);
         return c;
     }
 
@@ -3196,7 +3242,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffset::ScheduledOffsets:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : scheduled_offset)
+    for (auto c : scheduled_offset.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3228,7 +3274,7 @@ Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::ScheduledOffset()
     offset{YType::uint32, "offset"}
 {
 
-    yang_name = "scheduled-offset"; yang_parent_name = "scheduled-offsets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scheduled-offset"; yang_parent_name = "scheduled-offsets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::~ScheduledOffset()
@@ -3237,6 +3283,7 @@ Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::~ScheduledOffset()
 
 bool Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::has_data() const
 {
+    if (is_presence_container) return true;
     return date.is_set
 	|| offset.is_set;
 }
@@ -3258,7 +3305,8 @@ std::string Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::get_absolute_path
 std::string Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "scheduled-offset" <<"[date='" <<date <<"']";
+    path_buffer << "scheduled-offset";
+    ADD_KEY_TOKEN(date, "date");
     return path_buffer.str();
 }
 
@@ -3323,12 +3371,12 @@ bool Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::has_leaf_or_child_of_nam
 Ptp::Logging::Logging()
     :
     best_master_clock(std::make_shared<Ptp::Logging::BestMasterClock>())
-	,servo(std::make_shared<Ptp::Logging::Servo>())
+    , servo(std::make_shared<Ptp::Logging::Servo>())
 {
     best_master_clock->parent = this;
     servo->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::Logging::~Logging()
@@ -3337,6 +3385,7 @@ Ptp::Logging::~Logging()
 
 bool Ptp::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return (best_master_clock !=  nullptr && best_master_clock->has_data())
 	|| (servo !=  nullptr && servo->has_data());
 }
@@ -3431,7 +3480,7 @@ Ptp::Logging::BestMasterClock::BestMasterClock()
     changes{YType::empty, "changes"}
 {
 
-    yang_name = "best-master-clock"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "best-master-clock"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::Logging::BestMasterClock::~BestMasterClock()
@@ -3440,6 +3489,7 @@ Ptp::Logging::BestMasterClock::~BestMasterClock()
 
 bool Ptp::Logging::BestMasterClock::has_data() const
 {
+    if (is_presence_container) return true;
     return changes.is_set;
 }
 
@@ -3515,7 +3565,7 @@ Ptp::Logging::Servo::Servo()
     events{YType::empty, "events"}
 {
 
-    yang_name = "servo"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "servo"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::Logging::Servo::~Servo()
@@ -3524,6 +3574,7 @@ Ptp::Logging::Servo::~Servo()
 
 bool Ptp::Logging::Servo::has_data() const
 {
+    if (is_presence_container) return true;
     return events.is_set;
 }
 
@@ -3600,7 +3651,7 @@ Ptp::TransparentClock::TransparentClock()
 {
     domains->parent = this;
 
-    yang_name = "transparent-clock"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transparent-clock"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::TransparentClock::~TransparentClock()
@@ -3609,6 +3660,7 @@ Ptp::TransparentClock::~TransparentClock()
 
 bool Ptp::TransparentClock::has_data() const
 {
+    if (is_presence_container) return true;
     return (domains !=  nullptr && domains->has_data());
 }
 
@@ -3683,9 +3735,11 @@ bool Ptp::TransparentClock::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 Ptp::TransparentClock::Domains::Domains()
+    :
+    domain(this, {"domain"})
 {
 
-    yang_name = "domains"; yang_parent_name = "transparent-clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "domains"; yang_parent_name = "transparent-clock"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::TransparentClock::Domains::~Domains()
@@ -3694,7 +3748,8 @@ Ptp::TransparentClock::Domains::~Domains()
 
 bool Ptp::TransparentClock::Domains::has_data() const
 {
-    for (std::size_t index=0; index<domain.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<domain.len(); index++)
     {
         if(domain[index]->has_data())
             return true;
@@ -3704,7 +3759,7 @@ bool Ptp::TransparentClock::Domains::has_data() const
 
 bool Ptp::TransparentClock::Domains::has_operation() const
 {
-    for (std::size_t index=0; index<domain.size(); index++)
+    for (std::size_t index=0; index<domain.len(); index++)
     {
         if(domain[index]->has_operation())
             return true;
@@ -3741,7 +3796,7 @@ std::shared_ptr<Entity> Ptp::TransparentClock::Domains::get_child_by_name(const 
     {
         auto c = std::make_shared<Ptp::TransparentClock::Domains::Domain>();
         c->parent = this;
-        domain.push_back(c);
+        domain.append(c);
         return c;
     }
 
@@ -3753,7 +3808,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::TransparentClock::Domains::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : domain)
+    for (auto c : domain.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3784,7 +3839,7 @@ Ptp::TransparentClock::Domains::Domain::Domain()
     domain{YType::str, "domain"}
 {
 
-    yang_name = "domain"; yang_parent_name = "domains"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "domain"; yang_parent_name = "domains"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ptp::TransparentClock::Domains::Domain::~Domain()
@@ -3793,6 +3848,7 @@ Ptp::TransparentClock::Domains::Domain::~Domain()
 
 bool Ptp::TransparentClock::Domains::Domain::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set;
 }
 
@@ -3812,7 +3868,8 @@ std::string Ptp::TransparentClock::Domains::Domain::get_absolute_path() const
 std::string Ptp::TransparentClock::Domains::Domain::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "domain" <<"[domain='" <<domain <<"']";
+    path_buffer << "domain";
+    ADD_KEY_TOKEN(domain, "domain");
     return path_buffer.str();
 }
 

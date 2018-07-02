@@ -63,7 +63,7 @@ class TrafficCollector::ExternalInterfaces : public ydk::Entity
 
         class ExternalInterface; //type: TrafficCollector::ExternalInterfaces::ExternalInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::ExternalInterfaces::ExternalInterface> > external_interface;
+        ydk::YList external_interface;
         
 }; // TrafficCollector::ExternalInterfaces
 
@@ -122,9 +122,9 @@ class TrafficCollector::Summary : public ydk::Entity
         class CheckpointMessageStatistic; //type: TrafficCollector::Summary::CheckpointMessageStatistic
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Summary::DatabaseStatisticsExternalInterface> database_statistics_external_interface;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Summary::VrfStatistic> > vrf_statistic;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Summary::CollectionMessageStatistic> > collection_message_statistic;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Summary::CheckpointMessageStatistic> > checkpoint_message_statistic;
+        ydk::YList vrf_statistic;
+        ydk::YList collection_message_statistic;
+        ydk::YList checkpoint_message_statistic;
         
 }; // TrafficCollector::Summary
 
@@ -352,7 +352,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs : public ydk::Entity
 
         class Af; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af> > af;
+        ydk::YList af;
         
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs
 
@@ -425,7 +425,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes : publ
 
         class Prefix; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix> > prefix;
+        ydk::YList prefix;
         
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes
 
@@ -481,7 +481,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
         ydk::YLeaf transmit_bytes_per_second_switched; //type: uint64
         class CountHistory; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory> > count_history;
+        ydk::YList count_history;
         
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics
 
@@ -531,7 +531,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
         ydk::YLeaf transmit_bytes_per_second_switched; //type: uint64
         class CountHistory; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory> > count_history;
+        ydk::YList count_history;
         
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics
 
@@ -579,7 +579,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels : publi
 
         class Tunnel; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel> > tunnel;
+        ydk::YList tunnel;
         
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels
 
@@ -632,7 +632,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
         ydk::YLeaf transmit_bytes_per_second_switched; //type: uint64
         class CountHistory; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory> > count_history;
+        ydk::YList count_history;
         
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
 
@@ -681,7 +681,7 @@ class TrafficCollector::Afs : public ydk::Entity
 
         class Af; //type: TrafficCollector::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af> > af;
+        ydk::YList af;
         
 }; // TrafficCollector::Afs
 
@@ -754,7 +754,7 @@ class TrafficCollector::Afs::Af::Counters::Prefixes : public ydk::Entity
 
         class Prefix; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Prefixes::Prefix> > prefix;
+        ydk::YList prefix;
         
 }; // TrafficCollector::Afs::Af::Counters::Prefixes
 
@@ -810,7 +810,7 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatisti
         ydk::YLeaf transmit_bytes_per_second_switched; //type: uint64
         class CountHistory; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory> > count_history;
+        ydk::YList count_history;
         
 }; // TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics
 
@@ -860,7 +860,7 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounte
         ydk::YLeaf transmit_bytes_per_second_switched; //type: uint64
         class CountHistory; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory> > count_history;
+        ydk::YList count_history;
         
 }; // TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics
 
@@ -908,7 +908,7 @@ class TrafficCollector::Afs::Af::Counters::Tunnels : public ydk::Entity
 
         class Tunnel; //type: TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel> > tunnel;
+        ydk::YList tunnel;
         
 }; // TrafficCollector::Afs::Af::Counters::Tunnels
 
@@ -961,7 +961,7 @@ class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistic
         ydk::YLeaf transmit_bytes_per_second_switched; //type: uint64
         class CountHistory; //type: TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory> > count_history;
+        ydk::YList count_history;
         
 }; // TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
 

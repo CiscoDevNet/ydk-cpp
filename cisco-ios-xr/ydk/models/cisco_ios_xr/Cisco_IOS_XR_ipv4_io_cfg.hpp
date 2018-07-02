@@ -10,18 +10,11 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_io_cfg {
 
-class Ipv4Reachable : public ydk::Enum
+class Ipv4DefaultPing : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf any;
-        static const ydk::Enum::YLeaf received;
-
-};
-
-class DhcpClientOptionCode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf Y_60;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
 
 };
 
@@ -33,11 +26,18 @@ class Ipv4SelfPing : public ydk::Enum
 
 };
 
-class Ipv4DefaultPing : public ydk::Enum
+class DhcpClientOptionCode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf Y_60;
+
+};
+
+class Ipv4Reachable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf any;
+        static const ydk::Enum::YLeaf received;
 
 };
 

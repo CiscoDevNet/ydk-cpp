@@ -14,16 +14,16 @@ namespace Cisco_IOS_XR_mpls_static_cfg {
 MplsStatic::MplsStatic()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     vrfs(std::make_shared<MplsStatic::Vrfs>())
-	,interfaces(std::make_shared<MplsStatic::Interfaces>())
-	,default_vrf(std::make_shared<MplsStatic::DefaultVrf>())
+    , interfaces(std::make_shared<MplsStatic::Interfaces>())
+    , default_vrf(std::make_shared<MplsStatic::DefaultVrf>())
 {
     vrfs->parent = this;
     interfaces->parent = this;
     default_vrf->parent = this;
 
-    yang_name = "mpls-static"; yang_parent_name = "Cisco-IOS-XR-mpls-static-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpls-static"; yang_parent_name = "Cisco-IOS-XR-mpls-static-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MplsStatic::~MplsStatic()
@@ -32,6 +32,7 @@ MplsStatic::~MplsStatic()
 
 bool MplsStatic::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (vrfs !=  nullptr && vrfs->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
@@ -169,9 +170,11 @@ bool MplsStatic::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 MplsStatic::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "mpls-static"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "mpls-static"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::Vrfs::~Vrfs()
@@ -180,7 +183,8 @@ MplsStatic::Vrfs::~Vrfs()
 
 bool MplsStatic::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -190,7 +194,7 @@ bool MplsStatic::Vrfs::has_data() const
 
 bool MplsStatic::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -227,7 +231,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -239,7 +243,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -269,14 +273,14 @@ MplsStatic::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     label_switched_paths(std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths>())
-	,afs(std::make_shared<MplsStatic::Vrfs::Vrf::Afs>())
+    , afs(std::make_shared<MplsStatic::Vrfs::Vrf::Afs>())
 {
     label_switched_paths->parent = this;
     afs->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::Vrfs::Vrf::~Vrf()
@@ -285,6 +289,7 @@ MplsStatic::Vrfs::Vrf::~Vrf()
 
 bool MplsStatic::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| enable.is_set
 	|| (label_switched_paths !=  nullptr && label_switched_paths->has_data())
@@ -310,7 +315,8 @@ std::string MplsStatic::Vrfs::Vrf::get_absolute_path() const
 std::string MplsStatic::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -401,9 +407,11 @@ bool MplsStatic::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPaths()
+    :
+    label_switched_path(this, {"lsp_name"})
 {
 
-    yang_name = "label-switched-paths"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-switched-paths"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::~LabelSwitchedPaths()
@@ -412,7 +420,8 @@ MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::~LabelSwitchedPaths()
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::has_data() const
 {
-    for (std::size_t index=0; index<label_switched_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<label_switched_path.len(); index++)
     {
         if(label_switched_path[index]->has_data())
             return true;
@@ -422,7 +431,7 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::has_data() const
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::has_operation() const
 {
-    for (std::size_t index=0; index<label_switched_path.size(); index++)
+    for (std::size_t index=0; index<label_switched_path.len(); index++)
     {
         if(label_switched_path[index]->has_operation())
             return true;
@@ -452,7 +461,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::get_child_by_
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath>();
         c->parent = this;
-        label_switched_path.push_back(c);
+        label_switched_path.append(c);
         return c;
     }
 
@@ -464,7 +473,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : label_switched_path)
+    for (auto c : label_switched_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -494,16 +503,16 @@ MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::LabelSwitchedPath(
     :
     lsp_name{YType::str, "lsp-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     backup_paths(std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths>())
-	,in_label(std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel>())
-	,paths(std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths>())
+    , in_label(std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel>())
+    , paths(std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths>())
 {
     backup_paths->parent = this;
     in_label->parent = this;
     paths->parent = this;
 
-    yang_name = "label-switched-path"; yang_parent_name = "label-switched-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-switched-path"; yang_parent_name = "label-switched-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::~LabelSwitchedPath()
@@ -512,6 +521,7 @@ MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::~LabelSwitchedPath
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_name.is_set
 	|| enable.is_set
 	|| (backup_paths !=  nullptr && backup_paths->has_data())
@@ -532,7 +542,8 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::has_operation
 std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "label-switched-path" <<"[lsp-name='" <<lsp_name <<"']";
+    path_buffer << "label-switched-path";
+    ADD_KEY_TOKEN(lsp_name, "lsp-name");
     return path_buffer.str();
 }
 
@@ -637,9 +648,11 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::has_leaf_or_c
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::BackupPaths()
+    :
+    path(this, {"path_id"})
 {
 
-    yang_name = "backup-paths"; yang_parent_name = "label-switched-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-paths"; yang_parent_name = "label-switched-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::~BackupPaths()
@@ -648,7 +661,8 @@ MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::~Back
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -658,7 +672,7 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -688,7 +702,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitched
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -700,7 +714,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -741,7 +755,7 @@ MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path:
     backup_id{YType::uint32, "backup-id"}
 {
 
-    yang_name = "path"; yang_parent_name = "backup-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "backup-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::~Path()
@@ -750,6 +764,7 @@ MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path:
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_id.is_set
 	|| path_type.is_set
 	|| label_type.is_set
@@ -782,7 +797,8 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::
 std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[path-id='" <<path_id <<"']";
+    path_buffer << "path";
+    ADD_KEY_TOKEN(path_id, "path-id");
     return path_buffer.str();
 }
 
@@ -948,11 +964,11 @@ MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::InLabel()
     in_label_value{YType::uint32, "in-label-value"},
     label_mode{YType::enumeration, "label-mode"},
     prefix{YType::str, "prefix"},
-    prefix_length{YType::int32, "prefix-length"},
+    prefix_length{YType::uint32, "prefix-length"},
     tlh_mode{YType::boolean, "tlh-mode"}
 {
 
-    yang_name = "in-label"; yang_parent_name = "label-switched-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-label"; yang_parent_name = "label-switched-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::~InLabel()
@@ -961,6 +977,7 @@ MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::~InLabel(
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return in_label_value.is_set
 	|| label_mode.is_set
 	|| prefix.is_set
@@ -1077,9 +1094,11 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::has_
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Paths()
+    :
+    path(this, {"path_id"})
 {
 
-    yang_name = "paths"; yang_parent_name = "label-switched-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "label-switched-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::~Paths()
@@ -1088,7 +1107,8 @@ MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::~Paths()
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -1098,7 +1118,7 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::has_da
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -1128,7 +1148,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitched
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -1140,7 +1160,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1181,7 +1201,7 @@ MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::Path(
     backup_id{YType::uint32, "backup-id"}
 {
 
-    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::~Path()
@@ -1190,6 +1210,7 @@ MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::~Path
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_id.is_set
 	|| path_type.is_set
 	|| label_type.is_set
@@ -1222,7 +1243,8 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::
 std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[path-id='" <<path_id <<"']";
+    path_buffer << "path";
+    ADD_KEY_TOKEN(path_id, "path-id");
     return path_buffer.str();
 }
 
@@ -1384,9 +1406,11 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Afs()
+    :
+    af(this, {"afi"})
 {
 
-    yang_name = "afs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "afs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::~Afs()
@@ -1395,7 +1419,8 @@ MplsStatic::Vrfs::Vrf::Afs::~Afs()
 
 bool MplsStatic::Vrfs::Vrf::Afs::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
@@ -1405,7 +1430,7 @@ bool MplsStatic::Vrfs::Vrf::Afs::has_data() const
 
 bool MplsStatic::Vrfs::Vrf::Afs::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
@@ -1435,7 +1460,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::get_child_by_name(const std:
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
@@ -1447,7 +1472,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1477,14 +1502,14 @@ MplsStatic::Vrfs::Vrf::Afs::Af::Af()
     :
     afi{YType::enumeration, "afi"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     top_label_hash(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash>())
-	,local_labels(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels>())
+    , local_labels(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels>())
 {
     top_label_hash->parent = this;
     local_labels->parent = this;
 
-    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::~Af()
@@ -1493,6 +1518,7 @@ MplsStatic::Vrfs::Vrf::Afs::Af::~Af()
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| enable.is_set
 	|| (top_label_hash !=  nullptr && top_label_hash->has_data())
@@ -1511,7 +1537,8 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::has_operation() const
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "af" <<"[afi='" <<afi <<"']";
+    path_buffer << "af";
+    ADD_KEY_TOKEN(afi, "afi");
     return path_buffer.str();
 }
 
@@ -1607,7 +1634,7 @@ MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::TopLabelHash()
 {
     local_labels->parent = this;
 
-    yang_name = "top-label-hash"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "top-label-hash"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::~TopLabelHash()
@@ -1616,6 +1643,7 @@ MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::~TopLabelHash()
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::has_data() const
 {
+    if (is_presence_container) return true;
     return (local_labels !=  nullptr && local_labels->has_data());
 }
 
@@ -1683,9 +1711,11 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::has_leaf_or_child_of_name(con
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabels()
+    :
+    local_label(this, {"local_label_id"})
 {
 
-    yang_name = "local-labels"; yang_parent_name = "top-label-hash"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-labels"; yang_parent_name = "top-label-hash"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::~LocalLabels()
@@ -1694,7 +1724,8 @@ MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::~LocalLabels()
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::has_data() const
 {
-    for (std::size_t index=0; index<local_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_label.len(); index++)
     {
         if(local_label[index]->has_data())
             return true;
@@ -1704,7 +1735,7 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::has_data() const
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::has_operation() const
 {
-    for (std::size_t index=0; index<local_label.size(); index++)
+    for (std::size_t index=0; index<local_label.len(); index++)
     {
         if(local_label[index]->has_operation())
             return true;
@@ -1734,7 +1765,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabel
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel>();
         c->parent = this;
-        local_label.push_back(c);
+        local_label.append(c);
         return c;
     }
 
@@ -1746,7 +1777,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::T
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_label)
+    for (auto c : local_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1775,14 +1806,14 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::has_leaf_or_chil
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LocalLabel()
     :
     local_label_id{YType::uint32, "local-label-id"}
-    	,
+        ,
     label_type(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType>())
-	,paths(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths>())
+    , paths(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths>())
 {
     label_type->parent = this;
     paths->parent = this;
 
-    yang_name = "local-label"; yang_parent_name = "local-labels"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-label"; yang_parent_name = "local-labels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::~LocalLabel()
@@ -1791,6 +1822,7 @@ MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::~LocalLab
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return local_label_id.is_set
 	|| (label_type !=  nullptr && label_type->has_data())
 	|| (paths !=  nullptr && paths->has_data());
@@ -1807,7 +1839,8 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::has_
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-label" <<"[local-label-id='" <<local_label_id <<"']";
+    path_buffer << "local-label";
+    ADD_KEY_TOKEN(local_label_id, "local-label-id");
     return path_buffer.str();
 }
 
@@ -1890,10 +1923,10 @@ MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType
     :
     label_mode{YType::enumeration, "label-mode"},
     prefix{YType::str, "prefix"},
-    prefix_length{YType::int32, "prefix-length"}
+    prefix_length{YType::uint32, "prefix-length"}
 {
 
-    yang_name = "label-type"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-type"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::~LabelType()
@@ -1902,6 +1935,7 @@ MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::has_data() const
 {
+    if (is_presence_container) return true;
     return label_mode.is_set
 	|| prefix.is_set
 	|| prefix_length.is_set;
@@ -1992,9 +2026,11 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Labe
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Paths()
+    :
+    path(this, {"path_id"})
 {
 
-    yang_name = "paths"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::~Paths()
@@ -2003,7 +2039,8 @@ MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::~P
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -2013,7 +2050,7 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Path
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -2043,7 +2080,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabel
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -2055,7 +2092,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::T
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2096,7 +2133,7 @@ MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Pa
     backup_id{YType::uint32, "backup-id"}
 {
 
-    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::~Path()
@@ -2105,6 +2142,7 @@ MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Pa
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_id.is_set
 	|| path_type.is_set
 	|| label_type.is_set
@@ -2137,7 +2175,8 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Path
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[path-id='" <<path_id <<"']";
+    path_buffer << "path";
+    ADD_KEY_TOKEN(path_id, "path-id");
     return path_buffer.str();
 }
 
@@ -2299,9 +2338,11 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Path
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabels()
+    :
+    local_label(this, {"local_label_id"})
 {
 
-    yang_name = "local-labels"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-labels"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::~LocalLabels()
@@ -2310,7 +2351,8 @@ MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::~LocalLabels()
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::has_data() const
 {
-    for (std::size_t index=0; index<local_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_label.len(); index++)
     {
         if(local_label[index]->has_data())
             return true;
@@ -2320,7 +2362,7 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::has_data() const
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::has_operation() const
 {
-    for (std::size_t index=0; index<local_label.size(); index++)
+    for (std::size_t index=0; index<local_label.len(); index++)
     {
         if(local_label[index]->has_operation())
             return true;
@@ -2350,7 +2392,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::get_child_b
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel>();
         c->parent = this;
-        local_label.push_back(c);
+        local_label.append(c);
         return c;
     }
 
@@ -2362,7 +2404,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::L
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_label)
+    for (auto c : local_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2391,14 +2433,14 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::has_leaf_or_child_of_name(cons
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LocalLabel()
     :
     local_label_id{YType::uint32, "local-label-id"}
-    	,
+        ,
     label_type(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType>())
-	,paths(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths>())
+    , paths(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths>())
 {
     label_type->parent = this;
     paths->parent = this;
 
-    yang_name = "local-label"; yang_parent_name = "local-labels"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-label"; yang_parent_name = "local-labels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::~LocalLabel()
@@ -2407,6 +2449,7 @@ MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::~LocalLabel()
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return local_label_id.is_set
 	|| (label_type !=  nullptr && label_type->has_data())
 	|| (paths !=  nullptr && paths->has_data());
@@ -2423,7 +2466,8 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::has_operation() co
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-label" <<"[local-label-id='" <<local_label_id <<"']";
+    path_buffer << "local-label";
+    ADD_KEY_TOKEN(local_label_id, "local-label-id");
     return path_buffer.str();
 }
 
@@ -2506,10 +2550,10 @@ MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::LabelType()
     :
     label_mode{YType::enumeration, "label-mode"},
     prefix{YType::str, "prefix"},
-    prefix_length{YType::int32, "prefix-length"}
+    prefix_length{YType::uint32, "prefix-length"}
 {
 
-    yang_name = "label-type"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-type"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::~LabelType()
@@ -2518,6 +2562,7 @@ MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::~LabelType()
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::has_data() const
 {
+    if (is_presence_container) return true;
     return label_mode.is_set
 	|| prefix.is_set
 	|| prefix_length.is_set;
@@ -2608,9 +2653,11 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::has_lea
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Paths()
+    :
+    path(this, {"path_id"})
 {
 
-    yang_name = "paths"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::~Paths()
@@ -2619,7 +2666,8 @@ MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::~Paths()
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -2629,7 +2677,7 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::has_data() 
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -2659,7 +2707,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel:
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -2671,7 +2719,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::L
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2712,7 +2760,7 @@ MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::Path()
     backup_id{YType::uint32, "backup-id"}
 {
 
-    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::~Path()
@@ -2721,6 +2769,7 @@ MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::~Path()
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_id.is_set
 	|| path_type.is_set
 	|| label_type.is_set
@@ -2753,7 +2802,8 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::has_o
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[path-id='" <<path_id <<"']";
+    path_buffer << "path";
+    ADD_KEY_TOKEN(path_id, "path-id");
     return path_buffer.str();
 }
 
@@ -2915,9 +2965,11 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::has_l
 }
 
 MplsStatic::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "mpls-static"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "mpls-static"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::Interfaces::~Interfaces()
@@ -2926,7 +2978,8 @@ MplsStatic::Interfaces::~Interfaces()
 
 bool MplsStatic::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -2936,7 +2989,7 @@ bool MplsStatic::Interfaces::has_data() const
 
 bool MplsStatic::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -2973,7 +3026,7 @@ std::shared_ptr<Entity> MplsStatic::Interfaces::get_child_by_name(const std::str
     {
         auto c = std::make_shared<MplsStatic::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -2985,7 +3038,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Interfaces::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3016,7 +3069,7 @@ MplsStatic::Interfaces::Interface::Interface()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::Interfaces::Interface::~Interface()
@@ -3025,6 +3078,7 @@ MplsStatic::Interfaces::Interface::~Interface()
 
 bool MplsStatic::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -3044,7 +3098,8 @@ std::string MplsStatic::Interfaces::Interface::get_absolute_path() const
 std::string MplsStatic::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3098,14 +3153,14 @@ bool MplsStatic::Interfaces::Interface::has_leaf_or_child_of_name(const std::str
 MplsStatic::DefaultVrf::DefaultVrf()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     label_switched_paths(std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths>())
-	,afs(std::make_shared<MplsStatic::DefaultVrf::Afs>())
+    , afs(std::make_shared<MplsStatic::DefaultVrf::Afs>())
 {
     label_switched_paths->parent = this;
     afs->parent = this;
 
-    yang_name = "default-vrf"; yang_parent_name = "mpls-static"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-vrf"; yang_parent_name = "mpls-static"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::DefaultVrf::~DefaultVrf()
@@ -3114,6 +3169,7 @@ MplsStatic::DefaultVrf::~DefaultVrf()
 
 bool MplsStatic::DefaultVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (label_switched_paths !=  nullptr && label_switched_paths->has_data())
 	|| (afs !=  nullptr && afs->has_data());
@@ -3217,9 +3273,11 @@ bool MplsStatic::DefaultVrf::has_leaf_or_child_of_name(const std::string & name)
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPaths()
+    :
+    label_switched_path(this, {"lsp_name"})
 {
 
-    yang_name = "label-switched-paths"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "label-switched-paths"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::~LabelSwitchedPaths()
@@ -3228,7 +3286,8 @@ MplsStatic::DefaultVrf::LabelSwitchedPaths::~LabelSwitchedPaths()
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::has_data() const
 {
-    for (std::size_t index=0; index<label_switched_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<label_switched_path.len(); index++)
     {
         if(label_switched_path[index]->has_data())
             return true;
@@ -3238,7 +3297,7 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::has_data() const
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::has_operation() const
 {
-    for (std::size_t index=0; index<label_switched_path.size(); index++)
+    for (std::size_t index=0; index<label_switched_path.len(); index++)
     {
         if(label_switched_path[index]->has_operation())
             return true;
@@ -3275,7 +3334,7 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::get_child_by
     {
         auto c = std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath>();
         c->parent = this;
-        label_switched_path.push_back(c);
+        label_switched_path.append(c);
         return c;
     }
 
@@ -3287,7 +3346,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwit
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : label_switched_path)
+    for (auto c : label_switched_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3317,16 +3376,16 @@ MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::LabelSwitchedPath
     :
     lsp_name{YType::str, "lsp-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     backup_paths(std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths>())
-	,in_label(std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel>())
-	,paths(std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths>())
+    , in_label(std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel>())
+    , paths(std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths>())
 {
     backup_paths->parent = this;
     in_label->parent = this;
     paths->parent = this;
 
-    yang_name = "label-switched-path"; yang_parent_name = "label-switched-paths"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "label-switched-path"; yang_parent_name = "label-switched-paths"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::~LabelSwitchedPath()
@@ -3335,6 +3394,7 @@ MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::~LabelSwitchedPat
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_name.is_set
 	|| enable.is_set
 	|| (backup_paths !=  nullptr && backup_paths->has_data())
@@ -3362,7 +3422,8 @@ std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::get_a
 std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "label-switched-path" <<"[lsp-name='" <<lsp_name <<"']";
+    path_buffer << "label-switched-path";
+    ADD_KEY_TOKEN(lsp_name, "lsp-name");
     return path_buffer.str();
 }
 
@@ -3467,9 +3528,11 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::has_leaf_or_
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::BackupPaths()
+    :
+    path(this, {"path_id"})
 {
 
-    yang_name = "backup-paths"; yang_parent_name = "label-switched-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-paths"; yang_parent_name = "label-switched-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::~BackupPaths()
@@ -3478,7 +3541,8 @@ MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::~Bac
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -3488,7 +3552,7 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths:
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -3518,7 +3582,7 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitche
     {
         auto c = std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -3530,7 +3594,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwit
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3571,7 +3635,7 @@ MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path
     backup_id{YType::uint32, "backup-id"}
 {
 
-    yang_name = "path"; yang_parent_name = "backup-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "backup-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::~Path()
@@ -3580,6 +3644,7 @@ MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_id.is_set
 	|| path_type.is_set
 	|| label_type.is_set
@@ -3612,7 +3677,8 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths:
 std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[path-id='" <<path_id <<"']";
+    path_buffer << "path";
+    ADD_KEY_TOKEN(path_id, "path-id");
     return path_buffer.str();
 }
 
@@ -3778,11 +3844,11 @@ MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::InLabel(
     in_label_value{YType::uint32, "in-label-value"},
     label_mode{YType::enumeration, "label-mode"},
     prefix{YType::str, "prefix"},
-    prefix_length{YType::int32, "prefix-length"},
+    prefix_length{YType::uint32, "prefix-length"},
     tlh_mode{YType::boolean, "tlh-mode"}
 {
 
-    yang_name = "in-label"; yang_parent_name = "label-switched-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-label"; yang_parent_name = "label-switched-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::~InLabel()
@@ -3791,6 +3857,7 @@ MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::~InLabel
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return in_label_value.is_set
 	|| label_mode.is_set
 	|| prefix.is_set
@@ -3907,9 +3974,11 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::has
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Paths()
+    :
+    path(this, {"path_id"})
 {
 
-    yang_name = "paths"; yang_parent_name = "label-switched-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "label-switched-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::~Paths()
@@ -3918,7 +3987,8 @@ MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::~Paths()
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -3928,7 +3998,7 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::has_d
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -3958,7 +4028,7 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitche
     {
         auto c = std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -3970,7 +4040,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwit
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4011,7 +4081,7 @@ MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::Path
     backup_id{YType::uint32, "backup-id"}
 {
 
-    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::~Path()
@@ -4020,6 +4090,7 @@ MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::~Pat
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_id.is_set
 	|| path_type.is_set
 	|| label_type.is_set
@@ -4052,7 +4123,8 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path:
 std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[path-id='" <<path_id <<"']";
+    path_buffer << "path";
+    ADD_KEY_TOKEN(path_id, "path-id");
     return path_buffer.str();
 }
 
@@ -4214,9 +4286,11 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path:
 }
 
 MplsStatic::DefaultVrf::Afs::Afs()
+    :
+    af(this, {"afi"})
 {
 
-    yang_name = "afs"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "afs"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::DefaultVrf::Afs::~Afs()
@@ -4225,7 +4299,8 @@ MplsStatic::DefaultVrf::Afs::~Afs()
 
 bool MplsStatic::DefaultVrf::Afs::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
@@ -4235,7 +4310,7 @@ bool MplsStatic::DefaultVrf::Afs::has_data() const
 
 bool MplsStatic::DefaultVrf::Afs::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
@@ -4272,7 +4347,7 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::get_child_by_name(const std
     {
         auto c = std::make_shared<MplsStatic::DefaultVrf::Afs::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
@@ -4284,7 +4359,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4314,14 +4389,14 @@ MplsStatic::DefaultVrf::Afs::Af::Af()
     :
     afi{YType::enumeration, "afi"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     top_label_hash(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash>())
-	,local_labels(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels>())
+    , local_labels(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels>())
 {
     top_label_hash->parent = this;
     local_labels->parent = this;
 
-    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::DefaultVrf::Afs::Af::~Af()
@@ -4330,6 +4405,7 @@ MplsStatic::DefaultVrf::Afs::Af::~Af()
 
 bool MplsStatic::DefaultVrf::Afs::Af::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| enable.is_set
 	|| (top_label_hash !=  nullptr && top_label_hash->has_data())
@@ -4355,7 +4431,8 @@ std::string MplsStatic::DefaultVrf::Afs::Af::get_absolute_path() const
 std::string MplsStatic::DefaultVrf::Afs::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "af" <<"[afi='" <<afi <<"']";
+    path_buffer << "af";
+    ADD_KEY_TOKEN(afi, "afi");
     return path_buffer.str();
 }
 
@@ -4451,7 +4528,7 @@ MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::TopLabelHash()
 {
     local_labels->parent = this;
 
-    yang_name = "top-label-hash"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "top-label-hash"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::~TopLabelHash()
@@ -4460,6 +4537,7 @@ MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::~TopLabelHash()
 
 bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::has_data() const
 {
+    if (is_presence_container) return true;
     return (local_labels !=  nullptr && local_labels->has_data());
 }
 
@@ -4527,9 +4605,11 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::has_leaf_or_child_of_name(co
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabels()
+    :
+    local_label(this, {"local_label_id"})
 {
 
-    yang_name = "local-labels"; yang_parent_name = "top-label-hash"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-labels"; yang_parent_name = "top-label-hash"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::~LocalLabels()
@@ -4538,7 +4618,8 @@ MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::~LocalLabels()
 
 bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::has_data() const
 {
-    for (std::size_t index=0; index<local_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_label.len(); index++)
     {
         if(local_label[index]->has_data())
             return true;
@@ -4548,7 +4629,7 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::has_data() cons
 
 bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::has_operation() const
 {
-    for (std::size_t index=0; index<local_label.size(); index++)
+    for (std::size_t index=0; index<local_label.len(); index++)
     {
         if(local_label[index]->has_operation())
             return true;
@@ -4578,7 +4659,7 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabe
     {
         auto c = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel>();
         c->parent = this;
-        local_label.push_back(c);
+        local_label.append(c);
         return c;
     }
 
@@ -4590,7 +4671,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_label)
+    for (auto c : local_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4619,14 +4700,14 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::has_leaf_or_chi
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LocalLabel()
     :
     local_label_id{YType::uint32, "local-label-id"}
-    	,
+        ,
     label_type(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType>())
-	,paths(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths>())
+    , paths(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths>())
 {
     label_type->parent = this;
     paths->parent = this;
 
-    yang_name = "local-label"; yang_parent_name = "local-labels"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-label"; yang_parent_name = "local-labels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::~LocalLabel()
@@ -4635,6 +4716,7 @@ MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::~LocalLa
 
 bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return local_label_id.is_set
 	|| (label_type !=  nullptr && label_type->has_data())
 	|| (paths !=  nullptr && paths->has_data());
@@ -4651,7 +4733,8 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::has
 std::string MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-label" <<"[local-label-id='" <<local_label_id <<"']";
+    path_buffer << "local-label";
+    ADD_KEY_TOKEN(local_label_id, "local-label-id");
     return path_buffer.str();
 }
 
@@ -4734,10 +4817,10 @@ MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelTyp
     :
     label_mode{YType::enumeration, "label-mode"},
     prefix{YType::str, "prefix"},
-    prefix_length{YType::int32, "prefix-length"}
+    prefix_length{YType::uint32, "prefix-length"}
 {
 
-    yang_name = "label-type"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-type"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::~LabelType()
@@ -4746,6 +4829,7 @@ MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelTyp
 
 bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::has_data() const
 {
+    if (is_presence_container) return true;
     return label_mode.is_set
 	|| prefix.is_set
 	|| prefix_length.is_set;
@@ -4836,9 +4920,11 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Lab
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Paths()
+    :
+    path(this, {"path_id"})
 {
 
-    yang_name = "paths"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::~Paths()
@@ -4847,7 +4933,8 @@ MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::~
 
 bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -4857,7 +4944,7 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Pat
 
 bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -4887,7 +4974,7 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabe
     {
         auto c = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -4899,7 +4986,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4940,7 +5027,7 @@ MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::P
     backup_id{YType::uint32, "backup-id"}
 {
 
-    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::~Path()
@@ -4949,6 +5036,7 @@ MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::P
 
 bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_id.is_set
 	|| path_type.is_set
 	|| label_type.is_set
@@ -4981,7 +5069,8 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Pat
 std::string MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[path-id='" <<path_id <<"']";
+    path_buffer << "path";
+    ADD_KEY_TOKEN(path_id, "path-id");
     return path_buffer.str();
 }
 
@@ -5143,9 +5232,11 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Pat
 }
 
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabels()
+    :
+    local_label(this, {"local_label_id"})
 {
 
-    yang_name = "local-labels"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-labels"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::~LocalLabels()
@@ -5154,7 +5245,8 @@ MplsStatic::DefaultVrf::Afs::Af::LocalLabels::~LocalLabels()
 
 bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::has_data() const
 {
-    for (std::size_t index=0; index<local_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_label.len(); index++)
     {
         if(local_label[index]->has_data())
             return true;
@@ -5164,7 +5256,7 @@ bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::has_data() const
 
 bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::has_operation() const
 {
-    for (std::size_t index=0; index<local_label.size(); index++)
+    for (std::size_t index=0; index<local_label.len(); index++)
     {
         if(local_label[index]->has_operation())
             return true;
@@ -5194,7 +5286,7 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::get_child_
     {
         auto c = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel>();
         c->parent = this;
-        local_label.push_back(c);
+        local_label.append(c);
         return c;
     }
 
@@ -5206,7 +5298,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_label)
+    for (auto c : local_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5235,14 +5327,14 @@ bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::has_leaf_or_child_of_name(con
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LocalLabel()
     :
     local_label_id{YType::uint32, "local-label-id"}
-    	,
+        ,
     label_type(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType>())
-	,paths(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths>())
+    , paths(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths>())
 {
     label_type->parent = this;
     paths->parent = this;
 
-    yang_name = "local-label"; yang_parent_name = "local-labels"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-label"; yang_parent_name = "local-labels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::~LocalLabel()
@@ -5251,6 +5343,7 @@ MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::~LocalLabel()
 
 bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return local_label_id.is_set
 	|| (label_type !=  nullptr && label_type->has_data())
 	|| (paths !=  nullptr && paths->has_data());
@@ -5267,7 +5360,8 @@ bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::has_operation() c
 std::string MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-label" <<"[local-label-id='" <<local_label_id <<"']";
+    path_buffer << "local-label";
+    ADD_KEY_TOKEN(local_label_id, "local-label-id");
     return path_buffer.str();
 }
 
@@ -5350,10 +5444,10 @@ MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::LabelType()
     :
     label_mode{YType::enumeration, "label-mode"},
     prefix{YType::str, "prefix"},
-    prefix_length{YType::int32, "prefix-length"}
+    prefix_length{YType::uint32, "prefix-length"}
 {
 
-    yang_name = "label-type"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-type"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::~LabelType()
@@ -5362,6 +5456,7 @@ MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::~LabelType(
 
 bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::has_data() const
 {
+    if (is_presence_container) return true;
     return label_mode.is_set
 	|| prefix.is_set
 	|| prefix_length.is_set;
@@ -5452,9 +5547,11 @@ bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::has_le
 }
 
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Paths()
+    :
+    path(this, {"path_id"})
 {
 
-    yang_name = "paths"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::~Paths()
@@ -5463,7 +5560,8 @@ MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::~Paths()
 
 bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -5473,7 +5571,7 @@ bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::has_data()
 
 bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -5503,7 +5601,7 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel
     {
         auto c = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -5515,7 +5613,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5556,7 +5654,7 @@ MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::Path()
     backup_id{YType::uint32, "backup-id"}
 {
 
-    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::~Path()
@@ -5565,6 +5663,7 @@ MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::~Path()
 
 bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_id.is_set
 	|| path_type.is_set
 	|| label_type.is_set
@@ -5597,7 +5696,8 @@ bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::has_
 std::string MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[path-id='" <<path_id <<"']";
+    path_buffer << "path";
+    ADD_KEY_TOKEN(path_id, "path-id");
     return path_buffer.str();
 }
 
@@ -5758,10 +5858,22 @@ bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::has_
     return false;
 }
 
+const Enum::YLeaf MplsStaticNhMode::configured {0, "configured"};
+const Enum::YLeaf MplsStaticNhMode::resolve {1, "resolve"};
+
+const Enum::YLeaf MplsStaticNhAddressFamily::ipv4 {1, "ipv4"};
+const Enum::YLeaf MplsStaticNhAddressFamily::ipv6 {2, "ipv6"};
+
 const Enum::YLeaf MplsStaticPath::pop_and_lookup {1, "pop-and-lookup"};
 const Enum::YLeaf MplsStaticPath::cross_connect {2, "cross-connect"};
 
 const Enum::YLeaf MplsStaticAddressFamily::ipv4_unicast {1, "ipv4-unicast"};
+
+const Enum::YLeaf MplsStaticOutLabelTypes::none {0, "none"};
+const Enum::YLeaf MplsStaticOutLabelTypes::out_label {1, "out-label"};
+const Enum::YLeaf MplsStaticOutLabelTypes::pop {2, "pop"};
+const Enum::YLeaf MplsStaticOutLabelTypes::exp_null {3, "exp-null"};
+const Enum::YLeaf MplsStaticOutLabelTypes::ipv6_explicit_null {4, "ipv6-explicit-null"};
 
 const Enum::YLeaf MplsStaticLabelMode::per_vrf {1, "per-vrf"};
 const Enum::YLeaf MplsStaticLabelMode::per_prefix {2, "per-prefix"};
@@ -5770,18 +5882,6 @@ const Enum::YLeaf MplsStaticLabelMode::lsp {3, "lsp"};
 const Enum::YLeaf MplsStaticPathRole::primary {0, "primary"};
 const Enum::YLeaf MplsStaticPathRole::backup {1, "backup"};
 const Enum::YLeaf MplsStaticPathRole::primary_backup {2, "primary-backup"};
-
-const Enum::YLeaf MplsStaticNhAddressFamily::ipv4 {1, "ipv4"};
-const Enum::YLeaf MplsStaticNhAddressFamily::ipv6 {2, "ipv6"};
-
-const Enum::YLeaf MplsStaticNhMode::configured {0, "configured"};
-const Enum::YLeaf MplsStaticNhMode::resolve {1, "resolve"};
-
-const Enum::YLeaf MplsStaticOutLabelTypes::none {0, "none"};
-const Enum::YLeaf MplsStaticOutLabelTypes::out_label {1, "out-label"};
-const Enum::YLeaf MplsStaticOutLabelTypes::pop {2, "pop"};
-const Enum::YLeaf MplsStaticOutLabelTypes::exp_null {3, "exp-null"};
-const Enum::YLeaf MplsStaticOutLabelTypes::ipv6_explicit_null {4, "ipv6-explicit-null"};
 
 
 }

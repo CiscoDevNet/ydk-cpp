@@ -65,5 +65,28 @@ module ydktest-types {
       }
       description "Identityref type";
   }
+
+  feature crypto {
+    description
+      "crypto feature";
+  }
+
+  grouping tt {
+      container xyz {
+        presence true;
+        leaf xyz {
+            type uint32;
+        }
+     }
+  }
  
+  grouping passive-interface-grouping {
+      container passive-interface {
+          description
+            "Suppress routing updates on an interface";
+          leaf interface {
+              type string;
+          }
+      }
+  }
 }

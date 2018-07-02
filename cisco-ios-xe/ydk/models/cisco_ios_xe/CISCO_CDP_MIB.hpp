@@ -32,26 +32,26 @@ class CISCOCDPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cdpglobal; //type: CISCOCDPMIB::Cdpglobal
-        class Cdpinterfacetable; //type: CISCOCDPMIB::Cdpinterfacetable
-        class Cdpinterfaceexttable; //type: CISCOCDPMIB::Cdpinterfaceexttable
-        class Cdpcachetable; //type: CISCOCDPMIB::Cdpcachetable
-        class Cdpctaddresstable; //type: CISCOCDPMIB::Cdpctaddresstable
+        class CdpGlobal; //type: CISCOCDPMIB::CdpGlobal
+        class CdpInterfaceTable; //type: CISCOCDPMIB::CdpInterfaceTable
+        class CdpInterfaceExtTable; //type: CISCOCDPMIB::CdpInterfaceExtTable
+        class CdpCacheTable; //type: CISCOCDPMIB::CdpCacheTable
+        class CdpCtAddressTable; //type: CISCOCDPMIB::CdpCtAddressTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpglobal> cdpglobal;
-        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpinterfacetable> cdpinterfacetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpinterfaceexttable> cdpinterfaceexttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpcachetable> cdpcachetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpctaddresstable> cdpctaddresstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::CdpGlobal> cdpglobal;
+        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::CdpInterfaceTable> cdpinterfacetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::CdpInterfaceExtTable> cdpinterfaceexttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::CdpCacheTable> cdpcachetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::CdpCtAddressTable> cdpctaddresstable;
         
 }; // CISCOCDPMIB
 
 
-class CISCOCDPMIB::Cdpglobal : public ydk::Entity
+class CISCOCDPMIB::CdpGlobal : public ydk::Entity
 {
     public:
-        Cdpglobal();
-        ~Cdpglobal();
+        CdpGlobal();
+        ~CdpGlobal();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -69,18 +69,18 @@ class CISCOCDPMIB::Cdpglobal : public ydk::Entity
         ydk::YLeaf cdpglobalholdtime; //type: int32
         ydk::YLeaf cdpglobaldeviceid; //type: string
         ydk::YLeaf cdpgloballastchange; //type: uint32
-        ydk::YLeaf cdpglobaldeviceidformatcpb; //type: Cdpglobaldeviceidformatcpb
-        ydk::YLeaf cdpglobaldeviceidformat; //type: Cdpglobaldeviceidformat
-        class Cdpglobaldeviceidformat;
+        ydk::YLeaf cdpglobaldeviceidformatcpb; //type: CdpGlobalDeviceIdFormatCpb
+        ydk::YLeaf cdpglobaldeviceidformat; //type: CdpGlobalDeviceIdFormat
+        class CdpGlobalDeviceIdFormat;
 
-}; // CISCOCDPMIB::Cdpglobal
+}; // CISCOCDPMIB::CdpGlobal
 
 
-class CISCOCDPMIB::Cdpinterfacetable : public ydk::Entity
+class CISCOCDPMIB::CdpInterfaceTable : public ydk::Entity
 {
     public:
-        Cdpinterfacetable();
-        ~Cdpinterfacetable();
+        CdpInterfaceTable();
+        ~CdpInterfaceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -93,18 +93,18 @@ class CISCOCDPMIB::Cdpinterfacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdpinterfaceentry; //type: CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry
+        class CdpInterfaceEntry; //type: CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry> > cdpinterfaceentry;
+        ydk::YList cdpinterfaceentry;
         
-}; // CISCOCDPMIB::Cdpinterfacetable
+}; // CISCOCDPMIB::CdpInterfaceTable
 
 
-class CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry : public ydk::Entity
+class CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry : public ydk::Entity
 {
     public:
-        Cdpinterfaceentry();
-        ~Cdpinterfaceentry();
+        CdpInterfaceEntry();
+        ~CdpInterfaceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -124,14 +124,14 @@ class CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry : public ydk::Entity
         ydk::YLeaf cdpinterfaceport; //type: int32
         ydk::YLeaf cdpinterfacename; //type: string
 
-}; // CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry
+}; // CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry
 
 
-class CISCOCDPMIB::Cdpinterfaceexttable : public ydk::Entity
+class CISCOCDPMIB::CdpInterfaceExtTable : public ydk::Entity
 {
     public:
-        Cdpinterfaceexttable();
-        ~Cdpinterfaceexttable();
+        CdpInterfaceExtTable();
+        ~CdpInterfaceExtTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -144,18 +144,18 @@ class CISCOCDPMIB::Cdpinterfaceexttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdpinterfaceextentry; //type: CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry
+        class CdpInterfaceExtEntry; //type: CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry> > cdpinterfaceextentry;
+        ydk::YList cdpinterfaceextentry;
         
-}; // CISCOCDPMIB::Cdpinterfaceexttable
+}; // CISCOCDPMIB::CdpInterfaceExtTable
 
 
-class CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry : public ydk::Entity
+class CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry : public ydk::Entity
 {
     public:
-        Cdpinterfaceextentry();
-        ~Cdpinterfaceextentry();
+        CdpInterfaceExtEntry();
+        ~CdpInterfaceExtEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -168,20 +168,20 @@ class CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        ydk::YLeaf cdpinterfaceextendedtrust; //type: Cdpinterfaceextendedtrust
+        ydk::YLeaf cdpinterfaceextendedtrust; //type: CdpInterfaceExtendedTrust
         ydk::YLeaf cdpinterfacecosforuntrustedport; //type: uint32
-        class Cdpinterfaceextendedtrust;
+        class CdpInterfaceExtendedTrust;
 
-}; // CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry
+}; // CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry
 
 
-class CISCOCDPMIB::Cdpcachetable : public ydk::Entity
+class CISCOCDPMIB::CdpCacheTable : public ydk::Entity
 {
     public:
-        Cdpcachetable();
-        ~Cdpcachetable();
+        CdpCacheTable();
+        ~CdpCacheTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -194,18 +194,18 @@ class CISCOCDPMIB::Cdpcachetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdpcacheentry; //type: CISCOCDPMIB::Cdpcachetable::Cdpcacheentry
+        class CdpCacheEntry; //type: CISCOCDPMIB::CdpCacheTable::CdpCacheEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpcachetable::Cdpcacheentry> > cdpcacheentry;
+        ydk::YList cdpcacheentry;
         
-}; // CISCOCDPMIB::Cdpcachetable
+}; // CISCOCDPMIB::CdpCacheTable
 
 
-class CISCOCDPMIB::Cdpcachetable::Cdpcacheentry : public ydk::Entity
+class CISCOCDPMIB::CdpCacheTable::CdpCacheEntry : public ydk::Entity
 {
     public:
-        Cdpcacheentry();
-        ~Cdpcacheentry();
+        CdpCacheEntry();
+        ~CdpCacheEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -229,7 +229,7 @@ class CISCOCDPMIB::Cdpcachetable::Cdpcacheentry : public ydk::Entity
         ydk::YLeaf cdpcachecapabilities; //type: binary
         ydk::YLeaf cdpcachevtpmgmtdomain; //type: string
         ydk::YLeaf cdpcachenativevlan; //type: int32
-        ydk::YLeaf cdpcacheduplex; //type: Cdpcacheduplex
+        ydk::YLeaf cdpcacheduplex; //type: CdpCacheDuplex
         ydk::YLeaf cdpcacheapplianceid; //type: uint32
         ydk::YLeaf cdpcachevlanid; //type: uint32
         ydk::YLeaf cdpcachepowerconsumption; //type: uint32
@@ -242,16 +242,16 @@ class CISCOCDPMIB::Cdpcachetable::Cdpcacheentry : public ydk::Entity
         ydk::YLeaf cdpcachesecondarymgmtaddr; //type: binary
         ydk::YLeaf cdpcachephyslocation; //type: string
         ydk::YLeaf cdpcachelastchange; //type: uint32
-        class Cdpcacheduplex;
+        class CdpCacheDuplex;
 
-}; // CISCOCDPMIB::Cdpcachetable::Cdpcacheentry
+}; // CISCOCDPMIB::CdpCacheTable::CdpCacheEntry
 
 
-class CISCOCDPMIB::Cdpctaddresstable : public ydk::Entity
+class CISCOCDPMIB::CdpCtAddressTable : public ydk::Entity
 {
     public:
-        Cdpctaddresstable();
-        ~Cdpctaddresstable();
+        CdpCtAddressTable();
+        ~CdpCtAddressTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -264,18 +264,18 @@ class CISCOCDPMIB::Cdpctaddresstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdpctaddressentry; //type: CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry
+        class CdpCtAddressEntry; //type: CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry> > cdpctaddressentry;
+        ydk::YList cdpctaddressentry;
         
-}; // CISCOCDPMIB::Cdpctaddresstable
+}; // CISCOCDPMIB::CdpCtAddressTable
 
 
-class CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry : public ydk::Entity
+class CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry : public ydk::Entity
 {
     public:
-        Cdpctaddressentry();
-        ~Cdpctaddressentry();
+        CdpCtAddressEntry();
+        ~CdpCtAddressEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -288,17 +288,17 @@ class CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::cdpcacheifindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::cdpcacheifindex)
         ydk::YLeaf cdpcacheifindex;
-        //type: int32 (refers to cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::cdpcachedeviceindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::cdpcachedeviceindex)
         ydk::YLeaf cdpcachedeviceindex;
         ydk::YLeaf cdpctaddressindex; //type: int32
         ydk::YLeaf cdpctaddresstype; //type: CiscoNetworkProtocol
         ydk::YLeaf cdpctaddress; //type: binary
 
-}; // CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry
+}; // CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry
 
-class CISCOCDPMIB::Cdpglobal::Cdpglobaldeviceidformat : public ydk::Enum
+class CISCOCDPMIB::CdpGlobal::CdpGlobalDeviceIdFormat : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf serialNumber;
@@ -307,7 +307,7 @@ class CISCOCDPMIB::Cdpglobal::Cdpglobaldeviceidformat : public ydk::Enum
 
 };
 
-class CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::Cdpinterfaceextendedtrust : public ydk::Enum
+class CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::CdpInterfaceExtendedTrust : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf trusted;
@@ -315,7 +315,7 @@ class CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::Cdpinterfaceexten
 
 };
 
-class CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::Cdpcacheduplex : public ydk::Enum
+class CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::CdpCacheDuplex : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;

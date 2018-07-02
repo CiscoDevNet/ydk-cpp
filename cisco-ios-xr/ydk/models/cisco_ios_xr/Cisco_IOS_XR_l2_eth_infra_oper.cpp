@@ -17,7 +17,7 @@ MacAccounting::MacAccounting()
 {
     interfaces->parent = this;
 
-    yang_name = "mac-accounting"; yang_parent_name = "Cisco-IOS-XR-l2-eth-infra-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mac-accounting"; yang_parent_name = "Cisco-IOS-XR-l2-eth-infra-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MacAccounting::~MacAccounting()
@@ -26,6 +26,7 @@ MacAccounting::~MacAccounting()
 
 bool MacAccounting::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data());
 }
 
@@ -118,9 +119,11 @@ bool MacAccounting::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 MacAccounting::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "mac-accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "mac-accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MacAccounting::Interfaces::~Interfaces()
@@ -129,7 +132,8 @@ MacAccounting::Interfaces::~Interfaces()
 
 bool MacAccounting::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool MacAccounting::Interfaces::has_data() const
 
 bool MacAccounting::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> MacAccounting::Interfaces::get_child_by_name(const std::
     {
         auto c = std::make_shared<MacAccounting::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,14 @@ bool MacAccounting::Interfaces::has_leaf_or_child_of_name(const std::string & na
 MacAccounting::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     state(std::make_shared<MacAccounting::Interfaces::Interface::State>())
+    , ingress_statistic(this, {})
+    , egress_statistic(this, {})
 {
     state->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MacAccounting::Interfaces::Interface::~Interface()
@@ -231,12 +237,13 @@ MacAccounting::Interfaces::Interface::~Interface()
 
 bool MacAccounting::Interfaces::Interface::has_data() const
 {
-    for (std::size_t index=0; index<ingress_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ingress_statistic.len(); index++)
     {
         if(ingress_statistic[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<egress_statistic.size(); index++)
+    for (std::size_t index=0; index<egress_statistic.len(); index++)
     {
         if(egress_statistic[index]->has_data())
             return true;
@@ -247,12 +254,12 @@ bool MacAccounting::Interfaces::Interface::has_data() const
 
 bool MacAccounting::Interfaces::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<ingress_statistic.size(); index++)
+    for (std::size_t index=0; index<ingress_statistic.len(); index++)
     {
         if(ingress_statistic[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<egress_statistic.size(); index++)
+    for (std::size_t index=0; index<egress_statistic.len(); index++)
     {
         if(egress_statistic[index]->has_operation())
             return true;
@@ -272,7 +279,8 @@ std::string MacAccounting::Interfaces::Interface::get_absolute_path() const
 std::string MacAccounting::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -301,7 +309,7 @@ std::shared_ptr<Entity> MacAccounting::Interfaces::Interface::get_child_by_name(
     {
         auto c = std::make_shared<MacAccounting::Interfaces::Interface::IngressStatistic>();
         c->parent = this;
-        ingress_statistic.push_back(c);
+        ingress_statistic.append(c);
         return c;
     }
 
@@ -309,7 +317,7 @@ std::shared_ptr<Entity> MacAccounting::Interfaces::Interface::get_child_by_name(
     {
         auto c = std::make_shared<MacAccounting::Interfaces::Interface::EgressStatistic>();
         c->parent = this;
-        egress_statistic.push_back(c);
+        egress_statistic.append(c);
         return c;
     }
 
@@ -326,7 +334,7 @@ std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::Interf
     }
 
     count = 0;
-    for (auto const & c : ingress_statistic)
+    for (auto c : ingress_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -335,7 +343,7 @@ std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::Interf
     }
 
     count = 0;
-    for (auto const & c : egress_statistic)
+    for (auto c : egress_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -380,7 +388,7 @@ MacAccounting::Interfaces::Interface::State::State()
     number_available_on_node{YType::uint32, "number-available-on-node"}
 {
 
-    yang_name = "state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MacAccounting::Interfaces::Interface::State::~State()
@@ -389,6 +397,7 @@ MacAccounting::Interfaces::Interface::State::~State()
 
 bool MacAccounting::Interfaces::Interface::State::has_data() const
 {
+    if (is_presence_container) return true;
     return is_ingress_enabled.is_set
 	|| is_egress_enabled.is_set
 	|| number_available_ingress.is_set
@@ -511,7 +520,7 @@ MacAccounting::Interfaces::Interface::IngressStatistic::IngressStatistic()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "ingress-statistic"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ingress-statistic"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MacAccounting::Interfaces::Interface::IngressStatistic::~IngressStatistic()
@@ -520,6 +529,7 @@ MacAccounting::Interfaces::Interface::IngressStatistic::~IngressStatistic()
 
 bool MacAccounting::Interfaces::Interface::IngressStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| packets.is_set
 	|| bytes.is_set;
@@ -616,7 +626,7 @@ MacAccounting::Interfaces::Interface::EgressStatistic::EgressStatistic()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "egress-statistic"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "egress-statistic"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MacAccounting::Interfaces::Interface::EgressStatistic::~EgressStatistic()
@@ -625,6 +635,7 @@ MacAccounting::Interfaces::Interface::EgressStatistic::~EgressStatistic()
 
 bool MacAccounting::Interfaces::Interface::EgressStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| packets.is_set
 	|| bytes.is_set;
@@ -720,7 +731,7 @@ Vlan::Vlan()
 {
     nodes->parent = this;
 
-    yang_name = "vlan"; yang_parent_name = "Cisco-IOS-XR-l2-eth-infra-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vlan"; yang_parent_name = "Cisco-IOS-XR-l2-eth-infra-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Vlan::~Vlan()
@@ -729,6 +740,7 @@ Vlan::~Vlan()
 
 bool Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -821,9 +833,11 @@ bool Vlan::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Vlan::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vlan::Nodes::~Nodes()
@@ -832,7 +846,8 @@ Vlan::Nodes::~Nodes()
 
 bool Vlan::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -842,7 +857,7 @@ bool Vlan::Nodes::has_data() const
 
 bool Vlan::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -879,7 +894,7 @@ std::shared_ptr<Entity> Vlan::Nodes::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<Vlan::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -891,7 +906,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -920,16 +935,16 @@ bool Vlan::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Vlan::Nodes::Node::Node()
     :
     node_id{YType::str, "node-id"}
-    	,
+        ,
     trunks(std::make_shared<Vlan::Nodes::Node::Trunks>())
-	,interfaces(std::make_shared<Vlan::Nodes::Node::Interfaces>())
-	,tag_allocations(std::make_shared<Vlan::Nodes::Node::TagAllocations>())
+    , interfaces(std::make_shared<Vlan::Nodes::Node::Interfaces>())
+    , tag_allocations(std::make_shared<Vlan::Nodes::Node::TagAllocations>())
 {
     trunks->parent = this;
     interfaces->parent = this;
     tag_allocations->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vlan::Nodes::Node::~Node()
@@ -938,6 +953,7 @@ Vlan::Nodes::Node::~Node()
 
 bool Vlan::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| (trunks !=  nullptr && trunks->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
@@ -963,7 +979,8 @@ std::string Vlan::Nodes::Node::get_absolute_path() const
 std::string Vlan::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -1057,9 +1074,11 @@ bool Vlan::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 Vlan::Nodes::Node::Trunks::Trunks()
+    :
+    trunk(this, {"interface"})
 {
 
-    yang_name = "trunks"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trunks"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Trunks::~Trunks()
@@ -1068,7 +1087,8 @@ Vlan::Nodes::Node::Trunks::~Trunks()
 
 bool Vlan::Nodes::Node::Trunks::has_data() const
 {
-    for (std::size_t index=0; index<trunk.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trunk.len(); index++)
     {
         if(trunk[index]->has_data())
             return true;
@@ -1078,7 +1098,7 @@ bool Vlan::Nodes::Node::Trunks::has_data() const
 
 bool Vlan::Nodes::Node::Trunks::has_operation() const
 {
-    for (std::size_t index=0; index<trunk.size(); index++)
+    for (std::size_t index=0; index<trunk.len(); index++)
     {
         if(trunk[index]->has_operation())
             return true;
@@ -1108,7 +1128,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::get_child_by_name(const std::
     {
         auto c = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk>();
         c->parent = this;
-        trunk.push_back(c);
+        trunk.append(c);
         return c;
     }
 
@@ -1120,7 +1140,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trunk)
+    for (auto c : trunk.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1156,14 +1176,14 @@ Vlan::Nodes::Node::Trunks::Trunk::Trunk()
     dot1ad_count{YType::uint32, "dot1ad-count"},
     untagged_interface{YType::str, "untagged-interface"},
     mac_filtering{YType::enumeration, "mac-filtering"}
-    	,
+        ,
     layer2_sub_interfaces(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces>())
-	,layer3_sub_interfaces(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces>())
+    , layer3_sub_interfaces(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces>())
 {
     layer2_sub_interfaces->parent = this;
     layer3_sub_interfaces->parent = this;
 
-    yang_name = "trunk"; yang_parent_name = "trunks"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trunk"; yang_parent_name = "trunks"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Trunks::Trunk::~Trunk()
@@ -1172,6 +1192,7 @@ Vlan::Nodes::Node::Trunks::Trunk::~Trunk()
 
 bool Vlan::Nodes::Node::Trunks::Trunk::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| interface_xr.is_set
 	|| state.is_set
@@ -1202,7 +1223,8 @@ bool Vlan::Nodes::Node::Trunks::Trunk::has_operation() const
 std::string Vlan::Nodes::Node::Trunks::Trunk::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trunk" <<"[interface='" <<interface <<"']";
+    path_buffer << "trunk";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -1365,12 +1387,12 @@ Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::Layer2SubInterfaces()
     qin_q_count{YType::uint32, "qin-q-count"},
     qin_any_count{YType::uint32, "qin-any-count"},
     untagged_count{YType::uint32, "untagged-count"}
-    	,
+        ,
     state_counters(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters>())
 {
     state_counters->parent = this;
 
-    yang_name = "layer2-sub-interfaces"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "layer2-sub-interfaces"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::~Layer2SubInterfaces()
@@ -1379,6 +1401,7 @@ Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::~Layer2SubInterfaces()
 
 bool Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::has_data() const
 {
+    if (is_presence_container) return true;
     return total_count.is_set
 	|| dot1q_count.is_set
 	|| qin_q_count.is_set
@@ -1517,7 +1540,7 @@ Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::StateCount
     admin_down{YType::uint32, "admin-down"}
 {
 
-    yang_name = "state-counters"; yang_parent_name = "layer2-sub-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-counters"; yang_parent_name = "layer2-sub-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::~StateCounters()
@@ -1526,6 +1549,7 @@ Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::~StateCoun
 
 bool Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return up.is_set
 	|| down.is_set
 	|| admin_down.is_set;
@@ -1622,12 +1646,12 @@ Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::Layer3SubInterfaces()
     qin_q_count{YType::uint32, "qin-q-count"},
     untagged_count{YType::uint32, "untagged-count"},
     native_vlan{YType::uint16, "native-vlan"}
-    	,
+        ,
     state_counters(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters>())
 {
     state_counters->parent = this;
 
-    yang_name = "layer3-sub-interfaces"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "layer3-sub-interfaces"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::~Layer3SubInterfaces()
@@ -1636,6 +1660,7 @@ Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::~Layer3SubInterfaces()
 
 bool Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::has_data() const
 {
+    if (is_presence_container) return true;
     return total_count.is_set
 	|| dot1q_count.is_set
 	|| qin_q_count.is_set
@@ -1774,7 +1799,7 @@ Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::StateCount
     admin_down{YType::uint32, "admin-down"}
 {
 
-    yang_name = "state-counters"; yang_parent_name = "layer3-sub-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-counters"; yang_parent_name = "layer3-sub-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::~StateCounters()
@@ -1783,6 +1808,7 @@ Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::~StateCoun
 
 bool Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return up.is_set
 	|| down.is_set
 	|| admin_down.is_set;
@@ -1873,9 +1899,11 @@ bool Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::has_l
 }
 
 Vlan::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Interfaces::~Interfaces()
@@ -1884,7 +1912,8 @@ Vlan::Nodes::Node::Interfaces::~Interfaces()
 
 bool Vlan::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1894,7 +1923,7 @@ bool Vlan::Nodes::Node::Interfaces::has_data() const
 
 bool Vlan::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1924,7 +1953,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::get_child_by_name(const s
     {
         auto c = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1936,7 +1965,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1971,12 +2000,12 @@ Vlan::Nodes::Node::Interfaces::Interface::Interface()
     state{YType::enumeration, "state"},
     mtu{YType::uint16, "mtu"},
     switched_mtu{YType::uint16, "switched-mtu"}
-    	,
+        ,
     encapsulation_details(std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails>())
 {
     encapsulation_details->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::~Interface()
@@ -1985,6 +2014,7 @@ Vlan::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool Vlan::Nodes::Node::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| interface_xr.is_set
 	|| parent_interface.is_set
@@ -2011,7 +2041,8 @@ bool Vlan::Nodes::Node::Interfaces::Interface::has_operation() const
 std::string Vlan::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -2151,16 +2182,16 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::EncapsulationDet
     dot1ad_tag{YType::uint16, "dot1ad-tag"},
     dot1ad_native_tag{YType::uint16, "dot1ad-native-tag"},
     dot1ad_outer_tag{YType::uint16, "dot1ad-outer-tag"}
-    	,
+        ,
     stack(std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack>())
-	,service_instance_details(std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails>())
-	,dot1ad_dot1q_stack(std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack>())
+    , service_instance_details(std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails>())
+    , dot1ad_dot1q_stack(std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack>())
 {
     stack->parent = this;
     service_instance_details->parent = this;
     dot1ad_dot1q_stack->parent = this;
 
-    yang_name = "encapsulation-details"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation-details"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::~EncapsulationDetails()
@@ -2169,6 +2200,7 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::~EncapsulationDe
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_encapsulation.is_set
 	|| tag.is_set
 	|| outer_tag.is_set
@@ -2243,7 +2275,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationD
     {
         if(dot1ad_dot1q_stack == nullptr)
         {
-            dot1ad_dot1q_stack = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack>();
+            dot1ad_dot1q_stack = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack>();
         }
         return dot1ad_dot1q_stack;
     }
@@ -2364,7 +2396,7 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::Stack()
     second_tag{YType::uint16, "second-tag"}
 {
 
-    yang_name = "stack"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stack"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::~Stack()
@@ -2373,6 +2405,7 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::~Stack()
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::has_data() const
 {
+    if (is_presence_container) return true;
     return outer_tag.is_set
 	|| second_tag.is_set;
 }
@@ -2458,12 +2491,14 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceD
     is_native_preserving{YType::boolean, "is-native-preserving"},
     source_mac_match{YType::str, "source-mac-match"},
     destination_mac_match{YType::str, "destination-mac-match"}
-    	,
+        ,
     local_traffic_stack(std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack>())
+    , tags_to_match(this, {})
+    , pushe(this, {})
 {
     local_traffic_stack->parent = this;
 
-    yang_name = "service-instance-details"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-instance-details"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::~ServiceInstanceDetails()
@@ -2472,12 +2507,13 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceD
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::has_data() const
 {
-    for (std::size_t index=0; index<tags_to_match.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tags_to_match.len(); index++)
     {
         if(tags_to_match[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pushe.size(); index++)
+    for (std::size_t index=0; index<pushe.len(); index++)
     {
         if(pushe[index]->has_data())
             return true;
@@ -2494,12 +2530,12 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInst
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::has_operation() const
 {
-    for (std::size_t index=0; index<tags_to_match.size(); index++)
+    for (std::size_t index=0; index<tags_to_match.len(); index++)
     {
         if(tags_to_match[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pushe.size(); index++)
+    for (std::size_t index=0; index<pushe.len(); index++)
     {
         if(pushe[index]->has_operation())
             return true;
@@ -2553,7 +2589,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationD
     {
         auto c = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch>();
         c->parent = this;
-        tags_to_match.push_back(c);
+        tags_to_match.append(c);
         return c;
     }
 
@@ -2561,7 +2597,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationD
     {
         auto c = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe>();
         c->parent = this;
-        pushe.push_back(c);
+        pushe.append(c);
         return c;
     }
 
@@ -2578,7 +2614,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     }
 
     count = 0;
-    for (auto const & c : tags_to_match)
+    for (auto c : tags_to_match.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2587,7 +2623,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     }
 
     count = 0;
-    for (auto const & c : pushe)
+    for (auto c : pushe.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2684,9 +2720,11 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInst
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficStack()
+    :
+    local_traffic_tag(this, {})
 {
 
-    yang_name = "local-traffic-stack"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-traffic-stack"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::~LocalTrafficStack()
@@ -2695,7 +2733,8 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceD
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::has_data() const
 {
-    for (std::size_t index=0; index<local_traffic_tag.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_traffic_tag.len(); index++)
     {
         if(local_traffic_tag[index]->has_data())
             return true;
@@ -2705,7 +2744,7 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInst
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::has_operation() const
 {
-    for (std::size_t index=0; index<local_traffic_tag.size(); index++)
+    for (std::size_t index=0; index<local_traffic_tag.len(); index++)
     {
         if(local_traffic_tag[index]->has_operation())
             return true;
@@ -2735,7 +2774,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationD
     {
         auto c = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag>();
         c->parent = this;
-        local_traffic_tag.push_back(c);
+        local_traffic_tag.append(c);
         return c;
     }
 
@@ -2747,7 +2786,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_traffic_tag)
+    for (auto c : local_traffic_tag.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2779,7 +2818,7 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceD
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "local-traffic-tag"; yang_parent_name = "local-traffic-stack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-traffic-tag"; yang_parent_name = "local-traffic-stack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::~LocalTrafficTag()
@@ -2788,6 +2827,7 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceD
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::has_data() const
 {
+    if (is_presence_container) return true;
     return ethertype.is_set
 	|| vlan_id.is_set;
 }
@@ -2868,9 +2908,11 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceD
     :
     ethertype{YType::enumeration, "ethertype"},
     priority{YType::enumeration, "priority"}
+        ,
+    vlan_range(this, {})
 {
 
-    yang_name = "tags-to-match"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tags-to-match"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::~TagsToMatch()
@@ -2879,7 +2921,8 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceD
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::has_data() const
 {
-    for (std::size_t index=0; index<vlan_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_range.len(); index++)
     {
         if(vlan_range[index]->has_data())
             return true;
@@ -2890,7 +2933,7 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInst
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_range.size(); index++)
+    for (std::size_t index=0; index<vlan_range.len(); index++)
     {
         if(vlan_range[index]->has_operation())
             return true;
@@ -2924,7 +2967,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationD
     {
         auto c = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange>();
         c->parent = this;
-        vlan_range.push_back(c);
+        vlan_range.append(c);
         return c;
     }
 
@@ -2936,7 +2979,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_range)
+    for (auto c : vlan_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2988,7 +3031,7 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceD
     vlan_id_high{YType::uint16, "vlan-id-high"}
 {
 
-    yang_name = "vlan-range"; yang_parent_name = "tags-to-match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-range"; yang_parent_name = "tags-to-match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::~VlanRange()
@@ -2997,6 +3040,7 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceD
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id_low.is_set
 	|| vlan_id_high.is_set;
 }
@@ -3079,7 +3123,7 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceD
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "pushe"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pushe"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::~Pushe()
@@ -3088,6 +3132,7 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceD
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::has_data() const
 {
+    if (is_presence_container) return true;
     return ethertype.is_set
 	|| vlan_id.is_set;
 }
@@ -3164,40 +3209,41 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInst
     return false;
 }
 
-Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::Dot1AdDot1QStack()
+Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack::Dot1adDot1qStack()
     :
     outer_tag{YType::uint16, "outer-tag"},
     second_tag{YType::uint16, "second-tag"}
 {
 
-    yang_name = "dot1ad-dot1q-stack"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1ad-dot1q-stack"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::~Dot1AdDot1QStack()
+Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack::~Dot1adDot1qStack()
 {
 }
 
-bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::has_data() const
+bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack::has_data() const
 {
+    if (is_presence_container) return true;
     return outer_tag.is_set
 	|| second_tag.is_set;
 }
 
-bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::has_operation() const
+bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(outer_tag.yfilter)
 	|| ydk::is_set(second_tag.yfilter);
 }
 
-std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::get_segment_path() const
+std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1ad-dot1q-stack";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3208,19 +3254,19 @@ std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::Interfaces::In
 
 }
 
-std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "outer-tag")
     {
@@ -3236,7 +3282,7 @@ void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1Q
     }
 }
 
-void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::set_filter(const std::string & value_path, YFilter yfilter)
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "outer-tag")
     {
@@ -3248,7 +3294,7 @@ void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1Q
     }
 }
 
-bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::has_leaf_or_child_of_name(const std::string & name) const
+bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "outer-tag" || name == "second-tag")
         return true;
@@ -3256,9 +3302,11 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1Q
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocations()
+    :
+    tag_allocation(this, {})
 {
 
-    yang_name = "tag-allocations"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tag-allocations"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::TagAllocations::~TagAllocations()
@@ -3267,7 +3315,8 @@ Vlan::Nodes::Node::TagAllocations::~TagAllocations()
 
 bool Vlan::Nodes::Node::TagAllocations::has_data() const
 {
-    for (std::size_t index=0; index<tag_allocation.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tag_allocation.len(); index++)
     {
         if(tag_allocation[index]->has_data())
             return true;
@@ -3277,7 +3326,7 @@ bool Vlan::Nodes::Node::TagAllocations::has_data() const
 
 bool Vlan::Nodes::Node::TagAllocations::has_operation() const
 {
-    for (std::size_t index=0; index<tag_allocation.size(); index++)
+    for (std::size_t index=0; index<tag_allocation.len(); index++)
     {
         if(tag_allocation[index]->has_operation())
             return true;
@@ -3307,7 +3356,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::get_child_by_name(con
     {
         auto c = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation>();
         c->parent = this;
-        tag_allocation.push_back(c);
+        tag_allocation.append(c);
         return c;
     }
 
@@ -3319,7 +3368,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tag_allocation)
+    for (auto c : tag_allocation.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3356,12 +3405,12 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::TagAllocation()
     state{YType::enumeration, "state"},
     mtu{YType::uint16, "mtu"},
     switched_mtu{YType::uint16, "switched-mtu"}
-    	,
+        ,
     encapsulation_details(std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails>())
 {
     encapsulation_details->parent = this;
 
-    yang_name = "tag-allocation"; yang_parent_name = "tag-allocations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tag-allocation"; yang_parent_name = "tag-allocations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::~TagAllocation()
@@ -3370,6 +3419,7 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::~TagAllocation()
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| first_tag.is_set
 	|| second_tag.is_set
@@ -3562,16 +3612,16 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Encapsul
     dot1ad_tag{YType::uint16, "dot1ad-tag"},
     dot1ad_native_tag{YType::uint16, "dot1ad-native-tag"},
     dot1ad_outer_tag{YType::uint16, "dot1ad-outer-tag"}
-    	,
+        ,
     stack(std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack>())
-	,service_instance_details(std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails>())
-	,dot1ad_dot1q_stack(std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack>())
+    , service_instance_details(std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails>())
+    , dot1ad_dot1q_stack(std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack>())
 {
     stack->parent = this;
     service_instance_details->parent = this;
     dot1ad_dot1q_stack->parent = this;
 
-    yang_name = "encapsulation-details"; yang_parent_name = "tag-allocation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation-details"; yang_parent_name = "tag-allocation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::~EncapsulationDetails()
@@ -3580,6 +3630,7 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::~Encapsu
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_encapsulation.is_set
 	|| tag.is_set
 	|| outer_tag.is_set
@@ -3654,7 +3705,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::Encaps
     {
         if(dot1ad_dot1q_stack == nullptr)
         {
-            dot1ad_dot1q_stack = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack>();
+            dot1ad_dot1q_stack = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack>();
         }
         return dot1ad_dot1q_stack;
     }
@@ -3775,7 +3826,7 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::S
     second_tag{YType::uint16, "second-tag"}
 {
 
-    yang_name = "stack"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stack"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::~Stack()
@@ -3784,6 +3835,7 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::~
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::has_data() const
 {
+    if (is_presence_container) return true;
     return outer_tag.is_set
 	|| second_tag.is_set;
 }
@@ -3869,12 +3921,14 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceI
     is_native_preserving{YType::boolean, "is-native-preserving"},
     source_mac_match{YType::str, "source-mac-match"},
     destination_mac_match{YType::str, "destination-mac-match"}
-    	,
+        ,
     local_traffic_stack(std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack>())
+    , tags_to_match(this, {})
+    , pushe(this, {})
 {
     local_traffic_stack->parent = this;
 
-    yang_name = "service-instance-details"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-instance-details"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::~ServiceInstanceDetails()
@@ -3883,12 +3937,13 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceI
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::has_data() const
 {
-    for (std::size_t index=0; index<tags_to_match.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tags_to_match.len(); index++)
     {
         if(tags_to_match[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pushe.size(); index++)
+    for (std::size_t index=0; index<pushe.len(); index++)
     {
         if(pushe[index]->has_data())
             return true;
@@ -3905,12 +3960,12 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Ser
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::has_operation() const
 {
-    for (std::size_t index=0; index<tags_to_match.size(); index++)
+    for (std::size_t index=0; index<tags_to_match.len(); index++)
     {
         if(tags_to_match[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pushe.size(); index++)
+    for (std::size_t index=0; index<pushe.len(); index++)
     {
         if(pushe[index]->has_operation())
             return true;
@@ -3964,7 +4019,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::Encaps
     {
         auto c = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch>();
         c->parent = this;
-        tags_to_match.push_back(c);
+        tags_to_match.append(c);
         return c;
     }
 
@@ -3972,7 +4027,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::Encaps
     {
         auto c = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe>();
         c->parent = this;
-        pushe.push_back(c);
+        pushe.append(c);
         return c;
     }
 
@@ -3989,7 +4044,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     }
 
     count = 0;
-    for (auto const & c : tags_to_match)
+    for (auto c : tags_to_match.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3998,7 +4053,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     }
 
     count = 0;
-    for (auto const & c : pushe)
+    for (auto c : pushe.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4095,9 +4150,11 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Ser
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficStack()
+    :
+    local_traffic_tag(this, {})
 {
 
-    yang_name = "local-traffic-stack"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-traffic-stack"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::~LocalTrafficStack()
@@ -4106,7 +4163,8 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceI
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::has_data() const
 {
-    for (std::size_t index=0; index<local_traffic_tag.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_traffic_tag.len(); index++)
     {
         if(local_traffic_tag[index]->has_data())
             return true;
@@ -4116,7 +4174,7 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Ser
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::has_operation() const
 {
-    for (std::size_t index=0; index<local_traffic_tag.size(); index++)
+    for (std::size_t index=0; index<local_traffic_tag.len(); index++)
     {
         if(local_traffic_tag[index]->has_operation())
             return true;
@@ -4146,7 +4204,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::Encaps
     {
         auto c = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag>();
         c->parent = this;
-        local_traffic_tag.push_back(c);
+        local_traffic_tag.append(c);
         return c;
     }
 
@@ -4158,7 +4216,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_traffic_tag)
+    for (auto c : local_traffic_tag.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4190,7 +4248,7 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceI
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "local-traffic-tag"; yang_parent_name = "local-traffic-stack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-traffic-tag"; yang_parent_name = "local-traffic-stack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::~LocalTrafficTag()
@@ -4199,6 +4257,7 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceI
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::has_data() const
 {
+    if (is_presence_container) return true;
     return ethertype.is_set
 	|| vlan_id.is_set;
 }
@@ -4279,9 +4338,11 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceI
     :
     ethertype{YType::enumeration, "ethertype"},
     priority{YType::enumeration, "priority"}
+        ,
+    vlan_range(this, {})
 {
 
-    yang_name = "tags-to-match"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tags-to-match"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::~TagsToMatch()
@@ -4290,7 +4351,8 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceI
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::has_data() const
 {
-    for (std::size_t index=0; index<vlan_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_range.len(); index++)
     {
         if(vlan_range[index]->has_data())
             return true;
@@ -4301,7 +4363,7 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Ser
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_range.size(); index++)
+    for (std::size_t index=0; index<vlan_range.len(); index++)
     {
         if(vlan_range[index]->has_operation())
             return true;
@@ -4335,7 +4397,7 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::Encaps
     {
         auto c = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange>();
         c->parent = this;
-        vlan_range.push_back(c);
+        vlan_range.append(c);
         return c;
     }
 
@@ -4347,7 +4409,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_range)
+    for (auto c : vlan_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4399,7 +4461,7 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceI
     vlan_id_high{YType::uint16, "vlan-id-high"}
 {
 
-    yang_name = "vlan-range"; yang_parent_name = "tags-to-match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-range"; yang_parent_name = "tags-to-match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::~VlanRange()
@@ -4408,6 +4470,7 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceI
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id_low.is_set
 	|| vlan_id_high.is_set;
 }
@@ -4490,7 +4553,7 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceI
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "pushe"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pushe"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::~Pushe()
@@ -4499,6 +4562,7 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceI
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::has_data() const
 {
+    if (is_presence_container) return true;
     return ethertype.is_set
 	|| vlan_id.is_set;
 }
@@ -4575,40 +4639,41 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Ser
     return false;
 }
 
-Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::Dot1AdDot1QStack()
+Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack::Dot1adDot1qStack()
     :
     outer_tag{YType::uint16, "outer-tag"},
     second_tag{YType::uint16, "second-tag"}
 {
 
-    yang_name = "dot1ad-dot1q-stack"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1ad-dot1q-stack"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::~Dot1AdDot1QStack()
+Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack::~Dot1adDot1qStack()
 {
 }
 
-bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::has_data() const
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack::has_data() const
 {
+    if (is_presence_container) return true;
     return outer_tag.is_set
 	|| second_tag.is_set;
 }
 
-bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::has_operation() const
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(outer_tag.yfilter)
 	|| ydk::is_set(second_tag.yfilter);
 }
 
-std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::get_segment_path() const
+std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1ad-dot1q-stack";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4619,19 +4684,19 @@ std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::TagAllocations
 
 }
 
-std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "outer-tag")
     {
@@ -4647,7 +4712,7 @@ void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot
     }
 }
 
-void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::set_filter(const std::string & value_path, YFilter yfilter)
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "outer-tag")
     {
@@ -4659,7 +4724,7 @@ void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot
     }
 }
 
-bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::has_leaf_or_child_of_name(const std::string & name) const
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "outer-tag" || name == "second-tag")
         return true;
@@ -4672,7 +4737,7 @@ EthernetEncapsulation::EthernetEncapsulation()
 {
     nodes->parent = this;
 
-    yang_name = "ethernet-encapsulation"; yang_parent_name = "Cisco-IOS-XR-l2-eth-infra-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ethernet-encapsulation"; yang_parent_name = "Cisco-IOS-XR-l2-eth-infra-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EthernetEncapsulation::~EthernetEncapsulation()
@@ -4681,6 +4746,7 @@ EthernetEncapsulation::~EthernetEncapsulation()
 
 bool EthernetEncapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -4773,9 +4839,11 @@ bool EthernetEncapsulation::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 EthernetEncapsulation::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "ethernet-encapsulation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "ethernet-encapsulation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetEncapsulation::Nodes::~Nodes()
@@ -4784,7 +4852,8 @@ EthernetEncapsulation::Nodes::~Nodes()
 
 bool EthernetEncapsulation::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -4794,7 +4863,7 @@ bool EthernetEncapsulation::Nodes::has_data() const
 
 bool EthernetEncapsulation::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -4831,7 +4900,7 @@ std::shared_ptr<Entity> EthernetEncapsulation::Nodes::get_child_by_name(const st
     {
         auto c = std::make_shared<EthernetEncapsulation::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -4843,7 +4912,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4872,12 +4941,12 @@ bool EthernetEncapsulation::Nodes::has_leaf_or_child_of_name(const std::string &
 EthernetEncapsulation::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     unicast_mac_filters(std::make_shared<EthernetEncapsulation::Nodes::Node::UnicastMacFilters>())
 {
     unicast_mac_filters->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetEncapsulation::Nodes::Node::~Node()
@@ -4886,6 +4955,7 @@ EthernetEncapsulation::Nodes::Node::~Node()
 
 bool EthernetEncapsulation::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (unicast_mac_filters !=  nullptr && unicast_mac_filters->has_data());
 }
@@ -4907,7 +4977,8 @@ std::string EthernetEncapsulation::Nodes::Node::get_absolute_path() const
 std::string EthernetEncapsulation::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -4973,9 +5044,11 @@ bool EthernetEncapsulation::Nodes::Node::has_leaf_or_child_of_name(const std::st
 }
 
 EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilters()
+    :
+    unicast_mac_filter(this, {"interface_name"})
 {
 
-    yang_name = "unicast-mac-filters"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast-mac-filters"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetEncapsulation::Nodes::Node::UnicastMacFilters::~UnicastMacFilters()
@@ -4984,7 +5057,8 @@ EthernetEncapsulation::Nodes::Node::UnicastMacFilters::~UnicastMacFilters()
 
 bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::has_data() const
 {
-    for (std::size_t index=0; index<unicast_mac_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unicast_mac_filter.len(); index++)
     {
         if(unicast_mac_filter[index]->has_data())
             return true;
@@ -4994,7 +5068,7 @@ bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::has_data() const
 
 bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::has_operation() const
 {
-    for (std::size_t index=0; index<unicast_mac_filter.size(); index++)
+    for (std::size_t index=0; index<unicast_mac_filter.len(); index++)
     {
         if(unicast_mac_filter[index]->has_operation())
             return true;
@@ -5024,7 +5098,7 @@ std::shared_ptr<Entity> EthernetEncapsulation::Nodes::Node::UnicastMacFilters::g
     {
         auto c = std::make_shared<EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter>();
         c->parent = this;
-        unicast_mac_filter.push_back(c);
+        unicast_mac_filter.append(c);
         return c;
     }
 
@@ -5036,7 +5110,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::Nod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : unicast_mac_filter)
+    for (auto c : unicast_mac_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5065,9 +5139,11 @@ bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::has_leaf_or_child_of
 EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastMacFilter()
     :
     interface_name{YType::str, "interface-name"}
+        ,
+    unicast_filter(this, {})
 {
 
-    yang_name = "unicast-mac-filter"; yang_parent_name = "unicast-mac-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast-mac-filter"; yang_parent_name = "unicast-mac-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::~UnicastMacFilter()
@@ -5076,7 +5152,8 @@ EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::~Unicas
 
 bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::has_data() const
 {
-    for (std::size_t index=0; index<unicast_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unicast_filter.len(); index++)
     {
         if(unicast_filter[index]->has_data())
             return true;
@@ -5086,7 +5163,7 @@ bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::ha
 
 bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::has_operation() const
 {
-    for (std::size_t index=0; index<unicast_filter.size(); index++)
+    for (std::size_t index=0; index<unicast_filter.len(); index++)
     {
         if(unicast_filter[index]->has_operation())
             return true;
@@ -5098,7 +5175,8 @@ bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::ha
 std::string EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "unicast-mac-filter" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "unicast-mac-filter";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5118,7 +5196,7 @@ std::shared_ptr<Entity> EthernetEncapsulation::Nodes::Node::UnicastMacFilters::U
     {
         auto c = std::make_shared<EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter>();
         c->parent = this;
-        unicast_filter.push_back(c);
+        unicast_filter.append(c);
         return c;
     }
 
@@ -5130,7 +5208,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::Nod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : unicast_filter)
+    for (auto c : unicast_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5172,7 +5250,7 @@ EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::Unicast
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "unicast-filter"; yang_parent_name = "unicast-mac-filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast-filter"; yang_parent_name = "unicast-mac-filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::~UnicastFilter()
@@ -5181,6 +5259,7 @@ EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::Unicast
 
 bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| mode.is_set;
 }
@@ -5257,27 +5336,6 @@ bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::Un
     return false;
 }
 
-const Enum::YLeaf VlanService::vlan_service_l2 {1, "vlan-service-l2"};
-const Enum::YLeaf VlanService::vlan_service_l3 {2, "vlan-service-l3"};
-
-const Enum::YLeaf EfpPayloadEtype::payload_ethertype_any {0, "payload-ethertype-any"};
-const Enum::YLeaf EfpPayloadEtype::payload_ethertype_ip {1, "payload-ethertype-ip"};
-const Enum::YLeaf EfpPayloadEtype::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
-
-const Enum::YLeaf EfpTagPriority::priority0 {0, "priority0"};
-const Enum::YLeaf EfpTagPriority::priority1 {1, "priority1"};
-const Enum::YLeaf EfpTagPriority::priority2 {2, "priority2"};
-const Enum::YLeaf EfpTagPriority::priority3 {3, "priority3"};
-const Enum::YLeaf EfpTagPriority::priority4 {4, "priority4"};
-const Enum::YLeaf EfpTagPriority::priority5 {5, "priority5"};
-const Enum::YLeaf EfpTagPriority::priority6 {6, "priority6"};
-const Enum::YLeaf EfpTagPriority::priority7 {7, "priority7"};
-const Enum::YLeaf EfpTagPriority::priority_any {8, "priority-any"};
-
-const Enum::YLeaf EfpTagEtype::untagged {0, "untagged"};
-const Enum::YLeaf EfpTagEtype::dot1q {33024, "dot1q"};
-const Enum::YLeaf EfpTagEtype::dot1ad {34984, "dot1ad"};
-
 const Enum::YLeaf VlanEncaps::no_encapsulation {0, "no-encapsulation"};
 const Enum::YLeaf VlanEncaps::dot1q {1, "dot1q"};
 const Enum::YLeaf VlanEncaps::qinq {2, "qinq"};
@@ -5289,14 +5347,8 @@ const Enum::YLeaf VlanEncaps::service_instance {7, "service-instance"};
 const Enum::YLeaf VlanEncaps::dot1ad_dot1q {8, "dot1ad-dot1q"};
 const Enum::YLeaf VlanEncaps::dot1ad_any {9, "dot1ad-any"};
 
-const Enum::YLeaf EthFiltering::no_filtering {0, "no-filtering"};
-const Enum::YLeaf EthFiltering::dot1q_filtering {1, "dot1q-filtering"};
-const Enum::YLeaf EthFiltering::dot1ad_filtering {2, "dot1ad-filtering"};
-const Enum::YLeaf EthFiltering::two_port_mac_relay_filtering {3, "two-port-mac-relay-filtering"};
-
-const Enum::YLeaf VlanQinqOuterEtype::ether_type8100 {33024, "ether-type8100"};
-const Enum::YLeaf VlanQinqOuterEtype::ether_type9100 {37120, "ether-type9100"};
-const Enum::YLeaf VlanQinqOuterEtype::ether_type9200 {37376, "ether-type9200"};
+const Enum::YLeaf EthCapsUcastMacMode::reserved {0, "reserved"};
+const Enum::YLeaf EthCapsUcastMacMode::permit {1, "permit"};
 
 const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
 const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
@@ -5318,8 +5370,35 @@ const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-opera
 const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
 const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
 
-const Enum::YLeaf EthCapsUcastMacMode::reserved {0, "reserved"};
-const Enum::YLeaf EthCapsUcastMacMode::permit {1, "permit"};
+const Enum::YLeaf EfpTagPriority::priority0 {0, "priority0"};
+const Enum::YLeaf EfpTagPriority::priority1 {1, "priority1"};
+const Enum::YLeaf EfpTagPriority::priority2 {2, "priority2"};
+const Enum::YLeaf EfpTagPriority::priority3 {3, "priority3"};
+const Enum::YLeaf EfpTagPriority::priority4 {4, "priority4"};
+const Enum::YLeaf EfpTagPriority::priority5 {5, "priority5"};
+const Enum::YLeaf EfpTagPriority::priority6 {6, "priority6"};
+const Enum::YLeaf EfpTagPriority::priority7 {7, "priority7"};
+const Enum::YLeaf EfpTagPriority::priority_any {8, "priority-any"};
+
+const Enum::YLeaf EfpTagEtype::untagged {0, "untagged"};
+const Enum::YLeaf EfpTagEtype::dot1q {33024, "dot1q"};
+const Enum::YLeaf EfpTagEtype::dot1ad {34984, "dot1ad"};
+
+const Enum::YLeaf VlanService::vlan_service_l2 {1, "vlan-service-l2"};
+const Enum::YLeaf VlanService::vlan_service_l3 {2, "vlan-service-l3"};
+
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_any {0, "payload-ethertype-any"};
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_ip {1, "payload-ethertype-ip"};
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
+
+const Enum::YLeaf VlanQinqOuterEtype::ether_type8100 {33024, "ether-type8100"};
+const Enum::YLeaf VlanQinqOuterEtype::ether_type9100 {37120, "ether-type9100"};
+const Enum::YLeaf VlanQinqOuterEtype::ether_type9200 {37376, "ether-type9200"};
+
+const Enum::YLeaf EthFiltering::no_filtering {0, "no-filtering"};
+const Enum::YLeaf EthFiltering::dot1q_filtering {1, "dot1q-filtering"};
+const Enum::YLeaf EthFiltering::dot1ad_filtering {2, "dot1ad-filtering"};
+const Enum::YLeaf EthFiltering::two_port_mac_relay_filtering {3, "two-port-mac-relay-filtering"};
 
 
 }

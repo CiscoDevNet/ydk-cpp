@@ -15,12 +15,12 @@ namespace Cisco_IOS_XR_bundlemgr_oper {
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroup()
     :
     iccp_group{YType::uint32, "iccp-group"}
-    	,
+        ,
     mlacp_iccp_group_item(std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem>())
 {
     mlacp_iccp_group_item->parent = this;
 
-    yang_name = "mlacp-iccp-group"; yang_parent_name = "mlacp-iccp-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlacp-iccp-group"; yang_parent_name = "mlacp-iccp-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::~MlacpIccpGroup()
@@ -29,6 +29,7 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::~MlacpIccpGroup()
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return iccp_group.is_set
 	|| (mlacp_iccp_group_item !=  nullptr && mlacp_iccp_group_item->has_data());
 }
@@ -50,7 +51,8 @@ std::string BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::get_absol
 std::string BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mlacp-iccp-group" <<"[iccp-group='" <<iccp_group <<"']";
+    path_buffer << "mlacp-iccp-group";
+    ADD_KEY_TOKEN(iccp_group, "iccp-group");
     return path_buffer.str();
 }
 
@@ -118,10 +120,11 @@ bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::has_leaf_or_chil
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::MlacpIccpGroupItem()
     :
     iccp_group_data(std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData>())
+    , bundle_data(this, {})
 {
     iccp_group_data->parent = this;
 
-    yang_name = "mlacp-iccp-group-item"; yang_parent_name = "mlacp-iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-iccp-group-item"; yang_parent_name = "mlacp-iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::~MlacpIccpGroupItem()
@@ -130,7 +133,8 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::~
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::has_data() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_data())
             return true;
@@ -140,7 +144,7 @@ bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupIt
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_operation())
             return true;
@@ -180,7 +184,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
     {
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData>();
         c->parent = this;
-        bundle_data.push_back(c);
+        bundle_data.append(c);
         return c;
     }
 
@@ -197,7 +201,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIc
     }
 
     count = 0;
-    for (auto const & c : bundle_data)
+    for (auto c : bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -228,9 +232,11 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::I
     iccp_group_id{YType::uint32, "iccp-group-id"},
     singleton{YType::boolean, "singleton"},
     connect_timer_running{YType::uint64, "connect-timer-running"}
+        ,
+    node_data(this, {})
 {
 
-    yang_name = "iccp-group-data"; yang_parent_name = "mlacp-iccp-group-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-group-data"; yang_parent_name = "mlacp-iccp-group-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::~IccpGroupData()
@@ -239,7 +245,8 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::I
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::has_data() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_data())
             return true;
@@ -251,7 +258,7 @@ bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupIt
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::has_operation() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_operation())
             return true;
@@ -287,7 +294,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
     {
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData>();
         c->parent = this;
-        node_data.push_back(c);
+        node_data.append(c);
         return c;
     }
 
@@ -299,7 +306,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_data)
+    for (auto c : node_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -362,12 +369,12 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::I
     version_number{YType::uint32, "version-number"},
     node_state{YType::enumeration, "node-state"},
     iccp_group_state{YType::enumeration, "iccp-group-state"}
-    	,
+        ,
     system_id(std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::SystemId>())
 {
     system_id->parent = this;
 
-    yang_name = "node-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::~NodeData()
@@ -376,6 +383,7 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::I
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::has_data() const
 {
+    if (is_presence_container) return true;
     return mlacp_node_id.is_set
 	|| ldp_id.is_set
 	|| version_number.is_set
@@ -510,12 +518,12 @@ bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupIt
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::SystemId::SystemId()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::SystemId::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "system-id"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-id"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::SystemId::~SystemId()
@@ -524,6 +532,7 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::I
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::SystemId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -608,7 +617,7 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::I
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "system-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "system-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::SystemId::SystemMacAddr::~SystemMacAddr()
@@ -617,6 +626,7 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::I
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::SystemId::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -685,9 +695,12 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::B
     bundle_interface_key{YType::uint16, "bundle-interface-key"},
     media_type{YType::enumeration, "media-type"},
     redundancy_object_id{YType::uint64, "redundancy-object-id"}
+        ,
+    mlacp_bundle_data(this, {})
+    , mlacp_member_data(this, {})
 {
 
-    yang_name = "bundle-data"; yang_parent_name = "mlacp-iccp-group-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "mlacp-iccp-group-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::~BundleData()
@@ -696,12 +709,13 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::B
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::has_data() const
 {
-    for (std::size_t index=0; index<mlacp_bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mlacp_bundle_data.len(); index++)
     {
         if(mlacp_bundle_data[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mlacp_member_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_member_data.len(); index++)
     {
         if(mlacp_member_data[index]->has_data())
             return true;
@@ -713,12 +727,12 @@ bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupIt
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::has_operation() const
 {
-    for (std::size_t index=0; index<mlacp_bundle_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_bundle_data.len(); index++)
     {
         if(mlacp_bundle_data[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mlacp_member_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_member_data.len(); index++)
     {
         if(mlacp_member_data[index]->has_operation())
             return true;
@@ -754,7 +768,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
     {
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData>();
         c->parent = this;
-        mlacp_bundle_data.push_back(c);
+        mlacp_bundle_data.append(c);
         return c;
     }
 
@@ -762,7 +776,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
     {
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpMemberData>();
         c->parent = this;
-        mlacp_member_data.push_back(c);
+        mlacp_member_data.append(c);
         return c;
     }
 
@@ -774,7 +788,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mlacp_bundle_data)
+    for (auto c : mlacp_bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -783,7 +797,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIc
     }
 
     count = 0;
-    for (auto const & c : mlacp_member_data)
+    for (auto c : mlacp_member_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -846,12 +860,12 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::B
     aggregator_id{YType::uint16, "aggregator-id"},
     bundle_state{YType::enumeration, "bundle-state"},
     port_priority{YType::uint16, "port-priority"}
-    	,
+        ,
     mac_address(std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData::MacAddress>())
 {
     mac_address->parent = this;
 
-    yang_name = "mlacp-bundle-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-bundle-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData::~MlacpBundleData()
@@ -860,6 +874,7 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::B
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| mlacp_node_id.is_set
 	|| aggregator_id.is_set
@@ -996,7 +1011,7 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::B
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "mlacp-bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "mlacp-bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData::MacAddress::~MacAddress()
@@ -1005,6 +1020,7 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::B
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -1079,7 +1095,7 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::B
     member_state{YType::enumeration, "member-state"}
 {
 
-    yang_name = "mlacp-member-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-member-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpMemberData::~MlacpMemberData()
@@ -1088,6 +1104,7 @@ BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::B
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpMemberData::has_data() const
 {
+    if (is_presence_container) return true;
     return port_name.is_set
 	|| interface_handle.is_set
 	|| mlacp_node_id.is_set
@@ -1235,7 +1252,7 @@ BundleInformation::MacAllocation::MacAllocation()
 {
     mac_allocation_global->parent = this;
 
-    yang_name = "mac-allocation"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-allocation"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MacAllocation::~MacAllocation()
@@ -1244,6 +1261,7 @@ BundleInformation::MacAllocation::~MacAllocation()
 
 bool BundleInformation::MacAllocation::has_data() const
 {
+    if (is_presence_container) return true;
     return (mac_allocation_global !=  nullptr && mac_allocation_global->has_data());
 }
 
@@ -1323,7 +1341,7 @@ BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobal()
 {
     mac_allocation_global_item->parent = this;
 
-    yang_name = "mac-allocation-global"; yang_parent_name = "mac-allocation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-allocation-global"; yang_parent_name = "mac-allocation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MacAllocation::MacAllocationGlobal::~MacAllocationGlobal()
@@ -1332,6 +1350,7 @@ BundleInformation::MacAllocation::MacAllocationGlobal::~MacAllocationGlobal()
 
 bool BundleInformation::MacAllocation::MacAllocationGlobal::has_data() const
 {
+    if (is_presence_container) return true;
     return (mac_allocation_global_item !=  nullptr && mac_allocation_global_item->has_data());
 }
 
@@ -1406,9 +1425,11 @@ bool BundleInformation::MacAllocation::MacAllocationGlobal::has_leaf_or_child_of
 }
 
 BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::MacAllocationGlobalItem()
+    :
+    mac_address(this, {})
 {
 
-    yang_name = "mac-allocation-global-item"; yang_parent_name = "mac-allocation-global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-allocation-global-item"; yang_parent_name = "mac-allocation-global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::~MacAllocationGlobalItem()
@@ -1417,7 +1438,8 @@ BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::
 
 bool BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::has_data() const
 {
-    for (std::size_t index=0; index<mac_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_address.len(); index++)
     {
         if(mac_address[index]->has_data())
             return true;
@@ -1427,7 +1449,7 @@ bool BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalI
 
 bool BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::has_operation() const
 {
-    for (std::size_t index=0; index<mac_address.size(); index++)
+    for (std::size_t index=0; index<mac_address.len(); index++)
     {
         if(mac_address[index]->has_operation())
             return true;
@@ -1464,7 +1486,7 @@ std::shared_ptr<Entity> BundleInformation::MacAllocation::MacAllocationGlobal::M
     {
         auto c = std::make_shared<BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::MacAddress>();
         c->parent = this;
-        mac_address.push_back(c);
+        mac_address.append(c);
         return c;
     }
 
@@ -1476,7 +1498,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MacAllocation:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mac_address)
+    for (auto c : mac_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1507,7 +1529,7 @@ BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "mac-allocation-global-item"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-address"; yang_parent_name = "mac-allocation-global-item"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::MacAddress::~MacAddress()
@@ -1516,6 +1538,7 @@ BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::
 
 bool BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -1589,12 +1612,12 @@ bool BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalI
 BundleInformation::Events::Events()
     :
     events_members(std::make_shared<BundleInformation::Events::EventsMembers>())
-	,events_bundles(std::make_shared<BundleInformation::Events::EventsBundles>())
+    , events_bundles(std::make_shared<BundleInformation::Events::EventsBundles>())
 {
     events_members->parent = this;
     events_bundles->parent = this;
 
-    yang_name = "events"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Events::~Events()
@@ -1603,6 +1626,7 @@ BundleInformation::Events::~Events()
 
 bool BundleInformation::Events::has_data() const
 {
+    if (is_presence_container) return true;
     return (events_members !=  nullptr && events_members->has_data())
 	|| (events_bundles !=  nullptr && events_bundles->has_data());
 }
@@ -1693,9 +1717,11 @@ bool BundleInformation::Events::has_leaf_or_child_of_name(const std::string & na
 }
 
 BundleInformation::Events::EventsMembers::EventsMembers()
+    :
+    events_member(this, {"member_interface"})
 {
 
-    yang_name = "events-members"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-members"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Events::EventsMembers::~EventsMembers()
@@ -1704,7 +1730,8 @@ BundleInformation::Events::EventsMembers::~EventsMembers()
 
 bool BundleInformation::Events::EventsMembers::has_data() const
 {
-    for (std::size_t index=0; index<events_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_member.len(); index++)
     {
         if(events_member[index]->has_data())
             return true;
@@ -1714,7 +1741,7 @@ bool BundleInformation::Events::EventsMembers::has_data() const
 
 bool BundleInformation::Events::EventsMembers::has_operation() const
 {
-    for (std::size_t index=0; index<events_member.size(); index++)
+    for (std::size_t index=0; index<events_member.len(); index++)
     {
         if(events_member[index]->has_operation())
             return true;
@@ -1751,7 +1778,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::get_child_by_n
     {
         auto c = std::make_shared<BundleInformation::Events::EventsMembers::EventsMember>();
         c->parent = this;
-        events_member.push_back(c);
+        events_member.append(c);
         return c;
     }
 
@@ -1763,7 +1790,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::Events
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_member)
+    for (auto c : events_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1792,14 +1819,14 @@ bool BundleInformation::Events::EventsMembers::has_leaf_or_child_of_name(const s
 BundleInformation::Events::EventsMembers::EventsMember::EventsMember()
     :
     member_interface{YType::str, "member-interface"}
-    	,
+        ,
     events_member_item(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem>())
-	,events_member_ancestor(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor>())
+    , events_member_ancestor(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor>())
 {
     events_member_item->parent = this;
     events_member_ancestor->parent = this;
 
-    yang_name = "events-member"; yang_parent_name = "events-members"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-member"; yang_parent_name = "events-members"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::~EventsMember()
@@ -1808,6 +1835,7 @@ BundleInformation::Events::EventsMembers::EventsMember::~EventsMember()
 
 bool BundleInformation::Events::EventsMembers::EventsMember::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| (events_member_item !=  nullptr && events_member_item->has_data())
 	|| (events_member_ancestor !=  nullptr && events_member_ancestor->has_data());
@@ -1831,7 +1859,8 @@ std::string BundleInformation::Events::EventsMembers::EventsMember::get_absolute
 std::string BundleInformation::Events::EventsMembers::EventsMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "events-member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -1913,9 +1942,11 @@ bool BundleInformation::Events::EventsMembers::EventsMember::has_leaf_or_child_o
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::EventsMemberItem()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-member-item"; yang_parent_name = "events-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-member-item"; yang_parent_name = "events-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::~EventsMemberItem()
@@ -1924,7 +1955,8 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::~Event
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -1934,7 +1966,7 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::h
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -1966,7 +1998,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
     {
         auto c = std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -1978,7 +2010,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::Events
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2017,16 +2049,16 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::h
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-member-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-member-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::~Items()
@@ -2035,6 +2067,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -2150,12 +2183,12 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -2164,6 +2197,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -2264,7 +2298,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo::Data::~Data()
@@ -2273,6 +2307,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -2379,12 +2414,12 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -2393,6 +2428,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -2493,7 +2529,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo::Data::~Data()
@@ -2502,6 +2538,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -2608,12 +2645,12 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo::~RgEvtInfo()
@@ -2622,6 +2659,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -2722,7 +2760,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo::Data::~Data()
@@ -2731,6 +2769,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items:
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -2836,9 +2875,11 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::I
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::EventsMemberAncestor()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-member-ancestor"; yang_parent_name = "events-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-member-ancestor"; yang_parent_name = "events-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::~EventsMemberAncestor()
@@ -2847,7 +2888,8 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::~E
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -2857,7 +2899,7 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncesto
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -2889,7 +2931,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
     {
         auto c = std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -2901,7 +2943,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::Events
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2940,16 +2982,16 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncesto
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-member-ancestor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-member-ancestor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::~Items()
@@ -2958,6 +3000,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -3073,12 +3116,12 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -3087,6 +3130,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -3187,7 +3231,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo::Data::~Data()
@@ -3196,6 +3240,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -3302,12 +3347,12 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -3316,6 +3361,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -3416,7 +3462,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo::Data::~Data()
@@ -3425,6 +3471,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -3531,12 +3578,12 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo::~RgEvtInfo()
@@ -3545,6 +3592,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -3645,7 +3693,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo::Data::~Data()
@@ -3654,6 +3702,7 @@ BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::It
 
 bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -3757,9 +3806,11 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncesto
 }
 
 BundleInformation::Events::EventsBundles::EventsBundles()
+    :
+    events_bundle(this, {"bundle_interface"})
 {
 
-    yang_name = "events-bundles"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-bundles"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Events::EventsBundles::~EventsBundles()
@@ -3768,7 +3819,8 @@ BundleInformation::Events::EventsBundles::~EventsBundles()
 
 bool BundleInformation::Events::EventsBundles::has_data() const
 {
-    for (std::size_t index=0; index<events_bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_bundle.len(); index++)
     {
         if(events_bundle[index]->has_data())
             return true;
@@ -3778,7 +3830,7 @@ bool BundleInformation::Events::EventsBundles::has_data() const
 
 bool BundleInformation::Events::EventsBundles::has_operation() const
 {
-    for (std::size_t index=0; index<events_bundle.size(); index++)
+    for (std::size_t index=0; index<events_bundle.len(); index++)
     {
         if(events_bundle[index]->has_operation())
             return true;
@@ -3815,7 +3867,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::get_child_by_n
     {
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle>();
         c->parent = this;
-        events_bundle.push_back(c);
+        events_bundle.append(c);
         return c;
     }
 
@@ -3827,7 +3879,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::Events
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_bundle)
+    for (auto c : events_bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3856,18 +3908,18 @@ bool BundleInformation::Events::EventsBundles::has_leaf_or_child_of_name(const s
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     events_bundle_ancestor(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor>())
-	,events_bundle_item(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem>())
-	,events_bundle_descendant(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant>())
-	,events_bundle_children_members(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers>())
+    , events_bundle_item(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem>())
+    , events_bundle_descendant(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant>())
+    , events_bundle_children_members(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers>())
 {
     events_bundle_ancestor->parent = this;
     events_bundle_item->parent = this;
     events_bundle_descendant->parent = this;
     events_bundle_children_members->parent = this;
 
-    yang_name = "events-bundle"; yang_parent_name = "events-bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-bundle"; yang_parent_name = "events-bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::~EventsBundle()
@@ -3876,6 +3928,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::~EventsBundle()
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (events_bundle_ancestor !=  nullptr && events_bundle_ancestor->has_data())
 	|| (events_bundle_item !=  nullptr && events_bundle_item->has_data())
@@ -3903,7 +3956,8 @@ std::string BundleInformation::Events::EventsBundles::EventsBundle::get_absolute
 std::string BundleInformation::Events::EventsBundles::EventsBundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-bundle" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "events-bundle";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -4013,9 +4067,11 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::has_leaf_or_child_o
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::EventsBundleAncestor()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-bundle-ancestor"; yang_parent_name = "events-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-bundle-ancestor"; yang_parent_name = "events-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::~EventsBundleAncestor()
@@ -4024,7 +4080,8 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::~E
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -4034,7 +4091,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncesto
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -4066,7 +4123,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
     {
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -4078,7 +4135,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::Events
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4117,16 +4174,16 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncesto
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-bundle-ancestor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-bundle-ancestor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::~Items()
@@ -4135,6 +4192,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -4250,12 +4308,12 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -4264,6 +4322,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -4364,7 +4423,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo::Data::~Data()
@@ -4373,6 +4432,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -4479,12 +4539,12 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -4493,6 +4553,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -4593,7 +4654,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo::Data::~Data()
@@ -4602,6 +4663,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -4708,12 +4770,12 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo::~RgEvtInfo()
@@ -4722,6 +4784,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -4822,7 +4885,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo::Data::~Data()
@@ -4831,6 +4894,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::It
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -4936,9 +5000,11 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncesto
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::EventsBundleItem()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-bundle-item"; yang_parent_name = "events-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-bundle-item"; yang_parent_name = "events-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::~EventsBundleItem()
@@ -4947,7 +5013,8 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::~Event
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -4957,7 +5024,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::h
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -4989,7 +5056,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
     {
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -5001,7 +5068,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::Events
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5040,16 +5107,16 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::h
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-bundle-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-bundle-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::~Items()
@@ -5058,6 +5125,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -5173,12 +5241,12 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -5187,6 +5255,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -5287,7 +5356,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo::Data::~Data()
@@ -5296,6 +5365,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -5402,12 +5472,12 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -5416,6 +5486,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -5516,7 +5587,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo::Data::~Data()
@@ -5525,6 +5596,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -5631,12 +5703,12 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo::~RgEvtInfo()
@@ -5645,6 +5717,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -5745,7 +5818,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo::Data::~Data()
@@ -5754,6 +5827,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items:
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -5857,9 +5931,11 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::I
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsBundleDescendant()
+    :
+    events_item(this, {})
 {
 
-    yang_name = "events-bundle-descendant"; yang_parent_name = "events-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-bundle-descendant"; yang_parent_name = "events-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::~EventsBundleDescendant()
@@ -5868,7 +5944,8 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::has_data() const
 {
-    for (std::size_t index=0; index<events_item.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_item.len(); index++)
     {
         if(events_item[index]->has_data())
             return true;
@@ -5878,7 +5955,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescend
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::has_operation() const
 {
-    for (std::size_t index=0; index<events_item.size(); index++)
+    for (std::size_t index=0; index<events_item.len(); index++)
     {
         if(events_item[index]->has_operation())
             return true;
@@ -5908,7 +5985,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
     {
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem>();
         c->parent = this;
-        events_item.push_back(c);
+        events_item.append(c);
         return c;
     }
 
@@ -5920,7 +5997,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::Events
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_item)
+    for (auto c : events_item.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5949,9 +6026,11 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescend
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::EventsItem()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-item"; yang_parent_name = "events-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-item"; yang_parent_name = "events-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::~EventsItem()
@@ -5960,7 +6039,8 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -5970,7 +6050,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescend
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -6002,7 +6082,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
     {
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -6014,7 +6094,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::Events
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6053,16 +6133,16 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescend
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::~Items()
@@ -6071,6 +6151,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -6186,12 +6267,12 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -6200,6 +6281,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -6300,7 +6382,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo::Data::~Data()
@@ -6309,6 +6391,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -6415,12 +6498,12 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -6429,6 +6512,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -6529,7 +6613,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo::Data::~Data()
@@ -6538,6 +6622,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -6644,12 +6729,12 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo::~RgEvtInfo()
@@ -6658,6 +6743,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -6758,7 +6844,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo::Data::~Data()
@@ -6767,6 +6853,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -6870,9 +6957,11 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescend
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMembers()
+    :
+    events_bundle_children_member(this, {"member_interface"})
 {
 
-    yang_name = "events-bundle-children-members"; yang_parent_name = "events-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-bundle-children-members"; yang_parent_name = "events-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::~EventsBundleChildrenMembers()
@@ -6881,7 +6970,8 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::has_data() const
 {
-    for (std::size_t index=0; index<events_bundle_children_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_bundle_children_member.len(); index++)
     {
         if(events_bundle_children_member[index]->has_data())
             return true;
@@ -6891,7 +6981,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildre
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::has_operation() const
 {
-    for (std::size_t index=0; index<events_bundle_children_member.size(); index++)
+    for (std::size_t index=0; index<events_bundle_children_member.len(); index++)
     {
         if(events_bundle_children_member[index]->has_operation())
             return true;
@@ -6921,7 +7011,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
     {
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember>();
         c->parent = this;
-        events_bundle_children_member.push_back(c);
+        events_bundle_children_member.append(c);
         return c;
     }
 
@@ -6933,7 +7023,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::Events
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_bundle_children_member)
+    for (auto c : events_bundle_children_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6963,9 +7053,11 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
     :
     member_interface{YType::str, "member-interface"},
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-bundle-children-member"; yang_parent_name = "events-bundle-children-members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-bundle-children-member"; yang_parent_name = "events-bundle-children-members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::~EventsBundleChildrenMember()
@@ -6974,7 +7066,8 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -6985,7 +7078,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildre
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -6998,7 +7091,8 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildre
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-bundle-children-member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "events-bundle-children-member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -7019,7 +7113,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
     {
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -7031,7 +7125,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::Events
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7080,16 +7174,16 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildre
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::~Items()
@@ -7098,6 +7192,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -7213,12 +7308,12 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -7227,6 +7322,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -7327,7 +7423,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo::Data::~Data()
@@ -7336,6 +7432,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -7442,12 +7539,12 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -7456,6 +7553,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -7556,7 +7654,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo::Data::~Data()
@@ -7565,6 +7663,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -7671,12 +7770,12 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo::~RgEvtInfo()
@@ -7685,6 +7784,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -7785,7 +7885,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo::Data::~Data()
@@ -7794,6 +7894,7 @@ BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMemb
 
 bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -7899,14 +8000,14 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildre
 BundleInformation::EventsBdl::EventsBdl()
     :
     events_bdl_members(std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers>())
-	,events_bdl_bundles(std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles>())
-	,events_bdl_iccp_groups(std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups>())
+    , events_bdl_bundles(std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles>())
+    , events_bdl_iccp_groups(std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups>())
 {
     events_bdl_members->parent = this;
     events_bdl_bundles->parent = this;
     events_bdl_iccp_groups->parent = this;
 
-    yang_name = "events-bdl"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-bdl"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsBdl::~EventsBdl()
@@ -7915,6 +8016,7 @@ BundleInformation::EventsBdl::~EventsBdl()
 
 bool BundleInformation::EventsBdl::has_data() const
 {
+    if (is_presence_container) return true;
     return (events_bdl_members !=  nullptr && events_bdl_members->has_data())
 	|| (events_bdl_bundles !=  nullptr && events_bdl_bundles->has_data())
 	|| (events_bdl_iccp_groups !=  nullptr && events_bdl_iccp_groups->has_data());
@@ -8021,9 +8123,11 @@ bool BundleInformation::EventsBdl::has_leaf_or_child_of_name(const std::string &
 }
 
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMembers()
+    :
+    events_bdl_member(this, {"member_interface"})
 {
 
-    yang_name = "events-bdl-members"; yang_parent_name = "events-bdl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-bdl-members"; yang_parent_name = "events-bdl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsBdl::EventsBdlMembers::~EventsBdlMembers()
@@ -8032,7 +8136,8 @@ BundleInformation::EventsBdl::EventsBdlMembers::~EventsBdlMembers()
 
 bool BundleInformation::EventsBdl::EventsBdlMembers::has_data() const
 {
-    for (std::size_t index=0; index<events_bdl_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_bdl_member.len(); index++)
     {
         if(events_bdl_member[index]->has_data())
             return true;
@@ -8042,7 +8147,7 @@ bool BundleInformation::EventsBdl::EventsBdlMembers::has_data() const
 
 bool BundleInformation::EventsBdl::EventsBdlMembers::has_operation() const
 {
-    for (std::size_t index=0; index<events_bdl_member.size(); index++)
+    for (std::size_t index=0; index<events_bdl_member.len(); index++)
     {
         if(events_bdl_member[index]->has_operation())
             return true;
@@ -8079,7 +8184,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::get_chil
     {
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember>();
         c->parent = this;
-        events_bdl_member.push_back(c);
+        events_bdl_member.append(c);
         return c;
     }
 
@@ -8091,7 +8196,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_bdl_member)
+    for (auto c : events_bdl_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8120,12 +8225,12 @@ bool BundleInformation::EventsBdl::EventsBdlMembers::has_leaf_or_child_of_name(c
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember()
     :
     member_interface{YType::str, "member-interface"}
-    	,
+        ,
     events_bdl_member_ancestor(std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor>())
 {
     events_bdl_member_ancestor->parent = this;
 
-    yang_name = "events-bdl-member"; yang_parent_name = "events-bdl-members"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-bdl-member"; yang_parent_name = "events-bdl-members"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::~EventsBdlMember()
@@ -8134,6 +8239,7 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::~EventsBdlMembe
 
 bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| (events_bdl_member_ancestor !=  nullptr && events_bdl_member_ancestor->has_data());
 }
@@ -8155,7 +8261,8 @@ std::string BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::get
 std::string BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-bdl-member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "events-bdl-member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -8223,9 +8330,11 @@ bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::has_leaf_o
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::EventsBdlMemberAncestor()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-bdl-member-ancestor"; yang_parent_name = "events-bdl-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-bdl-member-ancestor"; yang_parent_name = "events-bdl-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::~EventsBdlMemberAncestor()
@@ -8234,7 +8343,8 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
 
 bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -8244,7 +8354,7 @@ bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlM
 
 bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -8276,7 +8386,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::EventsBd
     {
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -8288,7 +8398,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8327,16 +8437,16 @@ bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlM
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-bdl-member-ancestor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-bdl-member-ancestor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::~Items()
@@ -8345,6 +8455,7 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
 
 bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -8460,12 +8571,12 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -8474,6 +8585,7 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
 
 bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -8574,7 +8686,7 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo::Data::~Data()
@@ -8583,6 +8695,7 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
 
 bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -8689,12 +8802,12 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -8703,6 +8816,7 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
 
 bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -8803,7 +8917,7 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo::Data::~Data()
@@ -8812,6 +8926,7 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
 
 bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -8918,12 +9033,12 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo::~RgEvtInfo()
@@ -8932,6 +9047,7 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
 
 bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -9032,7 +9148,7 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo::Data::~Data()
@@ -9041,6 +9157,7 @@ BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMember
 
 bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -9144,9 +9261,11 @@ bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlM
 }
 
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundles()
+    :
+    events_bdl_bundle(this, {"bundle_interface"})
 {
 
-    yang_name = "events-bdl-bundles"; yang_parent_name = "events-bdl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-bdl-bundles"; yang_parent_name = "events-bdl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsBdl::EventsBdlBundles::~EventsBdlBundles()
@@ -9155,7 +9274,8 @@ BundleInformation::EventsBdl::EventsBdlBundles::~EventsBdlBundles()
 
 bool BundleInformation::EventsBdl::EventsBdlBundles::has_data() const
 {
-    for (std::size_t index=0; index<events_bdl_bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_bdl_bundle.len(); index++)
     {
         if(events_bdl_bundle[index]->has_data())
             return true;
@@ -9165,7 +9285,7 @@ bool BundleInformation::EventsBdl::EventsBdlBundles::has_data() const
 
 bool BundleInformation::EventsBdl::EventsBdlBundles::has_operation() const
 {
-    for (std::size_t index=0; index<events_bdl_bundle.size(); index++)
+    for (std::size_t index=0; index<events_bdl_bundle.len(); index++)
     {
         if(events_bdl_bundle[index]->has_operation())
             return true;
@@ -9202,7 +9322,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::get_chil
     {
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle>();
         c->parent = this;
-        events_bdl_bundle.push_back(c);
+        events_bdl_bundle.append(c);
         return c;
     }
 
@@ -9214,7 +9334,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_bdl_bundle)
+    for (auto c : events_bdl_bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9243,12 +9363,12 @@ bool BundleInformation::EventsBdl::EventsBdlBundles::has_leaf_or_child_of_name(c
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     events_bdl_bundle_item(std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem>())
 {
     events_bdl_bundle_item->parent = this;
 
-    yang_name = "events-bdl-bundle"; yang_parent_name = "events-bdl-bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-bdl-bundle"; yang_parent_name = "events-bdl-bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::~EventsBdlBundle()
@@ -9257,6 +9377,7 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::~EventsBdlBundl
 
 bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (events_bdl_bundle_item !=  nullptr && events_bdl_bundle_item->has_data());
 }
@@ -9278,7 +9399,8 @@ std::string BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::get
 std::string BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-bdl-bundle" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "events-bdl-bundle";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -9346,9 +9468,11 @@ bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::has_leaf_o
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::EventsBdlBundleItem()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-bdl-bundle-item"; yang_parent_name = "events-bdl-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-bdl-bundle-item"; yang_parent_name = "events-bdl-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::~EventsBdlBundleItem()
@@ -9357,7 +9481,8 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
 
 bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -9367,7 +9492,7 @@ bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlB
 
 bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -9399,7 +9524,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::EventsBd
     {
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -9411,7 +9536,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9450,16 +9575,16 @@ bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlB
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-bdl-bundle-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-bdl-bundle-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::~Items()
@@ -9468,6 +9593,7 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
 
 bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -9583,12 +9709,12 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -9597,6 +9723,7 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
 
 bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -9697,7 +9824,7 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo::Data::~Data()
@@ -9706,6 +9833,7 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
 
 bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -9812,12 +9940,12 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -9826,6 +9954,7 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
 
 bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -9926,7 +10055,7 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo::Data::~Data()
@@ -9935,6 +10064,7 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
 
 bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -10041,12 +10171,12 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo::~RgEvtInfo()
@@ -10055,6 +10185,7 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
 
 bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -10155,7 +10286,7 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo::Data::~Data()
@@ -10164,6 +10295,7 @@ BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundle
 
 bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -10267,9 +10399,11 @@ bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlB
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroups()
+    :
+    events_bdl_iccp_group(this, {"iccp_group"})
 {
 
-    yang_name = "events-bdl-iccp-groups"; yang_parent_name = "events-bdl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-bdl-iccp-groups"; yang_parent_name = "events-bdl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::~EventsBdlIccpGroups()
@@ -10278,7 +10412,8 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::~EventsBdlIccpGroups()
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::has_data() const
 {
-    for (std::size_t index=0; index<events_bdl_iccp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_bdl_iccp_group.len(); index++)
     {
         if(events_bdl_iccp_group[index]->has_data())
             return true;
@@ -10288,7 +10423,7 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::has_data() const
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::has_operation() const
 {
-    for (std::size_t index=0; index<events_bdl_iccp_group.size(); index++)
+    for (std::size_t index=0; index<events_bdl_iccp_group.len(); index++)
     {
         if(events_bdl_iccp_group[index]->has_operation())
             return true;
@@ -10325,7 +10460,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::get_c
     {
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup>();
         c->parent = this;
-        events_bdl_iccp_group.push_back(c);
+        events_bdl_iccp_group.append(c);
         return c;
     }
 
@@ -10337,7 +10472,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_bdl_iccp_group)
+    for (auto c : events_bdl_iccp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10366,12 +10501,12 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::has_leaf_or_child_of_nam
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlIccpGroup()
     :
     iccp_group{YType::uint32, "iccp-group"}
-    	,
+        ,
     events_bdl_bundle_descendant_iccp_group(std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup>())
 {
     events_bdl_bundle_descendant_iccp_group->parent = this;
 
-    yang_name = "events-bdl-iccp-group"; yang_parent_name = "events-bdl-iccp-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-bdl-iccp-group"; yang_parent_name = "events-bdl-iccp-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::~EventsBdlIccpGroup()
@@ -10380,6 +10515,7 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::~EventsBd
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return iccp_group.is_set
 	|| (events_bdl_bundle_descendant_iccp_group !=  nullptr && events_bdl_bundle_descendant_iccp_group->has_data());
 }
@@ -10401,7 +10537,8 @@ std::string BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGrou
 std::string BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-bdl-iccp-group" <<"[iccp-group='" <<iccp_group <<"']";
+    path_buffer << "events-bdl-iccp-group";
+    ADD_KEY_TOKEN(iccp_group, "iccp-group");
     return path_buffer.str();
 }
 
@@ -10467,9 +10604,11 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::has_
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsBdlBundleDescendantIccpGroup()
+    :
+    events_item(this, {})
 {
 
-    yang_name = "events-bdl-bundle-descendant-iccp-group"; yang_parent_name = "events-bdl-iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-bdl-bundle-descendant-iccp-group"; yang_parent_name = "events-bdl-iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::~EventsBdlBundleDescendantIccpGroup()
@@ -10478,7 +10617,8 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::has_data() const
 {
-    for (std::size_t index=0; index<events_item.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_item.len(); index++)
     {
         if(events_item[index]->has_data())
             return true;
@@ -10488,7 +10628,7 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::Even
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::has_operation() const
 {
-    for (std::size_t index=0; index<events_item.size(); index++)
+    for (std::size_t index=0; index<events_item.len(); index++)
     {
         if(events_item[index]->has_operation())
             return true;
@@ -10518,7 +10658,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
     {
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem>();
         c->parent = this;
-        events_item.push_back(c);
+        events_item.append(c);
         return c;
     }
 
@@ -10530,7 +10670,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_item)
+    for (auto c : events_item.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10559,9 +10699,11 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::Even
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::EventsItem()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-item"; yang_parent_name = "events-bdl-bundle-descendant-iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-item"; yang_parent_name = "events-bdl-bundle-descendant-iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::~EventsItem()
@@ -10570,7 +10712,8 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -10580,7 +10723,7 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::Even
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -10612,7 +10755,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
     {
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -10624,7 +10767,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10663,16 +10806,16 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::Even
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::~Items()
@@ -10681,6 +10824,7 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -10796,12 +10940,12 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -10810,6 +10954,7 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -10910,7 +11055,7 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::Data::~Data()
@@ -10919,6 +11064,7 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -11025,12 +11171,12 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -11039,6 +11185,7 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -11139,7 +11286,7 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::Data::~Data()
@@ -11148,6 +11295,7 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -11254,12 +11402,12 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::~RgEvtInfo()
@@ -11268,6 +11416,7 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -11368,7 +11517,7 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::Data::~Data()
@@ -11377,6 +11526,7 @@ BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdl
 
 bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -11480,9 +11630,11 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::Even
 }
 
 BundleInformation::BundleBriefs::BundleBriefs()
+    :
+    bundle_brief(this, {"bundle_interface"})
 {
 
-    yang_name = "bundle-briefs"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle-briefs"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::BundleBriefs::~BundleBriefs()
@@ -11491,7 +11643,8 @@ BundleInformation::BundleBriefs::~BundleBriefs()
 
 bool BundleInformation::BundleBriefs::has_data() const
 {
-    for (std::size_t index=0; index<bundle_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_brief.len(); index++)
     {
         if(bundle_brief[index]->has_data())
             return true;
@@ -11501,7 +11654,7 @@ bool BundleInformation::BundleBriefs::has_data() const
 
 bool BundleInformation::BundleBriefs::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_brief.size(); index++)
+    for (std::size_t index=0; index<bundle_brief.len(); index++)
     {
         if(bundle_brief[index]->has_operation())
             return true;
@@ -11538,7 +11691,7 @@ std::shared_ptr<Entity> BundleInformation::BundleBriefs::get_child_by_name(const
     {
         auto c = std::make_shared<BundleInformation::BundleBriefs::BundleBrief>();
         c->parent = this;
-        bundle_brief.push_back(c);
+        bundle_brief.append(c);
         return c;
     }
 
@@ -11550,7 +11703,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BundleBriefs::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle_brief)
+    for (auto c : bundle_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11579,12 +11732,12 @@ bool BundleInformation::BundleBriefs::has_leaf_or_child_of_name(const std::strin
 BundleInformation::BundleBriefs::BundleBrief::BundleBrief()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     bundle_brief_item(std::make_shared<BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem>())
 {
     bundle_brief_item->parent = this;
 
-    yang_name = "bundle-brief"; yang_parent_name = "bundle-briefs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle-brief"; yang_parent_name = "bundle-briefs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::BundleBriefs::BundleBrief::~BundleBrief()
@@ -11593,6 +11746,7 @@ BundleInformation::BundleBriefs::BundleBrief::~BundleBrief()
 
 bool BundleInformation::BundleBriefs::BundleBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (bundle_brief_item !=  nullptr && bundle_brief_item->has_data());
 }
@@ -11614,7 +11768,8 @@ std::string BundleInformation::BundleBriefs::BundleBrief::get_absolute_path() co
 std::string BundleInformation::BundleBriefs::BundleBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle-brief" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "bundle-brief";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -11719,12 +11874,13 @@ BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BundleBriefItem()
     mlacp_mode{YType::enumeration, "mlacp-mode"},
     recovery_delay{YType::uint16, "recovery-delay"},
     singleton{YType::boolean, "singleton"}
-    	,
+        ,
     mac_address(std::make_shared<BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::MacAddress>())
+    , bfd_config(this, {})
 {
     mac_address->parent = this;
 
-    yang_name = "bundle-brief-item"; yang_parent_name = "bundle-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-brief-item"; yang_parent_name = "bundle-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::~BundleBriefItem()
@@ -11733,7 +11889,8 @@ BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::~BundleBriefItem(
 
 bool BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::has_data() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_data())
             return true;
@@ -11781,7 +11938,7 @@ bool BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::has_data() c
 
 bool BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_operation())
             return true;
@@ -11897,7 +12054,7 @@ std::shared_ptr<Entity> BundleInformation::BundleBriefs::BundleBrief::BundleBrie
     {
         auto c = std::make_shared<BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(c);
+        bfd_config.append(c);
         return c;
     }
 
@@ -11914,7 +12071,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BundleBriefs::
     }
 
     count = 0;
-    for (auto const & c : bfd_config)
+    for (auto c : bfd_config.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12325,7 +12482,7 @@ BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::MacAddress::MacAd
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "bundle-brief-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "bundle-brief-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::MacAddress::~MacAddress()
@@ -12334,6 +12491,7 @@ BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::MacAddress::~MacA
 
 bool BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -12407,12 +12565,12 @@ BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::BfdCon
     pref_echo_min_interval{YType::uint32, "pref-echo-min-interval"},
     fast_detect{YType::boolean, "fast-detect"},
     mode_info{YType::uint32, "mode-info"}
-    	,
+        ,
     destination_address(std::make_shared<BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
 
-    yang_name = "bfd-config"; yang_parent_name = "bundle-brief-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-config"; yang_parent_name = "bundle-brief-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::~BfdConfig()
@@ -12421,6 +12579,7 @@ BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::~BfdCo
 
 bool BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| start_timer.is_set
 	|| nbr_unconfig_timer.is_set
@@ -12598,7 +12757,7 @@ BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::Destin
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::DestinationAddress::~DestinationAddress()
@@ -12607,6 +12766,7 @@ BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::Destin
 
 bool BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -12699,14 +12859,14 @@ bool BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::D
 BundleInformation::EventsMbr::EventsMbr()
     :
     events_mbr_bundles(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles>())
-	,events_mbr_members(std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers>())
-	,events_mbr_iccp_groups(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups>())
+    , events_mbr_members(std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers>())
+    , events_mbr_iccp_groups(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups>())
 {
     events_mbr_bundles->parent = this;
     events_mbr_members->parent = this;
     events_mbr_iccp_groups->parent = this;
 
-    yang_name = "events-mbr"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-mbr"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsMbr::~EventsMbr()
@@ -12715,6 +12875,7 @@ BundleInformation::EventsMbr::~EventsMbr()
 
 bool BundleInformation::EventsMbr::has_data() const
 {
+    if (is_presence_container) return true;
     return (events_mbr_bundles !=  nullptr && events_mbr_bundles->has_data())
 	|| (events_mbr_members !=  nullptr && events_mbr_members->has_data())
 	|| (events_mbr_iccp_groups !=  nullptr && events_mbr_iccp_groups->has_data());
@@ -12821,9 +12982,11 @@ bool BundleInformation::EventsMbr::has_leaf_or_child_of_name(const std::string &
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundles()
+    :
+    events_mbr_bundle(this, {"bundle_interface"})
 {
 
-    yang_name = "events-mbr-bundles"; yang_parent_name = "events-mbr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-mbr-bundles"; yang_parent_name = "events-mbr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::~EventsMbrBundles()
@@ -12832,7 +12995,8 @@ BundleInformation::EventsMbr::EventsMbrBundles::~EventsMbrBundles()
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::has_data() const
 {
-    for (std::size_t index=0; index<events_mbr_bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_mbr_bundle.len(); index++)
     {
         if(events_mbr_bundle[index]->has_data())
             return true;
@@ -12842,7 +13006,7 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::has_data() const
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::has_operation() const
 {
-    for (std::size_t index=0; index<events_mbr_bundle.size(); index++)
+    for (std::size_t index=0; index<events_mbr_bundle.len(); index++)
     {
         if(events_mbr_bundle[index]->has_operation())
             return true;
@@ -12879,7 +13043,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::get_chil
     {
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle>();
         c->parent = this;
-        events_mbr_bundle.push_back(c);
+        events_mbr_bundle.append(c);
         return c;
     }
 
@@ -12891,7 +13055,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_mbr_bundle)
+    for (auto c : events_mbr_bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12920,14 +13084,14 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::has_leaf_or_child_of_name(c
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     events_mbr_bundle_children_members(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers>())
-	,events_mbr_bundle_descendant(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant>())
+    , events_mbr_bundle_descendant(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant>())
 {
     events_mbr_bundle_children_members->parent = this;
     events_mbr_bundle_descendant->parent = this;
 
-    yang_name = "events-mbr-bundle"; yang_parent_name = "events-mbr-bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-mbr-bundle"; yang_parent_name = "events-mbr-bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::~EventsMbrBundle()
@@ -12936,6 +13100,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::~EventsMbrBundl
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (events_mbr_bundle_children_members !=  nullptr && events_mbr_bundle_children_members->has_data())
 	|| (events_mbr_bundle_descendant !=  nullptr && events_mbr_bundle_descendant->has_data());
@@ -12959,7 +13124,8 @@ std::string BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::get
 std::string BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-mbr-bundle" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "events-mbr-bundle";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -13039,9 +13205,11 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::has_leaf_o
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMembers()
+    :
+    events_mbr_bundle_children_member(this, {"member_interface"})
 {
 
-    yang_name = "events-mbr-bundle-children-members"; yang_parent_name = "events-mbr-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-mbr-bundle-children-members"; yang_parent_name = "events-mbr-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::~EventsMbrBundleChildrenMembers()
@@ -13050,7 +13218,8 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::has_data() const
 {
-    for (std::size_t index=0; index<events_mbr_bundle_children_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_mbr_bundle_children_member.len(); index++)
     {
         if(events_mbr_bundle_children_member[index]->has_data())
             return true;
@@ -13060,7 +13229,7 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::has_operation() const
 {
-    for (std::size_t index=0; index<events_mbr_bundle_children_member.size(); index++)
+    for (std::size_t index=0; index<events_mbr_bundle_children_member.len(); index++)
     {
         if(events_mbr_bundle_children_member[index]->has_operation())
             return true;
@@ -13090,7 +13259,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
     {
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember>();
         c->parent = this;
-        events_mbr_bundle_children_member.push_back(c);
+        events_mbr_bundle_children_member.append(c);
         return c;
     }
 
@@ -13102,7 +13271,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_mbr_bundle_children_member)
+    for (auto c : events_mbr_bundle_children_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13132,9 +13301,11 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     :
     member_interface{YType::str, "member-interface"},
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-mbr-bundle-children-member"; yang_parent_name = "events-mbr-bundle-children-members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-mbr-bundle-children-member"; yang_parent_name = "events-mbr-bundle-children-members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::~EventsMbrBundleChildrenMember()
@@ -13143,7 +13314,8 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -13154,7 +13326,7 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -13167,7 +13339,8 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
 std::string BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-mbr-bundle-children-member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "events-mbr-bundle-children-member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -13188,7 +13361,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
     {
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -13200,7 +13373,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13249,16 +13422,16 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-mbr-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-mbr-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::~Items()
@@ -13267,6 +13440,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -13382,12 +13556,12 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -13396,6 +13570,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -13496,7 +13671,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo::Data::~Data()
@@ -13505,6 +13680,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -13611,12 +13787,12 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -13625,6 +13801,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -13725,7 +13902,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo::Data::~Data()
@@ -13734,6 +13911,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -13840,12 +14018,12 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo::~RgEvtInfo()
@@ -13854,6 +14032,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -13954,7 +14133,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo::Data::~Data()
@@ -13963,6 +14142,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -14066,9 +14246,11 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsMbrBundleDescendant()
+    :
+    events_item(this, {})
 {
 
-    yang_name = "events-mbr-bundle-descendant"; yang_parent_name = "events-mbr-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-mbr-bundle-descendant"; yang_parent_name = "events-mbr-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::~EventsMbrBundleDescendant()
@@ -14077,7 +14259,8 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::has_data() const
 {
-    for (std::size_t index=0; index<events_item.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_item.len(); index++)
     {
         if(events_item[index]->has_data())
             return true;
@@ -14087,7 +14270,7 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::has_operation() const
 {
-    for (std::size_t index=0; index<events_item.size(); index++)
+    for (std::size_t index=0; index<events_item.len(); index++)
     {
         if(events_item[index]->has_operation())
             return true;
@@ -14117,7 +14300,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
     {
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem>();
         c->parent = this;
-        events_item.push_back(c);
+        events_item.append(c);
         return c;
     }
 
@@ -14129,7 +14312,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_item)
+    for (auto c : events_item.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14158,9 +14341,11 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::EventsItem()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-item"; yang_parent_name = "events-mbr-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-item"; yang_parent_name = "events-mbr-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::~EventsItem()
@@ -14169,7 +14354,8 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -14179,7 +14365,7 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -14211,7 +14397,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
     {
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -14223,7 +14409,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14262,16 +14448,16 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::~Items()
@@ -14280,6 +14466,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -14395,12 +14582,12 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -14409,6 +14596,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -14509,7 +14697,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo::Data::~Data()
@@ -14518,6 +14706,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -14624,12 +14813,12 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -14638,6 +14827,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -14738,7 +14928,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo::Data::~Data()
@@ -14747,6 +14937,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -14853,12 +15044,12 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo::~RgEvtInfo()
@@ -14867,6 +15058,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -14967,7 +15159,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo::Data::~Data()
@@ -14976,6 +15168,7 @@ BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundle
 
 bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -15079,9 +15272,11 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
 }
 
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMembers()
+    :
+    events_mbr_member(this, {"member_interface"})
 {
 
-    yang_name = "events-mbr-members"; yang_parent_name = "events-mbr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-mbr-members"; yang_parent_name = "events-mbr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsMbr::EventsMbrMembers::~EventsMbrMembers()
@@ -15090,7 +15285,8 @@ BundleInformation::EventsMbr::EventsMbrMembers::~EventsMbrMembers()
 
 bool BundleInformation::EventsMbr::EventsMbrMembers::has_data() const
 {
-    for (std::size_t index=0; index<events_mbr_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_mbr_member.len(); index++)
     {
         if(events_mbr_member[index]->has_data())
             return true;
@@ -15100,7 +15296,7 @@ bool BundleInformation::EventsMbr::EventsMbrMembers::has_data() const
 
 bool BundleInformation::EventsMbr::EventsMbrMembers::has_operation() const
 {
-    for (std::size_t index=0; index<events_mbr_member.size(); index++)
+    for (std::size_t index=0; index<events_mbr_member.len(); index++)
     {
         if(events_mbr_member[index]->has_operation())
             return true;
@@ -15137,7 +15333,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::get_chil
     {
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember>();
         c->parent = this;
-        events_mbr_member.push_back(c);
+        events_mbr_member.append(c);
         return c;
     }
 
@@ -15149,7 +15345,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_mbr_member)
+    for (auto c : events_mbr_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15178,12 +15374,12 @@ bool BundleInformation::EventsMbr::EventsMbrMembers::has_leaf_or_child_of_name(c
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember()
     :
     member_interface{YType::str, "member-interface"}
-    	,
+        ,
     events_mbr_member_item(std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem>())
 {
     events_mbr_member_item->parent = this;
 
-    yang_name = "events-mbr-member"; yang_parent_name = "events-mbr-members"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-mbr-member"; yang_parent_name = "events-mbr-members"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::~EventsMbrMember()
@@ -15192,6 +15388,7 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::~EventsMbrMembe
 
 bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| (events_mbr_member_item !=  nullptr && events_mbr_member_item->has_data());
 }
@@ -15213,7 +15410,8 @@ std::string BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::get
 std::string BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-mbr-member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "events-mbr-member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -15281,9 +15479,11 @@ bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::has_leaf_o
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::EventsMbrMemberItem()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-mbr-member-item"; yang_parent_name = "events-mbr-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-mbr-member-item"; yang_parent_name = "events-mbr-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::~EventsMbrMemberItem()
@@ -15292,7 +15492,8 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
 
 bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -15302,7 +15503,7 @@ bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrM
 
 bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -15334,7 +15535,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::EventsMb
     {
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -15346,7 +15547,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15385,16 +15586,16 @@ bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrM
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-mbr-member-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-mbr-member-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::~Items()
@@ -15403,6 +15604,7 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
 
 bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -15518,12 +15720,12 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -15532,6 +15734,7 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
 
 bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -15632,7 +15835,7 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo::Data::~Data()
@@ -15641,6 +15844,7 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
 
 bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -15747,12 +15951,12 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -15761,6 +15965,7 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
 
 bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -15861,7 +16066,7 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo::Data::~Data()
@@ -15870,6 +16075,7 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
 
 bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -15976,12 +16182,12 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo::~RgEvtInfo()
@@ -15990,6 +16196,7 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
 
 bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -16090,7 +16297,7 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo::Data::~Data()
@@ -16099,6 +16306,7 @@ BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMember
 
 bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -16202,9 +16410,11 @@ bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrM
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroups()
+    :
+    events_mbr_iccp_group(this, {"iccp_group"})
 {
 
-    yang_name = "events-mbr-iccp-groups"; yang_parent_name = "events-mbr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-mbr-iccp-groups"; yang_parent_name = "events-mbr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::~EventsMbrIccpGroups()
@@ -16213,7 +16423,8 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::~EventsMbrIccpGroups()
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::has_data() const
 {
-    for (std::size_t index=0; index<events_mbr_iccp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_mbr_iccp_group.len(); index++)
     {
         if(events_mbr_iccp_group[index]->has_data())
             return true;
@@ -16223,7 +16434,7 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::has_data() const
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::has_operation() const
 {
-    for (std::size_t index=0; index<events_mbr_iccp_group.size(); index++)
+    for (std::size_t index=0; index<events_mbr_iccp_group.len(); index++)
     {
         if(events_mbr_iccp_group[index]->has_operation())
             return true;
@@ -16260,7 +16471,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::get_c
     {
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup>();
         c->parent = this;
-        events_mbr_iccp_group.push_back(c);
+        events_mbr_iccp_group.append(c);
         return c;
     }
 
@@ -16272,7 +16483,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_mbr_iccp_group)
+    for (auto c : events_mbr_iccp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16301,14 +16512,14 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::has_leaf_or_child_of_nam
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrIccpGroup()
     :
     iccp_group{YType::uint32, "iccp-group"}
-    	,
+        ,
     events_mbr_bundle_children_member_iccp_groups(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups>())
-	,events_mbr_bundle_descendant_iccp_group(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup>())
+    , events_mbr_bundle_descendant_iccp_group(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup>())
 {
     events_mbr_bundle_children_member_iccp_groups->parent = this;
     events_mbr_bundle_descendant_iccp_group->parent = this;
 
-    yang_name = "events-mbr-iccp-group"; yang_parent_name = "events-mbr-iccp-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-mbr-iccp-group"; yang_parent_name = "events-mbr-iccp-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::~EventsMbrIccpGroup()
@@ -16317,6 +16528,7 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::~EventsMb
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return iccp_group.is_set
 	|| (events_mbr_bundle_children_member_iccp_groups !=  nullptr && events_mbr_bundle_children_member_iccp_groups->has_data())
 	|| (events_mbr_bundle_descendant_iccp_group !=  nullptr && events_mbr_bundle_descendant_iccp_group->has_data());
@@ -16340,7 +16552,8 @@ std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGrou
 std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-mbr-iccp-group" <<"[iccp-group='" <<iccp_group <<"']";
+    path_buffer << "events-mbr-iccp-group";
+    ADD_KEY_TOKEN(iccp_group, "iccp-group");
     return path_buffer.str();
 }
 
@@ -16420,9 +16633,11 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::has_
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroups()
+    :
+    events_mbr_bundle_children_member_iccp_group(this, {"member_interface"})
 {
 
-    yang_name = "events-mbr-bundle-children-member-iccp-groups"; yang_parent_name = "events-mbr-iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-mbr-bundle-children-member-iccp-groups"; yang_parent_name = "events-mbr-iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::~EventsMbrBundleChildrenMemberIccpGroups()
@@ -16431,7 +16646,8 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::has_data() const
 {
-    for (std::size_t index=0; index<events_mbr_bundle_children_member_iccp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_mbr_bundle_children_member_iccp_group.len(); index++)
     {
         if(events_mbr_bundle_children_member_iccp_group[index]->has_data())
             return true;
@@ -16441,7 +16657,7 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::has_operation() const
 {
-    for (std::size_t index=0; index<events_mbr_bundle_children_member_iccp_group.size(); index++)
+    for (std::size_t index=0; index<events_mbr_bundle_children_member_iccp_group.len(); index++)
     {
         if(events_mbr_bundle_children_member_iccp_group[index]->has_operation())
             return true;
@@ -16471,7 +16687,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
     {
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup>();
         c->parent = this;
-        events_mbr_bundle_children_member_iccp_group.push_back(c);
+        events_mbr_bundle_children_member_iccp_group.append(c);
         return c;
     }
 
@@ -16483,7 +16699,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_mbr_bundle_children_member_iccp_group)
+    for (auto c : events_mbr_bundle_children_member_iccp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16513,9 +16729,11 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
     :
     member_interface{YType::str, "member-interface"},
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-mbr-bundle-children-member-iccp-group"; yang_parent_name = "events-mbr-bundle-children-member-iccp-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-mbr-bundle-children-member-iccp-group"; yang_parent_name = "events-mbr-bundle-children-member-iccp-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::~EventsMbrBundleChildrenMemberIccpGroup()
@@ -16524,7 +16742,8 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -16535,7 +16754,7 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -16548,7 +16767,8 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
 std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-mbr-bundle-children-member-iccp-group" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "events-mbr-bundle-children-member-iccp-group";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -16569,7 +16789,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
     {
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -16581,7 +16801,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16630,16 +16850,16 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-mbr-bundle-children-member-iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-mbr-bundle-children-member-iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::~Items()
@@ -16648,6 +16868,7 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -16763,12 +16984,12 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -16777,6 +16998,7 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -16877,7 +17099,7 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo::Data::~Data()
@@ -16886,6 +17108,7 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -16992,12 +17215,12 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -17006,6 +17229,7 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -17106,7 +17330,7 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo::Data::~Data()
@@ -17115,6 +17339,7 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -17221,12 +17446,12 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo::~RgEvtInfo()
@@ -17235,6 +17460,7 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -17335,7 +17561,7 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo::Data::~Data()
@@ -17344,6 +17570,7 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -17447,9 +17674,11 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsMbrBundleDescendantIccpGroup()
+    :
+    events_item(this, {})
 {
 
-    yang_name = "events-mbr-bundle-descendant-iccp-group"; yang_parent_name = "events-mbr-iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-mbr-bundle-descendant-iccp-group"; yang_parent_name = "events-mbr-iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::~EventsMbrBundleDescendantIccpGroup()
@@ -17458,7 +17687,8 @@ BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbr
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::has_data() const
 {
-    for (std::size_t index=0; index<events_item.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_item.len(); index++)
     {
         if(events_item[index]->has_data())
             return true;
@@ -17468,7 +17698,7 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
 
 bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::has_operation() const
 {
-    for (std::size_t index=0; index<events_item.size(); index++)
+    for (std::size_t index=0; index<events_item.len(); index++)
     {
         if(events_item[index]->has_operation())
             return true;
@@ -17498,7 +17728,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
     {
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem>();
         c->parent = this;
-        events_item.push_back(c);
+        events_item.append(c);
         return c;
     }
 
@@ -17510,7 +17740,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::Eve
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_item)
+    for (auto c : events_item.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;

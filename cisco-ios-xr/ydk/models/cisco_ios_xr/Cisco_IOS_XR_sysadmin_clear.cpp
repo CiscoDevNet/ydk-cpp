@@ -14,16 +14,16 @@ namespace Cisco_IOS_XR_sysadmin_clear {
 Clear::Clear()
     :
     controller(std::make_shared<Clear::Controller>())
-	,clear_asic_errors_grp(std::make_shared<Clear::ClearAsicErrorsGrp>())
-	,logging(std::make_shared<Clear::Logging>())
-	,configuration(std::make_shared<Clear::Configuration>())
+    , clear_asic_errors_grp(std::make_shared<Clear::ClearAsicErrorsGrp>())
+    , logging(std::make_shared<Clear::Logging>())
+    , configuration(std::make_shared<Clear::Configuration>())
 {
     controller->parent = this;
     clear_asic_errors_grp->parent = this;
     logging->parent = this;
     configuration->parent = this;
 
-    yang_name = "clear"; yang_parent_name = "Cisco-IOS-XR-sysadmin-clear"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear"; yang_parent_name = "Cisco-IOS-XR-sysadmin-clear"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Clear::~Clear()
@@ -32,6 +32,7 @@ Clear::~Clear()
 
 bool Clear::has_data() const
 {
+    if (is_presence_container) return true;
     return (controller !=  nullptr && controller->has_data())
 	|| (clear_asic_errors_grp !=  nullptr && clear_asic_errors_grp->has_data())
 	|| (logging !=  nullptr && logging->has_data())
@@ -174,12 +175,12 @@ bool Clear::has_leaf_or_child_of_name(const std::string & name) const
 Clear::Controller::Controller()
     :
     switch_(std::make_shared<Clear::Controller::Switch>())
-	,fabric(std::make_shared<Clear::Controller::Fabric>())
+    , fabric(std::make_shared<Clear::Controller::Fabric>())
 {
     switch_->parent = this;
     fabric->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::~Controller()
@@ -188,6 +189,7 @@ Clear::Controller::~Controller()
 
 bool Clear::Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return (switch_ !=  nullptr && switch_->has_data())
 	|| (fabric !=  nullptr && fabric->has_data());
 }
@@ -283,7 +285,7 @@ Clear::Controller::Switch::Switch()
 {
     oper->parent = this;
 
-    yang_name = "switch"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "switch"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::~Switch()
@@ -292,6 +294,7 @@ Clear::Controller::Switch::~Switch()
 
 bool Clear::Controller::Switch::has_data() const
 {
+    if (is_presence_container) return true;
     return (oper !=  nullptr && oper->has_data());
 }
 
@@ -368,16 +371,16 @@ bool Clear::Controller::Switch::has_leaf_or_child_of_name(const std::string & na
 Clear::Controller::Switch::Oper::Oper()
     :
     fdb(std::make_shared<Clear::Controller::Switch::Oper::Fdb>())
-	,mlap(std::make_shared<Clear::Controller::Switch::Oper::Mlap>())
-	,sdr(std::make_shared<Clear::Controller::Switch::Oper::Sdr>())
-	,statistics(std::make_shared<Clear::Controller::Switch::Oper::Statistics>())
+    , mlap(std::make_shared<Clear::Controller::Switch::Oper::Mlap>())
+    , sdr(std::make_shared<Clear::Controller::Switch::Oper::Sdr>())
+    , statistics(std::make_shared<Clear::Controller::Switch::Oper::Statistics>())
 {
     fdb->parent = this;
     mlap->parent = this;
     sdr->parent = this;
     statistics->parent = this;
 
-    yang_name = "oper"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oper"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::~Oper()
@@ -386,6 +389,7 @@ Clear::Controller::Switch::Oper::~Oper()
 
 bool Clear::Controller::Switch::Oper::has_data() const
 {
+    if (is_presence_container) return true;
     return (fdb !=  nullptr && fdb->has_data())
 	|| (mlap !=  nullptr && mlap->has_data())
 	|| (sdr !=  nullptr && sdr->has_data())
@@ -508,9 +512,11 @@ bool Clear::Controller::Switch::Oper::has_leaf_or_child_of_name(const std::strin
 }
 
 Clear::Controller::Switch::Oper::Fdb::Fdb()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "fdb"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fdb"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Fdb::~Fdb()
@@ -519,7 +525,8 @@ Clear::Controller::Switch::Oper::Fdb::~Fdb()
 
 bool Clear::Controller::Switch::Oper::Fdb::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -529,7 +536,7 @@ bool Clear::Controller::Switch::Oper::Fdb::has_data() const
 
 bool Clear::Controller::Switch::Oper::Fdb::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -566,7 +573,7 @@ std::shared_ptr<Entity> Clear::Controller::Switch::Oper::Fdb::get_child_by_name(
     {
         auto c = std::make_shared<Clear::Controller::Switch::Oper::Fdb::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -578,7 +585,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Controller::Switch::Oper::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -611,7 +618,7 @@ Clear::Controller::Switch::Oper::Fdb::Location::Location()
     switch_id{YType::enumeration, "switch-id"}
 {
 
-    yang_name = "location"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Fdb::Location::~Location()
@@ -620,6 +627,7 @@ Clear::Controller::Switch::Oper::Fdb::Location::~Location()
 
 bool Clear::Controller::Switch::Oper::Fdb::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set;
@@ -643,7 +651,10 @@ std::string Clear::Controller::Switch::Oper::Fdb::Location::get_absolute_path() 
 std::string Clear::Controller::Switch::Oper::Fdb::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -722,7 +733,7 @@ Clear::Controller::Switch::Oper::Mlap::Mlap()
 {
     statistics->parent = this;
 
-    yang_name = "mlap"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlap"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Mlap::~Mlap()
@@ -731,6 +742,7 @@ Clear::Controller::Switch::Oper::Mlap::~Mlap()
 
 bool Clear::Controller::Switch::Oper::Mlap::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data());
 }
 
@@ -805,9 +817,11 @@ bool Clear::Controller::Switch::Oper::Mlap::has_leaf_or_child_of_name(const std:
 }
 
 Clear::Controller::Switch::Oper::Mlap::Statistics::Statistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "mlap"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "mlap"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Mlap::Statistics::~Statistics()
@@ -816,7 +830,8 @@ Clear::Controller::Switch::Oper::Mlap::Statistics::~Statistics()
 
 bool Clear::Controller::Switch::Oper::Mlap::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -826,7 +841,7 @@ bool Clear::Controller::Switch::Oper::Mlap::Statistics::has_data() const
 
 bool Clear::Controller::Switch::Oper::Mlap::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -863,7 +878,7 @@ std::shared_ptr<Entity> Clear::Controller::Switch::Oper::Mlap::Statistics::get_c
     {
         auto c = std::make_shared<Clear::Controller::Switch::Oper::Mlap::Statistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -875,7 +890,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Controller::Switch::Oper::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -908,7 +923,7 @@ Clear::Controller::Switch::Oper::Mlap::Statistics::Location::Location()
     switch_id{YType::enumeration, "switch-id"}
 {
 
-    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Mlap::Statistics::Location::~Location()
@@ -917,6 +932,7 @@ Clear::Controller::Switch::Oper::Mlap::Statistics::Location::~Location()
 
 bool Clear::Controller::Switch::Oper::Mlap::Statistics::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set;
@@ -940,7 +956,10 @@ std::string Clear::Controller::Switch::Oper::Mlap::Statistics::Location::get_abs
 std::string Clear::Controller::Switch::Oper::Mlap::Statistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -1019,7 +1038,7 @@ Clear::Controller::Switch::Oper::Sdr::Sdr()
 {
     statistics->parent = this;
 
-    yang_name = "sdr"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Sdr::~Sdr()
@@ -1028,6 +1047,7 @@ Clear::Controller::Switch::Oper::Sdr::~Sdr()
 
 bool Clear::Controller::Switch::Oper::Sdr::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data());
 }
 
@@ -1102,9 +1122,11 @@ bool Clear::Controller::Switch::Oper::Sdr::has_leaf_or_child_of_name(const std::
 }
 
 Clear::Controller::Switch::Oper::Sdr::Statistics::Statistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Sdr::Statistics::~Statistics()
@@ -1113,7 +1135,8 @@ Clear::Controller::Switch::Oper::Sdr::Statistics::~Statistics()
 
 bool Clear::Controller::Switch::Oper::Sdr::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1123,7 +1146,7 @@ bool Clear::Controller::Switch::Oper::Sdr::Statistics::has_data() const
 
 bool Clear::Controller::Switch::Oper::Sdr::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1160,7 +1183,7 @@ std::shared_ptr<Entity> Clear::Controller::Switch::Oper::Sdr::Statistics::get_ch
     {
         auto c = std::make_shared<Clear::Controller::Switch::Oper::Sdr::Statistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1172,7 +1195,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Controller::Switch::Oper::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1205,7 +1228,7 @@ Clear::Controller::Switch::Oper::Sdr::Statistics::Location::Location()
     switch_id{YType::enumeration, "switch-id"}
 {
 
-    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Sdr::Statistics::Location::~Location()
@@ -1214,6 +1237,7 @@ Clear::Controller::Switch::Oper::Sdr::Statistics::Location::~Location()
 
 bool Clear::Controller::Switch::Oper::Sdr::Statistics::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set;
@@ -1237,7 +1261,10 @@ std::string Clear::Controller::Switch::Oper::Sdr::Statistics::Location::get_abso
 std::string Clear::Controller::Switch::Oper::Sdr::Statistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -1311,9 +1338,11 @@ bool Clear::Controller::Switch::Oper::Sdr::Statistics::Location::has_leaf_or_chi
 }
 
 Clear::Controller::Switch::Oper::Statistics::Statistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Statistics::~Statistics()
@@ -1322,7 +1351,8 @@ Clear::Controller::Switch::Oper::Statistics::~Statistics()
 
 bool Clear::Controller::Switch::Oper::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1332,7 +1362,7 @@ bool Clear::Controller::Switch::Oper::Statistics::has_data() const
 
 bool Clear::Controller::Switch::Oper::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1369,7 +1399,7 @@ std::shared_ptr<Entity> Clear::Controller::Switch::Oper::Statistics::get_child_b
     {
         auto c = std::make_shared<Clear::Controller::Switch::Oper::Statistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1381,7 +1411,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Controller::Switch::Oper::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1414,7 +1444,7 @@ Clear::Controller::Switch::Oper::Statistics::Location::Location()
     switch_id{YType::enumeration, "switch-id"}
 {
 
-    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Statistics::Location::~Location()
@@ -1423,6 +1453,7 @@ Clear::Controller::Switch::Oper::Statistics::Location::~Location()
 
 bool Clear::Controller::Switch::Oper::Statistics::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set;
@@ -1446,7 +1477,10 @@ std::string Clear::Controller::Switch::Oper::Statistics::Location::get_absolute_
 std::string Clear::Controller::Switch::Oper::Statistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -1522,14 +1556,14 @@ bool Clear::Controller::Switch::Oper::Statistics::Location::has_leaf_or_child_of
 Clear::Controller::Fabric::Fabric()
     :
     counter(std::make_shared<Clear::Controller::Fabric::Counter>())
-	,clear_statistics(std::make_shared<Clear::Controller::Fabric::ClearStatistics>())
-	,link(std::make_shared<Clear::Controller::Fabric::Link>())
+    , clear_statistics(std::make_shared<Clear::Controller::Fabric::ClearStatistics>())
+    , link(std::make_shared<Clear::Controller::Fabric::Link>())
 {
     counter->parent = this;
     clear_statistics->parent = this;
     link->parent = this;
 
-    yang_name = "fabric"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fabric"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Fabric::~Fabric()
@@ -1538,6 +1572,7 @@ Clear::Controller::Fabric::~Fabric()
 
 bool Clear::Controller::Fabric::has_data() const
 {
+    if (is_presence_container) return true;
     return (counter !=  nullptr && counter->has_data())
 	|| (clear_statistics !=  nullptr && clear_statistics->has_data())
 	|| (link !=  nullptr && link->has_data());
@@ -1644,9 +1679,11 @@ bool Clear::Controller::Fabric::has_leaf_or_child_of_name(const std::string & na
 }
 
 Clear::Controller::Fabric::Counter::Counter()
+    :
+    plane(this, {"planeid"})
 {
 
-    yang_name = "counter"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "counter"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Fabric::Counter::~Counter()
@@ -1655,7 +1692,8 @@ Clear::Controller::Fabric::Counter::~Counter()
 
 bool Clear::Controller::Fabric::Counter::has_data() const
 {
-    for (std::size_t index=0; index<plane.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<plane.len(); index++)
     {
         if(plane[index]->has_data())
             return true;
@@ -1665,7 +1703,7 @@ bool Clear::Controller::Fabric::Counter::has_data() const
 
 bool Clear::Controller::Fabric::Counter::has_operation() const
 {
-    for (std::size_t index=0; index<plane.size(); index++)
+    for (std::size_t index=0; index<plane.len(); index++)
     {
         if(plane[index]->has_operation())
             return true;
@@ -1702,7 +1740,7 @@ std::shared_ptr<Entity> Clear::Controller::Fabric::Counter::get_child_by_name(co
     {
         auto c = std::make_shared<Clear::Controller::Fabric::Counter::Plane>();
         c->parent = this;
-        plane.push_back(c);
+        plane.append(c);
         return c;
     }
 
@@ -1714,7 +1752,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Controller::Fabric::Counte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : plane)
+    for (auto c : plane.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1745,7 +1783,7 @@ Clear::Controller::Fabric::Counter::Plane::Plane()
     planeid{YType::str, "planeid"}
 {
 
-    yang_name = "plane"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "plane"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Fabric::Counter::Plane::~Plane()
@@ -1754,6 +1792,7 @@ Clear::Controller::Fabric::Counter::Plane::~Plane()
 
 bool Clear::Controller::Fabric::Counter::Plane::has_data() const
 {
+    if (is_presence_container) return true;
     return planeid.is_set;
 }
 
@@ -1773,7 +1812,8 @@ std::string Clear::Controller::Fabric::Counter::Plane::get_absolute_path() const
 std::string Clear::Controller::Fabric::Counter::Plane::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "plane" <<"[planeid='" <<planeid <<"']";
+    path_buffer << "plane";
+    ADD_KEY_TOKEN(planeid, "planeid");
     return path_buffer.str();
 }
 
@@ -1825,9 +1865,11 @@ bool Clear::Controller::Fabric::Counter::Plane::has_leaf_or_child_of_name(const 
 }
 
 Clear::Controller::Fabric::ClearStatistics::ClearStatistics()
+    :
+    plane(this, {"planeid"})
 {
 
-    yang_name = "clear_statistics"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clear_statistics"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Fabric::ClearStatistics::~ClearStatistics()
@@ -1836,7 +1878,8 @@ Clear::Controller::Fabric::ClearStatistics::~ClearStatistics()
 
 bool Clear::Controller::Fabric::ClearStatistics::has_data() const
 {
-    for (std::size_t index=0; index<plane.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<plane.len(); index++)
     {
         if(plane[index]->has_data())
             return true;
@@ -1846,7 +1889,7 @@ bool Clear::Controller::Fabric::ClearStatistics::has_data() const
 
 bool Clear::Controller::Fabric::ClearStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<plane.size(); index++)
+    for (std::size_t index=0; index<plane.len(); index++)
     {
         if(plane[index]->has_operation())
             return true;
@@ -1883,7 +1926,7 @@ std::shared_ptr<Entity> Clear::Controller::Fabric::ClearStatistics::get_child_by
     {
         auto c = std::make_shared<Clear::Controller::Fabric::ClearStatistics::Plane>();
         c->parent = this;
-        plane.push_back(c);
+        plane.append(c);
         return c;
     }
 
@@ -1895,7 +1938,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Controller::Fabric::ClearS
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : plane)
+    for (auto c : plane.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1926,7 +1969,7 @@ Clear::Controller::Fabric::ClearStatistics::Plane::Plane()
     planeid{YType::str, "planeid"}
 {
 
-    yang_name = "plane"; yang_parent_name = "clear_statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "plane"; yang_parent_name = "clear_statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Fabric::ClearStatistics::Plane::~Plane()
@@ -1935,6 +1978,7 @@ Clear::Controller::Fabric::ClearStatistics::Plane::~Plane()
 
 bool Clear::Controller::Fabric::ClearStatistics::Plane::has_data() const
 {
+    if (is_presence_container) return true;
     return planeid.is_set;
 }
 
@@ -1954,7 +1998,8 @@ std::string Clear::Controller::Fabric::ClearStatistics::Plane::get_absolute_path
 std::string Clear::Controller::Fabric::ClearStatistics::Plane::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "plane" <<"[planeid='" <<planeid <<"']";
+    path_buffer << "plane";
+    ADD_KEY_TOKEN(planeid, "planeid");
     return path_buffer.str();
 }
 
@@ -2006,9 +2051,11 @@ bool Clear::Controller::Fabric::ClearStatistics::Plane::has_leaf_or_child_of_nam
 }
 
 Clear::Controller::Fabric::Link::Link()
+    :
+    rack(this, {"rack_number"})
 {
 
-    yang_name = "link"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Fabric::Link::~Link()
@@ -2017,7 +2064,8 @@ Clear::Controller::Fabric::Link::~Link()
 
 bool Clear::Controller::Fabric::Link::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -2027,7 +2075,7 @@ bool Clear::Controller::Fabric::Link::has_data() const
 
 bool Clear::Controller::Fabric::Link::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -2064,7 +2112,7 @@ std::shared_ptr<Entity> Clear::Controller::Fabric::Link::get_child_by_name(const
     {
         auto c = std::make_shared<Clear::Controller::Fabric::Link::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -2076,7 +2124,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Controller::Fabric::Link::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2105,9 +2153,11 @@ bool Clear::Controller::Fabric::Link::has_leaf_or_child_of_name(const std::strin
 Clear::Controller::Fabric::Link::Rack::Rack()
     :
     rack_number{YType::int32, "rack_number"}
+        ,
+    port(this, {"portname"})
 {
 
-    yang_name = "rack"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Fabric::Link::Rack::~Rack()
@@ -2116,7 +2166,8 @@ Clear::Controller::Fabric::Link::Rack::~Rack()
 
 bool Clear::Controller::Fabric::Link::Rack::has_data() const
 {
-    for (std::size_t index=0; index<port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port.len(); index++)
     {
         if(port[index]->has_data())
             return true;
@@ -2126,7 +2177,7 @@ bool Clear::Controller::Fabric::Link::Rack::has_data() const
 
 bool Clear::Controller::Fabric::Link::Rack::has_operation() const
 {
-    for (std::size_t index=0; index<port.size(); index++)
+    for (std::size_t index=0; index<port.len(); index++)
     {
         if(port[index]->has_operation())
             return true;
@@ -2145,7 +2196,8 @@ std::string Clear::Controller::Fabric::Link::Rack::get_absolute_path() const
 std::string Clear::Controller::Fabric::Link::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack_number='" <<rack_number <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack_number, "rack_number");
     return path_buffer.str();
 }
 
@@ -2165,7 +2217,7 @@ std::shared_ptr<Entity> Clear::Controller::Fabric::Link::Rack::get_child_by_name
     {
         auto c = std::make_shared<Clear::Controller::Fabric::Link::Rack::Port>();
         c->parent = this;
-        port.push_back(c);
+        port.append(c);
         return c;
     }
 
@@ -2177,7 +2229,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Controller::Fabric::Link::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port)
+    for (auto c : port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2217,12 +2269,13 @@ Clear::Controller::Fabric::Link::Rack::Port::Port()
     :
     portname{YType::str, "portname"},
     description{YType::str, "description"}
-    	,
-    statistics(std::make_shared<Clear::Controller::Fabric::Link::Rack::Port::Statistics>())
+        ,
+    location(this, {"loc_str"})
+    , statistics(std::make_shared<Clear::Controller::Fabric::Link::Rack::Port::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "port"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::Controller::Fabric::Link::Rack::Port::~Port()
@@ -2231,7 +2284,8 @@ Clear::Controller::Fabric::Link::Rack::Port::~Port()
 
 bool Clear::Controller::Fabric::Link::Rack::Port::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2243,7 +2297,7 @@ bool Clear::Controller::Fabric::Link::Rack::Port::has_data() const
 
 bool Clear::Controller::Fabric::Link::Rack::Port::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2257,7 +2311,8 @@ bool Clear::Controller::Fabric::Link::Rack::Port::has_operation() const
 std::string Clear::Controller::Fabric::Link::Rack::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port" <<"[portname='" <<portname <<"']";
+    path_buffer << "port";
+    ADD_KEY_TOKEN(portname, "portname");
     return path_buffer.str();
 }
 
@@ -2278,7 +2333,7 @@ std::shared_ptr<Entity> Clear::Controller::Fabric::Link::Rack::Port::get_child_b
     {
         auto c = std::make_shared<Clear::Controller::Fabric::Link::Rack::Port::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2299,7 +2354,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Controller::Fabric::Link::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2353,12 +2408,12 @@ bool Clear::Controller::Fabric::Link::Rack::Port::has_leaf_or_child_of_name(cons
 Clear::Controller::Fabric::Link::Rack::Port::Location::Location()
     :
     loc_str{YType::str, "loc_str"}
-    	,
+        ,
     statistics(std::make_shared<Clear::Controller::Fabric::Link::Rack::Port::Location::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "location"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::Controller::Fabric::Link::Rack::Port::Location::~Location()
@@ -2367,6 +2422,7 @@ Clear::Controller::Fabric::Link::Rack::Port::Location::~Location()
 
 bool Clear::Controller::Fabric::Link::Rack::Port::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return loc_str.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -2381,7 +2437,8 @@ bool Clear::Controller::Fabric::Link::Rack::Port::Location::has_operation() cons
 std::string Clear::Controller::Fabric::Link::Rack::Port::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc_str='" <<loc_str <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc_str, "loc_str");
     return path_buffer.str();
 }
 
@@ -2449,7 +2506,7 @@ bool Clear::Controller::Fabric::Link::Rack::Port::Location::has_leaf_or_child_of
 Clear::Controller::Fabric::Link::Rack::Port::Location::Statistics::Statistics()
 {
 
-    yang_name = "statistics"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::Controller::Fabric::Link::Rack::Port::Location::Statistics::~Statistics()
@@ -2458,6 +2515,7 @@ Clear::Controller::Fabric::Link::Rack::Port::Location::Statistics::~Statistics()
 
 bool Clear::Controller::Fabric::Link::Rack::Port::Location::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2510,7 +2568,7 @@ bool Clear::Controller::Fabric::Link::Rack::Port::Location::Statistics::has_leaf
 Clear::Controller::Fabric::Link::Rack::Port::Statistics::Statistics()
 {
 
-    yang_name = "statistics"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::Controller::Fabric::Link::Rack::Port::Statistics::~Statistics()
@@ -2519,6 +2577,7 @@ Clear::Controller::Fabric::Link::Rack::Port::Statistics::~Statistics()
 
 bool Clear::Controller::Fabric::Link::Rack::Port::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2569,9 +2628,11 @@ bool Clear::Controller::Fabric::Link::Rack::Port::Statistics::has_leaf_or_child_
 }
 
 Clear::ClearAsicErrorsGrp::ClearAsicErrorsGrp()
+    :
+    clear_device(this, {"device_name"})
 {
 
-    yang_name = "clear-asic-errors-grp"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clear-asic-errors-grp"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::ClearAsicErrorsGrp::~ClearAsicErrorsGrp()
@@ -2580,7 +2641,8 @@ Clear::ClearAsicErrorsGrp::~ClearAsicErrorsGrp()
 
 bool Clear::ClearAsicErrorsGrp::has_data() const
 {
-    for (std::size_t index=0; index<clear_device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clear_device.len(); index++)
     {
         if(clear_device[index]->has_data())
             return true;
@@ -2590,7 +2652,7 @@ bool Clear::ClearAsicErrorsGrp::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::has_operation() const
 {
-    for (std::size_t index=0; index<clear_device.size(); index++)
+    for (std::size_t index=0; index<clear_device.len(); index++)
     {
         if(clear_device[index]->has_operation())
             return true;
@@ -2627,7 +2689,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::get_child_by_name(const std::
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice>();
         c->parent = this;
-        clear_device.push_back(c);
+        clear_device.append(c);
         return c;
     }
 
@@ -2639,7 +2701,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clear_device)
+    for (auto c : clear_device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2668,12 +2730,13 @@ bool Clear::ClearAsicErrorsGrp::has_leaf_or_child_of_name(const std::string & na
 Clear::ClearAsicErrorsGrp::ClearDevice::ClearDevice()
     :
     device_name{YType::str, "device-name"}
-    	,
-    all_instances(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances>())
+        ,
+    instance(this, {"instance_num"})
+    , all_instances(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances>())
 {
     all_instances->parent = this;
 
-    yang_name = "clear-device"; yang_parent_name = "clear-asic-errors-grp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clear-device"; yang_parent_name = "clear-asic-errors-grp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::~ClearDevice()
@@ -2682,7 +2745,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::~ClearDevice()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -2693,7 +2757,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -2713,7 +2777,8 @@ std::string Clear::ClearAsicErrorsGrp::ClearDevice::get_absolute_path() const
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clear-device" <<"[device-name='" <<device_name <<"']";
+    path_buffer << "clear-device";
+    ADD_KEY_TOKEN(device_name, "device-name");
     return path_buffer.str();
 }
 
@@ -2733,7 +2798,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::get_child_by_nam
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -2754,7 +2819,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2798,25 +2863,25 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::has_leaf_or_child_of_name(const std
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Instance()
     :
     instance_num{YType::uint32, "instance-num"}
-    	,
+        ,
     sbe(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe>())
-	,mbe(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe>())
-	,parity(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity>())
-	,generic(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic>())
-	,crc(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc>())
-	,reset(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset>())
-	,barrier(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier>())
-	,unexpected(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected>())
-	,link(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link>())
-	,oor_thresh(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh>())
-	,bp(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp>())
-	,io(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io>())
-	,ucode(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode>())
-	,config(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config>())
-	,indirect(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect>())
-	,nonerr(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr>())
-	,summary(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary>())
-	,all(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All>())
+    , mbe(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe>())
+    , parity(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity>())
+    , generic(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic>())
+    , crc(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc>())
+    , reset(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset>())
+    , barrier(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier>())
+    , unexpected(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected>())
+    , link(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link>())
+    , oor_thresh(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh>())
+    , bp(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp>())
+    , io(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io>())
+    , ucode(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode>())
+    , config(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config>())
+    , indirect(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect>())
+    , nonerr(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr>())
+    , summary(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary>())
+    , all(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All>())
 {
     sbe->parent = this;
     mbe->parent = this;
@@ -2837,7 +2902,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Instance()
     summary->parent = this;
     all->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "clear-device"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "clear-device"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::~Instance()
@@ -2846,6 +2911,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::~Instance()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_num.is_set
 	|| (sbe !=  nullptr && sbe->has_data())
 	|| (mbe !=  nullptr && mbe->has_data())
@@ -2894,7 +2960,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::has_operation() const
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[instance-num='" <<instance_num <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(instance_num, "instance-num");
     return path_buffer.str();
 }
 
@@ -3198,9 +3265,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::has_leaf_or_child_of_name
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::Sbe()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "sbe"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sbe"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::~Sbe()
@@ -3209,7 +3278,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::~Sbe()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3219,7 +3289,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3249,7 +3319,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::g
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3261,7 +3331,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3292,7 +3362,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "sbe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "sbe"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::Location::~Location()
@@ -3301,6 +3371,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -3313,7 +3384,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::Location::has_operat
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -3365,9 +3437,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::Location::has_leaf_o
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::Mbe()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "mbe"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mbe"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::~Mbe()
@@ -3376,7 +3450,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::~Mbe()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3386,7 +3461,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3416,7 +3491,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::g
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3428,7 +3503,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3459,7 +3534,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "mbe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "mbe"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::Location::~Location()
@@ -3468,6 +3543,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -3480,7 +3556,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::Location::has_operat
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -3532,9 +3609,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::Location::has_leaf_o
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::Parity()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "parity"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parity"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::~Parity()
@@ -3543,7 +3622,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::~Parity()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3553,7 +3633,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3583,7 +3663,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3595,7 +3675,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3626,7 +3706,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::Location::~Location()
@@ -3635,6 +3715,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -3647,7 +3728,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::Location::has_ope
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -3699,9 +3781,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::Location::has_lea
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::Generic()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "generic"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::~Generic()
@@ -3710,7 +3794,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::~Generic()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3720,7 +3805,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3750,7 +3835,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generi
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3762,7 +3847,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3793,7 +3878,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "generic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "generic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::Location::~Location()
@@ -3802,6 +3887,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -3814,7 +3900,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::Location::has_op
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -3866,9 +3953,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::Location::has_le
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::Crc()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "crc"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crc"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::~Crc()
@@ -3877,7 +3966,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::~Crc()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3887,7 +3977,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3917,7 +4007,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::g
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3929,7 +4019,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3960,7 +4050,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "crc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "crc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::Location::~Location()
@@ -3969,6 +4059,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -3981,7 +4072,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::Location::has_operat
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -4033,9 +4125,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::Location::has_leaf_o
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::Reset()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "reset"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reset"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::~Reset()
@@ -4044,7 +4138,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::~Reset()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4054,7 +4149,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4084,7 +4179,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset:
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4096,7 +4191,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4127,7 +4222,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "reset"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "reset"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::Location::~Location()
@@ -4136,6 +4231,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -4148,7 +4244,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::Location::has_oper
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -4200,9 +4297,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::Location::has_leaf
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::Barrier()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "barrier"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "barrier"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::~Barrier()
@@ -4211,7 +4310,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::~Barrier()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4221,7 +4321,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4251,7 +4351,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrie
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4263,7 +4363,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4294,7 +4394,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "barrier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "barrier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::Location::~Location()
@@ -4303,6 +4403,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -4315,7 +4416,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::Location::has_op
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -4367,9 +4469,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::Location::has_le
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::Unexpected()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "unexpected"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unexpected"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::~Unexpected()
@@ -4378,7 +4482,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::~Unexpected()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4388,7 +4493,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::has_data() co
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4418,7 +4523,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpe
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4430,7 +4535,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4461,7 +4566,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::Location::Location
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "unexpected"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "unexpected"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::Location::~Location()
@@ -4470,6 +4575,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::Location::~Locatio
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -4482,7 +4588,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::Location::has
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -4534,9 +4641,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::Location::has
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::Link()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "link"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::~Link()
@@ -4545,7 +4654,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::~Link()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4555,7 +4665,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4585,7 +4695,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4597,7 +4707,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4628,7 +4738,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::Location::~Location()
@@ -4637,6 +4747,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -4649,7 +4760,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::Location::has_opera
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -4701,9 +4813,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::Location::has_leaf_
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::OorThresh()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "oor-thresh"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oor-thresh"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::~OorThresh()
@@ -4712,7 +4826,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::~OorThresh()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4722,7 +4837,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::has_data() con
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4752,7 +4867,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThr
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4764,7 +4879,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4795,7 +4910,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::Location::Location(
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "oor-thresh"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "oor-thresh"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::Location::~Location()
@@ -4804,6 +4919,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::Location::~Location
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -4816,7 +4932,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::Location::has_
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -4868,9 +4985,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::Location::has_
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::Bp()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "bp"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bp"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::~Bp()
@@ -4879,7 +4998,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::~Bp()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4889,7 +5009,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4919,7 +5039,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::ge
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4931,7 +5051,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4962,7 +5082,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::Location::~Location()
@@ -4971,6 +5091,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -4983,7 +5104,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::Location::has_operati
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -5035,9 +5157,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::Location::has_leaf_or
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::Io()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "io"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "io"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::~Io()
@@ -5046,7 +5170,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::~Io()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5056,7 +5181,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5086,7 +5211,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::ge
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5098,7 +5223,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5129,7 +5254,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "io"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "io"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::Location::~Location()
@@ -5138,6 +5263,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -5150,7 +5276,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::Location::has_operati
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -5202,9 +5329,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::Location::has_leaf_or
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::Ucode()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "ucode"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ucode"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::~Ucode()
@@ -5213,7 +5342,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::~Ucode()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5223,7 +5353,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5253,7 +5383,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode:
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5265,7 +5395,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5296,7 +5426,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "ucode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "ucode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::Location::~Location()
@@ -5305,6 +5435,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -5317,7 +5448,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::Location::has_oper
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -5369,9 +5501,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::Location::has_leaf
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::Config()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "config"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::~Config()
@@ -5380,7 +5514,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::~Config()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5390,7 +5525,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5420,7 +5555,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5432,7 +5567,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5463,7 +5598,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::Location::~Location()
@@ -5472,6 +5607,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -5484,7 +5620,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::Location::has_ope
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -5536,9 +5673,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::Location::has_lea
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::Indirect()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "indirect"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "indirect"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::~Indirect()
@@ -5547,7 +5686,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::~Indirect()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5557,7 +5697,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::has_data() cons
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5587,7 +5727,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indire
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5599,7 +5739,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5630,7 +5770,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "indirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "indirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::Location::~Location()
@@ -5639,6 +5779,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::Location::~Location(
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -5651,7 +5792,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::Location::has_o
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -5703,9 +5845,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::Location::has_l
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::Nonerr()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "nonerr"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nonerr"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::~Nonerr()
@@ -5714,7 +5858,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::~Nonerr()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5724,7 +5869,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5754,7 +5899,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5766,7 +5911,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5797,7 +5942,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "nonerr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "nonerr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::Location::~Location()
@@ -5806,6 +5951,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -5818,7 +5964,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::Location::has_ope
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -5870,9 +6017,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::Location::has_lea
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::Summary()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "summary"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::~Summary()
@@ -5881,7 +6030,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::~Summary()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5891,7 +6041,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5921,7 +6071,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summar
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5933,7 +6083,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5964,7 +6114,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::Location::~Location()
@@ -5973,6 +6123,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -5985,7 +6136,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::Location::has_op
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -6039,10 +6191,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::Location::has_le
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::All()
     :
     history(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History>())
+    , location(this, {"location_name"})
 {
     history->parent = this;
 
-    yang_name = "all"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::~All()
@@ -6051,7 +6204,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::~All()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6061,7 +6215,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6101,7 +6255,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::g
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6118,7 +6272,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6145,9 +6299,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::has_leaf_or_child_of
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::History()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "history"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::~History()
@@ -6156,7 +6312,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::~History()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6166,7 +6323,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::has_data() 
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6196,7 +6353,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::H
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6208,7 +6365,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6239,7 +6396,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::Location::Locati
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::Location::~Location()
@@ -6248,6 +6405,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::Location::~Locat
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -6260,7 +6418,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::Location::h
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -6316,7 +6475,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::Location::~Location()
@@ -6325,6 +6484,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -6337,7 +6497,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::Location::has_operat
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -6391,23 +6552,23 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::Location::has_leaf_o
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::AllInstances()
     :
     sbe(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe>())
-	,mbe(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe>())
-	,parity(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity>())
-	,generic(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic>())
-	,crc(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc>())
-	,reset(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset>())
-	,barrier(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier>())
-	,unexpected(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected>())
-	,link(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link>())
-	,oor_thresh(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh>())
-	,bp(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp>())
-	,io(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io>())
-	,ucode(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode>())
-	,config(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config>())
-	,indirect(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect>())
-	,nonerr(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr>())
-	,summary(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary>())
-	,all(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All>())
+    , mbe(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe>())
+    , parity(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity>())
+    , generic(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic>())
+    , crc(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc>())
+    , reset(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset>())
+    , barrier(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier>())
+    , unexpected(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected>())
+    , link(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link>())
+    , oor_thresh(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh>())
+    , bp(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp>())
+    , io(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io>())
+    , ucode(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode>())
+    , config(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config>())
+    , indirect(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect>())
+    , nonerr(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr>())
+    , summary(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary>())
+    , all(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All>())
 {
     sbe->parent = this;
     mbe->parent = this;
@@ -6428,7 +6589,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::AllInstances()
     summary->parent = this;
     all->parent = this;
 
-    yang_name = "all-instances"; yang_parent_name = "clear-device"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-instances"; yang_parent_name = "clear-device"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::~AllInstances()
@@ -6437,6 +6598,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::~AllInstances()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::has_data() const
 {
+    if (is_presence_container) return true;
     return (sbe !=  nullptr && sbe->has_data())
 	|| (mbe !=  nullptr && mbe->has_data())
 	|| (parity !=  nullptr && parity->has_data())
@@ -6776,9 +6938,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::has_leaf_or_child_of_
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::Sbe()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "sbe"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sbe"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::~Sbe()
@@ -6787,7 +6951,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::~Sbe()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6797,7 +6962,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6827,7 +6992,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sb
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6839,7 +7004,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6870,7 +7035,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "sbe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "sbe"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::Location::~Location()
@@ -6879,6 +7044,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -6891,7 +7057,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::Location::has_op
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -6943,9 +7110,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::Location::has_le
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::Mbe()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "mbe"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mbe"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::~Mbe()
@@ -6954,7 +7123,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::~Mbe()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6964,7 +7134,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6994,7 +7164,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mb
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7006,7 +7176,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7037,7 +7207,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "mbe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "mbe"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::Location::~Location()
@@ -7046,6 +7216,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -7058,7 +7229,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::Location::has_op
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -7110,9 +7282,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::Location::has_le
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::Parity()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "parity"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parity"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::~Parity()
@@ -7121,7 +7295,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::~Parity()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7131,7 +7306,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::has_data() co
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7161,7 +7336,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Pa
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7173,7 +7348,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7204,7 +7379,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::Location::Location
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::Location::~Location()
@@ -7213,6 +7388,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::Location::~Locatio
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -7225,7 +7401,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::Location::has
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -7277,9 +7454,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::Location::has
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::Generic()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "generic"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::~Generic()
@@ -7288,7 +7467,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::~Generic()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7298,7 +7478,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::has_data() c
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7328,7 +7508,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ge
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7340,7 +7520,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7371,7 +7551,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::Location::Locatio
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "generic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "generic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::Location::~Location()
@@ -7380,6 +7560,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::Location::~Locati
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -7392,7 +7573,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::Location::ha
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -7444,9 +7626,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::Location::ha
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::Crc()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "crc"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crc"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::~Crc()
@@ -7455,7 +7639,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::~Crc()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7465,7 +7650,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7495,7 +7680,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Cr
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7507,7 +7692,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7538,7 +7723,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "crc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "crc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::Location::~Location()
@@ -7547,6 +7732,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -7559,7 +7745,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::Location::has_op
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -7611,9 +7798,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::Location::has_le
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::Reset()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "reset"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reset"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::~Reset()
@@ -7622,7 +7811,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::~Reset()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7632,7 +7822,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::has_data() con
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7662,7 +7852,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Re
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7674,7 +7864,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7705,7 +7895,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::Location::Location(
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "reset"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "reset"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::Location::~Location()
@@ -7714,6 +7904,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::Location::~Location
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -7726,7 +7917,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::Location::has_
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -7778,9 +7970,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::Location::has_
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::Barrier()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "barrier"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "barrier"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::~Barrier()
@@ -7789,7 +7983,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::~Barrier()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7799,7 +7994,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::has_data() c
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7829,7 +8024,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ba
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7841,7 +8036,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7872,7 +8067,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::Location::Locatio
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "barrier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "barrier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::Location::~Location()
@@ -7881,6 +8076,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::Location::~Locati
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -7893,7 +8089,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::Location::ha
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -7945,9 +8142,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::Location::ha
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::Unexpected()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "unexpected"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unexpected"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::~Unexpected()
@@ -7956,7 +8155,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::~Unexpected()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7966,7 +8166,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::has_data(
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7996,7 +8196,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Un
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8008,7 +8208,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8039,7 +8239,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::Location::Loca
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "unexpected"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "unexpected"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::Location::~Location()
@@ -8048,6 +8248,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::Location::~Loc
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -8060,7 +8261,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::Location:
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -8112,9 +8314,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::Location:
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::Link()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "link"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::~Link()
@@ -8123,7 +8327,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::~Link()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8133,7 +8338,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::has_data() cons
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8163,7 +8368,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Li
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8175,7 +8380,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8206,7 +8411,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::Location::~Location()
@@ -8215,6 +8420,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::Location::~Location(
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -8227,7 +8433,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::Location::has_o
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -8279,9 +8486,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::Location::has_l
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::OorThresh()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "oor-thresh"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oor-thresh"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::~OorThresh()
@@ -8290,7 +8499,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::~OorThresh()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8300,7 +8510,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::has_data()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8330,7 +8540,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Oo
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8342,7 +8552,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8373,7 +8583,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::Location::Locat
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "oor-thresh"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "oor-thresh"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::Location::~Location()
@@ -8382,6 +8592,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::Location::~Loca
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -8394,7 +8605,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::Location::
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -8446,9 +8658,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::Location::
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::Bp()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "bp"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bp"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::~Bp()
@@ -8457,7 +8671,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::~Bp()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8467,7 +8682,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8497,7 +8712,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8509,7 +8724,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8540,7 +8755,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::Location::~Location()
@@ -8549,6 +8764,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -8561,7 +8777,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::Location::has_ope
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -8613,9 +8830,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::Location::has_lea
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::Io()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "io"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "io"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::~Io()
@@ -8624,7 +8843,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::~Io()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8634,7 +8854,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8664,7 +8884,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8676,7 +8896,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8707,7 +8927,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "io"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "io"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::Location::~Location()
@@ -8716,6 +8936,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -8728,7 +8949,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::Location::has_ope
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -8780,9 +9002,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::Location::has_lea
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::Ucode()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "ucode"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ucode"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::~Ucode()
@@ -8791,7 +9015,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::~Ucode()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8801,7 +9026,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::has_data() con
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8831,7 +9056,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Uc
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8843,7 +9068,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8874,7 +9099,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::Location::Location(
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "ucode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "ucode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::Location::~Location()
@@ -8883,6 +9108,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::Location::~Location
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -8895,7 +9121,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::Location::has_
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -8947,9 +9174,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::Location::has_
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::Config()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "config"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::~Config()
@@ -8958,7 +9187,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::~Config()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8968,7 +9198,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::has_data() co
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8998,7 +9228,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Co
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9010,7 +9240,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9041,7 +9271,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::Location::Location
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::Location::~Location()
@@ -9050,6 +9280,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::Location::~Locatio
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -9062,7 +9293,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::Location::has
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -9114,9 +9346,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::Location::has
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::Indirect()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "indirect"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "indirect"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::~Indirect()
@@ -9125,7 +9359,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::~Indirect()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9135,7 +9370,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::has_data() 
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9165,7 +9400,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::In
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9177,7 +9412,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9208,7 +9443,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::Location::Locati
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "indirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "indirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::Location::~Location()
@@ -9217,6 +9452,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::Location::~Locat
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -9229,7 +9465,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::Location::h
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -9281,9 +9518,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::Location::h
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::Nonerr()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "nonerr"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nonerr"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::~Nonerr()
@@ -9292,7 +9531,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::~Nonerr()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9302,7 +9542,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::has_data() co
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9332,7 +9572,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::No
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9344,7 +9584,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9375,7 +9615,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::Location::Location
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "nonerr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "nonerr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::Location::~Location()
@@ -9384,6 +9624,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::Location::~Locatio
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -9396,7 +9637,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::Location::has
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -9448,9 +9690,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::Location::has
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::Summary()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "summary"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::~Summary()
@@ -9459,7 +9703,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::~Summary()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9469,7 +9714,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::has_data() c
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9499,7 +9744,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Su
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9511,7 +9756,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9542,7 +9787,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::Location::Locatio
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::Location::~Location()
@@ -9551,6 +9796,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::Location::~Locati
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -9563,7 +9809,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::Location::ha
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -9617,10 +9864,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::Location::ha
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::All()
     :
     history(std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History>())
+    , location(this, {"location_name"})
 {
     history->parent = this;
 
-    yang_name = "all"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::~All()
@@ -9629,7 +9877,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::~All()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9639,7 +9888,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::has_data() const
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9679,7 +9928,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Al
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9696,7 +9945,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9723,9 +9972,11 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::has_leaf_or_chil
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::History()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "history"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::~History()
@@ -9734,7 +9985,8 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::~History()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9744,7 +9996,7 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::has_dat
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9774,7 +10026,7 @@ std::shared_ptr<Entity> Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Al
     {
         auto c = std::make_shared<Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9786,7 +10038,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::ClearAsicErrorsGrp::ClearD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9817,7 +10069,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::Location::Lo
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::Location::~Location()
@@ -9826,6 +10078,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::Location::~L
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -9838,7 +10091,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::Locatio
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -9894,7 +10148,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::Location::Location()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::Location::~Location()
@@ -9903,6 +10157,7 @@ Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::Location::~Location()
 
 bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 
@@ -9915,7 +10170,8 @@ bool Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::Location::has_op
 std::string Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -9972,7 +10228,7 @@ Clear::Logging::Logging()
 {
     onboard->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Logging::~Logging()
@@ -9981,6 +10237,7 @@ Clear::Logging::~Logging()
 
 bool Clear::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return (onboard !=  nullptr && onboard->has_data());
 }
 
@@ -10055,9 +10312,11 @@ bool Clear::Logging::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Clear::Logging::Onboard::Onboard()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "onboard"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "onboard"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Logging::Onboard::~Onboard()
@@ -10066,7 +10325,8 @@ Clear::Logging::Onboard::~Onboard()
 
 bool Clear::Logging::Onboard::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -10076,7 +10336,7 @@ bool Clear::Logging::Onboard::has_data() const
 
 bool Clear::Logging::Onboard::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -10113,7 +10373,7 @@ std::shared_ptr<Entity> Clear::Logging::Onboard::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Clear::Logging::Onboard::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -10125,7 +10385,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Logging::Onboard::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10156,7 +10416,7 @@ Clear::Logging::Onboard::Location::Location()
     location{YType::str, "location"}
 {
 
-    yang_name = "location"; yang_parent_name = "onboard"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "onboard"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Logging::Onboard::Location::~Location()
@@ -10165,6 +10425,7 @@ Clear::Logging::Onboard::Location::~Location()
 
 bool Clear::Logging::Onboard::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set;
 }
 
@@ -10184,7 +10445,8 @@ std::string Clear::Logging::Onboard::Location::get_absolute_path() const
 std::string Clear::Logging::Onboard::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -10238,7 +10500,7 @@ bool Clear::Logging::Onboard::Location::has_leaf_or_child_of_name(const std::str
 Clear::Configuration::Configuration()
 {
 
-    yang_name = "configuration"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configuration"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Configuration::~Configuration()
@@ -10247,6 +10509,7 @@ Clear::Configuration::~Configuration()
 
 bool Clear::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 

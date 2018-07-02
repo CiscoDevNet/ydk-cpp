@@ -18,7 +18,7 @@ AsicErrors::AsicErrors()
 {
     nodes->parent = this;
 
-    yang_name = "asic-errors"; yang_parent_name = "Cisco-IOS-XR-asic-errors-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "asic-errors"; yang_parent_name = "Cisco-IOS-XR-asic-errors-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 AsicErrors::~AsicErrors()
@@ -27,6 +27,7 @@ AsicErrors::~AsicErrors()
 
 bool AsicErrors::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -119,9 +120,11 @@ bool AsicErrors::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 AsicErrors::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "asic-errors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "asic-errors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AsicErrors::Nodes::~Nodes()
@@ -130,7 +133,8 @@ AsicErrors::Nodes::~Nodes()
 
 bool AsicErrors::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -140,7 +144,7 @@ bool AsicErrors::Nodes::has_data() const
 
 bool AsicErrors::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -177,7 +181,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -189,7 +193,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -218,9 +222,11 @@ bool AsicErrors::Nodes::has_leaf_or_child_of_name(const std::string & name) cons
 AsicErrors::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
+        ,
+    asic_information(this, {"asic"})
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AsicErrors::Nodes::Node::~Node()
@@ -229,7 +235,8 @@ AsicErrors::Nodes::Node::~Node()
 
 bool AsicErrors::Nodes::Node::has_data() const
 {
-    for (std::size_t index=0; index<asic_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic_information.len(); index++)
     {
         if(asic_information[index]->has_data())
             return true;
@@ -239,7 +246,7 @@ bool AsicErrors::Nodes::Node::has_data() const
 
 bool AsicErrors::Nodes::Node::has_operation() const
 {
-    for (std::size_t index=0; index<asic_information.size(); index++)
+    for (std::size_t index=0; index<asic_information.len(); index++)
     {
         if(asic_information[index]->has_operation())
             return true;
@@ -258,7 +265,8 @@ std::string AsicErrors::Nodes::Node::get_absolute_path() const
 std::string AsicErrors::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -278,7 +286,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::get_child_by_name(const std::st
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation>();
         c->parent = this;
-        asic_information.push_back(c);
+        asic_information.append(c);
         return c;
     }
 
@@ -290,7 +298,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic_information)
+    for (auto c : asic_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -329,14 +337,14 @@ bool AsicErrors::Nodes::Node::has_leaf_or_child_of_name(const std::string & name
 AsicErrors::Nodes::Node::AsicInformation::AsicInformation()
     :
     asic{YType::str, "asic"}
-    	,
+        ,
     all_instances(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::AllInstances>())
-	,instances(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances>())
+    , instances(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances>())
 {
     all_instances->parent = this;
     instances->parent = this;
 
-    yang_name = "asic-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::~AsicInformation()
@@ -345,6 +353,7 @@ AsicErrors::Nodes::Node::AsicInformation::~AsicInformation()
 
 bool AsicErrors::Nodes::Node::AsicInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return asic.is_set
 	|| (all_instances !=  nullptr && all_instances->has_data())
 	|| (instances !=  nullptr && instances->has_data());
@@ -361,7 +370,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::has_operation() const
 std::string AsicErrors::Nodes::Node::AsicInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic-information" <<"[asic='" <<asic <<"']";
+    path_buffer << "asic-information";
+    ADD_KEY_TOKEN(asic, "asic");
     return path_buffer.str();
 }
 
@@ -446,7 +456,7 @@ AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllInstances()
 {
     all_error_path->parent = this;
 
-    yang_name = "all-instances"; yang_parent_name = "asic-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-instances"; yang_parent_name = "asic-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::AllInstances::~AllInstances()
@@ -455,6 +465,7 @@ AsicErrors::Nodes::Node::AsicInformation::AllInstances::~AllInstances()
 
 bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::has_data() const
 {
+    if (is_presence_container) return true;
     return (all_error_path !=  nullptr && all_error_path->has_data());
 }
 
@@ -527,7 +538,7 @@ AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::AllErrorPa
 {
     summary->parent = this;
 
-    yang_name = "all-error-path"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-error-path"; yang_parent_name = "all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::~AllErrorPath()
@@ -536,6 +547,7 @@ AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::~AllErrorP
 
 bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data());
 }
 
@@ -606,9 +618,11 @@ AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::S
     :
     legacy_client{YType::boolean, "legacy-client"},
     cih_client{YType::boolean, "cih-client"}
+        ,
+    sum_data(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "all-error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "all-error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::~Summary()
@@ -617,7 +631,8 @@ AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::~
 
 bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::has_data() const
 {
-    for (std::size_t index=0; index<sum_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sum_data.len(); index++)
     {
         if(sum_data[index]->has_data())
             return true;
@@ -628,7 +643,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summa
 
 bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<sum_data.size(); index++)
+    for (std::size_t index=0; index<sum_data.len(); index++)
     {
         if(sum_data[index]->has_operation())
             return true;
@@ -662,7 +677,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::AllInstances::
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData>();
         c->parent = this;
-        sum_data.push_back(c);
+        sum_data.append(c);
         return c;
     }
 
@@ -674,7 +689,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sum_data)
+    for (auto c : sum_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -729,12 +744,13 @@ AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::S
     par_err_count{YType::uint32, "par-err-count"},
     gen_err_count{YType::uint32, "gen-err-count"},
     reset_err_count{YType::uint32, "reset-err-count"},
-    err_count{YType::uint32, "err-count"},
-    pcie_err_count{YType::uint32, "pcie-err-count"},
     node_key{YType::uint32, "node-key"}
+        ,
+    err_count(this, {})
+    , pcie_err_count(this, {})
 {
 
-    yang_name = "sum-data"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sum-data"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::~SumData()
@@ -743,14 +759,15 @@ AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::S
 
 bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::has_data() const
 {
-    for (auto const & leaf : err_count.getYLeafs())
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<err_count.len(); index++)
     {
-        if(leaf.is_set)
+        if(err_count[index]->has_data())
             return true;
     }
-    for (auto const & leaf : pcie_err_count.getYLeafs())
+    for (std::size_t index=0; index<pcie_err_count.len(); index++)
     {
-        if(leaf.is_set)
+        if(pcie_err_count[index]->has_data())
             return true;
     }
     for (auto const & leaf : node_key.getYLeafs())
@@ -769,14 +786,14 @@ bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summa
 
 bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::has_operation() const
 {
-    for (auto const & leaf : err_count.getYLeafs())
+    for (std::size_t index=0; index<err_count.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(err_count[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : pcie_err_count.getYLeafs())
+    for (std::size_t index=0; index<pcie_err_count.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(pcie_err_count[index]->has_operation())
             return true;
     }
     for (auto const & leaf : node_key.getYLeafs())
@@ -792,8 +809,6 @@ bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summa
 	|| ydk::is_set(par_err_count.yfilter)
 	|| ydk::is_set(gen_err_count.yfilter)
 	|| ydk::is_set(reset_err_count.yfilter)
-	|| ydk::is_set(err_count.yfilter)
-	|| ydk::is_set(pcie_err_count.yfilter)
 	|| ydk::is_set(node_key.yfilter);
 }
 
@@ -816,10 +831,6 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Nodes::Node::AsicInfo
     if (gen_err_count.is_set || is_set(gen_err_count.yfilter)) leaf_name_data.push_back(gen_err_count.get_name_leafdata());
     if (reset_err_count.is_set || is_set(reset_err_count.yfilter)) leaf_name_data.push_back(reset_err_count.get_name_leafdata());
 
-    auto err_count_name_datas = err_count.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), err_count_name_datas.begin(), err_count_name_datas.end());
-    auto pcie_err_count_name_datas = pcie_err_count.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), pcie_err_count_name_datas.begin(), pcie_err_count_name_datas.end());
     auto node_key_name_datas = node_key.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), node_key_name_datas.begin(), node_key_name_datas.end());
     return leaf_name_data;
@@ -828,6 +839,22 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Nodes::Node::AsicInfo
 
 std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "err-count")
+    {
+        auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::ErrCount>();
+        c->parent = this;
+        err_count.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "pcie-err-count")
+    {
+        auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::PcieErrCount>();
+        c->parent = this;
+        pcie_err_count.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -835,6 +862,24 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : err_count.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : pcie_err_count.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -882,14 +927,6 @@ void AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summa
         reset_err_count.value_namespace = name_space;
         reset_err_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "err-count")
-    {
-        err_count.append(value);
-    }
-    if(value_path == "pcie-err-count")
-    {
-        pcie_err_count.append(value);
-    }
     if(value_path == "node-key")
     {
         node_key.append(value);
@@ -926,14 +963,6 @@ void AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summa
     {
         reset_err_count.yfilter = yfilter;
     }
-    if(value_path == "err-count")
-    {
-        err_count.yfilter = yfilter;
-    }
-    if(value_path == "pcie-err-count")
-    {
-        pcie_err_count.yfilter = yfilter;
-    }
     if(value_path == "node-key")
     {
         node_key.yfilter = yfilter;
@@ -942,15 +971,201 @@ void AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summa
 
 bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "num-nodes" || name == "crc-err-count" || name == "sbe-err-count" || name == "mbe-err-count" || name == "par-err-count" || name == "gen-err-count" || name == "reset-err-count" || name == "err-count" || name == "pcie-err-count" || name == "node-key")
+    if(name == "err-count" || name == "pcie-err-count" || name == "num-nodes" || name == "crc-err-count" || name == "sbe-err-count" || name == "mbe-err-count" || name == "par-err-count" || name == "gen-err-count" || name == "reset-err-count" || name == "node-key")
+        return true;
+    return false;
+}
+
+AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::ErrCount::ErrCount()
+    :
+    name{YType::str, "name"},
+    count{YType::uint32, "count"}
+{
+
+    yang_name = "err-count"; yang_parent_name = "sum-data"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::ErrCount::~ErrCount()
+{
+}
+
+bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::ErrCount::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| count.is_set;
+}
+
+bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::ErrCount::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(count.yfilter);
+}
+
+std::string AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::ErrCount::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "err-count";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::ErrCount::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::ErrCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::ErrCount::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::ErrCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "count")
+    {
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::ErrCount::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+}
+
+bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::ErrCount::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "count")
+        return true;
+    return false;
+}
+
+AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::PcieErrCount::PcieErrCount()
+    :
+    name{YType::str, "name"},
+    count{YType::uint32, "count"}
+{
+
+    yang_name = "pcie-err-count"; yang_parent_name = "sum-data"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::PcieErrCount::~PcieErrCount()
+{
+}
+
+bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::PcieErrCount::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| count.is_set;
+}
+
+bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::PcieErrCount::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(count.yfilter);
+}
+
+std::string AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::PcieErrCount::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pcie-err-count";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::PcieErrCount::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::PcieErrCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::PcieErrCount::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::PcieErrCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "count")
+    {
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::PcieErrCount::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+}
+
+bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::PcieErrCount::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "count")
         return true;
     return false;
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instances()
+    :
+    instance(this, {"asic_instance"})
 {
 
-    yang_name = "instances"; yang_parent_name = "asic-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instances"; yang_parent_name = "asic-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::~Instances()
@@ -959,7 +1174,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::~Instances()
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -969,7 +1185,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::has_data() const
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -999,7 +1215,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::get
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -1011,7 +1227,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1039,13 +1255,13 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::has_leaf_or_child_of_n
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Instance()
     :
-    asic_instance{YType::int32, "asic-instance"}
-    	,
+    asic_instance{YType::uint32, "asic-instance"}
+        ,
     error_path(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath>())
 {
     error_path->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::~Instance()
@@ -1054,6 +1270,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::~Instance()
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return asic_instance.is_set
 	|| (error_path !=  nullptr && error_path->has_data());
 }
@@ -1068,7 +1285,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::has_operatio
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[asic-instance='" <<asic_instance <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(asic_instance, "asic-instance");
     return path_buffer.str();
 }
 
@@ -1136,56 +1354,56 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::has_leaf_or_
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ErrorPath()
     :
     multiple_bit_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors>())
-	,asic_error_generic_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft>())
-	,crc_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors>())
-	,asic_error_sbe_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft>())
-	,hardware_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors>())
-	,asic_error_crc_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft>())
-	,asic_error_parity_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft>())
-	,io_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors>())
-	,reset_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors>())
-	,barrier_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors>())
-	,ucode_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors>())
-	,asic_error_reset_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard>())
-	,single_bit_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors>())
-	,indirect_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors>())
-	,outof_resource_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft>())
-	,crc_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors>())
-	,time_out_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors>())
-	,barrier_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors>())
-	,asic_error_mbe_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft>())
-	,back_pressure_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors>())
-	,single_bit_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors>())
-	,indirect_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors>())
-	,generic_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors>())
-	,link_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors>())
-	,configuration_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors>())
-	,instance_summary(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary>())
-	,unexpected_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors>())
-	,time_out_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors>())
-	,asic_error_generic_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard>())
-	,parity_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors>())
-	,descriptor_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors>())
-	,interface_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors>())
-	,asic_error_sbe_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard>())
-	,asic_error_crc_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard>())
-	,asic_error_parity_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard>())
-	,asic_error_reset_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft>())
-	,back_pressure_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors>())
-	,generic_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors>())
-	,link_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors>())
-	,configuration_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors>())
-	,multiple_bit_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors>())
-	,unexpected_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors>())
-	,outof_resource_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard>())
-	,hardware_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors>())
-	,parity_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors>())
-	,descriptor_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors>())
-	,interface_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors>())
-	,io_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors>())
-	,reset_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors>())
-	,ucode_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors>())
-	,asic_error_mbe_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard>())
+    , asic_error_generic_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft>())
+    , crc_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors>())
+    , asic_error_sbe_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft>())
+    , hardware_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors>())
+    , asic_error_crc_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft>())
+    , asic_error_parity_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft>())
+    , io_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors>())
+    , reset_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors>())
+    , barrier_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors>())
+    , ucode_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors>())
+    , asic_error_reset_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard>())
+    , single_bit_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors>())
+    , indirect_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors>())
+    , outof_resource_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft>())
+    , crc_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors>())
+    , time_out_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors>())
+    , barrier_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors>())
+    , asic_error_mbe_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft>())
+    , back_pressure_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors>())
+    , single_bit_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors>())
+    , indirect_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors>())
+    , generic_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors>())
+    , link_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors>())
+    , configuration_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors>())
+    , instance_summary(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary>())
+    , unexpected_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors>())
+    , time_out_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors>())
+    , asic_error_generic_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard>())
+    , parity_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors>())
+    , descriptor_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors>())
+    , interface_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors>())
+    , asic_error_sbe_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard>())
+    , asic_error_crc_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard>())
+    , asic_error_parity_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard>())
+    , asic_error_reset_soft(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft>())
+    , back_pressure_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors>())
+    , generic_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors>())
+    , link_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors>())
+    , configuration_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors>())
+    , multiple_bit_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors>())
+    , unexpected_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors>())
+    , outof_resource_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard>())
+    , hardware_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors>())
+    , parity_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors>())
+    , descriptor_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors>())
+    , interface_soft_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors>())
+    , io_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors>())
+    , reset_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors>())
+    , ucode_hard_errors(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors>())
+    , asic_error_mbe_hard(std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard>())
 {
     multiple_bit_soft_errors->parent = this;
     asic_error_generic_soft->parent = this;
@@ -1239,7 +1457,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ErrorP
     ucode_hard_errors->parent = this;
     asic_error_mbe_hard->parent = this;
 
-    yang_name = "error-path"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-path"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::~ErrorPath()
@@ -1248,6 +1466,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::~Error
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::has_data() const
 {
+    if (is_presence_container) return true;
     return (multiple_bit_soft_errors !=  nullptr && multiple_bit_soft_errors->has_data())
 	|| (asic_error_generic_soft !=  nullptr && asic_error_generic_soft->has_data())
 	|| (crc_hard_errors !=  nullptr && crc_hard_errors->has_data())
@@ -2115,9 +2334,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::h
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::MultipleBitSoftErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "multiple-bit-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multiple-bit-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::~MultipleBitSoftErrors()
@@ -2126,7 +2347,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Multip
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -2136,7 +2358,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::M
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -2166,7 +2388,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -2178,7 +2400,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2218,9 +2440,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Multip
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "multiple-bit-soft-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "multiple-bit-soft-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error::~Error()
@@ -2229,12 +2454,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Multip
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -2255,12 +2481,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::M
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -2314,7 +2540,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -2322,7 +2548,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -2334,7 +2560,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2343,7 +2569,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2496,7 +2722,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Multip
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error::CsrsInfo::~CsrsInfo()
@@ -2505,6 +2731,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Multip
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -2603,7 +2830,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Multip
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error::LastErr::~LastErr()
@@ -2612,6 +2839,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Multip
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -2736,9 +2964,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::M
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::AsicErrorGenericSoft()
+    :
+    error(this, {})
 {
 
-    yang_name = "asic-error-generic-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-error-generic-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::~AsicErrorGenericSoft()
@@ -2747,7 +2977,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -2757,7 +2988,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -2787,7 +3018,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -2799,7 +3030,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2839,9 +3070,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "asic-error-generic-soft"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "asic-error-generic-soft"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error::~Error()
@@ -2850,12 +3084,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -2876,12 +3111,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -2935,7 +3170,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -2943,7 +3178,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -2955,7 +3190,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2964,7 +3199,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3117,7 +3352,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error::CsrsInfo::~CsrsInfo()
@@ -3126,6 +3361,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -3224,7 +3460,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error::LastErr::~LastErr()
@@ -3233,6 +3469,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -3357,9 +3594,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::CrcHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "crc-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crc-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::~CrcHardErrors()
@@ -3368,7 +3607,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHar
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -3378,7 +3618,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -3408,7 +3648,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -3420,7 +3660,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3460,9 +3700,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHar
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "crc-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "crc-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error::~Error()
@@ -3471,12 +3714,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHar
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -3497,12 +3741,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -3556,7 +3800,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -3564,7 +3808,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -3576,7 +3820,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3585,7 +3829,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3738,7 +3982,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHar
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -3747,6 +3991,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHar
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -3845,7 +4090,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHar
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error::LastErr::~LastErr()
@@ -3854,6 +4099,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHar
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -3978,9 +4224,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::AsicErrorSbeSoft()
+    :
+    error(this, {})
 {
 
-    yang_name = "asic-error-sbe-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-error-sbe-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::~AsicErrorSbeSoft()
@@ -3989,7 +4237,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -3999,7 +4248,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -4029,7 +4278,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -4041,7 +4290,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4081,9 +4330,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "asic-error-sbe-soft"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "asic-error-sbe-soft"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error::~Error()
@@ -4092,12 +4344,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -4118,12 +4371,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -4177,7 +4430,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -4185,7 +4438,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -4197,7 +4450,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4206,7 +4459,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4359,7 +4612,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error::CsrsInfo::~CsrsInfo()
@@ -4368,6 +4621,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -4466,7 +4720,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error::LastErr::~LastErr()
@@ -4475,6 +4729,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -4599,9 +4854,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::HardwareSoftErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "hardware-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::~HardwareSoftErrors()
@@ -4610,7 +4867,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Hardwa
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -4620,7 +4878,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::H
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -4650,7 +4908,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -4662,7 +4920,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4702,9 +4960,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Hardwa
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "hardware-soft-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "hardware-soft-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error::~Error()
@@ -4713,12 +4974,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Hardwa
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -4739,12 +5001,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::H
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -4798,7 +5060,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -4806,7 +5068,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -4818,7 +5080,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4827,7 +5089,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4980,7 +5242,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Hardwa
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error::CsrsInfo::~CsrsInfo()
@@ -4989,6 +5251,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Hardwa
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -5087,7 +5350,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Hardwa
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error::LastErr::~LastErr()
@@ -5096,6 +5359,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Hardwa
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -5220,9 +5484,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::H
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::AsicErrorCrcSoft()
+    :
+    error(this, {})
 {
 
-    yang_name = "asic-error-crc-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-error-crc-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::~AsicErrorCrcSoft()
@@ -5231,7 +5497,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -5241,7 +5508,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -5271,7 +5538,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -5283,7 +5550,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5323,9 +5590,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "asic-error-crc-soft"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "asic-error-crc-soft"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error::~Error()
@@ -5334,12 +5604,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -5360,12 +5631,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -5419,7 +5690,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -5427,7 +5698,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -5439,7 +5710,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5448,7 +5719,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5601,7 +5872,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error::CsrsInfo::~CsrsInfo()
@@ -5610,6 +5881,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -5708,7 +5980,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error::LastErr::~LastErr()
@@ -5717,6 +5989,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -5841,9 +6114,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::AsicErrorParitySoft()
+    :
+    error(this, {})
 {
 
-    yang_name = "asic-error-parity-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-error-parity-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::~AsicErrorParitySoft()
@@ -5852,7 +6127,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -5862,7 +6138,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -5892,7 +6168,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -5904,7 +6180,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5944,9 +6220,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "asic-error-parity-soft"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "asic-error-parity-soft"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error::~Error()
@@ -5955,12 +6234,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -5981,12 +6261,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -6040,7 +6320,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -6048,7 +6328,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -6060,7 +6340,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6069,7 +6349,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6222,7 +6502,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error::CsrsInfo::~CsrsInfo()
@@ -6231,6 +6511,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -6329,7 +6610,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error::LastErr::~LastErr()
@@ -6338,6 +6619,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -6462,9 +6744,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::IoSoftErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "io-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "io-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::~IoSoftErrors()
@@ -6473,7 +6757,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoft
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -6483,7 +6768,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -6513,7 +6798,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -6525,7 +6810,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6565,9 +6850,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoft
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "io-soft-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "io-soft-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error::~Error()
@@ -6576,12 +6864,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoft
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -6602,12 +6891,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -6661,7 +6950,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -6669,7 +6958,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -6681,7 +6970,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6690,7 +6979,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6843,7 +7132,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoft
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error::CsrsInfo::~CsrsInfo()
@@ -6852,6 +7141,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoft
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -6950,7 +7240,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoft
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error::LastErr::~LastErr()
@@ -6959,6 +7249,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoft
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -7083,9 +7374,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::ResetSoftErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "reset-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reset-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::~ResetSoftErrors()
@@ -7094,7 +7387,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetS
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -7104,7 +7398,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::R
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -7134,7 +7428,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -7146,7 +7440,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7186,9 +7480,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetS
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "reset-soft-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "reset-soft-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error::~Error()
@@ -7197,12 +7494,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetS
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -7223,12 +7521,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::R
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -7282,7 +7580,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -7290,7 +7588,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -7302,7 +7600,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7311,7 +7609,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7464,7 +7762,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetS
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error::CsrsInfo::~CsrsInfo()
@@ -7473,6 +7771,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetS
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -7571,7 +7870,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetS
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error::LastErr::~LastErr()
@@ -7580,6 +7879,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetS
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -7704,9 +8004,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::R
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::BarrierHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "barrier-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "barrier-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::~BarrierHardErrors()
@@ -7715,7 +8017,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -7725,7 +8028,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -7755,7 +8058,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -7767,7 +8070,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7807,9 +8110,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "barrier-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "barrier-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error::~Error()
@@ -7818,12 +8124,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -7844,12 +8151,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -7903,7 +8210,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -7911,7 +8218,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -7923,7 +8230,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7932,7 +8239,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8085,7 +8392,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -8094,6 +8401,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -8192,7 +8500,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error::LastErr::~LastErr()
@@ -8201,6 +8509,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -8325,9 +8634,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::UcodeSoftErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "ucode-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ucode-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::~UcodeSoftErrors()
@@ -8336,7 +8647,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeS
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -8346,7 +8658,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -8376,7 +8688,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -8388,7 +8700,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8428,9 +8740,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeS
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "ucode-soft-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "ucode-soft-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error::~Error()
@@ -8439,12 +8754,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeS
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -8465,12 +8781,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -8524,7 +8840,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -8532,7 +8848,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -8544,7 +8860,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8553,7 +8869,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8706,7 +9022,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeS
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error::CsrsInfo::~CsrsInfo()
@@ -8715,6 +9031,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeS
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -8813,7 +9130,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeS
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error::LastErr::~LastErr()
@@ -8822,6 +9139,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeS
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -8946,9 +9264,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::AsicErrorResetHard()
+    :
+    error(this, {})
 {
 
-    yang_name = "asic-error-reset-hard"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-error-reset-hard"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::~AsicErrorResetHard()
@@ -8957,7 +9277,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -8967,7 +9288,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -8997,7 +9318,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -9009,7 +9330,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9049,9 +9370,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "asic-error-reset-hard"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "asic-error-reset-hard"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error::~Error()
@@ -9060,12 +9384,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -9086,12 +9411,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -9145,7 +9470,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -9153,7 +9478,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -9165,7 +9490,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9174,7 +9499,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9327,7 +9652,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error::CsrsInfo::~CsrsInfo()
@@ -9336,6 +9661,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -9434,7 +9760,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error::LastErr::~LastErr()
@@ -9443,6 +9769,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -9567,9 +9894,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::SingleBitHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "single-bit-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-bit-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::~SingleBitHardErrors()
@@ -9578,7 +9907,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -9588,7 +9918,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::S
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -9618,7 +9948,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -9630,7 +9960,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9670,9 +10000,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "single-bit-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "single-bit-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error::~Error()
@@ -9681,12 +10014,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -9707,12 +10041,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::S
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -9766,7 +10100,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -9774,7 +10108,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -9786,7 +10120,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9795,7 +10129,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9948,7 +10282,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -9957,6 +10291,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -10055,7 +10390,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error::LastErr::~LastErr()
@@ -10064,6 +10399,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -10188,9 +10524,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::S
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::IndirectHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "indirect-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "indirect-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::~IndirectHardErrors()
@@ -10199,7 +10537,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -10209,7 +10548,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -10239,7 +10578,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -10251,7 +10590,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10291,9 +10630,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "indirect-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "indirect-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error::~Error()
@@ -10302,12 +10644,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -10328,12 +10671,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -10387,7 +10730,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -10395,7 +10738,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -10407,7 +10750,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10416,7 +10759,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10569,7 +10912,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -10578,6 +10921,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -10676,7 +11020,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error::LastErr::~LastErr()
@@ -10685,6 +11029,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -10809,9 +11154,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::OutofResourceSoft()
+    :
+    error(this, {})
 {
 
-    yang_name = "outof-resource-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outof-resource-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::~OutofResourceSoft()
@@ -10820,7 +11167,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofR
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -10830,7 +11178,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::O
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -10860,7 +11208,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -10872,7 +11220,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10912,9 +11260,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofR
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "outof-resource-soft"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "outof-resource-soft"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error::~Error()
@@ -10923,12 +11274,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofR
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -10949,12 +11301,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::O
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -11008,7 +11360,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -11016,7 +11368,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -11028,7 +11380,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11037,7 +11389,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11190,7 +11542,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofR
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error::CsrsInfo::~CsrsInfo()
@@ -11199,6 +11551,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofR
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -11297,7 +11650,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofR
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error::LastErr::~LastErr()
@@ -11306,6 +11659,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofR
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -11430,9 +11784,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::O
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::CrcSoftErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "crc-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crc-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::~CrcSoftErrors()
@@ -11441,7 +11797,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSof
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -11451,7 +11808,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -11481,7 +11838,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -11493,7 +11850,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11533,9 +11890,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSof
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "crc-soft-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "crc-soft-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error::~Error()
@@ -11544,12 +11904,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSof
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -11570,12 +11931,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -11629,7 +11990,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -11637,7 +11998,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -11649,7 +12010,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11658,7 +12019,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11811,7 +12172,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSof
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error::CsrsInfo::~CsrsInfo()
@@ -11820,6 +12181,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSof
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -11918,7 +12280,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSof
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error::LastErr::~LastErr()
@@ -11927,6 +12289,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSof
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -12051,9 +12414,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::TimeOutHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "time-out-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time-out-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::~TimeOutHardErrors()
@@ -12062,7 +12427,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -12072,7 +12438,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::T
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -12102,7 +12468,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -12114,7 +12480,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12154,9 +12520,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "time-out-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "time-out-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error::~Error()
@@ -12165,12 +12534,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -12191,12 +12561,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::T
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -12250,7 +12620,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -12258,7 +12628,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -12270,7 +12640,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12279,7 +12649,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12432,7 +12802,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -12441,6 +12811,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -12539,7 +12910,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error::LastErr::~LastErr()
@@ -12548,6 +12919,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -12672,9 +13044,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::T
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::BarrierSoftErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "barrier-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "barrier-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::~BarrierSoftErrors()
@@ -12683,7 +13057,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -12693,7 +13068,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -12723,7 +13098,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -12735,7 +13110,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12775,9 +13150,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "barrier-soft-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "barrier-soft-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error::~Error()
@@ -12786,12 +13164,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -12812,12 +13191,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -12871,7 +13250,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -12879,7 +13258,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -12891,7 +13270,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12900,7 +13279,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13053,7 +13432,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error::CsrsInfo::~CsrsInfo()
@@ -13062,6 +13441,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -13160,7 +13540,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error::LastErr::~LastErr()
@@ -13169,6 +13549,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -13293,9 +13674,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::AsicErrorMbeSoft()
+    :
+    error(this, {})
 {
 
-    yang_name = "asic-error-mbe-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-error-mbe-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::~AsicErrorMbeSoft()
@@ -13304,7 +13687,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -13314,7 +13698,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -13344,7 +13728,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -13356,7 +13740,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13396,9 +13780,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "asic-error-mbe-soft"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "asic-error-mbe-soft"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error::~Error()
@@ -13407,12 +13794,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -13433,12 +13821,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -13492,7 +13880,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -13500,7 +13888,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -13512,7 +13900,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13521,7 +13909,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13674,7 +14062,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error::CsrsInfo::~CsrsInfo()
@@ -13683,6 +14071,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -13781,7 +14170,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error::LastErr::~LastErr()
@@ -13790,6 +14179,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -13914,9 +14304,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::BackPressureHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "back-pressure-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "back-pressure-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::~BackPressureHardErrors()
@@ -13925,7 +14317,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -13935,7 +14328,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -13965,7 +14358,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -13977,7 +14370,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14017,9 +14410,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPr
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "back-pressure-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "back-pressure-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error::~Error()
@@ -14028,12 +14424,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -14054,12 +14451,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -14113,7 +14510,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -14121,7 +14518,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -14133,7 +14530,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14142,7 +14539,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14295,7 +14692,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPr
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -14304,6 +14701,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -14402,7 +14800,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPr
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error::LastErr::~LastErr()
@@ -14411,6 +14809,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -14535,9 +14934,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::SingleBitSoftErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "single-bit-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "single-bit-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::~SingleBitSoftErrors()
@@ -14546,7 +14947,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -14556,7 +14958,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::S
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -14586,7 +14988,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -14598,7 +15000,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14638,9 +15040,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "single-bit-soft-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "single-bit-soft-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error::~Error()
@@ -14649,12 +15054,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -14675,12 +15081,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::S
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -14734,7 +15140,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -14742,7 +15148,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -14754,7 +15160,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14763,7 +15169,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14916,7 +15322,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error::CsrsInfo::~CsrsInfo()
@@ -14925,6 +15331,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -15023,7 +15430,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error::LastErr::~LastErr()
@@ -15032,6 +15439,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -15156,9 +15564,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::S
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::IndirectSoftErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "indirect-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "indirect-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::~IndirectSoftErrors()
@@ -15167,7 +15577,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -15177,7 +15588,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -15207,7 +15618,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -15219,7 +15630,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15259,9 +15670,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "indirect-soft-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "indirect-soft-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error::~Error()
@@ -15270,12 +15684,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -15296,12 +15711,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -15355,7 +15770,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -15363,7 +15778,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -15375,7 +15790,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15384,7 +15799,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15537,7 +15952,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error::CsrsInfo::~CsrsInfo()
@@ -15546,6 +15961,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -15644,7 +16060,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error::LastErr::~LastErr()
@@ -15653,6 +16069,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -15777,9 +16194,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::GenericHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "generic-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::~GenericHardErrors()
@@ -15788,7 +16207,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Generi
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -15798,7 +16218,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::G
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -15828,7 +16248,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -15840,7 +16260,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15880,9 +16300,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Generi
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "generic-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "generic-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error::~Error()
@@ -15891,12 +16314,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Generi
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -15917,12 +16341,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::G
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -15976,7 +16400,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -15984,7 +16408,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -15996,7 +16420,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16005,7 +16429,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16158,7 +16582,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Generi
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -16167,6 +16591,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Generi
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -16265,7 +16690,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Generi
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error::LastErr::~LastErr()
@@ -16274,6 +16699,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Generi
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -16398,9 +16824,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::G
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::LinkHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "link-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::~LinkHardErrors()
@@ -16409,7 +16837,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHa
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -16419,7 +16848,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::L
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -16449,7 +16878,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -16461,7 +16890,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16501,9 +16930,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHa
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "link-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "link-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error::~Error()
@@ -16512,12 +16944,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHa
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -16538,12 +16971,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::L
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -16597,7 +17030,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -16605,7 +17038,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -16617,7 +17050,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16626,7 +17059,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16779,7 +17212,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHa
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -16788,6 +17221,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHa
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -16886,7 +17320,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHa
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error::LastErr::~LastErr()
@@ -16895,6 +17329,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHa
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -17019,9 +17454,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::L
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::ConfigurationHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "configuration-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configuration-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::~ConfigurationHardErrors()
@@ -17030,7 +17467,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Config
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -17040,7 +17478,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -17070,7 +17508,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -17082,7 +17520,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17122,9 +17560,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Config
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "configuration-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "configuration-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error::~Error()
@@ -17133,12 +17574,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Config
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -17159,12 +17601,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -17218,7 +17660,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -17226,7 +17668,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -17238,7 +17680,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17247,7 +17689,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17400,7 +17842,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Config
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -17409,6 +17851,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Config
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -17507,7 +17950,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Config
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error::LastErr::~LastErr()
@@ -17516,6 +17959,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Config
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -17643,9 +18087,11 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Instan
     :
     legacy_client{YType::boolean, "legacy-client"},
     cih_client{YType::boolean, "cih-client"}
+        ,
+    sum_data(this, {})
 {
 
-    yang_name = "instance-summary"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance-summary"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::~InstanceSummary()
@@ -17654,7 +18100,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Instan
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::has_data() const
 {
-    for (std::size_t index=0; index<sum_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sum_data.len(); index++)
     {
         if(sum_data[index]->has_data())
             return true;
@@ -17665,7 +18112,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::has_operation() const
 {
-    for (std::size_t index=0; index<sum_data.size(); index++)
+    for (std::size_t index=0; index<sum_data.len(); index++)
     {
         if(sum_data[index]->has_operation())
             return true;
@@ -17699,7 +18146,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData>();
         c->parent = this;
-        sum_data.push_back(c);
+        sum_data.append(c);
         return c;
     }
 
@@ -17711,7 +18158,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sum_data)
+    for (auto c : sum_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17766,12 +18213,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Instan
     par_err_count{YType::uint32, "par-err-count"},
     gen_err_count{YType::uint32, "gen-err-count"},
     reset_err_count{YType::uint32, "reset-err-count"},
-    err_count{YType::uint32, "err-count"},
-    pcie_err_count{YType::uint32, "pcie-err-count"},
     node_key{YType::uint32, "node-key"}
+        ,
+    err_count(this, {})
+    , pcie_err_count(this, {})
 {
 
-    yang_name = "sum-data"; yang_parent_name = "instance-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sum-data"; yang_parent_name = "instance-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::~SumData()
@@ -17780,14 +18228,15 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Instan
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::has_data() const
 {
-    for (auto const & leaf : err_count.getYLeafs())
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<err_count.len(); index++)
     {
-        if(leaf.is_set)
+        if(err_count[index]->has_data())
             return true;
     }
-    for (auto const & leaf : pcie_err_count.getYLeafs())
+    for (std::size_t index=0; index<pcie_err_count.len(); index++)
     {
-        if(leaf.is_set)
+        if(pcie_err_count[index]->has_data())
             return true;
     }
     for (auto const & leaf : node_key.getYLeafs())
@@ -17806,14 +18255,14 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::has_operation() const
 {
-    for (auto const & leaf : err_count.getYLeafs())
+    for (std::size_t index=0; index<err_count.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(err_count[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : pcie_err_count.getYLeafs())
+    for (std::size_t index=0; index<pcie_err_count.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(pcie_err_count[index]->has_operation())
             return true;
     }
     for (auto const & leaf : node_key.getYLeafs())
@@ -17829,8 +18278,6 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 	|| ydk::is_set(par_err_count.yfilter)
 	|| ydk::is_set(gen_err_count.yfilter)
 	|| ydk::is_set(reset_err_count.yfilter)
-	|| ydk::is_set(err_count.yfilter)
-	|| ydk::is_set(pcie_err_count.yfilter)
 	|| ydk::is_set(node_key.yfilter);
 }
 
@@ -17853,10 +18300,6 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Nodes::Node::AsicInfo
     if (gen_err_count.is_set || is_set(gen_err_count.yfilter)) leaf_name_data.push_back(gen_err_count.get_name_leafdata());
     if (reset_err_count.is_set || is_set(reset_err_count.yfilter)) leaf_name_data.push_back(reset_err_count.get_name_leafdata());
 
-    auto err_count_name_datas = err_count.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), err_count_name_datas.begin(), err_count_name_datas.end());
-    auto pcie_err_count_name_datas = pcie_err_count.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), pcie_err_count_name_datas.begin(), pcie_err_count_name_datas.end());
     auto node_key_name_datas = node_key.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), node_key_name_datas.begin(), node_key_name_datas.end());
     return leaf_name_data;
@@ -17865,6 +18308,22 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Nodes::Node::AsicInfo
 
 std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "err-count")
+    {
+        auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::ErrCount>();
+        c->parent = this;
+        err_count.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "pcie-err-count")
+    {
+        auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::PcieErrCount>();
+        c->parent = this;
+        pcie_err_count.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -17872,6 +18331,24 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : err_count.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : pcie_err_count.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -17919,14 +18396,6 @@ void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
         reset_err_count.value_namespace = name_space;
         reset_err_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "err-count")
-    {
-        err_count.append(value);
-    }
-    if(value_path == "pcie-err-count")
-    {
-        pcie_err_count.append(value);
-    }
     if(value_path == "node-key")
     {
         node_key.append(value);
@@ -17963,14 +18432,6 @@ void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
     {
         reset_err_count.yfilter = yfilter;
     }
-    if(value_path == "err-count")
-    {
-        err_count.yfilter = yfilter;
-    }
-    if(value_path == "pcie-err-count")
-    {
-        pcie_err_count.yfilter = yfilter;
-    }
     if(value_path == "node-key")
     {
         node_key.yfilter = yfilter;
@@ -17979,15 +18440,201 @@ void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "num-nodes" || name == "crc-err-count" || name == "sbe-err-count" || name == "mbe-err-count" || name == "par-err-count" || name == "gen-err-count" || name == "reset-err-count" || name == "err-count" || name == "pcie-err-count" || name == "node-key")
+    if(name == "err-count" || name == "pcie-err-count" || name == "num-nodes" || name == "crc-err-count" || name == "sbe-err-count" || name == "mbe-err-count" || name == "par-err-count" || name == "gen-err-count" || name == "reset-err-count" || name == "node-key")
+        return true;
+    return false;
+}
+
+AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::ErrCount::ErrCount()
+    :
+    name{YType::str, "name"},
+    count{YType::uint32, "count"}
+{
+
+    yang_name = "err-count"; yang_parent_name = "sum-data"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::ErrCount::~ErrCount()
+{
+}
+
+bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::ErrCount::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| count.is_set;
+}
+
+bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::ErrCount::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(count.yfilter);
+}
+
+std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::ErrCount::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "err-count";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::ErrCount::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::ErrCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::ErrCount::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::ErrCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "count")
+    {
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::ErrCount::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+}
+
+bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::ErrCount::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "count")
+        return true;
+    return false;
+}
+
+AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::PcieErrCount::PcieErrCount()
+    :
+    name{YType::str, "name"},
+    count{YType::uint32, "count"}
+{
+
+    yang_name = "pcie-err-count"; yang_parent_name = "sum-data"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::PcieErrCount::~PcieErrCount()
+{
+}
+
+bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::PcieErrCount::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| count.is_set;
+}
+
+bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::PcieErrCount::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(count.yfilter);
+}
+
+std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::PcieErrCount::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pcie-err-count";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::PcieErrCount::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::PcieErrCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::PcieErrCount::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::PcieErrCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "count")
+    {
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::PcieErrCount::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+}
+
+bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::PcieErrCount::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "count")
         return true;
     return false;
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::UnexpectedHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "unexpected-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unexpected-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::~UnexpectedHardErrors()
@@ -17996,7 +18643,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Unexpe
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -18006,7 +18654,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -18036,7 +18684,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -18048,7 +18696,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18088,9 +18736,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Unexpe
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "unexpected-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "unexpected-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error::~Error()
@@ -18099,12 +18750,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Unexpe
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -18125,12 +18777,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -18184,7 +18836,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -18192,7 +18844,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -18204,7 +18856,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18213,7 +18865,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18366,7 +19018,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Unexpe
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -18375,6 +19027,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Unexpe
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -18473,7 +19126,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Unexpe
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error::LastErr::~LastErr()
@@ -18482,6 +19135,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Unexpe
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -18606,9 +19260,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::TimeOutSoftErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "time-out-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time-out-soft-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::~TimeOutSoftErrors()
@@ -18617,7 +19273,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -18627,7 +19284,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::T
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -18657,7 +19314,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -18669,7 +19326,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18709,9 +19366,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "time-out-soft-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "time-out-soft-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error::~Error()
@@ -18720,12 +19380,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -18746,12 +19407,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::T
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -18805,7 +19466,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -18813,7 +19474,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -18825,7 +19486,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18834,7 +19495,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18987,7 +19648,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error::CsrsInfo::~CsrsInfo()
@@ -18996,6 +19657,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -19094,7 +19756,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error::LastErr::~LastErr()
@@ -19103,6 +19765,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -19227,9 +19890,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::T
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::AsicErrorGenericHard()
+    :
+    error(this, {})
 {
 
-    yang_name = "asic-error-generic-hard"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-error-generic-hard"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::~AsicErrorGenericHard()
@@ -19238,7 +19903,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -19248,7 +19914,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -19278,7 +19944,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -19290,7 +19956,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19330,9 +19996,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "asic-error-generic-hard"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "asic-error-generic-hard"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error::~Error()
@@ -19341,12 +20010,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -19367,12 +20037,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -19426,7 +20096,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -19434,7 +20104,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -19446,7 +20116,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19455,7 +20125,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19608,7 +20278,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error::CsrsInfo::~CsrsInfo()
@@ -19617,6 +20287,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -19715,7 +20386,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error::LastErr::~LastErr()
@@ -19724,6 +20395,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -19848,9 +20520,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::ParityHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "parity-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parity-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::~ParityHardErrors()
@@ -19859,7 +20533,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Parity
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -19869,7 +20544,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::P
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -19899,7 +20574,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -19911,7 +20586,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19951,9 +20626,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Parity
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "parity-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "parity-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error::~Error()
@@ -19962,12 +20640,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Parity
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -19988,12 +20667,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::P
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -20047,7 +20726,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -20055,7 +20734,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -20067,7 +20746,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20076,7 +20755,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20229,7 +20908,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Parity
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -20238,6 +20917,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Parity
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -20336,7 +21016,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Parity
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error::LastErr::~LastErr()
@@ -20345,6 +21025,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Parity
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -20469,9 +21150,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::P
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::DescriptorHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "descriptor-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "descriptor-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::~DescriptorHardErrors()
@@ -20480,7 +21163,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Descri
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -20490,7 +21174,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::D
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -20520,7 +21204,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -20532,7 +21216,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20572,9 +21256,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Descri
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "descriptor-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "descriptor-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error::~Error()
@@ -20583,12 +21270,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Descri
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -20609,12 +21297,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::D
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -20668,7 +21356,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -20676,7 +21364,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -20688,7 +21376,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20697,7 +21385,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20850,7 +21538,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Descri
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -20859,6 +21547,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Descri
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -20957,7 +21646,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Descri
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error::LastErr::~LastErr()
@@ -20966,6 +21655,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Descri
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -21090,9 +21780,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::D
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::InterfaceHardErrors()
+    :
+    error(this, {})
 {
 
-    yang_name = "interface-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-hard-errors"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::~InterfaceHardErrors()
@@ -21101,7 +21793,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Interf
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -21111,7 +21804,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -21141,7 +21834,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -21153,7 +21846,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21193,9 +21886,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Interf
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "interface-hard-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "interface-hard-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error::~Error()
@@ -21204,12 +21900,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Interf
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -21230,12 +21927,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -21289,7 +21986,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -21297,7 +21994,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -21309,7 +22006,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21318,7 +22015,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21471,7 +22168,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Interf
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error::CsrsInfo::~CsrsInfo()
@@ -21480,6 +22177,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Interf
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -21578,7 +22276,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Interf
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error::LastErr::~LastErr()
@@ -21587,6 +22285,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Interf
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -21711,9 +22410,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::AsicErrorSbeHard()
+    :
+    error(this, {})
 {
 
-    yang_name = "asic-error-sbe-hard"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-error-sbe-hard"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::~AsicErrorSbeHard()
@@ -21722,7 +22423,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -21732,7 +22434,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -21762,7 +22464,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -21774,7 +22476,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21814,9 +22516,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "asic-error-sbe-hard"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "asic-error-sbe-hard"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error::~Error()
@@ -21825,12 +22530,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -21851,12 +22557,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -21910,7 +22616,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -21918,7 +22624,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -21930,7 +22636,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21939,7 +22645,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22092,7 +22798,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error::CsrsInfo::~CsrsInfo()
@@ -22101,6 +22807,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -22199,7 +22906,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error::LastErr::~LastErr()
@@ -22208,6 +22915,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -22332,9 +23040,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::AsicErrorCrcHard()
+    :
+    error(this, {})
 {
 
-    yang_name = "asic-error-crc-hard"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-error-crc-hard"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::~AsicErrorCrcHard()
@@ -22343,7 +23053,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -22353,7 +23064,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -22383,7 +23094,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -22395,7 +23106,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22435,9 +23146,12 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     intr_type{YType::uint32, "intr-type"},
     leaf_id{YType::uint32, "leaf-id"},
     last_cleared{YType::uint64, "last-cleared"}
+        ,
+    csrs_info(this, {})
+    , last_err(this, {})
 {
 
-    yang_name = "error"; yang_parent_name = "asic-error-crc-hard"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "asic-error-crc-hard"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error::~Error()
@@ -22446,12 +23160,13 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error::has_data() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_data())
             return true;
@@ -22472,12 +23187,12 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error::has_operation() const
 {
-    for (std::size_t index=0; index<csrs_info.size(); index++)
+    for (std::size_t index=0; index<csrs_info.len(); index++)
     {
         if(csrs_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<last_err.size(); index++)
+    for (std::size_t index=0; index<last_err.len(); index++)
     {
         if(last_err[index]->has_operation())
             return true;
@@ -22531,7 +23246,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error::CsrsInfo>();
         c->parent = this;
-        csrs_info.push_back(c);
+        csrs_info.append(c);
         return c;
     }
 
@@ -22539,7 +23254,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error::LastErr>();
         c->parent = this;
-        last_err.push_back(c);
+        last_err.append(c);
         return c;
     }
 
@@ -22551,7 +23266,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csrs_info)
+    for (auto c : csrs_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22560,7 +23275,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     }
 
     count = 0;
-    for (auto const & c : last_err)
+    for (auto c : last_err.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22713,7 +23428,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     width{YType::uint32, "width"}
 {
 
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error::CsrsInfo::~CsrsInfo()
@@ -22722,6 +23437,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error::CsrsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address.is_set
 	|| width.is_set;
@@ -22820,7 +23536,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
     error_regval{YType::uint8, "error-regval"}
 {
 
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error::LastErr::~LastErr()
@@ -22829,6 +23545,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error::LastErr::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
@@ -22953,9 +23670,11 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::AsicErrorParityHard()
+    :
+    error(this, {})
 {
 
-    yang_name = "asic-error-parity-hard"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-error-parity-hard"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::~AsicErrorParityHard()
@@ -22964,7 +23683,8 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::has_data() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_data())
             return true;
@@ -22974,7 +23694,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::has_operation() const
 {
-    for (std::size_t index=0; index<error.size(); index++)
+    for (std::size_t index=0; index<error.len(); index++)
     {
         if(error[index]->has_operation())
             return true;
@@ -23004,7 +23724,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
     {
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error>();
         c->parent = this;
-        error.push_back(c);
+        error.append(c);
         return c;
     }
 
@@ -23016,7 +23736,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error)
+    for (auto c : error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23036,627 +23756,6 @@ void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 }
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error")
-        return true;
-    return false;
-}
-
-AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::Error()
-    :
-    name{YType::str, "name"},
-    asic_info{YType::str, "asic-info"},
-    node_key{YType::uint32, "node-key"},
-    alarm_on{YType::boolean, "alarm-on"},
-    thresh_hi{YType::uint32, "thresh-hi"},
-    period_hi{YType::uint32, "period-hi"},
-    thresh_lo{YType::uint32, "thresh-lo"},
-    period_lo{YType::uint32, "period-lo"},
-    count{YType::uint32, "count"},
-    intr_type{YType::uint32, "intr-type"},
-    leaf_id{YType::uint32, "leaf-id"},
-    last_cleared{YType::uint64, "last-cleared"}
-{
-
-    yang_name = "error"; yang_parent_name = "asic-error-parity-hard"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::~Error()
-{
-}
-
-bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::has_data() const
-{
-    for (std::size_t index=0; index<csrs_info.size(); index++)
-    {
-        if(csrs_info[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<last_err.size(); index++)
-    {
-        if(last_err[index]->has_data())
-            return true;
-    }
-    return name.is_set
-	|| asic_info.is_set
-	|| node_key.is_set
-	|| alarm_on.is_set
-	|| thresh_hi.is_set
-	|| period_hi.is_set
-	|| thresh_lo.is_set
-	|| period_lo.is_set
-	|| count.is_set
-	|| intr_type.is_set
-	|| leaf_id.is_set
-	|| last_cleared.is_set;
-}
-
-bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::has_operation() const
-{
-    for (std::size_t index=0; index<csrs_info.size(); index++)
-    {
-        if(csrs_info[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<last_err.size(); index++)
-    {
-        if(last_err[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(asic_info.yfilter)
-	|| ydk::is_set(node_key.yfilter)
-	|| ydk::is_set(alarm_on.yfilter)
-	|| ydk::is_set(thresh_hi.yfilter)
-	|| ydk::is_set(period_hi.yfilter)
-	|| ydk::is_set(thresh_lo.yfilter)
-	|| ydk::is_set(period_lo.yfilter)
-	|| ydk::is_set(count.yfilter)
-	|| ydk::is_set(intr_type.yfilter)
-	|| ydk::is_set(leaf_id.yfilter)
-	|| ydk::is_set(last_cleared.yfilter);
-}
-
-std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "error";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (asic_info.is_set || is_set(asic_info.yfilter)) leaf_name_data.push_back(asic_info.get_name_leafdata());
-    if (node_key.is_set || is_set(node_key.yfilter)) leaf_name_data.push_back(node_key.get_name_leafdata());
-    if (alarm_on.is_set || is_set(alarm_on.yfilter)) leaf_name_data.push_back(alarm_on.get_name_leafdata());
-    if (thresh_hi.is_set || is_set(thresh_hi.yfilter)) leaf_name_data.push_back(thresh_hi.get_name_leafdata());
-    if (period_hi.is_set || is_set(period_hi.yfilter)) leaf_name_data.push_back(period_hi.get_name_leafdata());
-    if (thresh_lo.is_set || is_set(thresh_lo.yfilter)) leaf_name_data.push_back(thresh_lo.get_name_leafdata());
-    if (period_lo.is_set || is_set(period_lo.yfilter)) leaf_name_data.push_back(period_lo.get_name_leafdata());
-    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (intr_type.is_set || is_set(intr_type.yfilter)) leaf_name_data.push_back(intr_type.get_name_leafdata());
-    if (leaf_id.is_set || is_set(leaf_id.yfilter)) leaf_name_data.push_back(leaf_id.get_name_leafdata());
-    if (last_cleared.is_set || is_set(last_cleared.yfilter)) leaf_name_data.push_back(last_cleared.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "csrs-info")
-    {
-        auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::CsrsInfo>();
-        c->parent = this;
-        csrs_info.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "last-err")
-    {
-        auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr>();
-        c->parent = this;
-        last_err.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : csrs_info)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto const & c : last_err)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asic-info")
-    {
-        asic_info = value;
-        asic_info.value_namespace = name_space;
-        asic_info.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-key")
-    {
-        node_key = value;
-        node_key.value_namespace = name_space;
-        node_key.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "alarm-on")
-    {
-        alarm_on = value;
-        alarm_on.value_namespace = name_space;
-        alarm_on.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "thresh-hi")
-    {
-        thresh_hi = value;
-        thresh_hi.value_namespace = name_space;
-        thresh_hi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "period-hi")
-    {
-        period_hi = value;
-        period_hi.value_namespace = name_space;
-        period_hi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "thresh-lo")
-    {
-        thresh_lo = value;
-        thresh_lo.value_namespace = name_space;
-        thresh_lo.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "period-lo")
-    {
-        period_lo = value;
-        period_lo.value_namespace = name_space;
-        period_lo.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "count")
-    {
-        count = value;
-        count.value_namespace = name_space;
-        count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intr-type")
-    {
-        intr_type = value;
-        intr_type.value_namespace = name_space;
-        intr_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "leaf-id")
-    {
-        leaf_id = value;
-        leaf_id.value_namespace = name_space;
-        leaf_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-cleared")
-    {
-        last_cleared = value;
-        last_cleared.value_namespace = name_space;
-        last_cleared.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "asic-info")
-    {
-        asic_info.yfilter = yfilter;
-    }
-    if(value_path == "node-key")
-    {
-        node_key.yfilter = yfilter;
-    }
-    if(value_path == "alarm-on")
-    {
-        alarm_on.yfilter = yfilter;
-    }
-    if(value_path == "thresh-hi")
-    {
-        thresh_hi.yfilter = yfilter;
-    }
-    if(value_path == "period-hi")
-    {
-        period_hi.yfilter = yfilter;
-    }
-    if(value_path == "thresh-lo")
-    {
-        thresh_lo.yfilter = yfilter;
-    }
-    if(value_path == "period-lo")
-    {
-        period_lo.yfilter = yfilter;
-    }
-    if(value_path == "count")
-    {
-        count.yfilter = yfilter;
-    }
-    if(value_path == "intr-type")
-    {
-        intr_type.yfilter = yfilter;
-    }
-    if(value_path == "leaf-id")
-    {
-        leaf_id.yfilter = yfilter;
-    }
-    if(value_path == "last-cleared")
-    {
-        last_cleared.yfilter = yfilter;
-    }
-}
-
-bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "csrs-info" || name == "last-err" || name == "name" || name == "asic-info" || name == "node-key" || name == "alarm-on" || name == "thresh-hi" || name == "period-hi" || name == "thresh-lo" || name == "period-lo" || name == "count" || name == "intr-type" || name == "leaf-id" || name == "last-cleared")
-        return true;
-    return false;
-}
-
-AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::CsrsInfo::CsrsInfo()
-    :
-    name{YType::str, "name"},
-    address{YType::uint64, "address"},
-    width{YType::uint32, "width"}
-{
-
-    yang_name = "csrs-info"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::CsrsInfo::~CsrsInfo()
-{
-}
-
-bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::CsrsInfo::has_data() const
-{
-    return name.is_set
-	|| address.is_set
-	|| width.is_set;
-}
-
-bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::CsrsInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(width.yfilter);
-}
-
-std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::CsrsInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "csrs-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::CsrsInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (width.is_set || is_set(width.yfilter)) leaf_name_data.push_back(width.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::CsrsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::CsrsInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::CsrsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "width")
-    {
-        width = value;
-        width.value_namespace = name_space;
-        width.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::CsrsInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "width")
-    {
-        width.yfilter = yfilter;
-    }
-}
-
-bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::CsrsInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "address" || name == "width")
-        return true;
-    return false;
-}
-
-AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::LastErr()
-    :
-    at_time{YType::uint64, "at-time"},
-    at_time_nsec{YType::uint64, "at-time-nsec"},
-    counter_val{YType::uint32, "counter-val"},
-    error_desc{YType::str, "error-desc"},
-    error_regval{YType::uint8, "error-regval"}
-{
-
-    yang_name = "last-err"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::~LastErr()
-{
-}
-
-bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::has_data() const
-{
-    for (auto const & leaf : error_regval.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return at_time.is_set
-	|| at_time_nsec.is_set
-	|| counter_val.is_set
-	|| error_desc.is_set;
-}
-
-bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::has_operation() const
-{
-    for (auto const & leaf : error_regval.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(at_time.yfilter)
-	|| ydk::is_set(at_time_nsec.yfilter)
-	|| ydk::is_set(counter_val.yfilter)
-	|| ydk::is_set(error_desc.yfilter)
-	|| ydk::is_set(error_regval.yfilter);
-}
-
-std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "last-err";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (at_time.is_set || is_set(at_time.yfilter)) leaf_name_data.push_back(at_time.get_name_leafdata());
-    if (at_time_nsec.is_set || is_set(at_time_nsec.yfilter)) leaf_name_data.push_back(at_time_nsec.get_name_leafdata());
-    if (counter_val.is_set || is_set(counter_val.yfilter)) leaf_name_data.push_back(counter_val.get_name_leafdata());
-    if (error_desc.is_set || is_set(error_desc.yfilter)) leaf_name_data.push_back(error_desc.get_name_leafdata());
-
-    auto error_regval_name_datas = error_regval.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), error_regval_name_datas.begin(), error_regval_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "at-time")
-    {
-        at_time = value;
-        at_time.value_namespace = name_space;
-        at_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "at-time-nsec")
-    {
-        at_time_nsec = value;
-        at_time_nsec.value_namespace = name_space;
-        at_time_nsec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "counter-val")
-    {
-        counter_val = value;
-        counter_val.value_namespace = name_space;
-        counter_val.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error-desc")
-    {
-        error_desc = value;
-        error_desc.value_namespace = name_space;
-        error_desc.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error-regval")
-    {
-        error_regval.append(value);
-    }
-}
-
-void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "at-time")
-    {
-        at_time.yfilter = yfilter;
-    }
-    if(value_path == "at-time-nsec")
-    {
-        at_time_nsec.yfilter = yfilter;
-    }
-    if(value_path == "counter-val")
-    {
-        counter_val.yfilter = yfilter;
-    }
-    if(value_path == "error-desc")
-    {
-        error_desc.yfilter = yfilter;
-    }
-    if(value_path == "error-regval")
-    {
-        error_regval.yfilter = yfilter;
-    }
-}
-
-bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "at-time" || name == "at-time-nsec" || name == "counter-val" || name == "error-desc" || name == "error-regval")
-        return true;
-    return false;
-}
-
-AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::AsicErrorResetSoft()
-{
-
-    yang_name = "asic-error-reset-soft"; yang_parent_name = "error-path"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::~AsicErrorResetSoft()
-{
-}
-
-bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::has_data() const
-{
-    for (std::size_t index=0; index<error.size(); index++)
-    {
-        if(error[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::has_operation() const
-{
-    for (std::size_t index=0; index<error.size(); index++)
-    {
-        if(error[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "asic-error-reset-soft";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "error")
-    {
-        auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error>();
-        c->parent = this;
-        error.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : error)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error")
         return true;

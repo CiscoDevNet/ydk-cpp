@@ -33,7 +33,7 @@ class VrfPolicy : public ydk::Entity
 
         class Vrf; //type: VrfPolicy::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vrf_policy_cfg::VrfPolicy::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // VrfPolicy
 
@@ -58,7 +58,7 @@ class VrfPolicy::Vrf : public ydk::Entity
         ydk::YLeaf vrf_name; //type: string
         class Afi; //type: VrfPolicy::Vrf::Afi
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vrf_policy_cfg::VrfPolicy::Vrf::Afi> > afi;
+        ydk::YList afi;
         
 }; // VrfPolicy::Vrf
 

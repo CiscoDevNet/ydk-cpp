@@ -17,7 +17,7 @@ Ppp::Ppp()
 {
     nodes->parent = this;
 
-    yang_name = "ppp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ppp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ppp::~Ppp()
@@ -26,6 +26,7 @@ Ppp::~Ppp()
 
 bool Ppp::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Ppp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ppp::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ppp::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Ppp::Nodes::~Nodes()
 
 bool Ppp::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Ppp::Nodes::has_data() const
 
 bool Ppp::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Ppp::Nodes::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Ppp::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,14 +221,14 @@ bool Ppp::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Ppp::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     statistics(std::make_shared<Ppp::Nodes::Node::Statistics>())
-	,node_interfaces(std::make_shared<Ppp::Nodes::Node::NodeInterfaces>())
-	,sso_alerts(std::make_shared<Ppp::Nodes::Node::SsoAlerts>())
-	,node_interface_statistics(std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics>())
-	,sso_summary(std::make_shared<Ppp::Nodes::Node::SsoSummary>())
-	,sso_groups(std::make_shared<Ppp::Nodes::Node::SsoGroups>())
-	,summary(std::make_shared<Ppp::Nodes::Node::Summary>())
+    , node_interfaces(std::make_shared<Ppp::Nodes::Node::NodeInterfaces>())
+    , sso_alerts(std::make_shared<Ppp::Nodes::Node::SsoAlerts>())
+    , node_interface_statistics(std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics>())
+    , sso_summary(std::make_shared<Ppp::Nodes::Node::SsoSummary>())
+    , sso_groups(std::make_shared<Ppp::Nodes::Node::SsoGroups>())
+    , summary(std::make_shared<Ppp::Nodes::Node::Summary>())
 {
     statistics->parent = this;
     node_interfaces->parent = this;
@@ -234,7 +238,7 @@ Ppp::Nodes::Node::Node()
     sso_groups->parent = this;
     summary->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ppp::Nodes::Node::~Node()
@@ -243,6 +247,7 @@ Ppp::Nodes::Node::~Node()
 
 bool Ppp::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (node_interfaces !=  nullptr && node_interfaces->has_data())
@@ -276,7 +281,8 @@ std::string Ppp::Nodes::Node::get_absolute_path() const
 std::string Ppp::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -428,12 +434,13 @@ bool Ppp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 Ppp::Nodes::Node::Statistics::Statistics()
     :
     lcp_statistics(std::make_shared<Ppp::Nodes::Node::Statistics::LcpStatistics>())
-	,authentication_statistics(std::make_shared<Ppp::Nodes::Node::Statistics::AuthenticationStatistics>())
+    , authentication_statistics(std::make_shared<Ppp::Nodes::Node::Statistics::AuthenticationStatistics>())
+    , ncp_statistics_array(this, {})
 {
     lcp_statistics->parent = this;
     authentication_statistics->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::Statistics::~Statistics()
@@ -442,7 +449,8 @@ Ppp::Nodes::Node::Statistics::~Statistics()
 
 bool Ppp::Nodes::Node::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<ncp_statistics_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ncp_statistics_array.len(); index++)
     {
         if(ncp_statistics_array[index]->has_data())
             return true;
@@ -453,7 +461,7 @@ bool Ppp::Nodes::Node::Statistics::has_data() const
 
 bool Ppp::Nodes::Node::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<ncp_statistics_array.size(); index++)
+    for (std::size_t index=0; index<ncp_statistics_array.len(); index++)
     {
         if(ncp_statistics_array[index]->has_operation())
             return true;
@@ -503,7 +511,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::Statistics::get_child_by_name(const st
     {
         auto c = std::make_shared<Ppp::Nodes::Node::Statistics::NcpStatisticsArray>();
         c->parent = this;
-        ncp_statistics_array.push_back(c);
+        ncp_statistics_array.append(c);
         return c;
     }
 
@@ -525,7 +533,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::get
     }
 
     count = 0;
-    for (auto const & c : ncp_statistics_array)
+    for (auto c : ncp_statistics_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -579,7 +587,7 @@ Ppp::Nodes::Node::Statistics::LcpStatistics::LcpStatistics()
     link_error{YType::uint64, "link-error"}
 {
 
-    yang_name = "lcp-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lcp-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::Statistics::LcpStatistics::~LcpStatistics()
@@ -588,6 +596,7 @@ Ppp::Nodes::Node::Statistics::LcpStatistics::~LcpStatistics()
 
 bool Ppp::Nodes::Node::Statistics::LcpStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return conf_req_sent.is_set
 	|| conf_req_rcvd.is_set
 	|| conf_ack_sent.is_set
@@ -969,7 +978,7 @@ Ppp::Nodes::Node::Statistics::AuthenticationStatistics::AuthenticationStatistics
     auth_timeout_count{YType::uint64, "auth-timeout-count"}
 {
 
-    yang_name = "authentication-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::Statistics::AuthenticationStatistics::~AuthenticationStatistics()
@@ -978,6 +987,7 @@ Ppp::Nodes::Node::Statistics::AuthenticationStatistics::~AuthenticationStatistic
 
 bool Ppp::Nodes::Node::Statistics::AuthenticationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pap_req_sent.is_set
 	|| pap_req_rcvd.is_set
 	|| pap_ack_sent.is_set
@@ -1242,7 +1252,7 @@ Ppp::Nodes::Node::Statistics::NcpStatisticsArray::NcpStatisticsArray()
     proto_rej_rcvd{YType::uint64, "proto-rej-rcvd"}
 {
 
-    yang_name = "ncp-statistics-array"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ncp-statistics-array"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::Statistics::NcpStatisticsArray::~NcpStatisticsArray()
@@ -1251,6 +1261,7 @@ Ppp::Nodes::Node::Statistics::NcpStatisticsArray::~NcpStatisticsArray()
 
 bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_data() const
 {
+    if (is_presence_container) return true;
     return ncp_identifier.is_set
 	|| conf_req_sent.is_set
 	|| conf_req_rcvd.is_set
@@ -1497,9 +1508,11 @@ bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_leaf_or_child_of_name
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterfaces()
+    :
+    node_interface(this, {"interface"})
 {
 
-    yang_name = "node-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaces::~NodeInterfaces()
@@ -1508,7 +1521,8 @@ Ppp::Nodes::Node::NodeInterfaces::~NodeInterfaces()
 
 bool Ppp::Nodes::Node::NodeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<node_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_interface.len(); index++)
     {
         if(node_interface[index]->has_data())
             return true;
@@ -1518,7 +1532,7 @@ bool Ppp::Nodes::Node::NodeInterfaces::has_data() const
 
 bool Ppp::Nodes::Node::NodeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<node_interface.size(); index++)
+    for (std::size_t index=0; index<node_interface.len(); index++)
     {
         if(node_interface[index]->has_operation())
             return true;
@@ -1548,7 +1562,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaces::get_child_by_name(cons
     {
         auto c = std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface>();
         c->parent = this;
-        node_interface.push_back(c);
+        node_interface.append(c);
         return c;
     }
 
@@ -1560,7 +1574,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_interface)
+    for (auto c : node_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1616,16 +1630,17 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NodeInterface()
     local_mcmp_classes{YType::uint8, "local-mcmp-classes"},
     peer_mcmp_classes{YType::uint8, "peer-mcmp-classes"},
     session_expires{YType::uint32, "session-expires"}
-    	,
+        ,
     mp_info(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo>())
-	,configured_timeout(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout>())
-	,auth_info(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo>())
+    , configured_timeout(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout>())
+    , auth_info(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo>())
+    , ncp_info_array(this, {})
 {
     mp_info->parent = this;
     configured_timeout->parent = this;
     auth_info->parent = this;
 
-    yang_name = "node-interface"; yang_parent_name = "node-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-interface"; yang_parent_name = "node-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::~NodeInterface()
@@ -1634,7 +1649,8 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::~NodeInterface()
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::has_data() const
 {
-    for (std::size_t index=0; index<ncp_info_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ncp_info_array.len(); index++)
     {
         if(ncp_info_array[index]->has_data())
             return true;
@@ -1674,7 +1690,7 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::has_data() const
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::has_operation() const
 {
-    for (std::size_t index=0; index<ncp_info_array.size(); index++)
+    for (std::size_t index=0; index<ncp_info_array.len(); index++)
     {
         if(ncp_info_array[index]->has_operation())
             return true;
@@ -1716,7 +1732,8 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::has_operation() const
 std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node-interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "node-interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -1790,7 +1807,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::get_chi
     {
         auto c = std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray>();
         c->parent = this;
-        ncp_info_array.push_back(c);
+        ncp_info_array.append(c);
         return c;
     }
 
@@ -1817,7 +1834,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     }
 
     count = 0;
-    for (auto const & c : ncp_info_array)
+    for (auto c : ncp_info_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2133,9 +2150,11 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpInfo()
     inactive_links{YType::uint16, "inactive-links"},
     minimum_active_links{YType::uint16, "minimum-active-links"},
     mp_state{YType::enumeration, "mp-state"}
+        ,
+    mp_member_info_array(this, {})
 {
 
-    yang_name = "mp-info"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mp-info"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::~MpInfo()
@@ -2144,7 +2163,8 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::~MpInfo()
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::has_data() const
 {
-    for (std::size_t index=0; index<mp_member_info_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mp_member_info_array.len(); index++)
     {
         if(mp_member_info_array[index]->has_data())
             return true;
@@ -2161,7 +2181,7 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::has_data() const
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::has_operation() const
 {
-    for (std::size_t index=0; index<mp_member_info_array.size(); index++)
+    for (std::size_t index=0; index<mp_member_info_array.len(); index++)
     {
         if(mp_member_info_array[index]->has_operation())
             return true;
@@ -2207,7 +2227,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo:
     {
         auto c = std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray>();
         c->parent = this;
-        mp_member_info_array.push_back(c);
+        mp_member_info_array.append(c);
         return c;
     }
 
@@ -2219,7 +2239,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mp_member_info_array)
+    for (auto c : mp_member_info_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2331,7 +2351,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::MpMe
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "mp-member-info-array"; yang_parent_name = "mp-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mp-member-info-array"; yang_parent_name = "mp-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::~MpMemberInfoArray()
@@ -2340,6 +2360,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::~MpM
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| state.is_set;
 }
@@ -2422,7 +2443,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::ConfiguredTi
     seconds{YType::uint8, "seconds"}
 {
 
-    yang_name = "configured-timeout"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configured-timeout"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::~ConfiguredTimeout()
@@ -2431,6 +2452,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::~ConfiguredT
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::has_data() const
 {
+    if (is_presence_container) return true;
     return minutes.is_set
 	|| seconds.is_set;
 }
@@ -2519,7 +2541,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::AuthInfo()
     of_peer_sso_state{YType::enumeration, "of-peer-sso-state"}
 {
 
-    yang_name = "auth-info"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auth-info"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::~AuthInfo()
@@ -2528,6 +2550,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::~AuthInfo()
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return is_authenticated.is_set
 	|| is_sso_authenticated.is_set
 	|| of_us_auth.is_set
@@ -2688,12 +2711,12 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfoArray()
     ncpsso_state{YType::enumeration, "ncpsso-state"},
     is_passive{YType::boolean, "is-passive"},
     ncp_identifier{YType::enumeration, "ncp-identifier"}
-    	,
+        ,
     ncp_info(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo>())
 {
     ncp_info->parent = this;
 
-    yang_name = "ncp-info-array"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ncp-info-array"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::~NcpInfoArray()
@@ -2702,6 +2725,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::~NcpInfoArray()
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::has_data() const
 {
+    if (is_presence_container) return true;
     return ncp_state.is_set
 	|| ncpsso_state.is_set
 	|| is_passive.is_set
@@ -2823,16 +2847,16 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::has_leaf_or_
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::NcpInfo()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     ipcp_info(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo>())
-	,ipcpiw_info(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo>())
-	,ipv6cp_info(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo>())
+    , ipcpiw_info(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo>())
+    , ipv6cp_info(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo>())
 {
     ipcp_info->parent = this;
     ipcpiw_info->parent = this;
     ipv6cp_info->parent = this;
 
-    yang_name = "ncp-info"; yang_parent_name = "ncp-info-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ncp-info"; yang_parent_name = "ncp-info-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::~NcpInfo()
@@ -2841,6 +2865,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::~NcpInfo
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (ipcp_info !=  nullptr && ipcp_info->has_data())
 	|| (ipcpiw_info !=  nullptr && ipcpiw_info->has_data())
@@ -2897,7 +2922,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfo
     {
         if(ipv6cp_info == nullptr)
         {
-            ipv6cp_info = std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo>();
+            ipv6cp_info = std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo>();
         }
         return ipv6cp_info;
     }
@@ -2962,14 +2987,14 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo
     wins_primary{YType::str, "wins-primary"},
     wins_secondary{YType::str, "wins-secondary"},
     is_iphc_configured{YType::boolean, "is-iphc-configured"}
-    	,
+        ,
     local_iphc_options(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions>())
-	,peer_iphc_options(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions>())
+    , peer_iphc_options(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions>())
 {
     local_iphc_options->parent = this;
     peer_iphc_options->parent = this;
 
-    yang_name = "ipcp-info"; yang_parent_name = "ncp-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipcp-info"; yang_parent_name = "ncp-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::~IpcpInfo()
@@ -2978,6 +3003,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return local_address.is_set
 	|| peer_address.is_set
 	|| peer_netmask.is_set
@@ -3176,7 +3202,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo
     ec_rtp_compression{YType::boolean, "ec-rtp-compression"}
 {
 
-    yang_name = "local-iphc-options"; yang_parent_name = "ipcp-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-iphc-options"; yang_parent_name = "ipcp-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions::~LocalIphcOptions()
@@ -3185,6 +3211,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return compression_type.is_set
 	|| tcp_space.is_set
 	|| non_tcp_space.is_set
@@ -3351,7 +3378,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo
     ec_rtp_compression{YType::boolean, "ec-rtp-compression"}
 {
 
-    yang_name = "peer-iphc-options"; yang_parent_name = "ipcp-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-iphc-options"; yang_parent_name = "ipcp-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions::~PeerIphcOptions()
@@ -3360,6 +3387,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return compression_type.is_set
 	|| tcp_space.is_set
 	|| non_tcp_space.is_set
@@ -3520,7 +3548,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwIn
     peer_address{YType::str, "peer-address"}
 {
 
-    yang_name = "ipcpiw-info"; yang_parent_name = "ncp-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipcpiw-info"; yang_parent_name = "ncp-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo::~IpcpiwInfo()
@@ -3529,6 +3557,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwIn
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return local_address.is_set
 	|| peer_address.is_set;
 }
@@ -3605,40 +3634,41 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipc
     return false;
 }
 
-Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::Ipv6CpInfo()
+Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo::Ipv6cpInfo()
     :
     local_address{YType::str, "local-address"},
     peer_address{YType::str, "peer-address"}
 {
 
-    yang_name = "ipv6cp-info"; yang_parent_name = "ncp-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6cp-info"; yang_parent_name = "ncp-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::~Ipv6CpInfo()
+Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo::~Ipv6cpInfo()
 {
 }
 
-bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::has_data() const
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return local_address.is_set
 	|| peer_address.is_set;
 }
 
-bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::has_operation() const
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(local_address.yfilter)
 	|| ydk::is_set(peer_address.yfilter);
 }
 
-std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::get_segment_path() const
+std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6cp-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3649,19 +3679,19 @@ std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces:
 
 }
 
-std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-address")
     {
@@ -3677,7 +3707,7 @@ void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv
     }
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "local-address")
     {
@@ -3689,7 +3719,7 @@ void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv
     }
 }
 
-bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local-address" || name == "peer-address")
         return true;
@@ -3697,9 +3727,11 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlerts()
+    :
+    sso_alert(this, {"interface"})
 {
 
-    yang_name = "sso-alerts"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sso-alerts"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoAlerts::~SsoAlerts()
@@ -3708,7 +3740,8 @@ Ppp::Nodes::Node::SsoAlerts::~SsoAlerts()
 
 bool Ppp::Nodes::Node::SsoAlerts::has_data() const
 {
-    for (std::size_t index=0; index<sso_alert.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sso_alert.len(); index++)
     {
         if(sso_alert[index]->has_data())
             return true;
@@ -3718,7 +3751,7 @@ bool Ppp::Nodes::Node::SsoAlerts::has_data() const
 
 bool Ppp::Nodes::Node::SsoAlerts::has_operation() const
 {
-    for (std::size_t index=0; index<sso_alert.size(); index++)
+    for (std::size_t index=0; index<sso_alert.len(); index++)
     {
         if(sso_alert[index]->has_operation())
             return true;
@@ -3748,7 +3781,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::SsoAlerts::get_child_by_name(const std
     {
         auto c = std::make_shared<Ppp::Nodes::Node::SsoAlerts::SsoAlert>();
         c->parent = this;
-        sso_alert.push_back(c);
+        sso_alert.append(c);
         return c;
     }
 
@@ -3760,7 +3793,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sso_alert)
+    for (auto c : sso_alert.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3789,18 +3822,18 @@ bool Ppp::Nodes::Node::SsoAlerts::has_leaf_or_child_of_name(const std::string & 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::SsoAlert()
     :
     interface{YType::str, "interface"}
-    	,
+        ,
     lcp_error(std::make_shared<Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError>())
-	,of_us_auth_error(std::make_shared<Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError>())
-	,of_peer_auth_error(std::make_shared<Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError>())
-	,ipcp_error(std::make_shared<Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError>())
+    , of_us_auth_error(std::make_shared<Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError>())
+    , of_peer_auth_error(std::make_shared<Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError>())
+    , ipcp_error(std::make_shared<Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError>())
 {
     lcp_error->parent = this;
     of_us_auth_error->parent = this;
     of_peer_auth_error->parent = this;
     ipcp_error->parent = this;
 
-    yang_name = "sso-alert"; yang_parent_name = "sso-alerts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sso-alert"; yang_parent_name = "sso-alerts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::~SsoAlert()
@@ -3809,6 +3842,7 @@ Ppp::Nodes::Node::SsoAlerts::SsoAlert::~SsoAlert()
 
 bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| (lcp_error !=  nullptr && lcp_error->has_data())
 	|| (of_us_auth_error !=  nullptr && of_us_auth_error->has_data())
@@ -3829,7 +3863,8 @@ bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::has_operation() const
 std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sso-alert" <<"[interface='" <<interface <<"']";
+    path_buffer << "sso-alert";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -3943,7 +3978,7 @@ Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::LcpError()
     context{YType::uint32, "context"}
 {
 
-    yang_name = "lcp-error"; yang_parent_name = "sso-alert"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lcp-error"; yang_parent_name = "sso-alert"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::~LcpError()
@@ -3952,6 +3987,7 @@ Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::~LcpError()
 
 bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::has_data() const
 {
+    if (is_presence_container) return true;
     return is_error.is_set
 	|| error.is_set
 	|| context.is_set;
@@ -4048,7 +4084,7 @@ Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::OfUsAuthError()
     context{YType::uint32, "context"}
 {
 
-    yang_name = "of-us-auth-error"; yang_parent_name = "sso-alert"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "of-us-auth-error"; yang_parent_name = "sso-alert"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::~OfUsAuthError()
@@ -4057,6 +4093,7 @@ Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::~OfUsAuthError()
 
 bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::has_data() const
 {
+    if (is_presence_container) return true;
     return is_error.is_set
 	|| error.is_set
 	|| context.is_set;
@@ -4153,7 +4190,7 @@ Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::OfPeerAuthError()
     context{YType::uint32, "context"}
 {
 
-    yang_name = "of-peer-auth-error"; yang_parent_name = "sso-alert"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "of-peer-auth-error"; yang_parent_name = "sso-alert"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::~OfPeerAuthError()
@@ -4162,6 +4199,7 @@ Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::~OfPeerAuthError()
 
 bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::has_data() const
 {
+    if (is_presence_container) return true;
     return is_error.is_set
 	|| error.is_set
 	|| context.is_set;
@@ -4258,7 +4296,7 @@ Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::IpcpError()
     context{YType::uint32, "context"}
 {
 
-    yang_name = "ipcp-error"; yang_parent_name = "sso-alert"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipcp-error"; yang_parent_name = "sso-alert"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::~IpcpError()
@@ -4267,6 +4305,7 @@ Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::~IpcpError()
 
 bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::has_data() const
 {
+    if (is_presence_container) return true;
     return is_error.is_set
 	|| error.is_set
 	|| context.is_set;
@@ -4357,9 +4396,11 @@ bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::has_leaf_or_child_of_name
 }
 
 Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistics()
+    :
+    node_interface_statistic(this, {"interface_name"})
 {
 
-    yang_name = "node-interface-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-interface-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaceStatistics::~NodeInterfaceStatistics()
@@ -4368,7 +4409,8 @@ Ppp::Nodes::Node::NodeInterfaceStatistics::~NodeInterfaceStatistics()
 
 bool Ppp::Nodes::Node::NodeInterfaceStatistics::has_data() const
 {
-    for (std::size_t index=0; index<node_interface_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_interface_statistic.len(); index++)
     {
         if(node_interface_statistic[index]->has_data())
             return true;
@@ -4378,7 +4420,7 @@ bool Ppp::Nodes::Node::NodeInterfaceStatistics::has_data() const
 
 bool Ppp::Nodes::Node::NodeInterfaceStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<node_interface_statistic.size(); index++)
+    for (std::size_t index=0; index<node_interface_statistic.len(); index++)
     {
         if(node_interface_statistic[index]->has_operation())
             return true;
@@ -4408,7 +4450,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaceStatistics::get_child_by_
     {
         auto c = std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic>();
         c->parent = this;
-        node_interface_statistic.push_back(c);
+        node_interface_statistic.append(c);
         return c;
     }
 
@@ -4420,7 +4462,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceSt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_interface_statistic)
+    for (auto c : node_interface_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4449,14 +4491,15 @@ bool Ppp::Nodes::Node::NodeInterfaceStatistics::has_leaf_or_child_of_name(const 
 Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NodeInterfaceStatistic()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     lcp_statistics(std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics>())
-	,authentication_statistics(std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics>())
+    , authentication_statistics(std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics>())
+    , ncp_statistics_array(this, {})
 {
     lcp_statistics->parent = this;
     authentication_statistics->parent = this;
 
-    yang_name = "node-interface-statistic"; yang_parent_name = "node-interface-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-interface-statistic"; yang_parent_name = "node-interface-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::~NodeInterfaceStatistic()
@@ -4465,7 +4508,8 @@ Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::~NodeInterfac
 
 bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::has_data() const
 {
-    for (std::size_t index=0; index<ncp_statistics_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ncp_statistics_array.len(); index++)
     {
         if(ncp_statistics_array[index]->has_data())
             return true;
@@ -4477,7 +4521,7 @@ bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::has_data
 
 bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::has_operation() const
 {
-    for (std::size_t index=0; index<ncp_statistics_array.size(); index++)
+    for (std::size_t index=0; index<ncp_statistics_array.len(); index++)
     {
         if(ncp_statistics_array[index]->has_operation())
             return true;
@@ -4491,7 +4535,8 @@ bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::has_oper
 std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node-interface-statistic" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "node-interface-statistic";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4529,7 +4574,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterface
     {
         auto c = std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray>();
         c->parent = this;
-        ncp_statistics_array.push_back(c);
+        ncp_statistics_array.append(c);
         return c;
     }
 
@@ -4551,7 +4596,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceSt
     }
 
     count = 0;
-    for (auto const & c : ncp_statistics_array)
+    for (auto c : ncp_statistics_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4607,7 +4652,7 @@ Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics
     link_error{YType::uint16, "link-error"}
 {
 
-    yang_name = "lcp-statistics"; yang_parent_name = "node-interface-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lcp-statistics"; yang_parent_name = "node-interface-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::~LcpStatistics()
@@ -4616,6 +4661,7 @@ Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics
 
 bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return conf_req_sent.is_set
 	|| conf_req_rcvd.is_set
 	|| conf_ack_sent.is_set
@@ -4893,7 +4939,7 @@ Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::Authenticatio
     auth_timeout_count{YType::uint16, "auth-timeout-count"}
 {
 
-    yang_name = "authentication-statistics"; yang_parent_name = "node-interface-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication-statistics"; yang_parent_name = "node-interface-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::~AuthenticationStatistics()
@@ -4902,6 +4948,7 @@ Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::Authenticatio
 
 bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pap_req_sent.is_set
 	|| pap_req_rcvd.is_set
 	|| pap_ack_sent.is_set
@@ -5160,7 +5207,7 @@ Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatistics
     conf_rej_rcvd{YType::uint16, "conf-rej-rcvd"}
 {
 
-    yang_name = "ncp-statistics-array"; yang_parent_name = "node-interface-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ncp-statistics-array"; yang_parent_name = "node-interface-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::~NcpStatisticsArray()
@@ -5169,6 +5216,7 @@ Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatistics
 
 bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::has_data() const
 {
+    if (is_presence_container) return true;
     return ncp_identifier.is_set
 	|| conf_req_sent.is_set
 	|| conf_req_rcvd.is_set
@@ -5339,16 +5387,16 @@ bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStati
 Ppp::Nodes::Node::SsoSummary::SsoSummary()
     :
     lcp_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::LcpStates>())
-	,of_us_auth_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::OfUsAuthStates>())
-	,of_peer_auth_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates>())
-	,ipcp_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::IpcpStates>())
+    , of_us_auth_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::OfUsAuthStates>())
+    , of_peer_auth_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates>())
+    , ipcp_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::IpcpStates>())
 {
     lcp_states->parent = this;
     of_us_auth_states->parent = this;
     of_peer_auth_states->parent = this;
     ipcp_states->parent = this;
 
-    yang_name = "sso-summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sso-summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoSummary::~SsoSummary()
@@ -5357,6 +5405,7 @@ Ppp::Nodes::Node::SsoSummary::~SsoSummary()
 
 bool Ppp::Nodes::Node::SsoSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return (lcp_states !=  nullptr && lcp_states->has_data())
 	|| (of_us_auth_states !=  nullptr && of_us_auth_states->has_data())
 	|| (of_peer_auth_states !=  nullptr && of_peer_auth_states->has_data())
@@ -5477,7 +5526,7 @@ Ppp::Nodes::Node::SsoSummary::LcpStates::LcpStates()
     count{YType::uint16, "count"}
 {
 
-    yang_name = "lcp-states"; yang_parent_name = "sso-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lcp-states"; yang_parent_name = "sso-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoSummary::LcpStates::~LcpStates()
@@ -5486,6 +5535,7 @@ Ppp::Nodes::Node::SsoSummary::LcpStates::~LcpStates()
 
 bool Ppp::Nodes::Node::SsoSummary::LcpStates::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : count.getYLeafs())
     {
         if(leaf.is_set)
@@ -5576,7 +5626,7 @@ Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::OfUsAuthStates()
     count{YType::uint16, "count"}
 {
 
-    yang_name = "of-us-auth-states"; yang_parent_name = "sso-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "of-us-auth-states"; yang_parent_name = "sso-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::~OfUsAuthStates()
@@ -5585,6 +5635,7 @@ Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::~OfUsAuthStates()
 
 bool Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : count.getYLeafs())
     {
         if(leaf.is_set)
@@ -5675,7 +5726,7 @@ Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::OfPeerAuthStates()
     count{YType::uint16, "count"}
 {
 
-    yang_name = "of-peer-auth-states"; yang_parent_name = "sso-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "of-peer-auth-states"; yang_parent_name = "sso-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::~OfPeerAuthStates()
@@ -5684,6 +5735,7 @@ Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::~OfPeerAuthStates()
 
 bool Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : count.getYLeafs())
     {
         if(leaf.is_set)
@@ -5774,7 +5826,7 @@ Ppp::Nodes::Node::SsoSummary::IpcpStates::IpcpStates()
     count{YType::uint16, "count"}
 {
 
-    yang_name = "ipcp-states"; yang_parent_name = "sso-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipcp-states"; yang_parent_name = "sso-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoSummary::IpcpStates::~IpcpStates()
@@ -5783,6 +5835,7 @@ Ppp::Nodes::Node::SsoSummary::IpcpStates::~IpcpStates()
 
 bool Ppp::Nodes::Node::SsoSummary::IpcpStates::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : count.getYLeafs())
     {
         if(leaf.is_set)
@@ -5868,9 +5921,11 @@ bool Ppp::Nodes::Node::SsoSummary::IpcpStates::has_leaf_or_child_of_name(const s
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroups()
+    :
+    sso_group(this, {"group_id"})
 {
 
-    yang_name = "sso-groups"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sso-groups"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoGroups::~SsoGroups()
@@ -5879,7 +5934,8 @@ Ppp::Nodes::Node::SsoGroups::~SsoGroups()
 
 bool Ppp::Nodes::Node::SsoGroups::has_data() const
 {
-    for (std::size_t index=0; index<sso_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sso_group.len(); index++)
     {
         if(sso_group[index]->has_data())
             return true;
@@ -5889,7 +5945,7 @@ bool Ppp::Nodes::Node::SsoGroups::has_data() const
 
 bool Ppp::Nodes::Node::SsoGroups::has_operation() const
 {
-    for (std::size_t index=0; index<sso_group.size(); index++)
+    for (std::size_t index=0; index<sso_group.len(); index++)
     {
         if(sso_group[index]->has_operation())
             return true;
@@ -5919,7 +5975,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::SsoGroups::get_child_by_name(const std
     {
         auto c = std::make_shared<Ppp::Nodes::Node::SsoGroups::SsoGroup>();
         c->parent = this;
-        sso_group.push_back(c);
+        sso_group.append(c);
         return c;
     }
 
@@ -5931,7 +5987,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sso_group)
+    for (auto c : sso_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5960,12 +6016,12 @@ bool Ppp::Nodes::Node::SsoGroups::has_leaf_or_child_of_name(const std::string & 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoGroup()
     :
     group_id{YType::uint32, "group-id"}
-    	,
+        ,
     sso_states(std::make_shared<Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates>())
 {
     sso_states->parent = this;
 
-    yang_name = "sso-group"; yang_parent_name = "sso-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sso-group"; yang_parent_name = "sso-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::~SsoGroup()
@@ -5974,6 +6030,7 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::~SsoGroup()
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set
 	|| (sso_states !=  nullptr && sso_states->has_data());
 }
@@ -5988,7 +6045,8 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::has_operation() const
 std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sso-group" <<"[group-id='" <<group_id <<"']";
+    path_buffer << "sso-group";
+    ADD_KEY_TOKEN(group_id, "group-id");
     return path_buffer.str();
 }
 
@@ -6054,9 +6112,11 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::has_leaf_or_child_of_name(const std:
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoStates()
+    :
+    sso_state(this, {"session_id"})
 {
 
-    yang_name = "sso-states"; yang_parent_name = "sso-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sso-states"; yang_parent_name = "sso-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::~SsoStates()
@@ -6065,7 +6125,8 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::~SsoStates()
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::has_data() const
 {
-    for (std::size_t index=0; index<sso_state.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sso_state.len(); index++)
     {
         if(sso_state[index]->has_data())
             return true;
@@ -6075,7 +6136,7 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::has_data() const
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::has_operation() const
 {
-    for (std::size_t index=0; index<sso_state.size(); index++)
+    for (std::size_t index=0; index<sso_state.len(); index++)
     {
         if(sso_state[index]->has_operation())
             return true;
@@ -6105,7 +6166,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::get_ch
     {
         auto c = std::make_shared<Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState>();
         c->parent = this;
-        sso_state.push_back(c);
+        sso_state.append(c);
         return c;
     }
 
@@ -6117,7 +6178,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoG
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sso_state)
+    for (auto c : sso_state.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6148,18 +6209,18 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::SsoState()
     session_id{YType::uint32, "session-id"},
     session_id_xr{YType::uint32, "session-id-xr"},
     interface{YType::str, "interface"}
-    	,
+        ,
     lcp_state(std::make_shared<Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState>())
-	,of_us_auth_state(std::make_shared<Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState>())
-	,of_peer_auth_state(std::make_shared<Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState>())
-	,ipcp_state(std::make_shared<Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState>())
+    , of_us_auth_state(std::make_shared<Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState>())
+    , of_peer_auth_state(std::make_shared<Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState>())
+    , ipcp_state(std::make_shared<Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState>())
 {
     lcp_state->parent = this;
     of_us_auth_state->parent = this;
     of_peer_auth_state->parent = this;
     ipcp_state->parent = this;
 
-    yang_name = "sso-state"; yang_parent_name = "sso-states"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sso-state"; yang_parent_name = "sso-states"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::~SsoState()
@@ -6168,6 +6229,7 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::~SsoState()
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| session_id_xr.is_set
 	|| interface.is_set
@@ -6192,7 +6254,8 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::has_operation()
 std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sso-state" <<"[session-id='" <<session_id <<"']";
+    path_buffer << "sso-state";
+    ADD_KEY_TOKEN(session_id, "session-id");
     return path_buffer.str();
 }
 
@@ -6327,7 +6390,7 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::LcpState()
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "lcp-state"; yang_parent_name = "sso-state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lcp-state"; yang_parent_name = "sso-state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::~LcpState()
@@ -6336,6 +6399,7 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::~LcpState(
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::has_data() const
 {
+    if (is_presence_container) return true;
     return is_running.is_set
 	|| state.is_set;
 }
@@ -6418,7 +6482,7 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::OfUsA
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "of-us-auth-state"; yang_parent_name = "sso-state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "of-us-auth-state"; yang_parent_name = "sso-state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::~OfUsAuthState()
@@ -6427,6 +6491,7 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::~OfUs
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::has_data() const
 {
+    if (is_presence_container) return true;
     return is_running.is_set
 	|| state.is_set;
 }
@@ -6509,7 +6574,7 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::OfP
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "of-peer-auth-state"; yang_parent_name = "sso-state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "of-peer-auth-state"; yang_parent_name = "sso-state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::~OfPeerAuthState()
@@ -6518,6 +6583,7 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::~Of
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::has_data() const
 {
+    if (is_presence_container) return true;
     return is_running.is_set
 	|| state.is_set;
 }
@@ -6600,7 +6666,7 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::IpcpState
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "ipcp-state"; yang_parent_name = "sso-state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipcp-state"; yang_parent_name = "sso-state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::~IpcpState()
@@ -6609,6 +6675,7 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::~IpcpStat
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::has_data() const
 {
+    if (is_presence_container) return true;
     return is_running.is_set
 	|| state.is_set;
 }
@@ -6688,14 +6755,14 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::has_
 Ppp::Nodes::Node::Summary::Summary()
     :
     intfs(std::make_shared<Ppp::Nodes::Node::Summary::Intfs>())
-	,fsm_states(std::make_shared<Ppp::Nodes::Node::Summary::FsmStates>())
-	,lcp_auth_phases(std::make_shared<Ppp::Nodes::Node::Summary::LcpAuthPhases>())
+    , fsm_states(std::make_shared<Ppp::Nodes::Node::Summary::FsmStates>())
+    , lcp_auth_phases(std::make_shared<Ppp::Nodes::Node::Summary::LcpAuthPhases>())
 {
     intfs->parent = this;
     fsm_states->parent = this;
     lcp_auth_phases->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::Summary::~Summary()
@@ -6704,6 +6771,7 @@ Ppp::Nodes::Node::Summary::~Summary()
 
 bool Ppp::Nodes::Node::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return (intfs !=  nullptr && intfs->has_data())
 	|| (fsm_states !=  nullptr && fsm_states->has_data())
 	|| (lcp_auth_phases !=  nullptr && lcp_auth_phases->has_data());
@@ -6813,7 +6881,7 @@ Ppp::Nodes::Node::Summary::Intfs::Intfs()
     total{YType::uint32, "total"}
 {
 
-    yang_name = "intfs"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "intfs"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::Summary::Intfs::~Intfs()
@@ -6822,6 +6890,7 @@ Ppp::Nodes::Node::Summary::Intfs::~Intfs()
 
 bool Ppp::Nodes::Node::Summary::Intfs::has_data() const
 {
+    if (is_presence_container) return true;
     return pos_count.is_set
 	|| serial_count.is_set
 	|| pppoe_count.is_set
@@ -6966,10 +7035,11 @@ bool Ppp::Nodes::Node::Summary::Intfs::has_leaf_or_child_of_name(const std::stri
 Ppp::Nodes::Node::Summary::FsmStates::FsmStates()
     :
     lcpfsm_states(std::make_shared<Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates>())
+    , ncpfsm_states_array(this, {})
 {
     lcpfsm_states->parent = this;
 
-    yang_name = "fsm-states"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fsm-states"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::Summary::FsmStates::~FsmStates()
@@ -6978,7 +7048,8 @@ Ppp::Nodes::Node::Summary::FsmStates::~FsmStates()
 
 bool Ppp::Nodes::Node::Summary::FsmStates::has_data() const
 {
-    for (std::size_t index=0; index<ncpfsm_states_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ncpfsm_states_array.len(); index++)
     {
         if(ncpfsm_states_array[index]->has_data())
             return true;
@@ -6988,7 +7059,7 @@ bool Ppp::Nodes::Node::Summary::FsmStates::has_data() const
 
 bool Ppp::Nodes::Node::Summary::FsmStates::has_operation() const
 {
-    for (std::size_t index=0; index<ncpfsm_states_array.size(); index++)
+    for (std::size_t index=0; index<ncpfsm_states_array.len(); index++)
     {
         if(ncpfsm_states_array[index]->has_operation())
             return true;
@@ -7028,7 +7099,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::Summary::FsmStates::get_child_by_name(
     {
         auto c = std::make_shared<Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray>();
         c->parent = this;
-        ncpfsm_states_array.push_back(c);
+        ncpfsm_states_array.append(c);
         return c;
     }
 
@@ -7045,7 +7116,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::FsmSta
     }
 
     count = 0;
-    for (auto const & c : ncpfsm_states_array)
+    for (auto c : ncpfsm_states_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7077,7 +7148,7 @@ Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::LcpfsmStates()
     count{YType::uint32, "count"}
 {
 
-    yang_name = "lcpfsm-states"; yang_parent_name = "fsm-states"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lcpfsm-states"; yang_parent_name = "fsm-states"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::~LcpfsmStates()
@@ -7086,6 +7157,7 @@ Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::~LcpfsmStates()
 
 bool Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : count.getYLeafs())
     {
         if(leaf.is_set)
@@ -7177,7 +7249,7 @@ Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::NcpfsmStatesArray()
     count{YType::uint32, "count"}
 {
 
-    yang_name = "ncpfsm-states-array"; yang_parent_name = "fsm-states"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ncpfsm-states-array"; yang_parent_name = "fsm-states"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::~NcpfsmStatesArray()
@@ -7186,6 +7258,7 @@ Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::~NcpfsmStatesArray()
 
 bool Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : count.getYLeafs())
     {
         if(leaf.is_set)
@@ -7293,7 +7366,7 @@ Ppp::Nodes::Node::Summary::LcpAuthPhases::LcpAuthPhases()
     up_tunneled{YType::uint32, "up-tunneled"}
 {
 
-    yang_name = "lcp-auth-phases"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lcp-auth-phases"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ppp::Nodes::Node::Summary::LcpAuthPhases::~LcpAuthPhases()
@@ -7302,6 +7375,7 @@ Ppp::Nodes::Node::Summary::LcpAuthPhases::~LcpAuthPhases()
 
 bool Ppp::Nodes::Node::Summary::LcpAuthPhases::has_data() const
 {
+    if (is_presence_container) return true;
     return lcp_not_negotiated.is_set
 	|| authenticating.is_set
 	|| line_held_down.is_set
@@ -7430,11 +7504,38 @@ bool Ppp::Nodes::Node::Summary::LcpAuthPhases::has_leaf_or_child_of_name(const s
     return false;
 }
 
+const Enum::YLeaf NcpIdent::cdpcp {1, "cdpcp"};
+const Enum::YLeaf NcpIdent::ipcp {2, "ipcp"};
+const Enum::YLeaf NcpIdent::ipcpiw {3, "ipcpiw"};
+const Enum::YLeaf NcpIdent::ipv6cp {4, "ipv6cp"};
+const Enum::YLeaf NcpIdent::mplscp {5, "mplscp"};
+const Enum::YLeaf NcpIdent::osicp {6, "osicp"};
+
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_not_ready_0 {0, "ppp-sso-state-not-ready-0"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_standby_unnegd_1 {1, "ppp-sso-state-standby-unnegd-1"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_down_2 {2, "ppp-sso-state-active-down-2"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_deactivating_3 {3, "ppp-sso-state-deactivating-3"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_unnegd_4 {4, "ppp-sso-state-active-unnegd-4"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_standby_negd_5 {5, "ppp-sso-state-standby-negd-5"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_activating_6 {6, "ppp-sso-state-activating-6"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_negd_7 {7, "ppp-sso-state-active-negd-7"};
+
 const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_none {0, "ppp-iphc-compression-fmt-none"};
 const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_vj {1, "ppp-iphc-compression-fmt-vj"};
 const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_ietf {2, "ppp-iphc-compression-fmt-ietf"};
 const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_iphc {3, "ppp-iphc-compression-fmt-iphc"};
 const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_cisco {4, "ppp-iphc-compression-fmt-cisco"};
+
+const Enum::YLeaf PppFsmState::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
 
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_detached {0, "ppp-lcp-mp-mbr-state-detached"};
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_lcp_not_negotiated {1, "ppp-lcp-mp-mbr-state-lcp-not-negotiated"};
@@ -7450,33 +7551,6 @@ const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_mcmp_local_mismatch {10
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_mcmp_peer_mismatch {11, "ppp-lcp-mp-mbr-state-mcmp-peer-mismatch"};
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_standby_up {12, "ppp-lcp-mp-mbr-state-standby-up"};
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_active {13, "ppp-lcp-mp-mbr-state-active"};
-
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_not_ready_0 {0, "ppp-sso-state-not-ready-0"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_standby_unnegd_1 {1, "ppp-sso-state-standby-unnegd-1"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_down_2 {2, "ppp-sso-state-active-down-2"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_deactivating_3 {3, "ppp-sso-state-deactivating-3"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_unnegd_4 {4, "ppp-sso-state-active-unnegd-4"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_standby_negd_5 {5, "ppp-sso-state-standby-negd-5"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_activating_6 {6, "ppp-sso-state-activating-6"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_negd_7 {7, "ppp-sso-state-active-negd-7"};
-
-const Enum::YLeaf PppFsmState::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
-
-const Enum::YLeaf NcpIdent::cdpcp {1, "cdpcp"};
-const Enum::YLeaf NcpIdent::ipcp {2, "ipcp"};
-const Enum::YLeaf NcpIdent::ipcpiw {3, "ipcpiw"};
-const Enum::YLeaf NcpIdent::ipv6cp {4, "ipv6cp"};
-const Enum::YLeaf NcpIdent::mplscp {5, "mplscp"};
-const Enum::YLeaf NcpIdent::osicp {6, "osicp"};
 
 
 }

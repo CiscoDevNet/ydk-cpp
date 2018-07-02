@@ -14,130 +14,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_te_oper {
 
 
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L : public ydk::Entity
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite : public ydk::Entity
 {
     public:
-        PrimaryS2L();
-        ~PrimaryS2L();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf physica_interface_name; //type: string
-        ydk::YLeaf tunnel_interface_name; //type: string
-        ydk::YLeaf parent_interface_name; //type: string
-        ydk::YLeaf next_hop_address; //type: string
-        ydk::YLeaf out_label; //type: uint32
-        class SrLabelStack; //type: MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::SrLabelStack
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::SrLabelStack> > sr_label_stack;
-        
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L
-
-
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::SrLabelStack : public ydk::Entity
-{
-    public:
-        SrLabelStack();
-        ~SrLabelStack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::SrLabelStack
-
-
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite : public ydk::Entity
-{
-    public:
-        BackupTunnelRewrite();
-        ~BackupTunnelRewrite();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf physica_interface_name; //type: string
-        ydk::YLeaf tunnel_interface_name; //type: string
-        ydk::YLeaf parent_interface_name; //type: string
-        ydk::YLeaf next_hop_address; //type: string
-        ydk::YLeaf out_label; //type: uint32
-        class SrLabelStack; //type: MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::SrLabelStack
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::SrLabelStack> > sr_label_stack;
-        
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite
-
-
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::SrLabelStack : public ydk::Entity
-{
-    public:
-        SrLabelStack();
-        ~SrLabelStack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::SrLabelStack
-
-
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2MpTunnelRewrite : public ydk::Entity
-{
-    public:
-        P2MpTunnelRewrite();
-        ~P2MpTunnelRewrite();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf local_label; //type: uint32
-
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2MpTunnelRewrite
-
-
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite : public ydk::Entity
-{
-    public:
-        PendingRewrite();
-        ~PendingRewrite();
+        FailedRewrite();
+        ~FailedRewrite();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -150,14 +31,14 @@ class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf timestamp; //type: uint32
-        class TunnelRewrite_; //type: MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_
+        class TunnelRewrite_; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_> tunnel_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_> tunnel_rewrite;
         
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite
 
 
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_ : public ydk::Entity
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_ : public ydk::Entity
 {
     public:
         TunnelRewrite_();
@@ -174,20 +55,20 @@ class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf fec_ctype; //type: MplsLibC
-        class P2PTunnelRewrite; //type: MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite
-        class P2MpTunnelRewrite; //type: MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2MpTunnelRewrite
+        class P2pTunnelRewrite; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite
+        class P2mpTunnelRewrite; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2mpTunnelRewrite
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite> p2p_tunnel_rewrite;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2MpTunnelRewrite> p2mp_tunnel_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite> p2p_tunnel_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2mpTunnelRewrite> p2mp_tunnel_rewrite;
         
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_
 
 
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite : public ydk::Entity
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite : public ydk::Entity
 {
     public:
-        P2PTunnelRewrite();
-        ~P2PTunnelRewrite();
+        P2pTunnelRewrite();
+        ~P2pTunnelRewrite();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -209,20 +90,20 @@ class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite
         ydk::YLeaf previous_hop_address; //type: string
         ydk::YLeaf output_interface_name; //type: string
         ydk::YLeaf backup_tunnel_name; //type: string
-        class PrimaryS2L; //type: MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L
-        class BackupTunnelRewrite; //type: MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite
+        class PrimaryS2l; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l
+        class BackupTunnelRewrite; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L> primary_s2l;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite> backup_tunnel_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l> primary_s2l;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite> backup_tunnel_rewrite;
         
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite
 
 
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L : public ydk::Entity
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l : public ydk::Entity
 {
     public:
-        PrimaryS2L();
-        ~PrimaryS2L();
+        PrimaryS2l();
+        ~PrimaryS2l();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -239,14 +120,14 @@ class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite
         ydk::YLeaf parent_interface_name; //type: string
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf out_label; //type: uint32
-        class SrLabelStack; //type: MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::SrLabelStack
+        class SrLabelStack; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l::SrLabelStack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::SrLabelStack> > sr_label_stack;
+        ydk::YList sr_label_stack;
         
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l
 
 
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::SrLabelStack : public ydk::Entity
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l::SrLabelStack : public ydk::Entity
 {
     public:
         SrLabelStack();
@@ -264,10 +145,10 @@ class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::SrLabelStack
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l::SrLabelStack
 
 
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite : public ydk::Entity
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite : public ydk::Entity
 {
     public:
         BackupTunnelRewrite();
@@ -288,14 +169,14 @@ class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite
         ydk::YLeaf parent_interface_name; //type: string
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf out_label; //type: uint32
-        class SrLabelStack; //type: MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::SrLabelStack
+        class SrLabelStack; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite::SrLabelStack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::SrLabelStack> > sr_label_stack;
+        ydk::YList sr_label_stack;
         
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite
 
 
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::SrLabelStack : public ydk::Entity
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite::SrLabelStack : public ydk::Entity
 {
     public:
         SrLabelStack();
@@ -313,14 +194,14 @@ class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::SrLabelStack
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite::SrLabelStack
 
 
-class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2MpTunnelRewrite : public ydk::Entity
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2mpTunnelRewrite : public ydk::Entity
 {
     public:
-        P2MpTunnelRewrite();
-        ~P2MpTunnelRewrite();
+        P2mpTunnelRewrite();
+        ~P2mpTunnelRewrite();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -334,10 +215,214 @@ class MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite
 
         ydk::YLeaf local_label; //type: uint32
 
-}; // MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2MpTunnelRewrite
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2mpTunnelRewrite
 
 
-class MplsTe::P2Mp::CollaboratorTimers : public ydk::Entity
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite : public ydk::Entity
+{
+    public:
+        PendingRewrite();
+        ~PendingRewrite();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf timestamp; //type: uint32
+        class TunnelRewrite_; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_> tunnel_rewrite;
+        
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite
+
+
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_ : public ydk::Entity
+{
+    public:
+        TunnelRewrite_();
+        ~TunnelRewrite_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf fec_ctype; //type: MplsLibC
+        class P2pTunnelRewrite; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite
+        class P2mpTunnelRewrite; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2mpTunnelRewrite
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite> p2p_tunnel_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2mpTunnelRewrite> p2mp_tunnel_rewrite;
+        
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_
+
+
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite : public ydk::Entity
+{
+    public:
+        P2pTunnelRewrite();
+        ~P2pTunnelRewrite();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf source_pe; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf extended_tunnel_id; //type: string
+        ydk::YLeaf backup_active; //type: boolean
+        ydk::YLeaf original_input_interface; //type: string
+        ydk::YLeaf previous_hop_address; //type: string
+        ydk::YLeaf output_interface_name; //type: string
+        ydk::YLeaf backup_tunnel_name; //type: string
+        class PrimaryS2l; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l
+        class BackupTunnelRewrite; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l> primary_s2l;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite> backup_tunnel_rewrite;
+        
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite
+
+
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l : public ydk::Entity
+{
+    public:
+        PrimaryS2l();
+        ~PrimaryS2l();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf physica_interface_name; //type: string
+        ydk::YLeaf tunnel_interface_name; //type: string
+        ydk::YLeaf parent_interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf out_label; //type: uint32
+        class SrLabelStack; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l::SrLabelStack
+
+        ydk::YList sr_label_stack;
+        
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l
+
+
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l::SrLabelStack : public ydk::Entity
+{
+    public:
+        SrLabelStack();
+        ~SrLabelStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::PrimaryS2l::SrLabelStack
+
+
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite : public ydk::Entity
+{
+    public:
+        BackupTunnelRewrite();
+        ~BackupTunnelRewrite();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf physica_interface_name; //type: string
+        ydk::YLeaf tunnel_interface_name; //type: string
+        ydk::YLeaf parent_interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf out_label; //type: uint32
+        class SrLabelStack; //type: MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite::SrLabelStack
+
+        ydk::YList sr_label_stack;
+        
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite
+
+
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite::SrLabelStack : public ydk::Entity
+{
+    public:
+        SrLabelStack();
+        ~SrLabelStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2pTunnelRewrite::BackupTunnelRewrite::SrLabelStack
+
+
+class MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2mpTunnelRewrite : public ydk::Entity
+{
+    public:
+        P2mpTunnelRewrite();
+        ~P2mpTunnelRewrite();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_label; //type: uint32
+
+}; // MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2mpTunnelRewrite
+
+
+class MplsTe::P2mp::CollaboratorTimers : public ydk::Entity
 {
     public:
         CollaboratorTimers();
@@ -354,18 +439,18 @@ class MplsTe::P2Mp::CollaboratorTimers : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class P2MpTimer; //type: MplsTe::P2Mp::CollaboratorTimers::P2MpTimer
+        class P2mpTimer; //type: MplsTe::P2mp::CollaboratorTimers::P2mpTimer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::CollaboratorTimers::P2MpTimer> > p2mp_timer;
+        ydk::YList p2mp_timer;
         
-}; // MplsTe::P2Mp::CollaboratorTimers
+}; // MplsTe::P2mp::CollaboratorTimers
 
 
-class MplsTe::P2Mp::CollaboratorTimers::P2MpTimer : public ydk::Entity
+class MplsTe::P2mp::CollaboratorTimers::P2mpTimer : public ydk::Entity
 {
     public:
-        P2MpTimer();
-        ~P2MpTimer();
+        P2mpTimer();
+        ~P2mpTimer();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -378,7 +463,7 @@ class MplsTe::P2Mp::CollaboratorTimers::P2MpTimer : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf timer_type; //type: MplsTeP2MpTimer
+        ydk::YLeaf timer_type; //type: MplsTeP2mpTimer
         ydk::YLeaf timer_name; //type: string
         ydk::YLeaf start_time; //type: uint32
         ydk::YLeaf expiry_time; //type: uint32
@@ -386,10 +471,10 @@ class MplsTe::P2Mp::CollaboratorTimers::P2MpTimer : public ydk::Entity
         ydk::YLeaf duration; //type: uint32
         ydk::YLeaf is_running; //type: boolean
 
-}; // MplsTe::P2Mp::CollaboratorTimers::P2MpTimer
+}; // MplsTe::P2mp::CollaboratorTimers::P2mpTimer
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites : public ydk::Entity
 {
     public:
         ForwardingOutputLabelRewrites();
@@ -406,14 +491,14 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class ForwardingOutputLabelRewrite; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite
+        class ForwardingOutputLabelRewrite; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite> > forwarding_output_label_rewrite;
+        ydk::YList forwarding_output_label_rewrite;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite : public ydk::Entity
 {
     public:
         ForwardingOutputLabelRewrite();
@@ -430,11 +515,11 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf tunnel_id; //type: int32
-        ydk::YLeaf lsp_id; //type: int32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf lsp_id; //type: uint32
         ydk::YLeaf extended_tunnel_id; //type: string
         ydk::YLeaf source_address; //type: string
-        ydk::YLeaf p2mp_id; //type: int32
+        ydk::YLeaf p2mp_id; //type: uint32
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf previous_hop_address; //type: string
@@ -443,22 +528,22 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite 
         ydk::YLeaf output_interface_name; //type: string
         ydk::YLeaf backup_tunnel_name; //type: string
         ydk::YLeaf is_segment_routing; //type: boolean
-        class S2LOutputRewrite; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite
-        class S2L; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2L
-        class S2LsrPath; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath
+        class S2lOutputRewrite; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite
+        class S2l; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2l
+        class S2lsrPath; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lsrPath
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite> s2l_output_rewrite;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2L> > s2l;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath> > s2lsr_path;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite> s2l_output_rewrite;
+        ydk::YList s2l;
+        ydk::YList s2lsr_path;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite : public ydk::Entity
 {
     public:
-        S2LOutputRewrite();
-        ~S2LOutputRewrite();
+        S2lOutputRewrite();
+        ~S2lOutputRewrite();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -470,20 +555,20 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Subfamily; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily
-        class SuccessfulRewrite; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite
-        class FailedRewrite; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite
-        class PendingRewrite; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite
+        class Subfamily; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::Subfamily
+        class SuccessfulRewrite; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite
+        class FailedRewrite; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite
+        class PendingRewrite; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily> subfamily;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite> successful_rewrite;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite> failed_rewrite;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite> pending_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::Subfamily> subfamily;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite> successful_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite> failed_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite> pending_rewrite;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::Subfamily : public ydk::Entity
 {
     public:
         Subfamily();
@@ -501,14 +586,15 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
 
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf previous_hop_address; //type: string
-        class LspFec; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec
+        ydk::YLeaf next_next_hop_address; //type: string
+        class LspFec; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::Subfamily::LspFec
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec> lsp_fec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::Subfamily::LspFec> lsp_fec;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::Subfamily
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::Subfamily::LspFec : public ydk::Entity
 {
     public:
         LspFec();
@@ -529,14 +615,14 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf fec_extended_tunnel_id; //type: string
         ydk::YLeaf fec_source; //type: string
         ydk::YLeaf fec_vrf; //type: string
-        class FecDestinationInfo; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::FecDestinationInfo
+        class FecDestinationInfo; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::Subfamily::LspFec::FecDestinationInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::FecDestinationInfo> fec_destination_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::Subfamily::LspFec::FecDestinationInfo> fec_destination_info;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::Subfamily::LspFec
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::FecDestinationInfo : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::Subfamily::LspFec::FecDestinationInfo : public ydk::Entity
 {
     public:
         FecDestinationInfo();
@@ -556,10 +642,10 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf p2p_lsp_destination; //type: string
         ydk::YLeaf fec_destination_p2mp_id; //type: uint32
 
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::FecDestinationInfo
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::Subfamily::LspFec::FecDestinationInfo
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite : public ydk::Entity
 {
     public:
         SuccessfulRewrite();
@@ -580,22 +666,22 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf backup_active; //type: boolean
         ydk::YLeaf s2l_source; //type: string
-        ydk::YLeaf explicit_null; //type: TeS2LOutputRwExplicitNull
+        ydk::YLeaf explicit_null; //type: TeS2lOutputRwExplicitNull
         ydk::YLeaf protocol_transported; //type: uint16
-        class PrimaryS2L; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L
-        class BackupTunnelRewrite; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite
+        class PrimaryS2l; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::PrimaryS2l
+        class BackupTunnelRewrite; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L> primary_s2l;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite> backup_tunnel_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::PrimaryS2l> primary_s2l;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite> backup_tunnel_rewrite;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::PrimaryS2l : public ydk::Entity
 {
     public:
-        PrimaryS2L();
-        ~PrimaryS2L();
+        PrimaryS2l();
+        ~PrimaryS2l();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -612,14 +698,14 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf parent_interface_name; //type: string
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf out_label; //type: uint32
-        class SrLabelStack; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L::SrLabelStack
+        class SrLabelStack; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::PrimaryS2l::SrLabelStack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L::SrLabelStack> > sr_label_stack;
+        ydk::YList sr_label_stack;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::PrimaryS2l
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L::SrLabelStack : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::PrimaryS2l::SrLabelStack : public ydk::Entity
 {
     public:
         SrLabelStack();
@@ -637,10 +723,10 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L::SrLabelStack
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::PrimaryS2l::SrLabelStack
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite : public ydk::Entity
 {
     public:
         BackupTunnelRewrite();
@@ -661,14 +747,14 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf parent_interface_name; //type: string
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf out_label; //type: uint32
-        class SrLabelStack; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite::SrLabelStack
+        class SrLabelStack; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite::SrLabelStack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite::SrLabelStack> > sr_label_stack;
+        ydk::YList sr_label_stack;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite::SrLabelStack : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite::SrLabelStack : public ydk::Entity
 {
     public:
         SrLabelStack();
@@ -686,10 +772,10 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite::SrLabelStack
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite::SrLabelStack
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite : public ydk::Entity
 {
     public:
         FailedRewrite();
@@ -710,22 +796,22 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf backup_active; //type: boolean
         ydk::YLeaf s2l_source; //type: string
-        ydk::YLeaf explicit_null; //type: TeS2LOutputRwExplicitNull
+        ydk::YLeaf explicit_null; //type: TeS2lOutputRwExplicitNull
         ydk::YLeaf protocol_transported; //type: uint16
-        class PrimaryS2L; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L
-        class BackupTunnelRewrite; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite
+        class PrimaryS2l; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::PrimaryS2l
+        class BackupTunnelRewrite; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::BackupTunnelRewrite
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L> primary_s2l;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite> backup_tunnel_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::PrimaryS2l> primary_s2l;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::BackupTunnelRewrite> backup_tunnel_rewrite;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::PrimaryS2l : public ydk::Entity
 {
     public:
-        PrimaryS2L();
-        ~PrimaryS2L();
+        PrimaryS2l();
+        ~PrimaryS2l();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -742,14 +828,14 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf parent_interface_name; //type: string
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf out_label; //type: uint32
-        class SrLabelStack; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L::SrLabelStack
+        class SrLabelStack; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::PrimaryS2l::SrLabelStack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L::SrLabelStack> > sr_label_stack;
+        ydk::YList sr_label_stack;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::PrimaryS2l
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L::SrLabelStack : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::PrimaryS2l::SrLabelStack : public ydk::Entity
 {
     public:
         SrLabelStack();
@@ -767,10 +853,10 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L::SrLabelStack
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::PrimaryS2l::SrLabelStack
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::BackupTunnelRewrite : public ydk::Entity
 {
     public:
         BackupTunnelRewrite();
@@ -791,14 +877,14 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf parent_interface_name; //type: string
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf out_label; //type: uint32
-        class SrLabelStack; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite::SrLabelStack
+        class SrLabelStack; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::BackupTunnelRewrite::SrLabelStack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite::SrLabelStack> > sr_label_stack;
+        ydk::YList sr_label_stack;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::BackupTunnelRewrite
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite::SrLabelStack : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::BackupTunnelRewrite::SrLabelStack : public ydk::Entity
 {
     public:
         SrLabelStack();
@@ -816,10 +902,10 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite::SrLabelStack
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::FailedRewrite::BackupTunnelRewrite::SrLabelStack
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite : public ydk::Entity
 {
     public:
         PendingRewrite();
@@ -840,22 +926,22 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf backup_active; //type: boolean
         ydk::YLeaf s2l_source; //type: string
-        ydk::YLeaf explicit_null; //type: TeS2LOutputRwExplicitNull
+        ydk::YLeaf explicit_null; //type: TeS2lOutputRwExplicitNull
         ydk::YLeaf protocol_transported; //type: uint16
-        class PrimaryS2L; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L
-        class BackupTunnelRewrite; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite
+        class PrimaryS2l; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::PrimaryS2l
+        class BackupTunnelRewrite; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::BackupTunnelRewrite
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L> primary_s2l;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite> backup_tunnel_rewrite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::PrimaryS2l> primary_s2l;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::BackupTunnelRewrite> backup_tunnel_rewrite;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::PrimaryS2l : public ydk::Entity
 {
     public:
-        PrimaryS2L();
-        ~PrimaryS2L();
+        PrimaryS2l();
+        ~PrimaryS2l();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -872,14 +958,14 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf parent_interface_name; //type: string
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf out_label; //type: uint32
-        class SrLabelStack; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L::SrLabelStack
+        class SrLabelStack; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::PrimaryS2l::SrLabelStack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L::SrLabelStack> > sr_label_stack;
+        ydk::YList sr_label_stack;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::PrimaryS2l
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L::SrLabelStack : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::PrimaryS2l::SrLabelStack : public ydk::Entity
 {
     public:
         SrLabelStack();
@@ -897,10 +983,10 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L::SrLabelStack
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::PrimaryS2l::SrLabelStack
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::BackupTunnelRewrite : public ydk::Entity
 {
     public:
         BackupTunnelRewrite();
@@ -921,14 +1007,14 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf parent_interface_name; //type: string
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf out_label; //type: uint32
-        class SrLabelStack; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite::SrLabelStack
+        class SrLabelStack; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::BackupTunnelRewrite::SrLabelStack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite::SrLabelStack> > sr_label_stack;
+        ydk::YList sr_label_stack;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::BackupTunnelRewrite
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite::SrLabelStack : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::BackupTunnelRewrite::SrLabelStack : public ydk::Entity
 {
     public:
         SrLabelStack();
@@ -946,14 +1032,14 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite::SrLabelStack
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lOutputRewrite::PendingRewrite::BackupTunnelRewrite::SrLabelStack
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2L : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2l : public ydk::Entity
 {
     public:
-        S2L();
-        ~S2L();
+        S2l();
+        ~S2l();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -969,14 +1055,14 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf sub_group_id; //type: uint16
         ydk::YLeaf sub_group_original_id; //type: string
 
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2L
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2l
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lsrPath : public ydk::Entity
 {
     public:
-        S2LsrPath();
-        ~S2LsrPath();
+        S2lsrPath();
+        ~S2lsrPath();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -994,14 +1080,14 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
         ydk::YLeaf path_id; //type: uint32
         ydk::YLeaf backup_path_id; //type: uint32
         ydk::YLeaf next_hop; //type: string
-        class OutgoingLabelsStack; //type: MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath::OutgoingLabelsStack
+        class OutgoingLabelsStack; //type: MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lsrPath::OutgoingLabelsStack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath::OutgoingLabelsStack> > outgoing_labels_stack;
+        ydk::YList outgoing_labels_stack;
         
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lsrPath
 
 
-class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath::OutgoingLabelsStack : public ydk::Entity
+class MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lsrPath::OutgoingLabelsStack : public ydk::Entity
 {
     public:
         OutgoingLabelsStack();
@@ -1019,7 +1105,7 @@ class MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite:
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath::OutgoingLabelsStack
+}; // MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2lsrPath::OutgoingLabelsStack
 
 
 class MplsTe::OpenConfig : public ydk::Entity
@@ -1067,7 +1153,7 @@ class MplsTe::OpenConfig::LspStates : public ydk::Entity
 
         class LspState; //type: MplsTe::OpenConfig::LspStates::LspState
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::OpenConfig::LspStates::LspState> > lsp_state;
+        ydk::YList lsp_state;
         
 }; // MplsTe::OpenConfig::LspStates
 
@@ -1099,7 +1185,9 @@ class MplsTe::OpenConfig::LspStates::LspState : public ydk::Entity
         ydk::YLeaf description; //type: string
         ydk::YLeaf admin_status; //type: LspAdminStatus
         ydk::YLeaf oper_status; //type: LspOperStatus
-        ydk::YLeaf metric; //type: OcMplsTeMetric
+        ydk::YLeaf aa_metric_type; //type: OcMplsTeAaMetric
+        ydk::YLeaf aa_metric; //type: int32
+        ydk::YLeaf shortcut_eligible; //type: boolean
         ydk::YLeaf protection_style_requested; //type: MplsProtection
         ydk::YLeaf reoptimize_timer; //type: uint16
         ydk::YLeaf role; //type: MplsTeLspRole
@@ -1129,7 +1217,7 @@ class MplsTe::OpenConfig::LspCounters : public ydk::Entity
 
         class LspCounter; //type: MplsTe::OpenConfig::LspCounters::LspCounter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::OpenConfig::LspCounters::LspCounter> > lsp_counter;
+        ydk::YList lsp_counter;
         
 }; // MplsTe::OpenConfig::LspCounters
 
@@ -1214,7 +1302,7 @@ class MplsTe::LspOutOfResources::Summary : public ydk::Entity
         ydk::YLeaf lsp_oor_green_recovery_time; //type: uint32
         class LspOorStateXr; //type: MplsTe::LspOutOfResources::Summary::LspOorStateXr
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::LspOutOfResources::Summary::LspOorStateXr> > lsp_oor_state_xr;
+        ydk::YList lsp_oor_state_xr;
         
 }; // MplsTe::LspOutOfResources::Summary
 
@@ -1328,7 +1416,7 @@ class MplsTe::Bfd::HeadInfos : public ydk::Entity
 
         class HeadInfo; //type: MplsTe::Bfd::HeadInfos::HeadInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Bfd::HeadInfos::HeadInfo> > head_info;
+        ydk::YList head_info;
         
 }; // MplsTe::Bfd::HeadInfos
 
@@ -1450,7 +1538,7 @@ class MplsTe::Bfd::Links : public ydk::Entity
 
         class Link; //type: MplsTe::Bfd::Links::Link
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Bfd::Links::Link> > link;
+        ydk::YList link;
         
 }; // MplsTe::Bfd::Links
 
@@ -1475,7 +1563,7 @@ class MplsTe::Bfd::Links::Link : public ydk::Entity
         ydk::YLeaf interface_name; //type: string
         class Neighbor; //type: MplsTe::Bfd::Links::Link::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Bfd::Links::Link::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // MplsTe::Bfd::Links::Link
 
@@ -1521,7 +1609,7 @@ class MplsTe::Bfd::TailInfos : public ydk::Entity
 
         class TailInfo; //type: MplsTe::Bfd::TailInfos::TailInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Bfd::TailInfos::TailInfo> > tail_info;
+        ydk::YList tail_info;
         
 }; // MplsTe::Bfd::TailInfos
 
@@ -1544,12 +1632,12 @@ class MplsTe::Bfd::TailInfos::TailInfo : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf source_address; //type: string
-        ydk::YLeaf tunnel_id; //type: int32
-        ydk::YLeaf lsp_id; //type: int32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf lsp_id; //type: uint32
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf extended_tunnel_id; //type: string
         ydk::YLeaf ctype; //type: Ctype
-        ydk::YLeaf p2mp_id; //type: int32
+        ydk::YLeaf p2mp_id; //type: uint32
         ydk::YLeaf signaled_name; //type: string
         ydk::YLeaf bfd_session_state; //type: TeBfdLspSessionState
         class LspFec; //type: MplsTe::Bfd::TailInfos::TailInfo::LspFec
@@ -1897,11 +1985,11 @@ class MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation : public 
         ydk::YLeaf pending_sub_ls_ps; //type: uint32
         class Idt; //type: MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt
         class VifPending; //type: MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::VifPending
-        class S2LPending; //type: MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending
+        class S2lPending; //type: MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2lPending
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt> idt;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::VifPending> > vif_pending;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending> > s2l_pending;
+        ydk::YList vif_pending;
+        ydk::YList s2l_pending;
         
 }; // MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation
 
@@ -2009,11 +2097,11 @@ class MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::VifPendi
 }; // MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::VifPending
 
 
-class MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending : public ydk::Entity
+class MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2lPending : public ydk::Entity
 {
     public:
-        S2LPending();
-        ~S2LPending();
+        S2lPending();
+        ~S2lPending();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2030,7 +2118,7 @@ class MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2LPendi
         ydk::YLeaf signaled_name; //type: string
         ydk::YLeaf s2l_role; //type: MplsTeTunnelRole
 
-}; // MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending
+}; // MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2lPending
 
 
 class MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation : public ydk::Entity
@@ -2212,11 +2300,11 @@ class MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation : public 
         ydk::YLeaf pending_sub_ls_ps; //type: uint32
         class Idt; //type: MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt
         class VifPending; //type: MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::VifPending
-        class S2LPending; //type: MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPending
+        class S2lPending; //type: MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2lPending
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt> idt;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::VifPending> > vif_pending;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPending> > s2l_pending;
+        ydk::YList vif_pending;
+        ydk::YList s2l_pending;
         
 }; // MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation
 
@@ -2324,11 +2412,11 @@ class MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::VifPendi
 }; // MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::VifPending
 
 
-class MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPending : public ydk::Entity
+class MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2lPending : public ydk::Entity
 {
     public:
-        S2LPending();
-        ~S2LPending();
+        S2lPending();
+        ~S2lPending();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2345,7 +2433,7 @@ class MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPendi
         ydk::YLeaf signaled_name; //type: string
         ydk::YLeaf s2l_role; //type: MplsTeTunnelRole
 
-}; // MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPending
+}; // MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2lPending
 
 
 class MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation : public ydk::Entity
@@ -2495,7 +2583,7 @@ class MplsTe::AutoTunnelServices::SrPolicyEntries : public ydk::Entity
 
         class SrPolicyEntry; //type: MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry> > sr_policy_entry;
+        ydk::YList sr_policy_entry;
         
 }; // MplsTe::AutoTunnelServices::SrPolicyEntries
 
@@ -2517,10 +2605,10 @@ class MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf client_id; //type: int32
-        ydk::YLeaf color; //type: int32
+        ydk::YLeaf client_id; //type: uint32
+        ydk::YLeaf color; //type: uint32
         ydk::YLeaf end_point; //type: string
-        ydk::YLeaf distinguisher; //type: int32
+        ydk::YLeaf distinguisher; //type: uint32
         ydk::YLeaf sr_policy_id; //type: uint32
         ydk::YLeaf policy_active; //type: boolean
         ydk::YLeaf client_id_xr; //type: uint32
@@ -2543,7 +2631,7 @@ class MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry : public ydk::E
         class ExplicitPath; //type: MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::EndPointXr> end_point_xr;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath> > explicit_path;
+        ydk::YList explicit_path;
         
 }; // MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry
 
@@ -2596,7 +2684,7 @@ class MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath :
         class Hops; //type: MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::Hops
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::TunnelInfo> tunnel_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::Hops> > hops;
+        ydk::YList hops;
         
 }; // MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath
 
@@ -2666,7 +2754,7 @@ class MplsTe::AffinityMap : public ydk::Entity
 
         class AffinityMapArray; //type: MplsTe::AffinityMap::AffinityMapArray
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::AffinityMap::AffinityMapArray> > affinity_map_array;
+        ydk::YList affinity_map_array;
         
 }; // MplsTe::AffinityMap
 
@@ -2694,7 +2782,7 @@ class MplsTe::AffinityMap::AffinityMapArray : public ydk::Entity
         ydk::YLeaf affinity_table_id; //type: TeAffinityTable
         class AffinityExtendedValue; //type: MplsTe::AffinityMap::AffinityMapArray::AffinityExtendedValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::AffinityMap::AffinityMapArray::AffinityExtendedValue> > affinity_extended_value;
+        ydk::YList affinity_extended_value;
         
 }; // MplsTe::AffinityMap::AffinityMapArray
 
@@ -2740,7 +2828,7 @@ class MplsTe::TopologyBriefs : public ydk::Entity
 
         class TopologyBrief; //type: MplsTe::TopologyBriefs::TopologyBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief> > topology_brief;
+        ydk::YList topology_brief;
         
 }; // MplsTe::TopologyBriefs
 
@@ -2764,7 +2852,7 @@ class MplsTe::TopologyBriefs::TopologyBrief : public ydk::Entity
 
         ydk::YLeaf protocol; //type: MplsTeIgpProtocol
         ydk::YLeaf igp_id; //type: string
-        ydk::YLeaf area; //type: int32
+        ydk::YLeaf area; //type: uint32
         ydk::YLeaf topology_node_type; //type: MplsTeNode
         ydk::YLeaf igp_node_id; //type: string
         ydk::YLeaf topology_node_te_router_id; //type: string
@@ -2773,7 +2861,7 @@ class MplsTe::TopologyBriefs::TopologyBrief : public ydk::Entity
         class TopologyNodeLink; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeSidAndSrbg> topology_node_sid_and_srbg;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink> > topology_node_link;
+        ydk::YList topology_node_link;
         
 }; // MplsTe::TopologyBriefs::TopologyBrief
 
@@ -2834,17 +2922,25 @@ class MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink : public ydk::Enti
         ydk::YLeaf topology_link_switching_capability; //type: uint8
         ydk::YLeaf topology_link_encoding; //type: uint8
         ydk::YLeaf topology_link_bandwidth_model; //type: IgpteLibBwModel
+        ydk::YLeaf delay_variation; //type: uint32
+        ydk::YLeaf residual_bandwidth; //type: uint32
+        ydk::YLeaf available_bandwidth; //type: uint32
+        ydk::YLeaf utilized_bandwidth; //type: uint32
         class TopologyLinkBandwidth; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth
         class OduLinkCapabilities; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities
+        class MinMaxDelay; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::MinMaxDelay
+        class Loss; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::Loss
         class TopologyLinkExtendedAffinityBit; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkExtendedAffinityBit
         class SharedRiskLinkGroup; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::SharedRiskLinkGroup
         class AdjacencySid; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::AdjacencySid
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth> topology_link_bandwidth;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities> odu_link_capabilities;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkExtendedAffinityBit> > topology_link_extended_affinity_bit;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::SharedRiskLinkGroup> > shared_risk_link_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::AdjacencySid> > adjacency_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::MinMaxDelay> min_max_delay;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::Loss> loss;
+        ydk::YList topology_link_extended_affinity_bit;
+        ydk::YList shared_risk_link_group;
+        ydk::YList adjacency_sid;
         
 }; // MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink
 
@@ -2921,9 +3017,9 @@ class MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandw
         class TopologyLinkPrestandardBandwidthAvailableGlobal; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail::TopologyLinkPrestandardBandwidthAvailableGlobal
         class TopologyLinkPrestandardBandwidthAvailableSubpool; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail::TopologyLinkPrestandardBandwidthAvailableSubpool
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail::TopologyLinkPrestandardBandwidthAllocated> > topology_link_prestandard_bandwidth_allocated;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail::TopologyLinkPrestandardBandwidthAvailableGlobal> > topology_link_prestandard_bandwidth_available_global;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail::TopologyLinkPrestandardBandwidthAvailableSubpool> > topology_link_prestandard_bandwidth_available_subpool;
+        ydk::YList topology_link_prestandard_bandwidth_allocated;
+        ydk::YList topology_link_prestandard_bandwidth_available_global;
+        ydk::YList topology_link_prestandard_bandwidth_available_subpool;
         
 }; // MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail
 
@@ -3037,8 +3133,8 @@ class MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandw
         class TopoLinkStdBwAllocated; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::TopoLinkStdBwDetail::TopoLinkStdBwAllocated
         class TopoLinkStdBwAvailable; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::TopoLinkStdBwDetail::TopoLinkStdBwAvailable
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::TopoLinkStdBwDetail::TopoLinkStdBwAllocated> > topo_link_std_bw_allocated;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::TopoLinkStdBwDetail::TopoLinkStdBwAvailable> > topo_link_std_bw_available;
+        ydk::YList topo_link_std_bw_allocated;
+        ydk::YList topo_link_std_bw_available;
         
 }; // MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::TopoLinkStdBwDetail
 
@@ -3104,8 +3200,8 @@ class MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabiliti
         class MaxLspBandwidth; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::MaxLspBandwidth
         class OduCapability; //type: MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::MaxLspBandwidth> > max_lsp_bandwidth;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability> > odu_capability;
+        ydk::YList max_lsp_bandwidth;
+        ydk::YList odu_capability;
         
 }; // MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities
 
@@ -3234,6 +3330,51 @@ class MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabiliti
         ydk::YLeaf max_lsp_bandwidth; //type: uint32
 
 }; // MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex
+
+
+class MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::MinMaxDelay : public ydk::Entity
+{
+    public:
+        MinMaxDelay();
+        ~MinMaxDelay();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf anomalous_bit; //type: boolean
+        ydk::YLeaf minimum_delay; //type: uint32
+        ydk::YLeaf maximum_delay; //type: uint32
+
+}; // MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::MinMaxDelay
+
+
+class MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::Loss : public ydk::Entity
+{
+    public:
+        Loss();
+        ~Loss();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf anomalous_bit; //type: boolean
+        ydk::YLeaf loss_value; //type: uint32
+
+}; // MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::Loss
 
 
 class MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkExtendedAffinityBit : public ydk::Entity
@@ -3380,7 +3521,7 @@ class MplsLcacStandby::Neighbors : public ydk::Entity
 
         class Neighbor; //type: MplsLcacStandby::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // MplsLcacStandby::Neighbors
 
@@ -3405,7 +3546,7 @@ class MplsLcacStandby::Neighbors::Neighbor : public ydk::Entity
         ydk::YLeaf interface_name; //type: string
         class Neighbor_; //type: MplsLcacStandby::Neighbors::Neighbor::Neighbor_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Neighbors::Neighbor::Neighbor_> > neighbor;
+        ydk::YList neighbor;
         
 }; // MplsLcacStandby::Neighbors::Neighbor
 
@@ -3453,7 +3594,7 @@ class MplsLcacStandby::PreemptionEvents : public ydk::Entity
 
         class PreemptionEvent; //type: MplsLcacStandby::PreemptionEvents::PreemptionEvent
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::PreemptionEvents::PreemptionEvent> > preemption_event;
+        ydk::YList preemption_event;
         
 }; // MplsLcacStandby::PreemptionEvents
 
@@ -3510,7 +3651,7 @@ class MplsLcacStandby::PreemptionEvents::PreemptionEvent : public ydk::Entity
         ydk::YLeaf hard_preempted_tunnels; //type: uint16
         class Lsp; //type: MplsLcacStandby::PreemptionEvents::PreemptionEvent::Lsp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::PreemptionEvents::PreemptionEvent::Lsp> > lsp;
+        ydk::YList lsp;
         
 }; // MplsLcacStandby::PreemptionEvents::PreemptionEvent
 
@@ -3571,7 +3712,7 @@ class MplsLcacStandby::Advertisements : public ydk::Entity
         ydk::YLeaf ds_te_mode; //type: RrrDsteMigrationMode
         class AdvertizedAreas; //type: MplsLcacStandby::Advertisements::AdvertizedAreas
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Advertisements::AdvertizedAreas> > advertized_areas;
+        ydk::YList advertized_areas;
         
 }; // MplsLcacStandby::Advertisements
 
@@ -3599,7 +3740,7 @@ class MplsLcacStandby::Advertisements::AdvertizedAreas : public ydk::Entity
         ydk::YLeaf router_id; //type: string
         class FloodedLink; //type: MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink> > flooded_link;
+        ydk::YList flooded_link;
         
 }; // MplsLcacStandby::Advertisements::AdvertizedAreas
 
@@ -3652,10 +3793,10 @@ class MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink : public ydk
         class TransmittingReservableBandwidth; //type: MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBandwidth
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities> odu_link_capabilities;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::ExtendedAffinityAttributeFlag> > extended_affinity_attribute_flag;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::SharedRiskLinkGroup> > shared_risk_link_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::ReceivingReservableBandwidth> > receiving_reservable_bandwidth;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBandwidth> > transmitting_reservable_bandwidth;
+        ydk::YList extended_affinity_attribute_flag;
+        ydk::YList shared_risk_link_group;
+        ydk::YList receiving_reservable_bandwidth;
+        ydk::YList transmitting_reservable_bandwidth;
         
 }; // MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink
 
@@ -3680,8 +3821,8 @@ class MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapa
         class MaxLspBandwidth; //type: MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::MaxLspBandwidth
         class OduCapability; //type: MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::MaxLspBandwidth> > max_lsp_bandwidth;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability> > odu_capability;
+        ydk::YList max_lsp_bandwidth;
+        ydk::YList odu_capability;
         
 }; // MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities
 
@@ -3908,147 +4049,6 @@ class MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::Transmittin
         ydk::YLeaf pool1_bandwidth; //type: uint32
 
 }; // MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBandwidth
-
-
-class MplsLcacStandby::Statistics : public ydk::Entity
-{
-    public:
-        Statistics();
-        ~Statistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Summary; //type: MplsLcacStandby::Statistics::Summary
-        class StatsticsLinks; //type: MplsLcacStandby::Statistics::StatsticsLinks
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::Summary> summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::StatsticsLinks> statstics_links;
-        
-}; // MplsLcacStandby::Statistics
-
-
-class MplsLcacStandby::Statistics::Summary : public ydk::Entity
-{
-    public:
-        Summary();
-        ~Summary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf is_role_standby; //type: boolean
-        class PathStatistics; //type: MplsLcacStandby::Statistics::Summary::PathStatistics
-        class ReservationStatistics; //type: MplsLcacStandby::Statistics::Summary::ReservationStatistics
-        class PathStatistics32Bit; //type: MplsLcacStandby::Statistics::Summary::PathStatistics32Bit
-        class ReservationStatistics32Bit; //type: MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::Summary::PathStatistics> path_statistics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::Summary::ReservationStatistics> reservation_statistics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::Summary::PathStatistics32Bit> path_statistics32_bit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit> reservation_statistics32_bit;
-        
-}; // MplsLcacStandby::Statistics::Summary
-
-
-class MplsLcacStandby::Statistics::Summary::PathStatistics : public ydk::Entity
-{
-    public:
-        PathStatistics();
-        ~PathStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf setup_requests; //type: uint16
-        ydk::YLeaf setup_errors; //type: uint16
-        ydk::YLeaf setup_admits; //type: uint16
-        ydk::YLeaf setup_rejects; //type: uint16
-        ydk::YLeaf tear_requests; //type: uint16
-        ydk::YLeaf tear_errors; //type: uint16
-        ydk::YLeaf tear_preempts; //type: uint16
-
-}; // MplsLcacStandby::Statistics::Summary::PathStatistics
-
-
-class MplsLcacStandby::Statistics::Summary::ReservationStatistics : public ydk::Entity
-{
-    public:
-        ReservationStatistics();
-        ~ReservationStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf setup_requests; //type: uint16
-        ydk::YLeaf setup_errors; //type: uint16
-        ydk::YLeaf setup_admits; //type: uint16
-        ydk::YLeaf setup_rejects; //type: uint16
-        ydk::YLeaf tear_requests; //type: uint16
-        ydk::YLeaf tear_errors; //type: uint16
-        ydk::YLeaf tear_preempts; //type: uint16
-
-}; // MplsLcacStandby::Statistics::Summary::ReservationStatistics
-
-
-class MplsLcacStandby::Statistics::Summary::PathStatistics32Bit : public ydk::Entity
-{
-    public:
-        PathStatistics32Bit();
-        ~PathStatistics32Bit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf setup_requests; //type: uint32
-        ydk::YLeaf setup_errors; //type: uint32
-        ydk::YLeaf setup_admits; //type: uint32
-        ydk::YLeaf setup_rejects; //type: uint32
-        ydk::YLeaf tear_requests; //type: uint32
-        ydk::YLeaf tear_errors; //type: uint32
-        ydk::YLeaf tear_preempts; //type: uint32
-
-}; // MplsLcacStandby::Statistics::Summary::PathStatistics32Bit
 
 
 }

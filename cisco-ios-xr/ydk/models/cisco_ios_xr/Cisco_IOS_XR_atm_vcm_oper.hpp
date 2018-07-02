@@ -57,7 +57,7 @@ class AtmVcm::Nodes : public ydk::Entity
 
         class Node; //type: AtmVcm::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // AtmVcm::Nodes
 
@@ -115,7 +115,7 @@ class AtmVcm::Nodes::Node::Vcs : public ydk::Entity
 
         class Vc; //type: AtmVcm::Nodes::Node::Vcs::Vc
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Vcs::Vc> > vc;
+        ydk::YList vc;
         
 }; // AtmVcm::Nodes::Node::Vcs
 
@@ -209,7 +209,7 @@ class AtmVcm::Nodes::Node::CellPacks : public ydk::Entity
 
         class CellPack; //type: AtmVcm::Nodes::Node::CellPacks::CellPack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::CellPacks::CellPack> > cell_pack;
+        ydk::YList cell_pack;
         
 }; // AtmVcm::Nodes::Node::CellPacks
 
@@ -231,7 +231,7 @@ class AtmVcm::Nodes::Node::CellPacks::CellPack : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf pci; //type: int32
+        ydk::YLeaf pci; //type: uint32
         ydk::YLeaf sub_interface_name; //type: string
         ydk::YLeaf cell_packing_mode; //type: VcCellPackingMode
         ydk::YLeaf vpi; //type: uint32
@@ -286,7 +286,7 @@ class AtmVcm::Nodes::Node::Pvps : public ydk::Entity
 
         class Pvp; //type: AtmVcm::Nodes::Node::Pvps::Pvp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Pvps::Pvp> > pvp;
+        ydk::YList pvp;
         
 }; // AtmVcm::Nodes::Node::Pvps
 
@@ -308,7 +308,7 @@ class AtmVcm::Nodes::Node::Pvps::Pvp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf vpi; //type: int32
+        ydk::YLeaf vpi; //type: uint32
         ydk::YLeaf main_interface; //type: string
         ydk::YLeaf sub_interface; //type: string
         ydk::YLeaf vc_interface; //type: string
@@ -379,7 +379,7 @@ class AtmVcm::Nodes::Node::ClassLinks : public ydk::Entity
 
         class ClassLink; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink> > class_link;
+        ydk::YList class_link;
         
 }; // AtmVcm::Nodes::Node::ClassLinks
 
@@ -400,8 +400,8 @@ class AtmVcm::Nodes::Node::ClassLinks::ClassLink : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vpi; //type: int32
-        ydk::YLeaf vci; //type: int32
+        ydk::YLeaf vpi; //type: uint32
+        ydk::YLeaf vci; //type: uint32
         ydk::YLeaf sub_interface_name; //type: string
         class VcClassNotSupported; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported
         class OamConfig; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig
@@ -602,7 +602,7 @@ class AtmVcm::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: AtmVcm::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // AtmVcm::Nodes::Node::Interfaces
 
@@ -688,7 +688,7 @@ class AtmVcm::Nodes::Node::VpTunnels : public ydk::Entity
 
         class VpTunnel; //type: AtmVcm::Nodes::Node::VpTunnels::VpTunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::VpTunnels::VpTunnel> > vp_tunnel;
+        ydk::YList vp_tunnel;
         
 }; // AtmVcm::Nodes::Node::VpTunnels
 
@@ -710,7 +710,7 @@ class AtmVcm::Nodes::Node::VpTunnels::VpTunnel : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf vpi; //type: int32
+        ydk::YLeaf vpi; //type: uint32
         ydk::YLeaf main_interface; //type: string
         ydk::YLeaf vp_interface; //type: string
         ydk::YLeaf vpi_xr; //type: uint16
@@ -727,12 +727,36 @@ class AtmVcm::Nodes::Node::VpTunnels::VpTunnel : public ydk::Entity
 
 }; // AtmVcm::Nodes::Node::VpTunnels::VpTunnel
 
-class VcCellPackingMode : public ydk::Enum
+class Vc : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf vp;
-        static const ydk::Enum::YLeaf vc;
-        static const ydk::Enum::YLeaf port_mode;
+        static const ydk::Enum::YLeaf layer3_vc;
+        static const ydk::Enum::YLeaf layer2_vc;
+        static const ydk::Enum::YLeaf layer2_vp;
+        static const ydk::Enum::YLeaf vc_type_unknown;
+
+};
+
+class VcEncap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ilmi;
+        static const ydk::Enum::YLeaf qsaal;
+        static const ydk::Enum::YLeaf snap;
+        static const ydk::Enum::YLeaf mux;
+        static const ydk::Enum::YLeaf nlpid;
+        static const ydk::Enum::YLeaf f4oam;
+        static const ydk::Enum::YLeaf aal0;
+        static const ydk::Enum::YLeaf aal5;
+        static const ydk::Enum::YLeaf encap_unknown;
+
+};
+
+class VcManageLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf manage;
+        static const ydk::Enum::YLeaf not_managed;
 
 };
 
@@ -742,6 +766,19 @@ class VcTestMode : public ydk::Enum
         static const ydk::Enum::YLeaf test_mode_none;
         static const ydk::Enum::YLeaf loop;
         static const ydk::Enum::YLeaf reserved;
+
+};
+
+class VpTrafShaping : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vp_cbr;
+        static const ydk::Enum::YLeaf vp_vbr_nrt;
+        static const ydk::Enum::YLeaf vp_vbr_rt;
+        static const ydk::Enum::YLeaf vp_abr;
+        static const ydk::Enum::YLeaf vp_ubr_plus;
+        static const ydk::Enum::YLeaf vp_ubr;
+        static const ydk::Enum::YLeaf vp_traf_shaping_unknown;
 
 };
 
@@ -763,57 +800,6 @@ class VcState : public ydk::Enum
 
 };
 
-class VcInheritLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf directly_configured_onvc;
-        static const ydk::Enum::YLeaf vc_class_configured_onvc;
-        static const ydk::Enum::YLeaf vc_class_configured_on_sub_interface;
-        static const ydk::Enum::YLeaf vc_class_configured_on_main_interface;
-        static const ydk::Enum::YLeaf global_default;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf not_supported;
-
-};
-
-class VcTrafShaping : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cbr;
-        static const ydk::Enum::YLeaf vbr_nrt;
-        static const ydk::Enum::YLeaf vbr_rt;
-        static const ydk::Enum::YLeaf abr;
-        static const ydk::Enum::YLeaf ubr_plus;
-        static const ydk::Enum::YLeaf ubr;
-        static const ydk::Enum::YLeaf traf_shaping_unknown;
-
-};
-
-class VcEncap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ilmi;
-        static const ydk::Enum::YLeaf qsaal;
-        static const ydk::Enum::YLeaf snap;
-        static const ydk::Enum::YLeaf mux;
-        static const ydk::Enum::YLeaf nlpid;
-        static const ydk::Enum::YLeaf f4oam;
-        static const ydk::Enum::YLeaf aal0;
-        static const ydk::Enum::YLeaf aal5;
-        static const ydk::Enum::YLeaf encap_unknown;
-
-};
-
-class Vc : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf layer3_vc;
-        static const ydk::Enum::YLeaf layer2_vc;
-        static const ydk::Enum::YLeaf layer2_vp;
-        static const ydk::Enum::YLeaf vc_type_unknown;
-
-};
-
 class ClassLinkOamInheritLevel : public ydk::Enum
 {
     public:
@@ -823,23 +809,6 @@ class ClassLinkOamInheritLevel : public ydk::Enum
         static const ydk::Enum::YLeaf vc_class_on_main_interface;
         static const ydk::Enum::YLeaf vc_global_default;
         static const ydk::Enum::YLeaf vc_inherit_level_unknown;
-
-};
-
-class VcManageLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf manage;
-        static const ydk::Enum::YLeaf not_managed;
-
-};
-
-class VcmPort : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf port_type_layer_2;
-        static const ydk::Enum::YLeaf port_type_layer_3;
-        static const ydk::Enum::YLeaf port_type_unknown;
 
 };
 
@@ -856,16 +825,47 @@ class VpState : public ydk::Enum
 
 };
 
-class VpTrafShaping : public ydk::Enum
+class VcTrafShaping : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf vp_cbr;
-        static const ydk::Enum::YLeaf vp_vbr_nrt;
-        static const ydk::Enum::YLeaf vp_vbr_rt;
-        static const ydk::Enum::YLeaf vp_abr;
-        static const ydk::Enum::YLeaf vp_ubr_plus;
-        static const ydk::Enum::YLeaf vp_ubr;
-        static const ydk::Enum::YLeaf vp_traf_shaping_unknown;
+        static const ydk::Enum::YLeaf cbr;
+        static const ydk::Enum::YLeaf vbr_nrt;
+        static const ydk::Enum::YLeaf vbr_rt;
+        static const ydk::Enum::YLeaf abr;
+        static const ydk::Enum::YLeaf ubr_plus;
+        static const ydk::Enum::YLeaf ubr;
+        static const ydk::Enum::YLeaf traf_shaping_unknown;
+
+};
+
+class VcCellPackingMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vp;
+        static const ydk::Enum::YLeaf vc;
+        static const ydk::Enum::YLeaf port_mode;
+
+};
+
+class VcmPort : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf port_type_layer_2;
+        static const ydk::Enum::YLeaf port_type_layer_3;
+        static const ydk::Enum::YLeaf port_type_unknown;
+
+};
+
+class VcInheritLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf directly_configured_onvc;
+        static const ydk::Enum::YLeaf vc_class_configured_onvc;
+        static const ydk::Enum::YLeaf vc_class_configured_on_sub_interface;
+        static const ydk::Enum::YLeaf vc_class_configured_on_main_interface;
+        static const ydk::Enum::YLeaf global_default;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_supported;
 
 };
 

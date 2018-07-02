@@ -57,7 +57,7 @@ class ShowUsers::Sessions : public ydk::Entity
 
         class Session; //type: ShowUsers::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_management_cmd_oper::ShowUsers::Sessions::Session> > session;
+        ydk::YList session;
         
 }; // ShowUsers::Sessions
 

@@ -14,16 +14,16 @@ namespace openconfig_terminal_device {
 TerminalDevice::TerminalDevice()
     :
     config(std::make_shared<TerminalDevice::Config>())
-	,state(std::make_shared<TerminalDevice::State>())
-	,logical_channels(std::make_shared<TerminalDevice::LogicalChannels>())
-	,operational_modes(std::make_shared<TerminalDevice::OperationalModes>())
+    , state(std::make_shared<TerminalDevice::State>())
+    , logical_channels(std::make_shared<TerminalDevice::LogicalChannels>())
+    , operational_modes(std::make_shared<TerminalDevice::OperationalModes>())
 {
     config->parent = this;
     state->parent = this;
     logical_channels->parent = this;
     operational_modes->parent = this;
 
-    yang_name = "terminal-device"; yang_parent_name = "openconfig-terminal-device"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "terminal-device"; yang_parent_name = "openconfig-terminal-device"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 TerminalDevice::~TerminalDevice()
@@ -32,6 +32,7 @@ TerminalDevice::~TerminalDevice()
 
 bool TerminalDevice::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (logical_channels !=  nullptr && logical_channels->has_data())
@@ -174,7 +175,7 @@ bool TerminalDevice::has_leaf_or_child_of_name(const std::string & name) const
 TerminalDevice::Config::Config()
 {
 
-    yang_name = "config"; yang_parent_name = "terminal-device"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "terminal-device"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TerminalDevice::Config::~Config()
@@ -183,6 +184,7 @@ TerminalDevice::Config::~Config()
 
 bool TerminalDevice::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -242,7 +244,7 @@ bool TerminalDevice::Config::has_leaf_or_child_of_name(const std::string & name)
 TerminalDevice::State::State()
 {
 
-    yang_name = "state"; yang_parent_name = "terminal-device"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "state"; yang_parent_name = "terminal-device"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TerminalDevice::State::~State()
@@ -251,6 +253,7 @@ TerminalDevice::State::~State()
 
 bool TerminalDevice::State::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -308,9 +311,11 @@ bool TerminalDevice::State::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 TerminalDevice::LogicalChannels::LogicalChannels()
+    :
+    channel(this, {"index_"})
 {
 
-    yang_name = "logical-channels"; yang_parent_name = "terminal-device"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logical-channels"; yang_parent_name = "terminal-device"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TerminalDevice::LogicalChannels::~LogicalChannels()
@@ -319,7 +324,8 @@ TerminalDevice::LogicalChannels::~LogicalChannels()
 
 bool TerminalDevice::LogicalChannels::has_data() const
 {
-    for (std::size_t index=0; index<channel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<channel.len(); index++)
     {
         if(channel[index]->has_data())
             return true;
@@ -329,7 +335,7 @@ bool TerminalDevice::LogicalChannels::has_data() const
 
 bool TerminalDevice::LogicalChannels::has_operation() const
 {
-    for (std::size_t index=0; index<channel.size(); index++)
+    for (std::size_t index=0; index<channel.len(); index++)
     {
         if(channel[index]->has_operation())
             return true;
@@ -366,7 +372,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::get_child_by_name(const
     {
         auto c = std::make_shared<TerminalDevice::LogicalChannels::Channel>();
         c->parent = this;
-        channel.push_back(c);
+        channel.append(c);
         return c;
     }
 
@@ -378,7 +384,7 @@ std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : channel)
+    for (auto c : channel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -407,13 +413,13 @@ bool TerminalDevice::LogicalChannels::has_leaf_or_child_of_name(const std::strin
 TerminalDevice::LogicalChannels::Channel::Channel()
     :
     index_{YType::str, "index"}
-    	,
+        ,
     config(std::make_shared<TerminalDevice::LogicalChannels::Channel::Config>())
-	,state(std::make_shared<TerminalDevice::LogicalChannels::Channel::State>())
-	,otn(std::make_shared<TerminalDevice::LogicalChannels::Channel::Otn>())
-	,ethernet(std::make_shared<TerminalDevice::LogicalChannels::Channel::Ethernet>())
-	,ingress(std::make_shared<TerminalDevice::LogicalChannels::Channel::Ingress>())
-	,logical_channel_assignments(std::make_shared<TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments>())
+    , state(std::make_shared<TerminalDevice::LogicalChannels::Channel::State>())
+    , otn(std::make_shared<TerminalDevice::LogicalChannels::Channel::Otn>())
+    , ethernet(std::make_shared<TerminalDevice::LogicalChannels::Channel::Ethernet>())
+    , ingress(std::make_shared<TerminalDevice::LogicalChannels::Channel::Ingress>())
+    , logical_channel_assignments(std::make_shared<TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments>())
 {
     config->parent = this;
     state->parent = this;
@@ -422,7 +428,7 @@ TerminalDevice::LogicalChannels::Channel::Channel()
     ingress->parent = this;
     logical_channel_assignments->parent = this;
 
-    yang_name = "channel"; yang_parent_name = "logical-channels"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "channel"; yang_parent_name = "logical-channels"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TerminalDevice::LogicalChannels::Channel::~Channel()
@@ -431,6 +437,7 @@ TerminalDevice::LogicalChannels::Channel::~Channel()
 
 bool TerminalDevice::LogicalChannels::Channel::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -462,7 +469,8 @@ std::string TerminalDevice::LogicalChannels::Channel::get_absolute_path() const
 std::string TerminalDevice::LogicalChannels::Channel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "channel" <<"[index='" <<index_ <<"']";
+    path_buffer << "channel";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -608,7 +616,7 @@ TerminalDevice::LogicalChannels::Channel::Config::Config()
     loopback_mode{YType::enumeration, "loopback-mode"}
 {
 
-    yang_name = "config"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Config::~Config()
@@ -617,6 +625,7 @@ TerminalDevice::LogicalChannels::Channel::Config::~Config()
 
 bool TerminalDevice::LogicalChannels::Channel::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| description.is_set
 	|| admin_state.is_set
@@ -770,7 +779,7 @@ TerminalDevice::LogicalChannels::Channel::State::State()
     link_state{YType::enumeration, "link-state"}
 {
 
-    yang_name = "state"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::State::~State()
@@ -779,6 +788,7 @@ TerminalDevice::LogicalChannels::Channel::State::~State()
 
 bool TerminalDevice::LogicalChannels::Channel::State::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| description.is_set
 	|| admin_state.is_set
@@ -936,12 +946,12 @@ bool TerminalDevice::LogicalChannels::Channel::State::has_leaf_or_child_of_name(
 TerminalDevice::LogicalChannels::Channel::Otn::Otn()
     :
     config(std::make_shared<TerminalDevice::LogicalChannels::Channel::Otn::Config>())
-	,state(std::make_shared<TerminalDevice::LogicalChannels::Channel::Otn::State>())
+    , state(std::make_shared<TerminalDevice::LogicalChannels::Channel::Otn::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "otn"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "otn"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Otn::~Otn()
@@ -950,6 +960,7 @@ TerminalDevice::LogicalChannels::Channel::Otn::~Otn()
 
 bool TerminalDevice::LogicalChannels::Channel::Otn::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -1039,7 +1050,7 @@ TerminalDevice::LogicalChannels::Channel::Otn::Config::Config()
     tti_msg_auto{YType::boolean, "tti-msg-auto"}
 {
 
-    yang_name = "config"; yang_parent_name = "otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Otn::Config::~Config()
@@ -1048,6 +1059,7 @@ TerminalDevice::LogicalChannels::Channel::Otn::Config::~Config()
 
 bool TerminalDevice::LogicalChannels::Channel::Otn::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return tti_msg_transmit.is_set
 	|| tti_msg_expected.is_set
 	|| tti_msg_auto.is_set;
@@ -1152,18 +1164,18 @@ TerminalDevice::LogicalChannels::Channel::Otn::State::State()
     fec_corrected_bytes{YType::uint64, "fec-corrected-bytes"},
     fec_corrected_bits{YType::uint64, "fec-corrected-bits"},
     background_block_errors{YType::uint64, "background-block-errors"}
-    	,
+        ,
     pre_fec_ber(std::make_shared<TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer>())
-	,post_fec_ber(std::make_shared<TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer>())
-	,q_value(std::make_shared<TerminalDevice::LogicalChannels::Channel::Otn::State::QValue>())
-	,esnr(std::make_shared<TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr>())
+    , post_fec_ber(std::make_shared<TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer>())
+    , q_value(std::make_shared<TerminalDevice::LogicalChannels::Channel::Otn::State::QValue>())
+    , esnr(std::make_shared<TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr>())
 {
     pre_fec_ber->parent = this;
     post_fec_ber->parent = this;
     q_value->parent = this;
     esnr->parent = this;
 
-    yang_name = "state"; yang_parent_name = "otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Otn::State::~State()
@@ -1172,6 +1184,7 @@ TerminalDevice::LogicalChannels::Channel::Otn::State::~State()
 
 bool TerminalDevice::LogicalChannels::Channel::Otn::State::has_data() const
 {
+    if (is_presence_container) return true;
     return tti_msg_transmit.is_set
 	|| tti_msg_expected.is_set
 	|| tti_msg_auto.is_set
@@ -1463,7 +1476,7 @@ TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer::PreFecBer()
     max{YType::str, "max"}
 {
 
-    yang_name = "pre-fec-ber"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pre-fec-ber"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer::~PreFecBer()
@@ -1472,6 +1485,7 @@ TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer::~PreFecBer()
 
 bool TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1582,7 +1596,7 @@ TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer::PostFecBer()
     max{YType::str, "max"}
 {
 
-    yang_name = "post-fec-ber"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "post-fec-ber"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer::~PostFecBer()
@@ -1591,6 +1605,7 @@ TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer::~PostFecBer()
 
 bool TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1701,7 +1716,7 @@ TerminalDevice::LogicalChannels::Channel::Otn::State::QValue::QValue()
     max{YType::str, "max"}
 {
 
-    yang_name = "q-value"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "q-value"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Otn::State::QValue::~QValue()
@@ -1710,6 +1725,7 @@ TerminalDevice::LogicalChannels::Channel::Otn::State::QValue::~QValue()
 
 bool TerminalDevice::LogicalChannels::Channel::Otn::State::QValue::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1820,7 +1836,7 @@ TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr::Esnr()
     max{YType::str, "max"}
 {
 
-    yang_name = "esnr"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esnr"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr::~Esnr()
@@ -1829,6 +1845,7 @@ TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr::~Esnr()
 
 bool TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1934,12 +1951,12 @@ bool TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr::has_leaf_or_chi
 TerminalDevice::LogicalChannels::Channel::Ethernet::Ethernet()
     :
     config(std::make_shared<TerminalDevice::LogicalChannels::Channel::Ethernet::Config>())
-	,state(std::make_shared<TerminalDevice::LogicalChannels::Channel::Ethernet::State>())
+    , state(std::make_shared<TerminalDevice::LogicalChannels::Channel::Ethernet::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "ethernet"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Ethernet::~Ethernet()
@@ -1948,6 +1965,7 @@ TerminalDevice::LogicalChannels::Channel::Ethernet::~Ethernet()
 
 bool TerminalDevice::LogicalChannels::Channel::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -2033,7 +2051,7 @@ bool TerminalDevice::LogicalChannels::Channel::Ethernet::has_leaf_or_child_of_na
 TerminalDevice::LogicalChannels::Channel::Ethernet::Config::Config()
 {
 
-    yang_name = "config"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Ethernet::Config::~Config()
@@ -2042,6 +2060,7 @@ TerminalDevice::LogicalChannels::Channel::Ethernet::Config::~Config()
 
 bool TerminalDevice::LogicalChannels::Channel::Ethernet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2105,7 +2124,7 @@ TerminalDevice::LogicalChannels::Channel::Ethernet::State::State()
     out_8021q_frames{YType::uint64, "out-8021q-frames"}
 {
 
-    yang_name = "state"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Ethernet::State::~State()
@@ -2114,6 +2133,7 @@ TerminalDevice::LogicalChannels::Channel::Ethernet::State::~State()
 
 bool TerminalDevice::LogicalChannels::Channel::Ethernet::State::has_data() const
 {
+    if (is_presence_container) return true;
     return in_mac_control_frames.is_set
 	|| in_mac_pause_frames.is_set
 	|| in_oversize_frames.is_set
@@ -2297,12 +2317,12 @@ bool TerminalDevice::LogicalChannels::Channel::Ethernet::State::has_leaf_or_chil
 TerminalDevice::LogicalChannels::Channel::Ingress::Ingress()
     :
     config(std::make_shared<TerminalDevice::LogicalChannels::Channel::Ingress::Config>())
-	,state(std::make_shared<TerminalDevice::LogicalChannels::Channel::Ingress::State>())
+    , state(std::make_shared<TerminalDevice::LogicalChannels::Channel::Ingress::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "ingress"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ingress"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Ingress::~Ingress()
@@ -2311,6 +2331,7 @@ TerminalDevice::LogicalChannels::Channel::Ingress::~Ingress()
 
 bool TerminalDevice::LogicalChannels::Channel::Ingress::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -2399,7 +2420,7 @@ TerminalDevice::LogicalChannels::Channel::Ingress::Config::Config()
     physical_channel{YType::str, "physical-channel"}
 {
 
-    yang_name = "config"; yang_parent_name = "ingress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "ingress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Ingress::Config::~Config()
@@ -2408,6 +2429,7 @@ TerminalDevice::LogicalChannels::Channel::Ingress::Config::~Config()
 
 bool TerminalDevice::LogicalChannels::Channel::Ingress::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : physical_channel.getYLeafs())
     {
         if(leaf.is_set)
@@ -2498,7 +2520,7 @@ TerminalDevice::LogicalChannels::Channel::Ingress::State::State()
     physical_channel{YType::str, "physical-channel"}
 {
 
-    yang_name = "state"; yang_parent_name = "ingress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "ingress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::Ingress::State::~State()
@@ -2507,6 +2529,7 @@ TerminalDevice::LogicalChannels::Channel::Ingress::State::~State()
 
 bool TerminalDevice::LogicalChannels::Channel::Ingress::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : physical_channel.getYLeafs())
     {
         if(leaf.is_set)
@@ -2592,9 +2615,11 @@ bool TerminalDevice::LogicalChannels::Channel::Ingress::State::has_leaf_or_child
 }
 
 TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignments()
+    :
+    assignment(this, {"index_"})
 {
 
-    yang_name = "logical-channel-assignments"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logical-channel-assignments"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::~LogicalChannelAssignments()
@@ -2603,7 +2628,8 @@ TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::~LogicalCha
 
 bool TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::has_data() const
 {
-    for (std::size_t index=0; index<assignment.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<assignment.len(); index++)
     {
         if(assignment[index]->has_data())
             return true;
@@ -2613,7 +2639,7 @@ bool TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::has_da
 
 bool TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::has_operation() const
 {
-    for (std::size_t index=0; index<assignment.size(); index++)
+    for (std::size_t index=0; index<assignment.len(); index++)
     {
         if(assignment[index]->has_operation())
             return true;
@@ -2643,7 +2669,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannel
     {
         auto c = std::make_shared<TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment>();
         c->parent = this;
-        assignment.push_back(c);
+        assignment.append(c);
         return c;
     }
 
@@ -2655,7 +2681,7 @@ std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : assignment)
+    for (auto c : assignment.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2684,14 +2710,14 @@ bool TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::has_le
 TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::Assignment()
     :
     index_{YType::str, "index"}
-    	,
+        ,
     config(std::make_shared<TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::Config>())
-	,state(std::make_shared<TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::State>())
+    , state(std::make_shared<TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "assignment"; yang_parent_name = "logical-channel-assignments"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "assignment"; yang_parent_name = "logical-channel-assignments"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::~Assignment()
@@ -2700,6 +2726,7 @@ TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment:
 
 bool TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -2716,7 +2743,8 @@ bool TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assign
 std::string TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "assignment" <<"[index='" <<index_ <<"']";
+    path_buffer << "assignment";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -2805,7 +2833,7 @@ TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment:
     allocation{YType::str, "allocation"}
 {
 
-    yang_name = "config"; yang_parent_name = "assignment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "assignment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::Config::~Config()
@@ -2814,6 +2842,7 @@ TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment:
 
 bool TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| description.is_set
 	|| assignment_type.is_set
@@ -2952,7 +2981,7 @@ TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment:
     allocation{YType::str, "allocation"}
 {
 
-    yang_name = "state"; yang_parent_name = "assignment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "assignment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::State::~State()
@@ -2961,6 +2990,7 @@ TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment:
 
 bool TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::State::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| description.is_set
 	|| assignment_type.is_set
@@ -3090,9 +3120,11 @@ bool TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assign
 }
 
 TerminalDevice::OperationalModes::OperationalModes()
+    :
+    mode(this, {"mode_id"})
 {
 
-    yang_name = "operational-modes"; yang_parent_name = "terminal-device"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operational-modes"; yang_parent_name = "terminal-device"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TerminalDevice::OperationalModes::~OperationalModes()
@@ -3101,7 +3133,8 @@ TerminalDevice::OperationalModes::~OperationalModes()
 
 bool TerminalDevice::OperationalModes::has_data() const
 {
-    for (std::size_t index=0; index<mode.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mode.len(); index++)
     {
         if(mode[index]->has_data())
             return true;
@@ -3111,7 +3144,7 @@ bool TerminalDevice::OperationalModes::has_data() const
 
 bool TerminalDevice::OperationalModes::has_operation() const
 {
-    for (std::size_t index=0; index<mode.size(); index++)
+    for (std::size_t index=0; index<mode.len(); index++)
     {
         if(mode[index]->has_operation())
             return true;
@@ -3148,7 +3181,7 @@ std::shared_ptr<Entity> TerminalDevice::OperationalModes::get_child_by_name(cons
     {
         auto c = std::make_shared<TerminalDevice::OperationalModes::Mode>();
         c->parent = this;
-        mode.push_back(c);
+        mode.append(c);
         return c;
     }
 
@@ -3160,7 +3193,7 @@ std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::OperationalModes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mode)
+    for (auto c : mode.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3189,14 +3222,14 @@ bool TerminalDevice::OperationalModes::has_leaf_or_child_of_name(const std::stri
 TerminalDevice::OperationalModes::Mode::Mode()
     :
     mode_id{YType::str, "mode-id"}
-    	,
+        ,
     config(std::make_shared<TerminalDevice::OperationalModes::Mode::Config>())
-	,state(std::make_shared<TerminalDevice::OperationalModes::Mode::State>())
+    , state(std::make_shared<TerminalDevice::OperationalModes::Mode::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "mode"; yang_parent_name = "operational-modes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mode"; yang_parent_name = "operational-modes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TerminalDevice::OperationalModes::Mode::~Mode()
@@ -3205,6 +3238,7 @@ TerminalDevice::OperationalModes::Mode::~Mode()
 
 bool TerminalDevice::OperationalModes::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return mode_id.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -3228,7 +3262,8 @@ std::string TerminalDevice::OperationalModes::Mode::get_absolute_path() const
 std::string TerminalDevice::OperationalModes::Mode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mode" <<"[mode-id='" <<mode_id <<"']";
+    path_buffer << "mode";
+    ADD_KEY_TOKEN(mode_id, "mode-id");
     return path_buffer.str();
 }
 
@@ -3310,7 +3345,7 @@ bool TerminalDevice::OperationalModes::Mode::has_leaf_or_child_of_name(const std
 TerminalDevice::OperationalModes::Mode::Config::Config()
 {
 
-    yang_name = "config"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::OperationalModes::Mode::Config::~Config()
@@ -3319,6 +3354,7 @@ TerminalDevice::OperationalModes::Mode::Config::~Config()
 
 bool TerminalDevice::OperationalModes::Mode::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3375,7 +3411,7 @@ TerminalDevice::OperationalModes::Mode::State::State()
     vendor_id{YType::str, "vendor-id"}
 {
 
-    yang_name = "state"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TerminalDevice::OperationalModes::Mode::State::~State()
@@ -3384,6 +3420,7 @@ TerminalDevice::OperationalModes::Mode::State::~State()
 
 bool TerminalDevice::OperationalModes::Mode::State::has_data() const
 {
+    if (is_presence_container) return true;
     return mode_id.is_set
 	|| description.is_set
 	|| vendor_id.is_set;

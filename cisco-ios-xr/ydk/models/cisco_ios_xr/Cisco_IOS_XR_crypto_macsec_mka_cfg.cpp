@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_crypto_macsec_mka_cfg {
 
 Macsec::Macsec()
+    :
+    policy(this, {"name"})
 {
 
-    yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-mka-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-mka-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Macsec::~Macsec()
@@ -23,7 +25,8 @@ Macsec::~Macsec()
 
 bool Macsec::has_data() const
 {
-    for (std::size_t index=0; index<policy.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy.len(); index++)
     {
         if(policy[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Macsec::has_data() const
 
 bool Macsec::has_operation() const
 {
-    for (std::size_t index=0; index<policy.size(); index++)
+    for (std::size_t index=0; index<policy.len(); index++)
     {
         if(policy[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Macsec::get_child_by_name(const std::string & child_yang
     {
         auto c = std::make_shared<Macsec::Policy>();
         c->parent = this;
-        policy.push_back(c);
+        policy.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy)
+    for (auto c : policy.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -141,7 +144,7 @@ Macsec::Policy::Policy()
     vlan_tags_in_clear{YType::uint32, "vlan-tags-in-clear"}
 {
 
-    yang_name = "policy"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Macsec::Policy::~Policy()
@@ -150,6 +153,7 @@ Macsec::Policy::~Policy()
 
 bool Macsec::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| delay_protection.is_set
 	|| security_policy.is_set
@@ -189,7 +193,8 @@ std::string Macsec::Policy::get_absolute_path() const
 std::string Macsec::Policy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy" <<"[name='" <<name <<"']";
+    path_buffer << "policy";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -350,6 +355,10 @@ bool Macsec::Policy::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_0 {0, "conf-off-set-0"};
+const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_30 {30, "conf-off-set-30"};
+const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_50 {50, "conf-off-set-50"};
+
 const Enum::YLeaf MacsecMkaSecurityPolicy::should_secure {0, "should-secure"};
 const Enum::YLeaf MacsecMkaSecurityPolicy::must_secure {1, "must-secure"};
 
@@ -359,10 +368,6 @@ const Enum::YLeaf MacsecMkaCipherSuite::gcm_aes_128 {1, "gcm-aes-128"};
 const Enum::YLeaf MacsecMkaCipherSuite::gcm_aes_256 {2, "gcm-aes-256"};
 const Enum::YLeaf MacsecMkaCipherSuite::gcm_aes_xpn_128 {3, "gcm-aes-xpn-128"};
 const Enum::YLeaf MacsecMkaCipherSuite::gcm_aes_xpn_256 {4, "gcm-aes-xpn-256"};
-
-const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_0 {0, "conf-off-set-0"};
-const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_30 {30, "conf-off-set-30"};
-const Enum::YLeaf MacsecMkaConfOffset::conf_off_set_50 {50, "conf-off-set-50"};
 
 
 }

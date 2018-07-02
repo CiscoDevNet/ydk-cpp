@@ -32,20 +32,20 @@ class CISCOCBPTARGETMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ccbpttargetattachcfg; //type: CISCOCBPTARGETMIB::Ccbpttargetattachcfg
-        class Ccbpttargettable; //type: CISCOCBPTARGETMIB::Ccbpttargettable
+        class CcbptTargetAttachCfg; //type: CISCOCBPTARGETMIB::CcbptTargetAttachCfg
+        class CcbptTargetTable; //type: CISCOCBPTARGETMIB::CcbptTargetTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_CBP_TARGET_MIB::CISCOCBPTARGETMIB::Ccbpttargetattachcfg> ccbpttargetattachcfg;
-        std::shared_ptr<cisco_ios_xe::CISCO_CBP_TARGET_MIB::CISCOCBPTARGETMIB::Ccbpttargettable> ccbpttargettable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CBP_TARGET_MIB::CISCOCBPTARGETMIB::CcbptTargetAttachCfg> ccbpttargetattachcfg;
+        std::shared_ptr<cisco_ios_xe::CISCO_CBP_TARGET_MIB::CISCOCBPTARGETMIB::CcbptTargetTable> ccbpttargettable;
         
 }; // CISCOCBPTARGETMIB
 
 
-class CISCOCBPTARGETMIB::Ccbpttargetattachcfg : public ydk::Entity
+class CISCOCBPTARGETMIB::CcbptTargetAttachCfg : public ydk::Entity
 {
     public:
-        Ccbpttargetattachcfg();
-        ~Ccbpttargetattachcfg();
+        CcbptTargetAttachCfg();
+        ~CcbptTargetAttachCfg();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -61,14 +61,14 @@ class CISCOCBPTARGETMIB::Ccbpttargetattachcfg : public ydk::Entity
         ydk::YLeaf ccbptpolicyidnext; //type: uint32
         ydk::YLeaf ccbpttargettablelastchange; //type: uint32
 
-}; // CISCOCBPTARGETMIB::Ccbpttargetattachcfg
+}; // CISCOCBPTARGETMIB::CcbptTargetAttachCfg
 
 
-class CISCOCBPTARGETMIB::Ccbpttargettable : public ydk::Entity
+class CISCOCBPTARGETMIB::CcbptTargetTable : public ydk::Entity
 {
     public:
-        Ccbpttargettable();
-        ~Ccbpttargettable();
+        CcbptTargetTable();
+        ~CcbptTargetTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -81,18 +81,18 @@ class CISCOCBPTARGETMIB::Ccbpttargettable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ccbpttargetentry; //type: CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry
+        class CcbptTargetEntry; //type: CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CBP_TARGET_MIB::CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry> > ccbpttargetentry;
+        ydk::YList ccbpttargetentry;
         
-}; // CISCOCBPTARGETMIB::Ccbpttargettable
+}; // CISCOCBPTARGETMIB::CcbptTargetTable
 
 
-class CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry : public ydk::Entity
+class CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry : public ydk::Entity
 {
     public:
-        Ccbpttargetentry();
-        ~Ccbpttargetentry();
+        CcbptTargetEntry();
+        ~CcbptTargetEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -116,7 +116,7 @@ class CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry : public ydk::Entity
         ydk::YLeaf ccbptpolicyinstance; //type: string
         ydk::YLeaf ccbptpolicyattachtime; //type: uint32
 
-}; // CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry
+}; // CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry
 
 
 }

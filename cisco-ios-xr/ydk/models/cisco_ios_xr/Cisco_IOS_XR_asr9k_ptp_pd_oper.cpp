@@ -17,7 +17,7 @@ PlatformPtp::PlatformPtp()
 {
     platform_ptp_servo->parent = this;
 
-    yang_name = "platform-ptp"; yang_parent_name = "Cisco-IOS-XR-asr9k-ptp-pd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "platform-ptp"; yang_parent_name = "Cisco-IOS-XR-asr9k-ptp-pd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PlatformPtp::~PlatformPtp()
@@ -26,6 +26,7 @@ PlatformPtp::~PlatformPtp()
 
 bool PlatformPtp::has_data() const
 {
+    if (is_presence_container) return true;
     return (platform_ptp_servo !=  nullptr && platform_ptp_servo->has_data());
 }
 
@@ -137,16 +138,16 @@ PlatformPtp::PlatformPtpServo::PlatformPtpServo()
     flagof_last_set_time{YType::boolean, "flagof-last-set-time"},
     offset_from_master{YType::int64, "offset-from-master"},
     mean_path_delay{YType::int64, "mean-path-delay"}
-    	,
+        ,
     last_set_time(std::make_shared<PlatformPtp::PlatformPtpServo::LastSetTime>())
-	,last_received_t1(std::make_shared<PlatformPtp::PlatformPtpServo::LastReceivedT1>())
-	,last_received_t2(std::make_shared<PlatformPtp::PlatformPtpServo::LastReceivedT2>())
-	,last_received_t3(std::make_shared<PlatformPtp::PlatformPtpServo::LastReceivedT3>())
-	,last_received_t4(std::make_shared<PlatformPtp::PlatformPtpServo::LastReceivedT4>())
-	,pre_received_t1(std::make_shared<PlatformPtp::PlatformPtpServo::PreReceivedT1>())
-	,pre_received_t2(std::make_shared<PlatformPtp::PlatformPtpServo::PreReceivedT2>())
-	,pre_received_t3(std::make_shared<PlatformPtp::PlatformPtpServo::PreReceivedT3>())
-	,pre_received_t4(std::make_shared<PlatformPtp::PlatformPtpServo::PreReceivedT4>())
+    , last_received_t1(std::make_shared<PlatformPtp::PlatformPtpServo::LastReceivedT1>())
+    , last_received_t2(std::make_shared<PlatformPtp::PlatformPtpServo::LastReceivedT2>())
+    , last_received_t3(std::make_shared<PlatformPtp::PlatformPtpServo::LastReceivedT3>())
+    , last_received_t4(std::make_shared<PlatformPtp::PlatformPtpServo::LastReceivedT4>())
+    , pre_received_t1(std::make_shared<PlatformPtp::PlatformPtpServo::PreReceivedT1>())
+    , pre_received_t2(std::make_shared<PlatformPtp::PlatformPtpServo::PreReceivedT2>())
+    , pre_received_t3(std::make_shared<PlatformPtp::PlatformPtpServo::PreReceivedT3>())
+    , pre_received_t4(std::make_shared<PlatformPtp::PlatformPtpServo::PreReceivedT4>())
 {
     last_set_time->parent = this;
     last_received_t1->parent = this;
@@ -158,7 +159,7 @@ PlatformPtp::PlatformPtpServo::PlatformPtpServo()
     pre_received_t3->parent = this;
     pre_received_t4->parent = this;
 
-    yang_name = "platform-ptp-servo"; yang_parent_name = "platform-ptp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "platform-ptp-servo"; yang_parent_name = "platform-ptp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformPtp::PlatformPtpServo::~PlatformPtpServo()
@@ -167,6 +168,7 @@ PlatformPtp::PlatformPtpServo::~PlatformPtpServo()
 
 bool PlatformPtp::PlatformPtpServo::has_data() const
 {
+    if (is_presence_container) return true;
     return lock_status.is_set
 	|| running.is_set
 	|| device_status.is_set
@@ -608,7 +610,7 @@ PlatformPtp::PlatformPtpServo::LastSetTime::LastSetTime()
     nano_second{YType::uint32, "nano-second"}
 {
 
-    yang_name = "last-set-time"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-set-time"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformPtp::PlatformPtpServo::LastSetTime::~LastSetTime()
@@ -617,6 +619,7 @@ PlatformPtp::PlatformPtpServo::LastSetTime::~LastSetTime()
 
 bool PlatformPtp::PlatformPtpServo::LastSetTime::has_data() const
 {
+    if (is_presence_container) return true;
     return second.is_set
 	|| nano_second.is_set;
 }
@@ -706,7 +709,7 @@ PlatformPtp::PlatformPtpServo::LastReceivedT1::LastReceivedT1()
     nano_second{YType::uint32, "nano-second"}
 {
 
-    yang_name = "last-received-t1"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-received-t1"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformPtp::PlatformPtpServo::LastReceivedT1::~LastReceivedT1()
@@ -715,6 +718,7 @@ PlatformPtp::PlatformPtpServo::LastReceivedT1::~LastReceivedT1()
 
 bool PlatformPtp::PlatformPtpServo::LastReceivedT1::has_data() const
 {
+    if (is_presence_container) return true;
     return second.is_set
 	|| nano_second.is_set;
 }
@@ -804,7 +808,7 @@ PlatformPtp::PlatformPtpServo::LastReceivedT2::LastReceivedT2()
     nano_second{YType::uint32, "nano-second"}
 {
 
-    yang_name = "last-received-t2"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-received-t2"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformPtp::PlatformPtpServo::LastReceivedT2::~LastReceivedT2()
@@ -813,6 +817,7 @@ PlatformPtp::PlatformPtpServo::LastReceivedT2::~LastReceivedT2()
 
 bool PlatformPtp::PlatformPtpServo::LastReceivedT2::has_data() const
 {
+    if (is_presence_container) return true;
     return second.is_set
 	|| nano_second.is_set;
 }
@@ -902,7 +907,7 @@ PlatformPtp::PlatformPtpServo::LastReceivedT3::LastReceivedT3()
     nano_second{YType::uint32, "nano-second"}
 {
 
-    yang_name = "last-received-t3"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-received-t3"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformPtp::PlatformPtpServo::LastReceivedT3::~LastReceivedT3()
@@ -911,6 +916,7 @@ PlatformPtp::PlatformPtpServo::LastReceivedT3::~LastReceivedT3()
 
 bool PlatformPtp::PlatformPtpServo::LastReceivedT3::has_data() const
 {
+    if (is_presence_container) return true;
     return second.is_set
 	|| nano_second.is_set;
 }
@@ -1000,7 +1006,7 @@ PlatformPtp::PlatformPtpServo::LastReceivedT4::LastReceivedT4()
     nano_second{YType::uint32, "nano-second"}
 {
 
-    yang_name = "last-received-t4"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-received-t4"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformPtp::PlatformPtpServo::LastReceivedT4::~LastReceivedT4()
@@ -1009,6 +1015,7 @@ PlatformPtp::PlatformPtpServo::LastReceivedT4::~LastReceivedT4()
 
 bool PlatformPtp::PlatformPtpServo::LastReceivedT4::has_data() const
 {
+    if (is_presence_container) return true;
     return second.is_set
 	|| nano_second.is_set;
 }
@@ -1098,7 +1105,7 @@ PlatformPtp::PlatformPtpServo::PreReceivedT1::PreReceivedT1()
     nano_second{YType::uint32, "nano-second"}
 {
 
-    yang_name = "pre-received-t1"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pre-received-t1"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformPtp::PlatformPtpServo::PreReceivedT1::~PreReceivedT1()
@@ -1107,6 +1114,7 @@ PlatformPtp::PlatformPtpServo::PreReceivedT1::~PreReceivedT1()
 
 bool PlatformPtp::PlatformPtpServo::PreReceivedT1::has_data() const
 {
+    if (is_presence_container) return true;
     return second.is_set
 	|| nano_second.is_set;
 }
@@ -1196,7 +1204,7 @@ PlatformPtp::PlatformPtpServo::PreReceivedT2::PreReceivedT2()
     nano_second{YType::uint32, "nano-second"}
 {
 
-    yang_name = "pre-received-t2"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pre-received-t2"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformPtp::PlatformPtpServo::PreReceivedT2::~PreReceivedT2()
@@ -1205,6 +1213,7 @@ PlatformPtp::PlatformPtpServo::PreReceivedT2::~PreReceivedT2()
 
 bool PlatformPtp::PlatformPtpServo::PreReceivedT2::has_data() const
 {
+    if (is_presence_container) return true;
     return second.is_set
 	|| nano_second.is_set;
 }
@@ -1294,7 +1303,7 @@ PlatformPtp::PlatformPtpServo::PreReceivedT3::PreReceivedT3()
     nano_second{YType::uint32, "nano-second"}
 {
 
-    yang_name = "pre-received-t3"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pre-received-t3"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformPtp::PlatformPtpServo::PreReceivedT3::~PreReceivedT3()
@@ -1303,6 +1312,7 @@ PlatformPtp::PlatformPtpServo::PreReceivedT3::~PreReceivedT3()
 
 bool PlatformPtp::PlatformPtpServo::PreReceivedT3::has_data() const
 {
+    if (is_presence_container) return true;
     return second.is_set
 	|| nano_second.is_set;
 }
@@ -1392,7 +1402,7 @@ PlatformPtp::PlatformPtpServo::PreReceivedT4::PreReceivedT4()
     nano_second{YType::uint32, "nano-second"}
 {
 
-    yang_name = "pre-received-t4"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pre-received-t4"; yang_parent_name = "platform-ptp-servo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformPtp::PlatformPtpServo::PreReceivedT4::~PreReceivedT4()
@@ -1401,6 +1411,7 @@ PlatformPtp::PlatformPtpServo::PreReceivedT4::~PreReceivedT4()
 
 bool PlatformPtp::PlatformPtpServo::PreReceivedT4::has_data() const
 {
+    if (is_presence_container) return true;
     return second.is_set
 	|| nano_second.is_set;
 }

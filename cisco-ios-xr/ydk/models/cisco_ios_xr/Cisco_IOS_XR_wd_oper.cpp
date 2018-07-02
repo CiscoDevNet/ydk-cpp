@@ -17,7 +17,7 @@ Watchdog::Watchdog()
 {
     nodes->parent = this;
 
-    yang_name = "watchdog"; yang_parent_name = "Cisco-IOS-XR-wd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "watchdog"; yang_parent_name = "Cisco-IOS-XR-wd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Watchdog::~Watchdog()
@@ -26,6 +26,7 @@ Watchdog::~Watchdog()
 
 bool Watchdog::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Watchdog::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Watchdog::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "watchdog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "watchdog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Watchdog::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Watchdog::Nodes::~Nodes()
 
 bool Watchdog::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Watchdog::Nodes::has_data() const
 
 bool Watchdog::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Watchdog::Nodes::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Watchdog::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,16 +221,16 @@ bool Watchdog::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Watchdog::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     threshold_memory(std::make_shared<Watchdog::Nodes::Node::ThresholdMemory>())
-	,memory_state(std::make_shared<Watchdog::Nodes::Node::MemoryState>())
-	,overload_state(std::make_shared<Watchdog::Nodes::Node::OverloadState>())
+    , memory_state(std::make_shared<Watchdog::Nodes::Node::MemoryState>())
+    , overload_state(std::make_shared<Watchdog::Nodes::Node::OverloadState>())
 {
     threshold_memory->parent = this;
     memory_state->parent = this;
     overload_state->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Watchdog::Nodes::Node::~Node()
@@ -235,6 +239,7 @@ Watchdog::Nodes::Node::~Node()
 
 bool Watchdog::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (threshold_memory !=  nullptr && threshold_memory->has_data())
 	|| (memory_state !=  nullptr && memory_state->has_data())
@@ -260,7 +265,8 @@ std::string Watchdog::Nodes::Node::get_absolute_path() const
 std::string Watchdog::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -356,12 +362,12 @@ bool Watchdog::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) 
 Watchdog::Nodes::Node::ThresholdMemory::ThresholdMemory()
     :
     default_(std::make_shared<Watchdog::Nodes::Node::ThresholdMemory::Default>())
-	,configured(std::make_shared<Watchdog::Nodes::Node::ThresholdMemory::Configured>())
+    , configured(std::make_shared<Watchdog::Nodes::Node::ThresholdMemory::Configured>())
 {
     default_->parent = this;
     configured->parent = this;
 
-    yang_name = "threshold-memory"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-memory"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Watchdog::Nodes::Node::ThresholdMemory::~ThresholdMemory()
@@ -370,6 +376,7 @@ Watchdog::Nodes::Node::ThresholdMemory::~ThresholdMemory()
 
 bool Watchdog::Nodes::Node::ThresholdMemory::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data())
 	|| (configured !=  nullptr && configured->has_data());
 }
@@ -455,12 +462,12 @@ bool Watchdog::Nodes::Node::ThresholdMemory::has_leaf_or_child_of_name(const std
 Watchdog::Nodes::Node::ThresholdMemory::Default::Default()
     :
     configured_memory(std::make_shared<Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory>())
-	,memory(std::make_shared<Watchdog::Nodes::Node::ThresholdMemory::Default::Memory>())
+    , memory(std::make_shared<Watchdog::Nodes::Node::ThresholdMemory::Default::Memory>())
 {
     configured_memory->parent = this;
     memory->parent = this;
 
-    yang_name = "default"; yang_parent_name = "threshold-memory"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "threshold-memory"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Watchdog::Nodes::Node::ThresholdMemory::Default::~Default()
@@ -469,6 +476,7 @@ Watchdog::Nodes::Node::ThresholdMemory::Default::~Default()
 
 bool Watchdog::Nodes::Node::ThresholdMemory::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (configured_memory !=  nullptr && configured_memory->has_data())
 	|| (memory !=  nullptr && memory->has_data());
 }
@@ -558,7 +566,7 @@ Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory::ConfiguredMem
     critical{YType::uint64, "critical"}
 {
 
-    yang_name = "configured-memory"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configured-memory"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory::~ConfiguredMemory()
@@ -567,6 +575,7 @@ Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory::~ConfiguredMe
 
 bool Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory::has_data() const
 {
+    if (is_presence_container) return true;
     return minor.is_set
 	|| severe.is_set
 	|| critical.is_set;
@@ -663,7 +672,7 @@ Watchdog::Nodes::Node::ThresholdMemory::Default::Memory::Memory()
     memory_state{YType::enumeration, "memory-state"}
 {
 
-    yang_name = "memory"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "memory"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Watchdog::Nodes::Node::ThresholdMemory::Default::Memory::~Memory()
@@ -672,6 +681,7 @@ Watchdog::Nodes::Node::ThresholdMemory::Default::Memory::~Memory()
 
 bool Watchdog::Nodes::Node::ThresholdMemory::Default::Memory::has_data() const
 {
+    if (is_presence_container) return true;
     return physical_memory.is_set
 	|| free_memory.is_set
 	|| memory_state.is_set;
@@ -768,7 +778,7 @@ Watchdog::Nodes::Node::ThresholdMemory::Configured::Configured()
     critical{YType::uint64, "critical"}
 {
 
-    yang_name = "configured"; yang_parent_name = "threshold-memory"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configured"; yang_parent_name = "threshold-memory"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Watchdog::Nodes::Node::ThresholdMemory::Configured::~Configured()
@@ -777,6 +787,7 @@ Watchdog::Nodes::Node::ThresholdMemory::Configured::~Configured()
 
 bool Watchdog::Nodes::Node::ThresholdMemory::Configured::has_data() const
 {
+    if (is_presence_container) return true;
     return minor.is_set
 	|| severe.is_set
 	|| critical.is_set;
@@ -873,7 +884,7 @@ Watchdog::Nodes::Node::MemoryState::MemoryState()
     memory_state{YType::enumeration, "memory-state"}
 {
 
-    yang_name = "memory-state"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "memory-state"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Watchdog::Nodes::Node::MemoryState::~MemoryState()
@@ -882,6 +893,7 @@ Watchdog::Nodes::Node::MemoryState::~MemoryState()
 
 bool Watchdog::Nodes::Node::MemoryState::has_data() const
 {
+    if (is_presence_container) return true;
     return physical_memory.is_set
 	|| free_memory.is_set
 	|| memory_state.is_set;
@@ -976,12 +988,13 @@ Watchdog::Nodes::Node::OverloadState::OverloadState()
     overload_control_notification{YType::enumeration, "overload-control-notification"},
     default_wdsysmon_throttle{YType::uint32, "default-wdsysmon-throttle"},
     configured_wdsysmon_throttle{YType::uint32, "configured-wdsysmon-throttle"}
-    	,
+        ,
     current_throttle(std::make_shared<Watchdog::Nodes::Node::OverloadState::CurrentThrottle>())
+    , last_throttle(this, {})
 {
     current_throttle->parent = this;
 
-    yang_name = "overload-state"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "overload-state"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Watchdog::Nodes::Node::OverloadState::~OverloadState()
@@ -990,7 +1003,8 @@ Watchdog::Nodes::Node::OverloadState::~OverloadState()
 
 bool Watchdog::Nodes::Node::OverloadState::has_data() const
 {
-    for (std::size_t index=0; index<last_throttle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<last_throttle.len(); index++)
     {
         if(last_throttle[index]->has_data())
             return true;
@@ -1003,7 +1017,7 @@ bool Watchdog::Nodes::Node::OverloadState::has_data() const
 
 bool Watchdog::Nodes::Node::OverloadState::has_operation() const
 {
-    for (std::size_t index=0; index<last_throttle.size(); index++)
+    for (std::size_t index=0; index<last_throttle.len(); index++)
     {
         if(last_throttle[index]->has_operation())
             return true;
@@ -1049,7 +1063,7 @@ std::shared_ptr<Entity> Watchdog::Nodes::Node::OverloadState::get_child_by_name(
     {
         auto c = std::make_shared<Watchdog::Nodes::Node::OverloadState::LastThrottle>();
         c->parent = this;
-        last_throttle.push_back(c);
+        last_throttle.append(c);
         return c;
     }
 
@@ -1066,7 +1080,7 @@ std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::OverloadSt
     }
 
     count = 0;
-    for (auto const & c : last_throttle)
+    for (auto c : last_throttle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1128,7 +1142,7 @@ Watchdog::Nodes::Node::OverloadState::CurrentThrottle::CurrentThrottle()
     start_time{YType::str, "start-time"}
 {
 
-    yang_name = "current-throttle"; yang_parent_name = "overload-state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "current-throttle"; yang_parent_name = "overload-state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Watchdog::Nodes::Node::OverloadState::CurrentThrottle::~CurrentThrottle()
@@ -1137,6 +1151,7 @@ Watchdog::Nodes::Node::OverloadState::CurrentThrottle::~CurrentThrottle()
 
 bool Watchdog::Nodes::Node::OverloadState::CurrentThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return throttle_duration.is_set
 	|| start_time.is_set;
 }
@@ -1220,7 +1235,7 @@ Watchdog::Nodes::Node::OverloadState::LastThrottle::LastThrottle()
     stop_time{YType::str, "stop-time"}
 {
 
-    yang_name = "last-throttle"; yang_parent_name = "overload-state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-throttle"; yang_parent_name = "overload-state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Watchdog::Nodes::Node::OverloadState::LastThrottle::~LastThrottle()
@@ -1229,6 +1244,7 @@ Watchdog::Nodes::Node::OverloadState::LastThrottle::~LastThrottle()
 
 bool Watchdog::Nodes::Node::OverloadState::LastThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return throttle_duration.is_set
 	|| start_time.is_set
 	|| stop_time.is_set;
@@ -1318,14 +1334,14 @@ bool Watchdog::Nodes::Node::OverloadState::LastThrottle::has_leaf_or_child_of_na
     return false;
 }
 
-const Enum::YLeaf OverloadCtrlNotif::disabled {0, "disabled"};
-const Enum::YLeaf OverloadCtrlNotif::enabled {1, "enabled"};
-
 const Enum::YLeaf MemoryState::unknown {0, "unknown"};
 const Enum::YLeaf MemoryState::normal {1, "normal"};
 const Enum::YLeaf MemoryState::minor {2, "minor"};
 const Enum::YLeaf MemoryState::severe {3, "severe"};
 const Enum::YLeaf MemoryState::critical {4, "critical"};
+
+const Enum::YLeaf OverloadCtrlNotif::disabled {0, "disabled"};
+const Enum::YLeaf OverloadCtrlNotif::enabled {1, "enabled"};
 
 
 }

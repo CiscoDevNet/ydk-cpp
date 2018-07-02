@@ -85,7 +85,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds : public ydk::
 
         class PathId; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId> > path_id;
+        ydk::YList path_id;
         
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds
 
@@ -162,7 +162,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
         class SiArr; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data> data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr> > si_arr;
+        ydk::YList si_arr;
         
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail
 
@@ -496,7 +496,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
         class SiArr; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data> data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr> > si_arr;
+        ydk::YList si_arr;
         
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized
 
@@ -828,7 +828,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         class ServiceIndex; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex> > service_index;
+        ydk::YList service_index;
         
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes
 
@@ -854,7 +854,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
         class SiArr; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data> data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr> > si_arr;
+        ydk::YList si_arr;
         
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex
 
@@ -1211,7 +1211,7 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames : public ydk::Enti
 
         class SfName; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName> > sf_name;
+        ydk::YList sf_name;
         
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames
 
@@ -1238,7 +1238,7 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName : public y
         class SiArr; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data> data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr> > si_arr;
+        ydk::YList si_arr;
         
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName
 
@@ -1597,7 +1597,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames : public
 
         class SffName; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName> > sff_name;
+        ydk::YList sff_name;
         
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames
 
@@ -1624,7 +1624,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
         class SiArr; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data> data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr> > si_arr;
+        ydk::YList si_arr;
         
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
@@ -1983,7 +1983,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error : pu
         class SiArr; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data> data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr> > si_arr;
+        ydk::YList si_arr;
         
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error
 

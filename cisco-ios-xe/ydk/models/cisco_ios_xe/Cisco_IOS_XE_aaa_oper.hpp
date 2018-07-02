@@ -33,7 +33,7 @@ class AaaData : public ydk::Entity
 
         class AaaUsers; //type: AaaData::AaaUsers
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_aaa_oper::AaaData::AaaUsers> > aaa_users;
+        ydk::YList aaa_users;
         
 }; // AaaData
 
@@ -58,7 +58,7 @@ class AaaData::AaaUsers : public ydk::Entity
         ydk::YLeaf username; //type: string
         class AaaSessions; //type: AaaData::AaaUsers::AaaSessions
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_aaa_oper::AaaData::AaaUsers::AaaSessions> > aaa_sessions;
+        ydk::YList aaa_sessions;
         
 }; // AaaData::AaaUsers
 

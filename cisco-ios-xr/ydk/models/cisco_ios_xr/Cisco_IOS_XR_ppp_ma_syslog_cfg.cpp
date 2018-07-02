@@ -17,7 +17,7 @@ Ppp::Ppp()
 {
     syslog->parent = this;
 
-    yang_name = "ppp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-syslog-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ppp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-syslog-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ppp::~Ppp()
@@ -26,6 +26,7 @@ Ppp::~Ppp()
 
 bool Ppp::has_data() const
 {
+    if (is_presence_container) return true;
     return (syslog !=  nullptr && syslog->has_data());
 }
 
@@ -122,7 +123,7 @@ Ppp::Syslog::Syslog()
     enable_session_status{YType::empty, "enable-session-status"}
 {
 
-    yang_name = "syslog"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "syslog"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ppp::Syslog::~Syslog()
@@ -131,6 +132,7 @@ Ppp::Syslog::~Syslog()
 
 bool Ppp::Syslog::has_data() const
 {
+    if (is_presence_container) return true;
     return enable_session_status.is_set;
 }
 

@@ -31,20 +31,20 @@ class CISCOETHERLIKEEXTMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ceedot3Pauseexttable; //type: CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable
-        class Ceesubinterfacetable; //type: CISCOETHERLIKEEXTMIB::Ceesubinterfacetable
+        class CeeDot3PauseExtTable; //type: CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable
+        class CeeSubInterfaceTable; //type: CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_ETHERLIKE_EXT_MIB::CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable> ceedot3pauseexttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ETHERLIKE_EXT_MIB::CISCOETHERLIKEEXTMIB::Ceesubinterfacetable> ceesubinterfacetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ETHERLIKE_EXT_MIB::CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable> ceedot3pauseexttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ETHERLIKE_EXT_MIB::CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable> ceesubinterfacetable;
         
 }; // CISCOETHERLIKEEXTMIB
 
 
-class CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable : public ydk::Entity
+class CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable : public ydk::Entity
 {
     public:
-        Ceedot3Pauseexttable();
-        ~Ceedot3Pauseexttable();
+        CeeDot3PauseExtTable();
+        ~CeeDot3PauseExtTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -57,18 +57,18 @@ class CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceedot3Pauseextentry; //type: CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry
+        class CeeDot3PauseExtEntry; //type: CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ETHERLIKE_EXT_MIB::CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry> > ceedot3pauseextentry;
+        ydk::YList ceedot3pauseextentry;
         
-}; // CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable
+}; // CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable
 
 
-class CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry : public ydk::Entity
+class CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry : public ydk::Entity
 {
     public:
-        Ceedot3Pauseextentry();
-        ~Ceedot3Pauseextentry();
+        CeeDot3PauseExtEntry();
+        ~CeeDot3PauseExtEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -81,19 +81,19 @@ class CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Statstable::Dot3Statsentry::dot3statsindex)
+        //type: int32 (refers to cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::dot3statsindex)
         ydk::YLeaf dot3statsindex;
-        ydk::YLeaf ceedot3pauseextadminmode; //type: Ceedot3Pauseextadminmode
-        ydk::YLeaf ceedot3pauseextopermode; //type: Ceedot3Pauseextopermode
+        ydk::YLeaf ceedot3pauseextadminmode; //type: CeeDot3PauseExtAdminMode
+        ydk::YLeaf ceedot3pauseextopermode; //type: CeeDot3PauseExtOperMode
 
-}; // CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry
+}; // CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry
 
 
-class CISCOETHERLIKEEXTMIB::Ceesubinterfacetable : public ydk::Entity
+class CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable : public ydk::Entity
 {
     public:
-        Ceesubinterfacetable();
-        ~Ceesubinterfacetable();
+        CeeSubInterfaceTable();
+        ~CeeSubInterfaceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -106,18 +106,18 @@ class CISCOETHERLIKEEXTMIB::Ceesubinterfacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceesubinterfaceentry; //type: CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry
+        class CeeSubInterfaceEntry; //type: CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ETHERLIKE_EXT_MIB::CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry> > ceesubinterfaceentry;
+        ydk::YList ceesubinterfaceentry;
         
-}; // CISCOETHERLIKEEXTMIB::Ceesubinterfacetable
+}; // CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable
 
 
-class CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry : public ydk::Entity
+class CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry : public ydk::Entity
 {
     public:
-        Ceesubinterfaceentry();
-        ~Ceesubinterfaceentry();
+        CeeSubInterfaceEntry();
+        ~CeeSubInterfaceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -130,11 +130,11 @@ class CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf ceesubinterfacecount; //type: uint32
 
-}; // CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry
+}; // CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry
 
 
 }

@@ -17,7 +17,7 @@ IpSubscriber::IpSubscriber()
 {
     nodes->parent = this;
 
-    yang_name = "ip-subscriber"; yang_parent_name = "Cisco-IOS-XR-subscriber-ipsub-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ip-subscriber"; yang_parent_name = "Cisco-IOS-XR-subscriber-ipsub-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IpSubscriber::~IpSubscriber()
@@ -26,6 +26,7 @@ IpSubscriber::~IpSubscriber()
 
 bool IpSubscriber::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool IpSubscriber::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 IpSubscriber::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpSubscriber::Nodes::~Nodes()
@@ -129,7 +132,8 @@ IpSubscriber::Nodes::~Nodes()
 
 bool IpSubscriber::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool IpSubscriber::Nodes::has_data() const
 
 bool IpSubscriber::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::get_child_by_name(const std::string
     {
         auto c = std::make_shared<IpSubscriber::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,16 +221,16 @@ bool IpSubscriber::Nodes::has_leaf_or_child_of_name(const std::string & name) co
 IpSubscriber::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     summary(std::make_shared<IpSubscriber::Nodes::Node::Summary>())
-	,interfaces(std::make_shared<IpSubscriber::Nodes::Node::Interfaces>())
-	,access_interfaces(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces>())
+    , interfaces(std::make_shared<IpSubscriber::Nodes::Node::Interfaces>())
+    , access_interfaces(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces>())
 {
     summary->parent = this;
     interfaces->parent = this;
     access_interfaces->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpSubscriber::Nodes::Node::~Node()
@@ -235,6 +239,7 @@ IpSubscriber::Nodes::Node::~Node()
 
 bool IpSubscriber::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (summary !=  nullptr && summary->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
@@ -260,7 +265,8 @@ std::string IpSubscriber::Nodes::Node::get_absolute_path() const
 std::string IpSubscriber::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -356,12 +362,13 @@ bool IpSubscriber::Nodes::Node::has_leaf_or_child_of_name(const std::string & na
 IpSubscriber::Nodes::Node::Summary::Summary()
     :
     access_interface_summary(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary>())
-	,interface_counts(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts>())
+    , interface_counts(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts>())
+    , vrf(this, {})
 {
     access_interface_summary->parent = this;
     interface_counts->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::~Summary()
@@ -370,7 +377,8 @@ IpSubscriber::Nodes::Node::Summary::~Summary()
 
 bool IpSubscriber::Nodes::Node::Summary::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -381,7 +389,7 @@ bool IpSubscriber::Nodes::Node::Summary::has_data() const
 
 bool IpSubscriber::Nodes::Node::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -431,7 +439,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::get_child_by_name(co
     {
         auto c = std::make_shared<IpSubscriber::Nodes::Node::Summary::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -453,7 +461,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     }
 
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -482,14 +490,14 @@ bool IpSubscriber::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::st
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::AccessInterfaceSummary()
     :
     interfaces{YType::uint32, "interfaces"}
-    	,
+        ,
     initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators>())
-	,ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators>())
+    , ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators>())
 {
     initiators->parent = this;
     ipv6_initiators->parent = this;
 
-    yang_name = "access-interface-summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-interface-summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::~AccessInterfaceSummary()
@@ -498,6 +506,7 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::~AccessInterfaceSumm
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return interfaces.is_set
 	|| (initiators !=  nullptr && initiators->has_data())
 	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_data());
@@ -596,12 +605,12 @@ bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::has_leaf_or_chi
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Initiators()
     :
     dhcp(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp>())
-	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger>())
+    , packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
     packet_trigger->parent = this;
 
-    yang_name = "initiators"; yang_parent_name = "access-interface-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "initiators"; yang_parent_name = "access-interface-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::~Initiators()
@@ -610,6 +619,7 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::~Initiat
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp !=  nullptr && dhcp->has_data())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
 }
@@ -698,7 +708,7 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::Dh
     fsol_bytes{YType::uint32, "fsol-bytes"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::~Dhcp()
@@ -707,6 +717,7 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::~D
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return fsol_packets.is_set
 	|| fsol_bytes.is_set;
 }
@@ -789,7 +800,7 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTr
     fsol_bytes{YType::uint32, "fsol-bytes"}
 {
 
-    yang_name = "packet-trigger"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-trigger"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::~PacketTrigger()
@@ -798,6 +809,7 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTr
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::has_data() const
 {
+    if (is_presence_container) return true;
     return fsol_packets.is_set
 	|| fsol_bytes.is_set;
 }
@@ -877,12 +889,12 @@ bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Pac
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Ipv6Initiators()
     :
     dhcp(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp>())
-	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger>())
+    , packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
     packet_trigger->parent = this;
 
-    yang_name = "ipv6-initiators"; yang_parent_name = "access-interface-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-initiators"; yang_parent_name = "access-interface-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::~Ipv6Initiators()
@@ -891,6 +903,7 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::~Ipv
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp !=  nullptr && dhcp->has_data())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
 }
@@ -979,7 +992,7 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp
     fsol_bytes{YType::uint32, "fsol-bytes"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::~Dhcp()
@@ -988,6 +1001,7 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return fsol_packets.is_set
 	|| fsol_bytes.is_set;
 }
@@ -1070,7 +1084,7 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Pack
     fsol_bytes{YType::uint32, "fsol-bytes"}
 {
 
-    yang_name = "packet-trigger"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-trigger"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::~PacketTrigger()
@@ -1079,6 +1093,7 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Pack
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::has_data() const
 {
+    if (is_presence_container) return true;
     return fsol_packets.is_set
 	|| fsol_bytes.is_set;
 }
@@ -1158,12 +1173,12 @@ bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators:
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::InterfaceCounts()
     :
     initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators>())
-	,ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators>())
+    , ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators>())
 {
     initiators->parent = this;
     ipv6_initiators->parent = this;
 
-    yang_name = "interface-counts"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-counts"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::~InterfaceCounts()
@@ -1172,6 +1187,7 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::~InterfaceCounts()
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return (initiators !=  nullptr && initiators->has_data())
 	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_data());
 }
@@ -1257,12 +1273,12 @@ bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::has_leaf_or_child_of_n
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Initiators()
     :
     dhcp(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp>())
-	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger>())
+    , packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
     packet_trigger->parent = this;
 
-    yang_name = "initiators"; yang_parent_name = "interface-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "initiators"; yang_parent_name = "interface-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::~Initiators()
@@ -1271,6 +1287,7 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::~Initiators()
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp !=  nullptr && dhcp->has_data())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
 }
@@ -1372,7 +1389,7 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::Dhcp()
     total_interfaces{YType::uint32, "total-interfaces"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::~Dhcp()
@@ -1381,6 +1398,7 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::~Dhcp()
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return invalid.is_set
 	|| initialized.is_set
 	|| session_creation_started.is_set
@@ -1645,7 +1663,7 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::
     total_interfaces{YType::uint32, "total-interfaces"}
 {
 
-    yang_name = "packet-trigger"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-trigger"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::~PacketTrigger()
@@ -1654,6 +1672,7 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::has_data() const
 {
+    if (is_presence_container) return true;
     return invalid.is_set
 	|| initialized.is_set
 	|| session_creation_started.is_set
@@ -1902,12 +1921,12 @@ bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrig
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Ipv6Initiators()
     :
     dhcp(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp>())
-	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger>())
+    , packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
     packet_trigger->parent = this;
 
-    yang_name = "ipv6-initiators"; yang_parent_name = "interface-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-initiators"; yang_parent_name = "interface-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::~Ipv6Initiators()
@@ -1916,6 +1935,7 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::~Ipv6Initia
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp !=  nullptr && dhcp->has_data())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
 }
@@ -2017,7 +2037,7 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::Dhcp(
     total_interfaces{YType::uint32, "total-interfaces"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::~Dhcp()
@@ -2026,6 +2046,7 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::~Dhcp
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return invalid.is_set
 	|| initialized.is_set
 	|| session_creation_started.is_set
@@ -2290,7 +2311,7 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigg
     total_interfaces{YType::uint32, "total-interfaces"}
 {
 
-    yang_name = "packet-trigger"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-trigger"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::~PacketTrigger()
@@ -2299,6 +2320,7 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigg
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::has_data() const
 {
+    if (is_presence_container) return true;
     return invalid.is_set
 	|| initialized.is_set
 	|| session_creation_started.is_set
@@ -2552,7 +2574,7 @@ IpSubscriber::Nodes::Node::Summary::Vrf::Vrf()
     ipv6_interfaces{YType::uint64, "ipv6-interfaces"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Summary::Vrf::~Vrf()
@@ -2561,6 +2583,7 @@ IpSubscriber::Nodes::Node::Summary::Vrf::~Vrf()
 
 bool IpSubscriber::Nodes::Node::Summary::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| ipv6vrf_name.is_set
 	|| interfaces.is_set
@@ -2664,9 +2687,11 @@ bool IpSubscriber::Nodes::Node::Summary::Vrf::has_leaf_or_child_of_name(const st
 }
 
 IpSubscriber::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Interfaces::~Interfaces()
@@ -2675,7 +2700,8 @@ IpSubscriber::Nodes::Node::Interfaces::~Interfaces()
 
 bool IpSubscriber::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -2685,7 +2711,7 @@ bool IpSubscriber::Nodes::Node::Interfaces::has_data() const
 
 bool IpSubscriber::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -2715,7 +2741,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::get_child_by_name
     {
         auto c = std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -2727,7 +2753,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2775,14 +2801,14 @@ IpSubscriber::Nodes::Node::Interfaces::Interface::Interface()
     ipv6_current_change_age{YType::str, "ipv6-current-change-age"},
     is_l2_connected{YType::boolean, "is-l2-connected"},
     session_type{YType::str, "session-type"}
-    	,
+        ,
     vrf(std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf>())
-	,ipv6vrf(std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf>())
+    , ipv6vrf(std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf>())
 {
     vrf->parent = this;
     ipv6vrf->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Interfaces::Interface::~Interface()
@@ -2791,6 +2817,7 @@ IpSubscriber::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool IpSubscriber::Nodes::Node::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| access_interface.is_set
 	|| subscriber_ipv4_address.is_set
@@ -2845,7 +2872,8 @@ bool IpSubscriber::Nodes::Node::Interfaces::Interface::has_operation() const
 std::string IpSubscriber::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2893,7 +2921,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::get_ch
     {
         if(ipv6vrf == nullptr)
         {
-            ipv6vrf = std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf>();
+            ipv6vrf = std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf>();
         }
         return ipv6vrf;
     }
@@ -3139,7 +3167,7 @@ IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::Vrf()
     table_name{YType::str, "table-name"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::~Vrf()
@@ -3148,6 +3176,7 @@ IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::~Vrf()
 
 bool IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| table_name.is_set;
 }
@@ -3224,40 +3253,41 @@ bool IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::has_leaf_or_child_of
     return false;
 }
 
-IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::Ipv6Vrf()
+IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::Ipv6vrf()
     :
     vrf_name{YType::str, "vrf-name"},
     table_name{YType::str, "table-name"}
 {
 
-    yang_name = "ipv6vrf"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6vrf"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::~Ipv6Vrf()
+IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::~Ipv6vrf()
 {
 }
 
-bool IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::has_data() const
+bool IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| table_name.is_set;
 }
 
-bool IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::has_operation() const
+bool IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
 	|| ydk::is_set(table_name.yfilter);
 }
 
-std::string IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_segment_path() const
+std::string IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6vrf";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3268,19 +3298,19 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Interf
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
@@ -3296,7 +3326,7 @@ void IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::set_value(const 
     }
 }
 
-void IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+void IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-name")
     {
@@ -3308,7 +3338,7 @@ void IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::set_filter(const
     }
 }
 
-bool IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::has_leaf_or_child_of_name(const std::string & name) const
+bool IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-name" || name == "table-name")
         return true;
@@ -3316,9 +3346,11 @@ bool IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::has_leaf_or_chil
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterfaces()
+    :
+    access_interface(this, {"interface_name"})
 {
 
-    yang_name = "access-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::~AccessInterfaces()
@@ -3327,7 +3359,8 @@ IpSubscriber::Nodes::Node::AccessInterfaces::~AccessInterfaces()
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<access_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_interface.len(); index++)
     {
         if(access_interface[index]->has_data())
             return true;
@@ -3337,7 +3370,7 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::has_data() const
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<access_interface.size(); index++)
+    for (std::size_t index=0; index<access_interface.len(); index++)
     {
         if(access_interface[index]->has_operation())
             return true;
@@ -3367,7 +3400,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::get_child_b
     {
         auto c = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface>();
         c->parent = this;
-        access_interface.push_back(c);
+        access_interface.append(c);
         return c;
     }
 
@@ -3379,7 +3412,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access_interface)
+    for (auto c : access_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3414,16 +3447,16 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::AccessInterface()
     state{YType::enumeration, "state"},
     ipv6_state{YType::enumeration, "ipv6-state"},
     vlan_type{YType::enumeration, "vlan-type"}
-    	,
+        ,
     initiators(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators>())
-	,ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators>())
-	,session_limit(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit>())
+    , ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators>())
+    , session_limit(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit>())
 {
     initiators->parent = this;
     ipv6_initiators->parent = this;
     session_limit->parent = this;
 
-    yang_name = "access-interface"; yang_parent_name = "access-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-interface"; yang_parent_name = "access-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::~AccessInterface()
@@ -3432,6 +3465,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::~AccessInterface()
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_creation_time.is_set
 	|| age.is_set
@@ -3462,7 +3496,8 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::has_operation
 std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "access-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3624,12 +3659,12 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::has_leaf_or_c
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Initiators()
     :
     dhcp(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp>())
-	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger>())
+    , packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
     packet_trigger->parent = this;
 
-    yang_name = "initiators"; yang_parent_name = "access-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "initiators"; yang_parent_name = "access-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::~Initiators()
@@ -3638,6 +3673,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::~Initi
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp !=  nullptr && dhcp->has_data())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
 }
@@ -3734,7 +3770,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::
     fsol_dropped_packets_dup_addr{YType::uint32, "fsol-dropped-packets-dup-addr"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::~Dhcp()
@@ -3743,6 +3779,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return is_configured.is_set
 	|| unique_ip_check.is_set
 	|| sessions.is_set
@@ -3937,7 +3974,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Packet
     fsol_dropped_packets_dup_addr{YType::uint32, "fsol-dropped-packets-dup-addr"}
 {
 
-    yang_name = "packet-trigger"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-trigger"; yang_parent_name = "initiators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::~PacketTrigger()
@@ -3946,6 +3983,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Packet
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::has_data() const
 {
+    if (is_presence_container) return true;
     return is_configured.is_set
 	|| unique_ip_check.is_set
 	|| sessions.is_set
@@ -4129,12 +4167,12 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::P
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Ipv6Initiators()
     :
     dhcp(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp>())
-	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger>())
+    , packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
     packet_trigger->parent = this;
 
-    yang_name = "ipv6-initiators"; yang_parent_name = "access-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-initiators"; yang_parent_name = "access-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::~Ipv6Initiators()
@@ -4143,6 +4181,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::~I
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp !=  nullptr && dhcp->has_data())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_data());
 }
@@ -4239,7 +4278,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dh
     fsol_dropped_packets_dup_addr{YType::uint32, "fsol-dropped-packets-dup-addr"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::~Dhcp()
@@ -4248,6 +4287,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dh
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return is_configured.is_set
 	|| unique_ip_check.is_set
 	|| sessions.is_set
@@ -4442,7 +4482,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Pa
     fsol_dropped_packets_dup_addr{YType::uint32, "fsol-dropped-packets-dup-addr"}
 {
 
-    yang_name = "packet-trigger"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-trigger"; yang_parent_name = "ipv6-initiators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::~PacketTrigger()
@@ -4451,6 +4491,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Pa
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::has_data() const
 {
+    if (is_presence_container) return true;
     return is_configured.is_set
 	|| unique_ip_check.is_set
 	|| sessions.is_set
@@ -4634,12 +4675,12 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiator
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::SessionLimit()
     :
     unclassified_source(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource>())
-	,total(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total>())
+    , total(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total>())
 {
     unclassified_source->parent = this;
     total->parent = this;
 
-    yang_name = "session-limit"; yang_parent_name = "access-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-limit"; yang_parent_name = "access-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::~SessionLimit()
@@ -4648,6 +4689,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::~Ses
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return (unclassified_source !=  nullptr && unclassified_source->has_data())
 	|| (total !=  nullptr && total->has_data());
 }
@@ -4735,7 +4777,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Uncl
     per_vlan{YType::uint32, "per-vlan"}
 {
 
-    yang_name = "unclassified-source"; yang_parent_name = "session-limit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unclassified-source"; yang_parent_name = "session-limit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::~UnclassifiedSource()
@@ -4744,6 +4786,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Uncl
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::has_data() const
 {
+    if (is_presence_container) return true;
     return per_vlan.is_set;
 }
 
@@ -4812,7 +4855,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Tota
     per_vlan{YType::uint32, "per-vlan"}
 {
 
-    yang_name = "total"; yang_parent_name = "session-limit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "total"; yang_parent_name = "session-limit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::~Total()
@@ -4821,6 +4864,7 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Tota
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::has_data() const
 {
+    if (is_presence_container) return true;
     return per_vlan.is_set;
 }
 
@@ -4884,13 +4928,6 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit:
     return false;
 }
 
-const Enum::YLeaf IpsubMaParentIntfVlan::plain {0, "plain"};
-const Enum::YLeaf IpsubMaParentIntfVlan::ambiguous {1, "ambiguous"};
-
-const Enum::YLeaf IpsubMaParentIntfStateData::deleted {0, "deleted"};
-const Enum::YLeaf IpsubMaParentIntfStateData::down {1, "down"};
-const Enum::YLeaf IpsubMaParentIntfStateData::up {2, "up"};
-
 const Enum::YLeaf IpsubMaIntfStateData::invalid {0, "invalid"};
 const Enum::YLeaf IpsubMaIntfStateData::initialized {1, "initialized"};
 const Enum::YLeaf IpsubMaIntfStateData::session_creation_started {2, "session-creation-started"};
@@ -4907,6 +4944,13 @@ const Enum::YLeaf IpsubMaIntfStateData::address_family_down_complete {12, "addre
 const Enum::YLeaf IpsubMaIntfStateData::disconnecting {13, "disconnecting"};
 const Enum::YLeaf IpsubMaIntfStateData::disconnected {14, "disconnected"};
 const Enum::YLeaf IpsubMaIntfStateData::error {15, "error"};
+
+const Enum::YLeaf IpsubMaParentIntfVlan::plain {0, "plain"};
+const Enum::YLeaf IpsubMaParentIntfVlan::ambiguous {1, "ambiguous"};
+
+const Enum::YLeaf IpsubMaParentIntfStateData::deleted {0, "deleted"};
+const Enum::YLeaf IpsubMaParentIntfStateData::down {1, "down"};
+const Enum::YLeaf IpsubMaParentIntfStateData::up {2, "up"};
 
 const Enum::YLeaf IpsubMaIntfInitiatorData::dhcp {0, "dhcp"};
 const Enum::YLeaf IpsubMaIntfInitiatorData::packet_trigger {1, "packet-trigger"};

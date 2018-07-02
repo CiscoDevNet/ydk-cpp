@@ -61,7 +61,7 @@ class Context::ContextNumbers : public ydk::Entity
 
         class ContextNumber; //type: Context::ContextNumbers::ContextNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextNumbers::ContextNumber> > context_number;
+        ydk::YList context_number;
         
 }; // Context::ContextNumbers
 
@@ -111,7 +111,7 @@ class Context::ContextNumbers::ContextNumber::Locations : public ydk::Entity
 
         class Location; //type: Context::ContextNumbers::ContextNumber::Locations::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextNumbers::ContextNumber::Locations::Location> > location;
+        ydk::YList location;
         
 }; // Context::ContextNumbers::ContextNumber::Locations
 
@@ -158,7 +158,7 @@ class Context::ContextNumbers::ContextNumber::Locations::Location::Enter : publi
 
         class CrashInfo; //type: Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo> > crash_info;
+        ydk::YList crash_info;
         
 }; // Context::ContextNumbers::ContextNumber::Locations::Location::Enter
 
@@ -183,8 +183,8 @@ class Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashI
         class ContextInfo; //type: Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo
         class CrashPackageInformation; //type: Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::CrashPackageInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo> > context_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::CrashPackageInformation> > crash_package_information;
+        ydk::YList context_info;
+        ydk::YList crash_package_information;
         
 }; // Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo
 
@@ -219,8 +219,8 @@ class Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashI
         class StackTrace; //type: Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::StackTrace
         class DllInfo; //type: Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::DllInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::StackTrace> > stack_trace;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::DllInfo> > dll_info;
+        ydk::YList stack_trace;
+        ydk::YList dll_info;
         
 }; // Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo
 
@@ -312,7 +312,7 @@ class Context::ContextNumbers::ContextNumber::All : public ydk::Entity
 
         class CrashInfo; //type: Context::ContextNumbers::ContextNumber::All::CrashInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextNumbers::ContextNumber::All::CrashInfo> > crash_info;
+        ydk::YList crash_info;
         
 }; // Context::ContextNumbers::ContextNumber::All
 
@@ -337,8 +337,8 @@ class Context::ContextNumbers::ContextNumber::All::CrashInfo : public ydk::Entit
         class ContextInfo; //type: Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo
         class CrashPackageInformation; //type: Context::ContextNumbers::ContextNumber::All::CrashInfo::CrashPackageInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo> > context_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextNumbers::ContextNumber::All::CrashInfo::CrashPackageInformation> > crash_package_information;
+        ydk::YList context_info;
+        ydk::YList crash_package_information;
         
 }; // Context::ContextNumbers::ContextNumber::All::CrashInfo
 
@@ -373,8 +373,8 @@ class Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo : publ
         class StackTrace; //type: Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::StackTrace
         class DllInfo; //type: Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::DllInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::StackTrace> > stack_trace;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::DllInfo> > dll_info;
+        ydk::YList stack_trace;
+        ydk::YList dll_info;
         
 }; // Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo
 
@@ -467,7 +467,7 @@ class Context::ContextLocations : public ydk::Entity
 
         class ContextLocation; //type: Context::ContextLocations::ContextLocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextLocations::ContextLocation> > context_location;
+        ydk::YList context_location;
         
 }; // Context::ContextLocations
 
@@ -517,7 +517,7 @@ class Context::ContextLocations::ContextLocation::Numbers : public ydk::Entity
 
         class Number; //type: Context::ContextLocations::ContextLocation::Numbers::Number
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextLocations::ContextLocation::Numbers::Number> > number;
+        ydk::YList number;
         
 }; // Context::ContextLocations::ContextLocation::Numbers
 
@@ -564,7 +564,7 @@ class Context::ContextLocations::ContextLocation::Numbers::Number::Enter : publi
 
         class CrashInfo; //type: Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo> > crash_info;
+        ydk::YList crash_info;
         
 }; // Context::ContextLocations::ContextLocation::Numbers::Number::Enter
 
@@ -589,8 +589,8 @@ class Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashI
         class ContextInfo; //type: Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo
         class CrashPackageInformation; //type: Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::CrashPackageInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo> > context_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::CrashPackageInformation> > crash_package_information;
+        ydk::YList context_info;
+        ydk::YList crash_package_information;
         
 }; // Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo
 
@@ -625,8 +625,8 @@ class Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashI
         class StackTrace; //type: Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::StackTrace
         class DllInfo; //type: Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::DllInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::StackTrace> > stack_trace;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::DllInfo> > dll_info;
+        ydk::YList stack_trace;
+        ydk::YList dll_info;
         
 }; // Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo
 
@@ -718,7 +718,7 @@ class Context::ContextLocations::ContextLocation::All : public ydk::Entity
 
         class CrashInfo; //type: Context::ContextLocations::ContextLocation::All::CrashInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextLocations::ContextLocation::All::CrashInfo> > crash_info;
+        ydk::YList crash_info;
         
 }; // Context::ContextLocations::ContextLocation::All
 
@@ -743,8 +743,8 @@ class Context::ContextLocations::ContextLocation::All::CrashInfo : public ydk::E
         class ContextInfo; //type: Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo
         class CrashPackageInformation; //type: Context::ContextLocations::ContextLocation::All::CrashInfo::CrashPackageInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo> > context_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextLocations::ContextLocation::All::CrashInfo::CrashPackageInformation> > crash_package_information;
+        ydk::YList context_info;
+        ydk::YList crash_package_information;
         
 }; // Context::ContextLocations::ContextLocation::All::CrashInfo
 
@@ -779,8 +779,8 @@ class Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo : 
         class StackTrace; //type: Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::StackTrace
         class DllInfo; //type: Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::DllInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::StackTrace> > stack_trace;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::DllInfo> > dll_info;
+        ydk::YList stack_trace;
+        ydk::YList dll_info;
         
 }; // Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo
 
@@ -873,7 +873,7 @@ class Context::All : public ydk::Entity
 
         class CrashInfo; //type: Context::All::CrashInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::All::CrashInfo> > crash_info;
+        ydk::YList crash_info;
         
 }; // Context::All
 
@@ -899,8 +899,8 @@ class Context::All::CrashInfo : public ydk::Entity
         class ContextInfo; //type: Context::All::CrashInfo::ContextInfo
         class CrashPackageInformation; //type: Context::All::CrashInfo::CrashPackageInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::All::CrashInfo::ContextInfo> > context_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::All::CrashInfo::CrashPackageInformation> > crash_package_information;
+        ydk::YList context_info;
+        ydk::YList crash_package_information;
         
 }; // Context::All::CrashInfo
 
@@ -936,8 +936,8 @@ class Context::All::CrashInfo::ContextInfo : public ydk::Entity
         class StackTrace; //type: Context::All::CrashInfo::ContextInfo::StackTrace
         class DllInfo; //type: Context::All::CrashInfo::ContextInfo::DllInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::All::CrashInfo::ContextInfo::StackTrace> > stack_trace;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_oper::Context::All::CrashInfo::ContextInfo::DllInfo> > dll_info;
+        ydk::YList stack_trace;
+        ydk::YList dll_info;
         
 }; // Context::All::CrashInfo::ContextInfo
 

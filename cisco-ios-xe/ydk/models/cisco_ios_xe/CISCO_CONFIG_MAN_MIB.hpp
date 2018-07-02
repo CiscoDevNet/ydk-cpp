@@ -32,28 +32,28 @@ class CISCOCONFIGMANMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ccmhistory; //type: CISCOCONFIGMANMIB::Ccmhistory
-        class Ccmclihistory; //type: CISCOCONFIGMANMIB::Ccmclihistory
-        class Ccmclicfg; //type: CISCOCONFIGMANMIB::Ccmclicfg
-        class Ccmctidobjects; //type: CISCOCONFIGMANMIB::Ccmctidobjects
-        class Ccmhistoryeventtable; //type: CISCOCONFIGMANMIB::Ccmhistoryeventtable
-        class Ccmclihistorycommandtable; //type: CISCOCONFIGMANMIB::Ccmclihistorycommandtable
+        class CcmHistory; //type: CISCOCONFIGMANMIB::CcmHistory
+        class CcmCLIHistory; //type: CISCOCONFIGMANMIB::CcmCLIHistory
+        class CcmCLICfg; //type: CISCOCONFIGMANMIB::CcmCLICfg
+        class CcmCTIDObjects; //type: CISCOCONFIGMANMIB::CcmCTIDObjects
+        class CcmHistoryEventTable; //type: CISCOCONFIGMANMIB::CcmHistoryEventTable
+        class CcmCLIHistoryCommandTable; //type: CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmhistory> ccmhistory;
-        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmclihistory> ccmclihistory;
-        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmclicfg> ccmclicfg;
-        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmctidobjects> ccmctidobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmhistoryeventtable> ccmhistoryeventtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmclihistorycommandtable> ccmclihistorycommandtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::CcmHistory> ccmhistory;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::CcmCLIHistory> ccmclihistory;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::CcmCLICfg> ccmclicfg;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::CcmCTIDObjects> ccmctidobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::CcmHistoryEventTable> ccmhistoryeventtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable> ccmclihistorycommandtable;
         
 }; // CISCOCONFIGMANMIB
 
 
-class CISCOCONFIGMANMIB::Ccmhistory : public ydk::Entity
+class CISCOCONFIGMANMIB::CcmHistory : public ydk::Entity
 {
     public:
-        Ccmhistory();
-        ~Ccmhistory();
+        CcmHistory();
+        ~CcmHistory();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -72,14 +72,14 @@ class CISCOCONFIGMANMIB::Ccmhistory : public ydk::Entity
         ydk::YLeaf ccmhistorymaxevententries; //type: int32
         ydk::YLeaf ccmhistoryevententriesbumped; //type: uint32
 
-}; // CISCOCONFIGMANMIB::Ccmhistory
+}; // CISCOCONFIGMANMIB::CcmHistory
 
 
-class CISCOCONFIGMANMIB::Ccmclihistory : public ydk::Entity
+class CISCOCONFIGMANMIB::CcmCLIHistory : public ydk::Entity
 {
     public:
-        Ccmclihistory();
-        ~Ccmclihistory();
+        CcmCLIHistory();
+        ~CcmCLIHistory();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -96,14 +96,14 @@ class CISCOCONFIGMANMIB::Ccmclihistory : public ydk::Entity
         ydk::YLeaf ccmclihistorycmdentries; //type: uint32
         ydk::YLeaf ccmclihistorycmdentriesallowed; //type: uint32
 
-}; // CISCOCONFIGMANMIB::Ccmclihistory
+}; // CISCOCONFIGMANMIB::CcmCLIHistory
 
 
-class CISCOCONFIGMANMIB::Ccmclicfg : public ydk::Entity
+class CISCOCONFIGMANMIB::CcmCLICfg : public ydk::Entity
 {
     public:
-        Ccmclicfg();
-        ~Ccmclicfg();
+        CcmCLICfg();
+        ~CcmCLICfg();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -118,14 +118,14 @@ class CISCOCONFIGMANMIB::Ccmclicfg : public ydk::Entity
 
         ydk::YLeaf ccmclicfgrunconfnotifenable; //type: boolean
 
-}; // CISCOCONFIGMANMIB::Ccmclicfg
+}; // CISCOCONFIGMANMIB::CcmCLICfg
 
 
-class CISCOCONFIGMANMIB::Ccmctidobjects : public ydk::Entity
+class CISCOCONFIGMANMIB::CcmCTIDObjects : public ydk::Entity
 {
     public:
-        Ccmctidobjects();
-        ~Ccmctidobjects();
+        CcmCTIDObjects();
+        ~CcmCTIDObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -143,14 +143,14 @@ class CISCOCONFIGMANMIB::Ccmctidobjects : public ydk::Entity
         ydk::YLeaf ccmctidwhochanged; //type: string
         ydk::YLeaf ccmctidrolledovernotifenable; //type: boolean
 
-}; // CISCOCONFIGMANMIB::Ccmctidobjects
+}; // CISCOCONFIGMANMIB::CcmCTIDObjects
 
 
-class CISCOCONFIGMANMIB::Ccmhistoryeventtable : public ydk::Entity
+class CISCOCONFIGMANMIB::CcmHistoryEventTable : public ydk::Entity
 {
     public:
-        Ccmhistoryeventtable();
-        ~Ccmhistoryeventtable();
+        CcmHistoryEventTable();
+        ~CcmHistoryEventTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -163,18 +163,18 @@ class CISCOCONFIGMANMIB::Ccmhistoryeventtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ccmhistoryevententry; //type: CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry
+        class CcmHistoryEventEntry; //type: CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry> > ccmhistoryevententry;
+        ydk::YList ccmhistoryevententry;
         
-}; // CISCOCONFIGMANMIB::Ccmhistoryeventtable
+}; // CISCOCONFIGMANMIB::CcmHistoryEventTable
 
 
-class CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry : public ydk::Entity
+class CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry : public ydk::Entity
 {
     public:
-        Ccmhistoryevententry();
-        ~Ccmhistoryevententry();
+        CcmHistoryEventEntry();
+        ~CcmHistoryEventEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -189,10 +189,10 @@ class CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry : public ydk
 
         ydk::YLeaf ccmhistoryeventindex; //type: int32
         ydk::YLeaf ccmhistoryeventtime; //type: uint32
-        ydk::YLeaf ccmhistoryeventcommandsource; //type: Ccmhistoryeventcommandsource
+        ydk::YLeaf ccmhistoryeventcommandsource; //type: CcmHistoryEventCommandSource
         ydk::YLeaf ccmhistoryeventconfigsource; //type: HistoryEventMedium
         ydk::YLeaf ccmhistoryeventconfigdestination; //type: HistoryEventMedium
-        ydk::YLeaf ccmhistoryeventterminaltype; //type: Ccmhistoryeventterminaltype
+        ydk::YLeaf ccmhistoryeventterminaltype; //type: CcmHistoryEventTerminalType
         ydk::YLeaf ccmhistoryeventterminalnumber; //type: int32
         ydk::YLeaf ccmhistoryeventterminaluser; //type: string
         ydk::YLeaf ccmhistoryeventterminallocation; //type: string
@@ -206,17 +206,17 @@ class CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry : public ydk
         ydk::YLeaf ccmhistoryeventcommandsourceaddrrev1; //type: binary
         ydk::YLeaf ccmhistoryeventserveraddrtype; //type: InetAddressType
         ydk::YLeaf ccmhistoryeventserveraddrrev1; //type: binary
-        class Ccmhistoryeventcommandsource;
-        class Ccmhistoryeventterminaltype;
+        class CcmHistoryEventCommandSource;
+        class CcmHistoryEventTerminalType;
 
-}; // CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry
+}; // CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry
 
 
-class CISCOCONFIGMANMIB::Ccmclihistorycommandtable : public ydk::Entity
+class CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable : public ydk::Entity
 {
     public:
-        Ccmclihistorycommandtable();
-        ~Ccmclihistorycommandtable();
+        CcmCLIHistoryCommandTable();
+        ~CcmCLIHistoryCommandTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -229,18 +229,18 @@ class CISCOCONFIGMANMIB::Ccmclihistorycommandtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ccmclihistorycommandentry; //type: CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry
+        class CcmCLIHistoryCommandEntry; //type: CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::CcmCLIHistoryCommandEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry> > ccmclihistorycommandentry;
+        ydk::YList ccmclihistorycommandentry;
         
-}; // CISCOCONFIGMANMIB::Ccmclihistorycommandtable
+}; // CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable
 
 
-class CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry : public ydk::Entity
+class CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::CcmCLIHistoryCommandEntry : public ydk::Entity
 {
     public:
-        Ccmclihistorycommandentry();
-        ~Ccmclihistorycommandentry();
+        CcmCLIHistoryCommandEntry();
+        ~CcmCLIHistoryCommandEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -253,12 +253,12 @@ class CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::ccmhistoryeventindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry::ccmhistoryeventindex)
         ydk::YLeaf ccmhistoryeventindex;
         ydk::YLeaf ccmclihistorycommandindex; //type: uint32
         ydk::YLeaf ccmclihistorycommand; //type: string
 
-}; // CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry
+}; // CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::CcmCLIHistoryCommandEntry
 
 class HistoryEventMedium : public ydk::Enum
 {
@@ -275,7 +275,7 @@ class HistoryEventMedium : public ydk::Enum
 
 };
 
-class CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventcommandsource : public ydk::Enum
+class CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry::CcmHistoryEventCommandSource : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf commandLine;
@@ -283,7 +283,7 @@ class CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistorye
 
 };
 
-class CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype : public ydk::Enum
+class CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry::CcmHistoryEventTerminalType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;

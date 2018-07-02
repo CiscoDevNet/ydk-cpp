@@ -74,7 +74,7 @@ class Snmp::TrapServers : public ydk::Entity
 
         class TrapServer; //type: Snmp::TrapServers::TrapServer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::TrapServers::TrapServer> > trap_server;
+        ydk::YList trap_server;
         
 }; // Snmp::TrapServers
 
@@ -197,7 +197,7 @@ class Snmp::Information::Hosts : public ydk::Entity
 
         class Host; //type: Snmp::Information::Hosts::Host
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Hosts::Host> > host;
+        ydk::YList host;
         
 }; // Snmp::Information::Hosts
 
@@ -222,7 +222,7 @@ class Snmp::Information::Hosts::Host : public ydk::Entity
         ydk::YLeaf name; //type: string
         class HostInformation; //type: Snmp::Information::Hosts::Host::HostInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Hosts::Host::HostInformation> > host_information;
+        ydk::YList host_information;
         
 }; // Snmp::Information::Hosts::Host
 
@@ -295,7 +295,7 @@ class Snmp::Information::NmsAddresses : public ydk::Entity
 
         class NmsAddress; //type: Snmp::Information::NmsAddresses::NmsAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::NmsAddresses::NmsAddress> > nms_address;
+        ydk::YList nms_address;
         
 }; // Snmp::Information::NmsAddresses
 
@@ -377,8 +377,8 @@ class Snmp::Information::RxQueue : public ydk::Entity
         class IncomingQ; //type: Snmp::Information::RxQueue::IncomingQ
         class PendingQ; //type: Snmp::Information::RxQueue::PendingQ
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::RxQueue::IncomingQ> > incoming_q;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::RxQueue::PendingQ> > pending_q;
+        ydk::YList incoming_q;
+        ydk::YList pending_q;
         
 }; // Snmp::Information::RxQueue
 
@@ -496,7 +496,7 @@ class Snmp::Information::RequestTypeDetail::NmsAddresses : public ydk::Entity
 
         class NmsAddress; //type: Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress> > nms_address;
+        ydk::YList nms_address;
         
 }; // Snmp::Information::RequestTypeDetail::NmsAddresses
 
@@ -580,7 +580,7 @@ class Snmp::Information::BulkStatsTransfers : public ydk::Entity
 
         class BulkStatsTransfer; //type: Snmp::Information::BulkStatsTransfers::BulkStatsTransfer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::BulkStatsTransfers::BulkStatsTransfer> > bulk_stats_transfer;
+        ydk::YList bulk_stats_transfer;
         
 }; // Snmp::Information::BulkStatsTransfers
 
@@ -632,7 +632,7 @@ class Snmp::Information::TrapInfos : public ydk::Entity
 
         class TrapInfo; //type: Snmp::Information::TrapInfos::TrapInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::TrapInfos::TrapInfo> > trap_info;
+        ydk::YList trap_info;
         
 }; // Snmp::Information::TrapInfos
 
@@ -661,7 +661,7 @@ class Snmp::Information::TrapInfos::TrapInfo : public ydk::Entity
         ydk::YLeaf trap_oid_count; //type: uint32
         class TrapOiDinfo; //type: Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo> > trap_oi_dinfo;
+        ydk::YList trap_oi_dinfo;
         
 }; // Snmp::Information::TrapInfos::TrapInfo
 
@@ -712,7 +712,7 @@ class Snmp::Information::PollOids : public ydk::Entity
 
         class PollOid; //type: Snmp::Information::PollOids::PollOid
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::PollOids::PollOid> > poll_oid;
+        ydk::YList poll_oid;
         
 }; // Snmp::Information::PollOids
 
@@ -761,7 +761,7 @@ class Snmp::Information::InfomDetails : public ydk::Entity
 
         class InfomDetail; //type: Snmp::Information::InfomDetails::InfomDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::InfomDetails::InfomDetail> > infom_detail;
+        ydk::YList infom_detail;
         
 }; // Snmp::Information::InfomDetails
 
@@ -790,7 +790,7 @@ class Snmp::Information::InfomDetails::InfomDetail : public ydk::Entity
         ydk::YLeaf trap_oid_count; //type: uint32
         class TrapOiDinfo; //type: Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo> > trap_oi_dinfo;
+        ydk::YList trap_oi_dinfo;
         
 }; // Snmp::Information::InfomDetails::InfomDetail
 
@@ -893,7 +893,7 @@ class Snmp::Information::IncomingQueue : public ydk::Entity
         ydk::YLeaf queue_count; //type: uint32
         class InqEntry; //type: Snmp::Information::IncomingQueue::InqEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::IncomingQueue::InqEntry> > inq_entry;
+        ydk::YList inq_entry;
         
 }; // Snmp::Information::IncomingQueue
 
@@ -943,7 +943,7 @@ class Snmp::Information::ContextMapping : public ydk::Entity
 
         class ContexMapping; //type: Snmp::Information::ContextMapping::ContexMapping
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::ContextMapping::ContexMapping> > contex_mapping;
+        ydk::YList contex_mapping;
         
 }; // Snmp::Information::ContextMapping
 
@@ -993,7 +993,7 @@ class Snmp::Information::TrapOids : public ydk::Entity
 
         class TrapOid; //type: Snmp::Information::TrapOids::TrapOid
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::TrapOids::TrapOid> > trap_oid;
+        ydk::YList trap_oid;
         
 }; // Snmp::Information::TrapOids
 
@@ -1041,7 +1041,7 @@ class Snmp::Information::NmSpackets : public ydk::Entity
 
         class NmSpacket; //type: Snmp::Information::NmSpackets::NmSpacket
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::NmSpackets::NmSpacket> > nm_spacket;
+        ydk::YList nm_spacket;
         
 }; // Snmp::Information::NmSpackets
 
@@ -1091,7 +1091,7 @@ class Snmp::Information::Mibs : public ydk::Entity
 
         class Mib; //type: Snmp::Information::Mibs::Mib
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Mibs::Mib> > mib;
+        ydk::YList mib;
         
 }; // Snmp::Information::Mibs
 
@@ -1141,7 +1141,7 @@ class Snmp::Information::Mibs::Mib::Oids : public ydk::Entity
 
         class Oid; //type: Snmp::Information::Mibs::Mib::Oids::Oid
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Mibs::Mib::Oids::Oid> > oid;
+        ydk::YList oid;
         
 }; // Snmp::Information::Mibs::Mib::Oids
 
@@ -1215,7 +1215,7 @@ class Snmp::Information::SerialNumbers : public ydk::Entity
 
         class SerialNumber; //type: Snmp::Information::SerialNumbers::SerialNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::SerialNumbers::SerialNumber> > serial_number;
+        ydk::YList serial_number;
         
 }; // Snmp::Information::SerialNumbers
 
@@ -1238,7 +1238,7 @@ class Snmp::Information::SerialNumbers::SerialNumber : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf number; //type: string
-        ydk::YLeaf req_id; //type: int32
+        ydk::YLeaf req_id; //type: uint32
         ydk::YLeaf port; //type: uint16
         ydk::YLeaf nms; //type: string
         ydk::YLeaf request_id; //type: uint32
@@ -1273,7 +1273,7 @@ class Snmp::Information::DropNmsAddresses : public ydk::Entity
 
         class DropNmsAddress; //type: Snmp::Information::DropNmsAddresses::DropNmsAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::DropNmsAddresses::DropNmsAddress> > drop_nms_address;
+        ydk::YList drop_nms_address;
         
 }; // Snmp::Information::DropNmsAddresses
 
@@ -1329,7 +1329,7 @@ class Snmp::Information::Views : public ydk::Entity
 
         class View; //type: Snmp::Information::Views::View
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Views::View> > view;
+        ydk::YList view;
         
 }; // Snmp::Information::Views
 
@@ -1354,7 +1354,7 @@ class Snmp::Information::Views::View : public ydk::Entity
         ydk::YLeaf name; //type: string
         class ViewInformation; //type: Snmp::Information::Views::View::ViewInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Views::View::ViewInformation> > view_information;
+        ydk::YList view_information;
         
 }; // Snmp::Information::Views::View
 
@@ -1450,7 +1450,7 @@ class Snmp::Information::Tables::Groups : public ydk::Entity
 
         class Group; //type: Snmp::Information::Tables::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Tables::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Snmp::Information::Tables::Groups
 
@@ -1498,7 +1498,7 @@ class Snmp::Information::Tables::Groups::Group::GroupInformations : public ydk::
 
         class GroupInformation; //type: Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation> > group_information;
+        ydk::YList group_information;
         
 }; // Snmp::Information::Tables::Groups::Group::GroupInformations
 
@@ -1548,7 +1548,7 @@ class Snmp::Information::Tables::UserEngineIds : public ydk::Entity
 
         class UserEngineId; //type: Snmp::Information::Tables::UserEngineIds::UserEngineId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Tables::UserEngineIds::UserEngineId> > user_engine_id;
+        ydk::YList user_engine_id;
         
 }; // Snmp::Information::Tables::UserEngineIds
 
@@ -1573,7 +1573,7 @@ class Snmp::Information::Tables::UserEngineIds::UserEngineId : public ydk::Entit
         ydk::YLeaf engine_id; //type: string
         class UserName; //type: Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName> > user_name;
+        ydk::YList user_name;
         
 }; // Snmp::Information::Tables::UserEngineIds::UserEngineId
 
@@ -1645,7 +1645,7 @@ class Snmp::Information::TrapQueue : public ydk::Entity
         ydk::YLeaf trap_max; //type: uint32
         class TrapQ; //type: Snmp::Information::TrapQueue::TrapQ
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::TrapQueue::TrapQ> > trap_q;
+        ydk::YList trap_q;
         
 }; // Snmp::Information::TrapQueue
 
@@ -1693,7 +1693,7 @@ class Snmp::Interfaces : public ydk::Entity
 
         class Interface; //type: Snmp::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Snmp::Interfaces
 
@@ -1716,7 +1716,7 @@ class Snmp::Interfaces::Interface : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf interface_index; //type: int32
+        ydk::YLeaf interface_index; //type: uint32
 
 }; // Snmp::Interfaces::Interface
 
@@ -1770,7 +1770,7 @@ class Snmp::Correlator::RuleDetails : public ydk::Entity
 
         class RuleDetail; //type: Snmp::Correlator::RuleDetails::RuleDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail> > rule_detail;
+        ydk::YList rule_detail;
         
 }; // Snmp::Correlator::RuleDetails
 
@@ -1801,8 +1801,8 @@ class Snmp::Correlator::RuleDetails::RuleDetail : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary> rule_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::RootCause> root_cause;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus> > non_rootcaus;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost> > apply_host;
+        ydk::YList non_rootcaus;
+        ydk::YList apply_host;
         
 }; // Snmp::Correlator::RuleDetails::RuleDetail
 
@@ -1849,7 +1849,7 @@ class Snmp::Correlator::RuleDetails::RuleDetail::RootCause : public ydk::Entity
         ydk::YLeaf oid; //type: string
         class VarBind; //type: Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind> > var_bind;
+        ydk::YList var_bind;
         
 }; // Snmp::Correlator::RuleDetails::RuleDetail::RootCause
 
@@ -1896,7 +1896,7 @@ class Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus : public ydk::Entit
         ydk::YLeaf oid; //type: string
         class VarBind; //type: Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind> > var_bind;
+        ydk::YList var_bind;
         
 }; // Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus
 
@@ -1988,7 +1988,7 @@ class Snmp::Correlator::RuleSetDetails : public ydk::Entity
 
         class RuleSetDetail; //type: Snmp::Correlator::RuleSetDetails::RuleSetDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleSetDetails::RuleSetDetail> > rule_set_detail;
+        ydk::YList rule_set_detail;
         
 }; // Snmp::Correlator::RuleSetDetails
 
@@ -2014,7 +2014,7 @@ class Snmp::Correlator::RuleSetDetails::RuleSetDetail : public ydk::Entity
         ydk::YLeaf rule_set_name_xr; //type: string
         class Rules; //type: Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules> > rules;
+        ydk::YList rules;
         
 }; // Snmp::Correlator::RuleSetDetails::RuleSetDetail
 
@@ -2061,7 +2061,7 @@ class Snmp::Correlator::Traps : public ydk::Entity
 
         class Trap; //type: Snmp::Correlator::Traps::Trap
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::Traps::Trap> > trap;
+        ydk::YList trap;
         
 }; // Snmp::Correlator::Traps
 
@@ -2083,7 +2083,7 @@ class Snmp::Correlator::Traps::Trap : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf entry_id; //type: int32
+        ydk::YLeaf entry_id; //type: uint32
         ydk::YLeaf correlation_id; //type: uint32
         ydk::YLeaf is_root_cause; //type: boolean
         ydk::YLeaf rule_name; //type: string
@@ -2115,7 +2115,7 @@ class Snmp::Correlator::Traps::Trap::TrapInfo : public ydk::Entity
         ydk::YLeaf timestamp; //type: uint64
         class VarBind; //type: Snmp::Correlator::Traps::Trap::TrapInfo::VarBind
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::Traps::Trap::TrapInfo::VarBind> > var_bind;
+        ydk::YList var_bind;
         
 }; // Snmp::Correlator::Traps::Trap::TrapInfo
 
@@ -2161,7 +2161,7 @@ class Snmp::InterfaceIndexes : public ydk::Entity
 
         class InterfaceIndex; //type: Snmp::InterfaceIndexes::InterfaceIndex
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceIndexes::InterfaceIndex> > interface_index;
+        ydk::YList interface_index;
         
 }; // Snmp::InterfaceIndexes
 
@@ -2183,7 +2183,7 @@ class Snmp::InterfaceIndexes::InterfaceIndex : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf interface_index; //type: int32
+        ydk::YLeaf interface_index; //type: uint32
         ydk::YLeaf interface_name; //type: string
 
 }; // Snmp::InterfaceIndexes::InterfaceIndex
@@ -2208,7 +2208,7 @@ class Snmp::IfIndexes : public ydk::Entity
 
         class IfIndex; //type: Snmp::IfIndexes::IfIndex
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::IfIndexes::IfIndex> > if_index;
+        ydk::YList if_index;
         
 }; // Snmp::IfIndexes
 
@@ -2230,7 +2230,7 @@ class Snmp::IfIndexes::IfIndex : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf interface_index; //type: int32
+        ydk::YLeaf interface_index; //type: uint32
         ydk::YLeaf interface_name; //type: string
 
 }; // Snmp::IfIndexes::IfIndex
@@ -2279,7 +2279,7 @@ class Snmp::EntityMib::EntityPhysicalIndexes : public ydk::Entity
 
         class EntityPhysicalIndex; //type: Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex> > entity_physical_index;
+        ydk::YList entity_physical_index;
         
 }; // Snmp::EntityMib::EntityPhysicalIndexes
 
@@ -2367,7 +2367,7 @@ class Snmp::InterfaceMib::Interfaces : public ydk::Entity
 
         class Interface; //type: Snmp::InterfaceMib::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Snmp::InterfaceMib::Interfaces
 
@@ -2414,7 +2414,7 @@ class Snmp::InterfaceMib::InterfaceConnectors : public ydk::Entity
 
         class InterfaceConnector; //type: Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector> > interface_connector;
+        ydk::YList interface_connector;
         
 }; // Snmp::InterfaceMib::InterfaceConnectors
 
@@ -2461,7 +2461,7 @@ class Snmp::InterfaceMib::InterfaceAliases : public ydk::Entity
 
         class InterfaceAlias; //type: Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias> > interface_alias;
+        ydk::YList interface_alias;
         
 }; // Snmp::InterfaceMib::InterfaceAliases
 
@@ -2508,7 +2508,7 @@ class Snmp::InterfaceMib::NotificationInterfaces : public ydk::Entity
 
         class NotificationInterface; //type: Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface> > notification_interface;
+        ydk::YList notification_interface;
         
 }; // Snmp::InterfaceMib::NotificationInterfaces
 
@@ -2555,7 +2555,7 @@ class Snmp::InterfaceMib::InterfaceStackStatuses : public ydk::Entity
 
         class InterfaceStackStatus; //type: Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus> > interface_stack_status;
+        ydk::YList interface_stack_status;
         
 }; // Snmp::InterfaceMib::InterfaceStackStatuses
 
@@ -2630,7 +2630,7 @@ class Snmp::SensorMib::PhysicalIndexes : public ydk::Entity
 
         class PhysicalIndex; //type: Snmp::SensorMib::PhysicalIndexes::PhysicalIndex
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::SensorMib::PhysicalIndexes::PhysicalIndex> > physical_index;
+        ydk::YList physical_index;
         
 }; // Snmp::SensorMib::PhysicalIndexes
 
@@ -2678,7 +2678,7 @@ class Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes : public
 
         class ThresholdIndex; //type: Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex> > threshold_index;
+        ydk::YList threshold_index;
         
 }; // Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes
 
@@ -2729,7 +2729,7 @@ class Snmp::SensorMib::EntPhyIndexes : public ydk::Entity
 
         class EntPhyIndex; //type: Snmp::SensorMib::EntPhyIndexes::EntPhyIndex
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_oper::Snmp::SensorMib::EntPhyIndexes::EntPhyIndex> > ent_phy_index;
+        ydk::YList ent_phy_index;
         
 }; // Snmp::SensorMib::EntPhyIndexes
 
@@ -2768,14 +2768,6 @@ class Snmp::SensorMib::EntPhyIndexes::EntPhyIndex : public ydk::Entity
 
 }; // Snmp::SensorMib::EntPhyIndexes::EntPhyIndex
 
-class DupReqDropStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf enabled;
-
-};
-
 class SnmpCorrVbindMatch : public ydk::Enum
 {
     public:
@@ -2790,6 +2782,14 @@ class SnmpCorrRuleState : public ydk::Enum
         static const ydk::Enum::YLeaf rule_unapplied;
         static const ydk::Enum::YLeaf rule_applied;
         static const ydk::Enum::YLeaf rule_applied_all;
+
+};
+
+class DupReqDropStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
 
 };
 

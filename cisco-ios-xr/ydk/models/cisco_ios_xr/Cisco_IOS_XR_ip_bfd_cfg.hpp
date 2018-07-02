@@ -221,7 +221,7 @@ class Bfd::Interfaces : public ydk::Entity
 
         class Interface; //type: Bfd::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Bfd::Interfaces
 
@@ -270,7 +270,7 @@ class Bfd::MultiPathIncludes : public ydk::Entity
 
         class MultiPathInclude; //type: Bfd::MultiPathIncludes::MultiPathInclude
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::MultiPathIncludes::MultiPathInclude> > multi_path_include;
+        ydk::YList multi_path_include;
         
 }; // Bfd::MultiPathIncludes
 
@@ -351,11 +351,11 @@ class BfdEchoStartupValidate : public ydk::Enum
 
 };
 
-class BfdBundleCoexistenceBobBlb : public ydk::Enum
+class BfdIfIpv6ChecksumUsage : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf inherited;
-        static const ydk::Enum::YLeaf logical;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
@@ -367,11 +367,11 @@ class BfdIfEchoUsage : public ydk::Enum
 
 };
 
-class BfdIfIpv6ChecksumUsage : public ydk::Enum
+class BfdBundleCoexistenceBobBlb : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf inherited;
+        static const ydk::Enum::YLeaf logical;
 
 };
 

@@ -240,7 +240,7 @@ class Native::Crypto::Pki::Token : public ydk::Entity
 
         class TokenName; //type: Native::Crypto::Pki::Token::TokenName
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Token::TokenName> > token_name;
+        ydk::YList token_name;
         
 }; // Native::Crypto::Pki::Token
 
@@ -404,7 +404,7 @@ class Native::Crypto::TlsTunnel : public ydk::Entity
 
         class TlsTunnelList; //type: Native::Crypto::TlsTunnel::TlsTunnelList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::TlsTunnel::TlsTunnelList> > tls_tunnel_list;
+        ydk::YList tls_tunnel_list;
         
 }; // Native::Crypto::TlsTunnel
 
@@ -433,7 +433,7 @@ class Native::Crypto::TlsTunnel::TlsTunnelList : public ydk::Entity
         class Psk; //type: Native::Crypto::TlsTunnel::TlsTunnelList::Psk
         class Server; //type: Native::Crypto::TlsTunnel::TlsTunnelList::Server
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::TlsTunnel::TlsTunnelList::LocalInterface> > local_interface;
+        ydk::YList local_interface;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::TlsTunnel::TlsTunnelList::OverlayAddress> overlay_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::TlsTunnel::TlsTunnelList::Protection> protection;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::TlsTunnel::TlsTunnelList::Psk> psk;
@@ -526,7 +526,7 @@ class Native::Crypto::TlsTunnel::TlsTunnelList::Psk : public ydk::Entity
 
         class Id; //type: Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id> > id;
+        ydk::YList id;
         
 }; // Native::Crypto::TlsTunnel::TlsTunnelList::Psk
 
@@ -598,8 +598,8 @@ class Native::Crypto::TlsTunnel::TlsTunnelList::Server : public ydk::Entity
         class Ipv4; //type: Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv4
         class Ipv6; //type: Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv6
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv4> > ipv4;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv6> > ipv6;
+        ydk::YList ipv4;
+        ydk::YList ipv6;
         
 }; // Native::Crypto::TlsTunnel::TlsTunnelList::Server
 
@@ -1030,7 +1030,7 @@ class Native::Cts::CriticalAuthentication::Default::PeerSgt : public ydk::Entity
 
         class Range; //type: Native::Cts::CriticalAuthentication::Default::PeerSgt::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::CriticalAuthentication::Default::PeerSgt::Range> > range;
+        ydk::YList range;
         
 }; // Native::Cts::CriticalAuthentication::Default::PeerSgt
 
@@ -1156,7 +1156,7 @@ class Native::Cts::RoleBased : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::RoleBased::EnforcementOnly> enforcement_only;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::RoleBased::Enforcement> enforcement;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::RoleBased::Monitor> monitor;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::RoleBased::SgtMap> > sgt_map;
+        ydk::YList sgt_map;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::RoleBased::SgtMapVlanList> sgt_map_vlan_list;
         
 }; // Native::Cts::RoleBased
@@ -1229,7 +1229,7 @@ class Native::Cts::RoleBased::Permissions::From : public ydk::Entity
 
         class Range; //type: Native::Cts::RoleBased::Permissions::From::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::RoleBased::Permissions::From::Range> > range;
+        ydk::YList range;
         
 }; // Native::Cts::RoleBased::Permissions::From
 
@@ -1277,7 +1277,7 @@ class Native::Cts::RoleBased::Permissions::From::Range::To : public ydk::Entity
 
         class Range_; //type: Native::Cts::RoleBased::Permissions::From::Range::To::Range_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::RoleBased::Permissions::From::Range::To::Range_> > range;
+        ydk::YList range;
         
 }; // Native::Cts::RoleBased::Permissions::From::Range::To
 
@@ -1346,7 +1346,7 @@ class Native::Cts::RoleBased::Enforcement : public ydk::Entity
         ydk::YLeaf logging_interval; //type: uint32
         class VlanList; //type: Native::Cts::RoleBased::Enforcement::VlanList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::RoleBased::Enforcement::VlanList> > vlan_list;
+        ydk::YList vlan_list;
         
 }; // Native::Cts::RoleBased::Enforcement
 
@@ -1368,7 +1368,7 @@ class Native::Cts::RoleBased::Enforcement::VlanList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of enumeration, string
+        ydk::YLeaf id; //type: one of string, enumeration
         class Id;
 
 }; // Native::Cts::RoleBased::Enforcement::VlanList
@@ -1440,7 +1440,7 @@ class Native::Cts::RoleBased::SgtMapVlanList : public ydk::Entity
 
         class SgtMap; //type: Native::Cts::RoleBased::SgtMapVlanList::SgtMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::RoleBased::SgtMapVlanList::SgtMap> > sgt_map;
+        ydk::YList sgt_map;
         
 }; // Native::Cts::RoleBased::SgtMapVlanList
 
@@ -1462,7 +1462,7 @@ class Native::Cts::RoleBased::SgtMapVlanList::SgtMap : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vlan_list; //type: one of enumeration, string
+        ydk::YLeaf vlan_list; //type: one of string, enumeration
         ydk::YLeaf sgt; //type: int16
         class VlanList;
 
@@ -1611,7 +1611,7 @@ class Native::Cts::Server::Test : public ydk::Entity
         class Server_; //type: Native::Cts::Server::Test::Server_
         class All; //type: Native::Cts::Server::Test::All
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::Server::Test::Server_> > server;
+        ydk::YList server;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::Server::Test::All> all;
         
 }; // Native::Cts::Server::Test
@@ -1785,7 +1785,7 @@ class Native::Cts::Sxp::Connection::Peer : public ydk::Entity
 
         class Ipv4; //type: Native::Cts::Sxp::Connection::Peer::Ipv4
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::Sxp::Connection::Peer::Ipv4> > ipv4;
+        ydk::YList ipv4;
         
 }; // Native::Cts::Sxp::Connection::Peer
 
@@ -1812,7 +1812,7 @@ class Native::Cts::Sxp::Connection::Peer::Ipv4 : public ydk::Entity
         class Password; //type: Native::Cts::Sxp::Connection::Peer::Ipv4::Password
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::Sxp::Connection::Peer::Ipv4::Source> source;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::Sxp::Connection::Peer::Ipv4::Password> > password;
+        ydk::YList password;
         
 }; // Native::Cts::Sxp::Connection::Peer::Ipv4
 
@@ -1835,7 +1835,7 @@ class Native::Cts::Sxp::Connection::Peer::Ipv4::Source : public ydk::Entity
 
         class Ipv4_; //type: Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_> > ipv4;
+        ydk::YList ipv4;
         
 }; // Native::Cts::Sxp::Connection::Peer::Ipv4::Source
 
@@ -1859,7 +1859,7 @@ class Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_ : public ydk::Enti
         ydk::YLeaf ipv4; //type: string
         class Password; //type: Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password> > password;
+        ydk::YList password;
         
 }; // Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_
 
@@ -2547,7 +2547,7 @@ class Native::BfdTemplate : public ydk::Entity
 
         class SingleHop; //type: Native::BfdTemplate::SingleHop
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BfdTemplate::SingleHop> > single_hop;
+        ydk::YList single_hop;
         
 }; // Native::BfdTemplate
 
@@ -2645,18 +2645,18 @@ class Native::Pfr::Border : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class PfrModeConfigpfrbr; //type: Native::Pfr::Border::PfrModeConfigpfrbr
+        class PfrModeConfigPfrBr; //type: Native::Pfr::Border::PfrModeConfigPfrBr
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr> pfr_mode__config_pfr_br;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr> pfr_mode__config_pfr_br;
         
 }; // Native::Pfr::Border
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr : public ydk::Entity
 {
     public:
-        PfrModeConfigpfrbr();
-        ~PfrModeConfigpfrbr();
+        PfrModeConfigPfrBr();
+        ~PfrModeConfigPfrBr();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2672,18 +2672,18 @@ class Native::Pfr::Border::PfrModeConfigpfrbr : public ydk::Entity
         ydk::YLeaf logging; //type: empty
         ydk::YLeaf port; //type: uint16
         ydk::YLeaf shutdown; //type: empty
-        class ActiveProbe; //type: Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe
-        class Local; //type: Native::Pfr::Border::PfrModeConfigpfrbr::Local
-        class Master; //type: Native::Pfr::Border::PfrModeConfigpfrbr::Master
+        class ActiveProbe; //type: Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe
+        class Local; //type: Native::Pfr::Border::PfrModeConfigPfrBr::Local
+        class Master; //type: Native::Pfr::Border::PfrModeConfigPfrBr::Master
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe> active_probe;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::Local> local;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::Master> master;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe> active_probe;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::Local> local;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::Master> master;
         
-}; // Native::Pfr::Border::PfrModeConfigpfrbr
+}; // Native::Pfr::Border::PfrModeConfigPfrBr
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe : public ydk::Entity
 {
     public:
         ActiveProbe();
@@ -2700,14 +2700,14 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Address; //type: Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address
+        class Address; //type: Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address> address;
         
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address : public ydk::Entity
 {
     public:
         Address();
@@ -2724,14 +2724,14 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Source; //type: Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source
+        class Source; //type: Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source> source;
         
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source : public ydk::Entity
 {
     public:
         Source();
@@ -2748,14 +2748,14 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Interface; //type: Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface
+        class Interface; //type: Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface> interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface> interface;
         
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -2804,20 +2804,20 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Int
         ydk::YLeaf virtualportgroup; //type: uint16
         ydk::YLeaf vasileft; //type: uint16
         ydk::YLeaf vasiright; //type: uint16
-        class ATMSubinterface; //type: Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface
-        class ATMACRsubinterface; //type: Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface
-        class LISPSubinterface; //type: Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface
-        class PortChannelSubinterface; //type: Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface
+        class ATMSubinterface; //type: Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface
+        class ATMACRsubinterface; //type: Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface
+        class LISPSubinterface; //type: Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface
+        class PortChannelSubinterface; //type: Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface> atm_subinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface> atm_acrsubinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface> lisp_subinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface> port_channel_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface> atm_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface> atm_acrsubinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface> lisp_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface> port_channel_subinterface;
         
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface : public ydk::Entity
 {
     public:
         ATMSubinterface();
@@ -2836,10 +2836,10 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Int
 
         ydk::YLeaf atm; //type: string
 
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface : public ydk::Entity
 {
     public:
         ATMACRsubinterface();
@@ -2858,10 +2858,10 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Int
 
         ydk::YLeaf atm_acr; //type: string
 
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface : public ydk::Entity
 {
     public:
         LISPSubinterface();
@@ -2880,10 +2880,10 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Int
 
         ydk::YLeaf lisp; //type: string
 
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface : public ydk::Entity
 {
     public:
         PortChannelSubinterface();
@@ -2902,10 +2902,10 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Int
 
         ydk::YLeaf port_channel; //type: string
 
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::Local : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::Local : public ydk::Entity
 {
     public:
         Local();
@@ -2922,14 +2922,14 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::Local : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Interface; //type: Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface
+        class Interface; //type: Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface> interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface> interface;
         
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::Local
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::Local
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -2978,20 +2978,20 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface : public ydk::En
         ydk::YLeaf virtualportgroup; //type: uint16
         ydk::YLeaf vasileft; //type: uint16
         ydk::YLeaf vasiright; //type: uint16
-        class ATMSubinterface; //type: Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface
-        class ATMACRsubinterface; //type: Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface
-        class LISPSubinterface; //type: Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface
-        class PortChannelSubinterface; //type: Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface
+        class ATMSubinterface; //type: Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface
+        class ATMACRsubinterface; //type: Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface
+        class LISPSubinterface; //type: Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface
+        class PortChannelSubinterface; //type: Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface> atm_subinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface> atm_acrsubinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface> lisp_subinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface> port_channel_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface> atm_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface> atm_acrsubinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface> lisp_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface> port_channel_subinterface;
         
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface : public ydk::Entity
 {
     public:
         ATMSubinterface();
@@ -3010,10 +3010,10 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface
 
         ydk::YLeaf atm; //type: string
 
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface : public ydk::Entity
 {
     public:
         ATMACRsubinterface();
@@ -3032,10 +3032,10 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterf
 
         ydk::YLeaf atm_acr; //type: string
 
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface : public ydk::Entity
 {
     public:
         LISPSubinterface();
@@ -3054,10 +3054,10 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterfac
 
         ydk::YLeaf lisp; //type: string
 
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface : public ydk::Entity
 {
     public:
         PortChannelSubinterface();
@@ -3076,10 +3076,10 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubi
 
         ydk::YLeaf port_channel; //type: string
 
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::Master : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::Master : public ydk::Entity
 {
     public:
         Master();
@@ -3096,14 +3096,14 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::Master : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv4; //type: Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4
+        class Ipv4; //type: Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4> > ipv4;
+        ydk::YList ipv4;
         
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::Master
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::Master
 
 
-class Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4 : public ydk::Entity
+class Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -3123,7 +3123,7 @@ class Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4 : public ydk::Entity
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf key_chain; //type: string
 
-}; // Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4
+}; // Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4
 
 
 class Native::Pfr::Master : public ydk::Entity
@@ -3237,7 +3237,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf echo; //type: one of string, union
+        ydk::YLeaf echo; //type: one of union, string
         class Jitter; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter
         class TcpConn; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn
         class UdpEcho; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho
@@ -3268,7 +3268,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter : public ydk
 
         class Ipv4OrHostname; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostname
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostname> > ipv4_or_hostname;
+        ydk::YList ipv4_or_hostname;
         
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter
 
@@ -3290,7 +3290,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostn
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_or_hostname; //type: one of string, union
+        ydk::YLeaf ipv4_or_hostname; //type: one of union, string
         ydk::YLeaf target_port; //type: uint16
 
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostname
@@ -3315,7 +3315,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn : public yd
 
         class Ipv4OrHostname; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHostname
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHostname> > ipv4_or_hostname;
+        ydk::YList ipv4_or_hostname;
         
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn
 
@@ -3337,7 +3337,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHost
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_or_hostname; //type: one of string, union
+        ydk::YLeaf ipv4_or_hostname; //type: one of union, string
         ydk::YLeaf target_port; //type: uint16
 
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHostname
@@ -3362,7 +3362,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho : public yd
 
         class Ipv4OrHostname; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4OrHostname
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4OrHostname> > ipv4_or_hostname;
+        ydk::YList ipv4_or_hostname;
         
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho
 
@@ -3384,7 +3384,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4OrHost
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_or_hostname; //type: one of string, union
+        ydk::YLeaf ipv4_or_hostname; //type: one of union, string
         ydk::YLeaf target_port; //type: uint16
 
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4OrHostname
@@ -3433,7 +3433,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define : public ydk
 
         class AppDef; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::AppDef
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::AppDef> > app_def;
+        ydk::YList app_def;
         
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define
 
@@ -3481,7 +3481,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff : public ydk::Entity
 
         class Boff; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff> > boff;
+        ydk::YList boff;
         
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff
 
@@ -3506,7 +3506,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff : public ydk::Enti
         ydk::YLeaf boff; //type: uint16
         class Boff0; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::Boff0
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::Boff0> > boff0;
+        ydk::YList boff0;
         
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff
 
@@ -3552,7 +3552,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::Border : public ydk::Entity
 
         class Ipv4; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4> > ipv4;
+        ydk::YList ipv4;
         
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::Border
 
@@ -3578,7 +3578,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4 : public ydk::Entit
         ydk::YLeaf interface; //type: empty
         class KeyChain; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::KeyChain
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::KeyChain> > key_chain;
+        ydk::YList key_chain;
         
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4
 
@@ -3667,18 +3667,18 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::Learn : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class LrnModeConfigpfrmclearn; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn
+        class LrnModeConfigPfrMcLearn; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn> lrn_mode__config_pfr_mc_learn;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn> lrn_mode__config_pfr_mc_learn;
         
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::Learn
 
 
-class Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn : public ydk::Entity
+class Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn : public ydk::Entity
 {
     public:
-        LrnModeConfigpfrmclearn();
-        ~LrnModeConfigpfrmclearn();
+        LrnModeConfigPfrMcLearn();
+        ~LrnModeConfigPfrMcLearn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3695,24 +3695,24 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn :
         ydk::YLeaf monitor_period; //type: uint16
         ydk::YLeaf periodic_interval; //type: uint16
         ydk::YLeaf throughput; //type: empty
-        class AggregationType; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType
-        class Expire; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire
-        class Inside; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside
-        class List; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List
-        class Prefixes; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes
-        class TrafficClass; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass
+        class AggregationType; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType
+        class Expire; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire
+        class Inside; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside
+        class List; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List
+        class Prefixes; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes
+        class TrafficClass; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType> aggregation_type;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire> expire;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside> inside;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List> list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes> prefixes;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass> traffic_class;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType> aggregation_type;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire> expire;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside> inside;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List> list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes> prefixes;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass> traffic_class;
         
-}; // Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn
+}; // Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn
 
 
-class Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType : public ydk::Entity
+class Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType : public ydk::Entity
 {
     public:
         AggregationType();
@@ -3733,10 +3733,10 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::
         ydk::YLeaf non_bgp; //type: empty
         ydk::YLeaf prefix_length; //type: uint8
 
-}; // Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType
+}; // Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType
 
 
-class Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire : public ydk::Entity
+class Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire : public ydk::Entity
 {
     public:
         Expire();
@@ -3753,11 +3753,11 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class After; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After
+        class After; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After> after;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After> after;
         
-}; // Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire
+}; // Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire
 
 class Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection_ : public ydk::Enum
 {

@@ -17,7 +17,7 @@ EnvironmentalMonitoringCli::EnvironmentalMonitoringCli()
 {
     rack_clis->parent = this;
 
-    yang_name = "environmental-monitoring-cli"; yang_parent_name = "Cisco-IOS-XR-asr9k-sc-envmon-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "environmental-monitoring-cli"; yang_parent_name = "Cisco-IOS-XR-asr9k-sc-envmon-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EnvironmentalMonitoringCli::~EnvironmentalMonitoringCli()
@@ -26,6 +26,7 @@ EnvironmentalMonitoringCli::~EnvironmentalMonitoringCli()
 
 bool EnvironmentalMonitoringCli::has_data() const
 {
+    if (is_presence_container) return true;
     return (rack_clis !=  nullptr && rack_clis->has_data());
 }
 
@@ -118,9 +119,11 @@ bool EnvironmentalMonitoringCli::has_leaf_or_child_of_name(const std::string & n
 }
 
 EnvironmentalMonitoringCli::RackClis::RackClis()
+    :
+    rack_cli(this, {"rack"})
 {
 
-    yang_name = "rack-clis"; yang_parent_name = "environmental-monitoring-cli"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack-clis"; yang_parent_name = "environmental-monitoring-cli"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EnvironmentalMonitoringCli::RackClis::~RackClis()
@@ -129,7 +132,8 @@ EnvironmentalMonitoringCli::RackClis::~RackClis()
 
 bool EnvironmentalMonitoringCli::RackClis::has_data() const
 {
-    for (std::size_t index=0; index<rack_cli.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack_cli.len(); index++)
     {
         if(rack_cli[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool EnvironmentalMonitoringCli::RackClis::has_data() const
 
 bool EnvironmentalMonitoringCli::RackClis::has_operation() const
 {
-    for (std::size_t index=0; index<rack_cli.size(); index++)
+    for (std::size_t index=0; index<rack_cli.len(); index++)
     {
         if(rack_cli[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> EnvironmentalMonitoringCli::RackClis::get_child_by_name(
     {
         auto c = std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli>();
         c->parent = this;
-        rack_cli.push_back(c);
+        rack_cli.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoringCli::RackC
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack_cli)
+    for (auto c : rack_cli.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -216,13 +220,13 @@ bool EnvironmentalMonitoringCli::RackClis::has_leaf_or_child_of_name(const std::
 
 EnvironmentalMonitoringCli::RackClis::RackCli::RackCli()
     :
-    rack{YType::int32, "rack"}
-    	,
+    rack{YType::uint32, "rack"}
+        ,
     slot_clis(std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis>())
 {
     slot_clis->parent = this;
 
-    yang_name = "rack-cli"; yang_parent_name = "rack-clis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack-cli"; yang_parent_name = "rack-clis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::~RackCli()
@@ -231,6 +235,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::~RackCli()
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| (slot_clis !=  nullptr && slot_clis->has_data());
 }
@@ -252,7 +257,8 @@ std::string EnvironmentalMonitoringCli::RackClis::RackCli::get_absolute_path() c
 std::string EnvironmentalMonitoringCli::RackClis::RackCli::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack-cli" <<"[rack='" <<rack <<"']";
+    path_buffer << "rack-cli";
+    ADD_KEY_TOKEN(rack, "rack");
     return path_buffer.str();
 }
 
@@ -318,9 +324,11 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::has_leaf_or_child_of_name(co
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotClis()
+    :
+    slot_cli(this, {"slot"})
 {
 
-    yang_name = "slot-clis"; yang_parent_name = "rack-cli"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot-clis"; yang_parent_name = "rack-cli"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::~SlotClis()
@@ -329,7 +337,8 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::~SlotClis()
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::has_data() const
 {
-    for (std::size_t index=0; index<slot_cli.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot_cli.len(); index++)
     {
         if(slot_cli[index]->has_data())
             return true;
@@ -339,7 +348,7 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::has_data() const
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::has_operation() const
 {
-    for (std::size_t index=0; index<slot_cli.size(); index++)
+    for (std::size_t index=0; index<slot_cli.len(); index++)
     {
         if(slot_cli[index]->has_operation())
             return true;
@@ -369,7 +378,7 @@ std::shared_ptr<Entity> EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis:
     {
         auto c = std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli>();
         c->parent = this;
-        slot_cli.push_back(c);
+        slot_cli.append(c);
         return c;
     }
 
@@ -381,7 +390,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoringCli::RackC
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot_cli)
+    for (auto c : slot_cli.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -410,12 +419,12 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::has_leaf_or_child_
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::SlotCli()
     :
     slot{YType::str, "slot"}
-    	,
+        ,
     module_clis(std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis>())
 {
     module_clis->parent = this;
 
-    yang_name = "slot-cli"; yang_parent_name = "slot-clis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot-cli"; yang_parent_name = "slot-clis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::~SlotCli()
@@ -424,6 +433,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::~SlotCli()
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::has_data() const
 {
+    if (is_presence_container) return true;
     return slot.is_set
 	|| (module_clis !=  nullptr && module_clis->has_data());
 }
@@ -438,7 +448,8 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::has_opera
 std::string EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot-cli" <<"[slot='" <<slot <<"']";
+    path_buffer << "slot-cli";
+    ADD_KEY_TOKEN(slot, "slot");
     return path_buffer.str();
 }
 
@@ -504,9 +515,11 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::has_leaf_
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleClis()
+    :
+    module_cli(this, {"module"})
 {
 
-    yang_name = "module-clis"; yang_parent_name = "slot-cli"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-clis"; yang_parent_name = "slot-cli"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::~ModuleClis()
@@ -515,7 +528,8 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::~M
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::has_data() const
 {
-    for (std::size_t index=0; index<module_cli.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<module_cli.len(); index++)
     {
         if(module_cli[index]->has_data())
             return true;
@@ -525,7 +539,7 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::has_operation() const
 {
-    for (std::size_t index=0; index<module_cli.size(); index++)
+    for (std::size_t index=0; index<module_cli.len(); index++)
     {
         if(module_cli[index]->has_operation())
             return true;
@@ -555,7 +569,7 @@ std::shared_ptr<Entity> EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis:
     {
         auto c = std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli>();
         c->parent = this;
-        module_cli.push_back(c);
+        module_cli.append(c);
         return c;
     }
 
@@ -567,7 +581,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoringCli::RackC
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : module_cli)
+    for (auto c : module_cli.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -596,14 +610,14 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::ModuleCli()
     :
     module{YType::str, "module"}
-    	,
+        ,
     sensor_type_clis(std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis>())
-	,power_cli(std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::PowerCli>())
+    , power_cli(std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::PowerCli>())
 {
     sensor_type_clis->parent = this;
     power_cli->parent = this;
 
-    yang_name = "module-cli"; yang_parent_name = "module-clis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-cli"; yang_parent_name = "module-clis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::~ModuleCli()
@@ -612,6 +626,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::has_data() const
 {
+    if (is_presence_container) return true;
     return module.is_set
 	|| (sensor_type_clis !=  nullptr && sensor_type_clis->has_data())
 	|| (power_cli !=  nullptr && power_cli->has_data());
@@ -628,7 +643,8 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 std::string EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "module-cli" <<"[module='" <<module <<"']";
+    path_buffer << "module-cli";
+    ADD_KEY_TOKEN(module, "module");
     return path_buffer.str();
 }
 
@@ -708,9 +724,11 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeClis()
+    :
+    sensor_type_cli(this, {"type"})
 {
 
-    yang_name = "sensor-type-clis"; yang_parent_name = "module-cli"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-type-clis"; yang_parent_name = "module-cli"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::~SensorTypeClis()
@@ -719,7 +737,8 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::has_data() const
 {
-    for (std::size_t index=0; index<sensor_type_cli.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor_type_cli.len(); index++)
     {
         if(sensor_type_cli[index]->has_data())
             return true;
@@ -729,7 +748,7 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::has_operation() const
 {
-    for (std::size_t index=0; index<sensor_type_cli.size(); index++)
+    for (std::size_t index=0; index<sensor_type_cli.len(); index++)
     {
         if(sensor_type_cli[index]->has_operation())
             return true;
@@ -759,7 +778,7 @@ std::shared_ptr<Entity> EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis:
     {
         auto c = std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli>();
         c->parent = this;
-        sensor_type_cli.push_back(c);
+        sensor_type_cli.append(c);
         return c;
     }
 
@@ -771,7 +790,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoringCli::RackC
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor_type_cli)
+    for (auto c : sensor_type_cli.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -800,12 +819,12 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorTypeCli()
     :
     type{YType::str, "type"}
-    	,
+        ,
     sensor_name_clis(std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis>())
 {
     sensor_name_clis->parent = this;
 
-    yang_name = "sensor-type-cli"; yang_parent_name = "sensor-type-clis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-type-cli"; yang_parent_name = "sensor-type-clis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::~SensorTypeCli()
@@ -814,6 +833,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (sensor_name_clis !=  nullptr && sensor_name_clis->has_data());
 }
@@ -828,7 +848,8 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 std::string EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor-type-cli" <<"[type='" <<type <<"']";
+    path_buffer << "sensor-type-cli";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -894,9 +915,11 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameClis()
+    :
+    sensor_name_cli(this, {"name"})
 {
 
-    yang_name = "sensor-name-clis"; yang_parent_name = "sensor-type-cli"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-name-clis"; yang_parent_name = "sensor-type-cli"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::~SensorNameClis()
@@ -905,7 +928,8 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::has_data() const
 {
-    for (std::size_t index=0; index<sensor_name_cli.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor_name_cli.len(); index++)
     {
         if(sensor_name_cli[index]->has_data())
             return true;
@@ -915,7 +939,7 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::has_operation() const
 {
-    for (std::size_t index=0; index<sensor_name_cli.size(); index++)
+    for (std::size_t index=0; index<sensor_name_cli.len(); index++)
     {
         if(sensor_name_cli[index]->has_operation())
             return true;
@@ -945,7 +969,7 @@ std::shared_ptr<Entity> EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis:
     {
         auto c = std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli>();
         c->parent = this;
-        sensor_name_cli.push_back(c);
+        sensor_name_cli.append(c);
         return c;
     }
 
@@ -957,7 +981,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoringCli::RackC
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor_name_cli)
+    for (auto c : sensor_name_cli.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -987,14 +1011,14 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
     :
     name{YType::str, "name"},
     value_brief_cli{YType::str, "value-brief-cli"}
-    	,
+        ,
     value_detailed_cli(std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ValueDetailedCli>())
-	,threshold_clis(std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis>())
+    , threshold_clis(std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis>())
 {
     value_detailed_cli->parent = this;
     threshold_clis->parent = this;
 
-    yang_name = "sensor-name-cli"; yang_parent_name = "sensor-name-clis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-name-cli"; yang_parent_name = "sensor-name-clis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::~SensorNameCli()
@@ -1003,6 +1027,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| value_brief_cli.is_set
 	|| (value_detailed_cli !=  nullptr && value_detailed_cli->has_data())
@@ -1021,7 +1046,8 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 std::string EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor-name-cli" <<"[name='" <<name <<"']";
+    path_buffer << "sensor-name-cli";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1127,7 +1153,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
     update_rate{YType::uint32, "update-rate"}
 {
 
-    yang_name = "value-detailed-cli"; yang_parent_name = "sensor-name-cli"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value-detailed-cli"; yang_parent_name = "sensor-name-cli"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ValueDetailedCli::~ValueDetailedCli()
@@ -1136,6 +1162,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ValueDetailedCli::has_data() const
 {
+    if (is_presence_container) return true;
     return field_validity_bitmap.is_set
 	|| device_description.is_set
 	|| units.is_set
@@ -1343,9 +1370,11 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::ThresholdClis()
+    :
+    threshold_cli(this, {"type"})
 {
 
-    yang_name = "threshold-clis"; yang_parent_name = "sensor-name-cli"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-clis"; yang_parent_name = "sensor-name-cli"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::~ThresholdClis()
@@ -1354,7 +1383,8 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::has_data() const
 {
-    for (std::size_t index=0; index<threshold_cli.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold_cli.len(); index++)
     {
         if(threshold_cli[index]->has_data())
             return true;
@@ -1364,7 +1394,7 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::has_operation() const
 {
-    for (std::size_t index=0; index<threshold_cli.size(); index++)
+    for (std::size_t index=0; index<threshold_cli.len(); index++)
     {
         if(threshold_cli[index]->has_operation())
             return true;
@@ -1394,7 +1424,7 @@ std::shared_ptr<Entity> EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis:
     {
         auto c = std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::ThresholdCli>();
         c->parent = this;
-        threshold_cli.push_back(c);
+        threshold_cli.append(c);
         return c;
     }
 
@@ -1406,7 +1436,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoringCli::RackC
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold_cli)
+    for (auto c : threshold_cli.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1437,12 +1467,12 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
     type{YType::str, "type"},
     trap_cli{YType::boolean, "trap-cli"},
     value_brief_cli{YType::str, "value-brief-cli"}
-    	,
+        ,
     value_detailed_cli(std::make_shared<EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::ThresholdCli::ValueDetailedCli>())
 {
     value_detailed_cli->parent = this;
 
-    yang_name = "threshold-cli"; yang_parent_name = "threshold-clis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-cli"; yang_parent_name = "threshold-clis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::ThresholdCli::~ThresholdCli()
@@ -1451,6 +1481,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::ThresholdCli::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| trap_cli.is_set
 	|| value_brief_cli.is_set
@@ -1469,7 +1500,8 @@ bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCli
 std::string EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::ThresholdCli::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "threshold-cli" <<"[type='" <<type <<"']";
+    path_buffer << "threshold-cli";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -1565,7 +1597,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
     threshold_notification_enabled{YType::boolean, "threshold-notification-enabled"}
 {
 
-    yang_name = "value-detailed-cli"; yang_parent_name = "threshold-cli"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value-detailed-cli"; yang_parent_name = "threshold-cli"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::ThresholdCli::ValueDetailedCli::~ValueDetailedCli()
@@ -1574,6 +1606,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::ThresholdCli::ValueDetailedCli::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_severity.is_set
 	|| threshold_relation.is_set
 	|| threshold_value.is_set
@@ -1695,7 +1728,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
 {
     power_bag_cli->parent = this;
 
-    yang_name = "power-cli"; yang_parent_name = "module-cli"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-cli"; yang_parent_name = "module-cli"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::PowerCli::~PowerCli()
@@ -1704,6 +1737,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::PowerCli::has_data() const
 {
+    if (is_presence_container) return true;
     return (power_bag_cli !=  nullptr && power_bag_cli->has_data());
 }
 
@@ -1784,7 +1818,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
     power_state_enter_reason{YType::str, "power-state-enter-reason"}
 {
 
-    yang_name = "power-bag-cli"; yang_parent_name = "power-cli"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-bag-cli"; yang_parent_name = "power-cli"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::PowerCli::PowerBagCli::~PowerBagCli()
@@ -1793,6 +1827,7 @@ EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::Mo
 
 bool EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::PowerCli::PowerBagCli::has_data() const
 {
+    if (is_presence_container) return true;
     return power_value.is_set
 	|| power_max_value.is_set
 	|| power_unit_multiplier.is_set
@@ -1979,7 +2014,7 @@ EnvironmentalMonitoring::EnvironmentalMonitoring()
 {
     racks->parent = this;
 
-    yang_name = "environmental-monitoring"; yang_parent_name = "Cisco-IOS-XR-asr9k-sc-envmon-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "environmental-monitoring"; yang_parent_name = "Cisco-IOS-XR-asr9k-sc-envmon-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EnvironmentalMonitoring::~EnvironmentalMonitoring()
@@ -1988,6 +2023,7 @@ EnvironmentalMonitoring::~EnvironmentalMonitoring()
 
 bool EnvironmentalMonitoring::has_data() const
 {
+    if (is_presence_container) return true;
     return (racks !=  nullptr && racks->has_data());
 }
 
@@ -2080,9 +2116,11 @@ bool EnvironmentalMonitoring::has_leaf_or_child_of_name(const std::string & name
 }
 
 EnvironmentalMonitoring::Racks::Racks()
+    :
+    rack(this, {"rack"})
 {
 
-    yang_name = "racks"; yang_parent_name = "environmental-monitoring"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "racks"; yang_parent_name = "environmental-monitoring"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EnvironmentalMonitoring::Racks::~Racks()
@@ -2091,7 +2129,8 @@ EnvironmentalMonitoring::Racks::~Racks()
 
 bool EnvironmentalMonitoring::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -2101,7 +2140,7 @@ bool EnvironmentalMonitoring::Racks::has_data() const
 
 bool EnvironmentalMonitoring::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -2138,7 +2177,7 @@ std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::get_child_by_name(const 
     {
         auto c = std::make_shared<EnvironmentalMonitoring::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -2150,7 +2189,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2178,13 +2217,13 @@ bool EnvironmentalMonitoring::Racks::has_leaf_or_child_of_name(const std::string
 
 EnvironmentalMonitoring::Racks::Rack::Rack()
     :
-    rack{YType::int32, "rack"}
-    	,
+    rack{YType::uint32, "rack"}
+        ,
     slots(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots>())
 {
     slots->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::~Rack()
@@ -2193,6 +2232,7 @@ EnvironmentalMonitoring::Racks::Rack::~Rack()
 
 bool EnvironmentalMonitoring::Racks::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| (slots !=  nullptr && slots->has_data());
 }
@@ -2214,7 +2254,8 @@ std::string EnvironmentalMonitoring::Racks::Rack::get_absolute_path() const
 std::string EnvironmentalMonitoring::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack='" <<rack <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack, "rack");
     return path_buffer.str();
 }
 
@@ -2280,9 +2321,11 @@ bool EnvironmentalMonitoring::Racks::Rack::has_leaf_or_child_of_name(const std::
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slots()
+    :
+    slot(this, {"slot"})
 {
 
-    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::~Slots()
@@ -2291,7 +2334,8 @@ EnvironmentalMonitoring::Racks::Rack::Slots::~Slots()
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -2301,7 +2345,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::has_data() const
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -2331,7 +2375,7 @@ std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::get_child_b
     {
         auto c = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
@@ -2343,7 +2387,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2372,12 +2416,12 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::has_leaf_or_child_of_name(cons
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Slot()
     :
     slot{YType::str, "slot"}
-    	,
+        ,
     modules(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules>())
 {
     modules->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::~Slot()
@@ -2386,6 +2430,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::~Slot()
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::has_data() const
 {
+    if (is_presence_container) return true;
     return slot.is_set
 	|| (modules !=  nullptr && modules->has_data());
 }
@@ -2400,7 +2445,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::has_operation() const
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[slot='" <<slot <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(slot, "slot");
     return path_buffer.str();
 }
 
@@ -2466,9 +2512,11 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::has_leaf_or_child_of_nam
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Modules()
+    :
+    module(this, {"module"})
 {
 
-    yang_name = "modules"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "modules"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::~Modules()
@@ -2477,7 +2525,8 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::~Modules()
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::has_data() const
 {
-    for (std::size_t index=0; index<module.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<module.len(); index++)
     {
         if(module[index]->has_data())
             return true;
@@ -2487,7 +2536,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::has_data() cons
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::has_operation() const
 {
-    for (std::size_t index=0; index<module.size(); index++)
+    for (std::size_t index=0; index<module.len(); index++)
     {
         if(module[index]->has_operation())
             return true;
@@ -2517,7 +2566,7 @@ std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modul
     {
         auto c = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module>();
         c->parent = this;
-        module.push_back(c);
+        module.append(c);
         return c;
     }
 
@@ -2529,7 +2578,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : module)
+    for (auto c : module.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2558,14 +2607,14 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::has_leaf_or_chi
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Module()
     :
     module{YType::str, "module"}
-    	,
+        ,
     power(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power>())
-	,sensor_types(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes>())
+    , sensor_types(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes>())
 {
     power->parent = this;
     sensor_types->parent = this;
 
-    yang_name = "module"; yang_parent_name = "modules"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module"; yang_parent_name = "modules"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::~Module()
@@ -2574,6 +2623,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::~Module()
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::has_data() const
 {
+    if (is_presence_container) return true;
     return module.is_set
 	|| (power !=  nullptr && power->has_data())
 	|| (sensor_types !=  nullptr && sensor_types->has_data());
@@ -2590,7 +2640,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::has_ope
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "module" <<"[module='" <<module <<"']";
+    path_buffer << "module";
+    ADD_KEY_TOKEN(module, "module");
     return path_buffer.str();
 }
 
@@ -2675,7 +2726,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::Power
 {
     power_bag->parent = this;
 
-    yang_name = "power"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::~Power()
@@ -2684,6 +2735,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::~Powe
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::has_data() const
 {
+    if (is_presence_container) return true;
     return (power_bag !=  nullptr && power_bag->has_data());
 }
 
@@ -2764,7 +2816,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::Power
     power_state_enter_reason{YType::str, "power-state-enter-reason"}
 {
 
-    yang_name = "power-bag"; yang_parent_name = "power"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-bag"; yang_parent_name = "power"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::~PowerBag()
@@ -2773,6 +2825,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::Power
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::has_data() const
 {
+    if (is_presence_container) return true;
     return power_value.is_set
 	|| power_max_value.is_set
 	|| power_unit_multiplier.is_set
@@ -2954,9 +3007,11 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorTypes()
+    :
+    sensor_type(this, {"type"})
 {
 
-    yang_name = "sensor-types"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-types"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::~SensorTypes()
@@ -2965,7 +3020,8 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::has_data() const
 {
-    for (std::size_t index=0; index<sensor_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor_type.len(); index++)
     {
         if(sensor_type[index]->has_data())
             return true;
@@ -2975,7 +3031,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::has_operation() const
 {
-    for (std::size_t index=0; index<sensor_type.size(); index++)
+    for (std::size_t index=0; index<sensor_type.len(); index++)
     {
         if(sensor_type[index]->has_operation())
             return true;
@@ -3005,7 +3061,7 @@ std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modul
     {
         auto c = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType>();
         c->parent = this;
-        sensor_type.push_back(c);
+        sensor_type.append(c);
         return c;
     }
 
@@ -3017,7 +3073,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor_type)
+    for (auto c : sensor_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3046,12 +3102,12 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorType()
     :
     type{YType::str, "type"}
-    	,
+        ,
     sensor_names(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames>())
 {
     sensor_names->parent = this;
 
-    yang_name = "sensor-type"; yang_parent_name = "sensor-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-type"; yang_parent_name = "sensor-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::~SensorType()
@@ -3060,6 +3116,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (sensor_names !=  nullptr && sensor_names->has_data());
 }
@@ -3074,7 +3131,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor-type" <<"[type='" <<type <<"']";
+    path_buffer << "sensor-type";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -3140,9 +3198,11 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorNames()
+    :
+    sensor_name(this, {"name"})
 {
 
-    yang_name = "sensor-names"; yang_parent_name = "sensor-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-names"; yang_parent_name = "sensor-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::~SensorNames()
@@ -3151,7 +3211,8 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::has_data() const
 {
-    for (std::size_t index=0; index<sensor_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor_name.len(); index++)
     {
         if(sensor_name[index]->has_data())
             return true;
@@ -3161,7 +3222,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::has_operation() const
 {
-    for (std::size_t index=0; index<sensor_name.size(); index++)
+    for (std::size_t index=0; index<sensor_name.len(); index++)
     {
         if(sensor_name[index]->has_operation())
             return true;
@@ -3191,7 +3252,7 @@ std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modul
     {
         auto c = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName>();
         c->parent = this;
-        sensor_name.push_back(c);
+        sensor_name.append(c);
         return c;
     }
 
@@ -3203,7 +3264,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor_name)
+    for (auto c : sensor_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3233,14 +3294,14 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
     :
     name{YType::str, "name"},
     value_brief{YType::str, "value-brief"}
-    	,
+        ,
     thresholds(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds>())
-	,value_detailed(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed>())
+    , value_detailed(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed>())
 {
     thresholds->parent = this;
     value_detailed->parent = this;
 
-    yang_name = "sensor-name"; yang_parent_name = "sensor-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-name"; yang_parent_name = "sensor-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::~SensorName()
@@ -3249,6 +3310,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| value_brief.is_set
 	|| (thresholds !=  nullptr && thresholds->has_data())
@@ -3267,7 +3329,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor-name" <<"[name='" <<name <<"']";
+    path_buffer << "sensor-name";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -3358,9 +3421,11 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Thresholds()
+    :
+    threshold(this, {"type"})
 {
 
-    yang_name = "thresholds"; yang_parent_name = "sensor-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "thresholds"; yang_parent_name = "sensor-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::~Thresholds()
@@ -3369,7 +3434,8 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::has_data() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_data())
             return true;
@@ -3379,7 +3445,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::has_operation() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_operation())
             return true;
@@ -3409,7 +3475,7 @@ std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modul
     {
         auto c = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold>();
         c->parent = this;
-        threshold.push_back(c);
+        threshold.append(c);
         return c;
     }
 
@@ -3421,7 +3487,7 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold)
+    for (auto c : threshold.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3452,12 +3518,12 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
     type{YType::str, "type"},
     trap{YType::boolean, "trap"},
     value_brief{YType::str, "value-brief"}
-    	,
+        ,
     value_detailed(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed>())
 {
     value_detailed->parent = this;
 
-    yang_name = "threshold"; yang_parent_name = "thresholds"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "thresholds"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::~Threshold()
@@ -3466,6 +3532,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| trap.is_set
 	|| value_brief.is_set
@@ -3484,7 +3551,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "threshold" <<"[type='" <<type <<"']";
+    path_buffer << "threshold";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -3580,7 +3648,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
     threshold_notification_enabled{YType::boolean, "threshold-notification-enabled"}
 {
 
-    yang_name = "value-detailed"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value-detailed"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::~ValueDetailed()
@@ -3589,6 +3657,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_severity.is_set
 	|| threshold_relation.is_set
 	|| threshold_value.is_set
@@ -3720,7 +3789,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
     update_rate{YType::uint32, "update-rate"}
 {
 
-    yang_name = "value-detailed"; yang_parent_name = "sensor-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value-detailed"; yang_parent_name = "sensor-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::~ValueDetailed()
@@ -3729,6 +3798,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::has_data() const
 {
+    if (is_presence_container) return true;
     return field_validity_bitmap.is_set
 	|| device_description.is_set
 	|| units.is_set

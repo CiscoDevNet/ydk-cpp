@@ -90,7 +90,7 @@ class MplsLdp::DefaultVrf::Afs : public ydk::Entity
 
         class Af; //type: MplsLdp::DefaultVrf::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Afs::Af> > af;
+        ydk::YList af;
         
 }; // MplsLdp::DefaultVrf::Afs
 
@@ -218,7 +218,7 @@ class MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies : 
 
         class PeerAcceptPolicy; //type: MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy> > peer_accept_policy;
+        ydk::YList peer_accept_policy;
         
 }; // MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies
 
@@ -321,7 +321,7 @@ class MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolici
 
         class PeerAdvertisePolicy; //type: MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy> > peer_advertise_policy;
+        ydk::YList peer_advertise_policy;
         
 }; // MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies
 
@@ -367,7 +367,7 @@ class MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePoli
 
         class PrefixAdvertisePolicy; //type: MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::PrefixAdvertisePolicy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::PrefixAdvertisePolicy> > prefix_advertise_policy;
+        ydk::YList prefix_advertise_policy;
         
 }; // MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies
 
@@ -436,7 +436,7 @@ class MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces : public
 
         class Interface; //type: MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces
 
@@ -595,7 +595,7 @@ class MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds
 
         class GroupId; //type: MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::GroupId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::GroupId> > group_id;
+        ydk::YList group_id;
         
 }; // MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds
 
@@ -662,7 +662,7 @@ class MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses : public ydk::Entity
 
         class Address; //type: MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address> > address;
+        ydk::YList address;
         
 }; // MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses
 
@@ -929,7 +929,7 @@ class MplsLdp::DefaultVrf::Global::Neighbor::LdpIds : public ydk::Entity
 
         class LdpId; //type: MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId> > ldp_id;
+        ydk::YList ldp_id;
         
 }; // MplsLdp::DefaultVrf::Global::Neighbor::LdpIds
 
@@ -1119,7 +1119,7 @@ class MplsLdp::DefaultVrf::Interfaces : public ydk::Entity
 
         class Interface; //type: MplsLdp::DefaultVrf::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MplsLdp::DefaultVrf::Interfaces
 
@@ -1170,7 +1170,7 @@ class MplsLdp::DefaultVrf::Interfaces::Interface::Afs : public ydk::Entity
 
         class Af; //type: MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af> > af;
+        ydk::YList af;
         
 }; // MplsLdp::DefaultVrf::Interfaces::Interface::Afs
 
@@ -1473,7 +1473,7 @@ class MplsLdp::Vrfs : public ydk::Entity
 
         class Vrf; //type: MplsLdp::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // MplsLdp::Vrfs
 
@@ -1623,7 +1623,7 @@ class MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds : public ydk::Entity
 
         class LdpId; //type: MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId> > ldp_id;
+        ydk::YList ldp_id;
         
 }; // MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds
 
@@ -1737,7 +1737,7 @@ class MplsLdp::Vrfs::Vrf::Afs : public ydk::Entity
 
         class Af; //type: MplsLdp::Vrfs::Vrf::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Afs::Af> > af;
+        ydk::YList af;
         
 }; // MplsLdp::Vrfs::Vrf::Afs
 
@@ -1879,7 +1879,7 @@ class MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies : p
 
         class PeerAcceptPolicy; //type: MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy> > peer_accept_policy;
+        ydk::YList peer_accept_policy;
         
 }; // MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies
 
@@ -1905,7 +1905,7 @@ class MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::Pe
         class LsrId; //type: MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::LsrId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::PeerAcceptPolicyData> peer_accept_policy_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::LsrId> > lsr_id;
+        ydk::YList lsr_id;
         
 }; // MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy
 
@@ -2026,7 +2026,7 @@ class MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicie
 
         class PeerAdvertisePolicy; //type: MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy> > peer_advertise_policy;
+        ydk::YList peer_advertise_policy;
         
 }; // MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies
 
@@ -2052,7 +2052,7 @@ class MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicie
         class LsrId; //type: MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::LsrId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::PeerAdvertisePolicyData> peer_advertise_policy_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::LsrId> > lsr_id;
+        ydk::YList lsr_id;
         
 }; // MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy
 
@@ -2118,7 +2118,7 @@ class MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces : public 
 
         class Interface; //type: MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces
 
@@ -2207,7 +2207,7 @@ class MplsLdp::Vrfs::Vrf::Interfaces : public ydk::Entity
 
         class Interface; //type: MplsLdp::Vrfs::Vrf::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MplsLdp::Vrfs::Vrf::Interfaces
 
@@ -2255,7 +2255,7 @@ class MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs : public ydk::Entity
 
         class Af; //type: MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af> > af;
+        ydk::YList af;
         
 }; // MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs
 
@@ -2729,7 +2729,7 @@ class MplsLdp::Global::Mldp::Vrfs : public ydk::Entity
 
         class Vrf; //type: MplsLdp::Global::Mldp::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Global::Mldp::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // MplsLdp::Global::Mldp::Vrfs
 
@@ -2778,7 +2778,7 @@ class MplsLdp::Global::Mldp::Vrfs::Vrf::Afs : public ydk::Entity
 
         class Af; //type: MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af> > af;
+        ydk::YList af;
         
 }; // MplsLdp::Global::Mldp::Vrfs::Vrf::Afs
 
@@ -2881,7 +2881,7 @@ class MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies : public ydk::
 
         class NeighborPolicy; //type: MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::NeighborPolicy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::NeighborPolicy> > neighbor_policy;
+        ydk::YList neighbor_policy;
         
 }; // MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies
 
@@ -3041,7 +3041,7 @@ class MplsLdp::Global::Mldp::DefaultVrf::Afs : public ydk::Entity
 
         class Af; //type: MplsLdp::Global::Mldp::DefaultVrf::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Global::Mldp::DefaultVrf::Afs::Af> > af;
+        ydk::YList af;
         
 }; // MplsLdp::Global::Mldp::DefaultVrf::Afs
 
@@ -3145,7 +3145,7 @@ class MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies : public ydk:
 
         class NeighborPolicy; //type: MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::NeighborPolicy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::NeighborPolicy> > neighbor_policy;
+        ydk::YList neighbor_policy;
         
 }; // MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies
 
@@ -3307,26 +3307,11 @@ class MplsLdp::Global::Mldp::MldpGlobal::Logging : public ydk::Entity
 
 }; // MplsLdp::Global::Mldp::MldpGlobal::Logging
 
-class MplsLdpNbrPassword : public ydk::Enum
+class MplsLdpLabelAdvertise : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf specified;
-
-};
-
-class MplsLdpLabelAllocation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf acl;
-        static const ydk::Enum::YLeaf host;
-
-};
-
-class MplsLdpDownstreamOnDemand : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf peer_acl;
+        static const ydk::Enum::YLeaf for_;
+        static const ydk::Enum::YLeaf for_to;
 
 };
 
@@ -3338,11 +3323,34 @@ class MldpPolicyMode : public ydk::Enum
 
 };
 
+class MplsLdpLabelAllocation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf acl;
+        static const ydk::Enum::YLeaf host;
+
+};
+
 class MplsLdpTargetedAccept : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf all;
         static const ydk::Enum::YLeaf from;
+
+};
+
+class MplsLdpNbrPassword : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf specified;
+
+};
+
+class MplsLdpDownstreamOnDemand : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf peer_acl;
 
 };
 
@@ -3353,6 +3361,13 @@ class MplsLdpExpNull : public ydk::Enum
         static const ydk::Enum::YLeaf for_;
         static const ydk::Enum::YLeaf to;
         static const ydk::Enum::YLeaf for_to;
+
+};
+
+class MplsLdpAdvertiseBgpAcl : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf peer_acl;
 
 };
 
@@ -3381,21 +3396,6 @@ class MplsLdpSessionProtection : public ydk::Enum
         static const ydk::Enum::YLeaf for_with_duration;
         static const ydk::Enum::YLeaf all_with_forever;
         static const ydk::Enum::YLeaf for_with_forever;
-
-};
-
-class MplsLdpLabelAdvertise : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf for_;
-        static const ydk::Enum::YLeaf for_to;
-
-};
-
-class MplsLdpAdvertiseBgpAcl : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf peer_acl;
 
 };
 

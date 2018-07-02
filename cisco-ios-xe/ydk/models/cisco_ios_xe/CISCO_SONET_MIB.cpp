@@ -13,19 +13,19 @@ namespace CISCO_SONET_MIB {
 
 CISCOSONETMIB::CISCOSONETMIB()
     :
-    csapsconfig(std::make_shared<CISCOSONETMIB::Csapsconfig>())
-	,csnotifications(std::make_shared<CISCOSONETMIB::Csnotifications>())
-	,csconfigtable(std::make_shared<CISCOSONETMIB::Csconfigtable>())
-	,csapsconfigtable(std::make_shared<CISCOSONETMIB::Csapsconfigtable>())
-	,csstotaltable(std::make_shared<CISCOSONETMIB::Csstotaltable>())
-	,csstracetable(std::make_shared<CISCOSONETMIB::Csstracetable>())
-	,csltotaltable(std::make_shared<CISCOSONETMIB::Csltotaltable>())
-	,cslfarendtotaltable(std::make_shared<CISCOSONETMIB::Cslfarendtotaltable>())
-	,csptotaltable(std::make_shared<CISCOSONETMIB::Csptotaltable>())
-	,cspfarendtotaltable(std::make_shared<CISCOSONETMIB::Cspfarendtotaltable>())
-	,csptracetable(std::make_shared<CISCOSONETMIB::Csptracetable>())
-	,csstatstable(std::make_shared<CISCOSONETMIB::Csstatstable>())
-	,csau4tug3configtable(std::make_shared<CISCOSONETMIB::Csau4Tug3Configtable>())
+    csapsconfig(std::make_shared<CISCOSONETMIB::CsApsConfig>())
+    , csnotifications(std::make_shared<CISCOSONETMIB::CsNotifications>())
+    , csconfigtable(std::make_shared<CISCOSONETMIB::CsConfigTable>())
+    , csapsconfigtable(std::make_shared<CISCOSONETMIB::CsApsConfigTable>())
+    , csstotaltable(std::make_shared<CISCOSONETMIB::CssTotalTable>())
+    , csstracetable(std::make_shared<CISCOSONETMIB::CssTraceTable>())
+    , csltotaltable(std::make_shared<CISCOSONETMIB::CslTotalTable>())
+    , cslfarendtotaltable(std::make_shared<CISCOSONETMIB::CslFarEndTotalTable>())
+    , csptotaltable(std::make_shared<CISCOSONETMIB::CspTotalTable>())
+    , cspfarendtotaltable(std::make_shared<CISCOSONETMIB::CspFarEndTotalTable>())
+    , csptracetable(std::make_shared<CISCOSONETMIB::CspTraceTable>())
+    , csstatstable(std::make_shared<CISCOSONETMIB::CsStatsTable>())
+    , csau4tug3configtable(std::make_shared<CISCOSONETMIB::CsAu4Tug3ConfigTable>())
 {
     csapsconfig->parent = this;
     csnotifications->parent = this;
@@ -41,7 +41,7 @@ CISCOSONETMIB::CISCOSONETMIB()
     csstatstable->parent = this;
     csau4tug3configtable->parent = this;
 
-    yang_name = "CISCO-SONET-MIB"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-SONET-MIB"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOSONETMIB::~CISCOSONETMIB()
@@ -50,6 +50,7 @@ CISCOSONETMIB::~CISCOSONETMIB()
 
 bool CISCOSONETMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (csapsconfig !=  nullptr && csapsconfig->has_data())
 	|| (csnotifications !=  nullptr && csnotifications->has_data())
 	|| (csconfigtable !=  nullptr && csconfigtable->has_data())
@@ -105,7 +106,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(csapsconfig == nullptr)
         {
-            csapsconfig = std::make_shared<CISCOSONETMIB::Csapsconfig>();
+            csapsconfig = std::make_shared<CISCOSONETMIB::CsApsConfig>();
         }
         return csapsconfig;
     }
@@ -114,7 +115,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(csnotifications == nullptr)
         {
-            csnotifications = std::make_shared<CISCOSONETMIB::Csnotifications>();
+            csnotifications = std::make_shared<CISCOSONETMIB::CsNotifications>();
         }
         return csnotifications;
     }
@@ -123,7 +124,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(csconfigtable == nullptr)
         {
-            csconfigtable = std::make_shared<CISCOSONETMIB::Csconfigtable>();
+            csconfigtable = std::make_shared<CISCOSONETMIB::CsConfigTable>();
         }
         return csconfigtable;
     }
@@ -132,7 +133,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(csapsconfigtable == nullptr)
         {
-            csapsconfigtable = std::make_shared<CISCOSONETMIB::Csapsconfigtable>();
+            csapsconfigtable = std::make_shared<CISCOSONETMIB::CsApsConfigTable>();
         }
         return csapsconfigtable;
     }
@@ -141,7 +142,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(csstotaltable == nullptr)
         {
-            csstotaltable = std::make_shared<CISCOSONETMIB::Csstotaltable>();
+            csstotaltable = std::make_shared<CISCOSONETMIB::CssTotalTable>();
         }
         return csstotaltable;
     }
@@ -150,7 +151,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(csstracetable == nullptr)
         {
-            csstracetable = std::make_shared<CISCOSONETMIB::Csstracetable>();
+            csstracetable = std::make_shared<CISCOSONETMIB::CssTraceTable>();
         }
         return csstracetable;
     }
@@ -159,7 +160,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(csltotaltable == nullptr)
         {
-            csltotaltable = std::make_shared<CISCOSONETMIB::Csltotaltable>();
+            csltotaltable = std::make_shared<CISCOSONETMIB::CslTotalTable>();
         }
         return csltotaltable;
     }
@@ -168,7 +169,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(cslfarendtotaltable == nullptr)
         {
-            cslfarendtotaltable = std::make_shared<CISCOSONETMIB::Cslfarendtotaltable>();
+            cslfarendtotaltable = std::make_shared<CISCOSONETMIB::CslFarEndTotalTable>();
         }
         return cslfarendtotaltable;
     }
@@ -177,7 +178,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(csptotaltable == nullptr)
         {
-            csptotaltable = std::make_shared<CISCOSONETMIB::Csptotaltable>();
+            csptotaltable = std::make_shared<CISCOSONETMIB::CspTotalTable>();
         }
         return csptotaltable;
     }
@@ -186,7 +187,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(cspfarendtotaltable == nullptr)
         {
-            cspfarendtotaltable = std::make_shared<CISCOSONETMIB::Cspfarendtotaltable>();
+            cspfarendtotaltable = std::make_shared<CISCOSONETMIB::CspFarEndTotalTable>();
         }
         return cspfarendtotaltable;
     }
@@ -195,7 +196,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(csptracetable == nullptr)
         {
-            csptracetable = std::make_shared<CISCOSONETMIB::Csptracetable>();
+            csptracetable = std::make_shared<CISCOSONETMIB::CspTraceTable>();
         }
         return csptracetable;
     }
@@ -204,7 +205,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(csstatstable == nullptr)
         {
-            csstatstable = std::make_shared<CISCOSONETMIB::Csstatstable>();
+            csstatstable = std::make_shared<CISCOSONETMIB::CsStatsTable>();
         }
         return csstatstable;
     }
@@ -213,7 +214,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
     {
         if(csau4tug3configtable == nullptr)
         {
-            csau4tug3configtable = std::make_shared<CISCOSONETMIB::Csau4Tug3Configtable>();
+            csau4tug3configtable = std::make_shared<CISCOSONETMIB::CsAu4Tug3ConfigTable>();
         }
         return csau4tug3configtable;
     }
@@ -333,47 +334,48 @@ bool CISCOSONETMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOSONETMIB::Csapsconfig::Csapsconfig()
+CISCOSONETMIB::CsApsConfig::CsApsConfig()
     :
     csapslinefailurecode{YType::enumeration, "csApsLineFailureCode"},
     csapslineswitchreason{YType::enumeration, "csApsLineSwitchReason"}
 {
 
-    yang_name = "csApsConfig"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csApsConfig"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csapsconfig::~Csapsconfig()
+CISCOSONETMIB::CsApsConfig::~CsApsConfig()
 {
 }
 
-bool CISCOSONETMIB::Csapsconfig::has_data() const
+bool CISCOSONETMIB::CsApsConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return csapslinefailurecode.is_set
 	|| csapslineswitchreason.is_set;
 }
 
-bool CISCOSONETMIB::Csapsconfig::has_operation() const
+bool CISCOSONETMIB::CsApsConfig::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csapslinefailurecode.yfilter)
 	|| ydk::is_set(csapslineswitchreason.yfilter);
 }
 
-std::string CISCOSONETMIB::Csapsconfig::get_absolute_path() const
+std::string CISCOSONETMIB::CsApsConfig::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csapsconfig::get_segment_path() const
+std::string CISCOSONETMIB::CsApsConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csApsConfig";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csapsconfig::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CsApsConfig::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -384,19 +386,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csapsconfig::get_n
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csapsconfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CsApsConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csapsconfig::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CsApsConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Csapsconfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CsApsConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csApsLineFailureCode")
     {
@@ -412,7 +414,7 @@ void CISCOSONETMIB::Csapsconfig::set_value(const std::string & value_path, const
     }
 }
 
-void CISCOSONETMIB::Csapsconfig::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CsApsConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csApsLineFailureCode")
     {
@@ -424,51 +426,52 @@ void CISCOSONETMIB::Csapsconfig::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool CISCOSONETMIB::Csapsconfig::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CsApsConfig::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csApsLineFailureCode" || name == "csApsLineSwitchReason")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csnotifications::Csnotifications()
+CISCOSONETMIB::CsNotifications::CsNotifications()
     :
     csnotificationsenabled{YType::boolean, "csNotificationsEnabled"}
 {
 
-    yang_name = "csNotifications"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csNotifications"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csnotifications::~Csnotifications()
+CISCOSONETMIB::CsNotifications::~CsNotifications()
 {
 }
 
-bool CISCOSONETMIB::Csnotifications::has_data() const
+bool CISCOSONETMIB::CsNotifications::has_data() const
 {
+    if (is_presence_container) return true;
     return csnotificationsenabled.is_set;
 }
 
-bool CISCOSONETMIB::Csnotifications::has_operation() const
+bool CISCOSONETMIB::CsNotifications::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csnotificationsenabled.yfilter);
 }
 
-std::string CISCOSONETMIB::Csnotifications::get_absolute_path() const
+std::string CISCOSONETMIB::CsNotifications::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csnotifications::get_segment_path() const
+std::string CISCOSONETMIB::CsNotifications::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csNotifications";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csnotifications::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CsNotifications::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -478,19 +481,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csnotifications::g
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csnotifications::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CsNotifications::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csnotifications::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CsNotifications::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Csnotifications::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CsNotifications::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csNotificationsEnabled")
     {
@@ -500,7 +503,7 @@ void CISCOSONETMIB::Csnotifications::set_value(const std::string & value_path, c
     }
 }
 
-void CISCOSONETMIB::Csnotifications::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CsNotifications::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csNotificationsEnabled")
     {
@@ -508,26 +511,29 @@ void CISCOSONETMIB::Csnotifications::set_filter(const std::string & value_path, 
     }
 }
 
-bool CISCOSONETMIB::Csnotifications::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CsNotifications::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csNotificationsEnabled")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csconfigtable::Csconfigtable()
+CISCOSONETMIB::CsConfigTable::CsConfigTable()
+    :
+    csconfigentry(this, {"ifindex"})
 {
 
-    yang_name = "csConfigTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csConfigTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csconfigtable::~Csconfigtable()
+CISCOSONETMIB::CsConfigTable::~CsConfigTable()
 {
 }
 
-bool CISCOSONETMIB::Csconfigtable::has_data() const
+bool CISCOSONETMIB::CsConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<csconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csconfigentry.len(); index++)
     {
         if(csconfigentry[index]->has_data())
             return true;
@@ -535,9 +541,9 @@ bool CISCOSONETMIB::Csconfigtable::has_data() const
     return false;
 }
 
-bool CISCOSONETMIB::Csconfigtable::has_operation() const
+bool CISCOSONETMIB::CsConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<csconfigentry.size(); index++)
+    for (std::size_t index=0; index<csconfigentry.len(); index++)
     {
         if(csconfigentry[index]->has_operation())
             return true;
@@ -545,21 +551,21 @@ bool CISCOSONETMIB::Csconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSONETMIB::Csconfigtable::get_absolute_path() const
+std::string CISCOSONETMIB::CsConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csconfigtable::get_segment_path() const
+std::string CISCOSONETMIB::CsConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CsConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -568,25 +574,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csconfigtable::get
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CsConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csConfigEntry")
     {
-        auto c = std::make_shared<CISCOSONETMIB::Csconfigtable::Csconfigentry>();
+        auto c = std::make_shared<CISCOSONETMIB::CsConfigTable::CsConfigEntry>();
         c->parent = this;
-        csconfigentry.push_back(c);
+        csconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CsConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csconfigentry)
+    for (auto c : csconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -597,22 +603,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csconfigtable::get
     return children;
 }
 
-void CISCOSONETMIB::Csconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CsConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSONETMIB::Csconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CsConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSONETMIB::Csconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CsConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csConfigEntry")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigentry()
+CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigEntry()
     :
     ifindex{YType::str, "ifIndex"},
     csconfigloopbacktype{YType::enumeration, "csConfigLoopbackType"},
@@ -628,15 +634,16 @@ CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigentry()
     cstributarygroupingtype{YType::enumeration, "csTributaryGroupingType"}
 {
 
-    yang_name = "csConfigEntry"; yang_parent_name = "csConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csConfigEntry"; yang_parent_name = "csConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csconfigtable::Csconfigentry::~Csconfigentry()
+CISCOSONETMIB::CsConfigTable::CsConfigEntry::~CsConfigEntry()
 {
 }
 
-bool CISCOSONETMIB::Csconfigtable::Csconfigentry::has_data() const
+bool CISCOSONETMIB::CsConfigTable::CsConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| csconfigloopbacktype.is_set
 	|| csconfigxmtclocksource.is_set
@@ -651,7 +658,7 @@ bool CISCOSONETMIB::Csconfigtable::Csconfigentry::has_data() const
 	|| cstributarygroupingtype.is_set;
 }
 
-bool CISCOSONETMIB::Csconfigtable::Csconfigentry::has_operation() const
+bool CISCOSONETMIB::CsConfigTable::CsConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -668,21 +675,22 @@ bool CISCOSONETMIB::Csconfigtable::Csconfigentry::has_operation() const
 	|| ydk::is_set(cstributarygroupingtype.yfilter);
 }
 
-std::string CISCOSONETMIB::Csconfigtable::Csconfigentry::get_absolute_path() const
+std::string CISCOSONETMIB::CsConfigTable::CsConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/csConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csconfigtable::Csconfigentry::get_segment_path() const
+std::string CISCOSONETMIB::CsConfigTable::CsConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csConfigEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "csConfigEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csconfigtable::Csconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CsConfigTable::CsConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -703,19 +711,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csconfigtable::Csc
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csconfigtable::Csconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CsConfigTable::CsConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csconfigtable::Csconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CsConfigTable::CsConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Csconfigtable::Csconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CsConfigTable::CsConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -791,7 +799,7 @@ void CISCOSONETMIB::Csconfigtable::Csconfigentry::set_value(const std::string & 
     }
 }
 
-void CISCOSONETMIB::Csconfigtable::Csconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CsConfigTable::CsConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -843,26 +851,29 @@ void CISCOSONETMIB::Csconfigtable::Csconfigentry::set_filter(const std::string &
     }
 }
 
-bool CISCOSONETMIB::Csconfigtable::Csconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CsConfigTable::CsConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "csConfigLoopbackType" || name == "csConfigXmtClockSource" || name == "csConfigFrameScramble" || name == "csConfigType" || name == "csConfigRDIVType" || name == "csConfigRDIPType" || name == "csTributaryType" || name == "csTributaryMappingType" || name == "csTributaryFramingType" || name == "csSignallingTransportMode" || name == "csTributaryGroupingType")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csapsconfigtable::Csapsconfigtable()
+CISCOSONETMIB::CsApsConfigTable::CsApsConfigTable()
+    :
+    csapsconfigentry(this, {"csapsworkingindex"})
 {
 
-    yang_name = "csApsConfigTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csApsConfigTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csapsconfigtable::~Csapsconfigtable()
+CISCOSONETMIB::CsApsConfigTable::~CsApsConfigTable()
 {
 }
 
-bool CISCOSONETMIB::Csapsconfigtable::has_data() const
+bool CISCOSONETMIB::CsApsConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<csapsconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csapsconfigentry.len(); index++)
     {
         if(csapsconfigentry[index]->has_data())
             return true;
@@ -870,9 +881,9 @@ bool CISCOSONETMIB::Csapsconfigtable::has_data() const
     return false;
 }
 
-bool CISCOSONETMIB::Csapsconfigtable::has_operation() const
+bool CISCOSONETMIB::CsApsConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<csapsconfigentry.size(); index++)
+    for (std::size_t index=0; index<csapsconfigentry.len(); index++)
     {
         if(csapsconfigentry[index]->has_operation())
             return true;
@@ -880,21 +891,21 @@ bool CISCOSONETMIB::Csapsconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSONETMIB::Csapsconfigtable::get_absolute_path() const
+std::string CISCOSONETMIB::CsApsConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csapsconfigtable::get_segment_path() const
+std::string CISCOSONETMIB::CsApsConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csApsConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csapsconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CsApsConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -903,25 +914,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csapsconfigtable::
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csapsconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CsApsConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csApsConfigEntry")
     {
-        auto c = std::make_shared<CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry>();
+        auto c = std::make_shared<CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry>();
         c->parent = this;
-        csapsconfigentry.push_back(c);
+        csapsconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csapsconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CsApsConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csapsconfigentry)
+    for (auto c : csapsconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -932,22 +943,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csapsconfigtable::
     return children;
 }
 
-void CISCOSONETMIB::Csapsconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CsApsConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSONETMIB::Csapsconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CsApsConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSONETMIB::Csapsconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CsApsConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csApsConfigEntry")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsconfigentry()
+CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsConfigEntry()
     :
     csapsworkingindex{YType::int32, "csApsWorkingIndex"},
     csapsprotectionindex{YType::int32, "csApsProtectionIndex"},
@@ -967,15 +978,16 @@ CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsconfigentry()
     csapsprimarysection{YType::enumeration, "csApsPrimarySection"}
 {
 
-    yang_name = "csApsConfigEntry"; yang_parent_name = "csApsConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csApsConfigEntry"; yang_parent_name = "csApsConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::~Csapsconfigentry()
+CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::~CsApsConfigEntry()
 {
 }
 
-bool CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::has_data() const
+bool CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csapsworkingindex.is_set
 	|| csapsprotectionindex.is_set
 	|| csapsenable.is_set
@@ -994,7 +1006,7 @@ bool CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::has_data() const
 	|| csapsprimarysection.is_set;
 }
 
-bool CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::has_operation() const
+bool CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csapsworkingindex.yfilter)
@@ -1015,21 +1027,22 @@ bool CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::has_operation() const
 	|| ydk::is_set(csapsprimarysection.yfilter);
 }
 
-std::string CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::get_absolute_path() const
+std::string CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/csApsConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::get_segment_path() const
+std::string CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csApsConfigEntry" <<"[csApsWorkingIndex='" <<csapsworkingindex <<"']";
+    path_buffer << "csApsConfigEntry";
+    ADD_KEY_TOKEN(csapsworkingindex, "csApsWorkingIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1054,19 +1067,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csapsconfigtable::
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csApsWorkingIndex")
     {
@@ -1164,7 +1177,7 @@ void CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::set_value(const std::str
     }
 }
 
-void CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csApsWorkingIndex")
     {
@@ -1232,26 +1245,29 @@ void CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::set_filter(const std::st
     }
 }
 
-bool CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csApsWorkingIndex" || name == "csApsProtectionIndex" || name == "csApsEnable" || name == "csApsArchMode" || name == "csApsActiveLine" || name == "csApsSigFaultBER" || name == "csApsSigDegradeBER" || name == "csApsWaitToRestore" || name == "csApsDirection" || name == "csApsRevertive" || name == "csApsDirectionOperational" || name == "csApsArchModeOperational" || name == "csApsChannelProtocol" || name == "csApsFailureStatus" || name == "csApsSwitchReason" || name == "csApsPrimarySection")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csstotaltable::Csstotaltable()
+CISCOSONETMIB::CssTotalTable::CssTotalTable()
+    :
+    csstotalentry(this, {"ifindex"})
 {
 
-    yang_name = "cssTotalTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cssTotalTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csstotaltable::~Csstotaltable()
+CISCOSONETMIB::CssTotalTable::~CssTotalTable()
 {
 }
 
-bool CISCOSONETMIB::Csstotaltable::has_data() const
+bool CISCOSONETMIB::CssTotalTable::has_data() const
 {
-    for (std::size_t index=0; index<csstotalentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csstotalentry.len(); index++)
     {
         if(csstotalentry[index]->has_data())
             return true;
@@ -1259,9 +1275,9 @@ bool CISCOSONETMIB::Csstotaltable::has_data() const
     return false;
 }
 
-bool CISCOSONETMIB::Csstotaltable::has_operation() const
+bool CISCOSONETMIB::CssTotalTable::has_operation() const
 {
-    for (std::size_t index=0; index<csstotalentry.size(); index++)
+    for (std::size_t index=0; index<csstotalentry.len(); index++)
     {
         if(csstotalentry[index]->has_operation())
             return true;
@@ -1269,21 +1285,21 @@ bool CISCOSONETMIB::Csstotaltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSONETMIB::Csstotaltable::get_absolute_path() const
+std::string CISCOSONETMIB::CssTotalTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csstotaltable::get_segment_path() const
+std::string CISCOSONETMIB::CssTotalTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cssTotalTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csstotaltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CssTotalTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1292,25 +1308,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csstotaltable::get
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csstotaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CssTotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cssTotalEntry")
     {
-        auto c = std::make_shared<CISCOSONETMIB::Csstotaltable::Csstotalentry>();
+        auto c = std::make_shared<CISCOSONETMIB::CssTotalTable::CssTotalEntry>();
         c->parent = this;
-        csstotalentry.push_back(c);
+        csstotalentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstotaltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CssTotalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csstotalentry)
+    for (auto c : csstotalentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1321,22 +1337,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstotaltable::get
     return children;
 }
 
-void CISCOSONETMIB::Csstotaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CssTotalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSONETMIB::Csstotaltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CssTotalTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSONETMIB::Csstotaltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CssTotalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cssTotalEntry")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csstotaltable::Csstotalentry::Csstotalentry()
+CISCOSONETMIB::CssTotalTable::CssTotalEntry::CssTotalEntry()
     :
     ifindex{YType::str, "ifIndex"},
     csstotaless{YType::uint32, "cssTotalESs"},
@@ -1345,15 +1361,16 @@ CISCOSONETMIB::Csstotaltable::Csstotalentry::Csstotalentry()
     csstotalcvs{YType::uint32, "cssTotalCVs"}
 {
 
-    yang_name = "cssTotalEntry"; yang_parent_name = "cssTotalTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cssTotalEntry"; yang_parent_name = "cssTotalTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csstotaltable::Csstotalentry::~Csstotalentry()
+CISCOSONETMIB::CssTotalTable::CssTotalEntry::~CssTotalEntry()
 {
 }
 
-bool CISCOSONETMIB::Csstotaltable::Csstotalentry::has_data() const
+bool CISCOSONETMIB::CssTotalTable::CssTotalEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| csstotaless.is_set
 	|| csstotalsess.is_set
@@ -1361,7 +1378,7 @@ bool CISCOSONETMIB::Csstotaltable::Csstotalentry::has_data() const
 	|| csstotalcvs.is_set;
 }
 
-bool CISCOSONETMIB::Csstotaltable::Csstotalentry::has_operation() const
+bool CISCOSONETMIB::CssTotalTable::CssTotalEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1371,21 +1388,22 @@ bool CISCOSONETMIB::Csstotaltable::Csstotalentry::has_operation() const
 	|| ydk::is_set(csstotalcvs.yfilter);
 }
 
-std::string CISCOSONETMIB::Csstotaltable::Csstotalentry::get_absolute_path() const
+std::string CISCOSONETMIB::CssTotalTable::CssTotalEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/cssTotalTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csstotaltable::Csstotalentry::get_segment_path() const
+std::string CISCOSONETMIB::CssTotalTable::CssTotalEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cssTotalEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cssTotalEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csstotaltable::Csstotalentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CssTotalTable::CssTotalEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1399,19 +1417,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csstotaltable::Css
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csstotaltable::Csstotalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CssTotalTable::CssTotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstotaltable::Csstotalentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CssTotalTable::CssTotalEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Csstotaltable::Csstotalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CssTotalTable::CssTotalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1445,7 +1463,7 @@ void CISCOSONETMIB::Csstotaltable::Csstotalentry::set_value(const std::string & 
     }
 }
 
-void CISCOSONETMIB::Csstotaltable::Csstotalentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CssTotalTable::CssTotalEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1469,26 +1487,29 @@ void CISCOSONETMIB::Csstotaltable::Csstotalentry::set_filter(const std::string &
     }
 }
 
-bool CISCOSONETMIB::Csstotaltable::Csstotalentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CssTotalTable::CssTotalEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cssTotalESs" || name == "cssTotalSESs" || name == "cssTotalSEFSs" || name == "cssTotalCVs")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csstracetable::Csstracetable()
+CISCOSONETMIB::CssTraceTable::CssTraceTable()
+    :
+    csstraceentry(this, {"ifindex"})
 {
 
-    yang_name = "cssTraceTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cssTraceTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csstracetable::~Csstracetable()
+CISCOSONETMIB::CssTraceTable::~CssTraceTable()
 {
 }
 
-bool CISCOSONETMIB::Csstracetable::has_data() const
+bool CISCOSONETMIB::CssTraceTable::has_data() const
 {
-    for (std::size_t index=0; index<csstraceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csstraceentry.len(); index++)
     {
         if(csstraceentry[index]->has_data())
             return true;
@@ -1496,9 +1517,9 @@ bool CISCOSONETMIB::Csstracetable::has_data() const
     return false;
 }
 
-bool CISCOSONETMIB::Csstracetable::has_operation() const
+bool CISCOSONETMIB::CssTraceTable::has_operation() const
 {
-    for (std::size_t index=0; index<csstraceentry.size(); index++)
+    for (std::size_t index=0; index<csstraceentry.len(); index++)
     {
         if(csstraceentry[index]->has_operation())
             return true;
@@ -1506,21 +1527,21 @@ bool CISCOSONETMIB::Csstracetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSONETMIB::Csstracetable::get_absolute_path() const
+std::string CISCOSONETMIB::CssTraceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csstracetable::get_segment_path() const
+std::string CISCOSONETMIB::CssTraceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cssTraceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csstracetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CssTraceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1529,25 +1550,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csstracetable::get
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csstracetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CssTraceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cssTraceEntry")
     {
-        auto c = std::make_shared<CISCOSONETMIB::Csstracetable::Csstraceentry>();
+        auto c = std::make_shared<CISCOSONETMIB::CssTraceTable::CssTraceEntry>();
         c->parent = this;
-        csstraceentry.push_back(c);
+        csstraceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstracetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CssTraceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csstraceentry)
+    for (auto c : csstraceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1558,22 +1579,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstracetable::get
     return children;
 }
 
-void CISCOSONETMIB::Csstracetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CssTraceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSONETMIB::Csstracetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CssTraceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSONETMIB::Csstracetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CssTraceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cssTraceEntry")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csstracetable::Csstraceentry::Csstraceentry()
+CISCOSONETMIB::CssTraceTable::CssTraceEntry::CssTraceEntry()
     :
     ifindex{YType::str, "ifIndex"},
     csstracetotransmit{YType::str, "cssTraceToTransmit"},
@@ -1582,15 +1603,16 @@ CISCOSONETMIB::Csstracetable::Csstraceentry::Csstraceentry()
     csstracereceived{YType::str, "cssTraceReceived"}
 {
 
-    yang_name = "cssTraceEntry"; yang_parent_name = "cssTraceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cssTraceEntry"; yang_parent_name = "cssTraceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csstracetable::Csstraceentry::~Csstraceentry()
+CISCOSONETMIB::CssTraceTable::CssTraceEntry::~CssTraceEntry()
 {
 }
 
-bool CISCOSONETMIB::Csstracetable::Csstraceentry::has_data() const
+bool CISCOSONETMIB::CssTraceTable::CssTraceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| csstracetotransmit.is_set
 	|| csstracetoexpect.is_set
@@ -1598,7 +1620,7 @@ bool CISCOSONETMIB::Csstracetable::Csstraceentry::has_data() const
 	|| csstracereceived.is_set;
 }
 
-bool CISCOSONETMIB::Csstracetable::Csstraceentry::has_operation() const
+bool CISCOSONETMIB::CssTraceTable::CssTraceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1608,21 +1630,22 @@ bool CISCOSONETMIB::Csstracetable::Csstraceentry::has_operation() const
 	|| ydk::is_set(csstracereceived.yfilter);
 }
 
-std::string CISCOSONETMIB::Csstracetable::Csstraceentry::get_absolute_path() const
+std::string CISCOSONETMIB::CssTraceTable::CssTraceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/cssTraceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csstracetable::Csstraceentry::get_segment_path() const
+std::string CISCOSONETMIB::CssTraceTable::CssTraceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cssTraceEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cssTraceEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csstracetable::Csstraceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CssTraceTable::CssTraceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1636,19 +1659,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csstracetable::Css
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csstracetable::Csstraceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CssTraceTable::CssTraceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstracetable::Csstraceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CssTraceTable::CssTraceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Csstracetable::Csstraceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CssTraceTable::CssTraceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1682,7 +1705,7 @@ void CISCOSONETMIB::Csstracetable::Csstraceentry::set_value(const std::string & 
     }
 }
 
-void CISCOSONETMIB::Csstracetable::Csstraceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CssTraceTable::CssTraceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1706,26 +1729,29 @@ void CISCOSONETMIB::Csstracetable::Csstraceentry::set_filter(const std::string &
     }
 }
 
-bool CISCOSONETMIB::Csstracetable::Csstraceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CssTraceTable::CssTraceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cssTraceToTransmit" || name == "cssTraceToExpect" || name == "cssTraceFailure" || name == "cssTraceReceived")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csltotaltable::Csltotaltable()
+CISCOSONETMIB::CslTotalTable::CslTotalTable()
+    :
+    csltotalentry(this, {"ifindex"})
 {
 
-    yang_name = "cslTotalTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cslTotalTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csltotaltable::~Csltotaltable()
+CISCOSONETMIB::CslTotalTable::~CslTotalTable()
 {
 }
 
-bool CISCOSONETMIB::Csltotaltable::has_data() const
+bool CISCOSONETMIB::CslTotalTable::has_data() const
 {
-    for (std::size_t index=0; index<csltotalentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csltotalentry.len(); index++)
     {
         if(csltotalentry[index]->has_data())
             return true;
@@ -1733,9 +1759,9 @@ bool CISCOSONETMIB::Csltotaltable::has_data() const
     return false;
 }
 
-bool CISCOSONETMIB::Csltotaltable::has_operation() const
+bool CISCOSONETMIB::CslTotalTable::has_operation() const
 {
-    for (std::size_t index=0; index<csltotalentry.size(); index++)
+    for (std::size_t index=0; index<csltotalentry.len(); index++)
     {
         if(csltotalentry[index]->has_operation())
             return true;
@@ -1743,21 +1769,21 @@ bool CISCOSONETMIB::Csltotaltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSONETMIB::Csltotaltable::get_absolute_path() const
+std::string CISCOSONETMIB::CslTotalTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csltotaltable::get_segment_path() const
+std::string CISCOSONETMIB::CslTotalTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cslTotalTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csltotaltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CslTotalTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1766,25 +1792,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csltotaltable::get
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csltotaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CslTotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cslTotalEntry")
     {
-        auto c = std::make_shared<CISCOSONETMIB::Csltotaltable::Csltotalentry>();
+        auto c = std::make_shared<CISCOSONETMIB::CslTotalTable::CslTotalEntry>();
         c->parent = this;
-        csltotalentry.push_back(c);
+        csltotalentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csltotaltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CslTotalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csltotalentry)
+    for (auto c : csltotalentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1795,22 +1821,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csltotaltable::get
     return children;
 }
 
-void CISCOSONETMIB::Csltotaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CslTotalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSONETMIB::Csltotaltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CslTotalTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSONETMIB::Csltotaltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CslTotalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cslTotalEntry")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csltotaltable::Csltotalentry::Csltotalentry()
+CISCOSONETMIB::CslTotalTable::CslTotalEntry::CslTotalEntry()
     :
     ifindex{YType::str, "ifIndex"},
     csltotaless{YType::uint32, "cslTotalESs"},
@@ -1819,15 +1845,16 @@ CISCOSONETMIB::Csltotaltable::Csltotalentry::Csltotalentry()
     csltotaluass{YType::uint32, "cslTotalUASs"}
 {
 
-    yang_name = "cslTotalEntry"; yang_parent_name = "cslTotalTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cslTotalEntry"; yang_parent_name = "cslTotalTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csltotaltable::Csltotalentry::~Csltotalentry()
+CISCOSONETMIB::CslTotalTable::CslTotalEntry::~CslTotalEntry()
 {
 }
 
-bool CISCOSONETMIB::Csltotaltable::Csltotalentry::has_data() const
+bool CISCOSONETMIB::CslTotalTable::CslTotalEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| csltotaless.is_set
 	|| csltotalsess.is_set
@@ -1835,7 +1862,7 @@ bool CISCOSONETMIB::Csltotaltable::Csltotalentry::has_data() const
 	|| csltotaluass.is_set;
 }
 
-bool CISCOSONETMIB::Csltotaltable::Csltotalentry::has_operation() const
+bool CISCOSONETMIB::CslTotalTable::CslTotalEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1845,21 +1872,22 @@ bool CISCOSONETMIB::Csltotaltable::Csltotalentry::has_operation() const
 	|| ydk::is_set(csltotaluass.yfilter);
 }
 
-std::string CISCOSONETMIB::Csltotaltable::Csltotalentry::get_absolute_path() const
+std::string CISCOSONETMIB::CslTotalTable::CslTotalEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/cslTotalTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csltotaltable::Csltotalentry::get_segment_path() const
+std::string CISCOSONETMIB::CslTotalTable::CslTotalEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cslTotalEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cslTotalEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csltotaltable::Csltotalentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CslTotalTable::CslTotalEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1873,19 +1901,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csltotaltable::Csl
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csltotaltable::Csltotalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CslTotalTable::CslTotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csltotaltable::Csltotalentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CslTotalTable::CslTotalEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Csltotaltable::Csltotalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CslTotalTable::CslTotalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1919,7 +1947,7 @@ void CISCOSONETMIB::Csltotaltable::Csltotalentry::set_value(const std::string & 
     }
 }
 
-void CISCOSONETMIB::Csltotaltable::Csltotalentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CslTotalTable::CslTotalEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1943,26 +1971,29 @@ void CISCOSONETMIB::Csltotaltable::Csltotalentry::set_filter(const std::string &
     }
 }
 
-bool CISCOSONETMIB::Csltotaltable::Csltotalentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CslTotalTable::CslTotalEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cslTotalESs" || name == "cslTotalSESs" || name == "cslTotalCVs" || name == "cslTotalUASs")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotaltable()
+CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalTable()
+    :
+    cslfarendtotalentry(this, {"ifindex"})
 {
 
-    yang_name = "cslFarEndTotalTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cslFarEndTotalTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Cslfarendtotaltable::~Cslfarendtotaltable()
+CISCOSONETMIB::CslFarEndTotalTable::~CslFarEndTotalTable()
 {
 }
 
-bool CISCOSONETMIB::Cslfarendtotaltable::has_data() const
+bool CISCOSONETMIB::CslFarEndTotalTable::has_data() const
 {
-    for (std::size_t index=0; index<cslfarendtotalentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cslfarendtotalentry.len(); index++)
     {
         if(cslfarendtotalentry[index]->has_data())
             return true;
@@ -1970,9 +2001,9 @@ bool CISCOSONETMIB::Cslfarendtotaltable::has_data() const
     return false;
 }
 
-bool CISCOSONETMIB::Cslfarendtotaltable::has_operation() const
+bool CISCOSONETMIB::CslFarEndTotalTable::has_operation() const
 {
-    for (std::size_t index=0; index<cslfarendtotalentry.size(); index++)
+    for (std::size_t index=0; index<cslfarendtotalentry.len(); index++)
     {
         if(cslfarendtotalentry[index]->has_operation())
             return true;
@@ -1980,21 +2011,21 @@ bool CISCOSONETMIB::Cslfarendtotaltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSONETMIB::Cslfarendtotaltable::get_absolute_path() const
+std::string CISCOSONETMIB::CslFarEndTotalTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Cslfarendtotaltable::get_segment_path() const
+std::string CISCOSONETMIB::CslFarEndTotalTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cslFarEndTotalTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Cslfarendtotaltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CslFarEndTotalTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2003,25 +2034,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Cslfarendtotaltabl
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Cslfarendtotaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CslFarEndTotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cslFarEndTotalEntry")
     {
-        auto c = std::make_shared<CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry>();
+        auto c = std::make_shared<CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry>();
         c->parent = this;
-        cslfarendtotalentry.push_back(c);
+        cslfarendtotalentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Cslfarendtotaltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CslFarEndTotalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cslfarendtotalentry)
+    for (auto c : cslfarendtotalentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2032,22 +2063,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Cslfarendtotaltabl
     return children;
 }
 
-void CISCOSONETMIB::Cslfarendtotaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CslFarEndTotalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSONETMIB::Cslfarendtotaltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CslFarEndTotalTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSONETMIB::Cslfarendtotaltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CslFarEndTotalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cslFarEndTotalEntry")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::Cslfarendtotalentry()
+CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry::CslFarEndTotalEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cslfarendtotaless{YType::uint32, "cslFarEndTotalESs"},
@@ -2056,15 +2087,16 @@ CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::Cslfarendtotalentry()
     cslfarendtotaluass{YType::uint32, "cslFarEndTotalUASs"}
 {
 
-    yang_name = "cslFarEndTotalEntry"; yang_parent_name = "cslFarEndTotalTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cslFarEndTotalEntry"; yang_parent_name = "cslFarEndTotalTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::~Cslfarendtotalentry()
+CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry::~CslFarEndTotalEntry()
 {
 }
 
-bool CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::has_data() const
+bool CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cslfarendtotaless.is_set
 	|| cslfarendtotalsess.is_set
@@ -2072,7 +2104,7 @@ bool CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::has_data() const
 	|| cslfarendtotaluass.is_set;
 }
 
-bool CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::has_operation() const
+bool CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2082,21 +2114,22 @@ bool CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::has_operation() co
 	|| ydk::is_set(cslfarendtotaluass.yfilter);
 }
 
-std::string CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::get_absolute_path() const
+std::string CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/cslFarEndTotalTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::get_segment_path() const
+std::string CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cslFarEndTotalEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cslFarEndTotalEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2110,19 +2143,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Cslfarendtotaltabl
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2156,7 +2189,7 @@ void CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::set_value(const st
     }
 }
 
-void CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2180,26 +2213,29 @@ void CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::set_filter(const s
     }
 }
 
-bool CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cslFarEndTotalESs" || name == "cslFarEndTotalSESs" || name == "cslFarEndTotalCVs" || name == "cslFarEndTotalUASs")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csptotaltable::Csptotaltable()
+CISCOSONETMIB::CspTotalTable::CspTotalTable()
+    :
+    csptotalentry(this, {"ifindex"})
 {
 
-    yang_name = "cspTotalTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cspTotalTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csptotaltable::~Csptotaltable()
+CISCOSONETMIB::CspTotalTable::~CspTotalTable()
 {
 }
 
-bool CISCOSONETMIB::Csptotaltable::has_data() const
+bool CISCOSONETMIB::CspTotalTable::has_data() const
 {
-    for (std::size_t index=0; index<csptotalentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csptotalentry.len(); index++)
     {
         if(csptotalentry[index]->has_data())
             return true;
@@ -2207,9 +2243,9 @@ bool CISCOSONETMIB::Csptotaltable::has_data() const
     return false;
 }
 
-bool CISCOSONETMIB::Csptotaltable::has_operation() const
+bool CISCOSONETMIB::CspTotalTable::has_operation() const
 {
-    for (std::size_t index=0; index<csptotalentry.size(); index++)
+    for (std::size_t index=0; index<csptotalentry.len(); index++)
     {
         if(csptotalentry[index]->has_operation())
             return true;
@@ -2217,21 +2253,21 @@ bool CISCOSONETMIB::Csptotaltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSONETMIB::Csptotaltable::get_absolute_path() const
+std::string CISCOSONETMIB::CspTotalTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csptotaltable::get_segment_path() const
+std::string CISCOSONETMIB::CspTotalTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cspTotalTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csptotaltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CspTotalTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2240,25 +2276,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csptotaltable::get
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csptotaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CspTotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cspTotalEntry")
     {
-        auto c = std::make_shared<CISCOSONETMIB::Csptotaltable::Csptotalentry>();
+        auto c = std::make_shared<CISCOSONETMIB::CspTotalTable::CspTotalEntry>();
         c->parent = this;
-        csptotalentry.push_back(c);
+        csptotalentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csptotaltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CspTotalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csptotalentry)
+    for (auto c : csptotalentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2269,22 +2305,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csptotaltable::get
     return children;
 }
 
-void CISCOSONETMIB::Csptotaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CspTotalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSONETMIB::Csptotaltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CspTotalTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSONETMIB::Csptotaltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CspTotalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cspTotalEntry")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csptotaltable::Csptotalentry::Csptotalentry()
+CISCOSONETMIB::CspTotalTable::CspTotalEntry::CspTotalEntry()
     :
     ifindex{YType::str, "ifIndex"},
     csptotaless{YType::uint32, "cspTotalESs"},
@@ -2293,15 +2329,16 @@ CISCOSONETMIB::Csptotaltable::Csptotalentry::Csptotalentry()
     csptotaluass{YType::uint32, "cspTotalUASs"}
 {
 
-    yang_name = "cspTotalEntry"; yang_parent_name = "cspTotalTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cspTotalEntry"; yang_parent_name = "cspTotalTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csptotaltable::Csptotalentry::~Csptotalentry()
+CISCOSONETMIB::CspTotalTable::CspTotalEntry::~CspTotalEntry()
 {
 }
 
-bool CISCOSONETMIB::Csptotaltable::Csptotalentry::has_data() const
+bool CISCOSONETMIB::CspTotalTable::CspTotalEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| csptotaless.is_set
 	|| csptotalsess.is_set
@@ -2309,7 +2346,7 @@ bool CISCOSONETMIB::Csptotaltable::Csptotalentry::has_data() const
 	|| csptotaluass.is_set;
 }
 
-bool CISCOSONETMIB::Csptotaltable::Csptotalentry::has_operation() const
+bool CISCOSONETMIB::CspTotalTable::CspTotalEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2319,21 +2356,22 @@ bool CISCOSONETMIB::Csptotaltable::Csptotalentry::has_operation() const
 	|| ydk::is_set(csptotaluass.yfilter);
 }
 
-std::string CISCOSONETMIB::Csptotaltable::Csptotalentry::get_absolute_path() const
+std::string CISCOSONETMIB::CspTotalTable::CspTotalEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/cspTotalTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csptotaltable::Csptotalentry::get_segment_path() const
+std::string CISCOSONETMIB::CspTotalTable::CspTotalEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cspTotalEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cspTotalEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csptotaltable::Csptotalentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CspTotalTable::CspTotalEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2347,19 +2385,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csptotaltable::Csp
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csptotaltable::Csptotalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CspTotalTable::CspTotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csptotaltable::Csptotalentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CspTotalTable::CspTotalEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Csptotaltable::Csptotalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CspTotalTable::CspTotalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2393,7 +2431,7 @@ void CISCOSONETMIB::Csptotaltable::Csptotalentry::set_value(const std::string & 
     }
 }
 
-void CISCOSONETMIB::Csptotaltable::Csptotalentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CspTotalTable::CspTotalEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2417,26 +2455,29 @@ void CISCOSONETMIB::Csptotaltable::Csptotalentry::set_filter(const std::string &
     }
 }
 
-bool CISCOSONETMIB::Csptotaltable::Csptotalentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CspTotalTable::CspTotalEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cspTotalESs" || name == "cspTotalSESs" || name == "cspTotalCVs" || name == "cspTotalUASs")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotaltable()
+CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalTable()
+    :
+    cspfarendtotalentry(this, {"ifindex"})
 {
 
-    yang_name = "cspFarEndTotalTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cspFarEndTotalTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Cspfarendtotaltable::~Cspfarendtotaltable()
+CISCOSONETMIB::CspFarEndTotalTable::~CspFarEndTotalTable()
 {
 }
 
-bool CISCOSONETMIB::Cspfarendtotaltable::has_data() const
+bool CISCOSONETMIB::CspFarEndTotalTable::has_data() const
 {
-    for (std::size_t index=0; index<cspfarendtotalentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cspfarendtotalentry.len(); index++)
     {
         if(cspfarendtotalentry[index]->has_data())
             return true;
@@ -2444,9 +2485,9 @@ bool CISCOSONETMIB::Cspfarendtotaltable::has_data() const
     return false;
 }
 
-bool CISCOSONETMIB::Cspfarendtotaltable::has_operation() const
+bool CISCOSONETMIB::CspFarEndTotalTable::has_operation() const
 {
-    for (std::size_t index=0; index<cspfarendtotalentry.size(); index++)
+    for (std::size_t index=0; index<cspfarendtotalentry.len(); index++)
     {
         if(cspfarendtotalentry[index]->has_operation())
             return true;
@@ -2454,21 +2495,21 @@ bool CISCOSONETMIB::Cspfarendtotaltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSONETMIB::Cspfarendtotaltable::get_absolute_path() const
+std::string CISCOSONETMIB::CspFarEndTotalTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Cspfarendtotaltable::get_segment_path() const
+std::string CISCOSONETMIB::CspFarEndTotalTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cspFarEndTotalTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Cspfarendtotaltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CspFarEndTotalTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2477,25 +2518,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Cspfarendtotaltabl
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Cspfarendtotaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CspFarEndTotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cspFarEndTotalEntry")
     {
-        auto c = std::make_shared<CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry>();
+        auto c = std::make_shared<CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry>();
         c->parent = this;
-        cspfarendtotalentry.push_back(c);
+        cspfarendtotalentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Cspfarendtotaltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CspFarEndTotalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cspfarendtotalentry)
+    for (auto c : cspfarendtotalentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2506,22 +2547,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Cspfarendtotaltabl
     return children;
 }
 
-void CISCOSONETMIB::Cspfarendtotaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CspFarEndTotalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSONETMIB::Cspfarendtotaltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CspFarEndTotalTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSONETMIB::Cspfarendtotaltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CspFarEndTotalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cspFarEndTotalEntry")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::Cspfarendtotalentry()
+CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry::CspFarEndTotalEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cspfarendtotaless{YType::uint32, "cspFarEndTotalESs"},
@@ -2530,15 +2571,16 @@ CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::Cspfarendtotalentry()
     cspfarendtotaluass{YType::uint32, "cspFarEndTotalUASs"}
 {
 
-    yang_name = "cspFarEndTotalEntry"; yang_parent_name = "cspFarEndTotalTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cspFarEndTotalEntry"; yang_parent_name = "cspFarEndTotalTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::~Cspfarendtotalentry()
+CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry::~CspFarEndTotalEntry()
 {
 }
 
-bool CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::has_data() const
+bool CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cspfarendtotaless.is_set
 	|| cspfarendtotalsess.is_set
@@ -2546,7 +2588,7 @@ bool CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::has_data() const
 	|| cspfarendtotaluass.is_set;
 }
 
-bool CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::has_operation() const
+bool CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2556,21 +2598,22 @@ bool CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::has_operation() co
 	|| ydk::is_set(cspfarendtotaluass.yfilter);
 }
 
-std::string CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::get_absolute_path() const
+std::string CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/cspFarEndTotalTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::get_segment_path() const
+std::string CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cspFarEndTotalEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cspFarEndTotalEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2584,19 +2627,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Cspfarendtotaltabl
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2630,7 +2673,7 @@ void CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::set_value(const st
     }
 }
 
-void CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2654,26 +2697,29 @@ void CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::set_filter(const s
     }
 }
 
-bool CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cspFarEndTotalESs" || name == "cspFarEndTotalSESs" || name == "cspFarEndTotalCVs" || name == "cspFarEndTotalUASs")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csptracetable::Csptracetable()
+CISCOSONETMIB::CspTraceTable::CspTraceTable()
+    :
+    csptraceentry(this, {"ifindex"})
 {
 
-    yang_name = "cspTraceTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cspTraceTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csptracetable::~Csptracetable()
+CISCOSONETMIB::CspTraceTable::~CspTraceTable()
 {
 }
 
-bool CISCOSONETMIB::Csptracetable::has_data() const
+bool CISCOSONETMIB::CspTraceTable::has_data() const
 {
-    for (std::size_t index=0; index<csptraceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csptraceentry.len(); index++)
     {
         if(csptraceentry[index]->has_data())
             return true;
@@ -2681,9 +2727,9 @@ bool CISCOSONETMIB::Csptracetable::has_data() const
     return false;
 }
 
-bool CISCOSONETMIB::Csptracetable::has_operation() const
+bool CISCOSONETMIB::CspTraceTable::has_operation() const
 {
-    for (std::size_t index=0; index<csptraceentry.size(); index++)
+    for (std::size_t index=0; index<csptraceentry.len(); index++)
     {
         if(csptraceentry[index]->has_operation())
             return true;
@@ -2691,21 +2737,21 @@ bool CISCOSONETMIB::Csptracetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSONETMIB::Csptracetable::get_absolute_path() const
+std::string CISCOSONETMIB::CspTraceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csptracetable::get_segment_path() const
+std::string CISCOSONETMIB::CspTraceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cspTraceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csptracetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CspTraceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2714,25 +2760,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csptracetable::get
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csptracetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CspTraceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cspTraceEntry")
     {
-        auto c = std::make_shared<CISCOSONETMIB::Csptracetable::Csptraceentry>();
+        auto c = std::make_shared<CISCOSONETMIB::CspTraceTable::CspTraceEntry>();
         c->parent = this;
-        csptraceentry.push_back(c);
+        csptraceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csptracetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CspTraceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csptraceentry)
+    for (auto c : csptraceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2743,22 +2789,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csptracetable::get
     return children;
 }
 
-void CISCOSONETMIB::Csptracetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CspTraceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSONETMIB::Csptracetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CspTraceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSONETMIB::Csptracetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CspTraceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cspTraceEntry")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csptracetable::Csptraceentry::Csptraceentry()
+CISCOSONETMIB::CspTraceTable::CspTraceEntry::CspTraceEntry()
     :
     ifindex{YType::str, "ifIndex"},
     csptracetotransmit{YType::str, "cspTraceToTransmit"},
@@ -2767,15 +2813,16 @@ CISCOSONETMIB::Csptracetable::Csptraceentry::Csptraceentry()
     csptracereceived{YType::str, "cspTraceReceived"}
 {
 
-    yang_name = "cspTraceEntry"; yang_parent_name = "cspTraceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cspTraceEntry"; yang_parent_name = "cspTraceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csptracetable::Csptraceentry::~Csptraceentry()
+CISCOSONETMIB::CspTraceTable::CspTraceEntry::~CspTraceEntry()
 {
 }
 
-bool CISCOSONETMIB::Csptracetable::Csptraceentry::has_data() const
+bool CISCOSONETMIB::CspTraceTable::CspTraceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| csptracetotransmit.is_set
 	|| csptracetoexpect.is_set
@@ -2783,7 +2830,7 @@ bool CISCOSONETMIB::Csptracetable::Csptraceentry::has_data() const
 	|| csptracereceived.is_set;
 }
 
-bool CISCOSONETMIB::Csptracetable::Csptraceentry::has_operation() const
+bool CISCOSONETMIB::CspTraceTable::CspTraceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2793,21 +2840,22 @@ bool CISCOSONETMIB::Csptracetable::Csptraceentry::has_operation() const
 	|| ydk::is_set(csptracereceived.yfilter);
 }
 
-std::string CISCOSONETMIB::Csptracetable::Csptraceentry::get_absolute_path() const
+std::string CISCOSONETMIB::CspTraceTable::CspTraceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/cspTraceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csptracetable::Csptraceentry::get_segment_path() const
+std::string CISCOSONETMIB::CspTraceTable::CspTraceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cspTraceEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cspTraceEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csptracetable::Csptraceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CspTraceTable::CspTraceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2821,19 +2869,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csptracetable::Csp
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csptracetable::Csptraceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CspTraceTable::CspTraceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csptracetable::Csptraceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CspTraceTable::CspTraceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Csptracetable::Csptraceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CspTraceTable::CspTraceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2867,7 +2915,7 @@ void CISCOSONETMIB::Csptracetable::Csptraceentry::set_value(const std::string & 
     }
 }
 
-void CISCOSONETMIB::Csptracetable::Csptraceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CspTraceTable::CspTraceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2891,26 +2939,29 @@ void CISCOSONETMIB::Csptracetable::Csptraceentry::set_filter(const std::string &
     }
 }
 
-bool CISCOSONETMIB::Csptracetable::Csptraceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CspTraceTable::CspTraceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cspTraceToTransmit" || name == "cspTraceToExpect" || name == "cspTraceFailure" || name == "cspTraceReceived")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csstatstable::Csstatstable()
+CISCOSONETMIB::CsStatsTable::CsStatsTable()
+    :
+    csstatsentry(this, {"ifindex"})
 {
 
-    yang_name = "csStatsTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csStatsTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csstatstable::~Csstatstable()
+CISCOSONETMIB::CsStatsTable::~CsStatsTable()
 {
 }
 
-bool CISCOSONETMIB::Csstatstable::has_data() const
+bool CISCOSONETMIB::CsStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<csstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csstatsentry.len(); index++)
     {
         if(csstatsentry[index]->has_data())
             return true;
@@ -2918,9 +2969,9 @@ bool CISCOSONETMIB::Csstatstable::has_data() const
     return false;
 }
 
-bool CISCOSONETMIB::Csstatstable::has_operation() const
+bool CISCOSONETMIB::CsStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<csstatsentry.size(); index++)
+    for (std::size_t index=0; index<csstatsentry.len(); index++)
     {
         if(csstatsentry[index]->has_operation())
             return true;
@@ -2928,21 +2979,21 @@ bool CISCOSONETMIB::Csstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSONETMIB::Csstatstable::get_absolute_path() const
+std::string CISCOSONETMIB::CsStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csstatstable::get_segment_path() const
+std::string CISCOSONETMIB::CsStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CsStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2951,25 +3002,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csstatstable::get_
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CsStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csStatsEntry")
     {
-        auto c = std::make_shared<CISCOSONETMIB::Csstatstable::Csstatsentry>();
+        auto c = std::make_shared<CISCOSONETMIB::CsStatsTable::CsStatsEntry>();
         c->parent = this;
-        csstatsentry.push_back(c);
+        csstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CsStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csstatsentry)
+    for (auto c : csstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2980,22 +3031,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstatstable::get_
     return children;
 }
 
-void CISCOSONETMIB::Csstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CsStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSONETMIB::Csstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CsStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSONETMIB::Csstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CsStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csStatsEntry")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csstatstable::Csstatsentry::Csstatsentry()
+CISCOSONETMIB::CsStatsTable::CsStatsEntry::CsStatsEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cssloss{YType::uint32, "cssLOSs"},
@@ -3006,15 +3057,16 @@ CISCOSONETMIB::Csstatstable::Csstatsentry::Csstatsentry()
     csprfis{YType::uint32, "cspRFIs"}
 {
 
-    yang_name = "csStatsEntry"; yang_parent_name = "csStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csStatsEntry"; yang_parent_name = "csStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csstatstable::Csstatsentry::~Csstatsentry()
+CISCOSONETMIB::CsStatsTable::CsStatsEntry::~CsStatsEntry()
 {
 }
 
-bool CISCOSONETMIB::Csstatstable::Csstatsentry::has_data() const
+bool CISCOSONETMIB::CsStatsTable::CsStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cssloss.is_set
 	|| csslofs.is_set
@@ -3024,7 +3076,7 @@ bool CISCOSONETMIB::Csstatstable::Csstatsentry::has_data() const
 	|| csprfis.is_set;
 }
 
-bool CISCOSONETMIB::Csstatstable::Csstatsentry::has_operation() const
+bool CISCOSONETMIB::CsStatsTable::CsStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -3036,21 +3088,22 @@ bool CISCOSONETMIB::Csstatstable::Csstatsentry::has_operation() const
 	|| ydk::is_set(csprfis.yfilter);
 }
 
-std::string CISCOSONETMIB::Csstatstable::Csstatsentry::get_absolute_path() const
+std::string CISCOSONETMIB::CsStatsTable::CsStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/csStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csstatstable::Csstatsentry::get_segment_path() const
+std::string CISCOSONETMIB::CsStatsTable::CsStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csStatsEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "csStatsEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csstatstable::Csstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CsStatsTable::CsStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3066,19 +3119,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csstatstable::Csst
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csstatstable::Csstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CsStatsTable::CsStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstatstable::Csstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CsStatsTable::CsStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Csstatstable::Csstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CsStatsTable::CsStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -3124,7 +3177,7 @@ void CISCOSONETMIB::Csstatstable::Csstatsentry::set_value(const std::string & va
     }
 }
 
-void CISCOSONETMIB::Csstatstable::Csstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CsStatsTable::CsStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -3156,26 +3209,29 @@ void CISCOSONETMIB::Csstatstable::Csstatsentry::set_filter(const std::string & v
     }
 }
 
-bool CISCOSONETMIB::Csstatstable::Csstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CsStatsTable::CsStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cssLOSs" || name == "cssLOFs" || name == "cslAISs" || name == "cslRFIs" || name == "cspAISs" || name == "cspRFIs")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configtable()
+CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigTable()
+    :
+    csau4tug3configentry(this, {"ifindex", "csau4tug3"})
 {
 
-    yang_name = "csAu4Tug3ConfigTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csAu4Tug3ConfigTable"; yang_parent_name = "CISCO-SONET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csau4Tug3Configtable::~Csau4Tug3Configtable()
+CISCOSONETMIB::CsAu4Tug3ConfigTable::~CsAu4Tug3ConfigTable()
 {
 }
 
-bool CISCOSONETMIB::Csau4Tug3Configtable::has_data() const
+bool CISCOSONETMIB::CsAu4Tug3ConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<csau4tug3configentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csau4tug3configentry.len(); index++)
     {
         if(csau4tug3configentry[index]->has_data())
             return true;
@@ -3183,9 +3239,9 @@ bool CISCOSONETMIB::Csau4Tug3Configtable::has_data() const
     return false;
 }
 
-bool CISCOSONETMIB::Csau4Tug3Configtable::has_operation() const
+bool CISCOSONETMIB::CsAu4Tug3ConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<csau4tug3configentry.size(); index++)
+    for (std::size_t index=0; index<csau4tug3configentry.len(); index++)
     {
         if(csau4tug3configentry[index]->has_operation())
             return true;
@@ -3193,21 +3249,21 @@ bool CISCOSONETMIB::Csau4Tug3Configtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSONETMIB::Csau4Tug3Configtable::get_absolute_path() const
+std::string CISCOSONETMIB::CsAu4Tug3ConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csau4Tug3Configtable::get_segment_path() const
+std::string CISCOSONETMIB::CsAu4Tug3ConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csAu4Tug3ConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csau4Tug3Configtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CsAu4Tug3ConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3216,25 +3272,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csau4Tug3Configtab
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csau4Tug3Configtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CsAu4Tug3ConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csAu4Tug3ConfigEntry")
     {
-        auto c = std::make_shared<CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry>();
+        auto c = std::make_shared<CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry>();
         c->parent = this;
-        csau4tug3configentry.push_back(c);
+        csau4tug3configentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csau4Tug3Configtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CsAu4Tug3ConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csau4tug3configentry)
+    for (auto c : csau4tug3configentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3245,43 +3301,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csau4Tug3Configtab
     return children;
 }
 
-void CISCOSONETMIB::Csau4Tug3Configtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CsAu4Tug3ConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSONETMIB::Csau4Tug3Configtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CsAu4Tug3ConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSONETMIB::Csau4Tug3Configtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CsAu4Tug3ConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csAu4Tug3ConfigEntry")
         return true;
     return false;
 }
 
-CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::Csau4Tug3Configentry()
+CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::CsAu4Tug3ConfigEntry()
     :
     ifindex{YType::str, "ifIndex"},
     csau4tug3{YType::int32, "csAu4Tug3"},
     csau4tug3payload{YType::enumeration, "csAu4Tug3Payload"}
 {
 
-    yang_name = "csAu4Tug3ConfigEntry"; yang_parent_name = "csAu4Tug3ConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csAu4Tug3ConfigEntry"; yang_parent_name = "csAu4Tug3ConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::~Csau4Tug3Configentry()
+CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::~CsAu4Tug3ConfigEntry()
 {
 }
 
-bool CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::has_data() const
+bool CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| csau4tug3.is_set
 	|| csau4tug3payload.is_set;
 }
 
-bool CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::has_operation() const
+bool CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -3289,21 +3346,23 @@ bool CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::has_operation() 
 	|| ydk::is_set(csau4tug3payload.yfilter);
 }
 
-std::string CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::get_absolute_path() const
+std::string CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SONET-MIB:CISCO-SONET-MIB/csAu4Tug3ConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::get_segment_path() const
+std::string CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csAu4Tug3ConfigEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[csAu4Tug3='" <<csau4tug3 <<"']";
+    path_buffer << "csAu4Tug3ConfigEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(csau4tug3, "csAu4Tug3");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3315,19 +3374,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSONETMIB::Csau4Tug3Configtab
 
 }
 
-std::shared_ptr<Entity> CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -3349,7 +3408,7 @@ void CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::set_value(const 
     }
 }
 
-void CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -3365,17 +3424,12 @@ void CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::set_filter(const
     }
 }
 
-bool CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "csAu4Tug3" || name == "csAu4Tug3Payload")
         return true;
     return false;
 }
-
-const Enum::YLeaf CsApsLineFailureCode::csApsChannelMismatch {1, "csApsChannelMismatch"};
-const Enum::YLeaf CsApsLineFailureCode::csApsProtectionByteFail {2, "csApsProtectionByteFail"};
-const Enum::YLeaf CsApsLineFailureCode::csApsFEProtectionFailure {3, "csApsFEProtectionFailure"};
-const Enum::YLeaf CsApsLineFailureCode::csApsModeMismatch {4, "csApsModeMismatch"};
 
 const Enum::YLeaf CsApsLineSwitchReason::csApsOther {1, "csApsOther"};
 const Enum::YLeaf CsApsLineSwitchReason::csApsRevertive {2, "csApsRevertive"};
@@ -3388,90 +3442,95 @@ const Enum::YLeaf CsApsLineSwitchReason::csApsForceSwitch {8, "csApsForceSwitch"
 const Enum::YLeaf CsApsLineSwitchReason::csApsLockOut {9, "csApsLockOut"};
 const Enum::YLeaf CsApsLineSwitchReason::csApsNoSwitch {10, "csApsNoSwitch"};
 
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigloopbacktype::noLoopback {1, "noLoopback"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigloopbacktype::lineLocal {2, "lineLocal"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigloopbacktype::lineRemote {3, "lineRemote"};
+const Enum::YLeaf CsApsLineFailureCode::csApsChannelMismatch {1, "csApsChannelMismatch"};
+const Enum::YLeaf CsApsLineFailureCode::csApsProtectionByteFail {2, "csApsProtectionByteFail"};
+const Enum::YLeaf CsApsLineFailureCode::csApsFEProtectionFailure {3, "csApsFEProtectionFailure"};
+const Enum::YLeaf CsApsLineFailureCode::csApsModeMismatch {4, "csApsModeMismatch"};
 
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigxmtclocksource::loopTiming {1, "loopTiming"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigxmtclocksource::localTiming {2, "localTiming"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigLoopbackType::noLoopback {1, "noLoopback"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigLoopbackType::lineLocal {2, "lineLocal"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigLoopbackType::lineRemote {3, "lineRemote"};
 
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigframescramble::disabled {1, "disabled"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigframescramble::enabled {2, "enabled"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigXmtClockSource::loopTiming {1, "loopTiming"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigXmtClockSource::localTiming {2, "localTiming"};
 
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigtype::sonetSts3c {1, "sonetSts3c"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigtype::sonetStm1 {2, "sonetStm1"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigtype::sonetSts12c {3, "sonetSts12c"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigtype::sonetStm4 {4, "sonetStm4"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigtype::sonetSts48c {5, "sonetSts48c"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigtype::sonetStm16 {6, "sonetStm16"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigtype::sonetSts192c {7, "sonetSts192c"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigtype::sonetStm64 {8, "sonetStm64"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigtype::sonetSts3 {9, "sonetSts3"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigFrameScramble::disabled {1, "disabled"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigFrameScramble::enabled {2, "enabled"};
 
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigrdivtype::onebit {1, "onebit"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigrdivtype::threebit {3, "threebit"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigType::sonetSts3c {1, "sonetSts3c"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigType::sonetStm1 {2, "sonetStm1"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigType::sonetSts12c {3, "sonetSts12c"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigType::sonetStm4 {4, "sonetStm4"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigType::sonetSts48c {5, "sonetSts48c"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigType::sonetStm16 {6, "sonetStm16"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigType::sonetSts192c {7, "sonetSts192c"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigType::sonetStm64 {8, "sonetStm64"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigType::sonetSts3 {9, "sonetSts3"};
 
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigrdiptype::onebit {1, "onebit"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigrdiptype::threebit {3, "threebit"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigRDIVType::onebit {1, "onebit"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigRDIVType::threebit {3, "threebit"};
 
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarytype::vt15vc11 {1, "vt15vc11"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarytype::vt2vc12 {2, "vt2vc12"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigRDIPType::onebit {1, "onebit"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigRDIPType::threebit {3, "threebit"};
 
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarymappingtype::asynchronous {1, "asynchronous"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarymappingtype::byteSynchronous {2, "byteSynchronous"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryType::vt15vc11 {1, "vt15vc11"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryType::vt2vc12 {2, "vt2vc12"};
 
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributaryframingtype::notApplicable {1, "notApplicable"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributaryframingtype::dsx1D4 {2, "dsx1D4"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributaryframingtype::dsx1ESF {3, "dsx1ESF"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryMappingType::asynchronous {1, "asynchronous"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryMappingType::byteSynchronous {2, "byteSynchronous"};
 
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cssignallingtransportmode::notApplicable {1, "notApplicable"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cssignallingtransportmode::signallingTransferMode {2, "signallingTransferMode"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cssignallingtransportmode::clearMode {3, "clearMode"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryFramingType::notApplicable {1, "notApplicable"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryFramingType::dsx1D4 {2, "dsx1D4"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryFramingType::dsx1ESF {3, "dsx1ESF"};
 
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarygroupingtype::notApplicable {1, "notApplicable"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarygroupingtype::au3Grouping {2, "au3Grouping"};
-const Enum::YLeaf CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarygroupingtype::au4Grouping {3, "au4Grouping"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsSignallingTransportMode::notApplicable {1, "notApplicable"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsSignallingTransportMode::signallingTransferMode {2, "signallingTransferMode"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsSignallingTransportMode::clearMode {3, "clearMode"};
 
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsenable::csApsDisabled {1, "csApsDisabled"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsenable::csApsEnabled {2, "csApsEnabled"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryGroupingType::notApplicable {1, "notApplicable"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryGroupingType::au3Grouping {2, "au3Grouping"};
+const Enum::YLeaf CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryGroupingType::au4Grouping {3, "au4Grouping"};
 
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmode::onePlusOne {1, "onePlusOne"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmode::oneToOne {2, "oneToOne"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmode::anexBOnePlusOne {3, "anexBOnePlusOne"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmode::ycableOnePlusOneNok1k2 {4, "ycableOnePlusOneNok1k2"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmode::straightOnePlusOneNok1k2 {5, "straightOnePlusOneNok1k2"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsEnable::csApsDisabled {1, "csApsDisabled"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsEnable::csApsEnabled {2, "csApsEnabled"};
 
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsactiveline::csApsWorkingLine {1, "csApsWorkingLine"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsactiveline::csApsProtectionLine {2, "csApsProtectionLine"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsactiveline::csApsNone {3, "csApsNone"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchMode::onePlusOne {1, "onePlusOne"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchMode::oneToOne {2, "oneToOne"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchMode::anexBOnePlusOne {3, "anexBOnePlusOne"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchMode::ycableOnePlusOneNok1k2 {4, "ycableOnePlusOneNok1k2"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchMode::straightOnePlusOneNok1k2 {5, "straightOnePlusOneNok1k2"};
 
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsdirection::uniDirectional {1, "uniDirectional"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsdirection::biDirectional {2, "biDirectional"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsActiveLine::csApsWorkingLine {1, "csApsWorkingLine"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsActiveLine::csApsProtectionLine {2, "csApsProtectionLine"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsActiveLine::csApsNone {3, "csApsNone"};
 
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsrevertive::nonrevertive {1, "nonrevertive"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsrevertive::revertive {2, "revertive"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsDirection::uniDirectional {1, "uniDirectional"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsDirection::biDirectional {2, "biDirectional"};
 
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsdirectionoperational::uniDirectional {1, "uniDirectional"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsdirectionoperational::biDirectional {2, "biDirectional"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsRevertive::nonrevertive {1, "nonrevertive"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsRevertive::revertive {2, "revertive"};
 
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmodeoperational::onePlusOne {1, "onePlusOne"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmodeoperational::oneToOne {2, "oneToOne"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmodeoperational::anexBOnePlusOne {3, "anexBOnePlusOne"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmodeoperational::ycableOnePlusOneNok1k2 {4, "ycableOnePlusOneNok1k2"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmodeoperational::straightOnePlusOneNok1k2 {5, "straightOnePlusOneNok1k2"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsDirectionOperational::uniDirectional {1, "uniDirectional"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsDirectionOperational::biDirectional {2, "biDirectional"};
 
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapschannelprotocol::bellcore {1, "bellcore"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapschannelprotocol::itu {2, "itu"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchModeOperational::onePlusOne {1, "onePlusOne"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchModeOperational::oneToOne {2, "oneToOne"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchModeOperational::anexBOnePlusOne {3, "anexBOnePlusOne"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchModeOperational::ycableOnePlusOneNok1k2 {4, "ycableOnePlusOneNok1k2"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchModeOperational::straightOnePlusOneNok1k2 {5, "straightOnePlusOneNok1k2"};
 
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsprimarysection::workingSection1 {1, "workingSection1"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsprimarysection::workingSection2 {2, "workingSection2"};
-const Enum::YLeaf CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsprimarysection::none {3, "none"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsChannelProtocol::bellcore {1, "bellcore"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsChannelProtocol::itu {2, "itu"};
 
-const Enum::YLeaf CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::Csau4Tug3Payload::other {1, "other"};
-const Enum::YLeaf CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::Csau4Tug3Payload::vc11 {2, "vc11"};
-const Enum::YLeaf CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::Csau4Tug3Payload::vc12 {3, "vc12"};
-const Enum::YLeaf CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::Csau4Tug3Payload::tu3ds3 {4, "tu3ds3"};
-const Enum::YLeaf CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::Csau4Tug3Payload::tu3e3 {5, "tu3e3"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsPrimarySection::workingSection1 {1, "workingSection1"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsPrimarySection::workingSection2 {2, "workingSection2"};
+const Enum::YLeaf CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsPrimarySection::none {3, "none"};
+
+const Enum::YLeaf CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::CsAu4Tug3Payload::other {1, "other"};
+const Enum::YLeaf CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::CsAu4Tug3Payload::vc11 {2, "vc11"};
+const Enum::YLeaf CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::CsAu4Tug3Payload::vc12 {3, "vc12"};
+const Enum::YLeaf CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::CsAu4Tug3Payload::tu3ds3 {4, "tu3ds3"};
+const Enum::YLeaf CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::CsAu4Tug3Payload::tu3e3 {5, "tu3e3"};
 
 
 }

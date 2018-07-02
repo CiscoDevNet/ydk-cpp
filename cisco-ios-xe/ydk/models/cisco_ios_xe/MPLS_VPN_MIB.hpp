@@ -32,30 +32,30 @@ class MPLSVPNMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Mplsvpnscalars; //type: MPLSVPNMIB::Mplsvpnscalars
-        class Mplsvpninterfaceconftable; //type: MPLSVPNMIB::Mplsvpninterfaceconftable
-        class Mplsvpnvrftable; //type: MPLSVPNMIB::Mplsvpnvrftable
-        class Mplsvpnvrfroutetargettable; //type: MPLSVPNMIB::Mplsvpnvrfroutetargettable
-        class Mplsvpnvrfbgpnbraddrtable; //type: MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable
-        class Mplsvpnvrfbgpnbrprefixtable; //type: MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable
-        class Mplsvpnvrfroutetable; //type: MPLSVPNMIB::Mplsvpnvrfroutetable
+        class MplsVpnScalars; //type: MPLSVPNMIB::MplsVpnScalars
+        class MplsVpnInterfaceConfTable; //type: MPLSVPNMIB::MplsVpnInterfaceConfTable
+        class MplsVpnVrfTable; //type: MPLSVPNMIB::MplsVpnVrfTable
+        class MplsVpnVrfRouteTargetTable; //type: MPLSVPNMIB::MplsVpnVrfRouteTargetTable
+        class MplsVpnVrfBgpNbrAddrTable; //type: MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable
+        class MplsVpnVrfBgpNbrPrefixTable; //type: MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable
+        class MplsVpnVrfRouteTable; //type: MPLSVPNMIB::MplsVpnVrfRouteTable
 
-        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnscalars> mplsvpnscalars;
-        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpninterfaceconftable> mplsvpninterfaceconftable;
-        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrftable> mplsvpnvrftable;
-        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrfroutetargettable> mplsvpnvrfroutetargettable;
-        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable> mplsvpnvrfbgpnbraddrtable;
-        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable> mplsvpnvrfbgpnbrprefixtable;
-        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrfroutetable> mplsvpnvrfroutetable;
+        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnScalars> mplsvpnscalars;
+        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnInterfaceConfTable> mplsvpninterfaceconftable;
+        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnVrfTable> mplsvpnvrftable;
+        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnVrfRouteTargetTable> mplsvpnvrfroutetargettable;
+        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable> mplsvpnvrfbgpnbraddrtable;
+        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable> mplsvpnvrfbgpnbrprefixtable;
+        std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnVrfRouteTable> mplsvpnvrfroutetable;
         
 }; // MPLSVPNMIB
 
 
-class MPLSVPNMIB::Mplsvpnscalars : public ydk::Entity
+class MPLSVPNMIB::MplsVpnScalars : public ydk::Entity
 {
     public:
-        Mplsvpnscalars();
-        ~Mplsvpnscalars();
+        MplsVpnScalars();
+        ~MplsVpnScalars();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -74,14 +74,14 @@ class MPLSVPNMIB::Mplsvpnscalars : public ydk::Entity
         ydk::YLeaf mplsvpnnotificationenable; //type: boolean
         ydk::YLeaf mplsvpnvrfconfmaxpossibleroutes; //type: uint32
 
-}; // MPLSVPNMIB::Mplsvpnscalars
+}; // MPLSVPNMIB::MplsVpnScalars
 
 
-class MPLSVPNMIB::Mplsvpninterfaceconftable : public ydk::Entity
+class MPLSVPNMIB::MplsVpnInterfaceConfTable : public ydk::Entity
 {
     public:
-        Mplsvpninterfaceconftable();
-        ~Mplsvpninterfaceconftable();
+        MplsVpnInterfaceConfTable();
+        ~MplsVpnInterfaceConfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -94,18 +94,18 @@ class MPLSVPNMIB::Mplsvpninterfaceconftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsvpninterfaceconfentry; //type: MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry
+        class MplsVpnInterfaceConfEntry; //type: MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry> > mplsvpninterfaceconfentry;
+        ydk::YList mplsvpninterfaceconfentry;
         
-}; // MPLSVPNMIB::Mplsvpninterfaceconftable
+}; // MPLSVPNMIB::MplsVpnInterfaceConfTable
 
 
-class MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry : public ydk::Entity
+class MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry : public ydk::Entity
 {
     public:
-        Mplsvpninterfaceconfentry();
-        ~Mplsvpninterfaceconfentry();
+        MplsVpnInterfaceConfEntry();
+        ~MplsVpnInterfaceConfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -118,25 +118,25 @@ class MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry::mplsvpnvrfname)
+        //type: binary (refers to cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::mplsvpnvrfname)
         ydk::YLeaf mplsvpnvrfname;
         ydk::YLeaf mplsvpninterfaceconfindex; //type: int32
-        ydk::YLeaf mplsvpninterfacelabeledgetype; //type: Mplsvpninterfacelabeledgetype
-        ydk::YLeaf mplsvpninterfacevpnclassification; //type: Mplsvpninterfacevpnclassification
-        ydk::YLeaf mplsvpninterfacevpnroutedistprotocol; //type: Mplsvpninterfacevpnroutedistprotocol
+        ydk::YLeaf mplsvpninterfacelabeledgetype; //type: MplsVpnInterfaceLabelEdgeType
+        ydk::YLeaf mplsvpninterfacevpnclassification; //type: MplsVpnInterfaceVpnClassification
+        ydk::YLeaf mplsvpninterfacevpnroutedistprotocol; //type: MplsVpnInterfaceVpnRouteDistProtocol
         ydk::YLeaf mplsvpninterfaceconfstoragetype; //type: StorageType
         ydk::YLeaf mplsvpninterfaceconfrowstatus; //type: RowStatus
-        class Mplsvpninterfacelabeledgetype;
-        class Mplsvpninterfacevpnclassification;
+        class MplsVpnInterfaceLabelEdgeType;
+        class MplsVpnInterfaceVpnClassification;
 
-}; // MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry
+}; // MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry
 
 
-class MPLSVPNMIB::Mplsvpnvrftable : public ydk::Entity
+class MPLSVPNMIB::MplsVpnVrfTable : public ydk::Entity
 {
     public:
-        Mplsvpnvrftable();
-        ~Mplsvpnvrftable();
+        MplsVpnVrfTable();
+        ~MplsVpnVrfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -149,18 +149,18 @@ class MPLSVPNMIB::Mplsvpnvrftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsvpnvrfentry; //type: MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry
+        class MplsVpnVrfEntry; //type: MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry> > mplsvpnvrfentry;
+        ydk::YList mplsvpnvrfentry;
         
-}; // MPLSVPNMIB::Mplsvpnvrftable
+}; // MPLSVPNMIB::MplsVpnVrfTable
 
 
-class MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry : public ydk::Entity
+class MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry : public ydk::Entity
 {
     public:
-        Mplsvpnvrfentry();
-        ~Mplsvpnvrfentry();
+        MplsVpnVrfEntry();
+        ~MplsVpnVrfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -177,7 +177,7 @@ class MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry : public ydk::Entity
         ydk::YLeaf mplsvpnvrfdescription; //type: string
         ydk::YLeaf mplsvpnvrfroutedistinguisher; //type: binary
         ydk::YLeaf mplsvpnvrfcreationtime; //type: uint32
-        ydk::YLeaf mplsvpnvrfoperstatus; //type: Mplsvpnvrfoperstatus
+        ydk::YLeaf mplsvpnvrfoperstatus; //type: MplsVpnVrfOperStatus
         ydk::YLeaf mplsvpnvrfactiveinterfaces; //type: uint32
         ydk::YLeaf mplsvpnvrfassociatedinterfaces; //type: uint32
         ydk::YLeaf mplsvpnvrfconfmidroutethreshold; //type: uint32
@@ -191,16 +191,16 @@ class MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry : public ydk::Entity
         ydk::YLeaf mplsvpnvrfperfroutesadded; //type: uint32
         ydk::YLeaf mplsvpnvrfperfroutesdeleted; //type: uint32
         ydk::YLeaf mplsvpnvrfperfcurrnumroutes; //type: uint32
-        class Mplsvpnvrfoperstatus;
+        class MplsVpnVrfOperStatus;
 
-}; // MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry
+}; // MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry
 
 
-class MPLSVPNMIB::Mplsvpnvrfroutetargettable : public ydk::Entity
+class MPLSVPNMIB::MplsVpnVrfRouteTargetTable : public ydk::Entity
 {
     public:
-        Mplsvpnvrfroutetargettable();
-        ~Mplsvpnvrfroutetargettable();
+        MplsVpnVrfRouteTargetTable();
+        ~MplsVpnVrfRouteTargetTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -213,18 +213,18 @@ class MPLSVPNMIB::Mplsvpnvrfroutetargettable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsvpnvrfroutetargetentry; //type: MPLSVPNMIB::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry
+        class MplsVpnVrfRouteTargetEntry; //type: MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry> > mplsvpnvrfroutetargetentry;
+        ydk::YList mplsvpnvrfroutetargetentry;
         
-}; // MPLSVPNMIB::Mplsvpnvrfroutetargettable
+}; // MPLSVPNMIB::MplsVpnVrfRouteTargetTable
 
 
-class MPLSVPNMIB::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry : public ydk::Entity
+class MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry : public ydk::Entity
 {
     public:
-        Mplsvpnvrfroutetargetentry();
-        ~Mplsvpnvrfroutetargetentry();
+        MplsVpnVrfRouteTargetEntry();
+        ~MplsVpnVrfRouteTargetEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -237,23 +237,23 @@ class MPLSVPNMIB::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry::mplsvpnvrfname)
+        //type: binary (refers to cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::mplsvpnvrfname)
         ydk::YLeaf mplsvpnvrfname;
         ydk::YLeaf mplsvpnvrfroutetargetindex; //type: uint32
-        ydk::YLeaf mplsvpnvrfroutetargettype; //type: Mplsvpnvrfroutetargettype
+        ydk::YLeaf mplsvpnvrfroutetargettype; //type: MplsVpnVrfRouteTargetType
         ydk::YLeaf mplsvpnvrfroutetarget; //type: binary
         ydk::YLeaf mplsvpnvrfroutetargetdescr; //type: string
         ydk::YLeaf mplsvpnvrfroutetargetrowstatus; //type: RowStatus
-        class Mplsvpnvrfroutetargettype;
+        class MplsVpnVrfRouteTargetType;
 
-}; // MPLSVPNMIB::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry
+}; // MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry
 
 
-class MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable : public ydk::Entity
+class MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable : public ydk::Entity
 {
     public:
-        Mplsvpnvrfbgpnbraddrtable();
-        ~Mplsvpnvrfbgpnbraddrtable();
+        MplsVpnVrfBgpNbrAddrTable();
+        ~MplsVpnVrfBgpNbrAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -266,18 +266,18 @@ class MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsvpnvrfbgpnbraddrentry; //type: MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry
+        class MplsVpnVrfBgpNbrAddrEntry; //type: MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry> > mplsvpnvrfbgpnbraddrentry;
+        ydk::YList mplsvpnvrfbgpnbraddrentry;
         
-}; // MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable
+}; // MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable
 
 
-class MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry : public ydk::Entity
+class MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry : public ydk::Entity
 {
     public:
-        Mplsvpnvrfbgpnbraddrentry();
-        ~Mplsvpnvrfbgpnbraddrentry();
+        MplsVpnVrfBgpNbrAddrEntry();
+        ~MplsVpnVrfBgpNbrAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -290,26 +290,26 @@ class MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry::mplsvpnvrfname)
+        //type: binary (refers to cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::mplsvpnvrfname)
         ydk::YLeaf mplsvpnvrfname;
-        //type: int32 (refers to cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::mplsvpninterfaceconfindex)
+        //type: int32 (refers to cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry::mplsvpninterfaceconfindex)
         ydk::YLeaf mplsvpninterfaceconfindex;
         ydk::YLeaf mplsvpnvrfbgpnbrindex; //type: uint32
-        ydk::YLeaf mplsvpnvrfbgpnbrrole; //type: Mplsvpnvrfbgpnbrrole
+        ydk::YLeaf mplsvpnvrfbgpnbrrole; //type: MplsVpnVrfBgpNbrRole
         ydk::YLeaf mplsvpnvrfbgpnbrtype; //type: InetAddressType
         ydk::YLeaf mplsvpnvrfbgpnbraddr; //type: binary
         ydk::YLeaf mplsvpnvrfbgpnbrrowstatus; //type: RowStatus
         ydk::YLeaf mplsvpnvrfbgpnbrstoragetype; //type: StorageType
-        class Mplsvpnvrfbgpnbrrole;
+        class MplsVpnVrfBgpNbrRole;
 
-}; // MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry
+}; // MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry
 
 
-class MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable : public ydk::Entity
+class MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable : public ydk::Entity
 {
     public:
-        Mplsvpnvrfbgpnbrprefixtable();
-        ~Mplsvpnvrfbgpnbrprefixtable();
+        MplsVpnVrfBgpNbrPrefixTable();
+        ~MplsVpnVrfBgpNbrPrefixTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -322,18 +322,18 @@ class MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsvpnvrfbgpnbrprefixentry; //type: MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry
+        class MplsVpnVrfBgpNbrPrefixEntry; //type: MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry> > mplsvpnvrfbgpnbrprefixentry;
+        ydk::YList mplsvpnvrfbgpnbrprefixentry;
         
-}; // MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable
+}; // MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable
 
 
-class MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry : public ydk::Entity
+class MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry : public ydk::Entity
 {
     public:
-        Mplsvpnvrfbgpnbrprefixentry();
-        ~Mplsvpnvrfbgpnbrprefixentry();
+        MplsVpnVrfBgpNbrPrefixEntry();
+        ~MplsVpnVrfBgpNbrPrefixEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -346,34 +346,34 @@ class MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry::mplsvpnvrfname)
+        //type: binary (refers to cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::mplsvpnvrfname)
         ydk::YLeaf mplsvpnvrfname;
         ydk::YLeaf mplsvpnvrfbgppathattripaddrprefix; //type: binary
         ydk::YLeaf mplsvpnvrfbgppathattripaddrprefixlen; //type: int32
         ydk::YLeaf mplsvpnvrfbgppathattrpeer; //type: binary
-        ydk::YLeaf mplsvpnvrfbgppathattrorigin; //type: Mplsvpnvrfbgppathattrorigin
+        ydk::YLeaf mplsvpnvrfbgppathattrorigin; //type: MplsVpnVrfBgpPathAttrOrigin
         ydk::YLeaf mplsvpnvrfbgppathattraspathsegment; //type: binary
         ydk::YLeaf mplsvpnvrfbgppathattrnexthop; //type: binary
         ydk::YLeaf mplsvpnvrfbgppathattrmultiexitdisc; //type: int32
         ydk::YLeaf mplsvpnvrfbgppathattrlocalpref; //type: int32
-        ydk::YLeaf mplsvpnvrfbgppathattratomicaggregate; //type: Mplsvpnvrfbgppathattratomicaggregate
+        ydk::YLeaf mplsvpnvrfbgppathattratomicaggregate; //type: MplsVpnVrfBgpPathAttrAtomicAggregate
         ydk::YLeaf mplsvpnvrfbgppathattraggregatoras; //type: int32
         ydk::YLeaf mplsvpnvrfbgppathattraggregatoraddr; //type: binary
         ydk::YLeaf mplsvpnvrfbgppathattrcalclocalpref; //type: int32
-        ydk::YLeaf mplsvpnvrfbgppathattrbest; //type: Mplsvpnvrfbgppathattrbest
+        ydk::YLeaf mplsvpnvrfbgppathattrbest; //type: MplsVpnVrfBgpPathAttrBest
         ydk::YLeaf mplsvpnvrfbgppathattrunknown; //type: binary
-        class Mplsvpnvrfbgppathattrorigin;
-        class Mplsvpnvrfbgppathattratomicaggregate;
-        class Mplsvpnvrfbgppathattrbest;
+        class MplsVpnVrfBgpPathAttrOrigin;
+        class MplsVpnVrfBgpPathAttrAtomicAggregate;
+        class MplsVpnVrfBgpPathAttrBest;
 
-}; // MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry
+}; // MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry
 
 
-class MPLSVPNMIB::Mplsvpnvrfroutetable : public ydk::Entity
+class MPLSVPNMIB::MplsVpnVrfRouteTable : public ydk::Entity
 {
     public:
-        Mplsvpnvrfroutetable();
-        ~Mplsvpnvrfroutetable();
+        MplsVpnVrfRouteTable();
+        ~MplsVpnVrfRouteTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -386,18 +386,18 @@ class MPLSVPNMIB::Mplsvpnvrfroutetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsvpnvrfrouteentry; //type: MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry
+        class MplsVpnVrfRouteEntry; //type: MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry> > mplsvpnvrfrouteentry;
+        ydk::YList mplsvpnvrfrouteentry;
         
-}; // MPLSVPNMIB::Mplsvpnvrfroutetable
+}; // MPLSVPNMIB::MplsVpnVrfRouteTable
 
 
-class MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry : public ydk::Entity
+class MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry : public ydk::Entity
 {
     public:
-        Mplsvpnvrfrouteentry();
-        ~Mplsvpnvrfrouteentry();
+        MplsVpnVrfRouteEntry();
+        ~MplsVpnVrfRouteEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -410,7 +410,7 @@ class MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry::mplsvpnvrfname)
+        //type: binary (refers to cisco_ios_xe::MPLS_VPN_MIB::MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::mplsvpnvrfname)
         ydk::YLeaf mplsvpnvrfname;
         ydk::YLeaf mplsvpnvrfroutedest; //type: binary
         ydk::YLeaf mplsvpnvrfroutemask; //type: binary
@@ -420,8 +420,8 @@ class MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry : public ydk::Entit
         ydk::YLeaf mplsvpnvrfroutemaskaddrtype; //type: InetAddressType
         ydk::YLeaf mplsvpnvrfroutenexthopaddrtype; //type: InetAddressType
         ydk::YLeaf mplsvpnvrfrouteifindex; //type: int32
-        ydk::YLeaf mplsvpnvrfroutetype; //type: Mplsvpnvrfroutetype
-        ydk::YLeaf mplsvpnvrfrouteproto; //type: Mplsvpnvrfrouteproto
+        ydk::YLeaf mplsvpnvrfroutetype; //type: MplsVpnVrfRouteType
+        ydk::YLeaf mplsvpnvrfrouteproto; //type: MplsVpnVrfRouteProto
         ydk::YLeaf mplsvpnvrfrouteage; //type: uint32
         ydk::YLeaf mplsvpnvrfrouteinfo; //type: string
         ydk::YLeaf mplsvpnvrfroutenexthopas; //type: uint32
@@ -432,12 +432,12 @@ class MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry : public ydk::Entit
         ydk::YLeaf mplsvpnvrfroutemetric5; //type: int32
         ydk::YLeaf mplsvpnvrfrouterowstatus; //type: RowStatus
         ydk::YLeaf mplsvpnvrfroutestoragetype; //type: StorageType
-        class Mplsvpnvrfroutetype;
-        class Mplsvpnvrfrouteproto;
+        class MplsVpnVrfRouteType;
+        class MplsVpnVrfRouteProto;
 
-}; // MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry
+}; // MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry
 
-class MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::Mplsvpninterfacelabeledgetype : public ydk::Enum
+class MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry::MplsVpnInterfaceLabelEdgeType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf providerEdge;
@@ -445,7 +445,7 @@ class MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::Mplsvpni
 
 };
 
-class MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::Mplsvpninterfacevpnclassification : public ydk::Enum
+class MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry::MplsVpnInterfaceVpnClassification : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf carrierOfCarrier;
@@ -454,7 +454,7 @@ class MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::Mplsvpni
 
 };
 
-class MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry::Mplsvpnvrfoperstatus : public ydk::Enum
+class MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::MplsVpnVrfOperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -462,7 +462,7 @@ class MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry::Mplsvpnvrfoperstatus : publi
 
 };
 
-class MPLSVPNMIB::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::Mplsvpnvrfroutetargettype : public ydk::Enum
+class MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry::MplsVpnVrfRouteTargetType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf import;
@@ -471,7 +471,7 @@ class MPLSVPNMIB::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::Mplsvp
 
 };
 
-class MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::Mplsvpnvrfbgpnbrrole : public ydk::Enum
+class MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry::MplsVpnVrfBgpNbrRole : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ce;
@@ -479,7 +479,7 @@ class MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::Mplsvpnv
 
 };
 
-class MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mplsvpnvrfbgppathattrorigin : public ydk::Enum
+class MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::MplsVpnVrfBgpPathAttrOrigin : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf igp;
@@ -488,7 +488,7 @@ class MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mpls
 
 };
 
-class MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mplsvpnvrfbgppathattratomicaggregate : public ydk::Enum
+class MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::MplsVpnVrfBgpPathAttrAtomicAggregate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf lessSpecificRrouteNotSelected;
@@ -496,7 +496,7 @@ class MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mpls
 
 };
 
-class MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mplsvpnvrfbgppathattrbest : public ydk::Enum
+class MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::MplsVpnVrfBgpPathAttrBest : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf false_;
@@ -504,7 +504,7 @@ class MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mpls
 
 };
 
-class MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfroutetype : public ydk::Enum
+class MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry::MplsVpnVrfRouteType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -514,7 +514,7 @@ class MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfroutetyp
 
 };
 
-class MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto : public ydk::Enum
+class MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry::MplsVpnVrfRouteProto : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

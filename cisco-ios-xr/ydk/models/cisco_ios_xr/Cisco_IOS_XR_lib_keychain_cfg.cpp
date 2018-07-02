@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_lib_keychain_cfg {
 
 Keychains::Keychains()
+    :
+    keychain(this, {"chain_name"})
 {
 
-    yang_name = "keychains"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "keychains"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Keychains::~Keychains()
@@ -23,7 +25,8 @@ Keychains::~Keychains()
 
 bool Keychains::has_data() const
 {
-    for (std::size_t index=0; index<keychain.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<keychain.len(); index++)
     {
         if(keychain[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Keychains::has_data() const
 
 bool Keychains::has_operation() const
 {
-    for (std::size_t index=0; index<keychain.size(); index++)
+    for (std::size_t index=0; index<keychain.len(); index++)
     {
         if(keychain[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Keychains::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Keychains::Keychain>();
         c->parent = this;
-        keychain.push_back(c);
+        keychain.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : keychain)
+    for (auto c : keychain.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,15 +132,16 @@ bool Keychains::has_leaf_or_child_of_name(const std::string & name) const
 Keychains::Keychain::Keychain()
     :
     chain_name{YType::str, "chain-name"}
-    	,
+        ,
     accept_tolerance(std::make_shared<Keychains::Keychain::AcceptTolerance>())
-	,macsec_keychain(nullptr) // presence node
-	,keies(std::make_shared<Keychains::Keychain::Keies>())
+    , macsec_keychain(std::make_shared<Keychains::Keychain::MacsecKeychain>())
+    , keies(std::make_shared<Keychains::Keychain::Keies>())
 {
     accept_tolerance->parent = this;
+    macsec_keychain->parent = this;
     keies->parent = this;
 
-    yang_name = "keychain"; yang_parent_name = "keychains"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "keychain"; yang_parent_name = "keychains"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Keychains::Keychain::~Keychain()
@@ -146,6 +150,7 @@ Keychains::Keychain::~Keychain()
 
 bool Keychains::Keychain::has_data() const
 {
+    if (is_presence_container) return true;
     return chain_name.is_set
 	|| (accept_tolerance !=  nullptr && accept_tolerance->has_data())
 	|| (macsec_keychain !=  nullptr && macsec_keychain->has_data())
@@ -171,7 +176,8 @@ std::string Keychains::Keychain::get_absolute_path() const
 std::string Keychains::Keychain::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "keychain" <<"[chain-name='" <<chain_name <<"']";
+    path_buffer << "keychain";
+    ADD_KEY_TOKEN(chain_name, "chain-name");
     return path_buffer.str();
 }
 
@@ -270,7 +276,7 @@ Keychains::Keychain::AcceptTolerance::AcceptTolerance()
     infinite{YType::boolean, "infinite"}
 {
 
-    yang_name = "accept-tolerance"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accept-tolerance"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychains::Keychain::AcceptTolerance::~AcceptTolerance()
@@ -279,6 +285,7 @@ Keychains::Keychain::AcceptTolerance::~AcceptTolerance()
 
 bool Keychains::Keychain::AcceptTolerance::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| infinite.is_set;
 }
@@ -361,7 +368,7 @@ Keychains::Keychain::MacsecKeychain::MacsecKeychain()
 {
     macsec_keies->parent = this;
 
-    yang_name = "macsec-keychain"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-keychain"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychains::Keychain::MacsecKeychain::~MacsecKeychain()
@@ -370,6 +377,7 @@ Keychains::Keychain::MacsecKeychain::~MacsecKeychain()
 
 bool Keychains::Keychain::MacsecKeychain::has_data() const
 {
+    if (is_presence_container) return true;
     return (macsec_keies !=  nullptr && macsec_keies->has_data());
 }
 
@@ -437,9 +445,11 @@ bool Keychains::Keychain::MacsecKeychain::has_leaf_or_child_of_name(const std::s
 }
 
 Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKeies()
+    :
+    macsec_key(this, {"key_id"})
 {
 
-    yang_name = "macsec-keies"; yang_parent_name = "macsec-keychain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-keies"; yang_parent_name = "macsec-keychain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychains::Keychain::MacsecKeychain::MacsecKeies::~MacsecKeies()
@@ -448,7 +458,8 @@ Keychains::Keychain::MacsecKeychain::MacsecKeies::~MacsecKeies()
 
 bool Keychains::Keychain::MacsecKeychain::MacsecKeies::has_data() const
 {
-    for (std::size_t index=0; index<macsec_key.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macsec_key.len(); index++)
     {
         if(macsec_key[index]->has_data())
             return true;
@@ -458,7 +469,7 @@ bool Keychains::Keychain::MacsecKeychain::MacsecKeies::has_data() const
 
 bool Keychains::Keychain::MacsecKeychain::MacsecKeies::has_operation() const
 {
-    for (std::size_t index=0; index<macsec_key.size(); index++)
+    for (std::size_t index=0; index<macsec_key.len(); index++)
     {
         if(macsec_key[index]->has_operation())
             return true;
@@ -488,7 +499,7 @@ std::shared_ptr<Entity> Keychains::Keychain::MacsecKeychain::MacsecKeies::get_ch
     {
         auto c = std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey>();
         c->parent = this;
-        macsec_key.push_back(c);
+        macsec_key.append(c);
         return c;
     }
 
@@ -500,7 +511,7 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::MacsecKeycha
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macsec_key)
+    for (auto c : macsec_key.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -529,13 +540,13 @@ bool Keychains::Keychain::MacsecKeychain::MacsecKeies::has_leaf_or_child_of_name
 Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKey()
     :
     key_id{YType::str, "key-id"}
-    	,
+        ,
     macsec_lifetime(std::make_shared<Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime>())
-	,macsec_key_string(nullptr) // presence node
+    , macsec_key_string(nullptr) // presence node
 {
     macsec_lifetime->parent = this;
 
-    yang_name = "macsec-key"; yang_parent_name = "macsec-keies"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-key"; yang_parent_name = "macsec-keies"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::~MacsecKey()
@@ -544,6 +555,7 @@ Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::~MacsecKey()
 
 bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::has_data() const
 {
+    if (is_presence_container) return true;
     return key_id.is_set
 	|| (macsec_lifetime !=  nullptr && macsec_lifetime->has_data())
 	|| (macsec_key_string !=  nullptr && macsec_key_string->has_data());
@@ -560,7 +572,8 @@ bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::has_operation(
 std::string Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-key" <<"[key-id='" <<key_id <<"']";
+    path_buffer << "macsec-key";
+    ADD_KEY_TOKEN(key_id, "key-id");
     return path_buffer.str();
 }
 
@@ -657,7 +670,7 @@ Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::Mac
     end_year{YType::uint32, "end-year"}
 {
 
-    yang_name = "macsec-lifetime"; yang_parent_name = "macsec-key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-lifetime"; yang_parent_name = "macsec-key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::~MacsecLifetime()
@@ -666,6 +679,7 @@ Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::~Ma
 
 bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime::has_data() const
 {
+    if (is_presence_container) return true;
     return start_hour.is_set
 	|| start_minutes.is_set
 	|| start_seconds.is_set
@@ -905,7 +919,7 @@ Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::Ma
     encryption_type{YType::enumeration, "encryption-type"}
 {
 
-    yang_name = "macsec-key-string"; yang_parent_name = "macsec-key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-key-string"; yang_parent_name = "macsec-key"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::~MacsecKeyString()
@@ -914,6 +928,7 @@ Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::~M
 
 bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString::has_data() const
 {
+    if (is_presence_container) return true;
     return string.is_set
 	|| cryptographic_algorithm.is_set
 	|| encryption_type.is_set;
@@ -1004,9 +1019,11 @@ bool Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyStrin
 }
 
 Keychains::Keychain::Keies::Keies()
+    :
+    key(this, {"key_id"})
 {
 
-    yang_name = "keies"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keies"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychains::Keychain::Keies::~Keies()
@@ -1015,7 +1032,8 @@ Keychains::Keychain::Keies::~Keies()
 
 bool Keychains::Keychain::Keies::has_data() const
 {
-    for (std::size_t index=0; index<key.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<key.len(); index++)
     {
         if(key[index]->has_data())
             return true;
@@ -1025,7 +1043,7 @@ bool Keychains::Keychain::Keies::has_data() const
 
 bool Keychains::Keychain::Keies::has_operation() const
 {
-    for (std::size_t index=0; index<key.size(); index++)
+    for (std::size_t index=0; index<key.len(); index++)
     {
         if(key[index]->has_operation())
             return true;
@@ -1055,7 +1073,7 @@ std::shared_ptr<Entity> Keychains::Keychain::Keies::get_child_by_name(const std:
     {
         auto c = std::make_shared<Keychains::Keychain::Keies::Key>();
         c->parent = this;
-        key.push_back(c);
+        key.append(c);
         return c;
     }
 
@@ -1067,7 +1085,7 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : key)
+    for (auto c : key.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1098,14 +1116,14 @@ Keychains::Keychain::Keies::Key::Key()
     key_id{YType::str, "key-id"},
     key_string{YType::str, "key-string"},
     cryptographic_algorithm{YType::enumeration, "cryptographic-algorithm"}
-    	,
+        ,
     accept_lifetime(std::make_shared<Keychains::Keychain::Keies::Key::AcceptLifetime>())
-	,send_lifetime(std::make_shared<Keychains::Keychain::Keies::Key::SendLifetime>())
+    , send_lifetime(std::make_shared<Keychains::Keychain::Keies::Key::SendLifetime>())
 {
     accept_lifetime->parent = this;
     send_lifetime->parent = this;
 
-    yang_name = "key"; yang_parent_name = "keies"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "keies"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychains::Keychain::Keies::Key::~Key()
@@ -1114,6 +1132,7 @@ Keychains::Keychain::Keies::Key::~Key()
 
 bool Keychains::Keychain::Keies::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key_id.is_set
 	|| key_string.is_set
 	|| cryptographic_algorithm.is_set
@@ -1134,7 +1153,8 @@ bool Keychains::Keychain::Keies::Key::has_operation() const
 std::string Keychains::Keychain::Keies::Key::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "key" <<"[key-id='" <<key_id <<"']";
+    path_buffer << "key";
+    ADD_KEY_TOKEN(key_id, "key-id");
     return path_buffer.str();
 }
 
@@ -1253,7 +1273,7 @@ Keychains::Keychain::Keies::Key::AcceptLifetime::AcceptLifetime()
     end_year{YType::uint32, "end-year"}
 {
 
-    yang_name = "accept-lifetime"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accept-lifetime"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychains::Keychain::Keies::Key::AcceptLifetime::~AcceptLifetime()
@@ -1262,6 +1282,7 @@ Keychains::Keychain::Keies::Key::AcceptLifetime::~AcceptLifetime()
 
 bool Keychains::Keychain::Keies::Key::AcceptLifetime::has_data() const
 {
+    if (is_presence_container) return true;
     return start_hour.is_set
 	|| start_minutes.is_set
 	|| start_seconds.is_set
@@ -1512,7 +1533,7 @@ Keychains::Keychain::Keies::Key::SendLifetime::SendLifetime()
     end_year{YType::uint32, "end-year"}
 {
 
-    yang_name = "send-lifetime"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "send-lifetime"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychains::Keychain::Keies::Key::SendLifetime::~SendLifetime()
@@ -1521,6 +1542,7 @@ Keychains::Keychain::Keies::Key::SendLifetime::~SendLifetime()
 
 bool Keychains::Keychain::Keies::Key::SendLifetime::has_data() const
 {
+    if (is_presence_container) return true;
     return start_hour.is_set
 	|| start_minutes.is_set
 	|| start_seconds.is_set
@@ -1756,14 +1778,14 @@ bool Keychains::Keychain::Keies::Key::SendLifetime::has_leaf_or_child_of_name(co
 const Enum::YLeaf MacsecEncryption::type7 {0, "type7"};
 const Enum::YLeaf MacsecEncryption::type6 {2, "type6"};
 
+const Enum::YLeaf CryptoAlg::alg_aes_128_cmac_96 {1, "alg-aes-128-cmac-96"};
 const Enum::YLeaf CryptoAlg::alg_hmac_sha1_12 {2, "alg-hmac-sha1-12"};
 const Enum::YLeaf CryptoAlg::alg_md5_16 {3, "alg-md5-16"};
 const Enum::YLeaf CryptoAlg::alg_sha1_20 {4, "alg-sha1-20"};
 const Enum::YLeaf CryptoAlg::alg_hmac_md5_16 {5, "alg-hmac-md5-16"};
 const Enum::YLeaf CryptoAlg::alg_hmac_sha1_20 {6, "alg-hmac-sha1-20"};
-
-const Enum::YLeaf MacsecCryptoAlg::aes_128_cmac {7, "aes-128-cmac"};
-const Enum::YLeaf MacsecCryptoAlg::aes_256_cmac {8, "aes-256-cmac"};
+const Enum::YLeaf CryptoAlg::alg_hmac_sha1_96 {9, "alg-hmac-sha1-96"};
+const Enum::YLeaf CryptoAlg::alg_hmac_sha_256 {10, "alg-hmac-sha-256"};
 
 const Enum::YLeaf KeyChainMonth::jan {0, "jan"};
 const Enum::YLeaf KeyChainMonth::feb {1, "feb"};
@@ -1777,6 +1799,9 @@ const Enum::YLeaf KeyChainMonth::sep {8, "sep"};
 const Enum::YLeaf KeyChainMonth::oct {9, "oct"};
 const Enum::YLeaf KeyChainMonth::nov {10, "nov"};
 const Enum::YLeaf KeyChainMonth::dec {11, "dec"};
+
+const Enum::YLeaf MacsecCryptoAlg::aes_128_cmac {7, "aes-128-cmac"};
+const Enum::YLeaf MacsecCryptoAlg::aes_256_cmac {8, "aes-256-cmac"};
 
 
 }

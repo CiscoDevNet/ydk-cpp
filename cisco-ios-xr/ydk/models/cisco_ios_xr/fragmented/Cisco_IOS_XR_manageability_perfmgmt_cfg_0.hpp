@@ -228,7 +228,7 @@ class PerfMgmt::Statistics::GenericCounterInterface::Templates : public ydk::Ent
 
         class Template; //type: PerfMgmt::Statistics::GenericCounterInterface::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::GenericCounterInterface::Templates::Template> > template_;
+        ydk::YList template_;
         
 }; // PerfMgmt::Statistics::GenericCounterInterface::Templates
 
@@ -303,7 +303,7 @@ class PerfMgmt::Statistics::ProcessNode::Templates : public ydk::Entity
 
         class Template; //type: PerfMgmt::Statistics::ProcessNode::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::ProcessNode::Templates::Template> > template_;
+        ydk::YList template_;
         
 }; // PerfMgmt::Statistics::ProcessNode::Templates
 
@@ -378,7 +378,7 @@ class PerfMgmt::Statistics::BasicCounterInterface::Templates : public ydk::Entit
 
         class Template; //type: PerfMgmt::Statistics::BasicCounterInterface::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::BasicCounterInterface::Templates::Template> > template_;
+        ydk::YList template_;
         
 }; // PerfMgmt::Statistics::BasicCounterInterface::Templates
 
@@ -453,7 +453,7 @@ class PerfMgmt::Statistics::Ospfv3Protocol::Templates : public ydk::Entity
 
         class Template; //type: PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template> > template_;
+        ydk::YList template_;
         
 }; // PerfMgmt::Statistics::Ospfv3Protocol::Templates
 
@@ -528,7 +528,7 @@ class PerfMgmt::Statistics::CpuNode::Templates : public ydk::Entity
 
         class Template; //type: PerfMgmt::Statistics::CpuNode::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::CpuNode::Templates::Template> > template_;
+        ydk::YList template_;
         
 }; // PerfMgmt::Statistics::CpuNode::Templates
 
@@ -603,7 +603,7 @@ class PerfMgmt::Statistics::DataRateInterface::Templates : public ydk::Entity
 
         class Template; //type: PerfMgmt::Statistics::DataRateInterface::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::DataRateInterface::Templates::Template> > template_;
+        ydk::YList template_;
         
 }; // PerfMgmt::Statistics::DataRateInterface::Templates
 
@@ -678,7 +678,7 @@ class PerfMgmt::Statistics::MemoryNode::Templates : public ydk::Entity
 
         class Template; //type: PerfMgmt::Statistics::MemoryNode::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::MemoryNode::Templates::Template> > template_;
+        ydk::YList template_;
         
 }; // PerfMgmt::Statistics::MemoryNode::Templates
 
@@ -753,7 +753,7 @@ class PerfMgmt::Statistics::LdpMpls::Templates : public ydk::Entity
 
         class Template; //type: PerfMgmt::Statistics::LdpMpls::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::LdpMpls::Templates::Template> > template_;
+        ydk::YList template_;
         
 }; // PerfMgmt::Statistics::LdpMpls::Templates
 
@@ -828,7 +828,7 @@ class PerfMgmt::Statistics::Bgp::Templates : public ydk::Entity
 
         class Template; //type: PerfMgmt::Statistics::Bgp::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::Bgp::Templates::Template> > template_;
+        ydk::YList template_;
         
 }; // PerfMgmt::Statistics::Bgp::Templates
 
@@ -903,7 +903,7 @@ class PerfMgmt::Statistics::Ospfv2Protocol::Templates : public ydk::Entity
 
         class Template; //type: PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template> > template_;
+        ydk::YList template_;
         
 }; // PerfMgmt::Statistics::Ospfv2Protocol::Templates
 
@@ -1138,7 +1138,7 @@ class PerfMgmt::Enable::Threshold::MemoryNode::Nodes : public ydk::Entity
 
         class Node; //type: PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PerfMgmt::Enable::Threshold::MemoryNode::Nodes
 
@@ -1255,7 +1255,7 @@ class PerfMgmt::Enable::Threshold::CpuNode::Nodes : public ydk::Entity
 
         class Node; //type: PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PerfMgmt::Enable::Threshold::CpuNode::Nodes
 
@@ -1372,7 +1372,7 @@ class PerfMgmt::Enable::Threshold::ProcessNode::Nodes : public ydk::Entity
 
         class Node; //type: PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PerfMgmt::Enable::Threshold::ProcessNode::Nodes
 
@@ -1641,7 +1641,7 @@ class PerfMgmt::Enable::Statistics::CpuNode::Nodes : public ydk::Entity
 
         class Node; //type: PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PerfMgmt::Enable::Statistics::CpuNode::Nodes
 
@@ -1758,7 +1758,7 @@ class PerfMgmt::Enable::Statistics::ProcessNode::Nodes : public ydk::Entity
 
         class Node; //type: PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PerfMgmt::Enable::Statistics::ProcessNode::Nodes
 
@@ -1875,7 +1875,7 @@ class PerfMgmt::Enable::Statistics::MemoryNode::Nodes : public ydk::Entity
 
         class Node; //type: PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PerfMgmt::Enable::Statistics::MemoryNode::Nodes
 
@@ -2010,7 +2010,7 @@ class PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions : public ydk::Entity
 
         class Session; //type: PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session> > session;
+        ydk::YList session;
         
 }; // PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions
 
@@ -2081,7 +2081,7 @@ class PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances : public yd
 
         class OspfInstance; //type: PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance> > ospf_instance;
+        ydk::YList ospf_instance;
         
 }; // PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances
 
@@ -2152,7 +2152,7 @@ class PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces : public ydk:
 
         class Interface; //type: PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces
 
@@ -2223,7 +2223,7 @@ class PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes : public ydk::Entit
 
         class ProcessNode; //type: PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode> > process_node;
+        ydk::YList process_node;
         
 }; // PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes
 
@@ -2271,7 +2271,7 @@ class PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids 
 
         class Pid; //type: PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid> > pid;
+        ydk::YList pid;
         
 }; // PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids
 
@@ -2341,7 +2341,7 @@ class PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces : public ydk::E
 
         class Interface; //type: PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces
 
@@ -2412,7 +2412,7 @@ class PerfMgmt::Enable::MonitorEnable::Memory::Nodes : public ydk::Entity
 
         class Node; //type: PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PerfMgmt::Enable::MonitorEnable::Memory::Nodes
 
@@ -2483,7 +2483,7 @@ class PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances : public yd
 
         class OspfInstance; //type: PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance> > ospf_instance;
+        ydk::YList ospf_instance;
         
 }; // PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances
 
@@ -2554,7 +2554,7 @@ class PerfMgmt::Enable::MonitorEnable::Cpu::Nodes : public ydk::Entity
 
         class Node; //type: PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PerfMgmt::Enable::MonitorEnable::Cpu::Nodes
 
@@ -2625,7 +2625,7 @@ class PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors : public ydk::Entity
 
         class Neighbor; //type: PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors
 
@@ -2696,7 +2696,7 @@ class PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces : public ydk::Entit
 
         class Interface; //type: PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces
 
@@ -2743,7 +2743,7 @@ class PerfMgmt::RegExpGroups : public ydk::Entity
 
         class RegExpGroup; //type: PerfMgmt::RegExpGroups::RegExpGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::RegExpGroups::RegExpGroup> > reg_exp_group;
+        ydk::YList reg_exp_group;
         
 }; // PerfMgmt::RegExpGroups
 
@@ -2791,7 +2791,7 @@ class PerfMgmt::RegExpGroups::RegExpGroup::RegExps : public ydk::Entity
 
         class RegExp; //type: PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp> > reg_exp;
+        ydk::YList reg_exp;
         
 }; // PerfMgmt::RegExpGroups::RegExpGroup::RegExps
 
@@ -2903,7 +2903,7 @@ class PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempl
 
         class GenericCounterInterfaceTemplate; //type: PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate> > generic_counter_interface_template;
+        ydk::YList generic_counter_interface_template;
         
 }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates
 
@@ -3537,7 +3537,7 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates : public ydk::Entity
 
         class LdpMplsTemplate; //type: PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate> > ldp_mpls_template;
+        ydk::YList ldp_mpls_template;
         
 }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates
 
@@ -3835,15 +3835,6 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelRele
 
 }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd
 
-class PmThresholdRearm : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf always;
-        static const ydk::Enum::YLeaf window;
-        static const ydk::Enum::YLeaf toggle;
-
-};
-
 class PmThresholdOp : public ydk::Enum
 {
     public:
@@ -3854,6 +3845,15 @@ class PmThresholdOp : public ydk::Enum
         static const ydk::Enum::YLeaf gt;
         static const ydk::Enum::YLeaf ge;
         static const ydk::Enum::YLeaf rg;
+
+};
+
+class PmThresholdRearm : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf always;
+        static const ydk::Enum::YLeaf window;
+        static const ydk::Enum::YLeaf toggle;
 
 };
 

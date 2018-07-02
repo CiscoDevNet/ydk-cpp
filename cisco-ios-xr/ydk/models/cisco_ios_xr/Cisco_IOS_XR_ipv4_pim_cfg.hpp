@@ -36,7 +36,7 @@ class Pim : public ydk::Entity
         class DefaultContext; //type: Pim::DefaultContext
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs> vrfs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext> default_context; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext> default_context;
         
 }; // Pim
 
@@ -60,7 +60,7 @@ class Pim::Vrfs : public ydk::Entity
 
         class Vrf; //type: Pim::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Pim::Vrfs
 
@@ -175,7 +175,7 @@ class Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses : public ydk::Entity
 
         class SparseModeRpAddress; //type: Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress> > sparse_mode_rp_address;
+        ydk::YList sparse_mode_rp_address;
         
 }; // Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses
 
@@ -501,7 +501,7 @@ class Pim::Vrfs::Vrf::Ipv4::Injects : public ydk::Entity
 
         class Inject; //type: Pim::Vrfs::Vrf::Ipv4::Injects::Inject
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv4::Injects::Inject> > inject;
+        ydk::YList inject;
         
 }; // Pim::Vrfs::Vrf::Ipv4::Injects
 
@@ -547,7 +547,7 @@ class Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses : public ydk::Entity
 
         class BidirRpAddress; //type: Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress> > bidir_rp_address;
+        ydk::YList bidir_rp_address;
         
 }; // Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses
 
@@ -641,7 +641,7 @@ class Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps : public ydk::Entity
 
         class CandidateRp; //type: Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp> > candidate_rp;
+        ydk::YList candidate_rp;
         
 }; // Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps
 
@@ -718,7 +718,7 @@ class Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneJoins : public ydk::Entity
 
         class CloneJoin; //type: Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneJoins::CloneJoin
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneJoins::CloneJoin> > clone_join;
+        ydk::YList clone_join;
         
 }; // Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneJoins
 
@@ -765,7 +765,7 @@ class Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneSources : public ydk::Entity
 
         class CloneSource; //type: Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneSources::CloneSource
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneSources::CloneSource> > clone_source;
+        ydk::YList clone_source;
         
 }; // Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneSources
 
@@ -812,7 +812,7 @@ class Pim::Vrfs::Vrf::Ipv4::Paths : public ydk::Entity
 
         class Path; //type: Pim::Vrfs::Vrf::Ipv4::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv4::Paths::Path> > path;
+        ydk::YList path;
         
 }; // Pim::Vrfs::Vrf::Ipv4::Paths
 
@@ -902,7 +902,7 @@ class Pim::Vrfs::Vrf::Ipv4::Interfaces : public ydk::Entity
 
         class Interface; //type: Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Pim::Vrfs::Vrf::Ipv4::Interfaces
 
@@ -1068,7 +1068,7 @@ class Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses : public ydk::Entity
 
         class SparseModeRpAddress; //type: Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress> > sparse_mode_rp_address;
+        ydk::YList sparse_mode_rp_address;
         
 }; // Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses
 
@@ -1394,7 +1394,7 @@ class Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses : public ydk::Entity
 
         class BidirRpAddress; //type: Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress> > bidir_rp_address;
+        ydk::YList bidir_rp_address;
         
 }; // Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses
 
@@ -1488,7 +1488,7 @@ class Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps : public ydk::Entity
 
         class CandidateRp; //type: Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp> > candidate_rp;
+        ydk::YList candidate_rp;
         
 }; // Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps
 
@@ -1558,7 +1558,7 @@ class Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses : public ydk::Entity
 
         class EmbeddedRpAddress; //type: Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress> > embedded_rp_address;
+        ydk::YList embedded_rp_address;
         
 }; // Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses
 
@@ -1625,7 +1625,7 @@ class Pim::Vrfs::Vrf::Ipv6::Interfaces : public ydk::Entity
 
         class Interface; //type: Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Pim::Vrfs::Vrf::Ipv6::Interfaces
 
@@ -1821,7 +1821,7 @@ class Pim::DefaultContext::Ipv6::Interfaces : public ydk::Entity
 
         class Interface; //type: Pim::DefaultContext::Ipv6::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv6::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Pim::DefaultContext::Ipv6::Interfaces
 
@@ -1928,7 +1928,7 @@ class Pim::DefaultContext::Ipv6::SparseModeRpAddresses : public ydk::Entity
 
         class SparseModeRpAddress; //type: Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress> > sparse_mode_rp_address;
+        ydk::YList sparse_mode_rp_address;
         
 }; // Pim::DefaultContext::Ipv6::SparseModeRpAddresses
 
@@ -2442,7 +2442,7 @@ class Pim::DefaultContext::Ipv6::BidirRpAddresses : public ydk::Entity
 
         class BidirRpAddress; //type: Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress> > bidir_rp_address;
+        ydk::YList bidir_rp_address;
         
 }; // Pim::DefaultContext::Ipv6::BidirRpAddresses
 
@@ -2540,7 +2540,7 @@ class Pim::DefaultContext::Ipv6::Bsr::CandidateRps : public ydk::Entity
 
         class CandidateRp; //type: Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp> > candidate_rp;
+        ydk::YList candidate_rp;
         
 }; // Pim::DefaultContext::Ipv6::Bsr::CandidateRps
 
@@ -2613,7 +2613,7 @@ class Pim::DefaultContext::Ipv6::EmbeddedRpAddresses : public ydk::Entity
 
         class EmbeddedRpAddress; //type: Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress> > embedded_rp_address;
+        ydk::YList embedded_rp_address;
         
 }; // Pim::DefaultContext::Ipv6::EmbeddedRpAddresses
 
@@ -2779,7 +2779,7 @@ class Pim::DefaultContext::Ipv4::Interfaces : public ydk::Entity
 
         class Interface; //type: Pim::DefaultContext::Ipv4::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Pim::DefaultContext::Ipv4::Interfaces
 
@@ -2911,7 +2911,7 @@ class Pim::DefaultContext::Ipv4::AutoRpCandidateRps : public ydk::Entity
 
         class AutoRpCandidateRp; //type: Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp> > auto_rp_candidate_rp;
+        ydk::YList auto_rp_candidate_rp;
         
 }; // Pim::DefaultContext::Ipv4::AutoRpCandidateRps
 
@@ -3034,7 +3034,7 @@ class Pim::DefaultContext::Ipv4::SparseModeRpAddresses : public ydk::Entity
 
         class SparseModeRpAddress; //type: Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress> > sparse_mode_rp_address;
+        ydk::YList sparse_mode_rp_address;
         
 }; // Pim::DefaultContext::Ipv4::SparseModeRpAddresses
 
@@ -3548,7 +3548,7 @@ class Pim::DefaultContext::Ipv4::Injects : public ydk::Entity
 
         class Inject; //type: Pim::DefaultContext::Ipv4::Injects::Inject
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::Injects::Inject> > inject;
+        ydk::YList inject;
         
 }; // Pim::DefaultContext::Ipv4::Injects
 
@@ -3596,7 +3596,7 @@ class Pim::DefaultContext::Ipv4::BidirRpAddresses : public ydk::Entity
 
         class BidirRpAddress; //type: Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress> > bidir_rp_address;
+        ydk::YList bidir_rp_address;
         
 }; // Pim::DefaultContext::Ipv4::BidirRpAddresses
 
@@ -3694,7 +3694,7 @@ class Pim::DefaultContext::Ipv4::Bsr::CandidateRps : public ydk::Entity
 
         class CandidateRp; //type: Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp> > candidate_rp;
+        ydk::YList candidate_rp;
         
 }; // Pim::DefaultContext::Ipv4::Bsr::CandidateRps
 
@@ -3774,7 +3774,7 @@ class Pim::DefaultContext::Ipv4::Mofrr::CloneJoins : public ydk::Entity
 
         class CloneJoin; //type: Pim::DefaultContext::Ipv4::Mofrr::CloneJoins::CloneJoin
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::Mofrr::CloneJoins::CloneJoin> > clone_join;
+        ydk::YList clone_join;
         
 }; // Pim::DefaultContext::Ipv4::Mofrr::CloneJoins
 
@@ -3823,7 +3823,7 @@ class Pim::DefaultContext::Ipv4::Mofrr::CloneSources : public ydk::Entity
 
         class CloneSource; //type: Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource> > clone_source;
+        ydk::YList clone_source;
         
 }; // Pim::DefaultContext::Ipv4::Mofrr::CloneSources
 
@@ -3872,7 +3872,7 @@ class Pim::DefaultContext::Ipv4::Paths : public ydk::Entity
 
         class Path; //type: Pim::DefaultContext::Ipv4::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::Paths::Path> > path;
+        ydk::YList path;
         
 }; // Pim::DefaultContext::Ipv4::Paths
 
@@ -3946,6 +3946,14 @@ class Pim::DefaultContext::Ipv4::Convergence : public ydk::Entity
 
 }; // Pim::DefaultContext::Ipv4::Convergence
 
+class PimProtocolMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf sm;
+        static const ydk::Enum::YLeaf bidir;
+
+};
+
 class PimMultipath : public ydk::Enum
 {
     public:
@@ -3954,14 +3962,6 @@ class PimMultipath : public ydk::Enum
         static const ydk::Enum::YLeaf source_hash;
         static const ydk::Enum::YLeaf source_next_hop_hash;
         static const ydk::Enum::YLeaf source_group_hash;
-
-};
-
-class PimProtocolMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf sm;
-        static const ydk::Enum::YLeaf bidir;
 
 };
 

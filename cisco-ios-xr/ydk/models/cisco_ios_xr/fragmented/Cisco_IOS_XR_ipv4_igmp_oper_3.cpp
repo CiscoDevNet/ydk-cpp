@@ -19,7 +19,7 @@ Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::~Address()
@@ -28,6 +28,7 @@ Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry
 
 bool Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -124,7 +125,7 @@ Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::~QuerierAddress()
@@ -133,6 +134,7 @@ Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry
 
 bool Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -229,7 +231,7 @@ Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::~SubscriberAddress()
@@ -238,6 +240,7 @@ Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry
 
 bool Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -366,7 +369,7 @@ Igmp::Standby::DefaultContext::TrafficCounters::TrafficCounters()
     input_no_platform_support_mtrace{YType::uint32, "input-no-platform-support-mtrace"}
 {
 
-    yang_name = "traffic-counters"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traffic-counters"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::TrafficCounters::~TrafficCounters()
@@ -375,6 +378,7 @@ Igmp::Standby::DefaultContext::TrafficCounters::~TrafficCounters()
 
 bool Igmp::Standby::DefaultContext::TrafficCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return elapsed_time.is_set
 	|| packets_in.is_set
 	|| packets_out.is_set
@@ -888,9 +892,11 @@ bool Igmp::Standby::DefaultContext::TrafficCounters::has_leaf_or_child_of_name(c
 }
 
 Igmp::Standby::DefaultContext::Groups::Groups()
+    :
+    group(this, {})
 {
 
-    yang_name = "groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::Groups::~Groups()
@@ -899,7 +905,8 @@ Igmp::Standby::DefaultContext::Groups::~Groups()
 
 bool Igmp::Standby::DefaultContext::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -909,7 +916,7 @@ bool Igmp::Standby::DefaultContext::Groups::has_data() const
 
 bool Igmp::Standby::DefaultContext::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -946,7 +953,7 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Groups::get_child_by_name
     {
         auto c = std::make_shared<Igmp::Standby::DefaultContext::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -958,7 +965,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Gr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1000,16 +1007,16 @@ Igmp::Standby::DefaultContext::Groups::Group::Group()
     older_host_version2_timer{YType::uint32, "older-host-version2-timer"},
     is_added{YType::boolean, "is-added"},
     is_suppressed{YType::boolean, "is-suppressed"}
-    	,
+        ,
     group_address_xr(std::make_shared<Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr>())
-	,last_reporter(std::make_shared<Igmp::Standby::DefaultContext::Groups::Group::LastReporter>())
-	,source_address(std::make_shared<Igmp::Standby::DefaultContext::Groups::Group::SourceAddress>())
+    , last_reporter(std::make_shared<Igmp::Standby::DefaultContext::Groups::Group::LastReporter>())
+    , source_address(std::make_shared<Igmp::Standby::DefaultContext::Groups::Group::SourceAddress>())
 {
     group_address_xr->parent = this;
     last_reporter->parent = this;
     source_address->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::Groups::Group::~Group()
@@ -1018,6 +1025,7 @@ Igmp::Standby::DefaultContext::Groups::Group::~Group()
 
 bool Igmp::Standby::DefaultContext::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| interface_name.is_set
 	|| interface_name_xr.is_set
@@ -1312,7 +1320,7 @@ Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr::GroupAddressXr()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr::~GroupAddressXr()
@@ -1321,6 +1329,7 @@ Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr::~GroupAddressXr()
 
 bool Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1424,7 +1433,7 @@ Igmp::Standby::DefaultContext::Groups::Group::LastReporter::LastReporter()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "last-reporter"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-reporter"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::Groups::Group::LastReporter::~LastReporter()
@@ -1433,6 +1442,7 @@ Igmp::Standby::DefaultContext::Groups::Group::LastReporter::~LastReporter()
 
 bool Igmp::Standby::DefaultContext::Groups::Group::LastReporter::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1536,7 +1546,7 @@ Igmp::Standby::DefaultContext::Groups::Group::SourceAddress::SourceAddress()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::Groups::Group::SourceAddress::~SourceAddress()
@@ -1545,6 +1555,7 @@ Igmp::Standby::DefaultContext::Groups::Group::SourceAddress::~SourceAddress()
 
 bool Igmp::Standby::DefaultContext::Groups::Group::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1649,7 +1660,7 @@ Igmp::Standby::DefaultContext::GroupSummary::GroupSummary()
     is_low_memory{YType::boolean, "is-low-memory"}
 {
 
-    yang_name = "group-summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::GroupSummary::~GroupSummary()
@@ -1658,6 +1669,7 @@ Igmp::Standby::DefaultContext::GroupSummary::~GroupSummary()
 
 bool Igmp::Standby::DefaultContext::GroupSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return groutes.is_set
 	|| sg_routes.is_set
 	|| group_count.is_set
@@ -1773,7 +1785,7 @@ Igmp::Standby::DefaultContext::IfrsInterfaceSummary::IfrsInterfaceSummary()
     configuration_count{YType::uint32, "configuration-count"}
 {
 
-    yang_name = "ifrs-interface-summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifrs-interface-summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::IfrsInterfaceSummary::~IfrsInterfaceSummary()
@@ -1782,6 +1794,7 @@ Igmp::Standby::DefaultContext::IfrsInterfaceSummary::~IfrsInterfaceSummary()
 
 bool Igmp::Standby::DefaultContext::IfrsInterfaceSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_count.is_set
 	|| configuration_count.is_set;
 }
@@ -1866,9 +1879,11 @@ bool Igmp::Standby::DefaultContext::IfrsInterfaceSummary::has_leaf_or_child_of_n
 }
 
 Igmp::Standby::DefaultContext::GlobalInterfaceTable::GlobalInterfaceTable()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "global-interface-table"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-interface-table"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::GlobalInterfaceTable::~GlobalInterfaceTable()
@@ -1877,7 +1892,8 @@ Igmp::Standby::DefaultContext::GlobalInterfaceTable::~GlobalInterfaceTable()
 
 bool Igmp::Standby::DefaultContext::GlobalInterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1887,7 +1903,7 @@ bool Igmp::Standby::DefaultContext::GlobalInterfaceTable::has_data() const
 
 bool Igmp::Standby::DefaultContext::GlobalInterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1924,7 +1940,7 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::GlobalInterfaceTable::get
     {
         auto c = std::make_shared<Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1936,7 +1952,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Gl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2013,16 +2029,16 @@ Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Interface()
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Address>())
-	,querier_address(std::make_shared<Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress>())
-	,subscriber_address(std::make_shared<Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress>())
+    , querier_address(std::make_shared<Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress>())
+    , subscriber_address(std::make_shared<Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "global-interface-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "global-interface-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::~Interface()
@@ -2031,6 +2047,7 @@ Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::~Interface()
 
 bool Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -2152,7 +2169,8 @@ std::string Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::get_
 std::string Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2780,7 +2798,7 @@ Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Address::Address
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Address::~Address()
@@ -2789,6 +2807,7 @@ Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Address::~Addres
 
 bool Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -2885,7 +2904,7 @@ Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::~QuerierAddress()
@@ -2894,6 +2913,7 @@ Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::
 
 bool Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -2990,7 +3010,7 @@ Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddres
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::~SubscriberAddress()
@@ -2999,6 +3019,7 @@ Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddres
 
 bool Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3089,9 +3110,11 @@ bool Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberA
 }
 
 Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetails()
+    :
+    ssm_map_detail(this, {})
 {
 
-    yang_name = "ssm-map-details"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssm-map-details"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::SsmMapDetails::~SsmMapDetails()
@@ -3100,7 +3123,8 @@ Igmp::Standby::DefaultContext::SsmMapDetails::~SsmMapDetails()
 
 bool Igmp::Standby::DefaultContext::SsmMapDetails::has_data() const
 {
-    for (std::size_t index=0; index<ssm_map_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssm_map_detail.len(); index++)
     {
         if(ssm_map_detail[index]->has_data())
             return true;
@@ -3110,7 +3134,7 @@ bool Igmp::Standby::DefaultContext::SsmMapDetails::has_data() const
 
 bool Igmp::Standby::DefaultContext::SsmMapDetails::has_operation() const
 {
-    for (std::size_t index=0; index<ssm_map_detail.size(); index++)
+    for (std::size_t index=0; index<ssm_map_detail.len(); index++)
     {
         if(ssm_map_detail[index]->has_operation())
             return true;
@@ -3147,7 +3171,7 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMapDetails::get_child_
     {
         auto c = std::make_shared<Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail>();
         c->parent = this;
-        ssm_map_detail.push_back(c);
+        ssm_map_detail.append(c);
         return c;
     }
 
@@ -3159,7 +3183,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Ss
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssm_map_detail)
+    for (auto c : ssm_map_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3193,12 +3217,13 @@ Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::SsmMapDetail()
     response_pending{YType::boolean, "response-pending"},
     query_interval{YType::uint32, "query-interval"},
     elapsed_time{YType::uint64, "elapsed-time"}
-    	,
+        ,
     map_info(std::make_shared<Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo>())
+    , sources(this, {})
 {
     map_info->parent = this;
 
-    yang_name = "ssm-map-detail"; yang_parent_name = "ssm-map-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssm-map-detail"; yang_parent_name = "ssm-map-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::~SsmMapDetail()
@@ -3207,7 +3232,8 @@ Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::~SsmMapDetail()
 
 bool Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::has_data() const
 {
-    for (std::size_t index=0; index<sources.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sources.len(); index++)
     {
         if(sources[index]->has_data())
             return true;
@@ -3223,7 +3249,7 @@ bool Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::has_data() cons
 
 bool Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::has_operation() const
 {
-    for (std::size_t index=0; index<sources.size(); index++)
+    for (std::size_t index=0; index<sources.len(); index++)
     {
         if(sources[index]->has_operation())
             return true;
@@ -3282,7 +3308,7 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDeta
     {
         auto c = std::make_shared<Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources>();
         c->parent = this;
-        sources.push_back(c);
+        sources.append(c);
         return c;
     }
 
@@ -3299,7 +3325,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Ss
     }
 
     count = 0;
-    for (auto const & c : sources)
+    for (auto c : sources.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3389,12 +3415,12 @@ Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::MapInfo()
     :
     map_type{YType::uint32, "map-type"},
     source_counts{YType::uint32, "source-counts"}
-    	,
+        ,
     group_address_xr(std::make_shared<Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr>())
 {
     group_address_xr->parent = this;
 
-    yang_name = "map-info"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "map-info"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::~MapInfo()
@@ -3403,6 +3429,7 @@ Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::~MapInfo()
 
 bool Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return map_type.is_set
 	|| source_counts.is_set
 	|| (group_address_xr !=  nullptr && group_address_xr->has_data());
@@ -3509,7 +3536,7 @@ Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddres
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "map-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "map-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::~GroupAddressXr()
@@ -3518,6 +3545,7 @@ Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddres
 
 bool Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3621,7 +3649,7 @@ Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::Sources()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "sources"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sources"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::~Sources()
@@ -3630,6 +3658,7 @@ Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::~Sources()
 
 bool Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3727,9 +3756,11 @@ bool Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::has_le
 }
 
 Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOffs()
+    :
+    interface_state_off(this, {"interface_name"})
 {
 
-    yang_name = "interface-state-offs"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-state-offs"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::InterfaceStateOffs::~InterfaceStateOffs()
@@ -3738,7 +3769,8 @@ Igmp::Standby::DefaultContext::InterfaceStateOffs::~InterfaceStateOffs()
 
 bool Igmp::Standby::DefaultContext::InterfaceStateOffs::has_data() const
 {
-    for (std::size_t index=0; index<interface_state_off.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_state_off.len(); index++)
     {
         if(interface_state_off[index]->has_data())
             return true;
@@ -3748,7 +3780,7 @@ bool Igmp::Standby::DefaultContext::InterfaceStateOffs::has_data() const
 
 bool Igmp::Standby::DefaultContext::InterfaceStateOffs::has_operation() const
 {
-    for (std::size_t index=0; index<interface_state_off.size(); index++)
+    for (std::size_t index=0; index<interface_state_off.len(); index++)
     {
         if(interface_state_off[index]->has_operation())
             return true;
@@ -3785,7 +3817,7 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffs::get_c
     {
         auto c = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff>();
         c->parent = this;
-        interface_state_off.push_back(c);
+        interface_state_off.append(c);
         return c;
     }
 
@@ -3797,7 +3829,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_state_off)
+    for (auto c : interface_state_off.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3874,16 +3906,16 @@ Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::InterfaceS
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address>())
-	,querier_address(std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress>())
-	,subscriber_address(std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress>())
+    , querier_address(std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress>())
+    , subscriber_address(std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface-state-off"; yang_parent_name = "interface-state-offs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-state-off"; yang_parent_name = "interface-state-offs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::~InterfaceStateOff()
@@ -3892,6 +3924,7 @@ Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::~Interface
 
 bool Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -4013,7 +4046,8 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff
 std::string Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-state-off" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-state-off";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4641,7 +4675,7 @@ Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::A
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::~Address()
@@ -4650,6 +4684,7 @@ Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::~
 
 bool Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4746,7 +4781,7 @@ Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAdd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::~QuerierAddress()
@@ -4755,6 +4790,7 @@ Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAdd
 
 bool Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4851,7 +4887,7 @@ Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Subscriber
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::~SubscriberAddress()
@@ -4860,6 +4896,7 @@ Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Subscriber
 
 bool Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4952,14 +4989,14 @@ bool Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Subsc
 Igmp::Active::Active()
     :
     vrfs(std::make_shared<Igmp::Active::Vrfs>())
-	,process(std::make_shared<Igmp::Active::Process>())
-	,default_context(std::make_shared<Igmp::Active::DefaultContext>())
+    , process(std::make_shared<Igmp::Active::Process>())
+    , default_context(std::make_shared<Igmp::Active::DefaultContext>())
 {
     vrfs->parent = this;
     process->parent = this;
     default_context->parent = this;
 
-    yang_name = "active"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::~Active()
@@ -4968,6 +5005,7 @@ Igmp::Active::~Active()
 
 bool Igmp::Active::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrfs !=  nullptr && vrfs->has_data())
 	|| (process !=  nullptr && process->has_data())
 	|| (default_context !=  nullptr && default_context->has_data());
@@ -5074,9 +5112,11 @@ bool Igmp::Active::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Igmp::Active::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::Vrfs::~Vrfs()
@@ -5085,7 +5125,8 @@ Igmp::Active::Vrfs::~Vrfs()
 
 bool Igmp::Active::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -5095,7 +5136,7 @@ bool Igmp::Active::Vrfs::has_data() const
 
 bool Igmp::Active::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -5132,7 +5173,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -5144,7 +5185,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5173,24 +5214,24 @@ bool Igmp::Active::Vrfs::has_leaf_or_child_of_name(const std::string & name) con
 Igmp::Active::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     summary(std::make_shared<Igmp::Active::Vrfs::Vrf::Summary>())
-	,interface_state_ons(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns>())
-	,detail_groups(std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups>())
-	,non_active_groups(std::make_shared<Igmp::Active::Vrfs::Vrf::NonActiveGroups>())
-	,ssm_maps(std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMaps>())
-	,explicit_groups(std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups>())
-	,interface_table(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceTable>())
-	,interface_unicast_qos_adjusts(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts>())
-	,ranges(std::make_shared<Igmp::Active::Vrfs::Vrf::Ranges>())
-	,ifrs_interfaces(std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaces>())
-	,traffic_counters(std::make_shared<Igmp::Active::Vrfs::Vrf::TrafficCounters>())
-	,groups(std::make_shared<Igmp::Active::Vrfs::Vrf::Groups>())
-	,group_summary(std::make_shared<Igmp::Active::Vrfs::Vrf::GroupSummary>())
-	,ifrs_interface_summary(std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaceSummary>())
-	,global_interface_table(std::make_shared<Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable>())
-	,ssm_map_details(std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMapDetails>())
-	,interface_state_offs(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOffs>())
+    , interface_state_ons(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns>())
+    , detail_groups(std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups>())
+    , non_active_groups(std::make_shared<Igmp::Active::Vrfs::Vrf::NonActiveGroups>())
+    , ssm_maps(std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMaps>())
+    , explicit_groups(std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups>())
+    , interface_table(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceTable>())
+    , interface_unicast_qos_adjusts(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts>())
+    , ranges(std::make_shared<Igmp::Active::Vrfs::Vrf::Ranges>())
+    , ifrs_interfaces(std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaces>())
+    , traffic_counters(std::make_shared<Igmp::Active::Vrfs::Vrf::TrafficCounters>())
+    , groups(std::make_shared<Igmp::Active::Vrfs::Vrf::Groups>())
+    , group_summary(std::make_shared<Igmp::Active::Vrfs::Vrf::GroupSummary>())
+    , ifrs_interface_summary(std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaceSummary>())
+    , global_interface_table(std::make_shared<Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable>())
+    , ssm_map_details(std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMapDetails>())
+    , interface_state_offs(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOffs>())
 {
     summary->parent = this;
     interface_state_ons->parent = this;
@@ -5210,7 +5251,7 @@ Igmp::Active::Vrfs::Vrf::Vrf()
     ssm_map_details->parent = this;
     interface_state_offs->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::Vrfs::Vrf::~Vrf()
@@ -5219,6 +5260,7 @@ Igmp::Active::Vrfs::Vrf::~Vrf()
 
 bool Igmp::Active::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (summary !=  nullptr && summary->has_data())
 	|| (interface_state_ons !=  nullptr && interface_state_ons->has_data())
@@ -5272,7 +5314,8 @@ std::string Igmp::Active::Vrfs::Vrf::get_absolute_path() const
 std::string Igmp::Active::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -5573,9 +5616,11 @@ Igmp::Active::Vrfs::Vrf::Summary::Summary()
     disabled_interface_count{YType::uint32, "disabled-interface-count"},
     tunnel_mte_config_count{YType::uint32, "tunnel-mte-config-count"},
     node_low_memory{YType::boolean, "node-low-memory"}
+        ,
+    interface(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::Summary::~Summary()
@@ -5584,7 +5629,8 @@ Igmp::Active::Vrfs::Vrf::Summary::~Summary()
 
 bool Igmp::Active::Vrfs::Vrf::Summary::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -5603,7 +5649,7 @@ bool Igmp::Active::Vrfs::Vrf::Summary::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -5653,7 +5699,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::Summary::get_child_by_name(cons
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::Summary::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -5665,7 +5711,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Summary:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5803,7 +5849,7 @@ Igmp::Active::Vrfs::Vrf::Summary::Interface::Interface()
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"}
 {
 
-    yang_name = "interface"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::Summary::Interface::~Interface()
@@ -5812,6 +5858,7 @@ Igmp::Active::Vrfs::Vrf::Summary::Interface::~Interface()
 
 bool Igmp::Active::Vrfs::Vrf::Summary::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| group_limit.is_set
 	|| group_count.is_set
@@ -5967,9 +6014,11 @@ bool Igmp::Active::Vrfs::Vrf::Summary::Interface::has_leaf_or_child_of_name(cons
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOns()
+    :
+    interface_state_on(this, {"interface_name"})
 {
 
-    yang_name = "interface-state-ons"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-state-ons"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceStateOns::~InterfaceStateOns()
@@ -5978,7 +6027,8 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOns::~InterfaceStateOns()
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceStateOns::has_data() const
 {
-    for (std::size_t index=0; index<interface_state_on.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_state_on.len(); index++)
     {
         if(interface_state_on[index]->has_data())
             return true;
@@ -5988,7 +6038,7 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceStateOns::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceStateOns::has_operation() const
 {
-    for (std::size_t index=0; index<interface_state_on.size(); index++)
+    for (std::size_t index=0; index<interface_state_on.len(); index++)
     {
         if(interface_state_on[index]->has_operation())
             return true;
@@ -6018,7 +6068,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::InterfaceStateOns::get_child_by
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn>();
         c->parent = this;
-        interface_state_on.push_back(c);
+        interface_state_on.append(c);
         return c;
     }
 
@@ -6030,7 +6080,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_state_on)
+    for (auto c : interface_state_on.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6107,16 +6157,16 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::InterfaceStateOn()
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address>())
-	,querier_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress>())
-	,subscriber_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress>())
+    , querier_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress>())
+    , subscriber_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface-state-on"; yang_parent_name = "interface-state-ons"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-state-on"; yang_parent_name = "interface-state-ons"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::~InterfaceStateOn()
@@ -6125,6 +6175,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::~InterfaceStateOn(
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -6239,7 +6290,8 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::has_operation
 std::string Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-state-on" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-state-on";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -6867,7 +6919,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::Address()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::~Address()
@@ -6876,6 +6928,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::~Address(
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -6972,7 +7025,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::Qu
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::~QuerierAddress()
@@ -6981,6 +7034,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::~Q
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -7077,7 +7131,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress:
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::~SubscriberAddress()
@@ -7086,6 +7140,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress:
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -7176,9 +7231,11 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAdd
 }
 
 Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroups()
+    :
+    detail_group(this, {})
 {
 
-    yang_name = "detail-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::DetailGroups::~DetailGroups()
@@ -7187,7 +7244,8 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::~DetailGroups()
 
 bool Igmp::Active::Vrfs::Vrf::DetailGroups::has_data() const
 {
-    for (std::size_t index=0; index<detail_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail_group.len(); index++)
     {
         if(detail_group[index]->has_data())
             return true;
@@ -7197,7 +7255,7 @@ bool Igmp::Active::Vrfs::Vrf::DetailGroups::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::DetailGroups::has_operation() const
 {
-    for (std::size_t index=0; index<detail_group.size(); index++)
+    for (std::size_t index=0; index<detail_group.len(); index++)
     {
         if(detail_group[index]->has_operation())
             return true;
@@ -7227,7 +7285,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::DetailGroups::get_child_by_name
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup>();
         c->parent = this;
-        detail_group.push_back(c);
+        detail_group.append(c);
         return c;
     }
 
@@ -7239,7 +7297,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::DetailGr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail_group)
+    for (auto c : detail_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7272,12 +7330,13 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::DetailGroup()
     source_address{YType::str, "source-address"},
     is_router_exclude_mode{YType::boolean, "is-router-exclude-mode"},
     is_host_exclude_mode{YType::boolean, "is-host-exclude-mode"}
-    	,
+        ,
     group_info(std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo>())
+    , source(this, {})
 {
     group_info->parent = this;
 
-    yang_name = "detail-group"; yang_parent_name = "detail-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-group"; yang_parent_name = "detail-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::~DetailGroup()
@@ -7286,7 +7345,8 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::~DetailGroup()
 
 bool Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::has_data() const
 {
-    for (std::size_t index=0; index<source.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<source.len(); index++)
     {
         if(source[index]->has_data())
             return true;
@@ -7301,7 +7361,7 @@ bool Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::has_operation() const
 {
-    for (std::size_t index=0; index<source.size(); index++)
+    for (std::size_t index=0; index<source.len(); index++)
     {
         if(source[index]->has_operation())
             return true;
@@ -7351,7 +7411,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::get_
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source>();
         c->parent = this;
-        source.push_back(c);
+        source.append(c);
         return c;
     }
 
@@ -7368,7 +7428,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::DetailGr
     }
 
     count = 0;
-    for (auto const & c : source)
+    for (auto c : source.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7458,16 +7518,16 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupInfo()
     older_host_version2_timer{YType::uint32, "older-host-version2-timer"},
     is_added{YType::boolean, "is-added"},
     is_suppressed{YType::boolean, "is-suppressed"}
-    	,
+        ,
     group_address_xr(std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr>())
-	,last_reporter(std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter>())
-	,source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress>())
+    , last_reporter(std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter>())
+    , source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress>())
 {
     group_address_xr->parent = this;
     last_reporter->parent = this;
     source_address->parent = this;
 
-    yang_name = "group-info"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-info"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::~GroupInfo()
@@ -7476,6 +7536,7 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::~GroupInfo()
 
 bool Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name_xr.is_set
 	|| uptime.is_set
 	|| expiration_time.is_set
@@ -7737,7 +7798,7 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::G
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::~GroupAddressXr()
@@ -7746,6 +7807,7 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::~
 
 bool Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -7842,7 +7904,7 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::Las
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::~LastReporter()
@@ -7851,6 +7913,7 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::~La
 
 bool Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -7947,7 +8010,7 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::So
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::~SourceAddress()
@@ -7956,6 +8019,7 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::~S
 
 bool Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -8055,12 +8119,12 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::Source()
     is_we_report{YType::boolean, "is-we-report"},
     flags{YType::int32, "flags"},
     is_added{YType::boolean, "is-added"}
-    	,
+        ,
     source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress>())
 {
     source_address->parent = this;
 
-    yang_name = "source"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::~Source()
@@ -8069,6 +8133,7 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::~Source()
 
 bool Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return uptime.is_set
 	|| expiration_time.is_set
 	|| is_local.is_set
@@ -8246,7 +8311,7 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::Sourc
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::~SourceAddress()
@@ -8255,6 +8320,7 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::~Sour
 
 bool Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -8345,9 +8411,11 @@ bool Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::
 }
 
 Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups()
+    :
+    non_active_groups(this, {})
 {
 
-    yang_name = "non-active-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "non-active-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::NonActiveGroups::~NonActiveGroups()
@@ -8356,7 +8424,8 @@ Igmp::Active::Vrfs::Vrf::NonActiveGroups::~NonActiveGroups()
 
 bool Igmp::Active::Vrfs::Vrf::NonActiveGroups::has_data() const
 {
-    for (std::size_t index=0; index<non_active_groups.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<non_active_groups.len(); index++)
     {
         if(non_active_groups[index]->has_data())
             return true;
@@ -8366,7 +8435,7 @@ bool Igmp::Active::Vrfs::Vrf::NonActiveGroups::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::NonActiveGroups::has_operation() const
 {
-    for (std::size_t index=0; index<non_active_groups.size(); index++)
+    for (std::size_t index=0; index<non_active_groups.len(); index++)
     {
         if(non_active_groups[index]->has_operation())
             return true;
@@ -8396,7 +8465,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::NonActiveGroups::get_child_by_n
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_>();
         c->parent = this;
-        non_active_groups.push_back(c);
+        non_active_groups.append(c);
         return c;
     }
 
@@ -8408,7 +8477,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::NonActiv
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : non_active_groups)
+    for (auto c : non_active_groups.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8438,14 +8507,14 @@ Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::NonActiveGroups_()
     :
     interface{YType::str, "interface"},
     reason_for_non_activity{YType::str, "reason-for-non-activity"}
-    	,
+        ,
     group_address(std::make_shared<Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress>())
-	,source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress>())
+    , source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress>())
 {
     group_address->parent = this;
     source_address->parent = this;
 
-    yang_name = "non-active-groups"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "non-active-groups"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::~NonActiveGroups_()
@@ -8454,6 +8523,7 @@ Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::~NonActiveGroups_()
 
 bool Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| reason_for_non_activity.is_set
 	|| (group_address !=  nullptr && group_address->has_data())
@@ -8569,7 +8639,7 @@ Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::GroupA
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::~GroupAddress()
@@ -8578,6 +8648,7 @@ Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::~Group
 
 bool Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -8674,7 +8745,7 @@ Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::Sourc
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::~SourceAddress()
@@ -8683,6 +8754,7 @@ Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::~Sour
 
 bool Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -8773,9 +8845,11 @@ bool Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::
 }
 
 Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMaps()
+    :
+    ssm_map(this, {})
 {
 
-    yang_name = "ssm-maps"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-maps"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::SsmMaps::~SsmMaps()
@@ -8784,7 +8858,8 @@ Igmp::Active::Vrfs::Vrf::SsmMaps::~SsmMaps()
 
 bool Igmp::Active::Vrfs::Vrf::SsmMaps::has_data() const
 {
-    for (std::size_t index=0; index<ssm_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssm_map.len(); index++)
     {
         if(ssm_map[index]->has_data())
             return true;
@@ -8794,7 +8869,7 @@ bool Igmp::Active::Vrfs::Vrf::SsmMaps::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::SsmMaps::has_operation() const
 {
-    for (std::size_t index=0; index<ssm_map.size(); index++)
+    for (std::size_t index=0; index<ssm_map.len(); index++)
     {
         if(ssm_map[index]->has_operation())
             return true;
@@ -8824,7 +8899,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::SsmMaps::get_child_by_name(cons
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap>();
         c->parent = this;
-        ssm_map.push_back(c);
+        ssm_map.append(c);
         return c;
     }
 
@@ -8836,7 +8911,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::SsmMaps:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssm_map)
+    for (auto c : ssm_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8868,12 +8943,12 @@ Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::SsmMap()
     group_address{YType::str, "group-address"},
     map_type{YType::uint32, "map-type"},
     source_counts{YType::uint32, "source-counts"}
-    	,
+        ,
     group_address_xr(std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr>())
 {
     group_address_xr->parent = this;
 
-    yang_name = "ssm-map"; yang_parent_name = "ssm-maps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-map"; yang_parent_name = "ssm-maps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::~SsmMap()
@@ -8882,6 +8957,7 @@ Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::~SsmMap()
 
 bool Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::has_data() const
 {
+    if (is_presence_container) return true;
     return ssm_map_type.is_set
 	|| group_address.is_set
 	|| map_type.is_set
@@ -9007,7 +9083,7 @@ Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::GroupAddressXr()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "ssm-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-xr"; yang_parent_name = "ssm-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::~GroupAddressXr()
@@ -9016,6 +9092,7 @@ Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::~GroupAddressXr()
 
 bool Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -9106,9 +9183,11 @@ bool Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::has_leaf_or_child
 }
 
 Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroups()
+    :
+    explicit_group(this, {})
 {
 
-    yang_name = "explicit-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "explicit-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::ExplicitGroups::~ExplicitGroups()
@@ -9117,7 +9196,8 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::~ExplicitGroups()
 
 bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::has_data() const
 {
-    for (std::size_t index=0; index<explicit_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<explicit_group.len(); index++)
     {
         if(explicit_group[index]->has_data())
             return true;
@@ -9127,7 +9207,7 @@ bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::has_operation() const
 {
-    for (std::size_t index=0; index<explicit_group.size(); index++)
+    for (std::size_t index=0; index<explicit_group.len(); index++)
     {
         if(explicit_group[index]->has_operation())
             return true;
@@ -9157,7 +9237,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::get_child_by_na
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup>();
         c->parent = this;
-        explicit_group.push_back(c);
+        explicit_group.append(c);
         return c;
     }
 
@@ -9169,7 +9249,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Explicit
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : explicit_group)
+    for (auto c : explicit_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9202,12 +9282,13 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::ExplicitGroup()
     source_address{YType::str, "source-address"},
     include_hosts{YType::uint32, "include-hosts"},
     exclude_hosts{YType::uint32, "exclude-hosts"}
-    	,
+        ,
     group_info(std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo>())
+    , host(this, {})
 {
     group_info->parent = this;
 
-    yang_name = "explicit-group"; yang_parent_name = "explicit-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "explicit-group"; yang_parent_name = "explicit-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::~ExplicitGroup()
@@ -9216,7 +9297,8 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::~ExplicitGroup()
 
 bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::has_data() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_data())
             return true;
@@ -9231,7 +9313,7 @@ bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_operation())
             return true;
@@ -9281,7 +9363,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host>();
         c->parent = this;
-        host.push_back(c);
+        host.append(c);
         return c;
     }
 
@@ -9298,7 +9380,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Explicit
     }
 
     count = 0;
-    for (auto const & c : host)
+    for (auto c : host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9388,16 +9470,16 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupInfo()
     older_host_version2_timer{YType::uint32, "older-host-version2-timer"},
     is_added{YType::boolean, "is-added"},
     is_suppressed{YType::boolean, "is-suppressed"}
-    	,
+        ,
     group_address_xr(std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr>())
-	,last_reporter(std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter>())
-	,source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress>())
+    , last_reporter(std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter>())
+    , source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress>())
 {
     group_address_xr->parent = this;
     last_reporter->parent = this;
     source_address->parent = this;
 
-    yang_name = "group-info"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-info"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::~GroupInfo()
@@ -9406,6 +9488,7 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::~GroupInfo()
 
 bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name_xr.is_set
 	|| uptime.is_set
 	|| expiration_time.is_set
@@ -9667,7 +9750,7 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressX
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::~GroupAddressXr()
@@ -9676,6 +9759,7 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressX
 
 bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -9772,7 +9856,7 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter:
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::~LastReporter()
@@ -9781,6 +9865,7 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter:
 
 bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -9877,7 +9962,7 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::~SourceAddress()
@@ -9886,6 +9971,7 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress
 
 bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -9981,12 +10067,13 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Host()
     is_exclude{YType::boolean, "is-exclude"},
     expiration_time{YType::uint32, "expiration-time"},
     source_count{YType::uint32, "source-count"}
-    	,
+        ,
     address(std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address>())
+    , source_address(this, {})
 {
     address->parent = this;
 
-    yang_name = "host"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::~Host()
@@ -9995,7 +10082,8 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::~Host()
 
 bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::has_data() const
 {
-    for (std::size_t index=0; index<source_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<source_address.len(); index++)
     {
         if(source_address[index]->has_data())
             return true;
@@ -10009,7 +10097,7 @@ bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::has_data() co
 
 bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::has_operation() const
 {
-    for (std::size_t index=0; index<source_address.size(); index++)
+    for (std::size_t index=0; index<source_address.len(); index++)
     {
         if(source_address[index]->has_operation())
             return true;
@@ -10057,7 +10145,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress>();
         c->parent = this;
-        source_address.push_back(c);
+        source_address.append(c);
         return c;
     }
 
@@ -10074,7 +10162,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Explicit
     }
 
     count = 0;
-    for (auto const & c : source_address)
+    for (auto c : source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10147,7 +10235,7 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::Address()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::~Address()
@@ -10156,6 +10244,7 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::~Address(
 
 bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10252,7 +10341,7 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::Sou
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::~SourceAddress()
@@ -10261,6 +10350,7 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::~So
 
 bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10351,9 +10441,11 @@ bool Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceTable::InterfaceTable()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interface-table"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-table"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceTable::~InterfaceTable()
@@ -10362,7 +10454,8 @@ Igmp::Active::Vrfs::Vrf::InterfaceTable::~InterfaceTable()
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -10372,7 +10465,7 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceTable::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -10402,7 +10495,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::InterfaceTable::get_child_by_na
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -10414,7 +10507,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10491,16 +10584,16 @@ Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::Interface()
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::Address>())
-	,querier_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::QuerierAddress>())
-	,subscriber_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress>())
+    , querier_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::QuerierAddress>())
+    , subscriber_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interface-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interface-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::~Interface()
@@ -10509,6 +10602,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::~Interface()
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -10623,7 +10717,8 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::has_operation() const
 std::string Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -11251,7 +11346,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::Address::Address()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::Address::~Address()
@@ -11260,6 +11355,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::Address::~Address()
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -11356,7 +11452,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::QuerierAddress::QuerierAddre
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::QuerierAddress::~QuerierAddress()
@@ -11365,6 +11461,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::QuerierAddress::~QuerierAddr
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -11461,7 +11558,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress::Subscribe
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress::~SubscriberAddress()
@@ -11470,6 +11567,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress::~Subscrib
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -11560,9 +11658,11 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress::has_
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjusts()
+    :
+    interface_unicast_qos_adjust(this, {"interface_name"})
 {
 
-    yang_name = "interface-unicast-qos-adjusts"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-unicast-qos-adjusts"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::~InterfaceUnicastQosAdjusts()
@@ -11571,7 +11671,8 @@ Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::~InterfaceUnicastQosAdjusts
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::has_data() const
 {
-    for (std::size_t index=0; index<interface_unicast_qos_adjust.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_unicast_qos_adjust.len(); index++)
     {
         if(interface_unicast_qos_adjust[index]->has_data())
             return true;
@@ -11581,7 +11682,7 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::has_operation() const
 {
-    for (std::size_t index=0; index<interface_unicast_qos_adjust.size(); index++)
+    for (std::size_t index=0; index<interface_unicast_qos_adjust.len(); index++)
     {
         if(interface_unicast_qos_adjust[index]->has_operation())
             return true;
@@ -11611,7 +11712,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::get
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust>();
         c->parent = this;
-        interface_unicast_qos_adjust.push_back(c);
+        interface_unicast_qos_adjust.append(c);
         return c;
     }
 
@@ -11623,7 +11724,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_unicast_qos_adjust)
+    for (auto c : interface_unicast_qos_adjust.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11656,9 +11757,11 @@ Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::
     rate{YType::uint32, "rate"},
     rate_increments{YType::uint32, "rate-increments"},
     rate_decrements{YType::uint32, "rate-decrements"}
+        ,
+    update(this, {})
 {
 
-    yang_name = "interface-unicast-qos-adjust"; yang_parent_name = "interface-unicast-qos-adjusts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-unicast-qos-adjust"; yang_parent_name = "interface-unicast-qos-adjusts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::~InterfaceUnicastQosAdjust()
@@ -11667,7 +11770,8 @@ Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::has_data() const
 {
-    for (std::size_t index=0; index<update.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<update.len(); index++)
     {
         if(update[index]->has_data())
             return true;
@@ -11681,7 +11785,7 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdj
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::has_operation() const
 {
-    for (std::size_t index=0; index<update.size(); index++)
+    for (std::size_t index=0; index<update.len(); index++)
     {
         if(update[index]->has_operation())
             return true;
@@ -11697,7 +11801,8 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdj
 std::string Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-unicast-qos-adjust" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-unicast-qos-adjust";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -11721,7 +11826,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::Int
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update>();
         c->parent = this;
-        update.push_back(c);
+        update.append(c);
         return c;
     }
 
@@ -11733,7 +11838,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : update)
+    for (auto c : update.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11814,14 +11919,14 @@ Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::
     is_add{YType::boolean, "is-add"},
     weight{YType::uint32, "weight"},
     received_time{YType::uint64, "received-time"}
-    	,
+        ,
     source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress>())
-	,group_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress>())
+    , group_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress>())
 {
     source_address->parent = this;
     group_address->parent = this;
 
-    yang_name = "update"; yang_parent_name = "interface-unicast-qos-adjust"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "update"; yang_parent_name = "interface-unicast-qos-adjust"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::~Update()
@@ -11830,6 +11935,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::has_data() const
 {
+    if (is_presence_container) return true;
     return is_add.is_set
 	|| weight.is_set
 	|| received_time.is_set
@@ -11958,7 +12064,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::~SourceAddress()
@@ -11967,6 +12073,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -12063,7 +12170,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::~GroupAddress()
@@ -12072,6 +12179,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -12162,9 +12270,11 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdj
 }
 
 Igmp::Active::Vrfs::Vrf::Ranges::Ranges()
+    :
+    range(this, {})
 {
 
-    yang_name = "ranges"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ranges"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::Ranges::~Ranges()
@@ -12173,7 +12283,8 @@ Igmp::Active::Vrfs::Vrf::Ranges::~Ranges()
 
 bool Igmp::Active::Vrfs::Vrf::Ranges::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -12183,7 +12294,7 @@ bool Igmp::Active::Vrfs::Vrf::Ranges::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::Ranges::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -12213,7 +12324,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::Ranges::get_child_by_name(const
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::Ranges::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -12225,7 +12336,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Ranges::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12254,16 +12365,16 @@ bool Igmp::Active::Vrfs::Vrf::Ranges::has_leaf_or_child_of_name(const std::strin
 Igmp::Active::Vrfs::Vrf::Ranges::Range::Range()
     :
     group_address{YType::str, "group-address"},
-    group_mask{YType::int32, "group-mask"},
+    group_mask{YType::uint32, "group-mask"},
     prefix_length{YType::uint32, "prefix-length"},
     protocol{YType::enumeration, "protocol"},
     is_stale{YType::boolean, "is-stale"}
-    	,
+        ,
     group_address_xr(std::make_shared<Igmp::Active::Vrfs::Vrf::Ranges::Range::GroupAddressXr>())
 {
     group_address_xr->parent = this;
 
-    yang_name = "range"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::Ranges::Range::~Range()
@@ -12272,6 +12383,7 @@ Igmp::Active::Vrfs::Vrf::Ranges::Range::~Range()
 
 bool Igmp::Active::Vrfs::Vrf::Ranges::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_mask.is_set
 	|| prefix_length.is_set
@@ -12410,7 +12522,7 @@ Igmp::Active::Vrfs::Vrf::Ranges::Range::GroupAddressXr::GroupAddressXr()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-xr"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::Ranges::Range::GroupAddressXr::~GroupAddressXr()
@@ -12419,6 +12531,7 @@ Igmp::Active::Vrfs::Vrf::Ranges::Range::GroupAddressXr::~GroupAddressXr()
 
 bool Igmp::Active::Vrfs::Vrf::Ranges::Range::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -12509,9 +12622,11 @@ bool Igmp::Active::Vrfs::Vrf::Ranges::Range::GroupAddressXr::has_leaf_or_child_o
 }
 
 Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterfaces()
+    :
+    ifrs_interface(this, {"interface_name"})
 {
 
-    yang_name = "ifrs-interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifrs-interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::IfrsInterfaces::~IfrsInterfaces()
@@ -12520,7 +12635,8 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaces::~IfrsInterfaces()
 
 bool Igmp::Active::Vrfs::Vrf::IfrsInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<ifrs_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ifrs_interface.len(); index++)
     {
         if(ifrs_interface[index]->has_data())
             return true;
@@ -12530,7 +12646,7 @@ bool Igmp::Active::Vrfs::Vrf::IfrsInterfaces::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::IfrsInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<ifrs_interface.size(); index++)
+    for (std::size_t index=0; index<ifrs_interface.len(); index++)
     {
         if(ifrs_interface[index]->has_operation())
             return true;
@@ -12560,7 +12676,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::IfrsInterfaces::get_child_by_na
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface>();
         c->parent = this;
-        ifrs_interface.push_back(c);
+        ifrs_interface.append(c);
         return c;
     }
 
@@ -12572,7 +12688,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::IfrsInte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ifrs_interface)
+    for (auto c : ifrs_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12602,12 +12718,12 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IfrsInterface()
     :
     interface_name{YType::str, "interface-name"},
     join_group_count{YType::uint32, "join-group-count"}
-    	,
+        ,
     igmp_interface_entry(std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry>())
 {
     igmp_interface_entry->parent = this;
 
-    yang_name = "ifrs-interface"; yang_parent_name = "ifrs-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifrs-interface"; yang_parent_name = "ifrs-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::~IfrsInterface()
@@ -12616,6 +12732,7 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::~IfrsInterface()
 
 bool Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| join_group_count.is_set
 	|| (igmp_interface_entry !=  nullptr && igmp_interface_entry->has_data());
@@ -12632,7 +12749,8 @@ bool Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::has_operation() con
 std::string Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ifrs-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "ifrs-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -12758,16 +12876,16 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Igmp
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address>())
-	,querier_address(std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress>())
-	,subscriber_address(std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress>())
+    , querier_address(std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress>())
+    , subscriber_address(std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "igmp-interface-entry"; yang_parent_name = "ifrs-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igmp-interface-entry"; yang_parent_name = "ifrs-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::~IgmpInterfaceEntry()
@@ -12776,6 +12894,7 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::~Igm
 
 bool Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name_xr.is_set
 	|| state.is_set
 	|| prefix_length.is_set
@@ -13505,7 +13624,7 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Addr
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::~Address()
@@ -13514,6 +13633,7 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Addr
 
 bool Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -13610,7 +13730,7 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Quer
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::~QuerierAddress()
@@ -13619,6 +13739,7 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Quer
 
 bool Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -13715,7 +13836,7 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Subs
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::~SubscriberAddress()
@@ -13724,6 +13845,7 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Subs
 
 bool Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -13852,7 +13974,7 @@ Igmp::Active::Vrfs::Vrf::TrafficCounters::TrafficCounters()
     input_no_platform_support_mtrace{YType::uint32, "input-no-platform-support-mtrace"}
 {
 
-    yang_name = "traffic-counters"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-counters"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::TrafficCounters::~TrafficCounters()
@@ -13861,6 +13983,7 @@ Igmp::Active::Vrfs::Vrf::TrafficCounters::~TrafficCounters()
 
 bool Igmp::Active::Vrfs::Vrf::TrafficCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return elapsed_time.is_set
 	|| packets_in.is_set
 	|| packets_out.is_set
@@ -14367,9 +14490,11 @@ bool Igmp::Active::Vrfs::Vrf::TrafficCounters::has_leaf_or_child_of_name(const s
 }
 
 Igmp::Active::Vrfs::Vrf::Groups::Groups()
+    :
+    group(this, {})
 {
 
-    yang_name = "groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::Groups::~Groups()
@@ -14378,7 +14503,8 @@ Igmp::Active::Vrfs::Vrf::Groups::~Groups()
 
 bool Igmp::Active::Vrfs::Vrf::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -14388,7 +14514,7 @@ bool Igmp::Active::Vrfs::Vrf::Groups::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -14418,7 +14544,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::Groups::get_child_by_name(const
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -14430,7 +14556,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Groups::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14472,16 +14598,16 @@ Igmp::Active::Vrfs::Vrf::Groups::Group::Group()
     older_host_version2_timer{YType::uint32, "older-host-version2-timer"},
     is_added{YType::boolean, "is-added"},
     is_suppressed{YType::boolean, "is-suppressed"}
-    	,
+        ,
     group_address_xr(std::make_shared<Igmp::Active::Vrfs::Vrf::Groups::Group::GroupAddressXr>())
-	,last_reporter(std::make_shared<Igmp::Active::Vrfs::Vrf::Groups::Group::LastReporter>())
-	,source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::Groups::Group::SourceAddress>())
+    , last_reporter(std::make_shared<Igmp::Active::Vrfs::Vrf::Groups::Group::LastReporter>())
+    , source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::Groups::Group::SourceAddress>())
 {
     group_address_xr->parent = this;
     last_reporter->parent = this;
     source_address->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::Groups::Group::~Group()
@@ -14490,6 +14616,7 @@ Igmp::Active::Vrfs::Vrf::Groups::Group::~Group()
 
 bool Igmp::Active::Vrfs::Vrf::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| interface_name.is_set
 	|| interface_name_xr.is_set
@@ -14777,7 +14904,7 @@ Igmp::Active::Vrfs::Vrf::Groups::Group::GroupAddressXr::GroupAddressXr()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-xr"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::Groups::Group::GroupAddressXr::~GroupAddressXr()
@@ -14786,6 +14913,7 @@ Igmp::Active::Vrfs::Vrf::Groups::Group::GroupAddressXr::~GroupAddressXr()
 
 bool Igmp::Active::Vrfs::Vrf::Groups::Group::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -14882,7 +15010,7 @@ Igmp::Active::Vrfs::Vrf::Groups::Group::LastReporter::LastReporter()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "last-reporter"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-reporter"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::Groups::Group::LastReporter::~LastReporter()
@@ -14891,6 +15019,7 @@ Igmp::Active::Vrfs::Vrf::Groups::Group::LastReporter::~LastReporter()
 
 bool Igmp::Active::Vrfs::Vrf::Groups::Group::LastReporter::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -14987,7 +15116,7 @@ Igmp::Active::Vrfs::Vrf::Groups::Group::SourceAddress::SourceAddress()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::Groups::Group::SourceAddress::~SourceAddress()
@@ -14996,6 +15125,7 @@ Igmp::Active::Vrfs::Vrf::Groups::Group::SourceAddress::~SourceAddress()
 
 bool Igmp::Active::Vrfs::Vrf::Groups::Group::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -15093,7 +15223,7 @@ Igmp::Active::Vrfs::Vrf::GroupSummary::GroupSummary()
     is_low_memory{YType::boolean, "is-low-memory"}
 {
 
-    yang_name = "group-summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::GroupSummary::~GroupSummary()
@@ -15102,6 +15232,7 @@ Igmp::Active::Vrfs::Vrf::GroupSummary::~GroupSummary()
 
 bool Igmp::Active::Vrfs::Vrf::GroupSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return groutes.is_set
 	|| sg_routes.is_set
 	|| group_count.is_set
@@ -15210,7 +15341,7 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaceSummary::IfrsInterfaceSummary()
     configuration_count{YType::uint32, "configuration-count"}
 {
 
-    yang_name = "ifrs-interface-summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifrs-interface-summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::IfrsInterfaceSummary::~IfrsInterfaceSummary()
@@ -15219,6 +15350,7 @@ Igmp::Active::Vrfs::Vrf::IfrsInterfaceSummary::~IfrsInterfaceSummary()
 
 bool Igmp::Active::Vrfs::Vrf::IfrsInterfaceSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_count.is_set
 	|| configuration_count.is_set;
 }
@@ -15296,9 +15428,11 @@ bool Igmp::Active::Vrfs::Vrf::IfrsInterfaceSummary::has_leaf_or_child_of_name(co
 }
 
 Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::GlobalInterfaceTable()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "global-interface-table"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-interface-table"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::~GlobalInterfaceTable()
@@ -15307,7 +15441,8 @@ Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::~GlobalInterfaceTable()
 
 bool Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -15317,7 +15452,7 @@ bool Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -15347,7 +15482,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::get_child
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -15359,7 +15494,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::GlobalIn
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15436,16 +15571,16 @@ Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::Interface()
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address>())
-	,querier_address(std::make_shared<Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress>())
-	,subscriber_address(std::make_shared<Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress>())
+    , querier_address(std::make_shared<Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress>())
+    , subscriber_address(std::make_shared<Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "global-interface-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "global-interface-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::~Interface()
@@ -15454,6 +15589,7 @@ Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::~Interface()
 
 bool Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -15568,7 +15704,8 @@ bool Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::has_operation() c
 std::string Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -16196,7 +16333,7 @@ Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::Address()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::~Address()
@@ -16205,6 +16342,7 @@ Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::~Address()
 
 bool Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -16301,7 +16439,7 @@ Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::Querie
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::~QuerierAddress()
@@ -16310,6 +16448,7 @@ Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::~Queri
 
 bool Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -16406,7 +16545,7 @@ Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::Sub
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::~SubscriberAddress()
@@ -16415,6 +16554,7 @@ Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::~Su
 
 bool Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -16505,9 +16645,11 @@ bool Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress
 }
 
 Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetails()
+    :
+    ssm_map_detail(this, {})
 {
 
-    yang_name = "ssm-map-details"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-map-details"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::SsmMapDetails::~SsmMapDetails()
@@ -16516,7 +16658,8 @@ Igmp::Active::Vrfs::Vrf::SsmMapDetails::~SsmMapDetails()
 
 bool Igmp::Active::Vrfs::Vrf::SsmMapDetails::has_data() const
 {
-    for (std::size_t index=0; index<ssm_map_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssm_map_detail.len(); index++)
     {
         if(ssm_map_detail[index]->has_data())
             return true;
@@ -16526,7 +16669,7 @@ bool Igmp::Active::Vrfs::Vrf::SsmMapDetails::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::SsmMapDetails::has_operation() const
 {
-    for (std::size_t index=0; index<ssm_map_detail.size(); index++)
+    for (std::size_t index=0; index<ssm_map_detail.len(); index++)
     {
         if(ssm_map_detail[index]->has_operation())
             return true;
@@ -16556,7 +16699,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::SsmMapDetails::get_child_by_nam
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail>();
         c->parent = this;
-        ssm_map_detail.push_back(c);
+        ssm_map_detail.append(c);
         return c;
     }
 
@@ -16568,7 +16711,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::SsmMapDe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssm_map_detail)
+    for (auto c : ssm_map_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16602,12 +16745,13 @@ Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::SsmMapDetail()
     response_pending{YType::boolean, "response-pending"},
     query_interval{YType::uint32, "query-interval"},
     elapsed_time{YType::uint64, "elapsed-time"}
-    	,
+        ,
     map_info(std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo>())
+    , sources(this, {})
 {
     map_info->parent = this;
 
-    yang_name = "ssm-map-detail"; yang_parent_name = "ssm-map-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-map-detail"; yang_parent_name = "ssm-map-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::~SsmMapDetail()
@@ -16616,7 +16760,8 @@ Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::~SsmMapDetail()
 
 bool Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::has_data() const
 {
-    for (std::size_t index=0; index<sources.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sources.len(); index++)
     {
         if(sources[index]->has_data())
             return true;
@@ -16632,7 +16777,7 @@ bool Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::has_operation() const
 {
-    for (std::size_t index=0; index<sources.size(); index++)
+    for (std::size_t index=0; index<sources.len(); index++)
     {
         if(sources[index]->has_operation())
             return true;
@@ -16684,7 +16829,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::ge
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources>();
         c->parent = this;
-        sources.push_back(c);
+        sources.append(c);
         return c;
     }
 
@@ -16701,7 +16846,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::SsmMapDe
     }
 
     count = 0;
-    for (auto const & c : sources)
+    for (auto c : sources.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16791,12 +16936,12 @@ Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::MapInfo()
     :
     map_type{YType::uint32, "map-type"},
     source_counts{YType::uint32, "source-counts"}
-    	,
+        ,
     group_address_xr(std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr>())
 {
     group_address_xr->parent = this;
 
-    yang_name = "map-info"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map-info"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::~MapInfo()
@@ -16805,6 +16950,7 @@ Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::~MapInfo()
 
 bool Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return map_type.is_set
 	|| source_counts.is_set
 	|| (group_address_xr !=  nullptr && group_address_xr->has_data());
@@ -16904,7 +17050,7 @@ Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::G
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "map-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-xr"; yang_parent_name = "map-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::~GroupAddressXr()
@@ -16913,6 +17059,7 @@ Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::~
 
 bool Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -17009,7 +17156,7 @@ Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::Sources()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "sources"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sources"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::~Sources()
@@ -17018,6 +17165,7 @@ Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::~Sources()
 
 bool Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -17108,9 +17256,11 @@ bool Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::has_leaf_or_
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOffs()
+    :
+    interface_state_off(this, {"interface_name"})
 {
 
-    yang_name = "interface-state-offs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-state-offs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::~InterfaceStateOffs()
@@ -17119,7 +17269,8 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::~InterfaceStateOffs()
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::has_data() const
 {
-    for (std::size_t index=0; index<interface_state_off.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_state_off.len(); index++)
     {
         if(interface_state_off[index]->has_data())
             return true;
@@ -17129,7 +17280,7 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::has_data() const
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::has_operation() const
 {
-    for (std::size_t index=0; index<interface_state_off.size(); index++)
+    for (std::size_t index=0; index<interface_state_off.len(); index++)
     {
         if(interface_state_off[index]->has_operation())
             return true;
@@ -17159,7 +17310,7 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::get_child_b
     {
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff>();
         c->parent = this;
-        interface_state_off.push_back(c);
+        interface_state_off.append(c);
         return c;
     }
 
@@ -17171,7 +17322,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_state_off)
+    for (auto c : interface_state_off.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17248,16 +17399,16 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::InterfaceStateOf
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address>())
-	,querier_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress>())
-	,subscriber_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress>())
+    , querier_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress>())
+    , subscriber_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface-state-off"; yang_parent_name = "interface-state-offs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-state-off"; yang_parent_name = "interface-state-offs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::~InterfaceStateOff()
@@ -17266,6 +17417,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::~InterfaceStateO
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -17380,7 +17532,8 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::has_operati
 std::string Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-state-off" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-state-off";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -18008,7 +18161,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::Address
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::~Address()
@@ -18017,6 +18170,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::~Addres
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -18113,7 +18267,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::~QuerierAddress()
@@ -18122,6 +18276,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -18218,7 +18373,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddres
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::~SubscriberAddress()
@@ -18227,6 +18382,7 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddres
 
 bool Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -18319,11 +18475,11 @@ bool Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberA
 Igmp::Active::Process::Process()
     :
     amt_summary(std::make_shared<Igmp::Active::Process::AmtSummary>())
-	,nsr(std::make_shared<Igmp::Active::Process::Nsr>())
-	,amt_gatewaies(std::make_shared<Igmp::Active::Process::AmtGatewaies>())
-	,unicast_qos_adjust_stats(std::make_shared<Igmp::Active::Process::UnicastQosAdjustStats>())
-	,bvi_statistics(std::make_shared<Igmp::Active::Process::BviStatistics>())
-	,nsf(std::make_shared<Igmp::Active::Process::Nsf>())
+    , nsr(std::make_shared<Igmp::Active::Process::Nsr>())
+    , amt_gatewaies(std::make_shared<Igmp::Active::Process::AmtGatewaies>())
+    , unicast_qos_adjust_stats(std::make_shared<Igmp::Active::Process::UnicastQosAdjustStats>())
+    , bvi_statistics(std::make_shared<Igmp::Active::Process::BviStatistics>())
+    , nsf(std::make_shared<Igmp::Active::Process::Nsf>())
 {
     amt_summary->parent = this;
     nsr->parent = this;
@@ -18332,7 +18488,7 @@ Igmp::Active::Process::Process()
     bvi_statistics->parent = this;
     nsf->parent = this;
 
-    yang_name = "process"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::Process::~Process()
@@ -18341,6 +18497,7 @@ Igmp::Active::Process::~Process()
 
 bool Igmp::Active::Process::has_data() const
 {
+    if (is_presence_container) return true;
     return (amt_summary !=  nullptr && amt_summary->has_data())
 	|| (nsr !=  nullptr && nsr->has_data())
 	|| (amt_gatewaies !=  nullptr && amt_gatewaies->has_data())
@@ -18512,7 +18669,7 @@ Igmp::Active::Process::AmtSummary::AmtSummary()
     is_ou_of_resource{YType::boolean, "is-ou-of-resource"}
 {
 
-    yang_name = "amt-summary"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "amt-summary"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::Process::AmtSummary::~AmtSummary()
@@ -18521,6 +18678,7 @@ Igmp::Active::Process::AmtSummary::~AmtSummary()
 
 bool Igmp::Active::Process::AmtSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return anycast_prefix.is_set
 	|| prefix_length.is_set
 	|| relay_address.is_set
@@ -18777,7 +18935,7 @@ Igmp::Active::Process::Nsr::Nsr()
     count_rmf_not_ready{YType::uint32, "count-rmf-not-ready"}
 {
 
-    yang_name = "nsr"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nsr"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::Process::Nsr::~Nsr()
@@ -18786,6 +18944,7 @@ Igmp::Active::Process::Nsr::~Nsr()
 
 bool Igmp::Active::Process::Nsr::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| partner_proc_connected.is_set
 	|| collab_conv_done.is_set
@@ -19013,9 +19172,11 @@ bool Igmp::Active::Process::Nsr::has_leaf_or_child_of_name(const std::string & n
 }
 
 Igmp::Active::Process::AmtGatewaies::AmtGatewaies()
+    :
+    amt_gateway(this, {})
 {
 
-    yang_name = "amt-gatewaies"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "amt-gatewaies"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::Process::AmtGatewaies::~AmtGatewaies()
@@ -19024,7 +19185,8 @@ Igmp::Active::Process::AmtGatewaies::~AmtGatewaies()
 
 bool Igmp::Active::Process::AmtGatewaies::has_data() const
 {
-    for (std::size_t index=0; index<amt_gateway.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<amt_gateway.len(); index++)
     {
         if(amt_gateway[index]->has_data())
             return true;
@@ -19034,7 +19196,7 @@ bool Igmp::Active::Process::AmtGatewaies::has_data() const
 
 bool Igmp::Active::Process::AmtGatewaies::has_operation() const
 {
-    for (std::size_t index=0; index<amt_gateway.size(); index++)
+    for (std::size_t index=0; index<amt_gateway.len(); index++)
     {
         if(amt_gateway[index]->has_operation())
             return true;
@@ -19071,7 +19233,7 @@ std::shared_ptr<Entity> Igmp::Active::Process::AmtGatewaies::get_child_by_name(c
     {
         auto c = std::make_shared<Igmp::Active::Process::AmtGatewaies::AmtGateway>();
         c->parent = this;
-        amt_gateway.push_back(c);
+        amt_gateway.append(c);
         return c;
     }
 
@@ -19083,7 +19245,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Process::AmtGatewai
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : amt_gateway)
+    for (auto c : amt_gateway.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19112,7 +19274,7 @@ bool Igmp::Active::Process::AmtGatewaies::has_leaf_or_child_of_name(const std::s
 Igmp::Active::Process::AmtGatewaies::AmtGateway::AmtGateway()
     :
     gateway_address{YType::str, "gateway-address"},
-    port{YType::int32, "port"},
+    port{YType::uint32, "port"},
     amtgw{YType::str, "amtgw"},
     amt_port{YType::uint32, "amt-port"},
     key_len{YType::uint32, "key-len"},
@@ -19123,7 +19285,7 @@ Igmp::Active::Process::AmtGatewaies::AmtGateway::AmtGateway()
     mem_upd_out{YType::uint32, "mem-upd-out"}
 {
 
-    yang_name = "amt-gateway"; yang_parent_name = "amt-gatewaies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "amt-gateway"; yang_parent_name = "amt-gatewaies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::Process::AmtGatewaies::AmtGateway::~AmtGateway()
@@ -19132,6 +19294,7 @@ Igmp::Active::Process::AmtGatewaies::AmtGateway::~AmtGateway()
 
 bool Igmp::Active::Process::AmtGatewaies::AmtGateway::has_data() const
 {
+    if (is_presence_container) return true;
     return gateway_address.is_set
 	|| port.is_set
 	|| amtgw.is_set
@@ -19339,7 +19502,7 @@ Igmp::Active::Process::UnicastQosAdjustStats::UnicastQosAdjustStats()
     last_download_time{YType::uint64, "last-download-time"}
 {
 
-    yang_name = "unicast-qos-adjust-stats"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unicast-qos-adjust-stats"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::Process::UnicastQosAdjustStats::~UnicastQosAdjustStats()
@@ -19348,6 +19511,7 @@ Igmp::Active::Process::UnicastQosAdjustStats::~UnicastQosAdjustStats()
 
 bool Igmp::Active::Process::UnicastQosAdjustStats::has_data() const
 {
+    if (is_presence_container) return true;
     return queues.is_set
 	|| batches.is_set
 	|| add_to_batches.is_set
@@ -19652,7 +19816,7 @@ Igmp::Active::Process::BviStatistics::BviStatistics()
     wtx_msg_freed{YType::uint32, "wtx-msg-freed"}
 {
 
-    yang_name = "bvi-statistics"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bvi-statistics"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::Process::BviStatistics::~BviStatistics()
@@ -19661,6 +19825,7 @@ Igmp::Active::Process::BviStatistics::~BviStatistics()
 
 bool Igmp::Active::Process::BviStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return receive_buffers.is_set
 	|| release_buffers.is_set
 	|| send_blocks.is_set
@@ -20187,7 +20352,7 @@ Igmp::Active::Process::Nsf::Nsf()
     last_icd_notif_recv_min{YType::int32, "last-icd-notif-recv-min"}
 {
 
-    yang_name = "nsf"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nsf"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::Process::Nsf::~Nsf()
@@ -20196,6 +20361,7 @@ Igmp::Active::Process::Nsf::~Nsf()
 
 bool Igmp::Active::Process::Nsf::has_data() const
 {
+    if (is_presence_container) return true;
     return is_multicast_nsf_active.is_set
 	|| multicast_nsf_timeout.is_set
 	|| multicast_nsf_time_left.is_set
@@ -20386,22 +20552,22 @@ bool Igmp::Active::Process::Nsf::has_leaf_or_child_of_name(const std::string & n
 Igmp::Active::DefaultContext::DefaultContext()
     :
     summary(std::make_shared<Igmp::Active::DefaultContext::Summary>())
-	,interface_state_ons(std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOns>())
-	,detail_groups(std::make_shared<Igmp::Active::DefaultContext::DetailGroups>())
-	,non_active_groups(std::make_shared<Igmp::Active::DefaultContext::NonActiveGroups>())
-	,ssm_maps(std::make_shared<Igmp::Active::DefaultContext::SsmMaps>())
-	,explicit_groups(std::make_shared<Igmp::Active::DefaultContext::ExplicitGroups>())
-	,interface_table(std::make_shared<Igmp::Active::DefaultContext::InterfaceTable>())
-	,interface_unicast_qos_adjusts(std::make_shared<Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts>())
-	,ranges(std::make_shared<Igmp::Active::DefaultContext::Ranges>())
-	,ifrs_interfaces(std::make_shared<Igmp::Active::DefaultContext::IfrsInterfaces>())
-	,traffic_counters(std::make_shared<Igmp::Active::DefaultContext::TrafficCounters>())
-	,groups(std::make_shared<Igmp::Active::DefaultContext::Groups>())
-	,group_summary(std::make_shared<Igmp::Active::DefaultContext::GroupSummary>())
-	,ifrs_interface_summary(std::make_shared<Igmp::Active::DefaultContext::IfrsInterfaceSummary>())
-	,global_interface_table(std::make_shared<Igmp::Active::DefaultContext::GlobalInterfaceTable>())
-	,ssm_map_details(std::make_shared<Igmp::Active::DefaultContext::SsmMapDetails>())
-	,interface_state_offs(std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOffs>())
+    , interface_state_ons(std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOns>())
+    , detail_groups(std::make_shared<Igmp::Active::DefaultContext::DetailGroups>())
+    , non_active_groups(std::make_shared<Igmp::Active::DefaultContext::NonActiveGroups>())
+    , ssm_maps(std::make_shared<Igmp::Active::DefaultContext::SsmMaps>())
+    , explicit_groups(std::make_shared<Igmp::Active::DefaultContext::ExplicitGroups>())
+    , interface_table(std::make_shared<Igmp::Active::DefaultContext::InterfaceTable>())
+    , interface_unicast_qos_adjusts(std::make_shared<Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts>())
+    , ranges(std::make_shared<Igmp::Active::DefaultContext::Ranges>())
+    , ifrs_interfaces(std::make_shared<Igmp::Active::DefaultContext::IfrsInterfaces>())
+    , traffic_counters(std::make_shared<Igmp::Active::DefaultContext::TrafficCounters>())
+    , groups(std::make_shared<Igmp::Active::DefaultContext::Groups>())
+    , group_summary(std::make_shared<Igmp::Active::DefaultContext::GroupSummary>())
+    , ifrs_interface_summary(std::make_shared<Igmp::Active::DefaultContext::IfrsInterfaceSummary>())
+    , global_interface_table(std::make_shared<Igmp::Active::DefaultContext::GlobalInterfaceTable>())
+    , ssm_map_details(std::make_shared<Igmp::Active::DefaultContext::SsmMapDetails>())
+    , interface_state_offs(std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOffs>())
 {
     summary->parent = this;
     interface_state_ons->parent = this;
@@ -20421,7 +20587,7 @@ Igmp::Active::DefaultContext::DefaultContext()
     ssm_map_details->parent = this;
     interface_state_offs->parent = this;
 
-    yang_name = "default-context"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-context"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::~DefaultContext()
@@ -20430,6 +20596,7 @@ Igmp::Active::DefaultContext::~DefaultContext()
 
 bool Igmp::Active::DefaultContext::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (interface_state_ons !=  nullptr && interface_state_ons->has_data())
 	|| (detail_groups !=  nullptr && detail_groups->has_data())
@@ -20771,9 +20938,11 @@ Igmp::Active::DefaultContext::Summary::Summary()
     disabled_interface_count{YType::uint32, "disabled-interface-count"},
     tunnel_mte_config_count{YType::uint32, "tunnel-mte-config-count"},
     node_low_memory{YType::boolean, "node-low-memory"}
+        ,
+    interface(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::Summary::~Summary()
@@ -20782,7 +20951,8 @@ Igmp::Active::DefaultContext::Summary::~Summary()
 
 bool Igmp::Active::DefaultContext::Summary::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -20801,7 +20971,7 @@ bool Igmp::Active::DefaultContext::Summary::has_data() const
 
 bool Igmp::Active::DefaultContext::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -20858,7 +21028,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Summary::get_child_by_name
     {
         auto c = std::make_shared<Igmp::Active::DefaultContext::Summary::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -20870,7 +21040,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Sum
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21008,7 +21178,7 @@ Igmp::Active::DefaultContext::Summary::Interface::Interface()
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"}
 {
 
-    yang_name = "interface"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::Summary::Interface::~Interface()
@@ -21017,6 +21187,7 @@ Igmp::Active::DefaultContext::Summary::Interface::~Interface()
 
 bool Igmp::Active::DefaultContext::Summary::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| group_limit.is_set
 	|| group_count.is_set
@@ -21179,9 +21350,11 @@ bool Igmp::Active::DefaultContext::Summary::Interface::has_leaf_or_child_of_name
 }
 
 Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOns()
+    :
+    interface_state_on(this, {"interface_name"})
 {
 
-    yang_name = "interface-state-ons"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-state-ons"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::InterfaceStateOns::~InterfaceStateOns()
@@ -21190,7 +21363,8 @@ Igmp::Active::DefaultContext::InterfaceStateOns::~InterfaceStateOns()
 
 bool Igmp::Active::DefaultContext::InterfaceStateOns::has_data() const
 {
-    for (std::size_t index=0; index<interface_state_on.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_state_on.len(); index++)
     {
         if(interface_state_on[index]->has_data())
             return true;
@@ -21200,7 +21374,7 @@ bool Igmp::Active::DefaultContext::InterfaceStateOns::has_data() const
 
 bool Igmp::Active::DefaultContext::InterfaceStateOns::has_operation() const
 {
-    for (std::size_t index=0; index<interface_state_on.size(); index++)
+    for (std::size_t index=0; index<interface_state_on.len(); index++)
     {
         if(interface_state_on[index]->has_operation())
             return true;
@@ -21237,7 +21411,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOns::get_chi
     {
         auto c = std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn>();
         c->parent = this;
-        interface_state_on.push_back(c);
+        interface_state_on.append(c);
         return c;
     }
 
@@ -21249,7 +21423,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Int
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_state_on)
+    for (auto c : interface_state_on.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21326,16 +21500,16 @@ Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::InterfaceStat
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address>())
-	,querier_address(std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress>())
-	,subscriber_address(std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress>())
+    , querier_address(std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress>())
+    , subscriber_address(std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface-state-on"; yang_parent_name = "interface-state-ons"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-state-on"; yang_parent_name = "interface-state-ons"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::~InterfaceStateOn()
@@ -21344,6 +21518,7 @@ Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::~InterfaceSta
 
 bool Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -21465,7 +21640,8 @@ std::string Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::g
 std::string Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-state-on" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-state-on";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -22093,7 +22269,7 @@ Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::Addr
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::~Address()
@@ -22102,6 +22278,7 @@ Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::~Add
 
 bool Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -22198,7 +22375,7 @@ Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddres
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress::~QuerierAddress()
@@ -22207,6 +22384,7 @@ Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddres
 
 bool Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -22303,7 +22481,7 @@ Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAdd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::~SubscriberAddress()
@@ -22312,6 +22490,7 @@ Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAdd
 
 bool Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -22402,9 +22581,11 @@ bool Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::Subscrib
 }
 
 Igmp::Active::DefaultContext::DetailGroups::DetailGroups()
+    :
+    detail_group(this, {})
 {
 
-    yang_name = "detail-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::DetailGroups::~DetailGroups()
@@ -22413,7 +22594,8 @@ Igmp::Active::DefaultContext::DetailGroups::~DetailGroups()
 
 bool Igmp::Active::DefaultContext::DetailGroups::has_data() const
 {
-    for (std::size_t index=0; index<detail_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail_group.len(); index++)
     {
         if(detail_group[index]->has_data())
             return true;
@@ -22423,7 +22605,7 @@ bool Igmp::Active::DefaultContext::DetailGroups::has_data() const
 
 bool Igmp::Active::DefaultContext::DetailGroups::has_operation() const
 {
-    for (std::size_t index=0; index<detail_group.size(); index++)
+    for (std::size_t index=0; index<detail_group.len(); index++)
     {
         if(detail_group[index]->has_operation())
             return true;
@@ -22460,7 +22642,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::DetailGroups::get_child_by
     {
         auto c = std::make_shared<Igmp::Active::DefaultContext::DetailGroups::DetailGroup>();
         c->parent = this;
-        detail_group.push_back(c);
+        detail_group.append(c);
         return c;
     }
 
@@ -22472,7 +22654,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Det
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail_group)
+    for (auto c : detail_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22505,12 +22687,13 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::DetailGroup()
     source_address{YType::str, "source-address"},
     is_router_exclude_mode{YType::boolean, "is-router-exclude-mode"},
     is_host_exclude_mode{YType::boolean, "is-host-exclude-mode"}
-    	,
+        ,
     group_info(std::make_shared<Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo>())
+    , source(this, {})
 {
     group_info->parent = this;
 
-    yang_name = "detail-group"; yang_parent_name = "detail-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail-group"; yang_parent_name = "detail-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::DetailGroups::DetailGroup::~DetailGroup()
@@ -22519,7 +22702,8 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::~DetailGroup()
 
 bool Igmp::Active::DefaultContext::DetailGroups::DetailGroup::has_data() const
 {
-    for (std::size_t index=0; index<source.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<source.len(); index++)
     {
         if(source[index]->has_data())
             return true;
@@ -22534,7 +22718,7 @@ bool Igmp::Active::DefaultContext::DetailGroups::DetailGroup::has_data() const
 
 bool Igmp::Active::DefaultContext::DetailGroups::DetailGroup::has_operation() const
 {
-    for (std::size_t index=0; index<source.size(); index++)
+    for (std::size_t index=0; index<source.len(); index++)
     {
         if(source[index]->has_operation())
             return true;
@@ -22591,7 +22775,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::DetailGroups::DetailGroup:
     {
         auto c = std::make_shared<Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source>();
         c->parent = this;
-        source.push_back(c);
+        source.append(c);
         return c;
     }
 
@@ -22608,7 +22792,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Det
     }
 
     count = 0;
-    for (auto const & c : source)
+    for (auto c : source.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22698,16 +22882,16 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupInfo()
     older_host_version2_timer{YType::uint32, "older-host-version2-timer"},
     is_added{YType::boolean, "is-added"},
     is_suppressed{YType::boolean, "is-suppressed"}
-    	,
+        ,
     group_address_xr(std::make_shared<Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr>())
-	,last_reporter(std::make_shared<Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter>())
-	,source_address(std::make_shared<Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress>())
+    , last_reporter(std::make_shared<Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter>())
+    , source_address(std::make_shared<Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress>())
 {
     group_address_xr->parent = this;
     last_reporter->parent = this;
     source_address->parent = this;
 
-    yang_name = "group-info"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-info"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::~GroupInfo()
@@ -22716,6 +22900,7 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::~GroupInfo()
 
 bool Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name_xr.is_set
 	|| uptime.is_set
 	|| expiration_time.is_set
@@ -22984,7 +23169,7 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddress
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::~GroupAddressXr()
@@ -22993,6 +23178,7 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddress
 
 bool Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -23096,7 +23282,7 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter::~LastReporter()
@@ -23105,6 +23291,7 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter
 
 bool Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -23208,7 +23395,7 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddres
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress::~SourceAddress()
@@ -23217,6 +23404,7 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddres
 
 bool Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -23323,12 +23511,12 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source::Source()
     is_we_report{YType::boolean, "is-we-report"},
     flags{YType::int32, "flags"},
     is_added{YType::boolean, "is-added"}
-    	,
+        ,
     source_address(std::make_shared<Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress>())
 {
     source_address->parent = this;
 
-    yang_name = "source"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source::~Source()
@@ -23337,6 +23525,7 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source::~Source()
 
 bool Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return uptime.is_set
 	|| expiration_time.is_set
 	|| is_local.is_set
@@ -23521,7 +23710,7 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::~SourceAddress()
@@ -23530,6 +23719,7 @@ Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::
 
 bool Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -23627,9 +23817,11 @@ bool Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddr
 }
 
 Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups()
+    :
+    non_active_groups(this, {})
 {
 
-    yang_name = "non-active-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "non-active-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::NonActiveGroups::~NonActiveGroups()
@@ -23638,7 +23830,8 @@ Igmp::Active::DefaultContext::NonActiveGroups::~NonActiveGroups()
 
 bool Igmp::Active::DefaultContext::NonActiveGroups::has_data() const
 {
-    for (std::size_t index=0; index<non_active_groups.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<non_active_groups.len(); index++)
     {
         if(non_active_groups[index]->has_data())
             return true;
@@ -23648,7 +23841,7 @@ bool Igmp::Active::DefaultContext::NonActiveGroups::has_data() const
 
 bool Igmp::Active::DefaultContext::NonActiveGroups::has_operation() const
 {
-    for (std::size_t index=0; index<non_active_groups.size(); index++)
+    for (std::size_t index=0; index<non_active_groups.len(); index++)
     {
         if(non_active_groups[index]->has_operation())
             return true;
@@ -23685,7 +23878,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::NonActiveGroups::get_child
     {
         auto c = std::make_shared<Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_>();
         c->parent = this;
-        non_active_groups.push_back(c);
+        non_active_groups.append(c);
         return c;
     }
 
@@ -23697,7 +23890,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Non
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : non_active_groups)
+    for (auto c : non_active_groups.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23727,14 +23920,14 @@ Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::NonActiveGroups
     :
     interface{YType::str, "interface"},
     reason_for_non_activity{YType::str, "reason-for-non-activity"}
-    	,
+        ,
     group_address(std::make_shared<Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress>())
-	,source_address(std::make_shared<Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress>())
+    , source_address(std::make_shared<Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress>())
 {
     group_address->parent = this;
     source_address->parent = this;
 
-    yang_name = "non-active-groups"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "non-active-groups"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::~NonActiveGroups_()
@@ -23743,6 +23936,7 @@ Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::~NonActiveGroup
 
 bool Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| reason_for_non_activity.is_set
 	|| (group_address !=  nullptr && group_address->has_data())
@@ -23865,7 +24059,7 @@ Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::G
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::~GroupAddress()
@@ -23874,6 +24068,7 @@ Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::~
 
 bool Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -23977,7 +24172,7 @@ Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::~SourceAddress()
@@ -23986,6 +24181,7 @@ Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::
 
 bool Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -24083,9 +24279,11 @@ bool Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddr
 }
 
 Igmp::Active::DefaultContext::SsmMaps::SsmMaps()
+    :
+    ssm_map(this, {})
 {
 
-    yang_name = "ssm-maps"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssm-maps"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::SsmMaps::~SsmMaps()
@@ -24094,7 +24292,8 @@ Igmp::Active::DefaultContext::SsmMaps::~SsmMaps()
 
 bool Igmp::Active::DefaultContext::SsmMaps::has_data() const
 {
-    for (std::size_t index=0; index<ssm_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssm_map.len(); index++)
     {
         if(ssm_map[index]->has_data())
             return true;
@@ -24104,7 +24303,7 @@ bool Igmp::Active::DefaultContext::SsmMaps::has_data() const
 
 bool Igmp::Active::DefaultContext::SsmMaps::has_operation() const
 {
-    for (std::size_t index=0; index<ssm_map.size(); index++)
+    for (std::size_t index=0; index<ssm_map.len(); index++)
     {
         if(ssm_map[index]->has_operation())
             return true;
@@ -24141,7 +24340,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMaps::get_child_by_name
     {
         auto c = std::make_shared<Igmp::Active::DefaultContext::SsmMaps::SsmMap>();
         c->parent = this;
-        ssm_map.push_back(c);
+        ssm_map.append(c);
         return c;
     }
 
@@ -24153,7 +24352,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Ssm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssm_map)
+    for (auto c : ssm_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -24185,12 +24384,12 @@ Igmp::Active::DefaultContext::SsmMaps::SsmMap::SsmMap()
     group_address{YType::str, "group-address"},
     map_type{YType::uint32, "map-type"},
     source_counts{YType::uint32, "source-counts"}
-    	,
+        ,
     group_address_xr(std::make_shared<Igmp::Active::DefaultContext::SsmMaps::SsmMap::GroupAddressXr>())
 {
     group_address_xr->parent = this;
 
-    yang_name = "ssm-map"; yang_parent_name = "ssm-maps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssm-map"; yang_parent_name = "ssm-maps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::SsmMaps::SsmMap::~SsmMap()
@@ -24199,6 +24398,7 @@ Igmp::Active::DefaultContext::SsmMaps::SsmMap::~SsmMap()
 
 bool Igmp::Active::DefaultContext::SsmMaps::SsmMap::has_data() const
 {
+    if (is_presence_container) return true;
     return ssm_map_type.is_set
 	|| group_address.is_set
 	|| map_type.is_set
@@ -24331,7 +24531,7 @@ Igmp::Active::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::GroupAddressXr()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "ssm-map"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "ssm-map"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::~GroupAddressXr()
@@ -24340,6 +24540,7 @@ Igmp::Active::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::~GroupAddressXr()
 
 bool Igmp::Active::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -24437,9 +24638,11 @@ bool Igmp::Active::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::has_leaf_or_
 }
 
 Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroups()
+    :
+    explicit_group(this, {})
 {
 
-    yang_name = "explicit-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "explicit-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::ExplicitGroups::~ExplicitGroups()
@@ -24448,7 +24651,8 @@ Igmp::Active::DefaultContext::ExplicitGroups::~ExplicitGroups()
 
 bool Igmp::Active::DefaultContext::ExplicitGroups::has_data() const
 {
-    for (std::size_t index=0; index<explicit_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<explicit_group.len(); index++)
     {
         if(explicit_group[index]->has_data())
             return true;
@@ -24458,7 +24662,7 @@ bool Igmp::Active::DefaultContext::ExplicitGroups::has_data() const
 
 bool Igmp::Active::DefaultContext::ExplicitGroups::has_operation() const
 {
-    for (std::size_t index=0; index<explicit_group.size(); index++)
+    for (std::size_t index=0; index<explicit_group.len(); index++)
     {
         if(explicit_group[index]->has_operation())
             return true;
@@ -24495,7 +24699,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::ExplicitGroups::get_child_
     {
         auto c = std::make_shared<Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup>();
         c->parent = this;
-        explicit_group.push_back(c);
+        explicit_group.append(c);
         return c;
     }
 
@@ -24507,7 +24711,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Exp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : explicit_group)
+    for (auto c : explicit_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -24540,12 +24744,13 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::ExplicitGroup()
     source_address{YType::str, "source-address"},
     include_hosts{YType::uint32, "include-hosts"},
     exclude_hosts{YType::uint32, "exclude-hosts"}
-    	,
+        ,
     group_info(std::make_shared<Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo>())
+    , host(this, {})
 {
     group_info->parent = this;
 
-    yang_name = "explicit-group"; yang_parent_name = "explicit-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "explicit-group"; yang_parent_name = "explicit-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::~ExplicitGroup()
@@ -24554,7 +24759,8 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::~ExplicitGroup()
 
 bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::has_data() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_data())
             return true;
@@ -24569,7 +24775,7 @@ bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::has_data() con
 
 bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_operation())
             return true;
@@ -24626,7 +24832,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGr
     {
         auto c = std::make_shared<Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host>();
         c->parent = this;
-        host.push_back(c);
+        host.append(c);
         return c;
     }
 
@@ -24643,7 +24849,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Exp
     }
 
     count = 0;
-    for (auto const & c : host)
+    for (auto c : host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -24733,16 +24939,16 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupInf
     older_host_version2_timer{YType::uint32, "older-host-version2-timer"},
     is_added{YType::boolean, "is-added"},
     is_suppressed{YType::boolean, "is-suppressed"}
-    	,
+        ,
     group_address_xr(std::make_shared<Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr>())
-	,last_reporter(std::make_shared<Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter>())
-	,source_address(std::make_shared<Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress>())
+    , last_reporter(std::make_shared<Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter>())
+    , source_address(std::make_shared<Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress>())
 {
     group_address_xr->parent = this;
     last_reporter->parent = this;
     source_address->parent = this;
 
-    yang_name = "group-info"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-info"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::~GroupInfo()
@@ -24751,6 +24957,7 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::~GroupIn
 
 bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name_xr.is_set
 	|| uptime.is_set
 	|| expiration_time.is_set
@@ -25019,7 +25226,7 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAdd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::~GroupAddressXr()
@@ -25028,6 +25235,7 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAdd
 
 bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -25131,7 +25339,7 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastRepo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::~LastReporter()
@@ -25140,6 +25348,7 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastRepo
 
 bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -25243,7 +25452,7 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::~SourceAddress()
@@ -25252,6 +25461,7 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAd
 
 bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -25354,12 +25564,13 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Host()
     is_exclude{YType::boolean, "is-exclude"},
     expiration_time{YType::uint32, "expiration-time"},
     source_count{YType::uint32, "source-count"}
-    	,
+        ,
     address(std::make_shared<Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address>())
+    , source_address(this, {})
 {
     address->parent = this;
 
-    yang_name = "host"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "host"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::~Host()
@@ -25368,7 +25579,8 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::~Host()
 
 bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::has_data() const
 {
-    for (std::size_t index=0; index<source_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<source_address.len(); index++)
     {
         if(source_address[index]->has_data())
             return true;
@@ -25382,7 +25594,7 @@ bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::has_data
 
 bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::has_operation() const
 {
-    for (std::size_t index=0; index<source_address.size(); index++)
+    for (std::size_t index=0; index<source_address.len(); index++)
     {
         if(source_address[index]->has_operation())
             return true;
@@ -25437,7 +25649,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGr
     {
         auto c = std::make_shared<Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress>();
         c->parent = this;
-        source_address.push_back(c);
+        source_address.append(c);
         return c;
     }
 
@@ -25454,7 +25666,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Exp
     }
 
     count = 0;
-    for (auto const & c : source_address)
+    for (auto c : source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -25527,7 +25739,7 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::Addr
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::~Address()
@@ -25536,6 +25748,7 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::~Add
 
 bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -25639,7 +25852,7 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress::~SourceAddress()
@@ -25648,6 +25861,7 @@ Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress
 
 bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -25745,9 +25959,11 @@ bool Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAd
 }
 
 Igmp::Active::DefaultContext::InterfaceTable::InterfaceTable()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interface-table"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-table"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::InterfaceTable::~InterfaceTable()
@@ -25756,7 +25972,8 @@ Igmp::Active::DefaultContext::InterfaceTable::~InterfaceTable()
 
 bool Igmp::Active::DefaultContext::InterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -25766,7 +25983,7 @@ bool Igmp::Active::DefaultContext::InterfaceTable::has_data() const
 
 bool Igmp::Active::DefaultContext::InterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -25803,7 +26020,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceTable::get_child_
     {
         auto c = std::make_shared<Igmp::Active::DefaultContext::InterfaceTable::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -25815,7 +26032,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Int
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -25892,16 +26109,16 @@ Igmp::Active::DefaultContext::InterfaceTable::Interface::Interface()
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Igmp::Active::DefaultContext::InterfaceTable::Interface::Address>())
-	,querier_address(std::make_shared<Igmp::Active::DefaultContext::InterfaceTable::Interface::QuerierAddress>())
-	,subscriber_address(std::make_shared<Igmp::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress>())
+    , querier_address(std::make_shared<Igmp::Active::DefaultContext::InterfaceTable::Interface::QuerierAddress>())
+    , subscriber_address(std::make_shared<Igmp::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interface-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interface-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::InterfaceTable::Interface::~Interface()
@@ -25910,6 +26127,7 @@ Igmp::Active::DefaultContext::InterfaceTable::Interface::~Interface()
 
 bool Igmp::Active::DefaultContext::InterfaceTable::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -26031,7 +26249,8 @@ std::string Igmp::Active::DefaultContext::InterfaceTable::Interface::get_absolut
 std::string Igmp::Active::DefaultContext::InterfaceTable::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -26659,7 +26878,7 @@ Igmp::Active::DefaultContext::InterfaceTable::Interface::Address::Address()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::DefaultContext::InterfaceTable::Interface::Address::~Address()
@@ -26668,6 +26887,7 @@ Igmp::Active::DefaultContext::InterfaceTable::Interface::Address::~Address()
 
 bool Igmp::Active::DefaultContext::InterfaceTable::Interface::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -26764,7 +26984,7 @@ Igmp::Active::DefaultContext::InterfaceTable::Interface::QuerierAddress::Querier
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::DefaultContext::InterfaceTable::Interface::QuerierAddress::~QuerierAddress()
@@ -26773,6 +26993,7 @@ Igmp::Active::DefaultContext::InterfaceTable::Interface::QuerierAddress::~Querie
 
 bool Igmp::Active::DefaultContext::InterfaceTable::Interface::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -26869,7 +27090,7 @@ Igmp::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress::Subs
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress::~SubscriberAddress()
@@ -26878,6 +27099,7 @@ Igmp::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress::~Sub
 
 bool Igmp::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -26968,9 +27190,11 @@ bool Igmp::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress:
 }
 
 Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjusts()
+    :
+    interface_unicast_qos_adjust(this, {"interface_name"})
 {
 
-    yang_name = "interface-unicast-qos-adjusts"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-unicast-qos-adjusts"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::~InterfaceUnicastQosAdjusts()
@@ -26979,7 +27203,8 @@ Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::~InterfaceUnicastQosAd
 
 bool Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::has_data() const
 {
-    for (std::size_t index=0; index<interface_unicast_qos_adjust.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_unicast_qos_adjust.len(); index++)
     {
         if(interface_unicast_qos_adjust[index]->has_data())
             return true;
@@ -26989,7 +27214,7 @@ bool Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::has_data() const
 
 bool Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::has_operation() const
 {
-    for (std::size_t index=0; index<interface_unicast_qos_adjust.size(); index++)
+    for (std::size_t index=0; index<interface_unicast_qos_adjust.len(); index++)
     {
         if(interface_unicast_qos_adjust[index]->has_operation())
             return true;
@@ -27026,7 +27251,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts
     {
         auto c = std::make_shared<Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust>();
         c->parent = this;
-        interface_unicast_qos_adjust.push_back(c);
+        interface_unicast_qos_adjust.append(c);
         return c;
     }
 
@@ -27038,7 +27263,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Int
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_unicast_qos_adjust)
+    for (auto c : interface_unicast_qos_adjust.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -27071,9 +27296,11 @@ Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdj
     rate{YType::uint32, "rate"},
     rate_increments{YType::uint32, "rate-increments"},
     rate_decrements{YType::uint32, "rate-decrements"}
+        ,
+    update(this, {})
 {
 
-    yang_name = "interface-unicast-qos-adjust"; yang_parent_name = "interface-unicast-qos-adjusts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-unicast-qos-adjust"; yang_parent_name = "interface-unicast-qos-adjusts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::~InterfaceUnicastQosAdjust()
@@ -27082,7 +27309,8 @@ Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdj
 
 bool Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::has_data() const
 {
-    for (std::size_t index=0; index<update.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<update.len(); index++)
     {
         if(update[index]->has_data())
             return true;
@@ -27096,7 +27324,7 @@ bool Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQ
 
 bool Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::has_operation() const
 {
-    for (std::size_t index=0; index<update.size(); index++)
+    for (std::size_t index=0; index<update.len(); index++)
     {
         if(update[index]->has_operation())
             return true;
@@ -27119,7 +27347,8 @@ std::string Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceU
 std::string Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-unicast-qos-adjust" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-unicast-qos-adjust";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -27143,7 +27372,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts
     {
         auto c = std::make_shared<Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update>();
         c->parent = this;
-        update.push_back(c);
+        update.append(c);
         return c;
     }
 
@@ -27155,7 +27384,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Int
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : update)
+    for (auto c : update.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -27236,14 +27465,14 @@ Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdj
     is_add{YType::boolean, "is-add"},
     weight{YType::uint32, "weight"},
     received_time{YType::uint64, "received-time"}
-    	,
+        ,
     source_address(std::make_shared<Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress>())
-	,group_address(std::make_shared<Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress>())
+    , group_address(std::make_shared<Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress>())
 {
     source_address->parent = this;
     group_address->parent = this;
 
-    yang_name = "update"; yang_parent_name = "interface-unicast-qos-adjust"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "update"; yang_parent_name = "interface-unicast-qos-adjust"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::~Update()
@@ -27252,6 +27481,7 @@ Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdj
 
 bool Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::has_data() const
 {
+    if (is_presence_container) return true;
     return is_add.is_set
 	|| weight.is_set
 	|| received_time.is_set

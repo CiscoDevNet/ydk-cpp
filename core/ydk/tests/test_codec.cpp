@@ -81,6 +81,44 @@ TEST_CASE( "test_codec_action_datanode" )
 
     REQUIRE(data.get_action_node_path() == "/ydktest-sanity-action:data/action-node");
 }
+
+TEST_CASE( "test_submodule_feature" )
+{
+    ydk::path::Codec s{};
+    std::string searchdir{TEST_HOME};
+
+    // Add 'crypto' feature for 'ydktest-types'
+    std::vector<ydk::path::Capability> test_capabilities{};
+    for (auto cap : test_openconfig) {
+        if (cap.module == "ydktest-types") {
+            cap.features.push_back("crypto");
+        }
+        test_capabilities.push_back(cap);
+    }
+    mock::MockSession sp{searchdir, test_capabilities};
+
+    auto & schema = sp.get_root_schema();
+
+    auto & native = schema.create_datanode("ydktest-sanity:native");
+
+    auto & tunnel = native.create_datanode("interface/Tunnel[name='521']");
+    tunnel.create_datanode("description", "Tunnel521");
+
+    // Protection IPsec
+    auto & ipsec = tunnel.create_datanode("ipsec");
+    ipsec.create_datanode("profile","ipsec-profile");
+    ipsec.create_datanode("ikev2-profile","ipsec-ikev2-profile");
+
+    auto xml = s.encode(native, ydk::EncodingFormat::XML, true);
+
+    auto dn = s.decode(schema, xml, ydk::EncodingFormat::XML);
+    REQUIRE(dn != nullptr);
+    auto real_dn = dn->get_children()[0];
+    REQUIRE(real_dn != nullptr);
+
+    auto xml_rt = s.encode(*real_dn, ydk::EncodingFormat::XML, true);
+    REQUIRE(xml == xml_rt);
+}
 /*
 TEST_CASE( "test_codec_ok" )
 {

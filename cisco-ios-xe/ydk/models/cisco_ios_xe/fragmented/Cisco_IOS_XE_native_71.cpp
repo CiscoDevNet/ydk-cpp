@@ -18,7 +18,7 @@ Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Auth
 {
     md5->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "advertisement"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "advertisement"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Authentication::~Authentication()
@@ -27,6 +27,7 @@ Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Auth
 
 bool Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (md5 !=  nullptr && md5->has_data());
 }
 
@@ -96,12 +97,12 @@ bool Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement:
 Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::Md5()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     key_string(std::make_shared<Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString>())
 {
     key_string->parent = this;
 
-    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::~Md5()
@@ -110,6 +111,7 @@ Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Auth
 
 bool Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (key_string !=  nullptr && key_string->has_data());
 }
@@ -196,7 +198,7 @@ Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Auth
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::~KeyString()
@@ -205,6 +207,7 @@ Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Auth
 
 bool Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::has_data() const
 {
+    if (is_presence_container) return true;
     return encrypt.is_set
 	|| string.is_set
 	|| timeout.is_set;
@@ -300,7 +303,7 @@ Native::Interface::Loopback::Standby::StandbyList::Redirect::Timers::Timers()
     holddown{YType::uint16, "holddown"}
 {
 
-    yang_name = "timers"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Standby::StandbyList::Redirect::Timers::~Timers()
@@ -309,6 +312,7 @@ Native::Interface::Loopback::Standby::StandbyList::Redirect::Timers::~Timers()
 
 bool Native::Interface::Loopback::Standby::StandbyList::Redirect::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return advertisement.is_set
 	|| holddown.is_set;
 }
@@ -388,12 +392,12 @@ bool Native::Interface::Loopback::Standby::StandbyList::Redirect::Timers::has_le
 Native::Interface::Loopback::Standby::StandbyList::Timers::Timers()
     :
     hello_interval(std::make_shared<Native::Interface::Loopback::Standby::StandbyList::Timers::HelloInterval>())
-	,hold_time(std::make_shared<Native::Interface::Loopback::Standby::StandbyList::Timers::HoldTime>())
+    , hold_time(std::make_shared<Native::Interface::Loopback::Standby::StandbyList::Timers::HoldTime>())
 {
     hello_interval->parent = this;
     hold_time->parent = this;
 
-    yang_name = "timers"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Standby::StandbyList::Timers::~Timers()
@@ -402,6 +406,7 @@ Native::Interface::Loopback::Standby::StandbyList::Timers::~Timers()
 
 bool Native::Interface::Loopback::Standby::StandbyList::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return (hello_interval !=  nullptr && hello_interval->has_data())
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -490,7 +495,7 @@ Native::Interface::Loopback::Standby::StandbyList::Timers::HelloInterval::HelloI
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Standby::StandbyList::Timers::HelloInterval::~HelloInterval()
@@ -499,6 +504,7 @@ Native::Interface::Loopback::Standby::StandbyList::Timers::HelloInterval::~Hello
 
 bool Native::Interface::Loopback::Standby::StandbyList::Timers::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -581,7 +587,7 @@ Native::Interface::Loopback::Standby::StandbyList::Timers::HoldTime::HoldTime()
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Standby::StandbyList::Timers::HoldTime::~HoldTime()
@@ -590,6 +596,7 @@ Native::Interface::Loopback::Standby::StandbyList::Timers::HoldTime::~HoldTime()
 
 bool Native::Interface::Loopback::Standby::StandbyList::Timers::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -673,7 +680,7 @@ Native::Interface::Loopback::Standby::StandbyList::Track::Track()
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "track"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Standby::StandbyList::Track::~Track()
@@ -682,6 +689,7 @@ Native::Interface::Loopback::Standby::StandbyList::Track::~Track()
 
 bool Native::Interface::Loopback::Standby::StandbyList::Track::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| decrement.is_set
 	|| shutdown.is_set;
@@ -698,7 +706,8 @@ bool Native::Interface::Loopback::Standby::StandbyList::Track::has_operation() c
 std::string Native::Interface::Loopback::Standby::StandbyList::Track::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "track" <<"[number='" <<number <<"']";
+    path_buffer << "track";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -775,12 +784,12 @@ Native::Interface::Loopback::AccessSession::AccessSession()
     :
     closed{YType::empty, "closed"},
     host_mode{YType::enumeration, "host-mode"}
-    	,
+        ,
     port_control(std::make_shared<Native::Interface::Loopback::AccessSession::PortControl>())
 {
     port_control->parent = this;
 
-    yang_name = "access-session"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-session"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::AccessSession::~AccessSession()
@@ -789,6 +798,7 @@ Native::Interface::Loopback::AccessSession::~AccessSession()
 
 bool Native::Interface::Loopback::AccessSession::has_data() const
 {
+    if (is_presence_container) return true;
     return closed.is_set
 	|| host_mode.is_set
 	|| (port_control !=  nullptr && port_control->has_data());
@@ -886,7 +896,7 @@ Native::Interface::Loopback::AccessSession::PortControl::PortControl()
     auto_{YType::empty, "auto"}
 {
 
-    yang_name = "port-control"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-control"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::AccessSession::PortControl::~PortControl()
@@ -895,6 +905,7 @@ Native::Interface::Loopback::AccessSession::PortControl::~PortControl()
 
 bool Native::Interface::Loopback::AccessSession::PortControl::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -961,16 +972,16 @@ bool Native::Interface::Loopback::AccessSession::PortControl::has_leaf_or_child_
 Native::Interface::Loopback::StormControl::StormControl()
     :
     action(std::make_shared<Native::Interface::Loopback::StormControl::Action>())
-	,broadcast(std::make_shared<Native::Interface::Loopback::StormControl::Broadcast>())
-	,multicast(std::make_shared<Native::Interface::Loopback::StormControl::Multicast>())
-	,unicast(std::make_shared<Native::Interface::Loopback::StormControl::Unicast>())
+    , broadcast(std::make_shared<Native::Interface::Loopback::StormControl::Broadcast>())
+    , multicast(std::make_shared<Native::Interface::Loopback::StormControl::Multicast>())
+    , unicast(std::make_shared<Native::Interface::Loopback::StormControl::Unicast>())
 {
     action->parent = this;
     broadcast->parent = this;
     multicast->parent = this;
     unicast->parent = this;
 
-    yang_name = "storm-control"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storm-control"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::~StormControl()
@@ -979,6 +990,7 @@ Native::Interface::Loopback::StormControl::~StormControl()
 
 bool Native::Interface::Loopback::StormControl::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data())
 	|| (broadcast !=  nullptr && broadcast->has_data())
 	|| (multicast !=  nullptr && multicast->has_data())
@@ -1100,7 +1112,7 @@ Native::Interface::Loopback::StormControl::Action::Action()
     trap{YType::empty, "trap"}
 {
 
-    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Action::~Action()
@@ -1109,6 +1121,7 @@ Native::Interface::Loopback::StormControl::Action::~Action()
 
 bool Native::Interface::Loopback::StormControl::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| shutdown.is_set
 	|| trap.is_set;
@@ -1201,12 +1214,12 @@ bool Native::Interface::Loopback::StormControl::Action::has_leaf_or_child_of_nam
 Native::Interface::Loopback::StormControl::Broadcast::Broadcast()
     :
     include(std::make_shared<Native::Interface::Loopback::StormControl::Broadcast::Include>())
-	,level(std::make_shared<Native::Interface::Loopback::StormControl::Broadcast::Level>())
+    , level(std::make_shared<Native::Interface::Loopback::StormControl::Broadcast::Level>())
 {
     include->parent = this;
     level->parent = this;
 
-    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Broadcast::~Broadcast()
@@ -1215,6 +1228,7 @@ Native::Interface::Loopback::StormControl::Broadcast::~Broadcast()
 
 bool Native::Interface::Loopback::StormControl::Broadcast::has_data() const
 {
+    if (is_presence_container) return true;
     return (include !=  nullptr && include->has_data())
 	|| (level !=  nullptr && level->has_data());
 }
@@ -1302,7 +1316,7 @@ Native::Interface::Loopback::StormControl::Broadcast::Include::Include()
     multicast{YType::empty, "multicast"}
 {
 
-    yang_name = "include"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "include"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Broadcast::Include::~Include()
@@ -1311,6 +1325,7 @@ Native::Interface::Loopback::StormControl::Broadcast::Include::~Include()
 
 bool Native::Interface::Loopback::StormControl::Broadcast::Include::has_data() const
 {
+    if (is_presence_container) return true;
     return multicast.is_set;
 }
 
@@ -1377,14 +1392,14 @@ bool Native::Interface::Loopback::StormControl::Broadcast::Include::has_leaf_or_
 Native::Interface::Loopback::StormControl::Broadcast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::Loopback::StormControl::Broadcast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::Loopback::StormControl::Broadcast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::Loopback::StormControl::Broadcast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::Loopback::StormControl::Broadcast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::Loopback::StormControl::Broadcast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Broadcast::Level::~Level()
@@ -1393,6 +1408,7 @@ Native::Interface::Loopback::StormControl::Broadcast::Level::~Level()
 
 bool Native::Interface::Loopback::StormControl::Broadcast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -1497,7 +1513,7 @@ Native::Interface::Loopback::StormControl::Broadcast::Level::Threshold::Threshol
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Broadcast::Level::Threshold::~Threshold()
@@ -1506,6 +1522,7 @@ Native::Interface::Loopback::StormControl::Broadcast::Level::Threshold::~Thresho
 
 bool Native::Interface::Loopback::StormControl::Broadcast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -1588,7 +1605,7 @@ Native::Interface::Loopback::StormControl::Broadcast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Broadcast::Level::Bps::~Bps()
@@ -1597,6 +1614,7 @@ Native::Interface::Loopback::StormControl::Broadcast::Level::Bps::~Bps()
 
 bool Native::Interface::Loopback::StormControl::Broadcast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -1679,7 +1697,7 @@ Native::Interface::Loopback::StormControl::Broadcast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Broadcast::Level::Pps::~Pps()
@@ -1688,6 +1706,7 @@ Native::Interface::Loopback::StormControl::Broadcast::Level::Pps::~Pps()
 
 bool Native::Interface::Loopback::StormControl::Broadcast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -1770,7 +1789,7 @@ Native::Interface::Loopback::StormControl::Multicast::Multicast()
 {
     level->parent = this;
 
-    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Multicast::~Multicast()
@@ -1779,6 +1798,7 @@ Native::Interface::Loopback::StormControl::Multicast::~Multicast()
 
 bool Native::Interface::Loopback::StormControl::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -1848,14 +1868,14 @@ bool Native::Interface::Loopback::StormControl::Multicast::has_leaf_or_child_of_
 Native::Interface::Loopback::StormControl::Multicast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::Loopback::StormControl::Multicast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::Loopback::StormControl::Multicast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::Loopback::StormControl::Multicast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::Loopback::StormControl::Multicast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::Loopback::StormControl::Multicast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Multicast::Level::~Level()
@@ -1864,6 +1884,7 @@ Native::Interface::Loopback::StormControl::Multicast::Level::~Level()
 
 bool Native::Interface::Loopback::StormControl::Multicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -1968,7 +1989,7 @@ Native::Interface::Loopback::StormControl::Multicast::Level::Threshold::Threshol
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Multicast::Level::Threshold::~Threshold()
@@ -1977,6 +1998,7 @@ Native::Interface::Loopback::StormControl::Multicast::Level::Threshold::~Thresho
 
 bool Native::Interface::Loopback::StormControl::Multicast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -2059,7 +2081,7 @@ Native::Interface::Loopback::StormControl::Multicast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Multicast::Level::Bps::~Bps()
@@ -2068,6 +2090,7 @@ Native::Interface::Loopback::StormControl::Multicast::Level::Bps::~Bps()
 
 bool Native::Interface::Loopback::StormControl::Multicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -2150,7 +2173,7 @@ Native::Interface::Loopback::StormControl::Multicast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Multicast::Level::Pps::~Pps()
@@ -2159,6 +2182,7 @@ Native::Interface::Loopback::StormControl::Multicast::Level::Pps::~Pps()
 
 bool Native::Interface::Loopback::StormControl::Multicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -2241,7 +2265,7 @@ Native::Interface::Loopback::StormControl::Unicast::Unicast()
 {
     level->parent = this;
 
-    yang_name = "unicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Unicast::~Unicast()
@@ -2250,6 +2274,7 @@ Native::Interface::Loopback::StormControl::Unicast::~Unicast()
 
 bool Native::Interface::Loopback::StormControl::Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -2319,14 +2344,14 @@ bool Native::Interface::Loopback::StormControl::Unicast::has_leaf_or_child_of_na
 Native::Interface::Loopback::StormControl::Unicast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::Loopback::StormControl::Unicast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::Loopback::StormControl::Unicast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::Loopback::StormControl::Unicast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::Loopback::StormControl::Unicast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::Loopback::StormControl::Unicast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Unicast::Level::~Level()
@@ -2335,6 +2360,7 @@ Native::Interface::Loopback::StormControl::Unicast::Level::~Level()
 
 bool Native::Interface::Loopback::StormControl::Unicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -2439,7 +2465,7 @@ Native::Interface::Loopback::StormControl::Unicast::Level::Threshold::Threshold(
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Unicast::Level::Threshold::~Threshold()
@@ -2448,6 +2474,7 @@ Native::Interface::Loopback::StormControl::Unicast::Level::Threshold::~Threshold
 
 bool Native::Interface::Loopback::StormControl::Unicast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -2530,7 +2557,7 @@ Native::Interface::Loopback::StormControl::Unicast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Unicast::Level::Bps::~Bps()
@@ -2539,6 +2566,7 @@ Native::Interface::Loopback::StormControl::Unicast::Level::Bps::~Bps()
 
 bool Native::Interface::Loopback::StormControl::Unicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -2621,7 +2649,7 @@ Native::Interface::Loopback::StormControl::Unicast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StormControl::Unicast::Level::Pps::~Pps()
@@ -2630,6 +2658,7 @@ Native::Interface::Loopback::StormControl::Unicast::Level::Pps::~Pps()
 
 bool Native::Interface::Loopback::StormControl::Unicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -2711,7 +2740,7 @@ Native::Interface::Loopback::Trust::Trust()
     device{YType::enumeration, "device"}
 {
 
-    yang_name = "trust"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trust"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Trust::~Trust()
@@ -2720,6 +2749,7 @@ Native::Interface::Loopback::Trust::~Trust()
 
 bool Native::Interface::Loopback::Trust::has_data() const
 {
+    if (is_presence_container) return true;
     return device.is_set;
 }
 
@@ -2786,12 +2816,12 @@ bool Native::Interface::Loopback::Trust::has_leaf_or_child_of_name(const std::st
 Native::Interface::Loopback::PriorityQueue::PriorityQueue()
     :
     out{YType::empty, "out"}
-    	,
+        ,
     cos_map(std::make_shared<Native::Interface::Loopback::PriorityQueue::CosMap>())
 {
     cos_map->parent = this;
 
-    yang_name = "priority-queue"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-queue"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::PriorityQueue::~PriorityQueue()
@@ -2800,6 +2830,7 @@ Native::Interface::Loopback::PriorityQueue::~PriorityQueue()
 
 bool Native::Interface::Loopback::PriorityQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return out.is_set
 	|| (cos_map !=  nullptr && cos_map->has_data());
 }
@@ -2885,7 +2916,7 @@ Native::Interface::Loopback::PriorityQueue::CosMap::CosMap()
     cos_values{YType::uint8, "cos-values"}
 {
 
-    yang_name = "cos-map"; yang_parent_name = "priority-queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-map"; yang_parent_name = "priority-queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::PriorityQueue::CosMap::~CosMap()
@@ -2894,6 +2925,7 @@ Native::Interface::Loopback::PriorityQueue::CosMap::~CosMap()
 
 bool Native::Interface::Loopback::PriorityQueue::CosMap::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -2979,9 +3011,11 @@ bool Native::Interface::Loopback::PriorityQueue::CosMap::has_leaf_or_child_of_na
 }
 
 Native::Interface::Loopback::RcvQueue::RcvQueue()
+    :
+    cos_map(this, {"queue_id", "threshold_id"})
 {
 
-    yang_name = "rcv-queue"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rcv-queue"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::RcvQueue::~RcvQueue()
@@ -2990,7 +3024,8 @@ Native::Interface::Loopback::RcvQueue::~RcvQueue()
 
 bool Native::Interface::Loopback::RcvQueue::has_data() const
 {
-    for (std::size_t index=0; index<cos_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cos_map.len(); index++)
     {
         if(cos_map[index]->has_data())
             return true;
@@ -3000,7 +3035,7 @@ bool Native::Interface::Loopback::RcvQueue::has_data() const
 
 bool Native::Interface::Loopback::RcvQueue::has_operation() const
 {
-    for (std::size_t index=0; index<cos_map.size(); index++)
+    for (std::size_t index=0; index<cos_map.len(); index++)
     {
         if(cos_map[index]->has_operation())
             return true;
@@ -3030,7 +3065,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::RcvQueue::get_child_by_name
     {
         auto c = std::make_shared<Native::Interface::Loopback::RcvQueue::CosMap>();
         c->parent = this;
-        cos_map.push_back(c);
+        cos_map.append(c);
         return c;
     }
 
@@ -3042,7 +3077,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::RcvQ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cos_map)
+    for (auto c : cos_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3075,7 +3110,7 @@ Native::Interface::Loopback::RcvQueue::CosMap::CosMap()
     cos_values{YType::uint8, "cos-values"}
 {
 
-    yang_name = "cos-map"; yang_parent_name = "rcv-queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-map"; yang_parent_name = "rcv-queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::RcvQueue::CosMap::~CosMap()
@@ -3084,6 +3119,7 @@ Native::Interface::Loopback::RcvQueue::CosMap::~CosMap()
 
 bool Native::Interface::Loopback::RcvQueue::CosMap::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -3109,7 +3145,9 @@ bool Native::Interface::Loopback::RcvQueue::CosMap::has_operation() const
 std::string Native::Interface::Loopback::RcvQueue::CosMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cos-map" <<"[queue-id='" <<queue_id <<"']" <<"[threshold-id='" <<threshold_id <<"']";
+    path_buffer << "cos-map";
+    ADD_KEY_TOKEN(queue_id, "queue-id");
+    ADD_KEY_TOKEN(threshold_id, "threshold-id");
     return path_buffer.str();
 }
 
@@ -3187,7 +3225,7 @@ Native::Interface::Loopback::Peer::Peer()
 {
     default_->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Peer::~Peer()
@@ -3196,6 +3234,7 @@ Native::Interface::Loopback::Peer::~Peer()
 
 bool Native::Interface::Loopback::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -3268,7 +3307,7 @@ Native::Interface::Loopback::Peer::Default::Default()
 {
     ip->parent = this;
 
-    yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Peer::Default::~Default()
@@ -3277,6 +3316,7 @@ Native::Interface::Loopback::Peer::Default::~Default()
 
 bool Native::Interface::Loopback::Peer::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -3349,7 +3389,7 @@ Native::Interface::Loopback::Peer::Default::Ip::Ip()
 {
     address->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Peer::Default::Ip::~Ip()
@@ -3358,6 +3398,7 @@ Native::Interface::Loopback::Peer::Default::Ip::~Ip()
 
 bool Native::Interface::Loopback::Peer::Default::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -3427,12 +3468,12 @@ bool Native::Interface::Loopback::Peer::Default::Ip::has_leaf_or_child_of_name(c
 Native::Interface::Loopback::Peer::Default::Ip::Address::Address()
     :
     dhcp{YType::empty, "dhcp"}
-    	,
+        ,
     dhcp_pool(nullptr) // presence node
-	,pool(nullptr) // presence node
+    , pool(nullptr) // presence node
 {
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Peer::Default::Ip::Address::~Address()
@@ -3441,6 +3482,7 @@ Native::Interface::Loopback::Peer::Default::Ip::Address::~Address()
 
 bool Native::Interface::Loopback::Peer::Default::Ip::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return dhcp.is_set
 	|| (dhcp_pool !=  nullptr && dhcp_pool->has_data())
 	|| (pool !=  nullptr && pool->has_data());
@@ -3541,7 +3583,7 @@ Native::Interface::Loopback::Peer::Default::Ip::Address::DhcpPool::DhcpPool()
     pools{YType::str, "pools"}
 {
 
-    yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Peer::Default::Ip::Address::DhcpPool::~DhcpPool()
@@ -3550,6 +3592,7 @@ Native::Interface::Loopback::Peer::Default::Ip::Address::DhcpPool::~DhcpPool()
 
 bool Native::Interface::Loopback::Peer::Default::Ip::Address::DhcpPool::has_data() const
 {
+    if (is_presence_container) return true;
     return pools.is_set;
 }
 
@@ -3618,7 +3661,7 @@ Native::Interface::Loopback::Peer::Default::Ip::Address::Pool::Pool()
     pools{YType::str, "pools"}
 {
 
-    yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Peer::Default::Ip::Address::Pool::~Pool()
@@ -3627,6 +3670,7 @@ Native::Interface::Loopback::Peer::Default::Ip::Address::Pool::~Pool()
 
 bool Native::Interface::Loopback::Peer::Default::Ip::Address::Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return pools.is_set;
 }
 
@@ -3696,7 +3740,7 @@ Native::Interface::Loopback::PmPath::PmPath()
     interface_id{YType::uint8, "interface-id"}
 {
 
-    yang_name = "pm-path"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pm-path"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::PmPath::~PmPath()
@@ -3705,6 +3749,7 @@ Native::Interface::Loopback::PmPath::~PmPath()
 
 bool Native::Interface::Loopback::PmPath::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| interface_id.is_set;
 }
@@ -3781,2124 +3826,17 @@ bool Native::Interface::Loopback::PmPath::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-Native::Interface::Loopback::Snmp::Snmp()
-    :
-    ifindex(std::make_shared<Native::Interface::Loopback::Snmp::Ifindex>())
-	,trap(std::make_shared<Native::Interface::Loopback::Snmp::Trap>())
-{
-    ifindex->parent = this;
-    trap->parent = this;
-
-    yang_name = "snmp"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Snmp::~Snmp()
-{
-}
-
-bool Native::Interface::Loopback::Snmp::has_data() const
-{
-    return (ifindex !=  nullptr && ifindex->has_data())
-	|| (trap !=  nullptr && trap->has_data());
-}
-
-bool Native::Interface::Loopback::Snmp::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ifindex !=  nullptr && ifindex->has_operation())
-	|| (trap !=  nullptr && trap->has_operation());
-}
-
-std::string Native::Interface::Loopback::Snmp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-snmp:snmp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Snmp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ifindex")
-    {
-        if(ifindex == nullptr)
-        {
-            ifindex = std::make_shared<Native::Interface::Loopback::Snmp::Ifindex>();
-        }
-        return ifindex;
-    }
-
-    if(child_yang_name == "trap")
-    {
-        if(trap == nullptr)
-        {
-            trap = std::make_shared<Native::Interface::Loopback::Snmp::Trap>();
-        }
-        return trap;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Snmp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(ifindex != nullptr)
-    {
-        children["ifindex"] = ifindex;
-    }
-
-    if(trap != nullptr)
-    {
-        children["trap"] = trap;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Loopback::Snmp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Loopback::Snmp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ifindex" || name == "trap")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Snmp::Ifindex::Ifindex()
-    :
-    persist{YType::empty, "persist"},
-    clear{YType::boolean, "clear"}
-{
-
-    yang_name = "ifindex"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Snmp::Ifindex::~Ifindex()
-{
-}
-
-bool Native::Interface::Loopback::Snmp::Ifindex::has_data() const
-{
-    return persist.is_set
-	|| clear.is_set;
-}
-
-bool Native::Interface::Loopback::Snmp::Ifindex::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(persist.yfilter)
-	|| ydk::is_set(clear.yfilter);
-}
-
-std::string Native::Interface::Loopback::Snmp::Ifindex::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ifindex";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Snmp::Ifindex::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (persist.is_set || is_set(persist.yfilter)) leaf_name_data.push_back(persist.get_name_leafdata());
-    if (clear.is_set || is_set(clear.yfilter)) leaf_name_data.push_back(clear.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Snmp::Ifindex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Snmp::Ifindex::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::Loopback::Snmp::Ifindex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "persist")
-    {
-        persist = value;
-        persist.value_namespace = name_space;
-        persist.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "clear")
-    {
-        clear = value;
-        clear.value_namespace = name_space;
-        clear.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::Snmp::Ifindex::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "persist")
-    {
-        persist.yfilter = yfilter;
-    }
-    if(value_path == "clear")
-    {
-        clear.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Snmp::Ifindex::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "persist" || name == "clear")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Snmp::Trap::Trap()
-    :
-    link_status{YType::boolean, "link-status"}
-    	,
-    link_status_capas(std::make_shared<Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas>())
-{
-    link_status_capas->parent = this;
-
-    yang_name = "trap"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Snmp::Trap::~Trap()
-{
-}
-
-bool Native::Interface::Loopback::Snmp::Trap::has_data() const
-{
-    return link_status.is_set
-	|| (link_status_capas !=  nullptr && link_status_capas->has_data());
-}
-
-bool Native::Interface::Loopback::Snmp::Trap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(link_status.yfilter)
-	|| (link_status_capas !=  nullptr && link_status_capas->has_operation());
-}
-
-std::string Native::Interface::Loopback::Snmp::Trap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trap";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Snmp::Trap::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (link_status.is_set || is_set(link_status.yfilter)) leaf_name_data.push_back(link_status.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Snmp::Trap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "link-status-capas")
-    {
-        if(link_status_capas == nullptr)
-        {
-            link_status_capas = std::make_shared<Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas>();
-        }
-        return link_status_capas;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Snmp::Trap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(link_status_capas != nullptr)
-    {
-        children["link-status-capas"] = link_status_capas;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Snmp::Trap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "link-status")
-    {
-        link_status = value;
-        link_status.value_namespace = name_space;
-        link_status.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::Snmp::Trap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "link-status")
-    {
-        link_status.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Snmp::Trap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "link-status-capas" || name == "link-status")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatusCapas()
-    :
-    link_status(std::make_shared<Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus>())
-{
-    link_status->parent = this;
-
-    yang_name = "link-status-capas"; yang_parent_name = "trap"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::~LinkStatusCapas()
-{
-}
-
-bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::has_data() const
-{
-    return (link_status !=  nullptr && link_status->has_data());
-}
-
-bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::has_operation() const
-{
-    return is_set(yfilter)
-	|| (link_status !=  nullptr && link_status->has_operation());
-}
-
-std::string Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "link-status-capas";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "link-status")
-    {
-        if(link_status == nullptr)
-        {
-            link_status = std::make_shared<Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus>();
-        }
-        return link_status;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(link_status != nullptr)
-    {
-        children["link-status"] = link_status;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "link-status")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::LinkStatus()
-    :
-    permit(std::make_shared<Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit>())
-{
-    permit->parent = this;
-
-    yang_name = "link-status"; yang_parent_name = "link-status-capas"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::~LinkStatus()
-{
-}
-
-bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::has_data() const
-{
-    return (permit !=  nullptr && permit->has_data());
-}
-
-bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::has_operation() const
-{
-    return is_set(yfilter)
-	|| (permit !=  nullptr && permit->has_operation());
-}
-
-std::string Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "link-status";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "permit")
-    {
-        if(permit == nullptr)
-        {
-            permit = std::make_shared<Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit>();
-        }
-        return permit;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(permit != nullptr)
-    {
-        children["permit"] = permit;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "permit")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::Permit()
-    :
-    duplicates{YType::empty, "duplicates"}
-{
-
-    yang_name = "permit"; yang_parent_name = "link-status"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::~Permit()
-{
-}
-
-bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::has_data() const
-{
-    return duplicates.is_set;
-}
-
-bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(duplicates.yfilter);
-}
-
-std::string Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "permit";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (duplicates.is_set || is_set(duplicates.yfilter)) leaf_name_data.push_back(duplicates.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "duplicates")
-    {
-        duplicates = value;
-        duplicates.value_namespace = name_space;
-        duplicates.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "duplicates")
-    {
-        duplicates.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "duplicates")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Crypto::Crypto()
-    :
-    map(std::make_shared<Native::Interface::Loopback::Crypto::Map>())
-	,ipsec(std::make_shared<Native::Interface::Loopback::Crypto::Ipsec>())
-{
-    map->parent = this;
-    ipsec->parent = this;
-
-    yang_name = "crypto"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Crypto::~Crypto()
-{
-}
-
-bool Native::Interface::Loopback::Crypto::has_data() const
-{
-    return (map !=  nullptr && map->has_data())
-	|| (ipsec !=  nullptr && ipsec->has_data());
-}
-
-bool Native::Interface::Loopback::Crypto::has_operation() const
-{
-    return is_set(yfilter)
-	|| (map !=  nullptr && map->has_operation())
-	|| (ipsec !=  nullptr && ipsec->has_operation());
-}
-
-std::string Native::Interface::Loopback::Crypto::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-crypto:crypto";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Crypto::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Crypto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "map")
-    {
-        if(map == nullptr)
-        {
-            map = std::make_shared<Native::Interface::Loopback::Crypto::Map>();
-        }
-        return map;
-    }
-
-    if(child_yang_name == "ipsec")
-    {
-        if(ipsec == nullptr)
-        {
-            ipsec = std::make_shared<Native::Interface::Loopback::Crypto::Ipsec>();
-        }
-        return ipsec;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Crypto::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(map != nullptr)
-    {
-        children["map"] = map;
-    }
-
-    if(ipsec != nullptr)
-    {
-        children["ipsec"] = ipsec;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Crypto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Loopback::Crypto::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Loopback::Crypto::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "map" || name == "ipsec")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Crypto::Map::Map()
-    :
-    tag{YType::str, "tag"},
-    redundancy{YType::str, "redundancy"},
-    stateful{YType::empty, "stateful"}
-{
-
-    yang_name = "map"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Crypto::Map::~Map()
-{
-}
-
-bool Native::Interface::Loopback::Crypto::Map::has_data() const
-{
-    return tag.is_set
-	|| redundancy.is_set
-	|| stateful.is_set;
-}
-
-bool Native::Interface::Loopback::Crypto::Map::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(tag.yfilter)
-	|| ydk::is_set(redundancy.yfilter)
-	|| ydk::is_set(stateful.yfilter);
-}
-
-std::string Native::Interface::Loopback::Crypto::Map::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "map";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Crypto::Map::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (redundancy.is_set || is_set(redundancy.yfilter)) leaf_name_data.push_back(redundancy.get_name_leafdata());
-    if (stateful.is_set || is_set(stateful.yfilter)) leaf_name_data.push_back(stateful.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Crypto::Map::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Crypto::Map::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::Loopback::Crypto::Map::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "tag")
-    {
-        tag = value;
-        tag.value_namespace = name_space;
-        tag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "redundancy")
-    {
-        redundancy = value;
-        redundancy.value_namespace = name_space;
-        redundancy.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stateful")
-    {
-        stateful = value;
-        stateful.value_namespace = name_space;
-        stateful.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::Crypto::Map::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "tag")
-    {
-        tag.yfilter = yfilter;
-    }
-    if(value_path == "redundancy")
-    {
-        redundancy.yfilter = yfilter;
-    }
-    if(value_path == "stateful")
-    {
-        stateful.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Crypto::Map::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tag" || name == "redundancy" || name == "stateful")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Crypto::Ipsec::Ipsec()
-    :
-    df_bit{YType::enumeration, "df-bit"},
-    fragmentation{YType::enumeration, "fragmentation"}
-{
-
-    yang_name = "ipsec"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Crypto::Ipsec::~Ipsec()
-{
-}
-
-bool Native::Interface::Loopback::Crypto::Ipsec::has_data() const
-{
-    return df_bit.is_set
-	|| fragmentation.is_set;
-}
-
-bool Native::Interface::Loopback::Crypto::Ipsec::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(df_bit.yfilter)
-	|| ydk::is_set(fragmentation.yfilter);
-}
-
-std::string Native::Interface::Loopback::Crypto::Ipsec::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipsec";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Crypto::Ipsec::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (df_bit.is_set || is_set(df_bit.yfilter)) leaf_name_data.push_back(df_bit.get_name_leafdata());
-    if (fragmentation.is_set || is_set(fragmentation.yfilter)) leaf_name_data.push_back(fragmentation.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Crypto::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Crypto::Ipsec::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::Loopback::Crypto::Ipsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "df-bit")
-    {
-        df_bit = value;
-        df_bit.value_namespace = name_space;
-        df_bit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fragmentation")
-    {
-        fragmentation = value;
-        fragmentation.value_namespace = name_space;
-        fragmentation.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::Crypto::Ipsec::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "df-bit")
-    {
-        df_bit.yfilter = yfilter;
-    }
-    if(value_path == "fragmentation")
-    {
-        fragmentation.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Crypto::Ipsec::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "df-bit" || name == "fragmentation")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Cts::Cts()
-    :
-    manual(nullptr) // presence node
-{
-
-    yang_name = "cts"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Cts::~Cts()
-{
-}
-
-bool Native::Interface::Loopback::Cts::has_data() const
-{
-    return (manual !=  nullptr && manual->has_data());
-}
-
-bool Native::Interface::Loopback::Cts::has_operation() const
-{
-    return is_set(yfilter)
-	|| (manual !=  nullptr && manual->has_operation());
-}
-
-std::string Native::Interface::Loopback::Cts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-cts:cts";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Cts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "manual")
-    {
-        if(manual == nullptr)
-        {
-            manual = std::make_shared<Native::Interface::Loopback::Cts::Manual>();
-        }
-        return manual;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(manual != nullptr)
-    {
-        children["manual"] = manual;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Cts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Loopback::Cts::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Loopback::Cts::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "manual")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Cts::Manual::Manual()
-    :
-    policy(std::make_shared<Native::Interface::Loopback::Cts::Manual::Policy>())
-	,sap(std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap>())
-	,propagate(std::make_shared<Native::Interface::Loopback::Cts::Manual::Propagate>())
-{
-    policy->parent = this;
-    sap->parent = this;
-    propagate->parent = this;
-
-    yang_name = "manual"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Cts::Manual::~Manual()
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::has_data() const
-{
-    return (policy !=  nullptr && policy->has_data())
-	|| (sap !=  nullptr && sap->has_data())
-	|| (propagate !=  nullptr && propagate->has_data());
-}
-
-bool Native::Interface::Loopback::Cts::Manual::has_operation() const
-{
-    return is_set(yfilter)
-	|| (policy !=  nullptr && policy->has_operation())
-	|| (sap !=  nullptr && sap->has_operation())
-	|| (propagate !=  nullptr && propagate->has_operation());
-}
-
-std::string Native::Interface::Loopback::Cts::Manual::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "manual";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "policy")
-    {
-        if(policy == nullptr)
-        {
-            policy = std::make_shared<Native::Interface::Loopback::Cts::Manual::Policy>();
-        }
-        return policy;
-    }
-
-    if(child_yang_name == "sap")
-    {
-        if(sap == nullptr)
-        {
-            sap = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap>();
-        }
-        return sap;
-    }
-
-    if(child_yang_name == "propagate")
-    {
-        if(propagate == nullptr)
-        {
-            propagate = std::make_shared<Native::Interface::Loopback::Cts::Manual::Propagate>();
-        }
-        return propagate;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(policy != nullptr)
-    {
-        children["policy"] = policy;
-    }
-
-    if(sap != nullptr)
-    {
-        children["sap"] = sap;
-    }
-
-    if(propagate != nullptr)
-    {
-        children["propagate"] = propagate;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Cts::Manual::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Loopback::Cts::Manual::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "policy" || name == "sap" || name == "propagate")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Cts::Manual::Policy::Policy()
-    :
-    static_(std::make_shared<Native::Interface::Loopback::Cts::Manual::Policy::Static>())
-{
-    static_->parent = this;
-
-    yang_name = "policy"; yang_parent_name = "manual"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Cts::Manual::Policy::~Policy()
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Policy::has_data() const
-{
-    return (static_ !=  nullptr && static_->has_data());
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Policy::has_operation() const
-{
-    return is_set(yfilter)
-	|| (static_ !=  nullptr && static_->has_operation());
-}
-
-std::string Native::Interface::Loopback::Cts::Manual::Policy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "policy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Policy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "static")
-    {
-        if(static_ == nullptr)
-        {
-            static_ = std::make_shared<Native::Interface::Loopback::Cts::Manual::Policy::Static>();
-        }
-        return static_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Policy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(static_ != nullptr)
-    {
-        children["static"] = static_;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Cts::Manual::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Loopback::Cts::Manual::Policy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Policy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "static")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Cts::Manual::Policy::Static::Static()
-    :
-    sgt{YType::uint16, "sgt"},
-    trusted{YType::empty, "trusted"}
-{
-
-    yang_name = "static"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Cts::Manual::Policy::Static::~Static()
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Policy::Static::has_data() const
-{
-    return sgt.is_set
-	|| trusted.is_set;
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Policy::Static::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sgt.yfilter)
-	|| ydk::is_set(trusted.yfilter);
-}
-
-std::string Native::Interface::Loopback::Cts::Manual::Policy::Static::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "static";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Policy::Static::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sgt.is_set || is_set(sgt.yfilter)) leaf_name_data.push_back(sgt.get_name_leafdata());
-    if (trusted.is_set || is_set(trusted.yfilter)) leaf_name_data.push_back(trusted.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Policy::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Policy::Static::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::Loopback::Cts::Manual::Policy::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sgt")
-    {
-        sgt = value;
-        sgt.value_namespace = name_space;
-        sgt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "trusted")
-    {
-        trusted = value;
-        trusted.value_namespace = name_space;
-        trusted.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::Cts::Manual::Policy::Static::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sgt")
-    {
-        sgt.yfilter = yfilter;
-    }
-    if(value_path == "trusted")
-    {
-        trusted.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Policy::Static::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sgt" || name == "trusted")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Sap()
-{
-
-    yang_name = "sap"; yang_parent_name = "manual"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::~Sap()
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::has_data() const
-{
-    for (std::size_t index=0; index<pmk.size(); index++)
-    {
-        if(pmk[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::has_operation() const
-{
-    for (std::size_t index=0; index<pmk.size(); index++)
-    {
-        if(pmk[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Interface::Loopback::Cts::Manual::Sap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sap";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "pmk")
-    {
-        auto c = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk>();
-        c->parent = this;
-        pmk.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : pmk)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pmk")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Pmk::Pmk()
-    :
-    word{YType::str, "word"}
-    	,
-    mode_list(std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList>())
-{
-    mode_list->parent = this;
-
-    yang_name = "pmk"; yang_parent_name = "sap"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Pmk::~Pmk()
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::has_data() const
-{
-    return word.is_set
-	|| (mode_list !=  nullptr && mode_list->has_data());
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(word.yfilter)
-	|| (mode_list !=  nullptr && mode_list->has_operation());
-}
-
-std::string Native::Interface::Loopback::Cts::Manual::Sap::Pmk::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pmk" <<"[word='" <<word <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::Pmk::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (word.is_set || is_set(word.yfilter)) leaf_name_data.push_back(word.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mode-list")
-    {
-        if(mode_list == nullptr)
-        {
-            mode_list = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList>();
-        }
-        return mode_list;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(mode_list != nullptr)
-    {
-        children["mode-list"] = mode_list;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "word")
-    {
-        word = value;
-        word.value_namespace = name_space;
-        word.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "word")
-    {
-        word.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mode-list" || name == "word")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::ModeList()
-    :
-    gcm_encrypt(nullptr) // presence node
-	,no_encap(nullptr) // presence node
-{
-
-    yang_name = "mode-list"; yang_parent_name = "pmk"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::~ModeList()
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::has_data() const
-{
-    return (gcm_encrypt !=  nullptr && gcm_encrypt->has_data())
-	|| (no_encap !=  nullptr && no_encap->has_data());
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::has_operation() const
-{
-    return is_set(yfilter)
-	|| (gcm_encrypt !=  nullptr && gcm_encrypt->has_operation())
-	|| (no_encap !=  nullptr && no_encap->has_operation());
-}
-
-std::string Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mode-list";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "gcm-encrypt")
-    {
-        if(gcm_encrypt == nullptr)
-        {
-            gcm_encrypt = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt>();
-        }
-        return gcm_encrypt;
-    }
-
-    if(child_yang_name == "no-encap")
-    {
-        if(no_encap == nullptr)
-        {
-            no_encap = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap>();
-        }
-        return no_encap;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(gcm_encrypt != nullptr)
-    {
-        children["gcm-encrypt"] = gcm_encrypt;
-    }
-
-    if(no_encap != nullptr)
-    {
-        children["no-encap"] = no_encap;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "gcm-encrypt" || name == "no-encap")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::GcmEncrypt()
-    :
-    gmac(nullptr) // presence node
-{
-
-    yang_name = "gcm-encrypt"; yang_parent_name = "mode-list"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::~GcmEncrypt()
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::has_data() const
-{
-    return (gmac !=  nullptr && gmac->has_data());
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::has_operation() const
-{
-    return is_set(yfilter)
-	|| (gmac !=  nullptr && gmac->has_operation());
-}
-
-std::string Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "gcm-encrypt";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "gmac")
-    {
-        if(gmac == nullptr)
-        {
-            gmac = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac>();
-        }
-        return gmac;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(gmac != nullptr)
-    {
-        children["gmac"] = gmac;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "gmac")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::Gmac()
-    :
-    null{YType::empty, "null"}
-{
-
-    yang_name = "gmac"; yang_parent_name = "gcm-encrypt"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::~Gmac()
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::has_data() const
-{
-    return null.is_set;
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(null.yfilter);
-}
-
-std::string Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "gmac";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (null.is_set || is_set(null.yfilter)) leaf_name_data.push_back(null.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "null")
-    {
-        null = value;
-        null.value_namespace = name_space;
-        null.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "null")
-    {
-        null.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "null")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::NoEncap()
-    :
-    gmac(nullptr) // presence node
-{
-
-    yang_name = "no-encap"; yang_parent_name = "mode-list"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::~NoEncap()
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::has_data() const
-{
-    return (gmac !=  nullptr && gmac->has_data());
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::has_operation() const
-{
-    return is_set(yfilter)
-	|| (gmac !=  nullptr && gmac->has_operation());
-}
-
-std::string Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "no-encap";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "gmac")
-    {
-        if(gmac == nullptr)
-        {
-            gmac = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac>();
-        }
-        return gmac;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(gmac != nullptr)
-    {
-        children["gmac"] = gmac;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "gmac")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::Gmac()
-    :
-    gcm_encrypt{YType::empty, "gcm-encrypt"}
-{
-
-    yang_name = "gmac"; yang_parent_name = "no-encap"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::~Gmac()
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::has_data() const
-{
-    return gcm_encrypt.is_set;
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(gcm_encrypt.yfilter);
-}
-
-std::string Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "gmac";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (gcm_encrypt.is_set || is_set(gcm_encrypt.yfilter)) leaf_name_data.push_back(gcm_encrypt.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "gcm-encrypt")
-    {
-        gcm_encrypt = value;
-        gcm_encrypt.value_namespace = name_space;
-        gcm_encrypt.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "gcm-encrypt")
-    {
-        gcm_encrypt.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "gcm-encrypt")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Cts::Manual::Propagate::Propagate()
-    :
-    sgt{YType::boolean, "sgt"}
-{
-
-    yang_name = "propagate"; yang_parent_name = "manual"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Cts::Manual::Propagate::~Propagate()
-{
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Propagate::has_data() const
-{
-    return sgt.is_set;
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Propagate::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sgt.yfilter);
-}
-
-std::string Native::Interface::Loopback::Cts::Manual::Propagate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "propagate";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Propagate::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sgt.is_set || is_set(sgt.yfilter)) leaf_name_data.push_back(sgt.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Propagate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Propagate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::Loopback::Cts::Manual::Propagate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sgt")
-    {
-        sgt = value;
-        sgt.value_namespace = name_space;
-        sgt.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::Cts::Manual::Propagate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sgt")
-    {
-        sgt.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Cts::Manual::Propagate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sgt")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::EtAnalytics::EtAnalytics()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "et-analytics"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::EtAnalytics::~EtAnalytics()
-{
-}
-
-bool Native::Interface::Loopback::EtAnalytics::has_data() const
-{
-    return enable.is_set;
-}
-
-bool Native::Interface::Loopback::EtAnalytics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Native::Interface::Loopback::EtAnalytics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-eta:et-analytics";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::EtAnalytics::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::EtAnalytics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::EtAnalytics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::Loopback::EtAnalytics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::EtAnalytics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::EtAnalytics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Performance::Performance()
-    :
-    monitor(std::make_shared<Native::Interface::Loopback::Performance::Monitor>())
-{
-    monitor->parent = this;
-
-    yang_name = "performance"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Performance::~Performance()
-{
-}
-
-bool Native::Interface::Loopback::Performance::has_data() const
-{
-    return (monitor !=  nullptr && monitor->has_data());
-}
-
-bool Native::Interface::Loopback::Performance::has_operation() const
-{
-    return is_set(yfilter)
-	|| (monitor !=  nullptr && monitor->has_operation());
-}
-
-std::string Native::Interface::Loopback::Performance::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-ezpm:performance";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Performance::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Performance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "monitor")
-    {
-        if(monitor == nullptr)
-        {
-            monitor = std::make_shared<Native::Interface::Loopback::Performance::Monitor>();
-        }
-        return monitor;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Performance::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(monitor != nullptr)
-    {
-        children["monitor"] = monitor;
-    }
-
-    return children;
-}
-
-void Native::Interface::Loopback::Performance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Loopback::Performance::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Loopback::Performance::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "monitor")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Performance::Monitor::Monitor()
-    :
-    context{YType::str, "context"}
-{
-
-    yang_name = "monitor"; yang_parent_name = "performance"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Performance::Monitor::~Monitor()
-{
-}
-
-bool Native::Interface::Loopback::Performance::Monitor::has_data() const
-{
-    for (auto const & leaf : context.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::Loopback::Performance::Monitor::has_operation() const
-{
-    for (auto const & leaf : context.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(context.yfilter);
-}
-
-std::string Native::Interface::Loopback::Performance::Monitor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "monitor";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Performance::Monitor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto context_name_datas = context.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), context_name_datas.begin(), context_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Performance::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Performance::Monitor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::Loopback::Performance::Monitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "context")
-    {
-        context.append(value);
-    }
-}
-
-void Native::Interface::Loopback::Performance::Monitor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "context")
-    {
-        context.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Performance::Monitor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "context")
-        return true;
-    return false;
-}
-
 Native::Interface::Loopback::ServicePolicy::ServicePolicy()
     :
     history{YType::empty, "history"},
     input{YType::str, "input"},
     output{YType::str, "output"}
-    	,
+        ,
     type(std::make_shared<Native::Interface::Loopback::ServicePolicy::Type>())
 {
     type->parent = this;
 
-    yang_name = "service-policy"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::ServicePolicy::~ServicePolicy()
@@ -5907,6 +3845,7 @@ Native::Interface::Loopback::ServicePolicy::~ServicePolicy()
 
 bool Native::Interface::Loopback::ServicePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return history.is_set
 	|| input.is_set
 	|| output.is_set
@@ -6015,14 +3954,14 @@ bool Native::Interface::Loopback::ServicePolicy::has_leaf_or_child_of_name(const
 Native::Interface::Loopback::ServicePolicy::Type::Type()
     :
     control(std::make_shared<Native::Interface::Loopback::ServicePolicy::Type::Control>())
-	,performance_monitor(std::make_shared<Native::Interface::Loopback::ServicePolicy::Type::PerformanceMonitor>())
-	,service_chain(std::make_shared<Native::Interface::Loopback::ServicePolicy::Type::ServiceChain>())
+    , performance_monitor(std::make_shared<Native::Interface::Loopback::ServicePolicy::Type::PerformanceMonitor>())
+    , service_chain(std::make_shared<Native::Interface::Loopback::ServicePolicy::Type::ServiceChain>())
 {
     control->parent = this;
     performance_monitor->parent = this;
     service_chain->parent = this;
 
-    yang_name = "type"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "type"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::ServicePolicy::Type::~Type()
@@ -6031,6 +3970,7 @@ Native::Interface::Loopback::ServicePolicy::Type::~Type()
 
 bool Native::Interface::Loopback::ServicePolicy::Type::has_data() const
 {
+    if (is_presence_container) return true;
     return (control !=  nullptr && control->has_data())
 	|| (performance_monitor !=  nullptr && performance_monitor->has_data())
 	|| (service_chain !=  nullptr && service_chain->has_data());
@@ -6134,7 +4074,7 @@ Native::Interface::Loopback::ServicePolicy::Type::Control::Control()
     subscriber{YType::str, "subscriber"}
 {
 
-    yang_name = "control"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "control"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::ServicePolicy::Type::Control::~Control()
@@ -6143,6 +4083,7 @@ Native::Interface::Loopback::ServicePolicy::Type::Control::~Control()
 
 bool Native::Interface::Loopback::ServicePolicy::Type::Control::has_data() const
 {
+    if (is_presence_container) return true;
     return subscriber.is_set;
 }
 
@@ -6212,7 +4153,7 @@ Native::Interface::Loopback::ServicePolicy::Type::PerformanceMonitor::Performanc
     name{YType::str, "name"}
 {
 
-    yang_name = "performance-monitor"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "performance-monitor"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::ServicePolicy::Type::PerformanceMonitor::~PerformanceMonitor()
@@ -6221,6 +4162,7 @@ Native::Interface::Loopback::ServicePolicy::Type::PerformanceMonitor::~Performan
 
 bool Native::Interface::Loopback::ServicePolicy::Type::PerformanceMonitor::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| name.is_set;
 }
@@ -6300,12 +4242,12 @@ bool Native::Interface::Loopback::ServicePolicy::Type::PerformanceMonitor::has_l
 Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::ServiceChain()
     :
     input(std::make_shared<Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::Input>())
-	,output(std::make_shared<Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::Output>())
+    , output(std::make_shared<Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "service-chain"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-chain"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::~ServiceChain()
@@ -6314,6 +4256,7 @@ Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::~ServiceChain()
 
 bool Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -6401,7 +4344,7 @@ Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::Input::Input()
     name{YType::str, "name"}
 {
 
-    yang_name = "input"; yang_parent_name = "service-chain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "service-chain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::Input::~Input()
@@ -6410,6 +4353,7 @@ Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::Input::~Input()
 
 bool Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -6478,7 +4422,7 @@ Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::Output::Output()
     name{YType::str, "name"}
 {
 
-    yang_name = "output"; yang_parent_name = "service-chain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "service-chain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::Output::~Output()
@@ -6487,6 +4431,7 @@ Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::Output::~Output(
 
 bool Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -6550,15 +4495,2021 @@ bool Native::Interface::Loopback::ServicePolicy::Type::ServiceChain::Output::has
     return false;
 }
 
+Native::Interface::Loopback::Utd::Utd()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "utd"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Utd::~Utd()
+{
+}
+
+bool Native::Interface::Loopback::Utd::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Native::Interface::Loopback::Utd::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Utd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-utd:utd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Utd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Utd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Utd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::Loopback::Utd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Utd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Utd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Cts::Cts()
+    :
+    manual(nullptr) // presence node
+{
+
+    yang_name = "cts"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Cts::~Cts()
+{
+}
+
+bool Native::Interface::Loopback::Cts::has_data() const
+{
+    if (is_presence_container) return true;
+    return (manual !=  nullptr && manual->has_data());
+}
+
+bool Native::Interface::Loopback::Cts::has_operation() const
+{
+    return is_set(yfilter)
+	|| (manual !=  nullptr && manual->has_operation());
+}
+
+std::string Native::Interface::Loopback::Cts::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-cts:cts";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Cts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "manual")
+    {
+        if(manual == nullptr)
+        {
+            manual = std::make_shared<Native::Interface::Loopback::Cts::Manual>();
+        }
+        return manual;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(manual != nullptr)
+    {
+        children["manual"] = manual;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Cts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Cts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Cts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "manual")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Cts::Manual::Manual()
+    :
+    policy(std::make_shared<Native::Interface::Loopback::Cts::Manual::Policy>())
+    , sap(std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap>())
+    , propagate(std::make_shared<Native::Interface::Loopback::Cts::Manual::Propagate>())
+{
+    policy->parent = this;
+    sap->parent = this;
+    propagate->parent = this;
+
+    yang_name = "manual"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Cts::Manual::~Manual()
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::has_data() const
+{
+    if (is_presence_container) return true;
+    return (policy !=  nullptr && policy->has_data())
+	|| (sap !=  nullptr && sap->has_data())
+	|| (propagate !=  nullptr && propagate->has_data());
+}
+
+bool Native::Interface::Loopback::Cts::Manual::has_operation() const
+{
+    return is_set(yfilter)
+	|| (policy !=  nullptr && policy->has_operation())
+	|| (sap !=  nullptr && sap->has_operation())
+	|| (propagate !=  nullptr && propagate->has_operation());
+}
+
+std::string Native::Interface::Loopback::Cts::Manual::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "manual";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "policy")
+    {
+        if(policy == nullptr)
+        {
+            policy = std::make_shared<Native::Interface::Loopback::Cts::Manual::Policy>();
+        }
+        return policy;
+    }
+
+    if(child_yang_name == "sap")
+    {
+        if(sap == nullptr)
+        {
+            sap = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap>();
+        }
+        return sap;
+    }
+
+    if(child_yang_name == "propagate")
+    {
+        if(propagate == nullptr)
+        {
+            propagate = std::make_shared<Native::Interface::Loopback::Cts::Manual::Propagate>();
+        }
+        return propagate;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(policy != nullptr)
+    {
+        children["policy"] = policy;
+    }
+
+    if(sap != nullptr)
+    {
+        children["sap"] = sap;
+    }
+
+    if(propagate != nullptr)
+    {
+        children["propagate"] = propagate;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Cts::Manual::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Cts::Manual::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy" || name == "sap" || name == "propagate")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Cts::Manual::Policy::Policy()
+    :
+    static_(std::make_shared<Native::Interface::Loopback::Cts::Manual::Policy::Static>())
+{
+    static_->parent = this;
+
+    yang_name = "policy"; yang_parent_name = "manual"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Cts::Manual::Policy::~Policy()
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Policy::has_data() const
+{
+    if (is_presence_container) return true;
+    return (static_ !=  nullptr && static_->has_data());
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Policy::has_operation() const
+{
+    return is_set(yfilter)
+	|| (static_ !=  nullptr && static_->has_operation());
+}
+
+std::string Native::Interface::Loopback::Cts::Manual::Policy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Policy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "static")
+    {
+        if(static_ == nullptr)
+        {
+            static_ = std::make_shared<Native::Interface::Loopback::Cts::Manual::Policy::Static>();
+        }
+        return static_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Policy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(static_ != nullptr)
+    {
+        children["static"] = static_;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Cts::Manual::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Cts::Manual::Policy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Policy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "static")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Cts::Manual::Policy::Static::Static()
+    :
+    sgt{YType::uint16, "sgt"},
+    trusted{YType::empty, "trusted"}
+{
+
+    yang_name = "static"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Cts::Manual::Policy::Static::~Static()
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Policy::Static::has_data() const
+{
+    if (is_presence_container) return true;
+    return sgt.is_set
+	|| trusted.is_set;
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Policy::Static::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sgt.yfilter)
+	|| ydk::is_set(trusted.yfilter);
+}
+
+std::string Native::Interface::Loopback::Cts::Manual::Policy::Static::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "static";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Policy::Static::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sgt.is_set || is_set(sgt.yfilter)) leaf_name_data.push_back(sgt.get_name_leafdata());
+    if (trusted.is_set || is_set(trusted.yfilter)) leaf_name_data.push_back(trusted.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Policy::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Policy::Static::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::Loopback::Cts::Manual::Policy::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sgt")
+    {
+        sgt = value;
+        sgt.value_namespace = name_space;
+        sgt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trusted")
+    {
+        trusted = value;
+        trusted.value_namespace = name_space;
+        trusted.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Cts::Manual::Policy::Static::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sgt")
+    {
+        sgt.yfilter = yfilter;
+    }
+    if(value_path == "trusted")
+    {
+        trusted.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Policy::Static::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sgt" || name == "trusted")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Sap()
+    :
+    pmk(this, {"word"})
+{
+
+    yang_name = "sap"; yang_parent_name = "manual"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::~Sap()
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pmk.len(); index++)
+    {
+        if(pmk[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::has_operation() const
+{
+    for (std::size_t index=0; index<pmk.len(); index++)
+    {
+        if(pmk[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Interface::Loopback::Cts::Manual::Sap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sap";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pmk")
+    {
+        auto c = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk>();
+        c->parent = this;
+        pmk.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : pmk.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pmk")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Pmk::Pmk()
+    :
+    word{YType::str, "word"}
+        ,
+    mode_list(std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList>())
+{
+    mode_list->parent = this;
+
+    yang_name = "pmk"; yang_parent_name = "sap"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Pmk::~Pmk()
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::has_data() const
+{
+    if (is_presence_container) return true;
+    return word.is_set
+	|| (mode_list !=  nullptr && mode_list->has_data());
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(word.yfilter)
+	|| (mode_list !=  nullptr && mode_list->has_operation());
+}
+
+std::string Native::Interface::Loopback::Cts::Manual::Sap::Pmk::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pmk";
+    ADD_KEY_TOKEN(word, "word");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::Pmk::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (word.is_set || is_set(word.yfilter)) leaf_name_data.push_back(word.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mode-list")
+    {
+        if(mode_list == nullptr)
+        {
+            mode_list = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList>();
+        }
+        return mode_list;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(mode_list != nullptr)
+    {
+        children["mode-list"] = mode_list;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "word")
+    {
+        word = value;
+        word.value_namespace = name_space;
+        word.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "word")
+    {
+        word.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mode-list" || name == "word")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::ModeList()
+    :
+    gcm_encrypt(nullptr) // presence node
+    , no_encap(nullptr) // presence node
+{
+
+    yang_name = "mode-list"; yang_parent_name = "pmk"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::~ModeList()
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::has_data() const
+{
+    if (is_presence_container) return true;
+    return (gcm_encrypt !=  nullptr && gcm_encrypt->has_data())
+	|| (no_encap !=  nullptr && no_encap->has_data());
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::has_operation() const
+{
+    return is_set(yfilter)
+	|| (gcm_encrypt !=  nullptr && gcm_encrypt->has_operation())
+	|| (no_encap !=  nullptr && no_encap->has_operation());
+}
+
+std::string Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mode-list";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "gcm-encrypt")
+    {
+        if(gcm_encrypt == nullptr)
+        {
+            gcm_encrypt = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt>();
+        }
+        return gcm_encrypt;
+    }
+
+    if(child_yang_name == "no-encap")
+    {
+        if(no_encap == nullptr)
+        {
+            no_encap = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap>();
+        }
+        return no_encap;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(gcm_encrypt != nullptr)
+    {
+        children["gcm-encrypt"] = gcm_encrypt;
+    }
+
+    if(no_encap != nullptr)
+    {
+        children["no-encap"] = no_encap;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "gcm-encrypt" || name == "no-encap")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::GcmEncrypt()
+    :
+    gmac(nullptr) // presence node
+{
+
+    yang_name = "gcm-encrypt"; yang_parent_name = "mode-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::~GcmEncrypt()
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::has_data() const
+{
+    if (is_presence_container) return true;
+    return (gmac !=  nullptr && gmac->has_data());
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::has_operation() const
+{
+    return is_set(yfilter)
+	|| (gmac !=  nullptr && gmac->has_operation());
+}
+
+std::string Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gcm-encrypt";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "gmac")
+    {
+        if(gmac == nullptr)
+        {
+            gmac = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac>();
+        }
+        return gmac;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(gmac != nullptr)
+    {
+        children["gmac"] = gmac;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "gmac")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::Gmac()
+    :
+    null{YType::empty, "null"}
+{
+
+    yang_name = "gmac"; yang_parent_name = "gcm-encrypt"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::~Gmac()
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::has_data() const
+{
+    if (is_presence_container) return true;
+    return null.is_set;
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(null.yfilter);
+}
+
+std::string Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gmac";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (null.is_set || is_set(null.yfilter)) leaf_name_data.push_back(null.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "null")
+    {
+        null = value;
+        null.value_namespace = name_space;
+        null.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "null")
+    {
+        null.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "null")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::NoEncap()
+    :
+    gmac(nullptr) // presence node
+{
+
+    yang_name = "no-encap"; yang_parent_name = "mode-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::~NoEncap()
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::has_data() const
+{
+    if (is_presence_container) return true;
+    return (gmac !=  nullptr && gmac->has_data());
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::has_operation() const
+{
+    return is_set(yfilter)
+	|| (gmac !=  nullptr && gmac->has_operation());
+}
+
+std::string Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "no-encap";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "gmac")
+    {
+        if(gmac == nullptr)
+        {
+            gmac = std::make_shared<Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac>();
+        }
+        return gmac;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(gmac != nullptr)
+    {
+        children["gmac"] = gmac;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "gmac")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::Gmac()
+    :
+    gcm_encrypt{YType::empty, "gcm-encrypt"}
+{
+
+    yang_name = "gmac"; yang_parent_name = "no-encap"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::~Gmac()
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::has_data() const
+{
+    if (is_presence_container) return true;
+    return gcm_encrypt.is_set;
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(gcm_encrypt.yfilter);
+}
+
+std::string Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gmac";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (gcm_encrypt.is_set || is_set(gcm_encrypt.yfilter)) leaf_name_data.push_back(gcm_encrypt.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "gcm-encrypt")
+    {
+        gcm_encrypt = value;
+        gcm_encrypt.value_namespace = name_space;
+        gcm_encrypt.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "gcm-encrypt")
+    {
+        gcm_encrypt.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "gcm-encrypt")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Cts::Manual::Propagate::Propagate()
+    :
+    sgt{YType::boolean, "sgt"}
+{
+
+    yang_name = "propagate"; yang_parent_name = "manual"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Cts::Manual::Propagate::~Propagate()
+{
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Propagate::has_data() const
+{
+    if (is_presence_container) return true;
+    return sgt.is_set;
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Propagate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sgt.yfilter);
+}
+
+std::string Native::Interface::Loopback::Cts::Manual::Propagate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "propagate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Cts::Manual::Propagate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sgt.is_set || is_set(sgt.yfilter)) leaf_name_data.push_back(sgt.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Cts::Manual::Propagate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Cts::Manual::Propagate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::Loopback::Cts::Manual::Propagate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sgt")
+    {
+        sgt = value;
+        sgt.value_namespace = name_space;
+        sgt.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Cts::Manual::Propagate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sgt")
+    {
+        sgt.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Cts::Manual::Propagate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sgt")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Umbrella::Umbrella()
+    :
+    out{YType::empty, "out"},
+    in{YType::str, "in"}
+{
+
+    yang_name = "umbrella"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Umbrella::~Umbrella()
+{
+}
+
+bool Native::Interface::Loopback::Umbrella::has_data() const
+{
+    if (is_presence_container) return true;
+    return out.is_set
+	|| in.is_set;
+}
+
+bool Native::Interface::Loopback::Umbrella::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(out.yfilter)
+	|| ydk::is_set(in.yfilter);
+}
+
+std::string Native::Interface::Loopback::Umbrella::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-umbrella:umbrella";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Umbrella::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (out.is_set || is_set(out.yfilter)) leaf_name_data.push_back(out.get_name_leafdata());
+    if (in.is_set || is_set(in.yfilter)) leaf_name_data.push_back(in.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Umbrella::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Umbrella::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::Loopback::Umbrella::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "out")
+    {
+        out = value;
+        out.value_namespace = name_space;
+        out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in")
+    {
+        in = value;
+        in.value_namespace = name_space;
+        in.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Umbrella::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "out")
+    {
+        out.yfilter = yfilter;
+    }
+    if(value_path == "in")
+    {
+        in.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Umbrella::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "out" || name == "in")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Snmp::Snmp()
+    :
+    ifindex(std::make_shared<Native::Interface::Loopback::Snmp::Ifindex>())
+    , trap(std::make_shared<Native::Interface::Loopback::Snmp::Trap>())
+{
+    ifindex->parent = this;
+    trap->parent = this;
+
+    yang_name = "snmp"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Snmp::~Snmp()
+{
+}
+
+bool Native::Interface::Loopback::Snmp::has_data() const
+{
+    if (is_presence_container) return true;
+    return (ifindex !=  nullptr && ifindex->has_data())
+	|| (trap !=  nullptr && trap->has_data());
+}
+
+bool Native::Interface::Loopback::Snmp::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ifindex !=  nullptr && ifindex->has_operation())
+	|| (trap !=  nullptr && trap->has_operation());
+}
+
+std::string Native::Interface::Loopback::Snmp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-snmp:snmp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Snmp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ifindex")
+    {
+        if(ifindex == nullptr)
+        {
+            ifindex = std::make_shared<Native::Interface::Loopback::Snmp::Ifindex>();
+        }
+        return ifindex;
+    }
+
+    if(child_yang_name == "trap")
+    {
+        if(trap == nullptr)
+        {
+            trap = std::make_shared<Native::Interface::Loopback::Snmp::Trap>();
+        }
+        return trap;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Snmp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ifindex != nullptr)
+    {
+        children["ifindex"] = ifindex;
+    }
+
+    if(trap != nullptr)
+    {
+        children["trap"] = trap;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Snmp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Snmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifindex" || name == "trap")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Snmp::Ifindex::Ifindex()
+    :
+    persist{YType::empty, "persist"},
+    clear{YType::boolean, "clear"}
+{
+
+    yang_name = "ifindex"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Snmp::Ifindex::~Ifindex()
+{
+}
+
+bool Native::Interface::Loopback::Snmp::Ifindex::has_data() const
+{
+    if (is_presence_container) return true;
+    return persist.is_set
+	|| clear.is_set;
+}
+
+bool Native::Interface::Loopback::Snmp::Ifindex::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(persist.yfilter)
+	|| ydk::is_set(clear.yfilter);
+}
+
+std::string Native::Interface::Loopback::Snmp::Ifindex::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ifindex";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Snmp::Ifindex::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (persist.is_set || is_set(persist.yfilter)) leaf_name_data.push_back(persist.get_name_leafdata());
+    if (clear.is_set || is_set(clear.yfilter)) leaf_name_data.push_back(clear.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Snmp::Ifindex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Snmp::Ifindex::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::Loopback::Snmp::Ifindex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "persist")
+    {
+        persist = value;
+        persist.value_namespace = name_space;
+        persist.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clear")
+    {
+        clear = value;
+        clear.value_namespace = name_space;
+        clear.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Snmp::Ifindex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "persist")
+    {
+        persist.yfilter = yfilter;
+    }
+    if(value_path == "clear")
+    {
+        clear.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Snmp::Ifindex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "persist" || name == "clear")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Snmp::Trap::Trap()
+    :
+    link_status{YType::boolean, "link-status"}
+        ,
+    link_status_capas(std::make_shared<Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas>())
+{
+    link_status_capas->parent = this;
+
+    yang_name = "trap"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Snmp::Trap::~Trap()
+{
+}
+
+bool Native::Interface::Loopback::Snmp::Trap::has_data() const
+{
+    if (is_presence_container) return true;
+    return link_status.is_set
+	|| (link_status_capas !=  nullptr && link_status_capas->has_data());
+}
+
+bool Native::Interface::Loopback::Snmp::Trap::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(link_status.yfilter)
+	|| (link_status_capas !=  nullptr && link_status_capas->has_operation());
+}
+
+std::string Native::Interface::Loopback::Snmp::Trap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "trap";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Snmp::Trap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (link_status.is_set || is_set(link_status.yfilter)) leaf_name_data.push_back(link_status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Snmp::Trap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "link-status-capas")
+    {
+        if(link_status_capas == nullptr)
+        {
+            link_status_capas = std::make_shared<Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas>();
+        }
+        return link_status_capas;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Snmp::Trap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(link_status_capas != nullptr)
+    {
+        children["link-status-capas"] = link_status_capas;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Snmp::Trap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "link-status")
+    {
+        link_status = value;
+        link_status.value_namespace = name_space;
+        link_status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Snmp::Trap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-status")
+    {
+        link_status.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Snmp::Trap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-status-capas" || name == "link-status")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatusCapas()
+    :
+    link_status(std::make_shared<Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus>())
+{
+    link_status->parent = this;
+
+    yang_name = "link-status-capas"; yang_parent_name = "trap"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::~LinkStatusCapas()
+{
+}
+
+bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::has_data() const
+{
+    if (is_presence_container) return true;
+    return (link_status !=  nullptr && link_status->has_data());
+}
+
+bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::has_operation() const
+{
+    return is_set(yfilter)
+	|| (link_status !=  nullptr && link_status->has_operation());
+}
+
+std::string Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-status-capas";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "link-status")
+    {
+        if(link_status == nullptr)
+        {
+            link_status = std::make_shared<Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus>();
+        }
+        return link_status;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(link_status != nullptr)
+    {
+        children["link-status"] = link_status;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-status")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::LinkStatus()
+    :
+    permit(std::make_shared<Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit>())
+{
+    permit->parent = this;
+
+    yang_name = "link-status"; yang_parent_name = "link-status-capas"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::~LinkStatus()
+{
+}
+
+bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::has_data() const
+{
+    if (is_presence_container) return true;
+    return (permit !=  nullptr && permit->has_data());
+}
+
+bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::has_operation() const
+{
+    return is_set(yfilter)
+	|| (permit !=  nullptr && permit->has_operation());
+}
+
+std::string Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "permit")
+    {
+        if(permit == nullptr)
+        {
+            permit = std::make_shared<Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit>();
+        }
+        return permit;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(permit != nullptr)
+    {
+        children["permit"] = permit;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "permit")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::Permit()
+    :
+    duplicates{YType::empty, "duplicates"}
+{
+
+    yang_name = "permit"; yang_parent_name = "link-status"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::~Permit()
+{
+}
+
+bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::has_data() const
+{
+    if (is_presence_container) return true;
+    return duplicates.is_set;
+}
+
+bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(duplicates.yfilter);
+}
+
+std::string Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "permit";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (duplicates.is_set || is_set(duplicates.yfilter)) leaf_name_data.push_back(duplicates.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "duplicates")
+    {
+        duplicates = value;
+        duplicates.value_namespace = name_space;
+        duplicates.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "duplicates")
+    {
+        duplicates.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "duplicates")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Performance::Performance()
+    :
+    monitor(std::make_shared<Native::Interface::Loopback::Performance::Monitor>())
+{
+    monitor->parent = this;
+
+    yang_name = "performance"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Performance::~Performance()
+{
+}
+
+bool Native::Interface::Loopback::Performance::has_data() const
+{
+    if (is_presence_container) return true;
+    return (monitor !=  nullptr && monitor->has_data());
+}
+
+bool Native::Interface::Loopback::Performance::has_operation() const
+{
+    return is_set(yfilter)
+	|| (monitor !=  nullptr && monitor->has_operation());
+}
+
+std::string Native::Interface::Loopback::Performance::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ezpm:performance";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Performance::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Performance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "monitor")
+    {
+        if(monitor == nullptr)
+        {
+            monitor = std::make_shared<Native::Interface::Loopback::Performance::Monitor>();
+        }
+        return monitor;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Performance::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(monitor != nullptr)
+    {
+        children["monitor"] = monitor;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Performance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Performance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Performance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "monitor")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Performance::Monitor::Monitor()
+    :
+    context{YType::str, "context"}
+{
+
+    yang_name = "monitor"; yang_parent_name = "performance"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Performance::Monitor::~Monitor()
+{
+}
+
+bool Native::Interface::Loopback::Performance::Monitor::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : context.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Native::Interface::Loopback::Performance::Monitor::has_operation() const
+{
+    for (auto const & leaf : context.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(context.yfilter);
+}
+
+std::string Native::Interface::Loopback::Performance::Monitor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "monitor";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Performance::Monitor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto context_name_datas = context.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), context_name_datas.begin(), context_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Performance::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Performance::Monitor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::Loopback::Performance::Monitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "context")
+    {
+        context.append(value);
+    }
+}
+
+void Native::Interface::Loopback::Performance::Monitor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "context")
+    {
+        context.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Performance::Monitor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "context")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::EtAnalytics::EtAnalytics()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "et-analytics"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::EtAnalytics::~EtAnalytics()
+{
+}
+
+bool Native::Interface::Loopback::EtAnalytics::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Native::Interface::Loopback::EtAnalytics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Native::Interface::Loopback::EtAnalytics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-eta:et-analytics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::EtAnalytics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::EtAnalytics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::EtAnalytics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::Loopback::EtAnalytics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::EtAnalytics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::EtAnalytics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
 Native::Interface::Loopback::Lisp::Lisp()
     :
     extended_subnet_mode{YType::empty, "extended-subnet-mode"}
-    	,
+        ,
     mobility(std::make_shared<Native::Interface::Loopback::Lisp::Mobility>())
 {
     mobility->parent = this;
 
-    yang_name = "lisp"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lisp"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Lisp::~Lisp()
@@ -6567,6 +6518,7 @@ Native::Interface::Loopback::Lisp::~Lisp()
 
 bool Native::Interface::Loopback::Lisp::has_data() const
 {
+    if (is_presence_container) return true;
     return extended_subnet_mode.is_set
 	|| (mobility !=  nullptr && mobility->has_data());
 }
@@ -6649,14 +6601,14 @@ bool Native::Interface::Loopback::Lisp::has_leaf_or_child_of_name(const std::str
 Native::Interface::Loopback::Lisp::Mobility::Mobility()
     :
     dynamic_eid(std::make_shared<Native::Interface::Loopback::Lisp::Mobility::DynamicEid>())
-	,discover(std::make_shared<Native::Interface::Loopback::Lisp::Mobility::Discover>())
-	,liveness(std::make_shared<Native::Interface::Loopback::Lisp::Mobility::Liveness>())
+    , discover(std::make_shared<Native::Interface::Loopback::Lisp::Mobility::Discover>())
+    , liveness(std::make_shared<Native::Interface::Loopback::Lisp::Mobility::Liveness>())
 {
     dynamic_eid->parent = this;
     discover->parent = this;
     liveness->parent = this;
 
-    yang_name = "mobility"; yang_parent_name = "lisp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mobility"; yang_parent_name = "lisp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Lisp::Mobility::~Mobility()
@@ -6665,6 +6617,7 @@ Native::Interface::Loopback::Lisp::Mobility::~Mobility()
 
 bool Native::Interface::Loopback::Lisp::Mobility::has_data() const
 {
+    if (is_presence_container) return true;
     return (dynamic_eid !=  nullptr && dynamic_eid->has_data())
 	|| (discover !=  nullptr && discover->has_data())
 	|| (liveness !=  nullptr && liveness->has_data());
@@ -6770,7 +6723,7 @@ Native::Interface::Loopback::Lisp::Mobility::DynamicEid::DynamicEid()
     requests{YType::uint8, "requests"}
 {
 
-    yang_name = "dynamic-eid"; yang_parent_name = "mobility"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dynamic-eid"; yang_parent_name = "mobility"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Lisp::Mobility::DynamicEid::~DynamicEid()
@@ -6779,6 +6732,7 @@ Native::Interface::Loopback::Lisp::Mobility::DynamicEid::~DynamicEid()
 
 bool Native::Interface::Loopback::Lisp::Mobility::DynamicEid::has_data() const
 {
+    if (is_presence_container) return true;
     return dynamic_eid_name.is_set
 	|| nbr_proxy_reply.is_set
 	|| requests.is_set;
@@ -6873,7 +6827,7 @@ Native::Interface::Loopback::Lisp::Mobility::Discover::Discover()
     arp{YType::boolean, "arp"}
 {
 
-    yang_name = "discover"; yang_parent_name = "mobility"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discover"; yang_parent_name = "mobility"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Lisp::Mobility::Discover::~Discover()
@@ -6882,6 +6836,7 @@ Native::Interface::Loopback::Lisp::Mobility::Discover::~Discover()
 
 bool Native::Interface::Loopback::Lisp::Mobility::Discover::has_data() const
 {
+    if (is_presence_container) return true;
     return arp.is_set;
 }
 
@@ -6951,7 +6906,7 @@ Native::Interface::Loopback::Lisp::Mobility::Liveness::Liveness()
     ttl{YType::uint8, "ttl"}
 {
 
-    yang_name = "liveness"; yang_parent_name = "mobility"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "liveness"; yang_parent_name = "mobility"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Lisp::Mobility::Liveness::~Liveness()
@@ -6960,6 +6915,7 @@ Native::Interface::Loopback::Lisp::Mobility::Liveness::~Liveness()
 
 bool Native::Interface::Loopback::Lisp::Mobility::Liveness::has_data() const
 {
+    if (is_presence_container) return true;
     return test.is_set
 	|| ttl.is_set;
 }
@@ -7036,134 +6992,121 @@ bool Native::Interface::Loopback::Lisp::Mobility::Liveness::has_leaf_or_child_of
     return false;
 }
 
-Native::Interface::Loopback::Ntp::Ntp()
+Native::Interface::Loopback::ZoneMember::ZoneMember()
     :
-    broadcast{YType::empty, "broadcast"}
-    	,
-    broadcast_option(std::make_shared<Native::Interface::Loopback::Ntp::BroadcastOption>())
+    security{YType::str, "security"}
 {
-    broadcast_option->parent = this;
 
-    yang_name = "ntp"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "zone-member"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Loopback::Ntp::~Ntp()
+Native::Interface::Loopback::ZoneMember::~ZoneMember()
 {
 }
 
-bool Native::Interface::Loopback::Ntp::has_data() const
+bool Native::Interface::Loopback::ZoneMember::has_data() const
 {
-    return broadcast.is_set
-	|| (broadcast_option !=  nullptr && broadcast_option->has_data());
+    if (is_presence_container) return true;
+    return security.is_set;
 }
 
-bool Native::Interface::Loopback::Ntp::has_operation() const
+bool Native::Interface::Loopback::ZoneMember::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(broadcast.yfilter)
-	|| (broadcast_option !=  nullptr && broadcast_option->has_operation());
+	|| ydk::is_set(security.yfilter);
 }
 
-std::string Native::Interface::Loopback::Ntp::get_segment_path() const
+std::string Native::Interface::Loopback::ZoneMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-ntp:ntp";
+    path_buffer << "Cisco-IOS-XE-zone:zone-member";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ntp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::ZoneMember::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (broadcast.is_set || is_set(broadcast.yfilter)) leaf_name_data.push_back(broadcast.get_name_leafdata());
+    if (security.is_set || is_set(security.yfilter)) leaf_name_data.push_back(security.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Loopback::Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Loopback::ZoneMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "broadcast-option")
-    {
-        if(broadcast_option == nullptr)
-        {
-            broadcast_option = std::make_shared<Native::Interface::Loopback::Ntp::BroadcastOption>();
-        }
-        return broadcast_option;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ntp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::ZoneMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(broadcast_option != nullptr)
-    {
-        children["broadcast-option"] = broadcast_option;
-    }
-
     return children;
 }
 
-void Native::Interface::Loopback::Ntp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Loopback::ZoneMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "broadcast")
+    if(value_path == "security")
     {
-        broadcast = value;
-        broadcast.value_namespace = name_space;
-        broadcast.value_namespace_prefix = name_space_prefix;
+        security = value;
+        security.value_namespace = name_space;
+        security.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::Loopback::Ntp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Loopback::ZoneMember::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "broadcast")
+    if(value_path == "security")
     {
-        broadcast.yfilter = yfilter;
+        security.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::Loopback::Ntp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Loopback::ZoneMember::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "broadcast-option" || name == "broadcast")
+    if(name == "security")
         return true;
     return false;
 }
 
-Native::Interface::Loopback::Ntp::BroadcastOption::BroadcastOption()
+Native::Interface::Loopback::Crypto::Crypto()
     :
-    broadcast(std::make_shared<Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast>())
+    map(std::make_shared<Native::Interface::Loopback::Crypto::Map>())
+    , ipsec(std::make_shared<Native::Interface::Loopback::Crypto::Ipsec>())
 {
-    broadcast->parent = this;
+    map->parent = this;
+    ipsec->parent = this;
 
-    yang_name = "broadcast-option"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crypto"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Loopback::Ntp::BroadcastOption::~BroadcastOption()
+Native::Interface::Loopback::Crypto::~Crypto()
 {
 }
 
-bool Native::Interface::Loopback::Ntp::BroadcastOption::has_data() const
+bool Native::Interface::Loopback::Crypto::has_data() const
 {
-    return (broadcast !=  nullptr && broadcast->has_data());
+    if (is_presence_container) return true;
+    return (map !=  nullptr && map->has_data())
+	|| (ipsec !=  nullptr && ipsec->has_data());
 }
 
-bool Native::Interface::Loopback::Ntp::BroadcastOption::has_operation() const
+bool Native::Interface::Loopback::Crypto::has_operation() const
 {
     return is_set(yfilter)
-	|| (broadcast !=  nullptr && broadcast->has_operation());
+	|| (map !=  nullptr && map->has_operation())
+	|| (ipsec !=  nullptr && ipsec->has_operation());
 }
 
-std::string Native::Interface::Loopback::Ntp::BroadcastOption::get_segment_path() const
+std::string Native::Interface::Loopback::Crypto::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "broadcast-option";
+    path_buffer << "Cisco-IOS-XE-crypto:crypto";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ntp::BroadcastOption::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Crypto::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7172,120 +7115,428 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ntp:
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Loopback::Ntp::BroadcastOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Loopback::Crypto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "broadcast")
+    if(child_yang_name == "map")
     {
-        if(broadcast == nullptr)
+        if(map == nullptr)
         {
-            broadcast = std::make_shared<Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast>();
+            map = std::make_shared<Native::Interface::Loopback::Crypto::Map>();
         }
-        return broadcast;
+        return map;
+    }
+
+    if(child_yang_name == "ipsec")
+    {
+        if(ipsec == nullptr)
+        {
+            ipsec = std::make_shared<Native::Interface::Loopback::Crypto::Ipsec>();
+        }
+        return ipsec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ntp::BroadcastOption::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Crypto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(broadcast != nullptr)
+    if(map != nullptr)
     {
-        children["broadcast"] = broadcast;
+        children["map"] = map;
+    }
+
+    if(ipsec != nullptr)
+    {
+        children["ipsec"] = ipsec;
     }
 
     return children;
 }
 
-void Native::Interface::Loopback::Ntp::BroadcastOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Loopback::Crypto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::Loopback::Ntp::BroadcastOption::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Loopback::Crypto::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::Loopback::Ntp::BroadcastOption::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Loopback::Crypto::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "broadcast")
+    if(name == "map" || name == "ipsec")
         return true;
     return false;
 }
 
-Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast::Broadcast()
+Native::Interface::Loopback::Crypto::Map::Map()
     :
-    client{YType::empty, "client"}
+    tag{YType::str, "tag"},
+    redundancy{YType::str, "redundancy"},
+    stateful{YType::empty, "stateful"}
 {
 
-    yang_name = "broadcast"; yang_parent_name = "broadcast-option"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast::~Broadcast()
+Native::Interface::Loopback::Crypto::Map::~Map()
 {
 }
 
-bool Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast::has_data() const
+bool Native::Interface::Loopback::Crypto::Map::has_data() const
 {
-    return client.is_set;
+    if (is_presence_container) return true;
+    return tag.is_set
+	|| redundancy.is_set
+	|| stateful.is_set;
 }
 
-bool Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast::has_operation() const
+bool Native::Interface::Loopback::Crypto::Map::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(client.yfilter);
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(redundancy.yfilter)
+	|| ydk::is_set(stateful.yfilter);
 }
 
-std::string Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast::get_segment_path() const
+std::string Native::Interface::Loopback::Crypto::Map::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "broadcast";
+    path_buffer << "map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Crypto::Map::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (client.is_set || is_set(client.yfilter)) leaf_name_data.push_back(client.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (redundancy.is_set || is_set(redundancy.yfilter)) leaf_name_data.push_back(redundancy.get_name_leafdata());
+    if (stateful.is_set || is_set(stateful.yfilter)) leaf_name_data.push_back(stateful.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Loopback::Crypto::Map::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Crypto::Map::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Loopback::Crypto::Map::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "client")
+    if(value_path == "tag")
     {
-        client = value;
-        client.value_namespace = name_space;
-        client.value_namespace_prefix = name_space_prefix;
+        tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancy")
+    {
+        redundancy = value;
+        redundancy.value_namespace = name_space;
+        redundancy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stateful")
+    {
+        stateful = value;
+        stateful.value_namespace = name_space;
+        stateful.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Loopback::Crypto::Map::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "client")
+    if(value_path == "tag")
     {
-        client.yfilter = yfilter;
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "redundancy")
+    {
+        redundancy.yfilter = yfilter;
+    }
+    if(value_path == "stateful")
+    {
+        stateful.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::Loopback::Ntp::BroadcastOption::Broadcast::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Loopback::Crypto::Map::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client")
+    if(name == "tag" || name == "redundancy" || name == "stateful")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Crypto::Ipsec::Ipsec()
+    :
+    df_bit{YType::enumeration, "df-bit"},
+    fragmentation{YType::enumeration, "fragmentation"}
+{
+
+    yang_name = "ipsec"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Crypto::Ipsec::~Ipsec()
+{
+}
+
+bool Native::Interface::Loopback::Crypto::Ipsec::has_data() const
+{
+    if (is_presence_container) return true;
+    return df_bit.is_set
+	|| fragmentation.is_set;
+}
+
+bool Native::Interface::Loopback::Crypto::Ipsec::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(df_bit.yfilter)
+	|| ydk::is_set(fragmentation.yfilter);
+}
+
+std::string Native::Interface::Loopback::Crypto::Ipsec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipsec";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Crypto::Ipsec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (df_bit.is_set || is_set(df_bit.yfilter)) leaf_name_data.push_back(df_bit.get_name_leafdata());
+    if (fragmentation.is_set || is_set(fragmentation.yfilter)) leaf_name_data.push_back(fragmentation.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Crypto::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Crypto::Ipsec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::Loopback::Crypto::Ipsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "df-bit")
+    {
+        df_bit = value;
+        df_bit.value_namespace = name_space;
+        df_bit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fragmentation")
+    {
+        fragmentation = value;
+        fragmentation.value_namespace = name_space;
+        fragmentation.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Crypto::Ipsec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "df-bit")
+    {
+        df_bit.yfilter = yfilter;
+    }
+    if(value_path == "fragmentation")
+    {
+        fragmentation.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Crypto::Ipsec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "df-bit" || name == "fragmentation")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Udld::Udld()
+    :
+    port(nullptr) // presence node
+{
+
+    yang_name = "udld"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Udld::~Udld()
+{
+}
+
+bool Native::Interface::Loopback::Udld::has_data() const
+{
+    if (is_presence_container) return true;
+    return (port !=  nullptr && port->has_data());
+}
+
+bool Native::Interface::Loopback::Udld::has_operation() const
+{
+    return is_set(yfilter)
+	|| (port !=  nullptr && port->has_operation());
+}
+
+std::string Native::Interface::Loopback::Udld::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-udld:udld";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Udld::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Udld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "port")
+    {
+        if(port == nullptr)
+        {
+            port = std::make_shared<Native::Interface::Loopback::Udld::Port>();
+        }
+        return port;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Udld::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(port != nullptr)
+    {
+        children["port"] = port;
+    }
+
+    return children;
+}
+
+void Native::Interface::Loopback::Udld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Udld::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Udld::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Udld::Port::Port()
+    :
+    aggressive{YType::empty, "aggressive"},
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "port"; yang_parent_name = "udld"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Udld::Port::~Port()
+{
+}
+
+bool Native::Interface::Loopback::Udld::Port::has_data() const
+{
+    if (is_presence_container) return true;
+    return aggressive.is_set
+	|| disable.is_set;
+}
+
+bool Native::Interface::Loopback::Udld::Port::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(aggressive.yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Udld::Port::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Udld::Port::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (aggressive.is_set || is_set(aggressive.yfilter)) leaf_name_data.push_back(aggressive.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::Loopback::Udld::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Udld::Port::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::Loopback::Udld::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "aggressive")
+    {
+        aggressive = value;
+        aggressive.value_namespace = name_space;
+        aggressive.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Udld::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aggressive")
+    {
+        aggressive.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Udld::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggressive" || name == "disable")
         return true;
     return false;
 }
@@ -7300,17 +7551,19 @@ Native::Interface::Loopback::Ospfv3::Ospfv3()
     retransmit_interval{YType::uint32, "retransmit-interval"},
     shutdown{YType::empty, "shutdown"},
     transmit_delay{YType::uint32, "transmit-delay"}
-    	,
-    authentication(std::make_shared<Native::Interface::Loopback::Ospfv3::Authentication>())
-	,bfd(nullptr) // presence node
-	,cost(std::make_shared<Native::Interface::Loopback::Ospfv3::Cost>())
-	,database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::DatabaseFilter>())
-	,demand_circuit(nullptr) // presence node
-	,encryption(std::make_shared<Native::Interface::Loopback::Ospfv3::Encryption>())
-	,manet(std::make_shared<Native::Interface::Loopback::Ospfv3::Manet>())
-	,multi_area(std::make_shared<Native::Interface::Loopback::Ospfv3::MultiArea>())
-	,network(std::make_shared<Native::Interface::Loopback::Ospfv3::Network>())
-	,prefix_suppression(nullptr) // presence node
+        ,
+    process_id(this, {"id"})
+    , authentication(std::make_shared<Native::Interface::Loopback::Ospfv3::Authentication>())
+    , bfd(nullptr) // presence node
+    , cost(std::make_shared<Native::Interface::Loopback::Ospfv3::Cost>())
+    , database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::DatabaseFilter>())
+    , demand_circuit(nullptr) // presence node
+    , encryption(std::make_shared<Native::Interface::Loopback::Ospfv3::Encryption>())
+    , manet(std::make_shared<Native::Interface::Loopback::Ospfv3::Manet>())
+    , multi_area(std::make_shared<Native::Interface::Loopback::Ospfv3::MultiArea>())
+    , neighbor(this, {"id"})
+    , network(std::make_shared<Native::Interface::Loopback::Ospfv3::Network>())
+    , prefix_suppression(nullptr) // presence node
 {
     authentication->parent = this;
     cost->parent = this;
@@ -7320,7 +7573,7 @@ Native::Interface::Loopback::Ospfv3::Ospfv3()
     multi_area->parent = this;
     network->parent = this;
 
-    yang_name = "ospfv3"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::~Ospfv3()
@@ -7329,12 +7582,13 @@ Native::Interface::Loopback::Ospfv3::~Ospfv3()
 
 bool Native::Interface::Loopback::Ospfv3::has_data() const
 {
-    for (std::size_t index=0; index<process_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process_id.len(); index++)
     {
         if(process_id[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -7361,12 +7615,12 @@ bool Native::Interface::Loopback::Ospfv3::has_data() const
 
 bool Native::Interface::Loopback::Ospfv3::has_operation() const
 {
-    for (std::size_t index=0; index<process_id.size(); index++)
+    for (std::size_t index=0; index<process_id.len(); index++)
     {
         if(process_id[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -7422,7 +7676,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ospfv3::get_child_by_name(c
     {
         auto c = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId>();
         c->parent = this;
-        process_id.push_back(c);
+        process_id.append(c);
         return c;
     }
 
@@ -7502,7 +7756,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ospfv3::get_child_by_name(c
     {
         auto c = std::make_shared<Native::Interface::Loopback::Ospfv3::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -7532,7 +7786,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ospf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process_id)
+    for (auto c : process_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7581,7 +7835,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ospf
     }
 
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7705,21 +7959,22 @@ Native::Interface::Loopback::Ospfv3::ProcessId::ProcessId()
     priority{YType::uint8, "priority"},
     retransmit_interval{YType::uint32, "retransmit-interval"},
     transmit_delay{YType::uint32, "transmit-delay"}
-    	,
+        ,
     authentication(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Authentication>())
-	,bfd(nullptr) // presence node
-	,cost(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Cost>())
-	,database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::DatabaseFilter>())
-	,demand_circuit(nullptr) // presence node
-	,flood_reduction(nullptr) // presence node
-	,manet(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Manet>())
-	,mtu_ignore(nullptr) // presence node
-	,multi_area(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea>())
-	,network(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Network>())
-	,prefix_suppression(nullptr) // presence node
-	,shutdown(nullptr) // presence node
-	,ipv4(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4>())
-	,ipv6(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6>())
+    , bfd(nullptr) // presence node
+    , cost(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Cost>())
+    , database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::DatabaseFilter>())
+    , demand_circuit(nullptr) // presence node
+    , flood_reduction(nullptr) // presence node
+    , manet(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Manet>())
+    , mtu_ignore(nullptr) // presence node
+    , multi_area(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea>())
+    , neighbor(this, {"id"})
+    , network(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Network>())
+    , prefix_suppression(nullptr) // presence node
+    , shutdown(nullptr) // presence node
+    , ipv4(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4>())
+    , ipv6(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6>())
 {
     authentication->parent = this;
     cost->parent = this;
@@ -7730,7 +7985,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::ProcessId()
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "process-id"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "process-id"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::~ProcessId()
@@ -7739,7 +7994,8 @@ Native::Interface::Loopback::Ospfv3::ProcessId::~ProcessId()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -7768,7 +8024,7 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::has_data() const
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -7799,7 +8055,8 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::has_operation() const
 std::string Native::Interface::Loopback::Ospfv3::ProcessId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "process-id" <<"[id='" <<id <<"']";
+    path_buffer << "process-id";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -7905,7 +8162,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ospfv3::ProcessId::get_chil
     {
         auto c = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -8007,7 +8264,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ospf
     }
 
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8124,7 +8381,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Authentication::Authentication()
     null{YType::empty, "null"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Authentication::~Authentication()
@@ -8133,6 +8390,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Authentication::~Authentication(
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| null.is_set;
 }
@@ -8214,7 +8472,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Bfd::Bfd()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Bfd::~Bfd()
@@ -8223,6 +8481,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Bfd::~Bfd()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -8289,11 +8548,11 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Bfd::has_leaf_or_child_of_n
 Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Cost()
     :
     value_{YType::uint32, "value"}
-    	,
+        ,
     dynamic(nullptr) // presence node
 {
 
-    yang_name = "cost"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cost"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Cost::~Cost()
@@ -8302,6 +8561,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::~Cost()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Cost::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| (dynamic !=  nullptr && dynamic->has_data());
 }
@@ -8384,13 +8644,13 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Cost::has_leaf_or_child_of_
 Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Dynamic()
     :
     default_{YType::uint32, "default"}
-    	,
+        ,
     hysteresis(nullptr) // presence node
-	,weight(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight>())
+    , weight(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight>())
 {
     weight->parent = this;
 
-    yang_name = "dynamic"; yang_parent_name = "cost"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dynamic"; yang_parent_name = "cost"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::~Dynamic()
@@ -8399,6 +8659,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::~Dynamic()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set
 	|| (hysteresis !=  nullptr && hysteresis->has_data())
 	|| (weight !=  nullptr && weight->has_data());
@@ -8500,7 +8761,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::Hyste
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "hysteresis"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hysteresis"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::~Hysteresis()
@@ -8509,6 +8770,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::~Hyst
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::has_data() const
 {
+    if (is_presence_container) return true;
     return percent.is_set
 	|| threshold.is_set;
 }
@@ -8588,12 +8850,12 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::
 Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Weight()
     :
     l2_factor(nullptr) // presence node
-	,latency(nullptr) // presence node
-	,resources(nullptr) // presence node
-	,throughput(nullptr) // presence node
+    , latency(nullptr) // presence node
+    , resources(nullptr) // presence node
+    , throughput(nullptr) // presence node
 {
 
-    yang_name = "weight"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weight"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::~Weight()
@@ -8602,6 +8864,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::~Weight()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::has_data() const
 {
+    if (is_presence_container) return true;
     return (l2_factor !=  nullptr && l2_factor->has_data())
 	|| (latency !=  nullptr && latency->has_data())
 	|| (resources !=  nullptr && resources->has_data())
@@ -8721,7 +8984,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor:
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "L2-factor"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "L2-factor"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::~L2Factor()
@@ -8730,6 +8993,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor:
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -8798,7 +9062,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "latency"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "latency"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::~Latency()
@@ -8807,6 +9071,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -8875,7 +9140,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "resources"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resources"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::~Resources()
@@ -8884,6 +9149,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -8952,7 +9218,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughpu
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "throughput"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "throughput"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::~Throughput()
@@ -8961,6 +9227,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughpu
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -9030,7 +9297,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::DatabaseFilter::DatabaseFilter()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "database-filter"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "database-filter"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::DatabaseFilter::~DatabaseFilter()
@@ -9039,6 +9306,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::DatabaseFilter::~DatabaseFilter(
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::DatabaseFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| disable.is_set;
 }
@@ -9121,7 +9389,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::DemandCircuit::DemandCircuit()
     ignore{YType::empty, "ignore"}
 {
 
-    yang_name = "demand-circuit"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "demand-circuit"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::DemandCircuit::~DemandCircuit()
@@ -9130,6 +9398,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::DemandCircuit::~DemandCircuit()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::DemandCircuit::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| ignore.is_set;
 }
@@ -9211,7 +9480,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::FloodReduction::FloodReduction()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "flood-reduction"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flood-reduction"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::FloodReduction::~FloodReduction()
@@ -9220,6 +9489,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::FloodReduction::~FloodReduction(
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::FloodReduction::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -9289,7 +9559,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Manet()
 {
     peering->parent = this;
 
-    yang_name = "manet"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manet"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Manet::~Manet()
@@ -9298,6 +9568,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Manet::~Manet()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Manet::has_data() const
 {
+    if (is_presence_container) return true;
     return (peering !=  nullptr && peering->has_data());
 }
 
@@ -9367,12 +9638,12 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Manet::has_leaf_or_child_of
 Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Peering()
     :
     link_metrics{YType::uint32, "link-metrics"}
-    	,
+        ,
     cost(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost>())
 {
     cost->parent = this;
 
-    yang_name = "peering"; yang_parent_name = "manet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peering"; yang_parent_name = "manet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::~Peering()
@@ -9381,6 +9652,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::~Peering()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::has_data() const
 {
+    if (is_presence_container) return true;
     return link_metrics.is_set
 	|| (cost !=  nullptr && cost->has_data());
 }
@@ -9466,7 +9738,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::Cost()
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "cost"; yang_parent_name = "peering"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cost"; yang_parent_name = "peering"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::~Cost()
@@ -9475,6 +9747,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::~Cost()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::has_data() const
 {
+    if (is_presence_container) return true;
     return percent.is_set
 	|| threshold.is_set;
 }
@@ -9556,7 +9829,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::MtuIgnore()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "mtu-ignore"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mtu-ignore"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::~MtuIgnore()
@@ -9565,6 +9838,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::~MtuIgnore()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -9635,7 +9909,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::MultiArea()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "multi-area"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multi-area"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::~MultiArea()
@@ -9644,6 +9918,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::~MultiArea()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| cost.is_set
 	|| disable.is_set;
@@ -9739,12 +10014,12 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::Neighbor()
     cost{YType::uint16, "cost"},
     poll_interval{YType::uint32, "poll-interval"},
     priority{YType::uint8, "priority"}
-    	,
+        ,
     database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter>())
 {
     database_filter->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::~Neighbor()
@@ -9753,6 +10028,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::~Neighbor()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| cost.is_set
 	|| poll_interval.is_set
@@ -9773,7 +10049,8 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::has_operation() c
 std::string Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[id='" <<id <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -9876,7 +10153,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::Databa
     all{YType::enumeration, "all"}
 {
 
-    yang_name = "database-filter"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "database-filter"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::~DatabaseFilter()
@@ -9885,6 +10162,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::~Datab
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set;
 }
 
@@ -9954,11 +10232,11 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Network::Network()
     manet{YType::empty, "manet"},
     non_broadcast{YType::empty, "non-broadcast"},
     point_to_point{YType::empty, "point-to-point"}
-    	,
+        ,
     point_to_multipoint(nullptr) // presence node
 {
 
-    yang_name = "network"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Network::~Network()
@@ -9967,6 +10245,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Network::~Network()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| manet.is_set
 	|| non_broadcast.is_set
@@ -10090,7 +10369,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::Poin
     non_broadcast{YType::empty, "non-broadcast"}
 {
 
-    yang_name = "point-to-multipoint"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "point-to-multipoint"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::~PointToMultipoint()
@@ -10099,6 +10378,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::~Poi
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::has_data() const
 {
+    if (is_presence_container) return true;
     return non_broadcast.is_set;
 }
 
@@ -10167,7 +10447,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::PrefixSuppres
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "prefix-suppression"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-suppression"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::~PrefixSuppression()
@@ -10176,6 +10456,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::~PrefixSuppre
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -10244,7 +10525,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::Shutdown()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "shutdown"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shutdown"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::~Shutdown()
@@ -10253,6 +10534,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::~Shutdown()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -10323,19 +10605,21 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Ipv4()
     priority{YType::uint8, "priority"},
     retransmit_interval{YType::uint32, "retransmit-interval"},
     transmit_delay{YType::uint32, "transmit-delay"}
-    	,
-    authentication(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication>())
-	,bfd(nullptr) // presence node
-	,cost(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost>())
-	,database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter>())
-	,demand_circuit(nullptr) // presence node
-	,flood_reduction(nullptr) // presence node
-	,manet(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet>())
-	,mtu_ignore(nullptr) // presence node
-	,multi_area(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea>())
-	,network(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network>())
-	,prefix_suppression(nullptr) // presence node
-	,shutdown(nullptr) // presence node
+        ,
+    area(this, {"id"})
+    , authentication(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication>())
+    , bfd(nullptr) // presence node
+    , cost(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost>())
+    , database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter>())
+    , demand_circuit(nullptr) // presence node
+    , flood_reduction(nullptr) // presence node
+    , manet(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet>())
+    , mtu_ignore(nullptr) // presence node
+    , multi_area(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea>())
+    , neighbor(this, {"id"})
+    , network(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network>())
+    , prefix_suppression(nullptr) // presence node
+    , shutdown(nullptr) // presence node
 {
     authentication->parent = this;
     cost->parent = this;
@@ -10344,7 +10628,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Ipv4()
     multi_area->parent = this;
     network->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::~Ipv4()
@@ -10353,12 +10637,13 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::~Ipv4()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::has_data() const
 {
-    for (std::size_t index=0; index<area.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<area.len(); index++)
     {
         if(area[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -10384,12 +10669,12 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::has_data() const
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::has_operation() const
 {
-    for (std::size_t index=0; index<area.size(); index++)
+    for (std::size_t index=0; index<area.len(); index++)
     {
         if(area[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -10441,7 +10726,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::ge
     {
         auto c = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area>();
         c->parent = this;
-        area.push_back(c);
+        area.append(c);
         return c;
     }
 
@@ -10530,7 +10815,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::ge
     {
         auto c = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -10569,7 +10854,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ospf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : area)
+    for (auto c : area.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10623,7 +10908,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ospf
     }
 
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10720,7 +11005,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::Area()
     instance{YType::uint8, "instance"}
 {
 
-    yang_name = "area"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::~Area()
@@ -10729,6 +11014,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::~Area()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| instance.is_set;
 }
@@ -10743,7 +11029,8 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::has_operation()
 std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area" <<"[id='" <<id <<"']";
+    path_buffer << "area";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -10811,7 +11098,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::Authentica
     null{YType::empty, "null"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::~Authentication()
@@ -10820,6 +11107,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::~Authentic
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| null.is_set;
 }
@@ -10901,7 +11189,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::Bfd()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::~Bfd()
@@ -10910,6 +11198,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::~Bfd()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -10976,11 +11265,11 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::has_leaf_or_chil
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Cost()
     :
     value_{YType::uint32, "value"}
-    	,
+        ,
     dynamic(nullptr) // presence node
 {
 
-    yang_name = "cost"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cost"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::~Cost()
@@ -10989,6 +11278,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::~Cost()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| (dynamic !=  nullptr && dynamic->has_data());
 }
@@ -11071,13 +11361,13 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::has_leaf_or_chi
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Dynamic()
     :
     default_{YType::uint32, "default"}
-    	,
+        ,
     hysteresis(nullptr) // presence node
-	,weight(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight>())
+    , weight(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight>())
 {
     weight->parent = this;
 
-    yang_name = "dynamic"; yang_parent_name = "cost"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dynamic"; yang_parent_name = "cost"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::~Dynamic()
@@ -11086,6 +11376,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::~Dynamic()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set
 	|| (hysteresis !=  nullptr && hysteresis->has_data())
 	|| (weight !=  nullptr && weight->has_data());
@@ -11187,7 +11478,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis:
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "hysteresis"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hysteresis"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::~Hysteresis()
@@ -11196,6 +11487,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis:
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::has_data() const
 {
+    if (is_presence_container) return true;
     return percent.is_set
 	|| threshold.is_set;
 }
@@ -11275,12 +11567,12 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hyster
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Weight()
     :
     l2_factor(nullptr) // presence node
-	,latency(nullptr) // presence node
-	,resources(nullptr) // presence node
-	,throughput(nullptr) // presence node
+    , latency(nullptr) // presence node
+    , resources(nullptr) // presence node
+    , throughput(nullptr) // presence node
 {
 
-    yang_name = "weight"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weight"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::~Weight()
@@ -11289,6 +11581,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::~We
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::has_data() const
 {
+    if (is_presence_container) return true;
     return (l2_factor !=  nullptr && l2_factor->has_data())
 	|| (latency !=  nullptr && latency->has_data())
 	|| (resources !=  nullptr && resources->has_data())
@@ -11408,7 +11701,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2F
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "L2-factor"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "L2-factor"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::~L2Factor()
@@ -11417,6 +11710,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2F
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -11485,7 +11779,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Lat
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "latency"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "latency"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::~Latency()
@@ -11494,6 +11788,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Lat
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -11562,7 +11857,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Res
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "resources"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resources"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::~Resources()
@@ -11571,6 +11866,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Res
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -11639,7 +11935,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Thr
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "throughput"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "throughput"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::~Throughput()
@@ -11648,6 +11944,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Thr
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -11717,7 +12014,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::DatabaseFi
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "database-filter"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "database-filter"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::~DatabaseFilter()
@@ -11726,6 +12023,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::~DatabaseF
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| disable.is_set;
 }
@@ -11808,7 +12106,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::DemandCircu
     ignore{YType::empty, "ignore"}
 {
 
-    yang_name = "demand-circuit"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "demand-circuit"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::~DemandCircuit()
@@ -11817,6 +12115,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::~DemandCirc
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| ignore.is_set;
 }
@@ -11898,7 +12197,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::FloodReduc
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "flood-reduction"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flood-reduction"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::~FloodReduction()
@@ -11907,6 +12206,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::~FloodRedu
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -11976,7 +12276,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Manet()
 {
     peering->parent = this;
 
-    yang_name = "manet"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manet"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::~Manet()
@@ -11985,6 +12285,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::~Manet()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::has_data() const
 {
+    if (is_presence_container) return true;
     return (peering !=  nullptr && peering->has_data());
 }
 
@@ -12054,12 +12355,12 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::has_leaf_or_ch
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Peering()
     :
     link_metrics{YType::uint32, "link-metrics"}
-    	,
+        ,
     cost(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost>())
 {
     cost->parent = this;
 
-    yang_name = "peering"; yang_parent_name = "manet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peering"; yang_parent_name = "manet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::~Peering()
@@ -12068,6 +12369,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::~Peering()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::has_data() const
 {
+    if (is_presence_container) return true;
     return link_metrics.is_set
 	|| (cost !=  nullptr && cost->has_data());
 }
@@ -12153,7 +12455,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::Cost
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "cost"; yang_parent_name = "peering"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cost"; yang_parent_name = "peering"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::~Cost()
@@ -12162,6 +12464,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::~Cos
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::has_data() const
 {
+    if (is_presence_container) return true;
     return percent.is_set
 	|| threshold.is_set;
 }
@@ -12243,7 +12546,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::MtuIgnore()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "mtu-ignore"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mtu-ignore"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::~MtuIgnore()
@@ -12252,6 +12555,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::~MtuIgnore()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -12322,7 +12626,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::MultiArea()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "multi-area"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multi-area"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::~MultiArea()
@@ -12331,6 +12635,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::~MultiArea()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| cost.is_set
 	|| disable.is_set;
@@ -12426,12 +12731,12 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::Neighbor()
     cost{YType::uint16, "cost"},
     poll_interval{YType::uint32, "poll-interval"},
     priority{YType::uint8, "priority"}
-    	,
+        ,
     database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter>())
 {
     database_filter->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::~Neighbor()
@@ -12440,6 +12745,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::~Neighbor()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| cost.is_set
 	|| poll_interval.is_set
@@ -12460,7 +12766,8 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::has_operati
 std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[id='" <<id <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -12563,7 +12870,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::
     all{YType::enumeration, "all"}
 {
 
-    yang_name = "database-filter"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "database-filter"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::~DatabaseFilter()
@@ -12572,6 +12879,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set;
 }
 
@@ -12641,11 +12949,11 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::Network()
     manet{YType::empty, "manet"},
     non_broadcast{YType::empty, "non-broadcast"},
     point_to_point{YType::empty, "point-to-point"}
-    	,
+        ,
     point_to_multipoint(nullptr) // presence node
 {
 
-    yang_name = "network"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::~Network()
@@ -12654,6 +12962,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::~Network()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| manet.is_set
 	|| non_broadcast.is_set
@@ -12777,7 +13086,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint
     non_broadcast{YType::empty, "non-broadcast"}
 {
 
-    yang_name = "point-to-multipoint"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "point-to-multipoint"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::~PointToMultipoint()
@@ -12786,6 +13095,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::has_data() const
 {
+    if (is_presence_container) return true;
     return non_broadcast.is_set;
 }
 
@@ -12854,7 +13164,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::PrefixS
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "prefix-suppression"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-suppression"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::~PrefixSuppression()
@@ -12863,6 +13173,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::~Prefix
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -12931,7 +13242,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::Shutdown()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "shutdown"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shutdown"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::~Shutdown()
@@ -12940,6 +13251,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::~Shutdown()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -13010,19 +13322,21 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Ipv6()
     priority{YType::uint8, "priority"},
     retransmit_interval{YType::uint32, "retransmit-interval"},
     transmit_delay{YType::uint32, "transmit-delay"}
-    	,
-    authentication(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication>())
-	,bfd(nullptr) // presence node
-	,cost(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost>())
-	,database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter>())
-	,demand_circuit(nullptr) // presence node
-	,flood_reduction(nullptr) // presence node
-	,manet(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet>())
-	,mtu_ignore(nullptr) // presence node
-	,multi_area(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MultiArea>())
-	,network(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Network>())
-	,prefix_suppression(nullptr) // presence node
-	,shutdown(nullptr) // presence node
+        ,
+    area(this, {"id"})
+    , authentication(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication>())
+    , bfd(nullptr) // presence node
+    , cost(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost>())
+    , database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter>())
+    , demand_circuit(nullptr) // presence node
+    , flood_reduction(nullptr) // presence node
+    , manet(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet>())
+    , mtu_ignore(nullptr) // presence node
+    , multi_area(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MultiArea>())
+    , neighbor(this, {"id"})
+    , network(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Network>())
+    , prefix_suppression(nullptr) // presence node
+    , shutdown(nullptr) // presence node
 {
     authentication->parent = this;
     cost->parent = this;
@@ -13031,7 +13345,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Ipv6()
     multi_area->parent = this;
     network->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::~Ipv6()
@@ -13040,12 +13354,13 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::~Ipv6()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::has_data() const
 {
-    for (std::size_t index=0; index<area.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<area.len(); index++)
     {
         if(area[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -13071,12 +13386,12 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::has_data() const
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::has_operation() const
 {
-    for (std::size_t index=0; index<area.size(); index++)
+    for (std::size_t index=0; index<area.len(); index++)
     {
         if(area[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -13128,7 +13443,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::ge
     {
         auto c = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area>();
         c->parent = this;
-        area.push_back(c);
+        area.append(c);
         return c;
     }
 
@@ -13217,7 +13532,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::ge
     {
         auto c = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -13256,7 +13571,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ospf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : area)
+    for (auto c : area.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13310,7 +13625,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ospf
     }
 
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13407,7 +13722,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::Area()
     instance{YType::uint8, "instance"}
 {
 
-    yang_name = "area"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::~Area()
@@ -13416,6 +13731,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::~Area()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| instance.is_set;
 }
@@ -13430,7 +13746,8 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::has_operation()
 std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area" <<"[id='" <<id <<"']";
+    path_buffer << "area";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -13498,7 +13815,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::Authentica
     null{YType::empty, "null"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::~Authentication()
@@ -13507,6 +13824,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::~Authentic
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| null.is_set;
 }
@@ -13588,7 +13906,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::Bfd()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::~Bfd()
@@ -13597,6 +13915,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::~Bfd()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -13663,11 +13982,11 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::has_leaf_or_chil
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Cost()
     :
     value_{YType::uint32, "value"}
-    	,
+        ,
     dynamic(nullptr) // presence node
 {
 
-    yang_name = "cost"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cost"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::~Cost()
@@ -13676,6 +13995,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::~Cost()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| (dynamic !=  nullptr && dynamic->has_data());
 }
@@ -13758,13 +14078,13 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::has_leaf_or_chi
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Dynamic()
     :
     default_{YType::uint32, "default"}
-    	,
+        ,
     hysteresis(nullptr) // presence node
-	,weight(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight>())
+    , weight(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight>())
 {
     weight->parent = this;
 
-    yang_name = "dynamic"; yang_parent_name = "cost"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dynamic"; yang_parent_name = "cost"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::~Dynamic()
@@ -13773,6 +14093,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::~Dynamic()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set
 	|| (hysteresis !=  nullptr && hysteresis->has_data())
 	|| (weight !=  nullptr && weight->has_data());
@@ -13874,7 +14195,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis:
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "hysteresis"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hysteresis"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::~Hysteresis()
@@ -13883,6 +14204,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis:
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::has_data() const
 {
+    if (is_presence_container) return true;
     return percent.is_set
 	|| threshold.is_set;
 }
@@ -13962,12 +14284,12 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hyster
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Weight()
     :
     l2_factor(nullptr) // presence node
-	,latency(nullptr) // presence node
-	,resources(nullptr) // presence node
-	,throughput(nullptr) // presence node
+    , latency(nullptr) // presence node
+    , resources(nullptr) // presence node
+    , throughput(nullptr) // presence node
 {
 
-    yang_name = "weight"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weight"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::~Weight()
@@ -13976,6 +14298,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::~We
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::has_data() const
 {
+    if (is_presence_container) return true;
     return (l2_factor !=  nullptr && l2_factor->has_data())
 	|| (latency !=  nullptr && latency->has_data())
 	|| (resources !=  nullptr && resources->has_data())
@@ -14095,7 +14418,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2F
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "L2-factor"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "L2-factor"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::~L2Factor()
@@ -14104,6 +14427,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2F
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -14172,7 +14496,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Lat
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "latency"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "latency"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::~Latency()
@@ -14181,6 +14505,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Lat
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -14249,7 +14574,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Res
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "resources"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resources"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::~Resources()
@@ -14258,6 +14583,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Res
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -14326,7 +14652,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Thr
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "throughput"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "throughput"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::~Throughput()
@@ -14335,6 +14661,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Thr
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -14404,7 +14731,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::DatabaseFi
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "database-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "database-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::~DatabaseFilter()
@@ -14413,6 +14740,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::~DatabaseF
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| disable.is_set;
 }
@@ -14495,7 +14823,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DemandCircuit::DemandCircu
     ignore{YType::empty, "ignore"}
 {
 
-    yang_name = "demand-circuit"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "demand-circuit"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DemandCircuit::~DemandCircuit()
@@ -14504,6 +14832,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DemandCircuit::~DemandCirc
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DemandCircuit::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| ignore.is_set;
 }
@@ -14585,7 +14914,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::FloodReduction::FloodReduc
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "flood-reduction"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flood-reduction"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::FloodReduction::~FloodReduction()
@@ -14594,6 +14923,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::FloodReduction::~FloodRedu
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::FloodReduction::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -14663,7 +14993,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Manet()
 {
     peering->parent = this;
 
-    yang_name = "manet"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manet"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::~Manet()
@@ -14672,6 +15002,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::~Manet()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::has_data() const
 {
+    if (is_presence_container) return true;
     return (peering !=  nullptr && peering->has_data());
 }
 
@@ -14741,12 +15072,12 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::has_leaf_or_ch
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Peering()
     :
     link_metrics{YType::uint32, "link-metrics"}
-    	,
+        ,
     cost(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost>())
 {
     cost->parent = this;
 
-    yang_name = "peering"; yang_parent_name = "manet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peering"; yang_parent_name = "manet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::~Peering()
@@ -14755,6 +15086,7 @@ Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::~Peering()
 
 bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::has_data() const
 {
+    if (is_presence_container) return true;
     return link_metrics.is_set
 	|| (cost !=  nullptr && cost->has_data());
 }
@@ -14834,174 +15166,6 @@ bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::has_l
     return false;
 }
 
-Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::Cost()
-    :
-    percent{YType::uint8, "percent"},
-    threshold{YType::uint32, "threshold"}
-{
-
-    yang_name = "cost"; yang_parent_name = "peering"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::~Cost()
-{
-}
-
-bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::has_data() const
-{
-    return percent.is_set
-	|| threshold.is_set;
-}
-
-bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(percent.yfilter)
-	|| ydk::is_set(threshold.yfilter);
-}
-
-std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cost";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "percent")
-    {
-        percent = value;
-        percent.value_namespace = name_space;
-        percent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "percent")
-    {
-        percent.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "percent" || name == "threshold")
-        return true;
-    return false;
-}
-
-Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MtuIgnore::MtuIgnore()
-    :
-    disable{YType::empty, "disable"}
-{
-
-    yang_name = "mtu-ignore"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MtuIgnore::~MtuIgnore()
-{
-}
-
-bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MtuIgnore::has_data() const
-{
-    return disable.is_set;
-}
-
-bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MtuIgnore::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(disable.yfilter);
-}
-
-std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mtu-ignore";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MtuIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MtuIgnore::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MtuIgnore::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "disable")
-        return true;
-    return false;
-}
-
 const Enum::YLeaf Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt::Y_0 {0, "0"};
 const Enum::YLeaf Native::Interface::Loopback::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::Encrypt::Y_7 {1, "7"};
 
@@ -15015,15 +15179,15 @@ const Enum::YLeaf Native::Interface::Loopback::Trust::Device::cts {1, "cts"};
 const Enum::YLeaf Native::Interface::Loopback::Trust::Device::ip_camera {2, "ip-camera"};
 const Enum::YLeaf Native::Interface::Loopback::Trust::Device::media_player {3, "media-player"};
 
+const Enum::YLeaf Native::Interface::Loopback::ServicePolicy::Type::PerformanceMonitor::Direction::input {0, "input"};
+const Enum::YLeaf Native::Interface::Loopback::ServicePolicy::Type::PerformanceMonitor::Direction::output {1, "output"};
+
 const Enum::YLeaf Native::Interface::Loopback::Crypto::Ipsec::DfBit::clear {0, "clear"};
 const Enum::YLeaf Native::Interface::Loopback::Crypto::Ipsec::DfBit::copy {1, "copy"};
 const Enum::YLeaf Native::Interface::Loopback::Crypto::Ipsec::DfBit::set {2, "set"};
 
 const Enum::YLeaf Native::Interface::Loopback::Crypto::Ipsec::Fragmentation::after_encryption {0, "after-encryption"};
 const Enum::YLeaf Native::Interface::Loopback::Crypto::Ipsec::Fragmentation::before_encryption {1, "before-encryption"};
-
-const Enum::YLeaf Native::Interface::Loopback::ServicePolicy::Type::PerformanceMonitor::Direction::input {0, "input"};
-const Enum::YLeaf Native::Interface::Loopback::ServicePolicy::Type::PerformanceMonitor::Direction::output {1, "output"};
 
 const Enum::YLeaf Native::Interface::Loopback::Ospfv3::ProcessId::DatabaseFilter::All::out {0, "out"};
 

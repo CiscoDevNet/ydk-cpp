@@ -15,11 +15,11 @@ namespace Cisco_IOS_XE_native {
 Native::Service::Timestamps::Debug::Datetime::ShowTimezone::ShowTimezone()
     :
     localtime(nullptr) // presence node
-	,msec(nullptr) // presence node
-	,year(nullptr) // presence node
+    , msec(nullptr) // presence node
+    , year(nullptr) // presence node
 {
 
-    yang_name = "show-timezone"; yang_parent_name = "datetime"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "show-timezone"; yang_parent_name = "datetime"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Service::Timestamps::Debug::Datetime::ShowTimezone::~ShowTimezone()
@@ -28,6 +28,7 @@ Native::Service::Timestamps::Debug::Datetime::ShowTimezone::~ShowTimezone()
 
 bool Native::Service::Timestamps::Debug::Datetime::ShowTimezone::has_data() const
 {
+    if (is_presence_container) return true;
     return (localtime !=  nullptr && localtime->has_data())
 	|| (msec !=  nullptr && msec->has_data())
 	|| (year !=  nullptr && year->has_data());
@@ -139,7 +140,7 @@ Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Localtime::Localtime
     year{YType::empty, "year"}
 {
 
-    yang_name = "localtime"; yang_parent_name = "show-timezone"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "localtime"; yang_parent_name = "show-timezone"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Localtime::~Localtime()
@@ -148,6 +149,7 @@ Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Localtime::~Localtim
 
 bool Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Localtime::has_data() const
 {
+    if (is_presence_container) return true;
     return msec.is_set
 	|| year.is_set;
 }
@@ -237,7 +239,7 @@ Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Msec::Msec()
     year{YType::empty, "year"}
 {
 
-    yang_name = "msec"; yang_parent_name = "show-timezone"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "msec"; yang_parent_name = "show-timezone"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Msec::~Msec()
@@ -246,6 +248,7 @@ Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Msec::~Msec()
 
 bool Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Msec::has_data() const
 {
+    if (is_presence_container) return true;
     return localtime.is_set
 	|| year.is_set;
 }
@@ -335,7 +338,7 @@ Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Year::Year()
     msec{YType::empty, "msec"}
 {
 
-    yang_name = "year"; yang_parent_name = "show-timezone"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "year"; yang_parent_name = "show-timezone"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Year::~Year()
@@ -344,6 +347,7 @@ Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Year::~Year()
 
 bool Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Year::has_data() const
 {
+    if (is_presence_container) return true;
     return localtime.is_set
 	|| msec.is_set;
 }
@@ -430,11 +434,11 @@ bool Native::Service::Timestamps::Debug::Datetime::ShowTimezone::Year::has_leaf_
 Native::Service::Timestamps::Debug::Datetime::Year::Year()
     :
     localtime(nullptr) // presence node
-	,msec(nullptr) // presence node
-	,show_timezone(nullptr) // presence node
+    , msec(nullptr) // presence node
+    , show_timezone(nullptr) // presence node
 {
 
-    yang_name = "year"; yang_parent_name = "datetime"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "year"; yang_parent_name = "datetime"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Service::Timestamps::Debug::Datetime::Year::~Year()
@@ -443,6 +447,7 @@ Native::Service::Timestamps::Debug::Datetime::Year::~Year()
 
 bool Native::Service::Timestamps::Debug::Datetime::Year::has_data() const
 {
+    if (is_presence_container) return true;
     return (localtime !=  nullptr && localtime->has_data())
 	|| (msec !=  nullptr && msec->has_data())
 	|| (show_timezone !=  nullptr && show_timezone->has_data());
@@ -554,7 +559,7 @@ Native::Service::Timestamps::Debug::Datetime::Year::Localtime::Localtime()
     show_timezone{YType::empty, "show-timezone"}
 {
 
-    yang_name = "localtime"; yang_parent_name = "year"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "localtime"; yang_parent_name = "year"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Service::Timestamps::Debug::Datetime::Year::Localtime::~Localtime()
@@ -563,6 +568,7 @@ Native::Service::Timestamps::Debug::Datetime::Year::Localtime::~Localtime()
 
 bool Native::Service::Timestamps::Debug::Datetime::Year::Localtime::has_data() const
 {
+    if (is_presence_container) return true;
     return msec.is_set
 	|| show_timezone.is_set;
 }
@@ -652,7 +658,7 @@ Native::Service::Timestamps::Debug::Datetime::Year::Msec::Msec()
     show_timezone{YType::empty, "show-timezone"}
 {
 
-    yang_name = "msec"; yang_parent_name = "year"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "msec"; yang_parent_name = "year"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Service::Timestamps::Debug::Datetime::Year::Msec::~Msec()
@@ -661,6 +667,7 @@ Native::Service::Timestamps::Debug::Datetime::Year::Msec::~Msec()
 
 bool Native::Service::Timestamps::Debug::Datetime::Year::Msec::has_data() const
 {
+    if (is_presence_container) return true;
     return localtime.is_set
 	|| show_timezone.is_set;
 }
@@ -750,7 +757,7 @@ Native::Service::Timestamps::Debug::Datetime::Year::ShowTimezone::ShowTimezone()
     msec{YType::empty, "msec"}
 {
 
-    yang_name = "show-timezone"; yang_parent_name = "year"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "show-timezone"; yang_parent_name = "year"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Service::Timestamps::Debug::Datetime::Year::ShowTimezone::~ShowTimezone()
@@ -759,6 +766,7 @@ Native::Service::Timestamps::Debug::Datetime::Year::ShowTimezone::~ShowTimezone(
 
 bool Native::Service::Timestamps::Debug::Datetime::Year::ShowTimezone::has_data() const
 {
+    if (is_presence_container) return true;
     return localtime.is_set
 	|| msec.is_set;
 }
@@ -845,11 +853,11 @@ bool Native::Service::Timestamps::Debug::Datetime::Year::ShowTimezone::has_leaf_
 Native::Service::Timestamps::Log::Log()
     :
     uptime{YType::empty, "uptime"}
-    	,
+        ,
     datetime(nullptr) // presence node
 {
 
-    yang_name = "log"; yang_parent_name = "timestamps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "log"; yang_parent_name = "timestamps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Service::Timestamps::Log::~Log()
@@ -858,6 +866,7 @@ Native::Service::Timestamps::Log::~Log()
 
 bool Native::Service::Timestamps::Log::has_data() const
 {
+    if (is_presence_container) return true;
     return uptime.is_set
 	|| (datetime !=  nullptr && datetime->has_data());
 }
@@ -952,7 +961,7 @@ Native::Service::Timestamps::Log::Datetime::Datetime()
     year{YType::empty, "year"}
 {
 
-    yang_name = "datetime"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "datetime"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Service::Timestamps::Log::Datetime::~Datetime()
@@ -961,6 +970,7 @@ Native::Service::Timestamps::Log::Datetime::~Datetime()
 
 bool Native::Service::Timestamps::Log::Datetime::has_data() const
 {
+    if (is_presence_container) return true;
     return msec.is_set
 	|| localtime.is_set
 	|| show_timezone.is_set
@@ -1076,7 +1086,7 @@ Native::Service::Alignment::Alignment()
     logging{YType::empty, "logging"}
 {
 
-    yang_name = "alignment"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alignment"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Service::Alignment::~Alignment()
@@ -1085,6 +1095,7 @@ Native::Service::Alignment::~Alignment()
 
 bool Native::Service::Alignment::has_data() const
 {
+    if (is_presence_container) return true;
     return detection.is_set
 	|| logging.is_set;
 }
@@ -1174,7 +1185,7 @@ Native::Service::Counters::Counters()
 {
     max->parent = this;
 
-    yang_name = "counters"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "counters"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Service::Counters::~Counters()
@@ -1183,6 +1194,7 @@ Native::Service::Counters::~Counters()
 
 bool Native::Service::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return (max !=  nullptr && max->has_data());
 }
 
@@ -1261,7 +1273,7 @@ Native::Service::Counters::Max::Max()
     age{YType::uint8, "age"}
 {
 
-    yang_name = "max"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "max"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Service::Counters::Max::~Max()
@@ -1270,6 +1282,7 @@ Native::Service::Counters::Max::~Max()
 
 bool Native::Service::Counters::Max::has_data() const
 {
+    if (is_presence_container) return true;
     return age.is_set;
 }
 
@@ -1349,7 +1362,7 @@ Native::Service::Heartbeat::Heartbeat()
     warning_timeout{YType::uint8, "warning-timeout"}
 {
 
-    yang_name = "heartbeat"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "heartbeat"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Service::Heartbeat::~Heartbeat()
@@ -1358,6 +1371,7 @@ Native::Service::Heartbeat::~Heartbeat()
 
 bool Native::Service::Heartbeat::has_data() const
 {
+    if (is_presence_container) return true;
     return fatal_count.is_set
 	|| interrupt_interval.is_set
 	|| interrupt_max.is_set
@@ -1485,7 +1499,7 @@ Native::Service::Prompt::Prompt()
     config{YType::empty, "config"}
 {
 
-    yang_name = "prompt"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prompt"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Service::Prompt::~Prompt()
@@ -1494,6 +1508,7 @@ Native::Service::Prompt::~Prompt()
 
 bool Native::Service::Prompt::has_data() const
 {
+    if (is_presence_container) return true;
     return config.is_set;
 }
 
@@ -1571,24 +1586,24 @@ Native::Platform::Platform()
     bfd_debug_trace{YType::uint8, "Cisco-IOS-XE-platform:bfd-debug-trace"},
     shell{YType::boolean, "Cisco-IOS-XE-platform:shell"},
     tcam_parity_error{YType::enumeration, "Cisco-IOS-XE-platform:tcam-parity-error"}
-    	,
+        ,
     icmp(std::make_shared<Native::Platform::Icmp>())
-	,ip_ports(std::make_shared<Native::Platform::IpPorts>())
-	,bfd(std::make_shared<Native::Platform::Bfd>())
-	,console(nullptr) // presence node
-	,enable(std::make_shared<Native::Platform::Enable>())
-	,external_alarm(std::make_shared<Native::Platform::ExternalAlarm>())
-	,hardware(std::make_shared<Native::Platform::Hardware>())
-	,ipsec(std::make_shared<Native::Platform::Ipsec>())
-	,l2vpn(std::make_shared<Native::Platform::L2Vpn>())
-	,multicast(std::make_shared<Native::Platform::Multicast>())
-	,punt_keepalive(nullptr) // presence node
-	,punt_policer(std::make_shared<Native::Platform::PuntPolicer>())
-	,qos(std::make_shared<Native::Platform::Qos>())
-	,reload(std::make_shared<Native::Platform::Reload>())
-	,urpf(std::make_shared<Native::Platform::Urpf>())
-	,tcam_threshold(std::make_shared<Native::Platform::TcamThreshold>())
-	,trace(std::make_shared<Native::Platform::Trace>())
+    , ip_ports(std::make_shared<Native::Platform::IpPorts>())
+    , bfd(std::make_shared<Native::Platform::Bfd>())
+    , console(nullptr) // presence node
+    , enable(std::make_shared<Native::Platform::Enable>())
+    , external_alarm(std::make_shared<Native::Platform::ExternalAlarm>())
+    , hardware(std::make_shared<Native::Platform::Hardware>())
+    , ipsec(std::make_shared<Native::Platform::Ipsec>())
+    , l2vpn(std::make_shared<Native::Platform::L2vpn>())
+    , multicast(std::make_shared<Native::Platform::Multicast>())
+    , punt_keepalive(nullptr) // presence node
+    , punt_policer(std::make_shared<Native::Platform::PuntPolicer>())
+    , qos(std::make_shared<Native::Platform::Qos>())
+    , reload(std::make_shared<Native::Platform::Reload>())
+    , urpf(std::make_shared<Native::Platform::Urpf>())
+    , tcam_threshold(std::make_shared<Native::Platform::TcamThreshold>())
+    , trace(std::make_shared<Native::Platform::Trace>())
 {
     icmp->parent = this;
     ip_ports->parent = this;
@@ -1606,7 +1621,7 @@ Native::Platform::Platform()
     tcam_threshold->parent = this;
     trace->parent = this;
 
-    yang_name = "platform"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "platform"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::~Platform()
@@ -1615,6 +1630,7 @@ Native::Platform::~Platform()
 
 bool Native::Platform::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_cdvt.is_set
 	|| cfm.is_set
 	|| bfd_debug_trace.is_set
@@ -1772,7 +1788,7 @@ std::shared_ptr<Entity> Native::Platform::get_child_by_name(const std::string & 
     {
         if(l2vpn == nullptr)
         {
-            l2vpn = std::make_shared<Native::Platform::L2Vpn>();
+            l2vpn = std::make_shared<Native::Platform::L2vpn>();
         }
         return l2vpn;
     }
@@ -2015,7 +2031,7 @@ Native::Platform::Icmp::Icmp()
 {
     rate_limit->parent = this;
 
-    yang_name = "icmp"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icmp"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Icmp::~Icmp()
@@ -2024,6 +2040,7 @@ Native::Platform::Icmp::~Icmp()
 
 bool Native::Platform::Icmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (rate_limit !=  nullptr && rate_limit->has_data());
 }
 
@@ -2103,7 +2120,7 @@ Native::Platform::Icmp::RateLimit::RateLimit()
     duration{YType::uint32, "duration"}
 {
 
-    yang_name = "rate-limit"; yang_parent_name = "icmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rate-limit"; yang_parent_name = "icmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Icmp::RateLimit::~RateLimit()
@@ -2112,6 +2129,7 @@ Native::Platform::Icmp::RateLimit::~RateLimit()
 
 bool Native::Platform::Icmp::RateLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return packet.is_set
 	|| duration.is_set;
 }
@@ -2200,7 +2218,7 @@ Native::Platform::IpPorts::IpPorts()
     ephemeral_max{YType::uint16, "ephemeral-max"}
 {
 
-    yang_name = "ip-ports"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip-ports"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::IpPorts::~IpPorts()
@@ -2209,6 +2227,7 @@ Native::Platform::IpPorts::~IpPorts()
 
 bool Native::Platform::IpPorts::has_data() const
 {
+    if (is_presence_container) return true;
     return ephemeral_max.is_set;
 }
 
@@ -2286,7 +2305,7 @@ Native::Platform::Bfd::Bfd()
     enable_offload{YType::empty, "enable-offload"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Bfd::~Bfd()
@@ -2295,6 +2314,7 @@ Native::Platform::Bfd::~Bfd()
 
 bool Native::Platform::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return disable_offload.is_set
 	|| allow_svi.is_set
 	|| enable_offload.is_set;
@@ -2396,7 +2416,7 @@ Native::Platform::Console::Console()
     output{YType::enumeration, "output"}
 {
 
-    yang_name = "console"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "console"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Platform::Console::~Console()
@@ -2405,6 +2425,7 @@ Native::Platform::Console::~Console()
 
 bool Native::Platform::Console::has_data() const
 {
+    if (is_presence_container) return true;
     return output.is_set;
 }
 
@@ -2476,9 +2497,11 @@ bool Native::Platform::Console::has_leaf_or_child_of_name(const std::string & na
 }
 
 Native::Platform::Enable::Enable()
+    :
+    controller(this, {"sonet"})
 {
 
-    yang_name = "enable"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "enable"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Enable::~Enable()
@@ -2487,7 +2510,8 @@ Native::Platform::Enable::~Enable()
 
 bool Native::Platform::Enable::has_data() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_data())
             return true;
@@ -2497,7 +2521,7 @@ bool Native::Platform::Enable::has_data() const
 
 bool Native::Platform::Enable::has_operation() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_operation())
             return true;
@@ -2534,7 +2558,7 @@ std::shared_ptr<Entity> Native::Platform::Enable::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Native::Platform::Enable::Controller>();
         c->parent = this;
-        controller.push_back(c);
+        controller.append(c);
         return c;
     }
 
@@ -2546,7 +2570,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Platform::Enable::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : controller)
+    for (auto c : controller.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2577,7 +2601,7 @@ Native::Platform::Enable::Controller::Controller()
     sonet{YType::str, "SONET"}
 {
 
-    yang_name = "controller"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Enable::Controller::~Controller()
@@ -2586,6 +2610,7 @@ Native::Platform::Enable::Controller::~Controller()
 
 bool Native::Platform::Enable::Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return sonet.is_set;
 }
 
@@ -2605,7 +2630,8 @@ std::string Native::Platform::Enable::Controller::get_absolute_path() const
 std::string Native::Platform::Enable::Controller::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "controller" <<"[SONET='" <<sonet <<"']";
+    path_buffer << "controller";
+    ADD_KEY_TOKEN(sonet, "SONET");
     return path_buffer.str();
 }
 
@@ -2662,7 +2688,7 @@ Native::Platform::ExternalAlarm::ExternalAlarm()
     alarm{YType::str, "alarm"}
 {
 
-    yang_name = "external-alarm"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "external-alarm"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::ExternalAlarm::~ExternalAlarm()
@@ -2671,6 +2697,7 @@ Native::Platform::ExternalAlarm::~ExternalAlarm()
 
 bool Native::Platform::ExternalAlarm::has_data() const
 {
+    if (is_presence_container) return true;
     return line.is_set
 	|| alarm.is_set;
 }
@@ -2757,12 +2784,12 @@ bool Native::Platform::ExternalAlarm::has_leaf_or_child_of_name(const std::strin
 Native::Platform::Hardware::Hardware()
     :
     lite(std::make_shared<Native::Platform::Hardware::Lite>())
-	,throughput(std::make_shared<Native::Platform::Hardware::Throughput>())
+    , throughput(std::make_shared<Native::Platform::Hardware::Throughput>())
 {
     lite->parent = this;
     throughput->parent = this;
 
-    yang_name = "hardware"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hardware"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Hardware::~Hardware()
@@ -2771,6 +2798,7 @@ Native::Platform::Hardware::~Hardware()
 
 bool Native::Platform::Hardware::has_data() const
 {
+    if (is_presence_container) return true;
     return (lite !=  nullptr && lite->has_data())
 	|| (throughput !=  nullptr && throughput->has_data());
 }
@@ -2865,7 +2893,7 @@ Native::Platform::Hardware::Lite::Lite()
     license{YType::enumeration, "license"}
 {
 
-    yang_name = "lite"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lite"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Hardware::Lite::~Lite()
@@ -2874,6 +2902,7 @@ Native::Platform::Hardware::Lite::~Lite()
 
 bool Native::Platform::Hardware::Lite::has_data() const
 {
+    if (is_presence_container) return true;
     return license.is_set;
 }
 
@@ -2947,12 +2976,12 @@ bool Native::Platform::Hardware::Lite::has_leaf_or_child_of_name(const std::stri
 Native::Platform::Hardware::Throughput::Throughput()
     :
     disable{YType::enumeration, "disable"}
-    	,
+        ,
     level(std::make_shared<Native::Platform::Hardware::Throughput::Level>())
 {
     level->parent = this;
 
-    yang_name = "throughput"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "throughput"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Hardware::Throughput::~Throughput()
@@ -2961,6 +2990,7 @@ Native::Platform::Hardware::Throughput::~Throughput()
 
 bool Native::Platform::Hardware::Throughput::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| (level !=  nullptr && level->has_data());
 }
@@ -3053,7 +3083,7 @@ Native::Platform::Hardware::Throughput::Level::Level()
     eval_only{YType::empty, "eval-only"}
 {
 
-    yang_name = "level"; yang_parent_name = "throughput"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "level"; yang_parent_name = "throughput"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Hardware::Throughput::Level::~Level()
@@ -3062,6 +3092,7 @@ Native::Platform::Hardware::Throughput::Level::~Level()
 
 bool Native::Platform::Hardware::Throughput::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return kbps.is_set
 	|| eval_only.is_set;
 }
@@ -3150,14 +3181,14 @@ Native::Platform::Ipsec::Ipsec()
     arlog_supress{YType::empty, "arlog-supress"},
     fips_mode{YType::empty, "fips-mode"},
     gdoi{YType::enumeration, "gdoi"}
-    	,
+        ,
     llq(std::make_shared<Native::Platform::Ipsec::Llq>())
-	,reassemble(std::make_shared<Native::Platform::Ipsec::Reassemble>())
+    , reassemble(std::make_shared<Native::Platform::Ipsec::Reassemble>())
 {
     llq->parent = this;
     reassemble->parent = this;
 
-    yang_name = "ipsec"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipsec"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Ipsec::~Ipsec()
@@ -3166,6 +3197,7 @@ Native::Platform::Ipsec::~Ipsec()
 
 bool Native::Platform::Ipsec::has_data() const
 {
+    if (is_presence_container) return true;
     return arlog_supress.is_set
 	|| fips_mode.is_set
 	|| gdoi.is_set
@@ -3299,7 +3331,7 @@ Native::Platform::Ipsec::Llq::Llq()
     qos_group{YType::uint8, "qos-group"}
 {
 
-    yang_name = "llq"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "llq"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Ipsec::Llq::~Llq()
@@ -3308,6 +3340,7 @@ Native::Platform::Ipsec::Llq::~Llq()
 
 bool Native::Platform::Ipsec::Llq::has_data() const
 {
+    if (is_presence_container) return true;
     return qos_group.is_set;
 }
 
@@ -3383,7 +3416,7 @@ Native::Platform::Ipsec::Reassemble::Reassemble()
     transit{YType::empty, "transit"}
 {
 
-    yang_name = "reassemble"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reassemble"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Ipsec::Reassemble::~Reassemble()
@@ -3392,6 +3425,7 @@ Native::Platform::Ipsec::Reassemble::~Reassemble()
 
 bool Native::Platform::Ipsec::Reassemble::has_data() const
 {
+    if (is_presence_container) return true;
     return transit.is_set;
 }
 
@@ -3462,49 +3496,50 @@ bool Native::Platform::Ipsec::Reassemble::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-Native::Platform::L2Vpn::L2Vpn()
+Native::Platform::L2vpn::L2vpn()
     :
     hdlc_pass_through{YType::empty, "hdlc-pass-through"}
-    	,
-    statistics(std::make_shared<Native::Platform::L2Vpn::Statistics>())
+        ,
+    statistics(std::make_shared<Native::Platform::L2vpn::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "l2vpn"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "l2vpn"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Platform::L2Vpn::~L2Vpn()
+Native::Platform::L2vpn::~L2vpn()
 {
 }
 
-bool Native::Platform::L2Vpn::has_data() const
+bool Native::Platform::L2vpn::has_data() const
 {
+    if (is_presence_container) return true;
     return hdlc_pass_through.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
 
-bool Native::Platform::L2Vpn::has_operation() const
+bool Native::Platform::L2vpn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hdlc_pass_through.yfilter)
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
-std::string Native::Platform::L2Vpn::get_absolute_path() const
+std::string Native::Platform::L2vpn::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/platform/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Platform::L2Vpn::get_segment_path() const
+std::string Native::Platform::L2vpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-platform:l2vpn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Platform::L2Vpn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Platform::L2vpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3514,13 +3549,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Platform::L2Vpn::get_name
 
 }
 
-std::shared_ptr<Entity> Native::Platform::L2Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Platform::L2vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<Native::Platform::L2Vpn::Statistics>();
+            statistics = std::make_shared<Native::Platform::L2vpn::Statistics>();
         }
         return statistics;
     }
@@ -3528,7 +3563,7 @@ std::shared_ptr<Entity> Native::Platform::L2Vpn::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Platform::L2Vpn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Platform::L2vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3540,7 +3575,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Platform::L2Vpn::get_chil
     return children;
 }
 
-void Native::Platform::L2Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Platform::L2vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hdlc-pass-through")
     {
@@ -3550,7 +3585,7 @@ void Native::Platform::L2Vpn::set_value(const std::string & value_path, const st
     }
 }
 
-void Native::Platform::L2Vpn::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Platform::L2vpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hdlc-pass-through")
     {
@@ -3558,51 +3593,52 @@ void Native::Platform::L2Vpn::set_filter(const std::string & value_path, YFilter
     }
 }
 
-bool Native::Platform::L2Vpn::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Platform::L2vpn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "statistics" || name == "hdlc-pass-through")
         return true;
     return false;
 }
 
-Native::Platform::L2Vpn::Statistics::Statistics()
+Native::Platform::L2vpn::Statistics::Statistics()
     :
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "l2vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Platform::L2Vpn::Statistics::~Statistics()
+Native::Platform::L2vpn::Statistics::~Statistics()
 {
 }
 
-bool Native::Platform::L2Vpn::Statistics::has_data() const
+bool Native::Platform::L2vpn::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
-bool Native::Platform::L2Vpn::Statistics::has_operation() const
+bool Native::Platform::L2vpn::Statistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string Native::Platform::L2Vpn::Statistics::get_absolute_path() const
+std::string Native::Platform::L2vpn::Statistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/platform/Cisco-IOS-XE-platform:l2vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Platform::L2Vpn::Statistics::get_segment_path() const
+std::string Native::Platform::L2vpn::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Platform::L2Vpn::Statistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Platform::L2vpn::Statistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3612,19 +3648,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Platform::L2Vpn::Statisti
 
 }
 
-std::shared_ptr<Entity> Native::Platform::L2Vpn::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Platform::L2vpn::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Platform::L2Vpn::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Platform::L2vpn::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Platform::L2Vpn::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Platform::L2vpn::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -3634,7 +3670,7 @@ void Native::Platform::L2Vpn::Statistics::set_value(const std::string & value_pa
     }
 }
 
-void Native::Platform::L2Vpn::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Platform::L2vpn::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -3642,7 +3678,7 @@ void Native::Platform::L2Vpn::Statistics::set_filter(const std::string & value_p
     }
 }
 
-bool Native::Platform::L2Vpn::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Platform::L2vpn::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable")
         return true;
@@ -3652,12 +3688,12 @@ bool Native::Platform::L2Vpn::Statistics::has_leaf_or_child_of_name(const std::s
 Native::Platform::Multicast::Multicast()
     :
     mgre(std::make_shared<Native::Platform::Multicast::Mgre>())
-	,oce(std::make_shared<Native::Platform::Multicast::Oce>())
+    , oce(std::make_shared<Native::Platform::Multicast::Oce>())
 {
     mgre->parent = this;
     oce->parent = this;
 
-    yang_name = "multicast"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multicast"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Multicast::~Multicast()
@@ -3666,6 +3702,7 @@ Native::Platform::Multicast::~Multicast()
 
 bool Native::Platform::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (mgre !=  nullptr && mgre->has_data())
 	|| (oce !=  nullptr && oce->has_data());
 }
@@ -3760,7 +3797,7 @@ Native::Platform::Multicast::Mgre::Mgre()
     injection{YType::empty, "injection"}
 {
 
-    yang_name = "mgre"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mgre"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Multicast::Mgre::~Mgre()
@@ -3769,6 +3806,7 @@ Native::Platform::Multicast::Mgre::~Mgre()
 
 bool Native::Platform::Multicast::Mgre::has_data() const
 {
+    if (is_presence_container) return true;
     return injection.is_set;
 }
 
@@ -3845,7 +3883,7 @@ Native::Platform::Multicast::Oce::Oce()
 {
     flag->parent = this;
 
-    yang_name = "oce"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oce"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Multicast::Oce::~Oce()
@@ -3854,6 +3892,7 @@ Native::Platform::Multicast::Oce::~Oce()
 
 bool Native::Platform::Multicast::Oce::has_data() const
 {
+    if (is_presence_container) return true;
     return (flag !=  nullptr && flag->has_data());
 }
 
@@ -3932,7 +3971,7 @@ Native::Platform::Multicast::Oce::Flag::Flag()
     suppress{YType::empty, "suppress"}
 {
 
-    yang_name = "flag"; yang_parent_name = "oce"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flag"; yang_parent_name = "oce"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Multicast::Oce::Flag::~Flag()
@@ -3941,6 +3980,7 @@ Native::Platform::Multicast::Oce::Flag::~Flag()
 
 bool Native::Platform::Multicast::Oce::Flag::has_data() const
 {
+    if (is_presence_container) return true;
     return suppress.is_set;
 }
 
@@ -4014,12 +4054,12 @@ bool Native::Platform::Multicast::Oce::Flag::has_leaf_or_child_of_name(const std
 Native::Platform::PuntKeepalive::PuntKeepalive()
     :
     disable_kernel_core{YType::boolean, "disable-kernel-core"}
-    	,
+        ,
     settings(std::make_shared<Native::Platform::PuntKeepalive::Settings>())
 {
     settings->parent = this;
 
-    yang_name = "punt-keepalive"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "punt-keepalive"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Platform::PuntKeepalive::~PuntKeepalive()
@@ -4028,6 +4068,7 @@ Native::Platform::PuntKeepalive::~PuntKeepalive()
 
 bool Native::Platform::PuntKeepalive::has_data() const
 {
+    if (is_presence_container) return true;
     return disable_kernel_core.is_set
 	|| (settings !=  nullptr && settings->has_data());
 }
@@ -4121,7 +4162,7 @@ Native::Platform::PuntKeepalive::Settings::Settings()
     warning_count{YType::uint16, "warning-count"}
 {
 
-    yang_name = "settings"; yang_parent_name = "punt-keepalive"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "settings"; yang_parent_name = "punt-keepalive"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::PuntKeepalive::Settings::~Settings()
@@ -4130,6 +4171,7 @@ Native::Platform::PuntKeepalive::Settings::~Settings()
 
 bool Native::Platform::PuntKeepalive::Settings::has_data() const
 {
+    if (is_presence_container) return true;
     return fatal_count.is_set
 	|| transmit_interval.is_set
 	|| warning_count.is_set;
@@ -4227,9 +4269,11 @@ bool Native::Platform::PuntKeepalive::Settings::has_leaf_or_child_of_name(const 
 }
 
 Native::Platform::PuntPolicer::PuntPolicer()
+    :
+    punt_num(this, {"cause"})
 {
 
-    yang_name = "punt-policer"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "punt-policer"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::PuntPolicer::~PuntPolicer()
@@ -4238,7 +4282,8 @@ Native::Platform::PuntPolicer::~PuntPolicer()
 
 bool Native::Platform::PuntPolicer::has_data() const
 {
-    for (std::size_t index=0; index<punt_num.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<punt_num.len(); index++)
     {
         if(punt_num[index]->has_data())
             return true;
@@ -4248,7 +4293,7 @@ bool Native::Platform::PuntPolicer::has_data() const
 
 bool Native::Platform::PuntPolicer::has_operation() const
 {
-    for (std::size_t index=0; index<punt_num.size(); index++)
+    for (std::size_t index=0; index<punt_num.len(); index++)
     {
         if(punt_num[index]->has_operation())
             return true;
@@ -4285,7 +4330,7 @@ std::shared_ptr<Entity> Native::Platform::PuntPolicer::get_child_by_name(const s
     {
         auto c = std::make_shared<Native::Platform::PuntPolicer::PuntNum>();
         c->parent = this;
-        punt_num.push_back(c);
+        punt_num.append(c);
         return c;
     }
 
@@ -4297,7 +4342,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Platform::PuntPolicer::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : punt_num)
+    for (auto c : punt_num.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4330,7 +4375,7 @@ Native::Platform::PuntPolicer::PuntNum::PuntNum()
     high{YType::empty, "high"}
 {
 
-    yang_name = "punt-num"; yang_parent_name = "punt-policer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "punt-num"; yang_parent_name = "punt-policer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::PuntPolicer::PuntNum::~PuntNum()
@@ -4339,6 +4384,7 @@ Native::Platform::PuntPolicer::PuntNum::~PuntNum()
 
 bool Native::Platform::PuntPolicer::PuntNum::has_data() const
 {
+    if (is_presence_container) return true;
     return cause.is_set
 	|| max_rate.is_set
 	|| high.is_set;
@@ -4362,7 +4408,8 @@ std::string Native::Platform::PuntPolicer::PuntNum::get_absolute_path() const
 std::string Native::Platform::PuntPolicer::PuntNum::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "punt-num" <<"[cause='" <<cause <<"']";
+    path_buffer << "punt-num";
+    ADD_KEY_TOKEN(cause, "cause");
     return path_buffer.str();
 }
 
@@ -4441,12 +4488,12 @@ Native::Platform::Qos::Qos()
     marker_statistics{YType::empty, "marker-statistics"},
     performance_monitor{YType::empty, "performance-monitor"},
     punt_path_matching{YType::empty, "punt-path-matching"}
-    	,
+        ,
     match_statistics(std::make_shared<Native::Platform::Qos::MatchStatistics>())
 {
     match_statistics->parent = this;
 
-    yang_name = "qos"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "qos"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Qos::~Qos()
@@ -4455,6 +4502,7 @@ Native::Platform::Qos::~Qos()
 
 bool Native::Platform::Qos::has_data() const
 {
+    if (is_presence_container) return true;
     return cac_policer.is_set
 	|| marker_statistics.is_set
 	|| performance_monitor.is_set
@@ -4586,7 +4634,7 @@ Native::Platform::Qos::MatchStatistics::MatchStatistics()
     per_ace{YType::empty, "per-ace"}
 {
 
-    yang_name = "match-statistics"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "match-statistics"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Qos::MatchStatistics::~MatchStatistics()
@@ -4595,6 +4643,7 @@ Native::Platform::Qos::MatchStatistics::~MatchStatistics()
 
 bool Native::Platform::Qos::MatchStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return per_filter.is_set
 	|| per_ace.is_set;
 }
@@ -4683,7 +4732,7 @@ Native::Platform::Reload::Reload()
     immediate{YType::empty, "immediate"}
 {
 
-    yang_name = "reload"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reload"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Reload::~Reload()
@@ -4692,6 +4741,7 @@ Native::Platform::Reload::~Reload()
 
 bool Native::Platform::Reload::has_data() const
 {
+    if (is_presence_container) return true;
     return immediate.is_set;
 }
 
@@ -4768,7 +4818,7 @@ Native::Platform::Urpf::Urpf()
 {
     loose->parent = this;
 
-    yang_name = "urpf"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "urpf"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Urpf::~Urpf()
@@ -4777,6 +4827,7 @@ Native::Platform::Urpf::~Urpf()
 
 bool Native::Platform::Urpf::has_data() const
 {
+    if (is_presence_container) return true;
     return (loose !=  nullptr && loose->has_data());
 }
 
@@ -4856,7 +4907,7 @@ Native::Platform::Urpf::Loose::Loose()
 {
     counter->parent = this;
 
-    yang_name = "loose"; yang_parent_name = "urpf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "loose"; yang_parent_name = "urpf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Urpf::Loose::~Loose()
@@ -4865,6 +4916,7 @@ Native::Platform::Urpf::Loose::~Loose()
 
 bool Native::Platform::Urpf::Loose::has_data() const
 {
+    if (is_presence_container) return true;
     return (counter !=  nullptr && counter->has_data());
 }
 
@@ -4941,12 +4993,12 @@ bool Native::Platform::Urpf::Loose::has_leaf_or_child_of_name(const std::string 
 Native::Platform::Urpf::Loose::Counter::Counter()
     :
     ipv4(std::make_shared<Native::Platform::Urpf::Loose::Counter::Ipv4>())
-	,ipv6(std::make_shared<Native::Platform::Urpf::Loose::Counter::Ipv6>())
+    , ipv6(std::make_shared<Native::Platform::Urpf::Loose::Counter::Ipv6>())
 {
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "counter"; yang_parent_name = "loose"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "counter"; yang_parent_name = "loose"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Urpf::Loose::Counter::~Counter()
@@ -4955,6 +5007,7 @@ Native::Platform::Urpf::Loose::Counter::~Counter()
 
 bool Native::Platform::Urpf::Loose::Counter::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
@@ -5050,7 +5103,7 @@ Native::Platform::Urpf::Loose::Counter::Ipv4::Ipv4()
 {
     supress->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Urpf::Loose::Counter::Ipv4::~Ipv4()
@@ -5059,6 +5112,7 @@ Native::Platform::Urpf::Loose::Counter::Ipv4::~Ipv4()
 
 bool Native::Platform::Urpf::Loose::Counter::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (supress !=  nullptr && supress->has_data());
 }
 
@@ -5137,7 +5191,7 @@ Native::Platform::Urpf::Loose::Counter::Ipv4::Supress::Supress()
     asymmetric_only{YType::empty, "asymmetric_only"}
 {
 
-    yang_name = "supress"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "supress"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Urpf::Loose::Counter::Ipv4::Supress::~Supress()
@@ -5146,6 +5200,7 @@ Native::Platform::Urpf::Loose::Counter::Ipv4::Supress::~Supress()
 
 bool Native::Platform::Urpf::Loose::Counter::Ipv4::Supress::has_data() const
 {
+    if (is_presence_container) return true;
     return asymmetric_only.is_set;
 }
 
@@ -5222,7 +5277,7 @@ Native::Platform::Urpf::Loose::Counter::Ipv6::Ipv6()
 {
     supress->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Urpf::Loose::Counter::Ipv6::~Ipv6()
@@ -5231,6 +5286,7 @@ Native::Platform::Urpf::Loose::Counter::Ipv6::~Ipv6()
 
 bool Native::Platform::Urpf::Loose::Counter::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (supress !=  nullptr && supress->has_data());
 }
 
@@ -5309,7 +5365,7 @@ Native::Platform::Urpf::Loose::Counter::Ipv6::Supress::Supress()
     asymmetric_only{YType::empty, "asymmetric_only"}
 {
 
-    yang_name = "supress"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "supress"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Urpf::Loose::Counter::Ipv6::Supress::~Supress()
@@ -5318,6 +5374,7 @@ Native::Platform::Urpf::Loose::Counter::Ipv6::Supress::~Supress()
 
 bool Native::Platform::Urpf::Loose::Counter::Ipv6::Supress::has_data() const
 {
+    if (is_presence_container) return true;
     return asymmetric_only.is_set;
 }
 
@@ -5393,7 +5450,7 @@ Native::Platform::TcamThreshold::TcamThreshold()
     alarm_frequency{YType::uint32, "alarm-frequency"}
 {
 
-    yang_name = "tcam-threshold"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tcam-threshold"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::TcamThreshold::~TcamThreshold()
@@ -5402,6 +5459,7 @@ Native::Platform::TcamThreshold::~TcamThreshold()
 
 bool Native::Platform::TcamThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return alarm_frequency.is_set;
 }
 
@@ -5473,9 +5531,11 @@ bool Native::Platform::TcamThreshold::has_leaf_or_child_of_name(const std::strin
 }
 
 Native::Platform::Trace::Trace()
+    :
+    runtime(this, {"slot", "bay"})
 {
 
-    yang_name = "trace"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Trace::~Trace()
@@ -5484,7 +5544,8 @@ Native::Platform::Trace::~Trace()
 
 bool Native::Platform::Trace::has_data() const
 {
-    for (std::size_t index=0; index<runtime.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<runtime.len(); index++)
     {
         if(runtime[index]->has_data())
             return true;
@@ -5494,7 +5555,7 @@ bool Native::Platform::Trace::has_data() const
 
 bool Native::Platform::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<runtime.size(); index++)
+    for (std::size_t index=0; index<runtime.len(); index++)
     {
         if(runtime[index]->has_operation())
             return true;
@@ -5531,7 +5592,7 @@ std::shared_ptr<Entity> Native::Platform::Trace::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Native::Platform::Trace::Runtime>();
         c->parent = this;
-        runtime.push_back(c);
+        runtime.append(c);
         return c;
     }
 
@@ -5543,7 +5604,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Platform::Trace::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : runtime)
+    for (auto c : runtime.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5578,7 +5639,7 @@ Native::Platform::Trace::Runtime::Runtime()
     level{YType::enumeration, "level"}
 {
 
-    yang_name = "runtime"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "runtime"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Platform::Trace::Runtime::~Runtime()
@@ -5587,6 +5648,7 @@ Native::Platform::Trace::Runtime::~Runtime()
 
 bool Native::Platform::Trace::Runtime::has_data() const
 {
+    if (is_presence_container) return true;
     return slot.is_set
 	|| bay.is_set
 	|| process.is_set
@@ -5614,7 +5676,9 @@ std::string Native::Platform::Trace::Runtime::get_absolute_path() const
 std::string Native::Platform::Trace::Runtime::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "runtime" <<"[slot='" <<slot <<"']" <<"[bay='" <<bay <<"']";
+    path_buffer << "runtime";
+    ADD_KEY_TOKEN(slot, "slot");
+    ADD_KEY_TOKEN(bay, "bay");
     return path_buffer.str();
 }
 
@@ -5713,14 +5777,14 @@ Native::Enable::Enable()
     :
     last_resort{YType::enumeration, "last-resort"},
     use_tacacs{YType::empty, "use-tacacs"}
-    	,
+        ,
     password(std::make_shared<Native::Enable::Password>())
-	,secret(std::make_shared<Native::Enable::Secret>())
+    , secret(std::make_shared<Native::Enable::Secret>())
 {
     password->parent = this;
     secret->parent = this;
 
-    yang_name = "enable"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "enable"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Enable::~Enable()
@@ -5729,6 +5793,7 @@ Native::Enable::~Enable()
 
 bool Native::Enable::has_data() const
 {
+    if (is_presence_container) return true;
     return last_resort.is_set
 	|| use_tacacs.is_set
 	|| (password !=  nullptr && password->has_data())
@@ -5851,7 +5916,7 @@ Native::Enable::Password::Password()
     secret{YType::str, "secret"}
 {
 
-    yang_name = "password"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "password"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Enable::Password::~Password()
@@ -5860,6 +5925,7 @@ Native::Enable::Password::~Password()
 
 bool Native::Enable::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| type.is_set
 	|| secret.is_set;
@@ -5963,7 +6029,7 @@ Native::Enable::Secret::Secret()
     secret{YType::str, "secret"}
 {
 
-    yang_name = "secret"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "secret"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Enable::Secret::~Secret()
@@ -5972,6 +6038,7 @@ Native::Enable::Secret::~Secret()
 
 bool Native::Enable::Secret::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| type.is_set
 	|| secret.is_set;
@@ -6074,7 +6141,7 @@ Native::Password::Password()
 {
     encryption->parent = this;
 
-    yang_name = "password"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "password"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Password::~Password()
@@ -6083,6 +6150,7 @@ Native::Password::~Password()
 
 bool Native::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return (encryption !=  nullptr && encryption->has_data());
 }
 
@@ -6161,7 +6229,7 @@ Native::Password::Encryption::Encryption()
     aes{YType::empty, "aes"}
 {
 
-    yang_name = "encryption"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "encryption"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Password::Encryption::~Encryption()
@@ -6170,6 +6238,7 @@ Native::Password::Encryption::~Encryption()
 
 bool Native::Password::Encryption::has_data() const
 {
+    if (is_presence_container) return true;
     return aes.is_set;
 }
 
@@ -6241,9 +6310,11 @@ bool Native::Password::Encryption::has_leaf_or_child_of_name(const std::string &
 }
 
 Native::Eap::Eap()
+    :
+    profile(this, {"name"})
 {
 
-    yang_name = "eap"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eap"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Eap::~Eap()
@@ -6252,7 +6323,8 @@ Native::Eap::~Eap()
 
 bool Native::Eap::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_data())
             return true;
@@ -6262,7 +6334,7 @@ bool Native::Eap::has_data() const
 
 bool Native::Eap::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_operation())
             return true;
@@ -6299,7 +6371,7 @@ std::shared_ptr<Entity> Native::Eap::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<Native::Eap::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile.append(c);
         return c;
     }
 
@@ -6311,7 +6383,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Eap::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : profile)
+    for (auto c : profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6341,12 +6413,12 @@ Native::Eap::Profile::Profile()
     :
     name{YType::str, "name"},
     pki_trustpoint{YType::str, "pki-trustpoint"}
-    	,
+        ,
     method(std::make_shared<Native::Eap::Profile::Method>())
 {
     method->parent = this;
 
-    yang_name = "profile"; yang_parent_name = "eap"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "eap"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Eap::Profile::~Profile()
@@ -6355,6 +6427,7 @@ Native::Eap::Profile::~Profile()
 
 bool Native::Eap::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| pki_trustpoint.is_set
 	|| (method !=  nullptr && method->has_data());
@@ -6378,7 +6451,8 @@ std::string Native::Eap::Profile::get_absolute_path() const
 std::string Native::Eap::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[name='" <<name <<"']";
+    path_buffer << "profile";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -6465,7 +6539,7 @@ Native::Eap::Profile::Method::Method()
     tls{YType::empty, "tls"}
 {
 
-    yang_name = "method"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Eap::Profile::Method::~Method()
@@ -6474,6 +6548,7 @@ Native::Eap::Profile::Method::~Method()
 
 bool Native::Eap::Profile::Method::has_data() const
 {
+    if (is_presence_container) return true;
     return fast.is_set
 	|| gtc.is_set
 	|| leap.is_set
@@ -6621,12 +6696,12 @@ Native::Archive::Archive()
     maximum{YType::uint8, "maximum"},
     write_memory{YType::empty, "write-memory"},
     time_period{YType::uint32, "time-period"}
-    	,
+        ,
     log(std::make_shared<Native::Archive::Log>())
 {
     log->parent = this;
 
-    yang_name = "archive"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "archive"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Archive::~Archive()
@@ -6635,6 +6710,7 @@ Native::Archive::~Archive()
 
 bool Native::Archive::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| maximum.is_set
 	|| write_memory.is_set
@@ -6766,7 +6842,7 @@ Native::Archive::Log::Log()
 {
     config->parent = this;
 
-    yang_name = "log"; yang_parent_name = "archive"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "log"; yang_parent_name = "archive"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Archive::Log::~Log()
@@ -6775,6 +6851,7 @@ Native::Archive::Log::~Log()
 
 bool Native::Archive::Log::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data());
 }
 
@@ -6851,14 +6928,14 @@ bool Native::Archive::Log::has_leaf_or_child_of_name(const std::string & name) c
 Native::Archive::Log::Config::Config()
     :
     hidekeys{YType::empty, "hidekeys"}
-    	,
+        ,
     logging(std::make_shared<Native::Archive::Log::Config::Logging>())
-	,notify(std::make_shared<Native::Archive::Log::Config::Notify>())
+    , notify(std::make_shared<Native::Archive::Log::Config::Notify>())
 {
     logging->parent = this;
     notify->parent = this;
 
-    yang_name = "config"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Archive::Log::Config::~Config()
@@ -6867,6 +6944,7 @@ Native::Archive::Log::Config::~Config()
 
 bool Native::Archive::Log::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return hidekeys.is_set
 	|| (logging !=  nullptr && logging->has_data())
 	|| (notify !=  nullptr && notify->has_data());
@@ -6973,11 +7051,11 @@ Native::Archive::Log::Config::Logging::Logging()
     :
     enable{YType::empty, "enable"},
     size{YType::uint16, "size"}
-    	,
+        ,
     persistent(nullptr) // presence node
 {
 
-    yang_name = "logging"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Archive::Log::Config::Logging::~Logging()
@@ -6986,6 +7064,7 @@ Native::Archive::Log::Config::Logging::~Logging()
 
 bool Native::Archive::Log::Config::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| size.is_set
 	|| (persistent !=  nullptr && persistent->has_data());
@@ -7091,7 +7170,7 @@ Native::Archive::Log::Config::Logging::Persistent::Persistent()
     reload{YType::empty, "reload"}
 {
 
-    yang_name = "persistent"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "persistent"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Archive::Log::Config::Logging::Persistent::~Persistent()
@@ -7100,6 +7179,7 @@ Native::Archive::Log::Config::Logging::Persistent::~Persistent()
 
 bool Native::Archive::Log::Config::Logging::Persistent::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set
 	|| reload.is_set;
 }
@@ -7188,7 +7268,7 @@ Native::Archive::Log::Config::Notify::Notify()
     syslog(nullptr) // presence node
 {
 
-    yang_name = "notify"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "notify"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Archive::Log::Config::Notify::~Notify()
@@ -7197,6 +7277,7 @@ Native::Archive::Log::Config::Notify::~Notify()
 
 bool Native::Archive::Log::Config::Notify::has_data() const
 {
+    if (is_presence_container) return true;
     return (syslog !=  nullptr && syslog->has_data());
 }
 
@@ -7275,7 +7356,7 @@ Native::Archive::Log::Config::Notify::Syslog::Syslog()
     contenttype{YType::enumeration, "contenttype"}
 {
 
-    yang_name = "syslog"; yang_parent_name = "notify"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "syslog"; yang_parent_name = "notify"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Archive::Log::Config::Notify::Syslog::~Syslog()
@@ -7284,6 +7365,7 @@ Native::Archive::Log::Config::Notify::Syslog::~Syslog()
 
 bool Native::Archive::Log::Config::Notify::Syslog::has_data() const
 {
+    if (is_presence_container) return true;
     return contenttype.is_set;
 }
 
@@ -7360,14 +7442,14 @@ Native::Username::Username()
     privilege{YType::uint8, "privilege"},
     view{YType::str, "view"},
     one_time{YType::empty, "one-time"}
-    	,
+        ,
     password(std::make_shared<Native::Username::Password>())
-	,secret(std::make_shared<Native::Username::Secret>())
+    , secret(std::make_shared<Native::Username::Secret>())
 {
     password->parent = this;
     secret->parent = this;
 
-    yang_name = "username"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "username"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Username::~Username()
@@ -7376,6 +7458,7 @@ Native::Username::~Username()
 
 bool Native::Username::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| privilege.is_set
 	|| view.is_set
@@ -7405,7 +7488,8 @@ std::string Native::Username::get_absolute_path() const
 std::string Native::Username::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "username" <<"[name='" <<name <<"']";
+    path_buffer << "username";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -7523,7 +7607,7 @@ Native::Username::Password::Password()
     password{YType::str, "password"}
 {
 
-    yang_name = "password"; yang_parent_name = "username"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "password"; yang_parent_name = "username"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Username::Password::~Password()
@@ -7532,6 +7616,7 @@ Native::Username::Password::~Password()
 
 bool Native::Username::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return encryption.is_set
 	|| password.is_set;
 }
@@ -7614,7 +7699,7 @@ Native::Username::Secret::Secret()
     secret{YType::str, "secret"}
 {
 
-    yang_name = "secret"; yang_parent_name = "username"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secret"; yang_parent_name = "username"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Username::Secret::~Secret()
@@ -7623,6 +7708,7 @@ Native::Username::Secret::~Secret()
 
 bool Native::Username::Secret::has_data() const
 {
+    if (is_presence_container) return true;
     return encryption.is_set
 	|| secret.is_set;
 }
@@ -7700,9 +7786,15 @@ bool Native::Username::Secret::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Native::Controller::Controller()
+    :
+    controller_tx_ex_list(this, {"name", "number"})
+    , cellular(this, {"id"})
+    , sonet(this, {"name"})
+    , sonet_acr(this, {"name"})
+    , wanphy(this, {"name"})
 {
 
-    yang_name = "controller"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Controller::~Controller()
@@ -7711,27 +7803,28 @@ Native::Controller::~Controller()
 
 bool Native::Controller::has_data() const
 {
-    for (std::size_t index=0; index<controller_tx_ex_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<controller_tx_ex_list.len(); index++)
     {
         if(controller_tx_ex_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<cellular.size(); index++)
+    for (std::size_t index=0; index<cellular.len(); index++)
     {
         if(cellular[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sonet.size(); index++)
+    for (std::size_t index=0; index<sonet.len(); index++)
     {
         if(sonet[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sonet_acr.size(); index++)
+    for (std::size_t index=0; index<sonet_acr.len(); index++)
     {
         if(sonet_acr[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<wanphy.size(); index++)
+    for (std::size_t index=0; index<wanphy.len(); index++)
     {
         if(wanphy[index]->has_data())
             return true;
@@ -7741,27 +7834,27 @@ bool Native::Controller::has_data() const
 
 bool Native::Controller::has_operation() const
 {
-    for (std::size_t index=0; index<controller_tx_ex_list.size(); index++)
+    for (std::size_t index=0; index<controller_tx_ex_list.len(); index++)
     {
         if(controller_tx_ex_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<cellular.size(); index++)
+    for (std::size_t index=0; index<cellular.len(); index++)
     {
         if(cellular[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sonet.size(); index++)
+    for (std::size_t index=0; index<sonet.len(); index++)
     {
         if(sonet[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sonet_acr.size(); index++)
+    for (std::size_t index=0; index<sonet_acr.len(); index++)
     {
         if(sonet_acr[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<wanphy.size(); index++)
+    for (std::size_t index=0; index<wanphy.len(); index++)
     {
         if(wanphy[index]->has_operation())
             return true;
@@ -7798,7 +7891,7 @@ std::shared_ptr<Entity> Native::Controller::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Native::Controller::ControllerTxExList>();
         c->parent = this;
-        controller_tx_ex_list.push_back(c);
+        controller_tx_ex_list.append(c);
         return c;
     }
 
@@ -7806,7 +7899,7 @@ std::shared_ptr<Entity> Native::Controller::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Native::Controller::Cellular>();
         c->parent = this;
-        cellular.push_back(c);
+        cellular.append(c);
         return c;
     }
 
@@ -7814,7 +7907,7 @@ std::shared_ptr<Entity> Native::Controller::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Native::Controller::SONET>();
         c->parent = this;
-        sonet.push_back(c);
+        sonet.append(c);
         return c;
     }
 
@@ -7822,7 +7915,7 @@ std::shared_ptr<Entity> Native::Controller::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Native::Controller::SONETACR>();
         c->parent = this;
-        sonet_acr.push_back(c);
+        sonet_acr.append(c);
         return c;
     }
 
@@ -7830,7 +7923,7 @@ std::shared_ptr<Entity> Native::Controller::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Native::Controller::Wanphy>();
         c->parent = this;
-        wanphy.push_back(c);
+        wanphy.append(c);
         return c;
     }
 
@@ -7842,7 +7935,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : controller_tx_ex_list)
+    for (auto c : controller_tx_ex_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7851,7 +7944,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::get_children(
     }
 
     count = 0;
-    for (auto const & c : cellular)
+    for (auto c : cellular.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7860,7 +7953,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::get_children(
     }
 
     count = 0;
-    for (auto const & c : sonet)
+    for (auto c : sonet.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7869,7 +7962,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::get_children(
     }
 
     count = 0;
-    for (auto const & c : sonet_acr)
+    for (auto c : sonet_acr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7878,7 +7971,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::get_children(
     }
 
     count = 0;
-    for (auto const & c : wanphy)
+    for (auto c : wanphy.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7912,14 +8005,15 @@ Native::Controller::ControllerTxExList::ControllerTxExList()
     framing{YType::str, "framing"},
     description{YType::str, "description"},
     linecode{YType::enumeration, "linecode"}
-    	,
+        ,
     clock_(std::make_shared<Native::Controller::ControllerTxExList::Clock>())
-	,cablelength(std::make_shared<Native::Controller::ControllerTxExList::Cablelength>())
+    , cablelength(std::make_shared<Native::Controller::ControllerTxExList::Cablelength>())
+    , channel_group(this, {"number"})
 {
     clock_->parent = this;
     cablelength->parent = this;
 
-    yang_name = "controller-tx-ex-list"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller-tx-ex-list"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Controller::ControllerTxExList::~ControllerTxExList()
@@ -7928,7 +8022,8 @@ Native::Controller::ControllerTxExList::~ControllerTxExList()
 
 bool Native::Controller::ControllerTxExList::has_data() const
 {
-    for (std::size_t index=0; index<channel_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<channel_group.len(); index++)
     {
         if(channel_group[index]->has_data())
             return true;
@@ -7945,7 +8040,7 @@ bool Native::Controller::ControllerTxExList::has_data() const
 
 bool Native::Controller::ControllerTxExList::has_operation() const
 {
-    for (std::size_t index=0; index<channel_group.size(); index++)
+    for (std::size_t index=0; index<channel_group.len(); index++)
     {
         if(channel_group[index]->has_operation())
             return true;
@@ -7971,7 +8066,9 @@ std::string Native::Controller::ControllerTxExList::get_absolute_path() const
 std::string Native::Controller::ControllerTxExList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-controller:controller-tx-ex-list" <<"[name='" <<name <<"']" <<"[number='" <<number <<"']";
+    path_buffer << "Cisco-IOS-XE-controller:controller-tx-ex-list";
+    ADD_KEY_TOKEN(name, "name");
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -8014,7 +8111,7 @@ std::shared_ptr<Entity> Native::Controller::ControllerTxExList::get_child_by_nam
     {
         auto c = std::make_shared<Native::Controller::ControllerTxExList::ChannelGroup>();
         c->parent = this;
-        channel_group.push_back(c);
+        channel_group.append(c);
         return c;
     }
 
@@ -8036,7 +8133,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::ControllerTxE
     }
 
     count = 0;
-    for (auto const & c : channel_group)
+    for (auto c : channel_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8128,7 +8225,7 @@ Native::Controller::ControllerTxExList::Clock::Clock()
 {
     source->parent = this;
 
-    yang_name = "clock"; yang_parent_name = "controller-tx-ex-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock"; yang_parent_name = "controller-tx-ex-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::ControllerTxExList::Clock::~Clock()
@@ -8137,6 +8234,7 @@ Native::Controller::ControllerTxExList::Clock::~Clock()
 
 bool Native::Controller::ControllerTxExList::Clock::has_data() const
 {
+    if (is_presence_container) return true;
     return (source !=  nullptr && source->has_data());
 }
 
@@ -8207,11 +8305,11 @@ Native::Controller::ControllerTxExList::Clock::Source::Source()
     :
     internal{YType::empty, "internal"},
     loop_timed{YType::empty, "loop-timed"}
-    	,
+        ,
     line(nullptr) // presence node
 {
 
-    yang_name = "source"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::ControllerTxExList::Clock::Source::~Source()
@@ -8220,6 +8318,7 @@ Native::Controller::ControllerTxExList::Clock::Source::~Source()
 
 bool Native::Controller::ControllerTxExList::Clock::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return internal.is_set
 	|| loop_timed.is_set
 	|| (line !=  nullptr && line->has_data());
@@ -8317,7 +8416,7 @@ Native::Controller::ControllerTxExList::Clock::Source::Line::Line()
     line_mode{YType::enumeration, "line-mode"}
 {
 
-    yang_name = "line"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Controller::ControllerTxExList::Clock::Source::Line::~Line()
@@ -8326,6 +8425,7 @@ Native::Controller::ControllerTxExList::Clock::Source::Line::~Line()
 
 bool Native::Controller::ControllerTxExList::Clock::Source::Line::has_data() const
 {
+    if (is_presence_container) return true;
     return line_mode.is_set;
 }
 
@@ -8395,7 +8495,7 @@ Native::Controller::ControllerTxExList::Cablelength::Cablelength()
     short_{YType::str, "short"}
 {
 
-    yang_name = "cablelength"; yang_parent_name = "controller-tx-ex-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cablelength"; yang_parent_name = "controller-tx-ex-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::ControllerTxExList::Cablelength::~Cablelength()
@@ -8404,6 +8504,7 @@ Native::Controller::ControllerTxExList::Cablelength::~Cablelength()
 
 bool Native::Controller::ControllerTxExList::Cablelength::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set
 	|| short_.is_set;
 }
@@ -8486,7 +8587,7 @@ Native::Controller::ControllerTxExList::ChannelGroup::ChannelGroup()
     timeslots{YType::str, "timeslots"}
 {
 
-    yang_name = "channel-group"; yang_parent_name = "controller-tx-ex-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "channel-group"; yang_parent_name = "controller-tx-ex-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::ControllerTxExList::ChannelGroup::~ChannelGroup()
@@ -8495,6 +8596,7 @@ Native::Controller::ControllerTxExList::ChannelGroup::~ChannelGroup()
 
 bool Native::Controller::ControllerTxExList::ChannelGroup::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : timeslots.getYLeafs())
     {
         if(leaf.is_set)
@@ -8518,7 +8620,8 @@ bool Native::Controller::ControllerTxExList::ChannelGroup::has_operation() const
 std::string Native::Controller::ControllerTxExList::ChannelGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "channel-group" <<"[number='" <<number <<"']";
+    path_buffer << "channel-group";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -8582,12 +8685,12 @@ bool Native::Controller::ControllerTxExList::ChannelGroup::has_leaf_or_child_of_
 Native::Controller::Cellular::Cellular()
     :
     id{YType::str, "id"}
-    	,
+        ,
     lte(std::make_shared<Native::Controller::Cellular::Lte>())
 {
     lte->parent = this;
 
-    yang_name = "Cellular"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "Cellular"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Controller::Cellular::~Cellular()
@@ -8596,6 +8699,7 @@ Native::Controller::Cellular::~Cellular()
 
 bool Native::Controller::Cellular::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| (lte !=  nullptr && lte->has_data());
 }
@@ -8617,7 +8721,8 @@ std::string Native::Controller::Cellular::get_absolute_path() const
 std::string Native::Controller::Cellular::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-controller:Cellular" <<"[id='" <<id <<"']";
+    path_buffer << "Cisco-IOS-XE-controller:Cellular";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -8685,19 +8790,19 @@ bool Native::Controller::Cellular::has_leaf_or_child_of_name(const std::string &
 Native::Controller::Cellular::Lte::Lte()
     :
     failovertimer{YType::uint8, "failovertimer"}
-    	,
+        ,
     sim(std::make_shared<Native::Controller::Cellular::Lte::Sim>())
-	,gps(std::make_shared<Native::Controller::Cellular::Lte::Gps>())
-	,firmware(nullptr) // presence node
-	,radio(std::make_shared<Native::Controller::Cellular::Lte::Radio>())
-	,modem(std::make_shared<Native::Controller::Cellular::Lte::Modem>())
+    , gps(std::make_shared<Native::Controller::Cellular::Lte::Gps>())
+    , firmware(nullptr) // presence node
+    , radio(std::make_shared<Native::Controller::Cellular::Lte::Radio>())
+    , modem(std::make_shared<Native::Controller::Cellular::Lte::Modem>())
 {
     sim->parent = this;
     gps->parent = this;
     radio->parent = this;
     modem->parent = this;
 
-    yang_name = "lte"; yang_parent_name = "Cellular"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lte"; yang_parent_name = "Cellular"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::~Lte()
@@ -8706,6 +8811,7 @@ Native::Controller::Cellular::Lte::~Lte()
 
 bool Native::Controller::Cellular::Lte::has_data() const
 {
+    if (is_presence_container) return true;
     return failovertimer.is_set
 	|| (sim !=  nullptr && sim->has_data())
 	|| (gps !=  nullptr && gps->has_data())
@@ -8852,14 +8958,15 @@ bool Native::Controller::Cellular::Lte::has_leaf_or_child_of_name(const std::str
 Native::Controller::Cellular::Lte::Sim::Sim()
     :
     max_retry{YType::uint16, "max-retry"}
-    	,
+        ,
     authenticate(std::make_shared<Native::Controller::Cellular::Lte::Sim::Authenticate>())
-	,primary(std::make_shared<Native::Controller::Cellular::Lte::Sim::Primary>())
+    , data_profile_list(this, {"slot"})
+    , primary(std::make_shared<Native::Controller::Cellular::Lte::Sim::Primary>())
 {
     authenticate->parent = this;
     primary->parent = this;
 
-    yang_name = "sim"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sim"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Sim::~Sim()
@@ -8868,7 +8975,8 @@ Native::Controller::Cellular::Lte::Sim::~Sim()
 
 bool Native::Controller::Cellular::Lte::Sim::has_data() const
 {
-    for (std::size_t index=0; index<data_profile_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_profile_list.len(); index++)
     {
         if(data_profile_list[index]->has_data())
             return true;
@@ -8880,7 +8988,7 @@ bool Native::Controller::Cellular::Lte::Sim::has_data() const
 
 bool Native::Controller::Cellular::Lte::Sim::has_operation() const
 {
-    for (std::size_t index=0; index<data_profile_list.size(); index++)
+    for (std::size_t index=0; index<data_profile_list.len(); index++)
     {
         if(data_profile_list[index]->has_operation())
             return true;
@@ -8923,7 +9031,7 @@ std::shared_ptr<Entity> Native::Controller::Cellular::Lte::Sim::get_child_by_nam
     {
         auto c = std::make_shared<Native::Controller::Cellular::Lte::Sim::DataProfileList>();
         c->parent = this;
-        data_profile_list.push_back(c);
+        data_profile_list.append(c);
         return c;
     }
 
@@ -8949,7 +9057,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::Cellular::Lte
     }
 
     count = 0;
-    for (auto const & c : data_profile_list)
+    for (auto c : data_profile_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8997,7 +9105,7 @@ Native::Controller::Cellular::Lte::Sim::Authenticate::Authenticate()
     slot{YType::uint8, "slot"}
 {
 
-    yang_name = "authenticate"; yang_parent_name = "sim"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authenticate"; yang_parent_name = "sim"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Sim::Authenticate::~Authenticate()
@@ -9006,6 +9114,7 @@ Native::Controller::Cellular::Lte::Sim::Authenticate::~Authenticate()
 
 bool Native::Controller::Cellular::Lte::Sim::Authenticate::has_data() const
 {
+    if (is_presence_container) return true;
     return pin_type.is_set
 	|| pin.is_set
 	|| slot.is_set;
@@ -9102,7 +9211,7 @@ Native::Controller::Cellular::Lte::Sim::DataProfileList::DataProfileList()
     attach_profile{YType::uint8, "attach-profile"}
 {
 
-    yang_name = "data-profile-list"; yang_parent_name = "sim"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-profile-list"; yang_parent_name = "sim"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Sim::DataProfileList::~DataProfileList()
@@ -9111,6 +9220,7 @@ Native::Controller::Cellular::Lte::Sim::DataProfileList::~DataProfileList()
 
 bool Native::Controller::Cellular::Lte::Sim::DataProfileList::has_data() const
 {
+    if (is_presence_container) return true;
     return slot.is_set
 	|| data_profile.is_set
 	|| attach_profile.is_set;
@@ -9127,7 +9237,8 @@ bool Native::Controller::Cellular::Lte::Sim::DataProfileList::has_operation() co
 std::string Native::Controller::Cellular::Lte::Sim::DataProfileList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data-profile-list" <<"[slot='" <<slot <<"']";
+    path_buffer << "data-profile-list";
+    ADD_KEY_TOKEN(slot, "slot");
     return path_buffer.str();
 }
 
@@ -9205,7 +9316,7 @@ Native::Controller::Cellular::Lte::Sim::Primary::Primary()
     slot{YType::uint8, "slot"}
 {
 
-    yang_name = "primary"; yang_parent_name = "sim"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary"; yang_parent_name = "sim"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Sim::Primary::~Primary()
@@ -9214,6 +9325,7 @@ Native::Controller::Cellular::Lte::Sim::Primary::~Primary()
 
 bool Native::Controller::Cellular::Lte::Sim::Primary::has_data() const
 {
+    if (is_presence_container) return true;
     return slot.is_set;
 }
 
@@ -9281,14 +9393,14 @@ Native::Controller::Cellular::Lte::Gps::Gps()
     :
     enable{YType::empty, "enable"},
     mode{YType::enumeration, "mode"}
-    	,
+        ,
     nmea_conf(std::make_shared<Native::Controller::Cellular::Lte::Gps::NmeaConf>())
-	,nmea(std::make_shared<Native::Controller::Cellular::Lte::Gps::Nmea>())
+    , nmea(std::make_shared<Native::Controller::Cellular::Lte::Gps::Nmea>())
 {
     nmea_conf->parent = this;
     nmea->parent = this;
 
-    yang_name = "gps"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "gps"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Gps::~Gps()
@@ -9297,6 +9409,7 @@ Native::Controller::Cellular::Lte::Gps::~Gps()
 
 bool Native::Controller::Cellular::Lte::Gps::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| mode.is_set
 	|| (nmea_conf !=  nullptr && nmea_conf->has_data())
@@ -9410,7 +9523,7 @@ Native::Controller::Cellular::Lte::Gps::NmeaConf::NmeaConf()
     nmea{YType::empty, "nmea"}
 {
 
-    yang_name = "nmea-conf"; yang_parent_name = "gps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nmea-conf"; yang_parent_name = "gps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Gps::NmeaConf::~NmeaConf()
@@ -9419,6 +9532,7 @@ Native::Controller::Cellular::Lte::Gps::NmeaConf::~NmeaConf()
 
 bool Native::Controller::Cellular::Lte::Gps::NmeaConf::has_data() const
 {
+    if (is_presence_container) return true;
     return nmea.is_set;
 }
 
@@ -9488,7 +9602,7 @@ Native::Controller::Cellular::Lte::Gps::Nmea::Nmea()
 {
     ip->parent = this;
 
-    yang_name = "nmea"; yang_parent_name = "gps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nmea"; yang_parent_name = "gps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Gps::Nmea::~Nmea()
@@ -9497,6 +9611,7 @@ Native::Controller::Cellular::Lte::Gps::Nmea::~Nmea()
 
 bool Native::Controller::Cellular::Lte::Gps::Nmea::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -9569,7 +9684,7 @@ Native::Controller::Cellular::Lte::Gps::Nmea::Ip::Ip()
 {
     udp->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "nmea"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "nmea"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Gps::Nmea::Ip::~Ip()
@@ -9578,6 +9693,7 @@ Native::Controller::Cellular::Lte::Gps::Nmea::Ip::~Ip()
 
 bool Native::Controller::Cellular::Lte::Gps::Nmea::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (udp !=  nullptr && udp->has_data());
 }
 
@@ -9651,7 +9767,7 @@ Native::Controller::Cellular::Lte::Gps::Nmea::Ip::Udp::Udp()
     destination_port{YType::uint16, "destination-port"}
 {
 
-    yang_name = "udp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Gps::Nmea::Ip::Udp::~Udp()
@@ -9660,6 +9776,7 @@ Native::Controller::Cellular::Lte::Gps::Nmea::Ip::Udp::~Udp()
 
 bool Native::Controller::Cellular::Lte::Gps::Nmea::Ip::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| destination_address.is_set
 	|| destination_port.is_set;
@@ -9754,7 +9871,7 @@ Native::Controller::Cellular::Lte::Firmware::Firmware()
     auto_sim{YType::empty, "auto-sim"}
 {
 
-    yang_name = "firmware"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "firmware"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Controller::Cellular::Lte::Firmware::~Firmware()
@@ -9763,6 +9880,7 @@ Native::Controller::Cellular::Lte::Firmware::~Firmware()
 
 bool Native::Controller::Cellular::Lte::Firmware::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_sim.is_set;
 }
 
@@ -9831,7 +9949,7 @@ Native::Controller::Cellular::Lte::Radio::Radio()
     off{YType::empty, "off"}
 {
 
-    yang_name = "radio"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "radio"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Radio::~Radio()
@@ -9840,6 +9958,7 @@ Native::Controller::Cellular::Lte::Radio::~Radio()
 
 bool Native::Controller::Cellular::Lte::Radio::has_data() const
 {
+    if (is_presence_container) return true;
     return off.is_set;
 }
 
@@ -9909,7 +10028,7 @@ Native::Controller::Cellular::Lte::Modem::Modem()
 {
     link_recovery->parent = this;
 
-    yang_name = "modem"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "modem"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Modem::~Modem()
@@ -9918,6 +10037,7 @@ Native::Controller::Cellular::Lte::Modem::~Modem()
 
 bool Native::Controller::Cellular::Lte::Modem::has_data() const
 {
+    if (is_presence_container) return true;
     return (link_recovery !=  nullptr && link_recovery->has_data());
 }
 
@@ -9990,12 +10110,12 @@ Native::Controller::Cellular::Lte::Modem::LinkRecovery::LinkRecovery()
     wait_timer{YType::uint32, "wait-timer"},
     debounce_count{YType::uint32, "debounce-count"},
     disable{YType::empty, "disable"}
-    	,
+        ,
     rssi(std::make_shared<Native::Controller::Cellular::Lte::Modem::LinkRecovery::Rssi>())
 {
     rssi->parent = this;
 
-    yang_name = "link-recovery"; yang_parent_name = "modem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-recovery"; yang_parent_name = "modem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Modem::LinkRecovery::~LinkRecovery()
@@ -10004,6 +10124,7 @@ Native::Controller::Cellular::Lte::Modem::LinkRecovery::~LinkRecovery()
 
 bool Native::Controller::Cellular::Lte::Modem::LinkRecovery::has_data() const
 {
+    if (is_presence_container) return true;
     return monitor_timer.is_set
 	|| wait_timer.is_set
 	|| debounce_count.is_set
@@ -10127,7 +10248,7 @@ Native::Controller::Cellular::Lte::Modem::LinkRecovery::Rssi::Rssi()
     onset_threshold{YType::int32, "onset-threshold"}
 {
 
-    yang_name = "rssi"; yang_parent_name = "link-recovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rssi"; yang_parent_name = "link-recovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::Cellular::Lte::Modem::LinkRecovery::Rssi::~Rssi()
@@ -10136,6 +10257,7 @@ Native::Controller::Cellular::Lte::Modem::LinkRecovery::Rssi::~Rssi()
 
 bool Native::Controller::Cellular::Lte::Modem::LinkRecovery::Rssi::has_data() const
 {
+    if (is_presence_container) return true;
     return onset_threshold.is_set;
 }
 
@@ -10204,18 +10326,20 @@ Native::Controller::SONET::SONET()
     name{YType::str, "name"},
     framing{YType::enumeration, "framing"},
     shutdown{YType::empty, "shutdown"}
-    	,
+        ,
     clock_(std::make_shared<Native::Controller::SONET::Clock>())
-	,aug(std::make_shared<Native::Controller::SONET::Aug>())
-	,au_4_atm(std::make_shared<Native::Controller::SONET::Au4Atm>())
-	,aps(std::make_shared<Native::Controller::SONET::Aps>())
+    , aug(std::make_shared<Native::Controller::SONET::Aug>())
+    , au_3(this, {"number"})
+    , au_4_atm(std::make_shared<Native::Controller::SONET::Au4Atm>())
+    , au_4(this, {"number", "tug_3"})
+    , aps(std::make_shared<Native::Controller::SONET::Aps>())
 {
     clock_->parent = this;
     aug->parent = this;
     au_4_atm->parent = this;
     aps->parent = this;
 
-    yang_name = "SONET"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "SONET"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Controller::SONET::~SONET()
@@ -10224,12 +10348,13 @@ Native::Controller::SONET::~SONET()
 
 bool Native::Controller::SONET::has_data() const
 {
-    for (std::size_t index=0; index<au_3.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<au_3.len(); index++)
     {
         if(au_3[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<au_4.size(); index++)
+    for (std::size_t index=0; index<au_4.len(); index++)
     {
         if(au_4[index]->has_data())
             return true;
@@ -10245,12 +10370,12 @@ bool Native::Controller::SONET::has_data() const
 
 bool Native::Controller::SONET::has_operation() const
 {
-    for (std::size_t index=0; index<au_3.size(); index++)
+    for (std::size_t index=0; index<au_3.len(); index++)
     {
         if(au_3[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<au_4.size(); index++)
+    for (std::size_t index=0; index<au_4.len(); index++)
     {
         if(au_4[index]->has_operation())
             return true;
@@ -10275,7 +10400,8 @@ std::string Native::Controller::SONET::get_absolute_path() const
 std::string Native::Controller::SONET::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-controller:SONET" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-controller:SONET";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10315,7 +10441,7 @@ std::shared_ptr<Entity> Native::Controller::SONET::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Controller::SONET::Au3>();
         c->parent = this;
-        au_3.push_back(c);
+        au_3.append(c);
         return c;
     }
 
@@ -10332,7 +10458,7 @@ std::shared_ptr<Entity> Native::Controller::SONET::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Controller::SONET::Au4>();
         c->parent = this;
-        au_4.push_back(c);
+        au_4.append(c);
         return c;
     }
 
@@ -10363,7 +10489,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::get_ch
     }
 
     count = 0;
-    for (auto const & c : au_3)
+    for (auto c : au_3.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10377,7 +10503,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::get_ch
     }
 
     count = 0;
-    for (auto const & c : au_4)
+    for (auto c : au_4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10443,7 +10569,7 @@ Native::Controller::SONET::Clock::Clock()
     source{YType::enumeration, "source"}
 {
 
-    yang_name = "clock"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Clock::~Clock()
@@ -10452,6 +10578,7 @@ Native::Controller::SONET::Clock::~Clock()
 
 bool Native::Controller::SONET::Clock::has_data() const
 {
+    if (is_presence_container) return true;
     return source.is_set;
 }
 
@@ -10520,7 +10647,7 @@ Native::Controller::SONET::Aug::Aug()
     mapping{YType::enumeration, "mapping"}
 {
 
-    yang_name = "aug"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aug"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Aug::~Aug()
@@ -10529,6 +10656,7 @@ Native::Controller::SONET::Aug::~Aug()
 
 bool Native::Controller::SONET::Aug::has_data() const
 {
+    if (is_presence_container) return true;
     return mapping.is_set;
 }
 
@@ -10595,14 +10723,14 @@ bool Native::Controller::SONET::Aug::has_leaf_or_child_of_name(const std::string
 Native::Controller::SONET::Au3::Au3()
     :
     number{YType::int8, "number"}
-    	,
+        ,
     overhead(std::make_shared<Native::Controller::SONET::Au3::Overhead>())
-	,mode(std::make_shared<Native::Controller::SONET::Au3::Mode>())
+    , mode(std::make_shared<Native::Controller::SONET::Au3::Mode>())
 {
     overhead->parent = this;
     mode->parent = this;
 
-    yang_name = "au-3"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "au-3"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au3::~Au3()
@@ -10611,6 +10739,7 @@ Native::Controller::SONET::Au3::~Au3()
 
 bool Native::Controller::SONET::Au3::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (overhead !=  nullptr && overhead->has_data())
 	|| (mode !=  nullptr && mode->has_data());
@@ -10627,7 +10756,8 @@ bool Native::Controller::SONET::Au3::has_operation() const
 std::string Native::Controller::SONET::Au3::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "au-3" <<"[number='" <<number <<"']";
+    path_buffer << "au-3";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -10712,7 +10842,7 @@ Native::Controller::SONET::Au3::Overhead::Overhead()
     length{YType::uint8, "length"}
 {
 
-    yang_name = "overhead"; yang_parent_name = "au-3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "overhead"; yang_parent_name = "au-3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au3::Overhead::~Overhead()
@@ -10721,6 +10851,7 @@ Native::Controller::SONET::Au3::Overhead::~Overhead()
 
 bool Native::Controller::SONET::Au3::Overhead::has_data() const
 {
+    if (is_presence_container) return true;
     return byte.is_set
 	|| length.is_set;
 }
@@ -10802,7 +10933,7 @@ Native::Controller::SONET::Au3::Mode::Mode()
     mapping{YType::enumeration, "mapping"}
 {
 
-    yang_name = "mode"; yang_parent_name = "au-3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "au-3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au3::Mode::~Mode()
@@ -10811,6 +10942,7 @@ Native::Controller::SONET::Au3::Mode::~Mode()
 
 bool Native::Controller::SONET::Au3::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return mapping.is_set;
 }
 
@@ -10880,7 +11012,7 @@ Native::Controller::SONET::Au4Atm::Au4Atm()
 {
     au_4->parent = this;
 
-    yang_name = "au-4-atm"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "au-4-atm"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4Atm::~Au4Atm()
@@ -10889,6 +11021,7 @@ Native::Controller::SONET::Au4Atm::~Au4Atm()
 
 bool Native::Controller::SONET::Au4Atm::has_data() const
 {
+    if (is_presence_container) return true;
     return (au_4 !=  nullptr && au_4->has_data());
 }
 
@@ -10961,7 +11094,7 @@ Native::Controller::SONET::Au4Atm::Au4::Au4()
     atm{YType::empty, "atm"}
 {
 
-    yang_name = "au-4"; yang_parent_name = "au-4-atm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "au-4"; yang_parent_name = "au-4-atm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4Atm::Au4::~Au4()
@@ -10970,6 +11103,7 @@ Native::Controller::SONET::Au4Atm::Au4::~Au4()
 
 bool Native::Controller::SONET::Au4Atm::Au4::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| atm.is_set;
 }
@@ -11054,13 +11188,13 @@ Native::Controller::SONET::Au4::Au4()
     cem_group{YType::int32, "cem-group"},
     unframed{YType::empty, "unframed"},
     framing{YType::enumeration, "framing"}
-    	,
+        ,
     cem_group_timeslots(std::make_shared<Native::Controller::SONET::Au4::CemGroupTimeslots>())
-	,channel_group_timeslots(std::make_shared<Native::Controller::SONET::Au4::ChannelGroupTimeslots>())
-	,cem_group_unframed(std::make_shared<Native::Controller::SONET::Au4::CemGroupUnframed>())
-	,framing_unframed(std::make_shared<Native::Controller::SONET::Au4::FramingUnframed>())
-	,cem_group_atm(std::make_shared<Native::Controller::SONET::Au4::CemGroupAtm>())
-	,ima_group(std::make_shared<Native::Controller::SONET::Au4::ImaGroup>())
+    , channel_group_timeslots(std::make_shared<Native::Controller::SONET::Au4::ChannelGroupTimeslots>())
+    , cem_group_unframed(std::make_shared<Native::Controller::SONET::Au4::CemGroupUnframed>())
+    , framing_unframed(std::make_shared<Native::Controller::SONET::Au4::FramingUnframed>())
+    , cem_group_atm(std::make_shared<Native::Controller::SONET::Au4::CemGroupAtm>())
+    , ima_group(std::make_shared<Native::Controller::SONET::Au4::ImaGroup>())
 {
     cem_group_timeslots->parent = this;
     channel_group_timeslots->parent = this;
@@ -11069,7 +11203,7 @@ Native::Controller::SONET::Au4::Au4()
     cem_group_atm->parent = this;
     ima_group->parent = this;
 
-    yang_name = "au-4"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "au-4"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::~Au4()
@@ -11078,6 +11212,7 @@ Native::Controller::SONET::Au4::~Au4()
 
 bool Native::Controller::SONET::Au4::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| tug_3.is_set
 	|| mode.is_set
@@ -11112,7 +11247,9 @@ bool Native::Controller::SONET::Au4::has_operation() const
 std::string Native::Controller::SONET::Au4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "au-4" <<"[number='" <<number <<"']" <<"[tug-3='" <<tug_3 <<"']";
+    path_buffer << "au-4";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(tug_3, "tug-3");
     return path_buffer.str();
 }
 
@@ -11303,9 +11440,11 @@ bool Native::Controller::SONET::Au4::has_leaf_or_child_of_name(const std::string
 }
 
 Native::Controller::SONET::Au4::CemGroupTimeslots::CemGroupTimeslots()
+    :
+    tug_2(this, {"number", "e1", "cem_group"})
 {
 
-    yang_name = "cem-group-timeslots"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem-group-timeslots"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::CemGroupTimeslots::~CemGroupTimeslots()
@@ -11314,7 +11453,8 @@ Native::Controller::SONET::Au4::CemGroupTimeslots::~CemGroupTimeslots()
 
 bool Native::Controller::SONET::Au4::CemGroupTimeslots::has_data() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_data())
             return true;
@@ -11324,7 +11464,7 @@ bool Native::Controller::SONET::Au4::CemGroupTimeslots::has_data() const
 
 bool Native::Controller::SONET::Au4::CemGroupTimeslots::has_operation() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_operation())
             return true;
@@ -11354,7 +11494,7 @@ std::shared_ptr<Entity> Native::Controller::SONET::Au4::CemGroupTimeslots::get_c
     {
         auto c = std::make_shared<Native::Controller::SONET::Au4::CemGroupTimeslots::Tug2>();
         c->parent = this;
-        tug_2.push_back(c);
+        tug_2.append(c);
         return c;
     }
 
@@ -11366,7 +11506,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Au4::C
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tug_2)
+    for (auto c : tug_2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11400,7 +11540,7 @@ Native::Controller::SONET::Au4::CemGroupTimeslots::Tug2::Tug2()
     timeslots{YType::str, "timeslots"}
 {
 
-    yang_name = "tug-2"; yang_parent_name = "cem-group-timeslots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tug-2"; yang_parent_name = "cem-group-timeslots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::CemGroupTimeslots::Tug2::~Tug2()
@@ -11409,6 +11549,7 @@ Native::Controller::SONET::Au4::CemGroupTimeslots::Tug2::~Tug2()
 
 bool Native::Controller::SONET::Au4::CemGroupTimeslots::Tug2::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| e1.is_set
 	|| cem_group.is_set
@@ -11427,7 +11568,10 @@ bool Native::Controller::SONET::Au4::CemGroupTimeslots::Tug2::has_operation() co
 std::string Native::Controller::SONET::Au4::CemGroupTimeslots::Tug2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tug-2" <<"[number='" <<number <<"']" <<"[e1='" <<e1 <<"']" <<"[cem-group='" <<cem_group <<"']";
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
+    ADD_KEY_TOKEN(cem_group, "cem-group");
     return path_buffer.str();
 }
 
@@ -11512,9 +11656,11 @@ bool Native::Controller::SONET::Au4::CemGroupTimeslots::Tug2::has_leaf_or_child_
 }
 
 Native::Controller::SONET::Au4::ChannelGroupTimeslots::ChannelGroupTimeslots()
+    :
+    tug_2(this, {"number", "e1", "channel_group"})
 {
 
-    yang_name = "channel-group-timeslots"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "channel-group-timeslots"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::ChannelGroupTimeslots::~ChannelGroupTimeslots()
@@ -11523,7 +11669,8 @@ Native::Controller::SONET::Au4::ChannelGroupTimeslots::~ChannelGroupTimeslots()
 
 bool Native::Controller::SONET::Au4::ChannelGroupTimeslots::has_data() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_data())
             return true;
@@ -11533,7 +11680,7 @@ bool Native::Controller::SONET::Au4::ChannelGroupTimeslots::has_data() const
 
 bool Native::Controller::SONET::Au4::ChannelGroupTimeslots::has_operation() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_operation())
             return true;
@@ -11563,7 +11710,7 @@ std::shared_ptr<Entity> Native::Controller::SONET::Au4::ChannelGroupTimeslots::g
     {
         auto c = std::make_shared<Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2>();
         c->parent = this;
-        tug_2.push_back(c);
+        tug_2.append(c);
         return c;
     }
 
@@ -11575,7 +11722,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Au4::C
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tug_2)
+    for (auto c : tug_2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11609,7 +11756,7 @@ Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2::Tug2()
     timeslots{YType::str, "timeslots"}
 {
 
-    yang_name = "tug-2"; yang_parent_name = "channel-group-timeslots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tug-2"; yang_parent_name = "channel-group-timeslots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2::~Tug2()
@@ -11618,6 +11765,7 @@ Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2::~Tug2()
 
 bool Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| e1.is_set
 	|| channel_group.is_set
@@ -11636,7 +11784,10 @@ bool Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2::has_operation(
 std::string Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tug-2" <<"[number='" <<number <<"']" <<"[e1='" <<e1 <<"']" <<"[channel-group='" <<channel_group <<"']";
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
+    ADD_KEY_TOKEN(channel_group, "channel-group");
     return path_buffer.str();
 }
 
@@ -11721,9 +11872,11 @@ bool Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2::has_leaf_or_ch
 }
 
 Native::Controller::SONET::Au4::CemGroupUnframed::CemGroupUnframed()
+    :
+    tug_2(this, {"number", "e1", "cem_group"})
 {
 
-    yang_name = "cem-group-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem-group-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::CemGroupUnframed::~CemGroupUnframed()
@@ -11732,7 +11885,8 @@ Native::Controller::SONET::Au4::CemGroupUnframed::~CemGroupUnframed()
 
 bool Native::Controller::SONET::Au4::CemGroupUnframed::has_data() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_data())
             return true;
@@ -11742,7 +11896,7 @@ bool Native::Controller::SONET::Au4::CemGroupUnframed::has_data() const
 
 bool Native::Controller::SONET::Au4::CemGroupUnframed::has_operation() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_operation())
             return true;
@@ -11772,7 +11926,7 @@ std::shared_ptr<Entity> Native::Controller::SONET::Au4::CemGroupUnframed::get_ch
     {
         auto c = std::make_shared<Native::Controller::SONET::Au4::CemGroupUnframed::Tug2>();
         c->parent = this;
-        tug_2.push_back(c);
+        tug_2.append(c);
         return c;
     }
 
@@ -11784,7 +11938,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Au4::C
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tug_2)
+    for (auto c : tug_2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11818,7 +11972,7 @@ Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::Tug2()
     unframed{YType::empty, "unframed"}
 {
 
-    yang_name = "tug-2"; yang_parent_name = "cem-group-unframed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tug-2"; yang_parent_name = "cem-group-unframed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::~Tug2()
@@ -11827,6 +11981,7 @@ Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::~Tug2()
 
 bool Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| e1.is_set
 	|| cem_group.is_set
@@ -11845,7 +12000,10 @@ bool Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::has_operation() con
 std::string Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tug-2" <<"[number='" <<number <<"']" <<"[e1='" <<e1 <<"']" <<"[cem-group='" <<cem_group <<"']";
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
+    ADD_KEY_TOKEN(cem_group, "cem-group");
     return path_buffer.str();
 }
 
@@ -11930,9 +12088,11 @@ bool Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::has_leaf_or_child_o
 }
 
 Native::Controller::SONET::Au4::FramingUnframed::FramingUnframed()
+    :
+    tug_2(this, {"number", "e1"})
 {
 
-    yang_name = "framing-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "framing-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::FramingUnframed::~FramingUnframed()
@@ -11941,7 +12101,8 @@ Native::Controller::SONET::Au4::FramingUnframed::~FramingUnframed()
 
 bool Native::Controller::SONET::Au4::FramingUnframed::has_data() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_data())
             return true;
@@ -11951,7 +12112,7 @@ bool Native::Controller::SONET::Au4::FramingUnframed::has_data() const
 
 bool Native::Controller::SONET::Au4::FramingUnframed::has_operation() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_operation())
             return true;
@@ -11981,7 +12142,7 @@ std::shared_ptr<Entity> Native::Controller::SONET::Au4::FramingUnframed::get_chi
     {
         auto c = std::make_shared<Native::Controller::SONET::Au4::FramingUnframed::Tug2>();
         c->parent = this;
-        tug_2.push_back(c);
+        tug_2.append(c);
         return c;
     }
 
@@ -11993,7 +12154,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Au4::F
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tug_2)
+    for (auto c : tug_2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12026,7 +12187,7 @@ Native::Controller::SONET::Au4::FramingUnframed::Tug2::Tug2()
     framing{YType::enumeration, "framing"}
 {
 
-    yang_name = "tug-2"; yang_parent_name = "framing-unframed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tug-2"; yang_parent_name = "framing-unframed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::FramingUnframed::Tug2::~Tug2()
@@ -12035,6 +12196,7 @@ Native::Controller::SONET::Au4::FramingUnframed::Tug2::~Tug2()
 
 bool Native::Controller::SONET::Au4::FramingUnframed::Tug2::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| e1.is_set
 	|| framing.is_set;
@@ -12051,7 +12213,9 @@ bool Native::Controller::SONET::Au4::FramingUnframed::Tug2::has_operation() cons
 std::string Native::Controller::SONET::Au4::FramingUnframed::Tug2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tug-2" <<"[number='" <<number <<"']" <<"[e1='" <<e1 <<"']";
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
     return path_buffer.str();
 }
 
@@ -12125,9 +12289,11 @@ bool Native::Controller::SONET::Au4::FramingUnframed::Tug2::has_leaf_or_child_of
 }
 
 Native::Controller::SONET::Au4::CemGroupAtm::CemGroupAtm()
+    :
+    tug_2(this, {"number", "e1"})
 {
 
-    yang_name = "cem-group-atm"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem-group-atm"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::CemGroupAtm::~CemGroupAtm()
@@ -12136,7 +12302,8 @@ Native::Controller::SONET::Au4::CemGroupAtm::~CemGroupAtm()
 
 bool Native::Controller::SONET::Au4::CemGroupAtm::has_data() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_data())
             return true;
@@ -12146,7 +12313,7 @@ bool Native::Controller::SONET::Au4::CemGroupAtm::has_data() const
 
 bool Native::Controller::SONET::Au4::CemGroupAtm::has_operation() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_operation())
             return true;
@@ -12176,7 +12343,7 @@ std::shared_ptr<Entity> Native::Controller::SONET::Au4::CemGroupAtm::get_child_b
     {
         auto c = std::make_shared<Native::Controller::SONET::Au4::CemGroupAtm::Tug2>();
         c->parent = this;
-        tug_2.push_back(c);
+        tug_2.append(c);
         return c;
     }
 
@@ -12188,7 +12355,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Au4::C
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tug_2)
+    for (auto c : tug_2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12221,7 +12388,7 @@ Native::Controller::SONET::Au4::CemGroupAtm::Tug2::Tug2()
     atm{YType::empty, "atm"}
 {
 
-    yang_name = "tug-2"; yang_parent_name = "cem-group-atm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tug-2"; yang_parent_name = "cem-group-atm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::CemGroupAtm::Tug2::~Tug2()
@@ -12230,6 +12397,7 @@ Native::Controller::SONET::Au4::CemGroupAtm::Tug2::~Tug2()
 
 bool Native::Controller::SONET::Au4::CemGroupAtm::Tug2::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| e1.is_set
 	|| atm.is_set;
@@ -12246,7 +12414,9 @@ bool Native::Controller::SONET::Au4::CemGroupAtm::Tug2::has_operation() const
 std::string Native::Controller::SONET::Au4::CemGroupAtm::Tug2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tug-2" <<"[number='" <<number <<"']" <<"[e1='" <<e1 <<"']";
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
     return path_buffer.str();
 }
 
@@ -12320,9 +12490,11 @@ bool Native::Controller::SONET::Au4::CemGroupAtm::Tug2::has_leaf_or_child_of_nam
 }
 
 Native::Controller::SONET::Au4::ImaGroup::ImaGroup()
+    :
+    tug_2(this, {"number", "e1", "ima_group"})
 {
 
-    yang_name = "ima-group"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ima-group"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::ImaGroup::~ImaGroup()
@@ -12331,7 +12503,8 @@ Native::Controller::SONET::Au4::ImaGroup::~ImaGroup()
 
 bool Native::Controller::SONET::Au4::ImaGroup::has_data() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_data())
             return true;
@@ -12341,7 +12514,7 @@ bool Native::Controller::SONET::Au4::ImaGroup::has_data() const
 
 bool Native::Controller::SONET::Au4::ImaGroup::has_operation() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_operation())
             return true;
@@ -12371,7 +12544,7 @@ std::shared_ptr<Entity> Native::Controller::SONET::Au4::ImaGroup::get_child_by_n
     {
         auto c = std::make_shared<Native::Controller::SONET::Au4::ImaGroup::Tug2>();
         c->parent = this;
-        tug_2.push_back(c);
+        tug_2.append(c);
         return c;
     }
 
@@ -12383,7 +12556,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONET::Au4::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tug_2)
+    for (auto c : tug_2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12416,7 +12589,7 @@ Native::Controller::SONET::Au4::ImaGroup::Tug2::Tug2()
     ima_group{YType::int32, "ima-group"}
 {
 
-    yang_name = "tug-2"; yang_parent_name = "ima-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tug-2"; yang_parent_name = "ima-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Au4::ImaGroup::Tug2::~Tug2()
@@ -12425,6 +12598,7 @@ Native::Controller::SONET::Au4::ImaGroup::Tug2::~Tug2()
 
 bool Native::Controller::SONET::Au4::ImaGroup::Tug2::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| e1.is_set
 	|| ima_group.is_set;
@@ -12441,7 +12615,10 @@ bool Native::Controller::SONET::Au4::ImaGroup::Tug2::has_operation() const
 std::string Native::Controller::SONET::Au4::ImaGroup::Tug2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tug-2" <<"[number='" <<number <<"']" <<"[e1='" <<e1 <<"']" <<"[ima-group='" <<ima_group <<"']";
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
+    ADD_KEY_TOKEN(ima_group, "ima-group");
     return path_buffer.str();
 }
 
@@ -12518,16 +12695,16 @@ Native::Controller::SONET::Aps::Aps()
     :
     working{YType::int8, "working"},
     hspw_icrm_grp{YType::uint8, "hspw-icrm-grp"}
-    	,
+        ,
     group(std::make_shared<Native::Controller::SONET::Aps::Group>())
-	,protect(std::make_shared<Native::Controller::SONET::Aps::Protect>())
-	,interchassis(std::make_shared<Native::Controller::SONET::Aps::Interchassis>())
+    , protect(std::make_shared<Native::Controller::SONET::Aps::Protect>())
+    , interchassis(std::make_shared<Native::Controller::SONET::Aps::Interchassis>())
 {
     group->parent = this;
     protect->parent = this;
     interchassis->parent = this;
 
-    yang_name = "aps"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aps"; yang_parent_name = "SONET"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Aps::~Aps()
@@ -12536,6 +12713,7 @@ Native::Controller::SONET::Aps::~Aps()
 
 bool Native::Controller::SONET::Aps::has_data() const
 {
+    if (is_presence_container) return true;
     return working.is_set
 	|| hspw_icrm_grp.is_set
 	|| (group !=  nullptr && group->has_data())
@@ -12666,7 +12844,7 @@ Native::Controller::SONET::Aps::Group::Group()
     acr{YType::int8, "acr"}
 {
 
-    yang_name = "group"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Aps::Group::~Group()
@@ -12675,6 +12853,7 @@ Native::Controller::SONET::Aps::Group::~Group()
 
 bool Native::Controller::SONET::Aps::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_number.is_set
 	|| acr.is_set;
 }
@@ -12757,7 +12936,7 @@ Native::Controller::SONET::Aps::Protect::Protect()
     ip_addr{YType::str, "ip-addr"}
 {
 
-    yang_name = "protect"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protect"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Aps::Protect::~Protect()
@@ -12766,6 +12945,7 @@ Native::Controller::SONET::Aps::Protect::~Protect()
 
 bool Native::Controller::SONET::Aps::Protect::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| ip_addr.is_set;
 }
@@ -12847,7 +13027,7 @@ Native::Controller::SONET::Aps::Interchassis::Interchassis()
     group{YType::uint8, "group"}
 {
 
-    yang_name = "interchassis"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interchassis"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONET::Aps::Interchassis::~Interchassis()
@@ -12856,6 +13036,7 @@ Native::Controller::SONET::Aps::Interchassis::~Interchassis()
 
 bool Native::Controller::SONET::Aps::Interchassis::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -12924,18 +13105,20 @@ Native::Controller::SONETACR::SONETACR()
     name{YType::str, "name"},
     framing{YType::enumeration, "framing"},
     shutdown{YType::empty, "shutdown"}
-    	,
+        ,
     clock_(std::make_shared<Native::Controller::SONETACR::Clock>())
-	,aug(std::make_shared<Native::Controller::SONETACR::Aug>())
-	,au_4_atm(std::make_shared<Native::Controller::SONETACR::Au4Atm>())
-	,aps(std::make_shared<Native::Controller::SONETACR::Aps>())
+    , aug(std::make_shared<Native::Controller::SONETACR::Aug>())
+    , au_3(this, {"number"})
+    , au_4_atm(std::make_shared<Native::Controller::SONETACR::Au4Atm>())
+    , au_4(this, {"number", "tug_3"})
+    , aps(std::make_shared<Native::Controller::SONETACR::Aps>())
 {
     clock_->parent = this;
     aug->parent = this;
     au_4_atm->parent = this;
     aps->parent = this;
 
-    yang_name = "SONET-ACR"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "SONET-ACR"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Controller::SONETACR::~SONETACR()
@@ -12944,12 +13127,13 @@ Native::Controller::SONETACR::~SONETACR()
 
 bool Native::Controller::SONETACR::has_data() const
 {
-    for (std::size_t index=0; index<au_3.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<au_3.len(); index++)
     {
         if(au_3[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<au_4.size(); index++)
+    for (std::size_t index=0; index<au_4.len(); index++)
     {
         if(au_4[index]->has_data())
             return true;
@@ -12965,12 +13149,12 @@ bool Native::Controller::SONETACR::has_data() const
 
 bool Native::Controller::SONETACR::has_operation() const
 {
-    for (std::size_t index=0; index<au_3.size(); index++)
+    for (std::size_t index=0; index<au_3.len(); index++)
     {
         if(au_3[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<au_4.size(); index++)
+    for (std::size_t index=0; index<au_4.len(); index++)
     {
         if(au_4[index]->has_operation())
             return true;
@@ -12995,7 +13179,8 @@ std::string Native::Controller::SONETACR::get_absolute_path() const
 std::string Native::Controller::SONETACR::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-controller:SONET-ACR" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-controller:SONET-ACR";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -13035,7 +13220,7 @@ std::shared_ptr<Entity> Native::Controller::SONETACR::get_child_by_name(const st
     {
         auto c = std::make_shared<Native::Controller::SONETACR::Au3>();
         c->parent = this;
-        au_3.push_back(c);
+        au_3.append(c);
         return c;
     }
 
@@ -13052,7 +13237,7 @@ std::shared_ptr<Entity> Native::Controller::SONETACR::get_child_by_name(const st
     {
         auto c = std::make_shared<Native::Controller::SONETACR::Au4>();
         c->parent = this;
-        au_4.push_back(c);
+        au_4.append(c);
         return c;
     }
 
@@ -13083,7 +13268,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::get
     }
 
     count = 0;
-    for (auto const & c : au_3)
+    for (auto c : au_3.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13097,7 +13282,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::get
     }
 
     count = 0;
-    for (auto const & c : au_4)
+    for (auto c : au_4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13163,7 +13348,7 @@ Native::Controller::SONETACR::Clock::Clock()
     source{YType::enumeration, "source"}
 {
 
-    yang_name = "clock"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Clock::~Clock()
@@ -13172,6 +13357,7 @@ Native::Controller::SONETACR::Clock::~Clock()
 
 bool Native::Controller::SONETACR::Clock::has_data() const
 {
+    if (is_presence_container) return true;
     return source.is_set;
 }
 
@@ -13240,7 +13426,7 @@ Native::Controller::SONETACR::Aug::Aug()
     mapping{YType::enumeration, "mapping"}
 {
 
-    yang_name = "aug"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aug"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Aug::~Aug()
@@ -13249,6 +13435,7 @@ Native::Controller::SONETACR::Aug::~Aug()
 
 bool Native::Controller::SONETACR::Aug::has_data() const
 {
+    if (is_presence_container) return true;
     return mapping.is_set;
 }
 
@@ -13315,14 +13502,14 @@ bool Native::Controller::SONETACR::Aug::has_leaf_or_child_of_name(const std::str
 Native::Controller::SONETACR::Au3::Au3()
     :
     number{YType::int8, "number"}
-    	,
+        ,
     overhead(std::make_shared<Native::Controller::SONETACR::Au3::Overhead>())
-	,mode(std::make_shared<Native::Controller::SONETACR::Au3::Mode>())
+    , mode(std::make_shared<Native::Controller::SONETACR::Au3::Mode>())
 {
     overhead->parent = this;
     mode->parent = this;
 
-    yang_name = "au-3"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "au-3"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au3::~Au3()
@@ -13331,6 +13518,7 @@ Native::Controller::SONETACR::Au3::~Au3()
 
 bool Native::Controller::SONETACR::Au3::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (overhead !=  nullptr && overhead->has_data())
 	|| (mode !=  nullptr && mode->has_data());
@@ -13347,7 +13535,8 @@ bool Native::Controller::SONETACR::Au3::has_operation() const
 std::string Native::Controller::SONETACR::Au3::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "au-3" <<"[number='" <<number <<"']";
+    path_buffer << "au-3";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -13432,7 +13621,7 @@ Native::Controller::SONETACR::Au3::Overhead::Overhead()
     length{YType::uint8, "length"}
 {
 
-    yang_name = "overhead"; yang_parent_name = "au-3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "overhead"; yang_parent_name = "au-3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au3::Overhead::~Overhead()
@@ -13441,6 +13630,7 @@ Native::Controller::SONETACR::Au3::Overhead::~Overhead()
 
 bool Native::Controller::SONETACR::Au3::Overhead::has_data() const
 {
+    if (is_presence_container) return true;
     return byte.is_set
 	|| length.is_set;
 }
@@ -13522,7 +13712,7 @@ Native::Controller::SONETACR::Au3::Mode::Mode()
     mapping{YType::enumeration, "mapping"}
 {
 
-    yang_name = "mode"; yang_parent_name = "au-3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "au-3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au3::Mode::~Mode()
@@ -13531,6 +13721,7 @@ Native::Controller::SONETACR::Au3::Mode::~Mode()
 
 bool Native::Controller::SONETACR::Au3::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return mapping.is_set;
 }
 
@@ -13600,7 +13791,7 @@ Native::Controller::SONETACR::Au4Atm::Au4Atm()
 {
     au_4->parent = this;
 
-    yang_name = "au-4-atm"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "au-4-atm"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4Atm::~Au4Atm()
@@ -13609,6 +13800,7 @@ Native::Controller::SONETACR::Au4Atm::~Au4Atm()
 
 bool Native::Controller::SONETACR::Au4Atm::has_data() const
 {
+    if (is_presence_container) return true;
     return (au_4 !=  nullptr && au_4->has_data());
 }
 
@@ -13681,7 +13873,7 @@ Native::Controller::SONETACR::Au4Atm::Au4::Au4()
     atm{YType::empty, "atm"}
 {
 
-    yang_name = "au-4"; yang_parent_name = "au-4-atm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "au-4"; yang_parent_name = "au-4-atm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4Atm::Au4::~Au4()
@@ -13690,6 +13882,7 @@ Native::Controller::SONETACR::Au4Atm::Au4::~Au4()
 
 bool Native::Controller::SONETACR::Au4Atm::Au4::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| atm.is_set;
 }
@@ -13774,13 +13967,13 @@ Native::Controller::SONETACR::Au4::Au4()
     cem_group{YType::int32, "cem-group"},
     unframed{YType::empty, "unframed"},
     framing{YType::enumeration, "framing"}
-    	,
+        ,
     cem_group_timeslots(std::make_shared<Native::Controller::SONETACR::Au4::CemGroupTimeslots>())
-	,channel_group_timeslots(std::make_shared<Native::Controller::SONETACR::Au4::ChannelGroupTimeslots>())
-	,cem_group_unframed(std::make_shared<Native::Controller::SONETACR::Au4::CemGroupUnframed>())
-	,framing_unframed(std::make_shared<Native::Controller::SONETACR::Au4::FramingUnframed>())
-	,cem_group_atm(std::make_shared<Native::Controller::SONETACR::Au4::CemGroupAtm>())
-	,ima_group(std::make_shared<Native::Controller::SONETACR::Au4::ImaGroup>())
+    , channel_group_timeslots(std::make_shared<Native::Controller::SONETACR::Au4::ChannelGroupTimeslots>())
+    , cem_group_unframed(std::make_shared<Native::Controller::SONETACR::Au4::CemGroupUnframed>())
+    , framing_unframed(std::make_shared<Native::Controller::SONETACR::Au4::FramingUnframed>())
+    , cem_group_atm(std::make_shared<Native::Controller::SONETACR::Au4::CemGroupAtm>())
+    , ima_group(std::make_shared<Native::Controller::SONETACR::Au4::ImaGroup>())
 {
     cem_group_timeslots->parent = this;
     channel_group_timeslots->parent = this;
@@ -13789,7 +13982,7 @@ Native::Controller::SONETACR::Au4::Au4()
     cem_group_atm->parent = this;
     ima_group->parent = this;
 
-    yang_name = "au-4"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "au-4"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::~Au4()
@@ -13798,6 +13991,7 @@ Native::Controller::SONETACR::Au4::~Au4()
 
 bool Native::Controller::SONETACR::Au4::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| tug_3.is_set
 	|| mode.is_set
@@ -13832,7 +14026,9 @@ bool Native::Controller::SONETACR::Au4::has_operation() const
 std::string Native::Controller::SONETACR::Au4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "au-4" <<"[number='" <<number <<"']" <<"[tug-3='" <<tug_3 <<"']";
+    path_buffer << "au-4";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(tug_3, "tug-3");
     return path_buffer.str();
 }
 
@@ -14023,9 +14219,11 @@ bool Native::Controller::SONETACR::Au4::has_leaf_or_child_of_name(const std::str
 }
 
 Native::Controller::SONETACR::Au4::CemGroupTimeslots::CemGroupTimeslots()
+    :
+    tug_2(this, {"number", "e1", "cem_group"})
 {
 
-    yang_name = "cem-group-timeslots"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem-group-timeslots"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::CemGroupTimeslots::~CemGroupTimeslots()
@@ -14034,7 +14232,8 @@ Native::Controller::SONETACR::Au4::CemGroupTimeslots::~CemGroupTimeslots()
 
 bool Native::Controller::SONETACR::Au4::CemGroupTimeslots::has_data() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_data())
             return true;
@@ -14044,7 +14243,7 @@ bool Native::Controller::SONETACR::Au4::CemGroupTimeslots::has_data() const
 
 bool Native::Controller::SONETACR::Au4::CemGroupTimeslots::has_operation() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_operation())
             return true;
@@ -14074,7 +14273,7 @@ std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::CemGroupTimeslots::ge
     {
         auto c = std::make_shared<Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2>();
         c->parent = this;
-        tug_2.push_back(c);
+        tug_2.append(c);
         return c;
     }
 
@@ -14086,7 +14285,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tug_2)
+    for (auto c : tug_2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14120,7 +14319,7 @@ Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::Tug2()
     timeslots{YType::str, "timeslots"}
 {
 
-    yang_name = "tug-2"; yang_parent_name = "cem-group-timeslots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tug-2"; yang_parent_name = "cem-group-timeslots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::~Tug2()
@@ -14129,6 +14328,7 @@ Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::~Tug2()
 
 bool Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| e1.is_set
 	|| cem_group.is_set
@@ -14147,7 +14347,10 @@ bool Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::has_operation()
 std::string Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tug-2" <<"[number='" <<number <<"']" <<"[e1='" <<e1 <<"']" <<"[cem-group='" <<cem_group <<"']";
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
+    ADD_KEY_TOKEN(cem_group, "cem-group");
     return path_buffer.str();
 }
 
@@ -14232,9 +14435,11 @@ bool Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2::has_leaf_or_chi
 }
 
 Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::ChannelGroupTimeslots()
+    :
+    tug_2(this, {"number", "e1", "channel_group"})
 {
 
-    yang_name = "channel-group-timeslots"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "channel-group-timeslots"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::~ChannelGroupTimeslots()
@@ -14243,7 +14448,8 @@ Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::~ChannelGroupTimeslots
 
 bool Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::has_data() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_data())
             return true;
@@ -14253,7 +14459,7 @@ bool Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::has_data() const
 
 bool Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::has_operation() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_operation())
             return true;
@@ -14283,7 +14489,7 @@ std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::ChannelGroupTimeslots
     {
         auto c = std::make_shared<Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2>();
         c->parent = this;
-        tug_2.push_back(c);
+        tug_2.append(c);
         return c;
     }
 
@@ -14295,7 +14501,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tug_2)
+    for (auto c : tug_2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14329,7 +14535,7 @@ Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::Tug2()
     timeslots{YType::str, "timeslots"}
 {
 
-    yang_name = "tug-2"; yang_parent_name = "channel-group-timeslots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tug-2"; yang_parent_name = "channel-group-timeslots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::~Tug2()
@@ -14338,6 +14544,7 @@ Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::~Tug2()
 
 bool Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| e1.is_set
 	|| channel_group.is_set
@@ -14356,7 +14563,10 @@ bool Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::has_operati
 std::string Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tug-2" <<"[number='" <<number <<"']" <<"[e1='" <<e1 <<"']" <<"[channel-group='" <<channel_group <<"']";
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
+    ADD_KEY_TOKEN(channel_group, "channel-group");
     return path_buffer.str();
 }
 
@@ -14441,9 +14651,11 @@ bool Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2::has_leaf_or
 }
 
 Native::Controller::SONETACR::Au4::CemGroupUnframed::CemGroupUnframed()
+    :
+    tug_2(this, {"number", "e1", "cem_group"})
 {
 
-    yang_name = "cem-group-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem-group-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::CemGroupUnframed::~CemGroupUnframed()
@@ -14452,7 +14664,8 @@ Native::Controller::SONETACR::Au4::CemGroupUnframed::~CemGroupUnframed()
 
 bool Native::Controller::SONETACR::Au4::CemGroupUnframed::has_data() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_data())
             return true;
@@ -14462,7 +14675,7 @@ bool Native::Controller::SONETACR::Au4::CemGroupUnframed::has_data() const
 
 bool Native::Controller::SONETACR::Au4::CemGroupUnframed::has_operation() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_operation())
             return true;
@@ -14492,7 +14705,7 @@ std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::CemGroupUnframed::get
     {
         auto c = std::make_shared<Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2>();
         c->parent = this;
-        tug_2.push_back(c);
+        tug_2.append(c);
         return c;
     }
 
@@ -14504,7 +14717,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tug_2)
+    for (auto c : tug_2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14538,7 +14751,7 @@ Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::Tug2()
     unframed{YType::empty, "unframed"}
 {
 
-    yang_name = "tug-2"; yang_parent_name = "cem-group-unframed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tug-2"; yang_parent_name = "cem-group-unframed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::~Tug2()
@@ -14547,6 +14760,7 @@ Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::~Tug2()
 
 bool Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| e1.is_set
 	|| cem_group.is_set
@@ -14565,7 +14779,10 @@ bool Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::has_operation() 
 std::string Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tug-2" <<"[number='" <<number <<"']" <<"[e1='" <<e1 <<"']" <<"[cem-group='" <<cem_group <<"']";
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
+    ADD_KEY_TOKEN(cem_group, "cem-group");
     return path_buffer.str();
 }
 
@@ -14650,9 +14867,11 @@ bool Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2::has_leaf_or_chil
 }
 
 Native::Controller::SONETACR::Au4::FramingUnframed::FramingUnframed()
+    :
+    tug_2(this, {"number", "e1"})
 {
 
-    yang_name = "framing-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "framing-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::FramingUnframed::~FramingUnframed()
@@ -14661,7 +14880,8 @@ Native::Controller::SONETACR::Au4::FramingUnframed::~FramingUnframed()
 
 bool Native::Controller::SONETACR::Au4::FramingUnframed::has_data() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_data())
             return true;
@@ -14671,7 +14891,7 @@ bool Native::Controller::SONETACR::Au4::FramingUnframed::has_data() const
 
 bool Native::Controller::SONETACR::Au4::FramingUnframed::has_operation() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_operation())
             return true;
@@ -14701,7 +14921,7 @@ std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::FramingUnframed::get_
     {
         auto c = std::make_shared<Native::Controller::SONETACR::Au4::FramingUnframed::Tug2>();
         c->parent = this;
-        tug_2.push_back(c);
+        tug_2.append(c);
         return c;
     }
 
@@ -14713,7 +14933,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tug_2)
+    for (auto c : tug_2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14746,7 +14966,7 @@ Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::Tug2()
     framing{YType::enumeration, "framing"}
 {
 
-    yang_name = "tug-2"; yang_parent_name = "framing-unframed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tug-2"; yang_parent_name = "framing-unframed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::~Tug2()
@@ -14755,6 +14975,7 @@ Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::~Tug2()
 
 bool Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| e1.is_set
 	|| framing.is_set;
@@ -14771,7 +14992,9 @@ bool Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::has_operation() c
 std::string Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tug-2" <<"[number='" <<number <<"']" <<"[e1='" <<e1 <<"']";
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
     return path_buffer.str();
 }
 
@@ -14845,9 +15068,11 @@ bool Native::Controller::SONETACR::Au4::FramingUnframed::Tug2::has_leaf_or_child
 }
 
 Native::Controller::SONETACR::Au4::CemGroupAtm::CemGroupAtm()
+    :
+    tug_2(this, {"number", "e1"})
 {
 
-    yang_name = "cem-group-atm"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem-group-atm"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::CemGroupAtm::~CemGroupAtm()
@@ -14856,7 +15081,8 @@ Native::Controller::SONETACR::Au4::CemGroupAtm::~CemGroupAtm()
 
 bool Native::Controller::SONETACR::Au4::CemGroupAtm::has_data() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_data())
             return true;
@@ -14866,7 +15092,7 @@ bool Native::Controller::SONETACR::Au4::CemGroupAtm::has_data() const
 
 bool Native::Controller::SONETACR::Au4::CemGroupAtm::has_operation() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_operation())
             return true;
@@ -14896,7 +15122,7 @@ std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::CemGroupAtm::get_chil
     {
         auto c = std::make_shared<Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2>();
         c->parent = this;
-        tug_2.push_back(c);
+        tug_2.append(c);
         return c;
     }
 
@@ -14908,7 +15134,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tug_2)
+    for (auto c : tug_2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14941,7 +15167,7 @@ Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::Tug2()
     atm{YType::empty, "atm"}
 {
 
-    yang_name = "tug-2"; yang_parent_name = "cem-group-atm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tug-2"; yang_parent_name = "cem-group-atm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::~Tug2()
@@ -14950,6 +15176,7 @@ Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::~Tug2()
 
 bool Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| e1.is_set
 	|| atm.is_set;
@@ -14966,7 +15193,9 @@ bool Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::has_operation() const
 std::string Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tug-2" <<"[number='" <<number <<"']" <<"[e1='" <<e1 <<"']";
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
     return path_buffer.str();
 }
 
@@ -15040,9 +15269,11 @@ bool Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2::has_leaf_or_child_of_
 }
 
 Native::Controller::SONETACR::Au4::ImaGroup::ImaGroup()
+    :
+    tug_2(this, {"number", "e1", "ima_group"})
 {
 
-    yang_name = "ima-group"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ima-group"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::ImaGroup::~ImaGroup()
@@ -15051,7 +15282,8 @@ Native::Controller::SONETACR::Au4::ImaGroup::~ImaGroup()
 
 bool Native::Controller::SONETACR::Au4::ImaGroup::has_data() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_data())
             return true;
@@ -15061,7 +15293,7 @@ bool Native::Controller::SONETACR::Au4::ImaGroup::has_data() const
 
 bool Native::Controller::SONETACR::Au4::ImaGroup::has_operation() const
 {
-    for (std::size_t index=0; index<tug_2.size(); index++)
+    for (std::size_t index=0; index<tug_2.len(); index++)
     {
         if(tug_2[index]->has_operation())
             return true;
@@ -15091,7 +15323,7 @@ std::shared_ptr<Entity> Native::Controller::SONETACR::Au4::ImaGroup::get_child_b
     {
         auto c = std::make_shared<Native::Controller::SONETACR::Au4::ImaGroup::Tug2>();
         c->parent = this;
-        tug_2.push_back(c);
+        tug_2.append(c);
         return c;
     }
 
@@ -15103,7 +15335,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Controller::SONETACR::Au4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tug_2)
+    for (auto c : tug_2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15136,7 +15368,7 @@ Native::Controller::SONETACR::Au4::ImaGroup::Tug2::Tug2()
     ima_group{YType::int32, "ima-group"}
 {
 
-    yang_name = "tug-2"; yang_parent_name = "ima-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tug-2"; yang_parent_name = "ima-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Au4::ImaGroup::Tug2::~Tug2()
@@ -15145,6 +15377,7 @@ Native::Controller::SONETACR::Au4::ImaGroup::Tug2::~Tug2()
 
 bool Native::Controller::SONETACR::Au4::ImaGroup::Tug2::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| e1.is_set
 	|| ima_group.is_set;
@@ -15161,7 +15394,10 @@ bool Native::Controller::SONETACR::Au4::ImaGroup::Tug2::has_operation() const
 std::string Native::Controller::SONETACR::Au4::ImaGroup::Tug2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tug-2" <<"[number='" <<number <<"']" <<"[e1='" <<e1 <<"']" <<"[ima-group='" <<ima_group <<"']";
+    path_buffer << "tug-2";
+    ADD_KEY_TOKEN(number, "number");
+    ADD_KEY_TOKEN(e1, "e1");
+    ADD_KEY_TOKEN(ima_group, "ima-group");
     return path_buffer.str();
 }
 
@@ -15238,16 +15474,16 @@ Native::Controller::SONETACR::Aps::Aps()
     :
     working{YType::int8, "working"},
     hspw_icrm_grp{YType::uint8, "hspw-icrm-grp"}
-    	,
+        ,
     group(std::make_shared<Native::Controller::SONETACR::Aps::Group>())
-	,protect(std::make_shared<Native::Controller::SONETACR::Aps::Protect>())
-	,interchassis(std::make_shared<Native::Controller::SONETACR::Aps::Interchassis>())
+    , protect(std::make_shared<Native::Controller::SONETACR::Aps::Protect>())
+    , interchassis(std::make_shared<Native::Controller::SONETACR::Aps::Interchassis>())
 {
     group->parent = this;
     protect->parent = this;
     interchassis->parent = this;
 
-    yang_name = "aps"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aps"; yang_parent_name = "SONET-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Aps::~Aps()
@@ -15256,6 +15492,7 @@ Native::Controller::SONETACR::Aps::~Aps()
 
 bool Native::Controller::SONETACR::Aps::has_data() const
 {
+    if (is_presence_container) return true;
     return working.is_set
 	|| hspw_icrm_grp.is_set
 	|| (group !=  nullptr && group->has_data())
@@ -15386,7 +15623,7 @@ Native::Controller::SONETACR::Aps::Group::Group()
     acr{YType::int8, "acr"}
 {
 
-    yang_name = "group"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Aps::Group::~Group()
@@ -15395,6 +15632,7 @@ Native::Controller::SONETACR::Aps::Group::~Group()
 
 bool Native::Controller::SONETACR::Aps::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_number.is_set
 	|| acr.is_set;
 }
@@ -15477,7 +15715,7 @@ Native::Controller::SONETACR::Aps::Protect::Protect()
     ip_addr{YType::str, "ip-addr"}
 {
 
-    yang_name = "protect"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protect"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Aps::Protect::~Protect()
@@ -15486,6 +15724,7 @@ Native::Controller::SONETACR::Aps::Protect::~Protect()
 
 bool Native::Controller::SONETACR::Aps::Protect::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| ip_addr.is_set;
 }
@@ -15567,7 +15806,7 @@ Native::Controller::SONETACR::Aps::Interchassis::Interchassis()
     group{YType::uint8, "group"}
 {
 
-    yang_name = "interchassis"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interchassis"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Controller::SONETACR::Aps::Interchassis::~Interchassis()
@@ -15576,6 +15815,7 @@ Native::Controller::SONETACR::Aps::Interchassis::~Interchassis()
 
 bool Native::Controller::SONETACR::Aps::Interchassis::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -15644,7 +15884,7 @@ Native::Controller::Wanphy::Wanphy()
     name{YType::str, "name"}
 {
 
-    yang_name = "wanphy"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "wanphy"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Controller::Wanphy::~Wanphy()
@@ -15653,6 +15893,7 @@ Native::Controller::Wanphy::~Wanphy()
 
 bool Native::Controller::Wanphy::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -15672,7 +15913,8 @@ std::string Native::Controller::Wanphy::get_absolute_path() const
 std::string Native::Controller::Wanphy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-controller:wanphy" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-controller:wanphy";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -15724,9 +15966,11 @@ bool Native::Controller::Wanphy::has_leaf_or_child_of_name(const std::string & n
 }
 
 Native::Vrf::Vrf()
+    :
+    definition(this, {"name"})
 {
 
-    yang_name = "vrf"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Vrf::~Vrf()
@@ -15735,7 +15979,8 @@ Native::Vrf::~Vrf()
 
 bool Native::Vrf::has_data() const
 {
-    for (std::size_t index=0; index<definition.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<definition.len(); index++)
     {
         if(definition[index]->has_data())
             return true;
@@ -15745,7 +15990,7 @@ bool Native::Vrf::has_data() const
 
 bool Native::Vrf::has_operation() const
 {
-    for (std::size_t index=0; index<definition.size(); index++)
+    for (std::size_t index=0; index<definition.len(); index++)
     {
         if(definition[index]->has_operation())
             return true;
@@ -15782,7 +16027,7 @@ std::shared_ptr<Entity> Native::Vrf::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<Native::Vrf::Definition>();
         c->parent = this;
-        definition.push_back(c);
+        definition.append(c);
         return c;
     }
 
@@ -15794,7 +16039,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Vrf::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : definition)
+    for (auto c : definition.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15825,16 +16070,16 @@ Native::Vrf::Definition::Definition()
     name{YType::str, "name"},
     description{YType::str, "description"},
     rd{YType::str, "rd"}
-    	,
+        ,
     address_family(std::make_shared<Native::Vrf::Definition::AddressFamily>())
-	,route_target(std::make_shared<Native::Vrf::Definition::RouteTarget>())
-	,vpn(std::make_shared<Native::Vrf::Definition::Vpn>())
+    , route_target(std::make_shared<Native::Vrf::Definition::RouteTarget>())
+    , vpn(std::make_shared<Native::Vrf::Definition::Vpn>())
 {
     address_family->parent = this;
     route_target->parent = this;
     vpn->parent = this;
 
-    yang_name = "definition"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "definition"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Vrf::Definition::~Definition()
@@ -15843,6 +16088,7 @@ Native::Vrf::Definition::~Definition()
 
 bool Native::Vrf::Definition::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| rd.is_set
@@ -15872,7 +16118,8 @@ std::string Native::Vrf::Definition::get_absolute_path() const
 std::string Native::Vrf::Definition::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "definition" <<"[name='" <<name <<"']";
+    path_buffer << "definition";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -15990,10 +16237,10 @@ bool Native::Vrf::Definition::has_leaf_or_child_of_name(const std::string & name
 Native::Vrf::Definition::AddressFamily::AddressFamily()
     :
     ipv4(nullptr) // presence node
-	,ipv6(nullptr) // presence node
+    , ipv6(nullptr) // presence node
 {
 
-    yang_name = "address-family"; yang_parent_name = "definition"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family"; yang_parent_name = "definition"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vrf::Definition::AddressFamily::~AddressFamily()
@@ -16002,6 +16249,7 @@ Native::Vrf::Definition::AddressFamily::~AddressFamily()
 
 bool Native::Vrf::Definition::AddressFamily::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
@@ -16087,11 +16335,11 @@ bool Native::Vrf::Definition::AddressFamily::has_leaf_or_child_of_name(const std
 Native::Vrf::Definition::AddressFamily::Ipv4::Ipv4()
     :
     export_(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Export>())
-	,maximum(nullptr) // presence node
-	,mdt(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Mdt>())
-	,route_target(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget>())
-	,bgp(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Bgp>())
-	,import(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Import>())
+    , maximum(nullptr) // presence node
+    , mdt(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Mdt>())
+    , route_target(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget>())
+    , bgp(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Bgp>())
+    , import(std::make_shared<Native::Vrf::Definition::AddressFamily::Ipv4::Import>())
 {
     export_->parent = this;
     mdt->parent = this;
@@ -16099,7 +16347,7 @@ Native::Vrf::Definition::AddressFamily::Ipv4::Ipv4()
     bgp->parent = this;
     import->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Vrf::Definition::AddressFamily::Ipv4::~Ipv4()
@@ -16108,6 +16356,7 @@ Native::Vrf::Definition::AddressFamily::Ipv4::~Ipv4()
 
 bool Native::Vrf::Definition::AddressFamily::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (export_ !=  nullptr && export_->has_data())
 	|| (maximum !=  nullptr && maximum->has_data())
 	|| (mdt !=  nullptr && mdt->has_data())

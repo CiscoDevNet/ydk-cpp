@@ -32,46 +32,46 @@ class CISCOPTPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscoptpmibsysteminfo; //type: CISCOPTPMIB::Ciscoptpmibsysteminfo
-        class Cptpsystemtable; //type: CISCOPTPMIB::Cptpsystemtable
-        class Cptpsystemdomaintable; //type: CISCOPTPMIB::Cptpsystemdomaintable
-        class Cptpclocknodetable; //type: CISCOPTPMIB::Cptpclocknodetable
-        class Cptpclockcurrentdstable; //type: CISCOPTPMIB::Cptpclockcurrentdstable
-        class Cptpclockparentdstable; //type: CISCOPTPMIB::Cptpclockparentdstable
-        class Cptpclockdefaultdstable; //type: CISCOPTPMIB::Cptpclockdefaultdstable
-        class Cptpclockrunningtable; //type: CISCOPTPMIB::Cptpclockrunningtable
-        class Cptpclocktimepropertiesdstable; //type: CISCOPTPMIB::Cptpclocktimepropertiesdstable
-        class Cptpclocktransdefaultdstable; //type: CISCOPTPMIB::Cptpclocktransdefaultdstable
-        class Cptpclockporttable; //type: CISCOPTPMIB::Cptpclockporttable
-        class Cptpclockportdstable; //type: CISCOPTPMIB::Cptpclockportdstable
-        class Cptpclockportrunningtable; //type: CISCOPTPMIB::Cptpclockportrunningtable
-        class Cptpclockporttransdstable; //type: CISCOPTPMIB::Cptpclockporttransdstable
-        class Cptpclockportassociatetable; //type: CISCOPTPMIB::Cptpclockportassociatetable
+        class CiscoPtpMIBSystemInfo; //type: CISCOPTPMIB::CiscoPtpMIBSystemInfo
+        class CPtpSystemTable; //type: CISCOPTPMIB::CPtpSystemTable
+        class CPtpSystemDomainTable; //type: CISCOPTPMIB::CPtpSystemDomainTable
+        class CPtpClockNodeTable; //type: CISCOPTPMIB::CPtpClockNodeTable
+        class CPtpClockCurrentDSTable; //type: CISCOPTPMIB::CPtpClockCurrentDSTable
+        class CPtpClockParentDSTable; //type: CISCOPTPMIB::CPtpClockParentDSTable
+        class CPtpClockDefaultDSTable; //type: CISCOPTPMIB::CPtpClockDefaultDSTable
+        class CPtpClockRunningTable; //type: CISCOPTPMIB::CPtpClockRunningTable
+        class CPtpClockTimePropertiesDSTable; //type: CISCOPTPMIB::CPtpClockTimePropertiesDSTable
+        class CPtpClockTransDefaultDSTable; //type: CISCOPTPMIB::CPtpClockTransDefaultDSTable
+        class CPtpClockPortTable; //type: CISCOPTPMIB::CPtpClockPortTable
+        class CPtpClockPortDSTable; //type: CISCOPTPMIB::CPtpClockPortDSTable
+        class CPtpClockPortRunningTable; //type: CISCOPTPMIB::CPtpClockPortRunningTable
+        class CPtpClockPortTransDSTable; //type: CISCOPTPMIB::CPtpClockPortTransDSTable
+        class CPtpClockPortAssociateTable; //type: CISCOPTPMIB::CPtpClockPortAssociateTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Ciscoptpmibsysteminfo> ciscoptpmibsysteminfo;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpsystemtable> cptpsystemtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpsystemdomaintable> cptpsystemdomaintable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclocknodetable> cptpclocknodetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockcurrentdstable> cptpclockcurrentdstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockparentdstable> cptpclockparentdstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockdefaultdstable> cptpclockdefaultdstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockrunningtable> cptpclockrunningtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclocktimepropertiesdstable> cptpclocktimepropertiesdstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclocktransdefaultdstable> cptpclocktransdefaultdstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockporttable> cptpclockporttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockportdstable> cptpclockportdstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockportrunningtable> cptpclockportrunningtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockporttransdstable> cptpclockporttransdstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockportassociatetable> cptpclockportassociatetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CiscoPtpMIBSystemInfo> ciscoptpmibsysteminfo;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpSystemTable> cptpsystemtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpSystemDomainTable> cptpsystemdomaintable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpClockNodeTable> cptpclocknodetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpClockCurrentDSTable> cptpclockcurrentdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpClockParentDSTable> cptpclockparentdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpClockDefaultDSTable> cptpclockdefaultdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpClockRunningTable> cptpclockrunningtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpClockTimePropertiesDSTable> cptpclocktimepropertiesdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpClockTransDefaultDSTable> cptpclocktransdefaultdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpClockPortTable> cptpclockporttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpClockPortDSTable> cptpclockportdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpClockPortRunningTable> cptpclockportrunningtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpClockPortTransDSTable> cptpclockporttransdstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::CPtpClockPortAssociateTable> cptpclockportassociatetable;
         
 }; // CISCOPTPMIB
 
 
-class CISCOPTPMIB::Ciscoptpmibsysteminfo : public ydk::Entity
+class CISCOPTPMIB::CiscoPtpMIBSystemInfo : public ydk::Entity
 {
     public:
-        Ciscoptpmibsysteminfo();
-        ~Ciscoptpmibsysteminfo();
+        CiscoPtpMIBSystemInfo();
+        ~CiscoPtpMIBSystemInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -86,14 +86,14 @@ class CISCOPTPMIB::Ciscoptpmibsysteminfo : public ydk::Entity
 
         ydk::YLeaf cptpsystemprofile; //type: ClockProfileType
 
-}; // CISCOPTPMIB::Ciscoptpmibsysteminfo
+}; // CISCOPTPMIB::CiscoPtpMIBSystemInfo
 
 
-class CISCOPTPMIB::Cptpsystemtable : public ydk::Entity
+class CISCOPTPMIB::CPtpSystemTable : public ydk::Entity
 {
     public:
-        Cptpsystemtable();
-        ~Cptpsystemtable();
+        CPtpSystemTable();
+        ~CPtpSystemTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -106,18 +106,18 @@ class CISCOPTPMIB::Cptpsystemtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpsystementry; //type: CISCOPTPMIB::Cptpsystemtable::Cptpsystementry
+        class CPtpSystemEntry; //type: CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpsystemtable::Cptpsystementry> > cptpsystementry;
+        ydk::YList cptpsystementry;
         
-}; // CISCOPTPMIB::Cptpsystemtable
+}; // CISCOPTPMIB::CPtpSystemTable
 
 
-class CISCOPTPMIB::Cptpsystemtable::Cptpsystementry : public ydk::Entity
+class CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry : public ydk::Entity
 {
     public:
-        Cptpsystementry();
-        ~Cptpsystementry();
+        CPtpSystemEntry();
+        ~CPtpSystemEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -135,14 +135,14 @@ class CISCOPTPMIB::Cptpsystemtable::Cptpsystementry : public ydk::Entity
         ydk::YLeaf cptpdomainclockportstotal; //type: uint32
         ydk::YLeaf cptpdomainclockportphysicalinterfacestotal; //type: uint32
 
-}; // CISCOPTPMIB::Cptpsystemtable::Cptpsystementry
+}; // CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry
 
 
-class CISCOPTPMIB::Cptpsystemdomaintable : public ydk::Entity
+class CISCOPTPMIB::CPtpSystemDomainTable : public ydk::Entity
 {
     public:
-        Cptpsystemdomaintable();
-        ~Cptpsystemdomaintable();
+        CPtpSystemDomainTable();
+        ~CPtpSystemDomainTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -155,18 +155,18 @@ class CISCOPTPMIB::Cptpsystemdomaintable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpsystemdomainentry; //type: CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry
+        class CPtpSystemDomainEntry; //type: CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry> > cptpsystemdomainentry;
+        ydk::YList cptpsystemdomainentry;
         
-}; // CISCOPTPMIB::Cptpsystemdomaintable
+}; // CISCOPTPMIB::CPtpSystemDomainTable
 
 
-class CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry : public ydk::Entity
+class CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry : public ydk::Entity
 {
     public:
-        Cptpsystemdomainentry();
-        ~Cptpsystemdomainentry();
+        CPtpSystemDomainEntry();
+        ~CPtpSystemDomainEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -182,14 +182,14 @@ class CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry : public ydk::En
         ydk::YLeaf cptpsystemdomainclocktypeindex; //type: ClockType
         ydk::YLeaf cptpsystemdomaintotals; //type: uint32
 
-}; // CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry
+}; // CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry
 
 
-class CISCOPTPMIB::Cptpclocknodetable : public ydk::Entity
+class CISCOPTPMIB::CPtpClockNodeTable : public ydk::Entity
 {
     public:
-        Cptpclocknodetable();
-        ~Cptpclocknodetable();
+        CPtpClockNodeTable();
+        ~CPtpClockNodeTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -202,18 +202,18 @@ class CISCOPTPMIB::Cptpclocknodetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpclocknodeentry; //type: CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry
+        class CPtpClockNodeEntry; //type: CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry> > cptpclocknodeentry;
+        ydk::YList cptpclocknodeentry;
         
-}; // CISCOPTPMIB::Cptpclocknodetable
+}; // CISCOPTPMIB::CPtpClockNodeTable
 
 
-class CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry : public ydk::Entity
+class CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry : public ydk::Entity
 {
     public:
-        Cptpclocknodeentry();
-        ~Cptpclocknodeentry();
+        CPtpClockNodeEntry();
+        ~CPtpClockNodeEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -240,14 +240,14 @@ class CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry : public ydk::Entity
         ydk::YLeaf cptpclockoutput1ppsinterface; //type: string
         ydk::YLeaf cptpclocktodinterface; //type: string
 
-}; // CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry
+}; // CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry
 
 
-class CISCOPTPMIB::Cptpclockcurrentdstable : public ydk::Entity
+class CISCOPTPMIB::CPtpClockCurrentDSTable : public ydk::Entity
 {
     public:
-        Cptpclockcurrentdstable();
-        ~Cptpclockcurrentdstable();
+        CPtpClockCurrentDSTable();
+        ~CPtpClockCurrentDSTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -260,18 +260,18 @@ class CISCOPTPMIB::Cptpclockcurrentdstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpclockcurrentdsentry; //type: CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry
+        class CPtpClockCurrentDSEntry; //type: CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry> > cptpclockcurrentdsentry;
+        ydk::YList cptpclockcurrentdsentry;
         
-}; // CISCOPTPMIB::Cptpclockcurrentdstable
+}; // CISCOPTPMIB::CPtpClockCurrentDSTable
 
 
-class CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry : public ydk::Entity
+class CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry : public ydk::Entity
 {
     public:
-        Cptpclockcurrentdsentry();
-        ~Cptpclockcurrentdsentry();
+        CPtpClockCurrentDSEntry();
+        ~CPtpClockCurrentDSEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -291,14 +291,14 @@ class CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry : public ydk
         ydk::YLeaf cptpclockcurrentdsoffsetfrommaster; //type: binary
         ydk::YLeaf cptpclockcurrentdsmeanpathdelay; //type: binary
 
-}; // CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry
+}; // CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry
 
 
-class CISCOPTPMIB::Cptpclockparentdstable : public ydk::Entity
+class CISCOPTPMIB::CPtpClockParentDSTable : public ydk::Entity
 {
     public:
-        Cptpclockparentdstable();
-        ~Cptpclockparentdstable();
+        CPtpClockParentDSTable();
+        ~CPtpClockParentDSTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -311,18 +311,18 @@ class CISCOPTPMIB::Cptpclockparentdstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpclockparentdsentry; //type: CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry
+        class CPtpClockParentDSEntry; //type: CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry> > cptpclockparentdsentry;
+        ydk::YList cptpclockparentdsentry;
         
-}; // CISCOPTPMIB::Cptpclockparentdstable
+}; // CISCOPTPMIB::CPtpClockParentDSTable
 
 
-class CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry : public ydk::Entity
+class CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry : public ydk::Entity
 {
     public:
-        Cptpclockparentdsentry();
-        ~Cptpclockparentdsentry();
+        CPtpClockParentDSEntry();
+        ~CPtpClockParentDSEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -349,14 +349,14 @@ class CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry : public ydk::
         ydk::YLeaf cptpclockparentdsgmclockqualityaccuracy; //type: ClockQualityAccuracyType
         ydk::YLeaf cptpclockparentdsgmclockqualityoffset; //type: uint32
 
-}; // CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry
+}; // CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry
 
 
-class CISCOPTPMIB::Cptpclockdefaultdstable : public ydk::Entity
+class CISCOPTPMIB::CPtpClockDefaultDSTable : public ydk::Entity
 {
     public:
-        Cptpclockdefaultdstable();
-        ~Cptpclockdefaultdstable();
+        CPtpClockDefaultDSTable();
+        ~CPtpClockDefaultDSTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -369,18 +369,18 @@ class CISCOPTPMIB::Cptpclockdefaultdstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpclockdefaultdsentry; //type: CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry
+        class CPtpClockDefaultDSEntry; //type: CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry> > cptpclockdefaultdsentry;
+        ydk::YList cptpclockdefaultdsentry;
         
-}; // CISCOPTPMIB::Cptpclockdefaultdstable
+}; // CISCOPTPMIB::CPtpClockDefaultDSTable
 
 
-class CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry : public ydk::Entity
+class CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry : public ydk::Entity
 {
     public:
-        Cptpclockdefaultdsentry();
-        ~Cptpclockdefaultdsentry();
+        CPtpClockDefaultDSEntry();
+        ~CPtpClockDefaultDSEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -405,14 +405,14 @@ class CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry : public ydk
         ydk::YLeaf cptpclockdefaultdsqualityaccuracy; //type: ClockQualityAccuracyType
         ydk::YLeaf cptpclockdefaultdsqualityoffset; //type: int32
 
-}; // CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry
+}; // CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry
 
 
-class CISCOPTPMIB::Cptpclockrunningtable : public ydk::Entity
+class CISCOPTPMIB::CPtpClockRunningTable : public ydk::Entity
 {
     public:
-        Cptpclockrunningtable();
-        ~Cptpclockrunningtable();
+        CPtpClockRunningTable();
+        ~CPtpClockRunningTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -425,18 +425,18 @@ class CISCOPTPMIB::Cptpclockrunningtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpclockrunningentry; //type: CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry
+        class CPtpClockRunningEntry; //type: CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry> > cptpclockrunningentry;
+        ydk::YList cptpclockrunningentry;
         
-}; // CISCOPTPMIB::Cptpclockrunningtable
+}; // CISCOPTPMIB::CPtpClockRunningTable
 
 
-class CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry : public ydk::Entity
+class CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry : public ydk::Entity
 {
     public:
-        Cptpclockrunningentry();
-        ~Cptpclockrunningentry();
+        CPtpClockRunningEntry();
+        ~CPtpClockRunningEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -456,14 +456,14 @@ class CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry : public ydk::En
         ydk::YLeaf cptpclockrunningpacketssent; //type: uint64
         ydk::YLeaf cptpclockrunningpacketsreceived; //type: uint64
 
-}; // CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry
+}; // CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry
 
 
-class CISCOPTPMIB::Cptpclocktimepropertiesdstable : public ydk::Entity
+class CISCOPTPMIB::CPtpClockTimePropertiesDSTable : public ydk::Entity
 {
     public:
-        Cptpclocktimepropertiesdstable();
-        ~Cptpclocktimepropertiesdstable();
+        CPtpClockTimePropertiesDSTable();
+        ~CPtpClockTimePropertiesDSTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -476,18 +476,18 @@ class CISCOPTPMIB::Cptpclocktimepropertiesdstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpclocktimepropertiesdsentry; //type: CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry
+        class CPtpClockTimePropertiesDSEntry; //type: CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry> > cptpclocktimepropertiesdsentry;
+        ydk::YList cptpclocktimepropertiesdsentry;
         
-}; // CISCOPTPMIB::Cptpclocktimepropertiesdstable
+}; // CISCOPTPMIB::CPtpClockTimePropertiesDSTable
 
 
-class CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry : public ydk::Entity
+class CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry : public ydk::Entity
 {
     public:
-        Cptpclocktimepropertiesdsentry();
-        ~Cptpclocktimepropertiesdsentry();
+        CPtpClockTimePropertiesDSEntry();
+        ~CPtpClockTimePropertiesDSEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -512,14 +512,14 @@ class CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentr
         ydk::YLeaf cptpclocktimepropertiesdsptptimescale; //type: boolean
         ydk::YLeaf cptpclocktimepropertiesdssource; //type: ClockTimeSourceType
 
-}; // CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry
+}; // CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry
 
 
-class CISCOPTPMIB::Cptpclocktransdefaultdstable : public ydk::Entity
+class CISCOPTPMIB::CPtpClockTransDefaultDSTable : public ydk::Entity
 {
     public:
-        Cptpclocktransdefaultdstable();
-        ~Cptpclocktransdefaultdstable();
+        CPtpClockTransDefaultDSTable();
+        ~CPtpClockTransDefaultDSTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -532,18 +532,18 @@ class CISCOPTPMIB::Cptpclocktransdefaultdstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpclocktransdefaultdsentry; //type: CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry
+        class CPtpClockTransDefaultDSEntry; //type: CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry> > cptpclocktransdefaultdsentry;
+        ydk::YList cptpclocktransdefaultdsentry;
         
-}; // CISCOPTPMIB::Cptpclocktransdefaultdstable
+}; // CISCOPTPMIB::CPtpClockTransDefaultDSTable
 
 
-class CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry : public ydk::Entity
+class CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry : public ydk::Entity
 {
     public:
-        Cptpclocktransdefaultdsentry();
-        ~Cptpclocktransdefaultdsentry();
+        CPtpClockTransDefaultDSEntry();
+        ~CPtpClockTransDefaultDSEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -563,14 +563,14 @@ class CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry : 
         ydk::YLeaf cptpclocktransdefaultdsdelay; //type: ClockMechanismType
         ydk::YLeaf cptpclocktransdefaultdsprimarydomain; //type: int32
 
-}; // CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry
+}; // CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry
 
 
-class CISCOPTPMIB::Cptpclockporttable : public ydk::Entity
+class CISCOPTPMIB::CPtpClockPortTable : public ydk::Entity
 {
     public:
-        Cptpclockporttable();
-        ~Cptpclockporttable();
+        CPtpClockPortTable();
+        ~CPtpClockPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -583,18 +583,18 @@ class CISCOPTPMIB::Cptpclockporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpclockportentry; //type: CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry
+        class CPtpClockPortEntry; //type: CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry> > cptpclockportentry;
+        ydk::YList cptpclockportentry;
         
-}; // CISCOPTPMIB::Cptpclockporttable
+}; // CISCOPTPMIB::CPtpClockPortTable
 
 
-class CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry : public ydk::Entity
+class CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry : public ydk::Entity
 {
     public:
-        Cptpclockportentry();
-        ~Cptpclockportentry();
+        CPtpClockPortEntry();
+        ~CPtpClockPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -618,14 +618,14 @@ class CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry : public ydk::Entity
         ydk::YLeaf cptpclockportcurrentpeeraddress; //type: binary
         ydk::YLeaf cptpclockportnumofassociatedports; //type: uint32
 
-}; // CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry
+}; // CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry
 
 
-class CISCOPTPMIB::Cptpclockportdstable : public ydk::Entity
+class CISCOPTPMIB::CPtpClockPortDSTable : public ydk::Entity
 {
     public:
-        Cptpclockportdstable();
-        ~Cptpclockportdstable();
+        CPtpClockPortDSTable();
+        ~CPtpClockPortDSTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -638,18 +638,18 @@ class CISCOPTPMIB::Cptpclockportdstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpclockportdsentry; //type: CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry
+        class CPtpClockPortDSEntry; //type: CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry> > cptpclockportdsentry;
+        ydk::YList cptpclockportdsentry;
         
-}; // CISCOPTPMIB::Cptpclockportdstable
+}; // CISCOPTPMIB::CPtpClockPortDSTable
 
 
-class CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry : public ydk::Entity
+class CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry : public ydk::Entity
 {
     public:
-        Cptpclockportdsentry();
-        ~Cptpclockportdsentry();
+        CPtpClockPortDSEntry();
+        ~CPtpClockPortDSEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -678,14 +678,14 @@ class CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry : public ydk::Enti
         ydk::YLeaf cptpclockportdsgrantduration; //type: uint32
         ydk::YLeaf cptpclockportdsptpversion; //type: int32
 
-}; // CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry
+}; // CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry
 
 
-class CISCOPTPMIB::Cptpclockportrunningtable : public ydk::Entity
+class CISCOPTPMIB::CPtpClockPortRunningTable : public ydk::Entity
 {
     public:
-        Cptpclockportrunningtable();
-        ~Cptpclockportrunningtable();
+        CPtpClockPortRunningTable();
+        ~CPtpClockPortRunningTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -698,18 +698,18 @@ class CISCOPTPMIB::Cptpclockportrunningtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpclockportrunningentry; //type: CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry
+        class CPtpClockPortRunningEntry; //type: CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry> > cptpclockportrunningentry;
+        ydk::YList cptpclockportrunningentry;
         
-}; // CISCOPTPMIB::Cptpclockportrunningtable
+}; // CISCOPTPMIB::CPtpClockPortRunningTable
 
 
-class CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry : public ydk::Entity
+class CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry : public ydk::Entity
 {
     public:
-        Cptpclockportrunningentry();
-        ~Cptpclockportrunningentry();
+        CPtpClockPortRunningEntry();
+        ~CPtpClockPortRunningEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -737,14 +737,14 @@ class CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry : public
         ydk::YLeaf cptpclockportrunningpacketsreceived; //type: uint64
         ydk::YLeaf cptpclockportrunningpacketssent; //type: uint64
 
-}; // CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry
+}; // CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry
 
 
-class CISCOPTPMIB::Cptpclockporttransdstable : public ydk::Entity
+class CISCOPTPMIB::CPtpClockPortTransDSTable : public ydk::Entity
 {
     public:
-        Cptpclockporttransdstable();
-        ~Cptpclockporttransdstable();
+        CPtpClockPortTransDSTable();
+        ~CPtpClockPortTransDSTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -757,18 +757,18 @@ class CISCOPTPMIB::Cptpclockporttransdstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpclockporttransdsentry; //type: CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry
+        class CPtpClockPortTransDSEntry; //type: CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry> > cptpclockporttransdsentry;
+        ydk::YList cptpclockporttransdsentry;
         
-}; // CISCOPTPMIB::Cptpclockporttransdstable
+}; // CISCOPTPMIB::CPtpClockPortTransDSTable
 
 
-class CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry : public ydk::Entity
+class CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry : public ydk::Entity
 {
     public:
-        Cptpclockporttransdsentry();
-        ~Cptpclockporttransdsentry();
+        CPtpClockPortTransDSEntry();
+        ~CPtpClockPortTransDSEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -789,14 +789,14 @@ class CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry : public
         ydk::YLeaf cptpclockporttransdsfaultyflag; //type: boolean
         ydk::YLeaf cptpclockporttransdspeermeanpathdelay; //type: binary
 
-}; // CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry
+}; // CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry
 
 
-class CISCOPTPMIB::Cptpclockportassociatetable : public ydk::Entity
+class CISCOPTPMIB::CPtpClockPortAssociateTable : public ydk::Entity
 {
     public:
-        Cptpclockportassociatetable();
-        ~Cptpclockportassociatetable();
+        CPtpClockPortAssociateTable();
+        ~CPtpClockPortAssociateTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -809,18 +809,18 @@ class CISCOPTPMIB::Cptpclockportassociatetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cptpclockportassociateentry; //type: CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry
+        class CPtpClockPortAssociateEntry; //type: CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PTP_MIB::CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry> > cptpclockportassociateentry;
+        ydk::YList cptpclockportassociateentry;
         
-}; // CISCOPTPMIB::Cptpclockportassociatetable
+}; // CISCOPTPMIB::CPtpClockPortAssociateTable
 
 
-class CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry : public ydk::Entity
+class CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry : public ydk::Entity
 {
     public:
-        Cptpclockportassociateentry();
-        ~Cptpclockportassociateentry();
+        CPtpClockPortAssociateEntry();
+        ~CPtpClockPortAssociateEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -845,7 +845,7 @@ class CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry : pu
         ydk::YLeaf cptpclockportassociateinerrors; //type: uint64
         ydk::YLeaf cptpclockportassociateouterrors; //type: uint64
 
-}; // CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry
+}; // CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry
 
 class ClockMechanismType : public ydk::Enum
 {
@@ -871,12 +871,53 @@ class ClockPortState : public ydk::Enum
 
 };
 
+class ClockTimeSourceType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf atomicClock;
+        static const ydk::Enum::YLeaf gps;
+        static const ydk::Enum::YLeaf terrestrialRadio;
+        static const ydk::Enum::YLeaf ptp;
+        static const ydk::Enum::YLeaf ntp;
+        static const ydk::Enum::YLeaf handSet;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf internalOsillator;
+
+};
+
 class ClockProfileType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf telecom;
         static const ydk::Enum::YLeaf vendorspecific;
+
+};
+
+class ClockRoleType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
+
+};
+
+class ClockType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ordinaryClock;
+        static const ydk::Enum::YLeaf boundaryClock;
+        static const ydk::Enum::YLeaf transparentClock;
+        static const ydk::Enum::YLeaf boundaryNode;
+
+};
+
+class ClockTxModeType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf multicastmix;
 
 };
 
@@ -907,14 +948,6 @@ class ClockQualityAccuracyType : public ydk::Enum
 
 };
 
-class ClockRoleType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
-
-};
-
 class ClockStateType : public ydk::Enum
 {
     public:
@@ -923,39 +956,6 @@ class ClockStateType : public ydk::Enum
         static const ydk::Enum::YLeaf acquiring;
         static const ydk::Enum::YLeaf frequencyLocked;
         static const ydk::Enum::YLeaf phaseAligned;
-
-};
-
-class ClockTimeSourceType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf atomicClock;
-        static const ydk::Enum::YLeaf gps;
-        static const ydk::Enum::YLeaf terrestrialRadio;
-        static const ydk::Enum::YLeaf ptp;
-        static const ydk::Enum::YLeaf ntp;
-        static const ydk::Enum::YLeaf handSet;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf internalOsillator;
-
-};
-
-class ClockTxModeType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf multicastmix;
-
-};
-
-class ClockType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ordinaryClock;
-        static const ydk::Enum::YLeaf boundaryClock;
-        static const ydk::Enum::YLeaf transparentClock;
-        static const ydk::Enum::YLeaf boundaryNode;
 
 };
 

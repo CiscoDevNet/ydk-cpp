@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_infra_tc_cfg {
 TrafficCollector::TrafficCollector()
     :
     enable_traffic_collector{YType::empty, "enable-traffic-collector"}
-    	,
+        ,
     external_interfaces(std::make_shared<TrafficCollector::ExternalInterfaces>())
-	,statistics(std::make_shared<TrafficCollector::Statistics>())
+    , statistics(std::make_shared<TrafficCollector::Statistics>())
 {
     external_interfaces->parent = this;
     statistics->parent = this;
 
-    yang_name = "traffic-collector"; yang_parent_name = "Cisco-IOS-XR-infra-tc-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "traffic-collector"; yang_parent_name = "Cisco-IOS-XR-infra-tc-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 TrafficCollector::~TrafficCollector()
@@ -30,6 +30,7 @@ TrafficCollector::~TrafficCollector()
 
 bool TrafficCollector::has_data() const
 {
+    if (is_presence_container) return true;
     return enable_traffic_collector.is_set
 	|| (external_interfaces !=  nullptr && external_interfaces->has_data())
 	|| (statistics !=  nullptr && statistics->has_data());
@@ -151,9 +152,11 @@ bool TrafficCollector::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 TrafficCollector::ExternalInterfaces::ExternalInterfaces()
+    :
+    external_interface(this, {"interface_name"})
 {
 
-    yang_name = "external-interfaces"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "external-interfaces"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::ExternalInterfaces::~ExternalInterfaces()
@@ -162,7 +165,8 @@ TrafficCollector::ExternalInterfaces::~ExternalInterfaces()
 
 bool TrafficCollector::ExternalInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<external_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<external_interface.len(); index++)
     {
         if(external_interface[index]->has_data())
             return true;
@@ -172,7 +176,7 @@ bool TrafficCollector::ExternalInterfaces::has_data() const
 
 bool TrafficCollector::ExternalInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<external_interface.size(); index++)
+    for (std::size_t index=0; index<external_interface.len(); index++)
     {
         if(external_interface[index]->has_operation())
             return true;
@@ -209,7 +213,7 @@ std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::get_child_by_name(
     {
         auto c = std::make_shared<TrafficCollector::ExternalInterfaces::ExternalInterface>();
         c->parent = this;
-        external_interface.push_back(c);
+        external_interface.append(c);
         return c;
     }
 
@@ -221,7 +225,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : external_interface)
+    for (auto c : external_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,7 +257,7 @@ TrafficCollector::ExternalInterfaces::ExternalInterface::ExternalInterface()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "external-interface"; yang_parent_name = "external-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "external-interface"; yang_parent_name = "external-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::ExternalInterfaces::ExternalInterface::~ExternalInterface()
@@ -262,6 +266,7 @@ TrafficCollector::ExternalInterfaces::ExternalInterface::~ExternalInterface()
 
 bool TrafficCollector::ExternalInterfaces::ExternalInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| enable.is_set;
 }
@@ -283,7 +288,8 @@ std::string TrafficCollector::ExternalInterfaces::ExternalInterface::get_absolut
 std::string TrafficCollector::ExternalInterfaces::ExternalInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "external-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "external-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -353,7 +359,7 @@ TrafficCollector::Statistics::Statistics()
     history_timeout{YType::str, "history-timeout"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::Statistics::~Statistics()
@@ -362,6 +368,7 @@ TrafficCollector::Statistics::~Statistics()
 
 bool TrafficCollector::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return history_size.is_set
 	|| collection_interval.is_set
 	|| enable_traffic_collector_statistics.is_set
@@ -471,6 +478,8 @@ bool TrafficCollector::Statistics::has_leaf_or_child_of_name(const std::string &
     return false;
 }
 
+const Enum::YLeaf HistoryTimeout::max {720, "max"};
+
 const Enum::YLeaf HistorySize::max {10, "max"};
 
 const Enum::YLeaf CollectIonInterval::Y_1_minute {1, "1-minute"};
@@ -485,8 +494,6 @@ const Enum::YLeaf CollectIonInterval::Y_15_minutes {15, "15-minutes"};
 const Enum::YLeaf CollectIonInterval::Y_20_minutes {20, "20-minutes"};
 const Enum::YLeaf CollectIonInterval::Y_30_minutes {30, "30-minutes"};
 const Enum::YLeaf CollectIonInterval::Y_60_minutes {60, "60-minutes"};
-
-const Enum::YLeaf HistoryTimeout::max {720, "max"};
 
 
 }

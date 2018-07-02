@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_invmgr_cfg {
 
 InventoryConfigurations::InventoryConfigurations()
+    :
+    entity_(this, {"name"})
 {
 
-    yang_name = "inventory-configurations"; yang_parent_name = "Cisco-IOS-XR-invmgr-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "inventory-configurations"; yang_parent_name = "Cisco-IOS-XR-invmgr-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InventoryConfigurations::~InventoryConfigurations()
@@ -23,7 +25,8 @@ InventoryConfigurations::~InventoryConfigurations()
 
 bool InventoryConfigurations::has_data() const
 {
-    for (std::size_t index=0; index<entity_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<entity_.len(); index++)
     {
         if(entity_[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool InventoryConfigurations::has_data() const
 
 bool InventoryConfigurations::has_operation() const
 {
-    for (std::size_t index=0; index<entity_.size(); index++)
+    for (std::size_t index=0; index<entity_.len(); index++)
     {
         if(entity_[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> InventoryConfigurations::get_child_by_name(const std::st
     {
         auto c = std::make_shared<InventoryConfigurations::Entity>();
         c->parent = this;
-        entity_.push_back(c);
+        entity_.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> InventoryConfigurations::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : entity_)
+    for (auto c : entity_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -132,7 +135,7 @@ InventoryConfigurations::Entity::Entity()
     name_xr{YType::str, "name-xr"}
 {
 
-    yang_name = "entity"; yang_parent_name = "inventory-configurations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "entity"; yang_parent_name = "inventory-configurations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 InventoryConfigurations::Entity::~Entity()
@@ -141,6 +144,7 @@ InventoryConfigurations::Entity::~Entity()
 
 bool InventoryConfigurations::Entity::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| name_xr.is_set;
 }
@@ -162,7 +166,8 @@ std::string InventoryConfigurations::Entity::get_absolute_path() const
 std::string InventoryConfigurations::Entity::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "entity" <<"[name='" <<name <<"']";
+    path_buffer << "entity";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 

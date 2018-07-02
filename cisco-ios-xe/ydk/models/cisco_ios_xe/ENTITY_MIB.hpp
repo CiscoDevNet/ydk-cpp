@@ -31,28 +31,28 @@ class ENTITYMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Entitygeneral; //type: ENTITYMIB::Entitygeneral
-        class Entphysicaltable; //type: ENTITYMIB::Entphysicaltable
-        class Entlogicaltable; //type: ENTITYMIB::Entlogicaltable
-        class Entlpmappingtable; //type: ENTITYMIB::Entlpmappingtable
-        class Entaliasmappingtable; //type: ENTITYMIB::Entaliasmappingtable
-        class Entphysicalcontainstable; //type: ENTITYMIB::Entphysicalcontainstable
+        class EntityGeneral; //type: ENTITYMIB::EntityGeneral
+        class EntPhysicalTable; //type: ENTITYMIB::EntPhysicalTable
+        class EntLogicalTable; //type: ENTITYMIB::EntLogicalTable
+        class EntLPMappingTable; //type: ENTITYMIB::EntLPMappingTable
+        class EntAliasMappingTable; //type: ENTITYMIB::EntAliasMappingTable
+        class EntPhysicalContainsTable; //type: ENTITYMIB::EntPhysicalContainsTable
 
-        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entitygeneral> entitygeneral;
-        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable> entphysicaltable;
-        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entlogicaltable> entlogicaltable;
-        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entlpmappingtable> entlpmappingtable;
-        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entaliasmappingtable> entaliasmappingtable;
-        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicalcontainstable> entphysicalcontainstable;
+        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntityGeneral> entitygeneral;
+        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable> entphysicaltable;
+        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntLogicalTable> entlogicaltable;
+        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntLPMappingTable> entlpmappingtable;
+        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntAliasMappingTable> entaliasmappingtable;
+        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalContainsTable> entphysicalcontainstable;
         
 }; // ENTITYMIB
 
 
-class ENTITYMIB::Entitygeneral : public ydk::Entity
+class ENTITYMIB::EntityGeneral : public ydk::Entity
 {
     public:
-        Entitygeneral();
-        ~Entitygeneral();
+        EntityGeneral();
+        ~EntityGeneral();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -67,14 +67,14 @@ class ENTITYMIB::Entitygeneral : public ydk::Entity
 
         ydk::YLeaf entlastchangetime; //type: uint32
 
-}; // ENTITYMIB::Entitygeneral
+}; // ENTITYMIB::EntityGeneral
 
 
-class ENTITYMIB::Entphysicaltable : public ydk::Entity
+class ENTITYMIB::EntPhysicalTable : public ydk::Entity
 {
     public:
-        Entphysicaltable();
-        ~Entphysicaltable();
+        EntPhysicalTable();
+        ~EntPhysicalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -87,18 +87,18 @@ class ENTITYMIB::Entphysicaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Entphysicalentry; //type: ENTITYMIB::Entphysicaltable::Entphysicalentry
+        class EntPhysicalEntry; //type: ENTITYMIB::EntPhysicalTable::EntPhysicalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry> > entphysicalentry;
+        ydk::YList entphysicalentry;
         
-}; // ENTITYMIB::Entphysicaltable
+}; // ENTITYMIB::EntPhysicalTable
 
 
-class ENTITYMIB::Entphysicaltable::Entphysicalentry : public ydk::Entity
+class ENTITYMIB::EntPhysicalTable::EntPhysicalEntry : public ydk::Entity
 {
     public:
-        Entphysicalentry();
-        ~Entphysicalentry();
+        EntPhysicalEntry();
+        ~EntPhysicalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -131,14 +131,14 @@ class ENTITYMIB::Entphysicaltable::Entphysicalentry : public ydk::Entity
         ydk::YLeaf entphysicaluris; //type: binary
         ydk::YLeaf ceentphysicalsecondserialnum; //type: string
 
-}; // ENTITYMIB::Entphysicaltable::Entphysicalentry
+}; // ENTITYMIB::EntPhysicalTable::EntPhysicalEntry
 
 
-class ENTITYMIB::Entlogicaltable : public ydk::Entity
+class ENTITYMIB::EntLogicalTable : public ydk::Entity
 {
     public:
-        Entlogicaltable();
-        ~Entlogicaltable();
+        EntLogicalTable();
+        ~EntLogicalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -151,18 +151,18 @@ class ENTITYMIB::Entlogicaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Entlogicalentry; //type: ENTITYMIB::Entlogicaltable::Entlogicalentry
+        class EntLogicalEntry; //type: ENTITYMIB::EntLogicalTable::EntLogicalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entlogicaltable::Entlogicalentry> > entlogicalentry;
+        ydk::YList entlogicalentry;
         
-}; // ENTITYMIB::Entlogicaltable
+}; // ENTITYMIB::EntLogicalTable
 
 
-class ENTITYMIB::Entlogicaltable::Entlogicalentry : public ydk::Entity
+class ENTITYMIB::EntLogicalTable::EntLogicalEntry : public ydk::Entity
 {
     public:
-        Entlogicalentry();
-        ~Entlogicalentry();
+        EntLogicalEntry();
+        ~EntLogicalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -184,14 +184,14 @@ class ENTITYMIB::Entlogicaltable::Entlogicalentry : public ydk::Entity
         ydk::YLeaf entlogicalcontextengineid; //type: binary
         ydk::YLeaf entlogicalcontextname; //type: string
 
-}; // ENTITYMIB::Entlogicaltable::Entlogicalentry
+}; // ENTITYMIB::EntLogicalTable::EntLogicalEntry
 
 
-class ENTITYMIB::Entlpmappingtable : public ydk::Entity
+class ENTITYMIB::EntLPMappingTable : public ydk::Entity
 {
     public:
-        Entlpmappingtable();
-        ~Entlpmappingtable();
+        EntLPMappingTable();
+        ~EntLPMappingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -204,18 +204,18 @@ class ENTITYMIB::Entlpmappingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Entlpmappingentry; //type: ENTITYMIB::Entlpmappingtable::Entlpmappingentry
+        class EntLPMappingEntry; //type: ENTITYMIB::EntLPMappingTable::EntLPMappingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entlpmappingtable::Entlpmappingentry> > entlpmappingentry;
+        ydk::YList entlpmappingentry;
         
-}; // ENTITYMIB::Entlpmappingtable
+}; // ENTITYMIB::EntLPMappingTable
 
 
-class ENTITYMIB::Entlpmappingtable::Entlpmappingentry : public ydk::Entity
+class ENTITYMIB::EntLPMappingTable::EntLPMappingEntry : public ydk::Entity
 {
     public:
-        Entlpmappingentry();
-        ~Entlpmappingentry();
+        EntLPMappingEntry();
+        ~EntLPMappingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -228,18 +228,18 @@ class ENTITYMIB::Entlpmappingtable::Entlpmappingentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entlogicaltable::Entlogicalentry::entlogicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntLogicalTable::EntLogicalEntry::entlogicalindex)
         ydk::YLeaf entlogicalindex;
         ydk::YLeaf entlpphysicalindex; //type: int32
 
-}; // ENTITYMIB::Entlpmappingtable::Entlpmappingentry
+}; // ENTITYMIB::EntLPMappingTable::EntLPMappingEntry
 
 
-class ENTITYMIB::Entaliasmappingtable : public ydk::Entity
+class ENTITYMIB::EntAliasMappingTable : public ydk::Entity
 {
     public:
-        Entaliasmappingtable();
-        ~Entaliasmappingtable();
+        EntAliasMappingTable();
+        ~EntAliasMappingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -252,18 +252,18 @@ class ENTITYMIB::Entaliasmappingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Entaliasmappingentry; //type: ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry
+        class EntAliasMappingEntry; //type: ENTITYMIB::EntAliasMappingTable::EntAliasMappingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry> > entaliasmappingentry;
+        ydk::YList entaliasmappingentry;
         
-}; // ENTITYMIB::Entaliasmappingtable
+}; // ENTITYMIB::EntAliasMappingTable
 
 
-class ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry : public ydk::Entity
+class ENTITYMIB::EntAliasMappingTable::EntAliasMappingEntry : public ydk::Entity
 {
     public:
-        Entaliasmappingentry();
-        ~Entaliasmappingentry();
+        EntAliasMappingEntry();
+        ~EntAliasMappingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -276,19 +276,19 @@ class ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf entaliaslogicalindexorzero; //type: int32
         ydk::YLeaf entaliasmappingidentifier; //type: string
 
-}; // ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry
+}; // ENTITYMIB::EntAliasMappingTable::EntAliasMappingEntry
 
 
-class ENTITYMIB::Entphysicalcontainstable : public ydk::Entity
+class ENTITYMIB::EntPhysicalContainsTable : public ydk::Entity
 {
     public:
-        Entphysicalcontainstable();
-        ~Entphysicalcontainstable();
+        EntPhysicalContainsTable();
+        ~EntPhysicalContainsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -301,18 +301,18 @@ class ENTITYMIB::Entphysicalcontainstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Entphysicalcontainsentry; //type: ENTITYMIB::Entphysicalcontainstable::Entphysicalcontainsentry
+        class EntPhysicalContainsEntry; //type: ENTITYMIB::EntPhysicalContainsTable::EntPhysicalContainsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicalcontainstable::Entphysicalcontainsentry> > entphysicalcontainsentry;
+        ydk::YList entphysicalcontainsentry;
         
-}; // ENTITYMIB::Entphysicalcontainstable
+}; // ENTITYMIB::EntPhysicalContainsTable
 
 
-class ENTITYMIB::Entphysicalcontainstable::Entphysicalcontainsentry : public ydk::Entity
+class ENTITYMIB::EntPhysicalContainsTable::EntPhysicalContainsEntry : public ydk::Entity
 {
     public:
-        Entphysicalcontainsentry();
-        ~Entphysicalcontainsentry();
+        EntPhysicalContainsEntry();
+        ~EntPhysicalContainsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -325,11 +325,11 @@ class ENTITYMIB::Entphysicalcontainstable::Entphysicalcontainsentry : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf entphysicalchildindex; //type: int32
 
-}; // ENTITYMIB::Entphysicalcontainstable::Entphysicalcontainsentry
+}; // ENTITYMIB::EntPhysicalContainsTable::EntPhysicalContainsEntry
 
 class PhysicalClass : public ydk::Enum
 {

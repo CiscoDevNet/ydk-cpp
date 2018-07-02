@@ -258,7 +258,7 @@ class Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximu
 
         class Range; //type: Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
+        ydk::YList range;
         
 }; // Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 
@@ -1064,7 +1064,7 @@ class Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maxi
 
         class Range; //type: Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
+        ydk::YList range;
         
 }; // Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 
@@ -1870,7 +1870,7 @@ class Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maxim
 
         class Range; //type: Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
+        ydk::YList range;
         
 }; // Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 
@@ -2676,7 +2676,7 @@ class Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maxim
 
         class Range; //type: Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
+        ydk::YList range;
         
 }; // Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 
@@ -3482,7 +3482,7 @@ class Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum :
 
         class Range; //type: Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
+        ydk::YList range;
         
 }; // Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 

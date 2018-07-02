@@ -33,7 +33,7 @@ class Fpdserv : public ydk::Entity
 
         class Trace; //type: Fpdserv::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fpd_infra_cli_fpdserv_ctrace::Fpdserv::Trace> > trace;
+        ydk::YList trace;
         
 }; // Fpdserv
 
@@ -58,7 +58,7 @@ class Fpdserv::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Fpdserv::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fpd_infra_cli_fpdserv_ctrace::Fpdserv::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Fpdserv::Trace
 
@@ -82,7 +82,7 @@ class Fpdserv::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Fpdserv::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fpd_infra_cli_fpdserv_ctrace::Fpdserv::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Fpdserv::Trace::Location
 
@@ -106,7 +106,7 @@ class Fpdserv::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Fpdserv::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fpd_infra_cli_fpdserv_ctrace::Fpdserv::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Fpdserv::Trace::Location::AllOptions
 

@@ -163,7 +163,7 @@ class XrXml::Agent::Default::Vrfs : public ydk::Entity
 
         class Vrf; //type: XrXml::Agent::Default::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Default::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // XrXml::Agent::Default::Vrfs
 
@@ -363,7 +363,7 @@ class XrXml::Agent::Ssl::Vrfs : public ydk::Entity
 
         class Vrf; //type: XrXml::Agent::Ssl::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Ssl::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // XrXml::Agent::Ssl::Vrfs
 

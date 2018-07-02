@@ -14,11 +14,11 @@ namespace Cisco_IOS_XR_crypto_sam_oper {
 Sam::Sam()
     :
     system_information(std::make_shared<Sam::SystemInformation>())
-	,log_contents(std::make_shared<Sam::LogContents>())
-	,devices(std::make_shared<Sam::Devices>())
-	,packages(std::make_shared<Sam::Packages>())
-	,certificate_revocations(std::make_shared<Sam::CertificateRevocations>())
-	,certificate_revocation_list_summary(std::make_shared<Sam::CertificateRevocationListSummary>())
+    , log_contents(std::make_shared<Sam::LogContents>())
+    , devices(std::make_shared<Sam::Devices>())
+    , packages(std::make_shared<Sam::Packages>())
+    , certificate_revocations(std::make_shared<Sam::CertificateRevocations>())
+    , certificate_revocation_list_summary(std::make_shared<Sam::CertificateRevocationListSummary>())
 {
     system_information->parent = this;
     log_contents->parent = this;
@@ -27,7 +27,7 @@ Sam::Sam()
     certificate_revocations->parent = this;
     certificate_revocation_list_summary->parent = this;
 
-    yang_name = "sam"; yang_parent_name = "Cisco-IOS-XR-crypto-sam-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sam"; yang_parent_name = "Cisco-IOS-XR-crypto-sam-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Sam::~Sam()
@@ -36,6 +36,7 @@ Sam::~Sam()
 
 bool Sam::has_data() const
 {
+    if (is_presence_container) return true;
     return (system_information !=  nullptr && system_information->has_data())
 	|| (log_contents !=  nullptr && log_contents->has_data())
 	|| (devices !=  nullptr && devices->has_data())
@@ -214,7 +215,7 @@ Sam::SystemInformation::SystemInformation()
     is_default_response{YType::boolean, "is-default-response"}
 {
 
-    yang_name = "system-information"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "system-information"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sam::SystemInformation::~SystemInformation()
@@ -223,6 +224,7 @@ Sam::SystemInformation::~SystemInformation()
 
 bool Sam::SystemInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return is_running.is_set
 	|| prompt_interval.is_set
 	|| is_default_response.is_set;
@@ -320,9 +322,11 @@ bool Sam::SystemInformation::has_leaf_or_child_of_name(const std::string & name)
 }
 
 Sam::LogContents::LogContents()
+    :
+    log_content(this, {"number_of_lines"})
 {
 
-    yang_name = "log-contents"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "log-contents"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sam::LogContents::~LogContents()
@@ -331,7 +335,8 @@ Sam::LogContents::~LogContents()
 
 bool Sam::LogContents::has_data() const
 {
-    for (std::size_t index=0; index<log_content.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_content.len(); index++)
     {
         if(log_content[index]->has_data())
             return true;
@@ -341,7 +346,7 @@ bool Sam::LogContents::has_data() const
 
 bool Sam::LogContents::has_operation() const
 {
-    for (std::size_t index=0; index<log_content.size(); index++)
+    for (std::size_t index=0; index<log_content.len(); index++)
     {
         if(log_content[index]->has_operation())
             return true;
@@ -378,7 +383,7 @@ std::shared_ptr<Entity> Sam::LogContents::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Sam::LogContents::LogContent>();
         c->parent = this;
-        log_content.push_back(c);
+        log_content.append(c);
         return c;
     }
 
@@ -390,7 +395,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sam::LogContents::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_content)
+    for (auto c : log_content.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -418,12 +423,14 @@ bool Sam::LogContents::has_leaf_or_child_of_name(const std::string & name) const
 
 Sam::LogContents::LogContent::LogContent()
     :
-    number_of_lines{YType::int32, "number-of-lines"},
+    number_of_lines{YType::uint32, "number-of-lines"},
     total_entries{YType::uint32, "total-entries"},
     entries_shown{YType::uint32, "entries-shown"}
+        ,
+    logs(this, {})
 {
 
-    yang_name = "log-content"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "log-content"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sam::LogContents::LogContent::~LogContent()
@@ -432,7 +439,8 @@ Sam::LogContents::LogContent::~LogContent()
 
 bool Sam::LogContents::LogContent::has_data() const
 {
-    for (std::size_t index=0; index<logs.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<logs.len(); index++)
     {
         if(logs[index]->has_data())
             return true;
@@ -444,7 +452,7 @@ bool Sam::LogContents::LogContent::has_data() const
 
 bool Sam::LogContents::LogContent::has_operation() const
 {
-    for (std::size_t index=0; index<logs.size(); index++)
+    for (std::size_t index=0; index<logs.len(); index++)
     {
         if(logs[index]->has_operation())
             return true;
@@ -465,7 +473,8 @@ std::string Sam::LogContents::LogContent::get_absolute_path() const
 std::string Sam::LogContents::LogContent::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "log-content" <<"[number-of-lines='" <<number_of_lines <<"']";
+    path_buffer << "log-content";
+    ADD_KEY_TOKEN(number_of_lines, "number-of-lines");
     return path_buffer.str();
 }
 
@@ -487,7 +496,7 @@ std::shared_ptr<Entity> Sam::LogContents::LogContent::get_child_by_name(const st
     {
         auto c = std::make_shared<Sam::LogContents::LogContent::Logs>();
         c->parent = this;
-        logs.push_back(c);
+        logs.append(c);
         return c;
     }
 
@@ -499,7 +508,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sam::LogContents::LogContent::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : logs)
+    for (auto c : logs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -570,7 +579,7 @@ Sam::LogContents::LogContent::Logs::Logs()
     table{YType::enumeration, "table"}
 {
 
-    yang_name = "logs"; yang_parent_name = "log-content"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logs"; yang_parent_name = "log-content"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sam::LogContents::LogContent::Logs::~Logs()
@@ -579,6 +588,7 @@ Sam::LogContents::LogContent::Logs::~Logs()
 
 bool Sam::LogContents::LogContent::Logs::has_data() const
 {
+    if (is_presence_container) return true;
     return time.is_set
 	|| code.is_set
 	|| target_device.is_set
@@ -773,9 +783,11 @@ bool Sam::LogContents::LogContent::Logs::has_leaf_or_child_of_name(const std::st
 }
 
 Sam::Devices::Devices()
+    :
+    device(this, {"device_name"})
 {
 
-    yang_name = "devices"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "devices"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sam::Devices::~Devices()
@@ -784,7 +796,8 @@ Sam::Devices::~Devices()
 
 bool Sam::Devices::has_data() const
 {
-    for (std::size_t index=0; index<device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<device.len(); index++)
     {
         if(device[index]->has_data())
             return true;
@@ -794,7 +807,7 @@ bool Sam::Devices::has_data() const
 
 bool Sam::Devices::has_operation() const
 {
-    for (std::size_t index=0; index<device.size(); index++)
+    for (std::size_t index=0; index<device.len(); index++)
     {
         if(device[index]->has_operation())
             return true;
@@ -831,7 +844,7 @@ std::shared_ptr<Entity> Sam::Devices::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Sam::Devices::Device>();
         c->parent = this;
-        device.push_back(c);
+        device.append(c);
         return c;
     }
 
@@ -843,7 +856,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : device)
+    for (auto c : device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -872,12 +885,12 @@ bool Sam::Devices::has_leaf_or_child_of_name(const std::string & name) const
 Sam::Devices::Device::Device()
     :
     device_name{YType::str, "device-name"}
-    	,
+        ,
     certificate(std::make_shared<Sam::Devices::Device::Certificate>())
 {
     certificate->parent = this;
 
-    yang_name = "device"; yang_parent_name = "devices"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "device"; yang_parent_name = "devices"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sam::Devices::Device::~Device()
@@ -886,6 +899,7 @@ Sam::Devices::Device::~Device()
 
 bool Sam::Devices::Device::has_data() const
 {
+    if (is_presence_container) return true;
     return device_name.is_set
 	|| (certificate !=  nullptr && certificate->has_data());
 }
@@ -907,7 +921,8 @@ std::string Sam::Devices::Device::get_absolute_path() const
 std::string Sam::Devices::Device::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "device" <<"[device-name='" <<device_name <<"']";
+    path_buffer << "device";
+    ADD_KEY_TOKEN(device_name, "device-name");
     return path_buffer.str();
 }
 
@@ -975,12 +990,12 @@ bool Sam::Devices::Device::has_leaf_or_child_of_name(const std::string & name) c
 Sam::Devices::Device::Certificate::Certificate()
     :
     brief(std::make_shared<Sam::Devices::Device::Certificate::Brief>())
-	,certificate_indexes(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes>())
+    , certificate_indexes(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes>())
 {
     brief->parent = this;
     certificate_indexes->parent = this;
 
-    yang_name = "certificate"; yang_parent_name = "device"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "certificate"; yang_parent_name = "device"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sam::Devices::Device::Certificate::~Certificate()
@@ -989,6 +1004,7 @@ Sam::Devices::Device::Certificate::~Certificate()
 
 bool Sam::Devices::Device::Certificate::has_data() const
 {
+    if (is_presence_container) return true;
     return (brief !=  nullptr && brief->has_data())
 	|| (certificate_indexes !=  nullptr && certificate_indexes->has_data());
 }
@@ -1075,12 +1091,12 @@ Sam::Devices::Device::Certificate::Brief::Brief()
     :
     location{YType::str, "location"},
     certificate_index{YType::uint16, "certificate-index"}
-    	,
+        ,
     certificate_flags(std::make_shared<Sam::Devices::Device::Certificate::Brief::CertificateFlags>())
 {
     certificate_flags->parent = this;
 
-    yang_name = "brief"; yang_parent_name = "certificate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "certificate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sam::Devices::Device::Certificate::Brief::~Brief()
@@ -1089,6 +1105,7 @@ Sam::Devices::Device::Certificate::Brief::~Brief()
 
 bool Sam::Devices::Device::Certificate::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| certificate_index.is_set
 	|| (certificate_flags !=  nullptr && certificate_flags->has_data());
@@ -1189,7 +1206,7 @@ Sam::Devices::Device::Certificate::Brief::CertificateFlags::CertificateFlags()
     is_validated{YType::boolean, "is-validated"}
 {
 
-    yang_name = "certificate-flags"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "certificate-flags"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sam::Devices::Device::Certificate::Brief::CertificateFlags::~CertificateFlags()
@@ -1198,6 +1215,7 @@ Sam::Devices::Device::Certificate::Brief::CertificateFlags::~CertificateFlags()
 
 bool Sam::Devices::Device::Certificate::Brief::CertificateFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return is_trusted.is_set
 	|| is_revoked.is_set
 	|| is_expired.is_set
@@ -1301,9 +1319,11 @@ bool Sam::Devices::Device::Certificate::Brief::CertificateFlags::has_leaf_or_chi
 }
 
 Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndexes()
+    :
+    certificate_index(this, {"index_"})
 {
 
-    yang_name = "certificate-indexes"; yang_parent_name = "certificate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "certificate-indexes"; yang_parent_name = "certificate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sam::Devices::Device::Certificate::CertificateIndexes::~CertificateIndexes()
@@ -1312,7 +1332,8 @@ Sam::Devices::Device::Certificate::CertificateIndexes::~CertificateIndexes()
 
 bool Sam::Devices::Device::Certificate::CertificateIndexes::has_data() const
 {
-    for (std::size_t index=0; index<certificate_index.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<certificate_index.len(); index++)
     {
         if(certificate_index[index]->has_data())
             return true;
@@ -1322,7 +1343,7 @@ bool Sam::Devices::Device::Certificate::CertificateIndexes::has_data() const
 
 bool Sam::Devices::Device::Certificate::CertificateIndexes::has_operation() const
 {
-    for (std::size_t index=0; index<certificate_index.size(); index++)
+    for (std::size_t index=0; index<certificate_index.len(); index++)
     {
         if(certificate_index[index]->has_operation())
             return true;
@@ -1352,7 +1373,7 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::g
     {
         auto c = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex>();
         c->parent = this;
-        certificate_index.push_back(c);
+        certificate_index.append(c);
         return c;
     }
 
@@ -1364,7 +1385,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : certificate_index)
+    for (auto c : certificate_index.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1392,13 +1413,13 @@ bool Sam::Devices::Device::Certificate::CertificateIndexes::has_leaf_or_child_of
 
 Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::CertificateIndex()
     :
-    index_{YType::int32, "index"}
-    	,
+    index_{YType::uint32, "index"}
+        ,
     detail(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail>())
 {
     detail->parent = this;
 
-    yang_name = "certificate-index"; yang_parent_name = "certificate-indexes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "certificate-index"; yang_parent_name = "certificate-indexes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::~CertificateIndex()
@@ -1407,6 +1428,7 @@ Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::~Certif
 
 bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| (detail !=  nullptr && detail->has_data());
 }
@@ -1421,7 +1443,8 @@ bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::ha
 std::string Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "certificate-index" <<"[index='" <<index_ <<"']";
+    path_buffer << "certificate-index";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -1490,12 +1513,12 @@ Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail:
     :
     location{YType::str, "location"},
     certificate_index{YType::uint16, "certificate-index"}
-    	,
+        ,
     certificate_flags(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags>())
 {
     certificate_flags->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "certificate-index"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "certificate-index"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::~Detail()
@@ -1504,6 +1527,7 @@ Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail:
 
 bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| certificate_index.is_set
 	|| (certificate_flags !=  nullptr && certificate_flags->has_data());
@@ -1604,7 +1628,7 @@ Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail:
     is_validated{YType::boolean, "is-validated"}
 {
 
-    yang_name = "certificate-flags"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "certificate-flags"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::~CertificateFlags()
@@ -1613,6 +1637,7 @@ Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail:
 
 bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return is_trusted.is_set
 	|| is_revoked.is_set
 	|| is_expired.is_set
@@ -1716,9 +1741,11 @@ bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::De
 }
 
 Sam::Packages::Packages()
+    :
+    package(this, {"package_name"})
 {
 
-    yang_name = "packages"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "packages"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sam::Packages::~Packages()
@@ -1727,7 +1754,8 @@ Sam::Packages::~Packages()
 
 bool Sam::Packages::has_data() const
 {
-    for (std::size_t index=0; index<package.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<package.len(); index++)
     {
         if(package[index]->has_data())
             return true;
@@ -1737,7 +1765,7 @@ bool Sam::Packages::has_data() const
 
 bool Sam::Packages::has_operation() const
 {
-    for (std::size_t index=0; index<package.size(); index++)
+    for (std::size_t index=0; index<package.len(); index++)
     {
         if(package[index]->has_operation())
             return true;
@@ -1774,7 +1802,7 @@ std::shared_ptr<Entity> Sam::Packages::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Sam::Packages::Package>();
         c->parent = this;
-        package.push_back(c);
+        package.append(c);
         return c;
     }
 
@@ -1786,7 +1814,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sam::Packages::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : package)
+    for (auto c : package.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1817,12 +1845,12 @@ Sam::Packages::Package::Package()
     package_name{YType::str, "package-name"},
     location{YType::str, "location"},
     certificate_index{YType::uint16, "certificate-index"}
-    	,
+        ,
     certificate_flags(std::make_shared<Sam::Packages::Package::CertificateFlags>())
 {
     certificate_flags->parent = this;
 
-    yang_name = "package"; yang_parent_name = "packages"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "packages"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sam::Packages::Package::~Package()
@@ -1831,6 +1859,7 @@ Sam::Packages::Package::~Package()
 
 bool Sam::Packages::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return package_name.is_set
 	|| location.is_set
 	|| certificate_index.is_set
@@ -1856,7 +1885,8 @@ std::string Sam::Packages::Package::get_absolute_path() const
 std::string Sam::Packages::Package::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "package" <<"[package-name='" <<package_name <<"']";
+    path_buffer << "package";
+    ADD_KEY_TOKEN(package_name, "package-name");
     return path_buffer.str();
 }
 
@@ -1951,7 +1981,7 @@ Sam::Packages::Package::CertificateFlags::CertificateFlags()
     is_validated{YType::boolean, "is-validated"}
 {
 
-    yang_name = "certificate-flags"; yang_parent_name = "package"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "certificate-flags"; yang_parent_name = "package"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sam::Packages::Package::CertificateFlags::~CertificateFlags()
@@ -1960,6 +1990,7 @@ Sam::Packages::Package::CertificateFlags::~CertificateFlags()
 
 bool Sam::Packages::Package::CertificateFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return is_trusted.is_set
 	|| is_revoked.is_set
 	|| is_expired.is_set
@@ -2063,9 +2094,11 @@ bool Sam::Packages::Package::CertificateFlags::has_leaf_or_child_of_name(const s
 }
 
 Sam::CertificateRevocations::CertificateRevocations()
+    :
+    certificate_revocation(this, {"crl_index"})
 {
 
-    yang_name = "certificate-revocations"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "certificate-revocations"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sam::CertificateRevocations::~CertificateRevocations()
@@ -2074,7 +2107,8 @@ Sam::CertificateRevocations::~CertificateRevocations()
 
 bool Sam::CertificateRevocations::has_data() const
 {
-    for (std::size_t index=0; index<certificate_revocation.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<certificate_revocation.len(); index++)
     {
         if(certificate_revocation[index]->has_data())
             return true;
@@ -2084,7 +2118,7 @@ bool Sam::CertificateRevocations::has_data() const
 
 bool Sam::CertificateRevocations::has_operation() const
 {
-    for (std::size_t index=0; index<certificate_revocation.size(); index++)
+    for (std::size_t index=0; index<certificate_revocation.len(); index++)
     {
         if(certificate_revocation[index]->has_operation())
             return true;
@@ -2121,7 +2155,7 @@ std::shared_ptr<Entity> Sam::CertificateRevocations::get_child_by_name(const std
     {
         auto c = std::make_shared<Sam::CertificateRevocations::CertificateRevocation>();
         c->parent = this;
-        certificate_revocation.push_back(c);
+        certificate_revocation.append(c);
         return c;
     }
 
@@ -2133,7 +2167,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : certificate_revocation)
+    for (auto c : certificate_revocation.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2161,13 +2195,13 @@ bool Sam::CertificateRevocations::has_leaf_or_child_of_name(const std::string & 
 
 Sam::CertificateRevocations::CertificateRevocation::CertificateRevocation()
     :
-    crl_index{YType::int32, "crl-index"}
-    	,
+    crl_index{YType::uint32, "crl-index"}
+        ,
     certificate_revocation_list_detail(std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail>())
 {
     certificate_revocation_list_detail->parent = this;
 
-    yang_name = "certificate-revocation"; yang_parent_name = "certificate-revocations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "certificate-revocation"; yang_parent_name = "certificate-revocations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sam::CertificateRevocations::CertificateRevocation::~CertificateRevocation()
@@ -2176,6 +2210,7 @@ Sam::CertificateRevocations::CertificateRevocation::~CertificateRevocation()
 
 bool Sam::CertificateRevocations::CertificateRevocation::has_data() const
 {
+    if (is_presence_container) return true;
     return crl_index.is_set
 	|| (certificate_revocation_list_detail !=  nullptr && certificate_revocation_list_detail->has_data());
 }
@@ -2197,7 +2232,8 @@ std::string Sam::CertificateRevocations::CertificateRevocation::get_absolute_pat
 std::string Sam::CertificateRevocations::CertificateRevocation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "certificate-revocation" <<"[crl-index='" <<crl_index <<"']";
+    path_buffer << "certificate-revocation";
+    ADD_KEY_TOKEN(crl_index, "crl-index");
     return path_buffer.str();
 }
 
@@ -2266,12 +2302,12 @@ Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDet
     :
     crl_index{YType::uint16, "crl-index"},
     updates{YType::str, "updates"}
-    	,
+        ,
     issuer(std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer>())
 {
     issuer->parent = this;
 
-    yang_name = "certificate-revocation-list-detail"; yang_parent_name = "certificate-revocation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "certificate-revocation-list-detail"; yang_parent_name = "certificate-revocation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::~CertificateRevocationListDetail()
@@ -2280,6 +2316,7 @@ Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDet
 
 bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return crl_index.is_set
 	|| updates.is_set
 	|| (issuer !=  nullptr && issuer->has_data());
@@ -2379,7 +2416,7 @@ Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDet
     country{YType::str, "country"}
 {
 
-    yang_name = "issuer"; yang_parent_name = "certificate-revocation-list-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "issuer"; yang_parent_name = "certificate-revocation-list-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::~Issuer()
@@ -2388,6 +2425,7 @@ Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDet
 
 bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::has_data() const
 {
+    if (is_presence_container) return true;
     return common_name.is_set
 	|| organization.is_set
 	|| country.is_set;
@@ -2481,12 +2519,12 @@ Sam::CertificateRevocationListSummary::CertificateRevocationListSummary()
     :
     crl_index{YType::uint16, "crl-index"},
     updates{YType::str, "updates"}
-    	,
+        ,
     issuer(std::make_shared<Sam::CertificateRevocationListSummary::Issuer>())
 {
     issuer->parent = this;
 
-    yang_name = "certificate-revocation-list-summary"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "certificate-revocation-list-summary"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sam::CertificateRevocationListSummary::~CertificateRevocationListSummary()
@@ -2495,6 +2533,7 @@ Sam::CertificateRevocationListSummary::~CertificateRevocationListSummary()
 
 bool Sam::CertificateRevocationListSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return crl_index.is_set
 	|| updates.is_set
 	|| (issuer !=  nullptr && issuer->has_data());
@@ -2601,7 +2640,7 @@ Sam::CertificateRevocationListSummary::Issuer::Issuer()
     country{YType::str, "country"}
 {
 
-    yang_name = "issuer"; yang_parent_name = "certificate-revocation-list-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "issuer"; yang_parent_name = "certificate-revocation-list-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sam::CertificateRevocationListSummary::Issuer::~Issuer()
@@ -2610,6 +2649,7 @@ Sam::CertificateRevocationListSummary::Issuer::~Issuer()
 
 bool Sam::CertificateRevocationListSummary::Issuer::has_data() const
 {
+    if (is_presence_container) return true;
     return common_name.is_set
 	|| organization.is_set
 	|| country.is_set;
@@ -2706,14 +2746,6 @@ bool Sam::CertificateRevocationListSummary::Issuer::has_leaf_or_child_of_name(co
     return false;
 }
 
-const Enum::YLeaf LogTables::unkown {0, "unkown"};
-const Enum::YLeaf LogTables::memory_digest_table {1, "memory-digest-table"};
-const Enum::YLeaf LogTables::system_database_digest {2, "system-database-digest"};
-const Enum::YLeaf LogTables::sam_tables {3, "sam-tables"};
-
-const Enum::YLeaf CertificateIssuer::unknown {0, "unknown"};
-const Enum::YLeaf CertificateIssuer::code_signing_server_certificate_authority {1, "code-signing-server-certificate-authority"};
-
 const Enum::YLeaf LogError::unknown {0, "unknown"};
 const Enum::YLeaf LogError::log_message_error {1, "log-message-error"};
 const Enum::YLeaf LogError::get_issuer_name_failed {2, "get-issuer-name-failed"};
@@ -2739,6 +2771,14 @@ const Enum::YLeaf LogCode::backup_file_on_nvram_deleted {17, "backup-file-on-nvr
 const Enum::YLeaf LogCode::sam_log_file_recovered_from_system_database {18, "sam-log-file-recovered-from-system-database"};
 const Enum::YLeaf LogCode::validated_elf {19, "validated-elf"};
 const Enum::YLeaf LogCode::namespace_deleted_recovered_by_sam {20, "namespace-deleted-recovered-by-sam"};
+
+const Enum::YLeaf CertificateIssuer::unknown {0, "unknown"};
+const Enum::YLeaf CertificateIssuer::code_signing_server_certificate_authority {1, "code-signing-server-certificate-authority"};
+
+const Enum::YLeaf LogTables::unkown {0, "unkown"};
+const Enum::YLeaf LogTables::memory_digest_table {1, "memory-digest-table"};
+const Enum::YLeaf LogTables::system_database_digest {2, "system-database-digest"};
+const Enum::YLeaf LogTables::sam_tables {3, "sam-tables"};
 
 
 }

@@ -17,7 +17,7 @@ IpExplicitPaths::IpExplicitPaths()
 {
     paths->parent = this;
 
-    yang_name = "ip-explicit-paths"; yang_parent_name = "Cisco-IOS-XR-ip-iep-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ip-explicit-paths"; yang_parent_name = "Cisco-IOS-XR-ip-iep-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IpExplicitPaths::~IpExplicitPaths()
@@ -26,6 +26,7 @@ IpExplicitPaths::~IpExplicitPaths()
 
 bool IpExplicitPaths::has_data() const
 {
+    if (is_presence_container) return true;
     return (paths !=  nullptr && paths->has_data());
 }
 
@@ -118,9 +119,11 @@ bool IpExplicitPaths::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 IpExplicitPaths::Paths::Paths()
+    :
+    path(this, {"type"})
 {
 
-    yang_name = "paths"; yang_parent_name = "ip-explicit-paths"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "paths"; yang_parent_name = "ip-explicit-paths"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpExplicitPaths::Paths::~Paths()
@@ -129,7 +132,8 @@ IpExplicitPaths::Paths::~Paths()
 
 bool IpExplicitPaths::Paths::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool IpExplicitPaths::Paths::has_data() const
 
 bool IpExplicitPaths::Paths::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::get_child_by_name(const std::str
     {
         auto c = std::make_shared<IpExplicitPaths::Paths::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,9 +221,12 @@ bool IpExplicitPaths::Paths::has_leaf_or_child_of_name(const std::string & name)
 IpExplicitPaths::Paths::Path::Path()
     :
     type{YType::enumeration, "type"}
+        ,
+    name(this, {"name"})
+    , identifier(this, {"id"})
 {
 
-    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpExplicitPaths::Paths::Path::~Path()
@@ -228,12 +235,13 @@ IpExplicitPaths::Paths::Path::~Path()
 
 bool IpExplicitPaths::Paths::Path::has_data() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<identifier.size(); index++)
+    for (std::size_t index=0; index<identifier.len(); index++)
     {
         if(identifier[index]->has_data())
             return true;
@@ -243,12 +251,12 @@ bool IpExplicitPaths::Paths::Path::has_data() const
 
 bool IpExplicitPaths::Paths::Path::has_operation() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<identifier.size(); index++)
+    for (std::size_t index=0; index<identifier.len(); index++)
     {
         if(identifier[index]->has_operation())
             return true;
@@ -267,7 +275,8 @@ std::string IpExplicitPaths::Paths::Path::get_absolute_path() const
 std::string IpExplicitPaths::Paths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[type='" <<type <<"']";
+    path_buffer << "path";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -287,7 +296,7 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::get_child_by_name(const st
     {
         auto c = std::make_shared<IpExplicitPaths::Paths::Path::Name>();
         c->parent = this;
-        name.push_back(c);
+        name.append(c);
         return c;
     }
 
@@ -295,7 +304,7 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::get_child_by_name(const st
     {
         auto c = std::make_shared<IpExplicitPaths::Paths::Path::Identifier>();
         c->parent = this;
-        identifier.push_back(c);
+        identifier.append(c);
         return c;
     }
 
@@ -307,7 +316,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : name)
+    for (auto c : name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -316,7 +325,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::get
     }
 
     count = 0;
-    for (auto const & c : identifier)
+    for (auto c : identifier.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -356,12 +365,12 @@ IpExplicitPaths::Paths::Path::Name::Name()
     :
     name{YType::str, "name"},
     disable{YType::empty, "disable"}
-    	,
+        ,
     hops(std::make_shared<IpExplicitPaths::Paths::Path::Name::Hops>())
 {
     hops->parent = this;
 
-    yang_name = "name"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "name"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpExplicitPaths::Paths::Path::Name::~Name()
@@ -370,6 +379,7 @@ IpExplicitPaths::Paths::Path::Name::~Name()
 
 bool IpExplicitPaths::Paths::Path::Name::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| disable.is_set
 	|| (hops !=  nullptr && hops->has_data());
@@ -386,7 +396,8 @@ bool IpExplicitPaths::Paths::Path::Name::has_operation() const
 std::string IpExplicitPaths::Paths::Path::Name::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "name" <<"[name='" <<name <<"']";
+    path_buffer << "name";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -463,9 +474,11 @@ bool IpExplicitPaths::Paths::Path::Name::has_leaf_or_child_of_name(const std::st
 }
 
 IpExplicitPaths::Paths::Path::Name::Hops::Hops()
+    :
+    hop(this, {"index_number"})
 {
 
-    yang_name = "hops"; yang_parent_name = "name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hops"; yang_parent_name = "name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpExplicitPaths::Paths::Path::Name::Hops::~Hops()
@@ -474,7 +487,8 @@ IpExplicitPaths::Paths::Path::Name::Hops::~Hops()
 
 bool IpExplicitPaths::Paths::Path::Name::Hops::has_data() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_data())
             return true;
@@ -484,7 +498,7 @@ bool IpExplicitPaths::Paths::Path::Name::Hops::has_data() const
 
 bool IpExplicitPaths::Paths::Path::Name::Hops::has_operation() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_operation())
             return true;
@@ -514,7 +528,7 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Name::Hops::get_child_by_n
     {
         auto c = std::make_shared<IpExplicitPaths::Paths::Path::Name::Hops::Hop>();
         c->parent = this;
-        hop.push_back(c);
+        hop.append(c);
         return c;
     }
 
@@ -526,7 +540,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Nam
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hop)
+    for (auto c : hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -557,12 +571,12 @@ IpExplicitPaths::Paths::Path::Name::Hops::Hop::Hop()
     index_number{YType::uint32, "index-number"},
     ip_address{YType::str, "ip-address"},
     hop_type{YType::enumeration, "hop-type"},
-    if_index{YType::int32, "if-index"},
+    if_index{YType::uint32, "if-index"},
     num_type{YType::enumeration, "num-type"},
     mpls_label{YType::uint32, "mpls-label"}
 {
 
-    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpExplicitPaths::Paths::Path::Name::Hops::Hop::~Hop()
@@ -571,6 +585,7 @@ IpExplicitPaths::Paths::Path::Name::Hops::Hop::~Hop()
 
 bool IpExplicitPaths::Paths::Path::Name::Hops::Hop::has_data() const
 {
+    if (is_presence_container) return true;
     return index_number.is_set
 	|| ip_address.is_set
 	|| hop_type.is_set
@@ -593,7 +608,8 @@ bool IpExplicitPaths::Paths::Path::Name::Hops::Hop::has_operation() const
 std::string IpExplicitPaths::Paths::Path::Name::Hops::Hop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hop" <<"[index-number='" <<index_number <<"']";
+    path_buffer << "hop";
+    ADD_KEY_TOKEN(index_number, "index-number");
     return path_buffer.str();
 }
 
@@ -703,12 +719,12 @@ IpExplicitPaths::Paths::Path::Identifier::Identifier()
     :
     id{YType::uint32, "id"},
     disable{YType::empty, "disable"}
-    	,
+        ,
     hops(std::make_shared<IpExplicitPaths::Paths::Path::Identifier::Hops>())
 {
     hops->parent = this;
 
-    yang_name = "identifier"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "identifier"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpExplicitPaths::Paths::Path::Identifier::~Identifier()
@@ -717,6 +733,7 @@ IpExplicitPaths::Paths::Path::Identifier::~Identifier()
 
 bool IpExplicitPaths::Paths::Path::Identifier::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| disable.is_set
 	|| (hops !=  nullptr && hops->has_data());
@@ -733,7 +750,8 @@ bool IpExplicitPaths::Paths::Path::Identifier::has_operation() const
 std::string IpExplicitPaths::Paths::Path::Identifier::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "identifier" <<"[id='" <<id <<"']";
+    path_buffer << "identifier";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -810,9 +828,11 @@ bool IpExplicitPaths::Paths::Path::Identifier::has_leaf_or_child_of_name(const s
 }
 
 IpExplicitPaths::Paths::Path::Identifier::Hops::Hops()
+    :
+    hop(this, {"index_number"})
 {
 
-    yang_name = "hops"; yang_parent_name = "identifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hops"; yang_parent_name = "identifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpExplicitPaths::Paths::Path::Identifier::Hops::~Hops()
@@ -821,7 +841,8 @@ IpExplicitPaths::Paths::Path::Identifier::Hops::~Hops()
 
 bool IpExplicitPaths::Paths::Path::Identifier::Hops::has_data() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_data())
             return true;
@@ -831,7 +852,7 @@ bool IpExplicitPaths::Paths::Path::Identifier::Hops::has_data() const
 
 bool IpExplicitPaths::Paths::Path::Identifier::Hops::has_operation() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_operation())
             return true;
@@ -861,7 +882,7 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Identifier::Hops::get_chil
     {
         auto c = std::make_shared<IpExplicitPaths::Paths::Path::Identifier::Hops::Hop>();
         c->parent = this;
-        hop.push_back(c);
+        hop.append(c);
         return c;
     }
 
@@ -873,7 +894,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Ide
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hop)
+    for (auto c : hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -904,12 +925,12 @@ IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::Hop()
     index_number{YType::uint32, "index-number"},
     ip_address{YType::str, "ip-address"},
     hop_type{YType::enumeration, "hop-type"},
-    if_index{YType::int32, "if-index"},
+    if_index{YType::uint32, "if-index"},
     num_type{YType::enumeration, "num-type"},
     mpls_label{YType::uint32, "mpls-label"}
 {
 
-    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::~Hop()
@@ -918,6 +939,7 @@ IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::~Hop()
 
 bool IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::has_data() const
 {
+    if (is_presence_container) return true;
     return index_number.is_set
 	|| ip_address.is_set
 	|| hop_type.is_set
@@ -940,7 +962,8 @@ bool IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::has_operation() const
 std::string IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hop" <<"[index-number='" <<index_number <<"']";
+    path_buffer << "hop";
+    ADD_KEY_TOKEN(index_number, "index-number");
     return path_buffer.str();
 }
 
@@ -1046,8 +1069,8 @@ bool IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::has_leaf_or_child_of_n
     return false;
 }
 
-const Enum::YLeaf IpIepNum::unnumbered {1, "unnumbered"};
-const Enum::YLeaf IpIepNum::numbered {2, "numbered"};
+const Enum::YLeaf IpIepPath::identifier {1, "identifier"};
+const Enum::YLeaf IpIepPath::name {2, "name"};
 
 const Enum::YLeaf IpIepHop::next_strict {2, "next-strict"};
 const Enum::YLeaf IpIepHop::next_loose {3, "next-loose"};
@@ -1055,8 +1078,8 @@ const Enum::YLeaf IpIepHop::exclude {4, "exclude"};
 const Enum::YLeaf IpIepHop::exclude_srlg {5, "exclude-srlg"};
 const Enum::YLeaf IpIepHop::next_label {6, "next-label"};
 
-const Enum::YLeaf IpIepPath::identifier {1, "identifier"};
-const Enum::YLeaf IpIepPath::name {2, "name"};
+const Enum::YLeaf IpIepNum::unnumbered {1, "unnumbered"};
+const Enum::YLeaf IpIepNum::numbered {2, "numbered"};
 
 
 }

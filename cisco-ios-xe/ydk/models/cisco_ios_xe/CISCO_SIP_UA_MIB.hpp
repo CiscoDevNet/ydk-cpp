@@ -12,23 +12,23 @@
 namespace cisco_ios_xe {
 namespace CISCO_SIP_UA_MIB {
 
-class Ciscosipuamibnotificationprefix : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class CiscoSipUaMIBNotificationPrefix : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscosipuamibnotificationprefix();
-        ~Ciscosipuamibnotificationprefix();
+        CiscoSipUaMIBNotificationPrefix();
+        ~CiscoSipUaMIBNotificationPrefix();
 
 
-}; // Ciscosipuamibnotificationprefix
+}; // CiscoSipUaMIBNotificationPrefix
 
-class Ciscosipuamibnotifications : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class CiscoSipUaMIBNotifications : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscosipuamibnotifications();
-        ~Ciscosipuamibnotifications();
+        CiscoSipUaMIBNotifications();
+        ~CiscoSipUaMIBNotifications();
 
 
-}; // Ciscosipuamibnotifications
+}; // CiscoSipUaMIBNotifications
 
 class CISCOSIPUAMIB : public ydk::Entity
 {
@@ -51,60 +51,60 @@ class CISCOSIPUAMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Csipcfgbase; //type: CISCOSIPUAMIB::Csipcfgbase
-        class Csipcfgtimer; //type: CISCOSIPUAMIB::Csipcfgtimer
-        class Csipcfgretry; //type: CISCOSIPUAMIB::Csipcfgretry
-        class Csipcfgpeer; //type: CISCOSIPUAMIB::Csipcfgpeer
-        class Csipcfgaaa; //type: CISCOSIPUAMIB::Csipcfgaaa
-        class Csipcfgvoiceservicevoip; //type: CISCOSIPUAMIB::Csipcfgvoiceservicevoip
-        class Csipstatsinfo; //type: CISCOSIPUAMIB::Csipstatsinfo
-        class Csipstatssuccess; //type: CISCOSIPUAMIB::Csipstatssuccess
-        class Csipstatsredirect; //type: CISCOSIPUAMIB::Csipstatsredirect
-        class Csipstatserrclient; //type: CISCOSIPUAMIB::Csipstatserrclient
-        class Csipstatserrserver; //type: CISCOSIPUAMIB::Csipstatserrserver
-        class Csipstatsglobalfail; //type: CISCOSIPUAMIB::Csipstatsglobalfail
-        class Csipstatstraffic; //type: CISCOSIPUAMIB::Csipstatstraffic
-        class Csipstatsretry; //type: CISCOSIPUAMIB::Csipstatsretry
-        class Csipstatsmisc; //type: CISCOSIPUAMIB::Csipstatsmisc
-        class Csipstatsconnection; //type: CISCOSIPUAMIB::Csipstatsconnection
-        class Csipcfgearlymediatable; //type: CISCOSIPUAMIB::Csipcfgearlymediatable
-        class Csipcfgbindsourceaddrtable; //type: CISCOSIPUAMIB::Csipcfgbindsourceaddrtable
-        class Csipcfgpeertable; //type: CISCOSIPUAMIB::Csipcfgpeertable
-        class Csipcfgstatuscausetable; //type: CISCOSIPUAMIB::Csipcfgstatuscausetable
-        class Csipcfgcausestatustable; //type: CISCOSIPUAMIB::Csipcfgcausestatustable
-        class Csipstatssuccessoktable; //type: CISCOSIPUAMIB::Csipstatssuccessoktable
+        class CSipCfgBase; //type: CISCOSIPUAMIB::CSipCfgBase
+        class CSipCfgTimer; //type: CISCOSIPUAMIB::CSipCfgTimer
+        class CSipCfgRetry; //type: CISCOSIPUAMIB::CSipCfgRetry
+        class CSipCfgPeer; //type: CISCOSIPUAMIB::CSipCfgPeer
+        class CSipCfgAaa; //type: CISCOSIPUAMIB::CSipCfgAaa
+        class CSipCfgVoiceServiceVoip; //type: CISCOSIPUAMIB::CSipCfgVoiceServiceVoip
+        class CSipStatsInfo; //type: CISCOSIPUAMIB::CSipStatsInfo
+        class CSipStatsSuccess; //type: CISCOSIPUAMIB::CSipStatsSuccess
+        class CSipStatsRedirect; //type: CISCOSIPUAMIB::CSipStatsRedirect
+        class CSipStatsErrClient; //type: CISCOSIPUAMIB::CSipStatsErrClient
+        class CSipStatsErrServer; //type: CISCOSIPUAMIB::CSipStatsErrServer
+        class CSipStatsGlobalFail; //type: CISCOSIPUAMIB::CSipStatsGlobalFail
+        class CSipStatsTraffic; //type: CISCOSIPUAMIB::CSipStatsTraffic
+        class CSipStatsRetry; //type: CISCOSIPUAMIB::CSipStatsRetry
+        class CSipStatsMisc; //type: CISCOSIPUAMIB::CSipStatsMisc
+        class CSipStatsConnection; //type: CISCOSIPUAMIB::CSipStatsConnection
+        class CSipCfgEarlyMediaTable; //type: CISCOSIPUAMIB::CSipCfgEarlyMediaTable
+        class CSipCfgBindSourceAddrTable; //type: CISCOSIPUAMIB::CSipCfgBindSourceAddrTable
+        class CSipCfgPeerTable; //type: CISCOSIPUAMIB::CSipCfgPeerTable
+        class CSipCfgStatusCauseTable; //type: CISCOSIPUAMIB::CSipCfgStatusCauseTable
+        class CSipCfgCauseStatusTable; //type: CISCOSIPUAMIB::CSipCfgCauseStatusTable
+        class CSipStatsSuccessOkTable; //type: CISCOSIPUAMIB::CSipStatsSuccessOkTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgbase> csipcfgbase;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgtimer> csipcfgtimer;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgretry> csipcfgretry;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgpeer> csipcfgpeer;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgaaa> csipcfgaaa;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgvoiceservicevoip> csipcfgvoiceservicevoip;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipstatsinfo> csipstatsinfo;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipstatssuccess> csipstatssuccess;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipstatsredirect> csipstatsredirect;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipstatserrclient> csipstatserrclient;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipstatserrserver> csipstatserrserver;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipstatsglobalfail> csipstatsglobalfail;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipstatstraffic> csipstatstraffic;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipstatsretry> csipstatsretry;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipstatsmisc> csipstatsmisc;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipstatsconnection> csipstatsconnection;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgearlymediatable> csipcfgearlymediatable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgbindsourceaddrtable> csipcfgbindsourceaddrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgpeertable> csipcfgpeertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgstatuscausetable> csipcfgstatuscausetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgcausestatustable> csipcfgcausestatustable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipstatssuccessoktable> csipstatssuccessoktable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipCfgBase> csipcfgbase;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipCfgTimer> csipcfgtimer;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipCfgRetry> csipcfgretry;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipCfgPeer> csipcfgpeer;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipCfgAaa> csipcfgaaa;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipCfgVoiceServiceVoip> csipcfgvoiceservicevoip;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipStatsInfo> csipstatsinfo;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipStatsSuccess> csipstatssuccess;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipStatsRedirect> csipstatsredirect;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipStatsErrClient> csipstatserrclient;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipStatsErrServer> csipstatserrserver;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipStatsGlobalFail> csipstatsglobalfail;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipStatsTraffic> csipstatstraffic;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipStatsRetry> csipstatsretry;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipStatsMisc> csipstatsmisc;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipStatsConnection> csipstatsconnection;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipCfgEarlyMediaTable> csipcfgearlymediatable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipCfgBindSourceAddrTable> csipcfgbindsourceaddrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipCfgPeerTable> csipcfgpeertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipCfgStatusCauseTable> csipcfgstatuscausetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipCfgCauseStatusTable> csipcfgcausestatustable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::CSipStatsSuccessOkTable> csipstatssuccessoktable;
         
 }; // CISCOSIPUAMIB
 
 
-class CISCOSIPUAMIB::Csipcfgbase : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgBase : public ydk::Entity
 {
     public:
-        Csipcfgbase();
-        ~Csipcfgbase();
+        CSipCfgBase();
+        ~CSipCfgBase();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -118,33 +118,33 @@ class CISCOSIPUAMIB::Csipcfgbase : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf csipcfgversion; //type: string
-        ydk::YLeaf csipcfgtransport; //type: Csipcfgtransport
+        ydk::YLeaf csipcfgtransport; //type: CSipCfgTransport
         ydk::YLeaf csipcfguserlocationserveraddr; //type: string
         ydk::YLeaf csipcfgmaxforwards; //type: int32
         ydk::YLeaf csipcfgbindsrcaddrinterface; //type: int32
-        ydk::YLeaf csipcfgbindsrcaddrscope; //type: Csipcfgbindsrcaddrscope
-        ydk::YLeaf csipcfgdnssrvquerystringformat; //type: Csipcfgdnssrvquerystringformat
+        ydk::YLeaf csipcfgbindsrcaddrscope; //type: CSipCfgBindSrcAddrScope
+        ydk::YLeaf csipcfgdnssrvquerystringformat; //type: CSipCfgDnsSrvQueryStringFormat
         ydk::YLeaf csipcfgredirectiondisabled; //type: boolean
         ydk::YLeaf csipcfgsymnatenabled; //type: boolean
-        ydk::YLeaf csipcfgsymnatdirectionrole; //type: Csipcfgsymnatdirectionrole
+        ydk::YLeaf csipcfgsymnatdirectionrole; //type: CSipCfgSymNatDirectionRole
         ydk::YLeaf csipcfgsuspendresumeenabled; //type: boolean
-        ydk::YLeaf csipcfgoffercallhold; //type: Csipcfgoffercallhold
+        ydk::YLeaf csipcfgoffercallhold; //type: CSipCfgOfferCallHold
         ydk::YLeaf csipcfgreasonheaderoveride; //type: boolean
         ydk::YLeaf csipcfgmaximumforwards; //type: int32
-        class Csipcfgtransport;
-        class Csipcfgbindsrcaddrscope;
-        class Csipcfgdnssrvquerystringformat;
-        class Csipcfgsymnatdirectionrole;
-        class Csipcfgoffercallhold;
+        class CSipCfgTransport;
+        class CSipCfgBindSrcAddrScope;
+        class CSipCfgDnsSrvQueryStringFormat;
+        class CSipCfgSymNatDirectionRole;
+        class CSipCfgOfferCallHold;
 
-}; // CISCOSIPUAMIB::Csipcfgbase
+}; // CISCOSIPUAMIB::CSipCfgBase
 
 
-class CISCOSIPUAMIB::Csipcfgtimer : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgTimer : public ydk::Entity
 {
     public:
-        Csipcfgtimer();
-        ~Csipcfgtimer();
+        CSipCfgTimer();
+        ~CSipCfgTimer();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -172,14 +172,14 @@ class CISCOSIPUAMIB::Csipcfgtimer : public ydk::Entity
         ydk::YLeaf csipcfgtimerconnectionaging; //type: int32
         ydk::YLeaf csipcfgtimerbufferinvite; //type: int32
 
-}; // CISCOSIPUAMIB::Csipcfgtimer
+}; // CISCOSIPUAMIB::CSipCfgTimer
 
 
-class CISCOSIPUAMIB::Csipcfgretry : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgRetry : public ydk::Entity
 {
     public:
-        Csipcfgretry();
-        ~Csipcfgretry();
+        CSipCfgRetry();
+        ~CSipCfgRetry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -205,14 +205,14 @@ class CISCOSIPUAMIB::Csipcfgretry : public ydk::Entity
         ydk::YLeaf csipcfgretryinfo; //type: int32
         ydk::YLeaf csipcfgretrysubscribe; //type: int32
 
-}; // CISCOSIPUAMIB::Csipcfgretry
+}; // CISCOSIPUAMIB::CSipCfgRetry
 
 
-class CISCOSIPUAMIB::Csipcfgpeer : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgPeer : public ydk::Entity
 {
     public:
-        Csipcfgpeer();
-        ~Csipcfgpeer();
+        CSipCfgPeer();
+        ~CSipCfgPeer();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -225,22 +225,22 @@ class CISCOSIPUAMIB::Csipcfgpeer : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf csipcfgoutsessiontransport; //type: Csipcfgoutsessiontransport
+        ydk::YLeaf csipcfgoutsessiontransport; //type: CSipCfgOutSessionTransport
         ydk::YLeaf csipcfgreliable1xxrspstr; //type: string
-        ydk::YLeaf csipcfgreliable1xxrsphdr; //type: Csipcfgreliable1Xxrsphdr
-        ydk::YLeaf csipcfgurltype; //type: Csipcfgurltype
-        class Csipcfgoutsessiontransport;
-        class Csipcfgreliable1Xxrsphdr;
-        class Csipcfgurltype;
+        ydk::YLeaf csipcfgreliable1xxrsphdr; //type: CSipCfgReliable1xxRspHdr
+        ydk::YLeaf csipcfgurltype; //type: CSipCfgUrlType
+        class CSipCfgOutSessionTransport;
+        class CSipCfgReliable1xxRspHdr;
+        class CSipCfgUrlType;
 
-}; // CISCOSIPUAMIB::Csipcfgpeer
+}; // CISCOSIPUAMIB::CSipCfgPeer
 
 
-class CISCOSIPUAMIB::Csipcfgaaa : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgAaa : public ydk::Entity
 {
     public:
-        Csipcfgaaa();
-        ~Csipcfgaaa();
+        CSipCfgAaa();
+        ~CSipCfgAaa();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -253,17 +253,17 @@ class CISCOSIPUAMIB::Csipcfgaaa : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf csipcfgaaausername; //type: Csipcfgaaausername
-        class Csipcfgaaausername;
+        ydk::YLeaf csipcfgaaausername; //type: CSipCfgAaaUsername
+        class CSipCfgAaaUsername;
 
-}; // CISCOSIPUAMIB::Csipcfgaaa
+}; // CISCOSIPUAMIB::CSipCfgAaa
 
 
-class CISCOSIPUAMIB::Csipcfgvoiceservicevoip : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgVoiceServiceVoip : public ydk::Entity
 {
     public:
-        Csipcfgvoiceservicevoip();
-        ~Csipcfgvoiceservicevoip();
+        CSipCfgVoiceServiceVoip();
+        ~CSipCfgVoiceServiceVoip();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -281,14 +281,14 @@ class CISCOSIPUAMIB::Csipcfgvoiceservicevoip : public ydk::Entity
         ydk::YLeaf csipcfgmaxsubscriptionoriginate; //type: uint32
         ydk::YLeaf csipcfgswitchtransportenabled; //type: boolean
 
-}; // CISCOSIPUAMIB::Csipcfgvoiceservicevoip
+}; // CISCOSIPUAMIB::CSipCfgVoiceServiceVoip
 
 
-class CISCOSIPUAMIB::Csipstatsinfo : public ydk::Entity
+class CISCOSIPUAMIB::CSipStatsInfo : public ydk::Entity
 {
     public:
-        Csipstatsinfo();
-        ~Csipstatsinfo();
+        CSipStatsInfo();
+        ~CSipStatsInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -312,14 +312,14 @@ class CISCOSIPUAMIB::Csipstatsinfo : public ydk::Entity
         ydk::YLeaf csipstatsinfosessionprogins; //type: uint32
         ydk::YLeaf csipstatsinfosessionprogouts; //type: uint32
 
-}; // CISCOSIPUAMIB::Csipstatsinfo
+}; // CISCOSIPUAMIB::CSipStatsInfo
 
 
-class CISCOSIPUAMIB::Csipstatssuccess : public ydk::Entity
+class CISCOSIPUAMIB::CSipStatsSuccess : public ydk::Entity
 {
     public:
-        Csipstatssuccess();
-        ~Csipstatssuccess();
+        CSipStatsSuccess();
+        ~CSipStatsSuccess();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -337,14 +337,14 @@ class CISCOSIPUAMIB::Csipstatssuccess : public ydk::Entity
         ydk::YLeaf csipstatssuccessacceptedins; //type: uint32
         ydk::YLeaf csipstatssuccessacceptedouts; //type: uint32
 
-}; // CISCOSIPUAMIB::Csipstatssuccess
+}; // CISCOSIPUAMIB::CSipStatsSuccess
 
 
-class CISCOSIPUAMIB::Csipstatsredirect : public ydk::Entity
+class CISCOSIPUAMIB::CSipStatsRedirect : public ydk::Entity
 {
     public:
-        Csipstatsredirect();
-        ~Csipstatsredirect();
+        CSipStatsRedirect();
+        ~CSipStatsRedirect();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -366,14 +366,14 @@ class CISCOSIPUAMIB::Csipstatsredirect : public ydk::Entity
         ydk::YLeaf csipstatsredirmovedtempsins; //type: uint32
         ydk::YLeaf csipstatsredirmovedtempsouts; //type: uint32
 
-}; // CISCOSIPUAMIB::Csipstatsredirect
+}; // CISCOSIPUAMIB::CSipStatsRedirect
 
 
-class CISCOSIPUAMIB::Csipstatserrclient : public ydk::Entity
+class CISCOSIPUAMIB::CSipStatsErrClient : public ydk::Entity
 {
     public:
-        Csipstatserrclient();
-        ~Csipstatserrclient();
+        CSipStatsErrClient();
+        ~CSipStatsErrClient();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -443,14 +443,14 @@ class CISCOSIPUAMIB::Csipstatserrclient : public ydk::Entity
         ydk::YLeaf csipstatsclientreqpendingins; //type: uint32
         ydk::YLeaf csipstatsclientreqpendingouts; //type: uint32
 
-}; // CISCOSIPUAMIB::Csipstatserrclient
+}; // CISCOSIPUAMIB::CSipStatsErrClient
 
 
-class CISCOSIPUAMIB::Csipstatserrserver : public ydk::Entity
+class CISCOSIPUAMIB::CSipStatsErrServer : public ydk::Entity
 {
     public:
-        Csipstatserrserver();
-        ~Csipstatserrserver();
+        CSipStatsErrServer();
+        ~CSipStatsErrServer();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -478,14 +478,14 @@ class CISCOSIPUAMIB::Csipstatserrserver : public ydk::Entity
         ydk::YLeaf csipstatsserverprecondfailureins; //type: uint32
         ydk::YLeaf csipstatsserverprecondfailureouts; //type: uint32
 
-}; // CISCOSIPUAMIB::Csipstatserrserver
+}; // CISCOSIPUAMIB::CSipStatsErrServer
 
 
-class CISCOSIPUAMIB::Csipstatsglobalfail : public ydk::Entity
+class CISCOSIPUAMIB::CSipStatsGlobalFail : public ydk::Entity
 {
     public:
-        Csipstatsglobalfail();
-        ~Csipstatsglobalfail();
+        CSipStatsGlobalFail();
+        ~CSipStatsGlobalFail();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -507,14 +507,14 @@ class CISCOSIPUAMIB::Csipstatsglobalfail : public ydk::Entity
         ydk::YLeaf csipstatsglobalnotacceptableins; //type: uint32
         ydk::YLeaf csipstatsglobalnotacceptableouts; //type: uint32
 
-}; // CISCOSIPUAMIB::Csipstatsglobalfail
+}; // CISCOSIPUAMIB::CSipStatsGlobalFail
 
 
-class CISCOSIPUAMIB::Csipstatstraffic : public ydk::Entity
+class CISCOSIPUAMIB::CSipStatsTraffic : public ydk::Entity
 {
     public:
-        Csipstatstraffic();
-        ~Csipstatstraffic();
+        CSipStatsTraffic();
+        ~CSipStatsTraffic();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -554,14 +554,14 @@ class CISCOSIPUAMIB::Csipstatstraffic : public ydk::Entity
         ydk::YLeaf csipstatstrafficupdateins; //type: uint32
         ydk::YLeaf csipstatstrafficupdateouts; //type: uint32
 
-}; // CISCOSIPUAMIB::Csipstatstraffic
+}; // CISCOSIPUAMIB::CSipStatsTraffic
 
 
-class CISCOSIPUAMIB::Csipstatsretry : public ydk::Entity
+class CISCOSIPUAMIB::CSipStatsRetry : public ydk::Entity
 {
     public:
-        Csipstatsretry();
-        ~Csipstatsretry();
+        CSipStatsRetry();
+        ~CSipStatsRetry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -587,14 +587,14 @@ class CISCOSIPUAMIB::Csipstatsretry : public ydk::Entity
         ydk::YLeaf csipstatsretryinfo; //type: uint32
         ydk::YLeaf csipstatsretrysubscribe; //type: uint32
 
-}; // CISCOSIPUAMIB::Csipstatsretry
+}; // CISCOSIPUAMIB::CSipStatsRetry
 
 
-class CISCOSIPUAMIB::Csipstatsmisc : public ydk::Entity
+class CISCOSIPUAMIB::CSipStatsMisc : public ydk::Entity
 {
     public:
-        Csipstatsmisc();
-        ~Csipstatsmisc();
+        CSipStatsMisc();
+        ~CSipStatsMisc();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -609,14 +609,14 @@ class CISCOSIPUAMIB::Csipstatsmisc : public ydk::Entity
 
         ydk::YLeaf csipstatsmisc3xxmappedto4xxrsps; //type: uint32
 
-}; // CISCOSIPUAMIB::Csipstatsmisc
+}; // CISCOSIPUAMIB::CSipStatsMisc
 
 
-class CISCOSIPUAMIB::Csipstatsconnection : public ydk::Entity
+class CISCOSIPUAMIB::CSipStatsConnection : public ydk::Entity
 {
     public:
-        Csipstatsconnection();
-        ~Csipstatsconnection();
+        CSipStatsConnection();
+        ~CSipStatsConnection();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -639,14 +639,14 @@ class CISCOSIPUAMIB::Csipstatsconnection : public ydk::Entity
         ydk::YLeaf csipstatsactiveudpconnections; //type: uint32
         ydk::YLeaf csipstatsactivetcpconnections; //type: uint32
 
-}; // CISCOSIPUAMIB::Csipstatsconnection
+}; // CISCOSIPUAMIB::CSipStatsConnection
 
 
-class CISCOSIPUAMIB::Csipcfgearlymediatable : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgEarlyMediaTable : public ydk::Entity
 {
     public:
-        Csipcfgearlymediatable();
-        ~Csipcfgearlymediatable();
+        CSipCfgEarlyMediaTable();
+        ~CSipCfgEarlyMediaTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -659,18 +659,18 @@ class CISCOSIPUAMIB::Csipcfgearlymediatable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csipcfgearlymediaentry; //type: CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry
+        class CSipCfgEarlyMediaEntry; //type: CISCOSIPUAMIB::CSipCfgEarlyMediaTable::CSipCfgEarlyMediaEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry> > csipcfgearlymediaentry;
+        ydk::YList csipcfgearlymediaentry;
         
-}; // CISCOSIPUAMIB::Csipcfgearlymediatable
+}; // CISCOSIPUAMIB::CSipCfgEarlyMediaTable
 
 
-class CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgEarlyMediaTable::CSipCfgEarlyMediaEntry : public ydk::Entity
 {
     public:
-        Csipcfgearlymediaentry();
-        ~Csipcfgearlymediaentry();
+        CSipCfgEarlyMediaEntry();
+        ~CSipCfgEarlyMediaEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -686,14 +686,14 @@ class CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry : public ydk
         ydk::YLeaf csipcfgearlymediastatuscodeindex; //type: int32
         ydk::YLeaf csipcfgearlymediacutthrudisabled; //type: boolean
 
-}; // CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry
+}; // CISCOSIPUAMIB::CSipCfgEarlyMediaTable::CSipCfgEarlyMediaEntry
 
 
-class CISCOSIPUAMIB::Csipcfgbindsourceaddrtable : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgBindSourceAddrTable : public ydk::Entity
 {
     public:
-        Csipcfgbindsourceaddrtable();
-        ~Csipcfgbindsourceaddrtable();
+        CSipCfgBindSourceAddrTable();
+        ~CSipCfgBindSourceAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -706,18 +706,18 @@ class CISCOSIPUAMIB::Csipcfgbindsourceaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csipcfgbindsourceaddrentry; //type: CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry
+        class CSipCfgBindSourceAddrEntry; //type: CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry> > csipcfgbindsourceaddrentry;
+        ydk::YList csipcfgbindsourceaddrentry;
         
-}; // CISCOSIPUAMIB::Csipcfgbindsourceaddrtable
+}; // CISCOSIPUAMIB::CSipCfgBindSourceAddrTable
 
 
-class CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry : public ydk::Entity
 {
     public:
-        Csipcfgbindsourceaddrentry();
-        ~Csipcfgbindsourceaddrentry();
+        CSipCfgBindSourceAddrEntry();
+        ~CSipCfgBindSourceAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -730,18 +730,18 @@ class CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf csipcfgbindsourceaddrscope; //type: Csipcfgbindsourceaddrscope
+        ydk::YLeaf csipcfgbindsourceaddrscope; //type: CSipCfgBindSourceAddrScope
         ydk::YLeaf csipcfgbindsourceaddrinterface; //type: int32
-        class Csipcfgbindsourceaddrscope;
+        class CSipCfgBindSourceAddrScope;
 
-}; // CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry
+}; // CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry
 
 
-class CISCOSIPUAMIB::Csipcfgpeertable : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgPeerTable : public ydk::Entity
 {
     public:
-        Csipcfgpeertable();
-        ~Csipcfgpeertable();
+        CSipCfgPeerTable();
+        ~CSipCfgPeerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -754,18 +754,18 @@ class CISCOSIPUAMIB::Csipcfgpeertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csipcfgpeerentry; //type: CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry
+        class CSipCfgPeerEntry; //type: CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry> > csipcfgpeerentry;
+        ydk::YList csipcfgpeerentry;
         
-}; // CISCOSIPUAMIB::Csipcfgpeertable
+}; // CISCOSIPUAMIB::CSipCfgPeerTable
 
 
-class CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry : public ydk::Entity
 {
     public:
-        Csipcfgpeerentry();
-        ~Csipcfgpeerentry();
+        CSipCfgPeerEntry();
+        ~CSipCfgPeerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -779,23 +779,23 @@ class CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf csipcfgpeerindex; //type: int32
-        ydk::YLeaf csipcfgpeeroutsessiontransport; //type: Csipcfgpeeroutsessiontransport
+        ydk::YLeaf csipcfgpeeroutsessiontransport; //type: CSipCfgPeerOutSessionTransport
         ydk::YLeaf csipcfgpeerreliable1xxrspstr; //type: string
-        ydk::YLeaf csipcfgpeerreliable1xxrsphdr; //type: Csipcfgpeerreliable1Xxrsphdr
-        ydk::YLeaf csipcfgpeerurltype; //type: Csipcfgpeerurltype
+        ydk::YLeaf csipcfgpeerreliable1xxrsphdr; //type: CSipCfgPeerReliable1xxRspHdr
+        ydk::YLeaf csipcfgpeerurltype; //type: CSipCfgPeerUrlType
         ydk::YLeaf csipcfgpeerswitchtransenabled; //type: boolean
-        class Csipcfgpeeroutsessiontransport;
-        class Csipcfgpeerreliable1Xxrsphdr;
-        class Csipcfgpeerurltype;
+        class CSipCfgPeerOutSessionTransport;
+        class CSipCfgPeerReliable1xxRspHdr;
+        class CSipCfgPeerUrlType;
 
-}; // CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry
+}; // CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry
 
 
-class CISCOSIPUAMIB::Csipcfgstatuscausetable : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgStatusCauseTable : public ydk::Entity
 {
     public:
-        Csipcfgstatuscausetable();
-        ~Csipcfgstatuscausetable();
+        CSipCfgStatusCauseTable();
+        ~CSipCfgStatusCauseTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -808,18 +808,18 @@ class CISCOSIPUAMIB::Csipcfgstatuscausetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csipcfgstatuscauseentry; //type: CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry
+        class CSipCfgStatusCauseEntry; //type: CISCOSIPUAMIB::CSipCfgStatusCauseTable::CSipCfgStatusCauseEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry> > csipcfgstatuscauseentry;
+        ydk::YList csipcfgstatuscauseentry;
         
-}; // CISCOSIPUAMIB::Csipcfgstatuscausetable
+}; // CISCOSIPUAMIB::CSipCfgStatusCauseTable
 
 
-class CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgStatusCauseTable::CSipCfgStatusCauseEntry : public ydk::Entity
 {
     public:
-        Csipcfgstatuscauseentry();
-        ~Csipcfgstatuscauseentry();
+        CSipCfgStatusCauseEntry();
+        ~CSipCfgStatusCauseEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -836,14 +836,14 @@ class CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry : public y
         ydk::YLeaf csipcfgpstncause; //type: int32
         ydk::YLeaf csipcfgstatuscausestorestatus; //type: StorageType
 
-}; // CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry
+}; // CISCOSIPUAMIB::CSipCfgStatusCauseTable::CSipCfgStatusCauseEntry
 
 
-class CISCOSIPUAMIB::Csipcfgcausestatustable : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgCauseStatusTable : public ydk::Entity
 {
     public:
-        Csipcfgcausestatustable();
-        ~Csipcfgcausestatustable();
+        CSipCfgCauseStatusTable();
+        ~CSipCfgCauseStatusTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -856,18 +856,18 @@ class CISCOSIPUAMIB::Csipcfgcausestatustable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csipcfgcausestatusentry; //type: CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry
+        class CSipCfgCauseStatusEntry; //type: CISCOSIPUAMIB::CSipCfgCauseStatusTable::CSipCfgCauseStatusEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry> > csipcfgcausestatusentry;
+        ydk::YList csipcfgcausestatusentry;
         
-}; // CISCOSIPUAMIB::Csipcfgcausestatustable
+}; // CISCOSIPUAMIB::CSipCfgCauseStatusTable
 
 
-class CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry : public ydk::Entity
+class CISCOSIPUAMIB::CSipCfgCauseStatusTable::CSipCfgCauseStatusEntry : public ydk::Entity
 {
     public:
-        Csipcfgcausestatusentry();
-        ~Csipcfgcausestatusentry();
+        CSipCfgCauseStatusEntry();
+        ~CSipCfgCauseStatusEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -884,14 +884,14 @@ class CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry : public y
         ydk::YLeaf csipcfgstatuscode; //type: int32
         ydk::YLeaf csipcfgcausestatusstorestatus; //type: StorageType
 
-}; // CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry
+}; // CISCOSIPUAMIB::CSipCfgCauseStatusTable::CSipCfgCauseStatusEntry
 
 
-class CISCOSIPUAMIB::Csipstatssuccessoktable : public ydk::Entity
+class CISCOSIPUAMIB::CSipStatsSuccessOkTable : public ydk::Entity
 {
     public:
-        Csipstatssuccessoktable();
-        ~Csipstatssuccessoktable();
+        CSipStatsSuccessOkTable();
+        ~CSipStatsSuccessOkTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -904,18 +904,18 @@ class CISCOSIPUAMIB::Csipstatssuccessoktable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csipstatssuccessokentry; //type: CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry
+        class CSipStatsSuccessOkEntry; //type: CISCOSIPUAMIB::CSipStatsSuccessOkTable::CSipStatsSuccessOkEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SIP_UA_MIB::CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry> > csipstatssuccessokentry;
+        ydk::YList csipstatssuccessokentry;
         
-}; // CISCOSIPUAMIB::Csipstatssuccessoktable
+}; // CISCOSIPUAMIB::CSipStatsSuccessOkTable
 
 
-class CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry : public ydk::Entity
+class CISCOSIPUAMIB::CSipStatsSuccessOkTable::CSipStatsSuccessOkEntry : public ydk::Entity
 {
     public:
-        Csipstatssuccessokentry();
-        ~Csipstatssuccessokentry();
+        CSipStatsSuccessOkEntry();
+        ~CSipStatsSuccessOkEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -932,9 +932,9 @@ class CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry : public y
         ydk::YLeaf csipstatssuccessokinbounds; //type: uint32
         ydk::YLeaf csipstatssuccessokoutbounds; //type: uint32
 
-}; // CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry
+}; // CISCOSIPUAMIB::CSipStatsSuccessOkTable::CSipStatsSuccessOkEntry
 
-class CISCOSIPUAMIB::Csipcfgbase::Csipcfgtransport : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgBase::CSipCfgTransport : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf udp;
@@ -944,7 +944,7 @@ class CISCOSIPUAMIB::Csipcfgbase::Csipcfgtransport : public ydk::Enum
 
 };
 
-class CISCOSIPUAMIB::Csipcfgbase::Csipcfgbindsrcaddrscope : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgBase::CSipCfgBindSrcAddrScope : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -953,7 +953,7 @@ class CISCOSIPUAMIB::Csipcfgbase::Csipcfgbindsrcaddrscope : public ydk::Enum
 
 };
 
-class CISCOSIPUAMIB::Csipcfgbase::Csipcfgdnssrvquerystringformat : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgBase::CSipCfgDnsSrvQueryStringFormat : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf v1;
@@ -961,7 +961,7 @@ class CISCOSIPUAMIB::Csipcfgbase::Csipcfgdnssrvquerystringformat : public ydk::E
 
 };
 
-class CISCOSIPUAMIB::Csipcfgbase::Csipcfgsymnatdirectionrole : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgBase::CSipCfgSymNatDirectionRole : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -970,7 +970,7 @@ class CISCOSIPUAMIB::Csipcfgbase::Csipcfgsymnatdirectionrole : public ydk::Enum
 
 };
 
-class CISCOSIPUAMIB::Csipcfgbase::Csipcfgoffercallhold : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgBase::CSipCfgOfferCallHold : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf directionAttr;
@@ -978,7 +978,7 @@ class CISCOSIPUAMIB::Csipcfgbase::Csipcfgoffercallhold : public ydk::Enum
 
 };
 
-class CISCOSIPUAMIB::Csipcfgpeer::Csipcfgoutsessiontransport : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgPeer::CSipCfgOutSessionTransport : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf udp;
@@ -986,7 +986,7 @@ class CISCOSIPUAMIB::Csipcfgpeer::Csipcfgoutsessiontransport : public ydk::Enum
 
 };
 
-class CISCOSIPUAMIB::Csipcfgpeer::Csipcfgreliable1Xxrsphdr : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgPeer::CSipCfgReliable1xxRspHdr : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf supported;
@@ -995,7 +995,7 @@ class CISCOSIPUAMIB::Csipcfgpeer::Csipcfgreliable1Xxrsphdr : public ydk::Enum
 
 };
 
-class CISCOSIPUAMIB::Csipcfgpeer::Csipcfgurltype : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgPeer::CSipCfgUrlType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sip;
@@ -1003,7 +1003,7 @@ class CISCOSIPUAMIB::Csipcfgpeer::Csipcfgurltype : public ydk::Enum
 
 };
 
-class CISCOSIPUAMIB::Csipcfgaaa::Csipcfgaaausername : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgAaa::CSipCfgAaaUsername : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf callingNumber;
@@ -1011,7 +1011,7 @@ class CISCOSIPUAMIB::Csipcfgaaa::Csipcfgaaausername : public ydk::Enum
 
 };
 
-class CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::Csipcfgbindsourceaddrscope : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry::CSipCfgBindSourceAddrScope : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf media;
@@ -1019,7 +1019,7 @@ class CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::Csi
 
 };
 
-class CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeeroutsessiontransport : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::CSipCfgPeerOutSessionTransport : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf system;
@@ -1028,7 +1028,7 @@ class CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeeroutsessiontr
 
 };
 
-class CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerreliable1Xxrsphdr : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::CSipCfgPeerReliable1xxRspHdr : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf system;
@@ -1038,7 +1038,7 @@ class CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerreliable1Xxr
 
 };
 
-class CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::Csipcfgpeerurltype : public ydk::Enum
+class CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::CSipCfgPeerUrlType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf system;

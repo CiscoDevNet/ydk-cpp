@@ -66,7 +66,7 @@ class Aps::ApsModules : public ydk::Entity
 
         class ApsModule; //type: Aps::ApsModules::ApsModule
 
-        std::vector<std::shared_ptr<openconfig::openconfig_transport_line_protection::Aps::ApsModules::ApsModule> > aps_module;
+        ydk::YList aps_module;
         
 }; // Aps::ApsModules
 

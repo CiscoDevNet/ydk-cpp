@@ -17,7 +17,7 @@ SdrInventory::SdrInventory()
 {
     racks->parent = this;
 
-    yang_name = "sdr-inventory"; yang_parent_name = "Cisco-IOS-XR-sdr-invmgr-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sdr-inventory"; yang_parent_name = "Cisco-IOS-XR-sdr-invmgr-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SdrInventory::~SdrInventory()
@@ -26,6 +26,7 @@ SdrInventory::~SdrInventory()
 
 bool SdrInventory::has_data() const
 {
+    if (is_presence_container) return true;
     return (racks !=  nullptr && racks->has_data());
 }
 
@@ -118,9 +119,11 @@ bool SdrInventory::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 SdrInventory::Racks::Racks()
+    :
+    rack(this, {"name"})
 {
 
-    yang_name = "racks"; yang_parent_name = "sdr-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "racks"; yang_parent_name = "sdr-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SdrInventory::Racks::~Racks()
@@ -129,7 +132,8 @@ SdrInventory::Racks::~Racks()
 
 bool SdrInventory::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool SdrInventory::Racks::has_data() const
 
 bool SdrInventory::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> SdrInventory::Racks::get_child_by_name(const std::string
     {
         auto c = std::make_shared<SdrInventory::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,9 +221,11 @@ bool SdrInventory::Racks::has_leaf_or_child_of_name(const std::string & name) co
 SdrInventory::Racks::Rack::Rack()
     :
     name{YType::str, "name"}
+        ,
+    slot(this, {"name"})
 {
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SdrInventory::Racks::Rack::~Rack()
@@ -228,7 +234,8 @@ SdrInventory::Racks::Rack::~Rack()
 
 bool SdrInventory::Racks::Rack::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -238,7 +245,7 @@ bool SdrInventory::Racks::Rack::has_data() const
 
 bool SdrInventory::Racks::Rack::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -257,7 +264,8 @@ std::string SdrInventory::Racks::Rack::get_absolute_path() const
 std::string SdrInventory::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[name='" <<name <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -277,7 +285,7 @@ std::shared_ptr<Entity> SdrInventory::Racks::Rack::get_child_by_name(const std::
     {
         auto c = std::make_shared<SdrInventory::Racks::Rack::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
@@ -289,7 +297,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::Rack::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -328,9 +336,11 @@ bool SdrInventory::Racks::Rack::has_leaf_or_child_of_name(const std::string & na
 SdrInventory::Racks::Rack::Slot::Slot()
     :
     name{YType::str, "name"}
+        ,
+    card(this, {"name"})
 {
 
-    yang_name = "slot"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrInventory::Racks::Rack::Slot::~Slot()
@@ -339,7 +349,8 @@ SdrInventory::Racks::Rack::Slot::~Slot()
 
 bool SdrInventory::Racks::Rack::Slot::has_data() const
 {
-    for (std::size_t index=0; index<card.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<card.len(); index++)
     {
         if(card[index]->has_data())
             return true;
@@ -349,7 +360,7 @@ bool SdrInventory::Racks::Rack::Slot::has_data() const
 
 bool SdrInventory::Racks::Rack::Slot::has_operation() const
 {
-    for (std::size_t index=0; index<card.size(); index++)
+    for (std::size_t index=0; index<card.len(); index++)
     {
         if(card[index]->has_operation())
             return true;
@@ -361,7 +372,8 @@ bool SdrInventory::Racks::Rack::Slot::has_operation() const
 std::string SdrInventory::Racks::Rack::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[name='" <<name <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -381,7 +393,7 @@ std::shared_ptr<Entity> SdrInventory::Racks::Rack::Slot::get_child_by_name(const
     {
         auto c = std::make_shared<SdrInventory::Racks::Rack::Slot::Card>();
         c->parent = this;
-        card.push_back(c);
+        card.append(c);
         return c;
     }
 
@@ -393,7 +405,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::Rack::Slot::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : card)
+    for (auto c : card.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -432,12 +444,12 @@ bool SdrInventory::Racks::Rack::Slot::has_leaf_or_child_of_name(const std::strin
 SdrInventory::Racks::Rack::Slot::Card::Card()
     :
     name{YType::str, "name"}
-    	,
+        ,
     attributes(std::make_shared<SdrInventory::Racks::Rack::Slot::Card::Attributes>())
 {
     attributes->parent = this;
 
-    yang_name = "card"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrInventory::Racks::Rack::Slot::Card::~Card()
@@ -446,6 +458,7 @@ SdrInventory::Racks::Rack::Slot::Card::~Card()
 
 bool SdrInventory::Racks::Rack::Slot::Card::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (attributes !=  nullptr && attributes->has_data());
 }
@@ -460,7 +473,8 @@ bool SdrInventory::Racks::Rack::Slot::Card::has_operation() const
 std::string SdrInventory::Racks::Rack::Slot::Card::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "card" <<"[name='" <<name <<"']";
+    path_buffer << "card";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -543,7 +557,7 @@ SdrInventory::Racks::Rack::Slot::Card::Attributes::Attributes()
     monitor{YType::uint32, "monitor"}
 {
 
-    yang_name = "attributes"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrInventory::Racks::Rack::Slot::Card::Attributes::~Attributes()
@@ -552,6 +566,7 @@ SdrInventory::Racks::Rack::Slot::Card::Attributes::~Attributes()
 
 bool SdrInventory::Racks::Rack::Slot::Card::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return config_state_string.is_set
 	|| power.is_set
 	|| config_state.is_set

@@ -110,7 +110,7 @@ class BridgeDomainConfig::BridgeGroups : public ydk::Entity
 
         class BridgeGroup; //type: BridgeDomainConfig::BridgeGroups::BridgeGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeGroups::BridgeGroup> > bridge_group;
+        ydk::YList bridge_group;
         
 }; // BridgeDomainConfig::BridgeGroups
 
@@ -156,7 +156,7 @@ class BridgeDomainConfig::BridgeDomains : public ydk::Entity
 
         class BridgeDomain; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain> > bridge_domain;
+        ydk::YList bridge_domain;
         
 }; // BridgeDomainConfig::BridgeDomains
 
@@ -227,8 +227,8 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members : public ydk::Ent
         class VfiMember; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember
         class AccessPwMember; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember> > ac_member;
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember> > vfi_member;
+        ydk::YList ac_member;
+        ydk::YList vfi_member;
         std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember> access_pw_member;
         
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
@@ -519,7 +519,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormC
         ydk::YLeaf action; //type: StormControlAction
         class Thresholds; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds> > thresholds;
+        ydk::YList thresholds;
         
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
 
@@ -659,8 +659,8 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember :
         class AccessPwIfMember; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember
         class PwNeighborSpec; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember> > access_pw_if_member;
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec> > pw_neighbor_spec;
+        ydk::YList access_pw_if_member;
+        ydk::YList pw_neighbor_spec;
         
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember
 
@@ -999,7 +999,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::
         ydk::YLeaf action; //type: StormControlAction
         class Thresholds; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds> > thresholds;
+        ydk::YList thresholds;
         
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl
 
@@ -1214,7 +1214,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static : public ydk:
 
         class MacAddresses; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses> > mac_addresses;
+        ydk::YList mac_addresses;
         
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static
 
@@ -1328,7 +1328,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl : public ydk
         ydk::YLeaf action; //type: StormControlAction
         class Thresholds; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds> > thresholds;
+        ydk::YList thresholds;
         
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl
 
@@ -1449,7 +1449,7 @@ class BridgeDomainState : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::SystemCapabilities> system_capabilities;
         std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::ModuleCapabilities> module_capabilities;
         std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains> bridge_domains;
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::MacTable> > mac_table;
+        ydk::YList mac_table;
         
 }; // BridgeDomainState
 
@@ -1500,7 +1500,7 @@ class BridgeDomainState::ModuleCapabilities : public ydk::Entity
 
         class Modules; //type: BridgeDomainState::ModuleCapabilities::Modules
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::ModuleCapabilities::Modules> > modules;
+        ydk::YList modules;
         
 }; // BridgeDomainState::ModuleCapabilities
 
@@ -1553,7 +1553,7 @@ class BridgeDomainState::BridgeDomains : public ydk::Entity
 
         class BridgeDomain; //type: BridgeDomainState::BridgeDomains::BridgeDomain
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain> > bridge_domain;
+        ydk::YList bridge_domain;
         
 }; // BridgeDomainState::BridgeDomains
 
@@ -1608,9 +1608,9 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members : public ydk::Enti
         class VfiMember; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember
         class AccessPwMember; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember> > ac_member;
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember> > vfi_member;
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember> > access_pw_member;
+        ydk::YList ac_member;
+        ydk::YList vfi_member;
+        ydk::YList access_pw_member;
         
 }; // BridgeDomainState::BridgeDomains::BridgeDomain::Members
 
@@ -1707,7 +1707,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormCo
 
         class DropCounter; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter> > drop_counter;
+        ydk::YList drop_counter;
         
 }; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
 
@@ -1778,7 +1778,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Floodi
 
         class Status; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status> > status;
+        ydk::YList status;
         
 }; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding
 
@@ -1850,7 +1850,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::F
 
         class Status; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status> > status;
+        ydk::YList status;
         
 }; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding
 
@@ -2133,7 +2133,7 @@ class CreateParameterizedBridgeDomains::Input : public ydk::Entity
         ydk::YLeaf parameter; //type: Parameter
         class Member; //type: CreateParameterizedBridgeDomains::Input::Member
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::CreateParameterizedBridgeDomains::Input::Member> > member;
+        ydk::YList member;
                 class Parameter;
 
 }; // CreateParameterizedBridgeDomains::Input

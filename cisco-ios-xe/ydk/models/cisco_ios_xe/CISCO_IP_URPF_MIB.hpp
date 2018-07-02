@@ -31,26 +31,26 @@ class CISCOIPURPFMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cipurpfscalar; //type: CISCOIPURPFMIB::Cipurpfscalar
-        class Cipurpftable; //type: CISCOIPURPFMIB::Cipurpftable
-        class Cipurpfifmontable; //type: CISCOIPURPFMIB::Cipurpfifmontable
-        class Cipurpfvrfiftable; //type: CISCOIPURPFMIB::Cipurpfvrfiftable
-        class Cipurpfvrftable; //type: CISCOIPURPFMIB::Cipurpfvrftable
+        class CipUrpfScalar; //type: CISCOIPURPFMIB::CipUrpfScalar
+        class CipUrpfTable; //type: CISCOIPURPFMIB::CipUrpfTable
+        class CipUrpfIfMonTable; //type: CISCOIPURPFMIB::CipUrpfIfMonTable
+        class CipUrpfVrfIfTable; //type: CISCOIPURPFMIB::CipUrpfVrfIfTable
+        class CipUrpfVrfTable; //type: CISCOIPURPFMIB::CipUrpfVrfTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfscalar> cipurpfscalar;
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpftable> cipurpftable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfifmontable> cipurpfifmontable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfvrfiftable> cipurpfvrfiftable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfvrftable> cipurpfvrftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::CipUrpfScalar> cipurpfscalar;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::CipUrpfTable> cipurpftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::CipUrpfIfMonTable> cipurpfifmontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::CipUrpfVrfIfTable> cipurpfvrfiftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::CipUrpfVrfTable> cipurpfvrftable;
         
 }; // CISCOIPURPFMIB
 
 
-class CISCOIPURPFMIB::Cipurpfscalar : public ydk::Entity
+class CISCOIPURPFMIB::CipUrpfScalar : public ydk::Entity
 {
     public:
-        Cipurpfscalar();
-        ~Cipurpfscalar();
+        CipUrpfScalar();
+        ~CipUrpfScalar();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -67,14 +67,14 @@ class CISCOIPURPFMIB::Cipurpfscalar : public ydk::Entity
         ydk::YLeaf cipurpfcomputeinterval; //type: int32
         ydk::YLeaf cipurpfdropnotifyholddowntime; //type: int32
 
-}; // CISCOIPURPFMIB::Cipurpfscalar
+}; // CISCOIPURPFMIB::CipUrpfScalar
 
 
-class CISCOIPURPFMIB::Cipurpftable : public ydk::Entity
+class CISCOIPURPFMIB::CipUrpfTable : public ydk::Entity
 {
     public:
-        Cipurpftable();
-        ~Cipurpftable();
+        CipUrpfTable();
+        ~CipUrpfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -87,18 +87,18 @@ class CISCOIPURPFMIB::Cipurpftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipurpfentry; //type: CISCOIPURPFMIB::Cipurpftable::Cipurpfentry
+        class CipUrpfEntry; //type: CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpftable::Cipurpfentry> > cipurpfentry;
+        ydk::YList cipurpfentry;
         
-}; // CISCOIPURPFMIB::Cipurpftable
+}; // CISCOIPURPFMIB::CipUrpfTable
 
 
-class CISCOIPURPFMIB::Cipurpftable::Cipurpfentry : public ydk::Entity
+class CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry : public ydk::Entity
 {
     public:
-        Cipurpfentry();
-        ~Cipurpfentry();
+        CipUrpfEntry();
+        ~CipUrpfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -111,19 +111,19 @@ class CISCOIPURPFMIB::Cipurpftable::Cipurpfentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cipurpfipversion; //type: Cipurpfipversion
+        ydk::YLeaf cipurpfipversion; //type: CipUrpfIpVersion
         ydk::YLeaf cipurpfdrops; //type: uint32
         ydk::YLeaf cipurpfdroprate; //type: uint32
-        class Cipurpfipversion;
+        class CipUrpfIpVersion;
 
-}; // CISCOIPURPFMIB::Cipurpftable::Cipurpfentry
+}; // CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry
 
 
-class CISCOIPURPFMIB::Cipurpfifmontable : public ydk::Entity
+class CISCOIPURPFMIB::CipUrpfIfMonTable : public ydk::Entity
 {
     public:
-        Cipurpfifmontable();
-        ~Cipurpfifmontable();
+        CipUrpfIfMonTable();
+        ~CipUrpfIfMonTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -136,18 +136,18 @@ class CISCOIPURPFMIB::Cipurpfifmontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipurpfifmonentry; //type: CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry
+        class CipUrpfIfMonEntry; //type: CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry> > cipurpfifmonentry;
+        ydk::YList cipurpfifmonentry;
         
-}; // CISCOIPURPFMIB::Cipurpfifmontable
+}; // CISCOIPURPFMIB::CipUrpfIfMonTable
 
 
-class CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry : public ydk::Entity
+class CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry : public ydk::Entity
 {
     public:
-        Cipurpfifmonentry();
-        ~Cipurpfifmonentry();
+        CipUrpfIfMonEntry();
+        ~CipUrpfIfMonEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -160,9 +160,9 @@ class CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        ydk::YLeaf cipurpfifipversion; //type: Cipurpfifipversion
+        ydk::YLeaf cipurpfifipversion; //type: CipUrpfIfIpVersion
         ydk::YLeaf cipurpfifdrops; //type: uint32
         ydk::YLeaf cipurpfifsuppresseddrops; //type: uint32
         ydk::YLeaf cipurpfifdroprate; //type: uint32
@@ -170,21 +170,21 @@ class CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry : public ydk::Entity
         ydk::YLeaf cipurpfifdropratenotifyenable; //type: boolean
         ydk::YLeaf cipurpfifnotifydropratethreshold; //type: uint32
         ydk::YLeaf cipurpfifnotifydrholddownreset; //type: boolean
-        ydk::YLeaf cipurpfifcheckstrict; //type: Cipurpfifcheckstrict
-        ydk::YLeaf cipurpfifwhichroutetableid; //type: Cipurpfifwhichroutetableid
+        ydk::YLeaf cipurpfifcheckstrict; //type: CipUrpfIfCheckStrict
+        ydk::YLeaf cipurpfifwhichroutetableid; //type: CipUrpfIfWhichRouteTableID
         ydk::YLeaf cipurpfifvrfname; //type: string
-        class Cipurpfifipversion;
-        class Cipurpfifcheckstrict;
-        class Cipurpfifwhichroutetableid;
+        class CipUrpfIfIpVersion;
+        class CipUrpfIfCheckStrict;
+        class CipUrpfIfWhichRouteTableID;
 
-}; // CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry
+}; // CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry
 
 
-class CISCOIPURPFMIB::Cipurpfvrfiftable : public ydk::Entity
+class CISCOIPURPFMIB::CipUrpfVrfIfTable : public ydk::Entity
 {
     public:
-        Cipurpfvrfiftable();
-        ~Cipurpfvrfiftable();
+        CipUrpfVrfIfTable();
+        ~CipUrpfVrfIfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -197,18 +197,18 @@ class CISCOIPURPFMIB::Cipurpfvrfiftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipurpfvrfifentry; //type: CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry
+        class CipUrpfVrfIfEntry; //type: CISCOIPURPFMIB::CipUrpfVrfIfTable::CipUrpfVrfIfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry> > cipurpfvrfifentry;
+        ydk::YList cipurpfvrfifentry;
         
-}; // CISCOIPURPFMIB::Cipurpfvrfiftable
+}; // CISCOIPURPFMIB::CipUrpfVrfIfTable
 
 
-class CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry : public ydk::Entity
+class CISCOIPURPFMIB::CipUrpfVrfIfTable::CipUrpfVrfIfEntry : public ydk::Entity
 {
     public:
-        Cipurpfvrfifentry();
-        ~Cipurpfvrfifentry();
+        CipUrpfVrfIfEntry();
+        ~CipUrpfVrfIfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -221,21 +221,21 @@ class CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::cipurpfvrfname)
+        //type: string (refers to cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::CipUrpfVrfTable::CipUrpfVrfEntry::cipurpfvrfname)
         ydk::YLeaf cipurpfvrfname;
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cipurpfvrfifdrops; //type: uint32
         ydk::YLeaf cipurpfvrfifdiscontinuitytime; //type: uint32
 
-}; // CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry
+}; // CISCOIPURPFMIB::CipUrpfVrfIfTable::CipUrpfVrfIfEntry
 
 
-class CISCOIPURPFMIB::Cipurpfvrftable : public ydk::Entity
+class CISCOIPURPFMIB::CipUrpfVrfTable : public ydk::Entity
 {
     public:
-        Cipurpfvrftable();
-        ~Cipurpfvrftable();
+        CipUrpfVrfTable();
+        ~CipUrpfVrfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -248,18 +248,18 @@ class CISCOIPURPFMIB::Cipurpfvrftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipurpfvrfentry; //type: CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry
+        class CipUrpfVrfEntry; //type: CISCOIPURPFMIB::CipUrpfVrfTable::CipUrpfVrfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_URPF_MIB::CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry> > cipurpfvrfentry;
+        ydk::YList cipurpfvrfentry;
         
-}; // CISCOIPURPFMIB::Cipurpfvrftable
+}; // CISCOIPURPFMIB::CipUrpfVrfTable
 
 
-class CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry : public ydk::Entity
+class CISCOIPURPFMIB::CipUrpfVrfTable::CipUrpfVrfEntry : public ydk::Entity
 {
     public:
-        Cipurpfvrfentry();
-        ~Cipurpfvrfentry();
+        CipUrpfVrfEntry();
+        ~CipUrpfVrfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -274,7 +274,7 @@ class CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry : public ydk::Entity
 
         ydk::YLeaf cipurpfvrfname; //type: string
 
-}; // CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry
+}; // CISCOIPURPFMIB::CipUrpfVrfTable::CipUrpfVrfEntry
 
 class UnicastRpfType : public ydk::Enum
 {
@@ -285,7 +285,7 @@ class UnicastRpfType : public ydk::Enum
 
 };
 
-class CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::Cipurpfipversion : public ydk::Enum
+class CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry::CipUrpfIpVersion : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ipv4;
@@ -293,7 +293,7 @@ class CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::Cipurpfipversion : public ydk:
 
 };
 
-class CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifipversion : public ydk::Enum
+class CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::CipUrpfIfIpVersion : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ipv4;
@@ -301,7 +301,7 @@ class CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifipversion :
 
 };
 
-class CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifcheckstrict : public ydk::Enum
+class CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::CipUrpfIfCheckStrict : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf strict;
@@ -309,7 +309,7 @@ class CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifcheckstrict
 
 };
 
-class CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifwhichroutetableid : public ydk::Enum
+class CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::CipUrpfIfWhichRouteTableID : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf default_;

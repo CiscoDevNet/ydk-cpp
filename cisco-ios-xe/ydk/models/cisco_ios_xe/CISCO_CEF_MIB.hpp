@@ -32,56 +32,56 @@ class CISCOCEFMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ceffib; //type: CISCOCEFMIB::Ceffib
-        class Cefcc; //type: CISCOCEFMIB::Cefcc
-        class Cefnotifcntl; //type: CISCOCEFMIB::Cefnotifcntl
-        class Ceffibsummarytable; //type: CISCOCEFMIB::Ceffibsummarytable
-        class Cefprefixtable; //type: CISCOCEFMIB::Cefprefixtable
-        class Ceflmprefixtable; //type: CISCOCEFMIB::Ceflmprefixtable
-        class Cefpathtable; //type: CISCOCEFMIB::Cefpathtable
-        class Cefadjsummarytable; //type: CISCOCEFMIB::Cefadjsummarytable
-        class Cefadjtable; //type: CISCOCEFMIB::Cefadjtable
-        class Ceffeselectiontable; //type: CISCOCEFMIB::Ceffeselectiontable
-        class Cefcfgtable; //type: CISCOCEFMIB::Cefcfgtable
-        class Cefresourcetable; //type: CISCOCEFMIB::Cefresourcetable
-        class Cefinttable; //type: CISCOCEFMIB::Cefinttable
-        class Cefpeertable; //type: CISCOCEFMIB::Cefpeertable
-        class Cefpeerfibtable; //type: CISCOCEFMIB::Cefpeerfibtable
-        class Cefccglobaltable; //type: CISCOCEFMIB::Cefccglobaltable
-        class Cefcctypetable; //type: CISCOCEFMIB::Cefcctypetable
-        class Cefinconsistencyrecordtable; //type: CISCOCEFMIB::Cefinconsistencyrecordtable
-        class Cefstatsprefixlentable; //type: CISCOCEFMIB::Cefstatsprefixlentable
-        class Cefswitchingstatstable; //type: CISCOCEFMIB::Cefswitchingstatstable
+        class CefFIB; //type: CISCOCEFMIB::CefFIB
+        class CefCC; //type: CISCOCEFMIB::CefCC
+        class CefNotifCntl; //type: CISCOCEFMIB::CefNotifCntl
+        class CefFIBSummaryTable; //type: CISCOCEFMIB::CefFIBSummaryTable
+        class CefPrefixTable; //type: CISCOCEFMIB::CefPrefixTable
+        class CefLMPrefixTable; //type: CISCOCEFMIB::CefLMPrefixTable
+        class CefPathTable; //type: CISCOCEFMIB::CefPathTable
+        class CefAdjSummaryTable; //type: CISCOCEFMIB::CefAdjSummaryTable
+        class CefAdjTable; //type: CISCOCEFMIB::CefAdjTable
+        class CefFESelectionTable; //type: CISCOCEFMIB::CefFESelectionTable
+        class CefCfgTable; //type: CISCOCEFMIB::CefCfgTable
+        class CefResourceTable; //type: CISCOCEFMIB::CefResourceTable
+        class CefIntTable; //type: CISCOCEFMIB::CefIntTable
+        class CefPeerTable; //type: CISCOCEFMIB::CefPeerTable
+        class CefPeerFIBTable; //type: CISCOCEFMIB::CefPeerFIBTable
+        class CefCCGlobalTable; //type: CISCOCEFMIB::CefCCGlobalTable
+        class CefCCTypeTable; //type: CISCOCEFMIB::CefCCTypeTable
+        class CefInconsistencyRecordTable; //type: CISCOCEFMIB::CefInconsistencyRecordTable
+        class CefStatsPrefixLenTable; //type: CISCOCEFMIB::CefStatsPrefixLenTable
+        class CefSwitchingStatsTable; //type: CISCOCEFMIB::CefSwitchingStatsTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Ceffib> ceffib;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefcc> cefcc;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefnotifcntl> cefnotifcntl;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Ceffibsummarytable> ceffibsummarytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefprefixtable> cefprefixtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Ceflmprefixtable> ceflmprefixtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefpathtable> cefpathtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefadjsummarytable> cefadjsummarytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefadjtable> cefadjtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Ceffeselectiontable> ceffeselectiontable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefcfgtable> cefcfgtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefresourcetable> cefresourcetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefinttable> cefinttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefpeertable> cefpeertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefpeerfibtable> cefpeerfibtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefccglobaltable> cefccglobaltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefcctypetable> cefcctypetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefinconsistencyrecordtable> cefinconsistencyrecordtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefstatsprefixlentable> cefstatsprefixlentable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefswitchingstatstable> cefswitchingstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefFIB> ceffib;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefCC> cefcc;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefNotifCntl> cefnotifcntl;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefFIBSummaryTable> ceffibsummarytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefPrefixTable> cefprefixtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefLMPrefixTable> ceflmprefixtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefPathTable> cefpathtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefAdjSummaryTable> cefadjsummarytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefAdjTable> cefadjtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefFESelectionTable> ceffeselectiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefCfgTable> cefcfgtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefResourceTable> cefresourcetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefIntTable> cefinttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefPeerTable> cefpeertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefPeerFIBTable> cefpeerfibtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefCCGlobalTable> cefccglobaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefCCTypeTable> cefcctypetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefInconsistencyRecordTable> cefinconsistencyrecordtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefStatsPrefixLenTable> cefstatsprefixlentable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefSwitchingStatsTable> cefswitchingstatstable;
         
 }; // CISCOCEFMIB
 
 
-class CISCOCEFMIB::Ceffib : public ydk::Entity
+class CISCOCEFMIB::CefFIB : public ydk::Entity
 {
     public:
-        Ceffib();
-        ~Ceffib();
+        CefFIB();
+        ~CefFIB();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -96,14 +96,14 @@ class CISCOCEFMIB::Ceffib : public ydk::Entity
 
         ydk::YLeaf ceflmprefixspinlock; //type: int32
 
-}; // CISCOCEFMIB::Ceffib
+}; // CISCOCEFMIB::CefFIB
 
 
-class CISCOCEFMIB::Cefcc : public ydk::Entity
+class CISCOCEFMIB::CefCC : public ydk::Entity
 {
     public:
-        Cefcc();
-        ~Cefcc();
+        CefCC();
+        ~CefCC();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -120,14 +120,14 @@ class CISCOCEFMIB::Cefcc : public ydk::Entity
         ydk::YLeaf cefinconsistencyreset; //type: CefCCAction
         ydk::YLeaf cefinconsistencyresetstatus; //type: CefCCStatus
 
-}; // CISCOCEFMIB::Cefcc
+}; // CISCOCEFMIB::CefCC
 
 
-class CISCOCEFMIB::Cefnotifcntl : public ydk::Entity
+class CISCOCEFMIB::CefNotifCntl : public ydk::Entity
 {
     public:
-        Cefnotifcntl();
-        ~Cefnotifcntl();
+        CefNotifCntl();
+        ~CefNotifCntl();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -146,14 +146,14 @@ class CISCOCEFMIB::Cefnotifcntl : public ydk::Entity
         ydk::YLeaf cefnotifthrottlinginterval; //type: int32
         ydk::YLeaf cefinconsistencynotifenable; //type: boolean
 
-}; // CISCOCEFMIB::Cefnotifcntl
+}; // CISCOCEFMIB::CefNotifCntl
 
 
-class CISCOCEFMIB::Ceffibsummarytable : public ydk::Entity
+class CISCOCEFMIB::CefFIBSummaryTable : public ydk::Entity
 {
     public:
-        Ceffibsummarytable();
-        ~Ceffibsummarytable();
+        CefFIBSummaryTable();
+        ~CefFIBSummaryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -166,18 +166,18 @@ class CISCOCEFMIB::Ceffibsummarytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceffibsummaryentry; //type: CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry
+        class CefFIBSummaryEntry; //type: CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry> > ceffibsummaryentry;
+        ydk::YList ceffibsummaryentry;
         
-}; // CISCOCEFMIB::Ceffibsummarytable
+}; // CISCOCEFMIB::CefFIBSummaryTable
 
 
-class CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry : public ydk::Entity
+class CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry : public ydk::Entity
 {
     public:
-        Ceffibsummaryentry();
-        ~Ceffibsummaryentry();
+        CefFIBSummaryEntry();
+        ~CefFIBSummaryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -190,19 +190,19 @@ class CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf ceffibipversion; //type: CefIpVersion
         ydk::YLeaf ceffibsummaryfwdprefixes; //type: uint32
 
-}; // CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry
+}; // CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry
 
 
-class CISCOCEFMIB::Cefprefixtable : public ydk::Entity
+class CISCOCEFMIB::CefPrefixTable : public ydk::Entity
 {
     public:
-        Cefprefixtable();
-        ~Cefprefixtable();
+        CefPrefixTable();
+        ~CefPrefixTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -215,18 +215,18 @@ class CISCOCEFMIB::Cefprefixtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefprefixentry; //type: CISCOCEFMIB::Cefprefixtable::Cefprefixentry
+        class CefPrefixEntry; //type: CISCOCEFMIB::CefPrefixTable::CefPrefixEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefprefixtable::Cefprefixentry> > cefprefixentry;
+        ydk::YList cefprefixentry;
         
-}; // CISCOCEFMIB::Cefprefixtable
+}; // CISCOCEFMIB::CefPrefixTable
 
 
-class CISCOCEFMIB::Cefprefixtable::Cefprefixentry : public ydk::Entity
+class CISCOCEFMIB::CefPrefixTable::CefPrefixEntry : public ydk::Entity
 {
     public:
-        Cefprefixentry();
-        ~Cefprefixentry();
+        CefPrefixEntry();
+        ~CefPrefixEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -239,7 +239,7 @@ class CISCOCEFMIB::Cefprefixtable::Cefprefixentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefprefixtype; //type: InetAddressType
         ydk::YLeaf cefprefixaddr; //type: binary
@@ -258,14 +258,14 @@ class CISCOCEFMIB::Cefprefixtable::Cefprefixentry : public ydk::Entity
         ydk::YLeaf cefprefixexternalnrbytes; //type: uint32
         ydk::YLeaf cefprefixexternalnrhcbytes; //type: uint64
 
-}; // CISCOCEFMIB::Cefprefixtable::Cefprefixentry
+}; // CISCOCEFMIB::CefPrefixTable::CefPrefixEntry
 
 
-class CISCOCEFMIB::Ceflmprefixtable : public ydk::Entity
+class CISCOCEFMIB::CefLMPrefixTable : public ydk::Entity
 {
     public:
-        Ceflmprefixtable();
-        ~Ceflmprefixtable();
+        CefLMPrefixTable();
+        ~CefLMPrefixTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -278,18 +278,18 @@ class CISCOCEFMIB::Ceflmprefixtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceflmprefixentry; //type: CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry
+        class CefLMPrefixEntry; //type: CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry> > ceflmprefixentry;
+        ydk::YList ceflmprefixentry;
         
-}; // CISCOCEFMIB::Ceflmprefixtable
+}; // CISCOCEFMIB::CefLMPrefixTable
 
 
-class CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry : public ydk::Entity
+class CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry : public ydk::Entity
 {
     public:
-        Ceflmprefixentry();
-        ~Ceflmprefixentry();
+        CefLMPrefixEntry();
+        ~CefLMPrefixEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -302,7 +302,7 @@ class CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf ceflmprefixdestaddrtype; //type: InetAddressType
         ydk::YLeaf ceflmprefixdestaddr; //type: binary
@@ -311,14 +311,14 @@ class CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry : public ydk::Entity
         ydk::YLeaf ceflmprefixlen; //type: uint32
         ydk::YLeaf ceflmprefixrowstatus; //type: RowStatus
 
-}; // CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry
+}; // CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry
 
 
-class CISCOCEFMIB::Cefpathtable : public ydk::Entity
+class CISCOCEFMIB::CefPathTable : public ydk::Entity
 {
     public:
-        Cefpathtable();
-        ~Cefpathtable();
+        CefPathTable();
+        ~CefPathTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -331,18 +331,18 @@ class CISCOCEFMIB::Cefpathtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefpathentry; //type: CISCOCEFMIB::Cefpathtable::Cefpathentry
+        class CefPathEntry; //type: CISCOCEFMIB::CefPathTable::CefPathEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefpathtable::Cefpathentry> > cefpathentry;
+        ydk::YList cefpathentry;
         
-}; // CISCOCEFMIB::Cefpathtable
+}; // CISCOCEFMIB::CefPathTable
 
 
-class CISCOCEFMIB::Cefpathtable::Cefpathentry : public ydk::Entity
+class CISCOCEFMIB::CefPathTable::CefPathEntry : public ydk::Entity
 {
     public:
-        Cefpathentry();
-        ~Cefpathentry();
+        CefPathEntry();
+        ~CefPathEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -355,12 +355,12 @@ class CISCOCEFMIB::Cefpathtable::Cefpathentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefprefixtype; //type: InetAddressType
-        //type: binary (refers to cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefprefixtable::Cefprefixentry::cefprefixaddr)
+        //type: binary (refers to cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::cefprefixaddr)
         ydk::YLeaf cefprefixaddr;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefprefixtable::Cefprefixentry::cefprefixlen)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::cefprefixlen)
         ydk::YLeaf cefprefixlen;
         ydk::YLeaf cefpathid; //type: int32
         ydk::YLeaf cefpathtype; //type: CefPathType
@@ -368,14 +368,14 @@ class CISCOCEFMIB::Cefpathtable::Cefpathentry : public ydk::Entity
         ydk::YLeaf cefpathnexthopaddr; //type: binary
         ydk::YLeaf cefpathrecursevrfname; //type: binary
 
-}; // CISCOCEFMIB::Cefpathtable::Cefpathentry
+}; // CISCOCEFMIB::CefPathTable::CefPathEntry
 
 
-class CISCOCEFMIB::Cefadjsummarytable : public ydk::Entity
+class CISCOCEFMIB::CefAdjSummaryTable : public ydk::Entity
 {
     public:
-        Cefadjsummarytable();
-        ~Cefadjsummarytable();
+        CefAdjSummaryTable();
+        ~CefAdjSummaryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -388,18 +388,18 @@ class CISCOCEFMIB::Cefadjsummarytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefadjsummaryentry; //type: CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry
+        class CefAdjSummaryEntry; //type: CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry> > cefadjsummaryentry;
+        ydk::YList cefadjsummaryentry;
         
-}; // CISCOCEFMIB::Cefadjsummarytable
+}; // CISCOCEFMIB::CefAdjSummaryTable
 
 
-class CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry : public ydk::Entity
+class CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry : public ydk::Entity
 {
     public:
-        Cefadjsummaryentry();
-        ~Cefadjsummaryentry();
+        CefAdjSummaryEntry();
+        ~CefAdjSummaryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -412,7 +412,7 @@ class CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefadjsummarylinktype; //type: CefAdjLinkType
         ydk::YLeaf cefadjsummarycomplete; //type: uint32
@@ -420,14 +420,14 @@ class CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry : public ydk::Entity
         ydk::YLeaf cefadjsummaryfixup; //type: uint32
         ydk::YLeaf cefadjsummaryredirect; //type: uint32
 
-}; // CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry
+}; // CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry
 
 
-class CISCOCEFMIB::Cefadjtable : public ydk::Entity
+class CISCOCEFMIB::CefAdjTable : public ydk::Entity
 {
     public:
-        Cefadjtable();
-        ~Cefadjtable();
+        CefAdjTable();
+        ~CefAdjTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -440,18 +440,18 @@ class CISCOCEFMIB::Cefadjtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefadjentry; //type: CISCOCEFMIB::Cefadjtable::Cefadjentry
+        class CefAdjEntry; //type: CISCOCEFMIB::CefAdjTable::CefAdjEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefadjtable::Cefadjentry> > cefadjentry;
+        ydk::YList cefadjentry;
         
-}; // CISCOCEFMIB::Cefadjtable
+}; // CISCOCEFMIB::CefAdjTable
 
 
-class CISCOCEFMIB::Cefadjtable::Cefadjentry : public ydk::Entity
+class CISCOCEFMIB::CefAdjTable::CefAdjEntry : public ydk::Entity
 {
     public:
-        Cefadjentry();
-        ~Cefadjentry();
+        CefAdjEntry();
+        ~CefAdjEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -464,9 +464,9 @@ class CISCOCEFMIB::Cefadjtable::Cefadjentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cefadjnexthopaddrtype; //type: InetAddressType
         ydk::YLeaf cefadjnexthopaddr; //type: binary
@@ -482,14 +482,14 @@ class CISCOCEFMIB::Cefadjtable::Cefadjentry : public ydk::Entity
         ydk::YLeaf cefadjbytes; //type: uint32
         ydk::YLeaf cefadjhcbytes; //type: uint64
 
-}; // CISCOCEFMIB::Cefadjtable::Cefadjentry
+}; // CISCOCEFMIB::CefAdjTable::CefAdjEntry
 
 
-class CISCOCEFMIB::Ceffeselectiontable : public ydk::Entity
+class CISCOCEFMIB::CefFESelectionTable : public ydk::Entity
 {
     public:
-        Ceffeselectiontable();
-        ~Ceffeselectiontable();
+        CefFESelectionTable();
+        ~CefFESelectionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -502,18 +502,18 @@ class CISCOCEFMIB::Ceffeselectiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceffeselectionentry; //type: CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry
+        class CefFESelectionEntry; //type: CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry> > ceffeselectionentry;
+        ydk::YList ceffeselectionentry;
         
-}; // CISCOCEFMIB::Ceffeselectiontable
+}; // CISCOCEFMIB::CefFESelectionTable
 
 
-class CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry : public ydk::Entity
+class CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry : public ydk::Entity
 {
     public:
-        Ceffeselectionentry();
-        ~Ceffeselectionentry();
+        CefFESelectionEntry();
+        ~CefFESelectionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -526,7 +526,7 @@ class CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf ceffeselectionname; //type: string
         ydk::YLeaf ceffeselectionid; //type: int32
@@ -540,14 +540,14 @@ class CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry : public ydk::Entity
         ydk::YLeaf ceffeselectionvrfname; //type: binary
         ydk::YLeaf ceffeselectionweight; //type: uint32
 
-}; // CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry
+}; // CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry
 
 
-class CISCOCEFMIB::Cefcfgtable : public ydk::Entity
+class CISCOCEFMIB::CefCfgTable : public ydk::Entity
 {
     public:
-        Cefcfgtable();
-        ~Cefcfgtable();
+        CefCfgTable();
+        ~CefCfgTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -560,18 +560,18 @@ class CISCOCEFMIB::Cefcfgtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcfgentry; //type: CISCOCEFMIB::Cefcfgtable::Cefcfgentry
+        class CefCfgEntry; //type: CISCOCEFMIB::CefCfgTable::CefCfgEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefcfgtable::Cefcfgentry> > cefcfgentry;
+        ydk::YList cefcfgentry;
         
-}; // CISCOCEFMIB::Cefcfgtable
+}; // CISCOCEFMIB::CefCfgTable
 
 
-class CISCOCEFMIB::Cefcfgtable::Cefcfgentry : public ydk::Entity
+class CISCOCEFMIB::CefCfgTable::CefCfgEntry : public ydk::Entity
 {
     public:
-        Cefcfgentry();
-        ~Cefcfgentry();
+        CefCfgEntry();
+        ~CefCfgEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -584,28 +584,28 @@ class CISCOCEFMIB::Cefcfgtable::Cefcfgentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf ceffibipversion; //type: CefIpVersion
         ydk::YLeaf cefcfgadminstate; //type: CefAdminStatus
         ydk::YLeaf cefcfgoperstate; //type: CefOperStatus
         ydk::YLeaf cefcfgdistributionadminstate; //type: CefAdminStatus
         ydk::YLeaf cefcfgdistributionoperstate; //type: CefOperStatus
-        ydk::YLeaf cefcfgaccountingmap; //type: Cefcfgaccountingmap
-        ydk::YLeaf cefcfgloadsharingalgorithm; //type: Cefcfgloadsharingalgorithm
+        ydk::YLeaf cefcfgaccountingmap; //type: CefCfgAccountingMap
+        ydk::YLeaf cefcfgloadsharingalgorithm; //type: CefCfgLoadSharingAlgorithm
         ydk::YLeaf cefcfgloadsharingid; //type: uint32
         ydk::YLeaf cefcfgtrafficstatsloadinterval; //type: uint32
         ydk::YLeaf cefcfgtrafficstatsupdaterate; //type: uint32
-        class Cefcfgloadsharingalgorithm;
+        class CefCfgLoadSharingAlgorithm;
 
-}; // CISCOCEFMIB::Cefcfgtable::Cefcfgentry
+}; // CISCOCEFMIB::CefCfgTable::CefCfgEntry
 
 
-class CISCOCEFMIB::Cefresourcetable : public ydk::Entity
+class CISCOCEFMIB::CefResourceTable : public ydk::Entity
 {
     public:
-        Cefresourcetable();
-        ~Cefresourcetable();
+        CefResourceTable();
+        ~CefResourceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -618,18 +618,18 @@ class CISCOCEFMIB::Cefresourcetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefresourceentry; //type: CISCOCEFMIB::Cefresourcetable::Cefresourceentry
+        class CefResourceEntry; //type: CISCOCEFMIB::CefResourceTable::CefResourceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefresourcetable::Cefresourceentry> > cefresourceentry;
+        ydk::YList cefresourceentry;
         
-}; // CISCOCEFMIB::Cefresourcetable
+}; // CISCOCEFMIB::CefResourceTable
 
 
-class CISCOCEFMIB::Cefresourcetable::Cefresourceentry : public ydk::Entity
+class CISCOCEFMIB::CefResourceTable::CefResourceEntry : public ydk::Entity
 {
     public:
-        Cefresourceentry();
-        ~Cefresourceentry();
+        CefResourceEntry();
+        ~CefResourceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -642,19 +642,19 @@ class CISCOCEFMIB::Cefresourcetable::Cefresourceentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefresourcememoryused; //type: uint32
         ydk::YLeaf cefresourcefailurereason; //type: CefFailureReason
 
-}; // CISCOCEFMIB::Cefresourcetable::Cefresourceentry
+}; // CISCOCEFMIB::CefResourceTable::CefResourceEntry
 
 
-class CISCOCEFMIB::Cefinttable : public ydk::Entity
+class CISCOCEFMIB::CefIntTable : public ydk::Entity
 {
     public:
-        Cefinttable();
-        ~Cefinttable();
+        CefIntTable();
+        ~CefIntTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -667,18 +667,18 @@ class CISCOCEFMIB::Cefinttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefintentry; //type: CISCOCEFMIB::Cefinttable::Cefintentry
+        class CefIntEntry; //type: CISCOCEFMIB::CefIntTable::CefIntEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefinttable::Cefintentry> > cefintentry;
+        ydk::YList cefintentry;
         
-}; // CISCOCEFMIB::Cefinttable
+}; // CISCOCEFMIB::CefIntTable
 
 
-class CISCOCEFMIB::Cefinttable::Cefintentry : public ydk::Entity
+class CISCOCEFMIB::CefIntTable::CefIntEntry : public ydk::Entity
 {
     public:
-        Cefintentry();
-        ~Cefintentry();
+        CefIntEntry();
+        ~CefIntEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -691,26 +691,26 @@ class CISCOCEFMIB::Cefinttable::Cefintentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf ceffibipversion; //type: CefIpVersion
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        ydk::YLeaf cefintswitchingstate; //type: Cefintswitchingstate
-        ydk::YLeaf cefintloadsharing; //type: Cefintloadsharing
-        ydk::YLeaf cefintnonrecursiveaccouting; //type: Cefintnonrecursiveaccouting
-        class Cefintswitchingstate;
-        class Cefintloadsharing;
-        class Cefintnonrecursiveaccouting;
+        ydk::YLeaf cefintswitchingstate; //type: CefIntSwitchingState
+        ydk::YLeaf cefintloadsharing; //type: CefIntLoadSharing
+        ydk::YLeaf cefintnonrecursiveaccouting; //type: CefIntNonrecursiveAccouting
+        class CefIntSwitchingState;
+        class CefIntLoadSharing;
+        class CefIntNonrecursiveAccouting;
 
-}; // CISCOCEFMIB::Cefinttable::Cefintentry
+}; // CISCOCEFMIB::CefIntTable::CefIntEntry
 
 
-class CISCOCEFMIB::Cefpeertable : public ydk::Entity
+class CISCOCEFMIB::CefPeerTable : public ydk::Entity
 {
     public:
-        Cefpeertable();
-        ~Cefpeertable();
+        CefPeerTable();
+        ~CefPeerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -723,18 +723,18 @@ class CISCOCEFMIB::Cefpeertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefpeerentry; //type: CISCOCEFMIB::Cefpeertable::Cefpeerentry
+        class CefPeerEntry; //type: CISCOCEFMIB::CefPeerTable::CefPeerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefpeertable::Cefpeerentry> > cefpeerentry;
+        ydk::YList cefpeerentry;
         
-}; // CISCOCEFMIB::Cefpeertable
+}; // CISCOCEFMIB::CefPeerTable
 
 
-class CISCOCEFMIB::Cefpeertable::Cefpeerentry : public ydk::Entity
+class CISCOCEFMIB::CefPeerTable::CefPeerEntry : public ydk::Entity
 {
     public:
-        Cefpeerentry();
-        ~Cefpeerentry();
+        CefPeerEntry();
+        ~CefPeerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -747,21 +747,21 @@ class CISCOCEFMIB::Cefpeertable::Cefpeerentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf entpeerphysicalindex; //type: int32
-        ydk::YLeaf cefpeeroperstate; //type: Cefpeeroperstate
+        ydk::YLeaf cefpeeroperstate; //type: CefPeerOperState
         ydk::YLeaf cefpeernumberofresets; //type: uint32
-        class Cefpeeroperstate;
+        class CefPeerOperState;
 
-}; // CISCOCEFMIB::Cefpeertable::Cefpeerentry
+}; // CISCOCEFMIB::CefPeerTable::CefPeerEntry
 
 
-class CISCOCEFMIB::Cefpeerfibtable : public ydk::Entity
+class CISCOCEFMIB::CefPeerFIBTable : public ydk::Entity
 {
     public:
-        Cefpeerfibtable();
-        ~Cefpeerfibtable();
+        CefPeerFIBTable();
+        ~CefPeerFIBTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -774,18 +774,18 @@ class CISCOCEFMIB::Cefpeerfibtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefpeerfibentry; //type: CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry
+        class CefPeerFIBEntry; //type: CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry> > cefpeerfibentry;
+        ydk::YList cefpeerfibentry;
         
-}; // CISCOCEFMIB::Cefpeerfibtable
+}; // CISCOCEFMIB::CefPeerFIBTable
 
 
-class CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry : public ydk::Entity
+class CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry : public ydk::Entity
 {
     public:
-        Cefpeerfibentry();
-        ~Cefpeerfibentry();
+        CefPeerFIBEntry();
+        ~CefPeerFIBEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -798,22 +798,22 @@ class CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
-        //type: int32 (refers to cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefpeertable::Cefpeerentry::entpeerphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::CefPeerTable::CefPeerEntry::entpeerphysicalindex)
         ydk::YLeaf entpeerphysicalindex;
         ydk::YLeaf ceffibipversion; //type: CefIpVersion
-        ydk::YLeaf cefpeerfiboperstate; //type: Cefpeerfiboperstate
-        class Cefpeerfiboperstate;
+        ydk::YLeaf cefpeerfiboperstate; //type: CefPeerFIBOperState
+        class CefPeerFIBOperState;
 
-}; // CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry
+}; // CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry
 
 
-class CISCOCEFMIB::Cefccglobaltable : public ydk::Entity
+class CISCOCEFMIB::CefCCGlobalTable : public ydk::Entity
 {
     public:
-        Cefccglobaltable();
-        ~Cefccglobaltable();
+        CefCCGlobalTable();
+        ~CefCCGlobalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -826,18 +826,18 @@ class CISCOCEFMIB::Cefccglobaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefccglobalentry; //type: CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry
+        class CefCCGlobalEntry; //type: CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry> > cefccglobalentry;
+        ydk::YList cefccglobalentry;
         
-}; // CISCOCEFMIB::Cefccglobaltable
+}; // CISCOCEFMIB::CefCCGlobalTable
 
 
-class CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry : public ydk::Entity
+class CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry : public ydk::Entity
 {
     public:
-        Cefccglobalentry();
-        ~Cefccglobalentry();
+        CefCCGlobalEntry();
+        ~CefCCGlobalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -858,14 +858,14 @@ class CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry : public ydk::Entity
         ydk::YLeaf cefccglobalfullscanaction; //type: CefCCAction
         ydk::YLeaf cefccglobalfullscanstatus; //type: CefCCStatus
 
-}; // CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry
+}; // CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry
 
 
-class CISCOCEFMIB::Cefcctypetable : public ydk::Entity
+class CISCOCEFMIB::CefCCTypeTable : public ydk::Entity
 {
     public:
-        Cefcctypetable();
-        ~Cefcctypetable();
+        CefCCTypeTable();
+        ~CefCCTypeTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -878,18 +878,18 @@ class CISCOCEFMIB::Cefcctypetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcctypeentry; //type: CISCOCEFMIB::Cefcctypetable::Cefcctypeentry
+        class CefCCTypeEntry; //type: CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefcctypetable::Cefcctypeentry> > cefcctypeentry;
+        ydk::YList cefcctypeentry;
         
-}; // CISCOCEFMIB::Cefcctypetable
+}; // CISCOCEFMIB::CefCCTypeTable
 
 
-class CISCOCEFMIB::Cefcctypetable::Cefcctypeentry : public ydk::Entity
+class CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry : public ydk::Entity
 {
     public:
-        Cefcctypeentry();
-        ~Cefcctypeentry();
+        CefCCTypeEntry();
+        ~CefCCTypeEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -912,14 +912,14 @@ class CISCOCEFMIB::Cefcctypetable::Cefcctypeentry : public ydk::Entity
         ydk::YLeaf cefccquerieschecked; //type: uint32
         ydk::YLeaf cefccqueriesiterated; //type: uint32
 
-}; // CISCOCEFMIB::Cefcctypetable::Cefcctypeentry
+}; // CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry
 
 
-class CISCOCEFMIB::Cefinconsistencyrecordtable : public ydk::Entity
+class CISCOCEFMIB::CefInconsistencyRecordTable : public ydk::Entity
 {
     public:
-        Cefinconsistencyrecordtable();
-        ~Cefinconsistencyrecordtable();
+        CefInconsistencyRecordTable();
+        ~CefInconsistencyRecordTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -932,18 +932,18 @@ class CISCOCEFMIB::Cefinconsistencyrecordtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefinconsistencyrecordentry; //type: CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry
+        class CefInconsistencyRecordEntry; //type: CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry> > cefinconsistencyrecordentry;
+        ydk::YList cefinconsistencyrecordentry;
         
-}; // CISCOCEFMIB::Cefinconsistencyrecordtable
+}; // CISCOCEFMIB::CefInconsistencyRecordTable
 
 
-class CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry : public ydk::Entity
+class CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry : public ydk::Entity
 {
     public:
-        Cefinconsistencyrecordentry();
-        ~Cefinconsistencyrecordentry();
+        CefInconsistencyRecordEntry();
+        ~CefInconsistencyRecordEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -964,17 +964,17 @@ class CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry : pu
         ydk::YLeaf cefinconsistencyvrfname; //type: binary
         ydk::YLeaf cefinconsistencycctype; //type: CefCCType
         ydk::YLeaf cefinconsistencyentity; //type: int32
-        ydk::YLeaf cefinconsistencyreason; //type: Cefinconsistencyreason
-        class Cefinconsistencyreason;
+        ydk::YLeaf cefinconsistencyreason; //type: CefInconsistencyReason
+        class CefInconsistencyReason;
 
-}; // CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry
+}; // CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry
 
 
-class CISCOCEFMIB::Cefstatsprefixlentable : public ydk::Entity
+class CISCOCEFMIB::CefStatsPrefixLenTable : public ydk::Entity
 {
     public:
-        Cefstatsprefixlentable();
-        ~Cefstatsprefixlentable();
+        CefStatsPrefixLenTable();
+        ~CefStatsPrefixLenTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -987,18 +987,18 @@ class CISCOCEFMIB::Cefstatsprefixlentable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefstatsprefixlenentry; //type: CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry
+        class CefStatsPrefixLenEntry; //type: CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry> > cefstatsprefixlenentry;
+        ydk::YList cefstatsprefixlenentry;
         
-}; // CISCOCEFMIB::Cefstatsprefixlentable
+}; // CISCOCEFMIB::CefStatsPrefixLenTable
 
 
-class CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry : public ydk::Entity
+class CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry : public ydk::Entity
 {
     public:
-        Cefstatsprefixlenentry();
-        ~Cefstatsprefixlenentry();
+        CefStatsPrefixLenEntry();
+        ~CefStatsPrefixLenEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1011,7 +1011,7 @@ class CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf ceffibipversion; //type: CefIpVersion
         ydk::YLeaf cefstatsprefixlen; //type: uint32
@@ -1024,14 +1024,14 @@ class CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry : public ydk::
         ydk::YLeaf cefstatsprefixelements; //type: uint32
         ydk::YLeaf cefstatsprefixhcelements; //type: uint64
 
-}; // CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry
+}; // CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry
 
 
-class CISCOCEFMIB::Cefswitchingstatstable : public ydk::Entity
+class CISCOCEFMIB::CefSwitchingStatsTable : public ydk::Entity
 {
     public:
-        Cefswitchingstatstable();
-        ~Cefswitchingstatstable();
+        CefSwitchingStatsTable();
+        ~CefSwitchingStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1044,18 +1044,18 @@ class CISCOCEFMIB::Cefswitchingstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefswitchingstatsentry; //type: CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry
+        class CefSwitchingStatsEntry; //type: CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CEF_MIB::CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry> > cefswitchingstatsentry;
+        ydk::YList cefswitchingstatsentry;
         
-}; // CISCOCEFMIB::Cefswitchingstatstable
+}; // CISCOCEFMIB::CefSwitchingStatsTable
 
 
-class CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry : public ydk::Entity
+class CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry : public ydk::Entity
 {
     public:
-        Cefswitchingstatsentry();
-        ~Cefswitchingstatsentry();
+        CefSwitchingStatsEntry();
+        ~CefSwitchingStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1068,7 +1068,7 @@ class CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf ceffibipversion; //type: CefIpVersion
         ydk::YLeaf cefswitchingindex; //type: int32
@@ -1080,9 +1080,9 @@ class CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry : public ydk::
         ydk::YLeaf cefswitchingpunt2host; //type: uint32
         ydk::YLeaf cefswitchinghcpunt2host; //type: uint64
 
-}; // CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry
+}; // CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry
 
-class CISCOCEFMIB::Cefcfgtable::Cefcfgentry::Cefcfgloadsharingalgorithm : public ydk::Enum
+class CISCOCEFMIB::CefCfgTable::CefCfgEntry::CefCfgLoadSharingAlgorithm : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -1092,7 +1092,7 @@ class CISCOCEFMIB::Cefcfgtable::Cefcfgentry::Cefcfgloadsharingalgorithm : public
 
 };
 
-class CISCOCEFMIB::Cefinttable::Cefintentry::Cefintswitchingstate : public ydk::Enum
+class CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntSwitchingState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf cefEnabled;
@@ -1101,7 +1101,7 @@ class CISCOCEFMIB::Cefinttable::Cefintentry::Cefintswitchingstate : public ydk::
 
 };
 
-class CISCOCEFMIB::Cefinttable::Cefintentry::Cefintloadsharing : public ydk::Enum
+class CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntLoadSharing : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf perPacket;
@@ -1109,7 +1109,7 @@ class CISCOCEFMIB::Cefinttable::Cefintentry::Cefintloadsharing : public ydk::Enu
 
 };
 
-class CISCOCEFMIB::Cefinttable::Cefintentry::Cefintnonrecursiveaccouting : public ydk::Enum
+class CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntNonrecursiveAccouting : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf internal;
@@ -1117,7 +1117,7 @@ class CISCOCEFMIB::Cefinttable::Cefintentry::Cefintnonrecursiveaccouting : publi
 
 };
 
-class CISCOCEFMIB::Cefpeertable::Cefpeerentry::Cefpeeroperstate : public ydk::Enum
+class CISCOCEFMIB::CefPeerTable::CefPeerEntry::CefPeerOperState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf peerDisabled;
@@ -1126,7 +1126,7 @@ class CISCOCEFMIB::Cefpeertable::Cefpeerentry::Cefpeeroperstate : public ydk::En
 
 };
 
-class CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::Cefpeerfiboperstate : public ydk::Enum
+class CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::CefPeerFIBOperState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf peerFIBDown;
@@ -1137,7 +1137,7 @@ class CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::Cefpeerfiboperstate : publi
 
 };
 
-class CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::Cefinconsistencyreason : public ydk::Enum
+class CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::CefInconsistencyReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf missing;

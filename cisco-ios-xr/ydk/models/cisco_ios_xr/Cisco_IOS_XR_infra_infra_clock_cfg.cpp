@@ -14,10 +14,10 @@ namespace Cisco_IOS_XR_infra_infra_clock_cfg {
 Clock::Clock()
     :
     summer_time(nullptr) // presence node
-	,time_zone(nullptr) // presence node
+    , time_zone(nullptr) // presence node
 {
 
-    yang_name = "clock"; yang_parent_name = "Cisco-IOS-XR-infra-infra-clock-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clock"; yang_parent_name = "Cisco-IOS-XR-infra-infra-clock-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Clock::~Clock()
@@ -26,6 +26,7 @@ Clock::~Clock()
 
 bool Clock::has_data() const
 {
+    if (is_presence_container) return true;
     return (summer_time !=  nullptr && summer_time->has_data())
 	|| (time_zone !=  nullptr && time_zone->has_data());
 }
@@ -150,7 +151,7 @@ Clock::SummerTime::SummerTime()
     offset{YType::uint32, "offset"}
 {
 
-    yang_name = "summer-time"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summer-time"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Clock::SummerTime::~SummerTime()
@@ -159,6 +160,7 @@ Clock::SummerTime::~SummerTime()
 
 bool Clock::SummerTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_zone_name.is_set
 	|| mode.is_set
 	|| start_week_number_or_start_date.is_set
@@ -392,7 +394,7 @@ Clock::TimeZone::TimeZone()
     minute_offset{YType::uint32, "minute-offset"}
 {
 
-    yang_name = "time-zone"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "time-zone"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Clock::TimeZone::~TimeZone()
@@ -401,6 +403,7 @@ Clock::TimeZone::~TimeZone()
 
 bool Clock::TimeZone::has_data() const
 {
+    if (is_presence_container) return true;
     return time_zone_name.is_set
 	|| hour_offset.is_set
 	|| minute_offset.is_set;

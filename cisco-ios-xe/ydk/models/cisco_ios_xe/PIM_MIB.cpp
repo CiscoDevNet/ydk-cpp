@@ -14,14 +14,14 @@ namespace PIM_MIB {
 PIMMIB::PIMMIB()
     :
     pim(std::make_shared<PIMMIB::Pim>())
-	,piminterfacetable(std::make_shared<PIMMIB::Piminterfacetable>())
-	,pimneighbortable(std::make_shared<PIMMIB::Pimneighbortable>())
-	,pimipmroutetable(std::make_shared<PIMMIB::Pimipmroutetable>())
-	,pimrptable(std::make_shared<PIMMIB::Pimrptable>())
-	,pimrpsettable(std::make_shared<PIMMIB::Pimrpsettable>())
-	,pimipmroutenexthoptable(std::make_shared<PIMMIB::Pimipmroutenexthoptable>())
-	,pimcandidaterptable(std::make_shared<PIMMIB::Pimcandidaterptable>())
-	,pimcomponenttable(std::make_shared<PIMMIB::Pimcomponenttable>())
+    , piminterfacetable(std::make_shared<PIMMIB::PimInterfaceTable>())
+    , pimneighbortable(std::make_shared<PIMMIB::PimNeighborTable>())
+    , pimipmroutetable(std::make_shared<PIMMIB::PimIpMRouteTable>())
+    , pimrptable(std::make_shared<PIMMIB::PimRPTable>())
+    , pimrpsettable(std::make_shared<PIMMIB::PimRPSetTable>())
+    , pimipmroutenexthoptable(std::make_shared<PIMMIB::PimIpMRouteNextHopTable>())
+    , pimcandidaterptable(std::make_shared<PIMMIB::PimCandidateRPTable>())
+    , pimcomponenttable(std::make_shared<PIMMIB::PimComponentTable>())
 {
     pim->parent = this;
     piminterfacetable->parent = this;
@@ -33,7 +33,7 @@ PIMMIB::PIMMIB()
     pimcandidaterptable->parent = this;
     pimcomponenttable->parent = this;
 
-    yang_name = "PIM-MIB"; yang_parent_name = "PIM-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "PIM-MIB"; yang_parent_name = "PIM-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PIMMIB::~PIMMIB()
@@ -42,6 +42,7 @@ PIMMIB::~PIMMIB()
 
 bool PIMMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (pim !=  nullptr && pim->has_data())
 	|| (piminterfacetable !=  nullptr && piminterfacetable->has_data())
 	|| (pimneighbortable !=  nullptr && pimneighbortable->has_data())
@@ -98,7 +99,7 @@ std::shared_ptr<Entity> PIMMIB::get_child_by_name(const std::string & child_yang
     {
         if(piminterfacetable == nullptr)
         {
-            piminterfacetable = std::make_shared<PIMMIB::Piminterfacetable>();
+            piminterfacetable = std::make_shared<PIMMIB::PimInterfaceTable>();
         }
         return piminterfacetable;
     }
@@ -107,7 +108,7 @@ std::shared_ptr<Entity> PIMMIB::get_child_by_name(const std::string & child_yang
     {
         if(pimneighbortable == nullptr)
         {
-            pimneighbortable = std::make_shared<PIMMIB::Pimneighbortable>();
+            pimneighbortable = std::make_shared<PIMMIB::PimNeighborTable>();
         }
         return pimneighbortable;
     }
@@ -116,7 +117,7 @@ std::shared_ptr<Entity> PIMMIB::get_child_by_name(const std::string & child_yang
     {
         if(pimipmroutetable == nullptr)
         {
-            pimipmroutetable = std::make_shared<PIMMIB::Pimipmroutetable>();
+            pimipmroutetable = std::make_shared<PIMMIB::PimIpMRouteTable>();
         }
         return pimipmroutetable;
     }
@@ -125,7 +126,7 @@ std::shared_ptr<Entity> PIMMIB::get_child_by_name(const std::string & child_yang
     {
         if(pimrptable == nullptr)
         {
-            pimrptable = std::make_shared<PIMMIB::Pimrptable>();
+            pimrptable = std::make_shared<PIMMIB::PimRPTable>();
         }
         return pimrptable;
     }
@@ -134,7 +135,7 @@ std::shared_ptr<Entity> PIMMIB::get_child_by_name(const std::string & child_yang
     {
         if(pimrpsettable == nullptr)
         {
-            pimrpsettable = std::make_shared<PIMMIB::Pimrpsettable>();
+            pimrpsettable = std::make_shared<PIMMIB::PimRPSetTable>();
         }
         return pimrpsettable;
     }
@@ -143,7 +144,7 @@ std::shared_ptr<Entity> PIMMIB::get_child_by_name(const std::string & child_yang
     {
         if(pimipmroutenexthoptable == nullptr)
         {
-            pimipmroutenexthoptable = std::make_shared<PIMMIB::Pimipmroutenexthoptable>();
+            pimipmroutenexthoptable = std::make_shared<PIMMIB::PimIpMRouteNextHopTable>();
         }
         return pimipmroutenexthoptable;
     }
@@ -152,7 +153,7 @@ std::shared_ptr<Entity> PIMMIB::get_child_by_name(const std::string & child_yang
     {
         if(pimcandidaterptable == nullptr)
         {
-            pimcandidaterptable = std::make_shared<PIMMIB::Pimcandidaterptable>();
+            pimcandidaterptable = std::make_shared<PIMMIB::PimCandidateRPTable>();
         }
         return pimcandidaterptable;
     }
@@ -161,7 +162,7 @@ std::shared_ptr<Entity> PIMMIB::get_child_by_name(const std::string & child_yang
     {
         if(pimcomponenttable == nullptr)
         {
-            pimcomponenttable = std::make_shared<PIMMIB::Pimcomponenttable>();
+            pimcomponenttable = std::make_shared<PIMMIB::PimComponentTable>();
         }
         return pimcomponenttable;
     }
@@ -266,7 +267,7 @@ PIMMIB::Pim::Pim()
     pimjoinpruneinterval{YType::int32, "pimJoinPruneInterval"}
 {
 
-    yang_name = "pim"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pim"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PIMMIB::Pim::~Pim()
@@ -275,6 +276,7 @@ PIMMIB::Pim::~Pim()
 
 bool PIMMIB::Pim::has_data() const
 {
+    if (is_presence_container) return true;
     return pimjoinpruneinterval.is_set;
 }
 
@@ -345,19 +347,22 @@ bool PIMMIB::Pim::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-PIMMIB::Piminterfacetable::Piminterfacetable()
+PIMMIB::PimInterfaceTable::PimInterfaceTable()
+    :
+    piminterfaceentry(this, {"piminterfaceifindex"})
 {
 
-    yang_name = "pimInterfaceTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimInterfaceTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Piminterfacetable::~Piminterfacetable()
+PIMMIB::PimInterfaceTable::~PimInterfaceTable()
 {
 }
 
-bool PIMMIB::Piminterfacetable::has_data() const
+bool PIMMIB::PimInterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<piminterfaceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<piminterfaceentry.len(); index++)
     {
         if(piminterfaceentry[index]->has_data())
             return true;
@@ -365,9 +370,9 @@ bool PIMMIB::Piminterfacetable::has_data() const
     return false;
 }
 
-bool PIMMIB::Piminterfacetable::has_operation() const
+bool PIMMIB::PimInterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<piminterfaceentry.size(); index++)
+    for (std::size_t index=0; index<piminterfaceentry.len(); index++)
     {
         if(piminterfaceentry[index]->has_operation())
             return true;
@@ -375,21 +380,21 @@ bool PIMMIB::Piminterfacetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string PIMMIB::Piminterfacetable::get_absolute_path() const
+std::string PIMMIB::PimInterfaceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Piminterfacetable::get_segment_path() const
+std::string PIMMIB::PimInterfaceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pimInterfaceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Piminterfacetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimInterfaceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -398,25 +403,25 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Piminterfacetable::get_na
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Piminterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimInterfaceEntry")
     {
-        auto c = std::make_shared<PIMMIB::Piminterfacetable::Piminterfaceentry>();
+        auto c = std::make_shared<PIMMIB::PimInterfaceTable::PimInterfaceEntry>();
         c->parent = this;
-        piminterfaceentry.push_back(c);
+        piminterfaceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Piminterfacetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimInterfaceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : piminterfaceentry)
+    for (auto c : piminterfaceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -427,22 +432,22 @@ std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Piminterfacetable::get_ch
     return children;
 }
 
-void PIMMIB::Piminterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PIMMIB::Piminterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimInterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PIMMIB::Piminterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimInterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimInterfaceEntry")
         return true;
     return false;
 }
 
-PIMMIB::Piminterfacetable::Piminterfaceentry::Piminterfaceentry()
+PIMMIB::PimInterfaceTable::PimInterfaceEntry::PimInterfaceEntry()
     :
     piminterfaceifindex{YType::int32, "pimInterfaceIfIndex"},
     piminterfaceaddress{YType::str, "pimInterfaceAddress"},
@@ -455,15 +460,16 @@ PIMMIB::Piminterfacetable::Piminterfaceentry::Piminterfaceentry()
     piminterfacecbsrpreference{YType::int32, "pimInterfaceCBSRPreference"}
 {
 
-    yang_name = "pimInterfaceEntry"; yang_parent_name = "pimInterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimInterfaceEntry"; yang_parent_name = "pimInterfaceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Piminterfacetable::Piminterfaceentry::~Piminterfaceentry()
+PIMMIB::PimInterfaceTable::PimInterfaceEntry::~PimInterfaceEntry()
 {
 }
 
-bool PIMMIB::Piminterfacetable::Piminterfaceentry::has_data() const
+bool PIMMIB::PimInterfaceTable::PimInterfaceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return piminterfaceifindex.is_set
 	|| piminterfaceaddress.is_set
 	|| piminterfacenetmask.is_set
@@ -475,7 +481,7 @@ bool PIMMIB::Piminterfacetable::Piminterfaceentry::has_data() const
 	|| piminterfacecbsrpreference.is_set;
 }
 
-bool PIMMIB::Piminterfacetable::Piminterfaceentry::has_operation() const
+bool PIMMIB::PimInterfaceTable::PimInterfaceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(piminterfaceifindex.yfilter)
@@ -489,21 +495,22 @@ bool PIMMIB::Piminterfacetable::Piminterfaceentry::has_operation() const
 	|| ydk::is_set(piminterfacecbsrpreference.yfilter);
 }
 
-std::string PIMMIB::Piminterfacetable::Piminterfaceentry::get_absolute_path() const
+std::string PIMMIB::PimInterfaceTable::PimInterfaceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/pimInterfaceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Piminterfacetable::Piminterfaceentry::get_segment_path() const
+std::string PIMMIB::PimInterfaceTable::PimInterfaceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pimInterfaceEntry" <<"[pimInterfaceIfIndex='" <<piminterfaceifindex <<"']";
+    path_buffer << "pimInterfaceEntry";
+    ADD_KEY_TOKEN(piminterfaceifindex, "pimInterfaceIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Piminterfacetable::Piminterfaceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimInterfaceTable::PimInterfaceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -521,19 +528,19 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Piminterfacetable::Pimint
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Piminterfacetable::Piminterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimInterfaceTable::PimInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Piminterfacetable::Piminterfaceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimInterfaceTable::PimInterfaceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PIMMIB::Piminterfacetable::Piminterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimInterfaceTable::PimInterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pimInterfaceIfIndex")
     {
@@ -591,7 +598,7 @@ void PIMMIB::Piminterfacetable::Piminterfaceentry::set_value(const std::string &
     }
 }
 
-void PIMMIB::Piminterfacetable::Piminterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimInterfaceTable::PimInterfaceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pimInterfaceIfIndex")
     {
@@ -631,26 +638,29 @@ void PIMMIB::Piminterfacetable::Piminterfaceentry::set_filter(const std::string 
     }
 }
 
-bool PIMMIB::Piminterfacetable::Piminterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimInterfaceTable::PimInterfaceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimInterfaceIfIndex" || name == "pimInterfaceAddress" || name == "pimInterfaceNetMask" || name == "pimInterfaceMode" || name == "pimInterfaceDR" || name == "pimInterfaceHelloInterval" || name == "pimInterfaceStatus" || name == "pimInterfaceJoinPruneInterval" || name == "pimInterfaceCBSRPreference")
         return true;
     return false;
 }
 
-PIMMIB::Pimneighbortable::Pimneighbortable()
+PIMMIB::PimNeighborTable::PimNeighborTable()
+    :
+    pimneighborentry(this, {"pimneighboraddress"})
 {
 
-    yang_name = "pimNeighborTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimNeighborTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimneighbortable::~Pimneighbortable()
+PIMMIB::PimNeighborTable::~PimNeighborTable()
 {
 }
 
-bool PIMMIB::Pimneighbortable::has_data() const
+bool PIMMIB::PimNeighborTable::has_data() const
 {
-    for (std::size_t index=0; index<pimneighborentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pimneighborentry.len(); index++)
     {
         if(pimneighborentry[index]->has_data())
             return true;
@@ -658,9 +668,9 @@ bool PIMMIB::Pimneighbortable::has_data() const
     return false;
 }
 
-bool PIMMIB::Pimneighbortable::has_operation() const
+bool PIMMIB::PimNeighborTable::has_operation() const
 {
-    for (std::size_t index=0; index<pimneighborentry.size(); index++)
+    for (std::size_t index=0; index<pimneighborentry.len(); index++)
     {
         if(pimneighborentry[index]->has_operation())
             return true;
@@ -668,21 +678,21 @@ bool PIMMIB::Pimneighbortable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string PIMMIB::Pimneighbortable::get_absolute_path() const
+std::string PIMMIB::PimNeighborTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimneighbortable::get_segment_path() const
+std::string PIMMIB::PimNeighborTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pimNeighborTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimneighbortable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimNeighborTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -691,25 +701,25 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimneighbortable::get_nam
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimneighbortable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimNeighborTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimNeighborEntry")
     {
-        auto c = std::make_shared<PIMMIB::Pimneighbortable::Pimneighborentry>();
+        auto c = std::make_shared<PIMMIB::PimNeighborTable::PimNeighborEntry>();
         c->parent = this;
-        pimneighborentry.push_back(c);
+        pimneighborentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimneighbortable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimNeighborTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pimneighborentry)
+    for (auto c : pimneighborentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -720,22 +730,22 @@ std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimneighbortable::get_chi
     return children;
 }
 
-void PIMMIB::Pimneighbortable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimNeighborTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PIMMIB::Pimneighbortable::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimNeighborTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PIMMIB::Pimneighbortable::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimNeighborTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimNeighborEntry")
         return true;
     return false;
 }
 
-PIMMIB::Pimneighbortable::Pimneighborentry::Pimneighborentry()
+PIMMIB::PimNeighborTable::PimNeighborEntry::PimNeighborEntry()
     :
     pimneighboraddress{YType::str, "pimNeighborAddress"},
     pimneighborifindex{YType::int32, "pimNeighborIfIndex"},
@@ -744,15 +754,16 @@ PIMMIB::Pimneighbortable::Pimneighborentry::Pimneighborentry()
     pimneighbormode{YType::enumeration, "pimNeighborMode"}
 {
 
-    yang_name = "pimNeighborEntry"; yang_parent_name = "pimNeighborTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimNeighborEntry"; yang_parent_name = "pimNeighborTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimneighbortable::Pimneighborentry::~Pimneighborentry()
+PIMMIB::PimNeighborTable::PimNeighborEntry::~PimNeighborEntry()
 {
 }
 
-bool PIMMIB::Pimneighbortable::Pimneighborentry::has_data() const
+bool PIMMIB::PimNeighborTable::PimNeighborEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return pimneighboraddress.is_set
 	|| pimneighborifindex.is_set
 	|| pimneighboruptime.is_set
@@ -760,7 +771,7 @@ bool PIMMIB::Pimneighbortable::Pimneighborentry::has_data() const
 	|| pimneighbormode.is_set;
 }
 
-bool PIMMIB::Pimneighbortable::Pimneighborentry::has_operation() const
+bool PIMMIB::PimNeighborTable::PimNeighborEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pimneighboraddress.yfilter)
@@ -770,21 +781,22 @@ bool PIMMIB::Pimneighbortable::Pimneighborentry::has_operation() const
 	|| ydk::is_set(pimneighbormode.yfilter);
 }
 
-std::string PIMMIB::Pimneighbortable::Pimneighborentry::get_absolute_path() const
+std::string PIMMIB::PimNeighborTable::PimNeighborEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/pimNeighborTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimneighbortable::Pimneighborentry::get_segment_path() const
+std::string PIMMIB::PimNeighborTable::PimNeighborEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pimNeighborEntry" <<"[pimNeighborAddress='" <<pimneighboraddress <<"']";
+    path_buffer << "pimNeighborEntry";
+    ADD_KEY_TOKEN(pimneighboraddress, "pimNeighborAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimneighbortable::Pimneighborentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimNeighborTable::PimNeighborEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -798,19 +810,19 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimneighbortable::Pimneig
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimneighbortable::Pimneighborentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimNeighborTable::PimNeighborEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimneighbortable::Pimneighborentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimNeighborTable::PimNeighborEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PIMMIB::Pimneighbortable::Pimneighborentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimNeighborTable::PimNeighborEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pimNeighborAddress")
     {
@@ -844,7 +856,7 @@ void PIMMIB::Pimneighbortable::Pimneighborentry::set_value(const std::string & v
     }
 }
 
-void PIMMIB::Pimneighbortable::Pimneighborentry::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimNeighborTable::PimNeighborEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pimNeighborAddress")
     {
@@ -868,26 +880,29 @@ void PIMMIB::Pimneighbortable::Pimneighborentry::set_filter(const std::string & 
     }
 }
 
-bool PIMMIB::Pimneighbortable::Pimneighborentry::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimNeighborTable::PimNeighborEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimNeighborAddress" || name == "pimNeighborIfIndex" || name == "pimNeighborUpTime" || name == "pimNeighborExpiryTime" || name == "pimNeighborMode")
         return true;
     return false;
 }
 
-PIMMIB::Pimipmroutetable::Pimipmroutetable()
+PIMMIB::PimIpMRouteTable::PimIpMRouteTable()
+    :
+    pimipmrouteentry(this, {"ipmroutegroup", "ipmroutesource", "ipmroutesourcemask"})
 {
 
-    yang_name = "pimIpMRouteTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimIpMRouteTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimipmroutetable::~Pimipmroutetable()
+PIMMIB::PimIpMRouteTable::~PimIpMRouteTable()
 {
 }
 
-bool PIMMIB::Pimipmroutetable::has_data() const
+bool PIMMIB::PimIpMRouteTable::has_data() const
 {
-    for (std::size_t index=0; index<pimipmrouteentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pimipmrouteentry.len(); index++)
     {
         if(pimipmrouteentry[index]->has_data())
             return true;
@@ -895,9 +910,9 @@ bool PIMMIB::Pimipmroutetable::has_data() const
     return false;
 }
 
-bool PIMMIB::Pimipmroutetable::has_operation() const
+bool PIMMIB::PimIpMRouteTable::has_operation() const
 {
-    for (std::size_t index=0; index<pimipmrouteentry.size(); index++)
+    for (std::size_t index=0; index<pimipmrouteentry.len(); index++)
     {
         if(pimipmrouteentry[index]->has_operation())
             return true;
@@ -905,21 +920,21 @@ bool PIMMIB::Pimipmroutetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string PIMMIB::Pimipmroutetable::get_absolute_path() const
+std::string PIMMIB::PimIpMRouteTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimipmroutetable::get_segment_path() const
+std::string PIMMIB::PimIpMRouteTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pimIpMRouteTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimipmroutetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimIpMRouteTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -928,25 +943,25 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimipmroutetable::get_nam
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimipmroutetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimIpMRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimIpMRouteEntry")
     {
-        auto c = std::make_shared<PIMMIB::Pimipmroutetable::Pimipmrouteentry>();
+        auto c = std::make_shared<PIMMIB::PimIpMRouteTable::PimIpMRouteEntry>();
         c->parent = this;
-        pimipmrouteentry.push_back(c);
+        pimipmrouteentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimipmroutetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimIpMRouteTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pimipmrouteentry)
+    for (auto c : pimipmrouteentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -957,22 +972,22 @@ std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimipmroutetable::get_chi
     return children;
 }
 
-void PIMMIB::Pimipmroutetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimIpMRouteTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PIMMIB::Pimipmroutetable::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimIpMRouteTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PIMMIB::Pimipmroutetable::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimIpMRouteTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimIpMRouteEntry")
         return true;
     return false;
 }
 
-PIMMIB::Pimipmroutetable::Pimipmrouteentry::Pimipmrouteentry()
+PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::PimIpMRouteEntry()
     :
     ipmroutegroup{YType::str, "ipMRouteGroup"},
     ipmroutesource{YType::str, "ipMRouteSource"},
@@ -984,15 +999,16 @@ PIMMIB::Pimipmroutetable::Pimipmrouteentry::Pimipmrouteentry()
     pimipmrouteflags{YType::str, "pimIpMRouteFlags"}
 {
 
-    yang_name = "pimIpMRouteEntry"; yang_parent_name = "pimIpMRouteTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimIpMRouteEntry"; yang_parent_name = "pimIpMRouteTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimipmroutetable::Pimipmrouteentry::~Pimipmrouteentry()
+PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::~PimIpMRouteEntry()
 {
 }
 
-bool PIMMIB::Pimipmroutetable::Pimipmrouteentry::has_data() const
+bool PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipmroutegroup.is_set
 	|| ipmroutesource.is_set
 	|| ipmroutesourcemask.is_set
@@ -1003,7 +1019,7 @@ bool PIMMIB::Pimipmroutetable::Pimipmrouteentry::has_data() const
 	|| pimipmrouteflags.is_set;
 }
 
-bool PIMMIB::Pimipmroutetable::Pimipmrouteentry::has_operation() const
+bool PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipmroutegroup.yfilter)
@@ -1016,21 +1032,24 @@ bool PIMMIB::Pimipmroutetable::Pimipmrouteentry::has_operation() const
 	|| ydk::is_set(pimipmrouteflags.yfilter);
 }
 
-std::string PIMMIB::Pimipmroutetable::Pimipmrouteentry::get_absolute_path() const
+std::string PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/pimIpMRouteTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimipmroutetable::Pimipmrouteentry::get_segment_path() const
+std::string PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pimIpMRouteEntry" <<"[ipMRouteGroup='" <<ipmroutegroup <<"']" <<"[ipMRouteSource='" <<ipmroutesource <<"']" <<"[ipMRouteSourceMask='" <<ipmroutesourcemask <<"']";
+    path_buffer << "pimIpMRouteEntry";
+    ADD_KEY_TOKEN(ipmroutegroup, "ipMRouteGroup");
+    ADD_KEY_TOKEN(ipmroutesource, "ipMRouteSource");
+    ADD_KEY_TOKEN(ipmroutesourcemask, "ipMRouteSourceMask");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimipmroutetable::Pimipmrouteentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1047,19 +1066,19 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimipmroutetable::Pimipmr
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimipmroutetable::Pimipmrouteentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimipmroutetable::Pimipmrouteentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PIMMIB::Pimipmroutetable::Pimipmrouteentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipMRouteGroup")
     {
@@ -1111,7 +1130,7 @@ void PIMMIB::Pimipmroutetable::Pimipmrouteentry::set_value(const std::string & v
     }
 }
 
-void PIMMIB::Pimipmroutetable::Pimipmrouteentry::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipMRouteGroup")
     {
@@ -1147,26 +1166,29 @@ void PIMMIB::Pimipmroutetable::Pimipmrouteentry::set_filter(const std::string & 
     }
 }
 
-bool PIMMIB::Pimipmroutetable::Pimipmrouteentry::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteGroup" || name == "ipMRouteSource" || name == "ipMRouteSourceMask" || name == "pimIpMRouteUpstreamAssertTimer" || name == "pimIpMRouteAssertMetric" || name == "pimIpMRouteAssertMetricPref" || name == "pimIpMRouteAssertRPTBit" || name == "pimIpMRouteFlags")
         return true;
     return false;
 }
 
-PIMMIB::Pimrptable::Pimrptable()
+PIMMIB::PimRPTable::PimRPTable()
+    :
+    pimrpentry(this, {"pimrpgroupaddress", "pimrpaddress"})
 {
 
-    yang_name = "pimRPTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimRPTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimrptable::~Pimrptable()
+PIMMIB::PimRPTable::~PimRPTable()
 {
 }
 
-bool PIMMIB::Pimrptable::has_data() const
+bool PIMMIB::PimRPTable::has_data() const
 {
-    for (std::size_t index=0; index<pimrpentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pimrpentry.len(); index++)
     {
         if(pimrpentry[index]->has_data())
             return true;
@@ -1174,9 +1196,9 @@ bool PIMMIB::Pimrptable::has_data() const
     return false;
 }
 
-bool PIMMIB::Pimrptable::has_operation() const
+bool PIMMIB::PimRPTable::has_operation() const
 {
-    for (std::size_t index=0; index<pimrpentry.size(); index++)
+    for (std::size_t index=0; index<pimrpentry.len(); index++)
     {
         if(pimrpentry[index]->has_operation())
             return true;
@@ -1184,21 +1206,21 @@ bool PIMMIB::Pimrptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string PIMMIB::Pimrptable::get_absolute_path() const
+std::string PIMMIB::PimRPTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimrptable::get_segment_path() const
+std::string PIMMIB::PimRPTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pimRPTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimrptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimRPTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1207,25 +1229,25 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimrptable::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimrptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimRPTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimRPEntry")
     {
-        auto c = std::make_shared<PIMMIB::Pimrptable::Pimrpentry>();
+        auto c = std::make_shared<PIMMIB::PimRPTable::PimRPEntry>();
         c->parent = this;
-        pimrpentry.push_back(c);
+        pimrpentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimrptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimRPTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pimrpentry)
+    for (auto c : pimrpentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1236,22 +1258,22 @@ std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimrptable::get_children(
     return children;
 }
 
-void PIMMIB::Pimrptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimRPTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PIMMIB::Pimrptable::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimRPTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PIMMIB::Pimrptable::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimRPTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimRPEntry")
         return true;
     return false;
 }
 
-PIMMIB::Pimrptable::Pimrpentry::Pimrpentry()
+PIMMIB::PimRPTable::PimRPEntry::PimRPEntry()
     :
     pimrpgroupaddress{YType::str, "pimRPGroupAddress"},
     pimrpaddress{YType::str, "pimRPAddress"},
@@ -1261,15 +1283,16 @@ PIMMIB::Pimrptable::Pimrpentry::Pimrpentry()
     pimrprowstatus{YType::enumeration, "pimRPRowStatus"}
 {
 
-    yang_name = "pimRPEntry"; yang_parent_name = "pimRPTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimRPEntry"; yang_parent_name = "pimRPTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimrptable::Pimrpentry::~Pimrpentry()
+PIMMIB::PimRPTable::PimRPEntry::~PimRPEntry()
 {
 }
 
-bool PIMMIB::Pimrptable::Pimrpentry::has_data() const
+bool PIMMIB::PimRPTable::PimRPEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return pimrpgroupaddress.is_set
 	|| pimrpaddress.is_set
 	|| pimrpstate.is_set
@@ -1278,7 +1301,7 @@ bool PIMMIB::Pimrptable::Pimrpentry::has_data() const
 	|| pimrprowstatus.is_set;
 }
 
-bool PIMMIB::Pimrptable::Pimrpentry::has_operation() const
+bool PIMMIB::PimRPTable::PimRPEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pimrpgroupaddress.yfilter)
@@ -1289,21 +1312,23 @@ bool PIMMIB::Pimrptable::Pimrpentry::has_operation() const
 	|| ydk::is_set(pimrprowstatus.yfilter);
 }
 
-std::string PIMMIB::Pimrptable::Pimrpentry::get_absolute_path() const
+std::string PIMMIB::PimRPTable::PimRPEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/pimRPTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimrptable::Pimrpentry::get_segment_path() const
+std::string PIMMIB::PimRPTable::PimRPEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pimRPEntry" <<"[pimRPGroupAddress='" <<pimrpgroupaddress <<"']" <<"[pimRPAddress='" <<pimrpaddress <<"']";
+    path_buffer << "pimRPEntry";
+    ADD_KEY_TOKEN(pimrpgroupaddress, "pimRPGroupAddress");
+    ADD_KEY_TOKEN(pimrpaddress, "pimRPAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimrptable::Pimrpentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimRPTable::PimRPEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1318,19 +1343,19 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimrptable::Pimrpentry::g
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimrptable::Pimrpentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimRPTable::PimRPEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimrptable::Pimrpentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimRPTable::PimRPEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PIMMIB::Pimrptable::Pimrpentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimRPTable::PimRPEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pimRPGroupAddress")
     {
@@ -1370,7 +1395,7 @@ void PIMMIB::Pimrptable::Pimrpentry::set_value(const std::string & value_path, c
     }
 }
 
-void PIMMIB::Pimrptable::Pimrpentry::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimRPTable::PimRPEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pimRPGroupAddress")
     {
@@ -1398,26 +1423,29 @@ void PIMMIB::Pimrptable::Pimrpentry::set_filter(const std::string & value_path, 
     }
 }
 
-bool PIMMIB::Pimrptable::Pimrpentry::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimRPTable::PimRPEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimRPGroupAddress" || name == "pimRPAddress" || name == "pimRPState" || name == "pimRPStateTimer" || name == "pimRPLastChange" || name == "pimRPRowStatus")
         return true;
     return false;
 }
 
-PIMMIB::Pimrpsettable::Pimrpsettable()
+PIMMIB::PimRPSetTable::PimRPSetTable()
+    :
+    pimrpsetentry(this, {"pimrpsetcomponent", "pimrpsetgroupaddress", "pimrpsetgroupmask", "pimrpsetaddress"})
 {
 
-    yang_name = "pimRPSetTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimRPSetTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimrpsettable::~Pimrpsettable()
+PIMMIB::PimRPSetTable::~PimRPSetTable()
 {
 }
 
-bool PIMMIB::Pimrpsettable::has_data() const
+bool PIMMIB::PimRPSetTable::has_data() const
 {
-    for (std::size_t index=0; index<pimrpsetentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pimrpsetentry.len(); index++)
     {
         if(pimrpsetentry[index]->has_data())
             return true;
@@ -1425,9 +1453,9 @@ bool PIMMIB::Pimrpsettable::has_data() const
     return false;
 }
 
-bool PIMMIB::Pimrpsettable::has_operation() const
+bool PIMMIB::PimRPSetTable::has_operation() const
 {
-    for (std::size_t index=0; index<pimrpsetentry.size(); index++)
+    for (std::size_t index=0; index<pimrpsetentry.len(); index++)
     {
         if(pimrpsetentry[index]->has_operation())
             return true;
@@ -1435,21 +1463,21 @@ bool PIMMIB::Pimrpsettable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string PIMMIB::Pimrpsettable::get_absolute_path() const
+std::string PIMMIB::PimRPSetTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimrpsettable::get_segment_path() const
+std::string PIMMIB::PimRPSetTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pimRPSetTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimrpsettable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimRPSetTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1458,25 +1486,25 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimrpsettable::get_name_l
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimrpsettable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimRPSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimRPSetEntry")
     {
-        auto c = std::make_shared<PIMMIB::Pimrpsettable::Pimrpsetentry>();
+        auto c = std::make_shared<PIMMIB::PimRPSetTable::PimRPSetEntry>();
         c->parent = this;
-        pimrpsetentry.push_back(c);
+        pimrpsetentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimrpsettable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimRPSetTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pimrpsetentry)
+    for (auto c : pimrpsetentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1487,22 +1515,22 @@ std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimrpsettable::get_childr
     return children;
 }
 
-void PIMMIB::Pimrpsettable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimRPSetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PIMMIB::Pimrpsettable::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimRPSetTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PIMMIB::Pimrpsettable::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimRPSetTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimRPSetEntry")
         return true;
     return false;
 }
 
-PIMMIB::Pimrpsettable::Pimrpsetentry::Pimrpsetentry()
+PIMMIB::PimRPSetTable::PimRPSetEntry::PimRPSetEntry()
     :
     pimrpsetcomponent{YType::int32, "pimRPSetComponent"},
     pimrpsetgroupaddress{YType::str, "pimRPSetGroupAddress"},
@@ -1512,15 +1540,16 @@ PIMMIB::Pimrpsettable::Pimrpsetentry::Pimrpsetentry()
     pimrpsetexpirytime{YType::uint32, "pimRPSetExpiryTime"}
 {
 
-    yang_name = "pimRPSetEntry"; yang_parent_name = "pimRPSetTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimRPSetEntry"; yang_parent_name = "pimRPSetTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimrpsettable::Pimrpsetentry::~Pimrpsetentry()
+PIMMIB::PimRPSetTable::PimRPSetEntry::~PimRPSetEntry()
 {
 }
 
-bool PIMMIB::Pimrpsettable::Pimrpsetentry::has_data() const
+bool PIMMIB::PimRPSetTable::PimRPSetEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return pimrpsetcomponent.is_set
 	|| pimrpsetgroupaddress.is_set
 	|| pimrpsetgroupmask.is_set
@@ -1529,7 +1558,7 @@ bool PIMMIB::Pimrpsettable::Pimrpsetentry::has_data() const
 	|| pimrpsetexpirytime.is_set;
 }
 
-bool PIMMIB::Pimrpsettable::Pimrpsetentry::has_operation() const
+bool PIMMIB::PimRPSetTable::PimRPSetEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pimrpsetcomponent.yfilter)
@@ -1540,21 +1569,25 @@ bool PIMMIB::Pimrpsettable::Pimrpsetentry::has_operation() const
 	|| ydk::is_set(pimrpsetexpirytime.yfilter);
 }
 
-std::string PIMMIB::Pimrpsettable::Pimrpsetentry::get_absolute_path() const
+std::string PIMMIB::PimRPSetTable::PimRPSetEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/pimRPSetTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimrpsettable::Pimrpsetentry::get_segment_path() const
+std::string PIMMIB::PimRPSetTable::PimRPSetEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pimRPSetEntry" <<"[pimRPSetComponent='" <<pimrpsetcomponent <<"']" <<"[pimRPSetGroupAddress='" <<pimrpsetgroupaddress <<"']" <<"[pimRPSetGroupMask='" <<pimrpsetgroupmask <<"']" <<"[pimRPSetAddress='" <<pimrpsetaddress <<"']";
+    path_buffer << "pimRPSetEntry";
+    ADD_KEY_TOKEN(pimrpsetcomponent, "pimRPSetComponent");
+    ADD_KEY_TOKEN(pimrpsetgroupaddress, "pimRPSetGroupAddress");
+    ADD_KEY_TOKEN(pimrpsetgroupmask, "pimRPSetGroupMask");
+    ADD_KEY_TOKEN(pimrpsetaddress, "pimRPSetAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimrpsettable::Pimrpsetentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimRPSetTable::PimRPSetEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1569,19 +1602,19 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimrpsettable::Pimrpseten
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimrpsettable::Pimrpsetentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimRPSetTable::PimRPSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimrpsettable::Pimrpsetentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimRPSetTable::PimRPSetEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PIMMIB::Pimrpsettable::Pimrpsetentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimRPSetTable::PimRPSetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pimRPSetComponent")
     {
@@ -1621,7 +1654,7 @@ void PIMMIB::Pimrpsettable::Pimrpsetentry::set_value(const std::string & value_p
     }
 }
 
-void PIMMIB::Pimrpsettable::Pimrpsetentry::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimRPSetTable::PimRPSetEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pimRPSetComponent")
     {
@@ -1649,26 +1682,29 @@ void PIMMIB::Pimrpsettable::Pimrpsetentry::set_filter(const std::string & value_
     }
 }
 
-bool PIMMIB::Pimrpsettable::Pimrpsetentry::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimRPSetTable::PimRPSetEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimRPSetComponent" || name == "pimRPSetGroupAddress" || name == "pimRPSetGroupMask" || name == "pimRPSetAddress" || name == "pimRPSetHoldTime" || name == "pimRPSetExpiryTime")
         return true;
     return false;
 }
 
-PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthoptable()
+PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopTable()
+    :
+    pimipmroutenexthopentry(this, {"ipmroutenexthopgroup", "ipmroutenexthopsource", "ipmroutenexthopsourcemask", "ipmroutenexthopifindex", "ipmroutenexthopaddress"})
 {
 
-    yang_name = "pimIpMRouteNextHopTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimIpMRouteNextHopTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimipmroutenexthoptable::~Pimipmroutenexthoptable()
+PIMMIB::PimIpMRouteNextHopTable::~PimIpMRouteNextHopTable()
 {
 }
 
-bool PIMMIB::Pimipmroutenexthoptable::has_data() const
+bool PIMMIB::PimIpMRouteNextHopTable::has_data() const
 {
-    for (std::size_t index=0; index<pimipmroutenexthopentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pimipmroutenexthopentry.len(); index++)
     {
         if(pimipmroutenexthopentry[index]->has_data())
             return true;
@@ -1676,9 +1712,9 @@ bool PIMMIB::Pimipmroutenexthoptable::has_data() const
     return false;
 }
 
-bool PIMMIB::Pimipmroutenexthoptable::has_operation() const
+bool PIMMIB::PimIpMRouteNextHopTable::has_operation() const
 {
-    for (std::size_t index=0; index<pimipmroutenexthopentry.size(); index++)
+    for (std::size_t index=0; index<pimipmroutenexthopentry.len(); index++)
     {
         if(pimipmroutenexthopentry[index]->has_operation())
             return true;
@@ -1686,21 +1722,21 @@ bool PIMMIB::Pimipmroutenexthoptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string PIMMIB::Pimipmroutenexthoptable::get_absolute_path() const
+std::string PIMMIB::PimIpMRouteNextHopTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimipmroutenexthoptable::get_segment_path() const
+std::string PIMMIB::PimIpMRouteNextHopTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pimIpMRouteNextHopTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimipmroutenexthoptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimIpMRouteNextHopTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1709,25 +1745,25 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimipmroutenexthoptable::
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimipmroutenexthoptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimIpMRouteNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimIpMRouteNextHopEntry")
     {
-        auto c = std::make_shared<PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry>();
+        auto c = std::make_shared<PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry>();
         c->parent = this;
-        pimipmroutenexthopentry.push_back(c);
+        pimipmroutenexthopentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimipmroutenexthoptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimIpMRouteNextHopTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pimipmroutenexthopentry)
+    for (auto c : pimipmroutenexthopentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1738,22 +1774,22 @@ std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimipmroutenexthoptable::
     return children;
 }
 
-void PIMMIB::Pimipmroutenexthoptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimIpMRouteNextHopTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PIMMIB::Pimipmroutenexthoptable::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimIpMRouteNextHopTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PIMMIB::Pimipmroutenexthoptable::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimIpMRouteNextHopTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimIpMRouteNextHopEntry")
         return true;
     return false;
 }
 
-PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::Pimipmroutenexthopentry()
+PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::PimIpMRouteNextHopEntry()
     :
     ipmroutenexthopgroup{YType::str, "ipMRouteNextHopGroup"},
     ipmroutenexthopsource{YType::str, "ipMRouteNextHopSource"},
@@ -1763,15 +1799,16 @@ PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::Pimipmroutenexthopentr
     pimipmroutenexthopprunereason{YType::enumeration, "pimIpMRouteNextHopPruneReason"}
 {
 
-    yang_name = "pimIpMRouteNextHopEntry"; yang_parent_name = "pimIpMRouteNextHopTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimIpMRouteNextHopEntry"; yang_parent_name = "pimIpMRouteNextHopTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::~Pimipmroutenexthopentry()
+PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::~PimIpMRouteNextHopEntry()
 {
 }
 
-bool PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::has_data() const
+bool PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipmroutenexthopgroup.is_set
 	|| ipmroutenexthopsource.is_set
 	|| ipmroutenexthopsourcemask.is_set
@@ -1780,7 +1817,7 @@ bool PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::has_data() const
 	|| pimipmroutenexthopprunereason.is_set;
 }
 
-bool PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::has_operation() const
+bool PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipmroutenexthopgroup.yfilter)
@@ -1791,21 +1828,26 @@ bool PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::has_operation() c
 	|| ydk::is_set(pimipmroutenexthopprunereason.yfilter);
 }
 
-std::string PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::get_absolute_path() const
+std::string PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/pimIpMRouteNextHopTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::get_segment_path() const
+std::string PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pimIpMRouteNextHopEntry" <<"[ipMRouteNextHopGroup='" <<ipmroutenexthopgroup <<"']" <<"[ipMRouteNextHopSource='" <<ipmroutenexthopsource <<"']" <<"[ipMRouteNextHopSourceMask='" <<ipmroutenexthopsourcemask <<"']" <<"[ipMRouteNextHopIfIndex='" <<ipmroutenexthopifindex <<"']" <<"[ipMRouteNextHopAddress='" <<ipmroutenexthopaddress <<"']";
+    path_buffer << "pimIpMRouteNextHopEntry";
+    ADD_KEY_TOKEN(ipmroutenexthopgroup, "ipMRouteNextHopGroup");
+    ADD_KEY_TOKEN(ipmroutenexthopsource, "ipMRouteNextHopSource");
+    ADD_KEY_TOKEN(ipmroutenexthopsourcemask, "ipMRouteNextHopSourceMask");
+    ADD_KEY_TOKEN(ipmroutenexthopifindex, "ipMRouteNextHopIfIndex");
+    ADD_KEY_TOKEN(ipmroutenexthopaddress, "ipMRouteNextHopAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1820,19 +1862,19 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimipmroutenexthoptable::
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipMRouteNextHopGroup")
     {
@@ -1872,7 +1914,7 @@ void PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::set_value(const s
     }
 }
 
-void PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipMRouteNextHopGroup")
     {
@@ -1900,26 +1942,29 @@ void PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::set_filter(const 
     }
 }
 
-bool PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteNextHopGroup" || name == "ipMRouteNextHopSource" || name == "ipMRouteNextHopSourceMask" || name == "ipMRouteNextHopIfIndex" || name == "ipMRouteNextHopAddress" || name == "pimIpMRouteNextHopPruneReason")
         return true;
     return false;
 }
 
-PIMMIB::Pimcandidaterptable::Pimcandidaterptable()
+PIMMIB::PimCandidateRPTable::PimCandidateRPTable()
+    :
+    pimcandidaterpentry(this, {"pimcandidaterpgroupaddress", "pimcandidaterpgroupmask"})
 {
 
-    yang_name = "pimCandidateRPTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimCandidateRPTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimcandidaterptable::~Pimcandidaterptable()
+PIMMIB::PimCandidateRPTable::~PimCandidateRPTable()
 {
 }
 
-bool PIMMIB::Pimcandidaterptable::has_data() const
+bool PIMMIB::PimCandidateRPTable::has_data() const
 {
-    for (std::size_t index=0; index<pimcandidaterpentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pimcandidaterpentry.len(); index++)
     {
         if(pimcandidaterpentry[index]->has_data())
             return true;
@@ -1927,9 +1972,9 @@ bool PIMMIB::Pimcandidaterptable::has_data() const
     return false;
 }
 
-bool PIMMIB::Pimcandidaterptable::has_operation() const
+bool PIMMIB::PimCandidateRPTable::has_operation() const
 {
-    for (std::size_t index=0; index<pimcandidaterpentry.size(); index++)
+    for (std::size_t index=0; index<pimcandidaterpentry.len(); index++)
     {
         if(pimcandidaterpentry[index]->has_operation())
             return true;
@@ -1937,21 +1982,21 @@ bool PIMMIB::Pimcandidaterptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string PIMMIB::Pimcandidaterptable::get_absolute_path() const
+std::string PIMMIB::PimCandidateRPTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimcandidaterptable::get_segment_path() const
+std::string PIMMIB::PimCandidateRPTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pimCandidateRPTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimcandidaterptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimCandidateRPTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1960,25 +2005,25 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimcandidaterptable::get_
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimcandidaterptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimCandidateRPTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimCandidateRPEntry")
     {
-        auto c = std::make_shared<PIMMIB::Pimcandidaterptable::Pimcandidaterpentry>();
+        auto c = std::make_shared<PIMMIB::PimCandidateRPTable::PimCandidateRPEntry>();
         c->parent = this;
-        pimcandidaterpentry.push_back(c);
+        pimcandidaterpentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimcandidaterptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimCandidateRPTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pimcandidaterpentry)
+    for (auto c : pimcandidaterpentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1989,22 +2034,22 @@ std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimcandidaterptable::get_
     return children;
 }
 
-void PIMMIB::Pimcandidaterptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimCandidateRPTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PIMMIB::Pimcandidaterptable::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimCandidateRPTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PIMMIB::Pimcandidaterptable::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimCandidateRPTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimCandidateRPEntry")
         return true;
     return false;
 }
 
-PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::Pimcandidaterpentry()
+PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::PimCandidateRPEntry()
     :
     pimcandidaterpgroupaddress{YType::str, "pimCandidateRPGroupAddress"},
     pimcandidaterpgroupmask{YType::str, "pimCandidateRPGroupMask"},
@@ -2012,22 +2057,23 @@ PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::Pimcandidaterpentry()
     pimcandidaterprowstatus{YType::enumeration, "pimCandidateRPRowStatus"}
 {
 
-    yang_name = "pimCandidateRPEntry"; yang_parent_name = "pimCandidateRPTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimCandidateRPEntry"; yang_parent_name = "pimCandidateRPTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::~Pimcandidaterpentry()
+PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::~PimCandidateRPEntry()
 {
 }
 
-bool PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::has_data() const
+bool PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return pimcandidaterpgroupaddress.is_set
 	|| pimcandidaterpgroupmask.is_set
 	|| pimcandidaterpaddress.is_set
 	|| pimcandidaterprowstatus.is_set;
 }
 
-bool PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::has_operation() const
+bool PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pimcandidaterpgroupaddress.yfilter)
@@ -2036,21 +2082,23 @@ bool PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::has_operation() const
 	|| ydk::is_set(pimcandidaterprowstatus.yfilter);
 }
 
-std::string PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::get_absolute_path() const
+std::string PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/pimCandidateRPTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::get_segment_path() const
+std::string PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pimCandidateRPEntry" <<"[pimCandidateRPGroupAddress='" <<pimcandidaterpgroupaddress <<"']" <<"[pimCandidateRPGroupMask='" <<pimcandidaterpgroupmask <<"']";
+    path_buffer << "pimCandidateRPEntry";
+    ADD_KEY_TOKEN(pimcandidaterpgroupaddress, "pimCandidateRPGroupAddress");
+    ADD_KEY_TOKEN(pimcandidaterpgroupmask, "pimCandidateRPGroupMask");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2063,19 +2111,19 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimcandidaterptable::Pimc
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pimCandidateRPGroupAddress")
     {
@@ -2103,7 +2151,7 @@ void PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::set_value(const std::stri
     }
 }
 
-void PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pimCandidateRPGroupAddress")
     {
@@ -2123,26 +2171,29 @@ void PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::set_filter(const std::str
     }
 }
 
-bool PIMMIB::Pimcandidaterptable::Pimcandidaterpentry::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimCandidateRPGroupAddress" || name == "pimCandidateRPGroupMask" || name == "pimCandidateRPAddress" || name == "pimCandidateRPRowStatus")
         return true;
     return false;
 }
 
-PIMMIB::Pimcomponenttable::Pimcomponenttable()
+PIMMIB::PimComponentTable::PimComponentTable()
+    :
+    pimcomponententry(this, {"pimcomponentindex"})
 {
 
-    yang_name = "pimComponentTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimComponentTable"; yang_parent_name = "PIM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimcomponenttable::~Pimcomponenttable()
+PIMMIB::PimComponentTable::~PimComponentTable()
 {
 }
 
-bool PIMMIB::Pimcomponenttable::has_data() const
+bool PIMMIB::PimComponentTable::has_data() const
 {
-    for (std::size_t index=0; index<pimcomponententry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pimcomponententry.len(); index++)
     {
         if(pimcomponententry[index]->has_data())
             return true;
@@ -2150,9 +2201,9 @@ bool PIMMIB::Pimcomponenttable::has_data() const
     return false;
 }
 
-bool PIMMIB::Pimcomponenttable::has_operation() const
+bool PIMMIB::PimComponentTable::has_operation() const
 {
-    for (std::size_t index=0; index<pimcomponententry.size(); index++)
+    for (std::size_t index=0; index<pimcomponententry.len(); index++)
     {
         if(pimcomponententry[index]->has_operation())
             return true;
@@ -2160,21 +2211,21 @@ bool PIMMIB::Pimcomponenttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string PIMMIB::Pimcomponenttable::get_absolute_path() const
+std::string PIMMIB::PimComponentTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimcomponenttable::get_segment_path() const
+std::string PIMMIB::PimComponentTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pimComponentTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimcomponenttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimComponentTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2183,25 +2234,25 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimcomponenttable::get_na
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimcomponenttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimComponentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimComponentEntry")
     {
-        auto c = std::make_shared<PIMMIB::Pimcomponenttable::Pimcomponententry>();
+        auto c = std::make_shared<PIMMIB::PimComponentTable::PimComponentEntry>();
         c->parent = this;
-        pimcomponententry.push_back(c);
+        pimcomponententry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimcomponenttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimComponentTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pimcomponententry)
+    for (auto c : pimcomponententry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2212,22 +2263,22 @@ std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimcomponenttable::get_ch
     return children;
 }
 
-void PIMMIB::Pimcomponenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimComponentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PIMMIB::Pimcomponenttable::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimComponentTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PIMMIB::Pimcomponenttable::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimComponentTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimComponentEntry")
         return true;
     return false;
 }
 
-PIMMIB::Pimcomponenttable::Pimcomponententry::Pimcomponententry()
+PIMMIB::PimComponentTable::PimComponentEntry::PimComponentEntry()
     :
     pimcomponentindex{YType::int32, "pimComponentIndex"},
     pimcomponentbsraddress{YType::str, "pimComponentBSRAddress"},
@@ -2236,15 +2287,16 @@ PIMMIB::Pimcomponenttable::Pimcomponententry::Pimcomponententry()
     pimcomponentstatus{YType::enumeration, "pimComponentStatus"}
 {
 
-    yang_name = "pimComponentEntry"; yang_parent_name = "pimComponentTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pimComponentEntry"; yang_parent_name = "pimComponentTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PIMMIB::Pimcomponenttable::Pimcomponententry::~Pimcomponententry()
+PIMMIB::PimComponentTable::PimComponentEntry::~PimComponentEntry()
 {
 }
 
-bool PIMMIB::Pimcomponenttable::Pimcomponententry::has_data() const
+bool PIMMIB::PimComponentTable::PimComponentEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return pimcomponentindex.is_set
 	|| pimcomponentbsraddress.is_set
 	|| pimcomponentbsrexpirytime.is_set
@@ -2252,7 +2304,7 @@ bool PIMMIB::Pimcomponenttable::Pimcomponententry::has_data() const
 	|| pimcomponentstatus.is_set;
 }
 
-bool PIMMIB::Pimcomponenttable::Pimcomponententry::has_operation() const
+bool PIMMIB::PimComponentTable::PimComponentEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pimcomponentindex.yfilter)
@@ -2262,21 +2314,22 @@ bool PIMMIB::Pimcomponenttable::Pimcomponententry::has_operation() const
 	|| ydk::is_set(pimcomponentstatus.yfilter);
 }
 
-std::string PIMMIB::Pimcomponenttable::Pimcomponententry::get_absolute_path() const
+std::string PIMMIB::PimComponentTable::PimComponentEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "PIM-MIB:PIM-MIB/pimComponentTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PIMMIB::Pimcomponenttable::Pimcomponententry::get_segment_path() const
+std::string PIMMIB::PimComponentTable::PimComponentEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pimComponentEntry" <<"[pimComponentIndex='" <<pimcomponentindex <<"']";
+    path_buffer << "pimComponentEntry";
+    ADD_KEY_TOKEN(pimcomponentindex, "pimComponentIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimcomponenttable::Pimcomponententry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PIMMIB::PimComponentTable::PimComponentEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2290,19 +2343,19 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pimcomponenttable::Pimcom
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pimcomponenttable::Pimcomponententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PIMMIB::PimComponentTable::PimComponentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pimcomponenttable::Pimcomponententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimComponentTable::PimComponentEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PIMMIB::Pimcomponenttable::Pimcomponententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PIMMIB::PimComponentTable::PimComponentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pimComponentIndex")
     {
@@ -2336,7 +2389,7 @@ void PIMMIB::Pimcomponenttable::Pimcomponententry::set_value(const std::string &
     }
 }
 
-void PIMMIB::Pimcomponenttable::Pimcomponententry::set_filter(const std::string & value_path, YFilter yfilter)
+void PIMMIB::PimComponentTable::PimComponentEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pimComponentIndex")
     {
@@ -2360,26 +2413,26 @@ void PIMMIB::Pimcomponenttable::Pimcomponententry::set_filter(const std::string 
     }
 }
 
-bool PIMMIB::Pimcomponenttable::Pimcomponententry::has_leaf_or_child_of_name(const std::string & name) const
+bool PIMMIB::PimComponentTable::PimComponentEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pimComponentIndex" || name == "pimComponentBSRAddress" || name == "pimComponentBSRExpiryTime" || name == "pimComponentCRPHoldTime" || name == "pimComponentStatus")
         return true;
     return false;
 }
 
-const Enum::YLeaf PIMMIB::Piminterfacetable::Piminterfaceentry::Piminterfacemode::dense {1, "dense"};
-const Enum::YLeaf PIMMIB::Piminterfacetable::Piminterfaceentry::Piminterfacemode::sparse {2, "sparse"};
-const Enum::YLeaf PIMMIB::Piminterfacetable::Piminterfaceentry::Piminterfacemode::sparseDense {3, "sparseDense"};
+const Enum::YLeaf PIMMIB::PimInterfaceTable::PimInterfaceEntry::PimInterfaceMode::dense {1, "dense"};
+const Enum::YLeaf PIMMIB::PimInterfaceTable::PimInterfaceEntry::PimInterfaceMode::sparse {2, "sparse"};
+const Enum::YLeaf PIMMIB::PimInterfaceTable::PimInterfaceEntry::PimInterfaceMode::sparseDense {3, "sparseDense"};
 
-const Enum::YLeaf PIMMIB::Pimneighbortable::Pimneighborentry::Pimneighbormode::dense {1, "dense"};
-const Enum::YLeaf PIMMIB::Pimneighbortable::Pimneighborentry::Pimneighbormode::sparse {2, "sparse"};
+const Enum::YLeaf PIMMIB::PimNeighborTable::PimNeighborEntry::PimNeighborMode::dense {1, "dense"};
+const Enum::YLeaf PIMMIB::PimNeighborTable::PimNeighborEntry::PimNeighborMode::sparse {2, "sparse"};
 
-const Enum::YLeaf PIMMIB::Pimrptable::Pimrpentry::Pimrpstate::up {1, "up"};
-const Enum::YLeaf PIMMIB::Pimrptable::Pimrpentry::Pimrpstate::down {2, "down"};
+const Enum::YLeaf PIMMIB::PimRPTable::PimRPEntry::PimRPState::up {1, "up"};
+const Enum::YLeaf PIMMIB::PimRPTable::PimRPEntry::PimRPState::down {2, "down"};
 
-const Enum::YLeaf PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::Pimipmroutenexthopprunereason::other {1, "other"};
-const Enum::YLeaf PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::Pimipmroutenexthopprunereason::prune {2, "prune"};
-const Enum::YLeaf PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::Pimipmroutenexthopprunereason::assert {3, "assert"};
+const Enum::YLeaf PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::PimIpMRouteNextHopPruneReason::other {1, "other"};
+const Enum::YLeaf PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::PimIpMRouteNextHopPruneReason::prune {2, "prune"};
+const Enum::YLeaf PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::PimIpMRouteNextHopPruneReason::assert {3, "assert"};
 
 
 }

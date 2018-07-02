@@ -14,12 +14,12 @@ namespace tailf_aaa {
 Aaa::Aaa()
     :
     authentication(std::make_shared<Aaa::Authentication>())
-	,authorization(std::make_shared<Aaa::Authorization>())
-	,ios(nullptr) // presence node
-	,privileged_access(std::make_shared<Aaa::PrivilegedAccess>())
-	,accounting(std::make_shared<Aaa::Accounting>())
-	,user_group(std::make_shared<Aaa::UserGroup>())
-	,disaster_recovery(std::make_shared<Aaa::DisasterRecovery>())
+    , authorization(std::make_shared<Aaa::Authorization>())
+    , ios(nullptr) // presence node
+    , privileged_access(std::make_shared<Aaa::PrivilegedAccess>())
+    , accounting(std::make_shared<Aaa::Accounting>())
+    , user_group(std::make_shared<Aaa::UserGroup>())
+    , disaster_recovery(std::make_shared<Aaa::DisasterRecovery>())
 {
     authentication->parent = this;
     authorization->parent = this;
@@ -28,7 +28,7 @@ Aaa::Aaa()
     user_group->parent = this;
     disaster_recovery->parent = this;
 
-    yang_name = "aaa"; yang_parent_name = "tailf-aaa"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "aaa"; yang_parent_name = "tailf-aaa"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Aaa::~Aaa()
@@ -37,6 +37,7 @@ Aaa::~Aaa()
 
 bool Aaa::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data())
 	|| (authorization !=  nullptr && authorization->has_data())
 	|| (ios !=  nullptr && ios->has_data())
@@ -227,12 +228,12 @@ bool Aaa::has_leaf_or_child_of_name(const std::string & name) const
 Aaa::Authentication::Authentication()
     :
     users(std::make_shared<Aaa::Authentication::Users>())
-	,groups(std::make_shared<Aaa::Authentication::Groups>())
+    , groups(std::make_shared<Aaa::Authentication::Groups>())
 {
     users->parent = this;
     groups->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authentication"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Authentication::~Authentication()
@@ -241,6 +242,7 @@ Aaa::Authentication::~Authentication()
 
 bool Aaa::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (users !=  nullptr && users->has_data())
 	|| (groups !=  nullptr && groups->has_data());
 }
@@ -331,9 +333,11 @@ bool Aaa::Authentication::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Aaa::Authentication::Users::Users()
+    :
+    user(this, {"name"})
 {
 
-    yang_name = "users"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "users"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Authentication::Users::~Users()
@@ -342,7 +346,8 @@ Aaa::Authentication::Users::~Users()
 
 bool Aaa::Authentication::Users::has_data() const
 {
-    for (std::size_t index=0; index<user.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<user.len(); index++)
     {
         if(user[index]->has_data())
             return true;
@@ -352,7 +357,7 @@ bool Aaa::Authentication::Users::has_data() const
 
 bool Aaa::Authentication::Users::has_operation() const
 {
-    for (std::size_t index=0; index<user.size(); index++)
+    for (std::size_t index=0; index<user.len(); index++)
     {
         if(user[index]->has_operation())
             return true;
@@ -389,7 +394,7 @@ std::shared_ptr<Entity> Aaa::Authentication::Users::get_child_by_name(const std:
     {
         auto c = std::make_shared<Aaa::Authentication::Users::User>();
         c->parent = this;
-        user.push_back(c);
+        user.append(c);
         return c;
     }
 
@@ -401,7 +406,7 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Authentication::Users::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : user)
+    for (auto c : user.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -437,7 +442,7 @@ Aaa::Authentication::Users::User::User()
     homedir{YType::str, "homedir"}
 {
 
-    yang_name = "user"; yang_parent_name = "users"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "user"; yang_parent_name = "users"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Authentication::Users::User::~User()
@@ -446,6 +451,7 @@ Aaa::Authentication::Users::User::~User()
 
 bool Aaa::Authentication::Users::User::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| uid.is_set
 	|| gid.is_set
@@ -475,7 +481,8 @@ std::string Aaa::Authentication::Users::User::get_absolute_path() const
 std::string Aaa::Authentication::Users::User::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "user" <<"[name='" <<name <<"']";
+    path_buffer << "user";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -582,9 +589,11 @@ bool Aaa::Authentication::Users::User::has_leaf_or_child_of_name(const std::stri
 }
 
 Aaa::Authentication::Groups::Groups()
+    :
+    group(this, {"name"})
 {
 
-    yang_name = "groups"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Authentication::Groups::~Groups()
@@ -593,7 +602,8 @@ Aaa::Authentication::Groups::~Groups()
 
 bool Aaa::Authentication::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -603,7 +613,7 @@ bool Aaa::Authentication::Groups::has_data() const
 
 bool Aaa::Authentication::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -640,7 +650,7 @@ std::shared_ptr<Entity> Aaa::Authentication::Groups::get_child_by_name(const std
     {
         auto c = std::make_shared<Aaa::Authentication::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -652,7 +662,7 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Authentication::Groups::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -685,7 +695,7 @@ Aaa::Authentication::Groups::Group::Group()
     users{YType::str, "users"}
 {
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Authentication::Groups::Group::~Group()
@@ -694,6 +704,7 @@ Aaa::Authentication::Groups::Group::~Group()
 
 bool Aaa::Authentication::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| gid.is_set
 	|| users.is_set;
@@ -717,7 +728,8 @@ std::string Aaa::Authentication::Groups::Group::get_absolute_path() const
 std::string Aaa::Authentication::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[name='" <<name <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -793,12 +805,12 @@ bool Aaa::Authentication::Groups::Group::has_leaf_or_child_of_name(const std::st
 Aaa::Authorization::Authorization()
     :
     cmdrules(std::make_shared<Aaa::Authorization::Cmdrules>())
-	,datarules(std::make_shared<Aaa::Authorization::Datarules>())
+    , datarules(std::make_shared<Aaa::Authorization::Datarules>())
 {
     cmdrules->parent = this;
     datarules->parent = this;
 
-    yang_name = "authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Authorization::~Authorization()
@@ -807,6 +819,7 @@ Aaa::Authorization::~Authorization()
 
 bool Aaa::Authorization::has_data() const
 {
+    if (is_presence_container) return true;
     return (cmdrules !=  nullptr && cmdrules->has_data())
 	|| (datarules !=  nullptr && datarules->has_data());
 }
@@ -897,9 +910,11 @@ bool Aaa::Authorization::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 Aaa::Authorization::Cmdrules::Cmdrules()
+    :
+    cmdrule(this, {"index_"})
 {
 
-    yang_name = "cmdrules"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmdrules"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Authorization::Cmdrules::~Cmdrules()
@@ -908,7 +923,8 @@ Aaa::Authorization::Cmdrules::~Cmdrules()
 
 bool Aaa::Authorization::Cmdrules::has_data() const
 {
-    for (std::size_t index=0; index<cmdrule.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmdrule.len(); index++)
     {
         if(cmdrule[index]->has_data())
             return true;
@@ -918,7 +934,7 @@ bool Aaa::Authorization::Cmdrules::has_data() const
 
 bool Aaa::Authorization::Cmdrules::has_operation() const
 {
-    for (std::size_t index=0; index<cmdrule.size(); index++)
+    for (std::size_t index=0; index<cmdrule.len(); index++)
     {
         if(cmdrule[index]->has_operation())
             return true;
@@ -955,7 +971,7 @@ std::shared_ptr<Entity> Aaa::Authorization::Cmdrules::get_child_by_name(const st
     {
         auto c = std::make_shared<Aaa::Authorization::Cmdrules::Cmdrule>();
         c->parent = this;
-        cmdrule.push_back(c);
+        cmdrule.append(c);
         return c;
     }
 
@@ -967,7 +983,7 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Authorization::Cmdrules::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmdrule)
+    for (auto c : cmdrule.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1003,7 +1019,7 @@ Aaa::Authorization::Cmdrules::Cmdrule::Cmdrule()
     action{YType::enumeration, "action"}
 {
 
-    yang_name = "cmdrule"; yang_parent_name = "cmdrules"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmdrule"; yang_parent_name = "cmdrules"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Authorization::Cmdrules::Cmdrule::~Cmdrule()
@@ -1012,6 +1028,7 @@ Aaa::Authorization::Cmdrules::Cmdrule::~Cmdrule()
 
 bool Aaa::Authorization::Cmdrules::Cmdrule::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| context.is_set
 	|| command.is_set
@@ -1041,7 +1058,8 @@ std::string Aaa::Authorization::Cmdrules::Cmdrule::get_absolute_path() const
 std::string Aaa::Authorization::Cmdrules::Cmdrule::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cmdrule" <<"[index='" <<index_ <<"']";
+    path_buffer << "cmdrule";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -1148,9 +1166,11 @@ bool Aaa::Authorization::Cmdrules::Cmdrule::has_leaf_or_child_of_name(const std:
 }
 
 Aaa::Authorization::Datarules::Datarules()
+    :
+    datarule(this, {"index_"})
 {
 
-    yang_name = "datarules"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "datarules"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Authorization::Datarules::~Datarules()
@@ -1159,7 +1179,8 @@ Aaa::Authorization::Datarules::~Datarules()
 
 bool Aaa::Authorization::Datarules::has_data() const
 {
-    for (std::size_t index=0; index<datarule.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<datarule.len(); index++)
     {
         if(datarule[index]->has_data())
             return true;
@@ -1169,7 +1190,7 @@ bool Aaa::Authorization::Datarules::has_data() const
 
 bool Aaa::Authorization::Datarules::has_operation() const
 {
-    for (std::size_t index=0; index<datarule.size(); index++)
+    for (std::size_t index=0; index<datarule.len(); index++)
     {
         if(datarule[index]->has_operation())
             return true;
@@ -1206,7 +1227,7 @@ std::shared_ptr<Entity> Aaa::Authorization::Datarules::get_child_by_name(const s
     {
         auto c = std::make_shared<Aaa::Authorization::Datarules::Datarule>();
         c->parent = this;
-        datarule.push_back(c);
+        datarule.append(c);
         return c;
     }
 
@@ -1218,7 +1239,7 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Authorization::Datarules::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : datarule)
+    for (auto c : datarule.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1255,7 +1276,7 @@ Aaa::Authorization::Datarules::Datarule::Datarule()
     action{YType::enumeration, "action"}
 {
 
-    yang_name = "datarule"; yang_parent_name = "datarules"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "datarule"; yang_parent_name = "datarules"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Authorization::Datarules::Datarule::~Datarule()
@@ -1264,6 +1285,7 @@ Aaa::Authorization::Datarules::Datarule::~Datarule()
 
 bool Aaa::Authorization::Datarules::Datarule::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| namespace_.is_set
 	|| context.is_set
@@ -1295,7 +1317,8 @@ std::string Aaa::Authorization::Datarules::Datarule::get_absolute_path() const
 std::string Aaa::Authorization::Datarules::Datarule::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "datarule" <<"[index='" <<index_ <<"']";
+    path_buffer << "datarule";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -1413,9 +1436,12 @@ bool Aaa::Authorization::Datarules::Datarule::has_leaf_or_child_of_name(const st
 }
 
 Aaa::Ios::Ios()
+    :
+    level(this, {"nr"})
+    , privilege(this, {"mode"})
 {
 
-    yang_name = "ios"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ios"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Aaa::Ios::~Ios()
@@ -1424,12 +1450,13 @@ Aaa::Ios::~Ios()
 
 bool Aaa::Ios::has_data() const
 {
-    for (std::size_t index=0; index<level.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<level.len(); index++)
     {
         if(level[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<privilege.size(); index++)
+    for (std::size_t index=0; index<privilege.len(); index++)
     {
         if(privilege[index]->has_data())
             return true;
@@ -1439,12 +1466,12 @@ bool Aaa::Ios::has_data() const
 
 bool Aaa::Ios::has_operation() const
 {
-    for (std::size_t index=0; index<level.size(); index++)
+    for (std::size_t index=0; index<level.len(); index++)
     {
         if(level[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<privilege.size(); index++)
+    for (std::size_t index=0; index<privilege.len(); index++)
     {
         if(privilege[index]->has_operation())
             return true;
@@ -1481,7 +1508,7 @@ std::shared_ptr<Entity> Aaa::Ios::get_child_by_name(const std::string & child_ya
     {
         auto c = std::make_shared<Aaa::Ios::Level>();
         c->parent = this;
-        level.push_back(c);
+        level.append(c);
         return c;
     }
 
@@ -1489,7 +1516,7 @@ std::shared_ptr<Entity> Aaa::Ios::get_child_by_name(const std::string & child_ya
     {
         auto c = std::make_shared<Aaa::Ios::Privilege>();
         c->parent = this;
-        privilege.push_back(c);
+        privilege.append(c);
         return c;
     }
 
@@ -1501,7 +1528,7 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Ios::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : level)
+    for (auto c : level.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1510,7 +1537,7 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Ios::get_children() const
     }
 
     count = 0;
-    for (auto const & c : privilege)
+    for (auto c : privilege.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1544,7 +1571,7 @@ Aaa::Ios::Level::Level()
     prompt{YType::str, "prompt"}
 {
 
-    yang_name = "level"; yang_parent_name = "ios"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "level"; yang_parent_name = "ios"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Ios::Level::~Level()
@@ -1553,6 +1580,7 @@ Aaa::Ios::Level::~Level()
 
 bool Aaa::Ios::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return nr.is_set
 	|| secret.is_set
 	|| password.is_set
@@ -1578,7 +1606,8 @@ std::string Aaa::Ios::Level::get_absolute_path() const
 std::string Aaa::Ios::Level::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "level" <<"[nr='" <<nr <<"']";
+    path_buffer << "level";
+    ADD_KEY_TOKEN(nr, "nr");
     return path_buffer.str();
 }
 
@@ -1665,9 +1694,11 @@ bool Aaa::Ios::Level::has_leaf_or_child_of_name(const std::string & name) const
 Aaa::Ios::Privilege::Privilege()
     :
     mode{YType::str, "mode"}
+        ,
+    level(this, {"nr"})
 {
 
-    yang_name = "privilege"; yang_parent_name = "ios"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "privilege"; yang_parent_name = "ios"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Ios::Privilege::~Privilege()
@@ -1676,7 +1707,8 @@ Aaa::Ios::Privilege::~Privilege()
 
 bool Aaa::Ios::Privilege::has_data() const
 {
-    for (std::size_t index=0; index<level.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<level.len(); index++)
     {
         if(level[index]->has_data())
             return true;
@@ -1686,7 +1718,7 @@ bool Aaa::Ios::Privilege::has_data() const
 
 bool Aaa::Ios::Privilege::has_operation() const
 {
-    for (std::size_t index=0; index<level.size(); index++)
+    for (std::size_t index=0; index<level.len(); index++)
     {
         if(level[index]->has_operation())
             return true;
@@ -1705,7 +1737,8 @@ std::string Aaa::Ios::Privilege::get_absolute_path() const
 std::string Aaa::Ios::Privilege::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "privilege" <<"[mode='" <<mode <<"']";
+    path_buffer << "privilege";
+    ADD_KEY_TOKEN(mode, "mode");
     return path_buffer.str();
 }
 
@@ -1725,7 +1758,7 @@ std::shared_ptr<Entity> Aaa::Ios::Privilege::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Aaa::Ios::Privilege::Level>();
         c->parent = this;
-        level.push_back(c);
+        level.append(c);
         return c;
     }
 
@@ -1737,7 +1770,7 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Ios::Privilege::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : level)
+    for (auto c : level.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1776,9 +1809,11 @@ bool Aaa::Ios::Privilege::has_leaf_or_child_of_name(const std::string & name) co
 Aaa::Ios::Privilege::Level::Level()
     :
     nr{YType::int32, "nr"}
+        ,
+    command(this, {"name"})
 {
 
-    yang_name = "level"; yang_parent_name = "privilege"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "privilege"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aaa::Ios::Privilege::Level::~Level()
@@ -1787,7 +1822,8 @@ Aaa::Ios::Privilege::Level::~Level()
 
 bool Aaa::Ios::Privilege::Level::has_data() const
 {
-    for (std::size_t index=0; index<command.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<command.len(); index++)
     {
         if(command[index]->has_data())
             return true;
@@ -1797,7 +1833,7 @@ bool Aaa::Ios::Privilege::Level::has_data() const
 
 bool Aaa::Ios::Privilege::Level::has_operation() const
 {
-    for (std::size_t index=0; index<command.size(); index++)
+    for (std::size_t index=0; index<command.len(); index++)
     {
         if(command[index]->has_operation())
             return true;
@@ -1809,7 +1845,8 @@ bool Aaa::Ios::Privilege::Level::has_operation() const
 std::string Aaa::Ios::Privilege::Level::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "level" <<"[nr='" <<nr <<"']";
+    path_buffer << "level";
+    ADD_KEY_TOKEN(nr, "nr");
     return path_buffer.str();
 }
 
@@ -1829,7 +1866,7 @@ std::shared_ptr<Entity> Aaa::Ios::Privilege::Level::get_child_by_name(const std:
     {
         auto c = std::make_shared<Aaa::Ios::Privilege::Level::Command>();
         c->parent = this;
-        command.push_back(c);
+        command.append(c);
         return c;
     }
 
@@ -1841,7 +1878,7 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Ios::Privilege::Level::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : command)
+    for (auto c : command.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1882,7 +1919,7 @@ Aaa::Ios::Privilege::Level::Command::Command()
     name{YType::str, "name"}
 {
 
-    yang_name = "command"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "command"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aaa::Ios::Privilege::Level::Command::~Command()
@@ -1891,6 +1928,7 @@ Aaa::Ios::Privilege::Level::Command::~Command()
 
 bool Aaa::Ios::Privilege::Level::Command::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -1903,7 +1941,8 @@ bool Aaa::Ios::Privilege::Level::Command::has_operation() const
 std::string Aaa::Ios::Privilege::Level::Command::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "command" <<"[name='" <<name <<"']";
+    path_buffer << "command";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1962,7 +2001,7 @@ Aaa::PrivilegedAccess::PrivilegedAccess()
     current_disaster_recovery_user{YType::str, "current-disaster-recovery-user"}
 {
 
-    yang_name = "privileged-access"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "privileged-access"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::PrivilegedAccess::~PrivilegedAccess()
@@ -1971,6 +2010,7 @@ Aaa::PrivilegedAccess::~PrivilegedAccess()
 
 bool Aaa::PrivilegedAccess::has_data() const
 {
+    if (is_presence_container) return true;
     return shell_access.is_set
 	|| first_user.is_set
 	|| first_user_change.is_set
@@ -2085,7 +2125,7 @@ Aaa::Accounting::Accounting()
     log_data{YType::str, "log-data"}
 {
 
-    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::Accounting::~Accounting()
@@ -2094,6 +2134,7 @@ Aaa::Accounting::~Accounting()
 
 bool Aaa::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return log_data.is_set;
 }
 
@@ -2169,7 +2210,7 @@ Aaa::UserGroup::UserGroup()
     grp_data{YType::str, "grp-data"}
 {
 
-    yang_name = "user-group"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "user-group"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::UserGroup::~UserGroup()
@@ -2178,6 +2219,7 @@ Aaa::UserGroup::~UserGroup()
 
 bool Aaa::UserGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return grp_data.is_set;
 }
 
@@ -2254,7 +2296,7 @@ Aaa::DisasterRecovery::DisasterRecovery()
     password{YType::str, "password"}
 {
 
-    yang_name = "disaster-recovery"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "disaster-recovery"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aaa::DisasterRecovery::~DisasterRecovery()
@@ -2263,6 +2305,7 @@ Aaa::DisasterRecovery::~DisasterRecovery()
 
 bool Aaa::DisasterRecovery::has_data() const
 {
+    if (is_presence_container) return true;
     return username.is_set
 	|| password.is_set;
 }
@@ -2352,7 +2395,7 @@ Alias::Alias()
     expansion{YType::str, "expansion"}
 {
 
-    yang_name = "alias"; yang_parent_name = "tailf-aaa"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "alias"; yang_parent_name = "tailf-aaa"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Alias::~Alias()
@@ -2361,6 +2404,7 @@ Alias::~Alias()
 
 bool Alias::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| expansion.is_set;
 }
@@ -2375,7 +2419,8 @@ bool Alias::has_operation() const
 std::string Alias::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tailf-aaa:alias" <<"[name='" <<name <<"']";
+    path_buffer << "tailf-aaa:alias";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2476,7 +2521,7 @@ Session::Session()
     prompt2{YType::str, "prompt2"}
 {
 
-    yang_name = "session"; yang_parent_name = "tailf-aaa"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "tailf-aaa"; is_top_level_class = true; has_list_ancestor = false; is_presence_container = true;
 }
 
 Session::~Session()
@@ -2485,6 +2530,7 @@ Session::~Session()
 
 bool Session::has_data() const
 {
+    if (is_presence_container) return true;
     return complete_on_space.is_set
 	|| ignore_leading_space.is_set
 	|| idle_timeout.is_set
@@ -2694,12 +2740,13 @@ User::User()
     :
     name{YType::str, "name"},
     description{YType::str, "description"}
-    	,
-    session(std::make_shared<User::Session>())
+        ,
+    alias(this, {"name"})
+    , session(std::make_shared<User::Session>())
 {
     session->parent = this;
 
-    yang_name = "user"; yang_parent_name = "tailf-aaa"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "user"; yang_parent_name = "tailf-aaa"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 User::~User()
@@ -2708,7 +2755,8 @@ User::~User()
 
 bool User::has_data() const
 {
-    for (std::size_t index=0; index<alias.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alias.len(); index++)
     {
         if(alias[index]->has_data())
             return true;
@@ -2720,7 +2768,7 @@ bool User::has_data() const
 
 bool User::has_operation() const
 {
-    for (std::size_t index=0; index<alias.size(); index++)
+    for (std::size_t index=0; index<alias.len(); index++)
     {
         if(alias[index]->has_operation())
             return true;
@@ -2734,7 +2782,8 @@ bool User::has_operation() const
 std::string User::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tailf-aaa:user" <<"[name='" <<name <<"']";
+    path_buffer << "tailf-aaa:user";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2755,7 +2804,7 @@ std::shared_ptr<Entity> User::get_child_by_name(const std::string & child_yang_n
     {
         auto c = std::make_shared<User::Alias>();
         c->parent = this;
-        alias.push_back(c);
+        alias.append(c);
         return c;
     }
 
@@ -2776,7 +2825,7 @@ std::map<std::string, std::shared_ptr<Entity>> User::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alias)
+    for (auto c : alias.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2858,7 +2907,7 @@ User::Alias::Alias()
     expansion{YType::str, "expansion"}
 {
 
-    yang_name = "alias"; yang_parent_name = "user"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "alias"; yang_parent_name = "user"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 User::Alias::~Alias()
@@ -2867,6 +2916,7 @@ User::Alias::~Alias()
 
 bool User::Alias::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| expansion.is_set;
 }
@@ -2881,7 +2931,8 @@ bool User::Alias::has_operation() const
 std::string User::Alias::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alias" <<"[name='" <<name <<"']";
+    path_buffer << "alias";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2957,7 +3008,7 @@ User::Session::Session()
     prompt2{YType::str, "prompt2"}
 {
 
-    yang_name = "session"; yang_parent_name = "user"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session"; yang_parent_name = "user"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 User::Session::~Session()
@@ -2966,6 +3017,7 @@ User::Session::~Session()
 
 bool User::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return complete_on_space.is_set
 	|| ignore_leading_space.is_set
 	|| idle_timeout.is_set
@@ -3146,53 +3198,53 @@ bool User::Session::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-const Enum::YLeaf Dataoperationtype::r {0, "r"};
-const Enum::YLeaf Dataoperationtype::rx {1, "rx"};
-const Enum::YLeaf Dataoperationtype::x {2, "x"};
-const Enum::YLeaf Dataoperationtype::rw {3, "rw"};
-const Enum::YLeaf Dataoperationtype::rwx {4, "rwx"};
-const Enum::YLeaf Dataoperationtype::wx {5, "wx"};
-const Enum::YLeaf Dataoperationtype::w {6, "w"};
-const Enum::YLeaf Dataoperationtype::c {7, "c"};
-const Enum::YLeaf Dataoperationtype::cr {8, "cr"};
-const Enum::YLeaf Dataoperationtype::cu {9, "cu"};
-const Enum::YLeaf Dataoperationtype::cd {10, "cd"};
-const Enum::YLeaf Dataoperationtype::cx {11, "cx"};
-const Enum::YLeaf Dataoperationtype::cru {12, "cru"};
-const Enum::YLeaf Dataoperationtype::crd {13, "crd"};
-const Enum::YLeaf Dataoperationtype::crx {14, "crx"};
-const Enum::YLeaf Dataoperationtype::cud {15, "cud"};
-const Enum::YLeaf Dataoperationtype::cux {16, "cux"};
-const Enum::YLeaf Dataoperationtype::cdx {17, "cdx"};
-const Enum::YLeaf Dataoperationtype::crud {18, "crud"};
-const Enum::YLeaf Dataoperationtype::crux {19, "crux"};
-const Enum::YLeaf Dataoperationtype::crdx {20, "crdx"};
-const Enum::YLeaf Dataoperationtype::cudx {21, "cudx"};
-const Enum::YLeaf Dataoperationtype::crudx {22, "crudx"};
-const Enum::YLeaf Dataoperationtype::ru {23, "ru"};
-const Enum::YLeaf Dataoperationtype::rd {24, "rd"};
-const Enum::YLeaf Dataoperationtype::rud {25, "rud"};
-const Enum::YLeaf Dataoperationtype::rux {26, "rux"};
-const Enum::YLeaf Dataoperationtype::rdx {27, "rdx"};
-const Enum::YLeaf Dataoperationtype::u {28, "u"};
-const Enum::YLeaf Dataoperationtype::ud {29, "ud"};
-const Enum::YLeaf Dataoperationtype::ux {30, "ux"};
-const Enum::YLeaf Dataoperationtype::d {31, "d"};
-const Enum::YLeaf Dataoperationtype::dx {32, "dx"};
+const Enum::YLeaf DataOperationType::r {0, "r"};
+const Enum::YLeaf DataOperationType::rx {1, "rx"};
+const Enum::YLeaf DataOperationType::x {2, "x"};
+const Enum::YLeaf DataOperationType::rw {3, "rw"};
+const Enum::YLeaf DataOperationType::rwx {4, "rwx"};
+const Enum::YLeaf DataOperationType::wx {5, "wx"};
+const Enum::YLeaf DataOperationType::w {6, "w"};
+const Enum::YLeaf DataOperationType::c {7, "c"};
+const Enum::YLeaf DataOperationType::cr {8, "cr"};
+const Enum::YLeaf DataOperationType::cu {9, "cu"};
+const Enum::YLeaf DataOperationType::cd {10, "cd"};
+const Enum::YLeaf DataOperationType::cx {11, "cx"};
+const Enum::YLeaf DataOperationType::cru {12, "cru"};
+const Enum::YLeaf DataOperationType::crd {13, "crd"};
+const Enum::YLeaf DataOperationType::crx {14, "crx"};
+const Enum::YLeaf DataOperationType::cud {15, "cud"};
+const Enum::YLeaf DataOperationType::cux {16, "cux"};
+const Enum::YLeaf DataOperationType::cdx {17, "cdx"};
+const Enum::YLeaf DataOperationType::crud {18, "crud"};
+const Enum::YLeaf DataOperationType::crux {19, "crux"};
+const Enum::YLeaf DataOperationType::crdx {20, "crdx"};
+const Enum::YLeaf DataOperationType::cudx {21, "cudx"};
+const Enum::YLeaf DataOperationType::crudx {22, "crudx"};
+const Enum::YLeaf DataOperationType::ru {23, "ru"};
+const Enum::YLeaf DataOperationType::rd {24, "rd"};
+const Enum::YLeaf DataOperationType::rud {25, "rud"};
+const Enum::YLeaf DataOperationType::rux {26, "rux"};
+const Enum::YLeaf DataOperationType::rdx {27, "rdx"};
+const Enum::YLeaf DataOperationType::u {28, "u"};
+const Enum::YLeaf DataOperationType::ud {29, "ud"};
+const Enum::YLeaf DataOperationType::ux {30, "ux"};
+const Enum::YLeaf DataOperationType::d {31, "d"};
+const Enum::YLeaf DataOperationType::dx {32, "dx"};
 
-const Enum::YLeaf Cmdoperationtype::r {0, "r"};
-const Enum::YLeaf Cmdoperationtype::rx {1, "rx"};
-const Enum::YLeaf Cmdoperationtype::x {2, "x"};
+const Enum::YLeaf BuiltinModes::exec {0, "exec"};
+const Enum::YLeaf BuiltinModes::configure {1, "configure"};
+
+const Enum::YLeaf BuiltinModes_::exec {0, "exec"};
+const Enum::YLeaf BuiltinModes_::configure {1, "configure"};
+
+const Enum::YLeaf CmdOperationType::r {0, "r"};
+const Enum::YLeaf CmdOperationType::rx {1, "rx"};
+const Enum::YLeaf CmdOperationType::x {2, "x"};
 
 const Enum::YLeaf Action::accept {0, "accept"};
 const Enum::YLeaf Action::reject {1, "reject"};
 const Enum::YLeaf Action::accept_log {2, "accept_log"};
-
-const Enum::YLeaf Builtinmodes::exec {0, "exec"};
-const Enum::YLeaf Builtinmodes::configure {1, "configure"};
-
-const Enum::YLeaf Builtinmodes_::exec {0, "exec"};
-const Enum::YLeaf Builtinmodes_::configure {1, "configure"};
 
 
 }

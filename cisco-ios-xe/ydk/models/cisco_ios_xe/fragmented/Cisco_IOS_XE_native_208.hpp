@@ -81,7 +81,7 @@ class Native::Event::Manager::Session::Cli::Username : public ydk::Entity
 
         class UsernameInWord; //type: Native::Event::Manager::Session::Cli::Username::UsernameInWord
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Session::Cli::Username::UsernameInWord> > username_in_word;
+        ydk::YList username_in_word;
         
 }; // Native::Event::Manager::Session::Cli::Username
 
@@ -136,7 +136,7 @@ class Native::Event::Manager::Applet : public ydk::Entity
         class Trigger; //type: Native::Event::Manager::Applet::Trigger
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet::Event_> event;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet::Action> > action;
+        ydk::YList action;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet::Trigger> trigger;
                 class Authorization;
 
@@ -958,7 +958,7 @@ class Native::Template : public ydk::Entity
         class SWITCHINTERFACETEMPLATE; //type: Native::Template::SWITCHINTERFACETEMPLATE
         class TPINTERFACETEMPLATE; //type: Native::Template::TPINTERFACETEMPLATE
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails> > template_details;
+        ydk::YList template_details;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::IPCAMERAINTERFACETEMPLATE> ip_camera_interface_template;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::LAPINTERFACETEMPLATE> lap_interface_template;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::APINTERFACETEMPLATE> ap_interface_template;
@@ -1949,7 +1949,7 @@ class Native::Template::TemplateDetails::Switchport::PortSecurity::Maximum : pub
 
         class Range; //type: Native::Template::TemplateDetails::Switchport::PortSecurity::Maximum::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Switchport::PortSecurity::Maximum::Range> > range;
+        ydk::YList range;
         
 }; // Native::Template::TemplateDetails::Switchport::PortSecurity::Maximum
 
@@ -2734,7 +2734,7 @@ class Native::Template::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Max
 
         class Range; //type: Native::Template::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
+        ydk::YList range;
         
 }; // Native::Template::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 
@@ -3540,7 +3540,7 @@ class Native::Template::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum 
 
         class Range; //type: Native::Template::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
+        ydk::YList range;
         
 }; // Native::Template::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 

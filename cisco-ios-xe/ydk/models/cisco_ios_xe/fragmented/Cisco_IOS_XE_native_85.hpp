@@ -15,11 +15,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::Pseudowire::ProtocolL2Tpv2 : public ydk::Entity
+class Native::Interface::Pseudowire::ProtocolL2tpv2 : public ydk::Entity
 {
     public:
-        ProtocolL2Tpv2();
-        ~ProtocolL2Tpv2();
+        ProtocolL2tpv2();
+        ~ProtocolL2tpv2();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -34,14 +34,14 @@ class Native::Interface::Pseudowire::ProtocolL2Tpv2 : public ydk::Entity
         ydk::YLeaf protocol; //type: Protocol
         class Protocol;
 
-}; // Native::Interface::Pseudowire::ProtocolL2Tpv2
+}; // Native::Interface::Pseudowire::ProtocolL2tpv2
 
 
-class Native::Interface::Pseudowire::ProtocolL2Tpv3 : public ydk::Entity
+class Native::Interface::Pseudowire::ProtocolL2tpv3 : public ydk::Entity
 {
     public:
-        ProtocolL2Tpv3();
-        ~ProtocolL2Tpv3();
+        ProtocolL2tpv3();
+        ~ProtocolL2tpv3();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -56,7 +56,7 @@ class Native::Interface::Pseudowire::ProtocolL2Tpv3 : public ydk::Entity
         ydk::YLeaf protocol; //type: Protocol
         class Protocol;
 
-}; // Native::Interface::Pseudowire::ProtocolL2Tpv3
+}; // Native::Interface::Pseudowire::ProtocolL2tpv3
 
 
 class Native::Interface::Pseudowire::Status : public ydk::Entity
@@ -252,7 +252,7 @@ class Native::Interface::SM : public ydk::Entity
         class Backup; //type: Native::Interface::SM::Backup
         class Cemoudp; //type: Native::Interface::SM::Cemoudp
         class CwsTunnel; //type: Native::Interface::SM::CwsTunnel
-        class L2ProtocolTunnel; //type: Native::Interface::SM::L2ProtocolTunnel
+        class L2protocolTunnel; //type: Native::Interface::SM::L2protocolTunnel
         class Encapsulation; //type: Native::Interface::SM::Encapsulation
         class FairQueueConf; //type: Native::Interface::SM::FairQueueConf
         class FairQueue; //type: Native::Interface::SM::FairQueue
@@ -289,7 +289,7 @@ class Native::Interface::SM : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Backup> backup;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Cemoudp> cemoudp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::CwsTunnel> cws_tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::L2ProtocolTunnel> l2protocol_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::L2protocolTunnel> l2protocol_tunnel; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Encapsulation> encapsulation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::FairQueueConf> fair_queue_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::FairQueue> fair_queue;
@@ -300,7 +300,7 @@ class Native::Interface::SM : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Bandwidth> bandwidth;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Dampening> dampening;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Domain> domain;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::HoldQueue> > hold_queue;
+        ydk::YList hold_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Mpls> mpls;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::IpVrf> ip_vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Vrf> vrf;
@@ -717,11 +717,11 @@ class Native::Interface::SM::CwsTunnel::Out : public ydk::Entity
 }; // Native::Interface::SM::CwsTunnel::Out
 
 
-class Native::Interface::SM::L2ProtocolTunnel : public ydk::Entity
+class Native::Interface::SM::L2protocolTunnel : public ydk::Entity
 {
     public:
-        L2ProtocolTunnel();
-        ~L2ProtocolTunnel();
+        L2protocolTunnel();
+        ~L2protocolTunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -736,16 +736,16 @@ class Native::Interface::SM::L2ProtocolTunnel : public ydk::Entity
         ydk::YLeaf cdp; //type: empty
         ydk::YLeaf stp; //type: empty
         ydk::YLeaf vtp; //type: empty
-        class DropThreshold; //type: Native::Interface::SM::L2ProtocolTunnel::DropThreshold
-        class ShutdownThreshold; //type: Native::Interface::SM::L2ProtocolTunnel::ShutdownThreshold
+        class DropThreshold; //type: Native::Interface::SM::L2protocolTunnel::DropThreshold
+        class ShutdownThreshold; //type: Native::Interface::SM::L2protocolTunnel::ShutdownThreshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::L2ProtocolTunnel::DropThreshold> drop_threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::L2ProtocolTunnel::ShutdownThreshold> shutdown_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::L2protocolTunnel::DropThreshold> drop_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::L2protocolTunnel::ShutdownThreshold> shutdown_threshold;
         
-}; // Native::Interface::SM::L2ProtocolTunnel
+}; // Native::Interface::SM::L2protocolTunnel
 
 
-class Native::Interface::SM::L2ProtocolTunnel::DropThreshold : public ydk::Entity
+class Native::Interface::SM::L2protocolTunnel::DropThreshold : public ydk::Entity
 {
     public:
         DropThreshold();
@@ -766,10 +766,10 @@ class Native::Interface::SM::L2ProtocolTunnel::DropThreshold : public ydk::Entit
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::SM::L2ProtocolTunnel::DropThreshold
+}; // Native::Interface::SM::L2protocolTunnel::DropThreshold
 
 
-class Native::Interface::SM::L2ProtocolTunnel::ShutdownThreshold : public ydk::Entity
+class Native::Interface::SM::L2protocolTunnel::ShutdownThreshold : public ydk::Entity
 {
     public:
         ShutdownThreshold();
@@ -790,7 +790,7 @@ class Native::Interface::SM::L2ProtocolTunnel::ShutdownThreshold : public ydk::E
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::SM::L2ProtocolTunnel::ShutdownThreshold
+}; // Native::Interface::SM::L2protocolTunnel::ShutdownThreshold
 
 
 class Native::Interface::SM::Encapsulation : public ydk::Entity
@@ -1408,7 +1408,7 @@ class Native::Interface::SM::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::HelloInterval> hello_interval;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::HoldTime> hold_time;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Pim> pim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Policy> policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Rip> rip;
@@ -1747,7 +1747,7 @@ class Native::Interface::SM::Ip::Address : public ydk::Entity
         class Dhcp; //type: Native::Interface::SM::Ip::Address::Dhcp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Address::Primary> primary;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Address::Secondary> > secondary;
+        ydk::YList secondary;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::Address::Dhcp> dhcp; // presence node
         
 }; // Native::Interface::SM::Ip::Address
@@ -2271,7 +2271,7 @@ class Native::Interface::SM::Ip::SummaryAddress : public ydk::Entity
 
         class Eigrp; //type: Native::Interface::SM::Ip::SummaryAddress::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ip::SummaryAddress::Eigrp> > eigrp;
+        ydk::YList eigrp;
         
 }; // Native::Interface::SM::Ip::SummaryAddress
 
@@ -2495,7 +2495,7 @@ class Native::Interface::SM::Ipv6 : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Address> address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Nd> nd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Tcp> tcp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::TrafficFilter> > traffic_filter;
+        ydk::YList traffic_filter;
         
 }; // Native::Interface::SM::Ipv6
 
@@ -2585,8 +2585,8 @@ class Native::Interface::SM::Ipv6::Address : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Address::Dhcp> dhcp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Address::Autoconfig> autoconfig; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Address::PrefixList> > prefix_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Ipv6::Address::LinkLocalAddress> > link_local_address;
+        ydk::YList prefix_list;
+        ydk::YList link_local_address;
         
 }; // Native::Interface::SM::Ipv6::Address
 
@@ -2951,7 +2951,7 @@ class Native::Interface::SM::Standby : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::Delay> delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::UseBia> use_bia; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList> > standby_list;
+        ydk::YList standby_list;
                 class Version;
 
 }; // Native::Interface::SM::Standby
@@ -3041,7 +3041,7 @@ class Native::Interface::SM::Standby::StandbyList : public ydk::Entity
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -3057,7 +3057,7 @@ class Native::Interface::SM::Standby::StandbyList : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Preempt> preempt; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Redirect> redirect;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Timers> timers;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM::Standby::StandbyList::Track> > track;
+        ydk::YList track;
                 class Ipv6;
 
 }; // Native::Interface::SM::Standby::StandbyList
@@ -3653,7 +3653,7 @@ class Native::Interface::SM::StormControl::Broadcast::Level::Bps : public ydk::E
 
 }; // Native::Interface::SM::StormControl::Broadcast::Level::Bps
 
-class Native::Interface::Pseudowire::ProtocolL2Tpv2::Protocol : public ydk::Enum
+class Native::Interface::Pseudowire::ProtocolL2tpv2::Protocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf l2tpv2;
@@ -3661,7 +3661,7 @@ class Native::Interface::Pseudowire::ProtocolL2Tpv2::Protocol : public ydk::Enum
 
 };
 
-class Native::Interface::Pseudowire::ProtocolL2Tpv3::Protocol : public ydk::Enum
+class Native::Interface::Pseudowire::ProtocolL2tpv3::Protocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf l2tpv3;

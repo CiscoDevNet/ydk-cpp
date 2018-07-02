@@ -87,7 +87,7 @@ class MplsOam::Interface::Briefs : public ydk::Entity
 
         class Brief; //type: MplsOam::Interface::Briefs::Brief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Briefs::Brief> > brief;
+        ydk::YList brief;
         
 }; // MplsOam::Interface::Briefs
 
@@ -140,7 +140,7 @@ class MplsOam::Interface::Details : public ydk::Entity
 
         class Detail; //type: MplsOam::Interface::Details::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail> > detail;
+        ydk::YList detail;
         
 }; // MplsOam::Interface::Details
 

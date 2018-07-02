@@ -65,7 +65,7 @@ class Vpdn::Sessions : public ydk::Entity
 
         class Session; //type: Vpdn::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session> > session;
+        ydk::YList session;
         
 }; // Vpdn::Sessions
 
@@ -91,12 +91,12 @@ class Vpdn::Sessions::Session : public ydk::Entity
         ydk::YLeaf setup_time; //type: uint32
         ydk::YLeaf parent_interface_name; //type: string
         class Session_; //type: Vpdn::Sessions::Session::Session_
-        class L2Tp; //type: Vpdn::Sessions::Session::L2Tp
+        class L2tp; //type: Vpdn::Sessions::Session::L2tp
         class Subscriber; //type: Vpdn::Sessions::Session::Subscriber
         class Configuration; //type: Vpdn::Sessions::Session::Configuration
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::Session_> session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::L2Tp> l2tp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::L2tp> l2tp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::Subscriber> subscriber;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::Configuration> configuration;
         
@@ -131,11 +131,11 @@ class Vpdn::Sessions::Session::Session_ : public ydk::Entity
 }; // Vpdn::Sessions::Session::Session_
 
 
-class Vpdn::Sessions::Session::L2Tp : public ydk::Entity
+class Vpdn::Sessions::Session::L2tp : public ydk::Entity
 {
     public:
-        L2Tp();
-        ~L2Tp();
+        L2tp();
+        ~L2tp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -161,7 +161,7 @@ class Vpdn::Sessions::Session::L2Tp : public ydk::Entity
         ydk::YLeaf tunnel_assignment_id; //type: string
         ydk::YLeaf is_tunnel_authentication_enabled; //type: boolean
 
-}; // Vpdn::Sessions::Session::L2Tp
+}; // Vpdn::Sessions::Session::L2tp
 
 
 class Vpdn::Sessions::Session::Subscriber : public ydk::Entity
@@ -259,7 +259,7 @@ class Vpdn::TunnelDestinations : public ydk::Entity
 
         class TunnelDestination; //type: Vpdn::TunnelDestinations::TunnelDestination
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::TunnelDestinations::TunnelDestination> > tunnel_destination;
+        ydk::YList tunnel_destination;
         
 }; // Vpdn::TunnelDestinations
 
@@ -511,7 +511,7 @@ class Vpdn::HistoryFailures : public ydk::Entity
 
         class HistoryFailure; //type: Vpdn::HistoryFailures::HistoryFailure
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::HistoryFailures::HistoryFailure> > history_failure;
+        ydk::YList history_failure;
         
 }; // Vpdn::HistoryFailures
 
@@ -550,6 +550,24 @@ class Vpdn::HistoryFailures::HistoryFailure : public ydk::Entity
 
 }; // Vpdn::HistoryFailures::HistoryFailure
 
+class SessionState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf established;
+
+};
+
+class VpdnState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf initial_state;
+        static const ydk::Enum::YLeaf init_sync_in_progress;
+        static const ydk::Enum::YLeaf steady_state;
+
+};
+
 class VpdnFailcode : public ydk::Enum
 {
     public:
@@ -572,35 +590,6 @@ class VpdnFailcode : public ydk::Enum
         static const ydk::Enum::YLeaf security;
         static const ydk::Enum::YLeaf tunnel_in_resync;
         static const ydk::Enum::YLeaf call_prarmeters;
-
-};
-
-class VpdnState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf initial_state;
-        static const ydk::Enum::YLeaf init_sync_in_progress;
-        static const ydk::Enum::YLeaf steady_state;
-
-};
-
-class LsgStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf testable;
-        static const ydk::Enum::YLeaf testing;
-
-};
-
-class TosMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf set;
-        static const ydk::Enum::YLeaf reflect;
 
 };
 
@@ -639,12 +628,23 @@ class VpdnNasPort : public ydk::Enum
 
 };
 
-class SessionState : public ydk::Enum
+class TosMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf established;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf set;
+        static const ydk::Enum::YLeaf reflect;
+
+};
+
+class LsgStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf testable;
+        static const ydk::Enum::YLeaf testing;
 
 };
 

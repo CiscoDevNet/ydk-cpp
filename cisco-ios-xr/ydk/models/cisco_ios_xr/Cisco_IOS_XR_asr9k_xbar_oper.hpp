@@ -57,7 +57,7 @@ class CrossBarStats::Nodes : public ydk::Entity
 
         class Node; //type: CrossBarStats::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // CrossBarStats::Nodes
 
@@ -130,7 +130,7 @@ class CrossBarStats::Nodes::Node::CrossBarTable::PktStats : public ydk::Entity
 
         class PktStat; //type: CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat> > pkt_stat;
+        ydk::YList pkt_stat;
         
 }; // CrossBarStats::Nodes::Node::CrossBarTable::PktStats
 
@@ -220,7 +220,7 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats : public ydk::Entity
 
         class Sm15Stat; //type: CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat> > sm15_stat;
+        ydk::YList sm15_stat;
         
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats
 

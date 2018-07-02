@@ -18,9 +18,11 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"},
     satid{YType::uint32, "satid"}
+        ,
+    class_stats(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "service-policy-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "service-policy-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::~Statistics()
@@ -29,7 +31,8 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_data())
             return true;
@@ -42,7 +45,7 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::S
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_operation())
             return true;
@@ -80,7 +83,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(c);
+        class_stats.append(c);
         return c;
     }
 
@@ -92,7 +95,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_stats)
+    for (auto c : class_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -165,18 +168,21 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     shared_queue_id{YType::uint32, "shared-queue-id"},
     queue_descr{YType::str, "queue-descr"},
     cac_state{YType::enumeration, "cac-state"}
-    	,
+        ,
     general_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats>())
-	,iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats>())
-	,child_policy(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy>())
-	,cac_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats>())
+    , iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats>())
+    , child_policy(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy>())
+    , cac_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats>())
+    , queue_stats_array(this, {})
+    , police_stats_array(this, {})
+    , wred_stats_array(this, {})
 {
     general_stats->parent = this;
     iphc_stats->parent = this;
     child_policy->parent = this;
     cac_stats->parent = this;
 
-    yang_name = "class-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::~ClassStats()
@@ -185,17 +191,18 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::has_data() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_data())
             return true;
@@ -213,17 +220,17 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::S
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::has_operation() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_operation())
             return true;
@@ -303,7 +310,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(c);
+        queue_stats_array.append(c);
         return c;
     }
 
@@ -311,7 +318,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(c);
+        police_stats_array.append(c);
         return c;
     }
 
@@ -319,7 +326,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(c);
+        wred_stats_array.append(c);
         return c;
     }
 
@@ -351,7 +358,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : queue_stats_array)
+    for (auto c : queue_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -360,7 +367,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : police_stats_array)
+    for (auto c : police_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -369,7 +376,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : wred_stats_array)
+    for (auto c : wred_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -458,7 +465,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
-    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::~GeneralStats()
@@ -467,6 +474,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_packets.is_set
 	|| transmit_bytes.is_set
 	|| total_drop_packets.is_set
@@ -650,7 +658,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     tcp_full_header_packets_out{YType::uint64, "tcp-full-header-packets-out"}
 {
 
-    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::~IphcStats()
@@ -659,6 +667,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return non_tcp_total_out_packets.is_set
 	|| non_tcp_total_out_bytes.is_set
 	|| non_tcp_bytes_saved.is_set
@@ -871,9 +880,11 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"},
     satid{YType::uint32, "satid"}
+        ,
+    class_stats(this, {})
 {
 
-    yang_name = "child-policy"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "child-policy"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::~ChildPolicy()
@@ -882,7 +893,8 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::has_data() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_data())
             return true;
@@ -895,7 +907,7 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::S
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::has_operation() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_operation())
             return true;
@@ -933,7 +945,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_>();
         c->parent = this;
-        class_stats.push_back(c);
+        class_stats.append(c);
         return c;
     }
 
@@ -945,7 +957,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_stats)
+    for (auto c : class_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1018,16 +1030,19 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     shared_queue_id{YType::uint32, "shared-queue-id"},
     queue_descr{YType::str, "queue-descr"},
     cac_state{YType::enumeration, "cac-state"}
-    	,
+        ,
     general_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats>())
-	,iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats>())
-	,cac_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats>())
+    , iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats>())
+    , cac_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats>())
+    , queue_stats_array(this, {})
+    , police_stats_array(this, {})
+    , wred_stats_array(this, {})
 {
     general_stats->parent = this;
     iphc_stats->parent = this;
     cac_stats->parent = this;
 
-    yang_name = "class-stats"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-stats"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::~ClassStats_()
@@ -1036,17 +1051,18 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::has_data() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_data())
             return true;
@@ -1063,17 +1079,17 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::S
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::has_operation() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_operation())
             return true;
@@ -1143,7 +1159,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(c);
+        queue_stats_array.append(c);
         return c;
     }
 
@@ -1151,7 +1167,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(c);
+        police_stats_array.append(c);
         return c;
     }
 
@@ -1159,7 +1175,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(c);
+        wred_stats_array.append(c);
         return c;
     }
 
@@ -1186,7 +1202,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : queue_stats_array)
+    for (auto c : queue_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1195,7 +1211,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : police_stats_array)
+    for (auto c : police_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1204,7 +1220,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : wred_stats_array)
+    for (auto c : wred_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1293,7 +1309,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
-    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::~GeneralStats()
@@ -1302,6 +1318,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_packets.is_set
 	|| transmit_bytes.is_set
 	|| total_drop_packets.is_set
@@ -1485,7 +1502,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     tcp_full_header_packets_out{YType::uint64, "tcp-full-header-packets-out"}
 {
 
-    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::~IphcStats()
@@ -1494,6 +1511,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return non_tcp_total_out_packets.is_set
 	|| non_tcp_total_out_bytes.is_set
 	|| non_tcp_bytes_saved.is_set
@@ -1710,7 +1728,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     admit_rates{YType::uint32, "admit-rates"}
 {
 
-    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::~CacStats()
@@ -1719,6 +1737,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| drop_rates.is_set
@@ -1868,9 +1887,13 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     exceed_bytes{YType::uint64, "exceed-bytes"},
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"}
+        ,
+    queue_instance_length(this, {})
+    , queue_average_length(this, {})
+    , queue_max_length(this, {})
 {
 
-    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::~QueueStatsArray()
@@ -1879,17 +1902,18 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_data())
             return true;
@@ -1917,17 +1941,17 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::S
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_operation())
             return true;
@@ -1995,7 +2019,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(c);
+        queue_instance_length.append(c);
         return c;
     }
 
@@ -2003,7 +2027,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(c);
+        queue_average_length.append(c);
         return c;
     }
 
@@ -2011,7 +2035,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(c);
+        queue_max_length.append(c);
         return c;
     }
 
@@ -2023,7 +2047,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : queue_instance_length)
+    for (auto c : queue_instance_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2032,7 +2056,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : queue_average_length)
+    for (auto c : queue_average_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2041,7 +2065,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : queue_max_length)
+    for (auto c : queue_max_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2263,7 +2287,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::~QueueInstanceLength()
@@ -2272,6 +2296,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -2354,7 +2379,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::~QueueAverageLength()
@@ -2363,6 +2388,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -2445,7 +2471,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::~QueueMaxLength()
@@ -2454,6 +2480,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -2545,12 +2572,12 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"},
     violate_rate{YType::uint32, "violate-rate"}
-    	,
+        ,
     color_class_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
 
-    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::~PoliceStatsArray()
@@ -2559,6 +2586,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| conform_packets.is_set
@@ -2816,7 +2844,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     violate_class_violate_rate{YType::uint32, "violate-class-violate-rate"}
 {
 
-    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::~ColorClassStats()
@@ -2825,6 +2853,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::has_data() const
 {
+    if (is_presence_container) return true;
     return conform_class_conform_packets.is_set
 	|| conform_class_conform_bytes.is_set
 	|| conform_class_conform_rate.is_set
@@ -3120,9 +3149,11 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     max_threshold_bytes{YType::uint64, "max-threshold-bytes"},
     red_ecn_marked_packets{YType::uint64, "red-ecn-marked-packets"},
     red_ecn_marked_bytes{YType::uint64, "red-ecn-marked-bytes"}
+        ,
+    red_label(this, {})
 {
 
-    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::~WredStatsArray()
@@ -3131,7 +3162,8 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_data())
             return true;
@@ -3149,7 +3181,7 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::S
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_operation())
             return true;
@@ -3197,7 +3229,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(c);
+        red_label.append(c);
         return c;
     }
 
@@ -3209,7 +3241,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : red_label)
+    for (auto c : red_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3331,7 +3363,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::~RedLabel()
@@ -3340,6 +3372,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_type.is_set
 	|| value_.is_set;
 }
@@ -3426,7 +3459,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     admit_rates{YType::uint32, "admit-rates"}
 {
 
-    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::~CacStats()
@@ -3435,6 +3468,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| drop_rates.is_set
@@ -3584,9 +3618,13 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     exceed_bytes{YType::uint64, "exceed-bytes"},
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"}
+        ,
+    queue_instance_length(this, {})
+    , queue_average_length(this, {})
+    , queue_max_length(this, {})
 {
 
-    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::~QueueStatsArray()
@@ -3595,17 +3633,18 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_data())
             return true;
@@ -3633,17 +3672,17 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::S
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_operation())
             return true;
@@ -3711,7 +3750,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(c);
+        queue_instance_length.append(c);
         return c;
     }
 
@@ -3719,7 +3758,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(c);
+        queue_average_length.append(c);
         return c;
     }
 
@@ -3727,7 +3766,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(c);
+        queue_max_length.append(c);
         return c;
     }
 
@@ -3739,7 +3778,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : queue_instance_length)
+    for (auto c : queue_instance_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3748,7 +3787,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : queue_average_length)
+    for (auto c : queue_average_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3757,7 +3796,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : queue_max_length)
+    for (auto c : queue_max_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3979,7 +4018,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::~QueueInstanceLength()
@@ -3988,6 +4027,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -4070,7 +4110,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::~QueueAverageLength()
@@ -4079,6 +4119,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -4161,7 +4202,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::~QueueMaxLength()
@@ -4170,6 +4211,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -4261,12 +4303,12 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"},
     violate_rate{YType::uint32, "violate-rate"}
-    	,
+        ,
     color_class_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
 
-    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::~PoliceStatsArray()
@@ -4275,6 +4317,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| conform_packets.is_set
@@ -4532,7 +4575,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     violate_class_violate_rate{YType::uint32, "violate-class-violate-rate"}
 {
 
-    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::~ColorClassStats()
@@ -4541,6 +4584,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::has_data() const
 {
+    if (is_presence_container) return true;
     return conform_class_conform_packets.is_set
 	|| conform_class_conform_bytes.is_set
 	|| conform_class_conform_rate.is_set
@@ -4836,9 +4880,11 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     max_threshold_bytes{YType::uint64, "max-threshold-bytes"},
     red_ecn_marked_packets{YType::uint64, "red-ecn-marked-packets"},
     red_ecn_marked_bytes{YType::uint64, "red-ecn-marked-bytes"}
+        ,
+    red_label(this, {})
 {
 
-    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::~WredStatsArray()
@@ -4847,7 +4893,8 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_data())
             return true;
@@ -4865,7 +4912,7 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::S
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_operation())
             return true;
@@ -4913,7 +4960,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(c);
+        red_label.append(c);
         return c;
     }
 
@@ -4925,7 +4972,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : red_label)
+    for (auto c : red_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5047,7 +5094,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::~RedLabel()
@@ -5056,6 +5103,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Servic
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_type.is_set
 	|| value_.is_set;
 }
@@ -5138,7 +5186,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Outpu
 {
     service_policy_names->parent = this;
 
-    yang_name = "output"; yang_parent_name = "member-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "member-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::~Output()
@@ -5147,6 +5195,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::~Outp
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return (service_policy_names !=  nullptr && service_policy_names->has_data());
 }
 
@@ -5214,9 +5263,11 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyNames()
+    :
+    service_policy_instance(this, {"service_policy_name"})
 {
 
-    yang_name = "service-policy-names"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy-names"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::~ServicePolicyNames()
@@ -5225,7 +5276,8 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::has_data() const
 {
-    for (std::size_t index=0; index<service_policy_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service_policy_instance.len(); index++)
     {
         if(service_policy_instance[index]->has_data())
             return true;
@@ -5235,7 +5287,7 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::has_operation() const
 {
-    for (std::size_t index=0; index<service_policy_instance.size(); index++)
+    for (std::size_t index=0; index<service_policy_instance.len(); index++)
     {
         if(service_policy_instance[index]->has_operation())
             return true;
@@ -5265,7 +5317,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(c);
+        service_policy_instance.append(c);
         return c;
     }
 
@@ -5277,7 +5329,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : service_policy_instance)
+    for (auto c : service_policy_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5306,12 +5358,12 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::ServicePolicyInstance()
     :
     service_policy_name{YType::str, "service-policy-name"}
-    	,
+        ,
     statistics(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "service-policy-instance"; yang_parent_name = "service-policy-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy-instance"; yang_parent_name = "service-policy-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::~ServicePolicyInstance()
@@ -5320,6 +5372,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return service_policy_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -5334,7 +5387,8 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-policy-instance" <<"[service-policy-name='" <<service_policy_name <<"']";
+    path_buffer << "service-policy-instance";
+    ADD_KEY_TOKEN(service_policy_name, "service-policy-name");
     return path_buffer.str();
 }
 
@@ -5405,9 +5459,11 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"},
     satid{YType::uint32, "satid"}
+        ,
+    class_stats(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "service-policy-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "service-policy-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::~Statistics()
@@ -5416,7 +5472,8 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_data())
             return true;
@@ -5429,7 +5486,7 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_operation())
             return true;
@@ -5467,7 +5524,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(c);
+        class_stats.append(c);
         return c;
     }
 
@@ -5479,7 +5536,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_stats)
+    for (auto c : class_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5552,18 +5609,21 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     shared_queue_id{YType::uint32, "shared-queue-id"},
     queue_descr{YType::str, "queue-descr"},
     cac_state{YType::enumeration, "cac-state"}
-    	,
+        ,
     general_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats>())
-	,iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats>())
-	,child_policy(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy>())
-	,cac_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats>())
+    , iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats>())
+    , child_policy(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy>())
+    , cac_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats>())
+    , queue_stats_array(this, {})
+    , police_stats_array(this, {})
+    , wred_stats_array(this, {})
 {
     general_stats->parent = this;
     iphc_stats->parent = this;
     child_policy->parent = this;
     cac_stats->parent = this;
 
-    yang_name = "class-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::~ClassStats()
@@ -5572,17 +5632,18 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::has_data() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_data())
             return true;
@@ -5600,17 +5661,17 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::has_operation() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_operation())
             return true;
@@ -5690,7 +5751,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(c);
+        queue_stats_array.append(c);
         return c;
     }
 
@@ -5698,7 +5759,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(c);
+        police_stats_array.append(c);
         return c;
     }
 
@@ -5706,7 +5767,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(c);
+        wred_stats_array.append(c);
         return c;
     }
 
@@ -5738,7 +5799,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : queue_stats_array)
+    for (auto c : queue_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5747,7 +5808,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : police_stats_array)
+    for (auto c : police_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5756,7 +5817,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : wred_stats_array)
+    for (auto c : wred_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5845,7 +5906,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
-    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::~GeneralStats()
@@ -5854,6 +5915,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_packets.is_set
 	|| transmit_bytes.is_set
 	|| total_drop_packets.is_set
@@ -6037,7 +6099,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     tcp_full_header_packets_out{YType::uint64, "tcp-full-header-packets-out"}
 {
 
-    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::~IphcStats()
@@ -6046,6 +6108,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return non_tcp_total_out_packets.is_set
 	|| non_tcp_total_out_bytes.is_set
 	|| non_tcp_bytes_saved.is_set
@@ -6258,9 +6321,11 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"},
     satid{YType::uint32, "satid"}
+        ,
+    class_stats(this, {})
 {
 
-    yang_name = "child-policy"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "child-policy"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::~ChildPolicy()
@@ -6269,7 +6334,8 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::has_data() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_data())
             return true;
@@ -6282,7 +6348,7 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::has_operation() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_operation())
             return true;
@@ -6320,7 +6386,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_>();
         c->parent = this;
-        class_stats.push_back(c);
+        class_stats.append(c);
         return c;
     }
 
@@ -6332,7 +6398,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_stats)
+    for (auto c : class_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6405,16 +6471,19 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     shared_queue_id{YType::uint32, "shared-queue-id"},
     queue_descr{YType::str, "queue-descr"},
     cac_state{YType::enumeration, "cac-state"}
-    	,
+        ,
     general_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats>())
-	,iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats>())
-	,cac_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats>())
+    , iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats>())
+    , cac_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats>())
+    , queue_stats_array(this, {})
+    , police_stats_array(this, {})
+    , wred_stats_array(this, {})
 {
     general_stats->parent = this;
     iphc_stats->parent = this;
     cac_stats->parent = this;
 
-    yang_name = "class-stats"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-stats"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::~ClassStats_()
@@ -6423,17 +6492,18 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::has_data() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_data())
             return true;
@@ -6450,17 +6520,17 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::has_operation() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_operation())
             return true;
@@ -6530,7 +6600,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(c);
+        queue_stats_array.append(c);
         return c;
     }
 
@@ -6538,7 +6608,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(c);
+        police_stats_array.append(c);
         return c;
     }
 
@@ -6546,7 +6616,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(c);
+        wred_stats_array.append(c);
         return c;
     }
 
@@ -6573,7 +6643,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : queue_stats_array)
+    for (auto c : queue_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6582,7 +6652,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : police_stats_array)
+    for (auto c : police_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6591,7 +6661,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : wred_stats_array)
+    for (auto c : wred_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6680,7 +6750,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
-    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::~GeneralStats()
@@ -6689,6 +6759,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_packets.is_set
 	|| transmit_bytes.is_set
 	|| total_drop_packets.is_set
@@ -6872,7 +6943,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     tcp_full_header_packets_out{YType::uint64, "tcp-full-header-packets-out"}
 {
 
-    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::~IphcStats()
@@ -6881,6 +6952,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return non_tcp_total_out_packets.is_set
 	|| non_tcp_total_out_bytes.is_set
 	|| non_tcp_bytes_saved.is_set
@@ -7097,7 +7169,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     admit_rates{YType::uint32, "admit-rates"}
 {
 
-    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::~CacStats()
@@ -7106,6 +7178,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| drop_rates.is_set
@@ -7255,9 +7328,13 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     exceed_bytes{YType::uint64, "exceed-bytes"},
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"}
+        ,
+    queue_instance_length(this, {})
+    , queue_average_length(this, {})
+    , queue_max_length(this, {})
 {
 
-    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::~QueueStatsArray()
@@ -7266,17 +7343,18 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_data())
             return true;
@@ -7304,17 +7382,17 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_operation())
             return true;
@@ -7382,7 +7460,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(c);
+        queue_instance_length.append(c);
         return c;
     }
 
@@ -7390,7 +7468,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(c);
+        queue_average_length.append(c);
         return c;
     }
 
@@ -7398,7 +7476,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(c);
+        queue_max_length.append(c);
         return c;
     }
 
@@ -7410,7 +7488,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : queue_instance_length)
+    for (auto c : queue_instance_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7419,7 +7497,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : queue_average_length)
+    for (auto c : queue_average_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7428,7 +7506,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : queue_max_length)
+    for (auto c : queue_max_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7650,7 +7728,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::~QueueInstanceLength()
@@ -7659,6 +7737,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -7741,7 +7820,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::~QueueAverageLength()
@@ -7750,6 +7829,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -7832,7 +7912,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::~QueueMaxLength()
@@ -7841,6 +7921,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -7932,12 +8013,12 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"},
     violate_rate{YType::uint32, "violate-rate"}
-    	,
+        ,
     color_class_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
 
-    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::~PoliceStatsArray()
@@ -7946,6 +8027,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| conform_packets.is_set
@@ -8203,7 +8285,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     violate_class_violate_rate{YType::uint32, "violate-class-violate-rate"}
 {
 
-    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::~ColorClassStats()
@@ -8212,6 +8294,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::has_data() const
 {
+    if (is_presence_container) return true;
     return conform_class_conform_packets.is_set
 	|| conform_class_conform_bytes.is_set
 	|| conform_class_conform_rate.is_set
@@ -8507,9 +8590,11 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     max_threshold_bytes{YType::uint64, "max-threshold-bytes"},
     red_ecn_marked_packets{YType::uint64, "red-ecn-marked-packets"},
     red_ecn_marked_bytes{YType::uint64, "red-ecn-marked-bytes"}
+        ,
+    red_label(this, {})
 {
 
-    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::~WredStatsArray()
@@ -8518,7 +8603,8 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_data())
             return true;
@@ -8536,7 +8622,7 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_operation())
             return true;
@@ -8584,7 +8670,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(c);
+        red_label.append(c);
         return c;
     }
 
@@ -8596,7 +8682,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : red_label)
+    for (auto c : red_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8718,7 +8804,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::~RedLabel()
@@ -8727,6 +8813,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_type.is_set
 	|| value_.is_set;
 }
@@ -8813,7 +8900,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     admit_rates{YType::uint32, "admit-rates"}
 {
 
-    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::~CacStats()
@@ -8822,6 +8909,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| drop_rates.is_set
@@ -8971,9 +9059,13 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     exceed_bytes{YType::uint64, "exceed-bytes"},
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"}
+        ,
+    queue_instance_length(this, {})
+    , queue_average_length(this, {})
+    , queue_max_length(this, {})
 {
 
-    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::~QueueStatsArray()
@@ -8982,17 +9074,18 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_data())
             return true;
@@ -9020,17 +9113,17 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_operation())
             return true;
@@ -9098,7 +9191,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(c);
+        queue_instance_length.append(c);
         return c;
     }
 
@@ -9106,7 +9199,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(c);
+        queue_average_length.append(c);
         return c;
     }
 
@@ -9114,7 +9207,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(c);
+        queue_max_length.append(c);
         return c;
     }
 
@@ -9126,7 +9219,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : queue_instance_length)
+    for (auto c : queue_instance_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9135,7 +9228,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : queue_average_length)
+    for (auto c : queue_average_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9144,7 +9237,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     }
 
     count = 0;
-    for (auto const & c : queue_max_length)
+    for (auto c : queue_max_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9366,7 +9459,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::~QueueInstanceLength()
@@ -9375,6 +9468,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -9457,7 +9551,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::~QueueAverageLength()
@@ -9466,6 +9560,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -9548,7 +9643,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::~QueueMaxLength()
@@ -9557,6 +9652,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -9648,12 +9744,12 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"},
     violate_rate{YType::uint32, "violate-rate"}
-    	,
+        ,
     color_class_stats(std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
 
-    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::~PoliceStatsArray()
@@ -9662,6 +9758,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| conform_packets.is_set
@@ -9919,7 +10016,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     violate_class_violate_rate{YType::uint32, "violate-class-violate-rate"}
 {
 
-    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::~ColorClassStats()
@@ -9928,6 +10025,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::has_data() const
 {
+    if (is_presence_container) return true;
     return conform_class_conform_packets.is_set
 	|| conform_class_conform_bytes.is_set
 	|| conform_class_conform_rate.is_set
@@ -10223,9 +10321,11 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     max_threshold_bytes{YType::uint64, "max-threshold-bytes"},
     red_ecn_marked_packets{YType::uint64, "red-ecn-marked-packets"},
     red_ecn_marked_bytes{YType::uint64, "red-ecn-marked-bytes"}
+        ,
+    red_label(this, {})
 {
 
-    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::~WredStatsArray()
@@ -10234,7 +10334,8 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_data())
             return true;
@@ -10252,7 +10353,7 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_operation())
             return true;
@@ -10300,7 +10401,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::MemberInterfaces::Member
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(c);
+        red_label.append(c);
         return c;
     }
 
@@ -10312,7 +10413,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : red_label)
+    for (auto c : red_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10434,7 +10535,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::~RedLabel()
@@ -10443,6 +10544,7 @@ Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Servi
 
 bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_type.is_set
 	|| value_.is_set;
 }
@@ -10520,9 +10622,11 @@ bool Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteIds()
+    :
+    satellite_id(this, {"nv_satellite_id"})
 {
 
-    yang_name = "satellite-ids"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "satellite-ids"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::~SatelliteIds()
@@ -10531,7 +10635,8 @@ Qos::InterfaceTable::Interface::SatelliteIds::~SatelliteIds()
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::has_data() const
 {
-    for (std::size_t index=0; index<satellite_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<satellite_id.len(); index++)
     {
         if(satellite_id[index]->has_data())
             return true;
@@ -10541,7 +10646,7 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::has_data() const
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::has_operation() const
 {
-    for (std::size_t index=0; index<satellite_id.size(); index++)
+    for (std::size_t index=0; index<satellite_id.len(); index++)
     {
         if(satellite_id[index]->has_operation())
             return true;
@@ -10571,7 +10676,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::get_child_
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId>();
         c->parent = this;
-        satellite_id.push_back(c);
+        satellite_id.append(c);
         return c;
     }
 
@@ -10583,7 +10688,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : satellite_id)
+    for (auto c : satellite_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10612,14 +10717,14 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::has_leaf_or_child_of_name(con
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::SatelliteId()
     :
     nv_satellite_id{YType::int32, "nv-satellite-id"}
-    	,
+        ,
     input(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input>())
-	,output(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output>())
+    , output(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "satellite-id"; yang_parent_name = "satellite-ids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "satellite-id"; yang_parent_name = "satellite-ids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::~SatelliteId()
@@ -10628,6 +10733,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::~SatelliteId()
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::has_data() const
 {
+    if (is_presence_container) return true;
     return nv_satellite_id.is_set
 	|| (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
@@ -10644,7 +10750,8 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::has_operation() 
 std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "satellite-id" <<"[nv-satellite-id='" <<nv_satellite_id <<"']";
+    path_buffer << "satellite-id";
+    ADD_KEY_TOKEN(nv_satellite_id, "nv-satellite-id");
     return path_buffer.str();
 }
 
@@ -10729,7 +10836,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Input()
 {
     service_policy_names->parent = this;
 
-    yang_name = "input"; yang_parent_name = "satellite-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "satellite-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::~Input()
@@ -10738,6 +10845,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::~Input()
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (service_policy_names !=  nullptr && service_policy_names->has_data());
 }
 
@@ -10805,9 +10913,11 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::has_leaf_
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyNames()
+    :
+    service_policy_instance(this, {"service_policy_name"})
 {
 
-    yang_name = "service-policy-names"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy-names"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::~ServicePolicyNames()
@@ -10816,7 +10926,8 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::has_data() const
 {
-    for (std::size_t index=0; index<service_policy_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service_policy_instance.len(); index++)
     {
         if(service_policy_instance[index]->has_data())
             return true;
@@ -10826,7 +10937,7 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePo
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::has_operation() const
 {
-    for (std::size_t index=0; index<service_policy_instance.size(); index++)
+    for (std::size_t index=0; index<service_policy_instance.len(); index++)
     {
         if(service_policy_instance[index]->has_operation())
             return true;
@@ -10856,7 +10967,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(c);
+        service_policy_instance.append(c);
         return c;
     }
 
@@ -10868,7 +10979,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : service_policy_instance)
+    for (auto c : service_policy_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10897,12 +11008,12 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePo
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::ServicePolicyInstance()
     :
     service_policy_name{YType::str, "service-policy-name"}
-    	,
+        ,
     statistics(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "service-policy-instance"; yang_parent_name = "service-policy-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy-instance"; yang_parent_name = "service-policy-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::~ServicePolicyInstance()
@@ -10911,6 +11022,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return service_policy_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -10925,7 +11037,8 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePo
 std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-policy-instance" <<"[service-policy-name='" <<service_policy_name <<"']";
+    path_buffer << "service-policy-instance";
+    ADD_KEY_TOKEN(service_policy_name, "service-policy-name");
     return path_buffer.str();
 }
 
@@ -10996,9 +11109,11 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"},
     satid{YType::uint32, "satid"}
+        ,
+    class_stats(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "service-policy-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "service-policy-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::~Statistics()
@@ -11007,7 +11122,8 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_data())
             return true;
@@ -11020,7 +11136,7 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePo
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_operation())
             return true;
@@ -11058,7 +11174,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(c);
+        class_stats.append(c);
         return c;
     }
 
@@ -11070,7 +11186,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_stats)
+    for (auto c : class_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11143,18 +11259,21 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     shared_queue_id{YType::uint32, "shared-queue-id"},
     queue_descr{YType::str, "queue-descr"},
     cac_state{YType::enumeration, "cac-state"}
-    	,
+        ,
     general_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats>())
-	,iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats>())
-	,child_policy(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy>())
-	,cac_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats>())
+    , iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats>())
+    , child_policy(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy>())
+    , cac_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats>())
+    , queue_stats_array(this, {})
+    , police_stats_array(this, {})
+    , wred_stats_array(this, {})
 {
     general_stats->parent = this;
     iphc_stats->parent = this;
     child_policy->parent = this;
     cac_stats->parent = this;
 
-    yang_name = "class-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::~ClassStats()
@@ -11163,17 +11282,18 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::has_data() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_data())
             return true;
@@ -11191,17 +11311,17 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePo
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::has_operation() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_operation())
             return true;
@@ -11281,7 +11401,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(c);
+        queue_stats_array.append(c);
         return c;
     }
 
@@ -11289,7 +11409,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(c);
+        police_stats_array.append(c);
         return c;
     }
 
@@ -11297,7 +11417,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(c);
+        wred_stats_array.append(c);
         return c;
     }
 
@@ -11329,7 +11449,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : queue_stats_array)
+    for (auto c : queue_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11338,7 +11458,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : police_stats_array)
+    for (auto c : police_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11347,7 +11467,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : wred_stats_array)
+    for (auto c : wred_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11436,7 +11556,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
-    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::~GeneralStats()
@@ -11445,6 +11565,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_packets.is_set
 	|| transmit_bytes.is_set
 	|| total_drop_packets.is_set
@@ -11628,7 +11749,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     tcp_full_header_packets_out{YType::uint64, "tcp-full-header-packets-out"}
 {
 
-    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::~IphcStats()
@@ -11637,6 +11758,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return non_tcp_total_out_packets.is_set
 	|| non_tcp_total_out_bytes.is_set
 	|| non_tcp_bytes_saved.is_set
@@ -11849,9 +11971,11 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"},
     satid{YType::uint32, "satid"}
+        ,
+    class_stats(this, {})
 {
 
-    yang_name = "child-policy"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "child-policy"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::~ChildPolicy()
@@ -11860,7 +11984,8 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::has_data() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_data())
             return true;
@@ -11873,7 +11998,7 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePo
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::has_operation() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_operation())
             return true;
@@ -11911,7 +12036,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_>();
         c->parent = this;
-        class_stats.push_back(c);
+        class_stats.append(c);
         return c;
     }
 
@@ -11923,7 +12048,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_stats)
+    for (auto c : class_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11996,16 +12121,19 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     shared_queue_id{YType::uint32, "shared-queue-id"},
     queue_descr{YType::str, "queue-descr"},
     cac_state{YType::enumeration, "cac-state"}
-    	,
+        ,
     general_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats>())
-	,iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats>())
-	,cac_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats>())
+    , iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats>())
+    , cac_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats>())
+    , queue_stats_array(this, {})
+    , police_stats_array(this, {})
+    , wred_stats_array(this, {})
 {
     general_stats->parent = this;
     iphc_stats->parent = this;
     cac_stats->parent = this;
 
-    yang_name = "class-stats"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-stats"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::~ClassStats_()
@@ -12014,17 +12142,18 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::has_data() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_data())
             return true;
@@ -12041,17 +12170,17 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePo
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::has_operation() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_operation())
             return true;
@@ -12121,7 +12250,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(c);
+        queue_stats_array.append(c);
         return c;
     }
 
@@ -12129,7 +12258,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(c);
+        police_stats_array.append(c);
         return c;
     }
 
@@ -12137,7 +12266,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(c);
+        wred_stats_array.append(c);
         return c;
     }
 
@@ -12164,7 +12293,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : queue_stats_array)
+    for (auto c : queue_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12173,7 +12302,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : police_stats_array)
+    for (auto c : police_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12182,7 +12311,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : wred_stats_array)
+    for (auto c : wred_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12271,7 +12400,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
-    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::~GeneralStats()
@@ -12280,6 +12409,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_packets.is_set
 	|| transmit_bytes.is_set
 	|| total_drop_packets.is_set
@@ -12463,7 +12593,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     tcp_full_header_packets_out{YType::uint64, "tcp-full-header-packets-out"}
 {
 
-    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::~IphcStats()
@@ -12472,6 +12602,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return non_tcp_total_out_packets.is_set
 	|| non_tcp_total_out_bytes.is_set
 	|| non_tcp_bytes_saved.is_set
@@ -12688,7 +12819,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     admit_rates{YType::uint32, "admit-rates"}
 {
 
-    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::~CacStats()
@@ -12697,6 +12828,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| drop_rates.is_set
@@ -12846,9 +12978,13 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     exceed_bytes{YType::uint64, "exceed-bytes"},
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"}
+        ,
+    queue_instance_length(this, {})
+    , queue_average_length(this, {})
+    , queue_max_length(this, {})
 {
 
-    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::~QueueStatsArray()
@@ -12857,17 +12993,18 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_data())
             return true;
@@ -12895,17 +13032,17 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePo
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_operation())
             return true;
@@ -12973,7 +13110,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(c);
+        queue_instance_length.append(c);
         return c;
     }
 
@@ -12981,7 +13118,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(c);
+        queue_average_length.append(c);
         return c;
     }
 
@@ -12989,7 +13126,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(c);
+        queue_max_length.append(c);
         return c;
     }
 
@@ -13001,7 +13138,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : queue_instance_length)
+    for (auto c : queue_instance_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13010,7 +13147,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : queue_average_length)
+    for (auto c : queue_average_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13019,7 +13156,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : queue_max_length)
+    for (auto c : queue_max_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13241,7 +13378,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::~QueueInstanceLength()
@@ -13250,6 +13387,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -13332,7 +13470,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::~QueueAverageLength()
@@ -13341,6 +13479,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -13423,7 +13562,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::~QueueMaxLength()
@@ -13432,6 +13571,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -13523,12 +13663,12 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"},
     violate_rate{YType::uint32, "violate-rate"}
-    	,
+        ,
     color_class_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
 
-    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::~PoliceStatsArray()
@@ -13537,6 +13677,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| conform_packets.is_set
@@ -13794,7 +13935,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     violate_class_violate_rate{YType::uint32, "violate-class-violate-rate"}
 {
 
-    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::~ColorClassStats()
@@ -13803,6 +13944,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::has_data() const
 {
+    if (is_presence_container) return true;
     return conform_class_conform_packets.is_set
 	|| conform_class_conform_bytes.is_set
 	|| conform_class_conform_rate.is_set
@@ -14098,9 +14240,11 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     max_threshold_bytes{YType::uint64, "max-threshold-bytes"},
     red_ecn_marked_packets{YType::uint64, "red-ecn-marked-packets"},
     red_ecn_marked_bytes{YType::uint64, "red-ecn-marked-bytes"}
+        ,
+    red_label(this, {})
 {
 
-    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::~WredStatsArray()
@@ -14109,7 +14253,8 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_data())
             return true;
@@ -14127,7 +14272,7 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePo
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_operation())
             return true;
@@ -14175,7 +14320,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(c);
+        red_label.append(c);
         return c;
     }
 
@@ -14187,7 +14332,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : red_label)
+    for (auto c : red_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14309,7 +14454,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::~RedLabel()
@@ -14318,6 +14463,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_type.is_set
 	|| value_.is_set;
 }
@@ -14404,7 +14550,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     admit_rates{YType::uint32, "admit-rates"}
 {
 
-    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::~CacStats()
@@ -14413,6 +14559,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| drop_rates.is_set
@@ -14562,9 +14709,13 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     exceed_bytes{YType::uint64, "exceed-bytes"},
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"}
+        ,
+    queue_instance_length(this, {})
+    , queue_average_length(this, {})
+    , queue_max_length(this, {})
 {
 
-    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::~QueueStatsArray()
@@ -14573,17 +14724,18 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_data())
             return true;
@@ -14611,17 +14763,17 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePo
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_operation())
             return true;
@@ -14689,7 +14841,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(c);
+        queue_instance_length.append(c);
         return c;
     }
 
@@ -14697,7 +14849,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(c);
+        queue_average_length.append(c);
         return c;
     }
 
@@ -14705,7 +14857,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(c);
+        queue_max_length.append(c);
         return c;
     }
 
@@ -14717,7 +14869,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : queue_instance_length)
+    for (auto c : queue_instance_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14726,7 +14878,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : queue_average_length)
+    for (auto c : queue_average_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14735,7 +14887,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : queue_max_length)
+    for (auto c : queue_max_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14957,7 +15109,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::~QueueInstanceLength()
@@ -14966,6 +15118,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -15048,7 +15201,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::~QueueAverageLength()
@@ -15057,6 +15210,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -15139,7 +15293,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::~QueueMaxLength()
@@ -15148,6 +15302,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -15239,12 +15394,12 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"},
     violate_rate{YType::uint32, "violate-rate"}
-    	,
+        ,
     color_class_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
 
-    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::~PoliceStatsArray()
@@ -15253,6 +15408,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| conform_packets.is_set
@@ -15510,7 +15666,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     violate_class_violate_rate{YType::uint32, "violate-class-violate-rate"}
 {
 
-    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::~ColorClassStats()
@@ -15519,6 +15675,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::has_data() const
 {
+    if (is_presence_container) return true;
     return conform_class_conform_packets.is_set
 	|| conform_class_conform_bytes.is_set
 	|| conform_class_conform_rate.is_set
@@ -15814,9 +15971,11 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     max_threshold_bytes{YType::uint64, "max-threshold-bytes"},
     red_ecn_marked_packets{YType::uint64, "red-ecn-marked-packets"},
     red_ecn_marked_bytes{YType::uint64, "red-ecn-marked-bytes"}
+        ,
+    red_label(this, {})
 {
 
-    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::~WredStatsArray()
@@ -15825,7 +15984,8 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_data())
             return true;
@@ -15843,7 +16003,7 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePo
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_operation())
             return true;
@@ -15891,7 +16051,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(c);
+        red_label.append(c);
         return c;
     }
 
@@ -15903,7 +16063,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : red_label)
+    for (auto c : red_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16025,7 +16185,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::~RedLabel()
@@ -16034,6 +16194,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyN
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_type.is_set
 	|| value_.is_set;
 }
@@ -16116,7 +16277,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Output()
 {
     service_policy_names->parent = this;
 
-    yang_name = "output"; yang_parent_name = "satellite-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "satellite-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::~Output()
@@ -16125,6 +16286,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::~Output()
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return (service_policy_names !=  nullptr && service_policy_names->has_data());
 }
 
@@ -16192,9 +16354,11 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::has_leaf
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyNames()
+    :
+    service_policy_instance(this, {"service_policy_name"})
 {
 
-    yang_name = "service-policy-names"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy-names"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::~ServicePolicyNames()
@@ -16203,7 +16367,8 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::has_data() const
 {
-    for (std::size_t index=0; index<service_policy_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service_policy_instance.len(); index++)
     {
         if(service_policy_instance[index]->has_data())
             return true;
@@ -16213,7 +16378,7 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServiceP
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::has_operation() const
 {
-    for (std::size_t index=0; index<service_policy_instance.size(); index++)
+    for (std::size_t index=0; index<service_policy_instance.len(); index++)
     {
         if(service_policy_instance[index]->has_operation())
             return true;
@@ -16243,7 +16408,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(c);
+        service_policy_instance.append(c);
         return c;
     }
 
@@ -16255,7 +16420,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : service_policy_instance)
+    for (auto c : service_policy_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16284,12 +16449,12 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServiceP
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::ServicePolicyInstance()
     :
     service_policy_name{YType::str, "service-policy-name"}
-    	,
+        ,
     statistics(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "service-policy-instance"; yang_parent_name = "service-policy-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy-instance"; yang_parent_name = "service-policy-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::~ServicePolicyInstance()
@@ -16298,6 +16463,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return service_policy_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -16312,7 +16478,8 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServiceP
 std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-policy-instance" <<"[service-policy-name='" <<service_policy_name <<"']";
+    path_buffer << "service-policy-instance";
+    ADD_KEY_TOKEN(service_policy_name, "service-policy-name");
     return path_buffer.str();
 }
 
@@ -16383,9 +16550,11 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"},
     satid{YType::uint32, "satid"}
+        ,
+    class_stats(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "service-policy-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "service-policy-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::~Statistics()
@@ -16394,7 +16563,8 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_data())
             return true;
@@ -16407,7 +16577,7 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServiceP
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_operation())
             return true;
@@ -16445,7 +16615,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(c);
+        class_stats.append(c);
         return c;
     }
 
@@ -16457,7 +16627,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_stats)
+    for (auto c : class_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16530,18 +16700,21 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     shared_queue_id{YType::uint32, "shared-queue-id"},
     queue_descr{YType::str, "queue-descr"},
     cac_state{YType::enumeration, "cac-state"}
-    	,
+        ,
     general_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats>())
-	,iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats>())
-	,child_policy(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy>())
-	,cac_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats>())
+    , iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats>())
+    , child_policy(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy>())
+    , cac_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats>())
+    , queue_stats_array(this, {})
+    , police_stats_array(this, {})
+    , wred_stats_array(this, {})
 {
     general_stats->parent = this;
     iphc_stats->parent = this;
     child_policy->parent = this;
     cac_stats->parent = this;
 
-    yang_name = "class-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::~ClassStats()
@@ -16550,17 +16723,18 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::has_data() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_data())
             return true;
@@ -16578,17 +16752,17 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServiceP
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::has_operation() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_operation())
             return true;
@@ -16668,7 +16842,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(c);
+        queue_stats_array.append(c);
         return c;
     }
 
@@ -16676,7 +16850,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(c);
+        police_stats_array.append(c);
         return c;
     }
 
@@ -16684,7 +16858,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(c);
+        wred_stats_array.append(c);
         return c;
     }
 
@@ -16716,7 +16890,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : queue_stats_array)
+    for (auto c : queue_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16725,7 +16899,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : police_stats_array)
+    for (auto c : police_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16734,7 +16908,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : wred_stats_array)
+    for (auto c : wred_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16823,7 +16997,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
-    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::~GeneralStats()
@@ -16832,6 +17006,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_packets.is_set
 	|| transmit_bytes.is_set
 	|| total_drop_packets.is_set
@@ -17015,7 +17190,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     tcp_full_header_packets_out{YType::uint64, "tcp-full-header-packets-out"}
 {
 
-    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::~IphcStats()
@@ -17024,6 +17199,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return non_tcp_total_out_packets.is_set
 	|| non_tcp_total_out_bytes.is_set
 	|| non_tcp_bytes_saved.is_set
@@ -17236,9 +17412,11 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"},
     satid{YType::uint32, "satid"}
+        ,
+    class_stats(this, {})
 {
 
-    yang_name = "child-policy"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "child-policy"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::~ChildPolicy()
@@ -17247,7 +17425,8 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::has_data() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_data())
             return true;
@@ -17260,7 +17439,7 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServiceP
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::has_operation() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_operation())
             return true;
@@ -17298,7 +17477,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_>();
         c->parent = this;
-        class_stats.push_back(c);
+        class_stats.append(c);
         return c;
     }
 
@@ -17310,7 +17489,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_stats)
+    for (auto c : class_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17383,16 +17562,19 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     shared_queue_id{YType::uint32, "shared-queue-id"},
     queue_descr{YType::str, "queue-descr"},
     cac_state{YType::enumeration, "cac-state"}
-    	,
+        ,
     general_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats>())
-	,iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats>())
-	,cac_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats>())
+    , iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats>())
+    , cac_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats>())
+    , queue_stats_array(this, {})
+    , police_stats_array(this, {})
+    , wred_stats_array(this, {})
 {
     general_stats->parent = this;
     iphc_stats->parent = this;
     cac_stats->parent = this;
 
-    yang_name = "class-stats"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-stats"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::~ClassStats_()
@@ -17401,17 +17583,18 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::has_data() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_data())
             return true;
@@ -17428,17 +17611,17 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServiceP
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::has_operation() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_operation())
             return true;
@@ -17508,7 +17691,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(c);
+        queue_stats_array.append(c);
         return c;
     }
 
@@ -17516,7 +17699,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(c);
+        police_stats_array.append(c);
         return c;
     }
 
@@ -17524,7 +17707,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(c);
+        wred_stats_array.append(c);
         return c;
     }
 
@@ -17551,7 +17734,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : queue_stats_array)
+    for (auto c : queue_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17560,7 +17743,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : police_stats_array)
+    for (auto c : police_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17569,7 +17752,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : wred_stats_array)
+    for (auto c : wred_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17658,7 +17841,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
-    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::~GeneralStats()
@@ -17667,6 +17850,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_packets.is_set
 	|| transmit_bytes.is_set
 	|| total_drop_packets.is_set
@@ -17850,7 +18034,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     tcp_full_header_packets_out{YType::uint64, "tcp-full-header-packets-out"}
 {
 
-    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::~IphcStats()
@@ -17859,6 +18043,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return non_tcp_total_out_packets.is_set
 	|| non_tcp_total_out_bytes.is_set
 	|| non_tcp_bytes_saved.is_set
@@ -18075,7 +18260,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     admit_rates{YType::uint32, "admit-rates"}
 {
 
-    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::~CacStats()
@@ -18084,6 +18269,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| drop_rates.is_set
@@ -18233,9 +18419,13 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     exceed_bytes{YType::uint64, "exceed-bytes"},
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"}
+        ,
+    queue_instance_length(this, {})
+    , queue_average_length(this, {})
+    , queue_max_length(this, {})
 {
 
-    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::~QueueStatsArray()
@@ -18244,17 +18434,18 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_data())
             return true;
@@ -18282,17 +18473,17 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServiceP
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_operation())
             return true;
@@ -18360,7 +18551,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(c);
+        queue_instance_length.append(c);
         return c;
     }
 
@@ -18368,7 +18559,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(c);
+        queue_average_length.append(c);
         return c;
     }
 
@@ -18376,7 +18567,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(c);
+        queue_max_length.append(c);
         return c;
     }
 
@@ -18388,7 +18579,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : queue_instance_length)
+    for (auto c : queue_instance_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18397,7 +18588,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : queue_average_length)
+    for (auto c : queue_average_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18406,7 +18597,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : queue_max_length)
+    for (auto c : queue_max_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18628,7 +18819,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::~QueueInstanceLength()
@@ -18637,6 +18828,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -18719,7 +18911,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::~QueueAverageLength()
@@ -18728,6 +18920,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -18810,7 +19003,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::~QueueMaxLength()
@@ -18819,6 +19012,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -18910,12 +19104,12 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"},
     violate_rate{YType::uint32, "violate-rate"}
-    	,
+        ,
     color_class_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
 
-    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::~PoliceStatsArray()
@@ -18924,6 +19118,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| conform_packets.is_set
@@ -19181,7 +19376,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     violate_class_violate_rate{YType::uint32, "violate-class-violate-rate"}
 {
 
-    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::~ColorClassStats()
@@ -19190,6 +19385,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::has_data() const
 {
+    if (is_presence_container) return true;
     return conform_class_conform_packets.is_set
 	|| conform_class_conform_bytes.is_set
 	|| conform_class_conform_rate.is_set
@@ -19485,9 +19681,11 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     max_threshold_bytes{YType::uint64, "max-threshold-bytes"},
     red_ecn_marked_packets{YType::uint64, "red-ecn-marked-packets"},
     red_ecn_marked_bytes{YType::uint64, "red-ecn-marked-bytes"}
+        ,
+    red_label(this, {})
 {
 
-    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::~WredStatsArray()
@@ -19496,7 +19694,8 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_data())
             return true;
@@ -19514,7 +19713,7 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServiceP
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_operation())
             return true;
@@ -19562,7 +19761,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(c);
+        red_label.append(c);
         return c;
     }
 
@@ -19574,7 +19773,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : red_label)
+    for (auto c : red_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19696,7 +19895,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::~RedLabel()
@@ -19705,6 +19904,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_type.is_set
 	|| value_.is_set;
 }
@@ -19791,7 +19991,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     admit_rates{YType::uint32, "admit-rates"}
 {
 
-    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::~CacStats()
@@ -19800,6 +20000,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| drop_rates.is_set
@@ -19949,9 +20150,13 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     exceed_bytes{YType::uint64, "exceed-bytes"},
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"}
+        ,
+    queue_instance_length(this, {})
+    , queue_average_length(this, {})
+    , queue_max_length(this, {})
 {
 
-    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::~QueueStatsArray()
@@ -19960,17 +20165,18 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_data())
             return true;
@@ -19998,17 +20204,17 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServiceP
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_operation())
             return true;
@@ -20076,7 +20282,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(c);
+        queue_instance_length.append(c);
         return c;
     }
 
@@ -20084,7 +20290,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(c);
+        queue_average_length.append(c);
         return c;
     }
 
@@ -20092,7 +20298,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(c);
+        queue_max_length.append(c);
         return c;
     }
 
@@ -20104,7 +20310,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : queue_instance_length)
+    for (auto c : queue_instance_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20113,7 +20319,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : queue_average_length)
+    for (auto c : queue_average_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20122,7 +20328,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     }
 
     count = 0;
-    for (auto const & c : queue_max_length)
+    for (auto c : queue_max_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20344,7 +20550,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::~QueueInstanceLength()
@@ -20353,6 +20559,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -20435,7 +20642,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::~QueueAverageLength()
@@ -20444,6 +20651,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -20526,7 +20734,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::~QueueMaxLength()
@@ -20535,6 +20743,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -20626,12 +20835,12 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"},
     violate_rate{YType::uint32, "violate-rate"}
-    	,
+        ,
     color_class_stats(std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
 
-    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::~PoliceStatsArray()
@@ -20640,6 +20849,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| conform_packets.is_set
@@ -20897,7 +21107,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     violate_class_violate_rate{YType::uint32, "violate-class-violate-rate"}
 {
 
-    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::~ColorClassStats()
@@ -20906,6 +21116,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::has_data() const
 {
+    if (is_presence_container) return true;
     return conform_class_conform_packets.is_set
 	|| conform_class_conform_bytes.is_set
 	|| conform_class_conform_rate.is_set
@@ -21201,9 +21412,11 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     max_threshold_bytes{YType::uint64, "max-threshold-bytes"},
     red_ecn_marked_packets{YType::uint64, "red-ecn-marked-packets"},
     red_ecn_marked_bytes{YType::uint64, "red-ecn-marked-bytes"}
+        ,
+    red_label(this, {})
 {
 
-    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::~WredStatsArray()
@@ -21212,7 +21425,8 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_data())
             return true;
@@ -21230,7 +21444,7 @@ bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServiceP
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_operation())
             return true;
@@ -21278,7 +21492,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::SatelliteIds::SatelliteI
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(c);
+        red_label.append(c);
         return c;
     }
 
@@ -21290,7 +21504,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : red_label)
+    for (auto c : red_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21412,7 +21626,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::~RedLabel()
@@ -21421,6 +21635,7 @@ Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicy
 
 bool Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_type.is_set
 	|| value_.is_set;
 }
@@ -21503,7 +21718,7 @@ Qos::InterfaceTable::Interface::Input::Input()
 {
     service_policy_names->parent = this;
 
-    yang_name = "input"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::~Input()
@@ -21512,6 +21727,7 @@ Qos::InterfaceTable::Interface::Input::~Input()
 
 bool Qos::InterfaceTable::Interface::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (service_policy_names !=  nullptr && service_policy_names->has_data());
 }
 
@@ -21579,9 +21795,11 @@ bool Qos::InterfaceTable::Interface::Input::has_leaf_or_child_of_name(const std:
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyNames()
+    :
+    service_policy_instance(this, {"service_policy_name"})
 {
 
-    yang_name = "service-policy-names"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy-names"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::~ServicePolicyNames()
@@ -21590,7 +21808,8 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::~ServicePolicyNames()
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::has_data() const
 {
-    for (std::size_t index=0; index<service_policy_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service_policy_instance.len(); index++)
     {
         if(service_policy_instance[index]->has_data())
             return true;
@@ -21600,7 +21819,7 @@ bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::has_data() const
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::has_operation() const
 {
-    for (std::size_t index=0; index<service_policy_instance.size(); index++)
+    for (std::size_t index=0; index<service_policy_instance.len(); index++)
     {
         if(service_policy_instance[index]->has_operation())
             return true;
@@ -21630,7 +21849,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(c);
+        service_policy_instance.append(c);
         return c;
     }
 
@@ -21642,7 +21861,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : service_policy_instance)
+    for (auto c : service_policy_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21671,12 +21890,12 @@ bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::has_leaf_or_chil
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::ServicePolicyInstance()
     :
     service_policy_name{YType::str, "service-policy-name"}
-    	,
+        ,
     statistics(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "service-policy-instance"; yang_parent_name = "service-policy-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy-instance"; yang_parent_name = "service-policy-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::~ServicePolicyInstance()
@@ -21685,6 +21904,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return service_policy_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -21699,7 +21919,8 @@ bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIns
 std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-policy-instance" <<"[service-policy-name='" <<service_policy_name <<"']";
+    path_buffer << "service-policy-instance";
+    ADD_KEY_TOKEN(service_policy_name, "service-policy-name");
     return path_buffer.str();
 }
 
@@ -21770,9 +21991,11 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"},
     satid{YType::uint32, "satid"}
+        ,
+    class_stats(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "service-policy-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "service-policy-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::~Statistics()
@@ -21781,7 +22004,8 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_data())
             return true;
@@ -21794,7 +22018,7 @@ bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIns
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_operation())
             return true;
@@ -21832,7 +22056,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(c);
+        class_stats.append(c);
         return c;
     }
 
@@ -21844,7 +22068,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_stats)
+    for (auto c : class_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21917,18 +22141,21 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     shared_queue_id{YType::uint32, "shared-queue-id"},
     queue_descr{YType::str, "queue-descr"},
     cac_state{YType::enumeration, "cac-state"}
-    	,
+        ,
     general_stats(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats>())
-	,iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats>())
-	,child_policy(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy>())
-	,cac_stats(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats>())
+    , iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats>())
+    , child_policy(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy>())
+    , cac_stats(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats>())
+    , queue_stats_array(this, {})
+    , police_stats_array(this, {})
+    , wred_stats_array(this, {})
 {
     general_stats->parent = this;
     iphc_stats->parent = this;
     child_policy->parent = this;
     cac_stats->parent = this;
 
-    yang_name = "class-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::~ClassStats()
@@ -21937,17 +22164,18 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::has_data() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_data())
             return true;
@@ -21965,17 +22193,17 @@ bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIns
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::has_operation() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_operation())
             return true;
@@ -22055,7 +22283,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(c);
+        queue_stats_array.append(c);
         return c;
     }
 
@@ -22063,7 +22291,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(c);
+        police_stats_array.append(c);
         return c;
     }
 
@@ -22071,7 +22299,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(c);
+        wred_stats_array.append(c);
         return c;
     }
 
@@ -22103,7 +22331,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     }
 
     count = 0;
-    for (auto const & c : queue_stats_array)
+    for (auto c : queue_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22112,7 +22340,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     }
 
     count = 0;
-    for (auto const & c : police_stats_array)
+    for (auto c : police_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22121,7 +22349,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     }
 
     count = 0;
-    for (auto const & c : wred_stats_array)
+    for (auto c : wred_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22210,7 +22438,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
-    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::~GeneralStats()
@@ -22219,6 +22447,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_packets.is_set
 	|| transmit_bytes.is_set
 	|| total_drop_packets.is_set
@@ -22402,7 +22631,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     tcp_full_header_packets_out{YType::uint64, "tcp-full-header-packets-out"}
 {
 
-    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::~IphcStats()
@@ -22411,6 +22640,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return non_tcp_total_out_packets.is_set
 	|| non_tcp_total_out_bytes.is_set
 	|| non_tcp_bytes_saved.is_set
@@ -22623,9 +22853,11 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"},
     satid{YType::uint32, "satid"}
+        ,
+    class_stats(this, {})
 {
 
-    yang_name = "child-policy"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "child-policy"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::~ChildPolicy()
@@ -22634,7 +22866,8 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::has_data() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_data())
             return true;
@@ -22647,7 +22880,7 @@ bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIns
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::has_operation() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_operation())
             return true;
@@ -22685,7 +22918,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_>();
         c->parent = this;
-        class_stats.push_back(c);
+        class_stats.append(c);
         return c;
     }
 
@@ -22697,7 +22930,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_stats)
+    for (auto c : class_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22770,16 +23003,19 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     shared_queue_id{YType::uint32, "shared-queue-id"},
     queue_descr{YType::str, "queue-descr"},
     cac_state{YType::enumeration, "cac-state"}
-    	,
+        ,
     general_stats(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats>())
-	,iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats>())
-	,cac_stats(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats>())
+    , iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats>())
+    , cac_stats(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats>())
+    , queue_stats_array(this, {})
+    , police_stats_array(this, {})
+    , wred_stats_array(this, {})
 {
     general_stats->parent = this;
     iphc_stats->parent = this;
     cac_stats->parent = this;
 
-    yang_name = "class-stats"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-stats"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::~ClassStats_()
@@ -22788,17 +23024,18 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::has_data() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_data())
             return true;
@@ -22815,17 +23052,17 @@ bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIns
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::has_operation() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_operation())
             return true;
@@ -22895,7 +23132,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(c);
+        queue_stats_array.append(c);
         return c;
     }
 
@@ -22903,7 +23140,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(c);
+        police_stats_array.append(c);
         return c;
     }
 
@@ -22911,7 +23148,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(c);
+        wred_stats_array.append(c);
         return c;
     }
 
@@ -22938,7 +23175,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     }
 
     count = 0;
-    for (auto const & c : queue_stats_array)
+    for (auto c : queue_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22947,7 +23184,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     }
 
     count = 0;
-    for (auto const & c : police_stats_array)
+    for (auto c : police_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22956,7 +23193,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     }
 
     count = 0;
-    for (auto const & c : wred_stats_array)
+    for (auto c : wred_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23045,7 +23282,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
-    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::~GeneralStats()
@@ -23054,6 +23291,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_packets.is_set
 	|| transmit_bytes.is_set
 	|| total_drop_packets.is_set
@@ -23237,7 +23475,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     tcp_full_header_packets_out{YType::uint64, "tcp-full-header-packets-out"}
 {
 
-    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iphc-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::~IphcStats()
@@ -23246,6 +23484,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return non_tcp_total_out_packets.is_set
 	|| non_tcp_total_out_bytes.is_set
 	|| non_tcp_bytes_saved.is_set
@@ -23462,7 +23701,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     admit_rates{YType::uint32, "admit-rates"}
 {
 
-    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::~CacStats()
@@ -23471,6 +23710,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| drop_rates.is_set
@@ -23620,9 +23860,13 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     exceed_bytes{YType::uint64, "exceed-bytes"},
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"}
+        ,
+    queue_instance_length(this, {})
+    , queue_average_length(this, {})
+    , queue_max_length(this, {})
 {
 
-    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::~QueueStatsArray()
@@ -23631,17 +23875,18 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_data())
             return true;
@@ -23669,17 +23914,17 @@ bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIns
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_operation())
             return true;
@@ -23747,7 +23992,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(c);
+        queue_instance_length.append(c);
         return c;
     }
 
@@ -23755,7 +24000,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(c);
+        queue_average_length.append(c);
         return c;
     }
 
@@ -23763,7 +24008,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(c);
+        queue_max_length.append(c);
         return c;
     }
 
@@ -23775,7 +24020,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : queue_instance_length)
+    for (auto c : queue_instance_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23784,7 +24029,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     }
 
     count = 0;
-    for (auto const & c : queue_average_length)
+    for (auto c : queue_average_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23793,7 +24038,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     }
 
     count = 0;
-    for (auto const & c : queue_max_length)
+    for (auto c : queue_max_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -24015,7 +24260,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::~QueueInstanceLength()
@@ -24024,6 +24269,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -24106,7 +24352,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::~QueueAverageLength()
@@ -24115,6 +24361,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -24197,7 +24444,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::~QueueMaxLength()
@@ -24206,6 +24453,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -24297,12 +24545,12 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"},
     violate_rate{YType::uint32, "violate-rate"}
-    	,
+        ,
     color_class_stats(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
 
-    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::~PoliceStatsArray()
@@ -24311,6 +24559,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| conform_packets.is_set
@@ -24568,7 +24817,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     violate_class_violate_rate{YType::uint32, "violate-class-violate-rate"}
 {
 
-    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::~ColorClassStats()
@@ -24577,6 +24826,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::has_data() const
 {
+    if (is_presence_container) return true;
     return conform_class_conform_packets.is_set
 	|| conform_class_conform_bytes.is_set
 	|| conform_class_conform_rate.is_set
@@ -24872,9 +25122,11 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     max_threshold_bytes{YType::uint64, "max-threshold-bytes"},
     red_ecn_marked_packets{YType::uint64, "red-ecn-marked-packets"},
     red_ecn_marked_bytes{YType::uint64, "red-ecn-marked-bytes"}
+        ,
+    red_label(this, {})
 {
 
-    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::~WredStatsArray()
@@ -24883,7 +25135,8 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_data())
             return true;
@@ -24901,7 +25154,7 @@ bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIns
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_operation())
             return true;
@@ -24949,7 +25202,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(c);
+        red_label.append(c);
         return c;
     }
 
@@ -24961,7 +25214,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : red_label)
+    for (auto c : red_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -25083,7 +25336,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::~RedLabel()
@@ -25092,6 +25345,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_type.is_set
 	|| value_.is_set;
 }
@@ -25178,7 +25432,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     admit_rates{YType::uint32, "admit-rates"}
 {
 
-    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cac-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::~CacStats()
@@ -25187,6 +25441,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| drop_rates.is_set
@@ -25336,9 +25591,13 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     exceed_bytes{YType::uint64, "exceed-bytes"},
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"}
+        ,
+    queue_instance_length(this, {})
+    , queue_average_length(this, {})
+    , queue_max_length(this, {})
 {
 
-    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::~QueueStatsArray()
@@ -25347,17 +25606,18 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_data())
             return true;
@@ -25385,17 +25645,17 @@ bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIns
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<queue_instance_length.size(); index++)
+    for (std::size_t index=0; index<queue_instance_length.len(); index++)
     {
         if(queue_instance_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_average_length.size(); index++)
+    for (std::size_t index=0; index<queue_average_length.len(); index++)
     {
         if(queue_average_length[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<queue_max_length.size(); index++)
+    for (std::size_t index=0; index<queue_max_length.len(); index++)
     {
         if(queue_max_length[index]->has_operation())
             return true;
@@ -25463,7 +25723,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(c);
+        queue_instance_length.append(c);
         return c;
     }
 
@@ -25471,7 +25731,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(c);
+        queue_average_length.append(c);
         return c;
     }
 
@@ -25479,7 +25739,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(c);
+        queue_max_length.append(c);
         return c;
     }
 
@@ -25491,7 +25751,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : queue_instance_length)
+    for (auto c : queue_instance_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -25500,7 +25760,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     }
 
     count = 0;
-    for (auto const & c : queue_average_length)
+    for (auto c : queue_average_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -25509,7 +25769,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     }
 
     count = 0;
-    for (auto const & c : queue_max_length)
+    for (auto c : queue_max_length.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -25731,7 +25991,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-instance-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::~QueueInstanceLength()
@@ -25740,6 +26000,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -25822,7 +26083,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-average-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::~QueueAverageLength()
@@ -25831,6 +26092,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -25913,7 +26175,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-max-length"; yang_parent_name = "queue-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::~QueueMaxLength()
@@ -25922,6 +26184,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -26013,12 +26276,12 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     conform_rate{YType::uint32, "conform-rate"},
     exceed_rate{YType::uint32, "exceed-rate"},
     violate_rate{YType::uint32, "violate-rate"}
-    	,
+        ,
     color_class_stats(std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
 
-    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::~PoliceStatsArray()
@@ -26027,6 +26290,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_packets.is_set
 	|| drop_bytes.is_set
 	|| conform_packets.is_set
@@ -26284,7 +26548,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     violate_class_violate_rate{YType::uint32, "violate-class-violate-rate"}
 {
 
-    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "color-class-stats"; yang_parent_name = "police-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::~ColorClassStats()
@@ -26293,6 +26557,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::has_data() const
 {
+    if (is_presence_container) return true;
     return conform_class_conform_packets.is_set
 	|| conform_class_conform_bytes.is_set
 	|| conform_class_conform_rate.is_set
@@ -26588,9 +26853,11 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     max_threshold_bytes{YType::uint64, "max-threshold-bytes"},
     red_ecn_marked_packets{YType::uint64, "red-ecn-marked-packets"},
     red_ecn_marked_bytes{YType::uint64, "red-ecn-marked-bytes"}
+        ,
+    red_label(this, {})
 {
 
-    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats-array"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::~WredStatsArray()
@@ -26599,7 +26866,8 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::has_data() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_data())
             return true;
@@ -26617,7 +26885,7 @@ bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIns
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::has_operation() const
 {
-    for (std::size_t index=0; index<red_label.size(); index++)
+    for (std::size_t index=0; index<red_label.len(); index++)
     {
         if(red_label[index]->has_operation())
             return true;
@@ -26665,7 +26933,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Input::ServicePolicyName
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(c);
+        red_label.append(c);
         return c;
     }
 
@@ -26677,7 +26945,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : red_label)
+    for (auto c : red_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -26799,7 +27067,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "red-label"; yang_parent_name = "wred-stats-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::~RedLabel()
@@ -26808,6 +27076,7 @@ Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
 bool Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_type.is_set
 	|| value_.is_set;
 }
@@ -26890,7 +27159,7 @@ Qos::InterfaceTable::Interface::Output::Output()
 {
     service_policy_names->parent = this;
 
-    yang_name = "output"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Output::~Output()
@@ -26899,6 +27168,7 @@ Qos::InterfaceTable::Interface::Output::~Output()
 
 bool Qos::InterfaceTable::Interface::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return (service_policy_names !=  nullptr && service_policy_names->has_data());
 }
 
@@ -26966,9 +27236,11 @@ bool Qos::InterfaceTable::Interface::Output::has_leaf_or_child_of_name(const std
 }
 
 Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyNames()
+    :
+    service_policy_instance(this, {"service_policy_name"})
 {
 
-    yang_name = "service-policy-names"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy-names"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Output::ServicePolicyNames::~ServicePolicyNames()
@@ -26977,7 +27249,8 @@ Qos::InterfaceTable::Interface::Output::ServicePolicyNames::~ServicePolicyNames(
 
 bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::has_data() const
 {
-    for (std::size_t index=0; index<service_policy_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service_policy_instance.len(); index++)
     {
         if(service_policy_instance[index]->has_data())
             return true;
@@ -26987,7 +27260,7 @@ bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::has_data() cons
 
 bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::has_operation() const
 {
-    for (std::size_t index=0; index<service_policy_instance.size(); index++)
+    for (std::size_t index=0; index<service_policy_instance.len(); index++)
     {
         if(service_policy_instance[index]->has_operation())
             return true;
@@ -27017,7 +27290,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Output::ServicePolicyNam
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(c);
+        service_policy_instance.append(c);
         return c;
     }
 
@@ -27029,7 +27302,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::O
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : service_policy_instance)
+    for (auto c : service_policy_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -27058,12 +27331,12 @@ bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::has_leaf_or_chi
 Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::ServicePolicyInstance()
     :
     service_policy_name{YType::str, "service-policy-name"}
-    	,
+        ,
     statistics(std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "service-policy-instance"; yang_parent_name = "service-policy-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy-instance"; yang_parent_name = "service-policy-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::~ServicePolicyInstance()
@@ -27072,6 +27345,7 @@ Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstanc
 
 bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return service_policy_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -27086,7 +27360,8 @@ bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyIn
 std::string Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-policy-instance" <<"[service-policy-name='" <<service_policy_name <<"']";
+    path_buffer << "service-policy-instance";
+    ADD_KEY_TOKEN(service_policy_name, "service-policy-name");
     return path_buffer.str();
 }
 
@@ -27157,9 +27432,11 @@ Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstanc
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"},
     satid{YType::uint32, "satid"}
+        ,
+    class_stats(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "service-policy-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "service-policy-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::~Statistics()
@@ -27168,7 +27445,8 @@ Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstanc
 
 bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_data())
             return true;
@@ -27181,7 +27459,7 @@ bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyIn
 
 bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<class_stats.size(); index++)
+    for (std::size_t index=0; index<class_stats.len(); index++)
     {
         if(class_stats[index]->has_operation())
             return true;
@@ -27219,7 +27497,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Output::ServicePolicyNam
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(c);
+        class_stats.append(c);
         return c;
     }
 
@@ -27231,7 +27509,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::O
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_stats)
+    for (auto c : class_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -27304,18 +27582,21 @@ Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstanc
     shared_queue_id{YType::uint32, "shared-queue-id"},
     queue_descr{YType::str, "queue-descr"},
     cac_state{YType::enumeration, "cac-state"}
-    	,
+        ,
     general_stats(std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats>())
-	,iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats>())
-	,child_policy(std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy>())
-	,cac_stats(std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats>())
+    , iphc_stats(std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats>())
+    , child_policy(std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy>())
+    , cac_stats(std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats>())
+    , queue_stats_array(this, {})
+    , police_stats_array(this, {})
+    , wred_stats_array(this, {})
 {
     general_stats->parent = this;
     iphc_stats->parent = this;
     child_policy->parent = this;
     cac_stats->parent = this;
 
-    yang_name = "class-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::~ClassStats()
@@ -27324,17 +27605,18 @@ Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstanc
 
 bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::has_data() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_data())
             return true;
@@ -27352,17 +27634,17 @@ bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyIn
 
 bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::has_operation() const
 {
-    for (std::size_t index=0; index<queue_stats_array.size(); index++)
+    for (std::size_t index=0; index<queue_stats_array.len(); index++)
     {
         if(queue_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<police_stats_array.size(); index++)
+    for (std::size_t index=0; index<police_stats_array.len(); index++)
     {
         if(police_stats_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<wred_stats_array.size(); index++)
+    for (std::size_t index=0; index<wred_stats_array.len(); index++)
     {
         if(wred_stats_array[index]->has_operation())
             return true;
@@ -27442,7 +27724,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Output::ServicePolicyNam
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(c);
+        queue_stats_array.append(c);
         return c;
     }
 
@@ -27450,7 +27732,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Output::ServicePolicyNam
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(c);
+        police_stats_array.append(c);
         return c;
     }
 
@@ -27458,7 +27740,7 @@ std::shared_ptr<Entity> Qos::InterfaceTable::Interface::Output::ServicePolicyNam
     {
         auto c = std::make_shared<Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(c);
+        wred_stats_array.append(c);
         return c;
     }
 
@@ -27490,7 +27772,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::O
     }
 
     count = 0;
-    for (auto const & c : queue_stats_array)
+    for (auto c : queue_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -27499,7 +27781,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::O
     }
 
     count = 0;
-    for (auto const & c : police_stats_array)
+    for (auto c : police_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -27508,7 +27790,7 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::InterfaceTable::Interface::O
     }
 
     count = 0;
-    for (auto const & c : wred_stats_array)
+    for (auto c : wred_stats_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -27597,7 +27879,7 @@ Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstanc
     pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
-    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-stats"; yang_parent_name = "class-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::~GeneralStats()
@@ -27606,6 +27888,7 @@ Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstanc
 
 bool Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_packets.is_set
 	|| transmit_bytes.is_set
 	|| total_drop_packets.is_set

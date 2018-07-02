@@ -31,20 +31,20 @@ class CISCOIETFATM2PVCTRAPMIBEXTN : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Atmcurrentstatuschangepvcltable; //type: CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable
-        class Atmstatuschangepvclrangetable; //type: CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable
+        class AtmCurrentStatusChangePVclTable; //type: CISCOIETFATM2PVCTRAPMIBEXTN::AtmCurrentStatusChangePVclTable
+        class AtmStatusChangePVclRangeTable; //type: CISCOIETFATM2PVCTRAPMIBEXTN::AtmStatusChangePVclRangeTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable> atmcurrentstatuschangepvcltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable> atmstatuschangepvclrangetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CISCOIETFATM2PVCTRAPMIBEXTN::AtmCurrentStatusChangePVclTable> atmcurrentstatuschangepvcltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CISCOIETFATM2PVCTRAPMIBEXTN::AtmStatusChangePVclRangeTable> atmstatuschangepvclrangetable;
         
 }; // CISCOIETFATM2PVCTRAPMIBEXTN
 
 
-class CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable : public ydk::Entity
+class CISCOIETFATM2PVCTRAPMIBEXTN::AtmCurrentStatusChangePVclTable : public ydk::Entity
 {
     public:
-        Atmcurrentstatuschangepvcltable();
-        ~Atmcurrentstatuschangepvcltable();
+        AtmCurrentStatusChangePVclTable();
+        ~AtmCurrentStatusChangePVclTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -57,18 +57,18 @@ class CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Atmcurrentstatuschangepvclentry; //type: CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry
+        class AtmCurrentStatusChangePVclEntry; //type: CISCOIETFATM2PVCTRAPMIBEXTN::AtmCurrentStatusChangePVclTable::AtmCurrentStatusChangePVclEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry> > atmcurrentstatuschangepvclentry;
+        ydk::YList atmcurrentstatuschangepvclentry;
         
-}; // CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable
+}; // CISCOIETFATM2PVCTRAPMIBEXTN::AtmCurrentStatusChangePVclTable
 
 
-class CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry : public ydk::Entity
+class CISCOIETFATM2PVCTRAPMIBEXTN::AtmCurrentStatusChangePVclTable::AtmCurrentStatusChangePVclEntry : public ydk::Entity
 {
     public:
-        Atmcurrentstatuschangepvclentry();
-        ~Atmcurrentstatuschangepvclentry();
+        AtmCurrentStatusChangePVclEntry();
+        ~AtmCurrentStatusChangePVclEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -81,24 +81,24 @@ class CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentst
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::AtmVclTable::AtmVclEntry::atmvclvpi)
         ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvci)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::AtmVclTable::AtmVclEntry::atmvclvci)
         ydk::YLeaf atmvclvci;
         ydk::YLeaf atmpvclstatustransition; //type: uint32
         ydk::YLeaf atmpvclstatuschangestart; //type: uint32
         ydk::YLeaf atmpvclstatuschangeend; //type: uint32
 
-}; // CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry
+}; // CISCOIETFATM2PVCTRAPMIBEXTN::AtmCurrentStatusChangePVclTable::AtmCurrentStatusChangePVclEntry
 
 
-class CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable : public ydk::Entity
+class CISCOIETFATM2PVCTRAPMIBEXTN::AtmStatusChangePVclRangeTable : public ydk::Entity
 {
     public:
-        Atmstatuschangepvclrangetable();
-        ~Atmstatuschangepvclrangetable();
+        AtmStatusChangePVclRangeTable();
+        ~AtmStatusChangePVclRangeTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -111,18 +111,18 @@ class CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Atmstatuschangepvclrangeentry; //type: CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry
+        class AtmStatusChangePVclRangeEntry; //type: CISCOIETFATM2PVCTRAPMIBEXTN::AtmStatusChangePVclRangeTable::AtmStatusChangePVclRangeEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ATM2_PVCTRAP_MIB_EXTN::CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry> > atmstatuschangepvclrangeentry;
+        ydk::YList atmstatuschangepvclrangeentry;
         
-}; // CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable
+}; // CISCOIETFATM2PVCTRAPMIBEXTN::AtmStatusChangePVclRangeTable
 
 
-class CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry : public ydk::Entity
+class CISCOIETFATM2PVCTRAPMIBEXTN::AtmStatusChangePVclRangeTable::AtmStatusChangePVclRangeEntry : public ydk::Entity
 {
     public:
-        Atmstatuschangepvclrangeentry();
-        ~Atmstatuschangepvclrangeentry();
+        AtmStatusChangePVclRangeEntry();
+        ~AtmStatusChangePVclRangeEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -135,9 +135,9 @@ class CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschang
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::AtmVclTable::AtmVclEntry::atmvclvpi)
         ydk::YLeaf atmvclvpi;
         ydk::YLeaf rangeindex; //type: uint32
         ydk::YLeaf atmpvcllowerrangevalue; //type: int32
@@ -145,7 +145,7 @@ class CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschang
         ydk::YLeaf atmpvclrangestatuschangestart; //type: uint32
         ydk::YLeaf atmpvclrangestatuschangeend; //type: uint32
 
-}; // CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry
+}; // CISCOIETFATM2PVCTRAPMIBEXTN::AtmStatusChangePVclRangeTable::AtmStatusChangePVclRangeEntry
 
 
 }

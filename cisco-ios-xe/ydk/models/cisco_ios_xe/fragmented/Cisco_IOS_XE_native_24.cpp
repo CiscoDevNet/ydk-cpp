@@ -12,19 +12,711 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
+Native::Interface::BDI::Service::Instance::Ip::Verify::Verify()
+    :
+    source{YType::empty, "source"},
+    vlan{YType::empty, "vlan"},
+    dhcp_snooping{YType::empty, "dhcp-snooping"},
+    port_security{YType::empty, "port-security"}
+{
+
+    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::BDI::Service::Instance::Ip::Verify::~Verify()
+{
+}
+
+bool Native::Interface::BDI::Service::Instance::Ip::Verify::has_data() const
+{
+    if (is_presence_container) return true;
+    return source.is_set
+	|| vlan.is_set
+	|| dhcp_snooping.is_set
+	|| port_security.is_set;
+}
+
+bool Native::Interface::BDI::Service::Instance::Ip::Verify::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(vlan.yfilter)
+	|| ydk::is_set(dhcp_snooping.yfilter)
+	|| ydk::is_set(port_security.yfilter);
+}
+
+std::string Native::Interface::BDI::Service::Instance::Ip::Verify::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "verify";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::Ip::Verify::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (vlan.is_set || is_set(vlan.yfilter)) leaf_name_data.push_back(vlan.get_name_leafdata());
+    if (dhcp_snooping.is_set || is_set(dhcp_snooping.yfilter)) leaf_name_data.push_back(dhcp_snooping.get_name_leafdata());
+    if (port_security.is_set || is_set(port_security.yfilter)) leaf_name_data.push_back(port_security.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Ip::Verify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::Ip::Verify::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::BDI::Service::Instance::Ip::Verify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source")
+    {
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan")
+    {
+        vlan = value;
+        vlan.value_namespace = name_space;
+        vlan.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dhcp-snooping")
+    {
+        dhcp_snooping = value;
+        dhcp_snooping.value_namespace = name_space;
+        dhcp_snooping.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port-security")
+    {
+        port_security = value;
+        port_security.value_namespace = name_space;
+        port_security.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::BDI::Service::Instance::Ip::Verify::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "vlan")
+    {
+        vlan.yfilter = yfilter;
+    }
+    if(value_path == "dhcp-snooping")
+    {
+        dhcp_snooping.yfilter = yfilter;
+    }
+    if(value_path == "port-security")
+    {
+        port_security.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::BDI::Service::Instance::Ip::Verify::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source" || name == "vlan" || name == "dhcp-snooping" || name == "port-security")
+        return true;
+    return false;
+}
+
+Native::Interface::BDI::Service::Instance::Ipv6::Ipv6()
+    :
+    traffic_filter{YType::str, "traffic-filter"},
+    in{YType::empty, "in"},
+    out{YType::empty, "out"}
+{
+
+    yang_name = "ipv6"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::BDI::Service::Instance::Ipv6::~Ipv6()
+{
+}
+
+bool Native::Interface::BDI::Service::Instance::Ipv6::has_data() const
+{
+    if (is_presence_container) return true;
+    return traffic_filter.is_set
+	|| in.is_set
+	|| out.is_set;
+}
+
+bool Native::Interface::BDI::Service::Instance::Ipv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(traffic_filter.yfilter)
+	|| ydk::is_set(in.yfilter)
+	|| ydk::is_set(out.yfilter);
+}
+
+std::string Native::Interface::BDI::Service::Instance::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (traffic_filter.is_set || is_set(traffic_filter.yfilter)) leaf_name_data.push_back(traffic_filter.get_name_leafdata());
+    if (in.is_set || is_set(in.yfilter)) leaf_name_data.push_back(in.get_name_leafdata());
+    if (out.is_set || is_set(out.yfilter)) leaf_name_data.push_back(out.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::BDI::Service::Instance::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "traffic-filter")
+    {
+        traffic_filter = value;
+        traffic_filter.value_namespace = name_space;
+        traffic_filter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in")
+    {
+        in = value;
+        in.value_namespace = name_space;
+        in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out")
+    {
+        out = value;
+        out.value_namespace = name_space;
+        out.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::BDI::Service::Instance::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "traffic-filter")
+    {
+        traffic_filter.yfilter = yfilter;
+    }
+    if(value_path == "in")
+    {
+        in.yfilter = yfilter;
+    }
+    if(value_path == "out")
+    {
+        out.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::BDI::Service::Instance::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "traffic-filter" || name == "in" || name == "out")
+        return true;
+    return false;
+}
+
+Native::Interface::BDI::Service::Instance::Rewrite::Rewrite()
+    :
+    ingress(std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress>())
+{
+    ingress->parent = this;
+
+    yang_name = "rewrite"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::BDI::Service::Instance::Rewrite::~Rewrite()
+{
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::has_data() const
+{
+    if (is_presence_container) return true;
+    return (ingress !=  nullptr && ingress->has_data());
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ingress !=  nullptr && ingress->has_operation());
+}
+
+std::string Native::Interface::BDI::Service::Instance::Rewrite::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rewrite";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::Rewrite::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Rewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ingress")
+    {
+        if(ingress == nullptr)
+        {
+            ingress = std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress>();
+        }
+        return ingress;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::Rewrite::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ingress != nullptr)
+    {
+        children["ingress"] = ingress;
+    }
+
+    return children;
+}
+
+void Native::Interface::BDI::Service::Instance::Rewrite::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::BDI::Service::Instance::Rewrite::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ingress")
+        return true;
+    return false;
+}
+
+Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Ingress()
+    :
+    tag(std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag>())
+{
+    tag->parent = this;
+
+    yang_name = "ingress"; yang_parent_name = "rewrite"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::BDI::Service::Instance::Rewrite::Ingress::~Ingress()
+{
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::has_data() const
+{
+    if (is_presence_container) return true;
+    return (tag !=  nullptr && tag->has_data());
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::has_operation() const
+{
+    return is_set(yfilter)
+	|| (tag !=  nullptr && tag->has_operation());
+}
+
+std::string Native::Interface::BDI::Service::Instance::Rewrite::Ingress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ingress";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::Rewrite::Ingress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Rewrite::Ingress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tag")
+    {
+        if(tag == nullptr)
+        {
+            tag = std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag>();
+        }
+        return tag;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::Rewrite::Ingress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(tag != nullptr)
+    {
+        children["tag"] = tag;
+    }
+
+    return children;
+}
+
+void Native::Interface::BDI::Service::Instance::Rewrite::Ingress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::BDI::Service::Instance::Rewrite::Ingress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tag")
+        return true;
+    return false;
+}
+
+Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Tag()
+    :
+    pop(std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop>())
+    , push(std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push>())
+    , translate(std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate>())
+{
+    pop->parent = this;
+    push->parent = this;
+    translate->parent = this;
+
+    yang_name = "tag"; yang_parent_name = "ingress"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::~Tag()
+{
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::has_data() const
+{
+    if (is_presence_container) return true;
+    return (pop !=  nullptr && pop->has_data())
+	|| (push !=  nullptr && push->has_data())
+	|| (translate !=  nullptr && translate->has_data());
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::has_operation() const
+{
+    return is_set(yfilter)
+	|| (pop !=  nullptr && pop->has_operation())
+	|| (push !=  nullptr && push->has_operation())
+	|| (translate !=  nullptr && translate->has_operation());
+}
+
+std::string Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pop")
+    {
+        if(pop == nullptr)
+        {
+            pop = std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop>();
+        }
+        return pop;
+    }
+
+    if(child_yang_name == "push")
+    {
+        if(push == nullptr)
+        {
+            push = std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push>();
+        }
+        return push;
+    }
+
+    if(child_yang_name == "translate")
+    {
+        if(translate == nullptr)
+        {
+            translate = std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate>();
+        }
+        return translate;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(pop != nullptr)
+    {
+        children["pop"] = pop;
+    }
+
+    if(push != nullptr)
+    {
+        children["push"] = push;
+    }
+
+    if(translate != nullptr)
+    {
+        children["translate"] = translate;
+    }
+
+    return children;
+}
+
+void Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pop" || name == "push" || name == "translate")
+        return true;
+    return false;
+}
+
+Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::Pop()
+    :
+    way{YType::enumeration, "way"},
+    mode{YType::enumeration, "mode"}
+{
+
+    yang_name = "pop"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::~Pop()
+{
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::has_data() const
+{
+    if (is_presence_container) return true;
+    return way.is_set
+	|| mode.is_set;
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(way.yfilter)
+	|| ydk::is_set(mode.yfilter);
+}
+
+std::string Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (way.is_set || is_set(way.yfilter)) leaf_name_data.push_back(way.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "way")
+    {
+        way = value;
+        way.value_namespace = name_space;
+        way.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "way")
+    {
+        way.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "way" || name == "mode")
+        return true;
+    return false;
+}
+
+Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::Push()
+    :
+    dot1q{YType::uint16, "dot1q"},
+    mode{YType::enumeration, "mode"}
+{
+
+    yang_name = "push"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::~Push()
+{
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::has_data() const
+{
+    if (is_presence_container) return true;
+    return dot1q.is_set
+	|| mode.is_set;
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dot1q.yfilter)
+	|| ydk::is_set(mode.yfilter);
+}
+
+std::string Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "push";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dot1q.is_set || is_set(dot1q.yfilter)) leaf_name_data.push_back(dot1q.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dot1q")
+    {
+        dot1q = value;
+        dot1q.value_namespace = name_space;
+        dot1q.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot1q")
+    {
+        dot1q.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot1q" || name == "mode")
+        return true;
+    return false;
+}
+
 Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::Translate()
     :
     t1_to_1(std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1>())
-	,t1_to_2(std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2>())
-	,t2_to_1(std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1>())
-	,t2_to_2(std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2>())
+    , t1_to_2(std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2>())
+    , t2_to_1(std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1>())
+    , t2_to_2(std::make_shared<Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2>())
 {
     t1_to_1->parent = this;
     t1_to_2->parent = this;
     t2_to_1->parent = this;
     t2_to_2->parent = this;
 
-    yang_name = "translate"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "translate"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::~Translate()
@@ -33,6 +725,7 @@ Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::~Tr
 
 bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::has_data() const
 {
+    if (is_presence_container) return true;
     return (t1_to_1 !=  nullptr && t1_to_1->has_data())
 	|| (t1_to_2 !=  nullptr && t1_to_2->has_data())
 	|| (t2_to_1 !=  nullptr && t2_to_1->has_data())
@@ -153,7 +846,7 @@ Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1T
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "t1-to-1"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "t1-to-1"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1::~T1To1()
@@ -162,6 +855,7 @@ Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1T
 
 bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| mode.is_set;
 }
@@ -245,7 +939,7 @@ Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1T
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "t1-to-2"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "t1-to-2"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2::~T1To2()
@@ -254,6 +948,7 @@ Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1T
 
 bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| second_dot1q.is_set
 	|| mode.is_set;
@@ -349,7 +1044,7 @@ Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2T
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "t2-to-1"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "t2-to-1"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1::~T2To1()
@@ -358,6 +1053,7 @@ Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2T
 
 bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| mode.is_set;
 }
@@ -441,7 +1137,7 @@ Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2T
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "t2-to-2"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "t2-to-2"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2::~T2To2()
@@ -450,6 +1146,7 @@ Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2T
 
 bool Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| second_dot1q.is_set
 	|| mode.is_set;
@@ -545,7 +1242,7 @@ Native::Interface::BDI::Service::Instance::Errdisable::Errdisable()
 {
     recovery->parent = this;
 
-    yang_name = "errdisable"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "errdisable"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Errdisable::~Errdisable()
@@ -554,6 +1251,7 @@ Native::Interface::BDI::Service::Instance::Errdisable::~Errdisable()
 
 bool Native::Interface::BDI::Service::Instance::Errdisable::has_data() const
 {
+    if (is_presence_container) return true;
     return (recovery !=  nullptr && recovery->has_data());
 }
 
@@ -626,7 +1324,7 @@ Native::Interface::BDI::Service::Instance::Errdisable::Recovery::Recovery()
 {
     cause->parent = this;
 
-    yang_name = "recovery"; yang_parent_name = "errdisable"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "recovery"; yang_parent_name = "errdisable"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Errdisable::Recovery::~Recovery()
@@ -635,6 +1333,7 @@ Native::Interface::BDI::Service::Instance::Errdisable::Recovery::~Recovery()
 
 bool Native::Interface::BDI::Service::Instance::Errdisable::Recovery::has_data() const
 {
+    if (is_presence_container) return true;
     return (cause !=  nullptr && cause->has_data());
 }
 
@@ -706,7 +1405,7 @@ Native::Interface::BDI::Service::Instance::Errdisable::Recovery::Cause::Cause()
     mac_security{YType::uint32, "mac-security"}
 {
 
-    yang_name = "cause"; yang_parent_name = "recovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cause"; yang_parent_name = "recovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Errdisable::Recovery::Cause::~Cause()
@@ -715,6 +1414,7 @@ Native::Interface::BDI::Service::Instance::Errdisable::Recovery::Cause::~Cause()
 
 bool Native::Interface::BDI::Service::Instance::Errdisable::Recovery::Cause::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_security.is_set;
 }
 
@@ -784,7 +1484,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::EthernetContainer(
 {
     ethernet->parent = this;
 
-    yang_name = "ethernet-container"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet-container"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::EthernetContainer::~EthernetContainer()
@@ -793,6 +1493,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::~EthernetContainer
 
 bool Native::Interface::BDI::Service::Instance::EthernetContainer::has_data() const
 {
+    if (is_presence_container) return true;
     return (ethernet !=  nullptr && ethernet->has_data());
 }
 
@@ -862,12 +1563,12 @@ bool Native::Interface::BDI::Service::Instance::EthernetContainer::has_leaf_or_c
 Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Ethernet()
     :
     lmi(std::make_shared<Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi>())
-	,loopback(std::make_shared<Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Loopback>())
+    , loopback(std::make_shared<Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Loopback>())
 {
     lmi->parent = this;
     loopback->parent = this;
 
-    yang_name = "ethernet"; yang_parent_name = "ethernet-container"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet"; yang_parent_name = "ethernet-container"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::~Ethernet()
@@ -876,6 +1577,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::~Etherne
 
 bool Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return (lmi !=  nullptr && lmi->has_data())
 	|| (loopback !=  nullptr && loopback->has_data());
 }
@@ -964,7 +1666,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi::Lmi
 {
     ce_vlan->parent = this;
 
-    yang_name = "lmi"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lmi"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi::~Lmi()
@@ -973,6 +1675,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi::~Lm
 
 bool Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi::has_data() const
 {
+    if (is_presence_container) return true;
     return (ce_vlan !=  nullptr && ce_vlan->has_data());
 }
 
@@ -1045,7 +1748,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi::CeV
 {
     map->parent = this;
 
-    yang_name = "ce-vlan"; yang_parent_name = "lmi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ce-vlan"; yang_parent_name = "lmi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::~CeVlan()
@@ -1054,6 +1757,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi::CeV
 
 bool Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (map !=  nullptr && map->has_data());
 }
 
@@ -1128,7 +1832,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi::CeV
     vlan_range{YType::str, "vlan-range"}
 {
 
-    yang_name = "map"; yang_parent_name = "ce-vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map"; yang_parent_name = "ce-vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::Map::~Map()
@@ -1137,6 +1841,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi::CeV
 
 bool Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::Map::has_data() const
 {
+    if (is_presence_container) return true;
     return any.is_set
 	|| default_.is_set
 	|| untagged.is_set
@@ -1245,7 +1950,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Loopback
 {
     permit->parent = this;
 
-    yang_name = "loopback"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "loopback"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Loopback::~Loopback()
@@ -1254,6 +1959,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Loopback
 
 bool Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Loopback::has_data() const
 {
+    if (is_presence_container) return true;
     return (permit !=  nullptr && permit->has_data());
 }
 
@@ -1326,7 +2032,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Loopback
     internal{YType::empty, "internal"}
 {
 
-    yang_name = "permit"; yang_parent_name = "loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "permit"; yang_parent_name = "loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Loopback::Permit::~Permit()
@@ -1335,6 +2041,7 @@ Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Loopback
 
 bool Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Loopback::Permit::has_data() const
 {
+    if (is_presence_container) return true;
     return external.is_set
 	|| internal.is_set;
 }
@@ -1414,12 +2121,12 @@ bool Native::Interface::BDI::Service::Instance::EthernetContainer::Ethernet::Loo
 Native::Interface::BDI::Service::Instance::Snmp::Snmp()
     :
     trap(std::make_shared<Native::Interface::BDI::Service::Instance::Snmp::Trap>())
-	,ifindex(std::make_shared<Native::Interface::BDI::Service::Instance::Snmp::Ifindex>())
+    , ifindex(std::make_shared<Native::Interface::BDI::Service::Instance::Snmp::Ifindex>())
 {
     trap->parent = this;
     ifindex->parent = this;
 
-    yang_name = "snmp"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snmp"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Snmp::~Snmp()
@@ -1428,6 +2135,7 @@ Native::Interface::BDI::Service::Instance::Snmp::~Snmp()
 
 bool Native::Interface::BDI::Service::Instance::Snmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (trap !=  nullptr && trap->has_data())
 	|| (ifindex !=  nullptr && ifindex->has_data());
 }
@@ -1515,7 +2223,7 @@ Native::Interface::BDI::Service::Instance::Snmp::Trap::Trap()
     link_status{YType::empty, "link-status"}
 {
 
-    yang_name = "trap"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trap"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Snmp::Trap::~Trap()
@@ -1524,6 +2232,7 @@ Native::Interface::BDI::Service::Instance::Snmp::Trap::~Trap()
 
 bool Native::Interface::BDI::Service::Instance::Snmp::Trap::has_data() const
 {
+    if (is_presence_container) return true;
     return link_status.is_set;
 }
 
@@ -1592,7 +2301,7 @@ Native::Interface::BDI::Service::Instance::Snmp::Ifindex::Ifindex()
     persist{YType::empty, "persist"}
 {
 
-    yang_name = "ifindex"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifindex"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Snmp::Ifindex::~Ifindex()
@@ -1601,6 +2310,7 @@ Native::Interface::BDI::Service::Instance::Snmp::Ifindex::~Ifindex()
 
 bool Native::Interface::BDI::Service::Instance::Snmp::Ifindex::has_data() const
 {
+    if (is_presence_container) return true;
     return persist.is_set;
 }
 
@@ -1668,12 +2378,12 @@ Native::Interface::BDI::Service::Instance::BridgeDomain::BridgeDomain()
     :
     bridge_id{YType::uint16, "bridge-id"},
     from_encapsulation{YType::empty, "from-encapsulation"}
-    	,
+        ,
     split_horizon(std::make_shared<Native::Interface::BDI::Service::Instance::BridgeDomain::SplitHorizon>())
 {
     split_horizon->parent = this;
 
-    yang_name = "bridge-domain"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bridge-domain"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::BridgeDomain::~BridgeDomain()
@@ -1682,6 +2392,7 @@ Native::Interface::BDI::Service::Instance::BridgeDomain::~BridgeDomain()
 
 bool Native::Interface::BDI::Service::Instance::BridgeDomain::has_data() const
 {
+    if (is_presence_container) return true;
     return bridge_id.is_set
 	|| from_encapsulation.is_set
 	|| (split_horizon !=  nullptr && split_horizon->has_data());
@@ -1779,7 +2490,7 @@ Native::Interface::BDI::Service::Instance::BridgeDomain::SplitHorizon::SplitHori
     group{YType::uint8, "group"}
 {
 
-    yang_name = "split-horizon"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "split-horizon"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::BridgeDomain::SplitHorizon::~SplitHorizon()
@@ -1788,6 +2499,7 @@ Native::Interface::BDI::Service::Instance::BridgeDomain::SplitHorizon::~SplitHor
 
 bool Native::Interface::BDI::Service::Instance::BridgeDomain::SplitHorizon::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -1854,9 +2566,10 @@ bool Native::Interface::BDI::Service::Instance::BridgeDomain::SplitHorizon::has_
 Native::Interface::BDI::Service::Instance::Mac::Mac()
     :
     security(nullptr) // presence node
+    , access_group(this, {"acl_name"})
 {
 
-    yang_name = "mac"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Mac::~Mac()
@@ -1865,7 +2578,8 @@ Native::Interface::BDI::Service::Instance::Mac::~Mac()
 
 bool Native::Interface::BDI::Service::Instance::Mac::has_data() const
 {
-    for (std::size_t index=0; index<access_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_group.len(); index++)
     {
         if(access_group[index]->has_data())
             return true;
@@ -1875,7 +2589,7 @@ bool Native::Interface::BDI::Service::Instance::Mac::has_data() const
 
 bool Native::Interface::BDI::Service::Instance::Mac::has_operation() const
 {
-    for (std::size_t index=0; index<access_group.size(); index++)
+    for (std::size_t index=0; index<access_group.len(); index++)
     {
         if(access_group[index]->has_operation())
             return true;
@@ -1915,7 +2629,7 @@ std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Mac::get_chil
     {
         auto c = std::make_shared<Native::Interface::BDI::Service::Instance::Mac::AccessGroup>();
         c->parent = this;
-        access_group.push_back(c);
+        access_group.append(c);
         return c;
     }
 
@@ -1932,7 +2646,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::
     }
 
     count = 0;
-    for (auto const & c : access_group)
+    for (auto c : access_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1961,12 +2675,12 @@ bool Native::Interface::BDI::Service::Instance::Mac::has_leaf_or_child_of_name(c
 Native::Interface::BDI::Service::Instance::Mac::Security::Security()
     :
     violation{YType::enumeration, "violation"}
-    	,
+        ,
     maximum(std::make_shared<Native::Interface::BDI::Service::Instance::Mac::Security::Maximum>())
 {
     maximum->parent = this;
 
-    yang_name = "security"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::BDI::Service::Instance::Mac::Security::~Security()
@@ -1975,6 +2689,7 @@ Native::Interface::BDI::Service::Instance::Mac::Security::~Security()
 
 bool Native::Interface::BDI::Service::Instance::Mac::Security::has_data() const
 {
+    if (is_presence_container) return true;
     return violation.is_set
 	|| (maximum !=  nullptr && maximum->has_data());
 }
@@ -2059,7 +2774,7 @@ Native::Interface::BDI::Service::Instance::Mac::Security::Maximum::Maximum()
     addresses{YType::uint16, "addresses"}
 {
 
-    yang_name = "maximum"; yang_parent_name = "security"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum"; yang_parent_name = "security"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Mac::Security::Maximum::~Maximum()
@@ -2068,6 +2783,7 @@ Native::Interface::BDI::Service::Instance::Mac::Security::Maximum::~Maximum()
 
 bool Native::Interface::BDI::Service::Instance::Mac::Security::Maximum::has_data() const
 {
+    if (is_presence_container) return true;
     return addresses.is_set;
 }
 
@@ -2138,7 +2854,7 @@ Native::Interface::BDI::Service::Instance::Mac::AccessGroup::AccessGroup()
     out{YType::empty, "out"}
 {
 
-    yang_name = "access-group"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-group"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Mac::AccessGroup::~AccessGroup()
@@ -2147,6 +2863,7 @@ Native::Interface::BDI::Service::Instance::Mac::AccessGroup::~AccessGroup()
 
 bool Native::Interface::BDI::Service::Instance::Mac::AccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| in.is_set
 	|| out.is_set;
@@ -2163,7 +2880,8 @@ bool Native::Interface::BDI::Service::Instance::Mac::AccessGroup::has_operation(
 std::string Native::Interface::BDI::Service::Instance::Mac::AccessGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-group" <<"[acl-name='" <<acl_name <<"']";
+    path_buffer << "access-group";
+    ADD_KEY_TOKEN(acl_name, "acl-name");
     return path_buffer.str();
 }
 
@@ -2237,9 +2955,12 @@ bool Native::Interface::BDI::Service::Instance::Mac::AccessGroup::has_leaf_or_ch
 }
 
 Native::Interface::BDI::Service::Instance::ServicePolicy::ServicePolicy()
+    :
+    input(this, {"name"})
+    , output(this, {"name"})
 {
 
-    yang_name = "service-policy"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::ServicePolicy::~ServicePolicy()
@@ -2248,12 +2969,13 @@ Native::Interface::BDI::Service::Instance::ServicePolicy::~ServicePolicy()
 
 bool Native::Interface::BDI::Service::Instance::ServicePolicy::has_data() const
 {
-    for (std::size_t index=0; index<input.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<input.len(); index++)
     {
         if(input[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<output.size(); index++)
+    for (std::size_t index=0; index<output.len(); index++)
     {
         if(output[index]->has_data())
             return true;
@@ -2263,12 +2985,12 @@ bool Native::Interface::BDI::Service::Instance::ServicePolicy::has_data() const
 
 bool Native::Interface::BDI::Service::Instance::ServicePolicy::has_operation() const
 {
-    for (std::size_t index=0; index<input.size(); index++)
+    for (std::size_t index=0; index<input.len(); index++)
     {
         if(input[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<output.size(); index++)
+    for (std::size_t index=0; index<output.len(); index++)
     {
         if(output[index]->has_operation())
             return true;
@@ -2298,7 +3020,7 @@ std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::ServicePolicy
     {
         auto c = std::make_shared<Native::Interface::BDI::Service::Instance::ServicePolicy::Input>();
         c->parent = this;
-        input.push_back(c);
+        input.append(c);
         return c;
     }
 
@@ -2306,7 +3028,7 @@ std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::ServicePolicy
     {
         auto c = std::make_shared<Native::Interface::BDI::Service::Instance::ServicePolicy::Output>();
         c->parent = this;
-        output.push_back(c);
+        output.append(c);
         return c;
     }
 
@@ -2318,7 +3040,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : input)
+    for (auto c : input.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2327,7 +3049,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::
     }
 
     count = 0;
-    for (auto const & c : output)
+    for (auto c : output.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2358,7 +3080,7 @@ Native::Interface::BDI::Service::Instance::ServicePolicy::Input::Input()
     name{YType::str, "name"}
 {
 
-    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::ServicePolicy::Input::~Input()
@@ -2367,6 +3089,7 @@ Native::Interface::BDI::Service::Instance::ServicePolicy::Input::~Input()
 
 bool Native::Interface::BDI::Service::Instance::ServicePolicy::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -2379,7 +3102,8 @@ bool Native::Interface::BDI::Service::Instance::ServicePolicy::Input::has_operat
 std::string Native::Interface::BDI::Service::Instance::ServicePolicy::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "input" <<"[name='" <<name <<"']";
+    path_buffer << "input";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2435,7 +3159,7 @@ Native::Interface::BDI::Service::Instance::ServicePolicy::Output::Output()
     name{YType::str, "name"}
 {
 
-    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::ServicePolicy::Output::~Output()
@@ -2444,6 +3168,7 @@ Native::Interface::BDI::Service::Instance::ServicePolicy::Output::~Output()
 
 bool Native::Interface::BDI::Service::Instance::ServicePolicy::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -2456,7 +3181,8 @@ bool Native::Interface::BDI::Service::Instance::ServicePolicy::Output::has_opera
 std::string Native::Interface::BDI::Service::Instance::ServicePolicy::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "output" <<"[name='" <<name <<"']";
+    path_buffer << "output";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2510,14 +3236,14 @@ bool Native::Interface::BDI::Service::Instance::ServicePolicy::Output::has_leaf_
 Native::Interface::BDI::Service::Instance::Cfm::Cfm()
     :
     encapsulation(std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Encapsulation>())
-	,mep(std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Mep>())
-	,mip(std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Mip>())
+    , mep(std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Mep>())
+    , mip(std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Mip>())
 {
     encapsulation->parent = this;
     mep->parent = this;
     mip->parent = this;
 
-    yang_name = "cfm"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cfm"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Cfm::~Cfm()
@@ -2526,6 +3252,7 @@ Native::Interface::BDI::Service::Instance::Cfm::~Cfm()
 
 bool Native::Interface::BDI::Service::Instance::Cfm::has_data() const
 {
+    if (is_presence_container) return true;
     return (encapsulation !=  nullptr && encapsulation->has_data())
 	|| (mep !=  nullptr && mep->has_data())
 	|| (mip !=  nullptr && mip->has_data());
@@ -2626,13 +3353,13 @@ bool Native::Interface::BDI::Service::Instance::Cfm::has_leaf_or_child_of_name(c
 
 Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Encapsulation()
     :
-    dot1ad(std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad>())
-	,dot1q(std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q>())
+    dot1ad(std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad>())
+    , dot1q(std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q>())
 {
     dot1ad->parent = this;
     dot1q->parent = this;
 
-    yang_name = "encapsulation"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::~Encapsulation()
@@ -2641,6 +3368,7 @@ Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::~Encapsulation()
 
 bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot1ad !=  nullptr && dot1ad->has_data())
 	|| (dot1q !=  nullptr && dot1q->has_data());
 }
@@ -2674,7 +3402,7 @@ std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Cfm::Encapsul
     {
         if(dot1ad == nullptr)
         {
-            dot1ad = std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad>();
+            dot1ad = std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad>();
         }
         return dot1ad;
     }
@@ -2683,7 +3411,7 @@ std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Cfm::Encapsul
     {
         if(dot1q == nullptr)
         {
-            dot1q = std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q>();
+            dot1q = std::make_shared<Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q>();
         }
         return dot1q;
     }
@@ -2723,28 +3451,29 @@ bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::has_leaf_or_
     return false;
 }
 
-Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::Dot1Ad()
+Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad::Dot1ad()
     :
     vlan_id{YType::uint16, "vlan-id"},
     cos{YType::uint8, "cos"},
     dot1q{YType::uint16, "dot1q"}
 {
 
-    yang_name = "dot1ad"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1ad"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::~Dot1Ad()
+Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad::~Dot1ad()
 {
 }
 
-bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::has_data() const
+bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| cos.is_set
 	|| dot1q.is_set;
 }
 
-bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::has_operation() const
+bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vlan_id.yfilter)
@@ -2752,14 +3481,14 @@ bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::has_
 	|| ydk::is_set(dot1q.yfilter);
 }
 
-std::string Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_segment_path() const
+std::string Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1ad";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2771,19 +3500,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::
 
 }
 
-std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlan-id")
     {
@@ -2805,7 +3534,7 @@ void Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::set_
     }
 }
 
-void Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vlan-id")
     {
@@ -2821,35 +3550,36 @@ void Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::set_
     }
 }
 
-bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Ad::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1ad::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-id" || name == "cos" || name == "dot1q")
         return true;
     return false;
 }
 
-Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::Dot1Q()
+Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q::Dot1q()
     :
     vlan_id{YType::uint16, "vlan-id"},
     cos{YType::uint8, "cos"},
     second_dot1q{YType::uint16, "second-dot1q"}
 {
 
-    yang_name = "dot1q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::~Dot1Q()
+Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q::~Dot1q()
 {
 }
 
-bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::has_data() const
+bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| cos.is_set
 	|| second_dot1q.is_set;
 }
 
-bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::has_operation() const
+bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vlan_id.yfilter)
@@ -2857,14 +3587,14 @@ bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::has_o
 	|| ydk::is_set(second_dot1q.yfilter);
 }
 
-std::string Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::get_segment_path() const
+std::string Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1q";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2876,19 +3606,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::
 
 }
 
-std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlan-id")
     {
@@ -2910,7 +3640,7 @@ void Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::set_v
     }
 }
 
-void Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vlan-id")
     {
@@ -2926,7 +3656,7 @@ void Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::set_f
     }
 }
 
-bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1Q::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::BDI::Service::Instance::Cfm::Encapsulation::Dot1q::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-id" || name == "cos" || name == "second-dot1q")
         return true;
@@ -2939,7 +3669,7 @@ Native::Interface::BDI::Service::Instance::Cfm::Mep::Mep()
     mpid{YType::uint16, "mpid"}
 {
 
-    yang_name = "mep"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mep"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Cfm::Mep::~Mep()
@@ -2948,6 +3678,7 @@ Native::Interface::BDI::Service::Instance::Cfm::Mep::~Mep()
 
 bool Native::Interface::BDI::Service::Instance::Cfm::Mep::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| mpid.is_set;
 }
@@ -3029,7 +3760,7 @@ Native::Interface::BDI::Service::Instance::Cfm::Mip::Mip()
     level{YType::uint8, "level"}
 {
 
-    yang_name = "mip"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mip"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::BDI::Service::Instance::Cfm::Mip::~Mip()
@@ -3038,6 +3769,7 @@ Native::Interface::BDI::Service::Instance::Cfm::Mip::~Mip()
 
 bool Native::Interface::BDI::Service::Instance::Cfm::Mip::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set;
 }
 
@@ -3101,30 +3833,31 @@ bool Native::Interface::BDI::Service::Instance::Cfm::Mip::has_leaf_or_child_of_n
     return false;
 }
 
-Native::Interface::BDI::Service::Instance::L2Protocol::L2Protocol()
+Native::Interface::BDI::Service::Instance::L2protocol::L2protocol()
     :
     discard(nullptr) // presence node
-	,peer(nullptr) // presence node
-	,forward(nullptr) // presence node
-	,tunnel(nullptr) // presence node
+    , peer(nullptr) // presence node
+    , forward(nullptr) // presence node
+    , tunnel(nullptr) // presence node
 {
 
-    yang_name = "l2protocol"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2protocol"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::BDI::Service::Instance::L2Protocol::~L2Protocol()
+Native::Interface::BDI::Service::Instance::L2protocol::~L2protocol()
 {
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::has_data() const
+bool Native::Interface::BDI::Service::Instance::L2protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (discard !=  nullptr && discard->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (forward !=  nullptr && forward->has_data())
 	|| (tunnel !=  nullptr && tunnel->has_data());
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::has_operation() const
+bool Native::Interface::BDI::Service::Instance::L2protocol::has_operation() const
 {
     return is_set(yfilter)
 	|| (discard !=  nullptr && discard->has_operation())
@@ -3133,14 +3866,14 @@ bool Native::Interface::BDI::Service::Instance::L2Protocol::has_operation() cons
 	|| (tunnel !=  nullptr && tunnel->has_operation());
 }
 
-std::string Native::Interface::BDI::Service::Instance::L2Protocol::get_segment_path() const
+std::string Native::Interface::BDI::Service::Instance::L2protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2protocol";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::L2Protocol::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::L2protocol::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3149,13 +3882,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::
 
 }
 
-std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "discard")
     {
         if(discard == nullptr)
         {
-            discard = std::make_shared<Native::Interface::BDI::Service::Instance::L2Protocol::Discard>();
+            discard = std::make_shared<Native::Interface::BDI::Service::Instance::L2protocol::Discard>();
         }
         return discard;
     }
@@ -3164,7 +3897,7 @@ std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2Protocol::g
     {
         if(peer == nullptr)
         {
-            peer = std::make_shared<Native::Interface::BDI::Service::Instance::L2Protocol::Peer>();
+            peer = std::make_shared<Native::Interface::BDI::Service::Instance::L2protocol::Peer>();
         }
         return peer;
     }
@@ -3173,7 +3906,7 @@ std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2Protocol::g
     {
         if(forward == nullptr)
         {
-            forward = std::make_shared<Native::Interface::BDI::Service::Instance::L2Protocol::Forward>();
+            forward = std::make_shared<Native::Interface::BDI::Service::Instance::L2protocol::Forward>();
         }
         return forward;
     }
@@ -3182,7 +3915,7 @@ std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2Protocol::g
     {
         if(tunnel == nullptr)
         {
-            tunnel = std::make_shared<Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel>();
+            tunnel = std::make_shared<Native::Interface::BDI::Service::Instance::L2protocol::Tunnel>();
         }
         return tunnel;
     }
@@ -3190,7 +3923,7 @@ std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2Protocol::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::L2Protocol::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::L2protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3217,35 +3950,36 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::
     return children;
 }
 
-void Native::Interface::BDI::Service::Instance::L2Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::BDI::Service::Instance::L2protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::BDI::Service::Instance::L2Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::BDI::Service::Instance::L2protocol::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::BDI::Service::Instance::L2protocol::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "discard" || name == "peer" || name == "forward" || name == "tunnel")
         return true;
     return false;
 }
 
-Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Discard()
+Native::Interface::BDI::Service::Instance::L2protocol::Discard::Discard()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "discard"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discard"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::BDI::Service::Instance::L2Protocol::Discard::~Discard()
+Native::Interface::BDI::Service::Instance::L2protocol::Discard::~Discard()
 {
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::Discard::has_data() const
+bool Native::Interface::BDI::Service::Instance::L2protocol::Discard::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
@@ -3254,7 +3988,7 @@ bool Native::Interface::BDI::Service::Instance::L2Protocol::Discard::has_data() 
     return false;
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::Discard::has_operation() const
+bool Native::Interface::BDI::Service::Instance::L2protocol::Discard::has_operation() const
 {
     for (auto const & leaf : protocol.getYLeafs())
     {
@@ -3265,14 +3999,14 @@ bool Native::Interface::BDI::Service::Instance::L2Protocol::Discard::has_operati
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Interface::BDI::Service::Instance::L2Protocol::Discard::get_segment_path() const
+std::string Native::Interface::BDI::Service::Instance::L2protocol::Discard::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "discard";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::L2Protocol::Discard::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::L2protocol::Discard::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3283,19 +4017,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::
 
 }
 
-std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2Protocol::Discard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2protocol::Discard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::L2Protocol::Discard::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::L2protocol::Discard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::BDI::Service::Instance::L2Protocol::Discard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::BDI::Service::Instance::L2protocol::Discard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -3303,7 +4037,7 @@ void Native::Interface::BDI::Service::Instance::L2Protocol::Discard::set_value(c
     }
 }
 
-void Native::Interface::BDI::Service::Instance::L2Protocol::Discard::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::BDI::Service::Instance::L2protocol::Discard::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -3311,27 +4045,28 @@ void Native::Interface::BDI::Service::Instance::L2Protocol::Discard::set_filter(
     }
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::Discard::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::BDI::Service::Instance::L2protocol::Discard::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
     return false;
 }
 
-Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Peer()
+Native::Interface::BDI::Service::Instance::L2protocol::Peer::Peer()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "peer"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::BDI::Service::Instance::L2Protocol::Peer::~Peer()
+Native::Interface::BDI::Service::Instance::L2protocol::Peer::~Peer()
 {
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::Peer::has_data() const
+bool Native::Interface::BDI::Service::Instance::L2protocol::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
@@ -3340,7 +4075,7 @@ bool Native::Interface::BDI::Service::Instance::L2Protocol::Peer::has_data() con
     return false;
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::Peer::has_operation() const
+bool Native::Interface::BDI::Service::Instance::L2protocol::Peer::has_operation() const
 {
     for (auto const & leaf : protocol.getYLeafs())
     {
@@ -3351,14 +4086,14 @@ bool Native::Interface::BDI::Service::Instance::L2Protocol::Peer::has_operation(
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Interface::BDI::Service::Instance::L2Protocol::Peer::get_segment_path() const
+std::string Native::Interface::BDI::Service::Instance::L2protocol::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::L2Protocol::Peer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::L2protocol::Peer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3369,19 +4104,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::
 
 }
 
-std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2Protocol::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2protocol::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::L2Protocol::Peer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::L2protocol::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::BDI::Service::Instance::L2Protocol::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::BDI::Service::Instance::L2protocol::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -3389,7 +4124,7 @@ void Native::Interface::BDI::Service::Instance::L2Protocol::Peer::set_value(cons
     }
 }
 
-void Native::Interface::BDI::Service::Instance::L2Protocol::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::BDI::Service::Instance::L2protocol::Peer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -3397,27 +4132,28 @@ void Native::Interface::BDI::Service::Instance::L2Protocol::Peer::set_filter(con
     }
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::Peer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::BDI::Service::Instance::L2protocol::Peer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
     return false;
 }
 
-Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Forward()
+Native::Interface::BDI::Service::Instance::L2protocol::Forward::Forward()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "forward"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forward"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::BDI::Service::Instance::L2Protocol::Forward::~Forward()
+Native::Interface::BDI::Service::Instance::L2protocol::Forward::~Forward()
 {
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::Forward::has_data() const
+bool Native::Interface::BDI::Service::Instance::L2protocol::Forward::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
@@ -3426,7 +4162,7 @@ bool Native::Interface::BDI::Service::Instance::L2Protocol::Forward::has_data() 
     return false;
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::Forward::has_operation() const
+bool Native::Interface::BDI::Service::Instance::L2protocol::Forward::has_operation() const
 {
     for (auto const & leaf : protocol.getYLeafs())
     {
@@ -3437,14 +4173,14 @@ bool Native::Interface::BDI::Service::Instance::L2Protocol::Forward::has_operati
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Interface::BDI::Service::Instance::L2Protocol::Forward::get_segment_path() const
+std::string Native::Interface::BDI::Service::Instance::L2protocol::Forward::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "forward";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::L2Protocol::Forward::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::L2protocol::Forward::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3455,19 +4191,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::
 
 }
 
-std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2Protocol::Forward::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2protocol::Forward::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::L2Protocol::Forward::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::L2protocol::Forward::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::BDI::Service::Instance::L2Protocol::Forward::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::BDI::Service::Instance::L2protocol::Forward::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -3475,7 +4211,7 @@ void Native::Interface::BDI::Service::Instance::L2Protocol::Forward::set_value(c
     }
 }
 
-void Native::Interface::BDI::Service::Instance::L2Protocol::Forward::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::BDI::Service::Instance::L2protocol::Forward::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -3483,27 +4219,28 @@ void Native::Interface::BDI::Service::Instance::L2Protocol::Forward::set_filter(
     }
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::Forward::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::BDI::Service::Instance::L2protocol::Forward::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
     return false;
 }
 
-Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Tunnel()
+Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Tunnel()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "tunnel"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::~Tunnel()
+Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::~Tunnel()
 {
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::has_data() const
+bool Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
@@ -3512,7 +4249,7 @@ bool Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::has_data() c
     return false;
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::has_operation() const
+bool Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::has_operation() const
 {
     for (auto const & leaf : protocol.getYLeafs())
     {
@@ -3523,14 +4260,14 @@ bool Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::has_operatio
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::get_segment_path() const
+std::string Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3541,19 +4278,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::Service::
 
 }
 
-std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -3561,7 +4298,7 @@ void Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::set_value(co
     }
 }
 
-void Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -3569,671 +4306,9 @@ void Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::set_filter(c
     }
 }
 
-bool Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
-        return true;
-    return false;
-}
-
-Native::Interface::BDI::ServicePolicy::ServicePolicy()
-    :
-    history{YType::empty, "history"},
-    input{YType::str, "input"},
-    output{YType::str, "output"}
-    	,
-    type(std::make_shared<Native::Interface::BDI::ServicePolicy::Type>())
-{
-    type->parent = this;
-
-    yang_name = "service-policy"; yang_parent_name = "BDI"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::BDI::ServicePolicy::~ServicePolicy()
-{
-}
-
-bool Native::Interface::BDI::ServicePolicy::has_data() const
-{
-    return history.is_set
-	|| input.is_set
-	|| output.is_set
-	|| (type !=  nullptr && type->has_data());
-}
-
-bool Native::Interface::BDI::ServicePolicy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(history.yfilter)
-	|| ydk::is_set(input.yfilter)
-	|| ydk::is_set(output.yfilter)
-	|| (type !=  nullptr && type->has_operation());
-}
-
-std::string Native::Interface::BDI::ServicePolicy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-policy:service-policy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::ServicePolicy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (history.is_set || is_set(history.yfilter)) leaf_name_data.push_back(history.get_name_leafdata());
-    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
-    if (output.is_set || is_set(output.yfilter)) leaf_name_data.push_back(output.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::BDI::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "type")
-    {
-        if(type == nullptr)
-        {
-            type = std::make_shared<Native::Interface::BDI::ServicePolicy::Type>();
-        }
-        return type;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::ServicePolicy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(type != nullptr)
-    {
-        children["type"] = type;
-    }
-
-    return children;
-}
-
-void Native::Interface::BDI::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "history")
-    {
-        history = value;
-        history.value_namespace = name_space;
-        history.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "input")
-    {
-        input = value;
-        input.value_namespace = name_space;
-        input.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "output")
-    {
-        output = value;
-        output.value_namespace = name_space;
-        output.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::BDI::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "history")
-    {
-        history.yfilter = yfilter;
-    }
-    if(value_path == "input")
-    {
-        input.yfilter = yfilter;
-    }
-    if(value_path == "output")
-    {
-        output.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::BDI::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type" || name == "history" || name == "input" || name == "output")
-        return true;
-    return false;
-}
-
-Native::Interface::BDI::ServicePolicy::Type::Type()
-    :
-    control(std::make_shared<Native::Interface::BDI::ServicePolicy::Type::Control>())
-	,performance_monitor(std::make_shared<Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor>())
-	,service_chain(std::make_shared<Native::Interface::BDI::ServicePolicy::Type::ServiceChain>())
-{
-    control->parent = this;
-    performance_monitor->parent = this;
-    service_chain->parent = this;
-
-    yang_name = "type"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::BDI::ServicePolicy::Type::~Type()
-{
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::has_data() const
-{
-    return (control !=  nullptr && control->has_data())
-	|| (performance_monitor !=  nullptr && performance_monitor->has_data())
-	|| (service_chain !=  nullptr && service_chain->has_data());
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::has_operation() const
-{
-    return is_set(yfilter)
-	|| (control !=  nullptr && control->has_operation())
-	|| (performance_monitor !=  nullptr && performance_monitor->has_operation())
-	|| (service_chain !=  nullptr && service_chain->has_operation());
-}
-
-std::string Native::Interface::BDI::ServicePolicy::Type::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "type";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::ServicePolicy::Type::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::BDI::ServicePolicy::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "control")
-    {
-        if(control == nullptr)
-        {
-            control = std::make_shared<Native::Interface::BDI::ServicePolicy::Type::Control>();
-        }
-        return control;
-    }
-
-    if(child_yang_name == "performance-monitor")
-    {
-        if(performance_monitor == nullptr)
-        {
-            performance_monitor = std::make_shared<Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor>();
-        }
-        return performance_monitor;
-    }
-
-    if(child_yang_name == "service-chain")
-    {
-        if(service_chain == nullptr)
-        {
-            service_chain = std::make_shared<Native::Interface::BDI::ServicePolicy::Type::ServiceChain>();
-        }
-        return service_chain;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::ServicePolicy::Type::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(control != nullptr)
-    {
-        children["control"] = control;
-    }
-
-    if(performance_monitor != nullptr)
-    {
-        children["performance-monitor"] = performance_monitor;
-    }
-
-    if(service_chain != nullptr)
-    {
-        children["service-chain"] = service_chain;
-    }
-
-    return children;
-}
-
-void Native::Interface::BDI::ServicePolicy::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::BDI::ServicePolicy::Type::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "control" || name == "performance-monitor" || name == "service-chain")
-        return true;
-    return false;
-}
-
-Native::Interface::BDI::ServicePolicy::Type::Control::Control()
-    :
-    subscriber{YType::str, "subscriber"}
-{
-
-    yang_name = "control"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::BDI::ServicePolicy::Type::Control::~Control()
-{
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::Control::has_data() const
-{
-    return subscriber.is_set;
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::Control::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(subscriber.yfilter);
-}
-
-std::string Native::Interface::BDI::ServicePolicy::Type::Control::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "control";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::ServicePolicy::Type::Control::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (subscriber.is_set || is_set(subscriber.yfilter)) leaf_name_data.push_back(subscriber.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::BDI::ServicePolicy::Type::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::ServicePolicy::Type::Control::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::BDI::ServicePolicy::Type::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "subscriber")
-    {
-        subscriber = value;
-        subscriber.value_namespace = name_space;
-        subscriber.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::BDI::ServicePolicy::Type::Control::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "subscriber")
-    {
-        subscriber.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::Control::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "subscriber")
-        return true;
-    return false;
-}
-
-Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::PerformanceMonitor()
-    :
-    direction{YType::enumeration, "direction"},
-    name{YType::str, "name"}
-{
-
-    yang_name = "performance-monitor"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::~PerformanceMonitor()
-{
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::has_data() const
-{
-    return direction.is_set
-	|| name.is_set;
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "performance-monitor";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "direction" || name == "name")
-        return true;
-    return false;
-}
-
-Native::Interface::BDI::ServicePolicy::Type::ServiceChain::ServiceChain()
-    :
-    input(std::make_shared<Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input>())
-	,output(std::make_shared<Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output>())
-{
-    input->parent = this;
-    output->parent = this;
-
-    yang_name = "service-chain"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::BDI::ServicePolicy::Type::ServiceChain::~ServiceChain()
-{
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::ServiceChain::has_data() const
-{
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::ServiceChain::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
-}
-
-std::string Native::Interface::BDI::ServicePolicy::Type::ServiceChain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "service-chain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::ServicePolicy::Type::ServiceChain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::BDI::ServicePolicy::Type::ServiceChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input>();
-        }
-        return input;
-    }
-
-    if(child_yang_name == "output")
-    {
-        if(output == nullptr)
-        {
-            output = std::make_shared<Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output>();
-        }
-        return output;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::ServicePolicy::Type::ServiceChain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(input != nullptr)
-    {
-        children["input"] = input;
-    }
-
-    if(output != nullptr)
-    {
-        children["output"] = output;
-    }
-
-    return children;
-}
-
-void Native::Interface::BDI::ServicePolicy::Type::ServiceChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::BDI::ServicePolicy::Type::ServiceChain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::ServiceChain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input" || name == "output")
-        return true;
-    return false;
-}
-
-Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input::Input()
-    :
-    name{YType::str, "name"}
-{
-
-    yang_name = "input"; yang_parent_name = "service-chain"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input::~Input()
-{
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input::has_data() const
-{
-    return name.is_set;
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
-Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output::Output()
-    :
-    name{YType::str, "name"}
-{
-
-    yang_name = "output"; yang_parent_name = "service-chain"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output::~Output()
-{
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output::has_data() const
-{
-    return name.is_set;
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "output";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::BDI::ServicePolicy::Type::ServiceChain::Output::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
         return true;
     return false;
 }
@@ -4242,14 +4317,16 @@ Native::Interface::CEM::CEM()
     :
     name{YType::str, "name"},
     load_interval{YType::uint32, "Cisco-IOS-XE-atm:load-interval"}
-    	,
+        ,
     ip(std::make_shared<Native::Interface::CEM::Ip>())
-	,atm(std::make_shared<Native::Interface::CEM::Atm>())
+    , atm(std::make_shared<Native::Interface::CEM::Atm>())
+    , cem(this, {"number"})
+    , pvc(this, {"local_vpi_vci"})
 {
     ip->parent = this;
     atm->parent = this;
 
-    yang_name = "CEM"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "CEM"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::CEM::~CEM()
@@ -4258,12 +4335,13 @@ Native::Interface::CEM::~CEM()
 
 bool Native::Interface::CEM::has_data() const
 {
-    for (std::size_t index=0; index<cem.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pvc.size(); index++)
+    for (std::size_t index=0; index<pvc.len(); index++)
     {
         if(pvc[index]->has_data())
             return true;
@@ -4276,12 +4354,12 @@ bool Native::Interface::CEM::has_data() const
 
 bool Native::Interface::CEM::has_operation() const
 {
-    for (std::size_t index=0; index<cem.size(); index++)
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pvc.size(); index++)
+    for (std::size_t index=0; index<pvc.len(); index++)
     {
         if(pvc[index]->has_operation())
             return true;
@@ -4303,7 +4381,8 @@ std::string Native::Interface::CEM::get_absolute_path() const
 std::string Native::Interface::CEM::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "CEM" <<"[name='" <<name <<"']";
+    path_buffer << "CEM";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -4342,7 +4421,7 @@ std::shared_ptr<Entity> Native::Interface::CEM::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Native::Interface::CEM::Cem>();
         c->parent = this;
-        cem.push_back(c);
+        cem.append(c);
         return c;
     }
 
@@ -4350,7 +4429,7 @@ std::shared_ptr<Entity> Native::Interface::CEM::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Native::Interface::CEM::Pvc>();
         c->parent = this;
-        pvc.push_back(c);
+        pvc.append(c);
         return c;
     }
 
@@ -4372,7 +4451,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::CEM::get_child
     }
 
     count = 0;
-    for (auto const & c : cem)
+    for (auto c : cem.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4381,7 +4460,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::CEM::get_child
     }
 
     count = 0;
-    for (auto const & c : pvc)
+    for (auto c : pvc.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4432,7 +4511,7 @@ Native::Interface::CEM::Ip::Ip()
     address{YType::str, "address"}
 {
 
-    yang_name = "ip"; yang_parent_name = "CEM"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "CEM"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Ip::~Ip()
@@ -4441,6 +4520,7 @@ Native::Interface::CEM::Ip::~Ip()
 
 bool Native::Interface::CEM::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -4508,9 +4588,11 @@ Native::Interface::CEM::Atm::Atm()
     :
     bandwidth{YType::enumeration, "bandwidth"},
     enable_ilmi_trap{YType::boolean, "enable-ilmi-trap"}
+        ,
+    pvp(this, {"pvp_number"})
 {
 
-    yang_name = "atm"; yang_parent_name = "CEM"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atm"; yang_parent_name = "CEM"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Atm::~Atm()
@@ -4519,7 +4601,8 @@ Native::Interface::CEM::Atm::~Atm()
 
 bool Native::Interface::CEM::Atm::has_data() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_data())
             return true;
@@ -4530,7 +4613,7 @@ bool Native::Interface::CEM::Atm::has_data() const
 
 bool Native::Interface::CEM::Atm::has_operation() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_operation())
             return true;
@@ -4564,7 +4647,7 @@ std::shared_ptr<Entity> Native::Interface::CEM::Atm::get_child_by_name(const std
     {
         auto c = std::make_shared<Native::Interface::CEM::Atm::Pvp>();
         c->parent = this;
-        pvp.push_back(c);
+        pvp.append(c);
         return c;
     }
 
@@ -4576,7 +4659,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::CEM::Atm::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pvp)
+    for (auto c : pvp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4626,14 +4709,14 @@ Native::Interface::CEM::Atm::Pvp::Pvp()
     :
     pvp_number{YType::uint16, "pvp-number"},
     l2transport{YType::empty, "l2transport"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::CEM::Atm::Pvp::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::CEM::Atm::Pvp::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::CEM::Atm::Pvp::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "pvp"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvp"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Atm::Pvp::~Pvp()
@@ -4642,6 +4725,7 @@ Native::Interface::CEM::Atm::Pvp::~Pvp()
 
 bool Native::Interface::CEM::Atm::Pvp::has_data() const
 {
+    if (is_presence_container) return true;
     return pvp_number.is_set
 	|| l2transport.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
@@ -4660,7 +4744,8 @@ bool Native::Interface::CEM::Atm::Pvp::has_operation() const
 std::string Native::Interface::CEM::Atm::Pvp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pvp" <<"[pvp-number='" <<pvp_number <<"']";
+    path_buffer << "pvp";
+    ADD_KEY_TOKEN(pvp_number, "pvp-number");
     return path_buffer.str();
 }
 
@@ -4759,12 +4844,12 @@ Native::Interface::CEM::Atm::Pvp::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::CEM::Atm::Pvp::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Atm::Pvp::Xconnect::~Xconnect()
@@ -4773,6 +4858,7 @@ Native::Interface::CEM::Atm::Pvp::Xconnect::~Xconnect()
 
 bool Native::Interface::CEM::Atm::Pvp::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -4933,12 +5019,12 @@ bool Native::Interface::CEM::Atm::Pvp::Xconnect::has_leaf_or_child_of_name(const
 Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::~Backup()
@@ -4947,6 +5033,7 @@ Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::~Backup()
 
 bool Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -5037,7 +5124,7 @@ Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::Peer::~Peer()
@@ -5046,6 +5133,7 @@ Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -5154,7 +5242,7 @@ Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::Delay::~Delay()
@@ -5163,6 +5251,7 @@ Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::CEM::Atm::Pvp::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -5245,7 +5334,7 @@ Native::Interface::CEM::Atm::Pvp::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Atm::Pvp::XconnectPwClass::~XconnectPwClass()
@@ -5254,6 +5343,7 @@ Native::Interface::CEM::Atm::Pvp::XconnectPwClass::~XconnectPwClass()
 
 bool Native::Interface::CEM::Atm::Pvp::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -5325,12 +5415,12 @@ Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::Xconnect()
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::~Xconnect()
@@ -5339,6 +5429,7 @@ Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::~Xconnect()
 
 bool Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -5450,7 +5541,7 @@ Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Udp()
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -5459,6 +5550,7 @@ Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::~Udp()
 
 bool Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -5531,7 +5623,7 @@ Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::Port()
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -5540,6 +5632,7 @@ Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::~Port()
 
 bool Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -5619,14 +5712,14 @@ bool Native::Interface::CEM::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::has
 Native::Interface::CEM::Cem::Cem()
     :
     number{YType::uint32, "number"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::CEM::Cem::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::CEM::Cem::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::CEM::Cem::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "cem"; yang_parent_name = "CEM"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem"; yang_parent_name = "CEM"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Cem::~Cem()
@@ -5635,6 +5728,7 @@ Native::Interface::CEM::Cem::~Cem()
 
 bool Native::Interface::CEM::Cem::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
 	|| (xconnect_pw_class !=  nullptr && xconnect_pw_class->has_data());
@@ -5651,7 +5745,8 @@ bool Native::Interface::CEM::Cem::has_operation() const
 std::string Native::Interface::CEM::Cem::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-atm:cem" <<"[number='" <<number <<"']";
+    path_buffer << "Cisco-IOS-XE-atm:cem";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -5739,12 +5834,12 @@ Native::Interface::CEM::Cem::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::CEM::Cem::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Cem::Xconnect::~Xconnect()
@@ -5753,6 +5848,7 @@ Native::Interface::CEM::Cem::Xconnect::~Xconnect()
 
 bool Native::Interface::CEM::Cem::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -5913,12 +6009,12 @@ bool Native::Interface::CEM::Cem::Xconnect::has_leaf_or_child_of_name(const std:
 Native::Interface::CEM::Cem::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::CEM::Cem::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::CEM::Cem::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::CEM::Cem::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Cem::Xconnect::Backup::~Backup()
@@ -5927,6 +6023,7 @@ Native::Interface::CEM::Cem::Xconnect::Backup::~Backup()
 
 bool Native::Interface::CEM::Cem::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -6017,7 +6114,7 @@ Native::Interface::CEM::Cem::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Cem::Xconnect::Backup::Peer::~Peer()
@@ -6026,6 +6123,7 @@ Native::Interface::CEM::Cem::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::CEM::Cem::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -6134,7 +6232,7 @@ Native::Interface::CEM::Cem::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Cem::Xconnect::Backup::Delay::~Delay()
@@ -6143,6 +6241,7 @@ Native::Interface::CEM::Cem::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::CEM::Cem::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -6225,7 +6324,7 @@ Native::Interface::CEM::Cem::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Cem::XconnectPwClass::~XconnectPwClass()
@@ -6234,6 +6333,7 @@ Native::Interface::CEM::Cem::XconnectPwClass::~XconnectPwClass()
 
 bool Native::Interface::CEM::Cem::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -6305,12 +6405,12 @@ Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::Xconnect()
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::~Xconnect()
@@ -6319,6 +6419,7 @@ Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::~Xconnect()
 
 bool Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -6430,7 +6531,7 @@ Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::Udp::Udp()
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -6439,6 +6540,7 @@ Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::Udp::~Udp()
 
 bool Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -6511,7 +6613,7 @@ Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::Udp::Port::Port()
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -6520,6 +6622,7 @@ Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::Udp::Port::~Port()
 
 bool Native::Interface::CEM::Cem::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -6602,14 +6705,14 @@ Native::Interface::CEM::Pvc::Pvc()
     remote_vpi_vci{YType::str, "remote-vpi-vci"},
     l2transport{YType::empty, "l2transport"},
     ubr{YType::uint32, "ubr"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::CEM::Pvc::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::CEM::Pvc::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::CEM::Pvc::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "pvc"; yang_parent_name = "CEM"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvc"; yang_parent_name = "CEM"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Pvc::~Pvc()
@@ -6618,6 +6721,7 @@ Native::Interface::CEM::Pvc::~Pvc()
 
 bool Native::Interface::CEM::Pvc::has_data() const
 {
+    if (is_presence_container) return true;
     return local_vpi_vci.is_set
 	|| remote_vpi_vci.is_set
 	|| l2transport.is_set
@@ -6640,7 +6744,8 @@ bool Native::Interface::CEM::Pvc::has_operation() const
 std::string Native::Interface::CEM::Pvc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-atm:pvc" <<"[local-vpi-vci='" <<local_vpi_vci <<"']";
+    path_buffer << "Cisco-IOS-XE-atm:pvc";
+    ADD_KEY_TOKEN(local_vpi_vci, "local-vpi-vci");
     return path_buffer.str();
 }
 
@@ -6761,12 +6866,12 @@ Native::Interface::CEM::Pvc::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::CEM::Pvc::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Pvc::Xconnect::~Xconnect()
@@ -6775,6 +6880,7 @@ Native::Interface::CEM::Pvc::Xconnect::~Xconnect()
 
 bool Native::Interface::CEM::Pvc::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -6935,12 +7041,12 @@ bool Native::Interface::CEM::Pvc::Xconnect::has_leaf_or_child_of_name(const std:
 Native::Interface::CEM::Pvc::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::CEM::Pvc::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::CEM::Pvc::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::CEM::Pvc::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Pvc::Xconnect::Backup::~Backup()
@@ -6949,6 +7055,7 @@ Native::Interface::CEM::Pvc::Xconnect::Backup::~Backup()
 
 bool Native::Interface::CEM::Pvc::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -7039,7 +7146,7 @@ Native::Interface::CEM::Pvc::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Pvc::Xconnect::Backup::Peer::~Peer()
@@ -7048,6 +7155,7 @@ Native::Interface::CEM::Pvc::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::CEM::Pvc::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -7156,7 +7264,7 @@ Native::Interface::CEM::Pvc::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Pvc::Xconnect::Backup::Delay::~Delay()
@@ -7165,6 +7273,7 @@ Native::Interface::CEM::Pvc::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::CEM::Pvc::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -7247,7 +7356,7 @@ Native::Interface::CEM::Pvc::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Pvc::XconnectPwClass::~XconnectPwClass()
@@ -7256,6 +7365,7 @@ Native::Interface::CEM::Pvc::XconnectPwClass::~XconnectPwClass()
 
 bool Native::Interface::CEM::Pvc::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -7327,12 +7437,12 @@ Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::Xconnect()
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::~Xconnect()
@@ -7341,6 +7451,7 @@ Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::~Xconnect()
 
 bool Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -7452,7 +7563,7 @@ Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::Udp::Udp()
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -7461,6 +7572,7 @@ Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::Udp::~Udp()
 
 bool Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -7533,7 +7645,7 @@ Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::Udp::Port::Port()
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -7542,6 +7654,7 @@ Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::Udp::Port::~Port()
 
 bool Native::Interface::CEM::Pvc::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -7622,14 +7735,16 @@ Native::Interface::CEMACR::CEMACR()
     :
     name{YType::uint8, "name"},
     load_interval{YType::uint32, "Cisco-IOS-XE-atm:load-interval"}
-    	,
+        ,
     ip(std::make_shared<Native::Interface::CEMACR::Ip>())
-	,atm(std::make_shared<Native::Interface::CEMACR::Atm>())
+    , atm(std::make_shared<Native::Interface::CEMACR::Atm>())
+    , cem(this, {"number"})
+    , pvc(this, {"local_vpi_vci"})
 {
     ip->parent = this;
     atm->parent = this;
 
-    yang_name = "CEM-ACR"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "CEM-ACR"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::CEMACR::~CEMACR()
@@ -7638,12 +7753,13 @@ Native::Interface::CEMACR::~CEMACR()
 
 bool Native::Interface::CEMACR::has_data() const
 {
-    for (std::size_t index=0; index<cem.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pvc.size(); index++)
+    for (std::size_t index=0; index<pvc.len(); index++)
     {
         if(pvc[index]->has_data())
             return true;
@@ -7656,12 +7772,12 @@ bool Native::Interface::CEMACR::has_data() const
 
 bool Native::Interface::CEMACR::has_operation() const
 {
-    for (std::size_t index=0; index<cem.size(); index++)
+    for (std::size_t index=0; index<cem.len(); index++)
     {
         if(cem[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pvc.size(); index++)
+    for (std::size_t index=0; index<pvc.len(); index++)
     {
         if(pvc[index]->has_operation())
             return true;
@@ -7683,7 +7799,8 @@ std::string Native::Interface::CEMACR::get_absolute_path() const
 std::string Native::Interface::CEMACR::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "CEM-ACR" <<"[name='" <<name <<"']";
+    path_buffer << "CEM-ACR";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -7722,7 +7839,7 @@ std::shared_ptr<Entity> Native::Interface::CEMACR::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Interface::CEMACR::Cem>();
         c->parent = this;
-        cem.push_back(c);
+        cem.append(c);
         return c;
     }
 
@@ -7730,7 +7847,7 @@ std::shared_ptr<Entity> Native::Interface::CEMACR::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Interface::CEMACR::Pvc>();
         c->parent = this;
-        pvc.push_back(c);
+        pvc.append(c);
         return c;
     }
 
@@ -7752,7 +7869,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::CEMACR::get_ch
     }
 
     count = 0;
-    for (auto const & c : cem)
+    for (auto c : cem.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7761,7 +7878,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::CEMACR::get_ch
     }
 
     count = 0;
-    for (auto const & c : pvc)
+    for (auto c : pvc.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7812,7 +7929,7 @@ Native::Interface::CEMACR::Ip::Ip()
     address{YType::str, "address"}
 {
 
-    yang_name = "ip"; yang_parent_name = "CEM-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "CEM-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Ip::~Ip()
@@ -7821,6 +7938,7 @@ Native::Interface::CEMACR::Ip::~Ip()
 
 bool Native::Interface::CEMACR::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -7888,9 +8006,11 @@ Native::Interface::CEMACR::Atm::Atm()
     :
     bandwidth{YType::enumeration, "bandwidth"},
     enable_ilmi_trap{YType::boolean, "enable-ilmi-trap"}
+        ,
+    pvp(this, {"pvp_number"})
 {
 
-    yang_name = "atm"; yang_parent_name = "CEM-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atm"; yang_parent_name = "CEM-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Atm::~Atm()
@@ -7899,7 +8019,8 @@ Native::Interface::CEMACR::Atm::~Atm()
 
 bool Native::Interface::CEMACR::Atm::has_data() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_data())
             return true;
@@ -7910,7 +8031,7 @@ bool Native::Interface::CEMACR::Atm::has_data() const
 
 bool Native::Interface::CEMACR::Atm::has_operation() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_operation())
             return true;
@@ -7944,7 +8065,7 @@ std::shared_ptr<Entity> Native::Interface::CEMACR::Atm::get_child_by_name(const 
     {
         auto c = std::make_shared<Native::Interface::CEMACR::Atm::Pvp>();
         c->parent = this;
-        pvp.push_back(c);
+        pvp.append(c);
         return c;
     }
 
@@ -7956,7 +8077,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::CEMACR::Atm::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pvp)
+    for (auto c : pvp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8006,14 +8127,14 @@ Native::Interface::CEMACR::Atm::Pvp::Pvp()
     :
     pvp_number{YType::uint16, "pvp-number"},
     l2transport{YType::empty, "l2transport"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::CEMACR::Atm::Pvp::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "pvp"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvp"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Atm::Pvp::~Pvp()
@@ -8022,6 +8143,7 @@ Native::Interface::CEMACR::Atm::Pvp::~Pvp()
 
 bool Native::Interface::CEMACR::Atm::Pvp::has_data() const
 {
+    if (is_presence_container) return true;
     return pvp_number.is_set
 	|| l2transport.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
@@ -8040,7 +8162,8 @@ bool Native::Interface::CEMACR::Atm::Pvp::has_operation() const
 std::string Native::Interface::CEMACR::Atm::Pvp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pvp" <<"[pvp-number='" <<pvp_number <<"']";
+    path_buffer << "pvp";
+    ADD_KEY_TOKEN(pvp_number, "pvp-number");
     return path_buffer.str();
 }
 
@@ -8139,12 +8262,12 @@ Native::Interface::CEMACR::Atm::Pvp::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Atm::Pvp::Xconnect::~Xconnect()
@@ -8153,6 +8276,7 @@ Native::Interface::CEMACR::Atm::Pvp::Xconnect::~Xconnect()
 
 bool Native::Interface::CEMACR::Atm::Pvp::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -8313,12 +8437,12 @@ bool Native::Interface::CEMACR::Atm::Pvp::Xconnect::has_leaf_or_child_of_name(co
 Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::~Backup()
@@ -8327,6 +8451,7 @@ Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::~Backup()
 
 bool Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -8417,7 +8542,7 @@ Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::Peer::~Peer()
@@ -8426,6 +8551,7 @@ Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -8534,7 +8660,7 @@ Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::Delay::~Delay()
@@ -8543,6 +8669,7 @@ Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::CEMACR::Atm::Pvp::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -8625,7 +8752,7 @@ Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::~XconnectPwClass()
@@ -8634,6 +8761,7 @@ Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::~XconnectPwClass()
 
 bool Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -8705,12 +8833,12 @@ Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::Xconnect()
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::~Xconnect()
@@ -8719,6 +8847,7 @@ Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::~Xconnect()
 
 bool Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -8830,7 +8959,7 @@ Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Udp()
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -8839,6 +8968,7 @@ Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::~Udp()
 
 bool Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -8911,7 +9041,7 @@ Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::Port(
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -8920,6 +9050,7 @@ Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::~Port
 
 bool Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -8999,14 +9130,14 @@ bool Native::Interface::CEMACR::Atm::Pvp::XconnectPwClass::Xconnect::Udp::Port::
 Native::Interface::CEMACR::Cem::Cem()
     :
     number{YType::uint32, "number"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::CEMACR::Cem::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::CEMACR::Cem::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::CEMACR::Cem::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "cem"; yang_parent_name = "CEM-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem"; yang_parent_name = "CEM-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Cem::~Cem()
@@ -9015,6 +9146,7 @@ Native::Interface::CEMACR::Cem::~Cem()
 
 bool Native::Interface::CEMACR::Cem::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (xconnect !=  nullptr && xconnect->has_data())
 	|| (xconnect_pw_class !=  nullptr && xconnect_pw_class->has_data());
@@ -9031,7 +9163,8 @@ bool Native::Interface::CEMACR::Cem::has_operation() const
 std::string Native::Interface::CEMACR::Cem::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-atm:cem" <<"[number='" <<number <<"']";
+    path_buffer << "Cisco-IOS-XE-atm:cem";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -9119,12 +9252,12 @@ Native::Interface::CEMACR::Cem::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::CEMACR::Cem::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Cem::Xconnect::~Xconnect()
@@ -9133,6 +9266,7 @@ Native::Interface::CEMACR::Cem::Xconnect::~Xconnect()
 
 bool Native::Interface::CEMACR::Cem::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -9293,12 +9427,12 @@ bool Native::Interface::CEMACR::Cem::Xconnect::has_leaf_or_child_of_name(const s
 Native::Interface::CEMACR::Cem::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::CEMACR::Cem::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::CEMACR::Cem::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::CEMACR::Cem::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Cem::Xconnect::Backup::~Backup()
@@ -9307,6 +9441,7 @@ Native::Interface::CEMACR::Cem::Xconnect::Backup::~Backup()
 
 bool Native::Interface::CEMACR::Cem::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -9397,7 +9532,7 @@ Native::Interface::CEMACR::Cem::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Cem::Xconnect::Backup::Peer::~Peer()
@@ -9406,6 +9541,7 @@ Native::Interface::CEMACR::Cem::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::CEMACR::Cem::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -9514,7 +9650,7 @@ Native::Interface::CEMACR::Cem::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Cem::Xconnect::Backup::Delay::~Delay()
@@ -9523,6 +9659,7 @@ Native::Interface::CEMACR::Cem::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::CEMACR::Cem::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -9605,7 +9742,7 @@ Native::Interface::CEMACR::Cem::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "cem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Cem::XconnectPwClass::~XconnectPwClass()
@@ -9614,6 +9751,7 @@ Native::Interface::CEMACR::Cem::XconnectPwClass::~XconnectPwClass()
 
 bool Native::Interface::CEMACR::Cem::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -9685,12 +9823,12 @@ Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::Xconnect()
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::~Xconnect()
@@ -9699,6 +9837,7 @@ Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::~Xconnect()
 
 bool Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -9810,7 +9949,7 @@ Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::Udp::Udp()
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -9819,6 +9958,7 @@ Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::Udp::~Udp()
 
 bool Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -9891,7 +10031,7 @@ Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::Udp::Port::Port()
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -9900,6 +10040,7 @@ Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::Udp::Port::~Port()
 
 bool Native::Interface::CEMACR::Cem::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -9982,14 +10123,14 @@ Native::Interface::CEMACR::Pvc::Pvc()
     remote_vpi_vci{YType::str, "remote-vpi-vci"},
     l2transport{YType::empty, "l2transport"},
     ubr{YType::uint32, "ubr"}
-    	,
+        ,
     xconnect(std::make_shared<Native::Interface::CEMACR::Pvc::Xconnect>())
-	,xconnect_pw_class(std::make_shared<Native::Interface::CEMACR::Pvc::XconnectPwClass>())
+    , xconnect_pw_class(std::make_shared<Native::Interface::CEMACR::Pvc::XconnectPwClass>())
 {
     xconnect->parent = this;
     xconnect_pw_class->parent = this;
 
-    yang_name = "pvc"; yang_parent_name = "CEM-ACR"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvc"; yang_parent_name = "CEM-ACR"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Pvc::~Pvc()
@@ -9998,6 +10139,7 @@ Native::Interface::CEMACR::Pvc::~Pvc()
 
 bool Native::Interface::CEMACR::Pvc::has_data() const
 {
+    if (is_presence_container) return true;
     return local_vpi_vci.is_set
 	|| remote_vpi_vci.is_set
 	|| l2transport.is_set
@@ -10020,7 +10162,8 @@ bool Native::Interface::CEMACR::Pvc::has_operation() const
 std::string Native::Interface::CEMACR::Pvc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-atm:pvc" <<"[local-vpi-vci='" <<local_vpi_vci <<"']";
+    path_buffer << "Cisco-IOS-XE-atm:pvc";
+    ADD_KEY_TOKEN(local_vpi_vci, "local-vpi-vci");
     return path_buffer.str();
 }
 
@@ -10141,12 +10284,12 @@ Native::Interface::CEMACR::Pvc::Xconnect::Xconnect()
     pw_class{YType::str, "pw-class"},
     sequencing{YType::enumeration, "sequencing"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     backup(std::make_shared<Native::Interface::CEMACR::Pvc::Xconnect::Backup>())
 {
     backup->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Pvc::Xconnect::~Xconnect()
@@ -10155,6 +10298,7 @@ Native::Interface::CEMACR::Pvc::Xconnect::~Xconnect()
 
 bool Native::Interface::CEMACR::Pvc::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| encapsulation.is_set
@@ -10315,12 +10459,12 @@ bool Native::Interface::CEMACR::Pvc::Xconnect::has_leaf_or_child_of_name(const s
 Native::Interface::CEMACR::Pvc::Xconnect::Backup::Backup()
     :
     peer(std::make_shared<Native::Interface::CEMACR::Pvc::Xconnect::Backup::Peer>())
-	,delay(std::make_shared<Native::Interface::CEMACR::Pvc::Xconnect::Backup::Delay>())
+    , delay(std::make_shared<Native::Interface::CEMACR::Pvc::Xconnect::Backup::Delay>())
 {
     peer->parent = this;
     delay->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Pvc::Xconnect::Backup::~Backup()
@@ -10329,6 +10473,7 @@ Native::Interface::CEMACR::Pvc::Xconnect::Backup::~Backup()
 
 bool Native::Interface::CEMACR::Pvc::Xconnect::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data())
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -10419,7 +10564,7 @@ Native::Interface::CEMACR::Pvc::Xconnect::Backup::Peer::Peer()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Pvc::Xconnect::Backup::Peer::~Peer()
@@ -10428,6 +10573,7 @@ Native::Interface::CEMACR::Pvc::Xconnect::Backup::Peer::~Peer()
 
 bool Native::Interface::CEMACR::Pvc::Xconnect::Backup::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_router_ip_addr.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -10536,7 +10682,7 @@ Native::Interface::CEMACR::Pvc::Xconnect::Backup::Delay::Delay()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Pvc::Xconnect::Backup::Delay::~Delay()
@@ -10545,6 +10691,7 @@ Native::Interface::CEMACR::Pvc::Xconnect::Backup::Delay::~Delay()
 
 bool Native::Interface::CEMACR::Pvc::Xconnect::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -10627,7 +10774,7 @@ Native::Interface::CEMACR::Pvc::XconnectPwClass::XconnectPwClass()
 {
     xconnect->parent = this;
 
-    yang_name = "xconnect-pw-class"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect-pw-class"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Pvc::XconnectPwClass::~XconnectPwClass()
@@ -10636,6 +10783,7 @@ Native::Interface::CEMACR::Pvc::XconnectPwClass::~XconnectPwClass()
 
 bool Native::Interface::CEMACR::Pvc::XconnectPwClass::has_data() const
 {
+    if (is_presence_container) return true;
     return (xconnect !=  nullptr && xconnect->has_data());
 }
 
@@ -10707,12 +10855,12 @@ Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::Xconnect()
     address{YType::str, "address"},
     vcid{YType::uint32, "vcid"},
     pw_class{YType::str, "pw-class"}
-    	,
+        ,
     udp(std::make_shared<Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::Udp>())
 {
     udp->parent = this;
 
-    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xconnect"; yang_parent_name = "xconnect-pw-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::~Xconnect()
@@ -10721,6 +10869,7 @@ Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::~Xconnect()
 
 bool Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| vcid.is_set
 	|| pw_class.is_set
@@ -10832,7 +10981,7 @@ Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::Udp::Udp()
 {
     port->parent = this;
 
-    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::Udp::~Udp()
@@ -10841,6 +10990,7 @@ Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::Udp::~Udp()
 
 bool Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -10913,7 +11063,7 @@ Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::Udp::Port::Port()
     remote{YType::uint32, "remote"}
 {
 
-    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::Udp::Port::~Port()
@@ -10922,6 +11072,7 @@ Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::Udp::Port::~Port()
 
 bool Native::Interface::CEMACR::Pvc::XconnectPwClass::Xconnect::Udp::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| remote.is_set;
 }
@@ -11011,42 +11162,43 @@ Native::Interface::EmbeddedServiceEngine::EmbeddedServiceEngine()
     max_reserved_bandwidth{YType::uint8, "max-reserved-bandwidth"},
     mtu{YType::uint16, "mtu"},
     service_insertion{YType::enumeration, "service-insertion"}
-    	,
+        ,
     switchport_conf(std::make_shared<Native::Interface::EmbeddedServiceEngine::SwitchportConf>())
-	,switchport(std::make_shared<Native::Interface::EmbeddedServiceEngine::Switchport>())
-	,stackwise_virtual(std::make_shared<Native::Interface::EmbeddedServiceEngine::StackwiseVirtual>())
-	,arp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Arp>())
-	,backup(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup>())
-	,cemoudp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Cemoudp>())
-	,cws_tunnel(std::make_shared<Native::Interface::EmbeddedServiceEngine::CwsTunnel>())
-	,l2protocol_tunnel(nullptr) // presence node
-	,encapsulation(std::make_shared<Native::Interface::EmbeddedServiceEngine::Encapsulation>())
-	,fair_queue_conf(std::make_shared<Native::Interface::EmbeddedServiceEngine::FairQueueConf>())
-	,fair_queue(std::make_shared<Native::Interface::EmbeddedServiceEngine::FairQueue>())
-	,flowcontrol(std::make_shared<Native::Interface::EmbeddedServiceEngine::Flowcontrol>())
-	,isis(std::make_shared<Native::Interface::EmbeddedServiceEngine::Isis>())
-	,keepalive_settings(std::make_shared<Native::Interface::EmbeddedServiceEngine::KeepaliveSettings>())
-	,bfd(std::make_shared<Native::Interface::EmbeddedServiceEngine::Bfd>())
-	,bandwidth(std::make_shared<Native::Interface::EmbeddedServiceEngine::Bandwidth>())
-	,dampening(std::make_shared<Native::Interface::EmbeddedServiceEngine::Dampening>())
-	,domain(std::make_shared<Native::Interface::EmbeddedServiceEngine::Domain>())
-	,mpls(std::make_shared<Native::Interface::EmbeddedServiceEngine::Mpls>())
-	,ip_vrf(std::make_shared<Native::Interface::EmbeddedServiceEngine::IpVrf>())
-	,vrf(std::make_shared<Native::Interface::EmbeddedServiceEngine::Vrf>())
-	,ip(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip>())
-	,ipv6(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6>())
-	,logging(std::make_shared<Native::Interface::EmbeddedServiceEngine::Logging>())
-	,mdix(std::make_shared<Native::Interface::EmbeddedServiceEngine::Mdix>())
-	,mop(std::make_shared<Native::Interface::EmbeddedServiceEngine::Mop>())
-	,interface_qos(std::make_shared<Native::Interface::EmbeddedServiceEngine::InterfaceQos>())
-	,standby(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby>())
-	,access_session(std::make_shared<Native::Interface::EmbeddedServiceEngine::AccessSession>())
-	,storm_control(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl>())
-	,trust(std::make_shared<Native::Interface::EmbeddedServiceEngine::Trust>())
-	,priority_queue(std::make_shared<Native::Interface::EmbeddedServiceEngine::PriorityQueue>())
-	,rcv_queue(std::make_shared<Native::Interface::EmbeddedServiceEngine::RcvQueue>())
-	,peer(std::make_shared<Native::Interface::EmbeddedServiceEngine::Peer>())
-	,pm_path(std::make_shared<Native::Interface::EmbeddedServiceEngine::PmPath>())
+    , switchport(std::make_shared<Native::Interface::EmbeddedServiceEngine::Switchport>())
+    , stackwise_virtual(std::make_shared<Native::Interface::EmbeddedServiceEngine::StackwiseVirtual>())
+    , arp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Arp>())
+    , backup(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup>())
+    , cemoudp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Cemoudp>())
+    , cws_tunnel(std::make_shared<Native::Interface::EmbeddedServiceEngine::CwsTunnel>())
+    , l2protocol_tunnel(nullptr) // presence node
+    , encapsulation(std::make_shared<Native::Interface::EmbeddedServiceEngine::Encapsulation>())
+    , fair_queue_conf(std::make_shared<Native::Interface::EmbeddedServiceEngine::FairQueueConf>())
+    , fair_queue(std::make_shared<Native::Interface::EmbeddedServiceEngine::FairQueue>())
+    , flowcontrol(std::make_shared<Native::Interface::EmbeddedServiceEngine::Flowcontrol>())
+    , isis(std::make_shared<Native::Interface::EmbeddedServiceEngine::Isis>())
+    , keepalive_settings(std::make_shared<Native::Interface::EmbeddedServiceEngine::KeepaliveSettings>())
+    , bfd(std::make_shared<Native::Interface::EmbeddedServiceEngine::Bfd>())
+    , bandwidth(std::make_shared<Native::Interface::EmbeddedServiceEngine::Bandwidth>())
+    , dampening(std::make_shared<Native::Interface::EmbeddedServiceEngine::Dampening>())
+    , domain(std::make_shared<Native::Interface::EmbeddedServiceEngine::Domain>())
+    , hold_queue(this, {"direction"})
+    , mpls(std::make_shared<Native::Interface::EmbeddedServiceEngine::Mpls>())
+    , ip_vrf(std::make_shared<Native::Interface::EmbeddedServiceEngine::IpVrf>())
+    , vrf(std::make_shared<Native::Interface::EmbeddedServiceEngine::Vrf>())
+    , ip(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip>())
+    , ipv6(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6>())
+    , logging(std::make_shared<Native::Interface::EmbeddedServiceEngine::Logging>())
+    , mdix(std::make_shared<Native::Interface::EmbeddedServiceEngine::Mdix>())
+    , mop(std::make_shared<Native::Interface::EmbeddedServiceEngine::Mop>())
+    , interface_qos(std::make_shared<Native::Interface::EmbeddedServiceEngine::InterfaceQos>())
+    , standby(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby>())
+    , access_session(std::make_shared<Native::Interface::EmbeddedServiceEngine::AccessSession>())
+    , storm_control(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl>())
+    , trust(std::make_shared<Native::Interface::EmbeddedServiceEngine::Trust>())
+    , priority_queue(std::make_shared<Native::Interface::EmbeddedServiceEngine::PriorityQueue>())
+    , rcv_queue(std::make_shared<Native::Interface::EmbeddedServiceEngine::RcvQueue>())
+    , peer(std::make_shared<Native::Interface::EmbeddedServiceEngine::Peer>())
+    , pm_path(std::make_shared<Native::Interface::EmbeddedServiceEngine::PmPath>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -11083,7 +11235,7 @@ Native::Interface::EmbeddedServiceEngine::EmbeddedServiceEngine()
     peer->parent = this;
     pm_path->parent = this;
 
-    yang_name = "Embedded-Service-Engine"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "Embedded-Service-Engine"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::EmbeddedServiceEngine::~EmbeddedServiceEngine()
@@ -11092,7 +11244,8 @@ Native::Interface::EmbeddedServiceEngine::~EmbeddedServiceEngine()
 
 bool Native::Interface::EmbeddedServiceEngine::has_data() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_data())
             return true;
@@ -11147,7 +11300,7 @@ bool Native::Interface::EmbeddedServiceEngine::has_data() const
 
 bool Native::Interface::EmbeddedServiceEngine::has_operation() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_operation())
             return true;
@@ -11211,7 +11364,8 @@ std::string Native::Interface::EmbeddedServiceEngine::get_absolute_path() const
 std::string Native::Interface::EmbeddedServiceEngine::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Embedded-Service-Engine" <<"[name='" <<name <<"']";
+    path_buffer << "Embedded-Service-Engine";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -11304,7 +11458,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::get_child_by_n
     {
         if(l2protocol_tunnel == nullptr)
         {
-            l2protocol_tunnel = std::make_shared<Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel>();
+            l2protocol_tunnel = std::make_shared<Native::Interface::EmbeddedServiceEngine::L2protocolTunnel>();
         }
         return l2protocol_tunnel;
     }
@@ -11403,7 +11557,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::get_child_by_n
     {
         auto c = std::make_shared<Native::Interface::EmbeddedServiceEngine::HoldQueue>();
         c->parent = this;
-        hold_queue.push_back(c);
+        hold_queue.append(c);
         return c;
     }
 
@@ -11658,7 +11812,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServic
     }
 
     count = 0;
-    for (auto const & c : hold_queue)
+    for (auto c : hold_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11884,7 +12038,7 @@ Native::Interface::EmbeddedServiceEngine::SwitchportConf::SwitchportConf()
     switchport{YType::boolean, "switchport"}
 {
 
-    yang_name = "switchport-conf"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport-conf"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::SwitchportConf::~SwitchportConf()
@@ -11893,6 +12047,7 @@ Native::Interface::EmbeddedServiceEngine::SwitchportConf::~SwitchportConf()
 
 bool Native::Interface::EmbeddedServiceEngine::SwitchportConf::has_data() const
 {
+    if (is_presence_container) return true;
     return switchport.is_set;
 }
 
@@ -11959,7 +12114,7 @@ bool Native::Interface::EmbeddedServiceEngine::SwitchportConf::has_leaf_or_child
 Native::Interface::EmbeddedServiceEngine::Switchport::Switchport()
 {
 
-    yang_name = "switchport"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Switchport::~Switchport()
@@ -11968,6 +12123,7 @@ Native::Interface::EmbeddedServiceEngine::Switchport::~Switchport()
 
 bool Native::Interface::EmbeddedServiceEngine::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -12023,7 +12179,7 @@ Native::Interface::EmbeddedServiceEngine::StackwiseVirtual::StackwiseVirtual()
     dual_active_detection{YType::empty, "dual-active-detection"}
 {
 
-    yang_name = "stackwise-virtual"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stackwise-virtual"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StackwiseVirtual::~StackwiseVirtual()
@@ -12032,6 +12188,7 @@ Native::Interface::EmbeddedServiceEngine::StackwiseVirtual::~StackwiseVirtual()
 
 bool Native::Interface::EmbeddedServiceEngine::StackwiseVirtual::has_data() const
 {
+    if (is_presence_container) return true;
     return link.is_set
 	|| dual_active_detection.is_set;
 }
@@ -12113,7 +12270,7 @@ Native::Interface::EmbeddedServiceEngine::Arp::Arp()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "arp"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Arp::~Arp()
@@ -12122,6 +12279,7 @@ Native::Interface::EmbeddedServiceEngine::Arp::~Arp()
 
 bool Native::Interface::EmbeddedServiceEngine::Arp::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set;
 }
 
@@ -12188,14 +12346,14 @@ bool Native::Interface::EmbeddedServiceEngine::Arp::has_leaf_or_child_of_name(co
 Native::Interface::EmbeddedServiceEngine::Backup::Backup()
     :
     delay(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup::Delay>())
-	,interface(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup::Interface_>())
-	,load(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup::Load>())
+    , interface(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup::Interface_>())
+    , load(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup::Load>())
 {
     delay->parent = this;
     interface->parent = this;
     load->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Backup::~Backup()
@@ -12204,6 +12362,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::~Backup()
 
 bool Native::Interface::EmbeddedServiceEngine::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (delay !=  nullptr && delay->has_data())
 	|| (interface !=  nullptr && interface->has_data())
 	|| (load !=  nullptr && load->has_data());
@@ -12308,7 +12467,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Delay::Delay()
     secondary_disable{YType::str, "secondary-disable"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Backup::Delay::~Delay()
@@ -12317,6 +12476,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Delay::~Delay()
 
 bool Native::Interface::EmbeddedServiceEngine::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return failure.is_set
 	|| secondary_disable.is_set;
 }
@@ -12427,18 +12587,18 @@ Native::Interface::EmbeddedServiceEngine::Backup::Interface_::Interface_()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup::Interface_::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup::Interface_::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup::Interface_::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup::Interface_::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup::Interface_::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup::Interface_::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Interface::EmbeddedServiceEngine::Backup::Interface_::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Backup::Interface_::~Interface_()
@@ -12447,6 +12607,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Interface_::~Interface_()
 
 bool Native::Interface::EmbeddedServiceEngine::Backup::Interface_::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -12982,7 +13143,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Interface_::ATMSubinterface::A
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Backup::Interface_::ATMSubinterface::~ATMSubinterface()
@@ -12991,6 +13152,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Interface_::ATMSubinterface::~
 
 bool Native::Interface::EmbeddedServiceEngine::Backup::Interface_::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -13059,7 +13221,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Interface_::ATMACRsubinterface
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Backup::Interface_::ATMACRsubinterface::~ATMACRsubinterface()
@@ -13068,6 +13230,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Interface_::ATMACRsubinterface
 
 bool Native::Interface::EmbeddedServiceEngine::Backup::Interface_::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -13136,7 +13299,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Interface_::LISPSubinterface::
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Backup::Interface_::LISPSubinterface::~LISPSubinterface()
@@ -13145,6 +13308,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Interface_::LISPSubinterface::
 
 bool Native::Interface::EmbeddedServiceEngine::Backup::Interface_::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -13213,7 +13377,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Interface_::PortChannelSubinte
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Backup::Interface_::PortChannelSubinterface::~PortChannelSubinterface()
@@ -13222,6 +13386,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Interface_::PortChannelSubinte
 
 bool Native::Interface::EmbeddedServiceEngine::Backup::Interface_::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -13291,7 +13456,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Load::Load()
     kickout{YType::str, "kickout"}
 {
 
-    yang_name = "load"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Backup::Load::~Load()
@@ -13300,6 +13465,7 @@ Native::Interface::EmbeddedServiceEngine::Backup::Load::~Load()
 
 bool Native::Interface::EmbeddedServiceEngine::Backup::Load::has_data() const
 {
+    if (is_presence_container) return true;
     return kickin.is_set
 	|| kickout.is_set;
 }
@@ -13382,7 +13548,7 @@ Native::Interface::EmbeddedServiceEngine::Cemoudp::Cemoudp()
 {
     reserve->parent = this;
 
-    yang_name = "cemoudp"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cemoudp"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Cemoudp::~Cemoudp()
@@ -13391,6 +13557,7 @@ Native::Interface::EmbeddedServiceEngine::Cemoudp::~Cemoudp()
 
 bool Native::Interface::EmbeddedServiceEngine::Cemoudp::has_data() const
 {
+    if (is_presence_container) return true;
     return (reserve !=  nullptr && reserve->has_data());
 }
 
@@ -13462,7 +13629,7 @@ Native::Interface::EmbeddedServiceEngine::Cemoudp::Reserve::Reserve()
     acr{YType::uint8, "acr"}
 {
 
-    yang_name = "reserve"; yang_parent_name = "cemoudp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reserve"; yang_parent_name = "cemoudp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Cemoudp::Reserve::~Reserve()
@@ -13471,6 +13638,7 @@ Native::Interface::EmbeddedServiceEngine::Cemoudp::Reserve::~Reserve()
 
 bool Native::Interface::EmbeddedServiceEngine::Cemoudp::Reserve::has_data() const
 {
+    if (is_presence_container) return true;
     return acr.is_set;
 }
 
@@ -13537,12 +13705,12 @@ bool Native::Interface::EmbeddedServiceEngine::Cemoudp::Reserve::has_leaf_or_chi
 Native::Interface::EmbeddedServiceEngine::CwsTunnel::CwsTunnel()
     :
     in{YType::empty, "in"}
-    	,
+        ,
     out(std::make_shared<Native::Interface::EmbeddedServiceEngine::CwsTunnel::Out>())
 {
     out->parent = this;
 
-    yang_name = "cws-tunnel"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cws-tunnel"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::CwsTunnel::~CwsTunnel()
@@ -13551,6 +13719,7 @@ Native::Interface::EmbeddedServiceEngine::CwsTunnel::~CwsTunnel()
 
 bool Native::Interface::EmbeddedServiceEngine::CwsTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return in.is_set
 	|| (out !=  nullptr && out->has_data());
 }
@@ -13635,7 +13804,7 @@ Native::Interface::EmbeddedServiceEngine::CwsTunnel::Out::Out()
     tunnel_number{YType::uint16, "tunnel-number"}
 {
 
-    yang_name = "out"; yang_parent_name = "cws-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out"; yang_parent_name = "cws-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::CwsTunnel::Out::~Out()
@@ -13644,6 +13813,7 @@ Native::Interface::EmbeddedServiceEngine::CwsTunnel::Out::~Out()
 
 bool Native::Interface::EmbeddedServiceEngine::CwsTunnel::Out::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_number.is_set;
 }
 
@@ -13707,27 +13877,28 @@ bool Native::Interface::EmbeddedServiceEngine::CwsTunnel::Out::has_leaf_or_child
     return false;
 }
 
-Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::L2ProtocolTunnel()
+Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::L2protocolTunnel()
     :
     cdp{YType::empty, "cdp"},
     stp{YType::empty, "stp"},
     vtp{YType::empty, "vtp"}
-    	,
-    drop_threshold(std::make_shared<Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold>())
-	,shutdown_threshold(std::make_shared<Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold>())
+        ,
+    drop_threshold(std::make_shared<Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold>())
+    , shutdown_threshold(std::make_shared<Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold>())
 {
     drop_threshold->parent = this;
     shutdown_threshold->parent = this;
 
-    yang_name = "l2protocol-tunnel"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2protocol-tunnel"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::~L2ProtocolTunnel()
+Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::~L2protocolTunnel()
 {
 }
 
-bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::has_data() const
+bool Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set
@@ -13735,7 +13906,7 @@ bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::has_data() cons
 	|| (shutdown_threshold !=  nullptr && shutdown_threshold->has_data());
 }
 
-bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::has_operation() const
+bool Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdp.yfilter)
@@ -13745,14 +13916,14 @@ bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::has_operation()
 	|| (shutdown_threshold !=  nullptr && shutdown_threshold->has_operation());
 }
 
-std::string Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::get_segment_path() const
+std::string Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2protocol-tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13764,13 +13935,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::EmbeddedServic
 
 }
 
-std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "drop-threshold")
     {
         if(drop_threshold == nullptr)
         {
-            drop_threshold = std::make_shared<Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold>();
+            drop_threshold = std::make_shared<Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold>();
         }
         return drop_threshold;
     }
@@ -13779,7 +13950,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::L2ProtocolTunn
     {
         if(shutdown_threshold == nullptr)
         {
-            shutdown_threshold = std::make_shared<Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold>();
+            shutdown_threshold = std::make_shared<Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold>();
         }
         return shutdown_threshold;
     }
@@ -13787,7 +13958,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::L2ProtocolTunn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13804,7 +13975,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServic
     return children;
 }
 
-void Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdp")
     {
@@ -13826,7 +13997,7 @@ void Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::set_value(const
     }
 }
 
-void Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdp")
     {
@@ -13842,14 +14013,14 @@ void Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::set_filter(cons
     }
 }
 
-bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "drop-threshold" || name == "shutdown-threshold" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
     return false;
 }
 
-Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::DropThreshold()
+Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold::DropThreshold()
     :
     packet_rate{YType::uint16, "packet-rate"},
     cdp{YType::uint16, "cdp"},
@@ -13857,22 +14028,23 @@ Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::DropT
     vtp{YType::uint16, "vtp"}
 {
 
-    yang_name = "drop-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::~DropThreshold()
+Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold::~DropThreshold()
 {
 }
 
-bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::has_data() const
+bool Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_rate.is_set
 	|| cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set;
 }
 
-bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::has_operation() const
+bool Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_rate.yfilter)
@@ -13881,14 +14053,14 @@ bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::
 	|| ydk::is_set(vtp.yfilter);
 }
 
-std::string Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::get_segment_path() const
+std::string Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "drop-threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13901,19 +14073,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::EmbeddedServic
 
 }
 
-std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-rate")
     {
@@ -13941,7 +14113,7 @@ void Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::
     }
 }
 
-void Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-rate")
     {
@@ -13961,14 +14133,14 @@ void Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::
     }
 }
 
-bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::DropThreshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::DropThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-rate" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
     return false;
 }
 
-Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold::ShutdownThreshold()
+Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold::ShutdownThreshold()
     :
     packet_rate{YType::uint16, "packet-rate"},
     cdp{YType::uint16, "cdp"},
@@ -13976,22 +14148,23 @@ Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold::S
     vtp{YType::uint16, "vtp"}
 {
 
-    yang_name = "shutdown-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shutdown-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold::~ShutdownThreshold()
+Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold::~ShutdownThreshold()
 {
 }
 
-bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold::has_data() const
+bool Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_rate.is_set
 	|| cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set;
 }
 
-bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold::has_operation() const
+bool Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_rate.yfilter)
@@ -14000,14 +14173,14 @@ bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThresho
 	|| ydk::is_set(vtp.yfilter);
 }
 
-std::string Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold::get_segment_path() const
+std::string Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "shutdown-threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14020,19 +14193,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::EmbeddedServic
 
 }
 
-std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-rate")
     {
@@ -14060,7 +14233,7 @@ void Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThresho
     }
 }
 
-void Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-rate")
     {
@@ -14080,7 +14253,7 @@ void Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThresho
     }
 }
 
-bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThreshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::EmbeddedServiceEngine::L2protocolTunnel::ShutdownThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-rate" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
@@ -14090,15 +14263,15 @@ bool Native::Interface::EmbeddedServiceEngine::L2ProtocolTunnel::ShutdownThresho
 Native::Interface::EmbeddedServiceEngine::Encapsulation::Encapsulation()
     :
     dot1q(std::make_shared<Native::Interface::EmbeddedServiceEngine::Encapsulation::Dot1Q>())
-	,isl(std::make_shared<Native::Interface::EmbeddedServiceEngine::Encapsulation::Isl>())
-	,ppp(nullptr) // presence node
-	,slip(nullptr) // presence node
-	,frame_relay(nullptr) // presence node
+    , isl(std::make_shared<Native::Interface::EmbeddedServiceEngine::Encapsulation::Isl>())
+    , ppp(nullptr) // presence node
+    , slip(nullptr) // presence node
+    , frame_relay(nullptr) // presence node
 {
     dot1q->parent = this;
     isl->parent = this;
 
-    yang_name = "encapsulation"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Encapsulation::~Encapsulation()
@@ -14107,6 +14280,7 @@ Native::Interface::EmbeddedServiceEngine::Encapsulation::~Encapsulation()
 
 bool Native::Interface::EmbeddedServiceEngine::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot1q !=  nullptr && dot1q->has_data())
 	|| (isl !=  nullptr && isl->has_data())
 	|| (ppp !=  nullptr && ppp->has_data())
@@ -14243,7 +14417,7 @@ Native::Interface::EmbeddedServiceEngine::Encapsulation::Dot1Q::Dot1Q()
     native{YType::empty, "native"}
 {
 
-    yang_name = "dot1Q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1Q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Encapsulation::Dot1Q::~Dot1Q()
@@ -14252,6 +14426,7 @@ Native::Interface::EmbeddedServiceEngine::Encapsulation::Dot1Q::~Dot1Q()
 
 bool Native::Interface::EmbeddedServiceEngine::Encapsulation::Dot1Q::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| native.is_set;
 }
@@ -14333,7 +14508,7 @@ Native::Interface::EmbeddedServiceEngine::Encapsulation::Isl::Isl()
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "isl"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isl"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Encapsulation::Isl::~Isl()
@@ -14342,6 +14517,7 @@ Native::Interface::EmbeddedServiceEngine::Encapsulation::Isl::~Isl()
 
 bool Native::Interface::EmbeddedServiceEngine::Encapsulation::Isl::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set;
 }
 
@@ -14408,7 +14584,7 @@ bool Native::Interface::EmbeddedServiceEngine::Encapsulation::Isl::has_leaf_or_c
 Native::Interface::EmbeddedServiceEngine::Encapsulation::Ppp::Ppp()
 {
 
-    yang_name = "ppp"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Encapsulation::Ppp::~Ppp()
@@ -14417,6 +14593,7 @@ Native::Interface::EmbeddedServiceEngine::Encapsulation::Ppp::~Ppp()
 
 bool Native::Interface::EmbeddedServiceEngine::Encapsulation::Ppp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -14469,7 +14646,7 @@ bool Native::Interface::EmbeddedServiceEngine::Encapsulation::Ppp::has_leaf_or_c
 Native::Interface::EmbeddedServiceEngine::Encapsulation::Slip::Slip()
 {
 
-    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Encapsulation::Slip::~Slip()
@@ -14478,6 +14655,7 @@ Native::Interface::EmbeddedServiceEngine::Encapsulation::Slip::~Slip()
 
 bool Native::Interface::EmbeddedServiceEngine::Encapsulation::Slip::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -14532,7 +14710,7 @@ Native::Interface::EmbeddedServiceEngine::Encapsulation::FrameRelay::FrameRelay(
     ietf{YType::empty, "ietf"}
 {
 
-    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Encapsulation::FrameRelay::~FrameRelay()
@@ -14541,6 +14719,7 @@ Native::Interface::EmbeddedServiceEngine::Encapsulation::FrameRelay::~FrameRelay
 
 bool Native::Interface::EmbeddedServiceEngine::Encapsulation::FrameRelay::has_data() const
 {
+    if (is_presence_container) return true;
     return ietf.is_set;
 }
 
@@ -14609,7 +14788,7 @@ Native::Interface::EmbeddedServiceEngine::FairQueueConf::FairQueueConf()
     fair_queue{YType::boolean, "fair-queue"}
 {
 
-    yang_name = "fair-queue-conf"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue-conf"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::FairQueueConf::~FairQueueConf()
@@ -14618,6 +14797,7 @@ Native::Interface::EmbeddedServiceEngine::FairQueueConf::~FairQueueConf()
 
 bool Native::Interface::EmbeddedServiceEngine::FairQueueConf::has_data() const
 {
+    if (is_presence_container) return true;
     return fair_queue.is_set;
 }
 
@@ -14686,7 +14866,7 @@ Native::Interface::EmbeddedServiceEngine::FairQueue::FairQueue()
     incomplete{YType::empty, "incomplete"}
 {
 
-    yang_name = "fair-queue"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::FairQueue::~FairQueue()
@@ -14695,6 +14875,7 @@ Native::Interface::EmbeddedServiceEngine::FairQueue::~FairQueue()
 
 bool Native::Interface::EmbeddedServiceEngine::FairQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return incomplete.is_set;
 }
 
@@ -14764,7 +14945,7 @@ Native::Interface::EmbeddedServiceEngine::Flowcontrol::Flowcontrol()
     send{YType::enumeration, "send"}
 {
 
-    yang_name = "flowcontrol"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flowcontrol"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Flowcontrol::~Flowcontrol()
@@ -14773,6 +14954,7 @@ Native::Interface::EmbeddedServiceEngine::Flowcontrol::~Flowcontrol()
 
 bool Native::Interface::EmbeddedServiceEngine::Flowcontrol::has_data() const
 {
+    if (is_presence_container) return true;
     return receive.is_set
 	|| send.is_set;
 }
@@ -14852,7 +15034,7 @@ bool Native::Interface::EmbeddedServiceEngine::Flowcontrol::has_leaf_or_child_of
 Native::Interface::EmbeddedServiceEngine::Isis::Isis()
 {
 
-    yang_name = "isis"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Isis::~Isis()
@@ -14861,6 +15043,7 @@ Native::Interface::EmbeddedServiceEngine::Isis::~Isis()
 
 bool Native::Interface::EmbeddedServiceEngine::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -14915,7 +15098,7 @@ Native::Interface::EmbeddedServiceEngine::KeepaliveSettings::KeepaliveSettings()
     keepalive(nullptr) // presence node
 {
 
-    yang_name = "keepalive-settings"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keepalive-settings"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::KeepaliveSettings::~KeepaliveSettings()
@@ -14924,6 +15107,7 @@ Native::Interface::EmbeddedServiceEngine::KeepaliveSettings::~KeepaliveSettings(
 
 bool Native::Interface::EmbeddedServiceEngine::KeepaliveSettings::has_data() const
 {
+    if (is_presence_container) return true;
     return (keepalive !=  nullptr && keepalive->has_data());
 }
 
@@ -14996,7 +15180,7 @@ Native::Interface::EmbeddedServiceEngine::KeepaliveSettings::Keepalive::Keepaliv
     retries{YType::uint8, "retries"}
 {
 
-    yang_name = "keepalive"; yang_parent_name = "keepalive-settings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keepalive"; yang_parent_name = "keepalive-settings"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::KeepaliveSettings::Keepalive::~Keepalive()
@@ -15005,6 +15189,7 @@ Native::Interface::EmbeddedServiceEngine::KeepaliveSettings::Keepalive::~Keepali
 
 bool Native::Interface::EmbeddedServiceEngine::KeepaliveSettings::Keepalive::has_data() const
 {
+    if (is_presence_container) return true;
     return period.is_set
 	|| retries.is_set;
 }
@@ -15084,7 +15269,7 @@ bool Native::Interface::EmbeddedServiceEngine::KeepaliveSettings::Keepalive::has
 Native::Interface::EmbeddedServiceEngine::Bfd::Bfd()
 {
 
-    yang_name = "bfd"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Bfd::~Bfd()
@@ -15093,6 +15278,7 @@ Native::Interface::EmbeddedServiceEngine::Bfd::~Bfd()
 
 bool Native::Interface::EmbeddedServiceEngine::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -15146,13 +15332,13 @@ Native::Interface::EmbeddedServiceEngine::Bandwidth::Bandwidth()
     :
     qos_reference{YType::uint32, "qos-reference"},
     kilobits{YType::uint32, "kilobits"}
-    	,
+        ,
     receive(std::make_shared<Native::Interface::EmbeddedServiceEngine::Bandwidth::Receive>())
-	,inherit(nullptr) // presence node
+    , inherit(nullptr) // presence node
 {
     receive->parent = this;
 
-    yang_name = "bandwidth"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Bandwidth::~Bandwidth()
@@ -15161,6 +15347,7 @@ Native::Interface::EmbeddedServiceEngine::Bandwidth::~Bandwidth()
 
 bool Native::Interface::EmbeddedServiceEngine::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return qos_reference.is_set
 	|| kilobits.is_set
 	|| (receive !=  nullptr && receive->has_data())
@@ -15275,7 +15462,7 @@ Native::Interface::EmbeddedServiceEngine::Bandwidth::Receive::Receive()
     kilobits{YType::uint32, "kilobits"}
 {
 
-    yang_name = "receive"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Bandwidth::Receive::~Receive()
@@ -15284,6 +15471,7 @@ Native::Interface::EmbeddedServiceEngine::Bandwidth::Receive::~Receive()
 
 bool Native::Interface::EmbeddedServiceEngine::Bandwidth::Receive::has_data() const
 {
+    if (is_presence_container) return true;
     return inherit.is_set
 	|| kilobits.is_set;
 }
@@ -15365,7 +15553,7 @@ Native::Interface::EmbeddedServiceEngine::Bandwidth::Inherit::Inherit()
     kilobits{YType::uint32, "kilobits"}
 {
 
-    yang_name = "inherit"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inherit"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Bandwidth::Inherit::~Inherit()
@@ -15374,6 +15562,7 @@ Native::Interface::EmbeddedServiceEngine::Bandwidth::Inherit::~Inherit()
 
 bool Native::Interface::EmbeddedServiceEngine::Bandwidth::Inherit::has_data() const
 {
+    if (is_presence_container) return true;
     return kilobits.is_set;
 }
 
@@ -15443,12 +15632,12 @@ Native::Interface::EmbeddedServiceEngine::Dampening::Dampening()
     start_reusing_time{YType::uint16, "start-reusing-time"},
     start_supressing_time{YType::uint16, "start-supressing-time"},
     maximum_supressing_time{YType::uint16, "maximum-supressing-time"}
-    	,
+        ,
     restart(std::make_shared<Native::Interface::EmbeddedServiceEngine::Dampening::Restart>())
 {
     restart->parent = this;
 
-    yang_name = "dampening"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dampening"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Dampening::~Dampening()
@@ -15457,6 +15646,7 @@ Native::Interface::EmbeddedServiceEngine::Dampening::~Dampening()
 
 bool Native::Interface::EmbeddedServiceEngine::Dampening::has_data() const
 {
+    if (is_presence_container) return true;
     return dampening_time.is_set
 	|| start_reusing_time.is_set
 	|| start_supressing_time.is_set
@@ -15581,7 +15771,7 @@ Native::Interface::EmbeddedServiceEngine::Dampening::Restart::Restart()
     restart_penalty{YType::uint16, "restart-penalty"}
 {
 
-    yang_name = "restart"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "restart"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Dampening::Restart::~Restart()
@@ -15590,6 +15780,7 @@ Native::Interface::EmbeddedServiceEngine::Dampening::Restart::~Restart()
 
 bool Native::Interface::EmbeddedServiceEngine::Dampening::Restart::has_data() const
 {
+    if (is_presence_container) return true;
     return restart.is_set
 	|| restart_penalty.is_set;
 }
@@ -15676,7 +15867,7 @@ Native::Interface::EmbeddedServiceEngine::Domain::Domain()
     zero_sla{YType::empty, "zero-sla"}
 {
 
-    yang_name = "domain"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "domain"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Domain::~Domain()
@@ -15685,6 +15876,7 @@ Native::Interface::EmbeddedServiceEngine::Domain::~Domain()
 
 bool Native::Interface::EmbeddedServiceEngine::Domain::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| path.is_set
 	|| internet_bound.is_set
@@ -15819,7 +16011,7 @@ Native::Interface::EmbeddedServiceEngine::HoldQueue::HoldQueue()
     queue_length{YType::uint16, "queue-length"}
 {
 
-    yang_name = "hold-queue"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-queue"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::HoldQueue::~HoldQueue()
@@ -15828,6 +16020,7 @@ Native::Interface::EmbeddedServiceEngine::HoldQueue::~HoldQueue()
 
 bool Native::Interface::EmbeddedServiceEngine::HoldQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| queue_length.is_set;
 }
@@ -15842,7 +16035,8 @@ bool Native::Interface::EmbeddedServiceEngine::HoldQueue::has_operation() const
 std::string Native::Interface::EmbeddedServiceEngine::HoldQueue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hold-queue" <<"[direction='" <<direction <<"']";
+    path_buffer << "hold-queue";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -15907,7 +16101,7 @@ bool Native::Interface::EmbeddedServiceEngine::HoldQueue::has_leaf_or_child_of_n
 Native::Interface::EmbeddedServiceEngine::Mpls::Mpls()
 {
 
-    yang_name = "mpls"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Mpls::~Mpls()
@@ -15916,6 +16110,7 @@ Native::Interface::EmbeddedServiceEngine::Mpls::~Mpls()
 
 bool Native::Interface::EmbeddedServiceEngine::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -15971,7 +16166,7 @@ Native::Interface::EmbeddedServiceEngine::IpVrf::IpVrf()
 {
     ip->parent = this;
 
-    yang_name = "ip-vrf"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-vrf"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::IpVrf::~IpVrf()
@@ -15980,6 +16175,7 @@ Native::Interface::EmbeddedServiceEngine::IpVrf::~IpVrf()
 
 bool Native::Interface::EmbeddedServiceEngine::IpVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -16052,7 +16248,7 @@ Native::Interface::EmbeddedServiceEngine::IpVrf::Ip::Ip()
 {
     vrf->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "ip-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "ip-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::IpVrf::Ip::~Ip()
@@ -16061,6 +16257,7 @@ Native::Interface::EmbeddedServiceEngine::IpVrf::Ip::~Ip()
 
 bool Native::Interface::EmbeddedServiceEngine::IpVrf::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrf !=  nullptr && vrf->has_data());
 }
 
@@ -16132,7 +16329,7 @@ Native::Interface::EmbeddedServiceEngine::IpVrf::Ip::Vrf::Vrf()
     forwarding{YType::str, "forwarding"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::IpVrf::Ip::Vrf::~Vrf()
@@ -16141,6 +16338,7 @@ Native::Interface::EmbeddedServiceEngine::IpVrf::Ip::Vrf::~Vrf()
 
 bool Native::Interface::EmbeddedServiceEngine::IpVrf::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -16209,7 +16407,7 @@ Native::Interface::EmbeddedServiceEngine::Vrf::Vrf()
     forwarding{YType::str, "forwarding"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Vrf::~Vrf()
@@ -16218,6 +16416,7 @@ Native::Interface::EmbeddedServiceEngine::Vrf::~Vrf()
 
 bool Native::Interface::EmbeddedServiceEngine::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -16281,6 +16480,13 @@ bool Native::Interface::EmbeddedServiceEngine::Vrf::has_leaf_or_child_of_name(co
     return false;
 }
 
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::Way::Y_1 {0, "1"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::Way::Y_2 {1, "2"};
+
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Pop::Mode::symmetric {0, "symmetric"};
+
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Push::Mode::symmetric {0, "symmetric"};
+
 const Enum::YLeaf Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1::Mode::symmetric {0, "symmetric"};
 
 const Enum::YLeaf Native::Interface::BDI::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2::Mode::symmetric {0, "symmetric"};
@@ -16292,100 +16498,97 @@ const Enum::YLeaf Native::Interface::BDI::Service::Instance::Rewrite::Ingress::T
 const Enum::YLeaf Native::Interface::BDI::Service::Instance::Mac::Security::Violation::protect {0, "protect"};
 const Enum::YLeaf Native::Interface::BDI::Service::Instance::Mac::Security::Violation::restrict {1, "restrict"};
 
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Discard::Protocol::vtp {21, "vtp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::R4 {0, "R4"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::R5 {1, "R5"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::R6 {2, "R6"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::R8 {3, "R8"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::R9 {4, "R9"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::RA {5, "RA"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::RB {6, "RB"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::RC {7, "RC"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::RD {8, "RD"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::RF {9, "RF"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::cdp {10, "cdp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::dtp {11, "dtp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::elmi {12, "elmi"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::esmc {13, "esmc"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::lacp {14, "lacp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::lldp {15, "lldp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::loam {16, "loam"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::pagp {17, "pagp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::ptppd {18, "ptppd"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::stp {19, "stp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::udld {20, "udld"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Discard::Protocol::vtp {21, "vtp"};
 
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Peer::Protocol::vtp {21, "vtp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::R4 {0, "R4"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::R5 {1, "R5"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::R6 {2, "R6"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::R8 {3, "R8"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::R9 {4, "R9"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::RA {5, "RA"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::RB {6, "RB"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::RC {7, "RC"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::RD {8, "RD"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::RF {9, "RF"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::cdp {10, "cdp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::dtp {11, "dtp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::elmi {12, "elmi"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::esmc {13, "esmc"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::lacp {14, "lacp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::lldp {15, "lldp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::loam {16, "loam"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::pagp {17, "pagp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::ptppd {18, "ptppd"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::stp {19, "stp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::udld {20, "udld"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Peer::Protocol::vtp {21, "vtp"};
 
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Forward::Protocol::vtp {21, "vtp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::R4 {0, "R4"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::R5 {1, "R5"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::R6 {2, "R6"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::R8 {3, "R8"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::R9 {4, "R9"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::RA {5, "RA"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::RB {6, "RB"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::RC {7, "RC"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::RD {8, "RD"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::RF {9, "RF"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::cdp {10, "cdp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::dtp {11, "dtp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::elmi {12, "elmi"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::esmc {13, "esmc"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::lacp {14, "lacp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::lldp {15, "lldp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::loam {16, "loam"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::pagp {17, "pagp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::ptppd {18, "ptppd"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::stp {19, "stp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::udld {20, "udld"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Forward::Protocol::vtp {21, "vtp"};
 
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2Protocol::Tunnel::Protocol::vtp {21, "vtp"};
-
-const Enum::YLeaf Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::Direction::input {0, "input"};
-const Enum::YLeaf Native::Interface::BDI::ServicePolicy::Type::PerformanceMonitor::Direction::output {1, "output"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::R4 {0, "R4"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::R5 {1, "R5"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::R6 {2, "R6"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::R8 {3, "R8"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::R9 {4, "R9"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::RA {5, "RA"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::RB {6, "RB"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::RC {7, "RC"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::RD {8, "RD"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::RF {9, "RF"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::cdp {10, "cdp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::dtp {11, "dtp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::elmi {12, "elmi"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::esmc {13, "esmc"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::lacp {14, "lacp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::lldp {15, "lldp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::loam {16, "loam"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::pagp {17, "pagp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::ptppd {18, "ptppd"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::stp {19, "stp"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::udld {20, "udld"};
+const Enum::YLeaf Native::Interface::BDI::Service::Instance::L2protocol::Tunnel::Protocol::vtp {21, "vtp"};
 
 const Enum::YLeaf Native::Interface::CEM::Atm::Bandwidth::dynamic {0, "dynamic"};
 

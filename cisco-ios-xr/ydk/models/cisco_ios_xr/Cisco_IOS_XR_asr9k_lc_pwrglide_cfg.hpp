@@ -33,7 +33,7 @@ class HardwareModulePortMode : public ydk::Entity
 
         class ConfigMode; //type: HardwareModulePortMode::ConfigMode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_pwrglide_cfg::HardwareModulePortMode::ConfigMode> > config_mode;
+        ydk::YList config_mode;
         
 }; // HardwareModulePortMode
 
@@ -58,7 +58,7 @@ class HardwareModulePortMode::ConfigMode : public ydk::Entity
         ydk::YLeaf id1; //type: string
         class Node; //type: HardwareModulePortMode::ConfigMode::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_pwrglide_cfg::HardwareModulePortMode::ConfigMode::Node> > node;
+        ydk::YList node;
         
 }; // HardwareModulePortMode::ConfigMode
 

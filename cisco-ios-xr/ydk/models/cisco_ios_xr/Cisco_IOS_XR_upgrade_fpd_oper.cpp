@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_upgrade_fpd_oper {
 Fpd_::Fpd_()
     :
     nodes(std::make_shared<Fpd_::Nodes>())
-	,packages(std::make_shared<Fpd_::Packages>())
+    , packages(std::make_shared<Fpd_::Packages>())
 {
     nodes->parent = this;
     packages->parent = this;
 
-    yang_name = "fpd"; yang_parent_name = "Cisco-IOS-XR-upgrade-fpd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fpd"; yang_parent_name = "Cisco-IOS-XR-upgrade-fpd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Fpd_::~Fpd_()
@@ -28,6 +28,7 @@ Fpd_::~Fpd_()
 
 bool Fpd_::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data())
 	|| (packages !=  nullptr && packages->has_data());
 }
@@ -136,9 +137,11 @@ bool Fpd_::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Fpd_::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "fpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "fpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Fpd_::Nodes::~Nodes()
@@ -147,7 +150,8 @@ Fpd_::Nodes::~Nodes()
 
 bool Fpd_::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool Fpd_::Nodes::has_data() const
 
 bool Fpd_::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> Fpd_::Nodes::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<Fpd_::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fpd_::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -235,12 +239,12 @@ bool Fpd_::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Fpd_::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     devices(std::make_shared<Fpd_::Nodes::Node::Devices>())
 {
     devices->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Fpd_::Nodes::Node::~Node()
@@ -249,6 +253,7 @@ Fpd_::Nodes::Node::~Node()
 
 bool Fpd_::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (devices !=  nullptr && devices->has_data());
 }
@@ -270,7 +275,8 @@ std::string Fpd_::Nodes::Node::get_absolute_path() const
 std::string Fpd_::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -336,9 +342,11 @@ bool Fpd_::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 Fpd_::Nodes::Node::Devices::Devices()
+    :
+    device(this, {})
 {
 
-    yang_name = "devices"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "devices"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fpd_::Nodes::Node::Devices::~Devices()
@@ -347,7 +355,8 @@ Fpd_::Nodes::Node::Devices::~Devices()
 
 bool Fpd_::Nodes::Node::Devices::has_data() const
 {
-    for (std::size_t index=0; index<device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<device.len(); index++)
     {
         if(device[index]->has_data())
             return true;
@@ -357,7 +366,7 @@ bool Fpd_::Nodes::Node::Devices::has_data() const
 
 bool Fpd_::Nodes::Node::Devices::has_operation() const
 {
-    for (std::size_t index=0; index<device.size(); index++)
+    for (std::size_t index=0; index<device.len(); index++)
     {
         if(device[index]->has_operation())
             return true;
@@ -387,7 +396,7 @@ std::shared_ptr<Entity> Fpd_::Nodes::Node::Devices::get_child_by_name(const std:
     {
         auto c = std::make_shared<Fpd_::Nodes::Node::Devices::Device>();
         c->parent = this;
-        device.push_back(c);
+        device.append(c);
         return c;
     }
 
@@ -399,7 +408,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fpd_::Nodes::Node::Devices::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : device)
+    for (auto c : device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -428,7 +437,7 @@ bool Fpd_::Nodes::Node::Devices::has_leaf_or_child_of_name(const std::string & n
 Fpd_::Nodes::Node::Devices::Device::Device()
     :
     fpd_type{YType::enumeration, "fpd-type"},
-    instance{YType::int32, "instance"},
+    instance{YType::uint32, "instance"},
     sub_type{YType::enumeration, "sub-type"},
     card_type{YType::str, "card-type"},
     hardware_version{YType::str, "hardware-version"},
@@ -436,7 +445,7 @@ Fpd_::Nodes::Node::Devices::Device::Device()
     is_upgrade_downgrade{YType::boolean, "is-upgrade-downgrade"}
 {
 
-    yang_name = "device"; yang_parent_name = "devices"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "device"; yang_parent_name = "devices"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fpd_::Nodes::Node::Devices::Device::~Device()
@@ -445,6 +454,7 @@ Fpd_::Nodes::Node::Devices::Device::~Device()
 
 bool Fpd_::Nodes::Node::Devices::Device::has_data() const
 {
+    if (is_presence_container) return true;
     return fpd_type.is_set
 	|| instance.is_set
 	|| sub_type.is_set
@@ -587,9 +597,11 @@ bool Fpd_::Nodes::Node::Devices::Device::has_leaf_or_child_of_name(const std::st
 }
 
 Fpd_::Packages::Packages()
+    :
+    all_package(this, {})
 {
 
-    yang_name = "packages"; yang_parent_name = "fpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "packages"; yang_parent_name = "fpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Fpd_::Packages::~Packages()
@@ -598,7 +610,8 @@ Fpd_::Packages::~Packages()
 
 bool Fpd_::Packages::has_data() const
 {
-    for (std::size_t index=0; index<all_package.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_package.len(); index++)
     {
         if(all_package[index]->has_data())
             return true;
@@ -608,7 +621,7 @@ bool Fpd_::Packages::has_data() const
 
 bool Fpd_::Packages::has_operation() const
 {
-    for (std::size_t index=0; index<all_package.size(); index++)
+    for (std::size_t index=0; index<all_package.len(); index++)
     {
         if(all_package[index]->has_operation())
             return true;
@@ -645,7 +658,7 @@ std::shared_ptr<Entity> Fpd_::Packages::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Fpd_::Packages::AllPackage>();
         c->parent = this;
-        all_package.push_back(c);
+        all_package.append(c);
         return c;
     }
 
@@ -657,7 +670,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fpd_::Packages::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_package)
+    for (auto c : all_package.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -694,7 +707,7 @@ Fpd_::Packages::AllPackage::AllPackage()
     minimum_required_hardware_version{YType::str, "minimum-required-hardware-version"}
 {
 
-    yang_name = "all-package"; yang_parent_name = "packages"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all-package"; yang_parent_name = "packages"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Fpd_::Packages::AllPackage::~AllPackage()
@@ -703,6 +716,7 @@ Fpd_::Packages::AllPackage::~AllPackage()
 
 bool Fpd_::Packages::AllPackage::has_data() const
 {
+    if (is_presence_container) return true;
     return card_type.is_set
 	|| card_description.is_set
 	|| fpd_type.is_set
@@ -851,45 +865,6 @@ bool Fpd_::Packages::AllPackage::has_leaf_or_child_of_name(const std::string & n
     return false;
 }
 
-const Enum::YLeaf FpdSub::fpga1 {0, "fpga1"};
-const Enum::YLeaf FpdSub::rommon {1, "rommon"};
-const Enum::YLeaf FpdSub::rommona {2, "rommona"};
-const Enum::YLeaf FpdSub::fabldr {3, "fabldr"};
-const Enum::YLeaf FpdSub::fpga2 {4, "fpga2"};
-const Enum::YLeaf FpdSub::fpga3 {5, "fpga3"};
-const Enum::YLeaf FpdSub::fpga4 {6, "fpga4"};
-const Enum::YLeaf FpdSub::fpga5 {7, "fpga5"};
-const Enum::YLeaf FpdSub::fpga6 {8, "fpga6"};
-const Enum::YLeaf FpdSub::fpga7 {9, "fpga7"};
-const Enum::YLeaf FpdSub::fpga8 {10, "fpga8"};
-const Enum::YLeaf FpdSub::fpga9 {11, "fpga9"};
-const Enum::YLeaf FpdSub::fpga10 {12, "fpga10"};
-const Enum::YLeaf FpdSub::fpga11 {13, "fpga11"};
-const Enum::YLeaf FpdSub::fpga12 {14, "fpga12"};
-const Enum::YLeaf FpdSub::fpga13 {15, "fpga13"};
-const Enum::YLeaf FpdSub::fpga14 {16, "fpga14"};
-const Enum::YLeaf FpdSub::cpld1 {17, "cpld1"};
-const Enum::YLeaf FpdSub::cpld2 {18, "cpld2"};
-const Enum::YLeaf FpdSub::cpld3 {19, "cpld3"};
-const Enum::YLeaf FpdSub::cpld4 {20, "cpld4"};
-const Enum::YLeaf FpdSub::cpld5 {21, "cpld5"};
-const Enum::YLeaf FpdSub::cpld6 {22, "cpld6"};
-const Enum::YLeaf FpdSub::cbc {23, "cbc"};
-const Enum::YLeaf FpdSub::hsbi {24, "hsbi"};
-const Enum::YLeaf FpdSub::txpod {25, "txpod"};
-const Enum::YLeaf FpdSub::rxpod {26, "rxpod"};
-const Enum::YLeaf FpdSub::ibmc {27, "ibmc"};
-const Enum::YLeaf FpdSub::fsbl {28, "fsbl"};
-const Enum::YLeaf FpdSub::lnx {29, "lnx"};
-const Enum::YLeaf FpdSub::fpga15 {30, "fpga15"};
-const Enum::YLeaf FpdSub::fpga16 {31, "fpga16"};
-const Enum::YLeaf FpdSub::fc_fsbl {32, "fc-fsbl"};
-const Enum::YLeaf FpdSub::fc_lnx {33, "fc-lnx"};
-
-const Enum::YLeaf Fpd::spa {0, "spa"};
-const Enum::YLeaf Fpd::lc {1, "lc"};
-const Enum::YLeaf Fpd::sam {2, "sam"};
-
 const Enum::YLeaf FpdSub1::fpga1 {0, "fpga1"};
 const Enum::YLeaf FpdSub1::rommon {1, "rommon"};
 const Enum::YLeaf FpdSub1::rommona {2, "rommona"};
@@ -925,9 +900,48 @@ const Enum::YLeaf FpdSub1::fpga16 {31, "fpga16"};
 const Enum::YLeaf FpdSub1::fc_fsbl {32, "fc-fsbl"};
 const Enum::YLeaf FpdSub1::fc_lnx {33, "fc-lnx"};
 
+const Enum::YLeaf Fpd::spa {0, "spa"};
+const Enum::YLeaf Fpd::lc {1, "lc"};
+const Enum::YLeaf Fpd::sam {2, "sam"};
+
 const Enum::YLeaf Fpd1::spa {0, "spa"};
 const Enum::YLeaf Fpd1::lc {1, "lc"};
 const Enum::YLeaf Fpd1::sam {2, "sam"};
+
+const Enum::YLeaf FpdSub::fpga1 {0, "fpga1"};
+const Enum::YLeaf FpdSub::rommon {1, "rommon"};
+const Enum::YLeaf FpdSub::rommona {2, "rommona"};
+const Enum::YLeaf FpdSub::fabldr {3, "fabldr"};
+const Enum::YLeaf FpdSub::fpga2 {4, "fpga2"};
+const Enum::YLeaf FpdSub::fpga3 {5, "fpga3"};
+const Enum::YLeaf FpdSub::fpga4 {6, "fpga4"};
+const Enum::YLeaf FpdSub::fpga5 {7, "fpga5"};
+const Enum::YLeaf FpdSub::fpga6 {8, "fpga6"};
+const Enum::YLeaf FpdSub::fpga7 {9, "fpga7"};
+const Enum::YLeaf FpdSub::fpga8 {10, "fpga8"};
+const Enum::YLeaf FpdSub::fpga9 {11, "fpga9"};
+const Enum::YLeaf FpdSub::fpga10 {12, "fpga10"};
+const Enum::YLeaf FpdSub::fpga11 {13, "fpga11"};
+const Enum::YLeaf FpdSub::fpga12 {14, "fpga12"};
+const Enum::YLeaf FpdSub::fpga13 {15, "fpga13"};
+const Enum::YLeaf FpdSub::fpga14 {16, "fpga14"};
+const Enum::YLeaf FpdSub::cpld1 {17, "cpld1"};
+const Enum::YLeaf FpdSub::cpld2 {18, "cpld2"};
+const Enum::YLeaf FpdSub::cpld3 {19, "cpld3"};
+const Enum::YLeaf FpdSub::cpld4 {20, "cpld4"};
+const Enum::YLeaf FpdSub::cpld5 {21, "cpld5"};
+const Enum::YLeaf FpdSub::cpld6 {22, "cpld6"};
+const Enum::YLeaf FpdSub::cbc {23, "cbc"};
+const Enum::YLeaf FpdSub::hsbi {24, "hsbi"};
+const Enum::YLeaf FpdSub::txpod {25, "txpod"};
+const Enum::YLeaf FpdSub::rxpod {26, "rxpod"};
+const Enum::YLeaf FpdSub::ibmc {27, "ibmc"};
+const Enum::YLeaf FpdSub::fsbl {28, "fsbl"};
+const Enum::YLeaf FpdSub::lnx {29, "lnx"};
+const Enum::YLeaf FpdSub::fpga15 {30, "fpga15"};
+const Enum::YLeaf FpdSub::fpga16 {31, "fpga16"};
+const Enum::YLeaf FpdSub::fc_fsbl {32, "fc-fsbl"};
+const Enum::YLeaf FpdSub::fc_lnx {33, "fc-lnx"};
 
 
 }

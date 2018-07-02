@@ -14,7 +14,7 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_controllers {
 
 
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::Instance : public ydk::Entity
+class Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -31,5764 +31,9 @@ class Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::Instance : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
+        ydk::YLeaf stats_output; //type: string
 
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH : public ydk::Entity
-{
-    public:
-        DCH();
-        ~DCH();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl : public ydk::Entity
-{
-    public:
-        DCl();
-        ~DCl();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA : public ydk::Entity
-{
-    public:
-        DCMA();
-        ~DCMA();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB : public ydk::Entity
-{
-    public:
-        DCMB();
-        ~DCMB();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI : public ydk::Entity
-{
-    public:
-        ECI();
-        ~ECI();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC : public ydk::Entity
-{
-    public:
-        FMAC();
-        ~FMAC();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK : public ydk::Entity
-{
-    public:
-        GCK();
-        ~GCK();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP : public ydk::Entity
-{
-    public:
-        RTP();
-        ~RTP();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::All : public ydk::Entity
-{
-    public:
-        All();
-        ~All();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::All::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::All::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::All
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::All::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::All::Instance
+}; // Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::Instance
 
 
 class Controller::SfeOper::Sfe::LinkInfo : public ydk::Entity
@@ -5810,7 +55,7 @@ class Controller::SfeOper::Sfe::LinkInfo : public ydk::Entity
 
         class Location; //type: Controller::SfeOper::Sfe::LinkInfo::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::Sfe::LinkInfo
 
@@ -5837,8 +82,8 @@ class Controller::SfeOper::Sfe::LinkInfo::Location : public ydk::Entity
         class Rx; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx
         class Tx; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx> > rx;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx> > tx;
+        ydk::YList rx;
+        ydk::YList tx;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location
 
@@ -5917,7 +162,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo : public yd
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo
 
@@ -5943,7 +188,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance :
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance
 
@@ -5966,6 +211,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -5996,7 +242,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::LinkIdxList
 
@@ -6045,7 +291,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap : public yd
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap
 
@@ -6071,7 +317,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance :
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance
 
@@ -6094,6 +340,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -6124,7 +371,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::LinkIdxList
 
@@ -6173,7 +420,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo : public ydk::Entit
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo
 
@@ -6199,7 +446,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance : public 
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance
 
@@ -6222,6 +469,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxL
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -6252,7 +500,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxL
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxList
 
@@ -6301,7 +549,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap : public ydk::Entit
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap
 
@@ -6327,7 +575,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance : public 
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance
 
@@ -6350,6 +598,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxL
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -6380,7 +629,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxL
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxList
 
@@ -6456,7 +705,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data : public ydk
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data
 
@@ -6482,7 +731,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance : 
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance
 
@@ -6505,6 +754,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::L
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -6535,7 +785,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::L
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::LinkIdxList
 
@@ -6584,7 +834,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl : public ydk
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl
 
@@ -6610,7 +860,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance : 
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance
 
@@ -6633,6 +883,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::L
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -6663,7 +914,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::L
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::LinkIdxList
 
@@ -6712,7 +963,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All : public ydk:
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All
 
@@ -6738,7 +989,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance : p
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance
 
@@ -6761,6 +1012,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::Li
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -6791,7 +1043,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::Li
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::LinkIdxList
 
@@ -6845,7 +1097,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx : public ydk::Entity
         class Stats; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail> detail;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance> > instance;
+        ydk::YList instance;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats> stats;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx
@@ -6869,7 +1121,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail : public ydk::Ent
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail
 
@@ -6895,7 +1147,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance : publi
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance
 
@@ -6918,6 +1170,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkId
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -6948,7 +1201,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkId
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkIdxList
 
@@ -7000,7 +1253,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance : public ydk::E
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance
 
@@ -7023,6 +1276,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList : 
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -7053,7 +1307,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList : 
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList
 
@@ -7129,7 +1383,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data : public ydk
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data
 
@@ -7155,7 +1409,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance : 
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance
 
@@ -7178,6 +1432,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::L
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -7208,7 +1463,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::L
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::LinkIdxList
 
@@ -7257,7 +1512,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl : public ydk
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl
 
@@ -7283,7 +1538,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance : 
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance
 
@@ -7306,6 +1561,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::L
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -7336,7 +1592,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::L
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::LinkIdxList
 
@@ -7385,7 +1641,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All : public ydk:
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All
 
@@ -7411,7 +1667,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance : p
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance
 
@@ -7434,6 +1690,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::Li
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -7464,7 +1721,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::Li
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::LinkIdxList
 
@@ -7514,7 +1771,7 @@ class Controller::SfeOper::Sfe::Diagshell : public ydk::Entity
 
         class Location; //type: Controller::SfeOper::Sfe::Diagshell::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Diagshell::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::Sfe::Diagshell
 
@@ -7540,7 +1797,7 @@ class Controller::SfeOper::Sfe::Diagshell::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Instance; //type: Controller::SfeOper::Sfe::Diagshell::Location::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Diagshell::Location::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::Diagshell::Location
 
@@ -7564,7 +1821,7 @@ class Controller::SfeOper::Sfe::Diagshell::Location::Instance : public ydk::Enti
         ydk::YLeaf instance_num; //type: int32
         class DiagCmd; //type: Controller::SfeOper::Sfe::Diagshell::Location::Instance::DiagCmd
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Diagshell::Location::Instance::DiagCmd> > diag_cmd;
+        ydk::YList diag_cmd;
         
 }; // Controller::SfeOper::Sfe::Diagshell::Location::Instance
 
@@ -7588,7 +1845,7 @@ class Controller::SfeOper::Sfe::Diagshell::Location::Instance::DiagCmd : public 
         ydk::YLeaf cmd_str; //type: string
         class Bytes; //type: Controller::SfeOper::Sfe::Diagshell::Location::Instance::DiagCmd::Bytes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Diagshell::Location::Instance::DiagCmd::Bytes> > bytes;
+        ydk::YList bytes;
         
 }; // Controller::SfeOper::Sfe::Diagshell::Location::Instance::DiagCmd
 
@@ -7634,7 +1891,7 @@ class Controller::SfeOper::Sfe::Register : public ydk::Entity
 
         class Location; //type: Controller::SfeOper::Sfe::Register::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Register::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::Sfe::Register
 
@@ -7660,7 +1917,7 @@ class Controller::SfeOper::Sfe::Register::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Instance; //type: Controller::SfeOper::Sfe::Register::Location::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Register::Location::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::Register::Location
 
@@ -7684,7 +1941,7 @@ class Controller::SfeOper::Sfe::Register::Location::Instance : public ydk::Entit
         ydk::YLeaf instance_num; //type: int32
         class Bytes; //type: Controller::SfeOper::Sfe::Register::Location::Instance::Bytes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Register::Location::Instance::Bytes> > bytes;
+        ydk::YList bytes;
         
 }; // Controller::SfeOper::Sfe::Register::Location::Instance
 
@@ -7730,7 +1987,7 @@ class Controller::SfeOper::Sfe::DumpFile : public ydk::Entity
 
         class Location; //type: Controller::SfeOper::Sfe::DumpFile::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::DumpFile::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::Sfe::DumpFile
 
@@ -7756,7 +2013,7 @@ class Controller::SfeOper::Sfe::DumpFile::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class File; //type: Controller::SfeOper::Sfe::DumpFile::Location::File
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::DumpFile::Location::File> > file;
+        ydk::YList file;
         
 }; // Controller::SfeOper::Sfe::DumpFile::Location
 
@@ -7780,7 +2037,7 @@ class Controller::SfeOper::Sfe::DumpFile::Location::File : public ydk::Entity
         ydk::YLeaf file_name; //type: string
         class Bytes; //type: Controller::SfeOper::Sfe::DumpFile::Location::File::Bytes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::DumpFile::Location::File::Bytes> > bytes;
+        ydk::YList bytes;
         
 }; // Controller::SfeOper::Sfe::DumpFile::Location::File
 
@@ -7826,7 +2083,7 @@ class Controller::SfeOper::Sfe::Parse : public ydk::Entity
 
         class Location; //type: Controller::SfeOper::Sfe::Parse::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Parse::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::Sfe::Parse
 
@@ -7852,7 +2109,7 @@ class Controller::SfeOper::Sfe::Parse::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Link; //type: Controller::SfeOper::Sfe::Parse::Location::Link
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Parse::Location::Link> > link;
+        ydk::YList link;
         
 }; // Controller::SfeOper::Sfe::Parse::Location
 
@@ -7877,7 +2134,7 @@ class Controller::SfeOper::Sfe::Parse::Location::Link : public ydk::Entity
         ydk::YLeaf end; //type: int32
         class Instance; //type: Controller::SfeOper::Sfe::Parse::Location::Link::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Parse::Location::Link::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::Parse::Location::Link
 
@@ -7902,7 +2159,7 @@ class Controller::SfeOper::Sfe::Parse::Location::Link::Instance : public ydk::En
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::Parse::Location::Link::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Parse::Location::Link::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::Parse::Location::Link::Instance
 
@@ -7982,7 +2239,7 @@ class Controller::SfeOper::SfeTrace::SfeDriver : public ydk::Entity
 
         class Trace; //type: Controller::SfeOper::SfeTrace::SfeDriver::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::SfeTrace::SfeDriver::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::SfeOper::SfeTrace::SfeDriver
 
@@ -8007,7 +2264,7 @@ class Controller::SfeOper::SfeTrace::SfeDriver::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::SfeTrace::SfeDriver::Trace
 
@@ -8031,7 +2288,7 @@ class Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location : public ydk::En
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location
 
@@ -8055,7 +2312,7 @@ class Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location::AllOptions : pu
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location::AllOptions
 
@@ -8101,7 +2358,7 @@ class Controller::Asic : public ydk::Entity
         ydk::YLeaf asic_name; //type: string
         class Instance; //type: Controller::Asic::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::Asic
 
@@ -8128,9 +2385,9 @@ class Controller::Asic::Instance : public ydk::Entity
         class BlockName; //type: Controller::Asic::Instance::BlockName
         class BlockNumber; //type: Controller::Asic::Instance::BlockNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::Address> > address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockName> > block_name;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber> > block_number;
+        ydk::YList address;
+        ydk::YList block_name;
+        ydk::YList block_number;
         
 }; // Controller::Asic::Instance
 
@@ -8157,7 +2414,7 @@ class Controller::Asic::Instance::Address : public ydk::Entity
         ydk::YLeaf width; //type: uint32
         class Location; //type: Controller::Asic::Instance::Address::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::Address::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Asic::Instance::Address
 
@@ -8181,7 +2438,7 @@ class Controller::Asic::Instance::Address::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class DirectData; //type: Controller::Asic::Instance::Address::Location::DirectData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::Address::Location::DirectData> > direct_data;
+        ydk::YList direct_data;
         
 }; // Controller::Asic::Instance::Address::Location
 
@@ -8230,7 +2487,7 @@ class Controller::Asic::Instance::BlockName : public ydk::Entity
         ydk::YLeaf block_num; //type: uint32
         class RegisterName; //type: Controller::Asic::Instance::BlockName::RegisterName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockName::RegisterName> > register_name;
+        ydk::YList register_name;
         
 }; // Controller::Asic::Instance::BlockName
 
@@ -8255,7 +2512,7 @@ class Controller::Asic::Instance::BlockName::RegisterName : public ydk::Entity
         ydk::YLeaf register_; //type: uint32
         class Data; //type: Controller::Asic::Instance::BlockName::RegisterName::Data
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockName::RegisterName::Data> > data;
+        ydk::YList data;
         
 }; // Controller::Asic::Instance::BlockName::RegisterName
 
@@ -8304,7 +2561,7 @@ class Controller::Asic::Instance::BlockNumber : public ydk::Entity
         ydk::YLeaf block_nm; //type: string
         class RegisterNumber; //type: Controller::Asic::Instance::BlockNumber::RegisterNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber::RegisterNumber> > register_number;
+        ydk::YList register_number;
         
 }; // Controller::Asic::Instance::BlockNumber
 
@@ -8330,8 +2587,8 @@ class Controller::Asic::Instance::BlockNumber::RegisterNumber : public ydk::Enti
         class RegisterOffsets; //type: Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets
         class Location; //type: Controller::Asic::Instance::BlockNumber::RegisterNumber::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets> > register_offsets;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber::RegisterNumber::Location> > location;
+        ydk::YList register_offsets;
+        ydk::YList location;
         
 }; // Controller::Asic::Instance::BlockNumber::RegisterNumber
 
@@ -8356,7 +2613,7 @@ class Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets :
         ydk::YLeaf num_entries; //type: uint32
         class Location; //type: Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets
 
@@ -8380,7 +2637,7 @@ class Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::
         ydk::YLeaf location_name; //type: string
         class Data; //type: Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::Data
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::Data> > data;
+        ydk::YList data;
         
 }; // Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location
 
@@ -8428,7 +2685,7 @@ class Controller::Asic::Instance::BlockNumber::RegisterNumber::Location : public
         ydk::YLeaf location_name; //type: string
         class Data; //type: Controller::Asic::Instance::BlockNumber::RegisterNumber::Location::Data
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber::RegisterNumber::Location::Data> > data;
+        ydk::YList data;
         
 }; // Controller::Asic::Instance::BlockNumber::RegisterNumber::Location
 
@@ -8500,7 +2757,7 @@ class Controller::Oper::SliceControl : public ydk::Entity
 
         class LocationList; //type: Controller::Oper::SliceControl::LocationList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList> > location_list;
+        ydk::YList location_list;
         
 }; // Controller::Oper::SliceControl
 
@@ -8527,8 +2784,8 @@ class Controller::Oper::SliceControl::LocationList : public ydk::Entity
         class ManagerContextInfo; //type: Controller::Oper::SliceControl::LocationList::ManagerContextInfo
         class FPGA; //type: Controller::Oper::SliceControl::LocationList::FPGA
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::ManagerContextInfo> > manager_context_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA> > fpga;
+        ydk::YList manager_context_info;
+        ydk::YList fpga;
         
 }; // Controller::Oper::SliceControl::LocationList
 
@@ -8585,9 +2842,9 @@ class Controller::Oper::SliceControl::LocationList::FPGA : public ydk::Entity
         class ClockingDevices; //type: Controller::Oper::SliceControl::LocationList::FPGA::ClockingDevices
         class Slice; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::SliceContextInfo> > slice_context_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::ClockingDevices> > clocking_devices;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice> > slice;
+        ydk::YList slice_context_info;
+        ydk::YList clocking_devices;
+        ydk::YList slice;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA
 
@@ -8653,7 +2910,7 @@ class Controller::Oper::SliceControl::LocationList::FPGA::ClockingDevices : publ
         ydk::YLeaf is_data_available; //type: boolean
         class Pll; //type: Controller::Oper::SliceControl::LocationList::FPGA::ClockingDevices::Pll
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::ClockingDevices::Pll> > pll;
+        ydk::YList pll;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::ClockingDevices
 
@@ -8719,22 +2976,22 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice : public ydk::En
         class Modena; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Modena
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Summary> summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::CurrSensor> > curr_sensor;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Eeprom> > eeprom;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::OpticsSummary> > optics_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics> > optics;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Phy> > phy;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::TempSensor> > temp_sensor;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::VoltSensor> > volt_sensor;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::GearboxSummary> > gearbox_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox2Summary> > gearbox2_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::DualGearboxSummary> > dual_gearbox_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox> > gearbox;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox2> > gearbox2;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::DualGearbox> > dual_gearbox;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Cpak> > cpak;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::ModenaSummary> > modena_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Modena> > modena;
+        ydk::YList curr_sensor;
+        ydk::YList eeprom;
+        ydk::YList optics_summary;
+        ydk::YList optics;
+        ydk::YList phy;
+        ydk::YList temp_sensor;
+        ydk::YList volt_sensor;
+        ydk::YList gearbox_summary;
+        ydk::YList gearbox2_summary;
+        ydk::YList dual_gearbox_summary;
+        ydk::YList gearbox;
+        ydk::YList gearbox2;
+        ydk::YList dual_gearbox;
+        ydk::YList cpak;
+        ydk::YList modena_summary;
+        ydk::YList modena;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice
 
@@ -8757,7 +3014,7 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice::Summary : publi
 
         class SliceSummary; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Summary::SliceSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Summary::SliceSummary> > slice_summary;
+        ydk::YList slice_summary;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice::Summary
 
@@ -8896,11 +3153,11 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics : public
         class TxCoefficients; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::TxCoefficients
         class RxCoefficients; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::RxCoefficients
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::Cxp> > cxp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::TxInfo> > tx_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::RxInfo> > rx_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::TxCoefficients> > tx_coefficients;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::RxCoefficients> > rx_coefficients;
+        ydk::YList cxp;
+        ydk::YList tx_info;
+        ydk::YList rx_info;
+        ydk::YList tx_coefficients;
+        ydk::YList rx_coefficients;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics
 
@@ -9292,7 +3549,7 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox : publi
         ydk::YLeaf gearbox_id; //type: string
         class GearboxLane; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox::GearboxLane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox::GearboxLane> > gearbox_lane;
+        ydk::YList gearbox_lane;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox
 
@@ -9346,7 +3603,7 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox2 : publ
         ydk::YLeaf gearbox2_id; //type: string
         class Gearbox2Lane; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox2::Gearbox2Lane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox2::Gearbox2Lane> > gearbox2_lane;
+        ydk::YList gearbox2_lane;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox2
 
@@ -9400,7 +3657,7 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice::DualGearbox : p
         ydk::YLeaf dual_gearbox_id; //type: string
         class DualGearboxLane; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::DualGearbox::DualGearboxLane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::DualGearbox::DualGearboxLane> > dual_gearbox_lane;
+        ydk::YList dual_gearbox_lane;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice::DualGearbox
 
@@ -9533,7 +3790,7 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice::Modena : public
         ydk::YLeaf modena_id; //type: string
         class ModenaLane; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Modena::ModenaLane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Modena::ModenaLane> > modena_lane;
+        ydk::YList modena_lane;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice::Modena
 
@@ -9582,7 +3839,7 @@ class Controller::Zen : public ydk::Entity
         class Trace; //type: Controller::Zen::Trace
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper> zen_oper;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::Zen
 
@@ -9606,9 +3863,508 @@ class Controller::Zen::ZenOper : public ydk::Entity
 
         class ZenLocation; //type: Controller::Zen::ZenOper::ZenLocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation> > zen_location;
+        ydk::YList zen_location;
         
 }; // Controller::Zen::ZenOper
+
+
+class Controller::Zen::ZenOper::ZenLocation : public ydk::Entity
+{
+    public:
+        ZenLocation();
+        ~ZenLocation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf zen_location; //type: string
+        ydk::YLeaf zen_pci_base_address; //type: string
+        ydk::YLeaf zen_pci_dev_vendor_id; //type: string
+        ydk::YLeaf zen_pci_dev_device_id; //type: string
+        ydk::YLeaf zen_hp_desc; //type: string
+        ydk::YLeaf zen_handle; //type: string
+        ydk::YLeaf zen_msi; //type: uint32
+        ydk::YLeaf zen_irq; //type: string
+        ydk::YLeaf zen_regs; //type: string
+        ydk::YLeaf zen_trace; //type: string
+        ydk::YLeaf zen_levm; //type: string
+        ydk::YLeaf zen_sensor_poll_timer_tree; //type: string
+        ydk::YLeaf zen_sensor_poll_timer; //type: string
+        ydk::YLeaf zen_sensor_data; //type: string
+        ydk::YLeaf zen_sim; //type: boolean
+        ydk::YLeaf zen_debug; //type: boolean
+        ydk::YLeaf zen_card_type; //type: uint32
+        ydk::YLeaf zen_slot_num; //type: uint32
+        ydk::YLeaf zen_pm_hdl; //type: string
+        ydk::YLeaf zen_hdl; //type: string
+        ydk::YLeaf zen_ccc_hdl; //type: string
+        ydk::YLeaf zen_platform_local_hdl; //type: string
+        ydk::YLeaf zen_cdui_srvr_hdl; //type: string
+        class ZenTempSensorDefault; //type: Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault
+        class ZenVoltSensorDefault; //type: Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault
+        class ZenCurrSensorDefault; //type: Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault> zen_temp_sensor_default;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault> zen_volt_sensor_default;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault> zen_curr_sensor_default;
+        
+}; // Controller::Zen::ZenOper::ZenLocation
+
+
+class Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault : public ydk::Entity
+{
+    public:
+        ZenTempSensorDefault();
+        ~ZenTempSensorDefault();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ZenTempSensorData; //type: Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData> zen_temp_sensor_data;
+        
+}; // Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault
+
+
+class Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData : public ydk::Entity
+{
+    public:
+        ZenTempSensorData();
+        ~ZenTempSensorData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ZenTempSensor; //type: Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor
+
+        ydk::YList zen_temp_sensor;
+        
+}; // Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData
+
+
+class Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor : public ydk::Entity
+{
+    public:
+        ZenTempSensor();
+        ~ZenTempSensor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf zen_temp_sensor; //type: string
+        ydk::YLeaf zen_temp_sensor_id; //type: string
+        ydk::YLeaf zen_temp_dev_addr; //type: uint32
+        ydk::YLeaf zen_temp_poll_intvl; //type: uint32
+        ydk::YLeaf zen_temp_delta; //type: uint32
+        ydk::YLeaf zen_temp_raw_data; //type: uint32
+        ydk::YLeaf zen_temp_sensor_value; //type: int32
+        ydk::YLeaf zen_temp_unit; //type: int32
+        ydk::YLeaf zen_temp_last_value; //type: uint32
+        ydk::YLeaf zen_temp_send_update; //type: boolean
+        ydk::YLeaf zen_temp_num_1sec_intervals; //type: int32
+
+}; // Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor
+
+
+class Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault : public ydk::Entity
+{
+    public:
+        ZenVoltSensorDefault();
+        ~ZenVoltSensorDefault();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ZenVoltSensorData; //type: Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData> zen_volt_sensor_data;
+        
+}; // Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault
+
+
+class Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData : public ydk::Entity
+{
+    public:
+        ZenVoltSensorData();
+        ~ZenVoltSensorData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ZenVoltSensor; //type: Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor
+
+        ydk::YList zen_volt_sensor;
+        
+}; // Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData
+
+
+class Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor : public ydk::Entity
+{
+    public:
+        ZenVoltSensor();
+        ~ZenVoltSensor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf zen_volt_sensor; //type: int32
+        ydk::YLeaf zen_volt_sensor_id; //type: string
+        ydk::YLeaf zen_volt_dev_addr; //type: uint32
+        ydk::YLeaf zen_volt_poll_intvl; //type: uint32
+        ydk::YLeaf zen_volt_delta; //type: uint32
+        ydk::YLeaf zen_volt_raw_data; //type: uint32
+        ydk::YLeaf zen_volt_sensor_value; //type: int32
+        ydk::YLeaf zen_volt_unit; //type: int32
+        ydk::YLeaf zen_volt_last_value; //type: uint32
+        ydk::YLeaf zen_volt_send_update; //type: boolean
+        ydk::YLeaf zen_volt_num_1sec_intervals; //type: int32
+
+}; // Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor
+
+
+class Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault : public ydk::Entity
+{
+    public:
+        ZenCurrSensorDefault();
+        ~ZenCurrSensorDefault();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ZenCurrSensorData; //type: Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData> zen_curr_sensor_data;
+        
+}; // Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault
+
+
+class Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData : public ydk::Entity
+{
+    public:
+        ZenCurrSensorData();
+        ~ZenCurrSensorData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ZenCurrSensor; //type: Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor
+
+        ydk::YList zen_curr_sensor;
+        
+}; // Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData
+
+
+class Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor : public ydk::Entity
+{
+    public:
+        ZenCurrSensor();
+        ~ZenCurrSensor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf zen_curr_sensor; //type: string
+        ydk::YLeaf zen_curr_sensor_id; //type: string
+        ydk::YLeaf zen_curr_dev_addr; //type: uint32
+        ydk::YLeaf zen_curr_poll_intvl; //type: uint32
+        ydk::YLeaf zen_curr_delta; //type: uint32
+        ydk::YLeaf zen_curr_raw_data; //type: uint32
+        ydk::YLeaf zen_curr_sensor_value; //type: int32
+        ydk::YLeaf zen_curr_unit; //type: int32
+        ydk::YLeaf zen_curr_last_value; //type: uint32
+        ydk::YLeaf zen_curr_send_update; //type: boolean
+        ydk::YLeaf zen_curr_num_1sec_intervals; //type: int32
+
+}; // Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor
+
+
+class Controller::Zen::Trace : public ydk::Entity
+{
+    public:
+        Trace();
+        ~Trace();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf buffer; //type: string
+        class Location; //type: Controller::Zen::Trace::Location
+
+        ydk::YList location;
+        
+}; // Controller::Zen::Trace
+
+
+class Controller::Zen::Trace::Location : public ydk::Entity
+{
+    public:
+        Location();
+        ~Location();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf location_name; //type: string
+        class AllOptions; //type: Controller::Zen::Trace::Location::AllOptions
+
+        ydk::YList all_options;
+        
+}; // Controller::Zen::Trace::Location
+
+
+class Controller::Zen::Trace::Location::AllOptions : public ydk::Entity
+{
+    public:
+        AllOptions();
+        ~AllOptions();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf option; //type: string
+        class TraceBlocks; //type: Controller::Zen::Trace::Location::AllOptions::TraceBlocks
+
+        ydk::YList trace_blocks;
+        
+}; // Controller::Zen::Trace::Location::AllOptions
+
+
+class Controller::Zen::Trace::Location::AllOptions::TraceBlocks : public ydk::Entity
+{
+    public:
+        TraceBlocks();
+        ~TraceBlocks();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf data; //type: string
+
+}; // Controller::Zen::Trace::Location::AllOptions::TraceBlocks
+
+
+class Controller::CccDriver : public ydk::Entity
+{
+    public:
+        CccDriver();
+        ~CccDriver();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Trace; //type: Controller::CccDriver::Trace
+        class Bootflash; //type: Controller::CccDriver::Bootflash
+        class Inventory; //type: Controller::CccDriver::Inventory
+        class Power; //type: Controller::CccDriver::Power
+        class ResetHistory; //type: Controller::CccDriver::ResetHistory
+        class Register; //type: Controller::CccDriver::Register
+        class Ejector; //type: Controller::CccDriver::Ejector
+        class I2cDev; //type: Controller::CccDriver::I2cDev
+        class Ethernet; //type: Controller::CccDriver::Ethernet
+        class EventHistory; //type: Controller::CccDriver::EventHistory
+        class OirHistory; //type: Controller::CccDriver::OirHistory
+        class NotifHistory; //type: Controller::CccDriver::NotifHistory
+        class Slave; //type: Controller::CccDriver::Slave
+        class Action; //type: Controller::CccDriver::Action
+
+        ydk::YList trace;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Bootflash> bootflash;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Inventory> inventory;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Power> power;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::ResetHistory> reset_history;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register> register_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Ejector> ejector;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2cDev> i2c_dev;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Ethernet> ethernet;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::EventHistory> event_history;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::OirHistory> oir_history;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::NotifHistory> notif_history;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Slave> slave;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Action> action;
+        
+}; // Controller::CccDriver
+
+
+class Controller::CccDriver::Trace : public ydk::Entity
+{
+    public:
+        Trace();
+        ~Trace();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf buffer; //type: string
+        class Location; //type: Controller::CccDriver::Trace::Location
+
+        ydk::YList location;
+        
+}; // Controller::CccDriver::Trace
+
+
+class Controller::CccDriver::Trace::Location : public ydk::Entity
+{
+    public:
+        Location();
+        ~Location();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf location_name; //type: string
+        class AllOptions; //type: Controller::CccDriver::Trace::Location::AllOptions
+
+        ydk::YList all_options;
+        
+}; // Controller::CccDriver::Trace::Location
+
+
+class Controller::CccDriver::Trace::Location::AllOptions : public ydk::Entity
+{
+    public:
+        AllOptions();
+        ~AllOptions();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf option; //type: string
+        class TraceBlocks; //type: Controller::CccDriver::Trace::Location::AllOptions::TraceBlocks
+
+        ydk::YList trace_blocks;
+        
+}; // Controller::CccDriver::Trace::Location::AllOptions
 
 
 }

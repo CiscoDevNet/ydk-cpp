@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_ip_sla_oper {
 
 IpSlaStats::IpSlaStats()
+    :
+    sla_oper_entry(this, {"oper_id"})
 {
 
-    yang_name = "ip-sla-stats"; yang_parent_name = "Cisco-IOS-XE-ip-sla-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ip-sla-stats"; yang_parent_name = "Cisco-IOS-XE-ip-sla-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IpSlaStats::~IpSlaStats()
@@ -23,7 +25,8 @@ IpSlaStats::~IpSlaStats()
 
 bool IpSlaStats::has_data() const
 {
-    for (std::size_t index=0; index<sla_oper_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sla_oper_entry.len(); index++)
     {
         if(sla_oper_entry[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool IpSlaStats::has_data() const
 
 bool IpSlaStats::has_operation() const
 {
-    for (std::size_t index=0; index<sla_oper_entry.size(); index++)
+    for (std::size_t index=0; index<sla_oper_entry.len(); index++)
     {
         if(sla_oper_entry[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> IpSlaStats::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<IpSlaStats::SlaOperEntry>();
         c->parent = this;
-        sla_oper_entry.push_back(c);
+        sla_oper_entry.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sla_oper_entry)
+    for (auto c : sla_oper_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -134,16 +137,16 @@ IpSlaStats::SlaOperEntry::SlaOperEntry()
     success_count{YType::uint32, "success-count"},
     failure_count{YType::uint32, "failure-count"},
     latest_oper_start_time{YType::str, "latest-oper-start-time"}
-    	,
+        ,
     rtt_info(std::make_shared<IpSlaStats::SlaOperEntry::RttInfo>())
-	,measure_stats(std::make_shared<IpSlaStats::SlaOperEntry::MeasureStats>())
-	,stats(std::make_shared<IpSlaStats::SlaOperEntry::Stats>())
+    , measure_stats(std::make_shared<IpSlaStats::SlaOperEntry::MeasureStats>())
+    , stats(std::make_shared<IpSlaStats::SlaOperEntry::Stats>())
 {
     rtt_info->parent = this;
     measure_stats->parent = this;
     stats->parent = this;
 
-    yang_name = "sla-oper-entry"; yang_parent_name = "ip-sla-stats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sla-oper-entry"; yang_parent_name = "ip-sla-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpSlaStats::SlaOperEntry::~SlaOperEntry()
@@ -152,6 +155,7 @@ IpSlaStats::SlaOperEntry::~SlaOperEntry()
 
 bool IpSlaStats::SlaOperEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return oper_id.is_set
 	|| oper_type.is_set
 	|| latest_return_code.is_set
@@ -187,7 +191,8 @@ std::string IpSlaStats::SlaOperEntry::get_absolute_path() const
 std::string IpSlaStats::SlaOperEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sla-oper-entry" <<"[oper-id='" <<oper_id <<"']";
+    path_buffer << "sla-oper-entry";
+    ADD_KEY_TOKEN(oper_id, "oper-id");
     return path_buffer.str();
 }
 
@@ -338,12 +343,12 @@ bool IpSlaStats::SlaOperEntry::has_leaf_or_child_of_name(const std::string & nam
 IpSlaStats::SlaOperEntry::RttInfo::RttInfo()
     :
     latest_rtt(std::make_shared<IpSlaStats::SlaOperEntry::RttInfo::LatestRtt>())
-	,time_to_live(std::make_shared<IpSlaStats::SlaOperEntry::RttInfo::TimeToLive>())
+    , time_to_live(std::make_shared<IpSlaStats::SlaOperEntry::RttInfo::TimeToLive>())
 {
     latest_rtt->parent = this;
     time_to_live->parent = this;
 
-    yang_name = "rtt-info"; yang_parent_name = "sla-oper-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rtt-info"; yang_parent_name = "sla-oper-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::RttInfo::~RttInfo()
@@ -352,6 +357,7 @@ IpSlaStats::SlaOperEntry::RttInfo::~RttInfo()
 
 bool IpSlaStats::SlaOperEntry::RttInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (latest_rtt !=  nullptr && latest_rtt->has_data())
 	|| (time_to_live !=  nullptr && time_to_live->has_data());
 }
@@ -441,7 +447,7 @@ IpSlaStats::SlaOperEntry::RttInfo::LatestRtt::LatestRtt()
     could_not_find{YType::empty, "could-not-find"}
 {
 
-    yang_name = "latest-rtt"; yang_parent_name = "rtt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "latest-rtt"; yang_parent_name = "rtt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::RttInfo::LatestRtt::~LatestRtt()
@@ -450,6 +456,7 @@ IpSlaStats::SlaOperEntry::RttInfo::LatestRtt::~LatestRtt()
 
 bool IpSlaStats::SlaOperEntry::RttInfo::LatestRtt::has_data() const
 {
+    if (is_presence_container) return true;
     return rtt.is_set
 	|| unknown.is_set
 	|| could_not_find.is_set;
@@ -545,7 +552,7 @@ IpSlaStats::SlaOperEntry::RttInfo::TimeToLive::TimeToLive()
     forever{YType::empty, "forever"}
 {
 
-    yang_name = "time-to-live"; yang_parent_name = "rtt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time-to-live"; yang_parent_name = "rtt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::RttInfo::TimeToLive::~TimeToLive()
@@ -554,6 +561,7 @@ IpSlaStats::SlaOperEntry::RttInfo::TimeToLive::~TimeToLive()
 
 bool IpSlaStats::SlaOperEntry::RttInfo::TimeToLive::has_data() const
 {
+    if (is_presence_container) return true;
     return ttl.is_set
 	|| forever.is_set;
 }
@@ -638,7 +646,7 @@ IpSlaStats::SlaOperEntry::MeasureStats::MeasureStats()
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "measure-stats"; yang_parent_name = "sla-oper-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "measure-stats"; yang_parent_name = "sla-oper-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::MeasureStats::~MeasureStats()
@@ -647,6 +655,7 @@ IpSlaStats::SlaOperEntry::MeasureStats::~MeasureStats()
 
 bool IpSlaStats::SlaOperEntry::MeasureStats::has_data() const
 {
+    if (is_presence_container) return true;
     return intv_start_time.is_set
 	|| init_count.is_set
 	|| complete_count.is_set
@@ -752,12 +761,12 @@ bool IpSlaStats::SlaOperEntry::MeasureStats::has_leaf_or_child_of_name(const std
 IpSlaStats::SlaOperEntry::Stats::Stats()
     :
     rtt(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Rtt>())
-	,oneway_latency(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency>())
-	,jitter(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter>())
-	,over_threshold(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OverThreshold>())
-	,packet_loss(std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss>())
-	,icmp_packet_loss(std::make_shared<IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss>())
-	,voice_score(std::make_shared<IpSlaStats::SlaOperEntry::Stats::VoiceScore>())
+    , oneway_latency(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency>())
+    , jitter(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter>())
+    , over_threshold(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OverThreshold>())
+    , packet_loss(std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss>())
+    , icmp_packet_loss(std::make_shared<IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss>())
+    , voice_score(std::make_shared<IpSlaStats::SlaOperEntry::Stats::VoiceScore>())
 {
     rtt->parent = this;
     oneway_latency->parent = this;
@@ -767,7 +776,7 @@ IpSlaStats::SlaOperEntry::Stats::Stats()
     icmp_packet_loss->parent = this;
     voice_score->parent = this;
 
-    yang_name = "stats"; yang_parent_name = "sla-oper-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "sla-oper-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::~Stats()
@@ -776,6 +785,7 @@ IpSlaStats::SlaOperEntry::Stats::~Stats()
 
 bool IpSlaStats::SlaOperEntry::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return (rtt !=  nullptr && rtt->has_data())
 	|| (oneway_latency !=  nullptr && oneway_latency->has_data())
 	|| (jitter !=  nullptr && jitter->has_data())
@@ -941,12 +951,12 @@ bool IpSlaStats::SlaOperEntry::Stats::has_leaf_or_child_of_name(const std::strin
 IpSlaStats::SlaOperEntry::Stats::Rtt::Rtt()
     :
     rtt_count{YType::uint32, "rtt-count"}
-    	,
+        ,
     sla_time_values(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues>())
 {
     sla_time_values->parent = this;
 
-    yang_name = "rtt"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rtt"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::Rtt::~Rtt()
@@ -955,6 +965,7 @@ IpSlaStats::SlaOperEntry::Stats::Rtt::~Rtt()
 
 bool IpSlaStats::SlaOperEntry::Stats::Rtt::has_data() const
 {
+    if (is_presence_container) return true;
     return rtt_count.is_set
 	|| (sla_time_values !=  nullptr && sla_time_values->has_data());
 }
@@ -1042,7 +1053,7 @@ IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues::SlaTimeValues()
     accuracy{YType::enumeration, "accuracy"}
 {
 
-    yang_name = "sla-time-values"; yang_parent_name = "rtt"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sla-time-values"; yang_parent_name = "rtt"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues::~SlaTimeValues()
@@ -1051,6 +1062,7 @@ IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues::~SlaTimeValues()
 
 bool IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| avg.is_set
 	|| max.is_set
@@ -1156,14 +1168,14 @@ bool IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues::has_leaf_or_child_of_n
 IpSlaStats::SlaOperEntry::Stats::OnewayLatency::OnewayLatency()
     :
     sample_count{YType::uint32, "sample-count"}
-    	,
+        ,
     sd(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd>())
-	,ds(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds>())
+    , ds(std::make_shared<IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds>())
 {
     sd->parent = this;
     ds->parent = this;
 
-    yang_name = "oneway-latency"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oneway-latency"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::OnewayLatency::~OnewayLatency()
@@ -1172,6 +1184,7 @@ IpSlaStats::SlaOperEntry::Stats::OnewayLatency::~OnewayLatency()
 
 bool IpSlaStats::SlaOperEntry::Stats::OnewayLatency::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_count.is_set
 	|| (sd !=  nullptr && sd->has_data())
 	|| (ds !=  nullptr && ds->has_data());
@@ -1275,7 +1288,7 @@ IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd::Sd()
     accuracy{YType::enumeration, "accuracy"}
 {
 
-    yang_name = "sd"; yang_parent_name = "oneway-latency"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sd"; yang_parent_name = "oneway-latency"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd::~Sd()
@@ -1284,6 +1297,7 @@ IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd::~Sd()
 
 bool IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| avg.is_set
 	|| max.is_set
@@ -1394,7 +1408,7 @@ IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds::Ds()
     accuracy{YType::enumeration, "accuracy"}
 {
 
-    yang_name = "ds"; yang_parent_name = "oneway-latency"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ds"; yang_parent_name = "oneway-latency"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds::~Ds()
@@ -1403,6 +1417,7 @@ IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds::~Ds()
 
 bool IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| avg.is_set
 	|| max.is_set
@@ -1509,14 +1524,14 @@ IpSlaStats::SlaOperEntry::Stats::Jitter::Jitter()
     :
     sd_sample_count{YType::uint32, "sd-sample-count"},
     ds_sample_count{YType::uint32, "ds-sample-count"}
-    	,
+        ,
     sd(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter::Sd>())
-	,ds(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter::Ds>())
+    , ds(std::make_shared<IpSlaStats::SlaOperEntry::Stats::Jitter::Ds>())
 {
     sd->parent = this;
     ds->parent = this;
 
-    yang_name = "jitter"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "jitter"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::Jitter::~Jitter()
@@ -1525,6 +1540,7 @@ IpSlaStats::SlaOperEntry::Stats::Jitter::~Jitter()
 
 bool IpSlaStats::SlaOperEntry::Stats::Jitter::has_data() const
 {
+    if (is_presence_container) return true;
     return sd_sample_count.is_set
 	|| ds_sample_count.is_set
 	|| (sd !=  nullptr && sd->has_data())
@@ -1641,7 +1657,7 @@ IpSlaStats::SlaOperEntry::Stats::Jitter::Sd::Sd()
     accuracy{YType::enumeration, "accuracy"}
 {
 
-    yang_name = "sd"; yang_parent_name = "jitter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sd"; yang_parent_name = "jitter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::Jitter::Sd::~Sd()
@@ -1650,6 +1666,7 @@ IpSlaStats::SlaOperEntry::Stats::Jitter::Sd::~Sd()
 
 bool IpSlaStats::SlaOperEntry::Stats::Jitter::Sd::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| avg.is_set
 	|| max.is_set
@@ -1760,7 +1777,7 @@ IpSlaStats::SlaOperEntry::Stats::Jitter::Ds::Ds()
     accuracy{YType::enumeration, "accuracy"}
 {
 
-    yang_name = "ds"; yang_parent_name = "jitter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ds"; yang_parent_name = "jitter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::Jitter::Ds::~Ds()
@@ -1769,6 +1786,7 @@ IpSlaStats::SlaOperEntry::Stats::Jitter::Ds::~Ds()
 
 bool IpSlaStats::SlaOperEntry::Stats::Jitter::Ds::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| avg.is_set
 	|| max.is_set
@@ -1877,7 +1895,7 @@ IpSlaStats::SlaOperEntry::Stats::OverThreshold::OverThreshold()
     percent{YType::uint8, "percent"}
 {
 
-    yang_name = "over-threshold"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "over-threshold"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::OverThreshold::~OverThreshold()
@@ -1886,6 +1904,7 @@ IpSlaStats::SlaOperEntry::Stats::OverThreshold::~OverThreshold()
 
 bool IpSlaStats::SlaOperEntry::Stats::OverThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rtt_count.is_set
 	|| percent.is_set;
 }
@@ -1971,14 +1990,14 @@ IpSlaStats::SlaOperEntry::Stats::PacketLoss::PacketLoss()
     drops{YType::uint32, "drops"},
     late_arrivals{YType::uint32, "late-arrivals"},
     skipped_packets{YType::uint32, "skipped-packets"}
-    	,
+        ,
     sd_loss(std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss>())
-	,ds_loss(std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss>())
+    , ds_loss(std::make_shared<IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss>())
 {
     sd_loss->parent = this;
     ds_loss->parent = this;
 
-    yang_name = "packet-loss"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-loss"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::PacketLoss::~PacketLoss()
@@ -1987,6 +2006,7 @@ IpSlaStats::SlaOperEntry::Stats::PacketLoss::~PacketLoss()
 
 bool IpSlaStats::SlaOperEntry::Stats::PacketLoss::has_data() const
 {
+    if (is_presence_container) return true;
     return unprocessed_packets.is_set
 	|| sd_count.is_set
 	|| ds_count.is_set
@@ -2169,7 +2189,7 @@ IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss::SdLoss()
     inter_loss_period_len_max{YType::uint32, "inter-loss-period-len-max"}
 {
 
-    yang_name = "sd-loss"; yang_parent_name = "packet-loss"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sd-loss"; yang_parent_name = "packet-loss"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss::~SdLoss()
@@ -2178,6 +2198,7 @@ IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss::~SdLoss()
 
 bool IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss::has_data() const
 {
+    if (is_presence_container) return true;
     return loss_period_count.is_set
 	|| loss_period_len_min.is_set
 	|| loss_period_len_max.is_set
@@ -2302,7 +2323,7 @@ IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss::DsLoss()
     inter_loss_period_len_max{YType::uint32, "inter-loss-period-len-max"}
 {
 
-    yang_name = "ds-loss"; yang_parent_name = "packet-loss"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ds-loss"; yang_parent_name = "packet-loss"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss::~DsLoss()
@@ -2311,6 +2332,7 @@ IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss::~DsLoss()
 
 bool IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss::has_data() const
 {
+    if (is_presence_container) return true;
     return loss_period_count.is_set
 	|| loss_period_len_min.is_set
 	|| loss_period_len_max.is_set
@@ -2443,7 +2465,7 @@ IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss::IcmpPacketLoss()
     inter_loss_period_len_max{YType::uint32, "inter-loss-period-len-max"}
 {
 
-    yang_name = "icmp-packet-loss"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp-packet-loss"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss::~IcmpPacketLoss()
@@ -2452,6 +2474,7 @@ IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss::~IcmpPacketLoss()
 
 bool IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss::has_data() const
 {
+    if (is_presence_container) return true;
     return late_arrivals.is_set
 	|| out_of_sequence.is_set
 	|| out_of_sequence_sd.is_set
@@ -2677,7 +2700,7 @@ IpSlaStats::SlaOperEntry::Stats::VoiceScore::VoiceScore()
     mos{YType::uint32, "mos"}
 {
 
-    yang_name = "voice-score"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "voice-score"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpSlaStats::SlaOperEntry::Stats::VoiceScore::~VoiceScore()
@@ -2686,6 +2709,7 @@ IpSlaStats::SlaOperEntry::Stats::VoiceScore::~VoiceScore()
 
 bool IpSlaStats::SlaOperEntry::Stats::VoiceScore::has_data() const
 {
+    if (is_presence_container) return true;
     return icpif.is_set
 	|| mos.is_set;
 }
@@ -2762,6 +2786,13 @@ bool IpSlaStats::SlaOperEntry::Stats::VoiceScore::has_leaf_or_child_of_name(cons
     return false;
 }
 
+const Enum::YLeaf TtlType::ttl_finite {0, "ttl-finite"};
+const Enum::YLeaf TtlType::ttl_forever {1, "ttl-forever"};
+
+const Enum::YLeaf RttType::rtt_known {0, "rtt-known"};
+const Enum::YLeaf RttType::rtt_unknown {1, "rtt-unknown"};
+const Enum::YLeaf RttType::rtt_could_not_find {2, "rtt-could-not-find"};
+
 const Enum::YLeaf SlaOperType::oper_type_unknown {0, "oper-type-unknown"};
 const Enum::YLeaf SlaOperType::oper_type_udp_echo {1, "oper-type-udp-echo"};
 const Enum::YLeaf SlaOperType::oper_type_udp_jitter {2, "oper-type-udp-jitter"};
@@ -2788,13 +2819,6 @@ const Enum::YLeaf SlaReturnCode::ret_code_could_not_find {8, "ret-code-could-not
 
 const Enum::YLeaf AccuracyType::accuracy_milliseconds {0, "accuracy-milliseconds"};
 const Enum::YLeaf AccuracyType::accuracy_microseconds {1, "accuracy-microseconds"};
-
-const Enum::YLeaf RttType::rtt_known {0, "rtt-known"};
-const Enum::YLeaf RttType::rtt_unknown {1, "rtt-unknown"};
-const Enum::YLeaf RttType::rtt_could_not_find {2, "rtt-could-not-find"};
-
-const Enum::YLeaf TtlType::ttl_finite {0, "ttl-finite"};
-const Enum::YLeaf TtlType::ttl_forever {1, "ttl-forever"};
 
 
 }

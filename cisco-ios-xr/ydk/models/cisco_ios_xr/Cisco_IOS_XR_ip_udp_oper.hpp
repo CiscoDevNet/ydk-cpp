@@ -57,7 +57,7 @@ class Udp::Nodes : public ydk::Entity
 
         class Node; //type: Udp::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::Udp::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Udp::Nodes
 
@@ -210,7 +210,7 @@ class UdpConnection::Nodes : public ydk::Entity
 
         class Node; //type: UdpConnection::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // UdpConnection::Nodes
 
@@ -291,7 +291,7 @@ class UdpConnection::Nodes::Node::Statistics::Clients : public ydk::Entity
 
         class Client; //type: UdpConnection::Nodes::Node::Statistics::Clients::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::Clients::Client> > client;
+        ydk::YList client;
         
 }; // UdpConnection::Nodes::Node::Statistics::Clients
 
@@ -371,7 +371,7 @@ class UdpConnection::Nodes::Node::Statistics::PcbStatistics : public ydk::Entity
 
         class PcbStatistic; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic> > pcb_statistic;
+        ydk::YList pcb_statistic;
         
 }; // UdpConnection::Nodes::Node::Statistics::PcbStatistics
 
@@ -496,7 +496,7 @@ class UdpConnection::Nodes::Node::Lpts::Queries : public ydk::Entity
 
         class Query; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query> > query;
+        ydk::YList query;
         
 }; // UdpConnection::Nodes::Node::Lpts::Queries
 
@@ -543,7 +543,7 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs : public ydk::Entit
 
         class Pcb; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb> > pcb;
+        ydk::YList pcb;
         
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs
 
@@ -675,7 +675,7 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options> options;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags> lpts_flags;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask> accept_mask;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter> > filter;
+        ydk::YList filter;
         
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb
 
@@ -875,7 +875,7 @@ class UdpConnection::Nodes::Node::PcbDetails : public ydk::Entity
 
         class PcbDetail; //type: UdpConnection::Nodes::Node::PcbDetails::PcbDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbDetails::PcbDetail> > pcb_detail;
+        ydk::YList pcb_detail;
         
 }; // UdpConnection::Nodes::Node::PcbDetails
 
@@ -977,7 +977,7 @@ class UdpConnection::Nodes::Node::PcbBriefs : public ydk::Entity
 
         class PcbBrief; //type: UdpConnection::Nodes::Node::PcbBriefs::PcbBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs::PcbBrief> > pcb_brief;
+        ydk::YList pcb_brief;
         
 }; // UdpConnection::Nodes::Node::PcbBriefs
 
@@ -1069,82 +1069,7 @@ class LptsPcbQuery : public ydk::Enum
 
 };
 
-class MessageTypeIgmp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf membership_query;
-        static const ydk::Enum::YLeaf v1_membership_report;
-        static const ydk::Enum::YLeaf dvmrp;
-        static const ydk::Enum::YLeaf pi_mv1;
-        static const ydk::Enum::YLeaf cisco_trace_messages;
-        static const ydk::Enum::YLeaf v2_membership_report;
-        static const ydk::Enum::YLeaf v2_leave_group;
-        static const ydk::Enum::YLeaf multicast_traceroute_response;
-        static const ydk::Enum::YLeaf multicast_traceroute;
-        static const ydk::Enum::YLeaf v3_membership_report;
-        static const ydk::Enum::YLeaf multicast_router_advertisement;
-        static const ydk::Enum::YLeaf multicast_router_solicitation;
-        static const ydk::Enum::YLeaf multicast_router_termination;
-
-};
-
-class MessageTypeIgmp_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf membership_query;
-        static const ydk::Enum::YLeaf v1_membership_report;
-        static const ydk::Enum::YLeaf dvmrp;
-        static const ydk::Enum::YLeaf pi_mv1;
-        static const ydk::Enum::YLeaf cisco_trace_messages;
-        static const ydk::Enum::YLeaf v2_membership_report;
-        static const ydk::Enum::YLeaf v2_leave_group;
-        static const ydk::Enum::YLeaf multicast_traceroute_response;
-        static const ydk::Enum::YLeaf multicast_traceroute;
-        static const ydk::Enum::YLeaf v3_membership_report;
-        static const ydk::Enum::YLeaf multicast_router_advertisement;
-        static const ydk::Enum::YLeaf multicast_router_solicitation;
-        static const ydk::Enum::YLeaf multicast_router_termination;
-
-};
-
 class MessageTypeIcmpv6 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf destination_unreachable;
-        static const ydk::Enum::YLeaf packet_too_big;
-        static const ydk::Enum::YLeaf time_exceeded;
-        static const ydk::Enum::YLeaf parameter_problem;
-        static const ydk::Enum::YLeaf echo_request;
-        static const ydk::Enum::YLeaf echo_reply;
-        static const ydk::Enum::YLeaf multicast_listener_query;
-        static const ydk::Enum::YLeaf multicast_listener_report;
-        static const ydk::Enum::YLeaf multicast_listener_done;
-        static const ydk::Enum::YLeaf router_solicitation;
-        static const ydk::Enum::YLeaf router_advertisement;
-        static const ydk::Enum::YLeaf neighbor_solicitation;
-        static const ydk::Enum::YLeaf neighbor_advertisement;
-        static const ydk::Enum::YLeaf redirect_message;
-        static const ydk::Enum::YLeaf router_renumbering;
-        static const ydk::Enum::YLeaf node_information_query;
-        static const ydk::Enum::YLeaf node_information_reply;
-        static const ydk::Enum::YLeaf inverse_neighbor_discovery_solicitaion;
-        static const ydk::Enum::YLeaf inverse_neighbor_discover_advertisement;
-        static const ydk::Enum::YLeaf v2_multicast_listener_report;
-        static const ydk::Enum::YLeaf home_agent_address_discovery_request;
-        static const ydk::Enum::YLeaf home_agent_address_discovery_reply;
-        static const ydk::Enum::YLeaf mobile_prefix_solicitation;
-        static const ydk::Enum::YLeaf mobile_prefix_advertisement;
-        static const ydk::Enum::YLeaf certification_path_solicitation_message;
-        static const ydk::Enum::YLeaf certification_path_advertisement_message;
-        static const ydk::Enum::YLeaf experimental_mobility_protocols;
-        static const ydk::Enum::YLeaf multicast_router_advertisement;
-        static const ydk::Enum::YLeaf multicast_router_solicitation;
-        static const ydk::Enum::YLeaf multicast_router_termination;
-        static const ydk::Enum::YLeaf fmipv6_messages;
-
-};
-
-class MessageTypeIcmpv6_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf destination_unreachable;
@@ -1211,6 +1136,54 @@ class MessageTypeIcmp : public ydk::Enum
 
 };
 
+class MessageTypeIgmp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf membership_query;
+        static const ydk::Enum::YLeaf v1_membership_report;
+        static const ydk::Enum::YLeaf dvmrp;
+        static const ydk::Enum::YLeaf pi_mv1;
+        static const ydk::Enum::YLeaf cisco_trace_messages;
+        static const ydk::Enum::YLeaf v2_membership_report;
+        static const ydk::Enum::YLeaf v2_leave_group;
+        static const ydk::Enum::YLeaf multicast_traceroute_response;
+        static const ydk::Enum::YLeaf multicast_traceroute;
+        static const ydk::Enum::YLeaf v3_membership_report;
+        static const ydk::Enum::YLeaf multicast_router_advertisement;
+        static const ydk::Enum::YLeaf multicast_router_solicitation;
+        static const ydk::Enum::YLeaf multicast_router_termination;
+
+};
+
+class MessageTypeIgmp_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf membership_query;
+        static const ydk::Enum::YLeaf v1_membership_report;
+        static const ydk::Enum::YLeaf dvmrp;
+        static const ydk::Enum::YLeaf pi_mv1;
+        static const ydk::Enum::YLeaf cisco_trace_messages;
+        static const ydk::Enum::YLeaf v2_membership_report;
+        static const ydk::Enum::YLeaf v2_leave_group;
+        static const ydk::Enum::YLeaf multicast_traceroute_response;
+        static const ydk::Enum::YLeaf multicast_traceroute;
+        static const ydk::Enum::YLeaf v3_membership_report;
+        static const ydk::Enum::YLeaf multicast_router_advertisement;
+        static const ydk::Enum::YLeaf multicast_router_solicitation;
+        static const ydk::Enum::YLeaf multicast_router_termination;
+
+};
+
+class Packet : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icmp;
+        static const ydk::Enum::YLeaf icm_pv6;
+        static const ydk::Enum::YLeaf igmp;
+        static const ydk::Enum::YLeaf unknown;
+
+};
+
 class MessageTypeIcmp_ : public ydk::Enum
 {
     public:
@@ -1238,16 +1211,6 @@ class MessageTypeIcmp_ : public ydk::Enum
         static const ydk::Enum::YLeaf mobile_registration_request;
         static const ydk::Enum::YLeaf mobile_registration_reply;
         static const ydk::Enum::YLeaf domain_name_request;
-
-};
-
-class Packet : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icmp;
-        static const ydk::Enum::YLeaf icm_pv6;
-        static const ydk::Enum::YLeaf igmp;
-        static const ydk::Enum::YLeaf unknown;
 
 };
 
@@ -1304,6 +1267,43 @@ class UdpAddressFamily : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class MessageTypeIcmpv6_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf destination_unreachable;
+        static const ydk::Enum::YLeaf packet_too_big;
+        static const ydk::Enum::YLeaf time_exceeded;
+        static const ydk::Enum::YLeaf parameter_problem;
+        static const ydk::Enum::YLeaf echo_request;
+        static const ydk::Enum::YLeaf echo_reply;
+        static const ydk::Enum::YLeaf multicast_listener_query;
+        static const ydk::Enum::YLeaf multicast_listener_report;
+        static const ydk::Enum::YLeaf multicast_listener_done;
+        static const ydk::Enum::YLeaf router_solicitation;
+        static const ydk::Enum::YLeaf router_advertisement;
+        static const ydk::Enum::YLeaf neighbor_solicitation;
+        static const ydk::Enum::YLeaf neighbor_advertisement;
+        static const ydk::Enum::YLeaf redirect_message;
+        static const ydk::Enum::YLeaf router_renumbering;
+        static const ydk::Enum::YLeaf node_information_query;
+        static const ydk::Enum::YLeaf node_information_reply;
+        static const ydk::Enum::YLeaf inverse_neighbor_discovery_solicitaion;
+        static const ydk::Enum::YLeaf inverse_neighbor_discover_advertisement;
+        static const ydk::Enum::YLeaf v2_multicast_listener_report;
+        static const ydk::Enum::YLeaf home_agent_address_discovery_request;
+        static const ydk::Enum::YLeaf home_agent_address_discovery_reply;
+        static const ydk::Enum::YLeaf mobile_prefix_solicitation;
+        static const ydk::Enum::YLeaf mobile_prefix_advertisement;
+        static const ydk::Enum::YLeaf certification_path_solicitation_message;
+        static const ydk::Enum::YLeaf certification_path_advertisement_message;
+        static const ydk::Enum::YLeaf experimental_mobility_protocols;
+        static const ydk::Enum::YLeaf multicast_router_advertisement;
+        static const ydk::Enum::YLeaf multicast_router_solicitation;
+        static const ydk::Enum::YLeaf multicast_router_termination;
+        static const ydk::Enum::YLeaf fmipv6_messages;
 
 };
 

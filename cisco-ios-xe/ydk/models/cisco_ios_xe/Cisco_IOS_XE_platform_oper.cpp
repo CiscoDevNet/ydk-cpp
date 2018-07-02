@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_platform_oper {
 
 Components::Components()
+    :
+    component(this, {"cname"})
 {
 
-    yang_name = "components"; yang_parent_name = "Cisco-IOS-XE-platform-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "components"; yang_parent_name = "Cisco-IOS-XE-platform-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Components::~Components()
@@ -23,7 +25,8 @@ Components::~Components()
 
 bool Components::has_data() const
 {
-    for (std::size_t index=0; index<component.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<component.len(); index++)
     {
         if(component[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Components::has_data() const
 
 bool Components::has_operation() const
 {
-    for (std::size_t index=0; index<component.size(); index++)
+    for (std::size_t index=0; index<component.len(); index++)
     {
         if(component[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Components::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Components::Component>();
         c->parent = this;
-        component.push_back(c);
+        component.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Components::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : component)
+    for (auto c : component.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,16 +132,16 @@ bool Components::has_leaf_or_child_of_name(const std::string & name) const
 Components::Component::Component()
     :
     cname{YType::str, "cname"}
-    	,
+        ,
     state(std::make_shared<Components::Component::State>())
-	,platform_properties(std::make_shared<Components::Component::PlatformProperties>())
-	,platform_subcomponents(std::make_shared<Components::Component::PlatformSubcomponents>())
+    , platform_properties(std::make_shared<Components::Component::PlatformProperties>())
+    , platform_subcomponents(std::make_shared<Components::Component::PlatformSubcomponents>())
 {
     state->parent = this;
     platform_properties->parent = this;
     platform_subcomponents->parent = this;
 
-    yang_name = "component"; yang_parent_name = "components"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "component"; yang_parent_name = "components"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Components::Component::~Component()
@@ -147,6 +150,7 @@ Components::Component::~Component()
 
 bool Components::Component::has_data() const
 {
+    if (is_presence_container) return true;
     return cname.is_set
 	|| (state !=  nullptr && state->has_data())
 	|| (platform_properties !=  nullptr && platform_properties->has_data())
@@ -172,7 +176,8 @@ std::string Components::Component::get_absolute_path() const
 std::string Components::Component::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "component" <<"[cname='" <<cname <<"']";
+    path_buffer << "component";
+    ADD_KEY_TOKEN(cname, "cname");
     return path_buffer.str();
 }
 
@@ -274,12 +279,12 @@ Components::Component::State::State()
     version{YType::str, "version"},
     serial_no{YType::str, "serial-no"},
     part_no{YType::str, "part-no"}
-    	,
+        ,
     temp(std::make_shared<Components::Component::State::Temp>())
 {
     temp->parent = this;
 
-    yang_name = "state"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Components::Component::State::~State()
@@ -288,6 +293,7 @@ Components::Component::State::~State()
 
 bool Components::Component::State::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| id.is_set
 	|| description.is_set
@@ -453,7 +459,7 @@ Components::Component::State::Temp::Temp()
     temp_min{YType::str, "temp-min"}
 {
 
-    yang_name = "temp"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "temp"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Components::Component::State::Temp::~Temp()
@@ -462,6 +468,7 @@ Components::Component::State::Temp::~Temp()
 
 bool Components::Component::State::Temp::has_data() const
 {
+    if (is_presence_container) return true;
     return temp_instant.is_set
 	|| temp_avg.is_set
 	|| temp_max.is_set
@@ -565,9 +572,11 @@ bool Components::Component::State::Temp::has_leaf_or_child_of_name(const std::st
 }
 
 Components::Component::PlatformProperties::PlatformProperties()
+    :
+    platform_property(this, {"name"})
 {
 
-    yang_name = "platform-properties"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "platform-properties"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Components::Component::PlatformProperties::~PlatformProperties()
@@ -576,7 +585,8 @@ Components::Component::PlatformProperties::~PlatformProperties()
 
 bool Components::Component::PlatformProperties::has_data() const
 {
-    for (std::size_t index=0; index<platform_property.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<platform_property.len(); index++)
     {
         if(platform_property[index]->has_data())
             return true;
@@ -586,7 +596,7 @@ bool Components::Component::PlatformProperties::has_data() const
 
 bool Components::Component::PlatformProperties::has_operation() const
 {
-    for (std::size_t index=0; index<platform_property.size(); index++)
+    for (std::size_t index=0; index<platform_property.len(); index++)
     {
         if(platform_property[index]->has_operation())
             return true;
@@ -616,7 +626,7 @@ std::shared_ptr<Entity> Components::Component::PlatformProperties::get_child_by_
     {
         auto c = std::make_shared<Components::Component::PlatformProperties::PlatformProperty>();
         c->parent = this;
-        platform_property.push_back(c);
+        platform_property.append(c);
         return c;
     }
 
@@ -628,7 +638,7 @@ std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformPr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : platform_property)
+    for (auto c : platform_property.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -658,12 +668,12 @@ Components::Component::PlatformProperties::PlatformProperty::PlatformProperty()
     :
     name{YType::str, "name"},
     configurable{YType::boolean, "configurable"}
-    	,
+        ,
     value_(std::make_shared<Components::Component::PlatformProperties::PlatformProperty::Value>())
 {
     value_->parent = this;
 
-    yang_name = "platform-property"; yang_parent_name = "platform-properties"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "platform-property"; yang_parent_name = "platform-properties"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Components::Component::PlatformProperties::PlatformProperty::~PlatformProperty()
@@ -672,6 +682,7 @@ Components::Component::PlatformProperties::PlatformProperty::~PlatformProperty()
 
 bool Components::Component::PlatformProperties::PlatformProperty::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| configurable.is_set
 	|| (value_ !=  nullptr && value_->has_data());
@@ -688,7 +699,8 @@ bool Components::Component::PlatformProperties::PlatformProperty::has_operation(
 std::string Components::Component::PlatformProperties::PlatformProperty::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "platform-property" <<"[name='" <<name <<"']";
+    path_buffer << "platform-property";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -773,7 +785,7 @@ Components::Component::PlatformProperties::PlatformProperty::Value::Value()
     decimal{YType::str, "decimal"}
 {
 
-    yang_name = "value"; yang_parent_name = "platform-property"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "platform-property"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Components::Component::PlatformProperties::PlatformProperty::Value::~Value()
@@ -782,6 +794,7 @@ Components::Component::PlatformProperties::PlatformProperty::Value::~Value()
 
 bool Components::Component::PlatformProperties::PlatformProperty::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return string.is_set
 	|| boolean.is_set
 	|| intsixfour.is_set
@@ -898,9 +911,11 @@ bool Components::Component::PlatformProperties::PlatformProperty::Value::has_lea
 }
 
 Components::Component::PlatformSubcomponents::PlatformSubcomponents()
+    :
+    platform_subcomponent(this, {"name"})
 {
 
-    yang_name = "platform-subcomponents"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "platform-subcomponents"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Components::Component::PlatformSubcomponents::~PlatformSubcomponents()
@@ -909,7 +924,8 @@ Components::Component::PlatformSubcomponents::~PlatformSubcomponents()
 
 bool Components::Component::PlatformSubcomponents::has_data() const
 {
-    for (std::size_t index=0; index<platform_subcomponent.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<platform_subcomponent.len(); index++)
     {
         if(platform_subcomponent[index]->has_data())
             return true;
@@ -919,7 +935,7 @@ bool Components::Component::PlatformSubcomponents::has_data() const
 
 bool Components::Component::PlatformSubcomponents::has_operation() const
 {
-    for (std::size_t index=0; index<platform_subcomponent.size(); index++)
+    for (std::size_t index=0; index<platform_subcomponent.len(); index++)
     {
         if(platform_subcomponent[index]->has_operation())
             return true;
@@ -949,7 +965,7 @@ std::shared_ptr<Entity> Components::Component::PlatformSubcomponents::get_child_
     {
         auto c = std::make_shared<Components::Component::PlatformSubcomponents::PlatformSubcomponent>();
         c->parent = this;
-        platform_subcomponent.push_back(c);
+        platform_subcomponent.append(c);
         return c;
     }
 
@@ -961,7 +977,7 @@ std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformSu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : platform_subcomponent)
+    for (auto c : platform_subcomponent.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -992,7 +1008,7 @@ Components::Component::PlatformSubcomponents::PlatformSubcomponent::PlatformSubc
     name{YType::str, "name"}
 {
 
-    yang_name = "platform-subcomponent"; yang_parent_name = "platform-subcomponents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "platform-subcomponent"; yang_parent_name = "platform-subcomponents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Components::Component::PlatformSubcomponents::PlatformSubcomponent::~PlatformSubcomponent()
@@ -1001,6 +1017,7 @@ Components::Component::PlatformSubcomponents::PlatformSubcomponent::~PlatformSub
 
 bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -1013,7 +1030,8 @@ bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_ope
 std::string Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "platform-subcomponent" <<"[name='" <<name <<"']";
+    path_buffer << "platform-subcomponent";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1064,6 +1082,12 @@ bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_lea
     return false;
 }
 
+const Enum::YLeaf PlatformPropValueType::property_string {0, "property-string"};
+const Enum::YLeaf PlatformPropValueType::property_boolean {1, "property-boolean"};
+const Enum::YLeaf PlatformPropValueType::property_int64 {2, "property-int64"};
+const Enum::YLeaf PlatformPropValueType::property_uint64 {3, "property-uint64"};
+const Enum::YLeaf PlatformPropValueType::property_decimal64 {4, "property-decimal64"};
+
 const Enum::YLeaf PlatformCompType::comp_chassis {0, "comp-chassis"};
 const Enum::YLeaf PlatformCompType::comp_backplane {1, "comp-backplane"};
 const Enum::YLeaf PlatformCompType::comp_power_supply {2, "comp-power-supply"};
@@ -1076,12 +1100,6 @@ const Enum::YLeaf PlatformCompType::comp_cpu {8, "comp-cpu"};
 const Enum::YLeaf PlatformCompType::comp_operating_system {9, "comp-operating-system"};
 const Enum::YLeaf PlatformCompType::comp_optical_channel {10, "comp-optical-channel"};
 const Enum::YLeaf PlatformCompType::comp_container {11, "comp-container"};
-
-const Enum::YLeaf PlatformPropValueType::property_string {0, "property-string"};
-const Enum::YLeaf PlatformPropValueType::property_boolean {1, "property-boolean"};
-const Enum::YLeaf PlatformPropValueType::property_int64 {2, "property-int64"};
-const Enum::YLeaf PlatformPropValueType::property_uint64 {3, "property-uint64"};
-const Enum::YLeaf PlatformPropValueType::property_decimal64 {4, "property-decimal64"};
 
 
 }

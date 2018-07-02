@@ -14,12 +14,12 @@ namespace ietf_restconf_monitoring {
 RestconfState::RestconfState()
     :
     capabilities(std::make_shared<RestconfState::Capabilities>())
-	,streams(std::make_shared<RestconfState::Streams>())
+    , streams(std::make_shared<RestconfState::Streams>())
 {
     capabilities->parent = this;
     streams->parent = this;
 
-    yang_name = "restconf-state"; yang_parent_name = "ietf-restconf-monitoring"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "restconf-state"; yang_parent_name = "ietf-restconf-monitoring"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RestconfState::~RestconfState()
@@ -28,6 +28,7 @@ RestconfState::~RestconfState()
 
 bool RestconfState::has_data() const
 {
+    if (is_presence_container) return true;
     return (capabilities !=  nullptr && capabilities->has_data())
 	|| (streams !=  nullptr && streams->has_data());
 }
@@ -140,7 +141,7 @@ RestconfState::Capabilities::Capabilities()
     capability{YType::str, "capability"}
 {
 
-    yang_name = "capabilities"; yang_parent_name = "restconf-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "capabilities"; yang_parent_name = "restconf-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RestconfState::Capabilities::~Capabilities()
@@ -149,6 +150,7 @@ RestconfState::Capabilities::~Capabilities()
 
 bool RestconfState::Capabilities::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : capability.getYLeafs())
     {
         if(leaf.is_set)
@@ -229,9 +231,11 @@ bool RestconfState::Capabilities::has_leaf_or_child_of_name(const std::string & 
 }
 
 RestconfState::Streams::Streams()
+    :
+    stream(this, {"name"})
 {
 
-    yang_name = "streams"; yang_parent_name = "restconf-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "streams"; yang_parent_name = "restconf-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RestconfState::Streams::~Streams()
@@ -240,7 +244,8 @@ RestconfState::Streams::~Streams()
 
 bool RestconfState::Streams::has_data() const
 {
-    for (std::size_t index=0; index<stream.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stream.len(); index++)
     {
         if(stream[index]->has_data())
             return true;
@@ -250,7 +255,7 @@ bool RestconfState::Streams::has_data() const
 
 bool RestconfState::Streams::has_operation() const
 {
-    for (std::size_t index=0; index<stream.size(); index++)
+    for (std::size_t index=0; index<stream.len(); index++)
     {
         if(stream[index]->has_operation())
             return true;
@@ -287,7 +292,7 @@ std::shared_ptr<Entity> RestconfState::Streams::get_child_by_name(const std::str
     {
         auto c = std::make_shared<RestconfState::Streams::Stream>();
         c->parent = this;
-        stream.push_back(c);
+        stream.append(c);
         return c;
     }
 
@@ -299,7 +304,7 @@ std::map<std::string, std::shared_ptr<Entity>> RestconfState::Streams::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stream)
+    for (auto c : stream.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -331,9 +336,11 @@ RestconfState::Streams::Stream::Stream()
     description{YType::str, "description"},
     replay_support{YType::boolean, "replay-support"},
     replay_log_creation_time{YType::str, "replay-log-creation-time"}
+        ,
+    access(this, {"encoding"})
 {
 
-    yang_name = "stream"; yang_parent_name = "streams"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stream"; yang_parent_name = "streams"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RestconfState::Streams::Stream::~Stream()
@@ -342,7 +349,8 @@ RestconfState::Streams::Stream::~Stream()
 
 bool RestconfState::Streams::Stream::has_data() const
 {
-    for (std::size_t index=0; index<access.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access.len(); index++)
     {
         if(access[index]->has_data())
             return true;
@@ -355,7 +363,7 @@ bool RestconfState::Streams::Stream::has_data() const
 
 bool RestconfState::Streams::Stream::has_operation() const
 {
-    for (std::size_t index=0; index<access.size(); index++)
+    for (std::size_t index=0; index<access.len(); index++)
     {
         if(access[index]->has_operation())
             return true;
@@ -377,7 +385,8 @@ std::string RestconfState::Streams::Stream::get_absolute_path() const
 std::string RestconfState::Streams::Stream::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stream" <<"[name='" <<name <<"']";
+    path_buffer << "stream";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -400,7 +409,7 @@ std::shared_ptr<Entity> RestconfState::Streams::Stream::get_child_by_name(const 
     {
         auto c = std::make_shared<RestconfState::Streams::Stream::Access>();
         c->parent = this;
-        access.push_back(c);
+        access.append(c);
         return c;
     }
 
@@ -412,7 +421,7 @@ std::map<std::string, std::shared_ptr<Entity>> RestconfState::Streams::Stream::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access)
+    for (auto c : access.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -484,7 +493,7 @@ RestconfState::Streams::Stream::Access::Access()
     location{YType::str, "location"}
 {
 
-    yang_name = "access"; yang_parent_name = "stream"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access"; yang_parent_name = "stream"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RestconfState::Streams::Stream::Access::~Access()
@@ -493,6 +502,7 @@ RestconfState::Streams::Stream::Access::~Access()
 
 bool RestconfState::Streams::Stream::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return encoding.is_set
 	|| location.is_set;
 }
@@ -507,7 +517,8 @@ bool RestconfState::Streams::Stream::Access::has_operation() const
 std::string RestconfState::Streams::Stream::Access::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access" <<"[encoding='" <<encoding <<"']";
+    path_buffer << "access";
+    ADD_KEY_TOKEN(encoding, "encoding");
     return path_buffer.str();
 }
 

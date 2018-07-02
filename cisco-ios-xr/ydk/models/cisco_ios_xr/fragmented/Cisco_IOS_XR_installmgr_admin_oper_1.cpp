@@ -15,12 +15,12 @@ Install::Logs::Log::Communication::LogContents::V3::V3()
     :
     category{YType::enumeration, "category"},
     message{YType::str, "message"}
-    	,
+        ,
     scope(std::make_shared<Install::Logs::Log::Communication::LogContents::V3::Scope>())
 {
     scope->parent = this;
 
-    yang_name = "v3"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v3"; yang_parent_name = "log-contents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Communication::LogContents::V3::~V3()
@@ -29,6 +29,7 @@ Install::Logs::Log::Communication::LogContents::V3::~V3()
 
 bool Install::Logs::Log::Communication::LogContents::V3::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| message.is_set
 	|| (scope !=  nullptr && scope->has_data());
@@ -127,7 +128,7 @@ Install::Logs::Log::Communication::LogContents::V3::Scope::Scope()
     affected_sd_rs{YType::uint32, "affected-sd-rs"}
 {
 
-    yang_name = "scope"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Install::Logs::Log::Communication::LogContents::V3::Scope::~Scope()
@@ -136,6 +137,7 @@ Install::Logs::Log::Communication::LogContents::V3::Scope::~Scope()
 
 bool Install::Logs::Log::Communication::LogContents::V3::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return admin_read.is_set
 	|| affected_sd_rs.is_set;
 }

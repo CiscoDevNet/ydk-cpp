@@ -25,7 +25,7 @@ Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::RemoteNode()
     protected_path_count{YType::uint32, "protected-path-count"}
 {
 
-    yang_name = "remote-node"; yang_parent_name = "remote-lfa-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-node"; yang_parent_name = "remote-lfa-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::~RemoteNode()
@@ -34,6 +34,7 @@ Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::~RemoteNode()
 
 bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_node_id.is_set
 	|| lsr_id.is_set
 	|| transport_address.is_set
@@ -222,7 +223,7 @@ Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::Logs()
     remote_label_count{YType::uint32, "remote-label-count"}
 {
 
-    yang_name = "logs"; yang_parent_name = "remote-lfa-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logs"; yang_parent_name = "remote-lfa-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::~Logs()
@@ -231,6 +232,7 @@ Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::~Logs()
 
 bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::has_data() const
 {
+    if (is_presence_container) return true;
     return log_time.is_set
 	|| label_coverage_state.is_set
 	|| route_count.is_set
@@ -339,7 +341,7 @@ Rcmd::Intf::Intf()
 {
     events->parent = this;
 
-    yang_name = "intf"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "intf"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Intf::~Intf()
@@ -348,6 +350,7 @@ Rcmd::Intf::~Intf()
 
 bool Rcmd::Intf::has_data() const
 {
+    if (is_presence_container) return true;
     return (events !=  nullptr && events->has_data());
 }
 
@@ -422,9 +425,11 @@ bool Rcmd::Intf::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Rcmd::Intf::Events::Events()
+    :
+    event(this, {"event_no"})
 {
 
-    yang_name = "events"; yang_parent_name = "intf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events"; yang_parent_name = "intf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Intf::Events::~Events()
@@ -433,7 +438,8 @@ Rcmd::Intf::Events::~Events()
 
 bool Rcmd::Intf::Events::has_data() const
 {
-    for (std::size_t index=0; index<event.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<event.len(); index++)
     {
         if(event[index]->has_data())
             return true;
@@ -443,7 +449,7 @@ bool Rcmd::Intf::Events::has_data() const
 
 bool Rcmd::Intf::Events::has_operation() const
 {
-    for (std::size_t index=0; index<event.size(); index++)
+    for (std::size_t index=0; index<event.len(); index++)
     {
         if(event[index]->has_operation())
             return true;
@@ -480,7 +486,7 @@ std::shared_ptr<Entity> Rcmd::Intf::Events::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Rcmd::Intf::Events::Event>();
         c->parent = this;
-        event.push_back(c);
+        event.append(c);
         return c;
     }
 
@@ -492,7 +498,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::Events::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : event)
+    for (auto c : event.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -529,7 +535,7 @@ Rcmd::Intf::Events::Event::Event()
     primary_address{YType::str, "primary-address"}
 {
 
-    yang_name = "event"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "event"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Intf::Events::Event::~Event()
@@ -538,6 +544,7 @@ Rcmd::Intf::Events::Event::~Event()
 
 bool Rcmd::Intf::Events::Event::has_data() const
 {
+    if (is_presence_container) return true;
     return event_no.is_set
 	|| sequence_no.is_set
 	|| interface_name.is_set
@@ -569,7 +576,8 @@ std::string Rcmd::Intf::Events::Event::get_absolute_path() const
 std::string Rcmd::Intf::Events::Event::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "event" <<"[event-no='" <<event_no <<"']";
+    path_buffer << "event";
+    ADD_KEY_TOKEN(event_no, "event-no");
     return path_buffer.str();
 }
 
@@ -689,14 +697,14 @@ bool Rcmd::Intf::Events::Event::has_leaf_or_child_of_name(const std::string & na
 Rcmd::Process::Process()
     :
     isis(std::make_shared<Rcmd::Process::Isis>())
-	,ospf(std::make_shared<Rcmd::Process::Ospf>())
-	,ldp(std::make_shared<Rcmd::Process::Ldp>())
+    , ospf(std::make_shared<Rcmd::Process::Ospf>())
+    , ldp(std::make_shared<Rcmd::Process::Ldp>())
 {
     isis->parent = this;
     ospf->parent = this;
     ldp->parent = this;
 
-    yang_name = "process"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::~Process()
@@ -705,6 +713,7 @@ Rcmd::Process::~Process()
 
 bool Rcmd::Process::has_data() const
 {
+    if (is_presence_container) return true;
     return (isis !=  nullptr && isis->has_data())
 	|| (ospf !=  nullptr && ospf->has_data())
 	|| (ldp !=  nullptr && ldp->has_data());
@@ -811,9 +820,11 @@ bool Rcmd::Process::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Rcmd::Process::Isis::Isis()
+    :
+    process(this, {})
 {
 
-    yang_name = "isis"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "isis"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::Isis::~Isis()
@@ -822,7 +833,8 @@ Rcmd::Process::Isis::~Isis()
 
 bool Rcmd::Process::Isis::has_data() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_data())
             return true;
@@ -832,7 +844,7 @@ bool Rcmd::Process::Isis::has_data() const
 
 bool Rcmd::Process::Isis::has_operation() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_operation())
             return true;
@@ -869,7 +881,7 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Rcmd::Process::Isis::Process_>();
         c->parent = this;
-        process.push_back(c);
+        process.append(c);
         return c;
     }
 
@@ -881,7 +893,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process)
+    for (auto c : process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -911,9 +923,11 @@ Rcmd::Process::Isis::Process_::Process_()
     :
     protocol_id{YType::enumeration, "protocol-id"},
     process_name{YType::str, "process-name"}
+        ,
+    instance_name(this, {})
 {
 
-    yang_name = "process"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::Isis::Process_::~Process_()
@@ -922,7 +936,8 @@ Rcmd::Process::Isis::Process_::~Process_()
 
 bool Rcmd::Process::Isis::Process_::has_data() const
 {
-    for (std::size_t index=0; index<instance_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance_name.len(); index++)
     {
         if(instance_name[index]->has_data())
             return true;
@@ -933,7 +948,7 @@ bool Rcmd::Process::Isis::Process_::has_data() const
 
 bool Rcmd::Process::Isis::Process_::has_operation() const
 {
-    for (std::size_t index=0; index<instance_name.size(); index++)
+    for (std::size_t index=0; index<instance_name.len(); index++)
     {
         if(instance_name[index]->has_operation())
             return true;
@@ -974,7 +989,7 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::get_child_by_name(const s
     {
         auto c = std::make_shared<Rcmd::Process::Isis::Process_::InstanceName>();
         c->parent = this;
-        instance_name.push_back(c);
+        instance_name.append(c);
         return c;
     }
 
@@ -986,7 +1001,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance_name)
+    for (auto c : instance_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1044,9 +1059,11 @@ Rcmd::Process::Isis::Process_::InstanceName::InstanceName()
     lsp_regeneration_serial{YType::uint32, "lsp-regeneration-serial"},
     arch_spf_event{YType::uint32, "arch-spf-event"},
     arch_lsp_regeneration{YType::uint32, "arch-lsp-regeneration"}
+        ,
+    instance(this, {})
 {
 
-    yang_name = "instance-name"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance-name"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::Isis::Process_::InstanceName::~InstanceName()
@@ -1055,7 +1072,8 @@ Rcmd::Process::Isis::Process_::InstanceName::~InstanceName()
 
 bool Rcmd::Process::Isis::Process_::InstanceName::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -1074,7 +1092,7 @@ bool Rcmd::Process::Isis::Process_::InstanceName::has_data() const
 
 bool Rcmd::Process::Isis::Process_::InstanceName::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -1131,7 +1149,7 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::InstanceName::get_child_b
     {
         auto c = std::make_shared<Rcmd::Process::Isis::Process_::InstanceName::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -1143,7 +1161,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1286,7 +1304,7 @@ Rcmd::Process::Isis::Process_::InstanceName::Instance::Instance()
     total_spt_nos{YType::uint32, "total-spt-nos"}
 {
 
-    yang_name = "instance"; yang_parent_name = "instance-name"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "instance-name"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::Isis::Process_::InstanceName::Instance::~Instance()
@@ -1295,6 +1313,7 @@ Rcmd::Process::Isis::Process_::InstanceName::Instance::~Instance()
 
 bool Rcmd::Process::Isis::Process_::InstanceName::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_id.is_set
 	|| instance_state.is_set
 	|| instance_deleted.is_set
@@ -1522,9 +1541,11 @@ bool Rcmd::Process::Isis::Process_::InstanceName::Instance::has_leaf_or_child_of
 }
 
 Rcmd::Process::Ospf::Ospf()
+    :
+    process(this, {})
 {
 
-    yang_name = "ospf"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::Ospf::~Ospf()
@@ -1533,7 +1554,8 @@ Rcmd::Process::Ospf::~Ospf()
 
 bool Rcmd::Process::Ospf::has_data() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_data())
             return true;
@@ -1543,7 +1565,7 @@ bool Rcmd::Process::Ospf::has_data() const
 
 bool Rcmd::Process::Ospf::has_operation() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_operation())
             return true;
@@ -1580,7 +1602,7 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Rcmd::Process::Ospf::Process_>();
         c->parent = this;
-        process.push_back(c);
+        process.append(c);
         return c;
     }
 
@@ -1592,7 +1614,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process)
+    for (auto c : process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1622,9 +1644,11 @@ Rcmd::Process::Ospf::Process_::Process_()
     :
     protocol_id{YType::enumeration, "protocol-id"},
     process_name{YType::str, "process-name"}
+        ,
+    instance_name(this, {})
 {
 
-    yang_name = "process"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::Ospf::Process_::~Process_()
@@ -1633,7 +1657,8 @@ Rcmd::Process::Ospf::Process_::~Process_()
 
 bool Rcmd::Process::Ospf::Process_::has_data() const
 {
-    for (std::size_t index=0; index<instance_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance_name.len(); index++)
     {
         if(instance_name[index]->has_data())
             return true;
@@ -1644,7 +1669,7 @@ bool Rcmd::Process::Ospf::Process_::has_data() const
 
 bool Rcmd::Process::Ospf::Process_::has_operation() const
 {
-    for (std::size_t index=0; index<instance_name.size(); index++)
+    for (std::size_t index=0; index<instance_name.len(); index++)
     {
         if(instance_name[index]->has_operation())
             return true;
@@ -1685,7 +1710,7 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::get_child_by_name(const s
     {
         auto c = std::make_shared<Rcmd::Process::Ospf::Process_::InstanceName>();
         c->parent = this;
-        instance_name.push_back(c);
+        instance_name.append(c);
         return c;
     }
 
@@ -1697,7 +1722,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance_name)
+    for (auto c : instance_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1755,9 +1780,11 @@ Rcmd::Process::Ospf::Process_::InstanceName::InstanceName()
     lsp_regeneration_serial{YType::uint32, "lsp-regeneration-serial"},
     arch_spf_event{YType::uint32, "arch-spf-event"},
     arch_lsp_regeneration{YType::uint32, "arch-lsp-regeneration"}
+        ,
+    instance(this, {})
 {
 
-    yang_name = "instance-name"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance-name"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::Ospf::Process_::InstanceName::~InstanceName()
@@ -1766,7 +1793,8 @@ Rcmd::Process::Ospf::Process_::InstanceName::~InstanceName()
 
 bool Rcmd::Process::Ospf::Process_::InstanceName::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -1785,7 +1813,7 @@ bool Rcmd::Process::Ospf::Process_::InstanceName::has_data() const
 
 bool Rcmd::Process::Ospf::Process_::InstanceName::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -1842,7 +1870,7 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::InstanceName::get_child_b
     {
         auto c = std::make_shared<Rcmd::Process::Ospf::Process_::InstanceName::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -1854,7 +1882,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1997,7 +2025,7 @@ Rcmd::Process::Ospf::Process_::InstanceName::Instance::Instance()
     total_spt_nos{YType::uint32, "total-spt-nos"}
 {
 
-    yang_name = "instance"; yang_parent_name = "instance-name"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "instance-name"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::Ospf::Process_::InstanceName::Instance::~Instance()
@@ -2006,6 +2034,7 @@ Rcmd::Process::Ospf::Process_::InstanceName::Instance::~Instance()
 
 bool Rcmd::Process::Ospf::Process_::InstanceName::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_id.is_set
 	|| instance_state.is_set
 	|| instance_deleted.is_set
@@ -2233,9 +2262,11 @@ bool Rcmd::Process::Ospf::Process_::InstanceName::Instance::has_leaf_or_child_of
 }
 
 Rcmd::Process::Ldp::Ldp()
+    :
+    process(this, {})
 {
 
-    yang_name = "ldp"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::Ldp::~Ldp()
@@ -2244,7 +2275,8 @@ Rcmd::Process::Ldp::~Ldp()
 
 bool Rcmd::Process::Ldp::has_data() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_data())
             return true;
@@ -2254,7 +2286,7 @@ bool Rcmd::Process::Ldp::has_data() const
 
 bool Rcmd::Process::Ldp::has_operation() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_operation())
             return true;
@@ -2291,7 +2323,7 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Rcmd::Process::Ldp::Process_>();
         c->parent = this;
-        process.push_back(c);
+        process.append(c);
         return c;
     }
 
@@ -2303,7 +2335,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process)
+    for (auto c : process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2333,9 +2365,11 @@ Rcmd::Process::Ldp::Process_::Process_()
     :
     protocol_id{YType::enumeration, "protocol-id"},
     process_name{YType::str, "process-name"}
+        ,
+    instance_name(this, {})
 {
 
-    yang_name = "process"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::Ldp::Process_::~Process_()
@@ -2344,7 +2378,8 @@ Rcmd::Process::Ldp::Process_::~Process_()
 
 bool Rcmd::Process::Ldp::Process_::has_data() const
 {
-    for (std::size_t index=0; index<instance_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance_name.len(); index++)
     {
         if(instance_name[index]->has_data())
             return true;
@@ -2355,7 +2390,7 @@ bool Rcmd::Process::Ldp::Process_::has_data() const
 
 bool Rcmd::Process::Ldp::Process_::has_operation() const
 {
-    for (std::size_t index=0; index<instance_name.size(); index++)
+    for (std::size_t index=0; index<instance_name.len(); index++)
     {
         if(instance_name[index]->has_operation())
             return true;
@@ -2396,7 +2431,7 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::get_child_by_name(const st
     {
         auto c = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName>();
         c->parent = this;
-        instance_name.push_back(c);
+        instance_name.append(c);
         return c;
     }
 
@@ -2408,7 +2443,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance_name)
+    for (auto c : instance_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2466,9 +2501,11 @@ Rcmd::Process::Ldp::Process_::InstanceName::InstanceName()
     lsp_regeneration_serial{YType::uint32, "lsp-regeneration-serial"},
     arch_spf_event{YType::uint32, "arch-spf-event"},
     arch_lsp_regeneration{YType::uint32, "arch-lsp-regeneration"}
+        ,
+    instance(this, {})
 {
 
-    yang_name = "instance-name"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance-name"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::Ldp::Process_::InstanceName::~InstanceName()
@@ -2477,7 +2514,8 @@ Rcmd::Process::Ldp::Process_::InstanceName::~InstanceName()
 
 bool Rcmd::Process::Ldp::Process_::InstanceName::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -2496,7 +2534,7 @@ bool Rcmd::Process::Ldp::Process_::InstanceName::has_data() const
 
 bool Rcmd::Process::Ldp::Process_::InstanceName::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -2553,7 +2591,7 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::get_child_by
     {
         auto c = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -2565,7 +2603,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::Ins
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2708,7 +2746,7 @@ Rcmd::Process::Ldp::Process_::InstanceName::Instance::Instance()
     total_spt_nos{YType::uint32, "total-spt-nos"}
 {
 
-    yang_name = "instance"; yang_parent_name = "instance-name"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "instance-name"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Process::Ldp::Process_::InstanceName::Instance::~Instance()
@@ -2717,6 +2755,7 @@ Rcmd::Process::Ldp::Process_::InstanceName::Instance::~Instance()
 
 bool Rcmd::Process::Ldp::Process_::InstanceName::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_id.is_set
 	|| instance_state.is_set
 	|| instance_deleted.is_set

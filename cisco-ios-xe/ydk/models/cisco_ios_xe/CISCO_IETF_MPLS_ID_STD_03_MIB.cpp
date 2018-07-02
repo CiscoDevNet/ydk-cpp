@@ -13,11 +13,11 @@ namespace CISCO_IETF_MPLS_ID_STD_03_MIB {
 
 CISCOIETFMPLSIDSTD03MIB::CISCOIETFMPLSIDSTD03MIB()
     :
-    cmplsidobjects(std::make_shared<CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects>())
+    cmplsidobjects(std::make_shared<CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects>())
 {
     cmplsidobjects->parent = this;
 
-    yang_name = "CISCO-IETF-MPLS-ID-STD-03-MIB"; yang_parent_name = "CISCO-IETF-MPLS-ID-STD-03-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-IETF-MPLS-ID-STD-03-MIB"; yang_parent_name = "CISCO-IETF-MPLS-ID-STD-03-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOIETFMPLSIDSTD03MIB::~CISCOIETFMPLSIDSTD03MIB()
@@ -26,6 +26,7 @@ CISCOIETFMPLSIDSTD03MIB::~CISCOIETFMPLSIDSTD03MIB()
 
 bool CISCOIETFMPLSIDSTD03MIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cmplsidobjects !=  nullptr && cmplsidobjects->has_data());
 }
 
@@ -57,7 +58,7 @@ std::shared_ptr<Entity> CISCOIETFMPLSIDSTD03MIB::get_child_by_name(const std::st
     {
         if(cmplsidobjects == nullptr)
         {
-            cmplsidobjects = std::make_shared<CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects>();
+            cmplsidobjects = std::make_shared<CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects>();
         }
         return cmplsidobjects;
     }
@@ -117,28 +118,29 @@ bool CISCOIETFMPLSIDSTD03MIB::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::Cmplsidobjects()
+CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::CmplsIdObjects()
     :
     cmplsglobalid{YType::str, "cmplsGlobalId"},
     cmplsicc{YType::str, "cmplsIcc"},
     cmplsnodeid{YType::uint32, "cmplsNodeId"}
 {
 
-    yang_name = "cmplsIdObjects"; yang_parent_name = "CISCO-IETF-MPLS-ID-STD-03-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmplsIdObjects"; yang_parent_name = "CISCO-IETF-MPLS-ID-STD-03-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::~Cmplsidobjects()
+CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::~CmplsIdObjects()
 {
 }
 
-bool CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::has_data() const
+bool CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return cmplsglobalid.is_set
 	|| cmplsicc.is_set
 	|| cmplsnodeid.is_set;
 }
 
-bool CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::has_operation() const
+bool CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmplsglobalid.yfilter)
@@ -146,21 +148,21 @@ bool CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::has_operation() const
 	|| ydk::is_set(cmplsnodeid.yfilter);
 }
 
-std::string CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::get_absolute_path() const
+std::string CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-MPLS-ID-STD-03-MIB:CISCO-IETF-MPLS-ID-STD-03-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::get_segment_path() const
+std::string CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cmplsIdObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -172,19 +174,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSIDSTD03MIB::Cmplsido
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmplsGlobalId")
     {
@@ -206,7 +208,7 @@ void CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::set_value(const std::string & valu
     }
 }
 
-void CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmplsGlobalId")
     {
@@ -222,7 +224,7 @@ void CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::set_filter(const std::string & val
     }
 }
 
-bool CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmplsGlobalId" || name == "cmplsIcc" || name == "cmplsNodeId")
         return true;

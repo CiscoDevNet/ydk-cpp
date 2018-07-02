@@ -14,12 +14,12 @@ namespace tailf_actions {
 Action::Action()
     :
     input(std::make_shared<Action::Input>())
-	,output(std::make_shared<Action::Output>())
+    , output(std::make_shared<Action::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "action"; yang_parent_name = "tailf-actions"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "action"; yang_parent_name = "tailf-actions"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Action::~Action()
@@ -28,6 +28,7 @@ Action::~Action()
 
 bool Action::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -140,7 +141,7 @@ Action::Input::Input()
     data{YType::str, "data"}
 {
 
-    yang_name = "input"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Action::Input::~Input()
@@ -149,6 +150,7 @@ Action::Input::~Input()
 
 bool Action::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -224,7 +226,7 @@ Action::Output::Output()
     data{YType::str, "data"}
 {
 
-    yang_name = "output"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Action::Output::~Output()
@@ -233,6 +235,7 @@ Action::Output::~Output()
 
 bool Action::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 

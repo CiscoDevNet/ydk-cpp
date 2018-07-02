@@ -13,11 +13,11 @@ namespace ENTITY_SENSOR_MIB {
 
 ENTITYSENSORMIB::ENTITYSENSORMIB()
     :
-    entphysensortable(std::make_shared<ENTITYSENSORMIB::Entphysensortable>())
+    entphysensortable(std::make_shared<ENTITYSENSORMIB::EntPhySensorTable>())
 {
     entphysensortable->parent = this;
 
-    yang_name = "ENTITY-SENSOR-MIB"; yang_parent_name = "ENTITY-SENSOR-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ENTITY-SENSOR-MIB"; yang_parent_name = "ENTITY-SENSOR-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ENTITYSENSORMIB::~ENTITYSENSORMIB()
@@ -26,6 +26,7 @@ ENTITYSENSORMIB::~ENTITYSENSORMIB()
 
 bool ENTITYSENSORMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (entphysensortable !=  nullptr && entphysensortable->has_data());
 }
 
@@ -57,7 +58,7 @@ std::shared_ptr<Entity> ENTITYSENSORMIB::get_child_by_name(const std::string & c
     {
         if(entphysensortable == nullptr)
         {
-            entphysensortable = std::make_shared<ENTITYSENSORMIB::Entphysensortable>();
+            entphysensortable = std::make_shared<ENTITYSENSORMIB::EntPhySensorTable>();
         }
         return entphysensortable;
     }
@@ -117,19 +118,22 @@ bool ENTITYSENSORMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-ENTITYSENSORMIB::Entphysensortable::Entphysensortable()
+ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorTable()
+    :
+    entphysensorentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "entPhySensorTable"; yang_parent_name = "ENTITY-SENSOR-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "entPhySensorTable"; yang_parent_name = "ENTITY-SENSOR-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ENTITYSENSORMIB::Entphysensortable::~Entphysensortable()
+ENTITYSENSORMIB::EntPhySensorTable::~EntPhySensorTable()
 {
 }
 
-bool ENTITYSENSORMIB::Entphysensortable::has_data() const
+bool ENTITYSENSORMIB::EntPhySensorTable::has_data() const
 {
-    for (std::size_t index=0; index<entphysensorentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<entphysensorentry.len(); index++)
     {
         if(entphysensorentry[index]->has_data())
             return true;
@@ -137,9 +141,9 @@ bool ENTITYSENSORMIB::Entphysensortable::has_data() const
     return false;
 }
 
-bool ENTITYSENSORMIB::Entphysensortable::has_operation() const
+bool ENTITYSENSORMIB::EntPhySensorTable::has_operation() const
 {
-    for (std::size_t index=0; index<entphysensorentry.size(); index++)
+    for (std::size_t index=0; index<entphysensorentry.len(); index++)
     {
         if(entphysensorentry[index]->has_operation())
             return true;
@@ -147,21 +151,21 @@ bool ENTITYSENSORMIB::Entphysensortable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ENTITYSENSORMIB::Entphysensortable::get_absolute_path() const
+std::string ENTITYSENSORMIB::EntPhySensorTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ENTITY-SENSOR-MIB:ENTITY-SENSOR-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ENTITYSENSORMIB::Entphysensortable::get_segment_path() const
+std::string ENTITYSENSORMIB::EntPhySensorTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "entPhySensorTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ENTITYSENSORMIB::Entphysensortable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ENTITYSENSORMIB::EntPhySensorTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -170,25 +174,25 @@ std::vector<std::pair<std::string, LeafData> > ENTITYSENSORMIB::Entphysensortabl
 
 }
 
-std::shared_ptr<Entity> ENTITYSENSORMIB::Entphysensortable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ENTITYSENSORMIB::EntPhySensorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entPhySensorEntry")
     {
-        auto c = std::make_shared<ENTITYSENSORMIB::Entphysensortable::Entphysensorentry>();
+        auto c = std::make_shared<ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry>();
         c->parent = this;
-        entphysensorentry.push_back(c);
+        entphysensorentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYSENSORMIB::Entphysensortable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ENTITYSENSORMIB::EntPhySensorTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : entphysensorentry)
+    for (auto c : entphysensorentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -199,22 +203,22 @@ std::map<std::string, std::shared_ptr<Entity>> ENTITYSENSORMIB::Entphysensortabl
     return children;
 }
 
-void ENTITYSENSORMIB::Entphysensortable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ENTITYSENSORMIB::EntPhySensorTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ENTITYSENSORMIB::Entphysensortable::set_filter(const std::string & value_path, YFilter yfilter)
+void ENTITYSENSORMIB::EntPhySensorTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ENTITYSENSORMIB::Entphysensortable::has_leaf_or_child_of_name(const std::string & name) const
+bool ENTITYSENSORMIB::EntPhySensorTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhySensorEntry")
         return true;
     return false;
 }
 
-ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::Entphysensorentry()
+ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::EntPhySensorEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     entphysensortype{YType::enumeration, "entPhySensorType"},
@@ -227,15 +231,16 @@ ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::Entphysensorentry()
     entphysensorvalueupdaterate{YType::uint32, "entPhySensorValueUpdateRate"}
 {
 
-    yang_name = "entPhySensorEntry"; yang_parent_name = "entPhySensorTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "entPhySensorEntry"; yang_parent_name = "entPhySensorTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::~Entphysensorentry()
+ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::~EntPhySensorEntry()
 {
 }
 
-bool ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::has_data() const
+bool ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| entphysensortype.is_set
 	|| entphysensorscale.is_set
@@ -247,7 +252,7 @@ bool ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::has_data() const
 	|| entphysensorvalueupdaterate.is_set;
 }
 
-bool ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::has_operation() const
+bool ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -261,21 +266,22 @@ bool ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::has_operation() cons
 	|| ydk::is_set(entphysensorvalueupdaterate.yfilter);
 }
 
-std::string ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::get_absolute_path() const
+std::string ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ENTITY-SENSOR-MIB:ENTITY-SENSOR-MIB/entPhySensorTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::get_segment_path() const
+std::string ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "entPhySensorEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "entPhySensorEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -293,19 +299,19 @@ std::vector<std::pair<std::string, LeafData> > ENTITYSENSORMIB::Entphysensortabl
 
 }
 
-std::shared_ptr<Entity> ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -363,7 +369,7 @@ void ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::set_value(const std:
     }
 }
 
-void ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::set_filter(const std::string & value_path, YFilter yfilter)
+void ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -403,7 +409,7 @@ void ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::set_filter(const std
     }
 }
 
-bool ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::has_leaf_or_child_of_name(const std::string & name) const
+bool ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "entPhySensorType" || name == "entPhySensorScale" || name == "entPhySensorPrecision" || name == "entPhySensorValue" || name == "entPhySensorOperStatus" || name == "entPhySensorUnitsDisplay" || name == "entPhySensorValueTimeStamp" || name == "entPhySensorValueUpdateRate")
         return true;
@@ -423,6 +429,10 @@ const Enum::YLeaf EntitySensorDataType::rpm {10, "rpm"};
 const Enum::YLeaf EntitySensorDataType::cmm {11, "cmm"};
 const Enum::YLeaf EntitySensorDataType::truthvalue {12, "truthvalue"};
 
+const Enum::YLeaf EntitySensorStatus::ok {1, "ok"};
+const Enum::YLeaf EntitySensorStatus::unavailable {2, "unavailable"};
+const Enum::YLeaf EntitySensorStatus::nonoperational {3, "nonoperational"};
+
 const Enum::YLeaf EntitySensorDataScale::yocto {1, "yocto"};
 const Enum::YLeaf EntitySensorDataScale::zepto {2, "zepto"};
 const Enum::YLeaf EntitySensorDataScale::atto {3, "atto"};
@@ -440,10 +450,6 @@ const Enum::YLeaf EntitySensorDataScale::exa {14, "exa"};
 const Enum::YLeaf EntitySensorDataScale::peta {15, "peta"};
 const Enum::YLeaf EntitySensorDataScale::zetta {16, "zetta"};
 const Enum::YLeaf EntitySensorDataScale::yotta {17, "yotta"};
-
-const Enum::YLeaf EntitySensorStatus::ok {1, "ok"};
-const Enum::YLeaf EntitySensorStatus::unavailable {2, "unavailable"};
-const Enum::YLeaf EntitySensorStatus::nonoperational {3, "nonoperational"};
 
 
 }

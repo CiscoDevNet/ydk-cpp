@@ -32,40 +32,40 @@ class MPLSLDPSTDMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Mplsldplsrobjects; //type: MPLSLDPSTDMIB::Mplsldplsrobjects
-        class Mplsldpentityobjects; //type: MPLSLDPSTDMIB::Mplsldpentityobjects
-        class Mplsldpsessionobjects; //type: MPLSLDPSTDMIB::Mplsldpsessionobjects
-        class Mplsfecobjects; //type: MPLSLDPSTDMIB::Mplsfecobjects
-        class Mplsldpentitytable; //type: MPLSLDPSTDMIB::Mplsldpentitytable
-        class Mplsldppeertable; //type: MPLSLDPSTDMIB::Mplsldppeertable
-        class Mplsldphelloadjacencytable; //type: MPLSLDPSTDMIB::Mplsldphelloadjacencytable
-        class Mplsinsegmentldplsptable; //type: MPLSLDPSTDMIB::Mplsinsegmentldplsptable
-        class Mplsoutsegmentldplsptable; //type: MPLSLDPSTDMIB::Mplsoutsegmentldplsptable
-        class Mplsfectable; //type: MPLSLDPSTDMIB::Mplsfectable
-        class Mplsldplspfectable; //type: MPLSLDPSTDMIB::Mplsldplspfectable
-        class Mplsldpsessionpeeraddrtable; //type: MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable
+        class MplsLdpLsrObjects; //type: MPLSLDPSTDMIB::MplsLdpLsrObjects
+        class MplsLdpEntityObjects; //type: MPLSLDPSTDMIB::MplsLdpEntityObjects
+        class MplsLdpSessionObjects; //type: MPLSLDPSTDMIB::MplsLdpSessionObjects
+        class MplsFecObjects; //type: MPLSLDPSTDMIB::MplsFecObjects
+        class MplsLdpEntityTable; //type: MPLSLDPSTDMIB::MplsLdpEntityTable
+        class MplsLdpPeerTable; //type: MPLSLDPSTDMIB::MplsLdpPeerTable
+        class MplsLdpHelloAdjacencyTable; //type: MPLSLDPSTDMIB::MplsLdpHelloAdjacencyTable
+        class MplsInSegmentLdpLspTable; //type: MPLSLDPSTDMIB::MplsInSegmentLdpLspTable
+        class MplsOutSegmentLdpLspTable; //type: MPLSLDPSTDMIB::MplsOutSegmentLdpLspTable
+        class MplsFecTable; //type: MPLSLDPSTDMIB::MplsFecTable
+        class MplsLdpLspFecTable; //type: MPLSLDPSTDMIB::MplsLdpLspFecTable
+        class MplsLdpSessionPeerAddrTable; //type: MPLSLDPSTDMIB::MplsLdpSessionPeerAddrTable
 
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldplsrobjects> mplsldplsrobjects;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentityobjects> mplsldpentityobjects;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpsessionobjects> mplsldpsessionobjects;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsfecobjects> mplsfecobjects;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable> mplsldpentitytable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable> mplsldppeertable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldphelloadjacencytable> mplsldphelloadjacencytable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsinsegmentldplsptable> mplsinsegmentldplsptable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsoutsegmentldplsptable> mplsoutsegmentldplsptable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsfectable> mplsfectable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldplspfectable> mplsldplspfectable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable> mplsldpsessionpeeraddrtable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpLsrObjects> mplsldplsrobjects;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityObjects> mplsldpentityobjects;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpSessionObjects> mplsldpsessionobjects;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsFecObjects> mplsfecobjects;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable> mplsldpentitytable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpPeerTable> mplsldppeertable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpHelloAdjacencyTable> mplsldphelloadjacencytable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsInSegmentLdpLspTable> mplsinsegmentldplsptable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsOutSegmentLdpLspTable> mplsoutsegmentldplsptable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsFecTable> mplsfectable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpLspFecTable> mplsldplspfectable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpSessionPeerAddrTable> mplsldpsessionpeeraddrtable;
         
 }; // MPLSLDPSTDMIB
 
 
-class MPLSLDPSTDMIB::Mplsldplsrobjects : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpLsrObjects : public ydk::Entity
 {
     public:
-        Mplsldplsrobjects();
-        ~Mplsldplsrobjects();
+        MplsLdpLsrObjects();
+        ~MplsLdpLsrObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -79,17 +79,17 @@ class MPLSLDPSTDMIB::Mplsldplsrobjects : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf mplsldplsrid; //type: binary
-        ydk::YLeaf mplsldplsrloopdetectioncapable; //type: Mplsldplsrloopdetectioncapable
-        class Mplsldplsrloopdetectioncapable;
+        ydk::YLeaf mplsldplsrloopdetectioncapable; //type: MplsLdpLsrLoopDetectionCapable
+        class MplsLdpLsrLoopDetectionCapable;
 
-}; // MPLSLDPSTDMIB::Mplsldplsrobjects
+}; // MPLSLDPSTDMIB::MplsLdpLsrObjects
 
 
-class MPLSLDPSTDMIB::Mplsldpentityobjects : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpEntityObjects : public ydk::Entity
 {
     public:
-        Mplsldpentityobjects();
-        ~Mplsldpentityobjects();
+        MplsLdpEntityObjects();
+        ~MplsLdpEntityObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -105,14 +105,14 @@ class MPLSLDPSTDMIB::Mplsldpentityobjects : public ydk::Entity
         ydk::YLeaf mplsldpentitylastchange; //type: uint32
         ydk::YLeaf mplsldpentityindexnext; //type: uint32
 
-}; // MPLSLDPSTDMIB::Mplsldpentityobjects
+}; // MPLSLDPSTDMIB::MplsLdpEntityObjects
 
 
-class MPLSLDPSTDMIB::Mplsldpsessionobjects : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpSessionObjects : public ydk::Entity
 {
     public:
-        Mplsldpsessionobjects();
-        ~Mplsldpsessionobjects();
+        MplsLdpSessionObjects();
+        ~MplsLdpSessionObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -128,14 +128,14 @@ class MPLSLDPSTDMIB::Mplsldpsessionobjects : public ydk::Entity
         ydk::YLeaf mplsldppeerlastchange; //type: uint32
         ydk::YLeaf mplsldplspfeclastchange; //type: uint32
 
-}; // MPLSLDPSTDMIB::Mplsldpsessionobjects
+}; // MPLSLDPSTDMIB::MplsLdpSessionObjects
 
 
-class MPLSLDPSTDMIB::Mplsfecobjects : public ydk::Entity
+class MPLSLDPSTDMIB::MplsFecObjects : public ydk::Entity
 {
     public:
-        Mplsfecobjects();
-        ~Mplsfecobjects();
+        MplsFecObjects();
+        ~MplsFecObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -151,14 +151,14 @@ class MPLSLDPSTDMIB::Mplsfecobjects : public ydk::Entity
         ydk::YLeaf mplsfeclastchange; //type: uint32
         ydk::YLeaf mplsfecindexnext; //type: uint32
 
-}; // MPLSLDPSTDMIB::Mplsfecobjects
+}; // MPLSLDPSTDMIB::MplsFecObjects
 
 
-class MPLSLDPSTDMIB::Mplsldpentitytable : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpEntityTable : public ydk::Entity
 {
     public:
-        Mplsldpentitytable();
-        ~Mplsldpentitytable();
+        MplsLdpEntityTable();
+        ~MplsLdpEntityTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -171,18 +171,18 @@ class MPLSLDPSTDMIB::Mplsldpentitytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsldpentityentry; //type: MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry
+        class MplsLdpEntityEntry; //type: MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry> > mplsldpentityentry;
+        ydk::YList mplsldpentityentry;
         
-}; // MPLSLDPSTDMIB::Mplsldpentitytable
+}; // MPLSLDPSTDMIB::MplsLdpEntityTable
 
 
-class MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry : public ydk::Entity
 {
     public:
-        Mplsldpentityentry();
-        ~Mplsldpentityentry();
+        MplsLdpEntityEntry();
+        ~MplsLdpEntityEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -198,8 +198,8 @@ class MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry : public ydk::Entity
         ydk::YLeaf mplsldpentityldpid; //type: string
         ydk::YLeaf mplsldpentityindex; //type: uint32
         ydk::YLeaf mplsldpentityprotocolversion; //type: uint32
-        ydk::YLeaf mplsldpentityadminstatus; //type: Mplsldpentityadminstatus
-        ydk::YLeaf mplsldpentityoperstatus; //type: Mplsldpentityoperstatus
+        ydk::YLeaf mplsldpentityadminstatus; //type: MplsLdpEntityAdminStatus
+        ydk::YLeaf mplsldpentityoperstatus; //type: MplsLdpEntityOperStatus
         ydk::YLeaf mplsldpentitytcpport; //type: uint16
         ydk::YLeaf mplsldpentityudpdscport; //type: uint16
         ydk::YLeaf mplsldpentitymaxpdulength; //type: uint32
@@ -210,7 +210,7 @@ class MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry : public ydk::Entity
         ydk::YLeaf mplsldpentitylabelretentionmode; //type: MplsRetentionMode
         ydk::YLeaf mplsldpentitypathvectorlimit; //type: int32
         ydk::YLeaf mplsldpentityhopcountlimit; //type: int32
-        ydk::YLeaf mplsldpentitytransportaddrkind; //type: Mplsldpentitytransportaddrkind
+        ydk::YLeaf mplsldpentitytransportaddrkind; //type: MplsLdpEntityTransportAddrKind
         ydk::YLeaf mplsldpentitytargetpeer; //type: boolean
         ydk::YLeaf mplsldpentitytargetpeeraddrtype; //type: InetAddressType
         ydk::YLeaf mplsldpentitytargetpeeraddr; //type: binary
@@ -231,18 +231,18 @@ class MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry : public ydk::Entity
         ydk::YLeaf mplsldpentitystatskeepalivetimerexperrors; //type: uint32
         ydk::YLeaf mplsldpentitystatsshutdownreceivednotifications; //type: uint32
         ydk::YLeaf mplsldpentitystatsshutdownsentnotifications; //type: uint32
-        class Mplsldpentityadminstatus;
-        class Mplsldpentityoperstatus;
-        class Mplsldpentitytransportaddrkind;
+        class MplsLdpEntityAdminStatus;
+        class MplsLdpEntityOperStatus;
+        class MplsLdpEntityTransportAddrKind;
 
-}; // MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry
+}; // MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry
 
 
-class MPLSLDPSTDMIB::Mplsldppeertable : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpPeerTable : public ydk::Entity
 {
     public:
-        Mplsldppeertable();
-        ~Mplsldppeertable();
+        MplsLdpPeerTable();
+        ~MplsLdpPeerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -255,18 +255,18 @@ class MPLSLDPSTDMIB::Mplsldppeertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsldppeerentry; //type: MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry
+        class MplsLdpPeerEntry; //type: MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry> > mplsldppeerentry;
+        ydk::YList mplsldppeerentry;
         
-}; // MPLSLDPSTDMIB::Mplsldppeertable
+}; // MPLSLDPSTDMIB::MplsLdpPeerTable
 
 
-class MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry : public ydk::Entity
 {
     public:
-        Mplsldppeerentry();
-        ~Mplsldppeerentry();
+        MplsLdpPeerEntry();
+        ~MplsLdpPeerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -279,9 +279,9 @@ class MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityldpid)
         ydk::YLeaf mplsldpentityldpid;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityindex)
         ydk::YLeaf mplsldpentityindex;
         ydk::YLeaf mplsldppeerldpid; //type: string
         ydk::YLeaf mplsldppeerlabeldistmethod; //type: MplsLabelDistributionMethod
@@ -289,8 +289,8 @@ class MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry : public ydk::Entity
         ydk::YLeaf mplsldppeertransportaddrtype; //type: InetAddressType
         ydk::YLeaf mplsldppeertransportaddr; //type: binary
         ydk::YLeaf mplsldpsessionstatelastchange; //type: uint32
-        ydk::YLeaf mplsldpsessionstate; //type: Mplsldpsessionstate
-        ydk::YLeaf mplsldpsessionrole; //type: Mplsldpsessionrole
+        ydk::YLeaf mplsldpsessionstate; //type: MplsLdpSessionState
+        ydk::YLeaf mplsldpsessionrole; //type: MplsLdpSessionRole
         ydk::YLeaf mplsldpsessionprotocolversion; //type: uint32
         ydk::YLeaf mplsldpsessionkeepaliveholdtimerem; //type: int32
         ydk::YLeaf mplsldpsessionkeepalivetime; //type: uint32
@@ -298,17 +298,17 @@ class MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry : public ydk::Entity
         ydk::YLeaf mplsldpsessiondiscontinuitytime; //type: uint32
         ydk::YLeaf mplsldpsessionstatsunknownmestypeerrors; //type: uint32
         ydk::YLeaf mplsldpsessionstatsunknowntlverrors; //type: uint32
-        class Mplsldpsessionstate;
-        class Mplsldpsessionrole;
+        class MplsLdpSessionState;
+        class MplsLdpSessionRole;
 
-}; // MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry
+}; // MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry
 
 
-class MPLSLDPSTDMIB::Mplsldphelloadjacencytable : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpHelloAdjacencyTable : public ydk::Entity
 {
     public:
-        Mplsldphelloadjacencytable();
-        ~Mplsldphelloadjacencytable();
+        MplsLdpHelloAdjacencyTable();
+        ~MplsLdpHelloAdjacencyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -321,18 +321,18 @@ class MPLSLDPSTDMIB::Mplsldphelloadjacencytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsldphelloadjacencyentry; //type: MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry
+        class MplsLdpHelloAdjacencyEntry; //type: MPLSLDPSTDMIB::MplsLdpHelloAdjacencyTable::MplsLdpHelloAdjacencyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry> > mplsldphelloadjacencyentry;
+        ydk::YList mplsldphelloadjacencyentry;
         
-}; // MPLSLDPSTDMIB::Mplsldphelloadjacencytable
+}; // MPLSLDPSTDMIB::MplsLdpHelloAdjacencyTable
 
 
-class MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpHelloAdjacencyTable::MplsLdpHelloAdjacencyEntry : public ydk::Entity
 {
     public:
-        Mplsldphelloadjacencyentry();
-        ~Mplsldphelloadjacencyentry();
+        MplsLdpHelloAdjacencyEntry();
+        ~MplsLdpHelloAdjacencyEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -345,26 +345,26 @@ class MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityldpid)
         ydk::YLeaf mplsldpentityldpid;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityindex)
         ydk::YLeaf mplsldpentityindex;
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::mplsldppeerldpid)
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry::mplsldppeerldpid)
         ydk::YLeaf mplsldppeerldpid;
         ydk::YLeaf mplsldphelloadjacencyindex; //type: uint32
         ydk::YLeaf mplsldphelloadjacencyholdtimerem; //type: int32
         ydk::YLeaf mplsldphelloadjacencyholdtime; //type: uint32
-        ydk::YLeaf mplsldphelloadjacencytype; //type: Mplsldphelloadjacencytype
-        class Mplsldphelloadjacencytype;
+        ydk::YLeaf mplsldphelloadjacencytype; //type: MplsLdpHelloAdjacencyType
+        class MplsLdpHelloAdjacencyType;
 
-}; // MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry
+}; // MPLSLDPSTDMIB::MplsLdpHelloAdjacencyTable::MplsLdpHelloAdjacencyEntry
 
 
-class MPLSLDPSTDMIB::Mplsinsegmentldplsptable : public ydk::Entity
+class MPLSLDPSTDMIB::MplsInSegmentLdpLspTable : public ydk::Entity
 {
     public:
-        Mplsinsegmentldplsptable();
-        ~Mplsinsegmentldplsptable();
+        MplsInSegmentLdpLspTable();
+        ~MplsInSegmentLdpLspTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -377,18 +377,18 @@ class MPLSLDPSTDMIB::Mplsinsegmentldplsptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsinsegmentldplspentry; //type: MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry
+        class MplsInSegmentLdpLspEntry; //type: MPLSLDPSTDMIB::MplsInSegmentLdpLspTable::MplsInSegmentLdpLspEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry> > mplsinsegmentldplspentry;
+        ydk::YList mplsinsegmentldplspentry;
         
-}; // MPLSLDPSTDMIB::Mplsinsegmentldplsptable
+}; // MPLSLDPSTDMIB::MplsInSegmentLdpLspTable
 
 
-class MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry : public ydk::Entity
+class MPLSLDPSTDMIB::MplsInSegmentLdpLspTable::MplsInSegmentLdpLspEntry : public ydk::Entity
 {
     public:
-        Mplsinsegmentldplspentry();
-        ~Mplsinsegmentldplspentry();
+        MplsInSegmentLdpLspEntry();
+        ~MplsInSegmentLdpLspEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -401,24 +401,24 @@ class MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityldpid)
         ydk::YLeaf mplsldpentityldpid;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityindex)
         ydk::YLeaf mplsldpentityindex;
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::mplsldppeerldpid)
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry::mplsldppeerldpid)
         ydk::YLeaf mplsldppeerldpid;
         ydk::YLeaf mplsinsegmentldplspindex; //type: binary
         ydk::YLeaf mplsinsegmentldplsplabeltype; //type: MplsLdpLabelType
         ydk::YLeaf mplsinsegmentldplsptype; //type: MplsLspType
 
-}; // MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry
+}; // MPLSLDPSTDMIB::MplsInSegmentLdpLspTable::MplsInSegmentLdpLspEntry
 
 
-class MPLSLDPSTDMIB::Mplsoutsegmentldplsptable : public ydk::Entity
+class MPLSLDPSTDMIB::MplsOutSegmentLdpLspTable : public ydk::Entity
 {
     public:
-        Mplsoutsegmentldplsptable();
-        ~Mplsoutsegmentldplsptable();
+        MplsOutSegmentLdpLspTable();
+        ~MplsOutSegmentLdpLspTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -431,18 +431,18 @@ class MPLSLDPSTDMIB::Mplsoutsegmentldplsptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsoutsegmentldplspentry; //type: MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry
+        class MplsOutSegmentLdpLspEntry; //type: MPLSLDPSTDMIB::MplsOutSegmentLdpLspTable::MplsOutSegmentLdpLspEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry> > mplsoutsegmentldplspentry;
+        ydk::YList mplsoutsegmentldplspentry;
         
-}; // MPLSLDPSTDMIB::Mplsoutsegmentldplsptable
+}; // MPLSLDPSTDMIB::MplsOutSegmentLdpLspTable
 
 
-class MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry : public ydk::Entity
+class MPLSLDPSTDMIB::MplsOutSegmentLdpLspTable::MplsOutSegmentLdpLspEntry : public ydk::Entity
 {
     public:
-        Mplsoutsegmentldplspentry();
-        ~Mplsoutsegmentldplspentry();
+        MplsOutSegmentLdpLspEntry();
+        ~MplsOutSegmentLdpLspEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -455,24 +455,24 @@ class MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityldpid)
         ydk::YLeaf mplsldpentityldpid;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityindex)
         ydk::YLeaf mplsldpentityindex;
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::mplsldppeerldpid)
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry::mplsldppeerldpid)
         ydk::YLeaf mplsldppeerldpid;
         ydk::YLeaf mplsoutsegmentldplspindex; //type: binary
         ydk::YLeaf mplsoutsegmentldplsplabeltype; //type: MplsLdpLabelType
         ydk::YLeaf mplsoutsegmentldplsptype; //type: MplsLspType
 
-}; // MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry
+}; // MPLSLDPSTDMIB::MplsOutSegmentLdpLspTable::MplsOutSegmentLdpLspEntry
 
 
-class MPLSLDPSTDMIB::Mplsfectable : public ydk::Entity
+class MPLSLDPSTDMIB::MplsFecTable : public ydk::Entity
 {
     public:
-        Mplsfectable();
-        ~Mplsfectable();
+        MplsFecTable();
+        ~MplsFecTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -485,18 +485,18 @@ class MPLSLDPSTDMIB::Mplsfectable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsfecentry; //type: MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry
+        class MplsFecEntry; //type: MPLSLDPSTDMIB::MplsFecTable::MplsFecEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry> > mplsfecentry;
+        ydk::YList mplsfecentry;
         
-}; // MPLSLDPSTDMIB::Mplsfectable
+}; // MPLSLDPSTDMIB::MplsFecTable
 
 
-class MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry : public ydk::Entity
+class MPLSLDPSTDMIB::MplsFecTable::MplsFecEntry : public ydk::Entity
 {
     public:
-        Mplsfecentry();
-        ~Mplsfecentry();
+        MplsFecEntry();
+        ~MplsFecEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -510,22 +510,22 @@ class MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf mplsfecindex; //type: uint32
-        ydk::YLeaf mplsfectype; //type: Mplsfectype
+        ydk::YLeaf mplsfectype; //type: MplsFecType
         ydk::YLeaf mplsfecaddrprefixlength; //type: uint32
         ydk::YLeaf mplsfecaddrtype; //type: InetAddressType
         ydk::YLeaf mplsfecaddr; //type: binary
         ydk::YLeaf mplsfecstoragetype; //type: StorageType
         ydk::YLeaf mplsfecrowstatus; //type: RowStatus
-        class Mplsfectype;
+        class MplsFecType;
 
-}; // MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry
+}; // MPLSLDPSTDMIB::MplsFecTable::MplsFecEntry
 
 
-class MPLSLDPSTDMIB::Mplsldplspfectable : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpLspFecTable : public ydk::Entity
 {
     public:
-        Mplsldplspfectable();
-        ~Mplsldplspfectable();
+        MplsLdpLspFecTable();
+        ~MplsLdpLspFecTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -538,18 +538,18 @@ class MPLSLDPSTDMIB::Mplsldplspfectable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsldplspfecentry; //type: MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry
+        class MplsLdpLspFecEntry; //type: MPLSLDPSTDMIB::MplsLdpLspFecTable::MplsLdpLspFecEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry> > mplsldplspfecentry;
+        ydk::YList mplsldplspfecentry;
         
-}; // MPLSLDPSTDMIB::Mplsldplspfectable
+}; // MPLSLDPSTDMIB::MplsLdpLspFecTable
 
 
-class MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpLspFecTable::MplsLdpLspFecEntry : public ydk::Entity
 {
     public:
-        Mplsldplspfecentry();
-        ~Mplsldplspfecentry();
+        MplsLdpLspFecEntry();
+        ~MplsLdpLspFecEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -562,27 +562,27 @@ class MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityldpid)
         ydk::YLeaf mplsldpentityldpid;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityindex)
         ydk::YLeaf mplsldpentityindex;
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::mplsldppeerldpid)
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry::mplsldppeerldpid)
         ydk::YLeaf mplsldppeerldpid;
-        ydk::YLeaf mplsldplspfecsegment; //type: Mplsldplspfecsegment
+        ydk::YLeaf mplsldplspfecsegment; //type: MplsLdpLspFecSegment
         ydk::YLeaf mplsldplspfecsegmentindex; //type: binary
         ydk::YLeaf mplsldplspfecindex; //type: uint32
         ydk::YLeaf mplsldplspfecstoragetype; //type: StorageType
         ydk::YLeaf mplsldplspfecrowstatus; //type: RowStatus
-        class Mplsldplspfecsegment;
+        class MplsLdpLspFecSegment;
 
-}; // MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry
+}; // MPLSLDPSTDMIB::MplsLdpLspFecTable::MplsLdpLspFecEntry
 
 
-class MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpSessionPeerAddrTable : public ydk::Entity
 {
     public:
-        Mplsldpsessionpeeraddrtable();
-        ~Mplsldpsessionpeeraddrtable();
+        MplsLdpSessionPeerAddrTable();
+        ~MplsLdpSessionPeerAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -595,18 +595,18 @@ class MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsldpsessionpeeraddrentry; //type: MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry
+        class MplsLdpSessionPeerAddrEntry; //type: MPLSLDPSTDMIB::MplsLdpSessionPeerAddrTable::MplsLdpSessionPeerAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry> > mplsldpsessionpeeraddrentry;
+        ydk::YList mplsldpsessionpeeraddrentry;
         
-}; // MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable
+}; // MPLSLDPSTDMIB::MplsLdpSessionPeerAddrTable
 
 
-class MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry : public ydk::Entity
+class MPLSLDPSTDMIB::MplsLdpSessionPeerAddrTable::MplsLdpSessionPeerAddrEntry : public ydk::Entity
 {
     public:
-        Mplsldpsessionpeeraddrentry();
-        ~Mplsldpsessionpeeraddrentry();
+        MplsLdpSessionPeerAddrEntry();
+        ~MplsLdpSessionPeerAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -619,19 +619,19 @@ class MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityldpid)
         ydk::YLeaf mplsldpentityldpid;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityindex)
         ydk::YLeaf mplsldpentityindex;
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::mplsldppeerldpid)
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry::mplsldppeerldpid)
         ydk::YLeaf mplsldppeerldpid;
         ydk::YLeaf mplsldpsessionpeeraddrindex; //type: uint32
         ydk::YLeaf mplsldpsessionpeernexthopaddrtype; //type: InetAddressType
         ydk::YLeaf mplsldpsessionpeernexthopaddr; //type: binary
 
-}; // MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry
+}; // MPLSLDPSTDMIB::MplsLdpSessionPeerAddrTable::MplsLdpSessionPeerAddrEntry
 
-class MPLSLDPSTDMIB::Mplsldplsrobjects::Mplsldplsrloopdetectioncapable : public ydk::Enum
+class MPLSLDPSTDMIB::MplsLdpLsrObjects::MplsLdpLsrLoopDetectionCapable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -642,7 +642,7 @@ class MPLSLDPSTDMIB::Mplsldplsrobjects::Mplsldplsrloopdetectioncapable : public 
 
 };
 
-class MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::Mplsldpentityadminstatus : public ydk::Enum
+class MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::MplsLdpEntityAdminStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enable;
@@ -650,7 +650,7 @@ class MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::Mplsldpentityadmins
 
 };
 
-class MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::Mplsldpentityoperstatus : public ydk::Enum
+class MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::MplsLdpEntityOperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -659,7 +659,7 @@ class MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::Mplsldpentityoperst
 
 };
 
-class MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::Mplsldpentitytransportaddrkind : public ydk::Enum
+class MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::MplsLdpEntityTransportAddrKind : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf interface;
@@ -667,7 +667,7 @@ class MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::Mplsldpentitytransp
 
 };
 
-class MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::Mplsldpsessionstate : public ydk::Enum
+class MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry::MplsLdpSessionState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf nonexistent;
@@ -678,7 +678,7 @@ class MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::Mplsldpsessionstate : p
 
 };
 
-class MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::Mplsldpsessionrole : public ydk::Enum
+class MPLSLDPSTDMIB::MplsLdpPeerTable::MplsLdpPeerEntry::MplsLdpSessionRole : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -687,7 +687,7 @@ class MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::Mplsldpsessionrole : pu
 
 };
 
-class MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry::Mplsldphelloadjacencytype : public ydk::Enum
+class MPLSLDPSTDMIB::MplsLdpHelloAdjacencyTable::MplsLdpHelloAdjacencyEntry::MplsLdpHelloAdjacencyType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf link;
@@ -695,7 +695,7 @@ class MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry::Mpl
 
 };
 
-class MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry::Mplsfectype : public ydk::Enum
+class MPLSLDPSTDMIB::MplsFecTable::MplsFecEntry::MplsFecType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf prefix;
@@ -703,7 +703,7 @@ class MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry::Mplsfectype : public ydk::Enum
 
 };
 
-class MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry::Mplsldplspfecsegment : public ydk::Enum
+class MPLSLDPSTDMIB::MplsLdpLspFecTable::MplsLdpLspFecEntry::MplsLdpLspFecSegment : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf inSegment;

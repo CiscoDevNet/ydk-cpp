@@ -32,20 +32,20 @@ class CISCOIPSLAJITTERMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cipslaudpjittertmpltable; //type: CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable
-        class Cipslaicmpjittertmpltable; //type: CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable
+        class CipslaUdpJitterTmplTable; //type: CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable
+        class CipslaIcmpJitterTmplTable; //type: CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_JITTER_MIB::CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable> cipslaudpjittertmpltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_JITTER_MIB::CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable> cipslaicmpjittertmpltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_JITTER_MIB::CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable> cipslaudpjittertmpltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_JITTER_MIB::CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable> cipslaicmpjittertmpltable;
         
 }; // CISCOIPSLAJITTERMIB
 
 
-class CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable : public ydk::Entity
+class CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable : public ydk::Entity
 {
     public:
-        Cipslaudpjittertmpltable();
-        ~Cipslaudpjittertmpltable();
+        CipslaUdpJitterTmplTable();
+        ~CipslaUdpJitterTmplTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -58,18 +58,18 @@ class CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipslaudpjittertmplentry; //type: CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry
+        class CipslaUdpJitterTmplEntry; //type: CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_JITTER_MIB::CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry> > cipslaudpjittertmplentry;
+        ydk::YList cipslaudpjittertmplentry;
         
-}; // CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable
+}; // CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable
 
 
-class CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry : public ydk::Entity
+class CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry : public ydk::Entity
 {
     public:
-        Cipslaudpjittertmplentry();
-        ~Cipslaudpjittertmplentry();
+        CipslaUdpJitterTmplEntry();
+        ~CipslaUdpJitterTmplEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -96,33 +96,33 @@ class CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry : 
         ydk::YLeaf cipslaudpjittertmplsrcaddrtype; //type: InetAddressType
         ydk::YLeaf cipslaudpjittertmplsrcaddr; //type: binary
         ydk::YLeaf cipslaudpjittertmplsrcport; //type: uint16
-        ydk::YLeaf cipslaudpjittertmplprecision; //type: Cipslaudpjittertmplprecision
+        ydk::YLeaf cipslaudpjittertmplprecision; //type: CipslaUdpJitterTmplPrecision
         ydk::YLeaf cipslaudpjittertmplreqdatasize; //type: uint32
-        ydk::YLeaf cipslaudpjittertmplpktpriority; //type: Cipslaudpjittertmplpktpriority
+        ydk::YLeaf cipslaudpjittertmplpktpriority; //type: CipslaUdpJitterTmplPktPriority
         ydk::YLeaf cipslaudpjittertmpltos; //type: uint32
         ydk::YLeaf cipslaudpjittertmplvrfname; //type: string
         ydk::YLeaf cipslaudpjittertmplthreshold; //type: uint32
         ydk::YLeaf cipslaudpjittertmplntptolabs; //type: uint32
         ydk::YLeaf cipslaudpjittertmplntptolpct; //type: uint32
-        ydk::YLeaf cipslaudpjittertmplntptoltype; //type: Cipslaudpjittertmplntptoltype
+        ydk::YLeaf cipslaudpjittertmplntptoltype; //type: CipslaUdpJitterTmplNTPTolType
         ydk::YLeaf cipslaudpjittertmplicpiffactor; //type: uint32
         ydk::YLeaf cipslaudpjittertmplstatshours; //type: uint32
         ydk::YLeaf cipslaudpjittertmpldistbuckets; //type: uint32
         ydk::YLeaf cipslaudpjittertmpldistinterval; //type: uint32
         ydk::YLeaf cipslaudpjittertmplstoragetype; //type: StorageType
         ydk::YLeaf cipslaudpjittertmplrowstatus; //type: RowStatus
-        class Cipslaudpjittertmplprecision;
-        class Cipslaudpjittertmplpktpriority;
-        class Cipslaudpjittertmplntptoltype;
+        class CipslaUdpJitterTmplPrecision;
+        class CipslaUdpJitterTmplPktPriority;
+        class CipslaUdpJitterTmplNTPTolType;
 
-}; // CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry
+}; // CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry
 
 
-class CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable : public ydk::Entity
+class CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable : public ydk::Entity
 {
     public:
-        Cipslaicmpjittertmpltable();
-        ~Cipslaicmpjittertmpltable();
+        CipslaIcmpJitterTmplTable();
+        ~CipslaIcmpJitterTmplTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -135,18 +135,18 @@ class CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipslaicmpjittertmplentry; //type: CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry
+        class CipslaIcmpJitterTmplEntry; //type: CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::CipslaIcmpJitterTmplEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_JITTER_MIB::CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry> > cipslaicmpjittertmplentry;
+        ydk::YList cipslaicmpjittertmplentry;
         
-}; // CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable
+}; // CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable
 
 
-class CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry : public ydk::Entity
+class CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::CipslaIcmpJitterTmplEntry : public ydk::Entity
 {
     public:
-        Cipslaicmpjittertmplentry();
-        ~Cipslaicmpjittertmplentry();
+        CipslaIcmpJitterTmplEntry();
+        ~CipslaIcmpJitterTmplEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -176,9 +176,9 @@ class CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry 
         ydk::YLeaf cipslaicmpjittertmplstoragetype; //type: StorageType
         ydk::YLeaf cipslaicmpjittertmplrowstatus; //type: RowStatus
 
-}; // CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry
+}; // CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::CipslaIcmpJitterTmplEntry
 
-class CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplprecision : public ydk::Enum
+class CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::CipslaUdpJitterTmplPrecision : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf milliseconds;
@@ -186,7 +186,7 @@ class CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::C
 
 };
 
-class CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplpktpriority : public ydk::Enum
+class CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::CipslaUdpJitterTmplPktPriority : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf normal;
@@ -194,7 +194,7 @@ class CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::C
 
 };
 
-class CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplntptoltype : public ydk::Enum
+class CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::CipslaUdpJitterTmplNTPTolType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf percent;

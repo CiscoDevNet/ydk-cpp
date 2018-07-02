@@ -17,7 +17,7 @@ AddressPoolService::AddressPoolService()
 {
     nodes->parent = this;
 
-    yang_name = "address-pool-service"; yang_parent_name = "Cisco-IOS-XR-ip-daps-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "address-pool-service"; yang_parent_name = "Cisco-IOS-XR-ip-daps-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 AddressPoolService::~AddressPoolService()
@@ -26,6 +26,7 @@ AddressPoolService::~AddressPoolService()
 
 bool AddressPoolService::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool AddressPoolService::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 AddressPoolService::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "address-pool-service"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "address-pool-service"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AddressPoolService::Nodes::~Nodes()
@@ -129,7 +132,8 @@ AddressPoolService::Nodes::~Nodes()
 
 bool AddressPoolService::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool AddressPoolService::Nodes::has_data() const
 
 bool AddressPoolService::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::get_child_by_name(const std::
     {
         auto c = std::make_shared<AddressPoolService::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,16 +221,16 @@ bool AddressPoolService::Nodes::has_leaf_or_child_of_name(const std::string & na
 AddressPoolService::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     pools(std::make_shared<AddressPoolService::Nodes::Node::Pools>())
-	,total_utilization(std::make_shared<AddressPoolService::Nodes::Node::TotalUtilization>())
-	,vrfs(std::make_shared<AddressPoolService::Nodes::Node::Vrfs>())
+    , total_utilization(std::make_shared<AddressPoolService::Nodes::Node::TotalUtilization>())
+    , vrfs(std::make_shared<AddressPoolService::Nodes::Node::Vrfs>())
 {
     pools->parent = this;
     total_utilization->parent = this;
     vrfs->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AddressPoolService::Nodes::Node::~Node()
@@ -235,6 +239,7 @@ AddressPoolService::Nodes::Node::~Node()
 
 bool AddressPoolService::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (pools !=  nullptr && pools->has_data())
 	|| (total_utilization !=  nullptr && total_utilization->has_data())
@@ -260,7 +265,8 @@ std::string AddressPoolService::Nodes::Node::get_absolute_path() const
 std::string AddressPoolService::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -354,9 +360,11 @@ bool AddressPoolService::Nodes::Node::has_leaf_or_child_of_name(const std::strin
 }
 
 AddressPoolService::Nodes::Node::Pools::Pools()
+    :
+    pool(this, {"pool_name"})
 {
 
-    yang_name = "pools"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pools"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::~Pools()
@@ -365,7 +373,8 @@ AddressPoolService::Nodes::Node::Pools::~Pools()
 
 bool AddressPoolService::Nodes::Node::Pools::has_data() const
 {
-    for (std::size_t index=0; index<pool.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pool.len(); index++)
     {
         if(pool[index]->has_data())
             return true;
@@ -375,7 +384,7 @@ bool AddressPoolService::Nodes::Node::Pools::has_data() const
 
 bool AddressPoolService::Nodes::Node::Pools::has_operation() const
 {
-    for (std::size_t index=0; index<pool.size(); index++)
+    for (std::size_t index=0; index<pool.len(); index++)
     {
         if(pool[index]->has_operation())
             return true;
@@ -405,7 +414,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::get_child_by_nam
     {
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool>();
         c->parent = this;
-        pool.push_back(c);
+        pool.append(c);
         return c;
     }
 
@@ -417,7 +426,7 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pool)
+    for (auto c : pool.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -446,16 +455,16 @@ bool AddressPoolService::Nodes::Node::Pools::has_leaf_or_child_of_name(const std
 AddressPoolService::Nodes::Node::Pools::Pool::Pool()
     :
     pool_name{YType::str, "pool-name"}
-    	,
+        ,
     address_ranges(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges>())
-	,allocated_addresses(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses>())
-	,configuration(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::Configuration>())
+    , allocated_addresses(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses>())
+    , configuration(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::Configuration>())
 {
     address_ranges->parent = this;
     allocated_addresses->parent = this;
     configuration->parent = this;
 
-    yang_name = "pool"; yang_parent_name = "pools"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pool"; yang_parent_name = "pools"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::~Pool()
@@ -464,6 +473,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::~Pool()
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return pool_name.is_set
 	|| (address_ranges !=  nullptr && address_ranges->has_data())
 	|| (allocated_addresses !=  nullptr && allocated_addresses->has_data())
@@ -482,7 +492,8 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::has_operation() const
 std::string AddressPoolService::Nodes::Node::Pools::Pool::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pool" <<"[pool-name='" <<pool_name <<"']";
+    path_buffer << "pool";
+    ADD_KEY_TOKEN(pool_name, "pool-name");
     return path_buffer.str();
 }
 
@@ -576,9 +587,11 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::has_leaf_or_child_of_name(con
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRanges()
+    :
+    address_range(this, {"start_address"})
 {
 
-    yang_name = "address-ranges"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-ranges"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::~AddressRanges()
@@ -587,7 +600,8 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::~AddressRanges()
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::has_data() const
 {
-    for (std::size_t index=0; index<address_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address_range.len(); index++)
     {
         if(address_range[index]->has_data())
             return true;
@@ -597,7 +611,7 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::has_data() con
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::has_operation() const
 {
-    for (std::size_t index=0; index<address_range.size(); index++)
+    for (std::size_t index=0; index<address_range.len(); index++)
     {
         if(address_range[index]->has_operation())
             return true;
@@ -627,7 +641,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRan
     {
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange>();
         c->parent = this;
-        address_range.push_back(c);
+        address_range.append(c);
         return c;
     }
 
@@ -639,7 +653,7 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address_range)
+    for (auto c : address_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -676,16 +690,16 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Addre
     excluded_addresses{YType::uint32, "excluded-addresses"},
     network_blocked_status{YType::uint32, "network-blocked-status"},
     network_blocked_status_trp{YType::uint32, "network-blocked-status-trp"}
-    	,
+        ,
     start_address_xr(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr>())
-	,end_address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress>())
-	,default_router(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter>())
+    , end_address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress>())
+    , default_router(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter>())
 {
     start_address_xr->parent = this;
     end_address->parent = this;
     default_router->parent = this;
 
-    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::~AddressRange()
@@ -694,6 +708,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::~Addr
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| pool_name.is_set
 	|| vrf_name.is_set
@@ -728,7 +743,8 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
 std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address-range" <<"[start-address='" <<start_address <<"']";
+    path_buffer << "address-range";
+    ADD_KEY_TOKEN(start_address, "start-address");
     return path_buffer.str();
 }
 
@@ -915,7 +931,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Start
 {
     address->parent = this;
 
-    yang_name = "start-address-xr"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start-address-xr"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::~StartAddressXr()
@@ -924,6 +940,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Start
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -997,7 +1014,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Start
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "start-address-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "start-address-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::~Address()
@@ -1006,6 +1023,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Start
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1101,7 +1119,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAd
 {
     address->parent = this;
 
-    yang_name = "end-address"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "end-address"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::~EndAddress()
@@ -1110,6 +1128,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAd
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -1183,7 +1202,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "end-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "end-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::~Address()
@@ -1192,6 +1211,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAd
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1287,7 +1307,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Defau
 {
     address->parent = this;
 
-    yang_name = "default-router"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-router"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::~DefaultRouter()
@@ -1296,6 +1316,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Defau
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -1369,7 +1390,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Defau
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "default-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "default-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::~Address()
@@ -1378,6 +1399,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Defau
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1470,10 +1492,12 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AllocatedAddresses()
     :
     pool_allocations(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations>())
+    , address_range(this, {})
+    , in_use_address(this, {})
 {
     pool_allocations->parent = this;
 
-    yang_name = "allocated-addresses"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "allocated-addresses"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::~AllocatedAddresses()
@@ -1482,12 +1506,13 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::~AllocatedAddr
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::has_data() const
 {
-    for (std::size_t index=0; index<address_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address_range.len(); index++)
     {
         if(address_range[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<in_use_address.size(); index++)
+    for (std::size_t index=0; index<in_use_address.len(); index++)
     {
         if(in_use_address[index]->has_data())
             return true;
@@ -1497,12 +1522,12 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::has_data(
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<address_range.size(); index++)
+    for (std::size_t index=0; index<address_range.len(); index++)
     {
         if(address_range[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<in_use_address.size(); index++)
+    for (std::size_t index=0; index<in_use_address.len(); index++)
     {
         if(in_use_address[index]->has_operation())
             return true;
@@ -1542,7 +1567,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
     {
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange>();
         c->parent = this;
-        address_range.push_back(c);
+        address_range.append(c);
         return c;
     }
 
@@ -1550,7 +1575,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
     {
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress>();
         c->parent = this;
-        in_use_address.push_back(c);
+        in_use_address.append(c);
         return c;
     }
 
@@ -1567,7 +1592,7 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : address_range)
+    for (auto c : address_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1576,7 +1601,7 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : in_use_address)
+    for (auto c : in_use_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1610,14 +1635,14 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocation
     free{YType::uint32, "free"},
     total{YType::uint32, "total"},
     utilization{YType::uint32, "utilization"}
-    	,
+        ,
     high_threshold(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold>())
-	,low_threshold(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold>())
+    , low_threshold(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold>())
 {
     high_threshold->parent = this;
     low_threshold->parent = this;
 
-    yang_name = "pool-allocations"; yang_parent_name = "allocated-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pool-allocations"; yang_parent_name = "allocated-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::~PoolAllocations()
@@ -1626,6 +1651,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocation
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| used.is_set
 	|| excluded.is_set
@@ -1793,7 +1819,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocation
     time_last_crossed{YType::str, "time-last-crossed"}
 {
 
-    yang_name = "high-threshold"; yang_parent_name = "pool-allocations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-threshold"; yang_parent_name = "pool-allocations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::~HighThreshold()
@@ -1802,6 +1828,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocation
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| triggers.is_set
 	|| time_last_crossed.is_set;
@@ -1898,7 +1925,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocation
     time_last_crossed{YType::str, "time-last-crossed"}
 {
 
-    yang_name = "low-threshold"; yang_parent_name = "pool-allocations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-threshold"; yang_parent_name = "pool-allocations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::~LowThreshold()
@@ -1907,6 +1934,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocation
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| triggers.is_set
 	|| time_last_crossed.is_set;
@@ -2001,14 +2029,14 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
     used{YType::uint32, "used"},
     excluded{YType::uint32, "excluded"},
     free{YType::uint32, "free"}
-    	,
+        ,
     start_address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress>())
-	,end_address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress>())
+    , end_address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress>())
 {
     start_address->parent = this;
     end_address->parent = this;
 
-    yang_name = "address-range"; yang_parent_name = "allocated-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-range"; yang_parent_name = "allocated-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::~AddressRange()
@@ -2017,6 +2045,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::has_data() const
 {
+    if (is_presence_container) return true;
     return used.is_set
 	|| excluded.is_set
 	|| free.is_set
@@ -2144,7 +2173,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
 {
     address->parent = this;
 
-    yang_name = "start-address"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start-address"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::~StartAddress()
@@ -2153,6 +2182,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -2226,7 +2256,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "start-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "start-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::~Address()
@@ -2235,6 +2265,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -2330,7 +2361,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
 {
     address->parent = this;
 
-    yang_name = "end-address"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "end-address"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::~EndAddress()
@@ -2339,6 +2370,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -2412,7 +2444,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "end-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "end-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::~Address()
@@ -2421,6 +2453,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -2513,12 +2546,12 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRa
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::InUseAddress()
     :
     client_type{YType::enumeration, "client-type"}
-    	,
+        ,
     address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address>())
 {
     address->parent = this;
 
-    yang_name = "in-use-address"; yang_parent_name = "allocated-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-use-address"; yang_parent_name = "allocated-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::~InUseAddress()
@@ -2527,6 +2560,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return client_type.is_set
 	|| (address !=  nullptr && address->has_data());
 }
@@ -2612,7 +2646,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::
 {
     address->parent = this;
 
-    yang_name = "address"; yang_parent_name = "in-use-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "in-use-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::~Address()
@@ -2621,6 +2655,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -2694,7 +2729,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::~Address_()
@@ -2703,6 +2738,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -2806,7 +2842,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::Configuration::Configuration()
     utilization_low_count{YType::uint32, "utilization-low-count"}
 {
 
-    yang_name = "configuration"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configuration"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::Configuration::~Configuration()
@@ -2815,6 +2851,7 @@ AddressPoolService::Nodes::Node::Pools::Pool::Configuration::~Configuration()
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return pool_name.is_set
 	|| pool_id.is_set
 	|| vrf_name.is_set
@@ -3002,7 +3039,7 @@ AddressPoolService::Nodes::Node::TotalUtilization::TotalUtilization()
     current_total_utilization{YType::uint8, "current-total-utilization"}
 {
 
-    yang_name = "total-utilization"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "total-utilization"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::TotalUtilization::~TotalUtilization()
@@ -3011,6 +3048,7 @@ AddressPoolService::Nodes::Node::TotalUtilization::~TotalUtilization()
 
 bool AddressPoolService::Nodes::Node::TotalUtilization::has_data() const
 {
+    if (is_presence_container) return true;
     return total_utilization_high_mark.is_set
 	|| total_utilization_low_mark.is_set
 	|| current_total_utilization.is_set;
@@ -3101,9 +3139,11 @@ bool AddressPoolService::Nodes::Node::TotalUtilization::has_leaf_or_child_of_nam
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Vrfs::~Vrfs()
@@ -3112,7 +3152,8 @@ AddressPoolService::Nodes::Node::Vrfs::~Vrfs()
 
 bool AddressPoolService::Nodes::Node::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -3122,7 +3163,7 @@ bool AddressPoolService::Nodes::Node::Vrfs::has_data() const
 
 bool AddressPoolService::Nodes::Node::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -3152,7 +3193,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::get_child_by_name
     {
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -3164,7 +3205,7 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3193,14 +3234,14 @@ bool AddressPoolService::Nodes::Node::Vrfs::has_leaf_or_child_of_name(const std:
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     ipv4(std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4>())
-	,ipv6(std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6>())
+    , ipv6(std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6>())
 {
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::~Vrf()
@@ -3209,6 +3250,7 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::~Vrf()
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
@@ -3225,7 +3267,8 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::has_operation() const
 std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -3307,10 +3350,11 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::has_leaf_or_child_of_name(const
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Ipv4()
     :
     allocation_summary(std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary>())
+    , pools(this, {})
 {
     allocation_summary->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::~Ipv4()
@@ -3319,7 +3363,8 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::~Ipv4()
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::has_data() const
 {
-    for (std::size_t index=0; index<pools.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pools.len(); index++)
     {
         if(pools[index]->has_data())
             return true;
@@ -3329,7 +3374,7 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::has_data() const
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::has_operation() const
 {
-    for (std::size_t index=0; index<pools.size(); index++)
+    for (std::size_t index=0; index<pools.len(); index++)
     {
         if(pools[index]->has_operation())
             return true;
@@ -3369,7 +3414,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_ch
     {
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools>();
         c->parent = this;
-        pools.push_back(c);
+        pools.append(c);
         return c;
     }
 
@@ -3386,7 +3431,7 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : pools)
+    for (auto c : pools.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3423,7 +3468,7 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::AllocationS
     utilization{YType::uint8, "utilization"}
 {
 
-    yang_name = "allocation-summary"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "allocation-summary"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::~AllocationSummary()
@@ -3432,6 +3477,7 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::~Allocation
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return used.is_set
 	|| excluded.is_set
 	|| free.is_set
@@ -3583,7 +3629,7 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::Pools()
     total{YType::uint32, "total"}
 {
 
-    yang_name = "pools"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pools"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::~Pools()
@@ -3592,6 +3638,7 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::~Pools()
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::has_data() const
 {
+    if (is_presence_container) return true;
     return pool_name.is_set
 	|| vrf_name.is_set
 	|| used.is_set
@@ -3723,10 +3770,11 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::has_leaf_or_child_
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Ipv6()
     :
     allocation_summary(std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary>())
+    , pools(this, {})
 {
     allocation_summary->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::~Ipv6()
@@ -3735,7 +3783,8 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::~Ipv6()
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::has_data() const
 {
-    for (std::size_t index=0; index<pools.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pools.len(); index++)
     {
         if(pools[index]->has_data())
             return true;
@@ -3745,7 +3794,7 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::has_data() const
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::has_operation() const
 {
-    for (std::size_t index=0; index<pools.size(); index++)
+    for (std::size_t index=0; index<pools.len(); index++)
     {
         if(pools[index]->has_operation())
             return true;
@@ -3785,7 +3834,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_ch
     {
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools>();
         c->parent = this;
-        pools.push_back(c);
+        pools.append(c);
         return c;
     }
 
@@ -3802,7 +3851,7 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : pools)
+    for (auto c : pools.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3839,7 +3888,7 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::AllocationS
     utilization{YType::uint8, "utilization"}
 {
 
-    yang_name = "allocation-summary"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "allocation-summary"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::~AllocationSummary()
@@ -3848,6 +3897,7 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::~Allocation
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return used.is_set
 	|| excluded.is_set
 	|| free.is_set
@@ -3999,7 +4049,7 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::Pools()
     total{YType::uint32, "total"}
 {
 
-    yang_name = "pools"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pools"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::~Pools()
@@ -4008,6 +4058,7 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::~Pools()
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::has_data() const
 {
+    if (is_presence_container) return true;
     return pool_name.is_set
 	|| vrf_name.is_set
 	|| used.is_set

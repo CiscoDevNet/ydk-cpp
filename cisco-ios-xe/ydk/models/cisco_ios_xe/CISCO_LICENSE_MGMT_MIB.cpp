@@ -13,16 +13,16 @@ namespace CISCO_LICENSE_MGMT_MIB {
 
 CISCOLICENSEMGMTMIB::CISCOLICENSEMGMTMIB()
     :
-    clmgmtlicenseconfiguration(std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration>())
-	,clmgmtlicensedeviceinformation(std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation>())
-	,clmgmtlicensenotifobjects(std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects>())
-	,clmgmtlicenseactiontable(std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable>())
-	,clmgmtlicenseactionresulttable(std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable>())
-	,clmgmtlicensestoreinfotable(std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable>())
-	,clmgmtlicensedeviceinfotable(std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable>())
-	,clmgmtlicenseinfotable(std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable>())
-	,clmgmtlicensablefeaturetable(std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable>())
-	,clmgmtdevcredexportactiontable(std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable>())
+    clmgmtlicenseconfiguration(std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration>())
+    , clmgmtlicensedeviceinformation(std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation>())
+    , clmgmtlicensenotifobjects(std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects>())
+    , clmgmtlicenseactiontable(std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable>())
+    , clmgmtlicenseactionresulttable(std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable>())
+    , clmgmtlicensestoreinfotable(std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable>())
+    , clmgmtlicensedeviceinfotable(std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable>())
+    , clmgmtlicenseinfotable(std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable>())
+    , clmgmtlicensablefeaturetable(std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable>())
+    , clmgmtdevcredexportactiontable(std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable>())
 {
     clmgmtlicenseconfiguration->parent = this;
     clmgmtlicensedeviceinformation->parent = this;
@@ -35,7 +35,7 @@ CISCOLICENSEMGMTMIB::CISCOLICENSEMGMTMIB()
     clmgmtlicensablefeaturetable->parent = this;
     clmgmtdevcredexportactiontable->parent = this;
 
-    yang_name = "CISCO-LICENSE-MGMT-MIB"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-LICENSE-MGMT-MIB"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOLICENSEMGMTMIB::~CISCOLICENSEMGMTMIB()
@@ -44,6 +44,7 @@ CISCOLICENSEMGMTMIB::~CISCOLICENSEMGMTMIB()
 
 bool CISCOLICENSEMGMTMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (clmgmtlicenseconfiguration !=  nullptr && clmgmtlicenseconfiguration->has_data())
 	|| (clmgmtlicensedeviceinformation !=  nullptr && clmgmtlicensedeviceinformation->has_data())
 	|| (clmgmtlicensenotifobjects !=  nullptr && clmgmtlicensenotifobjects->has_data())
@@ -93,7 +94,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string
     {
         if(clmgmtlicenseconfiguration == nullptr)
         {
-            clmgmtlicenseconfiguration = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration>();
+            clmgmtlicenseconfiguration = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration>();
         }
         return clmgmtlicenseconfiguration;
     }
@@ -102,7 +103,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string
     {
         if(clmgmtlicensedeviceinformation == nullptr)
         {
-            clmgmtlicensedeviceinformation = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation>();
+            clmgmtlicensedeviceinformation = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation>();
         }
         return clmgmtlicensedeviceinformation;
     }
@@ -111,7 +112,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string
     {
         if(clmgmtlicensenotifobjects == nullptr)
         {
-            clmgmtlicensenotifobjects = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects>();
+            clmgmtlicensenotifobjects = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects>();
         }
         return clmgmtlicensenotifobjects;
     }
@@ -120,7 +121,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string
     {
         if(clmgmtlicenseactiontable == nullptr)
         {
-            clmgmtlicenseactiontable = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable>();
+            clmgmtlicenseactiontable = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable>();
         }
         return clmgmtlicenseactiontable;
     }
@@ -129,7 +130,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string
     {
         if(clmgmtlicenseactionresulttable == nullptr)
         {
-            clmgmtlicenseactionresulttable = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable>();
+            clmgmtlicenseactionresulttable = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable>();
         }
         return clmgmtlicenseactionresulttable;
     }
@@ -138,7 +139,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string
     {
         if(clmgmtlicensestoreinfotable == nullptr)
         {
-            clmgmtlicensestoreinfotable = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable>();
+            clmgmtlicensestoreinfotable = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable>();
         }
         return clmgmtlicensestoreinfotable;
     }
@@ -147,7 +148,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string
     {
         if(clmgmtlicensedeviceinfotable == nullptr)
         {
-            clmgmtlicensedeviceinfotable = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable>();
+            clmgmtlicensedeviceinfotable = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable>();
         }
         return clmgmtlicensedeviceinfotable;
     }
@@ -156,7 +157,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string
     {
         if(clmgmtlicenseinfotable == nullptr)
         {
-            clmgmtlicenseinfotable = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable>();
+            clmgmtlicenseinfotable = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable>();
         }
         return clmgmtlicenseinfotable;
     }
@@ -165,7 +166,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string
     {
         if(clmgmtlicensablefeaturetable == nullptr)
         {
-            clmgmtlicensablefeaturetable = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable>();
+            clmgmtlicensablefeaturetable = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable>();
         }
         return clmgmtlicensablefeaturetable;
     }
@@ -174,7 +175,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string
     {
         if(clmgmtdevcredexportactiontable == nullptr)
         {
-            clmgmtdevcredexportactiontable = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable>();
+            clmgmtdevcredexportactiontable = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable>();
         }
         return clmgmtdevcredexportactiontable;
     }
@@ -279,44 +280,45 @@ bool CISCOLICENSEMGMTMIB::has_leaf_or_child_of_name(const std::string & name) co
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::Clmgmtlicenseconfiguration()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::ClmgmtLicenseConfiguration()
     :
     clmgmtnextfreelicenseactionindex{YType::uint32, "clmgmtNextFreeLicenseActionIndex"}
 {
 
-    yang_name = "clmgmtLicenseConfiguration"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseConfiguration"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::~Clmgmtlicenseconfiguration()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::~ClmgmtLicenseConfiguration()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::has_data() const
 {
+    if (is_presence_container) return true;
     return clmgmtnextfreelicenseactionindex.is_set;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clmgmtnextfreelicenseactionindex.yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clmgmtLicenseConfiguration";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -326,19 +328,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clmgmtNextFreeLicenseActionIndex")
     {
@@ -348,7 +350,7 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::set_value(const std::strin
     }
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clmgmtNextFreeLicenseActionIndex")
     {
@@ -356,51 +358,52 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::set_filter(const std::stri
     }
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtNextFreeLicenseActionIndex")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::Clmgmtlicensedeviceinformation()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::ClmgmtLicenseDeviceInformation()
     :
     clmgmtnextfreedevcredexportactionindex{YType::uint32, "clmgmtNextFreeDevCredExportActionIndex"}
 {
 
-    yang_name = "clmgmtLicenseDeviceInformation"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseDeviceInformation"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::~Clmgmtlicensedeviceinformation()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::~ClmgmtLicenseDeviceInformation()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return clmgmtnextfreedevcredexportactionindex.is_set;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clmgmtnextfreedevcredexportactionindex.yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clmgmtLicenseDeviceInformation";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -410,19 +413,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clmgmtNextFreeDevCredExportActionIndex")
     {
@@ -432,7 +435,7 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::set_value(const std::s
     }
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clmgmtNextFreeDevCredExportActionIndex")
     {
@@ -440,35 +443,36 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::set_filter(const std::
     }
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtNextFreeDevCredExportActionIndex")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::Clmgmtlicensenotifobjects()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::ClmgmtLicenseNotifObjects()
     :
     clmgmtlicenseusagenotifenable{YType::boolean, "clmgmtLicenseUsageNotifEnable"},
     clmgmtlicensedeploymentnotifenable{YType::boolean, "clmgmtLicenseDeploymentNotifEnable"},
     clmgmtlicenseerrornotifenable{YType::enumeration, "clmgmtLicenseErrorNotifEnable"}
 {
 
-    yang_name = "clmgmtLicenseNotifObjects"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseNotifObjects"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::~Clmgmtlicensenotifobjects()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::~ClmgmtLicenseNotifObjects()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return clmgmtlicenseusagenotifenable.is_set
 	|| clmgmtlicensedeploymentnotifenable.is_set
 	|| clmgmtlicenseerrornotifenable.is_set;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clmgmtlicenseusagenotifenable.yfilter)
@@ -476,21 +480,21 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::has_operation() const
 	|| ydk::is_set(clmgmtlicenseerrornotifenable.yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clmgmtLicenseNotifObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -502,19 +506,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clmgmtLicenseUsageNotifEnable")
     {
@@ -536,7 +540,7 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::set_value(const std::string
     }
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clmgmtLicenseUsageNotifEnable")
     {
@@ -552,26 +556,29 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::set_filter(const std::strin
     }
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtLicenseUsageNotifEnable" || name == "clmgmtLicenseDeploymentNotifEnable" || name == "clmgmtLicenseErrorNotifEnable")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactiontable()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionTable()
+    :
+    clmgmtlicenseactionentry(this, {"clmgmtlicenseactionindex"})
 {
 
-    yang_name = "clmgmtLicenseActionTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseActionTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::~Clmgmtlicenseactiontable()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::~ClmgmtLicenseActionTable()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::has_data() const
 {
-    for (std::size_t index=0; index<clmgmtlicenseactionentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clmgmtlicenseactionentry.len(); index++)
     {
         if(clmgmtlicenseactionentry[index]->has_data())
             return true;
@@ -579,9 +586,9 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::has_data() const
     return false;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::has_operation() const
 {
-    for (std::size_t index=0; index<clmgmtlicenseactionentry.size(); index++)
+    for (std::size_t index=0; index<clmgmtlicenseactionentry.len(); index++)
     {
         if(clmgmtlicenseactionentry[index]->has_operation())
             return true;
@@ -589,21 +596,21 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clmgmtLicenseActionTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -612,25 +619,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicenseActionEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry>();
+        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry>();
         c->parent = this;
-        clmgmtlicenseactionentry.push_back(c);
+        clmgmtlicenseactionentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clmgmtlicenseactionentry)
+    for (auto c : clmgmtlicenseactionentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -641,22 +648,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicens
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtLicenseActionEntry")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::Clmgmtlicenseactionentry()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::ClmgmtLicenseActionEntry()
     :
     clmgmtlicenseactionindex{YType::uint32, "clmgmtLicenseActionIndex"},
     clmgmtlicenseactionentphysicalindex{YType::int32, "clmgmtLicenseActionEntPhysicalIndex"},
@@ -682,15 +689,16 @@ CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::Clmgmtl
     clmgmtlicenseeulafile{YType::str, "clmgmtLicenseEULAFile"}
 {
 
-    yang_name = "clmgmtLicenseActionEntry"; yang_parent_name = "clmgmtLicenseActionTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseActionEntry"; yang_parent_name = "clmgmtLicenseActionTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::~Clmgmtlicenseactionentry()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::~ClmgmtLicenseActionEntry()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return clmgmtlicenseactionindex.is_set
 	|| clmgmtlicenseactionentphysicalindex.is_set
 	|| clmgmtlicenseactiontransferprotocol.is_set
@@ -715,7 +723,7 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::ha
 	|| clmgmtlicenseeulafile.is_set;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clmgmtlicenseactionindex.yfilter)
@@ -742,21 +750,22 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::ha
 	|| ydk::is_set(clmgmtlicenseeulafile.yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/clmgmtLicenseActionTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clmgmtLicenseActionEntry" <<"[clmgmtLicenseActionIndex='" <<clmgmtlicenseactionindex <<"']";
+    path_buffer << "clmgmtLicenseActionEntry";
+    ADD_KEY_TOKEN(clmgmtlicenseactionindex, "clmgmtLicenseActionIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -787,19 +796,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clmgmtLicenseActionIndex")
     {
@@ -935,7 +944,7 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::se
     }
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clmgmtLicenseActionIndex")
     {
@@ -1027,26 +1036,29 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::se
     }
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtLicenseActionIndex" || name == "clmgmtLicenseActionEntPhysicalIndex" || name == "clmgmtLicenseActionTransferProtocol" || name == "clmgmtLicenseServerAddressType" || name == "clmgmtLicenseServerAddress" || name == "clmgmtLicenseServerUsername" || name == "clmgmtLicenseServerPassword" || name == "clmgmtLicenseFile" || name == "clmgmtLicenseStore" || name == "clmgmtLicenseActionLicenseIndex" || name == "clmgmtLicensePermissionTicketFile" || name == "clmgmtLicenseRehostTicketFile" || name == "clmgmtLicenseBackupFile" || name == "clmgmtLicenseStopOnFailure" || name == "clmgmtLicenseAction" || name == "clmgmtLicenseActionState" || name == "clmgmtLicenseJobQPosition" || name == "clmgmtLicenseActionFailCause" || name == "clmgmtLicenseActionStorageType" || name == "clmgmtLicenseActionRowStatus" || name == "clmgmtLicenseAcceptEULA" || name == "clmgmtLicenseEULAFile")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresulttable()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultTable()
+    :
+    clmgmtlicenseactionresultentry(this, {"clmgmtlicenseactionindex", "clmgmtlicensenumber"})
 {
 
-    yang_name = "clmgmtLicenseActionResultTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseActionResultTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::~Clmgmtlicenseactionresulttable()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::~ClmgmtLicenseActionResultTable()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::has_data() const
 {
-    for (std::size_t index=0; index<clmgmtlicenseactionresultentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clmgmtlicenseactionresultentry.len(); index++)
     {
         if(clmgmtlicenseactionresultentry[index]->has_data())
             return true;
@@ -1054,9 +1066,9 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::has_data() const
     return false;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::has_operation() const
 {
-    for (std::size_t index=0; index<clmgmtlicenseactionresultentry.size(); index++)
+    for (std::size_t index=0; index<clmgmtlicenseactionresultentry.len(); index++)
     {
         if(clmgmtlicenseactionresultentry[index]->has_operation())
             return true;
@@ -1064,21 +1076,21 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clmgmtLicenseActionResultTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1087,25 +1099,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicenseActionResultEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry>();
+        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry>();
         c->parent = this;
-        clmgmtlicenseactionresultentry.push_back(c);
+        clmgmtlicenseactionresultentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clmgmtlicenseactionresultentry)
+    for (auto c : clmgmtlicenseactionresultentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1116,22 +1128,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicens
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtLicenseActionResultEntry")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::Clmgmtlicenseactionresultentry()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::ClmgmtLicenseActionResultEntry()
     :
     clmgmtlicenseactionindex{YType::str, "clmgmtLicenseActionIndex"},
     clmgmtlicensenumber{YType::uint32, "clmgmtLicenseNumber"},
@@ -1139,22 +1151,23 @@ CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresulten
     clmgmtlicenseindivactionfailcause{YType::enumeration, "clmgmtLicenseIndivActionFailCause"}
 {
 
-    yang_name = "clmgmtLicenseActionResultEntry"; yang_parent_name = "clmgmtLicenseActionResultTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseActionResultEntry"; yang_parent_name = "clmgmtLicenseActionResultTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::~Clmgmtlicenseactionresultentry()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::~ClmgmtLicenseActionResultEntry()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return clmgmtlicenseactionindex.is_set
 	|| clmgmtlicensenumber.is_set
 	|| clmgmtlicenseindivactionstate.is_set
 	|| clmgmtlicenseindivactionfailcause.is_set;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clmgmtlicenseactionindex.yfilter)
@@ -1163,21 +1176,23 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionres
 	|| ydk::is_set(clmgmtlicenseindivactionfailcause.yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/clmgmtLicenseActionResultTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clmgmtLicenseActionResultEntry" <<"[clmgmtLicenseActionIndex='" <<clmgmtlicenseactionindex <<"']" <<"[clmgmtLicenseNumber='" <<clmgmtlicensenumber <<"']";
+    path_buffer << "clmgmtLicenseActionResultEntry";
+    ADD_KEY_TOKEN(clmgmtlicenseactionindex, "clmgmtLicenseActionIndex");
+    ADD_KEY_TOKEN(clmgmtlicensenumber, "clmgmtLicenseNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1190,19 +1205,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clmgmtLicenseActionIndex")
     {
@@ -1230,7 +1245,7 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionres
     }
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clmgmtLicenseActionIndex")
     {
@@ -1250,26 +1265,29 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionres
     }
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtLicenseActionIndex" || name == "clmgmtLicenseNumber" || name == "clmgmtLicenseIndivActionState" || name == "clmgmtLicenseIndivActionFailCause")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfotable()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoTable()
+    :
+    clmgmtlicensestoreinfoentry(this, {"entphysicalindex", "clmgmtlicensestoreindex"})
 {
 
-    yang_name = "clmgmtLicenseStoreInfoTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseStoreInfoTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::~Clmgmtlicensestoreinfotable()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::~ClmgmtLicenseStoreInfoTable()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::has_data() const
 {
-    for (std::size_t index=0; index<clmgmtlicensestoreinfoentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clmgmtlicensestoreinfoentry.len(); index++)
     {
         if(clmgmtlicensestoreinfoentry[index]->has_data())
             return true;
@@ -1277,9 +1295,9 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::has_data() const
     return false;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::has_operation() const
 {
-    for (std::size_t index=0; index<clmgmtlicensestoreinfoentry.size(); index++)
+    for (std::size_t index=0; index<clmgmtlicensestoreinfoentry.len(); index++)
     {
         if(clmgmtlicensestoreinfoentry[index]->has_operation())
             return true;
@@ -1287,21 +1305,21 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clmgmtLicenseStoreInfoTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1310,25 +1328,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicenseStoreInfoEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry>();
+        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry>();
         c->parent = this;
-        clmgmtlicensestoreinfoentry.push_back(c);
+        clmgmtlicensestoreinfoentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clmgmtlicensestoreinfoentry)
+    for (auto c : clmgmtlicensestoreinfoentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1339,22 +1357,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicens
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtLicenseStoreInfoEntry")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::Clmgmtlicensestoreinfoentry()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::ClmgmtLicenseStoreInfoEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     clmgmtlicensestoreindex{YType::uint32, "clmgmtLicenseStoreIndex"},
@@ -1363,15 +1381,16 @@ CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::C
     clmgmtlicensestoresizeremaining{YType::uint32, "clmgmtLicenseStoreSizeRemaining"}
 {
 
-    yang_name = "clmgmtLicenseStoreInfoEntry"; yang_parent_name = "clmgmtLicenseStoreInfoTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseStoreInfoEntry"; yang_parent_name = "clmgmtLicenseStoreInfoTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::~Clmgmtlicensestoreinfoentry()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::~ClmgmtLicenseStoreInfoEntry()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| clmgmtlicensestoreindex.is_set
 	|| clmgmtlicensestorename.is_set
@@ -1379,7 +1398,7 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoent
 	|| clmgmtlicensestoresizeremaining.is_set;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -1389,21 +1408,23 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoent
 	|| ydk::is_set(clmgmtlicensestoresizeremaining.yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/clmgmtLicenseStoreInfoTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clmgmtLicenseStoreInfoEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[clmgmtLicenseStoreIndex='" <<clmgmtlicensestoreindex <<"']";
+    path_buffer << "clmgmtLicenseStoreInfoEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(clmgmtlicensestoreindex, "clmgmtLicenseStoreIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1417,19 +1438,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1463,7 +1484,7 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoent
     }
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1487,26 +1508,29 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoent
     }
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "clmgmtLicenseStoreIndex" || name == "clmgmtLicenseStoreName" || name == "clmgmtLicenseStoreTotalSize" || name == "clmgmtLicenseStoreSizeRemaining")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfotable()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoTable()
+    :
+    clmgmtlicensedeviceinfoentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "clmgmtLicenseDeviceInfoTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseDeviceInfoTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::~Clmgmtlicensedeviceinfotable()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::~ClmgmtLicenseDeviceInfoTable()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::has_data() const
 {
-    for (std::size_t index=0; index<clmgmtlicensedeviceinfoentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clmgmtlicensedeviceinfoentry.len(); index++)
     {
         if(clmgmtlicensedeviceinfoentry[index]->has_data())
             return true;
@@ -1514,9 +1538,9 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::has_data() const
     return false;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::has_operation() const
 {
-    for (std::size_t index=0; index<clmgmtlicensedeviceinfoentry.size(); index++)
+    for (std::size_t index=0; index<clmgmtlicensedeviceinfoentry.len(); index++)
     {
         if(clmgmtlicensedeviceinfoentry[index]->has_operation())
             return true;
@@ -1524,21 +1548,21 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clmgmtLicenseDeviceInfoTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1547,25 +1571,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicenseDeviceInfoEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry>();
+        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry>();
         c->parent = this;
-        clmgmtlicensedeviceinfoentry.push_back(c);
+        clmgmtlicensedeviceinfoentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clmgmtlicensedeviceinfoentry)
+    for (auto c : clmgmtlicensedeviceinfoentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1576,62 +1600,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicens
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtLicenseDeviceInfoEntry")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::Clmgmtlicensedeviceinfoentry()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::ClmgmtLicenseDeviceInfoEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     clmgmtdefaultlicensestore{YType::uint32, "clmgmtDefaultLicenseStore"}
 {
 
-    yang_name = "clmgmtLicenseDeviceInfoEntry"; yang_parent_name = "clmgmtLicenseDeviceInfoTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseDeviceInfoEntry"; yang_parent_name = "clmgmtLicenseDeviceInfoTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::~Clmgmtlicensedeviceinfoentry()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::~ClmgmtLicenseDeviceInfoEntry()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| clmgmtdefaultlicensestore.is_set;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
 	|| ydk::is_set(clmgmtdefaultlicensestore.yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/clmgmtLicenseDeviceInfoTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clmgmtLicenseDeviceInfoEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "clmgmtLicenseDeviceInfoEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1642,19 +1668,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1670,7 +1696,7 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoe
     }
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1682,26 +1708,29 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoe
     }
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "clmgmtDefaultLicenseStore")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfotable()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoTable()
+    :
+    clmgmtlicenseinfoentry(this, {"entphysicalindex", "clmgmtlicensestoreused", "clmgmtlicenseindex"})
 {
 
-    yang_name = "clmgmtLicenseInfoTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseInfoTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::~Clmgmtlicenseinfotable()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::~ClmgmtLicenseInfoTable()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::has_data() const
 {
-    for (std::size_t index=0; index<clmgmtlicenseinfoentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clmgmtlicenseinfoentry.len(); index++)
     {
         if(clmgmtlicenseinfoentry[index]->has_data())
             return true;
@@ -1709,9 +1738,9 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::has_data() const
     return false;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::has_operation() const
 {
-    for (std::size_t index=0; index<clmgmtlicenseinfoentry.size(); index++)
+    for (std::size_t index=0; index<clmgmtlicenseinfoentry.len(); index++)
     {
         if(clmgmtlicenseinfoentry[index]->has_operation())
             return true;
@@ -1719,21 +1748,21 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clmgmtLicenseInfoTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1742,25 +1771,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicenseInfoEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry>();
+        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry>();
         c->parent = this;
-        clmgmtlicenseinfoentry.push_back(c);
+        clmgmtlicenseinfoentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clmgmtlicenseinfoentry)
+    for (auto c : clmgmtlicenseinfoentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1771,22 +1800,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicens
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtLicenseInfoEntry")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicenseinfoentry()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseInfoEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     clmgmtlicensestoreused{YType::uint32, "clmgmtLicenseStoreUsed"},
@@ -1808,15 +1837,16 @@ CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicen
     clmgmtlicenseperiodused{YType::uint32, "clmgmtLicensePeriodUsed"}
 {
 
-    yang_name = "clmgmtLicenseInfoEntry"; yang_parent_name = "clmgmtLicenseInfoTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicenseInfoEntry"; yang_parent_name = "clmgmtLicenseInfoTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::~Clmgmtlicenseinfoentry()
+CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::~ClmgmtLicenseInfoEntry()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| clmgmtlicensestoreused.is_set
 	|| clmgmtlicenseindex.is_set
@@ -1837,7 +1867,7 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::has_da
 	|| clmgmtlicenseperiodused.is_set;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -1860,21 +1890,24 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::has_op
 	|| ydk::is_set(clmgmtlicenseperiodused.yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/clmgmtLicenseInfoTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clmgmtLicenseInfoEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[clmgmtLicenseStoreUsed='" <<clmgmtlicensestoreused <<"']" <<"[clmgmtLicenseIndex='" <<clmgmtlicenseindex <<"']";
+    path_buffer << "clmgmtLicenseInfoEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(clmgmtlicensestoreused, "clmgmtLicenseStoreUsed");
+    ADD_KEY_TOKEN(clmgmtlicenseindex, "clmgmtLicenseIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1901,19 +1934,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2025,7 +2058,7 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::set_va
     }
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2101,26 +2134,29 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::set_fi
     }
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "clmgmtLicenseStoreUsed" || name == "clmgmtLicenseIndex" || name == "clmgmtLicenseFeatureName" || name == "clmgmtLicenseFeatureVersion" || name == "clmgmtLicenseType" || name == "clmgmtLicenseCounted" || name == "clmgmtLicenseValidityPeriod" || name == "clmgmtLicenseValidityPeriodRemaining" || name == "clmgmtLicenseExpiredPeriod" || name == "clmgmtLicenseMaxUsageCount" || name == "clmgmtLicenseUsageCountRemaining" || name == "clmgmtLicenseEULAStatus" || name == "clmgmtLicenseComments" || name == "clmgmtLicenseStatus" || name == "clmgmtLicenseStartDate" || name == "clmgmtLicenseEndDate" || name == "clmgmtLicensePeriodUsed")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeaturetable()
+CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureTable()
+    :
+    clmgmtlicensablefeatureentry(this, {"entphysicalindex", "clmgmtfeatureindex"})
 {
 
-    yang_name = "clmgmtLicensableFeatureTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicensableFeatureTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::~Clmgmtlicensablefeaturetable()
+CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::~ClmgmtLicensableFeatureTable()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::has_data() const
 {
-    for (std::size_t index=0; index<clmgmtlicensablefeatureentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clmgmtlicensablefeatureentry.len(); index++)
     {
         if(clmgmtlicensablefeatureentry[index]->has_data())
             return true;
@@ -2128,9 +2164,9 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::has_data() const
     return false;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::has_operation() const
 {
-    for (std::size_t index=0; index<clmgmtlicensablefeatureentry.size(); index++)
+    for (std::size_t index=0; index<clmgmtlicensablefeatureentry.len(); index++)
     {
         if(clmgmtlicensablefeatureentry[index]->has_operation())
             return true;
@@ -2138,21 +2174,21 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clmgmtLicensableFeatureTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2161,25 +2197,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicensableFeatureEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry>();
+        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry>();
         c->parent = this;
-        clmgmtlicensablefeatureentry.push_back(c);
+        clmgmtlicensablefeatureentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clmgmtlicensablefeatureentry)
+    for (auto c : clmgmtlicensablefeatureentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2190,22 +2226,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicens
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtLicensableFeatureEntry")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::Clmgmtlicensablefeatureentry()
+CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::ClmgmtLicensableFeatureEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     clmgmtfeatureindex{YType::uint32, "clmgmtFeatureIndex"},
@@ -2218,15 +2254,16 @@ CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry:
     clmgmtfeatureperiodused{YType::uint32, "clmgmtFeaturePeriodUsed"}
 {
 
-    yang_name = "clmgmtLicensableFeatureEntry"; yang_parent_name = "clmgmtLicensableFeatureTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtLicensableFeatureEntry"; yang_parent_name = "clmgmtLicensableFeatureTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::~Clmgmtlicensablefeatureentry()
+CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::~ClmgmtLicensableFeatureEntry()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| clmgmtfeatureindex.is_set
 	|| clmgmtfeaturename.is_set
@@ -2238,7 +2275,7 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeaturee
 	|| clmgmtfeatureperiodused.is_set;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -2252,21 +2289,23 @@ bool CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeaturee
 	|| ydk::is_set(clmgmtfeatureperiodused.yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/clmgmtLicensableFeatureTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clmgmtLicensableFeatureEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[clmgmtFeatureIndex='" <<clmgmtfeatureindex <<"']";
+    path_buffer << "clmgmtLicensableFeatureEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(clmgmtfeatureindex, "clmgmtFeatureIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2284,19 +2323,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtlicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2354,7 +2393,7 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeaturee
     }
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2394,26 +2433,29 @@ void CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeaturee
     }
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "clmgmtFeatureIndex" || name == "clmgmtFeatureName" || name == "clmgmtFeatureVersion" || name == "clmgmtFeatureValidityPeriodRemaining" || name == "clmgmtFeatureWhatIsCounted" || name == "clmgmtFeatureStartDate" || name == "clmgmtFeatureEndDate" || name == "clmgmtFeaturePeriodUsed")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactiontable()
+CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionTable()
+    :
+    clmgmtdevcredexportactionentry(this, {"clmgmtdevcredexportactionindex"})
 {
 
-    yang_name = "clmgmtDevCredExportActionTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtDevCredExportActionTable"; yang_parent_name = "CISCO-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::~Clmgmtdevcredexportactiontable()
+CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::~ClmgmtDevCredExportActionTable()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::has_data() const
 {
-    for (std::size_t index=0; index<clmgmtdevcredexportactionentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clmgmtdevcredexportactionentry.len(); index++)
     {
         if(clmgmtdevcredexportactionentry[index]->has_data())
             return true;
@@ -2421,9 +2463,9 @@ bool CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::has_data() const
     return false;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::has_operation() const
 {
-    for (std::size_t index=0; index<clmgmtdevcredexportactionentry.size(); index++)
+    for (std::size_t index=0; index<clmgmtdevcredexportactionentry.len(); index++)
     {
         if(clmgmtdevcredexportactionentry[index]->has_operation())
             return true;
@@ -2431,21 +2473,21 @@ bool CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clmgmtDevCredExportActionTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2454,25 +2496,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtdevcre
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtDevCredExportActionEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry>();
+        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry>();
         c->parent = this;
-        clmgmtdevcredexportactionentry.push_back(c);
+        clmgmtdevcredexportactionentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clmgmtdevcredexportactionentry)
+    for (auto c : clmgmtdevcredexportactionentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2483,22 +2525,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtdevcre
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtDevCredExportActionEntry")
         return true;
     return false;
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredexportactionentry()
+CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredExportActionEntry()
     :
     clmgmtdevcredexportactionindex{YType::uint32, "clmgmtDevCredExportActionIndex"},
     clmgmtdevcredentphysicalindex{YType::int32, "clmgmtDevCredEntPhysicalIndex"},
@@ -2515,15 +2557,16 @@ CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionen
     clmgmtdevcredrowstatus{YType::enumeration, "clmgmtDevCredRowStatus"}
 {
 
-    yang_name = "clmgmtDevCredExportActionEntry"; yang_parent_name = "clmgmtDevCredExportActionTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clmgmtDevCredExportActionEntry"; yang_parent_name = "clmgmtDevCredExportActionTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::~Clmgmtdevcredexportactionentry()
+CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::~ClmgmtDevCredExportActionEntry()
 {
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::has_data() const
+bool CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return clmgmtdevcredexportactionindex.is_set
 	|| clmgmtdevcredentphysicalindex.is_set
 	|| clmgmtdevcredtransferprotocol.is_set
@@ -2539,7 +2582,7 @@ bool CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportact
 	|| clmgmtdevcredrowstatus.is_set;
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::has_operation() const
+bool CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clmgmtdevcredexportactionindex.yfilter)
@@ -2557,21 +2600,22 @@ bool CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportact
 	|| ydk::is_set(clmgmtdevcredrowstatus.yfilter);
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::get_absolute_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-LICENSE-MGMT-MIB:CISCO-LICENSE-MGMT-MIB/clmgmtDevCredExportActionTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::get_segment_path() const
+std::string CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clmgmtDevCredExportActionEntry" <<"[clmgmtDevCredExportActionIndex='" <<clmgmtdevcredexportactionindex <<"']";
+    path_buffer << "clmgmtDevCredExportActionEntry";
+    ADD_KEY_TOKEN(clmgmtdevcredexportactionindex, "clmgmtDevCredExportActionIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2593,19 +2637,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::Clmgmtdevcre
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clmgmtDevCredExportActionIndex")
     {
@@ -2687,7 +2731,7 @@ void CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportact
     }
 }
 
-void CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clmgmtDevCredExportActionIndex")
     {
@@ -2743,21 +2787,12 @@ void CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportact
     }
 }
 
-bool CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clmgmtDevCredExportActionIndex" || name == "clmgmtDevCredEntPhysicalIndex" || name == "clmgmtDevCredTransferProtocol" || name == "clmgmtDevCredServerAddressType" || name == "clmgmtDevCredServerAddress" || name == "clmgmtDevCredServerUsername" || name == "clmgmtDevCredServerPassword" || name == "clmgmtDevCredExportFile" || name == "clmgmtDevCredCommand" || name == "clmgmtDevCredCommandState" || name == "clmgmtDevCredCommandFailCause" || name == "clmgmtDevCredStorageType" || name == "clmgmtDevCredRowStatus")
         return true;
     return false;
 }
-
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::none {1, "none"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::local {2, "local"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::tftp {3, "tftp"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::ftp {4, "ftp"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::rcp {5, "rcp"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::http {6, "http"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::scp {7, "scp"};
-const Enum::YLeaf ClmgmtLicenseTransferProtocol::sftp {8, "sftp"};
 
 const Enum::YLeaf ClmgmtLicenseActionState::none {1, "none"};
 const Enum::YLeaf ClmgmtLicenseActionState::pending {2, "pending"};
@@ -2789,45 +2824,54 @@ const Enum::YLeaf ClmgmtLicenseActionFailCause::invalidLicenseBackupFile {20, "i
 const Enum::YLeaf ClmgmtLicenseActionFailCause::licenseClearInProgress {21, "licenseClearInProgress"};
 const Enum::YLeaf ClmgmtLicenseActionFailCause::invalidLicenseEULAFile {22, "invalidLicenseEULAFile"};
 
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::Clmgmtlicenseerrornotifenable::other {0, "other"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::Clmgmtlicenseerrornotifenable::true_ {1, "true"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::Clmgmtlicenseerrornotifenable::false_ {2, "false"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::none {1, "none"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::local {2, "local"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::tftp {3, "tftp"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::ftp {4, "ftp"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::rcp {5, "rcp"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::http {6, "http"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::scp {7, "scp"};
+const Enum::YLeaf ClmgmtLicenseTransferProtocol::sftp {8, "sftp"};
 
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::Clmgmtlicenseaction::noOp {1, "noOp"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::Clmgmtlicenseaction::install {2, "install"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::Clmgmtlicenseaction::clear {3, "clear"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::Clmgmtlicenseaction::processPermissionTicket {4, "processPermissionTicket"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::Clmgmtlicenseaction::regenerateLastRehostTicket {5, "regenerateLastRehostTicket"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::Clmgmtlicenseaction::backup {6, "backup"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::Clmgmtlicenseaction::generateEULA {7, "generateEULA"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::ClmgmtLicenseErrorNotifEnable::other {0, "other"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::ClmgmtLicenseErrorNotifEnable::true_ {1, "true"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::ClmgmtLicenseErrorNotifEnable::false_ {2, "false"};
 
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensetype::demo {1, "demo"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensetype::extension {2, "extension"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensetype::gracePeriod {3, "gracePeriod"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensetype::permanent {4, "permanent"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensetype::paidSubscription {5, "paidSubscription"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensetype::evaluationSubscription {6, "evaluationSubscription"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensetype::extensionSubscription {7, "extensionSubscription"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensetype::evalRightToUse {8, "evalRightToUse"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensetype::rightToUse {9, "rightToUse"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensetype::permanentRightToUse {10, "permanentRightToUse"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::ClmgmtLicenseAction::noOp {1, "noOp"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::ClmgmtLicenseAction::install {2, "install"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::ClmgmtLicenseAction::clear {3, "clear"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::ClmgmtLicenseAction::processPermissionTicket {4, "processPermissionTicket"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::ClmgmtLicenseAction::regenerateLastRehostTicket {5, "regenerateLastRehostTicket"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::ClmgmtLicenseAction::backup {6, "backup"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::ClmgmtLicenseAction::generateEULA {7, "generateEULA"};
 
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensestatus::inactive {1, "inactive"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensestatus::notInUse {2, "notInUse"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensestatus::inUse {3, "inUse"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensestatus::expiredInUse {4, "expiredInUse"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensestatus::expiredNotInUse {5, "expiredNotInUse"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensestatus::usageCountConsumed {6, "usageCountConsumed"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseType::demo {1, "demo"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseType::extension {2, "extension"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseType::gracePeriod {3, "gracePeriod"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseType::permanent {4, "permanent"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseType::paidSubscription {5, "paidSubscription"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseType::evaluationSubscription {6, "evaluationSubscription"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseType::extensionSubscription {7, "extensionSubscription"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseType::evalRightToUse {8, "evalRightToUse"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseType::rightToUse {9, "rightToUse"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseType::permanentRightToUse {10, "permanentRightToUse"};
 
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredcommand::noOp {1, "noOp"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredcommand::getDeviceCredentials {2, "getDeviceCredentials"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseStatus::inactive {1, "inactive"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseStatus::notInUse {2, "notInUse"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseStatus::inUse {3, "inUse"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseStatus::expiredInUse {4, "expiredInUse"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseStatus::expiredNotInUse {5, "expiredNotInUse"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseStatus::usageCountConsumed {6, "usageCountConsumed"};
 
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredcommandfailcause::none {1, "none"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredcommandfailcause::unknownError {2, "unknownError"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredcommandfailcause::transferProtocolNotSupported {3, "transferProtocolNotSupported"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredcommandfailcause::fileServerNotReachable {4, "fileServerNotReachable"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredcommandfailcause::unrecognizedEntPhysicalIndex {5, "unrecognizedEntPhysicalIndex"};
-const Enum::YLeaf CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredcommandfailcause::invalidFile {6, "invalidFile"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredCommand::noOp {1, "noOp"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredCommand::getDeviceCredentials {2, "getDeviceCredentials"};
+
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredCommandFailCause::none {1, "none"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredCommandFailCause::unknownError {2, "unknownError"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredCommandFailCause::transferProtocolNotSupported {3, "transferProtocolNotSupported"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredCommandFailCause::fileServerNotReachable {4, "fileServerNotReachable"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredCommandFailCause::unrecognizedEntPhysicalIndex {5, "unrecognizedEntPhysicalIndex"};
+const Enum::YLeaf CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredCommandFailCause::invalidFile {6, "invalidFile"};
 
 
 }

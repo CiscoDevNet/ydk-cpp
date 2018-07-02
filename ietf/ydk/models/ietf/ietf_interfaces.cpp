@@ -22,9 +22,11 @@ InterfaceType::~InterfaceType()
 }
 
 Interfaces::Interfaces()
+    :
+    interface(this, {"name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "ietf-interfaces"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "ietf-interfaces"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Interfaces::~Interfaces()
@@ -33,7 +35,8 @@ Interfaces::~Interfaces()
 
 bool Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -43,7 +46,7 @@ bool Interfaces::has_data() const
 
 bool Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -73,7 +76,7 @@ std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -85,7 +88,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -143,12 +146,13 @@ Interfaces::Interface::Interface()
     type{YType::identityref, "type"},
     enabled{YType::boolean, "enabled"},
     link_up_down_trap_enable{YType::enumeration, "link-up-down-trap-enable"}
-    	,
+        ,
     ipv4(nullptr) // presence node
-	,ipv6(nullptr) // presence node
+    , ipv6(nullptr) // presence node
+    , diffserv_target_entry(this, {"direction", "policy_name"})
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::Interface::~Interface()
@@ -157,7 +161,8 @@ Interfaces::Interface::~Interface()
 
 bool Interfaces::Interface::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_target_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffserv_target_entry.len(); index++)
     {
         if(diffserv_target_entry[index]->has_data())
             return true;
@@ -173,7 +178,7 @@ bool Interfaces::Interface::has_data() const
 
 bool Interfaces::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_target_entry.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_entry.len(); index++)
     {
         if(diffserv_target_entry[index]->has_operation())
             return true;
@@ -198,7 +203,8 @@ std::string Interfaces::Interface::get_absolute_path() const
 std::string Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[name='" <<name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -218,14 +224,6 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::get_name_l
 
 std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ietf-diffserv-target:diffserv-target-entry")
-    {
-        auto c = std::make_shared<Interfaces::Interface::DiffservTargetEntry>();
-        c->parent = this;
-        diffserv_target_entry.push_back(c);
-        return c;
-    }
-
     if(child_yang_name == "ietf-ip:ipv4")
     {
         if(ipv4 == nullptr)
@@ -244,6 +242,14 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
         return ipv6;
     }
 
+    if(child_yang_name == "ietf-diffserv-target:diffserv-target-entry")
+    {
+        auto c = std::make_shared<Interfaces::Interface::DiffservTargetEntry>();
+        c->parent = this;
+        diffserv_target_entry.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -251,15 +257,6 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::get_childr
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    count = 0;
-    for (auto const & c : diffserv_target_entry)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
     if(ipv4 != nullptr)
     {
         children["ietf-ip:ipv4"] = ipv4;
@@ -268,6 +265,15 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::get_childr
     if(ipv6 != nullptr)
     {
         children["ietf-ip:ipv6"] = ipv6;
+    }
+
+    count = 0;
+    for (auto c : diffserv_target_entry.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -333,98 +339,7 @@ void Interfaces::Interface::set_filter(const std::string & value_path, YFilter y
 
 bool Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "diffserv-target-entry" || name == "ipv4" || name == "ipv6" || name == "name" || name == "description" || name == "type" || name == "enabled" || name == "link-up-down-trap-enable")
-        return true;
-    return false;
-}
-
-Interfaces::Interface::DiffservTargetEntry::DiffservTargetEntry()
-    :
-    direction{YType::identityref, "direction"},
-    policy_name{YType::str, "policy-name"}
-{
-
-    yang_name = "diffserv-target-entry"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Interfaces::Interface::DiffservTargetEntry::~DiffservTargetEntry()
-{
-}
-
-bool Interfaces::Interface::DiffservTargetEntry::has_data() const
-{
-    return direction.is_set
-	|| policy_name.is_set;
-}
-
-bool Interfaces::Interface::DiffservTargetEntry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(policy_name.yfilter);
-}
-
-std::string Interfaces::Interface::DiffservTargetEntry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ietf-diffserv-target:diffserv-target-entry" <<"[direction='" <<direction <<"']" <<"[policy-name='" <<policy_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservTargetEntry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Interfaces::Interface::DiffservTargetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservTargetEntry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Interfaces::Interface::DiffservTargetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name = value;
-        policy_name.value_namespace = name_space;
-        policy_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Interfaces::Interface::DiffservTargetEntry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name.yfilter = yfilter;
-    }
-}
-
-bool Interfaces::Interface::DiffservTargetEntry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "direction" || name == "policy-name")
+    if(name == "ipv4" || name == "ipv6" || name == "diffserv-target-entry" || name == "name" || name == "description" || name == "type" || name == "enabled" || name == "link-up-down-trap-enable")
         return true;
     return false;
 }
@@ -434,9 +349,12 @@ Interfaces::Interface::Ipv4::Ipv4()
     enabled{YType::boolean, "enabled"},
     forwarding{YType::boolean, "forwarding"},
     mtu{YType::uint16, "mtu"}
+        ,
+    address(this, {"ip"})
+    , neighbor(this, {"ip"})
 {
 
-    yang_name = "ipv4"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Interfaces::Interface::Ipv4::~Ipv4()
@@ -445,12 +363,13 @@ Interfaces::Interface::Ipv4::~Ipv4()
 
 bool Interfaces::Interface::Ipv4::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -462,12 +381,12 @@ bool Interfaces::Interface::Ipv4::has_data() const
 
 bool Interfaces::Interface::Ipv4::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -503,7 +422,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv4::get_child_by_name(const std
     {
         auto c = std::make_shared<Interfaces::Interface::Ipv4::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -511,7 +430,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv4::get_child_by_name(const std
     {
         auto c = std::make_shared<Interfaces::Interface::Ipv4::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -523,7 +442,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv4::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -532,7 +451,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv4::get_
     }
 
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -595,7 +514,7 @@ Interfaces::Interface::Ipv4::Address::Address()
     netmask{YType::str, "netmask"}
 {
 
-    yang_name = "address"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ipv4::Address::~Address()
@@ -604,6 +523,7 @@ Interfaces::Interface::Ipv4::Address::~Address()
 
 bool Interfaces::Interface::Ipv4::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| prefix_length.is_set
 	|| netmask.is_set;
@@ -620,7 +540,8 @@ bool Interfaces::Interface::Ipv4::Address::has_operation() const
 std::string Interfaces::Interface::Ipv4::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address" <<"[ip='" <<ip <<"']";
+    path_buffer << "address";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -699,7 +620,7 @@ Interfaces::Interface::Ipv4::Neighbor::Neighbor()
     link_layer_address{YType::str, "link-layer-address"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ipv4::Neighbor::~Neighbor()
@@ -708,6 +629,7 @@ Interfaces::Interface::Ipv4::Neighbor::~Neighbor()
 
 bool Interfaces::Interface::Ipv4::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| link_layer_address.is_set;
 }
@@ -722,7 +644,8 @@ bool Interfaces::Interface::Ipv4::Neighbor::has_operation() const
 std::string Interfaces::Interface::Ipv4::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[ip='" <<ip <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -790,14 +713,16 @@ Interfaces::Interface::Ipv6::Ipv6()
     forwarding{YType::boolean, "forwarding"},
     mtu{YType::uint32, "mtu"},
     dup_addr_detect_transmits{YType::uint32, "dup-addr-detect-transmits"}
-    	,
-    autoconf(std::make_shared<Interfaces::Interface::Ipv6::Autoconf>())
-	,ipv6_router_advertisements(std::make_shared<Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements>())
+        ,
+    address(this, {"ip"})
+    , neighbor(this, {"ip"})
+    , autoconf(std::make_shared<Interfaces::Interface::Ipv6::Autoconf>())
+    , ipv6_router_advertisements(std::make_shared<Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements>())
 {
     autoconf->parent = this;
     ipv6_router_advertisements->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Interfaces::Interface::Ipv6::~Ipv6()
@@ -806,12 +731,13 @@ Interfaces::Interface::Ipv6::~Ipv6()
 
 bool Interfaces::Interface::Ipv6::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -826,12 +752,12 @@ bool Interfaces::Interface::Ipv6::has_data() const
 
 bool Interfaces::Interface::Ipv6::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -871,7 +797,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::get_child_by_name(const std
     {
         auto c = std::make_shared<Interfaces::Interface::Ipv6::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -879,7 +805,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::get_child_by_name(const std
     {
         auto c = std::make_shared<Interfaces::Interface::Ipv6::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -909,7 +835,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -918,7 +844,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::get_
     }
 
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1000,7 +926,7 @@ Interfaces::Interface::Ipv6::Address::Address()
     prefix_length{YType::uint8, "prefix-length"}
 {
 
-    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ipv6::Address::~Address()
@@ -1009,6 +935,7 @@ Interfaces::Interface::Ipv6::Address::~Address()
 
 bool Interfaces::Interface::Ipv6::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| prefix_length.is_set;
 }
@@ -1023,7 +950,8 @@ bool Interfaces::Interface::Ipv6::Address::has_operation() const
 std::string Interfaces::Interface::Ipv6::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address" <<"[ip='" <<ip <<"']";
+    path_buffer << "address";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -1091,7 +1019,7 @@ Interfaces::Interface::Ipv6::Neighbor::Neighbor()
     link_layer_address{YType::str, "link-layer-address"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ipv6::Neighbor::~Neighbor()
@@ -1100,6 +1028,7 @@ Interfaces::Interface::Ipv6::Neighbor::~Neighbor()
 
 bool Interfaces::Interface::Ipv6::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| link_layer_address.is_set;
 }
@@ -1114,7 +1043,8 @@ bool Interfaces::Interface::Ipv6::Neighbor::has_operation() const
 std::string Interfaces::Interface::Ipv6::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[ip='" <<ip <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -1184,7 +1114,7 @@ Interfaces::Interface::Ipv6::Autoconf::Autoconf()
     temporary_preferred_lifetime{YType::uint32, "temporary-preferred-lifetime"}
 {
 
-    yang_name = "autoconf"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autoconf"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ipv6::Autoconf::~Autoconf()
@@ -1193,6 +1123,7 @@ Interfaces::Interface::Ipv6::Autoconf::~Autoconf()
 
 bool Interfaces::Interface::Ipv6::Autoconf::has_data() const
 {
+    if (is_presence_container) return true;
     return create_global_addresses.is_set
 	|| create_temporary_addresses.is_set
 	|| temporary_valid_lifetime.is_set
@@ -1307,12 +1238,12 @@ Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::Ipv6RouterAdvertisements(
     retrans_timer{YType::uint32, "retrans-timer"},
     cur_hop_limit{YType::uint8, "cur-hop-limit"},
     default_lifetime{YType::uint16, "default-lifetime"}
-    	,
+        ,
     prefix_list(std::make_shared<Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList>())
 {
     prefix_list->parent = this;
 
-    yang_name = "ipv6-router-advertisements"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-router-advertisements"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::~Ipv6RouterAdvertisements()
@@ -1321,6 +1252,7 @@ Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::~Ipv6RouterAdvertisements
 
 bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::has_data() const
 {
+    if (is_presence_container) return true;
     return send_advertisements.is_set
 	|| max_rtr_adv_interval.is_set
 	|| min_rtr_adv_interval.is_set
@@ -1518,9 +1450,11 @@ bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::has_leaf_or_child_of
 }
 
 Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::PrefixList()
+    :
+    prefix(this, {"prefix_spec"})
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "ipv6-router-advertisements"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "ipv6-router-advertisements"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::~PrefixList()
@@ -1529,7 +1463,8 @@ Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::~PrefixList()
 
 bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::has_data() const
 {
-    for (std::size_t index=0; index<prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
         if(prefix[index]->has_data())
             return true;
@@ -1539,7 +1474,7 @@ bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::has_data
 
 bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::has_operation() const
 {
-    for (std::size_t index=0; index<prefix.size(); index++)
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
         if(prefix[index]->has_operation())
             return true;
@@ -1569,7 +1504,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::P
     {
         auto c = std::make_shared<Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix>();
         c->parent = this;
-        prefix.push_back(c);
+        prefix.append(c);
         return c;
     }
 
@@ -1581,7 +1516,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix)
+    for (auto c : prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1617,7 +1552,7 @@ Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::Prefi
     autonomous_flag{YType::boolean, "autonomous-flag"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefix-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::~Prefix()
@@ -1626,6 +1561,7 @@ Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::~Pref
 
 bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_spec.is_set
 	|| no_advertise.is_set
 	|| valid_lifetime.is_set
@@ -1648,7 +1584,8 @@ bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::
 std::string Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix" <<"[prefix-spec='" <<prefix_spec <<"']";
+    path_buffer << "prefix";
+    ADD_KEY_TOKEN(prefix_spec, "prefix-spec");
     return path_buffer.str();
 }
 
@@ -1754,10 +1691,106 @@ bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::
     return false;
 }
 
-InterfacesState::InterfacesState()
+Interfaces::Interface::DiffservTargetEntry::DiffservTargetEntry()
+    :
+    direction{YType::identityref, "direction"},
+    policy_name{YType::str, "policy-name"}
 {
 
-    yang_name = "interfaces-state"; yang_parent_name = "ietf-interfaces"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "diffserv-target-entry"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Interfaces::Interface::DiffservTargetEntry::~DiffservTargetEntry()
+{
+}
+
+bool Interfaces::Interface::DiffservTargetEntry::has_data() const
+{
+    if (is_presence_container) return true;
+    return direction.is_set
+	|| policy_name.is_set;
+}
+
+bool Interfaces::Interface::DiffservTargetEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(policy_name.yfilter);
+}
+
+std::string Interfaces::Interface::DiffservTargetEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-diffserv-target:diffserv-target-entry";
+    ADD_KEY_TOKEN(direction, "direction");
+    ADD_KEY_TOKEN(policy_name, "policy-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservTargetEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Interfaces::Interface::DiffservTargetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservTargetEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Interfaces::Interface::DiffservTargetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "direction")
+    {
+        direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Interfaces::Interface::DiffservTargetEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+}
+
+bool Interfaces::Interface::DiffservTargetEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "policy-name")
+        return true;
+    return false;
+}
+
+InterfacesState::InterfacesState()
+    :
+    interface(this, {"name"})
+{
+
+    yang_name = "interfaces-state"; yang_parent_name = "ietf-interfaces"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InterfacesState::~InterfacesState()
@@ -1766,7 +1799,8 @@ InterfacesState::~InterfacesState()
 
 bool InterfacesState::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1776,7 +1810,7 @@ bool InterfacesState::has_data() const
 
 bool InterfacesState::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1806,7 +1840,7 @@ std::shared_ptr<Entity> InterfacesState::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<InterfacesState::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1818,7 +1852,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfacesState::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1882,14 +1916,15 @@ InterfacesState::Interface::Interface()
     lower_layer_if{YType::str, "lower-layer-if"},
     speed{YType::uint64, "speed"},
     routing_instance{YType::str, "ietf-routing:routing-instance"}
-    	,
+        ,
     statistics(std::make_shared<InterfacesState::Interface::Statistics>())
-	,ipv4(nullptr) // presence node
-	,ipv6(nullptr) // presence node
+    , ipv4(nullptr) // presence node
+    , ipv6(nullptr) // presence node
+    , diffserv_target_entry(this, {"direction", "policy_name"})
 {
     statistics->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 InterfacesState::Interface::~Interface()
@@ -1898,7 +1933,8 @@ InterfacesState::Interface::~Interface()
 
 bool InterfacesState::Interface::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_target_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffserv_target_entry.len(); index++)
     {
         if(diffserv_target_entry[index]->has_data())
             return true;
@@ -1929,7 +1965,7 @@ bool InterfacesState::Interface::has_data() const
 
 bool InterfacesState::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_target_entry.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_entry.len(); index++)
     {
         if(diffserv_target_entry[index]->has_operation())
             return true;
@@ -1971,7 +2007,8 @@ std::string InterfacesState::Interface::get_absolute_path() const
 std::string InterfacesState::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[name='" <<name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2008,14 +2045,6 @@ std::shared_ptr<Entity> InterfacesState::Interface::get_child_by_name(const std:
         return statistics;
     }
 
-    if(child_yang_name == "ietf-diffserv-target:diffserv-target-entry")
-    {
-        auto c = std::make_shared<InterfacesState::Interface::DiffservTargetEntry>();
-        c->parent = this;
-        diffserv_target_entry.push_back(c);
-        return c;
-    }
-
     if(child_yang_name == "ietf-ip:ipv4")
     {
         if(ipv4 == nullptr)
@@ -2034,6 +2063,14 @@ std::shared_ptr<Entity> InterfacesState::Interface::get_child_by_name(const std:
         return ipv6;
     }
 
+    if(child_yang_name == "ietf-diffserv-target:diffserv-target-entry")
+    {
+        auto c = std::make_shared<InterfacesState::Interface::DiffservTargetEntry>();
+        c->parent = this;
+        diffserv_target_entry.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -2046,15 +2083,6 @@ std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::get_c
         children["statistics"] = statistics;
     }
 
-    count = 0;
-    for (auto const & c : diffserv_target_entry)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
     if(ipv4 != nullptr)
     {
         children["ietf-ip:ipv4"] = ipv4;
@@ -2063,6 +2091,15 @@ std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::get_c
     if(ipv6 != nullptr)
     {
         children["ietf-ip:ipv6"] = ipv6;
+    }
+
+    count = 0;
+    for (auto c : diffserv_target_entry.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2184,7 +2221,7 @@ void InterfacesState::Interface::set_filter(const std::string & value_path, YFil
 
 bool InterfacesState::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "statistics" || name == "diffserv-target-entry" || name == "ipv4" || name == "ipv6" || name == "name" || name == "type" || name == "admin-status" || name == "oper-status" || name == "last-change" || name == "if-index" || name == "phys-address" || name == "higher-layer-if" || name == "lower-layer-if" || name == "speed" || name == "routing-instance")
+    if(name == "statistics" || name == "ipv4" || name == "ipv6" || name == "diffserv-target-entry" || name == "name" || name == "type" || name == "admin-status" || name == "oper-status" || name == "last-change" || name == "if-index" || name == "phys-address" || name == "higher-layer-if" || name == "lower-layer-if" || name == "speed" || name == "routing-instance")
         return true;
     return false;
 }
@@ -2209,7 +2246,7 @@ InterfacesState::Interface::Statistics::Statistics()
     out_pkts{YType::uint64, "ietf-interfaces-ext:out-pkts"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfacesState::Interface::Statistics::~Statistics()
@@ -2218,6 +2255,7 @@ InterfacesState::Interface::Statistics::~Statistics()
 
 bool InterfacesState::Interface::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return discontinuity_time.is_set
 	|| in_octets.is_set
 	|| in_unicast_pkts.is_set
@@ -2476,13 +2514,797 @@ bool InterfacesState::Interface::Statistics::has_leaf_or_child_of_name(const std
     return false;
 }
 
+InterfacesState::Interface::Ipv4::Ipv4()
+    :
+    forwarding{YType::boolean, "forwarding"},
+    mtu{YType::uint16, "mtu"}
+        ,
+    address(this, {"ip"})
+    , neighbor(this, {"ip"})
+{
+
+    yang_name = "ipv4"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+InterfacesState::Interface::Ipv4::~Ipv4()
+{
+}
+
+bool InterfacesState::Interface::Ipv4::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
+    {
+        if(address[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<neighbor.len(); index++)
+    {
+        if(neighbor[index]->has_data())
+            return true;
+    }
+    return forwarding.is_set
+	|| mtu.is_set;
+}
+
+bool InterfacesState::Interface::Ipv4::has_operation() const
+{
+    for (std::size_t index=0; index<address.len(); index++)
+    {
+        if(address[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<neighbor.len(); index++)
+    {
+        if(neighbor[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(forwarding.yfilter)
+	|| ydk::is_set(mtu.yfilter);
+}
+
+std::string InterfacesState::Interface::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-ip:ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (forwarding.is_set || is_set(forwarding.yfilter)) leaf_name_data.push_back(forwarding.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfacesState::Interface::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address")
+    {
+        auto c = std::make_shared<InterfacesState::Interface::Ipv4::Address>();
+        c->parent = this;
+        address.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "neighbor")
+    {
+        auto c = std::make_shared<InterfacesState::Interface::Ipv4::Neighbor>();
+        c->parent = this;
+        neighbor.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : address.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : neighbor.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void InterfacesState::Interface::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "forwarding")
+    {
+        forwarding = value;
+        forwarding.value_namespace = name_space;
+        forwarding.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mtu")
+    {
+        mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfacesState::Interface::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "forwarding")
+    {
+        forwarding.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+}
+
+bool InterfacesState::Interface::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "neighbor" || name == "forwarding" || name == "mtu")
+        return true;
+    return false;
+}
+
+InterfacesState::Interface::Ipv4::Address::Address()
+    :
+    ip{YType::str, "ip"},
+    prefix_length{YType::uint8, "prefix-length"},
+    netmask{YType::str, "netmask"},
+    origin{YType::enumeration, "origin"}
+{
+
+    yang_name = "address"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfacesState::Interface::Ipv4::Address::~Address()
+{
+}
+
+bool InterfacesState::Interface::Ipv4::Address::has_data() const
+{
+    if (is_presence_container) return true;
+    return ip.is_set
+	|| prefix_length.is_set
+	|| netmask.is_set
+	|| origin.is_set;
+}
+
+bool InterfacesState::Interface::Ipv4::Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(netmask.yfilter)
+	|| ydk::is_set(origin.yfilter);
+}
+
+std::string InterfacesState::Interface::Ipv4::Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address";
+    ADD_KEY_TOKEN(ip, "ip");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv4::Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfacesState::Interface::Ipv4::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv4::Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InterfacesState::Interface::Ipv4::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "netmask")
+    {
+        netmask = value;
+        netmask.value_namespace = name_space;
+        netmask.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origin")
+    {
+        origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfacesState::Interface::Ipv4::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "netmask")
+    {
+        netmask.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+}
+
+bool InterfacesState::Interface::Ipv4::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "prefix-length" || name == "netmask" || name == "origin")
+        return true;
+    return false;
+}
+
+InterfacesState::Interface::Ipv4::Neighbor::Neighbor()
+    :
+    ip{YType::str, "ip"},
+    link_layer_address{YType::str, "link-layer-address"},
+    origin{YType::enumeration, "origin"}
+{
+
+    yang_name = "neighbor"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfacesState::Interface::Ipv4::Neighbor::~Neighbor()
+{
+}
+
+bool InterfacesState::Interface::Ipv4::Neighbor::has_data() const
+{
+    if (is_presence_container) return true;
+    return ip.is_set
+	|| link_layer_address.is_set
+	|| origin.is_set;
+}
+
+bool InterfacesState::Interface::Ipv4::Neighbor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(link_layer_address.yfilter)
+	|| ydk::is_set(origin.yfilter);
+}
+
+std::string InterfacesState::Interface::Ipv4::Neighbor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(ip, "ip");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv4::Neighbor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (link_layer_address.is_set || is_set(link_layer_address.yfilter)) leaf_name_data.push_back(link_layer_address.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfacesState::Interface::Ipv4::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv4::Neighbor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InterfacesState::Interface::Ipv4::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-layer-address")
+    {
+        link_layer_address = value;
+        link_layer_address.value_namespace = name_space;
+        link_layer_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origin")
+    {
+        origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfacesState::Interface::Ipv4::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "link-layer-address")
+    {
+        link_layer_address.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+}
+
+bool InterfacesState::Interface::Ipv4::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "link-layer-address" || name == "origin")
+        return true;
+    return false;
+}
+
+InterfacesState::Interface::Ipv6::Ipv6()
+    :
+    forwarding{YType::boolean, "forwarding"},
+    mtu{YType::uint32, "mtu"}
+        ,
+    address(this, {"ip"})
+    , neighbor(this, {"ip"})
+{
+
+    yang_name = "ipv6"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+InterfacesState::Interface::Ipv6::~Ipv6()
+{
+}
+
+bool InterfacesState::Interface::Ipv6::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
+    {
+        if(address[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<neighbor.len(); index++)
+    {
+        if(neighbor[index]->has_data())
+            return true;
+    }
+    return forwarding.is_set
+	|| mtu.is_set;
+}
+
+bool InterfacesState::Interface::Ipv6::has_operation() const
+{
+    for (std::size_t index=0; index<address.len(); index++)
+    {
+        if(address[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<neighbor.len(); index++)
+    {
+        if(neighbor[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(forwarding.yfilter)
+	|| ydk::is_set(mtu.yfilter);
+}
+
+std::string InterfacesState::Interface::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-ip:ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (forwarding.is_set || is_set(forwarding.yfilter)) leaf_name_data.push_back(forwarding.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfacesState::Interface::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address")
+    {
+        auto c = std::make_shared<InterfacesState::Interface::Ipv6::Address>();
+        c->parent = this;
+        address.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "neighbor")
+    {
+        auto c = std::make_shared<InterfacesState::Interface::Ipv6::Neighbor>();
+        c->parent = this;
+        neighbor.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : address.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : neighbor.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void InterfacesState::Interface::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "forwarding")
+    {
+        forwarding = value;
+        forwarding.value_namespace = name_space;
+        forwarding.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mtu")
+    {
+        mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfacesState::Interface::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "forwarding")
+    {
+        forwarding.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+}
+
+bool InterfacesState::Interface::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "neighbor" || name == "forwarding" || name == "mtu")
+        return true;
+    return false;
+}
+
+InterfacesState::Interface::Ipv6::Address::Address()
+    :
+    ip{YType::str, "ip"},
+    prefix_length{YType::uint8, "prefix-length"},
+    origin{YType::enumeration, "origin"},
+    status{YType::enumeration, "status"}
+{
+
+    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfacesState::Interface::Ipv6::Address::~Address()
+{
+}
+
+bool InterfacesState::Interface::Ipv6::Address::has_data() const
+{
+    if (is_presence_container) return true;
+    return ip.is_set
+	|| prefix_length.is_set
+	|| origin.is_set
+	|| status.is_set;
+}
+
+bool InterfacesState::Interface::Ipv6::Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(origin.yfilter)
+	|| ydk::is_set(status.yfilter);
+}
+
+std::string InterfacesState::Interface::Ipv6::Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address";
+    ADD_KEY_TOKEN(ip, "ip");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv6::Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfacesState::Interface::Ipv6::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv6::Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InterfacesState::Interface::Ipv6::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origin")
+    {
+        origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status")
+    {
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfacesState::Interface::Ipv6::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+}
+
+bool InterfacesState::Interface::Ipv6::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "prefix-length" || name == "origin" || name == "status")
+        return true;
+    return false;
+}
+
+InterfacesState::Interface::Ipv6::Neighbor::Neighbor()
+    :
+    ip{YType::str, "ip"},
+    link_layer_address{YType::str, "link-layer-address"},
+    origin{YType::enumeration, "origin"},
+    is_router{YType::empty, "is-router"},
+    state{YType::enumeration, "state"}
+{
+
+    yang_name = "neighbor"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfacesState::Interface::Ipv6::Neighbor::~Neighbor()
+{
+}
+
+bool InterfacesState::Interface::Ipv6::Neighbor::has_data() const
+{
+    if (is_presence_container) return true;
+    return ip.is_set
+	|| link_layer_address.is_set
+	|| origin.is_set
+	|| is_router.is_set
+	|| state.is_set;
+}
+
+bool InterfacesState::Interface::Ipv6::Neighbor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(link_layer_address.yfilter)
+	|| ydk::is_set(origin.yfilter)
+	|| ydk::is_set(is_router.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string InterfacesState::Interface::Ipv6::Neighbor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(ip, "ip");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv6::Neighbor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (link_layer_address.is_set || is_set(link_layer_address.yfilter)) leaf_name_data.push_back(link_layer_address.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (is_router.is_set || is_set(is_router.yfilter)) leaf_name_data.push_back(is_router.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfacesState::Interface::Ipv6::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv6::Neighbor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InterfacesState::Interface::Ipv6::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-layer-address")
+    {
+        link_layer_address = value;
+        link_layer_address.value_namespace = name_space;
+        link_layer_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origin")
+    {
+        origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-router")
+    {
+        is_router = value;
+        is_router.value_namespace = name_space;
+        is_router.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfacesState::Interface::Ipv6::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "link-layer-address")
+    {
+        link_layer_address.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+    if(value_path == "is-router")
+    {
+        is_router.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool InterfacesState::Interface::Ipv6::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "link-layer-address" || name == "origin" || name == "is-router" || name == "state")
+        return true;
+    return false;
+}
+
 InterfacesState::Interface::DiffservTargetEntry::DiffservTargetEntry()
     :
     direction{YType::identityref, "direction"},
     policy_name{YType::str, "policy-name"}
+        ,
+    diffserv_target_classifier_statistics(this, {"classifier_entry_name", "parent_path"})
 {
 
-    yang_name = "diffserv-target-entry"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "diffserv-target-entry"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfacesState::Interface::DiffservTargetEntry::~DiffservTargetEntry()
@@ -2491,7 +3313,8 @@ InterfacesState::Interface::DiffservTargetEntry::~DiffservTargetEntry()
 
 bool InterfacesState::Interface::DiffservTargetEntry::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_target_classifier_statistics.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffserv_target_classifier_statistics.len(); index++)
     {
         if(diffserv_target_classifier_statistics[index]->has_data())
             return true;
@@ -2502,7 +3325,7 @@ bool InterfacesState::Interface::DiffservTargetEntry::has_data() const
 
 bool InterfacesState::Interface::DiffservTargetEntry::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_target_classifier_statistics.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_classifier_statistics.len(); index++)
     {
         if(diffserv_target_classifier_statistics[index]->has_operation())
             return true;
@@ -2515,7 +3338,9 @@ bool InterfacesState::Interface::DiffservTargetEntry::has_operation() const
 std::string InterfacesState::Interface::DiffservTargetEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ietf-diffserv-target:diffserv-target-entry" <<"[direction='" <<direction <<"']" <<"[policy-name='" <<policy_name <<"']";
+    path_buffer << "ietf-diffserv-target:diffserv-target-entry";
+    ADD_KEY_TOKEN(direction, "direction");
+    ADD_KEY_TOKEN(policy_name, "policy-name");
     return path_buffer.str();
 }
 
@@ -2536,7 +3361,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::DiffservTargetEntry::get_chi
     {
         auto c = std::make_shared<InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics>();
         c->parent = this;
-        diffserv_target_classifier_statistics.push_back(c);
+        diffserv_target_classifier_statistics.append(c);
         return c;
     }
 
@@ -2548,7 +3373,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Diffs
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffserv_target_classifier_statistics)
+    for (auto c : diffserv_target_classifier_statistics.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2598,14 +3423,15 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
     :
     classifier_entry_name{YType::str, "classifier-entry-name"},
     parent_path{YType::str, "parent-path"}
-    	,
+        ,
     classifier_entry_statistics(std::make_shared<InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics>())
-	,queuing_statistics(std::make_shared<InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>())
+    , meter_statistics(this, {"meter_id"})
+    , queuing_statistics(std::make_shared<InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>())
 {
     classifier_entry_statistics->parent = this;
     queuing_statistics->parent = this;
 
-    yang_name = "diffserv-target-classifier-statistics"; yang_parent_name = "diffserv-target-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "diffserv-target-classifier-statistics"; yang_parent_name = "diffserv-target-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::~DiffservTargetClassifierStatistics()
@@ -2614,7 +3440,8 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::has_data() const
 {
-    for (std::size_t index=0; index<meter_statistics.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<meter_statistics.len(); index++)
     {
         if(meter_statistics[index]->has_data())
             return true;
@@ -2627,7 +3454,7 @@ bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<meter_statistics.size(); index++)
+    for (std::size_t index=0; index<meter_statistics.len(); index++)
     {
         if(meter_statistics[index]->has_operation())
             return true;
@@ -2642,7 +3469,9 @@ bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
 std::string InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffserv-target-classifier-statistics" <<"[classifier-entry-name='" <<classifier_entry_name <<"']" <<"[parent-path='" <<parent_path <<"']";
+    path_buffer << "diffserv-target-classifier-statistics";
+    ADD_KEY_TOKEN(classifier_entry_name, "classifier-entry-name");
+    ADD_KEY_TOKEN(parent_path, "parent-path");
     return path_buffer.str();
 }
 
@@ -2672,7 +3501,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::DiffservTargetEntry::Diffser
     {
         auto c = std::make_shared<InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics>();
         c->parent = this;
-        meter_statistics.push_back(c);
+        meter_statistics.append(c);
         return c;
     }
 
@@ -2698,7 +3527,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Diffs
     }
 
     count = 0;
-    for (auto const & c : meter_statistics)
+    for (auto c : meter_statistics.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2756,7 +3585,7 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
     classified_rate{YType::uint64, "classified-rate"}
 {
 
-    yang_name = "classifier-entry-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "classifier-entry-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::~ClassifierEntryStatistics()
@@ -2765,6 +3594,7 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return classified_pkts.is_set
 	|| classified_bytes.is_set
 	|| classified_rate.is_set;
@@ -2863,7 +3693,7 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
     meter_failed_bytes{YType::uint64, "meter-failed-bytes"}
 {
 
-    yang_name = "meter-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "meter-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::~MeterStatistics()
@@ -2872,6 +3702,7 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return meter_id.is_set
 	|| meter_succeed_pkts.is_set
 	|| meter_succeed_bytes.is_set
@@ -2892,7 +3723,8 @@ bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
 std::string InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "meter-statistics" <<"[meter-id='" <<meter_id <<"']";
+    path_buffer << "meter-statistics";
+    ADD_KEY_TOKEN(meter_id, "meter-id");
     return path_buffer.str();
 }
 
@@ -2995,12 +3827,12 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
     queue_size_bytes{YType::uint64, "queue-size-bytes"},
     drop_pkts{YType::uint64, "drop-pkts"},
     drop_bytes{YType::uint64, "drop-bytes"}
-    	,
+        ,
     wred_stats(std::make_shared<InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats>())
 {
     wred_stats->parent = this;
 
-    yang_name = "queuing-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queuing-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::~QueuingStatistics()
@@ -3009,6 +3841,7 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return output_pkts.is_set
 	|| output_bytes.is_set
 	|| queue_size_pkts.is_set
@@ -3159,7 +3992,7 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
     early_drop_bytes{YType::uint64, "early-drop-bytes"}
 {
 
-    yang_name = "wred-stats"; yang_parent_name = "queuing-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats"; yang_parent_name = "queuing-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::~WredStats()
@@ -3168,6 +4001,7 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::has_data() const
 {
+    if (is_presence_container) return true;
     return early_drop_pkts.is_set
 	|| early_drop_bytes.is_set;
 }
@@ -3240,772 +4074,6 @@ void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "early-drop-pkts" || name == "early-drop-bytes")
-        return true;
-    return false;
-}
-
-InterfacesState::Interface::Ipv4::Ipv4()
-    :
-    forwarding{YType::boolean, "forwarding"},
-    mtu{YType::uint16, "mtu"}
-{
-
-    yang_name = "ipv4"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfacesState::Interface::Ipv4::~Ipv4()
-{
-}
-
-bool InterfacesState::Interface::Ipv4::has_data() const
-{
-    for (std::size_t index=0; index<address.size(); index++)
-    {
-        if(address[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<neighbor.size(); index++)
-    {
-        if(neighbor[index]->has_data())
-            return true;
-    }
-    return forwarding.is_set
-	|| mtu.is_set;
-}
-
-bool InterfacesState::Interface::Ipv4::has_operation() const
-{
-    for (std::size_t index=0; index<address.size(); index++)
-    {
-        if(address[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<neighbor.size(); index++)
-    {
-        if(neighbor[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(forwarding.yfilter)
-	|| ydk::is_set(mtu.yfilter);
-}
-
-std::string InterfacesState::Interface::Ipv4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ietf-ip:ipv4";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (forwarding.is_set || is_set(forwarding.yfilter)) leaf_name_data.push_back(forwarding.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfacesState::Interface::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address")
-    {
-        auto c = std::make_shared<InterfacesState::Interface::Ipv4::Address>();
-        c->parent = this;
-        address.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "neighbor")
-    {
-        auto c = std::make_shared<InterfacesState::Interface::Ipv4::Neighbor>();
-        c->parent = this;
-        neighbor.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : address)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto const & c : neighbor)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void InterfacesState::Interface::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "forwarding")
-    {
-        forwarding = value;
-        forwarding.value_namespace = name_space;
-        forwarding.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mtu")
-    {
-        mtu = value;
-        mtu.value_namespace = name_space;
-        mtu.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfacesState::Interface::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "forwarding")
-    {
-        forwarding.yfilter = yfilter;
-    }
-    if(value_path == "mtu")
-    {
-        mtu.yfilter = yfilter;
-    }
-}
-
-bool InterfacesState::Interface::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address" || name == "neighbor" || name == "forwarding" || name == "mtu")
-        return true;
-    return false;
-}
-
-InterfacesState::Interface::Ipv4::Address::Address()
-    :
-    ip{YType::str, "ip"},
-    prefix_length{YType::uint8, "prefix-length"},
-    netmask{YType::str, "netmask"},
-    origin{YType::enumeration, "origin"}
-{
-
-    yang_name = "address"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfacesState::Interface::Ipv4::Address::~Address()
-{
-}
-
-bool InterfacesState::Interface::Ipv4::Address::has_data() const
-{
-    return ip.is_set
-	|| prefix_length.is_set
-	|| netmask.is_set
-	|| origin.is_set;
-}
-
-bool InterfacesState::Interface::Ipv4::Address::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(netmask.yfilter)
-	|| ydk::is_set(origin.yfilter);
-}
-
-std::string InterfacesState::Interface::Ipv4::Address::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address" <<"[ip='" <<ip <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv4::Address::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
-    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfacesState::Interface::Ipv4::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv4::Address::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void InterfacesState::Interface::Ipv4::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "netmask")
-    {
-        netmask = value;
-        netmask.value_namespace = name_space;
-        netmask.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "origin")
-    {
-        origin = value;
-        origin.value_namespace = name_space;
-        origin.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfacesState::Interface::Ipv4::Address::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "netmask")
-    {
-        netmask.yfilter = yfilter;
-    }
-    if(value_path == "origin")
-    {
-        origin.yfilter = yfilter;
-    }
-}
-
-bool InterfacesState::Interface::Ipv4::Address::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "prefix-length" || name == "netmask" || name == "origin")
-        return true;
-    return false;
-}
-
-InterfacesState::Interface::Ipv4::Neighbor::Neighbor()
-    :
-    ip{YType::str, "ip"},
-    link_layer_address{YType::str, "link-layer-address"},
-    origin{YType::enumeration, "origin"}
-{
-
-    yang_name = "neighbor"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfacesState::Interface::Ipv4::Neighbor::~Neighbor()
-{
-}
-
-bool InterfacesState::Interface::Ipv4::Neighbor::has_data() const
-{
-    return ip.is_set
-	|| link_layer_address.is_set
-	|| origin.is_set;
-}
-
-bool InterfacesState::Interface::Ipv4::Neighbor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(link_layer_address.yfilter)
-	|| ydk::is_set(origin.yfilter);
-}
-
-std::string InterfacesState::Interface::Ipv4::Neighbor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[ip='" <<ip <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv4::Neighbor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (link_layer_address.is_set || is_set(link_layer_address.yfilter)) leaf_name_data.push_back(link_layer_address.get_name_leafdata());
-    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfacesState::Interface::Ipv4::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv4::Neighbor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void InterfacesState::Interface::Ipv4::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-layer-address")
-    {
-        link_layer_address = value;
-        link_layer_address.value_namespace = name_space;
-        link_layer_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "origin")
-    {
-        origin = value;
-        origin.value_namespace = name_space;
-        origin.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfacesState::Interface::Ipv4::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "link-layer-address")
-    {
-        link_layer_address.yfilter = yfilter;
-    }
-    if(value_path == "origin")
-    {
-        origin.yfilter = yfilter;
-    }
-}
-
-bool InterfacesState::Interface::Ipv4::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "link-layer-address" || name == "origin")
-        return true;
-    return false;
-}
-
-InterfacesState::Interface::Ipv6::Ipv6()
-    :
-    forwarding{YType::boolean, "forwarding"},
-    mtu{YType::uint32, "mtu"}
-{
-
-    yang_name = "ipv6"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfacesState::Interface::Ipv6::~Ipv6()
-{
-}
-
-bool InterfacesState::Interface::Ipv6::has_data() const
-{
-    for (std::size_t index=0; index<address.size(); index++)
-    {
-        if(address[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<neighbor.size(); index++)
-    {
-        if(neighbor[index]->has_data())
-            return true;
-    }
-    return forwarding.is_set
-	|| mtu.is_set;
-}
-
-bool InterfacesState::Interface::Ipv6::has_operation() const
-{
-    for (std::size_t index=0; index<address.size(); index++)
-    {
-        if(address[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<neighbor.size(); index++)
-    {
-        if(neighbor[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(forwarding.yfilter)
-	|| ydk::is_set(mtu.yfilter);
-}
-
-std::string InterfacesState::Interface::Ipv6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ietf-ip:ipv6";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv6::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (forwarding.is_set || is_set(forwarding.yfilter)) leaf_name_data.push_back(forwarding.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfacesState::Interface::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address")
-    {
-        auto c = std::make_shared<InterfacesState::Interface::Ipv6::Address>();
-        c->parent = this;
-        address.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "neighbor")
-    {
-        auto c = std::make_shared<InterfacesState::Interface::Ipv6::Neighbor>();
-        c->parent = this;
-        neighbor.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv6::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : address)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto const & c : neighbor)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void InterfacesState::Interface::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "forwarding")
-    {
-        forwarding = value;
-        forwarding.value_namespace = name_space;
-        forwarding.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mtu")
-    {
-        mtu = value;
-        mtu.value_namespace = name_space;
-        mtu.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfacesState::Interface::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "forwarding")
-    {
-        forwarding.yfilter = yfilter;
-    }
-    if(value_path == "mtu")
-    {
-        mtu.yfilter = yfilter;
-    }
-}
-
-bool InterfacesState::Interface::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address" || name == "neighbor" || name == "forwarding" || name == "mtu")
-        return true;
-    return false;
-}
-
-InterfacesState::Interface::Ipv6::Address::Address()
-    :
-    ip{YType::str, "ip"},
-    prefix_length{YType::uint8, "prefix-length"},
-    origin{YType::enumeration, "origin"},
-    status{YType::enumeration, "status"}
-{
-
-    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfacesState::Interface::Ipv6::Address::~Address()
-{
-}
-
-bool InterfacesState::Interface::Ipv6::Address::has_data() const
-{
-    return ip.is_set
-	|| prefix_length.is_set
-	|| origin.is_set
-	|| status.is_set;
-}
-
-bool InterfacesState::Interface::Ipv6::Address::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(origin.yfilter)
-	|| ydk::is_set(status.yfilter);
-}
-
-std::string InterfacesState::Interface::Ipv6::Address::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address" <<"[ip='" <<ip <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv6::Address::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
-    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfacesState::Interface::Ipv6::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv6::Address::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void InterfacesState::Interface::Ipv6::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "origin")
-    {
-        origin = value;
-        origin.value_namespace = name_space;
-        origin.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status")
-    {
-        status = value;
-        status.value_namespace = name_space;
-        status.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfacesState::Interface::Ipv6::Address::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "origin")
-    {
-        origin.yfilter = yfilter;
-    }
-    if(value_path == "status")
-    {
-        status.yfilter = yfilter;
-    }
-}
-
-bool InterfacesState::Interface::Ipv6::Address::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "prefix-length" || name == "origin" || name == "status")
-        return true;
-    return false;
-}
-
-InterfacesState::Interface::Ipv6::Neighbor::Neighbor()
-    :
-    ip{YType::str, "ip"},
-    link_layer_address{YType::str, "link-layer-address"},
-    origin{YType::enumeration, "origin"},
-    is_router{YType::empty, "is-router"},
-    state{YType::enumeration, "state"}
-{
-
-    yang_name = "neighbor"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfacesState::Interface::Ipv6::Neighbor::~Neighbor()
-{
-}
-
-bool InterfacesState::Interface::Ipv6::Neighbor::has_data() const
-{
-    return ip.is_set
-	|| link_layer_address.is_set
-	|| origin.is_set
-	|| is_router.is_set
-	|| state.is_set;
-}
-
-bool InterfacesState::Interface::Ipv6::Neighbor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(link_layer_address.yfilter)
-	|| ydk::is_set(origin.yfilter)
-	|| ydk::is_set(is_router.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string InterfacesState::Interface::Ipv6::Neighbor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[ip='" <<ip <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv6::Neighbor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (link_layer_address.is_set || is_set(link_layer_address.yfilter)) leaf_name_data.push_back(link_layer_address.get_name_leafdata());
-    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
-    if (is_router.is_set || is_set(is_router.yfilter)) leaf_name_data.push_back(is_router.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfacesState::Interface::Ipv6::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv6::Neighbor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void InterfacesState::Interface::Ipv6::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-layer-address")
-    {
-        link_layer_address = value;
-        link_layer_address.value_namespace = name_space;
-        link_layer_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "origin")
-    {
-        origin = value;
-        origin.value_namespace = name_space;
-        origin.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-router")
-    {
-        is_router = value;
-        is_router.value_namespace = name_space;
-        is_router.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfacesState::Interface::Ipv6::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "link-layer-address")
-    {
-        link_layer_address.yfilter = yfilter;
-    }
-    if(value_path == "origin")
-    {
-        origin.yfilter = yfilter;
-    }
-    if(value_path == "is-router")
-    {
-        is_router.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool InterfacesState::Interface::Ipv6::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "link-layer-address" || name == "origin" || name == "is-router" || name == "state")
         return true;
     return false;
 }

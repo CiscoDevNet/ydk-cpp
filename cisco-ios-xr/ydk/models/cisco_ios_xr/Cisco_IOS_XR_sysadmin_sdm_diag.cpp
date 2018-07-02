@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_sysadmin_sdm_diag {
 Diagnostic::Diagnostic()
     :
     monitor(std::make_shared<Diagnostic::Monitor>())
-	,schedule(std::make_shared<Diagnostic::Schedule>())
-	,status(std::make_shared<Diagnostic::Status>())
-	,diag_start(std::make_shared<Diagnostic::DiagStart>())
-	,diag_stop(std::make_shared<Diagnostic::DiagStop>())
-	,content(std::make_shared<Diagnostic::Content>())
-	,result(std::make_shared<Diagnostic::Result>())
+    , schedule(std::make_shared<Diagnostic::Schedule>())
+    , status(std::make_shared<Diagnostic::Status>())
+    , diag_start(std::make_shared<Diagnostic::DiagStart>())
+    , diag_stop(std::make_shared<Diagnostic::DiagStop>())
+    , content(std::make_shared<Diagnostic::Content>())
+    , result(std::make_shared<Diagnostic::Result>())
 {
     monitor->parent = this;
     schedule->parent = this;
@@ -29,7 +29,7 @@ Diagnostic::Diagnostic()
     content->parent = this;
     result->parent = this;
 
-    yang_name = "diagnostic"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sdm-diag"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "diagnostic"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sdm-diag"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Diagnostic::~Diagnostic()
@@ -38,6 +38,7 @@ Diagnostic::~Diagnostic()
 
 bool Diagnostic::has_data() const
 {
+    if (is_presence_container) return true;
     return (monitor !=  nullptr && monitor->has_data())
 	|| (schedule !=  nullptr && schedule->has_data())
 	|| (status !=  nullptr && status->has_data())
@@ -228,14 +229,14 @@ bool Diagnostic::has_leaf_or_child_of_name(const std::string & name) const
 Diagnostic::Monitor::Monitor()
     :
     rejected(std::make_shared<Diagnostic::Monitor::Rejected>())
-	,interval(std::make_shared<Diagnostic::Monitor::Interval>())
-	,threshold(std::make_shared<Diagnostic::Monitor::Threshold>())
+    , interval(std::make_shared<Diagnostic::Monitor::Interval>())
+    , threshold(std::make_shared<Diagnostic::Monitor::Threshold>())
 {
     rejected->parent = this;
     interval->parent = this;
     threshold->parent = this;
 
-    yang_name = "monitor"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "monitor"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Monitor::~Monitor()
@@ -244,6 +245,7 @@ Diagnostic::Monitor::~Monitor()
 
 bool Diagnostic::Monitor::has_data() const
 {
+    if (is_presence_container) return true;
     return (rejected !=  nullptr && rejected->has_data())
 	|| (interval !=  nullptr && interval->has_data())
 	|| (threshold !=  nullptr && threshold->has_data());
@@ -350,9 +352,11 @@ bool Diagnostic::Monitor::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Diagnostic::Monitor::Rejected::Rejected()
+    :
+    location(this, {"loc"})
 {
 
-    yang_name = "rejected"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rejected"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Monitor::Rejected::~Rejected()
@@ -361,7 +365,8 @@ Diagnostic::Monitor::Rejected::~Rejected()
 
 bool Diagnostic::Monitor::Rejected::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -371,7 +376,7 @@ bool Diagnostic::Monitor::Rejected::has_data() const
 
 bool Diagnostic::Monitor::Rejected::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -408,7 +413,7 @@ std::shared_ptr<Entity> Diagnostic::Monitor::Rejected::get_child_by_name(const s
     {
         auto c = std::make_shared<Diagnostic::Monitor::Rejected::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -420,7 +425,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Monitor::Rejected::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -449,9 +454,11 @@ bool Diagnostic::Monitor::Rejected::has_leaf_or_child_of_name(const std::string 
 Diagnostic::Monitor::Rejected::Location::Location()
     :
     loc{YType::str, "loc"}
+        ,
+    test(this, {"test_id", "run"})
 {
 
-    yang_name = "location"; yang_parent_name = "rejected"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "rejected"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Monitor::Rejected::Location::~Location()
@@ -460,7 +467,8 @@ Diagnostic::Monitor::Rejected::Location::~Location()
 
 bool Diagnostic::Monitor::Rejected::Location::has_data() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_data())
             return true;
@@ -470,7 +478,7 @@ bool Diagnostic::Monitor::Rejected::Location::has_data() const
 
 bool Diagnostic::Monitor::Rejected::Location::has_operation() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_operation())
             return true;
@@ -489,7 +497,8 @@ std::string Diagnostic::Monitor::Rejected::Location::get_absolute_path() const
 std::string Diagnostic::Monitor::Rejected::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc='" <<loc <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc, "loc");
     return path_buffer.str();
 }
 
@@ -509,7 +518,7 @@ std::shared_ptr<Entity> Diagnostic::Monitor::Rejected::Location::get_child_by_na
     {
         auto c = std::make_shared<Diagnostic::Monitor::Rejected::Location::Test>();
         c->parent = this;
-        test.push_back(c);
+        test.append(c);
         return c;
     }
 
@@ -521,7 +530,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Monitor::Rejected::Lo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : test)
+    for (auto c : test.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -563,7 +572,7 @@ Diagnostic::Monitor::Rejected::Location::Test::Test()
     run{YType::enumeration, "run"}
 {
 
-    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::Monitor::Rejected::Location::Test::~Test()
@@ -572,6 +581,7 @@ Diagnostic::Monitor::Rejected::Location::Test::~Test()
 
 bool Diagnostic::Monitor::Rejected::Location::Test::has_data() const
 {
+    if (is_presence_container) return true;
     return test_id.is_set
 	|| run.is_set;
 }
@@ -586,7 +596,9 @@ bool Diagnostic::Monitor::Rejected::Location::Test::has_operation() const
 std::string Diagnostic::Monitor::Rejected::Location::Test::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "test" <<"[test_id='" <<test_id <<"']" <<"[run='" <<run <<"']";
+    path_buffer << "test";
+    ADD_KEY_TOKEN(test_id, "test_id");
+    ADD_KEY_TOKEN(run, "run");
     return path_buffer.str();
 }
 
@@ -649,9 +661,11 @@ bool Diagnostic::Monitor::Rejected::Location::Test::has_leaf_or_child_of_name(co
 }
 
 Diagnostic::Monitor::Interval::Interval()
+    :
+    location(this, {"loc"})
 {
 
-    yang_name = "interval"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interval"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Monitor::Interval::~Interval()
@@ -660,7 +674,8 @@ Diagnostic::Monitor::Interval::~Interval()
 
 bool Diagnostic::Monitor::Interval::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -670,7 +685,7 @@ bool Diagnostic::Monitor::Interval::has_data() const
 
 bool Diagnostic::Monitor::Interval::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -707,7 +722,7 @@ std::shared_ptr<Entity> Diagnostic::Monitor::Interval::get_child_by_name(const s
     {
         auto c = std::make_shared<Diagnostic::Monitor::Interval::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -719,7 +734,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Monitor::Interval::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -748,9 +763,11 @@ bool Diagnostic::Monitor::Interval::has_leaf_or_child_of_name(const std::string 
 Diagnostic::Monitor::Interval::Location::Location()
     :
     loc{YType::str, "loc"}
+        ,
+    test(this, {"test_id"})
 {
 
-    yang_name = "location"; yang_parent_name = "interval"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "interval"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Monitor::Interval::Location::~Location()
@@ -759,7 +776,8 @@ Diagnostic::Monitor::Interval::Location::~Location()
 
 bool Diagnostic::Monitor::Interval::Location::has_data() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_data())
             return true;
@@ -769,7 +787,7 @@ bool Diagnostic::Monitor::Interval::Location::has_data() const
 
 bool Diagnostic::Monitor::Interval::Location::has_operation() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_operation())
             return true;
@@ -788,7 +806,8 @@ std::string Diagnostic::Monitor::Interval::Location::get_absolute_path() const
 std::string Diagnostic::Monitor::Interval::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc='" <<loc <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc, "loc");
     return path_buffer.str();
 }
 
@@ -808,7 +827,7 @@ std::shared_ptr<Entity> Diagnostic::Monitor::Interval::Location::get_child_by_na
     {
         auto c = std::make_shared<Diagnostic::Monitor::Interval::Location::Test>();
         c->parent = this;
-        test.push_back(c);
+        test.append(c);
         return c;
     }
 
@@ -820,7 +839,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Monitor::Interval::Lo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : test)
+    for (auto c : test.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -863,7 +882,7 @@ Diagnostic::Monitor::Interval::Location::Test::Test()
     time{YType::str, "time"}
 {
 
-    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::Monitor::Interval::Location::Test::~Test()
@@ -872,6 +891,7 @@ Diagnostic::Monitor::Interval::Location::Test::~Test()
 
 bool Diagnostic::Monitor::Interval::Location::Test::has_data() const
 {
+    if (is_presence_container) return true;
     return test_id.is_set
 	|| days.is_set
 	|| time.is_set;
@@ -888,7 +908,8 @@ bool Diagnostic::Monitor::Interval::Location::Test::has_operation() const
 std::string Diagnostic::Monitor::Interval::Location::Test::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "test" <<"[test_id='" <<test_id <<"']";
+    path_buffer << "test";
+    ADD_KEY_TOKEN(test_id, "test_id");
     return path_buffer.str();
 }
 
@@ -962,9 +983,11 @@ bool Diagnostic::Monitor::Interval::Location::Test::has_leaf_or_child_of_name(co
 }
 
 Diagnostic::Monitor::Threshold::Threshold()
+    :
+    location(this, {"loc"})
 {
 
-    yang_name = "threshold"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "threshold"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Monitor::Threshold::~Threshold()
@@ -973,7 +996,8 @@ Diagnostic::Monitor::Threshold::~Threshold()
 
 bool Diagnostic::Monitor::Threshold::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -983,7 +1007,7 @@ bool Diagnostic::Monitor::Threshold::has_data() const
 
 bool Diagnostic::Monitor::Threshold::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1020,7 +1044,7 @@ std::shared_ptr<Entity> Diagnostic::Monitor::Threshold::get_child_by_name(const 
     {
         auto c = std::make_shared<Diagnostic::Monitor::Threshold::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1032,7 +1056,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Monitor::Threshold::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1061,9 +1085,11 @@ bool Diagnostic::Monitor::Threshold::has_leaf_or_child_of_name(const std::string
 Diagnostic::Monitor::Threshold::Location::Location()
     :
     loc{YType::str, "loc"}
+        ,
+    test(this, {"test_id"})
 {
 
-    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Monitor::Threshold::Location::~Location()
@@ -1072,7 +1098,8 @@ Diagnostic::Monitor::Threshold::Location::~Location()
 
 bool Diagnostic::Monitor::Threshold::Location::has_data() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_data())
             return true;
@@ -1082,7 +1109,7 @@ bool Diagnostic::Monitor::Threshold::Location::has_data() const
 
 bool Diagnostic::Monitor::Threshold::Location::has_operation() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_operation())
             return true;
@@ -1101,7 +1128,8 @@ std::string Diagnostic::Monitor::Threshold::Location::get_absolute_path() const
 std::string Diagnostic::Monitor::Threshold::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc='" <<loc <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc, "loc");
     return path_buffer.str();
 }
 
@@ -1121,7 +1149,7 @@ std::shared_ptr<Entity> Diagnostic::Monitor::Threshold::Location::get_child_by_n
     {
         auto c = std::make_shared<Diagnostic::Monitor::Threshold::Location::Test>();
         c->parent = this;
-        test.push_back(c);
+        test.append(c);
         return c;
     }
 
@@ -1133,7 +1161,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Monitor::Threshold::L
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : test)
+    for (auto c : test.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1175,7 +1203,7 @@ Diagnostic::Monitor::Threshold::Location::Test::Test()
     failure_count{YType::int32, "failure-count"}
 {
 
-    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::Monitor::Threshold::Location::Test::~Test()
@@ -1184,6 +1212,7 @@ Diagnostic::Monitor::Threshold::Location::Test::~Test()
 
 bool Diagnostic::Monitor::Threshold::Location::Test::has_data() const
 {
+    if (is_presence_container) return true;
     return test_id.is_set
 	|| failure_count.is_set;
 }
@@ -1198,7 +1227,8 @@ bool Diagnostic::Monitor::Threshold::Location::Test::has_operation() const
 std::string Diagnostic::Monitor::Threshold::Location::Test::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "test" <<"[test_id='" <<test_id <<"']";
+    path_buffer << "test";
+    ADD_KEY_TOKEN(test_id, "test_id");
     return path_buffer.str();
 }
 
@@ -1266,7 +1296,7 @@ Diagnostic::Schedule::Schedule()
 {
     start->parent = this;
 
-    yang_name = "schedule"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "schedule"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Schedule::~Schedule()
@@ -1275,6 +1305,7 @@ Diagnostic::Schedule::~Schedule()
 
 bool Diagnostic::Schedule::has_data() const
 {
+    if (is_presence_container) return true;
     return (start !=  nullptr && start->has_data());
 }
 
@@ -1349,9 +1380,11 @@ bool Diagnostic::Schedule::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 Diagnostic::Schedule::Start::Start()
+    :
+    location(this, {"loc"})
 {
 
-    yang_name = "start"; yang_parent_name = "schedule"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "start"; yang_parent_name = "schedule"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Schedule::Start::~Start()
@@ -1360,7 +1393,8 @@ Diagnostic::Schedule::Start::~Start()
 
 bool Diagnostic::Schedule::Start::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1370,7 +1404,7 @@ bool Diagnostic::Schedule::Start::has_data() const
 
 bool Diagnostic::Schedule::Start::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1407,7 +1441,7 @@ std::shared_ptr<Entity> Diagnostic::Schedule::Start::get_child_by_name(const std
     {
         auto c = std::make_shared<Diagnostic::Schedule::Start::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1419,7 +1453,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Schedule::Start::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1448,9 +1482,11 @@ bool Diagnostic::Schedule::Start::has_leaf_or_child_of_name(const std::string & 
 Diagnostic::Schedule::Start::Location::Location()
     :
     loc{YType::str, "loc"}
+        ,
+    test(this, {"test_id"})
 {
 
-    yang_name = "location"; yang_parent_name = "start"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "start"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Schedule::Start::Location::~Location()
@@ -1459,7 +1495,8 @@ Diagnostic::Schedule::Start::Location::~Location()
 
 bool Diagnostic::Schedule::Start::Location::has_data() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_data())
             return true;
@@ -1469,7 +1506,7 @@ bool Diagnostic::Schedule::Start::Location::has_data() const
 
 bool Diagnostic::Schedule::Start::Location::has_operation() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_operation())
             return true;
@@ -1488,7 +1525,8 @@ std::string Diagnostic::Schedule::Start::Location::get_absolute_path() const
 std::string Diagnostic::Schedule::Start::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc='" <<loc <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc, "loc");
     return path_buffer.str();
 }
 
@@ -1508,7 +1546,7 @@ std::shared_ptr<Entity> Diagnostic::Schedule::Start::Location::get_child_by_name
     {
         auto c = std::make_shared<Diagnostic::Schedule::Start::Location::Test>();
         c->parent = this;
-        test.push_back(c);
+        test.append(c);
         return c;
     }
 
@@ -1520,7 +1558,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Schedule::Start::Loca
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : test)
+    for (auto c : test.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1559,9 +1597,13 @@ bool Diagnostic::Schedule::Start::Location::has_leaf_or_child_of_name(const std:
 Diagnostic::Schedule::Start::Location::Test::Test()
     :
     test_id{YType::str, "test_id"}
+        ,
+    daily(this, {"hour_min"})
+    , on(this, {"month", "day_of_month", "year", "hour_min"})
+    , weekly(this, {"daysofweek", "hour_min"})
 {
 
-    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::Schedule::Start::Location::Test::~Test()
@@ -1570,17 +1612,18 @@ Diagnostic::Schedule::Start::Location::Test::~Test()
 
 bool Diagnostic::Schedule::Start::Location::Test::has_data() const
 {
-    for (std::size_t index=0; index<daily.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<daily.len(); index++)
     {
         if(daily[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<on.size(); index++)
+    for (std::size_t index=0; index<on.len(); index++)
     {
         if(on[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<weekly.size(); index++)
+    for (std::size_t index=0; index<weekly.len(); index++)
     {
         if(weekly[index]->has_data())
             return true;
@@ -1590,17 +1633,17 @@ bool Diagnostic::Schedule::Start::Location::Test::has_data() const
 
 bool Diagnostic::Schedule::Start::Location::Test::has_operation() const
 {
-    for (std::size_t index=0; index<daily.size(); index++)
+    for (std::size_t index=0; index<daily.len(); index++)
     {
         if(daily[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<on.size(); index++)
+    for (std::size_t index=0; index<on.len(); index++)
     {
         if(on[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<weekly.size(); index++)
+    for (std::size_t index=0; index<weekly.len(); index++)
     {
         if(weekly[index]->has_operation())
             return true;
@@ -1612,7 +1655,8 @@ bool Diagnostic::Schedule::Start::Location::Test::has_operation() const
 std::string Diagnostic::Schedule::Start::Location::Test::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "test" <<"[test_id='" <<test_id <<"']";
+    path_buffer << "test";
+    ADD_KEY_TOKEN(test_id, "test_id");
     return path_buffer.str();
 }
 
@@ -1632,7 +1676,7 @@ std::shared_ptr<Entity> Diagnostic::Schedule::Start::Location::Test::get_child_b
     {
         auto c = std::make_shared<Diagnostic::Schedule::Start::Location::Test::Daily>();
         c->parent = this;
-        daily.push_back(c);
+        daily.append(c);
         return c;
     }
 
@@ -1640,7 +1684,7 @@ std::shared_ptr<Entity> Diagnostic::Schedule::Start::Location::Test::get_child_b
     {
         auto c = std::make_shared<Diagnostic::Schedule::Start::Location::Test::On>();
         c->parent = this;
-        on.push_back(c);
+        on.append(c);
         return c;
     }
 
@@ -1648,7 +1692,7 @@ std::shared_ptr<Entity> Diagnostic::Schedule::Start::Location::Test::get_child_b
     {
         auto c = std::make_shared<Diagnostic::Schedule::Start::Location::Test::Weekly>();
         c->parent = this;
-        weekly.push_back(c);
+        weekly.append(c);
         return c;
     }
 
@@ -1660,7 +1704,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Schedule::Start::Loca
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : daily)
+    for (auto c : daily.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1669,7 +1713,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Schedule::Start::Loca
     }
 
     count = 0;
-    for (auto const & c : on)
+    for (auto c : on.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1678,7 +1722,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Schedule::Start::Loca
     }
 
     count = 0;
-    for (auto const & c : weekly)
+    for (auto c : weekly.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1719,7 +1763,7 @@ Diagnostic::Schedule::Start::Location::Test::Daily::Daily()
     hour_min{YType::str, "hour_min"}
 {
 
-    yang_name = "daily"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "daily"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::Schedule::Start::Location::Test::Daily::~Daily()
@@ -1728,6 +1772,7 @@ Diagnostic::Schedule::Start::Location::Test::Daily::~Daily()
 
 bool Diagnostic::Schedule::Start::Location::Test::Daily::has_data() const
 {
+    if (is_presence_container) return true;
     return hour_min.is_set;
 }
 
@@ -1740,7 +1785,8 @@ bool Diagnostic::Schedule::Start::Location::Test::Daily::has_operation() const
 std::string Diagnostic::Schedule::Start::Location::Test::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "daily" <<"[hour_min='" <<hour_min <<"']";
+    path_buffer << "daily";
+    ADD_KEY_TOKEN(hour_min, "hour_min");
     return path_buffer.str();
 }
 
@@ -1799,7 +1845,7 @@ Diagnostic::Schedule::Start::Location::Test::On::On()
     hour_min{YType::str, "hour_min"}
 {
 
-    yang_name = "on"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "on"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::Schedule::Start::Location::Test::On::~On()
@@ -1808,6 +1854,7 @@ Diagnostic::Schedule::Start::Location::Test::On::~On()
 
 bool Diagnostic::Schedule::Start::Location::Test::On::has_data() const
 {
+    if (is_presence_container) return true;
     return month.is_set
 	|| day_of_month.is_set
 	|| year.is_set
@@ -1826,7 +1873,11 @@ bool Diagnostic::Schedule::Start::Location::Test::On::has_operation() const
 std::string Diagnostic::Schedule::Start::Location::Test::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "on" <<"[month='" <<month <<"']" <<"[day_of_month='" <<day_of_month <<"']" <<"[year='" <<year <<"']" <<"[hour_min='" <<hour_min <<"']";
+    path_buffer << "on";
+    ADD_KEY_TOKEN(month, "month");
+    ADD_KEY_TOKEN(day_of_month, "day_of_month");
+    ADD_KEY_TOKEN(year, "year");
+    ADD_KEY_TOKEN(hour_min, "hour_min");
     return path_buffer.str();
 }
 
@@ -1916,7 +1967,7 @@ Diagnostic::Schedule::Start::Location::Test::Weekly::Weekly()
     hour_min{YType::str, "hour_min"}
 {
 
-    yang_name = "weekly"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weekly"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::Schedule::Start::Location::Test::Weekly::~Weekly()
@@ -1925,6 +1976,7 @@ Diagnostic::Schedule::Start::Location::Test::Weekly::~Weekly()
 
 bool Diagnostic::Schedule::Start::Location::Test::Weekly::has_data() const
 {
+    if (is_presence_container) return true;
     return daysofweek.is_set
 	|| hour_min.is_set;
 }
@@ -1939,7 +1991,9 @@ bool Diagnostic::Schedule::Start::Location::Test::Weekly::has_operation() const
 std::string Diagnostic::Schedule::Start::Location::Test::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "weekly" <<"[daysofweek='" <<daysofweek <<"']" <<"[hour_min='" <<hour_min <<"']";
+    path_buffer << "weekly";
+    ADD_KEY_TOKEN(daysofweek, "daysofweek");
+    ADD_KEY_TOKEN(hour_min, "hour_min");
     return path_buffer.str();
 }
 
@@ -2002,9 +2056,11 @@ bool Diagnostic::Schedule::Start::Location::Test::Weekly::has_leaf_or_child_of_n
 }
 
 Diagnostic::Status::Status()
+    :
+    location_index(this, {"data_idx"})
 {
 
-    yang_name = "status"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "status"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Status::~Status()
@@ -2013,7 +2069,8 @@ Diagnostic::Status::~Status()
 
 bool Diagnostic::Status::has_data() const
 {
-    for (std::size_t index=0; index<location_index.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location_index.len(); index++)
     {
         if(location_index[index]->has_data())
             return true;
@@ -2023,7 +2080,7 @@ bool Diagnostic::Status::has_data() const
 
 bool Diagnostic::Status::has_operation() const
 {
-    for (std::size_t index=0; index<location_index.size(); index++)
+    for (std::size_t index=0; index<location_index.len(); index++)
     {
         if(location_index[index]->has_operation())
             return true;
@@ -2060,7 +2117,7 @@ std::shared_ptr<Entity> Diagnostic::Status::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Diagnostic::Status::LocationIndex>();
         c->parent = this;
-        location_index.push_back(c);
+        location_index.append(c);
         return c;
     }
 
@@ -2072,7 +2129,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Status::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location_index)
+    for (auto c : location_index.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2105,7 +2162,7 @@ Diagnostic::Status::LocationIndex::LocationIndex()
     curr_running_tst_runby{YType::str, "curr_running_tst_runby"}
 {
 
-    yang_name = "location_index"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location_index"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Status::LocationIndex::~LocationIndex()
@@ -2114,6 +2171,7 @@ Diagnostic::Status::LocationIndex::~LocationIndex()
 
 bool Diagnostic::Status::LocationIndex::has_data() const
 {
+    if (is_presence_container) return true;
     return data_idx.is_set
 	|| description.is_set
 	|| curr_running_tst_runby.is_set;
@@ -2137,7 +2195,8 @@ std::string Diagnostic::Status::LocationIndex::get_absolute_path() const
 std::string Diagnostic::Status::LocationIndex::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location_index" <<"[data_idx='" <<data_idx <<"']";
+    path_buffer << "location_index";
+    ADD_KEY_TOKEN(data_idx, "data_idx");
     return path_buffer.str();
 }
 
@@ -2211,9 +2270,11 @@ bool Diagnostic::Status::LocationIndex::has_leaf_or_child_of_name(const std::str
 }
 
 Diagnostic::DiagStart::DiagStart()
+    :
+    location(this, {"loc"})
 {
 
-    yang_name = "diag_start"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diag_start"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::DiagStart::~DiagStart()
@@ -2222,7 +2283,8 @@ Diagnostic::DiagStart::~DiagStart()
 
 bool Diagnostic::DiagStart::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2232,7 +2294,7 @@ bool Diagnostic::DiagStart::has_data() const
 
 bool Diagnostic::DiagStart::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2269,7 +2331,7 @@ std::shared_ptr<Entity> Diagnostic::DiagStart::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Diagnostic::DiagStart::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2281,7 +2343,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::DiagStart::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2311,9 +2373,11 @@ Diagnostic::DiagStart::Location::Location()
     :
     loc{YType::str, "loc"},
     description{YType::str, "description"}
+        ,
+    test(this, {"test_type"})
 {
 
-    yang_name = "location"; yang_parent_name = "diag_start"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "diag_start"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::DiagStart::Location::~Location()
@@ -2322,7 +2386,8 @@ Diagnostic::DiagStart::Location::~Location()
 
 bool Diagnostic::DiagStart::Location::has_data() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_data())
             return true;
@@ -2333,7 +2398,7 @@ bool Diagnostic::DiagStart::Location::has_data() const
 
 bool Diagnostic::DiagStart::Location::has_operation() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_operation())
             return true;
@@ -2353,7 +2418,8 @@ std::string Diagnostic::DiagStart::Location::get_absolute_path() const
 std::string Diagnostic::DiagStart::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc='" <<loc <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc, "loc");
     return path_buffer.str();
 }
 
@@ -2374,7 +2440,7 @@ std::shared_ptr<Entity> Diagnostic::DiagStart::Location::get_child_by_name(const
     {
         auto c = std::make_shared<Diagnostic::DiagStart::Location::Test>();
         c->parent = this;
-        test.push_back(c);
+        test.append(c);
         return c;
     }
 
@@ -2386,7 +2452,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::DiagStart::Location::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : test)
+    for (auto c : test.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2438,7 +2504,7 @@ Diagnostic::DiagStart::Location::Test::Test()
     description{YType::str, "description"}
 {
 
-    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::DiagStart::Location::Test::~Test()
@@ -2447,6 +2513,7 @@ Diagnostic::DiagStart::Location::Test::~Test()
 
 bool Diagnostic::DiagStart::Location::Test::has_data() const
 {
+    if (is_presence_container) return true;
     return test_type.is_set
 	|| description.is_set;
 }
@@ -2461,7 +2528,8 @@ bool Diagnostic::DiagStart::Location::Test::has_operation() const
 std::string Diagnostic::DiagStart::Location::Test::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "test" <<"[test_type='" <<test_type <<"']";
+    path_buffer << "test";
+    ADD_KEY_TOKEN(test_type, "test_type");
     return path_buffer.str();
 }
 
@@ -2524,9 +2592,11 @@ bool Diagnostic::DiagStart::Location::Test::has_leaf_or_child_of_name(const std:
 }
 
 Diagnostic::DiagStop::DiagStop()
+    :
+    location(this, {"loc"})
 {
 
-    yang_name = "diag_stop"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diag_stop"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::DiagStop::~DiagStop()
@@ -2535,7 +2605,8 @@ Diagnostic::DiagStop::~DiagStop()
 
 bool Diagnostic::DiagStop::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2545,7 +2616,7 @@ bool Diagnostic::DiagStop::has_data() const
 
 bool Diagnostic::DiagStop::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2582,7 +2653,7 @@ std::shared_ptr<Entity> Diagnostic::DiagStop::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Diagnostic::DiagStop::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2594,7 +2665,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::DiagStop::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2624,9 +2695,11 @@ Diagnostic::DiagStop::Location::Location()
     :
     loc{YType::str, "loc"},
     description{YType::str, "description"}
+        ,
+    test(this, {"test_type"})
 {
 
-    yang_name = "location"; yang_parent_name = "diag_stop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "diag_stop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::DiagStop::Location::~Location()
@@ -2635,7 +2708,8 @@ Diagnostic::DiagStop::Location::~Location()
 
 bool Diagnostic::DiagStop::Location::has_data() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_data())
             return true;
@@ -2646,7 +2720,7 @@ bool Diagnostic::DiagStop::Location::has_data() const
 
 bool Diagnostic::DiagStop::Location::has_operation() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_operation())
             return true;
@@ -2666,7 +2740,8 @@ std::string Diagnostic::DiagStop::Location::get_absolute_path() const
 std::string Diagnostic::DiagStop::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc='" <<loc <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc, "loc");
     return path_buffer.str();
 }
 
@@ -2687,7 +2762,7 @@ std::shared_ptr<Entity> Diagnostic::DiagStop::Location::get_child_by_name(const 
     {
         auto c = std::make_shared<Diagnostic::DiagStop::Location::Test>();
         c->parent = this;
-        test.push_back(c);
+        test.append(c);
         return c;
     }
 
@@ -2699,7 +2774,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::DiagStop::Location::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : test)
+    for (auto c : test.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2751,7 +2826,7 @@ Diagnostic::DiagStop::Location::Test::Test()
     description{YType::str, "description"}
 {
 
-    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::DiagStop::Location::Test::~Test()
@@ -2760,6 +2835,7 @@ Diagnostic::DiagStop::Location::Test::~Test()
 
 bool Diagnostic::DiagStop::Location::Test::has_data() const
 {
+    if (is_presence_container) return true;
     return test_type.is_set
 	|| description.is_set;
 }
@@ -2774,7 +2850,8 @@ bool Diagnostic::DiagStop::Location::Test::has_operation() const
 std::string Diagnostic::DiagStop::Location::Test::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "test" <<"[test_type='" <<test_type <<"']";
+    path_buffer << "test";
+    ADD_KEY_TOKEN(test_type, "test_type");
     return path_buffer.str();
 }
 
@@ -2837,9 +2914,11 @@ bool Diagnostic::DiagStop::Location::Test::has_leaf_or_child_of_name(const std::
 }
 
 Diagnostic::Content::Content()
+    :
+    location(this, {"loc"})
 {
 
-    yang_name = "content"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "content"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Content::~Content()
@@ -2848,7 +2927,8 @@ Diagnostic::Content::~Content()
 
 bool Diagnostic::Content::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2858,7 +2938,7 @@ bool Diagnostic::Content::has_data() const
 
 bool Diagnostic::Content::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2895,7 +2975,7 @@ std::shared_ptr<Entity> Diagnostic::Content::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Diagnostic::Content::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2907,7 +2987,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Content::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2937,9 +3017,11 @@ Diagnostic::Content::Location::Location()
     :
     loc{YType::str, "loc"},
     description{YType::str, "description"}
+        ,
+    data_list(this, {"data_idx"})
 {
 
-    yang_name = "location"; yang_parent_name = "content"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "content"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Content::Location::~Location()
@@ -2948,7 +3030,8 @@ Diagnostic::Content::Location::~Location()
 
 bool Diagnostic::Content::Location::has_data() const
 {
-    for (std::size_t index=0; index<data_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_list.len(); index++)
     {
         if(data_list[index]->has_data())
             return true;
@@ -2959,7 +3042,7 @@ bool Diagnostic::Content::Location::has_data() const
 
 bool Diagnostic::Content::Location::has_operation() const
 {
-    for (std::size_t index=0; index<data_list.size(); index++)
+    for (std::size_t index=0; index<data_list.len(); index++)
     {
         if(data_list[index]->has_operation())
             return true;
@@ -2979,7 +3062,8 @@ std::string Diagnostic::Content::Location::get_absolute_path() const
 std::string Diagnostic::Content::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc='" <<loc <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc, "loc");
     return path_buffer.str();
 }
 
@@ -3000,7 +3084,7 @@ std::shared_ptr<Entity> Diagnostic::Content::Location::get_child_by_name(const s
     {
         auto c = std::make_shared<Diagnostic::Content::Location::DataList>();
         c->parent = this;
-        data_list.push_back(c);
+        data_list.append(c);
         return c;
     }
 
@@ -3012,7 +3096,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Content::Location::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_list)
+    for (auto c : data_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3068,7 +3152,7 @@ Diagnostic::Content::Location::DataList::DataList()
     threshold{YType::int32, "threshold"}
 {
 
-    yang_name = "data_list"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_list"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::Content::Location::DataList::~DataList()
@@ -3077,6 +3161,7 @@ Diagnostic::Content::Location::DataList::~DataList()
 
 bool Diagnostic::Content::Location::DataList::has_data() const
 {
+    if (is_presence_container) return true;
     return data_idx.is_set
 	|| id.is_set
 	|| test_name.is_set
@@ -3099,7 +3184,8 @@ bool Diagnostic::Content::Location::DataList::has_operation() const
 std::string Diagnostic::Content::Location::DataList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_list" <<"[data_idx='" <<data_idx <<"']";
+    path_buffer << "data_list";
+    ADD_KEY_TOKEN(data_idx, "data_idx");
     return path_buffer.str();
 }
 
@@ -3206,9 +3292,11 @@ bool Diagnostic::Content::Location::DataList::has_leaf_or_child_of_name(const st
 }
 
 Diagnostic::Result::Result()
+    :
+    location(this, {"loc"})
 {
 
-    yang_name = "result"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "result"; yang_parent_name = "diagnostic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Result::~Result()
@@ -3217,7 +3305,8 @@ Diagnostic::Result::~Result()
 
 bool Diagnostic::Result::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3227,7 +3316,7 @@ bool Diagnostic::Result::has_data() const
 
 bool Diagnostic::Result::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3264,7 +3353,7 @@ std::shared_ptr<Entity> Diagnostic::Result::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Diagnostic::Result::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3276,7 +3365,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Result::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3306,9 +3395,11 @@ Diagnostic::Result::Location::Location()
     :
     loc{YType::str, "loc"},
     description{YType::str, "description"}
+        ,
+    test(this, {"test_type"})
 {
 
-    yang_name = "location"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diagnostic::Result::Location::~Location()
@@ -3317,7 +3408,8 @@ Diagnostic::Result::Location::~Location()
 
 bool Diagnostic::Result::Location::has_data() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_data())
             return true;
@@ -3328,7 +3420,7 @@ bool Diagnostic::Result::Location::has_data() const
 
 bool Diagnostic::Result::Location::has_operation() const
 {
-    for (std::size_t index=0; index<test.size(); index++)
+    for (std::size_t index=0; index<test.len(); index++)
     {
         if(test[index]->has_operation())
             return true;
@@ -3348,7 +3440,8 @@ std::string Diagnostic::Result::Location::get_absolute_path() const
 std::string Diagnostic::Result::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc='" <<loc <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc, "loc");
     return path_buffer.str();
 }
 
@@ -3369,7 +3462,7 @@ std::shared_ptr<Entity> Diagnostic::Result::Location::get_child_by_name(const st
     {
         auto c = std::make_shared<Diagnostic::Result::Location::Test>();
         c->parent = this;
-        test.push_back(c);
+        test.append(c);
         return c;
     }
 
@@ -3381,7 +3474,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Result::Location::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : test)
+    for (auto c : test.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3431,9 +3524,11 @@ Diagnostic::Result::Location::Test::Test()
     :
     test_type{YType::str, "test_type"},
     description{YType::str, "description"}
+        ,
+    detail(this, {"det"})
 {
 
-    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "test"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::Result::Location::Test::~Test()
@@ -3442,7 +3537,8 @@ Diagnostic::Result::Location::Test::~Test()
 
 bool Diagnostic::Result::Location::Test::has_data() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_data())
             return true;
@@ -3453,7 +3549,7 @@ bool Diagnostic::Result::Location::Test::has_data() const
 
 bool Diagnostic::Result::Location::Test::has_operation() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_operation())
             return true;
@@ -3466,7 +3562,8 @@ bool Diagnostic::Result::Location::Test::has_operation() const
 std::string Diagnostic::Result::Location::Test::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "test" <<"[test_type='" <<test_type <<"']";
+    path_buffer << "test";
+    ADD_KEY_TOKEN(test_type, "test_type");
     return path_buffer.str();
 }
 
@@ -3487,7 +3584,7 @@ std::shared_ptr<Entity> Diagnostic::Result::Location::Test::get_child_by_name(co
     {
         auto c = std::make_shared<Diagnostic::Result::Location::Test::Detail>();
         c->parent = this;
-        detail.push_back(c);
+        detail.append(c);
         return c;
     }
 
@@ -3499,7 +3596,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Result::Location::Tes
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail)
+    for (auto c : detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3548,9 +3645,11 @@ bool Diagnostic::Result::Location::Test::has_leaf_or_child_of_name(const std::st
 Diagnostic::Result::Location::Test::Detail::Detail()
     :
     det{YType::str, "det"}
+        ,
+    data_list(this, {"data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::Result::Location::Test::Detail::~Detail()
@@ -3559,7 +3658,8 @@ Diagnostic::Result::Location::Test::Detail::~Detail()
 
 bool Diagnostic::Result::Location::Test::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_list.len(); index++)
     {
         if(data_list[index]->has_data())
             return true;
@@ -3569,7 +3669,7 @@ bool Diagnostic::Result::Location::Test::Detail::has_data() const
 
 bool Diagnostic::Result::Location::Test::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_list.size(); index++)
+    for (std::size_t index=0; index<data_list.len(); index++)
     {
         if(data_list[index]->has_operation())
             return true;
@@ -3581,7 +3681,8 @@ bool Diagnostic::Result::Location::Test::Detail::has_operation() const
 std::string Diagnostic::Result::Location::Test::Detail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail" <<"[det='" <<det <<"']";
+    path_buffer << "detail";
+    ADD_KEY_TOKEN(det, "det");
     return path_buffer.str();
 }
 
@@ -3601,7 +3702,7 @@ std::shared_ptr<Entity> Diagnostic::Result::Location::Test::Detail::get_child_by
     {
         auto c = std::make_shared<Diagnostic::Result::Location::Test::Detail::DataList>();
         c->parent = this;
-        data_list.push_back(c);
+        data_list.append(c);
         return c;
     }
 
@@ -3613,7 +3714,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diagnostic::Result::Location::Tes
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_list)
+    for (auto c : data_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3672,7 +3773,7 @@ Diagnostic::Result::Location::Test::Detail::DataList::DataList()
     more_info{YType::str, "more_info"}
 {
 
-    yang_name = "data_list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diagnostic::Result::Location::Test::Detail::DataList::~DataList()
@@ -3681,6 +3782,7 @@ Diagnostic::Result::Location::Test::Detail::DataList::~DataList()
 
 bool Diagnostic::Result::Location::Test::Detail::DataList::has_data() const
 {
+    if (is_presence_container) return true;
     return data_idx.is_set
 	|| detail_flag.is_set
 	|| sl_no.is_set
@@ -3729,7 +3831,8 @@ bool Diagnostic::Result::Location::Test::Detail::DataList::has_operation() const
 std::string Diagnostic::Result::Location::Test::Detail::DataList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_list" <<"[data_idx='" <<data_idx <<"']";
+    path_buffer << "data_list";
+    ADD_KEY_TOKEN(data_idx, "data_idx");
     return path_buffer.str();
 }
 

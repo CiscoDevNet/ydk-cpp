@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_rvm_mgr {
 
 RVM::RVM()
+    :
+    all_locations(this, {"location"})
 {
 
-    yang_name = "RVM"; yang_parent_name = "Cisco-IOS-XR-sysadmin-rvm-mgr"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "RVM"; yang_parent_name = "Cisco-IOS-XR-sysadmin-rvm-mgr"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RVM::~RVM()
@@ -23,7 +25,8 @@ RVM::~RVM()
 
 bool RVM::has_data() const
 {
-    for (std::size_t index=0; index<all_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_locations.len(); index++)
     {
         if(all_locations[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool RVM::has_data() const
 
 bool RVM::has_operation() const
 {
-    for (std::size_t index=0; index<all_locations.size(); index++)
+    for (std::size_t index=0; index<all_locations.len(); index++)
     {
         if(all_locations[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> RVM::get_child_by_name(const std::string & child_yang_na
     {
         auto c = std::make_shared<RVM::AllLocations>();
         c->parent = this;
-        all_locations.push_back(c);
+        all_locations.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> RVM::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_locations)
+    for (auto c : all_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,16 +132,16 @@ bool RVM::has_leaf_or_child_of_name(const std::string & name) const
 RVM::AllLocations::AllLocations()
     :
     location{YType::str, "location"}
-    	,
+        ,
     objects(std::make_shared<RVM::AllLocations::Objects>())
-	,node(std::make_shared<RVM::AllLocations::Node>())
-	,card(std::make_shared<RVM::AllLocations::Card>())
+    , node(std::make_shared<RVM::AllLocations::Node>())
+    , card(std::make_shared<RVM::AllLocations::Card>())
 {
     objects->parent = this;
     node->parent = this;
     card->parent = this;
 
-    yang_name = "all-locations"; yang_parent_name = "RVM"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all-locations"; yang_parent_name = "RVM"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RVM::AllLocations::~AllLocations()
@@ -147,6 +150,7 @@ RVM::AllLocations::~AllLocations()
 
 bool RVM::AllLocations::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (objects !=  nullptr && objects->has_data())
 	|| (node !=  nullptr && node->has_data())
@@ -172,7 +176,8 @@ std::string RVM::AllLocations::get_absolute_path() const
 std::string RVM::AllLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-locations" <<"[location='" <<location <<"']";
+    path_buffer << "all-locations";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -266,9 +271,11 @@ bool RVM::AllLocations::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 RVM::AllLocations::Objects::Objects()
+    :
+    all_objs(this, {"index_"})
 {
 
-    yang_name = "objects"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "objects"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RVM::AllLocations::Objects::~Objects()
@@ -277,7 +284,8 @@ RVM::AllLocations::Objects::~Objects()
 
 bool RVM::AllLocations::Objects::has_data() const
 {
-    for (std::size_t index=0; index<all_objs.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_objs.len(); index++)
     {
         if(all_objs[index]->has_data())
             return true;
@@ -287,7 +295,7 @@ bool RVM::AllLocations::Objects::has_data() const
 
 bool RVM::AllLocations::Objects::has_operation() const
 {
-    for (std::size_t index=0; index<all_objs.size(); index++)
+    for (std::size_t index=0; index<all_objs.len(); index++)
     {
         if(all_objs[index]->has_operation())
             return true;
@@ -317,7 +325,7 @@ std::shared_ptr<Entity> RVM::AllLocations::Objects::get_child_by_name(const std:
     {
         auto c = std::make_shared<RVM::AllLocations::Objects::AllObjs>();
         c->parent = this;
-        all_objs.push_back(c);
+        all_objs.append(c);
         return c;
     }
 
@@ -329,7 +337,7 @@ std::map<std::string, std::shared_ptr<Entity>> RVM::AllLocations::Objects::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_objs)
+    for (auto c : all_objs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -363,7 +371,7 @@ RVM::AllLocations::Objects::AllObjs::AllObjs()
     num_objects{YType::uint32, "num_objects"}
 {
 
-    yang_name = "all-objs"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-objs"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RVM::AllLocations::Objects::AllObjs::~AllObjs()
@@ -372,6 +380,7 @@ RVM::AllLocations::Objects::AllObjs::~AllObjs()
 
 bool RVM::AllLocations::Objects::AllObjs::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| num_allocated.is_set
 	|| num_freed.is_set
@@ -390,7 +399,8 @@ bool RVM::AllLocations::Objects::AllObjs::has_operation() const
 std::string RVM::AllLocations::Objects::AllObjs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-objs" <<"[index='" <<index_ <<"']";
+    path_buffer << "all-objs";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -475,9 +485,11 @@ bool RVM::AllLocations::Objects::AllObjs::has_leaf_or_child_of_name(const std::s
 }
 
 RVM::AllLocations::Node::Node()
+    :
+    all_nodes(this, {"ipv4_addr"})
 {
 
-    yang_name = "node"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RVM::AllLocations::Node::~Node()
@@ -486,7 +498,8 @@ RVM::AllLocations::Node::~Node()
 
 bool RVM::AllLocations::Node::has_data() const
 {
-    for (std::size_t index=0; index<all_nodes.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_nodes.len(); index++)
     {
         if(all_nodes[index]->has_data())
             return true;
@@ -496,7 +509,7 @@ bool RVM::AllLocations::Node::has_data() const
 
 bool RVM::AllLocations::Node::has_operation() const
 {
-    for (std::size_t index=0; index<all_nodes.size(); index++)
+    for (std::size_t index=0; index<all_nodes.len(); index++)
     {
         if(all_nodes[index]->has_operation())
             return true;
@@ -526,7 +539,7 @@ std::shared_ptr<Entity> RVM::AllLocations::Node::get_child_by_name(const std::st
     {
         auto c = std::make_shared<RVM::AllLocations::Node::AllNodes>();
         c->parent = this;
-        all_nodes.push_back(c);
+        all_nodes.append(c);
         return c;
     }
 
@@ -538,7 +551,7 @@ std::map<std::string, std::shared_ptr<Entity>> RVM::AllLocations::Node::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_nodes)
+    for (auto c : all_nodes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -573,7 +586,7 @@ RVM::AllLocations::Node::AllNodes::AllNodes()
     node_card_info{YType::str, "node_card_info"}
 {
 
-    yang_name = "all-nodes"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-nodes"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RVM::AllLocations::Node::AllNodes::~AllNodes()
@@ -582,6 +595,7 @@ RVM::AllLocations::Node::AllNodes::~AllNodes()
 
 bool RVM::AllLocations::Node::AllNodes::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_addr.is_set
 	|| ipv4_addr_str.is_set
 	|| node_info.is_set
@@ -602,7 +616,8 @@ bool RVM::AllLocations::Node::AllNodes::has_operation() const
 std::string RVM::AllLocations::Node::AllNodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-nodes" <<"[ipv4_addr='" <<ipv4_addr <<"']";
+    path_buffer << "all-nodes";
+    ADD_KEY_TOKEN(ipv4_addr, "ipv4_addr");
     return path_buffer.str();
 }
 
@@ -698,9 +713,11 @@ bool RVM::AllLocations::Node::AllNodes::has_leaf_or_child_of_name(const std::str
 }
 
 RVM::AllLocations::Card::Card()
+    :
+    all_cards(this, {"serial_num"})
 {
 
-    yang_name = "card"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RVM::AllLocations::Card::~Card()
@@ -709,7 +726,8 @@ RVM::AllLocations::Card::~Card()
 
 bool RVM::AllLocations::Card::has_data() const
 {
-    for (std::size_t index=0; index<all_cards.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_cards.len(); index++)
     {
         if(all_cards[index]->has_data())
             return true;
@@ -719,7 +737,7 @@ bool RVM::AllLocations::Card::has_data() const
 
 bool RVM::AllLocations::Card::has_operation() const
 {
-    for (std::size_t index=0; index<all_cards.size(); index++)
+    for (std::size_t index=0; index<all_cards.len(); index++)
     {
         if(all_cards[index]->has_operation())
             return true;
@@ -749,7 +767,7 @@ std::shared_ptr<Entity> RVM::AllLocations::Card::get_child_by_name(const std::st
     {
         auto c = std::make_shared<RVM::AllLocations::Card::AllCards>();
         c->parent = this;
-        all_cards.push_back(c);
+        all_cards.append(c);
         return c;
     }
 
@@ -761,7 +779,7 @@ std::map<std::string, std::shared_ptr<Entity>> RVM::AllLocations::Card::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_cards)
+    for (auto c : all_cards.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -796,7 +814,7 @@ RVM::AllLocations::Card::AllCards::AllCards()
     xr_nodes{YType::str, "xr_nodes"}
 {
 
-    yang_name = "all-cards"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-cards"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RVM::AllLocations::Card::AllCards::~AllCards()
@@ -805,6 +823,7 @@ RVM::AllLocations::Card::AllCards::~AllCards()
 
 bool RVM::AllLocations::Card::AllCards::has_data() const
 {
+    if (is_presence_container) return true;
     return serial_num.is_set
 	|| card_flag.is_set
 	|| card_info.is_set
@@ -825,7 +844,8 @@ bool RVM::AllLocations::Card::AllCards::has_operation() const
 std::string RVM::AllLocations::Card::AllCards::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-cards" <<"[serial_num='" <<serial_num <<"']";
+    path_buffer << "all-cards";
+    ADD_KEY_TOKEN(serial_num, "serial_num");
     return path_buffer.str();
 }
 

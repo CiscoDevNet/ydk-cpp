@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_cdp_oper {
 
 CdpNeighborDetails::CdpNeighborDetails()
+    :
+    cdp_neighbor_detail(this, {"device_id"})
 {
 
-    yang_name = "cdp-neighbor-details"; yang_parent_name = "Cisco-IOS-XE-cdp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cdp-neighbor-details"; yang_parent_name = "Cisco-IOS-XE-cdp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CdpNeighborDetails::~CdpNeighborDetails()
@@ -23,7 +25,8 @@ CdpNeighborDetails::~CdpNeighborDetails()
 
 bool CdpNeighborDetails::has_data() const
 {
-    for (std::size_t index=0; index<cdp_neighbor_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdp_neighbor_detail.len(); index++)
     {
         if(cdp_neighbor_detail[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool CdpNeighborDetails::has_data() const
 
 bool CdpNeighborDetails::has_operation() const
 {
-    for (std::size_t index=0; index<cdp_neighbor_detail.size(); index++)
+    for (std::size_t index=0; index<cdp_neighbor_detail.len(); index++)
     {
         if(cdp_neighbor_detail[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> CdpNeighborDetails::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<CdpNeighborDetails::CdpNeighborDetail>();
         c->parent = this;
-        cdp_neighbor_detail.push_back(c);
+        cdp_neighbor_detail.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdp_neighbor_detail)
+    for (auto c : cdp_neighbor_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -151,18 +154,18 @@ CdpNeighborDetails::CdpNeighborDetail::CdpNeighborDetail()
     novell_addr{YType::str, "novell-addr"},
     second_port_status{YType::str, "second-port-status"},
     table_id{YType::uint16, "table-id"}
-    	,
+        ,
     hello_message(std::make_shared<CdpNeighborDetails::CdpNeighborDetail::HelloMessage>())
-	,power_request(std::make_shared<CdpNeighborDetails::CdpNeighborDetail::PowerRequest>())
-	,power_available(std::make_shared<CdpNeighborDetails::CdpNeighborDetail::PowerAvailable>())
-	,spare_pair(std::make_shared<CdpNeighborDetails::CdpNeighborDetail::SparePair>())
+    , power_request(std::make_shared<CdpNeighborDetails::CdpNeighborDetail::PowerRequest>())
+    , power_available(std::make_shared<CdpNeighborDetails::CdpNeighborDetail::PowerAvailable>())
+    , spare_pair(std::make_shared<CdpNeighborDetails::CdpNeighborDetail::SparePair>())
 {
     hello_message->parent = this;
     power_request->parent = this;
     power_available->parent = this;
     spare_pair->parent = this;
 
-    yang_name = "cdp-neighbor-detail"; yang_parent_name = "cdp-neighbor-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdp-neighbor-detail"; yang_parent_name = "cdp-neighbor-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CdpNeighborDetails::CdpNeighborDetail::~CdpNeighborDetail()
@@ -171,6 +174,7 @@ CdpNeighborDetails::CdpNeighborDetail::~CdpNeighborDetail()
 
 bool CdpNeighborDetails::CdpNeighborDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return device_id.is_set
 	|| device_name.is_set
 	|| local_intf_name.is_set
@@ -242,7 +246,8 @@ std::string CdpNeighborDetails::CdpNeighborDetail::get_absolute_path() const
 std::string CdpNeighborDetails::CdpNeighborDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdp-neighbor-detail" <<"[device-id='" <<device_id <<"']";
+    path_buffer << "cdp-neighbor-detail";
+    ADD_KEY_TOKEN(device_id, "device-id");
     return path_buffer.str();
 }
 
@@ -599,7 +604,7 @@ CdpNeighborDetails::CdpNeighborDetail::HelloMessage::HelloMessage()
     payload_len{YType::uint16, "payload-len"}
 {
 
-    yang_name = "hello-message"; yang_parent_name = "cdp-neighbor-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-message"; yang_parent_name = "cdp-neighbor-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CdpNeighborDetails::CdpNeighborDetail::HelloMessage::~HelloMessage()
@@ -608,6 +613,7 @@ CdpNeighborDetails::CdpNeighborDetail::HelloMessage::~HelloMessage()
 
 bool CdpNeighborDetails::CdpNeighborDetail::HelloMessage::has_data() const
 {
+    if (is_presence_container) return true;
     return oui.is_set
 	|| protocol_id.is_set
 	|| payload_value.is_set
@@ -717,7 +723,7 @@ CdpNeighborDetails::CdpNeighborDetail::PowerRequest::PowerRequest()
     power_request_level{YType::str, "power-request-level"}
 {
 
-    yang_name = "power-request"; yang_parent_name = "cdp-neighbor-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-request"; yang_parent_name = "cdp-neighbor-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CdpNeighborDetails::CdpNeighborDetail::PowerRequest::~PowerRequest()
@@ -726,6 +732,7 @@ CdpNeighborDetails::CdpNeighborDetail::PowerRequest::~PowerRequest()
 
 bool CdpNeighborDetails::CdpNeighborDetail::PowerRequest::has_data() const
 {
+    if (is_presence_container) return true;
     return power_request_id.is_set
 	|| power_man_id.is_set
 	|| power_request_level.is_set;
@@ -823,7 +830,7 @@ CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::PowerAvailable()
     power_man_level{YType::uint32, "power-man-level"}
 {
 
-    yang_name = "power-available"; yang_parent_name = "cdp-neighbor-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-available"; yang_parent_name = "cdp-neighbor-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::~PowerAvailable()
@@ -832,6 +839,7 @@ CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::~PowerAvailable()
 
 bool CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::has_data() const
 {
+    if (is_presence_container) return true;
     return power_request_id.is_set
 	|| power_man_id.is_set
 	|| power_available.is_set
@@ -942,7 +950,7 @@ CdpNeighborDetails::CdpNeighborDetail::SparePair::SparePair()
     spare_pair_pse_operational{YType::enumeration, "spare-pair-pse-operational"}
 {
 
-    yang_name = "spare-pair"; yang_parent_name = "cdp-neighbor-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spare-pair"; yang_parent_name = "cdp-neighbor-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CdpNeighborDetails::CdpNeighborDetail::SparePair::~SparePair()
@@ -951,6 +959,7 @@ CdpNeighborDetails::CdpNeighborDetail::SparePair::~SparePair()
 
 bool CdpNeighborDetails::CdpNeighborDetail::SparePair::has_data() const
 {
+    if (is_presence_container) return true;
     return spare_pair_poe.is_set
 	|| spare_pair_detection_required.is_set
 	|| spare_pair_pd_config.is_set
@@ -1053,26 +1062,26 @@ bool CdpNeighborDetails::CdpNeighborDetail::SparePair::has_leaf_or_child_of_name
     return false;
 }
 
+const Enum::YLeaf CdpEnableDisable::cdp_disable {0, "cdp-disable"};
+const Enum::YLeaf CdpEnableDisable::cdp_enable {1, "cdp-enable"};
+
+const Enum::YLeaf CdpYesNo::cdp_no {0, "cdp-no"};
+const Enum::YLeaf CdpYesNo::cdp_yes {1, "cdp-yes"};
+
 const Enum::YLeaf CdpDuplex::cdp_duplex_unknown {0, "cdp-duplex-unknown"};
 const Enum::YLeaf CdpDuplex::cdp_half_duplex {1, "cdp-half-duplex"};
 const Enum::YLeaf CdpDuplex::cdp_full_duplex {2, "cdp-full-duplex"};
 const Enum::YLeaf CdpDuplex::cdp_half_duplex_mismatch {3, "cdp-half-duplex-mismatch"};
 const Enum::YLeaf CdpDuplex::cdp_full_duplex_mismatch {4, "cdp-full-duplex-mismatch"};
 
-const Enum::YLeaf CdpAdvVersion::cdp_advertised_none {0, "cdp-advertised-none"};
-const Enum::YLeaf CdpAdvVersion::cdp_advertised_v1 {1, "cdp-advertised-v1"};
-const Enum::YLeaf CdpAdvVersion::cdp_advertised_v2 {2, "cdp-advertised-v2"};
-
 const Enum::YLeaf CdpUnidirectionalMode::cdp_uni_mode_off {0, "cdp-uni-mode-off"};
 const Enum::YLeaf CdpUnidirectionalMode::cdp_uni_mode_send_only {1, "cdp-uni-mode-send-only"};
 const Enum::YLeaf CdpUnidirectionalMode::cdp_uni_mode_recv_only {2, "cdp-uni-mode-recv-only"};
 const Enum::YLeaf CdpUnidirectionalMode::cdp_uni_mode_unknown {3, "cdp-uni-mode-unknown"};
 
-const Enum::YLeaf CdpYesNo::cdp_no {0, "cdp-no"};
-const Enum::YLeaf CdpYesNo::cdp_yes {1, "cdp-yes"};
-
-const Enum::YLeaf CdpEnableDisable::cdp_disable {0, "cdp-disable"};
-const Enum::YLeaf CdpEnableDisable::cdp_enable {1, "cdp-enable"};
+const Enum::YLeaf CdpAdvVersion::cdp_advertised_none {0, "cdp-advertised-none"};
+const Enum::YLeaf CdpAdvVersion::cdp_advertised_v1 {1, "cdp-advertised-v1"};
+const Enum::YLeaf CdpAdvVersion::cdp_advertised_v2 {2, "cdp-advertised-v2"};
 
 
 }

@@ -32,20 +32,20 @@ class CISCOENTITYSENSORMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Entsensorvaluetable; //type: CISCOENTITYSENSORMIB::Entsensorvaluetable
-        class Entsensorthresholdtable; //type: CISCOENTITYSENSORMIB::Entsensorthresholdtable
+        class EntSensorValueTable; //type: CISCOENTITYSENSORMIB::EntSensorValueTable
+        class EntSensorThresholdTable; //type: CISCOENTITYSENSORMIB::EntSensorThresholdTable
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_entity_sensor_mib::CISCOENTITYSENSORMIB::Entsensorvaluetable> entsensorvaluetable;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_entity_sensor_mib::CISCOENTITYSENSORMIB::Entsensorthresholdtable> entsensorthresholdtable;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_entity_sensor_mib::CISCOENTITYSENSORMIB::EntSensorValueTable> entsensorvaluetable;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_entity_sensor_mib::CISCOENTITYSENSORMIB::EntSensorThresholdTable> entsensorthresholdtable;
         
 }; // CISCOENTITYSENSORMIB
 
 
-class CISCOENTITYSENSORMIB::Entsensorvaluetable : public ydk::Entity
+class CISCOENTITYSENSORMIB::EntSensorValueTable : public ydk::Entity
 {
     public:
-        Entsensorvaluetable();
-        ~Entsensorvaluetable();
+        EntSensorValueTable();
+        ~EntSensorValueTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -58,18 +58,18 @@ class CISCOENTITYSENSORMIB::Entsensorvaluetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Entsensorvalueentry; //type: CISCOENTITYSENSORMIB::Entsensorvaluetable::Entsensorvalueentry
+        class EntSensorValueEntry; //type: CISCOENTITYSENSORMIB::EntSensorValueTable::EntSensorValueEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_entity_sensor_mib::CISCOENTITYSENSORMIB::Entsensorvaluetable::Entsensorvalueentry> > entsensorvalueentry;
+        ydk::YList entsensorvalueentry;
         
-}; // CISCOENTITYSENSORMIB::Entsensorvaluetable
+}; // CISCOENTITYSENSORMIB::EntSensorValueTable
 
 
-class CISCOENTITYSENSORMIB::Entsensorvaluetable::Entsensorvalueentry : public ydk::Entity
+class CISCOENTITYSENSORMIB::EntSensorValueTable::EntSensorValueEntry : public ydk::Entity
 {
     public:
-        Entsensorvalueentry();
-        ~Entsensorvalueentry();
+        EntSensorValueEntry();
+        ~EntSensorValueEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -92,14 +92,14 @@ class CISCOENTITYSENSORMIB::Entsensorvaluetable::Entsensorvalueentry : public yd
         ydk::YLeaf entsensorvalueupdaterate; //type: int32
         ydk::YLeaf entsensormeasuredentity; //type: int32
 
-}; // CISCOENTITYSENSORMIB::Entsensorvaluetable::Entsensorvalueentry
+}; // CISCOENTITYSENSORMIB::EntSensorValueTable::EntSensorValueEntry
 
 
-class CISCOENTITYSENSORMIB::Entsensorthresholdtable : public ydk::Entity
+class CISCOENTITYSENSORMIB::EntSensorThresholdTable : public ydk::Entity
 {
     public:
-        Entsensorthresholdtable();
-        ~Entsensorthresholdtable();
+        EntSensorThresholdTable();
+        ~EntSensorThresholdTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -112,18 +112,18 @@ class CISCOENTITYSENSORMIB::Entsensorthresholdtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Entsensorthresholdentry; //type: CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry
+        class EntSensorThresholdEntry; //type: CISCOENTITYSENSORMIB::EntSensorThresholdTable::EntSensorThresholdEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_entity_sensor_mib::CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry> > entsensorthresholdentry;
+        ydk::YList entsensorthresholdentry;
         
-}; // CISCOENTITYSENSORMIB::Entsensorthresholdtable
+}; // CISCOENTITYSENSORMIB::EntSensorThresholdTable
 
 
-class CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry : public ydk::Entity
+class CISCOENTITYSENSORMIB::EntSensorThresholdTable::EntSensorThresholdEntry : public ydk::Entity
 {
     public:
-        Entsensorthresholdentry();
-        ~Entsensorthresholdentry();
+        EntSensorThresholdEntry();
+        ~EntSensorThresholdEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -144,7 +144,26 @@ class CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry : p
         ydk::YLeaf entsensorthresholdevaluation; //type: TruthValue
         ydk::YLeaf entsensorthresholdnotificationenable; //type: TruthValue
 
-}; // CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry
+}; // CISCOENTITYSENSORMIB::EntSensorThresholdTable::EntSensorThresholdEntry
+
+class SensorThresholdSeverity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf minor;
+        static const ydk::Enum::YLeaf major_;
+        static const ydk::Enum::YLeaf critical;
+
+};
+
+class SensorStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf unavailable;
+        static const ydk::Enum::YLeaf nonoperational;
+
+};
 
 class SensorDataType : public ydk::Enum
 {
@@ -162,6 +181,18 @@ class SensorDataType : public ydk::Enum
         static const ydk::Enum::YLeaf cmm;
         static const ydk::Enum::YLeaf truthvalue;
         static const ydk::Enum::YLeaf specialEnum;
+
+};
+
+class SensorThresholdRelation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lessThan;
+        static const ydk::Enum::YLeaf lessOrEqual;
+        static const ydk::Enum::YLeaf greaterThan;
+        static const ydk::Enum::YLeaf greaterOrEqual;
+        static const ydk::Enum::YLeaf equalTo;
+        static const ydk::Enum::YLeaf notEqualTo;
 
 };
 
@@ -185,37 +216,6 @@ class SensorDataScale : public ydk::Enum
         static const ydk::Enum::YLeaf peta;
         static const ydk::Enum::YLeaf zetta;
         static const ydk::Enum::YLeaf yotta;
-
-};
-
-class SensorStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf unavailable;
-        static const ydk::Enum::YLeaf nonoperational;
-
-};
-
-class SensorThresholdSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf major_;
-        static const ydk::Enum::YLeaf critical;
-
-};
-
-class SensorThresholdRelation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lessThan;
-        static const ydk::Enum::YLeaf lessOrEqual;
-        static const ydk::Enum::YLeaf greaterThan;
-        static const ydk::Enum::YLeaf greaterOrEqual;
-        static const ydk::Enum::YLeaf equalTo;
-        static const ydk::Enum::YLeaf notEqualTo;
 
 };
 

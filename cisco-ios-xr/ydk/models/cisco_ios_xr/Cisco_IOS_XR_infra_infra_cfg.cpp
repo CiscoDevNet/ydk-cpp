@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_infra_cfg {
 
 Banners::Banners()
+    :
+    banner(this, {"banner_name"})
 {
 
-    yang_name = "banners"; yang_parent_name = "Cisco-IOS-XR-infra-infra-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "banners"; yang_parent_name = "Cisco-IOS-XR-infra-infra-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Banners::~Banners()
@@ -23,7 +25,8 @@ Banners::~Banners()
 
 bool Banners::has_data() const
 {
-    for (std::size_t index=0; index<banner.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<banner.len(); index++)
     {
         if(banner[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Banners::has_data() const
 
 bool Banners::has_operation() const
 {
-    for (std::size_t index=0; index<banner.size(); index++)
+    for (std::size_t index=0; index<banner.len(); index++)
     {
         if(banner[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Banners::get_child_by_name(const std::string & child_yan
     {
         auto c = std::make_shared<Banners::Banner>();
         c->parent = this;
-        banner.push_back(c);
+        banner.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Banners::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : banner)
+    for (auto c : banner.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -132,7 +135,7 @@ Banners::Banner::Banner()
     banner_text{YType::str, "banner-text"}
 {
 
-    yang_name = "banner"; yang_parent_name = "banners"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "banner"; yang_parent_name = "banners"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Banners::Banner::~Banner()
@@ -141,6 +144,7 @@ Banners::Banner::~Banner()
 
 bool Banners::Banner::has_data() const
 {
+    if (is_presence_container) return true;
     return banner_name.is_set
 	|| banner_text.is_set;
 }
@@ -162,7 +166,8 @@ std::string Banners::Banner::get_absolute_path() const
 std::string Banners::Banner::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "banner" <<"[banner-name='" <<banner_name <<"']";
+    path_buffer << "banner";
+    ADD_KEY_TOKEN(banner_name, "banner-name");
     return path_buffer.str();
 }
 

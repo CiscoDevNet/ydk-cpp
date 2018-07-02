@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_ds {
 
 Services::Services()
+    :
+    all_locations(this, {"location"})
 {
 
-    yang_name = "services"; yang_parent_name = "Cisco-IOS-XR-sysadmin-ds"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "services"; yang_parent_name = "Cisco-IOS-XR-sysadmin-ds"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Services::~Services()
@@ -23,7 +25,8 @@ Services::~Services()
 
 bool Services::has_data() const
 {
-    for (std::size_t index=0; index<all_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_locations.len(); index++)
     {
         if(all_locations[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Services::has_data() const
 
 bool Services::has_operation() const
 {
-    for (std::size_t index=0; index<all_locations.size(); index++)
+    for (std::size_t index=0; index<all_locations.len(); index++)
     {
         if(all_locations[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Services::get_child_by_name(const std::string & child_ya
     {
         auto c = std::make_shared<Services::AllLocations>();
         c->parent = this;
-        all_locations.push_back(c);
+        all_locations.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Services::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_locations)
+    for (auto c : all_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool Services::has_leaf_or_child_of_name(const std::string & name) const
 Services::AllLocations::AllLocations()
     :
     location{YType::str, "location"}
+        ,
+    services(this, {"name"})
 {
 
-    yang_name = "all-locations"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all-locations"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Services::AllLocations::~AllLocations()
@@ -140,7 +145,8 @@ Services::AllLocations::~AllLocations()
 
 bool Services::AllLocations::has_data() const
 {
-    for (std::size_t index=0; index<services.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<services.len(); index++)
     {
         if(services[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool Services::AllLocations::has_data() const
 
 bool Services::AllLocations::has_operation() const
 {
-    for (std::size_t index=0; index<services.size(); index++)
+    for (std::size_t index=0; index<services.len(); index++)
     {
         if(services[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string Services::AllLocations::get_absolute_path() const
 std::string Services::AllLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-locations" <<"[location='" <<location <<"']";
+    path_buffer << "all-locations";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> Services::AllLocations::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Services::AllLocations::Services_>();
         c->parent = this;
-        services.push_back(c);
+        services.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> Services::AllLocations::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : services)
+    for (auto c : services.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -240,9 +247,12 @@ bool Services::AllLocations::has_leaf_or_child_of_name(const std::string & name)
 Services::AllLocations::Services_::Services_()
     :
     name{YType::str, "name"}
+        ,
+    endpoint(this, {})
+    , registrations(this, {})
 {
 
-    yang_name = "services"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "services"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Services::AllLocations::Services_::~Services_()
@@ -251,12 +261,13 @@ Services::AllLocations::Services_::~Services_()
 
 bool Services::AllLocations::Services_::has_data() const
 {
-    for (std::size_t index=0; index<endpoint.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<endpoint.len(); index++)
     {
         if(endpoint[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<registrations.size(); index++)
+    for (std::size_t index=0; index<registrations.len(); index++)
     {
         if(registrations[index]->has_data())
             return true;
@@ -266,12 +277,12 @@ bool Services::AllLocations::Services_::has_data() const
 
 bool Services::AllLocations::Services_::has_operation() const
 {
-    for (std::size_t index=0; index<endpoint.size(); index++)
+    for (std::size_t index=0; index<endpoint.len(); index++)
     {
         if(endpoint[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<registrations.size(); index++)
+    for (std::size_t index=0; index<registrations.len(); index++)
     {
         if(registrations[index]->has_operation())
             return true;
@@ -283,7 +294,8 @@ bool Services::AllLocations::Services_::has_operation() const
 std::string Services::AllLocations::Services_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "services" <<"[name='" <<name <<"']";
+    path_buffer << "services";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -303,7 +315,7 @@ std::shared_ptr<Entity> Services::AllLocations::Services_::get_child_by_name(con
     {
         auto c = std::make_shared<Services::AllLocations::Services_::Endpoint>();
         c->parent = this;
-        endpoint.push_back(c);
+        endpoint.append(c);
         return c;
     }
 
@@ -311,7 +323,7 @@ std::shared_ptr<Entity> Services::AllLocations::Services_::get_child_by_name(con
     {
         auto c = std::make_shared<Services::AllLocations::Services_::Registrations>();
         c->parent = this;
-        registrations.push_back(c);
+        registrations.append(c);
         return c;
     }
 
@@ -323,7 +335,7 @@ std::map<std::string, std::shared_ptr<Entity>> Services::AllLocations::Services_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : endpoint)
+    for (auto c : endpoint.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -332,7 +344,7 @@ std::map<std::string, std::shared_ptr<Entity>> Services::AllLocations::Services_
     }
 
     count = 0;
-    for (auto const & c : registrations)
+    for (auto c : registrations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -378,7 +390,7 @@ Services::AllLocations::Services_::Endpoint::Endpoint()
     node{YType::str, "node"}
 {
 
-    yang_name = "endpoint"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "endpoint"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Services::AllLocations::Services_::Endpoint::~Endpoint()
@@ -387,6 +399,7 @@ Services::AllLocations::Services_::Endpoint::~Endpoint()
 
 bool Services::AllLocations::Services_::Endpoint::has_data() const
 {
+    if (is_presence_container) return true;
     return scope.is_set
 	|| ip.is_set
 	|| port.is_set
@@ -521,7 +534,7 @@ Services::AllLocations::Services_::Registrations::Registrations()
     pid{YType::uint32, "pid"}
 {
 
-    yang_name = "registrations"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "registrations"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Services::AllLocations::Services_::Registrations::~Registrations()
@@ -530,6 +543,7 @@ Services::AllLocations::Services_::Registrations::~Registrations()
 
 bool Services::AllLocations::Services_::Registrations::has_data() const
 {
+    if (is_presence_container) return true;
     return client.is_set
 	|| pid.is_set;
 }
@@ -609,10 +623,11 @@ bool Services::AllLocations::Services_::Registrations::has_leaf_or_child_of_name
 ServicesStats::ServicesStats()
     :
     ds(std::make_shared<ServicesStats::Ds>())
+    , all_locations(this, {"location"})
 {
     ds->parent = this;
 
-    yang_name = "services-stats"; yang_parent_name = "Cisco-IOS-XR-sysadmin-ds"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "services-stats"; yang_parent_name = "Cisco-IOS-XR-sysadmin-ds"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ServicesStats::~ServicesStats()
@@ -621,7 +636,8 @@ ServicesStats::~ServicesStats()
 
 bool ServicesStats::has_data() const
 {
-    for (std::size_t index=0; index<all_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_locations.len(); index++)
     {
         if(all_locations[index]->has_data())
             return true;
@@ -631,7 +647,7 @@ bool ServicesStats::has_data() const
 
 bool ServicesStats::has_operation() const
 {
-    for (std::size_t index=0; index<all_locations.size(); index++)
+    for (std::size_t index=0; index<all_locations.len(); index++)
     {
         if(all_locations[index]->has_operation())
             return true;
@@ -671,7 +687,7 @@ std::shared_ptr<Entity> ServicesStats::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<ServicesStats::AllLocations>();
         c->parent = this;
-        all_locations.push_back(c);
+        all_locations.append(c);
         return c;
     }
 
@@ -688,7 +704,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServicesStats::get_children() con
     }
 
     count = 0;
-    for (auto const & c : all_locations)
+    for (auto c : all_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -740,9 +756,11 @@ bool ServicesStats::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 ServicesStats::Ds::Ds()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "ds"; yang_parent_name = "services-stats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ds"; yang_parent_name = "services-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ServicesStats::Ds::~Ds()
@@ -751,7 +769,8 @@ ServicesStats::Ds::~Ds()
 
 bool ServicesStats::Ds::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -761,7 +780,7 @@ bool ServicesStats::Ds::has_data() const
 
 bool ServicesStats::Ds::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -798,7 +817,7 @@ std::shared_ptr<Entity> ServicesStats::Ds::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<ServicesStats::Ds::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -810,7 +829,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServicesStats::Ds::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -839,9 +858,11 @@ bool ServicesStats::Ds::has_leaf_or_child_of_name(const std::string & name) cons
 ServicesStats::Ds::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "ds"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "ds"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ServicesStats::Ds::Trace::~Trace()
@@ -850,7 +871,8 @@ ServicesStats::Ds::Trace::~Trace()
 
 bool ServicesStats::Ds::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -860,7 +882,7 @@ bool ServicesStats::Ds::Trace::has_data() const
 
 bool ServicesStats::Ds::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -879,7 +901,8 @@ std::string ServicesStats::Ds::Trace::get_absolute_path() const
 std::string ServicesStats::Ds::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -899,7 +922,7 @@ std::shared_ptr<Entity> ServicesStats::Ds::Trace::get_child_by_name(const std::s
     {
         auto c = std::make_shared<ServicesStats::Ds::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -911,7 +934,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServicesStats::Ds::Trace::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -950,9 +973,11 @@ bool ServicesStats::Ds::Trace::has_leaf_or_child_of_name(const std::string & nam
 ServicesStats::Ds::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServicesStats::Ds::Trace::Location::~Location()
@@ -961,7 +986,8 @@ ServicesStats::Ds::Trace::Location::~Location()
 
 bool ServicesStats::Ds::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -971,7 +997,7 @@ bool ServicesStats::Ds::Trace::Location::has_data() const
 
 bool ServicesStats::Ds::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -983,7 +1009,8 @@ bool ServicesStats::Ds::Trace::Location::has_operation() const
 std::string ServicesStats::Ds::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -1003,7 +1030,7 @@ std::shared_ptr<Entity> ServicesStats::Ds::Trace::Location::get_child_by_name(co
     {
         auto c = std::make_shared<ServicesStats::Ds::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -1015,7 +1042,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServicesStats::Ds::Trace::Locatio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1054,9 +1081,11 @@ bool ServicesStats::Ds::Trace::Location::has_leaf_or_child_of_name(const std::st
 ServicesStats::Ds::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServicesStats::Ds::Trace::Location::AllOptions::~AllOptions()
@@ -1065,7 +1094,8 @@ ServicesStats::Ds::Trace::Location::AllOptions::~AllOptions()
 
 bool ServicesStats::Ds::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -1075,7 +1105,7 @@ bool ServicesStats::Ds::Trace::Location::AllOptions::has_data() const
 
 bool ServicesStats::Ds::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -1087,7 +1117,8 @@ bool ServicesStats::Ds::Trace::Location::AllOptions::has_operation() const
 std::string ServicesStats::Ds::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -1107,7 +1138,7 @@ std::shared_ptr<Entity> ServicesStats::Ds::Trace::Location::AllOptions::get_chil
     {
         auto c = std::make_shared<ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -1119,7 +1150,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServicesStats::Ds::Trace::Locatio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1160,7 +1191,7 @@ ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -1169,6 +1200,7 @@ ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -1235,9 +1267,11 @@ bool ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks::has_leaf_or_ch
 ServicesStats::AllLocations::AllLocations()
     :
     location{YType::str, "location"}
+        ,
+    stats(this, {"name"})
 {
 
-    yang_name = "all-locations"; yang_parent_name = "services-stats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all-locations"; yang_parent_name = "services-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ServicesStats::AllLocations::~AllLocations()
@@ -1246,7 +1280,8 @@ ServicesStats::AllLocations::~AllLocations()
 
 bool ServicesStats::AllLocations::has_data() const
 {
-    for (std::size_t index=0; index<stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stats.len(); index++)
     {
         if(stats[index]->has_data())
             return true;
@@ -1256,7 +1291,7 @@ bool ServicesStats::AllLocations::has_data() const
 
 bool ServicesStats::AllLocations::has_operation() const
 {
-    for (std::size_t index=0; index<stats.size(); index++)
+    for (std::size_t index=0; index<stats.len(); index++)
     {
         if(stats[index]->has_operation())
             return true;
@@ -1275,7 +1310,8 @@ std::string ServicesStats::AllLocations::get_absolute_path() const
 std::string ServicesStats::AllLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-locations" <<"[location='" <<location <<"']";
+    path_buffer << "all-locations";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1295,7 +1331,7 @@ std::shared_ptr<Entity> ServicesStats::AllLocations::get_child_by_name(const std
     {
         auto c = std::make_shared<ServicesStats::AllLocations::Stats>();
         c->parent = this;
-        stats.push_back(c);
+        stats.append(c);
         return c;
     }
 
@@ -1307,7 +1343,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServicesStats::AllLocations::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stats)
+    for (auto c : stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1356,7 +1392,7 @@ ServicesStats::AllLocations::Stats::Stats()
     remote_recv{YType::uint32, "remote_recv"}
 {
 
-    yang_name = "stats"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServicesStats::AllLocations::Stats::~Stats()
@@ -1365,6 +1401,7 @@ ServicesStats::AllLocations::Stats::~Stats()
 
 bool ServicesStats::AllLocations::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| published.is_set
 	|| deleted.is_set
@@ -1393,7 +1430,8 @@ bool ServicesStats::AllLocations::Stats::has_operation() const
 std::string ServicesStats::AllLocations::Stats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stats" <<"[name='" <<name <<"']";
+    path_buffer << "stats";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1532,10 +1570,10 @@ bool ServicesStats::AllLocations::Stats::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
-const Enum::YLeaf ServiceScope::None {0, "None"};
-const Enum::YLeaf ServiceScope::Rack {1, "Rack"};
-const Enum::YLeaf ServiceScope::System {2, "System"};
-const Enum::YLeaf ServiceScope::Node {3, "Node"};
+const Enum::YLeaf ProcessIssuRole::Primary {1, "Primary"};
+const Enum::YLeaf ProcessIssuRole::Secondary {2, "Secondary"};
+const Enum::YLeaf ProcessIssuRole::Tertiary {3, "Tertiary"};
+const Enum::YLeaf ProcessIssuRole::Unknown {254, "Unknown"};
 
 const Enum::YLeaf ProcessRole::NoRole {0, "NoRole"};
 const Enum::YLeaf ProcessRole::Active {1, "Active"};
@@ -1543,10 +1581,10 @@ const Enum::YLeaf ProcessRole::Standby {2, "Standby"};
 const Enum::YLeaf ProcessRole::None {3, "None"};
 const Enum::YLeaf ProcessRole::Unknown {254, "Unknown"};
 
-const Enum::YLeaf ProcessIssuRole::Primary {1, "Primary"};
-const Enum::YLeaf ProcessIssuRole::Secondary {2, "Secondary"};
-const Enum::YLeaf ProcessIssuRole::Tertiary {3, "Tertiary"};
-const Enum::YLeaf ProcessIssuRole::Unknown {254, "Unknown"};
+const Enum::YLeaf ServiceScope::None {0, "None"};
+const Enum::YLeaf ServiceScope::Rack {1, "Rack"};
+const Enum::YLeaf ServiceScope::System {2, "System"};
+const Enum::YLeaf ServiceScope::Node {3, "Node"};
 
 
 }

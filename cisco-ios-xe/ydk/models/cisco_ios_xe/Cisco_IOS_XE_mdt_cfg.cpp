@@ -12,9 +12,12 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_mdt_cfg {
 
 MdtSubscriptions::MdtSubscriptions()
+    :
+    mdt_subscription(this, {"subscription_id"})
+    , mdt_xfrm(this, {"name"})
 {
 
-    yang_name = "mdt-subscriptions"; yang_parent_name = "Cisco-IOS-XE-mdt-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mdt-subscriptions"; yang_parent_name = "Cisco-IOS-XE-mdt-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MdtSubscriptions::~MdtSubscriptions()
@@ -23,12 +26,13 @@ MdtSubscriptions::~MdtSubscriptions()
 
 bool MdtSubscriptions::has_data() const
 {
-    for (std::size_t index=0; index<mdt_subscription.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mdt_subscription.len(); index++)
     {
         if(mdt_subscription[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mdt_xfrm.size(); index++)
+    for (std::size_t index=0; index<mdt_xfrm.len(); index++)
     {
         if(mdt_xfrm[index]->has_data())
             return true;
@@ -38,12 +42,12 @@ bool MdtSubscriptions::has_data() const
 
 bool MdtSubscriptions::has_operation() const
 {
-    for (std::size_t index=0; index<mdt_subscription.size(); index++)
+    for (std::size_t index=0; index<mdt_subscription.len(); index++)
     {
         if(mdt_subscription[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mdt_xfrm.size(); index++)
+    for (std::size_t index=0; index<mdt_xfrm.len(); index++)
     {
         if(mdt_xfrm[index]->has_operation())
             return true;
@@ -73,7 +77,7 @@ std::shared_ptr<Entity> MdtSubscriptions::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<MdtSubscriptions::MdtSubscription>();
         c->parent = this;
-        mdt_subscription.push_back(c);
+        mdt_subscription.append(c);
         return c;
     }
 
@@ -81,7 +85,7 @@ std::shared_ptr<Entity> MdtSubscriptions::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<MdtSubscriptions::MdtXfrm>();
         c->parent = this;
-        mdt_xfrm.push_back(c);
+        mdt_xfrm.append(c);
         return c;
     }
 
@@ -93,7 +97,7 @@ std::map<std::string, std::shared_ptr<Entity>> MdtSubscriptions::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mdt_subscription)
+    for (auto c : mdt_subscription.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -102,7 +106,7 @@ std::map<std::string, std::shared_ptr<Entity>> MdtSubscriptions::get_children() 
     }
 
     count = 0;
-    for (auto const & c : mdt_xfrm)
+    for (auto c : mdt_xfrm.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -156,12 +160,13 @@ bool MdtSubscriptions::has_leaf_or_child_of_name(const std::string & name) const
 MdtSubscriptions::MdtSubscription::MdtSubscription()
     :
     subscription_id{YType::uint32, "subscription-id"}
-    	,
+        ,
     base(std::make_shared<MdtSubscriptions::MdtSubscription::Base>())
+    , mdt_receivers(this, {"address", "port"})
 {
     base->parent = this;
 
-    yang_name = "mdt-subscription"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mdt-subscription"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MdtSubscriptions::MdtSubscription::~MdtSubscription()
@@ -170,7 +175,8 @@ MdtSubscriptions::MdtSubscription::~MdtSubscription()
 
 bool MdtSubscriptions::MdtSubscription::has_data() const
 {
-    for (std::size_t index=0; index<mdt_receivers.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mdt_receivers.len(); index++)
     {
         if(mdt_receivers[index]->has_data())
             return true;
@@ -181,7 +187,7 @@ bool MdtSubscriptions::MdtSubscription::has_data() const
 
 bool MdtSubscriptions::MdtSubscription::has_operation() const
 {
-    for (std::size_t index=0; index<mdt_receivers.size(); index++)
+    for (std::size_t index=0; index<mdt_receivers.len(); index++)
     {
         if(mdt_receivers[index]->has_operation())
             return true;
@@ -201,7 +207,8 @@ std::string MdtSubscriptions::MdtSubscription::get_absolute_path() const
 std::string MdtSubscriptions::MdtSubscription::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-subscription" <<"[subscription-id='" <<subscription_id <<"']";
+    path_buffer << "mdt-subscription";
+    ADD_KEY_TOKEN(subscription_id, "subscription-id");
     return path_buffer.str();
 }
 
@@ -230,7 +237,7 @@ std::shared_ptr<Entity> MdtSubscriptions::MdtSubscription::get_child_by_name(con
     {
         auto c = std::make_shared<MdtSubscriptions::MdtSubscription::MdtReceivers>();
         c->parent = this;
-        mdt_receivers.push_back(c);
+        mdt_receivers.append(c);
         return c;
     }
 
@@ -247,7 +254,7 @@ std::map<std::string, std::shared_ptr<Entity>> MdtSubscriptions::MdtSubscription
     }
 
     count = 0;
-    for (auto const & c : mdt_receivers)
+    for (auto c : mdt_receivers.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -298,7 +305,7 @@ MdtSubscriptions::MdtSubscription::Base::Base()
     transform_name{YType::str, "transform-name"}
 {
 
-    yang_name = "base"; yang_parent_name = "mdt-subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "mdt-subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MdtSubscriptions::MdtSubscription::Base::~Base()
@@ -307,6 +314,7 @@ MdtSubscriptions::MdtSubscription::Base::~Base()
 
 bool MdtSubscriptions::MdtSubscription::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return stream.is_set
 	|| encoding.is_set
 	|| source_vrf.is_set
@@ -508,7 +516,7 @@ MdtSubscriptions::MdtSubscription::MdtReceivers::MdtReceivers()
     security_profile{YType::str, "security-profile"}
 {
 
-    yang_name = "mdt-receivers"; yang_parent_name = "mdt-subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdt-receivers"; yang_parent_name = "mdt-subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MdtSubscriptions::MdtSubscription::MdtReceivers::~MdtReceivers()
@@ -517,6 +525,7 @@ MdtSubscriptions::MdtSubscription::MdtReceivers::~MdtReceivers()
 
 bool MdtSubscriptions::MdtSubscription::MdtReceivers::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| port.is_set
 	|| protocol.is_set
@@ -535,7 +544,9 @@ bool MdtSubscriptions::MdtSubscription::MdtReceivers::has_operation() const
 std::string MdtSubscriptions::MdtSubscription::MdtReceivers::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-receivers" <<"[address='" <<address <<"']" <<"[port='" <<port <<"']";
+    path_buffer << "mdt-receivers";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -623,9 +634,12 @@ MdtSubscriptions::MdtXfrm::MdtXfrm()
     :
     name{YType::str, "name"},
     fully_specify{YType::boolean, "fully-specify"}
+        ,
+    mdt_xfrm_input(this, {"table_name"})
+    , mdt_xfrm_op(this, {"id"})
 {
 
-    yang_name = "mdt-xfrm"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mdt-xfrm"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MdtSubscriptions::MdtXfrm::~MdtXfrm()
@@ -634,12 +648,13 @@ MdtSubscriptions::MdtXfrm::~MdtXfrm()
 
 bool MdtSubscriptions::MdtXfrm::has_data() const
 {
-    for (std::size_t index=0; index<mdt_xfrm_input.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mdt_xfrm_input.len(); index++)
     {
         if(mdt_xfrm_input[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mdt_xfrm_op.size(); index++)
+    for (std::size_t index=0; index<mdt_xfrm_op.len(); index++)
     {
         if(mdt_xfrm_op[index]->has_data())
             return true;
@@ -650,12 +665,12 @@ bool MdtSubscriptions::MdtXfrm::has_data() const
 
 bool MdtSubscriptions::MdtXfrm::has_operation() const
 {
-    for (std::size_t index=0; index<mdt_xfrm_input.size(); index++)
+    for (std::size_t index=0; index<mdt_xfrm_input.len(); index++)
     {
         if(mdt_xfrm_input[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mdt_xfrm_op.size(); index++)
+    for (std::size_t index=0; index<mdt_xfrm_op.len(); index++)
     {
         if(mdt_xfrm_op[index]->has_operation())
             return true;
@@ -675,7 +690,8 @@ std::string MdtSubscriptions::MdtXfrm::get_absolute_path() const
 std::string MdtSubscriptions::MdtXfrm::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-xfrm" <<"[name='" <<name <<"']";
+    path_buffer << "mdt-xfrm";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -696,7 +712,7 @@ std::shared_ptr<Entity> MdtSubscriptions::MdtXfrm::get_child_by_name(const std::
     {
         auto c = std::make_shared<MdtSubscriptions::MdtXfrm::MdtXfrmInput>();
         c->parent = this;
-        mdt_xfrm_input.push_back(c);
+        mdt_xfrm_input.append(c);
         return c;
     }
 
@@ -704,7 +720,7 @@ std::shared_ptr<Entity> MdtSubscriptions::MdtXfrm::get_child_by_name(const std::
     {
         auto c = std::make_shared<MdtSubscriptions::MdtXfrm::MdtXfrmOp>();
         c->parent = this;
-        mdt_xfrm_op.push_back(c);
+        mdt_xfrm_op.append(c);
         return c;
     }
 
@@ -716,7 +732,7 @@ std::map<std::string, std::shared_ptr<Entity>> MdtSubscriptions::MdtXfrm::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mdt_xfrm_input)
+    for (auto c : mdt_xfrm_input.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -725,7 +741,7 @@ std::map<std::string, std::shared_ptr<Entity>> MdtSubscriptions::MdtXfrm::get_ch
     }
 
     count = 0;
-    for (auto const & c : mdt_xfrm_op)
+    for (auto c : mdt_xfrm_op.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -778,9 +794,11 @@ MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInput()
     join_key{YType::str, "join-key"},
     attr_type{YType::enumeration, "attr-type"},
     lop{YType::enumeration, "lop"}
+        ,
+    mdt_xfrm_input_field(this, {"field"})
 {
 
-    yang_name = "mdt-xfrm-input"; yang_parent_name = "mdt-xfrm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdt-xfrm-input"; yang_parent_name = "mdt-xfrm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MdtSubscriptions::MdtXfrm::MdtXfrmInput::~MdtXfrmInput()
@@ -789,7 +807,8 @@ MdtSubscriptions::MdtXfrm::MdtXfrmInput::~MdtXfrmInput()
 
 bool MdtSubscriptions::MdtXfrm::MdtXfrmInput::has_data() const
 {
-    for (std::size_t index=0; index<mdt_xfrm_input_field.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mdt_xfrm_input_field.len(); index++)
     {
         if(mdt_xfrm_input_field[index]->has_data())
             return true;
@@ -803,7 +822,7 @@ bool MdtSubscriptions::MdtXfrm::MdtXfrmInput::has_data() const
 
 bool MdtSubscriptions::MdtXfrm::MdtXfrmInput::has_operation() const
 {
-    for (std::size_t index=0; index<mdt_xfrm_input_field.size(); index++)
+    for (std::size_t index=0; index<mdt_xfrm_input_field.len(); index++)
     {
         if(mdt_xfrm_input_field[index]->has_operation())
             return true;
@@ -819,7 +838,8 @@ bool MdtSubscriptions::MdtXfrm::MdtXfrmInput::has_operation() const
 std::string MdtSubscriptions::MdtXfrm::MdtXfrmInput::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-xfrm-input" <<"[table-name='" <<table_name <<"']";
+    path_buffer << "mdt-xfrm-input";
+    ADD_KEY_TOKEN(table_name, "table-name");
     return path_buffer.str();
 }
 
@@ -843,7 +863,7 @@ std::shared_ptr<Entity> MdtSubscriptions::MdtXfrm::MdtXfrmInput::get_child_by_na
     {
         auto c = std::make_shared<MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField>();
         c->parent = this;
-        mdt_xfrm_input_field.push_back(c);
+        mdt_xfrm_input_field.append(c);
         return c;
     }
 
@@ -855,7 +875,7 @@ std::map<std::string, std::shared_ptr<Entity>> MdtSubscriptions::MdtXfrm::MdtXfr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mdt_xfrm_input_field)
+    for (auto c : mdt_xfrm_input_field.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -936,7 +956,7 @@ MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField::MdtXfrmInputField()
     field{YType::str, "field"}
 {
 
-    yang_name = "mdt-xfrm-input-field"; yang_parent_name = "mdt-xfrm-input"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdt-xfrm-input-field"; yang_parent_name = "mdt-xfrm-input"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField::~MdtXfrmInputField()
@@ -945,6 +965,7 @@ MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField::~MdtXfrmInputField()
 
 bool MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField::has_data() const
 {
+    if (is_presence_container) return true;
     return field.is_set;
 }
 
@@ -957,7 +978,8 @@ bool MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField::has_operation()
 std::string MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-xfrm-input-field" <<"[field='" <<field <<"']";
+    path_buffer << "mdt-xfrm-input-field";
+    ADD_KEY_TOKEN(field, "field");
     return path_buffer.str();
 }
 
@@ -1011,9 +1033,12 @@ bool MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField::has_leaf_or_chi
 MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOp()
     :
     id{YType::uint32, "id"}
+        ,
+    mdt_xfrm_op_filters(this, {"filter_id"})
+    , mdt_xfrm_op_fields(this, {"field_id"})
 {
 
-    yang_name = "mdt-xfrm-op"; yang_parent_name = "mdt-xfrm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdt-xfrm-op"; yang_parent_name = "mdt-xfrm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MdtSubscriptions::MdtXfrm::MdtXfrmOp::~MdtXfrmOp()
@@ -1022,12 +1047,13 @@ MdtSubscriptions::MdtXfrm::MdtXfrmOp::~MdtXfrmOp()
 
 bool MdtSubscriptions::MdtXfrm::MdtXfrmOp::has_data() const
 {
-    for (std::size_t index=0; index<mdt_xfrm_op_filters.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mdt_xfrm_op_filters.len(); index++)
     {
         if(mdt_xfrm_op_filters[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mdt_xfrm_op_fields.size(); index++)
+    for (std::size_t index=0; index<mdt_xfrm_op_fields.len(); index++)
     {
         if(mdt_xfrm_op_fields[index]->has_data())
             return true;
@@ -1037,12 +1063,12 @@ bool MdtSubscriptions::MdtXfrm::MdtXfrmOp::has_data() const
 
 bool MdtSubscriptions::MdtXfrm::MdtXfrmOp::has_operation() const
 {
-    for (std::size_t index=0; index<mdt_xfrm_op_filters.size(); index++)
+    for (std::size_t index=0; index<mdt_xfrm_op_filters.len(); index++)
     {
         if(mdt_xfrm_op_filters[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mdt_xfrm_op_fields.size(); index++)
+    for (std::size_t index=0; index<mdt_xfrm_op_fields.len(); index++)
     {
         if(mdt_xfrm_op_fields[index]->has_operation())
             return true;
@@ -1054,7 +1080,8 @@ bool MdtSubscriptions::MdtXfrm::MdtXfrmOp::has_operation() const
 std::string MdtSubscriptions::MdtXfrm::MdtXfrmOp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-xfrm-op" <<"[id='" <<id <<"']";
+    path_buffer << "mdt-xfrm-op";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -1074,7 +1101,7 @@ std::shared_ptr<Entity> MdtSubscriptions::MdtXfrm::MdtXfrmOp::get_child_by_name(
     {
         auto c = std::make_shared<MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters>();
         c->parent = this;
-        mdt_xfrm_op_filters.push_back(c);
+        mdt_xfrm_op_filters.append(c);
         return c;
     }
 
@@ -1082,7 +1109,7 @@ std::shared_ptr<Entity> MdtSubscriptions::MdtXfrm::MdtXfrmOp::get_child_by_name(
     {
         auto c = std::make_shared<MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields>();
         c->parent = this;
-        mdt_xfrm_op_fields.push_back(c);
+        mdt_xfrm_op_fields.append(c);
         return c;
     }
 
@@ -1094,7 +1121,7 @@ std::map<std::string, std::shared_ptr<Entity>> MdtSubscriptions::MdtXfrm::MdtXfr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mdt_xfrm_op_filters)
+    for (auto c : mdt_xfrm_op_filters.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1103,7 +1130,7 @@ std::map<std::string, std::shared_ptr<Entity>> MdtSubscriptions::MdtXfrm::MdtXfr
     }
 
     count = 0;
-    for (auto const & c : mdt_xfrm_op_fields)
+    for (auto c : mdt_xfrm_op_fields.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1145,14 +1172,14 @@ MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::MdtXfrmOpFilters()
     field{YType::str, "field"},
     lop{YType::enumeration, "lop"},
     next_lop{YType::enumeration, "next-lop"}
-    	,
+        ,
     op_event(std::make_shared<MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent>())
-	,condition(std::make_shared<MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition>())
+    , condition(std::make_shared<MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition>())
 {
     op_event->parent = this;
     condition->parent = this;
 
-    yang_name = "mdt-xfrm-op-filters"; yang_parent_name = "mdt-xfrm-op"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdt-xfrm-op-filters"; yang_parent_name = "mdt-xfrm-op"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::~MdtXfrmOpFilters()
@@ -1161,6 +1188,7 @@ MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::~MdtXfrmOpFilters()
 
 bool MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::has_data() const
 {
+    if (is_presence_container) return true;
     return filter_id.is_set
 	|| field.is_set
 	|| lop.is_set
@@ -1183,7 +1211,8 @@ bool MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::has_operation() con
 std::string MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-xfrm-op-filters" <<"[filter-id='" <<filter_id <<"']";
+    path_buffer << "mdt-xfrm-op-filters";
+    ADD_KEY_TOKEN(filter_id, "filter-id");
     return path_buffer.str();
 }
 
@@ -1300,7 +1329,7 @@ MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent::OpEvent()
     onchange{YType::boolean, "onchange"}
 {
 
-    yang_name = "op-event"; yang_parent_name = "mdt-xfrm-op-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "op-event"; yang_parent_name = "mdt-xfrm-op-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent::~OpEvent()
@@ -1309,6 +1338,7 @@ MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent::~OpEvent()
 
 bool MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent::has_data() const
 {
+    if (is_presence_container) return true;
     return onchange.is_set;
 }
 
@@ -1378,7 +1408,7 @@ MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition::Condition()
     value_{YType::str, "value"}
 {
 
-    yang_name = "condition"; yang_parent_name = "mdt-xfrm-op-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "condition"; yang_parent_name = "mdt-xfrm-op-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition::~Condition()
@@ -1387,6 +1417,7 @@ MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition::~Condition()
 
 bool MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set;
 }
@@ -1470,7 +1501,7 @@ MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::MdtXfrmOpFields()
     op_type{YType::enumeration, "op-type"}
 {
 
-    yang_name = "mdt-xfrm-op-fields"; yang_parent_name = "mdt-xfrm-op"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdt-xfrm-op-fields"; yang_parent_name = "mdt-xfrm-op"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::~MdtXfrmOpFields()
@@ -1479,6 +1510,7 @@ MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::~MdtXfrmOpFields()
 
 bool MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::has_data() const
 {
+    if (is_presence_container) return true;
     return field_id.is_set
 	|| field.is_set
 	|| op_type.is_set;
@@ -1495,7 +1527,8 @@ bool MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::has_operation() cons
 std::string MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-xfrm-op-fields" <<"[field-id='" <<field_id <<"']";
+    path_buffer << "mdt-xfrm-op-fields";
+    ADD_KEY_TOKEN(field_id, "field-id");
     return path_buffer.str();
 }
 
@@ -1568,8 +1601,13 @@ bool MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::has_leaf_or_child_of
     return false;
 }
 
-const Enum::YLeaf MdtXfrmAttrType::mdt_xfrm_attr_none {0, "mdt-xfrm-attr-none"};
-const Enum::YLeaf MdtXfrmAttrType::mandatory {1, "mandatory"};
+const Enum::YLeaf MdtXfrmOperator::operator_none {0, "operator-none"};
+const Enum::YLeaf MdtXfrmOperator::eq {1, "eq"};
+const Enum::YLeaf MdtXfrmOperator::ne {2, "ne"};
+const Enum::YLeaf MdtXfrmOperator::gt {3, "gt"};
+const Enum::YLeaf MdtXfrmOperator::ge {4, "ge"};
+const Enum::YLeaf MdtXfrmOperator::lt {5, "lt"};
+const Enum::YLeaf MdtXfrmOperator::le {6, "le"};
 
 const Enum::YLeaf MdtXfrmOpType::sub_record {0, "sub-record"};
 const Enum::YLeaf MdtXfrmOpType::delta {1, "delta"};
@@ -1578,13 +1616,8 @@ const Enum::YLeaf MdtXfrmLogicOp::mdt_xfrm_lop_none {0, "mdt-xfrm-lop-none"};
 const Enum::YLeaf MdtXfrmLogicOp::and_ {1, "and"};
 const Enum::YLeaf MdtXfrmLogicOp::or_ {2, "or"};
 
-const Enum::YLeaf MdtXfrmOperator::operator_none {0, "operator-none"};
-const Enum::YLeaf MdtXfrmOperator::eq {1, "eq"};
-const Enum::YLeaf MdtXfrmOperator::ne {2, "ne"};
-const Enum::YLeaf MdtXfrmOperator::gt {3, "gt"};
-const Enum::YLeaf MdtXfrmOperator::ge {4, "ge"};
-const Enum::YLeaf MdtXfrmOperator::lt {5, "lt"};
-const Enum::YLeaf MdtXfrmOperator::le {6, "le"};
+const Enum::YLeaf MdtXfrmAttrType::mdt_xfrm_attr_none {0, "mdt-xfrm-attr-none"};
+const Enum::YLeaf MdtXfrmAttrType::mandatory {1, "mandatory"};
 
 
 }

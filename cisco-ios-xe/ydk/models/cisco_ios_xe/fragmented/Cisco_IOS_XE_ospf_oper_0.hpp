@@ -58,7 +58,7 @@ class OspfOperData::OspfState : public ydk::Entity
         ydk::YLeaf op_mode; //type: OspfOperationMode
         class OspfInstance; //type: OspfOperData::OspfState::OspfInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance> > ospf_instance;
+        ydk::YList ospf_instance;
         
 }; // OspfOperData::OspfState
 
@@ -86,9 +86,9 @@ class OspfOperData::OspfState::OspfInstance : public ydk::Entity
         class LinkScopeLsas; //type: OspfOperData::OspfState::OspfInstance::LinkScopeLsas
         class MultiTopology; //type: OspfOperData::OspfState::OspfInstance::MultiTopology
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea> > ospf_area;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas> > link_scope_lsas;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::MultiTopology> > multi_topology;
+        ydk::YList ospf_area;
+        ydk::YList link_scope_lsas;
+        ydk::YList multi_topology;
         
 }; // OspfOperData::OspfState::OspfInstance
 
@@ -113,8 +113,8 @@ class OspfOperData::OspfState::OspfInstance::OspfArea : public ydk::Entity
         class OspfInterface; //type: OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface
         class AreaScopeLsa; //type: OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface> > ospf_interface;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa> > area_scope_lsa;
+        ydk::YList ospf_interface;
+        ydk::YList area_scope_lsa;
         
 }; // OspfOperData::OspfState::OspfInstance::OspfArea
 
@@ -166,13 +166,13 @@ class OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface : public yd
         class IntfMultiTopology; //type: OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::MultiArea> multi_area;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor> > static_neighbor;
+        ydk::YList static_neighbor;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::FastReroute> fast_reroute;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::TtlSecurity> ttl_security;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication> authentication;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor> > ospf_neighbor;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas> > intf_link_scope_lsas;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology> > intf_multi_topology;
+        ydk::YList ospf_neighbor;
+        ydk::YList intf_link_scope_lsas;
+        ydk::YList intf_multi_topology;
         
 }; // OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface
 
@@ -392,8 +392,8 @@ class OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSc
         class LinkScopeLsa; //type: OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa
         class AreaScopeLsa; //type: OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa> > link_scope_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa> > area_scope_lsa;
+        ydk::YList link_scope_lsa;
+        ydk::YList area_scope_lsa;
         
 }; // OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas
 
@@ -434,17 +434,17 @@ class OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSc
         class UnknownSubTlv; //type: OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa> ospfv2_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link> > ospfv2_link;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Topology> > ospfv2_topology;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2External> > ospfv2_external;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv> > ospfv2_unknown_tlv;
+        ydk::YList ospfv2_link;
+        ydk::YList ospfv2_topology;
+        ydk::YList ospfv2_external;
+        ydk::YList ospfv2_unknown_tlv;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal> ospfv3_lsa_val;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3Link> > ospfv3_link;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList> > ospfv3_prefix_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix> > ospfv3_ia_prefix;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::MultiTopology> > multi_topology;
+        ydk::YList ospfv3_link;
+        ydk::YList ospfv3_prefix_list;
+        ydk::YList ospfv3_ia_prefix;
+        ydk::YList multi_topology;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Tlv> tlv;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv> > unknown_sub_tlv;
+        ydk::YList unknown_sub_tlv;
         
 }; // OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa
 
@@ -574,7 +574,7 @@ class OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSc
         ydk::YLeaf type; //type: uint8
         class Ospfv2Topology; //type: OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology> > ospfv2_topology;
+        ydk::YList ospfv2_topology;
         
 }; // OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link
 
@@ -1196,13 +1196,13 @@ class OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSc
         class Ospfv3IaPrefix; //type: OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa> ospfv2_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link> > ospfv2_link;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Topology> > ospfv2_topology;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2External> > ospfv2_external;
+        ydk::YList ospfv2_link;
+        ydk::YList ospfv2_topology;
+        ydk::YList ospfv2_external;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa> ospfv3_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Link> > ospfv3_link;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Prefix> > ospfv3_prefix;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix> > ospfv3_ia_prefix;
+        ydk::YList ospfv3_link;
+        ydk::YList ospfv3_prefix;
+        ydk::YList ospfv3_ia_prefix;
         
 }; // OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa
 
@@ -1332,7 +1332,7 @@ class OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSc
         ydk::YLeaf type; //type: uint8
         class Ospfv2Topology; //type: OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology> > ospfv2_topology;
+        ydk::YList ospfv2_topology;
         
 }; // OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link
 
@@ -1868,7 +1868,7 @@ class OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa : public ydk
         ydk::YLeaf lsa_type; //type: uint32
         class AreaScopeLsa_; //type: OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_> > area_scope_lsa;
+        ydk::YList area_scope_lsa;
         
 }; // OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa
 
@@ -1903,13 +1903,13 @@ class OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLs
         class Ospfv3IaPrefix; //type: OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa> ospfv2_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link> > ospfv2_link;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Topology> > ospfv2_topology;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2External> > ospfv2_external;
+        ydk::YList ospfv2_link;
+        ydk::YList ospfv2_topology;
+        ydk::YList ospfv2_external;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa> ospfv3_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Link> > ospfv3_link;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Prefix> > ospfv3_prefix;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix> > ospfv3_ia_prefix;
+        ydk::YList ospfv3_link;
+        ydk::YList ospfv3_prefix;
+        ydk::YList ospfv3_ia_prefix;
         
 }; // OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_
 
@@ -2039,7 +2039,7 @@ class OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLs
         ydk::YLeaf type; //type: uint8
         class Ospfv2Topology; //type: OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology> > ospfv2_topology;
+        ydk::YList ospfv2_topology;
         
 }; // OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link
 
@@ -2555,8 +2555,8 @@ class OspfOperData::OspfState::OspfInstance::LinkScopeLsas : public ydk::Entity
         class LinkScopeLsa; //type: OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa
         class AreaScopeLsa; //type: OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa> > link_scope_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa> > area_scope_lsa;
+        ydk::YList link_scope_lsa;
+        ydk::YList area_scope_lsa;
         
 }; // OspfOperData::OspfState::OspfInstance::LinkScopeLsas
 
@@ -2597,17 +2597,17 @@ class OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa : publi
         class UnknownSubTlv; //type: OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa> ospfv2_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link> > ospfv2_link;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topology> > ospfv2_topology;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2External> > ospfv2_external;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv> > ospfv2_unknown_tlv;
+        ydk::YList ospfv2_link;
+        ydk::YList ospfv2_topology;
+        ydk::YList ospfv2_external;
+        ydk::YList ospfv2_unknown_tlv;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal> ospfv3_lsa_val;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link> > ospfv3_link;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList> > ospfv3_prefix_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix> > ospfv3_ia_prefix;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopology> > multi_topology;
+        ydk::YList ospfv3_link;
+        ydk::YList ospfv3_prefix_list;
+        ydk::YList ospfv3_ia_prefix;
+        ydk::YList multi_topology;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Tlv> tlv;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv> > unknown_sub_tlv;
+        ydk::YList unknown_sub_tlv;
         
 }; // OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa
 
@@ -2737,7 +2737,7 @@ class OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2
         ydk::YLeaf type; //type: uint8
         class Ospfv2Topology; //type: OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology> > ospfv2_topology;
+        ydk::YList ospfv2_topology;
         
 }; // OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link
 
@@ -3359,13 +3359,13 @@ class OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa : publi
         class Ospfv3IaPrefix; //type: OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa> ospfv2_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link> > ospfv2_link;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topology> > ospfv2_topology;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2External> > ospfv2_external;
+        ydk::YList ospfv2_link;
+        ydk::YList ospfv2_topology;
+        ydk::YList ospfv2_external;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa> ospfv3_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Link> > ospfv3_link;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Prefix> > ospfv3_prefix;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix> > ospfv3_ia_prefix;
+        ydk::YList ospfv3_link;
+        ydk::YList ospfv3_prefix;
+        ydk::YList ospfv3_ia_prefix;
         
 }; // OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa
 
@@ -3495,7 +3495,7 @@ class OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2
         ydk::YLeaf type; //type: uint8
         class Ospfv2Topology; //type: OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology> > ospfv2_topology;
+        ydk::YList ospfv2_topology;
         
 }; // OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link
 
@@ -3873,11 +3873,17 @@ class OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3
 
 }; // OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags
 
-class AddressFamily : public ydk::Enum
+class NbrStateType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf address_family_ipv4;
-        static const ydk::Enum::YLeaf address_family_ipv6;
+        static const ydk::Enum::YLeaf ospf_nbr_down;
+        static const ydk::Enum::YLeaf ospf_nbr_attempt;
+        static const ydk::Enum::YLeaf ospf_nbr_init;
+        static const ydk::Enum::YLeaf ospf_nbr_two_way;
+        static const ydk::Enum::YLeaf ospf_nbr_exchange_start;
+        static const ydk::Enum::YLeaf ospf_nbr_exchange;
+        static const ydk::Enum::YLeaf ospf_nbr_loading;
+        static const ydk::Enum::YLeaf ospf_nbr_full;
 
 };
 
@@ -3908,17 +3914,11 @@ class OspfAuthType : public ydk::Enum
 
 };
 
-class NbrStateType : public ydk::Enum
+class AddressFamily : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ospf_nbr_down;
-        static const ydk::Enum::YLeaf ospf_nbr_attempt;
-        static const ydk::Enum::YLeaf ospf_nbr_init;
-        static const ydk::Enum::YLeaf ospf_nbr_two_way;
-        static const ydk::Enum::YLeaf ospf_nbr_exchange_start;
-        static const ydk::Enum::YLeaf ospf_nbr_exchange;
-        static const ydk::Enum::YLeaf ospf_nbr_loading;
-        static const ydk::Enum::YLeaf ospf_nbr_full;
+        static const ydk::Enum::YLeaf address_family_ipv4;
+        static const ydk::Enum::YLeaf address_family_ipv6;
 
 };
 

@@ -17,7 +17,7 @@ Logmsg::Logmsg()
 {
     input->parent = this;
 
-    yang_name = "logmsg"; yang_parent_name = "Cisco-IOS-XR-syslog-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "logmsg"; yang_parent_name = "Cisco-IOS-XR-syslog-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Logmsg::~Logmsg()
@@ -26,6 +26,7 @@ Logmsg::~Logmsg()
 
 bool Logmsg::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -123,7 +124,7 @@ Logmsg::Input::Input()
     message{YType::str, "message"}
 {
 
-    yang_name = "input"; yang_parent_name = "logmsg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "logmsg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Logmsg::Input::~Input()
@@ -132,6 +133,7 @@ Logmsg::Input::~Input()
 
 bool Logmsg::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return severity.is_set
 	|| message.is_set;
 }

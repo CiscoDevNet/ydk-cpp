@@ -10,11 +10,11 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_vpn_oper {
 
-class L3Vpn : public ydk::Entity
+class L3vpn : public ydk::Entity
 {
     public:
-        L3Vpn();
-        ~L3Vpn();
+        L3vpn();
+        ~L3vpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -31,16 +31,16 @@ class L3Vpn : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class InvalidVrfs; //type: L3Vpn::InvalidVrfs
-        class Vrfs; //type: L3Vpn::Vrfs
+        class InvalidVrfs; //type: L3vpn::InvalidVrfs
+        class Vrfs; //type: L3vpn::Vrfs
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::InvalidVrfs> invalid_vrfs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::Vrfs> vrfs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_vpn_oper::L3vpn::InvalidVrfs> invalid_vrfs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_vpn_oper::L3vpn::Vrfs> vrfs;
         
-}; // L3Vpn
+}; // L3vpn
 
 
-class L3Vpn::InvalidVrfs : public ydk::Entity
+class L3vpn::InvalidVrfs : public ydk::Entity
 {
     public:
         InvalidVrfs();
@@ -57,14 +57,14 @@ class L3Vpn::InvalidVrfs : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class InvalidVrf; //type: L3Vpn::InvalidVrfs::InvalidVrf
+        class InvalidVrf; //type: L3vpn::InvalidVrfs::InvalidVrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::InvalidVrfs::InvalidVrf> > invalid_vrf;
+        ydk::YList invalid_vrf;
         
-}; // L3Vpn::InvalidVrfs
+}; // L3vpn::InvalidVrfs
 
 
-class L3Vpn::InvalidVrfs::InvalidVrf : public ydk::Entity
+class L3vpn::InvalidVrfs::InvalidVrf : public ydk::Entity
 {
     public:
         InvalidVrf();
@@ -86,16 +86,16 @@ class L3Vpn::InvalidVrfs::InvalidVrf : public ydk::Entity
         ydk::YLeaf vrf_description; //type: string
         ydk::YLeaf route_distinguisher; //type: string
         ydk::YLeaf is_big_vrf; //type: boolean
-        class Interface; //type: L3Vpn::InvalidVrfs::InvalidVrf::Interface
-        class Af; //type: L3Vpn::InvalidVrfs::InvalidVrf::Af
+        class Interface; //type: L3vpn::InvalidVrfs::InvalidVrf::Interface
+        class Af; //type: L3vpn::InvalidVrfs::InvalidVrf::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::InvalidVrfs::InvalidVrf::Interface> > interface;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::InvalidVrfs::InvalidVrf::Af> > af;
+        ydk::YList interface;
+        ydk::YList af;
         
-}; // L3Vpn::InvalidVrfs::InvalidVrf
+}; // L3vpn::InvalidVrfs::InvalidVrf
 
 
-class L3Vpn::InvalidVrfs::InvalidVrf::Interface : public ydk::Entity
+class L3vpn::InvalidVrfs::InvalidVrf::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -113,10 +113,10 @@ class L3Vpn::InvalidVrfs::InvalidVrf::Interface : public ydk::Entity
 
         ydk::YLeaf interface_name; //type: string
 
-}; // L3Vpn::InvalidVrfs::InvalidVrf::Interface
+}; // L3vpn::InvalidVrfs::InvalidVrf::Interface
 
 
-class L3Vpn::InvalidVrfs::InvalidVrf::Af : public ydk::Entity
+class L3vpn::InvalidVrfs::InvalidVrf::Af : public ydk::Entity
 {
     public:
         Af();
@@ -136,14 +136,14 @@ class L3Vpn::InvalidVrfs::InvalidVrf::Af : public ydk::Entity
         ydk::YLeaf saf_name; //type: MplsVpnSafi
         ydk::YLeaf import_route_policy; //type: string
         ydk::YLeaf export_route_policy; //type: string
-        class RouteTarget; //type: L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget
+        class RouteTarget; //type: L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget> > route_target;
+        ydk::YList route_target;
         
-}; // L3Vpn::InvalidVrfs::InvalidVrf::Af
+}; // L3vpn::InvalidVrfs::InvalidVrf::Af
 
 
-class L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget : public ydk::Entity
+class L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget : public ydk::Entity
 {
     public:
         RouteTarget();
@@ -164,10 +164,10 @@ class L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget : public ydk::Entity
         ydk::YLeaf af_name; //type: MplsVpnAfi
         ydk::YLeaf saf_name; //type: MplsVpnSafi
 
-}; // L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget
+}; // L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget
 
 
-class L3Vpn::Vrfs : public ydk::Entity
+class L3vpn::Vrfs : public ydk::Entity
 {
     public:
         Vrfs();
@@ -184,14 +184,14 @@ class L3Vpn::Vrfs : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vrf; //type: L3Vpn::Vrfs::Vrf
+        class Vrf; //type: L3vpn::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
-}; // L3Vpn::Vrfs
+}; // L3vpn::Vrfs
 
 
-class L3Vpn::Vrfs::Vrf : public ydk::Entity
+class L3vpn::Vrfs::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -213,16 +213,16 @@ class L3Vpn::Vrfs::Vrf : public ydk::Entity
         ydk::YLeaf vrf_description; //type: string
         ydk::YLeaf route_distinguisher; //type: string
         ydk::YLeaf is_big_vrf; //type: boolean
-        class Interface; //type: L3Vpn::Vrfs::Vrf::Interface
-        class Af; //type: L3Vpn::Vrfs::Vrf::Af
+        class Interface; //type: L3vpn::Vrfs::Vrf::Interface
+        class Af; //type: L3vpn::Vrfs::Vrf::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::Vrfs::Vrf::Interface> > interface;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::Vrfs::Vrf::Af> > af;
+        ydk::YList interface;
+        ydk::YList af;
         
-}; // L3Vpn::Vrfs::Vrf
+}; // L3vpn::Vrfs::Vrf
 
 
-class L3Vpn::Vrfs::Vrf::Interface : public ydk::Entity
+class L3vpn::Vrfs::Vrf::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -240,10 +240,10 @@ class L3Vpn::Vrfs::Vrf::Interface : public ydk::Entity
 
         ydk::YLeaf interface_name; //type: string
 
-}; // L3Vpn::Vrfs::Vrf::Interface
+}; // L3vpn::Vrfs::Vrf::Interface
 
 
-class L3Vpn::Vrfs::Vrf::Af : public ydk::Entity
+class L3vpn::Vrfs::Vrf::Af : public ydk::Entity
 {
     public:
         Af();
@@ -263,14 +263,14 @@ class L3Vpn::Vrfs::Vrf::Af : public ydk::Entity
         ydk::YLeaf saf_name; //type: MplsVpnSafi
         ydk::YLeaf import_route_policy; //type: string
         ydk::YLeaf export_route_policy; //type: string
-        class RouteTarget; //type: L3Vpn::Vrfs::Vrf::Af::RouteTarget
+        class RouteTarget; //type: L3vpn::Vrfs::Vrf::Af::RouteTarget
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::Vrfs::Vrf::Af::RouteTarget> > route_target;
+        ydk::YList route_target;
         
-}; // L3Vpn::Vrfs::Vrf::Af
+}; // L3vpn::Vrfs::Vrf::Af
 
 
-class L3Vpn::Vrfs::Vrf::Af::RouteTarget : public ydk::Entity
+class L3vpn::Vrfs::Vrf::Af::RouteTarget : public ydk::Entity
 {
     public:
         RouteTarget();
@@ -291,7 +291,7 @@ class L3Vpn::Vrfs::Vrf::Af::RouteTarget : public ydk::Entity
         ydk::YLeaf af_name; //type: MplsVpnAfi
         ydk::YLeaf saf_name; //type: MplsVpnSafi
 
-}; // L3Vpn::Vrfs::Vrf::Af::RouteTarget
+}; // L3vpn::Vrfs::Vrf::Af::RouteTarget
 
 class MplsVpnRt : public ydk::Enum
 {
@@ -302,20 +302,20 @@ class MplsVpnRt : public ydk::Enum
 
 };
 
+class MplsVpnAfi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
 class MplsVpnSafi : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unicast;
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf flowspec;
-
-};
-
-class MplsVpnAfi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
 
 };
 

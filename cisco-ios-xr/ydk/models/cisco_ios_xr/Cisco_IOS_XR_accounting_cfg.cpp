@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_accounting_cfg {
 Accounting::Accounting()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     interfaces(std::make_shared<Accounting::Interfaces>())
 {
     interfaces->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "Cisco-IOS-XR-accounting-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "accounting"; yang_parent_name = "Cisco-IOS-XR-accounting-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Accounting::~Accounting()
@@ -28,6 +28,7 @@ Accounting::~Accounting()
 
 bool Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (interfaces !=  nullptr && interfaces->has_data());
 }
@@ -135,14 +136,14 @@ bool Accounting::has_leaf_or_child_of_name(const std::string & name) const
 Accounting::Interfaces::Interfaces()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     mpls(std::make_shared<Accounting::Interfaces::Mpls>())
-	,segment_routing(std::make_shared<Accounting::Interfaces::SegmentRouting>())
+    , segment_routing(std::make_shared<Accounting::Interfaces::SegmentRouting>())
 {
     mpls->parent = this;
     segment_routing->parent = this;
 
-    yang_name = "interfaces"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Accounting::Interfaces::~Interfaces()
@@ -151,6 +152,7 @@ Accounting::Interfaces::~Interfaces()
 
 bool Accounting::Interfaces::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (mpls !=  nullptr && mpls->has_data())
 	|| (segment_routing !=  nullptr && segment_routing->has_data());
@@ -259,7 +261,7 @@ Accounting::Interfaces::Mpls::Mpls()
     enable_v4rsvpte{YType::empty, "enable-v4rsvpte"}
 {
 
-    yang_name = "mpls"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Accounting::Interfaces::Mpls::~Mpls()
@@ -268,6 +270,7 @@ Accounting::Interfaces::Mpls::~Mpls()
 
 bool Accounting::Interfaces::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| enable_v4rsvpte.is_set;
 }
@@ -358,7 +361,7 @@ Accounting::Interfaces::SegmentRouting::SegmentRouting()
     enable_mplsv6{YType::empty, "enable-mplsv6"}
 {
 
-    yang_name = "segment-routing"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "segment-routing"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Accounting::Interfaces::SegmentRouting::~SegmentRouting()
@@ -367,6 +370,7 @@ Accounting::Interfaces::SegmentRouting::~SegmentRouting()
 
 bool Accounting::Interfaces::SegmentRouting::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| enable_mplsv4.is_set
 	|| enable_mplsv6.is_set;

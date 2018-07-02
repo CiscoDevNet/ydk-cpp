@@ -17,7 +17,7 @@ Config::Config()
 {
     debug->parent = this;
 
-    yang_name = "config"; yang_parent_name = "Cisco-IOS-XR-sysadmin-debug-trace"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "Cisco-IOS-XR-sysadmin-debug-trace"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Config::~Config()
@@ -26,6 +26,7 @@ Config::~Config()
 
 bool Config::has_data() const
 {
+    if (is_presence_container) return true;
     return (debug !=  nullptr && debug->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Config::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Config::Debug::Debug()
+    :
+    trace(this, {"connection_type"})
 {
 
-    yang_name = "debug"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "debug"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Config::Debug::~Debug()
@@ -129,7 +132,8 @@ Config::Debug::~Debug()
 
 bool Config::Debug::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Config::Debug::has_data() const
 
 bool Config::Debug::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Config::Debug::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Config::Debug::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Config::Debug::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -221,7 +225,7 @@ Config::Debug::Trace::Trace()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "trace"; yang_parent_name = "debug"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "debug"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Config::Debug::Trace::~Trace()
@@ -230,6 +234,7 @@ Config::Debug::Trace::~Trace()
 
 bool Config::Debug::Trace::has_data() const
 {
+    if (is_presence_container) return true;
     return connection_type.is_set
 	|| enable.is_set
 	|| disable.is_set;
@@ -253,7 +258,8 @@ std::string Config::Debug::Trace::get_absolute_path() const
 std::string Config::Debug::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[connection_type='" <<connection_type <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(connection_type, "connection_type");
     return path_buffer.str();
 }
 

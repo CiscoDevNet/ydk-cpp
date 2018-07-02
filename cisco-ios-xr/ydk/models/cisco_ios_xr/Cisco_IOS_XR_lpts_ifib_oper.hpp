@@ -57,7 +57,7 @@ class LptsIfib::Nodes : public ydk::Entity
 
         class Node; //type: LptsIfib::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_ifib_oper::LptsIfib::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // LptsIfib::Nodes
 
@@ -105,7 +105,7 @@ class LptsIfib::Nodes::Node::SliceIds : public ydk::Entity
 
         class SliceId; //type: LptsIfib::Nodes::Node::SliceIds::SliceId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_ifib_oper::LptsIfib::Nodes::Node::SliceIds::SliceId> > slice_id;
+        ydk::YList slice_id;
         
 }; // LptsIfib::Nodes::Node::SliceIds
 
@@ -129,7 +129,7 @@ class LptsIfib::Nodes::Node::SliceIds::SliceId : public ydk::Entity
         ydk::YLeaf slice_name; //type: string
         class Entry; //type: LptsIfib::Nodes::Node::SliceIds::SliceId::Entry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_ifib_oper::LptsIfib::Nodes::Node::SliceIds::SliceId::Entry> > entry;
+        ydk::YList entry;
         
 }; // LptsIfib::Nodes::Node::SliceIds::SliceId
 
@@ -150,7 +150,7 @@ class LptsIfib::Nodes::Node::SliceIds::SliceId::Entry : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf entry; //type: int32
+        ydk::YLeaf entry; //type: uint32
         ydk::YLeaf destination_type; //type: string
         ydk::YLeaf destination_value; //type: string
         ydk::YLeaf source_port; //type: string

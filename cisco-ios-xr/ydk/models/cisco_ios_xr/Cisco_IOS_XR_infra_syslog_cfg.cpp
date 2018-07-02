@@ -17,7 +17,7 @@ SyslogService::SyslogService()
 {
     timestamps->parent = this;
 
-    yang_name = "syslog-service"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "syslog-service"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SyslogService::~SyslogService()
@@ -26,6 +26,7 @@ SyslogService::~SyslogService()
 
 bool SyslogService::has_data() const
 {
+    if (is_presence_container) return true;
     return (timestamps !=  nullptr && timestamps->has_data());
 }
 
@@ -120,14 +121,14 @@ bool SyslogService::has_leaf_or_child_of_name(const std::string & name) const
 SyslogService::Timestamps::Timestamps()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     log(std::make_shared<SyslogService::Timestamps::Log>())
-	,debug(std::make_shared<SyslogService::Timestamps::Debug>())
+    , debug(std::make_shared<SyslogService::Timestamps::Debug>())
 {
     log->parent = this;
     debug->parent = this;
 
-    yang_name = "timestamps"; yang_parent_name = "syslog-service"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timestamps"; yang_parent_name = "syslog-service"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SyslogService::Timestamps::~Timestamps()
@@ -136,6 +137,7 @@ SyslogService::Timestamps::~Timestamps()
 
 bool SyslogService::Timestamps::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (log !=  nullptr && log->has_data())
 	|| (debug !=  nullptr && debug->has_data());
@@ -242,12 +244,12 @@ SyslogService::Timestamps::Log::Log()
     :
     log_uptime{YType::empty, "log-uptime"},
     log_timestamp_disable{YType::empty, "log-timestamp-disable"}
-    	,
+        ,
     log_datetime(std::make_shared<SyslogService::Timestamps::Log::LogDatetime>())
 {
     log_datetime->parent = this;
 
-    yang_name = "log"; yang_parent_name = "timestamps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "log"; yang_parent_name = "timestamps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SyslogService::Timestamps::Log::~Log()
@@ -256,6 +258,7 @@ SyslogService::Timestamps::Log::~Log()
 
 bool SyslogService::Timestamps::Log::has_data() const
 {
+    if (is_presence_container) return true;
     return log_uptime.is_set
 	|| log_timestamp_disable.is_set
 	|| (log_datetime !=  nullptr && log_datetime->has_data());
@@ -361,7 +364,7 @@ SyslogService::Timestamps::Log::LogDatetime::LogDatetime()
 {
     log_datetime_value->parent = this;
 
-    yang_name = "log-datetime"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "log-datetime"; yang_parent_name = "log"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SyslogService::Timestamps::Log::LogDatetime::~LogDatetime()
@@ -370,6 +373,7 @@ SyslogService::Timestamps::Log::LogDatetime::~LogDatetime()
 
 bool SyslogService::Timestamps::Log::LogDatetime::has_data() const
 {
+    if (is_presence_container) return true;
     return (log_datetime_value !=  nullptr && log_datetime_value->has_data());
 }
 
@@ -451,7 +455,7 @@ SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::LogDatetimeValue(
     year{YType::enumeration, "year"}
 {
 
-    yang_name = "log-datetime-value"; yang_parent_name = "log-datetime"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "log-datetime-value"; yang_parent_name = "log-datetime"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::~LogDatetimeValue()
@@ -460,6 +464,7 @@ SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::~LogDatetimeValue
 
 bool SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::has_data() const
 {
+    if (is_presence_container) return true;
     return time_stamp_value.is_set
 	|| msec.is_set
 	|| time_zone.is_set
@@ -573,12 +578,12 @@ SyslogService::Timestamps::Debug::Debug()
     :
     debug_timestamp_disable{YType::empty, "debug-timestamp-disable"},
     debug_uptime{YType::empty, "debug-uptime"}
-    	,
+        ,
     debug_datetime(std::make_shared<SyslogService::Timestamps::Debug::DebugDatetime>())
 {
     debug_datetime->parent = this;
 
-    yang_name = "debug"; yang_parent_name = "timestamps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "debug"; yang_parent_name = "timestamps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SyslogService::Timestamps::Debug::~Debug()
@@ -587,6 +592,7 @@ SyslogService::Timestamps::Debug::~Debug()
 
 bool SyslogService::Timestamps::Debug::has_data() const
 {
+    if (is_presence_container) return true;
     return debug_timestamp_disable.is_set
 	|| debug_uptime.is_set
 	|| (debug_datetime !=  nullptr && debug_datetime->has_data());
@@ -692,7 +698,7 @@ SyslogService::Timestamps::Debug::DebugDatetime::DebugDatetime()
 {
     datetime_value->parent = this;
 
-    yang_name = "debug-datetime"; yang_parent_name = "debug"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "debug-datetime"; yang_parent_name = "debug"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SyslogService::Timestamps::Debug::DebugDatetime::~DebugDatetime()
@@ -701,6 +707,7 @@ SyslogService::Timestamps::Debug::DebugDatetime::~DebugDatetime()
 
 bool SyslogService::Timestamps::Debug::DebugDatetime::has_data() const
 {
+    if (is_presence_container) return true;
     return (datetime_value !=  nullptr && datetime_value->has_data());
 }
 
@@ -782,7 +789,7 @@ SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::DatetimeValue()
     year{YType::enumeration, "year"}
 {
 
-    yang_name = "datetime-value"; yang_parent_name = "debug-datetime"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "datetime-value"; yang_parent_name = "debug-datetime"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::~DatetimeValue()
@@ -791,6 +798,7 @@ SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::~DatetimeValue()
 
 bool SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::has_data() const
 {
+    if (is_presence_container) return true;
     return time_stamp_value.is_set
 	|| msec.is_set
 	|| time_zone.is_set
@@ -906,22 +914,22 @@ Syslog::Syslog()
     local_log_file_size{YType::uint32, "local-log-file-size"},
     enable_console_logging{YType::boolean, "enable-console-logging"},
     suppress_duplicates{YType::empty, "suppress-duplicates"}
-    	,
+        ,
     monitor_logging(std::make_shared<Syslog::MonitorLogging>())
-	,history_logging(std::make_shared<Syslog::HistoryLogging>())
-	,logging_facilities(std::make_shared<Syslog::LoggingFacilities>())
-	,trap_logging(std::make_shared<Syslog::TrapLogging>())
-	,buffered_logging(std::make_shared<Syslog::BufferedLogging>())
-	,host_server(std::make_shared<Syslog::HostServer>())
-	,console_logging(std::make_shared<Syslog::ConsoleLogging>())
-	,files(std::make_shared<Syslog::Files>())
-	,ipv4(std::make_shared<Syslog::Ipv4>())
-	,archive(std::make_shared<Syslog::Archive>())
-	,ipv6(std::make_shared<Syslog::Ipv6>())
-	,source_interface_table(std::make_shared<Syslog::SourceInterfaceTable>())
-	,alarm_logger(std::make_shared<Syslog::AlarmLogger>())
-	,correlator(std::make_shared<Syslog::Correlator>())
-	,suppression(std::make_shared<Syslog::Suppression>())
+    , history_logging(std::make_shared<Syslog::HistoryLogging>())
+    , logging_facilities(std::make_shared<Syslog::LoggingFacilities>())
+    , trap_logging(std::make_shared<Syslog::TrapLogging>())
+    , buffered_logging(std::make_shared<Syslog::BufferedLogging>())
+    , host_server(std::make_shared<Syslog::HostServer>())
+    , console_logging(std::make_shared<Syslog::ConsoleLogging>())
+    , files(std::make_shared<Syslog::Files>())
+    , ipv4(std::make_shared<Syslog::Ipv4>())
+    , archive(std::make_shared<Syslog::Archive>())
+    , ipv6(std::make_shared<Syslog::Ipv6>())
+    , source_interface_table(std::make_shared<Syslog::SourceInterfaceTable>())
+    , alarm_logger(std::make_shared<Syslog::AlarmLogger>())
+    , correlator(std::make_shared<Syslog::Correlator>())
+    , suppression(std::make_shared<Syslog::Suppression>())
 {
     monitor_logging->parent = this;
     history_logging->parent = this;
@@ -939,7 +947,7 @@ Syslog::Syslog()
     correlator->parent = this;
     suppression->parent = this;
 
-    yang_name = "syslog"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "syslog"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Syslog::~Syslog()
@@ -948,6 +956,7 @@ Syslog::~Syslog()
 
 bool Syslog::has_data() const
 {
+    if (is_presence_container) return true;
     return host_name_prefix.is_set
 	|| local_log_file_size.is_set
 	|| enable_console_logging.is_set
@@ -1318,12 +1327,12 @@ bool Syslog::has_leaf_or_child_of_name(const std::string & name) const
 Syslog::MonitorLogging::MonitorLogging()
     :
     logging_level{YType::enumeration, "logging-level"}
-    	,
+        ,
     monitor_discriminator(std::make_shared<Syslog::MonitorLogging::MonitorDiscriminator>())
 {
     monitor_discriminator->parent = this;
 
-    yang_name = "monitor-logging"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "monitor-logging"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::MonitorLogging::~MonitorLogging()
@@ -1332,6 +1341,7 @@ Syslog::MonitorLogging::~MonitorLogging()
 
 bool Syslog::MonitorLogging::has_data() const
 {
+    if (is_presence_container) return true;
     return logging_level.is_set
 	|| (monitor_discriminator !=  nullptr && monitor_discriminator->has_data());
 }
@@ -1428,7 +1438,7 @@ Syslog::MonitorLogging::MonitorDiscriminator::MonitorDiscriminator()
     nomatch2{YType::str, "nomatch2"}
 {
 
-    yang_name = "monitor-discriminator"; yang_parent_name = "monitor-logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "monitor-discriminator"; yang_parent_name = "monitor-logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::MonitorLogging::MonitorDiscriminator::~MonitorDiscriminator()
@@ -1437,6 +1447,7 @@ Syslog::MonitorLogging::MonitorDiscriminator::~MonitorDiscriminator()
 
 bool Syslog::MonitorLogging::MonitorDiscriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return match2.is_set
 	|| nomatch1.is_set
 	|| match1.is_set
@@ -1578,7 +1589,7 @@ Syslog::HistoryLogging::HistoryLogging()
     logging_level{YType::enumeration, "logging-level"}
 {
 
-    yang_name = "history-logging"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "history-logging"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::HistoryLogging::~HistoryLogging()
@@ -1587,6 +1598,7 @@ Syslog::HistoryLogging::~HistoryLogging()
 
 bool Syslog::HistoryLogging::has_data() const
 {
+    if (is_presence_container) return true;
     return history_size.is_set
 	|| logging_level.is_set;
 }
@@ -1675,7 +1687,7 @@ Syslog::LoggingFacilities::LoggingFacilities()
     facility_level{YType::enumeration, "facility-level"}
 {
 
-    yang_name = "logging-facilities"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging-facilities"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::LoggingFacilities::~LoggingFacilities()
@@ -1684,6 +1696,7 @@ Syslog::LoggingFacilities::~LoggingFacilities()
 
 bool Syslog::LoggingFacilities::has_data() const
 {
+    if (is_presence_container) return true;
     return facility_level.is_set;
 }
 
@@ -1759,7 +1772,7 @@ Syslog::TrapLogging::TrapLogging()
     logging_level{YType::enumeration, "logging-level"}
 {
 
-    yang_name = "trap-logging"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-logging"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::TrapLogging::~TrapLogging()
@@ -1768,6 +1781,7 @@ Syslog::TrapLogging::~TrapLogging()
 
 bool Syslog::TrapLogging::has_data() const
 {
+    if (is_presence_container) return true;
     return logging_level.is_set;
 }
 
@@ -1842,12 +1856,12 @@ Syslog::BufferedLogging::BufferedLogging()
     :
     logging_level{YType::enumeration, "logging-level"},
     buffer_size{YType::uint32, "buffer-size"}
-    	,
+        ,
     buffered_discriminator(std::make_shared<Syslog::BufferedLogging::BufferedDiscriminator>())
 {
     buffered_discriminator->parent = this;
 
-    yang_name = "buffered-logging"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "buffered-logging"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::BufferedLogging::~BufferedLogging()
@@ -1856,6 +1870,7 @@ Syslog::BufferedLogging::~BufferedLogging()
 
 bool Syslog::BufferedLogging::has_data() const
 {
+    if (is_presence_container) return true;
     return logging_level.is_set
 	|| buffer_size.is_set
 	|| (buffered_discriminator !=  nullptr && buffered_discriminator->has_data());
@@ -1965,7 +1980,7 @@ Syslog::BufferedLogging::BufferedDiscriminator::BufferedDiscriminator()
     nomatch2{YType::str, "nomatch2"}
 {
 
-    yang_name = "buffered-discriminator"; yang_parent_name = "buffered-logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "buffered-discriminator"; yang_parent_name = "buffered-logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::BufferedLogging::BufferedDiscriminator::~BufferedDiscriminator()
@@ -1974,6 +1989,7 @@ Syslog::BufferedLogging::BufferedDiscriminator::~BufferedDiscriminator()
 
 bool Syslog::BufferedLogging::BufferedDiscriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return match2.is_set
 	|| nomatch1.is_set
 	|| match1.is_set
@@ -2115,7 +2131,7 @@ Syslog::HostServer::HostServer()
 {
     vrfs->parent = this;
 
-    yang_name = "host-server"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "host-server"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::HostServer::~HostServer()
@@ -2124,6 +2140,7 @@ Syslog::HostServer::~HostServer()
 
 bool Syslog::HostServer::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrfs !=  nullptr && vrfs->has_data());
 }
 
@@ -2198,9 +2215,11 @@ bool Syslog::HostServer::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 Syslog::HostServer::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "host-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "host-server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::HostServer::Vrfs::~Vrfs()
@@ -2209,7 +2228,8 @@ Syslog::HostServer::Vrfs::~Vrfs()
 
 bool Syslog::HostServer::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -2219,7 +2239,7 @@ bool Syslog::HostServer::Vrfs::has_data() const
 
 bool Syslog::HostServer::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -2256,7 +2276,7 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -2268,7 +2288,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2297,16 +2317,16 @@ bool Syslog::HostServer::Vrfs::has_leaf_or_child_of_name(const std::string & nam
 Syslog::HostServer::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
-    ipv6s(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S>())
-	,hosts(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts>())
-	,ipv4s(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S>())
+        ,
+    ipv6s(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6s>())
+    , hosts(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts>())
+    , ipv4s(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4s>())
 {
     ipv6s->parent = this;
     hosts->parent = this;
     ipv4s->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::HostServer::Vrfs::Vrf::~Vrf()
@@ -2315,6 +2335,7 @@ Syslog::HostServer::Vrfs::Vrf::~Vrf()
 
 bool Syslog::HostServer::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (ipv6s !=  nullptr && ipv6s->has_data())
 	|| (hosts !=  nullptr && hosts->has_data())
@@ -2340,7 +2361,8 @@ std::string Syslog::HostServer::Vrfs::Vrf::get_absolute_path() const
 std::string Syslog::HostServer::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -2360,7 +2382,7 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::get_child_by_name(const s
     {
         if(ipv6s == nullptr)
         {
-            ipv6s = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S>();
+            ipv6s = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6s>();
         }
         return ipv6s;
     }
@@ -2378,7 +2400,7 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::get_child_by_name(const s
     {
         if(ipv4s == nullptr)
         {
-            ipv4s = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S>();
+            ipv4s = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4s>();
         }
         return ipv4s;
     }
@@ -2433,19 +2455,22 @@ bool Syslog::HostServer::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string 
     return false;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6S()
+Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6s()
+    :
+    ipv6(this, {"address"})
 {
 
-    yang_name = "ipv6s"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6s"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv6S::~Ipv6S()
+Syslog::HostServer::Vrfs::Vrf::Ipv6s::~Ipv6s()
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::has_data() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::has_data() const
 {
-    for (std::size_t index=0; index<ipv6.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6.len(); index++)
     {
         if(ipv6[index]->has_data())
             return true;
@@ -2453,9 +2478,9 @@ bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::has_data() const
     return false;
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::has_operation() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6.size(); index++)
+    for (std::size_t index=0; index<ipv6.len(); index++)
     {
         if(ipv6[index]->has_operation())
             return true;
@@ -2463,14 +2488,14 @@ bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_segment_path() const
+std::string Syslog::HostServer::Vrfs::Vrf::Ipv6s::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6s";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv6s::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2479,25 +2504,25 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6")
     {
-        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6>();
+        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6>();
         c->parent = this;
-        ipv6.push_back(c);
+        ipv6.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6)
+    for (auto c : ipv6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2508,64 +2533,62 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ip
     return children;
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv6S::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::HostServer::Vrfs::Vrf::Ipv6s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv6S::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::HostServer::Vrfs::Vrf::Ipv6s::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6")
         return true;
     return false;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6()
+Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6()
     :
     address{YType::str, "address"}
-    	,
+        ,
     ipv6_severity_port(nullptr) // presence node
-	,ipv6_discriminator(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator>())
-	,ipv6_severity_levels(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels>())
+    , ipv6_severity_levels(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels>())
 {
-    ipv6_discriminator->parent = this;
     ipv6_severity_levels->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "ipv6s"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "ipv6s"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::~Ipv6()
+Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::~Ipv6()
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::has_data() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| (ipv6_severity_port !=  nullptr && ipv6_severity_port->has_data())
-	|| (ipv6_discriminator !=  nullptr && ipv6_discriminator->has_data())
 	|| (ipv6_severity_levels !=  nullptr && ipv6_severity_levels->has_data());
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::has_operation() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address.yfilter)
 	|| (ipv6_severity_port !=  nullptr && ipv6_severity_port->has_operation())
-	|| (ipv6_discriminator !=  nullptr && ipv6_discriminator->has_operation())
 	|| (ipv6_severity_levels !=  nullptr && ipv6_severity_levels->has_operation());
 }
 
-std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_segment_path() const
+std::string Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6" <<"[address='" <<address <<"']";
+    path_buffer << "ipv6";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2575,31 +2598,22 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-severity-port")
     {
         if(ipv6_severity_port == nullptr)
         {
-            ipv6_severity_port = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort>();
+            ipv6_severity_port = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort>();
         }
         return ipv6_severity_port;
-    }
-
-    if(child_yang_name == "ipv6-discriminator")
-    {
-        if(ipv6_discriminator == nullptr)
-        {
-            ipv6_discriminator = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator>();
-        }
-        return ipv6_discriminator;
     }
 
     if(child_yang_name == "ipv6-severity-levels")
     {
         if(ipv6_severity_levels == nullptr)
         {
-            ipv6_severity_levels = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels>();
+            ipv6_severity_levels = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels>();
         }
         return ipv6_severity_levels;
     }
@@ -2607,18 +2621,13 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     if(ipv6_severity_port != nullptr)
     {
         children["ipv6-severity-port"] = ipv6_severity_port;
-    }
-
-    if(ipv6_discriminator != nullptr)
-    {
-        children["ipv6-discriminator"] = ipv6_discriminator;
     }
 
     if(ipv6_severity_levels != nullptr)
@@ -2629,7 +2638,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ip
     return children;
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
@@ -2639,7 +2648,7 @@ void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::set_value(const std::string & v
     }
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address")
     {
@@ -2647,47 +2656,48 @@ void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::set_filter(const std::string & 
     }
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6-severity-port" || name == "ipv6-discriminator" || name == "ipv6-severity-levels" || name == "address")
+    if(name == "ipv6-severity-port" || name == "ipv6-severity-levels" || name == "address")
         return true;
     return false;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::Ipv6SeverityPort()
+Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::Ipv6SeverityPort()
     :
-    severity{YType::int32, "severity"},
-    port{YType::int32, "port"}
+    severity{YType::uint32, "severity"},
+    port{YType::uint32, "port"}
 {
 
-    yang_name = "ipv6-severity-port"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-severity-port"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::~Ipv6SeverityPort()
+Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::~Ipv6SeverityPort()
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::has_data() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::has_data() const
 {
+    if (is_presence_container) return true;
     return severity.is_set
 	|| port.is_set;
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::has_operation() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(severity.yfilter)
 	|| ydk::is_set(port.yfilter);
 }
 
-std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::get_segment_path() const
+std::string Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-severity-port";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2698,19 +2708,19 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "severity")
     {
@@ -2726,7 +2736,7 @@ void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::set_value(con
     }
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "severity")
     {
@@ -2738,173 +2748,29 @@ void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::set_filter(co
     }
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "severity" || name == "port")
         return true;
     return false;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::Ipv6Discriminator()
+Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevels()
     :
-    nomatch2{YType::str, "nomatch2"},
-    match3{YType::str, "match3"},
-    nomatch3{YType::str, "nomatch3"},
-    match1{YType::str, "match1"},
-    nomatch1{YType::str, "nomatch1"},
-    match2{YType::str, "match2"}
+    ipv6_severity_level(this, {"severity"})
 {
 
-    yang_name = "ipv6-discriminator"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-severity-levels"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::~Ipv6Discriminator()
+Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::~Ipv6SeverityLevels()
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::has_data() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::has_data() const
 {
-    return nomatch2.is_set
-	|| match3.is_set
-	|| nomatch3.is_set
-	|| match1.is_set
-	|| nomatch1.is_set
-	|| match2.is_set;
-}
-
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nomatch2.yfilter)
-	|| ydk::is_set(match3.yfilter)
-	|| ydk::is_set(nomatch3.yfilter)
-	|| ydk::is_set(match1.yfilter)
-	|| ydk::is_set(nomatch1.yfilter)
-	|| ydk::is_set(match2.yfilter);
-}
-
-std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6-discriminator";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nomatch2.is_set || is_set(nomatch2.yfilter)) leaf_name_data.push_back(nomatch2.get_name_leafdata());
-    if (match3.is_set || is_set(match3.yfilter)) leaf_name_data.push_back(match3.get_name_leafdata());
-    if (nomatch3.is_set || is_set(nomatch3.yfilter)) leaf_name_data.push_back(nomatch3.get_name_leafdata());
-    if (match1.is_set || is_set(match1.yfilter)) leaf_name_data.push_back(match1.get_name_leafdata());
-    if (nomatch1.is_set || is_set(nomatch1.yfilter)) leaf_name_data.push_back(nomatch1.get_name_leafdata());
-    if (match2.is_set || is_set(match2.yfilter)) leaf_name_data.push_back(match2.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nomatch2")
-    {
-        nomatch2 = value;
-        nomatch2.value_namespace = name_space;
-        nomatch2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "match3")
-    {
-        match3 = value;
-        match3.value_namespace = name_space;
-        match3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nomatch3")
-    {
-        nomatch3 = value;
-        nomatch3.value_namespace = name_space;
-        nomatch3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "match1")
-    {
-        match1 = value;
-        match1.value_namespace = name_space;
-        match1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nomatch1")
-    {
-        nomatch1 = value;
-        nomatch1.value_namespace = name_space;
-        nomatch1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "match2")
-    {
-        match2 = value;
-        match2.value_namespace = name_space;
-        match2.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nomatch2")
-    {
-        nomatch2.yfilter = yfilter;
-    }
-    if(value_path == "match3")
-    {
-        match3.yfilter = yfilter;
-    }
-    if(value_path == "nomatch3")
-    {
-        nomatch3.yfilter = yfilter;
-    }
-    if(value_path == "match1")
-    {
-        match1.yfilter = yfilter;
-    }
-    if(value_path == "nomatch1")
-    {
-        nomatch1.yfilter = yfilter;
-    }
-    if(value_path == "match2")
-    {
-        match2.yfilter = yfilter;
-    }
-}
-
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nomatch2" || name == "match3" || name == "nomatch3" || name == "match1" || name == "nomatch1" || name == "match2")
-        return true;
-    return false;
-}
-
-Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevels()
-{
-
-    yang_name = "ipv6-severity-levels"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::~Ipv6SeverityLevels()
-{
-}
-
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::has_data() const
-{
-    for (std::size_t index=0; index<ipv6_severity_level.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6_severity_level.len(); index++)
     {
         if(ipv6_severity_level[index]->has_data())
             return true;
@@ -2912,9 +2778,9 @@ bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::has_data() 
     return false;
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::has_operation() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6_severity_level.size(); index++)
+    for (std::size_t index=0; index<ipv6_severity_level.len(); index++)
     {
         if(ipv6_severity_level[index]->has_operation())
             return true;
@@ -2922,14 +2788,14 @@ bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::has_operati
     return is_set(yfilter);
 }
 
-std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::get_segment_path() const
+std::string Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-severity-levels";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2938,25 +2804,25 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-severity-level")
     {
-        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel>();
+        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel>();
         c->parent = this;
-        ipv6_severity_level.push_back(c);
+        ipv6_severity_level.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6_severity_level)
+    for (auto c : ipv6_severity_level.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2967,52 +2833,54 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ip
     return children;
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6-severity-level")
         return true;
     return false;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::Ipv6SeverityLevel()
+Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::Ipv6SeverityLevel()
     :
     severity{YType::enumeration, "severity"}
 {
 
-    yang_name = "ipv6-severity-level"; yang_parent_name = "ipv6-severity-levels"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-severity-level"; yang_parent_name = "ipv6-severity-levels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::~Ipv6SeverityLevel()
+Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::~Ipv6SeverityLevel()
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::has_data() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::has_data() const
 {
+    if (is_presence_container) return true;
     return severity.is_set;
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::has_operation() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(severity.yfilter);
 }
 
-std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_segment_path() const
+std::string Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6-severity-level" <<"[severity='" <<severity <<"']";
+    path_buffer << "ipv6-severity-level";
+    ADD_KEY_TOKEN(severity, "severity");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3022,19 +2890,19 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "severity")
     {
@@ -3044,7 +2912,7 @@ void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6Severit
     }
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "severity")
     {
@@ -3052,7 +2920,7 @@ void Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6Severit
     }
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "severity")
         return true;
@@ -3060,9 +2928,11 @@ bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6Severit
 }
 
 Syslog::HostServer::Vrfs::Vrf::Hosts::Hosts()
+    :
+    host(this, {"host_name"})
 {
 
-    yang_name = "hosts"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hosts"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::HostServer::Vrfs::Vrf::Hosts::~Hosts()
@@ -3071,7 +2941,8 @@ Syslog::HostServer::Vrfs::Vrf::Hosts::~Hosts()
 
 bool Syslog::HostServer::Vrfs::Vrf::Hosts::has_data() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_data())
             return true;
@@ -3081,7 +2952,7 @@ bool Syslog::HostServer::Vrfs::Vrf::Hosts::has_data() const
 
 bool Syslog::HostServer::Vrfs::Vrf::Hosts::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_operation())
             return true;
@@ -3111,7 +2982,7 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::get_child_by_name(
     {
         auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host>();
         c->parent = this;
-        host.push_back(c);
+        host.append(c);
         return c;
     }
 
@@ -3123,7 +2994,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ho
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : host)
+    for (auto c : host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3152,15 +3023,13 @@ bool Syslog::HostServer::Vrfs::Vrf::Hosts::has_leaf_or_child_of_name(const std::
 Syslog::HostServer::Vrfs::Vrf::Hosts::Host::Host()
     :
     host_name{YType::str, "host-name"}
-    	,
+        ,
     host_name_severities(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities>())
-	,host_name_discriminator(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator>())
-	,host_severity_port(nullptr) // presence node
+    , host_severity_port(nullptr) // presence node
 {
     host_name_severities->parent = this;
-    host_name_discriminator->parent = this;
 
-    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::HostServer::Vrfs::Vrf::Hosts::Host::~Host()
@@ -3169,9 +3038,9 @@ Syslog::HostServer::Vrfs::Vrf::Hosts::Host::~Host()
 
 bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::has_data() const
 {
+    if (is_presence_container) return true;
     return host_name.is_set
 	|| (host_name_severities !=  nullptr && host_name_severities->has_data())
-	|| (host_name_discriminator !=  nullptr && host_name_discriminator->has_data())
 	|| (host_severity_port !=  nullptr && host_severity_port->has_data());
 }
 
@@ -3180,14 +3049,14 @@ bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(host_name.yfilter)
 	|| (host_name_severities !=  nullptr && host_name_severities->has_operation())
-	|| (host_name_discriminator !=  nullptr && host_name_discriminator->has_operation())
 	|| (host_severity_port !=  nullptr && host_severity_port->has_operation());
 }
 
 std::string Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "host" <<"[host-name='" <<host_name <<"']";
+    path_buffer << "host";
+    ADD_KEY_TOKEN(host_name, "host-name");
     return path_buffer.str();
 }
 
@@ -3212,15 +3081,6 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_child_by
         return host_name_severities;
     }
 
-    if(child_yang_name == "host-name-discriminator")
-    {
-        if(host_name_discriminator == nullptr)
-        {
-            host_name_discriminator = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator>();
-        }
-        return host_name_discriminator;
-    }
-
     if(child_yang_name == "host-severity-port")
     {
         if(host_severity_port == nullptr)
@@ -3240,11 +3100,6 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ho
     if(host_name_severities != nullptr)
     {
         children["host-name-severities"] = host_name_severities;
-    }
-
-    if(host_name_discriminator != nullptr)
-    {
-        children["host-name-discriminator"] = host_name_discriminator;
     }
 
     if(host_severity_port != nullptr)
@@ -3275,15 +3130,17 @@ void Syslog::HostServer::Vrfs::Vrf::Hosts::Host::set_filter(const std::string & 
 
 bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "host-name-severities" || name == "host-name-discriminator" || name == "host-severity-port" || name == "host-name")
+    if(name == "host-name-severities" || name == "host-severity-port" || name == "host-name")
         return true;
     return false;
 }
 
 Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverities()
+    :
+    host_name_severity(this, {"severity"})
 {
 
-    yang_name = "host-name-severities"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host-name-severities"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::~HostNameSeverities()
@@ -3292,7 +3149,8 @@ Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::~HostNameSeverit
 
 bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::has_data() const
 {
-    for (std::size_t index=0; index<host_name_severity.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host_name_severity.len(); index++)
     {
         if(host_name_severity[index]->has_data())
             return true;
@@ -3302,7 +3160,7 @@ bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::has_data() 
 
 bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::has_operation() const
 {
-    for (std::size_t index=0; index<host_name_severity.size(); index++)
+    for (std::size_t index=0; index<host_name_severity.len(); index++)
     {
         if(host_name_severity[index]->has_operation())
             return true;
@@ -3332,7 +3190,7 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeve
     {
         auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity>();
         c->parent = this;
-        host_name_severity.push_back(c);
+        host_name_severity.append(c);
         return c;
     }
 
@@ -3344,7 +3202,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ho
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : host_name_severity)
+    for (auto c : host_name_severity.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3375,7 +3233,7 @@ Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity
     severity{YType::enumeration, "severity"}
 {
 
-    yang_name = "host-name-severity"; yang_parent_name = "host-name-severities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host-name-severity"; yang_parent_name = "host-name-severities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::~HostNameSeverity()
@@ -3384,6 +3242,7 @@ Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity
 
 bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::has_data() const
 {
+    if (is_presence_container) return true;
     return severity.is_set;
 }
 
@@ -3396,7 +3255,8 @@ bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSev
 std::string Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "host-name-severity" <<"[severity='" <<severity <<"']";
+    path_buffer << "host-name-severity";
+    ADD_KEY_TOKEN(severity, "severity");
     return path_buffer.str();
 }
 
@@ -3447,160 +3307,13 @@ bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSev
     return false;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::HostNameDiscriminator()
-    :
-    nomatch2{YType::str, "nomatch2"},
-    match3{YType::str, "match3"},
-    nomatch3{YType::str, "nomatch3"},
-    match1{YType::str, "match1"},
-    nomatch1{YType::str, "nomatch1"},
-    match2{YType::str, "match2"}
-{
-
-    yang_name = "host-name-discriminator"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::~HostNameDiscriminator()
-{
-}
-
-bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::has_data() const
-{
-    return nomatch2.is_set
-	|| match3.is_set
-	|| nomatch3.is_set
-	|| match1.is_set
-	|| nomatch1.is_set
-	|| match2.is_set;
-}
-
-bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nomatch2.yfilter)
-	|| ydk::is_set(match3.yfilter)
-	|| ydk::is_set(nomatch3.yfilter)
-	|| ydk::is_set(match1.yfilter)
-	|| ydk::is_set(nomatch1.yfilter)
-	|| ydk::is_set(match2.yfilter);
-}
-
-std::string Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "host-name-discriminator";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nomatch2.is_set || is_set(nomatch2.yfilter)) leaf_name_data.push_back(nomatch2.get_name_leafdata());
-    if (match3.is_set || is_set(match3.yfilter)) leaf_name_data.push_back(match3.get_name_leafdata());
-    if (nomatch3.is_set || is_set(nomatch3.yfilter)) leaf_name_data.push_back(nomatch3.get_name_leafdata());
-    if (match1.is_set || is_set(match1.yfilter)) leaf_name_data.push_back(match1.get_name_leafdata());
-    if (nomatch1.is_set || is_set(nomatch1.yfilter)) leaf_name_data.push_back(nomatch1.get_name_leafdata());
-    if (match2.is_set || is_set(match2.yfilter)) leaf_name_data.push_back(match2.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nomatch2")
-    {
-        nomatch2 = value;
-        nomatch2.value_namespace = name_space;
-        nomatch2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "match3")
-    {
-        match3 = value;
-        match3.value_namespace = name_space;
-        match3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nomatch3")
-    {
-        nomatch3 = value;
-        nomatch3.value_namespace = name_space;
-        nomatch3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "match1")
-    {
-        match1 = value;
-        match1.value_namespace = name_space;
-        match1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nomatch1")
-    {
-        nomatch1 = value;
-        nomatch1.value_namespace = name_space;
-        nomatch1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "match2")
-    {
-        match2 = value;
-        match2.value_namespace = name_space;
-        match2.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nomatch2")
-    {
-        nomatch2.yfilter = yfilter;
-    }
-    if(value_path == "match3")
-    {
-        match3.yfilter = yfilter;
-    }
-    if(value_path == "nomatch3")
-    {
-        nomatch3.yfilter = yfilter;
-    }
-    if(value_path == "match1")
-    {
-        match1.yfilter = yfilter;
-    }
-    if(value_path == "nomatch1")
-    {
-        nomatch1.yfilter = yfilter;
-    }
-    if(value_path == "match2")
-    {
-        match2.yfilter = yfilter;
-    }
-}
-
-bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nomatch2" || name == "match3" || name == "nomatch3" || name == "match1" || name == "nomatch1" || name == "match2")
-        return true;
-    return false;
-}
-
 Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::HostSeverityPort()
     :
-    severity{YType::int32, "severity"},
-    port{YType::int32, "port"}
+    severity{YType::uint32, "severity"},
+    port{YType::uint32, "port"}
 {
 
-    yang_name = "host-severity-port"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host-severity-port"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::~HostSeverityPort()
@@ -3609,6 +3322,7 @@ Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::~HostSeverityPort(
 
 bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::has_data() const
 {
+    if (is_presence_container) return true;
     return severity.is_set
 	|| port.is_set;
 }
@@ -3685,19 +3399,22 @@ bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::has_leaf_or_c
     return false;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4S()
+Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4s()
+    :
+    ipv4(this, {"address"})
 {
 
-    yang_name = "ipv4s"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4s"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv4S::~Ipv4S()
+Syslog::HostServer::Vrfs::Vrf::Ipv4s::~Ipv4s()
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::has_data() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
@@ -3705,9 +3422,9 @@ bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::has_data() const
     return false;
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::has_operation() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
@@ -3715,14 +3432,14 @@ bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_segment_path() const
+std::string Syslog::HostServer::Vrfs::Vrf::Ipv4s::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4s";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv4s::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3731,25 +3448,25 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
-        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4>();
+        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3760,64 +3477,62 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ip
     return children;
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv4S::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::HostServer::Vrfs::Vrf::Ipv4s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv4S::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::HostServer::Vrfs::Vrf::Ipv4s::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4")
         return true;
     return false;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4()
+Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4()
     :
     address{YType::str, "address"}
-    	,
-    ipv4_severity_levels(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels>())
-	,ipv4_severity_port(nullptr) // presence node
-	,ipv4_discriminator(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator>())
+        ,
+    ipv4_severity_levels(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels>())
+    , ipv4_severity_port(nullptr) // presence node
 {
     ipv4_severity_levels->parent = this;
-    ipv4_discriminator->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "ipv4s"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "ipv4s"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::~Ipv4()
+Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::~Ipv4()
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::has_data() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| (ipv4_severity_levels !=  nullptr && ipv4_severity_levels->has_data())
-	|| (ipv4_severity_port !=  nullptr && ipv4_severity_port->has_data())
-	|| (ipv4_discriminator !=  nullptr && ipv4_discriminator->has_data());
+	|| (ipv4_severity_port !=  nullptr && ipv4_severity_port->has_data());
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::has_operation() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address.yfilter)
 	|| (ipv4_severity_levels !=  nullptr && ipv4_severity_levels->has_operation())
-	|| (ipv4_severity_port !=  nullptr && ipv4_severity_port->has_operation())
-	|| (ipv4_discriminator !=  nullptr && ipv4_discriminator->has_operation());
+	|| (ipv4_severity_port !=  nullptr && ipv4_severity_port->has_operation());
 }
 
-std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_segment_path() const
+std::string Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[address='" <<address <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3827,13 +3542,13 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-severity-levels")
     {
         if(ipv4_severity_levels == nullptr)
         {
-            ipv4_severity_levels = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels>();
+            ipv4_severity_levels = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels>();
         }
         return ipv4_severity_levels;
     }
@@ -3842,24 +3557,15 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_child_by
     {
         if(ipv4_severity_port == nullptr)
         {
-            ipv4_severity_port = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort>();
+            ipv4_severity_port = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort>();
         }
         return ipv4_severity_port;
-    }
-
-    if(child_yang_name == "ipv4-discriminator")
-    {
-        if(ipv4_discriminator == nullptr)
-        {
-            ipv4_discriminator = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator>();
-        }
-        return ipv4_discriminator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3873,15 +3579,10 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ip
         children["ipv4-severity-port"] = ipv4_severity_port;
     }
 
-    if(ipv4_discriminator != nullptr)
-    {
-        children["ipv4-discriminator"] = ipv4_discriminator;
-    }
-
     return children;
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
@@ -3891,7 +3592,7 @@ void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::set_value(const std::string & v
     }
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address")
     {
@@ -3899,26 +3600,29 @@ void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::set_filter(const std::string & 
     }
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv4-severity-levels" || name == "ipv4-severity-port" || name == "ipv4-discriminator" || name == "address")
+    if(name == "ipv4-severity-levels" || name == "ipv4-severity-port" || name == "address")
         return true;
     return false;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevels()
+Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevels()
+    :
+    ipv4_severity_level(this, {"severity"})
 {
 
-    yang_name = "ipv4-severity-levels"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-severity-levels"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::~Ipv4SeverityLevels()
+Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::~Ipv4SeverityLevels()
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::has_data() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_severity_level.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_severity_level.len(); index++)
     {
         if(ipv4_severity_level[index]->has_data())
             return true;
@@ -3926,9 +3630,9 @@ bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::has_data() 
     return false;
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::has_operation() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_severity_level.size(); index++)
+    for (std::size_t index=0; index<ipv4_severity_level.len(); index++)
     {
         if(ipv4_severity_level[index]->has_operation())
             return true;
@@ -3936,14 +3640,14 @@ bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::has_operati
     return is_set(yfilter);
 }
 
-std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::get_segment_path() const
+std::string Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-severity-levels";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3952,25 +3656,25 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-severity-level")
     {
-        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel>();
+        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel>();
         c->parent = this;
-        ipv4_severity_level.push_back(c);
+        ipv4_severity_level.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_severity_level)
+    for (auto c : ipv4_severity_level.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3981,52 +3685,54 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ip
     return children;
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4-severity-level")
         return true;
     return false;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::Ipv4SeverityLevel()
+Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::Ipv4SeverityLevel()
     :
     severity{YType::enumeration, "severity"}
 {
 
-    yang_name = "ipv4-severity-level"; yang_parent_name = "ipv4-severity-levels"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-severity-level"; yang_parent_name = "ipv4-severity-levels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::~Ipv4SeverityLevel()
+Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::~Ipv4SeverityLevel()
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::has_data() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::has_data() const
 {
+    if (is_presence_container) return true;
     return severity.is_set;
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::has_operation() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(severity.yfilter);
 }
 
-std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_segment_path() const
+std::string Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-severity-level" <<"[severity='" <<severity <<"']";
+    path_buffer << "ipv4-severity-level";
+    ADD_KEY_TOKEN(severity, "severity");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4036,19 +3742,19 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "severity")
     {
@@ -4058,7 +3764,7 @@ void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4Severit
     }
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "severity")
     {
@@ -4066,47 +3772,48 @@ void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4Severit
     }
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "severity")
         return true;
     return false;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::Ipv4SeverityPort()
+Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::Ipv4SeverityPort()
     :
-    severity{YType::int32, "severity"},
-    port{YType::int32, "port"}
+    severity{YType::uint32, "severity"},
+    port{YType::uint32, "port"}
 {
 
-    yang_name = "ipv4-severity-port"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-severity-port"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::~Ipv4SeverityPort()
+Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::~Ipv4SeverityPort()
 {
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::has_data() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::has_data() const
 {
+    if (is_presence_container) return true;
     return severity.is_set
 	|| port.is_set;
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::has_operation() const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(severity.yfilter)
 	|| ydk::is_set(port.yfilter);
 }
 
-std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::get_segment_path() const
+std::string Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-severity-port";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4117,19 +3824,19 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "severity")
     {
@@ -4145,7 +3852,7 @@ void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::set_value(con
     }
 }
 
-void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "severity")
     {
@@ -4157,156 +3864,9 @@ void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::set_filter(co
     }
 }
 
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "severity" || name == "port")
-        return true;
-    return false;
-}
-
-Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::Ipv4Discriminator()
-    :
-    nomatch2{YType::str, "nomatch2"},
-    match3{YType::str, "match3"},
-    nomatch3{YType::str, "nomatch3"},
-    match1{YType::str, "match1"},
-    nomatch1{YType::str, "nomatch1"},
-    match2{YType::str, "match2"}
-{
-
-    yang_name = "ipv4-discriminator"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::~Ipv4Discriminator()
-{
-}
-
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::has_data() const
-{
-    return nomatch2.is_set
-	|| match3.is_set
-	|| nomatch3.is_set
-	|| match1.is_set
-	|| nomatch1.is_set
-	|| match2.is_set;
-}
-
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nomatch2.yfilter)
-	|| ydk::is_set(match3.yfilter)
-	|| ydk::is_set(nomatch3.yfilter)
-	|| ydk::is_set(match1.yfilter)
-	|| ydk::is_set(nomatch1.yfilter)
-	|| ydk::is_set(match2.yfilter);
-}
-
-std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-discriminator";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nomatch2.is_set || is_set(nomatch2.yfilter)) leaf_name_data.push_back(nomatch2.get_name_leafdata());
-    if (match3.is_set || is_set(match3.yfilter)) leaf_name_data.push_back(match3.get_name_leafdata());
-    if (nomatch3.is_set || is_set(nomatch3.yfilter)) leaf_name_data.push_back(nomatch3.get_name_leafdata());
-    if (match1.is_set || is_set(match1.yfilter)) leaf_name_data.push_back(match1.get_name_leafdata());
-    if (nomatch1.is_set || is_set(nomatch1.yfilter)) leaf_name_data.push_back(nomatch1.get_name_leafdata());
-    if (match2.is_set || is_set(match2.yfilter)) leaf_name_data.push_back(match2.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nomatch2")
-    {
-        nomatch2 = value;
-        nomatch2.value_namespace = name_space;
-        nomatch2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "match3")
-    {
-        match3 = value;
-        match3.value_namespace = name_space;
-        match3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nomatch3")
-    {
-        nomatch3 = value;
-        nomatch3.value_namespace = name_space;
-        nomatch3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "match1")
-    {
-        match1 = value;
-        match1.value_namespace = name_space;
-        match1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nomatch1")
-    {
-        nomatch1 = value;
-        nomatch1.value_namespace = name_space;
-        nomatch1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "match2")
-    {
-        match2 = value;
-        match2.value_namespace = name_space;
-        match2.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nomatch2")
-    {
-        nomatch2.yfilter = yfilter;
-    }
-    if(value_path == "match3")
-    {
-        match3.yfilter = yfilter;
-    }
-    if(value_path == "nomatch3")
-    {
-        nomatch3.yfilter = yfilter;
-    }
-    if(value_path == "match1")
-    {
-        match1.yfilter = yfilter;
-    }
-    if(value_path == "nomatch1")
-    {
-        nomatch1.yfilter = yfilter;
-    }
-    if(value_path == "match2")
-    {
-        match2.yfilter = yfilter;
-    }
-}
-
-bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nomatch2" || name == "match3" || name == "nomatch3" || name == "match1" || name == "nomatch1" || name == "match2")
         return true;
     return false;
 }
@@ -4314,12 +3874,12 @@ bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::has_leaf_or_
 Syslog::ConsoleLogging::ConsoleLogging()
     :
     logging_level{YType::enumeration, "logging-level"}
-    	,
+        ,
     console_discriminator(std::make_shared<Syslog::ConsoleLogging::ConsoleDiscriminator>())
 {
     console_discriminator->parent = this;
 
-    yang_name = "console-logging"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "console-logging"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::ConsoleLogging::~ConsoleLogging()
@@ -4328,6 +3888,7 @@ Syslog::ConsoleLogging::~ConsoleLogging()
 
 bool Syslog::ConsoleLogging::has_data() const
 {
+    if (is_presence_container) return true;
     return logging_level.is_set
 	|| (console_discriminator !=  nullptr && console_discriminator->has_data());
 }
@@ -4424,7 +3985,7 @@ Syslog::ConsoleLogging::ConsoleDiscriminator::ConsoleDiscriminator()
     nomatch2{YType::str, "nomatch2"}
 {
 
-    yang_name = "console-discriminator"; yang_parent_name = "console-logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "console-discriminator"; yang_parent_name = "console-logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::ConsoleLogging::ConsoleDiscriminator::~ConsoleDiscriminator()
@@ -4433,6 +3994,7 @@ Syslog::ConsoleLogging::ConsoleDiscriminator::~ConsoleDiscriminator()
 
 bool Syslog::ConsoleLogging::ConsoleDiscriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return match2.is_set
 	|| nomatch1.is_set
 	|| match1.is_set
@@ -4569,9 +4131,11 @@ bool Syslog::ConsoleLogging::ConsoleDiscriminator::has_leaf_or_child_of_name(con
 }
 
 Syslog::Files::Files()
+    :
+    file(this, {"file_name"})
 {
 
-    yang_name = "files"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "files"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Files::~Files()
@@ -4580,7 +4144,8 @@ Syslog::Files::~Files()
 
 bool Syslog::Files::has_data() const
 {
-    for (std::size_t index=0; index<file.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<file.len(); index++)
     {
         if(file[index]->has_data())
             return true;
@@ -4590,7 +4155,7 @@ bool Syslog::Files::has_data() const
 
 bool Syslog::Files::has_operation() const
 {
-    for (std::size_t index=0; index<file.size(); index++)
+    for (std::size_t index=0; index<file.len(); index++)
     {
         if(file[index]->has_operation())
             return true;
@@ -4627,7 +4192,7 @@ std::shared_ptr<Entity> Syslog::Files::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Syslog::Files::File>();
         c->parent = this;
-        file.push_back(c);
+        file.append(c);
         return c;
     }
 
@@ -4639,7 +4204,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Files::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : file)
+    for (auto c : file.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4668,14 +4233,14 @@ bool Syslog::Files::has_leaf_or_child_of_name(const std::string & name) const
 Syslog::Files::File::File()
     :
     file_name{YType::str, "file-name"}
-    	,
+        ,
     file_specification(std::make_shared<Syslog::Files::File::FileSpecification>())
-	,file_log_discriminator(std::make_shared<Syslog::Files::File::FileLogDiscriminator>())
+    , file_log_discriminator(std::make_shared<Syslog::Files::File::FileLogDiscriminator>())
 {
     file_specification->parent = this;
     file_log_discriminator->parent = this;
 
-    yang_name = "file"; yang_parent_name = "files"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "file"; yang_parent_name = "files"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Files::File::~File()
@@ -4684,6 +4249,7 @@ Syslog::Files::File::~File()
 
 bool Syslog::Files::File::has_data() const
 {
+    if (is_presence_container) return true;
     return file_name.is_set
 	|| (file_specification !=  nullptr && file_specification->has_data())
 	|| (file_log_discriminator !=  nullptr && file_log_discriminator->has_data());
@@ -4707,7 +4273,8 @@ std::string Syslog::Files::File::get_absolute_path() const
 std::string Syslog::Files::File::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "file" <<"[file-name='" <<file_name <<"']";
+    path_buffer << "file";
+    ADD_KEY_TOKEN(file_name, "file-name");
     return path_buffer.str();
 }
 
@@ -4789,11 +4356,11 @@ bool Syslog::Files::File::has_leaf_or_child_of_name(const std::string & name) co
 Syslog::Files::File::FileSpecification::FileSpecification()
     :
     path{YType::str, "path"},
-    max_file_size{YType::int32, "max-file-size"},
-    severity{YType::int32, "severity"}
+    max_file_size{YType::uint32, "max-file-size"},
+    severity{YType::uint32, "severity"}
 {
 
-    yang_name = "file-specification"; yang_parent_name = "file"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "file-specification"; yang_parent_name = "file"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Files::File::FileSpecification::~FileSpecification()
@@ -4802,6 +4369,7 @@ Syslog::Files::File::FileSpecification::~FileSpecification()
 
 bool Syslog::Files::File::FileSpecification::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| max_file_size.is_set
 	|| severity.is_set;
@@ -4901,7 +4469,7 @@ Syslog::Files::File::FileLogDiscriminator::FileLogDiscriminator()
     match2{YType::str, "match2"}
 {
 
-    yang_name = "file-log-discriminator"; yang_parent_name = "file"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "file-log-discriminator"; yang_parent_name = "file"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Files::File::FileLogDiscriminator::~FileLogDiscriminator()
@@ -4910,6 +4478,7 @@ Syslog::Files::File::FileLogDiscriminator::~FileLogDiscriminator()
 
 bool Syslog::Files::File::FileLogDiscriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return nomatch2.is_set
 	|| match3.is_set
 	|| nomatch3.is_set
@@ -5041,12 +4610,12 @@ bool Syslog::Files::File::FileLogDiscriminator::has_leaf_or_child_of_name(const 
 Syslog::Ipv4::Ipv4()
     :
     dscp(nullptr) // presence node
-	,tos(std::make_shared<Syslog::Ipv4::Tos>())
-	,precedence(nullptr) // presence node
+    , tos(std::make_shared<Syslog::Ipv4::Tos>())
+    , precedence(nullptr) // presence node
 {
     tos->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Ipv4::~Ipv4()
@@ -5055,6 +4624,7 @@ Syslog::Ipv4::~Ipv4()
 
 bool Syslog::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (dscp !=  nullptr && dscp->has_data())
 	|| (tos !=  nullptr && tos->has_data())
 	|| (precedence !=  nullptr && precedence->has_data());
@@ -5167,7 +4737,7 @@ Syslog::Ipv4::Dscp::Dscp()
     value_{YType::str, "value"}
 {
 
-    yang_name = "dscp"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dscp"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Syslog::Ipv4::Dscp::~Dscp()
@@ -5176,6 +4746,7 @@ Syslog::Ipv4::Dscp::~Dscp()
 
 bool Syslog::Ipv4::Dscp::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| unused.is_set
 	|| value_.is_set;
@@ -5279,7 +4850,7 @@ Syslog::Ipv4::Tos::Tos()
     dscp{YType::str, "dscp"}
 {
 
-    yang_name = "tos"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tos"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Ipv4::Tos::~Tos()
@@ -5288,6 +4859,7 @@ Syslog::Ipv4::Tos::~Tos()
 
 bool Syslog::Ipv4::Tos::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| precedence.is_set
 	|| dscp.is_set;
@@ -5391,7 +4963,7 @@ Syslog::Ipv4::Precedence::Precedence()
     unused{YType::str, "unused"}
 {
 
-    yang_name = "precedence"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "precedence"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Syslog::Ipv4::Precedence::~Precedence()
@@ -5400,6 +4972,7 @@ Syslog::Ipv4::Precedence::~Precedence()
 
 bool Syslog::Ipv4::Precedence::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| value_.is_set
 	|| unused.is_set;
@@ -5507,7 +5080,7 @@ Syslog::Archive::Archive()
     length{YType::uint32, "length"}
 {
 
-    yang_name = "archive"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "archive"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Archive::~Archive()
@@ -5516,6 +5089,7 @@ Syslog::Archive::~Archive()
 
 bool Syslog::Archive::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set
 	|| file_size.is_set
 	|| device.is_set
@@ -5667,12 +5241,12 @@ bool Syslog::Archive::has_leaf_or_child_of_name(const std::string & name) const
 Syslog::Ipv6::Ipv6()
     :
     dscp(nullptr) // presence node
-	,traffic_class(std::make_shared<Syslog::Ipv6::TrafficClass>())
-	,precedence(nullptr) // presence node
+    , traffic_class(std::make_shared<Syslog::Ipv6::TrafficClass>())
+    , precedence(nullptr) // presence node
 {
     traffic_class->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Ipv6::~Ipv6()
@@ -5681,6 +5255,7 @@ Syslog::Ipv6::~Ipv6()
 
 bool Syslog::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (dscp !=  nullptr && dscp->has_data())
 	|| (traffic_class !=  nullptr && traffic_class->has_data())
 	|| (precedence !=  nullptr && precedence->has_data());
@@ -5793,7 +5368,7 @@ Syslog::Ipv6::Dscp::Dscp()
     value_{YType::str, "value"}
 {
 
-    yang_name = "dscp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dscp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Syslog::Ipv6::Dscp::~Dscp()
@@ -5802,6 +5377,7 @@ Syslog::Ipv6::Dscp::~Dscp()
 
 bool Syslog::Ipv6::Dscp::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| unused.is_set
 	|| value_.is_set;
@@ -5905,7 +5481,7 @@ Syslog::Ipv6::TrafficClass::TrafficClass()
     dscp{YType::str, "dscp"}
 {
 
-    yang_name = "traffic-class"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traffic-class"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Ipv6::TrafficClass::~TrafficClass()
@@ -5914,6 +5490,7 @@ Syslog::Ipv6::TrafficClass::~TrafficClass()
 
 bool Syslog::Ipv6::TrafficClass::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| precedence.is_set
 	|| dscp.is_set;
@@ -6017,7 +5594,7 @@ Syslog::Ipv6::Precedence::Precedence()
     unused{YType::str, "unused"}
 {
 
-    yang_name = "precedence"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "precedence"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Syslog::Ipv6::Precedence::~Precedence()
@@ -6026,6 +5603,7 @@ Syslog::Ipv6::Precedence::~Precedence()
 
 bool Syslog::Ipv6::Precedence::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| value_.is_set
 	|| unused.is_set;
@@ -6128,7 +5706,7 @@ Syslog::SourceInterfaceTable::SourceInterfaceTable()
 {
     source_interface_values->parent = this;
 
-    yang_name = "source-interface-table"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-interface-table"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::SourceInterfaceTable::~SourceInterfaceTable()
@@ -6137,6 +5715,7 @@ Syslog::SourceInterfaceTable::~SourceInterfaceTable()
 
 bool Syslog::SourceInterfaceTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (source_interface_values !=  nullptr && source_interface_values->has_data());
 }
 
@@ -6211,9 +5790,11 @@ bool Syslog::SourceInterfaceTable::has_leaf_or_child_of_name(const std::string &
 }
 
 Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValues()
+    :
+    source_interface_value(this, {"src_interface_name_value"})
 {
 
-    yang_name = "source-interface-values"; yang_parent_name = "source-interface-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-interface-values"; yang_parent_name = "source-interface-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::SourceInterfaceTable::SourceInterfaceValues::~SourceInterfaceValues()
@@ -6222,7 +5803,8 @@ Syslog::SourceInterfaceTable::SourceInterfaceValues::~SourceInterfaceValues()
 
 bool Syslog::SourceInterfaceTable::SourceInterfaceValues::has_data() const
 {
-    for (std::size_t index=0; index<source_interface_value.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<source_interface_value.len(); index++)
     {
         if(source_interface_value[index]->has_data())
             return true;
@@ -6232,7 +5814,7 @@ bool Syslog::SourceInterfaceTable::SourceInterfaceValues::has_data() const
 
 bool Syslog::SourceInterfaceTable::SourceInterfaceValues::has_operation() const
 {
-    for (std::size_t index=0; index<source_interface_value.size(); index++)
+    for (std::size_t index=0; index<source_interface_value.len(); index++)
     {
         if(source_interface_value[index]->has_operation())
             return true;
@@ -6269,7 +5851,7 @@ std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::get
     {
         auto c = std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue>();
         c->parent = this;
-        source_interface_value.push_back(c);
+        source_interface_value.append(c);
         return c;
     }
 
@@ -6281,7 +5863,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::SourceInterfaceTable::Sou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : source_interface_value)
+    for (auto c : source_interface_value.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6310,12 +5892,12 @@ bool Syslog::SourceInterfaceTable::SourceInterfaceValues::has_leaf_or_child_of_n
 Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceValue()
     :
     src_interface_name_value{YType::str, "src-interface-name-value"}
-    	,
+        ,
     source_interface_vrfs(std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs>())
 {
     source_interface_vrfs->parent = this;
 
-    yang_name = "source-interface-value"; yang_parent_name = "source-interface-values"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-interface-value"; yang_parent_name = "source-interface-values"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::~SourceInterfaceValue()
@@ -6324,6 +5906,7 @@ Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::~Sour
 
 bool Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::has_data() const
 {
+    if (is_presence_container) return true;
     return src_interface_name_value.is_set
 	|| (source_interface_vrfs !=  nullptr && source_interface_vrfs->has_data());
 }
@@ -6345,7 +5928,8 @@ std::string Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterface
 std::string Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "source-interface-value" <<"[src-interface-name-value='" <<src_interface_name_value <<"']";
+    path_buffer << "source-interface-value";
+    ADD_KEY_TOKEN(src_interface_name_value, "src-interface-name-value");
     return path_buffer.str();
 }
 
@@ -6411,9 +5995,11 @@ bool Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::
 }
 
 Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrfs()
+    :
+    source_interface_vrf(this, {"vrf_name"})
 {
 
-    yang_name = "source-interface-vrfs"; yang_parent_name = "source-interface-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-interface-vrfs"; yang_parent_name = "source-interface-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::~SourceInterfaceVrfs()
@@ -6422,7 +6008,8 @@ Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::Sourc
 
 bool Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::has_data() const
 {
-    for (std::size_t index=0; index<source_interface_vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<source_interface_vrf.len(); index++)
     {
         if(source_interface_vrf[index]->has_data())
             return true;
@@ -6432,7 +6019,7 @@ bool Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::
 
 bool Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::has_operation() const
 {
-    for (std::size_t index=0; index<source_interface_vrf.size(); index++)
+    for (std::size_t index=0; index<source_interface_vrf.len(); index++)
     {
         if(source_interface_vrf[index]->has_operation())
             return true;
@@ -6462,7 +6049,7 @@ std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::Sou
     {
         auto c = std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf>();
         c->parent = this;
-        source_interface_vrf.push_back(c);
+        source_interface_vrf.append(c);
         return c;
     }
 
@@ -6474,7 +6061,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::SourceInterfaceTable::Sou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : source_interface_vrf)
+    for (auto c : source_interface_vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6505,7 +6092,7 @@ Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::Sourc
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "source-interface-vrf"; yang_parent_name = "source-interface-vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-interface-vrf"; yang_parent_name = "source-interface-vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::~SourceInterfaceVrf()
@@ -6514,6 +6101,7 @@ Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::Sourc
 
 bool Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set;
 }
 
@@ -6526,7 +6114,8 @@ bool Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::
 std::string Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "source-interface-vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "source-interface-vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -6585,12 +6174,12 @@ Syslog::AlarmLogger::AlarmLogger()
     buffer_size{YType::uint32, "buffer-size"},
     source_location{YType::empty, "source-location"},
     threshold{YType::uint32, "threshold"}
-    	,
+        ,
     alarm_filter_strings(std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings>())
 {
     alarm_filter_strings->parent = this;
 
-    yang_name = "alarm-logger"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alarm-logger"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::AlarmLogger::~AlarmLogger()
@@ -6599,6 +6188,7 @@ Syslog::AlarmLogger::~AlarmLogger()
 
 bool Syslog::AlarmLogger::has_data() const
 {
+    if (is_presence_container) return true;
     return pre_config_suppression.is_set
 	|| severity_level.is_set
 	|| pre_config_suppression_timeout.is_set
@@ -6751,9 +6341,11 @@ bool Syslog::AlarmLogger::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterStrings()
+    :
+    alarm_filter_string(this, {"filter_string"})
 {
 
-    yang_name = "alarm-filter-strings"; yang_parent_name = "alarm-logger"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alarm-filter-strings"; yang_parent_name = "alarm-logger"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::AlarmLogger::AlarmFilterStrings::~AlarmFilterStrings()
@@ -6762,7 +6354,8 @@ Syslog::AlarmLogger::AlarmFilterStrings::~AlarmFilterStrings()
 
 bool Syslog::AlarmLogger::AlarmFilterStrings::has_data() const
 {
-    for (std::size_t index=0; index<alarm_filter_string.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_filter_string.len(); index++)
     {
         if(alarm_filter_string[index]->has_data())
             return true;
@@ -6772,7 +6365,7 @@ bool Syslog::AlarmLogger::AlarmFilterStrings::has_data() const
 
 bool Syslog::AlarmLogger::AlarmFilterStrings::has_operation() const
 {
-    for (std::size_t index=0; index<alarm_filter_string.size(); index++)
+    for (std::size_t index=0; index<alarm_filter_string.len(); index++)
     {
         if(alarm_filter_string[index]->has_operation())
             return true;
@@ -6809,7 +6402,7 @@ std::shared_ptr<Entity> Syslog::AlarmLogger::AlarmFilterStrings::get_child_by_na
     {
         auto c = std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString>();
         c->parent = this;
-        alarm_filter_string.push_back(c);
+        alarm_filter_string.append(c);
         return c;
     }
 
@@ -6821,7 +6414,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::AlarmFilterS
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alarm_filter_string)
+    for (auto c : alarm_filter_string.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6852,7 +6445,7 @@ Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::AlarmFilterString()
     filter_string{YType::str, "filter-string"}
 {
 
-    yang_name = "alarm-filter-string"; yang_parent_name = "alarm-filter-strings"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alarm-filter-string"; yang_parent_name = "alarm-filter-strings"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::~AlarmFilterString()
@@ -6861,6 +6454,7 @@ Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::~AlarmFilterString()
 
 bool Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::has_data() const
 {
+    if (is_presence_container) return true;
     return filter_string.is_set;
 }
 
@@ -6880,7 +6474,8 @@ std::string Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_abso
 std::string Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alarm-filter-string" <<"[filter-string='" <<filter_string <<"']";
+    path_buffer << "alarm-filter-string";
+    ADD_KEY_TOKEN(filter_string, "filter-string");
     return path_buffer.str();
 }
 
@@ -6934,14 +6529,14 @@ bool Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::has_leaf_or_chi
 Syslog::Correlator::Correlator()
     :
     buffer_size{YType::uint32, "buffer-size"}
-    	,
+        ,
     rules(std::make_shared<Syslog::Correlator::Rules>())
-	,rule_sets(std::make_shared<Syslog::Correlator::RuleSets>())
+    , rule_sets(std::make_shared<Syslog::Correlator::RuleSets>())
 {
     rules->parent = this;
     rule_sets->parent = this;
 
-    yang_name = "correlator"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "correlator"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Correlator::~Correlator()
@@ -6950,6 +6545,7 @@ Syslog::Correlator::~Correlator()
 
 bool Syslog::Correlator::has_data() const
 {
+    if (is_presence_container) return true;
     return buffer_size.is_set
 	|| (rules !=  nullptr && rules->has_data())
 	|| (rule_sets !=  nullptr && rule_sets->has_data());
@@ -7053,9 +6649,11 @@ bool Syslog::Correlator::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 Syslog::Correlator::Rules::Rules()
+    :
+    rule(this, {"name"})
 {
 
-    yang_name = "rules"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rules"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Correlator::Rules::~Rules()
@@ -7064,7 +6662,8 @@ Syslog::Correlator::Rules::~Rules()
 
 bool Syslog::Correlator::Rules::has_data() const
 {
-    for (std::size_t index=0; index<rule.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule.len(); index++)
     {
         if(rule[index]->has_data())
             return true;
@@ -7074,7 +6673,7 @@ bool Syslog::Correlator::Rules::has_data() const
 
 bool Syslog::Correlator::Rules::has_operation() const
 {
-    for (std::size_t index=0; index<rule.size(); index++)
+    for (std::size_t index=0; index<rule.len(); index++)
     {
         if(rule[index]->has_operation())
             return true;
@@ -7111,7 +6710,7 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::get_child_by_name(const std::
     {
         auto c = std::make_shared<Syslog::Correlator::Rules::Rule>();
         c->parent = this;
-        rule.push_back(c);
+        rule.append(c);
         return c;
     }
 
@@ -7123,7 +6722,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule)
+    for (auto c : rule.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7152,12 +6751,12 @@ bool Syslog::Correlator::Rules::has_leaf_or_child_of_name(const std::string & na
 Syslog::Correlator::Rules::Rule::Rule()
     :
     name{YType::str, "name"}
-    	,
+        ,
     definition(std::make_shared<Syslog::Correlator::Rules::Rule::Definition>())
-	,non_stateful(std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful>())
-	,stateful(std::make_shared<Syslog::Correlator::Rules::Rule::Stateful>())
-	,apply_to(std::make_shared<Syslog::Correlator::Rules::Rule::ApplyTo>())
-	,applied_to(std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo>())
+    , non_stateful(std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful>())
+    , stateful(std::make_shared<Syslog::Correlator::Rules::Rule::Stateful>())
+    , apply_to(std::make_shared<Syslog::Correlator::Rules::Rule::ApplyTo>())
+    , applied_to(std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo>())
 {
     definition->parent = this;
     non_stateful->parent = this;
@@ -7165,7 +6764,7 @@ Syslog::Correlator::Rules::Rule::Rule()
     apply_to->parent = this;
     applied_to->parent = this;
 
-    yang_name = "rule"; yang_parent_name = "rules"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule"; yang_parent_name = "rules"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Correlator::Rules::Rule::~Rule()
@@ -7174,6 +6773,7 @@ Syslog::Correlator::Rules::Rule::~Rule()
 
 bool Syslog::Correlator::Rules::Rule::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (definition !=  nullptr && definition->has_data())
 	|| (non_stateful !=  nullptr && non_stateful->has_data())
@@ -7203,7 +6803,8 @@ std::string Syslog::Correlator::Rules::Rule::get_absolute_path() const
 std::string Syslog::Correlator::Rules::Rule::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule" <<"[name='" <<name <<"']";
+    path_buffer << "rule";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -7359,7 +6960,7 @@ Syslog::Correlator::Rules::Rule::Definition::Definition()
     message_code_entry10{YType::str, "message-code-entry10"}
 {
 
-    yang_name = "definition"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "definition"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::Definition::~Definition()
@@ -7368,6 +6969,7 @@ Syslog::Correlator::Rules::Rule::Definition::~Definition()
 
 bool Syslog::Correlator::Rules::Rule::Definition::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set
 	|| category_name_entry1.is_set
 	|| group_name_entry1.is_set
@@ -7826,14 +7428,14 @@ Syslog::Correlator::Rules::Rule::NonStateful::NonStateful()
     context_correlation{YType::empty, "context-correlation"},
     timeout_root_cause{YType::uint32, "timeout-root-cause"},
     timeout{YType::uint32, "timeout"}
-    	,
+        ,
     non_root_causes(std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses>())
-	,root_cause(std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful::RootCause>())
+    , root_cause(std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful::RootCause>())
 {
     non_root_causes->parent = this;
     root_cause->parent = this;
 
-    yang_name = "non-stateful"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "non-stateful"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::NonStateful::~NonStateful()
@@ -7842,6 +7444,7 @@ Syslog::Correlator::Rules::Rule::NonStateful::~NonStateful()
 
 bool Syslog::Correlator::Rules::Rule::NonStateful::has_data() const
 {
+    if (is_presence_container) return true;
     return context_correlation.is_set
 	|| timeout_root_cause.is_set
 	|| timeout.is_set
@@ -7964,9 +7567,11 @@ bool Syslog::Correlator::Rules::Rule::NonStateful::has_leaf_or_child_of_name(con
 }
 
 Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCauses()
+    :
+    non_root_cause(this, {"category", "group", "message_code"})
 {
 
-    yang_name = "non-root-causes"; yang_parent_name = "non-stateful"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "non-root-causes"; yang_parent_name = "non-stateful"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::~NonRootCauses()
@@ -7975,7 +7580,8 @@ Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::~NonRootCauses()
 
 bool Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::has_data() const
 {
-    for (std::size_t index=0; index<non_root_cause.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<non_root_cause.len(); index++)
     {
         if(non_root_cause[index]->has_data())
             return true;
@@ -7985,7 +7591,7 @@ bool Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::has_data() con
 
 bool Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::has_operation() const
 {
-    for (std::size_t index=0; index<non_root_cause.size(); index++)
+    for (std::size_t index=0; index<non_root_cause.len(); index++)
     {
         if(non_root_cause[index]->has_operation())
             return true;
@@ -8015,7 +7621,7 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCau
     {
         auto c = std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause>();
         c->parent = this;
-        non_root_cause.push_back(c);
+        non_root_cause.append(c);
         return c;
     }
 
@@ -8027,7 +7633,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : non_root_cause)
+    for (auto c : non_root_cause.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8060,7 +7666,7 @@ Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::NonRo
     message_code{YType::str, "message-code"}
 {
 
-    yang_name = "non-root-cause"; yang_parent_name = "non-root-causes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "non-root-cause"; yang_parent_name = "non-root-causes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::~NonRootCause()
@@ -8069,6 +7675,7 @@ Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::~NonR
 
 bool Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| group.is_set
 	|| message_code.is_set;
@@ -8085,7 +7692,10 @@ bool Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::
 std::string Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "non-root-cause" <<"[category='" <<category <<"']" <<"[group='" <<group <<"']" <<"[message-code='" <<message_code <<"']";
+    path_buffer << "non-root-cause";
+    ADD_KEY_TOKEN(category, "category");
+    ADD_KEY_TOKEN(group, "group");
+    ADD_KEY_TOKEN(message_code, "message-code");
     return path_buffer.str();
 }
 
@@ -8165,7 +7775,7 @@ Syslog::Correlator::Rules::Rule::NonStateful::RootCause::RootCause()
     message_code{YType::str, "message-code"}
 {
 
-    yang_name = "root-cause"; yang_parent_name = "non-stateful"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "root-cause"; yang_parent_name = "non-stateful"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::NonStateful::RootCause::~RootCause()
@@ -8174,6 +7784,7 @@ Syslog::Correlator::Rules::Rule::NonStateful::RootCause::~RootCause()
 
 bool Syslog::Correlator::Rules::Rule::NonStateful::RootCause::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| group.is_set
 	|| message_code.is_set;
@@ -8270,14 +7881,14 @@ Syslog::Correlator::Rules::Rule::Stateful::Stateful()
     context_correlation{YType::empty, "context-correlation"},
     timeout_root_cause{YType::uint32, "timeout-root-cause"},
     timeout{YType::uint32, "timeout"}
-    	,
+        ,
     non_root_causes(std::make_shared<Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses>())
-	,root_cause(std::make_shared<Syslog::Correlator::Rules::Rule::Stateful::RootCause>())
+    , root_cause(std::make_shared<Syslog::Correlator::Rules::Rule::Stateful::RootCause>())
 {
     non_root_causes->parent = this;
     root_cause->parent = this;
 
-    yang_name = "stateful"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stateful"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::Stateful::~Stateful()
@@ -8286,6 +7897,7 @@ Syslog::Correlator::Rules::Rule::Stateful::~Stateful()
 
 bool Syslog::Correlator::Rules::Rule::Stateful::has_data() const
 {
+    if (is_presence_container) return true;
     return reparent.is_set
 	|| reissue.is_set
 	|| context_correlation.is_set
@@ -8434,9 +8046,11 @@ bool Syslog::Correlator::Rules::Rule::Stateful::has_leaf_or_child_of_name(const 
 }
 
 Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCauses()
+    :
+    non_root_cause(this, {"category", "group", "message_code"})
 {
 
-    yang_name = "non-root-causes"; yang_parent_name = "stateful"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "non-root-causes"; yang_parent_name = "stateful"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::~NonRootCauses()
@@ -8445,7 +8059,8 @@ Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::~NonRootCauses()
 
 bool Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::has_data() const
 {
-    for (std::size_t index=0; index<non_root_cause.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<non_root_cause.len(); index++)
     {
         if(non_root_cause[index]->has_data())
             return true;
@@ -8455,7 +8070,7 @@ bool Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::has_data() const
 
 bool Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::has_operation() const
 {
-    for (std::size_t index=0; index<non_root_cause.size(); index++)
+    for (std::size_t index=0; index<non_root_cause.len(); index++)
     {
         if(non_root_cause[index]->has_operation())
             return true;
@@ -8485,7 +8100,7 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses
     {
         auto c = std::make_shared<Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause>();
         c->parent = this;
-        non_root_cause.push_back(c);
+        non_root_cause.append(c);
         return c;
     }
 
@@ -8497,7 +8112,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : non_root_cause)
+    for (auto c : non_root_cause.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8530,7 +8145,7 @@ Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::NonRootC
     message_code{YType::str, "message-code"}
 {
 
-    yang_name = "non-root-cause"; yang_parent_name = "non-root-causes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "non-root-cause"; yang_parent_name = "non-root-causes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::~NonRootCause()
@@ -8539,6 +8154,7 @@ Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::~NonRoot
 
 bool Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| group.is_set
 	|| message_code.is_set;
@@ -8555,7 +8171,10 @@ bool Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::has
 std::string Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "non-root-cause" <<"[category='" <<category <<"']" <<"[group='" <<group <<"']" <<"[message-code='" <<message_code <<"']";
+    path_buffer << "non-root-cause";
+    ADD_KEY_TOKEN(category, "category");
+    ADD_KEY_TOKEN(group, "group");
+    ADD_KEY_TOKEN(message_code, "message-code");
     return path_buffer.str();
 }
 
@@ -8635,7 +8254,7 @@ Syslog::Correlator::Rules::Rule::Stateful::RootCause::RootCause()
     message_code{YType::str, "message-code"}
 {
 
-    yang_name = "root-cause"; yang_parent_name = "stateful"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "root-cause"; yang_parent_name = "stateful"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::Stateful::RootCause::~RootCause()
@@ -8644,6 +8263,7 @@ Syslog::Correlator::Rules::Rule::Stateful::RootCause::~RootCause()
 
 bool Syslog::Correlator::Rules::Rule::Stateful::RootCause::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| group.is_set
 	|| message_code.is_set;
@@ -8736,14 +8356,14 @@ bool Syslog::Correlator::Rules::Rule::Stateful::RootCause::has_leaf_or_child_of_
 Syslog::Correlator::Rules::Rule::ApplyTo::ApplyTo()
     :
     all_of_router{YType::empty, "all-of-router"}
-    	,
+        ,
     contexts(std::make_shared<Syslog::Correlator::Rules::Rule::ApplyTo::Contexts>())
-	,locations(std::make_shared<Syslog::Correlator::Rules::Rule::ApplyTo::Locations>())
+    , locations(std::make_shared<Syslog::Correlator::Rules::Rule::ApplyTo::Locations>())
 {
     contexts->parent = this;
     locations->parent = this;
 
-    yang_name = "apply-to"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "apply-to"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::ApplyTo::~ApplyTo()
@@ -8752,6 +8372,7 @@ Syslog::Correlator::Rules::Rule::ApplyTo::~ApplyTo()
 
 bool Syslog::Correlator::Rules::Rule::ApplyTo::has_data() const
 {
+    if (is_presence_container) return true;
     return all_of_router.is_set
 	|| (contexts !=  nullptr && contexts->has_data())
 	|| (locations !=  nullptr && locations->has_data());
@@ -8852,7 +8473,7 @@ Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::Contexts()
     context{YType::str, "context"}
 {
 
-    yang_name = "contexts"; yang_parent_name = "apply-to"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "contexts"; yang_parent_name = "apply-to"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::~Contexts()
@@ -8861,6 +8482,7 @@ Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::~Contexts()
 
 bool Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : context.getYLeafs())
     {
         if(leaf.is_set)
@@ -8938,7 +8560,7 @@ Syslog::Correlator::Rules::Rule::ApplyTo::Locations::Locations()
     location{YType::str, "location"}
 {
 
-    yang_name = "locations"; yang_parent_name = "apply-to"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "locations"; yang_parent_name = "apply-to"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::ApplyTo::Locations::~Locations()
@@ -8947,6 +8569,7 @@ Syslog::Correlator::Rules::Rule::ApplyTo::Locations::~Locations()
 
 bool Syslog::Correlator::Rules::Rule::ApplyTo::Locations::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : location.getYLeafs())
     {
         if(leaf.is_set)
@@ -9022,14 +8645,14 @@ bool Syslog::Correlator::Rules::Rule::ApplyTo::Locations::has_leaf_or_child_of_n
 Syslog::Correlator::Rules::Rule::AppliedTo::AppliedTo()
     :
     all{YType::empty, "all"}
-    	,
+        ,
     contexts(std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Contexts>())
-	,locations(std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Locations>())
+    , locations(std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Locations>())
 {
     contexts->parent = this;
     locations->parent = this;
 
-    yang_name = "applied-to"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "applied-to"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::AppliedTo::~AppliedTo()
@@ -9038,6 +8661,7 @@ Syslog::Correlator::Rules::Rule::AppliedTo::~AppliedTo()
 
 bool Syslog::Correlator::Rules::Rule::AppliedTo::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| (contexts !=  nullptr && contexts->has_data())
 	|| (locations !=  nullptr && locations->has_data());
@@ -9134,9 +8758,11 @@ bool Syslog::Correlator::Rules::Rule::AppliedTo::has_leaf_or_child_of_name(const
 }
 
 Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Contexts()
+    :
+    context(this, {"context"})
 {
 
-    yang_name = "contexts"; yang_parent_name = "applied-to"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "contexts"; yang_parent_name = "applied-to"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::~Contexts()
@@ -9145,7 +8771,8 @@ Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::~Contexts()
 
 bool Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::has_data() const
 {
-    for (std::size_t index=0; index<context.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<context.len(); index++)
     {
         if(context[index]->has_data())
             return true;
@@ -9155,7 +8782,7 @@ bool Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::has_data() const
 
 bool Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::has_operation() const
 {
-    for (std::size_t index=0; index<context.size(); index++)
+    for (std::size_t index=0; index<context.len(); index++)
     {
         if(context[index]->has_operation())
             return true;
@@ -9185,7 +8812,7 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::ge
     {
         auto c = std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context>();
         c->parent = this;
-        context.push_back(c);
+        context.append(c);
         return c;
     }
 
@@ -9197,7 +8824,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : context)
+    for (auto c : context.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9228,7 +8855,7 @@ Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::Context()
     context{YType::str, "context"}
 {
 
-    yang_name = "context"; yang_parent_name = "contexts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "context"; yang_parent_name = "contexts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::~Context()
@@ -9237,6 +8864,7 @@ Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::~Context()
 
 bool Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::has_data() const
 {
+    if (is_presence_container) return true;
     return context.is_set;
 }
 
@@ -9249,7 +8877,8 @@ bool Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::has_operatio
 std::string Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "context" <<"[context='" <<context <<"']";
+    path_buffer << "context";
+    ADD_KEY_TOKEN(context, "context");
     return path_buffer.str();
 }
 
@@ -9301,9 +8930,11 @@ bool Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::has_leaf_or_
 }
 
 Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Locations()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "locations"; yang_parent_name = "applied-to"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "locations"; yang_parent_name = "applied-to"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::AppliedTo::Locations::~Locations()
@@ -9312,7 +8943,8 @@ Syslog::Correlator::Rules::Rule::AppliedTo::Locations::~Locations()
 
 bool Syslog::Correlator::Rules::Rule::AppliedTo::Locations::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9322,7 +8954,7 @@ bool Syslog::Correlator::Rules::Rule::AppliedTo::Locations::has_data() const
 
 bool Syslog::Correlator::Rules::Rule::AppliedTo::Locations::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9352,7 +8984,7 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::g
     {
         auto c = std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9364,7 +8996,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9395,7 +9027,7 @@ Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::Location()
     location{YType::str, "location"}
 {
 
-    yang_name = "location"; yang_parent_name = "locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::~Location()
@@ -9404,6 +9036,7 @@ Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::~Location()
 
 bool Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set;
 }
 
@@ -9416,7 +9049,8 @@ bool Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::has_operat
 std::string Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -9468,9 +9102,11 @@ bool Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::has_leaf_o
 }
 
 Syslog::Correlator::RuleSets::RuleSets()
+    :
+    rule_set(this, {"name"})
 {
 
-    yang_name = "rule-sets"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-sets"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Correlator::RuleSets::~RuleSets()
@@ -9479,7 +9115,8 @@ Syslog::Correlator::RuleSets::~RuleSets()
 
 bool Syslog::Correlator::RuleSets::has_data() const
 {
-    for (std::size_t index=0; index<rule_set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule_set.len(); index++)
     {
         if(rule_set[index]->has_data())
             return true;
@@ -9489,7 +9126,7 @@ bool Syslog::Correlator::RuleSets::has_data() const
 
 bool Syslog::Correlator::RuleSets::has_operation() const
 {
-    for (std::size_t index=0; index<rule_set.size(); index++)
+    for (std::size_t index=0; index<rule_set.len(); index++)
     {
         if(rule_set[index]->has_operation())
             return true;
@@ -9526,7 +9163,7 @@ std::shared_ptr<Entity> Syslog::Correlator::RuleSets::get_child_by_name(const st
     {
         auto c = std::make_shared<Syslog::Correlator::RuleSets::RuleSet>();
         c->parent = this;
-        rule_set.push_back(c);
+        rule_set.append(c);
         return c;
     }
 
@@ -9538,7 +9175,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule_set)
+    for (auto c : rule_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9567,14 +9204,14 @@ bool Syslog::Correlator::RuleSets::has_leaf_or_child_of_name(const std::string &
 Syslog::Correlator::RuleSets::RuleSet::RuleSet()
     :
     name{YType::str, "name"}
-    	,
+        ,
     rulenames(std::make_shared<Syslog::Correlator::RuleSets::RuleSet::Rulenames>())
-	,applied_to(std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo>())
+    , applied_to(std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo>())
 {
     rulenames->parent = this;
     applied_to->parent = this;
 
-    yang_name = "rule-set"; yang_parent_name = "rule-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-set"; yang_parent_name = "rule-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Correlator::RuleSets::RuleSet::~RuleSet()
@@ -9583,6 +9220,7 @@ Syslog::Correlator::RuleSets::RuleSet::~RuleSet()
 
 bool Syslog::Correlator::RuleSets::RuleSet::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (rulenames !=  nullptr && rulenames->has_data())
 	|| (applied_to !=  nullptr && applied_to->has_data());
@@ -9606,7 +9244,8 @@ std::string Syslog::Correlator::RuleSets::RuleSet::get_absolute_path() const
 std::string Syslog::Correlator::RuleSets::RuleSet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule-set" <<"[name='" <<name <<"']";
+    path_buffer << "rule-set";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -9686,9 +9325,11 @@ bool Syslog::Correlator::RuleSets::RuleSet::has_leaf_or_child_of_name(const std:
 }
 
 Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulenames()
+    :
+    rulename(this, {"rulename"})
 {
 
-    yang_name = "rulenames"; yang_parent_name = "rule-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rulenames"; yang_parent_name = "rule-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::RuleSets::RuleSet::Rulenames::~Rulenames()
@@ -9697,7 +9338,8 @@ Syslog::Correlator::RuleSets::RuleSet::Rulenames::~Rulenames()
 
 bool Syslog::Correlator::RuleSets::RuleSet::Rulenames::has_data() const
 {
-    for (std::size_t index=0; index<rulename.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rulename.len(); index++)
     {
         if(rulename[index]->has_data())
             return true;
@@ -9707,7 +9349,7 @@ bool Syslog::Correlator::RuleSets::RuleSet::Rulenames::has_data() const
 
 bool Syslog::Correlator::RuleSets::RuleSet::Rulenames::has_operation() const
 {
-    for (std::size_t index=0; index<rulename.size(); index++)
+    for (std::size_t index=0; index<rulename.len(); index++)
     {
         if(rulename[index]->has_operation())
             return true;
@@ -9737,7 +9379,7 @@ std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_ch
     {
         auto c = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename>();
         c->parent = this;
-        rulename.push_back(c);
+        rulename.append(c);
         return c;
     }
 
@@ -9749,7 +9391,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::Rul
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rulename)
+    for (auto c : rulename.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9780,7 +9422,7 @@ Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::Rulename()
     rulename{YType::str, "rulename"}
 {
 
-    yang_name = "rulename"; yang_parent_name = "rulenames"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rulename"; yang_parent_name = "rulenames"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::~Rulename()
@@ -9789,6 +9431,7 @@ Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::~Rulename()
 
 bool Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::has_data() const
 {
+    if (is_presence_container) return true;
     return rulename.is_set;
 }
 
@@ -9801,7 +9444,8 @@ bool Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::has_operation()
 std::string Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rulename" <<"[rulename='" <<rulename <<"']";
+    path_buffer << "rulename";
+    ADD_KEY_TOKEN(rulename, "rulename");
     return path_buffer.str();
 }
 
@@ -9855,14 +9499,14 @@ bool Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::has_leaf_or_chi
 Syslog::Correlator::RuleSets::RuleSet::AppliedTo::AppliedTo()
     :
     all{YType::empty, "all"}
-    	,
+        ,
     contexts(std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts>())
-	,locations(std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations>())
+    , locations(std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations>())
 {
     contexts->parent = this;
     locations->parent = this;
 
-    yang_name = "applied-to"; yang_parent_name = "rule-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "applied-to"; yang_parent_name = "rule-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::RuleSets::RuleSet::AppliedTo::~AppliedTo()
@@ -9871,6 +9515,7 @@ Syslog::Correlator::RuleSets::RuleSet::AppliedTo::~AppliedTo()
 
 bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| (contexts !=  nullptr && contexts->has_data())
 	|| (locations !=  nullptr && locations->has_data());
@@ -9967,9 +9612,11 @@ bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::has_leaf_or_child_of_name
 }
 
 Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Contexts()
+    :
+    context(this, {"context"})
 {
 
-    yang_name = "contexts"; yang_parent_name = "applied-to"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "contexts"; yang_parent_name = "applied-to"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::~Contexts()
@@ -9978,7 +9625,8 @@ Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::~Contexts()
 
 bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::has_data() const
 {
-    for (std::size_t index=0; index<context.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<context.len(); index++)
     {
         if(context[index]->has_data())
             return true;
@@ -9988,7 +9636,7 @@ bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::has_data() cons
 
 bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::has_operation() const
 {
-    for (std::size_t index=0; index<context.size(); index++)
+    for (std::size_t index=0; index<context.len(); index++)
     {
         if(context[index]->has_operation())
             return true;
@@ -10018,7 +9666,7 @@ std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contex
     {
         auto c = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context>();
         c->parent = this;
-        context.push_back(c);
+        context.append(c);
         return c;
     }
 
@@ -10030,7 +9678,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::Rul
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : context)
+    for (auto c : context.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10061,7 +9709,7 @@ Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::Context()
     context{YType::str, "context"}
 {
 
-    yang_name = "context"; yang_parent_name = "contexts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "context"; yang_parent_name = "contexts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::~Context()
@@ -10070,6 +9718,7 @@ Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::~Context()
 
 bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::has_data() const
 {
+    if (is_presence_container) return true;
     return context.is_set;
 }
 
@@ -10082,7 +9731,8 @@ bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::has_op
 std::string Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "context" <<"[context='" <<context <<"']";
+    path_buffer << "context";
+    ADD_KEY_TOKEN(context, "context");
     return path_buffer.str();
 }
 
@@ -10134,9 +9784,11 @@ bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::has_le
 }
 
 Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Locations()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "locations"; yang_parent_name = "applied-to"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "locations"; yang_parent_name = "applied-to"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::~Locations()
@@ -10145,7 +9797,8 @@ Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::~Locations()
 
 bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -10155,7 +9808,7 @@ bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::has_data() con
 
 bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -10185,7 +9838,7 @@ std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locati
     {
         auto c = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -10197,7 +9850,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::Rul
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10228,7 +9881,7 @@ Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::Location(
     location{YType::str, "location"}
 {
 
-    yang_name = "location"; yang_parent_name = "locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::~Location()
@@ -10237,6 +9890,7 @@ Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::~Location
 
 bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set;
 }
 
@@ -10249,7 +9903,8 @@ bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::has_
 std::string Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -10306,7 +9961,7 @@ Syslog::Suppression::Suppression()
 {
     rules->parent = this;
 
-    yang_name = "suppression"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "suppression"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Suppression::~Suppression()
@@ -10315,6 +9970,7 @@ Syslog::Suppression::~Suppression()
 
 bool Syslog::Suppression::has_data() const
 {
+    if (is_presence_container) return true;
     return (rules !=  nullptr && rules->has_data());
 }
 
@@ -10389,9 +10045,11 @@ bool Syslog::Suppression::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Syslog::Suppression::Rules::Rules()
+    :
+    rule(this, {"name"})
 {
 
-    yang_name = "rules"; yang_parent_name = "suppression"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rules"; yang_parent_name = "suppression"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Suppression::Rules::~Rules()
@@ -10400,7 +10058,8 @@ Syslog::Suppression::Rules::~Rules()
 
 bool Syslog::Suppression::Rules::has_data() const
 {
-    for (std::size_t index=0; index<rule.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule.len(); index++)
     {
         if(rule[index]->has_data())
             return true;
@@ -10410,7 +10069,7 @@ bool Syslog::Suppression::Rules::has_data() const
 
 bool Syslog::Suppression::Rules::has_operation() const
 {
-    for (std::size_t index=0; index<rule.size(); index++)
+    for (std::size_t index=0; index<rule.len(); index++)
     {
         if(rule[index]->has_operation())
             return true;
@@ -10447,7 +10106,7 @@ std::shared_ptr<Entity> Syslog::Suppression::Rules::get_child_by_name(const std:
     {
         auto c = std::make_shared<Syslog::Suppression::Rules::Rule>();
         c->parent = this;
-        rule.push_back(c);
+        rule.append(c);
         return c;
     }
 
@@ -10459,7 +10118,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule)
+    for (auto c : rule.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10489,14 +10148,14 @@ Syslog::Suppression::Rules::Rule::Rule()
     :
     name{YType::str, "name"},
     all_alarms{YType::empty, "all-alarms"}
-    	,
+        ,
     applied_to(std::make_shared<Syslog::Suppression::Rules::Rule::AppliedTo>())
-	,alarm_causes(std::make_shared<Syslog::Suppression::Rules::Rule::AlarmCauses>())
+    , alarm_causes(std::make_shared<Syslog::Suppression::Rules::Rule::AlarmCauses>())
 {
     applied_to->parent = this;
     alarm_causes->parent = this;
 
-    yang_name = "rule"; yang_parent_name = "rules"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule"; yang_parent_name = "rules"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Suppression::Rules::Rule::~Rule()
@@ -10505,6 +10164,7 @@ Syslog::Suppression::Rules::Rule::~Rule()
 
 bool Syslog::Suppression::Rules::Rule::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| all_alarms.is_set
 	|| (applied_to !=  nullptr && applied_to->has_data())
@@ -10530,7 +10190,8 @@ std::string Syslog::Suppression::Rules::Rule::get_absolute_path() const
 std::string Syslog::Suppression::Rules::Rule::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule" <<"[name='" <<name <<"']";
+    path_buffer << "rule";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10623,12 +10284,12 @@ bool Syslog::Suppression::Rules::Rule::has_leaf_or_child_of_name(const std::stri
 Syslog::Suppression::Rules::Rule::AppliedTo::AppliedTo()
     :
     all{YType::empty, "all"}
-    	,
+        ,
     sources(std::make_shared<Syslog::Suppression::Rules::Rule::AppliedTo::Sources>())
 {
     sources->parent = this;
 
-    yang_name = "applied-to"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "applied-to"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Suppression::Rules::Rule::AppliedTo::~AppliedTo()
@@ -10637,6 +10298,7 @@ Syslog::Suppression::Rules::Rule::AppliedTo::~AppliedTo()
 
 bool Syslog::Suppression::Rules::Rule::AppliedTo::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| (sources !=  nullptr && sources->has_data());
 }
@@ -10717,9 +10379,11 @@ bool Syslog::Suppression::Rules::Rule::AppliedTo::has_leaf_or_child_of_name(cons
 }
 
 Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Sources()
+    :
+    source(this, {"source"})
 {
 
-    yang_name = "sources"; yang_parent_name = "applied-to"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sources"; yang_parent_name = "applied-to"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Suppression::Rules::Rule::AppliedTo::Sources::~Sources()
@@ -10728,7 +10392,8 @@ Syslog::Suppression::Rules::Rule::AppliedTo::Sources::~Sources()
 
 bool Syslog::Suppression::Rules::Rule::AppliedTo::Sources::has_data() const
 {
-    for (std::size_t index=0; index<source.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<source.len(); index++)
     {
         if(source[index]->has_data())
             return true;
@@ -10738,7 +10403,7 @@ bool Syslog::Suppression::Rules::Rule::AppliedTo::Sources::has_data() const
 
 bool Syslog::Suppression::Rules::Rule::AppliedTo::Sources::has_operation() const
 {
-    for (std::size_t index=0; index<source.size(); index++)
+    for (std::size_t index=0; index<source.len(); index++)
     {
         if(source[index]->has_operation())
             return true;
@@ -10768,7 +10433,7 @@ std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::ge
     {
         auto c = std::make_shared<Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source>();
         c->parent = this;
-        source.push_back(c);
+        source.append(c);
         return c;
     }
 
@@ -10780,7 +10445,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : source)
+    for (auto c : source.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10811,7 +10476,7 @@ Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::Source()
     source{YType::str, "source"}
 {
 
-    yang_name = "source"; yang_parent_name = "sources"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "sources"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::~Source()
@@ -10820,6 +10485,7 @@ Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::~Source()
 
 bool Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return source.is_set;
 }
 
@@ -10832,7 +10498,8 @@ bool Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::has_operation
 std::string Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "source" <<"[source='" <<source <<"']";
+    path_buffer << "source";
+    ADD_KEY_TOKEN(source, "source");
     return path_buffer.str();
 }
 
@@ -10884,9 +10551,11 @@ bool Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::has_leaf_or_c
 }
 
 Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCauses()
+    :
+    alarm_cause(this, {"category", "group", "code"})
 {
 
-    yang_name = "alarm-causes"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "alarm-causes"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Suppression::Rules::Rule::AlarmCauses::~AlarmCauses()
@@ -10895,7 +10564,8 @@ Syslog::Suppression::Rules::Rule::AlarmCauses::~AlarmCauses()
 
 bool Syslog::Suppression::Rules::Rule::AlarmCauses::has_data() const
 {
-    for (std::size_t index=0; index<alarm_cause.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_cause.len(); index++)
     {
         if(alarm_cause[index]->has_data())
             return true;
@@ -10905,7 +10575,7 @@ bool Syslog::Suppression::Rules::Rule::AlarmCauses::has_data() const
 
 bool Syslog::Suppression::Rules::Rule::AlarmCauses::has_operation() const
 {
-    for (std::size_t index=0; index<alarm_cause.size(); index++)
+    for (std::size_t index=0; index<alarm_cause.len(); index++)
     {
         if(alarm_cause[index]->has_operation())
             return true;
@@ -10935,7 +10605,7 @@ std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AlarmCauses::get_child
     {
         auto c = std::make_shared<Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause>();
         c->parent = this;
-        alarm_cause.push_back(c);
+        alarm_cause.append(c);
         return c;
     }
 
@@ -10947,7 +10617,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alarm_cause)
+    for (auto c : alarm_cause.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10980,7 +10650,7 @@ Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::AlarmCause()
     code{YType::str, "code"}
 {
 
-    yang_name = "alarm-cause"; yang_parent_name = "alarm-causes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "alarm-cause"; yang_parent_name = "alarm-causes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::~AlarmCause()
@@ -10989,6 +10659,7 @@ Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::~AlarmCause()
 
 bool Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| group.is_set
 	|| code.is_set;
@@ -11005,7 +10676,10 @@ bool Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::has_operation() 
 std::string Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alarm-cause" <<"[category='" <<category <<"']" <<"[group='" <<group <<"']" <<"[code='" <<code <<"']";
+    path_buffer << "alarm-cause";
+    ADD_KEY_TOKEN(category, "category");
+    ADD_KEY_TOKEN(group, "group");
+    ADD_KEY_TOKEN(code, "code");
     return path_buffer.str();
 }
 
@@ -11078,39 +10752,14 @@ bool Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::has_leaf_or_chil
     return false;
 }
 
-const Enum::YLeaf LoggingTos::precedence {0, "precedence"};
-const Enum::YLeaf LoggingTos::dscp {1, "dscp"};
-
-const Enum::YLeaf LoggingDscpValue::default_ {0, "default"};
-const Enum::YLeaf LoggingDscpValue::af11 {10, "af11"};
-const Enum::YLeaf LoggingDscpValue::af12 {12, "af12"};
-const Enum::YLeaf LoggingDscpValue::af13 {14, "af13"};
-const Enum::YLeaf LoggingDscpValue::af21 {18, "af21"};
-const Enum::YLeaf LoggingDscpValue::af22 {20, "af22"};
-const Enum::YLeaf LoggingDscpValue::af23 {22, "af23"};
-const Enum::YLeaf LoggingDscpValue::af31 {26, "af31"};
-const Enum::YLeaf LoggingDscpValue::af32 {28, "af32"};
-const Enum::YLeaf LoggingDscpValue::af33 {30, "af33"};
-const Enum::YLeaf LoggingDscpValue::af41 {34, "af41"};
-const Enum::YLeaf LoggingDscpValue::af42 {36, "af42"};
-const Enum::YLeaf LoggingDscpValue::af43 {38, "af43"};
-const Enum::YLeaf LoggingDscpValue::ef {46, "ef"};
-const Enum::YLeaf LoggingDscpValue::cs1 {8, "cs1"};
-const Enum::YLeaf LoggingDscpValue::cs2 {16, "cs2"};
-const Enum::YLeaf LoggingDscpValue::cs3 {24, "cs3"};
-const Enum::YLeaf LoggingDscpValue::cs4 {32, "cs4"};
-const Enum::YLeaf LoggingDscpValue::cs5 {40, "cs5"};
-const Enum::YLeaf LoggingDscpValue::cs6 {48, "cs6"};
-const Enum::YLeaf LoggingDscpValue::cs7 {56, "cs7"};
-
-const Enum::YLeaf LoggingPrecedenceValue::routine {0, "routine"};
-const Enum::YLeaf LoggingPrecedenceValue::priority {1, "priority"};
-const Enum::YLeaf LoggingPrecedenceValue::immediate {2, "immediate"};
-const Enum::YLeaf LoggingPrecedenceValue::flash {3, "flash"};
-const Enum::YLeaf LoggingPrecedenceValue::flash_override {4, "flash-override"};
-const Enum::YLeaf LoggingPrecedenceValue::critical {5, "critical"};
-const Enum::YLeaf LoggingPrecedenceValue::internet {6, "internet"};
-const Enum::YLeaf LoggingPrecedenceValue::network {7, "network"};
+const Enum::YLeaf LogSeverity::emergency {0, "emergency"};
+const Enum::YLeaf LogSeverity::alert {1, "alert"};
+const Enum::YLeaf LogSeverity::critical {2, "critical"};
+const Enum::YLeaf LogSeverity::error {3, "error"};
+const Enum::YLeaf LogSeverity::warning {4, "warning"};
+const Enum::YLeaf LogSeverity::notice {5, "notice"};
+const Enum::YLeaf LogSeverity::informational {6, "informational"};
+const Enum::YLeaf LogSeverity::debug {7, "debug"};
 
 const Enum::YLeaf Facility::kern {0, "kern"};
 const Enum::YLeaf Facility::user {8, "user"};
@@ -11139,7 +10788,20 @@ const Enum::YLeaf Facility::sys12 {216, "sys12"};
 const Enum::YLeaf Facility::sys13 {224, "sys13"};
 const Enum::YLeaf Facility::sys14 {232, "sys14"};
 
-const Enum::YLeaf LoggingDscp::dscp {1, "dscp"};
+const Enum::YLeaf LogCollectFrequency::weekly {1, "weekly"};
+const Enum::YLeaf LogCollectFrequency::daily {2, "daily"};
+
+const Enum::YLeaf LoggingPrecedenceValue::routine {0, "routine"};
+const Enum::YLeaf LoggingPrecedenceValue::priority {1, "priority"};
+const Enum::YLeaf LoggingPrecedenceValue::immediate {2, "immediate"};
+const Enum::YLeaf LoggingPrecedenceValue::flash {3, "flash"};
+const Enum::YLeaf LoggingPrecedenceValue::flash_override {4, "flash-override"};
+const Enum::YLeaf LoggingPrecedenceValue::critical {5, "critical"};
+const Enum::YLeaf LoggingPrecedenceValue::internet {6, "internet"};
+const Enum::YLeaf LoggingPrecedenceValue::network {7, "network"};
+
+const Enum::YLeaf LoggingTos::precedence {0, "precedence"};
+const Enum::YLeaf LoggingTos::dscp {1, "dscp"};
 
 const Enum::YLeaf LoggingLevels::emergency {0, "emergency"};
 const Enum::YLeaf LoggingLevels::alert {1, "alert"};
@@ -11153,8 +10815,27 @@ const Enum::YLeaf LoggingLevels::disable {15, "disable"};
 
 const Enum::YLeaf LoggingPrecedence::precedence {0, "precedence"};
 
-const Enum::YLeaf TimeInfo::disable {0, "disable"};
-const Enum::YLeaf TimeInfo::enable {1, "enable"};
+const Enum::YLeaf LoggingDscpValue::default_ {0, "default"};
+const Enum::YLeaf LoggingDscpValue::af11 {10, "af11"};
+const Enum::YLeaf LoggingDscpValue::af12 {12, "af12"};
+const Enum::YLeaf LoggingDscpValue::af13 {14, "af13"};
+const Enum::YLeaf LoggingDscpValue::af21 {18, "af21"};
+const Enum::YLeaf LoggingDscpValue::af22 {20, "af22"};
+const Enum::YLeaf LoggingDscpValue::af23 {22, "af23"};
+const Enum::YLeaf LoggingDscpValue::af31 {26, "af31"};
+const Enum::YLeaf LoggingDscpValue::af32 {28, "af32"};
+const Enum::YLeaf LoggingDscpValue::af33 {30, "af33"};
+const Enum::YLeaf LoggingDscpValue::af41 {34, "af41"};
+const Enum::YLeaf LoggingDscpValue::af42 {36, "af42"};
+const Enum::YLeaf LoggingDscpValue::af43 {38, "af43"};
+const Enum::YLeaf LoggingDscpValue::ef {46, "ef"};
+const Enum::YLeaf LoggingDscpValue::cs1 {8, "cs1"};
+const Enum::YLeaf LoggingDscpValue::cs2 {16, "cs2"};
+const Enum::YLeaf LoggingDscpValue::cs3 {24, "cs3"};
+const Enum::YLeaf LoggingDscpValue::cs4 {32, "cs4"};
+const Enum::YLeaf LoggingDscpValue::cs5 {40, "cs5"};
+const Enum::YLeaf LoggingDscpValue::cs6 {48, "cs6"};
+const Enum::YLeaf LoggingDscpValue::cs7 {56, "cs7"};
 
 const Enum::YLeaf LogMessageSeverity::emergency {0, "emergency"};
 const Enum::YLeaf LogMessageSeverity::alert {1, "alert"};
@@ -11165,17 +10846,10 @@ const Enum::YLeaf LogMessageSeverity::notice {5, "notice"};
 const Enum::YLeaf LogMessageSeverity::informational {6, "informational"};
 const Enum::YLeaf LogMessageSeverity::debug {7, "debug"};
 
-const Enum::YLeaf LogCollectFrequency::weekly {1, "weekly"};
-const Enum::YLeaf LogCollectFrequency::daily {2, "daily"};
+const Enum::YLeaf TimeInfo::disable {0, "disable"};
+const Enum::YLeaf TimeInfo::enable {1, "enable"};
 
-const Enum::YLeaf LogSeverity::emergency {0, "emergency"};
-const Enum::YLeaf LogSeverity::alert {1, "alert"};
-const Enum::YLeaf LogSeverity::critical {2, "critical"};
-const Enum::YLeaf LogSeverity::error {3, "error"};
-const Enum::YLeaf LogSeverity::warning {4, "warning"};
-const Enum::YLeaf LogSeverity::notice {5, "notice"};
-const Enum::YLeaf LogSeverity::informational {6, "informational"};
-const Enum::YLeaf LogSeverity::debug {7, "debug"};
+const Enum::YLeaf LoggingDscp::dscp {1, "dscp"};
 
 
 }

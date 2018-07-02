@@ -18,7 +18,7 @@ Isis::Isis()
 {
     instances->parent = this;
 
-    yang_name = "isis"; yang_parent_name = "Cisco-IOS-XR-clns-isis-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "isis"; yang_parent_name = "Cisco-IOS-XR-clns-isis-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Isis::~Isis()
@@ -27,6 +27,7 @@ Isis::~Isis()
 
 bool Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return (instances !=  nullptr && instances->has_data());
 }
 
@@ -119,9 +120,11 @@ bool Isis::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Isis::Instances::Instances()
+    :
+    instance(this, {"instance_name"})
 {
 
-    yang_name = "instances"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instances"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Isis::Instances::~Instances()
@@ -130,7 +133,8 @@ Isis::Instances::~Instances()
 
 bool Isis::Instances::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -140,7 +144,7 @@ bool Isis::Instances::has_data() const
 
 bool Isis::Instances::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -177,7 +181,7 @@ std::shared_ptr<Entity> Isis::Instances::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Isis::Instances::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -189,7 +193,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -228,26 +232,26 @@ Isis::Instances::Instance::Instance()
     dynamic_host_name{YType::boolean, "dynamic-host-name"},
     nsr{YType::empty, "nsr"},
     log_pdu_drops{YType::empty, "log-pdu-drops"}
-    	,
+        ,
     srgb(nullptr) // presence node
-	,lsp_generation_intervals(std::make_shared<Isis::Instances::Instance::LspGenerationIntervals>())
-	,lsp_arrival_times(std::make_shared<Isis::Instances::Instance::LspArrivalTimes>())
-	,trace_buffer_size(std::make_shared<Isis::Instances::Instance::TraceBufferSize>())
-	,max_link_metrics(std::make_shared<Isis::Instances::Instance::MaxLinkMetrics>())
-	,adjacency_stagger(nullptr) // presence node
-	,afs(std::make_shared<Isis::Instances::Instance::Afs>())
-	,lsp_refresh_intervals(std::make_shared<Isis::Instances::Instance::LspRefreshIntervals>())
-	,distribute(nullptr) // presence node
-	,lsp_accept_passwords(std::make_shared<Isis::Instances::Instance::LspAcceptPasswords>())
-	,lsp_mtus(std::make_shared<Isis::Instances::Instance::LspMtus>())
-	,nsf(std::make_shared<Isis::Instances::Instance::Nsf>())
-	,link_groups(std::make_shared<Isis::Instances::Instance::LinkGroups>())
-	,lsp_check_intervals(std::make_shared<Isis::Instances::Instance::LspCheckIntervals>())
-	,lsp_passwords(std::make_shared<Isis::Instances::Instance::LspPasswords>())
-	,nets(std::make_shared<Isis::Instances::Instance::Nets>())
-	,lsp_lifetimes(std::make_shared<Isis::Instances::Instance::LspLifetimes>())
-	,overload_bits(std::make_shared<Isis::Instances::Instance::OverloadBits>())
-	,interfaces(std::make_shared<Isis::Instances::Instance::Interfaces>())
+    , lsp_generation_intervals(std::make_shared<Isis::Instances::Instance::LspGenerationIntervals>())
+    , lsp_arrival_times(std::make_shared<Isis::Instances::Instance::LspArrivalTimes>())
+    , trace_buffer_size(std::make_shared<Isis::Instances::Instance::TraceBufferSize>())
+    , max_link_metrics(std::make_shared<Isis::Instances::Instance::MaxLinkMetrics>())
+    , adjacency_stagger(nullptr) // presence node
+    , afs(std::make_shared<Isis::Instances::Instance::Afs>())
+    , lsp_refresh_intervals(std::make_shared<Isis::Instances::Instance::LspRefreshIntervals>())
+    , distribute(nullptr) // presence node
+    , lsp_accept_passwords(std::make_shared<Isis::Instances::Instance::LspAcceptPasswords>())
+    , lsp_mtus(std::make_shared<Isis::Instances::Instance::LspMtus>())
+    , nsf(std::make_shared<Isis::Instances::Instance::Nsf>())
+    , link_groups(std::make_shared<Isis::Instances::Instance::LinkGroups>())
+    , lsp_check_intervals(std::make_shared<Isis::Instances::Instance::LspCheckIntervals>())
+    , lsp_passwords(std::make_shared<Isis::Instances::Instance::LspPasswords>())
+    , nets(std::make_shared<Isis::Instances::Instance::Nets>())
+    , lsp_lifetimes(std::make_shared<Isis::Instances::Instance::LspLifetimes>())
+    , overload_bits(std::make_shared<Isis::Instances::Instance::OverloadBits>())
+    , interfaces(std::make_shared<Isis::Instances::Instance::Interfaces>())
 {
     lsp_generation_intervals->parent = this;
     lsp_arrival_times->parent = this;
@@ -266,7 +270,7 @@ Isis::Instances::Instance::Instance()
     overload_bits->parent = this;
     interfaces->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Isis::Instances::Instance::~Instance()
@@ -275,6 +279,7 @@ Isis::Instances::Instance::~Instance()
 
 bool Isis::Instances::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| running.is_set
 	|| log_adjacency_changes.is_set
@@ -352,7 +357,8 @@ std::string Isis::Instances::Instance::get_absolute_path() const
 std::string Isis::Instances::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -785,7 +791,7 @@ Isis::Instances::Instance::Srgb::Srgb()
     upper_bound{YType::uint32, "upper-bound"}
 {
 
-    yang_name = "srgb"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srgb"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Isis::Instances::Instance::Srgb::~Srgb()
@@ -794,6 +800,7 @@ Isis::Instances::Instance::Srgb::~Srgb()
 
 bool Isis::Instances::Instance::Srgb::has_data() const
 {
+    if (is_presence_container) return true;
     return lower_bound.is_set
 	|| upper_bound.is_set;
 }
@@ -871,9 +878,11 @@ bool Isis::Instances::Instance::Srgb::has_leaf_or_child_of_name(const std::strin
 }
 
 Isis::Instances::Instance::LspGenerationIntervals::LspGenerationIntervals()
+    :
+    lsp_generation_interval(this, {"level"})
 {
 
-    yang_name = "lsp-generation-intervals"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-generation-intervals"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspGenerationIntervals::~LspGenerationIntervals()
@@ -882,7 +891,8 @@ Isis::Instances::Instance::LspGenerationIntervals::~LspGenerationIntervals()
 
 bool Isis::Instances::Instance::LspGenerationIntervals::has_data() const
 {
-    for (std::size_t index=0; index<lsp_generation_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_generation_interval.len(); index++)
     {
         if(lsp_generation_interval[index]->has_data())
             return true;
@@ -892,7 +902,7 @@ bool Isis::Instances::Instance::LspGenerationIntervals::has_data() const
 
 bool Isis::Instances::Instance::LspGenerationIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_generation_interval.size(); index++)
+    for (std::size_t index=0; index<lsp_generation_interval.len(); index++)
     {
         if(lsp_generation_interval[index]->has_operation())
             return true;
@@ -922,7 +932,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::LspGenerationIntervals::get_c
     {
         auto c = std::make_shared<Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval>();
         c->parent = this;
-        lsp_generation_interval.push_back(c);
+        lsp_generation_interval.append(c);
         return c;
     }
 
@@ -934,7 +944,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspGen
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_generation_interval)
+    for (auto c : lsp_generation_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -968,7 +978,7 @@ Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::LspGen
     secondary_wait{YType::uint32, "secondary-wait"}
 {
 
-    yang_name = "lsp-generation-interval"; yang_parent_name = "lsp-generation-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-generation-interval"; yang_parent_name = "lsp-generation-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::~LspGenerationInterval()
@@ -977,6 +987,7 @@ Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::~LspGe
 
 bool Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| maximum_wait.is_set
 	|| initial_wait.is_set
@@ -995,7 +1006,8 @@ bool Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::h
 std::string Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-generation-interval" <<"[level='" <<level <<"']";
+    path_buffer << "lsp-generation-interval";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -1080,9 +1092,11 @@ bool Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::h
 }
 
 Isis::Instances::Instance::LspArrivalTimes::LspArrivalTimes()
+    :
+    lsp_arrival_time(this, {"level"})
 {
 
-    yang_name = "lsp-arrival-times"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-arrival-times"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspArrivalTimes::~LspArrivalTimes()
@@ -1091,7 +1105,8 @@ Isis::Instances::Instance::LspArrivalTimes::~LspArrivalTimes()
 
 bool Isis::Instances::Instance::LspArrivalTimes::has_data() const
 {
-    for (std::size_t index=0; index<lsp_arrival_time.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_arrival_time.len(); index++)
     {
         if(lsp_arrival_time[index]->has_data())
             return true;
@@ -1101,7 +1116,7 @@ bool Isis::Instances::Instance::LspArrivalTimes::has_data() const
 
 bool Isis::Instances::Instance::LspArrivalTimes::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_arrival_time.size(); index++)
+    for (std::size_t index=0; index<lsp_arrival_time.len(); index++)
     {
         if(lsp_arrival_time[index]->has_operation())
             return true;
@@ -1131,7 +1146,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::LspArrivalTimes::get_child_by
     {
         auto c = std::make_shared<Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime>();
         c->parent = this;
-        lsp_arrival_time.push_back(c);
+        lsp_arrival_time.append(c);
         return c;
     }
 
@@ -1143,7 +1158,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspArr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_arrival_time)
+    for (auto c : lsp_arrival_time.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1177,7 +1192,7 @@ Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::LspArrivalTime()
     secondary_wait{YType::uint32, "secondary-wait"}
 {
 
-    yang_name = "lsp-arrival-time"; yang_parent_name = "lsp-arrival-times"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-arrival-time"; yang_parent_name = "lsp-arrival-times"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::~LspArrivalTime()
@@ -1186,6 +1201,7 @@ Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::~LspArrivalTime()
 
 bool Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| maximum_wait.is_set
 	|| initial_wait.is_set
@@ -1204,7 +1220,8 @@ bool Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::has_operation()
 std::string Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-arrival-time" <<"[level='" <<level <<"']";
+    path_buffer << "lsp-arrival-time";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -1296,7 +1313,7 @@ Isis::Instances::Instance::TraceBufferSize::TraceBufferSize()
     hello{YType::uint32, "hello"}
 {
 
-    yang_name = "trace-buffer-size"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-buffer-size"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::TraceBufferSize::~TraceBufferSize()
@@ -1305,6 +1322,7 @@ Isis::Instances::Instance::TraceBufferSize::~TraceBufferSize()
 
 bool Isis::Instances::Instance::TraceBufferSize::has_data() const
 {
+    if (is_presence_container) return true;
     return detailed.is_set
 	|| standard.is_set
 	|| severe.is_set
@@ -1408,9 +1426,11 @@ bool Isis::Instances::Instance::TraceBufferSize::has_leaf_or_child_of_name(const
 }
 
 Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetrics()
+    :
+    max_link_metric(this, {"level"})
 {
 
-    yang_name = "max-link-metrics"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-link-metrics"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::MaxLinkMetrics::~MaxLinkMetrics()
@@ -1419,7 +1439,8 @@ Isis::Instances::Instance::MaxLinkMetrics::~MaxLinkMetrics()
 
 bool Isis::Instances::Instance::MaxLinkMetrics::has_data() const
 {
-    for (std::size_t index=0; index<max_link_metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<max_link_metric.len(); index++)
     {
         if(max_link_metric[index]->has_data())
             return true;
@@ -1429,7 +1450,7 @@ bool Isis::Instances::Instance::MaxLinkMetrics::has_data() const
 
 bool Isis::Instances::Instance::MaxLinkMetrics::has_operation() const
 {
-    for (std::size_t index=0; index<max_link_metric.size(); index++)
+    for (std::size_t index=0; index<max_link_metric.len(); index++)
     {
         if(max_link_metric[index]->has_operation())
             return true;
@@ -1459,7 +1480,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::MaxLinkMetrics::get_child_by_
     {
         auto c = std::make_shared<Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric>();
         c->parent = this;
-        max_link_metric.push_back(c);
+        max_link_metric.append(c);
         return c;
     }
 
@@ -1471,7 +1492,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::MaxLin
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : max_link_metric)
+    for (auto c : max_link_metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1502,7 +1523,7 @@ Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::MaxLinkMetric()
     level{YType::enumeration, "level"}
 {
 
-    yang_name = "max-link-metric"; yang_parent_name = "max-link-metrics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-link-metric"; yang_parent_name = "max-link-metrics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::~MaxLinkMetric()
@@ -1511,6 +1532,7 @@ Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::~MaxLinkMetric()
 
 bool Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set;
 }
 
@@ -1523,7 +1545,8 @@ bool Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::has_operation() c
 std::string Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "max-link-metric" <<"[level='" <<level <<"']";
+    path_buffer << "max-link-metric";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -1580,7 +1603,7 @@ Isis::Instances::Instance::AdjacencyStagger::AdjacencyStagger()
     max_nbr{YType::uint32, "max-nbr"}
 {
 
-    yang_name = "adjacency-stagger"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjacency-stagger"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Isis::Instances::Instance::AdjacencyStagger::~AdjacencyStagger()
@@ -1589,6 +1612,7 @@ Isis::Instances::Instance::AdjacencyStagger::~AdjacencyStagger()
 
 bool Isis::Instances::Instance::AdjacencyStagger::has_data() const
 {
+    if (is_presence_container) return true;
     return initial_nbr.is_set
 	|| max_nbr.is_set;
 }
@@ -1666,9 +1690,11 @@ bool Isis::Instances::Instance::AdjacencyStagger::has_leaf_or_child_of_name(cons
 }
 
 Isis::Instances::Instance::Afs::Afs()
+    :
+    af(this, {"af_name", "saf_name"})
 {
 
-    yang_name = "afs"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "afs"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::~Afs()
@@ -1677,7 +1703,8 @@ Isis::Instances::Instance::Afs::~Afs()
 
 bool Isis::Instances::Instance::Afs::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
@@ -1687,7 +1714,7 @@ bool Isis::Instances::Instance::Afs::has_data() const
 
 bool Isis::Instances::Instance::Afs::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
@@ -1717,7 +1744,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::get_child_by_name(const 
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
@@ -1729,7 +1756,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1759,11 +1786,13 @@ Isis::Instances::Instance::Afs::Af::Af()
     :
     af_name{YType::enumeration, "af-name"},
     saf_name{YType::enumeration, "saf-name"}
-    	,
-    af_data(nullptr) // presence node
+        ,
+    af_data(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData>())
+    , topology_name(this, {"topology_name"})
 {
+    af_data->parent = this;
 
-    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::~Af()
@@ -1772,7 +1801,8 @@ Isis::Instances::Instance::Afs::Af::~Af()
 
 bool Isis::Instances::Instance::Afs::Af::has_data() const
 {
-    for (std::size_t index=0; index<topology_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology_name.len(); index++)
     {
         if(topology_name[index]->has_data())
             return true;
@@ -1784,7 +1814,7 @@ bool Isis::Instances::Instance::Afs::Af::has_data() const
 
 bool Isis::Instances::Instance::Afs::Af::has_operation() const
 {
-    for (std::size_t index=0; index<topology_name.size(); index++)
+    for (std::size_t index=0; index<topology_name.len(); index++)
     {
         if(topology_name[index]->has_operation())
             return true;
@@ -1798,7 +1828,9 @@ bool Isis::Instances::Instance::Afs::Af::has_operation() const
 std::string Isis::Instances::Instance::Afs::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "af" <<"[af-name='" <<af_name <<"']" <<"[saf-name='" <<saf_name <<"']";
+    path_buffer << "af";
+    ADD_KEY_TOKEN(af_name, "af-name");
+    ADD_KEY_TOKEN(saf_name, "saf-name");
     return path_buffer.str();
 }
 
@@ -1828,7 +1860,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::get_child_by_name(co
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName>();
         c->parent = this;
-        topology_name.push_back(c);
+        topology_name.append(c);
         return c;
     }
 
@@ -1845,7 +1877,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     }
 
     count = 0;
-    for (auto const & c : topology_name)
+    for (auto c : topology_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1904,29 +1936,30 @@ Isis::Instances::Instance::Afs::Af::AfData::AfData()
     ignore_attached_bit{YType::boolean, "ignore-attached-bit"},
     attached_bit{YType::enumeration, "attached-bit"},
     route_source_first_hop{YType::boolean, "route-source-first-hop"}
-    	,
+        ,
     segment_routing(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting>())
-	,metric_styles(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MetricStyles>())
-	,frr_table(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable>())
-	,router_id(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::RouterId>())
-	,spf_prefix_priorities(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities>())
-	,summary_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes>())
-	,micro_loop_avoidance(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance>())
-	,ucmp(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp>())
-	,max_redist_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes>())
-	,propagations(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Propagations>())
-	,redistributions(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Redistributions>())
-	,spf_periodic_intervals(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals>())
-	,spf_intervals(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals>())
-	,monitor_convergence(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence>())
-	,default_information(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation>())
-	,admin_distances(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::AdminDistances>())
-	,ispf(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ispf>())
-	,mpls_ldp_global(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal>())
-	,mpls(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Mpls>())
-	,manual_adj_sids(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids>())
-	,metrics(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Metrics>())
-	,weights(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Weights>())
+    , metric_styles(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MetricStyles>())
+    , frr_table(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable>())
+    , router_id(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::RouterId>())
+    , spf_prefix_priorities(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities>())
+    , summary_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes>())
+    , micro_loop_avoidance(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance>())
+    , ucmp(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp>())
+    , max_redist_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes>())
+    , propagations(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Propagations>())
+    , redistributions(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Redistributions>())
+    , spf_periodic_intervals(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals>())
+    , distribute_list_in(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn>())
+    , spf_intervals(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals>())
+    , monitor_convergence(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence>())
+    , default_information(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation>())
+    , admin_distances(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::AdminDistances>())
+    , ispf(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ispf>())
+    , mpls_ldp_global(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal>())
+    , mpls(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Mpls>())
+    , manual_adj_sids(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids>())
+    , metrics(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Metrics>())
+    , weights(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Weights>())
 {
     segment_routing->parent = this;
     metric_styles->parent = this;
@@ -1940,6 +1973,7 @@ Isis::Instances::Instance::Afs::Af::AfData::AfData()
     propagations->parent = this;
     redistributions->parent = this;
     spf_periodic_intervals->parent = this;
+    distribute_list_in->parent = this;
     spf_intervals->parent = this;
     monitor_convergence->parent = this;
     default_information->parent = this;
@@ -1951,7 +1985,7 @@ Isis::Instances::Instance::Afs::Af::AfData::AfData()
     metrics->parent = this;
     weights->parent = this;
 
-    yang_name = "af-data"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "af-data"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::~AfData()
@@ -1960,6 +1994,7 @@ Isis::Instances::Instance::Afs::Af::AfData::~AfData()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_paths.is_set
 	|| topology_id.is_set
 	|| single_topology.is_set
@@ -1983,6 +2018,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::has_data() const
 	|| (propagations !=  nullptr && propagations->has_data())
 	|| (redistributions !=  nullptr && redistributions->has_data())
 	|| (spf_periodic_intervals !=  nullptr && spf_periodic_intervals->has_data())
+	|| (distribute_list_in !=  nullptr && distribute_list_in->has_data())
 	|| (spf_intervals !=  nullptr && spf_intervals->has_data())
 	|| (monitor_convergence !=  nullptr && monitor_convergence->has_data())
 	|| (default_information !=  nullptr && default_information->has_data())
@@ -2021,6 +2057,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::has_operation() const
 	|| (propagations !=  nullptr && propagations->has_operation())
 	|| (redistributions !=  nullptr && redistributions->has_operation())
 	|| (spf_periodic_intervals !=  nullptr && spf_periodic_intervals->has_operation())
+	|| (distribute_list_in !=  nullptr && distribute_list_in->has_operation())
 	|| (spf_intervals !=  nullptr && spf_intervals->has_operation())
 	|| (monitor_convergence !=  nullptr && monitor_convergence->has_operation())
 	|| (default_information !=  nullptr && default_information->has_operation())
@@ -2168,6 +2205,15 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::get_child_by
             spf_periodic_intervals = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals>();
         }
         return spf_periodic_intervals;
+    }
+
+    if(child_yang_name == "distribute-list-in")
+    {
+        if(distribute_list_in == nullptr)
+        {
+            distribute_list_in = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn>();
+        }
+        return distribute_list_in;
     }
 
     if(child_yang_name == "spf-intervals")
@@ -2325,6 +2371,11 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     if(spf_periodic_intervals != nullptr)
     {
         children["spf-periodic-intervals"] = spf_periodic_intervals;
+    }
+
+    if(distribute_list_in != nullptr)
+    {
+        children["distribute-list-in"] = distribute_list_in;
     }
 
     if(spf_intervals != nullptr)
@@ -2500,7 +2551,7 @@ void Isis::Instances::Instance::Afs::Af::AfData::set_filter(const std::string & 
 
 bool Isis::Instances::Instance::Afs::Af::AfData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing" || name == "metric-styles" || name == "frr-table" || name == "router-id" || name == "spf-prefix-priorities" || name == "summary-prefixes" || name == "micro-loop-avoidance" || name == "ucmp" || name == "max-redist-prefixes" || name == "propagations" || name == "redistributions" || name == "spf-periodic-intervals" || name == "spf-intervals" || name == "monitor-convergence" || name == "default-information" || name == "admin-distances" || name == "ispf" || name == "mpls-ldp-global" || name == "mpls" || name == "manual-adj-sids" || name == "metrics" || name == "weights" || name == "maximum-paths" || name == "topology-id" || name == "single-topology" || name == "adjacency-check" || name == "advertise-link-attributes" || name == "apply-weight" || name == "default-admin-distance" || name == "advertise-passive-only" || name == "ignore-attached-bit" || name == "attached-bit" || name == "route-source-first-hop")
+    if(name == "segment-routing" || name == "metric-styles" || name == "frr-table" || name == "router-id" || name == "spf-prefix-priorities" || name == "summary-prefixes" || name == "micro-loop-avoidance" || name == "ucmp" || name == "max-redist-prefixes" || name == "propagations" || name == "redistributions" || name == "spf-periodic-intervals" || name == "distribute-list-in" || name == "spf-intervals" || name == "monitor-convergence" || name == "default-information" || name == "admin-distances" || name == "ispf" || name == "mpls-ldp-global" || name == "mpls" || name == "manual-adj-sids" || name == "metrics" || name == "weights" || name == "maximum-paths" || name == "topology-id" || name == "single-topology" || name == "adjacency-check" || name == "advertise-link-attributes" || name == "apply-weight" || name == "default-admin-distance" || name == "advertise-passive-only" || name == "ignore-attached-bit" || name == "attached-bit" || name == "route-source-first-hop")
         return true;
     return false;
 }
@@ -2509,12 +2560,12 @@ Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::SegmentRouting()
     :
     bundle_member_adj_sid{YType::empty, "bundle-member-adj-sid"},
     mpls{YType::enumeration, "mpls"}
-    	,
+        ,
     prefix_sid_map(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap>())
 {
     prefix_sid_map->parent = this;
 
-    yang_name = "segment-routing"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "segment-routing"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::~SegmentRouting()
@@ -2523,6 +2574,7 @@ Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::~SegmentRouting()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_member_adj_sid.is_set
 	|| mpls.is_set
 	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_data());
@@ -2621,7 +2673,7 @@ Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::Prefix
     receive{YType::boolean, "receive"}
 {
 
-    yang_name = "prefix-sid-map"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-sid-map"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::~PrefixSidMap()
@@ -2630,6 +2682,7 @@ Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::~Prefi
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::has_data() const
 {
+    if (is_presence_container) return true;
     return advertise_local.is_set
 	|| receive.is_set;
 }
@@ -2707,9 +2760,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::h
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyles()
+    :
+    metric_style(this, {"level"})
 {
 
-    yang_name = "metric-styles"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric-styles"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::~MetricStyles()
@@ -2718,7 +2773,8 @@ Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::~MetricStyles()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::has_data() const
 {
-    for (std::size_t index=0; index<metric_style.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<metric_style.len(); index++)
     {
         if(metric_style[index]->has_data())
             return true;
@@ -2728,7 +2784,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::has_data() const
 
 bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::has_operation() const
 {
-    for (std::size_t index=0; index<metric_style.size(); index++)
+    for (std::size_t index=0; index<metric_style.len(); index++)
     {
         if(metric_style[index]->has_operation())
             return true;
@@ -2758,7 +2814,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MetricStyles
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle>();
         c->parent = this;
-        metric_style.push_back(c);
+        metric_style.append(c);
         return c;
     }
 
@@ -2770,7 +2826,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : metric_style)
+    for (auto c : metric_style.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2799,11 +2855,10 @@ bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::has_leaf_or_child
 Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::MetricStyle()
     :
     level{YType::enumeration, "level"},
-    style{YType::enumeration, "style"},
-    transition_state{YType::enumeration, "transition-state"}
+    style{YType::enumeration, "style"}
 {
 
-    yang_name = "metric-style"; yang_parent_name = "metric-styles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric-style"; yang_parent_name = "metric-styles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::~MetricStyle()
@@ -2812,23 +2867,23 @@ Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::~MetricSt
 
 bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
-	|| style.is_set
-	|| transition_state.is_set;
+	|| style.is_set;
 }
 
 bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(style.yfilter)
-	|| ydk::is_set(transition_state.yfilter);
+	|| ydk::is_set(style.yfilter);
 }
 
 std::string Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "metric-style" <<"[level='" <<level <<"']";
+    path_buffer << "metric-style";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -2838,7 +2893,6 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (style.is_set || is_set(style.yfilter)) leaf_name_data.push_back(style.get_name_leafdata());
-    if (transition_state.is_set || is_set(transition_state.yfilter)) leaf_name_data.push_back(transition_state.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2870,12 +2924,6 @@ void Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::set_
         style.value_namespace = name_space;
         style.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "transition-state")
-    {
-        transition_state = value;
-        transition_state.value_namespace = name_space;
-        transition_state.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2888,15 +2936,11 @@ void Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::set_
     {
         style.yfilter = yfilter;
     }
-    if(value_path == "transition-state")
-    {
-        transition_state.yfilter = yfilter;
-    }
 }
 
 bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "level" || name == "style" || name == "transition-state")
+    if(name == "level" || name == "style")
         return true;
     return false;
 }
@@ -2904,10 +2948,10 @@ bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::has_
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTable()
     :
     frr_load_sharings(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings>())
-	,priority_limits(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits>())
-	,frr_remote_lfa_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes>())
-	,frr_tiebreakers(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers>())
-	,frr_use_cand_onlies(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies>())
+    , priority_limits(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits>())
+    , frr_remote_lfa_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes>())
+    , frr_tiebreakers(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers>())
+    , frr_use_cand_onlies(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies>())
 {
     frr_load_sharings->parent = this;
     priority_limits->parent = this;
@@ -2915,7 +2959,7 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTable()
     frr_tiebreakers->parent = this;
     frr_use_cand_onlies->parent = this;
 
-    yang_name = "frr-table"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-table"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::~FrrTable()
@@ -2924,6 +2968,7 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::~FrrTable()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (frr_load_sharings !=  nullptr && frr_load_sharings->has_data())
 	|| (priority_limits !=  nullptr && priority_limits->has_data())
 	|| (frr_remote_lfa_prefixes !=  nullptr && frr_remote_lfa_prefixes->has_data())
@@ -3055,9 +3100,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::has_leaf_or_child_of_
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharings()
+    :
+    frr_load_sharing(this, {"level"})
 {
 
-    yang_name = "frr-load-sharings"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-load-sharings"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::~FrrLoadSharings()
@@ -3066,7 +3113,8 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::~FrrLoadS
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::has_data() const
 {
-    for (std::size_t index=0; index<frr_load_sharing.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_load_sharing.len(); index++)
     {
         if(frr_load_sharing[index]->has_data())
             return true;
@@ -3076,7 +3124,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::has_
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::has_operation() const
 {
-    for (std::size_t index=0; index<frr_load_sharing.size(); index++)
+    for (std::size_t index=0; index<frr_load_sharing.len(); index++)
     {
         if(frr_load_sharing[index]->has_operation())
             return true;
@@ -3106,7 +3154,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::Fr
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing>();
         c->parent = this;
-        frr_load_sharing.push_back(c);
+        frr_load_sharing.append(c);
         return c;
     }
 
@@ -3118,7 +3166,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_load_sharing)
+    for (auto c : frr_load_sharing.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3150,7 +3198,7 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSh
     load_sharing{YType::enumeration, "load-sharing"}
 {
 
-    yang_name = "frr-load-sharing"; yang_parent_name = "frr-load-sharings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-load-sharing"; yang_parent_name = "frr-load-sharings"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing::~FrrLoadSharing()
@@ -3159,6 +3207,7 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSh
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| load_sharing.is_set;
 }
@@ -3173,7 +3222,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrL
 std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-load-sharing" <<"[level='" <<level <<"']";
+    path_buffer << "frr-load-sharing";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -3236,9 +3286,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrL
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimits()
+    :
+    priority_limit(this, {"level", "frr_type"})
 {
 
-    yang_name = "priority-limits"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-limits"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::~PriorityLimits()
@@ -3247,7 +3299,8 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::~PriorityL
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::has_data() const
 {
-    for (std::size_t index=0; index<priority_limit.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<priority_limit.len(); index++)
     {
         if(priority_limit[index]->has_data())
             return true;
@@ -3257,7 +3310,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::has_d
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::has_operation() const
 {
-    for (std::size_t index=0; index<priority_limit.size(); index++)
+    for (std::size_t index=0; index<priority_limit.len(); index++)
     {
         if(priority_limit[index]->has_operation())
             return true;
@@ -3287,7 +3340,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::Pr
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit>();
         c->parent = this;
-        priority_limit.push_back(c);
+        priority_limit.append(c);
         return c;
     }
 
@@ -3299,7 +3352,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : priority_limit)
+    for (auto c : priority_limit.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3332,7 +3385,7 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLi
     priority{YType::enumeration, "priority"}
 {
 
-    yang_name = "priority-limit"; yang_parent_name = "priority-limits"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-limit"; yang_parent_name = "priority-limits"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::~PriorityLimit()
@@ -3341,6 +3394,7 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLi
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| frr_type.is_set
 	|| priority.is_set;
@@ -3357,7 +3411,9 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::Prior
 std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "priority-limit" <<"[level='" <<level <<"']" <<"[frr-type='" <<frr_type <<"']";
+    path_buffer << "priority-limit";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(frr_type, "frr-type");
     return path_buffer.str();
 }
 
@@ -3431,9 +3487,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::Prior
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefixes()
+    :
+    frr_remote_lfa_prefix(this, {"level"})
 {
 
-    yang_name = "frr-remote-lfa-prefixes"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-remote-lfa-prefixes"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::~FrrRemoteLfaPrefixes()
@@ -3442,7 +3500,8 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::~Frr
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<frr_remote_lfa_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_remote_lfa_prefix.len(); index++)
     {
         if(frr_remote_lfa_prefix[index]->has_data())
             return true;
@@ -3452,7 +3511,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes:
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<frr_remote_lfa_prefix.size(); index++)
+    for (std::size_t index=0; index<frr_remote_lfa_prefix.len(); index++)
     {
         if(frr_remote_lfa_prefix[index]->has_operation())
             return true;
@@ -3482,7 +3541,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::Fr
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix>();
         c->parent = this;
-        frr_remote_lfa_prefix.push_back(c);
+        frr_remote_lfa_prefix.append(c);
         return c;
     }
 
@@ -3494,7 +3553,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_remote_lfa_prefix)
+    for (auto c : frr_remote_lfa_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3526,7 +3585,7 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrR
     prefix_list_name{YType::str, "prefix-list-name"}
 {
 
-    yang_name = "frr-remote-lfa-prefix"; yang_parent_name = "frr-remote-lfa-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-remote-lfa-prefix"; yang_parent_name = "frr-remote-lfa-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix::~FrrRemoteLfaPrefix()
@@ -3535,6 +3594,7 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrR
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| prefix_list_name.is_set;
 }
@@ -3549,7 +3609,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes:
 std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-remote-lfa-prefix" <<"[level='" <<level <<"']";
+    path_buffer << "frr-remote-lfa-prefix";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -3612,9 +3673,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes:
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreakers()
+    :
+    frr_tiebreaker(this, {"level", "tiebreaker"})
 {
 
-    yang_name = "frr-tiebreakers"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-tiebreakers"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::~FrrTiebreakers()
@@ -3623,7 +3686,8 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::~FrrTiebre
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::has_data() const
 {
-    for (std::size_t index=0; index<frr_tiebreaker.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_tiebreaker.len(); index++)
     {
         if(frr_tiebreaker[index]->has_data())
             return true;
@@ -3633,7 +3697,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::has_d
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::has_operation() const
 {
-    for (std::size_t index=0; index<frr_tiebreaker.size(); index++)
+    for (std::size_t index=0; index<frr_tiebreaker.len(); index++)
     {
         if(frr_tiebreaker[index]->has_operation())
             return true;
@@ -3663,7 +3727,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::Fr
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreaker>();
         c->parent = this;
-        frr_tiebreaker.push_back(c);
+        frr_tiebreaker.append(c);
         return c;
     }
 
@@ -3675,7 +3739,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_tiebreaker)
+    for (auto c : frr_tiebreaker.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3708,7 +3772,7 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebrea
     index_{YType::uint32, "index"}
 {
 
-    yang_name = "frr-tiebreaker"; yang_parent_name = "frr-tiebreakers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-tiebreaker"; yang_parent_name = "frr-tiebreakers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreaker::~FrrTiebreaker()
@@ -3717,6 +3781,7 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebrea
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreaker::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| tiebreaker.is_set
 	|| index_.is_set;
@@ -3733,7 +3798,9 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTi
 std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreaker::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-tiebreaker" <<"[level='" <<level <<"']" <<"[tiebreaker='" <<tiebreaker <<"']";
+    path_buffer << "frr-tiebreaker";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(tiebreaker, "tiebreaker");
     return path_buffer.str();
 }
 
@@ -3807,9 +3874,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTi
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnlies()
+    :
+    frr_use_cand_only(this, {"level", "frr_type"})
 {
 
-    yang_name = "frr-use-cand-onlies"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-use-cand-onlies"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::~FrrUseCandOnlies()
@@ -3818,7 +3887,8 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::~FrrUseC
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::has_data() const
 {
-    for (std::size_t index=0; index<frr_use_cand_only.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_use_cand_only.len(); index++)
     {
         if(frr_use_cand_only[index]->has_data())
             return true;
@@ -3828,7 +3898,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::has
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::has_operation() const
 {
-    for (std::size_t index=0; index<frr_use_cand_only.size(); index++)
+    for (std::size_t index=0; index<frr_use_cand_only.len(); index++)
     {
         if(frr_use_cand_only[index]->has_operation())
             return true;
@@ -3858,7 +3928,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::Fr
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnly>();
         c->parent = this;
-        frr_use_cand_only.push_back(c);
+        frr_use_cand_only.append(c);
         return c;
     }
 
@@ -3870,7 +3940,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_use_cand_only)
+    for (auto c : frr_use_cand_only.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3902,7 +3972,7 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCa
     frr_type{YType::enumeration, "frr-type"}
 {
 
-    yang_name = "frr-use-cand-only"; yang_parent_name = "frr-use-cand-onlies"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-use-cand-only"; yang_parent_name = "frr-use-cand-onlies"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnly::~FrrUseCandOnly()
@@ -3911,6 +3981,7 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCa
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnly::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| frr_type.is_set;
 }
@@ -3925,7 +3996,9 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::Frr
 std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnly::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-use-cand-only" <<"[level='" <<level <<"']" <<"[frr-type='" <<frr_type <<"']";
+    path_buffer << "frr-use-cand-only";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(frr_type, "frr-type");
     return path_buffer.str();
 }
 
@@ -3993,7 +4066,7 @@ Isis::Instances::Instance::Afs::Af::AfData::RouterId::RouterId()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "router-id"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router-id"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::RouterId::~RouterId()
@@ -4002,6 +4075,7 @@ Isis::Instances::Instance::Afs::Af::AfData::RouterId::~RouterId()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::RouterId::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| interface_name.is_set;
 }
@@ -4079,9 +4153,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::RouterId::has_leaf_or_child_of_
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriorities()
+    :
+    spf_prefix_priority(this, {"level", "prefix_priority_type"})
 {
 
-    yang_name = "spf-prefix-priorities"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-prefix-priorities"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::~SpfPrefixPriorities()
@@ -4090,7 +4166,8 @@ Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::~SpfPrefixPrior
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::has_data() const
 {
-    for (std::size_t index=0; index<spf_prefix_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spf_prefix_priority.len(); index++)
     {
         if(spf_prefix_priority[index]->has_data())
             return true;
@@ -4100,7 +4177,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::has_data()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::has_operation() const
 {
-    for (std::size_t index=0; index<spf_prefix_priority.size(); index++)
+    for (std::size_t index=0; index<spf_prefix_priority.len(); index++)
     {
         if(spf_prefix_priority[index]->has_operation())
             return true;
@@ -4130,7 +4207,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPri
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority>();
         c->parent = this;
-        spf_prefix_priority.push_back(c);
+        spf_prefix_priority.append(c);
         return c;
     }
 
@@ -4142,7 +4219,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : spf_prefix_priority)
+    for (auto c : spf_prefix_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4176,7 +4253,7 @@ Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriori
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "spf-prefix-priority"; yang_parent_name = "spf-prefix-priorities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-prefix-priority"; yang_parent_name = "spf-prefix-priorities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::~SpfPrefixPriority()
@@ -4185,6 +4262,7 @@ Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriori
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| prefix_priority_type.is_set
 	|| admin_tag.is_set
@@ -4203,7 +4281,9 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixP
 std::string Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-prefix-priority" <<"[level='" <<level <<"']" <<"[prefix-priority-type='" <<prefix_priority_type <<"']";
+    path_buffer << "spf-prefix-priority";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(prefix_priority_type, "prefix-priority-type");
     return path_buffer.str();
 }
 
@@ -4288,9 +4368,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixP
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefixes()
+    :
+    summary_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "summary-prefixes"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-prefixes"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::~SummaryPrefixes()
@@ -4299,7 +4381,8 @@ Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::~SummaryPrefixes()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<summary_prefix.len(); index++)
     {
         if(summary_prefix[index]->has_data())
             return true;
@@ -4309,7 +4392,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::has_data() con
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    for (std::size_t index=0; index<summary_prefix.len(); index++)
     {
         if(summary_prefix[index]->has_operation())
             return true;
@@ -4339,7 +4422,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefi
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix>();
         c->parent = this;
-        summary_prefix.push_back(c);
+        summary_prefix.append(c);
         return c;
     }
 
@@ -4351,7 +4434,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : summary_prefix)
+    for (auto c : summary_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4384,7 +4467,7 @@ Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::Summ
     level{YType::uint32, "level"}
 {
 
-    yang_name = "summary-prefix"; yang_parent_name = "summary-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-prefix"; yang_parent_name = "summary-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::~SummaryPrefix()
@@ -4393,6 +4476,7 @@ Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::~Sum
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set
 	|| tag.is_set
 	|| level.is_set;
@@ -4409,7 +4493,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix:
 std::string Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "summary-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "summary-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -4488,7 +4573,7 @@ Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::MicroLoopAvoidan
     rib_update_delay{YType::uint32, "rib-update-delay"}
 {
 
-    yang_name = "micro-loop-avoidance"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "micro-loop-avoidance"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::~MicroLoopAvoidance()
@@ -4497,6 +4582,7 @@ Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::~MicroLoopAvoida
 
 bool Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| rib_update_delay.is_set;
 }
@@ -4576,14 +4662,14 @@ bool Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::has_leaf_or
 Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Ucmp()
     :
     delay_interval{YType::uint32, "delay-interval"}
-    	,
+        ,
     enable(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable>())
-	,exclude_interfaces(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces>())
+    , exclude_interfaces(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces>())
 {
     enable->parent = this;
     exclude_interfaces->parent = this;
 
-    yang_name = "ucmp"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ucmp"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Ucmp::~Ucmp()
@@ -4592,6 +4678,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Ucmp::~Ucmp()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::has_data() const
 {
+    if (is_presence_container) return true;
     return delay_interval.is_set
 	|| (enable !=  nullptr && enable->has_data())
 	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
@@ -4693,7 +4780,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::Enable()
     prefix_list_name{YType::str, "prefix-list-name"}
 {
 
-    yang_name = "enable"; yang_parent_name = "ucmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "enable"; yang_parent_name = "ucmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::~Enable()
@@ -4702,6 +4789,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::~Enable()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::has_data() const
 {
+    if (is_presence_container) return true;
     return variance.is_set
 	|| prefix_list_name.is_set;
 }
@@ -4779,9 +4867,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::has_leaf_or_child
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
 {
 
-    yang_name = "exclude-interfaces"; yang_parent_name = "ucmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interfaces"; yang_parent_name = "ucmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::~ExcludeInterfaces()
@@ -4790,7 +4880,8 @@ Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::~ExcludeInt
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_data())
             return true;
@@ -4800,7 +4891,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::has_da
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_operation())
             return true;
@@ -4830,7 +4921,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Exclud
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        exclude_interface.append(c);
         return c;
     }
 
@@ -4842,7 +4933,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exclude_interface)
+    for (auto c : exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4873,7 +4964,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInte
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
@@ -4882,6 +4973,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInte
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -4894,7 +4986,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::Exclud
 std::string Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4946,9 +5039,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::Exclud
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefixes()
+    :
+    max_redist_prefix(this, {"level"})
 {
 
-    yang_name = "max-redist-prefixes"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-redist-prefixes"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::~MaxRedistPrefixes()
@@ -4957,7 +5052,8 @@ Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::~MaxRedistPrefixe
 
 bool Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<max_redist_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<max_redist_prefix.len(); index++)
     {
         if(max_redist_prefix[index]->has_data())
             return true;
@@ -4967,7 +5063,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::has_data() c
 
 bool Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<max_redist_prefix.size(); index++)
+    for (std::size_t index=0; index<max_redist_prefix.len(); index++)
     {
         if(max_redist_prefix[index]->has_operation())
             return true;
@@ -4997,7 +5093,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPre
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix>();
         c->parent = this;
-        max_redist_prefix.push_back(c);
+        max_redist_prefix.append(c);
         return c;
     }
 
@@ -5009,7 +5105,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : max_redist_prefix)
+    for (auto c : max_redist_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5041,7 +5137,7 @@ Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix::
     prefix_limit{YType::uint32, "prefix-limit"}
 {
 
-    yang_name = "max-redist-prefix"; yang_parent_name = "max-redist-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-redist-prefix"; yang_parent_name = "max-redist-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix::~MaxRedistPrefix()
@@ -5050,6 +5146,7 @@ Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix::
 
 bool Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| prefix_limit.is_set;
 }
@@ -5064,7 +5161,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPre
 std::string Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "max-redist-prefix" <<"[level='" <<level <<"']";
+    path_buffer << "max-redist-prefix";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -5127,9 +5225,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPre
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagations()
+    :
+    propagation(this, {"source_level", "destination_level"})
 {
 
-    yang_name = "propagations"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "propagations"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Propagations::~Propagations()
@@ -5138,7 +5238,8 @@ Isis::Instances::Instance::Afs::Af::AfData::Propagations::~Propagations()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Propagations::has_data() const
 {
-    for (std::size_t index=0; index<propagation.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<propagation.len(); index++)
     {
         if(propagation[index]->has_data())
             return true;
@@ -5148,7 +5249,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Propagations::has_data() const
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Propagations::has_operation() const
 {
-    for (std::size_t index=0; index<propagation.size(); index++)
+    for (std::size_t index=0; index<propagation.len(); index++)
     {
         if(propagation[index]->has_operation())
             return true;
@@ -5178,7 +5279,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Propagations
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation>();
         c->parent = this;
-        propagation.push_back(c);
+        propagation.append(c);
         return c;
     }
 
@@ -5190,7 +5291,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : propagation)
+    for (auto c : propagation.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5223,7 +5324,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation::Propagati
     route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "propagation"; yang_parent_name = "propagations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "propagation"; yang_parent_name = "propagations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation::~Propagation()
@@ -5232,6 +5333,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation::~Propagat
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation::has_data() const
 {
+    if (is_presence_container) return true;
     return source_level.is_set
 	|| destination_level.is_set
 	|| route_policy_name.is_set;
@@ -5248,7 +5350,9 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation::has_
 std::string Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "propagation" <<"[source-level='" <<source_level <<"']" <<"[destination-level='" <<destination_level <<"']";
+    path_buffer << "propagation";
+    ADD_KEY_TOKEN(source_level, "source-level");
+    ADD_KEY_TOKEN(destination_level, "destination-level");
     return path_buffer.str();
 }
 
@@ -5322,9 +5426,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation::has_
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistributions()
+    :
+    redistribution(this, {"protocol_name"})
 {
 
-    yang_name = "redistributions"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redistributions"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::~Redistributions()
@@ -5333,7 +5439,8 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::~Redistributions()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::has_data() const
 {
-    for (std::size_t index=0; index<redistribution.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<redistribution.len(); index++)
     {
         if(redistribution[index]->has_data())
             return true;
@@ -5343,7 +5450,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::has_data() con
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::has_operation() const
 {
-    for (std::size_t index=0; index<redistribution.size(); index++)
+    for (std::size_t index=0; index<redistribution.len(); index++)
     {
         if(redistribution[index]->has_operation())
             return true;
@@ -5373,7 +5480,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Redistributi
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution>();
         c->parent = this;
-        redistribution.push_back(c);
+        redistribution.append(c);
         return c;
     }
 
@@ -5385,7 +5492,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : redistribution)
+    for (auto c : redistribution.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5414,11 +5521,14 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::has_leaf_or_ch
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Redistribution()
     :
     protocol_name{YType::enumeration, "protocol-name"}
-    	,
+        ,
     connected_or_static_or_rip_or_subscriber_or_mobile(nullptr) // presence node
+    , ospf_or_ospfv3_or_isis_or_application(this, {"instance_name"})
+    , bgp(this, {"as_xx", "as_yy"})
+    , eigrp(this, {"as_zz"})
 {
 
-    yang_name = "redistribution"; yang_parent_name = "redistributions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redistribution"; yang_parent_name = "redistributions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::~Redistribution()
@@ -5427,17 +5537,18 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::~Re
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::has_data() const
 {
-    for (std::size_t index=0; index<ospf_or_ospfv3_or_isis_or_application.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospf_or_ospfv3_or_isis_or_application.len(); index++)
     {
         if(ospf_or_ospfv3_or_isis_or_application[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<bgp.size(); index++)
+    for (std::size_t index=0; index<bgp.len(); index++)
     {
         if(bgp[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_data())
             return true;
@@ -5448,17 +5559,17 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::has_operation() const
 {
-    for (std::size_t index=0; index<ospf_or_ospfv3_or_isis_or_application.size(); index++)
+    for (std::size_t index=0; index<ospf_or_ospfv3_or_isis_or_application.len(); index++)
     {
         if(ospf_or_ospfv3_or_isis_or_application[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<bgp.size(); index++)
+    for (std::size_t index=0; index<bgp.len(); index++)
     {
         if(bgp[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_operation())
             return true;
@@ -5471,7 +5582,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution
 std::string Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "redistribution" <<"[protocol-name='" <<protocol_name <<"']";
+    path_buffer << "redistribution";
+    ADD_KEY_TOKEN(protocol_name, "protocol-name");
     return path_buffer.str();
 }
 
@@ -5500,7 +5612,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Redistributi
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication>();
         c->parent = this;
-        ospf_or_ospfv3_or_isis_or_application.push_back(c);
+        ospf_or_ospfv3_or_isis_or_application.append(c);
         return c;
     }
 
@@ -5508,7 +5620,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Redistributi
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp>();
         c->parent = this;
-        bgp.push_back(c);
+        bgp.append(c);
         return c;
     }
 
@@ -5516,7 +5628,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Redistributi
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp>();
         c->parent = this;
-        eigrp.push_back(c);
+        eigrp.append(c);
         return c;
     }
 
@@ -5533,7 +5645,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     }
 
     count = 0;
-    for (auto const & c : ospf_or_ospfv3_or_isis_or_application)
+    for (auto c : ospf_or_ospfv3_or_isis_or_application.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5542,7 +5654,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     }
 
     count = 0;
-    for (auto const & c : bgp)
+    for (auto c : bgp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5551,7 +5663,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     }
 
     count = 0;
-    for (auto const & c : eigrp)
+    for (auto c : eigrp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5593,10 +5705,10 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Con
     levels{YType::enumeration, "levels"},
     route_policy_name{YType::str, "route-policy-name"},
     metric_type{YType::enumeration, "metric-type"},
-    ospf_route_type{YType::int32, "ospf-route-type"}
+    ospf_route_type{YType::uint32, "ospf-route-type"}
 {
 
-    yang_name = "connected-or-static-or-rip-or-subscriber-or-mobile"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connected-or-static-or-rip-or-subscriber-or-mobile"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::~ConnectedOrStaticOrRipOrSubscriberOrMobile()
@@ -5605,6 +5717,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Con
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| levels.is_set
 	|| route_policy_name.is_set
@@ -5727,10 +5840,10 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Osp
     levels{YType::enumeration, "levels"},
     route_policy_name{YType::str, "route-policy-name"},
     metric_type{YType::enumeration, "metric-type"},
-    ospf_route_type{YType::int32, "ospf-route-type"}
+    ospf_route_type{YType::uint32, "ospf-route-type"}
 {
 
-    yang_name = "ospf-or-ospfv3-or-isis-or-application"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf-or-ospfv3-or-isis-or-application"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::~OspfOrOspfv3OrIsisOrApplication()
@@ -5739,6 +5852,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Osp
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| metric.is_set
 	|| levels.is_set
@@ -5761,7 +5875,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution
 std::string Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf-or-ospfv3-or-isis-or-application" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "ospf-or-ospfv3-or-isis-or-application";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -5875,10 +5990,10 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp
     levels{YType::enumeration, "levels"},
     route_policy_name{YType::str, "route-policy-name"},
     metric_type{YType::enumeration, "metric-type"},
-    ospf_route_type{YType::int32, "ospf-route-type"}
+    ospf_route_type{YType::uint32, "ospf-route-type"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp::~Bgp()
@@ -5887,6 +6002,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as_yy.is_set
 	|| metric.is_set
@@ -5911,7 +6027,9 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution
 std::string Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp" <<"[as-xx='" <<as_xx <<"']" <<"[as-yy='" <<as_yy <<"']";
+    path_buffer << "bgp";
+    ADD_KEY_TOKEN(as_xx, "as-xx");
+    ADD_KEY_TOKEN(as_yy, "as-yy");
     return path_buffer.str();
 }
 
@@ -6035,10 +6153,10 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eig
     levels{YType::enumeration, "levels"},
     route_policy_name{YType::str, "route-policy-name"},
     metric_type{YType::enumeration, "metric-type"},
-    ospf_route_type{YType::int32, "ospf-route-type"}
+    ospf_route_type{YType::uint32, "ospf-route-type"}
 {
 
-    yang_name = "eigrp"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp::~Eigrp()
@@ -6047,6 +6165,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eig
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp::has_data() const
 {
+    if (is_presence_container) return true;
     return as_zz.is_set
 	|| metric.is_set
 	|| levels.is_set
@@ -6069,7 +6188,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution
 std::string Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eigrp" <<"[as-zz='" <<as_zz <<"']";
+    path_buffer << "eigrp";
+    ADD_KEY_TOKEN(as_zz, "as-zz");
     return path_buffer.str();
 }
 
@@ -6176,9 +6296,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicIntervals()
+    :
+    spf_periodic_interval(this, {"level"})
 {
 
-    yang_name = "spf-periodic-intervals"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-periodic-intervals"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::~SpfPeriodicIntervals()
@@ -6187,7 +6309,8 @@ Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::~SpfPeriodicIn
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::has_data() const
 {
-    for (std::size_t index=0; index<spf_periodic_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spf_periodic_interval.len(); index++)
     {
         if(spf_periodic_interval[index]->has_data())
             return true;
@@ -6197,7 +6320,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::has_data(
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<spf_periodic_interval.size(); index++)
+    for (std::size_t index=0; index<spf_periodic_interval.len(); index++)
     {
         if(spf_periodic_interval[index]->has_operation())
             return true;
@@ -6227,7 +6350,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicI
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval>();
         c->parent = this;
-        spf_periodic_interval.push_back(c);
+        spf_periodic_interval.append(c);
         return c;
     }
 
@@ -6239,7 +6362,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : spf_periodic_interval)
+    for (auto c : spf_periodic_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6271,7 +6394,7 @@ Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInt
     periodic_interval{YType::uint32, "periodic-interval"}
 {
 
-    yang_name = "spf-periodic-interval"; yang_parent_name = "spf-periodic-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-periodic-interval"; yang_parent_name = "spf-periodic-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::~SpfPeriodicInterval()
@@ -6280,6 +6403,7 @@ Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInt
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| periodic_interval.is_set;
 }
@@ -6294,7 +6418,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriod
 std::string Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-periodic-interval" <<"[level='" <<level <<"']";
+    path_buffer << "spf-periodic-interval";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -6356,10 +6481,104 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriod
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfIntervals()
+Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn::DistributeListIn()
+    :
+    prefix_list_name{YType::str, "prefix-list-name"},
+    route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "spf-intervals"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribute-list-in"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn::~DistributeListIn()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix_list_name.is_set
+	|| route_policy_name.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_list_name.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "distribute-list-in";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-list-name")
+    {
+        prefix_list_name = value;
+        prefix_list_name.value_namespace = name_space;
+        prefix_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-list-name")
+    {
+        prefix_list_name.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::DistributeListIn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-list-name" || name == "route-policy-name")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfIntervals()
+    :
+    spf_interval(this, {"level"})
+{
+
+    yang_name = "spf-intervals"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::~SpfIntervals()
@@ -6368,7 +6587,8 @@ Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::~SpfIntervals()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::has_data() const
 {
-    for (std::size_t index=0; index<spf_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spf_interval.len(); index++)
     {
         if(spf_interval[index]->has_data())
             return true;
@@ -6378,7 +6598,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::has_data() const
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<spf_interval.size(); index++)
+    for (std::size_t index=0; index<spf_interval.len(); index++)
     {
         if(spf_interval[index]->has_operation())
             return true;
@@ -6408,7 +6628,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval>();
         c->parent = this;
-        spf_interval.push_back(c);
+        spf_interval.append(c);
         return c;
     }
 
@@ -6420,7 +6640,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : spf_interval)
+    for (auto c : spf_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6454,7 +6674,7 @@ Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval::SpfInterv
     secondary_wait{YType::uint32, "secondary-wait"}
 {
 
-    yang_name = "spf-interval"; yang_parent_name = "spf-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-interval"; yang_parent_name = "spf-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval::~SpfInterval()
@@ -6463,6 +6683,7 @@ Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval::~SpfInter
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| maximum_wait.is_set
 	|| initial_wait.is_set
@@ -6481,7 +6702,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval::has_
 std::string Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-interval" <<"[level='" <<level <<"']";
+    path_buffer << "spf-interval";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -6572,7 +6794,7 @@ Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::MonitorConvergen
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "monitor-convergence"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "monitor-convergence"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::~MonitorConvergence()
@@ -6581,6 +6803,7 @@ Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::~MonitorConverge
 
 bool Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| track_ip_frr.is_set
 	|| prefix_list.is_set;
@@ -6677,7 +6900,7 @@ Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::DefaultInformati
     external{YType::empty, "external"}
 {
 
-    yang_name = "default-information"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-information"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::~DefaultInformation()
@@ -6686,6 +6909,7 @@ Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::~DefaultInformat
 
 bool Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return use_policy.is_set
 	|| policy_name.is_set
 	|| external.is_set;
@@ -6776,9 +7000,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::has_leaf_or
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistances()
+    :
+    admin_distance(this, {"address_prefix"})
 {
 
-    yang_name = "admin-distances"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "admin-distances"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::~AdminDistances()
@@ -6787,7 +7013,8 @@ Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::~AdminDistances()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::has_data() const
 {
-    for (std::size_t index=0; index<admin_distance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<admin_distance.len(); index++)
     {
         if(admin_distance[index]->has_data())
             return true;
@@ -6797,7 +7024,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::has_data() cons
 
 bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::has_operation() const
 {
-    for (std::size_t index=0; index<admin_distance.size(); index++)
+    for (std::size_t index=0; index<admin_distance.len(); index++)
     {
         if(admin_distance[index]->has_operation())
             return true;
@@ -6827,7 +7054,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::AdminDistanc
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance>();
         c->parent = this;
-        admin_distance.push_back(c);
+        admin_distance.append(c);
         return c;
     }
 
@@ -6839,7 +7066,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : admin_distance)
+    for (auto c : admin_distance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6872,7 +7099,7 @@ Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::Admin
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "admin-distance"; yang_parent_name = "admin-distances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "admin-distance"; yang_parent_name = "admin-distances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::~AdminDistance()
@@ -6881,6 +7108,7 @@ Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::~Admi
 
 bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set
 	|| distance.is_set
 	|| prefix_list.is_set;
@@ -6897,7 +7125,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::
 std::string Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "admin-distance" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "admin-distance";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -6976,7 +7205,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Ispf::Ispf()
 {
     states->parent = this;
 
-    yang_name = "ispf"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ispf"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Ispf::~Ispf()
@@ -6985,6 +7214,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Ispf::~Ispf()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::has_data() const
 {
+    if (is_presence_container) return true;
     return (states !=  nullptr && states->has_data());
 }
 
@@ -7052,9 +7282,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::has_leaf_or_child_of_name
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::States()
+    :
+    state(this, {"level"})
 {
 
-    yang_name = "states"; yang_parent_name = "ispf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "states"; yang_parent_name = "ispf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::~States()
@@ -7063,7 +7295,8 @@ Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::~States()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::has_data() const
 {
-    for (std::size_t index=0; index<state.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<state.len(); index++)
     {
         if(state[index]->has_data())
             return true;
@@ -7073,7 +7306,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::has_data() const
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::has_operation() const
 {
-    for (std::size_t index=0; index<state.size(); index++)
+    for (std::size_t index=0; index<state.len(); index++)
     {
         if(state[index]->has_operation())
             return true;
@@ -7103,7 +7336,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ispf::States
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State>();
         c->parent = this;
-        state.push_back(c);
+        state.append(c);
         return c;
     }
 
@@ -7115,7 +7348,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : state)
+    for (auto c : state.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7147,7 +7380,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::State()
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "state"; yang_parent_name = "states"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "states"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::~State()
@@ -7156,6 +7389,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::~State()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| state.is_set;
 }
@@ -7170,7 +7404,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::has_operat
 std::string Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "state" <<"[level='" <<level <<"']";
+    path_buffer << "state";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -7237,7 +7472,7 @@ Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::MplsLdpGlobal()
     auto_config{YType::boolean, "auto-config"}
 {
 
-    yang_name = "mpls-ldp-global"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-ldp-global"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::~MplsLdpGlobal()
@@ -7246,6 +7481,7 @@ Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::~MplsLdpGlobal()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_config.is_set;
 }
 
@@ -7313,14 +7549,14 @@ Isis::Instances::Instance::Afs::Af::AfData::Mpls::Mpls()
     :
     igp_intact{YType::empty, "igp-intact"},
     multicast_intact{YType::empty, "multicast-intact"}
-    	,
+        ,
     router_id(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId>())
-	,level(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level>())
+    , level(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level>())
 {
     router_id->parent = this;
     level->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Mpls::~Mpls()
@@ -7329,6 +7565,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Mpls::~Mpls()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return igp_intact.is_set
 	|| multicast_intact.is_set
 	|| (router_id !=  nullptr && router_id->has_data())
@@ -7443,7 +7680,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::RouterId()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "router-id"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router-id"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::~RouterId()
@@ -7452,6 +7689,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::~RouterId()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| interface_name.is_set;
 }
@@ -7534,7 +7772,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::Level()
     level2{YType::boolean, "level2"}
 {
 
-    yang_name = "level"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::~Level()
@@ -7543,6 +7781,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::~Level()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return level1.is_set
 	|| level2.is_set;
 }
@@ -7620,9 +7859,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::has_leaf_or_child_
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSids()
+    :
+    manual_adj_sid(this, {"level", "sid_type", "sid"})
 {
 
-    yang_name = "manual-adj-sids"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manual-adj-sids"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::~ManualAdjSids()
@@ -7631,7 +7872,8 @@ Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::~ManualAdjSids()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::has_data() const
 {
-    for (std::size_t index=0; index<manual_adj_sid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<manual_adj_sid.len(); index++)
     {
         if(manual_adj_sid[index]->has_data())
             return true;
@@ -7641,7 +7883,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::has_data() const
 
 bool Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::has_operation() const
 {
-    for (std::size_t index=0; index<manual_adj_sid.size(); index++)
+    for (std::size_t index=0; index<manual_adj_sid.len(); index++)
     {
         if(manual_adj_sid[index]->has_operation())
             return true;
@@ -7671,7 +7913,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSid
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid>();
         c->parent = this;
-        manual_adj_sid.push_back(c);
+        manual_adj_sid.append(c);
         return c;
     }
 
@@ -7683,7 +7925,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : manual_adj_sid)
+    for (auto c : manual_adj_sid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7717,7 +7959,7 @@ Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::ManualA
     protected_{YType::enumeration, "protected"}
 {
 
-    yang_name = "manual-adj-sid"; yang_parent_name = "manual-adj-sids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manual-adj-sid"; yang_parent_name = "manual-adj-sids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::~ManualAdjSid()
@@ -7726,6 +7968,7 @@ Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::~Manual
 
 bool Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| sid_type.is_set
 	|| sid.is_set
@@ -7744,7 +7987,10 @@ bool Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::ha
 std::string Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "manual-adj-sid" <<"[level='" <<level <<"']" <<"[sid-type='" <<sid_type <<"']" <<"[sid='" <<sid <<"']";
+    path_buffer << "manual-adj-sid";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(sid_type, "sid-type");
+    ADD_KEY_TOKEN(sid, "sid");
     return path_buffer.str();
 }
 
@@ -7829,9 +8075,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::ha
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metrics()
+    :
+    metric(this, {"level"})
 {
 
-    yang_name = "metrics"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metrics"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Metrics::~Metrics()
@@ -7840,7 +8088,8 @@ Isis::Instances::Instance::Afs::Af::AfData::Metrics::~Metrics()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::has_data() const
 {
-    for (std::size_t index=0; index<metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<metric.len(); index++)
     {
         if(metric[index]->has_data())
             return true;
@@ -7850,7 +8099,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::has_data() const
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::has_operation() const
 {
-    for (std::size_t index=0; index<metric.size(); index++)
+    for (std::size_t index=0; index<metric.len(); index++)
     {
         if(metric[index]->has_operation())
             return true;
@@ -7880,7 +8129,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Metrics::get
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric>();
         c->parent = this;
-        metric.push_back(c);
+        metric.append(c);
         return c;
     }
 
@@ -7892,7 +8141,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : metric)
+    for (auto c : metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7924,7 +8173,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric()
     metric{YType::str, "metric"}
 {
 
-    yang_name = "metric"; yang_parent_name = "metrics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "metrics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::~Metric()
@@ -7933,6 +8182,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::~Metric()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| metric.is_set;
 }
@@ -7947,7 +8197,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::has_operation(
 std::string Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "metric" <<"[level='" <<level <<"']";
+    path_buffer << "metric";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -8010,9 +8261,11 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::has_leaf_or_ch
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Weights::Weights()
+    :
+    weight(this, {"level"})
 {
 
-    yang_name = "weights"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weights"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Weights::~Weights()
@@ -8021,7 +8274,8 @@ Isis::Instances::Instance::Afs::Af::AfData::Weights::~Weights()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Weights::has_data() const
 {
-    for (std::size_t index=0; index<weight.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<weight.len(); index++)
     {
         if(weight[index]->has_data())
             return true;
@@ -8031,7 +8285,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Weights::has_data() const
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Weights::has_operation() const
 {
-    for (std::size_t index=0; index<weight.size(); index++)
+    for (std::size_t index=0; index<weight.len(); index++)
     {
         if(weight[index]->has_operation())
             return true;
@@ -8061,7 +8315,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Weights::get
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight>();
         c->parent = this;
-        weight.push_back(c);
+        weight.append(c);
         return c;
     }
 
@@ -8073,7 +8327,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : weight)
+    for (auto c : weight.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8105,7 +8359,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight::Weight()
     weight{YType::uint32, "weight"}
 {
 
-    yang_name = "weight"; yang_parent_name = "weights"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weight"; yang_parent_name = "weights"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight::~Weight()
@@ -8114,6 +8368,7 @@ Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight::~Weight()
 
 bool Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| weight.is_set;
 }
@@ -8128,7 +8383,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight::has_operation(
 std::string Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "weight" <<"[level='" <<level <<"']";
+    path_buffer << "weight";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -8204,29 +8460,30 @@ Isis::Instances::Instance::Afs::Af::TopologyName::TopologyName()
     ignore_attached_bit{YType::boolean, "ignore-attached-bit"},
     attached_bit{YType::enumeration, "attached-bit"},
     route_source_first_hop{YType::boolean, "route-source-first-hop"}
-    	,
+        ,
     segment_routing(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting>())
-	,metric_styles(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles>())
-	,frr_table(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable>())
-	,router_id(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::RouterId>())
-	,spf_prefix_priorities(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities>())
-	,summary_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes>())
-	,micro_loop_avoidance(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance>())
-	,ucmp(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp>())
-	,max_redist_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes>())
-	,propagations(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Propagations>())
-	,redistributions(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions>())
-	,spf_periodic_intervals(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals>())
-	,spf_intervals(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals>())
-	,monitor_convergence(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence>())
-	,default_information(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation>())
-	,admin_distances(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances>())
-	,ispf(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ispf>())
-	,mpls_ldp_global(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal>())
-	,mpls(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Mpls>())
-	,manual_adj_sids(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids>())
-	,metrics(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Metrics>())
-	,weights(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Weights>())
+    , metric_styles(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles>())
+    , frr_table(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable>())
+    , router_id(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::RouterId>())
+    , spf_prefix_priorities(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities>())
+    , summary_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes>())
+    , micro_loop_avoidance(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance>())
+    , ucmp(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp>())
+    , max_redist_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes>())
+    , propagations(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Propagations>())
+    , redistributions(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions>())
+    , spf_periodic_intervals(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals>())
+    , distribute_list_in(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn>())
+    , spf_intervals(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals>())
+    , monitor_convergence(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence>())
+    , default_information(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation>())
+    , admin_distances(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances>())
+    , ispf(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ispf>())
+    , mpls_ldp_global(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal>())
+    , mpls(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Mpls>())
+    , manual_adj_sids(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids>())
+    , metrics(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Metrics>())
+    , weights(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Weights>())
 {
     segment_routing->parent = this;
     metric_styles->parent = this;
@@ -8240,6 +8497,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::TopologyName()
     propagations->parent = this;
     redistributions->parent = this;
     spf_periodic_intervals->parent = this;
+    distribute_list_in->parent = this;
     spf_intervals->parent = this;
     monitor_convergence->parent = this;
     default_information->parent = this;
@@ -8251,7 +8509,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::TopologyName()
     metrics->parent = this;
     weights->parent = this;
 
-    yang_name = "topology-name"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology-name"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::~TopologyName()
@@ -8260,6 +8518,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::~TopologyName()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_name.is_set
 	|| maximum_paths.is_set
 	|| topology_id.is_set
@@ -8284,6 +8543,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::has_data() const
 	|| (propagations !=  nullptr && propagations->has_data())
 	|| (redistributions !=  nullptr && redistributions->has_data())
 	|| (spf_periodic_intervals !=  nullptr && spf_periodic_intervals->has_data())
+	|| (distribute_list_in !=  nullptr && distribute_list_in->has_data())
 	|| (spf_intervals !=  nullptr && spf_intervals->has_data())
 	|| (monitor_convergence !=  nullptr && monitor_convergence->has_data())
 	|| (default_information !=  nullptr && default_information->has_data())
@@ -8323,6 +8583,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::has_operation() const
 	|| (propagations !=  nullptr && propagations->has_operation())
 	|| (redistributions !=  nullptr && redistributions->has_operation())
 	|| (spf_periodic_intervals !=  nullptr && spf_periodic_intervals->has_operation())
+	|| (distribute_list_in !=  nullptr && distribute_list_in->has_operation())
 	|| (spf_intervals !=  nullptr && spf_intervals->has_operation())
 	|| (monitor_convergence !=  nullptr && monitor_convergence->has_operation())
 	|| (default_information !=  nullptr && default_information->has_operation())
@@ -8338,7 +8599,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::has_operation() const
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology-name" <<"[topology-name='" <<topology_name <<"']";
+    path_buffer << "topology-name";
+    ADD_KEY_TOKEN(topology_name, "topology-name");
     return path_buffer.str();
 }
 
@@ -8471,6 +8733,15 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::get_ch
             spf_periodic_intervals = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals>();
         }
         return spf_periodic_intervals;
+    }
+
+    if(child_yang_name == "distribute-list-in")
+    {
+        if(distribute_list_in == nullptr)
+        {
+            distribute_list_in = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn>();
+        }
+        return distribute_list_in;
     }
 
     if(child_yang_name == "spf-intervals")
@@ -8628,6 +8899,11 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     if(spf_periodic_intervals != nullptr)
     {
         children["spf-periodic-intervals"] = spf_periodic_intervals;
+    }
+
+    if(distribute_list_in != nullptr)
+    {
+        children["distribute-list-in"] = distribute_list_in;
     }
 
     if(spf_intervals != nullptr)
@@ -8813,7 +9089,7 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::set_filter(const std::str
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "segment-routing" || name == "metric-styles" || name == "frr-table" || name == "router-id" || name == "spf-prefix-priorities" || name == "summary-prefixes" || name == "micro-loop-avoidance" || name == "ucmp" || name == "max-redist-prefixes" || name == "propagations" || name == "redistributions" || name == "spf-periodic-intervals" || name == "spf-intervals" || name == "monitor-convergence" || name == "default-information" || name == "admin-distances" || name == "ispf" || name == "mpls-ldp-global" || name == "mpls" || name == "manual-adj-sids" || name == "metrics" || name == "weights" || name == "topology-name" || name == "maximum-paths" || name == "topology-id" || name == "single-topology" || name == "adjacency-check" || name == "advertise-link-attributes" || name == "apply-weight" || name == "default-admin-distance" || name == "advertise-passive-only" || name == "ignore-attached-bit" || name == "attached-bit" || name == "route-source-first-hop")
+    if(name == "segment-routing" || name == "metric-styles" || name == "frr-table" || name == "router-id" || name == "spf-prefix-priorities" || name == "summary-prefixes" || name == "micro-loop-avoidance" || name == "ucmp" || name == "max-redist-prefixes" || name == "propagations" || name == "redistributions" || name == "spf-periodic-intervals" || name == "distribute-list-in" || name == "spf-intervals" || name == "monitor-convergence" || name == "default-information" || name == "admin-distances" || name == "ispf" || name == "mpls-ldp-global" || name == "mpls" || name == "manual-adj-sids" || name == "metrics" || name == "weights" || name == "topology-name" || name == "maximum-paths" || name == "topology-id" || name == "single-topology" || name == "adjacency-check" || name == "advertise-link-attributes" || name == "apply-weight" || name == "default-admin-distance" || name == "advertise-passive-only" || name == "ignore-attached-bit" || name == "attached-bit" || name == "route-source-first-hop")
         return true;
     return false;
 }
@@ -8822,12 +9098,12 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::SegmentRouting
     :
     bundle_member_adj_sid{YType::empty, "bundle-member-adj-sid"},
     mpls{YType::enumeration, "mpls"}
-    	,
+        ,
     prefix_sid_map(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap>())
 {
     prefix_sid_map->parent = this;
 
-    yang_name = "segment-routing"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "segment-routing"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::~SegmentRouting()
@@ -8836,6 +9112,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::~SegmentRoutin
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_member_adj_sid.is_set
 	|| mpls.is_set
 	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_data());
@@ -8934,7 +9211,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::
     receive{YType::boolean, "receive"}
 {
 
-    yang_name = "prefix-sid-map"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-sid-map"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::~PrefixSidMap()
@@ -8943,6 +9220,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::has_data() const
 {
+    if (is_presence_container) return true;
     return advertise_local.is_set
 	|| receive.is_set;
 }
@@ -9020,9 +9298,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSid
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyles()
+    :
+    metric_style(this, {"level"})
 {
 
-    yang_name = "metric-styles"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric-styles"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::~MetricStyles()
@@ -9031,7 +9311,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::~MetricStyles()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::has_data() const
 {
-    for (std::size_t index=0; index<metric_style.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<metric_style.len(); index++)
     {
         if(metric_style[index]->has_data())
             return true;
@@ -9041,7 +9322,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::has_data() 
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::has_operation() const
 {
-    for (std::size_t index=0; index<metric_style.size(); index++)
+    for (std::size_t index=0; index<metric_style.len(); index++)
     {
         if(metric_style[index]->has_operation())
             return true;
@@ -9071,7 +9352,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Metric
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle>();
         c->parent = this;
-        metric_style.push_back(c);
+        metric_style.append(c);
         return c;
     }
 
@@ -9083,7 +9364,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : metric_style)
+    for (auto c : metric_style.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9112,11 +9393,10 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::has_leaf_or
 Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::MetricStyle()
     :
     level{YType::enumeration, "level"},
-    style{YType::enumeration, "style"},
-    transition_state{YType::enumeration, "transition-state"}
+    style{YType::enumeration, "style"}
 {
 
-    yang_name = "metric-style"; yang_parent_name = "metric-styles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric-style"; yang_parent_name = "metric-styles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::~MetricStyle()
@@ -9125,23 +9405,23 @@ Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::~Me
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
-	|| style.is_set
-	|| transition_state.is_set;
+	|| style.is_set;
 }
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(style.yfilter)
-	|| ydk::is_set(transition_state.yfilter);
+	|| ydk::is_set(style.yfilter);
 }
 
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "metric-style" <<"[level='" <<level <<"']";
+    path_buffer << "metric-style";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -9151,7 +9431,6 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (style.is_set || is_set(style.yfilter)) leaf_name_data.push_back(style.get_name_leafdata());
-    if (transition_state.is_set || is_set(transition_state.yfilter)) leaf_name_data.push_back(transition_state.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9183,12 +9462,6 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle
         style.value_namespace = name_space;
         style.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "transition-state")
-    {
-        transition_state = value;
-        transition_state.value_namespace = name_space;
-        transition_state.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::set_filter(const std::string & value_path, YFilter yfilter)
@@ -9201,15 +9474,11 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle
     {
         style.yfilter = yfilter;
     }
-    if(value_path == "transition-state")
-    {
-        transition_state.yfilter = yfilter;
-    }
 }
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "level" || name == "style" || name == "transition-state")
+    if(name == "level" || name == "style")
         return true;
     return false;
 }
@@ -9217,10 +9486,10 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTable()
     :
     frr_load_sharings(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings>())
-	,priority_limits(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits>())
-	,frr_remote_lfa_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes>())
-	,frr_tiebreakers(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers>())
-	,frr_use_cand_onlies(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies>())
+    , priority_limits(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits>())
+    , frr_remote_lfa_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes>())
+    , frr_tiebreakers(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers>())
+    , frr_use_cand_onlies(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies>())
 {
     frr_load_sharings->parent = this;
     priority_limits->parent = this;
@@ -9228,7 +9497,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTable()
     frr_tiebreakers->parent = this;
     frr_use_cand_onlies->parent = this;
 
-    yang_name = "frr-table"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-table"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::~FrrTable()
@@ -9237,6 +9506,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::~FrrTable()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (frr_load_sharings !=  nullptr && frr_load_sharings->has_data())
 	|| (priority_limits !=  nullptr && priority_limits->has_data())
 	|| (frr_remote_lfa_prefixes !=  nullptr && frr_remote_lfa_prefixes->has_data())
@@ -9368,9 +9638,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::has_leaf_or_chi
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharings()
+    :
+    frr_load_sharing(this, {"level"})
 {
 
-    yang_name = "frr-load-sharings"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-load-sharings"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::~FrrLoadSharings()
@@ -9379,7 +9651,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::~Fr
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::has_data() const
 {
-    for (std::size_t index=0; index<frr_load_sharing.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_load_sharing.len(); index++)
     {
         if(frr_load_sharing[index]->has_data())
             return true;
@@ -9389,7 +9662,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::has_operation() const
 {
-    for (std::size_t index=0; index<frr_load_sharing.size(); index++)
+    for (std::size_t index=0; index<frr_load_sharing.len(); index++)
     {
         if(frr_load_sharing[index]->has_operation())
             return true;
@@ -9419,7 +9692,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTab
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing>();
         c->parent = this;
-        frr_load_sharing.push_back(c);
+        frr_load_sharing.append(c);
         return c;
     }
 
@@ -9431,7 +9704,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_load_sharing)
+    for (auto c : frr_load_sharing.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9463,7 +9736,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::Frr
     load_sharing{YType::enumeration, "load-sharing"}
 {
 
-    yang_name = "frr-load-sharing"; yang_parent_name = "frr-load-sharings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-load-sharing"; yang_parent_name = "frr-load-sharings"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing::~FrrLoadSharing()
@@ -9472,6 +9745,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::Frr
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| load_sharing.is_set;
 }
@@ -9486,7 +9760,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-load-sharing" <<"[level='" <<level <<"']";
+    path_buffer << "frr-load-sharing";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -9549,9 +9824,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimits()
+    :
+    priority_limit(this, {"level", "frr_type"})
 {
 
-    yang_name = "priority-limits"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-limits"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::~PriorityLimits()
@@ -9560,7 +9837,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::~Pri
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::has_data() const
 {
-    for (std::size_t index=0; index<priority_limit.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<priority_limit.len(); index++)
     {
         if(priority_limit[index]->has_data())
             return true;
@@ -9570,7 +9848,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits:
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::has_operation() const
 {
-    for (std::size_t index=0; index<priority_limit.size(); index++)
+    for (std::size_t index=0; index<priority_limit.len(); index++)
     {
         if(priority_limit[index]->has_operation())
             return true;
@@ -9600,7 +9878,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTab
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit>();
         c->parent = this;
-        priority_limit.push_back(c);
+        priority_limit.append(c);
         return c;
     }
 
@@ -9612,7 +9890,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : priority_limit)
+    for (auto c : priority_limit.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9645,7 +9923,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::Prio
     priority{YType::enumeration, "priority"}
 {
 
-    yang_name = "priority-limit"; yang_parent_name = "priority-limits"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-limit"; yang_parent_name = "priority-limits"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::~PriorityLimit()
@@ -9654,6 +9932,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::Prio
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| frr_type.is_set
 	|| priority.is_set;
@@ -9670,7 +9949,9 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits:
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "priority-limit" <<"[level='" <<level <<"']" <<"[frr-type='" <<frr_type <<"']";
+    path_buffer << "priority-limit";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(frr_type, "frr-type");
     return path_buffer.str();
 }
 
@@ -9744,9 +10025,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits:
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefixes()
+    :
+    frr_remote_lfa_prefix(this, {"level"})
 {
 
-    yang_name = "frr-remote-lfa-prefixes"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-remote-lfa-prefixes"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::~FrrRemoteLfaPrefixes()
@@ -9755,7 +10038,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<frr_remote_lfa_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_remote_lfa_prefix.len(); index++)
     {
         if(frr_remote_lfa_prefix[index]->has_data())
             return true;
@@ -9765,7 +10049,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPre
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<frr_remote_lfa_prefix.size(); index++)
+    for (std::size_t index=0; index<frr_remote_lfa_prefix.len(); index++)
     {
         if(frr_remote_lfa_prefix[index]->has_operation())
             return true;
@@ -9795,7 +10079,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTab
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix>();
         c->parent = this;
-        frr_remote_lfa_prefix.push_back(c);
+        frr_remote_lfa_prefix.append(c);
         return c;
     }
 
@@ -9807,7 +10091,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_remote_lfa_prefix)
+    for (auto c : frr_remote_lfa_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9839,7 +10123,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes
     prefix_list_name{YType::str, "prefix-list-name"}
 {
 
-    yang_name = "frr-remote-lfa-prefix"; yang_parent_name = "frr-remote-lfa-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-remote-lfa-prefix"; yang_parent_name = "frr-remote-lfa-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix::~FrrRemoteLfaPrefix()
@@ -9848,6 +10132,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| prefix_list_name.is_set;
 }
@@ -9862,7 +10147,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPre
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-remote-lfa-prefix" <<"[level='" <<level <<"']";
+    path_buffer << "frr-remote-lfa-prefix";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -9925,9 +10211,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPre
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreakers()
+    :
+    frr_tiebreaker(this, {"level", "tiebreaker"})
 {
 
-    yang_name = "frr-tiebreakers"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-tiebreakers"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::~FrrTiebreakers()
@@ -9936,7 +10224,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::~Frr
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::has_data() const
 {
-    for (std::size_t index=0; index<frr_tiebreaker.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_tiebreaker.len(); index++)
     {
         if(frr_tiebreaker[index]->has_data())
             return true;
@@ -9946,7 +10235,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers:
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::has_operation() const
 {
-    for (std::size_t index=0; index<frr_tiebreaker.size(); index++)
+    for (std::size_t index=0; index<frr_tiebreaker.len(); index++)
     {
         if(frr_tiebreaker[index]->has_operation())
             return true;
@@ -9976,7 +10265,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTab
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreaker>();
         c->parent = this;
-        frr_tiebreaker.push_back(c);
+        frr_tiebreaker.append(c);
         return c;
     }
 
@@ -9988,7 +10277,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_tiebreaker)
+    for (auto c : frr_tiebreaker.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10021,7 +10310,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrT
     index_{YType::uint32, "index"}
 {
 
-    yang_name = "frr-tiebreaker"; yang_parent_name = "frr-tiebreakers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-tiebreaker"; yang_parent_name = "frr-tiebreakers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreaker::~FrrTiebreaker()
@@ -10030,6 +10319,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrT
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreaker::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| tiebreaker.is_set
 	|| index_.is_set;
@@ -10046,7 +10336,9 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers:
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreaker::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-tiebreaker" <<"[level='" <<level <<"']" <<"[tiebreaker='" <<tiebreaker <<"']";
+    path_buffer << "frr-tiebreaker";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(tiebreaker, "tiebreaker");
     return path_buffer.str();
 }
 
@@ -10120,9 +10412,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers:
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnlies()
+    :
+    frr_use_cand_only(this, {"level", "frr_type"})
 {
 
-    yang_name = "frr-use-cand-onlies"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-use-cand-onlies"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::~FrrUseCandOnlies()
@@ -10131,7 +10425,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::~F
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::has_data() const
 {
-    for (std::size_t index=0; index<frr_use_cand_only.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_use_cand_only.len(); index++)
     {
         if(frr_use_cand_only[index]->has_data())
             return true;
@@ -10141,7 +10436,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlie
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::has_operation() const
 {
-    for (std::size_t index=0; index<frr_use_cand_only.size(); index++)
+    for (std::size_t index=0; index<frr_use_cand_only.len(); index++)
     {
         if(frr_use_cand_only[index]->has_operation())
             return true;
@@ -10171,7 +10466,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTab
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnly>();
         c->parent = this;
-        frr_use_cand_only.push_back(c);
+        frr_use_cand_only.append(c);
         return c;
     }
 
@@ -10183,7 +10478,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_use_cand_only)
+    for (auto c : frr_use_cand_only.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10215,7 +10510,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::Fr
     frr_type{YType::enumeration, "frr-type"}
 {
 
-    yang_name = "frr-use-cand-only"; yang_parent_name = "frr-use-cand-onlies"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-use-cand-only"; yang_parent_name = "frr-use-cand-onlies"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnly::~FrrUseCandOnly()
@@ -10224,6 +10519,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::Fr
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnly::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| frr_type.is_set;
 }
@@ -10238,7 +10534,9 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlie
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnly::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-use-cand-only" <<"[level='" <<level <<"']" <<"[frr-type='" <<frr_type <<"']";
+    path_buffer << "frr-use-cand-only";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(frr_type, "frr-type");
     return path_buffer.str();
 }
 
@@ -10306,7 +10604,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::RouterId()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "router-id"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router-id"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::~RouterId()
@@ -10315,6 +10613,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::~RouterId()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| interface_name.is_set;
 }
@@ -10392,9 +10691,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::has_leaf_or_chi
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriorities()
+    :
+    spf_prefix_priority(this, {"level", "prefix_priority_type"})
 {
 
-    yang_name = "spf-prefix-priorities"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-prefix-priorities"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::~SpfPrefixPriorities()
@@ -10403,7 +10704,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::~SpfPrefi
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::has_data() const
 {
-    for (std::size_t index=0; index<spf_prefix_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spf_prefix_priority.len(); index++)
     {
         if(spf_prefix_priority[index]->has_data())
             return true;
@@ -10413,7 +10715,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::has_
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::has_operation() const
 {
-    for (std::size_t index=0; index<spf_prefix_priority.size(); index++)
+    for (std::size_t index=0; index<spf_prefix_priority.len(); index++)
     {
         if(spf_prefix_priority[index]->has_operation())
             return true;
@@ -10443,7 +10745,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPre
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority>();
         c->parent = this;
-        spf_prefix_priority.push_back(c);
+        spf_prefix_priority.append(c);
         return c;
     }
 
@@ -10455,7 +10757,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : spf_prefix_priority)
+    for (auto c : spf_prefix_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10489,7 +10791,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefix
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "spf-prefix-priority"; yang_parent_name = "spf-prefix-priorities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-prefix-priority"; yang_parent_name = "spf-prefix-priorities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::~SpfPrefixPriority()
@@ -10498,6 +10800,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefix
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| prefix_priority_type.is_set
 	|| admin_tag.is_set
@@ -10516,7 +10819,9 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfP
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-prefix-priority" <<"[level='" <<level <<"']" <<"[prefix-priority-type='" <<prefix_priority_type <<"']";
+    path_buffer << "spf-prefix-priority";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(prefix_priority_type, "prefix-priority-type");
     return path_buffer.str();
 }
 
@@ -10601,9 +10906,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfP
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefixes()
+    :
+    summary_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "summary-prefixes"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-prefixes"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::~SummaryPrefixes()
@@ -10612,7 +10919,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::~SummaryPrefi
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<summary_prefix.len(); index++)
     {
         if(summary_prefix[index]->has_data())
             return true;
@@ -10622,7 +10930,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::has_data
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    for (std::size_t index=0; index<summary_prefix.len(); index++)
     {
         if(summary_prefix[index]->has_operation())
             return true;
@@ -10652,7 +10960,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Summar
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix>();
         c->parent = this;
-        summary_prefix.push_back(c);
+        summary_prefix.append(c);
         return c;
     }
 
@@ -10664,7 +10972,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : summary_prefix)
+    for (auto c : summary_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10697,7 +11005,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix
     level{YType::uint32, "level"}
 {
 
-    yang_name = "summary-prefix"; yang_parent_name = "summary-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-prefix"; yang_parent_name = "summary-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::~SummaryPrefix()
@@ -10706,6 +11014,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set
 	|| tag.is_set
 	|| level.is_set;
@@ -10722,7 +11031,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryP
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "summary-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "summary-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -10801,7 +11111,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::MicroLoopA
     rib_update_delay{YType::uint32, "rib-update-delay"}
 {
 
-    yang_name = "micro-loop-avoidance"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "micro-loop-avoidance"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::~MicroLoopAvoidance()
@@ -10810,6 +11120,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::~MicroLoop
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| rib_update_delay.is_set;
 }
@@ -10889,14 +11200,14 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::has_l
 Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Ucmp()
     :
     delay_interval{YType::uint32, "delay-interval"}
-    	,
+        ,
     enable(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable>())
-	,exclude_interfaces(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces>())
+    , exclude_interfaces(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces>())
 {
     enable->parent = this;
     exclude_interfaces->parent = this;
 
-    yang_name = "ucmp"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ucmp"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::~Ucmp()
@@ -10905,6 +11216,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::~Ucmp()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::has_data() const
 {
+    if (is_presence_container) return true;
     return delay_interval.is_set
 	|| (enable !=  nullptr && enable->has_data())
 	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
@@ -11006,7 +11318,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::Enable()
     prefix_list_name{YType::str, "prefix-list-name"}
 {
 
-    yang_name = "enable"; yang_parent_name = "ucmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "enable"; yang_parent_name = "ucmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::~Enable()
@@ -11015,6 +11327,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::~Enable()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::has_data() const
 {
+    if (is_presence_container) return true;
     return variance.is_set
 	|| prefix_list_name.is_set;
 }
@@ -11092,9 +11405,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::has_leaf_or
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
 {
 
-    yang_name = "exclude-interfaces"; yang_parent_name = "ucmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interfaces"; yang_parent_name = "ucmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::~ExcludeInterfaces()
@@ -11103,7 +11418,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::~Excl
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_data())
             return true;
@@ -11113,7 +11429,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_operation())
             return true;
@@ -11143,7 +11459,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        exclude_interface.append(c);
         return c;
     }
 
@@ -11155,7 +11471,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exclude_interface)
+    for (auto c : exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11186,7 +11502,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::Exclu
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
@@ -11195,6 +11511,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::Exclu
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -11207,7 +11524,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -11259,9 +11577,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefixes()
+    :
+    max_redist_prefix(this, {"level"})
 {
 
-    yang_name = "max-redist-prefixes"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-redist-prefixes"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::~MaxRedistPrefixes()
@@ -11270,7 +11590,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::~MaxRedistP
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<max_redist_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<max_redist_prefix.len(); index++)
     {
         if(max_redist_prefix[index]->has_data())
             return true;
@@ -11280,7 +11601,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::has_da
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<max_redist_prefix.size(); index++)
+    for (std::size_t index=0; index<max_redist_prefix.len(); index++)
     {
         if(max_redist_prefix[index]->has_operation())
             return true;
@@ -11310,7 +11631,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::MaxRed
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefix>();
         c->parent = this;
-        max_redist_prefix.push_back(c);
+        max_redist_prefix.append(c);
         return c;
     }
 
@@ -11322,7 +11643,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : max_redist_prefix)
+    for (auto c : max_redist_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11354,7 +11675,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPr
     prefix_limit{YType::uint32, "prefix-limit"}
 {
 
-    yang_name = "max-redist-prefix"; yang_parent_name = "max-redist-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-redist-prefix"; yang_parent_name = "max-redist-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefix::~MaxRedistPrefix()
@@ -11363,6 +11684,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPr
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| prefix_limit.is_set;
 }
@@ -11377,7 +11699,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRed
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "max-redist-prefix" <<"[level='" <<level <<"']";
+    path_buffer << "max-redist-prefix";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -11440,9 +11763,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRed
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagations()
+    :
+    propagation(this, {"source_level", "destination_level"})
 {
 
-    yang_name = "propagations"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "propagations"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::~Propagations()
@@ -11451,7 +11776,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::~Propagations()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::has_data() const
 {
-    for (std::size_t index=0; index<propagation.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<propagation.len(); index++)
     {
         if(propagation[index]->has_data())
             return true;
@@ -11461,7 +11787,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::has_data() 
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::has_operation() const
 {
-    for (std::size_t index=0; index<propagation.size(); index++)
+    for (std::size_t index=0; index<propagation.len(); index++)
     {
         if(propagation[index]->has_operation())
             return true;
@@ -11491,7 +11817,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Propag
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation>();
         c->parent = this;
-        propagation.push_back(c);
+        propagation.append(c);
         return c;
     }
 
@@ -11503,7 +11829,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : propagation)
+    for (auto c : propagation.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11536,7 +11862,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation::Pro
     route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "propagation"; yang_parent_name = "propagations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "propagation"; yang_parent_name = "propagations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation::~Propagation()
@@ -11545,6 +11871,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation::~Pr
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation::has_data() const
 {
+    if (is_presence_container) return true;
     return source_level.is_set
 	|| destination_level.is_set
 	|| route_policy_name.is_set;
@@ -11561,7 +11888,9 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "propagation" <<"[source-level='" <<source_level <<"']" <<"[destination-level='" <<destination_level <<"']";
+    path_buffer << "propagation";
+    ADD_KEY_TOKEN(source_level, "source-level");
+    ADD_KEY_TOKEN(destination_level, "destination-level");
     return path_buffer.str();
 }
 
@@ -11635,9 +11964,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributions()
+    :
+    redistribution(this, {"protocol_name"})
 {
 
-    yang_name = "redistributions"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redistributions"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::~Redistributions()
@@ -11646,7 +11977,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::~Redistributi
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::has_data() const
 {
-    for (std::size_t index=0; index<redistribution.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<redistribution.len(); index++)
     {
         if(redistribution[index]->has_data())
             return true;
@@ -11656,7 +11988,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::has_data
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::has_operation() const
 {
-    for (std::size_t index=0; index<redistribution.size(); index++)
+    for (std::size_t index=0; index<redistribution.len(); index++)
     {
         if(redistribution[index]->has_operation())
             return true;
@@ -11686,7 +12018,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Redist
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution>();
         c->parent = this;
-        redistribution.push_back(c);
+        redistribution.append(c);
         return c;
     }
 
@@ -11698,7 +12030,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : redistribution)
+    for (auto c : redistribution.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11727,11 +12059,14 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::has_leaf
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Redistribution()
     :
     protocol_name{YType::enumeration, "protocol-name"}
-    	,
+        ,
     connected_or_static_or_rip_or_subscriber_or_mobile(nullptr) // presence node
+    , ospf_or_ospfv3_or_isis_or_application(this, {"instance_name"})
+    , bgp(this, {"as_xx", "as_yy"})
+    , eigrp(this, {"as_zz"})
 {
 
-    yang_name = "redistribution"; yang_parent_name = "redistributions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redistribution"; yang_parent_name = "redistributions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::~Redistribution()
@@ -11740,17 +12075,18 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributio
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::has_data() const
 {
-    for (std::size_t index=0; index<ospf_or_ospfv3_or_isis_or_application.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospf_or_ospfv3_or_isis_or_application.len(); index++)
     {
         if(ospf_or_ospfv3_or_isis_or_application[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<bgp.size(); index++)
+    for (std::size_t index=0; index<bgp.len(); index++)
     {
         if(bgp[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_data())
             return true;
@@ -11761,17 +12097,17 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistri
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::has_operation() const
 {
-    for (std::size_t index=0; index<ospf_or_ospfv3_or_isis_or_application.size(); index++)
+    for (std::size_t index=0; index<ospf_or_ospfv3_or_isis_or_application.len(); index++)
     {
         if(ospf_or_ospfv3_or_isis_or_application[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<bgp.size(); index++)
+    for (std::size_t index=0; index<bgp.len(); index++)
     {
         if(bgp[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_operation())
             return true;
@@ -11784,7 +12120,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistri
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "redistribution" <<"[protocol-name='" <<protocol_name <<"']";
+    path_buffer << "redistribution";
+    ADD_KEY_TOKEN(protocol_name, "protocol-name");
     return path_buffer.str();
 }
 
@@ -11813,7 +12150,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Redist
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication>();
         c->parent = this;
-        ospf_or_ospfv3_or_isis_or_application.push_back(c);
+        ospf_or_ospfv3_or_isis_or_application.append(c);
         return c;
     }
 
@@ -11821,7 +12158,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Redist
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp>();
         c->parent = this;
-        bgp.push_back(c);
+        bgp.append(c);
         return c;
     }
 
@@ -11829,7 +12166,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Redist
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp>();
         c->parent = this;
-        eigrp.push_back(c);
+        eigrp.append(c);
         return c;
     }
 
@@ -11846,7 +12183,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     }
 
     count = 0;
-    for (auto const & c : ospf_or_ospfv3_or_isis_or_application)
+    for (auto c : ospf_or_ospfv3_or_isis_or_application.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11855,7 +12192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     }
 
     count = 0;
-    for (auto const & c : bgp)
+    for (auto c : bgp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11864,7 +12201,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     }
 
     count = 0;
-    for (auto const & c : eigrp)
+    for (auto c : eigrp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11906,10 +12243,10 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributio
     levels{YType::enumeration, "levels"},
     route_policy_name{YType::str, "route-policy-name"},
     metric_type{YType::enumeration, "metric-type"},
-    ospf_route_type{YType::int32, "ospf-route-type"}
+    ospf_route_type{YType::uint32, "ospf-route-type"}
 {
 
-    yang_name = "connected-or-static-or-rip-or-subscriber-or-mobile"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connected-or-static-or-rip-or-subscriber-or-mobile"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::~ConnectedOrStaticOrRipOrSubscriberOrMobile()
@@ -11918,6 +12255,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributio
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| levels.is_set
 	|| route_policy_name.is_set
@@ -12040,10 +12378,10 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributio
     levels{YType::enumeration, "levels"},
     route_policy_name{YType::str, "route-policy-name"},
     metric_type{YType::enumeration, "metric-type"},
-    ospf_route_type{YType::int32, "ospf-route-type"}
+    ospf_route_type{YType::uint32, "ospf-route-type"}
 {
 
-    yang_name = "ospf-or-ospfv3-or-isis-or-application"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf-or-ospfv3-or-isis-or-application"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::~OspfOrOspfv3OrIsisOrApplication()
@@ -12052,6 +12390,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributio
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| metric.is_set
 	|| levels.is_set
@@ -12074,7 +12413,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistri
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf-or-ospfv3-or-isis-or-application" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "ospf-or-ospfv3-or-isis-or-application";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -12188,10 +12528,10 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributio
     levels{YType::enumeration, "levels"},
     route_policy_name{YType::str, "route-policy-name"},
     metric_type{YType::enumeration, "metric-type"},
-    ospf_route_type{YType::int32, "ospf-route-type"}
+    ospf_route_type{YType::uint32, "ospf-route-type"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp::~Bgp()
@@ -12200,6 +12540,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributio
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as_yy.is_set
 	|| metric.is_set
@@ -12224,7 +12565,9 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistri
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp" <<"[as-xx='" <<as_xx <<"']" <<"[as-yy='" <<as_yy <<"']";
+    path_buffer << "bgp";
+    ADD_KEY_TOKEN(as_xx, "as-xx");
+    ADD_KEY_TOKEN(as_yy, "as-yy");
     return path_buffer.str();
 }
 
@@ -12348,10 +12691,10 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributio
     levels{YType::enumeration, "levels"},
     route_policy_name{YType::str, "route-policy-name"},
     metric_type{YType::enumeration, "metric-type"},
-    ospf_route_type{YType::int32, "ospf-route-type"}
+    ospf_route_type{YType::uint32, "ospf-route-type"}
 {
 
-    yang_name = "eigrp"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp::~Eigrp()
@@ -12360,6 +12703,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributio
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp::has_data() const
 {
+    if (is_presence_container) return true;
     return as_zz.is_set
 	|| metric.is_set
 	|| levels.is_set
@@ -12382,7 +12726,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistri
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eigrp" <<"[as-zz='" <<as_zz <<"']";
+    path_buffer << "eigrp";
+    ADD_KEY_TOKEN(as_zz, "as-zz");
     return path_buffer.str();
 }
 
@@ -12489,9 +12834,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistri
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicIntervals()
+    :
+    spf_periodic_interval(this, {"level"})
 {
 
-    yang_name = "spf-periodic-intervals"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-periodic-intervals"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::~SpfPeriodicIntervals()
@@ -12500,7 +12847,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::~SpfPeri
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::has_data() const
 {
-    for (std::size_t index=0; index<spf_periodic_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spf_periodic_interval.len(); index++)
     {
         if(spf_periodic_interval[index]->has_data())
             return true;
@@ -12510,7 +12858,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::has
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<spf_periodic_interval.size(); index++)
+    for (std::size_t index=0; index<spf_periodic_interval.len(); index++)
     {
         if(spf_periodic_interval[index]->has_operation())
             return true;
@@ -12540,7 +12888,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPer
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval>();
         c->parent = this;
-        spf_periodic_interval.push_back(c);
+        spf_periodic_interval.append(c);
         return c;
     }
 
@@ -12552,7 +12900,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : spf_periodic_interval)
+    for (auto c : spf_periodic_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12584,7 +12932,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPerio
     periodic_interval{YType::uint32, "periodic-interval"}
 {
 
-    yang_name = "spf-periodic-interval"; yang_parent_name = "spf-periodic-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-periodic-interval"; yang_parent_name = "spf-periodic-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::~SpfPeriodicInterval()
@@ -12593,6 +12941,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPerio
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| periodic_interval.is_set;
 }
@@ -12607,7 +12956,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::Spf
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-periodic-interval" <<"[level='" <<level <<"']";
+    path_buffer << "spf-periodic-interval";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -12669,10 +13019,104 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::Spf
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfIntervals()
+Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn::DistributeListIn()
+    :
+    prefix_list_name{YType::str, "prefix-list-name"},
+    route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "spf-intervals"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribute-list-in"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn::~DistributeListIn()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix_list_name.is_set
+	|| route_policy_name.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_list_name.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "distribute-list-in";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-list-name")
+    {
+        prefix_list_name = value;
+        prefix_list_name.value_namespace = name_space;
+        prefix_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-list-name")
+    {
+        prefix_list_name.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::DistributeListIn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-list-name" || name == "route-policy-name")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfIntervals()
+    :
+    spf_interval(this, {"level"})
+{
+
+    yang_name = "spf-intervals"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::~SpfIntervals()
@@ -12681,7 +13125,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::~SpfIntervals()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::has_data() const
 {
-    for (std::size_t index=0; index<spf_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spf_interval.len(); index++)
     {
         if(spf_interval[index]->has_data())
             return true;
@@ -12691,7 +13136,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::has_data() 
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<spf_interval.size(); index++)
+    for (std::size_t index=0; index<spf_interval.len(); index++)
     {
         if(spf_interval[index]->has_operation())
             return true;
@@ -12721,7 +13166,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SpfInt
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval>();
         c->parent = this;
-        spf_interval.push_back(c);
+        spf_interval.append(c);
         return c;
     }
 
@@ -12733,7 +13178,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : spf_interval)
+    for (auto c : spf_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12767,7 +13212,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval::Spf
     secondary_wait{YType::uint32, "secondary-wait"}
 {
 
-    yang_name = "spf-interval"; yang_parent_name = "spf-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-interval"; yang_parent_name = "spf-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval::~SpfInterval()
@@ -12776,6 +13221,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval::~Sp
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| maximum_wait.is_set
 	|| initial_wait.is_set
@@ -12794,7 +13240,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-interval" <<"[level='" <<level <<"']";
+    path_buffer << "spf-interval";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -12885,7 +13332,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::MonitorCon
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "monitor-convergence"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "monitor-convergence"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::~MonitorConvergence()
@@ -12894,6 +13341,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::~MonitorCo
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| track_ip_frr.is_set
 	|| prefix_list.is_set;
@@ -12990,7 +13438,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::DefaultInf
     external{YType::empty, "external"}
 {
 
-    yang_name = "default-information"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-information"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::~DefaultInformation()
@@ -12999,6 +13447,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::~DefaultIn
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return use_policy.is_set
 	|| policy_name.is_set
 	|| external.is_set;
@@ -13089,9 +13538,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::has_l
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistances()
+    :
+    admin_distance(this, {"address_prefix"})
 {
 
-    yang_name = "admin-distances"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "admin-distances"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::~AdminDistances()
@@ -13100,7 +13551,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::~AdminDistance
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::has_data() const
 {
-    for (std::size_t index=0; index<admin_distance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<admin_distance.len(); index++)
     {
         if(admin_distance[index]->has_data())
             return true;
@@ -13110,7 +13562,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::has_data(
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::has_operation() const
 {
-    for (std::size_t index=0; index<admin_distance.size(); index++)
+    for (std::size_t index=0; index<admin_distance.len(); index++)
     {
         if(admin_distance[index]->has_operation())
             return true;
@@ -13140,7 +13592,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::AdminD
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance>();
         c->parent = this;
-        admin_distance.push_back(c);
+        admin_distance.append(c);
         return c;
     }
 
@@ -13152,7 +13604,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : admin_distance)
+    for (auto c : admin_distance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13185,7 +13637,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance:
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "admin-distance"; yang_parent_name = "admin-distances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "admin-distance"; yang_parent_name = "admin-distances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::~AdminDistance()
@@ -13194,6 +13646,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance:
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set
 	|| distance.is_set
 	|| prefix_list.is_set;
@@ -13210,7 +13663,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDist
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "admin-distance" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "admin-distance";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -13289,7 +13743,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::Ispf()
 {
     states->parent = this;
 
-    yang_name = "ispf"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ispf"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::~Ispf()
@@ -13298,6 +13752,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::~Ispf()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::has_data() const
 {
+    if (is_presence_container) return true;
     return (states !=  nullptr && states->has_data());
 }
 
@@ -13365,9 +13820,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::has_leaf_or_child_o
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::States()
+    :
+    state(this, {"level"})
 {
 
-    yang_name = "states"; yang_parent_name = "ispf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "states"; yang_parent_name = "ispf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::~States()
@@ -13376,7 +13833,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::~States()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::has_data() const
 {
-    for (std::size_t index=0; index<state.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<state.len(); index++)
     {
         if(state[index]->has_data())
             return true;
@@ -13386,7 +13844,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::has_data() 
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::has_operation() const
 {
-    for (std::size_t index=0; index<state.size(); index++)
+    for (std::size_t index=0; index<state.len(); index++)
     {
         if(state[index]->has_operation())
             return true;
@@ -13416,7 +13874,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State>();
         c->parent = this;
-        state.push_back(c);
+        state.append(c);
         return c;
     }
 
@@ -13428,7 +13886,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : state)
+    for (auto c : state.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13460,7 +13918,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::State()
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "state"; yang_parent_name = "states"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "states"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::~State()
@@ -13469,6 +13927,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::~State()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| state.is_set;
 }
@@ -13483,7 +13942,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::has_
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "state" <<"[level='" <<level <<"']";
+    path_buffer << "state";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -13550,7 +14010,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::MplsLdpGlobal()
     auto_config{YType::boolean, "auto-config"}
 {
 
-    yang_name = "mpls-ldp-global"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-ldp-global"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::~MplsLdpGlobal()
@@ -13559,6 +14019,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::~MplsLdpGlobal(
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_config.is_set;
 }
 
@@ -13626,14 +14087,14 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Mpls()
     :
     igp_intact{YType::empty, "igp-intact"},
     multicast_intact{YType::empty, "multicast-intact"}
-    	,
+        ,
     router_id(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId>())
-	,level(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level>())
+    , level(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level>())
 {
     router_id->parent = this;
     level->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::~Mpls()
@@ -13642,6 +14103,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::~Mpls()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return igp_intact.is_set
 	|| multicast_intact.is_set
 	|| (router_id !=  nullptr && router_id->has_data())
@@ -13756,7 +14218,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::RouterId()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "router-id"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router-id"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::~RouterId()
@@ -13765,6 +14227,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::~RouterId()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| interface_name.is_set;
 }
@@ -13847,7 +14310,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::Level()
     level2{YType::boolean, "level2"}
 {
 
-    yang_name = "level"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::~Level()
@@ -13856,6 +14319,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::~Level()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return level1.is_set
 	|| level2.is_set;
 }
@@ -13933,9 +14397,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::has_leaf_or_
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSids()
+    :
+    manual_adj_sid(this, {"level", "sid_type", "sid"})
 {
 
-    yang_name = "manual-adj-sids"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manual-adj-sids"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::~ManualAdjSids()
@@ -13944,7 +14410,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::~ManualAdjSids(
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::has_data() const
 {
-    for (std::size_t index=0; index<manual_adj_sid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<manual_adj_sid.len(); index++)
     {
         if(manual_adj_sid[index]->has_data())
             return true;
@@ -13954,7 +14421,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::has_data()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::has_operation() const
 {
-    for (std::size_t index=0; index<manual_adj_sid.size(); index++)
+    for (std::size_t index=0; index<manual_adj_sid.len(); index++)
     {
         if(manual_adj_sid[index]->has_operation())
             return true;
@@ -13984,7 +14451,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Manual
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid>();
         c->parent = this;
-        manual_adj_sid.push_back(c);
+        manual_adj_sid.append(c);
         return c;
     }
 
@@ -13996,7 +14463,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : manual_adj_sid)
+    for (auto c : manual_adj_sid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14030,7 +14497,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::M
     protected_{YType::enumeration, "protected"}
 {
 
-    yang_name = "manual-adj-sid"; yang_parent_name = "manual-adj-sids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manual-adj-sid"; yang_parent_name = "manual-adj-sids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::~ManualAdjSid()
@@ -14039,6 +14506,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::~
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| sid_type.is_set
 	|| sid.is_set
@@ -14057,7 +14525,10 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjS
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "manual-adj-sid" <<"[level='" <<level <<"']" <<"[sid-type='" <<sid_type <<"']" <<"[sid='" <<sid <<"']";
+    path_buffer << "manual-adj-sid";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(sid_type, "sid-type");
+    ADD_KEY_TOKEN(sid, "sid");
     return path_buffer.str();
 }
 
@@ -14142,9 +14613,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjS
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metrics()
+    :
+    metric(this, {"level"})
 {
 
-    yang_name = "metrics"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metrics"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::~Metrics()
@@ -14153,7 +14626,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::~Metrics()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::has_data() const
 {
-    for (std::size_t index=0; index<metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<metric.len(); index++)
     {
         if(metric[index]->has_data())
             return true;
@@ -14163,7 +14637,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::has_data() const
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::has_operation() const
 {
-    for (std::size_t index=0; index<metric.size(); index++)
+    for (std::size_t index=0; index<metric.len(); index++)
     {
         if(metric[index]->has_operation())
             return true;
@@ -14193,7 +14667,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Metric
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric>();
         c->parent = this;
-        metric.push_back(c);
+        metric.append(c);
         return c;
     }
 
@@ -14205,7 +14679,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : metric)
+    for (auto c : metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14237,7 +14711,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::Metric()
     metric{YType::str, "metric"}
 {
 
-    yang_name = "metric"; yang_parent_name = "metrics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "metrics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::~Metric()
@@ -14246,6 +14720,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::~Metric()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| metric.is_set;
 }
@@ -14260,7 +14735,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::has_oper
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "metric" <<"[level='" <<level <<"']";
+    path_buffer << "metric";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -14323,9 +14799,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::has_leaf
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weights()
+    :
+    weight(this, {"level"})
 {
 
-    yang_name = "weights"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weights"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Weights::~Weights()
@@ -14334,7 +14812,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Weights::~Weights()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Weights::has_data() const
 {
-    for (std::size_t index=0; index<weight.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<weight.len(); index++)
     {
         if(weight[index]->has_data())
             return true;
@@ -14344,7 +14823,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Weights::has_data() const
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Weights::has_operation() const
 {
-    for (std::size_t index=0; index<weight.size(); index++)
+    for (std::size_t index=0; index<weight.len(); index++)
     {
         if(weight[index]->has_operation())
             return true;
@@ -14374,7 +14853,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Weight
     {
         auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight>();
         c->parent = this;
-        weight.push_back(c);
+        weight.append(c);
         return c;
     }
 
@@ -14386,7 +14865,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : weight)
+    for (auto c : weight.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14418,7 +14897,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::Weight()
     weight{YType::uint32, "weight"}
 {
 
-    yang_name = "weight"; yang_parent_name = "weights"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weight"; yang_parent_name = "weights"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::~Weight()
@@ -14427,6 +14906,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::~Weight()
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| weight.is_set;
 }
@@ -14441,7 +14921,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::has_oper
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "weight" <<"[level='" <<level <<"']";
+    path_buffer << "weight";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -14504,9 +14985,11 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::has_leaf
 }
 
 Isis::Instances::Instance::LspRefreshIntervals::LspRefreshIntervals()
+    :
+    lsp_refresh_interval(this, {"level"})
 {
 
-    yang_name = "lsp-refresh-intervals"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-refresh-intervals"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspRefreshIntervals::~LspRefreshIntervals()
@@ -14515,7 +14998,8 @@ Isis::Instances::Instance::LspRefreshIntervals::~LspRefreshIntervals()
 
 bool Isis::Instances::Instance::LspRefreshIntervals::has_data() const
 {
-    for (std::size_t index=0; index<lsp_refresh_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_refresh_interval.len(); index++)
     {
         if(lsp_refresh_interval[index]->has_data())
             return true;
@@ -14525,7 +15009,7 @@ bool Isis::Instances::Instance::LspRefreshIntervals::has_data() const
 
 bool Isis::Instances::Instance::LspRefreshIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_refresh_interval.size(); index++)
+    for (std::size_t index=0; index<lsp_refresh_interval.len(); index++)
     {
         if(lsp_refresh_interval[index]->has_operation())
             return true;
@@ -14555,7 +15039,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::LspRefreshIntervals::get_chil
     {
         auto c = std::make_shared<Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval>();
         c->parent = this;
-        lsp_refresh_interval.push_back(c);
+        lsp_refresh_interval.append(c);
         return c;
     }
 
@@ -14567,7 +15051,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspRef
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_refresh_interval)
+    for (auto c : lsp_refresh_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14599,7 +15083,7 @@ Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::LspRefreshIn
     interval{YType::uint32, "interval"}
 {
 
-    yang_name = "lsp-refresh-interval"; yang_parent_name = "lsp-refresh-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-refresh-interval"; yang_parent_name = "lsp-refresh-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::~LspRefreshInterval()
@@ -14608,6 +15092,7 @@ Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::~LspRefreshI
 
 bool Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| interval.is_set;
 }
@@ -14622,7 +15107,8 @@ bool Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::has_ope
 std::string Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-refresh-interval" <<"[level='" <<level <<"']";
+    path_buffer << "lsp-refresh-interval";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -14691,7 +15177,7 @@ Isis::Instances::Instance::Distribute::Distribute()
     dist_throttle{YType::uint32, "dist-throttle"}
 {
 
-    yang_name = "distribute"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribute"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Isis::Instances::Instance::Distribute::~Distribute()
@@ -14700,6 +15186,7 @@ Isis::Instances::Instance::Distribute::~Distribute()
 
 bool Isis::Instances::Instance::Distribute::has_data() const
 {
+    if (is_presence_container) return true;
     return dist_inst_id.is_set
 	|| level.is_set
 	|| dist_throttle.is_set;
@@ -14790,9 +15277,11 @@ bool Isis::Instances::Instance::Distribute::has_leaf_or_child_of_name(const std:
 }
 
 Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPasswords()
+    :
+    lsp_accept_password(this, {"level"})
 {
 
-    yang_name = "lsp-accept-passwords"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-accept-passwords"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspAcceptPasswords::~LspAcceptPasswords()
@@ -14801,7 +15290,8 @@ Isis::Instances::Instance::LspAcceptPasswords::~LspAcceptPasswords()
 
 bool Isis::Instances::Instance::LspAcceptPasswords::has_data() const
 {
-    for (std::size_t index=0; index<lsp_accept_password.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_accept_password.len(); index++)
     {
         if(lsp_accept_password[index]->has_data())
             return true;
@@ -14811,7 +15301,7 @@ bool Isis::Instances::Instance::LspAcceptPasswords::has_data() const
 
 bool Isis::Instances::Instance::LspAcceptPasswords::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_accept_password.size(); index++)
+    for (std::size_t index=0; index<lsp_accept_password.len(); index++)
     {
         if(lsp_accept_password[index]->has_operation())
             return true;
@@ -14841,7 +15331,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::LspAcceptPasswords::get_child
     {
         auto c = std::make_shared<Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword>();
         c->parent = this;
-        lsp_accept_password.push_back(c);
+        lsp_accept_password.append(c);
         return c;
     }
 
@@ -14853,7 +15343,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspAcc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_accept_password)
+    for (auto c : lsp_accept_password.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14885,7 +15375,7 @@ Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::LspAcceptPassw
     password{YType::str, "password"}
 {
 
-    yang_name = "lsp-accept-password"; yang_parent_name = "lsp-accept-passwords"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-accept-password"; yang_parent_name = "lsp-accept-passwords"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::~LspAcceptPassword()
@@ -14894,6 +15384,7 @@ Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::~LspAcceptPass
 
 bool Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| password.is_set;
 }
@@ -14908,7 +15399,8 @@ bool Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::has_opera
 std::string Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-accept-password" <<"[level='" <<level <<"']";
+    path_buffer << "lsp-accept-password";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -14971,9 +15463,11 @@ bool Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::has_leaf_
 }
 
 Isis::Instances::Instance::LspMtus::LspMtus()
+    :
+    lsp_mtu(this, {"level"})
 {
 
-    yang_name = "lsp-mtus"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-mtus"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspMtus::~LspMtus()
@@ -14982,7 +15476,8 @@ Isis::Instances::Instance::LspMtus::~LspMtus()
 
 bool Isis::Instances::Instance::LspMtus::has_data() const
 {
-    for (std::size_t index=0; index<lsp_mtu.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_mtu.len(); index++)
     {
         if(lsp_mtu[index]->has_data())
             return true;
@@ -14992,7 +15487,7 @@ bool Isis::Instances::Instance::LspMtus::has_data() const
 
 bool Isis::Instances::Instance::LspMtus::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_mtu.size(); index++)
+    for (std::size_t index=0; index<lsp_mtu.len(); index++)
     {
         if(lsp_mtu[index]->has_operation())
             return true;
@@ -15022,7 +15517,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::LspMtus::get_child_by_name(co
     {
         auto c = std::make_shared<Isis::Instances::Instance::LspMtus::LspMtu>();
         c->parent = this;
-        lsp_mtu.push_back(c);
+        lsp_mtu.append(c);
         return c;
     }
 
@@ -15034,7 +15529,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspMtu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_mtu)
+    for (auto c : lsp_mtu.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15066,7 +15561,7 @@ Isis::Instances::Instance::LspMtus::LspMtu::LspMtu()
     mtu{YType::uint32, "mtu"}
 {
 
-    yang_name = "lsp-mtu"; yang_parent_name = "lsp-mtus"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-mtu"; yang_parent_name = "lsp-mtus"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspMtus::LspMtu::~LspMtu()
@@ -15075,6 +15570,7 @@ Isis::Instances::Instance::LspMtus::LspMtu::~LspMtu()
 
 bool Isis::Instances::Instance::LspMtus::LspMtu::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| mtu.is_set;
 }
@@ -15089,7 +15585,8 @@ bool Isis::Instances::Instance::LspMtus::LspMtu::has_operation() const
 std::string Isis::Instances::Instance::LspMtus::LspMtu::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-mtu" <<"[level='" <<level <<"']";
+    path_buffer << "lsp-mtu";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -15159,7 +15656,7 @@ Isis::Instances::Instance::Nsf::Nsf()
     lifetime{YType::uint32, "lifetime"}
 {
 
-    yang_name = "nsf"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nsf"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Nsf::~Nsf()
@@ -15168,6 +15665,7 @@ Isis::Instances::Instance::Nsf::~Nsf()
 
 bool Isis::Instances::Instance::Nsf::has_data() const
 {
+    if (is_presence_container) return true;
     return flavor.is_set
 	|| interface_timer.is_set
 	|| max_interface_timer_expiry.is_set
@@ -15271,9 +15769,11 @@ bool Isis::Instances::Instance::Nsf::has_leaf_or_child_of_name(const std::string
 }
 
 Isis::Instances::Instance::LinkGroups::LinkGroups()
+    :
+    link_group(this, {"link_group_name"})
 {
 
-    yang_name = "link-groups"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-groups"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LinkGroups::~LinkGroups()
@@ -15282,7 +15782,8 @@ Isis::Instances::Instance::LinkGroups::~LinkGroups()
 
 bool Isis::Instances::Instance::LinkGroups::has_data() const
 {
-    for (std::size_t index=0; index<link_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link_group.len(); index++)
     {
         if(link_group[index]->has_data())
             return true;
@@ -15292,7 +15793,7 @@ bool Isis::Instances::Instance::LinkGroups::has_data() const
 
 bool Isis::Instances::Instance::LinkGroups::has_operation() const
 {
-    for (std::size_t index=0; index<link_group.size(); index++)
+    for (std::size_t index=0; index<link_group.len(); index++)
     {
         if(link_group[index]->has_operation())
             return true;
@@ -15322,7 +15823,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::LinkGroups::get_child_by_name
     {
         auto c = std::make_shared<Isis::Instances::Instance::LinkGroups::LinkGroup>();
         c->parent = this;
-        link_group.push_back(c);
+        link_group.append(c);
         return c;
     }
 
@@ -15334,7 +15835,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LinkGr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link_group)
+    for (auto c : link_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15368,7 +15869,7 @@ Isis::Instances::Instance::LinkGroups::LinkGroup::LinkGroup()
     minimum_members{YType::uint32, "minimum-members"}
 {
 
-    yang_name = "link-group"; yang_parent_name = "link-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-group"; yang_parent_name = "link-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LinkGroups::LinkGroup::~LinkGroup()
@@ -15377,6 +15878,7 @@ Isis::Instances::Instance::LinkGroups::LinkGroup::~LinkGroup()
 
 bool Isis::Instances::Instance::LinkGroups::LinkGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return link_group_name.is_set
 	|| metric_offset.is_set
 	|| revert_members.is_set
@@ -15395,7 +15897,8 @@ bool Isis::Instances::Instance::LinkGroups::LinkGroup::has_operation() const
 std::string Isis::Instances::Instance::LinkGroups::LinkGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-group" <<"[link-group-name='" <<link_group_name <<"']";
+    path_buffer << "link-group";
+    ADD_KEY_TOKEN(link_group_name, "link-group-name");
     return path_buffer.str();
 }
 
@@ -15480,9 +15983,11 @@ bool Isis::Instances::Instance::LinkGroups::LinkGroup::has_leaf_or_child_of_name
 }
 
 Isis::Instances::Instance::LspCheckIntervals::LspCheckIntervals()
+    :
+    lsp_check_interval(this, {"level"})
 {
 
-    yang_name = "lsp-check-intervals"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-check-intervals"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspCheckIntervals::~LspCheckIntervals()
@@ -15491,7 +15996,8 @@ Isis::Instances::Instance::LspCheckIntervals::~LspCheckIntervals()
 
 bool Isis::Instances::Instance::LspCheckIntervals::has_data() const
 {
-    for (std::size_t index=0; index<lsp_check_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_check_interval.len(); index++)
     {
         if(lsp_check_interval[index]->has_data())
             return true;
@@ -15501,7 +16007,7 @@ bool Isis::Instances::Instance::LspCheckIntervals::has_data() const
 
 bool Isis::Instances::Instance::LspCheckIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_check_interval.size(); index++)
+    for (std::size_t index=0; index<lsp_check_interval.len(); index++)
     {
         if(lsp_check_interval[index]->has_operation())
             return true;
@@ -15531,7 +16037,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::LspCheckIntervals::get_child_
     {
         auto c = std::make_shared<Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval>();
         c->parent = this;
-        lsp_check_interval.push_back(c);
+        lsp_check_interval.append(c);
         return c;
     }
 
@@ -15543,7 +16049,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspChe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_check_interval)
+    for (auto c : lsp_check_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15575,7 +16081,7 @@ Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::LspCheckInterval
     interval{YType::uint32, "interval"}
 {
 
-    yang_name = "lsp-check-interval"; yang_parent_name = "lsp-check-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-check-interval"; yang_parent_name = "lsp-check-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::~LspCheckInterval()
@@ -15584,6 +16090,7 @@ Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::~LspCheckInterva
 
 bool Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| interval.is_set;
 }
@@ -15598,7 +16105,8 @@ bool Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::has_operati
 std::string Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-check-interval" <<"[level='" <<level <<"']";
+    path_buffer << "lsp-check-interval";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -15661,9 +16169,11 @@ bool Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::has_leaf_or
 }
 
 Isis::Instances::Instance::LspPasswords::LspPasswords()
+    :
+    lsp_password(this, {"level"})
 {
 
-    yang_name = "lsp-passwords"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-passwords"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspPasswords::~LspPasswords()
@@ -15672,7 +16182,8 @@ Isis::Instances::Instance::LspPasswords::~LspPasswords()
 
 bool Isis::Instances::Instance::LspPasswords::has_data() const
 {
-    for (std::size_t index=0; index<lsp_password.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_password.len(); index++)
     {
         if(lsp_password[index]->has_data())
             return true;
@@ -15682,7 +16193,7 @@ bool Isis::Instances::Instance::LspPasswords::has_data() const
 
 bool Isis::Instances::Instance::LspPasswords::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_password.size(); index++)
+    for (std::size_t index=0; index<lsp_password.len(); index++)
     {
         if(lsp_password[index]->has_operation())
             return true;
@@ -15712,7 +16223,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::LspPasswords::get_child_by_na
     {
         auto c = std::make_shared<Isis::Instances::Instance::LspPasswords::LspPassword>();
         c->parent = this;
-        lsp_password.push_back(c);
+        lsp_password.append(c);
         return c;
     }
 
@@ -15724,7 +16235,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspPas
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_password)
+    for (auto c : lsp_password.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15759,7 +16270,7 @@ Isis::Instances::Instance::LspPasswords::LspPassword::LspPassword()
     password{YType::str, "password"}
 {
 
-    yang_name = "lsp-password"; yang_parent_name = "lsp-passwords"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-password"; yang_parent_name = "lsp-passwords"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspPasswords::LspPassword::~LspPassword()
@@ -15768,6 +16279,7 @@ Isis::Instances::Instance::LspPasswords::LspPassword::~LspPassword()
 
 bool Isis::Instances::Instance::LspPasswords::LspPassword::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| algorithm.is_set
 	|| failure_mode.is_set
@@ -15788,7 +16300,8 @@ bool Isis::Instances::Instance::LspPasswords::LspPassword::has_operation() const
 std::string Isis::Instances::Instance::LspPasswords::LspPassword::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-password" <<"[level='" <<level <<"']";
+    path_buffer << "lsp-password";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -15884,9 +16397,11 @@ bool Isis::Instances::Instance::LspPasswords::LspPassword::has_leaf_or_child_of_
 }
 
 Isis::Instances::Instance::Nets::Nets()
+    :
+    net(this, {"net_name"})
 {
 
-    yang_name = "nets"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nets"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Nets::~Nets()
@@ -15895,7 +16410,8 @@ Isis::Instances::Instance::Nets::~Nets()
 
 bool Isis::Instances::Instance::Nets::has_data() const
 {
-    for (std::size_t index=0; index<net.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<net.len(); index++)
     {
         if(net[index]->has_data())
             return true;
@@ -15905,7 +16421,7 @@ bool Isis::Instances::Instance::Nets::has_data() const
 
 bool Isis::Instances::Instance::Nets::has_operation() const
 {
-    for (std::size_t index=0; index<net.size(); index++)
+    for (std::size_t index=0; index<net.len(); index++)
     {
         if(net[index]->has_operation())
             return true;
@@ -15935,7 +16451,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Nets::get_child_by_name(const
     {
         auto c = std::make_shared<Isis::Instances::Instance::Nets::Net>();
         c->parent = this;
-        net.push_back(c);
+        net.append(c);
         return c;
     }
 
@@ -15947,7 +16463,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Nets::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : net)
+    for (auto c : net.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15978,7 +16494,7 @@ Isis::Instances::Instance::Nets::Net::Net()
     net_name{YType::str, "net-name"}
 {
 
-    yang_name = "net"; yang_parent_name = "nets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "net"; yang_parent_name = "nets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Nets::Net::~Net()
@@ -15987,6 +16503,7 @@ Isis::Instances::Instance::Nets::Net::~Net()
 
 bool Isis::Instances::Instance::Nets::Net::has_data() const
 {
+    if (is_presence_container) return true;
     return net_name.is_set;
 }
 
@@ -15999,7 +16516,8 @@ bool Isis::Instances::Instance::Nets::Net::has_operation() const
 std::string Isis::Instances::Instance::Nets::Net::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "net" <<"[net-name='" <<net_name <<"']";
+    path_buffer << "net";
+    ADD_KEY_TOKEN(net_name, "net-name");
     return path_buffer.str();
 }
 
@@ -16051,9 +16569,11 @@ bool Isis::Instances::Instance::Nets::Net::has_leaf_or_child_of_name(const std::
 }
 
 Isis::Instances::Instance::LspLifetimes::LspLifetimes()
+    :
+    lsp_lifetime(this, {"level"})
 {
 
-    yang_name = "lsp-lifetimes"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-lifetimes"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspLifetimes::~LspLifetimes()
@@ -16062,7 +16582,8 @@ Isis::Instances::Instance::LspLifetimes::~LspLifetimes()
 
 bool Isis::Instances::Instance::LspLifetimes::has_data() const
 {
-    for (std::size_t index=0; index<lsp_lifetime.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_lifetime.len(); index++)
     {
         if(lsp_lifetime[index]->has_data())
             return true;
@@ -16072,7 +16593,7 @@ bool Isis::Instances::Instance::LspLifetimes::has_data() const
 
 bool Isis::Instances::Instance::LspLifetimes::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_lifetime.size(); index++)
+    for (std::size_t index=0; index<lsp_lifetime.len(); index++)
     {
         if(lsp_lifetime[index]->has_operation())
             return true;
@@ -16102,7 +16623,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::LspLifetimes::get_child_by_na
     {
         auto c = std::make_shared<Isis::Instances::Instance::LspLifetimes::LspLifetime>();
         c->parent = this;
-        lsp_lifetime.push_back(c);
+        lsp_lifetime.append(c);
         return c;
     }
 
@@ -16114,7 +16635,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspLif
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_lifetime)
+    for (auto c : lsp_lifetime.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16146,7 +16667,7 @@ Isis::Instances::Instance::LspLifetimes::LspLifetime::LspLifetime()
     lifetime{YType::uint32, "lifetime"}
 {
 
-    yang_name = "lsp-lifetime"; yang_parent_name = "lsp-lifetimes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-lifetime"; yang_parent_name = "lsp-lifetimes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::LspLifetimes::LspLifetime::~LspLifetime()
@@ -16155,6 +16676,7 @@ Isis::Instances::Instance::LspLifetimes::LspLifetime::~LspLifetime()
 
 bool Isis::Instances::Instance::LspLifetimes::LspLifetime::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| lifetime.is_set;
 }
@@ -16169,7 +16691,8 @@ bool Isis::Instances::Instance::LspLifetimes::LspLifetime::has_operation() const
 std::string Isis::Instances::Instance::LspLifetimes::LspLifetime::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-lifetime" <<"[level='" <<level <<"']";
+    path_buffer << "lsp-lifetime";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -16232,9 +16755,11 @@ bool Isis::Instances::Instance::LspLifetimes::LspLifetime::has_leaf_or_child_of_
 }
 
 Isis::Instances::Instance::OverloadBits::OverloadBits()
+    :
+    overload_bit(this, {"level"})
 {
 
-    yang_name = "overload-bits"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "overload-bits"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::OverloadBits::~OverloadBits()
@@ -16243,7 +16768,8 @@ Isis::Instances::Instance::OverloadBits::~OverloadBits()
 
 bool Isis::Instances::Instance::OverloadBits::has_data() const
 {
-    for (std::size_t index=0; index<overload_bit.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<overload_bit.len(); index++)
     {
         if(overload_bit[index]->has_data())
             return true;
@@ -16253,7 +16779,7 @@ bool Isis::Instances::Instance::OverloadBits::has_data() const
 
 bool Isis::Instances::Instance::OverloadBits::has_operation() const
 {
-    for (std::size_t index=0; index<overload_bit.size(); index++)
+    for (std::size_t index=0; index<overload_bit.len(); index++)
     {
         if(overload_bit[index]->has_operation())
             return true;
@@ -16283,7 +16809,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::OverloadBits::get_child_by_na
     {
         auto c = std::make_shared<Isis::Instances::Instance::OverloadBits::OverloadBit>();
         c->parent = this;
-        overload_bit.push_back(c);
+        overload_bit.append(c);
         return c;
     }
 
@@ -16295,7 +16821,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Overlo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : overload_bit)
+    for (auto c : overload_bit.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16330,7 +16856,7 @@ Isis::Instances::Instance::OverloadBits::OverloadBit::OverloadBit()
     inter_level_adv_type{YType::enumeration, "inter-level-adv-type"}
 {
 
-    yang_name = "overload-bit"; yang_parent_name = "overload-bits"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "overload-bit"; yang_parent_name = "overload-bits"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::OverloadBits::OverloadBit::~OverloadBit()
@@ -16339,6 +16865,7 @@ Isis::Instances::Instance::OverloadBits::OverloadBit::~OverloadBit()
 
 bool Isis::Instances::Instance::OverloadBits::OverloadBit::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| overload_bit_mode.is_set
 	|| hippity_period.is_set
@@ -16359,7 +16886,8 @@ bool Isis::Instances::Instance::OverloadBits::OverloadBit::has_operation() const
 std::string Isis::Instances::Instance::OverloadBits::OverloadBit::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "overload-bit" <<"[level='" <<level <<"']";
+    path_buffer << "overload-bit";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -16454,564 +16982,130 @@ bool Isis::Instances::Instance::OverloadBits::OverloadBit::has_leaf_or_child_of_
     return false;
 }
 
-Isis::Instances::Instance::Interfaces::Interfaces()
-{
+const Enum::YLeaf IsisSnpAuth::send_only {0, "send-only"};
+const Enum::YLeaf IsisSnpAuth::full {1, "full"};
 
-    yang_name = "interfaces"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
-}
+const Enum::YLeaf IsisMibMaxAreaAddressMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibMaxAreaAddressMismatchBoolean::true_ {6, "true"};
 
-Isis::Instances::Instance::Interfaces::~Interfaces()
-{
-}
+const Enum::YLeaf IsisMibLspTooLargeToPropagateBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibLspTooLargeToPropagateBoolean::true_ {14, "true"};
 
-bool Isis::Instances::Instance::Interfaces::has_data() const
-{
-    for (std::size_t index=0; index<interface.size(); index++)
-    {
-        if(interface[index]->has_data())
-            return true;
-    }
-    return false;
-}
+const Enum::YLeaf IsisMibSequenceNumberSkipBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibSequenceNumberSkipBoolean::true_ {8, "true"};
 
-bool Isis::Instances::Instance::Interfaces::has_operation() const
-{
-    for (std::size_t index=0; index<interface.size(); index++)
-    {
-        if(interface[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
+const Enum::YLeaf IsisInterfaceFrrTiebreaker::node_protecting {3, "node-protecting"};
+const Enum::YLeaf IsisInterfaceFrrTiebreaker::srlg_disjoint {6, "srlg-disjoint"};
 
-std::string Isis::Instances::Instance::Interfaces::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interfaces";
-    return path_buffer.str();
-}
+const Enum::YLeaf IsisAuthenticationAlgorithm::cleartext {1, "cleartext"};
+const Enum::YLeaf IsisAuthenticationAlgorithm::hmac_md5 {2, "hmac-md5"};
+const Enum::YLeaf IsisAuthenticationAlgorithm::keychain {3, "keychain"};
 
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+const Enum::YLeaf IsisOverloadBitMode::permanently_set {1, "permanently-set"};
+const Enum::YLeaf IsisOverloadBitMode::startup_period {2, "startup-period"};
+const Enum::YLeaf IsisOverloadBitMode::wait_for_bgp {3, "wait-for-bgp"};
 
+const Enum::YLeaf IsisMibRejectedAdjacencyBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibRejectedAdjacencyBoolean::true_ {13, "true"};
 
-    return leaf_name_data;
+const Enum::YLeaf IsisMibCorruptedLspDetectedBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibCorruptedLspDetectedBoolean::true_ {3, "true"};
 
-}
+const Enum::YLeaf IsisAdjCheck::disabled {0, "disabled"};
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface")
-    {
-        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface>();
-        c->parent = this;
-        interface.push_back(c);
-        return c;
-    }
+const Enum::YLeaf IsisispfState::enabled {1, "enabled"};
 
-    return nullptr;
-}
+const Enum::YLeaf IsisfrrLoadSharing::disable {1, "disable"};
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : interface)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Interfaces::Interface::Interface()
-    :
-    interface_name{YType::str, "interface-name"},
-    running{YType::empty, "running"},
-    circuit_type{YType::enumeration, "circuit-type"},
-    point_to_point{YType::empty, "point-to-point"},
-    state{YType::enumeration, "state"},
-    mesh_group{YType::str, "mesh-group"},
-    link_down_fast_detect{YType::empty, "link-down-fast-detect"}
-    	,
-    lsp_retransmit_throttle_intervals(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals>())
-	,lsp_retransmit_intervals(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals>())
-	,bfd(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::Bfd>())
-	,priorities(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::Priorities>())
-	,hello_accept_passwords(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords>())
-	,hello_passwords(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPasswords>())
-	,hello_paddings(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPaddings>())
-	,hello_multipliers(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers>())
-	,lsp_fast_flood_thresholds(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds>())
-	,prefix_attribute_n_flag_clears(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears>())
-	,hello_intervals(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloIntervals>())
-	,interface_afs(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs>())
-	,csnp_intervals(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals>())
-	,lsp_intervals(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspIntervals>())
-{
-    lsp_retransmit_throttle_intervals->parent = this;
-    lsp_retransmit_intervals->parent = this;
-    bfd->parent = this;
-    priorities->parent = this;
-    hello_accept_passwords->parent = this;
-    hello_passwords->parent = this;
-    hello_paddings->parent = this;
-    hello_multipliers->parent = this;
-    lsp_fast_flood_thresholds->parent = this;
-    prefix_attribute_n_flag_clears->parent = this;
-    hello_intervals->parent = this;
-    interface_afs->parent = this;
-    csnp_intervals->parent = this;
-    lsp_intervals->parent = this;
-
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Isis::Instances::Instance::Interfaces::Interface::~Interface()
-{
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::has_data() const
-{
-    return interface_name.is_set
-	|| running.is_set
-	|| circuit_type.is_set
-	|| point_to_point.is_set
-	|| state.is_set
-	|| mesh_group.is_set
-	|| link_down_fast_detect.is_set
-	|| (lsp_retransmit_throttle_intervals !=  nullptr && lsp_retransmit_throttle_intervals->has_data())
-	|| (lsp_retransmit_intervals !=  nullptr && lsp_retransmit_intervals->has_data())
-	|| (bfd !=  nullptr && bfd->has_data())
-	|| (priorities !=  nullptr && priorities->has_data())
-	|| (hello_accept_passwords !=  nullptr && hello_accept_passwords->has_data())
-	|| (hello_passwords !=  nullptr && hello_passwords->has_data())
-	|| (hello_paddings !=  nullptr && hello_paddings->has_data())
-	|| (hello_multipliers !=  nullptr && hello_multipliers->has_data())
-	|| (lsp_fast_flood_thresholds !=  nullptr && lsp_fast_flood_thresholds->has_data())
-	|| (prefix_attribute_n_flag_clears !=  nullptr && prefix_attribute_n_flag_clears->has_data())
-	|| (hello_intervals !=  nullptr && hello_intervals->has_data())
-	|| (interface_afs !=  nullptr && interface_afs->has_data())
-	|| (csnp_intervals !=  nullptr && csnp_intervals->has_data())
-	|| (lsp_intervals !=  nullptr && lsp_intervals->has_data());
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(running.yfilter)
-	|| ydk::is_set(circuit_type.yfilter)
-	|| ydk::is_set(point_to_point.yfilter)
-	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(mesh_group.yfilter)
-	|| ydk::is_set(link_down_fast_detect.yfilter)
-	|| (lsp_retransmit_throttle_intervals !=  nullptr && lsp_retransmit_throttle_intervals->has_operation())
-	|| (lsp_retransmit_intervals !=  nullptr && lsp_retransmit_intervals->has_operation())
-	|| (bfd !=  nullptr && bfd->has_operation())
-	|| (priorities !=  nullptr && priorities->has_operation())
-	|| (hello_accept_passwords !=  nullptr && hello_accept_passwords->has_operation())
-	|| (hello_passwords !=  nullptr && hello_passwords->has_operation())
-	|| (hello_paddings !=  nullptr && hello_paddings->has_operation())
-	|| (hello_multipliers !=  nullptr && hello_multipliers->has_operation())
-	|| (lsp_fast_flood_thresholds !=  nullptr && lsp_fast_flood_thresholds->has_operation())
-	|| (prefix_attribute_n_flag_clears !=  nullptr && prefix_attribute_n_flag_clears->has_operation())
-	|| (hello_intervals !=  nullptr && hello_intervals->has_operation())
-	|| (interface_afs !=  nullptr && interface_afs->has_operation())
-	|| (csnp_intervals !=  nullptr && csnp_intervals->has_operation())
-	|| (lsp_intervals !=  nullptr && lsp_intervals->has_operation());
-}
-
-std::string Isis::Instances::Instance::Interfaces::Interface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
-    if (circuit_type.is_set || is_set(circuit_type.yfilter)) leaf_name_data.push_back(circuit_type.get_name_leafdata());
-    if (point_to_point.is_set || is_set(point_to_point.yfilter)) leaf_name_data.push_back(point_to_point.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (mesh_group.is_set || is_set(mesh_group.yfilter)) leaf_name_data.push_back(mesh_group.get_name_leafdata());
-    if (link_down_fast_detect.is_set || is_set(link_down_fast_detect.yfilter)) leaf_name_data.push_back(link_down_fast_detect.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lsp-retransmit-throttle-intervals")
-    {
-        if(lsp_retransmit_throttle_intervals == nullptr)
-        {
-            lsp_retransmit_throttle_intervals = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals>();
-        }
-        return lsp_retransmit_throttle_intervals;
-    }
-
-    if(child_yang_name == "lsp-retransmit-intervals")
-    {
-        if(lsp_retransmit_intervals == nullptr)
-        {
-            lsp_retransmit_intervals = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals>();
-        }
-        return lsp_retransmit_intervals;
-    }
-
-    if(child_yang_name == "bfd")
-    {
-        if(bfd == nullptr)
-        {
-            bfd = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::Bfd>();
-        }
-        return bfd;
-    }
-
-    if(child_yang_name == "priorities")
-    {
-        if(priorities == nullptr)
-        {
-            priorities = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::Priorities>();
-        }
-        return priorities;
-    }
-
-    if(child_yang_name == "hello-accept-passwords")
-    {
-        if(hello_accept_passwords == nullptr)
-        {
-            hello_accept_passwords = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords>();
-        }
-        return hello_accept_passwords;
-    }
-
-    if(child_yang_name == "hello-passwords")
-    {
-        if(hello_passwords == nullptr)
-        {
-            hello_passwords = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPasswords>();
-        }
-        return hello_passwords;
-    }
-
-    if(child_yang_name == "hello-paddings")
-    {
-        if(hello_paddings == nullptr)
-        {
-            hello_paddings = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPaddings>();
-        }
-        return hello_paddings;
-    }
-
-    if(child_yang_name == "hello-multipliers")
-    {
-        if(hello_multipliers == nullptr)
-        {
-            hello_multipliers = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers>();
-        }
-        return hello_multipliers;
-    }
-
-    if(child_yang_name == "lsp-fast-flood-thresholds")
-    {
-        if(lsp_fast_flood_thresholds == nullptr)
-        {
-            lsp_fast_flood_thresholds = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds>();
-        }
-        return lsp_fast_flood_thresholds;
-    }
-
-    if(child_yang_name == "prefix-attribute-n-flag-clears")
-    {
-        if(prefix_attribute_n_flag_clears == nullptr)
-        {
-            prefix_attribute_n_flag_clears = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears>();
-        }
-        return prefix_attribute_n_flag_clears;
-    }
-
-    if(child_yang_name == "hello-intervals")
-    {
-        if(hello_intervals == nullptr)
-        {
-            hello_intervals = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloIntervals>();
-        }
-        return hello_intervals;
-    }
-
-    if(child_yang_name == "interface-afs")
-    {
-        if(interface_afs == nullptr)
-        {
-            interface_afs = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs>();
-        }
-        return interface_afs;
-    }
-
-    if(child_yang_name == "csnp-intervals")
-    {
-        if(csnp_intervals == nullptr)
-        {
-            csnp_intervals = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals>();
-        }
-        return csnp_intervals;
-    }
-
-    if(child_yang_name == "lsp-intervals")
-    {
-        if(lsp_intervals == nullptr)
-        {
-            lsp_intervals = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspIntervals>();
-        }
-        return lsp_intervals;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(lsp_retransmit_throttle_intervals != nullptr)
-    {
-        children["lsp-retransmit-throttle-intervals"] = lsp_retransmit_throttle_intervals;
-    }
-
-    if(lsp_retransmit_intervals != nullptr)
-    {
-        children["lsp-retransmit-intervals"] = lsp_retransmit_intervals;
-    }
-
-    if(bfd != nullptr)
-    {
-        children["bfd"] = bfd;
-    }
-
-    if(priorities != nullptr)
-    {
-        children["priorities"] = priorities;
-    }
-
-    if(hello_accept_passwords != nullptr)
-    {
-        children["hello-accept-passwords"] = hello_accept_passwords;
-    }
-
-    if(hello_passwords != nullptr)
-    {
-        children["hello-passwords"] = hello_passwords;
-    }
-
-    if(hello_paddings != nullptr)
-    {
-        children["hello-paddings"] = hello_paddings;
-    }
-
-    if(hello_multipliers != nullptr)
-    {
-        children["hello-multipliers"] = hello_multipliers;
-    }
-
-    if(lsp_fast_flood_thresholds != nullptr)
-    {
-        children["lsp-fast-flood-thresholds"] = lsp_fast_flood_thresholds;
-    }
-
-    if(prefix_attribute_n_flag_clears != nullptr)
-    {
-        children["prefix-attribute-n-flag-clears"] = prefix_attribute_n_flag_clears;
-    }
-
-    if(hello_intervals != nullptr)
-    {
-        children["hello-intervals"] = hello_intervals;
-    }
-
-    if(interface_afs != nullptr)
-    {
-        children["interface-afs"] = interface_afs;
-    }
-
-    if(csnp_intervals != nullptr)
-    {
-        children["csnp-intervals"] = csnp_intervals;
-    }
-
-    if(lsp_intervals != nullptr)
-    {
-        children["lsp-intervals"] = lsp_intervals;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "running")
-    {
-        running = value;
-        running.value_namespace = name_space;
-        running.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "circuit-type")
-    {
-        circuit_type = value;
-        circuit_type.value_namespace = name_space;
-        circuit_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "point-to-point")
-    {
-        point_to_point = value;
-        point_to_point.value_namespace = name_space;
-        point_to_point.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mesh-group")
-    {
-        mesh_group = value;
-        mesh_group.value_namespace = name_space;
-        mesh_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-down-fast-detect")
-    {
-        link_down_fast_detect = value;
-        link_down_fast_detect.value_namespace = name_space;
-        link_down_fast_detect.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "running")
-    {
-        running.yfilter = yfilter;
-    }
-    if(value_path == "circuit-type")
-    {
-        circuit_type.yfilter = yfilter;
-    }
-    if(value_path == "point-to-point")
-    {
-        point_to_point.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-    if(value_path == "mesh-group")
-    {
-        mesh_group.yfilter = yfilter;
-    }
-    if(value_path == "link-down-fast-detect")
-    {
-        link_down_fast_detect.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsp-retransmit-throttle-intervals" || name == "lsp-retransmit-intervals" || name == "bfd" || name == "priorities" || name == "hello-accept-passwords" || name == "hello-passwords" || name == "hello-paddings" || name == "hello-multipliers" || name == "lsp-fast-flood-thresholds" || name == "prefix-attribute-n-flag-clears" || name == "hello-intervals" || name == "interface-afs" || name == "csnp-intervals" || name == "lsp-intervals" || name == "interface-name" || name == "running" || name == "circuit-type" || name == "point-to-point" || name == "state" || name == "mesh-group" || name == "link-down-fast-detect")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf NflagClear::disable {0, "disable"};
-const Enum::YLeaf NflagClear::enable {1, "enable"};
-
-const Enum::YLeaf IsisAdvTypeInterLevel::inter_level {1, "inter-level"};
+const Enum::YLeaf IsisMibAuthenticationFailureBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAuthenticationFailureBoolean::true_ {10, "true"};
 
 const Enum::YLeaf IsisInterfaceState::shutdown {0, "shutdown"};
 const Enum::YLeaf IsisInterfaceState::suppressed {1, "suppressed"};
 const Enum::YLeaf IsisInterfaceState::passive {2, "passive"};
 const Enum::YLeaf IsisInterfaceState::enabled_active {3, "enabled-active"};
 
-const Enum::YLeaf Isisfrr::per_link {1, "per-link"};
-const Enum::YLeaf Isisfrr::per_prefix {2, "per-prefix"};
+const Enum::YLeaf IsisTracingMode::off {0, "off"};
+const Enum::YLeaf IsisTracingMode::basic {1, "basic"};
+const Enum::YLeaf IsisTracingMode::enhanced {2, "enhanced"};
 
-const Enum::YLeaf IsisfrrLoadSharing::disable {1, "disable"};
+const Enum::YLeaf IsisMetricStyle::old_metric_style {0, "old-metric-style"};
+const Enum::YLeaf IsisMetricStyle::new_metric_style {1, "new-metric-style"};
+const Enum::YLeaf IsisMetricStyle::both_metric_style {2, "both-metric-style"};
+const Enum::YLeaf IsisMetricStyle::old_metric_style_transition {3, "old-metric-style-transition"};
+const Enum::YLeaf IsisMetricStyle::new_metric_style_transition {4, "new-metric-style-transition"};
 
-const Enum::YLeaf IsisAuthenticationFailureMode::drop {0, "drop"};
-const Enum::YLeaf IsisAuthenticationFailureMode::send_only {1, "send-only"};
+const Enum::YLeaf IsisNsfFlavor::cisco_proprietary_nsf {1, "cisco-proprietary-nsf"};
+const Enum::YLeaf IsisNsfFlavor::ietf_standard_nsf {2, "ietf-standard-nsf"};
+
+const Enum::YLeaf IsisInterfaceAfState::disable {0, "disable"};
+
+const Enum::YLeaf IsissidProtected::disable {0, "disable"};
+const Enum::YLeaf IsissidProtected::enable {1, "enable"};
 
 const Enum::YLeaf IsisApplyWeight::ecmp_only {1, "ecmp-only"};
 const Enum::YLeaf IsisApplyWeight::ucmp_only {2, "ucmp-only"};
 const Enum::YLeaf IsisApplyWeight::ecmp_only_bandwidth {3, "ecmp-only-bandwidth"};
 
-const Enum::YLeaf IsisLabelPreference::ldp {0, "ldp"};
-const Enum::YLeaf IsisLabelPreference::segment_routing {1, "segment-routing"};
+const Enum::YLeaf IsisPrefixPriority::critical_priority {0, "critical-priority"};
+const Enum::YLeaf IsisPrefixPriority::high_priority {1, "high-priority"};
+const Enum::YLeaf IsisPrefixPriority::medium_priority {2, "medium-priority"};
 
-const Enum::YLeaf IsisMetricStyleTransition::disabled {0, "disabled"};
-const Enum::YLeaf IsisMetricStyleTransition::enabled {1, "enabled"};
+const Enum::YLeaf IsisMibAuthenticationTypeFailureBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAuthenticationTypeFailureBoolean::true_ {9, "true"};
 
-const Enum::YLeaf Isissid1::index_ {1, "index"};
-const Enum::YLeaf Isissid1::absolute {2, "absolute"};
+const Enum::YLeaf IsisMicroLoopAvoidance::not_set {0, "not-set"};
+const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_all {1, "micro-loop-avoidance-all"};
+const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_protected {2, "micro-loop-avoidance-protected"};
+const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_segement_routing {3, "micro-loop-avoidance-segement-routing"};
+
+const Enum::YLeaf IsisAdvTypeExternal::external {1, "external"};
+
+const Enum::YLeaf IsisRemoteLfa::remote_lfa_none {0, "remote-lfa-none"};
+const Enum::YLeaf IsisRemoteLfa::remote_lfa_tunnel_ldp {1, "remote-lfa-tunnel-ldp"};
+
+const Enum::YLeaf IsisMibAreaMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAreaMismatchBoolean::true_ {12, "true"};
+
+const Enum::YLeaf IsisMibAttemptToExceedMaxSequenceBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAttemptToExceedMaxSequenceBoolean::true_ {4, "true"};
+
+const Enum::YLeaf IsisConfigurableLevels::level1 {1, "level1"};
+const Enum::YLeaf IsisConfigurableLevels::level2 {2, "level2"};
+const Enum::YLeaf IsisConfigurableLevels::level1_and2 {3, "level1-and2"};
+
+const Enum::YLeaf IsisfrrTiebreaker::downstream {0, "downstream"};
+const Enum::YLeaf IsisfrrTiebreaker::lc_disjoint {1, "lc-disjoint"};
+const Enum::YLeaf IsisfrrTiebreaker::lowest_backup_metric {2, "lowest-backup-metric"};
+const Enum::YLeaf IsisfrrTiebreaker::node_protecting {3, "node-protecting"};
+const Enum::YLeaf IsisfrrTiebreaker::primary_path {4, "primary-path"};
+const Enum::YLeaf IsisfrrTiebreaker::secondary_path {5, "secondary-path"};
+const Enum::YLeaf IsisfrrTiebreaker::srlg_disjoint {6, "srlg-disjoint"};
+
+const Enum::YLeaf IsisMibManualAddressDropsBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibManualAddressDropsBoolean::true_ {2, "true"};
+
+const Enum::YLeaf IsisexplicitNullFlag::disable {0, "disable"};
+const Enum::YLeaf IsisexplicitNullFlag::enable {1, "enable"};
 
 const Enum::YLeaf IsisMetric::internal {0, "internal"};
 const Enum::YLeaf IsisMetric::external {1, "external"};
 const Enum::YLeaf IsisMetric::rib_internal {2, "rib-internal"};
 const Enum::YLeaf IsisMetric::rib_external {3, "rib-external"};
 
-const Enum::YLeaf IsisAttachedBit::area {0, "area"};
-const Enum::YLeaf IsisAttachedBit::on {1, "on"};
-const Enum::YLeaf IsisAttachedBit::off {2, "off"};
-
-const Enum::YLeaf IsisConfigurableLevels::level1 {1, "level1"};
-const Enum::YLeaf IsisConfigurableLevels::level2 {2, "level2"};
-const Enum::YLeaf IsisConfigurableLevels::level1_and2 {3, "level1-and2"};
-
 const Enum::YLeaf IsisHelloPadding::never {0, "never"};
 const Enum::YLeaf IsisHelloPadding::sometimes {1, "sometimes"};
 
-const Enum::YLeaf IsisSnpAuth::send_only {0, "send-only"};
-const Enum::YLeaf IsisSnpAuth::full {1, "full"};
+const Enum::YLeaf IsisMibDatabaseOverFlowBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibDatabaseOverFlowBoolean::true_ {1, "true"};
 
-const Enum::YLeaf IsisInterfaceAfState::disable {0, "disable"};
+const Enum::YLeaf IsisAdvTypeInterLevel::inter_level {1, "inter-level"};
 
-const Enum::YLeaf IsisexplicitNullFlag::disable {0, "disable"};
-const Enum::YLeaf IsisexplicitNullFlag::enable {1, "enable"};
+const Enum::YLeaf IsisAuthenticationFailureMode::drop {0, "drop"};
+const Enum::YLeaf IsisAuthenticationFailureMode::send_only {1, "send-only"};
+
+const Enum::YLeaf IsisMibProtocolsSupportedMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibProtocolsSupportedMismatchBoolean::true_ {16, "true"};
 
 const Enum::YLeaf IsisRedistProto::connected {0, "connected"};
 const Enum::YLeaf IsisRedistProto::static_ {1, "static"};
@@ -17025,122 +17119,49 @@ const Enum::YLeaf IsisRedistProto::subscriber {8, "subscriber"};
 const Enum::YLeaf IsisRedistProto::application {9, "application"};
 const Enum::YLeaf IsisRedistProto::mobile {10, "mobile"};
 
-const Enum::YLeaf IsisTracingMode::off {0, "off"};
-const Enum::YLeaf IsisTracingMode::basic {1, "basic"};
-const Enum::YLeaf IsisTracingMode::enhanced {2, "enhanced"};
-
-const Enum::YLeaf IsisPrefixPriority::critical_priority {0, "critical-priority"};
-const Enum::YLeaf IsisPrefixPriority::high_priority {1, "high-priority"};
-const Enum::YLeaf IsisPrefixPriority::medium_priority {2, "medium-priority"};
-
-const Enum::YLeaf IsisAuthenticationAlgorithm::cleartext {1, "cleartext"};
-const Enum::YLeaf IsisAuthenticationAlgorithm::hmac_md5 {2, "hmac-md5"};
-const Enum::YLeaf IsisAuthenticationAlgorithm::keychain {3, "keychain"};
-
-const Enum::YLeaf IsisispfState::enabled {1, "enabled"};
-
-const Enum::YLeaf IsissidProtected::disable {0, "disable"};
-const Enum::YLeaf IsissidProtected::enable {1, "enable"};
-
-const Enum::YLeaf IsisAdvTypeExternal::external {1, "external"};
+const Enum::YLeaf Isissid1::index_ {1, "index"};
+const Enum::YLeaf Isissid1::absolute {2, "absolute"};
 
 const Enum::YLeaf IsisphpFlag::enable {0, "enable"};
 const Enum::YLeaf IsisphpFlag::disable {1, "disable"};
 
-const Enum::YLeaf IsisMetricStyle::old_metric_style {0, "old-metric-style"};
-const Enum::YLeaf IsisMetricStyle::new_metric_style {1, "new-metric-style"};
-const Enum::YLeaf IsisMetricStyle::both_metric_style {2, "both-metric-style"};
-
-const Enum::YLeaf IsisRemoteLfa::remote_lfa_none {0, "remote-lfa-none"};
-const Enum::YLeaf IsisRemoteLfa::remote_lfa_tunnel_ldp {1, "remote-lfa-tunnel-ldp"};
-
-const Enum::YLeaf IsisMicroLoopAvoidance::not_set {0, "not-set"};
-const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_all {1, "micro-loop-avoidance-all"};
-const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_protected {2, "micro-loop-avoidance-protected"};
-const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_segement_routing {3, "micro-loop-avoidance-segement-routing"};
-
-const Enum::YLeaf IsisAdjCheck::disabled {0, "disabled"};
-
-const Enum::YLeaf IsisInterfaceFrrTiebreaker::node_protecting {3, "node-protecting"};
-const Enum::YLeaf IsisInterfaceFrrTiebreaker::srlg_disjoint {6, "srlg-disjoint"};
-
-const Enum::YLeaf IsisOverloadBitMode::permanently_set {1, "permanently-set"};
-const Enum::YLeaf IsisOverloadBitMode::startup_period {2, "startup-period"};
-const Enum::YLeaf IsisOverloadBitMode::wait_for_bgp {3, "wait-for-bgp"};
-
-const Enum::YLeaf IsisNsfFlavor::cisco_proprietary_nsf {1, "cisco-proprietary-nsf"};
-const Enum::YLeaf IsisNsfFlavor::ietf_standard_nsf {2, "ietf-standard-nsf"};
-
-const Enum::YLeaf IsisfrrTiebreaker::downstream {0, "downstream"};
-const Enum::YLeaf IsisfrrTiebreaker::lc_disjoint {1, "lc-disjoint"};
-const Enum::YLeaf IsisfrrTiebreaker::lowest_backup_metric {2, "lowest-backup-metric"};
-const Enum::YLeaf IsisfrrTiebreaker::node_protecting {3, "node-protecting"};
-const Enum::YLeaf IsisfrrTiebreaker::primary_path {4, "primary-path"};
-const Enum::YLeaf IsisfrrTiebreaker::secondary_path {5, "secondary-path"};
-const Enum::YLeaf IsisfrrTiebreaker::srlg_disjoint {6, "srlg-disjoint"};
-
-const Enum::YLeaf IsisMibManualAddressDropsBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibManualAddressDropsBoolean::true_ {2, "true"};
-
-const Enum::YLeaf IsisMibAuthenticationTypeFailureBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAuthenticationTypeFailureBoolean::true_ {9, "true"};
-
-const Enum::YLeaf IsisMibMaxAreaAddressMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibMaxAreaAddressMismatchBoolean::true_ {6, "true"};
-
-const Enum::YLeaf IsisMibSequenceNumberSkipBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibSequenceNumberSkipBoolean::true_ {8, "true"};
-
-const Enum::YLeaf IsisMibDatabaseOverFlowBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibDatabaseOverFlowBoolean::true_ {1, "true"};
+const Enum::YLeaf IsisMibIdLengthMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibIdLengthMismatchBoolean::true_ {5, "true"};
 
 const Enum::YLeaf IsisMibAllBoolean::false_ {0, "false"};
 const Enum::YLeaf IsisMibAllBoolean::true_ {19, "true"};
 
-const Enum::YLeaf IsisMibLspTooLargeToPropagateBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibLspTooLargeToPropagateBoolean::true_ {14, "true"};
+const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::true_ {15, "true"};
 
-const Enum::YLeaf IsisMibOwnLspPurgeBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibOwnLspPurgeBoolean::true_ {7, "true"};
+const Enum::YLeaf Isisfrr::per_link {1, "per-link"};
+const Enum::YLeaf Isisfrr::per_prefix {2, "per-prefix"};
+
+const Enum::YLeaf IsisAttachedBit::area {0, "area"};
+const Enum::YLeaf IsisAttachedBit::on {1, "on"};
+const Enum::YLeaf IsisAttachedBit::off {2, "off"};
+
+const Enum::YLeaf NflagClear::disable {0, "disable"};
+const Enum::YLeaf NflagClear::enable {1, "enable"};
+
+const Enum::YLeaf IsisLabelPreference::ldp {0, "ldp"};
+const Enum::YLeaf IsisLabelPreference::segment_routing {1, "segment-routing"};
 
 const Enum::YLeaf IsisMibAdjacencyChangeBoolean::false_ {0, "false"};
 const Enum::YLeaf IsisMibAdjacencyChangeBoolean::true_ {17, "true"};
 
-const Enum::YLeaf IsisMibProtocolsSupportedMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibProtocolsSupportedMismatchBoolean::true_ {16, "true"};
-
-const Enum::YLeaf IsisMibAttemptToExceedMaxSequenceBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAttemptToExceedMaxSequenceBoolean::true_ {4, "true"};
-
-const Enum::YLeaf IsisMibIdLengthMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibIdLengthMismatchBoolean::true_ {5, "true"};
-
-const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::true_ {15, "true"};
-
-const Enum::YLeaf IsisMibAreaMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAreaMismatchBoolean::true_ {12, "true"};
-
-const Enum::YLeaf IsisMibCorruptedLspDetectedBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibCorruptedLspDetectedBoolean::true_ {3, "true"};
-
 const Enum::YLeaf IsisMibLspErrorDetectedBoolean::false_ {0, "false"};
 const Enum::YLeaf IsisMibLspErrorDetectedBoolean::true_ {18, "true"};
 
-const Enum::YLeaf IsisMibRejectedAdjacencyBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibRejectedAdjacencyBoolean::true_ {13, "true"};
+const Enum::YLeaf IsisMibOwnLspPurgeBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibOwnLspPurgeBoolean::true_ {7, "true"};
 
 const Enum::YLeaf IsisMibVersionSkewBoolean::false_ {0, "false"};
 const Enum::YLeaf IsisMibVersionSkewBoolean::true_ {11, "true"};
 
-const Enum::YLeaf IsisMibAuthenticationFailureBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAuthenticationFailureBoolean::true_ {10, "true"};
-
 const Enum::YLeaf Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric_::maximum {16777215, "maximum"};
 
 const Enum::YLeaf Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::Metric_::maximum {16777215, "maximum"};
-
-const Enum::YLeaf Isis::Instances::Instance::Interfaces::Interface::MeshGroup::blocked {0, "blocked"};
 
 
 }

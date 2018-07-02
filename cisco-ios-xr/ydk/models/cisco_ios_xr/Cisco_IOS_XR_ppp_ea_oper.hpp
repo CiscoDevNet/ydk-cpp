@@ -57,7 +57,7 @@ class Pppea::Nodes : public ydk::Entity
 
         class Node; //type: Pppea::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ea_oper::Pppea::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Pppea::Nodes
 
@@ -105,7 +105,7 @@ class Pppea::Nodes::Node::EaInterfaceNames : public ydk::Entity
 
         class EaInterfaceName; //type: Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ea_oper::Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName> > ea_interface_name;
+        ydk::YList ea_interface_name;
         
 }; // Pppea::Nodes::Node::EaInterfaceNames
 

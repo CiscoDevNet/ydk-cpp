@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_telemetry_model_driven_oper {
 TelemetryModelDriven::TelemetryModelDriven()
     :
     destinations(std::make_shared<TelemetryModelDriven::Destinations>())
-	,subscriptions(std::make_shared<TelemetryModelDriven::Subscriptions>())
-	,sensor_groups(std::make_shared<TelemetryModelDriven::SensorGroups>())
+    , subscriptions(std::make_shared<TelemetryModelDriven::Subscriptions>())
+    , sensor_groups(std::make_shared<TelemetryModelDriven::SensorGroups>())
 {
     destinations->parent = this;
     subscriptions->parent = this;
     sensor_groups->parent = this;
 
-    yang_name = "telemetry-model-driven"; yang_parent_name = "Cisco-IOS-XR-telemetry-model-driven-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "telemetry-model-driven"; yang_parent_name = "Cisco-IOS-XR-telemetry-model-driven-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 TelemetryModelDriven::~TelemetryModelDriven()
@@ -30,6 +30,7 @@ TelemetryModelDriven::~TelemetryModelDriven()
 
 bool TelemetryModelDriven::has_data() const
 {
+    if (is_presence_container) return true;
     return (destinations !=  nullptr && destinations->has_data())
 	|| (subscriptions !=  nullptr && subscriptions->has_data())
 	|| (sensor_groups !=  nullptr && sensor_groups->has_data());
@@ -154,9 +155,11 @@ bool TelemetryModelDriven::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 TelemetryModelDriven::Destinations::Destinations()
+    :
+    destination(this, {"destination_id"})
 {
 
-    yang_name = "destinations"; yang_parent_name = "telemetry-model-driven"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "destinations"; yang_parent_name = "telemetry-model-driven"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetryModelDriven::Destinations::~Destinations()
@@ -165,7 +168,8 @@ TelemetryModelDriven::Destinations::~Destinations()
 
 bool TelemetryModelDriven::Destinations::has_data() const
 {
-    for (std::size_t index=0; index<destination.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<destination.len(); index++)
     {
         if(destination[index]->has_data())
             return true;
@@ -175,7 +179,7 @@ bool TelemetryModelDriven::Destinations::has_data() const
 
 bool TelemetryModelDriven::Destinations::has_operation() const
 {
-    for (std::size_t index=0; index<destination.size(); index++)
+    for (std::size_t index=0; index<destination.len(); index++)
     {
         if(destination[index]->has_operation())
             return true;
@@ -212,7 +216,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Destinations::get_child_by_name(co
     {
         auto c = std::make_shared<TelemetryModelDriven::Destinations::Destination>();
         c->parent = this;
-        destination.push_back(c);
+        destination.append(c);
         return c;
     }
 
@@ -224,7 +228,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : destination)
+    for (auto c : destination.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -255,9 +259,11 @@ TelemetryModelDriven::Destinations::Destination::Destination()
     destination_id{YType::str, "destination-id"},
     id{YType::str, "id"},
     configured{YType::uint32, "configured"}
+        ,
+    destination(this, {})
 {
 
-    yang_name = "destination"; yang_parent_name = "destinations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "destination"; yang_parent_name = "destinations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetryModelDriven::Destinations::Destination::~Destination()
@@ -266,7 +272,8 @@ TelemetryModelDriven::Destinations::Destination::~Destination()
 
 bool TelemetryModelDriven::Destinations::Destination::has_data() const
 {
-    for (std::size_t index=0; index<destination.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<destination.len(); index++)
     {
         if(destination[index]->has_data())
             return true;
@@ -278,7 +285,7 @@ bool TelemetryModelDriven::Destinations::Destination::has_data() const
 
 bool TelemetryModelDriven::Destinations::Destination::has_operation() const
 {
-    for (std::size_t index=0; index<destination.size(); index++)
+    for (std::size_t index=0; index<destination.len(); index++)
     {
         if(destination[index]->has_operation())
             return true;
@@ -299,7 +306,8 @@ std::string TelemetryModelDriven::Destinations::Destination::get_absolute_path()
 std::string TelemetryModelDriven::Destinations::Destination::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "destination" <<"[destination-id='" <<destination_id <<"']";
+    path_buffer << "destination";
+    ADD_KEY_TOKEN(destination_id, "destination-id");
     return path_buffer.str();
 }
 
@@ -321,7 +329,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Destinations::Destination::get_chi
     {
         auto c = std::make_shared<TelemetryModelDriven::Destinations::Destination::Destination_>();
         c->parent = this;
-        destination.push_back(c);
+        destination.append(c);
         return c;
     }
 
@@ -333,7 +341,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : destination)
+    for (auto c : destination.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -392,10 +400,11 @@ bool TelemetryModelDriven::Destinations::Destination::has_leaf_or_child_of_name(
 TelemetryModelDriven::Destinations::Destination::Destination_::Destination_()
     :
     destination(std::make_shared<TelemetryModelDriven::Destinations::Destination::Destination_::Destination__>())
+    , collection_group(this, {})
 {
     destination->parent = this;
 
-    yang_name = "destination"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination_::~Destination_()
@@ -404,7 +413,8 @@ TelemetryModelDriven::Destinations::Destination::Destination_::~Destination_()
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::has_data() const
 {
-    for (std::size_t index=0; index<collection_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<collection_group.len(); index++)
     {
         if(collection_group[index]->has_data())
             return true;
@@ -414,7 +424,7 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::has_data() c
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::has_operation() const
 {
-    for (std::size_t index=0; index<collection_group.size(); index++)
+    for (std::size_t index=0; index<collection_group.len(); index++)
     {
         if(collection_group[index]->has_operation())
             return true;
@@ -454,7 +464,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Destinations::Destination::Destina
     {
         auto c = std::make_shared<TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup>();
         c->parent = this;
-        collection_group.push_back(c);
+        collection_group.append(c);
         return c;
     }
 
@@ -471,7 +481,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     }
 
     count = 0;
-    for (auto const & c : collection_group)
+    for (auto c : collection_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -515,12 +525,12 @@ TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::De
     last_collection_time{YType::uint64, "last-collection-time"},
     dscp{YType::uint32, "dscp"},
     sub_id{YType::uint64, "sub-id"}
-    	,
+        ,
     dest_ip_address(std::make_shared<TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress>())
 {
     dest_ip_address->parent = this;
 
-    yang_name = "destination"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::~Destination__()
@@ -529,6 +539,7 @@ TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::~D
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : sub_id.getYLeafs())
     {
         if(leaf.is_set)
@@ -818,7 +829,7 @@ TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::De
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "dest-ip-address"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dest-ip-address"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress::~DestIpAddress()
@@ -827,6 +838,7 @@ TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::De
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -934,9 +946,12 @@ TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::
     total_not_ready{YType::uint32, "total-not-ready"},
     total_send_errors{YType::uint32, "total-send-errors"},
     total_send_drops{YType::uint32, "total-send-drops"}
+        ,
+    collection_path(this, {})
+    , internal_collection_group(this, {})
 {
 
-    yang_name = "collection-group"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "collection-group"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::~CollectionGroup()
@@ -945,12 +960,13 @@ TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::has_data() const
 {
-    for (std::size_t index=0; index<collection_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<collection_path.len(); index++)
     {
         if(collection_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<internal_collection_group.size(); index++)
+    for (std::size_t index=0; index<internal_collection_group.len(); index++)
     {
         if(internal_collection_group[index]->has_data())
             return true;
@@ -975,12 +991,12 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGr
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::has_operation() const
 {
-    for (std::size_t index=0; index<collection_path.size(); index++)
+    for (std::size_t index=0; index<collection_path.len(); index++)
     {
         if(collection_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<internal_collection_group.size(); index++)
+    for (std::size_t index=0; index<internal_collection_group.len(); index++)
     {
         if(internal_collection_group[index]->has_operation())
             return true;
@@ -1042,7 +1058,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Destinations::Destination::Destina
     {
         auto c = std::make_shared<TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath>();
         c->parent = this;
-        collection_path.push_back(c);
+        collection_path.append(c);
         return c;
     }
 
@@ -1050,7 +1066,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Destinations::Destination::Destina
     {
         auto c = std::make_shared<TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup>();
         c->parent = this;
-        internal_collection_group.push_back(c);
+        internal_collection_group.append(c);
         return c;
     }
 
@@ -1062,7 +1078,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : collection_path)
+    for (auto c : collection_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1071,7 +1087,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     }
 
     count = 0;
-    for (auto const & c : internal_collection_group)
+    for (auto c : internal_collection_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1264,7 +1280,7 @@ TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::
     status_str{YType::str, "status-str"}
 {
 
-    yang_name = "collection-path"; yang_parent_name = "collection-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "collection-path"; yang_parent_name = "collection-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath::~CollectionPath()
@@ -1273,6 +1289,7 @@ TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| state.is_set
 	|| status_str.is_set;
@@ -1393,7 +1410,7 @@ TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "internal-collection-group"; yang_parent_name = "collection-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "internal-collection-group"; yang_parent_name = "collection-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup::~InternalCollectionGroup()
@@ -1402,6 +1419,7 @@ TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| cadence.is_set
 	|| total_get_count.is_set
@@ -1804,9 +1822,11 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGr
 }
 
 TelemetryModelDriven::Subscriptions::Subscriptions()
+    :
+    subscription(this, {"subscription_id"})
 {
 
-    yang_name = "subscriptions"; yang_parent_name = "telemetry-model-driven"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "subscriptions"; yang_parent_name = "telemetry-model-driven"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetryModelDriven::Subscriptions::~Subscriptions()
@@ -1815,7 +1835,8 @@ TelemetryModelDriven::Subscriptions::~Subscriptions()
 
 bool TelemetryModelDriven::Subscriptions::has_data() const
 {
-    for (std::size_t index=0; index<subscription.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<subscription.len(); index++)
     {
         if(subscription[index]->has_data())
             return true;
@@ -1825,7 +1846,7 @@ bool TelemetryModelDriven::Subscriptions::has_data() const
 
 bool TelemetryModelDriven::Subscriptions::has_operation() const
 {
-    for (std::size_t index=0; index<subscription.size(); index++)
+    for (std::size_t index=0; index<subscription.len(); index++)
     {
         if(subscription[index]->has_operation())
             return true;
@@ -1862,7 +1883,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Subscriptions::get_child_by_name(c
     {
         auto c = std::make_shared<TelemetryModelDriven::Subscriptions::Subscription>();
         c->parent = this;
-        subscription.push_back(c);
+        subscription.append(c);
         return c;
     }
 
@@ -1874,7 +1895,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : subscription)
+    for (auto c : subscription.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1903,12 +1924,13 @@ bool TelemetryModelDriven::Subscriptions::has_leaf_or_child_of_name(const std::s
 TelemetryModelDriven::Subscriptions::Subscription::Subscription()
     :
     subscription_id{YType::str, "subscription-id"}
-    	,
+        ,
     subscription(std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::Subscription_>())
+    , collection_group(this, {})
 {
     subscription->parent = this;
 
-    yang_name = "subscription"; yang_parent_name = "subscriptions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "subscription"; yang_parent_name = "subscriptions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::~Subscription()
@@ -1917,7 +1939,8 @@ TelemetryModelDriven::Subscriptions::Subscription::~Subscription()
 
 bool TelemetryModelDriven::Subscriptions::Subscription::has_data() const
 {
-    for (std::size_t index=0; index<collection_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<collection_group.len(); index++)
     {
         if(collection_group[index]->has_data())
             return true;
@@ -1928,7 +1951,7 @@ bool TelemetryModelDriven::Subscriptions::Subscription::has_data() const
 
 bool TelemetryModelDriven::Subscriptions::Subscription::has_operation() const
 {
-    for (std::size_t index=0; index<collection_group.size(); index++)
+    for (std::size_t index=0; index<collection_group.len(); index++)
     {
         if(collection_group[index]->has_operation())
             return true;
@@ -1948,7 +1971,8 @@ std::string TelemetryModelDriven::Subscriptions::Subscription::get_absolute_path
 std::string TelemetryModelDriven::Subscriptions::Subscription::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "subscription" <<"[subscription-id='" <<subscription_id <<"']";
+    path_buffer << "subscription";
+    ADD_KEY_TOKEN(subscription_id, "subscription-id");
     return path_buffer.str();
 }
 
@@ -1977,7 +2001,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Subscriptions::Subscription::get_c
     {
         auto c = std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup>();
         c->parent = this;
-        collection_group.push_back(c);
+        collection_group.append(c);
         return c;
     }
 
@@ -1994,7 +2018,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     }
 
     count = 0;
-    for (auto const & c : collection_group)
+    for (auto c : collection_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2035,12 +2059,14 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::Subscription_(
     id{YType::str, "id"},
     state{YType::enumeration, "state"},
     source_qos_marking{YType::enumeration, "source-qos-marking"}
-    	,
+        ,
     source_interface(std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface>())
+    , sensor_profile(this, {})
+    , destination_grp(this, {})
 {
     source_interface->parent = this;
 
-    yang_name = "subscription"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscription"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::~Subscription_()
@@ -2049,12 +2075,13 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::~Subscription_
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::has_data() const
 {
-    for (std::size_t index=0; index<sensor_profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor_profile.len(); index++)
     {
         if(sensor_profile[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<destination_grp.size(); index++)
+    for (std::size_t index=0; index<destination_grp.len(); index++)
     {
         if(destination_grp[index]->has_data())
             return true;
@@ -2067,12 +2094,12 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::has_data(
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::has_operation() const
 {
-    for (std::size_t index=0; index<sensor_profile.size(); index++)
+    for (std::size_t index=0; index<sensor_profile.len(); index++)
     {
         if(sensor_profile[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<destination_grp.size(); index++)
+    for (std::size_t index=0; index<destination_grp.len(); index++)
     {
         if(destination_grp[index]->has_operation())
             return true;
@@ -2118,7 +2145,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Subscriptions::Subscription::Subsc
     {
         auto c = std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile>();
         c->parent = this;
-        sensor_profile.push_back(c);
+        sensor_profile.append(c);
         return c;
     }
 
@@ -2126,7 +2153,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Subscriptions::Subscription::Subsc
     {
         auto c = std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp>();
         c->parent = this;
-        destination_grp.push_back(c);
+        destination_grp.append(c);
         return c;
     }
 
@@ -2143,7 +2170,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     }
 
     count = 0;
-    for (auto const & c : sensor_profile)
+    for (auto c : sensor_profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2152,7 +2179,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     }
 
     count = 0;
-    for (auto const & c : destination_grp)
+    for (auto c : destination_grp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2217,7 +2244,7 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterfac
     vrf_id{YType::uint32, "vrf-id"}
 {
 
-    yang_name = "source-interface"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-interface"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::~SourceInterface()
@@ -2226,6 +2253,7 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterfac
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| state.is_set
 	|| ipv4_address.is_set
@@ -2346,12 +2374,12 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile:
     sample_interval{YType::uint32, "sample-interval"},
     heartbeat_interval{YType::uint32, "heartbeat-interval"},
     suppress_redundant{YType::boolean, "suppress-redundant"}
-    	,
+        ,
     sensor_group(std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup>())
 {
     sensor_group->parent = this;
 
-    yang_name = "sensor-profile"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-profile"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::~SensorProfile()
@@ -2360,6 +2388,7 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile:
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_interval.is_set
 	|| heartbeat_interval.is_set
 	|| suppress_redundant.is_set
@@ -2469,9 +2498,11 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile:
     :
     id{YType::str, "id"},
     configured{YType::uint32, "configured"}
+        ,
+    sensor_path(this, {})
 {
 
-    yang_name = "sensor-group"; yang_parent_name = "sensor-profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-group"; yang_parent_name = "sensor-profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::~SensorGroup()
@@ -2480,7 +2511,8 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile:
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::has_data() const
 {
-    for (std::size_t index=0; index<sensor_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor_path.len(); index++)
     {
         if(sensor_path[index]->has_data())
             return true;
@@ -2491,7 +2523,7 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorPro
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::has_operation() const
 {
-    for (std::size_t index=0; index<sensor_path.size(); index++)
+    for (std::size_t index=0; index<sensor_path.len(); index++)
     {
         if(sensor_path[index]->has_operation())
             return true;
@@ -2525,7 +2557,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Subscriptions::Subscription::Subsc
     {
         auto c = std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorPath>();
         c->parent = this;
-        sensor_path.push_back(c);
+        sensor_path.append(c);
         return c;
     }
 
@@ -2537,7 +2569,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor_path)
+    for (auto c : sensor_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2590,7 +2622,7 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile:
     status_str{YType::str, "status-str"}
 {
 
-    yang_name = "sensor-path"; yang_parent_name = "sensor-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-path"; yang_parent_name = "sensor-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorPath::~SensorPath()
@@ -2599,6 +2631,7 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile:
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorPath::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| state.is_set
 	|| status_str.is_set;
@@ -2692,9 +2725,11 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp
     :
     id{YType::str, "id"},
     configured{YType::uint32, "configured"}
+        ,
+    destination(this, {})
 {
 
-    yang_name = "destination-grp"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-grp"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::~DestinationGrp()
@@ -2703,7 +2738,8 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::has_data() const
 {
-    for (std::size_t index=0; index<destination.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<destination.len(); index++)
     {
         if(destination[index]->has_data())
             return true;
@@ -2714,7 +2750,7 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::Destinati
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::has_operation() const
 {
-    for (std::size_t index=0; index<destination.size(); index++)
+    for (std::size_t index=0; index<destination.len(); index++)
     {
         if(destination[index]->has_operation())
             return true;
@@ -2748,7 +2784,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Subscriptions::Subscription::Subsc
     {
         auto c = std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination>();
         c->parent = this;
-        destination.push_back(c);
+        destination.append(c);
         return c;
     }
 
@@ -2760,7 +2796,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : destination)
+    for (auto c : destination.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2824,12 +2860,12 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp
     last_collection_time{YType::uint64, "last-collection-time"},
     dscp{YType::uint32, "dscp"},
     sub_id{YType::uint64, "sub-id"}
-    	,
+        ,
     dest_ip_address(std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress>())
 {
     dest_ip_address->parent = this;
 
-    yang_name = "destination"; yang_parent_name = "destination-grp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "destination-grp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::~Destination()
@@ -2838,6 +2874,7 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : sub_id.getYLeafs())
     {
         if(leaf.is_set)
@@ -3127,7 +3164,7 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "dest-ip-address"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dest-ip-address"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress::~DestIpAddress()
@@ -3136,6 +3173,7 @@ TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3243,9 +3281,12 @@ TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionGr
     total_not_ready{YType::uint32, "total-not-ready"},
     total_send_errors{YType::uint32, "total-send-errors"},
     total_send_drops{YType::uint32, "total-send-drops"}
+        ,
+    collection_path(this, {})
+    , internal_collection_group(this, {})
 {
 
-    yang_name = "collection-group"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "collection-group"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::~CollectionGroup()
@@ -3254,12 +3295,13 @@ TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::~CollectionG
 
 bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::has_data() const
 {
-    for (std::size_t index=0; index<collection_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<collection_path.len(); index++)
     {
         if(collection_path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<internal_collection_group.size(); index++)
+    for (std::size_t index=0; index<internal_collection_group.len(); index++)
     {
         if(internal_collection_group[index]->has_data())
             return true;
@@ -3284,12 +3326,12 @@ bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::has_dat
 
 bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::has_operation() const
 {
-    for (std::size_t index=0; index<collection_path.size(); index++)
+    for (std::size_t index=0; index<collection_path.len(); index++)
     {
         if(collection_path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<internal_collection_group.size(); index++)
+    for (std::size_t index=0; index<internal_collection_group.len(); index++)
     {
         if(internal_collection_group[index]->has_operation())
             return true;
@@ -3351,7 +3393,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Subscriptions::Subscription::Colle
     {
         auto c = std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath>();
         c->parent = this;
-        collection_path.push_back(c);
+        collection_path.append(c);
         return c;
     }
 
@@ -3359,7 +3401,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::Subscriptions::Subscription::Colle
     {
         auto c = std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup>();
         c->parent = this;
-        internal_collection_group.push_back(c);
+        internal_collection_group.append(c);
         return c;
     }
 
@@ -3371,7 +3413,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : collection_path)
+    for (auto c : collection_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3380,7 +3422,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     }
 
     count = 0;
-    for (auto const & c : internal_collection_group)
+    for (auto c : internal_collection_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3573,7 +3615,7 @@ TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPa
     status_str{YType::str, "status-str"}
 {
 
-    yang_name = "collection-path"; yang_parent_name = "collection-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "collection-path"; yang_parent_name = "collection-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath::~CollectionPath()
@@ -3582,6 +3624,7 @@ TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPa
 
 bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| state.is_set
 	|| status_str.is_set;
@@ -3702,7 +3745,7 @@ TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalColl
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "internal-collection-group"; yang_parent_name = "collection-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "internal-collection-group"; yang_parent_name = "collection-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup::~InternalCollectionGroup()
@@ -3711,6 +3754,7 @@ TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalColl
 
 bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| cadence.is_set
 	|| total_get_count.is_set
@@ -4113,9 +4157,11 @@ bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::Interna
 }
 
 TelemetryModelDriven::SensorGroups::SensorGroups()
+    :
+    sensor_group(this, {"sensor_group_id"})
 {
 
-    yang_name = "sensor-groups"; yang_parent_name = "telemetry-model-driven"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sensor-groups"; yang_parent_name = "telemetry-model-driven"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetryModelDriven::SensorGroups::~SensorGroups()
@@ -4124,7 +4170,8 @@ TelemetryModelDriven::SensorGroups::~SensorGroups()
 
 bool TelemetryModelDriven::SensorGroups::has_data() const
 {
-    for (std::size_t index=0; index<sensor_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor_group.len(); index++)
     {
         if(sensor_group[index]->has_data())
             return true;
@@ -4134,7 +4181,7 @@ bool TelemetryModelDriven::SensorGroups::has_data() const
 
 bool TelemetryModelDriven::SensorGroups::has_operation() const
 {
-    for (std::size_t index=0; index<sensor_group.size(); index++)
+    for (std::size_t index=0; index<sensor_group.len(); index++)
     {
         if(sensor_group[index]->has_operation())
             return true;
@@ -4171,7 +4218,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::SensorGroups::get_child_by_name(co
     {
         auto c = std::make_shared<TelemetryModelDriven::SensorGroups::SensorGroup>();
         c->parent = this;
-        sensor_group.push_back(c);
+        sensor_group.append(c);
         return c;
     }
 
@@ -4183,7 +4230,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::SensorGroup
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor_group)
+    for (auto c : sensor_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4214,9 +4261,11 @@ TelemetryModelDriven::SensorGroups::SensorGroup::SensorGroup()
     sensor_group_id{YType::str, "sensor-group-id"},
     id{YType::str, "id"},
     configured{YType::uint32, "configured"}
+        ,
+    sensor_path(this, {})
 {
 
-    yang_name = "sensor-group"; yang_parent_name = "sensor-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sensor-group"; yang_parent_name = "sensor-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetryModelDriven::SensorGroups::SensorGroup::~SensorGroup()
@@ -4225,7 +4274,8 @@ TelemetryModelDriven::SensorGroups::SensorGroup::~SensorGroup()
 
 bool TelemetryModelDriven::SensorGroups::SensorGroup::has_data() const
 {
-    for (std::size_t index=0; index<sensor_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor_path.len(); index++)
     {
         if(sensor_path[index]->has_data())
             return true;
@@ -4237,7 +4287,7 @@ bool TelemetryModelDriven::SensorGroups::SensorGroup::has_data() const
 
 bool TelemetryModelDriven::SensorGroups::SensorGroup::has_operation() const
 {
-    for (std::size_t index=0; index<sensor_path.size(); index++)
+    for (std::size_t index=0; index<sensor_path.len(); index++)
     {
         if(sensor_path[index]->has_operation())
             return true;
@@ -4258,7 +4308,8 @@ std::string TelemetryModelDriven::SensorGroups::SensorGroup::get_absolute_path()
 std::string TelemetryModelDriven::SensorGroups::SensorGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor-group" <<"[sensor-group-id='" <<sensor_group_id <<"']";
+    path_buffer << "sensor-group";
+    ADD_KEY_TOKEN(sensor_group_id, "sensor-group-id");
     return path_buffer.str();
 }
 
@@ -4280,7 +4331,7 @@ std::shared_ptr<Entity> TelemetryModelDriven::SensorGroups::SensorGroup::get_chi
     {
         auto c = std::make_shared<TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath>();
         c->parent = this;
-        sensor_path.push_back(c);
+        sensor_path.append(c);
         return c;
     }
 
@@ -4292,7 +4343,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::SensorGroup
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor_path)
+    for (auto c : sensor_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4355,7 +4406,7 @@ TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::SensorPath()
     status_str{YType::str, "status-str"}
 {
 
-    yang_name = "sensor-path"; yang_parent_name = "sensor-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-path"; yang_parent_name = "sensor-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::~SensorPath()
@@ -4364,6 +4415,7 @@ TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::~SensorPath()
 
 bool TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| state.is_set
 	|| status_str.is_set;
@@ -4453,6 +4505,31 @@ bool TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::has_leaf_or_ch
     return false;
 }
 
+const Enum::YLeaf MdtTransportEnum::not_set {0, "not-set"};
+const Enum::YLeaf MdtTransportEnum::grpc {1, "grpc"};
+const Enum::YLeaf MdtTransportEnum::tcp {2, "tcp"};
+const Enum::YLeaf MdtTransportEnum::udp {3, "udp"};
+const Enum::YLeaf MdtTransportEnum::dialin {6, "dialin"};
+
+const Enum::YLeaf MdtInternalPathStatus::active {0, "active"};
+const Enum::YLeaf MdtInternalPathStatus::internal_err {1, "internal-err"};
+const Enum::YLeaf MdtInternalPathStatus::plugin_active {2, "plugin-active"};
+const Enum::YLeaf MdtInternalPathStatus::plugin_not_initialized {3, "plugin-not-initialized"};
+const Enum::YLeaf MdtInternalPathStatus::plugin_invalid_cadence {4, "plugin-invalid-cadence"};
+const Enum::YLeaf MdtInternalPathStatus::plugin_err {5, "plugin-err"};
+const Enum::YLeaf MdtInternalPathStatus::filter_err {6, "filter-err"};
+const Enum::YLeaf MdtInternalPathStatus::paused {7, "paused"};
+const Enum::YLeaf MdtInternalPathStatus::event_ing_active {8, "event-ing-active"};
+const Enum::YLeaf MdtInternalPathStatus::event_ing_not_active {9, "event-ing-not-active"};
+const Enum::YLeaf MdtInternalPathStatus::event_ing_err {10, "event-ing-err"};
+
+const Enum::YLeaf MdtIp::ipv4 {1, "ipv4"};
+const Enum::YLeaf MdtIp::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf MdtSubsStateEnum::not_active {0, "not-active"};
+const Enum::YLeaf MdtSubsStateEnum::active {1, "active"};
+const Enum::YLeaf MdtSubsStateEnum::paused {2, "paused"};
+
 const Enum::YLeaf MdtSourceQosMarking::dscp_default {0, "dscp-default"};
 const Enum::YLeaf MdtSourceQosMarking::dscp_cs1 {8, "dscp-cs1"};
 const Enum::YLeaf MdtSourceQosMarking::dscp_af11 {10, "dscp-af11"};
@@ -4475,22 +4552,6 @@ const Enum::YLeaf MdtSourceQosMarking::dscp_ef {46, "dscp-ef"};
 const Enum::YLeaf MdtSourceQosMarking::dscp_cs6 {48, "dscp-cs6"};
 const Enum::YLeaf MdtSourceQosMarking::dscp_cs7 {56, "dscp-cs7"};
 
-const Enum::YLeaf MdtSubsStateEnum::not_active {0, "not-active"};
-const Enum::YLeaf MdtSubsStateEnum::active {1, "active"};
-const Enum::YLeaf MdtSubsStateEnum::paused {2, "paused"};
-
-const Enum::YLeaf MdtInternalPathStatus::active {0, "active"};
-const Enum::YLeaf MdtInternalPathStatus::internal_err {1, "internal-err"};
-const Enum::YLeaf MdtInternalPathStatus::plugin_active {2, "plugin-active"};
-const Enum::YLeaf MdtInternalPathStatus::plugin_not_initialized {3, "plugin-not-initialized"};
-const Enum::YLeaf MdtInternalPathStatus::plugin_invalid_cadence {4, "plugin-invalid-cadence"};
-const Enum::YLeaf MdtInternalPathStatus::plugin_err {5, "plugin-err"};
-const Enum::YLeaf MdtInternalPathStatus::filter_err {6, "filter-err"};
-const Enum::YLeaf MdtInternalPathStatus::paused {7, "paused"};
-const Enum::YLeaf MdtInternalPathStatus::event_ing_active {8, "event-ing-active"};
-const Enum::YLeaf MdtInternalPathStatus::event_ing_not_active {9, "event-ing-not-active"};
-const Enum::YLeaf MdtInternalPathStatus::event_ing_err {10, "event-ing-err"};
-
 const Enum::YLeaf MdtDestStateEnum::dest_not_active {0, "dest-not-active"};
 const Enum::YLeaf MdtDestStateEnum::dest_active {1, "dest-active"};
 const Enum::YLeaf MdtDestStateEnum::dest_asking_pause {2, "dest-asking-pause"};
@@ -4498,19 +4559,10 @@ const Enum::YLeaf MdtDestStateEnum::dest_paused {3, "dest-paused"};
 const Enum::YLeaf MdtDestStateEnum::dest_resuming {4, "dest-resuming"};
 const Enum::YLeaf MdtDestStateEnum::dest_channel_not_found {5, "dest-channel-not-found"};
 
-const Enum::YLeaf MdtTransportEnum::not_set {0, "not-set"};
-const Enum::YLeaf MdtTransportEnum::grpc {1, "grpc"};
-const Enum::YLeaf MdtTransportEnum::tcp {2, "tcp"};
-const Enum::YLeaf MdtTransportEnum::udp {3, "udp"};
-const Enum::YLeaf MdtTransportEnum::dialin {6, "dialin"};
-
 const Enum::YLeaf MdtEncodingEnum::not_set {0, "not-set"};
 const Enum::YLeaf MdtEncodingEnum::gpb {2, "gpb"};
 const Enum::YLeaf MdtEncodingEnum::self_describing_gpb {3, "self-describing-gpb"};
 const Enum::YLeaf MdtEncodingEnum::json {4, "json"};
-
-const Enum::YLeaf MdtIp::ipv4 {1, "ipv4"};
-const Enum::YLeaf MdtIp::ipv6 {2, "ipv6"};
 
 
 }

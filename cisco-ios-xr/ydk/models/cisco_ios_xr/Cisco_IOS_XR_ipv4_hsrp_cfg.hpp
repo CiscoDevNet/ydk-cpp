@@ -59,7 +59,7 @@ class Hsrp::Interfaces : public ydk::Entity
 
         class Interface; //type: Hsrp::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Hsrp::Interfaces
 
@@ -164,7 +164,7 @@ class Hsrp::Interfaces::Interface::Ipv6::Version2::Groups : public ydk::Entity
 
         class Group; //type: Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Hsrp::Interfaces::Interface::Ipv6::Version2::Groups
 
@@ -187,7 +187,7 @@ class Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group : public ydk::E
 
         ydk::YLeaf group_number; //type: uint32
         ydk::YLeaf priority; //type: uint32
-        ydk::YLeaf preempt; //type: int32
+        ydk::YLeaf preempt; //type: uint32
         ydk::YLeaf session_name; //type: string
         ydk::YLeaf virtual_mac_address; //type: string
         class Bfd; //type: Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Bfd
@@ -247,7 +247,7 @@ class Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfa
 
         class TrackedInterface; //type: Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::TrackedInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::TrackedInterface> > tracked_interface;
+        ydk::YList tracked_interface;
         
 }; // Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces
 
@@ -292,7 +292,7 @@ class Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects
 
         class TrackedObject; //type: Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::TrackedObject
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::TrackedObject> > tracked_object;
+        ydk::YList tracked_object;
         
 }; // Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects
 
@@ -385,7 +385,7 @@ class Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addr
 
         class GlobalIpv6Address; //type: Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses::GlobalIpv6Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses::GlobalIpv6Address> > global_ipv6_address;
+        ydk::YList global_ipv6_address;
         
 }; // Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses
 
@@ -429,7 +429,7 @@ class Hsrp::Interfaces::Interface::Ipv6::SlaveGroups : public ydk::Entity
 
         class SlaveGroup; //type: Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup> > slave_group;
+        ydk::YList slave_group;
         
 }; // Hsrp::Interfaces::Interface::Ipv6::SlaveGroups
 
@@ -502,7 +502,7 @@ class Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addr
 
         class GlobalIpv6Address; //type: Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses::GlobalIpv6Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses::GlobalIpv6Address> > global_ipv6_address;
+        ydk::YList global_ipv6_address;
         
 }; // Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses
 
@@ -617,7 +617,7 @@ class Hsrp::Interfaces::Interface::Ipv4::SlaveGroups : public ydk::Entity
 
         class SlaveGroup; //type: Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup> > slave_group;
+        ydk::YList slave_group;
         
 }; // Hsrp::Interfaces::Interface::Ipv4::SlaveGroups
 
@@ -667,7 +667,7 @@ class Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4A
 
         class SecondaryIpv4Address; //type: Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Addresses::SecondaryIpv4Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Addresses::SecondaryIpv4Address> > secondary_ipv4_address;
+        ydk::YList secondary_ipv4_address;
         
 }; // Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Addresses
 
@@ -734,7 +734,7 @@ class Hsrp::Interfaces::Interface::Ipv4::Version1::Groups : public ydk::Entity
 
         class Group; //type: Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Hsrp::Interfaces::Interface::Ipv4::Version1::Groups
 
@@ -759,7 +759,7 @@ class Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group : public ydk::E
         ydk::YLeaf authentication; //type: string
         ydk::YLeaf session_name; //type: string
         ydk::YLeaf priority; //type: uint32
-        ydk::YLeaf preempt; //type: int32
+        ydk::YLeaf preempt; //type: uint32
         ydk::YLeaf virtual_mac_address; //type: string
         class TrackedInterfaces; //type: Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces
         class Bfd; //type: Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Bfd
@@ -796,7 +796,7 @@ class Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfa
 
         class TrackedInterface; //type: Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::TrackedInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::TrackedInterface> > tracked_interface;
+        ydk::YList tracked_interface;
         
 }; // Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces
 
@@ -863,7 +863,7 @@ class Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects
 
         class TrackedObject; //type: Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::TrackedObject
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::TrackedObject> > tracked_object;
+        ydk::YList tracked_object;
         
 }; // Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects
 
@@ -956,7 +956,7 @@ class Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4A
 
         class SecondaryIpv4Address; //type: Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Address> > secondary_ipv4_address;
+        ydk::YList secondary_ipv4_address;
         
 }; // Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses
 
@@ -1023,7 +1023,7 @@ class Hsrp::Interfaces::Interface::Ipv4::Version2::Groups : public ydk::Entity
 
         class Group; //type: Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Hsrp::Interfaces::Interface::Ipv4::Version2::Groups
 
@@ -1045,7 +1045,7 @@ class Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf group_number; //type: uint32
-        ydk::YLeaf preempt; //type: int32
+        ydk::YLeaf preempt; //type: uint32
         ydk::YLeaf priority; //type: uint32
         ydk::YLeaf virtual_mac_address; //type: string
         ydk::YLeaf session_name; //type: string
@@ -1084,7 +1084,7 @@ class Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4A
 
         class SecondaryIpv4Address; //type: Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Address> > secondary_ipv4_address;
+        ydk::YList secondary_ipv4_address;
         
 }; // Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Addresses
 
@@ -1172,7 +1172,7 @@ class Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects
 
         class TrackedObject; //type: Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::TrackedObject
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::TrackedObject> > tracked_object;
+        ydk::YList tracked_object;
         
 }; // Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects
 
@@ -1217,7 +1217,7 @@ class Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfa
 
         class TrackedInterface; //type: Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::TrackedInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::TrackedInterface> > tracked_interface;
+        ydk::YList tracked_interface;
         
 }; // Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces
 

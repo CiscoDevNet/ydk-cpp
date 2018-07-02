@@ -83,7 +83,7 @@ class ObjectGroup::Port::Objects : public ydk::Entity
 
         class Object; //type: ObjectGroup::Port::Objects::Object
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Port::Objects::Object> > object;
+        ydk::YList object;
         
 }; // ObjectGroup::Port::Objects
 
@@ -137,7 +137,7 @@ class ObjectGroup::Port::Objects::Object::NestedGroups : public ydk::Entity
 
         class NestedGroup; //type: ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup> > nested_group;
+        ydk::YList nested_group;
         
 }; // ObjectGroup::Port::Objects::Object::NestedGroups
 
@@ -182,7 +182,7 @@ class ObjectGroup::Port::Objects::Object::Operators : public ydk::Entity
 
         class Operator; //type: ObjectGroup::Port::Objects::Object::Operators::Operator
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Port::Objects::Object::Operators::Operator> > operator_;
+        ydk::YList operator_;
         
 }; // ObjectGroup::Port::Objects::Object::Operators
 
@@ -229,7 +229,7 @@ class ObjectGroup::Port::Objects::Object::PortRanges : public ydk::Entity
 
         class PortRange; //type: ObjectGroup::Port::Objects::Object::PortRanges::PortRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Port::Objects::Object::PortRanges::PortRange> > port_range;
+        ydk::YList port_range;
         
 }; // ObjectGroup::Port::Objects::Object::PortRanges
 
@@ -276,7 +276,7 @@ class ObjectGroup::Port::Objects::Object::ParentGroups : public ydk::Entity
 
         class ParentGroup; //type: ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup> > parent_group;
+        ydk::YList parent_group;
         
 }; // ObjectGroup::Port::Objects::Object::ParentGroups
 
@@ -372,7 +372,7 @@ class ObjectGroup::Network::Ipv6::Objects : public ydk::Entity
 
         class Object; //type: ObjectGroup::Network::Ipv6::Objects::Object
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Network::Ipv6::Objects::Object> > object;
+        ydk::YList object;
         
 }; // ObjectGroup::Network::Ipv6::Objects
 
@@ -428,7 +428,7 @@ class ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups : public ydk::En
 
         class NestedGroup; //type: ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup> > nested_group;
+        ydk::YList nested_group;
         
 }; // ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups
 
@@ -473,7 +473,7 @@ class ObjectGroup::Network::Ipv6::Objects::Object::Addresses : public ydk::Entit
 
         class Address; //type: ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address> > address;
+        ydk::YList address;
         
 }; // ObjectGroup::Network::Ipv6::Objects::Object::Addresses
 
@@ -520,7 +520,7 @@ class ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges : public ydk::E
 
         class AddressRange; //type: ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange> > address_range;
+        ydk::YList address_range;
         
 }; // ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges
 
@@ -567,7 +567,7 @@ class ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups : public ydk::En
 
         class ParentGroup; //type: ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup> > parent_group;
+        ydk::YList parent_group;
         
 }; // ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups
 
@@ -612,7 +612,7 @@ class ObjectGroup::Network::Ipv6::Objects::Object::Hosts : public ydk::Entity
 
         class Host; //type: ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host> > host;
+        ydk::YList host;
         
 }; // ObjectGroup::Network::Ipv6::Objects::Object::Hosts
 
@@ -682,7 +682,7 @@ class ObjectGroup::Network::Ipv4::Objects : public ydk::Entity
 
         class Object; //type: ObjectGroup::Network::Ipv4::Objects::Object
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Network::Ipv4::Objects::Object> > object;
+        ydk::YList object;
         
 }; // ObjectGroup::Network::Ipv4::Objects
 
@@ -738,7 +738,7 @@ class ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups : public ydk::En
 
         class NestedGroup; //type: ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup> > nested_group;
+        ydk::YList nested_group;
         
 }; // ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups
 
@@ -783,7 +783,7 @@ class ObjectGroup::Network::Ipv4::Objects::Object::Addresses : public ydk::Entit
 
         class Address; //type: ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address> > address;
+        ydk::YList address;
         
 }; // ObjectGroup::Network::Ipv4::Objects::Object::Addresses
 
@@ -830,7 +830,7 @@ class ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges : public ydk::E
 
         class AddressRange; //type: ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange> > address_range;
+        ydk::YList address_range;
         
 }; // ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges
 
@@ -877,7 +877,7 @@ class ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups : public ydk::En
 
         class ParentGroup; //type: ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup> > parent_group;
+        ydk::YList parent_group;
         
 }; // ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups
 
@@ -922,7 +922,7 @@ class ObjectGroup::Network::Ipv4::Objects::Object::Hosts : public ydk::Entity
 
         class Host; //type: ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host> > host;
+        ydk::YList host;
         
 }; // ObjectGroup::Network::Ipv4::Objects::Object::Hosts
 
@@ -948,7 +948,7 @@ class ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host : public ydk::Ent
 
 }; // ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host
 
-class StartPort : public ydk::Enum
+class EndPort : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf echo;
@@ -1038,7 +1038,7 @@ class Port : public ydk::Enum
 
 };
 
-class EndPort : public ydk::Enum
+class StartPort : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf echo;

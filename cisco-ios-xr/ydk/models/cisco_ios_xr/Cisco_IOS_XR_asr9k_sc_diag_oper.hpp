@@ -57,7 +57,7 @@ class Diag::Racks : public ydk::Entity
 
         class Rack; //type: Diag::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_diag_oper::Diag::Racks::Rack> > rack;
+        ydk::YList rack;
         
 }; // Diag::Racks
 
@@ -79,7 +79,7 @@ class Diag::Racks::Rack : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf rack_name; //type: int32
+        ydk::YLeaf rack_name; //type: uint32
         class Slots; //type: Diag::Racks::Rack::Slots
         class Summary; //type: Diag::Racks::Rack::Summary
 
@@ -107,7 +107,7 @@ class Diag::Racks::Rack::Slots : public ydk::Entity
 
         class Slot; //type: Diag::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_diag_oper::Diag::Racks::Rack::Slots::Slot> > slot;
+        ydk::YList slot;
         
 }; // Diag::Racks::Rack::Slots
 
@@ -157,8 +157,8 @@ class Diag::Racks::Rack::Slots::Slot::Detail : public ydk::Entity
         class NodeDetail; //type: Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail
         class SpaDetail; //type: Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_diag_oper::Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail> > node_detail;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_diag_oper::Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail> > spa_detail;
+        ydk::YList node_detail;
+        ydk::YList spa_detail;
         
 }; // Diag::Racks::Rack::Slots::Slot::Detail
 
@@ -247,7 +247,7 @@ class Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision : pub
 
         class HardwareRevision_; //type: Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_diag_oper::Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_> > hardware_revision;
+        ydk::YList hardware_revision;
         
 }; // Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision
 
@@ -518,7 +518,7 @@ class Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision : publ
 
         class HardwareRevision_; //type: Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_diag_oper::Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_> > hardware_revision;
+        ydk::YList hardware_revision;
         
 }; // Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision
 
@@ -687,7 +687,7 @@ class Diag::Racks::Rack::Slots::Slot::Instances : public ydk::Entity
 
         class Instance; //type: Diag::Racks::Rack::Slots::Slot::Instances::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_diag_oper::Diag::Racks::Rack::Slots::Slot::Instances::Instance> > instance;
+        ydk::YList instance;
         
 }; // Diag::Racks::Rack::Slots::Slot::Instances
 
@@ -825,7 +825,7 @@ class Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Hardwar
 
         class HardwareRevision_; //type: Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_diag_oper::Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_> > hardware_revision;
+        ydk::YList hardware_revision;
         
 }; // Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision
 
@@ -1096,7 +1096,7 @@ class Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Hardware
 
         class HardwareRevision_; //type: Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_diag_oper::Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_> > hardware_revision;
+        ydk::YList hardware_revision;
         
 }; // Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision
 
@@ -1265,7 +1265,7 @@ class Diag::Racks::Rack::Summary : public ydk::Entity
 
         class Summary_; //type: Diag::Racks::Rack::Summary::Summary_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_diag_oper::Diag::Racks::Rack::Summary::Summary_> > summary;
+        ydk::YList summary;
         
 }; // Diag::Racks::Rack::Summary
 
@@ -1293,27 +1293,19 @@ class Diag::Racks::Rack::Summary::Summary_ : public ydk::Entity
 
 }; // Diag::Racks::Rack::Summary::Summary_
 
+class DiagProcessor : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mpc8614d;
+
+};
+
 class DiagSlot : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf fan_tray;
         static const ydk::Enum::YLeaf power_module;
         static const ydk::Enum::YLeaf module;
-
-};
-
-class DiagNode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf node;
-        static const ydk::Enum::YLeaf spa;
-
-};
-
-class DiagProcessor : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mpc8614d;
 
 };
 
@@ -1371,6 +1363,14 @@ class NodeState : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf max;
         static const ydk::Enum::YLeaf unknown;
+
+};
+
+class DiagNode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf node;
+        static const ydk::Enum::YLeaf spa;
 
 };
 

@@ -17,7 +17,7 @@ Vty::Vty()
 {
     vty_pools->parent = this;
 
-    yang_name = "vty"; yang_parent_name = "Cisco-IOS-XR-tty-vty-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vty"; yang_parent_name = "Cisco-IOS-XR-tty-vty-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Vty::~Vty()
@@ -26,6 +26,7 @@ Vty::~Vty()
 
 bool Vty::has_data() const
 {
+    if (is_presence_container) return true;
     return (vty_pools !=  nullptr && vty_pools->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Vty::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Vty::VtyPools::VtyPools()
+    :
+    vty_pool(this, {"pool_name"})
 {
 
-    yang_name = "vty-pools"; yang_parent_name = "vty"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vty-pools"; yang_parent_name = "vty"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vty::VtyPools::~VtyPools()
@@ -129,7 +132,8 @@ Vty::VtyPools::~VtyPools()
 
 bool Vty::VtyPools::has_data() const
 {
-    for (std::size_t index=0; index<vty_pool.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vty_pool.len(); index++)
     {
         if(vty_pool[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Vty::VtyPools::has_data() const
 
 bool Vty::VtyPools::has_operation() const
 {
-    for (std::size_t index=0; index<vty_pool.size(); index++)
+    for (std::size_t index=0; index<vty_pool.len(); index++)
     {
         if(vty_pool[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Vty::VtyPools::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Vty::VtyPools::VtyPool>();
         c->parent = this;
-        vty_pool.push_back(c);
+        vty_pool.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vty::VtyPools::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vty_pool)
+    for (auto c : vty_pool.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,13 +221,13 @@ bool Vty::VtyPools::has_leaf_or_child_of_name(const std::string & name) const
 Vty::VtyPools::VtyPool::VtyPool()
     :
     pool_name{YType::str, "pool-name"},
-    first_vty{YType::int32, "first-vty"},
-    last_vty{YType::int32, "last-vty"},
+    first_vty{YType::uint32, "first-vty"},
+    last_vty{YType::uint32, "last-vty"},
     line_template{YType::str, "line-template"},
     none{YType::str, "none"}
 {
 
-    yang_name = "vty-pool"; yang_parent_name = "vty-pools"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vty-pool"; yang_parent_name = "vty-pools"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vty::VtyPools::VtyPool::~VtyPool()
@@ -232,6 +236,7 @@ Vty::VtyPools::VtyPool::~VtyPool()
 
 bool Vty::VtyPools::VtyPool::has_data() const
 {
+    if (is_presence_container) return true;
     return pool_name.is_set
 	|| first_vty.is_set
 	|| last_vty.is_set
@@ -259,7 +264,8 @@ std::string Vty::VtyPools::VtyPool::get_absolute_path() const
 std::string Vty::VtyPools::VtyPool::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vty-pool" <<"[pool-name='" <<pool_name <<"']";
+    path_buffer << "vty-pool";
+    ADD_KEY_TOKEN(pool_name, "pool-name");
     return path_buffer.str();
 }
 

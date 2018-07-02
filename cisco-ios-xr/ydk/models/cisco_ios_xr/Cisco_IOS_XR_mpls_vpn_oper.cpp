@@ -11,42 +11,43 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_vpn_oper {
 
-L3Vpn::L3Vpn()
+L3vpn::L3vpn()
     :
-    invalid_vrfs(std::make_shared<L3Vpn::InvalidVrfs>())
-	,vrfs(std::make_shared<L3Vpn::Vrfs>())
+    invalid_vrfs(std::make_shared<L3vpn::InvalidVrfs>())
+    , vrfs(std::make_shared<L3vpn::Vrfs>())
 {
     invalid_vrfs->parent = this;
     vrfs->parent = this;
 
-    yang_name = "l3vpn"; yang_parent_name = "Cisco-IOS-XR-mpls-vpn-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "l3vpn"; yang_parent_name = "Cisco-IOS-XR-mpls-vpn-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
-L3Vpn::~L3Vpn()
+L3vpn::~L3vpn()
 {
 }
 
-bool L3Vpn::has_data() const
+bool L3vpn::has_data() const
 {
+    if (is_presence_container) return true;
     return (invalid_vrfs !=  nullptr && invalid_vrfs->has_data())
 	|| (vrfs !=  nullptr && vrfs->has_data());
 }
 
-bool L3Vpn::has_operation() const
+bool L3vpn::has_operation() const
 {
     return is_set(yfilter)
 	|| (invalid_vrfs !=  nullptr && invalid_vrfs->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
-std::string L3Vpn::get_segment_path() const
+std::string L3vpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-vpn-oper:l3vpn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L3Vpn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L3vpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -55,13 +56,13 @@ std::vector<std::pair<std::string, LeafData> > L3Vpn::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> L3Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L3vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "invalid-vrfs")
     {
         if(invalid_vrfs == nullptr)
         {
-            invalid_vrfs = std::make_shared<L3Vpn::InvalidVrfs>();
+            invalid_vrfs = std::make_shared<L3vpn::InvalidVrfs>();
         }
         return invalid_vrfs;
     }
@@ -70,7 +71,7 @@ std::shared_ptr<Entity> L3Vpn::get_child_by_name(const std::string & child_yang_
     {
         if(vrfs == nullptr)
         {
-            vrfs = std::make_shared<L3Vpn::Vrfs>();
+            vrfs = std::make_shared<L3vpn::Vrfs>();
         }
         return vrfs;
     }
@@ -78,7 +79,7 @@ std::shared_ptr<Entity> L3Vpn::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3Vpn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L3vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -95,59 +96,62 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::get_children() const
     return children;
 }
 
-void L3Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L3vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L3Vpn::set_filter(const std::string & value_path, YFilter yfilter)
+void L3vpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> L3Vpn::clone_ptr() const
+std::shared_ptr<Entity> L3vpn::clone_ptr() const
 {
-    return std::make_shared<L3Vpn>();
+    return std::make_shared<L3vpn>();
 }
 
-std::string L3Vpn::get_bundle_yang_models_location() const
+std::string L3vpn::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string L3Vpn::get_bundle_name() const
+std::string L3vpn::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function L3Vpn::get_augment_capabilities_function() const
+augment_capabilities_function L3vpn::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> L3Vpn::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> L3vpn::get_namespace_identity_lookup() const
 {
     return cisco_ios_xr_namespace_identity_lookup;
 }
 
-bool L3Vpn::has_leaf_or_child_of_name(const std::string & name) const
+bool L3vpn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "invalid-vrfs" || name == "vrfs")
         return true;
     return false;
 }
 
-L3Vpn::InvalidVrfs::InvalidVrfs()
+L3vpn::InvalidVrfs::InvalidVrfs()
+    :
+    invalid_vrf(this, {"vrf_name"})
 {
 
-    yang_name = "invalid-vrfs"; yang_parent_name = "l3vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "invalid-vrfs"; yang_parent_name = "l3vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L3Vpn::InvalidVrfs::~InvalidVrfs()
+L3vpn::InvalidVrfs::~InvalidVrfs()
 {
 }
 
-bool L3Vpn::InvalidVrfs::has_data() const
+bool L3vpn::InvalidVrfs::has_data() const
 {
-    for (std::size_t index=0; index<invalid_vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<invalid_vrf.len(); index++)
     {
         if(invalid_vrf[index]->has_data())
             return true;
@@ -155,9 +159,9 @@ bool L3Vpn::InvalidVrfs::has_data() const
     return false;
 }
 
-bool L3Vpn::InvalidVrfs::has_operation() const
+bool L3vpn::InvalidVrfs::has_operation() const
 {
-    for (std::size_t index=0; index<invalid_vrf.size(); index++)
+    for (std::size_t index=0; index<invalid_vrf.len(); index++)
     {
         if(invalid_vrf[index]->has_operation())
             return true;
@@ -165,21 +169,21 @@ bool L3Vpn::InvalidVrfs::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L3Vpn::InvalidVrfs::get_absolute_path() const
+std::string L3vpn::InvalidVrfs::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-vpn-oper:l3vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L3Vpn::InvalidVrfs::get_segment_path() const
+std::string L3vpn::InvalidVrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "invalid-vrfs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L3Vpn::InvalidVrfs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L3vpn::InvalidVrfs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -188,25 +192,25 @@ std::vector<std::pair<std::string, LeafData> > L3Vpn::InvalidVrfs::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> L3Vpn::InvalidVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L3vpn::InvalidVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "invalid-vrf")
     {
-        auto c = std::make_shared<L3Vpn::InvalidVrfs::InvalidVrf>();
+        auto c = std::make_shared<L3vpn::InvalidVrfs::InvalidVrf>();
         c->parent = this;
-        invalid_vrf.push_back(c);
+        invalid_vrf.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L3vpn::InvalidVrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : invalid_vrf)
+    for (auto c : invalid_vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,45 +221,49 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::get_children(
     return children;
 }
 
-void L3Vpn::InvalidVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L3vpn::InvalidVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L3Vpn::InvalidVrfs::set_filter(const std::string & value_path, YFilter yfilter)
+void L3vpn::InvalidVrfs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L3Vpn::InvalidVrfs::has_leaf_or_child_of_name(const std::string & name) const
+bool L3vpn::InvalidVrfs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "invalid-vrf")
         return true;
     return false;
 }
 
-L3Vpn::InvalidVrfs::InvalidVrf::InvalidVrf()
+L3vpn::InvalidVrfs::InvalidVrf::InvalidVrf()
     :
     vrf_name{YType::str, "vrf-name"},
     vrf_name_xr{YType::str, "vrf-name-xr"},
     vrf_description{YType::str, "vrf-description"},
     route_distinguisher{YType::str, "route-distinguisher"},
     is_big_vrf{YType::boolean, "is-big-vrf"}
+        ,
+    interface(this, {})
+    , af(this, {})
 {
 
-    yang_name = "invalid-vrf"; yang_parent_name = "invalid-vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "invalid-vrf"; yang_parent_name = "invalid-vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L3Vpn::InvalidVrfs::InvalidVrf::~InvalidVrf()
+L3vpn::InvalidVrfs::InvalidVrf::~InvalidVrf()
 {
 }
 
-bool L3Vpn::InvalidVrfs::InvalidVrf::has_data() const
+bool L3vpn::InvalidVrfs::InvalidVrf::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
@@ -267,14 +275,14 @@ bool L3Vpn::InvalidVrfs::InvalidVrf::has_data() const
 	|| is_big_vrf.is_set;
 }
 
-bool L3Vpn::InvalidVrfs::InvalidVrf::has_operation() const
+bool L3vpn::InvalidVrfs::InvalidVrf::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
@@ -287,21 +295,22 @@ bool L3Vpn::InvalidVrfs::InvalidVrf::has_operation() const
 	|| ydk::is_set(is_big_vrf.yfilter);
 }
 
-std::string L3Vpn::InvalidVrfs::InvalidVrf::get_absolute_path() const
+std::string L3vpn::InvalidVrfs::InvalidVrf::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-vpn-oper:l3vpn/invalid-vrfs/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L3Vpn::InvalidVrfs::InvalidVrf::get_segment_path() const
+std::string L3vpn::InvalidVrfs::InvalidVrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "invalid-vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "invalid-vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L3Vpn::InvalidVrfs::InvalidVrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L3vpn::InvalidVrfs::InvalidVrf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -315,33 +324,33 @@ std::vector<std::pair<std::string, LeafData> > L3Vpn::InvalidVrfs::InvalidVrf::g
 
 }
 
-std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L3vpn::InvalidVrfs::InvalidVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L3Vpn::InvalidVrfs::InvalidVrf::Interface>();
+        auto c = std::make_shared<L3vpn::InvalidVrfs::InvalidVrf::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
     if(child_yang_name == "af")
     {
-        auto c = std::make_shared<L3Vpn::InvalidVrfs::InvalidVrf::Af>();
+        auto c = std::make_shared<L3vpn::InvalidVrfs::InvalidVrf::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L3vpn::InvalidVrfs::InvalidVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -350,7 +359,7 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::g
     }
 
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -361,7 +370,7 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::g
     return children;
 }
 
-void L3Vpn::InvalidVrfs::InvalidVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L3vpn::InvalidVrfs::InvalidVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
@@ -395,7 +404,7 @@ void L3Vpn::InvalidVrfs::InvalidVrf::set_value(const std::string & value_path, c
     }
 }
 
-void L3Vpn::InvalidVrfs::InvalidVrf::set_filter(const std::string & value_path, YFilter yfilter)
+void L3vpn::InvalidVrfs::InvalidVrf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-name")
     {
@@ -419,44 +428,45 @@ void L3Vpn::InvalidVrfs::InvalidVrf::set_filter(const std::string & value_path, 
     }
 }
 
-bool L3Vpn::InvalidVrfs::InvalidVrf::has_leaf_or_child_of_name(const std::string & name) const
+bool L3vpn::InvalidVrfs::InvalidVrf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "af" || name == "vrf-name" || name == "vrf-name-xr" || name == "vrf-description" || name == "route-distinguisher" || name == "is-big-vrf")
         return true;
     return false;
 }
 
-L3Vpn::InvalidVrfs::InvalidVrf::Interface::Interface()
+L3vpn::InvalidVrfs::InvalidVrf::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface"; yang_parent_name = "invalid-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "invalid-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L3Vpn::InvalidVrfs::InvalidVrf::Interface::~Interface()
+L3vpn::InvalidVrfs::InvalidVrf::Interface::~Interface()
 {
 }
 
-bool L3Vpn::InvalidVrfs::InvalidVrf::Interface::has_data() const
+bool L3vpn::InvalidVrfs::InvalidVrf::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
-bool L3Vpn::InvalidVrfs::InvalidVrf::Interface::has_operation() const
+bool L3vpn::InvalidVrfs::InvalidVrf::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter);
 }
 
-std::string L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_segment_path() const
+std::string L3vpn::InvalidVrfs::InvalidVrf::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L3vpn::InvalidVrfs::InvalidVrf::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -466,19 +476,19 @@ std::vector<std::pair<std::string, LeafData> > L3Vpn::InvalidVrfs::InvalidVrf::I
 
 }
 
-std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L3vpn::InvalidVrfs::InvalidVrf::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L3vpn::InvalidVrfs::InvalidVrf::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L3Vpn::InvalidVrfs::InvalidVrf::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L3vpn::InvalidVrfs::InvalidVrf::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -488,7 +498,7 @@ void L3Vpn::InvalidVrfs::InvalidVrf::Interface::set_value(const std::string & va
     }
 }
 
-void L3Vpn::InvalidVrfs::InvalidVrf::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void L3vpn::InvalidVrfs::InvalidVrf::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -496,31 +506,34 @@ void L3Vpn::InvalidVrfs::InvalidVrf::Interface::set_filter(const std::string & v
     }
 }
 
-bool L3Vpn::InvalidVrfs::InvalidVrf::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool L3vpn::InvalidVrfs::InvalidVrf::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name")
         return true;
     return false;
 }
 
-L3Vpn::InvalidVrfs::InvalidVrf::Af::Af()
+L3vpn::InvalidVrfs::InvalidVrf::Af::Af()
     :
     af_name{YType::enumeration, "af-name"},
     saf_name{YType::enumeration, "saf-name"},
     import_route_policy{YType::str, "import-route-policy"},
     export_route_policy{YType::str, "export-route-policy"}
+        ,
+    route_target(this, {})
 {
 
-    yang_name = "af"; yang_parent_name = "invalid-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "af"; yang_parent_name = "invalid-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L3Vpn::InvalidVrfs::InvalidVrf::Af::~Af()
+L3vpn::InvalidVrfs::InvalidVrf::Af::~Af()
 {
 }
 
-bool L3Vpn::InvalidVrfs::InvalidVrf::Af::has_data() const
+bool L3vpn::InvalidVrfs::InvalidVrf::Af::has_data() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_data())
             return true;
@@ -531,9 +544,9 @@ bool L3Vpn::InvalidVrfs::InvalidVrf::Af::has_data() const
 	|| export_route_policy.is_set;
 }
 
-bool L3Vpn::InvalidVrfs::InvalidVrf::Af::has_operation() const
+bool L3vpn::InvalidVrfs::InvalidVrf::Af::has_operation() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_operation())
             return true;
@@ -545,14 +558,14 @@ bool L3Vpn::InvalidVrfs::InvalidVrf::Af::has_operation() const
 	|| ydk::is_set(export_route_policy.yfilter);
 }
 
-std::string L3Vpn::InvalidVrfs::InvalidVrf::Af::get_segment_path() const
+std::string L3vpn::InvalidVrfs::InvalidVrf::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "af";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L3Vpn::InvalidVrfs::InvalidVrf::Af::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L3vpn::InvalidVrfs::InvalidVrf::Af::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -565,25 +578,25 @@ std::vector<std::pair<std::string, LeafData> > L3Vpn::InvalidVrfs::InvalidVrf::A
 
 }
 
-std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L3vpn::InvalidVrfs::InvalidVrf::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route-target")
     {
-        auto c = std::make_shared<L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget>();
+        auto c = std::make_shared<L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget>();
         c->parent = this;
-        route_target.push_back(c);
+        route_target.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::Af::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L3vpn::InvalidVrfs::InvalidVrf::Af::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route_target)
+    for (auto c : route_target.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -594,7 +607,7 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::A
     return children;
 }
 
-void L3Vpn::InvalidVrfs::InvalidVrf::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L3vpn::InvalidVrfs::InvalidVrf::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
@@ -622,7 +635,7 @@ void L3Vpn::InvalidVrfs::InvalidVrf::Af::set_value(const std::string & value_pat
     }
 }
 
-void L3Vpn::InvalidVrfs::InvalidVrf::Af::set_filter(const std::string & value_path, YFilter yfilter)
+void L3vpn::InvalidVrfs::InvalidVrf::Af::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "af-name")
     {
@@ -642,14 +655,14 @@ void L3Vpn::InvalidVrfs::InvalidVrf::Af::set_filter(const std::string & value_pa
     }
 }
 
-bool L3Vpn::InvalidVrfs::InvalidVrf::Af::has_leaf_or_child_of_name(const std::string & name) const
+bool L3vpn::InvalidVrfs::InvalidVrf::Af::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-target" || name == "af-name" || name == "saf-name" || name == "import-route-policy" || name == "export-route-policy")
         return true;
     return false;
 }
 
-L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::RouteTarget()
+L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::RouteTarget()
     :
     route_target_type{YType::enumeration, "route-target-type"},
     route_target_value{YType::str, "route-target-value"},
@@ -657,22 +670,23 @@ L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::RouteTarget()
     saf_name{YType::enumeration, "saf-name"}
 {
 
-    yang_name = "route-target"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-target"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::~RouteTarget()
+L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::~RouteTarget()
 {
 }
 
-bool L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::has_data() const
+bool L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return route_target_type.is_set
 	|| route_target_value.is_set
 	|| af_name.is_set
 	|| saf_name.is_set;
 }
 
-bool L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::has_operation() const
+bool L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_target_type.yfilter)
@@ -681,14 +695,14 @@ bool L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::has_operation() const
 	|| ydk::is_set(saf_name.yfilter);
 }
 
-std::string L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_segment_path() const
+std::string L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route-target";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -701,19 +715,19 @@ std::vector<std::pair<std::string, LeafData> > L3Vpn::InvalidVrfs::InvalidVrf::A
 
 }
 
-std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-target-type")
     {
@@ -741,7 +755,7 @@ void L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::set_value(const std::strin
     }
 }
 
-void L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::set_filter(const std::string & value_path, YFilter yfilter)
+void L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-target-type")
     {
@@ -761,26 +775,29 @@ void L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::set_filter(const std::stri
     }
 }
 
-bool L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::has_leaf_or_child_of_name(const std::string & name) const
+bool L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-target-type" || name == "route-target-value" || name == "af-name" || name == "saf-name")
         return true;
     return false;
 }
 
-L3Vpn::Vrfs::Vrfs()
+L3vpn::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "l3vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "l3vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L3Vpn::Vrfs::~Vrfs()
+L3vpn::Vrfs::~Vrfs()
 {
 }
 
-bool L3Vpn::Vrfs::has_data() const
+bool L3vpn::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -788,9 +805,9 @@ bool L3Vpn::Vrfs::has_data() const
     return false;
 }
 
-bool L3Vpn::Vrfs::has_operation() const
+bool L3vpn::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -798,21 +815,21 @@ bool L3Vpn::Vrfs::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L3Vpn::Vrfs::get_absolute_path() const
+std::string L3vpn::Vrfs::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-vpn-oper:l3vpn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L3Vpn::Vrfs::get_segment_path() const
+std::string L3vpn::Vrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrfs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L3Vpn::Vrfs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L3vpn::Vrfs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -821,25 +838,25 @@ std::vector<std::pair<std::string, LeafData> > L3Vpn::Vrfs::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> L3Vpn::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L3vpn::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<L3Vpn::Vrfs::Vrf>();
+        auto c = std::make_shared<L3vpn::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L3vpn::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -850,45 +867,49 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::get_children() const
     return children;
 }
 
-void L3Vpn::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L3vpn::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L3Vpn::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+void L3vpn::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L3Vpn::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+bool L3vpn::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf")
         return true;
     return false;
 }
 
-L3Vpn::Vrfs::Vrf::Vrf()
+L3vpn::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"},
     vrf_name_xr{YType::str, "vrf-name-xr"},
     vrf_description{YType::str, "vrf-description"},
     route_distinguisher{YType::str, "route-distinguisher"},
     is_big_vrf{YType::boolean, "is-big-vrf"}
+        ,
+    interface(this, {})
+    , af(this, {})
 {
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L3Vpn::Vrfs::Vrf::~Vrf()
+L3vpn::Vrfs::Vrf::~Vrf()
 {
 }
 
-bool L3Vpn::Vrfs::Vrf::has_data() const
+bool L3vpn::Vrfs::Vrf::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
@@ -900,14 +921,14 @@ bool L3Vpn::Vrfs::Vrf::has_data() const
 	|| is_big_vrf.is_set;
 }
 
-bool L3Vpn::Vrfs::Vrf::has_operation() const
+bool L3vpn::Vrfs::Vrf::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
@@ -920,21 +941,22 @@ bool L3Vpn::Vrfs::Vrf::has_operation() const
 	|| ydk::is_set(is_big_vrf.yfilter);
 }
 
-std::string L3Vpn::Vrfs::Vrf::get_absolute_path() const
+std::string L3vpn::Vrfs::Vrf::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-vpn-oper:l3vpn/vrfs/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L3Vpn::Vrfs::Vrf::get_segment_path() const
+std::string L3vpn::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L3Vpn::Vrfs::Vrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L3vpn::Vrfs::Vrf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -948,33 +970,33 @@ std::vector<std::pair<std::string, LeafData> > L3Vpn::Vrfs::Vrf::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L3vpn::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L3Vpn::Vrfs::Vrf::Interface>();
+        auto c = std::make_shared<L3vpn::Vrfs::Vrf::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
     if(child_yang_name == "af")
     {
-        auto c = std::make_shared<L3Vpn::Vrfs::Vrf::Af>();
+        auto c = std::make_shared<L3vpn::Vrfs::Vrf::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L3vpn::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -983,7 +1005,7 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::get_children() 
     }
 
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -994,7 +1016,7 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::get_children() 
     return children;
 }
 
-void L3Vpn::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L3vpn::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
@@ -1028,7 +1050,7 @@ void L3Vpn::Vrfs::Vrf::set_value(const std::string & value_path, const std::stri
     }
 }
 
-void L3Vpn::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+void L3vpn::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-name")
     {
@@ -1052,44 +1074,45 @@ void L3Vpn::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilte
     }
 }
 
-bool L3Vpn::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+bool L3vpn::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "af" || name == "vrf-name" || name == "vrf-name-xr" || name == "vrf-description" || name == "route-distinguisher" || name == "is-big-vrf")
         return true;
     return false;
 }
 
-L3Vpn::Vrfs::Vrf::Interface::Interface()
+L3vpn::Vrfs::Vrf::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L3Vpn::Vrfs::Vrf::Interface::~Interface()
+L3vpn::Vrfs::Vrf::Interface::~Interface()
 {
 }
 
-bool L3Vpn::Vrfs::Vrf::Interface::has_data() const
+bool L3vpn::Vrfs::Vrf::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
-bool L3Vpn::Vrfs::Vrf::Interface::has_operation() const
+bool L3vpn::Vrfs::Vrf::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter);
 }
 
-std::string L3Vpn::Vrfs::Vrf::Interface::get_segment_path() const
+std::string L3vpn::Vrfs::Vrf::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L3Vpn::Vrfs::Vrf::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L3vpn::Vrfs::Vrf::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1099,19 +1122,19 @@ std::vector<std::pair<std::string, LeafData> > L3Vpn::Vrfs::Vrf::Interface::get_
 
 }
 
-std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L3vpn::Vrfs::Vrf::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L3vpn::Vrfs::Vrf::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L3Vpn::Vrfs::Vrf::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L3vpn::Vrfs::Vrf::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -1121,7 +1144,7 @@ void L3Vpn::Vrfs::Vrf::Interface::set_value(const std::string & value_path, cons
     }
 }
 
-void L3Vpn::Vrfs::Vrf::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void L3vpn::Vrfs::Vrf::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -1129,31 +1152,34 @@ void L3Vpn::Vrfs::Vrf::Interface::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool L3Vpn::Vrfs::Vrf::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool L3vpn::Vrfs::Vrf::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name")
         return true;
     return false;
 }
 
-L3Vpn::Vrfs::Vrf::Af::Af()
+L3vpn::Vrfs::Vrf::Af::Af()
     :
     af_name{YType::enumeration, "af-name"},
     saf_name{YType::enumeration, "saf-name"},
     import_route_policy{YType::str, "import-route-policy"},
     export_route_policy{YType::str, "export-route-policy"}
+        ,
+    route_target(this, {})
 {
 
-    yang_name = "af"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "af"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L3Vpn::Vrfs::Vrf::Af::~Af()
+L3vpn::Vrfs::Vrf::Af::~Af()
 {
 }
 
-bool L3Vpn::Vrfs::Vrf::Af::has_data() const
+bool L3vpn::Vrfs::Vrf::Af::has_data() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_data())
             return true;
@@ -1164,9 +1190,9 @@ bool L3Vpn::Vrfs::Vrf::Af::has_data() const
 	|| export_route_policy.is_set;
 }
 
-bool L3Vpn::Vrfs::Vrf::Af::has_operation() const
+bool L3vpn::Vrfs::Vrf::Af::has_operation() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_operation())
             return true;
@@ -1178,14 +1204,14 @@ bool L3Vpn::Vrfs::Vrf::Af::has_operation() const
 	|| ydk::is_set(export_route_policy.yfilter);
 }
 
-std::string L3Vpn::Vrfs::Vrf::Af::get_segment_path() const
+std::string L3vpn::Vrfs::Vrf::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "af";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L3Vpn::Vrfs::Vrf::Af::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L3vpn::Vrfs::Vrf::Af::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1198,25 +1224,25 @@ std::vector<std::pair<std::string, LeafData> > L3Vpn::Vrfs::Vrf::Af::get_name_le
 
 }
 
-std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L3vpn::Vrfs::Vrf::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route-target")
     {
-        auto c = std::make_shared<L3Vpn::Vrfs::Vrf::Af::RouteTarget>();
+        auto c = std::make_shared<L3vpn::Vrfs::Vrf::Af::RouteTarget>();
         c->parent = this;
-        route_target.push_back(c);
+        route_target.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Af::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L3vpn::Vrfs::Vrf::Af::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route_target)
+    for (auto c : route_target.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1227,7 +1253,7 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Af::get_childre
     return children;
 }
 
-void L3Vpn::Vrfs::Vrf::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L3vpn::Vrfs::Vrf::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
@@ -1255,7 +1281,7 @@ void L3Vpn::Vrfs::Vrf::Af::set_value(const std::string & value_path, const std::
     }
 }
 
-void L3Vpn::Vrfs::Vrf::Af::set_filter(const std::string & value_path, YFilter yfilter)
+void L3vpn::Vrfs::Vrf::Af::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "af-name")
     {
@@ -1275,14 +1301,14 @@ void L3Vpn::Vrfs::Vrf::Af::set_filter(const std::string & value_path, YFilter yf
     }
 }
 
-bool L3Vpn::Vrfs::Vrf::Af::has_leaf_or_child_of_name(const std::string & name) const
+bool L3vpn::Vrfs::Vrf::Af::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-target" || name == "af-name" || name == "saf-name" || name == "import-route-policy" || name == "export-route-policy")
         return true;
     return false;
 }
 
-L3Vpn::Vrfs::Vrf::Af::RouteTarget::RouteTarget()
+L3vpn::Vrfs::Vrf::Af::RouteTarget::RouteTarget()
     :
     route_target_type{YType::enumeration, "route-target-type"},
     route_target_value{YType::str, "route-target-value"},
@@ -1290,22 +1316,23 @@ L3Vpn::Vrfs::Vrf::Af::RouteTarget::RouteTarget()
     saf_name{YType::enumeration, "saf-name"}
 {
 
-    yang_name = "route-target"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-target"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L3Vpn::Vrfs::Vrf::Af::RouteTarget::~RouteTarget()
+L3vpn::Vrfs::Vrf::Af::RouteTarget::~RouteTarget()
 {
 }
 
-bool L3Vpn::Vrfs::Vrf::Af::RouteTarget::has_data() const
+bool L3vpn::Vrfs::Vrf::Af::RouteTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return route_target_type.is_set
 	|| route_target_value.is_set
 	|| af_name.is_set
 	|| saf_name.is_set;
 }
 
-bool L3Vpn::Vrfs::Vrf::Af::RouteTarget::has_operation() const
+bool L3vpn::Vrfs::Vrf::Af::RouteTarget::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_target_type.yfilter)
@@ -1314,14 +1341,14 @@ bool L3Vpn::Vrfs::Vrf::Af::RouteTarget::has_operation() const
 	|| ydk::is_set(saf_name.yfilter);
 }
 
-std::string L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_segment_path() const
+std::string L3vpn::Vrfs::Vrf::Af::RouteTarget::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route-target";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L3vpn::Vrfs::Vrf::Af::RouteTarget::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1334,19 +1361,19 @@ std::vector<std::pair<std::string, LeafData> > L3Vpn::Vrfs::Vrf::Af::RouteTarget
 
 }
 
-std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L3vpn::Vrfs::Vrf::Af::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L3vpn::Vrfs::Vrf::Af::RouteTarget::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L3Vpn::Vrfs::Vrf::Af::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L3vpn::Vrfs::Vrf::Af::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-target-type")
     {
@@ -1374,7 +1401,7 @@ void L3Vpn::Vrfs::Vrf::Af::RouteTarget::set_value(const std::string & value_path
     }
 }
 
-void L3Vpn::Vrfs::Vrf::Af::RouteTarget::set_filter(const std::string & value_path, YFilter yfilter)
+void L3vpn::Vrfs::Vrf::Af::RouteTarget::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-target-type")
     {
@@ -1394,7 +1421,7 @@ void L3Vpn::Vrfs::Vrf::Af::RouteTarget::set_filter(const std::string & value_pat
     }
 }
 
-bool L3Vpn::Vrfs::Vrf::Af::RouteTarget::has_leaf_or_child_of_name(const std::string & name) const
+bool L3vpn::Vrfs::Vrf::Af::RouteTarget::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-target-type" || name == "route-target-value" || name == "af-name" || name == "saf-name")
         return true;
@@ -1405,12 +1432,12 @@ const Enum::YLeaf MplsVpnRt::import {1, "import"};
 const Enum::YLeaf MplsVpnRt::export_ {2, "export"};
 const Enum::YLeaf MplsVpnRt::both {3, "both"};
 
+const Enum::YLeaf MplsVpnAfi::ipv4 {1, "ipv4"};
+const Enum::YLeaf MplsVpnAfi::ipv6 {2, "ipv6"};
+
 const Enum::YLeaf MplsVpnSafi::unicast {1, "unicast"};
 const Enum::YLeaf MplsVpnSafi::multicast {2, "multicast"};
 const Enum::YLeaf MplsVpnSafi::flowspec {133, "flowspec"};
-
-const Enum::YLeaf MplsVpnAfi::ipv4 {1, "ipv4"};
-const Enum::YLeaf MplsVpnAfi::ipv6 {2, "ipv6"};
 
 
 }

@@ -17,7 +17,7 @@ Sla::Sla()
 {
     protocols->parent = this;
 
-    yang_name = "sla"; yang_parent_name = "Cisco-IOS-XR-infra-sla-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sla"; yang_parent_name = "Cisco-IOS-XR-infra-sla-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Sla::~Sla()
@@ -26,6 +26,7 @@ Sla::~Sla()
 
 bool Sla::has_data() const
 {
+    if (is_presence_container) return true;
     return (protocols !=  nullptr && protocols->has_data());
 }
 
@@ -123,7 +124,7 @@ Sla::Protocols::Protocols()
 {
     ethernet->parent = this;
 
-    yang_name = "protocols"; yang_parent_name = "sla"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocols"; yang_parent_name = "sla"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::~Protocols()
@@ -132,6 +133,7 @@ Sla::Protocols::~Protocols()
 
 bool Sla::Protocols::has_data() const
 {
+    if (is_presence_container) return true;
     return (ethernet !=  nullptr && ethernet->has_data());
 }
 
@@ -211,7 +213,7 @@ Sla::Protocols::Ethernet::Ethernet()
 {
     profiles->parent = this;
 
-    yang_name = "ethernet"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ethernet"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::~Ethernet()
@@ -220,6 +222,7 @@ Sla::Protocols::Ethernet::~Ethernet()
 
 bool Sla::Protocols::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return (profiles !=  nullptr && profiles->has_data());
 }
 
@@ -294,9 +297,11 @@ bool Sla::Protocols::Ethernet::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Sla::Protocols::Ethernet::Profiles::Profiles()
+    :
+    profile(this, {"profile_name"})
 {
 
-    yang_name = "profiles"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profiles"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Profiles::~Profiles()
@@ -305,7 +310,8 @@ Sla::Protocols::Ethernet::Profiles::~Profiles()
 
 bool Sla::Protocols::Ethernet::Profiles::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_data())
             return true;
@@ -315,7 +321,7 @@ bool Sla::Protocols::Ethernet::Profiles::has_data() const
 
 bool Sla::Protocols::Ethernet::Profiles::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_operation())
             return true;
@@ -352,7 +358,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::get_child_by_name(co
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile.append(c);
         return c;
     }
 
@@ -364,7 +370,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profile
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : profile)
+    for (auto c : profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -394,15 +400,15 @@ Sla::Protocols::Ethernet::Profiles::Profile::Profile()
     :
     profile_name{YType::str, "profile-name"},
     packet_type{YType::str, "packet-type"}
-    	,
+        ,
     statistics(std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics>())
-	,schedule(nullptr) // presence node
-	,probe(std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Probe>())
+    , schedule(nullptr) // presence node
+    , probe(std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Probe>())
 {
     statistics->parent = this;
     probe->parent = this;
 
-    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Profiles::Profile::~Profile()
@@ -411,6 +417,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::~Profile()
 
 bool Sla::Protocols::Ethernet::Profiles::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| packet_type.is_set
 	|| (statistics !=  nullptr && statistics->has_data())
@@ -438,7 +445,8 @@ std::string Sla::Protocols::Ethernet::Profiles::Profile::get_absolute_path() con
 std::string Sla::Protocols::Ethernet::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[profile-name='" <<profile_name <<"']";
+    path_buffer << "profile";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
@@ -543,9 +551,11 @@ bool Sla::Protocols::Ethernet::Profiles::Profile::has_leaf_or_child_of_name(cons
 }
 
 Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistics()
+    :
+    statistic(this, {"statistic_name"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sla::Protocols::Ethernet::Profiles::Profile::Statistics::~Statistics()
@@ -554,7 +564,8 @@ Sla::Protocols::Ethernet::Profiles::Profile::Statistics::~Statistics()
 
 bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_data())
             return true;
@@ -564,7 +575,7 @@ bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::has_data() const
 
 bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_operation())
             return true;
@@ -594,7 +605,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics:
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic>();
         c->parent = this;
-        statistic.push_back(c);
+        statistic.append(c);
         return c;
     }
 
@@ -606,7 +617,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profile
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistic)
+    for (auto c : statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -637,12 +648,12 @@ Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Statistic()
     statistic_name{YType::enumeration, "statistic-name"},
     enable{YType::empty, "enable"},
     buckets_archive{YType::uint32, "buckets-archive"}
-    	,
+        ,
     buckets_size(nullptr) // presence node
-	,aggregation(nullptr) // presence node
+    , aggregation(nullptr) // presence node
 {
 
-    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::~Statistic()
@@ -651,6 +662,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::~Statistic()
 
 bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::has_data() const
 {
+    if (is_presence_container) return true;
     return statistic_name.is_set
 	|| enable.is_set
 	|| buckets_archive.is_set
@@ -671,7 +683,8 @@ bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::has_ope
 std::string Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistic" <<"[statistic-name='" <<statistic_name <<"']";
+    path_buffer << "statistic";
+    ADD_KEY_TOKEN(statistic_name, "statistic-name");
     return path_buffer.str();
 }
 
@@ -778,7 +791,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize:
     buckets_size_unit{YType::enumeration, "buckets-size-unit"}
 {
 
-    yang_name = "buckets-size"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "buckets-size"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::~BucketsSize()
@@ -787,6 +800,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize:
 
 bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::has_data() const
 {
+    if (is_presence_container) return true;
     return buckets_size.is_set
 	|| buckets_size_unit.is_set;
 }
@@ -870,7 +884,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation:
     bins_width_tenths{YType::uint32, "bins-width-tenths"}
 {
 
-    yang_name = "aggregation"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregation"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation::~Aggregation()
@@ -879,6 +893,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation:
 
 bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation::has_data() const
 {
+    if (is_presence_container) return true;
     return bins_count.is_set
 	|| bins_width.is_set
 	|| bins_width_tenths.is_set;
@@ -980,7 +995,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::Schedule::Schedule()
     probe_duration_unit{YType::enumeration, "probe-duration-unit"}
 {
 
-    yang_name = "schedule"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "schedule"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Sla::Protocols::Ethernet::Profiles::Profile::Schedule::~Schedule()
@@ -989,6 +1004,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::Schedule::~Schedule()
 
 bool Sla::Protocols::Ethernet::Profiles::Profile::Schedule::has_data() const
 {
+    if (is_presence_container) return true;
     return probe_interval.is_set
 	|| probe_interval_day.is_set
 	|| probe_interval_unit.is_set
@@ -1147,12 +1163,12 @@ Sla::Protocols::Ethernet::Profiles::Profile::Probe::Probe()
     :
     priority{YType::uint32, "priority"},
     synthetic_loss_calculation_packets{YType::uint32, "synthetic-loss-calculation-packets"}
-    	,
+        ,
     send(nullptr) // presence node
-	,packet_size_and_padding(nullptr) // presence node
+    , packet_size_and_padding(nullptr) // presence node
 {
 
-    yang_name = "probe"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "probe"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sla::Protocols::Ethernet::Profiles::Profile::Probe::~Probe()
@@ -1161,6 +1177,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::Probe::~Probe()
 
 bool Sla::Protocols::Ethernet::Profiles::Profile::Probe::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set
 	|| synthetic_loss_calculation_packets.is_set
 	|| (send !=  nullptr && send->has_data())
@@ -1279,7 +1296,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::Send()
     send_type{YType::enumeration, "send-type"}
 {
 
-    yang_name = "send"; yang_parent_name = "probe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "send"; yang_parent_name = "probe"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::~Send()
@@ -1288,6 +1305,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::~Send()
 
 bool Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::has_data() const
 {
+    if (is_presence_container) return true;
     return burst_interval.is_set
 	|| burst_interval_unit.is_set
 	|| packet_interval.is_set
@@ -1423,7 +1441,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::Packet
     padding_value{YType::str, "padding-value"}
 {
 
-    yang_name = "packet-size-and-padding"; yang_parent_name = "probe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-size-and-padding"; yang_parent_name = "probe"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::~PacketSizeAndPadding()
@@ -1432,6 +1450,7 @@ Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::~Packe
 
 bool Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set
 	|| padding_type.is_set
 	|| padding_value.is_set;

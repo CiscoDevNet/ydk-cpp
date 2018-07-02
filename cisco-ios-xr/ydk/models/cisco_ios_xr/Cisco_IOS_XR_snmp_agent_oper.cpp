@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_snmp_agent_oper {
 Snmp::Snmp()
     :
     trap_servers(std::make_shared<Snmp::TrapServers>())
-	,information(std::make_shared<Snmp::Information>())
-	,interfaces(std::make_shared<Snmp::Interfaces>())
-	,correlator(std::make_shared<Snmp::Correlator>())
-	,interface_indexes(std::make_shared<Snmp::InterfaceIndexes>())
-	,if_indexes(std::make_shared<Snmp::IfIndexes>())
-	,entity_mib(std::make_shared<Snmp::EntityMib>())
-	,interface_mib(std::make_shared<Snmp::InterfaceMib>())
-	,sensor_mib(std::make_shared<Snmp::SensorMib>())
+    , information(std::make_shared<Snmp::Information>())
+    , interfaces(std::make_shared<Snmp::Interfaces>())
+    , correlator(std::make_shared<Snmp::Correlator>())
+    , interface_indexes(std::make_shared<Snmp::InterfaceIndexes>())
+    , if_indexes(std::make_shared<Snmp::IfIndexes>())
+    , entity_mib(std::make_shared<Snmp::EntityMib>())
+    , interface_mib(std::make_shared<Snmp::InterfaceMib>())
+    , sensor_mib(std::make_shared<Snmp::SensorMib>())
 {
     trap_servers->parent = this;
     information->parent = this;
@@ -33,7 +33,7 @@ Snmp::Snmp()
     interface_mib->parent = this;
     sensor_mib->parent = this;
 
-    yang_name = "snmp"; yang_parent_name = "Cisco-IOS-XR-snmp-agent-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "snmp"; yang_parent_name = "Cisco-IOS-XR-snmp-agent-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Snmp::~Snmp()
@@ -42,6 +42,7 @@ Snmp::~Snmp()
 
 bool Snmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (trap_servers !=  nullptr && trap_servers->has_data())
 	|| (information !=  nullptr && information->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
@@ -262,9 +263,11 @@ bool Snmp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Snmp::TrapServers::TrapServers()
+    :
+    trap_server(this, {})
 {
 
-    yang_name = "trap-servers"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-servers"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::TrapServers::~TrapServers()
@@ -273,7 +276,8 @@ Snmp::TrapServers::~TrapServers()
 
 bool Snmp::TrapServers::has_data() const
 {
-    for (std::size_t index=0; index<trap_server.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trap_server.len(); index++)
     {
         if(trap_server[index]->has_data())
             return true;
@@ -283,7 +287,7 @@ bool Snmp::TrapServers::has_data() const
 
 bool Snmp::TrapServers::has_operation() const
 {
-    for (std::size_t index=0; index<trap_server.size(); index++)
+    for (std::size_t index=0; index<trap_server.len(); index++)
     {
         if(trap_server[index]->has_operation())
             return true;
@@ -320,7 +324,7 @@ std::shared_ptr<Entity> Snmp::TrapServers::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Snmp::TrapServers::TrapServer>();
         c->parent = this;
-        trap_server.push_back(c);
+        trap_server.append(c);
         return c;
     }
 
@@ -332,7 +336,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapServers::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trap_server)
+    for (auto c : trap_server.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -368,7 +372,7 @@ Snmp::TrapServers::TrapServer::TrapServer()
     number_of_pkts_dropped{YType::uint32, "number-of-pkts-dropped"}
 {
 
-    yang_name = "trap-server"; yang_parent_name = "trap-servers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-server"; yang_parent_name = "trap-servers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::TrapServers::TrapServer::~TrapServer()
@@ -377,6 +381,7 @@ Snmp::TrapServers::TrapServer::~TrapServer()
 
 bool Snmp::TrapServers::TrapServer::has_data() const
 {
+    if (is_presence_container) return true;
     return trap_host.is_set
 	|| port.is_set
 	|| number_of_pkts_in_trap_q.is_set
@@ -515,30 +520,30 @@ bool Snmp::TrapServers::TrapServer::has_leaf_or_child_of_name(const std::string 
 Snmp::Information::Information()
     :
     hosts(std::make_shared<Snmp::Information::Hosts>())
-	,system_up_time(std::make_shared<Snmp::Information::SystemUpTime>())
-	,nms_addresses(std::make_shared<Snmp::Information::NmsAddresses>())
-	,engine_id(std::make_shared<Snmp::Information::EngineId>())
-	,rx_queue(std::make_shared<Snmp::Information::RxQueue>())
-	,system_name(std::make_shared<Snmp::Information::SystemName>())
-	,request_type_detail(std::make_shared<Snmp::Information::RequestTypeDetail>())
-	,duplicate_drop(std::make_shared<Snmp::Information::DuplicateDrop>())
-	,bulk_stats_transfers(std::make_shared<Snmp::Information::BulkStatsTransfers>())
-	,trap_infos(std::make_shared<Snmp::Information::TrapInfos>())
-	,poll_oids(std::make_shared<Snmp::Information::PollOids>())
-	,infom_details(std::make_shared<Snmp::Information::InfomDetails>())
-	,statistics(std::make_shared<Snmp::Information::Statistics>())
-	,incoming_queue(std::make_shared<Snmp::Information::IncomingQueue>())
-	,context_mapping(std::make_shared<Snmp::Information::ContextMapping>())
-	,trap_oids(std::make_shared<Snmp::Information::TrapOids>())
-	,nm_spackets(std::make_shared<Snmp::Information::NmSpackets>())
-	,mibs(std::make_shared<Snmp::Information::Mibs>())
-	,serial_numbers(std::make_shared<Snmp::Information::SerialNumbers>())
-	,drop_nms_addresses(std::make_shared<Snmp::Information::DropNmsAddresses>())
-	,views(std::make_shared<Snmp::Information::Views>())
-	,system_descr(std::make_shared<Snmp::Information::SystemDescr>())
-	,tables(std::make_shared<Snmp::Information::Tables>())
-	,system_oid(std::make_shared<Snmp::Information::SystemOid>())
-	,trap_queue(std::make_shared<Snmp::Information::TrapQueue>())
+    , system_up_time(std::make_shared<Snmp::Information::SystemUpTime>())
+    , nms_addresses(std::make_shared<Snmp::Information::NmsAddresses>())
+    , engine_id(std::make_shared<Snmp::Information::EngineId>())
+    , rx_queue(std::make_shared<Snmp::Information::RxQueue>())
+    , system_name(std::make_shared<Snmp::Information::SystemName>())
+    , request_type_detail(std::make_shared<Snmp::Information::RequestTypeDetail>())
+    , duplicate_drop(std::make_shared<Snmp::Information::DuplicateDrop>())
+    , bulk_stats_transfers(std::make_shared<Snmp::Information::BulkStatsTransfers>())
+    , trap_infos(std::make_shared<Snmp::Information::TrapInfos>())
+    , poll_oids(std::make_shared<Snmp::Information::PollOids>())
+    , infom_details(std::make_shared<Snmp::Information::InfomDetails>())
+    , statistics(std::make_shared<Snmp::Information::Statistics>())
+    , incoming_queue(std::make_shared<Snmp::Information::IncomingQueue>())
+    , context_mapping(std::make_shared<Snmp::Information::ContextMapping>())
+    , trap_oids(std::make_shared<Snmp::Information::TrapOids>())
+    , nm_spackets(std::make_shared<Snmp::Information::NmSpackets>())
+    , mibs(std::make_shared<Snmp::Information::Mibs>())
+    , serial_numbers(std::make_shared<Snmp::Information::SerialNumbers>())
+    , drop_nms_addresses(std::make_shared<Snmp::Information::DropNmsAddresses>())
+    , views(std::make_shared<Snmp::Information::Views>())
+    , system_descr(std::make_shared<Snmp::Information::SystemDescr>())
+    , tables(std::make_shared<Snmp::Information::Tables>())
+    , system_oid(std::make_shared<Snmp::Information::SystemOid>())
+    , trap_queue(std::make_shared<Snmp::Information::TrapQueue>())
 {
     hosts->parent = this;
     system_up_time->parent = this;
@@ -566,7 +571,7 @@ Snmp::Information::Information()
     system_oid->parent = this;
     trap_queue->parent = this;
 
-    yang_name = "information"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "information"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::~Information()
@@ -575,6 +580,7 @@ Snmp::Information::~Information()
 
 bool Snmp::Information::has_data() const
 {
+    if (is_presence_container) return true;
     return (hosts !=  nullptr && hosts->has_data())
 	|| (system_up_time !=  nullptr && system_up_time->has_data())
 	|| (nms_addresses !=  nullptr && nms_addresses->has_data())
@@ -1033,9 +1039,11 @@ bool Snmp::Information::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 Snmp::Information::Hosts::Hosts()
+    :
+    host(this, {"name"})
 {
 
-    yang_name = "hosts"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hosts"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::Hosts::~Hosts()
@@ -1044,7 +1052,8 @@ Snmp::Information::Hosts::~Hosts()
 
 bool Snmp::Information::Hosts::has_data() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_data())
             return true;
@@ -1054,7 +1063,7 @@ bool Snmp::Information::Hosts::has_data() const
 
 bool Snmp::Information::Hosts::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_operation())
             return true;
@@ -1091,7 +1100,7 @@ std::shared_ptr<Entity> Snmp::Information::Hosts::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Snmp::Information::Hosts::Host>();
         c->parent = this;
-        host.push_back(c);
+        host.append(c);
         return c;
     }
 
@@ -1103,7 +1112,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Hosts::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : host)
+    for (auto c : host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1132,9 +1141,11 @@ bool Snmp::Information::Hosts::has_leaf_or_child_of_name(const std::string & nam
 Snmp::Information::Hosts::Host::Host()
     :
     name{YType::str, "name"}
+        ,
+    host_information(this, {"user"})
 {
 
-    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::Hosts::Host::~Host()
@@ -1143,7 +1154,8 @@ Snmp::Information::Hosts::Host::~Host()
 
 bool Snmp::Information::Hosts::Host::has_data() const
 {
-    for (std::size_t index=0; index<host_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host_information.len(); index++)
     {
         if(host_information[index]->has_data())
             return true;
@@ -1153,7 +1165,7 @@ bool Snmp::Information::Hosts::Host::has_data() const
 
 bool Snmp::Information::Hosts::Host::has_operation() const
 {
-    for (std::size_t index=0; index<host_information.size(); index++)
+    for (std::size_t index=0; index<host_information.len(); index++)
     {
         if(host_information[index]->has_operation())
             return true;
@@ -1172,7 +1184,8 @@ std::string Snmp::Information::Hosts::Host::get_absolute_path() const
 std::string Snmp::Information::Hosts::Host::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "host" <<"[name='" <<name <<"']";
+    path_buffer << "host";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1192,7 +1205,7 @@ std::shared_ptr<Entity> Snmp::Information::Hosts::Host::get_child_by_name(const 
     {
         auto c = std::make_shared<Snmp::Information::Hosts::Host::HostInformation>();
         c->parent = this;
-        host_information.push_back(c);
+        host_information.append(c);
         return c;
     }
 
@@ -1204,7 +1217,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Hosts::Host::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : host_information)
+    for (auto c : host_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1251,7 +1264,7 @@ Snmp::Information::Hosts::Host::HostInformation::HostInformation()
     snmp_target_params_security_level{YType::str, "snmp-target-params-security-level"}
 {
 
-    yang_name = "host-information"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host-information"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Information::Hosts::Host::HostInformation::~HostInformation()
@@ -1260,6 +1273,7 @@ Snmp::Information::Hosts::Host::HostInformation::~HostInformation()
 
 bool Snmp::Information::Hosts::Host::HostInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return user.is_set
 	|| snmp_target_address_t_host.is_set
 	|| snmp_target_address_port.is_set
@@ -1284,7 +1298,8 @@ bool Snmp::Information::Hosts::Host::HostInformation::has_operation() const
 std::string Snmp::Information::Hosts::Host::HostInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "host-information" <<"[user='" <<user <<"']";
+    path_buffer << "host-information";
+    ADD_KEY_TOKEN(user, "user");
     return path_buffer.str();
 }
 
@@ -1406,7 +1421,7 @@ Snmp::Information::SystemUpTime::SystemUpTime()
     system_up_time_edm{YType::str, "system-up-time-edm"}
 {
 
-    yang_name = "system-up-time"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "system-up-time"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::SystemUpTime::~SystemUpTime()
@@ -1415,6 +1430,7 @@ Snmp::Information::SystemUpTime::~SystemUpTime()
 
 bool Snmp::Information::SystemUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return system_up_time_edm.is_set;
 }
 
@@ -1486,9 +1502,11 @@ bool Snmp::Information::SystemUpTime::has_leaf_or_child_of_name(const std::strin
 }
 
 Snmp::Information::NmsAddresses::NmsAddresses()
+    :
+    nms_address(this, {"nms_addr"})
 {
 
-    yang_name = "nms-addresses"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nms-addresses"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::NmsAddresses::~NmsAddresses()
@@ -1497,7 +1515,8 @@ Snmp::Information::NmsAddresses::~NmsAddresses()
 
 bool Snmp::Information::NmsAddresses::has_data() const
 {
-    for (std::size_t index=0; index<nms_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nms_address.len(); index++)
     {
         if(nms_address[index]->has_data())
             return true;
@@ -1507,7 +1526,7 @@ bool Snmp::Information::NmsAddresses::has_data() const
 
 bool Snmp::Information::NmsAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<nms_address.size(); index++)
+    for (std::size_t index=0; index<nms_address.len(); index++)
     {
         if(nms_address[index]->has_operation())
             return true;
@@ -1544,7 +1563,7 @@ std::shared_ptr<Entity> Snmp::Information::NmsAddresses::get_child_by_name(const
     {
         auto c = std::make_shared<Snmp::Information::NmsAddresses::NmsAddress>();
         c->parent = this;
-        nms_address.push_back(c);
+        nms_address.append(c);
         return c;
     }
 
@@ -1556,7 +1575,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::NmsAddresses::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nms_address)
+    for (auto c : nms_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1593,7 +1612,7 @@ Snmp::Information::NmsAddresses::NmsAddress::NmsAddress()
     test_request_count{YType::uint32, "test-request-count"}
 {
 
-    yang_name = "nms-address"; yang_parent_name = "nms-addresses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nms-address"; yang_parent_name = "nms-addresses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::NmsAddresses::NmsAddress::~NmsAddress()
@@ -1602,6 +1621,7 @@ Snmp::Information::NmsAddresses::NmsAddress::~NmsAddress()
 
 bool Snmp::Information::NmsAddresses::NmsAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return nms_addr.is_set
 	|| nms_address.is_set
 	|| get_request_count.is_set
@@ -1633,7 +1653,8 @@ std::string Snmp::Information::NmsAddresses::NmsAddress::get_absolute_path() con
 std::string Snmp::Information::NmsAddresses::NmsAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nms-address" <<"[nms-addr='" <<nms_addr <<"']";
+    path_buffer << "nms-address";
+    ADD_KEY_TOKEN(nms_addr, "nms-addr");
     return path_buffer.str();
 }
 
@@ -1755,7 +1776,7 @@ Snmp::Information::EngineId::EngineId()
     engine_id{YType::str, "engine-id"}
 {
 
-    yang_name = "engine-id"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "engine-id"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::EngineId::~EngineId()
@@ -1764,6 +1785,7 @@ Snmp::Information::EngineId::~EngineId()
 
 bool Snmp::Information::EngineId::has_data() const
 {
+    if (is_presence_container) return true;
     return engine_id.is_set;
 }
 
@@ -1843,9 +1865,12 @@ Snmp::Information::RxQueue::RxQueue()
     pend_min{YType::uint32, "pend-min"},
     pend_avg{YType::uint32, "pend-avg"},
     pend_max{YType::uint32, "pend-max"}
+        ,
+    incoming_q(this, {})
+    , pending_q(this, {})
 {
 
-    yang_name = "rx-queue"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rx-queue"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::RxQueue::~RxQueue()
@@ -1854,12 +1879,13 @@ Snmp::Information::RxQueue::~RxQueue()
 
 bool Snmp::Information::RxQueue::has_data() const
 {
-    for (std::size_t index=0; index<incoming_q.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<incoming_q.len(); index++)
     {
         if(incoming_q[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pending_q.size(); index++)
+    for (std::size_t index=0; index<pending_q.len(); index++)
     {
         if(pending_q[index]->has_data())
             return true;
@@ -1875,12 +1901,12 @@ bool Snmp::Information::RxQueue::has_data() const
 
 bool Snmp::Information::RxQueue::has_operation() const
 {
-    for (std::size_t index=0; index<incoming_q.size(); index++)
+    for (std::size_t index=0; index<incoming_q.len(); index++)
     {
         if(incoming_q[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pending_q.size(); index++)
+    for (std::size_t index=0; index<pending_q.len(); index++)
     {
         if(pending_q[index]->has_operation())
             return true;
@@ -1931,7 +1957,7 @@ std::shared_ptr<Entity> Snmp::Information::RxQueue::get_child_by_name(const std:
     {
         auto c = std::make_shared<Snmp::Information::RxQueue::IncomingQ>();
         c->parent = this;
-        incoming_q.push_back(c);
+        incoming_q.append(c);
         return c;
     }
 
@@ -1939,7 +1965,7 @@ std::shared_ptr<Entity> Snmp::Information::RxQueue::get_child_by_name(const std:
     {
         auto c = std::make_shared<Snmp::Information::RxQueue::PendingQ>();
         c->parent = this;
-        pending_q.push_back(c);
+        pending_q.append(c);
         return c;
     }
 
@@ -1951,7 +1977,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RxQueue::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : incoming_q)
+    for (auto c : incoming_q.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1960,7 +1986,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RxQueue::get_c
     }
 
     count = 0;
-    for (auto const & c : pending_q)
+    for (auto c : pending_q.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2063,7 +2089,7 @@ Snmp::Information::RxQueue::IncomingQ::IncomingQ()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "incoming-q"; yang_parent_name = "rx-queue"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "incoming-q"; yang_parent_name = "rx-queue"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::RxQueue::IncomingQ::~IncomingQ()
@@ -2072,6 +2098,7 @@ Snmp::Information::RxQueue::IncomingQ::~IncomingQ()
 
 bool Snmp::Information::RxQueue::IncomingQ::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| avg.is_set
 	|| max.is_set;
@@ -2175,7 +2202,7 @@ Snmp::Information::RxQueue::PendingQ::PendingQ()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "pending-q"; yang_parent_name = "rx-queue"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pending-q"; yang_parent_name = "rx-queue"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::RxQueue::PendingQ::~PendingQ()
@@ -2184,6 +2211,7 @@ Snmp::Information::RxQueue::PendingQ::~PendingQ()
 
 bool Snmp::Information::RxQueue::PendingQ::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| avg.is_set
 	|| max.is_set;
@@ -2285,7 +2313,7 @@ Snmp::Information::SystemName::SystemName()
     system_name{YType::str, "system-name"}
 {
 
-    yang_name = "system-name"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "system-name"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::SystemName::~SystemName()
@@ -2294,6 +2322,7 @@ Snmp::Information::SystemName::~SystemName()
 
 bool Snmp::Information::SystemName::has_data() const
 {
+    if (is_presence_container) return true;
     return system_name.is_set;
 }
 
@@ -2370,7 +2399,7 @@ Snmp::Information::RequestTypeDetail::RequestTypeDetail()
 {
     nms_addresses->parent = this;
 
-    yang_name = "request-type-detail"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "request-type-detail"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::RequestTypeDetail::~RequestTypeDetail()
@@ -2379,6 +2408,7 @@ Snmp::Information::RequestTypeDetail::~RequestTypeDetail()
 
 bool Snmp::Information::RequestTypeDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return (nms_addresses !=  nullptr && nms_addresses->has_data());
 }
 
@@ -2453,9 +2483,11 @@ bool Snmp::Information::RequestTypeDetail::has_leaf_or_child_of_name(const std::
 }
 
 Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddresses()
+    :
+    nms_address(this, {"nms_addr"})
 {
 
-    yang_name = "nms-addresses"; yang_parent_name = "request-type-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nms-addresses"; yang_parent_name = "request-type-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::RequestTypeDetail::NmsAddresses::~NmsAddresses()
@@ -2464,7 +2496,8 @@ Snmp::Information::RequestTypeDetail::NmsAddresses::~NmsAddresses()
 
 bool Snmp::Information::RequestTypeDetail::NmsAddresses::has_data() const
 {
-    for (std::size_t index=0; index<nms_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nms_address.len(); index++)
     {
         if(nms_address[index]->has_data())
             return true;
@@ -2474,7 +2507,7 @@ bool Snmp::Information::RequestTypeDetail::NmsAddresses::has_data() const
 
 bool Snmp::Information::RequestTypeDetail::NmsAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<nms_address.size(); index++)
+    for (std::size_t index=0; index<nms_address.len(); index++)
     {
         if(nms_address[index]->has_operation())
             return true;
@@ -2511,7 +2544,7 @@ std::shared_ptr<Entity> Snmp::Information::RequestTypeDetail::NmsAddresses::get_
     {
         auto c = std::make_shared<Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress>();
         c->parent = this;
-        nms_address.push_back(c);
+        nms_address.append(c);
         return c;
     }
 
@@ -2523,7 +2556,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RequestTypeDet
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nms_address)
+    for (auto c : nms_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2560,7 +2593,7 @@ Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::NmsAddress()
     infra_request_count{YType::uint32, "infra-request-count"}
 {
 
-    yang_name = "nms-address"; yang_parent_name = "nms-addresses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nms-address"; yang_parent_name = "nms-addresses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::~NmsAddress()
@@ -2569,6 +2602,7 @@ Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::~NmsAddress()
 
 bool Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return nms_addr.is_set
 	|| total_count.is_set
 	|| agent_request_count.is_set
@@ -2600,7 +2634,8 @@ std::string Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::get_
 std::string Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nms-address" <<"[nms-addr='" <<nms_addr <<"']";
+    path_buffer << "nms-address";
+    ADD_KEY_TOKEN(nms_addr, "nms-addr");
     return path_buffer.str();
 }
 
@@ -2732,7 +2767,7 @@ Snmp::Information::DuplicateDrop::DuplicateDrop()
     duplicate_drop_disable_count{YType::uint32, "duplicate-drop-disable-count"}
 {
 
-    yang_name = "duplicate-drop"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "duplicate-drop"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::DuplicateDrop::~DuplicateDrop()
@@ -2741,6 +2776,7 @@ Snmp::Information::DuplicateDrop::~DuplicateDrop()
 
 bool Snmp::Information::DuplicateDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return duplicate_request_status.is_set
 	|| last_status_change_time.is_set
 	|| duplicate_drop_configured_timeout.is_set
@@ -2942,9 +2978,11 @@ bool Snmp::Information::DuplicateDrop::has_leaf_or_child_of_name(const std::stri
 }
 
 Snmp::Information::BulkStatsTransfers::BulkStatsTransfers()
+    :
+    bulk_stats_transfer(this, {"transfer_name"})
 {
 
-    yang_name = "bulk-stats-transfers"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bulk-stats-transfers"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::BulkStatsTransfers::~BulkStatsTransfers()
@@ -2953,7 +2991,8 @@ Snmp::Information::BulkStatsTransfers::~BulkStatsTransfers()
 
 bool Snmp::Information::BulkStatsTransfers::has_data() const
 {
-    for (std::size_t index=0; index<bulk_stats_transfer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bulk_stats_transfer.len(); index++)
     {
         if(bulk_stats_transfer[index]->has_data())
             return true;
@@ -2963,7 +3002,7 @@ bool Snmp::Information::BulkStatsTransfers::has_data() const
 
 bool Snmp::Information::BulkStatsTransfers::has_operation() const
 {
-    for (std::size_t index=0; index<bulk_stats_transfer.size(); index++)
+    for (std::size_t index=0; index<bulk_stats_transfer.len(); index++)
     {
         if(bulk_stats_transfer[index]->has_operation())
             return true;
@@ -3000,7 +3039,7 @@ std::shared_ptr<Entity> Snmp::Information::BulkStatsTransfers::get_child_by_name
     {
         auto c = std::make_shared<Snmp::Information::BulkStatsTransfers::BulkStatsTransfer>();
         c->parent = this;
-        bulk_stats_transfer.push_back(c);
+        bulk_stats_transfer.append(c);
         return c;
     }
 
@@ -3012,7 +3051,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::BulkStatsTrans
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bulk_stats_transfer)
+    for (auto c : bulk_stats_transfer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3049,7 +3088,7 @@ Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::BulkStatsTransfer()
     retry_left{YType::uint32, "retry-left"}
 {
 
-    yang_name = "bulk-stats-transfer"; yang_parent_name = "bulk-stats-transfers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bulk-stats-transfer"; yang_parent_name = "bulk-stats-transfers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::~BulkStatsTransfer()
@@ -3058,6 +3097,7 @@ Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::~BulkStatsTransfer()
 
 bool Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::has_data() const
 {
+    if (is_presence_container) return true;
     return transfer_name.is_set
 	|| transfer_name_xr.is_set
 	|| url_primary.is_set
@@ -3089,7 +3129,8 @@ std::string Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::get_absolu
 std::string Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bulk-stats-transfer" <<"[transfer-name='" <<transfer_name <<"']";
+    path_buffer << "bulk-stats-transfer";
+    ADD_KEY_TOKEN(transfer_name, "transfer-name");
     return path_buffer.str();
 }
 
@@ -3207,9 +3248,11 @@ bool Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::has_leaf_or_child
 }
 
 Snmp::Information::TrapInfos::TrapInfos()
+    :
+    trap_info(this, {})
 {
 
-    yang_name = "trap-infos"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-infos"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::TrapInfos::~TrapInfos()
@@ -3218,7 +3261,8 @@ Snmp::Information::TrapInfos::~TrapInfos()
 
 bool Snmp::Information::TrapInfos::has_data() const
 {
-    for (std::size_t index=0; index<trap_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trap_info.len(); index++)
     {
         if(trap_info[index]->has_data())
             return true;
@@ -3228,7 +3272,7 @@ bool Snmp::Information::TrapInfos::has_data() const
 
 bool Snmp::Information::TrapInfos::has_operation() const
 {
-    for (std::size_t index=0; index<trap_info.size(); index++)
+    for (std::size_t index=0; index<trap_info.len(); index++)
     {
         if(trap_info[index]->has_operation())
             return true;
@@ -3265,7 +3309,7 @@ std::shared_ptr<Entity> Snmp::Information::TrapInfos::get_child_by_name(const st
     {
         auto c = std::make_shared<Snmp::Information::TrapInfos::TrapInfo>();
         c->parent = this;
-        trap_info.push_back(c);
+        trap_info.append(c);
         return c;
     }
 
@@ -3277,7 +3321,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapInfos::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trap_info)
+    for (auto c : trap_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3310,9 +3354,11 @@ Snmp::Information::TrapInfos::TrapInfo::TrapInfo()
     host{YType::str, "host"},
     port_xr{YType::uint16, "port-xr"},
     trap_oid_count{YType::uint32, "trap-oid-count"}
+        ,
+    trap_oi_dinfo(this, {})
 {
 
-    yang_name = "trap-info"; yang_parent_name = "trap-infos"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-info"; yang_parent_name = "trap-infos"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::TrapInfos::TrapInfo::~TrapInfo()
@@ -3321,7 +3367,8 @@ Snmp::Information::TrapInfos::TrapInfo::~TrapInfo()
 
 bool Snmp::Information::TrapInfos::TrapInfo::has_data() const
 {
-    for (std::size_t index=0; index<trap_oi_dinfo.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trap_oi_dinfo.len(); index++)
     {
         if(trap_oi_dinfo[index]->has_data())
             return true;
@@ -3335,7 +3382,7 @@ bool Snmp::Information::TrapInfos::TrapInfo::has_data() const
 
 bool Snmp::Information::TrapInfos::TrapInfo::has_operation() const
 {
-    for (std::size_t index=0; index<trap_oi_dinfo.size(); index++)
+    for (std::size_t index=0; index<trap_oi_dinfo.len(); index++)
     {
         if(trap_oi_dinfo[index]->has_operation())
             return true;
@@ -3382,7 +3429,7 @@ std::shared_ptr<Entity> Snmp::Information::TrapInfos::TrapInfo::get_child_by_nam
     {
         auto c = std::make_shared<Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo>();
         c->parent = this;
-        trap_oi_dinfo.push_back(c);
+        trap_oi_dinfo.append(c);
         return c;
     }
 
@@ -3394,7 +3441,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapInfos::Tra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trap_oi_dinfo)
+    for (auto c : trap_oi_dinfo.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3480,7 +3527,7 @@ Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::TrapOiDinfo()
     lasrdrop_time{YType::str, "lasrdrop-time"}
 {
 
-    yang_name = "trap-oi-dinfo"; yang_parent_name = "trap-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-oi-dinfo"; yang_parent_name = "trap-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::~TrapOiDinfo()
@@ -3489,6 +3536,7 @@ Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::~TrapOiDinfo()
 
 bool Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::has_data() const
 {
+    if (is_presence_container) return true;
     return trap_oid.is_set
 	|| count.is_set
 	|| drop_count.is_set
@@ -3625,9 +3673,11 @@ bool Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::has_leaf_or_child_of_n
 }
 
 Snmp::Information::PollOids::PollOids()
+    :
+    poll_oid(this, {"object_id"})
 {
 
-    yang_name = "poll-oids"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "poll-oids"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::PollOids::~PollOids()
@@ -3636,7 +3686,8 @@ Snmp::Information::PollOids::~PollOids()
 
 bool Snmp::Information::PollOids::has_data() const
 {
-    for (std::size_t index=0; index<poll_oid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<poll_oid.len(); index++)
     {
         if(poll_oid[index]->has_data())
             return true;
@@ -3646,7 +3697,7 @@ bool Snmp::Information::PollOids::has_data() const
 
 bool Snmp::Information::PollOids::has_operation() const
 {
-    for (std::size_t index=0; index<poll_oid.size(); index++)
+    for (std::size_t index=0; index<poll_oid.len(); index++)
     {
         if(poll_oid[index]->has_operation())
             return true;
@@ -3683,7 +3734,7 @@ std::shared_ptr<Entity> Snmp::Information::PollOids::get_child_by_name(const std
     {
         auto c = std::make_shared<Snmp::Information::PollOids::PollOid>();
         c->parent = this;
-        poll_oid.push_back(c);
+        poll_oid.append(c);
         return c;
     }
 
@@ -3695,7 +3746,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::PollOids::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : poll_oid)
+    for (auto c : poll_oid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3729,7 +3780,7 @@ Snmp::Information::PollOids::PollOid::PollOid()
     request_count{YType::uint32, "request-count"}
 {
 
-    yang_name = "poll-oid"; yang_parent_name = "poll-oids"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "poll-oid"; yang_parent_name = "poll-oids"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::PollOids::PollOid::~PollOid()
@@ -3738,6 +3789,7 @@ Snmp::Information::PollOids::PollOid::~PollOid()
 
 bool Snmp::Information::PollOids::PollOid::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : nms.getYLeafs())
     {
         if(leaf.is_set)
@@ -3781,7 +3833,8 @@ std::string Snmp::Information::PollOids::PollOid::get_absolute_path() const
 std::string Snmp::Information::PollOids::PollOid::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "poll-oid" <<"[object-id='" <<object_id <<"']";
+    path_buffer << "poll-oid";
+    ADD_KEY_TOKEN(object_id, "object-id");
     return path_buffer.str();
 }
 
@@ -3864,9 +3917,11 @@ bool Snmp::Information::PollOids::PollOid::has_leaf_or_child_of_name(const std::
 }
 
 Snmp::Information::InfomDetails::InfomDetails()
+    :
+    infom_detail(this, {})
 {
 
-    yang_name = "infom-details"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "infom-details"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::InfomDetails::~InfomDetails()
@@ -3875,7 +3930,8 @@ Snmp::Information::InfomDetails::~InfomDetails()
 
 bool Snmp::Information::InfomDetails::has_data() const
 {
-    for (std::size_t index=0; index<infom_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<infom_detail.len(); index++)
     {
         if(infom_detail[index]->has_data())
             return true;
@@ -3885,7 +3941,7 @@ bool Snmp::Information::InfomDetails::has_data() const
 
 bool Snmp::Information::InfomDetails::has_operation() const
 {
-    for (std::size_t index=0; index<infom_detail.size(); index++)
+    for (std::size_t index=0; index<infom_detail.len(); index++)
     {
         if(infom_detail[index]->has_operation())
             return true;
@@ -3922,7 +3978,7 @@ std::shared_ptr<Entity> Snmp::Information::InfomDetails::get_child_by_name(const
     {
         auto c = std::make_shared<Snmp::Information::InfomDetails::InfomDetail>();
         c->parent = this;
-        infom_detail.push_back(c);
+        infom_detail.append(c);
         return c;
     }
 
@@ -3934,7 +3990,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::InfomDetails::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : infom_detail)
+    for (auto c : infom_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3967,9 +4023,11 @@ Snmp::Information::InfomDetails::InfomDetail::InfomDetail()
     host{YType::str, "host"},
     port_xr{YType::uint16, "port-xr"},
     trap_oid_count{YType::uint32, "trap-oid-count"}
+        ,
+    trap_oi_dinfo(this, {})
 {
 
-    yang_name = "infom-detail"; yang_parent_name = "infom-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "infom-detail"; yang_parent_name = "infom-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::InfomDetails::InfomDetail::~InfomDetail()
@@ -3978,7 +4036,8 @@ Snmp::Information::InfomDetails::InfomDetail::~InfomDetail()
 
 bool Snmp::Information::InfomDetails::InfomDetail::has_data() const
 {
-    for (std::size_t index=0; index<trap_oi_dinfo.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trap_oi_dinfo.len(); index++)
     {
         if(trap_oi_dinfo[index]->has_data())
             return true;
@@ -3992,7 +4051,7 @@ bool Snmp::Information::InfomDetails::InfomDetail::has_data() const
 
 bool Snmp::Information::InfomDetails::InfomDetail::has_operation() const
 {
-    for (std::size_t index=0; index<trap_oi_dinfo.size(); index++)
+    for (std::size_t index=0; index<trap_oi_dinfo.len(); index++)
     {
         if(trap_oi_dinfo[index]->has_operation())
             return true;
@@ -4039,7 +4098,7 @@ std::shared_ptr<Entity> Snmp::Information::InfomDetails::InfomDetail::get_child_
     {
         auto c = std::make_shared<Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo>();
         c->parent = this;
-        trap_oi_dinfo.push_back(c);
+        trap_oi_dinfo.append(c);
         return c;
     }
 
@@ -4051,7 +4110,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::InfomDetails::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trap_oi_dinfo)
+    for (auto c : trap_oi_dinfo.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4137,7 +4196,7 @@ Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::TrapOiDinfo()
     lasrdrop_time{YType::str, "lasrdrop-time"}
 {
 
-    yang_name = "trap-oi-dinfo"; yang_parent_name = "infom-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-oi-dinfo"; yang_parent_name = "infom-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::~TrapOiDinfo()
@@ -4146,6 +4205,7 @@ Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::~TrapOiDinfo()
 
 bool Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::has_data() const
 {
+    if (is_presence_container) return true;
     return trap_oid.is_set
 	|| count.is_set
 	|| drop_count.is_set
@@ -4315,7 +4375,7 @@ Snmp::Information::Statistics::Statistics()
     traps_sent{YType::uint32, "traps-sent"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::Statistics::~Statistics()
@@ -4324,6 +4384,7 @@ Snmp::Information::Statistics::~Statistics()
 
 bool Snmp::Information::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return packets_received.is_set
 	|| bad_versions_received.is_set
 	|| bad_community_names_received.is_set
@@ -4774,9 +4835,11 @@ bool Snmp::Information::Statistics::has_leaf_or_child_of_name(const std::string 
 Snmp::Information::IncomingQueue::IncomingQueue()
     :
     queue_count{YType::uint32, "queue-count"}
+        ,
+    inq_entry(this, {})
 {
 
-    yang_name = "incoming-queue"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "incoming-queue"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::IncomingQueue::~IncomingQueue()
@@ -4785,7 +4848,8 @@ Snmp::Information::IncomingQueue::~IncomingQueue()
 
 bool Snmp::Information::IncomingQueue::has_data() const
 {
-    for (std::size_t index=0; index<inq_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<inq_entry.len(); index++)
     {
         if(inq_entry[index]->has_data())
             return true;
@@ -4795,7 +4859,7 @@ bool Snmp::Information::IncomingQueue::has_data() const
 
 bool Snmp::Information::IncomingQueue::has_operation() const
 {
-    for (std::size_t index=0; index<inq_entry.size(); index++)
+    for (std::size_t index=0; index<inq_entry.len(); index++)
     {
         if(inq_entry[index]->has_operation())
             return true;
@@ -4834,7 +4898,7 @@ std::shared_ptr<Entity> Snmp::Information::IncomingQueue::get_child_by_name(cons
     {
         auto c = std::make_shared<Snmp::Information::IncomingQueue::InqEntry>();
         c->parent = this;
-        inq_entry.push_back(c);
+        inq_entry.append(c);
         return c;
     }
 
@@ -4846,7 +4910,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::IncomingQueue:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : inq_entry)
+    for (auto c : inq_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4891,7 +4955,7 @@ Snmp::Information::IncomingQueue::InqEntry::InqEntry()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "inq-entry"; yang_parent_name = "incoming-queue"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inq-entry"; yang_parent_name = "incoming-queue"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::IncomingQueue::InqEntry::~InqEntry()
@@ -4900,6 +4964,7 @@ Snmp::Information::IncomingQueue::InqEntry::~InqEntry()
 
 bool Snmp::Information::IncomingQueue::InqEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return address_of_queue.is_set
 	|| request_count.is_set
 	|| processed_request_count.is_set
@@ -5023,9 +5088,11 @@ bool Snmp::Information::IncomingQueue::InqEntry::has_leaf_or_child_of_name(const
 }
 
 Snmp::Information::ContextMapping::ContextMapping()
+    :
+    contex_mapping(this, {})
 {
 
-    yang_name = "context-mapping"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "context-mapping"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::ContextMapping::~ContextMapping()
@@ -5034,7 +5101,8 @@ Snmp::Information::ContextMapping::~ContextMapping()
 
 bool Snmp::Information::ContextMapping::has_data() const
 {
-    for (std::size_t index=0; index<contex_mapping.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<contex_mapping.len(); index++)
     {
         if(contex_mapping[index]->has_data())
             return true;
@@ -5044,7 +5112,7 @@ bool Snmp::Information::ContextMapping::has_data() const
 
 bool Snmp::Information::ContextMapping::has_operation() const
 {
-    for (std::size_t index=0; index<contex_mapping.size(); index++)
+    for (std::size_t index=0; index<contex_mapping.len(); index++)
     {
         if(contex_mapping[index]->has_operation())
             return true;
@@ -5081,7 +5149,7 @@ std::shared_ptr<Entity> Snmp::Information::ContextMapping::get_child_by_name(con
     {
         auto c = std::make_shared<Snmp::Information::ContextMapping::ContexMapping>();
         c->parent = this;
-        contex_mapping.push_back(c);
+        contex_mapping.append(c);
         return c;
     }
 
@@ -5093,7 +5161,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::ContextMapping
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : contex_mapping)
+    for (auto c : contex_mapping.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5128,7 +5196,7 @@ Snmp::Information::ContextMapping::ContexMapping::ContexMapping()
     feature{YType::str, "feature"}
 {
 
-    yang_name = "contex-mapping"; yang_parent_name = "context-mapping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "contex-mapping"; yang_parent_name = "context-mapping"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::ContextMapping::ContexMapping::~ContexMapping()
@@ -5137,6 +5205,7 @@ Snmp::Information::ContextMapping::ContexMapping::~ContexMapping()
 
 bool Snmp::Information::ContextMapping::ContexMapping::has_data() const
 {
+    if (is_presence_container) return true;
     return context.is_set
 	|| feature_name.is_set
 	|| instance.is_set
@@ -5260,9 +5329,11 @@ bool Snmp::Information::ContextMapping::ContexMapping::has_leaf_or_child_of_name
 }
 
 Snmp::Information::TrapOids::TrapOids()
+    :
+    trap_oid(this, {"trap_oid"})
 {
 
-    yang_name = "trap-oids"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-oids"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::TrapOids::~TrapOids()
@@ -5271,7 +5342,8 @@ Snmp::Information::TrapOids::~TrapOids()
 
 bool Snmp::Information::TrapOids::has_data() const
 {
-    for (std::size_t index=0; index<trap_oid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trap_oid.len(); index++)
     {
         if(trap_oid[index]->has_data())
             return true;
@@ -5281,7 +5353,7 @@ bool Snmp::Information::TrapOids::has_data() const
 
 bool Snmp::Information::TrapOids::has_operation() const
 {
-    for (std::size_t index=0; index<trap_oid.size(); index++)
+    for (std::size_t index=0; index<trap_oid.len(); index++)
     {
         if(trap_oid[index]->has_operation())
             return true;
@@ -5318,7 +5390,7 @@ std::shared_ptr<Entity> Snmp::Information::TrapOids::get_child_by_name(const std
     {
         auto c = std::make_shared<Snmp::Information::TrapOids::TrapOid>();
         c->parent = this;
-        trap_oid.push_back(c);
+        trap_oid.append(c);
         return c;
     }
 
@@ -5330,7 +5402,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapOids::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trap_oid)
+    for (auto c : trap_oid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5363,7 +5435,7 @@ Snmp::Information::TrapOids::TrapOid::TrapOid()
     trap_oid_xr{YType::str, "trap-oid-xr"}
 {
 
-    yang_name = "trap-oid"; yang_parent_name = "trap-oids"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-oid"; yang_parent_name = "trap-oids"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::TrapOids::TrapOid::~TrapOid()
@@ -5372,6 +5444,7 @@ Snmp::Information::TrapOids::TrapOid::~TrapOid()
 
 bool Snmp::Information::TrapOids::TrapOid::has_data() const
 {
+    if (is_presence_container) return true;
     return trap_oid.is_set
 	|| trap_oid_count.is_set
 	|| trap_oid_xr.is_set;
@@ -5395,7 +5468,8 @@ std::string Snmp::Information::TrapOids::TrapOid::get_absolute_path() const
 std::string Snmp::Information::TrapOids::TrapOid::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trap-oid" <<"[trap-oid='" <<trap_oid <<"']";
+    path_buffer << "trap-oid";
+    ADD_KEY_TOKEN(trap_oid, "trap-oid");
     return path_buffer.str();
 }
 
@@ -5469,9 +5543,11 @@ bool Snmp::Information::TrapOids::TrapOid::has_leaf_or_child_of_name(const std::
 }
 
 Snmp::Information::NmSpackets::NmSpackets()
+    :
+    nm_spacket(this, {"packetcount"})
 {
 
-    yang_name = "nm-spackets"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nm-spackets"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::NmSpackets::~NmSpackets()
@@ -5480,7 +5556,8 @@ Snmp::Information::NmSpackets::~NmSpackets()
 
 bool Snmp::Information::NmSpackets::has_data() const
 {
-    for (std::size_t index=0; index<nm_spacket.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nm_spacket.len(); index++)
     {
         if(nm_spacket[index]->has_data())
             return true;
@@ -5490,7 +5567,7 @@ bool Snmp::Information::NmSpackets::has_data() const
 
 bool Snmp::Information::NmSpackets::has_operation() const
 {
-    for (std::size_t index=0; index<nm_spacket.size(); index++)
+    for (std::size_t index=0; index<nm_spacket.len(); index++)
     {
         if(nm_spacket[index]->has_operation())
             return true;
@@ -5527,7 +5604,7 @@ std::shared_ptr<Entity> Snmp::Information::NmSpackets::get_child_by_name(const s
     {
         auto c = std::make_shared<Snmp::Information::NmSpackets::NmSpacket>();
         c->parent = this;
-        nm_spacket.push_back(c);
+        nm_spacket.append(c);
         return c;
     }
 
@@ -5539,7 +5616,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::NmSpackets::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nm_spacket)
+    for (auto c : nm_spacket.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5574,7 +5651,7 @@ Snmp::Information::NmSpackets::NmSpacket::NmSpacket()
     overload_end_time{YType::str, "overload-end-time"}
 {
 
-    yang_name = "nm-spacket"; yang_parent_name = "nm-spackets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nm-spacket"; yang_parent_name = "nm-spackets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::NmSpackets::NmSpacket::~NmSpacket()
@@ -5583,6 +5660,7 @@ Snmp::Information::NmSpackets::NmSpacket::~NmSpacket()
 
 bool Snmp::Information::NmSpackets::NmSpacket::has_data() const
 {
+    if (is_presence_container) return true;
     return packetcount.is_set
 	|| number_of_nmsq_pkts_dropped.is_set
 	|| number_of_pkts_dropped.is_set
@@ -5610,7 +5688,8 @@ std::string Snmp::Information::NmSpackets::NmSpacket::get_absolute_path() const
 std::string Snmp::Information::NmSpackets::NmSpacket::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nm-spacket" <<"[packetcount='" <<packetcount <<"']";
+    path_buffer << "nm-spacket";
+    ADD_KEY_TOKEN(packetcount, "packetcount");
     return path_buffer.str();
 }
 
@@ -5706,9 +5785,11 @@ bool Snmp::Information::NmSpackets::NmSpacket::has_leaf_or_child_of_name(const s
 }
 
 Snmp::Information::Mibs::Mibs()
+    :
+    mib(this, {"name"})
 {
 
-    yang_name = "mibs"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mibs"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::Mibs::~Mibs()
@@ -5717,7 +5798,8 @@ Snmp::Information::Mibs::~Mibs()
 
 bool Snmp::Information::Mibs::has_data() const
 {
-    for (std::size_t index=0; index<mib.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mib.len(); index++)
     {
         if(mib[index]->has_data())
             return true;
@@ -5727,7 +5809,7 @@ bool Snmp::Information::Mibs::has_data() const
 
 bool Snmp::Information::Mibs::has_operation() const
 {
-    for (std::size_t index=0; index<mib.size(); index++)
+    for (std::size_t index=0; index<mib.len(); index++)
     {
         if(mib[index]->has_operation())
             return true;
@@ -5764,7 +5846,7 @@ std::shared_ptr<Entity> Snmp::Information::Mibs::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Snmp::Information::Mibs::Mib>();
         c->parent = this;
-        mib.push_back(c);
+        mib.append(c);
         return c;
     }
 
@@ -5776,7 +5858,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Mibs::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mib)
+    for (auto c : mib.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5805,14 +5887,14 @@ bool Snmp::Information::Mibs::has_leaf_or_child_of_name(const std::string & name
 Snmp::Information::Mibs::Mib::Mib()
     :
     name{YType::str, "name"}
-    	,
+        ,
     oids(std::make_shared<Snmp::Information::Mibs::Mib::Oids>())
-	,mib_information(std::make_shared<Snmp::Information::Mibs::Mib::MibInformation>())
+    , mib_information(std::make_shared<Snmp::Information::Mibs::Mib::MibInformation>())
 {
     oids->parent = this;
     mib_information->parent = this;
 
-    yang_name = "mib"; yang_parent_name = "mibs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mib"; yang_parent_name = "mibs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::Mibs::Mib::~Mib()
@@ -5821,6 +5903,7 @@ Snmp::Information::Mibs::Mib::~Mib()
 
 bool Snmp::Information::Mibs::Mib::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (oids !=  nullptr && oids->has_data())
 	|| (mib_information !=  nullptr && mib_information->has_data());
@@ -5844,7 +5927,8 @@ std::string Snmp::Information::Mibs::Mib::get_absolute_path() const
 std::string Snmp::Information::Mibs::Mib::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mib" <<"[name='" <<name <<"']";
+    path_buffer << "mib";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5924,9 +6008,11 @@ bool Snmp::Information::Mibs::Mib::has_leaf_or_child_of_name(const std::string &
 }
 
 Snmp::Information::Mibs::Mib::Oids::Oids()
+    :
+    oid(this, {"oid"})
 {
 
-    yang_name = "oids"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oids"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Information::Mibs::Mib::Oids::~Oids()
@@ -5935,7 +6021,8 @@ Snmp::Information::Mibs::Mib::Oids::~Oids()
 
 bool Snmp::Information::Mibs::Mib::Oids::has_data() const
 {
-    for (std::size_t index=0; index<oid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<oid.len(); index++)
     {
         if(oid[index]->has_data())
             return true;
@@ -5945,7 +6032,7 @@ bool Snmp::Information::Mibs::Mib::Oids::has_data() const
 
 bool Snmp::Information::Mibs::Mib::Oids::has_operation() const
 {
-    for (std::size_t index=0; index<oid.size(); index++)
+    for (std::size_t index=0; index<oid.len(); index++)
     {
         if(oid[index]->has_operation())
             return true;
@@ -5975,7 +6062,7 @@ std::shared_ptr<Entity> Snmp::Information::Mibs::Mib::Oids::get_child_by_name(co
     {
         auto c = std::make_shared<Snmp::Information::Mibs::Mib::Oids::Oid>();
         c->parent = this;
-        oid.push_back(c);
+        oid.append(c);
         return c;
     }
 
@@ -5987,7 +6074,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Mibs::Mib::Oid
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : oid)
+    for (auto c : oid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6019,7 +6106,7 @@ Snmp::Information::Mibs::Mib::Oids::Oid::Oid()
     oid_name{YType::str, "oid-name"}
 {
 
-    yang_name = "oid"; yang_parent_name = "oids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oid"; yang_parent_name = "oids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Information::Mibs::Mib::Oids::Oid::~Oid()
@@ -6028,6 +6115,7 @@ Snmp::Information::Mibs::Mib::Oids::Oid::~Oid()
 
 bool Snmp::Information::Mibs::Mib::Oids::Oid::has_data() const
 {
+    if (is_presence_container) return true;
     return oid.is_set
 	|| oid_name.is_set;
 }
@@ -6042,7 +6130,8 @@ bool Snmp::Information::Mibs::Mib::Oids::Oid::has_operation() const
 std::string Snmp::Information::Mibs::Mib::Oids::Oid::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "oid" <<"[oid='" <<oid <<"']";
+    path_buffer << "oid";
+    ADD_KEY_TOKEN(oid, "oid");
     return path_buffer.str();
 }
 
@@ -6116,7 +6205,7 @@ Snmp::Information::Mibs::Mib::MibInformation::MibInformation()
     load_time{YType::uint32, "load-time"}
 {
 
-    yang_name = "mib-information"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mib-information"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Information::Mibs::Mib::MibInformation::~MibInformation()
@@ -6125,6 +6214,7 @@ Snmp::Information::Mibs::Mib::MibInformation::~MibInformation()
 
 bool Snmp::Information::Mibs::Mib::MibInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return mib_name.is_set
 	|| dll_name.is_set
 	|| mib_config_filename.is_set
@@ -6280,9 +6370,11 @@ bool Snmp::Information::Mibs::Mib::MibInformation::has_leaf_or_child_of_name(con
 }
 
 Snmp::Information::SerialNumbers::SerialNumbers()
+    :
+    serial_number(this, {})
 {
 
-    yang_name = "serial-numbers"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "serial-numbers"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::SerialNumbers::~SerialNumbers()
@@ -6291,7 +6383,8 @@ Snmp::Information::SerialNumbers::~SerialNumbers()
 
 bool Snmp::Information::SerialNumbers::has_data() const
 {
-    for (std::size_t index=0; index<serial_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<serial_number.len(); index++)
     {
         if(serial_number[index]->has_data())
             return true;
@@ -6301,7 +6394,7 @@ bool Snmp::Information::SerialNumbers::has_data() const
 
 bool Snmp::Information::SerialNumbers::has_operation() const
 {
-    for (std::size_t index=0; index<serial_number.size(); index++)
+    for (std::size_t index=0; index<serial_number.len(); index++)
     {
         if(serial_number[index]->has_operation())
             return true;
@@ -6338,7 +6431,7 @@ std::shared_ptr<Entity> Snmp::Information::SerialNumbers::get_child_by_name(cons
     {
         auto c = std::make_shared<Snmp::Information::SerialNumbers::SerialNumber>();
         c->parent = this;
-        serial_number.push_back(c);
+        serial_number.append(c);
         return c;
     }
 
@@ -6350,7 +6443,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SerialNumbers:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : serial_number)
+    for (auto c : serial_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6379,7 +6472,7 @@ bool Snmp::Information::SerialNumbers::has_leaf_or_child_of_name(const std::stri
 Snmp::Information::SerialNumbers::SerialNumber::SerialNumber()
     :
     number{YType::str, "number"},
-    req_id{YType::int32, "req-id"},
+    req_id{YType::uint32, "req-id"},
     port{YType::uint16, "port"},
     nms{YType::str, "nms"},
     request_id{YType::uint32, "request-id"},
@@ -6393,7 +6486,7 @@ Snmp::Information::SerialNumbers::SerialNumber::SerialNumber()
     response_out{YType::uint32, "response-out"}
 {
 
-    yang_name = "serial-number"; yang_parent_name = "serial-numbers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "serial-number"; yang_parent_name = "serial-numbers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::SerialNumbers::SerialNumber::~SerialNumber()
@@ -6402,6 +6495,7 @@ Snmp::Information::SerialNumbers::SerialNumber::~SerialNumber()
 
 bool Snmp::Information::SerialNumbers::SerialNumber::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| req_id.is_set
 	|| port.is_set
@@ -6629,9 +6723,11 @@ bool Snmp::Information::SerialNumbers::SerialNumber::has_leaf_or_child_of_name(c
 }
 
 Snmp::Information::DropNmsAddresses::DropNmsAddresses()
+    :
+    drop_nms_address(this, {"nms_addr"})
 {
 
-    yang_name = "drop-nms-addresses"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "drop-nms-addresses"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::DropNmsAddresses::~DropNmsAddresses()
@@ -6640,7 +6736,8 @@ Snmp::Information::DropNmsAddresses::~DropNmsAddresses()
 
 bool Snmp::Information::DropNmsAddresses::has_data() const
 {
-    for (std::size_t index=0; index<drop_nms_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<drop_nms_address.len(); index++)
     {
         if(drop_nms_address[index]->has_data())
             return true;
@@ -6650,7 +6747,7 @@ bool Snmp::Information::DropNmsAddresses::has_data() const
 
 bool Snmp::Information::DropNmsAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<drop_nms_address.size(); index++)
+    for (std::size_t index=0; index<drop_nms_address.len(); index++)
     {
         if(drop_nms_address[index]->has_operation())
             return true;
@@ -6687,7 +6784,7 @@ std::shared_ptr<Entity> Snmp::Information::DropNmsAddresses::get_child_by_name(c
     {
         auto c = std::make_shared<Snmp::Information::DropNmsAddresses::DropNmsAddress>();
         c->parent = this;
-        drop_nms_address.push_back(c);
+        drop_nms_address.append(c);
         return c;
     }
 
@@ -6699,7 +6796,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::DropNmsAddress
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : drop_nms_address)
+    for (auto c : drop_nms_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6740,7 +6837,7 @@ Snmp::Information::DropNmsAddresses::DropNmsAddress::DropNmsAddress()
     internal_count{YType::uint32, "internal-count"}
 {
 
-    yang_name = "drop-nms-address"; yang_parent_name = "drop-nms-addresses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "drop-nms-address"; yang_parent_name = "drop-nms-addresses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::DropNmsAddresses::DropNmsAddress::~DropNmsAddress()
@@ -6749,6 +6846,7 @@ Snmp::Information::DropNmsAddresses::DropNmsAddress::~DropNmsAddress()
 
 bool Snmp::Information::DropNmsAddresses::DropNmsAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return nms_addr.is_set
 	|| nms_address.is_set
 	|| incoming_q_count.is_set
@@ -6788,7 +6886,8 @@ std::string Snmp::Information::DropNmsAddresses::DropNmsAddress::get_absolute_pa
 std::string Snmp::Information::DropNmsAddresses::DropNmsAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "drop-nms-address" <<"[nms-addr='" <<nms_addr <<"']";
+    path_buffer << "drop-nms-address";
+    ADD_KEY_TOKEN(nms_addr, "nms-addr");
     return path_buffer.str();
 }
 
@@ -6950,9 +7049,11 @@ bool Snmp::Information::DropNmsAddresses::DropNmsAddress::has_leaf_or_child_of_n
 }
 
 Snmp::Information::Views::Views()
+    :
+    view(this, {"name"})
 {
 
-    yang_name = "views"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "views"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::Views::~Views()
@@ -6961,7 +7062,8 @@ Snmp::Information::Views::~Views()
 
 bool Snmp::Information::Views::has_data() const
 {
-    for (std::size_t index=0; index<view.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<view.len(); index++)
     {
         if(view[index]->has_data())
             return true;
@@ -6971,7 +7073,7 @@ bool Snmp::Information::Views::has_data() const
 
 bool Snmp::Information::Views::has_operation() const
 {
-    for (std::size_t index=0; index<view.size(); index++)
+    for (std::size_t index=0; index<view.len(); index++)
     {
         if(view[index]->has_operation())
             return true;
@@ -7008,7 +7110,7 @@ std::shared_ptr<Entity> Snmp::Information::Views::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Snmp::Information::Views::View>();
         c->parent = this;
-        view.push_back(c);
+        view.append(c);
         return c;
     }
 
@@ -7020,7 +7122,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Views::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : view)
+    for (auto c : view.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7049,9 +7151,11 @@ bool Snmp::Information::Views::has_leaf_or_child_of_name(const std::string & nam
 Snmp::Information::Views::View::View()
     :
     name{YType::str, "name"}
+        ,
+    view_information(this, {"object_id"})
 {
 
-    yang_name = "view"; yang_parent_name = "views"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "view"; yang_parent_name = "views"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::Views::View::~View()
@@ -7060,7 +7164,8 @@ Snmp::Information::Views::View::~View()
 
 bool Snmp::Information::Views::View::has_data() const
 {
-    for (std::size_t index=0; index<view_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<view_information.len(); index++)
     {
         if(view_information[index]->has_data())
             return true;
@@ -7070,7 +7175,7 @@ bool Snmp::Information::Views::View::has_data() const
 
 bool Snmp::Information::Views::View::has_operation() const
 {
-    for (std::size_t index=0; index<view_information.size(); index++)
+    for (std::size_t index=0; index<view_information.len(); index++)
     {
         if(view_information[index]->has_operation())
             return true;
@@ -7089,7 +7194,8 @@ std::string Snmp::Information::Views::View::get_absolute_path() const
 std::string Snmp::Information::Views::View::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "view" <<"[name='" <<name <<"']";
+    path_buffer << "view";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -7109,7 +7215,7 @@ std::shared_ptr<Entity> Snmp::Information::Views::View::get_child_by_name(const 
     {
         auto c = std::make_shared<Snmp::Information::Views::View::ViewInformation>();
         c->parent = this;
-        view_information.push_back(c);
+        view_information.append(c);
         return c;
     }
 
@@ -7121,7 +7227,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Views::View::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : view_information)
+    for (auto c : view_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7165,7 +7271,7 @@ Snmp::Information::Views::View::ViewInformation::ViewInformation()
     snmp_view_family_status{YType::str, "snmp-view-family-status"}
 {
 
-    yang_name = "view-information"; yang_parent_name = "view"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "view-information"; yang_parent_name = "view"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Information::Views::View::ViewInformation::~ViewInformation()
@@ -7174,6 +7280,7 @@ Snmp::Information::Views::View::ViewInformation::~ViewInformation()
 
 bool Snmp::Information::Views::View::ViewInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return object_id.is_set
 	|| snmp_view_family_type.is_set
 	|| snmp_view_family_storage_type.is_set
@@ -7192,7 +7299,8 @@ bool Snmp::Information::Views::View::ViewInformation::has_operation() const
 std::string Snmp::Information::Views::View::ViewInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "view-information" <<"[object-id='" <<object_id <<"']";
+    path_buffer << "view-information";
+    ADD_KEY_TOKEN(object_id, "object-id");
     return path_buffer.str();
 }
 
@@ -7281,7 +7389,7 @@ Snmp::Information::SystemDescr::SystemDescr()
     sys_descr{YType::str, "sys-descr"}
 {
 
-    yang_name = "system-descr"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "system-descr"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::SystemDescr::~SystemDescr()
@@ -7290,6 +7398,7 @@ Snmp::Information::SystemDescr::~SystemDescr()
 
 bool Snmp::Information::SystemDescr::has_data() const
 {
+    if (is_presence_container) return true;
     return sys_descr.is_set;
 }
 
@@ -7363,12 +7472,12 @@ bool Snmp::Information::SystemDescr::has_leaf_or_child_of_name(const std::string
 Snmp::Information::Tables::Tables()
     :
     groups(std::make_shared<Snmp::Information::Tables::Groups>())
-	,user_engine_ids(std::make_shared<Snmp::Information::Tables::UserEngineIds>())
+    , user_engine_ids(std::make_shared<Snmp::Information::Tables::UserEngineIds>())
 {
     groups->parent = this;
     user_engine_ids->parent = this;
 
-    yang_name = "tables"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tables"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::Tables::~Tables()
@@ -7377,6 +7486,7 @@ Snmp::Information::Tables::~Tables()
 
 bool Snmp::Information::Tables::has_data() const
 {
+    if (is_presence_container) return true;
     return (groups !=  nullptr && groups->has_data())
 	|| (user_engine_ids !=  nullptr && user_engine_ids->has_data());
 }
@@ -7467,9 +7577,11 @@ bool Snmp::Information::Tables::has_leaf_or_child_of_name(const std::string & na
 }
 
 Snmp::Information::Tables::Groups::Groups()
+    :
+    group(this, {"name"})
 {
 
-    yang_name = "groups"; yang_parent_name = "tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::Tables::Groups::~Groups()
@@ -7478,7 +7590,8 @@ Snmp::Information::Tables::Groups::~Groups()
 
 bool Snmp::Information::Tables::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -7488,7 +7601,7 @@ bool Snmp::Information::Tables::Groups::has_data() const
 
 bool Snmp::Information::Tables::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -7525,7 +7638,7 @@ std::shared_ptr<Entity> Snmp::Information::Tables::Groups::get_child_by_name(con
     {
         auto c = std::make_shared<Snmp::Information::Tables::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -7537,7 +7650,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::Groups
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7566,12 +7679,12 @@ bool Snmp::Information::Tables::Groups::has_leaf_or_child_of_name(const std::str
 Snmp::Information::Tables::Groups::Group::Group()
     :
     name{YType::str, "name"}
-    	,
+        ,
     group_informations(std::make_shared<Snmp::Information::Tables::Groups::Group::GroupInformations>())
 {
     group_informations->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::Tables::Groups::Group::~Group()
@@ -7580,6 +7693,7 @@ Snmp::Information::Tables::Groups::Group::~Group()
 
 bool Snmp::Information::Tables::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (group_informations !=  nullptr && group_informations->has_data());
 }
@@ -7601,7 +7715,8 @@ std::string Snmp::Information::Tables::Groups::Group::get_absolute_path() const
 std::string Snmp::Information::Tables::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[name='" <<name <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -7667,9 +7782,11 @@ bool Snmp::Information::Tables::Groups::Group::has_leaf_or_child_of_name(const s
 }
 
 Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformations()
+    :
+    group_information(this, {})
 {
 
-    yang_name = "group-informations"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-informations"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Information::Tables::Groups::Group::GroupInformations::~GroupInformations()
@@ -7678,7 +7795,8 @@ Snmp::Information::Tables::Groups::Group::GroupInformations::~GroupInformations(
 
 bool Snmp::Information::Tables::Groups::Group::GroupInformations::has_data() const
 {
-    for (std::size_t index=0; index<group_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group_information.len(); index++)
     {
         if(group_information[index]->has_data())
             return true;
@@ -7688,7 +7806,7 @@ bool Snmp::Information::Tables::Groups::Group::GroupInformations::has_data() con
 
 bool Snmp::Information::Tables::Groups::Group::GroupInformations::has_operation() const
 {
-    for (std::size_t index=0; index<group_information.size(); index++)
+    for (std::size_t index=0; index<group_information.len(); index++)
     {
         if(group_information[index]->has_operation())
             return true;
@@ -7718,7 +7836,7 @@ std::shared_ptr<Entity> Snmp::Information::Tables::Groups::Group::GroupInformati
     {
         auto c = std::make_shared<Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation>();
         c->parent = this;
-        group_information.push_back(c);
+        group_information.append(c);
         return c;
     }
 
@@ -7730,7 +7848,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::Groups
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group_information)
+    for (auto c : group_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7766,7 +7884,7 @@ Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation::G
     vacm_access_status{YType::uint32, "vacm-access-status"}
 {
 
-    yang_name = "group-information"; yang_parent_name = "group-informations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-information"; yang_parent_name = "group-informations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation::~GroupInformation()
@@ -7775,6 +7893,7 @@ Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation::~
 
 bool Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return modelnumber.is_set
 	|| level.is_set
 	|| vacm_access_read_view_name.is_set
@@ -7904,9 +8023,11 @@ bool Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformati
 }
 
 Snmp::Information::Tables::UserEngineIds::UserEngineIds()
+    :
+    user_engine_id(this, {"engine_id"})
 {
 
-    yang_name = "user-engine-ids"; yang_parent_name = "tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "user-engine-ids"; yang_parent_name = "tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::Tables::UserEngineIds::~UserEngineIds()
@@ -7915,7 +8036,8 @@ Snmp::Information::Tables::UserEngineIds::~UserEngineIds()
 
 bool Snmp::Information::Tables::UserEngineIds::has_data() const
 {
-    for (std::size_t index=0; index<user_engine_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<user_engine_id.len(); index++)
     {
         if(user_engine_id[index]->has_data())
             return true;
@@ -7925,7 +8047,7 @@ bool Snmp::Information::Tables::UserEngineIds::has_data() const
 
 bool Snmp::Information::Tables::UserEngineIds::has_operation() const
 {
-    for (std::size_t index=0; index<user_engine_id.size(); index++)
+    for (std::size_t index=0; index<user_engine_id.len(); index++)
     {
         if(user_engine_id[index]->has_operation())
             return true;
@@ -7962,7 +8084,7 @@ std::shared_ptr<Entity> Snmp::Information::Tables::UserEngineIds::get_child_by_n
     {
         auto c = std::make_shared<Snmp::Information::Tables::UserEngineIds::UserEngineId>();
         c->parent = this;
-        user_engine_id.push_back(c);
+        user_engine_id.append(c);
         return c;
     }
 
@@ -7974,7 +8096,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::UserEn
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : user_engine_id)
+    for (auto c : user_engine_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8003,9 +8125,11 @@ bool Snmp::Information::Tables::UserEngineIds::has_leaf_or_child_of_name(const s
 Snmp::Information::Tables::UserEngineIds::UserEngineId::UserEngineId()
     :
     engine_id{YType::str, "engine-id"}
+        ,
+    user_name(this, {"user_name"})
 {
 
-    yang_name = "user-engine-id"; yang_parent_name = "user-engine-ids"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "user-engine-id"; yang_parent_name = "user-engine-ids"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::Tables::UserEngineIds::UserEngineId::~UserEngineId()
@@ -8014,7 +8138,8 @@ Snmp::Information::Tables::UserEngineIds::UserEngineId::~UserEngineId()
 
 bool Snmp::Information::Tables::UserEngineIds::UserEngineId::has_data() const
 {
-    for (std::size_t index=0; index<user_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<user_name.len(); index++)
     {
         if(user_name[index]->has_data())
             return true;
@@ -8024,7 +8149,7 @@ bool Snmp::Information::Tables::UserEngineIds::UserEngineId::has_data() const
 
 bool Snmp::Information::Tables::UserEngineIds::UserEngineId::has_operation() const
 {
-    for (std::size_t index=0; index<user_name.size(); index++)
+    for (std::size_t index=0; index<user_name.len(); index++)
     {
         if(user_name[index]->has_operation())
             return true;
@@ -8043,7 +8168,8 @@ std::string Snmp::Information::Tables::UserEngineIds::UserEngineId::get_absolute
 std::string Snmp::Information::Tables::UserEngineIds::UserEngineId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "user-engine-id" <<"[engine-id='" <<engine_id <<"']";
+    path_buffer << "user-engine-id";
+    ADD_KEY_TOKEN(engine_id, "engine-id");
     return path_buffer.str();
 }
 
@@ -8063,7 +8189,7 @@ std::shared_ptr<Entity> Snmp::Information::Tables::UserEngineIds::UserEngineId::
     {
         auto c = std::make_shared<Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName>();
         c->parent = this;
-        user_name.push_back(c);
+        user_name.append(c);
         return c;
     }
 
@@ -8075,7 +8201,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::UserEn
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : user_name)
+    for (auto c : user_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8118,7 +8244,7 @@ Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::UserName()
     usm_user_status{YType::uint32, "usm-user-status"}
 {
 
-    yang_name = "user-name"; yang_parent_name = "user-engine-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "user-name"; yang_parent_name = "user-engine-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::~UserName()
@@ -8127,6 +8253,7 @@ Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::~UserName()
 
 bool Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::has_data() const
 {
+    if (is_presence_container) return true;
     return user_name.is_set
 	|| usm_user_storage_type.is_set
 	|| usm_user_status.is_set;
@@ -8143,7 +8270,8 @@ bool Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::has_opera
 std::string Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "user-name" <<"[user-name='" <<user_name <<"']";
+    path_buffer << "user-name";
+    ADD_KEY_TOKEN(user_name, "user-name");
     return path_buffer.str();
 }
 
@@ -8221,7 +8349,7 @@ Snmp::Information::SystemOid::SystemOid()
     sys_obj_id{YType::str, "sys-obj-id"}
 {
 
-    yang_name = "system-oid"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "system-oid"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::SystemOid::~SystemOid()
@@ -8230,6 +8358,7 @@ Snmp::Information::SystemOid::~SystemOid()
 
 bool Snmp::Information::SystemOid::has_data() const
 {
+    if (is_presence_container) return true;
     return sys_obj_id.is_set;
 }
 
@@ -8305,9 +8434,11 @@ Snmp::Information::TrapQueue::TrapQueue()
     trap_min{YType::uint32, "trap-min"},
     trap_avg{YType::uint32, "trap-avg"},
     trap_max{YType::uint32, "trap-max"}
+        ,
+    trap_q(this, {})
 {
 
-    yang_name = "trap-queue"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-queue"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::TrapQueue::~TrapQueue()
@@ -8316,7 +8447,8 @@ Snmp::Information::TrapQueue::~TrapQueue()
 
 bool Snmp::Information::TrapQueue::has_data() const
 {
-    for (std::size_t index=0; index<trap_q.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trap_q.len(); index++)
     {
         if(trap_q[index]->has_data())
             return true;
@@ -8328,7 +8460,7 @@ bool Snmp::Information::TrapQueue::has_data() const
 
 bool Snmp::Information::TrapQueue::has_operation() const
 {
-    for (std::size_t index=0; index<trap_q.size(); index++)
+    for (std::size_t index=0; index<trap_q.len(); index++)
     {
         if(trap_q[index]->has_operation())
             return true;
@@ -8371,7 +8503,7 @@ std::shared_ptr<Entity> Snmp::Information::TrapQueue::get_child_by_name(const st
     {
         auto c = std::make_shared<Snmp::Information::TrapQueue::TrapQ>();
         c->parent = this;
-        trap_q.push_back(c);
+        trap_q.append(c);
         return c;
     }
 
@@ -8383,7 +8515,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapQueue::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trap_q)
+    for (auto c : trap_q.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8446,7 +8578,7 @@ Snmp::Information::TrapQueue::TrapQ::TrapQ()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "trap-q"; yang_parent_name = "trap-queue"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-q"; yang_parent_name = "trap-queue"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Information::TrapQueue::TrapQ::~TrapQ()
@@ -8455,6 +8587,7 @@ Snmp::Information::TrapQueue::TrapQ::~TrapQ()
 
 bool Snmp::Information::TrapQueue::TrapQ::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| avg.is_set
 	|| max.is_set;
@@ -8552,9 +8685,11 @@ bool Snmp::Information::TrapQueue::TrapQ::has_leaf_or_child_of_name(const std::s
 }
 
 Snmp::Interfaces::Interfaces()
+    :
+    interface(this, {"name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Interfaces::~Interfaces()
@@ -8563,7 +8698,8 @@ Snmp::Interfaces::~Interfaces()
 
 bool Snmp::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -8573,7 +8709,7 @@ bool Snmp::Interfaces::has_data() const
 
 bool Snmp::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -8610,7 +8746,7 @@ std::shared_ptr<Entity> Snmp::Interfaces::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Snmp::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -8622,7 +8758,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Interfaces::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8651,10 +8787,10 @@ bool Snmp::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
 Snmp::Interfaces::Interface::Interface()
     :
     name{YType::str, "name"},
-    interface_index{YType::int32, "interface-index"}
+    interface_index{YType::uint32, "interface-index"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Interfaces::Interface::~Interface()
@@ -8663,6 +8799,7 @@ Snmp::Interfaces::Interface::~Interface()
 
 bool Snmp::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| interface_index.is_set;
 }
@@ -8684,7 +8821,8 @@ std::string Snmp::Interfaces::Interface::get_absolute_path() const
 std::string Snmp::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[name='" <<name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -8749,16 +8887,16 @@ bool Snmp::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & 
 Snmp::Correlator::Correlator()
     :
     rule_details(std::make_shared<Snmp::Correlator::RuleDetails>())
-	,buffer_status(std::make_shared<Snmp::Correlator::BufferStatus>())
-	,rule_set_details(std::make_shared<Snmp::Correlator::RuleSetDetails>())
-	,traps(std::make_shared<Snmp::Correlator::Traps>())
+    , buffer_status(std::make_shared<Snmp::Correlator::BufferStatus>())
+    , rule_set_details(std::make_shared<Snmp::Correlator::RuleSetDetails>())
+    , traps(std::make_shared<Snmp::Correlator::Traps>())
 {
     rule_details->parent = this;
     buffer_status->parent = this;
     rule_set_details->parent = this;
     traps->parent = this;
 
-    yang_name = "correlator"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "correlator"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Correlator::~Correlator()
@@ -8767,6 +8905,7 @@ Snmp::Correlator::~Correlator()
 
 bool Snmp::Correlator::has_data() const
 {
+    if (is_presence_container) return true;
     return (rule_details !=  nullptr && rule_details->has_data())
 	|| (buffer_status !=  nullptr && buffer_status->has_data())
 	|| (rule_set_details !=  nullptr && rule_set_details->has_data())
@@ -8889,9 +9028,11 @@ bool Snmp::Correlator::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Snmp::Correlator::RuleDetails::RuleDetails()
+    :
+    rule_detail(this, {"rule_name"})
 {
 
-    yang_name = "rule-details"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-details"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Correlator::RuleDetails::~RuleDetails()
@@ -8900,7 +9041,8 @@ Snmp::Correlator::RuleDetails::~RuleDetails()
 
 bool Snmp::Correlator::RuleDetails::has_data() const
 {
-    for (std::size_t index=0; index<rule_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule_detail.len(); index++)
     {
         if(rule_detail[index]->has_data())
             return true;
@@ -8910,7 +9052,7 @@ bool Snmp::Correlator::RuleDetails::has_data() const
 
 bool Snmp::Correlator::RuleDetails::has_operation() const
 {
-    for (std::size_t index=0; index<rule_detail.size(); index++)
+    for (std::size_t index=0; index<rule_detail.len(); index++)
     {
         if(rule_detail[index]->has_operation())
             return true;
@@ -8947,7 +9089,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::get_child_by_name(const s
     {
         auto c = std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail>();
         c->parent = this;
-        rule_detail.push_back(c);
+        rule_detail.append(c);
         return c;
     }
 
@@ -8959,7 +9101,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule_detail)
+    for (auto c : rule_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8989,14 +9131,16 @@ Snmp::Correlator::RuleDetails::RuleDetail::RuleDetail()
     :
     rule_name{YType::str, "rule-name"},
     timeout{YType::uint32, "timeout"}
-    	,
+        ,
     rule_summary(std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary>())
-	,root_cause(std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail::RootCause>())
+    , root_cause(std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail::RootCause>())
+    , non_rootcaus(this, {})
+    , apply_host(this, {})
 {
     rule_summary->parent = this;
     root_cause->parent = this;
 
-    yang_name = "rule-detail"; yang_parent_name = "rule-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-detail"; yang_parent_name = "rule-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::~RuleDetail()
@@ -9005,12 +9149,13 @@ Snmp::Correlator::RuleDetails::RuleDetail::~RuleDetail()
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::has_data() const
 {
-    for (std::size_t index=0; index<non_rootcaus.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<non_rootcaus.len(); index++)
     {
         if(non_rootcaus[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<apply_host.size(); index++)
+    for (std::size_t index=0; index<apply_host.len(); index++)
     {
         if(apply_host[index]->has_data())
             return true;
@@ -9023,12 +9168,12 @@ bool Snmp::Correlator::RuleDetails::RuleDetail::has_data() const
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::has_operation() const
 {
-    for (std::size_t index=0; index<non_rootcaus.size(); index++)
+    for (std::size_t index=0; index<non_rootcaus.len(); index++)
     {
         if(non_rootcaus[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<apply_host.size(); index++)
+    for (std::size_t index=0; index<apply_host.len(); index++)
     {
         if(apply_host[index]->has_operation())
             return true;
@@ -9050,7 +9195,8 @@ std::string Snmp::Correlator::RuleDetails::RuleDetail::get_absolute_path() const
 std::string Snmp::Correlator::RuleDetails::RuleDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule-detail" <<"[rule-name='" <<rule_name <<"']";
+    path_buffer << "rule-detail";
+    ADD_KEY_TOKEN(rule_name, "rule-name");
     return path_buffer.str();
 }
 
@@ -9089,7 +9235,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::get_child_by_
     {
         auto c = std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus>();
         c->parent = this;
-        non_rootcaus.push_back(c);
+        non_rootcaus.append(c);
         return c;
     }
 
@@ -9097,7 +9243,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::get_child_by_
     {
         auto c = std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost>();
         c->parent = this;
-        apply_host.push_back(c);
+        apply_host.append(c);
         return c;
     }
 
@@ -9119,7 +9265,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::Ru
     }
 
     count = 0;
-    for (auto const & c : non_rootcaus)
+    for (auto c : non_rootcaus.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9128,7 +9274,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::Ru
     }
 
     count = 0;
-    for (auto const & c : apply_host)
+    for (auto c : apply_host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9181,7 +9327,7 @@ Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::RuleSummary()
     buffered_traps_count{YType::uint32, "buffered-traps-count"}
 {
 
-    yang_name = "rule-summary"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rule-summary"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::~RuleSummary()
@@ -9190,6 +9336,7 @@ Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::~RuleSummary()
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return rule_name.is_set
 	|| rule_state.is_set
 	|| buffered_traps_count.is_set;
@@ -9282,9 +9429,11 @@ bool Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::has_leaf_or_child_o
 Snmp::Correlator::RuleDetails::RuleDetail::RootCause::RootCause()
     :
     oid{YType::str, "oid"}
+        ,
+    var_bind(this, {})
 {
 
-    yang_name = "root-cause"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "root-cause"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::RootCause::~RootCause()
@@ -9293,7 +9442,8 @@ Snmp::Correlator::RuleDetails::RuleDetail::RootCause::~RootCause()
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::RootCause::has_data() const
 {
-    for (std::size_t index=0; index<var_bind.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<var_bind.len(); index++)
     {
         if(var_bind[index]->has_data())
             return true;
@@ -9303,7 +9453,7 @@ bool Snmp::Correlator::RuleDetails::RuleDetail::RootCause::has_data() const
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::RootCause::has_operation() const
 {
-    for (std::size_t index=0; index<var_bind.size(); index++)
+    for (std::size_t index=0; index<var_bind.len(); index++)
     {
         if(var_bind[index]->has_operation())
             return true;
@@ -9335,7 +9485,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::RootCause::ge
     {
         auto c = std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind>();
         c->parent = this;
-        var_bind.push_back(c);
+        var_bind.append(c);
         return c;
     }
 
@@ -9347,7 +9497,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::Ru
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : var_bind)
+    for (auto c : var_bind.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9390,7 +9540,7 @@ Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::VarBind()
     reg_exp{YType::str, "reg-exp"}
 {
 
-    yang_name = "var-bind"; yang_parent_name = "root-cause"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "var-bind"; yang_parent_name = "root-cause"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::~VarBind()
@@ -9399,6 +9549,7 @@ Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::~VarBind()
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::has_data() const
 {
+    if (is_presence_container) return true;
     return oid.is_set
 	|| match_type.is_set
 	|| reg_exp.is_set;
@@ -9491,9 +9642,11 @@ bool Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::has_leaf_or_
 Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::NonRootcaus()
     :
     oid{YType::str, "oid"}
+        ,
+    var_bind(this, {})
 {
 
-    yang_name = "non-rootcaus"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "non-rootcaus"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::~NonRootcaus()
@@ -9502,7 +9655,8 @@ Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::~NonRootcaus()
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::has_data() const
 {
-    for (std::size_t index=0; index<var_bind.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<var_bind.len(); index++)
     {
         if(var_bind[index]->has_data())
             return true;
@@ -9512,7 +9666,7 @@ bool Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::has_data() const
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::has_operation() const
 {
-    for (std::size_t index=0; index<var_bind.size(); index++)
+    for (std::size_t index=0; index<var_bind.len(); index++)
     {
         if(var_bind[index]->has_operation())
             return true;
@@ -9544,7 +9698,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::
     {
         auto c = std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind>();
         c->parent = this;
-        var_bind.push_back(c);
+        var_bind.append(c);
         return c;
     }
 
@@ -9556,7 +9710,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::Ru
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : var_bind)
+    for (auto c : var_bind.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9599,7 +9753,7 @@ Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::VarBind()
     reg_exp{YType::str, "reg-exp"}
 {
 
-    yang_name = "var-bind"; yang_parent_name = "non-rootcaus"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "var-bind"; yang_parent_name = "non-rootcaus"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::~VarBind()
@@ -9608,6 +9762,7 @@ Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::~VarBind()
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::has_data() const
 {
+    if (is_presence_container) return true;
     return oid.is_set
 	|| match_type.is_set
 	|| reg_exp.is_set;
@@ -9703,7 +9858,7 @@ Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::ApplyHost()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "apply-host"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "apply-host"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::~ApplyHost()
@@ -9712,6 +9867,7 @@ Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::~ApplyHost()
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| port.is_set;
 }
@@ -9794,7 +9950,7 @@ Snmp::Correlator::BufferStatus::BufferStatus()
     configured_size{YType::uint32, "configured-size"}
 {
 
-    yang_name = "buffer-status"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "buffer-status"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Correlator::BufferStatus::~BufferStatus()
@@ -9803,6 +9959,7 @@ Snmp::Correlator::BufferStatus::~BufferStatus()
 
 bool Snmp::Correlator::BufferStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return current_size.is_set
 	|| configured_size.is_set;
 }
@@ -9887,9 +10044,11 @@ bool Snmp::Correlator::BufferStatus::has_leaf_or_child_of_name(const std::string
 }
 
 Snmp::Correlator::RuleSetDetails::RuleSetDetails()
+    :
+    rule_set_detail(this, {"rule_set_name"})
 {
 
-    yang_name = "rule-set-details"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-set-details"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Correlator::RuleSetDetails::~RuleSetDetails()
@@ -9898,7 +10057,8 @@ Snmp::Correlator::RuleSetDetails::~RuleSetDetails()
 
 bool Snmp::Correlator::RuleSetDetails::has_data() const
 {
-    for (std::size_t index=0; index<rule_set_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule_set_detail.len(); index++)
     {
         if(rule_set_detail[index]->has_data())
             return true;
@@ -9908,7 +10068,7 @@ bool Snmp::Correlator::RuleSetDetails::has_data() const
 
 bool Snmp::Correlator::RuleSetDetails::has_operation() const
 {
-    for (std::size_t index=0; index<rule_set_detail.size(); index++)
+    for (std::size_t index=0; index<rule_set_detail.len(); index++)
     {
         if(rule_set_detail[index]->has_operation())
             return true;
@@ -9945,7 +10105,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleSetDetails::get_child_by_name(cons
     {
         auto c = std::make_shared<Snmp::Correlator::RuleSetDetails::RuleSetDetail>();
         c->parent = this;
-        rule_set_detail.push_back(c);
+        rule_set_detail.append(c);
         return c;
     }
 
@@ -9957,7 +10117,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleSetDetails:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule_set_detail)
+    for (auto c : rule_set_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9987,9 +10147,11 @@ Snmp::Correlator::RuleSetDetails::RuleSetDetail::RuleSetDetail()
     :
     rule_set_name{YType::str, "rule-set-name"},
     rule_set_name_xr{YType::str, "rule-set-name-xr"}
+        ,
+    rules(this, {})
 {
 
-    yang_name = "rule-set-detail"; yang_parent_name = "rule-set-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-set-detail"; yang_parent_name = "rule-set-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Correlator::RuleSetDetails::RuleSetDetail::~RuleSetDetail()
@@ -9998,7 +10160,8 @@ Snmp::Correlator::RuleSetDetails::RuleSetDetail::~RuleSetDetail()
 
 bool Snmp::Correlator::RuleSetDetails::RuleSetDetail::has_data() const
 {
-    for (std::size_t index=0; index<rules.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rules.len(); index++)
     {
         if(rules[index]->has_data())
             return true;
@@ -10009,7 +10172,7 @@ bool Snmp::Correlator::RuleSetDetails::RuleSetDetail::has_data() const
 
 bool Snmp::Correlator::RuleSetDetails::RuleSetDetail::has_operation() const
 {
-    for (std::size_t index=0; index<rules.size(); index++)
+    for (std::size_t index=0; index<rules.len(); index++)
     {
         if(rules[index]->has_operation())
             return true;
@@ -10029,7 +10192,8 @@ std::string Snmp::Correlator::RuleSetDetails::RuleSetDetail::get_absolute_path()
 std::string Snmp::Correlator::RuleSetDetails::RuleSetDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule-set-detail" <<"[rule-set-name='" <<rule_set_name <<"']";
+    path_buffer << "rule-set-detail";
+    ADD_KEY_TOKEN(rule_set_name, "rule-set-name");
     return path_buffer.str();
 }
 
@@ -10050,7 +10214,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleSetDetails::RuleSetDetail::get_chi
     {
         auto c = std::make_shared<Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules>();
         c->parent = this;
-        rules.push_back(c);
+        rules.append(c);
         return c;
     }
 
@@ -10062,7 +10226,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleSetDetails:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rules)
+    for (auto c : rules.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10115,7 +10279,7 @@ Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::Rules()
     buffered_traps_count{YType::uint32, "buffered-traps-count"}
 {
 
-    yang_name = "rules"; yang_parent_name = "rule-set-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rules"; yang_parent_name = "rule-set-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::~Rules()
@@ -10124,6 +10288,7 @@ Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::~Rules()
 
 bool Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::has_data() const
 {
+    if (is_presence_container) return true;
     return rule_name.is_set
 	|| rule_state.is_set
 	|| buffered_traps_count.is_set;
@@ -10214,9 +10379,11 @@ bool Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::has_leaf_or_child_o
 }
 
 Snmp::Correlator::Traps::Traps()
+    :
+    trap(this, {"entry_id"})
 {
 
-    yang_name = "traps"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traps"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Correlator::Traps::~Traps()
@@ -10225,7 +10392,8 @@ Snmp::Correlator::Traps::~Traps()
 
 bool Snmp::Correlator::Traps::has_data() const
 {
-    for (std::size_t index=0; index<trap.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trap.len(); index++)
     {
         if(trap[index]->has_data())
             return true;
@@ -10235,7 +10403,7 @@ bool Snmp::Correlator::Traps::has_data() const
 
 bool Snmp::Correlator::Traps::has_operation() const
 {
-    for (std::size_t index=0; index<trap.size(); index++)
+    for (std::size_t index=0; index<trap.len(); index++)
     {
         if(trap[index]->has_operation())
             return true;
@@ -10272,7 +10440,7 @@ std::shared_ptr<Entity> Snmp::Correlator::Traps::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Snmp::Correlator::Traps::Trap>();
         c->parent = this;
-        trap.push_back(c);
+        trap.append(c);
         return c;
     }
 
@@ -10284,7 +10452,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Traps::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trap)
+    for (auto c : trap.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10312,16 +10480,16 @@ bool Snmp::Correlator::Traps::has_leaf_or_child_of_name(const std::string & name
 
 Snmp::Correlator::Traps::Trap::Trap()
     :
-    entry_id{YType::int32, "entry-id"},
+    entry_id{YType::uint32, "entry-id"},
     correlation_id{YType::uint32, "correlation-id"},
     is_root_cause{YType::boolean, "is-root-cause"},
     rule_name{YType::str, "rule-name"}
-    	,
+        ,
     trap_info(std::make_shared<Snmp::Correlator::Traps::Trap::TrapInfo>())
 {
     trap_info->parent = this;
 
-    yang_name = "trap"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::Correlator::Traps::Trap::~Trap()
@@ -10330,6 +10498,7 @@ Snmp::Correlator::Traps::Trap::~Trap()
 
 bool Snmp::Correlator::Traps::Trap::has_data() const
 {
+    if (is_presence_container) return true;
     return entry_id.is_set
 	|| correlation_id.is_set
 	|| is_root_cause.is_set
@@ -10357,7 +10526,8 @@ std::string Snmp::Correlator::Traps::Trap::get_absolute_path() const
 std::string Snmp::Correlator::Traps::Trap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trap" <<"[entry-id='" <<entry_id <<"']";
+    path_buffer << "trap";
+    ADD_KEY_TOKEN(entry_id, "entry-id");
     return path_buffer.str();
 }
 
@@ -10460,9 +10630,11 @@ Snmp::Correlator::Traps::Trap::TrapInfo::TrapInfo()
     oid{YType::str, "oid"},
     relative_timestamp{YType::uint32, "relative-timestamp"},
     timestamp{YType::uint64, "timestamp"}
+        ,
+    var_bind(this, {})
 {
 
-    yang_name = "trap-info"; yang_parent_name = "trap"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trap-info"; yang_parent_name = "trap"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Correlator::Traps::Trap::TrapInfo::~TrapInfo()
@@ -10471,7 +10643,8 @@ Snmp::Correlator::Traps::Trap::TrapInfo::~TrapInfo()
 
 bool Snmp::Correlator::Traps::Trap::TrapInfo::has_data() const
 {
-    for (std::size_t index=0; index<var_bind.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<var_bind.len(); index++)
     {
         if(var_bind[index]->has_data())
             return true;
@@ -10483,7 +10656,7 @@ bool Snmp::Correlator::Traps::Trap::TrapInfo::has_data() const
 
 bool Snmp::Correlator::Traps::Trap::TrapInfo::has_operation() const
 {
-    for (std::size_t index=0; index<var_bind.size(); index++)
+    for (std::size_t index=0; index<var_bind.len(); index++)
     {
         if(var_bind[index]->has_operation())
             return true;
@@ -10519,7 +10692,7 @@ std::shared_ptr<Entity> Snmp::Correlator::Traps::Trap::TrapInfo::get_child_by_na
     {
         auto c = std::make_shared<Snmp::Correlator::Traps::Trap::TrapInfo::VarBind>();
         c->parent = this;
-        var_bind.push_back(c);
+        var_bind.append(c);
         return c;
     }
 
@@ -10531,7 +10704,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Traps::Trap::Tr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : var_bind)
+    for (auto c : var_bind.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10593,7 +10766,7 @@ Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::VarBind()
     value_{YType::str, "value"}
 {
 
-    yang_name = "var-bind"; yang_parent_name = "trap-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "var-bind"; yang_parent_name = "trap-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::~VarBind()
@@ -10602,6 +10775,7 @@ Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::~VarBind()
 
 bool Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::has_data() const
 {
+    if (is_presence_container) return true;
     return oid.is_set
 	|| value_.is_set;
 }
@@ -10679,9 +10853,11 @@ bool Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::has_leaf_or_child_of_name
 }
 
 Snmp::InterfaceIndexes::InterfaceIndexes()
+    :
+    interface_index(this, {"interface_index"})
 {
 
-    yang_name = "interface-indexes"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-indexes"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceIndexes::~InterfaceIndexes()
@@ -10690,7 +10866,8 @@ Snmp::InterfaceIndexes::~InterfaceIndexes()
 
 bool Snmp::InterfaceIndexes::has_data() const
 {
-    for (std::size_t index=0; index<interface_index.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_index.len(); index++)
     {
         if(interface_index[index]->has_data())
             return true;
@@ -10700,7 +10877,7 @@ bool Snmp::InterfaceIndexes::has_data() const
 
 bool Snmp::InterfaceIndexes::has_operation() const
 {
-    for (std::size_t index=0; index<interface_index.size(); index++)
+    for (std::size_t index=0; index<interface_index.len(); index++)
     {
         if(interface_index[index]->has_operation())
             return true;
@@ -10737,7 +10914,7 @@ std::shared_ptr<Entity> Snmp::InterfaceIndexes::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Snmp::InterfaceIndexes::InterfaceIndex>();
         c->parent = this;
-        interface_index.push_back(c);
+        interface_index.append(c);
         return c;
     }
 
@@ -10749,7 +10926,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceIndexes::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_index)
+    for (auto c : interface_index.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10777,11 +10954,11 @@ bool Snmp::InterfaceIndexes::has_leaf_or_child_of_name(const std::string & name)
 
 Snmp::InterfaceIndexes::InterfaceIndex::InterfaceIndex()
     :
-    interface_index{YType::int32, "interface-index"},
+    interface_index{YType::uint32, "interface-index"},
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface-index"; yang_parent_name = "interface-indexes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-index"; yang_parent_name = "interface-indexes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceIndexes::InterfaceIndex::~InterfaceIndex()
@@ -10790,6 +10967,7 @@ Snmp::InterfaceIndexes::InterfaceIndex::~InterfaceIndex()
 
 bool Snmp::InterfaceIndexes::InterfaceIndex::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_index.is_set
 	|| interface_name.is_set;
 }
@@ -10811,7 +10989,8 @@ std::string Snmp::InterfaceIndexes::InterfaceIndex::get_absolute_path() const
 std::string Snmp::InterfaceIndexes::InterfaceIndex::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-index" <<"[interface-index='" <<interface_index <<"']";
+    path_buffer << "interface-index";
+    ADD_KEY_TOKEN(interface_index, "interface-index");
     return path_buffer.str();
 }
 
@@ -10874,9 +11053,11 @@ bool Snmp::InterfaceIndexes::InterfaceIndex::has_leaf_or_child_of_name(const std
 }
 
 Snmp::IfIndexes::IfIndexes()
+    :
+    if_index(this, {"interface_index"})
 {
 
-    yang_name = "if-indexes"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "if-indexes"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::IfIndexes::~IfIndexes()
@@ -10885,7 +11066,8 @@ Snmp::IfIndexes::~IfIndexes()
 
 bool Snmp::IfIndexes::has_data() const
 {
-    for (std::size_t index=0; index<if_index.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<if_index.len(); index++)
     {
         if(if_index[index]->has_data())
             return true;
@@ -10895,7 +11077,7 @@ bool Snmp::IfIndexes::has_data() const
 
 bool Snmp::IfIndexes::has_operation() const
 {
-    for (std::size_t index=0; index<if_index.size(); index++)
+    for (std::size_t index=0; index<if_index.len(); index++)
     {
         if(if_index[index]->has_operation())
             return true;
@@ -10932,7 +11114,7 @@ std::shared_ptr<Entity> Snmp::IfIndexes::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Snmp::IfIndexes::IfIndex>();
         c->parent = this;
-        if_index.push_back(c);
+        if_index.append(c);
         return c;
     }
 
@@ -10944,7 +11126,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::IfIndexes::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : if_index)
+    for (auto c : if_index.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10972,11 +11154,11 @@ bool Snmp::IfIndexes::has_leaf_or_child_of_name(const std::string & name) const
 
 Snmp::IfIndexes::IfIndex::IfIndex()
     :
-    interface_index{YType::int32, "interface-index"},
+    interface_index{YType::uint32, "interface-index"},
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "if-index"; yang_parent_name = "if-indexes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "if-index"; yang_parent_name = "if-indexes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::IfIndexes::IfIndex::~IfIndex()
@@ -10985,6 +11167,7 @@ Snmp::IfIndexes::IfIndex::~IfIndex()
 
 bool Snmp::IfIndexes::IfIndex::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_index.is_set
 	|| interface_name.is_set;
 }
@@ -11006,7 +11189,8 @@ std::string Snmp::IfIndexes::IfIndex::get_absolute_path() const
 std::string Snmp::IfIndexes::IfIndex::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "if-index" <<"[interface-index='" <<interface_index <<"']";
+    path_buffer << "if-index";
+    ADD_KEY_TOKEN(interface_index, "interface-index");
     return path_buffer.str();
 }
 
@@ -11074,7 +11258,7 @@ Snmp::EntityMib::EntityMib()
 {
     entity_physical_indexes->parent = this;
 
-    yang_name = "entity-mib"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "entity-mib"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::EntityMib::~EntityMib()
@@ -11083,6 +11267,7 @@ Snmp::EntityMib::~EntityMib()
 
 bool Snmp::EntityMib::has_data() const
 {
+    if (is_presence_container) return true;
     return (entity_physical_indexes !=  nullptr && entity_physical_indexes->has_data());
 }
 
@@ -11157,9 +11342,11 @@ bool Snmp::EntityMib::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndexes()
+    :
+    entity_physical_index(this, {"entity_phynum"})
 {
 
-    yang_name = "entity-physical-indexes"; yang_parent_name = "entity-mib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "entity-physical-indexes"; yang_parent_name = "entity-mib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::EntityMib::EntityPhysicalIndexes::~EntityPhysicalIndexes()
@@ -11168,7 +11355,8 @@ Snmp::EntityMib::EntityPhysicalIndexes::~EntityPhysicalIndexes()
 
 bool Snmp::EntityMib::EntityPhysicalIndexes::has_data() const
 {
-    for (std::size_t index=0; index<entity_physical_index.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<entity_physical_index.len(); index++)
     {
         if(entity_physical_index[index]->has_data())
             return true;
@@ -11178,7 +11366,7 @@ bool Snmp::EntityMib::EntityPhysicalIndexes::has_data() const
 
 bool Snmp::EntityMib::EntityPhysicalIndexes::has_operation() const
 {
-    for (std::size_t index=0; index<entity_physical_index.size(); index++)
+    for (std::size_t index=0; index<entity_physical_index.len(); index++)
     {
         if(entity_physical_index[index]->has_operation())
             return true;
@@ -11215,7 +11403,7 @@ std::shared_ptr<Entity> Snmp::EntityMib::EntityPhysicalIndexes::get_child_by_nam
     {
         auto c = std::make_shared<Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex>();
         c->parent = this;
-        entity_physical_index.push_back(c);
+        entity_physical_index.append(c);
         return c;
     }
 
@@ -11227,7 +11415,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::EntityMib::EntityPhysicalIn
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : entity_physical_index)
+    for (auto c : entity_physical_index.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11268,7 +11456,7 @@ Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::EntityPhysicalIndex
     ent_physical_mfg_name{YType::str, "ent-physical-mfg-name"}
 {
 
-    yang_name = "entity-physical-index"; yang_parent_name = "entity-physical-indexes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "entity-physical-index"; yang_parent_name = "entity-physical-indexes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::~EntityPhysicalIndex()
@@ -11277,6 +11465,7 @@ Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::~EntityPhysicalInde
 
 bool Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::has_data() const
 {
+    if (is_presence_container) return true;
     return entity_phynum.is_set
 	|| physical_index.is_set
 	|| ent_physical_name.is_set
@@ -11316,7 +11505,8 @@ std::string Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::get_abs
 std::string Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "entity-physical-index" <<"[entity-phynum='" <<entity_phynum <<"']";
+    path_buffer << "entity-physical-index";
+    ADD_KEY_TOKEN(entity_phynum, "entity-phynum");
     return path_buffer.str();
 }
 
@@ -11480,10 +11670,10 @@ bool Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::has_leaf_or_ch
 Snmp::InterfaceMib::InterfaceMib()
     :
     interfaces(std::make_shared<Snmp::InterfaceMib::Interfaces>())
-	,interface_connectors(std::make_shared<Snmp::InterfaceMib::InterfaceConnectors>())
-	,interface_aliases(std::make_shared<Snmp::InterfaceMib::InterfaceAliases>())
-	,notification_interfaces(std::make_shared<Snmp::InterfaceMib::NotificationInterfaces>())
-	,interface_stack_statuses(std::make_shared<Snmp::InterfaceMib::InterfaceStackStatuses>())
+    , interface_connectors(std::make_shared<Snmp::InterfaceMib::InterfaceConnectors>())
+    , interface_aliases(std::make_shared<Snmp::InterfaceMib::InterfaceAliases>())
+    , notification_interfaces(std::make_shared<Snmp::InterfaceMib::NotificationInterfaces>())
+    , interface_stack_statuses(std::make_shared<Snmp::InterfaceMib::InterfaceStackStatuses>())
 {
     interfaces->parent = this;
     interface_connectors->parent = this;
@@ -11491,7 +11681,7 @@ Snmp::InterfaceMib::InterfaceMib()
     notification_interfaces->parent = this;
     interface_stack_statuses->parent = this;
 
-    yang_name = "interface-mib"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-mib"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceMib::~InterfaceMib()
@@ -11500,6 +11690,7 @@ Snmp::InterfaceMib::~InterfaceMib()
 
 bool Snmp::InterfaceMib::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data())
 	|| (interface_connectors !=  nullptr && interface_connectors->has_data())
 	|| (interface_aliases !=  nullptr && interface_aliases->has_data())
@@ -11638,9 +11829,11 @@ bool Snmp::InterfaceMib::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 Snmp::InterfaceMib::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceMib::Interfaces::~Interfaces()
@@ -11649,7 +11842,8 @@ Snmp::InterfaceMib::Interfaces::~Interfaces()
 
 bool Snmp::InterfaceMib::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -11659,7 +11853,7 @@ bool Snmp::InterfaceMib::Interfaces::has_data() const
 
 bool Snmp::InterfaceMib::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -11696,7 +11890,7 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::Interfaces::get_child_by_name(const 
     {
         auto c = std::make_shared<Snmp::InterfaceMib::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -11708,7 +11902,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::Interfaces::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11740,7 +11934,7 @@ Snmp::InterfaceMib::Interfaces::Interface::Interface()
     if_index{YType::uint32, "if-index"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceMib::Interfaces::Interface::~Interface()
@@ -11749,6 +11943,7 @@ Snmp::InterfaceMib::Interfaces::Interface::~Interface()
 
 bool Snmp::InterfaceMib::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| if_index.is_set;
 }
@@ -11770,7 +11965,8 @@ std::string Snmp::InterfaceMib::Interfaces::Interface::get_absolute_path() const
 std::string Snmp::InterfaceMib::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -11833,9 +12029,11 @@ bool Snmp::InterfaceMib::Interfaces::Interface::has_leaf_or_child_of_name(const 
 }
 
 Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnectors()
+    :
+    interface_connector(this, {"interface_name"})
 {
 
-    yang_name = "interface-connectors"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-connectors"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceMib::InterfaceConnectors::~InterfaceConnectors()
@@ -11844,7 +12042,8 @@ Snmp::InterfaceMib::InterfaceConnectors::~InterfaceConnectors()
 
 bool Snmp::InterfaceMib::InterfaceConnectors::has_data() const
 {
-    for (std::size_t index=0; index<interface_connector.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_connector.len(); index++)
     {
         if(interface_connector[index]->has_data())
             return true;
@@ -11854,7 +12053,7 @@ bool Snmp::InterfaceMib::InterfaceConnectors::has_data() const
 
 bool Snmp::InterfaceMib::InterfaceConnectors::has_operation() const
 {
-    for (std::size_t index=0; index<interface_connector.size(); index++)
+    for (std::size_t index=0; index<interface_connector.len(); index++)
     {
         if(interface_connector[index]->has_operation())
             return true;
@@ -11891,7 +12090,7 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::InterfaceConnectors::get_child_by_na
     {
         auto c = std::make_shared<Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector>();
         c->parent = this;
-        interface_connector.push_back(c);
+        interface_connector.append(c);
         return c;
     }
 
@@ -11903,7 +12102,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceConn
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_connector)
+    for (auto c : interface_connector.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11935,7 +12134,7 @@ Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::InterfaceConnector(
     if_connector_present{YType::str, "if-connector-present"}
 {
 
-    yang_name = "interface-connector"; yang_parent_name = "interface-connectors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-connector"; yang_parent_name = "interface-connectors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::~InterfaceConnector()
@@ -11944,6 +12143,7 @@ Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::~InterfaceConnector
 
 bool Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| if_connector_present.is_set;
 }
@@ -11965,7 +12165,8 @@ std::string Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::get_abs
 std::string Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-connector" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-connector";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -12028,9 +12229,11 @@ bool Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::has_leaf_or_ch
 }
 
 Snmp::InterfaceMib::InterfaceAliases::InterfaceAliases()
+    :
+    interface_alias(this, {"interface_name"})
 {
 
-    yang_name = "interface-aliases"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-aliases"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceMib::InterfaceAliases::~InterfaceAliases()
@@ -12039,7 +12242,8 @@ Snmp::InterfaceMib::InterfaceAliases::~InterfaceAliases()
 
 bool Snmp::InterfaceMib::InterfaceAliases::has_data() const
 {
-    for (std::size_t index=0; index<interface_alias.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_alias.len(); index++)
     {
         if(interface_alias[index]->has_data())
             return true;
@@ -12049,7 +12253,7 @@ bool Snmp::InterfaceMib::InterfaceAliases::has_data() const
 
 bool Snmp::InterfaceMib::InterfaceAliases::has_operation() const
 {
-    for (std::size_t index=0; index<interface_alias.size(); index++)
+    for (std::size_t index=0; index<interface_alias.len(); index++)
     {
         if(interface_alias[index]->has_operation())
             return true;
@@ -12086,7 +12290,7 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::InterfaceAliases::get_child_by_name(
     {
         auto c = std::make_shared<Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias>();
         c->parent = this;
-        interface_alias.push_back(c);
+        interface_alias.append(c);
         return c;
     }
 
@@ -12098,7 +12302,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceAlia
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_alias)
+    for (auto c : interface_alias.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12130,7 +12334,7 @@ Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::InterfaceAlias()
     if_alias{YType::str, "if-alias"}
 {
 
-    yang_name = "interface-alias"; yang_parent_name = "interface-aliases"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-alias"; yang_parent_name = "interface-aliases"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::~InterfaceAlias()
@@ -12139,6 +12343,7 @@ Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::~InterfaceAlias()
 
 bool Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| if_alias.is_set;
 }
@@ -12160,7 +12365,8 @@ std::string Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::get_absolute_p
 std::string Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-alias" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-alias";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -12223,9 +12429,11 @@ bool Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::has_leaf_or_child_of_
 }
 
 Snmp::InterfaceMib::NotificationInterfaces::NotificationInterfaces()
+    :
+    notification_interface(this, {"interface_name"})
 {
 
-    yang_name = "notification-interfaces"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "notification-interfaces"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceMib::NotificationInterfaces::~NotificationInterfaces()
@@ -12234,7 +12442,8 @@ Snmp::InterfaceMib::NotificationInterfaces::~NotificationInterfaces()
 
 bool Snmp::InterfaceMib::NotificationInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<notification_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<notification_interface.len(); index++)
     {
         if(notification_interface[index]->has_data())
             return true;
@@ -12244,7 +12453,7 @@ bool Snmp::InterfaceMib::NotificationInterfaces::has_data() const
 
 bool Snmp::InterfaceMib::NotificationInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<notification_interface.size(); index++)
+    for (std::size_t index=0; index<notification_interface.len(); index++)
     {
         if(notification_interface[index]->has_operation())
             return true;
@@ -12281,7 +12490,7 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::NotificationInterfaces::get_child_by
     {
         auto c = std::make_shared<Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface>();
         c->parent = this;
-        notification_interface.push_back(c);
+        notification_interface.append(c);
         return c;
     }
 
@@ -12293,7 +12502,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::NotificationI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : notification_interface)
+    for (auto c : notification_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12325,7 +12534,7 @@ Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::NotificationI
     link_up_down_notif_status{YType::enumeration, "link-up-down-notif-status"}
 {
 
-    yang_name = "notification-interface"; yang_parent_name = "notification-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "notification-interface"; yang_parent_name = "notification-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::~NotificationInterface()
@@ -12334,6 +12543,7 @@ Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::~Notification
 
 bool Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| link_up_down_notif_status.is_set;
 }
@@ -12355,7 +12565,8 @@ std::string Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::g
 std::string Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "notification-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "notification-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -12418,9 +12629,11 @@ bool Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::has_leaf
 }
 
 Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatuses()
+    :
+    interface_stack_status(this, {"interface_stack_status"})
 {
 
-    yang_name = "interface-stack-statuses"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-stack-statuses"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceMib::InterfaceStackStatuses::~InterfaceStackStatuses()
@@ -12429,7 +12642,8 @@ Snmp::InterfaceMib::InterfaceStackStatuses::~InterfaceStackStatuses()
 
 bool Snmp::InterfaceMib::InterfaceStackStatuses::has_data() const
 {
-    for (std::size_t index=0; index<interface_stack_status.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_stack_status.len(); index++)
     {
         if(interface_stack_status[index]->has_data())
             return true;
@@ -12439,7 +12653,7 @@ bool Snmp::InterfaceMib::InterfaceStackStatuses::has_data() const
 
 bool Snmp::InterfaceMib::InterfaceStackStatuses::has_operation() const
 {
-    for (std::size_t index=0; index<interface_stack_status.size(); index++)
+    for (std::size_t index=0; index<interface_stack_status.len(); index++)
     {
         if(interface_stack_status[index]->has_operation())
             return true;
@@ -12476,7 +12690,7 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::InterfaceStackStatuses::get_child_by
     {
         auto c = std::make_shared<Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus>();
         c->parent = this;
-        interface_stack_status.push_back(c);
+        interface_stack_status.append(c);
         return c;
     }
 
@@ -12488,7 +12702,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceStac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_stack_status)
+    for (auto c : interface_stack_status.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12522,7 +12736,7 @@ Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::InterfaceStack
     if_stack_status{YType::str, "if-stack-status"}
 {
 
-    yang_name = "interface-stack-status"; yang_parent_name = "interface-stack-statuses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-stack-status"; yang_parent_name = "interface-stack-statuses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::~InterfaceStackStatus()
@@ -12531,6 +12745,7 @@ Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::~InterfaceStac
 
 bool Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_stack_status.is_set
 	|| if_stack_higher_layer.is_set
 	|| if_stack_lower_layer.is_set
@@ -12556,7 +12771,8 @@ std::string Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::ge
 std::string Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-stack-status" <<"[interface-stack-status='" <<interface_stack_status <<"']";
+    path_buffer << "interface-stack-status";
+    ADD_KEY_TOKEN(interface_stack_status, "interface-stack-status");
     return path_buffer.str();
 }
 
@@ -12643,12 +12859,12 @@ bool Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::has_leaf_
 Snmp::SensorMib::SensorMib()
     :
     physical_indexes(std::make_shared<Snmp::SensorMib::PhysicalIndexes>())
-	,ent_phy_indexes(std::make_shared<Snmp::SensorMib::EntPhyIndexes>())
+    , ent_phy_indexes(std::make_shared<Snmp::SensorMib::EntPhyIndexes>())
 {
     physical_indexes->parent = this;
     ent_phy_indexes->parent = this;
 
-    yang_name = "sensor-mib"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sensor-mib"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::SensorMib::~SensorMib()
@@ -12657,6 +12873,7 @@ Snmp::SensorMib::~SensorMib()
 
 bool Snmp::SensorMib::has_data() const
 {
+    if (is_presence_container) return true;
     return (physical_indexes !=  nullptr && physical_indexes->has_data())
 	|| (ent_phy_indexes !=  nullptr && ent_phy_indexes->has_data());
 }
@@ -12747,9 +12964,11 @@ bool Snmp::SensorMib::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Snmp::SensorMib::PhysicalIndexes::PhysicalIndexes()
+    :
+    physical_index(this, {"index_"})
 {
 
-    yang_name = "physical-indexes"; yang_parent_name = "sensor-mib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "physical-indexes"; yang_parent_name = "sensor-mib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::SensorMib::PhysicalIndexes::~PhysicalIndexes()
@@ -12758,7 +12977,8 @@ Snmp::SensorMib::PhysicalIndexes::~PhysicalIndexes()
 
 bool Snmp::SensorMib::PhysicalIndexes::has_data() const
 {
-    for (std::size_t index=0; index<physical_index.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<physical_index.len(); index++)
     {
         if(physical_index[index]->has_data())
             return true;
@@ -12768,7 +12988,7 @@ bool Snmp::SensorMib::PhysicalIndexes::has_data() const
 
 bool Snmp::SensorMib::PhysicalIndexes::has_operation() const
 {
-    for (std::size_t index=0; index<physical_index.size(); index++)
+    for (std::size_t index=0; index<physical_index.len(); index++)
     {
         if(physical_index[index]->has_operation())
             return true;
@@ -12805,7 +13025,7 @@ std::shared_ptr<Entity> Snmp::SensorMib::PhysicalIndexes::get_child_by_name(cons
     {
         auto c = std::make_shared<Snmp::SensorMib::PhysicalIndexes::PhysicalIndex>();
         c->parent = this;
-        physical_index.push_back(c);
+        physical_index.append(c);
         return c;
     }
 
@@ -12817,7 +13037,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::PhysicalIndexes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : physical_index)
+    for (auto c : physical_index.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12846,12 +13066,12 @@ bool Snmp::SensorMib::PhysicalIndexes::has_leaf_or_child_of_name(const std::stri
 Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::PhysicalIndex()
     :
     index_{YType::str, "index"}
-    	,
+        ,
     threshold_indexes(std::make_shared<Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes>())
 {
     threshold_indexes->parent = this;
 
-    yang_name = "physical-index"; yang_parent_name = "physical-indexes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "physical-index"; yang_parent_name = "physical-indexes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::~PhysicalIndex()
@@ -12860,6 +13080,7 @@ Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::~PhysicalIndex()
 
 bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| (threshold_indexes !=  nullptr && threshold_indexes->has_data());
 }
@@ -12881,7 +13102,8 @@ std::string Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::get_absolute_path()
 std::string Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "physical-index" <<"[index='" <<index_ <<"']";
+    path_buffer << "physical-index";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -12947,9 +13169,11 @@ bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::has_leaf_or_child_of_name(
 }
 
 Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndexes()
+    :
+    threshold_index(this, {})
 {
 
-    yang_name = "threshold-indexes"; yang_parent_name = "physical-index"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-indexes"; yang_parent_name = "physical-index"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::~ThresholdIndexes()
@@ -12958,7 +13182,8 @@ Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::~ThresholdInd
 
 bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::has_data() const
 {
-    for (std::size_t index=0; index<threshold_index.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold_index.len(); index++)
     {
         if(threshold_index[index]->has_data())
             return true;
@@ -12968,7 +13193,7 @@ bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::has_data
 
 bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::has_operation() const
 {
-    for (std::size_t index=0; index<threshold_index.size(); index++)
+    for (std::size_t index=0; index<threshold_index.len(); index++)
     {
         if(threshold_index[index]->has_operation())
             return true;
@@ -12998,7 +13223,7 @@ std::shared_ptr<Entity> Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::Thresho
     {
         auto c = std::make_shared<Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex>();
         c->parent = this;
-        threshold_index.push_back(c);
+        threshold_index.append(c);
         return c;
     }
 
@@ -13010,7 +13235,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::PhysicalIndexes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold_index)
+    for (auto c : threshold_index.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13047,7 +13272,7 @@ Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdInde
     threshold_notification_enabled{YType::boolean, "threshold-notification-enabled"}
 {
 
-    yang_name = "threshold-index"; yang_parent_name = "threshold-indexes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-index"; yang_parent_name = "threshold-indexes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex::~ThresholdIndex()
@@ -13056,6 +13281,7 @@ Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdInde
 
 bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex::has_data() const
 {
+    if (is_presence_container) return true;
     return phy_index.is_set
 	|| thre_index.is_set
 	|| threshold_severity.is_set
@@ -13198,9 +13424,11 @@ bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::Threshol
 }
 
 Snmp::SensorMib::EntPhyIndexes::EntPhyIndexes()
+    :
+    ent_phy_index(this, {"index_"})
 {
 
-    yang_name = "ent-phy-indexes"; yang_parent_name = "sensor-mib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ent-phy-indexes"; yang_parent_name = "sensor-mib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::SensorMib::EntPhyIndexes::~EntPhyIndexes()
@@ -13209,7 +13437,8 @@ Snmp::SensorMib::EntPhyIndexes::~EntPhyIndexes()
 
 bool Snmp::SensorMib::EntPhyIndexes::has_data() const
 {
-    for (std::size_t index=0; index<ent_phy_index.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ent_phy_index.len(); index++)
     {
         if(ent_phy_index[index]->has_data())
             return true;
@@ -13219,7 +13448,7 @@ bool Snmp::SensorMib::EntPhyIndexes::has_data() const
 
 bool Snmp::SensorMib::EntPhyIndexes::has_operation() const
 {
-    for (std::size_t index=0; index<ent_phy_index.size(); index++)
+    for (std::size_t index=0; index<ent_phy_index.len(); index++)
     {
         if(ent_phy_index[index]->has_operation())
             return true;
@@ -13256,7 +13485,7 @@ std::shared_ptr<Entity> Snmp::SensorMib::EntPhyIndexes::get_child_by_name(const 
     {
         auto c = std::make_shared<Snmp::SensorMib::EntPhyIndexes::EntPhyIndex>();
         c->parent = this;
-        ent_phy_index.push_back(c);
+        ent_phy_index.append(c);
         return c;
     }
 
@@ -13268,7 +13497,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::EntPhyIndexes::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ent_phy_index)
+    for (auto c : ent_phy_index.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13312,7 +13541,7 @@ Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::EntPhyIndex()
     measured_entity{YType::uint32, "measured-entity"}
 {
 
-    yang_name = "ent-phy-index"; yang_parent_name = "ent-phy-indexes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ent-phy-index"; yang_parent_name = "ent-phy-indexes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::~EntPhyIndex()
@@ -13321,6 +13550,7 @@ Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::~EntPhyIndex()
 
 bool Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| field_validity_bitmap.is_set
 	|| device_description.is_set
@@ -13366,7 +13596,8 @@ std::string Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::get_absolute_path() con
 std::string Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ent-phy-index" <<"[index='" <<index_ <<"']";
+    path_buffer << "ent-phy-index";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -13560,15 +13791,15 @@ bool Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::has_leaf_or_child_of_name(cons
     return false;
 }
 
-const Enum::YLeaf DupReqDropStatus::disabled {0, "disabled"};
-const Enum::YLeaf DupReqDropStatus::enabled {1, "enabled"};
-
 const Enum::YLeaf SnmpCorrVbindMatch::index_ {0, "index"};
 const Enum::YLeaf SnmpCorrVbindMatch::value_ {1, "value"};
 
 const Enum::YLeaf SnmpCorrRuleState::rule_unapplied {0, "rule-unapplied"};
 const Enum::YLeaf SnmpCorrRuleState::rule_applied {1, "rule-applied"};
 const Enum::YLeaf SnmpCorrRuleState::rule_applied_all {2, "rule-applied-all"};
+
+const Enum::YLeaf DupReqDropStatus::disabled {0, "disabled"};
+const Enum::YLeaf DupReqDropStatus::enabled {1, "enabled"};
 
 
 }

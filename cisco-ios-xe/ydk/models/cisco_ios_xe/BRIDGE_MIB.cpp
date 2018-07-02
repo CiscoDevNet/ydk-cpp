@@ -13,14 +13,14 @@ namespace BRIDGE_MIB {
 
 BRIDGEMIB::BRIDGEMIB()
     :
-    dot1dbase(std::make_shared<BRIDGEMIB::Dot1Dbase>())
-	,dot1dstp(std::make_shared<BRIDGEMIB::Dot1Dstp>())
-	,dot1dtp(std::make_shared<BRIDGEMIB::Dot1Dtp>())
-	,dot1dbaseporttable(std::make_shared<BRIDGEMIB::Dot1Dbaseporttable>())
-	,dot1dstpporttable(std::make_shared<BRIDGEMIB::Dot1Dstpporttable>())
-	,dot1dtpfdbtable(std::make_shared<BRIDGEMIB::Dot1Dtpfdbtable>())
-	,dot1dtpporttable(std::make_shared<BRIDGEMIB::Dot1Dtpporttable>())
-	,dot1dstatictable(std::make_shared<BRIDGEMIB::Dot1Dstatictable>())
+    dot1dbase(std::make_shared<BRIDGEMIB::Dot1dBase>())
+    , dot1dstp(std::make_shared<BRIDGEMIB::Dot1dStp>())
+    , dot1dtp(std::make_shared<BRIDGEMIB::Dot1dTp>())
+    , dot1dbaseporttable(std::make_shared<BRIDGEMIB::Dot1dBasePortTable>())
+    , dot1dstpporttable(std::make_shared<BRIDGEMIB::Dot1dStpPortTable>())
+    , dot1dtpfdbtable(std::make_shared<BRIDGEMIB::Dot1dTpFdbTable>())
+    , dot1dtpporttable(std::make_shared<BRIDGEMIB::Dot1dTpPortTable>())
+    , dot1dstatictable(std::make_shared<BRIDGEMIB::Dot1dStaticTable>())
 {
     dot1dbase->parent = this;
     dot1dstp->parent = this;
@@ -31,7 +31,7 @@ BRIDGEMIB::BRIDGEMIB()
     dot1dtpporttable->parent = this;
     dot1dstatictable->parent = this;
 
-    yang_name = "BRIDGE-MIB"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "BRIDGE-MIB"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 BRIDGEMIB::~BRIDGEMIB()
@@ -40,6 +40,7 @@ BRIDGEMIB::~BRIDGEMIB()
 
 bool BRIDGEMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot1dbase !=  nullptr && dot1dbase->has_data())
 	|| (dot1dstp !=  nullptr && dot1dstp->has_data())
 	|| (dot1dtp !=  nullptr && dot1dtp->has_data())
@@ -85,7 +86,7 @@ std::shared_ptr<Entity> BRIDGEMIB::get_child_by_name(const std::string & child_y
     {
         if(dot1dbase == nullptr)
         {
-            dot1dbase = std::make_shared<BRIDGEMIB::Dot1Dbase>();
+            dot1dbase = std::make_shared<BRIDGEMIB::Dot1dBase>();
         }
         return dot1dbase;
     }
@@ -94,7 +95,7 @@ std::shared_ptr<Entity> BRIDGEMIB::get_child_by_name(const std::string & child_y
     {
         if(dot1dstp == nullptr)
         {
-            dot1dstp = std::make_shared<BRIDGEMIB::Dot1Dstp>();
+            dot1dstp = std::make_shared<BRIDGEMIB::Dot1dStp>();
         }
         return dot1dstp;
     }
@@ -103,7 +104,7 @@ std::shared_ptr<Entity> BRIDGEMIB::get_child_by_name(const std::string & child_y
     {
         if(dot1dtp == nullptr)
         {
-            dot1dtp = std::make_shared<BRIDGEMIB::Dot1Dtp>();
+            dot1dtp = std::make_shared<BRIDGEMIB::Dot1dTp>();
         }
         return dot1dtp;
     }
@@ -112,7 +113,7 @@ std::shared_ptr<Entity> BRIDGEMIB::get_child_by_name(const std::string & child_y
     {
         if(dot1dbaseporttable == nullptr)
         {
-            dot1dbaseporttable = std::make_shared<BRIDGEMIB::Dot1Dbaseporttable>();
+            dot1dbaseporttable = std::make_shared<BRIDGEMIB::Dot1dBasePortTable>();
         }
         return dot1dbaseporttable;
     }
@@ -121,7 +122,7 @@ std::shared_ptr<Entity> BRIDGEMIB::get_child_by_name(const std::string & child_y
     {
         if(dot1dstpporttable == nullptr)
         {
-            dot1dstpporttable = std::make_shared<BRIDGEMIB::Dot1Dstpporttable>();
+            dot1dstpporttable = std::make_shared<BRIDGEMIB::Dot1dStpPortTable>();
         }
         return dot1dstpporttable;
     }
@@ -130,7 +131,7 @@ std::shared_ptr<Entity> BRIDGEMIB::get_child_by_name(const std::string & child_y
     {
         if(dot1dtpfdbtable == nullptr)
         {
-            dot1dtpfdbtable = std::make_shared<BRIDGEMIB::Dot1Dtpfdbtable>();
+            dot1dtpfdbtable = std::make_shared<BRIDGEMIB::Dot1dTpFdbTable>();
         }
         return dot1dtpfdbtable;
     }
@@ -139,7 +140,7 @@ std::shared_ptr<Entity> BRIDGEMIB::get_child_by_name(const std::string & child_y
     {
         if(dot1dtpporttable == nullptr)
         {
-            dot1dtpporttable = std::make_shared<BRIDGEMIB::Dot1Dtpporttable>();
+            dot1dtpporttable = std::make_shared<BRIDGEMIB::Dot1dTpPortTable>();
         }
         return dot1dtpporttable;
     }
@@ -148,7 +149,7 @@ std::shared_ptr<Entity> BRIDGEMIB::get_child_by_name(const std::string & child_y
     {
         if(dot1dstatictable == nullptr)
         {
-            dot1dstatictable = std::make_shared<BRIDGEMIB::Dot1Dstatictable>();
+            dot1dstatictable = std::make_shared<BRIDGEMIB::Dot1dStaticTable>();
         }
         return dot1dstatictable;
     }
@@ -243,28 +244,29 @@ bool BRIDGEMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-BRIDGEMIB::Dot1Dbase::Dot1Dbase()
+BRIDGEMIB::Dot1dBase::Dot1dBase()
     :
     dot1dbasebridgeaddress{YType::str, "dot1dBaseBridgeAddress"},
     dot1dbasenumports{YType::int32, "dot1dBaseNumPorts"},
     dot1dbasetype{YType::enumeration, "dot1dBaseType"}
 {
 
-    yang_name = "dot1dBase"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dBase"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dbase::~Dot1Dbase()
+BRIDGEMIB::Dot1dBase::~Dot1dBase()
 {
 }
 
-bool BRIDGEMIB::Dot1Dbase::has_data() const
+bool BRIDGEMIB::Dot1dBase::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1dbasebridgeaddress.is_set
 	|| dot1dbasenumports.is_set
 	|| dot1dbasetype.is_set;
 }
 
-bool BRIDGEMIB::Dot1Dbase::has_operation() const
+bool BRIDGEMIB::Dot1dBase::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dbasebridgeaddress.yfilter)
@@ -272,21 +274,21 @@ bool BRIDGEMIB::Dot1Dbase::has_operation() const
 	|| ydk::is_set(dot1dbasetype.yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dbase::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dBase::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dbase::get_segment_path() const
+std::string BRIDGEMIB::Dot1dBase::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dBase";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dbase::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dBase::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -298,19 +300,19 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dbase::get_name_le
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dbase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dbase::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dBase::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void BRIDGEMIB::Dot1Dbase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dBaseBridgeAddress")
     {
@@ -332,7 +334,7 @@ void BRIDGEMIB::Dot1Dbase::set_value(const std::string & value_path, const std::
     }
 }
 
-void BRIDGEMIB::Dot1Dbase::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dBase::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dBaseBridgeAddress")
     {
@@ -348,14 +350,14 @@ void BRIDGEMIB::Dot1Dbase::set_filter(const std::string & value_path, YFilter yf
     }
 }
 
-bool BRIDGEMIB::Dot1Dbase::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dBase::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dBaseBridgeAddress" || name == "dot1dBaseNumPorts" || name == "dot1dBaseType")
         return true;
     return false;
 }
 
-BRIDGEMIB::Dot1Dstp::Dot1Dstp()
+BRIDGEMIB::Dot1dStp::Dot1dStp()
     :
     dot1dstpprotocolspecification{YType::enumeration, "dot1dStpProtocolSpecification"},
     dot1dstppriority{YType::int32, "dot1dStpPriority"},
@@ -373,15 +375,16 @@ BRIDGEMIB::Dot1Dstp::Dot1Dstp()
     dot1dstpbridgeforwarddelay{YType::int32, "dot1dStpBridgeForwardDelay"}
 {
 
-    yang_name = "dot1dStp"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dStp"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dstp::~Dot1Dstp()
+BRIDGEMIB::Dot1dStp::~Dot1dStp()
 {
 }
 
-bool BRIDGEMIB::Dot1Dstp::has_data() const
+bool BRIDGEMIB::Dot1dStp::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1dstpprotocolspecification.is_set
 	|| dot1dstppriority.is_set
 	|| dot1dstptimesincetopologychange.is_set
@@ -398,7 +401,7 @@ bool BRIDGEMIB::Dot1Dstp::has_data() const
 	|| dot1dstpbridgeforwarddelay.is_set;
 }
 
-bool BRIDGEMIB::Dot1Dstp::has_operation() const
+bool BRIDGEMIB::Dot1dStp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dstpprotocolspecification.yfilter)
@@ -417,21 +420,21 @@ bool BRIDGEMIB::Dot1Dstp::has_operation() const
 	|| ydk::is_set(dot1dstpbridgeforwarddelay.yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dstp::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dStp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dstp::get_segment_path() const
+std::string BRIDGEMIB::Dot1dStp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dStp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dstp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dStp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -454,19 +457,19 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dstp::get_name_lea
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dstp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dStp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dstp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dStp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void BRIDGEMIB::Dot1Dstp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dStp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dStpProtocolSpecification")
     {
@@ -554,7 +557,7 @@ void BRIDGEMIB::Dot1Dstp::set_value(const std::string & value_path, const std::s
     }
 }
 
-void BRIDGEMIB::Dot1Dstp::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dStp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dStpProtocolSpecification")
     {
@@ -614,54 +617,55 @@ void BRIDGEMIB::Dot1Dstp::set_filter(const std::string & value_path, YFilter yfi
     }
 }
 
-bool BRIDGEMIB::Dot1Dstp::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dStp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dStpProtocolSpecification" || name == "dot1dStpPriority" || name == "dot1dStpTimeSinceTopologyChange" || name == "dot1dStpTopChanges" || name == "dot1dStpDesignatedRoot" || name == "dot1dStpRootCost" || name == "dot1dStpRootPort" || name == "dot1dStpMaxAge" || name == "dot1dStpHelloTime" || name == "dot1dStpHoldTime" || name == "dot1dStpForwardDelay" || name == "dot1dStpBridgeMaxAge" || name == "dot1dStpBridgeHelloTime" || name == "dot1dStpBridgeForwardDelay")
         return true;
     return false;
 }
 
-BRIDGEMIB::Dot1Dtp::Dot1Dtp()
+BRIDGEMIB::Dot1dTp::Dot1dTp()
     :
     dot1dtplearnedentrydiscards{YType::uint32, "dot1dTpLearnedEntryDiscards"},
     dot1dtpagingtime{YType::int32, "dot1dTpAgingTime"}
 {
 
-    yang_name = "dot1dTp"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dTp"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dtp::~Dot1Dtp()
+BRIDGEMIB::Dot1dTp::~Dot1dTp()
 {
 }
 
-bool BRIDGEMIB::Dot1Dtp::has_data() const
+bool BRIDGEMIB::Dot1dTp::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1dtplearnedentrydiscards.is_set
 	|| dot1dtpagingtime.is_set;
 }
 
-bool BRIDGEMIB::Dot1Dtp::has_operation() const
+bool BRIDGEMIB::Dot1dTp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dtplearnedentrydiscards.yfilter)
 	|| ydk::is_set(dot1dtpagingtime.yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dtp::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dTp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dtp::get_segment_path() const
+std::string BRIDGEMIB::Dot1dTp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dTp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dtp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dTp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -672,19 +676,19 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dtp::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dtp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dTp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dtp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dTp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void BRIDGEMIB::Dot1Dtp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dTp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dTpLearnedEntryDiscards")
     {
@@ -700,7 +704,7 @@ void BRIDGEMIB::Dot1Dtp::set_value(const std::string & value_path, const std::st
     }
 }
 
-void BRIDGEMIB::Dot1Dtp::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dTp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dTpLearnedEntryDiscards")
     {
@@ -712,26 +716,29 @@ void BRIDGEMIB::Dot1Dtp::set_filter(const std::string & value_path, YFilter yfil
     }
 }
 
-bool BRIDGEMIB::Dot1Dtp::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dTp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dTpLearnedEntryDiscards" || name == "dot1dTpAgingTime")
         return true;
     return false;
 }
 
-BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseporttable()
+BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortTable()
+    :
+    dot1dbaseportentry(this, {"dot1dbaseport"})
 {
 
-    yang_name = "dot1dBasePortTable"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dBasePortTable"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dbaseporttable::~Dot1Dbaseporttable()
+BRIDGEMIB::Dot1dBasePortTable::~Dot1dBasePortTable()
 {
 }
 
-bool BRIDGEMIB::Dot1Dbaseporttable::has_data() const
+bool BRIDGEMIB::Dot1dBasePortTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1dbaseportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1dbaseportentry.len(); index++)
     {
         if(dot1dbaseportentry[index]->has_data())
             return true;
@@ -739,9 +746,9 @@ bool BRIDGEMIB::Dot1Dbaseporttable::has_data() const
     return false;
 }
 
-bool BRIDGEMIB::Dot1Dbaseporttable::has_operation() const
+bool BRIDGEMIB::Dot1dBasePortTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1dbaseportentry.size(); index++)
+    for (std::size_t index=0; index<dot1dbaseportentry.len(); index++)
     {
         if(dot1dbaseportentry[index]->has_operation())
             return true;
@@ -749,21 +756,21 @@ bool BRIDGEMIB::Dot1Dbaseporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dbaseporttable::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dBasePortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dbaseporttable::get_segment_path() const
+std::string BRIDGEMIB::Dot1dBasePortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dBasePortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dbaseporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dBasePortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -772,25 +779,25 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dbaseporttable::ge
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dbaseporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dBasePortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dBasePortEntry")
     {
-        auto c = std::make_shared<BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry>();
+        auto c = std::make_shared<BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry>();
         c->parent = this;
-        dot1dbaseportentry.push_back(c);
+        dot1dbaseportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dbaseporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dBasePortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1dbaseportentry)
+    for (auto c : dot1dbaseportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -801,22 +808,22 @@ std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dbaseporttable::ge
     return children;
 }
 
-void BRIDGEMIB::Dot1Dbaseporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dBasePortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void BRIDGEMIB::Dot1Dbaseporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dBasePortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool BRIDGEMIB::Dot1Dbaseporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dBasePortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dBasePortEntry")
         return true;
     return false;
 }
 
-BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::Dot1Dbaseportentry()
+BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::Dot1dBasePortEntry()
     :
     dot1dbaseport{YType::int32, "dot1dBasePort"},
     dot1dbaseportifindex{YType::int32, "dot1dBasePortIfIndex"},
@@ -842,15 +849,16 @@ BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::Dot1Dbaseportentry()
     dot1qportrestrictedvlanregistration{YType::boolean, "Q-BRIDGE-MIB:dot1qPortRestrictedVlanRegistration"}
 {
 
-    yang_name = "dot1dBasePortEntry"; yang_parent_name = "dot1dBasePortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dBasePortEntry"; yang_parent_name = "dot1dBasePortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::~Dot1Dbaseportentry()
+BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::~Dot1dBasePortEntry()
 {
 }
 
-bool BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::has_data() const
+bool BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1dbaseport.is_set
 	|| dot1dbaseportifindex.is_set
 	|| dot1dbaseportcircuit.is_set
@@ -875,7 +883,7 @@ bool BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::has_data() const
 	|| dot1qportrestrictedvlanregistration.is_set;
 }
 
-bool BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::has_operation() const
+bool BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dbaseport.yfilter)
@@ -902,21 +910,22 @@ bool BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::has_operation() const
 	|| ydk::is_set(dot1qportrestrictedvlanregistration.yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/dot1dBasePortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::get_segment_path() const
+std::string BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1dBasePortEntry" <<"[dot1dBasePort='" <<dot1dbaseport <<"']";
+    path_buffer << "dot1dBasePortEntry";
+    ADD_KEY_TOKEN(dot1dbaseport, "dot1dBasePort");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -947,19 +956,19 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dbaseporttable::Do
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dBasePort")
     {
@@ -1093,7 +1102,7 @@ void BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::set_value(const std::str
     }
 }
 
-void BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dBasePort")
     {
@@ -1185,26 +1194,29 @@ void BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::set_filter(const std::st
     }
 }
 
-bool BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dBasePort" || name == "dot1dBasePortIfIndex" || name == "dot1dBasePortCircuit" || name == "dot1dBasePortDelayExceededDiscards" || name == "dot1dBasePortMtuExceededDiscards" || name == "dot1dPortCapabilities" || name == "dot1dPortDefaultUserPriority" || name == "dot1dPortNumTrafficClasses" || name == "dot1dPortGarpJoinTime" || name == "dot1dPortGarpLeaveTime" || name == "dot1dPortGarpLeaveAllTime" || name == "dot1dPortGmrpStatus" || name == "dot1dPortGmrpFailedRegistrations" || name == "dot1dPortGmrpLastPduOrigin" || name == "dot1dPortRestrictedGroupRegistration" || name == "dot1qPvid" || name == "dot1qPortAcceptableFrameTypes" || name == "dot1qPortIngressFiltering" || name == "dot1qPortGvrpStatus" || name == "dot1qPortGvrpFailedRegistrations" || name == "dot1qPortGvrpLastPduOrigin" || name == "dot1qPortRestrictedVlanRegistration")
         return true;
     return false;
 }
 
-BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpporttable()
+BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortTable()
+    :
+    dot1dstpportentry(this, {"dot1dstpport"})
 {
 
-    yang_name = "dot1dStpPortTable"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dStpPortTable"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dstpporttable::~Dot1Dstpporttable()
+BRIDGEMIB::Dot1dStpPortTable::~Dot1dStpPortTable()
 {
 }
 
-bool BRIDGEMIB::Dot1Dstpporttable::has_data() const
+bool BRIDGEMIB::Dot1dStpPortTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1dstpportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1dstpportentry.len(); index++)
     {
         if(dot1dstpportentry[index]->has_data())
             return true;
@@ -1212,9 +1224,9 @@ bool BRIDGEMIB::Dot1Dstpporttable::has_data() const
     return false;
 }
 
-bool BRIDGEMIB::Dot1Dstpporttable::has_operation() const
+bool BRIDGEMIB::Dot1dStpPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1dstpportentry.size(); index++)
+    for (std::size_t index=0; index<dot1dstpportentry.len(); index++)
     {
         if(dot1dstpportentry[index]->has_operation())
             return true;
@@ -1222,21 +1234,21 @@ bool BRIDGEMIB::Dot1Dstpporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dstpporttable::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dStpPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dstpporttable::get_segment_path() const
+std::string BRIDGEMIB::Dot1dStpPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dStpPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dstpporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dStpPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1245,25 +1257,25 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dstpporttable::get
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dstpporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dStpPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dStpPortEntry")
     {
-        auto c = std::make_shared<BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry>();
+        auto c = std::make_shared<BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry>();
         c->parent = this;
-        dot1dstpportentry.push_back(c);
+        dot1dstpportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dstpporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dStpPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1dstpportentry)
+    for (auto c : dot1dstpportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1274,22 +1286,22 @@ std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dstpporttable::get
     return children;
 }
 
-void BRIDGEMIB::Dot1Dstpporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dStpPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void BRIDGEMIB::Dot1Dstpporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dStpPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool BRIDGEMIB::Dot1Dstpporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dStpPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dStpPortEntry")
         return true;
     return false;
 }
 
-BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportentry()
+BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortEntry()
     :
     dot1dstpport{YType::int32, "dot1dStpPort"},
     dot1dstpportpriority{YType::int32, "dot1dStpPortPriority"},
@@ -1305,15 +1317,16 @@ BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportentry()
     stpxlongstpportpathcost{YType::uint32, "CISCO-STP-EXTENSIONS-MIB:stpxLongStpPortPathCost"}
 {
 
-    yang_name = "dot1dStpPortEntry"; yang_parent_name = "dot1dStpPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dStpPortEntry"; yang_parent_name = "dot1dStpPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::~Dot1Dstpportentry()
+BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::~Dot1dStpPortEntry()
 {
 }
 
-bool BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::has_data() const
+bool BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1dstpport.is_set
 	|| dot1dstpportpriority.is_set
 	|| dot1dstpportstate.is_set
@@ -1328,7 +1341,7 @@ bool BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::has_data() const
 	|| stpxlongstpportpathcost.is_set;
 }
 
-bool BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::has_operation() const
+bool BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dstpport.yfilter)
@@ -1345,21 +1358,22 @@ bool BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::has_operation() const
 	|| ydk::is_set(stpxlongstpportpathcost.yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/dot1dStpPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::get_segment_path() const
+std::string BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1dStpPortEntry" <<"[dot1dStpPort='" <<dot1dstpport <<"']";
+    path_buffer << "dot1dStpPortEntry";
+    ADD_KEY_TOKEN(dot1dstpport, "dot1dStpPort");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1380,19 +1394,19 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dstpporttable::Dot
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dStpPort")
     {
@@ -1468,7 +1482,7 @@ void BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::set_value(const std::strin
     }
 }
 
-void BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dStpPort")
     {
@@ -1520,26 +1534,29 @@ void BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::set_filter(const std::stri
     }
 }
 
-bool BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dStpPort" || name == "dot1dStpPortPriority" || name == "dot1dStpPortState" || name == "dot1dStpPortEnable" || name == "dot1dStpPortPathCost" || name == "dot1dStpPortDesignatedRoot" || name == "dot1dStpPortDesignatedCost" || name == "dot1dStpPortDesignatedBridge" || name == "dot1dStpPortDesignatedPort" || name == "dot1dStpPortForwardTransitions" || name == "dot1dStpPortPathCost32" || name == "stpxLongStpPortPathCost")
         return true;
     return false;
 }
 
-BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbtable()
+BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbTable()
+    :
+    dot1dtpfdbentry(this, {"dot1dtpfdbaddress"})
 {
 
-    yang_name = "dot1dTpFdbTable"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dTpFdbTable"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dtpfdbtable::~Dot1Dtpfdbtable()
+BRIDGEMIB::Dot1dTpFdbTable::~Dot1dTpFdbTable()
 {
 }
 
-bool BRIDGEMIB::Dot1Dtpfdbtable::has_data() const
+bool BRIDGEMIB::Dot1dTpFdbTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1dtpfdbentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1dtpfdbentry.len(); index++)
     {
         if(dot1dtpfdbentry[index]->has_data())
             return true;
@@ -1547,9 +1564,9 @@ bool BRIDGEMIB::Dot1Dtpfdbtable::has_data() const
     return false;
 }
 
-bool BRIDGEMIB::Dot1Dtpfdbtable::has_operation() const
+bool BRIDGEMIB::Dot1dTpFdbTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1dtpfdbentry.size(); index++)
+    for (std::size_t index=0; index<dot1dtpfdbentry.len(); index++)
     {
         if(dot1dtpfdbentry[index]->has_operation())
             return true;
@@ -1557,21 +1574,21 @@ bool BRIDGEMIB::Dot1Dtpfdbtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dtpfdbtable::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dTpFdbTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dtpfdbtable::get_segment_path() const
+std::string BRIDGEMIB::Dot1dTpFdbTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dTpFdbTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dtpfdbtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dTpFdbTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1580,25 +1597,25 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dtpfdbtable::get_n
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dtpfdbtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dTpFdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dTpFdbEntry")
     {
-        auto c = std::make_shared<BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry>();
+        auto c = std::make_shared<BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry>();
         c->parent = this;
-        dot1dtpfdbentry.push_back(c);
+        dot1dtpfdbentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dtpfdbtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dTpFdbTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1dtpfdbentry)
+    for (auto c : dot1dtpfdbentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1609,43 +1626,44 @@ std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dtpfdbtable::get_c
     return children;
 }
 
-void BRIDGEMIB::Dot1Dtpfdbtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dTpFdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void BRIDGEMIB::Dot1Dtpfdbtable::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dTpFdbTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool BRIDGEMIB::Dot1Dtpfdbtable::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dTpFdbTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dTpFdbEntry")
         return true;
     return false;
 }
 
-BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::Dot1Dtpfdbentry()
+BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::Dot1dTpFdbEntry()
     :
     dot1dtpfdbaddress{YType::str, "dot1dTpFdbAddress"},
     dot1dtpfdbport{YType::int32, "dot1dTpFdbPort"},
     dot1dtpfdbstatus{YType::enumeration, "dot1dTpFdbStatus"}
 {
 
-    yang_name = "dot1dTpFdbEntry"; yang_parent_name = "dot1dTpFdbTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dTpFdbEntry"; yang_parent_name = "dot1dTpFdbTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::~Dot1Dtpfdbentry()
+BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::~Dot1dTpFdbEntry()
 {
 }
 
-bool BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::has_data() const
+bool BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1dtpfdbaddress.is_set
 	|| dot1dtpfdbport.is_set
 	|| dot1dtpfdbstatus.is_set;
 }
 
-bool BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::has_operation() const
+bool BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dtpfdbaddress.yfilter)
@@ -1653,21 +1671,22 @@ bool BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::has_operation() const
 	|| ydk::is_set(dot1dtpfdbstatus.yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/dot1dTpFdbTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::get_segment_path() const
+std::string BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1dTpFdbEntry" <<"[dot1dTpFdbAddress='" <<dot1dtpfdbaddress <<"']";
+    path_buffer << "dot1dTpFdbEntry";
+    ADD_KEY_TOKEN(dot1dtpfdbaddress, "dot1dTpFdbAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1679,19 +1698,19 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dtpfdbtable::Dot1D
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dTpFdbAddress")
     {
@@ -1713,7 +1732,7 @@ void BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::set_value(const std::string & 
     }
 }
 
-void BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dTpFdbAddress")
     {
@@ -1729,26 +1748,29 @@ void BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::set_filter(const std::string &
     }
 }
 
-bool BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dTpFdbAddress" || name == "dot1dTpFdbPort" || name == "dot1dTpFdbStatus")
         return true;
     return false;
 }
 
-BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpporttable()
+BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortTable()
+    :
+    dot1dtpportentry(this, {"dot1dtpport"})
 {
 
-    yang_name = "dot1dTpPortTable"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dTpPortTable"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dtpporttable::~Dot1Dtpporttable()
+BRIDGEMIB::Dot1dTpPortTable::~Dot1dTpPortTable()
 {
 }
 
-bool BRIDGEMIB::Dot1Dtpporttable::has_data() const
+bool BRIDGEMIB::Dot1dTpPortTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1dtpportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1dtpportentry.len(); index++)
     {
         if(dot1dtpportentry[index]->has_data())
             return true;
@@ -1756,9 +1778,9 @@ bool BRIDGEMIB::Dot1Dtpporttable::has_data() const
     return false;
 }
 
-bool BRIDGEMIB::Dot1Dtpporttable::has_operation() const
+bool BRIDGEMIB::Dot1dTpPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1dtpportentry.size(); index++)
+    for (std::size_t index=0; index<dot1dtpportentry.len(); index++)
     {
         if(dot1dtpportentry[index]->has_operation())
             return true;
@@ -1766,21 +1788,21 @@ bool BRIDGEMIB::Dot1Dtpporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dtpporttable::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dTpPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dtpporttable::get_segment_path() const
+std::string BRIDGEMIB::Dot1dTpPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dTpPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dtpporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dTpPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1789,25 +1811,25 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dtpporttable::get_
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dtpporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dTpPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dTpPortEntry")
     {
-        auto c = std::make_shared<BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry>();
+        auto c = std::make_shared<BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry>();
         c->parent = this;
-        dot1dtpportentry.push_back(c);
+        dot1dtpportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dtpporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dTpPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1dtpportentry)
+    for (auto c : dot1dtpportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1818,22 +1840,22 @@ std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dtpporttable::get_
     return children;
 }
 
-void BRIDGEMIB::Dot1Dtpporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dTpPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void BRIDGEMIB::Dot1Dtpporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dTpPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool BRIDGEMIB::Dot1Dtpporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dTpPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dTpPortEntry")
         return true;
     return false;
 }
 
-BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::Dot1Dtpportentry()
+BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::Dot1dTpPortEntry()
     :
     dot1dtpport{YType::int32, "dot1dTpPort"},
     dot1dtpportmaxinfo{YType::int32, "dot1dTpPortMaxInfo"},
@@ -1842,15 +1864,16 @@ BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::Dot1Dtpportentry()
     dot1dtpportindiscards{YType::uint32, "dot1dTpPortInDiscards"}
 {
 
-    yang_name = "dot1dTpPortEntry"; yang_parent_name = "dot1dTpPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dTpPortEntry"; yang_parent_name = "dot1dTpPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::~Dot1Dtpportentry()
+BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::~Dot1dTpPortEntry()
 {
 }
 
-bool BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::has_data() const
+bool BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1dtpport.is_set
 	|| dot1dtpportmaxinfo.is_set
 	|| dot1dtpportinframes.is_set
@@ -1858,7 +1881,7 @@ bool BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::has_data() const
 	|| dot1dtpportindiscards.is_set;
 }
 
-bool BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::has_operation() const
+bool BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dtpport.yfilter)
@@ -1868,21 +1891,22 @@ bool BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::has_operation() const
 	|| ydk::is_set(dot1dtpportindiscards.yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/dot1dTpPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::get_segment_path() const
+std::string BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1dTpPortEntry" <<"[dot1dTpPort='" <<dot1dtpport <<"']";
+    path_buffer << "dot1dTpPortEntry";
+    ADD_KEY_TOKEN(dot1dtpport, "dot1dTpPort");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1896,19 +1920,19 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dtpporttable::Dot1
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dTpPort")
     {
@@ -1942,7 +1966,7 @@ void BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::set_value(const std::string 
     }
 }
 
-void BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dTpPort")
     {
@@ -1966,26 +1990,29 @@ void BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::set_filter(const std::string
     }
 }
 
-bool BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dTpPort" || name == "dot1dTpPortMaxInfo" || name == "dot1dTpPortInFrames" || name == "dot1dTpPortOutFrames" || name == "dot1dTpPortInDiscards")
         return true;
     return false;
 }
 
-BRIDGEMIB::Dot1Dstatictable::Dot1Dstatictable()
+BRIDGEMIB::Dot1dStaticTable::Dot1dStaticTable()
+    :
+    dot1dstaticentry(this, {"dot1dstaticaddress", "dot1dstaticreceiveport"})
 {
 
-    yang_name = "dot1dStaticTable"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dStaticTable"; yang_parent_name = "BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dstatictable::~Dot1Dstatictable()
+BRIDGEMIB::Dot1dStaticTable::~Dot1dStaticTable()
 {
 }
 
-bool BRIDGEMIB::Dot1Dstatictable::has_data() const
+bool BRIDGEMIB::Dot1dStaticTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1dstaticentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1dstaticentry.len(); index++)
     {
         if(dot1dstaticentry[index]->has_data())
             return true;
@@ -1993,9 +2020,9 @@ bool BRIDGEMIB::Dot1Dstatictable::has_data() const
     return false;
 }
 
-bool BRIDGEMIB::Dot1Dstatictable::has_operation() const
+bool BRIDGEMIB::Dot1dStaticTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1dstaticentry.size(); index++)
+    for (std::size_t index=0; index<dot1dstaticentry.len(); index++)
     {
         if(dot1dstaticentry[index]->has_operation())
             return true;
@@ -2003,21 +2030,21 @@ bool BRIDGEMIB::Dot1Dstatictable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dstatictable::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dStaticTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dstatictable::get_segment_path() const
+std::string BRIDGEMIB::Dot1dStaticTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1dStaticTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dstatictable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dStaticTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2026,25 +2053,25 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dstatictable::get_
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dstatictable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dStaticTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dStaticEntry")
     {
-        auto c = std::make_shared<BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry>();
+        auto c = std::make_shared<BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry>();
         c->parent = this;
-        dot1dstaticentry.push_back(c);
+        dot1dstaticentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dstatictable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dStaticTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1dstaticentry)
+    for (auto c : dot1dstaticentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2055,22 +2082,22 @@ std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dstatictable::get_
     return children;
 }
 
-void BRIDGEMIB::Dot1Dstatictable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dStaticTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void BRIDGEMIB::Dot1Dstatictable::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dStaticTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool BRIDGEMIB::Dot1Dstatictable::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dStaticTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dStaticEntry")
         return true;
     return false;
 }
 
-BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::Dot1Dstaticentry()
+BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::Dot1dStaticEntry()
     :
     dot1dstaticaddress{YType::str, "dot1dStaticAddress"},
     dot1dstaticreceiveport{YType::int32, "dot1dStaticReceivePort"},
@@ -2078,22 +2105,23 @@ BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::Dot1Dstaticentry()
     dot1dstaticstatus{YType::enumeration, "dot1dStaticStatus"}
 {
 
-    yang_name = "dot1dStaticEntry"; yang_parent_name = "dot1dStaticTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1dStaticEntry"; yang_parent_name = "dot1dStaticTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::~Dot1Dstaticentry()
+BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::~Dot1dStaticEntry()
 {
 }
 
-bool BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::has_data() const
+bool BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1dstaticaddress.is_set
 	|| dot1dstaticreceiveport.is_set
 	|| dot1dstaticallowedtogoto.is_set
 	|| dot1dstaticstatus.is_set;
 }
 
-bool BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::has_operation() const
+bool BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dstaticaddress.yfilter)
@@ -2102,21 +2130,23 @@ bool BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::has_operation() const
 	|| ydk::is_set(dot1dstaticstatus.yfilter);
 }
 
-std::string BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::get_absolute_path() const
+std::string BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BRIDGE-MIB:BRIDGE-MIB/dot1dStaticTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::get_segment_path() const
+std::string BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1dStaticEntry" <<"[dot1dStaticAddress='" <<dot1dstaticaddress <<"']" <<"[dot1dStaticReceivePort='" <<dot1dstaticreceiveport <<"']";
+    path_buffer << "dot1dStaticEntry";
+    ADD_KEY_TOKEN(dot1dstaticaddress, "dot1dStaticAddress");
+    ADD_KEY_TOKEN(dot1dstaticreceiveport, "dot1dStaticReceivePort");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2129,19 +2159,19 @@ std::vector<std::pair<std::string, LeafData> > BRIDGEMIB::Dot1Dstatictable::Dot1
 
 }
 
-std::shared_ptr<Entity> BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dStaticAddress")
     {
@@ -2169,7 +2199,7 @@ void BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::set_value(const std::string 
     }
 }
 
-void BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::set_filter(const std::string & value_path, YFilter yfilter)
+void BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dStaticAddress")
     {
@@ -2189,46 +2219,46 @@ void BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::set_filter(const std::string
     }
 }
 
-bool BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::has_leaf_or_child_of_name(const std::string & name) const
+bool BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dStaticAddress" || name == "dot1dStaticReceivePort" || name == "dot1dStaticAllowedToGoTo" || name == "dot1dStaticStatus")
         return true;
     return false;
 }
 
-const Enum::YLeaf BRIDGEMIB::Dot1Dbase::Dot1Dbasetype::unknown {1, "unknown"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dbase::Dot1Dbasetype::transparent_only {2, "transparent-only"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dbase::Dot1Dbasetype::sourceroute_only {3, "sourceroute-only"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dbase::Dot1Dbasetype::srt {4, "srt"};
+const Enum::YLeaf BRIDGEMIB::Dot1dBase::Dot1dBaseType::unknown {1, "unknown"};
+const Enum::YLeaf BRIDGEMIB::Dot1dBase::Dot1dBaseType::transparent_only {2, "transparent-only"};
+const Enum::YLeaf BRIDGEMIB::Dot1dBase::Dot1dBaseType::sourceroute_only {3, "sourceroute-only"};
+const Enum::YLeaf BRIDGEMIB::Dot1dBase::Dot1dBaseType::srt {4, "srt"};
 
-const Enum::YLeaf BRIDGEMIB::Dot1Dstp::Dot1Dstpprotocolspecification::unknown {1, "unknown"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dstp::Dot1Dstpprotocolspecification::decLb100 {2, "decLb100"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dstp::Dot1Dstpprotocolspecification::ieee8021d {3, "ieee8021d"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStp::Dot1dStpProtocolSpecification::unknown {1, "unknown"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStp::Dot1dStpProtocolSpecification::decLb100 {2, "decLb100"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStp::Dot1dStpProtocolSpecification::ieee8021d {3, "ieee8021d"};
 
-const Enum::YLeaf BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::Dot1Qportacceptableframetypes::admitAll {1, "admitAll"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::Dot1Qportacceptableframetypes::admitOnlyVlanTagged {2, "admitOnlyVlanTagged"};
+const Enum::YLeaf BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::Dot1qPortAcceptableFrameTypes::admitAll {1, "admitAll"};
+const Enum::YLeaf BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::Dot1qPortAcceptableFrameTypes::admitOnlyVlanTagged {2, "admitOnlyVlanTagged"};
 
-const Enum::YLeaf BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportstate::disabled {1, "disabled"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportstate::blocking {2, "blocking"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportstate::listening {3, "listening"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportstate::learning {4, "learning"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportstate::forwarding {5, "forwarding"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportstate::broken {6, "broken"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortState::disabled {1, "disabled"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortState::blocking {2, "blocking"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortState::listening {3, "listening"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortState::learning {4, "learning"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortState::forwarding {5, "forwarding"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortState::broken {6, "broken"};
 
-const Enum::YLeaf BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportenable::enabled {1, "enabled"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportenable::disabled {2, "disabled"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortEnable::enabled {1, "enabled"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortEnable::disabled {2, "disabled"};
 
-const Enum::YLeaf BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::Dot1Dtpfdbstatus::other {1, "other"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::Dot1Dtpfdbstatus::invalid {2, "invalid"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::Dot1Dtpfdbstatus::learned {3, "learned"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::Dot1Dtpfdbstatus::self {4, "self"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::Dot1Dtpfdbstatus::mgmt {5, "mgmt"};
+const Enum::YLeaf BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::Dot1dTpFdbStatus::other {1, "other"};
+const Enum::YLeaf BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::Dot1dTpFdbStatus::invalid {2, "invalid"};
+const Enum::YLeaf BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::Dot1dTpFdbStatus::learned {3, "learned"};
+const Enum::YLeaf BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::Dot1dTpFdbStatus::self {4, "self"};
+const Enum::YLeaf BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::Dot1dTpFdbStatus::mgmt {5, "mgmt"};
 
-const Enum::YLeaf BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::Dot1Dstaticstatus::other {1, "other"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::Dot1Dstaticstatus::invalid {2, "invalid"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::Dot1Dstaticstatus::permanent {3, "permanent"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::Dot1Dstaticstatus::deleteOnReset {4, "deleteOnReset"};
-const Enum::YLeaf BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::Dot1Dstaticstatus::deleteOnTimeout {5, "deleteOnTimeout"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::Dot1dStaticStatus::other {1, "other"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::Dot1dStaticStatus::invalid {2, "invalid"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::Dot1dStaticStatus::permanent {3, "permanent"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::Dot1dStaticStatus::deleteOnReset {4, "deleteOnReset"};
+const Enum::YLeaf BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::Dot1dStaticStatus::deleteOnTimeout {5, "deleteOnTimeout"};
 
 
 }

@@ -85,7 +85,7 @@ class Sbfd::RemoteTarget::Ipv4Addresses : public ydk::Entity
 
         class Ipv4Address; //type: Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address> > ipv4_address;
+        ydk::YList ipv4_address;
         
 }; // Sbfd::RemoteTarget::Ipv4Addresses
 
@@ -110,7 +110,7 @@ class Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address : public ydk::Entity
         ydk::YLeaf address; //type: string
         class RemoteDiscriminator; //type: Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator> > remote_discriminator;
+        ydk::YList remote_discriminator;
         
 }; // Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address
 
@@ -155,7 +155,7 @@ class Sbfd::RemoteTarget::Ipv6Addresses : public ydk::Entity
 
         class Ipv6Address; //type: Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address> > ipv6_address;
+        ydk::YList ipv6_address;
         
 }; // Sbfd::RemoteTarget::Ipv6Addresses
 
@@ -180,7 +180,7 @@ class Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address : public ydk::Entity
         ydk::YLeaf address; //type: string
         class RemoteDiscriminator; //type: Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator> > remote_discriminator;
+        ydk::YList remote_discriminator;
         
 }; // Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address
 
@@ -255,7 +255,7 @@ class Sbfd::LocalDiscriminator::IntfDiscriminators : public ydk::Entity
 
         class IntfDiscriminator; //type: Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator> > intf_discriminator;
+        ydk::YList intf_discriminator;
         
 }; // Sbfd::LocalDiscriminator::IntfDiscriminators
 
@@ -301,7 +301,7 @@ class Sbfd::LocalDiscriminator::DynamicDiscriminators : public ydk::Entity
 
         class DynamicDiscriminator; //type: Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator> > dynamic_discriminator;
+        ydk::YList dynamic_discriminator;
         
 }; // Sbfd::LocalDiscriminator::DynamicDiscriminators
 
@@ -347,7 +347,7 @@ class Sbfd::LocalDiscriminator::Ipv4Discriminators : public ydk::Entity
 
         class Ipv4Discriminator; //type: Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator> > ipv4_discriminator;
+        ydk::YList ipv4_discriminator;
         
 }; // Sbfd::LocalDiscriminator::Ipv4Discriminators
 
@@ -393,7 +393,7 @@ class Sbfd::LocalDiscriminator::Val32Discriminators : public ydk::Entity
 
         class Val32Discriminator; //type: Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator> > val32_discriminator;
+        ydk::YList val32_discriminator;
         
 }; // Sbfd::LocalDiscriminator::Val32Discriminators
 

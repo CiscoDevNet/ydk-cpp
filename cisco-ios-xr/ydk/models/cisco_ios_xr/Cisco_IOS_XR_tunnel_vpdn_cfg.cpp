@@ -16,15 +16,15 @@ Vpdn::Vpdn()
     session_limit{YType::uint32, "session-limit"},
     enable{YType::empty, "enable"},
     soft_shut{YType::empty, "soft-shut"}
-    	,
+        ,
     history(std::make_shared<Vpdn::History>())
-	,redundancy(std::make_shared<Vpdn::Redundancy>())
-	,local(std::make_shared<Vpdn::Local>())
-	,templates(std::make_shared<Vpdn::Templates>())
-	,caller_id(std::make_shared<Vpdn::CallerId>())
-	,vpd_ngroups(std::make_shared<Vpdn::VpdNgroups>())
-	,loggings(std::make_shared<Vpdn::Loggings>())
-	,l2tp(std::make_shared<Vpdn::L2Tp>())
+    , redundancy(std::make_shared<Vpdn::Redundancy>())
+    , local(std::make_shared<Vpdn::Local>())
+    , templates(std::make_shared<Vpdn::Templates>())
+    , caller_id(std::make_shared<Vpdn::CallerId>())
+    , vpd_ngroups(std::make_shared<Vpdn::VpdNgroups>())
+    , loggings(std::make_shared<Vpdn::Loggings>())
+    , l2tp(std::make_shared<Vpdn::L2tp>())
 {
     history->parent = this;
     redundancy->parent = this;
@@ -35,7 +35,7 @@ Vpdn::Vpdn()
     loggings->parent = this;
     l2tp->parent = this;
 
-    yang_name = "vpdn"; yang_parent_name = "Cisco-IOS-XR-tunnel-vpdn-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vpdn"; yang_parent_name = "Cisco-IOS-XR-tunnel-vpdn-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Vpdn::~Vpdn()
@@ -44,6 +44,7 @@ Vpdn::~Vpdn()
 
 bool Vpdn::has_data() const
 {
+    if (is_presence_container) return true;
     return session_limit.is_set
 	|| enable.is_set
 	|| soft_shut.is_set
@@ -161,7 +162,7 @@ std::shared_ptr<Entity> Vpdn::get_child_by_name(const std::string & child_yang_n
     {
         if(l2tp == nullptr)
         {
-            l2tp = std::make_shared<Vpdn::L2Tp>();
+            l2tp = std::make_shared<Vpdn::L2tp>();
         }
         return l2tp;
     }
@@ -291,7 +292,7 @@ Vpdn::History::History()
     failure{YType::empty, "failure"}
 {
 
-    yang_name = "history"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "history"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::History::~History()
@@ -300,6 +301,7 @@ Vpdn::History::~History()
 
 bool Vpdn::History::has_data() const
 {
+    if (is_presence_container) return true;
     return failure.is_set;
 }
 
@@ -373,12 +375,12 @@ bool Vpdn::History::has_leaf_or_child_of_name(const std::string & name) const
 Vpdn::Redundancy::Redundancy()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     process_failures(std::make_shared<Vpdn::Redundancy::ProcessFailures>())
 {
     process_failures->parent = this;
 
-    yang_name = "redundancy"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "redundancy"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::Redundancy::~Redundancy()
@@ -387,6 +389,7 @@ Vpdn::Redundancy::~Redundancy()
 
 bool Vpdn::Redundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (process_failures !=  nullptr && process_failures->has_data());
 }
@@ -478,7 +481,7 @@ Vpdn::Redundancy::ProcessFailures::ProcessFailures()
     switchover{YType::empty, "switchover"}
 {
 
-    yang_name = "process-failures"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process-failures"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::Redundancy::ProcessFailures::~ProcessFailures()
@@ -487,6 +490,7 @@ Vpdn::Redundancy::ProcessFailures::~ProcessFailures()
 
 bool Vpdn::Redundancy::ProcessFailures::has_data() const
 {
+    if (is_presence_container) return true;
     return switchover.is_set;
 }
 
@@ -565,7 +569,7 @@ Vpdn::Local::Local()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "local"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::Local::~Local()
@@ -574,6 +578,7 @@ Vpdn::Local::~Local()
 
 bool Vpdn::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return secret_text.is_set
 	|| path.is_set
 	|| cache_disabled.is_set
@@ -684,9 +689,11 @@ bool Vpdn::Local::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Vpdn::Templates::Templates()
+    :
+    template_(this, {"template_name"})
 {
 
-    yang_name = "templates"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "templates"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::Templates::~Templates()
@@ -695,7 +702,8 @@ Vpdn::Templates::~Templates()
 
 bool Vpdn::Templates::has_data() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_data())
             return true;
@@ -705,7 +713,7 @@ bool Vpdn::Templates::has_data() const
 
 bool Vpdn::Templates::has_operation() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_operation())
             return true;
@@ -742,7 +750,7 @@ std::shared_ptr<Entity> Vpdn::Templates::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Vpdn::Templates::Template>();
         c->parent = this;
-        template_.push_back(c);
+        template_.append(c);
         return c;
     }
 
@@ -754,7 +762,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : template_)
+    for (auto c : template_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -787,12 +795,12 @@ Vpdn::Templates::Template::Template()
     description{YType::str, "description"},
     l2tp_class{YType::str, "l2tp-class"},
     dsl_line_forwarding{YType::empty, "dsl-line-forwarding"}
-    	,
+        ,
     caller_id(std::make_shared<Vpdn::Templates::Template::CallerId>())
-	,vpn(std::make_shared<Vpdn::Templates::Template::Vpn>())
-	,tunnel(std::make_shared<Vpdn::Templates::Template::Tunnel>())
-	,ip(std::make_shared<Vpdn::Templates::Template::Ip>())
-	,ipv4(std::make_shared<Vpdn::Templates::Template::Ipv4>())
+    , vpn(std::make_shared<Vpdn::Templates::Template::Vpn>())
+    , tunnel(std::make_shared<Vpdn::Templates::Template::Tunnel>())
+    , ip(std::make_shared<Vpdn::Templates::Template::Ip>())
+    , ipv4(std::make_shared<Vpdn::Templates::Template::Ipv4>())
 {
     caller_id->parent = this;
     vpn->parent = this;
@@ -800,7 +808,7 @@ Vpdn::Templates::Template::Template()
     ip->parent = this;
     ipv4->parent = this;
 
-    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::Templates::Template::~Template()
@@ -809,6 +817,7 @@ Vpdn::Templates::Template::~Template()
 
 bool Vpdn::Templates::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| cisco_avp100_format_e_enable.is_set
 	|| description.is_set
@@ -846,7 +855,8 @@ std::string Vpdn::Templates::Template::get_absolute_path() const
 std::string Vpdn::Templates::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -1016,7 +1026,7 @@ Vpdn::Templates::Template::CallerId::CallerId()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "caller-id"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "caller-id"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vpdn::Templates::Template::CallerId::~CallerId()
@@ -1025,6 +1035,7 @@ Vpdn::Templates::Template::CallerId::~CallerId()
 
 bool Vpdn::Templates::Template::CallerId::has_data() const
 {
+    if (is_presence_container) return true;
     return mask.is_set;
 }
 
@@ -1091,12 +1102,12 @@ bool Vpdn::Templates::Template::CallerId::has_leaf_or_child_of_name(const std::s
 Vpdn::Templates::Template::Vpn::Vpn()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     id(std::make_shared<Vpdn::Templates::Template::Vpn::Id>())
 {
     id->parent = this;
 
-    yang_name = "vpn"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vpn"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vpdn::Templates::Template::Vpn::~Vpn()
@@ -1105,6 +1116,7 @@ Vpdn::Templates::Template::Vpn::~Vpn()
 
 bool Vpdn::Templates::Template::Vpn::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (id !=  nullptr && id->has_data());
 }
@@ -1190,7 +1202,7 @@ Vpdn::Templates::Template::Vpn::Id::Id()
     index_{YType::str, "index"}
 {
 
-    yang_name = "id"; yang_parent_name = "vpn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "id"; yang_parent_name = "vpn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vpdn::Templates::Template::Vpn::Id::~Id()
@@ -1199,6 +1211,7 @@ Vpdn::Templates::Template::Vpn::Id::~Id()
 
 bool Vpdn::Templates::Template::Vpn::Id::has_data() const
 {
+    if (is_presence_container) return true;
     return oui.is_set
 	|| index_.is_set;
 }
@@ -1280,7 +1293,7 @@ Vpdn::Templates::Template::Tunnel::Tunnel()
     busy_timeout{YType::uint32, "busy-timeout"}
 {
 
-    yang_name = "tunnel"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vpdn::Templates::Template::Tunnel::~Tunnel()
@@ -1289,6 +1302,7 @@ Vpdn::Templates::Template::Tunnel::~Tunnel()
 
 bool Vpdn::Templates::Template::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return busy_timeout.is_set;
 }
 
@@ -1354,10 +1368,10 @@ bool Vpdn::Templates::Template::Tunnel::has_leaf_or_child_of_name(const std::str
 
 Vpdn::Templates::Template::Ip::Ip()
     :
-    tos{YType::int32, "tos"}
+    tos{YType::uint32, "tos"}
 {
 
-    yang_name = "ip"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vpdn::Templates::Template::Ip::~Ip()
@@ -1366,6 +1380,7 @@ Vpdn::Templates::Template::Ip::~Ip()
 
 bool Vpdn::Templates::Template::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return tos.is_set;
 }
 
@@ -1435,7 +1450,7 @@ Vpdn::Templates::Template::Ipv4::Ipv4()
     source{YType::str, "source"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vpdn::Templates::Template::Ipv4::~Ipv4()
@@ -1444,6 +1459,7 @@ Vpdn::Templates::Template::Ipv4::~Ipv4()
 
 bool Vpdn::Templates::Template::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return df_bit.is_set
 	|| source.is_set;
 }
@@ -1525,7 +1541,7 @@ Vpdn::CallerId::CallerId()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "caller-id"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "caller-id"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::CallerId::~CallerId()
@@ -1534,6 +1550,7 @@ Vpdn::CallerId::~CallerId()
 
 bool Vpdn::CallerId::has_data() const
 {
+    if (is_presence_container) return true;
     return mask.is_set;
 }
 
@@ -1605,9 +1622,11 @@ bool Vpdn::CallerId::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Vpdn::VpdNgroups::VpdNgroups()
+    :
+    vpd_ngroup(this, {"vpd_ngroupname"})
 {
 
-    yang_name = "vpd-ngroups"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vpd-ngroups"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::VpdNgroups::~VpdNgroups()
@@ -1616,7 +1635,8 @@ Vpdn::VpdNgroups::~VpdNgroups()
 
 bool Vpdn::VpdNgroups::has_data() const
 {
-    for (std::size_t index=0; index<vpd_ngroup.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vpd_ngroup.len(); index++)
     {
         if(vpd_ngroup[index]->has_data())
             return true;
@@ -1626,7 +1646,7 @@ bool Vpdn::VpdNgroups::has_data() const
 
 bool Vpdn::VpdNgroups::has_operation() const
 {
-    for (std::size_t index=0; index<vpd_ngroup.size(); index++)
+    for (std::size_t index=0; index<vpd_ngroup.len(); index++)
     {
         if(vpd_ngroup[index]->has_operation())
             return true;
@@ -1663,7 +1683,7 @@ std::shared_ptr<Entity> Vpdn::VpdNgroups::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Vpdn::VpdNgroups::VpdNgroup>();
         c->parent = this;
-        vpd_ngroup.push_back(c);
+        vpd_ngroup.append(c);
         return c;
     }
 
@@ -1675,7 +1695,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdNgroups::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vpd_ngroup)
+    for (auto c : vpd_ngroup.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1712,14 +1732,14 @@ Vpdn::VpdNgroups::VpdNgroup::VpdNgroup()
     tunnel_busy_timeout{YType::uint32, "tunnel-busy-timeout"},
     vrf_name{YType::str, "vrf-name"},
     sr_ctemplate{YType::str, "sr-ctemplate"}
-    	,
+        ,
     vpn_id(std::make_shared<Vpdn::VpdNgroups::VpdNgroup::VpnId>())
-	,ip(std::make_shared<Vpdn::VpdNgroups::VpdNgroup::Ip>())
+    , ip(std::make_shared<Vpdn::VpdNgroups::VpdNgroup::Ip>())
 {
     vpn_id->parent = this;
     ip->parent = this;
 
-    yang_name = "vpd-ngroup"; yang_parent_name = "vpd-ngroups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vpd-ngroup"; yang_parent_name = "vpd-ngroups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::VpdNgroups::VpdNgroup::~VpdNgroup()
@@ -1728,6 +1748,7 @@ Vpdn::VpdNgroups::VpdNgroup::~VpdNgroup()
 
 bool Vpdn::VpdNgroups::VpdNgroup::has_data() const
 {
+    if (is_presence_container) return true;
     return vpd_ngroupname.is_set
 	|| dsl_line_forwarding.is_set
 	|| cisco_avp100_format_e_enable.is_set
@@ -1767,7 +1788,8 @@ std::string Vpdn::VpdNgroups::VpdNgroup::get_absolute_path() const
 std::string Vpdn::VpdNgroups::VpdNgroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vpd-ngroup" <<"[vpd-ngroupname='" <<vpd_ngroupname <<"']";
+    path_buffer << "vpd-ngroup";
+    ADD_KEY_TOKEN(vpd_ngroupname, "vpd-ngroupname");
     return path_buffer.str();
 }
 
@@ -1940,7 +1962,7 @@ Vpdn::VpdNgroups::VpdNgroup::VpnId::VpnId()
     vpn_id_index{YType::str, "vpn-id-index"}
 {
 
-    yang_name = "vpn-id"; yang_parent_name = "vpd-ngroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vpn-id"; yang_parent_name = "vpd-ngroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vpdn::VpdNgroups::VpdNgroup::VpnId::~VpnId()
@@ -1949,6 +1971,7 @@ Vpdn::VpdNgroups::VpdNgroup::VpnId::~VpnId()
 
 bool Vpdn::VpdNgroups::VpdNgroup::VpnId::has_data() const
 {
+    if (is_presence_container) return true;
     return vpn_id_oui.is_set
 	|| vpn_id_index.is_set;
 }
@@ -2030,7 +2053,7 @@ Vpdn::VpdNgroups::VpdNgroup::Ip::Ip()
     tos{YType::uint32, "tos"}
 {
 
-    yang_name = "ip"; yang_parent_name = "vpd-ngroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "vpd-ngroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vpdn::VpdNgroups::VpdNgroup::Ip::~Ip()
@@ -2039,6 +2062,7 @@ Vpdn::VpdNgroups::VpdNgroup::Ip::~Ip()
 
 bool Vpdn::VpdNgroups::VpdNgroup::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return tos.is_set;
 }
 
@@ -2103,9 +2127,11 @@ bool Vpdn::VpdNgroups::VpdNgroup::Ip::has_leaf_or_child_of_name(const std::strin
 }
 
 Vpdn::Loggings::Loggings()
+    :
+    logging(this, {"option"})
 {
 
-    yang_name = "loggings"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "loggings"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::Loggings::~Loggings()
@@ -2114,7 +2140,8 @@ Vpdn::Loggings::~Loggings()
 
 bool Vpdn::Loggings::has_data() const
 {
-    for (std::size_t index=0; index<logging.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<logging.len(); index++)
     {
         if(logging[index]->has_data())
             return true;
@@ -2124,7 +2151,7 @@ bool Vpdn::Loggings::has_data() const
 
 bool Vpdn::Loggings::has_operation() const
 {
-    for (std::size_t index=0; index<logging.size(); index++)
+    for (std::size_t index=0; index<logging.len(); index++)
     {
         if(logging[index]->has_operation())
             return true;
@@ -2161,7 +2188,7 @@ std::shared_ptr<Entity> Vpdn::Loggings::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Vpdn::Loggings::Logging>();
         c->parent = this;
-        logging.push_back(c);
+        logging.append(c);
         return c;
     }
 
@@ -2173,7 +2200,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vpdn::Loggings::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : logging)
+    for (auto c : logging.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2204,7 +2231,7 @@ Vpdn::Loggings::Logging::Logging()
     option{YType::enumeration, "option"}
 {
 
-    yang_name = "logging"; yang_parent_name = "loggings"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging"; yang_parent_name = "loggings"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::Loggings::Logging::~Logging()
@@ -2213,6 +2240,7 @@ Vpdn::Loggings::Logging::~Logging()
 
 bool Vpdn::Loggings::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return option.is_set;
 }
 
@@ -2232,7 +2260,8 @@ std::string Vpdn::Loggings::Logging::get_absolute_path() const
 std::string Vpdn::Loggings::Logging::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "logging" <<"[option='" <<option <<"']";
+    path_buffer << "logging";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -2283,30 +2312,31 @@ bool Vpdn::Loggings::Logging::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-Vpdn::L2Tp::L2Tp()
+Vpdn::L2tp::L2tp()
     :
     tcp_mss_adjust{YType::uint32, "tcp-mss-adjust"},
     reassembly{YType::empty, "reassembly"}
-    	,
-    session_id(std::make_shared<Vpdn::L2Tp::SessionId>())
+        ,
+    session_id(std::make_shared<Vpdn::L2tp::SessionId>())
 {
     session_id->parent = this;
 
-    yang_name = "l2tp"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "l2tp"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Vpdn::L2Tp::~L2Tp()
+Vpdn::L2tp::~L2tp()
 {
 }
 
-bool Vpdn::L2Tp::has_data() const
+bool Vpdn::L2tp::has_data() const
 {
+    if (is_presence_container) return true;
     return tcp_mss_adjust.is_set
 	|| reassembly.is_set
 	|| (session_id !=  nullptr && session_id->has_data());
 }
 
-bool Vpdn::L2Tp::has_operation() const
+bool Vpdn::L2tp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tcp_mss_adjust.yfilter)
@@ -2314,21 +2344,21 @@ bool Vpdn::L2Tp::has_operation() const
 	|| (session_id !=  nullptr && session_id->has_operation());
 }
 
-std::string Vpdn::L2Tp::get_absolute_path() const
+std::string Vpdn::L2tp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-vpdn-cfg:vpdn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Vpdn::L2Tp::get_segment_path() const
+std::string Vpdn::L2tp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vpdn::L2Tp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vpdn::L2tp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2339,13 +2369,13 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::L2Tp::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Vpdn::L2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vpdn::L2tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-id")
     {
         if(session_id == nullptr)
         {
-            session_id = std::make_shared<Vpdn::L2Tp::SessionId>();
+            session_id = std::make_shared<Vpdn::L2tp::SessionId>();
         }
         return session_id;
     }
@@ -2353,7 +2383,7 @@ std::shared_ptr<Entity> Vpdn::L2Tp::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2Tp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2tp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2365,7 +2395,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2Tp::get_children() const
     return children;
 }
 
-void Vpdn::L2Tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vpdn::L2tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tcp-mss-adjust")
     {
@@ -2381,7 +2411,7 @@ void Vpdn::L2Tp::set_value(const std::string & value_path, const std::string & v
     }
 }
 
-void Vpdn::L2Tp::set_filter(const std::string & value_path, YFilter yfilter)
+void Vpdn::L2tp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tcp-mss-adjust")
     {
@@ -2393,52 +2423,53 @@ void Vpdn::L2Tp::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-bool Vpdn::L2Tp::has_leaf_or_child_of_name(const std::string & name) const
+bool Vpdn::L2tp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "tcp-mss-adjust" || name == "reassembly")
         return true;
     return false;
 }
 
-Vpdn::L2Tp::SessionId::SessionId()
+Vpdn::L2tp::SessionId::SessionId()
     :
-    space(std::make_shared<Vpdn::L2Tp::SessionId::Space>())
+    space(std::make_shared<Vpdn::L2tp::SessionId::Space>())
 {
     space->parent = this;
 
-    yang_name = "session-id"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session-id"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Vpdn::L2Tp::SessionId::~SessionId()
+Vpdn::L2tp::SessionId::~SessionId()
 {
 }
 
-bool Vpdn::L2Tp::SessionId::has_data() const
+bool Vpdn::L2tp::SessionId::has_data() const
 {
+    if (is_presence_container) return true;
     return (space !=  nullptr && space->has_data());
 }
 
-bool Vpdn::L2Tp::SessionId::has_operation() const
+bool Vpdn::L2tp::SessionId::has_operation() const
 {
     return is_set(yfilter)
 	|| (space !=  nullptr && space->has_operation());
 }
 
-std::string Vpdn::L2Tp::SessionId::get_absolute_path() const
+std::string Vpdn::L2tp::SessionId::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-vpdn-cfg:vpdn/l2tp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Vpdn::L2Tp::SessionId::get_segment_path() const
+std::string Vpdn::L2tp::SessionId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vpdn::L2Tp::SessionId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vpdn::L2tp::SessionId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2447,13 +2478,13 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::L2Tp::SessionId::get_name_l
 
 }
 
-std::shared_ptr<Entity> Vpdn::L2Tp::SessionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vpdn::L2tp::SessionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "space")
     {
         if(space == nullptr)
         {
-            space = std::make_shared<Vpdn::L2Tp::SessionId::Space>();
+            space = std::make_shared<Vpdn::L2tp::SessionId::Space>();
         }
         return space;
     }
@@ -2461,7 +2492,7 @@ std::shared_ptr<Entity> Vpdn::L2Tp::SessionId::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2Tp::SessionId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2tp::SessionId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2473,59 +2504,60 @@ std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2Tp::SessionId::get_childr
     return children;
 }
 
-void Vpdn::L2Tp::SessionId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vpdn::L2tp::SessionId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Vpdn::L2Tp::SessionId::set_filter(const std::string & value_path, YFilter yfilter)
+void Vpdn::L2tp::SessionId::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Vpdn::L2Tp::SessionId::has_leaf_or_child_of_name(const std::string & name) const
+bool Vpdn::L2tp::SessionId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "space")
         return true;
     return false;
 }
 
-Vpdn::L2Tp::SessionId::Space::Space()
+Vpdn::L2tp::SessionId::Space::Space()
     :
     hierarchy{YType::empty, "hierarchy"}
 {
 
-    yang_name = "space"; yang_parent_name = "session-id"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "space"; yang_parent_name = "session-id"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Vpdn::L2Tp::SessionId::Space::~Space()
+Vpdn::L2tp::SessionId::Space::~Space()
 {
 }
 
-bool Vpdn::L2Tp::SessionId::Space::has_data() const
+bool Vpdn::L2tp::SessionId::Space::has_data() const
 {
+    if (is_presence_container) return true;
     return hierarchy.is_set;
 }
 
-bool Vpdn::L2Tp::SessionId::Space::has_operation() const
+bool Vpdn::L2tp::SessionId::Space::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hierarchy.yfilter);
 }
 
-std::string Vpdn::L2Tp::SessionId::Space::get_absolute_path() const
+std::string Vpdn::L2tp::SessionId::Space::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-vpdn-cfg:vpdn/l2tp/session-id/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Vpdn::L2Tp::SessionId::Space::get_segment_path() const
+std::string Vpdn::L2tp::SessionId::Space::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "space";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vpdn::L2Tp::SessionId::Space::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vpdn::L2tp::SessionId::Space::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2535,19 +2567,19 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::L2Tp::SessionId::Space::get
 
 }
 
-std::shared_ptr<Entity> Vpdn::L2Tp::SessionId::Space::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vpdn::L2tp::SessionId::Space::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2Tp::SessionId::Space::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2tp::SessionId::Space::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Vpdn::L2Tp::SessionId::Space::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vpdn::L2tp::SessionId::Space::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hierarchy")
     {
@@ -2557,7 +2589,7 @@ void Vpdn::L2Tp::SessionId::Space::set_value(const std::string & value_path, con
     }
 }
 
-void Vpdn::L2Tp::SessionId::Space::set_filter(const std::string & value_path, YFilter yfilter)
+void Vpdn::L2tp::SessionId::Space::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hierarchy")
     {
@@ -2565,7 +2597,7 @@ void Vpdn::L2Tp::SessionId::Space::set_filter(const std::string & value_path, YF
     }
 }
 
-bool Vpdn::L2Tp::SessionId::Space::has_leaf_or_child_of_name(const std::string & name) const
+bool Vpdn::L2tp::SessionId::Space::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hierarchy")
         return true;

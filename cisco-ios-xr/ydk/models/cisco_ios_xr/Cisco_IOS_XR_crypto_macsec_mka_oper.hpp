@@ -81,7 +81,7 @@ class Macsec::Mka::Interfaces : public ydk::Entity
 
         class Interface; //type: Macsec::Mka::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Macsec::Mka::Interfaces
 
@@ -133,7 +133,7 @@ class Macsec::Mka::Interfaces::Interface::Session : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Session::SessionSummary> session_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Session::Vp> vp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Session::Ca> > ca;
+        ydk::YList ca;
         
 }; // Macsec::Mka::Interfaces::Interface::Session
 
@@ -166,7 +166,8 @@ class Macsec::Mka::Interfaces::Interface::Session::SessionSummary : public ydk::
         ydk::YLeaf confidentiality_offset; //type: uint32
         ydk::YLeaf algo_agility; //type: uint32
         ydk::YLeaf capability; //type: uint32
-        ydk::YLeaf cipher_str; //type: string
+        ydk::YLeaf mka_cipher_suite; //type: string
+        ydk::YLeaf configured_mac_sec_cipher_suite; //type: string
         ydk::YLeaf mac_sec_desired; //type: boolean
         class OuterTag; //type: Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag
         class InnerTag; //type: Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag
@@ -260,7 +261,7 @@ class Macsec::Mka::Interfaces::Interface::Session::Vp : public ydk::Entity
         ydk::YLeaf time_to_sak_rekey; //type: string
         class FallbackKeepalive; //type: Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive> > fallback_keepalive;
+        ydk::YList fallback_keepalive;
         
 }; // Macsec::Mka::Interfaces::Interface::Session::Vp
 
@@ -311,7 +312,7 @@ class Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersS
         ydk::YLeaf peer_count; //type: uint32
         class Peer; //type: Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer> > peer;
+        ydk::YList peer;
         
 }; // Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus
 
@@ -398,9 +399,9 @@ class Macsec::Mka::Interfaces::Interface::Session::Ca : public ydk::Entity
         class DormantPeer; //type: Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus> peers_status;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer> > live_peer;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer> > potential_peer;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer> > dormant_peer;
+        ydk::YList live_peer;
+        ydk::YList potential_peer;
+        ydk::YList dormant_peer;
         
 }; // Macsec::Mka::Interfaces::Interface::Session::Ca
 
@@ -425,7 +426,7 @@ class Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus : public ydk:
         ydk::YLeaf peer_count; //type: uint32
         class Peer; //type: Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer> > peer;
+        ydk::YList peer;
         
 }; // Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus
 

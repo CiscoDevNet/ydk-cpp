@@ -11,15 +11,15 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_DYNAMIC_TEMPLATE_TC_MIB {
 
+const Enum::YLeaf DynamicTemplateTargetType::other {1, "other"};
+const Enum::YLeaf DynamicTemplateTargetType::interface {2, "interface"};
+
 const Enum::YLeaf DynamicTemplateType::other {1, "other"};
 const Enum::YLeaf DynamicTemplateType::derived {2, "derived"};
 const Enum::YLeaf DynamicTemplateType::ppp {3, "ppp"};
 const Enum::YLeaf DynamicTemplateType::ethernet {4, "ethernet"};
 const Enum::YLeaf DynamicTemplateType::ipSubscriber {5, "ipSubscriber"};
 const Enum::YLeaf DynamicTemplateType::service {6, "service"};
-
-const Enum::YLeaf DynamicTemplateTargetType::other {1, "other"};
-const Enum::YLeaf DynamicTemplateTargetType::interface {2, "interface"};
 
 
 }

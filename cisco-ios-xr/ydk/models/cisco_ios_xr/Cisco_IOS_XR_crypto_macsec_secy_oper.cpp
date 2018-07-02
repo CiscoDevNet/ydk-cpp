@@ -17,7 +17,7 @@ Macsec::Macsec()
 {
     secy->parent = this;
 
-    yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-secy-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-secy-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Macsec::~Macsec()
@@ -26,6 +26,7 @@ Macsec::~Macsec()
 
 bool Macsec::has_data() const
 {
+    if (is_presence_container) return true;
     return (secy !=  nullptr && secy->has_data());
 }
 
@@ -123,7 +124,7 @@ Macsec::Secy::Secy()
 {
     interfaces->parent = this;
 
-    yang_name = "secy"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "secy"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Macsec::Secy::~Secy()
@@ -132,6 +133,7 @@ Macsec::Secy::~Secy()
 
 bool Macsec::Secy::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data());
 }
 
@@ -206,9 +208,11 @@ bool Macsec::Secy::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Macsec::Secy::Interfaces::Interfaces()
+    :
+    interface(this, {"name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "secy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "secy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Macsec::Secy::Interfaces::~Interfaces()
@@ -217,7 +221,8 @@ Macsec::Secy::Interfaces::~Interfaces()
 
 bool Macsec::Secy::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -227,7 +232,7 @@ bool Macsec::Secy::Interfaces::has_data() const
 
 bool Macsec::Secy::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -264,7 +269,7 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Macsec::Secy::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -276,7 +281,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -305,12 +310,12 @@ bool Macsec::Secy::Interfaces::has_leaf_or_child_of_name(const std::string & nam
 Macsec::Secy::Interfaces::Interface::Interface()
     :
     name{YType::str, "name"}
-    	,
+        ,
     stats(std::make_shared<Macsec::Secy::Interfaces::Interface::Stats>())
 {
     stats->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Macsec::Secy::Interfaces::Interface::~Interface()
@@ -319,6 +324,7 @@ Macsec::Secy::Interfaces::Interface::~Interface()
 
 bool Macsec::Secy::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (stats !=  nullptr && stats->has_data());
 }
@@ -340,7 +346,8 @@ std::string Macsec::Secy::Interfaces::Interface::get_absolute_path() const
 std::string Macsec::Secy::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[name='" <<name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -408,12 +415,13 @@ bool Macsec::Secy::Interfaces::Interface::has_leaf_or_child_of_name(const std::s
 Macsec::Secy::Interfaces::Interface::Stats::Stats()
     :
     intf_stats(std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::IntfStats>())
-	,tx_sc_stats(std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::TxScStats>())
+    , tx_sc_stats(std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::TxScStats>())
+    , rx_sc_stats(this, {})
 {
     intf_stats->parent = this;
     tx_sc_stats->parent = this;
 
-    yang_name = "stats"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::~Stats()
@@ -422,7 +430,8 @@ Macsec::Secy::Interfaces::Interface::Stats::~Stats()
 
 bool Macsec::Secy::Interfaces::Interface::Stats::has_data() const
 {
-    for (std::size_t index=0; index<rx_sc_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rx_sc_stats.len(); index++)
     {
         if(rx_sc_stats[index]->has_data())
             return true;
@@ -433,7 +442,7 @@ bool Macsec::Secy::Interfaces::Interface::Stats::has_data() const
 
 bool Macsec::Secy::Interfaces::Interface::Stats::has_operation() const
 {
-    for (std::size_t index=0; index<rx_sc_stats.size(); index++)
+    for (std::size_t index=0; index<rx_sc_stats.len(); index++)
     {
         if(rx_sc_stats[index]->has_operation())
             return true;
@@ -483,7 +492,7 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::get_child_by
     {
         auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::RxScStats>();
         c->parent = this;
-        rx_sc_stats.push_back(c);
+        rx_sc_stats.append(c);
         return c;
     }
 
@@ -505,7 +514,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interfa
     }
 
     count = 0;
-    for (auto const & c : rx_sc_stats)
+    for (auto c : rx_sc_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -547,7 +556,7 @@ Macsec::Secy::Interfaces::Interface::Stats::IntfStats::IntfStats()
     out_octets_encrypted{YType::uint64, "out-octets-encrypted"}
 {
 
-    yang_name = "intf-stats"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "intf-stats"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::IntfStats::~IntfStats()
@@ -556,6 +565,7 @@ Macsec::Secy::Interfaces::Interface::Stats::IntfStats::~IntfStats()
 
 bool Macsec::Secy::Interfaces::Interface::Stats::IntfStats::has_data() const
 {
+    if (is_presence_container) return true;
     return in_pkts_untagged.is_set
 	|| in_pkts_no_tag.is_set
 	|| in_pkts_bad_tag.is_set
@@ -770,9 +780,11 @@ Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxScStats()
     out_octets_protected{YType::uint64, "out-octets-protected"},
     out_octets_encrypted{YType::uint64, "out-octets-encrypted"},
     out_pkts_too_long{YType::uint64, "out-pkts-too-long"}
+        ,
+    txsa_stat(this, {})
 {
 
-    yang_name = "tx-sc-stats"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-sc-stats"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::TxScStats::~TxScStats()
@@ -781,7 +793,8 @@ Macsec::Secy::Interfaces::Interface::Stats::TxScStats::~TxScStats()
 
 bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_data() const
 {
-    for (std::size_t index=0; index<txsa_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<txsa_stat.len(); index++)
     {
         if(txsa_stat[index]->has_data())
             return true;
@@ -796,7 +809,7 @@ bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_data() const
 
 bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_operation() const
 {
-    for (std::size_t index=0; index<txsa_stat.size(); index++)
+    for (std::size_t index=0; index<txsa_stat.len(); index++)
     {
         if(txsa_stat[index]->has_operation())
             return true;
@@ -838,7 +851,7 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::g
     {
         auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat>();
         c->parent = this;
-        txsa_stat.push_back(c);
+        txsa_stat.append(c);
         return c;
     }
 
@@ -850,7 +863,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : txsa_stat)
+    for (auto c : txsa_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -943,7 +956,7 @@ Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::TxsaStat()
     next_pn{YType::uint64, "next-pn"}
 {
 
-    yang_name = "txsa-stat"; yang_parent_name = "tx-sc-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "txsa-stat"; yang_parent_name = "tx-sc-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::~TxsaStat()
@@ -952,6 +965,7 @@ Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::~TxsaStat()
 
 bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::has_data() const
 {
+    if (is_presence_container) return true;
     return out_pkts_protected.is_set
 	|| out_pkts_encrypted.is_set
 	|| next_pn.is_set;
@@ -1055,9 +1069,11 @@ Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxScStats()
     in_pkts_untagged_hit{YType::uint64, "in-pkts-untagged-hit"},
     in_octets_validated{YType::uint64, "in-octets-validated"},
     in_octets_decrypted{YType::uint64, "in-octets-decrypted"}
+        ,
+    rxsa_stat(this, {})
 {
 
-    yang_name = "rx-sc-stats"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-sc-stats"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::RxScStats::~RxScStats()
@@ -1066,7 +1082,8 @@ Macsec::Secy::Interfaces::Interface::Stats::RxScStats::~RxScStats()
 
 bool Macsec::Secy::Interfaces::Interface::Stats::RxScStats::has_data() const
 {
-    for (std::size_t index=0; index<rxsa_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rxsa_stat.len(); index++)
     {
         if(rxsa_stat[index]->has_data())
             return true;
@@ -1087,7 +1104,7 @@ bool Macsec::Secy::Interfaces::Interface::Stats::RxScStats::has_data() const
 
 bool Macsec::Secy::Interfaces::Interface::Stats::RxScStats::has_operation() const
 {
-    for (std::size_t index=0; index<rxsa_stat.size(); index++)
+    for (std::size_t index=0; index<rxsa_stat.len(); index++)
     {
         if(rxsa_stat[index]->has_operation())
             return true;
@@ -1141,7 +1158,7 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::g
     {
         auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat>();
         c->parent = this;
-        rxsa_stat.push_back(c);
+        rxsa_stat.append(c);
         return c;
     }
 
@@ -1153,7 +1170,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rxsa_stat)
+    for (auto c : rxsa_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1309,7 +1326,7 @@ Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::RxsaStat()
     next_pn{YType::uint64, "next-pn"}
 {
 
-    yang_name = "rxsa-stat"; yang_parent_name = "rx-sc-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rxsa-stat"; yang_parent_name = "rx-sc-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::~RxsaStat()
@@ -1318,6 +1335,7 @@ Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::~RxsaStat()
 
 bool Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::has_data() const
 {
+    if (is_presence_container) return true;
     return in_pkts_ok.is_set
 	|| in_pkts_invalid.is_set
 	|| in_pkts_not_valid.is_set

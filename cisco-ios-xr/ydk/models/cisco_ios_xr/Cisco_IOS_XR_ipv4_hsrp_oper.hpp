@@ -93,7 +93,7 @@ class Hsrp::Ipv4::Groups : public ydk::Entity
 
         class Group; //type: Hsrp::Ipv4::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Hsrp::Ipv4::Groups
 
@@ -116,7 +116,7 @@ class Hsrp::Ipv4::Groups::Group : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf group_number; //type: int32
+        ydk::YLeaf group_number; //type: uint32
         ydk::YLeaf authentication_string; //type: string
         ydk::YLeaf virtual_mac_address; //type: string
         ydk::YLeaf hsrp_group_number; //type: uint32
@@ -193,8 +193,8 @@ class Hsrp::Ipv4::Groups::Group : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::CoupSentTime> coup_sent_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::CoupReceivedTime> coup_received_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::Statistics> statistics;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::GlobalAddress> > global_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::StateChangeHistory> > state_change_history;
+        ydk::YList global_address;
+        ydk::YList state_change_history;
         
 }; // Hsrp::Ipv4::Groups::Group
 
@@ -410,7 +410,7 @@ class Hsrp::Ipv4::TrackedInterfaces : public ydk::Entity
 
         class TrackedInterface; //type: Hsrp::Ipv4::TrackedInterfaces::TrackedInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::TrackedInterfaces::TrackedInterface> > tracked_interface;
+        ydk::YList tracked_interface;
         
 }; // Hsrp::Ipv4::TrackedInterfaces
 
@@ -433,7 +433,7 @@ class Hsrp::Ipv4::TrackedInterfaces::TrackedInterface : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf group_number; //type: int32
+        ydk::YLeaf group_number; //type: uint32
         ydk::YLeaf tracked_interface_name; //type: string
         ydk::YLeaf interface; //type: string
         ydk::YLeaf hsrp_group_number; //type: uint32
@@ -464,7 +464,7 @@ class Hsrp::Ipv4::Interfaces : public ydk::Entity
 
         class Interface; //type: Hsrp::Ipv4::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Hsrp::Ipv4::Interfaces
 
@@ -544,7 +544,7 @@ class Hsrp::MgoSessions : public ydk::Entity
 
         class MgoSession; //type: Hsrp::MgoSessions::MgoSession
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::MgoSessions::MgoSession> > mgo_session;
+        ydk::YList mgo_session;
         
 }; // Hsrp::MgoSessions
 
@@ -574,7 +574,7 @@ class Hsrp::MgoSessions::MgoSession : public ydk::Entity
         ydk::YLeaf primary_session_state; //type: StandbyGrpState
         class Slave; //type: Hsrp::MgoSessions::MgoSession::Slave
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::MgoSessions::MgoSession::Slave> > slave;
+        ydk::YList slave;
         
 }; // Hsrp::MgoSessions::MgoSession
 
@@ -648,7 +648,7 @@ class Hsrp::Ipv6::TrackedInterfaces : public ydk::Entity
 
         class TrackedInterface; //type: Hsrp::Ipv6::TrackedInterfaces::TrackedInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::TrackedInterfaces::TrackedInterface> > tracked_interface;
+        ydk::YList tracked_interface;
         
 }; // Hsrp::Ipv6::TrackedInterfaces
 
@@ -671,7 +671,7 @@ class Hsrp::Ipv6::TrackedInterfaces::TrackedInterface : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf group_number; //type: int32
+        ydk::YLeaf group_number; //type: uint32
         ydk::YLeaf tracked_interface_name; //type: string
         ydk::YLeaf interface; //type: string
         ydk::YLeaf hsrp_group_number; //type: uint32
@@ -702,7 +702,7 @@ class Hsrp::Ipv6::Groups : public ydk::Entity
 
         class Group; //type: Hsrp::Ipv6::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Hsrp::Ipv6::Groups
 
@@ -725,7 +725,7 @@ class Hsrp::Ipv6::Groups::Group : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf group_number; //type: int32
+        ydk::YLeaf group_number; //type: uint32
         ydk::YLeaf authentication_string; //type: string
         ydk::YLeaf virtual_mac_address; //type: string
         ydk::YLeaf hsrp_group_number; //type: uint32
@@ -802,8 +802,8 @@ class Hsrp::Ipv6::Groups::Group : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::CoupSentTime> coup_sent_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::CoupReceivedTime> coup_received_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::Statistics> statistics;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::GlobalAddress> > global_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::StateChangeHistory> > state_change_history;
+        ydk::YList global_address;
+        ydk::YList state_change_history;
         
 }; // Hsrp::Ipv6::Groups::Group
 
@@ -1019,7 +1019,7 @@ class Hsrp::Ipv6::Interfaces : public ydk::Entity
 
         class Interface; //type: Hsrp::Ipv6::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Hsrp::Ipv6::Interfaces
 
@@ -1099,7 +1099,7 @@ class Hsrp::BfdSessions : public ydk::Entity
 
         class BfdSession; //type: Hsrp::BfdSessions::BfdSession
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::BfdSessions::BfdSession> > bfd_session;
+        ydk::YList bfd_session;
         
 }; // Hsrp::BfdSessions
 
@@ -1132,7 +1132,7 @@ class Hsrp::BfdSessions::BfdSession : public ydk::Entity
         ydk::YLeaf bfd_multiplier; //type: uint32
         class Group; //type: Hsrp::BfdSessions::BfdSession::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::BfdSessions::BfdSession::Group> > group;
+        ydk::YList group;
         
 }; // Hsrp::BfdSessions::BfdSession
 
@@ -1250,6 +1250,18 @@ class HsrpVmacState : public ydk::Enum
 
 };
 
+class StandbyGrpState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf state_initial;
+        static const ydk::Enum::YLeaf state_learn;
+        static const ydk::Enum::YLeaf state_listen;
+        static const ydk::Enum::YLeaf state_speak;
+        static const ydk::Enum::YLeaf state_standby;
+        static const ydk::Enum::YLeaf state_active;
+
+};
+
 class HsrpStateChangeReason : public ydk::Enum
 {
     public:
@@ -1283,6 +1295,15 @@ class HsrpStateChangeReason : public ydk::Enum
 
 };
 
+class HsrpBAf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf count;
+
+};
+
 class HsrpBfdSessionState : public ydk::Enum
 {
     public:
@@ -1290,27 +1311,6 @@ class HsrpBfdSessionState : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_state_inactive;
         static const ydk::Enum::YLeaf bfd_state_up;
         static const ydk::Enum::YLeaf bfd_state_down;
-
-};
-
-class StandbyGrpState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf state_initial;
-        static const ydk::Enum::YLeaf state_learn;
-        static const ydk::Enum::YLeaf state_listen;
-        static const ydk::Enum::YLeaf state_speak;
-        static const ydk::Enum::YLeaf state_standby;
-        static const ydk::Enum::YLeaf state_active;
-
-};
-
-class HsrpBAf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf count;
 
 };
 

@@ -61,7 +61,7 @@ class TrustsecState::CtsRolebasedSgtmaps : public ydk::Entity
 
         class CtsRolebasedSgtmap; //type: TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap> > cts_rolebased_sgtmap;
+        ydk::YList cts_rolebased_sgtmap;
         
 }; // TrustsecState::CtsRolebasedSgtmaps
 
@@ -110,7 +110,7 @@ class TrustsecState::CtsRolebasedPolicies : public ydk::Entity
 
         class CtsRolebasedPolicy; //type: TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy> > cts_rolebased_policy;
+        ydk::YList cts_rolebased_policy;
         
 }; // TrustsecState::CtsRolebasedPolicies
 
@@ -170,7 +170,7 @@ class TrustsecState::CtsSxpConnections : public ydk::Entity
 
         class CtsSxpConnection; //type: TrustsecState::CtsSxpConnections::CtsSxpConnection
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsSxpConnections::CtsSxpConnection> > cts_sxp_connection;
+        ydk::YList cts_sxp_connection;
         
 }; // TrustsecState::CtsSxpConnections
 
@@ -218,6 +218,16 @@ class CtsOdmBindingSource : public ydk::Enum
 
 };
 
+class SxpConMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf con_mode_invalid;
+        static const ydk::Enum::YLeaf con_mode_speaker;
+        static const ydk::Enum::YLeaf con_mode_listener;
+        static const ydk::Enum::YLeaf con_mode_both;
+
+};
+
 class SxpConState : public ydk::Enum
 {
     public:
@@ -226,16 +236,6 @@ class SxpConState : public ydk::Enum
         static const ydk::Enum::YLeaf state_on;
         static const ydk::Enum::YLeaf state_delete_hold_down;
         static const ydk::Enum::YLeaf state_not_applicable;
-
-};
-
-class SxpConMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf con_mode_invalid;
-        static const ydk::Enum::YLeaf con_mode_speaker;
-        static const ydk::Enum::YLeaf con_mode_listener;
-        static const ydk::Enum::YLeaf con_mode_both;
 
 };
 

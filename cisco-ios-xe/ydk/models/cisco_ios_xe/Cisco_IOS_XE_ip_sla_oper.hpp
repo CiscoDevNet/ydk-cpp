@@ -33,7 +33,7 @@ class IpSlaStats : public ydk::Entity
 
         class SlaOperEntry; //type: IpSlaStats::SlaOperEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ip_sla_oper::IpSlaStats::SlaOperEntry> > sla_oper_entry;
+        ydk::YList sla_oper_entry;
         
 }; // IpSlaStats
 
@@ -556,6 +556,23 @@ class IpSlaStats::SlaOperEntry::Stats::VoiceScore : public ydk::Entity
 
 }; // IpSlaStats::SlaOperEntry::Stats::VoiceScore
 
+class TtlType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ttl_finite;
+        static const ydk::Enum::YLeaf ttl_forever;
+
+};
+
+class RttType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rtt_known;
+        static const ydk::Enum::YLeaf rtt_unknown;
+        static const ydk::Enum::YLeaf rtt_could_not_find;
+
+};
+
 class SlaOperType : public ydk::Enum
 {
     public:
@@ -595,23 +612,6 @@ class AccuracyType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf accuracy_milliseconds;
         static const ydk::Enum::YLeaf accuracy_microseconds;
-
-};
-
-class RttType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rtt_known;
-        static const ydk::Enum::YLeaf rtt_unknown;
-        static const ydk::Enum::YLeaf rtt_could_not_find;
-
-};
-
-class TtlType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ttl_finite;
-        static const ydk::Enum::YLeaf ttl_forever;
 
 };
 

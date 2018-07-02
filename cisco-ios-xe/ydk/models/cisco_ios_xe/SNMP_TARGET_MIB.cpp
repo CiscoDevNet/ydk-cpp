@@ -13,15 +13,15 @@ namespace SNMP_TARGET_MIB {
 
 SNMPTARGETMIB::SNMPTARGETMIB()
     :
-    snmptargetobjects(std::make_shared<SNMPTARGETMIB::Snmptargetobjects>())
-	,snmptargetaddrtable(std::make_shared<SNMPTARGETMIB::Snmptargetaddrtable>())
-	,snmptargetparamstable(std::make_shared<SNMPTARGETMIB::Snmptargetparamstable>())
+    snmptargetobjects(std::make_shared<SNMPTARGETMIB::SnmpTargetObjects>())
+    , snmptargetaddrtable(std::make_shared<SNMPTARGETMIB::SnmpTargetAddrTable>())
+    , snmptargetparamstable(std::make_shared<SNMPTARGETMIB::SnmpTargetParamsTable>())
 {
     snmptargetobjects->parent = this;
     snmptargetaddrtable->parent = this;
     snmptargetparamstable->parent = this;
 
-    yang_name = "SNMP-TARGET-MIB"; yang_parent_name = "SNMP-TARGET-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "SNMP-TARGET-MIB"; yang_parent_name = "SNMP-TARGET-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SNMPTARGETMIB::~SNMPTARGETMIB()
@@ -30,6 +30,7 @@ SNMPTARGETMIB::~SNMPTARGETMIB()
 
 bool SNMPTARGETMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (snmptargetobjects !=  nullptr && snmptargetobjects->has_data())
 	|| (snmptargetaddrtable !=  nullptr && snmptargetaddrtable->has_data())
 	|| (snmptargetparamstable !=  nullptr && snmptargetparamstable->has_data());
@@ -65,7 +66,7 @@ std::shared_ptr<Entity> SNMPTARGETMIB::get_child_by_name(const std::string & chi
     {
         if(snmptargetobjects == nullptr)
         {
-            snmptargetobjects = std::make_shared<SNMPTARGETMIB::Snmptargetobjects>();
+            snmptargetobjects = std::make_shared<SNMPTARGETMIB::SnmpTargetObjects>();
         }
         return snmptargetobjects;
     }
@@ -74,7 +75,7 @@ std::shared_ptr<Entity> SNMPTARGETMIB::get_child_by_name(const std::string & chi
     {
         if(snmptargetaddrtable == nullptr)
         {
-            snmptargetaddrtable = std::make_shared<SNMPTARGETMIB::Snmptargetaddrtable>();
+            snmptargetaddrtable = std::make_shared<SNMPTARGETMIB::SnmpTargetAddrTable>();
         }
         return snmptargetaddrtable;
     }
@@ -83,7 +84,7 @@ std::shared_ptr<Entity> SNMPTARGETMIB::get_child_by_name(const std::string & chi
     {
         if(snmptargetparamstable == nullptr)
         {
-            snmptargetparamstable = std::make_shared<SNMPTARGETMIB::Snmptargetparamstable>();
+            snmptargetparamstable = std::make_shared<SNMPTARGETMIB::SnmpTargetParamsTable>();
         }
         return snmptargetparamstable;
     }
@@ -153,28 +154,29 @@ bool SNMPTARGETMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-SNMPTARGETMIB::Snmptargetobjects::Snmptargetobjects()
+SNMPTARGETMIB::SnmpTargetObjects::SnmpTargetObjects()
     :
     snmptargetspinlock{YType::int32, "snmpTargetSpinLock"},
     snmpunavailablecontexts{YType::uint32, "snmpUnavailableContexts"},
     snmpunknowncontexts{YType::uint32, "snmpUnknownContexts"}
 {
 
-    yang_name = "snmpTargetObjects"; yang_parent_name = "SNMP-TARGET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmpTargetObjects"; yang_parent_name = "SNMP-TARGET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-SNMPTARGETMIB::Snmptargetobjects::~Snmptargetobjects()
+SNMPTARGETMIB::SnmpTargetObjects::~SnmpTargetObjects()
 {
 }
 
-bool SNMPTARGETMIB::Snmptargetobjects::has_data() const
+bool SNMPTARGETMIB::SnmpTargetObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return snmptargetspinlock.is_set
 	|| snmpunavailablecontexts.is_set
 	|| snmpunknowncontexts.is_set;
 }
 
-bool SNMPTARGETMIB::Snmptargetobjects::has_operation() const
+bool SNMPTARGETMIB::SnmpTargetObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(snmptargetspinlock.yfilter)
@@ -182,21 +184,21 @@ bool SNMPTARGETMIB::Snmptargetobjects::has_operation() const
 	|| ydk::is_set(snmpunknowncontexts.yfilter);
 }
 
-std::string SNMPTARGETMIB::Snmptargetobjects::get_absolute_path() const
+std::string SNMPTARGETMIB::SnmpTargetObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "SNMP-TARGET-MIB:SNMP-TARGET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string SNMPTARGETMIB::Snmptargetobjects::get_segment_path() const
+std::string SNMPTARGETMIB::SnmpTargetObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "snmpTargetObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::Snmptargetobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::SnmpTargetObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -208,19 +210,19 @@ std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::Snmptargetobjects:
 
 }
 
-std::shared_ptr<Entity> SNMPTARGETMIB::Snmptargetobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPTARGETMIB::SnmpTargetObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::Snmptargetobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::SnmpTargetObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void SNMPTARGETMIB::Snmptargetobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPTARGETMIB::SnmpTargetObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmpTargetSpinLock")
     {
@@ -242,7 +244,7 @@ void SNMPTARGETMIB::Snmptargetobjects::set_value(const std::string & value_path,
     }
 }
 
-void SNMPTARGETMIB::Snmptargetobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPTARGETMIB::SnmpTargetObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "snmpTargetSpinLock")
     {
@@ -258,26 +260,29 @@ void SNMPTARGETMIB::Snmptargetobjects::set_filter(const std::string & value_path
     }
 }
 
-bool SNMPTARGETMIB::Snmptargetobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPTARGETMIB::SnmpTargetObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmpTargetSpinLock" || name == "snmpUnavailableContexts" || name == "snmpUnknownContexts")
         return true;
     return false;
 }
 
-SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrtable()
+SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrTable()
+    :
+    snmptargetaddrentry(this, {"snmptargetaddrname"})
 {
 
-    yang_name = "snmpTargetAddrTable"; yang_parent_name = "SNMP-TARGET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmpTargetAddrTable"; yang_parent_name = "SNMP-TARGET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-SNMPTARGETMIB::Snmptargetaddrtable::~Snmptargetaddrtable()
+SNMPTARGETMIB::SnmpTargetAddrTable::~SnmpTargetAddrTable()
 {
 }
 
-bool SNMPTARGETMIB::Snmptargetaddrtable::has_data() const
+bool SNMPTARGETMIB::SnmpTargetAddrTable::has_data() const
 {
-    for (std::size_t index=0; index<snmptargetaddrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<snmptargetaddrentry.len(); index++)
     {
         if(snmptargetaddrentry[index]->has_data())
             return true;
@@ -285,9 +290,9 @@ bool SNMPTARGETMIB::Snmptargetaddrtable::has_data() const
     return false;
 }
 
-bool SNMPTARGETMIB::Snmptargetaddrtable::has_operation() const
+bool SNMPTARGETMIB::SnmpTargetAddrTable::has_operation() const
 {
-    for (std::size_t index=0; index<snmptargetaddrentry.size(); index++)
+    for (std::size_t index=0; index<snmptargetaddrentry.len(); index++)
     {
         if(snmptargetaddrentry[index]->has_operation())
             return true;
@@ -295,21 +300,21 @@ bool SNMPTARGETMIB::Snmptargetaddrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string SNMPTARGETMIB::Snmptargetaddrtable::get_absolute_path() const
+std::string SNMPTARGETMIB::SnmpTargetAddrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "SNMP-TARGET-MIB:SNMP-TARGET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string SNMPTARGETMIB::Snmptargetaddrtable::get_segment_path() const
+std::string SNMPTARGETMIB::SnmpTargetAddrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "snmpTargetAddrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::Snmptargetaddrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::SnmpTargetAddrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -318,25 +323,25 @@ std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::Snmptargetaddrtabl
 
 }
 
-std::shared_ptr<Entity> SNMPTARGETMIB::Snmptargetaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPTARGETMIB::SnmpTargetAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snmpTargetAddrEntry")
     {
-        auto c = std::make_shared<SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry>();
+        auto c = std::make_shared<SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry>();
         c->parent = this;
-        snmptargetaddrentry.push_back(c);
+        snmptargetaddrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::Snmptargetaddrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::SnmpTargetAddrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : snmptargetaddrentry)
+    for (auto c : snmptargetaddrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -347,22 +352,22 @@ std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::Snmptargetaddrtabl
     return children;
 }
 
-void SNMPTARGETMIB::Snmptargetaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPTARGETMIB::SnmpTargetAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void SNMPTARGETMIB::Snmptargetaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPTARGETMIB::SnmpTargetAddrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool SNMPTARGETMIB::Snmptargetaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPTARGETMIB::SnmpTargetAddrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmpTargetAddrEntry")
         return true;
     return false;
 }
 
-SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::Snmptargetaddrentry()
+SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry::SnmpTargetAddrEntry()
     :
     snmptargetaddrname{YType::str, "snmpTargetAddrName"},
     snmptargetaddrtdomain{YType::str, "snmpTargetAddrTDomain"},
@@ -375,15 +380,16 @@ SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::Snmptargetaddrentry()
     snmptargetaddrrowstatus{YType::enumeration, "snmpTargetAddrRowStatus"}
 {
 
-    yang_name = "snmpTargetAddrEntry"; yang_parent_name = "snmpTargetAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmpTargetAddrEntry"; yang_parent_name = "snmpTargetAddrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::~Snmptargetaddrentry()
+SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry::~SnmpTargetAddrEntry()
 {
 }
 
-bool SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::has_data() const
+bool SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return snmptargetaddrname.is_set
 	|| snmptargetaddrtdomain.is_set
 	|| snmptargetaddrtaddress.is_set
@@ -395,7 +401,7 @@ bool SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::has_data() const
 	|| snmptargetaddrrowstatus.is_set;
 }
 
-bool SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::has_operation() const
+bool SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(snmptargetaddrname.yfilter)
@@ -409,21 +415,22 @@ bool SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::has_operation() co
 	|| ydk::is_set(snmptargetaddrrowstatus.yfilter);
 }
 
-std::string SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::get_absolute_path() const
+std::string SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "SNMP-TARGET-MIB:SNMP-TARGET-MIB/snmpTargetAddrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::get_segment_path() const
+std::string SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "snmpTargetAddrEntry" <<"[snmpTargetAddrName='" <<snmptargetaddrname <<"']";
+    path_buffer << "snmpTargetAddrEntry";
+    ADD_KEY_TOKEN(snmptargetaddrname, "snmpTargetAddrName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -441,19 +448,19 @@ std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::Snmptargetaddrtabl
 
 }
 
-std::shared_ptr<Entity> SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmpTargetAddrName")
     {
@@ -511,7 +518,7 @@ void SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::set_value(const st
     }
 }
 
-void SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "snmpTargetAddrName")
     {
@@ -551,26 +558,29 @@ void SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::set_filter(const s
     }
 }
 
-bool SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmpTargetAddrName" || name == "snmpTargetAddrTDomain" || name == "snmpTargetAddrTAddress" || name == "snmpTargetAddrTimeout" || name == "snmpTargetAddrRetryCount" || name == "snmpTargetAddrTagList" || name == "snmpTargetAddrParams" || name == "snmpTargetAddrStorageType" || name == "snmpTargetAddrRowStatus")
         return true;
     return false;
 }
 
-SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamstable()
+SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsTable()
+    :
+    snmptargetparamsentry(this, {"snmptargetparamsname"})
 {
 
-    yang_name = "snmpTargetParamsTable"; yang_parent_name = "SNMP-TARGET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmpTargetParamsTable"; yang_parent_name = "SNMP-TARGET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-SNMPTARGETMIB::Snmptargetparamstable::~Snmptargetparamstable()
+SNMPTARGETMIB::SnmpTargetParamsTable::~SnmpTargetParamsTable()
 {
 }
 
-bool SNMPTARGETMIB::Snmptargetparamstable::has_data() const
+bool SNMPTARGETMIB::SnmpTargetParamsTable::has_data() const
 {
-    for (std::size_t index=0; index<snmptargetparamsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<snmptargetparamsentry.len(); index++)
     {
         if(snmptargetparamsentry[index]->has_data())
             return true;
@@ -578,9 +588,9 @@ bool SNMPTARGETMIB::Snmptargetparamstable::has_data() const
     return false;
 }
 
-bool SNMPTARGETMIB::Snmptargetparamstable::has_operation() const
+bool SNMPTARGETMIB::SnmpTargetParamsTable::has_operation() const
 {
-    for (std::size_t index=0; index<snmptargetparamsentry.size(); index++)
+    for (std::size_t index=0; index<snmptargetparamsentry.len(); index++)
     {
         if(snmptargetparamsentry[index]->has_operation())
             return true;
@@ -588,21 +598,21 @@ bool SNMPTARGETMIB::Snmptargetparamstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string SNMPTARGETMIB::Snmptargetparamstable::get_absolute_path() const
+std::string SNMPTARGETMIB::SnmpTargetParamsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "SNMP-TARGET-MIB:SNMP-TARGET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string SNMPTARGETMIB::Snmptargetparamstable::get_segment_path() const
+std::string SNMPTARGETMIB::SnmpTargetParamsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "snmpTargetParamsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::Snmptargetparamstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::SnmpTargetParamsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -611,25 +621,25 @@ std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::Snmptargetparamsta
 
 }
 
-std::shared_ptr<Entity> SNMPTARGETMIB::Snmptargetparamstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPTARGETMIB::SnmpTargetParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snmpTargetParamsEntry")
     {
-        auto c = std::make_shared<SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry>();
+        auto c = std::make_shared<SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry>();
         c->parent = this;
-        snmptargetparamsentry.push_back(c);
+        snmptargetparamsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::Snmptargetparamstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::SnmpTargetParamsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : snmptargetparamsentry)
+    for (auto c : snmptargetparamsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -640,22 +650,22 @@ std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::Snmptargetparamsta
     return children;
 }
 
-void SNMPTARGETMIB::Snmptargetparamstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPTARGETMIB::SnmpTargetParamsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void SNMPTARGETMIB::Snmptargetparamstable::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPTARGETMIB::SnmpTargetParamsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool SNMPTARGETMIB::Snmptargetparamstable::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPTARGETMIB::SnmpTargetParamsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmpTargetParamsEntry")
         return true;
     return false;
 }
 
-SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::Snmptargetparamsentry()
+SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry::SnmpTargetParamsEntry()
     :
     snmptargetparamsname{YType::str, "snmpTargetParamsName"},
     snmptargetparamsmpmodel{YType::int32, "snmpTargetParamsMPModel"},
@@ -666,15 +676,16 @@ SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::Snmptargetparamsent
     snmptargetparamsrowstatus{YType::enumeration, "snmpTargetParamsRowStatus"}
 {
 
-    yang_name = "snmpTargetParamsEntry"; yang_parent_name = "snmpTargetParamsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmpTargetParamsEntry"; yang_parent_name = "snmpTargetParamsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::~Snmptargetparamsentry()
+SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry::~SnmpTargetParamsEntry()
 {
 }
 
-bool SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::has_data() const
+bool SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return snmptargetparamsname.is_set
 	|| snmptargetparamsmpmodel.is_set
 	|| snmptargetparamssecuritymodel.is_set
@@ -684,7 +695,7 @@ bool SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::has_data() con
 	|| snmptargetparamsrowstatus.is_set;
 }
 
-bool SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::has_operation() const
+bool SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(snmptargetparamsname.yfilter)
@@ -696,21 +707,22 @@ bool SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::has_operation(
 	|| ydk::is_set(snmptargetparamsrowstatus.yfilter);
 }
 
-std::string SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::get_absolute_path() const
+std::string SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "SNMP-TARGET-MIB:SNMP-TARGET-MIB/snmpTargetParamsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::get_segment_path() const
+std::string SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "snmpTargetParamsEntry" <<"[snmpTargetParamsName='" <<snmptargetparamsname <<"']";
+    path_buffer << "snmpTargetParamsEntry";
+    ADD_KEY_TOKEN(snmptargetparamsname, "snmpTargetParamsName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -726,19 +738,19 @@ std::vector<std::pair<std::string, LeafData> > SNMPTARGETMIB::Snmptargetparamsta
 
 }
 
-std::shared_ptr<Entity> SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmpTargetParamsName")
     {
@@ -784,7 +796,7 @@ void SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::set_value(cons
     }
 }
 
-void SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "snmpTargetParamsName")
     {
@@ -816,7 +828,7 @@ void SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::set_filter(con
     }
 }
 
-bool SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmpTargetParamsName" || name == "snmpTargetParamsMPModel" || name == "snmpTargetParamsSecurityModel" || name == "snmpTargetParamsSecurityName" || name == "snmpTargetParamsSecurityLevel" || name == "snmpTargetParamsStorageType" || name == "snmpTargetParamsRowStatus")
         return true;

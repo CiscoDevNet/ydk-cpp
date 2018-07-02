@@ -124,7 +124,7 @@ class Native::Interface::Overlay::RcvQueue : public ydk::Entity
 
         class CosMap; //type: Native::Interface::Overlay::RcvQueue::CosMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::RcvQueue::CosMap> > cos_map;
+        ydk::YList cos_map;
         
 }; // Native::Interface::Overlay::RcvQueue
 
@@ -1478,7 +1478,7 @@ class Native::Interface::Overlay::Pppoe::Enable : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
         class Group;
 
 }; // Native::Interface::Overlay::Pppoe::Enable
@@ -1502,7 +1502,7 @@ class Native::Interface::Overlay::Service : public ydk::Entity
 
         class Instance; //type: Native::Interface::Overlay::Service::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance> > instance;
+        ydk::YList instance;
         
 }; // Native::Interface::Overlay::Service
 
@@ -1543,7 +1543,7 @@ class Native::Interface::Overlay::Service::Instance : public ydk::Entity
         class Mac; //type: Native::Interface::Overlay::Service::Instance::Mac
         class ServicePolicy; //type: Native::Interface::Overlay::Service::Instance::ServicePolicy
         class Cfm; //type: Native::Interface::Overlay::Service::Instance::Cfm
-        class L2Protocol; //type: Native::Interface::Overlay::Service::Instance::L2Protocol
+        class L2protocol; //type: Native::Interface::Overlay::Service::Instance::L2protocol
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Encapsulation> encapsulation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Ip> ip;
@@ -1556,7 +1556,7 @@ class Native::Interface::Overlay::Service::Instance : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Mac> mac;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Cfm> cfm;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::L2Protocol> l2protocol;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::L2protocol> l2protocol;
         
 }; // Native::Interface::Overlay::Service::Instance
 
@@ -1578,24 +1578,24 @@ class Native::Interface::Overlay::Service::Instance::Encapsulation : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf default_; //type: empty
-        class Dot1Ad; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad
-        class Dot1Q; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q
+        class Dot1ad; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad
+        class Dot1q; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q
         class PriorityTagged; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged
         class Untagged; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Untagged
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad> dot1ad;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q> dot1q;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad> dot1ad;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q> dot1q;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged> priority_tagged;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Encapsulation::Untagged> untagged; // presence node
         
 }; // Native::Interface::Overlay::Service::Instance::Encapsulation
 
 
-class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad : public ydk::Entity
+class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad : public ydk::Entity
 {
     public:
-        Dot1Ad();
-        ~Dot1Ad();
+        Dot1ad();
+        ~Dot1ad();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1608,21 +1608,21 @@ class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of uint16, enumeration, string
+        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of uint16, enumeration, string
+        ydk::YLeafList dot1q; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList etype; //type: list of  Etype
-        class Cos2; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2
+        class Cos2; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2> cos2;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2> cos2;
                 class Id;
-        class Dot1Q;
+        class Dot1q;
         class Etype;
 
-}; // Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad
+}; // Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad
 
 
-class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2 : public ydk::Entity
+class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2 : public ydk::Entity
 {
     public:
         Cos2();
@@ -1640,14 +1640,14 @@ class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2
 
         ydk::YLeafList cos; //type: list of  uint8
 
-}; // Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2
+}; // Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2
 
 
-class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q : public ydk::Entity
+class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q : public ydk::Entity
 {
     public:
-        Dot1Q();
-        ~Dot1Q();
+        Dot1q();
+        ~Dot1q();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1661,22 +1661,22 @@ class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q : publ
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of uint16, enumeration, string
+        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of uint16, enumeration, string
+        ydk::YLeafList second_dot1q; //type: list of  one of uint16, string, enumeration
         ydk::YLeafList etype; //type: list of  Etype
-        class Cos2; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2
+        class Cos2; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2> cos2;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2> cos2;
                 class Id;
-        class SecondDot1Q;
+        class SecondDot1q;
         class Etype;
         class VlanType;
 
-}; // Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q
+}; // Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q
 
 
-class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2 : public ydk::Entity
+class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2 : public ydk::Entity
 {
     public:
         Cos2();
@@ -1694,7 +1694,7 @@ class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2 
 
         ydk::YLeafList cos; //type: list of  uint8
 
-}; // Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2
+}; // Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2
 
 
 class Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged : public ydk::Entity
@@ -2556,7 +2556,7 @@ class Native::Interface::Overlay::Service::Instance::Mac : public ydk::Entity
         class AccessGroup; //type: Native::Interface::Overlay::Service::Instance::Mac::AccessGroup
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Mac::Security> security; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Mac::AccessGroup> > access_group;
+        ydk::YList access_group;
         
 }; // Native::Interface::Overlay::Service::Instance::Mac
 
@@ -2649,8 +2649,8 @@ class Native::Interface::Overlay::Service::Instance::ServicePolicy : public ydk:
         class Input; //type: Native::Interface::Overlay::Service::Instance::ServicePolicy::Input
         class Output; //type: Native::Interface::Overlay::Service::Instance::ServicePolicy::Output
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::ServicePolicy::Input> > input;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::ServicePolicy::Output> > output;
+        ydk::YList input;
+        ydk::YList output;
         
 }; // Native::Interface::Overlay::Service::Instance::ServicePolicy
 
@@ -2740,20 +2740,20 @@ class Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Dot1Ad; //type: Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad
-        class Dot1Q; //type: Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q
+        class Dot1ad; //type: Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad
+        class Dot1q; //type: Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad> dot1ad;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q> dot1q;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad> dot1ad;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q> dot1q;
         
 }; // Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation
 
 
-class Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad : public ydk::Entity
+class Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad : public ydk::Entity
 {
     public:
-        Dot1Ad();
-        ~Dot1Ad();
+        Dot1ad();
+        ~Dot1ad();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2769,14 +2769,14 @@ class Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad 
         ydk::YLeaf cos; //type: uint8
         ydk::YLeaf dot1q; //type: uint16
 
-}; // Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad
+}; // Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad
 
 
-class Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q : public ydk::Entity
+class Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q : public ydk::Entity
 {
     public:
-        Dot1Q();
-        ~Dot1Q();
+        Dot1q();
+        ~Dot1q();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2792,7 +2792,7 @@ class Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q :
         ydk::YLeaf cos; //type: uint8
         ydk::YLeaf second_dot1q; //type: uint16
 
-}; // Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q
+}; // Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q
 
 
 class Native::Interface::Overlay::Service::Instance::Cfm::Mep : public ydk::Entity
@@ -2838,11 +2838,11 @@ class Native::Interface::Overlay::Service::Instance::Cfm::Mip : public ydk::Enti
 }; // Native::Interface::Overlay::Service::Instance::Cfm::Mip
 
 
-class Native::Interface::Overlay::Service::Instance::L2Protocol : public ydk::Entity
+class Native::Interface::Overlay::Service::Instance::L2protocol : public ydk::Entity
 {
     public:
-        L2Protocol();
-        ~L2Protocol();
+        L2protocol();
+        ~L2protocol();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2854,20 +2854,20 @@ class Native::Interface::Overlay::Service::Instance::L2Protocol : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Discard; //type: Native::Interface::Overlay::Service::Instance::L2Protocol::Discard
-        class Peer; //type: Native::Interface::Overlay::Service::Instance::L2Protocol::Peer
-        class Forward; //type: Native::Interface::Overlay::Service::Instance::L2Protocol::Forward
-        class Tunnel; //type: Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel
+        class Discard; //type: Native::Interface::Overlay::Service::Instance::L2protocol::Discard
+        class Peer; //type: Native::Interface::Overlay::Service::Instance::L2protocol::Peer
+        class Forward; //type: Native::Interface::Overlay::Service::Instance::L2protocol::Forward
+        class Tunnel; //type: Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::L2Protocol::Discard> discard; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::L2Protocol::Peer> peer; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::L2Protocol::Forward> forward; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel> tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::L2protocol::Discard> discard; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::L2protocol::Peer> peer; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::L2protocol::Forward> forward; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel> tunnel; // presence node
         
-}; // Native::Interface::Overlay::Service::Instance::L2Protocol
+}; // Native::Interface::Overlay::Service::Instance::L2protocol
 
 
-class Native::Interface::Overlay::Service::Instance::L2Protocol::Discard : public ydk::Entity
+class Native::Interface::Overlay::Service::Instance::L2protocol::Discard : public ydk::Entity
 {
     public:
         Discard();
@@ -2886,10 +2886,10 @@ class Native::Interface::Overlay::Service::Instance::L2Protocol::Discard : publi
         ydk::YLeafList protocol; //type: list of  Protocol
         class Protocol;
 
-}; // Native::Interface::Overlay::Service::Instance::L2Protocol::Discard
+}; // Native::Interface::Overlay::Service::Instance::L2protocol::Discard
 
 
-class Native::Interface::Overlay::Service::Instance::L2Protocol::Peer : public ydk::Entity
+class Native::Interface::Overlay::Service::Instance::L2protocol::Peer : public ydk::Entity
 {
     public:
         Peer();
@@ -2908,10 +2908,10 @@ class Native::Interface::Overlay::Service::Instance::L2Protocol::Peer : public y
         ydk::YLeafList protocol; //type: list of  Protocol
         class Protocol;
 
-}; // Native::Interface::Overlay::Service::Instance::L2Protocol::Peer
+}; // Native::Interface::Overlay::Service::Instance::L2protocol::Peer
 
 
-class Native::Interface::Overlay::Service::Instance::L2Protocol::Forward : public ydk::Entity
+class Native::Interface::Overlay::Service::Instance::L2protocol::Forward : public ydk::Entity
 {
     public:
         Forward();
@@ -2930,10 +2930,10 @@ class Native::Interface::Overlay::Service::Instance::L2Protocol::Forward : publi
         ydk::YLeafList protocol; //type: list of  Protocol
         class Protocol;
 
-}; // Native::Interface::Overlay::Service::Instance::L2Protocol::Forward
+}; // Native::Interface::Overlay::Service::Instance::L2protocol::Forward
 
 
-class Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel : public ydk::Entity
+class Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel : public ydk::Entity
 {
     public:
         Tunnel();
@@ -2952,7 +2952,7 @@ class Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel : public
         ydk::YLeafList protocol; //type: list of  Protocol
         class Protocol;
 
-}; // Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel
+}; // Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel
 
 
 class Native::Interface::Overlay::Otv : public ydk::Entity
@@ -3426,10 +3426,10 @@ class Native::Interface::PortChannel : public ydk::Entity
         ydk::YLeaf max_reserved_bandwidth; //type: uint8
         ydk::YLeaf mtu; //type: uint16
         ydk::YLeaf service_insertion; //type: ServiceInsertion
+        ydk::YLeaf macsec; //type: empty
         ydk::YLeaf channel_protocol; //type: ChannelProtocol
         ydk::YLeaf duplex; //type: Duplex
         ydk::YLeaf nat66; //type: Nat66
-        ydk::YLeaf macsec; //type: empty
         class PortChannel_; //type: Native::Interface::PortChannel::PortChannel_
         class SwitchportConf; //type: Native::Interface::PortChannel::SwitchportConf
         class Switchport; //type: Native::Interface::PortChannel::Switchport
@@ -3438,7 +3438,7 @@ class Native::Interface::PortChannel : public ydk::Entity
         class Backup; //type: Native::Interface::PortChannel::Backup
         class Cemoudp; //type: Native::Interface::PortChannel::Cemoudp
         class CwsTunnel; //type: Native::Interface::PortChannel::CwsTunnel
-        class L2ProtocolTunnel; //type: Native::Interface::PortChannel::L2ProtocolTunnel
+        class L2protocolTunnel; //type: Native::Interface::PortChannel::L2protocolTunnel
         class Encapsulation; //type: Native::Interface::PortChannel::Encapsulation
         class FairQueueConf; //type: Native::Interface::PortChannel::FairQueueConf
         class FairQueue; //type: Native::Interface::PortChannel::FairQueue
@@ -3467,6 +3467,22 @@ class Native::Interface::PortChannel : public ydk::Entity
         class RcvQueue; //type: Native::Interface::PortChannel::RcvQueue
         class Peer; //type: Native::Interface::PortChannel::Peer
         class PmPath; //type: Native::Interface::PortChannel::PmPath
+        class ServicePolicy; //type: Native::Interface::PortChannel::ServicePolicy
+        class Dot1x; //type: Native::Interface::PortChannel::Dot1x
+        class Auto; //type: Native::Interface::PortChannel::Auto
+        class Datalink; //type: Native::Interface::PortChannel::Datalink
+        class Energywise; //type: Native::Interface::PortChannel::Energywise
+        class Location; //type: Native::Interface::PortChannel::Location
+        class Mac; //type: Native::Interface::PortChannel::Mac
+        class Macro; //type: Native::Interface::PortChannel::Macro
+        class DualActive; //type: Native::Interface::PortChannel::DualActive
+        class LoadBalancing; //type: Native::Interface::PortChannel::LoadBalancing
+        class VlanRange; //type: Native::Interface::PortChannel::VlanRange
+        class Switch; //type: Native::Interface::PortChannel::Switch
+        class SrrQueue; //type: Native::Interface::PortChannel::SrrQueue
+        class MacsecOption; //type: Native::Interface::PortChannel::MacsecOption
+        class Cts; //type: Native::Interface::PortChannel::Cts
+        class Snmp; //type: Native::Interface::PortChannel::Snmp
         class CarrierDelay; //type: Native::Interface::PortChannel::CarrierDelay
         class ChannelGroup; //type: Native::Interface::PortChannel::ChannelGroup
         class Ethernet; //type: Native::Interface::PortChannel::Ethernet
@@ -3480,29 +3496,13 @@ class Native::Interface::PortChannel : public ydk::Entity
         class Lacp; //type: Native::Interface::PortChannel::Lacp
         class Mlacp; //type: Native::Interface::PortChannel::Mlacp
         class Xconnect; //type: Native::Interface::PortChannel::Xconnect
-        class Snmp; //type: Native::Interface::PortChannel::Snmp
-        class Crypto; //type: Native::Interface::PortChannel::Crypto
-        class Cts; //type: Native::Interface::PortChannel::Cts
-        class Dot1X; //type: Native::Interface::PortChannel::Dot1X
-        class ServicePolicy; //type: Native::Interface::PortChannel::ServicePolicy
-        class Lisp; //type: Native::Interface::PortChannel::Lisp
         class Mvrp; //type: Native::Interface::PortChannel::Mvrp
-        class Ospfv3; //type: Native::Interface::PortChannel::Ospfv3
+        class Lisp; //type: Native::Interface::PortChannel::Lisp
+        class Crypto; //type: Native::Interface::PortChannel::Crypto
         class Authentication; //type: Native::Interface::PortChannel::Authentication
         class Mab; //type: Native::Interface::PortChannel::Mab
+        class Ospfv3; //type: Native::Interface::PortChannel::Ospfv3
         class SpanningTree; //type: Native::Interface::PortChannel::SpanningTree
-        class Auto; //type: Native::Interface::PortChannel::Auto
-        class Datalink; //type: Native::Interface::PortChannel::Datalink
-        class Energywise; //type: Native::Interface::PortChannel::Energywise
-        class Location; //type: Native::Interface::PortChannel::Location
-        class Mac; //type: Native::Interface::PortChannel::Mac
-        class Macro; //type: Native::Interface::PortChannel::Macro
-        class DualActive; //type: Native::Interface::PortChannel::DualActive
-        class LoadBalancing; //type: Native::Interface::PortChannel::LoadBalancing
-        class VlanRange; //type: Native::Interface::PortChannel::VlanRange
-        class Switch; //type: Native::Interface::PortChannel::Switch
-        class SrrQueue; //type: Native::Interface::PortChannel::SrrQueue
-        class MacsecOption; //type: Native::Interface::PortChannel::MacsecOption
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::PortChannel_> port_channel;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::SwitchportConf> switchport_conf;
@@ -3512,7 +3512,7 @@ class Native::Interface::PortChannel : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Backup> backup;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cemoudp> cemoudp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::CwsTunnel> cws_tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::L2ProtocolTunnel> l2protocol_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::L2protocolTunnel> l2protocol_tunnel; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Encapsulation> encapsulation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::FairQueueConf> fair_queue_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::FairQueue> fair_queue;
@@ -3523,7 +3523,7 @@ class Native::Interface::PortChannel : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Bandwidth> bandwidth;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Dampening> dampening;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Domain> domain;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::HoldQueue> > hold_queue;
+        ydk::YList hold_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mpls> mpls;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::IpVrf> ip_vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Vrf> vrf;
@@ -3541,6 +3541,22 @@ class Native::Interface::PortChannel : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::RcvQueue> rcv_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::PmPath> pm_path;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Dot1x> dot1x;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Auto> auto_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Datalink> datalink;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Energywise> energywise; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Location> location;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Macro> macro;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::DualActive> dual_active;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::LoadBalancing> load_balancing;
+        ydk::YList vlan_range;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Switch> switch_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::SrrQueue> srr_queue;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::MacsecOption> macsec_option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Snmp> snmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::CarrierDelay> carrier_delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::ChannelGroup> channel_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ethernet> ethernet;
@@ -3554,29 +3570,13 @@ class Native::Interface::PortChannel : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lacp> lacp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mlacp> mlacp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Xconnect> xconnect;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Snmp> snmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Crypto> crypto;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts> cts;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Dot1X> dot1x;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::ServicePolicy> service_policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lisp> lisp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mvrp> mvrp; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3> ospfv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lisp> lisp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Crypto> crypto;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mab> mab; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3> ospfv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::SpanningTree> spanning_tree;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Auto> auto_;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Datalink> datalink;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Energywise> energywise; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Location> location;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mac> mac;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Macro> macro;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::DualActive> dual_active;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::LoadBalancing> load_balancing;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::VlanRange> > vlan_range;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Switch> switch_;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::SrrQueue> srr_queue;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::MacsecOption> macsec_option;
                 class PcSpeed;
         class IfState;
         class ServiceInsertion;
@@ -3760,12 +3760,12 @@ class Native::Interface::PortChannel::Switchport::Mode : public ydk::Entity
 
         ydk::YLeaf dynamic; //type: Dynamic
         class Access; //type: Native::Interface::PortChannel::Switchport::Mode::Access
-        class Dot1QTunnel; //type: Native::Interface::PortChannel::Switchport::Mode::Dot1QTunnel
+        class Dot1qTunnel; //type: Native::Interface::PortChannel::Switchport::Mode::Dot1qTunnel
         class PrivateVlan; //type: Native::Interface::PortChannel::Switchport::Mode::PrivateVlan
         class Trunk; //type: Native::Interface::PortChannel::Switchport::Mode::Trunk
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Switchport::Mode::Access> access; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Switchport::Mode::Dot1QTunnel> dot1q_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Switchport::Mode::Dot1qTunnel> dot1q_tunnel; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Switchport::Mode::PrivateVlan> private_vlan;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Switchport::Mode::Trunk> trunk; // presence node
                 class Dynamic;
@@ -3828,21 +3828,21 @@ class Native::Interface::Overlay::Pppoe::Enable::Group : public ydk::Enum
 
 };
 
-class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Id : public ydk::Enum
+class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Id : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf any;
 
 };
 
-class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Dot1Q : public ydk::Enum
+class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Dot1q : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf any;
 
 };
 
-class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Etype : public ydk::Enum
+class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Etype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ipv4;
@@ -3853,21 +3853,21 @@ class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Etyp
 
 };
 
-class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Id : public ydk::Enum
+class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Id : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf any;
 
 };
 
-class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::SecondDot1Q : public ydk::Enum
+class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::SecondDot1q : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf any;
 
 };
 
-class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Etype : public ydk::Enum
+class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Etype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ipv4;
@@ -3878,7 +3878,7 @@ class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Etype
 
 };
 
-class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::VlanType : public ydk::Enum
+class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::VlanType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0x88A8;
@@ -3956,7 +3956,7 @@ class Native::Interface::Overlay::Service::Instance::Mac::Security::Violation : 
 
 };
 
-class Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol : public ydk::Enum
+class Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf R4;
@@ -3984,7 +3984,7 @@ class Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protoc
 
 };
 
-class Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol : public ydk::Enum
+class Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf R4;
@@ -4012,7 +4012,7 @@ class Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol 
 
 };
 
-class Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol : public ydk::Enum
+class Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf R4;
@@ -4040,7 +4040,7 @@ class Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protoc
 
 };
 
-class Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol : public ydk::Enum
+class Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf R4;

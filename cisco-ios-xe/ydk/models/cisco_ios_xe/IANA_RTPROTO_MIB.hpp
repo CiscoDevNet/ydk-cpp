@@ -10,6 +10,24 @@
 namespace cisco_ios_xe {
 namespace IANA_RTPROTO_MIB {
 
+class IANAipMRouteProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf netmgmt;
+        static const ydk::Enum::YLeaf dvmrp;
+        static const ydk::Enum::YLeaf mospf;
+        static const ydk::Enum::YLeaf pimSparseDense;
+        static const ydk::Enum::YLeaf cbt;
+        static const ydk::Enum::YLeaf pimSparseMode;
+        static const ydk::Enum::YLeaf pimDenseMode;
+        static const ydk::Enum::YLeaf igmpOnly;
+        static const ydk::Enum::YLeaf bgmp;
+        static const ydk::Enum::YLeaf msdp;
+
+};
+
 class IANAipRouteProtocol : public ydk::Enum
 {
     public:
@@ -30,24 +48,6 @@ class IANAipRouteProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf idpr;
         static const ydk::Enum::YLeaf ciscoEigrp;
         static const ydk::Enum::YLeaf dvmrp;
-
-};
-
-class IANAipMRouteProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf netmgmt;
-        static const ydk::Enum::YLeaf dvmrp;
-        static const ydk::Enum::YLeaf mospf;
-        static const ydk::Enum::YLeaf pimSparseDense;
-        static const ydk::Enum::YLeaf cbt;
-        static const ydk::Enum::YLeaf pimSparseMode;
-        static const ydk::Enum::YLeaf pimDenseMode;
-        static const ydk::Enum::YLeaf igmpOnly;
-        static const ydk::Enum::YLeaf bgmp;
-        static const ydk::Enum::YLeaf msdp;
 
 };
 

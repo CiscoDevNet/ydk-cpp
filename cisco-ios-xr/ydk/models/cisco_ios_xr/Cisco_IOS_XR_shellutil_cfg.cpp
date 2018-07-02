@@ -16,7 +16,7 @@ HostNames::HostNames()
     host_name{YType::str, "host-name"}
 {
 
-    yang_name = "host-names"; yang_parent_name = "Cisco-IOS-XR-shellutil-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "host-names"; yang_parent_name = "Cisco-IOS-XR-shellutil-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HostNames::~HostNames()
@@ -25,6 +25,7 @@ HostNames::~HostNames()
 
 bool HostNames::has_data() const
 {
+    if (is_presence_container) return true;
     return host_name.is_set;
 }
 

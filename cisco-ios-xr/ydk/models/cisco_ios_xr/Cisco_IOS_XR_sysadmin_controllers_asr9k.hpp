@@ -130,7 +130,7 @@ class Controller::Switch::Oper::Reachable : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Reachable::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Reachable::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Reachable
 
@@ -178,7 +178,7 @@ class Controller::Switch::Oper::Summary : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Summary::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Summary::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Summary
 
@@ -206,7 +206,7 @@ class Controller::Switch::Oper::Summary::Location : public ydk::Entity
         ydk::YLeaf serial_num; //type: string
         class PortIter; //type: Controller::Switch::Oper::Summary::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Summary::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Summary::Location
 
@@ -283,7 +283,7 @@ class Controller::Switch::Oper::Statistics::SummaryStatistics : public ydk::Enti
 
         class Location; //type: Controller::Switch::Oper::Statistics::SummaryStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Statistics::SummaryStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Statistics::SummaryStatistics
 
@@ -311,7 +311,7 @@ class Controller::Switch::Oper::Statistics::SummaryStatistics::Location : public
         ydk::YLeaf serial_num; //type: string
         class PortIter; //type: Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Statistics::SummaryStatistics::Location
 
@@ -363,7 +363,7 @@ class Controller::Switch::Oper::Statistics::Detail : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Statistics::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Statistics::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Statistics::Detail
 
@@ -390,7 +390,7 @@ class Controller::Switch::Oper::Statistics::Detail::Location : public ydk::Entit
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Statistics::Detail::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Statistics::Detail::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Statistics::Detail::Location
 
@@ -518,7 +518,7 @@ class Controller::Switch::Oper::Mac::MacStatistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Mac::MacStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Mac::MacStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Mac::MacStatistics
 
@@ -545,7 +545,7 @@ class Controller::Switch::Oper::Mac::MacStatistics::Location : public ydk::Entit
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Mac::MacStatistics::Location
 
@@ -569,7 +569,7 @@ class Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter : public 
         ydk::YLeaf port; //type: int32
         class MacEntry; //type: Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry> > mac_entry;
+        ydk::YList mac_entry;
         
 }; // Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter
 
@@ -641,7 +641,7 @@ class Controller::Switch::Oper::Bridge::Statistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Bridge::Statistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Bridge::Statistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Bridge::Statistics
 
@@ -669,8 +669,8 @@ class Controller::Switch::Oper::Bridge::Statistics::Location : public ydk::Entit
         class IngressSetId; //type: Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId
         class EgressSetId; //type: Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId> > ingress_set_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId> > egress_set_id;
+        ydk::YList ingress_set_id;
+        ydk::YList egress_set_id;
         
 }; // Controller::Switch::Oper::Bridge::Statistics::Location
 
@@ -781,7 +781,7 @@ class Controller::Switch::Oper::Fdb::Vlan : public ydk::Entity
 
         class VlanIter; //type: Controller::Switch::Oper::Fdb::Vlan::VlanIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::Vlan::VlanIter> > vlan_iter;
+        ydk::YList vlan_iter;
         
 }; // Controller::Switch::Oper::Fdb::Vlan
 
@@ -829,7 +829,7 @@ class Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon : public yd
 
         class Location; //type: Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon
 
@@ -881,7 +881,7 @@ class Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::
 
         class FdbEntry; //type: Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry> > fdb_entry;
+        ydk::YList fdb_entry;
         
 }; // Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock
 
@@ -934,7 +934,7 @@ class Controller::Switch::Oper::Fdb::Mac : public ydk::Entity
 
         class MacIter; //type: Controller::Switch::Oper::Fdb::Mac::MacIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::Mac::MacIter> > mac_iter;
+        ydk::YList mac_iter;
         
 }; // Controller::Switch::Oper::Fdb::Mac
 
@@ -982,7 +982,7 @@ class Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon : public ydk:
 
         class Location; //type: Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon
 
@@ -1034,7 +1034,7 @@ class Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::Fd
 
         class FdbEntry; //type: Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry> > fdb_entry;
+        ydk::YList fdb_entry;
         
 }; // Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock
 
@@ -1087,7 +1087,7 @@ class Controller::Switch::Oper::Fdb::Port : public ydk::Entity
 
         class PortIter; //type: Controller::Switch::Oper::Fdb::Port::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::Port::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Fdb::Port
 
@@ -1135,7 +1135,7 @@ class Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon : public yd
 
         class Location; //type: Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon
 
@@ -1187,7 +1187,7 @@ class Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::
 
         class FdbEntry; //type: Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry> > fdb_entry;
+        ydk::YList fdb_entry;
         
 }; // Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock
 
@@ -1240,7 +1240,7 @@ class Controller::Switch::Oper::Fdb::Statistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Fdb::Statistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::Statistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Fdb::Statistics
 
@@ -1269,7 +1269,7 @@ class Controller::Switch::Oper::Fdb::Statistics::Location : public ydk::Entity
         class CoreId; //type: Controller::Switch::Oper::Fdb::Statistics::Location::CoreId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::Statistics::Location::CounterInfo> counter_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::Statistics::Location::CoreId> > core_id;
+        ydk::YList core_id;
         
 }; // Controller::Switch::Oper::Fdb::Statistics::Location
 
@@ -1356,7 +1356,7 @@ class Controller::Switch::Oper::Fdb::SwitchFdbCommon : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Fdb::SwitchFdbCommon
 
@@ -1409,7 +1409,7 @@ class Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock : publi
 
         class FdbEntry; //type: Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbEntry> > fdb_entry;
+        ydk::YList fdb_entry;
         
 }; // Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock
 
@@ -1492,7 +1492,7 @@ class Controller::Switch::Oper::Vlan::Rules : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Vlan::Rules::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::Rules::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Vlan::Rules
 
@@ -1519,7 +1519,7 @@ class Controller::Switch::Oper::Vlan::Rules::Location : public ydk::Entity
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Vlan::Rules::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::Rules::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Vlan::Rules::Location
 
@@ -1543,7 +1543,7 @@ class Controller::Switch::Oper::Vlan::Rules::Location::PortIter : public ydk::En
         ydk::YLeaf port; //type: int32
         class VlanId; //type: Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId> > vlan_id;
+        ydk::YList vlan_id;
         
 }; // Controller::Switch::Oper::Vlan::Rules::Location::PortIter
 
@@ -1567,7 +1567,7 @@ class Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId : public
         ydk::YLeaf vlan; //type: uint16
         class RuleId; //type: Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::RuleId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::RuleId> > rule_id;
+        ydk::YList rule_id;
         
 }; // Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId
 
@@ -1618,7 +1618,7 @@ class Controller::Switch::Oper::Vlan::Information : public ydk::Entity
         class Location; //type: Controller::Switch::Oper::Vlan::Information::Location
         class Summary; //type: Controller::Switch::Oper::Vlan::Information::Summary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::Information::Location> > location;
+        ydk::YList location;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::Information::Summary> summary;
         
 }; // Controller::Switch::Oper::Vlan::Information
@@ -1647,7 +1647,7 @@ class Controller::Switch::Oper::Vlan::Information::Location : public ydk::Entity
         ydk::YLeaf serial_num; //type: string
         class SdrId; //type: Controller::Switch::Oper::Vlan::Information::Location::SdrId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::Information::Location::SdrId> > sdr_id;
+        ydk::YList sdr_id;
         
 }; // Controller::Switch::Oper::Vlan::Information::Location
 
@@ -1672,7 +1672,7 @@ class Controller::Switch::Oper::Vlan::Information::Location::SdrId : public ydk:
         ydk::YLeaf esd_sdr_name; //type: string
         class VlanId; //type: Controller::Switch::Oper::Vlan::Information::Location::SdrId::VlanId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::Information::Location::SdrId::VlanId> > vlan_id;
+        ydk::YList vlan_id;
         
 }; // Controller::Switch::Oper::Vlan::Information::Location::SdrId
 
@@ -1720,7 +1720,7 @@ class Controller::Switch::Oper::Vlan::Information::Summary : public ydk::Entity
 
         class SdrId; //type: Controller::Switch::Oper::Vlan::Information::Summary::SdrId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::Information::Summary::SdrId> > sdr_id;
+        ydk::YList sdr_id;
         
 }; // Controller::Switch::Oper::Vlan::Information::Summary
 
@@ -1746,7 +1746,7 @@ class Controller::Switch::Oper::Vlan::Information::Summary::SdrId : public ydk::
         ydk::YLeaf esd_sdr_name; //type: string
         class VlanId; //type: Controller::Switch::Oper::Vlan::Information::Summary::SdrId::VlanId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::Information::Summary::SdrId::VlanId> > vlan_id;
+        ydk::YList vlan_id;
         
 }; // Controller::Switch::Oper::Vlan::Information::Summary::SdrId
 
@@ -1794,7 +1794,7 @@ class Controller::Switch::Oper::Vlan::VlanDetail : public ydk::Entity
 
         class VlanId; //type: Controller::Switch::Oper::Vlan::VlanDetail::VlanId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::VlanDetail::VlanId> > vlan_id;
+        ydk::YList vlan_id;
         
 }; // Controller::Switch::Oper::Vlan::VlanDetail
 
@@ -1842,7 +1842,7 @@ class Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules : public ydk::En
 
         class Location; //type: Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules
 
@@ -1868,7 +1868,7 @@ class Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location : publ
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location
 
@@ -1892,7 +1892,7 @@ class Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortI
         ydk::YLeaf port; //type: int32
         class RuleId; //type: Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::RuleId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::RuleId> > rule_id;
+        ydk::YList rule_id;
         
 }; // Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter
 
@@ -1942,7 +1942,7 @@ class Controller::Switch::Oper::Vlan::Membership : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Vlan::Membership::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::Membership::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Vlan::Membership
 
@@ -1969,7 +1969,7 @@ class Controller::Switch::Oper::Vlan::Membership::Location : public ydk::Entity
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class VlanId; //type: Controller::Switch::Oper::Vlan::Membership::Location::VlanId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Vlan::Membership::Location::VlanId> > vlan_id;
+        ydk::YList vlan_id;
         
 }; // Controller::Switch::Oper::Vlan::Membership::Location
 
@@ -2017,7 +2017,7 @@ class Controller::Switch::Oper::Esd : public ydk::Entity
 
         class Instance; //type: Controller::Switch::Oper::Esd::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Esd::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::Switch::Oper::Esd
 
@@ -2042,7 +2042,7 @@ class Controller::Switch::Oper::Esd::Instance : public ydk::Entity
         ydk::YLeaf process_name; //type: string
         class Trace; //type: Controller::Switch::Oper::Esd::Instance::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Esd::Instance::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::Switch::Oper::Esd::Instance
 
@@ -2066,7 +2066,7 @@ class Controller::Switch::Oper::Esd::Instance::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::Switch::Oper::Esd::Instance::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Esd::Instance::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Esd::Instance::Trace
 
@@ -2090,7 +2090,7 @@ class Controller::Switch::Oper::Esd::Instance::Trace::Location : public ydk::Ent
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::Switch::Oper::Esd::Instance::Trace::Location
 
@@ -2114,7 +2114,7 @@ class Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions : pub
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions
 
@@ -2185,7 +2185,7 @@ class Controller::Switch::Oper::MgmtAgent::Esdma : public ydk::Entity
 
         class Trace; //type: Controller::Switch::Oper::MgmtAgent::Esdma::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::MgmtAgent::Esdma::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::Switch::Oper::MgmtAgent::Esdma
 
@@ -2210,7 +2210,7 @@ class Controller::Switch::Oper::MgmtAgent::Esdma::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::MgmtAgent::Esdma::Trace
 
@@ -2234,7 +2234,7 @@ class Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location : public ydk::
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location
 
@@ -2258,7 +2258,7 @@ class Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions : 
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions
 
@@ -2310,9 +2310,9 @@ class Controller::Switch::Oper::MgmtAgent::Connections : public ydk::Entity
         class MlapClientId; //type: Controller::Switch::Oper::MgmtAgent::Connections::MlapClientId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::MgmtAgent::Connections::EsdmaInfo> esdma_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::MgmtAgent::Connections::SdrNmClientId> > sdr_nm_client_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::MgmtAgent::Connections::EsdClientId> > esd_client_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::MgmtAgent::Connections::MlapClientId> > mlap_client_id;
+        ydk::YList sdr_nm_client_id;
+        ydk::YList esd_client_id;
+        ydk::YList mlap_client_id;
         
 }; // Controller::Switch::Oper::MgmtAgent::Connections
 
@@ -2462,7 +2462,7 @@ class Controller::Switch::Oper::Sdr::PortStatistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Sdr::PortStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::PortStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Sdr::PortStatistics
 
@@ -2489,7 +2489,7 @@ class Controller::Switch::Oper::Sdr::PortStatistics::Location : public ydk::Enti
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Sdr::PortStatistics::Location
 
@@ -2513,7 +2513,7 @@ class Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter : public
         ydk::YLeaf port; //type: int32
         class SdrId; //type: Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId> > sdr_id;
+        ydk::YList sdr_id;
         
 }; // Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter
 
@@ -2538,7 +2538,7 @@ class Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId :
         ydk::YLeaf esd_sdr_name; //type: string
         class TrafficTypeId; //type: Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId> > traffic_type_id;
+        ydk::YList traffic_type_id;
         
 }; // Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId
 
@@ -2562,7 +2562,7 @@ class Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::
         ydk::YLeaf traffic_type; //type: EsdmaSdrTrafficType
         class DirectionId; //type: Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::DirectionId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::DirectionId> > direction_id;
+        ydk::YList direction_id;
         
 }; // Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId
 
@@ -2610,7 +2610,7 @@ class Controller::Switch::Oper::Sdr::GlobalStatistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Sdr::GlobalStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::GlobalStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Sdr::GlobalStatistics
 
@@ -2637,7 +2637,7 @@ class Controller::Switch::Oper::Sdr::GlobalStatistics::Location : public ydk::En
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class SdrId; //type: Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId> > sdr_id;
+        ydk::YList sdr_id;
         
 }; // Controller::Switch::Oper::Sdr::GlobalStatistics::Location
 
@@ -2662,7 +2662,7 @@ class Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId : public 
         ydk::YLeaf esd_sdr_name; //type: string
         class TrafficTypeId; //type: Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId> > traffic_type_id;
+        ydk::YList traffic_type_id;
         
 }; // Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId
 
@@ -2686,7 +2686,7 @@ class Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficT
         ydk::YLeaf traffic_type; //type: EsdmaSdrTrafficType
         class TrafficClassId; //type: Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::TrafficClassId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::TrafficClassId> > traffic_class_id;
+        ydk::YList traffic_class_id;
         
 }; // Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId
 
@@ -2734,7 +2734,7 @@ class Controller::Switch::Oper::Sdr::Policers : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Sdr::Policers::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::Policers::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Sdr::Policers
 
@@ -2763,7 +2763,7 @@ class Controller::Switch::Oper::Sdr::Policers::Location : public ydk::Entity
         class SdrId; //type: Controller::Switch::Oper::Sdr::Policers::Location::SdrId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::Policers::Location::EsdPolicerStatus> esd_policer_status;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::Policers::Location::SdrId> > sdr_id;
+        ydk::YList sdr_id;
         
 }; // Controller::Switch::Oper::Sdr::Policers::Location
 
@@ -2841,7 +2841,7 @@ class Controller::Switch::Oper::Sdr::Policers::Location::SdrId : public ydk::Ent
         ydk::YLeaf esd_sdr_pir; //type: uint8
         class EsdSdrCosTypeIter; //type: Controller::Switch::Oper::Sdr::Policers::Location::SdrId::EsdSdrCosTypeIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::Policers::Location::SdrId::EsdSdrCosTypeIter> > esd_sdr_cos_type_iter;
+        ydk::YList esd_sdr_cos_type_iter;
         
 }; // Controller::Switch::Oper::Sdr::Policers::Location::SdrId
 
@@ -2894,7 +2894,7 @@ class Controller::Switch::Oper::Sdr::SdrDetail : public ydk::Entity
 
         class SdrId; //type: Controller::Switch::Oper::Sdr::SdrDetail::SdrId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::SdrDetail::SdrId> > sdr_id;
+        ydk::YList sdr_id;
         
 }; // Controller::Switch::Oper::Sdr::SdrDetail
 
@@ -2942,7 +2942,7 @@ class Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics : public y
 
         class Location; //type: Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics
 
@@ -2968,7 +2968,7 @@ class Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location 
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location
 
@@ -2992,7 +2992,7 @@ class Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location:
         ydk::YLeaf port; //type: int32
         class TrafficTypeId; //type: Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId> > traffic_type_id;
+        ydk::YList traffic_type_id;
         
 }; // Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter
 
@@ -3016,7 +3016,7 @@ class Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location:
         ydk::YLeaf traffic_type; //type: EsdmaSdrTrafficType
         class DirectionId; //type: Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId> > direction_id;
+        ydk::YList direction_id;
         
 }; // Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId
 
@@ -3040,7 +3040,7 @@ class Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location:
         ydk::YLeaf direction; //type: SwitchDataDirectionEnum
         class TrafficClassId; //type: Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::TrafficClassId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::TrafficClassId> > traffic_class_id;
+        ydk::YList traffic_class_id;
         
 }; // Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId
 
@@ -3088,7 +3088,7 @@ class Controller::Switch::Oper::PortState : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::PortState::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::PortState::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::PortState
 
@@ -3115,7 +3115,7 @@ class Controller::Switch::Oper::PortState::Location : public ydk::Entity
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::PortState::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::PortState::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::PortState::Location
 
@@ -3160,7 +3160,7 @@ class Controller::Switch::Oper::Trunk : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Trunk::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Trunk::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Trunk
 
@@ -3189,7 +3189,7 @@ class Controller::Switch::Oper::Trunk::Location : public ydk::Entity
         ydk::YLeaf trunk_name; //type: string
         class TrunkMemberPortIter; //type: Controller::Switch::Oper::Trunk::Location::TrunkMemberPortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::Trunk::Location::TrunkMemberPortIter> > trunk_member_port_iter;
+        ydk::YList trunk_member_port_iter;
         
 }; // Controller::Switch::Oper::Trunk::Location
 
@@ -3283,7 +3283,7 @@ class Controller::Switch::Oper::SwitchDebugCont::Debug::Counters : public ydk::E
 
         class Location; //type: Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::SwitchDebugCont::Debug::Counters
 
@@ -3355,7 +3355,7 @@ class Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Coun
         ydk::YLeaf dma_tx_buf_free_count; //type: uint64
         class SwitchCore; //type: Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_::SwitchCore
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers_asr9k::Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_::SwitchCore> > switch_core;
+        ydk::YList switch_core;
         
 }; // Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_
 

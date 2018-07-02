@@ -31,20 +31,20 @@ class CISCOIPSECPOLICYMAPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ikepolmaptable; //type: CISCOIPSECPOLICYMAPMIB::Ikepolmaptable
-        class Ipsecpolmaptable; //type: CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable
+        class IkePolMapTable; //type: CISCOIPSECPOLICYMAPMIB::IkePolMapTable
+        class IpSecPolMapTable; //type: CISCOIPSECPOLICYMAPMIB::IpSecPolMapTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_POLICY_MAP_MIB::CISCOIPSECPOLICYMAPMIB::Ikepolmaptable> ikepolmaptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_POLICY_MAP_MIB::CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable> ipsecpolmaptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_POLICY_MAP_MIB::CISCOIPSECPOLICYMAPMIB::IkePolMapTable> ikepolmaptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_POLICY_MAP_MIB::CISCOIPSECPOLICYMAPMIB::IpSecPolMapTable> ipsecpolmaptable;
         
 }; // CISCOIPSECPOLICYMAPMIB
 
 
-class CISCOIPSECPOLICYMAPMIB::Ikepolmaptable : public ydk::Entity
+class CISCOIPSECPOLICYMAPMIB::IkePolMapTable : public ydk::Entity
 {
     public:
-        Ikepolmaptable();
-        ~Ikepolmaptable();
+        IkePolMapTable();
+        ~IkePolMapTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -57,18 +57,18 @@ class CISCOIPSECPOLICYMAPMIB::Ikepolmaptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ikepolmapentry; //type: CISCOIPSECPOLICYMAPMIB::Ikepolmaptable::Ikepolmapentry
+        class IkePolMapEntry; //type: CISCOIPSECPOLICYMAPMIB::IkePolMapTable::IkePolMapEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_POLICY_MAP_MIB::CISCOIPSECPOLICYMAPMIB::Ikepolmaptable::Ikepolmapentry> > ikepolmapentry;
+        ydk::YList ikepolmapentry;
         
-}; // CISCOIPSECPOLICYMAPMIB::Ikepolmaptable
+}; // CISCOIPSECPOLICYMAPMIB::IkePolMapTable
 
 
-class CISCOIPSECPOLICYMAPMIB::Ikepolmaptable::Ikepolmapentry : public ydk::Entity
+class CISCOIPSECPOLICYMAPMIB::IkePolMapTable::IkePolMapEntry : public ydk::Entity
 {
     public:
-        Ikepolmapentry();
-        ~Ikepolmapentry();
+        IkePolMapEntry();
+        ~IkePolMapEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -84,14 +84,14 @@ class CISCOIPSECPOLICYMAPMIB::Ikepolmaptable::Ikepolmapentry : public ydk::Entit
         ydk::YLeaf ikepolmaptunindex; //type: int32
         ydk::YLeaf ikepolmappolicynum; //type: int32
 
-}; // CISCOIPSECPOLICYMAPMIB::Ikepolmaptable::Ikepolmapentry
+}; // CISCOIPSECPOLICYMAPMIB::IkePolMapTable::IkePolMapEntry
 
 
-class CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable : public ydk::Entity
+class CISCOIPSECPOLICYMAPMIB::IpSecPolMapTable : public ydk::Entity
 {
     public:
-        Ipsecpolmaptable();
-        ~Ipsecpolmaptable();
+        IpSecPolMapTable();
+        ~IpSecPolMapTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -104,18 +104,18 @@ class CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipsecpolmapentry; //type: CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry
+        class IpSecPolMapEntry; //type: CISCOIPSECPOLICYMAPMIB::IpSecPolMapTable::IpSecPolMapEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_POLICY_MAP_MIB::CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry> > ipsecpolmapentry;
+        ydk::YList ipsecpolmapentry;
         
-}; // CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable
+}; // CISCOIPSECPOLICYMAPMIB::IpSecPolMapTable
 
 
-class CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry : public ydk::Entity
+class CISCOIPSECPOLICYMAPMIB::IpSecPolMapTable::IpSecPolMapEntry : public ydk::Entity
 {
     public:
-        Ipsecpolmapentry();
-        ~Ipsecpolmapentry();
+        IpSecPolMapEntry();
+        ~IpSecPolMapEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -134,7 +134,7 @@ class CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry : public ydk::E
         ydk::YLeaf ipsecpolmapaclstring; //type: string
         ydk::YLeaf ipsecpolmapacestring; //type: string
 
-}; // CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry
+}; // CISCOIPSECPOLICYMAPMIB::IpSecPolMapTable::IpSecPolMapEntry
 
 
 }

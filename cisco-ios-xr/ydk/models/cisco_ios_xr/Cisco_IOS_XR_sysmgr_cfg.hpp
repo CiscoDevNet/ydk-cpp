@@ -59,7 +59,7 @@ class ProcessMandatory::Nodes : public ydk::Entity
 
         class Node; //type: ProcessMandatory::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysmgr_cfg::ProcessMandatory::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // ProcessMandatory::Nodes
 
@@ -107,7 +107,7 @@ class ProcessMandatory::Nodes::Node::Processes : public ydk::Entity
 
         class Process; //type: ProcessMandatory::Nodes::Node::Processes::Process
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysmgr_cfg::ProcessMandatory::Nodes::Node::Processes::Process> > process;
+        ydk::YList process;
         
 }; // ProcessMandatory::Nodes::Node::Processes
 
@@ -176,7 +176,7 @@ class ProcessMandatory::All::Processes : public ydk::Entity
 
         class Process; //type: ProcessMandatory::All::Processes::Process
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysmgr_cfg::ProcessMandatory::All::Processes::Process> > process;
+        ydk::YList process;
         
 }; // ProcessMandatory::All::Processes
 

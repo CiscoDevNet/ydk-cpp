@@ -10,15 +10,33 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ptp_datatypes {
 
-class PtpTime : public ydk::Enum
+class PtpTelecomClock : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf interval;
-        static const ydk::Enum::YLeaf frequency;
+        static const ydk::Enum::YLeaf telecom_grandmaster;
+        static const ydk::Enum::YLeaf telecom_boundary;
+        static const ydk::Enum::YLeaf telecom_slave;
 
 };
 
-class PtpClockAdvertisementMode : public ydk::Enum
+class PtpInvalidUnicastGrantRequestResponse : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf reduce;
+        static const ydk::Enum::YLeaf deny;
+
+};
+
+class PtpClockId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf router_mac;
+        static const ydk::Enum::YLeaf user_mac;
+        static const ydk::Enum::YLeaf eui;
+
+};
+
+class PtpClockSelectionMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_1588v2;
@@ -26,12 +44,11 @@ class PtpClockAdvertisementMode : public ydk::Enum
 
 };
 
-class PtpEncap : public ydk::Enum
+class PtpClockOperation : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf two_step;
+        static const ydk::Enum::YLeaf one_step;
 
 };
 
@@ -49,19 +66,21 @@ class PtpTimePeriod : public ydk::Enum
 
 };
 
-class PtpClockOperation : public ydk::Enum
+class PtpTransport : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf two_step;
-        static const ydk::Enum::YLeaf one_step;
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf mixed_mode;
+        static const ydk::Enum::YLeaf multicast;
 
 };
 
-class PtpClockSelectionMode : public ydk::Enum
+class PtpDelayAsymmetryUnits : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Y_1588v2;
-        static const ydk::Enum::YLeaf telecom_profile;
+        static const ydk::Enum::YLeaf nanoseconds;
+        static const ydk::Enum::YLeaf microseconds;
+        static const ydk::Enum::YLeaf milliseconds;
 
 };
 
@@ -73,12 +92,22 @@ class PtpTimescale : public ydk::Enum
 
 };
 
-class PtpDelayAsymmetryUnits : public ydk::Enum
+class PtpClockProfile : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf nanoseconds;
-        static const ydk::Enum::YLeaf microseconds;
-        static const ydk::Enum::YLeaf milliseconds;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf g82651;
+        static const ydk::Enum::YLeaf g82751;
+        static const ydk::Enum::YLeaf g82752;
+
+};
+
+class PtpPortState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf any;
+        static const ydk::Enum::YLeaf slave_only;
+        static const ydk::Enum::YLeaf master_only;
 
 };
 
@@ -97,57 +126,28 @@ class PtpTimeSource : public ydk::Enum
 
 };
 
-class PtpPortState : public ydk::Enum
+class PtpEncap : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf any;
-        static const ydk::Enum::YLeaf slave_only;
-        static const ydk::Enum::YLeaf master_only;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
-class PtpClockProfile : public ydk::Enum
+class PtpTime : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf g82651;
-        static const ydk::Enum::YLeaf g82751;
-        static const ydk::Enum::YLeaf g82752;
+        static const ydk::Enum::YLeaf interval;
+        static const ydk::Enum::YLeaf frequency;
 
 };
 
-class PtpTransport : public ydk::Enum
+class PtpClockAdvertisementMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf mixed_mode;
-        static const ydk::Enum::YLeaf multicast;
-
-};
-
-class PtpClockId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf router_mac;
-        static const ydk::Enum::YLeaf user_mac;
-        static const ydk::Enum::YLeaf eui;
-
-};
-
-class PtpInvalidUnicastGrantRequestResponse : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf reduce;
-        static const ydk::Enum::YLeaf deny;
-
-};
-
-class PtpTelecomClock : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf telecom_grandmaster;
-        static const ydk::Enum::YLeaf telecom_boundary;
-        static const ydk::Enum::YLeaf telecom_slave;
+        static const ydk::Enum::YLeaf Y_1588v2;
+        static const ydk::Enum::YLeaf telecom_profile;
 
 };
 

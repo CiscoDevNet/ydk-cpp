@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_manageability_perfmgmt_oper {
 PerfMgmt::PerfMgmt()
     :
     periodic(std::make_shared<PerfMgmt::Periodic>())
-	,monitor(std::make_shared<PerfMgmt::Monitor>())
+    , monitor(std::make_shared<PerfMgmt::Monitor>())
 {
     periodic->parent = this;
     monitor->parent = this;
 
-    yang_name = "perf-mgmt"; yang_parent_name = "Cisco-IOS-XR-manageability-perfmgmt-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "perf-mgmt"; yang_parent_name = "Cisco-IOS-XR-manageability-perfmgmt-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PerfMgmt::~PerfMgmt()
@@ -28,6 +28,7 @@ PerfMgmt::~PerfMgmt()
 
 bool PerfMgmt::has_data() const
 {
+    if (is_presence_container) return true;
     return (periodic !=  nullptr && periodic->has_data())
 	|| (monitor !=  nullptr && monitor->has_data());
 }
@@ -138,10 +139,10 @@ bool PerfMgmt::has_leaf_or_child_of_name(const std::string & name) const
 PerfMgmt::Periodic::Periodic()
     :
     ospf(std::make_shared<PerfMgmt::Periodic::Ospf>())
-	,mpls(std::make_shared<PerfMgmt::Periodic::Mpls>())
-	,nodes(std::make_shared<PerfMgmt::Periodic::Nodes>())
-	,bgp(std::make_shared<PerfMgmt::Periodic::Bgp>())
-	,interface(std::make_shared<PerfMgmt::Periodic::Interface>())
+    , mpls(std::make_shared<PerfMgmt::Periodic::Mpls>())
+    , nodes(std::make_shared<PerfMgmt::Periodic::Nodes>())
+    , bgp(std::make_shared<PerfMgmt::Periodic::Bgp>())
+    , interface(std::make_shared<PerfMgmt::Periodic::Interface>())
 {
     ospf->parent = this;
     mpls->parent = this;
@@ -149,7 +150,7 @@ PerfMgmt::Periodic::Periodic()
     bgp->parent = this;
     interface->parent = this;
 
-    yang_name = "periodic"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "periodic"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::~Periodic()
@@ -158,6 +159,7 @@ PerfMgmt::Periodic::~Periodic()
 
 bool PerfMgmt::Periodic::has_data() const
 {
+    if (is_presence_container) return true;
     return (ospf !=  nullptr && ospf->has_data())
 	|| (mpls !=  nullptr && mpls->has_data())
 	|| (nodes !=  nullptr && nodes->has_data())
@@ -298,12 +300,12 @@ bool PerfMgmt::Periodic::has_leaf_or_child_of_name(const std::string & name) con
 PerfMgmt::Periodic::Ospf::Ospf()
     :
     ospfv2_protocol_instances(std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances>())
-	,ospfv3_protocol_instances(std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances>())
+    , ospfv3_protocol_instances(std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances>())
 {
     ospfv2_protocol_instances->parent = this;
     ospfv3_protocol_instances->parent = this;
 
-    yang_name = "ospf"; yang_parent_name = "periodic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf"; yang_parent_name = "periodic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Ospf::~Ospf()
@@ -312,6 +314,7 @@ PerfMgmt::Periodic::Ospf::~Ospf()
 
 bool PerfMgmt::Periodic::Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return (ospfv2_protocol_instances !=  nullptr && ospfv2_protocol_instances->has_data())
 	|| (ospfv3_protocol_instances !=  nullptr && ospfv3_protocol_instances->has_data());
 }
@@ -402,9 +405,11 @@ bool PerfMgmt::Periodic::Ospf::has_leaf_or_child_of_name(const std::string & nam
 }
 
 PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstances()
+    :
+    ospfv2_protocol_instance(this, {"instance_name"})
 {
 
-    yang_name = "ospfv2-protocol-instances"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv2-protocol-instances"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::~Ospfv2ProtocolInstances()
@@ -413,7 +418,8 @@ PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::~Ospfv2ProtocolInstances()
 
 bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_protocol_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_protocol_instance.len(); index++)
     {
         if(ospfv2_protocol_instance[index]->has_data())
             return true;
@@ -423,7 +429,7 @@ bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::has_data() const
 
 bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_protocol_instance.size(); index++)
+    for (std::size_t index=0; index<ospfv2_protocol_instance.len(); index++)
     {
         if(ospfv2_protocol_instance[index]->has_operation())
             return true;
@@ -460,7 +466,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::get_c
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance>();
         c->parent = this;
-        ospfv2_protocol_instance.push_back(c);
+        ospfv2_protocol_instance.append(c);
         return c;
     }
 
@@ -472,7 +478,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::Ospfv2P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospfv2_protocol_instance)
+    for (auto c : ospfv2_protocol_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -501,12 +507,12 @@ bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::has_leaf_or_child_of_nam
 PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Ospfv2ProtocolInstance()
     :
     instance_name{YType::str, "instance-name"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "ospfv2-protocol-instance"; yang_parent_name = "ospfv2-protocol-instances"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv2-protocol-instance"; yang_parent_name = "ospfv2-protocol-instances"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::~Ospfv2ProtocolInstance()
@@ -515,6 +521,7 @@ PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::~Ospf
 
 bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -536,7 +543,8 @@ std::string PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolIns
 std::string PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-protocol-instance" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "ospfv2-protocol-instance";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -602,9 +610,11 @@ bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::
 }
 
 PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "ospfv2-protocol-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "ospfv2-protocol-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::~Samples()
@@ -613,7 +623,8 @@ PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Sampl
 
 bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -623,7 +634,7 @@ bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::
 
 bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -653,7 +664,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -665,7 +676,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::Ospfv2P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -718,7 +729,7 @@ PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Sampl
     checksum_errors{YType::uint32, "checksum-errors"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::~Sample()
@@ -727,6 +738,7 @@ PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Sampl
 
 bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| input_packets.is_set
@@ -783,7 +795,8 @@ bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::
 std::string PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -1077,9 +1090,11 @@ bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::
 }
 
 PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstances()
+    :
+    ospfv3_protocol_instance(this, {"instance_name"})
 {
 
-    yang_name = "ospfv3-protocol-instances"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv3-protocol-instances"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::~Ospfv3ProtocolInstances()
@@ -1088,7 +1103,8 @@ PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::~Ospfv3ProtocolInstances()
 
 bool PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::has_data() const
 {
-    for (std::size_t index=0; index<ospfv3_protocol_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv3_protocol_instance.len(); index++)
     {
         if(ospfv3_protocol_instance[index]->has_data())
             return true;
@@ -1098,7 +1114,7 @@ bool PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::has_data() const
 
 bool PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv3_protocol_instance.size(); index++)
+    for (std::size_t index=0; index<ospfv3_protocol_instance.len(); index++)
     {
         if(ospfv3_protocol_instance[index]->has_operation())
             return true;
@@ -1135,7 +1151,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::get_c
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance>();
         c->parent = this;
-        ospfv3_protocol_instance.push_back(c);
+        ospfv3_protocol_instance.append(c);
         return c;
     }
 
@@ -1147,7 +1163,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::Ospfv3P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospfv3_protocol_instance)
+    for (auto c : ospfv3_protocol_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1176,12 +1192,12 @@ bool PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::has_leaf_or_child_of_nam
 PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Ospfv3ProtocolInstance()
     :
     instance_name{YType::str, "instance-name"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "ospfv3-protocol-instance"; yang_parent_name = "ospfv3-protocol-instances"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv3-protocol-instance"; yang_parent_name = "ospfv3-protocol-instances"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::~Ospfv3ProtocolInstance()
@@ -1190,6 +1206,7 @@ PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::~Ospf
 
 bool PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -1211,7 +1228,8 @@ std::string PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolIns
 std::string PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-protocol-instance" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "ospfv3-protocol-instance";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -1277,9 +1295,11 @@ bool PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::
 }
 
 PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "ospfv3-protocol-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "ospfv3-protocol-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::~Samples()
@@ -1288,7 +1308,8 @@ PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Sampl
 
 bool PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -1298,7 +1319,7 @@ bool PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::
 
 bool PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -1328,7 +1349,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -1340,7 +1361,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::Ospfv3P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1392,7 +1413,7 @@ PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Sampl
     output_lsa_acks_lsa{YType::uint32, "output-lsa-acks-lsa"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::~Sample()
@@ -1401,6 +1422,7 @@ PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Sampl
 
 bool PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| input_packets.is_set
@@ -1455,7 +1477,8 @@ bool PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::
 std::string PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -1743,7 +1766,7 @@ PerfMgmt::Periodic::Mpls::Mpls()
 {
     ldp_neighbors->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "periodic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls"; yang_parent_name = "periodic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Mpls::~Mpls()
@@ -1752,6 +1775,7 @@ PerfMgmt::Periodic::Mpls::~Mpls()
 
 bool PerfMgmt::Periodic::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (ldp_neighbors !=  nullptr && ldp_neighbors->has_data());
 }
 
@@ -1826,9 +1850,11 @@ bool PerfMgmt::Periodic::Mpls::has_leaf_or_child_of_name(const std::string & nam
 }
 
 PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbors()
+    :
+    ldp_neighbor(this, {"nbr"})
 {
 
-    yang_name = "ldp-neighbors"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp-neighbors"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Mpls::LdpNeighbors::~LdpNeighbors()
@@ -1837,7 +1863,8 @@ PerfMgmt::Periodic::Mpls::LdpNeighbors::~LdpNeighbors()
 
 bool PerfMgmt::Periodic::Mpls::LdpNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<ldp_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ldp_neighbor.len(); index++)
     {
         if(ldp_neighbor[index]->has_data())
             return true;
@@ -1847,7 +1874,7 @@ bool PerfMgmt::Periodic::Mpls::LdpNeighbors::has_data() const
 
 bool PerfMgmt::Periodic::Mpls::LdpNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<ldp_neighbor.size(); index++)
+    for (std::size_t index=0; index<ldp_neighbor.len(); index++)
     {
         if(ldp_neighbor[index]->has_operation())
             return true;
@@ -1884,7 +1911,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Mpls::LdpNeighbors::get_child_by_nam
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor>();
         c->parent = this;
-        ldp_neighbor.push_back(c);
+        ldp_neighbor.append(c);
         return c;
     }
 
@@ -1896,7 +1923,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Mpls::LdpNeig
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ldp_neighbor)
+    for (auto c : ldp_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1925,12 +1952,12 @@ bool PerfMgmt::Periodic::Mpls::LdpNeighbors::has_leaf_or_child_of_name(const std
 PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::LdpNeighbor()
     :
     nbr{YType::str, "nbr"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "ldp-neighbor"; yang_parent_name = "ldp-neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp-neighbor"; yang_parent_name = "ldp-neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::~LdpNeighbor()
@@ -1939,6 +1966,7 @@ PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::~LdpNeighbor()
 
 bool PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return nbr.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -1960,7 +1988,8 @@ std::string PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::get_absolute_pa
 std::string PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ldp-neighbor" <<"[nbr='" <<nbr <<"']";
+    path_buffer << "ldp-neighbor";
+    ADD_KEY_TOKEN(nbr, "nbr");
     return path_buffer.str();
 }
 
@@ -2026,9 +2055,11 @@ bool PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::has_leaf_or_child_of_n
 }
 
 PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "ldp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "ldp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::~Samples()
@@ -2037,7 +2068,8 @@ PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::~Samples()
 
 bool PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -2047,7 +2079,7 @@ bool PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::has_data() co
 
 bool PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -2077,7 +2109,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Sam
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -2089,7 +2121,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Mpls::LdpNeig
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2139,7 +2171,7 @@ PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::Sample()
     keepalive_msgs_rcvd{YType::uint16, "keepalive-msgs-rcvd"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::~Sample()
@@ -2148,6 +2180,7 @@ PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::~Sample()
 
 bool PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| total_msgs_sent.is_set
@@ -2198,7 +2231,8 @@ bool PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::has_o
 std::string PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -2459,9 +2493,11 @@ bool PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::has_l
 }
 
 PerfMgmt::Periodic::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "periodic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "periodic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Nodes::~Nodes()
@@ -2470,7 +2506,8 @@ PerfMgmt::Periodic::Nodes::~Nodes()
 
 bool PerfMgmt::Periodic::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -2480,7 +2517,7 @@ bool PerfMgmt::Periodic::Nodes::has_data() const
 
 bool PerfMgmt::Periodic::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -2517,7 +2554,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::get_child_by_name(const std::
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -2529,7 +2566,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2558,16 +2595,16 @@ bool PerfMgmt::Periodic::Nodes::has_leaf_or_child_of_name(const std::string & na
 PerfMgmt::Periodic::Nodes::Node::Node()
     :
     node_id{YType::str, "node-id"}
-    	,
+        ,
     sample_xr(std::make_shared<PerfMgmt::Periodic::Nodes::Node::SampleXr>())
-	,processes(std::make_shared<PerfMgmt::Periodic::Nodes::Node::Processes>())
-	,samples(std::make_shared<PerfMgmt::Periodic::Nodes::Node::Samples>())
+    , processes(std::make_shared<PerfMgmt::Periodic::Nodes::Node::Processes>())
+    , samples(std::make_shared<PerfMgmt::Periodic::Nodes::Node::Samples>())
 {
     sample_xr->parent = this;
     processes->parent = this;
     samples->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Nodes::Node::~Node()
@@ -2576,6 +2613,7 @@ PerfMgmt::Periodic::Nodes::Node::~Node()
 
 bool PerfMgmt::Periodic::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| (sample_xr !=  nullptr && sample_xr->has_data())
 	|| (processes !=  nullptr && processes->has_data())
@@ -2601,7 +2639,8 @@ std::string PerfMgmt::Periodic::Nodes::Node::get_absolute_path() const
 std::string PerfMgmt::Periodic::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -2695,9 +2734,11 @@ bool PerfMgmt::Periodic::Nodes::Node::has_leaf_or_child_of_name(const std::strin
 }
 
 PerfMgmt::Periodic::Nodes::Node::SampleXr::SampleXr()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "sample-xr"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample-xr"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Nodes::Node::SampleXr::~SampleXr()
@@ -2706,7 +2747,8 @@ PerfMgmt::Periodic::Nodes::Node::SampleXr::~SampleXr()
 
 bool PerfMgmt::Periodic::Nodes::Node::SampleXr::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -2716,7 +2758,7 @@ bool PerfMgmt::Periodic::Nodes::Node::SampleXr::has_data() const
 
 bool PerfMgmt::Periodic::Nodes::Node::SampleXr::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -2746,7 +2788,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::SampleXr::get_child_by_
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -2758,7 +2800,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2792,7 +2834,7 @@ PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::Sample()
     average_cpu_used{YType::uint32, "average-cpu-used"}
 {
 
-    yang_name = "sample"; yang_parent_name = "sample-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "sample-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::~Sample()
@@ -2801,6 +2843,7 @@ PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::~Sample()
 
 bool PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| no_processes.is_set
@@ -2819,7 +2862,8 @@ bool PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::has_operation() const
 std::string PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -2904,9 +2948,11 @@ bool PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::has_leaf_or_child_of_nam
 }
 
 PerfMgmt::Periodic::Nodes::Node::Processes::Processes()
+    :
+    process(this, {"process_id"})
 {
 
-    yang_name = "processes"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "processes"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Nodes::Node::Processes::~Processes()
@@ -2915,7 +2961,8 @@ PerfMgmt::Periodic::Nodes::Node::Processes::~Processes()
 
 bool PerfMgmt::Periodic::Nodes::Node::Processes::has_data() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_data())
             return true;
@@ -2925,7 +2972,7 @@ bool PerfMgmt::Periodic::Nodes::Node::Processes::has_data() const
 
 bool PerfMgmt::Periodic::Nodes::Node::Processes::has_operation() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_operation())
             return true;
@@ -2955,7 +3002,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::Processes::get_child_by
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Nodes::Node::Processes::Process>();
         c->parent = this;
-        process.push_back(c);
+        process.append(c);
         return c;
     }
 
@@ -2967,7 +3014,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process)
+    for (auto c : process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2996,12 +3043,12 @@ bool PerfMgmt::Periodic::Nodes::Node::Processes::has_leaf_or_child_of_name(const
 PerfMgmt::Periodic::Nodes::Node::Processes::Process::Process()
     :
     process_id{YType::int32, "process-id"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "process"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "process"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Nodes::Node::Processes::Process::~Process()
@@ -3010,6 +3057,7 @@ PerfMgmt::Periodic::Nodes::Node::Processes::Process::~Process()
 
 bool PerfMgmt::Periodic::Nodes::Node::Processes::Process::has_data() const
 {
+    if (is_presence_container) return true;
     return process_id.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -3024,7 +3072,8 @@ bool PerfMgmt::Periodic::Nodes::Node::Processes::Process::has_operation() const
 std::string PerfMgmt::Periodic::Nodes::Node::Processes::Process::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "process" <<"[process-id='" <<process_id <<"']";
+    path_buffer << "process";
+    ADD_KEY_TOKEN(process_id, "process-id");
     return path_buffer.str();
 }
 
@@ -3090,9 +3139,11 @@ bool PerfMgmt::Periodic::Nodes::Node::Processes::Process::has_leaf_or_child_of_n
 }
 
 PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::~Samples()
@@ -3101,7 +3152,8 @@ PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::~Samples()
 
 bool PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -3111,7 +3163,7 @@ bool PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::has_data() co
 
 bool PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -3141,7 +3193,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::Processes::Process::Sam
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -3153,7 +3205,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3188,7 +3240,7 @@ PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::Sample()
     no_threads{YType::uint32, "no-threads"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::~Sample()
@@ -3197,6 +3249,7 @@ PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::~Sample()
 
 bool PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| peak_memory.is_set
@@ -3217,7 +3270,8 @@ bool PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::has_o
 std::string PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -3313,9 +3367,11 @@ bool PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::has_l
 }
 
 PerfMgmt::Periodic::Nodes::Node::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Nodes::Node::Samples::~Samples()
@@ -3324,7 +3380,8 @@ PerfMgmt::Periodic::Nodes::Node::Samples::~Samples()
 
 bool PerfMgmt::Periodic::Nodes::Node::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -3334,7 +3391,7 @@ bool PerfMgmt::Periodic::Nodes::Node::Samples::has_data() const
 
 bool PerfMgmt::Periodic::Nodes::Node::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -3364,7 +3421,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::Samples::get_child_by_n
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Nodes::Node::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -3376,7 +3433,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3410,7 +3467,7 @@ PerfMgmt::Periodic::Nodes::Node::Samples::Sample::Sample()
     peak_memory{YType::uint32, "peak-memory"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Nodes::Node::Samples::Sample::~Sample()
@@ -3419,6 +3476,7 @@ PerfMgmt::Periodic::Nodes::Node::Samples::Sample::~Sample()
 
 bool PerfMgmt::Periodic::Nodes::Node::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| curr_memory.is_set
@@ -3437,7 +3495,8 @@ bool PerfMgmt::Periodic::Nodes::Node::Samples::Sample::has_operation() const
 std::string PerfMgmt::Periodic::Nodes::Node::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -3527,7 +3586,7 @@ PerfMgmt::Periodic::Bgp::Bgp()
 {
     bgp_neighbors->parent = this;
 
-    yang_name = "bgp"; yang_parent_name = "periodic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp"; yang_parent_name = "periodic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Bgp::~Bgp()
@@ -3536,6 +3595,7 @@ PerfMgmt::Periodic::Bgp::~Bgp()
 
 bool PerfMgmt::Periodic::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return (bgp_neighbors !=  nullptr && bgp_neighbors->has_data());
 }
 
@@ -3610,9 +3670,11 @@ bool PerfMgmt::Periodic::Bgp::has_leaf_or_child_of_name(const std::string & name
 }
 
 PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbors()
+    :
+    bgp_neighbor(this, {"ip_address"})
 {
 
-    yang_name = "bgp-neighbors"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-neighbors"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Bgp::BgpNeighbors::~BgpNeighbors()
@@ -3621,7 +3683,8 @@ PerfMgmt::Periodic::Bgp::BgpNeighbors::~BgpNeighbors()
 
 bool PerfMgmt::Periodic::Bgp::BgpNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<bgp_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_neighbor.len(); index++)
     {
         if(bgp_neighbor[index]->has_data())
             return true;
@@ -3631,7 +3694,7 @@ bool PerfMgmt::Periodic::Bgp::BgpNeighbors::has_data() const
 
 bool PerfMgmt::Periodic::Bgp::BgpNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_neighbor.size(); index++)
+    for (std::size_t index=0; index<bgp_neighbor.len(); index++)
     {
         if(bgp_neighbor[index]->has_operation())
             return true;
@@ -3668,7 +3731,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Bgp::BgpNeighbors::get_child_by_name
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor>();
         c->parent = this;
-        bgp_neighbor.push_back(c);
+        bgp_neighbor.append(c);
         return c;
     }
 
@@ -3680,7 +3743,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Bgp::BgpNeigh
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_neighbor)
+    for (auto c : bgp_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3709,12 +3772,12 @@ bool PerfMgmt::Periodic::Bgp::BgpNeighbors::has_leaf_or_child_of_name(const std:
 PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::BgpNeighbor()
     :
     ip_address{YType::str, "ip-address"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "bgp-neighbor"; yang_parent_name = "bgp-neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-neighbor"; yang_parent_name = "bgp-neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::~BgpNeighbor()
@@ -3723,6 +3786,7 @@ PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::~BgpNeighbor()
 
 bool PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -3744,7 +3808,8 @@ std::string PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::get_absolute_pat
 std::string PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-neighbor" <<"[ip-address='" <<ip_address <<"']";
+    path_buffer << "bgp-neighbor";
+    ADD_KEY_TOKEN(ip_address, "ip-address");
     return path_buffer.str();
 }
 
@@ -3810,9 +3875,11 @@ bool PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::has_leaf_or_child_of_na
 }
 
 PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "bgp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "bgp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::~Samples()
@@ -3821,7 +3888,8 @@ PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::~Samples()
 
 bool PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -3831,7 +3899,7 @@ bool PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::has_data() con
 
 bool PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -3861,7 +3929,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samp
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -3873,7 +3941,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Bgp::BgpNeigh
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3913,7 +3981,7 @@ PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::Sample()
     errors_sent{YType::uint32, "errors-sent"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::~Sample()
@@ -3922,6 +3990,7 @@ PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::~Sample()
 
 bool PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| input_messages.is_set
@@ -3952,7 +4021,8 @@ bool PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::has_op
 std::string PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -4105,14 +4175,14 @@ bool PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::has_le
 PerfMgmt::Periodic::Interface::Interface()
     :
     generic_counter_interfaces(std::make_shared<PerfMgmt::Periodic::Interface::GenericCounterInterfaces>())
-	,basic_counter_interfaces(std::make_shared<PerfMgmt::Periodic::Interface::BasicCounterInterfaces>())
-	,data_rate_interfaces(std::make_shared<PerfMgmt::Periodic::Interface::DataRateInterfaces>())
+    , basic_counter_interfaces(std::make_shared<PerfMgmt::Periodic::Interface::BasicCounterInterfaces>())
+    , data_rate_interfaces(std::make_shared<PerfMgmt::Periodic::Interface::DataRateInterfaces>())
 {
     generic_counter_interfaces->parent = this;
     basic_counter_interfaces->parent = this;
     data_rate_interfaces->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "periodic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "periodic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Interface::~Interface()
@@ -4121,6 +4191,7 @@ PerfMgmt::Periodic::Interface::~Interface()
 
 bool PerfMgmt::Periodic::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return (generic_counter_interfaces !=  nullptr && generic_counter_interfaces->has_data())
 	|| (basic_counter_interfaces !=  nullptr && basic_counter_interfaces->has_data())
 	|| (data_rate_interfaces !=  nullptr && data_rate_interfaces->has_data());
@@ -4227,9 +4298,11 @@ bool PerfMgmt::Periodic::Interface::has_leaf_or_child_of_name(const std::string 
 }
 
 PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterfaces()
+    :
+    generic_counter_interface(this, {"interface_name"})
 {
 
-    yang_name = "generic-counter-interfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-counter-interfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Interface::GenericCounterInterfaces::~GenericCounterInterfaces()
@@ -4238,7 +4311,8 @@ PerfMgmt::Periodic::Interface::GenericCounterInterfaces::~GenericCounterInterfac
 
 bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<generic_counter_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<generic_counter_interface.len(); index++)
     {
         if(generic_counter_interface[index]->has_data())
             return true;
@@ -4248,7 +4322,7 @@ bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::has_data() const
 
 bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<generic_counter_interface.size(); index++)
+    for (std::size_t index=0; index<generic_counter_interface.len(); index++)
     {
         if(generic_counter_interface[index]->has_operation())
             return true;
@@ -4285,7 +4359,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::GenericCounterInterfaces:
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface>();
         c->parent = this;
-        generic_counter_interface.push_back(c);
+        generic_counter_interface.append(c);
         return c;
     }
 
@@ -4297,7 +4371,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::Ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : generic_counter_interface)
+    for (auto c : generic_counter_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4326,12 +4400,12 @@ bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::has_leaf_or_child_
 PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::GenericCounterInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "generic-counter-interface"; yang_parent_name = "generic-counter-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-counter-interface"; yang_parent_name = "generic-counter-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::~GenericCounterInterface()
@@ -4340,6 +4414,7 @@ PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface
 
 bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -4361,7 +4436,8 @@ std::string PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCoun
 std::string PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "generic-counter-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "generic-counter-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4427,9 +4503,11 @@ bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInte
 }
 
 PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "generic-counter-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "generic-counter-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::~Samples()
@@ -4438,7 +4516,8 @@ PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface
 
 bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -4448,7 +4527,7 @@ bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInte
 
 bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -4478,7 +4557,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::GenericCounterInterfaces:
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -4490,7 +4569,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::Ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4542,7 +4621,7 @@ PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface
     input_frame{YType::uint32, "input-frame"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::~Sample()
@@ -4551,6 +4630,7 @@ PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface
 
 bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| in_packets.is_set
@@ -4605,7 +4685,8 @@ bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInte
 std::string PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -4888,9 +4969,11 @@ bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInte
 }
 
 PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterfaces()
+    :
+    basic_counter_interface(this, {"interface_name"})
 {
 
-    yang_name = "basic-counter-interfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "basic-counter-interfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Interface::BasicCounterInterfaces::~BasicCounterInterfaces()
@@ -4899,7 +4982,8 @@ PerfMgmt::Periodic::Interface::BasicCounterInterfaces::~BasicCounterInterfaces()
 
 bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<basic_counter_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<basic_counter_interface.len(); index++)
     {
         if(basic_counter_interface[index]->has_data())
             return true;
@@ -4909,7 +4993,7 @@ bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::has_data() const
 
 bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<basic_counter_interface.size(); index++)
+    for (std::size_t index=0; index<basic_counter_interface.len(); index++)
     {
         if(basic_counter_interface[index]->has_operation())
             return true;
@@ -4946,7 +5030,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::g
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface>();
         c->parent = this;
-        basic_counter_interface.push_back(c);
+        basic_counter_interface.append(c);
         return c;
     }
 
@@ -4958,7 +5042,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::Ba
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : basic_counter_interface)
+    for (auto c : basic_counter_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4987,12 +5071,12 @@ bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::has_leaf_or_child_of
 PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::BasicCounterInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "basic-counter-interface"; yang_parent_name = "basic-counter-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "basic-counter-interface"; yang_parent_name = "basic-counter-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::~BasicCounterInterface()
@@ -5001,6 +5085,7 @@ PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::~B
 
 bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -5022,7 +5107,8 @@ std::string PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterI
 std::string PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "basic-counter-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "basic-counter-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5088,9 +5174,11 @@ bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterfac
 }
 
 PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "basic-counter-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "basic-counter-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::~Samples()
@@ -5099,7 +5187,8 @@ PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Sa
 
 bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -5109,7 +5198,7 @@ bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterfac
 
 bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -5139,7 +5228,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::B
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -5151,7 +5240,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::Ba
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5193,7 +5282,7 @@ PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Sa
     output_total_errors{YType::uint64, "output-total-errors"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::~Sample()
@@ -5202,6 +5291,7 @@ PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Sa
 
 bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| in_packets.is_set
@@ -5236,7 +5326,8 @@ bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterfac
 std::string PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -5409,9 +5500,11 @@ bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterfac
 }
 
 PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterfaces()
+    :
+    data_rate_interface(this, {"interface_name"})
 {
 
-    yang_name = "data-rate-interfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-rate-interfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Interface::DataRateInterfaces::~DataRateInterfaces()
@@ -5420,7 +5513,8 @@ PerfMgmt::Periodic::Interface::DataRateInterfaces::~DataRateInterfaces()
 
 bool PerfMgmt::Periodic::Interface::DataRateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<data_rate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_rate_interface.len(); index++)
     {
         if(data_rate_interface[index]->has_data())
             return true;
@@ -5430,7 +5524,7 @@ bool PerfMgmt::Periodic::Interface::DataRateInterfaces::has_data() const
 
 bool PerfMgmt::Periodic::Interface::DataRateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<data_rate_interface.size(); index++)
+    for (std::size_t index=0; index<data_rate_interface.len(); index++)
     {
         if(data_rate_interface[index]->has_operation())
             return true;
@@ -5467,7 +5561,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::DataRateInterfaces::get_c
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface>();
         c->parent = this;
-        data_rate_interface.push_back(c);
+        data_rate_interface.append(c);
         return c;
     }
 
@@ -5479,7 +5573,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::Da
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_rate_interface)
+    for (auto c : data_rate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5508,12 +5602,12 @@ bool PerfMgmt::Periodic::Interface::DataRateInterfaces::has_leaf_or_child_of_nam
 PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::DataRateInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "data-rate-interface"; yang_parent_name = "data-rate-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-rate-interface"; yang_parent_name = "data-rate-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::~DataRateInterface()
@@ -5522,6 +5616,7 @@ PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::~DataRateI
 
 bool PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -5543,7 +5638,8 @@ std::string PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface
 std::string PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data-rate-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "data-rate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5609,9 +5705,11 @@ bool PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::has_l
 }
 
 PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "data-rate-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "data-rate-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::~Samples()
@@ -5620,7 +5718,8 @@ PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::~
 
 bool PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -5630,7 +5729,7 @@ bool PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Sampl
 
 bool PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -5660,7 +5759,7 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataR
     {
         auto c = std::make_shared<PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -5672,7 +5771,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::Da
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5713,7 +5812,7 @@ PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::S
     bandwidth{YType::uint32, "bandwidth"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::~Sample()
@@ -5722,6 +5821,7 @@ PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::S
 
 bool PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| input_data_rate.is_set
@@ -5754,7 +5854,8 @@ bool PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Sampl
 std::string PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -5918,10 +6019,10 @@ bool PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Sampl
 PerfMgmt::Monitor::Monitor()
     :
     ospf(std::make_shared<PerfMgmt::Monitor::Ospf>())
-	,mpls(std::make_shared<PerfMgmt::Monitor::Mpls>())
-	,nodes(std::make_shared<PerfMgmt::Monitor::Nodes>())
-	,bgp(std::make_shared<PerfMgmt::Monitor::Bgp>())
-	,interface(std::make_shared<PerfMgmt::Monitor::Interface>())
+    , mpls(std::make_shared<PerfMgmt::Monitor::Mpls>())
+    , nodes(std::make_shared<PerfMgmt::Monitor::Nodes>())
+    , bgp(std::make_shared<PerfMgmt::Monitor::Bgp>())
+    , interface(std::make_shared<PerfMgmt::Monitor::Interface>())
 {
     ospf->parent = this;
     mpls->parent = this;
@@ -5929,7 +6030,7 @@ PerfMgmt::Monitor::Monitor()
     bgp->parent = this;
     interface->parent = this;
 
-    yang_name = "monitor"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "monitor"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::~Monitor()
@@ -5938,6 +6039,7 @@ PerfMgmt::Monitor::~Monitor()
 
 bool PerfMgmt::Monitor::has_data() const
 {
+    if (is_presence_container) return true;
     return (ospf !=  nullptr && ospf->has_data())
 	|| (mpls !=  nullptr && mpls->has_data())
 	|| (nodes !=  nullptr && nodes->has_data())
@@ -6078,12 +6180,12 @@ bool PerfMgmt::Monitor::has_leaf_or_child_of_name(const std::string & name) cons
 PerfMgmt::Monitor::Ospf::Ospf()
     :
     ospfv2_protocol_instances(std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances>())
-	,ospfv3_protocol_instances(std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances>())
+    , ospfv3_protocol_instances(std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances>())
 {
     ospfv2_protocol_instances->parent = this;
     ospfv3_protocol_instances->parent = this;
 
-    yang_name = "ospf"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Ospf::~Ospf()
@@ -6092,6 +6194,7 @@ PerfMgmt::Monitor::Ospf::~Ospf()
 
 bool PerfMgmt::Monitor::Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return (ospfv2_protocol_instances !=  nullptr && ospfv2_protocol_instances->has_data())
 	|| (ospfv3_protocol_instances !=  nullptr && ospfv3_protocol_instances->has_data());
 }
@@ -6182,9 +6285,11 @@ bool PerfMgmt::Monitor::Ospf::has_leaf_or_child_of_name(const std::string & name
 }
 
 PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstances()
+    :
+    ospfv2_protocol_instance(this, {"instance_name"})
 {
 
-    yang_name = "ospfv2-protocol-instances"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv2-protocol-instances"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::~Ospfv2ProtocolInstances()
@@ -6193,7 +6298,8 @@ PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::~Ospfv2ProtocolInstances()
 
 bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_protocol_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_protocol_instance.len(); index++)
     {
         if(ospfv2_protocol_instance[index]->has_data())
             return true;
@@ -6203,7 +6309,7 @@ bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::has_data() const
 
 bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_protocol_instance.size(); index++)
+    for (std::size_t index=0; index<ospfv2_protocol_instance.len(); index++)
     {
         if(ospfv2_protocol_instance[index]->has_operation())
             return true;
@@ -6240,7 +6346,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::get_ch
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance>();
         c->parent = this;
-        ospfv2_protocol_instance.push_back(c);
+        ospfv2_protocol_instance.append(c);
         return c;
     }
 
@@ -6252,7 +6358,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::Ospfv2Pr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospfv2_protocol_instance)
+    for (auto c : ospfv2_protocol_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6281,12 +6387,12 @@ bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::has_leaf_or_child_of_name
 PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Ospfv2ProtocolInstance()
     :
     instance_name{YType::str, "instance-name"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "ospfv2-protocol-instance"; yang_parent_name = "ospfv2-protocol-instances"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv2-protocol-instance"; yang_parent_name = "ospfv2-protocol-instances"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::~Ospfv2ProtocolInstance()
@@ -6295,6 +6401,7 @@ PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::~Ospfv
 
 bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -6316,7 +6423,8 @@ std::string PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInst
 std::string PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-protocol-instance" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "ospfv2-protocol-instance";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -6382,9 +6490,11 @@ bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::h
 }
 
 PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "ospfv2-protocol-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "ospfv2-protocol-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::~Samples()
@@ -6393,7 +6503,8 @@ PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Sample
 
 bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -6403,7 +6514,7 @@ bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::S
 
 bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -6433,7 +6544,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -6445,7 +6556,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::Ospfv2Pr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6498,7 +6609,7 @@ PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Sample
     checksum_errors{YType::uint32, "checksum-errors"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::~Sample()
@@ -6507,6 +6618,7 @@ PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Sample
 
 bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| input_packets.is_set
@@ -6563,7 +6675,8 @@ bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::S
 std::string PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -6857,9 +6970,11 @@ bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::S
 }
 
 PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstances()
+    :
+    ospfv3_protocol_instance(this, {"instance_name"})
 {
 
-    yang_name = "ospfv3-protocol-instances"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv3-protocol-instances"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::~Ospfv3ProtocolInstances()
@@ -6868,7 +6983,8 @@ PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::~Ospfv3ProtocolInstances()
 
 bool PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::has_data() const
 {
-    for (std::size_t index=0; index<ospfv3_protocol_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv3_protocol_instance.len(); index++)
     {
         if(ospfv3_protocol_instance[index]->has_data())
             return true;
@@ -6878,7 +6994,7 @@ bool PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::has_data() const
 
 bool PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv3_protocol_instance.size(); index++)
+    for (std::size_t index=0; index<ospfv3_protocol_instance.len(); index++)
     {
         if(ospfv3_protocol_instance[index]->has_operation())
             return true;
@@ -6915,7 +7031,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::get_ch
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance>();
         c->parent = this;
-        ospfv3_protocol_instance.push_back(c);
+        ospfv3_protocol_instance.append(c);
         return c;
     }
 
@@ -6927,7 +7043,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::Ospfv3Pr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospfv3_protocol_instance)
+    for (auto c : ospfv3_protocol_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6956,12 +7072,12 @@ bool PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::has_leaf_or_child_of_name
 PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Ospfv3ProtocolInstance()
     :
     instance_name{YType::str, "instance-name"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "ospfv3-protocol-instance"; yang_parent_name = "ospfv3-protocol-instances"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv3-protocol-instance"; yang_parent_name = "ospfv3-protocol-instances"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::~Ospfv3ProtocolInstance()
@@ -6970,6 +7086,7 @@ PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::~Ospfv
 
 bool PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -6991,7 +7108,8 @@ std::string PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInst
 std::string PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-protocol-instance" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "ospfv3-protocol-instance";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -7057,9 +7175,11 @@ bool PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::h
 }
 
 PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "ospfv3-protocol-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "ospfv3-protocol-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::~Samples()
@@ -7068,7 +7188,8 @@ PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Sample
 
 bool PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -7078,7 +7199,7 @@ bool PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::S
 
 bool PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -7108,7 +7229,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -7120,7 +7241,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::Ospfv3Pr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7172,7 +7293,7 @@ PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Sample
     output_lsa_acks_lsa{YType::uint32, "output-lsa-acks-lsa"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::~Sample()
@@ -7181,6 +7302,7 @@ PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Sample
 
 bool PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| input_packets.is_set
@@ -7235,7 +7357,8 @@ bool PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::S
 std::string PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -7523,7 +7646,7 @@ PerfMgmt::Monitor::Mpls::Mpls()
 {
     ldp_neighbors->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Mpls::~Mpls()
@@ -7532,6 +7655,7 @@ PerfMgmt::Monitor::Mpls::~Mpls()
 
 bool PerfMgmt::Monitor::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (ldp_neighbors !=  nullptr && ldp_neighbors->has_data());
 }
 
@@ -7606,9 +7730,11 @@ bool PerfMgmt::Monitor::Mpls::has_leaf_or_child_of_name(const std::string & name
 }
 
 PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbors()
+    :
+    ldp_neighbor(this, {"nbr"})
 {
 
-    yang_name = "ldp-neighbors"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp-neighbors"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Mpls::LdpNeighbors::~LdpNeighbors()
@@ -7617,7 +7743,8 @@ PerfMgmt::Monitor::Mpls::LdpNeighbors::~LdpNeighbors()
 
 bool PerfMgmt::Monitor::Mpls::LdpNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<ldp_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ldp_neighbor.len(); index++)
     {
         if(ldp_neighbor[index]->has_data())
             return true;
@@ -7627,7 +7754,7 @@ bool PerfMgmt::Monitor::Mpls::LdpNeighbors::has_data() const
 
 bool PerfMgmt::Monitor::Mpls::LdpNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<ldp_neighbor.size(); index++)
+    for (std::size_t index=0; index<ldp_neighbor.len(); index++)
     {
         if(ldp_neighbor[index]->has_operation())
             return true;
@@ -7664,7 +7791,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Mpls::LdpNeighbors::get_child_by_name
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor>();
         c->parent = this;
-        ldp_neighbor.push_back(c);
+        ldp_neighbor.append(c);
         return c;
     }
 
@@ -7676,7 +7803,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Mpls::LdpNeigh
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ldp_neighbor)
+    for (auto c : ldp_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7705,12 +7832,12 @@ bool PerfMgmt::Monitor::Mpls::LdpNeighbors::has_leaf_or_child_of_name(const std:
 PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::LdpNeighbor()
     :
     nbr{YType::str, "nbr"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "ldp-neighbor"; yang_parent_name = "ldp-neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp-neighbor"; yang_parent_name = "ldp-neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::~LdpNeighbor()
@@ -7719,6 +7846,7 @@ PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::~LdpNeighbor()
 
 bool PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return nbr.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -7740,7 +7868,8 @@ std::string PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::get_absolute_pat
 std::string PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ldp-neighbor" <<"[nbr='" <<nbr <<"']";
+    path_buffer << "ldp-neighbor";
+    ADD_KEY_TOKEN(nbr, "nbr");
     return path_buffer.str();
 }
 
@@ -7806,9 +7935,11 @@ bool PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::has_leaf_or_child_of_na
 }
 
 PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "ldp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "ldp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::~Samples()
@@ -7817,7 +7948,8 @@ PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::~Samples()
 
 bool PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -7827,7 +7959,7 @@ bool PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::has_data() con
 
 bool PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -7857,7 +7989,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samp
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -7869,7 +8001,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Mpls::LdpNeigh
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7919,7 +8051,7 @@ PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::Sample()
     keepalive_msgs_rcvd{YType::uint16, "keepalive-msgs-rcvd"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::~Sample()
@@ -7928,6 +8060,7 @@ PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::~Sample()
 
 bool PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| total_msgs_sent.is_set
@@ -7978,7 +8111,8 @@ bool PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::has_op
 std::string PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -8239,9 +8373,11 @@ bool PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::has_le
 }
 
 PerfMgmt::Monitor::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Nodes::~Nodes()
@@ -8250,7 +8386,8 @@ PerfMgmt::Monitor::Nodes::~Nodes()
 
 bool PerfMgmt::Monitor::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -8260,7 +8397,7 @@ bool PerfMgmt::Monitor::Nodes::has_data() const
 
 bool PerfMgmt::Monitor::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -8297,7 +8434,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::get_child_by_name(const std::s
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -8309,7 +8446,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8338,16 +8475,16 @@ bool PerfMgmt::Monitor::Nodes::has_leaf_or_child_of_name(const std::string & nam
 PerfMgmt::Monitor::Nodes::Node::Node()
     :
     node_id{YType::str, "node-id"}
-    	,
+        ,
     sample_xr(std::make_shared<PerfMgmt::Monitor::Nodes::Node::SampleXr>())
-	,processes(std::make_shared<PerfMgmt::Monitor::Nodes::Node::Processes>())
-	,samples(std::make_shared<PerfMgmt::Monitor::Nodes::Node::Samples>())
+    , processes(std::make_shared<PerfMgmt::Monitor::Nodes::Node::Processes>())
+    , samples(std::make_shared<PerfMgmt::Monitor::Nodes::Node::Samples>())
 {
     sample_xr->parent = this;
     processes->parent = this;
     samples->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Nodes::Node::~Node()
@@ -8356,6 +8493,7 @@ PerfMgmt::Monitor::Nodes::Node::~Node()
 
 bool PerfMgmt::Monitor::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| (sample_xr !=  nullptr && sample_xr->has_data())
 	|| (processes !=  nullptr && processes->has_data())
@@ -8381,7 +8519,8 @@ std::string PerfMgmt::Monitor::Nodes::Node::get_absolute_path() const
 std::string PerfMgmt::Monitor::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -8475,9 +8614,11 @@ bool PerfMgmt::Monitor::Nodes::Node::has_leaf_or_child_of_name(const std::string
 }
 
 PerfMgmt::Monitor::Nodes::Node::SampleXr::SampleXr()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "sample-xr"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample-xr"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Nodes::Node::SampleXr::~SampleXr()
@@ -8486,7 +8627,8 @@ PerfMgmt::Monitor::Nodes::Node::SampleXr::~SampleXr()
 
 bool PerfMgmt::Monitor::Nodes::Node::SampleXr::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -8496,7 +8638,7 @@ bool PerfMgmt::Monitor::Nodes::Node::SampleXr::has_data() const
 
 bool PerfMgmt::Monitor::Nodes::Node::SampleXr::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -8526,7 +8668,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::SampleXr::get_child_by_n
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -8538,7 +8680,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8572,7 +8714,7 @@ PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::Sample()
     average_cpu_used{YType::uint32, "average-cpu-used"}
 {
 
-    yang_name = "sample"; yang_parent_name = "sample-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "sample-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::~Sample()
@@ -8581,6 +8723,7 @@ PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::~Sample()
 
 bool PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| no_processes.is_set
@@ -8599,7 +8742,8 @@ bool PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::has_operation() const
 std::string PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -8684,9 +8828,11 @@ bool PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::has_leaf_or_child_of_name
 }
 
 PerfMgmt::Monitor::Nodes::Node::Processes::Processes()
+    :
+    process(this, {"process_id"})
 {
 
-    yang_name = "processes"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "processes"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Nodes::Node::Processes::~Processes()
@@ -8695,7 +8841,8 @@ PerfMgmt::Monitor::Nodes::Node::Processes::~Processes()
 
 bool PerfMgmt::Monitor::Nodes::Node::Processes::has_data() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_data())
             return true;
@@ -8705,7 +8852,7 @@ bool PerfMgmt::Monitor::Nodes::Node::Processes::has_data() const
 
 bool PerfMgmt::Monitor::Nodes::Node::Processes::has_operation() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_operation())
             return true;
@@ -8735,7 +8882,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::Processes::get_child_by_
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Nodes::Node::Processes::Process>();
         c->parent = this;
-        process.push_back(c);
+        process.append(c);
         return c;
     }
 
@@ -8747,7 +8894,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process)
+    for (auto c : process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8776,12 +8923,12 @@ bool PerfMgmt::Monitor::Nodes::Node::Processes::has_leaf_or_child_of_name(const 
 PerfMgmt::Monitor::Nodes::Node::Processes::Process::Process()
     :
     process_id{YType::int32, "process-id"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "process"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "process"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Nodes::Node::Processes::Process::~Process()
@@ -8790,6 +8937,7 @@ PerfMgmt::Monitor::Nodes::Node::Processes::Process::~Process()
 
 bool PerfMgmt::Monitor::Nodes::Node::Processes::Process::has_data() const
 {
+    if (is_presence_container) return true;
     return process_id.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -8804,7 +8952,8 @@ bool PerfMgmt::Monitor::Nodes::Node::Processes::Process::has_operation() const
 std::string PerfMgmt::Monitor::Nodes::Node::Processes::Process::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "process" <<"[process-id='" <<process_id <<"']";
+    path_buffer << "process";
+    ADD_KEY_TOKEN(process_id, "process-id");
     return path_buffer.str();
 }
 
@@ -8870,9 +9019,11 @@ bool PerfMgmt::Monitor::Nodes::Node::Processes::Process::has_leaf_or_child_of_na
 }
 
 PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::~Samples()
@@ -8881,7 +9032,8 @@ PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::~Samples()
 
 bool PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -8891,7 +9043,7 @@ bool PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::has_data() con
 
 bool PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -8921,7 +9073,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samp
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -8933,7 +9085,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8968,7 +9120,7 @@ PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::Sample()
     no_threads{YType::uint32, "no-threads"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::~Sample()
@@ -8977,6 +9129,7 @@ PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::~Sample()
 
 bool PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| peak_memory.is_set
@@ -8997,7 +9150,8 @@ bool PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::has_op
 std::string PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -9093,9 +9247,11 @@ bool PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::has_le
 }
 
 PerfMgmt::Monitor::Nodes::Node::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Nodes::Node::Samples::~Samples()
@@ -9104,7 +9260,8 @@ PerfMgmt::Monitor::Nodes::Node::Samples::~Samples()
 
 bool PerfMgmt::Monitor::Nodes::Node::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -9114,7 +9271,7 @@ bool PerfMgmt::Monitor::Nodes::Node::Samples::has_data() const
 
 bool PerfMgmt::Monitor::Nodes::Node::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -9144,7 +9301,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::Samples::get_child_by_na
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Nodes::Node::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -9156,7 +9313,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9190,7 +9347,7 @@ PerfMgmt::Monitor::Nodes::Node::Samples::Sample::Sample()
     peak_memory{YType::uint32, "peak-memory"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Nodes::Node::Samples::Sample::~Sample()
@@ -9199,6 +9356,7 @@ PerfMgmt::Monitor::Nodes::Node::Samples::Sample::~Sample()
 
 bool PerfMgmt::Monitor::Nodes::Node::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| curr_memory.is_set
@@ -9217,7 +9375,8 @@ bool PerfMgmt::Monitor::Nodes::Node::Samples::Sample::has_operation() const
 std::string PerfMgmt::Monitor::Nodes::Node::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -9307,7 +9466,7 @@ PerfMgmt::Monitor::Bgp::Bgp()
 {
     bgp_neighbors->parent = this;
 
-    yang_name = "bgp"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Bgp::~Bgp()
@@ -9316,6 +9475,7 @@ PerfMgmt::Monitor::Bgp::~Bgp()
 
 bool PerfMgmt::Monitor::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return (bgp_neighbors !=  nullptr && bgp_neighbors->has_data());
 }
 
@@ -9390,9 +9550,11 @@ bool PerfMgmt::Monitor::Bgp::has_leaf_or_child_of_name(const std::string & name)
 }
 
 PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbors()
+    :
+    bgp_neighbor(this, {"ip_address"})
 {
 
-    yang_name = "bgp-neighbors"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-neighbors"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Bgp::BgpNeighbors::~BgpNeighbors()
@@ -9401,7 +9563,8 @@ PerfMgmt::Monitor::Bgp::BgpNeighbors::~BgpNeighbors()
 
 bool PerfMgmt::Monitor::Bgp::BgpNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<bgp_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_neighbor.len(); index++)
     {
         if(bgp_neighbor[index]->has_data())
             return true;
@@ -9411,7 +9574,7 @@ bool PerfMgmt::Monitor::Bgp::BgpNeighbors::has_data() const
 
 bool PerfMgmt::Monitor::Bgp::BgpNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_neighbor.size(); index++)
+    for (std::size_t index=0; index<bgp_neighbor.len(); index++)
     {
         if(bgp_neighbor[index]->has_operation())
             return true;
@@ -9448,7 +9611,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Bgp::BgpNeighbors::get_child_by_name(
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor>();
         c->parent = this;
-        bgp_neighbor.push_back(c);
+        bgp_neighbor.append(c);
         return c;
     }
 
@@ -9460,7 +9623,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Bgp::BgpNeighb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_neighbor)
+    for (auto c : bgp_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9489,12 +9652,12 @@ bool PerfMgmt::Monitor::Bgp::BgpNeighbors::has_leaf_or_child_of_name(const std::
 PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::BgpNeighbor()
     :
     ip_address{YType::str, "ip-address"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "bgp-neighbor"; yang_parent_name = "bgp-neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-neighbor"; yang_parent_name = "bgp-neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::~BgpNeighbor()
@@ -9503,6 +9666,7 @@ PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::~BgpNeighbor()
 
 bool PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -9524,7 +9688,8 @@ std::string PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::get_absolute_path
 std::string PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-neighbor" <<"[ip-address='" <<ip_address <<"']";
+    path_buffer << "bgp-neighbor";
+    ADD_KEY_TOKEN(ip_address, "ip-address");
     return path_buffer.str();
 }
 
@@ -9590,9 +9755,11 @@ bool PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::has_leaf_or_child_of_nam
 }
 
 PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "bgp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "bgp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::~Samples()
@@ -9601,7 +9768,8 @@ PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::~Samples()
 
 bool PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -9611,7 +9779,7 @@ bool PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::has_data() cons
 
 bool PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -9641,7 +9809,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Sampl
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -9653,7 +9821,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Bgp::BgpNeighb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9693,7 +9861,7 @@ PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::Sample()
     errors_sent{YType::uint32, "errors-sent"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::~Sample()
@@ -9702,6 +9870,7 @@ PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::~Sample()
 
 bool PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| input_messages.is_set
@@ -9732,7 +9901,8 @@ bool PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::has_ope
 std::string PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -9885,14 +10055,14 @@ bool PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::has_lea
 PerfMgmt::Monitor::Interface::Interface()
     :
     generic_counter_interfaces(std::make_shared<PerfMgmt::Monitor::Interface::GenericCounterInterfaces>())
-	,basic_counter_interfaces(std::make_shared<PerfMgmt::Monitor::Interface::BasicCounterInterfaces>())
-	,data_rate_interfaces(std::make_shared<PerfMgmt::Monitor::Interface::DataRateInterfaces>())
+    , basic_counter_interfaces(std::make_shared<PerfMgmt::Monitor::Interface::BasicCounterInterfaces>())
+    , data_rate_interfaces(std::make_shared<PerfMgmt::Monitor::Interface::DataRateInterfaces>())
 {
     generic_counter_interfaces->parent = this;
     basic_counter_interfaces->parent = this;
     data_rate_interfaces->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Interface::~Interface()
@@ -9901,6 +10071,7 @@ PerfMgmt::Monitor::Interface::~Interface()
 
 bool PerfMgmt::Monitor::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return (generic_counter_interfaces !=  nullptr && generic_counter_interfaces->has_data())
 	|| (basic_counter_interfaces !=  nullptr && basic_counter_interfaces->has_data())
 	|| (data_rate_interfaces !=  nullptr && data_rate_interfaces->has_data());
@@ -10007,9 +10178,11 @@ bool PerfMgmt::Monitor::Interface::has_leaf_or_child_of_name(const std::string &
 }
 
 PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterfaces()
+    :
+    generic_counter_interface(this, {"interface_name"})
 {
 
-    yang_name = "generic-counter-interfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-counter-interfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Interface::GenericCounterInterfaces::~GenericCounterInterfaces()
@@ -10018,7 +10191,8 @@ PerfMgmt::Monitor::Interface::GenericCounterInterfaces::~GenericCounterInterface
 
 bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<generic_counter_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<generic_counter_interface.len(); index++)
     {
         if(generic_counter_interface[index]->has_data())
             return true;
@@ -10028,7 +10202,7 @@ bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::has_data() const
 
 bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<generic_counter_interface.size(); index++)
+    for (std::size_t index=0; index<generic_counter_interface.len(); index++)
     {
         if(generic_counter_interface[index]->has_operation())
             return true;
@@ -10065,7 +10239,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface>();
         c->parent = this;
-        generic_counter_interface.push_back(c);
+        generic_counter_interface.append(c);
         return c;
     }
 
@@ -10077,7 +10251,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::Gen
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : generic_counter_interface)
+    for (auto c : generic_counter_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10106,12 +10280,12 @@ bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::has_leaf_or_child_o
 PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::GenericCounterInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "generic-counter-interface"; yang_parent_name = "generic-counter-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-counter-interface"; yang_parent_name = "generic-counter-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::~GenericCounterInterface()
@@ -10120,6 +10294,7 @@ PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface:
 
 bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -10141,7 +10316,8 @@ std::string PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCount
 std::string PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "generic-counter-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "generic-counter-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -10207,9 +10383,11 @@ bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInter
 }
 
 PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "generic-counter-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "generic-counter-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::~Samples()
@@ -10218,7 +10396,8 @@ PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface:
 
 bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -10228,7 +10407,7 @@ bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInter
 
 bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -10258,7 +10437,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -10270,7 +10449,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::Gen
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10322,7 +10501,7 @@ PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface:
     input_frame{YType::uint32, "input-frame"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::~Sample()
@@ -10331,6 +10510,7 @@ PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface:
 
 bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| in_packets.is_set
@@ -10385,7 +10565,8 @@ bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInter
 std::string PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -10668,9 +10849,11 @@ bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInter
 }
 
 PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterfaces()
+    :
+    basic_counter_interface(this, {"interface_name"})
 {
 
-    yang_name = "basic-counter-interfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "basic-counter-interfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Interface::BasicCounterInterfaces::~BasicCounterInterfaces()
@@ -10679,7 +10862,8 @@ PerfMgmt::Monitor::Interface::BasicCounterInterfaces::~BasicCounterInterfaces()
 
 bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<basic_counter_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<basic_counter_interface.len(); index++)
     {
         if(basic_counter_interface[index]->has_data())
             return true;
@@ -10689,7 +10873,7 @@ bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::has_data() const
 
 bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<basic_counter_interface.size(); index++)
+    for (std::size_t index=0; index<basic_counter_interface.len(); index++)
     {
         if(basic_counter_interface[index]->has_operation())
             return true;
@@ -10726,7 +10910,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::ge
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface>();
         c->parent = this;
-        basic_counter_interface.push_back(c);
+        basic_counter_interface.append(c);
         return c;
     }
 
@@ -10738,7 +10922,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::Bas
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : basic_counter_interface)
+    for (auto c : basic_counter_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10767,12 +10951,12 @@ bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::has_leaf_or_child_of_
 PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::BasicCounterInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "basic-counter-interface"; yang_parent_name = "basic-counter-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "basic-counter-interface"; yang_parent_name = "basic-counter-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::~BasicCounterInterface()
@@ -10781,6 +10965,7 @@ PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::~Ba
 
 bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -10802,7 +10987,8 @@ std::string PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterIn
 std::string PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "basic-counter-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "basic-counter-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -10868,9 +11054,11 @@ bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface
 }
 
 PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "basic-counter-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "basic-counter-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::~Samples()
@@ -10879,7 +11067,8 @@ PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Sam
 
 bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -10889,7 +11078,7 @@ bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface
 
 bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -10919,7 +11108,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::Ba
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -10931,7 +11120,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::Bas
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10973,7 +11162,7 @@ PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Sam
     output_total_errors{YType::uint64, "output-total-errors"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::~Sample()
@@ -10982,6 +11171,7 @@ PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Sam
 
 bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| in_packets.is_set
@@ -11016,7 +11206,8 @@ bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface
 std::string PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 
@@ -11189,9 +11380,11 @@ bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface
 }
 
 PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterfaces()
+    :
+    data_rate_interface(this, {"interface_name"})
 {
 
-    yang_name = "data-rate-interfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-rate-interfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Interface::DataRateInterfaces::~DataRateInterfaces()
@@ -11200,7 +11393,8 @@ PerfMgmt::Monitor::Interface::DataRateInterfaces::~DataRateInterfaces()
 
 bool PerfMgmt::Monitor::Interface::DataRateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<data_rate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_rate_interface.len(); index++)
     {
         if(data_rate_interface[index]->has_data())
             return true;
@@ -11210,7 +11404,7 @@ bool PerfMgmt::Monitor::Interface::DataRateInterfaces::has_data() const
 
 bool PerfMgmt::Monitor::Interface::DataRateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<data_rate_interface.size(); index++)
+    for (std::size_t index=0; index<data_rate_interface.len(); index++)
     {
         if(data_rate_interface[index]->has_operation())
             return true;
@@ -11247,7 +11441,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::DataRateInterfaces::get_ch
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface>();
         c->parent = this;
-        data_rate_interface.push_back(c);
+        data_rate_interface.append(c);
         return c;
     }
 
@@ -11259,7 +11453,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::Dat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_rate_interface)
+    for (auto c : data_rate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11288,12 +11482,12 @@ bool PerfMgmt::Monitor::Interface::DataRateInterfaces::has_leaf_or_child_of_name
 PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::DataRateInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     samples(std::make_shared<PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "data-rate-interface"; yang_parent_name = "data-rate-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-rate-interface"; yang_parent_name = "data-rate-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::~DataRateInterface()
@@ -11302,6 +11496,7 @@ PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::~DataRateIn
 
 bool PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -11323,7 +11518,8 @@ std::string PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface:
 std::string PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data-rate-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "data-rate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -11389,9 +11585,11 @@ bool PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::has_le
 }
 
 PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Samples()
+    :
+    sample(this, {"sample_id"})
 {
 
-    yang_name = "samples"; yang_parent_name = "data-rate-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "data-rate-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::~Samples()
@@ -11400,7 +11598,8 @@ PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::~S
 
 bool PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -11410,7 +11609,7 @@ bool PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Sample
 
 bool PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -11440,7 +11639,7 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRa
     {
         auto c = std::make_shared<PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -11452,7 +11651,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::Dat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11493,7 +11692,7 @@ PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sa
     bandwidth{YType::uint32, "bandwidth"}
 {
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::~Sample()
@@ -11502,6 +11701,7 @@ PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sa
 
 bool PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_id.is_set
 	|| time_stamp.is_set
 	|| input_data_rate.is_set
@@ -11534,7 +11734,8 @@ bool PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Sample
 std::string PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-id='" <<sample_id <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_id, "sample-id");
     return path_buffer.str();
 }
 

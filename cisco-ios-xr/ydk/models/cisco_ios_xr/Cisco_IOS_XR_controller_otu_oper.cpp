@@ -17,7 +17,7 @@ Otu::Otu()
 {
     controllers->parent = this;
 
-    yang_name = "otu"; yang_parent_name = "Cisco-IOS-XR-controller-otu-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "otu"; yang_parent_name = "Cisco-IOS-XR-controller-otu-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Otu::~Otu()
@@ -26,6 +26,7 @@ Otu::~Otu()
 
 bool Otu::has_data() const
 {
+    if (is_presence_container) return true;
     return (controllers !=  nullptr && controllers->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Otu::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Otu::Controllers::Controllers()
+    :
+    controller(this, {"controller_name"})
 {
 
-    yang_name = "controllers"; yang_parent_name = "otu"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controllers"; yang_parent_name = "otu"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Otu::Controllers::~Controllers()
@@ -129,7 +132,8 @@ Otu::Controllers::~Controllers()
 
 bool Otu::Controllers::has_data() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Otu::Controllers::has_data() const
 
 bool Otu::Controllers::has_operation() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Otu::Controllers::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Otu::Controllers::Controller>();
         c->parent = this;
-        controller.push_back(c);
+        controller.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : controller)
+    for (auto c : controller.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,14 +221,14 @@ bool Otu::Controllers::has_leaf_or_child_of_name(const std::string & name) const
 Otu::Controllers::Controller::Controller()
     :
     controller_name{YType::str, "controller-name"}
-    	,
+        ,
     prbs(std::make_shared<Otu::Controllers::Controller::Prbs>())
-	,info(std::make_shared<Otu::Controllers::Controller::Info>())
+    , info(std::make_shared<Otu::Controllers::Controller::Info>())
 {
     prbs->parent = this;
     info->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Otu::Controllers::Controller::~Controller()
@@ -233,6 +237,7 @@ Otu::Controllers::Controller::~Controller()
 
 bool Otu::Controllers::Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return controller_name.is_set
 	|| (prbs !=  nullptr && prbs->has_data())
 	|| (info !=  nullptr && info->has_data());
@@ -256,7 +261,8 @@ std::string Otu::Controllers::Controller::get_absolute_path() const
 std::string Otu::Controllers::Controller::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "controller" <<"[controller-name='" <<controller_name <<"']";
+    path_buffer << "controller";
+    ADD_KEY_TOKEN(controller_name, "controller-name");
     return path_buffer.str();
 }
 
@@ -343,7 +349,7 @@ Otu::Controllers::Controller::Prbs::Prbs()
     otu_prbs_status{YType::enumeration, "otu-prbs-status"}
 {
 
-    yang_name = "prbs"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prbs"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Prbs::~Prbs()
@@ -352,6 +358,7 @@ Otu::Controllers::Controller::Prbs::~Prbs()
 
 bool Otu::Controllers::Controller::Prbs::has_data() const
 {
+    if (is_presence_container) return true;
     return otu_prbs_test.is_set
 	|| otu_prbs_mode.is_set
 	|| otu_prbs_pattern.is_set
@@ -482,14 +489,14 @@ Otu::Controllers::Controller::Info::Info()
     gmpls_tvm_id{YType::uint8, "gmpls-tvm-id"},
     auto_tti_flag{YType::boolean, "auto-tti-flag"},
     description{YType::str, "description"}
-    	,
+        ,
     local(std::make_shared<Otu::Controllers::Controller::Info::Local>())
-	,remote(std::make_shared<Otu::Controllers::Controller::Info::Remote>())
-	,tti_mode(std::make_shared<Otu::Controllers::Controller::Info::TtiMode>())
-	,network_srlg(std::make_shared<Otu::Controllers::Controller::Info::NetworkSrlg>())
-	,otu_alarm_info(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo>())
-	,proactive(std::make_shared<Otu::Controllers::Controller::Info::Proactive>())
-	,otu_fec_satistics(std::make_shared<Otu::Controllers::Controller::Info::OtuFecSatistics>())
+    , remote(std::make_shared<Otu::Controllers::Controller::Info::Remote>())
+    , tti_mode(std::make_shared<Otu::Controllers::Controller::Info::TtiMode>())
+    , network_srlg(std::make_shared<Otu::Controllers::Controller::Info::NetworkSrlg>())
+    , otu_alarm_info(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo>())
+    , proactive(std::make_shared<Otu::Controllers::Controller::Info::Proactive>())
+    , otu_fec_satistics(std::make_shared<Otu::Controllers::Controller::Info::OtuFecSatistics>())
 {
     local->parent = this;
     remote->parent = this;
@@ -499,7 +506,7 @@ Otu::Controllers::Controller::Info::Info()
     proactive->parent = this;
     otu_fec_satistics->parent = this;
 
-    yang_name = "info"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "info"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::~Info()
@@ -508,6 +515,7 @@ Otu::Controllers::Controller::Info::~Info()
 
 bool Otu::Controllers::Controller::Info::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| name.is_set
 	|| sf.is_set
@@ -1014,7 +1022,7 @@ Otu::Controllers::Controller::Info::Local::Local()
     if_index{YType::uint32, "if-index"}
 {
 
-    yang_name = "local"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::Local::~Local()
@@ -1023,6 +1031,7 @@ Otu::Controllers::Controller::Info::Local::~Local()
 
 bool Otu::Controllers::Controller::Info::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set
 	|| if_index.is_set;
 }
@@ -1105,7 +1114,7 @@ Otu::Controllers::Controller::Info::Remote::Remote()
     if_index{YType::uint32, "if-index"}
 {
 
-    yang_name = "remote"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::Remote::~Remote()
@@ -1114,6 +1123,7 @@ Otu::Controllers::Controller::Info::Remote::~Remote()
 
 bool Otu::Controllers::Controller::Info::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set
 	|| if_index.is_set;
 }
@@ -1198,16 +1208,16 @@ Otu::Controllers::Controller::Info::TtiMode::TtiMode()
     remote_interface{YType::str, "remote-interface"},
     remote_host_name{YType::str, "remote-host-name"},
     remote_ip_addr{YType::str, "remote-ip-addr"}
-    	,
+        ,
     tx(std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Tx>())
-	,exp(std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Exp>())
-	,rec(std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Rec>())
+    , exp(std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Exp>())
+    , rec(std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Rec>())
 {
     tx->parent = this;
     exp->parent = this;
     rec->parent = this;
 
-    yang_name = "tti-mode"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tti-mode"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::TtiMode::~TtiMode()
@@ -1216,6 +1226,7 @@ Otu::Controllers::Controller::Info::TtiMode::~TtiMode()
 
 bool Otu::Controllers::Controller::Info::TtiMode::has_data() const
 {
+    if (is_presence_container) return true;
     return g709tti_sent_mode.is_set
 	|| g709tti_exp_mode.is_set
 	|| g709tti_rec_mode.is_set
@@ -1394,13 +1405,14 @@ bool Otu::Controllers::Controller::Info::TtiMode::has_leaf_or_child_of_name(cons
 
 Otu::Controllers::Controller::Info::TtiMode::Tx::Tx()
     :
-    full_tti_ascii_string{YType::str, "full-tti-ascii-string"},
-    sapi{YType::uint8, "sapi"},
-    dapi{YType::uint8, "dapi"},
-    operator_specific{YType::uint8, "operator-specific"}
+    full_tti_ascii_string{YType::str, "full-tti-ascii-string"}
+        ,
+    sapi(this, {})
+    , dapi(this, {})
+    , operator_specific(this, {})
 {
 
-    yang_name = "tx"; yang_parent_name = "tti-mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx"; yang_parent_name = "tti-mode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::TtiMode::Tx::~Tx()
@@ -1409,19 +1421,20 @@ Otu::Controllers::Controller::Info::TtiMode::Tx::~Tx()
 
 bool Otu::Controllers::Controller::Info::TtiMode::Tx::has_data() const
 {
-    for (auto const & leaf : sapi.getYLeafs())
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sapi.len(); index++)
     {
-        if(leaf.is_set)
+        if(sapi[index]->has_data())
             return true;
     }
-    for (auto const & leaf : dapi.getYLeafs())
+    for (std::size_t index=0; index<dapi.len(); index++)
     {
-        if(leaf.is_set)
+        if(dapi[index]->has_data())
             return true;
     }
-    for (auto const & leaf : operator_specific.getYLeafs())
+    for (std::size_t index=0; index<operator_specific.len(); index++)
     {
-        if(leaf.is_set)
+        if(operator_specific[index]->has_data())
             return true;
     }
     return full_tti_ascii_string.is_set;
@@ -1429,26 +1442,23 @@ bool Otu::Controllers::Controller::Info::TtiMode::Tx::has_data() const
 
 bool Otu::Controllers::Controller::Info::TtiMode::Tx::has_operation() const
 {
-    for (auto const & leaf : sapi.getYLeafs())
+    for (std::size_t index=0; index<sapi.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(sapi[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : dapi.getYLeafs())
+    for (std::size_t index=0; index<dapi.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(dapi[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : operator_specific.getYLeafs())
+    for (std::size_t index=0; index<operator_specific.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(operator_specific[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(full_tti_ascii_string.yfilter)
-	|| ydk::is_set(sapi.yfilter)
-	|| ydk::is_set(dapi.yfilter)
-	|| ydk::is_set(operator_specific.yfilter);
+	|| ydk::is_set(full_tti_ascii_string.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::TtiMode::Tx::get_segment_path() const
@@ -1464,18 +1474,36 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
     if (full_tti_ascii_string.is_set || is_set(full_tti_ascii_string.yfilter)) leaf_name_data.push_back(full_tti_ascii_string.get_name_leafdata());
 
-    auto sapi_name_datas = sapi.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), sapi_name_datas.begin(), sapi_name_datas.end());
-    auto dapi_name_datas = dapi.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), dapi_name_datas.begin(), dapi_name_datas.end());
-    auto operator_specific_name_datas = operator_specific.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), operator_specific_name_datas.begin(), operator_specific_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "sapi")
+    {
+        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi>();
+        c->parent = this;
+        sapi.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "dapi")
+    {
+        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi>();
+        c->parent = this;
+        dapi.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "operator-specific")
+    {
+        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific>();
+        c->parent = this;
+        operator_specific.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -1483,6 +1511,33 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : sapi.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : dapi.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : operator_specific.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -1494,18 +1549,6 @@ void Otu::Controllers::Controller::Info::TtiMode::Tx::set_value(const std::strin
         full_tti_ascii_string.value_namespace = name_space;
         full_tti_ascii_string.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sapi")
-    {
-        sapi.append(value);
-    }
-    if(value_path == "dapi")
-    {
-        dapi.append(value);
-    }
-    if(value_path == "operator-specific")
-    {
-        operator_specific.append(value);
-    }
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Tx::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1514,36 +1557,259 @@ void Otu::Controllers::Controller::Info::TtiMode::Tx::set_filter(const std::stri
     {
         full_tti_ascii_string.yfilter = yfilter;
     }
-    if(value_path == "sapi")
-    {
-        sapi.yfilter = yfilter;
-    }
-    if(value_path == "dapi")
-    {
-        dapi.yfilter = yfilter;
-    }
-    if(value_path == "operator-specific")
-    {
-        operator_specific.yfilter = yfilter;
-    }
 }
 
 bool Otu::Controllers::Controller::Info::TtiMode::Tx::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "full-tti-ascii-string" || name == "sapi" || name == "dapi" || name == "operator-specific")
+    if(name == "sapi" || name == "dapi" || name == "operator-specific" || name == "full-tti-ascii-string")
+        return true;
+    return false;
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::Sapi()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "sapi"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::~Sapi()
+{
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sapi";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::Dapi()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "dapi"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::~Dapi()
+{
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dapi";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::OperatorSpecific()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "operator-specific"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::~OperatorSpecific()
+{
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "operator-specific";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
 
 Otu::Controllers::Controller::Info::TtiMode::Exp::Exp()
     :
-    full_tti_ascii_string{YType::str, "full-tti-ascii-string"},
-    sapi{YType::uint8, "sapi"},
-    dapi{YType::uint8, "dapi"},
-    operator_specific{YType::uint8, "operator-specific"}
+    full_tti_ascii_string{YType::str, "full-tti-ascii-string"}
+        ,
+    sapi(this, {})
+    , dapi(this, {})
+    , operator_specific(this, {})
 {
 
-    yang_name = "exp"; yang_parent_name = "tti-mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exp"; yang_parent_name = "tti-mode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::TtiMode::Exp::~Exp()
@@ -1552,19 +1818,20 @@ Otu::Controllers::Controller::Info::TtiMode::Exp::~Exp()
 
 bool Otu::Controllers::Controller::Info::TtiMode::Exp::has_data() const
 {
-    for (auto const & leaf : sapi.getYLeafs())
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sapi.len(); index++)
     {
-        if(leaf.is_set)
+        if(sapi[index]->has_data())
             return true;
     }
-    for (auto const & leaf : dapi.getYLeafs())
+    for (std::size_t index=0; index<dapi.len(); index++)
     {
-        if(leaf.is_set)
+        if(dapi[index]->has_data())
             return true;
     }
-    for (auto const & leaf : operator_specific.getYLeafs())
+    for (std::size_t index=0; index<operator_specific.len(); index++)
     {
-        if(leaf.is_set)
+        if(operator_specific[index]->has_data())
             return true;
     }
     return full_tti_ascii_string.is_set;
@@ -1572,26 +1839,23 @@ bool Otu::Controllers::Controller::Info::TtiMode::Exp::has_data() const
 
 bool Otu::Controllers::Controller::Info::TtiMode::Exp::has_operation() const
 {
-    for (auto const & leaf : sapi.getYLeafs())
+    for (std::size_t index=0; index<sapi.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(sapi[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : dapi.getYLeafs())
+    for (std::size_t index=0; index<dapi.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(dapi[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : operator_specific.getYLeafs())
+    for (std::size_t index=0; index<operator_specific.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(operator_specific[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(full_tti_ascii_string.yfilter)
-	|| ydk::is_set(sapi.yfilter)
-	|| ydk::is_set(dapi.yfilter)
-	|| ydk::is_set(operator_specific.yfilter);
+	|| ydk::is_set(full_tti_ascii_string.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::TtiMode::Exp::get_segment_path() const
@@ -1607,18 +1871,36 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
     if (full_tti_ascii_string.is_set || is_set(full_tti_ascii_string.yfilter)) leaf_name_data.push_back(full_tti_ascii_string.get_name_leafdata());
 
-    auto sapi_name_datas = sapi.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), sapi_name_datas.begin(), sapi_name_datas.end());
-    auto dapi_name_datas = dapi.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), dapi_name_datas.begin(), dapi_name_datas.end());
-    auto operator_specific_name_datas = operator_specific.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), operator_specific_name_datas.begin(), operator_specific_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "sapi")
+    {
+        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi>();
+        c->parent = this;
+        sapi.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "dapi")
+    {
+        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi>();
+        c->parent = this;
+        dapi.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "operator-specific")
+    {
+        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific>();
+        c->parent = this;
+        operator_specific.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -1626,6 +1908,33 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : sapi.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : dapi.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : operator_specific.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -1637,18 +1946,6 @@ void Otu::Controllers::Controller::Info::TtiMode::Exp::set_value(const std::stri
         full_tti_ascii_string.value_namespace = name_space;
         full_tti_ascii_string.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sapi")
-    {
-        sapi.append(value);
-    }
-    if(value_path == "dapi")
-    {
-        dapi.append(value);
-    }
-    if(value_path == "operator-specific")
-    {
-        operator_specific.append(value);
-    }
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Exp::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1657,36 +1954,259 @@ void Otu::Controllers::Controller::Info::TtiMode::Exp::set_filter(const std::str
     {
         full_tti_ascii_string.yfilter = yfilter;
     }
-    if(value_path == "sapi")
-    {
-        sapi.yfilter = yfilter;
-    }
-    if(value_path == "dapi")
-    {
-        dapi.yfilter = yfilter;
-    }
-    if(value_path == "operator-specific")
-    {
-        operator_specific.yfilter = yfilter;
-    }
 }
 
 bool Otu::Controllers::Controller::Info::TtiMode::Exp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "full-tti-ascii-string" || name == "sapi" || name == "dapi" || name == "operator-specific")
+    if(name == "sapi" || name == "dapi" || name == "operator-specific" || name == "full-tti-ascii-string")
+        return true;
+    return false;
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::Sapi()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "sapi"; yang_parent_name = "exp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::~Sapi()
+{
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sapi";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::Dapi()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "dapi"; yang_parent_name = "exp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::~Dapi()
+{
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dapi";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::OperatorSpecific()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "operator-specific"; yang_parent_name = "exp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::~OperatorSpecific()
+{
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "operator-specific";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
 
 Otu::Controllers::Controller::Info::TtiMode::Rec::Rec()
     :
-    full_tti_ascii_string{YType::str, "full-tti-ascii-string"},
-    sapi{YType::uint8, "sapi"},
-    dapi{YType::uint8, "dapi"},
-    operator_specific{YType::uint8, "operator-specific"}
+    full_tti_ascii_string{YType::str, "full-tti-ascii-string"}
+        ,
+    sapi(this, {})
+    , dapi(this, {})
+    , operator_specific(this, {})
 {
 
-    yang_name = "rec"; yang_parent_name = "tti-mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rec"; yang_parent_name = "tti-mode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::TtiMode::Rec::~Rec()
@@ -1695,19 +2215,20 @@ Otu::Controllers::Controller::Info::TtiMode::Rec::~Rec()
 
 bool Otu::Controllers::Controller::Info::TtiMode::Rec::has_data() const
 {
-    for (auto const & leaf : sapi.getYLeafs())
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sapi.len(); index++)
     {
-        if(leaf.is_set)
+        if(sapi[index]->has_data())
             return true;
     }
-    for (auto const & leaf : dapi.getYLeafs())
+    for (std::size_t index=0; index<dapi.len(); index++)
     {
-        if(leaf.is_set)
+        if(dapi[index]->has_data())
             return true;
     }
-    for (auto const & leaf : operator_specific.getYLeafs())
+    for (std::size_t index=0; index<operator_specific.len(); index++)
     {
-        if(leaf.is_set)
+        if(operator_specific[index]->has_data())
             return true;
     }
     return full_tti_ascii_string.is_set;
@@ -1715,26 +2236,23 @@ bool Otu::Controllers::Controller::Info::TtiMode::Rec::has_data() const
 
 bool Otu::Controllers::Controller::Info::TtiMode::Rec::has_operation() const
 {
-    for (auto const & leaf : sapi.getYLeafs())
+    for (std::size_t index=0; index<sapi.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(sapi[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : dapi.getYLeafs())
+    for (std::size_t index=0; index<dapi.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(dapi[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : operator_specific.getYLeafs())
+    for (std::size_t index=0; index<operator_specific.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(operator_specific[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(full_tti_ascii_string.yfilter)
-	|| ydk::is_set(sapi.yfilter)
-	|| ydk::is_set(dapi.yfilter)
-	|| ydk::is_set(operator_specific.yfilter);
+	|| ydk::is_set(full_tti_ascii_string.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::TtiMode::Rec::get_segment_path() const
@@ -1750,18 +2268,36 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
     if (full_tti_ascii_string.is_set || is_set(full_tti_ascii_string.yfilter)) leaf_name_data.push_back(full_tti_ascii_string.get_name_leafdata());
 
-    auto sapi_name_datas = sapi.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), sapi_name_datas.begin(), sapi_name_datas.end());
-    auto dapi_name_datas = dapi.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), dapi_name_datas.begin(), dapi_name_datas.end());
-    auto operator_specific_name_datas = operator_specific.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), operator_specific_name_datas.begin(), operator_specific_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "sapi")
+    {
+        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi>();
+        c->parent = this;
+        sapi.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "dapi")
+    {
+        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi>();
+        c->parent = this;
+        dapi.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "operator-specific")
+    {
+        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific>();
+        c->parent = this;
+        operator_specific.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -1769,6 +2305,33 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : sapi.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : dapi.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : operator_specific.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -1780,18 +2343,6 @@ void Otu::Controllers::Controller::Info::TtiMode::Rec::set_value(const std::stri
         full_tti_ascii_string.value_namespace = name_space;
         full_tti_ascii_string.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sapi")
-    {
-        sapi.append(value);
-    }
-    if(value_path == "dapi")
-    {
-        dapi.append(value);
-    }
-    if(value_path == "operator-specific")
-    {
-        operator_specific.append(value);
-    }
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Rec::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1800,31 +2351,255 @@ void Otu::Controllers::Controller::Info::TtiMode::Rec::set_filter(const std::str
     {
         full_tti_ascii_string.yfilter = yfilter;
     }
-    if(value_path == "sapi")
-    {
-        sapi.yfilter = yfilter;
-    }
-    if(value_path == "dapi")
-    {
-        dapi.yfilter = yfilter;
-    }
-    if(value_path == "operator-specific")
-    {
-        operator_specific.yfilter = yfilter;
-    }
 }
 
 bool Otu::Controllers::Controller::Info::TtiMode::Rec::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "full-tti-ascii-string" || name == "sapi" || name == "dapi" || name == "operator-specific")
+    if(name == "sapi" || name == "dapi" || name == "operator-specific" || name == "full-tti-ascii-string")
+        return true;
+    return false;
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::Sapi()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "sapi"; yang_parent_name = "rec"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::~Sapi()
+{
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sapi";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::Dapi()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "dapi"; yang_parent_name = "rec"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::~Dapi()
+{
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dapi";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::OperatorSpecific()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "operator-specific"; yang_parent_name = "rec"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::~OperatorSpecific()
+{
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "operator-specific";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
 
 Otu::Controllers::Controller::Info::NetworkSrlg::NetworkSrlg()
+    :
+    srlg_info(this, {})
 {
 
-    yang_name = "network-srlg"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-srlg"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::NetworkSrlg::~NetworkSrlg()
@@ -1833,7 +2608,8 @@ Otu::Controllers::Controller::Info::NetworkSrlg::~NetworkSrlg()
 
 bool Otu::Controllers::Controller::Info::NetworkSrlg::has_data() const
 {
-    for (std::size_t index=0; index<srlg_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<srlg_info.len(); index++)
     {
         if(srlg_info[index]->has_data())
             return true;
@@ -1843,7 +2619,7 @@ bool Otu::Controllers::Controller::Info::NetworkSrlg::has_data() const
 
 bool Otu::Controllers::Controller::Info::NetworkSrlg::has_operation() const
 {
-    for (std::size_t index=0; index<srlg_info.size(); index++)
+    for (std::size_t index=0; index<srlg_info.len(); index++)
     {
         if(srlg_info[index]->has_operation())
             return true;
@@ -1873,7 +2649,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::NetworkSrlg::get_chi
     {
         auto c = std::make_shared<Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo>();
         c->parent = this;
-        srlg_info.push_back(c);
+        srlg_info.append(c);
         return c;
     }
 
@@ -1885,7 +2661,7 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : srlg_info)
+    for (auto c : srlg_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1913,11 +2689,12 @@ bool Otu::Controllers::Controller::Info::NetworkSrlg::has_leaf_or_child_of_name(
 
 Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::SrlgInfo()
     :
-    set_id{YType::uint32, "set-id"},
-    srlg{YType::uint32, "srlg"}
+    set_id{YType::uint32, "set-id"}
+        ,
+    srlg(this, {})
 {
 
-    yang_name = "srlg-info"; yang_parent_name = "network-srlg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srlg-info"; yang_parent_name = "network-srlg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::~SrlgInfo()
@@ -1926,9 +2703,10 @@ Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::~SrlgInfo()
 
 bool Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::has_data() const
 {
-    for (auto const & leaf : srlg.getYLeafs())
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<srlg.len(); index++)
     {
-        if(leaf.is_set)
+        if(srlg[index]->has_data())
             return true;
     }
     return set_id.is_set;
@@ -1936,14 +2714,13 @@ bool Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::has_data() const
 
 bool Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::has_operation() const
 {
-    for (auto const & leaf : srlg.getYLeafs())
+    for (std::size_t index=0; index<srlg.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(srlg[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(set_id.yfilter)
-	|| ydk::is_set(srlg.yfilter);
+	|| ydk::is_set(set_id.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_segment_path() const
@@ -1959,14 +2736,20 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
     if (set_id.is_set || is_set(set_id.yfilter)) leaf_name_data.push_back(set_id.get_name_leafdata());
 
-    auto srlg_name_datas = srlg.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), srlg_name_datas.begin(), srlg_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "srlg")
+    {
+        auto c = std::make_shared<Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg>();
+        c->parent = this;
+        srlg.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -1974,6 +2757,15 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : srlg.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -1985,10 +2777,6 @@ void Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::set_value(const 
         set_id.value_namespace = name_space;
         set_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "srlg")
-    {
-        srlg.append(value);
-    }
 }
 
 void Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1997,15 +2785,89 @@ void Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::set_filter(const
     {
         set_id.yfilter = yfilter;
     }
-    if(value_path == "srlg")
-    {
-        srlg.yfilter = yfilter;
-    }
 }
 
 bool Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "set-id" || name == "srlg")
+    if(name == "srlg" || name == "set-id")
+        return true;
+    return false;
+}
+
+Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::Srlg()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "srlg"; yang_parent_name = "srlg-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::~Srlg()
+{
+}
+
+bool Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srlg";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -2013,22 +2875,22 @@ bool Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::has_leaf_or_chil
 Otu::Controllers::Controller::Info::OtuAlarmInfo::OtuAlarmInfo()
     :
     los(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Los>())
-	,lof(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof>())
-	,lom(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom>())
-	,oof(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof>())
-	,oom(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom>())
-	,ais(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais>())
-	,iae(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae>())
-	,biae(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae>())
-	,bdi(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi>())
-	,tim(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim>())
-	,eoc(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc>())
-	,fec_mismatch(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch>())
-	,sf_ber(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer>())
-	,sd_ber(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer>())
-	,ec(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec>())
-	,uc(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc>())
-	,fecunc(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc>())
+    , lof(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof>())
+    , lom(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom>())
+    , oof(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof>())
+    , oom(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom>())
+    , ais(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais>())
+    , iae(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae>())
+    , biae(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae>())
+    , bdi(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi>())
+    , tim(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim>())
+    , eoc(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc>())
+    , fec_mismatch(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch>())
+    , sf_ber(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer>())
+    , sd_ber(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer>())
+    , ec(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec>())
+    , uc(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc>())
+    , fecunc(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc>())
 {
     los->parent = this;
     lof->parent = this;
@@ -2048,7 +2910,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::OtuAlarmInfo()
     uc->parent = this;
     fecunc->parent = this;
 
-    yang_name = "otu-alarm-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "otu-alarm-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::~OtuAlarmInfo()
@@ -2057,6 +2919,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::~OtuAlarmInfo()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (los !=  nullptr && los->has_data())
 	|| (lof !=  nullptr && lof->has_data())
 	|| (lom !=  nullptr && lom->has_data())
@@ -2387,7 +3250,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::Los()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "los"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "los"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::~Los()
@@ -2396,6 +3259,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::~Los()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -2506,7 +3370,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::Lof()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "lof"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lof"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::~Lof()
@@ -2515,6 +3379,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::~Lof()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -2625,7 +3490,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::Lom()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "lom"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lom"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::~Lom()
@@ -2634,6 +3499,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::~Lom()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -2744,7 +3610,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::Oof()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "oof"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oof"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::~Oof()
@@ -2753,6 +3619,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::~Oof()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -2863,7 +3730,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::Oom()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "oom"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oom"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::~Oom()
@@ -2872,6 +3739,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::~Oom()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -2982,7 +3850,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::Ais()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "ais"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ais"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::~Ais()
@@ -2991,6 +3859,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::~Ais()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3101,7 +3970,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::Iae()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "iae"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iae"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::~Iae()
@@ -3110,6 +3979,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::~Iae()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3220,7 +4090,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::Biae()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "biae"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "biae"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::~Biae()
@@ -3229,6 +4099,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::~Biae()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3339,7 +4210,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::Bdi()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "bdi"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bdi"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::~Bdi()
@@ -3348,6 +4219,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::~Bdi()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3458,7 +4330,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::Tim()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "tim"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tim"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::~Tim()
@@ -3467,6 +4339,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::~Tim()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3577,7 +4450,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::Eoc()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "eoc"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eoc"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::~Eoc()
@@ -3586,6 +4459,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::~Eoc()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3696,7 +4570,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::FecMismatch()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "fec-mismatch"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fec-mismatch"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::~FecMismatch()
@@ -3705,6 +4579,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::~FecMismatch()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3815,7 +4690,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::SfBer()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "sf-ber"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sf-ber"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::~SfBer()
@@ -3824,6 +4699,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::~SfBer()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3934,7 +4810,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::SdBer()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "sd-ber"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sd-ber"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::~SdBer()
@@ -3943,6 +4819,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::~SdBer()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -4053,7 +4930,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::Ec()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "ec"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ec"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::~Ec()
@@ -4062,6 +4939,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::~Ec()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -4172,7 +5050,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::Uc()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "uc"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uc"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::~Uc()
@@ -4181,6 +5059,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::~Uc()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -4291,7 +5170,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::Fecunc()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "fecunc"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fecunc"; yang_parent_name = "otu-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::~Fecunc()
@@ -4300,6 +5179,7 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::~Fecunc()
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -4417,7 +5297,7 @@ Otu::Controllers::Controller::Info::Proactive::Proactive()
     revert_window{YType::uint32, "revert-window"}
 {
 
-    yang_name = "proactive"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "proactive"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::Proactive::~Proactive()
@@ -4426,6 +5306,7 @@ Otu::Controllers::Controller::Info::Proactive::~Proactive()
 
 bool Otu::Controllers::Controller::Info::Proactive::has_data() const
 {
+    if (is_presence_container) return true;
     return proactive_status.is_set
 	|| inherit_sec_state.is_set
 	|| config_sec_state.is_set
@@ -4625,7 +5506,7 @@ Otu::Controllers::Controller::Info::OtuFecSatistics::OtuFecSatistics()
     pre_fec_ber{YType::str, "pre-fec-ber"}
 {
 
-    yang_name = "otu-fec-satistics"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "otu-fec-satistics"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Otu::Controllers::Controller::Info::OtuFecSatistics::~OtuFecSatistics()
@@ -4634,6 +5515,7 @@ Otu::Controllers::Controller::Info::OtuFecSatistics::~OtuFecSatistics()
 
 bool Otu::Controllers::Controller::Info::OtuFecSatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return post_fec_ber.is_set
 	|| pre_fec_ber.is_set;
 }
@@ -4710,58 +5592,17 @@ bool Otu::Controllers::Controller::Info::OtuFecSatistics::has_leaf_or_child_of_n
     return false;
 }
 
-const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_none {0, "gmpls-otu-tti-mode-none"};
-const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_sm {1, "gmpls-otu-tti-mode-sm"};
-const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_pm {2, "gmpls-otu-tti-mode-pm"};
-const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_tcm {3, "gmpls-otu-tti-mode-tcm"};
+const Enum::YLeaf OtuPrbsStatus::locked {0, "locked"};
+const Enum::YLeaf OtuPrbsStatus::unlocked {1, "unlocked"};
+const Enum::YLeaf OtuPrbsStatus::not_applicable {2, "not-applicable"};
 
-const Enum::YLeaf OtuPpIntfState::otu_pp_intf_up {0, "otu-pp-intf-up"};
-const Enum::YLeaf OtuPpIntfState::otu_pp_intf_failing {1, "otu-pp-intf-failing"};
-const Enum::YLeaf OtuPpIntfState::otu_pp_intf_down {2, "otu-pp-intf-down"};
-
-const Enum::YLeaf OtuPpFsmState::otu_in_active {0, "otu-in-active"};
-const Enum::YLeaf OtuPpFsmState::otu_disabled {1, "otu-disabled"};
-const Enum::YLeaf OtuPpFsmState::otu_normal_state {2, "otu-normal-state"};
-const Enum::YLeaf OtuPpFsmState::otu_local_failing {3, "otu-local-failing"};
-const Enum::YLeaf OtuPpFsmState::otu_remote_failing {4, "otu-remote-failing"};
-const Enum::YLeaf OtuPpFsmState::otu_main_t_failing {5, "otu-main-t-failing"};
-const Enum::YLeaf OtuPpFsmState::otu_regen_failing {6, "otu-regen-failing"};
-const Enum::YLeaf OtuPpFsmState::otu_local_failed {7, "otu-local-failed"};
-const Enum::YLeaf OtuPpFsmState::otu_remote_failed {8, "otu-remote-failed"};
-const Enum::YLeaf OtuPpFsmState::otu_main_t_failed {9, "otu-main-t-failed"};
-const Enum::YLeaf OtuPpFsmState::otu_regen_failed {10, "otu-regen-failed"};
-
-const Enum::YLeaf OtuPerMon::disable {0, "disable"};
-const Enum::YLeaf OtuPerMon::enable {1, "enable"};
-
-const Enum::YLeaf OtuSecState::normal {0, "normal"};
-const Enum::YLeaf OtuSecState::maintenance {1, "maintenance"};
-const Enum::YLeaf OtuSecState::ais {2, "ais"};
-
-const Enum::YLeaf OtuDerState::out_of_service {0, "out-of-service"};
-const Enum::YLeaf OtuDerState::in_service {1, "in-service"};
-const Enum::YLeaf OtuDerState::maintenance {2, "maintenance"};
-const Enum::YLeaf OtuDerState::ais {3, "ais"};
-
-const Enum::YLeaf OtuG709FecMode::otu_bag_none_fec {1, "otu-bag-none-fec"};
-const Enum::YLeaf OtuG709FecMode::otu_bag_standard_fec {2, "otu-bag-standard-fec"};
-const Enum::YLeaf OtuG709FecMode::otu_bag_1_i_7_fec {4, "otu-bag-1-i-7-fec"};
-const Enum::YLeaf OtuG709FecMode::otu_bag_1_i_4_fec {8, "otu-bag-1-i-4-fec"};
-const Enum::YLeaf OtuG709FecMode::otu_bag_swizzle_fec {16, "otu-bag-swizzle-fec"};
-const Enum::YLeaf OtuG709FecMode::otu_bag_hg20_fec {32, "otu-bag-hg20-fec"};
-const Enum::YLeaf OtuG709FecMode::otu_bag_enhanced_hg7_fec {64, "otu-bag-enhanced-hg7-fec"};
-const Enum::YLeaf OtuG709FecMode::otu_bag_sd20_fec {128, "otu-bag-sd20-fec"};
-const Enum::YLeaf OtuG709FecMode::otu_bag_sd7_fec {256, "otu-bag-sd7-fec"};
-const Enum::YLeaf OtuG709FecMode::otu_bag_all_fec {512, "otu-bag-all-fec"};
-
-const Enum::YLeaf OtuLoopBackMode::none {1, "none"};
-const Enum::YLeaf OtuLoopBackMode::line {2, "line"};
-const Enum::YLeaf OtuLoopBackMode::internal {4, "internal"};
-
-const Enum::YLeaf OtuTtiEt::ascii {0, "ascii"};
-const Enum::YLeaf OtuTtiEt::hex {1, "hex"};
-const Enum::YLeaf OtuTtiEt::full_ascii {2, "full-ascii"};
-const Enum::YLeaf OtuTtiEt::full_hex {3, "full-hex"};
+const Enum::YLeaf OtuPrbsPattern::not_applicable {0, "not-applicable"};
+const Enum::YLeaf OtuPrbsPattern::pn31 {1, "pn31"};
+const Enum::YLeaf OtuPrbsPattern::pn23 {2, "pn23"};
+const Enum::YLeaf OtuPrbsPattern::pn11 {4, "pn11"};
+const Enum::YLeaf OtuPrbsPattern::inverted_pn31 {8, "inverted-pn31"};
+const Enum::YLeaf OtuPrbsPattern::inverted_pn11 {16, "inverted-pn11"};
+const Enum::YLeaf OtuPrbsPattern::pn15 {32, "pn15"};
 
 const Enum::YLeaf OtuStateEt::not_ready {0, "not-ready"};
 const Enum::YLeaf OtuStateEt::admin_down {1, "admin-down"};
@@ -4783,25 +5624,66 @@ const Enum::YLeaf OtuStateEt::not_operational {16, "not-operational"};
 const Enum::YLeaf OtuStateEt::unknown {17, "unknown"};
 const Enum::YLeaf OtuStateEt::last {18, "last"};
 
-const Enum::YLeaf OtuPrbsStatus::locked {0, "locked"};
-const Enum::YLeaf OtuPrbsStatus::unlocked {1, "unlocked"};
-const Enum::YLeaf OtuPrbsStatus::not_applicable {2, "not-applicable"};
+const Enum::YLeaf OtuPrbsTest::disable {0, "disable"};
+const Enum::YLeaf OtuPrbsTest::enable {1, "enable"};
 
-const Enum::YLeaf OtuPrbsPattern::not_applicable {0, "not-applicable"};
-const Enum::YLeaf OtuPrbsPattern::pn31 {1, "pn31"};
-const Enum::YLeaf OtuPrbsPattern::pn23 {2, "pn23"};
-const Enum::YLeaf OtuPrbsPattern::pn11 {4, "pn11"};
-const Enum::YLeaf OtuPrbsPattern::inverted_pn31 {8, "inverted-pn31"};
-const Enum::YLeaf OtuPrbsPattern::inverted_pn11 {16, "inverted-pn11"};
-const Enum::YLeaf OtuPrbsPattern::pn15 {32, "pn15"};
+const Enum::YLeaf OtuPpFsmState::otu_in_active {0, "otu-in-active"};
+const Enum::YLeaf OtuPpFsmState::otu_disabled {1, "otu-disabled"};
+const Enum::YLeaf OtuPpFsmState::otu_normal_state {2, "otu-normal-state"};
+const Enum::YLeaf OtuPpFsmState::otu_local_failing {3, "otu-local-failing"};
+const Enum::YLeaf OtuPpFsmState::otu_remote_failing {4, "otu-remote-failing"};
+const Enum::YLeaf OtuPpFsmState::otu_main_t_failing {5, "otu-main-t-failing"};
+const Enum::YLeaf OtuPpFsmState::otu_regen_failing {6, "otu-regen-failing"};
+const Enum::YLeaf OtuPpFsmState::otu_local_failed {7, "otu-local-failed"};
+const Enum::YLeaf OtuPpFsmState::otu_remote_failed {8, "otu-remote-failed"};
+const Enum::YLeaf OtuPpFsmState::otu_main_t_failed {9, "otu-main-t-failed"};
+const Enum::YLeaf OtuPpFsmState::otu_regen_failed {10, "otu-regen-failed"};
+
+const Enum::YLeaf OtuG709fecMode::otu_bag_none_fec {1, "otu-bag-none-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_standard_fec {2, "otu-bag-standard-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_1_i_7_fec {4, "otu-bag-1-i-7-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_1_i_4_fec {8, "otu-bag-1-i-4-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_swizzle_fec {16, "otu-bag-swizzle-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_hg20_fec {32, "otu-bag-hg20-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_enhanced_hg7_fec {64, "otu-bag-enhanced-hg7-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_sd20_fec {128, "otu-bag-sd20-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_sd7_fec {256, "otu-bag-sd7-fec"};
+const Enum::YLeaf OtuG709fecMode::otu_bag_all_fec {512, "otu-bag-all-fec"};
 
 const Enum::YLeaf OtuPrbsMode::not_applicable {0, "not-applicable"};
 const Enum::YLeaf OtuPrbsMode::source {1, "source"};
 const Enum::YLeaf OtuPrbsMode::sink {2, "sink"};
 const Enum::YLeaf OtuPrbsMode::source_sink {3, "source-sink"};
 
-const Enum::YLeaf OtuPrbsTest::disable {0, "disable"};
-const Enum::YLeaf OtuPrbsTest::enable {1, "enable"};
+const Enum::YLeaf OtuPerMon::disable {0, "disable"};
+const Enum::YLeaf OtuPerMon::enable {1, "enable"};
+
+const Enum::YLeaf OtuTtiEt::ascii {0, "ascii"};
+const Enum::YLeaf OtuTtiEt::hex {1, "hex"};
+const Enum::YLeaf OtuTtiEt::full_ascii {2, "full-ascii"};
+const Enum::YLeaf OtuTtiEt::full_hex {3, "full-hex"};
+
+const Enum::YLeaf OtuPpIntfState::otu_pp_intf_up {0, "otu-pp-intf-up"};
+const Enum::YLeaf OtuPpIntfState::otu_pp_intf_failing {1, "otu-pp-intf-failing"};
+const Enum::YLeaf OtuPpIntfState::otu_pp_intf_down {2, "otu-pp-intf-down"};
+
+const Enum::YLeaf OtuSecState::normal {0, "normal"};
+const Enum::YLeaf OtuSecState::maintenance {1, "maintenance"};
+const Enum::YLeaf OtuSecState::ais {2, "ais"};
+
+const Enum::YLeaf OtuLoopBackMode::none {1, "none"};
+const Enum::YLeaf OtuLoopBackMode::line {2, "line"};
+const Enum::YLeaf OtuLoopBackMode::internal {4, "internal"};
+
+const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_none {0, "gmpls-otu-tti-mode-none"};
+const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_sm {1, "gmpls-otu-tti-mode-sm"};
+const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_pm {2, "gmpls-otu-tti-mode-pm"};
+const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_tcm {3, "gmpls-otu-tti-mode-tcm"};
+
+const Enum::YLeaf OtuDerState::out_of_service {0, "out-of-service"};
+const Enum::YLeaf OtuDerState::in_service {1, "in-service"};
+const Enum::YLeaf OtuDerState::maintenance {2, "maintenance"};
+const Enum::YLeaf OtuDerState::ais {3, "ais"};
 
 
 }

@@ -57,7 +57,7 @@ class Watchdog::Nodes : public ydk::Entity
 
         class Node; //type: Watchdog::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Watchdog::Nodes
 
@@ -256,7 +256,7 @@ class Watchdog::Nodes::Node::OverloadState : public ydk::Entity
         class LastThrottle; //type: Watchdog::Nodes::Node::OverloadState::LastThrottle
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::OverloadState::CurrentThrottle> current_throttle;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::OverloadState::LastThrottle> > last_throttle;
+        ydk::YList last_throttle;
         
 }; // Watchdog::Nodes::Node::OverloadState
 
@@ -305,14 +305,6 @@ class Watchdog::Nodes::Node::OverloadState::LastThrottle : public ydk::Entity
 
 }; // Watchdog::Nodes::Node::OverloadState::LastThrottle
 
-class OverloadCtrlNotif : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf enabled;
-
-};
-
 class MemoryState : public ydk::Enum
 {
     public:
@@ -321,6 +313,14 @@ class MemoryState : public ydk::Enum
         static const ydk::Enum::YLeaf minor;
         static const ydk::Enum::YLeaf severe;
         static const ydk::Enum::YLeaf critical;
+
+};
+
+class OverloadCtrlNotif : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
 
 };
 

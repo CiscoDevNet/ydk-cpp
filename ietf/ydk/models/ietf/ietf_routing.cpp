@@ -11,13 +11,13 @@ using namespace ydk;
 namespace ietf {
 namespace ietf_routing {
 
-AddressFamily::AddressFamily()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:address-family")
+RoutingProtocol::RoutingProtocol()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:routing-protocol")
 {
 
 }
 
-AddressFamily::~AddressFamily()
+RoutingProtocol::~RoutingProtocol()
 {
 }
 
@@ -31,20 +31,22 @@ RoutingInstance::~RoutingInstance()
 {
 }
 
-RoutingProtocol::RoutingProtocol()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:routing-protocol")
+AddressFamily::AddressFamily()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:address-family")
 {
 
 }
 
-RoutingProtocol::~RoutingProtocol()
+AddressFamily::~AddressFamily()
 {
 }
 
 RoutingState::RoutingState()
+    :
+    routing_instance(this, {"name"})
 {
 
-    yang_name = "routing-state"; yang_parent_name = "ietf-routing"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-state"; yang_parent_name = "ietf-routing"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingState::~RoutingState()
@@ -53,7 +55,8 @@ RoutingState::~RoutingState()
 
 bool RoutingState::has_data() const
 {
-    for (std::size_t index=0; index<routing_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<routing_instance.len(); index++)
     {
         if(routing_instance[index]->has_data())
             return true;
@@ -63,7 +66,7 @@ bool RoutingState::has_data() const
 
 bool RoutingState::has_operation() const
 {
-    for (std::size_t index=0; index<routing_instance.size(); index++)
+    for (std::size_t index=0; index<routing_instance.len(); index++)
     {
         if(routing_instance[index]->has_operation())
             return true;
@@ -93,7 +96,7 @@ std::shared_ptr<Entity> RoutingState::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<RoutingState::RoutingInstance>();
         c->parent = this;
-        routing_instance.push_back(c);
+        routing_instance.append(c);
         return c;
     }
 
@@ -105,7 +108,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : routing_instance)
+    for (auto c : routing_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -161,16 +164,16 @@ RoutingState::RoutingInstance::RoutingInstance()
     name{YType::str, "name"},
     type{YType::identityref, "type"},
     router_id{YType::str, "router-id"}
-    	,
+        ,
     interfaces(std::make_shared<RoutingState::RoutingInstance::Interfaces>())
-	,routing_protocols(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols>())
-	,ribs(std::make_shared<RoutingState::RoutingInstance::Ribs>())
+    , routing_protocols(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols>())
+    , ribs(std::make_shared<RoutingState::RoutingInstance::Ribs>())
 {
     interfaces->parent = this;
     routing_protocols->parent = this;
     ribs->parent = this;
 
-    yang_name = "routing-instance"; yang_parent_name = "routing-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "routing-instance"; yang_parent_name = "routing-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingState::RoutingInstance::~RoutingInstance()
@@ -179,6 +182,7 @@ RoutingState::RoutingInstance::~RoutingInstance()
 
 bool RoutingState::RoutingInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| type.is_set
 	|| router_id.is_set
@@ -208,7 +212,8 @@ std::string RoutingState::RoutingInstance::get_absolute_path() const
 std::string RoutingState::RoutingInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "routing-instance" <<"[name='" <<name <<"']";
+    path_buffer << "routing-instance";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -328,7 +333,7 @@ RoutingState::RoutingInstance::Interfaces::Interfaces()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "interfaces"; yang_parent_name = "routing-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "routing-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::Interfaces::~Interfaces()
@@ -337,6 +342,7 @@ RoutingState::RoutingInstance::Interfaces::~Interfaces()
 
 bool RoutingState::RoutingInstance::Interfaces::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : interface.getYLeafs())
     {
         if(leaf.is_set)
@@ -410,9 +416,11 @@ bool RoutingState::RoutingInstance::Interfaces::has_leaf_or_child_of_name(const 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocols()
+    :
+    routing_protocol(this, {"type", "name"})
 {
 
-    yang_name = "routing-protocols"; yang_parent_name = "routing-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routing-protocols"; yang_parent_name = "routing-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::~RoutingProtocols()
@@ -421,7 +429,8 @@ RoutingState::RoutingInstance::RoutingProtocols::~RoutingProtocols()
 
 bool RoutingState::RoutingInstance::RoutingProtocols::has_data() const
 {
-    for (std::size_t index=0; index<routing_protocol.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<routing_protocol.len(); index++)
     {
         if(routing_protocol[index]->has_data())
             return true;
@@ -431,7 +440,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::has_data() const
 
 bool RoutingState::RoutingInstance::RoutingProtocols::has_operation() const
 {
-    for (std::size_t index=0; index<routing_protocol.size(); index++)
+    for (std::size_t index=0; index<routing_protocol.len(); index++)
     {
         if(routing_protocol[index]->has_operation())
             return true;
@@ -461,7 +470,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::get_chi
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol>();
         c->parent = this;
-        routing_protocol.push_back(c);
+        routing_protocol.append(c);
         return c;
     }
 
@@ -473,7 +482,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : routing_protocol)
+    for (auto c : routing_protocol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -503,12 +512,12 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::RoutingProtoco
     :
     type{YType::identityref, "type"},
     name{YType::str, "name"}
-    	,
+        ,
     ospf(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf>())
 {
     ospf->parent = this;
 
-    yang_name = "routing-protocol"; yang_parent_name = "routing-protocols"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routing-protocol"; yang_parent_name = "routing-protocols"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::~RoutingProtocol()
@@ -517,6 +526,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::~RoutingProtoc
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| name.is_set
 	|| (ospf !=  nullptr && ospf->has_data());
@@ -533,7 +543,9 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::has_opera
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "routing-protocol" <<"[type='" <<type <<"']" <<"[name='" <<name <<"']";
+    path_buffer << "routing-protocol";
+    ADD_KEY_TOKEN(type, "type");
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -612,9 +624,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::has_leaf_
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ospf()
     :
     operation_mode{YType::identityref, "operation-mode"}
+        ,
+    instance(this, {"af"})
 {
 
-    yang_name = "ospf"; yang_parent_name = "routing-protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf"; yang_parent_name = "routing-protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::~Ospf()
@@ -623,7 +637,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::~Ospf()
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -633,7 +648,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::has
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -665,7 +680,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -677,7 +692,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -717,9 +732,13 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     :
     af{YType::identityref, "af"},
     router_id{YType::str, "router-id"}
+        ,
+    area(this, {"area_id"})
+    , as_scope_lsas(this, {"lsa_type"})
+    , topology(this, {"name"})
 {
 
-    yang_name = "instance"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::~Instance()
@@ -728,17 +747,18 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::has_data() const
 {
-    for (std::size_t index=0; index<area.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<area.len(); index++)
     {
         if(area[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<as_scope_lsas.size(); index++)
+    for (std::size_t index=0; index<as_scope_lsas.len(); index++)
     {
         if(as_scope_lsas[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -749,17 +769,17 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::has_operation() const
 {
-    for (std::size_t index=0; index<area.size(); index++)
+    for (std::size_t index=0; index<area.len(); index++)
     {
         if(area[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<as_scope_lsas.size(); index++)
+    for (std::size_t index=0; index<as_scope_lsas.len(); index++)
     {
         if(as_scope_lsas[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -772,7 +792,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[af='" <<af <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(af, "af");
     return path_buffer.str();
 }
 
@@ -793,7 +814,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area>();
         c->parent = this;
-        area.push_back(c);
+        area.append(c);
         return c;
     }
 
@@ -801,7 +822,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas>();
         c->parent = this;
-        as_scope_lsas.push_back(c);
+        as_scope_lsas.append(c);
         return c;
     }
 
@@ -809,7 +830,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -821,7 +842,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : area)
+    for (auto c : area.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -830,7 +851,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     }
 
     count = 0;
-    for (auto const & c : as_scope_lsas)
+    for (auto c : as_scope_lsas.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -839,7 +860,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     }
 
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -888,9 +909,12 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Area()
     :
     area_id{YType::str, "area-id"}
+        ,
+    interfaces(this, {"interface"})
+    , area_scope_lsas(this, {"lsa_type"})
 {
 
-    yang_name = "area"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::~Area()
@@ -899,12 +923,13 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::has_data() const
 {
-    for (std::size_t index=0; index<interfaces.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interfaces.len(); index++)
     {
         if(interfaces[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<area_scope_lsas.size(); index++)
+    for (std::size_t index=0; index<area_scope_lsas.len(); index++)
     {
         if(area_scope_lsas[index]->has_data())
             return true;
@@ -914,12 +939,12 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::has_operation() const
 {
-    for (std::size_t index=0; index<interfaces.size(); index++)
+    for (std::size_t index=0; index<interfaces.len(); index++)
     {
         if(interfaces[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<area_scope_lsas.size(); index++)
+    for (std::size_t index=0; index<area_scope_lsas.len(); index++)
     {
         if(area_scope_lsas[index]->has_operation())
             return true;
@@ -931,7 +956,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area" <<"[area-id='" <<area_id <<"']";
+    path_buffer << "area";
+    ADD_KEY_TOKEN(area_id, "area-id");
     return path_buffer.str();
 }
 
@@ -951,7 +977,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces>();
         c->parent = this;
-        interfaces.push_back(c);
+        interfaces.append(c);
         return c;
     }
 
@@ -959,7 +985,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas>();
         c->parent = this;
-        area_scope_lsas.push_back(c);
+        area_scope_lsas.append(c);
         return c;
     }
 
@@ -971,7 +997,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interfaces)
+    for (auto c : interfaces.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -980,7 +1006,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     }
 
     count = 0;
-    for (auto const & c : area_scope_lsas)
+    for (auto c : area_scope_lsas.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1038,12 +1064,15 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     wait_timer{YType::uint32, "wait-timer"},
     dr{YType::str, "dr"},
     bdr{YType::str, "bdr"}
-    	,
+        ,
     multi_area(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::MultiArea>())
-	,static_neighbors(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors>())
-	,fast_reroute(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute>())
-	,ttl_security(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::TtlSecurity>())
-	,authentication(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication>())
+    , static_neighbors(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors>())
+    , fast_reroute(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute>())
+    , ttl_security(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::TtlSecurity>())
+    , authentication(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication>())
+    , neighbor(this, {"neighbor_id"})
+    , link_scope_lsas(this, {"lsa_type"})
+    , topology(this, {"name"})
 {
     multi_area->parent = this;
     static_neighbors->parent = this;
@@ -1051,7 +1080,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     ttl_security->parent = this;
     authentication->parent = this;
 
-    yang_name = "interfaces"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::~Interfaces()
@@ -1060,17 +1089,18 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<link_scope_lsas.size(); index++)
+    for (std::size_t index=0; index<link_scope_lsas.len(); index++)
     {
         if(link_scope_lsas[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -1104,17 +1134,17 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<link_scope_lsas.size(); index++)
+    for (std::size_t index=0; index<link_scope_lsas.len(); index++)
     {
         if(link_scope_lsas[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -1150,7 +1180,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interfaces" <<"[interface='" <<interface <<"']";
+    path_buffer << "interfaces";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -1234,7 +1265,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -1242,7 +1273,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas>();
         c->parent = this;
-        link_scope_lsas.push_back(c);
+        link_scope_lsas.append(c);
         return c;
     }
 
@@ -1250,7 +1281,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -1287,7 +1318,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     }
 
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1296,7 +1327,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     }
 
     count = 0;
-    for (auto const & c : link_scope_lsas)
+    for (auto c : link_scope_lsas.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1305,7 +1336,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     }
 
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1537,7 +1568,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     cost{YType::uint16, "cost"}
 {
 
-    yang_name = "multi-area"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multi-area"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::MultiArea::~MultiArea()
@@ -1546,6 +1577,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::MultiArea::has_data() const
 {
+    if (is_presence_container) return true;
     return multi_area_id.is_set
 	|| cost.is_set;
 }
@@ -1623,9 +1655,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::StaticNeighbors()
+    :
+    neighbor(this, {"address"})
 {
 
-    yang_name = "static-neighbors"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-neighbors"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::~StaticNeighbors()
@@ -1634,7 +1668,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -1644,7 +1679,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -1674,7 +1709,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -1686,7 +1721,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1720,7 +1755,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "static-neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "static-neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::Neighbor::~Neighbor()
@@ -1729,6 +1764,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| cost.is_set
 	|| poll_interval.is_set
@@ -1747,7 +1783,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[address='" <<address <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -1837,7 +1874,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 {
     lfa->parent = this;
 
-    yang_name = "fast-reroute"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-reroute"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::~FastReroute()
@@ -1846,6 +1883,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return (lfa !=  nullptr && lfa->has_data());
 }
 
@@ -1916,12 +1954,12 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     :
     candidate_disabled{YType::boolean, "candidate-disabled"},
     enabled{YType::boolean, "enabled"}
-    	,
+        ,
     remote_lfa(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa::RemoteLfa>())
 {
     remote_lfa->parent = this;
 
-    yang_name = "lfa"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lfa"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa::~Lfa()
@@ -1930,6 +1968,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa::has_data() const
 {
+    if (is_presence_container) return true;
     return candidate_disabled.is_set
 	|| enabled.is_set
 	|| (remote_lfa !=  nullptr && remote_lfa->has_data());
@@ -2027,7 +2066,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "remote-lfa"; yang_parent_name = "lfa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-lfa"; yang_parent_name = "lfa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa::RemoteLfa::~RemoteLfa()
@@ -2036,6 +2075,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa::RemoteLfa::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set;
 }
 
@@ -2105,7 +2145,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     hops{YType::uint8, "hops"}
 {
 
-    yang_name = "ttl-security"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ttl-security"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::TtlSecurity::~TtlSecurity()
@@ -2114,6 +2154,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::TtlSecurity::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| hops.is_set;
 }
@@ -2195,12 +2236,12 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     sa{YType::str, "sa"},
     key_chain{YType::str, "key-chain"},
     key{YType::str, "key"}
-    	,
+        ,
     crypto_algorithm(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication::CryptoAlgorithm>())
 {
     crypto_algorithm->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication::~Authentication()
@@ -2209,6 +2250,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return sa.is_set
 	|| key_chain.is_set
 	|| key.is_set
@@ -2326,7 +2368,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     hmac_sha_512{YType::empty, "hmac-sha-512"}
 {
 
-    yang_name = "crypto-algorithm"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crypto-algorithm"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication::CryptoAlgorithm::~CryptoAlgorithm()
@@ -2335,6 +2377,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication::CryptoAlgorithm::has_data() const
 {
+    if (is_presence_container) return true;
     return hmac_sha1_12.is_set
 	|| hmac_sha1_20.is_set
 	|| md5.is_set
@@ -2498,7 +2541,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Neighbor::~Neighbor()
@@ -2507,6 +2550,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_id.is_set
 	|| address.is_set
 	|| dr.is_set
@@ -2527,7 +2571,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[neighbor-id='" <<neighbor_id <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(neighbor_id, "neighbor-id");
     return path_buffer.str();
 }
 
@@ -2625,9 +2670,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsas()
     :
     lsa_type{YType::uint8, "lsa-type"}
+        ,
+    link_scope_lsa(this, {"lsa_id", "adv_router"})
 {
 
-    yang_name = "link-scope-lsas"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-scope-lsas"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::~LinkScopeLsas()
@@ -2636,7 +2683,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::has_data() const
 {
-    for (std::size_t index=0; index<link_scope_lsa.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link_scope_lsa.len(); index++)
     {
         if(link_scope_lsa[index]->has_data())
             return true;
@@ -2646,7 +2694,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::has_operation() const
 {
-    for (std::size_t index=0; index<link_scope_lsa.size(); index++)
+    for (std::size_t index=0; index<link_scope_lsa.len(); index++)
     {
         if(link_scope_lsa[index]->has_operation())
             return true;
@@ -2658,7 +2706,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-scope-lsas" <<"[lsa-type='" <<lsa_type <<"']";
+    path_buffer << "link-scope-lsas";
+    ADD_KEY_TOKEN(lsa_type, "lsa-type");
     return path_buffer.str();
 }
 
@@ -2678,7 +2727,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa>();
         c->parent = this;
-        link_scope_lsa.push_back(c);
+        link_scope_lsa.append(c);
         return c;
     }
 
@@ -2690,7 +2739,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link_scope_lsa)
+    for (auto c : link_scope_lsa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2732,14 +2781,14 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     adv_router{YType::str, "adv-router"},
     decoded_completed{YType::boolean, "decoded-completed"},
     raw_data{YType::str, "raw-data"}
-    	,
+        ,
     ospfv2(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2>())
-	,ospfv3(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3>())
+    , ospfv3(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3>())
 {
     ospfv2->parent = this;
     ospfv3->parent = this;
 
-    yang_name = "link-scope-lsa"; yang_parent_name = "link-scope-lsas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-scope-lsa"; yang_parent_name = "link-scope-lsas"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::~LinkScopeLsa()
@@ -2748,6 +2797,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| adv_router.is_set
 	|| decoded_completed.is_set
@@ -2770,7 +2820,9 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-scope-lsa" <<"[lsa-id='" <<lsa_id <<"']" <<"[adv-router='" <<adv_router <<"']";
+    path_buffer << "link-scope-lsa";
+    ADD_KEY_TOKEN(lsa_id, "lsa-id");
+    ADD_KEY_TOKEN(adv_router, "adv-router");
     return path_buffer.str();
 }
 
@@ -2885,12 +2937,12 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Ospfv2()
     :
     header(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Header>())
-	,body(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body>())
+    , body(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body>())
 {
     header->parent = this;
     body->parent = this;
 
-    yang_name = "ospfv2"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::~Ospfv2()
@@ -2899,6 +2951,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (body !=  nullptr && body->has_data());
 }
@@ -2995,7 +3048,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     length{YType::uint16, "length"}
 {
 
-    yang_name = "header"; yang_parent_name = "ospfv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Header::~Header()
@@ -3004,6 +3057,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return options.is_set
 	|| lsa_id.is_set
 	|| opaque_type.is_set
@@ -3185,10 +3239,10 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Body()
     :
     router(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router>())
-	,network(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Network>())
-	,summary(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary>())
-	,external(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External>())
-	,opaque(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque>())
+    , network(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Network>())
+    , summary(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary>())
+    , external(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External>())
+    , opaque(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque>())
 {
     router->parent = this;
     network->parent = this;
@@ -3196,7 +3250,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     external->parent = this;
     opaque->parent = this;
 
-    yang_name = "body"; yang_parent_name = "ospfv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "body"; yang_parent_name = "ospfv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::~Body()
@@ -3205,6 +3259,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::has_data() const
 {
+    if (is_presence_container) return true;
     return (router !=  nullptr && router->has_data())
 	|| (network !=  nullptr && network->has_data())
 	|| (summary !=  nullptr && summary->has_data())
@@ -3339,9 +3394,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     :
     flags{YType::bits, "flags"},
     num_of_links{YType::uint16, "num-of-links"}
+        ,
+    link(this, {"link_id", "link_data"})
 {
 
-    yang_name = "router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::~Router()
@@ -3350,7 +3407,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::has_data() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_data())
             return true;
@@ -3361,7 +3419,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::has_operation() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_operation())
             return true;
@@ -3395,7 +3453,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link>();
         c->parent = this;
-        link.push_back(c);
+        link.append(c);
         return c;
     }
 
@@ -3407,7 +3465,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link)
+    for (auto c : link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3456,9 +3514,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     link_id{YType::str, "link-id"},
     link_data{YType::str, "link-data"},
     type{YType::uint8, "type"}
+        ,
+    topology(this, {"mt_id"})
 {
 
-    yang_name = "link"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::~Link()
@@ -3467,7 +3527,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::has_data() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -3479,7 +3540,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::has_operation() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -3493,7 +3554,9 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link" <<"[link-id='" <<link_id <<"']" <<"[link-data='" <<link_data <<"']";
+    path_buffer << "link";
+    ADD_KEY_TOKEN(link_id, "link-id");
+    ADD_KEY_TOKEN(link_data, "link-data");
     return path_buffer.str();
 }
 
@@ -3515,7 +3578,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -3527,7 +3590,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3589,7 +3652,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "topology"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology::~Topology()
@@ -3598,6 +3661,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -3612,7 +3676,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -3680,7 +3745,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     attached_router{YType::str, "attached-router"}
 {
 
-    yang_name = "network"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Network::~Network()
@@ -3689,6 +3754,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -3776,9 +3842,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Summary()
     :
     network_mask{YType::str, "network-mask"}
+        ,
+    topology(this, {"mt_id"})
 {
 
-    yang_name = "summary"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::~Summary()
@@ -3787,7 +3855,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::has_data() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -3797,7 +3866,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -3829,7 +3898,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -3841,7 +3910,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3883,7 +3952,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     metric{YType::uint32, "metric"}
 {
 
-    yang_name = "topology"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology::~Topology()
@@ -3892,6 +3961,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -3906,7 +3976,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -3971,9 +4042,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::External()
     :
     network_mask{YType::str, "network-mask"}
+        ,
+    topology(this, {"mt_id"})
 {
 
-    yang_name = "external"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "external"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::~External()
@@ -3982,7 +4055,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::has_data() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -3992,7 +4066,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::has_operation() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -4024,7 +4098,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -4036,7 +4110,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4081,7 +4155,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     external_route_tag{YType::uint32, "external-route-tag"}
 {
 
-    yang_name = "topology"; yang_parent_name = "external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology::~Topology()
@@ -4090,6 +4164,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| flags.is_set
 	|| metric.is_set
@@ -4110,7 +4185,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -4205,13 +4281,14 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::Opaque()
     :
-    router_address_tlv(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv>())
-	,link_tlv(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv>())
+    unknown_tlv(this, {"type"})
+    , router_address_tlv(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv>())
+    , link_tlv(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv>())
 {
     router_address_tlv->parent = this;
     link_tlv->parent = this;
 
-    yang_name = "opaque"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opaque"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::~Opaque()
@@ -4220,7 +4297,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::has_data() const
 {
-    for (std::size_t index=0; index<unknown_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unknown_tlv.len(); index++)
     {
         if(unknown_tlv[index]->has_data())
             return true;
@@ -4231,7 +4309,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::has_operation() const
 {
-    for (std::size_t index=0; index<unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_tlv.len(); index++)
     {
         if(unknown_tlv[index]->has_operation())
             return true;
@@ -4263,7 +4341,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::UnknownTlv>();
         c->parent = this;
-        unknown_tlv.push_back(c);
+        unknown_tlv.append(c);
         return c;
     }
 
@@ -4293,7 +4371,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : unknown_tlv)
+    for (auto c : unknown_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4336,7 +4414,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     value_{YType::str, "value"}
 {
 
-    yang_name = "unknown-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::UnknownTlv::~UnknownTlv()
@@ -4345,6 +4423,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::UnknownTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| length.is_set
 	|| value_.is_set;
@@ -4361,7 +4440,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::UnknownTlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "unknown-tlv" <<"[type='" <<type <<"']";
+    path_buffer << "unknown-tlv";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -4439,7 +4519,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     router_address{YType::str, "router-address"}
 {
 
-    yang_name = "router-address-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router-address-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv::~RouterAddressTlv()
@@ -4448,6 +4528,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return router_address.is_set;
 }
 
@@ -4522,9 +4603,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     max_reservable_bandwidth{YType::str, "max-reservable-bandwidth"},
     unreserved_bandwidth{YType::str, "unreserved-bandwidth"},
     admin_group{YType::uint32, "admin-group"}
+        ,
+    unknown_subtlv(this, {"type"})
 {
 
-    yang_name = "link-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::~LinkTlv()
@@ -4533,7 +4616,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::has_data() const
 {
-    for (std::size_t index=0; index<unknown_subtlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unknown_subtlv.len(); index++)
     {
         if(unknown_subtlv[index]->has_data())
             return true;
@@ -4559,7 +4643,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::has_operation() const
 {
-    for (std::size_t index=0; index<unknown_subtlv.size(); index++)
+    for (std::size_t index=0; index<unknown_subtlv.len(); index++)
     {
         if(unknown_subtlv[index]->has_operation())
             return true;
@@ -4619,7 +4703,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv>();
         c->parent = this;
-        unknown_subtlv.push_back(c);
+        unknown_subtlv.append(c);
         return c;
     }
 
@@ -4631,7 +4715,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : unknown_subtlv)
+    for (auto c : unknown_subtlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4750,7 +4834,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     value_{YType::str, "value"}
 {
 
-    yang_name = "unknown-subtlv"; yang_parent_name = "link-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-subtlv"; yang_parent_name = "link-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv::~UnknownSubtlv()
@@ -4759,6 +4843,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| length.is_set
 	|| value_.is_set;
@@ -4775,7 +4860,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "unknown-subtlv" <<"[type='" <<type <<"']";
+    path_buffer << "unknown-subtlv";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -4851,12 +4937,12 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Ospfv3()
     :
     header(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Header>())
-	,body(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body>())
+    , body(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body>())
 {
     header->parent = this;
     body->parent = this;
 
-    yang_name = "ospfv3"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::~Ospfv3()
@@ -4865,6 +4951,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (body !=  nullptr && body->has_data());
 }
@@ -4959,7 +5046,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     options{YType::bits, "options"}
 {
 
-    yang_name = "header"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Header::~Header()
@@ -4968,6 +5055,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| age.is_set
 	|| type.is_set
@@ -5123,13 +5211,13 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Body()
     :
     router(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router>())
-	,network(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Network>())
-	,inter_area_prefix(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaPrefix>())
-	,inter_area_router(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaRouter>())
-	,as_external(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::AsExternal>())
-	,nssa(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Nssa>())
-	,link(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link>())
-	,intra_area_prefix(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix>())
+    , network(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Network>())
+    , inter_area_prefix(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaPrefix>())
+    , inter_area_router(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaRouter>())
+    , as_external(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::AsExternal>())
+    , nssa(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Nssa>())
+    , link(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link>())
+    , intra_area_prefix(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix>())
 {
     router->parent = this;
     network->parent = this;
@@ -5140,7 +5228,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     link->parent = this;
     intra_area_prefix->parent = this;
 
-    yang_name = "body"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "body"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::~Body()
@@ -5149,6 +5237,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::has_data() const
 {
+    if (is_presence_container) return true;
     return (router !=  nullptr && router->has_data())
 	|| (network !=  nullptr && network->has_data())
 	|| (inter_area_prefix !=  nullptr && inter_area_prefix->has_data())
@@ -5331,9 +5420,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     :
     flags{YType::bits, "flags"},
     options{YType::bits, "options"}
+        ,
+    link(this, {"interface_id", "neighbor_interface_id", "neighbor_router_id"})
 {
 
-    yang_name = "router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::~Router()
@@ -5342,7 +5433,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::has_data() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_data())
             return true;
@@ -5353,7 +5445,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::has_operation() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_operation())
             return true;
@@ -5387,7 +5479,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link>();
         c->parent = this;
-        link.push_back(c);
+        link.append(c);
         return c;
     }
 
@@ -5399,7 +5491,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link)
+    for (auto c : link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5450,7 +5542,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "link"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link::~Link()
@@ -5459,6 +5551,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_id.is_set
 	|| neighbor_interface_id.is_set
 	|| neighbor_router_id.is_set
@@ -5479,7 +5572,10 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link" <<"[interface-id='" <<interface_id <<"']" <<"[neighbor-interface-id='" <<neighbor_interface_id <<"']" <<"[neighbor-router-id='" <<neighbor_router_id <<"']";
+    path_buffer << "link";
+    ADD_KEY_TOKEN(interface_id, "interface-id");
+    ADD_KEY_TOKEN(neighbor_interface_id, "neighbor-interface-id");
+    ADD_KEY_TOKEN(neighbor_router_id, "neighbor-router-id");
     return path_buffer.str();
 }
 
@@ -5580,7 +5676,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     attached_router{YType::str, "attached-router"}
 {
 
-    yang_name = "network"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Network::~Network()
@@ -5589,6 +5685,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -5678,7 +5775,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "inter-area-prefix"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inter-area-prefix"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaPrefix::~InterAreaPrefix()
@@ -5687,6 +5784,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| prefix.is_set
 	|| prefix_options.is_set;
@@ -5783,7 +5881,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     destination_router_id{YType::str, "destination-router-id"}
 {
 
-    yang_name = "inter-area-router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inter-area-router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaRouter::~InterAreaRouter()
@@ -5792,6 +5890,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaRouter::has_data() const
 {
+    if (is_presence_container) return true;
     return options.is_set
 	|| metric.is_set
 	|| destination_router_id.is_set;
@@ -5891,7 +5990,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
 {
 
-    yang_name = "as-external"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-external"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::AsExternal::~AsExternal()
@@ -5900,6 +5999,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::AsExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| flags.is_set
 	|| referenced_ls_type.is_set
@@ -6064,7 +6164,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
 {
 
-    yang_name = "nssa"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Nssa::~Nssa()
@@ -6073,6 +6173,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Nssa::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| flags.is_set
 	|| referenced_ls_type.is_set
@@ -6231,9 +6332,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     options{YType::bits, "options"},
     link_local_interface_address{YType::str, "link-local-interface-address"},
     num_of_prefixes{YType::uint32, "num-of-prefixes"}
+        ,
+    prefix_list(this, {"prefix"})
 {
 
-    yang_name = "link"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::~Link()
@@ -6242,7 +6345,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_data())
             return true;
@@ -6255,7 +6359,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_operation())
             return true;
@@ -6293,7 +6397,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList>();
         c->parent = this;
-        prefix_list.push_back(c);
+        prefix_list.append(c);
         return c;
     }
 
@@ -6305,7 +6409,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_list)
+    for (auto c : prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6375,7 +6479,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList::~PrefixList()
@@ -6384,6 +6488,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -6398,7 +6503,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -6466,9 +6572,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"},
     referenced_adv_router{YType::str, "referenced-adv-router"},
     num_of_prefixes{YType::uint16, "num-of-prefixes"}
+        ,
+    prefix_list(this, {"prefix"})
 {
 
-    yang_name = "intra-area-prefix"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "intra-area-prefix"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::~IntraAreaPrefix()
@@ -6477,7 +6585,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_data())
             return true;
@@ -6490,7 +6599,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_operation())
             return true;
@@ -6528,7 +6637,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList>();
         c->parent = this;
-        prefix_list.push_back(c);
+        prefix_list.append(c);
         return c;
     }
 
@@ -6540,7 +6649,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_list)
+    for (auto c : prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6613,7 +6722,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     metric{YType::uint32, "metric"}
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "intra-area-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "intra-area-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList::~PrefixList()
@@ -6622,6 +6731,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set
 	|| metric.is_set;
@@ -6638,7 +6748,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -6716,7 +6827,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     name{YType::str, "name"}
 {
 
-    yang_name = "topology"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Topology::~Topology()
@@ -6725,6 +6836,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -6737,7 +6849,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[name='" <<name <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -6791,9 +6904,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsas()
     :
     lsa_type{YType::uint8, "lsa-type"}
+        ,
+    area_scope_lsa(this, {"lsa_id", "adv_router"})
 {
 
-    yang_name = "area-scope-lsas"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area-scope-lsas"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::~AreaScopeLsas()
@@ -6802,7 +6917,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::has_data() const
 {
-    for (std::size_t index=0; index<area_scope_lsa.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<area_scope_lsa.len(); index++)
     {
         if(area_scope_lsa[index]->has_data())
             return true;
@@ -6812,7 +6928,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::has_operation() const
 {
-    for (std::size_t index=0; index<area_scope_lsa.size(); index++)
+    for (std::size_t index=0; index<area_scope_lsa.len(); index++)
     {
         if(area_scope_lsa[index]->has_operation())
             return true;
@@ -6824,7 +6940,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area-scope-lsas" <<"[lsa-type='" <<lsa_type <<"']";
+    path_buffer << "area-scope-lsas";
+    ADD_KEY_TOKEN(lsa_type, "lsa-type");
     return path_buffer.str();
 }
 
@@ -6844,7 +6961,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa>();
         c->parent = this;
-        area_scope_lsa.push_back(c);
+        area_scope_lsa.append(c);
         return c;
     }
 
@@ -6856,7 +6973,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : area_scope_lsa)
+    for (auto c : area_scope_lsa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6898,14 +7015,14 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     adv_router{YType::str, "adv-router"},
     decoded_completed{YType::boolean, "decoded-completed"},
     raw_data{YType::str, "raw-data"}
-    	,
+        ,
     ospfv2(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2>())
-	,ospfv3(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3>())
+    , ospfv3(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3>())
 {
     ospfv2->parent = this;
     ospfv3->parent = this;
 
-    yang_name = "area-scope-lsa"; yang_parent_name = "area-scope-lsas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area-scope-lsa"; yang_parent_name = "area-scope-lsas"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::~AreaScopeLsa()
@@ -6914,6 +7031,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| adv_router.is_set
 	|| decoded_completed.is_set
@@ -6936,7 +7054,9 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area-scope-lsa" <<"[lsa-id='" <<lsa_id <<"']" <<"[adv-router='" <<adv_router <<"']";
+    path_buffer << "area-scope-lsa";
+    ADD_KEY_TOKEN(lsa_id, "lsa-id");
+    ADD_KEY_TOKEN(adv_router, "adv-router");
     return path_buffer.str();
 }
 
@@ -7051,12 +7171,12 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Ospfv2()
     :
     header(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Header>())
-	,body(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body>())
+    , body(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body>())
 {
     header->parent = this;
     body->parent = this;
 
-    yang_name = "ospfv2"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::~Ospfv2()
@@ -7065,6 +7185,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (body !=  nullptr && body->has_data());
 }
@@ -7161,7 +7282,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     length{YType::uint16, "length"}
 {
 
-    yang_name = "header"; yang_parent_name = "ospfv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Header::~Header()
@@ -7170,6 +7291,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return options.is_set
 	|| lsa_id.is_set
 	|| opaque_type.is_set
@@ -7351,10 +7473,10 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Body()
     :
     router(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router>())
-	,network(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Network>())
-	,summary(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary>())
-	,external(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External>())
-	,opaque(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque>())
+    , network(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Network>())
+    , summary(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary>())
+    , external(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External>())
+    , opaque(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque>())
 {
     router->parent = this;
     network->parent = this;
@@ -7362,7 +7484,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     external->parent = this;
     opaque->parent = this;
 
-    yang_name = "body"; yang_parent_name = "ospfv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "body"; yang_parent_name = "ospfv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::~Body()
@@ -7371,6 +7493,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::has_data() const
 {
+    if (is_presence_container) return true;
     return (router !=  nullptr && router->has_data())
 	|| (network !=  nullptr && network->has_data())
 	|| (summary !=  nullptr && summary->has_data())
@@ -7505,9 +7628,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     :
     flags{YType::bits, "flags"},
     num_of_links{YType::uint16, "num-of-links"}
+        ,
+    link(this, {"link_id", "link_data"})
 {
 
-    yang_name = "router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::~Router()
@@ -7516,7 +7641,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::has_data() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_data())
             return true;
@@ -7527,7 +7653,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::has_operation() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_operation())
             return true;
@@ -7561,7 +7687,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link>();
         c->parent = this;
-        link.push_back(c);
+        link.append(c);
         return c;
     }
 
@@ -7573,7 +7699,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link)
+    for (auto c : link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7622,9 +7748,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     link_id{YType::str, "link-id"},
     link_data{YType::str, "link-data"},
     type{YType::uint8, "type"}
+        ,
+    topology(this, {"mt_id"})
 {
 
-    yang_name = "link"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::~Link()
@@ -7633,7 +7761,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::has_data() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -7645,7 +7774,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::has_operation() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -7659,7 +7788,9 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link" <<"[link-id='" <<link_id <<"']" <<"[link-data='" <<link_data <<"']";
+    path_buffer << "link";
+    ADD_KEY_TOKEN(link_id, "link-id");
+    ADD_KEY_TOKEN(link_data, "link-data");
     return path_buffer.str();
 }
 
@@ -7681,7 +7812,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -7693,7 +7824,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7755,7 +7886,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "topology"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology::~Topology()
@@ -7764,6 +7895,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -7778,7 +7910,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -7846,7 +7979,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     attached_router{YType::str, "attached-router"}
 {
 
-    yang_name = "network"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Network::~Network()
@@ -7855,6 +7988,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -7942,9 +8076,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Summary()
     :
     network_mask{YType::str, "network-mask"}
+        ,
+    topology(this, {"mt_id"})
 {
 
-    yang_name = "summary"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::~Summary()
@@ -7953,7 +8089,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::has_data() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -7963,7 +8100,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -7995,7 +8132,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -8007,7 +8144,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8049,7 +8186,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     metric{YType::uint32, "metric"}
 {
 
-    yang_name = "topology"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology::~Topology()
@@ -8058,6 +8195,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -8072,7 +8210,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -8137,9 +8276,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::External()
     :
     network_mask{YType::str, "network-mask"}
+        ,
+    topology(this, {"mt_id"})
 {
 
-    yang_name = "external"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "external"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::~External()
@@ -8148,7 +8289,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::has_data() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -8158,7 +8300,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::has_operation() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -8190,7 +8332,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -8202,7 +8344,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8247,7 +8389,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     external_route_tag{YType::uint32, "external-route-tag"}
 {
 
-    yang_name = "topology"; yang_parent_name = "external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology::~Topology()
@@ -8256,6 +8398,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| flags.is_set
 	|| metric.is_set
@@ -8276,7 +8419,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -8371,13 +8515,14 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::Opaque()
     :
-    router_address_tlv(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv>())
-	,link_tlv(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv>())
+    unknown_tlv(this, {"type"})
+    , router_address_tlv(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv>())
+    , link_tlv(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv>())
 {
     router_address_tlv->parent = this;
     link_tlv->parent = this;
 
-    yang_name = "opaque"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opaque"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::~Opaque()
@@ -8386,7 +8531,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::has_data() const
 {
-    for (std::size_t index=0; index<unknown_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unknown_tlv.len(); index++)
     {
         if(unknown_tlv[index]->has_data())
             return true;
@@ -8397,7 +8543,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::has_operation() const
 {
-    for (std::size_t index=0; index<unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_tlv.len(); index++)
     {
         if(unknown_tlv[index]->has_operation())
             return true;
@@ -8429,7 +8575,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::UnknownTlv>();
         c->parent = this;
-        unknown_tlv.push_back(c);
+        unknown_tlv.append(c);
         return c;
     }
 
@@ -8459,7 +8605,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : unknown_tlv)
+    for (auto c : unknown_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8502,7 +8648,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     value_{YType::str, "value"}
 {
 
-    yang_name = "unknown-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::UnknownTlv::~UnknownTlv()
@@ -8511,6 +8657,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::UnknownTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| length.is_set
 	|| value_.is_set;
@@ -8527,7 +8674,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::UnknownTlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "unknown-tlv" <<"[type='" <<type <<"']";
+    path_buffer << "unknown-tlv";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -8605,7 +8753,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     router_address{YType::str, "router-address"}
 {
 
-    yang_name = "router-address-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router-address-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv::~RouterAddressTlv()
@@ -8614,6 +8762,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return router_address.is_set;
 }
 
@@ -8688,9 +8837,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     max_reservable_bandwidth{YType::str, "max-reservable-bandwidth"},
     unreserved_bandwidth{YType::str, "unreserved-bandwidth"},
     admin_group{YType::uint32, "admin-group"}
+        ,
+    unknown_subtlv(this, {"type"})
 {
 
-    yang_name = "link-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::~LinkTlv()
@@ -8699,7 +8850,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::has_data() const
 {
-    for (std::size_t index=0; index<unknown_subtlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unknown_subtlv.len(); index++)
     {
         if(unknown_subtlv[index]->has_data())
             return true;
@@ -8725,7 +8877,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::has_operation() const
 {
-    for (std::size_t index=0; index<unknown_subtlv.size(); index++)
+    for (std::size_t index=0; index<unknown_subtlv.len(); index++)
     {
         if(unknown_subtlv[index]->has_operation())
             return true;
@@ -8785,7 +8937,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv>();
         c->parent = this;
-        unknown_subtlv.push_back(c);
+        unknown_subtlv.append(c);
         return c;
     }
 
@@ -8797,7 +8949,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : unknown_subtlv)
+    for (auto c : unknown_subtlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8916,7 +9068,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     value_{YType::str, "value"}
 {
 
-    yang_name = "unknown-subtlv"; yang_parent_name = "link-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-subtlv"; yang_parent_name = "link-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv::~UnknownSubtlv()
@@ -8925,6 +9077,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| length.is_set
 	|| value_.is_set;
@@ -8941,7 +9094,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "unknown-subtlv" <<"[type='" <<type <<"']";
+    path_buffer << "unknown-subtlv";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -9017,12 +9171,12 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Ospfv3()
     :
     header(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Header>())
-	,body(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body>())
+    , body(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body>())
 {
     header->parent = this;
     body->parent = this;
 
-    yang_name = "ospfv3"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::~Ospfv3()
@@ -9031,6 +9185,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (body !=  nullptr && body->has_data());
 }
@@ -9125,7 +9280,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     options{YType::bits, "options"}
 {
 
-    yang_name = "header"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Header::~Header()
@@ -9134,6 +9289,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| age.is_set
 	|| type.is_set
@@ -9289,13 +9445,13 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Body()
     :
     router(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router>())
-	,network(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Network>())
-	,inter_area_prefix(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaPrefix>())
-	,inter_area_router(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaRouter>())
-	,as_external(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::AsExternal>())
-	,nssa(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Nssa>())
-	,link(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link>())
-	,intra_area_prefix(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix>())
+    , network(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Network>())
+    , inter_area_prefix(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaPrefix>())
+    , inter_area_router(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaRouter>())
+    , as_external(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::AsExternal>())
+    , nssa(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Nssa>())
+    , link(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link>())
+    , intra_area_prefix(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix>())
 {
     router->parent = this;
     network->parent = this;
@@ -9306,7 +9462,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     link->parent = this;
     intra_area_prefix->parent = this;
 
-    yang_name = "body"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "body"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::~Body()
@@ -9315,6 +9471,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::has_data() const
 {
+    if (is_presence_container) return true;
     return (router !=  nullptr && router->has_data())
 	|| (network !=  nullptr && network->has_data())
 	|| (inter_area_prefix !=  nullptr && inter_area_prefix->has_data())
@@ -9497,9 +9654,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     :
     flags{YType::bits, "flags"},
     options{YType::bits, "options"}
+        ,
+    link(this, {"interface_id", "neighbor_interface_id", "neighbor_router_id"})
 {
 
-    yang_name = "router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::~Router()
@@ -9508,7 +9667,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::has_data() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_data())
             return true;
@@ -9519,7 +9679,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::has_operation() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_operation())
             return true;
@@ -9553,7 +9713,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link>();
         c->parent = this;
-        link.push_back(c);
+        link.append(c);
         return c;
     }
 
@@ -9565,7 +9725,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link)
+    for (auto c : link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9616,7 +9776,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "link"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link::~Link()
@@ -9625,6 +9785,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_id.is_set
 	|| neighbor_interface_id.is_set
 	|| neighbor_router_id.is_set
@@ -9645,7 +9806,10 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link" <<"[interface-id='" <<interface_id <<"']" <<"[neighbor-interface-id='" <<neighbor_interface_id <<"']" <<"[neighbor-router-id='" <<neighbor_router_id <<"']";
+    path_buffer << "link";
+    ADD_KEY_TOKEN(interface_id, "interface-id");
+    ADD_KEY_TOKEN(neighbor_interface_id, "neighbor-interface-id");
+    ADD_KEY_TOKEN(neighbor_router_id, "neighbor-router-id");
     return path_buffer.str();
 }
 
@@ -9746,7 +9910,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     attached_router{YType::str, "attached-router"}
 {
 
-    yang_name = "network"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Network::~Network()
@@ -9755,6 +9919,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -9844,7 +10009,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "inter-area-prefix"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inter-area-prefix"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaPrefix::~InterAreaPrefix()
@@ -9853,6 +10018,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| prefix.is_set
 	|| prefix_options.is_set;
@@ -9949,7 +10115,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     destination_router_id{YType::str, "destination-router-id"}
 {
 
-    yang_name = "inter-area-router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inter-area-router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaRouter::~InterAreaRouter()
@@ -9958,6 +10124,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaRouter::has_data() const
 {
+    if (is_presence_container) return true;
     return options.is_set
 	|| metric.is_set
 	|| destination_router_id.is_set;
@@ -10057,7 +10224,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
 {
 
-    yang_name = "as-external"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-external"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::AsExternal::~AsExternal()
@@ -10066,6 +10233,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::AsExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| flags.is_set
 	|| referenced_ls_type.is_set
@@ -10230,7 +10398,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
 {
 
-    yang_name = "nssa"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Nssa::~Nssa()
@@ -10239,6 +10407,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Nssa::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| flags.is_set
 	|| referenced_ls_type.is_set
@@ -10397,9 +10566,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     options{YType::bits, "options"},
     link_local_interface_address{YType::str, "link-local-interface-address"},
     num_of_prefixes{YType::uint32, "num-of-prefixes"}
+        ,
+    prefix_list(this, {"prefix"})
 {
 
-    yang_name = "link"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::~Link()
@@ -10408,7 +10579,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_data())
             return true;
@@ -10421,7 +10593,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_operation())
             return true;
@@ -10459,7 +10631,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList>();
         c->parent = this;
-        prefix_list.push_back(c);
+        prefix_list.append(c);
         return c;
     }
 
@@ -10471,7 +10643,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_list)
+    for (auto c : prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10541,7 +10713,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList::~PrefixList()
@@ -10550,6 +10722,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -10564,7 +10737,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -10632,9 +10806,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"},
     referenced_adv_router{YType::str, "referenced-adv-router"},
     num_of_prefixes{YType::uint16, "num-of-prefixes"}
+        ,
+    prefix_list(this, {"prefix"})
 {
 
-    yang_name = "intra-area-prefix"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "intra-area-prefix"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::~IntraAreaPrefix()
@@ -10643,7 +10819,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_data())
             return true;
@@ -10656,7 +10833,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_operation())
             return true;
@@ -10694,7 +10871,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList>();
         c->parent = this;
-        prefix_list.push_back(c);
+        prefix_list.append(c);
         return c;
     }
 
@@ -10706,7 +10883,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_list)
+    for (auto c : prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10779,7 +10956,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     metric{YType::uint32, "metric"}
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "intra-area-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "intra-area-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList::~PrefixList()
@@ -10788,6 +10965,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set
 	|| metric.is_set;
@@ -10804,7 +10982,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -10880,9 +11059,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsas()
     :
     lsa_type{YType::uint8, "lsa-type"}
+        ,
+    as_scope_lsa(this, {"lsa_id", "adv_router"})
 {
 
-    yang_name = "as-scope-lsas"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-scope-lsas"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::~AsScopeLsas()
@@ -10891,7 +11072,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::has_data() const
 {
-    for (std::size_t index=0; index<as_scope_lsa.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<as_scope_lsa.len(); index++)
     {
         if(as_scope_lsa[index]->has_data())
             return true;
@@ -10901,7 +11083,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::has_operation() const
 {
-    for (std::size_t index=0; index<as_scope_lsa.size(); index++)
+    for (std::size_t index=0; index<as_scope_lsa.len(); index++)
     {
         if(as_scope_lsa[index]->has_operation())
             return true;
@@ -10913,7 +11095,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "as-scope-lsas" <<"[lsa-type='" <<lsa_type <<"']";
+    path_buffer << "as-scope-lsas";
+    ADD_KEY_TOKEN(lsa_type, "lsa-type");
     return path_buffer.str();
 }
 
@@ -10933,7 +11116,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa>();
         c->parent = this;
-        as_scope_lsa.push_back(c);
+        as_scope_lsa.append(c);
         return c;
     }
 
@@ -10945,7 +11128,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : as_scope_lsa)
+    for (auto c : as_scope_lsa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10987,14 +11170,14 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     adv_router{YType::str, "adv-router"},
     decoded_completed{YType::boolean, "decoded-completed"},
     raw_data{YType::str, "raw-data"}
-    	,
+        ,
     ospfv2(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2>())
-	,ospfv3(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3>())
+    , ospfv3(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3>())
 {
     ospfv2->parent = this;
     ospfv3->parent = this;
 
-    yang_name = "as-scope-lsa"; yang_parent_name = "as-scope-lsas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-scope-lsa"; yang_parent_name = "as-scope-lsas"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::~AsScopeLsa()
@@ -11003,6 +11186,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| adv_router.is_set
 	|| decoded_completed.is_set
@@ -11025,7 +11209,9 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "as-scope-lsa" <<"[lsa-id='" <<lsa_id <<"']" <<"[adv-router='" <<adv_router <<"']";
+    path_buffer << "as-scope-lsa";
+    ADD_KEY_TOKEN(lsa_id, "lsa-id");
+    ADD_KEY_TOKEN(adv_router, "adv-router");
     return path_buffer.str();
 }
 
@@ -11140,12 +11326,12 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Ospfv2()
     :
     header(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Header>())
-	,body(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body>())
+    , body(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body>())
 {
     header->parent = this;
     body->parent = this;
 
-    yang_name = "ospfv2"; yang_parent_name = "as-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2"; yang_parent_name = "as-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::~Ospfv2()
@@ -11154,6 +11340,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (body !=  nullptr && body->has_data());
 }
@@ -11250,7 +11437,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     length{YType::uint16, "length"}
 {
 
-    yang_name = "header"; yang_parent_name = "ospfv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Header::~Header()
@@ -11259,6 +11446,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return options.is_set
 	|| lsa_id.is_set
 	|| opaque_type.is_set
@@ -11440,10 +11628,10 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Body()
     :
     router(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router>())
-	,network(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Network>())
-	,summary(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary>())
-	,external(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External>())
-	,opaque(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque>())
+    , network(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Network>())
+    , summary(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary>())
+    , external(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External>())
+    , opaque(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque>())
 {
     router->parent = this;
     network->parent = this;
@@ -11451,7 +11639,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     external->parent = this;
     opaque->parent = this;
 
-    yang_name = "body"; yang_parent_name = "ospfv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "body"; yang_parent_name = "ospfv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::~Body()
@@ -11460,6 +11648,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::has_data() const
 {
+    if (is_presence_container) return true;
     return (router !=  nullptr && router->has_data())
 	|| (network !=  nullptr && network->has_data())
 	|| (summary !=  nullptr && summary->has_data())
@@ -11594,9 +11783,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     :
     flags{YType::bits, "flags"},
     num_of_links{YType::uint16, "num-of-links"}
+        ,
+    link(this, {"link_id", "link_data"})
 {
 
-    yang_name = "router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::~Router()
@@ -11605,7 +11796,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::has_data() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_data())
             return true;
@@ -11616,7 +11808,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::has_operation() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_operation())
             return true;
@@ -11650,7 +11842,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link>();
         c->parent = this;
-        link.push_back(c);
+        link.append(c);
         return c;
     }
 
@@ -11662,7 +11854,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link)
+    for (auto c : link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11711,9 +11903,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     link_id{YType::str, "link-id"},
     link_data{YType::str, "link-data"},
     type{YType::uint8, "type"}
+        ,
+    topology(this, {"mt_id"})
 {
 
-    yang_name = "link"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::~Link()
@@ -11722,7 +11916,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::has_data() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -11734,7 +11929,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::has_operation() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -11748,7 +11943,9 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link" <<"[link-id='" <<link_id <<"']" <<"[link-data='" <<link_data <<"']";
+    path_buffer << "link";
+    ADD_KEY_TOKEN(link_id, "link-id");
+    ADD_KEY_TOKEN(link_data, "link-data");
     return path_buffer.str();
 }
 
@@ -11770,7 +11967,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -11782,7 +11979,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11844,7 +12041,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "topology"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology::~Topology()
@@ -11853,6 +12050,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -11867,7 +12065,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -11935,7 +12134,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     attached_router{YType::str, "attached-router"}
 {
 
-    yang_name = "network"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Network::~Network()
@@ -11944,6 +12143,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -12031,9 +12231,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Summary()
     :
     network_mask{YType::str, "network-mask"}
+        ,
+    topology(this, {"mt_id"})
 {
 
-    yang_name = "summary"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::~Summary()
@@ -12042,7 +12244,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::has_data() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -12052,7 +12255,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -12084,7 +12287,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -12096,7 +12299,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12138,7 +12341,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     metric{YType::uint32, "metric"}
 {
 
-    yang_name = "topology"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology::~Topology()
@@ -12147,6 +12350,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -12161,7 +12365,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -12226,9 +12431,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::External()
     :
     network_mask{YType::str, "network-mask"}
+        ,
+    topology(this, {"mt_id"})
 {
 
-    yang_name = "external"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "external"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::~External()
@@ -12237,7 +12444,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::has_data() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -12247,7 +12455,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::has_operation() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -12279,7 +12487,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -12291,7 +12499,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12336,7 +12544,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     external_route_tag{YType::uint32, "external-route-tag"}
 {
 
-    yang_name = "topology"; yang_parent_name = "external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology::~Topology()
@@ -12345,6 +12553,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| flags.is_set
 	|| metric.is_set
@@ -12365,7 +12574,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -12460,13 +12670,14 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::Opaque()
     :
-    router_address_tlv(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv>())
-	,link_tlv(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv>())
+    unknown_tlv(this, {"type"})
+    , router_address_tlv(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv>())
+    , link_tlv(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv>())
 {
     router_address_tlv->parent = this;
     link_tlv->parent = this;
 
-    yang_name = "opaque"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opaque"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::~Opaque()
@@ -12475,7 +12686,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::has_data() const
 {
-    for (std::size_t index=0; index<unknown_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unknown_tlv.len(); index++)
     {
         if(unknown_tlv[index]->has_data())
             return true;
@@ -12486,7 +12698,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::has_operation() const
 {
-    for (std::size_t index=0; index<unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_tlv.len(); index++)
     {
         if(unknown_tlv[index]->has_operation())
             return true;
@@ -12518,7 +12730,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::UnknownTlv>();
         c->parent = this;
-        unknown_tlv.push_back(c);
+        unknown_tlv.append(c);
         return c;
     }
 
@@ -12548,7 +12760,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : unknown_tlv)
+    for (auto c : unknown_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12591,7 +12803,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     value_{YType::str, "value"}
 {
 
-    yang_name = "unknown-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::UnknownTlv::~UnknownTlv()
@@ -12600,6 +12812,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::UnknownTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| length.is_set
 	|| value_.is_set;
@@ -12616,7 +12829,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::UnknownTlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "unknown-tlv" <<"[type='" <<type <<"']";
+    path_buffer << "unknown-tlv";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -12694,7 +12908,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     router_address{YType::str, "router-address"}
 {
 
-    yang_name = "router-address-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router-address-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv::~RouterAddressTlv()
@@ -12703,6 +12917,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return router_address.is_set;
 }
 
@@ -12777,9 +12992,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     max_reservable_bandwidth{YType::str, "max-reservable-bandwidth"},
     unreserved_bandwidth{YType::str, "unreserved-bandwidth"},
     admin_group{YType::uint32, "admin-group"}
+        ,
+    unknown_subtlv(this, {"type"})
 {
 
-    yang_name = "link-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-tlv"; yang_parent_name = "opaque"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::~LinkTlv()
@@ -12788,7 +13005,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::has_data() const
 {
-    for (std::size_t index=0; index<unknown_subtlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unknown_subtlv.len(); index++)
     {
         if(unknown_subtlv[index]->has_data())
             return true;
@@ -12814,7 +13032,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::has_operation() const
 {
-    for (std::size_t index=0; index<unknown_subtlv.size(); index++)
+    for (std::size_t index=0; index<unknown_subtlv.len(); index++)
     {
         if(unknown_subtlv[index]->has_operation())
             return true;
@@ -12874,7 +13092,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv>();
         c->parent = this;
-        unknown_subtlv.push_back(c);
+        unknown_subtlv.append(c);
         return c;
     }
 
@@ -12886,7 +13104,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : unknown_subtlv)
+    for (auto c : unknown_subtlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13005,7 +13223,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     value_{YType::str, "value"}
 {
 
-    yang_name = "unknown-subtlv"; yang_parent_name = "link-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-subtlv"; yang_parent_name = "link-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv::~UnknownSubtlv()
@@ -13014,6 +13232,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| length.is_set
 	|| value_.is_set;
@@ -13030,7 +13249,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "unknown-subtlv" <<"[type='" <<type <<"']";
+    path_buffer << "unknown-subtlv";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -13106,12 +13326,12 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Ospfv3()
     :
     header(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Header>())
-	,body(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body>())
+    , body(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body>())
 {
     header->parent = this;
     body->parent = this;
 
-    yang_name = "ospfv3"; yang_parent_name = "as-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3"; yang_parent_name = "as-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::~Ospfv3()
@@ -13120,6 +13340,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (body !=  nullptr && body->has_data());
 }
@@ -13214,7 +13435,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     options{YType::bits, "options"}
 {
 
-    yang_name = "header"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Header::~Header()
@@ -13223,6 +13444,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| age.is_set
 	|| type.is_set
@@ -13378,13 +13600,13 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Body()
     :
     router(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router>())
-	,network(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Network>())
-	,inter_area_prefix(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaPrefix>())
-	,inter_area_router(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaRouter>())
-	,as_external(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::AsExternal>())
-	,nssa(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Nssa>())
-	,link(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link>())
-	,intra_area_prefix(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix>())
+    , network(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Network>())
+    , inter_area_prefix(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaPrefix>())
+    , inter_area_router(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaRouter>())
+    , as_external(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::AsExternal>())
+    , nssa(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Nssa>())
+    , link(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link>())
+    , intra_area_prefix(std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix>())
 {
     router->parent = this;
     network->parent = this;
@@ -13395,7 +13617,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     link->parent = this;
     intra_area_prefix->parent = this;
 
-    yang_name = "body"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "body"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::~Body()
@@ -13404,6 +13626,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::has_data() const
 {
+    if (is_presence_container) return true;
     return (router !=  nullptr && router->has_data())
 	|| (network !=  nullptr && network->has_data())
 	|| (inter_area_prefix !=  nullptr && inter_area_prefix->has_data())
@@ -13586,9 +13809,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     :
     flags{YType::bits, "flags"},
     options{YType::bits, "options"}
+        ,
+    link(this, {"interface_id", "neighbor_interface_id", "neighbor_router_id"})
 {
 
-    yang_name = "router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::~Router()
@@ -13597,7 +13822,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::has_data() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_data())
             return true;
@@ -13608,7 +13834,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::has_operation() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_operation())
             return true;
@@ -13642,7 +13868,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link>();
         c->parent = this;
-        link.push_back(c);
+        link.append(c);
         return c;
     }
 
@@ -13654,7 +13880,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link)
+    for (auto c : link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13705,7 +13931,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "link"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link::~Link()
@@ -13714,6 +13940,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_id.is_set
 	|| neighbor_interface_id.is_set
 	|| neighbor_router_id.is_set
@@ -13734,7 +13961,10 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link" <<"[interface-id='" <<interface_id <<"']" <<"[neighbor-interface-id='" <<neighbor_interface_id <<"']" <<"[neighbor-router-id='" <<neighbor_router_id <<"']";
+    path_buffer << "link";
+    ADD_KEY_TOKEN(interface_id, "interface-id");
+    ADD_KEY_TOKEN(neighbor_interface_id, "neighbor-interface-id");
+    ADD_KEY_TOKEN(neighbor_router_id, "neighbor-router-id");
     return path_buffer.str();
 }
 
@@ -13835,7 +14065,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     attached_router{YType::str, "attached-router"}
 {
 
-    yang_name = "network"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Network::~Network()
@@ -13844,6 +14074,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -13933,7 +14164,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "inter-area-prefix"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inter-area-prefix"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaPrefix::~InterAreaPrefix()
@@ -13942,6 +14173,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| prefix.is_set
 	|| prefix_options.is_set;
@@ -14038,7 +14270,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     destination_router_id{YType::str, "destination-router-id"}
 {
 
-    yang_name = "inter-area-router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inter-area-router"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaRouter::~InterAreaRouter()
@@ -14047,6 +14279,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaRouter::has_data() const
 {
+    if (is_presence_container) return true;
     return options.is_set
 	|| metric.is_set
 	|| destination_router_id.is_set;
@@ -14146,7 +14379,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
 {
 
-    yang_name = "as-external"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-external"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::AsExternal::~AsExternal()
@@ -14155,6 +14388,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::AsExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| flags.is_set
 	|| referenced_ls_type.is_set
@@ -14319,7 +14553,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
 {
 
-    yang_name = "nssa"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Nssa::~Nssa()
@@ -14328,6 +14562,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Nssa::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| flags.is_set
 	|| referenced_ls_type.is_set
@@ -14486,9 +14721,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     options{YType::bits, "options"},
     link_local_interface_address{YType::str, "link-local-interface-address"},
     num_of_prefixes{YType::uint32, "num-of-prefixes"}
+        ,
+    prefix_list(this, {"prefix"})
 {
 
-    yang_name = "link"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::~Link()
@@ -14497,7 +14734,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_data())
             return true;
@@ -14510,7 +14748,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_operation())
             return true;
@@ -14548,7 +14786,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList>();
         c->parent = this;
-        prefix_list.push_back(c);
+        prefix_list.append(c);
         return c;
     }
 
@@ -14560,7 +14798,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_list)
+    for (auto c : prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14630,7 +14868,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList::~PrefixList()
@@ -14639,6 +14877,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -14653,7 +14892,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -14721,9 +14961,11 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"},
     referenced_adv_router{YType::str, "referenced-adv-router"},
     num_of_prefixes{YType::uint16, "num-of-prefixes"}
+        ,
+    prefix_list(this, {"prefix"})
 {
 
-    yang_name = "intra-area-prefix"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "intra-area-prefix"; yang_parent_name = "body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::~IntraAreaPrefix()
@@ -14732,7 +14974,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_data())
             return true;
@@ -14745,7 +14988,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_operation())
             return true;
@@ -14783,7 +15026,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList>();
         c->parent = this;
-        prefix_list.push_back(c);
+        prefix_list.append(c);
         return c;
     }
 
@@ -14795,7 +15038,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_list)
+    for (auto c : prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14868,7 +15111,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     metric{YType::uint32, "metric"}
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "intra-area-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "intra-area-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList::~PrefixList()
@@ -14877,6 +15120,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set
 	|| metric.is_set;
@@ -14893,7 +15137,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -14969,9 +15214,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Topology()
     :
     name{YType::str, "name"}
+        ,
+    area(this, {"area_id"})
 {
 
-    yang_name = "topology"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::~Topology()
@@ -14980,7 +15227,8 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::has_data() const
 {
-    for (std::size_t index=0; index<area.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<area.len(); index++)
     {
         if(area[index]->has_data())
             return true;
@@ -14990,7 +15238,7 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::has_operation() const
 {
-    for (std::size_t index=0; index<area.size(); index++)
+    for (std::size_t index=0; index<area.len(); index++)
     {
         if(area[index]->has_operation())
             return true;
@@ -15002,7 +15250,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[name='" <<name <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -15022,7 +15271,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area>();
         c->parent = this;
-        area.push_back(c);
+        area.append(c);
         return c;
     }
 
@@ -15034,7 +15283,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : area)
+    for (auto c : area.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15075,7 +15324,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
     area_id{YType::str, "area-id"}
 {
 
-    yang_name = "area"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::~Area()
@@ -15084,6 +15333,7 @@ RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::has_data() const
 {
+    if (is_presence_container) return true;
     return area_id.is_set;
 }
 
@@ -15096,7 +15346,8 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 std::string RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area" <<"[area-id='" <<area_id <<"']";
+    path_buffer << "area";
+    ADD_KEY_TOKEN(area_id, "area-id");
     return path_buffer.str();
 }
 
@@ -15148,9 +15399,11 @@ bool RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ins
 }
 
 RoutingState::RoutingInstance::Ribs::Ribs()
+    :
+    rib(this, {"name"})
 {
 
-    yang_name = "ribs"; yang_parent_name = "routing-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ribs"; yang_parent_name = "routing-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::Ribs::~Ribs()
@@ -15159,7 +15412,8 @@ RoutingState::RoutingInstance::Ribs::~Ribs()
 
 bool RoutingState::RoutingInstance::Ribs::has_data() const
 {
-    for (std::size_t index=0; index<rib.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rib.len(); index++)
     {
         if(rib[index]->has_data())
             return true;
@@ -15169,7 +15423,7 @@ bool RoutingState::RoutingInstance::Ribs::has_data() const
 
 bool RoutingState::RoutingInstance::Ribs::has_operation() const
 {
-    for (std::size_t index=0; index<rib.size(); index++)
+    for (std::size_t index=0; index<rib.len(); index++)
     {
         if(rib[index]->has_operation())
             return true;
@@ -15199,7 +15453,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::Ribs::get_child_by_name(c
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::Ribs::Rib>();
         c->parent = this;
-        rib.push_back(c);
+        rib.append(c);
         return c;
     }
 
@@ -15211,7 +15465,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ri
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rib)
+    for (auto c : rib.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15242,12 +15496,12 @@ RoutingState::RoutingInstance::Ribs::Rib::Rib()
     name{YType::str, "name"},
     address_family{YType::identityref, "address-family"},
     default_rib{YType::boolean, "default-rib"}
-    	,
+        ,
     routes(std::make_shared<RoutingState::RoutingInstance::Ribs::Rib::Routes>())
 {
     routes->parent = this;
 
-    yang_name = "rib"; yang_parent_name = "ribs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rib"; yang_parent_name = "ribs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::Ribs::Rib::~Rib()
@@ -15256,6 +15510,7 @@ RoutingState::RoutingInstance::Ribs::Rib::~Rib()
 
 bool RoutingState::RoutingInstance::Ribs::Rib::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address_family.is_set
 	|| default_rib.is_set
@@ -15274,7 +15529,8 @@ bool RoutingState::RoutingInstance::Ribs::Rib::has_operation() const
 std::string RoutingState::RoutingInstance::Ribs::Rib::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rib" <<"[name='" <<name <<"']";
+    path_buffer << "rib";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -15362,9 +15618,11 @@ bool RoutingState::RoutingInstance::Ribs::Rib::has_leaf_or_child_of_name(const s
 }
 
 RoutingState::RoutingInstance::Ribs::Rib::Routes::Routes()
+    :
+    route(this, {"destination_prefix"})
 {
 
-    yang_name = "routes"; yang_parent_name = "rib"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routes"; yang_parent_name = "rib"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::Ribs::Rib::Routes::~Routes()
@@ -15373,7 +15631,8 @@ RoutingState::RoutingInstance::Ribs::Rib::Routes::~Routes()
 
 bool RoutingState::RoutingInstance::Ribs::Rib::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -15383,7 +15642,7 @@ bool RoutingState::RoutingInstance::Ribs::Rib::Routes::has_data() const
 
 bool RoutingState::RoutingInstance::Ribs::Rib::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -15413,7 +15672,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::Ribs::Rib::Routes::get_ch
     {
         auto c = std::make_shared<RoutingState::RoutingInstance::Ribs::Rib::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -15425,7 +15684,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ri
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15462,12 +15721,12 @@ RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::Route()
     update_source{YType::str, "update-source"},
     tag{YType::uint32, "ietf-ospf:tag"},
     route_type{YType::enumeration, "ietf-ospf:route-type"}
-    	,
+        ,
     next_hop(std::make_shared<RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::~Route()
@@ -15476,6 +15735,7 @@ RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::~Route()
 
 bool RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_prefix.is_set
 	|| route_preference.is_set
 	|| metric.is_set
@@ -15506,7 +15766,8 @@ bool RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::has_operation() co
 std::string RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "route" <<"[destination-prefix='" <<destination_prefix <<"']";
+    path_buffer << "route";
+    ADD_KEY_TOKEN(destination_prefix, "destination-prefix");
     return path_buffer.str();
 }
 
@@ -15666,7 +15927,7 @@ RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::NextHop()
     special_next_hop{YType::enumeration, "special-next-hop"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::~NextHop()
@@ -15675,6 +15936,7 @@ RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::~NextHop()
 
 bool RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return outgoing_interface.is_set
 	|| next_hop_address.is_set
 	|| special_next_hop.is_set;
@@ -15765,9 +16027,11 @@ bool RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::has_leaf_
 }
 
 Routing::Routing()
+    :
+    routing_instance(this, {"name"})
 {
 
-    yang_name = "routing"; yang_parent_name = "ietf-routing"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing"; yang_parent_name = "ietf-routing"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Routing::~Routing()
@@ -15776,7 +16040,8 @@ Routing::~Routing()
 
 bool Routing::has_data() const
 {
-    for (std::size_t index=0; index<routing_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<routing_instance.len(); index++)
     {
         if(routing_instance[index]->has_data())
             return true;
@@ -15786,7 +16051,7 @@ bool Routing::has_data() const
 
 bool Routing::has_operation() const
 {
-    for (std::size_t index=0; index<routing_instance.size(); index++)
+    for (std::size_t index=0; index<routing_instance.len(); index++)
     {
         if(routing_instance[index]->has_operation())
             return true;
@@ -15816,7 +16081,7 @@ std::shared_ptr<Entity> Routing::get_child_by_name(const std::string & child_yan
     {
         auto c = std::make_shared<Routing::RoutingInstance>();
         c->parent = this;
-        routing_instance.push_back(c);
+        routing_instance.append(c);
         return c;
     }
 
@@ -15828,7 +16093,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : routing_instance)
+    for (auto c : routing_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15886,16 +16151,16 @@ Routing::RoutingInstance::RoutingInstance()
     enabled{YType::boolean, "enabled"},
     router_id{YType::str, "router-id"},
     description{YType::str, "description"}
-    	,
+        ,
     interfaces(std::make_shared<Routing::RoutingInstance::Interfaces>())
-	,routing_protocols(std::make_shared<Routing::RoutingInstance::RoutingProtocols>())
-	,ribs(std::make_shared<Routing::RoutingInstance::Ribs>())
+    , routing_protocols(std::make_shared<Routing::RoutingInstance::RoutingProtocols>())
+    , ribs(std::make_shared<Routing::RoutingInstance::Ribs>())
 {
     interfaces->parent = this;
     routing_protocols->parent = this;
     ribs->parent = this;
 
-    yang_name = "routing-instance"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "routing-instance"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Routing::RoutingInstance::~RoutingInstance()
@@ -15904,6 +16169,7 @@ Routing::RoutingInstance::~RoutingInstance()
 
 bool Routing::RoutingInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| type.is_set
 	|| enabled.is_set
@@ -15937,7 +16203,8 @@ std::string Routing::RoutingInstance::get_absolute_path() const
 std::string Routing::RoutingInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "routing-instance" <<"[name='" <<name <<"']";
+    path_buffer << "routing-instance";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -16079,7 +16346,7 @@ Routing::RoutingInstance::Interfaces::Interfaces()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "interfaces"; yang_parent_name = "routing-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "routing-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::Interfaces::~Interfaces()
@@ -16088,6 +16355,7 @@ Routing::RoutingInstance::Interfaces::~Interfaces()
 
 bool Routing::RoutingInstance::Interfaces::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : interface.getYLeafs())
     {
         if(leaf.is_set)
@@ -16161,9 +16429,11 @@ bool Routing::RoutingInstance::Interfaces::has_leaf_or_child_of_name(const std::
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocols()
+    :
+    routing_protocol(this, {"type", "name"})
 {
 
-    yang_name = "routing-protocols"; yang_parent_name = "routing-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routing-protocols"; yang_parent_name = "routing-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::~RoutingProtocols()
@@ -16172,7 +16442,8 @@ Routing::RoutingInstance::RoutingProtocols::~RoutingProtocols()
 
 bool Routing::RoutingInstance::RoutingProtocols::has_data() const
 {
-    for (std::size_t index=0; index<routing_protocol.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<routing_protocol.len(); index++)
     {
         if(routing_protocol[index]->has_data())
             return true;
@@ -16182,7 +16453,7 @@ bool Routing::RoutingInstance::RoutingProtocols::has_data() const
 
 bool Routing::RoutingInstance::RoutingProtocols::has_operation() const
 {
-    for (std::size_t index=0; index<routing_protocol.size(); index++)
+    for (std::size_t index=0; index<routing_protocol.len(); index++)
     {
         if(routing_protocol[index]->has_operation())
             return true;
@@ -16212,7 +16483,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::get_child_by
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol>();
         c->parent = this;
-        routing_protocol.push_back(c);
+        routing_protocol.append(c);
         return c;
     }
 
@@ -16224,7 +16495,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : routing_protocol)
+    for (auto c : routing_protocol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16255,14 +16526,14 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::RoutingProtocol()
     type{YType::identityref, "type"},
     name{YType::str, "name"},
     description{YType::str, "description"}
-    	,
+        ,
     static_routes(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes>())
-	,ospf(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf>())
+    , ospf(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf>())
 {
     static_routes->parent = this;
     ospf->parent = this;
 
-    yang_name = "routing-protocol"; yang_parent_name = "routing-protocols"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routing-protocol"; yang_parent_name = "routing-protocols"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::~RoutingProtocol()
@@ -16271,6 +16542,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::~RoutingProtocol()
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| name.is_set
 	|| description.is_set
@@ -16291,7 +16563,9 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::has_operation(
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "routing-protocol" <<"[type='" <<type <<"']" <<"[name='" <<name <<"']";
+    path_buffer << "routing-protocol";
+    ADD_KEY_TOKEN(type, "type");
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -16394,13 +16668,13 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::has_leaf_or_ch
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::StaticRoutes()
     :
-    ipv4(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4>())
-	,ipv6(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6>())
+    ipv6(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6>())
+    , ipv4(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4>())
 {
-    ipv4->parent = this;
     ipv6->parent = this;
+    ipv4->parent = this;
 
-    yang_name = "static-routes"; yang_parent_name = "routing-protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-routes"; yang_parent_name = "routing-protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::~StaticRoutes()
@@ -16409,15 +16683,16 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::~Stat
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::has_data() const
 {
-    return (ipv4 !=  nullptr && ipv4->has_data())
-	|| (ipv6 !=  nullptr && ipv6->has_data());
+    if (is_presence_container) return true;
+    return (ipv6 !=  nullptr && ipv6->has_data())
+	|| (ipv4 !=  nullptr && ipv4->has_data());
 }
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::has_operation() const
 {
     return is_set(yfilter)
-	|| (ipv4 !=  nullptr && ipv4->has_operation())
-	|| (ipv6 !=  nullptr && ipv6->has_operation());
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation());
 }
 
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::get_segment_path() const
@@ -16438,15 +16713,6 @@ std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::Routing
 
 std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ietf-ipv4-unicast-routing:ipv4")
-    {
-        if(ipv4 == nullptr)
-        {
-            ipv4 = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4>();
-        }
-        return ipv4;
-    }
-
     if(child_yang_name == "ietf-ipv6-unicast-routing:ipv6")
     {
         if(ipv6 == nullptr)
@@ -16456,6 +16722,15 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
         return ipv6;
     }
 
+    if(child_yang_name == "ietf-ipv4-unicast-routing:ipv4")
+    {
+        if(ipv4 == nullptr)
+        {
+            ipv4 = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4>();
+        }
+        return ipv4;
+    }
+
     return nullptr;
 }
 
@@ -16463,14 +16738,14 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(ipv4 != nullptr)
-    {
-        children["ietf-ipv4-unicast-routing:ipv4"] = ipv4;
-    }
-
     if(ipv6 != nullptr)
     {
         children["ietf-ipv6-unicast-routing:ipv6"] = ipv6;
+    }
+
+    if(ipv4 != nullptr)
+    {
+        children["ietf-ipv4-unicast-routing:ipv4"] = ipv4;
     }
 
     return children;
@@ -16486,320 +16761,17 @@ void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv4" || name == "ipv6")
-        return true;
-    return false;
-}
-
-Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Ipv4()
-{
-
-    yang_name = "ipv4"; yang_parent_name = "static-routes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::~Ipv4()
-{
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::has_data() const
-{
-    for (std::size_t index=0; index<route.size(); index++)
-    {
-        if(route[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::has_operation() const
-{
-    for (std::size_t index=0; index<route.size(); index++)
-    {
-        if(route[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ietf-ipv4-unicast-routing:ipv4";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "route")
-    {
-        auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route>();
-        c->parent = this;
-        route.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : route)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "route")
-        return true;
-    return false;
-}
-
-Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::Route()
-    :
-    destination_prefix{YType::str, "destination-prefix"},
-    description{YType::str, "description"}
-    	,
-    next_hop(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop>())
-{
-    next_hop->parent = this;
-
-    yang_name = "route"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::~Route()
-{
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::has_data() const
-{
-    return destination_prefix.is_set
-	|| description.is_set
-	|| (next_hop !=  nullptr && next_hop->has_data());
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_prefix.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| (next_hop !=  nullptr && next_hop->has_operation());
-}
-
-std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "route" <<"[destination-prefix='" <<destination_prefix <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_prefix.is_set || is_set(destination_prefix.yfilter)) leaf_name_data.push_back(destination_prefix.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "next-hop")
-    {
-        if(next_hop == nullptr)
-        {
-            next_hop = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop>();
-        }
-        return next_hop;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(next_hop != nullptr)
-    {
-        children["next-hop"] = next_hop;
-    }
-
-    return children;
-}
-
-void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-prefix")
-    {
-        destination_prefix = value;
-        destination_prefix.value_namespace = name_space;
-        destination_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-prefix")
-    {
-        destination_prefix.yfilter = yfilter;
-    }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "next-hop" || name == "destination-prefix" || name == "description")
-        return true;
-    return false;
-}
-
-Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::NextHop()
-    :
-    outgoing_interface{YType::str, "outgoing-interface"},
-    special_next_hop{YType::enumeration, "special-next-hop"},
-    next_hop_address{YType::str, "next-hop-address"}
-{
-
-    yang_name = "next-hop"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::~NextHop()
-{
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::has_data() const
-{
-    return outgoing_interface.is_set
-	|| special_next_hop.is_set
-	|| next_hop_address.is_set;
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(outgoing_interface.yfilter)
-	|| ydk::is_set(special_next_hop.yfilter)
-	|| ydk::is_set(next_hop_address.yfilter);
-}
-
-std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "next-hop";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
-    if (special_next_hop.is_set || is_set(special_next_hop.yfilter)) leaf_name_data.push_back(special_next_hop.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface = value;
-        outgoing_interface.value_namespace = name_space;
-        outgoing_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "special-next-hop")
-    {
-        special_next_hop = value;
-        special_next_hop.value_namespace = name_space;
-        special_next_hop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-hop-address")
-    {
-        next_hop_address = value;
-        next_hop_address.value_namespace = name_space;
-        next_hop_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface.yfilter = yfilter;
-    }
-    if(value_path == "special-next-hop")
-    {
-        special_next_hop.yfilter = yfilter;
-    }
-    if(value_path == "next-hop-address")
-    {
-        next_hop_address.yfilter = yfilter;
-    }
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "outgoing-interface" || name == "special-next-hop" || name == "next-hop-address")
+    if(name == "ipv6" || name == "ipv4")
         return true;
     return false;
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Ipv6()
+    :
+    route(this, {"destination_prefix"})
 {
 
-    yang_name = "ipv6"; yang_parent_name = "static-routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "static-routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::~Ipv6()
@@ -16808,7 +16780,8 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6:
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -16818,7 +16791,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -16848,7 +16821,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -16860,7 +16833,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16890,12 +16863,12 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6:
     :
     destination_prefix{YType::str, "destination-prefix"},
     description{YType::str, "description"}
-    	,
+        ,
     next_hop(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "route"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::~Route()
@@ -16904,6 +16877,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6:
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_prefix.is_set
 	|| description.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
@@ -16920,7 +16894,8 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "route" <<"[destination-prefix='" <<destination_prefix <<"']";
+    path_buffer << "route";
+    ADD_KEY_TOKEN(destination_prefix, "destination-prefix");
     return path_buffer.str();
 }
 
@@ -17003,7 +16978,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6:
     next_hop_address{YType::str, "next-hop-address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::~NextHop()
@@ -17012,6 +16987,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6:
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return outgoing_interface.is_set
 	|| special_next_hop.is_set
 	|| next_hop_address.is_set;
@@ -17101,15 +17077,327 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::
     return false;
 }
 
+Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Ipv4()
+    :
+    route(this, {"destination_prefix"})
+{
+
+    yang_name = "ipv4"; yang_parent_name = "static-routes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::~Ipv4()
+{
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
+    {
+        if(route[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::has_operation() const
+{
+    for (std::size_t index=0; index<route.len(); index++)
+    {
+        if(route[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-ipv4-unicast-routing:ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route")
+    {
+        auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route>();
+        c->parent = this;
+        route.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : route.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
+}
+
+Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::Route()
+    :
+    destination_prefix{YType::str, "destination-prefix"},
+    description{YType::str, "description"}
+        ,
+    next_hop(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop>())
+{
+    next_hop->parent = this;
+
+    yang_name = "route"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::~Route()
+{
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::has_data() const
+{
+    if (is_presence_container) return true;
+    return destination_prefix.is_set
+	|| description.is_set
+	|| (next_hop !=  nullptr && next_hop->has_data());
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination_prefix.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| (next_hop !=  nullptr && next_hop->has_operation());
+}
+
+std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route";
+    ADD_KEY_TOKEN(destination_prefix, "destination-prefix");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_prefix.is_set || is_set(destination_prefix.yfilter)) leaf_name_data.push_back(destination_prefix.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "next-hop")
+    {
+        if(next_hop == nullptr)
+        {
+            next_hop = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop>();
+        }
+        return next_hop;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(next_hop != nullptr)
+    {
+        children["next-hop"] = next_hop;
+    }
+
+    return children;
+}
+
+void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-prefix")
+    {
+        destination_prefix = value;
+        destination_prefix.value_namespace = name_space;
+        destination_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-prefix")
+    {
+        destination_prefix.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop" || name == "destination-prefix" || name == "description")
+        return true;
+    return false;
+}
+
+Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::NextHop()
+    :
+    outgoing_interface{YType::str, "outgoing-interface"},
+    special_next_hop{YType::enumeration, "special-next-hop"},
+    next_hop_address{YType::str, "next-hop-address"}
+{
+
+    yang_name = "next-hop"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::~NextHop()
+{
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::has_data() const
+{
+    if (is_presence_container) return true;
+    return outgoing_interface.is_set
+	|| special_next_hop.is_set
+	|| next_hop_address.is_set;
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(outgoing_interface.yfilter)
+	|| ydk::is_set(special_next_hop.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter);
+}
+
+std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-hop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
+    if (special_next_hop.is_set || is_set(special_next_hop.yfilter)) leaf_name_data.push_back(special_next_hop.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface = value;
+        outgoing_interface.value_namespace = name_space;
+        outgoing_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "special-next-hop")
+    {
+        special_next_hop = value;
+        special_next_hop.value_namespace = name_space;
+        special_next_hop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface.yfilter = yfilter;
+    }
+    if(value_path == "special-next-hop")
+    {
+        special_next_hop.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "outgoing-interface" || name == "special-next-hop" || name == "next-hop-address")
+        return true;
+    return false;
+}
+
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Ospf()
     :
     operation_mode{YType::identityref, "operation-mode"}
-    	,
+        ,
     all_instances_inherit(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit>())
+    , instance(this, {"af"})
 {
     all_instances_inherit->parent = this;
 
-    yang_name = "ospf"; yang_parent_name = "routing-protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf"; yang_parent_name = "routing-protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::~Ospf()
@@ -17118,7 +17406,8 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::~Ospf()
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -17129,7 +17418,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::has_data
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -17171,7 +17460,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -17188,7 +17477,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     }
 
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17227,12 +17516,12 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::has_leaf
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::AllInstancesInherit()
     :
     area(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Area>())
-	,interface(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Interface>())
+    , interface(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Interface>())
 {
     area->parent = this;
     interface->parent = this;
 
-    yang_name = "all-instances-inherit"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-instances-inherit"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::~AllInstancesInherit()
@@ -17241,6 +17530,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesI
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::has_data() const
 {
+    if (is_presence_container) return true;
     return (area !=  nullptr && area->has_data())
 	|| (interface !=  nullptr && interface->has_data());
 }
@@ -17326,7 +17616,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInsta
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Area::Area()
 {
 
-    yang_name = "area"; yang_parent_name = "all-instances-inherit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area"; yang_parent_name = "all-instances-inherit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Area::~Area()
@@ -17335,6 +17625,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesI
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Area::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -17387,7 +17678,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInsta
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Interface::Interface()
 {
 
-    yang_name = "interface"; yang_parent_name = "all-instances-inherit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "all-instances-inherit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Interface::~Interface()
@@ -17396,6 +17687,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesI
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -17450,17 +17742,19 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Ins
     af{YType::identityref, "af"},
     router_id{YType::str, "router-id"},
     enable{YType::boolean, "enable"}
-    	,
+        ,
     admin_distance(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AdminDistance>())
-	,nsr(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Nsr>())
-	,graceful_restart(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::GracefulRestart>())
-	,auto_cost(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AutoCost>())
-	,spf_control(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::SpfControl>())
-	,database_control(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::DatabaseControl>())
-	,reload_control(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::ReloadControl>())
-	,mpls(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls>())
-	,fast_reroute(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute>())
-	,all_areas_inherit(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit>())
+    , nsr(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Nsr>())
+    , graceful_restart(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::GracefulRestart>())
+    , auto_cost(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AutoCost>())
+    , spf_control(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::SpfControl>())
+    , database_control(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::DatabaseControl>())
+    , reload_control(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::ReloadControl>())
+    , mpls(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls>())
+    , fast_reroute(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute>())
+    , all_areas_inherit(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit>())
+    , area(this, {"area_id"})
+    , topology(this, {"name"})
 {
     admin_distance->parent = this;
     nsr->parent = this;
@@ -17473,7 +17767,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Ins
     fast_reroute->parent = this;
     all_areas_inherit->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::~Instance()
@@ -17482,12 +17776,13 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::~In
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::has_data() const
 {
-    for (std::size_t index=0; index<area.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<area.len(); index++)
     {
         if(area[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -17509,12 +17804,12 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::has_operation() const
 {
-    for (std::size_t index=0; index<area.size(); index++)
+    for (std::size_t index=0; index<area.len(); index++)
     {
         if(area[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -17538,7 +17833,8 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[af='" <<af <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(af, "af");
     return path_buffer.str();
 }
 
@@ -17650,7 +17946,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area>();
         c->parent = this;
-        area.push_back(c);
+        area.append(c);
         return c;
     }
 
@@ -17658,7 +17954,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -17720,7 +18016,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     }
 
     count = 0;
-    for (auto const & c : area)
+    for (auto c : area.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17729,7 +18025,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     }
 
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17793,7 +18089,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Adm
     external{YType::uint8, "external"}
 {
 
-    yang_name = "admin-distance"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "admin-distance"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AdminDistance::~AdminDistance()
@@ -17802,6 +18098,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Adm
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AdminDistance::has_data() const
 {
+    if (is_presence_container) return true;
     return intra_area.is_set
 	|| inter_area.is_set
 	|| internal.is_set
@@ -17909,7 +18206,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Nsr
     enable{YType::boolean, "enable"}
 {
 
-    yang_name = "nsr"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nsr"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Nsr::~Nsr()
@@ -17918,6 +18215,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Nsr
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Nsr::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -17989,7 +18287,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Gra
     helper_strict_lsa_checking{YType::boolean, "helper-strict-lsa-checking"}
 {
 
-    yang_name = "graceful-restart"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "graceful-restart"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::GracefulRestart::~GracefulRestart()
@@ -17998,6 +18296,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Gra
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::GracefulRestart::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| helper_enable.is_set
 	|| restart_interval.is_set
@@ -18106,7 +18405,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Aut
     reference_bandwidth{YType::uint32, "reference-bandwidth"}
 {
 
-    yang_name = "auto-cost"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-cost"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AutoCost::~AutoCost()
@@ -18115,6 +18414,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Aut
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AutoCost::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| reference_bandwidth.is_set;
 }
@@ -18196,7 +18496,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Spf
     paths{YType::uint16, "paths"}
 {
 
-    yang_name = "spf-control"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-control"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::SpfControl::~SpfControl()
@@ -18205,6 +18505,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Spf
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::SpfControl::has_data() const
 {
+    if (is_presence_container) return true;
     return paths.is_set;
 }
 
@@ -18273,7 +18574,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Dat
     max_lsa{YType::uint32, "max-lsa"}
 {
 
-    yang_name = "database-control"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "database-control"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::DatabaseControl::~DatabaseControl()
@@ -18282,6 +18583,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Dat
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::DatabaseControl::has_data() const
 {
+    if (is_presence_container) return true;
     return max_lsa.is_set;
 }
 
@@ -18348,7 +18650,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::ReloadControl::ReloadControl()
 {
 
-    yang_name = "reload-control"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reload-control"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::ReloadControl::~ReloadControl()
@@ -18357,6 +18659,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Rel
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::ReloadControl::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -18409,12 +18712,12 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::Mpls()
     :
     te_rid(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::TeRid>())
-	,ldp(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::Ldp>())
+    , ldp(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::Ldp>())
 {
     te_rid->parent = this;
     ldp->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::~Mpls()
@@ -18423,6 +18726,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpl
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (te_rid !=  nullptr && te_rid->has_data())
 	|| (ldp !=  nullptr && ldp->has_data());
 }
@@ -18511,7 +18815,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpl
     router_id{YType::str, "router-id"}
 {
 
-    yang_name = "te-rid"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "te-rid"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::TeRid::~TeRid()
@@ -18520,6 +18824,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpl
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::TeRid::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| router_id.is_set;
 }
@@ -18602,7 +18907,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpl
     autoconfig{YType::boolean, "autoconfig"}
 {
 
-    yang_name = "ldp"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::Ldp::~Ldp()
@@ -18611,6 +18916,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpl
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::Ldp::has_data() const
 {
+    if (is_presence_container) return true;
     return igp_sync.is_set
 	|| autoconfig.is_set;
 }
@@ -18693,7 +18999,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Fas
 {
     lfa->parent = this;
 
-    yang_name = "fast-reroute"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-reroute"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute::~FastReroute()
@@ -18702,6 +19008,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Fas
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return (lfa !=  nullptr && lfa->has_data());
 }
 
@@ -18771,7 +19078,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute::Lfa::Lfa()
 {
 
-    yang_name = "lfa"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lfa"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute::Lfa::~Lfa()
@@ -18780,6 +19087,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Fas
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute::Lfa::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -18832,12 +19140,12 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::AllAreasInherit()
     :
     area(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Area>())
-	,interface(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Interface>())
+    , interface(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Interface>())
 {
     area->parent = this;
     interface->parent = this;
 
-    yang_name = "all-areas-inherit"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-areas-inherit"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::~AllAreasInherit()
@@ -18846,6 +19154,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::All
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::has_data() const
 {
+    if (is_presence_container) return true;
     return (area !=  nullptr && area->has_data())
 	|| (interface !=  nullptr && interface->has_data());
 }
@@ -18931,7 +19240,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Area::Area()
 {
 
-    yang_name = "area"; yang_parent_name = "all-areas-inherit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area"; yang_parent_name = "all-areas-inherit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Area::~Area()
@@ -18940,6 +19249,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::All
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Area::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -18992,7 +19302,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Interface::Interface()
 {
 
-    yang_name = "interface"; yang_parent_name = "all-areas-inherit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "all-areas-inherit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Interface::~Interface()
@@ -19001,6 +19311,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::All
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -19056,12 +19367,16 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     area_type{YType::identityref, "area-type"},
     summary{YType::boolean, "summary"},
     default_cost{YType::uint32, "default-cost"}
-    	,
-    all_interfaces_inherit(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit>())
+        ,
+    range(this, {"prefix"})
+    , all_interfaces_inherit(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit>())
+    , virtual_link(this, {"router_id"})
+    , sham_link(this, {"local_id", "remote_id"})
+    , interface(this, {"interface"})
 {
     all_interfaces_inherit->parent = this;
 
-    yang_name = "area"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::~Area()
@@ -19070,22 +19385,23 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<virtual_link.size(); index++)
+    for (std::size_t index=0; index<virtual_link.len(); index++)
     {
         if(virtual_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sham_link.size(); index++)
+    for (std::size_t index=0; index<sham_link.len(); index++)
     {
         if(sham_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -19099,22 +19415,22 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<virtual_link.size(); index++)
+    for (std::size_t index=0; index<virtual_link.len(); index++)
     {
         if(virtual_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sham_link.size(); index++)
+    for (std::size_t index=0; index<sham_link.len(); index++)
     {
         if(sham_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -19130,7 +19446,8 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area" <<"[area-id='" <<area_id <<"']";
+    path_buffer << "area";
+    ADD_KEY_TOKEN(area_id, "area-id");
     return path_buffer.str();
 }
 
@@ -19153,7 +19470,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -19170,7 +19487,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink>();
         c->parent = this;
-        virtual_link.push_back(c);
+        virtual_link.append(c);
         return c;
     }
 
@@ -19178,7 +19495,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink>();
         c->parent = this;
-        sham_link.push_back(c);
+        sham_link.append(c);
         return c;
     }
 
@@ -19186,7 +19503,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -19198,7 +19515,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19212,7 +19529,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     }
 
     count = 0;
-    for (auto const & c : virtual_link)
+    for (auto c : virtual_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19221,7 +19538,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     }
 
     count = 0;
-    for (auto const & c : sham_link)
+    for (auto c : sham_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19230,7 +19547,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     }
 
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19303,7 +19620,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     cost{YType::uint32, "cost"}
 {
 
-    yang_name = "range"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Range::~Range()
@@ -19312,6 +19629,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| advertise.is_set
 	|| cost.is_set;
@@ -19328,7 +19646,8 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "range" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "range";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -19407,7 +19726,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 {
     interface->parent = this;
 
-    yang_name = "all-interfaces-inherit"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-interfaces-inherit"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit::~AllInterfacesInherit()
@@ -19416,6 +19735,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface !=  nullptr && interface->has_data());
 }
 
@@ -19485,7 +19805,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit::Interface::Interface()
 {
 
-    yang_name = "interface"; yang_parent_name = "all-interfaces-inherit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "all-interfaces-inherit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit::Interface::~Interface()
@@ -19494,6 +19814,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -19556,14 +19877,14 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     prefix_suppression{YType::boolean, "prefix-suppression"},
     bfd{YType::boolean, "bfd"},
     enable{YType::boolean, "enable"}
-    	,
+        ,
     ttl_security(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::TtlSecurity>())
-	,authentication(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication>())
+    , authentication(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication>())
 {
     ttl_security->parent = this;
     authentication->parent = this;
 
-    yang_name = "virtual-link"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-link"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::~VirtualLink()
@@ -19572,6 +19893,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set
 	|| cost.is_set
 	|| hello_interval.is_set
@@ -19608,7 +19930,8 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "virtual-link" <<"[router-id='" <<router_id <<"']";
+    path_buffer << "virtual-link";
+    ADD_KEY_TOKEN(router_id, "router-id");
     return path_buffer.str();
 }
 
@@ -19803,7 +20126,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     hops{YType::uint8, "hops"}
 {
 
-    yang_name = "ttl-security"; yang_parent_name = "virtual-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ttl-security"; yang_parent_name = "virtual-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::TtlSecurity::~TtlSecurity()
@@ -19812,6 +20135,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::TtlSecurity::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| hops.is_set;
 }
@@ -19893,12 +20217,12 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     sa{YType::str, "sa"},
     key_chain{YType::str, "key-chain"},
     key{YType::str, "key"}
-    	,
+        ,
     crypto_algorithm(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication::CryptoAlgorithm>())
 {
     crypto_algorithm->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "virtual-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "virtual-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication::~Authentication()
@@ -19907,6 +20231,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return sa.is_set
 	|| key_chain.is_set
 	|| key.is_set
@@ -20024,7 +20349,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     hmac_sha_512{YType::empty, "hmac-sha-512"}
 {
 
-    yang_name = "crypto-algorithm"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crypto-algorithm"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication::CryptoAlgorithm::~CryptoAlgorithm()
@@ -20033,6 +20358,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication::CryptoAlgorithm::has_data() const
 {
+    if (is_presence_container) return true;
     return hmac_sha1_12.is_set
 	|| hmac_sha1_20.is_set
 	|| md5.is_set
@@ -20201,14 +20527,14 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     prefix_suppression{YType::boolean, "prefix-suppression"},
     bfd{YType::boolean, "bfd"},
     enable{YType::boolean, "enable"}
-    	,
+        ,
     ttl_security(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::TtlSecurity>())
-	,authentication(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication>())
+    , authentication(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication>())
 {
     ttl_security->parent = this;
     authentication->parent = this;
 
-    yang_name = "sham-link"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sham-link"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::~ShamLink()
@@ -20217,6 +20543,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::has_data() const
 {
+    if (is_presence_container) return true;
     return local_id.is_set
 	|| remote_id.is_set
 	|| cost.is_set
@@ -20255,7 +20582,9 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sham-link" <<"[local-id='" <<local_id <<"']" <<"[remote-id='" <<remote_id <<"']";
+    path_buffer << "sham-link";
+    ADD_KEY_TOKEN(local_id, "local-id");
+    ADD_KEY_TOKEN(remote_id, "remote-id");
     return path_buffer.str();
 }
 
@@ -20461,7 +20790,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     hops{YType::uint8, "hops"}
 {
 
-    yang_name = "ttl-security"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ttl-security"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::TtlSecurity::~TtlSecurity()
@@ -20470,6 +20799,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::TtlSecurity::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| hops.is_set;
 }
@@ -20551,12 +20881,12 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     sa{YType::str, "sa"},
     key_chain{YType::str, "key-chain"},
     key{YType::str, "key"}
-    	,
+        ,
     crypto_algorithm(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication::CryptoAlgorithm>())
 {
     crypto_algorithm->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication::~Authentication()
@@ -20565,6 +20895,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return sa.is_set
 	|| key_chain.is_set
 	|| key.is_set
@@ -20682,7 +21013,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     hmac_sha_512{YType::empty, "hmac-sha-512"}
 {
 
-    yang_name = "crypto-algorithm"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crypto-algorithm"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication::CryptoAlgorithm::~CryptoAlgorithm()
@@ -20691,6 +21022,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication::CryptoAlgorithm::has_data() const
 {
+    if (is_presence_container) return true;
     return hmac_sha1_12.is_set
 	|| hmac_sha1_20.is_set
 	|| md5.is_set
@@ -20862,12 +21194,13 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     prefix_suppression{YType::boolean, "prefix-suppression"},
     bfd{YType::boolean, "bfd"},
     enable{YType::boolean, "enable"}
-    	,
+        ,
     multi_area(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::MultiArea>())
-	,static_neighbors(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors>())
-	,fast_reroute(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute>())
-	,ttl_security(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::TtlSecurity>())
-	,authentication(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication>())
+    , static_neighbors(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors>())
+    , fast_reroute(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute>())
+    , ttl_security(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::TtlSecurity>())
+    , authentication(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication>())
+    , topology(this, {"name"})
 {
     multi_area->parent = this;
     static_neighbors->parent = this;
@@ -20875,7 +21208,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     ttl_security->parent = this;
     authentication->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::~Interface()
@@ -20884,7 +21217,8 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::has_data() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -20913,7 +21247,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -20944,7 +21278,8 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -21023,7 +21358,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -21060,7 +21395,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     }
 
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21242,7 +21577,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     cost{YType::uint16, "cost"}
 {
 
-    yang_name = "multi-area"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multi-area"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::MultiArea::~MultiArea()
@@ -21251,6 +21586,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::MultiArea::has_data() const
 {
+    if (is_presence_container) return true;
     return multi_area_id.is_set
 	|| cost.is_set;
 }
@@ -21328,9 +21664,11 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::StaticNeighbors()
+    :
+    neighbor(this, {"address"})
 {
 
-    yang_name = "static-neighbors"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-neighbors"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::~StaticNeighbors()
@@ -21339,7 +21677,8 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -21349,7 +21688,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -21379,7 +21718,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -21391,7 +21730,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21425,7 +21764,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "static-neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "static-neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::Neighbor::~Neighbor()
@@ -21434,6 +21773,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| cost.is_set
 	|| poll_interval.is_set
@@ -21452,7 +21792,8 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[address='" <<address <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -21542,7 +21883,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 {
     lfa->parent = this;
 
-    yang_name = "fast-reroute"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-reroute"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::~FastReroute()
@@ -21551,6 +21892,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return (lfa !=  nullptr && lfa->has_data());
 }
 
@@ -21621,12 +21963,12 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     :
     candidate_disabled{YType::boolean, "candidate-disabled"},
     enabled{YType::boolean, "enabled"}
-    	,
+        ,
     remote_lfa(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa::RemoteLfa>())
 {
     remote_lfa->parent = this;
 
-    yang_name = "lfa"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lfa"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa::~Lfa()
@@ -21635,6 +21977,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa::has_data() const
 {
+    if (is_presence_container) return true;
     return candidate_disabled.is_set
 	|| enabled.is_set
 	|| (remote_lfa !=  nullptr && remote_lfa->has_data());
@@ -21732,7 +22075,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "remote-lfa"; yang_parent_name = "lfa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-lfa"; yang_parent_name = "lfa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa::RemoteLfa::~RemoteLfa()
@@ -21741,6 +22084,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa::RemoteLfa::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set;
 }
 
@@ -21810,7 +22154,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     hops{YType::uint8, "hops"}
 {
 
-    yang_name = "ttl-security"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ttl-security"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::TtlSecurity::~TtlSecurity()
@@ -21819,6 +22163,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::TtlSecurity::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| hops.is_set;
 }
@@ -21900,12 +22245,12 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     sa{YType::str, "sa"},
     key_chain{YType::str, "key-chain"},
     key{YType::str, "key"}
-    	,
+        ,
     crypto_algorithm(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication::CryptoAlgorithm>())
 {
     crypto_algorithm->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication::~Authentication()
@@ -21914,6 +22259,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return sa.is_set
 	|| key_chain.is_set
 	|| key.is_set
@@ -22031,7 +22377,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     hmac_sha_512{YType::empty, "hmac-sha-512"}
 {
 
-    yang_name = "crypto-algorithm"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crypto-algorithm"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication::CryptoAlgorithm::~CryptoAlgorithm()
@@ -22040,6 +22386,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication::CryptoAlgorithm::has_data() const
 {
+    if (is_presence_container) return true;
     return hmac_sha1_12.is_set
 	|| hmac_sha1_20.is_set
 	|| md5.is_set
@@ -22200,7 +22547,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
     cost{YType::uint32, "cost"}
 {
 
-    yang_name = "topology"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Topology::~Topology()
@@ -22209,6 +22556,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Are
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| cost.is_set;
 }
@@ -22223,7 +22571,8 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[name='" <<name <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -22288,9 +22637,11 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Topology()
     :
     name{YType::str, "name"}
+        ,
+    area(this, {"area_id"})
 {
 
-    yang_name = "topology"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::~Topology()
@@ -22299,7 +22650,8 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Top
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::has_data() const
 {
-    for (std::size_t index=0; index<area.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<area.len(); index++)
     {
         if(area[index]->has_data())
             return true;
@@ -22309,7 +22661,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::has_operation() const
 {
-    for (std::size_t index=0; index<area.size(); index++)
+    for (std::size_t index=0; index<area.len(); index++)
     {
         if(area[index]->has_operation())
             return true;
@@ -22321,7 +22673,8 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology" <<"[name='" <<name <<"']";
+    path_buffer << "topology";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -22341,7 +22694,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area>();
         c->parent = this;
-        area.push_back(c);
+        area.append(c);
         return c;
     }
 
@@ -22353,7 +22706,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : area)
+    for (auto c : area.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22395,9 +22748,11 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Top
     area_type{YType::identityref, "area-type"},
     summary{YType::boolean, "summary"},
     default_cost{YType::uint32, "default-cost"}
+        ,
+    range(this, {"prefix"})
 {
 
-    yang_name = "area"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::~Area()
@@ -22406,7 +22761,8 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Top
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -22419,7 +22775,7 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -22434,7 +22790,8 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area" <<"[area-id='" <<area_id <<"']";
+    path_buffer << "area";
+    ADD_KEY_TOKEN(area_id, "area-id");
     return path_buffer.str();
 }
 
@@ -22457,7 +22814,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
     {
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -22469,7 +22826,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22542,7 +22899,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Top
     cost{YType::uint32, "cost"}
 {
 
-    yang_name = "range"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "area"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range::~Range()
@@ -22551,6 +22908,7 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Top
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| advertise.is_set
 	|| cost.is_set;
@@ -22567,7 +22925,8 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "range" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "range";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -22641,9 +23000,11 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 }
 
 Routing::RoutingInstance::Ribs::Ribs()
+    :
+    rib(this, {"name"})
 {
 
-    yang_name = "ribs"; yang_parent_name = "routing-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ribs"; yang_parent_name = "routing-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::Ribs::~Ribs()
@@ -22652,7 +23013,8 @@ Routing::RoutingInstance::Ribs::~Ribs()
 
 bool Routing::RoutingInstance::Ribs::has_data() const
 {
-    for (std::size_t index=0; index<rib.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rib.len(); index++)
     {
         if(rib[index]->has_data())
             return true;
@@ -22662,7 +23024,7 @@ bool Routing::RoutingInstance::Ribs::has_data() const
 
 bool Routing::RoutingInstance::Ribs::has_operation() const
 {
-    for (std::size_t index=0; index<rib.size(); index++)
+    for (std::size_t index=0; index<rib.len(); index++)
     {
         if(rib[index]->has_operation())
             return true;
@@ -22692,7 +23054,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::Ribs::get_child_by_name(const 
     {
         auto c = std::make_shared<Routing::RoutingInstance::Ribs::Rib>();
         c->parent = this;
-        rib.push_back(c);
+        rib.append(c);
         return c;
     }
 
@@ -22704,7 +23066,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Ribs::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rib)
+    for (auto c : rib.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22737,7 +23099,7 @@ Routing::RoutingInstance::Ribs::Rib::Rib()
     description{YType::str, "description"}
 {
 
-    yang_name = "rib"; yang_parent_name = "ribs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rib"; yang_parent_name = "ribs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Routing::RoutingInstance::Ribs::Rib::~Rib()
@@ -22746,6 +23108,7 @@ Routing::RoutingInstance::Ribs::Rib::~Rib()
 
 bool Routing::RoutingInstance::Ribs::Rib::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| address_family.is_set
 	|| description.is_set;
@@ -22762,7 +23125,8 @@ bool Routing::RoutingInstance::Ribs::Rib::has_operation() const
 std::string Routing::RoutingInstance::Ribs::Rib::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rib" <<"[name='" <<name <<"']";
+    path_buffer << "rib";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -22838,12 +23202,12 @@ bool Routing::RoutingInstance::Ribs::Rib::has_leaf_or_child_of_name(const std::s
 FibRoute::FibRoute()
     :
     input(std::make_shared<FibRoute::Input>())
-	,output(std::make_shared<FibRoute::Output>())
+    , output(std::make_shared<FibRoute::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "fib-route"; yang_parent_name = "ietf-routing"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fib-route"; yang_parent_name = "ietf-routing"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 FibRoute::~FibRoute()
@@ -22852,6 +23216,7 @@ FibRoute::~FibRoute()
 
 bool FibRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -22962,12 +23327,12 @@ bool FibRoute::has_leaf_or_child_of_name(const std::string & name) const
 FibRoute::Input::Input()
     :
     routing_instance_name{YType::str, "routing-instance-name"}
-    	,
+        ,
     destination_address(std::make_shared<FibRoute::Input::DestinationAddress>())
 {
     destination_address->parent = this;
 
-    yang_name = "input"; yang_parent_name = "fib-route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "fib-route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FibRoute::Input::~Input()
@@ -22976,6 +23341,7 @@ FibRoute::Input::~Input()
 
 bool FibRoute::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return routing_instance_name.is_set
 	|| (destination_address !=  nullptr && destination_address->has_data());
 }
@@ -23065,11 +23431,11 @@ bool FibRoute::Input::has_leaf_or_child_of_name(const std::string & name) const
 FibRoute::Input::DestinationAddress::DestinationAddress()
     :
     address_family{YType::identityref, "address-family"},
-    ietf_ipv4_unicast_routing_address{YType::str, "ietf-ipv4-unicast-routing:address"},
-    ietf_ipv6_unicast_routing_address{YType::str, "ietf-ipv6-unicast-routing:address"}
+    ietf_ipv6_unicast_routing_address{YType::str, "ietf-ipv6-unicast-routing:address"},
+    ietf_ipv4_unicast_routing_address{YType::str, "ietf-ipv4-unicast-routing:address"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "destination-address"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FibRoute::Input::DestinationAddress::~DestinationAddress()
@@ -23078,17 +23444,18 @@ FibRoute::Input::DestinationAddress::~DestinationAddress()
 
 bool FibRoute::Input::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
-	|| ietf_ipv4_unicast_routing_address.is_set
-	|| ietf_ipv6_unicast_routing_address.is_set;
+	|| ietf_ipv6_unicast_routing_address.is_set
+	|| ietf_ipv4_unicast_routing_address.is_set;
 }
 
 bool FibRoute::Input::DestinationAddress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(ietf_ipv4_unicast_routing_address.yfilter)
-	|| ydk::is_set(ietf_ipv6_unicast_routing_address.yfilter);
+	|| ydk::is_set(ietf_ipv6_unicast_routing_address.yfilter)
+	|| ydk::is_set(ietf_ipv4_unicast_routing_address.yfilter);
 }
 
 std::string FibRoute::Input::DestinationAddress::get_absolute_path() const
@@ -23110,8 +23477,8 @@ std::vector<std::pair<std::string, LeafData> > FibRoute::Input::DestinationAddre
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ietf_ipv4_unicast_routing_address.is_set || is_set(ietf_ipv4_unicast_routing_address.yfilter)) leaf_name_data.push_back(ietf_ipv4_unicast_routing_address.get_name_leafdata());
     if (ietf_ipv6_unicast_routing_address.is_set || is_set(ietf_ipv6_unicast_routing_address.yfilter)) leaf_name_data.push_back(ietf_ipv6_unicast_routing_address.get_name_leafdata());
+    if (ietf_ipv4_unicast_routing_address.is_set || is_set(ietf_ipv4_unicast_routing_address.yfilter)) leaf_name_data.push_back(ietf_ipv4_unicast_routing_address.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -23137,17 +23504,17 @@ void FibRoute::Input::DestinationAddress::set_value(const std::string & value_pa
         address_family.value_namespace = name_space;
         address_family.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ietf-ipv4-unicast-routing:address")
-    {
-        ietf_ipv4_unicast_routing_address = value;
-        ietf_ipv4_unicast_routing_address.value_namespace = name_space;
-        ietf_ipv4_unicast_routing_address.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "ietf-ipv6-unicast-routing:address")
     {
         ietf_ipv6_unicast_routing_address = value;
         ietf_ipv6_unicast_routing_address.value_namespace = name_space;
         ietf_ipv6_unicast_routing_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ietf-ipv4-unicast-routing:address")
+    {
+        ietf_ipv4_unicast_routing_address = value;
+        ietf_ipv4_unicast_routing_address.value_namespace = name_space;
+        ietf_ipv4_unicast_routing_address.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -23159,11 +23526,11 @@ void FibRoute::Input::DestinationAddress::set_filter(const std::string & value_p
     }
     if(value_path == "address")
     {
-        ietf_ipv4_unicast_routing_address.yfilter = yfilter;
+        ietf_ipv6_unicast_routing_address.yfilter = yfilter;
     }
     if(value_path == "address")
     {
-        ietf_ipv6_unicast_routing_address.yfilter = yfilter;
+        ietf_ipv4_unicast_routing_address.yfilter = yfilter;
     }
 }
 
@@ -23180,7 +23547,7 @@ FibRoute::Output::Output()
 {
     route->parent = this;
 
-    yang_name = "output"; yang_parent_name = "fib-route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "fib-route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FibRoute::Output::~Output()
@@ -23189,6 +23556,7 @@ FibRoute::Output::~Output()
 
 bool FibRoute::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return (route !=  nullptr && route->has_data());
 }
 
@@ -23268,14 +23636,14 @@ FibRoute::Output::Route::Route()
     source_protocol{YType::identityref, "source-protocol"},
     active{YType::empty, "active"},
     last_updated{YType::str, "last-updated"},
-    ietf_ipv4_unicast_routing_destination_prefix{YType::str, "ietf-ipv4-unicast-routing:destination-prefix"},
-    ietf_ipv6_unicast_routing_destination_prefix{YType::str, "ietf-ipv6-unicast-routing:destination-prefix"}
-    	,
+    ietf_ipv6_unicast_routing_destination_prefix{YType::str, "ietf-ipv6-unicast-routing:destination-prefix"},
+    ietf_ipv4_unicast_routing_destination_prefix{YType::str, "ietf-ipv4-unicast-routing:destination-prefix"}
+        ,
     next_hop(std::make_shared<FibRoute::Output::Route::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "route"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FibRoute::Output::Route::~Route()
@@ -23284,12 +23652,13 @@ FibRoute::Output::Route::~Route()
 
 bool FibRoute::Output::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| source_protocol.is_set
 	|| active.is_set
 	|| last_updated.is_set
-	|| ietf_ipv4_unicast_routing_destination_prefix.is_set
 	|| ietf_ipv6_unicast_routing_destination_prefix.is_set
+	|| ietf_ipv4_unicast_routing_destination_prefix.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
@@ -23300,8 +23669,8 @@ bool FibRoute::Output::Route::has_operation() const
 	|| ydk::is_set(source_protocol.yfilter)
 	|| ydk::is_set(active.yfilter)
 	|| ydk::is_set(last_updated.yfilter)
-	|| ydk::is_set(ietf_ipv4_unicast_routing_destination_prefix.yfilter)
 	|| ydk::is_set(ietf_ipv6_unicast_routing_destination_prefix.yfilter)
+	|| ydk::is_set(ietf_ipv4_unicast_routing_destination_prefix.yfilter)
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
@@ -23327,8 +23696,8 @@ std::vector<std::pair<std::string, LeafData> > FibRoute::Output::Route::get_name
     if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
     if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
     if (last_updated.is_set || is_set(last_updated.yfilter)) leaf_name_data.push_back(last_updated.get_name_leafdata());
-    if (ietf_ipv4_unicast_routing_destination_prefix.is_set || is_set(ietf_ipv4_unicast_routing_destination_prefix.yfilter)) leaf_name_data.push_back(ietf_ipv4_unicast_routing_destination_prefix.get_name_leafdata());
     if (ietf_ipv6_unicast_routing_destination_prefix.is_set || is_set(ietf_ipv6_unicast_routing_destination_prefix.yfilter)) leaf_name_data.push_back(ietf_ipv6_unicast_routing_destination_prefix.get_name_leafdata());
+    if (ietf_ipv4_unicast_routing_destination_prefix.is_set || is_set(ietf_ipv4_unicast_routing_destination_prefix.yfilter)) leaf_name_data.push_back(ietf_ipv4_unicast_routing_destination_prefix.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -23386,17 +23755,17 @@ void FibRoute::Output::Route::set_value(const std::string & value_path, const st
         last_updated.value_namespace = name_space;
         last_updated.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ietf-ipv4-unicast-routing:destination-prefix")
-    {
-        ietf_ipv4_unicast_routing_destination_prefix = value;
-        ietf_ipv4_unicast_routing_destination_prefix.value_namespace = name_space;
-        ietf_ipv4_unicast_routing_destination_prefix.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "ietf-ipv6-unicast-routing:destination-prefix")
     {
         ietf_ipv6_unicast_routing_destination_prefix = value;
         ietf_ipv6_unicast_routing_destination_prefix.value_namespace = name_space;
         ietf_ipv6_unicast_routing_destination_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ietf-ipv4-unicast-routing:destination-prefix")
+    {
+        ietf_ipv4_unicast_routing_destination_prefix = value;
+        ietf_ipv4_unicast_routing_destination_prefix.value_namespace = name_space;
+        ietf_ipv4_unicast_routing_destination_prefix.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -23420,11 +23789,11 @@ void FibRoute::Output::Route::set_filter(const std::string & value_path, YFilter
     }
     if(value_path == "destination-prefix")
     {
-        ietf_ipv4_unicast_routing_destination_prefix.yfilter = yfilter;
+        ietf_ipv6_unicast_routing_destination_prefix.yfilter = yfilter;
     }
     if(value_path == "destination-prefix")
     {
-        ietf_ipv6_unicast_routing_destination_prefix.yfilter = yfilter;
+        ietf_ipv4_unicast_routing_destination_prefix.yfilter = yfilter;
     }
 }
 
@@ -23439,12 +23808,12 @@ FibRoute::Output::Route::NextHop::NextHop()
     :
     outgoing_interface{YType::str, "outgoing-interface"},
     ietf_routing_next_hop_address{YType::str, "next-hop-address"},
-    ietf_ipv4_unicast_routing_next_hop_address{YType::str, "ietf-ipv4-unicast-routing:next-hop-address"},
     ietf_ipv6_unicast_routing_next_hop_address{YType::str, "ietf-ipv6-unicast-routing:next-hop-address"},
+    ietf_ipv4_unicast_routing_next_hop_address{YType::str, "ietf-ipv4-unicast-routing:next-hop-address"},
     special_next_hop{YType::enumeration, "special-next-hop"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FibRoute::Output::Route::NextHop::~NextHop()
@@ -23453,10 +23822,11 @@ FibRoute::Output::Route::NextHop::~NextHop()
 
 bool FibRoute::Output::Route::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return outgoing_interface.is_set
 	|| ietf_routing_next_hop_address.is_set
-	|| ietf_ipv4_unicast_routing_next_hop_address.is_set
 	|| ietf_ipv6_unicast_routing_next_hop_address.is_set
+	|| ietf_ipv4_unicast_routing_next_hop_address.is_set
 	|| special_next_hop.is_set;
 }
 
@@ -23465,8 +23835,8 @@ bool FibRoute::Output::Route::NextHop::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(outgoing_interface.yfilter)
 	|| ydk::is_set(ietf_routing_next_hop_address.yfilter)
-	|| ydk::is_set(ietf_ipv4_unicast_routing_next_hop_address.yfilter)
 	|| ydk::is_set(ietf_ipv6_unicast_routing_next_hop_address.yfilter)
+	|| ydk::is_set(ietf_ipv4_unicast_routing_next_hop_address.yfilter)
 	|| ydk::is_set(special_next_hop.yfilter);
 }
 
@@ -23490,8 +23860,8 @@ std::vector<std::pair<std::string, LeafData> > FibRoute::Output::Route::NextHop:
 
     if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
     if (ietf_routing_next_hop_address.is_set || is_set(ietf_routing_next_hop_address.yfilter)) leaf_name_data.push_back(ietf_routing_next_hop_address.get_name_leafdata());
-    if (ietf_ipv4_unicast_routing_next_hop_address.is_set || is_set(ietf_ipv4_unicast_routing_next_hop_address.yfilter)) leaf_name_data.push_back(ietf_ipv4_unicast_routing_next_hop_address.get_name_leafdata());
     if (ietf_ipv6_unicast_routing_next_hop_address.is_set || is_set(ietf_ipv6_unicast_routing_next_hop_address.yfilter)) leaf_name_data.push_back(ietf_ipv6_unicast_routing_next_hop_address.get_name_leafdata());
+    if (ietf_ipv4_unicast_routing_next_hop_address.is_set || is_set(ietf_ipv4_unicast_routing_next_hop_address.yfilter)) leaf_name_data.push_back(ietf_ipv4_unicast_routing_next_hop_address.get_name_leafdata());
     if (special_next_hop.is_set || is_set(special_next_hop.yfilter)) leaf_name_data.push_back(special_next_hop.get_name_leafdata());
 
     return leaf_name_data;
@@ -23524,17 +23894,17 @@ void FibRoute::Output::Route::NextHop::set_value(const std::string & value_path,
         ietf_routing_next_hop_address.value_namespace = name_space;
         ietf_routing_next_hop_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ietf-ipv4-unicast-routing:next-hop-address")
-    {
-        ietf_ipv4_unicast_routing_next_hop_address = value;
-        ietf_ipv4_unicast_routing_next_hop_address.value_namespace = name_space;
-        ietf_ipv4_unicast_routing_next_hop_address.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "ietf-ipv6-unicast-routing:next-hop-address")
     {
         ietf_ipv6_unicast_routing_next_hop_address = value;
         ietf_ipv6_unicast_routing_next_hop_address.value_namespace = name_space;
         ietf_ipv6_unicast_routing_next_hop_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ietf-ipv4-unicast-routing:next-hop-address")
+    {
+        ietf_ipv4_unicast_routing_next_hop_address = value;
+        ietf_ipv4_unicast_routing_next_hop_address.value_namespace = name_space;
+        ietf_ipv4_unicast_routing_next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "special-next-hop")
     {
@@ -23556,11 +23926,11 @@ void FibRoute::Output::Route::NextHop::set_filter(const std::string & value_path
     }
     if(value_path == "next-hop-address")
     {
-        ietf_ipv4_unicast_routing_next_hop_address.yfilter = yfilter;
+        ietf_ipv6_unicast_routing_next_hop_address.yfilter = yfilter;
     }
     if(value_path == "next-hop-address")
     {
-        ietf_ipv6_unicast_routing_next_hop_address.yfilter = yfilter;
+        ietf_ipv4_unicast_routing_next_hop_address.yfilter = yfilter;
     }
     if(value_path == "special-next-hop")
     {
@@ -23573,36 +23943,6 @@ bool FibRoute::Output::Route::NextHop::has_leaf_or_child_of_name(const std::stri
     if(name == "outgoing-interface" || name == "next-hop-address" || name == "next-hop-address" || name == "next-hop-address" || name == "special-next-hop")
         return true;
     return false;
-}
-
-Ipv4::Ipv4()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:ipv4")
-{
-
-}
-
-Ipv4::~Ipv4()
-{
-}
-
-Ipv6::Ipv6()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:ipv6")
-{
-
-}
-
-Ipv6::~Ipv6()
-{
-}
-
-DefaultRoutingInstance::DefaultRoutingInstance()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:default-routing-instance")
-{
-
-}
-
-DefaultRoutingInstance::~DefaultRoutingInstance()
-{
 }
 
 VrfRoutingInstance::VrfRoutingInstance()
@@ -23625,6 +23965,16 @@ Direct::~Direct()
 {
 }
 
+DefaultRoutingInstance::DefaultRoutingInstance()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:default-routing-instance")
+{
+
+}
+
+DefaultRoutingInstance::~DefaultRoutingInstance()
+{
+}
+
 Static::Static()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:static")
 {
@@ -23632,6 +23982,26 @@ Static::Static()
 }
 
 Static::~Static()
+{
+}
+
+Ipv4::Ipv4()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:ipv4")
+{
+
+}
+
+Ipv4::~Ipv4()
+{
+}
+
+Ipv6::Ipv6()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:ipv6")
+{
+
+}
+
+Ipv6::~Ipv6()
 {
 }
 
@@ -23652,15 +24022,15 @@ const Enum::YLeaf RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextH
 const Enum::YLeaf RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::SpecialNextHop::prohibit {2, "prohibit"};
 const Enum::YLeaf RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::SpecialNextHop::receive {3, "receive"};
 
-const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop::blackhole {0, "blackhole"};
-const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop::unreachable {1, "unreachable"};
-const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop::prohibit {2, "prohibit"};
-const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop::receive {3, "receive"};
-
 const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop::blackhole {0, "blackhole"};
 const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop::unreachable {1, "unreachable"};
 const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop::prohibit {2, "prohibit"};
 const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop::receive {3, "receive"};
+
+const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop::blackhole {0, "blackhole"};
+const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop::unreachable {1, "unreachable"};
+const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop::prohibit {2, "prohibit"};
+const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop::receive {3, "receive"};
 
 const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::NetworkType::broadcast {0, "broadcast"};
 const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::NetworkType::non_broadcast {1, "non-broadcast"};

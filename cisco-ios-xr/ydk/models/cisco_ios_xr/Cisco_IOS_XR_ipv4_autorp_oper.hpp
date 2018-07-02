@@ -135,7 +135,7 @@ class AutoRp::Standby::CandidateRp::Rps : public ydk::Entity
 
         class Rp; //type: AutoRp::Standby::CandidateRp::Rps::Rp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_autorp_oper::AutoRp::Standby::CandidateRp::Rps::Rp> > rp;
+        ydk::YList rp;
         
 }; // AutoRp::Standby::CandidateRp::Rps
 
@@ -240,7 +240,7 @@ class AutoRp::Standby::MappingAgent::RpAddresses : public ydk::Entity
 
         class RpAddress; //type: AutoRp::Standby::MappingAgent::RpAddresses::RpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_autorp_oper::AutoRp::Standby::MappingAgent::RpAddresses::RpAddress> > rp_address;
+        ydk::YList rp_address;
         
 }; // AutoRp::Standby::MappingAgent::RpAddresses
 
@@ -268,7 +268,7 @@ class AutoRp::Standby::MappingAgent::RpAddresses::RpAddress : public ydk::Entity
         ydk::YLeaf pim_version; //type: uint8
         class Range; //type: AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_autorp_oper::AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range> > range;
+        ydk::YList range;
         
 }; // AutoRp::Standby::MappingAgent::RpAddresses::RpAddress
 
@@ -418,7 +418,7 @@ class AutoRp::Active::CandidateRp::Rps : public ydk::Entity
 
         class Rp; //type: AutoRp::Active::CandidateRp::Rps::Rp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_autorp_oper::AutoRp::Active::CandidateRp::Rps::Rp> > rp;
+        ydk::YList rp;
         
 }; // AutoRp::Active::CandidateRp::Rps
 
@@ -523,7 +523,7 @@ class AutoRp::Active::MappingAgent::RpAddresses : public ydk::Entity
 
         class RpAddress; //type: AutoRp::Active::MappingAgent::RpAddresses::RpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_autorp_oper::AutoRp::Active::MappingAgent::RpAddresses::RpAddress> > rp_address;
+        ydk::YList rp_address;
         
 }; // AutoRp::Active::MappingAgent::RpAddresses
 
@@ -551,7 +551,7 @@ class AutoRp::Active::MappingAgent::RpAddresses::RpAddress : public ydk::Entity
         ydk::YLeaf pim_version; //type: uint8
         class Range; //type: AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_autorp_oper::AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range> > range;
+        ydk::YList range;
         
 }; // AutoRp::Active::MappingAgent::RpAddresses::RpAddress
 

@@ -17,7 +17,7 @@ Clock::Clock()
 {
     timezone->parent = this;
 
-    yang_name = "clock"; yang_parent_name = "Cisco-IOS-XR-sysadmin-time-of-day-timezone"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clock"; yang_parent_name = "Cisco-IOS-XR-sysadmin-time-of-day-timezone"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Clock::~Clock()
@@ -26,6 +26,7 @@ Clock::~Clock()
 
 bool Clock::has_data() const
 {
+    if (is_presence_container) return true;
     return (timezone !=  nullptr && timezone->has_data());
 }
 
@@ -123,7 +124,7 @@ Clock::Timezone::Timezone()
     area{YType::str, "area"}
 {
 
-    yang_name = "timezone"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timezone"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clock::Timezone::~Timezone()
@@ -132,6 +133,7 @@ Clock::Timezone::~Timezone()
 
 bool Clock::Timezone::has_data() const
 {
+    if (is_presence_container) return true;
     return tzname.is_set
 	|| area.is_set;
 }
@@ -218,12 +220,12 @@ bool Clock::Timezone::has_leaf_or_child_of_name(const std::string & name) const
 Trace::Trace()
     :
     timezone_config(std::make_shared<Trace::TimezoneConfig>())
-	,timezone_notify(std::make_shared<Trace::TimezoneNotify>())
+    , timezone_notify(std::make_shared<Trace::TimezoneNotify>())
 {
     timezone_config->parent = this;
     timezone_notify->parent = this;
 
-    yang_name = "trace"; yang_parent_name = "Cisco-IOS-XR-sysadmin-time-of-day-timezone"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "Cisco-IOS-XR-sysadmin-time-of-day-timezone"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Trace::~Trace()
@@ -232,6 +234,7 @@ Trace::~Trace()
 
 bool Trace::has_data() const
 {
+    if (is_presence_container) return true;
     return (timezone_config !=  nullptr && timezone_config->has_data())
 	|| (timezone_notify !=  nullptr && timezone_notify->has_data());
 }
@@ -340,9 +343,11 @@ bool Trace::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Trace::TimezoneConfig::TimezoneConfig()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "timezone_config"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timezone_config"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Trace::TimezoneConfig::~TimezoneConfig()
@@ -351,7 +356,8 @@ Trace::TimezoneConfig::~TimezoneConfig()
 
 bool Trace::TimezoneConfig::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -361,7 +367,7 @@ bool Trace::TimezoneConfig::has_data() const
 
 bool Trace::TimezoneConfig::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -398,7 +404,7 @@ std::shared_ptr<Entity> Trace::TimezoneConfig::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Trace::TimezoneConfig::Trace_>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -410,7 +416,7 @@ std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneConfig::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -439,9 +445,11 @@ bool Trace::TimezoneConfig::has_leaf_or_child_of_name(const std::string & name) 
 Trace::TimezoneConfig::Trace_::Trace_()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "timezone_config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "timezone_config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Trace::TimezoneConfig::Trace_::~Trace_()
@@ -450,7 +458,8 @@ Trace::TimezoneConfig::Trace_::~Trace_()
 
 bool Trace::TimezoneConfig::Trace_::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -460,7 +469,7 @@ bool Trace::TimezoneConfig::Trace_::has_data() const
 
 bool Trace::TimezoneConfig::Trace_::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -479,7 +488,8 @@ std::string Trace::TimezoneConfig::Trace_::get_absolute_path() const
 std::string Trace::TimezoneConfig::Trace_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -499,7 +509,7 @@ std::shared_ptr<Entity> Trace::TimezoneConfig::Trace_::get_child_by_name(const s
     {
         auto c = std::make_shared<Trace::TimezoneConfig::Trace_::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -511,7 +521,7 @@ std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneConfig::Trace_::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -550,9 +560,11 @@ bool Trace::TimezoneConfig::Trace_::has_leaf_or_child_of_name(const std::string 
 Trace::TimezoneConfig::Trace_::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Trace::TimezoneConfig::Trace_::Location::~Location()
@@ -561,7 +573,8 @@ Trace::TimezoneConfig::Trace_::Location::~Location()
 
 bool Trace::TimezoneConfig::Trace_::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -571,7 +584,7 @@ bool Trace::TimezoneConfig::Trace_::Location::has_data() const
 
 bool Trace::TimezoneConfig::Trace_::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -583,7 +596,8 @@ bool Trace::TimezoneConfig::Trace_::Location::has_operation() const
 std::string Trace::TimezoneConfig::Trace_::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -603,7 +617,7 @@ std::shared_ptr<Entity> Trace::TimezoneConfig::Trace_::Location::get_child_by_na
     {
         auto c = std::make_shared<Trace::TimezoneConfig::Trace_::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -615,7 +629,7 @@ std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneConfig::Trace_::Lo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -654,9 +668,11 @@ bool Trace::TimezoneConfig::Trace_::Location::has_leaf_or_child_of_name(const st
 Trace::TimezoneConfig::Trace_::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Trace::TimezoneConfig::Trace_::Location::AllOptions::~AllOptions()
@@ -665,7 +681,8 @@ Trace::TimezoneConfig::Trace_::Location::AllOptions::~AllOptions()
 
 bool Trace::TimezoneConfig::Trace_::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -675,7 +692,7 @@ bool Trace::TimezoneConfig::Trace_::Location::AllOptions::has_data() const
 
 bool Trace::TimezoneConfig::Trace_::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -687,7 +704,8 @@ bool Trace::TimezoneConfig::Trace_::Location::AllOptions::has_operation() const
 std::string Trace::TimezoneConfig::Trace_::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -707,7 +725,7 @@ std::shared_ptr<Entity> Trace::TimezoneConfig::Trace_::Location::AllOptions::get
     {
         auto c = std::make_shared<Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -719,7 +737,7 @@ std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneConfig::Trace_::Lo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -760,7 +778,7 @@ Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -769,6 +787,7 @@ Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -833,9 +852,11 @@ bool Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks::has_leaf_
 }
 
 Trace::TimezoneNotify::TimezoneNotify()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "timezone_notify"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timezone_notify"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Trace::TimezoneNotify::~TimezoneNotify()
@@ -844,7 +865,8 @@ Trace::TimezoneNotify::~TimezoneNotify()
 
 bool Trace::TimezoneNotify::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -854,7 +876,7 @@ bool Trace::TimezoneNotify::has_data() const
 
 bool Trace::TimezoneNotify::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -891,7 +913,7 @@ std::shared_ptr<Entity> Trace::TimezoneNotify::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Trace::TimezoneNotify::Trace_>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -903,7 +925,7 @@ std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneNotify::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -932,9 +954,11 @@ bool Trace::TimezoneNotify::has_leaf_or_child_of_name(const std::string & name) 
 Trace::TimezoneNotify::Trace_::Trace_()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "timezone_notify"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "timezone_notify"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Trace::TimezoneNotify::Trace_::~Trace_()
@@ -943,7 +967,8 @@ Trace::TimezoneNotify::Trace_::~Trace_()
 
 bool Trace::TimezoneNotify::Trace_::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -953,7 +978,7 @@ bool Trace::TimezoneNotify::Trace_::has_data() const
 
 bool Trace::TimezoneNotify::Trace_::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -972,7 +997,8 @@ std::string Trace::TimezoneNotify::Trace_::get_absolute_path() const
 std::string Trace::TimezoneNotify::Trace_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -992,7 +1018,7 @@ std::shared_ptr<Entity> Trace::TimezoneNotify::Trace_::get_child_by_name(const s
     {
         auto c = std::make_shared<Trace::TimezoneNotify::Trace_::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1004,7 +1030,7 @@ std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneNotify::Trace_::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1043,9 +1069,11 @@ bool Trace::TimezoneNotify::Trace_::has_leaf_or_child_of_name(const std::string 
 Trace::TimezoneNotify::Trace_::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Trace::TimezoneNotify::Trace_::Location::~Location()
@@ -1054,7 +1082,8 @@ Trace::TimezoneNotify::Trace_::Location::~Location()
 
 bool Trace::TimezoneNotify::Trace_::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -1064,7 +1093,7 @@ bool Trace::TimezoneNotify::Trace_::Location::has_data() const
 
 bool Trace::TimezoneNotify::Trace_::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -1076,7 +1105,8 @@ bool Trace::TimezoneNotify::Trace_::Location::has_operation() const
 std::string Trace::TimezoneNotify::Trace_::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -1096,7 +1126,7 @@ std::shared_ptr<Entity> Trace::TimezoneNotify::Trace_::Location::get_child_by_na
     {
         auto c = std::make_shared<Trace::TimezoneNotify::Trace_::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -1108,7 +1138,7 @@ std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneNotify::Trace_::Lo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1147,9 +1177,11 @@ bool Trace::TimezoneNotify::Trace_::Location::has_leaf_or_child_of_name(const st
 Trace::TimezoneNotify::Trace_::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Trace::TimezoneNotify::Trace_::Location::AllOptions::~AllOptions()
@@ -1158,7 +1190,8 @@ Trace::TimezoneNotify::Trace_::Location::AllOptions::~AllOptions()
 
 bool Trace::TimezoneNotify::Trace_::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -1168,7 +1201,7 @@ bool Trace::TimezoneNotify::Trace_::Location::AllOptions::has_data() const
 
 bool Trace::TimezoneNotify::Trace_::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -1180,7 +1213,8 @@ bool Trace::TimezoneNotify::Trace_::Location::AllOptions::has_operation() const
 std::string Trace::TimezoneNotify::Trace_::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -1200,7 +1234,7 @@ std::shared_ptr<Entity> Trace::TimezoneNotify::Trace_::Location::AllOptions::get
     {
         auto c = std::make_shared<Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -1212,7 +1246,7 @@ std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneNotify::Trace_::Lo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1253,7 +1287,7 @@ Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -1262,6 +1296,7 @@ Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 

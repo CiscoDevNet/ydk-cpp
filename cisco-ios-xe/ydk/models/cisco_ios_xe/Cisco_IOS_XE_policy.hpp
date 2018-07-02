@@ -17,6 +17,29 @@ class PrecedenceType2 : public ydk::Enum
 
 };
 
+class ClassNameType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf class_default;
+
+};
+
+class PolicePpsBpsType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pps;
+        static const ydk::Enum::YLeaf bps;
+
+};
+
+class PolicePacketsBytesType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf packets;
+        static const ydk::Enum::YLeaf bytes;
+
+};
+
 class PolicyActionType : public ydk::Enum
 {
     public:
@@ -40,35 +63,12 @@ class PolicyActionType : public ydk::Enum
 
 };
 
-class ClassNameType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf class_default;
-
-};
-
-class PolicePacketsBytesType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf packets;
-        static const ydk::Enum::YLeaf bytes;
-
-};
-
 class BytesMsUsType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bytes;
         static const ydk::Enum::YLeaf ms;
         static const ydk::Enum::YLeaf us;
-
-};
-
-class PolicePpsBpsType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pps;
-        static const ydk::Enum::YLeaf bps;
 
 };
 

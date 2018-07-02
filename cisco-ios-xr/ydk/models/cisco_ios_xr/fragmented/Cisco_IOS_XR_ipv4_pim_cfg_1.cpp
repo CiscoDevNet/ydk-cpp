@@ -19,7 +19,7 @@ Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::CloneSource()
     prefix_length{YType::uint8, "prefix-length"}
 {
 
-    yang_name = "clone-source"; yang_parent_name = "clone-sources"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clone-source"; yang_parent_name = "clone-sources"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::~CloneSource()
@@ -28,6 +28,7 @@ Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::~CloneSource()
 
 bool Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::has_data() const
 {
+    if (is_presence_container) return true;
     return source.is_set
 	|| primary.is_set
 	|| backup.is_set
@@ -53,7 +54,11 @@ std::string Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::get_abs
 std::string Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clone-source" <<"[source='" <<source <<"']" <<"[primary='" <<primary <<"']" <<"[backup='" <<backup <<"']" <<"[prefix-length='" <<prefix_length <<"']";
+    path_buffer << "clone-source";
+    ADD_KEY_TOKEN(source, "source");
+    ADD_KEY_TOKEN(primary, "primary");
+    ADD_KEY_TOKEN(backup, "backup");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -138,9 +143,11 @@ bool Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::has_leaf_or_ch
 }
 
 Pim::DefaultContext::Ipv4::Paths::Paths()
+    :
+    path(this, {"source_address", "prefix_length"})
 {
 
-    yang_name = "paths"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "paths"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pim::DefaultContext::Ipv4::Paths::~Paths()
@@ -149,7 +156,8 @@ Pim::DefaultContext::Ipv4::Paths::~Paths()
 
 bool Pim::DefaultContext::Ipv4::Paths::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -159,7 +167,7 @@ bool Pim::DefaultContext::Ipv4::Paths::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Paths::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -196,7 +204,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Paths::get_child_by_name(cons
     {
         auto c = std::make_shared<Pim::DefaultContext::Ipv4::Paths::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -208,7 +216,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Paths:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -241,7 +249,7 @@ Pim::DefaultContext::Ipv4::Paths::Path::Path()
     rpf_proxy_address{YType::str, "rpf-proxy-address"}
 {
 
-    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pim::DefaultContext::Ipv4::Paths::Path::~Path()
@@ -250,6 +258,7 @@ Pim::DefaultContext::Ipv4::Paths::Path::~Path()
 
 bool Pim::DefaultContext::Ipv4::Paths::Path::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : rpf_proxy_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -282,7 +291,9 @@ std::string Pim::DefaultContext::Ipv4::Paths::Path::get_absolute_path() const
 std::string Pim::DefaultContext::Ipv4::Paths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[source-address='" <<source_address <<"']" <<"[prefix-length='" <<prefix_length <<"']";
+    path_buffer << "path";
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -360,7 +371,7 @@ Pim::DefaultContext::Ipv4::AllowRp::AllowRp()
     group_list_name{YType::str, "group-list-name"}
 {
 
-    yang_name = "allow-rp"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "allow-rp"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Pim::DefaultContext::Ipv4::AllowRp::~AllowRp()
@@ -369,6 +380,7 @@ Pim::DefaultContext::Ipv4::AllowRp::~AllowRp()
 
 bool Pim::DefaultContext::Ipv4::AllowRp::has_data() const
 {
+    if (is_presence_container) return true;
     return rp_list_name.is_set
 	|| group_list_name.is_set;
 }
@@ -458,7 +470,7 @@ Pim::DefaultContext::Ipv4::Convergence::Convergence()
     link_down_prune_delay{YType::uint32, "link-down-prune-delay"}
 {
 
-    yang_name = "convergence"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "convergence"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pim::DefaultContext::Ipv4::Convergence::~Convergence()
@@ -467,6 +479,7 @@ Pim::DefaultContext::Ipv4::Convergence::~Convergence()
 
 bool Pim::DefaultContext::Ipv4::Convergence::has_data() const
 {
+    if (is_presence_container) return true;
     return rpf_conflict_join_delay.is_set
 	|| link_down_prune_delay.is_set;
 }

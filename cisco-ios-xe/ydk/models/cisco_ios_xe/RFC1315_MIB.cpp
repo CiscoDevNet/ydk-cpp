@@ -14,16 +14,16 @@ namespace RFC1315_MIB {
 RFC1315MIB::RFC1315MIB()
     :
     frame_relay_globals(std::make_shared<RFC1315MIB::FrameRelayGlobals>())
-	,frdlcmitable(std::make_shared<RFC1315MIB::Frdlcmitable>())
-	,frcircuittable(std::make_shared<RFC1315MIB::Frcircuittable>())
-	,frerrtable(std::make_shared<RFC1315MIB::Frerrtable>())
+    , frdlcmitable(std::make_shared<RFC1315MIB::FrDlcmiTable>())
+    , frcircuittable(std::make_shared<RFC1315MIB::FrCircuitTable>())
+    , frerrtable(std::make_shared<RFC1315MIB::FrErrTable>())
 {
     frame_relay_globals->parent = this;
     frdlcmitable->parent = this;
     frcircuittable->parent = this;
     frerrtable->parent = this;
 
-    yang_name = "RFC1315-MIB"; yang_parent_name = "RFC1315-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "RFC1315-MIB"; yang_parent_name = "RFC1315-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RFC1315MIB::~RFC1315MIB()
@@ -32,6 +32,7 @@ RFC1315MIB::~RFC1315MIB()
 
 bool RFC1315MIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (frame_relay_globals !=  nullptr && frame_relay_globals->has_data())
 	|| (frdlcmitable !=  nullptr && frdlcmitable->has_data())
 	|| (frcircuittable !=  nullptr && frcircuittable->has_data())
@@ -78,7 +79,7 @@ std::shared_ptr<Entity> RFC1315MIB::get_child_by_name(const std::string & child_
     {
         if(frdlcmitable == nullptr)
         {
-            frdlcmitable = std::make_shared<RFC1315MIB::Frdlcmitable>();
+            frdlcmitable = std::make_shared<RFC1315MIB::FrDlcmiTable>();
         }
         return frdlcmitable;
     }
@@ -87,7 +88,7 @@ std::shared_ptr<Entity> RFC1315MIB::get_child_by_name(const std::string & child_
     {
         if(frcircuittable == nullptr)
         {
-            frcircuittable = std::make_shared<RFC1315MIB::Frcircuittable>();
+            frcircuittable = std::make_shared<RFC1315MIB::FrCircuitTable>();
         }
         return frcircuittable;
     }
@@ -96,7 +97,7 @@ std::shared_ptr<Entity> RFC1315MIB::get_child_by_name(const std::string & child_
     {
         if(frerrtable == nullptr)
         {
-            frerrtable = std::make_shared<RFC1315MIB::Frerrtable>();
+            frerrtable = std::make_shared<RFC1315MIB::FrErrTable>();
         }
         return frerrtable;
     }
@@ -176,7 +177,7 @@ RFC1315MIB::FrameRelayGlobals::FrameRelayGlobals()
     frtrapstate{YType::enumeration, "frTrapState"}
 {
 
-    yang_name = "frame-relay-globals"; yang_parent_name = "RFC1315-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "frame-relay-globals"; yang_parent_name = "RFC1315-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RFC1315MIB::FrameRelayGlobals::~FrameRelayGlobals()
@@ -185,6 +186,7 @@ RFC1315MIB::FrameRelayGlobals::~FrameRelayGlobals()
 
 bool RFC1315MIB::FrameRelayGlobals::has_data() const
 {
+    if (is_presence_container) return true;
     return frtrapstate.is_set;
 }
 
@@ -255,19 +257,22 @@ bool RFC1315MIB::FrameRelayGlobals::has_leaf_or_child_of_name(const std::string 
     return false;
 }
 
-RFC1315MIB::Frdlcmitable::Frdlcmitable()
+RFC1315MIB::FrDlcmiTable::FrDlcmiTable()
+    :
+    frdlcmientry(this, {"frdlcmiifindex"})
 {
 
-    yang_name = "frDlcmiTable"; yang_parent_name = "RFC1315-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "frDlcmiTable"; yang_parent_name = "RFC1315-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1315MIB::Frdlcmitable::~Frdlcmitable()
+RFC1315MIB::FrDlcmiTable::~FrDlcmiTable()
 {
 }
 
-bool RFC1315MIB::Frdlcmitable::has_data() const
+bool RFC1315MIB::FrDlcmiTable::has_data() const
 {
-    for (std::size_t index=0; index<frdlcmientry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frdlcmientry.len(); index++)
     {
         if(frdlcmientry[index]->has_data())
             return true;
@@ -275,9 +280,9 @@ bool RFC1315MIB::Frdlcmitable::has_data() const
     return false;
 }
 
-bool RFC1315MIB::Frdlcmitable::has_operation() const
+bool RFC1315MIB::FrDlcmiTable::has_operation() const
 {
-    for (std::size_t index=0; index<frdlcmientry.size(); index++)
+    for (std::size_t index=0; index<frdlcmientry.len(); index++)
     {
         if(frdlcmientry[index]->has_operation())
             return true;
@@ -285,21 +290,21 @@ bool RFC1315MIB::Frdlcmitable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RFC1315MIB::Frdlcmitable::get_absolute_path() const
+std::string RFC1315MIB::FrDlcmiTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1315-MIB:RFC1315-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1315MIB::Frdlcmitable::get_segment_path() const
+std::string RFC1315MIB::FrDlcmiTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "frDlcmiTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1315MIB::Frdlcmitable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrDlcmiTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -308,25 +313,25 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::Frdlcmitable::get_nam
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::Frdlcmitable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1315MIB::FrDlcmiTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frDlcmiEntry")
     {
-        auto c = std::make_shared<RFC1315MIB::Frdlcmitable::Frdlcmientry>();
+        auto c = std::make_shared<RFC1315MIB::FrDlcmiTable::FrDlcmiEntry>();
         c->parent = this;
-        frdlcmientry.push_back(c);
+        frdlcmientry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frdlcmitable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrDlcmiTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frdlcmientry)
+    for (auto c : frdlcmientry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -337,22 +342,22 @@ std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frdlcmitable::get_chi
     return children;
 }
 
-void RFC1315MIB::Frdlcmitable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1315MIB::FrDlcmiTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RFC1315MIB::Frdlcmitable::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1315MIB::FrDlcmiTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RFC1315MIB::Frdlcmitable::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1315MIB::FrDlcmiTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "frDlcmiEntry")
         return true;
     return false;
 }
 
-RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmientry()
+RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiEntry()
     :
     frdlcmiifindex{YType::int32, "frDlcmiIfIndex"},
     frdlcmistate{YType::enumeration, "frDlcmiState"},
@@ -366,15 +371,16 @@ RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmientry()
     frdlcmimulticast{YType::enumeration, "frDlcmiMulticast"}
 {
 
-    yang_name = "frDlcmiEntry"; yang_parent_name = "frDlcmiTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "frDlcmiEntry"; yang_parent_name = "frDlcmiTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1315MIB::Frdlcmitable::Frdlcmientry::~Frdlcmientry()
+RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::~FrDlcmiEntry()
 {
 }
 
-bool RFC1315MIB::Frdlcmitable::Frdlcmientry::has_data() const
+bool RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return frdlcmiifindex.is_set
 	|| frdlcmistate.is_set
 	|| frdlcmiaddress.is_set
@@ -387,7 +393,7 @@ bool RFC1315MIB::Frdlcmitable::Frdlcmientry::has_data() const
 	|| frdlcmimulticast.is_set;
 }
 
-bool RFC1315MIB::Frdlcmitable::Frdlcmientry::has_operation() const
+bool RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(frdlcmiifindex.yfilter)
@@ -402,21 +408,22 @@ bool RFC1315MIB::Frdlcmitable::Frdlcmientry::has_operation() const
 	|| ydk::is_set(frdlcmimulticast.yfilter);
 }
 
-std::string RFC1315MIB::Frdlcmitable::Frdlcmientry::get_absolute_path() const
+std::string RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1315-MIB:RFC1315-MIB/frDlcmiTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1315MIB::Frdlcmitable::Frdlcmientry::get_segment_path() const
+std::string RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frDlcmiEntry" <<"[frDlcmiIfIndex='" <<frdlcmiifindex <<"']";
+    path_buffer << "frDlcmiEntry";
+    ADD_KEY_TOKEN(frdlcmiifindex, "frDlcmiIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1315MIB::Frdlcmitable::Frdlcmientry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -435,19 +442,19 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::Frdlcmitable::Frdlcmi
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::Frdlcmitable::Frdlcmientry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frdlcmitable::Frdlcmientry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RFC1315MIB::Frdlcmitable::Frdlcmientry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "frDlcmiIfIndex")
     {
@@ -511,7 +518,7 @@ void RFC1315MIB::Frdlcmitable::Frdlcmientry::set_value(const std::string & value
     }
 }
 
-void RFC1315MIB::Frdlcmitable::Frdlcmientry::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "frDlcmiIfIndex")
     {
@@ -555,26 +562,29 @@ void RFC1315MIB::Frdlcmitable::Frdlcmientry::set_filter(const std::string & valu
     }
 }
 
-bool RFC1315MIB::Frdlcmitable::Frdlcmientry::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "frDlcmiIfIndex" || name == "frDlcmiState" || name == "frDlcmiAddress" || name == "frDlcmiAddressLen" || name == "frDlcmiPollingInterval" || name == "frDlcmiFullEnquiryInterval" || name == "frDlcmiErrorThreshold" || name == "frDlcmiMonitoredEvents" || name == "frDlcmiMaxSupportedVCs" || name == "frDlcmiMulticast")
         return true;
     return false;
 }
 
-RFC1315MIB::Frcircuittable::Frcircuittable()
+RFC1315MIB::FrCircuitTable::FrCircuitTable()
+    :
+    frcircuitentry(this, {"frcircuitifindex", "frcircuitdlci"})
 {
 
-    yang_name = "frCircuitTable"; yang_parent_name = "RFC1315-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "frCircuitTable"; yang_parent_name = "RFC1315-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1315MIB::Frcircuittable::~Frcircuittable()
+RFC1315MIB::FrCircuitTable::~FrCircuitTable()
 {
 }
 
-bool RFC1315MIB::Frcircuittable::has_data() const
+bool RFC1315MIB::FrCircuitTable::has_data() const
 {
-    for (std::size_t index=0; index<frcircuitentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frcircuitentry.len(); index++)
     {
         if(frcircuitentry[index]->has_data())
             return true;
@@ -582,9 +592,9 @@ bool RFC1315MIB::Frcircuittable::has_data() const
     return false;
 }
 
-bool RFC1315MIB::Frcircuittable::has_operation() const
+bool RFC1315MIB::FrCircuitTable::has_operation() const
 {
-    for (std::size_t index=0; index<frcircuitentry.size(); index++)
+    for (std::size_t index=0; index<frcircuitentry.len(); index++)
     {
         if(frcircuitentry[index]->has_operation())
             return true;
@@ -592,21 +602,21 @@ bool RFC1315MIB::Frcircuittable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RFC1315MIB::Frcircuittable::get_absolute_path() const
+std::string RFC1315MIB::FrCircuitTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1315-MIB:RFC1315-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1315MIB::Frcircuittable::get_segment_path() const
+std::string RFC1315MIB::FrCircuitTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "frCircuitTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1315MIB::Frcircuittable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrCircuitTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -615,25 +625,25 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::Frcircuittable::get_n
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::Frcircuittable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1315MIB::FrCircuitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frCircuitEntry")
     {
-        auto c = std::make_shared<RFC1315MIB::Frcircuittable::Frcircuitentry>();
+        auto c = std::make_shared<RFC1315MIB::FrCircuitTable::FrCircuitEntry>();
         c->parent = this;
-        frcircuitentry.push_back(c);
+        frcircuitentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frcircuittable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrCircuitTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frcircuitentry)
+    for (auto c : frcircuitentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -644,22 +654,22 @@ std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frcircuittable::get_c
     return children;
 }
 
-void RFC1315MIB::Frcircuittable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1315MIB::FrCircuitTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RFC1315MIB::Frcircuittable::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1315MIB::FrCircuitTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RFC1315MIB::Frcircuittable::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1315MIB::FrCircuitTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "frCircuitEntry")
         return true;
     return false;
 }
 
-RFC1315MIB::Frcircuittable::Frcircuitentry::Frcircuitentry()
+RFC1315MIB::FrCircuitTable::FrCircuitEntry::FrCircuitEntry()
     :
     frcircuitifindex{YType::int32, "frCircuitIfIndex"},
     frcircuitdlci{YType::int32, "frCircuitDlci"},
@@ -677,15 +687,16 @@ RFC1315MIB::Frcircuittable::Frcircuitentry::Frcircuitentry()
     frcircuitthroughput{YType::int32, "frCircuitThroughput"}
 {
 
-    yang_name = "frCircuitEntry"; yang_parent_name = "frCircuitTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "frCircuitEntry"; yang_parent_name = "frCircuitTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1315MIB::Frcircuittable::Frcircuitentry::~Frcircuitentry()
+RFC1315MIB::FrCircuitTable::FrCircuitEntry::~FrCircuitEntry()
 {
 }
 
-bool RFC1315MIB::Frcircuittable::Frcircuitentry::has_data() const
+bool RFC1315MIB::FrCircuitTable::FrCircuitEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return frcircuitifindex.is_set
 	|| frcircuitdlci.is_set
 	|| frcircuitstate.is_set
@@ -702,7 +713,7 @@ bool RFC1315MIB::Frcircuittable::Frcircuitentry::has_data() const
 	|| frcircuitthroughput.is_set;
 }
 
-bool RFC1315MIB::Frcircuittable::Frcircuitentry::has_operation() const
+bool RFC1315MIB::FrCircuitTable::FrCircuitEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(frcircuitifindex.yfilter)
@@ -721,21 +732,23 @@ bool RFC1315MIB::Frcircuittable::Frcircuitentry::has_operation() const
 	|| ydk::is_set(frcircuitthroughput.yfilter);
 }
 
-std::string RFC1315MIB::Frcircuittable::Frcircuitentry::get_absolute_path() const
+std::string RFC1315MIB::FrCircuitTable::FrCircuitEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1315-MIB:RFC1315-MIB/frCircuitTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1315MIB::Frcircuittable::Frcircuitentry::get_segment_path() const
+std::string RFC1315MIB::FrCircuitTable::FrCircuitEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frCircuitEntry" <<"[frCircuitIfIndex='" <<frcircuitifindex <<"']" <<"[frCircuitDlci='" <<frcircuitdlci <<"']";
+    path_buffer << "frCircuitEntry";
+    ADD_KEY_TOKEN(frcircuitifindex, "frCircuitIfIndex");
+    ADD_KEY_TOKEN(frcircuitdlci, "frCircuitDlci");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1315MIB::Frcircuittable::Frcircuitentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrCircuitTable::FrCircuitEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -758,19 +771,19 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::Frcircuittable::Frcir
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::Frcircuittable::Frcircuitentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1315MIB::FrCircuitTable::FrCircuitEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frcircuittable::Frcircuitentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrCircuitTable::FrCircuitEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RFC1315MIB::Frcircuittable::Frcircuitentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1315MIB::FrCircuitTable::FrCircuitEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "frCircuitIfIndex")
     {
@@ -858,7 +871,7 @@ void RFC1315MIB::Frcircuittable::Frcircuitentry::set_value(const std::string & v
     }
 }
 
-void RFC1315MIB::Frcircuittable::Frcircuitentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1315MIB::FrCircuitTable::FrCircuitEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "frCircuitIfIndex")
     {
@@ -918,26 +931,29 @@ void RFC1315MIB::Frcircuittable::Frcircuitentry::set_filter(const std::string & 
     }
 }
 
-bool RFC1315MIB::Frcircuittable::Frcircuitentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1315MIB::FrCircuitTable::FrCircuitEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "frCircuitIfIndex" || name == "frCircuitDlci" || name == "frCircuitState" || name == "frCircuitReceivedFECNs" || name == "frCircuitReceivedBECNs" || name == "frCircuitSentFrames" || name == "frCircuitSentOctets" || name == "frCircuitReceivedFrames" || name == "frCircuitReceivedOctets" || name == "frCircuitCreationTime" || name == "frCircuitLastTimeChange" || name == "frCircuitCommittedBurst" || name == "frCircuitExcessBurst" || name == "frCircuitThroughput")
         return true;
     return false;
 }
 
-RFC1315MIB::Frerrtable::Frerrtable()
+RFC1315MIB::FrErrTable::FrErrTable()
+    :
+    frerrentry(this, {"frerrifindex"})
 {
 
-    yang_name = "frErrTable"; yang_parent_name = "RFC1315-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "frErrTable"; yang_parent_name = "RFC1315-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1315MIB::Frerrtable::~Frerrtable()
+RFC1315MIB::FrErrTable::~FrErrTable()
 {
 }
 
-bool RFC1315MIB::Frerrtable::has_data() const
+bool RFC1315MIB::FrErrTable::has_data() const
 {
-    for (std::size_t index=0; index<frerrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frerrentry.len(); index++)
     {
         if(frerrentry[index]->has_data())
             return true;
@@ -945,9 +961,9 @@ bool RFC1315MIB::Frerrtable::has_data() const
     return false;
 }
 
-bool RFC1315MIB::Frerrtable::has_operation() const
+bool RFC1315MIB::FrErrTable::has_operation() const
 {
-    for (std::size_t index=0; index<frerrentry.size(); index++)
+    for (std::size_t index=0; index<frerrentry.len(); index++)
     {
         if(frerrentry[index]->has_operation())
             return true;
@@ -955,21 +971,21 @@ bool RFC1315MIB::Frerrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RFC1315MIB::Frerrtable::get_absolute_path() const
+std::string RFC1315MIB::FrErrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1315-MIB:RFC1315-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1315MIB::Frerrtable::get_segment_path() const
+std::string RFC1315MIB::FrErrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "frErrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1315MIB::Frerrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrErrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -978,25 +994,25 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::Frerrtable::get_name_
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::Frerrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1315MIB::FrErrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frErrEntry")
     {
-        auto c = std::make_shared<RFC1315MIB::Frerrtable::Frerrentry>();
+        auto c = std::make_shared<RFC1315MIB::FrErrTable::FrErrEntry>();
         c->parent = this;
-        frerrentry.push_back(c);
+        frerrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frerrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrErrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frerrentry)
+    for (auto c : frerrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1007,22 +1023,22 @@ std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frerrtable::get_child
     return children;
 }
 
-void RFC1315MIB::Frerrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1315MIB::FrErrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RFC1315MIB::Frerrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1315MIB::FrErrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RFC1315MIB::Frerrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1315MIB::FrErrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "frErrEntry")
         return true;
     return false;
 }
 
-RFC1315MIB::Frerrtable::Frerrentry::Frerrentry()
+RFC1315MIB::FrErrTable::FrErrEntry::FrErrEntry()
     :
     frerrifindex{YType::int32, "frErrIfIndex"},
     frerrtype{YType::enumeration, "frErrType"},
@@ -1030,22 +1046,23 @@ RFC1315MIB::Frerrtable::Frerrentry::Frerrentry()
     frerrtime{YType::uint32, "frErrTime"}
 {
 
-    yang_name = "frErrEntry"; yang_parent_name = "frErrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "frErrEntry"; yang_parent_name = "frErrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1315MIB::Frerrtable::Frerrentry::~Frerrentry()
+RFC1315MIB::FrErrTable::FrErrEntry::~FrErrEntry()
 {
 }
 
-bool RFC1315MIB::Frerrtable::Frerrentry::has_data() const
+bool RFC1315MIB::FrErrTable::FrErrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return frerrifindex.is_set
 	|| frerrtype.is_set
 	|| frerrdata.is_set
 	|| frerrtime.is_set;
 }
 
-bool RFC1315MIB::Frerrtable::Frerrentry::has_operation() const
+bool RFC1315MIB::FrErrTable::FrErrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(frerrifindex.yfilter)
@@ -1054,21 +1071,22 @@ bool RFC1315MIB::Frerrtable::Frerrentry::has_operation() const
 	|| ydk::is_set(frerrtime.yfilter);
 }
 
-std::string RFC1315MIB::Frerrtable::Frerrentry::get_absolute_path() const
+std::string RFC1315MIB::FrErrTable::FrErrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1315-MIB:RFC1315-MIB/frErrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1315MIB::Frerrtable::Frerrentry::get_segment_path() const
+std::string RFC1315MIB::FrErrTable::FrErrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frErrEntry" <<"[frErrIfIndex='" <<frerrifindex <<"']";
+    path_buffer << "frErrEntry";
+    ADD_KEY_TOKEN(frerrifindex, "frErrIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1315MIB::Frerrtable::Frerrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrErrTable::FrErrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1081,19 +1099,19 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::Frerrtable::Frerrentr
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::Frerrtable::Frerrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1315MIB::FrErrTable::FrErrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frerrtable::Frerrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrErrTable::FrErrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RFC1315MIB::Frerrtable::Frerrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1315MIB::FrErrTable::FrErrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "frErrIfIndex")
     {
@@ -1121,7 +1139,7 @@ void RFC1315MIB::Frerrtable::Frerrentry::set_value(const std::string & value_pat
     }
 }
 
-void RFC1315MIB::Frerrtable::Frerrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1315MIB::FrErrTable::FrErrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "frErrIfIndex")
     {
@@ -1141,47 +1159,47 @@ void RFC1315MIB::Frerrtable::Frerrentry::set_filter(const std::string & value_pa
     }
 }
 
-bool RFC1315MIB::Frerrtable::Frerrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1315MIB::FrErrTable::FrErrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "frErrIfIndex" || name == "frErrType" || name == "frErrData" || name == "frErrTime")
         return true;
     return false;
 }
 
-const Enum::YLeaf RFC1315MIB::FrameRelayGlobals::Frtrapstate::enabled {1, "enabled"};
-const Enum::YLeaf RFC1315MIB::FrameRelayGlobals::Frtrapstate::disabled {2, "disabled"};
+const Enum::YLeaf RFC1315MIB::FrameRelayGlobals::FrTrapState::enabled {1, "enabled"};
+const Enum::YLeaf RFC1315MIB::FrameRelayGlobals::FrTrapState::disabled {2, "disabled"};
 
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmistate::noLmiConfigured {1, "noLmiConfigured"};
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmistate::lmiRev1 {2, "lmiRev1"};
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmistate::ansiT1_617_D {3, "ansiT1-617-D"};
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmistate::ansiT1_617_B {4, "ansiT1-617-B"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiState::noLmiConfigured {1, "noLmiConfigured"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiState::lmiRev1 {2, "lmiRev1"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiState::ansiT1_617_D {3, "ansiT1-617-D"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiState::ansiT1_617_B {4, "ansiT1-617-B"};
 
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddress::q921 {1, "q921"};
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddress::q922March90 {2, "q922March90"};
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddress::q922November90 {3, "q922November90"};
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddress::q922 {4, "q922"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddress::q921 {1, "q921"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddress::q922March90 {2, "q922March90"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddress::q922November90 {3, "q922November90"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddress::q922 {4, "q922"};
 
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen::two_octets {2, "two-octets"};
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen::three_octets {3, "three-octets"};
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen::four_octets {4, "four-octets"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddressLen::two_octets {2, "two-octets"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddressLen::three_octets {3, "three-octets"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddressLen::four_octets {4, "four-octets"};
 
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmimulticast::nonBroadcast {1, "nonBroadcast"};
-const Enum::YLeaf RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmimulticast::broadcast {2, "broadcast"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiMulticast::nonBroadcast {1, "nonBroadcast"};
+const Enum::YLeaf RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiMulticast::broadcast {2, "broadcast"};
 
-const Enum::YLeaf RFC1315MIB::Frcircuittable::Frcircuitentry::Frcircuitstate::invalid {1, "invalid"};
-const Enum::YLeaf RFC1315MIB::Frcircuittable::Frcircuitentry::Frcircuitstate::active {2, "active"};
-const Enum::YLeaf RFC1315MIB::Frcircuittable::Frcircuitentry::Frcircuitstate::inactive {3, "inactive"};
+const Enum::YLeaf RFC1315MIB::FrCircuitTable::FrCircuitEntry::FrCircuitState::invalid {1, "invalid"};
+const Enum::YLeaf RFC1315MIB::FrCircuitTable::FrCircuitEntry::FrCircuitState::active {2, "active"};
+const Enum::YLeaf RFC1315MIB::FrCircuitTable::FrCircuitEntry::FrCircuitState::inactive {3, "inactive"};
 
-const Enum::YLeaf RFC1315MIB::Frerrtable::Frerrentry::Frerrtype::unknownError {1, "unknownError"};
-const Enum::YLeaf RFC1315MIB::Frerrtable::Frerrentry::Frerrtype::receiveShort {2, "receiveShort"};
-const Enum::YLeaf RFC1315MIB::Frerrtable::Frerrentry::Frerrtype::receiveLong {3, "receiveLong"};
-const Enum::YLeaf RFC1315MIB::Frerrtable::Frerrentry::Frerrtype::illegalDLCI {4, "illegalDLCI"};
-const Enum::YLeaf RFC1315MIB::Frerrtable::Frerrentry::Frerrtype::unknownDLCI {5, "unknownDLCI"};
-const Enum::YLeaf RFC1315MIB::Frerrtable::Frerrentry::Frerrtype::dlcmiProtoErr {6, "dlcmiProtoErr"};
-const Enum::YLeaf RFC1315MIB::Frerrtable::Frerrentry::Frerrtype::dlcmiUnknownIE {7, "dlcmiUnknownIE"};
-const Enum::YLeaf RFC1315MIB::Frerrtable::Frerrentry::Frerrtype::dlcmiSequenceErr {8, "dlcmiSequenceErr"};
-const Enum::YLeaf RFC1315MIB::Frerrtable::Frerrentry::Frerrtype::dlcmiUnknownRpt {9, "dlcmiUnknownRpt"};
-const Enum::YLeaf RFC1315MIB::Frerrtable::Frerrentry::Frerrtype::noErrorSinceReset {10, "noErrorSinceReset"};
+const Enum::YLeaf RFC1315MIB::FrErrTable::FrErrEntry::FrErrType::unknownError {1, "unknownError"};
+const Enum::YLeaf RFC1315MIB::FrErrTable::FrErrEntry::FrErrType::receiveShort {2, "receiveShort"};
+const Enum::YLeaf RFC1315MIB::FrErrTable::FrErrEntry::FrErrType::receiveLong {3, "receiveLong"};
+const Enum::YLeaf RFC1315MIB::FrErrTable::FrErrEntry::FrErrType::illegalDLCI {4, "illegalDLCI"};
+const Enum::YLeaf RFC1315MIB::FrErrTable::FrErrEntry::FrErrType::unknownDLCI {5, "unknownDLCI"};
+const Enum::YLeaf RFC1315MIB::FrErrTable::FrErrEntry::FrErrType::dlcmiProtoErr {6, "dlcmiProtoErr"};
+const Enum::YLeaf RFC1315MIB::FrErrTable::FrErrEntry::FrErrType::dlcmiUnknownIE {7, "dlcmiUnknownIE"};
+const Enum::YLeaf RFC1315MIB::FrErrTable::FrErrEntry::FrErrType::dlcmiSequenceErr {8, "dlcmiSequenceErr"};
+const Enum::YLeaf RFC1315MIB::FrErrTable::FrErrEntry::FrErrType::dlcmiUnknownRpt {9, "dlcmiUnknownRpt"};
+const Enum::YLeaf RFC1315MIB::FrErrTable::FrErrEntry::FrErrType::noErrorSinceReset {10, "noErrorSinceReset"};
 
 
 }

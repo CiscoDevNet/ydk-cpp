@@ -11,6 +11,18 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_bgp_common_oper {
 
+const Enum::YLeaf TcpFsmState::closed {0, "closed"};
+const Enum::YLeaf TcpFsmState::listen {1, "listen"};
+const Enum::YLeaf TcpFsmState::synsent {2, "synsent"};
+const Enum::YLeaf TcpFsmState::synrcvd {3, "synrcvd"};
+const Enum::YLeaf TcpFsmState::established {4, "established"};
+const Enum::YLeaf TcpFsmState::finwait1 {5, "finwait1"};
+const Enum::YLeaf TcpFsmState::finwait2 {6, "finwait2"};
+const Enum::YLeaf TcpFsmState::closewait {7, "closewait"};
+const Enum::YLeaf TcpFsmState::lastack {8, "lastack"};
+const Enum::YLeaf TcpFsmState::closing {9, "closing"};
+const Enum::YLeaf TcpFsmState::timewait {10, "timewait"};
+
 const Enum::YLeaf AfiSafi::ipv4_mdt {0, "ipv4-mdt"};
 const Enum::YLeaf AfiSafi::ipv4_multicast {1, "ipv4-multicast"};
 const Enum::YLeaf AfiSafi::ipv4_unicast {2, "ipv4-unicast"};
@@ -30,18 +42,6 @@ const Enum::YLeaf AfiSafi::vpnv6_unicast {15, "vpnv6-unicast"};
 const Enum::YLeaf AfiSafi::vpnv6_multicast {16, "vpnv6-multicast"};
 const Enum::YLeaf AfiSafi::vpnv4_flowspec {17, "vpnv4-flowspec"};
 const Enum::YLeaf AfiSafi::vpnv6_flowspec {18, "vpnv6-flowspec"};
-
-const Enum::YLeaf TcpFsmState::closed {0, "closed"};
-const Enum::YLeaf TcpFsmState::listen {1, "listen"};
-const Enum::YLeaf TcpFsmState::synsent {2, "synsent"};
-const Enum::YLeaf TcpFsmState::synrcvd {3, "synrcvd"};
-const Enum::YLeaf TcpFsmState::established {4, "established"};
-const Enum::YLeaf TcpFsmState::finwait1 {5, "finwait1"};
-const Enum::YLeaf TcpFsmState::finwait2 {6, "finwait2"};
-const Enum::YLeaf TcpFsmState::closewait {7, "closewait"};
-const Enum::YLeaf TcpFsmState::lastack {8, "lastack"};
-const Enum::YLeaf TcpFsmState::closing {9, "closing"};
-const Enum::YLeaf TcpFsmState::timewait {10, "timewait"};
 
 
 }

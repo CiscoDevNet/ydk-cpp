@@ -10,15 +10,6 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_bgp_route_oper {
 
-class BgpOriginCode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf origin_igp;
-        static const ydk::Enum::YLeaf origin_egp;
-        static const ydk::Enum::YLeaf origin_incomplete;
-
-};
-
 class BgpRpkiStatus : public ydk::Enum
 {
     public:
@@ -53,6 +44,15 @@ class BgpNeighborRouteFilters : public ydk::Enum
         static const ydk::Enum::YLeaf bgp_nrf_pre_received;
         static const ydk::Enum::YLeaf bgp_nrf_pre_advertised;
         static const ydk::Enum::YLeaf bgp_nrf_post_advertised;
+
+};
+
+class BgpOriginCode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf origin_igp;
+        static const ydk::Enum::YLeaf origin_egp;
+        static const ydk::Enum::YLeaf origin_incomplete;
 
 };
 

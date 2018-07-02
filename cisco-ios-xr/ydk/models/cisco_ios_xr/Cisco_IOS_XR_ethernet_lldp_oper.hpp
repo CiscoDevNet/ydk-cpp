@@ -110,7 +110,7 @@ class Lldp::Nodes : public ydk::Entity
 
         class Node; //type: Lldp::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Lldp::Nodes
 
@@ -189,7 +189,7 @@ class Lldp::Nodes::Node::Neighbors::Devices : public ydk::Entity
 
         class Device; //type: Lldp::Nodes::Node::Neighbors::Devices::Device
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Devices::Device> > device;
+        ydk::YList device;
         
 }; // Lldp::Nodes::Node::Neighbors::Devices
 
@@ -214,7 +214,7 @@ class Lldp::Nodes::Node::Neighbors::Devices::Device : public ydk::Entity
         ydk::YLeaf interface_name; //type: string
         class LldpNeighbor; //type: Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor> > lldp_neighbor;
+        ydk::YList lldp_neighbor;
         
 }; // Lldp::Nodes::Node::Neighbors::Devices::Device
 
@@ -305,7 +305,7 @@ class Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::Netwo
 
         class LldpAddrEntry; //type: Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry> > lldp_addr_entry;
+        ydk::YList lldp_addr_entry;
         
 }; // Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses
 
@@ -409,7 +409,7 @@ class Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownT
 
         class LldpUnknownTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry> > lldp_unknown_tlv_entry;
+        ydk::YList lldp_unknown_tlv_entry;
         
 }; // Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList
 
@@ -454,7 +454,7 @@ class Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTl
 
         class LldpOrgDefTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry> > lldp_org_def_tlv_entry;
+        ydk::YList lldp_org_def_tlv_entry;
         
 }; // Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList
 
@@ -501,7 +501,7 @@ class Lldp::Nodes::Node::Neighbors::Details : public ydk::Entity
 
         class Detail; //type: Lldp::Nodes::Node::Neighbors::Details::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail> > detail;
+        ydk::YList detail;
         
 }; // Lldp::Nodes::Node::Neighbors::Details
 
@@ -526,7 +526,7 @@ class Lldp::Nodes::Node::Neighbors::Details::Detail : public ydk::Entity
         ydk::YLeaf device_id; //type: string
         class LldpNeighbor; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor> > lldp_neighbor;
+        ydk::YList lldp_neighbor;
         
 }; // Lldp::Nodes::Node::Neighbors::Details::Detail
 
@@ -617,7 +617,7 @@ class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::Netw
 
         class LldpAddrEntry; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry> > lldp_addr_entry;
+        ydk::YList lldp_addr_entry;
         
 }; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses
 
@@ -721,7 +721,7 @@ class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownT
 
         class LldpUnknownTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry> > lldp_unknown_tlv_entry;
+        ydk::YList lldp_unknown_tlv_entry;
         
 }; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList
 
@@ -766,7 +766,7 @@ class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTl
 
         class LldpOrgDefTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry> > lldp_org_def_tlv_entry;
+        ydk::YList lldp_org_def_tlv_entry;
         
 }; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList
 
@@ -813,7 +813,7 @@ class Lldp::Nodes::Node::Neighbors::Summaries : public ydk::Entity
 
         class Summary; //type: Lldp::Nodes::Node::Neighbors::Summaries::Summary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Summaries::Summary> > summary;
+        ydk::YList summary;
         
 }; // Lldp::Nodes::Node::Neighbors::Summaries
 
@@ -838,7 +838,7 @@ class Lldp::Nodes::Node::Neighbors::Summaries::Summary : public ydk::Entity
         ydk::YLeaf device_id; //type: string
         class LldpNeighbor; //type: Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor> > lldp_neighbor;
+        ydk::YList lldp_neighbor;
         
 }; // Lldp::Nodes::Node::Neighbors::Summaries::Summary
 
@@ -929,7 +929,7 @@ class Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::Ne
 
         class LldpAddrEntry; //type: Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry> > lldp_addr_entry;
+        ydk::YList lldp_addr_entry;
         
 }; // Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses
 
@@ -1033,7 +1033,7 @@ class Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::Unkno
 
         class LldpUnknownTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry> > lldp_unknown_tlv_entry;
+        ydk::YList lldp_unknown_tlv_entry;
         
 }; // Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList
 
@@ -1078,7 +1078,7 @@ class Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDe
 
         class LldpOrgDefTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry> > lldp_org_def_tlv_entry;
+        ydk::YList lldp_org_def_tlv_entry;
         
 }; // Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList
 
@@ -1125,7 +1125,7 @@ class Lldp::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: Lldp::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Lldp::Nodes::Node::Interfaces
 
@@ -1181,7 +1181,7 @@ class Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses : public y
 
         class LldpAddrEntry; //type: Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry> > lldp_addr_entry;
+        ydk::YList lldp_addr_entry;
         
 }; // Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses
 

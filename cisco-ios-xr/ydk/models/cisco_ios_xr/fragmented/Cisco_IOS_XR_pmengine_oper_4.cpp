@@ -15,12 +15,12 @@ namespace Cisco_IOS_XR_pmengine_oper {
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetCurrent()
     :
     sonet_minute15(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15>())
-	,sonet_hour24(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24>())
+    , sonet_hour24(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24>())
 {
     sonet_minute15->parent = this;
     sonet_hour24->parent = this;
 
-    yang_name = "sonet-current"; yang_parent_name = "sonet-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet-current"; yang_parent_name = "sonet-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::~SonetCurrent()
@@ -29,6 +29,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::~SonetCurrent
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::has_data() const
 {
+    if (is_presence_container) return true;
     return (sonet_minute15 !=  nullptr && sonet_minute15->has_data())
 	|| (sonet_hour24 !=  nullptr && sonet_hour24->has_data());
 }
@@ -114,12 +115,12 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::has_leaf
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15()
     :
     sonet_minute15_paths(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths>())
-	,sonet_minute15ocns(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns>())
+    , sonet_minute15ocns(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns>())
 {
     sonet_minute15_paths->parent = this;
     sonet_minute15ocns->parent = this;
 
-    yang_name = "sonet-minute15"; yang_parent_name = "sonet-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet-minute15"; yang_parent_name = "sonet-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::~SonetMinute15()
@@ -128,6 +129,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::has_data() const
 {
+    if (is_presence_container) return true;
     return (sonet_minute15_paths !=  nullptr && sonet_minute15_paths->has_data())
 	|| (sonet_minute15ocns !=  nullptr && sonet_minute15ocns->has_data());
 }
@@ -170,7 +172,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(sonet_minute15ocns == nullptr)
         {
-            sonet_minute15ocns = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns>();
+            sonet_minute15ocns = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns>();
         }
         return sonet_minute15ocns;
     }
@@ -211,9 +213,11 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Paths()
+    :
+    sonet_minute15_path(this, {"number"})
 {
 
-    yang_name = "sonet-minute15-paths"; yang_parent_name = "sonet-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet-minute15-paths"; yang_parent_name = "sonet-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::~SonetMinute15Paths()
@@ -222,7 +226,8 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::has_data() const
 {
-    for (std::size_t index=0; index<sonet_minute15_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sonet_minute15_path.len(); index++)
     {
         if(sonet_minute15_path[index]->has_data())
             return true;
@@ -232,7 +237,7 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::has_operation() const
 {
-    for (std::size_t index=0; index<sonet_minute15_path.size(); index++)
+    for (std::size_t index=0; index<sonet_minute15_path.len(); index++)
     {
         if(sonet_minute15_path[index]->has_operation())
             return true;
@@ -262,7 +267,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         auto c = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path>();
         c->parent = this;
-        sonet_minute15_path.push_back(c);
+        sonet_minute15_path.append(c);
         return c;
     }
 
@@ -274,7 +279,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sonet_minute15_path)
+    for (auto c : sonet_minute15_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -309,14 +314,14 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
     last_clear_time{YType::str, "last-clear-time"},
     last_clear15_min_time{YType::str, "last-clear15-min-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"}
-    	,
+        ,
     path(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path>())
-	,fe_path(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::FePath>())
+    , fe_path(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::FePath>())
 {
     path->parent = this;
     fe_path->parent = this;
 
-    yang_name = "sonet-minute15-path"; yang_parent_name = "sonet-minute15-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet-minute15-path"; yang_parent_name = "sonet-minute15-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::~SonetMinute15Path()
@@ -325,6 +330,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -353,7 +359,8 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sonet-minute15-path" <<"[number='" <<number <<"']";
+    path_buffer << "sonet-minute15-path";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -502,18 +509,18 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
     :
     path_width{YType::enumeration, "path-width"},
     path_status{YType::int32, "path-status"}
-    	,
+        ,
     path_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathESs>())
-	,path_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathSeSs>())
-	,path_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathCVs>())
-	,path_ua_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathUaSs>())
+    , path_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathSeSs>())
+    , path_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathCVs>())
+    , path_ua_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathUaSs>())
 {
     path_e_ss->parent = this;
     path_se_ss->parent = this;
     path_c_vs->parent = this;
     path_ua_ss->parent = this;
 
-    yang_name = "path"; yang_parent_name = "sonet-minute15-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "sonet-minute15-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::~Path()
@@ -522,6 +529,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_width.is_set
 	|| path_status.is_set
 	|| (path_e_ss !=  nullptr && path_e_ss->has_data())
@@ -669,7 +677,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-e-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-e-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathESs::~PathESs()
@@ -678,6 +686,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -774,7 +783,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-se-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-se-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathSeSs::~PathSeSs()
@@ -783,6 +792,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -879,7 +889,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-c-vs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-c-vs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathCVs::~PathCVs()
@@ -888,6 +898,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -984,7 +995,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-ua-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-ua-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathUaSs::~PathUaSs()
@@ -993,6 +1004,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::Path::PathUaSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -1090,7 +1102,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
     far_end_path_ua_ss{YType::uint32, "far-end-path-ua-ss"}
 {
 
-    yang_name = "fe-path"; yang_parent_name = "sonet-minute15-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fe-path"; yang_parent_name = "sonet-minute15-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::FePath::~FePath()
@@ -1099,6 +1111,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Paths::SonetMinute15Path::FePath::has_data() const
 {
+    if (is_presence_container) return true;
     return far_end_path_e_ss.is_set
 	|| far_end_path_se_ss.is_set
 	|| far_end_path_c_vs.is_set
@@ -1201,19 +1214,22 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocns()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocns()
+    :
+    sonet_minute15ocn(this, {"number"})
 {
 
-    yang_name = "sonet-minute15ocns"; yang_parent_name = "sonet-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet-minute15ocns"; yang_parent_name = "sonet-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::~SonetMinute15Ocns()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::~SonetMinute15ocns()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::has_data() const
 {
-    for (std::size_t index=0; index<sonet_minute15ocn.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sonet_minute15ocn.len(); index++)
     {
         if(sonet_minute15ocn[index]->has_data())
             return true;
@@ -1221,9 +1237,9 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     return false;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::has_operation() const
 {
-    for (std::size_t index=0; index<sonet_minute15ocn.size(); index++)
+    for (std::size_t index=0; index<sonet_minute15ocn.len(); index++)
     {
         if(sonet_minute15ocn[index]->has_operation())
             return true;
@@ -1231,14 +1247,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sonet-minute15ocns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1247,25 +1263,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sonet-minute15ocn")
     {
-        auto c = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn>();
+        auto c = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn>();
         c->parent = this;
-        sonet_minute15ocn.push_back(c);
+        sonet_minute15ocn.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sonet_minute15ocn)
+    for (auto c : sonet_minute15ocn.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1276,22 +1292,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sonet-minute15ocn")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::SonetMinute15Ocn()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::SonetMinute15ocn()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -1300,24 +1316,25 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
     last_clear_time{YType::str, "last-clear-time"},
     last_clear15_min_time{YType::str, "last-clear15-min-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"}
-    	,
-    section(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section>())
-	,line(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line>())
-	,fe_line(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine>())
+        ,
+    section(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section>())
+    , line(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line>())
+    , fe_line(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine>())
 {
     section->parent = this;
     line->parent = this;
     fe_line->parent = this;
 
-    yang_name = "sonet-minute15ocn"; yang_parent_name = "sonet-minute15ocns"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet-minute15ocn"; yang_parent_name = "sonet-minute15ocns"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::~SonetMinute15Ocn()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::~SonetMinute15ocn()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -1330,7 +1347,7 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| (fe_line !=  nullptr && fe_line->has_data());
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -1345,14 +1362,15 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| (fe_line !=  nullptr && fe_line->has_operation());
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sonet-minute15ocn" <<"[number='" <<number <<"']";
+    path_buffer << "sonet-minute15ocn";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1368,13 +1386,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section")
     {
         if(section == nullptr)
         {
-            section = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section>();
+            section = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section>();
         }
         return section;
     }
@@ -1383,7 +1401,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(line == nullptr)
         {
-            line = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line>();
+            line = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line>();
         }
         return line;
     }
@@ -1392,7 +1410,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(fe_line == nullptr)
         {
-            fe_line = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine>();
+            fe_line = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine>();
         }
         return fe_line;
     }
@@ -1400,7 +1418,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1422,7 +1440,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -1468,7 +1486,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -1500,36 +1518,37 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "section" || name == "line" || name == "fe-line" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear24-hr-time")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::Section()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::Section()
     :
     section_status{YType::int32, "section-status"}
-    	,
-    section_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs>())
-	,section_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs>())
-	,section_sef_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs>())
-	,section_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs>())
+        ,
+    section_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs>())
+    , section_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs>())
+    , section_sef_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs>())
+    , section_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs>())
 {
     section_e_ss->parent = this;
     section_se_ss->parent = this;
     section_sef_ss->parent = this;
     section_c_vs->parent = this;
 
-    yang_name = "section"; yang_parent_name = "sonet-minute15ocn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section"; yang_parent_name = "sonet-minute15ocn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::~Section()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::~Section()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::has_data() const
 {
+    if (is_presence_container) return true;
     return section_status.is_set
 	|| (section_e_ss !=  nullptr && section_e_ss->has_data())
 	|| (section_se_ss !=  nullptr && section_se_ss->has_data())
@@ -1537,7 +1556,7 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| (section_c_vs !=  nullptr && section_c_vs->has_data());
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(section_status.yfilter)
@@ -1547,14 +1566,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| (section_c_vs !=  nullptr && section_c_vs->has_operation());
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1564,13 +1583,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section-e-ss")
     {
         if(section_e_ss == nullptr)
         {
-            section_e_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs>();
+            section_e_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs>();
         }
         return section_e_ss;
     }
@@ -1579,7 +1598,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(section_se_ss == nullptr)
         {
-            section_se_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs>();
+            section_se_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs>();
         }
         return section_se_ss;
     }
@@ -1588,7 +1607,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(section_sef_ss == nullptr)
         {
-            section_sef_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs>();
+            section_sef_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs>();
         }
         return section_sef_ss;
     }
@@ -1597,7 +1616,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(section_c_vs == nullptr)
         {
-            section_c_vs = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs>();
+            section_c_vs = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs>();
         }
         return section_c_vs;
     }
@@ -1605,7 +1624,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1632,7 +1651,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "section-status")
     {
@@ -1642,7 +1661,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "section-status")
     {
@@ -1650,35 +1669,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "section-e-ss" || name == "section-se-ss" || name == "section-sef-ss" || name == "section-c-vs" || name == "section-status")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs::SectionESs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs::SectionESs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-e-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-e-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs::~SectionESs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs::~SectionESs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1686,14 +1706,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-e-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1705,19 +1725,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1739,7 +1759,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1755,35 +1775,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionESs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionESs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs::SectionSeSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs::SectionSeSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-se-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-se-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs::~SectionSeSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs::~SectionSeSs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1791,14 +1812,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-se-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1810,19 +1831,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1844,7 +1865,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1860,35 +1881,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSeSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSeSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs::SectionSefSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs::SectionSefSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-sef-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-sef-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs::~SectionSefSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs::~SectionSefSs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1896,14 +1918,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-sef-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1915,19 +1937,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1949,7 +1971,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1965,35 +1987,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionSefSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionSefSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs::SectionCVs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs::SectionCVs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-c-vs"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-c-vs"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs::~SectionCVs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs::~SectionCVs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2001,14 +2024,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-c-vs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2020,19 +2043,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2054,7 +2077,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2070,22 +2093,22 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Section::SectionCVs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Section::SectionCVs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::Line()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::Line()
     :
     line_status{YType::int32, "line-status"}
-    	,
-    line_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs>())
-	,line_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs>())
-	,line_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs>())
-	,line_ua_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs>())
-	,line_fc_ls(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs>())
+        ,
+    line_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs>())
+    , line_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs>())
+    , line_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs>())
+    , line_ua_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs>())
+    , line_fc_ls(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs>())
 {
     line_e_ss->parent = this;
     line_se_ss->parent = this;
@@ -2093,15 +2116,16 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
     line_ua_ss->parent = this;
     line_fc_ls->parent = this;
 
-    yang_name = "line"; yang_parent_name = "sonet-minute15ocn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line"; yang_parent_name = "sonet-minute15ocn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::~Line()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::~Line()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::has_data() const
 {
+    if (is_presence_container) return true;
     return line_status.is_set
 	|| (line_e_ss !=  nullptr && line_e_ss->has_data())
 	|| (line_se_ss !=  nullptr && line_se_ss->has_data())
@@ -2110,7 +2134,7 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| (line_fc_ls !=  nullptr && line_fc_ls->has_data());
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(line_status.yfilter)
@@ -2121,14 +2145,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| (line_fc_ls !=  nullptr && line_fc_ls->has_operation());
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2138,13 +2162,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "line-e-ss")
     {
         if(line_e_ss == nullptr)
         {
-            line_e_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs>();
+            line_e_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs>();
         }
         return line_e_ss;
     }
@@ -2153,7 +2177,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(line_se_ss == nullptr)
         {
-            line_se_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs>();
+            line_se_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs>();
         }
         return line_se_ss;
     }
@@ -2162,7 +2186,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(line_c_vs == nullptr)
         {
-            line_c_vs = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs>();
+            line_c_vs = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs>();
         }
         return line_c_vs;
     }
@@ -2171,7 +2195,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(line_ua_ss == nullptr)
         {
-            line_ua_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs>();
+            line_ua_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs>();
         }
         return line_ua_ss;
     }
@@ -2180,7 +2204,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(line_fc_ls == nullptr)
         {
-            line_fc_ls = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs>();
+            line_fc_ls = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs>();
         }
         return line_fc_ls;
     }
@@ -2188,7 +2212,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2220,7 +2244,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "line-status")
     {
@@ -2230,7 +2254,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "line-status")
     {
@@ -2238,35 +2262,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "line-e-ss" || name == "line-se-ss" || name == "line-c-vs" || name == "line-ua-ss" || name == "line-fc-ls" || name == "line-status")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs::LineESs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs::LineESs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-e-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-e-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs::~LineESs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs::~LineESs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2274,14 +2299,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-e-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2293,19 +2318,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2327,7 +2352,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2343,35 +2368,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineESs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineESs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs::LineSeSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs::LineSeSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-se-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-se-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs::~LineSeSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs::~LineSeSs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2379,14 +2405,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-se-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2398,19 +2424,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2432,7 +2458,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2448,35 +2474,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineSeSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs::LineCVs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs::LineCVs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-c-vs"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-c-vs"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs::~LineCVs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs::~LineCVs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2484,14 +2511,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-c-vs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2503,19 +2530,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2537,7 +2564,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2553,35 +2580,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineCVs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineCVs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs::LineUaSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs::LineUaSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-ua-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-ua-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs::~LineUaSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs::~LineUaSs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2589,14 +2617,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-ua-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2608,19 +2636,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2642,7 +2670,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2658,35 +2686,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineUaSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs::LineFcLs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs::LineFcLs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-fc-ls"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-fc-ls"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs::~LineFcLs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs::~LineFcLs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2694,14 +2723,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-fc-ls";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2713,19 +2742,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2747,7 +2776,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2763,20 +2792,20 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::Line::LineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::Line::LineFcLs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FeLine()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FeLine()
     :
-    far_end_line_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs>())
-	,far_end_line_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs>())
-	,far_end_line_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs>())
-	,far_end_line_ua_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs>())
-	,far_end_line_fc_ls(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs>())
+    far_end_line_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs>())
+    , far_end_line_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs>())
+    , far_end_line_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs>())
+    , far_end_line_ua_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs>())
+    , far_end_line_fc_ls(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs>())
 {
     far_end_line_e_ss->parent = this;
     far_end_line_se_ss->parent = this;
@@ -2784,15 +2813,16 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15
     far_end_line_ua_ss->parent = this;
     far_end_line_fc_ls->parent = this;
 
-    yang_name = "fe-line"; yang_parent_name = "sonet-minute15ocn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fe-line"; yang_parent_name = "sonet-minute15ocn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::~FeLine()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::~FeLine()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::has_data() const
 {
+    if (is_presence_container) return true;
     return (far_end_line_e_ss !=  nullptr && far_end_line_e_ss->has_data())
 	|| (far_end_line_se_ss !=  nullptr && far_end_line_se_ss->has_data())
 	|| (far_end_line_c_vs !=  nullptr && far_end_line_c_vs->has_data())
@@ -2800,7 +2830,7 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| (far_end_line_fc_ls !=  nullptr && far_end_line_fc_ls->has_data());
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::has_operation() const
 {
     return is_set(yfilter)
 	|| (far_end_line_e_ss !=  nullptr && far_end_line_e_ss->has_operation())
@@ -2810,14 +2840,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| (far_end_line_fc_ls !=  nullptr && far_end_line_fc_ls->has_operation());
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fe-line";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2826,13 +2856,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "far-end-line-e-ss")
     {
         if(far_end_line_e_ss == nullptr)
         {
-            far_end_line_e_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs>();
+            far_end_line_e_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs>();
         }
         return far_end_line_e_ss;
     }
@@ -2841,7 +2871,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(far_end_line_se_ss == nullptr)
         {
-            far_end_line_se_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs>();
+            far_end_line_se_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs>();
         }
         return far_end_line_se_ss;
     }
@@ -2850,7 +2880,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(far_end_line_c_vs == nullptr)
         {
-            far_end_line_c_vs = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs>();
+            far_end_line_c_vs = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs>();
         }
         return far_end_line_c_vs;
     }
@@ -2859,7 +2889,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(far_end_line_ua_ss == nullptr)
         {
-            far_end_line_ua_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs>();
+            far_end_line_ua_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs>();
         }
         return far_end_line_ua_ss;
     }
@@ -2868,7 +2898,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(far_end_line_fc_ls == nullptr)
         {
-            far_end_line_fc_ls = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs>();
+            far_end_line_fc_ls = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs>();
         }
         return far_end_line_fc_ls;
     }
@@ -2876,7 +2906,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2908,43 +2938,44 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "far-end-line-e-ss" || name == "far-end-line-se-ss" || name == "far-end-line-c-vs" || name == "far-end-line-ua-ss" || name == "far-end-line-fc-ls")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs::FarEndLineESs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs::FarEndLineESs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-e-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-e-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs::~FarEndLineESs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs::~FarEndLineESs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2952,14 +2983,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-e-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2971,19 +3002,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3005,7 +3036,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3021,35 +3052,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineESs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineESs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs::FarEndLineSeSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs::FarEndLineSeSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-se-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-se-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs::~FarEndLineSeSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs::~FarEndLineSeSs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3057,14 +3089,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-se-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3076,19 +3108,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3110,7 +3142,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3126,35 +3158,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineSeSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs::FarEndLineCVs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs::FarEndLineCVs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-c-vs"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-c-vs"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs::~FarEndLineCVs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs::~FarEndLineCVs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3162,14 +3195,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-c-vs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3181,19 +3214,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3215,7 +3248,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3231,35 +3264,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineCVs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineCVs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs::FarEndLineUaSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs::FarEndLineUaSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-ua-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-ua-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs::~FarEndLineUaSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs::~FarEndLineUaSs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3267,14 +3301,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-ua-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3286,19 +3320,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3320,7 +3354,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3336,35 +3370,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineUaSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs::FarEndLineFcLs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs::FarEndLineFcLs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-fc-ls"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-fc-ls"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs::~FarEndLineFcLs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs::~FarEndLineFcLs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3372,14 +3407,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-fc-ls";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3391,19 +3426,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3425,7 +3460,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3441,7 +3476,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15Ocns::SonetMinute15Ocn::FeLine::FarEndLineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMinute15::SonetMinute15ocns::SonetMinute15ocn::FeLine::FarEndLineFcLs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
@@ -3450,13 +3485,13 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetMin
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24()
     :
-    sonet_hour24ocns(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns>())
-	,sonet_hour24_paths(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths>())
+    sonet_hour24ocns(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns>())
+    , sonet_hour24_paths(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths>())
 {
     sonet_hour24ocns->parent = this;
     sonet_hour24_paths->parent = this;
 
-    yang_name = "sonet-hour24"; yang_parent_name = "sonet-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet-hour24"; yang_parent_name = "sonet-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::~SonetHour24()
@@ -3465,6 +3500,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::has_data() const
 {
+    if (is_presence_container) return true;
     return (sonet_hour24ocns !=  nullptr && sonet_hour24ocns->has_data())
 	|| (sonet_hour24_paths !=  nullptr && sonet_hour24_paths->has_data());
 }
@@ -3498,7 +3534,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(sonet_hour24ocns == nullptr)
         {
-            sonet_hour24ocns = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns>();
+            sonet_hour24ocns = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns>();
         }
         return sonet_hour24ocns;
     }
@@ -3547,19 +3583,22 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocns()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocns()
+    :
+    sonet_hour24ocn(this, {"number"})
 {
 
-    yang_name = "sonet-hour24ocns"; yang_parent_name = "sonet-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet-hour24ocns"; yang_parent_name = "sonet-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::~SonetHour24Ocns()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::~SonetHour24ocns()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::has_data() const
 {
-    for (std::size_t index=0; index<sonet_hour24ocn.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sonet_hour24ocn.len(); index++)
     {
         if(sonet_hour24ocn[index]->has_data())
             return true;
@@ -3567,9 +3606,9 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     return false;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::has_operation() const
 {
-    for (std::size_t index=0; index<sonet_hour24ocn.size(); index++)
+    for (std::size_t index=0; index<sonet_hour24ocn.len(); index++)
     {
         if(sonet_hour24ocn[index]->has_operation())
             return true;
@@ -3577,14 +3616,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sonet-hour24ocns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3593,25 +3632,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sonet-hour24ocn")
     {
-        auto c = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn>();
+        auto c = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn>();
         c->parent = this;
-        sonet_hour24ocn.push_back(c);
+        sonet_hour24ocn.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sonet_hour24ocn)
+    for (auto c : sonet_hour24ocn.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3622,22 +3661,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sonet-hour24ocn")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::SonetHour24Ocn()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::SonetHour24ocn()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -3646,24 +3685,25 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
     last_clear_time{YType::str, "last-clear-time"},
     last_clear15_min_time{YType::str, "last-clear15-min-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"}
-    	,
-    section(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section>())
-	,line(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line>())
-	,fe_line(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine>())
+        ,
+    section(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section>())
+    , line(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line>())
+    , fe_line(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine>())
 {
     section->parent = this;
     line->parent = this;
     fe_line->parent = this;
 
-    yang_name = "sonet-hour24ocn"; yang_parent_name = "sonet-hour24ocns"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet-hour24ocn"; yang_parent_name = "sonet-hour24ocns"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::~SonetHour24Ocn()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::~SonetHour24ocn()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -3676,7 +3716,7 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| (fe_line !=  nullptr && fe_line->has_data());
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -3691,14 +3731,15 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| (fe_line !=  nullptr && fe_line->has_operation());
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sonet-hour24ocn" <<"[number='" <<number <<"']";
+    path_buffer << "sonet-hour24ocn";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3714,13 +3755,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section")
     {
         if(section == nullptr)
         {
-            section = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section>();
+            section = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section>();
         }
         return section;
     }
@@ -3729,7 +3770,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(line == nullptr)
         {
-            line = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line>();
+            line = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line>();
         }
         return line;
     }
@@ -3738,7 +3779,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(fe_line == nullptr)
         {
-            fe_line = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine>();
+            fe_line = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine>();
         }
         return fe_line;
     }
@@ -3746,7 +3787,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3768,7 +3809,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -3814,7 +3855,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -3846,36 +3887,37 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "section" || name == "line" || name == "fe-line" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear24-hr-time")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::Section()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::Section()
     :
     section_status{YType::int32, "section-status"}
-    	,
-    section_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs>())
-	,section_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs>())
-	,section_sef_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs>())
-	,section_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs>())
+        ,
+    section_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs>())
+    , section_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs>())
+    , section_sef_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs>())
+    , section_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs>())
 {
     section_e_ss->parent = this;
     section_se_ss->parent = this;
     section_sef_ss->parent = this;
     section_c_vs->parent = this;
 
-    yang_name = "section"; yang_parent_name = "sonet-hour24ocn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section"; yang_parent_name = "sonet-hour24ocn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::~Section()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::~Section()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::has_data() const
 {
+    if (is_presence_container) return true;
     return section_status.is_set
 	|| (section_e_ss !=  nullptr && section_e_ss->has_data())
 	|| (section_se_ss !=  nullptr && section_se_ss->has_data())
@@ -3883,7 +3925,7 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| (section_c_vs !=  nullptr && section_c_vs->has_data());
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(section_status.yfilter)
@@ -3893,14 +3935,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| (section_c_vs !=  nullptr && section_c_vs->has_operation());
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3910,13 +3952,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section-e-ss")
     {
         if(section_e_ss == nullptr)
         {
-            section_e_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs>();
+            section_e_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs>();
         }
         return section_e_ss;
     }
@@ -3925,7 +3967,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(section_se_ss == nullptr)
         {
-            section_se_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs>();
+            section_se_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs>();
         }
         return section_se_ss;
     }
@@ -3934,7 +3976,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(section_sef_ss == nullptr)
         {
-            section_sef_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs>();
+            section_sef_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs>();
         }
         return section_sef_ss;
     }
@@ -3943,7 +3985,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(section_c_vs == nullptr)
         {
-            section_c_vs = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs>();
+            section_c_vs = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs>();
         }
         return section_c_vs;
     }
@@ -3951,7 +3993,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3978,7 +4020,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "section-status")
     {
@@ -3988,7 +4030,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "section-status")
     {
@@ -3996,35 +4038,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "section-e-ss" || name == "section-se-ss" || name == "section-sef-ss" || name == "section-c-vs" || name == "section-status")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs::SectionESs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs::SectionESs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-e-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-e-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs::~SectionESs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs::~SectionESs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4032,14 +4075,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-e-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4051,19 +4094,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4085,7 +4128,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4101,35 +4144,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionESs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionESs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs::SectionSeSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs::SectionSeSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-se-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-se-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs::~SectionSeSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs::~SectionSeSs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4137,14 +4181,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-se-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4156,19 +4200,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4190,7 +4234,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4206,35 +4250,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSeSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSeSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs::SectionSefSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs::SectionSefSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-sef-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-sef-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs::~SectionSefSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs::~SectionSefSs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4242,14 +4287,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-sef-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4261,19 +4306,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4295,7 +4340,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4311,35 +4356,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionSefSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionSefSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs::SectionCVs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs::SectionCVs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-c-vs"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-c-vs"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs::~SectionCVs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs::~SectionCVs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4347,14 +4393,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-c-vs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4366,19 +4412,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4400,7 +4446,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4416,22 +4462,22 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Section::SectionCVs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Section::SectionCVs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::Line()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::Line()
     :
     line_status{YType::int32, "line-status"}
-    	,
-    line_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs>())
-	,line_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs>())
-	,line_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs>())
-	,line_ua_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs>())
-	,line_fc_ls(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs>())
+        ,
+    line_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs>())
+    , line_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs>())
+    , line_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs>())
+    , line_ua_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs>())
+    , line_fc_ls(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs>())
 {
     line_e_ss->parent = this;
     line_se_ss->parent = this;
@@ -4439,15 +4485,16 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
     line_ua_ss->parent = this;
     line_fc_ls->parent = this;
 
-    yang_name = "line"; yang_parent_name = "sonet-hour24ocn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line"; yang_parent_name = "sonet-hour24ocn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::~Line()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::~Line()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::has_data() const
 {
+    if (is_presence_container) return true;
     return line_status.is_set
 	|| (line_e_ss !=  nullptr && line_e_ss->has_data())
 	|| (line_se_ss !=  nullptr && line_se_ss->has_data())
@@ -4456,7 +4503,7 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| (line_fc_ls !=  nullptr && line_fc_ls->has_data());
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(line_status.yfilter)
@@ -4467,14 +4514,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| (line_fc_ls !=  nullptr && line_fc_ls->has_operation());
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4484,13 +4531,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "line-e-ss")
     {
         if(line_e_ss == nullptr)
         {
-            line_e_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs>();
+            line_e_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs>();
         }
         return line_e_ss;
     }
@@ -4499,7 +4546,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(line_se_ss == nullptr)
         {
-            line_se_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs>();
+            line_se_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs>();
         }
         return line_se_ss;
     }
@@ -4508,7 +4555,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(line_c_vs == nullptr)
         {
-            line_c_vs = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs>();
+            line_c_vs = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs>();
         }
         return line_c_vs;
     }
@@ -4517,7 +4564,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(line_ua_ss == nullptr)
         {
-            line_ua_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs>();
+            line_ua_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs>();
         }
         return line_ua_ss;
     }
@@ -4526,7 +4573,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(line_fc_ls == nullptr)
         {
-            line_fc_ls = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs>();
+            line_fc_ls = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs>();
         }
         return line_fc_ls;
     }
@@ -4534,7 +4581,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4566,7 +4613,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "line-status")
     {
@@ -4576,7 +4623,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "line-status")
     {
@@ -4584,35 +4631,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "line-e-ss" || name == "line-se-ss" || name == "line-c-vs" || name == "line-ua-ss" || name == "line-fc-ls" || name == "line-status")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs::LineESs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs::LineESs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-e-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-e-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs::~LineESs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs::~LineESs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4620,14 +4668,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-e-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4639,19 +4687,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4673,7 +4721,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4689,35 +4737,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineESs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineESs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs::LineSeSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs::LineSeSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-se-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-se-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs::~LineSeSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs::~LineSeSs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4725,14 +4774,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-se-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4744,19 +4793,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4778,7 +4827,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4794,35 +4843,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineSeSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs::LineCVs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs::LineCVs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-c-vs"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-c-vs"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs::~LineCVs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs::~LineCVs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4830,14 +4880,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-c-vs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4849,19 +4899,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4883,7 +4933,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4899,35 +4949,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineCVs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineCVs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs::LineUaSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs::LineUaSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-ua-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-ua-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs::~LineUaSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs::~LineUaSs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4935,14 +4986,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-ua-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4954,19 +5005,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4988,7 +5039,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5004,35 +5055,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineUaSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs::LineFcLs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs::LineFcLs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-fc-ls"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-fc-ls"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs::~LineFcLs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs::~LineFcLs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5040,14 +5092,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-fc-ls";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5059,19 +5111,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5093,7 +5145,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5109,20 +5161,20 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::Line::LineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::Line::LineFcLs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FeLine()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FeLine()
     :
-    far_end_line_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs>())
-	,far_end_line_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs>())
-	,far_end_line_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs>())
-	,far_end_line_ua_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs>())
-	,far_end_line_fc_ls(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs>())
+    far_end_line_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs>())
+    , far_end_line_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs>())
+    , far_end_line_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs>())
+    , far_end_line_ua_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs>())
+    , far_end_line_fc_ls(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs>())
 {
     far_end_line_e_ss->parent = this;
     far_end_line_se_ss->parent = this;
@@ -5130,15 +5182,16 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
     far_end_line_ua_ss->parent = this;
     far_end_line_fc_ls->parent = this;
 
-    yang_name = "fe-line"; yang_parent_name = "sonet-hour24ocn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fe-line"; yang_parent_name = "sonet-hour24ocn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::~FeLine()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::~FeLine()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::has_data() const
 {
+    if (is_presence_container) return true;
     return (far_end_line_e_ss !=  nullptr && far_end_line_e_ss->has_data())
 	|| (far_end_line_se_ss !=  nullptr && far_end_line_se_ss->has_data())
 	|| (far_end_line_c_vs !=  nullptr && far_end_line_c_vs->has_data())
@@ -5146,7 +5199,7 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| (far_end_line_fc_ls !=  nullptr && far_end_line_fc_ls->has_data());
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::has_operation() const
 {
     return is_set(yfilter)
 	|| (far_end_line_e_ss !=  nullptr && far_end_line_e_ss->has_operation())
@@ -5156,14 +5209,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| (far_end_line_fc_ls !=  nullptr && far_end_line_fc_ls->has_operation());
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fe-line";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5172,13 +5225,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "far-end-line-e-ss")
     {
         if(far_end_line_e_ss == nullptr)
         {
-            far_end_line_e_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs>();
+            far_end_line_e_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs>();
         }
         return far_end_line_e_ss;
     }
@@ -5187,7 +5240,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(far_end_line_se_ss == nullptr)
         {
-            far_end_line_se_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs>();
+            far_end_line_se_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs>();
         }
         return far_end_line_se_ss;
     }
@@ -5196,7 +5249,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(far_end_line_c_vs == nullptr)
         {
-            far_end_line_c_vs = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs>();
+            far_end_line_c_vs = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs>();
         }
         return far_end_line_c_vs;
     }
@@ -5205,7 +5258,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(far_end_line_ua_ss == nullptr)
         {
-            far_end_line_ua_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs>();
+            far_end_line_ua_ss = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs>();
         }
         return far_end_line_ua_ss;
     }
@@ -5214,7 +5267,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         if(far_end_line_fc_ls == nullptr)
         {
-            far_end_line_fc_ls = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs>();
+            far_end_line_fc_ls = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs>();
         }
         return far_end_line_fc_ls;
     }
@@ -5222,7 +5275,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5254,43 +5307,44 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "far-end-line-e-ss" || name == "far-end-line-se-ss" || name == "far-end-line-c-vs" || name == "far-end-line-ua-ss" || name == "far-end-line-fc-ls")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs::FarEndLineESs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs::FarEndLineESs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-e-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-e-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs::~FarEndLineESs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs::~FarEndLineESs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5298,14 +5352,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-e-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5317,19 +5371,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5351,7 +5405,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5367,35 +5421,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineESs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineESs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs::FarEndLineSeSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs::FarEndLineSeSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-se-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-se-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs::~FarEndLineSeSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs::~FarEndLineSeSs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5403,14 +5458,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-se-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5422,19 +5477,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5456,7 +5511,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5472,35 +5527,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineSeSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs::FarEndLineCVs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs::FarEndLineCVs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-c-vs"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-c-vs"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs::~FarEndLineCVs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs::~FarEndLineCVs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5508,14 +5564,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-c-vs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5527,19 +5583,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5561,7 +5617,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5577,35 +5633,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineCVs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineCVs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs::FarEndLineUaSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs::FarEndLineUaSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-ua-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-ua-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs::~FarEndLineUaSs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs::~FarEndLineUaSs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5613,14 +5670,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-ua-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5632,19 +5689,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5666,7 +5723,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5682,35 +5739,36 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineUaSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs::FarEndLineFcLs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs::FarEndLineFcLs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-fc-ls"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-fc-ls"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs::~FarEndLineFcLs()
+PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs::~FarEndLineFcLs()
 {
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs::has_data() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs::has_operation() const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5718,14 +5776,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs::get_segment_path() const
+std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-fc-ls";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5737,19 +5795,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5771,7 +5829,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5787,7 +5845,7 @@ void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
     }
 }
 
-bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Ocns::SonetHour24Ocn::FeLine::FarEndLineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24ocns::SonetHour24ocn::FeLine::FarEndLineFcLs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
@@ -5795,9 +5853,11 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Paths()
+    :
+    sonet_hour24_path(this, {"number"})
 {
 
-    yang_name = "sonet-hour24-paths"; yang_parent_name = "sonet-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet-hour24-paths"; yang_parent_name = "sonet-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::~SonetHour24Paths()
@@ -5806,7 +5866,8 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::has_data() const
 {
-    for (std::size_t index=0; index<sonet_hour24_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sonet_hour24_path.len(); index++)
     {
         if(sonet_hour24_path[index]->has_data())
             return true;
@@ -5816,7 +5877,7 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::has_operation() const
 {
-    for (std::size_t index=0; index<sonet_hour24_path.size(); index++)
+    for (std::size_t index=0; index<sonet_hour24_path.len(); index++)
     {
         if(sonet_hour24_path[index]->has_operation())
             return true;
@@ -5846,7 +5907,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::Son
     {
         auto c = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path>();
         c->parent = this;
-        sonet_hour24_path.push_back(c);
+        sonet_hour24_path.append(c);
         return c;
     }
 
@@ -5858,7 +5919,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sonet_hour24_path)
+    for (auto c : sonet_hour24_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5893,14 +5954,14 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
     last_clear_time{YType::str, "last-clear-time"},
     last_clear15_min_time{YType::str, "last-clear15-min-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"}
-    	,
+        ,
     path(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path>())
-	,fe_path(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::FePath>())
+    , fe_path(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::FePath>())
 {
     path->parent = this;
     fe_path->parent = this;
 
-    yang_name = "sonet-hour24-path"; yang_parent_name = "sonet-hour24-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet-hour24-path"; yang_parent_name = "sonet-hour24-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::~SonetHour24Path()
@@ -5909,6 +5970,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -5937,7 +5999,8 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sonet-hour24-path" <<"[number='" <<number <<"']";
+    path_buffer << "sonet-hour24-path";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -6086,18 +6149,18 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
     :
     path_width{YType::enumeration, "path-width"},
     path_status{YType::int32, "path-status"}
-    	,
+        ,
     path_e_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathESs>())
-	,path_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathSeSs>())
-	,path_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathCVs>())
-	,path_ua_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathUaSs>())
+    , path_se_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathSeSs>())
+    , path_c_vs(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathCVs>())
+    , path_ua_ss(std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathUaSs>())
 {
     path_e_ss->parent = this;
     path_se_ss->parent = this;
     path_c_vs->parent = this;
     path_ua_ss->parent = this;
 
-    yang_name = "path"; yang_parent_name = "sonet-hour24-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "sonet-hour24-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::~Path()
@@ -6106,6 +6169,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_width.is_set
 	|| path_status.is_set
 	|| (path_e_ss !=  nullptr && path_e_ss->has_data())
@@ -6253,7 +6317,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-e-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-e-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathESs::~PathESs()
@@ -6262,6 +6326,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -6358,7 +6423,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-se-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-se-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathSeSs::~PathSeSs()
@@ -6367,6 +6432,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -6463,7 +6529,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-c-vs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-c-vs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathCVs::~PathCVs()
@@ -6472,6 +6538,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -6568,7 +6635,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-ua-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-ua-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathUaSs::~PathUaSs()
@@ -6577,6 +6644,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathUaSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -6674,7 +6742,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
     far_end_path_ua_ss{YType::uint32, "far-end-path-ua-ss"}
 {
 
-    yang_name = "fe-path"; yang_parent_name = "sonet-hour24-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fe-path"; yang_parent_name = "sonet-hour24-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::FePath::~FePath()
@@ -6683,6 +6751,7 @@ PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::FePath::has_data() const
 {
+    if (is_presence_container) return true;
     return far_end_path_e_ss.is_set
 	|| far_end_path_se_ss.is_set
 	|| far_end_path_c_vs.is_set
@@ -6791,7 +6860,7 @@ PerformanceManagement::Optics::Optics()
 {
     optics_ports->parent = this;
 
-    yang_name = "optics"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "optics"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Optics::~Optics()
@@ -6800,6 +6869,7 @@ PerformanceManagement::Optics::~Optics()
 
 bool PerformanceManagement::Optics::has_data() const
 {
+    if (is_presence_container) return true;
     return (optics_ports !=  nullptr && optics_ports->has_data());
 }
 
@@ -6874,9 +6944,11 @@ bool PerformanceManagement::Optics::has_leaf_or_child_of_name(const std::string 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPorts()
+    :
+    optics_port(this, {"name"})
 {
 
-    yang_name = "optics-ports"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "optics-ports"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::~OpticsPorts()
@@ -6885,7 +6957,8 @@ PerformanceManagement::Optics::OpticsPorts::~OpticsPorts()
 
 bool PerformanceManagement::Optics::OpticsPorts::has_data() const
 {
-    for (std::size_t index=0; index<optics_port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<optics_port.len(); index++)
     {
         if(optics_port[index]->has_data())
             return true;
@@ -6895,7 +6968,7 @@ bool PerformanceManagement::Optics::OpticsPorts::has_data() const
 
 bool PerformanceManagement::Optics::OpticsPorts::has_operation() const
 {
-    for (std::size_t index=0; index<optics_port.size(); index++)
+    for (std::size_t index=0; index<optics_port.len(); index++)
     {
         if(optics_port[index]->has_operation())
             return true;
@@ -6932,7 +7005,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::get_child_by
     {
         auto c = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort>();
         c->parent = this;
-        optics_port.push_back(c);
+        optics_port.append(c);
         return c;
     }
 
@@ -6944,7 +7017,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : optics_port)
+    for (auto c : optics_port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6973,12 +7046,12 @@ bool PerformanceManagement::Optics::OpticsPorts::has_leaf_or_child_of_name(const
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsPort()
     :
     name{YType::str, "name"}
-    	,
+        ,
     optics_current(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent>())
 {
     optics_current->parent = this;
 
-    yang_name = "optics-port"; yang_parent_name = "optics-ports"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "optics-port"; yang_parent_name = "optics-ports"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::~OpticsPort()
@@ -6987,6 +7060,7 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::~OpticsPort()
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (optics_current !=  nullptr && optics_current->has_data());
 }
@@ -7008,7 +7082,8 @@ std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::get_absolute
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "optics-port" <<"[name='" <<name <<"']";
+    path_buffer << "optics-port";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -7076,14 +7151,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::has_leaf_or_child_o
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsCurrent()
     :
     optics_hour24(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24>())
-	,optics_minute15(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15>())
-	,optics_second30(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30>())
+    , optics_minute15(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15>())
+    , optics_second30(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30>())
 {
     optics_hour24->parent = this;
     optics_minute15->parent = this;
     optics_second30->parent = this;
 
-    yang_name = "optics-current"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-current"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::~OpticsCurrent()
@@ -7092,6 +7167,7 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::~OpticsCu
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::has_data() const
 {
+    if (is_presence_container) return true;
     return (optics_hour24 !=  nullptr && optics_hour24->has_data())
 	|| (optics_minute15 !=  nullptr && optics_minute15->has_data())
 	|| (optics_second30 !=  nullptr && optics_second30->has_data());
@@ -7193,12 +7269,12 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::has_
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24()
     :
     optics_hour24_optics(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics>())
-	,optics_hour24fecs(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs>())
+    , optics_hour24fecs(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs>())
 {
     optics_hour24_optics->parent = this;
     optics_hour24fecs->parent = this;
 
-    yang_name = "optics-hour24"; yang_parent_name = "optics-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-hour24"; yang_parent_name = "optics-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::~OpticsHour24()
@@ -7207,6 +7283,7 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::has_data() const
 {
+    if (is_presence_container) return true;
     return (optics_hour24_optics !=  nullptr && optics_hour24_optics->has_data())
 	|| (optics_hour24fecs !=  nullptr && optics_hour24fecs->has_data());
 }
@@ -7249,7 +7326,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(optics_hour24fecs == nullptr)
         {
-            optics_hour24fecs = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs>();
+            optics_hour24fecs = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs>();
         }
         return optics_hour24fecs;
     }
@@ -7290,9 +7367,11 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optics()
+    :
+    optics_hour24_optic(this, {"number"})
 {
 
-    yang_name = "optics-hour24-optics"; yang_parent_name = "optics-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-hour24-optics"; yang_parent_name = "optics-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::~OpticsHour24Optics()
@@ -7301,7 +7380,8 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::has_data() const
 {
-    for (std::size_t index=0; index<optics_hour24_optic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<optics_hour24_optic.len(); index++)
     {
         if(optics_hour24_optic[index]->has_data())
             return true;
@@ -7311,7 +7391,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::has_operation() const
 {
-    for (std::size_t index=0; index<optics_hour24_optic.size(); index++)
+    for (std::size_t index=0; index<optics_hour24_optic.len(); index++)
     {
         if(optics_hour24_optic[index]->has_operation())
             return true;
@@ -7341,7 +7421,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         auto c = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic>();
         c->parent = this;
-        optics_hour24_optic.push_back(c);
+        optics_hour24_optic.append(c);
         return c;
     }
 
@@ -7353,7 +7433,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : optics_hour24_optic)
+    for (auto c : optics_hour24_optic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7390,23 +7470,21 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
+        ,
     lbc(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc>())
-	,lbc_pc(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc>())
-	,opt(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt>())
-	,opr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr>())
-	,cd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd>())
-	,dgd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd>())
-	,pmd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd>())
-	,osnr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr>())
-	,center_wavelength(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength>())
-	,pdl(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl>())
-	,pcr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr>())
-	,pn(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn>())
-	,rx_sig_pow(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow>())
-	,low_sig_freq_off(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff>())
-	,ampli_gain(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain>())
-	,ampli_gain_tilt(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt>())
+    , lbc_pc(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc>())
+    , opt(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt>())
+    , opr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr>())
+    , cd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd>())
+    , dgd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd>())
+    , pmd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd>())
+    , osnr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr>())
+    , center_wavelength(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength>())
+    , pdl(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl>())
+    , pcr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr>())
+    , pn(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn>())
+    , rx_sig_pow(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow>())
+    , low_sig_freq_off(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff>())
 {
     lbc->parent = this;
     lbc_pc->parent = this;
@@ -7422,10 +7500,8 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     pn->parent = this;
     rx_sig_pow->parent = this;
     low_sig_freq_off->parent = this;
-    ampli_gain->parent = this;
-    ampli_gain_tilt->parent = this;
 
-    yang_name = "optics-hour24-optic"; yang_parent_name = "optics-hour24-optics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-hour24-optic"; yang_parent_name = "optics-hour24-optics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::~OpticsHour24Optic()
@@ -7434,6 +7510,7 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -7456,9 +7533,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| (pcr !=  nullptr && pcr->has_data())
 	|| (pn !=  nullptr && pn->has_data())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_data())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data())
-	|| (ampli_gain !=  nullptr && ampli_gain->has_data())
-	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_data());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data());
 }
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::has_operation() const
@@ -7486,15 +7561,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| (pcr !=  nullptr && pcr->has_operation())
 	|| (pn !=  nullptr && pn->has_operation())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_operation())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation())
-	|| (ampli_gain !=  nullptr && ampli_gain->has_operation())
-	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_operation());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation());
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "optics-hour24-optic" <<"[number='" <<number <<"']";
+    path_buffer << "optics-hour24-optic";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -7644,24 +7718,6 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
         return low_sig_freq_off;
     }
 
-    if(child_yang_name == "ampli-gain")
-    {
-        if(ampli_gain == nullptr)
-        {
-            ampli_gain = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain>();
-        }
-        return ampli_gain;
-    }
-
-    if(child_yang_name == "ampli-gain-tilt")
-    {
-        if(ampli_gain_tilt == nullptr)
-        {
-            ampli_gain_tilt = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt>();
-        }
-        return ampli_gain_tilt;
-    }
-
     return nullptr;
 }
 
@@ -7737,16 +7793,6 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     if(low_sig_freq_off != nullptr)
     {
         children["low-sig-freq-off"] = low_sig_freq_off;
-    }
-
-    if(ampli_gain != nullptr)
-    {
-        children["ampli-gain"] = ampli_gain;
-    }
-
-    if(ampli_gain_tilt != nullptr)
-    {
-        children["ampli-gain-tilt"] = ampli_gain_tilt;
     }
 
     return children;
@@ -7852,7 +7898,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "ampli-gain" || name == "ampli-gain-tilt" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
+    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
@@ -7864,14 +7910,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "lbc"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc::~Lbc()
@@ -7880,15 +7924,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -7900,10 +7943,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -7923,10 +7964,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -7977,12 +8016,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -7994,12 +8027,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8031,10 +8058,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -8042,10 +8065,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8055,7 +8074,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -8067,14 +8086,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "lbc-pc"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc-pc"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc::~LbcPc()
@@ -8083,15 +8100,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -8103,10 +8119,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -8126,10 +8140,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -8180,12 +8192,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -8197,12 +8203,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8234,10 +8234,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -8245,10 +8241,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8258,7 +8250,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -8270,14 +8262,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "opt"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opt"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt::~Opt()
@@ -8286,15 +8276,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -8306,10 +8295,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -8329,10 +8316,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -8383,12 +8368,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -8400,12 +8379,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8437,10 +8410,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -8448,10 +8417,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8461,7 +8426,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -8473,14 +8438,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "opr"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opr"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr::~Opr()
@@ -8489,15 +8452,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -8509,10 +8471,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -8532,10 +8492,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -8586,12 +8544,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -8603,12 +8555,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8640,10 +8586,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -8651,10 +8593,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8664,7 +8602,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -8676,14 +8614,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "cd"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cd"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd::~Cd()
@@ -8692,15 +8628,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -8712,10 +8647,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -8735,10 +8668,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -8789,12 +8720,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -8806,12 +8731,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8843,10 +8762,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -8854,10 +8769,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8867,7 +8778,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -8879,14 +8790,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "dgd"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dgd"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd::~Dgd()
@@ -8895,15 +8804,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -8915,10 +8823,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -8938,10 +8844,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -8992,12 +8896,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -9009,12 +8907,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -9046,10 +8938,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -9057,10 +8945,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -9070,7 +8954,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -9082,14 +8966,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pmd"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pmd"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd::~Pmd()
@@ -9098,15 +8980,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -9118,10 +8999,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -9141,10 +9020,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -9195,12 +9072,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -9212,12 +9083,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -9249,10 +9114,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -9260,10 +9121,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -9273,7 +9130,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -9285,14 +9142,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "osnr"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "osnr"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr::~Osnr()
@@ -9301,15 +9156,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -9321,10 +9175,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -9344,10 +9196,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -9398,12 +9248,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -9415,12 +9259,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -9452,10 +9290,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -9463,10 +9297,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -9476,7 +9306,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -9488,14 +9318,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "center-wavelength"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "center-wavelength"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength::~CenterWavelength()
@@ -9504,15 +9332,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -9524,10 +9351,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -9547,10 +9372,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -9601,12 +9424,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -9618,12 +9435,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -9655,10 +9466,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -9666,10 +9473,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -9679,7 +9482,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -9691,14 +9494,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pdl"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pdl"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl::~Pdl()
@@ -9707,15 +9508,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -9727,10 +9527,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -9750,10 +9548,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -9804,12 +9600,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -9821,12 +9611,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -9858,10 +9642,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -9869,10 +9649,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -9882,7 +9658,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -9894,14 +9670,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pcr"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcr"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr::~Pcr()
@@ -9910,15 +9684,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -9930,10 +9703,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -9953,10 +9724,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -10007,12 +9776,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -10024,12 +9787,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10061,10 +9818,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -10072,10 +9825,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10085,7 +9834,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -10097,14 +9846,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pn"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pn"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn::~Pn()
@@ -10113,15 +9860,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -10133,10 +9879,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -10156,10 +9900,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -10210,12 +9952,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -10227,12 +9963,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10264,10 +9994,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -10275,10 +10001,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10288,7 +10010,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -10300,14 +10022,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "rx-sig-pow"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-sig-pow"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow::~RxSigPow()
@@ -10316,15 +10036,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -10336,10 +10055,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -10359,10 +10076,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -10413,12 +10128,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -10430,12 +10139,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10467,10 +10170,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -10478,10 +10177,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10491,7 +10186,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -10503,14 +10198,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "low-sig-freq-off"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-sig-freq-off"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff::~LowSigFreqOff()
@@ -10519,15 +10212,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -10539,10 +10231,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -10562,10 +10252,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -10616,12 +10304,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -10633,12 +10315,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10670,10 +10346,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -10681,10 +10353,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10694,430 +10362,27 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain::AmpliGain()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fecs()
     :
-    valid{YType::boolean, "valid"},
-    minimum{YType::str, "minimum"},
-    average{YType::str, "average"},
-    maximum{YType::str, "maximum"},
-    minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
-    minimum_tca_report{YType::boolean, "minimum-tca-report"},
-    maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
-    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+    optics_hour24fec(this, {"number"})
 {
 
-    yang_name = "ampli-gain"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-hour24fecs"; yang_parent_name = "optics-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain::~AmpliGain()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::~OpticsHour24fecs()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::has_data() const
 {
-    return valid.is_set
-	|| minimum.is_set
-	|| average.is_set
-	|| maximum.is_set
-	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
-	|| minimum_tca_report.is_set
-	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
-	|| maximum_tca_report.is_set;
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| ydk::is_set(minimum.yfilter)
-	|| ydk::is_set(average.yfilter)
-	|| ydk::is_set(maximum.yfilter)
-	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
-	|| ydk::is_set(minimum_tca_report.yfilter)
-	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
-	|| ydk::is_set(maximum_tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ampli-gain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum")
-    {
-        minimum = value;
-        minimum.value_namespace = name_space;
-        minimum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "average")
-    {
-        average = value;
-        average.value_namespace = name_space;
-        average.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold = value;
-        minimum_threshold.value_namespace = name_space;
-        minimum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report = value;
-        minimum_tca_report.value_namespace = name_space;
-        minimum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold = value;
-        maximum_threshold.value_namespace = name_space;
-        maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report = value;
-        maximum_tca_report.value_namespace = name_space;
-        maximum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-    if(value_path == "minimum")
-    {
-        minimum.yfilter = yfilter;
-    }
-    if(value_path == "average")
-    {
-        average.yfilter = yfilter;
-    }
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report.yfilter = yfilter;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt::AmpliGainTilt()
-    :
-    valid{YType::boolean, "valid"},
-    minimum{YType::str, "minimum"},
-    average{YType::str, "average"},
-    maximum{YType::str, "maximum"},
-    minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
-    minimum_tca_report{YType::boolean, "minimum-tca-report"},
-    maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
-    maximum_tca_report{YType::boolean, "maximum-tca-report"}
-{
-
-    yang_name = "ampli-gain-tilt"; yang_parent_name = "optics-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt::~AmpliGainTilt()
-{
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt::has_data() const
-{
-    return valid.is_set
-	|| minimum.is_set
-	|| average.is_set
-	|| maximum.is_set
-	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
-	|| minimum_tca_report.is_set
-	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
-	|| maximum_tca_report.is_set;
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| ydk::is_set(minimum.yfilter)
-	|| ydk::is_set(average.yfilter)
-	|| ydk::is_set(maximum.yfilter)
-	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
-	|| ydk::is_set(minimum_tca_report.yfilter)
-	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
-	|| ydk::is_set(maximum_tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ampli-gain-tilt";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum")
-    {
-        minimum = value;
-        minimum.value_namespace = name_space;
-        minimum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "average")
-    {
-        average = value;
-        average.value_namespace = name_space;
-        average.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold = value;
-        minimum_threshold.value_namespace = name_space;
-        minimum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report = value;
-        minimum_tca_report.value_namespace = name_space;
-        minimum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold = value;
-        maximum_threshold.value_namespace = name_space;
-        maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report = value;
-        maximum_tca_report.value_namespace = name_space;
-        maximum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-    if(value_path == "minimum")
-    {
-        minimum.yfilter = yfilter;
-    }
-    if(value_path == "average")
-    {
-        average.yfilter = yfilter;
-    }
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report.yfilter = yfilter;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fecs()
-{
-
-    yang_name = "optics-hour24fecs"; yang_parent_name = "optics-hour24"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::~OpticsHour24Fecs()
-{
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::has_data() const
-{
-    for (std::size_t index=0; index<optics_hour24fec.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<optics_hour24fec.len(); index++)
     {
         if(optics_hour24fec[index]->has_data())
             return true;
@@ -11125,9 +10390,9 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     return false;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::has_operation() const
 {
-    for (std::size_t index=0; index<optics_hour24fec.size(); index++)
+    for (std::size_t index=0; index<optics_hour24fec.len(); index++)
     {
         if(optics_hour24fec[index]->has_operation())
             return true;
@@ -11135,14 +10400,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "optics-hour24fecs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11151,25 +10416,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optics-hour24fec")
     {
-        auto c = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec>();
+        auto c = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec>();
         c->parent = this;
-        optics_hour24fec.push_back(c);
+        optics_hour24fec.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : optics_hour24fec)
+    for (auto c : optics_hour24fec.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11180,22 +10445,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "optics-hour24fec")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::OpticsHour24Fec()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::OpticsHour24fec()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -11206,13 +10471,13 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
-    ec_bits(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits>())
-	,uc_words(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords>())
-	,pre_fec_ber(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer>())
-	,post_fec_ber(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer>())
-	,q(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q>())
-	,qmargin(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin>())
+        ,
+    ec_bits(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits>())
+    , uc_words(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords>())
+    , pre_fec_ber(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer>())
+    , post_fec_ber(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer>())
+    , q(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q>())
+    , qmargin(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin>())
 {
     ec_bits->parent = this;
     uc_words->parent = this;
@@ -11221,15 +10486,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     q->parent = this;
     qmargin->parent = this;
 
-    yang_name = "optics-hour24fec"; yang_parent_name = "optics-hour24fecs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-hour24fec"; yang_parent_name = "optics-hour24fecs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::~OpticsHour24Fec()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::~OpticsHour24fec()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -11247,7 +10513,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| (qmargin !=  nullptr && qmargin->has_data());
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -11267,14 +10533,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| (qmargin !=  nullptr && qmargin->has_operation());
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "optics-hour24fec" <<"[number='" <<number <<"']";
+    path_buffer << "optics-hour24fec";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11292,13 +10559,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ec-bits")
     {
         if(ec_bits == nullptr)
         {
-            ec_bits = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits>();
+            ec_bits = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits>();
         }
         return ec_bits;
     }
@@ -11307,7 +10574,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(uc_words == nullptr)
         {
-            uc_words = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords>();
+            uc_words = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords>();
         }
         return uc_words;
     }
@@ -11316,7 +10583,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(pre_fec_ber == nullptr)
         {
-            pre_fec_ber = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer>();
+            pre_fec_ber = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer>();
         }
         return pre_fec_ber;
     }
@@ -11325,7 +10592,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(post_fec_ber == nullptr)
         {
-            post_fec_ber = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer>();
+            post_fec_ber = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer>();
         }
         return post_fec_ber;
     }
@@ -11334,7 +10601,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(q == nullptr)
         {
-            q = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q>();
+            q = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q>();
         }
         return q;
     }
@@ -11343,7 +10610,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(qmargin == nullptr)
         {
-            qmargin = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin>();
+            qmargin = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin>();
         }
         return qmargin;
     }
@@ -11351,7 +10618,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11388,7 +10655,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -11446,7 +10713,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -11486,14 +10753,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ec-bits" || name == "uc-words" || name == "pre-fec-ber" || name == "post-fec-ber" || name == "q" || name == "qmargin" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::EcBits()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits::EcBits()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -11501,22 +10768,23 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ec-bits"; yang_parent_name = "optics-hour24fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ec-bits"; yang_parent_name = "optics-hour24fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::~EcBits()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits::~EcBits()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -11525,14 +10793,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ec-bits";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11545,19 +10813,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -11585,7 +10853,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -11605,14 +10873,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::UcWords()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords::UcWords()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -11620,22 +10888,23 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "uc-words"; yang_parent_name = "optics-hour24fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uc-words"; yang_parent_name = "optics-hour24fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::~UcWords()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords::~UcWords()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -11644,14 +10913,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uc-words";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11664,19 +10933,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -11704,7 +10973,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -11724,14 +10993,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::PreFecBer()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer::PreFecBer()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -11743,15 +11012,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "pre-fec-ber"; yang_parent_name = "optics-hour24fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pre-fec-ber"; yang_parent_name = "optics-hour24fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::~PreFecBer()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer::~PreFecBer()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -11762,7 +11032,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -11775,14 +11045,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pre-fec-ber";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11799,19 +11069,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -11863,7 +11133,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -11899,14 +11169,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::PostFecBer()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer::PostFecBer()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -11918,15 +11188,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "post-fec-ber"; yang_parent_name = "optics-hour24fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "post-fec-ber"; yang_parent_name = "optics-hour24fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::~PostFecBer()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer::~PostFecBer()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -11937,7 +11208,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -11950,14 +11221,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "post-fec-ber";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11974,19 +11245,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -12038,7 +11309,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -12074,14 +11345,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::Q()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q::Q()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -12093,15 +11364,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "q"; yang_parent_name = "optics-hour24fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "q"; yang_parent_name = "optics-hour24fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::~Q()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q::~Q()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -12112,7 +11384,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -12125,14 +11397,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "q";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12149,19 +11421,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -12213,7 +11485,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -12249,14 +11521,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Q::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::Qmargin()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin::Qmargin()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -12268,15 +11540,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "qmargin"; yang_parent_name = "optics-hour24fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qmargin"; yang_parent_name = "optics-hour24fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::~Qmargin()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin::~Qmargin()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -12287,7 +11560,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -12300,14 +11573,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "qmargin";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12324,19 +11597,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -12388,7 +11661,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -12424,7 +11697,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24fecs::OpticsHour24fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
@@ -12434,12 +11707,12 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15()
     :
     optics_minute15_optics(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics>())
-	,optics_minute15fecs(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs>())
+    , optics_minute15fecs(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs>())
 {
     optics_minute15_optics->parent = this;
     optics_minute15fecs->parent = this;
 
-    yang_name = "optics-minute15"; yang_parent_name = "optics-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-minute15"; yang_parent_name = "optics-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::~OpticsMinute15()
@@ -12448,6 +11721,7 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::has_data() const
 {
+    if (is_presence_container) return true;
     return (optics_minute15_optics !=  nullptr && optics_minute15_optics->has_data())
 	|| (optics_minute15fecs !=  nullptr && optics_minute15fecs->has_data());
 }
@@ -12490,7 +11764,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(optics_minute15fecs == nullptr)
         {
-            optics_minute15fecs = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs>();
+            optics_minute15fecs = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs>();
         }
         return optics_minute15fecs;
     }
@@ -12531,9 +11805,11 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optics()
+    :
+    optics_minute15_optic(this, {"number"})
 {
 
-    yang_name = "optics-minute15-optics"; yang_parent_name = "optics-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-minute15-optics"; yang_parent_name = "optics-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::~OpticsMinute15Optics()
@@ -12542,7 +11818,8 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::has_data() const
 {
-    for (std::size_t index=0; index<optics_minute15_optic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<optics_minute15_optic.len(); index++)
     {
         if(optics_minute15_optic[index]->has_data())
             return true;
@@ -12552,7 +11829,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::has_operation() const
 {
-    for (std::size_t index=0; index<optics_minute15_optic.size(); index++)
+    for (std::size_t index=0; index<optics_minute15_optic.len(); index++)
     {
         if(optics_minute15_optic[index]->has_operation())
             return true;
@@ -12582,7 +11859,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         auto c = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic>();
         c->parent = this;
-        optics_minute15_optic.push_back(c);
+        optics_minute15_optic.append(c);
         return c;
     }
 
@@ -12594,7 +11871,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : optics_minute15_optic)
+    for (auto c : optics_minute15_optic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12631,23 +11908,21 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
+        ,
     lbc(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc>())
-	,lbc_pc(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc>())
-	,opt(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt>())
-	,opr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr>())
-	,cd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd>())
-	,dgd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd>())
-	,pmd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd>())
-	,osnr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr>())
-	,center_wavelength(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength>())
-	,pdl(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl>())
-	,pcr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr>())
-	,pn(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn>())
-	,rx_sig_pow(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow>())
-	,low_sig_freq_off(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff>())
-	,ampli_gain(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain>())
-	,ampli_gain_tilt(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt>())
+    , lbc_pc(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc>())
+    , opt(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt>())
+    , opr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr>())
+    , cd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd>())
+    , dgd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd>())
+    , pmd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd>())
+    , osnr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr>())
+    , center_wavelength(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength>())
+    , pdl(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl>())
+    , pcr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr>())
+    , pn(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn>())
+    , rx_sig_pow(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow>())
+    , low_sig_freq_off(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff>())
 {
     lbc->parent = this;
     lbc_pc->parent = this;
@@ -12663,10 +11938,8 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     pn->parent = this;
     rx_sig_pow->parent = this;
     low_sig_freq_off->parent = this;
-    ampli_gain->parent = this;
-    ampli_gain_tilt->parent = this;
 
-    yang_name = "optics-minute15-optic"; yang_parent_name = "optics-minute15-optics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-minute15-optic"; yang_parent_name = "optics-minute15-optics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::~OpticsMinute15Optic()
@@ -12675,6 +11948,7 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -12697,9 +11971,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| (pcr !=  nullptr && pcr->has_data())
 	|| (pn !=  nullptr && pn->has_data())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_data())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data())
-	|| (ampli_gain !=  nullptr && ampli_gain->has_data())
-	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_data());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data());
 }
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::has_operation() const
@@ -12727,15 +11999,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| (pcr !=  nullptr && pcr->has_operation())
 	|| (pn !=  nullptr && pn->has_operation())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_operation())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation())
-	|| (ampli_gain !=  nullptr && ampli_gain->has_operation())
-	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_operation());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation());
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "optics-minute15-optic" <<"[number='" <<number <<"']";
+    path_buffer << "optics-minute15-optic";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -12885,24 +12156,6 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
         return low_sig_freq_off;
     }
 
-    if(child_yang_name == "ampli-gain")
-    {
-        if(ampli_gain == nullptr)
-        {
-            ampli_gain = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain>();
-        }
-        return ampli_gain;
-    }
-
-    if(child_yang_name == "ampli-gain-tilt")
-    {
-        if(ampli_gain_tilt == nullptr)
-        {
-            ampli_gain_tilt = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt>();
-        }
-        return ampli_gain_tilt;
-    }
-
     return nullptr;
 }
 
@@ -12978,16 +12231,6 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     if(low_sig_freq_off != nullptr)
     {
         children["low-sig-freq-off"] = low_sig_freq_off;
-    }
-
-    if(ampli_gain != nullptr)
-    {
-        children["ampli-gain"] = ampli_gain;
-    }
-
-    if(ampli_gain_tilt != nullptr)
-    {
-        children["ampli-gain-tilt"] = ampli_gain_tilt;
     }
 
     return children;
@@ -13093,7 +12336,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "ampli-gain" || name == "ampli-gain-tilt" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
+    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
@@ -13105,14 +12348,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "lbc"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc::~Lbc()
@@ -13121,15 +12362,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -13141,10 +12381,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -13164,10 +12402,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -13218,12 +12454,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -13235,12 +12465,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -13272,10 +12496,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -13283,10 +12503,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -13296,7 +12512,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -13308,14 +12524,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "lbc-pc"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc-pc"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc::~LbcPc()
@@ -13324,15 +12538,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -13344,10 +12557,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -13367,10 +12578,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -13421,12 +12630,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -13438,12 +12641,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -13475,10 +12672,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -13486,10 +12679,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -13499,7 +12688,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -13511,14 +12700,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "opt"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opt"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt::~Opt()
@@ -13527,15 +12714,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -13547,10 +12733,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -13570,10 +12754,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -13624,12 +12806,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -13641,12 +12817,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -13678,10 +12848,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -13689,10 +12855,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -13702,7 +12864,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -13714,14 +12876,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "opr"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opr"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr::~Opr()
@@ -13730,15 +12890,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -13750,10 +12909,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -13773,10 +12930,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -13827,12 +12982,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -13844,12 +12993,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -13881,10 +13024,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -13892,10 +13031,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -13905,7 +13040,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -13917,14 +13052,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "cd"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cd"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd::~Cd()
@@ -13933,15 +13066,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -13953,10 +13085,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -13976,10 +13106,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -14030,12 +13158,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -14047,12 +13169,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -14084,10 +13200,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -14095,10 +13207,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -14108,7 +13216,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -14120,14 +13228,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "dgd"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dgd"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd::~Dgd()
@@ -14136,15 +13242,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -14156,10 +13261,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -14179,10 +13282,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -14233,12 +13334,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -14250,12 +13345,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -14287,10 +13376,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -14298,10 +13383,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -14311,7 +13392,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -14323,14 +13404,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pmd"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pmd"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd::~Pmd()
@@ -14339,15 +13418,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -14359,10 +13437,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -14382,10 +13458,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -14436,12 +13510,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -14453,12 +13521,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -14490,10 +13552,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -14501,10 +13559,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -14514,7 +13568,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -14526,14 +13580,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "osnr"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "osnr"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr::~Osnr()
@@ -14542,15 +13594,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -14562,10 +13613,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -14585,10 +13634,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -14639,12 +13686,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -14656,12 +13697,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -14693,10 +13728,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -14704,10 +13735,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -14717,7 +13744,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -14729,14 +13756,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "center-wavelength"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "center-wavelength"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength::~CenterWavelength()
@@ -14745,15 +13770,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -14765,10 +13789,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -14788,10 +13810,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -14842,12 +13862,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -14859,12 +13873,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -14896,10 +13904,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -14907,10 +13911,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -14920,7 +13920,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -14932,14 +13932,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pdl"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pdl"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl::~Pdl()
@@ -14948,15 +13946,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -14968,10 +13965,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -14991,10 +13986,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -15045,12 +14038,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -15062,12 +14049,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -15099,10 +14080,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -15110,10 +14087,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -15123,7 +14096,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -15135,14 +14108,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pcr"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcr"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr::~Pcr()
@@ -15151,15 +14122,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -15171,10 +14141,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -15194,10 +14162,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -15248,12 +14214,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -15265,12 +14225,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -15302,10 +14256,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -15313,10 +14263,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -15326,7 +14272,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -15338,14 +14284,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pn"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pn"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn::~Pn()
@@ -15354,15 +14298,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -15374,10 +14317,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -15397,10 +14338,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -15451,12 +14390,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -15468,12 +14401,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -15505,10 +14432,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -15516,10 +14439,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -15529,7 +14448,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -15541,14 +14460,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "rx-sig-pow"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-sig-pow"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow::~RxSigPow()
@@ -15557,15 +14474,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -15577,10 +14493,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -15600,10 +14514,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -15654,12 +14566,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -15671,12 +14577,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -15708,10 +14608,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -15719,10 +14615,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -15732,7 +14624,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -15744,14 +14636,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "low-sig-freq-off"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-sig-freq-off"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff::~LowSigFreqOff()
@@ -15760,15 +14650,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -15780,10 +14669,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -15803,10 +14690,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -15857,12 +14742,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -15874,12 +14753,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -15911,10 +14784,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -15922,10 +14791,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -15935,430 +14800,27 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain::AmpliGain()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fecs()
     :
-    valid{YType::boolean, "valid"},
-    minimum{YType::str, "minimum"},
-    average{YType::str, "average"},
-    maximum{YType::str, "maximum"},
-    minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
-    minimum_tca_report{YType::boolean, "minimum-tca-report"},
-    maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
-    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+    optics_minute15fec(this, {"number"})
 {
 
-    yang_name = "ampli-gain"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-minute15fecs"; yang_parent_name = "optics-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain::~AmpliGain()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::~OpticsMinute15fecs()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::has_data() const
 {
-    return valid.is_set
-	|| minimum.is_set
-	|| average.is_set
-	|| maximum.is_set
-	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
-	|| minimum_tca_report.is_set
-	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
-	|| maximum_tca_report.is_set;
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| ydk::is_set(minimum.yfilter)
-	|| ydk::is_set(average.yfilter)
-	|| ydk::is_set(maximum.yfilter)
-	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
-	|| ydk::is_set(minimum_tca_report.yfilter)
-	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
-	|| ydk::is_set(maximum_tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ampli-gain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum")
-    {
-        minimum = value;
-        minimum.value_namespace = name_space;
-        minimum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "average")
-    {
-        average = value;
-        average.value_namespace = name_space;
-        average.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold = value;
-        minimum_threshold.value_namespace = name_space;
-        minimum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report = value;
-        minimum_tca_report.value_namespace = name_space;
-        minimum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold = value;
-        maximum_threshold.value_namespace = name_space;
-        maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report = value;
-        maximum_tca_report.value_namespace = name_space;
-        maximum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-    if(value_path == "minimum")
-    {
-        minimum.yfilter = yfilter;
-    }
-    if(value_path == "average")
-    {
-        average.yfilter = yfilter;
-    }
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report.yfilter = yfilter;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt::AmpliGainTilt()
-    :
-    valid{YType::boolean, "valid"},
-    minimum{YType::str, "minimum"},
-    average{YType::str, "average"},
-    maximum{YType::str, "maximum"},
-    minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
-    minimum_tca_report{YType::boolean, "minimum-tca-report"},
-    maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
-    maximum_tca_report{YType::boolean, "maximum-tca-report"}
-{
-
-    yang_name = "ampli-gain-tilt"; yang_parent_name = "optics-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt::~AmpliGainTilt()
-{
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt::has_data() const
-{
-    return valid.is_set
-	|| minimum.is_set
-	|| average.is_set
-	|| maximum.is_set
-	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
-	|| minimum_tca_report.is_set
-	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
-	|| maximum_tca_report.is_set;
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| ydk::is_set(minimum.yfilter)
-	|| ydk::is_set(average.yfilter)
-	|| ydk::is_set(maximum.yfilter)
-	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
-	|| ydk::is_set(minimum_tca_report.yfilter)
-	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
-	|| ydk::is_set(maximum_tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ampli-gain-tilt";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum")
-    {
-        minimum = value;
-        minimum.value_namespace = name_space;
-        minimum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "average")
-    {
-        average = value;
-        average.value_namespace = name_space;
-        average.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold = value;
-        minimum_threshold.value_namespace = name_space;
-        minimum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report = value;
-        minimum_tca_report.value_namespace = name_space;
-        minimum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold = value;
-        maximum_threshold.value_namespace = name_space;
-        maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report = value;
-        maximum_tca_report.value_namespace = name_space;
-        maximum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-    if(value_path == "minimum")
-    {
-        minimum.yfilter = yfilter;
-    }
-    if(value_path == "average")
-    {
-        average.yfilter = yfilter;
-    }
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report.yfilter = yfilter;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fecs()
-{
-
-    yang_name = "optics-minute15fecs"; yang_parent_name = "optics-minute15"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::~OpticsMinute15Fecs()
-{
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::has_data() const
-{
-    for (std::size_t index=0; index<optics_minute15fec.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<optics_minute15fec.len(); index++)
     {
         if(optics_minute15fec[index]->has_data())
             return true;
@@ -16366,9 +14828,9 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     return false;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::has_operation() const
 {
-    for (std::size_t index=0; index<optics_minute15fec.size(); index++)
+    for (std::size_t index=0; index<optics_minute15fec.len(); index++)
     {
         if(optics_minute15fec[index]->has_operation())
             return true;
@@ -16376,14 +14838,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "optics-minute15fecs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16392,25 +14854,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optics-minute15fec")
     {
-        auto c = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec>();
+        auto c = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec>();
         c->parent = this;
-        optics_minute15fec.push_back(c);
+        optics_minute15fec.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : optics_minute15fec)
+    for (auto c : optics_minute15fec.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16421,22 +14883,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "optics-minute15fec")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::OpticsMinute15Fec()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::OpticsMinute15fec()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -16447,13 +14909,13 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
-    ec_bits(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits>())
-	,uc_words(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords>())
-	,pre_fec_ber(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer>())
-	,post_fec_ber(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer>())
-	,q(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q>())
-	,qmargin(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin>())
+        ,
+    ec_bits(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits>())
+    , uc_words(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords>())
+    , pre_fec_ber(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer>())
+    , post_fec_ber(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer>())
+    , q(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q>())
+    , qmargin(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin>())
 {
     ec_bits->parent = this;
     uc_words->parent = this;
@@ -16462,15 +14924,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     q->parent = this;
     qmargin->parent = this;
 
-    yang_name = "optics-minute15fec"; yang_parent_name = "optics-minute15fecs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-minute15fec"; yang_parent_name = "optics-minute15fecs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::~OpticsMinute15Fec()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::~OpticsMinute15fec()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -16488,7 +14951,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| (qmargin !=  nullptr && qmargin->has_data());
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -16508,14 +14971,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| (qmargin !=  nullptr && qmargin->has_operation());
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "optics-minute15fec" <<"[number='" <<number <<"']";
+    path_buffer << "optics-minute15fec";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16533,13 +14997,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ec-bits")
     {
         if(ec_bits == nullptr)
         {
-            ec_bits = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits>();
+            ec_bits = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits>();
         }
         return ec_bits;
     }
@@ -16548,7 +15012,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(uc_words == nullptr)
         {
-            uc_words = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords>();
+            uc_words = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords>();
         }
         return uc_words;
     }
@@ -16557,7 +15021,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(pre_fec_ber == nullptr)
         {
-            pre_fec_ber = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer>();
+            pre_fec_ber = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer>();
         }
         return pre_fec_ber;
     }
@@ -16566,7 +15030,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(post_fec_ber == nullptr)
         {
-            post_fec_ber = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer>();
+            post_fec_ber = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer>();
         }
         return post_fec_ber;
     }
@@ -16575,7 +15039,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(q == nullptr)
         {
-            q = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q>();
+            q = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q>();
         }
         return q;
     }
@@ -16584,7 +15048,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(qmargin == nullptr)
         {
-            qmargin = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin>();
+            qmargin = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin>();
         }
         return qmargin;
     }
@@ -16592,7 +15056,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16629,7 +15093,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -16687,7 +15151,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -16727,14 +15191,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ec-bits" || name == "uc-words" || name == "pre-fec-ber" || name == "post-fec-ber" || name == "q" || name == "qmargin" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::EcBits()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits::EcBits()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -16742,22 +15206,23 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ec-bits"; yang_parent_name = "optics-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ec-bits"; yang_parent_name = "optics-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::~EcBits()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits::~EcBits()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16766,14 +15231,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ec-bits";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16786,19 +15251,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16826,7 +15291,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16846,14 +15311,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::UcWords()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords::UcWords()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -16861,22 +15326,23 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "uc-words"; yang_parent_name = "optics-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uc-words"; yang_parent_name = "optics-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::~UcWords()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords::~UcWords()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16885,14 +15351,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uc-words";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16905,19 +15371,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16945,7 +15411,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16965,14 +15431,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::PreFecBer()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer::PreFecBer()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -16984,15 +15450,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "pre-fec-ber"; yang_parent_name = "optics-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pre-fec-ber"; yang_parent_name = "optics-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::~PreFecBer()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer::~PreFecBer()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -17003,7 +15470,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -17016,14 +15483,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pre-fec-ber";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17040,19 +15507,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -17104,7 +15571,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -17140,14 +15607,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::PostFecBer()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer::PostFecBer()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -17159,15 +15626,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "post-fec-ber"; yang_parent_name = "optics-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "post-fec-ber"; yang_parent_name = "optics-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::~PostFecBer()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer::~PostFecBer()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -17178,7 +15646,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -17191,14 +15659,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "post-fec-ber";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17215,19 +15683,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -17279,7 +15747,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -17315,14 +15783,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::Q()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q::Q()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -17334,15 +15802,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "q"; yang_parent_name = "optics-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "q"; yang_parent_name = "optics-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::~Q()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q::~Q()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -17353,7 +15822,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -17366,14 +15835,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "q";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17390,19 +15859,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -17454,7 +15923,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -17490,14 +15959,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Q::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::Qmargin()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin::Qmargin()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -17509,15 +15978,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "qmargin"; yang_parent_name = "optics-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qmargin"; yang_parent_name = "optics-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::~Qmargin()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin::~Qmargin()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -17528,7 +15998,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -17541,14 +16011,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "qmargin";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17565,19 +16035,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -17629,7 +16099,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -17665,7 +16135,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15fecs::OpticsMinute15fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
@@ -17674,13 +16144,13 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30()
     :
-    optics_second30fecs(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs>())
-	,optics_second30_optics(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics>())
+    optics_second30fecs(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs>())
+    , optics_second30_optics(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics>())
 {
     optics_second30fecs->parent = this;
     optics_second30_optics->parent = this;
 
-    yang_name = "optics-second30"; yang_parent_name = "optics-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-second30"; yang_parent_name = "optics-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::~OpticsSecond30()
@@ -17689,6 +16159,7 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::has_data() const
 {
+    if (is_presence_container) return true;
     return (optics_second30fecs !=  nullptr && optics_second30fecs->has_data())
 	|| (optics_second30_optics !=  nullptr && optics_second30_optics->has_data());
 }
@@ -17722,7 +16193,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(optics_second30fecs == nullptr)
         {
-            optics_second30fecs = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs>();
+            optics_second30fecs = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs>();
         }
         return optics_second30fecs;
     }
@@ -17771,19 +16242,22 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fecs()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fecs()
+    :
+    optics_second30fec(this, {"number"})
 {
 
-    yang_name = "optics-second30fecs"; yang_parent_name = "optics-second30"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-second30fecs"; yang_parent_name = "optics-second30"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::~OpticsSecond30Fecs()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::~OpticsSecond30fecs()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::has_data() const
 {
-    for (std::size_t index=0; index<optics_second30fec.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<optics_second30fec.len(); index++)
     {
         if(optics_second30fec[index]->has_data())
             return true;
@@ -17791,9 +16265,9 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     return false;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::has_operation() const
 {
-    for (std::size_t index=0; index<optics_second30fec.size(); index++)
+    for (std::size_t index=0; index<optics_second30fec.len(); index++)
     {
         if(optics_second30fec[index]->has_operation())
             return true;
@@ -17801,14 +16275,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "optics-second30fecs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17817,25 +16291,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optics-second30fec")
     {
-        auto c = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec>();
+        auto c = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec>();
         c->parent = this;
-        optics_second30fec.push_back(c);
+        optics_second30fec.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : optics_second30fec)
+    for (auto c : optics_second30fec.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17846,22 +16320,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "optics-second30fec")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::OpticsSecond30Fec()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::OpticsSecond30fec()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -17872,13 +16346,13 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
-    ec_bits(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits>())
-	,uc_words(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords>())
-	,pre_fec_ber(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer>())
-	,post_fec_ber(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer>())
-	,q(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q>())
-	,qmargin(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin>())
+        ,
+    ec_bits(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits>())
+    , uc_words(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords>())
+    , pre_fec_ber(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer>())
+    , post_fec_ber(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer>())
+    , q(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q>())
+    , qmargin(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin>())
 {
     ec_bits->parent = this;
     uc_words->parent = this;
@@ -17887,15 +16361,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     q->parent = this;
     qmargin->parent = this;
 
-    yang_name = "optics-second30fec"; yang_parent_name = "optics-second30fecs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-second30fec"; yang_parent_name = "optics-second30fecs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::~OpticsSecond30Fec()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::~OpticsSecond30fec()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -17913,7 +16388,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| (qmargin !=  nullptr && qmargin->has_data());
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -17933,14 +16408,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| (qmargin !=  nullptr && qmargin->has_operation());
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "optics-second30fec" <<"[number='" <<number <<"']";
+    path_buffer << "optics-second30fec";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17958,13 +16434,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ec-bits")
     {
         if(ec_bits == nullptr)
         {
-            ec_bits = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits>();
+            ec_bits = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits>();
         }
         return ec_bits;
     }
@@ -17973,7 +16449,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(uc_words == nullptr)
         {
-            uc_words = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords>();
+            uc_words = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords>();
         }
         return uc_words;
     }
@@ -17982,7 +16458,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(pre_fec_ber == nullptr)
         {
-            pre_fec_ber = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer>();
+            pre_fec_ber = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer>();
         }
         return pre_fec_ber;
     }
@@ -17991,7 +16467,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(post_fec_ber == nullptr)
         {
-            post_fec_ber = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer>();
+            post_fec_ber = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer>();
         }
         return post_fec_ber;
     }
@@ -18000,7 +16476,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(q == nullptr)
         {
-            q = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q>();
+            q = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q>();
         }
         return q;
     }
@@ -18009,7 +16485,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         if(qmargin == nullptr)
         {
-            qmargin = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin>();
+            qmargin = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin>();
         }
         return qmargin;
     }
@@ -18017,7 +16493,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -18054,7 +16530,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -18112,7 +16588,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -18152,14 +16628,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ec-bits" || name == "uc-words" || name == "pre-fec-ber" || name == "post-fec-ber" || name == "q" || name == "qmargin" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::EcBits()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits::EcBits()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -18167,22 +16643,23 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ec-bits"; yang_parent_name = "optics-second30fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ec-bits"; yang_parent_name = "optics-second30fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::~EcBits()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits::~EcBits()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18191,14 +16668,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ec-bits";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18211,19 +16688,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18251,7 +16728,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18271,14 +16748,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::UcWords()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords::UcWords()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -18286,22 +16763,23 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "uc-words"; yang_parent_name = "optics-second30fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uc-words"; yang_parent_name = "optics-second30fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::~UcWords()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords::~UcWords()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18310,14 +16788,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uc-words";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18330,19 +16808,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18370,7 +16848,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18390,14 +16868,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::PreFecBer()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer::PreFecBer()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -18409,15 +16887,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "pre-fec-ber"; yang_parent_name = "optics-second30fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pre-fec-ber"; yang_parent_name = "optics-second30fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::~PreFecBer()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer::~PreFecBer()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -18428,7 +16907,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -18441,14 +16920,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pre-fec-ber";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18465,19 +16944,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -18529,7 +17008,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -18565,14 +17044,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::PostFecBer()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer::PostFecBer()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -18584,15 +17063,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "post-fec-ber"; yang_parent_name = "optics-second30fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "post-fec-ber"; yang_parent_name = "optics-second30fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::~PostFecBer()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer::~PostFecBer()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -18603,7 +17083,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -18616,14 +17096,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "post-fec-ber";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18640,19 +17120,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -18704,7 +17184,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -18740,14 +17220,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::Q()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q::Q()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -18759,15 +17239,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "q"; yang_parent_name = "optics-second30fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "q"; yang_parent_name = "optics-second30fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::~Q()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q::~Q()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -18778,7 +17259,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -18791,14 +17272,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "q";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18815,19 +17296,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -18879,7 +17360,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -18915,14 +17396,14 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Q::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::Qmargin()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin::Qmargin()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -18934,15 +17415,16 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "qmargin"; yang_parent_name = "optics-second30fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qmargin"; yang_parent_name = "optics-second30fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::~Qmargin()
+PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin::~Qmargin()
 {
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::has_data() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -18953,7 +17435,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::has_operation() const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -18966,14 +17448,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::get_segment_path() const
+std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "qmargin";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18990,19 +17472,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -19054,7 +17536,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -19090,7 +17572,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     }
 }
 
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30fecs::OpticsSecond30fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
@@ -19098,9 +17580,11 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optics()
+    :
+    optics_second30_optic(this, {"number"})
 {
 
-    yang_name = "optics-second30-optics"; yang_parent_name = "optics-second30"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-second30-optics"; yang_parent_name = "optics-second30"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::~OpticsSecond30Optics()
@@ -19109,7 +17593,8 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::has_data() const
 {
-    for (std::size_t index=0; index<optics_second30_optic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<optics_second30_optic.len(); index++)
     {
         if(optics_second30_optic[index]->has_data())
             return true;
@@ -19119,7 +17604,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::has_operation() const
 {
-    for (std::size_t index=0; index<optics_second30_optic.size(); index++)
+    for (std::size_t index=0; index<optics_second30_optic.len(); index++)
     {
         if(optics_second30_optic[index]->has_operation())
             return true;
@@ -19149,7 +17634,7 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
     {
         auto c = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic>();
         c->parent = this;
-        optics_second30_optic.push_back(c);
+        optics_second30_optic.append(c);
         return c;
     }
 
@@ -19161,7 +17646,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : optics_second30_optic)
+    for (auto c : optics_second30_optic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19198,23 +17683,21 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
+        ,
     lbc(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc>())
-	,lbc_pc(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc>())
-	,opt(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt>())
-	,opr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr>())
-	,cd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd>())
-	,dgd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd>())
-	,pmd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd>())
-	,osnr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr>())
-	,center_wavelength(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength>())
-	,pdl(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl>())
-	,pcr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr>())
-	,pn(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn>())
-	,rx_sig_pow(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow>())
-	,low_sig_freq_off(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff>())
-	,ampli_gain(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain>())
-	,ampli_gain_tilt(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt>())
+    , lbc_pc(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc>())
+    , opt(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt>())
+    , opr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr>())
+    , cd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd>())
+    , dgd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd>())
+    , pmd(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd>())
+    , osnr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr>())
+    , center_wavelength(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength>())
+    , pdl(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl>())
+    , pcr(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr>())
+    , pn(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn>())
+    , rx_sig_pow(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow>())
+    , low_sig_freq_off(std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff>())
 {
     lbc->parent = this;
     lbc_pc->parent = this;
@@ -19230,10 +17713,8 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     pn->parent = this;
     rx_sig_pow->parent = this;
     low_sig_freq_off->parent = this;
-    ampli_gain->parent = this;
-    ampli_gain_tilt->parent = this;
 
-    yang_name = "optics-second30-optic"; yang_parent_name = "optics-second30-optics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-second30-optic"; yang_parent_name = "optics-second30-optics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::~OpticsSecond30Optic()
@@ -19242,6 +17723,7 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -19264,9 +17746,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| (pcr !=  nullptr && pcr->has_data())
 	|| (pn !=  nullptr && pn->has_data())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_data())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data())
-	|| (ampli_gain !=  nullptr && ampli_gain->has_data())
-	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_data());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data());
 }
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::has_operation() const
@@ -19294,15 +17774,14 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| (pcr !=  nullptr && pcr->has_operation())
 	|| (pn !=  nullptr && pn->has_operation())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_operation())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation())
-	|| (ampli_gain !=  nullptr && ampli_gain->has_operation())
-	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_operation());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation());
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "optics-second30-optic" <<"[number='" <<number <<"']";
+    path_buffer << "optics-second30-optic";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -19452,24 +17931,6 @@ std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::
         return low_sig_freq_off;
     }
 
-    if(child_yang_name == "ampli-gain")
-    {
-        if(ampli_gain == nullptr)
-        {
-            ampli_gain = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain>();
-        }
-        return ampli_gain;
-    }
-
-    if(child_yang_name == "ampli-gain-tilt")
-    {
-        if(ampli_gain_tilt == nullptr)
-        {
-            ampli_gain_tilt = std::make_shared<PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt>();
-        }
-        return ampli_gain_tilt;
-    }
-
     return nullptr;
 }
 
@@ -19545,16 +18006,6 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     if(low_sig_freq_off != nullptr)
     {
         children["low-sig-freq-off"] = low_sig_freq_off;
-    }
-
-    if(ampli_gain != nullptr)
-    {
-        children["ampli-gain"] = ampli_gain;
-    }
-
-    if(ampli_gain_tilt != nullptr)
-    {
-        children["ampli-gain-tilt"] = ampli_gain_tilt;
     }
 
     return children;
@@ -19660,7 +18111,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "ampli-gain" || name == "ampli-gain-tilt" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
+    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
@@ -19672,14 +18123,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "lbc"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc::~Lbc()
@@ -19688,15 +18137,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -19708,10 +18156,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -19731,10 +18177,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -19785,12 +18229,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -19802,12 +18240,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -19839,10 +18271,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -19850,10 +18278,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -19863,7 +18287,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -19875,14 +18299,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "lbc-pc"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc-pc"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc::~LbcPc()
@@ -19891,15 +18313,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -19911,10 +18332,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -19934,10 +18353,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -19988,12 +18405,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -20005,12 +18416,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -20042,10 +18447,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -20053,10 +18454,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -20066,7 +18463,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -20078,14 +18475,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "opt"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opt"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt::~Opt()
@@ -20094,15 +18489,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -20114,10 +18508,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -20137,10 +18529,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -20191,12 +18581,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -20208,12 +18592,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -20245,10 +18623,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -20256,10 +18630,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -20269,7 +18639,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -20281,14 +18651,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "opr"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opr"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr::~Opr()
@@ -20297,15 +18665,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -20317,10 +18684,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -20340,10 +18705,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -20394,12 +18757,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -20411,12 +18768,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -20448,10 +18799,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -20459,10 +18806,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -20472,7 +18815,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -20484,14 +18827,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "cd"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cd"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd::~Cd()
@@ -20500,15 +18841,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -20520,10 +18860,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -20543,10 +18881,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -20597,12 +18933,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -20614,12 +18944,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -20651,10 +18975,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -20662,10 +18982,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -20675,7 +18991,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -20687,14 +19003,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "dgd"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dgd"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd::~Dgd()
@@ -20703,15 +19017,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -20723,10 +19036,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -20746,10 +19057,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -20800,12 +19109,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -20817,12 +19120,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -20854,10 +19151,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -20865,10 +19158,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -20878,7 +19167,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -20890,14 +19179,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pmd"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pmd"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd::~Pmd()
@@ -20906,15 +19193,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -20926,10 +19212,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -20949,10 +19233,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -21003,12 +19285,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -21020,12 +19296,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -21057,10 +19327,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -21068,10 +19334,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -21081,7 +19343,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -21093,14 +19355,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "osnr"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "osnr"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr::~Osnr()
@@ -21109,15 +19369,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -21129,10 +19388,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -21152,10 +19409,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -21206,12 +19461,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -21223,12 +19472,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -21260,10 +19503,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -21271,10 +19510,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -21284,7 +19519,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -21296,14 +19531,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "center-wavelength"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "center-wavelength"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength::~CenterWavelength()
@@ -21312,15 +19545,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -21332,10 +19564,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -21355,10 +19585,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -21409,12 +19637,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -21426,12 +19648,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -21463,10 +19679,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -21474,10 +19686,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -21487,7 +19695,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -21499,14 +19707,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pdl"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pdl"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl::~Pdl()
@@ -21515,15 +19721,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -21535,10 +19740,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -21558,10 +19761,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -21612,12 +19813,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -21629,12 +19824,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -21666,10 +19855,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -21677,10 +19862,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -21690,7 +19871,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -21702,14 +19883,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pcr"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcr"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr::~Pcr()
@@ -21718,15 +19897,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -21738,10 +19916,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -21761,10 +19937,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -21815,12 +19989,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -21832,12 +20000,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -21869,10 +20031,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -21880,10 +20038,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -21893,7 +20047,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -21905,14 +20059,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pn"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pn"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn::~Pn()
@@ -21921,15 +20073,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -21941,10 +20092,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -21964,10 +20113,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -22018,12 +20165,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -22035,12 +20176,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -22072,10 +20207,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -22083,10 +20214,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -22096,7 +20223,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -22108,14 +20235,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "rx-sig-pow"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-sig-pow"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow::~RxSigPow()
@@ -22124,15 +20249,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -22144,10 +20268,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -22167,10 +20289,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -22221,12 +20341,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -22238,12 +20352,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -22275,10 +20383,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -22286,10 +20390,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -22299,7 +20399,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -22311,14 +20411,12 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "low-sig-freq-off"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-sig-freq-off"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff::~LowSigFreqOff()
@@ -22327,15 +20425,14 @@ PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSec
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -22347,10 +20444,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -22370,10 +20465,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::Op
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -22424,12 +20517,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -22441,12 +20528,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -22478,10 +20559,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -22489,10 +20566,6 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -22502,413 +20575,7 @@ void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain::AmpliGain()
-    :
-    valid{YType::boolean, "valid"},
-    minimum{YType::str, "minimum"},
-    average{YType::str, "average"},
-    maximum{YType::str, "maximum"},
-    minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
-    minimum_tca_report{YType::boolean, "minimum-tca-report"},
-    maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
-    maximum_tca_report{YType::boolean, "maximum-tca-report"}
-{
-
-    yang_name = "ampli-gain"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain::~AmpliGain()
-{
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain::has_data() const
-{
-    return valid.is_set
-	|| minimum.is_set
-	|| average.is_set
-	|| maximum.is_set
-	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
-	|| minimum_tca_report.is_set
-	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
-	|| maximum_tca_report.is_set;
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| ydk::is_set(minimum.yfilter)
-	|| ydk::is_set(average.yfilter)
-	|| ydk::is_set(maximum.yfilter)
-	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
-	|| ydk::is_set(minimum_tca_report.yfilter)
-	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
-	|| ydk::is_set(maximum_tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ampli-gain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum")
-    {
-        minimum = value;
-        minimum.value_namespace = name_space;
-        minimum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "average")
-    {
-        average = value;
-        average.value_namespace = name_space;
-        average.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold = value;
-        minimum_threshold.value_namespace = name_space;
-        minimum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report = value;
-        minimum_tca_report.value_namespace = name_space;
-        minimum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold = value;
-        maximum_threshold.value_namespace = name_space;
-        maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report = value;
-        maximum_tca_report.value_namespace = name_space;
-        maximum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-    if(value_path == "minimum")
-    {
-        minimum.yfilter = yfilter;
-    }
-    if(value_path == "average")
-    {
-        average.yfilter = yfilter;
-    }
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report.yfilter = yfilter;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt::AmpliGainTilt()
-    :
-    valid{YType::boolean, "valid"},
-    minimum{YType::str, "minimum"},
-    average{YType::str, "average"},
-    maximum{YType::str, "maximum"},
-    minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
-    minimum_tca_report{YType::boolean, "minimum-tca-report"},
-    maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
-    maximum_tca_report{YType::boolean, "maximum-tca-report"}
-{
-
-    yang_name = "ampli-gain-tilt"; yang_parent_name = "optics-second30-optic"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt::~AmpliGainTilt()
-{
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt::has_data() const
-{
-    return valid.is_set
-	|| minimum.is_set
-	|| average.is_set
-	|| maximum.is_set
-	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
-	|| minimum_tca_report.is_set
-	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
-	|| maximum_tca_report.is_set;
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| ydk::is_set(minimum.yfilter)
-	|| ydk::is_set(average.yfilter)
-	|| ydk::is_set(maximum.yfilter)
-	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
-	|| ydk::is_set(minimum_tca_report.yfilter)
-	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
-	|| ydk::is_set(maximum_tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ampli-gain-tilt";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum")
-    {
-        minimum = value;
-        minimum.value_namespace = name_space;
-        minimum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "average")
-    {
-        average = value;
-        average.value_namespace = name_space;
-        average.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold = value;
-        minimum_threshold.value_namespace = name_space;
-        minimum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report = value;
-        minimum_tca_report.value_namespace = name_space;
-        minimum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold = value;
-        maximum_threshold.value_namespace = name_space;
-        maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report = value;
-        maximum_tca_report.value_namespace = name_space;
-        maximum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-    if(value_path == "minimum")
-    {
-        minimum.yfilter = yfilter;
-    }
-    if(value_path == "average")
-    {
-        average.yfilter = yfilter;
-    }
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report.yfilter = yfilter;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -22919,7 +20586,7 @@ PerformanceManagement::Sts::Sts()
 {
     sts_ports->parent = this;
 
-    yang_name = "sts"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sts"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Sts::~Sts()
@@ -22928,6 +20595,7 @@ PerformanceManagement::Sts::~Sts()
 
 bool PerformanceManagement::Sts::has_data() const
 {
+    if (is_presence_container) return true;
     return (sts_ports !=  nullptr && sts_ports->has_data());
 }
 
@@ -23002,9 +20670,11 @@ bool PerformanceManagement::Sts::has_leaf_or_child_of_name(const std::string & n
 }
 
 PerformanceManagement::Sts::StsPorts::StsPorts()
+    :
+    sts_port(this, {"name"})
 {
 
-    yang_name = "sts-ports"; yang_parent_name = "sts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sts-ports"; yang_parent_name = "sts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Sts::StsPorts::~StsPorts()
@@ -23013,7 +20683,8 @@ PerformanceManagement::Sts::StsPorts::~StsPorts()
 
 bool PerformanceManagement::Sts::StsPorts::has_data() const
 {
-    for (std::size_t index=0; index<sts_port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sts_port.len(); index++)
     {
         if(sts_port[index]->has_data())
             return true;
@@ -23023,7 +20694,7 @@ bool PerformanceManagement::Sts::StsPorts::has_data() const
 
 bool PerformanceManagement::Sts::StsPorts::has_operation() const
 {
-    for (std::size_t index=0; index<sts_port.size(); index++)
+    for (std::size_t index=0; index<sts_port.len(); index++)
     {
         if(sts_port[index]->has_operation())
             return true;
@@ -23060,7 +20731,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::get_child_by_name(
     {
         auto c = std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort>();
         c->parent = this;
-        sts_port.push_back(c);
+        sts_port.append(c);
         return c;
     }
 
@@ -23072,7 +20743,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sts_port)
+    for (auto c : sts_port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23101,12 +20772,12 @@ bool PerformanceManagement::Sts::StsPorts::has_leaf_or_child_of_name(const std::
 PerformanceManagement::Sts::StsPorts::StsPort::StsPort()
     :
     name{YType::str, "name"}
-    	,
+        ,
     sts_current(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent>())
 {
     sts_current->parent = this;
 
-    yang_name = "sts-port"; yang_parent_name = "sts-ports"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sts-port"; yang_parent_name = "sts-ports"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::~StsPort()
@@ -23115,6 +20786,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::~StsPort()
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (sts_current !=  nullptr && sts_current->has_data());
 }
@@ -23136,7 +20808,8 @@ std::string PerformanceManagement::Sts::StsPorts::StsPort::get_absolute_path() c
 std::string PerformanceManagement::Sts::StsPorts::StsPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sts-port" <<"[name='" <<name <<"']";
+    path_buffer << "sts-port";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -23204,12 +20877,12 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::has_leaf_or_child_of_name(co
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsCurrent()
     :
     sts_minute15(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15>())
-	,sts_hour24(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24>())
+    , sts_hour24(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24>())
 {
     sts_minute15->parent = this;
     sts_hour24->parent = this;
 
-    yang_name = "sts-current"; yang_parent_name = "sts-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sts-current"; yang_parent_name = "sts-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::~StsCurrent()
@@ -23218,6 +20891,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::~StsCurrent()
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::has_data() const
 {
+    if (is_presence_container) return true;
     return (sts_minute15 !=  nullptr && sts_minute15->has_data())
 	|| (sts_hour24 !=  nullptr && sts_hour24->has_data());
 }
@@ -23306,7 +20980,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinut
 {
     sts_minute15_paths->parent = this;
 
-    yang_name = "sts-minute15"; yang_parent_name = "sts-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sts-minute15"; yang_parent_name = "sts-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::~StsMinute15()
@@ -23315,6 +20989,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::~StsMinu
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::has_data() const
 {
+    if (is_presence_container) return true;
     return (sts_minute15_paths !=  nullptr && sts_minute15_paths->has_data());
 }
 
@@ -23382,9 +21057,11 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::has
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Paths()
+    :
+    sts_minute15_path(this, {"number"})
 {
 
-    yang_name = "sts-minute15-paths"; yang_parent_name = "sts-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sts-minute15-paths"; yang_parent_name = "sts-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::~StsMinute15Paths()
@@ -23393,7 +21070,8 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinut
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::has_data() const
 {
-    for (std::size_t index=0; index<sts_minute15_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sts_minute15_path.len(); index++)
     {
         if(sts_minute15_path[index]->has_data())
             return true;
@@ -23403,7 +21081,7 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::Sts
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::has_operation() const
 {
-    for (std::size_t index=0; index<sts_minute15_path.size(); index++)
+    for (std::size_t index=0; index<sts_minute15_path.len(); index++)
     {
         if(sts_minute15_path[index]->has_operation())
             return true;
@@ -23433,7 +21111,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurren
     {
         auto c = std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path>();
         c->parent = this;
-        sts_minute15_path.push_back(c);
+        sts_minute15_path.append(c);
         return c;
     }
 
@@ -23445,7 +21123,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sts_minute15_path)
+    for (auto c : sts_minute15_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23480,14 +21158,14 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinut
     last_clear_time{YType::str, "last-clear-time"},
     last_clear15_min_time{YType::str, "last-clear15-min-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"}
-    	,
+        ,
     path(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path>())
-	,fe_path(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath>())
+    , fe_path(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath>())
 {
     path->parent = this;
     fe_path->parent = this;
 
-    yang_name = "sts-minute15-path"; yang_parent_name = "sts-minute15-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sts-minute15-path"; yang_parent_name = "sts-minute15-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::~StsMinute15Path()
@@ -23496,6 +21174,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinut
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -23524,7 +21203,8 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::Sts
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sts-minute15-path" <<"[number='" <<number <<"']";
+    path_buffer << "sts-minute15-path";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -23673,18 +21353,18 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinut
     :
     path_width{YType::enumeration, "path-width"},
     path_status{YType::int32, "path-status"}
-    	,
+        ,
     path_e_ss(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs>())
-	,path_se_ss(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs>())
-	,path_c_vs(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs>())
-	,path_ua_ss(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs>())
+    , path_se_ss(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs>())
+    , path_c_vs(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs>())
+    , path_ua_ss(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs>())
 {
     path_e_ss->parent = this;
     path_se_ss->parent = this;
     path_c_vs->parent = this;
     path_ua_ss->parent = this;
 
-    yang_name = "path"; yang_parent_name = "sts-minute15-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "sts-minute15-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::~Path()
@@ -23693,6 +21373,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinut
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_width.is_set
 	|| path_status.is_set
 	|| (path_e_ss !=  nullptr && path_e_ss->has_data())
@@ -23829,6 +21510,632 @@ void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::Sts
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-e-ss" || name == "path-se-ss" || name == "path-c-vs" || name == "path-ua-ss" || name == "path-width" || name == "path-status")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::PathESs()
+    :
+    data{YType::uint32, "data"},
+    threshold{YType::uint32, "threshold"},
+    tca_report{YType::boolean, "tca-report"}
+{
+
+    yang_name = "path-e-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::~PathESs()
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::has_data() const
+{
+    if (is_presence_container) return true;
+    return data.is_set
+	|| threshold.is_set
+	|| tca_report.is_set;
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(tca_report.yfilter);
+}
+
+std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-e-ss";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::PathSeSs()
+    :
+    data{YType::uint32, "data"},
+    threshold{YType::uint32, "threshold"},
+    tca_report{YType::boolean, "tca-report"}
+{
+
+    yang_name = "path-se-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::~PathSeSs()
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::has_data() const
+{
+    if (is_presence_container) return true;
+    return data.is_set
+	|| threshold.is_set
+	|| tca_report.is_set;
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(tca_report.yfilter);
+}
+
+std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-se-ss";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::PathCVs()
+    :
+    data{YType::uint32, "data"},
+    threshold{YType::uint32, "threshold"},
+    tca_report{YType::boolean, "tca-report"}
+{
+
+    yang_name = "path-c-vs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::~PathCVs()
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::has_data() const
+{
+    if (is_presence_container) return true;
+    return data.is_set
+	|| threshold.is_set
+	|| tca_report.is_set;
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(tca_report.yfilter);
+}
+
+std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-c-vs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::PathUaSs()
+    :
+    data{YType::uint32, "data"},
+    threshold{YType::uint32, "threshold"},
+    tca_report{YType::boolean, "tca-report"}
+{
+
+    yang_name = "path-ua-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::~PathUaSs()
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::has_data() const
+{
+    if (is_presence_container) return true;
+    return data.is_set
+	|| threshold.is_set
+	|| tca_report.is_set;
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(tca_report.yfilter);
+}
+
+std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-ua-ss";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::FePath()
+    :
+    far_end_path_e_ss{YType::uint32, "far-end-path-e-ss"},
+    far_end_path_se_ss{YType::uint32, "far-end-path-se-ss"},
+    far_end_path_c_vs{YType::uint32, "far-end-path-c-vs"},
+    far_end_path_ua_ss{YType::uint32, "far-end-path-ua-ss"}
+{
+
+    yang_name = "fe-path"; yang_parent_name = "sts-minute15-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::~FePath()
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::has_data() const
+{
+    if (is_presence_container) return true;
+    return far_end_path_e_ss.is_set
+	|| far_end_path_se_ss.is_set
+	|| far_end_path_c_vs.is_set
+	|| far_end_path_ua_ss.is_set;
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(far_end_path_e_ss.yfilter)
+	|| ydk::is_set(far_end_path_se_ss.yfilter)
+	|| ydk::is_set(far_end_path_c_vs.yfilter)
+	|| ydk::is_set(far_end_path_ua_ss.yfilter);
+}
+
+std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fe-path";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.yfilter)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
+    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.yfilter)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
+    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.yfilter)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
+    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.yfilter)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "far-end-path-e-ss")
+    {
+        far_end_path_e_ss = value;
+        far_end_path_e_ss.value_namespace = name_space;
+        far_end_path_e_ss.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "far-end-path-se-ss")
+    {
+        far_end_path_se_ss = value;
+        far_end_path_se_ss.value_namespace = name_space;
+        far_end_path_se_ss.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "far-end-path-c-vs")
+    {
+        far_end_path_c_vs = value;
+        far_end_path_c_vs.value_namespace = name_space;
+        far_end_path_c_vs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "far-end-path-ua-ss")
+    {
+        far_end_path_ua_ss = value;
+        far_end_path_ua_ss.value_namespace = name_space;
+        far_end_path_ua_ss.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "far-end-path-e-ss")
+    {
+        far_end_path_e_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-se-ss")
+    {
+        far_end_path_se_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-c-vs")
+    {
+        far_end_path_c_vs.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-ua-ss")
+    {
+        far_end_path_ua_ss.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-path-e-ss" || name == "far-end-path-se-ss" || name == "far-end-path-c-vs" || name == "far-end-path-ua-ss")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24()
+    :
+    sts_hour24_paths(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths>())
+{
+    sts_hour24_paths->parent = this;
+
+    yang_name = "sts-hour24"; yang_parent_name = "sts-current"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::~StsHour24()
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::has_data() const
+{
+    if (is_presence_container) return true;
+    return (sts_hour24_paths !=  nullptr && sts_hour24_paths->has_data());
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::has_operation() const
+{
+    return is_set(yfilter)
+	|| (sts_hour24_paths !=  nullptr && sts_hour24_paths->has_operation());
+}
+
+std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sts-hour24";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sts-hour24-paths")
+    {
+        if(sts_hour24_paths == nullptr)
+        {
+            sts_hour24_paths = std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths>();
+        }
+        return sts_hour24_paths;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(sts_hour24_paths != nullptr)
+    {
+        children["sts-hour24-paths"] = sts_hour24_paths;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-hour24-paths")
         return true;
     return false;
 }

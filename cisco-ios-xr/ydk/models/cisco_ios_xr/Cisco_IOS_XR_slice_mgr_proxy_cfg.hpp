@@ -33,7 +33,7 @@ class NodePath : public ydk::Entity
 
         class Node; //type: NodePath::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_slice_mgr_proxy_cfg::NodePath::Node> > node;
+        ydk::YList node;
         
 }; // NodePath
 
@@ -81,7 +81,7 @@ class NodePath::Node::SliceIds : public ydk::Entity
 
         class SliceId; //type: NodePath::Node::SliceIds::SliceId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_slice_mgr_proxy_cfg::NodePath::Node::SliceIds::SliceId> > slice_id;
+        ydk::YList slice_id;
         
 }; // NodePath::Node::SliceIds
 
@@ -103,9 +103,9 @@ class NodePath::Node::SliceIds::SliceId : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf slice_id; //type: uint32
-        ydk::YLeaf state; //type: int32
-        ydk::YLeaf breakout; //type: int32
-        ydk::YLeaf mode; //type: int32
+        ydk::YLeaf state; //type: uint32
+        ydk::YLeaf breakout; //type: uint32
+        ydk::YLeaf mode; //type: uint32
 
 }; // NodePath::Node::SliceIds::SliceId
 

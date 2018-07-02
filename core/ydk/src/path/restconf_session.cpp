@@ -120,7 +120,7 @@ path::RootSchemaNode& RestconfSession::get_root_schema() const
 std::shared_ptr<path::DataNode> RestconfSession::invoke(
     path::DataNode& rpc) const
 {
-    throw(YOperationNotSupportedError{"action datanode is not supported!"});
+    throw(YOperationNotSupportedError{"RestconfSession::invoke: action datanode is not supported!"});
     return nullptr;
 }
 
@@ -149,8 +149,8 @@ std::shared_ptr<path::DataNode> RestconfSession::invoke(
     }
     else
     {
-        YLOG_ERROR("rpc is not supported");
-        throw(YOperationNotSupportedError{"rpc is not supported!"});
+        YLOG_ERROR("RestconfSession::invoke:RPC is not supported");
+        throw(YOperationNotSupportedError{"RPC is not supported!"});
     }
 
     return datanode;

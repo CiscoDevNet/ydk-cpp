@@ -13,13 +13,13 @@ namespace CISCO_IETF_PW_MIB {
 
 CISCOIETFPWMIB::CISCOIETFPWMIB()
     :
-    cpwvcobjects(std::make_shared<CISCOIETFPWMIB::Cpwvcobjects>())
-	,cpwvctable(std::make_shared<CISCOIETFPWMIB::Cpwvctable>())
-	,cpwvcperfcurrenttable(std::make_shared<CISCOIETFPWMIB::Cpwvcperfcurrenttable>())
-	,cpwvcperfintervaltable(std::make_shared<CISCOIETFPWMIB::Cpwvcperfintervaltable>())
-	,cpwvcperftotaltable(std::make_shared<CISCOIETFPWMIB::Cpwvcperftotaltable>())
-	,cpwvcidmappingtable(std::make_shared<CISCOIETFPWMIB::Cpwvcidmappingtable>())
-	,cpwvcpeermappingtable(std::make_shared<CISCOIETFPWMIB::Cpwvcpeermappingtable>())
+    cpwvcobjects(std::make_shared<CISCOIETFPWMIB::CpwVcObjects>())
+    , cpwvctable(std::make_shared<CISCOIETFPWMIB::CpwVcTable>())
+    , cpwvcperfcurrenttable(std::make_shared<CISCOIETFPWMIB::CpwVcPerfCurrentTable>())
+    , cpwvcperfintervaltable(std::make_shared<CISCOIETFPWMIB::CpwVcPerfIntervalTable>())
+    , cpwvcperftotaltable(std::make_shared<CISCOIETFPWMIB::CpwVcPerfTotalTable>())
+    , cpwvcidmappingtable(std::make_shared<CISCOIETFPWMIB::CpwVcIdMappingTable>())
+    , cpwvcpeermappingtable(std::make_shared<CISCOIETFPWMIB::CpwVcPeerMappingTable>())
 {
     cpwvcobjects->parent = this;
     cpwvctable->parent = this;
@@ -29,7 +29,7 @@ CISCOIETFPWMIB::CISCOIETFPWMIB()
     cpwvcidmappingtable->parent = this;
     cpwvcpeermappingtable->parent = this;
 
-    yang_name = "CISCO-IETF-PW-MIB"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-IETF-PW-MIB"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOIETFPWMIB::~CISCOIETFPWMIB()
@@ -38,6 +38,7 @@ CISCOIETFPWMIB::~CISCOIETFPWMIB()
 
 bool CISCOIETFPWMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cpwvcobjects !=  nullptr && cpwvcobjects->has_data())
 	|| (cpwvctable !=  nullptr && cpwvctable->has_data())
 	|| (cpwvcperfcurrenttable !=  nullptr && cpwvcperfcurrenttable->has_data())
@@ -81,7 +82,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::get_child_by_name(const std::string & ch
     {
         if(cpwvcobjects == nullptr)
         {
-            cpwvcobjects = std::make_shared<CISCOIETFPWMIB::Cpwvcobjects>();
+            cpwvcobjects = std::make_shared<CISCOIETFPWMIB::CpwVcObjects>();
         }
         return cpwvcobjects;
     }
@@ -90,7 +91,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::get_child_by_name(const std::string & ch
     {
         if(cpwvctable == nullptr)
         {
-            cpwvctable = std::make_shared<CISCOIETFPWMIB::Cpwvctable>();
+            cpwvctable = std::make_shared<CISCOIETFPWMIB::CpwVcTable>();
         }
         return cpwvctable;
     }
@@ -99,7 +100,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::get_child_by_name(const std::string & ch
     {
         if(cpwvcperfcurrenttable == nullptr)
         {
-            cpwvcperfcurrenttable = std::make_shared<CISCOIETFPWMIB::Cpwvcperfcurrenttable>();
+            cpwvcperfcurrenttable = std::make_shared<CISCOIETFPWMIB::CpwVcPerfCurrentTable>();
         }
         return cpwvcperfcurrenttable;
     }
@@ -108,7 +109,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::get_child_by_name(const std::string & ch
     {
         if(cpwvcperfintervaltable == nullptr)
         {
-            cpwvcperfintervaltable = std::make_shared<CISCOIETFPWMIB::Cpwvcperfintervaltable>();
+            cpwvcperfintervaltable = std::make_shared<CISCOIETFPWMIB::CpwVcPerfIntervalTable>();
         }
         return cpwvcperfintervaltable;
     }
@@ -117,7 +118,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::get_child_by_name(const std::string & ch
     {
         if(cpwvcperftotaltable == nullptr)
         {
-            cpwvcperftotaltable = std::make_shared<CISCOIETFPWMIB::Cpwvcperftotaltable>();
+            cpwvcperftotaltable = std::make_shared<CISCOIETFPWMIB::CpwVcPerfTotalTable>();
         }
         return cpwvcperftotaltable;
     }
@@ -126,7 +127,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::get_child_by_name(const std::string & ch
     {
         if(cpwvcidmappingtable == nullptr)
         {
-            cpwvcidmappingtable = std::make_shared<CISCOIETFPWMIB::Cpwvcidmappingtable>();
+            cpwvcidmappingtable = std::make_shared<CISCOIETFPWMIB::CpwVcIdMappingTable>();
         }
         return cpwvcidmappingtable;
     }
@@ -135,7 +136,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::get_child_by_name(const std::string & ch
     {
         if(cpwvcpeermappingtable == nullptr)
         {
-            cpwvcpeermappingtable = std::make_shared<CISCOIETFPWMIB::Cpwvcpeermappingtable>();
+            cpwvcpeermappingtable = std::make_shared<CISCOIETFPWMIB::CpwVcPeerMappingTable>();
         }
         return cpwvcpeermappingtable;
     }
@@ -225,7 +226,7 @@ bool CISCOIETFPWMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvcobjects::Cpwvcobjects()
+CISCOIETFPWMIB::CpwVcObjects::CpwVcObjects()
     :
     cpwvcindexnext{YType::uint32, "cpwVcIndexNext"},
     cpwvcperftotalerrorpackets{YType::uint64, "cpwVcPerfTotalErrorPackets"},
@@ -233,22 +234,23 @@ CISCOIETFPWMIB::Cpwvcobjects::Cpwvcobjects()
     cpwvcnotifrate{YType::uint32, "cpwVcNotifRate"}
 {
 
-    yang_name = "cpwVcObjects"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcObjects"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvcobjects::~Cpwvcobjects()
+CISCOIETFPWMIB::CpwVcObjects::~CpwVcObjects()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcobjects::has_data() const
+bool CISCOIETFPWMIB::CpwVcObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return cpwvcindexnext.is_set
 	|| cpwvcperftotalerrorpackets.is_set
 	|| cpwvcupdownnotifenable.is_set
 	|| cpwvcnotifrate.is_set;
 }
 
-bool CISCOIETFPWMIB::Cpwvcobjects::has_operation() const
+bool CISCOIETFPWMIB::CpwVcObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpwvcindexnext.yfilter)
@@ -257,21 +259,21 @@ bool CISCOIETFPWMIB::Cpwvcobjects::has_operation() const
 	|| ydk::is_set(cpwvcnotifrate.yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvcobjects::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvcobjects::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpwVcObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -284,19 +286,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcobjects::get
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvcobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpwVcIndexNext")
     {
@@ -324,7 +326,7 @@ void CISCOIETFPWMIB::Cpwvcobjects::set_value(const std::string & value_path, con
     }
 }
 
-void CISCOIETFPWMIB::Cpwvcobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpwVcIndexNext")
     {
@@ -344,26 +346,29 @@ void CISCOIETFPWMIB::Cpwvcobjects::set_filter(const std::string & value_path, YF
     }
 }
 
-bool CISCOIETFPWMIB::Cpwvcobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcIndexNext" || name == "cpwVcPerfTotalErrorPackets" || name == "cpwVcUpDownNotifEnable" || name == "cpwVcNotifRate")
         return true;
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvctable::Cpwvctable()
+CISCOIETFPWMIB::CpwVcTable::CpwVcTable()
+    :
+    cpwvcentry(this, {"cpwvcindex"})
 {
 
-    yang_name = "cpwVcTable"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcTable"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvctable::~Cpwvctable()
+CISCOIETFPWMIB::CpwVcTable::~CpwVcTable()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvctable::has_data() const
+bool CISCOIETFPWMIB::CpwVcTable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cpwvcentry.len(); index++)
     {
         if(cpwvcentry[index]->has_data())
             return true;
@@ -371,9 +376,9 @@ bool CISCOIETFPWMIB::Cpwvctable::has_data() const
     return false;
 }
 
-bool CISCOIETFPWMIB::Cpwvctable::has_operation() const
+bool CISCOIETFPWMIB::CpwVcTable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcentry.len(); index++)
     {
         if(cpwvcentry[index]->has_operation())
             return true;
@@ -381,21 +386,21 @@ bool CISCOIETFPWMIB::Cpwvctable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvctable::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvctable::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpwVcTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvctable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -404,25 +409,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvctable::get_n
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvctable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMIB::Cpwvctable::Cpwvcentry>();
+        auto c = std::make_shared<CISCOIETFPWMIB::CpwVcTable::CpwVcEntry>();
         c->parent = this;
-        cpwvcentry.push_back(c);
+        cpwvcentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvctable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cpwvcentry)
+    for (auto c : cpwvcentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -433,22 +438,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvctable::get_c
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvctable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFPWMIB::Cpwvctable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvctable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcEntry")
         return true;
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcentry()
+CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcEntry()
     :
     cpwvcindex{YType::uint32, "cpwVcIndex"},
     cpwvctype{YType::enumeration, "cpwVcType"},
@@ -484,15 +489,16 @@ CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcentry()
     cpwvcstoragetype{YType::enumeration, "cpwVcStorageType"}
 {
 
-    yang_name = "cpwVcEntry"; yang_parent_name = "cpwVcTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcEntry"; yang_parent_name = "cpwVcTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::~Cpwvcentry()
+CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::~CpwVcEntry()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::has_data() const
+bool CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cpwvcindex.is_set
 	|| cpwvctype.is_set
 	|| cpwvcowner.is_set
@@ -527,7 +533,7 @@ bool CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::has_data() const
 	|| cpwvcstoragetype.is_set;
 }
 
-bool CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::has_operation() const
+bool CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpwvcindex.yfilter)
@@ -564,21 +570,22 @@ bool CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::has_operation() const
 	|| ydk::is_set(cpwvcstoragetype.yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/cpwVcTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpwVcEntry" <<"[cpwVcIndex='" <<cpwvcindex <<"']";
+    path_buffer << "cpwVcEntry";
+    ADD_KEY_TOKEN(cpwvcindex, "cpwVcIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -619,19 +626,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvctable::Cpwvc
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpwVcIndex")
     {
@@ -827,7 +834,7 @@ void CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::set_value(const std::string & value
     }
 }
 
-void CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpwVcIndex")
     {
@@ -959,26 +966,29 @@ void CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::set_filter(const std::string & valu
     }
 }
 
-bool CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcIndex" || name == "cpwVcType" || name == "cpwVcOwner" || name == "cpwVcPsnType" || name == "cpwVcSetUpPriority" || name == "cpwVcHoldingPriority" || name == "cpwVcInboundMode" || name == "cpwVcPeerAddrType" || name == "cpwVcPeerAddr" || name == "cpwVcID" || name == "cpwVcLocalGroupID" || name == "cpwVcControlWord" || name == "cpwVcLocalIfMtu" || name == "cpwVcLocalIfString" || name == "cpwVcRemoteGroupID" || name == "cpwVcRemoteControlWord" || name == "cpwVcRemoteIfMtu" || name == "cpwVcRemoteIfString" || name == "cpwVcOutboundVcLabel" || name == "cpwVcInboundVcLabel" || name == "cpwVcName" || name == "cpwVcDescr" || name == "cpwVcCreateTime" || name == "cpwVcUpTime" || name == "cpwVcAdminStatus" || name == "cpwVcOperStatus" || name == "cpwVcInboundOperStatus" || name == "cpwVcOutboundOperStatus" || name == "cpwVcTimeElapsed" || name == "cpwVcValidIntervals" || name == "cpwVcRowStatus" || name == "cpwVcStorageType")
         return true;
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrenttable()
+CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentTable()
+    :
+    cpwvcperfcurrententry(this, {"cpwvcindex"})
 {
 
-    yang_name = "cpwVcPerfCurrentTable"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcPerfCurrentTable"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvcperfcurrenttable::~Cpwvcperfcurrenttable()
+CISCOIETFPWMIB::CpwVcPerfCurrentTable::~CpwVcPerfCurrentTable()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcperfcurrenttable::has_data() const
+bool CISCOIETFPWMIB::CpwVcPerfCurrentTable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcperfcurrententry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cpwvcperfcurrententry.len(); index++)
     {
         if(cpwvcperfcurrententry[index]->has_data())
             return true;
@@ -986,9 +996,9 @@ bool CISCOIETFPWMIB::Cpwvcperfcurrenttable::has_data() const
     return false;
 }
 
-bool CISCOIETFPWMIB::Cpwvcperfcurrenttable::has_operation() const
+bool CISCOIETFPWMIB::CpwVcPerfCurrentTable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcperfcurrententry.size(); index++)
+    for (std::size_t index=0; index<cpwvcperfcurrententry.len(); index++)
     {
         if(cpwvcperfcurrententry[index]->has_operation())
             return true;
@@ -996,21 +1006,21 @@ bool CISCOIETFPWMIB::Cpwvcperfcurrenttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvcperfcurrenttable::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcPerfCurrentTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvcperfcurrenttable::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcPerfCurrentTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpwVcPerfCurrentTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcperfcurrenttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPerfCurrentTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1019,25 +1029,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcperfcurrentt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperfcurrenttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPerfCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcPerfCurrentEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry>();
+        auto c = std::make_shared<CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry>();
         c->parent = this;
-        cpwvcperfcurrententry.push_back(c);
+        cpwvcperfcurrententry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperfcurrenttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPerfCurrentTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cpwvcperfcurrententry)
+    for (auto c : cpwvcperfcurrententry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1048,22 +1058,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperfcurrentt
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvcperfcurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcPerfCurrentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFPWMIB::Cpwvcperfcurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcPerfCurrentTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcperfcurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcPerfCurrentTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcPerfCurrentEntry")
         return true;
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::Cpwvcperfcurrententry()
+CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::CpwVcPerfCurrentEntry()
     :
     cpwvcindex{YType::str, "cpwVcIndex"},
     cpwvcperfcurrentinhcpackets{YType::uint64, "cpwVcPerfCurrentInHCPackets"},
@@ -1072,15 +1082,16 @@ CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::Cpwvcperfcurrenten
     cpwvcperfcurrentouthcbytes{YType::uint64, "cpwVcPerfCurrentOutHCBytes"}
 {
 
-    yang_name = "cpwVcPerfCurrentEntry"; yang_parent_name = "cpwVcPerfCurrentTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcPerfCurrentEntry"; yang_parent_name = "cpwVcPerfCurrentTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::~Cpwvcperfcurrententry()
+CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::~CpwVcPerfCurrentEntry()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::has_data() const
+bool CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cpwvcindex.is_set
 	|| cpwvcperfcurrentinhcpackets.is_set
 	|| cpwvcperfcurrentinhcbytes.is_set
@@ -1088,7 +1099,7 @@ bool CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::has_data() co
 	|| cpwvcperfcurrentouthcbytes.is_set;
 }
 
-bool CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::has_operation() const
+bool CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpwvcindex.yfilter)
@@ -1098,21 +1109,22 @@ bool CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::has_operation
 	|| ydk::is_set(cpwvcperfcurrentouthcbytes.yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/cpwVcPerfCurrentTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpwVcPerfCurrentEntry" <<"[cpwVcIndex='" <<cpwvcindex <<"']";
+    path_buffer << "cpwVcPerfCurrentEntry";
+    ADD_KEY_TOKEN(cpwvcindex, "cpwVcIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1126,19 +1138,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcperfcurrentt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpwVcIndex")
     {
@@ -1172,7 +1184,7 @@ void CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::set_value(con
     }
 }
 
-void CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpwVcIndex")
     {
@@ -1196,26 +1208,29 @@ void CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::set_filter(co
     }
 }
 
-bool CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcIndex" || name == "cpwVcPerfCurrentInHCPackets" || name == "cpwVcPerfCurrentInHCBytes" || name == "cpwVcPerfCurrentOutHCPackets" || name == "cpwVcPerfCurrentOutHCBytes")
         return true;
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervaltable()
+CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalTable()
+    :
+    cpwvcperfintervalentry(this, {"cpwvcindex", "cpwvcperfintervalnumber"})
 {
 
-    yang_name = "cpwVcPerfIntervalTable"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcPerfIntervalTable"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvcperfintervaltable::~Cpwvcperfintervaltable()
+CISCOIETFPWMIB::CpwVcPerfIntervalTable::~CpwVcPerfIntervalTable()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcperfintervaltable::has_data() const
+bool CISCOIETFPWMIB::CpwVcPerfIntervalTable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcperfintervalentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cpwvcperfintervalentry.len(); index++)
     {
         if(cpwvcperfintervalentry[index]->has_data())
             return true;
@@ -1223,9 +1238,9 @@ bool CISCOIETFPWMIB::Cpwvcperfintervaltable::has_data() const
     return false;
 }
 
-bool CISCOIETFPWMIB::Cpwvcperfintervaltable::has_operation() const
+bool CISCOIETFPWMIB::CpwVcPerfIntervalTable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcperfintervalentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcperfintervalentry.len(); index++)
     {
         if(cpwvcperfintervalentry[index]->has_operation())
             return true;
@@ -1233,21 +1248,21 @@ bool CISCOIETFPWMIB::Cpwvcperfintervaltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvcperfintervaltable::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcPerfIntervalTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvcperfintervaltable::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcPerfIntervalTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpwVcPerfIntervalTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcperfintervaltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPerfIntervalTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1256,25 +1271,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcperfinterval
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperfintervaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPerfIntervalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcPerfIntervalEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry>();
+        auto c = std::make_shared<CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry>();
         c->parent = this;
-        cpwvcperfintervalentry.push_back(c);
+        cpwvcperfintervalentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperfintervaltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPerfIntervalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cpwvcperfintervalentry)
+    for (auto c : cpwvcperfintervalentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1285,22 +1300,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperfinterval
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvcperfintervaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcPerfIntervalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFPWMIB::Cpwvcperfintervaltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcPerfIntervalTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcperfintervaltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcPerfIntervalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcPerfIntervalEntry")
         return true;
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::Cpwvcperfintervalentry()
+CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::CpwVcPerfIntervalEntry()
     :
     cpwvcindex{YType::str, "cpwVcIndex"},
     cpwvcperfintervalnumber{YType::int32, "cpwVcPerfIntervalNumber"},
@@ -1312,15 +1327,16 @@ CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::Cpwvcperfinterva
     cpwvcperfintervalouthcbytes{YType::uint64, "cpwVcPerfIntervalOutHCBytes"}
 {
 
-    yang_name = "cpwVcPerfIntervalEntry"; yang_parent_name = "cpwVcPerfIntervalTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcPerfIntervalEntry"; yang_parent_name = "cpwVcPerfIntervalTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::~Cpwvcperfintervalentry()
+CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::~CpwVcPerfIntervalEntry()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::has_data() const
+bool CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cpwvcindex.is_set
 	|| cpwvcperfintervalnumber.is_set
 	|| cpwvcperfintervalvaliddata.is_set
@@ -1331,7 +1347,7 @@ bool CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::has_data() 
 	|| cpwvcperfintervalouthcbytes.is_set;
 }
 
-bool CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::has_operation() const
+bool CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpwvcindex.yfilter)
@@ -1344,21 +1360,23 @@ bool CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::has_operati
 	|| ydk::is_set(cpwvcperfintervalouthcbytes.yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/cpwVcPerfIntervalTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpwVcPerfIntervalEntry" <<"[cpwVcIndex='" <<cpwvcindex <<"']" <<"[cpwVcPerfIntervalNumber='" <<cpwvcperfintervalnumber <<"']";
+    path_buffer << "cpwVcPerfIntervalEntry";
+    ADD_KEY_TOKEN(cpwvcindex, "cpwVcIndex");
+    ADD_KEY_TOKEN(cpwvcperfintervalnumber, "cpwVcPerfIntervalNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1375,19 +1393,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcperfinterval
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpwVcIndex")
     {
@@ -1439,7 +1457,7 @@ void CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::set_value(c
     }
 }
 
-void CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpwVcIndex")
     {
@@ -1475,26 +1493,29 @@ void CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::set_filter(
     }
 }
 
-bool CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcIndex" || name == "cpwVcPerfIntervalNumber" || name == "cpwVcPerfIntervalValidData" || name == "cpwVcPerfIntervalTimeElapsed" || name == "cpwVcPerfIntervalInHCPackets" || name == "cpwVcPerfIntervalInHCBytes" || name == "cpwVcPerfIntervalOutHCPackets" || name == "cpwVcPerfIntervalOutHCBytes")
         return true;
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotaltable()
+CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalTable()
+    :
+    cpwvcperftotalentry(this, {"cpwvcindex"})
 {
 
-    yang_name = "cpwVcPerfTotalTable"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcPerfTotalTable"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvcperftotaltable::~Cpwvcperftotaltable()
+CISCOIETFPWMIB::CpwVcPerfTotalTable::~CpwVcPerfTotalTable()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcperftotaltable::has_data() const
+bool CISCOIETFPWMIB::CpwVcPerfTotalTable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcperftotalentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cpwvcperftotalentry.len(); index++)
     {
         if(cpwvcperftotalentry[index]->has_data())
             return true;
@@ -1502,9 +1523,9 @@ bool CISCOIETFPWMIB::Cpwvcperftotaltable::has_data() const
     return false;
 }
 
-bool CISCOIETFPWMIB::Cpwvcperftotaltable::has_operation() const
+bool CISCOIETFPWMIB::CpwVcPerfTotalTable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcperftotalentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcperftotalentry.len(); index++)
     {
         if(cpwvcperftotalentry[index]->has_operation())
             return true;
@@ -1512,21 +1533,21 @@ bool CISCOIETFPWMIB::Cpwvcperftotaltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvcperftotaltable::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcPerfTotalTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvcperftotaltable::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcPerfTotalTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpwVcPerfTotalTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcperftotaltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPerfTotalTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1535,25 +1556,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcperftotaltab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperftotaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPerfTotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcPerfTotalEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry>();
+        auto c = std::make_shared<CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry>();
         c->parent = this;
-        cpwvcperftotalentry.push_back(c);
+        cpwvcperftotalentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperftotaltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPerfTotalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cpwvcperftotalentry)
+    for (auto c : cpwvcperftotalentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1564,22 +1585,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperftotaltab
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvcperftotaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcPerfTotalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFPWMIB::Cpwvcperftotaltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcPerfTotalTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcperftotaltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcPerfTotalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcPerfTotalEntry")
         return true;
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::Cpwvcperftotalentry()
+CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::CpwVcPerfTotalEntry()
     :
     cpwvcindex{YType::str, "cpwVcIndex"},
     cpwvcperftotalinhcpackets{YType::uint64, "cpwVcPerfTotalInHCPackets"},
@@ -1589,15 +1610,16 @@ CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::Cpwvcperftotalentry()
     cpwvcperftotaldiscontinuitytime{YType::uint32, "cpwVcPerfTotalDiscontinuityTime"}
 {
 
-    yang_name = "cpwVcPerfTotalEntry"; yang_parent_name = "cpwVcPerfTotalTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcPerfTotalEntry"; yang_parent_name = "cpwVcPerfTotalTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::~Cpwvcperftotalentry()
+CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::~CpwVcPerfTotalEntry()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::has_data() const
+bool CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cpwvcindex.is_set
 	|| cpwvcperftotalinhcpackets.is_set
 	|| cpwvcperftotalinhcbytes.is_set
@@ -1606,7 +1628,7 @@ bool CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::has_data() const
 	|| cpwvcperftotaldiscontinuitytime.is_set;
 }
 
-bool CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::has_operation() const
+bool CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpwvcindex.yfilter)
@@ -1617,21 +1639,22 @@ bool CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::has_operation() c
 	|| ydk::is_set(cpwvcperftotaldiscontinuitytime.yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/cpwVcPerfTotalTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpwVcPerfTotalEntry" <<"[cpwVcIndex='" <<cpwvcindex <<"']";
+    path_buffer << "cpwVcPerfTotalEntry";
+    ADD_KEY_TOKEN(cpwvcindex, "cpwVcIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1646,19 +1669,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcperftotaltab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpwVcIndex")
     {
@@ -1698,7 +1721,7 @@ void CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::set_value(const s
     }
 }
 
-void CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpwVcIndex")
     {
@@ -1726,26 +1749,29 @@ void CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::set_filter(const 
     }
 }
 
-bool CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcIndex" || name == "cpwVcPerfTotalInHCPackets" || name == "cpwVcPerfTotalInHCBytes" || name == "cpwVcPerfTotalOutHCPackets" || name == "cpwVcPerfTotalOutHCBytes" || name == "cpwVcPerfTotalDiscontinuityTime")
         return true;
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingtable()
+CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingTable()
+    :
+    cpwvcidmappingentry(this, {"cpwvcidmappingvctype", "cpwvcidmappingvcid", "cpwvcidmappingpeeraddrtype", "cpwvcidmappingpeeraddr", "cpwvcidmappingvcindex"})
 {
 
-    yang_name = "cpwVcIdMappingTable"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcIdMappingTable"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvcidmappingtable::~Cpwvcidmappingtable()
+CISCOIETFPWMIB::CpwVcIdMappingTable::~CpwVcIdMappingTable()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcidmappingtable::has_data() const
+bool CISCOIETFPWMIB::CpwVcIdMappingTable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcidmappingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cpwvcidmappingentry.len(); index++)
     {
         if(cpwvcidmappingentry[index]->has_data())
             return true;
@@ -1753,9 +1779,9 @@ bool CISCOIETFPWMIB::Cpwvcidmappingtable::has_data() const
     return false;
 }
 
-bool CISCOIETFPWMIB::Cpwvcidmappingtable::has_operation() const
+bool CISCOIETFPWMIB::CpwVcIdMappingTable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcidmappingentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcidmappingentry.len(); index++)
     {
         if(cpwvcidmappingentry[index]->has_operation())
             return true;
@@ -1763,21 +1789,21 @@ bool CISCOIETFPWMIB::Cpwvcidmappingtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvcidmappingtable::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcIdMappingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvcidmappingtable::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcIdMappingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpwVcIdMappingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcidmappingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcIdMappingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1786,25 +1812,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcidmappingtab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcidmappingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcIdMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcIdMappingEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry>();
+        auto c = std::make_shared<CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry>();
         c->parent = this;
-        cpwvcidmappingentry.push_back(c);
+        cpwvcidmappingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcidmappingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcIdMappingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cpwvcidmappingentry)
+    for (auto c : cpwvcidmappingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1815,22 +1841,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcidmappingtab
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvcidmappingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcIdMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFPWMIB::Cpwvcidmappingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcIdMappingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcidmappingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcIdMappingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcIdMappingEntry")
         return true;
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::Cpwvcidmappingentry()
+CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::CpwVcIdMappingEntry()
     :
     cpwvcidmappingvctype{YType::enumeration, "cpwVcIdMappingVcType"},
     cpwvcidmappingvcid{YType::uint32, "cpwVcIdMappingVcID"},
@@ -1839,15 +1865,16 @@ CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::Cpwvcidmappingentry()
     cpwvcidmappingvcindex{YType::uint32, "cpwVcIdMappingVcIndex"}
 {
 
-    yang_name = "cpwVcIdMappingEntry"; yang_parent_name = "cpwVcIdMappingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcIdMappingEntry"; yang_parent_name = "cpwVcIdMappingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::~Cpwvcidmappingentry()
+CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::~CpwVcIdMappingEntry()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::has_data() const
+bool CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cpwvcidmappingvctype.is_set
 	|| cpwvcidmappingvcid.is_set
 	|| cpwvcidmappingpeeraddrtype.is_set
@@ -1855,7 +1882,7 @@ bool CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::has_data() const
 	|| cpwvcidmappingvcindex.is_set;
 }
 
-bool CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::has_operation() const
+bool CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpwvcidmappingvctype.yfilter)
@@ -1865,21 +1892,26 @@ bool CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::has_operation() c
 	|| ydk::is_set(cpwvcidmappingvcindex.yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/cpwVcIdMappingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpwVcIdMappingEntry" <<"[cpwVcIdMappingVcType='" <<cpwvcidmappingvctype <<"']" <<"[cpwVcIdMappingVcID='" <<cpwvcidmappingvcid <<"']" <<"[cpwVcIdMappingPeerAddrType='" <<cpwvcidmappingpeeraddrtype <<"']" <<"[cpwVcIdMappingPeerAddr='" <<cpwvcidmappingpeeraddr <<"']" <<"[cpwVcIdMappingVcIndex='" <<cpwvcidmappingvcindex <<"']";
+    path_buffer << "cpwVcIdMappingEntry";
+    ADD_KEY_TOKEN(cpwvcidmappingvctype, "cpwVcIdMappingVcType");
+    ADD_KEY_TOKEN(cpwvcidmappingvcid, "cpwVcIdMappingVcID");
+    ADD_KEY_TOKEN(cpwvcidmappingpeeraddrtype, "cpwVcIdMappingPeerAddrType");
+    ADD_KEY_TOKEN(cpwvcidmappingpeeraddr, "cpwVcIdMappingPeerAddr");
+    ADD_KEY_TOKEN(cpwvcidmappingvcindex, "cpwVcIdMappingVcIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1893,19 +1925,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcidmappingtab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpwVcIdMappingVcType")
     {
@@ -1939,7 +1971,7 @@ void CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::set_value(const s
     }
 }
 
-void CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpwVcIdMappingVcType")
     {
@@ -1963,26 +1995,29 @@ void CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::set_filter(const 
     }
 }
 
-bool CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcIdMappingVcType" || name == "cpwVcIdMappingVcID" || name == "cpwVcIdMappingPeerAddrType" || name == "cpwVcIdMappingPeerAddr" || name == "cpwVcIdMappingVcIndex")
         return true;
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingtable()
+CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingTable()
+    :
+    cpwvcpeermappingentry(this, {"cpwvcpeermappingpeeraddrtype", "cpwvcpeermappingpeeraddr", "cpwvcpeermappingvctype", "cpwvcpeermappingvcid", "cpwvcpeermappingvcindex"})
 {
 
-    yang_name = "cpwVcPeerMappingTable"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcPeerMappingTable"; yang_parent_name = "CISCO-IETF-PW-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvcpeermappingtable::~Cpwvcpeermappingtable()
+CISCOIETFPWMIB::CpwVcPeerMappingTable::~CpwVcPeerMappingTable()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcpeermappingtable::has_data() const
+bool CISCOIETFPWMIB::CpwVcPeerMappingTable::has_data() const
 {
-    for (std::size_t index=0; index<cpwvcpeermappingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cpwvcpeermappingentry.len(); index++)
     {
         if(cpwvcpeermappingentry[index]->has_data())
             return true;
@@ -1990,9 +2025,9 @@ bool CISCOIETFPWMIB::Cpwvcpeermappingtable::has_data() const
     return false;
 }
 
-bool CISCOIETFPWMIB::Cpwvcpeermappingtable::has_operation() const
+bool CISCOIETFPWMIB::CpwVcPeerMappingTable::has_operation() const
 {
-    for (std::size_t index=0; index<cpwvcpeermappingentry.size(); index++)
+    for (std::size_t index=0; index<cpwvcpeermappingentry.len(); index++)
     {
         if(cpwvcpeermappingentry[index]->has_operation())
             return true;
@@ -2000,21 +2035,21 @@ bool CISCOIETFPWMIB::Cpwvcpeermappingtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvcpeermappingtable::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcPeerMappingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvcpeermappingtable::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcPeerMappingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpwVcPeerMappingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcpeermappingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPeerMappingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2023,25 +2058,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcpeermappingt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcpeermappingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPeerMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcPeerMappingEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry>();
+        auto c = std::make_shared<CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry>();
         c->parent = this;
-        cpwvcpeermappingentry.push_back(c);
+        cpwvcpeermappingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcpeermappingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPeerMappingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cpwvcpeermappingentry)
+    for (auto c : cpwvcpeermappingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2052,22 +2087,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcpeermappingt
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvcpeermappingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcPeerMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFPWMIB::Cpwvcpeermappingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcPeerMappingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcpeermappingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcPeerMappingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcPeerMappingEntry")
         return true;
     return false;
 }
 
-CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::Cpwvcpeermappingentry()
+CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::CpwVcPeerMappingEntry()
     :
     cpwvcpeermappingpeeraddrtype{YType::enumeration, "cpwVcPeerMappingPeerAddrType"},
     cpwvcpeermappingpeeraddr{YType::str, "cpwVcPeerMappingPeerAddr"},
@@ -2076,15 +2111,16 @@ CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::Cpwvcpeermappingen
     cpwvcpeermappingvcindex{YType::uint32, "cpwVcPeerMappingVcIndex"}
 {
 
-    yang_name = "cpwVcPeerMappingEntry"; yang_parent_name = "cpwVcPeerMappingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpwVcPeerMappingEntry"; yang_parent_name = "cpwVcPeerMappingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::~Cpwvcpeermappingentry()
+CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::~CpwVcPeerMappingEntry()
 {
 }
 
-bool CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::has_data() const
+bool CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cpwvcpeermappingpeeraddrtype.is_set
 	|| cpwvcpeermappingpeeraddr.is_set
 	|| cpwvcpeermappingvctype.is_set
@@ -2092,7 +2128,7 @@ bool CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::has_data() co
 	|| cpwvcpeermappingvcindex.is_set;
 }
 
-bool CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::has_operation() const
+bool CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpwvcpeermappingpeeraddrtype.yfilter)
@@ -2102,21 +2138,26 @@ bool CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::has_operation
 	|| ydk::is_set(cpwvcpeermappingvcindex.yfilter);
 }
 
-std::string CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::get_absolute_path() const
+std::string CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-MIB:CISCO-IETF-PW-MIB/cpwVcPeerMappingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::get_segment_path() const
+std::string CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpwVcPeerMappingEntry" <<"[cpwVcPeerMappingPeerAddrType='" <<cpwvcpeermappingpeeraddrtype <<"']" <<"[cpwVcPeerMappingPeerAddr='" <<cpwvcpeermappingpeeraddr <<"']" <<"[cpwVcPeerMappingVcType='" <<cpwvcpeermappingvctype <<"']" <<"[cpwVcPeerMappingVcID='" <<cpwvcpeermappingvcid <<"']" <<"[cpwVcPeerMappingVcIndex='" <<cpwvcpeermappingvcindex <<"']";
+    path_buffer << "cpwVcPeerMappingEntry";
+    ADD_KEY_TOKEN(cpwvcpeermappingpeeraddrtype, "cpwVcPeerMappingPeerAddrType");
+    ADD_KEY_TOKEN(cpwvcpeermappingpeeraddr, "cpwVcPeerMappingPeerAddr");
+    ADD_KEY_TOKEN(cpwvcpeermappingvctype, "cpwVcPeerMappingVcType");
+    ADD_KEY_TOKEN(cpwvcpeermappingvcid, "cpwVcPeerMappingVcID");
+    ADD_KEY_TOKEN(cpwvcpeermappingvcindex, "cpwVcPeerMappingVcIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2130,19 +2171,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::Cpwvcpeermappingt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpwVcPeerMappingPeerAddrType")
     {
@@ -2176,7 +2217,7 @@ void CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::set_value(con
     }
 }
 
-void CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpwVcPeerMappingPeerAddrType")
     {
@@ -2200,34 +2241,34 @@ void CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::set_filter(co
     }
 }
 
-bool CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcPeerMappingPeerAddrType" || name == "cpwVcPeerMappingPeerAddr" || name == "cpwVcPeerMappingVcType" || name == "cpwVcPeerMappingVcID" || name == "cpwVcPeerMappingVcIndex")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcowner::manual {1, "manual"};
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcowner::maintenanceProtocol {2, "maintenanceProtocol"};
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcowner::other {3, "other"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcOwner::manual {1, "manual"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcOwner::maintenanceProtocol {2, "maintenanceProtocol"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcOwner::other {3, "other"};
 
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcpsntype::mpls {1, "mpls"};
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcpsntype::l2tp {2, "l2tp"};
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcpsntype::ip {3, "ip"};
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcpsntype::mplsOverIp {4, "mplsOverIp"};
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcpsntype::gre {5, "gre"};
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcpsntype::other {6, "other"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcPsnType::mpls {1, "mpls"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcPsnType::l2tp {2, "l2tp"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcPsnType::ip {3, "ip"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcPsnType::mplsOverIp {4, "mplsOverIp"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcPsnType::gre {5, "gre"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcPsnType::other {6, "other"};
 
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcinboundmode::loose {1, "loose"};
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcinboundmode::strict {2, "strict"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcInboundMode::loose {1, "loose"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcInboundMode::strict {2, "strict"};
 
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcremotecontrolword::noControlWord {1, "noControlWord"};
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcremotecontrolword::withControlWord {2, "withControlWord"};
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcremotecontrolword::notYetKnown {3, "notYetKnown"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcRemoteControlWord::noControlWord {1, "noControlWord"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcRemoteControlWord::withControlWord {2, "withControlWord"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcRemoteControlWord::notYetKnown {3, "notYetKnown"};
 
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcadminstatus::up {1, "up"};
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcadminstatus::down {2, "down"};
-const Enum::YLeaf CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcadminstatus::testing {3, "testing"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcAdminStatus::up {1, "up"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcAdminStatus::down {2, "down"};
+const Enum::YLeaf CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::CpwVcAdminStatus::testing {3, "testing"};
 
 
 }

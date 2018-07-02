@@ -17,7 +17,7 @@ Controllers::Controllers()
 {
     controllers->parent = this;
 
-    yang_name = "controllers"; yang_parent_name = "Cisco-IOS-XR-pfi-im-cmd-ctrlr-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "controllers"; yang_parent_name = "Cisco-IOS-XR-pfi-im-cmd-ctrlr-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Controllers::~Controllers()
@@ -26,6 +26,7 @@ Controllers::~Controllers()
 
 bool Controllers::has_data() const
 {
+    if (is_presence_container) return true;
     return (controllers !=  nullptr && controllers->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Controllers::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Controllers::Controllers_::Controllers_()
+    :
+    controller(this, {"interafce_name"})
 {
 
-    yang_name = "controllers"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controllers"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controllers::Controllers_::~Controllers_()
@@ -129,7 +132,8 @@ Controllers::Controllers_::~Controllers_()
 
 bool Controllers::Controllers_::has_data() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Controllers::Controllers_::has_data() const
 
 bool Controllers::Controllers_::has_operation() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Controllers::Controllers_::get_child_by_name(const std::
     {
         auto c = std::make_shared<Controllers::Controllers_::Controller>();
         c->parent = this;
-        controller.push_back(c);
+        controller.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controllers::Controllers_::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : controller)
+    for (auto c : controller.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -222,7 +226,7 @@ Controllers::Controllers_::Controller::Controller()
     description{YType::str, "description"}
 {
 
-    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controllers::Controllers_::Controller::~Controller()
@@ -231,6 +235,7 @@ Controllers::Controllers_::Controller::~Controller()
 
 bool Controllers::Controllers_::Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return interafce_name.is_set
 	|| controller.is_set
 	|| state.is_set
@@ -256,7 +261,8 @@ std::string Controllers::Controllers_::Controller::get_absolute_path() const
 std::string Controllers::Controllers_::Controller::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "controller" <<"[interafce-name='" <<interafce_name <<"']";
+    path_buffer << "controller";
+    ADD_KEY_TOKEN(interafce_name, "interafce-name");
     return path_buffer.str();
 }
 

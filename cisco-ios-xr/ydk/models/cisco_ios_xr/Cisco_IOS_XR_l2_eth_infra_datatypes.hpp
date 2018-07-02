@@ -17,29 +17,6 @@ class VlanTagOrCvp : public ydk::Enum
 
 };
 
-class Vlan : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vlan_type_dot1ad;
-        static const ydk::Enum::YLeaf vlan_type_dot1q;
-
-};
-
-class VlanTagOrNative : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf native;
-        static const ydk::Enum::YLeaf native_with_cvlan_preservation;
-
-};
-
-class VlanTagOrNull : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf any;
-
-};
-
 class Rewrite : public ydk::Enum
 {
     public:
@@ -54,15 +31,11 @@ class Rewrite : public ydk::Enum
 
 };
 
-class Match : public ydk::Enum
+class Vlan : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf match_default;
-        static const ydk::Enum::YLeaf match_untagged;
-        static const ydk::Enum::YLeaf match_dot1q;
-        static const ydk::Enum::YLeaf match_dot1ad;
-        static const ydk::Enum::YLeaf match_dot1q_priority;
-        static const ydk::Enum::YLeaf match_dot1ad_priority;
+        static const ydk::Enum::YLeaf vlan_type_dot1ad;
+        static const ydk::Enum::YLeaf vlan_type_dot1q;
 
 };
 
@@ -73,10 +46,37 @@ class EthertypeMatch : public ydk::Enum
 
 };
 
+class VlanTagOrNull : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf any;
+
+};
+
 class VlanTagOrAny : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf any;
+
+};
+
+class VlanTagOrNative : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf native;
+        static const ydk::Enum::YLeaf native_with_cvlan_preservation;
+
+};
+
+class Match : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf match_default;
+        static const ydk::Enum::YLeaf match_untagged;
+        static const ydk::Enum::YLeaf match_dot1q;
+        static const ydk::Enum::YLeaf match_dot1ad;
+        static const ydk::Enum::YLeaf match_dot1q_priority;
+        static const ydk::Enum::YLeaf match_dot1ad_priority;
 
 };
 

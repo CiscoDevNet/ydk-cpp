@@ -13,13 +13,13 @@ namespace CISCO_OSPF_MIB {
 
 CISCOOSPFMIB::CISCOOSPFMIB()
     :
-    cospfgeneralgroup(std::make_shared<CISCOOSPFMIB::Cospfgeneralgroup>())
-	,cospflsdbtable(std::make_shared<CISCOOSPFMIB::Cospflsdbtable>())
-	,cospfshamlinktable(std::make_shared<CISCOOSPFMIB::Cospfshamlinktable>())
-	,cospflocallsdbtable(std::make_shared<CISCOOSPFMIB::Cospflocallsdbtable>())
-	,cospfvirtlocallsdbtable(std::make_shared<CISCOOSPFMIB::Cospfvirtlocallsdbtable>())
-	,cospfshamlinknbrtable(std::make_shared<CISCOOSPFMIB::Cospfshamlinknbrtable>())
-	,cospfshamlinkstable(std::make_shared<CISCOOSPFMIB::Cospfshamlinkstable>())
+    cospfgeneralgroup(std::make_shared<CISCOOSPFMIB::CospfGeneralGroup>())
+    , cospflsdbtable(std::make_shared<CISCOOSPFMIB::CospfLsdbTable>())
+    , cospfshamlinktable(std::make_shared<CISCOOSPFMIB::CospfShamLinkTable>())
+    , cospflocallsdbtable(std::make_shared<CISCOOSPFMIB::CospfLocalLsdbTable>())
+    , cospfvirtlocallsdbtable(std::make_shared<CISCOOSPFMIB::CospfVirtLocalLsdbTable>())
+    , cospfshamlinknbrtable(std::make_shared<CISCOOSPFMIB::CospfShamLinkNbrTable>())
+    , cospfshamlinkstable(std::make_shared<CISCOOSPFMIB::CospfShamLinksTable>())
 {
     cospfgeneralgroup->parent = this;
     cospflsdbtable->parent = this;
@@ -29,7 +29,7 @@ CISCOOSPFMIB::CISCOOSPFMIB()
     cospfshamlinknbrtable->parent = this;
     cospfshamlinkstable->parent = this;
 
-    yang_name = "CISCO-OSPF-MIB"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-OSPF-MIB"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOOSPFMIB::~CISCOOSPFMIB()
@@ -38,6 +38,7 @@ CISCOOSPFMIB::~CISCOOSPFMIB()
 
 bool CISCOOSPFMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cospfgeneralgroup !=  nullptr && cospfgeneralgroup->has_data())
 	|| (cospflsdbtable !=  nullptr && cospflsdbtable->has_data())
 	|| (cospfshamlinktable !=  nullptr && cospfshamlinktable->has_data())
@@ -81,7 +82,7 @@ std::shared_ptr<Entity> CISCOOSPFMIB::get_child_by_name(const std::string & chil
     {
         if(cospfgeneralgroup == nullptr)
         {
-            cospfgeneralgroup = std::make_shared<CISCOOSPFMIB::Cospfgeneralgroup>();
+            cospfgeneralgroup = std::make_shared<CISCOOSPFMIB::CospfGeneralGroup>();
         }
         return cospfgeneralgroup;
     }
@@ -90,7 +91,7 @@ std::shared_ptr<Entity> CISCOOSPFMIB::get_child_by_name(const std::string & chil
     {
         if(cospflsdbtable == nullptr)
         {
-            cospflsdbtable = std::make_shared<CISCOOSPFMIB::Cospflsdbtable>();
+            cospflsdbtable = std::make_shared<CISCOOSPFMIB::CospfLsdbTable>();
         }
         return cospflsdbtable;
     }
@@ -99,7 +100,7 @@ std::shared_ptr<Entity> CISCOOSPFMIB::get_child_by_name(const std::string & chil
     {
         if(cospfshamlinktable == nullptr)
         {
-            cospfshamlinktable = std::make_shared<CISCOOSPFMIB::Cospfshamlinktable>();
+            cospfshamlinktable = std::make_shared<CISCOOSPFMIB::CospfShamLinkTable>();
         }
         return cospfshamlinktable;
     }
@@ -108,7 +109,7 @@ std::shared_ptr<Entity> CISCOOSPFMIB::get_child_by_name(const std::string & chil
     {
         if(cospflocallsdbtable == nullptr)
         {
-            cospflocallsdbtable = std::make_shared<CISCOOSPFMIB::Cospflocallsdbtable>();
+            cospflocallsdbtable = std::make_shared<CISCOOSPFMIB::CospfLocalLsdbTable>();
         }
         return cospflocallsdbtable;
     }
@@ -117,7 +118,7 @@ std::shared_ptr<Entity> CISCOOSPFMIB::get_child_by_name(const std::string & chil
     {
         if(cospfvirtlocallsdbtable == nullptr)
         {
-            cospfvirtlocallsdbtable = std::make_shared<CISCOOSPFMIB::Cospfvirtlocallsdbtable>();
+            cospfvirtlocallsdbtable = std::make_shared<CISCOOSPFMIB::CospfVirtLocalLsdbTable>();
         }
         return cospfvirtlocallsdbtable;
     }
@@ -126,7 +127,7 @@ std::shared_ptr<Entity> CISCOOSPFMIB::get_child_by_name(const std::string & chil
     {
         if(cospfshamlinknbrtable == nullptr)
         {
-            cospfshamlinknbrtable = std::make_shared<CISCOOSPFMIB::Cospfshamlinknbrtable>();
+            cospfshamlinknbrtable = std::make_shared<CISCOOSPFMIB::CospfShamLinkNbrTable>();
         }
         return cospfshamlinknbrtable;
     }
@@ -135,7 +136,7 @@ std::shared_ptr<Entity> CISCOOSPFMIB::get_child_by_name(const std::string & chil
     {
         if(cospfshamlinkstable == nullptr)
         {
-            cospfshamlinkstable = std::make_shared<CISCOOSPFMIB::Cospfshamlinkstable>();
+            cospfshamlinkstable = std::make_shared<CISCOOSPFMIB::CospfShamLinksTable>();
         }
         return cospfshamlinkstable;
     }
@@ -225,7 +226,7 @@ bool CISCOOSPFMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOOSPFMIB::Cospfgeneralgroup::Cospfgeneralgroup()
+CISCOOSPFMIB::CospfGeneralGroup::CospfGeneralGroup()
     :
     cospfrfc1583compatibility{YType::boolean, "cospfRFC1583Compatibility"},
     cospfopaquelsasupport{YType::boolean, "cospfOpaqueLsaSupport"},
@@ -234,15 +235,16 @@ CISCOOSPFMIB::Cospfgeneralgroup::Cospfgeneralgroup()
     cospfopaqueaslsacksumsum{YType::uint32, "cospfOpaqueASLsaCksumSum"}
 {
 
-    yang_name = "cospfGeneralGroup"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfGeneralGroup"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospfgeneralgroup::~Cospfgeneralgroup()
+CISCOOSPFMIB::CospfGeneralGroup::~CospfGeneralGroup()
 {
 }
 
-bool CISCOOSPFMIB::Cospfgeneralgroup::has_data() const
+bool CISCOOSPFMIB::CospfGeneralGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return cospfrfc1583compatibility.is_set
 	|| cospfopaquelsasupport.is_set
 	|| cospftrafficengineeringsupport.is_set
@@ -250,7 +252,7 @@ bool CISCOOSPFMIB::Cospfgeneralgroup::has_data() const
 	|| cospfopaqueaslsacksumsum.is_set;
 }
 
-bool CISCOOSPFMIB::Cospfgeneralgroup::has_operation() const
+bool CISCOOSPFMIB::CospfGeneralGroup::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cospfrfc1583compatibility.yfilter)
@@ -260,21 +262,21 @@ bool CISCOOSPFMIB::Cospfgeneralgroup::has_operation() const
 	|| ydk::is_set(cospfopaqueaslsacksumsum.yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospfgeneralgroup::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfGeneralGroup::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospfgeneralgroup::get_segment_path() const
+std::string CISCOOSPFMIB::CospfGeneralGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cospfGeneralGroup";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfgeneralgroup::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfGeneralGroup::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -288,19 +290,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfgeneralgroup::
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospfgeneralgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfGeneralGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfgeneralgroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfGeneralGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOOSPFMIB::Cospfgeneralgroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfGeneralGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cospfRFC1583Compatibility")
     {
@@ -334,7 +336,7 @@ void CISCOOSPFMIB::Cospfgeneralgroup::set_value(const std::string & value_path, 
     }
 }
 
-void CISCOOSPFMIB::Cospfgeneralgroup::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfGeneralGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cospfRFC1583Compatibility")
     {
@@ -358,26 +360,29 @@ void CISCOOSPFMIB::Cospfgeneralgroup::set_filter(const std::string & value_path,
     }
 }
 
-bool CISCOOSPFMIB::Cospfgeneralgroup::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfGeneralGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfRFC1583Compatibility" || name == "cospfOpaqueLsaSupport" || name == "cospfTrafficEngineeringSupport" || name == "cospfOpaqueASLsaCount" || name == "cospfOpaqueASLsaCksumSum")
         return true;
     return false;
 }
 
-CISCOOSPFMIB::Cospflsdbtable::Cospflsdbtable()
+CISCOOSPFMIB::CospfLsdbTable::CospfLsdbTable()
+    :
+    cospflsdbentry(this, {"ospflsdbareaid", "cospflsdbtype", "ospflsdblsid", "ospflsdbrouterid"})
 {
 
-    yang_name = "cospfLsdbTable"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfLsdbTable"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospflsdbtable::~Cospflsdbtable()
+CISCOOSPFMIB::CospfLsdbTable::~CospfLsdbTable()
 {
 }
 
-bool CISCOOSPFMIB::Cospflsdbtable::has_data() const
+bool CISCOOSPFMIB::CospfLsdbTable::has_data() const
 {
-    for (std::size_t index=0; index<cospflsdbentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cospflsdbentry.len(); index++)
     {
         if(cospflsdbentry[index]->has_data())
             return true;
@@ -385,9 +390,9 @@ bool CISCOOSPFMIB::Cospflsdbtable::has_data() const
     return false;
 }
 
-bool CISCOOSPFMIB::Cospflsdbtable::has_operation() const
+bool CISCOOSPFMIB::CospfLsdbTable::has_operation() const
 {
-    for (std::size_t index=0; index<cospflsdbentry.size(); index++)
+    for (std::size_t index=0; index<cospflsdbentry.len(); index++)
     {
         if(cospflsdbentry[index]->has_operation())
             return true;
@@ -395,21 +400,21 @@ bool CISCOOSPFMIB::Cospflsdbtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospflsdbtable::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfLsdbTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospflsdbtable::get_segment_path() const
+std::string CISCOOSPFMIB::CospfLsdbTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cospfLsdbTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospflsdbtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfLsdbTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -418,25 +423,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospflsdbtable::get
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospflsdbtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfLsdbEntry")
     {
-        auto c = std::make_shared<CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry>();
+        auto c = std::make_shared<CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry>();
         c->parent = this;
-        cospflsdbentry.push_back(c);
+        cospflsdbentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospflsdbtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfLsdbTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cospflsdbentry)
+    for (auto c : cospflsdbentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -447,22 +452,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospflsdbtable::get
     return children;
 }
 
-void CISCOOSPFMIB::Cospflsdbtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfLsdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOOSPFMIB::Cospflsdbtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfLsdbTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOOSPFMIB::Cospflsdbtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfLsdbTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfLsdbEntry")
         return true;
     return false;
 }
 
-CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::Cospflsdbentry()
+CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::CospfLsdbEntry()
     :
     ospflsdbareaid{YType::str, "ospfLsdbAreaId"},
     cospflsdbtype{YType::enumeration, "cospfLsdbType"},
@@ -474,15 +479,16 @@ CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::Cospflsdbentry()
     cospflsdbadvertisement{YType::str, "cospfLsdbAdvertisement"}
 {
 
-    yang_name = "cospfLsdbEntry"; yang_parent_name = "cospfLsdbTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfLsdbEntry"; yang_parent_name = "cospfLsdbTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::~Cospflsdbentry()
+CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::~CospfLsdbEntry()
 {
 }
 
-bool CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::has_data() const
+bool CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ospflsdbareaid.is_set
 	|| cospflsdbtype.is_set
 	|| ospflsdblsid.is_set
@@ -493,7 +499,7 @@ bool CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::has_data() const
 	|| cospflsdbadvertisement.is_set;
 }
 
-bool CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::has_operation() const
+bool CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ospflsdbareaid.yfilter)
@@ -506,21 +512,25 @@ bool CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::has_operation() const
 	|| ydk::is_set(cospflsdbadvertisement.yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/cospfLsdbTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::get_segment_path() const
+std::string CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cospfLsdbEntry" <<"[ospfLsdbAreaId='" <<ospflsdbareaid <<"']" <<"[cospfLsdbType='" <<cospflsdbtype <<"']" <<"[ospfLsdbLsid='" <<ospflsdblsid <<"']" <<"[ospfLsdbRouterId='" <<ospflsdbrouterid <<"']";
+    path_buffer << "cospfLsdbEntry";
+    ADD_KEY_TOKEN(ospflsdbareaid, "ospfLsdbAreaId");
+    ADD_KEY_TOKEN(cospflsdbtype, "cospfLsdbType");
+    ADD_KEY_TOKEN(ospflsdblsid, "ospfLsdbLsid");
+    ADD_KEY_TOKEN(ospflsdbrouterid, "ospfLsdbRouterId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -537,19 +547,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospflsdbtable::Cos
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ospfLsdbAreaId")
     {
@@ -601,7 +611,7 @@ void CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::set_value(const std::string &
     }
 }
 
-void CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ospfLsdbAreaId")
     {
@@ -637,26 +647,29 @@ void CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::set_filter(const std::string 
     }
 }
 
-bool CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ospfLsdbAreaId" || name == "cospfLsdbType" || name == "ospfLsdbLsid" || name == "ospfLsdbRouterId" || name == "cospfLsdbSequence" || name == "cospfLsdbAge" || name == "cospfLsdbChecksum" || name == "cospfLsdbAdvertisement")
         return true;
     return false;
 }
 
-CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinktable()
+CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkTable()
+    :
+    cospfshamlinkentry(this, {"cospfshamlinkareaid", "cospfshamlinklocalipaddress", "cospfshamlinkneighborid"})
 {
 
-    yang_name = "cospfShamLinkTable"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfShamLinkTable"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospfshamlinktable::~Cospfshamlinktable()
+CISCOOSPFMIB::CospfShamLinkTable::~CospfShamLinkTable()
 {
 }
 
-bool CISCOOSPFMIB::Cospfshamlinktable::has_data() const
+bool CISCOOSPFMIB::CospfShamLinkTable::has_data() const
 {
-    for (std::size_t index=0; index<cospfshamlinkentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cospfshamlinkentry.len(); index++)
     {
         if(cospfshamlinkentry[index]->has_data())
             return true;
@@ -664,9 +677,9 @@ bool CISCOOSPFMIB::Cospfshamlinktable::has_data() const
     return false;
 }
 
-bool CISCOOSPFMIB::Cospfshamlinktable::has_operation() const
+bool CISCOOSPFMIB::CospfShamLinkTable::has_operation() const
 {
-    for (std::size_t index=0; index<cospfshamlinkentry.size(); index++)
+    for (std::size_t index=0; index<cospfshamlinkentry.len(); index++)
     {
         if(cospfshamlinkentry[index]->has_operation())
             return true;
@@ -674,21 +687,21 @@ bool CISCOOSPFMIB::Cospfshamlinktable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospfshamlinktable::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfShamLinkTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospfshamlinktable::get_segment_path() const
+std::string CISCOOSPFMIB::CospfShamLinkTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cospfShamLinkTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfshamlinktable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfShamLinkTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -697,25 +710,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfshamlinktable:
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospfshamlinktable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfShamLinkTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfShamLinkEntry")
     {
-        auto c = std::make_shared<CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry>();
+        auto c = std::make_shared<CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry>();
         c->parent = this;
-        cospfshamlinkentry.push_back(c);
+        cospfshamlinkentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfshamlinktable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfShamLinkTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cospfshamlinkentry)
+    for (auto c : cospfshamlinkentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -726,22 +739,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfshamlinktable:
     return children;
 }
 
-void CISCOOSPFMIB::Cospfshamlinktable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfShamLinkTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOOSPFMIB::Cospfshamlinktable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfShamLinkTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOOSPFMIB::Cospfshamlinktable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfShamLinkTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfShamLinkEntry")
         return true;
     return false;
 }
 
-CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::Cospfshamlinkentry()
+CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::CospfShamLinkEntry()
     :
     cospfshamlinkareaid{YType::str, "cospfShamLinkAreaId"},
     cospfshamlinklocalipaddress{YType::str, "cospfShamLinkLocalIpAddress"},
@@ -754,15 +767,16 @@ CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::Cospfshamlinkentry()
     cospfshamlinkmetric{YType::int32, "cospfShamLinkMetric"}
 {
 
-    yang_name = "cospfShamLinkEntry"; yang_parent_name = "cospfShamLinkTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfShamLinkEntry"; yang_parent_name = "cospfShamLinkTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::~Cospfshamlinkentry()
+CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::~CospfShamLinkEntry()
 {
 }
 
-bool CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::has_data() const
+bool CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cospfshamlinkareaid.is_set
 	|| cospfshamlinklocalipaddress.is_set
 	|| cospfshamlinkneighborid.is_set
@@ -774,7 +788,7 @@ bool CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::has_data() const
 	|| cospfshamlinkmetric.is_set;
 }
 
-bool CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::has_operation() const
+bool CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cospfshamlinkareaid.yfilter)
@@ -788,21 +802,24 @@ bool CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::has_operation() const
 	|| ydk::is_set(cospfshamlinkmetric.yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/cospfShamLinkTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::get_segment_path() const
+std::string CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cospfShamLinkEntry" <<"[cospfShamLinkAreaId='" <<cospfshamlinkareaid <<"']" <<"[cospfShamLinkLocalIpAddress='" <<cospfshamlinklocalipaddress <<"']" <<"[cospfShamLinkNeighborId='" <<cospfshamlinkneighborid <<"']";
+    path_buffer << "cospfShamLinkEntry";
+    ADD_KEY_TOKEN(cospfshamlinkareaid, "cospfShamLinkAreaId");
+    ADD_KEY_TOKEN(cospfshamlinklocalipaddress, "cospfShamLinkLocalIpAddress");
+    ADD_KEY_TOKEN(cospfshamlinkneighborid, "cospfShamLinkNeighborId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -820,19 +837,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfshamlinktable:
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cospfShamLinkAreaId")
     {
@@ -890,7 +907,7 @@ void CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::set_value(const std::
     }
 }
 
-void CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cospfShamLinkAreaId")
     {
@@ -930,26 +947,29 @@ void CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::set_filter(const std:
     }
 }
 
-bool CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfShamLinkAreaId" || name == "cospfShamLinkLocalIpAddress" || name == "cospfShamLinkNeighborId" || name == "cospfShamLinkRetransInterval" || name == "cospfShamLinkHelloInterval" || name == "cospfShamLinkRtrDeadInterval" || name == "cospfShamLinkState" || name == "cospfShamLinkEvents" || name == "cospfShamLinkMetric")
         return true;
     return false;
 }
 
-CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbtable()
+CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbTable()
+    :
+    cospflocallsdbentry(this, {"cospflocallsdbipaddress", "cospflocallsdbaddresslessif", "cospflocallsdbtype", "cospflocallsdblsid", "cospflocallsdbrouterid"})
 {
 
-    yang_name = "cospfLocalLsdbTable"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfLocalLsdbTable"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospflocallsdbtable::~Cospflocallsdbtable()
+CISCOOSPFMIB::CospfLocalLsdbTable::~CospfLocalLsdbTable()
 {
 }
 
-bool CISCOOSPFMIB::Cospflocallsdbtable::has_data() const
+bool CISCOOSPFMIB::CospfLocalLsdbTable::has_data() const
 {
-    for (std::size_t index=0; index<cospflocallsdbentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cospflocallsdbentry.len(); index++)
     {
         if(cospflocallsdbentry[index]->has_data())
             return true;
@@ -957,9 +977,9 @@ bool CISCOOSPFMIB::Cospflocallsdbtable::has_data() const
     return false;
 }
 
-bool CISCOOSPFMIB::Cospflocallsdbtable::has_operation() const
+bool CISCOOSPFMIB::CospfLocalLsdbTable::has_operation() const
 {
-    for (std::size_t index=0; index<cospflocallsdbentry.size(); index++)
+    for (std::size_t index=0; index<cospflocallsdbentry.len(); index++)
     {
         if(cospflocallsdbentry[index]->has_operation())
             return true;
@@ -967,21 +987,21 @@ bool CISCOOSPFMIB::Cospflocallsdbtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospflocallsdbtable::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfLocalLsdbTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospflocallsdbtable::get_segment_path() const
+std::string CISCOOSPFMIB::CospfLocalLsdbTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cospfLocalLsdbTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospflocallsdbtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfLocalLsdbTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -990,25 +1010,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospflocallsdbtable
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospflocallsdbtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfLocalLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfLocalLsdbEntry")
     {
-        auto c = std::make_shared<CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry>();
+        auto c = std::make_shared<CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry>();
         c->parent = this;
-        cospflocallsdbentry.push_back(c);
+        cospflocallsdbentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospflocallsdbtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfLocalLsdbTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cospflocallsdbentry)
+    for (auto c : cospflocallsdbentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1019,22 +1039,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospflocallsdbtable
     return children;
 }
 
-void CISCOOSPFMIB::Cospflocallsdbtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfLocalLsdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOOSPFMIB::Cospflocallsdbtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfLocalLsdbTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOOSPFMIB::Cospflocallsdbtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfLocalLsdbTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfLocalLsdbEntry")
         return true;
     return false;
 }
 
-CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::Cospflocallsdbentry()
+CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::CospfLocalLsdbEntry()
     :
     cospflocallsdbipaddress{YType::str, "cospfLocalLsdbIpAddress"},
     cospflocallsdbaddresslessif{YType::int32, "cospfLocalLsdbAddressLessIf"},
@@ -1047,15 +1067,16 @@ CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::Cospflocallsdbentry()
     cospflocallsdbadvertisement{YType::str, "cospfLocalLsdbAdvertisement"}
 {
 
-    yang_name = "cospfLocalLsdbEntry"; yang_parent_name = "cospfLocalLsdbTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfLocalLsdbEntry"; yang_parent_name = "cospfLocalLsdbTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::~Cospflocallsdbentry()
+CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::~CospfLocalLsdbEntry()
 {
 }
 
-bool CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::has_data() const
+bool CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cospflocallsdbipaddress.is_set
 	|| cospflocallsdbaddresslessif.is_set
 	|| cospflocallsdbtype.is_set
@@ -1067,7 +1088,7 @@ bool CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::has_data() const
 	|| cospflocallsdbadvertisement.is_set;
 }
 
-bool CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::has_operation() const
+bool CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cospflocallsdbipaddress.yfilter)
@@ -1081,21 +1102,26 @@ bool CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::has_operation() con
 	|| ydk::is_set(cospflocallsdbadvertisement.yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/cospfLocalLsdbTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::get_segment_path() const
+std::string CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cospfLocalLsdbEntry" <<"[cospfLocalLsdbIpAddress='" <<cospflocallsdbipaddress <<"']" <<"[cospfLocalLsdbAddressLessIf='" <<cospflocallsdbaddresslessif <<"']" <<"[cospfLocalLsdbType='" <<cospflocallsdbtype <<"']" <<"[cospfLocalLsdbLsid='" <<cospflocallsdblsid <<"']" <<"[cospfLocalLsdbRouterId='" <<cospflocallsdbrouterid <<"']";
+    path_buffer << "cospfLocalLsdbEntry";
+    ADD_KEY_TOKEN(cospflocallsdbipaddress, "cospfLocalLsdbIpAddress");
+    ADD_KEY_TOKEN(cospflocallsdbaddresslessif, "cospfLocalLsdbAddressLessIf");
+    ADD_KEY_TOKEN(cospflocallsdbtype, "cospfLocalLsdbType");
+    ADD_KEY_TOKEN(cospflocallsdblsid, "cospfLocalLsdbLsid");
+    ADD_KEY_TOKEN(cospflocallsdbrouterid, "cospfLocalLsdbRouterId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1113,19 +1139,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospflocallsdbtable
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cospfLocalLsdbIpAddress")
     {
@@ -1183,7 +1209,7 @@ void CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::set_value(const std
     }
 }
 
-void CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cospfLocalLsdbIpAddress")
     {
@@ -1223,26 +1249,29 @@ void CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::set_filter(const st
     }
 }
 
-bool CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfLocalLsdbIpAddress" || name == "cospfLocalLsdbAddressLessIf" || name == "cospfLocalLsdbType" || name == "cospfLocalLsdbLsid" || name == "cospfLocalLsdbRouterId" || name == "cospfLocalLsdbSequence" || name == "cospfLocalLsdbAge" || name == "cospfLocalLsdbChecksum" || name == "cospfLocalLsdbAdvertisement")
         return true;
     return false;
 }
 
-CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbtable()
+CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbTable()
+    :
+    cospfvirtlocallsdbentry(this, {"cospfvirtlocallsdbtransitarea", "cospfvirtlocallsdbneighbor", "cospfvirtlocallsdbtype", "cospfvirtlocallsdblsid", "cospfvirtlocallsdbrouterid"})
 {
 
-    yang_name = "cospfVirtLocalLsdbTable"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfVirtLocalLsdbTable"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospfvirtlocallsdbtable::~Cospfvirtlocallsdbtable()
+CISCOOSPFMIB::CospfVirtLocalLsdbTable::~CospfVirtLocalLsdbTable()
 {
 }
 
-bool CISCOOSPFMIB::Cospfvirtlocallsdbtable::has_data() const
+bool CISCOOSPFMIB::CospfVirtLocalLsdbTable::has_data() const
 {
-    for (std::size_t index=0; index<cospfvirtlocallsdbentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cospfvirtlocallsdbentry.len(); index++)
     {
         if(cospfvirtlocallsdbentry[index]->has_data())
             return true;
@@ -1250,9 +1279,9 @@ bool CISCOOSPFMIB::Cospfvirtlocallsdbtable::has_data() const
     return false;
 }
 
-bool CISCOOSPFMIB::Cospfvirtlocallsdbtable::has_operation() const
+bool CISCOOSPFMIB::CospfVirtLocalLsdbTable::has_operation() const
 {
-    for (std::size_t index=0; index<cospfvirtlocallsdbentry.size(); index++)
+    for (std::size_t index=0; index<cospfvirtlocallsdbentry.len(); index++)
     {
         if(cospfvirtlocallsdbentry[index]->has_operation())
             return true;
@@ -1260,21 +1289,21 @@ bool CISCOOSPFMIB::Cospfvirtlocallsdbtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospfvirtlocallsdbtable::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfVirtLocalLsdbTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospfvirtlocallsdbtable::get_segment_path() const
+std::string CISCOOSPFMIB::CospfVirtLocalLsdbTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cospfVirtLocalLsdbTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfvirtlocallsdbtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfVirtLocalLsdbTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1283,25 +1312,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfvirtlocallsdbt
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospfvirtlocallsdbtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfVirtLocalLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfVirtLocalLsdbEntry")
     {
-        auto c = std::make_shared<CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry>();
+        auto c = std::make_shared<CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry>();
         c->parent = this;
-        cospfvirtlocallsdbentry.push_back(c);
+        cospfvirtlocallsdbentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfvirtlocallsdbtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfVirtLocalLsdbTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cospfvirtlocallsdbentry)
+    for (auto c : cospfvirtlocallsdbentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1312,22 +1341,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfvirtlocallsdbt
     return children;
 }
 
-void CISCOOSPFMIB::Cospfvirtlocallsdbtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfVirtLocalLsdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOOSPFMIB::Cospfvirtlocallsdbtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfVirtLocalLsdbTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOOSPFMIB::Cospfvirtlocallsdbtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfVirtLocalLsdbTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfVirtLocalLsdbEntry")
         return true;
     return false;
 }
 
-CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::Cospfvirtlocallsdbentry()
+CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::CospfVirtLocalLsdbEntry()
     :
     cospfvirtlocallsdbtransitarea{YType::str, "cospfVirtLocalLsdbTransitArea"},
     cospfvirtlocallsdbneighbor{YType::str, "cospfVirtLocalLsdbNeighbor"},
@@ -1340,15 +1369,16 @@ CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::Cospfvirtlocalls
     cospfvirtlocallsdbadvertisement{YType::str, "cospfVirtLocalLsdbAdvertisement"}
 {
 
-    yang_name = "cospfVirtLocalLsdbEntry"; yang_parent_name = "cospfVirtLocalLsdbTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfVirtLocalLsdbEntry"; yang_parent_name = "cospfVirtLocalLsdbTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::~Cospfvirtlocallsdbentry()
+CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::~CospfVirtLocalLsdbEntry()
 {
 }
 
-bool CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::has_data() const
+bool CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cospfvirtlocallsdbtransitarea.is_set
 	|| cospfvirtlocallsdbneighbor.is_set
 	|| cospfvirtlocallsdbtype.is_set
@@ -1360,7 +1390,7 @@ bool CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::has_data() 
 	|| cospfvirtlocallsdbadvertisement.is_set;
 }
 
-bool CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::has_operation() const
+bool CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cospfvirtlocallsdbtransitarea.yfilter)
@@ -1374,21 +1404,26 @@ bool CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::has_operati
 	|| ydk::is_set(cospfvirtlocallsdbadvertisement.yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/cospfVirtLocalLsdbTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::get_segment_path() const
+std::string CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cospfVirtLocalLsdbEntry" <<"[cospfVirtLocalLsdbTransitArea='" <<cospfvirtlocallsdbtransitarea <<"']" <<"[cospfVirtLocalLsdbNeighbor='" <<cospfvirtlocallsdbneighbor <<"']" <<"[cospfVirtLocalLsdbType='" <<cospfvirtlocallsdbtype <<"']" <<"[cospfVirtLocalLsdbLsid='" <<cospfvirtlocallsdblsid <<"']" <<"[cospfVirtLocalLsdbRouterId='" <<cospfvirtlocallsdbrouterid <<"']";
+    path_buffer << "cospfVirtLocalLsdbEntry";
+    ADD_KEY_TOKEN(cospfvirtlocallsdbtransitarea, "cospfVirtLocalLsdbTransitArea");
+    ADD_KEY_TOKEN(cospfvirtlocallsdbneighbor, "cospfVirtLocalLsdbNeighbor");
+    ADD_KEY_TOKEN(cospfvirtlocallsdbtype, "cospfVirtLocalLsdbType");
+    ADD_KEY_TOKEN(cospfvirtlocallsdblsid, "cospfVirtLocalLsdbLsid");
+    ADD_KEY_TOKEN(cospfvirtlocallsdbrouterid, "cospfVirtLocalLsdbRouterId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1406,19 +1441,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfvirtlocallsdbt
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cospfVirtLocalLsdbTransitArea")
     {
@@ -1476,7 +1511,7 @@ void CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::set_value(c
     }
 }
 
-void CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cospfVirtLocalLsdbTransitArea")
     {
@@ -1516,26 +1551,29 @@ void CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::set_filter(
     }
 }
 
-bool CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfVirtLocalLsdbTransitArea" || name == "cospfVirtLocalLsdbNeighbor" || name == "cospfVirtLocalLsdbType" || name == "cospfVirtLocalLsdbLsid" || name == "cospfVirtLocalLsdbRouterId" || name == "cospfVirtLocalLsdbSequence" || name == "cospfVirtLocalLsdbAge" || name == "cospfVirtLocalLsdbChecksum" || name == "cospfVirtLocalLsdbAdvertisement")
         return true;
     return false;
 }
 
-CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrtable()
+CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrTable()
+    :
+    cospfshamlinknbrentry(this, {"cospfshamlinkslocalipaddrtype", "cospfshamlinkslocalipaddr", "cospfshamlinknbrarea", "cospfshamlinknbripaddrtype", "cospfshamlinknbripaddr"})
 {
 
-    yang_name = "cospfShamLinkNbrTable"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfShamLinkNbrTable"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospfshamlinknbrtable::~Cospfshamlinknbrtable()
+CISCOOSPFMIB::CospfShamLinkNbrTable::~CospfShamLinkNbrTable()
 {
 }
 
-bool CISCOOSPFMIB::Cospfshamlinknbrtable::has_data() const
+bool CISCOOSPFMIB::CospfShamLinkNbrTable::has_data() const
 {
-    for (std::size_t index=0; index<cospfshamlinknbrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cospfshamlinknbrentry.len(); index++)
     {
         if(cospfshamlinknbrentry[index]->has_data())
             return true;
@@ -1543,9 +1581,9 @@ bool CISCOOSPFMIB::Cospfshamlinknbrtable::has_data() const
     return false;
 }
 
-bool CISCOOSPFMIB::Cospfshamlinknbrtable::has_operation() const
+bool CISCOOSPFMIB::CospfShamLinkNbrTable::has_operation() const
 {
-    for (std::size_t index=0; index<cospfshamlinknbrentry.size(); index++)
+    for (std::size_t index=0; index<cospfshamlinknbrentry.len(); index++)
     {
         if(cospfshamlinknbrentry[index]->has_operation())
             return true;
@@ -1553,21 +1591,21 @@ bool CISCOOSPFMIB::Cospfshamlinknbrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospfshamlinknbrtable::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfShamLinkNbrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospfshamlinknbrtable::get_segment_path() const
+std::string CISCOOSPFMIB::CospfShamLinkNbrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cospfShamLinkNbrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfshamlinknbrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfShamLinkNbrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1576,25 +1614,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfshamlinknbrtab
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospfshamlinknbrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfShamLinkNbrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfShamLinkNbrEntry")
     {
-        auto c = std::make_shared<CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry>();
+        auto c = std::make_shared<CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry>();
         c->parent = this;
-        cospfshamlinknbrentry.push_back(c);
+        cospfshamlinknbrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfshamlinknbrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfShamLinkNbrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cospfshamlinknbrentry)
+    for (auto c : cospfshamlinknbrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1605,22 +1643,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfshamlinknbrtab
     return children;
 }
 
-void CISCOOSPFMIB::Cospfshamlinknbrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfShamLinkNbrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOOSPFMIB::Cospfshamlinknbrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfShamLinkNbrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOOSPFMIB::Cospfshamlinknbrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfShamLinkNbrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfShamLinkNbrEntry")
         return true;
     return false;
 }
 
-CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrentry()
+CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::CospfShamLinkNbrEntry()
     :
     cospfshamlinkslocalipaddrtype{YType::enumeration, "cospfShamLinksLocalIpAddrType"},
     cospfshamlinkslocalipaddr{YType::str, "cospfShamLinksLocalIpAddr"},
@@ -1635,15 +1673,16 @@ CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrentr
     cospfshamlinknbrhellosuppressed{YType::boolean, "cospfShamLinkNbrHelloSuppressed"}
 {
 
-    yang_name = "cospfShamLinkNbrEntry"; yang_parent_name = "cospfShamLinkNbrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfShamLinkNbrEntry"; yang_parent_name = "cospfShamLinkNbrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::~Cospfshamlinknbrentry()
+CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::~CospfShamLinkNbrEntry()
 {
 }
 
-bool CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::has_data() const
+bool CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cospfshamlinkslocalipaddrtype.is_set
 	|| cospfshamlinkslocalipaddr.is_set
 	|| cospfshamlinknbrarea.is_set
@@ -1657,7 +1696,7 @@ bool CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::has_data() cons
 	|| cospfshamlinknbrhellosuppressed.is_set;
 }
 
-bool CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::has_operation() const
+bool CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cospfshamlinkslocalipaddrtype.yfilter)
@@ -1673,21 +1712,26 @@ bool CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::has_operation()
 	|| ydk::is_set(cospfshamlinknbrhellosuppressed.yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/cospfShamLinkNbrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::get_segment_path() const
+std::string CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cospfShamLinkNbrEntry" <<"[cospfShamLinksLocalIpAddrType='" <<cospfshamlinkslocalipaddrtype <<"']" <<"[cospfShamLinksLocalIpAddr='" <<cospfshamlinkslocalipaddr <<"']" <<"[cospfShamLinkNbrArea='" <<cospfshamlinknbrarea <<"']" <<"[cospfShamLinkNbrIpAddrType='" <<cospfshamlinknbripaddrtype <<"']" <<"[cospfShamLinkNbrIpAddr='" <<cospfshamlinknbripaddr <<"']";
+    path_buffer << "cospfShamLinkNbrEntry";
+    ADD_KEY_TOKEN(cospfshamlinkslocalipaddrtype, "cospfShamLinksLocalIpAddrType");
+    ADD_KEY_TOKEN(cospfshamlinkslocalipaddr, "cospfShamLinksLocalIpAddr");
+    ADD_KEY_TOKEN(cospfshamlinknbrarea, "cospfShamLinkNbrArea");
+    ADD_KEY_TOKEN(cospfshamlinknbripaddrtype, "cospfShamLinkNbrIpAddrType");
+    ADD_KEY_TOKEN(cospfshamlinknbripaddr, "cospfShamLinkNbrIpAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1707,19 +1751,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfshamlinknbrtab
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cospfShamLinksLocalIpAddrType")
     {
@@ -1789,7 +1833,7 @@ void CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::set_value(const
     }
 }
 
-void CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cospfShamLinksLocalIpAddrType")
     {
@@ -1837,26 +1881,29 @@ void CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::set_filter(cons
     }
 }
 
-bool CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfShamLinksLocalIpAddrType" || name == "cospfShamLinksLocalIpAddr" || name == "cospfShamLinkNbrArea" || name == "cospfShamLinkNbrIpAddrType" || name == "cospfShamLinkNbrIpAddr" || name == "cospfShamLinkNbrRtrId" || name == "cospfShamLinkNbrOptions" || name == "cospfShamLinkNbrState" || name == "cospfShamLinkNbrEvents" || name == "cospfShamLinkNbrLsRetransQLen" || name == "cospfShamLinkNbrHelloSuppressed")
         return true;
     return false;
 }
 
-CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinkstable()
+CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksTable()
+    :
+    cospfshamlinksentry(this, {"cospfshamlinksareaid", "cospfshamlinkslocalipaddrtype", "cospfshamlinkslocalipaddr", "cospfshamlinksremoteipaddrtype", "cospfshamlinksremoteipaddr"})
 {
 
-    yang_name = "cospfShamLinksTable"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfShamLinksTable"; yang_parent_name = "CISCO-OSPF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospfshamlinkstable::~Cospfshamlinkstable()
+CISCOOSPFMIB::CospfShamLinksTable::~CospfShamLinksTable()
 {
 }
 
-bool CISCOOSPFMIB::Cospfshamlinkstable::has_data() const
+bool CISCOOSPFMIB::CospfShamLinksTable::has_data() const
 {
-    for (std::size_t index=0; index<cospfshamlinksentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cospfshamlinksentry.len(); index++)
     {
         if(cospfshamlinksentry[index]->has_data())
             return true;
@@ -1864,9 +1911,9 @@ bool CISCOOSPFMIB::Cospfshamlinkstable::has_data() const
     return false;
 }
 
-bool CISCOOSPFMIB::Cospfshamlinkstable::has_operation() const
+bool CISCOOSPFMIB::CospfShamLinksTable::has_operation() const
 {
-    for (std::size_t index=0; index<cospfshamlinksentry.size(); index++)
+    for (std::size_t index=0; index<cospfshamlinksentry.len(); index++)
     {
         if(cospfshamlinksentry[index]->has_operation())
             return true;
@@ -1874,21 +1921,21 @@ bool CISCOOSPFMIB::Cospfshamlinkstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospfshamlinkstable::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfShamLinksTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospfshamlinkstable::get_segment_path() const
+std::string CISCOOSPFMIB::CospfShamLinksTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cospfShamLinksTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfshamlinkstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfShamLinksTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1897,25 +1944,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfshamlinkstable
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospfshamlinkstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfShamLinksTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfShamLinksEntry")
     {
-        auto c = std::make_shared<CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry>();
+        auto c = std::make_shared<CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry>();
         c->parent = this;
-        cospfshamlinksentry.push_back(c);
+        cospfshamlinksentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfshamlinkstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfShamLinksTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cospfshamlinksentry)
+    for (auto c : cospfshamlinksentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1926,22 +1973,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfshamlinkstable
     return children;
 }
 
-void CISCOOSPFMIB::Cospfshamlinkstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfShamLinksTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOOSPFMIB::Cospfshamlinkstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfShamLinksTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOOSPFMIB::Cospfshamlinkstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfShamLinksTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfShamLinksEntry")
         return true;
     return false;
 }
 
-CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::Cospfshamlinksentry()
+CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::CospfShamLinksEntry()
     :
     cospfshamlinksareaid{YType::str, "cospfShamLinksAreaId"},
     cospfshamlinkslocalipaddrtype{YType::enumeration, "cospfShamLinksLocalIpAddrType"},
@@ -1956,15 +2003,16 @@ CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::Cospfshamlinksentry()
     cospfshamlinksmetric{YType::int32, "cospfShamLinksMetric"}
 {
 
-    yang_name = "cospfShamLinksEntry"; yang_parent_name = "cospfShamLinksTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfShamLinksEntry"; yang_parent_name = "cospfShamLinksTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::~Cospfshamlinksentry()
+CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::~CospfShamLinksEntry()
 {
 }
 
-bool CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::has_data() const
+bool CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cospfshamlinksareaid.is_set
 	|| cospfshamlinkslocalipaddrtype.is_set
 	|| cospfshamlinkslocalipaddr.is_set
@@ -1978,7 +2026,7 @@ bool CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::has_data() const
 	|| cospfshamlinksmetric.is_set;
 }
 
-bool CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::has_operation() const
+bool CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cospfshamlinksareaid.yfilter)
@@ -1994,21 +2042,26 @@ bool CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::has_operation() con
 	|| ydk::is_set(cospfshamlinksmetric.yfilter);
 }
 
-std::string CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::get_absolute_path() const
+std::string CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-MIB:CISCO-OSPF-MIB/cospfShamLinksTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::get_segment_path() const
+std::string CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cospfShamLinksEntry" <<"[cospfShamLinksAreaId='" <<cospfshamlinksareaid <<"']" <<"[cospfShamLinksLocalIpAddrType='" <<cospfshamlinkslocalipaddrtype <<"']" <<"[cospfShamLinksLocalIpAddr='" <<cospfshamlinkslocalipaddr <<"']" <<"[cospfShamLinksRemoteIpAddrType='" <<cospfshamlinksremoteipaddrtype <<"']" <<"[cospfShamLinksRemoteIpAddr='" <<cospfshamlinksremoteipaddr <<"']";
+    path_buffer << "cospfShamLinksEntry";
+    ADD_KEY_TOKEN(cospfshamlinksareaid, "cospfShamLinksAreaId");
+    ADD_KEY_TOKEN(cospfshamlinkslocalipaddrtype, "cospfShamLinksLocalIpAddrType");
+    ADD_KEY_TOKEN(cospfshamlinkslocalipaddr, "cospfShamLinksLocalIpAddr");
+    ADD_KEY_TOKEN(cospfshamlinksremoteipaddrtype, "cospfShamLinksRemoteIpAddrType");
+    ADD_KEY_TOKEN(cospfshamlinksremoteipaddr, "cospfShamLinksRemoteIpAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2028,19 +2081,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::Cospfshamlinkstable
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cospfShamLinksAreaId")
     {
@@ -2110,7 +2163,7 @@ void CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::set_value(const std
     }
 }
 
-void CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cospfShamLinksAreaId")
     {
@@ -2158,34 +2211,34 @@ void CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::set_filter(const st
     }
 }
 
-bool CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfShamLinksAreaId" || name == "cospfShamLinksLocalIpAddrType" || name == "cospfShamLinksLocalIpAddr" || name == "cospfShamLinksRemoteIpAddrType" || name == "cospfShamLinksRemoteIpAddr" || name == "cospfShamLinksRetransInterval" || name == "cospfShamLinksHelloInterval" || name == "cospfShamLinksRtrDeadInterval" || name == "cospfShamLinksState" || name == "cospfShamLinksEvents" || name == "cospfShamLinksMetric")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::Cospflsdbtype::areaOpaqueLink {10, "areaOpaqueLink"};
-const Enum::YLeaf CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::Cospflsdbtype::asOpaqueLink {11, "asOpaqueLink"};
+const Enum::YLeaf CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::CospfLsdbType::areaOpaqueLink {10, "areaOpaqueLink"};
+const Enum::YLeaf CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::CospfLsdbType::asOpaqueLink {11, "asOpaqueLink"};
 
-const Enum::YLeaf CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::Cospfshamlinkstate::down {1, "down"};
-const Enum::YLeaf CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::Cospfshamlinkstate::pointToPoint {4, "pointToPoint"};
+const Enum::YLeaf CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::CospfShamLinkState::down {1, "down"};
+const Enum::YLeaf CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::CospfShamLinkState::pointToPoint {4, "pointToPoint"};
 
-const Enum::YLeaf CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::Cospflocallsdbtype::localOpaqueLink {9, "localOpaqueLink"};
+const Enum::YLeaf CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::CospfLocalLsdbType::localOpaqueLink {9, "localOpaqueLink"};
 
-const Enum::YLeaf CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::Cospfvirtlocallsdbtype::localOpaqueLink {9, "localOpaqueLink"};
+const Enum::YLeaf CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::CospfVirtLocalLsdbType::localOpaqueLink {9, "localOpaqueLink"};
 
-const Enum::YLeaf CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrstate::down {1, "down"};
-const Enum::YLeaf CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrstate::attempt {2, "attempt"};
-const Enum::YLeaf CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrstate::init {3, "init"};
-const Enum::YLeaf CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrstate::twoWay {4, "twoWay"};
-const Enum::YLeaf CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrstate::exchangeStart {5, "exchangeStart"};
-const Enum::YLeaf CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrstate::exchange {6, "exchange"};
-const Enum::YLeaf CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrstate::loading {7, "loading"};
-const Enum::YLeaf CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrstate::full {8, "full"};
+const Enum::YLeaf CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::CospfShamLinkNbrState::down {1, "down"};
+const Enum::YLeaf CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::CospfShamLinkNbrState::attempt {2, "attempt"};
+const Enum::YLeaf CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::CospfShamLinkNbrState::init {3, "init"};
+const Enum::YLeaf CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::CospfShamLinkNbrState::twoWay {4, "twoWay"};
+const Enum::YLeaf CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::CospfShamLinkNbrState::exchangeStart {5, "exchangeStart"};
+const Enum::YLeaf CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::CospfShamLinkNbrState::exchange {6, "exchange"};
+const Enum::YLeaf CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::CospfShamLinkNbrState::loading {7, "loading"};
+const Enum::YLeaf CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::CospfShamLinkNbrState::full {8, "full"};
 
-const Enum::YLeaf CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::Cospfshamlinksstate::down {1, "down"};
-const Enum::YLeaf CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::Cospfshamlinksstate::pointToPoint {4, "pointToPoint"};
+const Enum::YLeaf CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::CospfShamLinksState::down {1, "down"};
+const Enum::YLeaf CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::CospfShamLinksState::pointToPoint {4, "pointToPoint"};
 
 
 }

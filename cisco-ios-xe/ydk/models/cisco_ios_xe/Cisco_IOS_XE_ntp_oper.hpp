@@ -66,7 +66,7 @@ class NtpOperData::NtpStatusInfo : public ydk::Entity
         class NtpAssociations; //type: NtpOperData::NtpStatusInfo::NtpAssociations
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ntp_oper::NtpOperData::NtpStatusInfo::Refid> refid;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ntp_oper::NtpOperData::NtpStatusInfo::NtpAssociations> > ntp_associations;
+        ydk::YList ntp_associations;
         
 }; // NtpOperData::NtpStatusInfo
 
@@ -244,6 +244,26 @@ class NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData : public
 
 }; // NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData
 
+class KissCodeType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_ref_acst;
+        static const ydk::Enum::YLeaf ntp_ref_auth;
+        static const ydk::Enum::YLeaf ntp_ref_auto;
+        static const ydk::Enum::YLeaf ntp_ref_bcst;
+        static const ydk::Enum::YLeaf ntp_ref_cryp;
+        static const ydk::Enum::YLeaf ntp_ref_deny;
+        static const ydk::Enum::YLeaf ntp_ref_drop;
+        static const ydk::Enum::YLeaf ntp_ref_rstr;
+        static const ydk::Enum::YLeaf ntp_ref_init;
+        static const ydk::Enum::YLeaf ntp_ref_mcst;
+        static const ydk::Enum::YLeaf ntp_ref_nkey;
+        static const ydk::Enum::YLeaf ntp_ref_rate;
+        static const ydk::Enum::YLeaf ntp_ref_rmot;
+        static const ydk::Enum::YLeaf ntp_ref_step;
+
+};
+
 class RefClockSourceType : public ydk::Enum
 {
     public:
@@ -266,26 +286,6 @@ class RefClockSourceType : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_ref_acts;
         static const ydk::Enum::YLeaf ntp_ref_usno;
         static const ydk::Enum::YLeaf ntp_ref_ptb;
-
-};
-
-class KissCodeType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_ref_acst;
-        static const ydk::Enum::YLeaf ntp_ref_auth;
-        static const ydk::Enum::YLeaf ntp_ref_auto;
-        static const ydk::Enum::YLeaf ntp_ref_bcst;
-        static const ydk::Enum::YLeaf ntp_ref_cryp;
-        static const ydk::Enum::YLeaf ntp_ref_deny;
-        static const ydk::Enum::YLeaf ntp_ref_drop;
-        static const ydk::Enum::YLeaf ntp_ref_rstr;
-        static const ydk::Enum::YLeaf ntp_ref_init;
-        static const ydk::Enum::YLeaf ntp_ref_mcst;
-        static const ydk::Enum::YLeaf ntp_ref_nkey;
-        static const ydk::Enum::YLeaf ntp_ref_rate;
-        static const ydk::Enum::YLeaf ntp_ref_rmot;
-        static const ydk::Enum::YLeaf ntp_ref_step;
 
 };
 

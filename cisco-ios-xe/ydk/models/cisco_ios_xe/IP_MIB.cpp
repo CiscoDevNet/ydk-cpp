@@ -14,22 +14,22 @@ namespace IP_MIB {
 IPMIB::IPMIB()
     :
     ip(std::make_shared<IPMIB::Ip>())
-	,iptrafficstats(std::make_shared<IPMIB::Iptrafficstats>())
-	,icmp(std::make_shared<IPMIB::Icmp>())
-	,ipaddrtable(std::make_shared<IPMIB::Ipaddrtable>())
-	,ipnettomediatable(std::make_shared<IPMIB::Ipnettomediatable>())
-	,ipv4interfacetable(std::make_shared<IPMIB::Ipv4Interfacetable>())
-	,ipv6interfacetable(std::make_shared<IPMIB::Ipv6Interfacetable>())
-	,ipsystemstatstable(std::make_shared<IPMIB::Ipsystemstatstable>())
-	,ipifstatstable(std::make_shared<IPMIB::Ipifstatstable>())
-	,ipaddressprefixtable(std::make_shared<IPMIB::Ipaddressprefixtable>())
-	,ipaddresstable(std::make_shared<IPMIB::Ipaddresstable>())
-	,ipnettophysicaltable(std::make_shared<IPMIB::Ipnettophysicaltable>())
-	,ipv6scopezoneindextable(std::make_shared<IPMIB::Ipv6Scopezoneindextable>())
-	,ipdefaultroutertable(std::make_shared<IPMIB::Ipdefaultroutertable>())
-	,ipv6routeradverttable(std::make_shared<IPMIB::Ipv6Routeradverttable>())
-	,icmpstatstable(std::make_shared<IPMIB::Icmpstatstable>())
-	,icmpmsgstatstable(std::make_shared<IPMIB::Icmpmsgstatstable>())
+    , iptrafficstats(std::make_shared<IPMIB::IpTrafficStats>())
+    , icmp(std::make_shared<IPMIB::Icmp>())
+    , ipaddrtable(std::make_shared<IPMIB::IpAddrTable>())
+    , ipnettomediatable(std::make_shared<IPMIB::IpNetToMediaTable>())
+    , ipv4interfacetable(std::make_shared<IPMIB::Ipv4InterfaceTable>())
+    , ipv6interfacetable(std::make_shared<IPMIB::Ipv6InterfaceTable>())
+    , ipsystemstatstable(std::make_shared<IPMIB::IpSystemStatsTable>())
+    , ipifstatstable(std::make_shared<IPMIB::IpIfStatsTable>())
+    , ipaddressprefixtable(std::make_shared<IPMIB::IpAddressPrefixTable>())
+    , ipaddresstable(std::make_shared<IPMIB::IpAddressTable>())
+    , ipnettophysicaltable(std::make_shared<IPMIB::IpNetToPhysicalTable>())
+    , ipv6scopezoneindextable(std::make_shared<IPMIB::Ipv6ScopeZoneIndexTable>())
+    , ipdefaultroutertable(std::make_shared<IPMIB::IpDefaultRouterTable>())
+    , ipv6routeradverttable(std::make_shared<IPMIB::Ipv6RouterAdvertTable>())
+    , icmpstatstable(std::make_shared<IPMIB::IcmpStatsTable>())
+    , icmpmsgstatstable(std::make_shared<IPMIB::IcmpMsgStatsTable>())
 {
     ip->parent = this;
     iptrafficstats->parent = this;
@@ -49,7 +49,7 @@ IPMIB::IPMIB()
     icmpstatstable->parent = this;
     icmpmsgstatstable->parent = this;
 
-    yang_name = "IP-MIB"; yang_parent_name = "IP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "IP-MIB"; yang_parent_name = "IP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IPMIB::~IPMIB()
@@ -58,6 +58,7 @@ IPMIB::~IPMIB()
 
 bool IPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data())
 	|| (iptrafficstats !=  nullptr && iptrafficstats->has_data())
 	|| (icmp !=  nullptr && icmp->has_data())
@@ -130,7 +131,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(iptrafficstats == nullptr)
         {
-            iptrafficstats = std::make_shared<IPMIB::Iptrafficstats>();
+            iptrafficstats = std::make_shared<IPMIB::IpTrafficStats>();
         }
         return iptrafficstats;
     }
@@ -148,7 +149,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ipaddrtable == nullptr)
         {
-            ipaddrtable = std::make_shared<IPMIB::Ipaddrtable>();
+            ipaddrtable = std::make_shared<IPMIB::IpAddrTable>();
         }
         return ipaddrtable;
     }
@@ -157,7 +158,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ipnettomediatable == nullptr)
         {
-            ipnettomediatable = std::make_shared<IPMIB::Ipnettomediatable>();
+            ipnettomediatable = std::make_shared<IPMIB::IpNetToMediaTable>();
         }
         return ipnettomediatable;
     }
@@ -166,7 +167,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ipv4interfacetable == nullptr)
         {
-            ipv4interfacetable = std::make_shared<IPMIB::Ipv4Interfacetable>();
+            ipv4interfacetable = std::make_shared<IPMIB::Ipv4InterfaceTable>();
         }
         return ipv4interfacetable;
     }
@@ -175,7 +176,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ipv6interfacetable == nullptr)
         {
-            ipv6interfacetable = std::make_shared<IPMIB::Ipv6Interfacetable>();
+            ipv6interfacetable = std::make_shared<IPMIB::Ipv6InterfaceTable>();
         }
         return ipv6interfacetable;
     }
@@ -184,7 +185,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ipsystemstatstable == nullptr)
         {
-            ipsystemstatstable = std::make_shared<IPMIB::Ipsystemstatstable>();
+            ipsystemstatstable = std::make_shared<IPMIB::IpSystemStatsTable>();
         }
         return ipsystemstatstable;
     }
@@ -193,7 +194,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ipifstatstable == nullptr)
         {
-            ipifstatstable = std::make_shared<IPMIB::Ipifstatstable>();
+            ipifstatstable = std::make_shared<IPMIB::IpIfStatsTable>();
         }
         return ipifstatstable;
     }
@@ -202,7 +203,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ipaddressprefixtable == nullptr)
         {
-            ipaddressprefixtable = std::make_shared<IPMIB::Ipaddressprefixtable>();
+            ipaddressprefixtable = std::make_shared<IPMIB::IpAddressPrefixTable>();
         }
         return ipaddressprefixtable;
     }
@@ -211,7 +212,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ipaddresstable == nullptr)
         {
-            ipaddresstable = std::make_shared<IPMIB::Ipaddresstable>();
+            ipaddresstable = std::make_shared<IPMIB::IpAddressTable>();
         }
         return ipaddresstable;
     }
@@ -220,7 +221,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ipnettophysicaltable == nullptr)
         {
-            ipnettophysicaltable = std::make_shared<IPMIB::Ipnettophysicaltable>();
+            ipnettophysicaltable = std::make_shared<IPMIB::IpNetToPhysicalTable>();
         }
         return ipnettophysicaltable;
     }
@@ -229,7 +230,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ipv6scopezoneindextable == nullptr)
         {
-            ipv6scopezoneindextable = std::make_shared<IPMIB::Ipv6Scopezoneindextable>();
+            ipv6scopezoneindextable = std::make_shared<IPMIB::Ipv6ScopeZoneIndexTable>();
         }
         return ipv6scopezoneindextable;
     }
@@ -238,7 +239,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ipdefaultroutertable == nullptr)
         {
-            ipdefaultroutertable = std::make_shared<IPMIB::Ipdefaultroutertable>();
+            ipdefaultroutertable = std::make_shared<IPMIB::IpDefaultRouterTable>();
         }
         return ipdefaultroutertable;
     }
@@ -247,7 +248,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ipv6routeradverttable == nullptr)
         {
-            ipv6routeradverttable = std::make_shared<IPMIB::Ipv6Routeradverttable>();
+            ipv6routeradverttable = std::make_shared<IPMIB::Ipv6RouterAdvertTable>();
         }
         return ipv6routeradverttable;
     }
@@ -256,7 +257,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(icmpstatstable == nullptr)
         {
-            icmpstatstable = std::make_shared<IPMIB::Icmpstatstable>();
+            icmpstatstable = std::make_shared<IPMIB::IcmpStatsTable>();
         }
         return icmpstatstable;
     }
@@ -265,7 +266,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     {
         if(icmpmsgstatstable == nullptr)
         {
-            icmpmsgstatstable = std::make_shared<IPMIB::Icmpmsgstatstable>();
+            icmpmsgstatstable = std::make_shared<IPMIB::IcmpMsgStatsTable>();
         }
         return icmpmsgstatstable;
     }
@@ -435,7 +436,7 @@ IPMIB::Ip::Ip()
     ipv6routeradvertspinlock{YType::int32, "ipv6RouterAdvertSpinLock"}
 {
 
-    yang_name = "ip"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IPMIB::Ip::~Ip()
@@ -444,6 +445,7 @@ IPMIB::Ip::~Ip()
 
 bool IPMIB::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return ipforwarding.is_set
 	|| ipdefaultttl.is_set
 	|| ipinreceives.is_set
@@ -839,44 +841,45 @@ bool IPMIB::Ip::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-IPMIB::Iptrafficstats::Iptrafficstats()
+IPMIB::IpTrafficStats::IpTrafficStats()
     :
     ipifstatstablelastchange{YType::uint32, "ipIfStatsTableLastChange"}
 {
 
-    yang_name = "ipTrafficStats"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipTrafficStats"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Iptrafficstats::~Iptrafficstats()
+IPMIB::IpTrafficStats::~IpTrafficStats()
 {
 }
 
-bool IPMIB::Iptrafficstats::has_data() const
+bool IPMIB::IpTrafficStats::has_data() const
 {
+    if (is_presence_container) return true;
     return ipifstatstablelastchange.is_set;
 }
 
-bool IPMIB::Iptrafficstats::has_operation() const
+bool IPMIB::IpTrafficStats::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipifstatstablelastchange.yfilter);
 }
 
-std::string IPMIB::Iptrafficstats::get_absolute_path() const
+std::string IPMIB::IpTrafficStats::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Iptrafficstats::get_segment_path() const
+std::string IPMIB::IpTrafficStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipTrafficStats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Iptrafficstats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpTrafficStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -886,19 +889,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Iptrafficstats::get_name_l
 
 }
 
-std::shared_ptr<Entity> IPMIB::Iptrafficstats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpTrafficStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Iptrafficstats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpTrafficStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Iptrafficstats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpTrafficStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipIfStatsTableLastChange")
     {
@@ -908,7 +911,7 @@ void IPMIB::Iptrafficstats::set_value(const std::string & value_path, const std:
     }
 }
 
-void IPMIB::Iptrafficstats::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpTrafficStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipIfStatsTableLastChange")
     {
@@ -916,7 +919,7 @@ void IPMIB::Iptrafficstats::set_filter(const std::string & value_path, YFilter y
     }
 }
 
-bool IPMIB::Iptrafficstats::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpTrafficStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipIfStatsTableLastChange")
         return true;
@@ -953,7 +956,7 @@ IPMIB::Icmp::Icmp()
     icmpoutaddrmaskreps{YType::uint32, "icmpOutAddrMaskReps"}
 {
 
-    yang_name = "icmp"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icmp"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IPMIB::Icmp::~Icmp()
@@ -962,6 +965,7 @@ IPMIB::Icmp::~Icmp()
 
 bool IPMIB::Icmp::has_data() const
 {
+    if (is_presence_container) return true;
     return icmpinmsgs.is_set
 	|| icmpinerrors.is_set
 	|| icmpindestunreachs.is_set
@@ -1357,19 +1361,22 @@ bool IPMIB::Icmp::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-IPMIB::Ipaddrtable::Ipaddrtable()
+IPMIB::IpAddrTable::IpAddrTable()
+    :
+    ipaddrentry(this, {"ipadentaddr"})
 {
 
-    yang_name = "ipAddrTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipAddrTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipaddrtable::~Ipaddrtable()
+IPMIB::IpAddrTable::~IpAddrTable()
 {
 }
 
-bool IPMIB::Ipaddrtable::has_data() const
+bool IPMIB::IpAddrTable::has_data() const
 {
-    for (std::size_t index=0; index<ipaddrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipaddrentry.len(); index++)
     {
         if(ipaddrentry[index]->has_data())
             return true;
@@ -1377,9 +1384,9 @@ bool IPMIB::Ipaddrtable::has_data() const
     return false;
 }
 
-bool IPMIB::Ipaddrtable::has_operation() const
+bool IPMIB::IpAddrTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipaddrentry.size(); index++)
+    for (std::size_t index=0; index<ipaddrentry.len(); index++)
     {
         if(ipaddrentry[index]->has_operation())
             return true;
@@ -1387,21 +1394,21 @@ bool IPMIB::Ipaddrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Ipaddrtable::get_absolute_path() const
+std::string IPMIB::IpAddrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipaddrtable::get_segment_path() const
+std::string IPMIB::IpAddrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipAddrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipaddrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpAddrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1410,25 +1417,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipaddrtable::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipAddrEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipaddrtable::Ipaddrentry>();
+        auto c = std::make_shared<IPMIB::IpAddrTable::IpAddrEntry>();
         c->parent = this;
-        ipaddrentry.push_back(c);
+        ipaddrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpAddrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipaddrentry)
+    for (auto c : ipaddrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1439,22 +1446,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddrtable::get_children(
     return children;
 }
 
-void IPMIB::Ipaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Ipaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpAddrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Ipaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpAddrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipAddrEntry")
         return true;
     return false;
 }
 
-IPMIB::Ipaddrtable::Ipaddrentry::Ipaddrentry()
+IPMIB::IpAddrTable::IpAddrEntry::IpAddrEntry()
     :
     ipadentaddr{YType::str, "ipAdEntAddr"},
     ipadentifindex{YType::int32, "ipAdEntIfIndex"},
@@ -1463,15 +1470,16 @@ IPMIB::Ipaddrtable::Ipaddrentry::Ipaddrentry()
     ipadentreasmmaxsize{YType::int32, "ipAdEntReasmMaxSize"}
 {
 
-    yang_name = "ipAddrEntry"; yang_parent_name = "ipAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipAddrEntry"; yang_parent_name = "ipAddrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipaddrtable::Ipaddrentry::~Ipaddrentry()
+IPMIB::IpAddrTable::IpAddrEntry::~IpAddrEntry()
 {
 }
 
-bool IPMIB::Ipaddrtable::Ipaddrentry::has_data() const
+bool IPMIB::IpAddrTable::IpAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipadentaddr.is_set
 	|| ipadentifindex.is_set
 	|| ipadentnetmask.is_set
@@ -1479,7 +1487,7 @@ bool IPMIB::Ipaddrtable::Ipaddrentry::has_data() const
 	|| ipadentreasmmaxsize.is_set;
 }
 
-bool IPMIB::Ipaddrtable::Ipaddrentry::has_operation() const
+bool IPMIB::IpAddrTable::IpAddrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipadentaddr.yfilter)
@@ -1489,21 +1497,22 @@ bool IPMIB::Ipaddrtable::Ipaddrentry::has_operation() const
 	|| ydk::is_set(ipadentreasmmaxsize.yfilter);
 }
 
-std::string IPMIB::Ipaddrtable::Ipaddrentry::get_absolute_path() const
+std::string IPMIB::IpAddrTable::IpAddrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/ipAddrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipaddrtable::Ipaddrentry::get_segment_path() const
+std::string IPMIB::IpAddrTable::IpAddrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipAddrEntry" <<"[ipAdEntAddr='" <<ipadentaddr <<"']";
+    path_buffer << "ipAddrEntry";
+    ADD_KEY_TOKEN(ipadentaddr, "ipAdEntAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipaddrtable::Ipaddrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpAddrTable::IpAddrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1517,19 +1526,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipaddrtable::Ipaddrentry::
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipaddrtable::Ipaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpAddrTable::IpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddrtable::Ipaddrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpAddrTable::IpAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Ipaddrtable::Ipaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpAddrTable::IpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipAdEntAddr")
     {
@@ -1563,7 +1572,7 @@ void IPMIB::Ipaddrtable::Ipaddrentry::set_value(const std::string & value_path, 
     }
 }
 
-void IPMIB::Ipaddrtable::Ipaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpAddrTable::IpAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipAdEntAddr")
     {
@@ -1587,26 +1596,29 @@ void IPMIB::Ipaddrtable::Ipaddrentry::set_filter(const std::string & value_path,
     }
 }
 
-bool IPMIB::Ipaddrtable::Ipaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpAddrTable::IpAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipAdEntAddr" || name == "ipAdEntIfIndex" || name == "ipAdEntNetMask" || name == "ipAdEntBcastAddr" || name == "ipAdEntReasmMaxSize")
         return true;
     return false;
 }
 
-IPMIB::Ipnettomediatable::Ipnettomediatable()
+IPMIB::IpNetToMediaTable::IpNetToMediaTable()
+    :
+    ipnettomediaentry(this, {"ipnettomediaifindex", "ipnettomedianetaddress"})
 {
 
-    yang_name = "ipNetToMediaTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipNetToMediaTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipnettomediatable::~Ipnettomediatable()
+IPMIB::IpNetToMediaTable::~IpNetToMediaTable()
 {
 }
 
-bool IPMIB::Ipnettomediatable::has_data() const
+bool IPMIB::IpNetToMediaTable::has_data() const
 {
-    for (std::size_t index=0; index<ipnettomediaentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipnettomediaentry.len(); index++)
     {
         if(ipnettomediaentry[index]->has_data())
             return true;
@@ -1614,9 +1626,9 @@ bool IPMIB::Ipnettomediatable::has_data() const
     return false;
 }
 
-bool IPMIB::Ipnettomediatable::has_operation() const
+bool IPMIB::IpNetToMediaTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipnettomediaentry.size(); index++)
+    for (std::size_t index=0; index<ipnettomediaentry.len(); index++)
     {
         if(ipnettomediaentry[index]->has_operation())
             return true;
@@ -1624,21 +1636,21 @@ bool IPMIB::Ipnettomediatable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Ipnettomediatable::get_absolute_path() const
+std::string IPMIB::IpNetToMediaTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipnettomediatable::get_segment_path() const
+std::string IPMIB::IpNetToMediaTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipNetToMediaTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipnettomediatable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpNetToMediaTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1647,25 +1659,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipnettomediatable::get_nam
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipnettomediatable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpNetToMediaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipNetToMediaEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipnettomediatable::Ipnettomediaentry>();
+        auto c = std::make_shared<IPMIB::IpNetToMediaTable::IpNetToMediaEntry>();
         c->parent = this;
-        ipnettomediaentry.push_back(c);
+        ipnettomediaentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipnettomediatable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpNetToMediaTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipnettomediaentry)
+    for (auto c : ipnettomediaentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1676,22 +1688,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipnettomediatable::get_chi
     return children;
 }
 
-void IPMIB::Ipnettomediatable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpNetToMediaTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Ipnettomediatable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpNetToMediaTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Ipnettomediatable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpNetToMediaTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipNetToMediaEntry")
         return true;
     return false;
 }
 
-IPMIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediaentry()
+IPMIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaEntry()
     :
     ipnettomediaifindex{YType::int32, "ipNetToMediaIfIndex"},
     ipnettomedianetaddress{YType::str, "ipNetToMediaNetAddress"},
@@ -1699,22 +1711,23 @@ IPMIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediaentry()
     ipnettomediatype{YType::enumeration, "ipNetToMediaType"}
 {
 
-    yang_name = "ipNetToMediaEntry"; yang_parent_name = "ipNetToMediaTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipNetToMediaEntry"; yang_parent_name = "ipNetToMediaTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipnettomediatable::Ipnettomediaentry::~Ipnettomediaentry()
+IPMIB::IpNetToMediaTable::IpNetToMediaEntry::~IpNetToMediaEntry()
 {
 }
 
-bool IPMIB::Ipnettomediatable::Ipnettomediaentry::has_data() const
+bool IPMIB::IpNetToMediaTable::IpNetToMediaEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipnettomediaifindex.is_set
 	|| ipnettomedianetaddress.is_set
 	|| ipnettomediaphysaddress.is_set
 	|| ipnettomediatype.is_set;
 }
 
-bool IPMIB::Ipnettomediatable::Ipnettomediaentry::has_operation() const
+bool IPMIB::IpNetToMediaTable::IpNetToMediaEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipnettomediaifindex.yfilter)
@@ -1723,21 +1736,23 @@ bool IPMIB::Ipnettomediatable::Ipnettomediaentry::has_operation() const
 	|| ydk::is_set(ipnettomediatype.yfilter);
 }
 
-std::string IPMIB::Ipnettomediatable::Ipnettomediaentry::get_absolute_path() const
+std::string IPMIB::IpNetToMediaTable::IpNetToMediaEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/ipNetToMediaTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipnettomediatable::Ipnettomediaentry::get_segment_path() const
+std::string IPMIB::IpNetToMediaTable::IpNetToMediaEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipNetToMediaEntry" <<"[ipNetToMediaIfIndex='" <<ipnettomediaifindex <<"']" <<"[ipNetToMediaNetAddress='" <<ipnettomedianetaddress <<"']";
+    path_buffer << "ipNetToMediaEntry";
+    ADD_KEY_TOKEN(ipnettomediaifindex, "ipNetToMediaIfIndex");
+    ADD_KEY_TOKEN(ipnettomedianetaddress, "ipNetToMediaNetAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipnettomediatable::Ipnettomediaentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpNetToMediaTable::IpNetToMediaEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1750,19 +1765,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipnettomediatable::Ipnetto
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipnettomediatable::Ipnettomediaentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpNetToMediaTable::IpNetToMediaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipnettomediatable::Ipnettomediaentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpNetToMediaTable::IpNetToMediaEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Ipnettomediatable::Ipnettomediaentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpNetToMediaTable::IpNetToMediaEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipNetToMediaIfIndex")
     {
@@ -1790,7 +1805,7 @@ void IPMIB::Ipnettomediatable::Ipnettomediaentry::set_value(const std::string & 
     }
 }
 
-void IPMIB::Ipnettomediatable::Ipnettomediaentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpNetToMediaTable::IpNetToMediaEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipNetToMediaIfIndex")
     {
@@ -1810,26 +1825,29 @@ void IPMIB::Ipnettomediatable::Ipnettomediaentry::set_filter(const std::string &
     }
 }
 
-bool IPMIB::Ipnettomediatable::Ipnettomediaentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpNetToMediaTable::IpNetToMediaEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipNetToMediaIfIndex" || name == "ipNetToMediaNetAddress" || name == "ipNetToMediaPhysAddress" || name == "ipNetToMediaType")
         return true;
     return false;
 }
 
-IPMIB::Ipv4Interfacetable::Ipv4Interfacetable()
+IPMIB::Ipv4InterfaceTable::Ipv4InterfaceTable()
+    :
+    ipv4interfaceentry(this, {"ipv4interfaceifindex"})
 {
 
-    yang_name = "ipv4InterfaceTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4InterfaceTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipv4Interfacetable::~Ipv4Interfacetable()
+IPMIB::Ipv4InterfaceTable::~Ipv4InterfaceTable()
 {
 }
 
-bool IPMIB::Ipv4Interfacetable::has_data() const
+bool IPMIB::Ipv4InterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<ipv4interfaceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4interfaceentry.len(); index++)
     {
         if(ipv4interfaceentry[index]->has_data())
             return true;
@@ -1837,9 +1855,9 @@ bool IPMIB::Ipv4Interfacetable::has_data() const
     return false;
 }
 
-bool IPMIB::Ipv4Interfacetable::has_operation() const
+bool IPMIB::Ipv4InterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4interfaceentry.size(); index++)
+    for (std::size_t index=0; index<ipv4interfaceentry.len(); index++)
     {
         if(ipv4interfaceentry[index]->has_operation())
             return true;
@@ -1847,21 +1865,21 @@ bool IPMIB::Ipv4Interfacetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Ipv4Interfacetable::get_absolute_path() const
+std::string IPMIB::Ipv4InterfaceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipv4Interfacetable::get_segment_path() const
+std::string IPMIB::Ipv4InterfaceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4InterfaceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv4Interfacetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv4InterfaceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1870,25 +1888,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv4Interfacetable::get_na
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv4Interfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::Ipv4InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4InterfaceEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry>();
+        auto c = std::make_shared<IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry>();
         c->parent = this;
-        ipv4interfaceentry.push_back(c);
+        ipv4interfaceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv4Interfacetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv4InterfaceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4interfaceentry)
+    for (auto c : ipv4interfaceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1899,22 +1917,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv4Interfacetable::get_ch
     return children;
 }
 
-void IPMIB::Ipv4Interfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::Ipv4InterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Ipv4Interfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::Ipv4InterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Ipv4Interfacetable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::Ipv4InterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4InterfaceEntry")
         return true;
     return false;
 }
 
-IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::Ipv4Interfaceentry()
+IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::Ipv4InterfaceEntry()
     :
     ipv4interfaceifindex{YType::int32, "ipv4InterfaceIfIndex"},
     ipv4interfacereasmmaxsize{YType::int32, "ipv4InterfaceReasmMaxSize"},
@@ -1922,22 +1940,23 @@ IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::Ipv4Interfaceentry()
     ipv4interfaceretransmittime{YType::uint32, "ipv4InterfaceRetransmitTime"}
 {
 
-    yang_name = "ipv4InterfaceEntry"; yang_parent_name = "ipv4InterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4InterfaceEntry"; yang_parent_name = "ipv4InterfaceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::~Ipv4Interfaceentry()
+IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::~Ipv4InterfaceEntry()
 {
 }
 
-bool IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::has_data() const
+bool IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4interfaceifindex.is_set
 	|| ipv4interfacereasmmaxsize.is_set
 	|| ipv4interfaceenablestatus.is_set
 	|| ipv4interfaceretransmittime.is_set;
 }
 
-bool IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::has_operation() const
+bool IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv4interfaceifindex.yfilter)
@@ -1946,21 +1965,22 @@ bool IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::has_operation() const
 	|| ydk::is_set(ipv4interfaceretransmittime.yfilter);
 }
 
-std::string IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::get_absolute_path() const
+std::string IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/ipv4InterfaceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::get_segment_path() const
+std::string IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4InterfaceEntry" <<"[ipv4InterfaceIfIndex='" <<ipv4interfaceifindex <<"']";
+    path_buffer << "ipv4InterfaceEntry";
+    ADD_KEY_TOKEN(ipv4interfaceifindex, "ipv4InterfaceIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1973,19 +1993,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv4Interfacetable::Ipv4In
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4InterfaceIfIndex")
     {
@@ -2013,7 +2033,7 @@ void IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::set_value(const std::string 
     }
 }
 
-void IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv4InterfaceIfIndex")
     {
@@ -2033,26 +2053,29 @@ void IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::set_filter(const std::string
     }
 }
 
-bool IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4InterfaceIfIndex" || name == "ipv4InterfaceReasmMaxSize" || name == "ipv4InterfaceEnableStatus" || name == "ipv4InterfaceRetransmitTime")
         return true;
     return false;
 }
 
-IPMIB::Ipv6Interfacetable::Ipv6Interfacetable()
+IPMIB::Ipv6InterfaceTable::Ipv6InterfaceTable()
+    :
+    ipv6interfaceentry(this, {"ipv6interfaceifindex"})
 {
 
-    yang_name = "ipv6InterfaceTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6InterfaceTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipv6Interfacetable::~Ipv6Interfacetable()
+IPMIB::Ipv6InterfaceTable::~Ipv6InterfaceTable()
 {
 }
 
-bool IPMIB::Ipv6Interfacetable::has_data() const
+bool IPMIB::Ipv6InterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<ipv6interfaceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6interfaceentry.len(); index++)
     {
         if(ipv6interfaceentry[index]->has_data())
             return true;
@@ -2060,9 +2083,9 @@ bool IPMIB::Ipv6Interfacetable::has_data() const
     return false;
 }
 
-bool IPMIB::Ipv6Interfacetable::has_operation() const
+bool IPMIB::Ipv6InterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6interfaceentry.size(); index++)
+    for (std::size_t index=0; index<ipv6interfaceentry.len(); index++)
     {
         if(ipv6interfaceentry[index]->has_operation())
             return true;
@@ -2070,21 +2093,21 @@ bool IPMIB::Ipv6Interfacetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Ipv6Interfacetable::get_absolute_path() const
+std::string IPMIB::Ipv6InterfaceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipv6Interfacetable::get_segment_path() const
+std::string IPMIB::Ipv6InterfaceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6InterfaceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6Interfacetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6InterfaceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2093,25 +2116,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6Interfacetable::get_na
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv6Interfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::Ipv6InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6InterfaceEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry>();
+        auto c = std::make_shared<IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry>();
         c->parent = this;
-        ipv6interfaceentry.push_back(c);
+        ipv6interfaceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Interfacetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6InterfaceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6interfaceentry)
+    for (auto c : ipv6interfaceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2122,22 +2145,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Interfacetable::get_ch
     return children;
 }
 
-void IPMIB::Ipv6Interfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::Ipv6InterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Ipv6Interfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::Ipv6InterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Ipv6Interfacetable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::Ipv6InterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6InterfaceEntry")
         return true;
     return false;
 }
 
-IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceentry()
+IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::Ipv6InterfaceEntry()
     :
     ipv6interfaceifindex{YType::int32, "ipv6InterfaceIfIndex"},
     ipv6interfacereasmmaxsize{YType::uint32, "ipv6InterfaceReasmMaxSize"},
@@ -2148,15 +2171,16 @@ IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceentry()
     ipv6interfaceforwarding{YType::enumeration, "ipv6InterfaceForwarding"}
 {
 
-    yang_name = "ipv6InterfaceEntry"; yang_parent_name = "ipv6InterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6InterfaceEntry"; yang_parent_name = "ipv6InterfaceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::~Ipv6Interfaceentry()
+IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::~Ipv6InterfaceEntry()
 {
 }
 
-bool IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::has_data() const
+bool IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6interfaceifindex.is_set
 	|| ipv6interfacereasmmaxsize.is_set
 	|| ipv6interfaceidentifier.is_set
@@ -2166,7 +2190,7 @@ bool IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::has_data() const
 	|| ipv6interfaceforwarding.is_set;
 }
 
-bool IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::has_operation() const
+bool IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv6interfaceifindex.yfilter)
@@ -2178,21 +2202,22 @@ bool IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::has_operation() const
 	|| ydk::is_set(ipv6interfaceforwarding.yfilter);
 }
 
-std::string IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::get_absolute_path() const
+std::string IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/ipv6InterfaceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::get_segment_path() const
+std::string IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6InterfaceEntry" <<"[ipv6InterfaceIfIndex='" <<ipv6interfaceifindex <<"']";
+    path_buffer << "ipv6InterfaceEntry";
+    ADD_KEY_TOKEN(ipv6interfaceifindex, "ipv6InterfaceIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2208,19 +2233,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6Interfacetable::Ipv6In
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6InterfaceIfIndex")
     {
@@ -2266,7 +2291,7 @@ void IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::set_value(const std::string 
     }
 }
 
-void IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv6InterfaceIfIndex")
     {
@@ -2298,26 +2323,29 @@ void IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::set_filter(const std::string
     }
 }
 
-bool IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6InterfaceIfIndex" || name == "ipv6InterfaceReasmMaxSize" || name == "ipv6InterfaceIdentifier" || name == "ipv6InterfaceEnableStatus" || name == "ipv6InterfaceReachableTime" || name == "ipv6InterfaceRetransmitTime" || name == "ipv6InterfaceForwarding")
         return true;
     return false;
 }
 
-IPMIB::Ipsystemstatstable::Ipsystemstatstable()
+IPMIB::IpSystemStatsTable::IpSystemStatsTable()
+    :
+    ipsystemstatsentry(this, {"ipsystemstatsipversion"})
 {
 
-    yang_name = "ipSystemStatsTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipSystemStatsTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipsystemstatstable::~Ipsystemstatstable()
+IPMIB::IpSystemStatsTable::~IpSystemStatsTable()
 {
 }
 
-bool IPMIB::Ipsystemstatstable::has_data() const
+bool IPMIB::IpSystemStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<ipsystemstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipsystemstatsentry.len(); index++)
     {
         if(ipsystemstatsentry[index]->has_data())
             return true;
@@ -2325,9 +2353,9 @@ bool IPMIB::Ipsystemstatstable::has_data() const
     return false;
 }
 
-bool IPMIB::Ipsystemstatstable::has_operation() const
+bool IPMIB::IpSystemStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipsystemstatsentry.size(); index++)
+    for (std::size_t index=0; index<ipsystemstatsentry.len(); index++)
     {
         if(ipsystemstatsentry[index]->has_operation())
             return true;
@@ -2335,21 +2363,21 @@ bool IPMIB::Ipsystemstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Ipsystemstatstable::get_absolute_path() const
+std::string IPMIB::IpSystemStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipsystemstatstable::get_segment_path() const
+std::string IPMIB::IpSystemStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipSystemStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipsystemstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpSystemStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2358,25 +2386,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipsystemstatstable::get_na
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipsystemstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpSystemStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipSystemStatsEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipsystemstatstable::Ipsystemstatsentry>();
+        auto c = std::make_shared<IPMIB::IpSystemStatsTable::IpSystemStatsEntry>();
         c->parent = this;
-        ipsystemstatsentry.push_back(c);
+        ipsystemstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipsystemstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpSystemStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipsystemstatsentry)
+    for (auto c : ipsystemstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2387,22 +2415,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipsystemstatstable::get_ch
     return children;
 }
 
-void IPMIB::Ipsystemstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpSystemStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Ipsystemstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpSystemStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Ipsystemstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpSystemStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipSystemStatsEntry")
         return true;
     return false;
 }
 
-IPMIB::Ipsystemstatstable::Ipsystemstatsentry::Ipsystemstatsentry()
+IPMIB::IpSystemStatsTable::IpSystemStatsEntry::IpSystemStatsEntry()
     :
     ipsystemstatsipversion{YType::enumeration, "ipSystemStatsIPVersion"},
     ipsystemstatsinreceives{YType::uint32, "ipSystemStatsInReceives"},
@@ -2452,15 +2480,16 @@ IPMIB::Ipsystemstatstable::Ipsystemstatsentry::Ipsystemstatsentry()
     ipsystemstatsrefreshrate{YType::uint32, "ipSystemStatsRefreshRate"}
 {
 
-    yang_name = "ipSystemStatsEntry"; yang_parent_name = "ipSystemStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipSystemStatsEntry"; yang_parent_name = "ipSystemStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipsystemstatstable::Ipsystemstatsentry::~Ipsystemstatsentry()
+IPMIB::IpSystemStatsTable::IpSystemStatsEntry::~IpSystemStatsEntry()
 {
 }
 
-bool IPMIB::Ipsystemstatstable::Ipsystemstatsentry::has_data() const
+bool IPMIB::IpSystemStatsTable::IpSystemStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipsystemstatsipversion.is_set
 	|| ipsystemstatsinreceives.is_set
 	|| ipsystemstatshcinreceives.is_set
@@ -2509,7 +2538,7 @@ bool IPMIB::Ipsystemstatstable::Ipsystemstatsentry::has_data() const
 	|| ipsystemstatsrefreshrate.is_set;
 }
 
-bool IPMIB::Ipsystemstatstable::Ipsystemstatsentry::has_operation() const
+bool IPMIB::IpSystemStatsTable::IpSystemStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipsystemstatsipversion.yfilter)
@@ -2560,21 +2589,22 @@ bool IPMIB::Ipsystemstatstable::Ipsystemstatsentry::has_operation() const
 	|| ydk::is_set(ipsystemstatsrefreshrate.yfilter);
 }
 
-std::string IPMIB::Ipsystemstatstable::Ipsystemstatsentry::get_absolute_path() const
+std::string IPMIB::IpSystemStatsTable::IpSystemStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/ipSystemStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipsystemstatstable::Ipsystemstatsentry::get_segment_path() const
+std::string IPMIB::IpSystemStatsTable::IpSystemStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipSystemStatsEntry" <<"[ipSystemStatsIPVersion='" <<ipsystemstatsipversion <<"']";
+    path_buffer << "ipSystemStatsEntry";
+    ADD_KEY_TOKEN(ipsystemstatsipversion, "ipSystemStatsIPVersion");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipsystemstatstable::Ipsystemstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpSystemStatsTable::IpSystemStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2629,19 +2659,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipsystemstatstable::Ipsyst
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipsystemstatstable::Ipsystemstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpSystemStatsTable::IpSystemStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipsystemstatstable::Ipsystemstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpSystemStatsTable::IpSystemStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Ipsystemstatstable::Ipsystemstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpSystemStatsTable::IpSystemStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipSystemStatsIPVersion")
     {
@@ -2921,7 +2951,7 @@ void IPMIB::Ipsystemstatstable::Ipsystemstatsentry::set_value(const std::string 
     }
 }
 
-void IPMIB::Ipsystemstatstable::Ipsystemstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpSystemStatsTable::IpSystemStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipSystemStatsIPVersion")
     {
@@ -3109,26 +3139,29 @@ void IPMIB::Ipsystemstatstable::Ipsystemstatsentry::set_filter(const std::string
     }
 }
 
-bool IPMIB::Ipsystemstatstable::Ipsystemstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpSystemStatsTable::IpSystemStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipSystemStatsIPVersion" || name == "ipSystemStatsInReceives" || name == "ipSystemStatsHCInReceives" || name == "ipSystemStatsInOctets" || name == "ipSystemStatsHCInOctets" || name == "ipSystemStatsInHdrErrors" || name == "ipSystemStatsInNoRoutes" || name == "ipSystemStatsInAddrErrors" || name == "ipSystemStatsInUnknownProtos" || name == "ipSystemStatsInTruncatedPkts" || name == "ipSystemStatsInForwDatagrams" || name == "ipSystemStatsHCInForwDatagrams" || name == "ipSystemStatsReasmReqds" || name == "ipSystemStatsReasmOKs" || name == "ipSystemStatsReasmFails" || name == "ipSystemStatsInDiscards" || name == "ipSystemStatsInDelivers" || name == "ipSystemStatsHCInDelivers" || name == "ipSystemStatsOutRequests" || name == "ipSystemStatsHCOutRequests" || name == "ipSystemStatsOutNoRoutes" || name == "ipSystemStatsOutForwDatagrams" || name == "ipSystemStatsHCOutForwDatagrams" || name == "ipSystemStatsOutDiscards" || name == "ipSystemStatsOutFragReqds" || name == "ipSystemStatsOutFragOKs" || name == "ipSystemStatsOutFragFails" || name == "ipSystemStatsOutFragCreates" || name == "ipSystemStatsOutTransmits" || name == "ipSystemStatsHCOutTransmits" || name == "ipSystemStatsOutOctets" || name == "ipSystemStatsHCOutOctets" || name == "ipSystemStatsInMcastPkts" || name == "ipSystemStatsHCInMcastPkts" || name == "ipSystemStatsInMcastOctets" || name == "ipSystemStatsHCInMcastOctets" || name == "ipSystemStatsOutMcastPkts" || name == "ipSystemStatsHCOutMcastPkts" || name == "ipSystemStatsOutMcastOctets" || name == "ipSystemStatsHCOutMcastOctets" || name == "ipSystemStatsInBcastPkts" || name == "ipSystemStatsHCInBcastPkts" || name == "ipSystemStatsOutBcastPkts" || name == "ipSystemStatsHCOutBcastPkts" || name == "ipSystemStatsDiscontinuityTime" || name == "ipSystemStatsRefreshRate")
         return true;
     return false;
 }
 
-IPMIB::Ipifstatstable::Ipifstatstable()
+IPMIB::IpIfStatsTable::IpIfStatsTable()
+    :
+    ipifstatsentry(this, {"ipifstatsipversion", "ipifstatsifindex"})
 {
 
-    yang_name = "ipIfStatsTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipIfStatsTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipifstatstable::~Ipifstatstable()
+IPMIB::IpIfStatsTable::~IpIfStatsTable()
 {
 }
 
-bool IPMIB::Ipifstatstable::has_data() const
+bool IPMIB::IpIfStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<ipifstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipifstatsentry.len(); index++)
     {
         if(ipifstatsentry[index]->has_data())
             return true;
@@ -3136,9 +3169,9 @@ bool IPMIB::Ipifstatstable::has_data() const
     return false;
 }
 
-bool IPMIB::Ipifstatstable::has_operation() const
+bool IPMIB::IpIfStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipifstatsentry.size(); index++)
+    for (std::size_t index=0; index<ipifstatsentry.len(); index++)
     {
         if(ipifstatsentry[index]->has_operation())
             return true;
@@ -3146,21 +3179,21 @@ bool IPMIB::Ipifstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Ipifstatstable::get_absolute_path() const
+std::string IPMIB::IpIfStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipifstatstable::get_segment_path() const
+std::string IPMIB::IpIfStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipIfStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipifstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpIfStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3169,25 +3202,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipifstatstable::get_name_l
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipifstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpIfStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipIfStatsEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipifstatstable::Ipifstatsentry>();
+        auto c = std::make_shared<IPMIB::IpIfStatsTable::IpIfStatsEntry>();
         c->parent = this;
-        ipifstatsentry.push_back(c);
+        ipifstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipifstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpIfStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipifstatsentry)
+    for (auto c : ipifstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3198,22 +3231,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipifstatstable::get_childr
     return children;
 }
 
-void IPMIB::Ipifstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpIfStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Ipifstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpIfStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Ipifstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpIfStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipIfStatsEntry")
         return true;
     return false;
 }
 
-IPMIB::Ipifstatstable::Ipifstatsentry::Ipifstatsentry()
+IPMIB::IpIfStatsTable::IpIfStatsEntry::IpIfStatsEntry()
     :
     ipifstatsipversion{YType::enumeration, "ipIfStatsIPVersion"},
     ipifstatsifindex{YType::int32, "ipIfStatsIfIndex"},
@@ -3263,15 +3296,16 @@ IPMIB::Ipifstatstable::Ipifstatsentry::Ipifstatsentry()
     ipifstatsrefreshrate{YType::uint32, "ipIfStatsRefreshRate"}
 {
 
-    yang_name = "ipIfStatsEntry"; yang_parent_name = "ipIfStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipIfStatsEntry"; yang_parent_name = "ipIfStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipifstatstable::Ipifstatsentry::~Ipifstatsentry()
+IPMIB::IpIfStatsTable::IpIfStatsEntry::~IpIfStatsEntry()
 {
 }
 
-bool IPMIB::Ipifstatstable::Ipifstatsentry::has_data() const
+bool IPMIB::IpIfStatsTable::IpIfStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipifstatsipversion.is_set
 	|| ipifstatsifindex.is_set
 	|| ipifstatsinreceives.is_set
@@ -3320,7 +3354,7 @@ bool IPMIB::Ipifstatstable::Ipifstatsentry::has_data() const
 	|| ipifstatsrefreshrate.is_set;
 }
 
-bool IPMIB::Ipifstatstable::Ipifstatsentry::has_operation() const
+bool IPMIB::IpIfStatsTable::IpIfStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipifstatsipversion.yfilter)
@@ -3371,21 +3405,23 @@ bool IPMIB::Ipifstatstable::Ipifstatsentry::has_operation() const
 	|| ydk::is_set(ipifstatsrefreshrate.yfilter);
 }
 
-std::string IPMIB::Ipifstatstable::Ipifstatsentry::get_absolute_path() const
+std::string IPMIB::IpIfStatsTable::IpIfStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/ipIfStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipifstatstable::Ipifstatsentry::get_segment_path() const
+std::string IPMIB::IpIfStatsTable::IpIfStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipIfStatsEntry" <<"[ipIfStatsIPVersion='" <<ipifstatsipversion <<"']" <<"[ipIfStatsIfIndex='" <<ipifstatsifindex <<"']";
+    path_buffer << "ipIfStatsEntry";
+    ADD_KEY_TOKEN(ipifstatsipversion, "ipIfStatsIPVersion");
+    ADD_KEY_TOKEN(ipifstatsifindex, "ipIfStatsIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipifstatstable::Ipifstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpIfStatsTable::IpIfStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3440,19 +3476,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipifstatstable::Ipifstatse
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipifstatstable::Ipifstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpIfStatsTable::IpIfStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipifstatstable::Ipifstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpIfStatsTable::IpIfStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Ipifstatstable::Ipifstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpIfStatsTable::IpIfStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipIfStatsIPVersion")
     {
@@ -3732,7 +3768,7 @@ void IPMIB::Ipifstatstable::Ipifstatsentry::set_value(const std::string & value_
     }
 }
 
-void IPMIB::Ipifstatstable::Ipifstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpIfStatsTable::IpIfStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipIfStatsIPVersion")
     {
@@ -3920,26 +3956,29 @@ void IPMIB::Ipifstatstable::Ipifstatsentry::set_filter(const std::string & value
     }
 }
 
-bool IPMIB::Ipifstatstable::Ipifstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpIfStatsTable::IpIfStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipIfStatsIPVersion" || name == "ipIfStatsIfIndex" || name == "ipIfStatsInReceives" || name == "ipIfStatsHCInReceives" || name == "ipIfStatsInOctets" || name == "ipIfStatsHCInOctets" || name == "ipIfStatsInHdrErrors" || name == "ipIfStatsInNoRoutes" || name == "ipIfStatsInAddrErrors" || name == "ipIfStatsInUnknownProtos" || name == "ipIfStatsInTruncatedPkts" || name == "ipIfStatsInForwDatagrams" || name == "ipIfStatsHCInForwDatagrams" || name == "ipIfStatsReasmReqds" || name == "ipIfStatsReasmOKs" || name == "ipIfStatsReasmFails" || name == "ipIfStatsInDiscards" || name == "ipIfStatsInDelivers" || name == "ipIfStatsHCInDelivers" || name == "ipIfStatsOutRequests" || name == "ipIfStatsHCOutRequests" || name == "ipIfStatsOutForwDatagrams" || name == "ipIfStatsHCOutForwDatagrams" || name == "ipIfStatsOutDiscards" || name == "ipIfStatsOutFragReqds" || name == "ipIfStatsOutFragOKs" || name == "ipIfStatsOutFragFails" || name == "ipIfStatsOutFragCreates" || name == "ipIfStatsOutTransmits" || name == "ipIfStatsHCOutTransmits" || name == "ipIfStatsOutOctets" || name == "ipIfStatsHCOutOctets" || name == "ipIfStatsInMcastPkts" || name == "ipIfStatsHCInMcastPkts" || name == "ipIfStatsInMcastOctets" || name == "ipIfStatsHCInMcastOctets" || name == "ipIfStatsOutMcastPkts" || name == "ipIfStatsHCOutMcastPkts" || name == "ipIfStatsOutMcastOctets" || name == "ipIfStatsHCOutMcastOctets" || name == "ipIfStatsInBcastPkts" || name == "ipIfStatsHCInBcastPkts" || name == "ipIfStatsOutBcastPkts" || name == "ipIfStatsHCOutBcastPkts" || name == "ipIfStatsDiscontinuityTime" || name == "ipIfStatsRefreshRate")
         return true;
     return false;
 }
 
-IPMIB::Ipaddressprefixtable::Ipaddressprefixtable()
+IPMIB::IpAddressPrefixTable::IpAddressPrefixTable()
+    :
+    ipaddressprefixentry(this, {"ipaddressprefixifindex", "ipaddressprefixtype", "ipaddressprefixprefix", "ipaddressprefixlength"})
 {
 
-    yang_name = "ipAddressPrefixTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipAddressPrefixTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipaddressprefixtable::~Ipaddressprefixtable()
+IPMIB::IpAddressPrefixTable::~IpAddressPrefixTable()
 {
 }
 
-bool IPMIB::Ipaddressprefixtable::has_data() const
+bool IPMIB::IpAddressPrefixTable::has_data() const
 {
-    for (std::size_t index=0; index<ipaddressprefixentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipaddressprefixentry.len(); index++)
     {
         if(ipaddressprefixentry[index]->has_data())
             return true;
@@ -3947,9 +3986,9 @@ bool IPMIB::Ipaddressprefixtable::has_data() const
     return false;
 }
 
-bool IPMIB::Ipaddressprefixtable::has_operation() const
+bool IPMIB::IpAddressPrefixTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipaddressprefixentry.size(); index++)
+    for (std::size_t index=0; index<ipaddressprefixentry.len(); index++)
     {
         if(ipaddressprefixentry[index]->has_operation())
             return true;
@@ -3957,21 +3996,21 @@ bool IPMIB::Ipaddressprefixtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Ipaddressprefixtable::get_absolute_path() const
+std::string IPMIB::IpAddressPrefixTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipaddressprefixtable::get_segment_path() const
+std::string IPMIB::IpAddressPrefixTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipAddressPrefixTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipaddressprefixtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpAddressPrefixTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3980,25 +4019,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipaddressprefixtable::get_
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipaddressprefixtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpAddressPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipAddressPrefixEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipaddressprefixtable::Ipaddressprefixentry>();
+        auto c = std::make_shared<IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry>();
         c->parent = this;
-        ipaddressprefixentry.push_back(c);
+        ipaddressprefixentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddressprefixtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpAddressPrefixTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipaddressprefixentry)
+    for (auto c : ipaddressprefixentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4009,22 +4048,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddressprefixtable::get_
     return children;
 }
 
-void IPMIB::Ipaddressprefixtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpAddressPrefixTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Ipaddressprefixtable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpAddressPrefixTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Ipaddressprefixtable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpAddressPrefixTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipAddressPrefixEntry")
         return true;
     return false;
 }
 
-IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::Ipaddressprefixentry()
+IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::IpAddressPrefixEntry()
     :
     ipaddressprefixifindex{YType::int32, "ipAddressPrefixIfIndex"},
     ipaddressprefixtype{YType::enumeration, "ipAddressPrefixType"},
@@ -4037,15 +4076,16 @@ IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::Ipaddressprefixentry()
     ipaddressprefixadvvalidlifetime{YType::uint32, "ipAddressPrefixAdvValidLifetime"}
 {
 
-    yang_name = "ipAddressPrefixEntry"; yang_parent_name = "ipAddressPrefixTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipAddressPrefixEntry"; yang_parent_name = "ipAddressPrefixTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::~Ipaddressprefixentry()
+IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::~IpAddressPrefixEntry()
 {
 }
 
-bool IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::has_data() const
+bool IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipaddressprefixifindex.is_set
 	|| ipaddressprefixtype.is_set
 	|| ipaddressprefixprefix.is_set
@@ -4057,7 +4097,7 @@ bool IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::has_data() const
 	|| ipaddressprefixadvvalidlifetime.is_set;
 }
 
-bool IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::has_operation() const
+bool IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipaddressprefixifindex.yfilter)
@@ -4071,21 +4111,25 @@ bool IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::has_operation() const
 	|| ydk::is_set(ipaddressprefixadvvalidlifetime.yfilter);
 }
 
-std::string IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::get_absolute_path() const
+std::string IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/ipAddressPrefixTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::get_segment_path() const
+std::string IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipAddressPrefixEntry" <<"[ipAddressPrefixIfIndex='" <<ipaddressprefixifindex <<"']" <<"[ipAddressPrefixType='" <<ipaddressprefixtype <<"']" <<"[ipAddressPrefixPrefix='" <<ipaddressprefixprefix <<"']" <<"[ipAddressPrefixLength='" <<ipaddressprefixlength <<"']";
+    path_buffer << "ipAddressPrefixEntry";
+    ADD_KEY_TOKEN(ipaddressprefixifindex, "ipAddressPrefixIfIndex");
+    ADD_KEY_TOKEN(ipaddressprefixtype, "ipAddressPrefixType");
+    ADD_KEY_TOKEN(ipaddressprefixprefix, "ipAddressPrefixPrefix");
+    ADD_KEY_TOKEN(ipaddressprefixlength, "ipAddressPrefixLength");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4103,19 +4147,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipaddressprefixtable::Ipad
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipAddressPrefixIfIndex")
     {
@@ -4173,7 +4217,7 @@ void IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::set_value(const std::str
     }
 }
 
-void IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipAddressPrefixIfIndex")
     {
@@ -4213,26 +4257,29 @@ void IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::set_filter(const std::st
     }
 }
 
-bool IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipAddressPrefixIfIndex" || name == "ipAddressPrefixType" || name == "ipAddressPrefixPrefix" || name == "ipAddressPrefixLength" || name == "ipAddressPrefixOrigin" || name == "ipAddressPrefixOnLinkFlag" || name == "ipAddressPrefixAutonomousFlag" || name == "ipAddressPrefixAdvPreferredLifetime" || name == "ipAddressPrefixAdvValidLifetime")
         return true;
     return false;
 }
 
-IPMIB::Ipaddresstable::Ipaddresstable()
+IPMIB::IpAddressTable::IpAddressTable()
+    :
+    ipaddressentry(this, {"ipaddressaddrtype", "ipaddressaddr"})
 {
 
-    yang_name = "ipAddressTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipAddressTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipaddresstable::~Ipaddresstable()
+IPMIB::IpAddressTable::~IpAddressTable()
 {
 }
 
-bool IPMIB::Ipaddresstable::has_data() const
+bool IPMIB::IpAddressTable::has_data() const
 {
-    for (std::size_t index=0; index<ipaddressentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipaddressentry.len(); index++)
     {
         if(ipaddressentry[index]->has_data())
             return true;
@@ -4240,9 +4287,9 @@ bool IPMIB::Ipaddresstable::has_data() const
     return false;
 }
 
-bool IPMIB::Ipaddresstable::has_operation() const
+bool IPMIB::IpAddressTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipaddressentry.size(); index++)
+    for (std::size_t index=0; index<ipaddressentry.len(); index++)
     {
         if(ipaddressentry[index]->has_operation())
             return true;
@@ -4250,21 +4297,21 @@ bool IPMIB::Ipaddresstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Ipaddresstable::get_absolute_path() const
+std::string IPMIB::IpAddressTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipaddresstable::get_segment_path() const
+std::string IPMIB::IpAddressTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipAddressTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipaddresstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpAddressTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4273,25 +4320,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipaddresstable::get_name_l
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipaddresstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpAddressTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipAddressEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipaddresstable::Ipaddressentry>();
+        auto c = std::make_shared<IPMIB::IpAddressTable::IpAddressEntry>();
         c->parent = this;
-        ipaddressentry.push_back(c);
+        ipaddressentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddresstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpAddressTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipaddressentry)
+    for (auto c : ipaddressentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4302,22 +4349,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddresstable::get_childr
     return children;
 }
 
-void IPMIB::Ipaddresstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpAddressTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Ipaddresstable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpAddressTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Ipaddresstable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpAddressTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipAddressEntry")
         return true;
     return false;
 }
 
-IPMIB::Ipaddresstable::Ipaddressentry::Ipaddressentry()
+IPMIB::IpAddressTable::IpAddressEntry::IpAddressEntry()
     :
     ipaddressaddrtype{YType::enumeration, "ipAddressAddrType"},
     ipaddressaddr{YType::str, "ipAddressAddr"},
@@ -4332,15 +4379,16 @@ IPMIB::Ipaddresstable::Ipaddressentry::Ipaddressentry()
     ipaddressstoragetype{YType::enumeration, "ipAddressStorageType"}
 {
 
-    yang_name = "ipAddressEntry"; yang_parent_name = "ipAddressTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipAddressEntry"; yang_parent_name = "ipAddressTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipaddresstable::Ipaddressentry::~Ipaddressentry()
+IPMIB::IpAddressTable::IpAddressEntry::~IpAddressEntry()
 {
 }
 
-bool IPMIB::Ipaddresstable::Ipaddressentry::has_data() const
+bool IPMIB::IpAddressTable::IpAddressEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipaddressaddrtype.is_set
 	|| ipaddressaddr.is_set
 	|| ipaddressifindex.is_set
@@ -4354,7 +4402,7 @@ bool IPMIB::Ipaddresstable::Ipaddressentry::has_data() const
 	|| ipaddressstoragetype.is_set;
 }
 
-bool IPMIB::Ipaddresstable::Ipaddressentry::has_operation() const
+bool IPMIB::IpAddressTable::IpAddressEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipaddressaddrtype.yfilter)
@@ -4370,21 +4418,23 @@ bool IPMIB::Ipaddresstable::Ipaddressentry::has_operation() const
 	|| ydk::is_set(ipaddressstoragetype.yfilter);
 }
 
-std::string IPMIB::Ipaddresstable::Ipaddressentry::get_absolute_path() const
+std::string IPMIB::IpAddressTable::IpAddressEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/ipAddressTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipaddresstable::Ipaddressentry::get_segment_path() const
+std::string IPMIB::IpAddressTable::IpAddressEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipAddressEntry" <<"[ipAddressAddrType='" <<ipaddressaddrtype <<"']" <<"[ipAddressAddr='" <<ipaddressaddr <<"']";
+    path_buffer << "ipAddressEntry";
+    ADD_KEY_TOKEN(ipaddressaddrtype, "ipAddressAddrType");
+    ADD_KEY_TOKEN(ipaddressaddr, "ipAddressAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipaddresstable::Ipaddressentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpAddressTable::IpAddressEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4404,19 +4454,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipaddresstable::Ipaddresse
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipaddresstable::Ipaddressentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpAddressTable::IpAddressEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddresstable::Ipaddressentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpAddressTable::IpAddressEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Ipaddresstable::Ipaddressentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpAddressTable::IpAddressEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipAddressAddrType")
     {
@@ -4486,7 +4536,7 @@ void IPMIB::Ipaddresstable::Ipaddressentry::set_value(const std::string & value_
     }
 }
 
-void IPMIB::Ipaddresstable::Ipaddressentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpAddressTable::IpAddressEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipAddressAddrType")
     {
@@ -4534,26 +4584,29 @@ void IPMIB::Ipaddresstable::Ipaddressentry::set_filter(const std::string & value
     }
 }
 
-bool IPMIB::Ipaddresstable::Ipaddressentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpAddressTable::IpAddressEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipAddressAddrType" || name == "ipAddressAddr" || name == "ipAddressIfIndex" || name == "ipAddressType" || name == "ipAddressPrefix" || name == "ipAddressOrigin" || name == "ipAddressStatus" || name == "ipAddressCreated" || name == "ipAddressLastChanged" || name == "ipAddressRowStatus" || name == "ipAddressStorageType")
         return true;
     return false;
 }
 
-IPMIB::Ipnettophysicaltable::Ipnettophysicaltable()
+IPMIB::IpNetToPhysicalTable::IpNetToPhysicalTable()
+    :
+    ipnettophysicalentry(this, {"ipnettophysicalifindex", "ipnettophysicalnetaddresstype", "ipnettophysicalnetaddress"})
 {
 
-    yang_name = "ipNetToPhysicalTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipNetToPhysicalTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipnettophysicaltable::~Ipnettophysicaltable()
+IPMIB::IpNetToPhysicalTable::~IpNetToPhysicalTable()
 {
 }
 
-bool IPMIB::Ipnettophysicaltable::has_data() const
+bool IPMIB::IpNetToPhysicalTable::has_data() const
 {
-    for (std::size_t index=0; index<ipnettophysicalentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipnettophysicalentry.len(); index++)
     {
         if(ipnettophysicalentry[index]->has_data())
             return true;
@@ -4561,9 +4614,9 @@ bool IPMIB::Ipnettophysicaltable::has_data() const
     return false;
 }
 
-bool IPMIB::Ipnettophysicaltable::has_operation() const
+bool IPMIB::IpNetToPhysicalTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipnettophysicalentry.size(); index++)
+    for (std::size_t index=0; index<ipnettophysicalentry.len(); index++)
     {
         if(ipnettophysicalentry[index]->has_operation())
             return true;
@@ -4571,21 +4624,21 @@ bool IPMIB::Ipnettophysicaltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Ipnettophysicaltable::get_absolute_path() const
+std::string IPMIB::IpNetToPhysicalTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipnettophysicaltable::get_segment_path() const
+std::string IPMIB::IpNetToPhysicalTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipNetToPhysicalTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipnettophysicaltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpNetToPhysicalTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4594,25 +4647,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipnettophysicaltable::get_
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipnettophysicaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpNetToPhysicalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipNetToPhysicalEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipnettophysicaltable::Ipnettophysicalentry>();
+        auto c = std::make_shared<IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry>();
         c->parent = this;
-        ipnettophysicalentry.push_back(c);
+        ipnettophysicalentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipnettophysicaltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpNetToPhysicalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipnettophysicalentry)
+    for (auto c : ipnettophysicalentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4623,22 +4676,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipnettophysicaltable::get_
     return children;
 }
 
-void IPMIB::Ipnettophysicaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpNetToPhysicalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Ipnettophysicaltable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpNetToPhysicalTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Ipnettophysicaltable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpNetToPhysicalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipNetToPhysicalEntry")
         return true;
     return false;
 }
 
-IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalentry()
+IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalEntry()
     :
     ipnettophysicalifindex{YType::int32, "ipNetToPhysicalIfIndex"},
     ipnettophysicalnetaddresstype{YType::enumeration, "ipNetToPhysicalNetAddressType"},
@@ -4650,15 +4703,16 @@ IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalentry()
     ipnettophysicalrowstatus{YType::enumeration, "ipNetToPhysicalRowStatus"}
 {
 
-    yang_name = "ipNetToPhysicalEntry"; yang_parent_name = "ipNetToPhysicalTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipNetToPhysicalEntry"; yang_parent_name = "ipNetToPhysicalTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::~Ipnettophysicalentry()
+IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::~IpNetToPhysicalEntry()
 {
 }
 
-bool IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::has_data() const
+bool IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipnettophysicalifindex.is_set
 	|| ipnettophysicalnetaddresstype.is_set
 	|| ipnettophysicalnetaddress.is_set
@@ -4669,7 +4723,7 @@ bool IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::has_data() const
 	|| ipnettophysicalrowstatus.is_set;
 }
 
-bool IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::has_operation() const
+bool IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipnettophysicalifindex.yfilter)
@@ -4682,21 +4736,24 @@ bool IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::has_operation() const
 	|| ydk::is_set(ipnettophysicalrowstatus.yfilter);
 }
 
-std::string IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::get_absolute_path() const
+std::string IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/ipNetToPhysicalTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::get_segment_path() const
+std::string IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipNetToPhysicalEntry" <<"[ipNetToPhysicalIfIndex='" <<ipnettophysicalifindex <<"']" <<"[ipNetToPhysicalNetAddressType='" <<ipnettophysicalnetaddresstype <<"']" <<"[ipNetToPhysicalNetAddress='" <<ipnettophysicalnetaddress <<"']";
+    path_buffer << "ipNetToPhysicalEntry";
+    ADD_KEY_TOKEN(ipnettophysicalifindex, "ipNetToPhysicalIfIndex");
+    ADD_KEY_TOKEN(ipnettophysicalnetaddresstype, "ipNetToPhysicalNetAddressType");
+    ADD_KEY_TOKEN(ipnettophysicalnetaddress, "ipNetToPhysicalNetAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4713,19 +4770,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipnettophysicaltable::Ipne
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipNetToPhysicalIfIndex")
     {
@@ -4777,7 +4834,7 @@ void IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::set_value(const std::str
     }
 }
 
-void IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipNetToPhysicalIfIndex")
     {
@@ -4813,26 +4870,29 @@ void IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::set_filter(const std::st
     }
 }
 
-bool IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipNetToPhysicalIfIndex" || name == "ipNetToPhysicalNetAddressType" || name == "ipNetToPhysicalNetAddress" || name == "ipNetToPhysicalPhysAddress" || name == "ipNetToPhysicalLastUpdated" || name == "ipNetToPhysicalType" || name == "ipNetToPhysicalState" || name == "ipNetToPhysicalRowStatus")
         return true;
     return false;
 }
 
-IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindextable()
+IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexTable()
+    :
+    ipv6scopezoneindexentry(this, {"ipv6scopezoneindexifindex"})
 {
 
-    yang_name = "ipv6ScopeZoneIndexTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6ScopeZoneIndexTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipv6Scopezoneindextable::~Ipv6Scopezoneindextable()
+IPMIB::Ipv6ScopeZoneIndexTable::~Ipv6ScopeZoneIndexTable()
 {
 }
 
-bool IPMIB::Ipv6Scopezoneindextable::has_data() const
+bool IPMIB::Ipv6ScopeZoneIndexTable::has_data() const
 {
-    for (std::size_t index=0; index<ipv6scopezoneindexentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6scopezoneindexentry.len(); index++)
     {
         if(ipv6scopezoneindexentry[index]->has_data())
             return true;
@@ -4840,9 +4900,9 @@ bool IPMIB::Ipv6Scopezoneindextable::has_data() const
     return false;
 }
 
-bool IPMIB::Ipv6Scopezoneindextable::has_operation() const
+bool IPMIB::Ipv6ScopeZoneIndexTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6scopezoneindexentry.size(); index++)
+    for (std::size_t index=0; index<ipv6scopezoneindexentry.len(); index++)
     {
         if(ipv6scopezoneindexentry[index]->has_operation())
             return true;
@@ -4850,21 +4910,21 @@ bool IPMIB::Ipv6Scopezoneindextable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Ipv6Scopezoneindextable::get_absolute_path() const
+std::string IPMIB::Ipv6ScopeZoneIndexTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipv6Scopezoneindextable::get_segment_path() const
+std::string IPMIB::Ipv6ScopeZoneIndexTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6ScopeZoneIndexTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6Scopezoneindextable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6ScopeZoneIndexTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4873,25 +4933,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6Scopezoneindextable::g
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv6Scopezoneindextable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::Ipv6ScopeZoneIndexTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6ScopeZoneIndexEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry>();
+        auto c = std::make_shared<IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry>();
         c->parent = this;
-        ipv6scopezoneindexentry.push_back(c);
+        ipv6scopezoneindexentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Scopezoneindextable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6ScopeZoneIndexTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6scopezoneindexentry)
+    for (auto c : ipv6scopezoneindexentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4902,22 +4962,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Scopezoneindextable::g
     return children;
 }
 
-void IPMIB::Ipv6Scopezoneindextable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::Ipv6ScopeZoneIndexTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Ipv6Scopezoneindextable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::Ipv6ScopeZoneIndexTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Ipv6Scopezoneindextable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::Ipv6ScopeZoneIndexTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6ScopeZoneIndexEntry")
         return true;
     return false;
 }
 
-IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::Ipv6Scopezoneindexentry()
+IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::Ipv6ScopeZoneIndexEntry()
     :
     ipv6scopezoneindexifindex{YType::int32, "ipv6ScopeZoneIndexIfIndex"},
     ipv6scopezoneindexlinklocal{YType::uint32, "ipv6ScopeZoneIndexLinkLocal"},
@@ -4934,15 +4994,16 @@ IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::Ipv6Scopezoneindexentry
     ipv6scopezoneindexd{YType::uint32, "ipv6ScopeZoneIndexD"}
 {
 
-    yang_name = "ipv6ScopeZoneIndexEntry"; yang_parent_name = "ipv6ScopeZoneIndexTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6ScopeZoneIndexEntry"; yang_parent_name = "ipv6ScopeZoneIndexTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::~Ipv6Scopezoneindexentry()
+IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::~Ipv6ScopeZoneIndexEntry()
 {
 }
 
-bool IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::has_data() const
+bool IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6scopezoneindexifindex.is_set
 	|| ipv6scopezoneindexlinklocal.is_set
 	|| ipv6scopezoneindex3.is_set
@@ -4958,7 +5019,7 @@ bool IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::has_data() const
 	|| ipv6scopezoneindexd.is_set;
 }
 
-bool IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::has_operation() const
+bool IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv6scopezoneindexifindex.yfilter)
@@ -4976,21 +5037,22 @@ bool IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::has_operation() co
 	|| ydk::is_set(ipv6scopezoneindexd.yfilter);
 }
 
-std::string IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::get_absolute_path() const
+std::string IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/ipv6ScopeZoneIndexTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::get_segment_path() const
+std::string IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6ScopeZoneIndexEntry" <<"[ipv6ScopeZoneIndexIfIndex='" <<ipv6scopezoneindexifindex <<"']";
+    path_buffer << "ipv6ScopeZoneIndexEntry";
+    ADD_KEY_TOKEN(ipv6scopezoneindexifindex, "ipv6ScopeZoneIndexIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5012,19 +5074,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6Scopezoneindextable::I
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6ScopeZoneIndexIfIndex")
     {
@@ -5106,7 +5168,7 @@ void IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::set_value(const st
     }
 }
 
-void IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv6ScopeZoneIndexIfIndex")
     {
@@ -5162,26 +5224,29 @@ void IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::set_filter(const s
     }
 }
 
-bool IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6ScopeZoneIndexIfIndex" || name == "ipv6ScopeZoneIndexLinkLocal" || name == "ipv6ScopeZoneIndex3" || name == "ipv6ScopeZoneIndexAdminLocal" || name == "ipv6ScopeZoneIndexSiteLocal" || name == "ipv6ScopeZoneIndex6" || name == "ipv6ScopeZoneIndex7" || name == "ipv6ScopeZoneIndexOrganizationLocal" || name == "ipv6ScopeZoneIndex9" || name == "ipv6ScopeZoneIndexA" || name == "ipv6ScopeZoneIndexB" || name == "ipv6ScopeZoneIndexC" || name == "ipv6ScopeZoneIndexD")
         return true;
     return false;
 }
 
-IPMIB::Ipdefaultroutertable::Ipdefaultroutertable()
+IPMIB::IpDefaultRouterTable::IpDefaultRouterTable()
+    :
+    ipdefaultrouterentry(this, {"ipdefaultrouteraddresstype", "ipdefaultrouteraddress", "ipdefaultrouterifindex"})
 {
 
-    yang_name = "ipDefaultRouterTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipDefaultRouterTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipdefaultroutertable::~Ipdefaultroutertable()
+IPMIB::IpDefaultRouterTable::~IpDefaultRouterTable()
 {
 }
 
-bool IPMIB::Ipdefaultroutertable::has_data() const
+bool IPMIB::IpDefaultRouterTable::has_data() const
 {
-    for (std::size_t index=0; index<ipdefaultrouterentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipdefaultrouterentry.len(); index++)
     {
         if(ipdefaultrouterentry[index]->has_data())
             return true;
@@ -5189,9 +5254,9 @@ bool IPMIB::Ipdefaultroutertable::has_data() const
     return false;
 }
 
-bool IPMIB::Ipdefaultroutertable::has_operation() const
+bool IPMIB::IpDefaultRouterTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipdefaultrouterentry.size(); index++)
+    for (std::size_t index=0; index<ipdefaultrouterentry.len(); index++)
     {
         if(ipdefaultrouterentry[index]->has_operation())
             return true;
@@ -5199,21 +5264,21 @@ bool IPMIB::Ipdefaultroutertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Ipdefaultroutertable::get_absolute_path() const
+std::string IPMIB::IpDefaultRouterTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipdefaultroutertable::get_segment_path() const
+std::string IPMIB::IpDefaultRouterTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipDefaultRouterTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipdefaultroutertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpDefaultRouterTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5222,25 +5287,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipdefaultroutertable::get_
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipdefaultroutertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpDefaultRouterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipDefaultRouterEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry>();
+        auto c = std::make_shared<IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry>();
         c->parent = this;
-        ipdefaultrouterentry.push_back(c);
+        ipdefaultrouterentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipdefaultroutertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpDefaultRouterTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipdefaultrouterentry)
+    for (auto c : ipdefaultrouterentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5251,22 +5316,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipdefaultroutertable::get_
     return children;
 }
 
-void IPMIB::Ipdefaultroutertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpDefaultRouterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Ipdefaultroutertable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpDefaultRouterTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Ipdefaultroutertable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpDefaultRouterTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipDefaultRouterEntry")
         return true;
     return false;
 }
 
-IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::Ipdefaultrouterentry()
+IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::IpDefaultRouterEntry()
     :
     ipdefaultrouteraddresstype{YType::enumeration, "ipDefaultRouterAddressType"},
     ipdefaultrouteraddress{YType::str, "ipDefaultRouterAddress"},
@@ -5275,15 +5340,16 @@ IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::Ipdefaultrouterentry()
     ipdefaultrouterpreference{YType::enumeration, "ipDefaultRouterPreference"}
 {
 
-    yang_name = "ipDefaultRouterEntry"; yang_parent_name = "ipDefaultRouterTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipDefaultRouterEntry"; yang_parent_name = "ipDefaultRouterTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::~Ipdefaultrouterentry()
+IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::~IpDefaultRouterEntry()
 {
 }
 
-bool IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::has_data() const
+bool IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipdefaultrouteraddresstype.is_set
 	|| ipdefaultrouteraddress.is_set
 	|| ipdefaultrouterifindex.is_set
@@ -5291,7 +5357,7 @@ bool IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::has_data() const
 	|| ipdefaultrouterpreference.is_set;
 }
 
-bool IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::has_operation() const
+bool IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipdefaultrouteraddresstype.yfilter)
@@ -5301,21 +5367,24 @@ bool IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::has_operation() const
 	|| ydk::is_set(ipdefaultrouterpreference.yfilter);
 }
 
-std::string IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::get_absolute_path() const
+std::string IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/ipDefaultRouterTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::get_segment_path() const
+std::string IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipDefaultRouterEntry" <<"[ipDefaultRouterAddressType='" <<ipdefaultrouteraddresstype <<"']" <<"[ipDefaultRouterAddress='" <<ipdefaultrouteraddress <<"']" <<"[ipDefaultRouterIfIndex='" <<ipdefaultrouterifindex <<"']";
+    path_buffer << "ipDefaultRouterEntry";
+    ADD_KEY_TOKEN(ipdefaultrouteraddresstype, "ipDefaultRouterAddressType");
+    ADD_KEY_TOKEN(ipdefaultrouteraddress, "ipDefaultRouterAddress");
+    ADD_KEY_TOKEN(ipdefaultrouterifindex, "ipDefaultRouterIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5329,19 +5398,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipdefaultroutertable::Ipde
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipDefaultRouterAddressType")
     {
@@ -5375,7 +5444,7 @@ void IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::set_value(const std::str
     }
 }
 
-void IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipDefaultRouterAddressType")
     {
@@ -5399,26 +5468,29 @@ void IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::set_filter(const std::st
     }
 }
 
-bool IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipDefaultRouterAddressType" || name == "ipDefaultRouterAddress" || name == "ipDefaultRouterIfIndex" || name == "ipDefaultRouterLifetime" || name == "ipDefaultRouterPreference")
         return true;
     return false;
 }
 
-IPMIB::Ipv6Routeradverttable::Ipv6Routeradverttable()
+IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertTable()
+    :
+    ipv6routeradvertentry(this, {"ipv6routeradvertifindex"})
 {
 
-    yang_name = "ipv6RouterAdvertTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6RouterAdvertTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipv6Routeradverttable::~Ipv6Routeradverttable()
+IPMIB::Ipv6RouterAdvertTable::~Ipv6RouterAdvertTable()
 {
 }
 
-bool IPMIB::Ipv6Routeradverttable::has_data() const
+bool IPMIB::Ipv6RouterAdvertTable::has_data() const
 {
-    for (std::size_t index=0; index<ipv6routeradvertentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6routeradvertentry.len(); index++)
     {
         if(ipv6routeradvertentry[index]->has_data())
             return true;
@@ -5426,9 +5498,9 @@ bool IPMIB::Ipv6Routeradverttable::has_data() const
     return false;
 }
 
-bool IPMIB::Ipv6Routeradverttable::has_operation() const
+bool IPMIB::Ipv6RouterAdvertTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6routeradvertentry.size(); index++)
+    for (std::size_t index=0; index<ipv6routeradvertentry.len(); index++)
     {
         if(ipv6routeradvertentry[index]->has_operation())
             return true;
@@ -5436,21 +5508,21 @@ bool IPMIB::Ipv6Routeradverttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Ipv6Routeradverttable::get_absolute_path() const
+std::string IPMIB::Ipv6RouterAdvertTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipv6Routeradverttable::get_segment_path() const
+std::string IPMIB::Ipv6RouterAdvertTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6RouterAdvertTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6Routeradverttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6RouterAdvertTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5459,25 +5531,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6Routeradverttable::get
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv6Routeradverttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::Ipv6RouterAdvertTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6RouterAdvertEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry>();
+        auto c = std::make_shared<IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry>();
         c->parent = this;
-        ipv6routeradvertentry.push_back(c);
+        ipv6routeradvertentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Routeradverttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6RouterAdvertTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6routeradvertentry)
+    for (auto c : ipv6routeradvertentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5488,22 +5560,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Routeradverttable::get
     return children;
 }
 
-void IPMIB::Ipv6Routeradverttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::Ipv6RouterAdvertTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Ipv6Routeradverttable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::Ipv6RouterAdvertTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Ipv6Routeradverttable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::Ipv6RouterAdvertTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6RouterAdvertEntry")
         return true;
     return false;
 }
 
-IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::Ipv6Routeradvertentry()
+IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::Ipv6RouterAdvertEntry()
     :
     ipv6routeradvertifindex{YType::int32, "ipv6RouterAdvertIfIndex"},
     ipv6routeradvertsendadverts{YType::boolean, "ipv6RouterAdvertSendAdverts"},
@@ -5519,15 +5591,16 @@ IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::Ipv6Routeradvertentry()
     ipv6routeradvertrowstatus{YType::enumeration, "ipv6RouterAdvertRowStatus"}
 {
 
-    yang_name = "ipv6RouterAdvertEntry"; yang_parent_name = "ipv6RouterAdvertTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6RouterAdvertEntry"; yang_parent_name = "ipv6RouterAdvertTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::~Ipv6Routeradvertentry()
+IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::~Ipv6RouterAdvertEntry()
 {
 }
 
-bool IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::has_data() const
+bool IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6routeradvertifindex.is_set
 	|| ipv6routeradvertsendadverts.is_set
 	|| ipv6routeradvertmaxinterval.is_set
@@ -5542,7 +5615,7 @@ bool IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::has_data() const
 	|| ipv6routeradvertrowstatus.is_set;
 }
 
-bool IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::has_operation() const
+bool IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv6routeradvertifindex.yfilter)
@@ -5559,21 +5632,22 @@ bool IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::has_operation() const
 	|| ydk::is_set(ipv6routeradvertrowstatus.yfilter);
 }
 
-std::string IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::get_absolute_path() const
+std::string IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/ipv6RouterAdvertTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::get_segment_path() const
+std::string IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6RouterAdvertEntry" <<"[ipv6RouterAdvertIfIndex='" <<ipv6routeradvertifindex <<"']";
+    path_buffer << "ipv6RouterAdvertEntry";
+    ADD_KEY_TOKEN(ipv6routeradvertifindex, "ipv6RouterAdvertIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5594,19 +5668,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6Routeradverttable::Ipv
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6RouterAdvertIfIndex")
     {
@@ -5682,7 +5756,7 @@ void IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::set_value(const std::s
     }
 }
 
-void IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv6RouterAdvertIfIndex")
     {
@@ -5734,26 +5808,29 @@ void IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::set_filter(const std::
     }
 }
 
-bool IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6RouterAdvertIfIndex" || name == "ipv6RouterAdvertSendAdverts" || name == "ipv6RouterAdvertMaxInterval" || name == "ipv6RouterAdvertMinInterval" || name == "ipv6RouterAdvertManagedFlag" || name == "ipv6RouterAdvertOtherConfigFlag" || name == "ipv6RouterAdvertLinkMTU" || name == "ipv6RouterAdvertReachableTime" || name == "ipv6RouterAdvertRetransmitTime" || name == "ipv6RouterAdvertCurHopLimit" || name == "ipv6RouterAdvertDefaultLifetime" || name == "ipv6RouterAdvertRowStatus")
         return true;
     return false;
 }
 
-IPMIB::Icmpstatstable::Icmpstatstable()
+IPMIB::IcmpStatsTable::IcmpStatsTable()
+    :
+    icmpstatsentry(this, {"icmpstatsipversion"})
 {
 
-    yang_name = "icmpStatsTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icmpStatsTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Icmpstatstable::~Icmpstatstable()
+IPMIB::IcmpStatsTable::~IcmpStatsTable()
 {
 }
 
-bool IPMIB::Icmpstatstable::has_data() const
+bool IPMIB::IcmpStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<icmpstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<icmpstatsentry.len(); index++)
     {
         if(icmpstatsentry[index]->has_data())
             return true;
@@ -5761,9 +5838,9 @@ bool IPMIB::Icmpstatstable::has_data() const
     return false;
 }
 
-bool IPMIB::Icmpstatstable::has_operation() const
+bool IPMIB::IcmpStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<icmpstatsentry.size(); index++)
+    for (std::size_t index=0; index<icmpstatsentry.len(); index++)
     {
         if(icmpstatsentry[index]->has_operation())
             return true;
@@ -5771,21 +5848,21 @@ bool IPMIB::Icmpstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Icmpstatstable::get_absolute_path() const
+std::string IPMIB::IcmpStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Icmpstatstable::get_segment_path() const
+std::string IPMIB::IcmpStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "icmpStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Icmpstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IcmpStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5794,25 +5871,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Icmpstatstable::get_name_l
 
 }
 
-std::shared_ptr<Entity> IPMIB::Icmpstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IcmpStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "icmpStatsEntry")
     {
-        auto c = std::make_shared<IPMIB::Icmpstatstable::Icmpstatsentry>();
+        auto c = std::make_shared<IPMIB::IcmpStatsTable::IcmpStatsEntry>();
         c->parent = this;
-        icmpstatsentry.push_back(c);
+        icmpstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Icmpstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IcmpStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : icmpstatsentry)
+    for (auto c : icmpstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5823,22 +5900,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Icmpstatstable::get_childr
     return children;
 }
 
-void IPMIB::Icmpstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IcmpStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Icmpstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IcmpStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Icmpstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IcmpStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "icmpStatsEntry")
         return true;
     return false;
 }
 
-IPMIB::Icmpstatstable::Icmpstatsentry::Icmpstatsentry()
+IPMIB::IcmpStatsTable::IcmpStatsEntry::IcmpStatsEntry()
     :
     icmpstatsipversion{YType::enumeration, "icmpStatsIPVersion"},
     icmpstatsinmsgs{YType::uint32, "icmpStatsInMsgs"},
@@ -5847,15 +5924,16 @@ IPMIB::Icmpstatstable::Icmpstatsentry::Icmpstatsentry()
     icmpstatsouterrors{YType::uint32, "icmpStatsOutErrors"}
 {
 
-    yang_name = "icmpStatsEntry"; yang_parent_name = "icmpStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icmpStatsEntry"; yang_parent_name = "icmpStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Icmpstatstable::Icmpstatsentry::~Icmpstatsentry()
+IPMIB::IcmpStatsTable::IcmpStatsEntry::~IcmpStatsEntry()
 {
 }
 
-bool IPMIB::Icmpstatstable::Icmpstatsentry::has_data() const
+bool IPMIB::IcmpStatsTable::IcmpStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return icmpstatsipversion.is_set
 	|| icmpstatsinmsgs.is_set
 	|| icmpstatsinerrors.is_set
@@ -5863,7 +5941,7 @@ bool IPMIB::Icmpstatstable::Icmpstatsentry::has_data() const
 	|| icmpstatsouterrors.is_set;
 }
 
-bool IPMIB::Icmpstatstable::Icmpstatsentry::has_operation() const
+bool IPMIB::IcmpStatsTable::IcmpStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(icmpstatsipversion.yfilter)
@@ -5873,21 +5951,22 @@ bool IPMIB::Icmpstatstable::Icmpstatsentry::has_operation() const
 	|| ydk::is_set(icmpstatsouterrors.yfilter);
 }
 
-std::string IPMIB::Icmpstatstable::Icmpstatsentry::get_absolute_path() const
+std::string IPMIB::IcmpStatsTable::IcmpStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/icmpStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Icmpstatstable::Icmpstatsentry::get_segment_path() const
+std::string IPMIB::IcmpStatsTable::IcmpStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "icmpStatsEntry" <<"[icmpStatsIPVersion='" <<icmpstatsipversion <<"']";
+    path_buffer << "icmpStatsEntry";
+    ADD_KEY_TOKEN(icmpstatsipversion, "icmpStatsIPVersion");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Icmpstatstable::Icmpstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IcmpStatsTable::IcmpStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5901,19 +5980,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Icmpstatstable::Icmpstatse
 
 }
 
-std::shared_ptr<Entity> IPMIB::Icmpstatstable::Icmpstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IcmpStatsTable::IcmpStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Icmpstatstable::Icmpstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IcmpStatsTable::IcmpStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Icmpstatstable::Icmpstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IcmpStatsTable::IcmpStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "icmpStatsIPVersion")
     {
@@ -5947,7 +6026,7 @@ void IPMIB::Icmpstatstable::Icmpstatsentry::set_value(const std::string & value_
     }
 }
 
-void IPMIB::Icmpstatstable::Icmpstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IcmpStatsTable::IcmpStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "icmpStatsIPVersion")
     {
@@ -5971,26 +6050,29 @@ void IPMIB::Icmpstatstable::Icmpstatsentry::set_filter(const std::string & value
     }
 }
 
-bool IPMIB::Icmpstatstable::Icmpstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IcmpStatsTable::IcmpStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "icmpStatsIPVersion" || name == "icmpStatsInMsgs" || name == "icmpStatsInErrors" || name == "icmpStatsOutMsgs" || name == "icmpStatsOutErrors")
         return true;
     return false;
 }
 
-IPMIB::Icmpmsgstatstable::Icmpmsgstatstable()
+IPMIB::IcmpMsgStatsTable::IcmpMsgStatsTable()
+    :
+    icmpmsgstatsentry(this, {"icmpmsgstatsipversion", "icmpmsgstatstype"})
 {
 
-    yang_name = "icmpMsgStatsTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icmpMsgStatsTable"; yang_parent_name = "IP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Icmpmsgstatstable::~Icmpmsgstatstable()
+IPMIB::IcmpMsgStatsTable::~IcmpMsgStatsTable()
 {
 }
 
-bool IPMIB::Icmpmsgstatstable::has_data() const
+bool IPMIB::IcmpMsgStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<icmpmsgstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<icmpmsgstatsentry.len(); index++)
     {
         if(icmpmsgstatsentry[index]->has_data())
             return true;
@@ -5998,9 +6080,9 @@ bool IPMIB::Icmpmsgstatstable::has_data() const
     return false;
 }
 
-bool IPMIB::Icmpmsgstatstable::has_operation() const
+bool IPMIB::IcmpMsgStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<icmpmsgstatsentry.size(); index++)
+    for (std::size_t index=0; index<icmpmsgstatsentry.len(); index++)
     {
         if(icmpmsgstatsentry[index]->has_operation())
             return true;
@@ -6008,21 +6090,21 @@ bool IPMIB::Icmpmsgstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMIB::Icmpmsgstatstable::get_absolute_path() const
+std::string IPMIB::IcmpMsgStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Icmpmsgstatstable::get_segment_path() const
+std::string IPMIB::IcmpMsgStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "icmpMsgStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Icmpmsgstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IcmpMsgStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6031,25 +6113,25 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Icmpmsgstatstable::get_nam
 
 }
 
-std::shared_ptr<Entity> IPMIB::Icmpmsgstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IcmpMsgStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "icmpMsgStatsEntry")
     {
-        auto c = std::make_shared<IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry>();
+        auto c = std::make_shared<IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry>();
         c->parent = this;
-        icmpmsgstatsentry.push_back(c);
+        icmpmsgstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Icmpmsgstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IcmpMsgStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : icmpmsgstatsentry)
+    for (auto c : icmpmsgstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6060,22 +6142,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMIB::Icmpmsgstatstable::get_chi
     return children;
 }
 
-void IPMIB::Icmpmsgstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IcmpMsgStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMIB::Icmpmsgstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IcmpMsgStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMIB::Icmpmsgstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IcmpMsgStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "icmpMsgStatsEntry")
         return true;
     return false;
 }
 
-IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::Icmpmsgstatsentry()
+IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::IcmpMsgStatsEntry()
     :
     icmpmsgstatsipversion{YType::enumeration, "icmpMsgStatsIPVersion"},
     icmpmsgstatstype{YType::int32, "icmpMsgStatsType"},
@@ -6083,22 +6165,23 @@ IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::Icmpmsgstatsentry()
     icmpmsgstatsoutpkts{YType::uint32, "icmpMsgStatsOutPkts"}
 {
 
-    yang_name = "icmpMsgStatsEntry"; yang_parent_name = "icmpMsgStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icmpMsgStatsEntry"; yang_parent_name = "icmpMsgStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::~Icmpmsgstatsentry()
+IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::~IcmpMsgStatsEntry()
 {
 }
 
-bool IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::has_data() const
+bool IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return icmpmsgstatsipversion.is_set
 	|| icmpmsgstatstype.is_set
 	|| icmpmsgstatsinpkts.is_set
 	|| icmpmsgstatsoutpkts.is_set;
 }
 
-bool IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::has_operation() const
+bool IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(icmpmsgstatsipversion.yfilter)
@@ -6107,21 +6190,23 @@ bool IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::has_operation() const
 	|| ydk::is_set(icmpmsgstatsoutpkts.yfilter);
 }
 
-std::string IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::get_absolute_path() const
+std::string IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IP-MIB:IP-MIB/icmpMsgStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::get_segment_path() const
+std::string IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "icmpMsgStatsEntry" <<"[icmpMsgStatsIPVersion='" <<icmpmsgstatsipversion <<"']" <<"[icmpMsgStatsType='" <<icmpmsgstatstype <<"']";
+    path_buffer << "icmpMsgStatsEntry";
+    ADD_KEY_TOKEN(icmpmsgstatsipversion, "icmpMsgStatsIPVersion");
+    ADD_KEY_TOKEN(icmpmsgstatstype, "icmpMsgStatsType");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6134,19 +6219,19 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Icmpmsgstatstable::Icmpmsg
 
 }
 
-std::shared_ptr<Entity> IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "icmpMsgStatsIPVersion")
     {
@@ -6174,7 +6259,7 @@ void IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::set_value(const std::string & 
     }
 }
 
-void IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "icmpMsgStatsIPVersion")
     {
@@ -6194,12 +6279,18 @@ void IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::set_filter(const std::string &
     }
 }
 
-bool IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "icmpMsgStatsIPVersion" || name == "icmpMsgStatsType" || name == "icmpMsgStatsInPkts" || name == "icmpMsgStatsOutPkts")
         return true;
     return false;
 }
+
+const Enum::YLeaf IpAddressPrefixOriginTC::other {1, "other"};
+const Enum::YLeaf IpAddressPrefixOriginTC::manual {2, "manual"};
+const Enum::YLeaf IpAddressPrefixOriginTC::wellknown {3, "wellknown"};
+const Enum::YLeaf IpAddressPrefixOriginTC::dhcp {4, "dhcp"};
+const Enum::YLeaf IpAddressPrefixOriginTC::routeradv {5, "routeradv"};
 
 const Enum::YLeaf IpAddressOriginTC::other {1, "other"};
 const Enum::YLeaf IpAddressOriginTC::manual {2, "manual"};
@@ -6216,54 +6307,48 @@ const Enum::YLeaf IpAddressStatusTC::tentative {6, "tentative"};
 const Enum::YLeaf IpAddressStatusTC::duplicate {7, "duplicate"};
 const Enum::YLeaf IpAddressStatusTC::optimistic {8, "optimistic"};
 
-const Enum::YLeaf IpAddressPrefixOriginTC::other {1, "other"};
-const Enum::YLeaf IpAddressPrefixOriginTC::manual {2, "manual"};
-const Enum::YLeaf IpAddressPrefixOriginTC::wellknown {3, "wellknown"};
-const Enum::YLeaf IpAddressPrefixOriginTC::dhcp {4, "dhcp"};
-const Enum::YLeaf IpAddressPrefixOriginTC::routeradv {5, "routeradv"};
+const Enum::YLeaf IPMIB::Ip::IpForwarding::forwarding {1, "forwarding"};
+const Enum::YLeaf IPMIB::Ip::IpForwarding::notForwarding {2, "notForwarding"};
 
-const Enum::YLeaf IPMIB::Ip::Ipforwarding::forwarding {1, "forwarding"};
-const Enum::YLeaf IPMIB::Ip::Ipforwarding::notForwarding {2, "notForwarding"};
+const Enum::YLeaf IPMIB::Ip::Ipv6IpForwarding::forwarding {1, "forwarding"};
+const Enum::YLeaf IPMIB::Ip::Ipv6IpForwarding::notForwarding {2, "notForwarding"};
 
-const Enum::YLeaf IPMIB::Ip::Ipv6Ipforwarding::forwarding {1, "forwarding"};
-const Enum::YLeaf IPMIB::Ip::Ipv6Ipforwarding::notForwarding {2, "notForwarding"};
+const Enum::YLeaf IPMIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType::other {1, "other"};
+const Enum::YLeaf IPMIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType::invalid {2, "invalid"};
+const Enum::YLeaf IPMIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType::dynamic {3, "dynamic"};
+const Enum::YLeaf IPMIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType::static_ {4, "static"};
 
-const Enum::YLeaf IPMIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype::other {1, "other"};
-const Enum::YLeaf IPMIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype::invalid {2, "invalid"};
-const Enum::YLeaf IPMIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype::dynamic {3, "dynamic"};
-const Enum::YLeaf IPMIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype::static_ {4, "static"};
+const Enum::YLeaf IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::Ipv4InterfaceEnableStatus::up {1, "up"};
+const Enum::YLeaf IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::Ipv4InterfaceEnableStatus::down {2, "down"};
 
-const Enum::YLeaf IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::Ipv4Interfaceenablestatus::up {1, "up"};
-const Enum::YLeaf IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::Ipv4Interfaceenablestatus::down {2, "down"};
+const Enum::YLeaf IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::Ipv6InterfaceEnableStatus::up {1, "up"};
+const Enum::YLeaf IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::Ipv6InterfaceEnableStatus::down {2, "down"};
 
-const Enum::YLeaf IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceenablestatus::up {1, "up"};
-const Enum::YLeaf IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceenablestatus::down {2, "down"};
+const Enum::YLeaf IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::Ipv6InterfaceForwarding::forwarding {1, "forwarding"};
+const Enum::YLeaf IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::Ipv6InterfaceForwarding::notForwarding {2, "notForwarding"};
 
-const Enum::YLeaf IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceforwarding::forwarding {1, "forwarding"};
-const Enum::YLeaf IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceforwarding::notForwarding {2, "notForwarding"};
+const Enum::YLeaf IPMIB::IpAddressTable::IpAddressEntry::IpAddressType::unicast {1, "unicast"};
+const Enum::YLeaf IPMIB::IpAddressTable::IpAddressEntry::IpAddressType::anycast {2, "anycast"};
+const Enum::YLeaf IPMIB::IpAddressTable::IpAddressEntry::IpAddressType::broadcast {3, "broadcast"};
 
-const Enum::YLeaf IPMIB::Ipaddresstable::Ipaddressentry::Ipaddresstype::unicast {1, "unicast"};
-const Enum::YLeaf IPMIB::Ipaddresstable::Ipaddressentry::Ipaddresstype::anycast {2, "anycast"};
-const Enum::YLeaf IPMIB::Ipaddresstable::Ipaddressentry::Ipaddresstype::broadcast {3, "broadcast"};
+const Enum::YLeaf IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalType::other {1, "other"};
+const Enum::YLeaf IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalType::invalid {2, "invalid"};
+const Enum::YLeaf IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalType::dynamic {3, "dynamic"};
+const Enum::YLeaf IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalType::static_ {4, "static"};
+const Enum::YLeaf IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalType::local {5, "local"};
 
-const Enum::YLeaf IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicaltype::other {1, "other"};
-const Enum::YLeaf IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicaltype::invalid {2, "invalid"};
-const Enum::YLeaf IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicaltype::dynamic {3, "dynamic"};
-const Enum::YLeaf IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicaltype::static_ {4, "static"};
-const Enum::YLeaf IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicaltype::local {5, "local"};
+const Enum::YLeaf IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalState::reachable {1, "reachable"};
+const Enum::YLeaf IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalState::stale {2, "stale"};
+const Enum::YLeaf IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalState::delay {3, "delay"};
+const Enum::YLeaf IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalState::probe {4, "probe"};
+const Enum::YLeaf IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalState::invalid {5, "invalid"};
+const Enum::YLeaf IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalState::unknown {6, "unknown"};
+const Enum::YLeaf IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::IpNetToPhysicalState::incomplete {7, "incomplete"};
 
-const Enum::YLeaf IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::reachable {1, "reachable"};
-const Enum::YLeaf IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::stale {2, "stale"};
-const Enum::YLeaf IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::delay {3, "delay"};
-const Enum::YLeaf IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::probe {4, "probe"};
-const Enum::YLeaf IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::invalid {5, "invalid"};
-const Enum::YLeaf IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::unknown {6, "unknown"};
-const Enum::YLeaf IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::incomplete {7, "incomplete"};
-
-const Enum::YLeaf IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::Ipdefaultrouterpreference::reserved {-2, "reserved"};
-const Enum::YLeaf IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::Ipdefaultrouterpreference::low {-1, "low"};
-const Enum::YLeaf IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::Ipdefaultrouterpreference::medium {0, "medium"};
-const Enum::YLeaf IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::Ipdefaultrouterpreference::high {1, "high"};
+const Enum::YLeaf IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::IpDefaultRouterPreference::reserved {-2, "reserved"};
+const Enum::YLeaf IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::IpDefaultRouterPreference::low {-1, "low"};
+const Enum::YLeaf IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::IpDefaultRouterPreference::medium {0, "medium"};
+const Enum::YLeaf IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::IpDefaultRouterPreference::high {1, "high"};
 
 
 }

@@ -57,7 +57,7 @@ class Ssespan::Nodes : public ydk::Entity
 
         class Node; //type: Ssespan::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sse_span_oper::Ssespan::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Ssespan::Nodes
 
@@ -109,7 +109,7 @@ class Ssespan::Nodes::Node::SpanMirrInfos : public ydk::Entity
 
         class SpanMirrInfo; //type: Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sse_span_oper::Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo> > span_mirr_info;
+        ydk::YList span_mirr_info;
         
 }; // Ssespan::Nodes::Node::SpanMirrInfos
 
@@ -201,7 +201,7 @@ class Ssespan::Nodes::Node::SpanSessInfos : public ydk::Entity
 
         class SpanSessInfo; //type: Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sse_span_oper::Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo> > span_sess_info;
+        ydk::YList span_sess_info;
         
 }; // Ssespan::Nodes::Node::SpanSessInfos
 

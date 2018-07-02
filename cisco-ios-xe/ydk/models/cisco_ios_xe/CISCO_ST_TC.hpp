@@ -10,6 +10,60 @@
 namespace cisco_ios_xe {
 namespace CISCO_ST_TC {
 
+class FcAddressType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf wwn;
+        static const ydk::Enum::YLeaf fcid;
+
+};
+
+class FcIfServiceStateType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inService;
+        static const ydk::Enum::YLeaf outOfService;
+
+};
+
+class FcIfSfpDiagLevelType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf lowWarning;
+        static const ydk::Enum::YLeaf lowAlarm;
+        static const ydk::Enum::YLeaf highWarning;
+        static const ydk::Enum::YLeaf highAlarm;
+
+};
+
+class FcPortModuleTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf gbic;
+        static const ydk::Enum::YLeaf embedded;
+        static const ydk::Enum::YLeaf glm;
+        static const ydk::Enum::YLeaf gbicWithSerialID;
+        static const ydk::Enum::YLeaf gbicWithoutSerialID;
+        static const ydk::Enum::YLeaf sfpWithSerialID;
+        static const ydk::Enum::YLeaf sfpWithoutSerialID;
+        static const ydk::Enum::YLeaf xfp;
+        static const ydk::Enum::YLeaf x2Short;
+        static const ydk::Enum::YLeaf x2Medium;
+        static const ydk::Enum::YLeaf x2Tall;
+        static const ydk::Enum::YLeaf xpakShort;
+        static const ydk::Enum::YLeaf xpakMedium;
+        static const ydk::Enum::YLeaf xpakTall;
+        static const ydk::Enum::YLeaf xenpak;
+        static const ydk::Enum::YLeaf sfpDwdm;
+        static const ydk::Enum::YLeaf qsfp;
+        static const ydk::Enum::YLeaf x2Dwdm;
+
+};
+
 class FcPortTypes : public ydk::Enum
 {
     public:
@@ -52,32 +106,6 @@ class FcPortTxTypes : public ydk::Enum
 
 };
 
-class FcPortModuleTypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf gbic;
-        static const ydk::Enum::YLeaf embedded;
-        static const ydk::Enum::YLeaf glm;
-        static const ydk::Enum::YLeaf gbicWithSerialID;
-        static const ydk::Enum::YLeaf gbicWithoutSerialID;
-        static const ydk::Enum::YLeaf sfpWithSerialID;
-        static const ydk::Enum::YLeaf sfpWithoutSerialID;
-        static const ydk::Enum::YLeaf xfp;
-        static const ydk::Enum::YLeaf x2Short;
-        static const ydk::Enum::YLeaf x2Medium;
-        static const ydk::Enum::YLeaf x2Tall;
-        static const ydk::Enum::YLeaf xpakShort;
-        static const ydk::Enum::YLeaf xpakMedium;
-        static const ydk::Enum::YLeaf xpakTall;
-        static const ydk::Enum::YLeaf xenpak;
-        static const ydk::Enum::YLeaf sfpDwdm;
-        static const ydk::Enum::YLeaf qsfp;
-        static const ydk::Enum::YLeaf x2Dwdm;
-
-};
-
 class FcIfSpeed : public ydk::Enum
 {
     public:
@@ -92,14 +120,6 @@ class FcIfSpeed : public ydk::Enum
         static const ydk::Enum::YLeaf autoMaxEightG;
         static const ydk::Enum::YLeaf sixteenG;
         static const ydk::Enum::YLeaf autoMaxSixteenG;
-
-};
-
-class FcAddressType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf wwn;
-        static const ydk::Enum::YLeaf fcid;
 
 };
 
@@ -127,26 +147,6 @@ class InterfaceOperMode : public ydk::Enum
         static const ydk::Enum::YLeaf npPort;
         static const ydk::Enum::YLeaf tfPort;
         static const ydk::Enum::YLeaf tnpPort;
-
-};
-
-class FcIfServiceStateType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inService;
-        static const ydk::Enum::YLeaf outOfService;
-
-};
-
-class FcIfSfpDiagLevelType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf lowWarning;
-        static const ydk::Enum::YLeaf lowAlarm;
-        static const ydk::Enum::YLeaf highWarning;
-        static const ydk::Enum::YLeaf highAlarm;
 
 };
 

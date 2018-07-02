@@ -33,7 +33,7 @@ class AccessLists : public ydk::Entity
 
         class AccessList; //type: AccessLists::AccessList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_acl_oper::AccessLists::AccessList> > access_list;
+        ydk::YList access_list;
         
 }; // AccessLists
 
@@ -81,7 +81,7 @@ class AccessLists::AccessList::AccessListEntries : public ydk::Entity
 
         class AccessListEntry; //type: AccessLists::AccessList::AccessListEntries::AccessListEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_acl_oper::AccessLists::AccessList::AccessListEntries::AccessListEntry> > access_list_entry;
+        ydk::YList access_list_entry;
         
 }; // AccessLists::AccessList::AccessListEntries
 

@@ -13,11 +13,11 @@ namespace CISCO_IETF_BFD_MIB {
 
 CISCOIETFBFDMIB::CISCOIETFBFDMIB()
     :
-    ciscobfdscalarobjects(std::make_shared<CISCOIETFBFDMIB::Ciscobfdscalarobjects>())
-	,ciscobfdsesstable(std::make_shared<CISCOIETFBFDMIB::Ciscobfdsesstable>())
-	,ciscobfdsessmaptable(std::make_shared<CISCOIETFBFDMIB::Ciscobfdsessmaptable>())
-	,ciscobfdsessdiscmaptable(std::make_shared<CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable>())
-	,ciscobfdsessipmaptable(std::make_shared<CISCOIETFBFDMIB::Ciscobfdsessipmaptable>())
+    ciscobfdscalarobjects(std::make_shared<CISCOIETFBFDMIB::CiscoBfdScalarObjects>())
+    , ciscobfdsesstable(std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessTable>())
+    , ciscobfdsessmaptable(std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessMapTable>())
+    , ciscobfdsessdiscmaptable(std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable>())
+    , ciscobfdsessipmaptable(std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessIpMapTable>())
 {
     ciscobfdscalarobjects->parent = this;
     ciscobfdsesstable->parent = this;
@@ -25,7 +25,7 @@ CISCOIETFBFDMIB::CISCOIETFBFDMIB()
     ciscobfdsessdiscmaptable->parent = this;
     ciscobfdsessipmaptable->parent = this;
 
-    yang_name = "CISCO-IETF-BFD-MIB"; yang_parent_name = "CISCO-IETF-BFD-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-IETF-BFD-MIB"; yang_parent_name = "CISCO-IETF-BFD-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOIETFBFDMIB::~CISCOIETFBFDMIB()
@@ -34,6 +34,7 @@ CISCOIETFBFDMIB::~CISCOIETFBFDMIB()
 
 bool CISCOIETFBFDMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ciscobfdscalarobjects !=  nullptr && ciscobfdscalarobjects->has_data())
 	|| (ciscobfdsesstable !=  nullptr && ciscobfdsesstable->has_data())
 	|| (ciscobfdsessmaptable !=  nullptr && ciscobfdsessmaptable->has_data())
@@ -73,7 +74,7 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::get_child_by_name(const std::string & c
     {
         if(ciscobfdscalarobjects == nullptr)
         {
-            ciscobfdscalarobjects = std::make_shared<CISCOIETFBFDMIB::Ciscobfdscalarobjects>();
+            ciscobfdscalarobjects = std::make_shared<CISCOIETFBFDMIB::CiscoBfdScalarObjects>();
         }
         return ciscobfdscalarobjects;
     }
@@ -82,7 +83,7 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::get_child_by_name(const std::string & c
     {
         if(ciscobfdsesstable == nullptr)
         {
-            ciscobfdsesstable = std::make_shared<CISCOIETFBFDMIB::Ciscobfdsesstable>();
+            ciscobfdsesstable = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessTable>();
         }
         return ciscobfdsesstable;
     }
@@ -91,7 +92,7 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::get_child_by_name(const std::string & c
     {
         if(ciscobfdsessmaptable == nullptr)
         {
-            ciscobfdsessmaptable = std::make_shared<CISCOIETFBFDMIB::Ciscobfdsessmaptable>();
+            ciscobfdsessmaptable = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessMapTable>();
         }
         return ciscobfdsessmaptable;
     }
@@ -100,7 +101,7 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::get_child_by_name(const std::string & c
     {
         if(ciscobfdsessdiscmaptable == nullptr)
         {
-            ciscobfdsessdiscmaptable = std::make_shared<CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable>();
+            ciscobfdsessdiscmaptable = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable>();
         }
         return ciscobfdsessdiscmaptable;
     }
@@ -109,7 +110,7 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::get_child_by_name(const std::string & c
     {
         if(ciscobfdsessipmaptable == nullptr)
         {
-            ciscobfdsessipmaptable = std::make_shared<CISCOIETFBFDMIB::Ciscobfdsessipmaptable>();
+            ciscobfdsessipmaptable = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessIpMapTable>();
         }
         return ciscobfdsessipmaptable;
     }
@@ -189,28 +190,29 @@ bool CISCOIETFBFDMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOIETFBFDMIB::Ciscobfdscalarobjects::Ciscobfdscalarobjects()
+CISCOIETFBFDMIB::CiscoBfdScalarObjects::CiscoBfdScalarObjects()
     :
     ciscobfdadminstatus{YType::enumeration, "ciscoBfdAdminStatus"},
     ciscobfdversionnumber{YType::uint32, "ciscoBfdVersionNumber"},
     ciscobfdsessnotificationsenable{YType::boolean, "ciscoBfdSessNotificationsEnable"}
 {
 
-    yang_name = "ciscoBfdScalarObjects"; yang_parent_name = "CISCO-IETF-BFD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoBfdScalarObjects"; yang_parent_name = "CISCO-IETF-BFD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFBFDMIB::Ciscobfdscalarobjects::~Ciscobfdscalarobjects()
+CISCOIETFBFDMIB::CiscoBfdScalarObjects::~CiscoBfdScalarObjects()
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdscalarobjects::has_data() const
+bool CISCOIETFBFDMIB::CiscoBfdScalarObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return ciscobfdadminstatus.is_set
 	|| ciscobfdversionnumber.is_set
 	|| ciscobfdsessnotificationsenable.is_set;
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdscalarobjects::has_operation() const
+bool CISCOIETFBFDMIB::CiscoBfdScalarObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciscobfdadminstatus.yfilter)
@@ -218,21 +220,21 @@ bool CISCOIETFBFDMIB::Ciscobfdscalarobjects::has_operation() const
 	|| ydk::is_set(ciscobfdsessnotificationsenable.yfilter);
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdscalarobjects::get_absolute_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdScalarObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-BFD-MIB:CISCO-IETF-BFD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdscalarobjects::get_segment_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdScalarObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoBfdScalarObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdscalarobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdScalarObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -244,19 +246,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdscalarob
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdscalarobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdScalarObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdscalarobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdScalarObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFBFDMIB::Ciscobfdscalarobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFBFDMIB::CiscoBfdScalarObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoBfdAdminStatus")
     {
@@ -278,7 +280,7 @@ void CISCOIETFBFDMIB::Ciscobfdscalarobjects::set_value(const std::string & value
     }
 }
 
-void CISCOIETFBFDMIB::Ciscobfdscalarobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFBFDMIB::CiscoBfdScalarObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciscoBfdAdminStatus")
     {
@@ -294,26 +296,29 @@ void CISCOIETFBFDMIB::Ciscobfdscalarobjects::set_filter(const std::string & valu
     }
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdscalarobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFBFDMIB::CiscoBfdScalarObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoBfdAdminStatus" || name == "ciscoBfdVersionNumber" || name == "ciscoBfdSessNotificationsEnable")
         return true;
     return false;
 }
 
-CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsesstable()
+CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessTable()
+    :
+    ciscobfdsessentry(this, {"ciscobfdsessindex"})
 {
 
-    yang_name = "ciscoBfdSessTable"; yang_parent_name = "CISCO-IETF-BFD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoBfdSessTable"; yang_parent_name = "CISCO-IETF-BFD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFBFDMIB::Ciscobfdsesstable::~Ciscobfdsesstable()
+CISCOIETFBFDMIB::CiscoBfdSessTable::~CiscoBfdSessTable()
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsesstable::has_data() const
+bool CISCOIETFBFDMIB::CiscoBfdSessTable::has_data() const
 {
-    for (std::size_t index=0; index<ciscobfdsessentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciscobfdsessentry.len(); index++)
     {
         if(ciscobfdsessentry[index]->has_data())
             return true;
@@ -321,9 +326,9 @@ bool CISCOIETFBFDMIB::Ciscobfdsesstable::has_data() const
     return false;
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsesstable::has_operation() const
+bool CISCOIETFBFDMIB::CiscoBfdSessTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscobfdsessentry.size(); index++)
+    for (std::size_t index=0; index<ciscobfdsessentry.len(); index++)
     {
         if(ciscobfdsessentry[index]->has_operation())
             return true;
@@ -331,21 +336,21 @@ bool CISCOIETFBFDMIB::Ciscobfdsesstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsesstable::get_absolute_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-BFD-MIB:CISCO-IETF-BFD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsesstable::get_segment_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoBfdSessTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsesstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -354,25 +359,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsesstabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsesstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoBfdSessEntry")
     {
-        auto c = std::make_shared<CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry>();
+        auto c = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry>();
         c->parent = this;
-        ciscobfdsessentry.push_back(c);
+        ciscobfdsessentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsesstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciscobfdsessentry)
+    for (auto c : ciscobfdsessentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -383,22 +388,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsesstabl
     return children;
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsesstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFBFDMIB::CiscoBfdSessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsesstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFBFDMIB::CiscoBfdSessTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsesstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFBFDMIB::CiscoBfdSessTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoBfdSessEntry")
         return true;
     return false;
 }
 
-CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessentry()
+CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessEntry()
     :
     ciscobfdsessindex{YType::uint32, "ciscoBfdSessIndex"},
     ciscobfdsessapplicationid{YType::uint32, "ciscoBfdSessApplicationId"},
@@ -436,15 +441,16 @@ CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessentry()
     ciscobfdsessperfpktouthc{YType::uint64, "ciscoBfdSessPerfPktOutHC"}
 {
 
-    yang_name = "ciscoBfdSessEntry"; yang_parent_name = "ciscoBfdSessTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoBfdSessEntry"; yang_parent_name = "ciscoBfdSessTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::~Ciscobfdsessentry()
+CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::~CiscoBfdSessEntry()
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::has_data() const
+bool CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciscobfdsessindex.is_set
 	|| ciscobfdsessapplicationid.is_set
 	|| ciscobfdsessdiscriminator.is_set
@@ -481,7 +487,7 @@ bool CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::has_data() const
 	|| ciscobfdsessperfpktouthc.is_set;
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::has_operation() const
+bool CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciscobfdsessindex.yfilter)
@@ -520,21 +526,22 @@ bool CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::has_operation() cons
 	|| ydk::is_set(ciscobfdsessperfpktouthc.yfilter);
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::get_absolute_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-BFD-MIB:CISCO-IETF-BFD-MIB/ciscoBfdSessTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::get_segment_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciscoBfdSessEntry" <<"[ciscoBfdSessIndex='" <<ciscobfdsessindex <<"']";
+    path_buffer << "ciscoBfdSessEntry";
+    ADD_KEY_TOKEN(ciscobfdsessindex, "ciscoBfdSessIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -577,19 +584,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsesstabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoBfdSessIndex")
     {
@@ -797,7 +804,7 @@ void CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::set_value(const std:
     }
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciscoBfdSessIndex")
     {
@@ -937,26 +944,29 @@ void CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::set_filter(const std
     }
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoBfdSessIndex" || name == "ciscoBfdSessApplicationId" || name == "ciscoBfdSessDiscriminator" || name == "ciscoBfdSessRemoteDiscr" || name == "ciscoBfdSessUdpPort" || name == "ciscoBfdSessState" || name == "ciscoBfdSessRemoteHeardFlag" || name == "ciscoBfdSessDiag" || name == "ciscoBfdSessOperMode" || name == "ciscoBfdSessDemandModeDesiredFlag" || name == "ciscoBfdSessEchoFuncModeDesiredFlag" || name == "ciscoBfdSessControlPlanIndepFlag" || name == "ciscoBfdSessAddrType" || name == "ciscoBfdSessAddr" || name == "ciscoBfdSessDesiredMinTxInterval" || name == "ciscoBfdSessReqMinRxInterval" || name == "ciscoBfdSessReqMinEchoRxInterval" || name == "ciscoBfdSessDetectMult" || name == "ciscoBfdSessStorType" || name == "ciscoBfdSessRowStatus" || name == "ciscoBfdSessAuthPresFlag" || name == "ciscoBfdSessAuthenticationType" || name == "ciscoBfdSessVersionNumber" || name == "ciscoBfdSessType" || name == "ciscoBfdSessInterface" || name == "ciscoBfdSessPerfPktIn" || name == "ciscoBfdSessPerfPktOut" || name == "ciscoBfdSessUpTime" || name == "ciscoBfdSessPerfLastSessDownTime" || name == "ciscoBfdSessPerfLastCommLostDiag" || name == "ciscoBfdSessPerfSessUpCount" || name == "ciscoBfdSessPerfDiscTime" || name == "ciscoBfdSessPerfPktInHC" || name == "ciscoBfdSessPerfPktOutHC")
         return true;
     return false;
 }
 
-CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmaptable()
+CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapTable()
+    :
+    ciscobfdsessmapentry(this, {"ciscobfdsessapplicationid", "ciscobfdsessdiscriminator", "ciscobfdsessaddrtype", "ciscobfdsessaddr"})
 {
 
-    yang_name = "ciscoBfdSessMapTable"; yang_parent_name = "CISCO-IETF-BFD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoBfdSessMapTable"; yang_parent_name = "CISCO-IETF-BFD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFBFDMIB::Ciscobfdsessmaptable::~Ciscobfdsessmaptable()
+CISCOIETFBFDMIB::CiscoBfdSessMapTable::~CiscoBfdSessMapTable()
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessmaptable::has_data() const
+bool CISCOIETFBFDMIB::CiscoBfdSessMapTable::has_data() const
 {
-    for (std::size_t index=0; index<ciscobfdsessmapentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciscobfdsessmapentry.len(); index++)
     {
         if(ciscobfdsessmapentry[index]->has_data())
             return true;
@@ -964,9 +974,9 @@ bool CISCOIETFBFDMIB::Ciscobfdsessmaptable::has_data() const
     return false;
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessmaptable::has_operation() const
+bool CISCOIETFBFDMIB::CiscoBfdSessMapTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscobfdsessmapentry.size(); index++)
+    for (std::size_t index=0; index<ciscobfdsessmapentry.len(); index++)
     {
         if(ciscobfdsessmapentry[index]->has_operation())
             return true;
@@ -974,21 +984,21 @@ bool CISCOIETFBFDMIB::Ciscobfdsessmaptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsessmaptable::get_absolute_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessMapTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-BFD-MIB:CISCO-IETF-BFD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsessmaptable::get_segment_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessMapTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoBfdSessMapTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsessmaptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessMapTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -997,25 +1007,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsessmapt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessmaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoBfdSessMapEntry")
     {
-        auto c = std::make_shared<CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry>();
+        auto c = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry>();
         c->parent = this;
-        ciscobfdsessmapentry.push_back(c);
+        ciscobfdsessmapentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessmaptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessMapTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciscobfdsessmapentry)
+    for (auto c : ciscobfdsessmapentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1026,22 +1036,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessmapt
     return children;
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsessmaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFBFDMIB::CiscoBfdSessMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsessmaptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFBFDMIB::CiscoBfdSessMapTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessmaptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFBFDMIB::CiscoBfdSessMapTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoBfdSessMapEntry")
         return true;
     return false;
 }
 
-CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::Ciscobfdsessmapentry()
+CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::CiscoBfdSessMapEntry()
     :
     ciscobfdsessapplicationid{YType::str, "ciscoBfdSessApplicationId"},
     ciscobfdsessdiscriminator{YType::str, "ciscoBfdSessDiscriminator"},
@@ -1050,15 +1060,16 @@ CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::Ciscobfdsessmapentr
     ciscobfdsessmapbfdindex{YType::uint32, "ciscoBfdSessMapBfdIndex"}
 {
 
-    yang_name = "ciscoBfdSessMapEntry"; yang_parent_name = "ciscoBfdSessMapTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoBfdSessMapEntry"; yang_parent_name = "ciscoBfdSessMapTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::~Ciscobfdsessmapentry()
+CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::~CiscoBfdSessMapEntry()
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::has_data() const
+bool CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciscobfdsessapplicationid.is_set
 	|| ciscobfdsessdiscriminator.is_set
 	|| ciscobfdsessaddrtype.is_set
@@ -1066,7 +1077,7 @@ bool CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::has_data() con
 	|| ciscobfdsessmapbfdindex.is_set;
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::has_operation() const
+bool CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciscobfdsessapplicationid.yfilter)
@@ -1076,21 +1087,25 @@ bool CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::has_operation(
 	|| ydk::is_set(ciscobfdsessmapbfdindex.yfilter);
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::get_absolute_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-BFD-MIB:CISCO-IETF-BFD-MIB/ciscoBfdSessMapTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::get_segment_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciscoBfdSessMapEntry" <<"[ciscoBfdSessApplicationId='" <<ciscobfdsessapplicationid <<"']" <<"[ciscoBfdSessDiscriminator='" <<ciscobfdsessdiscriminator <<"']" <<"[ciscoBfdSessAddrType='" <<ciscobfdsessaddrtype <<"']" <<"[ciscoBfdSessAddr='" <<ciscobfdsessaddr <<"']";
+    path_buffer << "ciscoBfdSessMapEntry";
+    ADD_KEY_TOKEN(ciscobfdsessapplicationid, "ciscoBfdSessApplicationId");
+    ADD_KEY_TOKEN(ciscobfdsessdiscriminator, "ciscoBfdSessDiscriminator");
+    ADD_KEY_TOKEN(ciscobfdsessaddrtype, "ciscoBfdSessAddrType");
+    ADD_KEY_TOKEN(ciscobfdsessaddr, "ciscoBfdSessAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1104,19 +1119,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsessmapt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoBfdSessApplicationId")
     {
@@ -1150,7 +1165,7 @@ void CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::set_value(cons
     }
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciscoBfdSessApplicationId")
     {
@@ -1174,26 +1189,29 @@ void CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::set_filter(con
     }
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoBfdSessApplicationId" || name == "ciscoBfdSessDiscriminator" || name == "ciscoBfdSessAddrType" || name == "ciscoBfdSessAddr" || name == "ciscoBfdSessMapBfdIndex")
         return true;
     return false;
 }
 
-CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmaptable()
+CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapTable()
+    :
+    ciscobfdsessdiscmapentry(this, {"ciscobfdsessdiscriminator"})
 {
 
-    yang_name = "ciscoBfdSessDiscMapTable"; yang_parent_name = "CISCO-IETF-BFD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoBfdSessDiscMapTable"; yang_parent_name = "CISCO-IETF-BFD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::~Ciscobfdsessdiscmaptable()
+CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::~CiscoBfdSessDiscMapTable()
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::has_data() const
+bool CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::has_data() const
 {
-    for (std::size_t index=0; index<ciscobfdsessdiscmapentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciscobfdsessdiscmapentry.len(); index++)
     {
         if(ciscobfdsessdiscmapentry[index]->has_data())
             return true;
@@ -1201,9 +1219,9 @@ bool CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::has_data() const
     return false;
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::has_operation() const
+bool CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscobfdsessdiscmapentry.size(); index++)
+    for (std::size_t index=0; index<ciscobfdsessdiscmapentry.len(); index++)
     {
         if(ciscobfdsessdiscmapentry[index]->has_operation())
             return true;
@@ -1211,21 +1229,21 @@ bool CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::get_absolute_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-BFD-MIB:CISCO-IETF-BFD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::get_segment_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoBfdSessDiscMapTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1234,25 +1252,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsessdisc
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoBfdSessDiscMapEntry")
     {
-        auto c = std::make_shared<CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry>();
+        auto c = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry>();
         c->parent = this;
-        ciscobfdsessdiscmapentry.push_back(c);
+        ciscobfdsessdiscmapentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciscobfdsessdiscmapentry)
+    for (auto c : ciscobfdsessdiscmapentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1263,62 +1281,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessdisc
     return children;
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoBfdSessDiscMapEntry")
         return true;
     return false;
 }
 
-CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::Ciscobfdsessdiscmapentry()
+CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::CiscoBfdSessDiscMapEntry()
     :
     ciscobfdsessdiscriminator{YType::str, "ciscoBfdSessDiscriminator"},
     ciscobfdsessdiscmapindex{YType::uint32, "ciscoBfdSessDiscMapIndex"}
 {
 
-    yang_name = "ciscoBfdSessDiscMapEntry"; yang_parent_name = "ciscoBfdSessDiscMapTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoBfdSessDiscMapEntry"; yang_parent_name = "ciscoBfdSessDiscMapTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::~Ciscobfdsessdiscmapentry()
+CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::~CiscoBfdSessDiscMapEntry()
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::has_data() const
+bool CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciscobfdsessdiscriminator.is_set
 	|| ciscobfdsessdiscmapindex.is_set;
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::has_operation() const
+bool CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciscobfdsessdiscriminator.yfilter)
 	|| ydk::is_set(ciscobfdsessdiscmapindex.yfilter);
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::get_absolute_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-BFD-MIB:CISCO-IETF-BFD-MIB/ciscoBfdSessDiscMapTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::get_segment_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciscoBfdSessDiscMapEntry" <<"[ciscoBfdSessDiscriminator='" <<ciscobfdsessdiscriminator <<"']";
+    path_buffer << "ciscoBfdSessDiscMapEntry";
+    ADD_KEY_TOKEN(ciscobfdsessdiscriminator, "ciscoBfdSessDiscriminator");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1329,19 +1349,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsessdisc
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoBfdSessDiscriminator")
     {
@@ -1357,7 +1377,7 @@ void CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::set_va
     }
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciscoBfdSessDiscriminator")
     {
@@ -1369,26 +1389,29 @@ void CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::set_fi
     }
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoBfdSessDiscriminator" || name == "ciscoBfdSessDiscMapIndex")
         return true;
     return false;
 }
 
-CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmaptable()
+CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapTable()
+    :
+    ciscobfdsessipmapentry(this, {"ciscobfdsessinterface", "ciscobfdsessaddrtype", "ciscobfdsessaddr"})
 {
 
-    yang_name = "ciscoBfdSessIpMapTable"; yang_parent_name = "CISCO-IETF-BFD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoBfdSessIpMapTable"; yang_parent_name = "CISCO-IETF-BFD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFBFDMIB::Ciscobfdsessipmaptable::~Ciscobfdsessipmaptable()
+CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::~CiscoBfdSessIpMapTable()
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessipmaptable::has_data() const
+bool CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::has_data() const
 {
-    for (std::size_t index=0; index<ciscobfdsessipmapentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciscobfdsessipmapentry.len(); index++)
     {
         if(ciscobfdsessipmapentry[index]->has_data())
             return true;
@@ -1396,9 +1419,9 @@ bool CISCOIETFBFDMIB::Ciscobfdsessipmaptable::has_data() const
     return false;
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessipmaptable::has_operation() const
+bool CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscobfdsessipmapentry.size(); index++)
+    for (std::size_t index=0; index<ciscobfdsessipmapentry.len(); index++)
     {
         if(ciscobfdsessipmapentry[index]->has_operation())
             return true;
@@ -1406,21 +1429,21 @@ bool CISCOIETFBFDMIB::Ciscobfdsessipmaptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsessipmaptable::get_absolute_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-BFD-MIB:CISCO-IETF-BFD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsessipmaptable::get_segment_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoBfdSessIpMapTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsessipmaptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1429,25 +1452,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsessipma
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessipmaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoBfdSessIpMapEntry")
     {
-        auto c = std::make_shared<CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry>();
+        auto c = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry>();
         c->parent = this;
-        ciscobfdsessipmapentry.push_back(c);
+        ciscobfdsessipmapentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessipmaptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciscobfdsessipmapentry)
+    for (auto c : ciscobfdsessipmapentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1458,22 +1481,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessipma
     return children;
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsessipmaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsessipmaptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessipmaptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoBfdSessIpMapEntry")
         return true;
     return false;
 }
 
-CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::Ciscobfdsessipmapentry()
+CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::CiscoBfdSessIpMapEntry()
     :
     ciscobfdsessinterface{YType::str, "ciscoBfdSessInterface"},
     ciscobfdsessaddrtype{YType::enumeration, "ciscoBfdSessAddrType"},
@@ -1481,22 +1504,23 @@ CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::Ciscobfdsessipm
     ciscobfdsessipmapindex{YType::uint32, "ciscoBfdSessIpMapIndex"}
 {
 
-    yang_name = "ciscoBfdSessIpMapEntry"; yang_parent_name = "ciscoBfdSessIpMapTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoBfdSessIpMapEntry"; yang_parent_name = "ciscoBfdSessIpMapTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::~Ciscobfdsessipmapentry()
+CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::~CiscoBfdSessIpMapEntry()
 {
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::has_data() const
+bool CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciscobfdsessinterface.is_set
 	|| ciscobfdsessaddrtype.is_set
 	|| ciscobfdsessaddr.is_set
 	|| ciscobfdsessipmapindex.is_set;
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::has_operation() const
+bool CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciscobfdsessinterface.yfilter)
@@ -1505,21 +1529,24 @@ bool CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::has_operat
 	|| ydk::is_set(ciscobfdsessipmapindex.yfilter);
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::get_absolute_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-BFD-MIB:CISCO-IETF-BFD-MIB/ciscoBfdSessIpMapTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::get_segment_path() const
+std::string CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciscoBfdSessIpMapEntry" <<"[ciscoBfdSessInterface='" <<ciscobfdsessinterface <<"']" <<"[ciscoBfdSessAddrType='" <<ciscobfdsessaddrtype <<"']" <<"[ciscoBfdSessAddr='" <<ciscobfdsessaddr <<"']";
+    path_buffer << "ciscoBfdSessIpMapEntry";
+    ADD_KEY_TOKEN(ciscobfdsessinterface, "ciscoBfdSessInterface");
+    ADD_KEY_TOKEN(ciscobfdsessaddrtype, "ciscoBfdSessAddrType");
+    ADD_KEY_TOKEN(ciscobfdsessaddr, "ciscoBfdSessAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1532,19 +1559,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::Ciscobfdsessipma
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoBfdSessInterface")
     {
@@ -1572,7 +1599,7 @@ void CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::set_value(
     }
 }
 
-void CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciscoBfdSessInterface")
     {
@@ -1592,7 +1619,7 @@ void CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::set_filter
     }
 }
 
-bool CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoBfdSessInterface" || name == "ciscoBfdSessAddrType" || name == "ciscoBfdSessAddr" || name == "ciscoBfdSessIpMapIndex")
         return true;
@@ -1609,28 +1636,28 @@ const Enum::YLeaf CiscoBfdDiag::concatenatedPathDown {6, "concatenatedPathDown"}
 const Enum::YLeaf CiscoBfdDiag::administrativelyDown {7, "administrativelyDown"};
 const Enum::YLeaf CiscoBfdDiag::reverseConcatenatedPathDown {8, "reverseConcatenatedPathDown"};
 
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdscalarobjects::Ciscobfdadminstatus::enabled {1, "enabled"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdscalarobjects::Ciscobfdadminstatus::disabled {2, "disabled"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdScalarObjects::CiscoBfdAdminStatus::enabled {1, "enabled"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdScalarObjects::CiscoBfdAdminStatus::disabled {2, "disabled"};
 
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessstate::adminDown {1, "adminDown"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessstate::down {2, "down"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessstate::init {3, "init"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessstate::up {4, "up"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessstate::failing {5, "failing"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessState::adminDown {1, "adminDown"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessState::down {2, "down"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessState::init {3, "init"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessState::up {4, "up"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessState::failing {5, "failing"};
 
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessopermode::asyncModeWEchoFun {1, "asyncModeWEchoFun"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessopermode::asynchModeWOEchoFun {2, "asynchModeWOEchoFun"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessopermode::demandModeWEchoFunction {3, "demandModeWEchoFunction"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessopermode::demandModeWOEchoFunction {4, "demandModeWOEchoFunction"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessOperMode::asyncModeWEchoFun {1, "asyncModeWEchoFun"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessOperMode::asynchModeWOEchoFun {2, "asynchModeWOEchoFun"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessOperMode::demandModeWEchoFunction {3, "demandModeWEchoFunction"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessOperMode::demandModeWOEchoFunction {4, "demandModeWOEchoFunction"};
 
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessauthenticationtype::simplePassword {1, "simplePassword"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessauthenticationtype::keyedMD5 {2, "keyedMD5"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessauthenticationtype::meticulousKeyedMD5 {3, "meticulousKeyedMD5"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessauthenticationtype::keyedSHA1 {4, "keyedSHA1"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsessauthenticationtype::meticulousKeyedSHA1 {5, "meticulousKeyedSHA1"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessAuthenticationType::simplePassword {1, "simplePassword"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessAuthenticationType::keyedMD5 {2, "keyedMD5"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessAuthenticationType::meticulousKeyedMD5 {3, "meticulousKeyedMD5"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessAuthenticationType::keyedSHA1 {4, "keyedSHA1"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessAuthenticationType::meticulousKeyedSHA1 {5, "meticulousKeyedSHA1"};
 
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsesstype::singleHop {1, "singleHop"};
-const Enum::YLeaf CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::Ciscobfdsesstype::multiHop {2, "multiHop"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessType::singleHop {1, "singleHop"};
+const Enum::YLeaf CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::CiscoBfdSessType::multiHop {2, "multiHop"};
 
 
 }

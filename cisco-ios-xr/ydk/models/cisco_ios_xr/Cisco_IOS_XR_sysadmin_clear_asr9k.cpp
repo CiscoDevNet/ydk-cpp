@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_sysadmin_clear_asr9k {
 Clear::Clear()
     :
     controller(std::make_shared<Clear::Controller>())
-	,plugin(std::make_shared<Clear::Plugin>())
+    , plugin(std::make_shared<Clear::Plugin>())
 {
     controller->parent = this;
     plugin->parent = this;
 
-    yang_name = "clear"; yang_parent_name = "Cisco-IOS-XR-sysadmin-clear-asr9k"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear"; yang_parent_name = "Cisco-IOS-XR-sysadmin-clear-asr9k"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Clear::~Clear()
@@ -28,6 +28,7 @@ Clear::~Clear()
 
 bool Clear::has_data() const
 {
+    if (is_presence_container) return true;
     return (controller !=  nullptr && controller->has_data())
 	|| (plugin !=  nullptr && plugin->has_data());
 }
@@ -141,7 +142,7 @@ Clear::Controller::Controller()
 {
     switch_->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::~Controller()
@@ -150,6 +151,7 @@ Clear::Controller::~Controller()
 
 bool Clear::Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return (switch_ !=  nullptr && switch_->has_data());
 }
 
@@ -229,7 +231,7 @@ Clear::Controller::Switch::Switch()
 {
     oper->parent = this;
 
-    yang_name = "switch"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "switch"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::~Switch()
@@ -238,6 +240,7 @@ Clear::Controller::Switch::~Switch()
 
 bool Clear::Controller::Switch::has_data() const
 {
+    if (is_presence_container) return true;
     return (oper !=  nullptr && oper->has_data());
 }
 
@@ -314,12 +317,12 @@ bool Clear::Controller::Switch::has_leaf_or_child_of_name(const std::string & na
 Clear::Controller::Switch::Oper::Oper()
     :
     fdb(std::make_shared<Clear::Controller::Switch::Oper::Fdb>())
-	,statistics(std::make_shared<Clear::Controller::Switch::Oper::Statistics>())
+    , statistics(std::make_shared<Clear::Controller::Switch::Oper::Statistics>())
 {
     fdb->parent = this;
     statistics->parent = this;
 
-    yang_name = "oper"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oper"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::~Oper()
@@ -328,6 +331,7 @@ Clear::Controller::Switch::Oper::~Oper()
 
 bool Clear::Controller::Switch::Oper::has_data() const
 {
+    if (is_presence_container) return true;
     return (fdb !=  nullptr && fdb->has_data())
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -418,9 +422,11 @@ bool Clear::Controller::Switch::Oper::has_leaf_or_child_of_name(const std::strin
 }
 
 Clear::Controller::Switch::Oper::Fdb::Fdb()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "fdb"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fdb"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Fdb::~Fdb()
@@ -429,7 +435,8 @@ Clear::Controller::Switch::Oper::Fdb::~Fdb()
 
 bool Clear::Controller::Switch::Oper::Fdb::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -439,7 +446,7 @@ bool Clear::Controller::Switch::Oper::Fdb::has_data() const
 
 bool Clear::Controller::Switch::Oper::Fdb::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -476,7 +483,7 @@ std::shared_ptr<Entity> Clear::Controller::Switch::Oper::Fdb::get_child_by_name(
     {
         auto c = std::make_shared<Clear::Controller::Switch::Oper::Fdb::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -488,7 +495,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Controller::Switch::Oper::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -521,7 +528,7 @@ Clear::Controller::Switch::Oper::Fdb::Location::Location()
     switch_id{YType::enumeration, "switch-id"}
 {
 
-    yang_name = "location"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Fdb::Location::~Location()
@@ -530,6 +537,7 @@ Clear::Controller::Switch::Oper::Fdb::Location::~Location()
 
 bool Clear::Controller::Switch::Oper::Fdb::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set;
@@ -553,7 +561,10 @@ std::string Clear::Controller::Switch::Oper::Fdb::Location::get_absolute_path() 
 std::string Clear::Controller::Switch::Oper::Fdb::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -627,9 +638,11 @@ bool Clear::Controller::Switch::Oper::Fdb::Location::has_leaf_or_child_of_name(c
 }
 
 Clear::Controller::Switch::Oper::Statistics::Statistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Statistics::~Statistics()
@@ -638,7 +651,8 @@ Clear::Controller::Switch::Oper::Statistics::~Statistics()
 
 bool Clear::Controller::Switch::Oper::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -648,7 +662,7 @@ bool Clear::Controller::Switch::Oper::Statistics::has_data() const
 
 bool Clear::Controller::Switch::Oper::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -685,7 +699,7 @@ std::shared_ptr<Entity> Clear::Controller::Switch::Oper::Statistics::get_child_b
     {
         auto c = std::make_shared<Clear::Controller::Switch::Oper::Statistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -697,7 +711,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Controller::Switch::Oper::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -730,7 +744,7 @@ Clear::Controller::Switch::Oper::Statistics::Location::Location()
     switch_id{YType::enumeration, "switch-id"}
 {
 
-    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Controller::Switch::Oper::Statistics::Location::~Location()
@@ -739,6 +753,7 @@ Clear::Controller::Switch::Oper::Statistics::Location::~Location()
 
 bool Clear::Controller::Switch::Oper::Statistics::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set;
@@ -762,7 +777,10 @@ std::string Clear::Controller::Switch::Oper::Statistics::Location::get_absolute_
 std::string Clear::Controller::Switch::Oper::Statistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -841,7 +859,7 @@ Clear::Plugin::Plugin()
 {
     slot->parent = this;
 
-    yang_name = "plugin"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "plugin"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Plugin::~Plugin()
@@ -850,6 +868,7 @@ Clear::Plugin::~Plugin()
 
 bool Clear::Plugin::has_data() const
 {
+    if (is_presence_container) return true;
     return (slot !=  nullptr && slot->has_data());
 }
 
@@ -924,9 +943,11 @@ bool Clear::Plugin::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Clear::Plugin::Slot::Slot()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "slot"; yang_parent_name = "plugin"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "slot"; yang_parent_name = "plugin"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Plugin::Slot::~Slot()
@@ -935,7 +956,8 @@ Clear::Plugin::Slot::~Slot()
 
 bool Clear::Plugin::Slot::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -945,7 +967,7 @@ bool Clear::Plugin::Slot::has_data() const
 
 bool Clear::Plugin::Slot::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -982,7 +1004,7 @@ std::shared_ptr<Entity> Clear::Plugin::Slot::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Clear::Plugin::Slot::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -994,7 +1016,7 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Plugin::Slot::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1025,7 +1047,7 @@ Clear::Plugin::Slot::Location::Location()
     location{YType::str, "location"}
 {
 
-    yang_name = "location"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Plugin::Slot::Location::~Location()
@@ -1034,6 +1056,7 @@ Clear::Plugin::Slot::Location::~Location()
 
 bool Clear::Plugin::Slot::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set;
 }
 
@@ -1053,7 +1076,8 @@ std::string Clear::Plugin::Slot::Location::get_absolute_path() const
 std::string Clear::Plugin::Slot::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 

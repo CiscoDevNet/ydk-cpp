@@ -34,7 +34,7 @@ class Components : public ydk::Entity
 
         class Component; //type: Components::Component
 
-        std::vector<std::shared_ptr<openconfig::openconfig_platform::Components::Component> > component;
+        ydk::YList component;
         
 }; // Components
 
@@ -62,17 +62,17 @@ class Components::Component : public ydk::Entity
         class State; //type: Components::Component::State
         class Properties; //type: Components::Component::Properties
         class Subcomponents; //type: Components::Component::Subcomponents
-        class OpticalPort; //type: Components::Component::OpticalPort
         class Transceiver; //type: Components::Component::Transceiver
         class OpticalChannel; //type: Components::Component::OpticalChannel
+        class OpticalPort; //type: Components::Component::OpticalPort
 
         std::shared_ptr<openconfig::openconfig_platform::Components::Component::Config> config;
         std::shared_ptr<openconfig::openconfig_platform::Components::Component::State> state;
         std::shared_ptr<openconfig::openconfig_platform::Components::Component::Properties> properties;
         std::shared_ptr<openconfig::openconfig_platform::Components::Component::Subcomponents> subcomponents;
-        std::shared_ptr<openconfig::openconfig_platform::Components::Component::OpticalPort> optical_port;
         std::shared_ptr<openconfig::openconfig_platform::Components::Component::Transceiver> transceiver;
         std::shared_ptr<openconfig::openconfig_platform::Components::Component::OpticalChannel> optical_channel;
+        std::shared_ptr<openconfig::openconfig_platform::Components::Component::OpticalPort> optical_port;
         
 }; // Components::Component
 
@@ -144,7 +144,7 @@ class Components::Component::Properties : public ydk::Entity
 
         class Property; //type: Components::Component::Properties::Property
 
-        std::vector<std::shared_ptr<openconfig::openconfig_platform::Components::Component::Properties::Property> > property;
+        ydk::YList property;
         
 }; // Components::Component::Properties
 
@@ -193,7 +193,7 @@ class Components::Component::Properties::Property::Config : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf value_; //type: one of string, int64, boolean, decimal64, uint64
+        ydk::YLeaf value_; //type: one of uint64, boolean, int64, string, decimal64
 
 }; // Components::Component::Properties::Property::Config
 
@@ -215,7 +215,7 @@ class Components::Component::Properties::Property::State : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf value_; //type: one of string, int64, boolean, decimal64, uint64
+        ydk::YLeaf value_; //type: one of uint64, boolean, int64, string, decimal64
         ydk::YLeaf configurable; //type: boolean
 
 }; // Components::Component::Properties::Property::State
@@ -239,7 +239,7 @@ class Components::Component::Subcomponents : public ydk::Entity
 
         class Subcomponent; //type: Components::Component::Subcomponents::Subcomponent
 
-        std::vector<std::shared_ptr<openconfig::openconfig_platform::Components::Component::Subcomponents::Subcomponent> > subcomponent;
+        ydk::YList subcomponent;
         
 }; // Components::Component::Subcomponents
 
@@ -313,127 +313,6 @@ class Components::Component::Subcomponents::Subcomponent::State : public ydk::En
         ydk::YLeaf name;
 
 }; // Components::Component::Subcomponents::Subcomponent::State
-
-
-class Components::Component::OpticalPort : public ydk::Entity
-{
-    public:
-        OpticalPort();
-        ~OpticalPort();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Config; //type: Components::Component::OpticalPort::Config
-        class State; //type: Components::Component::OpticalPort::State
-
-        std::shared_ptr<openconfig::openconfig_platform::Components::Component::OpticalPort::Config> config;
-        std::shared_ptr<openconfig::openconfig_platform::Components::Component::OpticalPort::State> state;
-        
-}; // Components::Component::OpticalPort
-
-
-class Components::Component::OpticalPort::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf admin_state; //type: AdminStateType
-
-}; // Components::Component::OpticalPort::Config
-
-
-class Components::Component::OpticalPort::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf admin_state; //type: AdminStateType
-        ydk::YLeaf optical_port_type; //type: OPTICALLINEPORTTYPE
-        class InputPower; //type: Components::Component::OpticalPort::State::InputPower
-        class OutputPower; //type: Components::Component::OpticalPort::State::OutputPower
-
-        std::shared_ptr<openconfig::openconfig_platform::Components::Component::OpticalPort::State::InputPower> input_power;
-        std::shared_ptr<openconfig::openconfig_platform::Components::Component::OpticalPort::State::OutputPower> output_power;
-        
-}; // Components::Component::OpticalPort::State
-
-
-class Components::Component::OpticalPort::State::InputPower : public ydk::Entity
-{
-    public:
-        InputPower();
-        ~InputPower();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instant; //type: decimal64
-        ydk::YLeaf avg; //type: decimal64
-        ydk::YLeaf min; //type: decimal64
-        ydk::YLeaf max; //type: decimal64
-
-}; // Components::Component::OpticalPort::State::InputPower
-
-
-class Components::Component::OpticalPort::State::OutputPower : public ydk::Entity
-{
-    public:
-        OutputPower();
-        ~OutputPower();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instant; //type: decimal64
-        ydk::YLeaf avg; //type: decimal64
-        ydk::YLeaf min; //type: decimal64
-        ydk::YLeaf max; //type: decimal64
-
-}; // Components::Component::OpticalPort::State::OutputPower
 
 
 class Components::Component::Transceiver : public ydk::Entity
@@ -538,7 +417,7 @@ class Components::Component::Transceiver::PhysicalChannels : public ydk::Entity
 
         class Channel; //type: Components::Component::Transceiver::PhysicalChannels::Channel
 
-        std::vector<std::shared_ptr<openconfig::openconfig_platform::Components::Component::Transceiver::PhysicalChannels::Channel> > channel;
+        ydk::YList channel;
         
 }; // Components::Component::Transceiver::PhysicalChannels
 
@@ -955,6 +834,127 @@ class Components::Component::OpticalChannel::State::PolarizationDependentLoss : 
         ydk::YLeaf max; //type: decimal64
 
 }; // Components::Component::OpticalChannel::State::PolarizationDependentLoss
+
+
+class Components::Component::OpticalPort : public ydk::Entity
+{
+    public:
+        OpticalPort();
+        ~OpticalPort();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Components::Component::OpticalPort::Config
+        class State; //type: Components::Component::OpticalPort::State
+
+        std::shared_ptr<openconfig::openconfig_platform::Components::Component::OpticalPort::Config> config;
+        std::shared_ptr<openconfig::openconfig_platform::Components::Component::OpticalPort::State> state;
+        
+}; // Components::Component::OpticalPort
+
+
+class Components::Component::OpticalPort::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf admin_state; //type: AdminStateType
+
+}; // Components::Component::OpticalPort::Config
+
+
+class Components::Component::OpticalPort::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf admin_state; //type: AdminStateType
+        ydk::YLeaf optical_port_type; //type: OPTICALLINEPORTTYPE
+        class InputPower; //type: Components::Component::OpticalPort::State::InputPower
+        class OutputPower; //type: Components::Component::OpticalPort::State::OutputPower
+
+        std::shared_ptr<openconfig::openconfig_platform::Components::Component::OpticalPort::State::InputPower> input_power;
+        std::shared_ptr<openconfig::openconfig_platform::Components::Component::OpticalPort::State::OutputPower> output_power;
+        
+}; // Components::Component::OpticalPort::State
+
+
+class Components::Component::OpticalPort::State::InputPower : public ydk::Entity
+{
+    public:
+        InputPower();
+        ~InputPower();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf instant; //type: decimal64
+        ydk::YLeaf avg; //type: decimal64
+        ydk::YLeaf min; //type: decimal64
+        ydk::YLeaf max; //type: decimal64
+
+}; // Components::Component::OpticalPort::State::InputPower
+
+
+class Components::Component::OpticalPort::State::OutputPower : public ydk::Entity
+{
+    public:
+        OutputPower();
+        ~OutputPower();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf instant; //type: decimal64
+        ydk::YLeaf avg; //type: decimal64
+        ydk::YLeaf min; //type: decimal64
+        ydk::YLeaf max; //type: decimal64
+
+}; // Components::Component::OpticalPort::State::OutputPower
 
 class Components::Component::Transceiver::State::Present : public ydk::Enum
 {

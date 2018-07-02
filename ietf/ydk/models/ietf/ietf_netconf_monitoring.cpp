@@ -11,16 +11,6 @@ using namespace ydk;
 namespace ietf {
 namespace ietf_netconf_monitoring {
 
-Transport::Transport()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:transport")
-{
-
-}
-
-Transport::~Transport()
-{
-}
-
 SchemaFormat::SchemaFormat()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:schema-format")
 {
@@ -31,15 +21,25 @@ SchemaFormat::~SchemaFormat()
 {
 }
 
+Transport::Transport()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:transport")
+{
+
+}
+
+Transport::~Transport()
+{
+}
+
 GetSchema::GetSchema()
     :
     input(std::make_shared<GetSchema::Input>())
-	,output(std::make_shared<GetSchema::Output>())
+    , output(std::make_shared<GetSchema::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "get-schema"; yang_parent_name = "ietf-netconf-monitoring"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "get-schema"; yang_parent_name = "ietf-netconf-monitoring"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 GetSchema::~GetSchema()
@@ -48,6 +48,7 @@ GetSchema::~GetSchema()
 
 bool GetSchema::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -162,7 +163,7 @@ GetSchema::Input::Input()
     format{YType::identityref, "format"}
 {
 
-    yang_name = "input"; yang_parent_name = "get-schema"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "get-schema"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 GetSchema::Input::~Input()
@@ -171,6 +172,7 @@ GetSchema::Input::~Input()
 
 bool GetSchema::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return identifier.is_set
 	|| version.is_set
 	|| format.is_set;
@@ -272,7 +274,7 @@ GetSchema::Output::Output()
     data{YType::str, "data"}
 {
 
-    yang_name = "output"; yang_parent_name = "get-schema"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "get-schema"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 GetSchema::Output::~Output()
@@ -281,6 +283,7 @@ GetSchema::Output::~Output()
 
 bool GetSchema::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -354,10 +357,10 @@ bool GetSchema::Output::has_leaf_or_child_of_name(const std::string & name) cons
 NetconfState::NetconfState()
     :
     capabilities(std::make_shared<NetconfState::Capabilities>())
-	,datastores(std::make_shared<NetconfState::Datastores>())
-	,schemas(std::make_shared<NetconfState::Schemas>())
-	,sessions(std::make_shared<NetconfState::Sessions>())
-	,statistics(std::make_shared<NetconfState::Statistics>())
+    , datastores(std::make_shared<NetconfState::Datastores>())
+    , schemas(std::make_shared<NetconfState::Schemas>())
+    , sessions(std::make_shared<NetconfState::Sessions>())
+    , statistics(std::make_shared<NetconfState::Statistics>())
 {
     capabilities->parent = this;
     datastores->parent = this;
@@ -365,7 +368,7 @@ NetconfState::NetconfState()
     sessions->parent = this;
     statistics->parent = this;
 
-    yang_name = "netconf-state"; yang_parent_name = "ietf-netconf-monitoring"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "netconf-state"; yang_parent_name = "ietf-netconf-monitoring"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NetconfState::~NetconfState()
@@ -374,6 +377,7 @@ NetconfState::~NetconfState()
 
 bool NetconfState::has_data() const
 {
+    if (is_presence_container) return true;
     return (capabilities !=  nullptr && capabilities->has_data())
 	|| (datastores !=  nullptr && datastores->has_data())
 	|| (schemas !=  nullptr && schemas->has_data())
@@ -534,7 +538,7 @@ NetconfState::Capabilities::Capabilities()
     capability{YType::str, "capability"}
 {
 
-    yang_name = "capabilities"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "capabilities"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetconfState::Capabilities::~Capabilities()
@@ -543,6 +547,7 @@ NetconfState::Capabilities::~Capabilities()
 
 bool NetconfState::Capabilities::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : capability.getYLeafs())
     {
         if(leaf.is_set)
@@ -623,9 +628,11 @@ bool NetconfState::Capabilities::has_leaf_or_child_of_name(const std::string & n
 }
 
 NetconfState::Datastores::Datastores()
+    :
+    datastore(this, {"name"})
 {
 
-    yang_name = "datastores"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "datastores"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetconfState::Datastores::~Datastores()
@@ -634,7 +641,8 @@ NetconfState::Datastores::~Datastores()
 
 bool NetconfState::Datastores::has_data() const
 {
-    for (std::size_t index=0; index<datastore.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<datastore.len(); index++)
     {
         if(datastore[index]->has_data())
             return true;
@@ -644,7 +652,7 @@ bool NetconfState::Datastores::has_data() const
 
 bool NetconfState::Datastores::has_operation() const
 {
-    for (std::size_t index=0; index<datastore.size(); index++)
+    for (std::size_t index=0; index<datastore.len(); index++)
     {
         if(datastore[index]->has_operation())
             return true;
@@ -681,7 +689,7 @@ std::shared_ptr<Entity> NetconfState::Datastores::get_child_by_name(const std::s
     {
         auto c = std::make_shared<NetconfState::Datastores::Datastore>();
         c->parent = this;
-        datastore.push_back(c);
+        datastore.append(c);
         return c;
     }
 
@@ -693,7 +701,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : datastore)
+    for (auto c : datastore.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -722,11 +730,11 @@ bool NetconfState::Datastores::has_leaf_or_child_of_name(const std::string & nam
 NetconfState::Datastores::Datastore::Datastore()
     :
     name{YType::enumeration, "name"}
-    	,
+        ,
     locks(nullptr) // presence node
 {
 
-    yang_name = "datastore"; yang_parent_name = "datastores"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "datastore"; yang_parent_name = "datastores"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetconfState::Datastores::Datastore::~Datastore()
@@ -735,6 +743,7 @@ NetconfState::Datastores::Datastore::~Datastore()
 
 bool NetconfState::Datastores::Datastore::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (locks !=  nullptr && locks->has_data());
 }
@@ -756,7 +765,8 @@ std::string NetconfState::Datastores::Datastore::get_absolute_path() const
 std::string NetconfState::Datastores::Datastore::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "datastore" <<"[name='" <<name <<"']";
+    path_buffer << "datastore";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -824,10 +834,11 @@ bool NetconfState::Datastores::Datastore::has_leaf_or_child_of_name(const std::s
 NetconfState::Datastores::Datastore::Locks::Locks()
     :
     global_lock(std::make_shared<NetconfState::Datastores::Datastore::Locks::GlobalLock>())
+    , partial_lock(this, {"lock_id"})
 {
     global_lock->parent = this;
 
-    yang_name = "locks"; yang_parent_name = "datastore"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "locks"; yang_parent_name = "datastore"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 NetconfState::Datastores::Datastore::Locks::~Locks()
@@ -836,7 +847,8 @@ NetconfState::Datastores::Datastore::Locks::~Locks()
 
 bool NetconfState::Datastores::Datastore::Locks::has_data() const
 {
-    for (std::size_t index=0; index<partial_lock.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<partial_lock.len(); index++)
     {
         if(partial_lock[index]->has_data())
             return true;
@@ -846,7 +858,7 @@ bool NetconfState::Datastores::Datastore::Locks::has_data() const
 
 bool NetconfState::Datastores::Datastore::Locks::has_operation() const
 {
-    for (std::size_t index=0; index<partial_lock.size(); index++)
+    for (std::size_t index=0; index<partial_lock.len(); index++)
     {
         if(partial_lock[index]->has_operation())
             return true;
@@ -886,7 +898,7 @@ std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::get_child_by
     {
         auto c = std::make_shared<NetconfState::Datastores::Datastore::Locks::PartialLock>();
         c->parent = this;
-        partial_lock.push_back(c);
+        partial_lock.append(c);
         return c;
     }
 
@@ -903,7 +915,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datasto
     }
 
     count = 0;
-    for (auto const & c : partial_lock)
+    for (auto c : partial_lock.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -935,7 +947,7 @@ NetconfState::Datastores::Datastore::Locks::GlobalLock::GlobalLock()
     locked_time{YType::str, "locked-time"}
 {
 
-    yang_name = "global-lock"; yang_parent_name = "locks"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-lock"; yang_parent_name = "locks"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetconfState::Datastores::Datastore::Locks::GlobalLock::~GlobalLock()
@@ -944,6 +956,7 @@ NetconfState::Datastores::Datastore::Locks::GlobalLock::~GlobalLock()
 
 bool NetconfState::Datastores::Datastore::Locks::GlobalLock::has_data() const
 {
+    if (is_presence_container) return true;
     return locked_by_session.is_set
 	|| locked_time.is_set;
 }
@@ -1029,7 +1042,7 @@ NetconfState::Datastores::Datastore::Locks::PartialLock::PartialLock()
     locked_node{YType::str, "locked-node"}
 {
 
-    yang_name = "partial-lock"; yang_parent_name = "locks"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "partial-lock"; yang_parent_name = "locks"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetconfState::Datastores::Datastore::Locks::PartialLock::~PartialLock()
@@ -1038,6 +1051,7 @@ NetconfState::Datastores::Datastore::Locks::PartialLock::~PartialLock()
 
 bool NetconfState::Datastores::Datastore::Locks::PartialLock::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : select.getYLeafs())
     {
         if(leaf.is_set)
@@ -1076,7 +1090,8 @@ bool NetconfState::Datastores::Datastore::Locks::PartialLock::has_operation() co
 std::string NetconfState::Datastores::Datastore::Locks::PartialLock::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "partial-lock" <<"[lock-id='" <<lock_id <<"']";
+    path_buffer << "partial-lock";
+    ADD_KEY_TOKEN(lock_id, "lock-id");
     return path_buffer.str();
 }
 
@@ -1170,9 +1185,11 @@ bool NetconfState::Datastores::Datastore::Locks::PartialLock::has_leaf_or_child_
 }
 
 NetconfState::Schemas::Schemas()
+    :
+    schema(this, {"identifier", "version", "format"})
 {
 
-    yang_name = "schemas"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "schemas"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetconfState::Schemas::~Schemas()
@@ -1181,7 +1198,8 @@ NetconfState::Schemas::~Schemas()
 
 bool NetconfState::Schemas::has_data() const
 {
-    for (std::size_t index=0; index<schema.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<schema.len(); index++)
     {
         if(schema[index]->has_data())
             return true;
@@ -1191,7 +1209,7 @@ bool NetconfState::Schemas::has_data() const
 
 bool NetconfState::Schemas::has_operation() const
 {
-    for (std::size_t index=0; index<schema.size(); index++)
+    for (std::size_t index=0; index<schema.len(); index++)
     {
         if(schema[index]->has_operation())
             return true;
@@ -1228,7 +1246,7 @@ std::shared_ptr<Entity> NetconfState::Schemas::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<NetconfState::Schemas::Schema>();
         c->parent = this;
-        schema.push_back(c);
+        schema.append(c);
         return c;
     }
 
@@ -1240,7 +1258,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Schemas::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : schema)
+    for (auto c : schema.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1275,7 +1293,7 @@ NetconfState::Schemas::Schema::Schema()
     location{YType::str, "location"}
 {
 
-    yang_name = "schema"; yang_parent_name = "schemas"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "schema"; yang_parent_name = "schemas"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetconfState::Schemas::Schema::~Schema()
@@ -1284,6 +1302,7 @@ NetconfState::Schemas::Schema::~Schema()
 
 bool NetconfState::Schemas::Schema::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : location.getYLeafs())
     {
         if(leaf.is_set)
@@ -1320,7 +1339,10 @@ std::string NetconfState::Schemas::Schema::get_absolute_path() const
 std::string NetconfState::Schemas::Schema::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "schema" <<"[identifier='" <<identifier <<"']" <<"[version='" <<version <<"']" <<"[format='" <<format <<"']";
+    path_buffer << "schema";
+    ADD_KEY_TOKEN(identifier, "identifier");
+    ADD_KEY_TOKEN(version, "version");
+    ADD_KEY_TOKEN(format, "format");
     return path_buffer.str();
 }
 
@@ -1415,9 +1437,11 @@ bool NetconfState::Schemas::Schema::has_leaf_or_child_of_name(const std::string 
 }
 
 NetconfState::Sessions::Sessions()
+    :
+    session(this, {"session_id"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetconfState::Sessions::~Sessions()
@@ -1426,7 +1450,8 @@ NetconfState::Sessions::~Sessions()
 
 bool NetconfState::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -1436,7 +1461,7 @@ bool NetconfState::Sessions::has_data() const
 
 bool NetconfState::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -1473,7 +1498,7 @@ std::shared_ptr<Entity> NetconfState::Sessions::get_child_by_name(const std::str
     {
         auto c = std::make_shared<NetconfState::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
@@ -1485,7 +1510,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Sessions::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1524,7 +1549,7 @@ NetconfState::Sessions::Session::Session()
     out_notifications{YType::uint32, "out-notifications"}
 {
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetconfState::Sessions::Session::~Session()
@@ -1533,6 +1558,7 @@ NetconfState::Sessions::Session::~Session()
 
 bool NetconfState::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| transport.is_set
 	|| username.is_set
@@ -1568,7 +1594,8 @@ std::string NetconfState::Sessions::Session::get_absolute_path() const
 std::string NetconfState::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[session-id='" <<session_id <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(session_id, "session-id");
     return path_buffer.str();
 }
 
@@ -1719,7 +1746,7 @@ NetconfState::Statistics::Statistics()
     out_notifications{YType::uint32, "out-notifications"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "netconf-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetconfState::Statistics::~Statistics()
@@ -1728,6 +1755,7 @@ NetconfState::Statistics::~Statistics()
 
 bool NetconfState::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return netconf_start_time.is_set
 	|| in_bad_hellos.is_set
 	|| in_sessions.is_set
@@ -1889,36 +1917,6 @@ bool NetconfState::Statistics::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
-NetconfSsh::NetconfSsh()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-ssh")
-{
-
-}
-
-NetconfSsh::~NetconfSsh()
-{
-}
-
-NetconfSoapOverBeep::NetconfSoapOverBeep()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-soap-over-beep")
-{
-
-}
-
-NetconfSoapOverBeep::~NetconfSoapOverBeep()
-{
-}
-
-NetconfSoapOverHttps::NetconfSoapOverHttps()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-soap-over-https")
-{
-
-}
-
-NetconfSoapOverHttps::~NetconfSoapOverHttps()
-{
-}
-
 NetconfBeep::NetconfBeep()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-beep")
 {
@@ -1929,33 +1927,23 @@ NetconfBeep::~NetconfBeep()
 {
 }
 
-NetconfTls::NetconfTls()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-tls")
+NetconfSsh::NetconfSsh()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-ssh")
 {
 
 }
 
-NetconfTls::~NetconfTls()
+NetconfSsh::~NetconfSsh()
 {
 }
 
-Xsd::Xsd()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:xsd")
-{
-
-}
-
-Xsd::~Xsd()
-{
-}
-
-Yang::Yang()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:yang")
+Rnc::Rnc()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:rnc")
 {
 
 }
 
-Yang::~Yang()
+Rnc::~Rnc()
 {
 }
 
@@ -1979,13 +1967,53 @@ Rng::~Rng()
 {
 }
 
-Rnc::Rnc()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:rnc")
+Xsd::Xsd()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:xsd")
 {
 
 }
 
-Rnc::~Rnc()
+Xsd::~Xsd()
+{
+}
+
+NetconfSoapOverBeep::NetconfSoapOverBeep()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-soap-over-beep")
+{
+
+}
+
+NetconfSoapOverBeep::~NetconfSoapOverBeep()
+{
+}
+
+NetconfTls::NetconfTls()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-tls")
+{
+
+}
+
+NetconfTls::~NetconfTls()
+{
+}
+
+Yang::Yang()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:yang")
+{
+
+}
+
+Yang::~Yang()
+{
+}
+
+NetconfSoapOverHttps::NetconfSoapOverHttps()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-soap-over-https")
+{
+
+}
+
+NetconfSoapOverHttps::~NetconfSoapOverHttps()
 {
 }
 

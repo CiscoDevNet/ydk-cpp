@@ -58,7 +58,7 @@ class Tty::TtyLines : public ydk::Entity
 
         class TtyLine; //type: Tty::TtyLines::TtyLine
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_cfg::Tty::TtyLines::TtyLine> > tty_line;
+        ydk::YList tty_line;
         
 }; // Tty::TtyLines
 
@@ -192,7 +192,7 @@ class Tty::TtyLines::TtyLine::Aaa::UserGroups : public ydk::Entity
 
         class UserGroup; //type: Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_cfg::Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup> > user_group;
+        ydk::YList user_group;
         
 }; // Tty::TtyLines::TtyLine::Aaa::UserGroups
 

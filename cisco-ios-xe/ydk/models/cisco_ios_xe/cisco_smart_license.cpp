@@ -14,12 +14,12 @@ namespace cisco_smart_license {
 RegisterIdToken::RegisterIdToken()
     :
     input(std::make_shared<RegisterIdToken::Input>())
-	,output(std::make_shared<RegisterIdToken::Output>())
+    , output(std::make_shared<RegisterIdToken::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "register-id-token"; yang_parent_name = "cisco-smart-license"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "register-id-token"; yang_parent_name = "cisco-smart-license"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RegisterIdToken::~RegisterIdToken()
@@ -28,6 +28,7 @@ RegisterIdToken::~RegisterIdToken()
 
 bool RegisterIdToken::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -141,7 +142,7 @@ RegisterIdToken::Input::Input()
     force{YType::boolean, "force"}
 {
 
-    yang_name = "input"; yang_parent_name = "register-id-token"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "register-id-token"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RegisterIdToken::Input::~Input()
@@ -150,6 +151,7 @@ RegisterIdToken::Input::~Input()
 
 bool RegisterIdToken::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return id_token.is_set
 	|| force.is_set;
 }
@@ -238,7 +240,7 @@ RegisterIdToken::Output::Output()
     return_code{YType::enumeration, "return-code"}
 {
 
-    yang_name = "output"; yang_parent_name = "register-id-token"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "register-id-token"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RegisterIdToken::Output::~Output()
@@ -247,6 +249,7 @@ RegisterIdToken::Output::~Output()
 
 bool RegisterIdToken::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return return_code.is_set;
 }
 
@@ -323,7 +326,7 @@ DeRegister::DeRegister()
 {
     output->parent = this;
 
-    yang_name = "de-register"; yang_parent_name = "cisco-smart-license"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "de-register"; yang_parent_name = "cisco-smart-license"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 DeRegister::~DeRegister()
@@ -332,6 +335,7 @@ DeRegister::~DeRegister()
 
 bool DeRegister::has_data() const
 {
+    if (is_presence_container) return true;
     return (output !=  nullptr && output->has_data());
 }
 
@@ -428,7 +432,7 @@ DeRegister::Output::Output()
     return_code{YType::enumeration, "return-code"}
 {
 
-    yang_name = "output"; yang_parent_name = "de-register"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "de-register"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DeRegister::Output::~Output()
@@ -437,6 +441,7 @@ DeRegister::Output::~Output()
 
 bool DeRegister::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return return_code.is_set;
 }
 
@@ -513,7 +518,7 @@ RenewId::RenewId()
 {
     output->parent = this;
 
-    yang_name = "renew-id"; yang_parent_name = "cisco-smart-license"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "renew-id"; yang_parent_name = "cisco-smart-license"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RenewId::~RenewId()
@@ -522,6 +527,7 @@ RenewId::~RenewId()
 
 bool RenewId::has_data() const
 {
+    if (is_presence_container) return true;
     return (output !=  nullptr && output->has_data());
 }
 
@@ -618,7 +624,7 @@ RenewId::Output::Output()
     return_code{YType::enumeration, "return-code"}
 {
 
-    yang_name = "output"; yang_parent_name = "renew-id"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "renew-id"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RenewId::Output::~Output()
@@ -627,6 +633,7 @@ RenewId::Output::~Output()
 
 bool RenewId::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return return_code.is_set;
 }
 
@@ -703,7 +710,7 @@ RenewAuth::RenewAuth()
 {
     output->parent = this;
 
-    yang_name = "renew-auth"; yang_parent_name = "cisco-smart-license"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "renew-auth"; yang_parent_name = "cisco-smart-license"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RenewAuth::~RenewAuth()
@@ -712,6 +719,7 @@ RenewAuth::~RenewAuth()
 
 bool RenewAuth::has_data() const
 {
+    if (is_presence_container) return true;
     return (output !=  nullptr && output->has_data());
 }
 
@@ -808,7 +816,7 @@ RenewAuth::Output::Output()
     return_code{YType::enumeration, "return-code"}
 {
 
-    yang_name = "output"; yang_parent_name = "renew-auth"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "renew-auth"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RenewAuth::Output::~Output()
@@ -817,6 +825,7 @@ RenewAuth::Output::~Output()
 
 bool RenewAuth::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return return_code.is_set;
 }
 
@@ -890,12 +899,12 @@ bool RenewAuth::Output::has_leaf_or_child_of_name(const std::string & name) cons
 Licensing::Licensing()
     :
     config(std::make_shared<Licensing::Config>())
-	,state(std::make_shared<Licensing::State>())
+    , state(std::make_shared<Licensing::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "licensing"; yang_parent_name = "cisco-smart-license"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "licensing"; yang_parent_name = "cisco-smart-license"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Licensing::~Licensing()
@@ -904,6 +913,7 @@ Licensing::~Licensing()
 
 bool Licensing::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -1015,16 +1025,16 @@ Licensing::Config::Config()
     :
     enable{YType::boolean, "enable"},
     custom_id{YType::str, "custom-id"}
-    	,
+        ,
     privacy(std::make_shared<Licensing::Config::Privacy>())
-	,utility(std::make_shared<Licensing::Config::Utility>())
-	,transport(std::make_shared<Licensing::Config::Transport>())
+    , utility(std::make_shared<Licensing::Config::Utility>())
+    , transport(std::make_shared<Licensing::Config::Transport>())
 {
     privacy->parent = this;
     utility->parent = this;
     transport->parent = this;
 
-    yang_name = "config"; yang_parent_name = "licensing"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "licensing"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::Config::~Config()
@@ -1033,6 +1043,7 @@ Licensing::Config::~Config()
 
 bool Licensing::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| custom_id.is_set
 	|| (privacy !=  nullptr && privacy->has_data())
@@ -1170,7 +1181,7 @@ Licensing::Config::Privacy::Privacy()
     version{YType::boolean, "version"}
 {
 
-    yang_name = "privacy"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "privacy"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::Config::Privacy::~Privacy()
@@ -1179,6 +1190,7 @@ Licensing::Config::Privacy::~Privacy()
 
 bool Licensing::Config::Privacy::has_data() const
 {
+    if (is_presence_container) return true;
     return hostname.is_set
 	|| version.is_set;
 }
@@ -1265,12 +1277,12 @@ bool Licensing::Config::Privacy::has_leaf_or_child_of_name(const std::string & n
 Licensing::Config::Utility::Utility()
     :
     utility_enable{YType::boolean, "utility-enable"}
-    	,
+        ,
     customer_info(std::make_shared<Licensing::Config::Utility::CustomerInfo>())
 {
     customer_info->parent = this;
 
-    yang_name = "utility"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "utility"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::Config::Utility::~Utility()
@@ -1279,6 +1291,7 @@ Licensing::Config::Utility::~Utility()
 
 bool Licensing::Config::Utility::has_data() const
 {
+    if (is_presence_container) return true;
     return utility_enable.is_set
 	|| (customer_info !=  nullptr && customer_info->has_data());
 }
@@ -1376,7 +1389,7 @@ Licensing::Config::Utility::CustomerInfo::CustomerInfo()
     postal_code{YType::str, "postal-code"}
 {
 
-    yang_name = "customer-info"; yang_parent_name = "utility"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "customer-info"; yang_parent_name = "utility"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::Config::Utility::CustomerInfo::~CustomerInfo()
@@ -1385,6 +1398,7 @@ Licensing::Config::Utility::CustomerInfo::~CustomerInfo()
 
 bool Licensing::Config::Utility::CustomerInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| name.is_set
 	|| street.is_set
@@ -1536,12 +1550,12 @@ bool Licensing::Config::Utility::CustomerInfo::has_leaf_or_child_of_name(const s
 Licensing::Config::Transport::Transport()
     :
     transport_type{YType::enumeration, "transport-type"}
-    	,
+        ,
     transport_smart(std::make_shared<Licensing::Config::Transport::TransportSmart>())
 {
     transport_smart->parent = this;
 
-    yang_name = "transport"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transport"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::Config::Transport::~Transport()
@@ -1550,6 +1564,7 @@ Licensing::Config::Transport::~Transport()
 
 bool Licensing::Config::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return transport_type.is_set
 	|| (transport_smart !=  nullptr && transport_smart->has_data());
 }
@@ -1639,12 +1654,12 @@ bool Licensing::Config::Transport::has_leaf_or_child_of_name(const std::string &
 Licensing::Config::Transport::TransportSmart::TransportSmart()
     :
     url_default{YType::boolean, "url-default"}
-    	,
+        ,
     urls(std::make_shared<Licensing::Config::Transport::TransportSmart::Urls>())
 {
     urls->parent = this;
 
-    yang_name = "transport-smart"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transport-smart"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::Config::Transport::TransportSmart::~TransportSmart()
@@ -1653,6 +1668,7 @@ Licensing::Config::Transport::TransportSmart::~TransportSmart()
 
 bool Licensing::Config::Transport::TransportSmart::has_data() const
 {
+    if (is_presence_container) return true;
     return url_default.is_set
 	|| (urls !=  nullptr && urls->has_data());
 }
@@ -1745,7 +1761,7 @@ Licensing::Config::Transport::TransportSmart::Urls::Urls()
     url_utility{YType::str, "url-utility"}
 {
 
-    yang_name = "urls"; yang_parent_name = "transport-smart"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "urls"; yang_parent_name = "transport-smart"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::Config::Transport::TransportSmart::Urls::~Urls()
@@ -1754,6 +1770,7 @@ Licensing::Config::Transport::TransportSmart::Urls::~Urls()
 
 bool Licensing::Config::Transport::TransportSmart::Urls::has_data() const
 {
+    if (is_presence_container) return true;
     return url_registration.is_set
 	|| url_utility.is_set;
 }
@@ -1842,12 +1859,12 @@ Licensing::State::State()
     always_enabled{YType::boolean, "always-enabled"},
     smart_enabled{YType::boolean, "smart-enabled"},
     version{YType::str, "version"}
-    	,
+        ,
     state_info(std::make_shared<Licensing::State::StateInfo>())
 {
     state_info->parent = this;
 
-    yang_name = "state"; yang_parent_name = "licensing"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "state"; yang_parent_name = "licensing"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::~State()
@@ -1856,6 +1873,7 @@ Licensing::State::~State()
 
 bool Licensing::State::has_data() const
 {
+    if (is_presence_container) return true;
     return always_enabled.is_set
 	|| smart_enabled.is_set
 	|| version.is_set
@@ -1971,14 +1989,15 @@ bool Licensing::State::has_leaf_or_child_of_name(const std::string & name) const
 Licensing::State::StateInfo::StateInfo()
     :
     custom_id{YType::str, "custom-id"}
-    	,
+        ,
     registration(std::make_shared<Licensing::State::StateInfo::Registration>())
-	,authorization(std::make_shared<Licensing::State::StateInfo::Authorization>())
-	,utility(std::make_shared<Licensing::State::StateInfo::Utility>())
-	,transport(std::make_shared<Licensing::State::StateInfo::Transport>())
-	,privacy(std::make_shared<Licensing::State::StateInfo::Privacy>())
-	,evaluation(std::make_shared<Licensing::State::StateInfo::Evaluation>())
-	,udi(std::make_shared<Licensing::State::StateInfo::Udi>())
+    , authorization(std::make_shared<Licensing::State::StateInfo::Authorization>())
+    , utility(std::make_shared<Licensing::State::StateInfo::Utility>())
+    , transport(std::make_shared<Licensing::State::StateInfo::Transport>())
+    , privacy(std::make_shared<Licensing::State::StateInfo::Privacy>())
+    , evaluation(std::make_shared<Licensing::State::StateInfo::Evaluation>())
+    , udi(std::make_shared<Licensing::State::StateInfo::Udi>())
+    , usage(this, {"entitlement_tag"})
 {
     registration->parent = this;
     authorization->parent = this;
@@ -1988,7 +2007,7 @@ Licensing::State::StateInfo::StateInfo()
     evaluation->parent = this;
     udi->parent = this;
 
-    yang_name = "state-info"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "state-info"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::~StateInfo()
@@ -1997,7 +2016,8 @@ Licensing::State::StateInfo::~StateInfo()
 
 bool Licensing::State::StateInfo::has_data() const
 {
-    for (std::size_t index=0; index<usage.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<usage.len(); index++)
     {
         if(usage[index]->has_data())
             return true;
@@ -2014,7 +2034,7 @@ bool Licensing::State::StateInfo::has_data() const
 
 bool Licensing::State::StateInfo::has_operation() const
 {
-    for (std::size_t index=0; index<usage.size(); index++)
+    for (std::size_t index=0; index<usage.len(); index++)
     {
         if(usage[index]->has_operation())
             return true;
@@ -2123,7 +2143,7 @@ std::shared_ptr<Entity> Licensing::State::StateInfo::get_child_by_name(const std
     {
         auto c = std::make_shared<Licensing::State::StateInfo::Usage>();
         c->parent = this;
-        usage.push_back(c);
+        usage.append(c);
         return c;
     }
 
@@ -2170,7 +2190,7 @@ std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::get_
     }
 
     count = 0;
-    for (auto const & c : usage)
+    for (auto c : usage.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2210,18 +2230,18 @@ Licensing::State::StateInfo::Registration::Registration()
     :
     registration_state{YType::enumeration, "registration-state"},
     export_control_allowed{YType::boolean, "export-control-allowed"}
-    	,
+        ,
     registration_in_progress(std::make_shared<Licensing::State::StateInfo::Registration::RegistrationInProgress>())
-	,registration_failed(std::make_shared<Licensing::State::StateInfo::Registration::RegistrationFailed>())
-	,registration_retry(std::make_shared<Licensing::State::StateInfo::Registration::RegistrationRetry>())
-	,registration_complete(std::make_shared<Licensing::State::StateInfo::Registration::RegistrationComplete>())
+    , registration_failed(std::make_shared<Licensing::State::StateInfo::Registration::RegistrationFailed>())
+    , registration_retry(std::make_shared<Licensing::State::StateInfo::Registration::RegistrationRetry>())
+    , registration_complete(std::make_shared<Licensing::State::StateInfo::Registration::RegistrationComplete>())
 {
     registration_in_progress->parent = this;
     registration_failed->parent = this;
     registration_retry->parent = this;
     registration_complete->parent = this;
 
-    yang_name = "registration"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "registration"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Registration::~Registration()
@@ -2230,6 +2250,7 @@ Licensing::State::StateInfo::Registration::~Registration()
 
 bool Licensing::State::StateInfo::Registration::has_data() const
 {
+    if (is_presence_container) return true;
     return registration_state.is_set
 	|| export_control_allowed.is_set
 	|| (registration_in_progress !=  nullptr && registration_in_progress->has_data())
@@ -2382,7 +2403,7 @@ Licensing::State::StateInfo::Registration::RegistrationInProgress::RegistrationI
     start_time{YType::str, "start-time"}
 {
 
-    yang_name = "registration-in-progress"; yang_parent_name = "registration"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "registration-in-progress"; yang_parent_name = "registration"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Registration::RegistrationInProgress::~RegistrationInProgress()
@@ -2391,6 +2412,7 @@ Licensing::State::StateInfo::Registration::RegistrationInProgress::~Registration
 
 bool Licensing::State::StateInfo::Registration::RegistrationInProgress::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set;
 }
 
@@ -2467,7 +2489,7 @@ Licensing::State::StateInfo::Registration::RegistrationFailed::RegistrationFaile
     fail_message{YType::str, "fail-message"}
 {
 
-    yang_name = "registration-failed"; yang_parent_name = "registration"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "registration-failed"; yang_parent_name = "registration"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Registration::RegistrationFailed::~RegistrationFailed()
@@ -2476,6 +2498,7 @@ Licensing::State::StateInfo::Registration::RegistrationFailed::~RegistrationFail
 
 bool Licensing::State::StateInfo::Registration::RegistrationFailed::has_data() const
 {
+    if (is_presence_container) return true;
     return fail_time.is_set
 	|| fail_message.is_set;
 }
@@ -2566,7 +2589,7 @@ Licensing::State::StateInfo::Registration::RegistrationRetry::RegistrationRetry(
     fail_message{YType::str, "fail-message"}
 {
 
-    yang_name = "registration-retry"; yang_parent_name = "registration"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "registration-retry"; yang_parent_name = "registration"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Registration::RegistrationRetry::~RegistrationRetry()
@@ -2575,6 +2598,7 @@ Licensing::State::StateInfo::Registration::RegistrationRetry::~RegistrationRetry
 
 bool Licensing::State::StateInfo::Registration::RegistrationRetry::has_data() const
 {
+    if (is_presence_container) return true;
     return retry_next_time.is_set
 	|| fail_time.is_set
 	|| fail_message.is_set;
@@ -2683,7 +2707,7 @@ Licensing::State::StateInfo::Registration::RegistrationComplete::RegistrationCom
     virtual_account{YType::str, "virtual-account"}
 {
 
-    yang_name = "registration-complete"; yang_parent_name = "registration"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "registration-complete"; yang_parent_name = "registration"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Registration::RegistrationComplete::~RegistrationComplete()
@@ -2692,6 +2716,7 @@ Licensing::State::StateInfo::Registration::RegistrationComplete::~RegistrationCo
 
 bool Licensing::State::StateInfo::Registration::RegistrationComplete::has_data() const
 {
+    if (is_presence_container) return true;
     return complete_time.is_set
 	|| last_renew_time.is_set
 	|| next_renew_time.is_set
@@ -2856,14 +2881,14 @@ bool Licensing::State::StateInfo::Registration::RegistrationComplete::has_leaf_o
 Licensing::State::StateInfo::Authorization::Authorization()
     :
     authorization_state{YType::enumeration, "authorization-state"}
-    	,
+        ,
     authorization_none(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationNone>())
-	,authorization_eval(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationEval>())
-	,authorization_eval_expired(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationEvalExpired>())
-	,authorization_authorized(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationAuthorized>())
-	,authorization_authorized_reservation(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationAuthorizedReservation>())
-	,authorization_out_of_compliance(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationOutOfCompliance>())
-	,authorization_authorization_expired(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationAuthorizationExpired>())
+    , authorization_eval(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationEval>())
+    , authorization_eval_expired(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationEvalExpired>())
+    , authorization_authorized(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationAuthorized>())
+    , authorization_authorized_reservation(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationAuthorizedReservation>())
+    , authorization_out_of_compliance(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationOutOfCompliance>())
+    , authorization_authorization_expired(std::make_shared<Licensing::State::StateInfo::Authorization::AuthorizationAuthorizationExpired>())
 {
     authorization_none->parent = this;
     authorization_eval->parent = this;
@@ -2873,7 +2898,7 @@ Licensing::State::StateInfo::Authorization::Authorization()
     authorization_out_of_compliance->parent = this;
     authorization_authorization_expired->parent = this;
 
-    yang_name = "authorization"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Authorization::~Authorization()
@@ -2882,6 +2907,7 @@ Licensing::State::StateInfo::Authorization::~Authorization()
 
 bool Licensing::State::StateInfo::Authorization::has_data() const
 {
+    if (is_presence_container) return true;
     return authorization_state.is_set
 	|| (authorization_none !=  nullptr && authorization_none->has_data())
 	|| (authorization_eval !=  nullptr && authorization_eval->has_data())
@@ -3067,7 +3093,7 @@ bool Licensing::State::StateInfo::Authorization::has_leaf_or_child_of_name(const
 Licensing::State::StateInfo::Authorization::AuthorizationNone::AuthorizationNone()
 {
 
-    yang_name = "authorization-none"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization-none"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Authorization::AuthorizationNone::~AuthorizationNone()
@@ -3076,6 +3102,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationNone::~AuthorizationNon
 
 bool Licensing::State::StateInfo::Authorization::AuthorizationNone::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3137,7 +3164,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationEval::AuthorizationEval
     seconds_left{YType::uint64, "seconds-left"}
 {
 
-    yang_name = "authorization-eval"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization-eval"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Authorization::AuthorizationEval::~AuthorizationEval()
@@ -3146,6 +3173,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationEval::~AuthorizationEva
 
 bool Licensing::State::StateInfo::Authorization::AuthorizationEval::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds_left.is_set;
 }
 
@@ -3221,7 +3249,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationEvalExpired::Authorizat
     expire_time{YType::str, "expire-time"}
 {
 
-    yang_name = "authorization-eval-expired"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization-eval-expired"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Authorization::AuthorizationEvalExpired::~AuthorizationEvalExpired()
@@ -3230,6 +3258,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationEvalExpired::~Authoriza
 
 bool Licensing::State::StateInfo::Authorization::AuthorizationEvalExpired::has_data() const
 {
+    if (is_presence_container) return true;
     return expire_time.is_set;
 }
 
@@ -3309,7 +3338,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationAuthorized::Authorizati
     comm_deadline_time{YType::str, "comm-deadline-time"}
 {
 
-    yang_name = "authorization-authorized"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization-authorized"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Authorization::AuthorizationAuthorized::~AuthorizationAuthorized()
@@ -3318,6 +3347,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationAuthorized::~Authorizat
 
 bool Licensing::State::StateInfo::Authorization::AuthorizationAuthorized::has_data() const
 {
+    if (is_presence_container) return true;
     return last_comm_status_success.is_set
 	|| fail_message.is_set
 	|| last_comm_time.is_set
@@ -3445,7 +3475,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationAuthorizedReservation::
     reservation_time{YType::str, "reservation-time"}
 {
 
-    yang_name = "authorization-authorized-reservation"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization-authorized-reservation"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Authorization::AuthorizationAuthorizedReservation::~AuthorizationAuthorizedReservation()
@@ -3454,6 +3484,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationAuthorizedReservation::
 
 bool Licensing::State::StateInfo::Authorization::AuthorizationAuthorizedReservation::has_data() const
 {
+    if (is_presence_container) return true;
     return reservation_time.is_set;
 }
 
@@ -3534,7 +3565,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationOutOfCompliance::Author
     ooc_time{YType::str, "ooc-time"}
 {
 
-    yang_name = "authorization-out-of-compliance"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization-out-of-compliance"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Authorization::AuthorizationOutOfCompliance::~AuthorizationOutOfCompliance()
@@ -3543,6 +3574,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationOutOfCompliance::~Autho
 
 bool Licensing::State::StateInfo::Authorization::AuthorizationOutOfCompliance::has_data() const
 {
+    if (is_presence_container) return true;
     return last_comm_status_success.is_set
 	|| fail_message.is_set
 	|| last_comm_time.is_set
@@ -3687,7 +3719,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationAuthorizationExpired::A
     comm_deadline_time{YType::str, "comm-deadline-time"}
 {
 
-    yang_name = "authorization-authorization-expired"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization-authorization-expired"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Authorization::AuthorizationAuthorizationExpired::~AuthorizationAuthorizationExpired()
@@ -3696,6 +3728,7 @@ Licensing::State::StateInfo::Authorization::AuthorizationAuthorizationExpired::~
 
 bool Licensing::State::StateInfo::Authorization::AuthorizationAuthorizationExpired::has_data() const
 {
+    if (is_presence_container) return true;
     return last_comm_status_success.is_set
 	|| fail_message.is_set
 	|| last_comm_time.is_set
@@ -3822,14 +3855,14 @@ Licensing::State::StateInfo::Utility::Utility()
     :
     enabled{YType::boolean, "enabled"},
     reporting{YType::enumeration, "reporting"}
-    	,
+        ,
     reporting_times(std::make_shared<Licensing::State::StateInfo::Utility::ReportingTimes>())
-	,customer_info(std::make_shared<Licensing::State::StateInfo::Utility::CustomerInfo>())
+    , customer_info(std::make_shared<Licensing::State::StateInfo::Utility::CustomerInfo>())
 {
     reporting_times->parent = this;
     customer_info->parent = this;
 
-    yang_name = "utility"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "utility"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Utility::~Utility()
@@ -3838,6 +3871,7 @@ Licensing::State::StateInfo::Utility::~Utility()
 
 bool Licensing::State::StateInfo::Utility::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| reporting.is_set
 	|| (reporting_times !=  nullptr && reporting_times->has_data())
@@ -3961,7 +3995,7 @@ Licensing::State::StateInfo::Utility::ReportingTimes::ReportingTimes()
     next_report_time{YType::str, "next-report-time"}
 {
 
-    yang_name = "reporting-times"; yang_parent_name = "utility"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reporting-times"; yang_parent_name = "utility"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Utility::ReportingTimes::~ReportingTimes()
@@ -3970,6 +4004,7 @@ Licensing::State::StateInfo::Utility::ReportingTimes::~ReportingTimes()
 
 bool Licensing::State::StateInfo::Utility::ReportingTimes::has_data() const
 {
+    if (is_presence_container) return true;
     return last_report_time.is_set
 	|| last_report_success.is_set
 	|| fail_message.is_set
@@ -4090,7 +4125,7 @@ Licensing::State::StateInfo::Utility::CustomerInfo::CustomerInfo()
     postal_code{YType::str, "postal-code"}
 {
 
-    yang_name = "customer-info"; yang_parent_name = "utility"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "customer-info"; yang_parent_name = "utility"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Utility::CustomerInfo::~CustomerInfo()
@@ -4099,6 +4134,7 @@ Licensing::State::StateInfo::Utility::CustomerInfo::~CustomerInfo()
 
 bool Licensing::State::StateInfo::Utility::CustomerInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| name.is_set
 	|| street.is_set
@@ -4250,12 +4286,12 @@ bool Licensing::State::StateInfo::Utility::CustomerInfo::has_leaf_or_child_of_na
 Licensing::State::StateInfo::Transport::Transport()
     :
     transport_type{YType::enumeration, "transport-type"}
-    	,
+        ,
     url_settings(std::make_shared<Licensing::State::StateInfo::Transport::UrlSettings>())
 {
     url_settings->parent = this;
 
-    yang_name = "transport"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transport"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Transport::~Transport()
@@ -4264,6 +4300,7 @@ Licensing::State::StateInfo::Transport::~Transport()
 
 bool Licensing::State::StateInfo::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return transport_type.is_set
 	|| (url_settings !=  nullptr && url_settings->has_data());
 }
@@ -4356,7 +4393,7 @@ Licensing::State::StateInfo::Transport::UrlSettings::UrlSettings()
     url_utility{YType::str, "url-utility"}
 {
 
-    yang_name = "url-settings"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "url-settings"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Transport::UrlSettings::~UrlSettings()
@@ -4365,6 +4402,7 @@ Licensing::State::StateInfo::Transport::UrlSettings::~UrlSettings()
 
 bool Licensing::State::StateInfo::Transport::UrlSettings::has_data() const
 {
+    if (is_presence_container) return true;
     return url_registration.is_set
 	|| url_utility.is_set;
 }
@@ -4454,7 +4492,7 @@ Licensing::State::StateInfo::Privacy::Privacy()
     version{YType::boolean, "version"}
 {
 
-    yang_name = "privacy"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "privacy"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Privacy::~Privacy()
@@ -4463,6 +4501,7 @@ Licensing::State::StateInfo::Privacy::~Privacy()
 
 bool Licensing::State::StateInfo::Privacy::has_data() const
 {
+    if (is_presence_container) return true;
     return hostname.is_set
 	|| version.is_set;
 }
@@ -4550,14 +4589,14 @@ Licensing::State::StateInfo::Evaluation::Evaluation()
     :
     eval_in_use{YType::boolean, "eval-in-use"},
     eval_expired{YType::boolean, "eval-expired"}
-    	,
+        ,
     eval_period_left(std::make_shared<Licensing::State::StateInfo::Evaluation::EvalPeriodLeft>())
-	,eval_expire_time(std::make_shared<Licensing::State::StateInfo::Evaluation::EvalExpireTime>())
+    , eval_expire_time(std::make_shared<Licensing::State::StateInfo::Evaluation::EvalExpireTime>())
 {
     eval_period_left->parent = this;
     eval_expire_time->parent = this;
 
-    yang_name = "evaluation"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evaluation"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Evaluation::~Evaluation()
@@ -4566,6 +4605,7 @@ Licensing::State::StateInfo::Evaluation::~Evaluation()
 
 bool Licensing::State::StateInfo::Evaluation::has_data() const
 {
+    if (is_presence_container) return true;
     return eval_in_use.is_set
 	|| eval_expired.is_set
 	|| (eval_period_left !=  nullptr && eval_period_left->has_data())
@@ -4686,7 +4726,7 @@ Licensing::State::StateInfo::Evaluation::EvalPeriodLeft::EvalPeriodLeft()
     time_left{YType::uint32, "time-left"}
 {
 
-    yang_name = "eval-period-left"; yang_parent_name = "evaluation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eval-period-left"; yang_parent_name = "evaluation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Evaluation::EvalPeriodLeft::~EvalPeriodLeft()
@@ -4695,6 +4735,7 @@ Licensing::State::StateInfo::Evaluation::EvalPeriodLeft::~EvalPeriodLeft()
 
 bool Licensing::State::StateInfo::Evaluation::EvalPeriodLeft::has_data() const
 {
+    if (is_presence_container) return true;
     return time_left.is_set;
 }
 
@@ -4770,7 +4811,7 @@ Licensing::State::StateInfo::Evaluation::EvalExpireTime::EvalExpireTime()
     expire_time{YType::str, "expire-time"}
 {
 
-    yang_name = "eval-expire-time"; yang_parent_name = "evaluation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eval-expire-time"; yang_parent_name = "evaluation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Evaluation::EvalExpireTime::~EvalExpireTime()
@@ -4779,6 +4820,7 @@ Licensing::State::StateInfo::Evaluation::EvalExpireTime::~EvalExpireTime()
 
 bool Licensing::State::StateInfo::Evaluation::EvalExpireTime::has_data() const
 {
+    if (is_presence_container) return true;
     return expire_time.is_set;
 }
 
@@ -4860,7 +4902,7 @@ Licensing::State::StateInfo::Udi::Udi()
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "udi"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udi"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Udi::~Udi()
@@ -4869,6 +4911,7 @@ Licensing::State::StateInfo::Udi::~Udi()
 
 bool Licensing::State::StateInfo::Udi::has_data() const
 {
+    if (is_presence_container) return true;
     return pid.is_set
 	|| sn.is_set
 	|| vid.is_set
@@ -5029,7 +5072,7 @@ Licensing::State::StateInfo::Usage::Usage()
     subscription_id{YType::str, "subscription-id"}
 {
 
-    yang_name = "usage"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "usage"; yang_parent_name = "state-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Licensing::State::StateInfo::Usage::~Usage()
@@ -5038,6 +5081,7 @@ Licensing::State::StateInfo::Usage::~Usage()
 
 bool Licensing::State::StateInfo::Usage::has_data() const
 {
+    if (is_presence_container) return true;
     return entitlement_tag.is_set
 	|| short_name.is_set
 	|| license_name.is_set
@@ -5071,7 +5115,8 @@ std::string Licensing::State::StateInfo::Usage::get_absolute_path() const
 std::string Licensing::State::StateInfo::Usage::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "usage" <<"[entitlement-tag='" <<entitlement_tag <<"']";
+    path_buffer << "usage";
+    ADD_KEY_TOKEN(entitlement_tag, "entitlement-tag");
     return path_buffer.str();
 }
 
@@ -5199,41 +5244,8 @@ bool Licensing::State::StateInfo::Usage::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
-const Enum::YLeaf NotifRegisterFailureEnum::general_failure {0, "general-failure"};
-const Enum::YLeaf NotifRegisterFailureEnum::already_registered_failure {1, "already-registered-failure"};
-const Enum::YLeaf NotifRegisterFailureEnum::de_register_failure {2, "de-register-failure"};
-
-const Enum::YLeaf RegistrationStateEnum::reg_state_not_registered {0, "reg-state-not-registered"};
-const Enum::YLeaf RegistrationStateEnum::reg_state_complete {1, "reg-state-complete"};
-const Enum::YLeaf RegistrationStateEnum::reg_state_in_progress {2, "reg-state-in-progress"};
-const Enum::YLeaf RegistrationStateEnum::reg_state_retry {3, "reg-state-retry"};
-const Enum::YLeaf RegistrationStateEnum::reg_state_failed {4, "reg-state-failed"};
-
-const Enum::YLeaf AuthorizationStateEnum::auth_state_none {0, "auth-state-none"};
-const Enum::YLeaf AuthorizationStateEnum::auth_state_eval {1, "auth-state-eval"};
-const Enum::YLeaf AuthorizationStateEnum::auth_state_eval_expired {2, "auth-state-eval-expired"};
-const Enum::YLeaf AuthorizationStateEnum::auth_state_authorized {3, "auth-state-authorized"};
-const Enum::YLeaf AuthorizationStateEnum::auth_state_authorized_reservation {4, "auth-state-authorized-reservation"};
-const Enum::YLeaf AuthorizationStateEnum::auth_state_out_of_compliance {5, "auth-state-out-of-compliance"};
-const Enum::YLeaf AuthorizationStateEnum::auth_state_authorization_expired {6, "auth-state-authorization-expired"};
-
-const Enum::YLeaf UtilityReportingTypeEnum::utility_reporting_type_none {0, "utility-reporting-type-none"};
-const Enum::YLeaf UtilityReportingTypeEnum::utility_reporting_type_subscription {1, "utility-reporting-type-subscription"};
-const Enum::YLeaf UtilityReportingTypeEnum::utility_reporting_type_certificate {2, "utility-reporting-type-certificate"};
-
 const Enum::YLeaf TransportTypeEnum::transport_type_callhome {0, "transport-type-callhome"};
 const Enum::YLeaf TransportTypeEnum::transport_type_smart {1, "transport-type-smart"};
-
-const Enum::YLeaf EnforcementModeEnum::enforcement_waiting {0, "enforcement-waiting"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_in_compliance {1, "enforcement-in-compliance"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_out_of_compliance {2, "enforcement-out-of-compliance"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_overage {3, "enforcement-overage"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_evaluation {4, "enforcement-evaluation"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_evaluation_expired {5, "enforcement-evaluation-expired"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_authorization_expired {6, "enforcement-authorization-expired"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_reservation_in_compliance {7, "enforcement-reservation-in-compliance"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_invalid_tag {8, "enforcement-invalid-tag"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_disabled {9, "enforcement-disabled"};
 
 const Enum::YLeaf ErrorEnum::success {0, "success"};
 const Enum::YLeaf ErrorEnum::malloc {1, "malloc"};
@@ -5379,6 +5391,39 @@ const Enum::YLeaf ErrorEnum::fqdn {140, "fqdn"};
 const Enum::YLeaf ErrorEnum::thirdparty {141, "thirdparty"};
 const Enum::YLeaf ErrorEnum::transporttype {142, "transporttype"};
 const Enum::YLeaf ErrorEnum::max {143, "max"};
+
+const Enum::YLeaf UtilityReportingTypeEnum::utility_reporting_type_none {0, "utility-reporting-type-none"};
+const Enum::YLeaf UtilityReportingTypeEnum::utility_reporting_type_subscription {1, "utility-reporting-type-subscription"};
+const Enum::YLeaf UtilityReportingTypeEnum::utility_reporting_type_certificate {2, "utility-reporting-type-certificate"};
+
+const Enum::YLeaf EnforcementModeEnum::enforcement_waiting {0, "enforcement-waiting"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_in_compliance {1, "enforcement-in-compliance"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_out_of_compliance {2, "enforcement-out-of-compliance"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_overage {3, "enforcement-overage"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_evaluation {4, "enforcement-evaluation"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_evaluation_expired {5, "enforcement-evaluation-expired"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_authorization_expired {6, "enforcement-authorization-expired"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_reservation_in_compliance {7, "enforcement-reservation-in-compliance"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_invalid_tag {8, "enforcement-invalid-tag"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_disabled {9, "enforcement-disabled"};
+
+const Enum::YLeaf AuthorizationStateEnum::auth_state_none {0, "auth-state-none"};
+const Enum::YLeaf AuthorizationStateEnum::auth_state_eval {1, "auth-state-eval"};
+const Enum::YLeaf AuthorizationStateEnum::auth_state_eval_expired {2, "auth-state-eval-expired"};
+const Enum::YLeaf AuthorizationStateEnum::auth_state_authorized {3, "auth-state-authorized"};
+const Enum::YLeaf AuthorizationStateEnum::auth_state_authorized_reservation {4, "auth-state-authorized-reservation"};
+const Enum::YLeaf AuthorizationStateEnum::auth_state_out_of_compliance {5, "auth-state-out-of-compliance"};
+const Enum::YLeaf AuthorizationStateEnum::auth_state_authorization_expired {6, "auth-state-authorization-expired"};
+
+const Enum::YLeaf RegistrationStateEnum::reg_state_not_registered {0, "reg-state-not-registered"};
+const Enum::YLeaf RegistrationStateEnum::reg_state_complete {1, "reg-state-complete"};
+const Enum::YLeaf RegistrationStateEnum::reg_state_in_progress {2, "reg-state-in-progress"};
+const Enum::YLeaf RegistrationStateEnum::reg_state_retry {3, "reg-state-retry"};
+const Enum::YLeaf RegistrationStateEnum::reg_state_failed {4, "reg-state-failed"};
+
+const Enum::YLeaf NotifRegisterFailureEnum::general_failure {0, "general-failure"};
+const Enum::YLeaf NotifRegisterFailureEnum::already_registered_failure {1, "already-registered-failure"};
+const Enum::YLeaf NotifRegisterFailureEnum::de_register_failure {2, "de-register-failure"};
 
 
 }

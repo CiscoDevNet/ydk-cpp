@@ -13,11 +13,11 @@ namespace CISCO_CDP_MIB {
 
 CISCOCDPMIB::CISCOCDPMIB()
     :
-    cdpglobal(std::make_shared<CISCOCDPMIB::Cdpglobal>())
-	,cdpinterfacetable(std::make_shared<CISCOCDPMIB::Cdpinterfacetable>())
-	,cdpinterfaceexttable(std::make_shared<CISCOCDPMIB::Cdpinterfaceexttable>())
-	,cdpcachetable(std::make_shared<CISCOCDPMIB::Cdpcachetable>())
-	,cdpctaddresstable(std::make_shared<CISCOCDPMIB::Cdpctaddresstable>())
+    cdpglobal(std::make_shared<CISCOCDPMIB::CdpGlobal>())
+    , cdpinterfacetable(std::make_shared<CISCOCDPMIB::CdpInterfaceTable>())
+    , cdpinterfaceexttable(std::make_shared<CISCOCDPMIB::CdpInterfaceExtTable>())
+    , cdpcachetable(std::make_shared<CISCOCDPMIB::CdpCacheTable>())
+    , cdpctaddresstable(std::make_shared<CISCOCDPMIB::CdpCtAddressTable>())
 {
     cdpglobal->parent = this;
     cdpinterfacetable->parent = this;
@@ -25,7 +25,7 @@ CISCOCDPMIB::CISCOCDPMIB()
     cdpcachetable->parent = this;
     cdpctaddresstable->parent = this;
 
-    yang_name = "CISCO-CDP-MIB"; yang_parent_name = "CISCO-CDP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-CDP-MIB"; yang_parent_name = "CISCO-CDP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOCDPMIB::~CISCOCDPMIB()
@@ -34,6 +34,7 @@ CISCOCDPMIB::~CISCOCDPMIB()
 
 bool CISCOCDPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cdpglobal !=  nullptr && cdpglobal->has_data())
 	|| (cdpinterfacetable !=  nullptr && cdpinterfacetable->has_data())
 	|| (cdpinterfaceexttable !=  nullptr && cdpinterfaceexttable->has_data())
@@ -73,7 +74,7 @@ std::shared_ptr<Entity> CISCOCDPMIB::get_child_by_name(const std::string & child
     {
         if(cdpglobal == nullptr)
         {
-            cdpglobal = std::make_shared<CISCOCDPMIB::Cdpglobal>();
+            cdpglobal = std::make_shared<CISCOCDPMIB::CdpGlobal>();
         }
         return cdpglobal;
     }
@@ -82,7 +83,7 @@ std::shared_ptr<Entity> CISCOCDPMIB::get_child_by_name(const std::string & child
     {
         if(cdpinterfacetable == nullptr)
         {
-            cdpinterfacetable = std::make_shared<CISCOCDPMIB::Cdpinterfacetable>();
+            cdpinterfacetable = std::make_shared<CISCOCDPMIB::CdpInterfaceTable>();
         }
         return cdpinterfacetable;
     }
@@ -91,7 +92,7 @@ std::shared_ptr<Entity> CISCOCDPMIB::get_child_by_name(const std::string & child
     {
         if(cdpinterfaceexttable == nullptr)
         {
-            cdpinterfaceexttable = std::make_shared<CISCOCDPMIB::Cdpinterfaceexttable>();
+            cdpinterfaceexttable = std::make_shared<CISCOCDPMIB::CdpInterfaceExtTable>();
         }
         return cdpinterfaceexttable;
     }
@@ -100,7 +101,7 @@ std::shared_ptr<Entity> CISCOCDPMIB::get_child_by_name(const std::string & child
     {
         if(cdpcachetable == nullptr)
         {
-            cdpcachetable = std::make_shared<CISCOCDPMIB::Cdpcachetable>();
+            cdpcachetable = std::make_shared<CISCOCDPMIB::CdpCacheTable>();
         }
         return cdpcachetable;
     }
@@ -109,7 +110,7 @@ std::shared_ptr<Entity> CISCOCDPMIB::get_child_by_name(const std::string & child
     {
         if(cdpctaddresstable == nullptr)
         {
-            cdpctaddresstable = std::make_shared<CISCOCDPMIB::Cdpctaddresstable>();
+            cdpctaddresstable = std::make_shared<CISCOCDPMIB::CdpCtAddressTable>();
         }
         return cdpctaddresstable;
     }
@@ -189,7 +190,7 @@ bool CISCOCDPMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOCDPMIB::Cdpglobal::Cdpglobal()
+CISCOCDPMIB::CdpGlobal::CdpGlobal()
     :
     cdpglobalrun{YType::boolean, "cdpGlobalRun"},
     cdpglobalmessageinterval{YType::int32, "cdpGlobalMessageInterval"},
@@ -200,15 +201,16 @@ CISCOCDPMIB::Cdpglobal::Cdpglobal()
     cdpglobaldeviceidformat{YType::enumeration, "cdpGlobalDeviceIdFormat"}
 {
 
-    yang_name = "cdpGlobal"; yang_parent_name = "CISCO-CDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdpGlobal"; yang_parent_name = "CISCO-CDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCDPMIB::Cdpglobal::~Cdpglobal()
+CISCOCDPMIB::CdpGlobal::~CdpGlobal()
 {
 }
 
-bool CISCOCDPMIB::Cdpglobal::has_data() const
+bool CISCOCDPMIB::CdpGlobal::has_data() const
 {
+    if (is_presence_container) return true;
     return cdpglobalrun.is_set
 	|| cdpglobalmessageinterval.is_set
 	|| cdpglobalholdtime.is_set
@@ -218,7 +220,7 @@ bool CISCOCDPMIB::Cdpglobal::has_data() const
 	|| cdpglobaldeviceidformat.is_set;
 }
 
-bool CISCOCDPMIB::Cdpglobal::has_operation() const
+bool CISCOCDPMIB::CdpGlobal::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdpglobalrun.yfilter)
@@ -230,21 +232,21 @@ bool CISCOCDPMIB::Cdpglobal::has_operation() const
 	|| ydk::is_set(cdpglobaldeviceidformat.yfilter);
 }
 
-std::string CISCOCDPMIB::Cdpglobal::get_absolute_path() const
+std::string CISCOCDPMIB::CdpGlobal::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CDP-MIB:CISCO-CDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCDPMIB::Cdpglobal::get_segment_path() const
+std::string CISCOCDPMIB::CdpGlobal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdpGlobal";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpglobal::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpGlobal::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -260,19 +262,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpglobal::get_name_
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::Cdpglobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCDPMIB::CdpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpglobal::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpGlobal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCDPMIB::Cdpglobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCDPMIB::CdpGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdpGlobalRun")
     {
@@ -316,7 +318,7 @@ void CISCOCDPMIB::Cdpglobal::set_value(const std::string & value_path, const std
     }
 }
 
-void CISCOCDPMIB::Cdpglobal::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCDPMIB::CdpGlobal::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdpGlobalRun")
     {
@@ -348,26 +350,29 @@ void CISCOCDPMIB::Cdpglobal::set_filter(const std::string & value_path, YFilter 
     }
 }
 
-bool CISCOCDPMIB::Cdpglobal::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCDPMIB::CdpGlobal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdpGlobalRun" || name == "cdpGlobalMessageInterval" || name == "cdpGlobalHoldTime" || name == "cdpGlobalDeviceId" || name == "cdpGlobalLastChange" || name == "cdpGlobalDeviceIdFormatCpb" || name == "cdpGlobalDeviceIdFormat")
         return true;
     return false;
 }
 
-CISCOCDPMIB::Cdpinterfacetable::Cdpinterfacetable()
+CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceTable()
+    :
+    cdpinterfaceentry(this, {"cdpinterfaceifindex"})
 {
 
-    yang_name = "cdpInterfaceTable"; yang_parent_name = "CISCO-CDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdpInterfaceTable"; yang_parent_name = "CISCO-CDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCDPMIB::Cdpinterfacetable::~Cdpinterfacetable()
+CISCOCDPMIB::CdpInterfaceTable::~CdpInterfaceTable()
 {
 }
 
-bool CISCOCDPMIB::Cdpinterfacetable::has_data() const
+bool CISCOCDPMIB::CdpInterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<cdpinterfaceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdpinterfaceentry.len(); index++)
     {
         if(cdpinterfaceentry[index]->has_data())
             return true;
@@ -375,9 +380,9 @@ bool CISCOCDPMIB::Cdpinterfacetable::has_data() const
     return false;
 }
 
-bool CISCOCDPMIB::Cdpinterfacetable::has_operation() const
+bool CISCOCDPMIB::CdpInterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdpinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<cdpinterfaceentry.len(); index++)
     {
         if(cdpinterfaceentry[index]->has_operation())
             return true;
@@ -385,21 +390,21 @@ bool CISCOCDPMIB::Cdpinterfacetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCDPMIB::Cdpinterfacetable::get_absolute_path() const
+std::string CISCOCDPMIB::CdpInterfaceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CDP-MIB:CISCO-CDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCDPMIB::Cdpinterfacetable::get_segment_path() const
+std::string CISCOCDPMIB::CdpInterfaceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdpInterfaceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpinterfacetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpInterfaceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -408,25 +413,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpinterfacetable::g
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::Cdpinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCDPMIB::CdpInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdpInterfaceEntry")
     {
-        auto c = std::make_shared<CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry>();
+        auto c = std::make_shared<CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry>();
         c->parent = this;
-        cdpinterfaceentry.push_back(c);
+        cdpinterfaceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpinterfacetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpInterfaceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdpinterfaceentry)
+    for (auto c : cdpinterfaceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -437,22 +442,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpinterfacetable::g
     return children;
 }
 
-void CISCOCDPMIB::Cdpinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCDPMIB::CdpInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCDPMIB::Cdpinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCDPMIB::CdpInterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCDPMIB::Cdpinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCDPMIB::CdpInterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdpInterfaceEntry")
         return true;
     return false;
 }
 
-CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::Cdpinterfaceentry()
+CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::CdpInterfaceEntry()
     :
     cdpinterfaceifindex{YType::int32, "cdpInterfaceIfIndex"},
     cdpinterfaceenable{YType::boolean, "cdpInterfaceEnable"},
@@ -462,15 +467,16 @@ CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::Cdpinterfaceentry()
     cdpinterfacename{YType::str, "cdpInterfaceName"}
 {
 
-    yang_name = "cdpInterfaceEntry"; yang_parent_name = "cdpInterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdpInterfaceEntry"; yang_parent_name = "cdpInterfaceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::~Cdpinterfaceentry()
+CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::~CdpInterfaceEntry()
 {
 }
 
-bool CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::has_data() const
+bool CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cdpinterfaceifindex.is_set
 	|| cdpinterfaceenable.is_set
 	|| cdpinterfacemessageinterval.is_set
@@ -479,7 +485,7 @@ bool CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::has_data() const
 	|| cdpinterfacename.is_set;
 }
 
-bool CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::has_operation() const
+bool CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdpinterfaceifindex.yfilter)
@@ -490,21 +496,22 @@ bool CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::has_operation() const
 	|| ydk::is_set(cdpinterfacename.yfilter);
 }
 
-std::string CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::get_absolute_path() const
+std::string CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CDP-MIB:CISCO-CDP-MIB/cdpInterfaceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::get_segment_path() const
+std::string CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdpInterfaceEntry" <<"[cdpInterfaceIfIndex='" <<cdpinterfaceifindex <<"']";
+    path_buffer << "cdpInterfaceEntry";
+    ADD_KEY_TOKEN(cdpinterfaceifindex, "cdpInterfaceIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -519,19 +526,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpinterfacetable::C
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdpInterfaceIfIndex")
     {
@@ -571,7 +578,7 @@ void CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::set_value(const std::str
     }
 }
 
-void CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdpInterfaceIfIndex")
     {
@@ -599,26 +606,29 @@ void CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::set_filter(const std::st
     }
 }
 
-bool CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdpInterfaceIfIndex" || name == "cdpInterfaceEnable" || name == "cdpInterfaceMessageInterval" || name == "cdpInterfaceGroup" || name == "cdpInterfacePort" || name == "cdpInterfaceName")
         return true;
     return false;
 }
 
-CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceexttable()
+CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtTable()
+    :
+    cdpinterfaceextentry(this, {"ifindex"})
 {
 
-    yang_name = "cdpInterfaceExtTable"; yang_parent_name = "CISCO-CDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdpInterfaceExtTable"; yang_parent_name = "CISCO-CDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCDPMIB::Cdpinterfaceexttable::~Cdpinterfaceexttable()
+CISCOCDPMIB::CdpInterfaceExtTable::~CdpInterfaceExtTable()
 {
 }
 
-bool CISCOCDPMIB::Cdpinterfaceexttable::has_data() const
+bool CISCOCDPMIB::CdpInterfaceExtTable::has_data() const
 {
-    for (std::size_t index=0; index<cdpinterfaceextentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdpinterfaceextentry.len(); index++)
     {
         if(cdpinterfaceextentry[index]->has_data())
             return true;
@@ -626,9 +636,9 @@ bool CISCOCDPMIB::Cdpinterfaceexttable::has_data() const
     return false;
 }
 
-bool CISCOCDPMIB::Cdpinterfaceexttable::has_operation() const
+bool CISCOCDPMIB::CdpInterfaceExtTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdpinterfaceextentry.size(); index++)
+    for (std::size_t index=0; index<cdpinterfaceextentry.len(); index++)
     {
         if(cdpinterfaceextentry[index]->has_operation())
             return true;
@@ -636,21 +646,21 @@ bool CISCOCDPMIB::Cdpinterfaceexttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCDPMIB::Cdpinterfaceexttable::get_absolute_path() const
+std::string CISCOCDPMIB::CdpInterfaceExtTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CDP-MIB:CISCO-CDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCDPMIB::Cdpinterfaceexttable::get_segment_path() const
+std::string CISCOCDPMIB::CdpInterfaceExtTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdpInterfaceExtTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpinterfaceexttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpInterfaceExtTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -659,25 +669,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpinterfaceexttable
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::Cdpinterfaceexttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCDPMIB::CdpInterfaceExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdpInterfaceExtEntry")
     {
-        auto c = std::make_shared<CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry>();
+        auto c = std::make_shared<CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry>();
         c->parent = this;
-        cdpinterfaceextentry.push_back(c);
+        cdpinterfaceextentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpinterfaceexttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpInterfaceExtTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdpinterfaceextentry)
+    for (auto c : cdpinterfaceextentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -688,43 +698,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpinterfaceexttable
     return children;
 }
 
-void CISCOCDPMIB::Cdpinterfaceexttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCDPMIB::CdpInterfaceExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCDPMIB::Cdpinterfaceexttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCDPMIB::CdpInterfaceExtTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCDPMIB::Cdpinterfaceexttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCDPMIB::CdpInterfaceExtTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdpInterfaceExtEntry")
         return true;
     return false;
 }
 
-CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::Cdpinterfaceextentry()
+CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::CdpInterfaceExtEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cdpinterfaceextendedtrust{YType::enumeration, "cdpInterfaceExtendedTrust"},
     cdpinterfacecosforuntrustedport{YType::uint32, "cdpInterfaceCosForUntrustedPort"}
 {
 
-    yang_name = "cdpInterfaceExtEntry"; yang_parent_name = "cdpInterfaceExtTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdpInterfaceExtEntry"; yang_parent_name = "cdpInterfaceExtTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::~Cdpinterfaceextentry()
+CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::~CdpInterfaceExtEntry()
 {
 }
 
-bool CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::has_data() const
+bool CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cdpinterfaceextendedtrust.is_set
 	|| cdpinterfacecosforuntrustedport.is_set;
 }
 
-bool CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::has_operation() const
+bool CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -732,21 +743,22 @@ bool CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::has_operation() co
 	|| ydk::is_set(cdpinterfacecosforuntrustedport.yfilter);
 }
 
-std::string CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::get_absolute_path() const
+std::string CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CDP-MIB:CISCO-CDP-MIB/cdpInterfaceExtTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::get_segment_path() const
+std::string CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdpInterfaceExtEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cdpInterfaceExtEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -758,19 +770,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpinterfaceexttable
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -792,7 +804,7 @@ void CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::set_value(const st
     }
 }
 
-void CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -808,26 +820,29 @@ void CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::set_filter(const s
     }
 }
 
-bool CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cdpInterfaceExtendedTrust" || name == "cdpInterfaceCosForUntrustedPort")
         return true;
     return false;
 }
 
-CISCOCDPMIB::Cdpcachetable::Cdpcachetable()
+CISCOCDPMIB::CdpCacheTable::CdpCacheTable()
+    :
+    cdpcacheentry(this, {"cdpcacheifindex", "cdpcachedeviceindex"})
 {
 
-    yang_name = "cdpCacheTable"; yang_parent_name = "CISCO-CDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdpCacheTable"; yang_parent_name = "CISCO-CDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCDPMIB::Cdpcachetable::~Cdpcachetable()
+CISCOCDPMIB::CdpCacheTable::~CdpCacheTable()
 {
 }
 
-bool CISCOCDPMIB::Cdpcachetable::has_data() const
+bool CISCOCDPMIB::CdpCacheTable::has_data() const
 {
-    for (std::size_t index=0; index<cdpcacheentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdpcacheentry.len(); index++)
     {
         if(cdpcacheentry[index]->has_data())
             return true;
@@ -835,9 +850,9 @@ bool CISCOCDPMIB::Cdpcachetable::has_data() const
     return false;
 }
 
-bool CISCOCDPMIB::Cdpcachetable::has_operation() const
+bool CISCOCDPMIB::CdpCacheTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdpcacheentry.size(); index++)
+    for (std::size_t index=0; index<cdpcacheentry.len(); index++)
     {
         if(cdpcacheentry[index]->has_operation())
             return true;
@@ -845,21 +860,21 @@ bool CISCOCDPMIB::Cdpcachetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCDPMIB::Cdpcachetable::get_absolute_path() const
+std::string CISCOCDPMIB::CdpCacheTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CDP-MIB:CISCO-CDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCDPMIB::Cdpcachetable::get_segment_path() const
+std::string CISCOCDPMIB::CdpCacheTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdpCacheTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpcachetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpCacheTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -868,25 +883,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpcachetable::get_n
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::Cdpcachetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCDPMIB::CdpCacheTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdpCacheEntry")
     {
-        auto c = std::make_shared<CISCOCDPMIB::Cdpcachetable::Cdpcacheentry>();
+        auto c = std::make_shared<CISCOCDPMIB::CdpCacheTable::CdpCacheEntry>();
         c->parent = this;
-        cdpcacheentry.push_back(c);
+        cdpcacheentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpcachetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpCacheTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdpcacheentry)
+    for (auto c : cdpcacheentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -897,22 +912,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpcachetable::get_c
     return children;
 }
 
-void CISCOCDPMIB::Cdpcachetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCDPMIB::CdpCacheTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCDPMIB::Cdpcachetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCDPMIB::CdpCacheTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCDPMIB::Cdpcachetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCDPMIB::CdpCacheTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdpCacheEntry")
         return true;
     return false;
 }
 
-CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::Cdpcacheentry()
+CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::CdpCacheEntry()
     :
     cdpcacheifindex{YType::int32, "cdpCacheIfIndex"},
     cdpcachedeviceindex{YType::int32, "cdpCacheDeviceIndex"},
@@ -940,15 +955,16 @@ CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::Cdpcacheentry()
     cdpcachelastchange{YType::uint32, "cdpCacheLastChange"}
 {
 
-    yang_name = "cdpCacheEntry"; yang_parent_name = "cdpCacheTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdpCacheEntry"; yang_parent_name = "cdpCacheTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::~Cdpcacheentry()
+CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::~CdpCacheEntry()
 {
 }
 
-bool CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::has_data() const
+bool CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cdpcacheifindex.is_set
 	|| cdpcachedeviceindex.is_set
 	|| cdpcacheaddresstype.is_set
@@ -975,7 +991,7 @@ bool CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::has_data() const
 	|| cdpcachelastchange.is_set;
 }
 
-bool CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::has_operation() const
+bool CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdpcacheifindex.yfilter)
@@ -1004,21 +1020,23 @@ bool CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::has_operation() const
 	|| ydk::is_set(cdpcachelastchange.yfilter);
 }
 
-std::string CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::get_absolute_path() const
+std::string CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CDP-MIB:CISCO-CDP-MIB/cdpCacheTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::get_segment_path() const
+std::string CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdpCacheEntry" <<"[cdpCacheIfIndex='" <<cdpcacheifindex <<"']" <<"[cdpCacheDeviceIndex='" <<cdpcachedeviceindex <<"']";
+    path_buffer << "cdpCacheEntry";
+    ADD_KEY_TOKEN(cdpcacheifindex, "cdpCacheIfIndex");
+    ADD_KEY_TOKEN(cdpcachedeviceindex, "cdpCacheDeviceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1051,19 +1069,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpcachetable::Cdpca
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdpCacheIfIndex")
     {
@@ -1211,7 +1229,7 @@ void CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::set_value(const std::string & va
     }
 }
 
-void CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdpCacheIfIndex")
     {
@@ -1311,26 +1329,29 @@ void CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::set_filter(const std::string & v
     }
 }
 
-bool CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdpCacheIfIndex" || name == "cdpCacheDeviceIndex" || name == "cdpCacheAddressType" || name == "cdpCacheAddress" || name == "cdpCacheVersion" || name == "cdpCacheDeviceId" || name == "cdpCacheDevicePort" || name == "cdpCachePlatform" || name == "cdpCacheCapabilities" || name == "cdpCacheVTPMgmtDomain" || name == "cdpCacheNativeVLAN" || name == "cdpCacheDuplex" || name == "cdpCacheApplianceID" || name == "cdpCacheVlanID" || name == "cdpCachePowerConsumption" || name == "cdpCacheMTU" || name == "cdpCacheSysName" || name == "cdpCacheSysObjectID" || name == "cdpCachePrimaryMgmtAddrType" || name == "cdpCachePrimaryMgmtAddr" || name == "cdpCacheSecondaryMgmtAddrType" || name == "cdpCacheSecondaryMgmtAddr" || name == "cdpCachePhysLocation" || name == "cdpCacheLastChange")
         return true;
     return false;
 }
 
-CISCOCDPMIB::Cdpctaddresstable::Cdpctaddresstable()
+CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressTable()
+    :
+    cdpctaddressentry(this, {"cdpcacheifindex", "cdpcachedeviceindex", "cdpctaddressindex"})
 {
 
-    yang_name = "cdpCtAddressTable"; yang_parent_name = "CISCO-CDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdpCtAddressTable"; yang_parent_name = "CISCO-CDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCDPMIB::Cdpctaddresstable::~Cdpctaddresstable()
+CISCOCDPMIB::CdpCtAddressTable::~CdpCtAddressTable()
 {
 }
 
-bool CISCOCDPMIB::Cdpctaddresstable::has_data() const
+bool CISCOCDPMIB::CdpCtAddressTable::has_data() const
 {
-    for (std::size_t index=0; index<cdpctaddressentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdpctaddressentry.len(); index++)
     {
         if(cdpctaddressentry[index]->has_data())
             return true;
@@ -1338,9 +1359,9 @@ bool CISCOCDPMIB::Cdpctaddresstable::has_data() const
     return false;
 }
 
-bool CISCOCDPMIB::Cdpctaddresstable::has_operation() const
+bool CISCOCDPMIB::CdpCtAddressTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdpctaddressentry.size(); index++)
+    for (std::size_t index=0; index<cdpctaddressentry.len(); index++)
     {
         if(cdpctaddressentry[index]->has_operation())
             return true;
@@ -1348,21 +1369,21 @@ bool CISCOCDPMIB::Cdpctaddresstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCDPMIB::Cdpctaddresstable::get_absolute_path() const
+std::string CISCOCDPMIB::CdpCtAddressTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CDP-MIB:CISCO-CDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCDPMIB::Cdpctaddresstable::get_segment_path() const
+std::string CISCOCDPMIB::CdpCtAddressTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdpCtAddressTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpctaddresstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpCtAddressTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1371,25 +1392,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpctaddresstable::g
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::Cdpctaddresstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCDPMIB::CdpCtAddressTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdpCtAddressEntry")
     {
-        auto c = std::make_shared<CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry>();
+        auto c = std::make_shared<CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry>();
         c->parent = this;
-        cdpctaddressentry.push_back(c);
+        cdpctaddressentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpctaddresstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpCtAddressTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdpctaddressentry)
+    for (auto c : cdpctaddressentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1400,22 +1421,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpctaddresstable::g
     return children;
 }
 
-void CISCOCDPMIB::Cdpctaddresstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCDPMIB::CdpCtAddressTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCDPMIB::Cdpctaddresstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCDPMIB::CdpCtAddressTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCDPMIB::Cdpctaddresstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCDPMIB::CdpCtAddressTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdpCtAddressEntry")
         return true;
     return false;
 }
 
-CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::Cdpctaddressentry()
+CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::CdpCtAddressEntry()
     :
     cdpcacheifindex{YType::str, "cdpCacheIfIndex"},
     cdpcachedeviceindex{YType::str, "cdpCacheDeviceIndex"},
@@ -1424,15 +1445,16 @@ CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::Cdpctaddressentry()
     cdpctaddress{YType::str, "cdpCtAddress"}
 {
 
-    yang_name = "cdpCtAddressEntry"; yang_parent_name = "cdpCtAddressTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdpCtAddressEntry"; yang_parent_name = "cdpCtAddressTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::~Cdpctaddressentry()
+CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::~CdpCtAddressEntry()
 {
 }
 
-bool CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::has_data() const
+bool CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cdpcacheifindex.is_set
 	|| cdpcachedeviceindex.is_set
 	|| cdpctaddressindex.is_set
@@ -1440,7 +1462,7 @@ bool CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::has_data() const
 	|| cdpctaddress.is_set;
 }
 
-bool CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::has_operation() const
+bool CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdpcacheifindex.yfilter)
@@ -1450,21 +1472,24 @@ bool CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::has_operation() const
 	|| ydk::is_set(cdpctaddress.yfilter);
 }
 
-std::string CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::get_absolute_path() const
+std::string CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CDP-MIB:CISCO-CDP-MIB/cdpCtAddressTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::get_segment_path() const
+std::string CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdpCtAddressEntry" <<"[cdpCacheIfIndex='" <<cdpcacheifindex <<"']" <<"[cdpCacheDeviceIndex='" <<cdpcachedeviceindex <<"']" <<"[cdpCtAddressIndex='" <<cdpctaddressindex <<"']";
+    path_buffer << "cdpCtAddressEntry";
+    ADD_KEY_TOKEN(cdpcacheifindex, "cdpCacheIfIndex");
+    ADD_KEY_TOKEN(cdpcachedeviceindex, "cdpCacheDeviceIndex");
+    ADD_KEY_TOKEN(cdpctaddressindex, "cdpCtAddressIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1478,19 +1503,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::Cdpctaddresstable::C
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdpCacheIfIndex")
     {
@@ -1524,7 +1549,7 @@ void CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::set_value(const std::str
     }
 }
 
-void CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdpCacheIfIndex")
     {
@@ -1548,23 +1573,23 @@ void CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::set_filter(const std::st
     }
 }
 
-bool CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdpCacheIfIndex" || name == "cdpCacheDeviceIndex" || name == "cdpCtAddressIndex" || name == "cdpCtAddressType" || name == "cdpCtAddress")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOCDPMIB::Cdpglobal::Cdpglobaldeviceidformat::serialNumber {1, "serialNumber"};
-const Enum::YLeaf CISCOCDPMIB::Cdpglobal::Cdpglobaldeviceidformat::macAddress {2, "macAddress"};
-const Enum::YLeaf CISCOCDPMIB::Cdpglobal::Cdpglobaldeviceidformat::other {3, "other"};
+const Enum::YLeaf CISCOCDPMIB::CdpGlobal::CdpGlobalDeviceIdFormat::serialNumber {1, "serialNumber"};
+const Enum::YLeaf CISCOCDPMIB::CdpGlobal::CdpGlobalDeviceIdFormat::macAddress {2, "macAddress"};
+const Enum::YLeaf CISCOCDPMIB::CdpGlobal::CdpGlobalDeviceIdFormat::other {3, "other"};
 
-const Enum::YLeaf CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::Cdpinterfaceextendedtrust::trusted {1, "trusted"};
-const Enum::YLeaf CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::Cdpinterfaceextendedtrust::noTrust {2, "noTrust"};
+const Enum::YLeaf CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::CdpInterfaceExtendedTrust::trusted {1, "trusted"};
+const Enum::YLeaf CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::CdpInterfaceExtendedTrust::noTrust {2, "noTrust"};
 
-const Enum::YLeaf CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::Cdpcacheduplex::unknown {1, "unknown"};
-const Enum::YLeaf CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::Cdpcacheduplex::halfduplex {2, "halfduplex"};
-const Enum::YLeaf CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::Cdpcacheduplex::fullduplex {3, "fullduplex"};
+const Enum::YLeaf CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::CdpCacheDuplex::unknown {1, "unknown"};
+const Enum::YLeaf CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::CdpCacheDuplex::halfduplex {2, "halfduplex"};
+const Enum::YLeaf CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::CdpCacheDuplex::fullduplex {3, "fullduplex"};
 
 
 }

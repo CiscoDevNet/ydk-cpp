@@ -105,9 +105,9 @@ class Native::ServiceChain : public ydk::Entity
         class ServiceFunctionForwarder; //type: Native::ServiceChain::ServiceFunctionForwarder
         class ServicePath; //type: Native::ServiceChain::ServicePath
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceChain::ServiceFunction> > service_function;
+        ydk::YList service_function;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceChain::ServiceFunctionForwarder> service_function_forwarder;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceChain::ServicePath> > service_path;
+        ydk::YList service_path;
         
 }; // Native::ServiceChain
 
@@ -250,7 +250,7 @@ class Native::ServiceChain::ServiceFunctionForwarder : public ydk::Entity
         class ServiceFfName; //type: Native::ServiceChain::ServiceFunctionForwarder::ServiceFfName
         class Local; //type: Native::ServiceChain::ServiceFunctionForwarder::Local
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceChain::ServiceFunctionForwarder::ServiceFfName> > service_ff_name;
+        ydk::YList service_ff_name;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceChain::ServiceFunctionForwarder::Local> local; // presence node
         
 }; // Native::ServiceChain::ServiceFunctionForwarder
@@ -417,7 +417,7 @@ class Native::ServiceChain::ServicePath::ConfigServiceChainPathMode::ServiceInde
 
         class Services; //type: Native::ServiceChain::ServicePath::ConfigServiceChainPathMode::ServiceIndex::Services
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceChain::ServicePath::ConfigServiceChainPathMode::ServiceIndex::Services> > services;
+        ydk::YList services;
         
 }; // Native::ServiceChain::ServicePath::ConfigServiceChainPathMode::ServiceIndex
 
@@ -490,7 +490,7 @@ class Native::Performance::Monitor : public ydk::Entity
         class Context; //type: Native::Performance::Monitor::Context
         class ObservationPoint; //type: Native::Performance::Monitor::ObservationPoint
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context> > context;
+        ydk::YList context;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::ObservationPoint> observation_point;
         
 }; // Native::Performance::Monitor
@@ -1134,7 +1134,7 @@ class Native::Otv : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Fragmentation> fragmentation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis> isis;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site> > site;
+        ydk::YList site;
         
 }; // Native::Otv
 
@@ -1333,7 +1333,7 @@ class Native::Otv::Isis : public ydk::Entity
         class Overlay; //type: Native::Otv::Isis::Overlay
         class Site; //type: Native::Otv::Isis::Site
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay> > overlay;
+        ydk::YList overlay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Site> site;
         
 }; // Native::Otv::Isis
@@ -2313,7 +2313,7 @@ class Native::VirtualService::Vnic::Gateway : public ydk::Entity
 
         class VirtualPortGroup; //type: Native::VirtualService::Vnic::Gateway::VirtualPortGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::VirtualService::Vnic::Gateway::VirtualPortGroup> > virtualportgroup;
+        ydk::YList virtualportgroup;
         
 }; // Native::VirtualService::Vnic::Gateway
 
@@ -2643,7 +2643,7 @@ class Native::Snmp::Mib::CommunityMap : public ydk::Entity
 
         class CommunityMapList; //type: Native::Snmp::Mib::CommunityMap::CommunityMapList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Snmp::Mib::CommunityMap::CommunityMapList> > community_map_list;
+        ydk::YList community_map_list;
         
 }; // Native::Snmp::Mib::CommunityMap
 
@@ -2690,7 +2690,7 @@ class Native::Snmp::Mib::Bulkstat : public ydk::Entity
 
         class ObjectList; //type: Native::Snmp::Mib::Bulkstat::ObjectList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Snmp::Mib::Bulkstat::ObjectList> > object_list;
+        ydk::YList object_list;
         
 }; // Native::Snmp::Mib::Bulkstat
 
@@ -2767,7 +2767,7 @@ class Native::SnmpServer : public ydk::Entity
         class Community; //type: Native::SnmpServer::Community
         class Context; //type: Native::SnmpServer::Context
         class Enable; //type: Native::SnmpServer::Enable
-        class Engineid; //type: Native::SnmpServer::Engineid
+        class EngineID; //type: Native::SnmpServer::EngineID
         class Group; //type: Native::SnmpServer::Group
         class Host; //type: Native::SnmpServer::Host
         class Ip; //type: Native::SnmpServer::Ip
@@ -2779,12 +2779,12 @@ class Native::SnmpServer : public ydk::Entity
         class User; //type: Native::SnmpServer::User
         class View; //type: Native::SnmpServer::View
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Community> > community;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Context> > context;
+        ydk::YList community;
+        ydk::YList context;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable> enable;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Engineid> engineid;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Group> > group;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Host> > host;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::EngineID> engineid;
+        ydk::YList group;
+        ydk::YList host;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Ip> ip;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Ifindex> ifindex;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Manager> manager; // presence node
@@ -2792,7 +2792,7 @@ class Native::SnmpServer : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Trap> trap;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::TrapSource> trap_source;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::User> user;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::View> > view;
+        ydk::YList view;
         
 }; // Native::SnmpServer
 
@@ -2998,11 +2998,11 @@ class Native::SnmpServer::Enable::EnableChoice::Traps : public ydk::Entity
         class Bridge; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Bridge
         class Bulkstat; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Bulkstat
         class CallHome; //type: Native::SnmpServer::Enable::EnableChoice::Traps::CallHome
-        class C6Kxbar; //type: Native::SnmpServer::Enable::EnableChoice::Traps::C6Kxbar
+        class C6kxbar; //type: Native::SnmpServer::Enable::EnableChoice::Traps::C6kxbar
         class Cef; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Cef
         class Cpu; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Cpu
         class Csg; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Csg
-        class Dot1X; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X
+        class Dot1x; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x
         class Dsp; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Dsp
         class Energywise; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Energywise
         class EntityDiag; //type: Native::SnmpServer::Enable::EnableChoice::Traps::EntityDiag
@@ -3016,8 +3016,8 @@ class Native::SnmpServer::Enable::EnableChoice::Traps : public ydk::Entity
         class Ipsec; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec
         class Isakmp; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp
         class Isdn; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Isdn
-        class L2Tc; //type: Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc
-        class L2Tun; //type: Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun
+        class L2tc; //type: Native::SnmpServer::Enable::EnableChoice::Traps::L2tc
+        class L2tun; //type: Native::SnmpServer::Enable::EnableChoice::Traps::L2tun
         class License; //type: Native::SnmpServer::Enable::EnableChoice::Traps::License
         class MacNotification; //type: Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification
         class MacNotification2; //type: Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification2
@@ -3055,11 +3055,11 @@ class Native::SnmpServer::Enable::EnableChoice::Traps : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Bridge> bridge; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Bulkstat> bulkstat; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::CallHome> call_home; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::C6Kxbar> c6kxbar; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::C6kxbar> c6kxbar; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Cef> cef;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Cpu> cpu; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Csg> csg; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X> dot1x;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x> dot1x;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Dsp> dsp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Energywise> energywise; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::EntityDiag> entity_diag; // presence node
@@ -3073,8 +3073,8 @@ class Native::SnmpServer::Enable::EnableChoice::Traps : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec> ipsec;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp> isakmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Isdn> isdn; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc> l2tc; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun> l2tun;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::L2tc> l2tc; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::L2tun> l2tun;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::License> license; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification> mac_notification; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification2> mac_notification2; // presence node
@@ -3908,11 +3908,11 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::CallHome : public ydk::En
 }; // Native::SnmpServer::Enable::EnableChoice::Traps::CallHome
 
 
-class Native::SnmpServer::Enable::EnableChoice::Traps::C6Kxbar : public ydk::Entity
+class Native::SnmpServer::Enable::EnableChoice::Traps::C6kxbar : public ydk::Entity
 {
     public:
-        C6Kxbar();
-        ~C6Kxbar();
+        C6kxbar();
+        ~C6kxbar();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3929,7 +3929,7 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::C6Kxbar : public ydk::Ent
         ydk::YLeaf intbus_crcrcvrd; //type: empty
         ydk::YLeaf swbus; //type: empty
 
-}; // Native::SnmpServer::Enable::EnableChoice::Traps::C6Kxbar
+}; // Native::SnmpServer::Enable::EnableChoice::Traps::C6kxbar
 
 class Native::ServiceChain::ServiceFunction::ConfigServiceChainSfMode::Encapsulation::Gre::Enhanced : public ydk::Enum
 {

@@ -17,7 +17,7 @@ Diag::Diag()
 {
     racks->parent = this;
 
-    yang_name = "diag"; yang_parent_name = "Cisco-IOS-XR-asr9k-sc-diag-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "diag"; yang_parent_name = "Cisco-IOS-XR-asr9k-sc-diag-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Diag::~Diag()
@@ -26,6 +26,7 @@ Diag::~Diag()
 
 bool Diag::has_data() const
 {
+    if (is_presence_container) return true;
     return (racks !=  nullptr && racks->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Diag::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Diag::Racks::Racks()
+    :
+    rack(this, {"rack_name"})
 {
 
-    yang_name = "racks"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "racks"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Racks::~Racks()
@@ -129,7 +132,8 @@ Diag::Racks::~Racks()
 
 bool Diag::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Diag::Racks::has_data() const
 
 bool Diag::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Diag::Racks::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<Diag::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -216,15 +220,15 @@ bool Diag::Racks::has_leaf_or_child_of_name(const std::string & name) const
 
 Diag::Racks::Rack::Rack()
     :
-    rack_name{YType::int32, "rack-name"}
-    	,
+    rack_name{YType::uint32, "rack-name"}
+        ,
     slots(std::make_shared<Diag::Racks::Rack::Slots>())
-	,summary(std::make_shared<Diag::Racks::Rack::Summary>())
+    , summary(std::make_shared<Diag::Racks::Rack::Summary>())
 {
     slots->parent = this;
     summary->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Racks::Rack::~Rack()
@@ -233,6 +237,7 @@ Diag::Racks::Rack::~Rack()
 
 bool Diag::Racks::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_name.is_set
 	|| (slots !=  nullptr && slots->has_data())
 	|| (summary !=  nullptr && summary->has_data());
@@ -256,7 +261,8 @@ std::string Diag::Racks::Rack::get_absolute_path() const
 std::string Diag::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack-name='" <<rack_name <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack_name, "rack-name");
     return path_buffer.str();
 }
 
@@ -336,9 +342,11 @@ bool Diag::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 Diag::Racks::Rack::Slots::Slots()
+    :
+    slot(this, {"slot_name"})
 {
 
-    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::~Slots()
@@ -347,7 +355,8 @@ Diag::Racks::Rack::Slots::~Slots()
 
 bool Diag::Racks::Rack::Slots::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -357,7 +366,7 @@ bool Diag::Racks::Rack::Slots::has_data() const
 
 bool Diag::Racks::Rack::Slots::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -387,7 +396,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
@@ -399,7 +408,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -428,14 +437,14 @@ bool Diag::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string & nam
 Diag::Racks::Rack::Slots::Slot::Slot()
     :
     slot_name{YType::str, "slot-name"}
-    	,
+        ,
     detail(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail>())
-	,instances(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances>())
+    , instances(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances>())
 {
     detail->parent = this;
     instances->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::~Slot()
@@ -444,6 +453,7 @@ Diag::Racks::Rack::Slots::Slot::~Slot()
 
 bool Diag::Racks::Rack::Slots::Slot::has_data() const
 {
+    if (is_presence_container) return true;
     return slot_name.is_set
 	|| (detail !=  nullptr && detail->has_data())
 	|| (instances !=  nullptr && instances->has_data());
@@ -460,7 +470,8 @@ bool Diag::Racks::Rack::Slots::Slot::has_operation() const
 std::string Diag::Racks::Rack::Slots::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[slot-name='" <<slot_name <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(slot_name, "slot-name");
     return path_buffer.str();
 }
 
@@ -540,9 +551,12 @@ bool Diag::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::string
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::Detail()
+    :
+    node_detail(this, {})
+    , spa_detail(this, {})
 {
 
-    yang_name = "detail"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::~Detail()
@@ -551,12 +565,13 @@ Diag::Racks::Rack::Slots::Slot::Detail::~Detail()
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::has_data() const
 {
-    for (std::size_t index=0; index<node_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_detail.len(); index++)
     {
         if(node_detail[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<spa_detail.size(); index++)
+    for (std::size_t index=0; index<spa_detail.len(); index++)
     {
         if(spa_detail[index]->has_data())
             return true;
@@ -566,12 +581,12 @@ bool Diag::Racks::Rack::Slots::Slot::Detail::has_data() const
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<node_detail.size(); index++)
+    for (std::size_t index=0; index<node_detail.len(); index++)
     {
         if(node_detail[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<spa_detail.size(); index++)
+    for (std::size_t index=0; index<spa_detail.len(); index++)
     {
         if(spa_detail[index]->has_operation())
             return true;
@@ -601,7 +616,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::get_child_by_nam
     {
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail>();
         c->parent = this;
-        node_detail.push_back(c);
+        node_detail.append(c);
         return c;
     }
 
@@ -609,7 +624,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::get_child_by_nam
     {
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail>();
         c->parent = this;
-        spa_detail.push_back(c);
+        spa_detail.append(c);
         return c;
     }
 
@@ -621,7 +636,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_detail)
+    for (auto c : node_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -630,7 +645,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::D
     }
 
     count = 0;
-    for (auto const & c : spa_detail)
+    for (auto c : spa_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -672,18 +687,18 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::NodeDetail()
     monlib{YType::str, "monlib"},
     rommon{YType::str, "rommon"},
     cpu0{YType::enumeration, "cpu0"}
-    	,
+        ,
     pld(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld>())
-	,hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision>())
-	,cbc_active_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcActivePartition>())
-	,cbc_inactive_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcInactivePartition>())
+    , hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision>())
+    , cbc_active_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcActivePartition>())
+    , cbc_inactive_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcInactivePartition>())
 {
     pld->parent = this;
     hardware_revision->parent = this;
     cbc_active_partition->parent = this;
     cbc_inactive_partition->parent = this;
 
-    yang_name = "node-detail"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-detail"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::~NodeDetail()
@@ -692,6 +707,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::~NodeDetail()
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| serial_number.is_set
 	|| tan.is_set
@@ -995,7 +1011,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::Pld()
     processor_lower_version{YType::uint32, "processor-lower-version"}
 {
 
-    yang_name = "pld"; yang_parent_name = "node-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pld"; yang_parent_name = "node-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::~Pld()
@@ -1004,6 +1020,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::~Pld()
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| processor_higher_version.is_set
 	|| processor_lower_version.is_set;
@@ -1094,9 +1111,11 @@ bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::has_leaf_or_child_
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision()
+    :
+    hardware_revision(this, {})
 {
 
-    yang_name = "hardware-revision"; yang_parent_name = "node-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-revision"; yang_parent_name = "node-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::~HardwareRevision()
@@ -1105,7 +1124,8 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::~HardwareR
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::has_data() const
 {
-    for (std::size_t index=0; index<hardware_revision.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_revision.len(); index++)
     {
         if(hardware_revision[index]->has_data())
             return true;
@@ -1115,7 +1135,7 @@ bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::has_d
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_revision.size(); index++)
+    for (std::size_t index=0; index<hardware_revision.len(); index++)
     {
         if(hardware_revision[index]->has_operation())
             return true;
@@ -1145,7 +1165,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Hard
     {
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_>();
         c->parent = this;
-        hardware_revision.push_back(c);
+        hardware_revision.append(c);
         return c;
     }
 
@@ -1157,7 +1177,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_revision)
+    for (auto c : hardware_revision.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1187,12 +1207,12 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
     :
     node_description{YType::str, "node-description"},
     version{YType::str, "version"}
-    	,
+        ,
     hw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev>())
-	,fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev>())
-	,sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev>())
-	,dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev>())
-	,ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev>())
+    , fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev>())
+    , sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev>())
+    , dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev>())
+    , ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev>())
 {
     hw_rev->parent = this;
     fw_rev->parent = this;
@@ -1200,7 +1220,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
     dimm_rev->parent = this;
     ssd_rev->parent = this;
 
-    yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::~HardwareRevision_()
@@ -1209,6 +1229,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::has_data() const
 {
+    if (is_presence_container) return true;
     return node_description.is_set
 	|| version.is_set
 	|| (hw_rev !=  nullptr && hw_rev->has_data())
@@ -1371,7 +1392,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "hw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::~HwRev()
@@ -1380,6 +1401,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -1462,7 +1484,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::~FwRev()
@@ -1471,6 +1493,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -1553,7 +1576,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "sw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::~SwRev()
@@ -1562,6 +1585,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -1646,7 +1670,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
     cas{YType::uint32, "cas"}
 {
 
-    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::~DimmRev()
@@ -1655,6 +1679,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set
 	|| speed.is_set
 	|| locator.is_set
@@ -1764,7 +1789,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
     serial_number{YType::str, "serial-number"}
 {
 
-    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::~SsdRev()
@@ -1773,6 +1798,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRe
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| fw_rev.is_set
 	|| serial_number.is_set;
@@ -1868,7 +1894,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcActivePartition::CbcActiv
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "cbc-active-partition"; yang_parent_name = "node-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbc-active-partition"; yang_parent_name = "node-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcActivePartition::~CbcActivePartition()
@@ -1877,6 +1903,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcActivePartition::~CbcActi
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcActivePartition::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -1959,7 +1986,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcInactivePartition::CbcIna
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "cbc-inactive-partition"; yang_parent_name = "node-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbc-inactive-partition"; yang_parent_name = "node-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcInactivePartition::~CbcInactivePartition()
@@ -1968,6 +1995,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcInactivePartition::~CbcIn
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcInactivePartition::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -2054,14 +2082,14 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::SpaDetail()
     vid{YType::str, "vid"},
     clei{YType::str, "clei"},
     node_state{YType::enumeration, "node-state"}
-    	,
+        ,
     main(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main>())
-	,hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision>())
+    , hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision>())
 {
     main->parent = this;
     hardware_revision->parent = this;
 
-    yang_name = "spa-detail"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spa-detail"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::~SpaDetail()
@@ -2070,6 +2098,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::~SpaDetail()
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| name.is_set
 	|| pca_unit_number.is_set
@@ -2265,7 +2294,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::Main()
     serial_number{YType::str, "serial-number"}
 {
 
-    yang_name = "main"; yang_parent_name = "spa-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "main"; yang_parent_name = "spa-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::~Main()
@@ -2274,6 +2303,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::~Main()
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::has_data() const
 {
+    if (is_presence_container) return true;
     return board_type.is_set
 	|| tan.is_set
 	|| tan_revision.is_set
@@ -2390,9 +2420,11 @@ bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::has_leaf_or_child_
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision()
+    :
+    hardware_revision(this, {})
 {
 
-    yang_name = "hardware-revision"; yang_parent_name = "spa-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-revision"; yang_parent_name = "spa-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::~HardwareRevision()
@@ -2401,7 +2433,8 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::~HardwareRe
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::has_data() const
 {
-    for (std::size_t index=0; index<hardware_revision.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_revision.len(); index++)
     {
         if(hardware_revision[index]->has_data())
             return true;
@@ -2411,7 +2444,7 @@ bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::has_da
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_revision.size(); index++)
+    for (std::size_t index=0; index<hardware_revision.len(); index++)
     {
         if(hardware_revision[index]->has_operation())
             return true;
@@ -2441,7 +2474,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Hardw
     {
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_>();
         c->parent = this;
-        hardware_revision.push_back(c);
+        hardware_revision.append(c);
         return c;
     }
 
@@ -2453,7 +2486,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_revision)
+    for (auto c : hardware_revision.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2483,12 +2516,12 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
     :
     node_description{YType::str, "node-description"},
     version{YType::str, "version"}
-    	,
+        ,
     hw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::HwRev>())
-	,fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev>())
-	,sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SwRev>())
-	,dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev>())
-	,ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev>())
+    , fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev>())
+    , sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SwRev>())
+    , dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev>())
+    , ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev>())
 {
     hw_rev->parent = this;
     fw_rev->parent = this;
@@ -2496,7 +2529,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
     dimm_rev->parent = this;
     ssd_rev->parent = this;
 
-    yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::~HardwareRevision_()
@@ -2505,6 +2538,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::has_data() const
 {
+    if (is_presence_container) return true;
     return node_description.is_set
 	|| version.is_set
 	|| (hw_rev !=  nullptr && hw_rev->has_data())
@@ -2667,7 +2701,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "hw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::HwRev::~HwRev()
@@ -2676,6 +2710,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::HwRev::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -2758,7 +2793,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::~FwRev()
@@ -2767,6 +2802,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -2849,7 +2885,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "sw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SwRev::~SwRev()
@@ -2858,6 +2894,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SwRev::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -2942,7 +2979,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
     cas{YType::uint32, "cas"}
 {
 
-    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::~DimmRev()
@@ -2951,6 +2988,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set
 	|| speed.is_set
 	|| locator.is_set
@@ -3060,7 +3098,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
     serial_number{YType::str, "serial-number"}
 {
 
-    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::~SsdRev()
@@ -3069,6 +3107,7 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| fw_rev.is_set
 	|| serial_number.is_set;
@@ -3159,9 +3198,11 @@ bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::Hardwa
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instances()
+    :
+    instance(this, {"instance_name"})
 {
 
-    yang_name = "instances"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instances"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::~Instances()
@@ -3170,7 +3211,8 @@ Diag::Racks::Rack::Slots::Slot::Instances::~Instances()
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -3180,7 +3222,7 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::has_data() const
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -3210,7 +3252,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::get_child_by_
     {
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -3222,7 +3264,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3251,12 +3293,12 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::has_leaf_or_child_of_name(const 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Instance()
     :
     instance_name{YType::str, "instance-name"}
-    	,
+        ,
     detail(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail>())
 {
     detail->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::~Instance()
@@ -3265,6 +3307,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::~Instance()
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| (detail !=  nullptr && detail->has_data());
 }
@@ -3279,7 +3322,8 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::has_operation() const
 std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -3347,12 +3391,12 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::has_leaf_or_child_of_n
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Detail()
     :
     node(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node>())
-	,spa(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa>())
+    , spa(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa>())
 {
     node->parent = this;
     spa->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::~Detail()
@@ -3361,6 +3405,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::~Detail()
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return (node !=  nullptr && node->has_data())
 	|| (spa !=  nullptr && spa->has_data());
 }
@@ -3459,18 +3504,18 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Node()
     monlib{YType::str, "monlib"},
     rommon{YType::str, "rommon"},
     cpu0{YType::enumeration, "cpu0"}
-    	,
+        ,
     pld(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld>())
-	,hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision>())
-	,cbc_active_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcActivePartition>())
-	,cbc_inactive_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcInactivePartition>())
+    , hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision>())
+    , cbc_active_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcActivePartition>())
+    , cbc_inactive_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcInactivePartition>())
 {
     pld->parent = this;
     hardware_revision->parent = this;
     cbc_active_partition->parent = this;
     cbc_inactive_partition->parent = this;
 
-    yang_name = "node"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::~Node()
@@ -3479,6 +3524,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::~Node()
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| serial_number.is_set
 	|| tan.is_set
@@ -3782,7 +3828,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::Pld()
     processor_lower_version{YType::uint32, "processor-lower-version"}
 {
 
-    yang_name = "pld"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pld"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::~Pld()
@@ -3791,6 +3837,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::~Pld()
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| processor_higher_version.is_set
 	|| processor_lower_version.is_set;
@@ -3881,9 +3928,11 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::has
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision()
+    :
+    hardware_revision(this, {})
 {
 
-    yang_name = "hardware-revision"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-revision"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::~HardwareRevision()
@@ -3892,7 +3941,8 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::has_data() const
 {
-    for (std::size_t index=0; index<hardware_revision.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_revision.len(); index++)
     {
         if(hardware_revision[index]->has_data())
             return true;
@@ -3902,7 +3952,7 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Hardware
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_revision.size(); index++)
+    for (std::size_t index=0; index<hardware_revision.len(); index++)
     {
         if(hardware_revision[index]->has_operation())
             return true;
@@ -3932,7 +3982,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
     {
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_>();
         c->parent = this;
-        hardware_revision.push_back(c);
+        hardware_revision.append(c);
         return c;
     }
 
@@ -3944,7 +3994,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_revision)
+    for (auto c : hardware_revision.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3974,12 +4024,12 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
     :
     node_description{YType::str, "node-description"},
     version{YType::str, "version"}
-    	,
+        ,
     hw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev>())
-	,fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev>())
-	,sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev>())
-	,dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev>())
-	,ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev>())
+    , fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev>())
+    , sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev>())
+    , dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev>())
+    , ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev>())
 {
     hw_rev->parent = this;
     fw_rev->parent = this;
@@ -3987,7 +4037,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
     dimm_rev->parent = this;
     ssd_rev->parent = this;
 
-    yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::~HardwareRevision_()
@@ -3996,6 +4046,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::has_data() const
 {
+    if (is_presence_container) return true;
     return node_description.is_set
 	|| version.is_set
 	|| (hw_rev !=  nullptr && hw_rev->has_data())
@@ -4158,7 +4209,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "hw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::~HwRev()
@@ -4167,6 +4218,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -4249,7 +4301,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::~FwRev()
@@ -4258,6 +4310,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -4340,7 +4393,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "sw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::~SwRev()
@@ -4349,6 +4402,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -4433,7 +4487,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
     cas{YType::uint32, "cas"}
 {
 
-    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::~DimmRev()
@@ -4442,6 +4496,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set
 	|| speed.is_set
 	|| locator.is_set
@@ -4551,7 +4606,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
     serial_number{YType::str, "serial-number"}
 {
 
-    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::~SsdRev()
@@ -4560,6 +4615,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevis
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| fw_rev.is_set
 	|| serial_number.is_set;
@@ -4655,7 +4711,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcActivePart
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "cbc-active-partition"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbc-active-partition"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcActivePartition::~CbcActivePartition()
@@ -4664,6 +4720,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcActivePart
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcActivePartition::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -4746,7 +4803,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcInactivePa
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "cbc-inactive-partition"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbc-inactive-partition"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcInactivePartition::~CbcInactivePartition()
@@ -4755,6 +4812,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcInactivePa
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcInactivePartition::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -4841,14 +4899,14 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Spa()
     vid{YType::str, "vid"},
     clei{YType::str, "clei"},
     node_state{YType::enumeration, "node-state"}
-    	,
+        ,
     main(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main>())
-	,hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision>())
+    , hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision>())
 {
     main->parent = this;
     hardware_revision->parent = this;
 
-    yang_name = "spa"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spa"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::~Spa()
@@ -4857,6 +4915,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::~Spa()
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| name.is_set
 	|| pca_unit_number.is_set
@@ -5052,7 +5111,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::Main()
     serial_number{YType::str, "serial-number"}
 {
 
-    yang_name = "main"; yang_parent_name = "spa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "main"; yang_parent_name = "spa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::~Main()
@@ -5061,6 +5120,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::~Main()
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::has_data() const
 {
+    if (is_presence_container) return true;
     return board_type.is_set
 	|| tan.is_set
 	|| tan_revision.is_set
@@ -5177,9 +5237,11 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::has
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision()
+    :
+    hardware_revision(this, {})
 {
 
-    yang_name = "hardware-revision"; yang_parent_name = "spa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-revision"; yang_parent_name = "spa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::~HardwareRevision()
@@ -5188,7 +5250,8 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::has_data() const
 {
-    for (std::size_t index=0; index<hardware_revision.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_revision.len(); index++)
     {
         if(hardware_revision[index]->has_data())
             return true;
@@ -5198,7 +5261,7 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareR
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_revision.size(); index++)
+    for (std::size_t index=0; index<hardware_revision.len(); index++)
     {
         if(hardware_revision[index]->has_operation())
             return true;
@@ -5228,7 +5291,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
     {
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_>();
         c->parent = this;
-        hardware_revision.push_back(c);
+        hardware_revision.append(c);
         return c;
     }
 
@@ -5240,7 +5303,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_revision)
+    for (auto c : hardware_revision.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5270,12 +5333,12 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
     :
     node_description{YType::str, "node-description"},
     version{YType::str, "version"}
-    	,
+        ,
     hw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::HwRev>())
-	,fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev>())
-	,sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SwRev>())
-	,dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev>())
-	,ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev>())
+    , fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev>())
+    , sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SwRev>())
+    , dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev>())
+    , ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev>())
 {
     hw_rev->parent = this;
     fw_rev->parent = this;
@@ -5283,7 +5346,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
     dimm_rev->parent = this;
     ssd_rev->parent = this;
 
-    yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::~HardwareRevision_()
@@ -5292,6 +5355,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::has_data() const
 {
+    if (is_presence_container) return true;
     return node_description.is_set
 	|| version.is_set
 	|| (hw_rev !=  nullptr && hw_rev->has_data())
@@ -5454,7 +5518,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "hw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::HwRev::~HwRev()
@@ -5463,6 +5527,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::HwRev::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -5545,7 +5610,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::~FwRev()
@@ -5554,6 +5619,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -5636,7 +5702,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
     minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "sw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SwRev::~SwRev()
@@ -5645,6 +5711,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SwRev::has_data() const
 {
+    if (is_presence_container) return true;
     return major_revision.is_set
 	|| minor_revision.is_set;
 }
@@ -5729,7 +5796,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
     cas{YType::uint32, "cas"}
 {
 
-    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::~DimmRev()
@@ -5738,6 +5805,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set
 	|| speed.is_set
 	|| locator.is_set
@@ -5847,7 +5915,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
     serial_number{YType::str, "serial-number"}
 {
 
-    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::~SsdRev()
@@ -5856,6 +5924,7 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| fw_rev.is_set
 	|| serial_number.is_set;
@@ -5946,9 +6015,11 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareR
 }
 
 Diag::Racks::Rack::Summary::Summary()
+    :
+    summary(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Summary::~Summary()
@@ -5957,7 +6028,8 @@ Diag::Racks::Rack::Summary::~Summary()
 
 bool Diag::Racks::Rack::Summary::has_data() const
 {
-    for (std::size_t index=0; index<summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<summary.len(); index++)
     {
         if(summary[index]->has_data())
             return true;
@@ -5967,7 +6039,7 @@ bool Diag::Racks::Rack::Summary::has_data() const
 
 bool Diag::Racks::Rack::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<summary.size(); index++)
+    for (std::size_t index=0; index<summary.len(); index++)
     {
         if(summary[index]->has_operation())
             return true;
@@ -5997,7 +6069,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Summary::get_child_by_name(const std:
     {
         auto c = std::make_shared<Diag::Racks::Rack::Summary::Summary_>();
         c->parent = this;
-        summary.push_back(c);
+        summary.append(c);
         return c;
     }
 
@@ -6009,7 +6081,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Summary::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : summary)
+    for (auto c : summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6043,7 +6115,7 @@ Diag::Racks::Rack::Summary::Summary_::Summary_()
     description{YType::str, "description"}
 {
 
-    yang_name = "summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Racks::Rack::Summary::Summary_::~Summary_()
@@ -6052,6 +6124,7 @@ Diag::Racks::Rack::Summary::Summary_::~Summary_()
 
 bool Diag::Racks::Rack::Summary::Summary_::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| node.is_set
 	|| slot_type.is_set
@@ -6154,14 +6227,11 @@ bool Diag::Racks::Rack::Summary::Summary_::has_leaf_or_child_of_name(const std::
     return false;
 }
 
+const Enum::YLeaf DiagProcessor::mpc8614d {0, "mpc8614d"};
+
 const Enum::YLeaf DiagSlot::fan_tray {0, "fan-tray"};
 const Enum::YLeaf DiagSlot::power_module {1, "power-module"};
 const Enum::YLeaf DiagSlot::module {2, "module"};
-
-const Enum::YLeaf DiagNode::node {0, "node"};
-const Enum::YLeaf DiagNode::spa {1, "spa"};
-
-const Enum::YLeaf DiagProcessor::mpc8614d {0, "mpc8614d"};
 
 const Enum::YLeaf NodeState::not_present {0, "not-present"};
 const Enum::YLeaf NodeState::present {1, "present"};
@@ -6214,6 +6284,9 @@ const Enum::YLeaf NodeState::up {47, "up"};
 const Enum::YLeaf NodeState::down {48, "down"};
 const Enum::YLeaf NodeState::max {49, "max"};
 const Enum::YLeaf NodeState::unknown {50, "unknown"};
+
+const Enum::YLeaf DiagNode::node {0, "node"};
+const Enum::YLeaf DiagNode::spa {1, "spa"};
 
 
 }

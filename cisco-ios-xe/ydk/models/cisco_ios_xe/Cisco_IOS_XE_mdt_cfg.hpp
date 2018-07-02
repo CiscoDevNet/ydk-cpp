@@ -34,8 +34,8 @@ class MdtSubscriptions : public ydk::Entity
         class MdtSubscription; //type: MdtSubscriptions::MdtSubscription
         class MdtXfrm; //type: MdtSubscriptions::MdtXfrm
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtSubscriptions::MdtSubscription> > mdt_subscription;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtSubscriptions::MdtXfrm> > mdt_xfrm;
+        ydk::YList mdt_subscription;
+        ydk::YList mdt_xfrm;
         
 }; // MdtSubscriptions
 
@@ -62,7 +62,7 @@ class MdtSubscriptions::MdtSubscription : public ydk::Entity
         class MdtReceivers; //type: MdtSubscriptions::MdtSubscription::MdtReceivers
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtSubscriptions::MdtSubscription::Base> base;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtSubscriptions::MdtSubscription::MdtReceivers> > mdt_receivers;
+        ydk::YList mdt_receivers;
         
 }; // MdtSubscriptions::MdtSubscription
 
@@ -144,8 +144,8 @@ class MdtSubscriptions::MdtXfrm : public ydk::Entity
         class MdtXfrmInput; //type: MdtSubscriptions::MdtXfrm::MdtXfrmInput
         class MdtXfrmOp; //type: MdtSubscriptions::MdtXfrm::MdtXfrmOp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtSubscriptions::MdtXfrm::MdtXfrmInput> > mdt_xfrm_input;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtSubscriptions::MdtXfrm::MdtXfrmOp> > mdt_xfrm_op;
+        ydk::YList mdt_xfrm_input;
+        ydk::YList mdt_xfrm_op;
         
 }; // MdtSubscriptions::MdtXfrm
 
@@ -173,7 +173,7 @@ class MdtSubscriptions::MdtXfrm::MdtXfrmInput : public ydk::Entity
         ydk::YLeaf lop; //type: MdtXfrmLogicOp
         class MdtXfrmInputField; //type: MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtSubscriptions::MdtXfrm::MdtXfrmInput::MdtXfrmInputField> > mdt_xfrm_input_field;
+        ydk::YList mdt_xfrm_input_field;
         
 }; // MdtSubscriptions::MdtXfrm::MdtXfrmInput
 
@@ -219,8 +219,8 @@ class MdtSubscriptions::MdtXfrm::MdtXfrmOp : public ydk::Entity
         class MdtXfrmOpFilters; //type: MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters
         class MdtXfrmOpFields; //type: MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters> > mdt_xfrm_op_filters;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_cfg::MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields> > mdt_xfrm_op_fields;
+        ydk::YList mdt_xfrm_op_filters;
+        ydk::YList mdt_xfrm_op_fields;
         
 }; // MdtSubscriptions::MdtXfrm::MdtXfrmOp
 
@@ -319,11 +319,16 @@ class MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields : public ydk::Entity
 
 }; // MdtSubscriptions::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields
 
-class MdtXfrmAttrType : public ydk::Enum
+class MdtXfrmOperator : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mdt_xfrm_attr_none;
-        static const ydk::Enum::YLeaf mandatory;
+        static const ydk::Enum::YLeaf operator_none;
+        static const ydk::Enum::YLeaf eq;
+        static const ydk::Enum::YLeaf ne;
+        static const ydk::Enum::YLeaf gt;
+        static const ydk::Enum::YLeaf ge;
+        static const ydk::Enum::YLeaf lt;
+        static const ydk::Enum::YLeaf le;
 
 };
 
@@ -344,16 +349,11 @@ class MdtXfrmLogicOp : public ydk::Enum
 
 };
 
-class MdtXfrmOperator : public ydk::Enum
+class MdtXfrmAttrType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf operator_none;
-        static const ydk::Enum::YLeaf eq;
-        static const ydk::Enum::YLeaf ne;
-        static const ydk::Enum::YLeaf gt;
-        static const ydk::Enum::YLeaf ge;
-        static const ydk::Enum::YLeaf lt;
-        static const ydk::Enum::YLeaf le;
+        static const ydk::Enum::YLeaf mdt_xfrm_attr_none;
+        static const ydk::Enum::YLeaf mandatory;
 
 };
 

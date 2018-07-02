@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_infra_objmgr_oper {
 ObjectGroup::ObjectGroup()
     :
     port(std::make_shared<ObjectGroup::Port>())
-	,network(std::make_shared<ObjectGroup::Network>())
+    , network(std::make_shared<ObjectGroup::Network>())
 {
     port->parent = this;
     network->parent = this;
 
-    yang_name = "object-group"; yang_parent_name = "Cisco-IOS-XR-infra-objmgr-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "object-group"; yang_parent_name = "Cisco-IOS-XR-infra-objmgr-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ObjectGroup::~ObjectGroup()
@@ -28,6 +28,7 @@ ObjectGroup::~ObjectGroup()
 
 bool ObjectGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data())
 	|| (network !=  nullptr && network->has_data());
 }
@@ -141,7 +142,7 @@ ObjectGroup::Port::Port()
 {
     objects->parent = this;
 
-    yang_name = "port"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Port::~Port()
@@ -150,6 +151,7 @@ ObjectGroup::Port::~Port()
 
 bool ObjectGroup::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return (objects !=  nullptr && objects->has_data());
 }
 
@@ -224,9 +226,11 @@ bool ObjectGroup::Port::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 ObjectGroup::Port::Objects::Objects()
+    :
+    object(this, {"object_name"})
 {
 
-    yang_name = "objects"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "objects"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Port::Objects::~Objects()
@@ -235,7 +239,8 @@ ObjectGroup::Port::Objects::~Objects()
 
 bool ObjectGroup::Port::Objects::has_data() const
 {
-    for (std::size_t index=0; index<object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<object.len(); index++)
     {
         if(object[index]->has_data())
             return true;
@@ -245,7 +250,7 @@ bool ObjectGroup::Port::Objects::has_data() const
 
 bool ObjectGroup::Port::Objects::has_operation() const
 {
-    for (std::size_t index=0; index<object.size(); index++)
+    for (std::size_t index=0; index<object.len(); index++)
     {
         if(object[index]->has_operation())
             return true;
@@ -282,7 +287,7 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::get_child_by_name(const std:
     {
         auto c = std::make_shared<ObjectGroup::Port::Objects::Object>();
         c->parent = this;
-        object.push_back(c);
+        object.append(c);
         return c;
     }
 
@@ -294,7 +299,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : object)
+    for (auto c : object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -323,18 +328,18 @@ bool ObjectGroup::Port::Objects::has_leaf_or_child_of_name(const std::string & n
 ObjectGroup::Port::Objects::Object::Object()
     :
     object_name{YType::str, "object-name"}
-    	,
+        ,
     nested_groups(std::make_shared<ObjectGroup::Port::Objects::Object::NestedGroups>())
-	,operators(std::make_shared<ObjectGroup::Port::Objects::Object::Operators>())
-	,port_ranges(std::make_shared<ObjectGroup::Port::Objects::Object::PortRanges>())
-	,parent_groups(std::make_shared<ObjectGroup::Port::Objects::Object::ParentGroups>())
+    , operators(std::make_shared<ObjectGroup::Port::Objects::Object::Operators>())
+    , port_ranges(std::make_shared<ObjectGroup::Port::Objects::Object::PortRanges>())
+    , parent_groups(std::make_shared<ObjectGroup::Port::Objects::Object::ParentGroups>())
 {
     nested_groups->parent = this;
     operators->parent = this;
     port_ranges->parent = this;
     parent_groups->parent = this;
 
-    yang_name = "object"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "object"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Port::Objects::Object::~Object()
@@ -343,6 +348,7 @@ ObjectGroup::Port::Objects::Object::~Object()
 
 bool ObjectGroup::Port::Objects::Object::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| (nested_groups !=  nullptr && nested_groups->has_data())
 	|| (operators !=  nullptr && operators->has_data())
@@ -370,7 +376,8 @@ std::string ObjectGroup::Port::Objects::Object::get_absolute_path() const
 std::string ObjectGroup::Port::Objects::Object::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "object" <<"[object-name='" <<object_name <<"']";
+    path_buffer << "object";
+    ADD_KEY_TOKEN(object_name, "object-name");
     return path_buffer.str();
 }
 
@@ -478,9 +485,11 @@ bool ObjectGroup::Port::Objects::Object::has_leaf_or_child_of_name(const std::st
 }
 
 ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroups()
+    :
+    nested_group(this, {"nested_group_name"})
 {
 
-    yang_name = "nested-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nested-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::Objects::Object::NestedGroups::~NestedGroups()
@@ -489,7 +498,8 @@ ObjectGroup::Port::Objects::Object::NestedGroups::~NestedGroups()
 
 bool ObjectGroup::Port::Objects::Object::NestedGroups::has_data() const
 {
-    for (std::size_t index=0; index<nested_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nested_group.len(); index++)
     {
         if(nested_group[index]->has_data())
             return true;
@@ -499,7 +509,7 @@ bool ObjectGroup::Port::Objects::Object::NestedGroups::has_data() const
 
 bool ObjectGroup::Port::Objects::Object::NestedGroups::has_operation() const
 {
-    for (std::size_t index=0; index<nested_group.size(); index++)
+    for (std::size_t index=0; index<nested_group.len(); index++)
     {
         if(nested_group[index]->has_operation())
             return true;
@@ -529,7 +539,7 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::NestedGroups::get_ch
     {
         auto c = std::make_shared<ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup>();
         c->parent = this;
-        nested_group.push_back(c);
+        nested_group.append(c);
         return c;
     }
 
@@ -541,7 +551,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nested_group)
+    for (auto c : nested_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -573,7 +583,7 @@ ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::NestedGroup()
     nested_group_name_xr{YType::str, "nested-group-name-xr"}
 {
 
-    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::~NestedGroup()
@@ -582,6 +592,7 @@ ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::~NestedGroup()
 
 bool ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return nested_group_name.is_set
 	|| nested_group_name_xr.is_set;
 }
@@ -596,7 +607,8 @@ bool ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::has_operatio
 std::string ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nested-group" <<"[nested-group-name='" <<nested_group_name <<"']";
+    path_buffer << "nested-group";
+    ADD_KEY_TOKEN(nested_group_name, "nested-group-name");
     return path_buffer.str();
 }
 
@@ -659,9 +671,11 @@ bool ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::has_leaf_or_
 }
 
 ObjectGroup::Port::Objects::Object::Operators::Operators()
+    :
+    operator_(this, {})
 {
 
-    yang_name = "operators"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "operators"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::Objects::Object::Operators::~Operators()
@@ -670,7 +684,8 @@ ObjectGroup::Port::Objects::Object::Operators::~Operators()
 
 bool ObjectGroup::Port::Objects::Object::Operators::has_data() const
 {
-    for (std::size_t index=0; index<operator_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<operator_.len(); index++)
     {
         if(operator_[index]->has_data())
             return true;
@@ -680,7 +695,7 @@ bool ObjectGroup::Port::Objects::Object::Operators::has_data() const
 
 bool ObjectGroup::Port::Objects::Object::Operators::has_operation() const
 {
-    for (std::size_t index=0; index<operator_.size(); index++)
+    for (std::size_t index=0; index<operator_.len(); index++)
     {
         if(operator_[index]->has_operation())
             return true;
@@ -710,7 +725,7 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::Operators::get_child
     {
         auto c = std::make_shared<ObjectGroup::Port::Objects::Object::Operators::Operator>();
         c->parent = this;
-        operator_.push_back(c);
+        operator_.append(c);
         return c;
     }
 
@@ -722,7 +737,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : operator_)
+    for (auto c : operator_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -756,7 +771,7 @@ ObjectGroup::Port::Objects::Object::Operators::Operator::Operator()
     port_xr{YType::uint32, "port-xr"}
 {
 
-    yang_name = "operator"; yang_parent_name = "operators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "operator"; yang_parent_name = "operators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::Objects::Object::Operators::Operator::~Operator()
@@ -765,6 +780,7 @@ ObjectGroup::Port::Objects::Object::Operators::Operator::~Operator()
 
 bool ObjectGroup::Port::Objects::Object::Operators::Operator::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_type.is_set
 	|| port.is_set
 	|| operator_type_xr.is_set
@@ -868,9 +884,11 @@ bool ObjectGroup::Port::Objects::Object::Operators::Operator::has_leaf_or_child_
 }
 
 ObjectGroup::Port::Objects::Object::PortRanges::PortRanges()
+    :
+    port_range(this, {})
 {
 
-    yang_name = "port-ranges"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-ranges"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::Objects::Object::PortRanges::~PortRanges()
@@ -879,7 +897,8 @@ ObjectGroup::Port::Objects::Object::PortRanges::~PortRanges()
 
 bool ObjectGroup::Port::Objects::Object::PortRanges::has_data() const
 {
-    for (std::size_t index=0; index<port_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_range.len(); index++)
     {
         if(port_range[index]->has_data())
             return true;
@@ -889,7 +908,7 @@ bool ObjectGroup::Port::Objects::Object::PortRanges::has_data() const
 
 bool ObjectGroup::Port::Objects::Object::PortRanges::has_operation() const
 {
-    for (std::size_t index=0; index<port_range.size(); index++)
+    for (std::size_t index=0; index<port_range.len(); index++)
     {
         if(port_range[index]->has_operation())
             return true;
@@ -919,7 +938,7 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::PortRanges::get_chil
     {
         auto c = std::make_shared<ObjectGroup::Port::Objects::Object::PortRanges::PortRange>();
         c->parent = this;
-        port_range.push_back(c);
+        port_range.append(c);
         return c;
     }
 
@@ -931,7 +950,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_range)
+    for (auto c : port_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -965,7 +984,7 @@ ObjectGroup::Port::Objects::Object::PortRanges::PortRange::PortRange()
     end_port_xr{YType::uint32, "end-port-xr"}
 {
 
-    yang_name = "port-range"; yang_parent_name = "port-ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-range"; yang_parent_name = "port-ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::Objects::Object::PortRanges::PortRange::~PortRange()
@@ -974,6 +993,7 @@ ObjectGroup::Port::Objects::Object::PortRanges::PortRange::~PortRange()
 
 bool ObjectGroup::Port::Objects::Object::PortRanges::PortRange::has_data() const
 {
+    if (is_presence_container) return true;
     return start_port.is_set
 	|| end_port.is_set
 	|| start_port_xr.is_set
@@ -1077,9 +1097,11 @@ bool ObjectGroup::Port::Objects::Object::PortRanges::PortRange::has_leaf_or_chil
 }
 
 ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroups()
+    :
+    parent_group(this, {"parent_group_name"})
 {
 
-    yang_name = "parent-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::Objects::Object::ParentGroups::~ParentGroups()
@@ -1088,7 +1110,8 @@ ObjectGroup::Port::Objects::Object::ParentGroups::~ParentGroups()
 
 bool ObjectGroup::Port::Objects::Object::ParentGroups::has_data() const
 {
-    for (std::size_t index=0; index<parent_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<parent_group.len(); index++)
     {
         if(parent_group[index]->has_data())
             return true;
@@ -1098,7 +1121,7 @@ bool ObjectGroup::Port::Objects::Object::ParentGroups::has_data() const
 
 bool ObjectGroup::Port::Objects::Object::ParentGroups::has_operation() const
 {
-    for (std::size_t index=0; index<parent_group.size(); index++)
+    for (std::size_t index=0; index<parent_group.len(); index++)
     {
         if(parent_group[index]->has_operation())
             return true;
@@ -1128,7 +1151,7 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::ParentGroups::get_ch
     {
         auto c = std::make_shared<ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup>();
         c->parent = this;
-        parent_group.push_back(c);
+        parent_group.append(c);
         return c;
     }
 
@@ -1140,7 +1163,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : parent_group)
+    for (auto c : parent_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1172,7 +1195,7 @@ ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::ParentGroup()
     parent_name{YType::str, "parent-name"}
 {
 
-    yang_name = "parent-group"; yang_parent_name = "parent-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-group"; yang_parent_name = "parent-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::~ParentGroup()
@@ -1181,6 +1204,7 @@ ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::~ParentGroup()
 
 bool ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return parent_group_name.is_set
 	|| parent_name.is_set;
 }
@@ -1195,7 +1219,8 @@ bool ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::has_operatio
 std::string ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "parent-group" <<"[parent-group-name='" <<parent_group_name <<"']";
+    path_buffer << "parent-group";
+    ADD_KEY_TOKEN(parent_group_name, "parent-group-name");
     return path_buffer.str();
 }
 
@@ -1260,12 +1285,12 @@ bool ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::has_leaf_or_
 ObjectGroup::Network::Network()
     :
     ipv6(std::make_shared<ObjectGroup::Network::Ipv6>())
-	,ipv4(std::make_shared<ObjectGroup::Network::Ipv4>())
+    , ipv4(std::make_shared<ObjectGroup::Network::Ipv4>())
 {
     ipv6->parent = this;
     ipv4->parent = this;
 
-    yang_name = "network"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "network"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::~Network()
@@ -1274,6 +1299,7 @@ ObjectGroup::Network::~Network()
 
 bool ObjectGroup::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv6 !=  nullptr && ipv6->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data());
 }
@@ -1369,7 +1395,7 @@ ObjectGroup::Network::Ipv6::Ipv6()
 {
     objects->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::Ipv6::~Ipv6()
@@ -1378,6 +1404,7 @@ ObjectGroup::Network::Ipv6::~Ipv6()
 
 bool ObjectGroup::Network::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (objects !=  nullptr && objects->has_data());
 }
 
@@ -1452,9 +1479,11 @@ bool ObjectGroup::Network::Ipv6::has_leaf_or_child_of_name(const std::string & n
 }
 
 ObjectGroup::Network::Ipv6::Objects::Objects()
+    :
+    object(this, {"object_name"})
 {
 
-    yang_name = "objects"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "objects"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::Ipv6::Objects::~Objects()
@@ -1463,7 +1492,8 @@ ObjectGroup::Network::Ipv6::Objects::~Objects()
 
 bool ObjectGroup::Network::Ipv6::Objects::has_data() const
 {
-    for (std::size_t index=0; index<object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<object.len(); index++)
     {
         if(object[index]->has_data())
             return true;
@@ -1473,7 +1503,7 @@ bool ObjectGroup::Network::Ipv6::Objects::has_data() const
 
 bool ObjectGroup::Network::Ipv6::Objects::has_operation() const
 {
-    for (std::size_t index=0; index<object.size(); index++)
+    for (std::size_t index=0; index<object.len(); index++)
     {
         if(object[index]->has_operation())
             return true;
@@ -1510,7 +1540,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::get_child_by_name(c
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object>();
         c->parent = this;
-        object.push_back(c);
+        object.append(c);
         return c;
     }
 
@@ -1522,7 +1552,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : object)
+    for (auto c : object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1551,12 +1581,12 @@ bool ObjectGroup::Network::Ipv6::Objects::has_leaf_or_child_of_name(const std::s
 ObjectGroup::Network::Ipv6::Objects::Object::Object()
     :
     object_name{YType::str, "object-name"}
-    	,
+        ,
     nested_groups(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups>())
-	,addresses(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Addresses>())
-	,address_ranges(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges>())
-	,parent_groups(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups>())
-	,hosts(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Hosts>())
+    , addresses(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Addresses>())
+    , address_ranges(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges>())
+    , parent_groups(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups>())
+    , hosts(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Hosts>())
 {
     nested_groups->parent = this;
     addresses->parent = this;
@@ -1564,7 +1594,7 @@ ObjectGroup::Network::Ipv6::Objects::Object::Object()
     parent_groups->parent = this;
     hosts->parent = this;
 
-    yang_name = "object"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "object"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::~Object()
@@ -1573,6 +1603,7 @@ ObjectGroup::Network::Ipv6::Objects::Object::~Object()
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| (nested_groups !=  nullptr && nested_groups->has_data())
 	|| (addresses !=  nullptr && addresses->has_data())
@@ -1602,7 +1633,8 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::get_absolute_path() con
 std::string ObjectGroup::Network::Ipv6::Objects::Object::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "object" <<"[object-name='" <<object_name <<"']";
+    path_buffer << "object";
+    ADD_KEY_TOKEN(object_name, "object-name");
     return path_buffer.str();
 }
 
@@ -1724,9 +1756,11 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::has_leaf_or_child_of_name(cons
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroups()
+    :
+    nested_group(this, {"nested_group_name"})
 {
 
-    yang_name = "nested-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nested-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::~NestedGroups()
@@ -1735,7 +1769,8 @@ ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::~NestedGroups()
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::has_data() const
 {
-    for (std::size_t index=0; index<nested_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nested_group.len(); index++)
     {
         if(nested_group[index]->has_data())
             return true;
@@ -1745,7 +1780,7 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::has_data() const
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::has_operation() const
 {
-    for (std::size_t index=0; index<nested_group.size(); index++)
+    for (std::size_t index=0; index<nested_group.len(); index++)
     {
         if(nested_group[index]->has_operation())
             return true;
@@ -1775,7 +1810,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroup
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup>();
         c->parent = this;
-        nested_group.push_back(c);
+        nested_group.append(c);
         return c;
     }
 
@@ -1787,7 +1822,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nested_group)
+    for (auto c : nested_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1819,7 +1854,7 @@ ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::NestedGr
     nested_group_name_xr{YType::str, "nested-group-name-xr"}
 {
 
-    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::~NestedGroup()
@@ -1828,6 +1863,7 @@ ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::~NestedG
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return nested_group_name.is_set
 	|| nested_group_name_xr.is_set;
 }
@@ -1842,7 +1878,8 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::has
 std::string ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nested-group" <<"[nested-group-name='" <<nested_group_name <<"']";
+    path_buffer << "nested-group";
+    ADD_KEY_TOKEN(nested_group_name, "nested-group-name");
     return path_buffer.str();
 }
 
@@ -1905,9 +1942,11 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::has
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Addresses()
+    :
+    address(this, {})
 {
 
-    yang_name = "addresses"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addresses"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::Addresses::~Addresses()
@@ -1916,7 +1955,8 @@ ObjectGroup::Network::Ipv6::Objects::Object::Addresses::~Addresses()
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -1926,7 +1966,7 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::has_data() const
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -1956,7 +1996,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -1968,7 +2008,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2002,7 +2042,7 @@ ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::Address()
     prefix_length_xr{YType::uint32, "prefix-length-xr"}
 {
 
-    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::~Address()
@@ -2011,6 +2051,7 @@ ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::~Address()
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| prefix_xr.is_set
@@ -2114,9 +2155,11 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::has_leaf_o
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRanges()
+    :
+    address_range(this, {})
 {
 
-    yang_name = "address-ranges"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-ranges"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::~AddressRanges()
@@ -2125,7 +2168,8 @@ ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::~AddressRanges()
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::has_data() const
 {
-    for (std::size_t index=0; index<address_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address_range.len(); index++)
     {
         if(address_range[index]->has_data())
             return true;
@@ -2135,7 +2179,7 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::has_data() cons
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::has_operation() const
 {
-    for (std::size_t index=0; index<address_range.size(); index++)
+    for (std::size_t index=0; index<address_range.len(); index++)
     {
         if(address_range[index]->has_operation())
             return true;
@@ -2165,7 +2209,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::AddressRang
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange>();
         c->parent = this;
-        address_range.push_back(c);
+        address_range.append(c);
         return c;
     }
 
@@ -2177,7 +2221,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address_range)
+    for (auto c : address_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2211,7 +2255,7 @@ ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::Addres
     end_address_xr{YType::str, "end-address-xr"}
 {
 
-    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::~AddressRange()
@@ -2220,6 +2264,7 @@ ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::~Addre
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| end_address.is_set
 	|| start_address_xr.is_set
@@ -2323,9 +2368,11 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::h
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroups()
+    :
+    parent_group(this, {"parent_group_name"})
 {
 
-    yang_name = "parent-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::~ParentGroups()
@@ -2334,7 +2381,8 @@ ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::~ParentGroups()
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::has_data() const
 {
-    for (std::size_t index=0; index<parent_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<parent_group.len(); index++)
     {
         if(parent_group[index]->has_data())
             return true;
@@ -2344,7 +2392,7 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::has_data() const
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::has_operation() const
 {
-    for (std::size_t index=0; index<parent_group.size(); index++)
+    for (std::size_t index=0; index<parent_group.len(); index++)
     {
         if(parent_group[index]->has_operation())
             return true;
@@ -2374,7 +2422,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroup
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup>();
         c->parent = this;
-        parent_group.push_back(c);
+        parent_group.append(c);
         return c;
     }
 
@@ -2386,7 +2434,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : parent_group)
+    for (auto c : parent_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2418,7 +2466,7 @@ ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::ParentGr
     parent_name{YType::str, "parent-name"}
 {
 
-    yang_name = "parent-group"; yang_parent_name = "parent-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-group"; yang_parent_name = "parent-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::~ParentGroup()
@@ -2427,6 +2475,7 @@ ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::~ParentG
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return parent_group_name.is_set
 	|| parent_name.is_set;
 }
@@ -2441,7 +2490,8 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::has
 std::string ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "parent-group" <<"[parent-group-name='" <<parent_group_name <<"']";
+    path_buffer << "parent-group";
+    ADD_KEY_TOKEN(parent_group_name, "parent-group-name");
     return path_buffer.str();
 }
 
@@ -2504,9 +2554,11 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::has
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Hosts()
+    :
+    host(this, {"host_address"})
 {
 
-    yang_name = "hosts"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hosts"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::Hosts::~Hosts()
@@ -2515,7 +2567,8 @@ ObjectGroup::Network::Ipv6::Objects::Object::Hosts::~Hosts()
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::has_data() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_data())
             return true;
@@ -2525,7 +2578,7 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::has_data() const
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_operation())
             return true;
@@ -2555,7 +2608,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host>();
         c->parent = this;
-        host.push_back(c);
+        host.append(c);
         return c;
     }
 
@@ -2567,7 +2620,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : host)
+    for (auto c : host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2599,7 +2652,7 @@ ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::Host()
     host_address_xr{YType::str, "host-address-xr"}
 {
 
-    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::~Host()
@@ -2608,6 +2661,7 @@ ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::~Host()
 
 bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::has_data() const
 {
+    if (is_presence_container) return true;
     return host_address.is_set
 	|| host_address_xr.is_set;
 }
@@ -2622,7 +2676,8 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::has_operation() c
 std::string ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "host" <<"[host-address='" <<host_address <<"']";
+    path_buffer << "host";
+    ADD_KEY_TOKEN(host_address, "host-address");
     return path_buffer.str();
 }
 
@@ -2690,7 +2745,7 @@ ObjectGroup::Network::Ipv4::Ipv4()
 {
     objects->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::Ipv4::~Ipv4()
@@ -2699,6 +2754,7 @@ ObjectGroup::Network::Ipv4::~Ipv4()
 
 bool ObjectGroup::Network::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (objects !=  nullptr && objects->has_data());
 }
 
@@ -2773,9 +2829,11 @@ bool ObjectGroup::Network::Ipv4::has_leaf_or_child_of_name(const std::string & n
 }
 
 ObjectGroup::Network::Ipv4::Objects::Objects()
+    :
+    object(this, {"object_name"})
 {
 
-    yang_name = "objects"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "objects"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::Ipv4::Objects::~Objects()
@@ -2784,7 +2842,8 @@ ObjectGroup::Network::Ipv4::Objects::~Objects()
 
 bool ObjectGroup::Network::Ipv4::Objects::has_data() const
 {
-    for (std::size_t index=0; index<object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<object.len(); index++)
     {
         if(object[index]->has_data())
             return true;
@@ -2794,7 +2853,7 @@ bool ObjectGroup::Network::Ipv4::Objects::has_data() const
 
 bool ObjectGroup::Network::Ipv4::Objects::has_operation() const
 {
-    for (std::size_t index=0; index<object.size(); index++)
+    for (std::size_t index=0; index<object.len(); index++)
     {
         if(object[index]->has_operation())
             return true;
@@ -2831,7 +2890,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::get_child_by_name(c
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object>();
         c->parent = this;
-        object.push_back(c);
+        object.append(c);
         return c;
     }
 
@@ -2843,7 +2902,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : object)
+    for (auto c : object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2872,12 +2931,12 @@ bool ObjectGroup::Network::Ipv4::Objects::has_leaf_or_child_of_name(const std::s
 ObjectGroup::Network::Ipv4::Objects::Object::Object()
     :
     object_name{YType::str, "object-name"}
-    	,
+        ,
     nested_groups(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups>())
-	,addresses(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Addresses>())
-	,address_ranges(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges>())
-	,parent_groups(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups>())
-	,hosts(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Hosts>())
+    , addresses(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Addresses>())
+    , address_ranges(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges>())
+    , parent_groups(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups>())
+    , hosts(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Hosts>())
 {
     nested_groups->parent = this;
     addresses->parent = this;
@@ -2885,7 +2944,7 @@ ObjectGroup::Network::Ipv4::Objects::Object::Object()
     parent_groups->parent = this;
     hosts->parent = this;
 
-    yang_name = "object"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "object"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::~Object()
@@ -2894,6 +2953,7 @@ ObjectGroup::Network::Ipv4::Objects::Object::~Object()
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| (nested_groups !=  nullptr && nested_groups->has_data())
 	|| (addresses !=  nullptr && addresses->has_data())
@@ -2923,7 +2983,8 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::get_absolute_path() con
 std::string ObjectGroup::Network::Ipv4::Objects::Object::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "object" <<"[object-name='" <<object_name <<"']";
+    path_buffer << "object";
+    ADD_KEY_TOKEN(object_name, "object-name");
     return path_buffer.str();
 }
 
@@ -3045,9 +3106,11 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::has_leaf_or_child_of_name(cons
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroups()
+    :
+    nested_group(this, {"nested_group_name"})
 {
 
-    yang_name = "nested-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nested-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::~NestedGroups()
@@ -3056,7 +3119,8 @@ ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::~NestedGroups()
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::has_data() const
 {
-    for (std::size_t index=0; index<nested_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nested_group.len(); index++)
     {
         if(nested_group[index]->has_data())
             return true;
@@ -3066,7 +3130,7 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::has_data() const
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::has_operation() const
 {
-    for (std::size_t index=0; index<nested_group.size(); index++)
+    for (std::size_t index=0; index<nested_group.len(); index++)
     {
         if(nested_group[index]->has_operation())
             return true;
@@ -3096,7 +3160,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroup
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup>();
         c->parent = this;
-        nested_group.push_back(c);
+        nested_group.append(c);
         return c;
     }
 
@@ -3108,7 +3172,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nested_group)
+    for (auto c : nested_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3140,7 +3204,7 @@ ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::NestedGr
     nested_group_name_xr{YType::str, "nested-group-name-xr"}
 {
 
-    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::~NestedGroup()
@@ -3149,6 +3213,7 @@ ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::~NestedG
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return nested_group_name.is_set
 	|| nested_group_name_xr.is_set;
 }
@@ -3163,7 +3228,8 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::has
 std::string ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nested-group" <<"[nested-group-name='" <<nested_group_name <<"']";
+    path_buffer << "nested-group";
+    ADD_KEY_TOKEN(nested_group_name, "nested-group-name");
     return path_buffer.str();
 }
 
@@ -3226,9 +3292,11 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::has
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Addresses()
+    :
+    address(this, {})
 {
 
-    yang_name = "addresses"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addresses"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::Addresses::~Addresses()
@@ -3237,7 +3305,8 @@ ObjectGroup::Network::Ipv4::Objects::Object::Addresses::~Addresses()
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -3247,7 +3316,7 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::has_data() const
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -3277,7 +3346,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -3289,7 +3358,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3323,7 +3392,7 @@ ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::Address()
     prefix_length_xr{YType::uint32, "prefix-length-xr"}
 {
 
-    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::~Address()
@@ -3332,6 +3401,7 @@ ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::~Address()
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| prefix_xr.is_set
@@ -3435,9 +3505,11 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::has_leaf_o
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRanges()
+    :
+    address_range(this, {})
 {
 
-    yang_name = "address-ranges"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-ranges"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::~AddressRanges()
@@ -3446,7 +3518,8 @@ ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::~AddressRanges()
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::has_data() const
 {
-    for (std::size_t index=0; index<address_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address_range.len(); index++)
     {
         if(address_range[index]->has_data())
             return true;
@@ -3456,7 +3529,7 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::has_data() cons
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::has_operation() const
 {
-    for (std::size_t index=0; index<address_range.size(); index++)
+    for (std::size_t index=0; index<address_range.len(); index++)
     {
         if(address_range[index]->has_operation())
             return true;
@@ -3486,7 +3559,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::AddressRang
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange>();
         c->parent = this;
-        address_range.push_back(c);
+        address_range.append(c);
         return c;
     }
 
@@ -3498,7 +3571,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address_range)
+    for (auto c : address_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3532,7 +3605,7 @@ ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::Addres
     end_address_xr{YType::str, "end-address-xr"}
 {
 
-    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::~AddressRange()
@@ -3541,6 +3614,7 @@ ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::~Addre
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| end_address.is_set
 	|| start_address_xr.is_set
@@ -3644,9 +3718,11 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::h
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroups()
+    :
+    parent_group(this, {"parent_group_name"})
 {
 
-    yang_name = "parent-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::~ParentGroups()
@@ -3655,7 +3731,8 @@ ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::~ParentGroups()
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::has_data() const
 {
-    for (std::size_t index=0; index<parent_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<parent_group.len(); index++)
     {
         if(parent_group[index]->has_data())
             return true;
@@ -3665,7 +3742,7 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::has_data() const
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::has_operation() const
 {
-    for (std::size_t index=0; index<parent_group.size(); index++)
+    for (std::size_t index=0; index<parent_group.len(); index++)
     {
         if(parent_group[index]->has_operation())
             return true;
@@ -3695,7 +3772,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroup
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup>();
         c->parent = this;
-        parent_group.push_back(c);
+        parent_group.append(c);
         return c;
     }
 
@@ -3707,7 +3784,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : parent_group)
+    for (auto c : parent_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3739,7 +3816,7 @@ ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::ParentGr
     parent_name{YType::str, "parent-name"}
 {
 
-    yang_name = "parent-group"; yang_parent_name = "parent-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-group"; yang_parent_name = "parent-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::~ParentGroup()
@@ -3748,6 +3825,7 @@ ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::~ParentG
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return parent_group_name.is_set
 	|| parent_name.is_set;
 }
@@ -3762,7 +3840,8 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::has
 std::string ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "parent-group" <<"[parent-group-name='" <<parent_group_name <<"']";
+    path_buffer << "parent-group";
+    ADD_KEY_TOKEN(parent_group_name, "parent-group-name");
     return path_buffer.str();
 }
 
@@ -3825,9 +3904,11 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::has
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Hosts()
+    :
+    host(this, {"host_address"})
 {
 
-    yang_name = "hosts"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hosts"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::Hosts::~Hosts()
@@ -3836,7 +3917,8 @@ ObjectGroup::Network::Ipv4::Objects::Object::Hosts::~Hosts()
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::has_data() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_data())
             return true;
@@ -3846,7 +3928,7 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::has_data() const
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_operation())
             return true;
@@ -3876,7 +3958,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host>();
         c->parent = this;
-        host.push_back(c);
+        host.append(c);
         return c;
     }
 
@@ -3888,7 +3970,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objec
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : host)
+    for (auto c : host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3920,7 +4002,7 @@ ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::Host()
     host_address_xr{YType::str, "host-address-xr"}
 {
 
-    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::~Host()
@@ -3929,6 +4011,7 @@ ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::~Host()
 
 bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::has_data() const
 {
+    if (is_presence_container) return true;
     return host_address.is_set
 	|| host_address_xr.is_set;
 }
@@ -3943,7 +4026,8 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::has_operation() c
 std::string ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "host" <<"[host-address='" <<host_address <<"']";
+    path_buffer << "host";
+    ADD_KEY_TOKEN(host_address, "host-address");
     return path_buffer.str();
 }
 
@@ -4005,40 +4089,40 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::has_leaf_or_child
     return false;
 }
 
-const Enum::YLeaf StartPort::echo {7, "echo"};
-const Enum::YLeaf StartPort::discard {9, "discard"};
-const Enum::YLeaf StartPort::daytime {13, "daytime"};
-const Enum::YLeaf StartPort::chargen {19, "chargen"};
-const Enum::YLeaf StartPort::ftp_data {20, "ftp-data"};
-const Enum::YLeaf StartPort::ftp {21, "ftp"};
-const Enum::YLeaf StartPort::ssh {22, "ssh"};
-const Enum::YLeaf StartPort::telnet {23, "telnet"};
-const Enum::YLeaf StartPort::smtp {25, "smtp"};
-const Enum::YLeaf StartPort::time {37, "time"};
-const Enum::YLeaf StartPort::nicname {43, "nicname"};
-const Enum::YLeaf StartPort::tacacs {49, "tacacs"};
-const Enum::YLeaf StartPort::domain {53, "domain"};
-const Enum::YLeaf StartPort::gopher {70, "gopher"};
-const Enum::YLeaf StartPort::finger {79, "finger"};
-const Enum::YLeaf StartPort::www {80, "www"};
-const Enum::YLeaf StartPort::host_name {101, "host-name"};
-const Enum::YLeaf StartPort::pop2 {109, "pop2"};
-const Enum::YLeaf StartPort::pop3 {110, "pop3"};
-const Enum::YLeaf StartPort::sun_rpc {111, "sun-rpc"};
-const Enum::YLeaf StartPort::ident {113, "ident"};
-const Enum::YLeaf StartPort::nntp {119, "nntp"};
-const Enum::YLeaf StartPort::bgp {179, "bgp"};
-const Enum::YLeaf StartPort::irc {194, "irc"};
-const Enum::YLeaf StartPort::pim_auto_rp {496, "pim-auto-rp"};
-const Enum::YLeaf StartPort::exec {512, "exec"};
-const Enum::YLeaf StartPort::login {513, "login"};
-const Enum::YLeaf StartPort::cmd {514, "cmd"};
-const Enum::YLeaf StartPort::lpd {515, "lpd"};
-const Enum::YLeaf StartPort::uucp {540, "uucp"};
-const Enum::YLeaf StartPort::klogin {543, "klogin"};
-const Enum::YLeaf StartPort::kshell {544, "kshell"};
-const Enum::YLeaf StartPort::talk {517, "talk"};
-const Enum::YLeaf StartPort::ldp {646, "ldp"};
+const Enum::YLeaf EndPort::echo {7, "echo"};
+const Enum::YLeaf EndPort::discard {9, "discard"};
+const Enum::YLeaf EndPort::daytime {13, "daytime"};
+const Enum::YLeaf EndPort::chargen {19, "chargen"};
+const Enum::YLeaf EndPort::ftp_data {20, "ftp-data"};
+const Enum::YLeaf EndPort::ftp {21, "ftp"};
+const Enum::YLeaf EndPort::ssh {22, "ssh"};
+const Enum::YLeaf EndPort::telnet {23, "telnet"};
+const Enum::YLeaf EndPort::smtp {25, "smtp"};
+const Enum::YLeaf EndPort::time {37, "time"};
+const Enum::YLeaf EndPort::nicname {43, "nicname"};
+const Enum::YLeaf EndPort::tacacs {49, "tacacs"};
+const Enum::YLeaf EndPort::domain {53, "domain"};
+const Enum::YLeaf EndPort::gopher {70, "gopher"};
+const Enum::YLeaf EndPort::finger {79, "finger"};
+const Enum::YLeaf EndPort::www {80, "www"};
+const Enum::YLeaf EndPort::host_name {101, "host-name"};
+const Enum::YLeaf EndPort::pop2 {109, "pop2"};
+const Enum::YLeaf EndPort::pop3 {110, "pop3"};
+const Enum::YLeaf EndPort::sun_rpc {111, "sun-rpc"};
+const Enum::YLeaf EndPort::ident {113, "ident"};
+const Enum::YLeaf EndPort::nntp {119, "nntp"};
+const Enum::YLeaf EndPort::bgp {179, "bgp"};
+const Enum::YLeaf EndPort::irc {194, "irc"};
+const Enum::YLeaf EndPort::pim_auto_rp {496, "pim-auto-rp"};
+const Enum::YLeaf EndPort::exec {512, "exec"};
+const Enum::YLeaf EndPort::login {513, "login"};
+const Enum::YLeaf EndPort::cmd {514, "cmd"};
+const Enum::YLeaf EndPort::lpd {515, "lpd"};
+const Enum::YLeaf EndPort::uucp {540, "uucp"};
+const Enum::YLeaf EndPort::klogin {543, "klogin"};
+const Enum::YLeaf EndPort::kshell {544, "kshell"};
+const Enum::YLeaf EndPort::talk {517, "talk"};
+const Enum::YLeaf EndPort::ldp {646, "ldp"};
 
 const Enum::YLeaf PortOperator::equal {0, "equal"};
 const Enum::YLeaf PortOperator::not_equal {1, "not-equal"};
@@ -4080,40 +4164,40 @@ const Enum::YLeaf Port::kshell {544, "kshell"};
 const Enum::YLeaf Port::talk {517, "talk"};
 const Enum::YLeaf Port::ldp {646, "ldp"};
 
-const Enum::YLeaf EndPort::echo {7, "echo"};
-const Enum::YLeaf EndPort::discard {9, "discard"};
-const Enum::YLeaf EndPort::daytime {13, "daytime"};
-const Enum::YLeaf EndPort::chargen {19, "chargen"};
-const Enum::YLeaf EndPort::ftp_data {20, "ftp-data"};
-const Enum::YLeaf EndPort::ftp {21, "ftp"};
-const Enum::YLeaf EndPort::ssh {22, "ssh"};
-const Enum::YLeaf EndPort::telnet {23, "telnet"};
-const Enum::YLeaf EndPort::smtp {25, "smtp"};
-const Enum::YLeaf EndPort::time {37, "time"};
-const Enum::YLeaf EndPort::nicname {43, "nicname"};
-const Enum::YLeaf EndPort::tacacs {49, "tacacs"};
-const Enum::YLeaf EndPort::domain {53, "domain"};
-const Enum::YLeaf EndPort::gopher {70, "gopher"};
-const Enum::YLeaf EndPort::finger {79, "finger"};
-const Enum::YLeaf EndPort::www {80, "www"};
-const Enum::YLeaf EndPort::host_name {101, "host-name"};
-const Enum::YLeaf EndPort::pop2 {109, "pop2"};
-const Enum::YLeaf EndPort::pop3 {110, "pop3"};
-const Enum::YLeaf EndPort::sun_rpc {111, "sun-rpc"};
-const Enum::YLeaf EndPort::ident {113, "ident"};
-const Enum::YLeaf EndPort::nntp {119, "nntp"};
-const Enum::YLeaf EndPort::bgp {179, "bgp"};
-const Enum::YLeaf EndPort::irc {194, "irc"};
-const Enum::YLeaf EndPort::pim_auto_rp {496, "pim-auto-rp"};
-const Enum::YLeaf EndPort::exec {512, "exec"};
-const Enum::YLeaf EndPort::login {513, "login"};
-const Enum::YLeaf EndPort::cmd {514, "cmd"};
-const Enum::YLeaf EndPort::lpd {515, "lpd"};
-const Enum::YLeaf EndPort::uucp {540, "uucp"};
-const Enum::YLeaf EndPort::klogin {543, "klogin"};
-const Enum::YLeaf EndPort::kshell {544, "kshell"};
-const Enum::YLeaf EndPort::talk {517, "talk"};
-const Enum::YLeaf EndPort::ldp {646, "ldp"};
+const Enum::YLeaf StartPort::echo {7, "echo"};
+const Enum::YLeaf StartPort::discard {9, "discard"};
+const Enum::YLeaf StartPort::daytime {13, "daytime"};
+const Enum::YLeaf StartPort::chargen {19, "chargen"};
+const Enum::YLeaf StartPort::ftp_data {20, "ftp-data"};
+const Enum::YLeaf StartPort::ftp {21, "ftp"};
+const Enum::YLeaf StartPort::ssh {22, "ssh"};
+const Enum::YLeaf StartPort::telnet {23, "telnet"};
+const Enum::YLeaf StartPort::smtp {25, "smtp"};
+const Enum::YLeaf StartPort::time {37, "time"};
+const Enum::YLeaf StartPort::nicname {43, "nicname"};
+const Enum::YLeaf StartPort::tacacs {49, "tacacs"};
+const Enum::YLeaf StartPort::domain {53, "domain"};
+const Enum::YLeaf StartPort::gopher {70, "gopher"};
+const Enum::YLeaf StartPort::finger {79, "finger"};
+const Enum::YLeaf StartPort::www {80, "www"};
+const Enum::YLeaf StartPort::host_name {101, "host-name"};
+const Enum::YLeaf StartPort::pop2 {109, "pop2"};
+const Enum::YLeaf StartPort::pop3 {110, "pop3"};
+const Enum::YLeaf StartPort::sun_rpc {111, "sun-rpc"};
+const Enum::YLeaf StartPort::ident {113, "ident"};
+const Enum::YLeaf StartPort::nntp {119, "nntp"};
+const Enum::YLeaf StartPort::bgp {179, "bgp"};
+const Enum::YLeaf StartPort::irc {194, "irc"};
+const Enum::YLeaf StartPort::pim_auto_rp {496, "pim-auto-rp"};
+const Enum::YLeaf StartPort::exec {512, "exec"};
+const Enum::YLeaf StartPort::login {513, "login"};
+const Enum::YLeaf StartPort::cmd {514, "cmd"};
+const Enum::YLeaf StartPort::lpd {515, "lpd"};
+const Enum::YLeaf StartPort::uucp {540, "uucp"};
+const Enum::YLeaf StartPort::klogin {543, "klogin"};
+const Enum::YLeaf StartPort::kshell {544, "kshell"};
+const Enum::YLeaf StartPort::talk {517, "talk"};
+const Enum::YLeaf StartPort::ldp {646, "ldp"};
 
 
 }

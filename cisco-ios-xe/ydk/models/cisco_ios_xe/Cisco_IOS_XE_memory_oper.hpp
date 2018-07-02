@@ -33,7 +33,7 @@ class MemoryStatistics : public ydk::Entity
 
         class MemoryStatistic; //type: MemoryStatistics::MemoryStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_memory_oper::MemoryStatistics::MemoryStatistic> > memory_statistic;
+        ydk::YList memory_statistic;
         
 }; // MemoryStatistics
 

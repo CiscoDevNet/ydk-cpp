@@ -34,7 +34,7 @@ class Interfaces : public ydk::Entity
 
         class Interface; //type: Interfaces::Interface
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Interfaces
 
@@ -261,7 +261,7 @@ class Interfaces::Interface::Subinterfaces : public ydk::Entity
 
         class Subinterface; //type: Interfaces::Interface::Subinterfaces::Subinterface
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface> > subinterface;
+        ydk::YList subinterface;
         
 }; // Interfaces::Interface::Subinterfaces
 
@@ -431,7 +431,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan_id; //type: one of string, uint16
+        ydk::YLeaf vlan_id; //type: one of uint16, string
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config
 
@@ -452,7 +452,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan_id; //type: one of string, uint16
+        ydk::YLeaf vlan_id; //type: one of uint16, string
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State
 
@@ -506,7 +506,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses : publ
 
         class Address; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address> > address;
+        ydk::YList address;
         
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses
 
@@ -603,7 +603,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Addre
 
         class VrrpGroup; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup> > vrrp_group;
+        ydk::YList vrrp_group;
         
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp
 
@@ -781,7 +781,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors : publ
 
         class Neighbor; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors
 
@@ -1065,14 +1065,12 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6 : public ydk::Ent
         class Unnumbered; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered
         class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config
         class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State
-        class Autoconf; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf
 
         std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses> addresses;
         std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors> neighbors;
         std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered> unnumbered;
         std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config> config;
         std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State> state;
-        std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf> autoconf;
         
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 
@@ -1095,7 +1093,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses : publ
 
         class Address; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address> > address;
+        ydk::YList address;
         
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses
 
@@ -1194,7 +1192,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Addre
 
         class VrrpGroup; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup> > vrrp_group;
+        ydk::YList vrrp_group;
         
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp
 
@@ -1374,7 +1372,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors : publ
 
         class Neighbor; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors
 
@@ -1642,79 +1640,6 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State : public y
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State
 
 
-class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf : public ydk::Entity
-{
-    public:
-        Autoconf();
-        ~Autoconf();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config
-        class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State
-
-        std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config> config;
-        std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State> state;
-        
-}; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf
-
-
-class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf create_global_addresses; //type: boolean
-        ydk::YLeaf create_temporary_addresses; //type: boolean
-        ydk::YLeaf temporary_valid_lifetime; //type: uint32
-        ydk::YLeaf temporary_preferred_lifetime; //type: uint32
-
-}; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config
-
-
-class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf create_global_addresses; //type: boolean
-        ydk::YLeaf create_temporary_addresses; //type: boolean
-        ydk::YLeaf temporary_valid_lifetime; //type: uint32
-        ydk::YLeaf temporary_preferred_lifetime; //type: uint32
-
-}; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State
-
-
 class Interfaces::Interface::Ethernet : public ydk::Entity
 {
     public:
@@ -1875,9 +1800,9 @@ class Interfaces::Interface::Ethernet::SwitchedVlan::Config : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_mode; //type: VlanModeType
-        ydk::YLeaf native_vlan; //type: one of string, uint16
-        ydk::YLeaf access_vlan; //type: one of string, uint16
-        ydk::YLeafList trunk_vlans; //type: list of  one of string, union, uint16
+        ydk::YLeaf native_vlan; //type: one of uint16, string
+        ydk::YLeaf access_vlan; //type: one of uint16, string
+        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
 
 }; // Interfaces::Interface::Ethernet::SwitchedVlan::Config
 
@@ -1899,9 +1824,9 @@ class Interfaces::Interface::Ethernet::SwitchedVlan::State : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_mode; //type: VlanModeType
-        ydk::YLeaf native_vlan; //type: one of string, uint16
-        ydk::YLeaf access_vlan; //type: one of string, uint16
-        ydk::YLeafList trunk_vlans; //type: list of  one of string, union, uint16
+        ydk::YLeaf native_vlan; //type: one of uint16, string
+        ydk::YLeaf access_vlan; //type: one of uint16, string
+        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
 
 }; // Interfaces::Interface::Ethernet::SwitchedVlan::State
 
@@ -2022,9 +1947,9 @@ class Interfaces::Interface::Aggregation::SwitchedVlan::Config : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_mode; //type: VlanModeType
-        ydk::YLeaf native_vlan; //type: one of string, uint16
-        ydk::YLeaf access_vlan; //type: one of string, uint16
-        ydk::YLeafList trunk_vlans; //type: list of  one of string, union, uint16
+        ydk::YLeaf native_vlan; //type: one of uint16, string
+        ydk::YLeaf access_vlan; //type: one of uint16, string
+        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
 
 }; // Interfaces::Interface::Aggregation::SwitchedVlan::Config
 
@@ -2046,9 +1971,9 @@ class Interfaces::Interface::Aggregation::SwitchedVlan::State : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_mode; //type: VlanModeType
-        ydk::YLeaf native_vlan; //type: one of string, uint16
-        ydk::YLeaf access_vlan; //type: one of string, uint16
-        ydk::YLeafList trunk_vlans; //type: list of  one of string, union, uint16
+        ydk::YLeaf native_vlan; //type: one of uint16, string
+        ydk::YLeaf access_vlan; //type: one of uint16, string
+        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
 
 }; // Interfaces::Interface::Aggregation::SwitchedVlan::State
 
@@ -2098,7 +2023,7 @@ class Interfaces::Interface::RoutedVlan::Config : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of string, uint16
+        ydk::YLeaf vlan; //type: one of uint16, string
 
 }; // Interfaces::Interface::RoutedVlan::Config
 
@@ -2119,7 +2044,7 @@ class Interfaces::Interface::RoutedVlan::State : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of string, uint16
+        ydk::YLeaf vlan; //type: one of uint16, string
 
 }; // Interfaces::Interface::RoutedVlan::State
 
@@ -2173,7 +2098,7 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Addresses : public ydk::Entity
 
         class Address; //type: Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address> > address;
+        ydk::YList address;
         
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Addresses
 
@@ -2270,7 +2195,7 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp : public
 
         class VrrpGroup; //type: Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup> > vrrp_group;
+        ydk::YList vrrp_group;
         
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp
 
@@ -2448,7 +2373,7 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Neighbors : public ydk::Entity
 
         class Neighbor; //type: Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Neighbors
 
@@ -2760,7 +2685,7 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Addresses : public ydk::Entity
 
         class Address; //type: Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address> > address;
+        ydk::YList address;
         
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Addresses
 
@@ -2859,7 +2784,7 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp : public
 
         class VrrpGroup; //type: Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup> > vrrp_group;
+        ydk::YList vrrp_group;
         
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp
 
@@ -3039,7 +2964,7 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Neighbors : public ydk::Entity
 
         class Neighbor; //type: Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<openconfig::openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Neighbors
 

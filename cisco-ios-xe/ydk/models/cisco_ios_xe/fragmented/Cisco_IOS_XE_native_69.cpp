@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_69.hpp"
-#include "Cisco_IOS_XE_native_71.hpp"
 #include "Cisco_IOS_XE_native_70.hpp"
+#include "Cisco_IOS_XE_native_71.hpp"
 #include "Cisco_IOS_XE_native_72.hpp"
 
 using namespace ydk;
@@ -14,791 +14,699 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::Shape()
+Native::Interface::HundredGigE::SpanningTree::Vlan::Vlan()
     :
-    weight1{YType::uint16, "weight1"},
-    weight2{YType::uint16, "weight2"},
-    weight3{YType::uint16, "weight3"},
-    weight4{YType::uint16, "weight4"}
+    vlan_ids{YType::str, "vlan-ids"},
+    cost{YType::uint32, "cost"},
+    port_priority{YType::uint16, "port-priority"}
 {
 
-    yang_name = "shape"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::~Shape()
+Native::Interface::HundredGigE::SpanningTree::Vlan::~Vlan()
 {
 }
 
-bool Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::has_data() const
+bool Native::Interface::HundredGigE::SpanningTree::Vlan::has_data() const
 {
-    return weight1.is_set
-	|| weight2.is_set
-	|| weight3.is_set
-	|| weight4.is_set;
+    if (is_presence_container) return true;
+    return vlan_ids.is_set
+	|| cost.is_set
+	|| port_priority.is_set;
 }
 
-bool Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::has_operation() const
+bool Native::Interface::HundredGigE::SpanningTree::Vlan::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(weight1.yfilter)
-	|| ydk::is_set(weight2.yfilter)
-	|| ydk::is_set(weight3.yfilter)
-	|| ydk::is_set(weight4.yfilter);
+	|| ydk::is_set(vlan_ids.yfilter)
+	|| ydk::is_set(cost.yfilter)
+	|| ydk::is_set(port_priority.yfilter);
 }
 
-std::string Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::get_segment_path() const
+std::string Native::Interface::HundredGigE::SpanningTree::Vlan::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "shape";
+    path_buffer << "vlan";
+    ADD_KEY_TOKEN(vlan_ids, "vlan-ids");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::SpanningTree::Vlan::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (weight1.is_set || is_set(weight1.yfilter)) leaf_name_data.push_back(weight1.get_name_leafdata());
-    if (weight2.is_set || is_set(weight2.yfilter)) leaf_name_data.push_back(weight2.get_name_leafdata());
-    if (weight3.is_set || is_set(weight3.yfilter)) leaf_name_data.push_back(weight3.get_name_leafdata());
-    if (weight4.is_set || is_set(weight4.yfilter)) leaf_name_data.push_back(weight4.get_name_leafdata());
+    if (vlan_ids.is_set || is_set(vlan_ids.yfilter)) leaf_name_data.push_back(vlan_ids.get_name_leafdata());
+    if (cost.is_set || is_set(cost.yfilter)) leaf_name_data.push_back(cost.get_name_leafdata());
+    if (port_priority.is_set || is_set(port_priority.yfilter)) leaf_name_data.push_back(port_priority.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::HundredGigE::SpanningTree::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::SpanningTree::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::HundredGigE::SpanningTree::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "weight1")
+    if(value_path == "vlan-ids")
     {
-        weight1 = value;
-        weight1.value_namespace = name_space;
-        weight1.value_namespace_prefix = name_space_prefix;
+        vlan_ids = value;
+        vlan_ids.value_namespace = name_space;
+        vlan_ids.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "weight2")
+    if(value_path == "cost")
     {
-        weight2 = value;
-        weight2.value_namespace = name_space;
-        weight2.value_namespace_prefix = name_space_prefix;
+        cost = value;
+        cost.value_namespace = name_space;
+        cost.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "weight3")
+    if(value_path == "port-priority")
     {
-        weight3 = value;
-        weight3.value_namespace = name_space;
-        weight3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight4")
-    {
-        weight4 = value;
-        weight4.value_namespace = name_space;
-        weight4.value_namespace_prefix = name_space_prefix;
+        port_priority = value;
+        port_priority.value_namespace = name_space;
+        port_priority.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::HundredGigE::SpanningTree::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "weight1")
+    if(value_path == "vlan-ids")
     {
-        weight1.yfilter = yfilter;
+        vlan_ids.yfilter = yfilter;
     }
-    if(value_path == "weight2")
+    if(value_path == "cost")
     {
-        weight2.yfilter = yfilter;
+        cost.yfilter = yfilter;
     }
-    if(value_path == "weight3")
+    if(value_path == "port-priority")
     {
-        weight3.yfilter = yfilter;
-    }
-    if(value_path == "weight4")
-    {
-        weight4.yfilter = yfilter;
+        port_priority.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::HundredGigE::SpanningTree::Vlan::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "weight1" || name == "weight2" || name == "weight3" || name == "weight4")
+    if(name == "vlan-ids" || name == "cost" || name == "port-priority")
         return true;
     return false;
 }
 
-Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::Share()
+Native::Interface::HundredGigE::SpanningTree::Loopguard::Loopguard()
     :
-    weight1{YType::uint8, "weight1"},
-    weight2{YType::uint8, "weight2"},
-    weight3{YType::uint8, "weight3"},
-    weight4{YType::uint8, "weight4"}
+    default_{YType::empty, "default"}
 {
 
-    yang_name = "share"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "loopguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::~Share()
+Native::Interface::HundredGigE::SpanningTree::Loopguard::~Loopguard()
 {
 }
 
-bool Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::has_data() const
+bool Native::Interface::HundredGigE::SpanningTree::Loopguard::has_data() const
 {
-    return weight1.is_set
-	|| weight2.is_set
-	|| weight3.is_set
-	|| weight4.is_set;
+    if (is_presence_container) return true;
+    return default_.is_set;
 }
 
-bool Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::has_operation() const
+bool Native::Interface::HundredGigE::SpanningTree::Loopguard::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(weight1.yfilter)
-	|| ydk::is_set(weight2.yfilter)
-	|| ydk::is_set(weight3.yfilter)
-	|| ydk::is_set(weight4.yfilter);
+	|| ydk::is_set(default_.yfilter);
 }
 
-std::string Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::get_segment_path() const
+std::string Native::Interface::HundredGigE::SpanningTree::Loopguard::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "share";
+    path_buffer << "loopguard";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::SpanningTree::Loopguard::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (weight1.is_set || is_set(weight1.yfilter)) leaf_name_data.push_back(weight1.get_name_leafdata());
-    if (weight2.is_set || is_set(weight2.yfilter)) leaf_name_data.push_back(weight2.get_name_leafdata());
-    if (weight3.is_set || is_set(weight3.yfilter)) leaf_name_data.push_back(weight3.get_name_leafdata());
-    if (weight4.is_set || is_set(weight4.yfilter)) leaf_name_data.push_back(weight4.get_name_leafdata());
+    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::HundredGigE::SpanningTree::Loopguard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::SpanningTree::Loopguard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::HundredGigE::SpanningTree::Loopguard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "weight1")
+    if(value_path == "default")
     {
-        weight1 = value;
-        weight1.value_namespace = name_space;
-        weight1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight2")
-    {
-        weight2 = value;
-        weight2.value_namespace = name_space;
-        weight2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight3")
-    {
-        weight3 = value;
-        weight3.value_namespace = name_space;
-        weight3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight4")
-    {
-        weight4 = value;
-        weight4.value_namespace = name_space;
-        weight4.value_namespace_prefix = name_space_prefix;
+        default_ = value;
+        default_.value_namespace = name_space;
+        default_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::HundredGigE::SpanningTree::Loopguard::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "weight1")
+    if(value_path == "default")
     {
-        weight1.yfilter = yfilter;
-    }
-    if(value_path == "weight2")
-    {
-        weight2.yfilter = yfilter;
-    }
-    if(value_path == "weight3")
-    {
-        weight3.yfilter = yfilter;
-    }
-    if(value_path == "weight4")
-    {
-        weight4.yfilter = yfilter;
+        default_.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::HundredGigE::SpanningTree::Loopguard::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "weight1" || name == "weight2" || name == "weight3" || name == "weight4")
+    if(name == "default")
         return true;
     return false;
 }
 
-Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::CiscoIOSXESwitchMacsecOption()
+Native::Interface::HundredGigE::SpanningTree::Mst::Mst()
     :
-    macsec(std::make_shared<Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec>())
+    pre_standard{YType::empty, "pre-standard"}
+        ,
+    mst_instance(this, {"instance"})
 {
-    macsec->parent = this;
 
-    yang_name = "macsec-option"; yang_parent_name = "HundredGigE"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mst"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::~CiscoIOSXESwitchMacsecOption()
+Native::Interface::HundredGigE::SpanningTree::Mst::~Mst()
 {
 }
 
-bool Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::has_data() const
+bool Native::Interface::HundredGigE::SpanningTree::Mst::has_data() const
 {
-    return (macsec !=  nullptr && macsec->has_data());
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mst_instance.len(); index++)
+    {
+        if(mst_instance[index]->has_data())
+            return true;
+    }
+    return pre_standard.is_set;
 }
 
-bool Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::has_operation() const
+bool Native::Interface::HundredGigE::SpanningTree::Mst::has_operation() const
 {
+    for (std::size_t index=0; index<mst_instance.len(); index++)
+    {
+        if(mst_instance[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
-	|| (macsec !=  nullptr && macsec->has_operation());
+	|| ydk::is_set(pre_standard.yfilter);
 }
 
-std::string Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::get_segment_path() const
+std::string Native::Interface::HundredGigE::SpanningTree::Mst::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:macsec-option";
+    path_buffer << "mst";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::SpanningTree::Mst::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (pre_standard.is_set || is_set(pre_standard.yfilter)) leaf_name_data.push_back(pre_standard.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::HundredGigE::SpanningTree::Mst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "macsec")
+    if(child_yang_name == "mst-instance")
     {
-        if(macsec == nullptr)
+        auto c = std::make_shared<Native::Interface::HundredGigE::SpanningTree::Mst::MstInstance>();
+        c->parent = this;
+        mst_instance.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::SpanningTree::Mst::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : mst_instance.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Native::Interface::HundredGigE::SpanningTree::Mst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pre-standard")
+    {
+        pre_standard = value;
+        pre_standard.value_namespace = name_space;
+        pre_standard.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::HundredGigE::SpanningTree::Mst::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pre-standard")
+    {
+        pre_standard.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::HundredGigE::SpanningTree::Mst::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mst-instance" || name == "pre-standard")
+        return true;
+    return false;
+}
+
+Native::Interface::HundredGigE::SpanningTree::Mst::MstInstance::MstInstance()
+    :
+    instance{YType::str, "instance"},
+    cost{YType::uint32, "cost"},
+    port_priority{YType::uint16, "port-priority"}
+{
+
+    yang_name = "mst-instance"; yang_parent_name = "mst"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::HundredGigE::SpanningTree::Mst::MstInstance::~MstInstance()
+{
+}
+
+bool Native::Interface::HundredGigE::SpanningTree::Mst::MstInstance::has_data() const
+{
+    if (is_presence_container) return true;
+    return instance.is_set
+	|| cost.is_set
+	|| port_priority.is_set;
+}
+
+bool Native::Interface::HundredGigE::SpanningTree::Mst::MstInstance::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(cost.yfilter)
+	|| ydk::is_set(port_priority.yfilter);
+}
+
+std::string Native::Interface::HundredGigE::SpanningTree::Mst::MstInstance::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mst-instance";
+    ADD_KEY_TOKEN(instance, "instance");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::SpanningTree::Mst::MstInstance::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (cost.is_set || is_set(cost.yfilter)) leaf_name_data.push_back(cost.get_name_leafdata());
+    if (port_priority.is_set || is_set(port_priority.yfilter)) leaf_name_data.push_back(port_priority.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::HundredGigE::SpanningTree::Mst::MstInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::SpanningTree::Mst::MstInstance::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Interface::HundredGigE::SpanningTree::Mst::MstInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "instance")
+    {
+        instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cost")
+    {
+        cost = value;
+        cost.value_namespace = name_space;
+        cost.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port-priority")
+    {
+        port_priority = value;
+        port_priority.value_namespace = name_space;
+        port_priority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::HundredGigE::SpanningTree::Mst::MstInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "cost")
+    {
+        cost.yfilter = yfilter;
+    }
+    if(value_path == "port-priority")
+    {
+        port_priority.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::HundredGigE::SpanningTree::Mst::MstInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance" || name == "cost" || name == "port-priority")
+        return true;
+    return false;
+}
+
+Native::Interface::HundredGigE::Ntp::Ntp()
+    :
+    broadcast{YType::empty, "broadcast"}
+        ,
+    broadcast_option(std::make_shared<Native::Interface::HundredGigE::Ntp::BroadcastOption>())
+{
+    broadcast_option->parent = this;
+
+    yang_name = "ntp"; yang_parent_name = "HundredGigE"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::HundredGigE::Ntp::~Ntp()
+{
+}
+
+bool Native::Interface::HundredGigE::Ntp::has_data() const
+{
+    if (is_presence_container) return true;
+    return broadcast.is_set
+	|| (broadcast_option !=  nullptr && broadcast_option->has_data());
+}
+
+bool Native::Interface::HundredGigE::Ntp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(broadcast.yfilter)
+	|| (broadcast_option !=  nullptr && broadcast_option->has_operation());
+}
+
+std::string Native::Interface::HundredGigE::Ntp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ntp:ntp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::Ntp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (broadcast.is_set || is_set(broadcast.yfilter)) leaf_name_data.push_back(broadcast.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::HundredGigE::Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "broadcast-option")
+    {
+        if(broadcast_option == nullptr)
         {
-            macsec = std::make_shared<Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec>();
+            broadcast_option = std::make_shared<Native::Interface::HundredGigE::Ntp::BroadcastOption>();
         }
-        return macsec;
+        return broadcast_option;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ntp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(macsec != nullptr)
+    if(broadcast_option != nullptr)
     {
-        children["macsec"] = macsec;
+        children["broadcast-option"] = broadcast_option;
     }
 
     return children;
 }
 
-void Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::HundredGigE::Ntp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "broadcast")
+    {
+        broadcast = value;
+        broadcast.value_namespace = name_space;
+        broadcast.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::HundredGigE::Ntp::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "broadcast")
+    {
+        broadcast.yfilter = yfilter;
+    }
 }
 
-bool Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::HundredGigE::Ntp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "macsec")
+    if(name == "broadcast-option" || name == "broadcast")
         return true;
     return false;
 }
 
-Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::Macsec()
+Native::Interface::HundredGigE::Ntp::BroadcastOption::BroadcastOption()
     :
-    network_link{YType::empty, "network-link"}
-    	,
-    replay_protection(std::make_shared<Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection>())
+    broadcast(std::make_shared<Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast>())
 {
-    replay_protection->parent = this;
+    broadcast->parent = this;
 
-    yang_name = "macsec"; yang_parent_name = "macsec-option"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast-option"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::~Macsec()
+Native::Interface::HundredGigE::Ntp::BroadcastOption::~BroadcastOption()
 {
 }
 
-bool Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::has_data() const
+bool Native::Interface::HundredGigE::Ntp::BroadcastOption::has_data() const
 {
-    return network_link.is_set
-	|| (replay_protection !=  nullptr && replay_protection->has_data());
+    if (is_presence_container) return true;
+    return (broadcast !=  nullptr && broadcast->has_data());
 }
 
-bool Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::has_operation() const
+bool Native::Interface::HundredGigE::Ntp::BroadcastOption::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(network_link.yfilter)
-	|| (replay_protection !=  nullptr && replay_protection->has_operation());
+	|| (broadcast !=  nullptr && broadcast->has_operation());
 }
 
-std::string Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::get_segment_path() const
+std::string Native::Interface::HundredGigE::Ntp::BroadcastOption::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec";
+    path_buffer << "broadcast-option";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::Ntp::BroadcastOption::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (network_link.is_set || is_set(network_link.yfilter)) leaf_name_data.push_back(network_link.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::HundredGigE::Ntp::BroadcastOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "replay-protection")
+    if(child_yang_name == "broadcast")
     {
-        if(replay_protection == nullptr)
+        if(broadcast == nullptr)
         {
-            replay_protection = std::make_shared<Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection>();
+            broadcast = std::make_shared<Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast>();
         }
-        return replay_protection;
+        return broadcast;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ntp::BroadcastOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(replay_protection != nullptr)
+    if(broadcast != nullptr)
     {
-        children["replay-protection"] = replay_protection;
+        children["broadcast"] = broadcast;
     }
 
     return children;
 }
 
-void Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::HundredGigE::Ntp::BroadcastOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "network-link")
-    {
-        network_link = value;
-        network_link.value_namespace = name_space;
-        network_link.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::HundredGigE::Ntp::BroadcastOption::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "network-link")
-    {
-        network_link.yfilter = yfilter;
-    }
 }
 
-bool Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::HundredGigE::Ntp::BroadcastOption::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "replay-protection" || name == "network-link")
+    if(name == "broadcast")
         return true;
     return false;
 }
 
-Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::ReplayProtection()
+Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::Broadcast()
     :
-    window_size{YType::uint32, "window-size"}
+    client{YType::empty, "client"}
 {
 
-    yang_name = "replay-protection"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast"; yang_parent_name = "broadcast-option"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::~ReplayProtection()
+Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::~Broadcast()
 {
 }
 
-bool Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::has_data() const
+bool Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::has_data() const
 {
-    return window_size.is_set;
+    if (is_presence_container) return true;
+    return client.is_set;
 }
 
-bool Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::has_operation() const
+bool Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(window_size.yfilter);
+	|| ydk::is_set(client.yfilter);
 }
 
-std::string Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::get_segment_path() const
+std::string Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "replay-protection";
+    path_buffer << "broadcast";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (window_size.is_set || is_set(window_size.yfilter)) leaf_name_data.push_back(window_size.get_name_leafdata());
+    if (client.is_set || is_set(client.yfilter)) leaf_name_data.push_back(client.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "window-size")
+    if(value_path == "client")
     {
-        window_size = value;
-        window_size.value_namespace = name_space;
-        window_size.value_namespace_prefix = name_space_prefix;
+        client = value;
+        client.value_namespace = name_space;
+        client.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "window-size")
+    if(value_path == "client")
     {
-        window_size.yfilter = yfilter;
+        client.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "window-size")
+    if(name == "client")
         return true;
     return false;
 }
 
-Native::Interface::HundredGigE::Udld::Udld()
+Native::Interface::HundredGigE::Cdp::Cdp()
     :
-    port(nullptr) // presence node
+    enable{YType::boolean, "enable"}
+        ,
+    tlv(std::make_shared<Native::Interface::HundredGigE::Cdp::Tlv>())
 {
+    tlv->parent = this;
 
-    yang_name = "udld"; yang_parent_name = "HundredGigE"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cdp"; yang_parent_name = "HundredGigE"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::HundredGigE::Udld::~Udld()
+Native::Interface::HundredGigE::Cdp::~Cdp()
 {
 }
 
-bool Native::Interface::HundredGigE::Udld::has_data() const
+bool Native::Interface::HundredGigE::Cdp::has_data() const
 {
-    return (port !=  nullptr && port->has_data());
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| (tlv !=  nullptr && tlv->has_data());
 }
 
-bool Native::Interface::HundredGigE::Udld::has_operation() const
+bool Native::Interface::HundredGigE::Cdp::has_operation() const
 {
     return is_set(yfilter)
-	|| (port !=  nullptr && port->has_operation());
+	|| ydk::is_set(enable.yfilter)
+	|| (tlv !=  nullptr && tlv->has_operation());
 }
 
-std::string Native::Interface::HundredGigE::Udld::get_segment_path() const
+std::string Native::Interface::HundredGigE::Cdp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-udld:udld";
+    path_buffer << "Cisco-IOS-XE-cdp:cdp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::Udld::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Udld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "port")
-    {
-        if(port == nullptr)
-        {
-            port = std::make_shared<Native::Interface::HundredGigE::Udld::Port>();
-        }
-        return port;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Udld::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(port != nullptr)
-    {
-        children["port"] = port;
-    }
-
-    return children;
-}
-
-void Native::Interface::HundredGigE::Udld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::HundredGigE::Udld::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::HundredGigE::Udld::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port")
-        return true;
-    return false;
-}
-
-Native::Interface::HundredGigE::Udld::Port::Port()
-    :
-    aggressive{YType::empty, "aggressive"},
-    disable{YType::empty, "disable"}
-{
-
-    yang_name = "port"; yang_parent_name = "udld"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::HundredGigE::Udld::Port::~Port()
-{
-}
-
-bool Native::Interface::HundredGigE::Udld::Port::has_data() const
-{
-    return aggressive.is_set
-	|| disable.is_set;
-}
-
-bool Native::Interface::HundredGigE::Udld::Port::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(aggressive.yfilter)
-	|| ydk::is_set(disable.yfilter);
-}
-
-std::string Native::Interface::HundredGigE::Udld::Port::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "port";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::Udld::Port::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (aggressive.is_set || is_set(aggressive.yfilter)) leaf_name_data.push_back(aggressive.get_name_leafdata());
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Udld::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Udld::Port::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::HundredGigE::Udld::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "aggressive")
-    {
-        aggressive = value;
-        aggressive.value_namespace = name_space;
-        aggressive.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::HundredGigE::Udld::Port::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "aggressive")
-    {
-        aggressive.yfilter = yfilter;
-    }
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::HundredGigE::Udld::Port::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "aggressive" || name == "disable")
-        return true;
-    return false;
-}
-
-Native::Interface::HundredGigE::Umbrella::Umbrella()
-    :
-    out{YType::empty, "out"},
-    in{YType::str, "in"}
-{
-
-    yang_name = "umbrella"; yang_parent_name = "HundredGigE"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::HundredGigE::Umbrella::~Umbrella()
-{
-}
-
-bool Native::Interface::HundredGigE::Umbrella::has_data() const
-{
-    return out.is_set
-	|| in.is_set;
-}
-
-bool Native::Interface::HundredGigE::Umbrella::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(out.yfilter)
-	|| ydk::is_set(in.yfilter);
-}
-
-std::string Native::Interface::HundredGigE::Umbrella::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-umbrella:umbrella";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::Umbrella::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (out.is_set || is_set(out.yfilter)) leaf_name_data.push_back(out.get_name_leafdata());
-    if (in.is_set || is_set(in.yfilter)) leaf_name_data.push_back(in.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Umbrella::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Umbrella::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::HundredGigE::Umbrella::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "out")
-    {
-        out = value;
-        out.value_namespace = name_space;
-        out.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in")
-    {
-        in = value;
-        in.value_namespace = name_space;
-        in.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::HundredGigE::Umbrella::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "out")
-    {
-        out.yfilter = yfilter;
-    }
-    if(value_path == "in")
-    {
-        in.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::HundredGigE::Umbrella::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "out" || name == "in")
-        return true;
-    return false;
-}
-
-Native::Interface::HundredGigE::Utd::Utd()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "utd"; yang_parent_name = "HundredGigE"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::HundredGigE::Utd::~Utd()
-{
-}
-
-bool Native::Interface::HundredGigE::Utd::has_data() const
-{
-    return enable.is_set;
-}
-
-bool Native::Interface::HundredGigE::Utd::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Native::Interface::HundredGigE::Utd::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-utd:utd";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::Utd::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::Cdp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -808,19 +716,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::U
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Utd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::HundredGigE::Cdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "tlv")
+    {
+        if(tlv == nullptr)
+        {
+            tlv = std::make_shared<Native::Interface::HundredGigE::Cdp::Tlv>();
+        }
+        return tlv;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Utd::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Cdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(tlv != nullptr)
+    {
+        children["tlv"] = tlv;
+    }
+
     return children;
 }
 
-void Native::Interface::HundredGigE::Utd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::HundredGigE::Cdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -830,7 +752,7 @@ void Native::Interface::HundredGigE::Utd::set_value(const std::string & value_pa
     }
 }
 
-void Native::Interface::HundredGigE::Utd::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::HundredGigE::Cdp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -838,86 +760,211 @@ void Native::Interface::HundredGigE::Utd::set_filter(const std::string & value_p
     }
 }
 
-bool Native::Interface::HundredGigE::Utd::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::HundredGigE::Cdp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable")
+    if(name == "tlv" || name == "enable")
         return true;
     return false;
 }
 
-Native::Interface::HundredGigE::ZoneMember::ZoneMember()
+Native::Interface::HundredGigE::Cdp::Tlv::Tlv()
     :
-    security{YType::str, "security"}
+    server_location{YType::empty, "server-location"},
+    location{YType::empty, "location"}
+        ,
+    app(nullptr) // presence node
 {
 
-    yang_name = "zone-member"; yang_parent_name = "HundredGigE"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tlv"; yang_parent_name = "cdp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::HundredGigE::ZoneMember::~ZoneMember()
+Native::Interface::HundredGigE::Cdp::Tlv::~Tlv()
 {
 }
 
-bool Native::Interface::HundredGigE::ZoneMember::has_data() const
+bool Native::Interface::HundredGigE::Cdp::Tlv::has_data() const
 {
-    return security.is_set;
+    if (is_presence_container) return true;
+    return server_location.is_set
+	|| location.is_set
+	|| (app !=  nullptr && app->has_data());
 }
 
-bool Native::Interface::HundredGigE::ZoneMember::has_operation() const
+bool Native::Interface::HundredGigE::Cdp::Tlv::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(security.yfilter);
+	|| ydk::is_set(server_location.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| (app !=  nullptr && app->has_operation());
 }
 
-std::string Native::Interface::HundredGigE::ZoneMember::get_segment_path() const
+std::string Native::Interface::HundredGigE::Cdp::Tlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-zone:zone-member";
+    path_buffer << "tlv";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::ZoneMember::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::Cdp::Tlv::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (security.is_set || is_set(security.yfilter)) leaf_name_data.push_back(security.get_name_leafdata());
+    if (server_location.is_set || is_set(server_location.yfilter)) leaf_name_data.push_back(server_location.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::ZoneMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::HundredGigE::Cdp::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "app")
+    {
+        if(app == nullptr)
+        {
+            app = std::make_shared<Native::Interface::HundredGigE::Cdp::Tlv::App>();
+        }
+        return app;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Cdp::Tlv::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(app != nullptr)
+    {
+        children["app"] = app;
+    }
+
+    return children;
+}
+
+void Native::Interface::HundredGigE::Cdp::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "server-location")
+    {
+        server_location = value;
+        server_location.value_namespace = name_space;
+        server_location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::HundredGigE::Cdp::Tlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "server-location")
+    {
+        server_location.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::HundredGigE::Cdp::Tlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "app" || name == "server-location" || name == "location")
+        return true;
+    return false;
+}
+
+Native::Interface::HundredGigE::Cdp::Tlv::App::App()
+    :
+    tlvtype{YType::uint16, "tlvtype"},
+    value_{YType::str, "value"}
+{
+
+    yang_name = "app"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::HundredGigE::Cdp::Tlv::App::~App()
+{
+}
+
+bool Native::Interface::HundredGigE::Cdp::Tlv::App::has_data() const
+{
+    if (is_presence_container) return true;
+    return tlvtype.is_set
+	|| value_.is_set;
+}
+
+bool Native::Interface::HundredGigE::Cdp::Tlv::App::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tlvtype.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Native::Interface::HundredGigE::Cdp::Tlv::App::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "app";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::Cdp::Tlv::App::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tlvtype.is_set || is_set(tlvtype.yfilter)) leaf_name_data.push_back(tlvtype.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::HundredGigE::Cdp::Tlv::App::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::ZoneMember::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Cdp::Tlv::App::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::HundredGigE::ZoneMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::HundredGigE::Cdp::Tlv::App::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "security")
+    if(value_path == "tlvtype")
     {
-        security = value;
-        security.value_namespace = name_space;
-        security.value_namespace_prefix = name_space_prefix;
+        tlvtype = value;
+        tlvtype.value_namespace = name_space;
+        tlvtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::HundredGigE::ZoneMember::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::HundredGigE::Cdp::Tlv::App::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "security")
+    if(value_path == "tlvtype")
     {
-        security.yfilter = yfilter;
+        tlvtype.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::HundredGigE::ZoneMember::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::HundredGigE::Cdp::Tlv::App::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "security")
+    if(name == "tlvtype" || name == "value")
         return true;
     return false;
 }
@@ -936,55 +983,56 @@ Native::Interface::Loopback::Loopback()
     mtu{YType::uint16, "mtu"},
     service_insertion{YType::enumeration, "service-insertion"},
     nat66{YType::enumeration, "Cisco-IOS-XE-nat:nat66"}
-    	,
+        ,
     switchport_conf(std::make_shared<Native::Interface::Loopback::SwitchportConf>())
-	,switchport(std::make_shared<Native::Interface::Loopback::Switchport>())
-	,stackwise_virtual(std::make_shared<Native::Interface::Loopback::StackwiseVirtual>())
-	,arp(std::make_shared<Native::Interface::Loopback::Arp>())
-	,backup(std::make_shared<Native::Interface::Loopback::Backup>())
-	,cemoudp(std::make_shared<Native::Interface::Loopback::Cemoudp>())
-	,cws_tunnel(std::make_shared<Native::Interface::Loopback::CwsTunnel>())
-	,l2protocol_tunnel(nullptr) // presence node
-	,encapsulation(std::make_shared<Native::Interface::Loopback::Encapsulation>())
-	,fair_queue_conf(std::make_shared<Native::Interface::Loopback::FairQueueConf>())
-	,fair_queue(std::make_shared<Native::Interface::Loopback::FairQueue>())
-	,flowcontrol(std::make_shared<Native::Interface::Loopback::Flowcontrol>())
-	,isis(std::make_shared<Native::Interface::Loopback::Isis>())
-	,keepalive_settings(std::make_shared<Native::Interface::Loopback::KeepaliveSettings>())
-	,bfd(std::make_shared<Native::Interface::Loopback::Bfd>())
-	,bandwidth(std::make_shared<Native::Interface::Loopback::Bandwidth>())
-	,dampening(std::make_shared<Native::Interface::Loopback::Dampening>())
-	,domain(std::make_shared<Native::Interface::Loopback::Domain>())
-	,mpls(std::make_shared<Native::Interface::Loopback::Mpls>())
-	,ip_vrf(std::make_shared<Native::Interface::Loopback::IpVrf>())
-	,vrf(std::make_shared<Native::Interface::Loopback::Vrf>())
-	,ip(std::make_shared<Native::Interface::Loopback::Ip>())
-	,ipv6(std::make_shared<Native::Interface::Loopback::Ipv6>())
-	,logging(std::make_shared<Native::Interface::Loopback::Logging>())
-	,mdix(std::make_shared<Native::Interface::Loopback::Mdix>())
-	,mop(std::make_shared<Native::Interface::Loopback::Mop>())
-	,interface_qos(std::make_shared<Native::Interface::Loopback::InterfaceQos>())
-	,standby(std::make_shared<Native::Interface::Loopback::Standby>())
-	,access_session(std::make_shared<Native::Interface::Loopback::AccessSession>())
-	,storm_control(std::make_shared<Native::Interface::Loopback::StormControl>())
-	,trust(std::make_shared<Native::Interface::Loopback::Trust>())
-	,priority_queue(std::make_shared<Native::Interface::Loopback::PriorityQueue>())
-	,rcv_queue(std::make_shared<Native::Interface::Loopback::RcvQueue>())
-	,peer(std::make_shared<Native::Interface::Loopback::Peer>())
-	,pm_path(std::make_shared<Native::Interface::Loopback::PmPath>())
-	,snmp(std::make_shared<Native::Interface::Loopback::Snmp>())
-	,crypto(std::make_shared<Native::Interface::Loopback::Crypto>())
-	,cts(std::make_shared<Native::Interface::Loopback::Cts>())
-	,et_analytics(std::make_shared<Native::Interface::Loopback::EtAnalytics>())
-	,performance(std::make_shared<Native::Interface::Loopback::Performance>())
-	,service_policy(std::make_shared<Native::Interface::Loopback::ServicePolicy>())
-	,lisp(std::make_shared<Native::Interface::Loopback::Lisp>())
-	,ntp(std::make_shared<Native::Interface::Loopback::Ntp>())
-	,ospfv3(std::make_shared<Native::Interface::Loopback::Ospfv3>())
-	,udld(std::make_shared<Native::Interface::Loopback::Udld>())
-	,umbrella(std::make_shared<Native::Interface::Loopback::Umbrella>())
-	,utd(std::make_shared<Native::Interface::Loopback::Utd>())
-	,zone_member(std::make_shared<Native::Interface::Loopback::ZoneMember>())
+    , switchport(std::make_shared<Native::Interface::Loopback::Switchport>())
+    , stackwise_virtual(std::make_shared<Native::Interface::Loopback::StackwiseVirtual>())
+    , arp(std::make_shared<Native::Interface::Loopback::Arp>())
+    , backup(std::make_shared<Native::Interface::Loopback::Backup>())
+    , cemoudp(std::make_shared<Native::Interface::Loopback::Cemoudp>())
+    , cws_tunnel(std::make_shared<Native::Interface::Loopback::CwsTunnel>())
+    , l2protocol_tunnel(nullptr) // presence node
+    , encapsulation(std::make_shared<Native::Interface::Loopback::Encapsulation>())
+    , fair_queue_conf(std::make_shared<Native::Interface::Loopback::FairQueueConf>())
+    , fair_queue(std::make_shared<Native::Interface::Loopback::FairQueue>())
+    , flowcontrol(std::make_shared<Native::Interface::Loopback::Flowcontrol>())
+    , isis(std::make_shared<Native::Interface::Loopback::Isis>())
+    , keepalive_settings(std::make_shared<Native::Interface::Loopback::KeepaliveSettings>())
+    , bfd(std::make_shared<Native::Interface::Loopback::Bfd>())
+    , bandwidth(std::make_shared<Native::Interface::Loopback::Bandwidth>())
+    , dampening(std::make_shared<Native::Interface::Loopback::Dampening>())
+    , domain(std::make_shared<Native::Interface::Loopback::Domain>())
+    , hold_queue(this, {"direction"})
+    , mpls(std::make_shared<Native::Interface::Loopback::Mpls>())
+    , ip_vrf(std::make_shared<Native::Interface::Loopback::IpVrf>())
+    , vrf(std::make_shared<Native::Interface::Loopback::Vrf>())
+    , ip(std::make_shared<Native::Interface::Loopback::Ip>())
+    , ipv6(std::make_shared<Native::Interface::Loopback::Ipv6>())
+    , logging(std::make_shared<Native::Interface::Loopback::Logging>())
+    , mdix(std::make_shared<Native::Interface::Loopback::Mdix>())
+    , mop(std::make_shared<Native::Interface::Loopback::Mop>())
+    , interface_qos(std::make_shared<Native::Interface::Loopback::InterfaceQos>())
+    , standby(std::make_shared<Native::Interface::Loopback::Standby>())
+    , access_session(std::make_shared<Native::Interface::Loopback::AccessSession>())
+    , storm_control(std::make_shared<Native::Interface::Loopback::StormControl>())
+    , trust(std::make_shared<Native::Interface::Loopback::Trust>())
+    , priority_queue(std::make_shared<Native::Interface::Loopback::PriorityQueue>())
+    , rcv_queue(std::make_shared<Native::Interface::Loopback::RcvQueue>())
+    , peer(std::make_shared<Native::Interface::Loopback::Peer>())
+    , pm_path(std::make_shared<Native::Interface::Loopback::PmPath>())
+    , service_policy(std::make_shared<Native::Interface::Loopback::ServicePolicy>())
+    , utd(std::make_shared<Native::Interface::Loopback::Utd>())
+    , cts(std::make_shared<Native::Interface::Loopback::Cts>())
+    , umbrella(std::make_shared<Native::Interface::Loopback::Umbrella>())
+    , snmp(std::make_shared<Native::Interface::Loopback::Snmp>())
+    , performance(std::make_shared<Native::Interface::Loopback::Performance>())
+    , et_analytics(std::make_shared<Native::Interface::Loopback::EtAnalytics>())
+    , lisp(std::make_shared<Native::Interface::Loopback::Lisp>())
+    , zone_member(std::make_shared<Native::Interface::Loopback::ZoneMember>())
+    , crypto(std::make_shared<Native::Interface::Loopback::Crypto>())
+    , udld(std::make_shared<Native::Interface::Loopback::Udld>())
+    , ospfv3(std::make_shared<Native::Interface::Loopback::Ospfv3>())
+    , ntp(std::make_shared<Native::Interface::Loopback::Ntp>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -1020,21 +1068,21 @@ Native::Interface::Loopback::Loopback()
     rcv_queue->parent = this;
     peer->parent = this;
     pm_path->parent = this;
-    snmp->parent = this;
-    crypto->parent = this;
-    cts->parent = this;
-    et_analytics->parent = this;
-    performance->parent = this;
     service_policy->parent = this;
-    lisp->parent = this;
-    ntp->parent = this;
-    ospfv3->parent = this;
-    udld->parent = this;
-    umbrella->parent = this;
     utd->parent = this;
+    cts->parent = this;
+    umbrella->parent = this;
+    snmp->parent = this;
+    performance->parent = this;
+    et_analytics->parent = this;
+    lisp->parent = this;
     zone_member->parent = this;
+    crypto->parent = this;
+    udld->parent = this;
+    ospfv3->parent = this;
+    ntp->parent = this;
 
-    yang_name = "Loopback"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "Loopback"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::Loopback::~Loopback()
@@ -1043,7 +1091,8 @@ Native::Interface::Loopback::~Loopback()
 
 bool Native::Interface::Loopback::has_data() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_data())
             return true;
@@ -1095,24 +1144,24 @@ bool Native::Interface::Loopback::has_data() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
-	|| (snmp !=  nullptr && snmp->has_data())
-	|| (crypto !=  nullptr && crypto->has_data())
-	|| (cts !=  nullptr && cts->has_data())
-	|| (et_analytics !=  nullptr && et_analytics->has_data())
-	|| (performance !=  nullptr && performance->has_data())
 	|| (service_policy !=  nullptr && service_policy->has_data())
-	|| (lisp !=  nullptr && lisp->has_data())
-	|| (ntp !=  nullptr && ntp->has_data())
-	|| (ospfv3 !=  nullptr && ospfv3->has_data())
-	|| (udld !=  nullptr && udld->has_data())
-	|| (umbrella !=  nullptr && umbrella->has_data())
 	|| (utd !=  nullptr && utd->has_data())
-	|| (zone_member !=  nullptr && zone_member->has_data());
+	|| (cts !=  nullptr && cts->has_data())
+	|| (umbrella !=  nullptr && umbrella->has_data())
+	|| (snmp !=  nullptr && snmp->has_data())
+	|| (performance !=  nullptr && performance->has_data())
+	|| (et_analytics !=  nullptr && et_analytics->has_data())
+	|| (lisp !=  nullptr && lisp->has_data())
+	|| (zone_member !=  nullptr && zone_member->has_data())
+	|| (crypto !=  nullptr && crypto->has_data())
+	|| (udld !=  nullptr && udld->has_data())
+	|| (ospfv3 !=  nullptr && ospfv3->has_data())
+	|| (ntp !=  nullptr && ntp->has_data());
 }
 
 bool Native::Interface::Loopback::has_operation() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_operation())
             return true;
@@ -1165,19 +1214,19 @@ bool Native::Interface::Loopback::has_operation() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_operation())
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
-	|| (snmp !=  nullptr && snmp->has_operation())
-	|| (crypto !=  nullptr && crypto->has_operation())
-	|| (cts !=  nullptr && cts->has_operation())
-	|| (et_analytics !=  nullptr && et_analytics->has_operation())
-	|| (performance !=  nullptr && performance->has_operation())
 	|| (service_policy !=  nullptr && service_policy->has_operation())
-	|| (lisp !=  nullptr && lisp->has_operation())
-	|| (ntp !=  nullptr && ntp->has_operation())
-	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
-	|| (udld !=  nullptr && udld->has_operation())
-	|| (umbrella !=  nullptr && umbrella->has_operation())
 	|| (utd !=  nullptr && utd->has_operation())
-	|| (zone_member !=  nullptr && zone_member->has_operation());
+	|| (cts !=  nullptr && cts->has_operation())
+	|| (umbrella !=  nullptr && umbrella->has_operation())
+	|| (snmp !=  nullptr && snmp->has_operation())
+	|| (performance !=  nullptr && performance->has_operation())
+	|| (et_analytics !=  nullptr && et_analytics->has_operation())
+	|| (lisp !=  nullptr && lisp->has_operation())
+	|| (zone_member !=  nullptr && zone_member->has_operation())
+	|| (crypto !=  nullptr && crypto->has_operation())
+	|| (udld !=  nullptr && udld->has_operation())
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (ntp !=  nullptr && ntp->has_operation());
 }
 
 std::string Native::Interface::Loopback::get_absolute_path() const
@@ -1190,7 +1239,8 @@ std::string Native::Interface::Loopback::get_absolute_path() const
 std::string Native::Interface::Loopback::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Loopback" <<"[name='" <<name <<"']";
+    path_buffer << "Loopback";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1284,7 +1334,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::get_child_by_name(const std
     {
         if(l2protocol_tunnel == nullptr)
         {
-            l2protocol_tunnel = std::make_shared<Native::Interface::Loopback::L2ProtocolTunnel>();
+            l2protocol_tunnel = std::make_shared<Native::Interface::Loopback::L2protocolTunnel>();
         }
         return l2protocol_tunnel;
     }
@@ -1383,7 +1433,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::get_child_by_name(const std
     {
         auto c = std::make_shared<Native::Interface::Loopback::HoldQueue>();
         c->parent = this;
-        hold_queue.push_back(c);
+        hold_queue.append(c);
         return c;
     }
 
@@ -1540,51 +1590,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::get_child_by_name(const std
         return pm_path;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
-    {
-        if(snmp == nullptr)
-        {
-            snmp = std::make_shared<Native::Interface::Loopback::Snmp>();
-        }
-        return snmp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
-    {
-        if(crypto == nullptr)
-        {
-            crypto = std::make_shared<Native::Interface::Loopback::Crypto>();
-        }
-        return crypto;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
-    {
-        if(cts == nullptr)
-        {
-            cts = std::make_shared<Native::Interface::Loopback::Cts>();
-        }
-        return cts;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-eta:et-analytics")
-    {
-        if(et_analytics == nullptr)
-        {
-            et_analytics = std::make_shared<Native::Interface::Loopback::EtAnalytics>();
-        }
-        return et_analytics;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ezpm:performance")
-    {
-        if(performance == nullptr)
-        {
-            performance = std::make_shared<Native::Interface::Loopback::Performance>();
-        }
-        return performance;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
     {
         if(service_policy == nullptr)
@@ -1592,51 +1597,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::get_child_by_name(const std
             service_policy = std::make_shared<Native::Interface::Loopback::ServicePolicy>();
         }
         return service_policy;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
-    {
-        if(lisp == nullptr)
-        {
-            lisp = std::make_shared<Native::Interface::Loopback::Lisp>();
-        }
-        return lisp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ntp:ntp")
-    {
-        if(ntp == nullptr)
-        {
-            ntp = std::make_shared<Native::Interface::Loopback::Ntp>();
-        }
-        return ntp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
-    {
-        if(ospfv3 == nullptr)
-        {
-            ospfv3 = std::make_shared<Native::Interface::Loopback::Ospfv3>();
-        }
-        return ospfv3;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-udld:udld")
-    {
-        if(udld == nullptr)
-        {
-            udld = std::make_shared<Native::Interface::Loopback::Udld>();
-        }
-        return udld;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-umbrella:umbrella")
-    {
-        if(umbrella == nullptr)
-        {
-            umbrella = std::make_shared<Native::Interface::Loopback::Umbrella>();
-        }
-        return umbrella;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-utd:utd")
@@ -1648,6 +1608,60 @@ std::shared_ptr<Entity> Native::Interface::Loopback::get_child_by_name(const std
         return utd;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
+    {
+        if(cts == nullptr)
+        {
+            cts = std::make_shared<Native::Interface::Loopback::Cts>();
+        }
+        return cts;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-umbrella:umbrella")
+    {
+        if(umbrella == nullptr)
+        {
+            umbrella = std::make_shared<Native::Interface::Loopback::Umbrella>();
+        }
+        return umbrella;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
+    {
+        if(snmp == nullptr)
+        {
+            snmp = std::make_shared<Native::Interface::Loopback::Snmp>();
+        }
+        return snmp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-ezpm:performance")
+    {
+        if(performance == nullptr)
+        {
+            performance = std::make_shared<Native::Interface::Loopback::Performance>();
+        }
+        return performance;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-eta:et-analytics")
+    {
+        if(et_analytics == nullptr)
+        {
+            et_analytics = std::make_shared<Native::Interface::Loopback::EtAnalytics>();
+        }
+        return et_analytics;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
+    {
+        if(lisp == nullptr)
+        {
+            lisp = std::make_shared<Native::Interface::Loopback::Lisp>();
+        }
+        return lisp;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
     {
         if(zone_member == nullptr)
@@ -1655,6 +1669,42 @@ std::shared_ptr<Entity> Native::Interface::Loopback::get_child_by_name(const std
             zone_member = std::make_shared<Native::Interface::Loopback::ZoneMember>();
         }
         return zone_member;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
+    {
+        if(crypto == nullptr)
+        {
+            crypto = std::make_shared<Native::Interface::Loopback::Crypto>();
+        }
+        return crypto;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-udld:udld")
+    {
+        if(udld == nullptr)
+        {
+            udld = std::make_shared<Native::Interface::Loopback::Udld>();
+        }
+        return udld;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
+    {
+        if(ospfv3 == nullptr)
+        {
+            ospfv3 = std::make_shared<Native::Interface::Loopback::Ospfv3>();
+        }
+        return ospfv3;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-ntp:ntp")
+    {
+        if(ntp == nullptr)
+        {
+            ntp = std::make_shared<Native::Interface::Loopback::Ntp>();
+        }
+        return ntp;
     }
 
     return nullptr;
@@ -1755,7 +1805,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::get_
     }
 
     count = 0;
-    for (auto const & c : hold_queue)
+    for (auto c : hold_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1848,59 +1898,9 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::get_
         children["pm-path"] = pm_path;
     }
 
-    if(snmp != nullptr)
-    {
-        children["Cisco-IOS-XE-snmp:snmp"] = snmp;
-    }
-
-    if(crypto != nullptr)
-    {
-        children["Cisco-IOS-XE-crypto:crypto"] = crypto;
-    }
-
-    if(cts != nullptr)
-    {
-        children["Cisco-IOS-XE-cts:cts"] = cts;
-    }
-
-    if(et_analytics != nullptr)
-    {
-        children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
-    }
-
-    if(performance != nullptr)
-    {
-        children["Cisco-IOS-XE-ezpm:performance"] = performance;
-    }
-
     if(service_policy != nullptr)
     {
         children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
-    }
-
-    if(lisp != nullptr)
-    {
-        children["Cisco-IOS-XE-lisp:lisp"] = lisp;
-    }
-
-    if(ntp != nullptr)
-    {
-        children["Cisco-IOS-XE-ntp:ntp"] = ntp;
-    }
-
-    if(ospfv3 != nullptr)
-    {
-        children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
-    }
-
-    if(udld != nullptr)
-    {
-        children["Cisco-IOS-XE-udld:udld"] = udld;
-    }
-
-    if(umbrella != nullptr)
-    {
-        children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
     }
 
     if(utd != nullptr)
@@ -1908,9 +1908,59 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::get_
         children["Cisco-IOS-XE-utd:utd"] = utd;
     }
 
+    if(cts != nullptr)
+    {
+        children["Cisco-IOS-XE-cts:cts"] = cts;
+    }
+
+    if(umbrella != nullptr)
+    {
+        children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
+    }
+
+    if(snmp != nullptr)
+    {
+        children["Cisco-IOS-XE-snmp:snmp"] = snmp;
+    }
+
+    if(performance != nullptr)
+    {
+        children["Cisco-IOS-XE-ezpm:performance"] = performance;
+    }
+
+    if(et_analytics != nullptr)
+    {
+        children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
+    }
+
+    if(lisp != nullptr)
+    {
+        children["Cisco-IOS-XE-lisp:lisp"] = lisp;
+    }
+
     if(zone_member != nullptr)
     {
         children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
+    }
+
+    if(crypto != nullptr)
+    {
+        children["Cisco-IOS-XE-crypto:crypto"] = crypto;
+    }
+
+    if(udld != nullptr)
+    {
+        children["Cisco-IOS-XE-udld:udld"] = udld;
+    }
+
+    if(ospfv3 != nullptr)
+    {
+        children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
+    }
+
+    if(ntp != nullptr)
+    {
+        children["Cisco-IOS-XE-ntp:ntp"] = ntp;
     }
 
     return children;
@@ -2046,7 +2096,7 @@ void Native::Interface::Loopback::set_filter(const std::string & value_path, YFi
 
 bool Native::Interface::Loopback::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "snmp" || name == "crypto" || name == "cts" || name == "et-analytics" || name == "performance" || name == "service-policy" || name == "lisp" || name == "ntp" || name == "ospfv3" || name == "udld" || name == "umbrella" || name == "utd" || name == "zone-member" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "nat66")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "service-policy" || name == "utd" || name == "cts" || name == "umbrella" || name == "snmp" || name == "performance" || name == "et-analytics" || name == "lisp" || name == "zone-member" || name == "crypto" || name == "udld" || name == "ospfv3" || name == "ntp" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "nat66")
         return true;
     return false;
 }
@@ -2056,7 +2106,7 @@ Native::Interface::Loopback::SwitchportConf::SwitchportConf()
     switchport{YType::boolean, "switchport"}
 {
 
-    yang_name = "switchport-conf"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport-conf"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::SwitchportConf::~SwitchportConf()
@@ -2065,6 +2115,7 @@ Native::Interface::Loopback::SwitchportConf::~SwitchportConf()
 
 bool Native::Interface::Loopback::SwitchportConf::has_data() const
 {
+    if (is_presence_container) return true;
     return switchport.is_set;
 }
 
@@ -2131,7 +2182,7 @@ bool Native::Interface::Loopback::SwitchportConf::has_leaf_or_child_of_name(cons
 Native::Interface::Loopback::Switchport::Switchport()
 {
 
-    yang_name = "switchport"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Switchport::~Switchport()
@@ -2140,6 +2191,7 @@ Native::Interface::Loopback::Switchport::~Switchport()
 
 bool Native::Interface::Loopback::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2195,7 +2247,7 @@ Native::Interface::Loopback::StackwiseVirtual::StackwiseVirtual()
     dual_active_detection{YType::empty, "dual-active-detection"}
 {
 
-    yang_name = "stackwise-virtual"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stackwise-virtual"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::StackwiseVirtual::~StackwiseVirtual()
@@ -2204,6 +2256,7 @@ Native::Interface::Loopback::StackwiseVirtual::~StackwiseVirtual()
 
 bool Native::Interface::Loopback::StackwiseVirtual::has_data() const
 {
+    if (is_presence_container) return true;
     return link.is_set
 	|| dual_active_detection.is_set;
 }
@@ -2285,7 +2338,7 @@ Native::Interface::Loopback::Arp::Arp()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "arp"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Arp::~Arp()
@@ -2294,6 +2347,7 @@ Native::Interface::Loopback::Arp::~Arp()
 
 bool Native::Interface::Loopback::Arp::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set;
 }
 
@@ -2360,14 +2414,14 @@ bool Native::Interface::Loopback::Arp::has_leaf_or_child_of_name(const std::stri
 Native::Interface::Loopback::Backup::Backup()
     :
     delay(std::make_shared<Native::Interface::Loopback::Backup::Delay>())
-	,interface(std::make_shared<Native::Interface::Loopback::Backup::Interface_>())
-	,load(std::make_shared<Native::Interface::Loopback::Backup::Load>())
+    , interface(std::make_shared<Native::Interface::Loopback::Backup::Interface_>())
+    , load(std::make_shared<Native::Interface::Loopback::Backup::Load>())
 {
     delay->parent = this;
     interface->parent = this;
     load->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Backup::~Backup()
@@ -2376,6 +2430,7 @@ Native::Interface::Loopback::Backup::~Backup()
 
 bool Native::Interface::Loopback::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (delay !=  nullptr && delay->has_data())
 	|| (interface !=  nullptr && interface->has_data())
 	|| (load !=  nullptr && load->has_data());
@@ -2480,7 +2535,7 @@ Native::Interface::Loopback::Backup::Delay::Delay()
     secondary_disable{YType::str, "secondary-disable"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Backup::Delay::~Delay()
@@ -2489,6 +2544,7 @@ Native::Interface::Loopback::Backup::Delay::~Delay()
 
 bool Native::Interface::Loopback::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return failure.is_set
 	|| secondary_disable.is_set;
 }
@@ -2599,18 +2655,18 @@ Native::Interface::Loopback::Backup::Interface_::Interface_()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::Interface::Loopback::Backup::Interface_::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Interface::Loopback::Backup::Interface_::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Interface::Loopback::Backup::Interface_::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Interface::Loopback::Backup::Interface_::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Interface::Loopback::Backup::Interface_::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Interface::Loopback::Backup::Interface_::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Interface::Loopback::Backup::Interface_::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Backup::Interface_::~Interface_()
@@ -2619,6 +2675,7 @@ Native::Interface::Loopback::Backup::Interface_::~Interface_()
 
 bool Native::Interface::Loopback::Backup::Interface_::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -3154,7 +3211,7 @@ Native::Interface::Loopback::Backup::Interface_::ATMSubinterface::ATMSubinterfac
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Backup::Interface_::ATMSubinterface::~ATMSubinterface()
@@ -3163,6 +3220,7 @@ Native::Interface::Loopback::Backup::Interface_::ATMSubinterface::~ATMSubinterfa
 
 bool Native::Interface::Loopback::Backup::Interface_::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -3231,7 +3289,7 @@ Native::Interface::Loopback::Backup::Interface_::ATMACRsubinterface::ATMACRsubin
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Backup::Interface_::ATMACRsubinterface::~ATMACRsubinterface()
@@ -3240,6 +3298,7 @@ Native::Interface::Loopback::Backup::Interface_::ATMACRsubinterface::~ATMACRsubi
 
 bool Native::Interface::Loopback::Backup::Interface_::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -3308,7 +3367,7 @@ Native::Interface::Loopback::Backup::Interface_::LISPSubinterface::LISPSubinterf
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Backup::Interface_::LISPSubinterface::~LISPSubinterface()
@@ -3317,6 +3376,7 @@ Native::Interface::Loopback::Backup::Interface_::LISPSubinterface::~LISPSubinter
 
 bool Native::Interface::Loopback::Backup::Interface_::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -3385,7 +3445,7 @@ Native::Interface::Loopback::Backup::Interface_::PortChannelSubinterface::PortCh
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Backup::Interface_::PortChannelSubinterface::~PortChannelSubinterface()
@@ -3394,6 +3454,7 @@ Native::Interface::Loopback::Backup::Interface_::PortChannelSubinterface::~PortC
 
 bool Native::Interface::Loopback::Backup::Interface_::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -3463,7 +3524,7 @@ Native::Interface::Loopback::Backup::Load::Load()
     kickout{YType::str, "kickout"}
 {
 
-    yang_name = "load"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Backup::Load::~Load()
@@ -3472,6 +3533,7 @@ Native::Interface::Loopback::Backup::Load::~Load()
 
 bool Native::Interface::Loopback::Backup::Load::has_data() const
 {
+    if (is_presence_container) return true;
     return kickin.is_set
 	|| kickout.is_set;
 }
@@ -3554,7 +3616,7 @@ Native::Interface::Loopback::Cemoudp::Cemoudp()
 {
     reserve->parent = this;
 
-    yang_name = "cemoudp"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cemoudp"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Cemoudp::~Cemoudp()
@@ -3563,6 +3625,7 @@ Native::Interface::Loopback::Cemoudp::~Cemoudp()
 
 bool Native::Interface::Loopback::Cemoudp::has_data() const
 {
+    if (is_presence_container) return true;
     return (reserve !=  nullptr && reserve->has_data());
 }
 
@@ -3634,7 +3697,7 @@ Native::Interface::Loopback::Cemoudp::Reserve::Reserve()
     acr{YType::uint8, "acr"}
 {
 
-    yang_name = "reserve"; yang_parent_name = "cemoudp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reserve"; yang_parent_name = "cemoudp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Cemoudp::Reserve::~Reserve()
@@ -3643,6 +3706,7 @@ Native::Interface::Loopback::Cemoudp::Reserve::~Reserve()
 
 bool Native::Interface::Loopback::Cemoudp::Reserve::has_data() const
 {
+    if (is_presence_container) return true;
     return acr.is_set;
 }
 
@@ -3709,12 +3773,12 @@ bool Native::Interface::Loopback::Cemoudp::Reserve::has_leaf_or_child_of_name(co
 Native::Interface::Loopback::CwsTunnel::CwsTunnel()
     :
     in{YType::empty, "in"}
-    	,
+        ,
     out(std::make_shared<Native::Interface::Loopback::CwsTunnel::Out>())
 {
     out->parent = this;
 
-    yang_name = "cws-tunnel"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cws-tunnel"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::CwsTunnel::~CwsTunnel()
@@ -3723,6 +3787,7 @@ Native::Interface::Loopback::CwsTunnel::~CwsTunnel()
 
 bool Native::Interface::Loopback::CwsTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return in.is_set
 	|| (out !=  nullptr && out->has_data());
 }
@@ -3807,7 +3872,7 @@ Native::Interface::Loopback::CwsTunnel::Out::Out()
     tunnel_number{YType::uint16, "tunnel-number"}
 {
 
-    yang_name = "out"; yang_parent_name = "cws-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out"; yang_parent_name = "cws-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::CwsTunnel::Out::~Out()
@@ -3816,6 +3881,7 @@ Native::Interface::Loopback::CwsTunnel::Out::~Out()
 
 bool Native::Interface::Loopback::CwsTunnel::Out::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_number.is_set;
 }
 
@@ -3879,27 +3945,28 @@ bool Native::Interface::Loopback::CwsTunnel::Out::has_leaf_or_child_of_name(cons
     return false;
 }
 
-Native::Interface::Loopback::L2ProtocolTunnel::L2ProtocolTunnel()
+Native::Interface::Loopback::L2protocolTunnel::L2protocolTunnel()
     :
     cdp{YType::empty, "cdp"},
     stp{YType::empty, "stp"},
     vtp{YType::empty, "vtp"}
-    	,
-    drop_threshold(std::make_shared<Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold>())
-	,shutdown_threshold(std::make_shared<Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold>())
+        ,
+    drop_threshold(std::make_shared<Native::Interface::Loopback::L2protocolTunnel::DropThreshold>())
+    , shutdown_threshold(std::make_shared<Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold>())
 {
     drop_threshold->parent = this;
     shutdown_threshold->parent = this;
 
-    yang_name = "l2protocol-tunnel"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2protocol-tunnel"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::Loopback::L2ProtocolTunnel::~L2ProtocolTunnel()
+Native::Interface::Loopback::L2protocolTunnel::~L2protocolTunnel()
 {
 }
 
-bool Native::Interface::Loopback::L2ProtocolTunnel::has_data() const
+bool Native::Interface::Loopback::L2protocolTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set
@@ -3907,7 +3974,7 @@ bool Native::Interface::Loopback::L2ProtocolTunnel::has_data() const
 	|| (shutdown_threshold !=  nullptr && shutdown_threshold->has_data());
 }
 
-bool Native::Interface::Loopback::L2ProtocolTunnel::has_operation() const
+bool Native::Interface::Loopback::L2protocolTunnel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdp.yfilter)
@@ -3917,14 +3984,14 @@ bool Native::Interface::Loopback::L2ProtocolTunnel::has_operation() const
 	|| (shutdown_threshold !=  nullptr && shutdown_threshold->has_operation());
 }
 
-std::string Native::Interface::Loopback::L2ProtocolTunnel::get_segment_path() const
+std::string Native::Interface::Loopback::L2protocolTunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2protocol-tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::L2ProtocolTunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::L2protocolTunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3936,13 +4003,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::L2Pr
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Loopback::L2ProtocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Loopback::L2protocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "drop-threshold")
     {
         if(drop_threshold == nullptr)
         {
-            drop_threshold = std::make_shared<Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold>();
+            drop_threshold = std::make_shared<Native::Interface::Loopback::L2protocolTunnel::DropThreshold>();
         }
         return drop_threshold;
     }
@@ -3951,7 +4018,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::L2ProtocolTunnel::get_child
     {
         if(shutdown_threshold == nullptr)
         {
-            shutdown_threshold = std::make_shared<Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold>();
+            shutdown_threshold = std::make_shared<Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold>();
         }
         return shutdown_threshold;
     }
@@ -3959,7 +4026,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::L2ProtocolTunnel::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::L2ProtocolTunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::L2protocolTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3976,7 +4043,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::L2Pr
     return children;
 }
 
-void Native::Interface::Loopback::L2ProtocolTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Loopback::L2protocolTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdp")
     {
@@ -3998,7 +4065,7 @@ void Native::Interface::Loopback::L2ProtocolTunnel::set_value(const std::string 
     }
 }
 
-void Native::Interface::Loopback::L2ProtocolTunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Loopback::L2protocolTunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdp")
     {
@@ -4014,14 +4081,14 @@ void Native::Interface::Loopback::L2ProtocolTunnel::set_filter(const std::string
     }
 }
 
-bool Native::Interface::Loopback::L2ProtocolTunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Loopback::L2protocolTunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "drop-threshold" || name == "shutdown-threshold" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
     return false;
 }
 
-Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::DropThreshold()
+Native::Interface::Loopback::L2protocolTunnel::DropThreshold::DropThreshold()
     :
     packet_rate{YType::uint16, "packet-rate"},
     cdp{YType::uint16, "cdp"},
@@ -4029,22 +4096,23 @@ Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::DropThreshold()
     vtp{YType::uint16, "vtp"}
 {
 
-    yang_name = "drop-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::~DropThreshold()
+Native::Interface::Loopback::L2protocolTunnel::DropThreshold::~DropThreshold()
 {
 }
 
-bool Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::has_data() const
+bool Native::Interface::Loopback::L2protocolTunnel::DropThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_rate.is_set
 	|| cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set;
 }
 
-bool Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::has_operation() const
+bool Native::Interface::Loopback::L2protocolTunnel::DropThreshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_rate.yfilter)
@@ -4053,14 +4121,14 @@ bool Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::has_operation
 	|| ydk::is_set(vtp.yfilter);
 }
 
-std::string Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::get_segment_path() const
+std::string Native::Interface::Loopback::L2protocolTunnel::DropThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "drop-threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::L2protocolTunnel::DropThreshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4073,19 +4141,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::L2Pr
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Loopback::L2protocolTunnel::DropThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::L2protocolTunnel::DropThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Loopback::L2protocolTunnel::DropThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-rate")
     {
@@ -4113,7 +4181,7 @@ void Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::set_value(con
     }
 }
 
-void Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Loopback::L2protocolTunnel::DropThreshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-rate")
     {
@@ -4133,14 +4201,14 @@ void Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::set_filter(co
     }
 }
 
-bool Native::Interface::Loopback::L2ProtocolTunnel::DropThreshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Loopback::L2protocolTunnel::DropThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-rate" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
     return false;
 }
 
-Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::ShutdownThreshold()
+Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold::ShutdownThreshold()
     :
     packet_rate{YType::uint16, "packet-rate"},
     cdp{YType::uint16, "cdp"},
@@ -4148,22 +4216,23 @@ Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::ShutdownThresh
     vtp{YType::uint16, "vtp"}
 {
 
-    yang_name = "shutdown-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shutdown-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::~ShutdownThreshold()
+Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold::~ShutdownThreshold()
 {
 }
 
-bool Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::has_data() const
+bool Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_rate.is_set
 	|| cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set;
 }
 
-bool Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::has_operation() const
+bool Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_rate.yfilter)
@@ -4172,14 +4241,14 @@ bool Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::has_opera
 	|| ydk::is_set(vtp.yfilter);
 }
 
-std::string Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::get_segment_path() const
+std::string Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "shutdown-threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4192,19 +4261,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::L2Pr
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-rate")
     {
@@ -4232,7 +4301,7 @@ void Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::set_value
     }
 }
 
-void Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-rate")
     {
@@ -4252,7 +4321,7 @@ void Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::set_filte
     }
 }
 
-bool Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Loopback::L2protocolTunnel::ShutdownThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-rate" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
@@ -4262,15 +4331,15 @@ bool Native::Interface::Loopback::L2ProtocolTunnel::ShutdownThreshold::has_leaf_
 Native::Interface::Loopback::Encapsulation::Encapsulation()
     :
     dot1q(std::make_shared<Native::Interface::Loopback::Encapsulation::Dot1Q>())
-	,isl(std::make_shared<Native::Interface::Loopback::Encapsulation::Isl>())
-	,ppp(nullptr) // presence node
-	,slip(nullptr) // presence node
-	,frame_relay(nullptr) // presence node
+    , isl(std::make_shared<Native::Interface::Loopback::Encapsulation::Isl>())
+    , ppp(nullptr) // presence node
+    , slip(nullptr) // presence node
+    , frame_relay(nullptr) // presence node
 {
     dot1q->parent = this;
     isl->parent = this;
 
-    yang_name = "encapsulation"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Encapsulation::~Encapsulation()
@@ -4279,6 +4348,7 @@ Native::Interface::Loopback::Encapsulation::~Encapsulation()
 
 bool Native::Interface::Loopback::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot1q !=  nullptr && dot1q->has_data())
 	|| (isl !=  nullptr && isl->has_data())
 	|| (ppp !=  nullptr && ppp->has_data())
@@ -4415,7 +4485,7 @@ Native::Interface::Loopback::Encapsulation::Dot1Q::Dot1Q()
     native{YType::empty, "native"}
 {
 
-    yang_name = "dot1Q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1Q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Encapsulation::Dot1Q::~Dot1Q()
@@ -4424,6 +4494,7 @@ Native::Interface::Loopback::Encapsulation::Dot1Q::~Dot1Q()
 
 bool Native::Interface::Loopback::Encapsulation::Dot1Q::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| native.is_set;
 }
@@ -4505,7 +4576,7 @@ Native::Interface::Loopback::Encapsulation::Isl::Isl()
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "isl"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isl"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Encapsulation::Isl::~Isl()
@@ -4514,6 +4585,7 @@ Native::Interface::Loopback::Encapsulation::Isl::~Isl()
 
 bool Native::Interface::Loopback::Encapsulation::Isl::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set;
 }
 
@@ -4580,7 +4652,7 @@ bool Native::Interface::Loopback::Encapsulation::Isl::has_leaf_or_child_of_name(
 Native::Interface::Loopback::Encapsulation::Ppp::Ppp()
 {
 
-    yang_name = "ppp"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Encapsulation::Ppp::~Ppp()
@@ -4589,6 +4661,7 @@ Native::Interface::Loopback::Encapsulation::Ppp::~Ppp()
 
 bool Native::Interface::Loopback::Encapsulation::Ppp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4641,7 +4714,7 @@ bool Native::Interface::Loopback::Encapsulation::Ppp::has_leaf_or_child_of_name(
 Native::Interface::Loopback::Encapsulation::Slip::Slip()
 {
 
-    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Encapsulation::Slip::~Slip()
@@ -4650,6 +4723,7 @@ Native::Interface::Loopback::Encapsulation::Slip::~Slip()
 
 bool Native::Interface::Loopback::Encapsulation::Slip::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4704,7 +4778,7 @@ Native::Interface::Loopback::Encapsulation::FrameRelay::FrameRelay()
     ietf{YType::empty, "ietf"}
 {
 
-    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Encapsulation::FrameRelay::~FrameRelay()
@@ -4713,6 +4787,7 @@ Native::Interface::Loopback::Encapsulation::FrameRelay::~FrameRelay()
 
 bool Native::Interface::Loopback::Encapsulation::FrameRelay::has_data() const
 {
+    if (is_presence_container) return true;
     return ietf.is_set;
 }
 
@@ -4781,7 +4856,7 @@ Native::Interface::Loopback::FairQueueConf::FairQueueConf()
     fair_queue{YType::boolean, "fair-queue"}
 {
 
-    yang_name = "fair-queue-conf"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue-conf"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::FairQueueConf::~FairQueueConf()
@@ -4790,6 +4865,7 @@ Native::Interface::Loopback::FairQueueConf::~FairQueueConf()
 
 bool Native::Interface::Loopback::FairQueueConf::has_data() const
 {
+    if (is_presence_container) return true;
     return fair_queue.is_set;
 }
 
@@ -4858,7 +4934,7 @@ Native::Interface::Loopback::FairQueue::FairQueue()
     incomplete{YType::empty, "incomplete"}
 {
 
-    yang_name = "fair-queue"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::FairQueue::~FairQueue()
@@ -4867,6 +4943,7 @@ Native::Interface::Loopback::FairQueue::~FairQueue()
 
 bool Native::Interface::Loopback::FairQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return incomplete.is_set;
 }
 
@@ -4936,7 +5013,7 @@ Native::Interface::Loopback::Flowcontrol::Flowcontrol()
     send{YType::enumeration, "send"}
 {
 
-    yang_name = "flowcontrol"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flowcontrol"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Flowcontrol::~Flowcontrol()
@@ -4945,6 +5022,7 @@ Native::Interface::Loopback::Flowcontrol::~Flowcontrol()
 
 bool Native::Interface::Loopback::Flowcontrol::has_data() const
 {
+    if (is_presence_container) return true;
     return receive.is_set
 	|| send.is_set;
 }
@@ -5030,21 +5108,21 @@ Native::Interface::Loopback::Isis::Isis()
     retransmit_interval{YType::uint16, "Cisco-IOS-XE-isis:retransmit-interval"},
     retransmit_throttle_interval{YType::uint16, "Cisco-IOS-XE-isis:retransmit-throttle-interval"},
     tag{YType::uint32, "Cisco-IOS-XE-isis:tag"}
-    	,
+        ,
     adjacency_filter(std::make_shared<Native::Interface::Loopback::Isis::AdjacencyFilter>())
-	,advertise(std::make_shared<Native::Interface::Loopback::Isis::Advertise>())
-	,authentication(std::make_shared<Native::Interface::Loopback::Isis::Authentication>())
-	,circuit_type(nullptr) // presence node
-	,csnp_interval(std::make_shared<Native::Interface::Loopback::Isis::CsnpInterval>())
-	,hello(std::make_shared<Native::Interface::Loopback::Isis::Hello>())
-	,hello_interval(std::make_shared<Native::Interface::Loopback::Isis::HelloInterval>())
-	,hello_multiplier(std::make_shared<Native::Interface::Loopback::Isis::HelloMultiplier>())
-	,ipv6(std::make_shared<Native::Interface::Loopback::Isis::Ipv6>())
-	,metric(std::make_shared<Native::Interface::Loopback::Isis::Metric>())
-	,password(std::make_shared<Native::Interface::Loopback::Isis::Password>())
-	,priority(std::make_shared<Native::Interface::Loopback::Isis::Priority>())
-	,bfd(nullptr) // presence node
-	,three_way_handshake(nullptr) // presence node
+    , advertise(std::make_shared<Native::Interface::Loopback::Isis::Advertise>())
+    , authentication(std::make_shared<Native::Interface::Loopback::Isis::Authentication>())
+    , circuit_type(nullptr) // presence node
+    , csnp_interval(std::make_shared<Native::Interface::Loopback::Isis::CsnpInterval>())
+    , hello(std::make_shared<Native::Interface::Loopback::Isis::Hello>())
+    , hello_interval(std::make_shared<Native::Interface::Loopback::Isis::HelloInterval>())
+    , hello_multiplier(std::make_shared<Native::Interface::Loopback::Isis::HelloMultiplier>())
+    , ipv6(std::make_shared<Native::Interface::Loopback::Isis::Ipv6>())
+    , metric(std::make_shared<Native::Interface::Loopback::Isis::Metric>())
+    , password(std::make_shared<Native::Interface::Loopback::Isis::Password>())
+    , priority(std::make_shared<Native::Interface::Loopback::Isis::Priority>())
+    , bfd(nullptr) // presence node
+    , three_way_handshake(nullptr) // presence node
 {
     adjacency_filter->parent = this;
     advertise->parent = this;
@@ -5058,7 +5136,7 @@ Native::Interface::Loopback::Isis::Isis()
     password->parent = this;
     priority->parent = this;
 
-    yang_name = "isis"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::~Isis()
@@ -5067,6 +5145,7 @@ Native::Interface::Loopback::Isis::~Isis()
 
 bool Native::Interface::Loopback::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_interval.is_set
 	|| mesh_group.is_set
 	|| network.is_set
@@ -5438,7 +5517,7 @@ Native::Interface::Loopback::Isis::AdjacencyFilter::AdjacencyFilter()
     match_all{YType::empty, "match-all"}
 {
 
-    yang_name = "adjacency-filter"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjacency-filter"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::AdjacencyFilter::~AdjacencyFilter()
@@ -5447,6 +5526,7 @@ Native::Interface::Loopback::Isis::AdjacencyFilter::~AdjacencyFilter()
 
 bool Native::Interface::Loopback::Isis::AdjacencyFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| match_all.is_set;
 }
@@ -5528,7 +5608,7 @@ Native::Interface::Loopback::Isis::Advertise::Advertise()
     prefix{YType::empty, "prefix"}
 {
 
-    yang_name = "advertise"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "advertise"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Advertise::~Advertise()
@@ -5537,6 +5617,7 @@ Native::Interface::Loopback::Isis::Advertise::~Advertise()
 
 bool Native::Interface::Loopback::Isis::Advertise::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set;
 }
 
@@ -5603,13 +5684,13 @@ bool Native::Interface::Loopback::Isis::Advertise::has_leaf_or_child_of_name(con
 Native::Interface::Loopback::Isis::Authentication::Authentication()
     :
     mode(std::make_shared<Native::Interface::Loopback::Isis::Authentication::Mode>())
-	,key_chain(std::make_shared<Native::Interface::Loopback::Isis::Authentication::KeyChain>())
-	,send_only(nullptr) // presence node
+    , key_chain(std::make_shared<Native::Interface::Loopback::Isis::Authentication::KeyChain>())
+    , send_only(nullptr) // presence node
 {
     mode->parent = this;
     key_chain->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Authentication::~Authentication()
@@ -5618,6 +5699,7 @@ Native::Interface::Loopback::Isis::Authentication::~Authentication()
 
 bool Native::Interface::Loopback::Isis::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (mode !=  nullptr && mode->has_data())
 	|| (key_chain !=  nullptr && key_chain->has_data())
 	|| (send_only !=  nullptr && send_only->has_data());
@@ -5719,10 +5801,10 @@ bool Native::Interface::Loopback::Isis::Authentication::has_leaf_or_child_of_nam
 Native::Interface::Loopback::Isis::Authentication::Mode::Mode()
     :
     md5(nullptr) // presence node
-	,text(nullptr) // presence node
+    , text(nullptr) // presence node
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Authentication::Mode::~Mode()
@@ -5731,6 +5813,7 @@ Native::Interface::Loopback::Isis::Authentication::Mode::~Mode()
 
 bool Native::Interface::Loopback::Isis::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return (md5 !=  nullptr && md5->has_data())
 	|| (text !=  nullptr && text->has_data());
 }
@@ -5818,7 +5901,7 @@ Native::Interface::Loopback::Isis::Authentication::Mode::Md5::Md5()
     levels{YType::enumeration, "levels"}
 {
 
-    yang_name = "md5"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "md5"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Isis::Authentication::Mode::Md5::~Md5()
@@ -5827,6 +5910,7 @@ Native::Interface::Loopback::Isis::Authentication::Mode::Md5::~Md5()
 
 bool Native::Interface::Loopback::Isis::Authentication::Mode::Md5::has_data() const
 {
+    if (is_presence_container) return true;
     return levels.is_set;
 }
 
@@ -5895,7 +5979,7 @@ Native::Interface::Loopback::Isis::Authentication::Mode::Text::Text()
     levels{YType::enumeration, "levels"}
 {
 
-    yang_name = "text"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "text"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Isis::Authentication::Mode::Text::~Text()
@@ -5904,6 +5988,7 @@ Native::Interface::Loopback::Isis::Authentication::Mode::Text::~Text()
 
 bool Native::Interface::Loopback::Isis::Authentication::Mode::Text::has_data() const
 {
+    if (is_presence_container) return true;
     return levels.is_set;
 }
 
@@ -5970,9 +6055,11 @@ bool Native::Interface::Loopback::Isis::Authentication::Mode::Text::has_leaf_or_
 Native::Interface::Loopback::Isis::Authentication::KeyChain::KeyChain()
     :
     name{YType::str, "name"}
+        ,
+    key_chain_list(this, {"levels"})
 {
 
-    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Authentication::KeyChain::~KeyChain()
@@ -5981,7 +6068,8 @@ Native::Interface::Loopback::Isis::Authentication::KeyChain::~KeyChain()
 
 bool Native::Interface::Loopback::Isis::Authentication::KeyChain::has_data() const
 {
-    for (std::size_t index=0; index<key_chain_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<key_chain_list.len(); index++)
     {
         if(key_chain_list[index]->has_data())
             return true;
@@ -5991,7 +6079,7 @@ bool Native::Interface::Loopback::Isis::Authentication::KeyChain::has_data() con
 
 bool Native::Interface::Loopback::Isis::Authentication::KeyChain::has_operation() const
 {
-    for (std::size_t index=0; index<key_chain_list.size(); index++)
+    for (std::size_t index=0; index<key_chain_list.len(); index++)
     {
         if(key_chain_list[index]->has_operation())
             return true;
@@ -6023,7 +6111,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Isis::Authentication::KeyCh
     {
         auto c = std::make_shared<Native::Interface::Loopback::Isis::Authentication::KeyChain::KeyChainList>();
         c->parent = this;
-        key_chain_list.push_back(c);
+        key_chain_list.append(c);
         return c;
     }
 
@@ -6035,7 +6123,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Isis
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : key_chain_list)
+    for (auto c : key_chain_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6077,7 +6165,7 @@ Native::Interface::Loopback::Isis::Authentication::KeyChain::KeyChainList::KeyCh
     name{YType::str, "name"}
 {
 
-    yang_name = "key-chain-list"; yang_parent_name = "key-chain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-chain-list"; yang_parent_name = "key-chain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Authentication::KeyChain::KeyChainList::~KeyChainList()
@@ -6086,6 +6174,7 @@ Native::Interface::Loopback::Isis::Authentication::KeyChain::KeyChainList::~KeyC
 
 bool Native::Interface::Loopback::Isis::Authentication::KeyChain::KeyChainList::has_data() const
 {
+    if (is_presence_container) return true;
     return levels.is_set
 	|| name.is_set;
 }
@@ -6100,7 +6189,8 @@ bool Native::Interface::Loopback::Isis::Authentication::KeyChain::KeyChainList::
 std::string Native::Interface::Loopback::Isis::Authentication::KeyChain::KeyChainList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "key-chain-list" <<"[levels='" <<levels <<"']";
+    path_buffer << "key-chain-list";
+    ADD_KEY_TOKEN(levels, "levels");
     return path_buffer.str();
 }
 
@@ -6167,7 +6257,7 @@ Native::Interface::Loopback::Isis::Authentication::SendOnly::SendOnly()
     levels{YType::enumeration, "levels"}
 {
 
-    yang_name = "send-only"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "send-only"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Isis::Authentication::SendOnly::~SendOnly()
@@ -6176,6 +6266,7 @@ Native::Interface::Loopback::Isis::Authentication::SendOnly::~SendOnly()
 
 bool Native::Interface::Loopback::Isis::Authentication::SendOnly::has_data() const
 {
+    if (is_presence_container) return true;
     return levels.is_set;
 }
 
@@ -6244,7 +6335,7 @@ Native::Interface::Loopback::Isis::CircuitType::CircuitType()
     levels{YType::enumeration, "levels"}
 {
 
-    yang_name = "circuit-type"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-type"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Isis::CircuitType::~CircuitType()
@@ -6253,6 +6344,7 @@ Native::Interface::Loopback::Isis::CircuitType::~CircuitType()
 
 bool Native::Interface::Loopback::Isis::CircuitType::has_data() const
 {
+    if (is_presence_container) return true;
     return levels.is_set;
 }
 
@@ -6319,9 +6411,11 @@ bool Native::Interface::Loopback::Isis::CircuitType::has_leaf_or_child_of_name(c
 Native::Interface::Loopback::Isis::CsnpInterval::CsnpInterval()
     :
     value_{YType::uint16, "value"}
+        ,
+    csnp_interval_list(this, {"levels"})
 {
 
-    yang_name = "csnp-interval"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csnp-interval"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::CsnpInterval::~CsnpInterval()
@@ -6330,7 +6424,8 @@ Native::Interface::Loopback::Isis::CsnpInterval::~CsnpInterval()
 
 bool Native::Interface::Loopback::Isis::CsnpInterval::has_data() const
 {
-    for (std::size_t index=0; index<csnp_interval_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csnp_interval_list.len(); index++)
     {
         if(csnp_interval_list[index]->has_data())
             return true;
@@ -6340,7 +6435,7 @@ bool Native::Interface::Loopback::Isis::CsnpInterval::has_data() const
 
 bool Native::Interface::Loopback::Isis::CsnpInterval::has_operation() const
 {
-    for (std::size_t index=0; index<csnp_interval_list.size(); index++)
+    for (std::size_t index=0; index<csnp_interval_list.len(); index++)
     {
         if(csnp_interval_list[index]->has_operation())
             return true;
@@ -6372,7 +6467,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Isis::CsnpInterval::get_chi
     {
         auto c = std::make_shared<Native::Interface::Loopback::Isis::CsnpInterval::CsnpIntervalList>();
         c->parent = this;
-        csnp_interval_list.push_back(c);
+        csnp_interval_list.append(c);
         return c;
     }
 
@@ -6384,7 +6479,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Isis
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csnp_interval_list)
+    for (auto c : csnp_interval_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6426,7 +6521,7 @@ Native::Interface::Loopback::Isis::CsnpInterval::CsnpIntervalList::CsnpIntervalL
     value_{YType::uint16, "value"}
 {
 
-    yang_name = "csnp-interval-list"; yang_parent_name = "csnp-interval"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csnp-interval-list"; yang_parent_name = "csnp-interval"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::CsnpInterval::CsnpIntervalList::~CsnpIntervalList()
@@ -6435,6 +6530,7 @@ Native::Interface::Loopback::Isis::CsnpInterval::CsnpIntervalList::~CsnpInterval
 
 bool Native::Interface::Loopback::Isis::CsnpInterval::CsnpIntervalList::has_data() const
 {
+    if (is_presence_container) return true;
     return levels.is_set
 	|| value_.is_set;
 }
@@ -6449,7 +6545,8 @@ bool Native::Interface::Loopback::Isis::CsnpInterval::CsnpIntervalList::has_oper
 std::string Native::Interface::Loopback::Isis::CsnpInterval::CsnpIntervalList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csnp-interval-list" <<"[levels='" <<levels <<"']";
+    path_buffer << "csnp-interval-list";
+    ADD_KEY_TOKEN(levels, "levels");
     return path_buffer.str();
 }
 
@@ -6516,7 +6613,7 @@ Native::Interface::Loopback::Isis::Hello::Hello()
     padding(nullptr) // presence node
 {
 
-    yang_name = "hello"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Hello::~Hello()
@@ -6525,6 +6622,7 @@ Native::Interface::Loopback::Isis::Hello::~Hello()
 
 bool Native::Interface::Loopback::Isis::Hello::has_data() const
 {
+    if (is_presence_container) return true;
     return (padding !=  nullptr && padding->has_data());
 }
 
@@ -6596,7 +6694,7 @@ Native::Interface::Loopback::Isis::Hello::Padding::Padding()
     always{YType::empty, "always"}
 {
 
-    yang_name = "padding"; yang_parent_name = "hello"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "padding"; yang_parent_name = "hello"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Isis::Hello::Padding::~Padding()
@@ -6605,6 +6703,7 @@ Native::Interface::Loopback::Isis::Hello::Padding::~Padding()
 
 bool Native::Interface::Loopback::Isis::Hello::Padding::has_data() const
 {
+    if (is_presence_container) return true;
     return always.is_set;
 }
 
@@ -6671,9 +6770,11 @@ bool Native::Interface::Loopback::Isis::Hello::Padding::has_leaf_or_child_of_nam
 Native::Interface::Loopback::Isis::HelloInterval::HelloInterval()
     :
     value_{YType::str, "value"}
+        ,
+    hello_interval_list(this, {"levels"})
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::HelloInterval::~HelloInterval()
@@ -6682,7 +6783,8 @@ Native::Interface::Loopback::Isis::HelloInterval::~HelloInterval()
 
 bool Native::Interface::Loopback::Isis::HelloInterval::has_data() const
 {
-    for (std::size_t index=0; index<hello_interval_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hello_interval_list.len(); index++)
     {
         if(hello_interval_list[index]->has_data())
             return true;
@@ -6692,7 +6794,7 @@ bool Native::Interface::Loopback::Isis::HelloInterval::has_data() const
 
 bool Native::Interface::Loopback::Isis::HelloInterval::has_operation() const
 {
-    for (std::size_t index=0; index<hello_interval_list.size(); index++)
+    for (std::size_t index=0; index<hello_interval_list.len(); index++)
     {
         if(hello_interval_list[index]->has_operation())
             return true;
@@ -6724,7 +6826,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Isis::HelloInterval::get_ch
     {
         auto c = std::make_shared<Native::Interface::Loopback::Isis::HelloInterval::HelloIntervalList>();
         c->parent = this;
-        hello_interval_list.push_back(c);
+        hello_interval_list.append(c);
         return c;
     }
 
@@ -6736,7 +6838,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Isis
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hello_interval_list)
+    for (auto c : hello_interval_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6778,7 +6880,7 @@ Native::Interface::Loopback::Isis::HelloInterval::HelloIntervalList::HelloInterv
     value_{YType::str, "value"}
 {
 
-    yang_name = "hello-interval-list"; yang_parent_name = "hello-interval"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval-list"; yang_parent_name = "hello-interval"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::HelloInterval::HelloIntervalList::~HelloIntervalList()
@@ -6787,6 +6889,7 @@ Native::Interface::Loopback::Isis::HelloInterval::HelloIntervalList::~HelloInter
 
 bool Native::Interface::Loopback::Isis::HelloInterval::HelloIntervalList::has_data() const
 {
+    if (is_presence_container) return true;
     return levels.is_set
 	|| value_.is_set;
 }
@@ -6801,7 +6904,8 @@ bool Native::Interface::Loopback::Isis::HelloInterval::HelloIntervalList::has_op
 std::string Native::Interface::Loopback::Isis::HelloInterval::HelloIntervalList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hello-interval-list" <<"[levels='" <<levels <<"']";
+    path_buffer << "hello-interval-list";
+    ADD_KEY_TOKEN(levels, "levels");
     return path_buffer.str();
 }
 
@@ -6866,9 +6970,11 @@ bool Native::Interface::Loopback::Isis::HelloInterval::HelloIntervalList::has_le
 Native::Interface::Loopback::Isis::HelloMultiplier::HelloMultiplier()
     :
     value_{YType::uint16, "value"}
+        ,
+    hello_multiplier_list(this, {"levels"})
 {
 
-    yang_name = "hello-multiplier"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-multiplier"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::HelloMultiplier::~HelloMultiplier()
@@ -6877,7 +6983,8 @@ Native::Interface::Loopback::Isis::HelloMultiplier::~HelloMultiplier()
 
 bool Native::Interface::Loopback::Isis::HelloMultiplier::has_data() const
 {
-    for (std::size_t index=0; index<hello_multiplier_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hello_multiplier_list.len(); index++)
     {
         if(hello_multiplier_list[index]->has_data())
             return true;
@@ -6887,7 +6994,7 @@ bool Native::Interface::Loopback::Isis::HelloMultiplier::has_data() const
 
 bool Native::Interface::Loopback::Isis::HelloMultiplier::has_operation() const
 {
-    for (std::size_t index=0; index<hello_multiplier_list.size(); index++)
+    for (std::size_t index=0; index<hello_multiplier_list.len(); index++)
     {
         if(hello_multiplier_list[index]->has_operation())
             return true;
@@ -6919,7 +7026,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Isis::HelloMultiplier::get_
     {
         auto c = std::make_shared<Native::Interface::Loopback::Isis::HelloMultiplier::HelloMultiplierList>();
         c->parent = this;
-        hello_multiplier_list.push_back(c);
+        hello_multiplier_list.append(c);
         return c;
     }
 
@@ -6931,7 +7038,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Isis
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hello_multiplier_list)
+    for (auto c : hello_multiplier_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6973,7 +7080,7 @@ Native::Interface::Loopback::Isis::HelloMultiplier::HelloMultiplierList::HelloMu
     value_{YType::uint16, "value"}
 {
 
-    yang_name = "hello-multiplier-list"; yang_parent_name = "hello-multiplier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-multiplier-list"; yang_parent_name = "hello-multiplier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::HelloMultiplier::HelloMultiplierList::~HelloMultiplierList()
@@ -6982,6 +7089,7 @@ Native::Interface::Loopback::Isis::HelloMultiplier::HelloMultiplierList::~HelloM
 
 bool Native::Interface::Loopback::Isis::HelloMultiplier::HelloMultiplierList::has_data() const
 {
+    if (is_presence_container) return true;
     return levels.is_set
 	|| value_.is_set;
 }
@@ -6996,7 +7104,8 @@ bool Native::Interface::Loopback::Isis::HelloMultiplier::HelloMultiplierList::ha
 std::string Native::Interface::Loopback::Isis::HelloMultiplier::HelloMultiplierList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hello-multiplier-list" <<"[levels='" <<levels <<"']";
+    path_buffer << "hello-multiplier-list";
+    ADD_KEY_TOKEN(levels, "levels");
     return path_buffer.str();
 }
 
@@ -7061,13 +7170,13 @@ bool Native::Interface::Loopback::Isis::HelloMultiplier::HelloMultiplierList::ha
 Native::Interface::Loopback::Isis::Ipv6::Ipv6()
     :
     tag{YType::uint32, "tag"}
-    	,
+        ,
     metric(std::make_shared<Native::Interface::Loopback::Isis::Ipv6::Metric>())
-	,bfd(nullptr) // presence node
+    , bfd(nullptr) // presence node
 {
     metric->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Ipv6::~Ipv6()
@@ -7076,6 +7185,7 @@ Native::Interface::Loopback::Isis::Ipv6::~Ipv6()
 
 bool Native::Interface::Loopback::Isis::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set
 	|| (metric !=  nullptr && metric->has_data())
 	|| (bfd !=  nullptr && bfd->has_data());
@@ -7174,9 +7284,11 @@ bool Native::Interface::Loopback::Isis::Ipv6::has_leaf_or_child_of_name(const st
 Native::Interface::Loopback::Isis::Ipv6::Metric::Metric()
     :
     value_{YType::str, "value"}
+        ,
+    metric_list(this, {"levels"})
 {
 
-    yang_name = "metric"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Ipv6::Metric::~Metric()
@@ -7185,7 +7297,8 @@ Native::Interface::Loopback::Isis::Ipv6::Metric::~Metric()
 
 bool Native::Interface::Loopback::Isis::Ipv6::Metric::has_data() const
 {
-    for (std::size_t index=0; index<metric_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<metric_list.len(); index++)
     {
         if(metric_list[index]->has_data())
             return true;
@@ -7195,7 +7308,7 @@ bool Native::Interface::Loopback::Isis::Ipv6::Metric::has_data() const
 
 bool Native::Interface::Loopback::Isis::Ipv6::Metric::has_operation() const
 {
-    for (std::size_t index=0; index<metric_list.size(); index++)
+    for (std::size_t index=0; index<metric_list.len(); index++)
     {
         if(metric_list[index]->has_operation())
             return true;
@@ -7227,7 +7340,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Isis::Ipv6::Metric::get_chi
     {
         auto c = std::make_shared<Native::Interface::Loopback::Isis::Ipv6::Metric::MetricList>();
         c->parent = this;
-        metric_list.push_back(c);
+        metric_list.append(c);
         return c;
     }
 
@@ -7239,7 +7352,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Isis
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : metric_list)
+    for (auto c : metric_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7281,7 +7394,7 @@ Native::Interface::Loopback::Isis::Ipv6::Metric::MetricList::MetricList()
     value_{YType::str, "value"}
 {
 
-    yang_name = "metric-list"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric-list"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Ipv6::Metric::MetricList::~MetricList()
@@ -7290,6 +7403,7 @@ Native::Interface::Loopback::Isis::Ipv6::Metric::MetricList::~MetricList()
 
 bool Native::Interface::Loopback::Isis::Ipv6::Metric::MetricList::has_data() const
 {
+    if (is_presence_container) return true;
     return levels.is_set
 	|| value_.is_set;
 }
@@ -7304,7 +7418,8 @@ bool Native::Interface::Loopback::Isis::Ipv6::Metric::MetricList::has_operation(
 std::string Native::Interface::Loopback::Isis::Ipv6::Metric::MetricList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "metric-list" <<"[levels='" <<levels <<"']";
+    path_buffer << "metric-list";
+    ADD_KEY_TOKEN(levels, "levels");
     return path_buffer.str();
 }
 
@@ -7371,7 +7486,7 @@ Native::Interface::Loopback::Isis::Ipv6::Bfd::Bfd()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Isis::Ipv6::Bfd::~Bfd()
@@ -7380,6 +7495,7 @@ Native::Interface::Loopback::Isis::Ipv6::Bfd::~Bfd()
 
 bool Native::Interface::Loopback::Isis::Ipv6::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -7446,9 +7562,11 @@ bool Native::Interface::Loopback::Isis::Ipv6::Bfd::has_leaf_or_child_of_name(con
 Native::Interface::Loopback::Isis::Metric::Metric()
     :
     value_{YType::str, "value"}
+        ,
+    metric_list(this, {"levels"})
 {
 
-    yang_name = "metric"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Metric::~Metric()
@@ -7457,7 +7575,8 @@ Native::Interface::Loopback::Isis::Metric::~Metric()
 
 bool Native::Interface::Loopback::Isis::Metric::has_data() const
 {
-    for (std::size_t index=0; index<metric_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<metric_list.len(); index++)
     {
         if(metric_list[index]->has_data())
             return true;
@@ -7467,7 +7586,7 @@ bool Native::Interface::Loopback::Isis::Metric::has_data() const
 
 bool Native::Interface::Loopback::Isis::Metric::has_operation() const
 {
-    for (std::size_t index=0; index<metric_list.size(); index++)
+    for (std::size_t index=0; index<metric_list.len(); index++)
     {
         if(metric_list[index]->has_operation())
             return true;
@@ -7499,7 +7618,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Isis::Metric::get_child_by_
     {
         auto c = std::make_shared<Native::Interface::Loopback::Isis::Metric::MetricList>();
         c->parent = this;
-        metric_list.push_back(c);
+        metric_list.append(c);
         return c;
     }
 
@@ -7511,7 +7630,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Isis
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : metric_list)
+    for (auto c : metric_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7553,7 +7672,7 @@ Native::Interface::Loopback::Isis::Metric::MetricList::MetricList()
     value_{YType::str, "value"}
 {
 
-    yang_name = "metric-list"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric-list"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Metric::MetricList::~MetricList()
@@ -7562,6 +7681,7 @@ Native::Interface::Loopback::Isis::Metric::MetricList::~MetricList()
 
 bool Native::Interface::Loopback::Isis::Metric::MetricList::has_data() const
 {
+    if (is_presence_container) return true;
     return levels.is_set
 	|| value_.is_set;
 }
@@ -7576,7 +7696,8 @@ bool Native::Interface::Loopback::Isis::Metric::MetricList::has_operation() cons
 std::string Native::Interface::Loopback::Isis::Metric::MetricList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "metric-list" <<"[levels='" <<levels <<"']";
+    path_buffer << "metric-list";
+    ADD_KEY_TOKEN(levels, "levels");
     return path_buffer.str();
 }
 
@@ -7641,9 +7762,11 @@ bool Native::Interface::Loopback::Isis::Metric::MetricList::has_leaf_or_child_of
 Native::Interface::Loopback::Isis::Password::Password()
     :
     password{YType::str, "password"}
+        ,
+    password_list(this, {"levels"})
 {
 
-    yang_name = "password"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "password"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Password::~Password()
@@ -7652,7 +7775,8 @@ Native::Interface::Loopback::Isis::Password::~Password()
 
 bool Native::Interface::Loopback::Isis::Password::has_data() const
 {
-    for (std::size_t index=0; index<password_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<password_list.len(); index++)
     {
         if(password_list[index]->has_data())
             return true;
@@ -7662,7 +7786,7 @@ bool Native::Interface::Loopback::Isis::Password::has_data() const
 
 bool Native::Interface::Loopback::Isis::Password::has_operation() const
 {
-    for (std::size_t index=0; index<password_list.size(); index++)
+    for (std::size_t index=0; index<password_list.len(); index++)
     {
         if(password_list[index]->has_operation())
             return true;
@@ -7694,7 +7818,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Isis::Password::get_child_b
     {
         auto c = std::make_shared<Native::Interface::Loopback::Isis::Password::PasswordList>();
         c->parent = this;
-        password_list.push_back(c);
+        password_list.append(c);
         return c;
     }
 
@@ -7706,7 +7830,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Isis
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : password_list)
+    for (auto c : password_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7748,7 +7872,7 @@ Native::Interface::Loopback::Isis::Password::PasswordList::PasswordList()
     password{YType::str, "password"}
 {
 
-    yang_name = "password-list"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "password-list"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Password::PasswordList::~PasswordList()
@@ -7757,6 +7881,7 @@ Native::Interface::Loopback::Isis::Password::PasswordList::~PasswordList()
 
 bool Native::Interface::Loopback::Isis::Password::PasswordList::has_data() const
 {
+    if (is_presence_container) return true;
     return levels.is_set
 	|| password.is_set;
 }
@@ -7771,7 +7896,8 @@ bool Native::Interface::Loopback::Isis::Password::PasswordList::has_operation() 
 std::string Native::Interface::Loopback::Isis::Password::PasswordList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "password-list" <<"[levels='" <<levels <<"']";
+    path_buffer << "password-list";
+    ADD_KEY_TOKEN(levels, "levels");
     return path_buffer.str();
 }
 
@@ -7836,9 +7962,11 @@ bool Native::Interface::Loopback::Isis::Password::PasswordList::has_leaf_or_chil
 Native::Interface::Loopback::Isis::Priority::Priority()
     :
     value_{YType::uint8, "value"}
+        ,
+    priority_list(this, {"levels"})
 {
 
-    yang_name = "priority"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Priority::~Priority()
@@ -7847,7 +7975,8 @@ Native::Interface::Loopback::Isis::Priority::~Priority()
 
 bool Native::Interface::Loopback::Isis::Priority::has_data() const
 {
-    for (std::size_t index=0; index<priority_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<priority_list.len(); index++)
     {
         if(priority_list[index]->has_data())
             return true;
@@ -7857,7 +7986,7 @@ bool Native::Interface::Loopback::Isis::Priority::has_data() const
 
 bool Native::Interface::Loopback::Isis::Priority::has_operation() const
 {
-    for (std::size_t index=0; index<priority_list.size(); index++)
+    for (std::size_t index=0; index<priority_list.len(); index++)
     {
         if(priority_list[index]->has_operation())
             return true;
@@ -7889,7 +8018,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Isis::Priority::get_child_b
     {
         auto c = std::make_shared<Native::Interface::Loopback::Isis::Priority::PriorityList>();
         c->parent = this;
-        priority_list.push_back(c);
+        priority_list.append(c);
         return c;
     }
 
@@ -7901,7 +8030,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Isis
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : priority_list)
+    for (auto c : priority_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7943,7 +8072,7 @@ Native::Interface::Loopback::Isis::Priority::PriorityList::PriorityList()
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "priority-list"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-list"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Isis::Priority::PriorityList::~PriorityList()
@@ -7952,6 +8081,7 @@ Native::Interface::Loopback::Isis::Priority::PriorityList::~PriorityList()
 
 bool Native::Interface::Loopback::Isis::Priority::PriorityList::has_data() const
 {
+    if (is_presence_container) return true;
     return levels.is_set
 	|| value_.is_set;
 }
@@ -7966,7 +8096,8 @@ bool Native::Interface::Loopback::Isis::Priority::PriorityList::has_operation() 
 std::string Native::Interface::Loopback::Isis::Priority::PriorityList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "priority-list" <<"[levels='" <<levels <<"']";
+    path_buffer << "priority-list";
+    ADD_KEY_TOKEN(levels, "levels");
     return path_buffer.str();
 }
 
@@ -8033,7 +8164,7 @@ Native::Interface::Loopback::Isis::Bfd::Bfd()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Isis::Bfd::~Bfd()
@@ -8042,6 +8173,7 @@ Native::Interface::Loopback::Isis::Bfd::~Bfd()
 
 bool Native::Interface::Loopback::Isis::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -8110,7 +8242,7 @@ Native::Interface::Loopback::Isis::ThreeWayHandshake::ThreeWayHandshake()
     implementor{YType::enumeration, "implementor"}
 {
 
-    yang_name = "three-way-handshake"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "three-way-handshake"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Isis::ThreeWayHandshake::~ThreeWayHandshake()
@@ -8119,6 +8251,7 @@ Native::Interface::Loopback::Isis::ThreeWayHandshake::~ThreeWayHandshake()
 
 bool Native::Interface::Loopback::Isis::ThreeWayHandshake::has_data() const
 {
+    if (is_presence_container) return true;
     return implementor.is_set;
 }
 
@@ -8187,7 +8320,7 @@ Native::Interface::Loopback::KeepaliveSettings::KeepaliveSettings()
     keepalive(nullptr) // presence node
 {
 
-    yang_name = "keepalive-settings"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keepalive-settings"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::KeepaliveSettings::~KeepaliveSettings()
@@ -8196,6 +8329,7 @@ Native::Interface::Loopback::KeepaliveSettings::~KeepaliveSettings()
 
 bool Native::Interface::Loopback::KeepaliveSettings::has_data() const
 {
+    if (is_presence_container) return true;
     return (keepalive !=  nullptr && keepalive->has_data());
 }
 
@@ -8268,7 +8402,7 @@ Native::Interface::Loopback::KeepaliveSettings::Keepalive::Keepalive()
     retries{YType::uint8, "retries"}
 {
 
-    yang_name = "keepalive"; yang_parent_name = "keepalive-settings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keepalive"; yang_parent_name = "keepalive-settings"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::KeepaliveSettings::Keepalive::~Keepalive()
@@ -8277,6 +8411,7 @@ Native::Interface::Loopback::KeepaliveSettings::Keepalive::~Keepalive()
 
 bool Native::Interface::Loopback::KeepaliveSettings::Keepalive::has_data() const
 {
+    if (is_presence_container) return true;
     return period.is_set
 	|| retries.is_set;
 }
@@ -8356,7 +8491,7 @@ bool Native::Interface::Loopback::KeepaliveSettings::Keepalive::has_leaf_or_chil
 Native::Interface::Loopback::Bfd::Bfd()
 {
 
-    yang_name = "bfd"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Bfd::~Bfd()
@@ -8365,6 +8500,7 @@ Native::Interface::Loopback::Bfd::~Bfd()
 
 bool Native::Interface::Loopback::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -8418,13 +8554,13 @@ Native::Interface::Loopback::Bandwidth::Bandwidth()
     :
     qos_reference{YType::uint32, "qos-reference"},
     kilobits{YType::uint32, "kilobits"}
-    	,
+        ,
     receive(std::make_shared<Native::Interface::Loopback::Bandwidth::Receive>())
-	,inherit(nullptr) // presence node
+    , inherit(nullptr) // presence node
 {
     receive->parent = this;
 
-    yang_name = "bandwidth"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Bandwidth::~Bandwidth()
@@ -8433,6 +8569,7 @@ Native::Interface::Loopback::Bandwidth::~Bandwidth()
 
 bool Native::Interface::Loopback::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return qos_reference.is_set
 	|| kilobits.is_set
 	|| (receive !=  nullptr && receive->has_data())
@@ -8547,7 +8684,7 @@ Native::Interface::Loopback::Bandwidth::Receive::Receive()
     kilobits{YType::uint32, "kilobits"}
 {
 
-    yang_name = "receive"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Bandwidth::Receive::~Receive()
@@ -8556,6 +8693,7 @@ Native::Interface::Loopback::Bandwidth::Receive::~Receive()
 
 bool Native::Interface::Loopback::Bandwidth::Receive::has_data() const
 {
+    if (is_presence_container) return true;
     return inherit.is_set
 	|| kilobits.is_set;
 }
@@ -8637,7 +8775,7 @@ Native::Interface::Loopback::Bandwidth::Inherit::Inherit()
     kilobits{YType::uint32, "kilobits"}
 {
 
-    yang_name = "inherit"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inherit"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Bandwidth::Inherit::~Inherit()
@@ -8646,6 +8784,7 @@ Native::Interface::Loopback::Bandwidth::Inherit::~Inherit()
 
 bool Native::Interface::Loopback::Bandwidth::Inherit::has_data() const
 {
+    if (is_presence_container) return true;
     return kilobits.is_set;
 }
 
@@ -8715,12 +8854,12 @@ Native::Interface::Loopback::Dampening::Dampening()
     start_reusing_time{YType::uint16, "start-reusing-time"},
     start_supressing_time{YType::uint16, "start-supressing-time"},
     maximum_supressing_time{YType::uint16, "maximum-supressing-time"}
-    	,
+        ,
     restart(std::make_shared<Native::Interface::Loopback::Dampening::Restart>())
 {
     restart->parent = this;
 
-    yang_name = "dampening"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dampening"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Dampening::~Dampening()
@@ -8729,6 +8868,7 @@ Native::Interface::Loopback::Dampening::~Dampening()
 
 bool Native::Interface::Loopback::Dampening::has_data() const
 {
+    if (is_presence_container) return true;
     return dampening_time.is_set
 	|| start_reusing_time.is_set
 	|| start_supressing_time.is_set
@@ -8853,7 +8993,7 @@ Native::Interface::Loopback::Dampening::Restart::Restart()
     restart_penalty{YType::uint16, "restart-penalty"}
 {
 
-    yang_name = "restart"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "restart"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Dampening::Restart::~Restart()
@@ -8862,6 +9002,7 @@ Native::Interface::Loopback::Dampening::Restart::~Restart()
 
 bool Native::Interface::Loopback::Dampening::Restart::has_data() const
 {
+    if (is_presence_container) return true;
     return restart.is_set
 	|| restart_penalty.is_set;
 }
@@ -8948,7 +9089,7 @@ Native::Interface::Loopback::Domain::Domain()
     zero_sla{YType::empty, "zero-sla"}
 {
 
-    yang_name = "domain"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "domain"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Domain::~Domain()
@@ -8957,6 +9098,7 @@ Native::Interface::Loopback::Domain::~Domain()
 
 bool Native::Interface::Loopback::Domain::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| path.is_set
 	|| internet_bound.is_set
@@ -9091,7 +9233,7 @@ Native::Interface::Loopback::HoldQueue::HoldQueue()
     queue_length{YType::uint16, "queue-length"}
 {
 
-    yang_name = "hold-queue"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-queue"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::HoldQueue::~HoldQueue()
@@ -9100,6 +9242,7 @@ Native::Interface::Loopback::HoldQueue::~HoldQueue()
 
 bool Native::Interface::Loopback::HoldQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| queue_length.is_set;
 }
@@ -9114,7 +9257,8 @@ bool Native::Interface::Loopback::HoldQueue::has_operation() const
 std::string Native::Interface::Loopback::HoldQueue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hold-queue" <<"[direction='" <<direction <<"']";
+    path_buffer << "hold-queue";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -9180,12 +9324,12 @@ Native::Interface::Loopback::Mpls::Mpls()
     :
     ip{YType::empty, "Cisco-IOS-XE-mpls:ip"},
     mtu{YType::str, "Cisco-IOS-XE-mpls:mtu"}
-    	,
+        ,
     accounting(std::make_shared<Native::Interface::Loopback::Mpls::Accounting>())
-	,bgp(std::make_shared<Native::Interface::Loopback::Mpls::Bgp>())
-	,label(std::make_shared<Native::Interface::Loopback::Mpls::Label>())
-	,ldp(std::make_shared<Native::Interface::Loopback::Mpls::Ldp>())
-	,traffic_eng(std::make_shared<Native::Interface::Loopback::Mpls::TrafficEng>())
+    , bgp(std::make_shared<Native::Interface::Loopback::Mpls::Bgp>())
+    , label(std::make_shared<Native::Interface::Loopback::Mpls::Label>())
+    , ldp(std::make_shared<Native::Interface::Loopback::Mpls::Ldp>())
+    , traffic_eng(std::make_shared<Native::Interface::Loopback::Mpls::TrafficEng>())
 {
     accounting->parent = this;
     bgp->parent = this;
@@ -9193,7 +9337,7 @@ Native::Interface::Loopback::Mpls::Mpls()
     ldp->parent = this;
     traffic_eng->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::~Mpls()
@@ -9202,6 +9346,7 @@ Native::Interface::Loopback::Mpls::~Mpls()
 
 bool Native::Interface::Loopback::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| mtu.is_set
 	|| (accounting !=  nullptr && accounting->has_data())
@@ -9364,7 +9509,7 @@ Native::Interface::Loopback::Mpls::Accounting::Accounting()
 {
     experimental->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::Accounting::~Accounting()
@@ -9373,6 +9518,7 @@ Native::Interface::Loopback::Mpls::Accounting::~Accounting()
 
 bool Native::Interface::Loopback::Mpls::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return (experimental !=  nullptr && experimental->has_data());
 }
 
@@ -9445,7 +9591,7 @@ Native::Interface::Loopback::Mpls::Accounting::Experimental::Experimental()
     output{YType::empty, "output"}
 {
 
-    yang_name = "experimental"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "experimental"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::Accounting::Experimental::~Experimental()
@@ -9454,6 +9600,7 @@ Native::Interface::Loopback::Mpls::Accounting::Experimental::~Experimental()
 
 bool Native::Interface::Loopback::Mpls::Accounting::Experimental::has_data() const
 {
+    if (is_presence_container) return true;
     return input.is_set
 	|| output.is_set;
 }
@@ -9535,7 +9682,7 @@ Native::Interface::Loopback::Mpls::Bgp::Bgp()
     forwarding{YType::empty, "forwarding"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::Bgp::~Bgp()
@@ -9544,6 +9691,7 @@ Native::Interface::Loopback::Mpls::Bgp::~Bgp()
 
 bool Native::Interface::Loopback::Mpls::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -9612,7 +9760,7 @@ Native::Interface::Loopback::Mpls::Label::Label()
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "label"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::Label::~Label()
@@ -9621,6 +9769,7 @@ Native::Interface::Loopback::Mpls::Label::~Label()
 
 bool Native::Interface::Loopback::Mpls::Label::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set;
 }
 
@@ -9687,12 +9836,12 @@ bool Native::Interface::Loopback::Mpls::Label::has_leaf_or_child_of_name(const s
 Native::Interface::Loopback::Mpls::Ldp::Ldp()
     :
     discovery(std::make_shared<Native::Interface::Loopback::Mpls::Ldp::Discovery>())
-	,igp(std::make_shared<Native::Interface::Loopback::Mpls::Ldp::Igp>())
+    , igp(std::make_shared<Native::Interface::Loopback::Mpls::Ldp::Igp>())
 {
     discovery->parent = this;
     igp->parent = this;
 
-    yang_name = "ldp"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::Ldp::~Ldp()
@@ -9701,6 +9850,7 @@ Native::Interface::Loopback::Mpls::Ldp::~Ldp()
 
 bool Native::Interface::Loopback::Mpls::Ldp::has_data() const
 {
+    if (is_presence_container) return true;
     return (discovery !=  nullptr && discovery->has_data())
 	|| (igp !=  nullptr && igp->has_data());
 }
@@ -9788,7 +9938,7 @@ Native::Interface::Loopback::Mpls::Ldp::Discovery::Discovery()
     transport_address{YType::str, "transport-address"}
 {
 
-    yang_name = "discovery"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discovery"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::Ldp::Discovery::~Discovery()
@@ -9797,6 +9947,7 @@ Native::Interface::Loopback::Mpls::Ldp::Discovery::~Discovery()
 
 bool Native::Interface::Loopback::Mpls::Ldp::Discovery::has_data() const
 {
+    if (is_presence_container) return true;
     return transport_address.is_set;
 }
 
@@ -9865,7 +10016,7 @@ Native::Interface::Loopback::Mpls::Ldp::Igp::Igp()
     sync(nullptr) // presence node
 {
 
-    yang_name = "igp"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::Ldp::Igp::~Igp()
@@ -9874,6 +10025,7 @@ Native::Interface::Loopback::Mpls::Ldp::Igp::~Igp()
 
 bool Native::Interface::Loopback::Mpls::Ldp::Igp::has_data() const
 {
+    if (is_presence_container) return true;
     return (sync !=  nullptr && sync->has_data());
 }
 
@@ -9945,7 +10097,7 @@ Native::Interface::Loopback::Mpls::Ldp::Igp::Sync::Sync()
     delay{YType::uint8, "delay"}
 {
 
-    yang_name = "sync"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sync"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Mpls::Ldp::Igp::Sync::~Sync()
@@ -9954,6 +10106,7 @@ Native::Interface::Loopback::Mpls::Ldp::Igp::Sync::~Sync()
 
 bool Native::Interface::Loopback::Mpls::Ldp::Igp::Sync::has_data() const
 {
+    if (is_presence_container) return true;
     return delay.is_set;
 }
 
@@ -10022,16 +10175,16 @@ Native::Interface::Loopback::Mpls::TrafficEng::TrafficEng()
     administrative_weight{YType::uint32, "administrative-weight"},
     attribute_flags{YType::str, "attribute-flags"},
     tunnels{YType::empty, "tunnels"}
-    	,
+        ,
     backup_path(std::make_shared<Native::Interface::Loopback::Mpls::TrafficEng::BackupPath>())
-	,flooding(std::make_shared<Native::Interface::Loopback::Mpls::TrafficEng::Flooding>())
-	,passive_interface(std::make_shared<Native::Interface::Loopback::Mpls::TrafficEng::PassiveInterface>())
+    , flooding(std::make_shared<Native::Interface::Loopback::Mpls::TrafficEng::Flooding>())
+    , passive_interface(std::make_shared<Native::Interface::Loopback::Mpls::TrafficEng::PassiveInterface>())
 {
     backup_path->parent = this;
     flooding->parent = this;
     passive_interface->parent = this;
 
-    yang_name = "traffic-eng"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-eng"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::TrafficEng::~TrafficEng()
@@ -10040,6 +10193,7 @@ Native::Interface::Loopback::Mpls::TrafficEng::~TrafficEng()
 
 bool Native::Interface::Loopback::Mpls::TrafficEng::has_data() const
 {
+    if (is_presence_container) return true;
     return administrative_weight.is_set
 	|| attribute_flags.is_set
 	|| tunnels.is_set
@@ -10182,7 +10336,7 @@ Native::Interface::Loopback::Mpls::TrafficEng::BackupPath::BackupPath()
     tunnel{YType::uint32, "Tunnel"}
 {
 
-    yang_name = "backup-path"; yang_parent_name = "traffic-eng"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-path"; yang_parent_name = "traffic-eng"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::TrafficEng::BackupPath::~BackupPath()
@@ -10191,6 +10345,7 @@ Native::Interface::Loopback::Mpls::TrafficEng::BackupPath::~BackupPath()
 
 bool Native::Interface::Loopback::Mpls::TrafficEng::BackupPath::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel.is_set;
 }
 
@@ -10260,7 +10415,7 @@ Native::Interface::Loopback::Mpls::TrafficEng::Flooding::Flooding()
 {
     thresholds->parent = this;
 
-    yang_name = "flooding"; yang_parent_name = "traffic-eng"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooding"; yang_parent_name = "traffic-eng"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::TrafficEng::Flooding::~Flooding()
@@ -10269,6 +10424,7 @@ Native::Interface::Loopback::Mpls::TrafficEng::Flooding::~Flooding()
 
 bool Native::Interface::Loopback::Mpls::TrafficEng::Flooding::has_data() const
 {
+    if (is_presence_container) return true;
     return (thresholds !=  nullptr && thresholds->has_data());
 }
 
@@ -10341,7 +10497,7 @@ Native::Interface::Loopback::Mpls::TrafficEng::Flooding::Thresholds::Thresholds(
     up{YType::uint8, "up"}
 {
 
-    yang_name = "thresholds"; yang_parent_name = "flooding"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "thresholds"; yang_parent_name = "flooding"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::TrafficEng::Flooding::Thresholds::~Thresholds()
@@ -10350,6 +10506,7 @@ Native::Interface::Loopback::Mpls::TrafficEng::Flooding::Thresholds::~Thresholds
 
 bool Native::Interface::Loopback::Mpls::TrafficEng::Flooding::Thresholds::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : down.getYLeafs())
     {
         if(leaf.is_set)
@@ -10447,12 +10604,12 @@ Native::Interface::Loopback::Mpls::TrafficEng::PassiveInterface::PassiveInterfac
     :
     nbr_te_id{YType::str, "nbr-te-id"},
     nbr_if_addr{YType::str, "nbr-if-addr"}
-    	,
+        ,
     nbr_igp_id(std::make_shared<Native::Interface::Loopback::Mpls::TrafficEng::PassiveInterface::NbrIgpId>())
 {
     nbr_igp_id->parent = this;
 
-    yang_name = "passive-interface"; yang_parent_name = "traffic-eng"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "passive-interface"; yang_parent_name = "traffic-eng"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::TrafficEng::PassiveInterface::~PassiveInterface()
@@ -10461,6 +10618,7 @@ Native::Interface::Loopback::Mpls::TrafficEng::PassiveInterface::~PassiveInterfa
 
 bool Native::Interface::Loopback::Mpls::TrafficEng::PassiveInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return nbr_te_id.is_set
 	|| nbr_if_addr.is_set
 	|| (nbr_igp_id !=  nullptr && nbr_igp_id->has_data());
@@ -10559,7 +10717,7 @@ Native::Interface::Loopback::Mpls::TrafficEng::PassiveInterface::NbrIgpId::NbrIg
     ospf{YType::str, "ospf"}
 {
 
-    yang_name = "nbr-igp-id"; yang_parent_name = "passive-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nbr-igp-id"; yang_parent_name = "passive-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Mpls::TrafficEng::PassiveInterface::NbrIgpId::~NbrIgpId()
@@ -10568,6 +10726,7 @@ Native::Interface::Loopback::Mpls::TrafficEng::PassiveInterface::NbrIgpId::~NbrI
 
 bool Native::Interface::Loopback::Mpls::TrafficEng::PassiveInterface::NbrIgpId::has_data() const
 {
+    if (is_presence_container) return true;
     return isis.is_set
 	|| ospf.is_set;
 }
@@ -10650,7 +10809,7 @@ Native::Interface::Loopback::IpVrf::IpVrf()
 {
     ip->parent = this;
 
-    yang_name = "ip-vrf"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-vrf"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::IpVrf::~IpVrf()
@@ -10659,6 +10818,7 @@ Native::Interface::Loopback::IpVrf::~IpVrf()
 
 bool Native::Interface::Loopback::IpVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -10731,7 +10891,7 @@ Native::Interface::Loopback::IpVrf::Ip::Ip()
 {
     vrf->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "ip-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "ip-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::IpVrf::Ip::~Ip()
@@ -10740,6 +10900,7 @@ Native::Interface::Loopback::IpVrf::Ip::~Ip()
 
 bool Native::Interface::Loopback::IpVrf::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrf !=  nullptr && vrf->has_data());
 }
 
@@ -10811,7 +10972,7 @@ Native::Interface::Loopback::IpVrf::Ip::Vrf::Vrf()
     forwarding{YType::str, "forwarding"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::IpVrf::Ip::Vrf::~Vrf()
@@ -10820,6 +10981,7 @@ Native::Interface::Loopback::IpVrf::Ip::Vrf::~Vrf()
 
 bool Native::Interface::Loopback::IpVrf::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -10888,7 +11050,7 @@ Native::Interface::Loopback::Vrf::Vrf()
     forwarding{YType::str, "forwarding"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Vrf::~Vrf()
@@ -10897,6 +11059,7 @@ Native::Interface::Loopback::Vrf::~Vrf()
 
 bool Native::Interface::Loopback::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -10970,34 +11133,35 @@ Native::Interface::Loopback::Ip::Ip()
     redirects{YType::boolean, "redirects"},
     mtu{YType::uint16, "mtu"},
     mroute_cache{YType::boolean, "mroute-cache"}
-    	,
+        ,
     access_group(std::make_shared<Native::Interface::Loopback::Ip::AccessGroup>())
-	,arp(std::make_shared<Native::Interface::Loopback::Ip::Arp>())
-	,vrf(std::make_shared<Native::Interface::Loopback::Ip::Vrf>())
-	,no_address(std::make_shared<Native::Interface::Loopback::Ip::NoAddress>())
-	,address(std::make_shared<Native::Interface::Loopback::Ip::Address>())
-	,hello_interval(std::make_shared<Native::Interface::Loopback::Ip::HelloInterval>())
-	,authentication(std::make_shared<Native::Interface::Loopback::Ip::Authentication>())
-	,hold_time(std::make_shared<Native::Interface::Loopback::Ip::HoldTime>())
-	,pim(std::make_shared<Native::Interface::Loopback::Ip::Pim>())
-	,policy(std::make_shared<Native::Interface::Loopback::Ip::Policy>())
-	,rip(std::make_shared<Native::Interface::Loopback::Ip::Rip>())
-	,route_cache_conf(std::make_shared<Native::Interface::Loopback::Ip::RouteCacheConf>())
-	,route_cache(nullptr) // presence node
-	,router(std::make_shared<Native::Interface::Loopback::Ip::Router>())
-	,tcp(std::make_shared<Native::Interface::Loopback::Ip::Tcp>())
-	,virtual_reassembly(std::make_shared<Native::Interface::Loopback::Ip::VirtualReassembly>())
-	,dhcp(std::make_shared<Native::Interface::Loopback::Ip::Dhcp>())
-	,summary_address(std::make_shared<Native::Interface::Loopback::Ip::SummaryAddress>())
-	,verify(std::make_shared<Native::Interface::Loopback::Ip::Verify>())
-	,flow(std::make_shared<Native::Interface::Loopback::Ip::Flow>())
-	,igmp(std::make_shared<Native::Interface::Loopback::Ip::Igmp>())
-	,lisp(std::make_shared<Native::Interface::Loopback::Ip::Lisp>())
-	,nat(std::make_shared<Native::Interface::Loopback::Ip::Nat>())
-	,nbar(std::make_shared<Native::Interface::Loopback::Ip::Nbar>())
-	,ospf(std::make_shared<Native::Interface::Loopback::Ip::Ospf>())
-	,rsvp(std::make_shared<Native::Interface::Loopback::Ip::Rsvp>())
-	,wccp(std::make_shared<Native::Interface::Loopback::Ip::Wccp>())
+    , arp(std::make_shared<Native::Interface::Loopback::Ip::Arp>())
+    , vrf(std::make_shared<Native::Interface::Loopback::Ip::Vrf>())
+    , no_address(std::make_shared<Native::Interface::Loopback::Ip::NoAddress>())
+    , address(std::make_shared<Native::Interface::Loopback::Ip::Address>())
+    , hello_interval(std::make_shared<Native::Interface::Loopback::Ip::HelloInterval>())
+    , authentication(std::make_shared<Native::Interface::Loopback::Ip::Authentication>())
+    , hold_time(std::make_shared<Native::Interface::Loopback::Ip::HoldTime>())
+    , helper_address(this, {"address"})
+    , pim(std::make_shared<Native::Interface::Loopback::Ip::Pim>())
+    , policy(std::make_shared<Native::Interface::Loopback::Ip::Policy>())
+    , rip(std::make_shared<Native::Interface::Loopback::Ip::Rip>())
+    , route_cache_conf(std::make_shared<Native::Interface::Loopback::Ip::RouteCacheConf>())
+    , route_cache(nullptr) // presence node
+    , router(std::make_shared<Native::Interface::Loopback::Ip::Router>())
+    , tcp(std::make_shared<Native::Interface::Loopback::Ip::Tcp>())
+    , virtual_reassembly(std::make_shared<Native::Interface::Loopback::Ip::VirtualReassembly>())
+    , dhcp(std::make_shared<Native::Interface::Loopback::Ip::Dhcp>())
+    , summary_address(std::make_shared<Native::Interface::Loopback::Ip::SummaryAddress>())
+    , verify(std::make_shared<Native::Interface::Loopback::Ip::Verify>())
+    , igmp(std::make_shared<Native::Interface::Loopback::Ip::Igmp>())
+    , lisp(std::make_shared<Native::Interface::Loopback::Ip::Lisp>())
+    , rsvp(std::make_shared<Native::Interface::Loopback::Ip::Rsvp>())
+    , nbar(std::make_shared<Native::Interface::Loopback::Ip::Nbar>())
+    , flow(std::make_shared<Native::Interface::Loopback::Ip::Flow>())
+    , nat(std::make_shared<Native::Interface::Loopback::Ip::Nat>())
+    , ospf(std::make_shared<Native::Interface::Loopback::Ip::Ospf>())
+    , wccp(std::make_shared<Native::Interface::Loopback::Ip::Wccp>())
 {
     access_group->parent = this;
     arp->parent = this;
@@ -11017,16 +11181,16 @@ Native::Interface::Loopback::Ip::Ip()
     dhcp->parent = this;
     summary_address->parent = this;
     verify->parent = this;
-    flow->parent = this;
     igmp->parent = this;
     lisp->parent = this;
-    nat->parent = this;
-    nbar->parent = this;
-    ospf->parent = this;
     rsvp->parent = this;
+    nbar->parent = this;
+    flow->parent = this;
+    nat->parent = this;
+    ospf->parent = this;
     wccp->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "Loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::~Ip()
@@ -11035,7 +11199,8 @@ Native::Interface::Loopback::Ip::~Ip()
 
 bool Native::Interface::Loopback::Ip::has_data() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_data())
             return true;
@@ -11067,19 +11232,19 @@ bool Native::Interface::Loopback::Ip::has_data() const
 	|| (dhcp !=  nullptr && dhcp->has_data())
 	|| (summary_address !=  nullptr && summary_address->has_data())
 	|| (verify !=  nullptr && verify->has_data())
-	|| (flow !=  nullptr && flow->has_data())
 	|| (igmp !=  nullptr && igmp->has_data())
 	|| (lisp !=  nullptr && lisp->has_data())
-	|| (nat !=  nullptr && nat->has_data())
-	|| (nbar !=  nullptr && nbar->has_data())
-	|| (ospf !=  nullptr && ospf->has_data())
 	|| (rsvp !=  nullptr && rsvp->has_data())
+	|| (nbar !=  nullptr && nbar->has_data())
+	|| (flow !=  nullptr && flow->has_data())
+	|| (nat !=  nullptr && nat->has_data())
+	|| (ospf !=  nullptr && ospf->has_data())
 	|| (wccp !=  nullptr && wccp->has_data());
 }
 
 bool Native::Interface::Loopback::Ip::has_operation() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_operation())
             return true;
@@ -11112,13 +11277,13 @@ bool Native::Interface::Loopback::Ip::has_operation() const
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (summary_address !=  nullptr && summary_address->has_operation())
 	|| (verify !=  nullptr && verify->has_operation())
-	|| (flow !=  nullptr && flow->has_operation())
 	|| (igmp !=  nullptr && igmp->has_operation())
 	|| (lisp !=  nullptr && lisp->has_operation())
-	|| (nat !=  nullptr && nat->has_operation())
-	|| (nbar !=  nullptr && nbar->has_operation())
-	|| (ospf !=  nullptr && ospf->has_operation())
 	|| (rsvp !=  nullptr && rsvp->has_operation())
+	|| (nbar !=  nullptr && nbar->has_operation())
+	|| (flow !=  nullptr && flow->has_operation())
+	|| (nat !=  nullptr && nat->has_operation())
+	|| (ospf !=  nullptr && ospf->has_operation())
 	|| (wccp !=  nullptr && wccp->has_operation());
 }
 
@@ -11224,7 +11389,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::get_child_by_name(const
     {
         auto c = std::make_shared<Native::Interface::Loopback::Ip::HelperAddress>();
         c->parent = this;
-        helper_address.push_back(c);
+        helper_address.append(c);
         return c;
     }
 
@@ -11327,15 +11492,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::get_child_by_name(const
         return verify;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-flow:flow")
-    {
-        if(flow == nullptr)
-        {
-            flow = std::make_shared<Native::Interface::Loopback::Ip::Flow>();
-        }
-        return flow;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-igmp:igmp")
     {
         if(igmp == nullptr)
@@ -11354,13 +11510,13 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::get_child_by_name(const
         return lisp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-nat:nat")
+    if(child_yang_name == "Cisco-IOS-XE-rsvp:rsvp")
     {
-        if(nat == nullptr)
+        if(rsvp == nullptr)
         {
-            nat = std::make_shared<Native::Interface::Loopback::Ip::Nat>();
+            rsvp = std::make_shared<Native::Interface::Loopback::Ip::Rsvp>();
         }
-        return nat;
+        return rsvp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-nbar:nbar")
@@ -11372,6 +11528,24 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::get_child_by_name(const
         return nbar;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-flow:flow")
+    {
+        if(flow == nullptr)
+        {
+            flow = std::make_shared<Native::Interface::Loopback::Ip::Flow>();
+        }
+        return flow;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-nat:nat")
+    {
+        if(nat == nullptr)
+        {
+            nat = std::make_shared<Native::Interface::Loopback::Ip::Nat>();
+        }
+        return nat;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-ospf:ospf")
     {
         if(ospf == nullptr)
@@ -11379,15 +11553,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::get_child_by_name(const
             ospf = std::make_shared<Native::Interface::Loopback::Ip::Ospf>();
         }
         return ospf;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-rsvp:rsvp")
-    {
-        if(rsvp == nullptr)
-        {
-            rsvp = std::make_shared<Native::Interface::Loopback::Ip::Rsvp>();
-        }
-        return rsvp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-wccp:wccp")
@@ -11447,7 +11612,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::
     }
 
     count = 0;
-    for (auto const & c : helper_address)
+    for (auto c : helper_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11510,11 +11675,6 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::
         children["verify"] = verify;
     }
 
-    if(flow != nullptr)
-    {
-        children["Cisco-IOS-XE-flow:flow"] = flow;
-    }
-
     if(igmp != nullptr)
     {
         children["Cisco-IOS-XE-igmp:igmp"] = igmp;
@@ -11525,9 +11685,9 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::
         children["Cisco-IOS-XE-lisp:lisp"] = lisp;
     }
 
-    if(nat != nullptr)
+    if(rsvp != nullptr)
     {
-        children["Cisco-IOS-XE-nat:nat"] = nat;
+        children["Cisco-IOS-XE-rsvp:rsvp"] = rsvp;
     }
 
     if(nbar != nullptr)
@@ -11535,14 +11695,19 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::
         children["Cisco-IOS-XE-nbar:nbar"] = nbar;
     }
 
+    if(flow != nullptr)
+    {
+        children["Cisco-IOS-XE-flow:flow"] = flow;
+    }
+
+    if(nat != nullptr)
+    {
+        children["Cisco-IOS-XE-nat:nat"] = nat;
+    }
+
     if(ospf != nullptr)
     {
         children["Cisco-IOS-XE-ospf:ospf"] = ospf;
-    }
-
-    if(rsvp != nullptr)
-    {
-        children["Cisco-IOS-XE-rsvp:rsvp"] = rsvp;
     }
 
     if(wccp != nullptr)
@@ -11643,7 +11808,7 @@ void Native::Interface::Loopback::Ip::set_filter(const std::string & value_path,
 
 bool Native::Interface::Loopback::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "access-group" || name == "arp" || name == "vrf" || name == "no-address" || name == "address" || name == "hello-interval" || name == "authentication" || name == "hold-time" || name == "helper-address" || name == "pim" || name == "policy" || name == "rip" || name == "route-cache-conf" || name == "route-cache" || name == "router" || name == "tcp" || name == "virtual-reassembly" || name == "dhcp" || name == "summary-address" || name == "verify" || name == "flow" || name == "igmp" || name == "lisp" || name == "nat" || name == "nbar" || name == "ospf" || name == "rsvp" || name == "wccp" || name == "admission" || name == "unnumbered" || name == "directed-broadcast" || name == "local-proxy-arp" || name == "proxy-arp" || name == "redirects" || name == "mtu" || name == "mroute-cache")
+    if(name == "access-group" || name == "arp" || name == "vrf" || name == "no-address" || name == "address" || name == "hello-interval" || name == "authentication" || name == "hold-time" || name == "helper-address" || name == "pim" || name == "policy" || name == "rip" || name == "route-cache-conf" || name == "route-cache" || name == "router" || name == "tcp" || name == "virtual-reassembly" || name == "dhcp" || name == "summary-address" || name == "verify" || name == "igmp" || name == "lisp" || name == "rsvp" || name == "nbar" || name == "flow" || name == "nat" || name == "ospf" || name == "wccp" || name == "admission" || name == "unnumbered" || name == "directed-broadcast" || name == "local-proxy-arp" || name == "proxy-arp" || name == "redirects" || name == "mtu" || name == "mroute-cache")
         return true;
     return false;
 }
@@ -11651,12 +11816,12 @@ bool Native::Interface::Loopback::Ip::has_leaf_or_child_of_name(const std::strin
 Native::Interface::Loopback::Ip::AccessGroup::AccessGroup()
     :
     in(std::make_shared<Native::Interface::Loopback::Ip::AccessGroup::In>())
-	,out(std::make_shared<Native::Interface::Loopback::Ip::AccessGroup::Out>())
+    , out(std::make_shared<Native::Interface::Loopback::Ip::AccessGroup::Out>())
 {
     in->parent = this;
     out->parent = this;
 
-    yang_name = "access-group"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-group"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::AccessGroup::~AccessGroup()
@@ -11665,6 +11830,7 @@ Native::Interface::Loopback::Ip::AccessGroup::~AccessGroup()
 
 bool Native::Interface::Loopback::Ip::AccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return (in !=  nullptr && in->has_data())
 	|| (out !=  nullptr && out->has_data());
 }
@@ -11750,12 +11916,12 @@ bool Native::Interface::Loopback::Ip::AccessGroup::has_leaf_or_child_of_name(con
 Native::Interface::Loopback::Ip::AccessGroup::In::In()
     :
     common_acl(std::make_shared<Native::Interface::Loopback::Ip::AccessGroup::In::CommonAcl>())
-	,acl(std::make_shared<Native::Interface::Loopback::Ip::AccessGroup::In::Acl>())
+    , acl(std::make_shared<Native::Interface::Loopback::Ip::AccessGroup::In::Acl>())
 {
     common_acl->parent = this;
     acl->parent = this;
 
-    yang_name = "in"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::AccessGroup::In::~In()
@@ -11764,6 +11930,7 @@ Native::Interface::Loopback::Ip::AccessGroup::In::~In()
 
 bool Native::Interface::Loopback::Ip::AccessGroup::In::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_acl !=  nullptr && common_acl->has_data())
 	|| (acl !=  nullptr && acl->has_data());
 }
@@ -11852,7 +12019,7 @@ Native::Interface::Loopback::Ip::AccessGroup::In::CommonAcl::CommonAcl()
     in{YType::empty, "in"}
 {
 
-    yang_name = "common-acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::AccessGroup::In::CommonAcl::~CommonAcl()
@@ -11861,6 +12028,7 @@ Native::Interface::Loopback::Ip::AccessGroup::In::CommonAcl::~CommonAcl()
 
 bool Native::Interface::Loopback::Ip::AccessGroup::In::CommonAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return common.is_set
 	|| in.is_set;
 }
@@ -11943,7 +12111,7 @@ Native::Interface::Loopback::Ip::AccessGroup::In::Acl::Acl()
     in{YType::empty, "in"}
 {
 
-    yang_name = "acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::AccessGroup::In::Acl::~Acl()
@@ -11952,6 +12120,7 @@ Native::Interface::Loopback::Ip::AccessGroup::In::Acl::~Acl()
 
 bool Native::Interface::Loopback::Ip::AccessGroup::In::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| in.is_set;
 }
@@ -12031,12 +12200,12 @@ bool Native::Interface::Loopback::Ip::AccessGroup::In::Acl::has_leaf_or_child_of
 Native::Interface::Loopback::Ip::AccessGroup::Out::Out()
     :
     common_acl(std::make_shared<Native::Interface::Loopback::Ip::AccessGroup::Out::CommonAcl>())
-	,acl(std::make_shared<Native::Interface::Loopback::Ip::AccessGroup::Out::Acl>())
+    , acl(std::make_shared<Native::Interface::Loopback::Ip::AccessGroup::Out::Acl>())
 {
     common_acl->parent = this;
     acl->parent = this;
 
-    yang_name = "out"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::AccessGroup::Out::~Out()
@@ -12045,6 +12214,7 @@ Native::Interface::Loopback::Ip::AccessGroup::Out::~Out()
 
 bool Native::Interface::Loopback::Ip::AccessGroup::Out::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_acl !=  nullptr && common_acl->has_data())
 	|| (acl !=  nullptr && acl->has_data());
 }
@@ -12133,7 +12303,7 @@ Native::Interface::Loopback::Ip::AccessGroup::Out::CommonAcl::CommonAcl()
     out{YType::empty, "out"}
 {
 
-    yang_name = "common-acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::AccessGroup::Out::CommonAcl::~CommonAcl()
@@ -12142,6 +12312,7 @@ Native::Interface::Loopback::Ip::AccessGroup::Out::CommonAcl::~CommonAcl()
 
 bool Native::Interface::Loopback::Ip::AccessGroup::Out::CommonAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return common.is_set
 	|| out.is_set;
 }
@@ -12224,7 +12395,7 @@ Native::Interface::Loopback::Ip::AccessGroup::Out::Acl::Acl()
     out{YType::empty, "out"}
 {
 
-    yang_name = "acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::AccessGroup::Out::Acl::~Acl()
@@ -12233,6 +12404,7 @@ Native::Interface::Loopback::Ip::AccessGroup::Out::Acl::~Acl()
 
 bool Native::Interface::Loopback::Ip::AccessGroup::Out::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| out.is_set;
 }
@@ -12315,7 +12487,7 @@ Native::Interface::Loopback::Ip::Arp::Arp()
 {
     inspection->parent = this;
 
-    yang_name = "arp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Arp::~Arp()
@@ -12324,6 +12496,7 @@ Native::Interface::Loopback::Ip::Arp::~Arp()
 
 bool Native::Interface::Loopback::Ip::Arp::has_data() const
 {
+    if (is_presence_container) return true;
     return (inspection !=  nullptr && inspection->has_data());
 }
 
@@ -12393,12 +12566,12 @@ bool Native::Interface::Loopback::Ip::Arp::has_leaf_or_child_of_name(const std::
 Native::Interface::Loopback::Ip::Arp::Inspection::Inspection()
     :
     trust{YType::empty, "trust"}
-    	,
+        ,
     limit(std::make_shared<Native::Interface::Loopback::Ip::Arp::Inspection::Limit>())
 {
     limit->parent = this;
 
-    yang_name = "inspection"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inspection"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Arp::Inspection::~Inspection()
@@ -12407,6 +12580,7 @@ Native::Interface::Loopback::Ip::Arp::Inspection::~Inspection()
 
 bool Native::Interface::Loopback::Ip::Arp::Inspection::has_data() const
 {
+    if (is_presence_container) return true;
     return trust.is_set
 	|| (limit !=  nullptr && limit->has_data());
 }
@@ -12492,7 +12666,7 @@ Native::Interface::Loopback::Ip::Arp::Inspection::Limit::Limit()
     rate{YType::uint32, "rate"}
 {
 
-    yang_name = "limit"; yang_parent_name = "inspection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit"; yang_parent_name = "inspection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Arp::Inspection::Limit::~Limit()
@@ -12501,6 +12675,7 @@ Native::Interface::Loopback::Ip::Arp::Inspection::Limit::~Limit()
 
 bool Native::Interface::Loopback::Ip::Arp::Inspection::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| rate.is_set;
 }
@@ -12581,12 +12756,12 @@ Native::Interface::Loopback::Ip::Vrf::Vrf()
     :
     receive{YType::str, "receive"},
     sitemap{YType::str, "sitemap"}
-    	,
+        ,
     forwarding(std::make_shared<Native::Interface::Loopback::Ip::Vrf::Forwarding>())
 {
     forwarding->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Vrf::~Vrf()
@@ -12595,6 +12770,7 @@ Native::Interface::Loopback::Ip::Vrf::~Vrf()
 
 bool Native::Interface::Loopback::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return receive.is_set
 	|| sitemap.is_set
 	|| (forwarding !=  nullptr && forwarding->has_data());
@@ -12694,7 +12870,7 @@ Native::Interface::Loopback::Ip::Vrf::Forwarding::Forwarding()
     word{YType::str, "word"}
 {
 
-    yang_name = "forwarding"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forwarding"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Vrf::Forwarding::~Forwarding()
@@ -12703,6 +12879,7 @@ Native::Interface::Loopback::Ip::Vrf::Forwarding::~Forwarding()
 
 bool Native::Interface::Loopback::Ip::Vrf::Forwarding::has_data() const
 {
+    if (is_presence_container) return true;
     return liin_vrf.is_set
 	|| mgmtvrf.is_set
 	|| word.is_set;
@@ -12797,7 +12974,7 @@ Native::Interface::Loopback::Ip::NoAddress::NoAddress()
     address{YType::boolean, "address"}
 {
 
-    yang_name = "no-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::NoAddress::~NoAddress()
@@ -12806,6 +12983,7 @@ Native::Interface::Loopback::Ip::NoAddress::~NoAddress()
 
 bool Native::Interface::Loopback::Ip::NoAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -12872,13 +13050,14 @@ bool Native::Interface::Loopback::Ip::NoAddress::has_leaf_or_child_of_name(const
 Native::Interface::Loopback::Ip::Address::Address()
     :
     negotiated{YType::empty, "negotiated"}
-    	,
+        ,
     primary(std::make_shared<Native::Interface::Loopback::Ip::Address::Primary>())
-	,dhcp(nullptr) // presence node
+    , secondary(this, {"address"})
+    , dhcp(nullptr) // presence node
 {
     primary->parent = this;
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Address::~Address()
@@ -12887,7 +13066,8 @@ Native::Interface::Loopback::Ip::Address::~Address()
 
 bool Native::Interface::Loopback::Ip::Address::has_data() const
 {
-    for (std::size_t index=0; index<secondary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<secondary.len(); index++)
     {
         if(secondary[index]->has_data())
             return true;
@@ -12899,7 +13079,7 @@ bool Native::Interface::Loopback::Ip::Address::has_data() const
 
 bool Native::Interface::Loopback::Ip::Address::has_operation() const
 {
-    for (std::size_t index=0; index<secondary.size(); index++)
+    for (std::size_t index=0; index<secondary.len(); index++)
     {
         if(secondary[index]->has_operation())
             return true;
@@ -12942,7 +13122,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Address::get_child_by_n
     {
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Address::Secondary>();
         c->parent = this;
-        secondary.push_back(c);
+        secondary.append(c);
         return c;
     }
 
@@ -12968,7 +13148,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::
     }
 
     count = 0;
-    for (auto const & c : secondary)
+    for (auto c : secondary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13015,7 +13195,7 @@ Native::Interface::Loopback::Ip::Address::Primary::Primary()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "primary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Address::Primary::~Primary()
@@ -13024,6 +13204,7 @@ Native::Interface::Loopback::Ip::Address::Primary::~Primary()
 
 bool Native::Interface::Loopback::Ip::Address::Primary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set;
 }
@@ -13107,7 +13288,7 @@ Native::Interface::Loopback::Ip::Address::Secondary::Secondary()
     secondary{YType::empty, "secondary"}
 {
 
-    yang_name = "secondary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Address::Secondary::~Secondary()
@@ -13116,6 +13297,7 @@ Native::Interface::Loopback::Ip::Address::Secondary::~Secondary()
 
 bool Native::Interface::Loopback::Ip::Address::Secondary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set
 	|| secondary.is_set;
@@ -13132,7 +13314,8 @@ bool Native::Interface::Loopback::Ip::Address::Secondary::has_operation() const
 std::string Native::Interface::Loopback::Ip::Address::Secondary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "secondary" <<"[address='" <<address <<"']";
+    path_buffer << "secondary";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -13208,12 +13391,12 @@ bool Native::Interface::Loopback::Ip::Address::Secondary::has_leaf_or_child_of_n
 Native::Interface::Loopback::Ip::Address::Dhcp::Dhcp()
     :
     hostname{YType::str, "hostname"}
-    	,
+        ,
     client_id(std::make_shared<Native::Interface::Loopback::Ip::Address::Dhcp::ClientId>())
 {
     client_id->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ip::Address::Dhcp::~Dhcp()
@@ -13222,6 +13405,7 @@ Native::Interface::Loopback::Ip::Address::Dhcp::~Dhcp()
 
 bool Native::Interface::Loopback::Ip::Address::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return hostname.is_set
 	|| (client_id !=  nullptr && client_id->has_data());
 }
@@ -13315,7 +13499,7 @@ Native::Interface::Loopback::Ip::Address::Dhcp::ClientId::ClientId()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "client-id"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-id"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Address::Dhcp::ClientId::~ClientId()
@@ -13324,6 +13508,7 @@ Native::Interface::Loopback::Ip::Address::Dhcp::ClientId::~ClientId()
 
 bool Native::Interface::Loopback::Ip::Address::Dhcp::ClientId::has_data() const
 {
+    if (is_presence_container) return true;
     return fastethernet.is_set
 	|| gigabitethernet.is_set
 	|| fivegigabitethernet.is_set
@@ -13510,7 +13695,7 @@ Native::Interface::Loopback::Ip::HelloInterval::HelloInterval()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::HelloInterval::~HelloInterval()
@@ -13519,6 +13704,7 @@ Native::Interface::Loopback::Ip::HelloInterval::~HelloInterval()
 
 bool Native::Interface::Loopback::Ip::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| seconds.is_set;
 }
@@ -13598,12 +13784,12 @@ bool Native::Interface::Loopback::Ip::HelloInterval::has_leaf_or_child_of_name(c
 Native::Interface::Loopback::Ip::Authentication::Authentication()
     :
     key_chain(std::make_shared<Native::Interface::Loopback::Ip::Authentication::KeyChain>())
-	,mode(std::make_shared<Native::Interface::Loopback::Ip::Authentication::Mode>())
+    , mode(std::make_shared<Native::Interface::Loopback::Ip::Authentication::Mode>())
 {
     key_chain->parent = this;
     mode->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Authentication::~Authentication()
@@ -13612,6 +13798,7 @@ Native::Interface::Loopback::Ip::Authentication::~Authentication()
 
 bool Native::Interface::Loopback::Ip::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (key_chain !=  nullptr && key_chain->has_data())
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -13700,7 +13887,7 @@ Native::Interface::Loopback::Ip::Authentication::KeyChain::KeyChain()
     name{YType::str, "name"}
 {
 
-    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Authentication::KeyChain::~KeyChain()
@@ -13709,6 +13896,7 @@ Native::Interface::Loopback::Ip::Authentication::KeyChain::~KeyChain()
 
 bool Native::Interface::Loopback::Ip::Authentication::KeyChain::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| name.is_set;
 }
@@ -13791,7 +13979,7 @@ Native::Interface::Loopback::Ip::Authentication::Mode::Mode()
     md5{YType::empty, "md5"}
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Authentication::Mode::~Mode()
@@ -13800,6 +13988,7 @@ Native::Interface::Loopback::Ip::Authentication::Mode::~Mode()
 
 bool Native::Interface::Loopback::Ip::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| md5.is_set;
 }
@@ -13882,7 +14071,7 @@ Native::Interface::Loopback::Ip::HoldTime::HoldTime()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::HoldTime::~HoldTime()
@@ -13891,6 +14080,7 @@ Native::Interface::Loopback::Ip::HoldTime::~HoldTime()
 
 bool Native::Interface::Loopback::Ip::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| seconds.is_set;
 }
@@ -13974,7 +14164,7 @@ Native::Interface::Loopback::Ip::HelperAddress::HelperAddress()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "helper-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::HelperAddress::~HelperAddress()
@@ -13983,6 +14173,7 @@ Native::Interface::Loopback::Ip::HelperAddress::~HelperAddress()
 
 bool Native::Interface::Loopback::Ip::HelperAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| global.is_set
 	|| vrf.is_set;
@@ -13999,7 +14190,8 @@ bool Native::Interface::Loopback::Ip::HelperAddress::has_operation() const
 std::string Native::Interface::Loopback::Ip::HelperAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[address='" <<address <<"']";
+    path_buffer << "helper-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -14078,14 +14270,14 @@ Native::Interface::Loopback::Ip::Pim::Pim()
     nbma_mode{YType::empty, "Cisco-IOS-XE-multicast:nbma-mode"},
     dr_priority{YType::uint32, "Cisco-IOS-XE-multicast:dr-priority"},
     spt_threshold{YType::enumeration, "Cisco-IOS-XE-multicast:spt-threshold"}
-    	,
+        ,
     accept_register(std::make_shared<Native::Interface::Loopback::Ip::Pim::AcceptRegister>())
-	,query_interval(std::make_shared<Native::Interface::Loopback::Ip::Pim::QueryInterval>())
+    , query_interval(std::make_shared<Native::Interface::Loopback::Ip::Pim::QueryInterval>())
 {
     accept_register->parent = this;
     query_interval->parent = this;
 
-    yang_name = "pim"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pim"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Pim::~Pim()
@@ -14094,6 +14286,7 @@ Native::Interface::Loopback::Ip::Pim::~Pim()
 
 bool Native::Interface::Loopback::Ip::Pim::has_data() const
 {
+    if (is_presence_container) return true;
     return pim_mode.is_set
 	|| nbma_mode.is_set
 	|| dr_priority.is_set
@@ -14233,7 +14426,7 @@ Native::Interface::Loopback::Ip::Pim::AcceptRegister::AcceptRegister()
     list{YType::str, "list"}
 {
 
-    yang_name = "accept-register"; yang_parent_name = "pim"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accept-register"; yang_parent_name = "pim"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Pim::AcceptRegister::~AcceptRegister()
@@ -14242,6 +14435,7 @@ Native::Interface::Loopback::Ip::Pim::AcceptRegister::~AcceptRegister()
 
 bool Native::Interface::Loopback::Ip::Pim::AcceptRegister::has_data() const
 {
+    if (is_presence_container) return true;
     return list.is_set;
 }
 
@@ -14312,7 +14506,7 @@ Native::Interface::Loopback::Ip::Pim::QueryInterval::QueryInterval()
     msec{YType::empty, "msec"}
 {
 
-    yang_name = "query-interval"; yang_parent_name = "pim"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "query-interval"; yang_parent_name = "pim"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Pim::QueryInterval::~QueryInterval()
@@ -14321,6 +14515,7 @@ Native::Interface::Loopback::Ip::Pim::QueryInterval::~QueryInterval()
 
 bool Native::Interface::Loopback::Ip::Pim::QueryInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds_interval.is_set
 	|| milliseconds_interval.is_set
 	|| msec.is_set;
@@ -14415,7 +14610,7 @@ Native::Interface::Loopback::Ip::Policy::Policy()
     route_map{YType::str, "route-map"}
 {
 
-    yang_name = "policy"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Policy::~Policy()
@@ -14424,6 +14619,7 @@ Native::Interface::Loopback::Ip::Policy::~Policy()
 
 bool Native::Interface::Loopback::Ip::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set;
 }
 
@@ -14493,7 +14689,7 @@ Native::Interface::Loopback::Ip::Rip::Rip()
 {
     authentication->parent = this;
 
-    yang_name = "rip"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Rip::~Rip()
@@ -14502,6 +14698,7 @@ Native::Interface::Loopback::Ip::Rip::~Rip()
 
 bool Native::Interface::Loopback::Ip::Rip::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data());
 }
 
@@ -14571,12 +14768,12 @@ bool Native::Interface::Loopback::Ip::Rip::has_leaf_or_child_of_name(const std::
 Native::Interface::Loopback::Ip::Rip::Authentication::Authentication()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     mode(std::make_shared<Native::Interface::Loopback::Ip::Rip::Authentication::Mode>())
 {
     mode->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Rip::Authentication::~Authentication()
@@ -14585,6 +14782,7 @@ Native::Interface::Loopback::Ip::Rip::Authentication::~Authentication()
 
 bool Native::Interface::Loopback::Ip::Rip::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -14670,7 +14868,7 @@ Native::Interface::Loopback::Ip::Rip::Authentication::Mode::Mode()
     text{YType::empty, "text"}
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Rip::Authentication::Mode::~Mode()
@@ -14679,6 +14877,7 @@ Native::Interface::Loopback::Ip::Rip::Authentication::Mode::~Mode()
 
 bool Native::Interface::Loopback::Ip::Rip::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return md5.is_set
 	|| text.is_set;
 }
@@ -14760,7 +14959,7 @@ Native::Interface::Loopback::Ip::RouteCacheConf::RouteCacheConf()
     route_cache{YType::boolean, "route-cache"}
 {
 
-    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::RouteCacheConf::~RouteCacheConf()
@@ -14769,6 +14968,7 @@ Native::Interface::Loopback::Ip::RouteCacheConf::~RouteCacheConf()
 
 bool Native::Interface::Loopback::Ip::RouteCacheConf::has_data() const
 {
+    if (is_presence_container) return true;
     return route_cache.is_set;
 }
 
@@ -14840,7 +15040,7 @@ Native::Interface::Loopback::Ip::RouteCache::RouteCache()
     same_interface{YType::boolean, "same-interface"}
 {
 
-    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ip::RouteCache::~RouteCache()
@@ -14849,6 +15049,7 @@ Native::Interface::Loopback::Ip::RouteCache::~RouteCache()
 
 bool Native::Interface::Loopback::Ip::RouteCache::has_data() const
 {
+    if (is_presence_container) return true;
     return cef.is_set
 	|| flow.is_set
 	|| policy.is_set
@@ -14956,7 +15157,7 @@ Native::Interface::Loopback::Ip::Router::Router()
     isis(nullptr) // presence node
 {
 
-    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Router::~Router()
@@ -14965,6 +15166,7 @@ Native::Interface::Loopback::Ip::Router::~Router()
 
 bool Native::Interface::Loopback::Ip::Router::has_data() const
 {
+    if (is_presence_container) return true;
     return (isis !=  nullptr && isis->has_data());
 }
 
@@ -15036,7 +15238,7 @@ Native::Interface::Loopback::Ip::Router::Isis::Isis()
     tag{YType::str, "tag"}
 {
 
-    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ip::Router::Isis::~Isis()
@@ -15045,6 +15247,7 @@ Native::Interface::Loopback::Ip::Router::Isis::~Isis()
 
 bool Native::Interface::Loopback::Ip::Router::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -15113,7 +15316,7 @@ Native::Interface::Loopback::Ip::Tcp::Tcp()
     adjust_mss{YType::uint16, "adjust-mss"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Tcp::~Tcp()
@@ -15122,6 +15325,7 @@ Native::Interface::Loopback::Ip::Tcp::~Tcp()
 
 bool Native::Interface::Loopback::Ip::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return adjust_mss.is_set;
 }
 
@@ -15194,7 +15398,7 @@ Native::Interface::Loopback::Ip::VirtualReassembly::VirtualReassembly()
     in{YType::empty, "in"}
 {
 
-    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::VirtualReassembly::~VirtualReassembly()
@@ -15203,6 +15407,7 @@ Native::Interface::Loopback::Ip::VirtualReassembly::~VirtualReassembly()
 
 bool Native::Interface::Loopback::Ip::VirtualReassembly::has_data() const
 {
+    if (is_presence_container) return true;
     return max_reassemblies.is_set
 	|| max_fragments.is_set
 	|| timeout.is_set
@@ -15321,14 +15526,14 @@ bool Native::Interface::Loopback::Ip::VirtualReassembly::has_leaf_or_child_of_na
 Native::Interface::Loopback::Ip::Dhcp::Dhcp()
     :
     client(std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Client>())
-	,relay(std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Relay>())
-	,snooping(std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Snooping>())
+    , relay(std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Relay>())
+    , snooping(std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Snooping>())
 {
     client->parent = this;
     relay->parent = this;
     snooping->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Dhcp::~Dhcp()
@@ -15337,6 +15542,7 @@ Native::Interface::Loopback::Ip::Dhcp::~Dhcp()
 
 bool Native::Interface::Loopback::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return (client !=  nullptr && client->has_data())
 	|| (relay !=  nullptr && relay->has_data())
 	|| (snooping !=  nullptr && snooping->has_data());
@@ -15438,12 +15644,12 @@ bool Native::Interface::Loopback::Ip::Dhcp::has_leaf_or_child_of_name(const std:
 Native::Interface::Loopback::Ip::Dhcp::Client::Client()
     :
     hostname{YType::str, "hostname"}
-    	,
+        ,
     route(std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Client::Route>())
 {
     route->parent = this;
 
-    yang_name = "client"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Dhcp::Client::~Client()
@@ -15452,6 +15658,7 @@ Native::Interface::Loopback::Ip::Dhcp::Client::~Client()
 
 bool Native::Interface::Loopback::Ip::Dhcp::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return hostname.is_set
 	|| (route !=  nullptr && route->has_data());
 }
@@ -15537,7 +15744,7 @@ Native::Interface::Loopback::Ip::Dhcp::Client::Route::Route()
     track{YType::uint16, "track"}
 {
 
-    yang_name = "route"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Dhcp::Client::Route::~Route()
@@ -15546,6 +15753,7 @@ Native::Interface::Loopback::Ip::Dhcp::Client::Route::~Route()
 
 bool Native::Interface::Loopback::Ip::Dhcp::Client::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return distance.is_set
 	|| track.is_set;
 }
@@ -15625,12 +15833,12 @@ bool Native::Interface::Loopback::Ip::Dhcp::Client::Route::has_leaf_or_child_of_
 Native::Interface::Loopback::Ip::Dhcp::Relay::Relay()
     :
     source_interface{YType::str, "source-interface"}
-    	,
+        ,
     information(std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Relay::Information>())
 {
     information->parent = this;
 
-    yang_name = "relay"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "relay"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Dhcp::Relay::~Relay()
@@ -15639,6 +15847,7 @@ Native::Interface::Loopback::Ip::Dhcp::Relay::~Relay()
 
 bool Native::Interface::Loopback::Ip::Dhcp::Relay::has_data() const
 {
+    if (is_presence_container) return true;
     return source_interface.is_set
 	|| (information !=  nullptr && information->has_data());
 }
@@ -15722,14 +15931,14 @@ Native::Interface::Loopback::Ip::Dhcp::Relay::Information::Information()
     :
     policy_action{YType::enumeration, "policy-action"},
     trusted{YType::empty, "trusted"}
-    	,
+        ,
     check_reply(nullptr) // presence node
-	,option(std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Relay::Information::Option>())
-	,option_insert(nullptr) // presence node
+    , option(std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Relay::Information::Option>())
+    , option_insert(nullptr) // presence node
 {
     option->parent = this;
 
-    yang_name = "information"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "information"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Dhcp::Relay::Information::~Information()
@@ -15738,6 +15947,7 @@ Native::Interface::Loopback::Ip::Dhcp::Relay::Information::~Information()
 
 bool Native::Interface::Loopback::Ip::Dhcp::Relay::Information::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_action.is_set
 	|| trusted.is_set
 	|| (check_reply !=  nullptr && check_reply->has_data())
@@ -15867,7 +16077,7 @@ Native::Interface::Loopback::Ip::Dhcp::Relay::Information::CheckReply::CheckRepl
     none{YType::empty, "none"}
 {
 
-    yang_name = "check-reply"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "check-reply"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ip::Dhcp::Relay::Information::CheckReply::~CheckReply()
@@ -15876,6 +16086,7 @@ Native::Interface::Loopback::Ip::Dhcp::Relay::Information::CheckReply::~CheckRep
 
 bool Native::Interface::Loopback::Ip::Dhcp::Relay::Information::CheckReply::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set;
 }
 
@@ -15944,7 +16155,7 @@ Native::Interface::Loopback::Ip::Dhcp::Relay::Information::Option::Option()
     subscriber_id{YType::str, "subscriber-id"}
 {
 
-    yang_name = "option"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Dhcp::Relay::Information::Option::~Option()
@@ -15953,6 +16164,7 @@ Native::Interface::Loopback::Ip::Dhcp::Relay::Information::Option::~Option()
 
 bool Native::Interface::Loopback::Ip::Dhcp::Relay::Information::Option::has_data() const
 {
+    if (is_presence_container) return true;
     return subscriber_id.is_set;
 }
 
@@ -16021,7 +16233,7 @@ Native::Interface::Loopback::Ip::Dhcp::Relay::Information::OptionInsert::OptionI
     none{YType::empty, "none"}
 {
 
-    yang_name = "option-insert"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option-insert"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Loopback::Ip::Dhcp::Relay::Information::OptionInsert::~OptionInsert()
@@ -16030,6 +16242,7 @@ Native::Interface::Loopback::Ip::Dhcp::Relay::Information::OptionInsert::~Option
 
 bool Native::Interface::Loopback::Ip::Dhcp::Relay::Information::OptionInsert::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set;
 }
 
@@ -16096,12 +16309,13 @@ bool Native::Interface::Loopback::Ip::Dhcp::Relay::Information::OptionInsert::ha
 Native::Interface::Loopback::Ip::Dhcp::Snooping::Snooping()
     :
     trust{YType::empty, "trust"}
-    	,
+        ,
     limit(std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Snooping::Limit>())
+    , vlan(this, {"id"})
 {
     limit->parent = this;
 
-    yang_name = "snooping"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snooping"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Dhcp::Snooping::~Snooping()
@@ -16110,7 +16324,8 @@ Native::Interface::Loopback::Ip::Dhcp::Snooping::~Snooping()
 
 bool Native::Interface::Loopback::Ip::Dhcp::Snooping::has_data() const
 {
-    for (std::size_t index=0; index<vlan.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan.len(); index++)
     {
         if(vlan[index]->has_data())
             return true;
@@ -16121,7 +16336,7 @@ bool Native::Interface::Loopback::Ip::Dhcp::Snooping::has_data() const
 
 bool Native::Interface::Loopback::Ip::Dhcp::Snooping::has_operation() const
 {
-    for (std::size_t index=0; index<vlan.size(); index++)
+    for (std::size_t index=0; index<vlan.len(); index++)
     {
         if(vlan[index]->has_operation())
             return true;
@@ -16163,7 +16378,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Snooping::get_chi
     {
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan>();
         c->parent = this;
-        vlan.push_back(c);
+        vlan.append(c);
         return c;
     }
 
@@ -16180,7 +16395,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::
     }
 
     count = 0;
-    for (auto const & c : vlan)
+    for (auto c : vlan.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16221,7 +16436,7 @@ Native::Interface::Loopback::Ip::Dhcp::Snooping::Limit::Limit()
     rate{YType::uint16, "rate"}
 {
 
-    yang_name = "limit"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Dhcp::Snooping::Limit::~Limit()
@@ -16230,6 +16445,7 @@ Native::Interface::Loopback::Ip::Dhcp::Snooping::Limit::~Limit()
 
 bool Native::Interface::Loopback::Ip::Dhcp::Snooping::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return rate.is_set;
 }
 
@@ -16296,12 +16512,12 @@ bool Native::Interface::Loopback::Ip::Dhcp::Snooping::Limit::has_leaf_or_child_o
 Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Vlan()
     :
     id{YType::uint16, "id"}
-    	,
+        ,
     information(std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information>())
 {
     information->parent = this;
 
-    yang_name = "vlan"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::~Vlan()
@@ -16310,6 +16526,7 @@ Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::~Vlan()
 
 bool Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| (information !=  nullptr && information->has_data());
 }
@@ -16324,7 +16541,8 @@ bool Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::has_operation() cons
 std::string Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan" <<"[id='" <<id <<"']";
+    path_buffer << "vlan";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -16395,7 +16613,7 @@ Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information::Information(
 {
     option->parent = this;
 
-    yang_name = "information"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "information"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information::~Information()
@@ -16404,6 +16622,7 @@ Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information::~Information
 
 bool Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information::has_data() const
 {
+    if (is_presence_container) return true;
     return (option !=  nullptr && option->has_data());
 }
 
@@ -16476,7 +16695,7 @@ Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information::Option::Opti
 {
     format_type->parent = this;
 
-    yang_name = "option"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information::Option::~Option()
@@ -16485,6 +16704,7 @@ Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information::Option::~Opt
 
 bool Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information::Option::has_data() const
 {
+    if (is_presence_container) return true;
     return (format_type !=  nullptr && format_type->has_data());
 }
 

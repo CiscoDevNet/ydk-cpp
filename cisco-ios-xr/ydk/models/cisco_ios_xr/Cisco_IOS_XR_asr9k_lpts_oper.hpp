@@ -57,7 +57,7 @@ class PlatformLptspIfibStatic::NodeStatics : public ydk::Entity
 
         class NodeStatic; //type: PlatformLptspIfibStatic::NodeStatics::NodeStatic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lpts_oper::PlatformLptspIfibStatic::NodeStatics::NodeStatic> > node_static;
+        ydk::YList node_static;
         
 }; // PlatformLptspIfibStatic::NodeStatics
 
@@ -107,7 +107,7 @@ class PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police : public ydk::Ent
 
         class StaticInfo; //type: PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::StaticInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lpts_oper::PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::StaticInfo> > static_info;
+        ydk::YList static_info;
         
 }; // PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police
 
@@ -210,7 +210,7 @@ class PlatformLptspIfib::Nodes : public ydk::Entity
 
         class Node; //type: PlatformLptspIfib::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lpts_oper::PlatformLptspIfib::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PlatformLptspIfib::Nodes
 
@@ -260,7 +260,7 @@ class PlatformLptspIfib::Nodes::Node::Police : public ydk::Entity
 
         class PoliceInfo; //type: PlatformLptspIfib::Nodes::Node::Police::PoliceInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lpts_oper::PlatformLptspIfib::Nodes::Node::Police::PoliceInfo> > police_info;
+        ydk::YList police_info;
         
 }; // PlatformLptspIfib::Nodes::Node::Police
 
@@ -367,7 +367,7 @@ class PlatformLptspIfibNpStats::NodeNpStats : public ydk::Entity
 
         class NodeNpStat; //type: PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lpts_oper::PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat> > node_np_stat;
+        ydk::YList node_np_stat;
         
 }; // PlatformLptspIfibNpStats::NodeNpStats
 
@@ -415,7 +415,7 @@ class PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps : public ydk::Entit
 
         class Np; //type: PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lpts_oper::PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np> > np;
+        ydk::YList np;
         
 }; // PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps
 
@@ -462,7 +462,7 @@ class PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice : pub
 
         class PoliceInfo; //type: PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::PoliceInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lpts_oper::PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::PoliceInfo> > police_info;
+        ydk::YList police_info;
         
 }; // PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice
 

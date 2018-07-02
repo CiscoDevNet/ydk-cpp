@@ -17,7 +17,7 @@ Fiblb::Fiblb()
     payload{YType::boolean, "payload"}
 {
 
-    yang_name = "fiblb"; yang_parent_name = "Cisco-IOS-XR-fib-cef-lba-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fiblb"; yang_parent_name = "Cisco-IOS-XR-fib-cef-lba-cfg"; is_top_level_class = true; has_list_ancestor = false; is_presence_container = true;
 }
 
 Fiblb::~Fiblb()
@@ -26,6 +26,7 @@ Fiblb::~Fiblb()
 
 bool Fiblb::has_data() const
 {
+    if (is_presence_container) return true;
     return fields.is_set
 	|| payload.is_set;
 }

@@ -10,11 +10,11 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tunnel_l2tun_oper {
 
-class L2Tp : public ydk::Entity
+class L2tp : public ydk::Entity
 {
     public:
-        L2Tp();
-        ~L2Tp();
+        L2tp();
+        ~L2tp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -31,26 +31,26 @@ class L2Tp : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Counters; //type: L2Tp::Counters
-        class TunnelConfigurations; //type: L2Tp::TunnelConfigurations
-        class CounterHistFail; //type: L2Tp::CounterHistFail
-        class Classes; //type: L2Tp::Classes
-        class Tunnels; //type: L2Tp::Tunnels
-        class Sessions; //type: L2Tp::Sessions
-        class Session; //type: L2Tp::Session
+        class Counters; //type: L2tp::Counters
+        class TunnelConfigurations; //type: L2tp::TunnelConfigurations
+        class CounterHistFail; //type: L2tp::CounterHistFail
+        class Classes; //type: L2tp::Classes
+        class Tunnels; //type: L2tp::Tunnels
+        class Sessions; //type: L2tp::Sessions
+        class Session; //type: L2tp::Session
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters> counters;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::TunnelConfigurations> tunnel_configurations;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::CounterHistFail> counter_hist_fail;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Classes> classes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Tunnels> tunnels;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Sessions> sessions;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Session> session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters> counters;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::TunnelConfigurations> tunnel_configurations;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::CounterHistFail> counter_hist_fail;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Classes> classes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Tunnels> tunnels;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Sessions> sessions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Session> session;
         
-}; // L2Tp
+}; // L2tp
 
 
-class L2Tp::Counters : public ydk::Entity
+class L2tp::Counters : public ydk::Entity
 {
     public:
         Counters();
@@ -67,14 +67,14 @@ class L2Tp::Counters : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Control; //type: L2Tp::Counters::Control
+        class Control; //type: L2tp::Counters::Control
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control> control;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control> control;
         
-}; // L2Tp::Counters
+}; // L2tp::Counters
 
 
-class L2Tp::Counters::Control : public ydk::Entity
+class L2tp::Counters::Control : public ydk::Entity
 {
     public:
         Control();
@@ -91,16 +91,16 @@ class L2Tp::Counters::Control : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class TunnelXr; //type: L2Tp::Counters::Control::TunnelXr
-        class Tunnels; //type: L2Tp::Counters::Control::Tunnels
+        class TunnelXr; //type: L2tp::Counters::Control::TunnelXr
+        class Tunnels; //type: L2tp::Counters::Control::Tunnels
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr> tunnel_xr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::Tunnels> tunnels;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr> tunnel_xr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::Tunnels> tunnels;
         
-}; // L2Tp::Counters::Control
+}; // L2tp::Counters::Control
 
 
-class L2Tp::Counters::Control::TunnelXr : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr : public ydk::Entity
 {
     public:
         TunnelXr();
@@ -117,16 +117,16 @@ class L2Tp::Counters::Control::TunnelXr : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Authentication; //type: L2Tp::Counters::Control::TunnelXr::Authentication
-        class Global; //type: L2Tp::Counters::Control::TunnelXr::Global
+        class Authentication; //type: L2tp::Counters::Control::TunnelXr::Authentication
+        class Global; //type: L2tp::Counters::Control::TunnelXr::Global
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Global> global;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Global> global;
         
-}; // L2Tp::Counters::Control::TunnelXr
+}; // L2tp::Counters::Control::TunnelXr
 
 
-class L2Tp::Counters::Control::TunnelXr::Authentication : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -143,30 +143,30 @@ class L2Tp::Counters::Control::TunnelXr::Authentication : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class NonceAvp; //type: L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp
-        class CommonDigest; //type: L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest
-        class PrimaryDigest; //type: L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest
-        class SecondaryDigest; //type: L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest
-        class IntegrityCheck; //type: L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck
-        class LocalSecret; //type: L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret
-        class ChallengeAvp; //type: L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp
-        class ChallengeReponse; //type: L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse
-        class OverallStatistics; //type: L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics
+        class NonceAvp; //type: L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp
+        class CommonDigest; //type: L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest
+        class PrimaryDigest; //type: L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest
+        class SecondaryDigest; //type: L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest
+        class IntegrityCheck; //type: L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck
+        class LocalSecret; //type: L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret
+        class ChallengeAvp; //type: L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp
+        class ChallengeReponse; //type: L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse
+        class OverallStatistics; //type: L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp> nonce_avp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest> common_digest;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest> primary_digest;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest> secondary_digest;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck> integrity_check;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret> local_secret;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp> challenge_avp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse> challenge_reponse;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics> overall_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp> nonce_avp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest> common_digest;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest> primary_digest;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest> secondary_digest;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck> integrity_check;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret> local_secret;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp> challenge_avp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse> challenge_reponse;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics> overall_statistics;
         
-}; // L2Tp::Counters::Control::TunnelXr::Authentication
+}; // L2tp::Counters::Control::TunnelXr::Authentication
 
 
-class L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp : public ydk::Entity
 {
     public:
         NonceAvp();
@@ -195,10 +195,10 @@ class L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp : public ydk::
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp
+}; // L2tp::Counters::Control::TunnelXr::Authentication::NonceAvp
 
 
-class L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest : public ydk::Entity
 {
     public:
         CommonDigest();
@@ -227,10 +227,10 @@ class L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest : public y
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest
+}; // L2tp::Counters::Control::TunnelXr::Authentication::CommonDigest
 
 
-class L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest : public ydk::Entity
 {
     public:
         PrimaryDigest();
@@ -259,10 +259,10 @@ class L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest : public 
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest
+}; // L2tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest
 
 
-class L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest : public ydk::Entity
 {
     public:
         SecondaryDigest();
@@ -291,10 +291,10 @@ class L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest : publi
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest
+}; // L2tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest
 
 
-class L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck : public ydk::Entity
 {
     public:
         IntegrityCheck();
@@ -323,10 +323,10 @@ class L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck : public
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck
+}; // L2tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck
 
 
-class L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret : public ydk::Entity
 {
     public:
         LocalSecret();
@@ -355,10 +355,10 @@ class L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret : public yd
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret
+}; // L2tp::Counters::Control::TunnelXr::Authentication::LocalSecret
 
 
-class L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp : public ydk::Entity
 {
     public:
         ChallengeAvp();
@@ -387,10 +387,10 @@ class L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp : public y
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp
+}; // L2tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp
 
 
-class L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse : public ydk::Entity
 {
     public:
         ChallengeReponse();
@@ -419,10 +419,10 @@ class L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse : publ
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse
+}; // L2tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse
 
 
-class L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics : public ydk::Entity
 {
     public:
         OverallStatistics();
@@ -451,10 +451,10 @@ class L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics : pub
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics
+}; // L2tp::Counters::Control::TunnelXr::Authentication::OverallStatistics
 
 
-class L2Tp::Counters::Control::TunnelXr::Global : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Global : public ydk::Entity
 {
     public:
         Global();
@@ -475,20 +475,20 @@ class L2Tp::Counters::Control::TunnelXr::Global : public ydk::Entity
         ydk::YLeaf total_retransmit; //type: uint32
         ydk::YLeaf total_received; //type: uint32
         ydk::YLeaf total_drop; //type: uint32
-        class Transmit; //type: L2Tp::Counters::Control::TunnelXr::Global::Transmit
-        class Retransmit; //type: L2Tp::Counters::Control::TunnelXr::Global::Retransmit
-        class Received; //type: L2Tp::Counters::Control::TunnelXr::Global::Received
-        class Drop; //type: L2Tp::Counters::Control::TunnelXr::Global::Drop
+        class Transmit; //type: L2tp::Counters::Control::TunnelXr::Global::Transmit
+        class Retransmit; //type: L2tp::Counters::Control::TunnelXr::Global::Retransmit
+        class Received; //type: L2tp::Counters::Control::TunnelXr::Global::Received
+        class Drop; //type: L2tp::Counters::Control::TunnelXr::Global::Drop
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Global::Transmit> transmit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Global::Retransmit> retransmit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Global::Received> received;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::TunnelXr::Global::Drop> drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Global::Transmit> transmit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Global::Retransmit> retransmit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Global::Received> received;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::TunnelXr::Global::Drop> drop;
         
-}; // L2Tp::Counters::Control::TunnelXr::Global
+}; // L2tp::Counters::Control::TunnelXr::Global
 
 
-class L2Tp::Counters::Control::TunnelXr::Global::Transmit : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Global::Transmit : public ydk::Entity
 {
     public:
         Transmit();
@@ -525,10 +525,10 @@ class L2Tp::Counters::Control::TunnelXr::Global::Transmit : public ydk::Entity
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Global::Transmit
+}; // L2tp::Counters::Control::TunnelXr::Global::Transmit
 
 
-class L2Tp::Counters::Control::TunnelXr::Global::Retransmit : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Global::Retransmit : public ydk::Entity
 {
     public:
         Retransmit();
@@ -565,10 +565,10 @@ class L2Tp::Counters::Control::TunnelXr::Global::Retransmit : public ydk::Entity
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Global::Retransmit
+}; // L2tp::Counters::Control::TunnelXr::Global::Retransmit
 
 
-class L2Tp::Counters::Control::TunnelXr::Global::Received : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Global::Received : public ydk::Entity
 {
     public:
         Received();
@@ -605,10 +605,10 @@ class L2Tp::Counters::Control::TunnelXr::Global::Received : public ydk::Entity
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Global::Received
+}; // L2tp::Counters::Control::TunnelXr::Global::Received
 
 
-class L2Tp::Counters::Control::TunnelXr::Global::Drop : public ydk::Entity
+class L2tp::Counters::Control::TunnelXr::Global::Drop : public ydk::Entity
 {
     public:
         Drop();
@@ -645,10 +645,10 @@ class L2Tp::Counters::Control::TunnelXr::Global::Drop : public ydk::Entity
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tp::Counters::Control::TunnelXr::Global::Drop
+}; // L2tp::Counters::Control::TunnelXr::Global::Drop
 
 
-class L2Tp::Counters::Control::Tunnels : public ydk::Entity
+class L2tp::Counters::Control::Tunnels : public ydk::Entity
 {
     public:
         Tunnels();
@@ -665,14 +665,14 @@ class L2Tp::Counters::Control::Tunnels : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tunnel; //type: L2Tp::Counters::Control::Tunnels::Tunnel
+        class Tunnel; //type: L2tp::Counters::Control::Tunnels::Tunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::Tunnels::Tunnel> > tunnel;
+        ydk::YList tunnel;
         
-}; // L2Tp::Counters::Control::Tunnels
+}; // L2tp::Counters::Control::Tunnels
 
 
-class L2Tp::Counters::Control::Tunnels::Tunnel : public ydk::Entity
+class L2tp::Counters::Control::Tunnels::Tunnel : public ydk::Entity
 {
     public:
         Tunnel();
@@ -689,17 +689,17 @@ class L2Tp::Counters::Control::Tunnels::Tunnel : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf tunnel_id; //type: int32
-        class Brief; //type: L2Tp::Counters::Control::Tunnels::Tunnel::Brief
-        class Global; //type: L2Tp::Counters::Control::Tunnels::Tunnel::Global
+        ydk::YLeaf tunnel_id; //type: uint32
+        class Brief; //type: L2tp::Counters::Control::Tunnels::Tunnel::Brief
+        class Global; //type: L2tp::Counters::Control::Tunnels::Tunnel::Global
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::Tunnels::Tunnel::Brief> brief;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::Tunnels::Tunnel::Global> global;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::Tunnels::Tunnel::Brief> brief;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::Tunnels::Tunnel::Global> global;
         
-}; // L2Tp::Counters::Control::Tunnels::Tunnel
+}; // L2tp::Counters::Control::Tunnels::Tunnel
 
 
-class L2Tp::Counters::Control::Tunnels::Tunnel::Brief : public ydk::Entity
+class L2tp::Counters::Control::Tunnels::Tunnel::Brief : public ydk::Entity
 {
     public:
         Brief();
@@ -719,10 +719,10 @@ class L2Tp::Counters::Control::Tunnels::Tunnel::Brief : public ydk::Entity
         ydk::YLeaf local_address; //type: string
         ydk::YLeaf remote_address; //type: string
 
-}; // L2Tp::Counters::Control::Tunnels::Tunnel::Brief
+}; // L2tp::Counters::Control::Tunnels::Tunnel::Brief
 
 
-class L2Tp::Counters::Control::Tunnels::Tunnel::Global : public ydk::Entity
+class L2tp::Counters::Control::Tunnels::Tunnel::Global : public ydk::Entity
 {
     public:
         Global();
@@ -742,20 +742,20 @@ class L2Tp::Counters::Control::Tunnels::Tunnel::Global : public ydk::Entity
         ydk::YLeaf total_retransmit; //type: uint32
         ydk::YLeaf total_received; //type: uint32
         ydk::YLeaf total_drop; //type: uint32
-        class Transmit; //type: L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit
-        class Retransmit; //type: L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit
-        class Received; //type: L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received
-        class Drop; //type: L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop
+        class Transmit; //type: L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit
+        class Retransmit; //type: L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit
+        class Received; //type: L2tp::Counters::Control::Tunnels::Tunnel::Global::Received
+        class Drop; //type: L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit> transmit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit> retransmit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received> received;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop> drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit> transmit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit> retransmit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::Tunnels::Tunnel::Global::Received> received;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop> drop;
         
-}; // L2Tp::Counters::Control::Tunnels::Tunnel::Global
+}; // L2tp::Counters::Control::Tunnels::Tunnel::Global
 
 
-class L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit : public ydk::Entity
+class L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit : public ydk::Entity
 {
     public:
         Transmit();
@@ -791,10 +791,10 @@ class L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit : public ydk::E
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit
+}; // L2tp::Counters::Control::Tunnels::Tunnel::Global::Transmit
 
 
-class L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit : public ydk::Entity
+class L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit : public ydk::Entity
 {
     public:
         Retransmit();
@@ -830,10 +830,10 @@ class L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit : public ydk:
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit
+}; // L2tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit
 
 
-class L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received : public ydk::Entity
+class L2tp::Counters::Control::Tunnels::Tunnel::Global::Received : public ydk::Entity
 {
     public:
         Received();
@@ -869,10 +869,10 @@ class L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received : public ydk::E
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received
+}; // L2tp::Counters::Control::Tunnels::Tunnel::Global::Received
 
 
-class L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop : public ydk::Entity
+class L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop : public ydk::Entity
 {
     public:
         Drop();
@@ -908,10 +908,10 @@ class L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop : public ydk::Entit
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop
+}; // L2tp::Counters::Control::Tunnels::Tunnel::Global::Drop
 
 
-class L2Tp::TunnelConfigurations : public ydk::Entity
+class L2tp::TunnelConfigurations : public ydk::Entity
 {
     public:
         TunnelConfigurations();
@@ -928,14 +928,14 @@ class L2Tp::TunnelConfigurations : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class TunnelConfiguration; //type: L2Tp::TunnelConfigurations::TunnelConfiguration
+        class TunnelConfiguration; //type: L2tp::TunnelConfigurations::TunnelConfiguration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::TunnelConfigurations::TunnelConfiguration> > tunnel_configuration;
+        ydk::YList tunnel_configuration;
         
-}; // L2Tp::TunnelConfigurations
+}; // L2tp::TunnelConfigurations
 
 
-class L2Tp::TunnelConfigurations::TunnelConfiguration : public ydk::Entity
+class L2tp::TunnelConfigurations::TunnelConfiguration : public ydk::Entity
 {
     public:
         TunnelConfiguration();
@@ -952,20 +952,20 @@ class L2Tp::TunnelConfigurations::TunnelConfiguration : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf local_tunnel_id; //type: int32
+        ydk::YLeaf local_tunnel_id; //type: uint32
         ydk::YLeaf remote_tunnel_id; //type: uint32
-        class L2TpClass; //type: L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass
+        class L2tpClass; //type: L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass> l2tp_class;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass> l2tp_class;
         
-}; // L2Tp::TunnelConfigurations::TunnelConfiguration
+}; // L2tp::TunnelConfigurations::TunnelConfiguration
 
 
-class L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass : public ydk::Entity
+class L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass : public ydk::Entity
 {
     public:
-        L2TpClass();
-        ~L2TpClass();
+        L2tpClass();
+        ~L2tpClass();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1002,10 +1002,10 @@ class L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass : public ydk::E
         ydk::YLeaf is_congestion_control_enabled; //type: boolean
         ydk::YLeaf is_peer_address_checked; //type: boolean
 
-}; // L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass
+}; // L2tp::TunnelConfigurations::TunnelConfiguration::L2tpClass
 
 
-class L2Tp::CounterHistFail : public ydk::Entity
+class L2tp::CounterHistFail : public ydk::Entity
 {
     public:
         CounterHistFail();
@@ -1027,10 +1027,10 @@ class L2Tp::CounterHistFail : public ydk::Entity
         ydk::YLeaf rx_counters; //type: string
         ydk::YLeafList pkt_timeout; //type: list of  uint32
 
-}; // L2Tp::CounterHistFail
+}; // L2tp::CounterHistFail
 
 
-class L2Tp::Classes : public ydk::Entity
+class L2tp::Classes : public ydk::Entity
 {
     public:
         Classes();
@@ -1047,14 +1047,14 @@ class L2Tp::Classes : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Class; //type: L2Tp::Classes::Class
+        class Class; //type: L2tp::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Classes::Class> > class_;
+        ydk::YList class_;
         
-}; // L2Tp::Classes
+}; // L2tp::Classes
 
 
-class L2Tp::Classes::Class : public ydk::Entity
+class L2tp::Classes::Class : public ydk::Entity
 {
     public:
         Class();
@@ -1097,10 +1097,10 @@ class L2Tp::Classes::Class : public ydk::Entity
         ydk::YLeaf is_congestion_control_enabled; //type: boolean
         ydk::YLeaf is_peer_address_checked; //type: boolean
 
-}; // L2Tp::Classes::Class
+}; // L2tp::Classes::Class
 
 
-class L2Tp::Tunnels : public ydk::Entity
+class L2tp::Tunnels : public ydk::Entity
 {
     public:
         Tunnels();
@@ -1117,14 +1117,14 @@ class L2Tp::Tunnels : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tunnel; //type: L2Tp::Tunnels::Tunnel
+        class Tunnel; //type: L2tp::Tunnels::Tunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Tunnels::Tunnel> > tunnel;
+        ydk::YList tunnel;
         
-}; // L2Tp::Tunnels
+}; // L2tp::Tunnels
 
 
-class L2Tp::Tunnels::Tunnel : public ydk::Entity
+class L2tp::Tunnels::Tunnel : public ydk::Entity
 {
     public:
         Tunnel();
@@ -1141,7 +1141,7 @@ class L2Tp::Tunnels::Tunnel : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf local_tunnel_id; //type: int32
+        ydk::YLeaf local_tunnel_id; //type: uint32
         ydk::YLeaf local_address; //type: string
         ydk::YLeaf remote_address; //type: string
         ydk::YLeaf local_port; //type: uint16
@@ -1175,10 +1175,10 @@ class L2Tp::Tunnels::Tunnel : public ydk::Entity
         ydk::YLeaf is_congestion_control_enabled; //type: boolean
         ydk::YLeafList retransmit_time; //type: list of  uint16
 
-}; // L2Tp::Tunnels::Tunnel
+}; // L2tp::Tunnels::Tunnel
 
 
-class L2Tp::Sessions : public ydk::Entity
+class L2tp::Sessions : public ydk::Entity
 {
     public:
         Sessions();
@@ -1195,14 +1195,14 @@ class L2Tp::Sessions : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Session; //type: L2Tp::Sessions::Session
+        class Session; //type: L2tp::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Sessions::Session> > session;
+        ydk::YList session;
         
-}; // L2Tp::Sessions
+}; // L2tp::Sessions
 
 
-class L2Tp::Sessions::Session : public ydk::Entity
+class L2tp::Sessions::Session : public ydk::Entity
 {
     public:
         Session();
@@ -1219,8 +1219,8 @@ class L2Tp::Sessions::Session : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf local_tunnel_id; //type: int32
-        ydk::YLeaf local_session_id; //type: int32
+        ydk::YLeaf local_tunnel_id; //type: uint32
+        ydk::YLeaf local_session_id; //type: uint32
         ydk::YLeaf local_ip_address; //type: string
         ydk::YLeaf remote_ip_address; //type: string
         ydk::YLeaf l2tp_sh_sess_udp_lport; //type: uint16
@@ -1242,14 +1242,14 @@ class L2Tp::Sessions::Session : public ydk::Entity
         ydk::YLeaf is_conditional_debug_enabled; //type: boolean
         ydk::YLeaf unique_id; //type: uint32
         ydk::YLeaf interface_name; //type: string
-        class SessionApplicationData; //type: L2Tp::Sessions::Session::SessionApplicationData
+        class SessionApplicationData; //type: L2tp::Sessions::Session::SessionApplicationData
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Sessions::Session::SessionApplicationData> session_application_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Sessions::Session::SessionApplicationData> session_application_data;
         
-}; // L2Tp::Sessions::Session
+}; // L2tp::Sessions::Session
 
 
-class L2Tp::Sessions::Session::SessionApplicationData : public ydk::Entity
+class L2tp::Sessions::Session::SessionApplicationData : public ydk::Entity
 {
     public:
         SessionApplicationData();
@@ -1266,16 +1266,16 @@ class L2Tp::Sessions::Session::SessionApplicationData : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf l2tp_sh_sess_app_type; //type: uint32
-        class Xconnect; //type: L2Tp::Sessions::Session::SessionApplicationData::Xconnect
-        class Vpdn; //type: L2Tp::Sessions::Session::SessionApplicationData::Vpdn
+        class Xconnect; //type: L2tp::Sessions::Session::SessionApplicationData::Xconnect
+        class Vpdn; //type: L2tp::Sessions::Session::SessionApplicationData::Vpdn
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Sessions::Session::SessionApplicationData::Xconnect> xconnect;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Sessions::Session::SessionApplicationData::Vpdn> vpdn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Sessions::Session::SessionApplicationData::Xconnect> xconnect;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Sessions::Session::SessionApplicationData::Vpdn> vpdn;
         
-}; // L2Tp::Sessions::Session::SessionApplicationData
+}; // L2tp::Sessions::Session::SessionApplicationData
 
 
-class L2Tp::Sessions::Session::SessionApplicationData::Xconnect : public ydk::Entity
+class L2tp::Sessions::Session::SessionApplicationData::Xconnect : public ydk::Entity
 {
     public:
         Xconnect();
@@ -1298,10 +1298,10 @@ class L2Tp::Sessions::Session::SessionApplicationData::Xconnect : public ydk::En
         ydk::YLeaf is_remote_circuit_state_up; //type: boolean
         ydk::YLeaf ipv6_protocol_tunneling; //type: boolean
 
-}; // L2Tp::Sessions::Session::SessionApplicationData::Xconnect
+}; // L2tp::Sessions::Session::SessionApplicationData::Xconnect
 
 
-class L2Tp::Sessions::Session::SessionApplicationData::Vpdn : public ydk::Entity
+class L2tp::Sessions::Session::SessionApplicationData::Vpdn : public ydk::Entity
 {
     public:
         Vpdn();
@@ -1320,10 +1320,10 @@ class L2Tp::Sessions::Session::SessionApplicationData::Vpdn : public ydk::Entity
         ydk::YLeaf username; //type: string
         ydk::YLeaf interface_name; //type: string
 
-}; // L2Tp::Sessions::Session::SessionApplicationData::Vpdn
+}; // L2tp::Sessions::Session::SessionApplicationData::Vpdn
 
 
-class L2Tp::Session : public ydk::Entity
+class L2tp::Session : public ydk::Entity
 {
     public:
         Session();
@@ -1340,14 +1340,14 @@ class L2Tp::Session : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Unavailable; //type: L2Tp::Session::Unavailable
+        class Unavailable; //type: L2tp::Session::Unavailable
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Session::Unavailable> unavailable;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tp::Session::Unavailable> unavailable;
         
-}; // L2Tp::Session
+}; // L2tp::Session
 
 
-class L2Tp::Session::Unavailable : public ydk::Entity
+class L2tp::Session::Unavailable : public ydk::Entity
 {
     public:
         Unavailable();
@@ -1366,13 +1366,13 @@ class L2Tp::Session::Unavailable : public ydk::Entity
 
         ydk::YLeaf sessions_on_hold; //type: uint32
 
-}; // L2Tp::Session::Unavailable
+}; // L2tp::Session::Unavailable
 
-class L2Tpv2 : public ydk::Entity
+class L2tpv2 : public ydk::Entity
 {
     public:
-        L2Tpv2();
-        ~L2Tpv2();
+        L2tpv2();
+        ~L2tpv2();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1389,30 +1389,30 @@ class L2Tpv2 : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Counters; //type: L2Tpv2::Counters
-        class Statistics; //type: L2Tpv2::Statistics
-        class Tunnel; //type: L2Tpv2::Tunnel
-        class TunnelConfigurations; //type: L2Tpv2::TunnelConfigurations
-        class CounterHistFail; //type: L2Tpv2::CounterHistFail
-        class Classes; //type: L2Tpv2::Classes
-        class Tunnels; //type: L2Tpv2::Tunnels
-        class Sessions; //type: L2Tpv2::Sessions
-        class Session; //type: L2Tpv2::Session
+        class Counters; //type: L2tpv2::Counters
+        class Statistics; //type: L2tpv2::Statistics
+        class Tunnel; //type: L2tpv2::Tunnel
+        class TunnelConfigurations; //type: L2tpv2::TunnelConfigurations
+        class CounterHistFail; //type: L2tpv2::CounterHistFail
+        class Classes; //type: L2tpv2::Classes
+        class Tunnels; //type: L2tpv2::Tunnels
+        class Sessions; //type: L2tpv2::Sessions
+        class Session; //type: L2tpv2::Session
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters> counters;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Statistics> statistics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Tunnel> tunnel;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::TunnelConfigurations> tunnel_configurations;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::CounterHistFail> counter_hist_fail;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Classes> classes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Tunnels> tunnels;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Sessions> sessions;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Session> session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters> counters;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Tunnel> tunnel;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::TunnelConfigurations> tunnel_configurations;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::CounterHistFail> counter_hist_fail;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Classes> classes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Tunnels> tunnels;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Sessions> sessions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Session> session;
         
-}; // L2Tpv2
+}; // L2tpv2
 
 
-class L2Tpv2::Counters : public ydk::Entity
+class L2tpv2::Counters : public ydk::Entity
 {
     public:
         Counters();
@@ -1429,16 +1429,16 @@ class L2Tpv2::Counters : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Forwarding; //type: L2Tpv2::Counters::Forwarding
-        class Control; //type: L2Tpv2::Counters::Control
+        class Forwarding; //type: L2tpv2::Counters::Forwarding
+        class Control; //type: L2tpv2::Counters::Control
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Forwarding> forwarding;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control> control;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Forwarding> forwarding;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control> control;
         
-}; // L2Tpv2::Counters
+}; // L2tpv2::Counters
 
 
-class L2Tpv2::Counters::Forwarding : public ydk::Entity
+class L2tpv2::Counters::Forwarding : public ydk::Entity
 {
     public:
         Forwarding();
@@ -1455,14 +1455,14 @@ class L2Tpv2::Counters::Forwarding : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Sessions; //type: L2Tpv2::Counters::Forwarding::Sessions
+        class Sessions; //type: L2tpv2::Counters::Forwarding::Sessions
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Forwarding::Sessions> sessions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Forwarding::Sessions> sessions;
         
-}; // L2Tpv2::Counters::Forwarding
+}; // L2tpv2::Counters::Forwarding
 
 
-class L2Tpv2::Counters::Forwarding::Sessions : public ydk::Entity
+class L2tpv2::Counters::Forwarding::Sessions : public ydk::Entity
 {
     public:
         Sessions();
@@ -1479,14 +1479,14 @@ class L2Tpv2::Counters::Forwarding::Sessions : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Session; //type: L2Tpv2::Counters::Forwarding::Sessions::Session
+        class Session; //type: L2tpv2::Counters::Forwarding::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Forwarding::Sessions::Session> > session;
+        ydk::YList session;
         
-}; // L2Tpv2::Counters::Forwarding::Sessions
+}; // L2tpv2::Counters::Forwarding::Sessions
 
 
-class L2Tpv2::Counters::Forwarding::Sessions::Session : public ydk::Entity
+class L2tpv2::Counters::Forwarding::Sessions::Session : public ydk::Entity
 {
     public:
         Session();
@@ -1503,18 +1503,18 @@ class L2Tpv2::Counters::Forwarding::Sessions::Session : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf tunnel_id; //type: int32
-        ydk::YLeaf session_id; //type: int32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf session_id; //type: uint32
         ydk::YLeaf remote_session_id; //type: uint32
         ydk::YLeaf in_packets; //type: uint64
         ydk::YLeaf out_packets; //type: uint64
         ydk::YLeaf in_bytes; //type: uint64
         ydk::YLeaf out_bytes; //type: uint64
 
-}; // L2Tpv2::Counters::Forwarding::Sessions::Session
+}; // L2tpv2::Counters::Forwarding::Sessions::Session
 
 
-class L2Tpv2::Counters::Control : public ydk::Entity
+class L2tpv2::Counters::Control : public ydk::Entity
 {
     public:
         Control();
@@ -1531,16 +1531,16 @@ class L2Tpv2::Counters::Control : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class TunnelXr; //type: L2Tpv2::Counters::Control::TunnelXr
-        class Tunnels; //type: L2Tpv2::Counters::Control::Tunnels
+        class TunnelXr; //type: L2tpv2::Counters::Control::TunnelXr
+        class Tunnels; //type: L2tpv2::Counters::Control::Tunnels
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr> tunnel_xr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::Tunnels> tunnels;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr> tunnel_xr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::Tunnels> tunnels;
         
-}; // L2Tpv2::Counters::Control
+}; // L2tpv2::Counters::Control
 
 
-class L2Tpv2::Counters::Control::TunnelXr : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr : public ydk::Entity
 {
     public:
         TunnelXr();
@@ -1557,16 +1557,16 @@ class L2Tpv2::Counters::Control::TunnelXr : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Authentication; //type: L2Tpv2::Counters::Control::TunnelXr::Authentication
-        class Global; //type: L2Tpv2::Counters::Control::TunnelXr::Global
+        class Authentication; //type: L2tpv2::Counters::Control::TunnelXr::Authentication
+        class Global; //type: L2tpv2::Counters::Control::TunnelXr::Global
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Global> global;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Global> global;
         
-}; // L2Tpv2::Counters::Control::TunnelXr
+}; // L2tpv2::Counters::Control::TunnelXr
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Authentication : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -1583,30 +1583,30 @@ class L2Tpv2::Counters::Control::TunnelXr::Authentication : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class NonceAvp; //type: L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp
-        class CommonDigest; //type: L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest
-        class PrimaryDigest; //type: L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest
-        class SecondaryDigest; //type: L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest
-        class IntegrityCheck; //type: L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck
-        class LocalSecret; //type: L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret
-        class ChallengeAvp; //type: L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp
-        class ChallengeReponse; //type: L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse
-        class OverallStatistics; //type: L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics
+        class NonceAvp; //type: L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp
+        class CommonDigest; //type: L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest
+        class PrimaryDigest; //type: L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest
+        class SecondaryDigest; //type: L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest
+        class IntegrityCheck; //type: L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck
+        class LocalSecret; //type: L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret
+        class ChallengeAvp; //type: L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp
+        class ChallengeReponse; //type: L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse
+        class OverallStatistics; //type: L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp> nonce_avp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest> common_digest;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest> primary_digest;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest> secondary_digest;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck> integrity_check;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret> local_secret;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp> challenge_avp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse> challenge_reponse;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics> overall_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp> nonce_avp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest> common_digest;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest> primary_digest;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest> secondary_digest;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck> integrity_check;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret> local_secret;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp> challenge_avp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse> challenge_reponse;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics> overall_statistics;
         
-}; // L2Tpv2::Counters::Control::TunnelXr::Authentication
+}; // L2tpv2::Counters::Control::TunnelXr::Authentication
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp : public ydk::Entity
 {
     public:
         NonceAvp();
@@ -1635,10 +1635,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp : public ydk
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp
+}; // L2tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest : public ydk::Entity
 {
     public:
         CommonDigest();
@@ -1667,10 +1667,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest : public
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest
+}; // L2tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest : public ydk::Entity
 {
     public:
         PrimaryDigest();
@@ -1699,10 +1699,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest : publi
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest
+}; // L2tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest : public ydk::Entity
 {
     public:
         SecondaryDigest();
@@ -1731,10 +1731,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest : pub
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest
+}; // L2tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck : public ydk::Entity
 {
     public:
         IntegrityCheck();
@@ -1763,10 +1763,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck : publ
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck
+}; // L2tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret : public ydk::Entity
 {
     public:
         LocalSecret();
@@ -1795,10 +1795,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret : public 
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret
+}; // L2tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp : public ydk::Entity
 {
     public:
         ChallengeAvp();
@@ -1827,10 +1827,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp : public
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp
+}; // L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse : public ydk::Entity
 {
     public:
         ChallengeReponse();
@@ -1859,10 +1859,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse : pu
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse
+}; // L2tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics : public ydk::Entity
 {
     public:
         OverallStatistics();
@@ -1891,10 +1891,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics : p
         ydk::YLeaf unexpected; //type: uint32
         ydk::YLeaf unexpected_zlb; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics
+}; // L2tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Global : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Global : public ydk::Entity
 {
     public:
         Global();
@@ -1915,20 +1915,20 @@ class L2Tpv2::Counters::Control::TunnelXr::Global : public ydk::Entity
         ydk::YLeaf total_retransmit; //type: uint32
         ydk::YLeaf total_received; //type: uint32
         ydk::YLeaf total_drop; //type: uint32
-        class Transmit; //type: L2Tpv2::Counters::Control::TunnelXr::Global::Transmit
-        class Retransmit; //type: L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit
-        class Received; //type: L2Tpv2::Counters::Control::TunnelXr::Global::Received
-        class Drop; //type: L2Tpv2::Counters::Control::TunnelXr::Global::Drop
+        class Transmit; //type: L2tpv2::Counters::Control::TunnelXr::Global::Transmit
+        class Retransmit; //type: L2tpv2::Counters::Control::TunnelXr::Global::Retransmit
+        class Received; //type: L2tpv2::Counters::Control::TunnelXr::Global::Received
+        class Drop; //type: L2tpv2::Counters::Control::TunnelXr::Global::Drop
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Global::Transmit> transmit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit> retransmit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Global::Received> received;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::TunnelXr::Global::Drop> drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Global::Transmit> transmit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Global::Retransmit> retransmit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Global::Received> received;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::TunnelXr::Global::Drop> drop;
         
-}; // L2Tpv2::Counters::Control::TunnelXr::Global
+}; // L2tpv2::Counters::Control::TunnelXr::Global
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Global::Transmit : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Global::Transmit : public ydk::Entity
 {
     public:
         Transmit();
@@ -1965,10 +1965,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Global::Transmit : public ydk::Entity
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Global::Transmit
+}; // L2tpv2::Counters::Control::TunnelXr::Global::Transmit
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Global::Retransmit : public ydk::Entity
 {
     public:
         Retransmit();
@@ -2005,10 +2005,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit : public ydk::Enti
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit
+}; // L2tpv2::Counters::Control::TunnelXr::Global::Retransmit
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Global::Received : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Global::Received : public ydk::Entity
 {
     public:
         Received();
@@ -2045,10 +2045,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Global::Received : public ydk::Entity
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Global::Received
+}; // L2tpv2::Counters::Control::TunnelXr::Global::Received
 
 
-class L2Tpv2::Counters::Control::TunnelXr::Global::Drop : public ydk::Entity
+class L2tpv2::Counters::Control::TunnelXr::Global::Drop : public ydk::Entity
 {
     public:
         Drop();
@@ -2085,10 +2085,10 @@ class L2Tpv2::Counters::Control::TunnelXr::Global::Drop : public ydk::Entity
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tpv2::Counters::Control::TunnelXr::Global::Drop
+}; // L2tpv2::Counters::Control::TunnelXr::Global::Drop
 
 
-class L2Tpv2::Counters::Control::Tunnels : public ydk::Entity
+class L2tpv2::Counters::Control::Tunnels : public ydk::Entity
 {
     public:
         Tunnels();
@@ -2105,14 +2105,14 @@ class L2Tpv2::Counters::Control::Tunnels : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tunnel; //type: L2Tpv2::Counters::Control::Tunnels::Tunnel
+        class Tunnel; //type: L2tpv2::Counters::Control::Tunnels::Tunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::Tunnels::Tunnel> > tunnel;
+        ydk::YList tunnel;
         
-}; // L2Tpv2::Counters::Control::Tunnels
+}; // L2tpv2::Counters::Control::Tunnels
 
 
-class L2Tpv2::Counters::Control::Tunnels::Tunnel : public ydk::Entity
+class L2tpv2::Counters::Control::Tunnels::Tunnel : public ydk::Entity
 {
     public:
         Tunnel();
@@ -2129,17 +2129,17 @@ class L2Tpv2::Counters::Control::Tunnels::Tunnel : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf tunnel_id; //type: int32
-        class Brief; //type: L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief
-        class Global; //type: L2Tpv2::Counters::Control::Tunnels::Tunnel::Global
+        ydk::YLeaf tunnel_id; //type: uint32
+        class Brief; //type: L2tpv2::Counters::Control::Tunnels::Tunnel::Brief
+        class Global; //type: L2tpv2::Counters::Control::Tunnels::Tunnel::Global
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief> brief;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::Tunnels::Tunnel::Global> global;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::Tunnels::Tunnel::Brief> brief;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::Tunnels::Tunnel::Global> global;
         
-}; // L2Tpv2::Counters::Control::Tunnels::Tunnel
+}; // L2tpv2::Counters::Control::Tunnels::Tunnel
 
 
-class L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief : public ydk::Entity
+class L2tpv2::Counters::Control::Tunnels::Tunnel::Brief : public ydk::Entity
 {
     public:
         Brief();
@@ -2159,10 +2159,10 @@ class L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief : public ydk::Entity
         ydk::YLeaf local_address; //type: string
         ydk::YLeaf remote_address; //type: string
 
-}; // L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief
+}; // L2tpv2::Counters::Control::Tunnels::Tunnel::Brief
 
 
-class L2Tpv2::Counters::Control::Tunnels::Tunnel::Global : public ydk::Entity
+class L2tpv2::Counters::Control::Tunnels::Tunnel::Global : public ydk::Entity
 {
     public:
         Global();
@@ -2182,20 +2182,20 @@ class L2Tpv2::Counters::Control::Tunnels::Tunnel::Global : public ydk::Entity
         ydk::YLeaf total_retransmit; //type: uint32
         ydk::YLeaf total_received; //type: uint32
         ydk::YLeaf total_drop; //type: uint32
-        class Transmit; //type: L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit
-        class Retransmit; //type: L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit
-        class Received; //type: L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received
-        class Drop; //type: L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop
+        class Transmit; //type: L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit
+        class Retransmit; //type: L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit
+        class Received; //type: L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received
+        class Drop; //type: L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit> transmit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit> retransmit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received> received;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop> drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit> transmit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit> retransmit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received> received;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop> drop;
         
-}; // L2Tpv2::Counters::Control::Tunnels::Tunnel::Global
+}; // L2tpv2::Counters::Control::Tunnels::Tunnel::Global
 
 
-class L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit : public ydk::Entity
+class L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit : public ydk::Entity
 {
     public:
         Transmit();
@@ -2231,10 +2231,10 @@ class L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit : public ydk:
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit
+}; // L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit
 
 
-class L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit : public ydk::Entity
+class L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit : public ydk::Entity
 {
     public:
         Retransmit();
@@ -2270,10 +2270,10 @@ class L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit : public yd
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit
+}; // L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit
 
 
-class L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received : public ydk::Entity
+class L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received : public ydk::Entity
 {
     public:
         Received();
@@ -2309,10 +2309,10 @@ class L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received : public ydk:
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received
+}; // L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Received
 
 
-class L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop : public ydk::Entity
+class L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop : public ydk::Entity
 {
     public:
         Drop();
@@ -2348,10 +2348,10 @@ class L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop : public ydk::Ent
         ydk::YLeaf service_relay_replies; //type: uint32
         ydk::YLeaf acknowledgement_packets; //type: uint32
 
-}; // L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop
+}; // L2tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop
 
 
-class L2Tpv2::Statistics : public ydk::Entity
+class L2tpv2::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -2380,10 +2380,10 @@ class L2Tpv2::Statistics : public ydk::Entity
         ydk::YLeaf buffered_packets; //type: uint32
         ydk::YLeaf netio_packets; //type: uint32
 
-}; // L2Tpv2::Statistics
+}; // L2tpv2::Statistics
 
 
-class L2Tpv2::Tunnel : public ydk::Entity
+class L2tpv2::Tunnel : public ydk::Entity
 {
     public:
         Tunnel();
@@ -2400,14 +2400,14 @@ class L2Tpv2::Tunnel : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Accounting; //type: L2Tpv2::Tunnel::Accounting
+        class Accounting; //type: L2tpv2::Tunnel::Accounting
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Tunnel::Accounting> accounting;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Tunnel::Accounting> accounting;
         
-}; // L2Tpv2::Tunnel
+}; // L2tpv2::Tunnel
 
 
-class L2Tpv2::Tunnel::Accounting : public ydk::Entity
+class L2tpv2::Tunnel::Accounting : public ydk::Entity
 {
     public:
         Accounting();
@@ -2424,14 +2424,14 @@ class L2Tpv2::Tunnel::Accounting : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Statistics; //type: L2Tpv2::Tunnel::Accounting::Statistics
+        class Statistics; //type: L2tpv2::Tunnel::Accounting::Statistics
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Tunnel::Accounting::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Tunnel::Accounting::Statistics> statistics;
         
-}; // L2Tpv2::Tunnel::Accounting
+}; // L2tpv2::Tunnel::Accounting
 
 
-class L2Tpv2::Tunnel::Accounting::Statistics : public ydk::Entity
+class L2tpv2::Tunnel::Accounting::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -2464,10 +2464,10 @@ class L2Tpv2::Tunnel::Accounting::Statistics : public ydk::Entity
         ydk::YLeaf records_fail_to_recover; //type: uint32
         ydk::YLeaf queue_statistics_size; //type: int32
 
-}; // L2Tpv2::Tunnel::Accounting::Statistics
+}; // L2tpv2::Tunnel::Accounting::Statistics
 
 
-class L2Tpv2::TunnelConfigurations : public ydk::Entity
+class L2tpv2::TunnelConfigurations : public ydk::Entity
 {
     public:
         TunnelConfigurations();
@@ -2484,14 +2484,14 @@ class L2Tpv2::TunnelConfigurations : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class TunnelConfiguration; //type: L2Tpv2::TunnelConfigurations::TunnelConfiguration
+        class TunnelConfiguration; //type: L2tpv2::TunnelConfigurations::TunnelConfiguration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::TunnelConfigurations::TunnelConfiguration> > tunnel_configuration;
+        ydk::YList tunnel_configuration;
         
-}; // L2Tpv2::TunnelConfigurations
+}; // L2tpv2::TunnelConfigurations
 
 
-class L2Tpv2::TunnelConfigurations::TunnelConfiguration : public ydk::Entity
+class L2tpv2::TunnelConfigurations::TunnelConfiguration : public ydk::Entity
 {
     public:
         TunnelConfiguration();
@@ -2508,20 +2508,20 @@ class L2Tpv2::TunnelConfigurations::TunnelConfiguration : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf local_tunnel_id; //type: int32
+        ydk::YLeaf local_tunnel_id; //type: uint32
         ydk::YLeaf remote_tunnel_id; //type: uint32
-        class L2TpClass; //type: L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass
+        class L2tpClass; //type: L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass> l2tp_class;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass> l2tp_class;
         
-}; // L2Tpv2::TunnelConfigurations::TunnelConfiguration
+}; // L2tpv2::TunnelConfigurations::TunnelConfiguration
 
 
-class L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass : public ydk::Entity
+class L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass : public ydk::Entity
 {
     public:
-        L2TpClass();
-        ~L2TpClass();
+        L2tpClass();
+        ~L2tpClass();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2558,10 +2558,10 @@ class L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass : public ydk:
         ydk::YLeaf is_congestion_control_enabled; //type: boolean
         ydk::YLeaf is_peer_address_checked; //type: boolean
 
-}; // L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass
+}; // L2tpv2::TunnelConfigurations::TunnelConfiguration::L2tpClass
 
 
-class L2Tpv2::CounterHistFail : public ydk::Entity
+class L2tpv2::CounterHistFail : public ydk::Entity
 {
     public:
         CounterHistFail();
@@ -2583,10 +2583,10 @@ class L2Tpv2::CounterHistFail : public ydk::Entity
         ydk::YLeaf rx_counters; //type: string
         ydk::YLeafList pkt_timeout; //type: list of  uint32
 
-}; // L2Tpv2::CounterHistFail
+}; // L2tpv2::CounterHistFail
 
 
-class L2Tpv2::Classes : public ydk::Entity
+class L2tpv2::Classes : public ydk::Entity
 {
     public:
         Classes();
@@ -2603,14 +2603,14 @@ class L2Tpv2::Classes : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Class; //type: L2Tpv2::Classes::Class
+        class Class; //type: L2tpv2::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Classes::Class> > class_;
+        ydk::YList class_;
         
-}; // L2Tpv2::Classes
+}; // L2tpv2::Classes
 
 
-class L2Tpv2::Classes::Class : public ydk::Entity
+class L2tpv2::Classes::Class : public ydk::Entity
 {
     public:
         Class();
@@ -2653,10 +2653,10 @@ class L2Tpv2::Classes::Class : public ydk::Entity
         ydk::YLeaf is_congestion_control_enabled; //type: boolean
         ydk::YLeaf is_peer_address_checked; //type: boolean
 
-}; // L2Tpv2::Classes::Class
+}; // L2tpv2::Classes::Class
 
 
-class L2Tpv2::Tunnels : public ydk::Entity
+class L2tpv2::Tunnels : public ydk::Entity
 {
     public:
         Tunnels();
@@ -2673,14 +2673,14 @@ class L2Tpv2::Tunnels : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tunnel; //type: L2Tpv2::Tunnels::Tunnel
+        class Tunnel; //type: L2tpv2::Tunnels::Tunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Tunnels::Tunnel> > tunnel;
+        ydk::YList tunnel;
         
-}; // L2Tpv2::Tunnels
+}; // L2tpv2::Tunnels
 
 
-class L2Tpv2::Tunnels::Tunnel : public ydk::Entity
+class L2tpv2::Tunnels::Tunnel : public ydk::Entity
 {
     public:
         Tunnel();
@@ -2697,7 +2697,7 @@ class L2Tpv2::Tunnels::Tunnel : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf local_tunnel_id; //type: int32
+        ydk::YLeaf local_tunnel_id; //type: uint32
         ydk::YLeaf local_address; //type: string
         ydk::YLeaf remote_address; //type: string
         ydk::YLeaf local_port; //type: uint16
@@ -2731,10 +2731,10 @@ class L2Tpv2::Tunnels::Tunnel : public ydk::Entity
         ydk::YLeaf is_congestion_control_enabled; //type: boolean
         ydk::YLeafList retransmit_time; //type: list of  uint16
 
-}; // L2Tpv2::Tunnels::Tunnel
+}; // L2tpv2::Tunnels::Tunnel
 
 
-class L2Tpv2::Sessions : public ydk::Entity
+class L2tpv2::Sessions : public ydk::Entity
 {
     public:
         Sessions();
@@ -2751,14 +2751,14 @@ class L2Tpv2::Sessions : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Session; //type: L2Tpv2::Sessions::Session
+        class Session; //type: L2tpv2::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Sessions::Session> > session;
+        ydk::YList session;
         
-}; // L2Tpv2::Sessions
+}; // L2tpv2::Sessions
 
 
-class L2Tpv2::Sessions::Session : public ydk::Entity
+class L2tpv2::Sessions::Session : public ydk::Entity
 {
     public:
         Session();
@@ -2775,8 +2775,8 @@ class L2Tpv2::Sessions::Session : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf local_tunnel_id; //type: int32
-        ydk::YLeaf local_session_id; //type: int32
+        ydk::YLeaf local_tunnel_id; //type: uint32
+        ydk::YLeaf local_session_id; //type: uint32
         ydk::YLeaf local_ip_address; //type: string
         ydk::YLeaf remote_ip_address; //type: string
         ydk::YLeaf l2tp_sh_sess_udp_lport; //type: uint16
@@ -2798,14 +2798,14 @@ class L2Tpv2::Sessions::Session : public ydk::Entity
         ydk::YLeaf is_conditional_debug_enabled; //type: boolean
         ydk::YLeaf unique_id; //type: uint32
         ydk::YLeaf interface_name; //type: string
-        class SessionApplicationData; //type: L2Tpv2::Sessions::Session::SessionApplicationData
+        class SessionApplicationData; //type: L2tpv2::Sessions::Session::SessionApplicationData
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Sessions::Session::SessionApplicationData> session_application_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Sessions::Session::SessionApplicationData> session_application_data;
         
-}; // L2Tpv2::Sessions::Session
+}; // L2tpv2::Sessions::Session
 
 
-class L2Tpv2::Sessions::Session::SessionApplicationData : public ydk::Entity
+class L2tpv2::Sessions::Session::SessionApplicationData : public ydk::Entity
 {
     public:
         SessionApplicationData();
@@ -2822,16 +2822,16 @@ class L2Tpv2::Sessions::Session::SessionApplicationData : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf l2tp_sh_sess_app_type; //type: uint32
-        class Xconnect; //type: L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect
-        class Vpdn; //type: L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn
+        class Xconnect; //type: L2tpv2::Sessions::Session::SessionApplicationData::Xconnect
+        class Vpdn; //type: L2tpv2::Sessions::Session::SessionApplicationData::Vpdn
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect> xconnect;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn> vpdn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Sessions::Session::SessionApplicationData::Xconnect> xconnect;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Sessions::Session::SessionApplicationData::Vpdn> vpdn;
         
-}; // L2Tpv2::Sessions::Session::SessionApplicationData
+}; // L2tpv2::Sessions::Session::SessionApplicationData
 
 
-class L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect : public ydk::Entity
+class L2tpv2::Sessions::Session::SessionApplicationData::Xconnect : public ydk::Entity
 {
     public:
         Xconnect();
@@ -2854,10 +2854,10 @@ class L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect : public ydk::
         ydk::YLeaf is_remote_circuit_state_up; //type: boolean
         ydk::YLeaf ipv6_protocol_tunneling; //type: boolean
 
-}; // L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect
+}; // L2tpv2::Sessions::Session::SessionApplicationData::Xconnect
 
 
-class L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn : public ydk::Entity
+class L2tpv2::Sessions::Session::SessionApplicationData::Vpdn : public ydk::Entity
 {
     public:
         Vpdn();
@@ -2876,10 +2876,10 @@ class L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn : public ydk::Enti
         ydk::YLeaf username; //type: string
         ydk::YLeaf interface_name; //type: string
 
-}; // L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn
+}; // L2tpv2::Sessions::Session::SessionApplicationData::Vpdn
 
 
-class L2Tpv2::Session : public ydk::Entity
+class L2tpv2::Session : public ydk::Entity
 {
     public:
         Session();
@@ -2896,14 +2896,14 @@ class L2Tpv2::Session : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Unavailable; //type: L2Tpv2::Session::Unavailable
+        class Unavailable; //type: L2tpv2::Session::Unavailable
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Session::Unavailable> unavailable;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2tpv2::Session::Unavailable> unavailable;
         
-}; // L2Tpv2::Session
+}; // L2tpv2::Session
 
 
-class L2Tpv2::Session::Unavailable : public ydk::Entity
+class L2tpv2::Session::Unavailable : public ydk::Entity
 {
     public:
         Unavailable();
@@ -2922,7 +2922,7 @@ class L2Tpv2::Session::Unavailable : public ydk::Entity
 
         ydk::YLeaf sessions_on_hold; //type: uint32
 
-}; // L2Tpv2::Session::Unavailable
+}; // L2tpv2::Session::Unavailable
 
 class DigestHash : public ydk::Enum
 {

@@ -17,7 +17,7 @@ CfmStatistics::CfmStatistics()
 {
     cfm_meps->parent = this;
 
-    yang_name = "cfm-statistics"; yang_parent_name = "Cisco-IOS-XE-cfm-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cfm-statistics"; yang_parent_name = "Cisco-IOS-XE-cfm-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CfmStatistics::~CfmStatistics()
@@ -26,6 +26,7 @@ CfmStatistics::~CfmStatistics()
 
 bool CfmStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (cfm_meps !=  nullptr && cfm_meps->has_data());
 }
 
@@ -118,9 +119,11 @@ bool CfmStatistics::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 CfmStatistics::CfmMeps::CfmMeps()
+    :
+    cfm_mep(this, {"domain_name", "ma_name", "mpid"})
 {
 
-    yang_name = "cfm-meps"; yang_parent_name = "cfm-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cfm-meps"; yang_parent_name = "cfm-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CfmStatistics::CfmMeps::~CfmMeps()
@@ -129,7 +132,8 @@ CfmStatistics::CfmMeps::~CfmMeps()
 
 bool CfmStatistics::CfmMeps::has_data() const
 {
-    for (std::size_t index=0; index<cfm_mep.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cfm_mep.len(); index++)
     {
         if(cfm_mep[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool CfmStatistics::CfmMeps::has_data() const
 
 bool CfmStatistics::CfmMeps::has_operation() const
 {
-    for (std::size_t index=0; index<cfm_mep.size(); index++)
+    for (std::size_t index=0; index<cfm_mep.len(); index++)
     {
         if(cfm_mep[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::get_child_by_name(const std::str
     {
         auto c = std::make_shared<CfmStatistics::CfmMeps::CfmMep>();
         c->parent = this;
-        cfm_mep.push_back(c);
+        cfm_mep.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::CfmMeps::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cfm_mep)
+    for (auto c : cfm_mep.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -226,12 +230,12 @@ CfmStatistics::CfmMeps::CfmMep::CfmMep()
     lbr_seq_errors{YType::uint64, "lbr-seq-errors"},
     lbr_received_ok{YType::uint64, "lbr-received-ok"},
     lbr_received_bad{YType::uint64, "lbr-received-bad"}
-    	,
+        ,
     last_cleared(std::make_shared<CfmStatistics::CfmMeps::CfmMep::LastCleared>())
 {
     last_cleared->parent = this;
 
-    yang_name = "cfm-mep"; yang_parent_name = "cfm-meps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cfm-mep"; yang_parent_name = "cfm-meps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CfmStatistics::CfmMeps::CfmMep::~CfmMep()
@@ -240,6 +244,7 @@ CfmStatistics::CfmMeps::CfmMep::~CfmMep()
 
 bool CfmStatistics::CfmMeps::CfmMep::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_name.is_set
 	|| ma_name.is_set
 	|| mpid.is_set
@@ -279,7 +284,10 @@ std::string CfmStatistics::CfmMeps::CfmMep::get_absolute_path() const
 std::string CfmStatistics::CfmMeps::CfmMep::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cfm-mep" <<"[domain-name='" <<domain_name <<"']" <<"[ma-name='" <<ma_name <<"']" <<"[mpid='" <<mpid <<"']";
+    path_buffer << "cfm-mep";
+    ADD_KEY_TOKEN(domain_name, "domain-name");
+    ADD_KEY_TOKEN(ma_name, "ma-name");
+    ADD_KEY_TOKEN(mpid, "mpid");
     return path_buffer.str();
 }
 
@@ -449,7 +457,7 @@ CfmStatistics::CfmMeps::CfmMep::LastCleared::LastCleared()
     time{YType::str, "time"}
 {
 
-    yang_name = "last-cleared"; yang_parent_name = "cfm-mep"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-cleared"; yang_parent_name = "cfm-mep"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CfmStatistics::CfmMeps::CfmMep::LastCleared::~LastCleared()
@@ -458,6 +466,7 @@ CfmStatistics::CfmMeps::CfmMep::LastCleared::~LastCleared()
 
 bool CfmStatistics::CfmMeps::CfmMep::LastCleared::has_data() const
 {
+    if (is_presence_container) return true;
     return never.is_set
 	|| time.is_set;
 }

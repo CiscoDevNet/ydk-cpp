@@ -17,13 +17,13 @@ Ipv6Configuration::Ipv6Configuration()
     ipv6_source_route{YType::boolean, "ipv6-source-route"},
     ipv6_pmtu_enable{YType::boolean, "ipv6-pmtu-enable"},
     ipv6_hop_limit{YType::uint32, "ipv6-hop-limit"}
-    	,
+        ,
     ipv6_assembler(std::make_shared<Ipv6Configuration::Ipv6Assembler>())
-	,ipv6icmp(nullptr) // presence node
+    , ipv6icmp(nullptr) // presence node
 {
     ipv6_assembler->parent = this;
 
-    yang_name = "ipv6-configuration"; yang_parent_name = "Cisco-IOS-XR-ipv6-io-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv6-configuration"; yang_parent_name = "Cisco-IOS-XR-ipv6-io-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv6Configuration::~Ipv6Configuration()
@@ -32,6 +32,7 @@ Ipv6Configuration::~Ipv6Configuration()
 
 bool Ipv6Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_pmtu_time_out.is_set
 	|| ipv6_source_route.is_set
 	|| ipv6_pmtu_enable.is_set
@@ -86,7 +87,7 @@ std::shared_ptr<Entity> Ipv6Configuration::get_child_by_name(const std::string &
     {
         if(ipv6icmp == nullptr)
         {
-            ipv6icmp = std::make_shared<Ipv6Configuration::Ipv6Icmp>();
+            ipv6icmp = std::make_shared<Ipv6Configuration::Ipv6icmp>();
         }
         return ipv6icmp;
     }
@@ -197,7 +198,7 @@ Ipv6Configuration::Ipv6Assembler::Ipv6Assembler()
     max_packets{YType::uint32, "max-packets"}
 {
 
-    yang_name = "ipv6-assembler"; yang_parent_name = "ipv6-configuration"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6-assembler"; yang_parent_name = "ipv6-configuration"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Configuration::Ipv6Assembler::~Ipv6Assembler()
@@ -206,6 +207,7 @@ Ipv6Configuration::Ipv6Assembler::~Ipv6Assembler()
 
 bool Ipv6Configuration::Ipv6Assembler::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set
 	|| max_packets.is_set;
 }
@@ -289,47 +291,48 @@ bool Ipv6Configuration::Ipv6Assembler::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
-Ipv6Configuration::Ipv6Icmp::Ipv6Icmp()
+Ipv6Configuration::Ipv6icmp::Ipv6icmp()
     :
     error_interval{YType::uint32, "error-interval"},
     bucket_size{YType::uint32, "bucket-size"}
 {
 
-    yang_name = "ipv6icmp"; yang_parent_name = "ipv6-configuration"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6icmp"; yang_parent_name = "ipv6-configuration"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-Ipv6Configuration::Ipv6Icmp::~Ipv6Icmp()
+Ipv6Configuration::Ipv6icmp::~Ipv6icmp()
 {
 }
 
-bool Ipv6Configuration::Ipv6Icmp::has_data() const
+bool Ipv6Configuration::Ipv6icmp::has_data() const
 {
+    if (is_presence_container) return true;
     return error_interval.is_set
 	|| bucket_size.is_set;
 }
 
-bool Ipv6Configuration::Ipv6Icmp::has_operation() const
+bool Ipv6Configuration::Ipv6icmp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(error_interval.yfilter)
 	|| ydk::is_set(bucket_size.yfilter);
 }
 
-std::string Ipv6Configuration::Ipv6Icmp::get_absolute_path() const
+std::string Ipv6Configuration::Ipv6icmp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv6-io-cfg:ipv6-configuration/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ipv6Configuration::Ipv6Icmp::get_segment_path() const
+std::string Ipv6Configuration::Ipv6icmp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6icmp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv6Configuration::Ipv6Icmp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv6Configuration::Ipv6icmp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -340,19 +343,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Configuration::Ipv6Icmp::get_
 
 }
 
-std::shared_ptr<Entity> Ipv6Configuration::Ipv6Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv6Configuration::Ipv6icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6Configuration::Ipv6Icmp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Configuration::Ipv6icmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ipv6Configuration::Ipv6Icmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv6Configuration::Ipv6icmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error-interval")
     {
@@ -368,7 +371,7 @@ void Ipv6Configuration::Ipv6Icmp::set_value(const std::string & value_path, cons
     }
 }
 
-void Ipv6Configuration::Ipv6Icmp::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv6Configuration::Ipv6icmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "error-interval")
     {
@@ -380,7 +383,7 @@ void Ipv6Configuration::Ipv6Icmp::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool Ipv6Configuration::Ipv6Icmp::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv6Configuration::Ipv6icmp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error-interval" || name == "bucket-size")
         return true;

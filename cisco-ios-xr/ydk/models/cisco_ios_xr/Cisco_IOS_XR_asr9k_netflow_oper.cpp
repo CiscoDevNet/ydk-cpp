@@ -17,7 +17,7 @@ NetFlow::NetFlow()
 {
     statistics->parent = this;
 
-    yang_name = "net-flow"; yang_parent_name = "Cisco-IOS-XR-asr9k-netflow-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "net-flow"; yang_parent_name = "Cisco-IOS-XR-asr9k-netflow-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NetFlow::~NetFlow()
@@ -26,6 +26,7 @@ NetFlow::~NetFlow()
 
 bool NetFlow::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data());
 }
 
@@ -118,9 +119,11 @@ bool NetFlow::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 NetFlow::Statistics::Statistics()
+    :
+    statistic(this, {"node"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetFlow::Statistics::~Statistics()
@@ -129,7 +132,8 @@ NetFlow::Statistics::~Statistics()
 
 bool NetFlow::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool NetFlow::Statistics::has_data() const
 
 bool NetFlow::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> NetFlow::Statistics::get_child_by_name(const std::string
     {
         auto c = std::make_shared<NetFlow::Statistics::Statistic>();
         c->parent = this;
-        statistic.push_back(c);
+        statistic.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistic)
+    for (auto c : statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,14 +221,14 @@ bool NetFlow::Statistics::has_leaf_or_child_of_name(const std::string & name) co
 NetFlow::Statistics::Statistic::Statistic()
     :
     node{YType::str, "node"}
-    	,
+        ,
     producer(std::make_shared<NetFlow::Statistics::Statistic::Producer>())
-	,server(std::make_shared<NetFlow::Statistics::Statistic::Server>())
+    , server(std::make_shared<NetFlow::Statistics::Statistic::Server>())
 {
     producer->parent = this;
     server->parent = this;
 
-    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetFlow::Statistics::Statistic::~Statistic()
@@ -233,6 +237,7 @@ NetFlow::Statistics::Statistic::~Statistic()
 
 bool NetFlow::Statistics::Statistic::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| (producer !=  nullptr && producer->has_data())
 	|| (server !=  nullptr && server->has_data());
@@ -256,7 +261,8 @@ std::string NetFlow::Statistics::Statistic::get_absolute_path() const
 std::string NetFlow::Statistics::Statistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistic" <<"[node='" <<node <<"']";
+    path_buffer << "statistic";
+    ADD_KEY_TOKEN(node, "node");
     return path_buffer.str();
 }
 
@@ -341,7 +347,7 @@ NetFlow::Statistics::Statistic::Producer::Producer()
 {
     statistics->parent = this;
 
-    yang_name = "producer"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "producer"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::Statistics::Statistic::Producer::~Producer()
@@ -350,6 +356,7 @@ NetFlow::Statistics::Statistic::Producer::~Producer()
 
 bool NetFlow::Statistics::Statistic::Producer::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data());
 }
 
@@ -434,7 +441,7 @@ NetFlow::Statistics::Statistic::Producer::Statistics_::Statistics_()
     last_cleared{YType::str, "last-cleared"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "producer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "producer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::Statistics::Statistic::Producer::Statistics_::~Statistics_()
@@ -443,6 +450,7 @@ NetFlow::Statistics::Statistic::Producer::Statistics_::~Statistics_()
 
 bool NetFlow::Statistics::Statistic::Producer::Statistics_::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_ingress_flows.is_set
 	|| ipv4_egress_flows.is_set
 	|| ipv6_ingress_flows.is_set
@@ -681,7 +689,7 @@ NetFlow::Statistics::Statistic::Server::Server()
 {
     flow_exporters->parent = this;
 
-    yang_name = "server"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::Statistics::Statistic::Server::~Server()
@@ -690,6 +698,7 @@ NetFlow::Statistics::Statistic::Server::~Server()
 
 bool NetFlow::Statistics::Statistic::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return (flow_exporters !=  nullptr && flow_exporters->has_data());
 }
 
@@ -757,9 +766,11 @@ bool NetFlow::Statistics::Statistic::Server::has_leaf_or_child_of_name(const std
 }
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporters()
+    :
+    flow_exporter(this, {"exporter_name"})
 {
 
-    yang_name = "flow-exporters"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-exporters"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::~FlowExporters()
@@ -768,7 +779,8 @@ NetFlow::Statistics::Statistic::Server::FlowExporters::~FlowExporters()
 
 bool NetFlow::Statistics::Statistic::Server::FlowExporters::has_data() const
 {
-    for (std::size_t index=0; index<flow_exporter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flow_exporter.len(); index++)
     {
         if(flow_exporter[index]->has_data())
             return true;
@@ -778,7 +790,7 @@ bool NetFlow::Statistics::Statistic::Server::FlowExporters::has_data() const
 
 bool NetFlow::Statistics::Statistic::Server::FlowExporters::has_operation() const
 {
-    for (std::size_t index=0; index<flow_exporter.size(); index++)
+    for (std::size_t index=0; index<flow_exporter.len(); index++)
     {
         if(flow_exporter[index]->has_operation())
             return true;
@@ -808,7 +820,7 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::g
     {
         auto c = std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter>();
         c->parent = this;
-        flow_exporter.push_back(c);
+        flow_exporter.append(c);
         return c;
     }
 
@@ -820,7 +832,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flow_exporter)
+    for (auto c : flow_exporter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -849,12 +861,12 @@ bool NetFlow::Statistics::Statistic::Server::FlowExporters::has_leaf_or_child_of
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::FlowExporter()
     :
     exporter_name{YType::str, "exporter-name"}
-    	,
+        ,
     exporter(std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter>())
 {
     exporter->parent = this;
 
-    yang_name = "flow-exporter"; yang_parent_name = "flow-exporters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-exporter"; yang_parent_name = "flow-exporters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::~FlowExporter()
@@ -863,6 +875,7 @@ NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::~FlowExport
 
 bool NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::has_data() const
 {
+    if (is_presence_container) return true;
     return exporter_name.is_set
 	|| (exporter !=  nullptr && exporter->has_data());
 }
@@ -877,7 +890,8 @@ bool NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::has_op
 std::string NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flow-exporter" <<"[exporter-name='" <<exporter_name <<"']";
+    path_buffer << "flow-exporter";
+    ADD_KEY_TOKEN(exporter_name, "exporter-name");
     return path_buffer.str();
 }
 
@@ -943,9 +957,11 @@ bool NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::has_le
 }
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Exporter()
+    :
+    statistic(this, {})
 {
 
-    yang_name = "exporter"; yang_parent_name = "flow-exporter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exporter"; yang_parent_name = "flow-exporter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::~Exporter()
@@ -954,7 +970,8 @@ NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::~
 
 bool NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::has_data() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_data())
             return true;
@@ -964,7 +981,7 @@ bool NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Export
 
 bool NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::has_operation() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_operation())
             return true;
@@ -994,7 +1011,7 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::F
     {
         auto c = std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_>();
         c->parent = this;
-        statistic.push_back(c);
+        statistic.append(c);
         return c;
     }
 
@@ -1006,7 +1023,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistic)
+    for (auto c : statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1037,9 +1054,11 @@ NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::S
     name{YType::str, "name"},
     memory_usage{YType::uint32, "memory-usage"},
     used_by_flow_monitor{YType::str, "used-by-flow-monitor"}
+        ,
+    collector(this, {})
 {
 
-    yang_name = "statistic"; yang_parent_name = "exporter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistic"; yang_parent_name = "exporter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::~Statistic_()
@@ -1048,7 +1067,8 @@ NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::S
 
 bool NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::has_data() const
 {
-    for (std::size_t index=0; index<collector.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<collector.len(); index++)
     {
         if(collector[index]->has_data())
             return true;
@@ -1064,7 +1084,7 @@ bool NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Export
 
 bool NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::has_operation() const
 {
-    for (std::size_t index=0; index<collector.size(); index++)
+    for (std::size_t index=0; index<collector.len(); index++)
     {
         if(collector[index]->has_operation())
             return true;
@@ -1106,7 +1126,7 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::F
     {
         auto c = std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector>();
         c->parent = this;
-        collector.push_back(c);
+        collector.append(c);
         return c;
     }
 
@@ -1118,7 +1138,7 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : collector)
+    for (auto c : collector.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1212,7 +1232,7 @@ NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::S
     last_second_flows_sent{YType::uint64, "last-second-flows-sent"}
 {
 
-    yang_name = "collector"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "collector"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector::~Collector()
@@ -1221,6 +1241,7 @@ NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::S
 
 bool NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector::has_data() const
 {
+    if (is_presence_container) return true;
     return exporter_state.is_set
 	|| destination_address.is_set
 	|| source_address.is_set

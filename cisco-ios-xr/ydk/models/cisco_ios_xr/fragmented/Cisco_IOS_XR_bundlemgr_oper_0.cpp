@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_bundlemgr_oper_0.hpp"
-#include "Cisco_IOS_XR_bundlemgr_oper_1.hpp"
 #include "Cisco_IOS_XR_bundlemgr_oper_2.hpp"
+#include "Cisco_IOS_XR_bundlemgr_oper_1.hpp"
 #include "Cisco_IOS_XR_bundlemgr_oper_3.hpp"
 
 using namespace ydk;
@@ -20,7 +20,7 @@ LacpBundles::LacpBundles()
 {
     bundles->parent = this;
 
-    yang_name = "lacp-bundles"; yang_parent_name = "Cisco-IOS-XR-bundlemgr-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lacp-bundles"; yang_parent_name = "Cisco-IOS-XR-bundlemgr-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 LacpBundles::~LacpBundles()
@@ -29,6 +29,7 @@ LacpBundles::~LacpBundles()
 
 bool LacpBundles::has_data() const
 {
+    if (is_presence_container) return true;
     return (bundles !=  nullptr && bundles->has_data());
 }
 
@@ -121,9 +122,11 @@ bool LacpBundles::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 LacpBundles::Bundles::Bundles()
+    :
+    bundle(this, {"bundle_interface"})
 {
 
-    yang_name = "bundles"; yang_parent_name = "lacp-bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundles"; yang_parent_name = "lacp-bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LacpBundles::Bundles::~Bundles()
@@ -132,7 +135,8 @@ LacpBundles::Bundles::~Bundles()
 
 bool LacpBundles::Bundles::has_data() const
 {
-    for (std::size_t index=0; index<bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle.len(); index++)
     {
         if(bundle[index]->has_data())
             return true;
@@ -142,7 +146,7 @@ bool LacpBundles::Bundles::has_data() const
 
 bool LacpBundles::Bundles::has_operation() const
 {
-    for (std::size_t index=0; index<bundle.size(); index++)
+    for (std::size_t index=0; index<bundle.len(); index++)
     {
         if(bundle[index]->has_operation())
             return true;
@@ -179,7 +183,7 @@ std::shared_ptr<Entity> LacpBundles::Bundles::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<LacpBundles::Bundles::Bundle>();
         c->parent = this;
-        bundle.push_back(c);
+        bundle.append(c);
         return c;
     }
 
@@ -191,7 +195,7 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle)
+    for (auto c : bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -220,14 +224,14 @@ bool LacpBundles::Bundles::has_leaf_or_child_of_name(const std::string & name) c
 LacpBundles::Bundles::Bundle::Bundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     data(std::make_shared<LacpBundles::Bundles::Bundle::Data>())
-	,members(std::make_shared<LacpBundles::Bundles::Bundle::Members>())
+    , members(std::make_shared<LacpBundles::Bundles::Bundle::Members>())
 {
     data->parent = this;
     members->parent = this;
 
-    yang_name = "bundle"; yang_parent_name = "bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle"; yang_parent_name = "bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LacpBundles::Bundles::Bundle::~Bundle()
@@ -236,6 +240,7 @@ LacpBundles::Bundles::Bundle::~Bundle()
 
 bool LacpBundles::Bundles::Bundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (data !=  nullptr && data->has_data())
 	|| (members !=  nullptr && members->has_data());
@@ -259,7 +264,8 @@ std::string LacpBundles::Bundles::Bundle::get_absolute_path() const
 std::string LacpBundles::Bundles::Bundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "bundle";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -344,14 +350,14 @@ LacpBundles::Bundles::Bundle::Data::Data()
     partner_system_priority{YType::uint16, "partner-system-priority"},
     partner_system_mac_address{YType::str, "partner-system-mac-address"},
     partner_operational_key{YType::uint16, "partner-operational-key"}
-    	,
+        ,
     actor_bundle_data(std::make_shared<LacpBundles::Bundles::Bundle::Data::ActorBundleData>())
-	,bundle_system_id(std::make_shared<LacpBundles::Bundles::Bundle::Data::BundleSystemId>())
+    , bundle_system_id(std::make_shared<LacpBundles::Bundles::Bundle::Data::BundleSystemId>())
 {
     actor_bundle_data->parent = this;
     bundle_system_id->parent = this;
 
-    yang_name = "data"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Data::~Data()
@@ -360,6 +366,7 @@ LacpBundles::Bundles::Bundle::Data::~Data()
 
 bool LacpBundles::Bundles::Bundle::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return actor_operational_key.is_set
 	|| partner_system_priority.is_set
 	|| partner_system_mac_address.is_set
@@ -534,12 +541,13 @@ LacpBundles::Bundles::Bundle::Data::ActorBundleData::ActorBundleData()
     mlacp_mode{YType::enumeration, "mlacp-mode"},
     recovery_delay{YType::uint16, "recovery-delay"},
     singleton{YType::boolean, "singleton"}
-    	,
+        ,
     mac_address(std::make_shared<LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress>())
+    , bfd_config(this, {})
 {
     mac_address->parent = this;
 
-    yang_name = "actor-bundle-data"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actor-bundle-data"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Data::ActorBundleData::~ActorBundleData()
@@ -548,7 +556,8 @@ LacpBundles::Bundles::Bundle::Data::ActorBundleData::~ActorBundleData()
 
 bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::has_data() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_data())
             return true;
@@ -596,7 +605,7 @@ bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::has_data() const
 
 bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_operation())
             return true;
@@ -712,7 +721,7 @@ std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Data::ActorBundleData::get
     {
         auto c = std::make_shared<LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(c);
+        bfd_config.append(c);
         return c;
     }
 
@@ -729,7 +738,7 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Dat
     }
 
     count = 0;
-    for (auto const & c : bfd_config)
+    for (auto c : bfd_config.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1140,7 +1149,7 @@ LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::MacAddress()
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::~MacAddress()
@@ -1149,6 +1158,7 @@ LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::~MacAddress()
 
 bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -1222,12 +1232,12 @@ LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::BfdConfig()
     pref_echo_min_interval{YType::uint32, "pref-echo-min-interval"},
     fast_detect{YType::boolean, "fast-detect"},
     mode_info{YType::uint32, "mode-info"}
-    	,
+        ,
     destination_address(std::make_shared<LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
 
-    yang_name = "bfd-config"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-config"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::~BfdConfig()
@@ -1236,6 +1246,7 @@ LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::~BfdConfig()
 
 bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| start_timer.is_set
 	|| nbr_unconfig_timer.is_set
@@ -1413,7 +1424,7 @@ LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddre
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::~DestinationAddress()
@@ -1422,6 +1433,7 @@ LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddre
 
 bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -1514,12 +1526,12 @@ bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::Destination
 LacpBundles::Bundles::Bundle::Data::BundleSystemId::BundleSystemId()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "bundle-system-id"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-system-id"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Data::BundleSystemId::~BundleSystemId()
@@ -1528,6 +1540,7 @@ LacpBundles::Bundles::Bundle::Data::BundleSystemId::~BundleSystemId()
 
 bool LacpBundles::Bundles::Bundle::Data::BundleSystemId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -1612,7 +1625,7 @@ LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::SystemMacAddr
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "bundle-system-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "bundle-system-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::~SystemMacAddr()
@@ -1621,6 +1634,7 @@ LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::~SystemMacAdd
 
 bool LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -1685,9 +1699,11 @@ bool LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::has_leaf
 }
 
 LacpBundles::Bundles::Bundle::Members::Members()
+    :
+    member(this, {"member_interface"})
 {
 
-    yang_name = "members"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "members"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Members::~Members()
@@ -1696,7 +1712,8 @@ LacpBundles::Bundles::Bundle::Members::~Members()
 
 bool LacpBundles::Bundles::Bundle::Members::has_data() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_data())
             return true;
@@ -1706,7 +1723,7 @@ bool LacpBundles::Bundles::Bundle::Members::has_data() const
 
 bool LacpBundles::Bundles::Bundle::Members::has_operation() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_operation())
             return true;
@@ -1736,7 +1753,7 @@ std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Members::get_child_by_name
     {
         auto c = std::make_shared<LacpBundles::Bundles::Bundle::Members::Member>();
         c->parent = this;
-        member.push_back(c);
+        member.append(c);
         return c;
     }
 
@@ -1748,7 +1765,7 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Mem
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : member)
+    for (auto c : member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1787,18 +1804,18 @@ LacpBundles::Bundles::Bundle::Members::Member::Member()
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
     member_name{YType::str, "member-name"}
-    	,
+        ,
     counters(std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::Counters>())
-	,link_data(std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::LinkData>())
-	,member_mux_data(std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData>())
-	,mac_address(std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::MacAddress>())
+    , link_data(std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::LinkData>())
+    , member_mux_data(std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData>())
+    , mac_address(std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::MacAddress>())
 {
     counters->parent = this;
     link_data->parent = this;
     member_mux_data->parent = this;
     mac_address->parent = this;
 
-    yang_name = "member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Members::Member::~Member()
@@ -1807,6 +1824,7 @@ LacpBundles::Bundles::Bundle::Members::Member::~Member()
 
 bool LacpBundles::Bundles::Bundle::Members::Member::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| interface_name.is_set
 	|| port_priority.is_set
@@ -1847,7 +1865,8 @@ bool LacpBundles::Bundles::Bundle::Members::Member::has_operation() const
 std::string LacpBundles::Bundles::Bundle::Members::Member::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -2079,7 +2098,7 @@ LacpBundles::Bundles::Bundle::Members::Member::Counters::Counters()
     last_cleared_nsec{YType::uint32, "last-cleared-nsec"}
 {
 
-    yang_name = "counters"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Members::Member::Counters::~Counters()
@@ -2088,6 +2107,7 @@ LacpBundles::Bundles::Bundle::Members::Member::Counters::~Counters()
 
 bool LacpBundles::Bundles::Bundle::Members::Member::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return lacpd_us_received.is_set
 	|| lacpd_us_transmitted.is_set
 	|| marker_packets_received.is_set
@@ -2300,7 +2320,7 @@ LacpBundles::Bundles::Bundle::Members::Member::LinkData::LinkData()
     partner_port_state{YType::uint8, "partner-port-state"}
 {
 
-    yang_name = "link-data"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-data"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Members::Member::LinkData::~LinkData()
@@ -2309,6 +2329,7 @@ LacpBundles::Bundles::Bundle::Members::Member::LinkData::~LinkData()
 
 bool LacpBundles::Bundles::Bundle::Members::Member::LinkData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set
 	|| actor_system_priority.is_set
 	|| actor_system_mac_address.is_set
@@ -2561,12 +2582,12 @@ LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxData()
     member_mux_state_reason{YType::enumeration, "member-mux-state-reason"},
     member_state{YType::enumeration, "member-state"},
     mux_state_reason{YType::enumeration, "mux-state-reason"}
-    	,
+        ,
     member_mux_state_reason_data(std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData>())
 {
     member_mux_state_reason_data->parent = this;
 
-    yang_name = "member-mux-data"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-mux-data"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::~MemberMuxData()
@@ -2575,6 +2596,7 @@ LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::~MemberMuxData()
 
 bool LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::has_data() const
 {
+    if (is_presence_container) return true;
     return mux_state.is_set
 	|| error.is_set
 	|| member_mux_state_reason.is_set
@@ -2712,7 +2734,7 @@ LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReas
     severity{YType::enumeration, "severity"}
 {
 
-    yang_name = "member-mux-state-reason-data"; yang_parent_name = "member-mux-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-mux-state-reason-data"; yang_parent_name = "member-mux-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::~MemberMuxStateReasonData()
@@ -2721,6 +2743,7 @@ LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReas
 
 bool LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::has_data() const
 {
+    if (is_presence_container) return true;
     return reason_type.is_set
 	|| severity.is_set;
 }
@@ -2802,7 +2825,7 @@ LacpBundles::Bundles::Bundle::Members::Member::MacAddress::MacAddress()
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LacpBundles::Bundles::Bundle::Members::Member::MacAddress::~MacAddress()
@@ -2811,6 +2834,7 @@ LacpBundles::Bundles::Bundle::Members::Member::MacAddress::~MacAddress()
 
 bool LacpBundles::Bundles::Bundle::Members::Member::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -2877,22 +2901,22 @@ bool LacpBundles::Bundles::Bundle::Members::Member::MacAddress::has_leaf_or_chil
 BundleInformation::BundleInformation()
     :
     bfd_counters(std::make_shared<BundleInformation::BfdCounters>())
-	,scheduled_actions(std::make_shared<BundleInformation::ScheduledActions>())
-	,bundle(std::make_shared<BundleInformation::Bundle>())
-	,events_rg(std::make_shared<BundleInformation::EventsRg>())
-	,lacp(std::make_shared<BundleInformation::Lacp>())
-	,mlacp_bundle_counters(std::make_shared<BundleInformation::MlacpBundleCounters>())
-	,protect(std::make_shared<BundleInformation::Protect>())
-	,mlacp_brief(std::make_shared<BundleInformation::MlacpBrief>())
-	,mlacp(std::make_shared<BundleInformation::Mlacp>())
-	,mac_allocation(std::make_shared<BundleInformation::MacAllocation>())
-	,events(std::make_shared<BundleInformation::Events>())
-	,events_bdl(std::make_shared<BundleInformation::EventsBdl>())
-	,bundle_briefs(std::make_shared<BundleInformation::BundleBriefs>())
-	,events_mbr(std::make_shared<BundleInformation::EventsMbr>())
-	,mlacp_iccp_group_counters(std::make_shared<BundleInformation::MlacpIccpGroupCounters>())
-	,system_id(std::make_shared<BundleInformation::SystemId>())
-	,mlacp_member_counters(std::make_shared<BundleInformation::MlacpMemberCounters>())
+    , scheduled_actions(std::make_shared<BundleInformation::ScheduledActions>())
+    , bundle(std::make_shared<BundleInformation::Bundle>())
+    , events_rg(std::make_shared<BundleInformation::EventsRg>())
+    , lacp(std::make_shared<BundleInformation::Lacp>())
+    , mlacp_bundle_counters(std::make_shared<BundleInformation::MlacpBundleCounters>())
+    , protect(std::make_shared<BundleInformation::Protect>())
+    , mlacp_brief(std::make_shared<BundleInformation::MlacpBrief>())
+    , mlacp(std::make_shared<BundleInformation::Mlacp>())
+    , mac_allocation(std::make_shared<BundleInformation::MacAllocation>())
+    , events(std::make_shared<BundleInformation::Events>())
+    , events_bdl(std::make_shared<BundleInformation::EventsBdl>())
+    , bundle_briefs(std::make_shared<BundleInformation::BundleBriefs>())
+    , events_mbr(std::make_shared<BundleInformation::EventsMbr>())
+    , mlacp_iccp_group_counters(std::make_shared<BundleInformation::MlacpIccpGroupCounters>())
+    , system_id(std::make_shared<BundleInformation::SystemId>())
+    , mlacp_member_counters(std::make_shared<BundleInformation::MlacpMemberCounters>())
 {
     bfd_counters->parent = this;
     scheduled_actions->parent = this;
@@ -2912,7 +2936,7 @@ BundleInformation::BundleInformation()
     system_id->parent = this;
     mlacp_member_counters->parent = this;
 
-    yang_name = "bundle-information"; yang_parent_name = "Cisco-IOS-XR-bundlemgr-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "bundle-information"; yang_parent_name = "Cisco-IOS-XR-bundlemgr-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 BundleInformation::~BundleInformation()
@@ -2921,6 +2945,7 @@ BundleInformation::~BundleInformation()
 
 bool BundleInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return (bfd_counters !=  nullptr && bfd_counters->has_data())
 	|| (scheduled_actions !=  nullptr && scheduled_actions->has_data())
 	|| (bundle !=  nullptr && bundle->has_data())
@@ -3271,12 +3296,12 @@ bool BundleInformation::has_leaf_or_child_of_name(const std::string & name) cons
 BundleInformation::BfdCounters::BfdCounters()
     :
     bfd_counters_bundles(std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles>())
-	,bfd_counters_members(std::make_shared<BundleInformation::BfdCounters::BfdCountersMembers>())
+    , bfd_counters_members(std::make_shared<BundleInformation::BfdCounters::BfdCountersMembers>())
 {
     bfd_counters_bundles->parent = this;
     bfd_counters_members->parent = this;
 
-    yang_name = "bfd-counters"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-counters"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::BfdCounters::~BfdCounters()
@@ -3285,6 +3310,7 @@ BundleInformation::BfdCounters::~BfdCounters()
 
 bool BundleInformation::BfdCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return (bfd_counters_bundles !=  nullptr && bfd_counters_bundles->has_data())
 	|| (bfd_counters_members !=  nullptr && bfd_counters_members->has_data());
 }
@@ -3375,9 +3401,11 @@ bool BundleInformation::BfdCounters::has_leaf_or_child_of_name(const std::string
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundles()
+    :
+    bfd_counters_bundle(this, {"bundle_interface"})
 {
 
-    yang_name = "bfd-counters-bundles"; yang_parent_name = "bfd-counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-counters-bundles"; yang_parent_name = "bfd-counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::~BfdCountersBundles()
@@ -3386,7 +3414,8 @@ BundleInformation::BfdCounters::BfdCountersBundles::~BfdCountersBundles()
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::has_data() const
 {
-    for (std::size_t index=0; index<bfd_counters_bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_counters_bundle.len(); index++)
     {
         if(bfd_counters_bundle[index]->has_data())
             return true;
@@ -3396,7 +3425,7 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::has_data() const
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_counters_bundle.size(); index++)
+    for (std::size_t index=0; index<bfd_counters_bundle.len(); index++)
     {
         if(bfd_counters_bundle[index]->has_operation())
             return true;
@@ -3433,7 +3462,7 @@ std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::get_
     {
         auto c = std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle>();
         c->parent = this;
-        bfd_counters_bundle.push_back(c);
+        bfd_counters_bundle.append(c);
         return c;
     }
 
@@ -3445,7 +3474,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bfd_counters_bundle)
+    for (auto c : bfd_counters_bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3474,16 +3503,16 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::has_leaf_or_child_of_na
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     bfd_counters_bundle_descendant(std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant>())
-	,bfd_counters_bundle_children_members(std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers>())
-	,bfd_counters_bundle_item(std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem>())
+    , bfd_counters_bundle_children_members(std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers>())
+    , bfd_counters_bundle_item(std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem>())
 {
     bfd_counters_bundle_descendant->parent = this;
     bfd_counters_bundle_children_members->parent = this;
     bfd_counters_bundle_item->parent = this;
 
-    yang_name = "bfd-counters-bundle"; yang_parent_name = "bfd-counters-bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-counters-bundle"; yang_parent_name = "bfd-counters-bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::~BfdCountersBundle()
@@ -3492,6 +3521,7 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::~BfdCount
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (bfd_counters_bundle_descendant !=  nullptr && bfd_counters_bundle_descendant->has_data())
 	|| (bfd_counters_bundle_children_members !=  nullptr && bfd_counters_bundle_children_members->has_data())
@@ -3517,7 +3547,8 @@ std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundl
 std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bfd-counters-bundle" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "bfd-counters-bundle";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -3613,10 +3644,11 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::has_
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCountersBundleDescendant()
     :
     bundle_name(std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName>())
+    , bfd_counter(this, {})
 {
     bundle_name->parent = this;
 
-    yang_name = "bfd-counters-bundle-descendant"; yang_parent_name = "bfd-counters-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-counters-bundle-descendant"; yang_parent_name = "bfd-counters-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::~BfdCountersBundleDescendant()
@@ -3625,7 +3657,8 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCounte
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::has_data() const
 {
-    for (std::size_t index=0; index<bfd_counter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_counter.len(); index++)
     {
         if(bfd_counter[index]->has_data())
             return true;
@@ -3635,7 +3668,7 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdC
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_counter.size(); index++)
+    for (std::size_t index=0; index<bfd_counter.len(); index++)
     {
         if(bfd_counter[index]->has_operation())
             return true;
@@ -3675,7 +3708,7 @@ std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::BfdC
     {
         auto c = std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter>();
         c->parent = this;
-        bfd_counter.push_back(c);
+        bfd_counter.append(c);
         return c;
     }
 
@@ -3692,7 +3725,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     }
 
     count = 0;
-    for (auto const & c : bfd_counter)
+    for (auto c : bfd_counter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3723,7 +3756,7 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCounte
     item_name{YType::str, "item-name"}
 {
 
-    yang_name = "bundle-name"; yang_parent_name = "bfd-counters-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-name"; yang_parent_name = "bfd-counters-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::~BundleName()
@@ -3732,6 +3765,7 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCounte
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::has_data() const
 {
+    if (is_presence_container) return true;
     return item_name.is_set;
 }
 
@@ -3808,7 +3842,7 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCounte
     time_since_cleared{YType::uint64, "time-since-cleared"}
 {
 
-    yang_name = "bfd-counter"; yang_parent_name = "bfd-counters-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-counter"; yang_parent_name = "bfd-counters-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::~BfdCounter()
@@ -3817,6 +3851,7 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCounte
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::has_data() const
 {
+    if (is_presence_container) return true;
     return member_name.is_set
 	|| last_time_cleared.is_set
 	|| starting.is_set
@@ -3985,9 +4020,11 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdC
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMembers()
+    :
+    bfd_counters_bundle_children_member(this, {"member_interface"})
 {
 
-    yang_name = "bfd-counters-bundle-children-members"; yang_parent_name = "bfd-counters-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-counters-bundle-children-members"; yang_parent_name = "bfd-counters-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::~BfdCountersBundleChildrenMembers()
@@ -3996,7 +4033,8 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCounte
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::has_data() const
 {
-    for (std::size_t index=0; index<bfd_counters_bundle_children_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_counters_bundle_children_member.len(); index++)
     {
         if(bfd_counters_bundle_children_member[index]->has_data())
             return true;
@@ -4006,7 +4044,7 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdC
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_counters_bundle_children_member.size(); index++)
+    for (std::size_t index=0; index<bfd_counters_bundle_children_member.len(); index++)
     {
         if(bfd_counters_bundle_children_member[index]->has_operation())
             return true;
@@ -4036,7 +4074,7 @@ std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::BfdC
     {
         auto c = std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember>();
         c->parent = this;
-        bfd_counters_bundle_children_member.push_back(c);
+        bfd_counters_bundle_children_member.append(c);
         return c;
     }
 
@@ -4048,7 +4086,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bfd_counters_bundle_children_member)
+    for (auto c : bfd_counters_bundle_children_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4088,7 +4126,7 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCounte
     time_since_cleared{YType::uint64, "time-since-cleared"}
 {
 
-    yang_name = "bfd-counters-bundle-children-member"; yang_parent_name = "bfd-counters-bundle-children-members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-counters-bundle-children-member"; yang_parent_name = "bfd-counters-bundle-children-members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::~BfdCountersBundleChildrenMember()
@@ -4097,6 +4135,7 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCounte
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| member_name.is_set
 	|| last_time_cleared.is_set
@@ -4127,7 +4166,8 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdC
 std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bfd-counters-bundle-children-member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "bfd-counters-bundle-children-member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -4282,7 +4322,7 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCounte
     item_name{YType::str, "item-name"}
 {
 
-    yang_name = "bfd-counters-bundle-item"; yang_parent_name = "bfd-counters-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-counters-bundle-item"; yang_parent_name = "bfd-counters-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::~BfdCountersBundleItem()
@@ -4291,6 +4331,7 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCounte
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::has_data() const
 {
+    if (is_presence_container) return true;
     return item_name.is_set;
 }
 
@@ -4355,9 +4396,11 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdC
 }
 
 BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMembers()
+    :
+    bfd_counters_member(this, {"member_interface"})
 {
 
-    yang_name = "bfd-counters-members"; yang_parent_name = "bfd-counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-counters-members"; yang_parent_name = "bfd-counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::BfdCounters::BfdCountersMembers::~BfdCountersMembers()
@@ -4366,7 +4409,8 @@ BundleInformation::BfdCounters::BfdCountersMembers::~BfdCountersMembers()
 
 bool BundleInformation::BfdCounters::BfdCountersMembers::has_data() const
 {
-    for (std::size_t index=0; index<bfd_counters_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_counters_member.len(); index++)
     {
         if(bfd_counters_member[index]->has_data())
             return true;
@@ -4376,7 +4420,7 @@ bool BundleInformation::BfdCounters::BfdCountersMembers::has_data() const
 
 bool BundleInformation::BfdCounters::BfdCountersMembers::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_counters_member.size(); index++)
+    for (std::size_t index=0; index<bfd_counters_member.len(); index++)
     {
         if(bfd_counters_member[index]->has_operation())
             return true;
@@ -4413,7 +4457,7 @@ std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersMembers::get_
     {
         auto c = std::make_shared<BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember>();
         c->parent = this;
-        bfd_counters_member.push_back(c);
+        bfd_counters_member.append(c);
         return c;
     }
 
@@ -4425,7 +4469,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bfd_counters_member)
+    for (auto c : bfd_counters_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4454,12 +4498,12 @@ bool BundleInformation::BfdCounters::BfdCountersMembers::has_leaf_or_child_of_na
 BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMember()
     :
     member_interface{YType::str, "member-interface"}
-    	,
+        ,
     bfd_counters_member_item(std::make_shared<BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem>())
 {
     bfd_counters_member_item->parent = this;
 
-    yang_name = "bfd-counters-member"; yang_parent_name = "bfd-counters-members"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-counters-member"; yang_parent_name = "bfd-counters-members"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::~BfdCountersMember()
@@ -4468,6 +4512,7 @@ BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::~BfdCount
 
 bool BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| (bfd_counters_member_item !=  nullptr && bfd_counters_member_item->has_data());
 }
@@ -4489,7 +4534,8 @@ std::string BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMembe
 std::string BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bfd-counters-member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "bfd-counters-member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -4567,7 +4613,7 @@ BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCounte
     time_since_cleared{YType::uint64, "time-since-cleared"}
 {
 
-    yang_name = "bfd-counters-member-item"; yang_parent_name = "bfd-counters-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-counters-member-item"; yang_parent_name = "bfd-counters-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::~BfdCountersMemberItem()
@@ -4576,6 +4622,7 @@ BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCounte
 
 bool BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::has_data() const
 {
+    if (is_presence_container) return true;
     return member_name.is_set
 	|| last_time_cleared.is_set
 	|| starting.is_set
@@ -4749,7 +4796,7 @@ BundleInformation::ScheduledActions::ScheduledActions()
 {
     scheduled_actions_bundles->parent = this;
 
-    yang_name = "scheduled-actions"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scheduled-actions"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::ScheduledActions::~ScheduledActions()
@@ -4758,6 +4805,7 @@ BundleInformation::ScheduledActions::~ScheduledActions()
 
 bool BundleInformation::ScheduledActions::has_data() const
 {
+    if (is_presence_container) return true;
     return (scheduled_actions_bundles !=  nullptr && scheduled_actions_bundles->has_data());
 }
 
@@ -4832,9 +4880,11 @@ bool BundleInformation::ScheduledActions::has_leaf_or_child_of_name(const std::s
 }
 
 BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundles()
+    :
+    scheduled_actions_bundle(this, {"bundle_interface"})
 {
 
-    yang_name = "scheduled-actions-bundles"; yang_parent_name = "scheduled-actions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scheduled-actions-bundles"; yang_parent_name = "scheduled-actions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::ScheduledActions::ScheduledActionsBundles::~ScheduledActionsBundles()
@@ -4843,7 +4893,8 @@ BundleInformation::ScheduledActions::ScheduledActionsBundles::~ScheduledActionsB
 
 bool BundleInformation::ScheduledActions::ScheduledActionsBundles::has_data() const
 {
-    for (std::size_t index=0; index<scheduled_actions_bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<scheduled_actions_bundle.len(); index++)
     {
         if(scheduled_actions_bundle[index]->has_data())
             return true;
@@ -4853,7 +4904,7 @@ bool BundleInformation::ScheduledActions::ScheduledActionsBundles::has_data() co
 
 bool BundleInformation::ScheduledActions::ScheduledActionsBundles::has_operation() const
 {
-    for (std::size_t index=0; index<scheduled_actions_bundle.size(); index++)
+    for (std::size_t index=0; index<scheduled_actions_bundle.len(); index++)
     {
         if(scheduled_actions_bundle[index]->has_operation())
             return true;
@@ -4890,7 +4941,7 @@ std::shared_ptr<Entity> BundleInformation::ScheduledActions::ScheduledActionsBun
     {
         auto c = std::make_shared<BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle>();
         c->parent = this;
-        scheduled_actions_bundle.push_back(c);
+        scheduled_actions_bundle.append(c);
         return c;
     }
 
@@ -4902,7 +4953,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::ScheduledActio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : scheduled_actions_bundle)
+    for (auto c : scheduled_actions_bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4931,12 +4982,12 @@ bool BundleInformation::ScheduledActions::ScheduledActionsBundles::has_leaf_or_c
 BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     scheduled_actions_bundle_item(std::make_shared<BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem>())
 {
     scheduled_actions_bundle_item->parent = this;
 
-    yang_name = "scheduled-actions-bundle"; yang_parent_name = "scheduled-actions-bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scheduled-actions-bundle"; yang_parent_name = "scheduled-actions-bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::~ScheduledActionsBundle()
@@ -4945,6 +4996,7 @@ BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBu
 
 bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (scheduled_actions_bundle_item !=  nullptr && scheduled_actions_bundle_item->has_data());
 }
@@ -4966,7 +5018,8 @@ std::string BundleInformation::ScheduledActions::ScheduledActionsBundles::Schedu
 std::string BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "scheduled-actions-bundle" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "scheduled-actions-bundle";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -5034,9 +5087,11 @@ bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActi
 BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledActionsBundleItem()
     :
     bundle_name{YType::str, "bundle-name"}
+        ,
+    scheduled_action(this, {})
 {
 
-    yang_name = "scheduled-actions-bundle-item"; yang_parent_name = "scheduled-actions-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scheduled-actions-bundle-item"; yang_parent_name = "scheduled-actions-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::~ScheduledActionsBundleItem()
@@ -5045,7 +5100,8 @@ BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBu
 
 bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::has_data() const
 {
-    for (std::size_t index=0; index<scheduled_action.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<scheduled_action.len(); index++)
     {
         if(scheduled_action[index]->has_data())
             return true;
@@ -5055,7 +5111,7 @@ bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActi
 
 bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::has_operation() const
 {
-    for (std::size_t index=0; index<scheduled_action.size(); index++)
+    for (std::size_t index=0; index<scheduled_action.len(); index++)
     {
         if(scheduled_action[index]->has_operation())
             return true;
@@ -5087,7 +5143,7 @@ std::shared_ptr<Entity> BundleInformation::ScheduledActions::ScheduledActionsBun
     {
         auto c = std::make_shared<BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction>();
         c->parent = this;
-        scheduled_action.push_back(c);
+        scheduled_action.append(c);
         return c;
     }
 
@@ -5099,7 +5155,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::ScheduledActio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : scheduled_action)
+    for (auto c : scheduled_action.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5142,7 +5198,7 @@ BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBu
     action_state{YType::enumeration, "action-state"}
 {
 
-    yang_name = "scheduled-action"; yang_parent_name = "scheduled-actions-bundle-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scheduled-action"; yang_parent_name = "scheduled-actions-bundle-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::~ScheduledAction()
@@ -5151,6 +5207,7 @@ BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBu
 
 bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::has_data() const
 {
+    if (is_presence_container) return true;
     return mlacp_action.is_set
 	|| time_remaining.is_set
 	|| action_state.is_set;
@@ -5243,12 +5300,12 @@ bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActi
 BundleInformation::Bundle::Bundle()
     :
     bundle_bundles(std::make_shared<BundleInformation::Bundle::BundleBundles>())
-	,bundle_members(std::make_shared<BundleInformation::Bundle::BundleMembers>())
+    , bundle_members(std::make_shared<BundleInformation::Bundle::BundleMembers>())
 {
     bundle_bundles->parent = this;
     bundle_members->parent = this;
 
-    yang_name = "bundle"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Bundle::~Bundle()
@@ -5257,6 +5314,7 @@ BundleInformation::Bundle::~Bundle()
 
 bool BundleInformation::Bundle::has_data() const
 {
+    if (is_presence_container) return true;
     return (bundle_bundles !=  nullptr && bundle_bundles->has_data())
 	|| (bundle_members !=  nullptr && bundle_members->has_data());
 }
@@ -5347,9 +5405,11 @@ bool BundleInformation::Bundle::has_leaf_or_child_of_name(const std::string & na
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundles()
+    :
+    bundle_bundle(this, {"bundle_interface"})
 {
 
-    yang_name = "bundle-bundles"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle-bundles"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Bundle::BundleBundles::~BundleBundles()
@@ -5358,7 +5418,8 @@ BundleInformation::Bundle::BundleBundles::~BundleBundles()
 
 bool BundleInformation::Bundle::BundleBundles::has_data() const
 {
-    for (std::size_t index=0; index<bundle_bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_bundle.len(); index++)
     {
         if(bundle_bundle[index]->has_data())
             return true;
@@ -5368,7 +5429,7 @@ bool BundleInformation::Bundle::BundleBundles::has_data() const
 
 bool BundleInformation::Bundle::BundleBundles::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_bundle.size(); index++)
+    for (std::size_t index=0; index<bundle_bundle.len(); index++)
     {
         if(bundle_bundle[index]->has_operation())
             return true;
@@ -5405,7 +5466,7 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::get_child_by_n
     {
         auto c = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle>();
         c->parent = this;
-        bundle_bundle.push_back(c);
+        bundle_bundle.append(c);
         return c;
     }
 
@@ -5417,7 +5478,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle_bundle)
+    for (auto c : bundle_bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5446,16 +5507,16 @@ bool BundleInformation::Bundle::BundleBundles::has_leaf_or_child_of_name(const s
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     bundle_bundle_descendant(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant>())
-	,bundle_bundle_children_members(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers>())
-	,bundle_bundle_item(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem>())
+    , bundle_bundle_children_members(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers>())
+    , bundle_bundle_item(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem>())
 {
     bundle_bundle_descendant->parent = this;
     bundle_bundle_children_members->parent = this;
     bundle_bundle_item->parent = this;
 
-    yang_name = "bundle-bundle"; yang_parent_name = "bundle-bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle-bundle"; yang_parent_name = "bundle-bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::~BundleBundle()
@@ -5464,6 +5525,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::~BundleBundle()
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (bundle_bundle_descendant !=  nullptr && bundle_bundle_descendant->has_data())
 	|| (bundle_bundle_children_members !=  nullptr && bundle_bundle_children_members->has_data())
@@ -5489,7 +5551,8 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::get_absolute
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle-bundle" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "bundle-bundle";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -5585,10 +5648,11 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::has_leaf_or_child_o
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleBundleDescendant()
     :
     bundle_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData>())
+    , member_data(this, {})
 {
     bundle_data->parent = this;
 
-    yang_name = "bundle-bundle-descendant"; yang_parent_name = "bundle-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-bundle-descendant"; yang_parent_name = "bundle-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::~BundleBundleDescendant()
@@ -5597,7 +5661,8 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::has_data() const
 {
-    for (std::size_t index=0; index<member_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member_data.len(); index++)
     {
         if(member_data[index]->has_data())
             return true;
@@ -5607,7 +5672,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::has_operation() const
 {
-    for (std::size_t index=0; index<member_data.size(); index++)
+    for (std::size_t index=0; index<member_data.len(); index++)
     {
         if(member_data[index]->has_operation())
             return true;
@@ -5647,7 +5712,7 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::
     {
         auto c = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData>();
         c->parent = this;
-        member_data.push_back(c);
+        member_data.append(c);
         return c;
     }
 
@@ -5664,7 +5729,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     }
 
     count = 0;
-    for (auto const & c : member_data)
+    for (auto c : member_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5730,12 +5795,13 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     mlacp_mode{YType::enumeration, "mlacp-mode"},
     recovery_delay{YType::uint16, "recovery-delay"},
     singleton{YType::boolean, "singleton"}
-    	,
+        ,
     mac_address(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress>())
+    , bfd_config(this, {})
 {
     mac_address->parent = this;
 
-    yang_name = "bundle-data"; yang_parent_name = "bundle-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "bundle-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::~BundleData()
@@ -5744,7 +5810,8 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::has_data() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_data())
             return true;
@@ -5792,7 +5859,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_operation())
             return true;
@@ -5908,7 +5975,7 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::
     {
         auto c = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(c);
+        bfd_config.append(c);
         return c;
     }
 
@@ -5925,7 +5992,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     }
 
     count = 0;
-    for (auto const & c : bfd_config)
+    for (auto c : bfd_config.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6336,7 +6403,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::~MacAddress()
@@ -6345,6 +6412,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -6418,12 +6486,12 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     pref_echo_min_interval{YType::uint32, "pref-echo-min-interval"},
     fast_detect{YType::boolean, "fast-detect"},
     mode_info{YType::uint32, "mode-info"}
-    	,
+        ,
     destination_address(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
 
-    yang_name = "bfd-config"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-config"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::~BfdConfig()
@@ -6432,6 +6500,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| start_timer.is_set
 	|| nbr_unconfig_timer.is_set
@@ -6609,7 +6678,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::~DestinationAddress()
@@ -6618,6 +6687,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -6719,18 +6789,18 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
     member_name{YType::str, "member-name"}
-    	,
+        ,
     counters(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters>())
-	,link_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData>())
-	,member_mux_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData>())
-	,mac_address(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress>())
+    , link_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData>())
+    , member_mux_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData>())
+    , mac_address(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress>())
 {
     counters->parent = this;
     link_data->parent = this;
     member_mux_data->parent = this;
     mac_address->parent = this;
 
-    yang_name = "member-data"; yang_parent_name = "bundle-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-data"; yang_parent_name = "bundle-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::~MemberData()
@@ -6739,6 +6809,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| port_priority.is_set
 	|| port_number.is_set
@@ -6998,7 +7069,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     last_cleared_nsec{YType::uint32, "last-cleared-nsec"}
 {
 
-    yang_name = "counters"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::~Counters()
@@ -7007,6 +7078,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return lacpd_us_received.is_set
 	|| lacpd_us_transmitted.is_set
 	|| marker_packets_received.is_set
@@ -7219,7 +7291,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     partner_port_state{YType::uint8, "partner-port-state"}
 {
 
-    yang_name = "link-data"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-data"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::~LinkData()
@@ -7228,6 +7300,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set
 	|| actor_system_priority.is_set
 	|| actor_system_mac_address.is_set
@@ -7480,12 +7553,12 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     member_mux_state_reason{YType::enumeration, "member-mux-state-reason"},
     member_state{YType::enumeration, "member-state"},
     mux_state_reason{YType::enumeration, "mux-state-reason"}
-    	,
+        ,
     member_mux_state_reason_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData>())
 {
     member_mux_state_reason_data->parent = this;
 
-    yang_name = "member-mux-data"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-mux-data"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::~MemberMuxData()
@@ -7494,6 +7567,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::has_data() const
 {
+    if (is_presence_container) return true;
     return mux_state.is_set
 	|| error.is_set
 	|| member_mux_state_reason.is_set
@@ -7631,7 +7705,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     severity{YType::enumeration, "severity"}
 {
 
-    yang_name = "member-mux-state-reason-data"; yang_parent_name = "member-mux-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-mux-state-reason-data"; yang_parent_name = "member-mux-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::~MemberMuxStateReasonData()
@@ -7640,6 +7714,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::has_data() const
 {
+    if (is_presence_container) return true;
     return reason_type.is_set
 	|| severity.is_set;
 }
@@ -7721,7 +7796,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::~MacAddress()
@@ -7730,6 +7805,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -7794,9 +7870,11 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMembers()
+    :
+    bundle_bundle_children_member(this, {"member_interface"})
 {
 
-    yang_name = "bundle-bundle-children-members"; yang_parent_name = "bundle-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-bundle-children-members"; yang_parent_name = "bundle-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::~BundleBundleChildrenMembers()
@@ -7805,7 +7883,8 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::has_data() const
 {
-    for (std::size_t index=0; index<bundle_bundle_children_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_bundle_children_member.len(); index++)
     {
         if(bundle_bundle_children_member[index]->has_data())
             return true;
@@ -7815,7 +7894,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_bundle_children_member.size(); index++)
+    for (std::size_t index=0; index<bundle_bundle_children_member.len(); index++)
     {
         if(bundle_bundle_children_member[index]->has_operation())
             return true;
@@ -7845,7 +7924,7 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::
     {
         auto c = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember>();
         c->parent = this;
-        bundle_bundle_children_member.push_back(c);
+        bundle_bundle_children_member.append(c);
         return c;
     }
 
@@ -7857,7 +7936,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle_bundle_children_member)
+    for (auto c : bundle_bundle_children_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7896,18 +7975,18 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
     member_name{YType::str, "member-name"}
-    	,
+        ,
     counters(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters>())
-	,link_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData>())
-	,member_mux_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData>())
-	,mac_address(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress>())
+    , link_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData>())
+    , member_mux_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData>())
+    , mac_address(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress>())
 {
     counters->parent = this;
     link_data->parent = this;
     member_mux_data->parent = this;
     mac_address->parent = this;
 
-    yang_name = "bundle-bundle-children-member"; yang_parent_name = "bundle-bundle-children-members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-bundle-children-member"; yang_parent_name = "bundle-bundle-children-members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::~BundleBundleChildrenMember()
@@ -7916,6 +7995,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| interface_name.is_set
 	|| port_priority.is_set
@@ -7956,7 +8036,8 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle-bundle-children-member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "bundle-bundle-children-member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -8188,7 +8269,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
     last_cleared_nsec{YType::uint32, "last-cleared-nsec"}
 {
 
-    yang_name = "counters"; yang_parent_name = "bundle-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "bundle-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::~Counters()
@@ -8197,6 +8278,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return lacpd_us_received.is_set
 	|| lacpd_us_transmitted.is_set
 	|| marker_packets_received.is_set
@@ -8409,7 +8491,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
     partner_port_state{YType::uint8, "partner-port-state"}
 {
 
-    yang_name = "link-data"; yang_parent_name = "bundle-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-data"; yang_parent_name = "bundle-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::~LinkData()
@@ -8418,6 +8500,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set
 	|| actor_system_priority.is_set
 	|| actor_system_mac_address.is_set
@@ -8670,12 +8753,12 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
     member_mux_state_reason{YType::enumeration, "member-mux-state-reason"},
     member_state{YType::enumeration, "member-state"},
     mux_state_reason{YType::enumeration, "mux-state-reason"}
-    	,
+        ,
     member_mux_state_reason_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData>())
 {
     member_mux_state_reason_data->parent = this;
 
-    yang_name = "member-mux-data"; yang_parent_name = "bundle-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-mux-data"; yang_parent_name = "bundle-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::~MemberMuxData()
@@ -8684,6 +8767,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::has_data() const
 {
+    if (is_presence_container) return true;
     return mux_state.is_set
 	|| error.is_set
 	|| member_mux_state_reason.is_set
@@ -8821,7 +8905,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
     severity{YType::enumeration, "severity"}
 {
 
-    yang_name = "member-mux-state-reason-data"; yang_parent_name = "member-mux-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-mux-state-reason-data"; yang_parent_name = "member-mux-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::~MemberMuxStateReasonData()
@@ -8830,6 +8914,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::has_data() const
 {
+    if (is_presence_container) return true;
     return reason_type.is_set
 	|| severity.is_set;
 }
@@ -8911,7 +8996,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "bundle-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "bundle-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::~MacAddress()
@@ -8920,6 +9005,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -9023,12 +9109,13 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::Bundle
     mlacp_mode{YType::enumeration, "mlacp-mode"},
     recovery_delay{YType::uint16, "recovery-delay"},
     singleton{YType::boolean, "singleton"}
-    	,
+        ,
     mac_address(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress>())
+    , bfd_config(this, {})
 {
     mac_address->parent = this;
 
-    yang_name = "bundle-bundle-item"; yang_parent_name = "bundle-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-bundle-item"; yang_parent_name = "bundle-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::~BundleBundleItem()
@@ -9037,7 +9124,8 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::~Bundl
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::has_data() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_data())
             return true;
@@ -9085,7 +9173,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::h
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_operation())
             return true;
@@ -9201,7 +9289,7 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::
     {
         auto c = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(c);
+        bfd_config.append(c);
         return c;
     }
 
@@ -9218,7 +9306,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     }
 
     count = 0;
-    for (auto const & c : bfd_config)
+    for (auto c : bfd_config.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9629,7 +9717,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAdd
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "bundle-bundle-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "bundle-bundle-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::~MacAddress()
@@ -9638,6 +9726,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAdd
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -9711,12 +9800,12 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdCon
     pref_echo_min_interval{YType::uint32, "pref-echo-min-interval"},
     fast_detect{YType::boolean, "fast-detect"},
     mode_info{YType::uint32, "mode-info"}
-    	,
+        ,
     destination_address(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
 
-    yang_name = "bfd-config"; yang_parent_name = "bundle-bundle-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-config"; yang_parent_name = "bundle-bundle-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::~BfdConfig()
@@ -9725,6 +9814,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdCon
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| start_timer.is_set
 	|| nbr_unconfig_timer.is_set
@@ -9902,7 +9992,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdCon
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::~DestinationAddress()
@@ -9911,6 +10001,7 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdCon
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -10001,9 +10092,11 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::B
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMembers()
+    :
+    bundle_member(this, {"member_interface"})
 {
 
-    yang_name = "bundle-members"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle-members"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Bundle::BundleMembers::~BundleMembers()
@@ -10012,7 +10105,8 @@ BundleInformation::Bundle::BundleMembers::~BundleMembers()
 
 bool BundleInformation::Bundle::BundleMembers::has_data() const
 {
-    for (std::size_t index=0; index<bundle_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_member.len(); index++)
     {
         if(bundle_member[index]->has_data())
             return true;
@@ -10022,7 +10116,7 @@ bool BundleInformation::Bundle::BundleMembers::has_data() const
 
 bool BundleInformation::Bundle::BundleMembers::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_member.size(); index++)
+    for (std::size_t index=0; index<bundle_member.len(); index++)
     {
         if(bundle_member[index]->has_operation())
             return true;
@@ -10059,7 +10153,7 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::get_child_by_n
     {
         auto c = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember>();
         c->parent = this;
-        bundle_member.push_back(c);
+        bundle_member.append(c);
         return c;
     }
 
@@ -10071,7 +10165,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle_member)
+    for (auto c : bundle_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10100,14 +10194,14 @@ bool BundleInformation::Bundle::BundleMembers::has_leaf_or_child_of_name(const s
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember()
     :
     member_interface{YType::str, "member-interface"}
-    	,
+        ,
     bundle_member_ancestor(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor>())
-	,bundle_member_item(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem>())
+    , bundle_member_item(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem>())
 {
     bundle_member_ancestor->parent = this;
     bundle_member_item->parent = this;
 
-    yang_name = "bundle-member"; yang_parent_name = "bundle-members"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle-member"; yang_parent_name = "bundle-members"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::~BundleMember()
@@ -10116,6 +10210,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::~BundleMember()
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| (bundle_member_ancestor !=  nullptr && bundle_member_ancestor->has_data())
 	|| (bundle_member_item !=  nullptr && bundle_member_item->has_data());
@@ -10139,7 +10234,8 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::get_absolute
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle-member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "bundle-member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -10221,10 +10317,11 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::has_leaf_or_child_o
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleMemberAncestor()
     :
     bundle_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData>())
+    , member_data(this, {})
 {
     bundle_data->parent = this;
 
-    yang_name = "bundle-member-ancestor"; yang_parent_name = "bundle-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-member-ancestor"; yang_parent_name = "bundle-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::~BundleMemberAncestor()
@@ -10233,7 +10330,8 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::~B
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::has_data() const
 {
-    for (std::size_t index=0; index<member_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member_data.len(); index++)
     {
         if(member_data[index]->has_data())
             return true;
@@ -10243,7 +10341,7 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::has_operation() const
 {
-    for (std::size_t index=0; index<member_data.size(); index++)
+    for (std::size_t index=0; index<member_data.len(); index++)
     {
         if(member_data[index]->has_operation())
             return true;
@@ -10283,7 +10381,7 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::
     {
         auto c = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData>();
         c->parent = this;
-        member_data.push_back(c);
+        member_data.append(c);
         return c;
     }
 
@@ -10300,7 +10398,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     }
 
     count = 0;
-    for (auto const & c : member_data)
+    for (auto c : member_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10366,12 +10464,13 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Bu
     mlacp_mode{YType::enumeration, "mlacp-mode"},
     recovery_delay{YType::uint16, "recovery-delay"},
     singleton{YType::boolean, "singleton"}
-    	,
+        ,
     mac_address(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress>())
+    , bfd_config(this, {})
 {
     mac_address->parent = this;
 
-    yang_name = "bundle-data"; yang_parent_name = "bundle-member-ancestor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "bundle-member-ancestor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::~BundleData()
@@ -10380,7 +10479,8 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Bu
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::has_data() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_data())
             return true;
@@ -10428,7 +10528,7 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_operation())
             return true;
@@ -10544,7 +10644,7 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::
     {
         auto c = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(c);
+        bfd_config.append(c);
         return c;
     }
 
@@ -10561,7 +10661,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     }
 
     count = 0;
-    for (auto const & c : bfd_config)
+    for (auto c : bfd_config.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10972,7 +11072,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Bu
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::~MacAddress()
@@ -10981,6 +11081,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Bu
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -11054,12 +11155,12 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Bu
     pref_echo_min_interval{YType::uint32, "pref-echo-min-interval"},
     fast_detect{YType::boolean, "fast-detect"},
     mode_info{YType::uint32, "mode-info"}
-    	,
+        ,
     destination_address(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
 
-    yang_name = "bfd-config"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-config"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::~BfdConfig()
@@ -11068,6 +11169,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Bu
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| start_timer.is_set
 	|| nbr_unconfig_timer.is_set
@@ -11245,7 +11347,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Bu
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::~DestinationAddress()
@@ -11254,6 +11356,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Bu
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -11355,18 +11458,18 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
     member_name{YType::str, "member-name"}
-    	,
+        ,
     counters(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters>())
-	,link_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData>())
-	,member_mux_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData>())
-	,mac_address(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress>())
+    , link_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData>())
+    , member_mux_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData>())
+    , mac_address(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress>())
 {
     counters->parent = this;
     link_data->parent = this;
     member_mux_data->parent = this;
     mac_address->parent = this;
 
-    yang_name = "member-data"; yang_parent_name = "bundle-member-ancestor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-data"; yang_parent_name = "bundle-member-ancestor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::~MemberData()
@@ -11375,6 +11478,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| port_priority.is_set
 	|| port_number.is_set
@@ -11634,7 +11738,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
     last_cleared_nsec{YType::uint32, "last-cleared-nsec"}
 {
 
-    yang_name = "counters"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::~Counters()
@@ -11643,6 +11747,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return lacpd_us_received.is_set
 	|| lacpd_us_transmitted.is_set
 	|| marker_packets_received.is_set
@@ -11855,7 +11960,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
     partner_port_state{YType::uint8, "partner-port-state"}
 {
 
-    yang_name = "link-data"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-data"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::~LinkData()
@@ -11864,6 +11969,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set
 	|| actor_system_priority.is_set
 	|| actor_system_mac_address.is_set
@@ -12116,12 +12222,12 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
     member_mux_state_reason{YType::enumeration, "member-mux-state-reason"},
     member_state{YType::enumeration, "member-state"},
     mux_state_reason{YType::enumeration, "mux-state-reason"}
-    	,
+        ,
     member_mux_state_reason_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData>())
 {
     member_mux_state_reason_data->parent = this;
 
-    yang_name = "member-mux-data"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-mux-data"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::~MemberMuxData()
@@ -12130,6 +12236,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::has_data() const
 {
+    if (is_presence_container) return true;
     return mux_state.is_set
 	|| error.is_set
 	|| member_mux_state_reason.is_set
@@ -12267,7 +12374,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
     severity{YType::enumeration, "severity"}
 {
 
-    yang_name = "member-mux-state-reason-data"; yang_parent_name = "member-mux-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-mux-state-reason-data"; yang_parent_name = "member-mux-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::~MemberMuxStateReasonData()
@@ -12276,6 +12383,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::has_data() const
 {
+    if (is_presence_container) return true;
     return reason_type.is_set
 	|| severity.is_set;
 }
@@ -12357,7 +12465,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::~MacAddress()
@@ -12366,6 +12474,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -12441,18 +12550,18 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Bundle
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
     member_name{YType::str, "member-name"}
-    	,
+        ,
     counters(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters>())
-	,link_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData>())
-	,member_mux_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData>())
-	,mac_address(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress>())
+    , link_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData>())
+    , member_mux_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData>())
+    , mac_address(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress>())
 {
     counters->parent = this;
     link_data->parent = this;
     member_mux_data->parent = this;
     mac_address->parent = this;
 
-    yang_name = "bundle-member-item"; yang_parent_name = "bundle-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-member-item"; yang_parent_name = "bundle-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::~BundleMemberItem()
@@ -12461,6 +12570,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::~Bundl
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| port_priority.is_set
 	|| port_number.is_set
@@ -12720,7 +12830,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counte
     last_cleared_nsec{YType::uint32, "last-cleared-nsec"}
 {
 
-    yang_name = "counters"; yang_parent_name = "bundle-member-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "bundle-member-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::~Counters()
@@ -12729,6 +12839,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counte
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return lacpd_us_received.is_set
 	|| lacpd_us_transmitted.is_set
 	|| marker_packets_received.is_set
@@ -12941,7 +13052,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkDa
     partner_port_state{YType::uint8, "partner-port-state"}
 {
 
-    yang_name = "link-data"; yang_parent_name = "bundle-member-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-data"; yang_parent_name = "bundle-member-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::~LinkData()
@@ -12950,6 +13061,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkDa
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set
 	|| actor_system_priority.is_set
 	|| actor_system_mac_address.is_set
@@ -13202,12 +13314,12 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Member
     member_mux_state_reason{YType::enumeration, "member-mux-state-reason"},
     member_state{YType::enumeration, "member-state"},
     mux_state_reason{YType::enumeration, "mux-state-reason"}
-    	,
+        ,
     member_mux_state_reason_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData>())
 {
     member_mux_state_reason_data->parent = this;
 
-    yang_name = "member-mux-data"; yang_parent_name = "bundle-member-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-mux-data"; yang_parent_name = "bundle-member-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::~MemberMuxData()
@@ -13216,6 +13328,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Member
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::has_data() const
 {
+    if (is_presence_container) return true;
     return mux_state.is_set
 	|| error.is_set
 	|| member_mux_state_reason.is_set
@@ -13353,7 +13466,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Member
     severity{YType::enumeration, "severity"}
 {
 
-    yang_name = "member-mux-state-reason-data"; yang_parent_name = "member-mux-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-mux-state-reason-data"; yang_parent_name = "member-mux-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::~MemberMuxStateReasonData()
@@ -13362,6 +13475,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Member
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::has_data() const
 {
+    if (is_presence_container) return true;
     return reason_type.is_set
 	|| severity.is_set;
 }
@@ -13443,7 +13557,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAdd
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "bundle-member-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "bundle-member-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::~MacAddress()
@@ -13452,6 +13566,7 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAdd
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -13518,14 +13633,14 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::M
 BundleInformation::EventsRg::EventsRg()
     :
     events_rg_members(std::make_shared<BundleInformation::EventsRg::EventsRgMembers>())
-	,events_rg_iccp_groups(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups>())
-	,events_rg_bundles(std::make_shared<BundleInformation::EventsRg::EventsRgBundles>())
+    , events_rg_iccp_groups(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups>())
+    , events_rg_bundles(std::make_shared<BundleInformation::EventsRg::EventsRgBundles>())
 {
     events_rg_members->parent = this;
     events_rg_iccp_groups->parent = this;
     events_rg_bundles->parent = this;
 
-    yang_name = "events-rg"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-rg"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsRg::~EventsRg()
@@ -13534,6 +13649,7 @@ BundleInformation::EventsRg::~EventsRg()
 
 bool BundleInformation::EventsRg::has_data() const
 {
+    if (is_presence_container) return true;
     return (events_rg_members !=  nullptr && events_rg_members->has_data())
 	|| (events_rg_iccp_groups !=  nullptr && events_rg_iccp_groups->has_data())
 	|| (events_rg_bundles !=  nullptr && events_rg_bundles->has_data());
@@ -13640,9 +13756,11 @@ bool BundleInformation::EventsRg::has_leaf_or_child_of_name(const std::string & 
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMembers()
+    :
+    events_rg_member(this, {"member_interface"})
 {
 
-    yang_name = "events-rg-members"; yang_parent_name = "events-rg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-rg-members"; yang_parent_name = "events-rg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsRg::EventsRgMembers::~EventsRgMembers()
@@ -13651,7 +13769,8 @@ BundleInformation::EventsRg::EventsRgMembers::~EventsRgMembers()
 
 bool BundleInformation::EventsRg::EventsRgMembers::has_data() const
 {
-    for (std::size_t index=0; index<events_rg_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_rg_member.len(); index++)
     {
         if(events_rg_member[index]->has_data())
             return true;
@@ -13661,7 +13780,7 @@ bool BundleInformation::EventsRg::EventsRgMembers::has_data() const
 
 bool BundleInformation::EventsRg::EventsRgMembers::has_operation() const
 {
-    for (std::size_t index=0; index<events_rg_member.size(); index++)
+    for (std::size_t index=0; index<events_rg_member.len(); index++)
     {
         if(events_rg_member[index]->has_operation())
             return true;
@@ -13698,7 +13817,7 @@ std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::get_child_
     {
         auto c = std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember>();
         c->parent = this;
-        events_rg_member.push_back(c);
+        events_rg_member.append(c);
         return c;
     }
 
@@ -13710,7 +13829,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_rg_member)
+    for (auto c : events_rg_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13739,12 +13858,12 @@ bool BundleInformation::EventsRg::EventsRgMembers::has_leaf_or_child_of_name(con
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMember()
     :
     member_interface{YType::str, "member-interface"}
-    	,
+        ,
     events_rg_member_ancestor(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor>())
 {
     events_rg_member_ancestor->parent = this;
 
-    yang_name = "events-rg-member"; yang_parent_name = "events-rg-members"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-rg-member"; yang_parent_name = "events-rg-members"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::~EventsRgMember()
@@ -13753,6 +13872,7 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::~EventsRgMember()
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| (events_rg_member_ancestor !=  nullptr && events_rg_member_ancestor->has_data());
 }
@@ -13774,7 +13894,8 @@ std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::get_ab
 std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-rg-member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "events-rg-member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -13842,9 +13963,11 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::has_leaf_or_c
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::EventsRgMemberAncestor()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-rg-member-ancestor"; yang_parent_name = "events-rg-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-rg-member-ancestor"; yang_parent_name = "events-rg-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::~EventsRgMemberAncestor()
@@ -13853,7 +13976,8 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -13863,7 +13987,7 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -13895,7 +14019,7 @@ std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::EventsRgMe
     {
         auto c = std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -13907,7 +14031,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13946,16 +14070,16 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-rg-member-ancestor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-rg-member-ancestor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::~Items()
@@ -13964,6 +14088,7 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -14079,12 +14204,12 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -14093,6 +14218,7 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -14193,7 +14319,7 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::~Data()
@@ -14202,6 +14328,7 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -14308,12 +14435,12 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -14322,6 +14449,7 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -14422,7 +14550,7 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::~Data()
@@ -14431,6 +14559,7 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -14537,12 +14666,12 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::~RgEvtInfo()
@@ -14551,6 +14680,7 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -14651,7 +14781,7 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::~Data()
@@ -14660,6 +14790,7 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -14763,9 +14894,11 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroups()
+    :
+    events_rg_iccp_group(this, {"iccp_group"})
 {
 
-    yang_name = "events-rg-iccp-groups"; yang_parent_name = "events-rg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-rg-iccp-groups"; yang_parent_name = "events-rg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::~EventsRgIccpGroups()
@@ -14774,7 +14907,8 @@ BundleInformation::EventsRg::EventsRgIccpGroups::~EventsRgIccpGroups()
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::has_data() const
 {
-    for (std::size_t index=0; index<events_rg_iccp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_rg_iccp_group.len(); index++)
     {
         if(events_rg_iccp_group[index]->has_data())
             return true;
@@ -14784,7 +14918,7 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::has_data() const
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::has_operation() const
 {
-    for (std::size_t index=0; index<events_rg_iccp_group.size(); index++)
+    for (std::size_t index=0; index<events_rg_iccp_group.len(); index++)
     {
         if(events_rg_iccp_group[index]->has_operation())
             return true;
@@ -14821,7 +14955,7 @@ std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::get_chi
     {
         auto c = std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup>();
         c->parent = this;
-        events_rg_iccp_group.push_back(c);
+        events_rg_iccp_group.append(c);
         return c;
     }
 
@@ -14833,7 +14967,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_rg_iccp_group)
+    for (auto c : events_rg_iccp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14862,12 +14996,12 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::has_leaf_or_child_of_name(
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgIccpGroup()
     :
     iccp_group{YType::uint32, "iccp-group"}
-    	,
+        ,
     events_rg_bundle_item_iccp_group(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup>())
 {
     events_rg_bundle_item_iccp_group->parent = this;
 
-    yang_name = "events-rg-iccp-group"; yang_parent_name = "events-rg-iccp-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-rg-iccp-group"; yang_parent_name = "events-rg-iccp-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::~EventsRgIccpGroup()
@@ -14876,6 +15010,7 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::~EventsRgIcc
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return iccp_group.is_set
 	|| (events_rg_bundle_item_iccp_group !=  nullptr && events_rg_bundle_item_iccp_group->has_data());
 }
@@ -14897,7 +15032,8 @@ std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::
 std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-rg-iccp-group" <<"[iccp-group='" <<iccp_group <<"']";
+    path_buffer << "events-rg-iccp-group";
+    ADD_KEY_TOKEN(iccp_group, "iccp-group");
     return path_buffer.str();
 }
 
@@ -14965,9 +15101,11 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::has_lea
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::EventsRgBundleItemIccpGroup()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-rg-bundle-item-iccp-group"; yang_parent_name = "events-rg-iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-rg-bundle-item-iccp-group"; yang_parent_name = "events-rg-iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::~EventsRgBundleItemIccpGroup()
@@ -14976,7 +15114,8 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -14986,7 +15125,7 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -15018,7 +15157,7 @@ std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::EventsR
     {
         auto c = std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -15030,7 +15169,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15069,16 +15208,16 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-rg-bundle-item-iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-rg-bundle-item-iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::~Items()
@@ -15087,6 +15226,7 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -15202,12 +15342,12 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -15216,6 +15356,7 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -15316,7 +15457,7 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::~Data()
@@ -15325,6 +15466,7 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -15431,12 +15573,12 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -15445,6 +15587,7 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -15545,7 +15688,7 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::~Data()
@@ -15554,6 +15697,7 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -15660,12 +15804,12 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::~RgEvtInfo()
@@ -15674,6 +15818,7 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -15774,7 +15919,7 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::~Data()
@@ -15783,6 +15928,7 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -15886,9 +16032,11 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundles()
+    :
+    events_rg_bundle(this, {"bundle_interface"})
 {
 
-    yang_name = "events-rg-bundles"; yang_parent_name = "events-rg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-rg-bundles"; yang_parent_name = "events-rg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsRg::EventsRgBundles::~EventsRgBundles()
@@ -15897,7 +16045,8 @@ BundleInformation::EventsRg::EventsRgBundles::~EventsRgBundles()
 
 bool BundleInformation::EventsRg::EventsRgBundles::has_data() const
 {
-    for (std::size_t index=0; index<events_rg_bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events_rg_bundle.len(); index++)
     {
         if(events_rg_bundle[index]->has_data())
             return true;
@@ -15907,7 +16056,7 @@ bool BundleInformation::EventsRg::EventsRgBundles::has_data() const
 
 bool BundleInformation::EventsRg::EventsRgBundles::has_operation() const
 {
-    for (std::size_t index=0; index<events_rg_bundle.size(); index++)
+    for (std::size_t index=0; index<events_rg_bundle.len(); index++)
     {
         if(events_rg_bundle[index]->has_operation())
             return true;
@@ -15944,7 +16093,7 @@ std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::get_child_
     {
         auto c = std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle>();
         c->parent = this;
-        events_rg_bundle.push_back(c);
+        events_rg_bundle.append(c);
         return c;
     }
 
@@ -15956,7 +16105,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events_rg_bundle)
+    for (auto c : events_rg_bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15985,12 +16134,12 @@ bool BundleInformation::EventsRg::EventsRgBundles::has_leaf_or_child_of_name(con
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     events_rg_bundle_ancestor(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor>())
 {
     events_rg_bundle_ancestor->parent = this;
 
-    yang_name = "events-rg-bundle"; yang_parent_name = "events-rg-bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "events-rg-bundle"; yang_parent_name = "events-rg-bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::~EventsRgBundle()
@@ -15999,6 +16148,7 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::~EventsRgBundle()
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (events_rg_bundle_ancestor !=  nullptr && events_rg_bundle_ancestor->has_data());
 }
@@ -16020,7 +16170,8 @@ std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::get_ab
 std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events-rg-bundle" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "events-rg-bundle";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -16088,9 +16239,11 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::has_leaf_or_c
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::EventsRgBundleAncestor()
     :
     item_name{YType::str, "item-name"}
+        ,
+    items(this, {})
 {
 
-    yang_name = "events-rg-bundle-ancestor"; yang_parent_name = "events-rg-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events-rg-bundle-ancestor"; yang_parent_name = "events-rg-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::~EventsRgBundleAncestor()
@@ -16099,7 +16252,8 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::has_data() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_data())
             return true;
@@ -16109,7 +16263,7 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::has_operation() const
 {
-    for (std::size_t index=0; index<items.size(); index++)
+    for (std::size_t index=0; index<items.len(); index++)
     {
         if(items[index]->has_operation())
             return true;
@@ -16141,7 +16295,7 @@ std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::EventsRgBu
     {
         auto c = std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items>();
         c->parent = this;
-        items.push_back(c);
+        items.append(c);
         return c;
     }
 
@@ -16153,7 +16307,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : items)
+    for (auto c : items.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16192,16 +16346,16 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::Items()
     :
     event_type{YType::enumeration, "event-type"}
-    	,
+        ,
     member_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo>())
-	,bundle_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo>())
-	,rg_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo>())
+    , bundle_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo>())
+    , rg_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo>())
 {
     member_evt_info->parent = this;
     bundle_evt_info->parent = this;
     rg_evt_info->parent = this;
 
-    yang_name = "items"; yang_parent_name = "events-rg-bundle-ancestor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "items"; yang_parent_name = "events-rg-bundle-ancestor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::~Items()
@@ -16210,6 +16364,7 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::has_data() const
 {
+    if (is_presence_container) return true;
     return event_type.is_set
 	|| (member_evt_info !=  nullptr && member_evt_info->has_data())
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_data())
@@ -16325,12 +16480,12 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
     :
     member_event_type{YType::enumeration, "member-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::~MemberEvtInfo()
@@ -16339,6 +16494,7 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return member_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -16439,7 +16595,7 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "member-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::~Data()
@@ -16448,6 +16604,7 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -16554,12 +16711,12 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
     :
     bundle_event_type{YType::enumeration, "bundle-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::~BundleEvtInfo()
@@ -16568,6 +16725,7 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -16668,7 +16826,7 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "bundle-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::~Data()
@@ -16677,6 +16835,7 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -16783,12 +16942,12 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
     :
     rg_event_type{YType::enumeration, "rg-event-type"},
     time_stamp{YType::uint64, "time-stamp"}
-    	,
+        ,
     data(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
 
-    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rg-evt-info"; yang_parent_name = "items"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::~RgEvtInfo()
@@ -16797,6 +16956,7 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return rg_event_type.is_set
 	|| time_stamp.is_set
 	|| (data !=  nullptr && data->has_data());
@@ -16897,7 +17057,7 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
     string_data{YType::str, "string-data"}
 {
 
-    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rg-evt-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::~Data()
@@ -16906,6 +17066,7 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| no_data.is_set
 	|| error.is_set
@@ -17011,12 +17172,12 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
 BundleInformation::Lacp::Lacp()
     :
     lacp_bundles(std::make_shared<BundleInformation::Lacp::LacpBundles>())
-	,lacp_members(std::make_shared<BundleInformation::Lacp::LacpMembers>())
+    , lacp_members(std::make_shared<BundleInformation::Lacp::LacpMembers>())
 {
     lacp_bundles->parent = this;
     lacp_members->parent = this;
 
-    yang_name = "lacp"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lacp"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Lacp::~Lacp()
@@ -17025,6 +17186,7 @@ BundleInformation::Lacp::~Lacp()
 
 bool BundleInformation::Lacp::has_data() const
 {
+    if (is_presence_container) return true;
     return (lacp_bundles !=  nullptr && lacp_bundles->has_data())
 	|| (lacp_members !=  nullptr && lacp_members->has_data());
 }
@@ -17115,9 +17277,11 @@ bool BundleInformation::Lacp::has_leaf_or_child_of_name(const std::string & name
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundles()
+    :
+    lacp_bundle(this, {"bundle_interface"})
 {
 
-    yang_name = "lacp-bundles"; yang_parent_name = "lacp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lacp-bundles"; yang_parent_name = "lacp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Lacp::LacpBundles::~LacpBundles()
@@ -17126,7 +17290,8 @@ BundleInformation::Lacp::LacpBundles::~LacpBundles()
 
 bool BundleInformation::Lacp::LacpBundles::has_data() const
 {
-    for (std::size_t index=0; index<lacp_bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lacp_bundle.len(); index++)
     {
         if(lacp_bundle[index]->has_data())
             return true;
@@ -17136,7 +17301,7 @@ bool BundleInformation::Lacp::LacpBundles::has_data() const
 
 bool BundleInformation::Lacp::LacpBundles::has_operation() const
 {
-    for (std::size_t index=0; index<lacp_bundle.size(); index++)
+    for (std::size_t index=0; index<lacp_bundle.len(); index++)
     {
         if(lacp_bundle[index]->has_operation())
             return true;
@@ -17173,7 +17338,7 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::get_child_by_name(
     {
         auto c = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle>();
         c->parent = this;
-        lacp_bundle.push_back(c);
+        lacp_bundle.append(c);
         return c;
     }
 
@@ -17185,7 +17350,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lacp_bundle)
+    for (auto c : lacp_bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17214,16 +17379,16 @@ bool BundleInformation::Lacp::LacpBundles::has_leaf_or_child_of_name(const std::
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     lacp_bundle_item(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem>())
-	,lacp_bundle_descendant(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant>())
-	,lacp_bundle_children_members(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers>())
+    , lacp_bundle_descendant(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant>())
+    , lacp_bundle_children_members(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers>())
 {
     lacp_bundle_item->parent = this;
     lacp_bundle_descendant->parent = this;
     lacp_bundle_children_members->parent = this;
 
-    yang_name = "lacp-bundle"; yang_parent_name = "lacp-bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lacp-bundle"; yang_parent_name = "lacp-bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::~LacpBundle()
@@ -17232,6 +17397,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::~LacpBundle()
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (lacp_bundle_item !=  nullptr && lacp_bundle_item->has_data())
 	|| (lacp_bundle_descendant !=  nullptr && lacp_bundle_descendant->has_data())
@@ -17257,7 +17423,8 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::get_absolute_path(
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lacp-bundle" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "lacp-bundle";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -17356,14 +17523,14 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::LacpBundleItem
     partner_system_priority{YType::uint16, "partner-system-priority"},
     partner_system_mac_address{YType::str, "partner-system-mac-address"},
     partner_operational_key{YType::uint16, "partner-operational-key"}
-    	,
+        ,
     actor_bundle_data(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData>())
-	,bundle_system_id(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId>())
+    , bundle_system_id(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId>())
 {
     actor_bundle_data->parent = this;
     bundle_system_id->parent = this;
 
-    yang_name = "lacp-bundle-item"; yang_parent_name = "lacp-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lacp-bundle-item"; yang_parent_name = "lacp-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::~LacpBundleItem()
@@ -17372,6 +17539,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::~LacpBundleIte
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::has_data() const
 {
+    if (is_presence_container) return true;
     return actor_operational_key.is_set
 	|| partner_system_priority.is_set
 	|| partner_system_mac_address.is_set
@@ -17546,12 +17714,13 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleDat
     mlacp_mode{YType::enumeration, "mlacp-mode"},
     recovery_delay{YType::uint16, "recovery-delay"},
     singleton{YType::boolean, "singleton"}
-    	,
+        ,
     mac_address(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress>())
+    , bfd_config(this, {})
 {
     mac_address->parent = this;
 
-    yang_name = "actor-bundle-data"; yang_parent_name = "lacp-bundle-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actor-bundle-data"; yang_parent_name = "lacp-bundle-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::~ActorBundleData()
@@ -17560,7 +17729,8 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleDat
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::has_data() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_data())
             return true;
@@ -17608,7 +17778,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBund
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_operation())
             return true;
@@ -17724,7 +17894,7 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBu
     {
         auto c = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(c);
+        bfd_config.append(c);
         return c;
     }
 
@@ -17741,7 +17911,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     }
 
     count = 0;
-    for (auto const & c : bfd_config)
+    for (auto c : bfd_config.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18152,7 +18322,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleDat
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::~MacAddress()
@@ -18161,6 +18331,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleDat
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -18234,12 +18405,12 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleDat
     pref_echo_min_interval{YType::uint32, "pref-echo-min-interval"},
     fast_detect{YType::boolean, "fast-detect"},
     mode_info{YType::uint32, "mode-info"}
-    	,
+        ,
     destination_address(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
 
-    yang_name = "bfd-config"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-config"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::~BfdConfig()
@@ -18248,6 +18419,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleDat
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| start_timer.is_set
 	|| nbr_unconfig_timer.is_set
@@ -18425,7 +18597,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleDat
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::~DestinationAddress()
@@ -18434,6 +18606,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleDat
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -18526,12 +18699,12 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBund
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::BundleSystemId()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "bundle-system-id"; yang_parent_name = "lacp-bundle-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-system-id"; yang_parent_name = "lacp-bundle-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::~BundleSystemId()
@@ -18540,6 +18713,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -18624,7 +18798,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "bundle-system-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "bundle-system-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::~SystemMacAddr()
@@ -18633,6 +18807,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -18699,10 +18874,11 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSys
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::LacpBundleDescendant()
     :
     bundle_data(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData>())
+    , member_data(this, {})
 {
     bundle_data->parent = this;
 
-    yang_name = "lacp-bundle-descendant"; yang_parent_name = "lacp-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lacp-bundle-descendant"; yang_parent_name = "lacp-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::~LacpBundleDescendant()
@@ -18711,7 +18887,8 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::~LacpBun
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::has_data() const
 {
-    for (std::size_t index=0; index<member_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member_data.len(); index++)
     {
         if(member_data[index]->has_data())
             return true;
@@ -18721,7 +18898,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::has
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::has_operation() const
 {
-    for (std::size_t index=0; index<member_data.size(); index++)
+    for (std::size_t index=0; index<member_data.len(); index++)
     {
         if(member_data[index]->has_operation())
             return true;
@@ -18761,7 +18938,7 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBu
     {
         auto c = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData>();
         c->parent = this;
-        member_data.push_back(c);
+        member_data.append(c);
         return c;
     }
 
@@ -18778,7 +18955,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     }
 
     count = 0;
-    for (auto const & c : member_data)
+    for (auto c : member_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18810,14 +18987,14 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
     partner_system_priority{YType::uint16, "partner-system-priority"},
     partner_system_mac_address{YType::str, "partner-system-mac-address"},
     partner_operational_key{YType::uint16, "partner-operational-key"}
-    	,
+        ,
     actor_bundle_data(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData>())
-	,bundle_system_id(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId>())
+    , bundle_system_id(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId>())
 {
     actor_bundle_data->parent = this;
     bundle_system_id->parent = this;
 
-    yang_name = "bundle-data"; yang_parent_name = "lacp-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "lacp-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::~BundleData()
@@ -18826,6 +19003,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::has_data() const
 {
+    if (is_presence_container) return true;
     return actor_operational_key.is_set
 	|| partner_system_priority.is_set
 	|| partner_system_mac_address.is_set
@@ -19000,12 +19178,13 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
     mlacp_mode{YType::enumeration, "mlacp-mode"},
     recovery_delay{YType::uint16, "recovery-delay"},
     singleton{YType::boolean, "singleton"}
-    	,
+        ,
     mac_address(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress>())
+    , bfd_config(this, {})
 {
     mac_address->parent = this;
 
-    yang_name = "actor-bundle-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actor-bundle-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::~ActorBundleData()
@@ -19014,7 +19193,8 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::has_data() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_data())
             return true;
@@ -19062,7 +19242,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_operation())
             return true;
@@ -19178,7 +19358,7 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBu
     {
         auto c = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(c);
+        bfd_config.append(c);
         return c;
     }
 
@@ -19195,7 +19375,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     }
 
     count = 0;
-    for (auto const & c : bfd_config)
+    for (auto c : bfd_config.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19606,7 +19786,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::~MacAddress()
@@ -19615,6 +19795,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -19688,12 +19869,12 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
     pref_echo_min_interval{YType::uint32, "pref-echo-min-interval"},
     fast_detect{YType::boolean, "fast-detect"},
     mode_info{YType::uint32, "mode-info"}
-    	,
+        ,
     destination_address(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
 
-    yang_name = "bfd-config"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-config"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::~BfdConfig()
@@ -19702,6 +19883,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| start_timer.is_set
 	|| nbr_unconfig_timer.is_set
@@ -19879,7 +20061,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::~DestinationAddress()
@@ -19888,6 +20070,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -19980,12 +20163,12 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::BundleSystemId()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "bundle-system-id"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-system-id"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::~BundleSystemId()
@@ -19994,6 +20177,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -20078,7 +20262,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "bundle-system-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "bundle-system-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::~SystemMacAddr()
@@ -20087,6 +20271,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -20161,16 +20346,16 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     actor_churn_state{YType::enumeration, "actor-churn-state"},
     partner_churn_state{YType::enumeration, "partner-churn-state"},
     iccp_group_id{YType::uint32, "iccp-group-id"}
-    	,
+        ,
     actor_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo>())
-	,partner_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo>())
-	,additional_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo>())
+    , partner_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo>())
+    , additional_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo>())
 {
     actor_info->parent = this;
     partner_info->parent = this;
     additional_info->parent = this;
 
-    yang_name = "member-data"; yang_parent_name = "lacp-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-data"; yang_parent_name = "lacp-bundle-descendant"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::~MemberData()
@@ -20179,6 +20364,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::has_data() const
 {
+    if (is_presence_container) return true;
     return selected_aggregator_id.is_set
 	|| attached_aggregator_id.is_set
 	|| selection_state.is_set
@@ -20397,12 +20583,12 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::ActorInfo()
     :
     tx_period{YType::uint32, "tx-period"}
-    	,
+        ,
     port_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo>())
 {
     port_info->parent = this;
 
-    yang_name = "actor-info"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actor-info"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::~ActorInfo()
@@ -20411,6 +20597,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_period.is_set
 	|| (port_info !=  nullptr && port_info->has_data());
 }
@@ -20494,14 +20681,14 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     :
     key{YType::uint16, "key"},
     state{YType::uint8, "state"}
-    	,
+        ,
     system(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System>())
-	,port(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port>())
+    , port(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port>())
 {
     system->parent = this;
     port->parent = this;
 
-    yang_name = "port-info"; yang_parent_name = "actor-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-info"; yang_parent_name = "actor-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::~PortInfo()
@@ -20510,6 +20697,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| state.is_set
 	|| (system !=  nullptr && system->has_data())
@@ -20621,12 +20809,12 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::System()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::~System()
@@ -20635,6 +20823,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -20719,7 +20908,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::~SystemMacAddr()
@@ -20728,6 +20917,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -20797,7 +20987,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     link_number{YType::uint16, "link-number"}
 {
 
-    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::~Port()
@@ -20806,6 +20996,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return link_priority.is_set
 	|| link_number.is_set;
 }
@@ -20885,12 +21076,12 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PartnerInfo()
     :
     tx_period{YType::uint32, "tx-period"}
-    	,
+        ,
     port_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo>())
 {
     port_info->parent = this;
 
-    yang_name = "partner-info"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "partner-info"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::~PartnerInfo()
@@ -20899,6 +21090,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_period.is_set
 	|| (port_info !=  nullptr && port_info->has_data());
 }
@@ -20982,14 +21174,14 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     :
     key{YType::uint16, "key"},
     state{YType::uint8, "state"}
-    	,
+        ,
     system(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System>())
-	,port(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port>())
+    , port(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port>())
 {
     system->parent = this;
     port->parent = this;
 
-    yang_name = "port-info"; yang_parent_name = "partner-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-info"; yang_parent_name = "partner-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::~PortInfo()
@@ -20998,6 +21190,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| state.is_set
 	|| (system !=  nullptr && system->has_data())
@@ -21109,12 +21302,12 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::System()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::~System()
@@ -21123,6 +21316,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -21207,7 +21401,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::~SystemMacAddr()
@@ -21216,6 +21410,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -21285,7 +21480,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     link_number{YType::uint16, "link-number"}
 {
 
-    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::~Port()
@@ -21294,6 +21489,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return link_priority.is_set
 	|| link_number.is_set;
 }
@@ -21373,14 +21569,14 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::AdditionalInfo()
     :
     mbr_type{YType::enumeration, "mbr-type"}
-    	,
+        ,
     local(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local>())
-	,foreign(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign>())
+    , foreign(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign>())
 {
     local->parent = this;
     foreign->parent = this;
 
-    yang_name = "additional-info"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "additional-info"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::~AdditionalInfo()
@@ -21389,6 +21585,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return mbr_type.is_set
 	|| (local !=  nullptr && local->has_data())
 	|| (foreign !=  nullptr && foreign->has_data());
@@ -21489,7 +21686,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     interface_handle{YType::str, "interface-handle"}
 {
 
-    yang_name = "local"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::~Local()
@@ -21498,6 +21695,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set;
 }
 
@@ -21567,7 +21765,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     member_name{YType::str, "member-name"}
 {
 
-    yang_name = "foreign"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::~Foreign()
@@ -21576,6 +21774,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_address.is_set
 	|| member_name.is_set;
 }
@@ -21653,9 +21852,11 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMembers()
+    :
+    lacp_bundle_children_member(this, {"member_interface"})
 {
 
-    yang_name = "lacp-bundle-children-members"; yang_parent_name = "lacp-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lacp-bundle-children-members"; yang_parent_name = "lacp-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::~LacpBundleChildrenMembers()
@@ -21664,7 +21865,8 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::~La
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::has_data() const
 {
-    for (std::size_t index=0; index<lacp_bundle_children_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lacp_bundle_children_member.len(); index++)
     {
         if(lacp_bundle_children_member[index]->has_data())
             return true;
@@ -21674,7 +21876,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::has_operation() const
 {
-    for (std::size_t index=0; index<lacp_bundle_children_member.size(); index++)
+    for (std::size_t index=0; index<lacp_bundle_children_member.len(); index++)
     {
         if(lacp_bundle_children_member[index]->has_operation())
             return true;
@@ -21704,7 +21906,7 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBu
     {
         auto c = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember>();
         c->parent = this;
-        lacp_bundle_children_member.push_back(c);
+        lacp_bundle_children_member.append(c);
         return c;
     }
 
@@ -21716,7 +21918,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lacp_bundle_children_member)
+    for (auto c : lacp_bundle_children_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21754,16 +21956,16 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
     actor_churn_state{YType::enumeration, "actor-churn-state"},
     partner_churn_state{YType::enumeration, "partner-churn-state"},
     iccp_group_id{YType::uint32, "iccp-group-id"}
-    	,
+        ,
     actor_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo>())
-	,partner_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo>())
-	,additional_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo>())
+    , partner_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo>())
+    , additional_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo>())
 {
     actor_info->parent = this;
     partner_info->parent = this;
     additional_info->parent = this;
 
-    yang_name = "lacp-bundle-children-member"; yang_parent_name = "lacp-bundle-children-members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lacp-bundle-children-member"; yang_parent_name = "lacp-bundle-children-members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::~LacpBundleChildrenMember()
@@ -21772,6 +21974,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| selected_aggregator_id.is_set
 	|| attached_aggregator_id.is_set
@@ -21808,7 +22011,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lacp-bundle-children-member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "lacp-bundle-children-member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -22003,12 +22207,12 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::ActorInfo()
     :
     tx_period{YType::uint32, "tx-period"}
-    	,
+        ,
     port_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo>())
 {
     port_info->parent = this;
 
-    yang_name = "actor-info"; yang_parent_name = "lacp-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actor-info"; yang_parent_name = "lacp-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::~ActorInfo()
@@ -22017,6 +22221,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_period.is_set
 	|| (port_info !=  nullptr && port_info->has_data());
 }
@@ -22100,14 +22305,14 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
     :
     key{YType::uint16, "key"},
     state{YType::uint8, "state"}
-    	,
+        ,
     system(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System>())
-	,port(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port>())
+    , port(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port>())
 {
     system->parent = this;
     port->parent = this;
 
-    yang_name = "port-info"; yang_parent_name = "actor-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-info"; yang_parent_name = "actor-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::~PortInfo()
@@ -22116,6 +22321,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| state.is_set
 	|| (system !=  nullptr && system->has_data())
@@ -22227,12 +22433,12 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::System()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::~System()
@@ -22241,6 +22447,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -22325,7 +22532,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::~SystemMacAddr()
@@ -22334,6 +22541,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -22403,7 +22611,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
     link_number{YType::uint16, "link-number"}
 {
 
-    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::~Port()
@@ -22412,6 +22620,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return link_priority.is_set
 	|| link_number.is_set;
 }
@@ -22491,12 +22700,12 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PartnerInfo()
     :
     tx_period{YType::uint32, "tx-period"}
-    	,
+        ,
     port_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo>())
 {
     port_info->parent = this;
 
-    yang_name = "partner-info"; yang_parent_name = "lacp-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "partner-info"; yang_parent_name = "lacp-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::~PartnerInfo()
@@ -22505,6 +22714,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_period.is_set
 	|| (port_info !=  nullptr && port_info->has_data());
 }
@@ -22584,13 +22794,40 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
     return false;
 }
 
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_nak {0, "mbr-state-nak"};
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_unknown {1, "mbr-state-unknown"};
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_up {2, "mbr-state-up"};
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_down {3, "mbr-state-down"};
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_admin_down {4, "mbr-state-admin-down"};
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_test {5, "mbr-state-test"};
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_error {6, "mbr-state-error"};
+const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_nonrevertive {0, "bmd-mlacp-switchover-nonrevertive"};
+const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_brute_force {1, "bmd-mlacp-switchover-brute-force"};
+const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_revertive {2, "bmd-mlacp-switchover-revertive"};
+const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_count {3, "bmd-mlacp-switchover-count"};
+
+const Enum::YLeaf LoadBalance::default_ {0, "default"};
+const Enum::YLeaf LoadBalance::auto_ {1, "auto"};
+const Enum::YLeaf LoadBalance::value_ {2, "value"};
+const Enum::YLeaf LoadBalance::source_ip {3, "source-ip"};
+const Enum::YLeaf LoadBalance::destination_ip {4, "destination-ip"};
+const Enum::YLeaf LoadBalance::unknown {5, "unknown"};
+
+const Enum::YLeaf BmBdlState::bm_bdl_state_admin_down {0, "bm-bdl-state-admin-down"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_down {1, "bm-bdl-state-down"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_client_down {2, "bm-bdl-state-client-down"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_ptnr_down {3, "bm-bdl-state-ptnr-down"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_bundle_shutdown {4, "bm-bdl-state-bundle-shutdown"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_pe_isolated {5, "bm-bdl-state-pe-isolated"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_nak {6, "bm-bdl-state-nak"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_up_active {7, "bm-bdl-state-up-active"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_mlacp_hot_standby {8, "bm-bdl-state-mlacp-hot-standby"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_mlacp_cold_standby {9, "bm-bdl-state-mlacp-cold-standby"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_unknown {10, "bm-bdl-state-unknown"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_cold_standby {11, "bm-bdl-state-cold-standby"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_error_disabled {12, "bm-bdl-state-error-disabled"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_efd_disabled {13, "bm-bdl-state-efd-disabled"};
+
+const Enum::YLeaf LacpPeriodState::period_s_low {0, "period-s-low"};
+const Enum::YLeaf LacpPeriodState::period_fast {1, "period-fast"};
+const Enum::YLeaf LacpPeriodState::period_none {2, "period-none"};
+
+const Enum::YLeaf BundleMedia::bundle_media_ethernet {0, "bundle-media-ethernet"};
+const Enum::YLeaf BundleMedia::bundle_media_pos {1, "bundle-media-pos"};
+const Enum::YLeaf BundleMedia::bundle_media_count {2, "bundle-media-count"};
 
 const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_nak {0, "bdl-state-nak"};
 const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_unknown {1, "bdl-state-unknown"};
@@ -22602,30 +22839,8 @@ const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_admin_down {6, "bdl-state-admi
 const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_test {7, "bdl-state-test"};
 const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_error {8, "bdl-state-error"};
 
-const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_req {0, "node-sync-req"};
-const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_done {1, "node-sync-done"};
-const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_start {2, "node-sync-start"};
-const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_init {3, "node-sync-init"};
-const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_singleton {4, "node-sync-singleton"};
-
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_incomplete {0, "node-state-incomplete"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_conn_rejected {1, "node-state-conn-rejected"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_connect_sent {2, "node-state-connect-sent"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unconfigured {3, "node-state-unconfigured"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unreachable {4, "node-state-unreachable"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_iccp_down {5, "node-state-iccp-down"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_nak {6, "node-state-nak"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unknown {7, "node-state-unknown"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_mlacp_down {8, "node-state-mlacp-down"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_admin_down {9, "node-state-admin-down"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_pe_isolated {10, "node-state-pe-isolated"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_error {11, "node-state-error"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_test {12, "node-state-test"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_up {13, "node-state-up"};
-
-const Enum::YLeaf LacpChurnstates::no_churn {1, "no-churn"};
-const Enum::YLeaf LacpChurnstates::churn {2, "churn"};
-const Enum::YLeaf LacpChurnstates::churn_monitor {3, "churn-monitor"};
+const Enum::YLeaf BundleMedia1::ethernet {0, "ethernet"};
+const Enum::YLeaf BundleMedia1::pos {1, "pos"};
 
 const Enum::YLeaf Rxstates::current_rx {1, "current-rx"};
 const Enum::YLeaf Rxstates::expired {2, "expired"};
@@ -22634,44 +22849,9 @@ const Enum::YLeaf Rxstates::initialize {4, "initialize"};
 const Enum::YLeaf Rxstates::lacp_disabled {5, "lacp-disabled"};
 const Enum::YLeaf Rxstates::port_disabled {6, "port-disabled"};
 
-const Enum::YLeaf LacpPeriodState::period_s_low {0, "period-s-low"};
-const Enum::YLeaf LacpPeriodState::period_fast {1, "period-fast"};
-const Enum::YLeaf LacpPeriodState::period_none {2, "period-none"};
-
-const Enum::YLeaf LacpSelState::unselected {0, "unselected"};
-const Enum::YLeaf LacpSelState::standby {1, "standby"};
-const Enum::YLeaf LacpSelState::selected {2, "selected"};
-
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_idb_create {0, "bmd-event-rg-idb-create"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_configured {1, "bmd-event-rg-configured"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_user_config {2, "bmd-event-rg-user-config"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_connect_ion {3, "bmd-event-rg-connect-ion"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_data {4, "bmd-event-rg-data"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_sync {5, "bmd-event-rg-sync"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_first_retry {6, "bmd-event-rg-first-retry"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_error {7, "bmd-event-rg-error"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_mlacp_tlv {8, "bmd-event-rg-mlacp-tlv"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_iccp_event {9, "bmd-event-rg-iccp-event"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_count {10, "bmd-event-rg-count"};
-
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_idb_create {0, "bmd-event-bdl-idb-create"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_configured {1, "bmd-event-bdl-configured"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_im_state {2, "bmd-event-bdl-im-state"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mbr_added {3, "bmd-event-bdl-mbr-added"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mbr_deleted {4, "bmd-event-bdl-mbr-deleted"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mac_addr {5, "bmd-event-bdl-mac-addr"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_first_retry {6, "bmd-event-bdl-first-retry"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_user_config {7, "bmd-event-bdl-user-config"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_error {8, "bmd-event-bdl-error"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mlacp_tlv {9, "bmd-event-bdl-mlacp-tlv"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_redundancy_role {10, "bmd-event-bdl-redundancy-role"};
-const Enum::YLeaf BmdBagEventBdlItem::bdl_bfd_state_change {11, "bdl-bfd-state-change"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_icl {12, "bmd-event-bdl-icl"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_count {13, "bmd-event-bdl-count"};
-
-const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_none {0, "bmd-bag-evt-data-none"};
-const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_error {1, "bmd-bag-evt-data-error"};
-const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_string {2, "bmd-bag-evt-data-string"};
+const Enum::YLeaf LacpChurnstates::no_churn {1, "no-churn"};
+const Enum::YLeaf LacpChurnstates::churn {2, "churn"};
+const Enum::YLeaf LacpChurnstates::churn_monitor {3, "churn-monitor"};
 
 const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_idb_create {0, "bmd-event-mbr-idb-create"};
 const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_bdl_add {1, "bmd-event-mbr-bdl-add"};
@@ -22688,10 +22868,9 @@ const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_mlacp_tlv {11, "bmd-event-mb
 const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_redundancy_role {12, "bmd-event-mbr-redundancy-role"};
 const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_count {13, "bmd-event-mbr-count"};
 
-const Enum::YLeaf BmdBagTarget::bm_bag_target_mbr {0, "bm-bag-target-mbr"};
-const Enum::YLeaf BmdBagTarget::bm_bag_target_bdl {1, "bm-bag-target-bdl"};
-const Enum::YLeaf BmdBagTarget::bm_bag_target_node {2, "bm-bag-target-node"};
-const Enum::YLeaf BmdBagTarget::bm_bag_target_rg {3, "bm-bag-target-rg"};
+const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_none {0, "bmd-bag-evt-data-none"};
+const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_error {1, "bmd-bag-evt-data-error"};
+const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_string {2, "bmd-bag-evt-data-string"};
 
 const Enum::YLeaf BmdSwitchReason::bm_switch_reason_none {0, "bm-switch-reason-none"};
 const Enum::YLeaf BmdSwitchReason::bm_switch_reason_noop {1, "bm-switch-reason-noop"};
@@ -22703,49 +22882,12 @@ const Enum::YLeaf BmdSwitchReason::bm_switch_reason_preceding_error {6, "bm-swit
 const Enum::YLeaf BmdSwitchReason::bm_switch_reason_wrong_order {7, "bm-switch-reason-wrong-order"};
 const Enum::YLeaf BmdSwitchReason::bm_switch_reason_singleton {8, "bm-switch-reason-singleton"};
 
-const Enum::YLeaf BmdBagMlacpSchActionItem::switchover {0, "switchover"};
-const Enum::YLeaf BmdBagMlacpSchActionItem::switchback {1, "switchback"};
-
 const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_local {0, "bmd-mbr-local"};
 const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_foreign {1, "bmd-mbr-foreign"};
 const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_unknown {2, "bmd-mbr-unknown"};
 
-const Enum::YLeaf BmMuxreason::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_count {19, "bm-mux-reason-count"};
-
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
-
-const Enum::YLeaf BmSeverity::ok {0, "ok"};
-const Enum::YLeaf BmSeverity::information {1, "information"};
-const Enum::YLeaf BmSeverity::misconfiguration {2, "misconfiguration"};
-const Enum::YLeaf BmSeverity::warning {3, "warning"};
-const Enum::YLeaf BmSeverity::error {5, "error"};
-
-const Enum::YLeaf BmStateReasonTarget::member_reason {0, "member-reason"};
-const Enum::YLeaf BmStateReasonTarget::bundle_reason {1, "bundle-reason"};
+const Enum::YLeaf BmAfId::bm_af_id_ipv4 {1136568623, "bm-af-id-ipv4"};
+const Enum::YLeaf BmAfId::bm_af_id_ipv6 {1136568624, "bm-af-id-ipv6"};
 
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_unknown {0, "bm-mbr-state-reason-unknown"};
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_unselectable_unknown {1, "bm-mbr-state-reason-unselectable-unknown"};
@@ -22824,6 +22966,69 @@ const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_timer_running {73, "bm-m
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_client_bundle_ctrl {74, "bm-mbr-state-reason-client-bundle-ctrl"};
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_count {75, "bm-mbr-state-reason-count"};
 
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_idb_create {0, "bmd-event-bdl-idb-create"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_configured {1, "bmd-event-bdl-configured"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_im_state {2, "bmd-event-bdl-im-state"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mbr_added {3, "bmd-event-bdl-mbr-added"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mbr_deleted {4, "bmd-event-bdl-mbr-deleted"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mac_addr {5, "bmd-event-bdl-mac-addr"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_first_retry {6, "bmd-event-bdl-first-retry"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_user_config {7, "bmd-event-bdl-user-config"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_error {8, "bmd-event-bdl-error"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mlacp_tlv {9, "bmd-event-bdl-mlacp-tlv"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_redundancy_role {10, "bmd-event-bdl-redundancy-role"};
+const Enum::YLeaf BmdBagEventBdlItem::bdl_bfd_state_change {11, "bdl-bfd-state-change"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_icl {12, "bmd-event-bdl-icl"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_count {13, "bmd-event-bdl-count"};
+
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_incomplete {0, "node-state-incomplete"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_conn_rejected {1, "node-state-conn-rejected"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_connect_sent {2, "node-state-connect-sent"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unconfigured {3, "node-state-unconfigured"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unreachable {4, "node-state-unreachable"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_iccp_down {5, "node-state-iccp-down"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_nak {6, "node-state-nak"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unknown {7, "node-state-unknown"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_mlacp_down {8, "node-state-mlacp-down"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_admin_down {9, "node-state-admin-down"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_pe_isolated {10, "node-state-pe-isolated"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_error {11, "node-state-error"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_test {12, "node-state-test"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_up {13, "node-state-up"};
+
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_idb_create {0, "bmd-event-rg-idb-create"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_configured {1, "bmd-event-rg-configured"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_user_config {2, "bmd-event-rg-user-config"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_connect_ion {3, "bmd-event-rg-connect-ion"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_data {4, "bmd-event-rg-data"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_sync {5, "bmd-event-rg-sync"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_first_retry {6, "bmd-event-rg-first-retry"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_error {7, "bmd-event-rg-error"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_mlacp_tlv {8, "bmd-event-rg-mlacp-tlv"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_iccp_event {9, "bmd-event-rg-iccp-event"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_count {10, "bmd-event-rg-count"};
+
+const Enum::YLeaf BmWhichSystem::bm_which_system_actr {0, "bm-which-system-actr"};
+const Enum::YLeaf BmWhichSystem::bm_which_system_ptnr {1, "bm-which-system-ptnr"};
+
+const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_down {0, "bmd-bfd-bdl-down"};
+const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_unknown {1, "bmd-bfd-bdl-unknown"};
+const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_up {2, "bmd-bfd-bdl-up"};
+const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_count {3, "bmd-bfd-bdl-count"};
+
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_nak {0, "mbr-state-nak"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_unknown {1, "mbr-state-unknown"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_up {2, "mbr-state-up"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_down {3, "mbr-state-down"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_admin_down {4, "mbr-state-admin-down"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_test {5, "mbr-state-test"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_error {6, "mbr-state-error"};
+
+const Enum::YLeaf BmdBagTarget::bm_bag_target_mbr {0, "bm-bag-target-mbr"};
+const Enum::YLeaf BmdBagTarget::bm_bag_target_bdl {1, "bm-bag-target-bdl"};
+const Enum::YLeaf BmdBagTarget::bm_bag_target_node {2, "bm-bag-target-node"};
+const Enum::YLeaf BmdBagTarget::bm_bag_target_rg {3, "bm-bag-target-rg"};
+
 const Enum::YLeaf BmMuxstate::detached {1, "detached"};
 const Enum::YLeaf BmMuxstate::waiting {2, "waiting"};
 const Enum::YLeaf BmMuxstate::attached {3, "attached"};
@@ -22831,64 +23036,69 @@ const Enum::YLeaf BmMuxstate::collecting {4, "collecting"};
 const Enum::YLeaf BmMuxstate::distributing {5, "distributing"};
 const Enum::YLeaf BmMuxstate::collecting_distributing {6, "collecting-distributing"};
 
-const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_nonrevertive {0, "bmd-mlacp-switchover-nonrevertive"};
-const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_brute_force {1, "bmd-mlacp-switchover-brute-force"};
-const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_revertive {2, "bmd-mlacp-switchover-revertive"};
-const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_count {3, "bmd-mlacp-switchover-count"};
+const Enum::YLeaf LacpSelState::unselected {0, "unselected"};
+const Enum::YLeaf LacpSelState::standby {1, "standby"};
+const Enum::YLeaf LacpSelState::selected {2, "selected"};
+
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
+
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_count {19, "bm-mux-reason-count"};
 
 const Enum::YLeaf BmFeatureStatus::bm_feature_not_configured {0, "bm-feature-not-configured"};
 const Enum::YLeaf BmFeatureStatus::bm_feature_not_operational {1, "bm-feature-not-operational"};
 const Enum::YLeaf BmFeatureStatus::bm_feature_operational {2, "bm-feature-operational"};
+
+const Enum::YLeaf BmSeverity::ok {0, "ok"};
+const Enum::YLeaf BmSeverity::information {1, "information"};
+const Enum::YLeaf BmSeverity::misconfiguration {2, "misconfiguration"};
+const Enum::YLeaf BmSeverity::warning {3, "warning"};
+const Enum::YLeaf BmSeverity::error {5, "error"};
+
+const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_standby {0, "bundle-mlacp-mode-standby"};
+const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_active {1, "bundle-mlacp-mode-active"};
+const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_count {2, "bundle-mlacp-mode-count"};
+
+const Enum::YLeaf BmdBagMlacpSchActionItem::switchover {0, "switchover"};
+const Enum::YLeaf BmdBagMlacpSchActionItem::switchback {1, "switchback"};
+
+const Enum::YLeaf BmStateReasonTarget::member_reason {0, "member-reason"};
+const Enum::YLeaf BmStateReasonTarget::bundle_reason {1, "bundle-reason"};
+
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_req {0, "node-sync-req"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_done {1, "node-sync-done"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_start {2, "node-sync-start"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_init {3, "node-sync-init"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_singleton {4, "node-sync-singleton"};
 
 const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_unknown {0, "bm-bdl-mac-source-unknown"};
 const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_chassis {1, "bm-bdl-mac-source-chassis"};
 const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_configured {2, "bm-bdl-mac-source-configured"};
 const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_member {3, "bm-bdl-mac-source-member"};
 const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_peer {4, "bm-bdl-mac-source-peer"};
-
-const Enum::YLeaf BmBdlState::bm_bdl_state_admin_down {0, "bm-bdl-state-admin-down"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_down {1, "bm-bdl-state-down"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_client_down {2, "bm-bdl-state-client-down"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_ptnr_down {3, "bm-bdl-state-ptnr-down"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_bundle_shutdown {4, "bm-bdl-state-bundle-shutdown"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_pe_isolated {5, "bm-bdl-state-pe-isolated"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_nak {6, "bm-bdl-state-nak"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_up_active {7, "bm-bdl-state-up-active"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_mlacp_hot_standby {8, "bm-bdl-state-mlacp-hot-standby"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_mlacp_cold_standby {9, "bm-bdl-state-mlacp-cold-standby"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_unknown {10, "bm-bdl-state-unknown"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_cold_standby {11, "bm-bdl-state-cold-standby"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_error_disabled {12, "bm-bdl-state-error-disabled"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_efd_disabled {13, "bm-bdl-state-efd-disabled"};
-
-const Enum::YLeaf BmAfId::bm_af_id_ipv4 {1136568623, "bm-af-id-ipv4"};
-const Enum::YLeaf BmAfId::bm_af_id_ipv6 {1136568624, "bm-af-id-ipv6"};
-
-const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_down {0, "bmd-bfd-bdl-down"};
-const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_unknown {1, "bmd-bfd-bdl-unknown"};
-const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_up {2, "bmd-bfd-bdl-up"};
-const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_count {3, "bmd-bfd-bdl-count"};
-
-const Enum::YLeaf BmWhichSystem::bm_which_system_actr {0, "bm-which-system-actr"};
-const Enum::YLeaf BmWhichSystem::bm_which_system_ptnr {1, "bm-which-system-ptnr"};
-
-const Enum::YLeaf BundleMedia1::ethernet {0, "ethernet"};
-const Enum::YLeaf BundleMedia1::pos {1, "pos"};
-
-const Enum::YLeaf LoadBalance::default_ {0, "default"};
-const Enum::YLeaf LoadBalance::auto_ {1, "auto"};
-const Enum::YLeaf LoadBalance::value_ {2, "value"};
-const Enum::YLeaf LoadBalance::source_ip {3, "source-ip"};
-const Enum::YLeaf LoadBalance::destination_ip {4, "destination-ip"};
-const Enum::YLeaf LoadBalance::unknown {5, "unknown"};
-
-const Enum::YLeaf BundleMedia::bundle_media_ethernet {0, "bundle-media-ethernet"};
-const Enum::YLeaf BundleMedia::bundle_media_pos {1, "bundle-media-pos"};
-const Enum::YLeaf BundleMedia::bundle_media_count {2, "bundle-media-count"};
-
-const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_standby {0, "bundle-mlacp-mode-standby"};
-const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_active {1, "bundle-mlacp-mode-active"};
-const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_count {2, "bundle-mlacp-mode-count"};
 
 
 }

@@ -13,17 +13,17 @@ namespace CISCO_ATM_QOS_MIB {
 
 CISCOATMQOSMIB::CISCOATMQOSMIB()
     :
-    caqvccparamstable(std::make_shared<CISCOATMQOSMIB::Caqvccparamstable>())
-	,caqvpcparamstable(std::make_shared<CISCOATMQOSMIB::Caqvpcparamstable>())
-	,caqqueuingparamstable(std::make_shared<CISCOATMQOSMIB::Caqqueuingparamstable>())
-	,caqqueuingparamsclasstable(std::make_shared<CISCOATMQOSMIB::Caqqueuingparamsclasstable>())
+    caqvccparamstable(std::make_shared<CISCOATMQOSMIB::CaqVccParamsTable>())
+    , caqvpcparamstable(std::make_shared<CISCOATMQOSMIB::CaqVpcParamsTable>())
+    , caqqueuingparamstable(std::make_shared<CISCOATMQOSMIB::CaqQueuingParamsTable>())
+    , caqqueuingparamsclasstable(std::make_shared<CISCOATMQOSMIB::CaqQueuingParamsClassTable>())
 {
     caqvccparamstable->parent = this;
     caqvpcparamstable->parent = this;
     caqqueuingparamstable->parent = this;
     caqqueuingparamsclasstable->parent = this;
 
-    yang_name = "CISCO-ATM-QOS-MIB"; yang_parent_name = "CISCO-ATM-QOS-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-ATM-QOS-MIB"; yang_parent_name = "CISCO-ATM-QOS-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOATMQOSMIB::~CISCOATMQOSMIB()
@@ -32,6 +32,7 @@ CISCOATMQOSMIB::~CISCOATMQOSMIB()
 
 bool CISCOATMQOSMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (caqvccparamstable !=  nullptr && caqvccparamstable->has_data())
 	|| (caqvpcparamstable !=  nullptr && caqvpcparamstable->has_data())
 	|| (caqqueuingparamstable !=  nullptr && caqqueuingparamstable->has_data())
@@ -69,7 +70,7 @@ std::shared_ptr<Entity> CISCOATMQOSMIB::get_child_by_name(const std::string & ch
     {
         if(caqvccparamstable == nullptr)
         {
-            caqvccparamstable = std::make_shared<CISCOATMQOSMIB::Caqvccparamstable>();
+            caqvccparamstable = std::make_shared<CISCOATMQOSMIB::CaqVccParamsTable>();
         }
         return caqvccparamstable;
     }
@@ -78,7 +79,7 @@ std::shared_ptr<Entity> CISCOATMQOSMIB::get_child_by_name(const std::string & ch
     {
         if(caqvpcparamstable == nullptr)
         {
-            caqvpcparamstable = std::make_shared<CISCOATMQOSMIB::Caqvpcparamstable>();
+            caqvpcparamstable = std::make_shared<CISCOATMQOSMIB::CaqVpcParamsTable>();
         }
         return caqvpcparamstable;
     }
@@ -87,7 +88,7 @@ std::shared_ptr<Entity> CISCOATMQOSMIB::get_child_by_name(const std::string & ch
     {
         if(caqqueuingparamstable == nullptr)
         {
-            caqqueuingparamstable = std::make_shared<CISCOATMQOSMIB::Caqqueuingparamstable>();
+            caqqueuingparamstable = std::make_shared<CISCOATMQOSMIB::CaqQueuingParamsTable>();
         }
         return caqqueuingparamstable;
     }
@@ -96,7 +97,7 @@ std::shared_ptr<Entity> CISCOATMQOSMIB::get_child_by_name(const std::string & ch
     {
         if(caqqueuingparamsclasstable == nullptr)
         {
-            caqqueuingparamsclasstable = std::make_shared<CISCOATMQOSMIB::Caqqueuingparamsclasstable>();
+            caqqueuingparamsclasstable = std::make_shared<CISCOATMQOSMIB::CaqQueuingParamsClassTable>();
         }
         return caqqueuingparamsclasstable;
     }
@@ -171,19 +172,22 @@ bool CISCOATMQOSMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamstable()
+CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsTable()
+    :
+    caqvccparamsentry(this, {"ifindex", "atmvclvpi", "atmvclvci"})
 {
 
-    yang_name = "caqVccParamsTable"; yang_parent_name = "CISCO-ATM-QOS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "caqVccParamsTable"; yang_parent_name = "CISCO-ATM-QOS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMQOSMIB::Caqvccparamstable::~Caqvccparamstable()
+CISCOATMQOSMIB::CaqVccParamsTable::~CaqVccParamsTable()
 {
 }
 
-bool CISCOATMQOSMIB::Caqvccparamstable::has_data() const
+bool CISCOATMQOSMIB::CaqVccParamsTable::has_data() const
 {
-    for (std::size_t index=0; index<caqvccparamsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<caqvccparamsentry.len(); index++)
     {
         if(caqvccparamsentry[index]->has_data())
             return true;
@@ -191,9 +195,9 @@ bool CISCOATMQOSMIB::Caqvccparamstable::has_data() const
     return false;
 }
 
-bool CISCOATMQOSMIB::Caqvccparamstable::has_operation() const
+bool CISCOATMQOSMIB::CaqVccParamsTable::has_operation() const
 {
-    for (std::size_t index=0; index<caqvccparamsentry.size(); index++)
+    for (std::size_t index=0; index<caqvccparamsentry.len(); index++)
     {
         if(caqvccparamsentry[index]->has_operation())
             return true;
@@ -201,21 +205,21 @@ bool CISCOATMQOSMIB::Caqvccparamstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOATMQOSMIB::Caqvccparamstable::get_absolute_path() const
+std::string CISCOATMQOSMIB::CaqVccParamsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-QOS-MIB:CISCO-ATM-QOS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMQOSMIB::Caqvccparamstable::get_segment_path() const
+std::string CISCOATMQOSMIB::CaqVccParamsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "caqVccParamsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqvccparamstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqVccParamsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -224,25 +228,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqvccparamstable
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::Caqvccparamstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMQOSMIB::CaqVccParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "caqVccParamsEntry")
     {
-        auto c = std::make_shared<CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry>();
+        auto c = std::make_shared<CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry>();
         c->parent = this;
-        caqvccparamsentry.push_back(c);
+        caqvccparamsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::Caqvccparamstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqVccParamsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : caqvccparamsentry)
+    for (auto c : caqvccparamsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,22 +257,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::Caqvccparamstable
     return children;
 }
 
-void CISCOATMQOSMIB::Caqvccparamstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMQOSMIB::CaqVccParamsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMQOSMIB::Caqvccparamstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMQOSMIB::CaqVccParamsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMQOSMIB::Caqvccparamstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMQOSMIB::CaqVccParamsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "caqVccParamsEntry")
         return true;
     return false;
 }
 
-CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::Caqvccparamsentry()
+CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::CaqVccParamsEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -303,15 +307,16 @@ CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::Caqvccparamsentry()
     caqvccparamsadtf{YType::uint32, "caqVccParamsAdtf"}
 {
 
-    yang_name = "caqVccParamsEntry"; yang_parent_name = "caqVccParamsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "caqVccParamsEntry"; yang_parent_name = "caqVccParamsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::~Caqvccparamsentry()
+CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::~CaqVccParamsEntry()
 {
 }
 
-bool CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::has_data() const
+bool CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| atmvclvci.is_set
@@ -345,7 +350,7 @@ bool CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::has_data() const
 	|| caqvccparamsadtf.is_set;
 }
 
-bool CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::has_operation() const
+bool CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -381,21 +386,24 @@ bool CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::has_operation() const
 	|| ydk::is_set(caqvccparamsadtf.yfilter);
 }
 
-std::string CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::get_absolute_path() const
+std::string CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-QOS-MIB:CISCO-ATM-QOS-MIB/caqVccParamsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::get_segment_path() const
+std::string CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "caqVccParamsEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[atmVclVci='" <<atmvclvci <<"']";
+    path_buffer << "caqVccParamsEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(atmvclvci, "atmVclVci");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -435,19 +443,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqvccparamstable
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -637,7 +645,7 @@ void CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::set_value(const std::
     }
 }
 
-void CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -765,26 +773,29 @@ void CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::set_filter(const std:
     }
 }
 
-bool CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "atmVclVci" || name == "caqVccParamsType" || name == "caqVccParamsPcrIn0" || name == "caqVccParamsPcrIn01" || name == "caqVccParamsPcrOut0" || name == "caqVccParamsPcrOut01" || name == "caqVccParamsScrIn0" || name == "caqVccParamsScrIn01" || name == "caqVccParamsScrOut0" || name == "caqVccParamsScrOut01" || name == "caqVccParamsBcsIn0" || name == "caqVccParamsBcsIn01" || name == "caqVccParamsBcsOut0" || name == "caqVccParamsBcsOut01" || name == "caqVccParamsInheritLevel" || name == "caqVccParamsMcrIn" || name == "caqVccParamsMcrOut" || name == "caqVccParamsInvRdf" || name == "caqVccParamsInvRif" || name == "caqVccParamsRfl" || name == "caqVccParamsCdv" || name == "caqVccParamsCdvt" || name == "caqVccParamsIcr" || name == "caqVccParamsTbe" || name == "caqVccParamsFrtt" || name == "caqVccParamsNrm" || name == "caqVccParamsInvTrm" || name == "caqVccParamsInvCdf" || name == "caqVccParamsAdtf")
         return true;
     return false;
 }
 
-CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamstable()
+CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsTable()
+    :
+    caqvpcparamsentry(this, {"ifindex", "atmvplvpi"})
 {
 
-    yang_name = "caqVpcParamsTable"; yang_parent_name = "CISCO-ATM-QOS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "caqVpcParamsTable"; yang_parent_name = "CISCO-ATM-QOS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMQOSMIB::Caqvpcparamstable::~Caqvpcparamstable()
+CISCOATMQOSMIB::CaqVpcParamsTable::~CaqVpcParamsTable()
 {
 }
 
-bool CISCOATMQOSMIB::Caqvpcparamstable::has_data() const
+bool CISCOATMQOSMIB::CaqVpcParamsTable::has_data() const
 {
-    for (std::size_t index=0; index<caqvpcparamsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<caqvpcparamsentry.len(); index++)
     {
         if(caqvpcparamsentry[index]->has_data())
             return true;
@@ -792,9 +803,9 @@ bool CISCOATMQOSMIB::Caqvpcparamstable::has_data() const
     return false;
 }
 
-bool CISCOATMQOSMIB::Caqvpcparamstable::has_operation() const
+bool CISCOATMQOSMIB::CaqVpcParamsTable::has_operation() const
 {
-    for (std::size_t index=0; index<caqvpcparamsentry.size(); index++)
+    for (std::size_t index=0; index<caqvpcparamsentry.len(); index++)
     {
         if(caqvpcparamsentry[index]->has_operation())
             return true;
@@ -802,21 +813,21 @@ bool CISCOATMQOSMIB::Caqvpcparamstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOATMQOSMIB::Caqvpcparamstable::get_absolute_path() const
+std::string CISCOATMQOSMIB::CaqVpcParamsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-QOS-MIB:CISCO-ATM-QOS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMQOSMIB::Caqvpcparamstable::get_segment_path() const
+std::string CISCOATMQOSMIB::CaqVpcParamsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "caqVpcParamsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqvpcparamstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqVpcParamsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -825,25 +836,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqvpcparamstable
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::Caqvpcparamstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMQOSMIB::CaqVpcParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "caqVpcParamsEntry")
     {
-        auto c = std::make_shared<CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry>();
+        auto c = std::make_shared<CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry>();
         c->parent = this;
-        caqvpcparamsentry.push_back(c);
+        caqvpcparamsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::Caqvpcparamstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqVpcParamsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : caqvpcparamsentry)
+    for (auto c : caqvpcparamsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -854,22 +865,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::Caqvpcparamstable
     return children;
 }
 
-void CISCOATMQOSMIB::Caqvpcparamstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMQOSMIB::CaqVpcParamsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMQOSMIB::Caqvpcparamstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMQOSMIB::CaqVpcParamsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMQOSMIB::Caqvpcparamstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMQOSMIB::CaqVpcParamsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "caqVpcParamsEntry")
         return true;
     return false;
 }
 
-CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::Caqvpcparamsentry()
+CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::CaqVpcParamsEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvplvpi{YType::str, "atmVplVpi"},
@@ -885,15 +896,16 @@ CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::Caqvpcparamsentry()
     caqvpcparamsavailbw{YType::uint32, "caqVpcParamsAvailBw"}
 {
 
-    yang_name = "caqVpcParamsEntry"; yang_parent_name = "caqVpcParamsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "caqVpcParamsEntry"; yang_parent_name = "caqVpcParamsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::~Caqvpcparamsentry()
+CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::~CaqVpcParamsEntry()
 {
 }
 
-bool CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::has_data() const
+bool CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvplvpi.is_set
 	|| caqvpcparamsvpstate.is_set
@@ -908,7 +920,7 @@ bool CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::has_data() const
 	|| caqvpcparamsavailbw.is_set;
 }
 
-bool CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::has_operation() const
+bool CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -925,21 +937,23 @@ bool CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::has_operation() const
 	|| ydk::is_set(caqvpcparamsavailbw.yfilter);
 }
 
-std::string CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::get_absolute_path() const
+std::string CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-QOS-MIB:CISCO-ATM-QOS-MIB/caqVpcParamsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::get_segment_path() const
+std::string CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "caqVpcParamsEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVplVpi='" <<atmvplvpi <<"']";
+    path_buffer << "caqVpcParamsEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvplvpi, "atmVplVpi");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -960,19 +974,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqvpcparamstable
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1048,7 +1062,7 @@ void CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::set_value(const std::
     }
 }
 
-void CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1100,26 +1114,29 @@ void CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::set_filter(const std:
     }
 }
 
-bool CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVplVpi" || name == "caqVpcParamsVpState" || name == "caqVpcParamsPeakRate" || name == "caqVpcParamsCesRate" || name == "caqVpcParamsDataVcCount" || name == "caqVpcParamsCesVcCount" || name == "caqVpcParamsVcdF4Seg" || name == "caqVpcParamsVcdF4Ete" || name == "caqVpcParamsScr" || name == "caqVpcParamsMbs" || name == "caqVpcParamsAvailBw")
         return true;
     return false;
 }
 
-CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamstable()
+CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsTable()
+    :
+    caqqueuingparamsentry(this, {"ifindex", "atmvclvpi", "atmvclvci"})
 {
 
-    yang_name = "caqQueuingParamsTable"; yang_parent_name = "CISCO-ATM-QOS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "caqQueuingParamsTable"; yang_parent_name = "CISCO-ATM-QOS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMQOSMIB::Caqqueuingparamstable::~Caqqueuingparamstable()
+CISCOATMQOSMIB::CaqQueuingParamsTable::~CaqQueuingParamsTable()
 {
 }
 
-bool CISCOATMQOSMIB::Caqqueuingparamstable::has_data() const
+bool CISCOATMQOSMIB::CaqQueuingParamsTable::has_data() const
 {
-    for (std::size_t index=0; index<caqqueuingparamsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<caqqueuingparamsentry.len(); index++)
     {
         if(caqqueuingparamsentry[index]->has_data())
             return true;
@@ -1127,9 +1144,9 @@ bool CISCOATMQOSMIB::Caqqueuingparamstable::has_data() const
     return false;
 }
 
-bool CISCOATMQOSMIB::Caqqueuingparamstable::has_operation() const
+bool CISCOATMQOSMIB::CaqQueuingParamsTable::has_operation() const
 {
-    for (std::size_t index=0; index<caqqueuingparamsentry.size(); index++)
+    for (std::size_t index=0; index<caqqueuingparamsentry.len(); index++)
     {
         if(caqqueuingparamsentry[index]->has_operation())
             return true;
@@ -1137,21 +1154,21 @@ bool CISCOATMQOSMIB::Caqqueuingparamstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOATMQOSMIB::Caqqueuingparamstable::get_absolute_path() const
+std::string CISCOATMQOSMIB::CaqQueuingParamsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-QOS-MIB:CISCO-ATM-QOS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMQOSMIB::Caqqueuingparamstable::get_segment_path() const
+std::string CISCOATMQOSMIB::CaqQueuingParamsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "caqQueuingParamsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqqueuingparamstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqQueuingParamsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1160,25 +1177,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqqueuingparamst
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::Caqqueuingparamstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMQOSMIB::CaqQueuingParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "caqQueuingParamsEntry")
     {
-        auto c = std::make_shared<CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry>();
+        auto c = std::make_shared<CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry>();
         c->parent = this;
-        caqqueuingparamsentry.push_back(c);
+        caqqueuingparamsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::Caqqueuingparamstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqQueuingParamsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : caqqueuingparamsentry)
+    for (auto c : caqqueuingparamsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1189,22 +1206,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::Caqqueuingparamst
     return children;
 }
 
-void CISCOATMQOSMIB::Caqqueuingparamstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMQOSMIB::CaqQueuingParamsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMQOSMIB::Caqqueuingparamstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMQOSMIB::CaqQueuingParamsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMQOSMIB::Caqqueuingparamstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMQOSMIB::CaqQueuingParamsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "caqQueuingParamsEntry")
         return true;
     return false;
 }
 
-CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::Caqqueuingparamsentry()
+CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::CaqQueuingParamsEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -1212,22 +1229,23 @@ CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::Caqqueuingparamsen
     caqqueuingparamsmeanqdepth{YType::uint32, "caqQueuingParamsMeanQDepth"}
 {
 
-    yang_name = "caqQueuingParamsEntry"; yang_parent_name = "caqQueuingParamsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "caqQueuingParamsEntry"; yang_parent_name = "caqQueuingParamsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::~Caqqueuingparamsentry()
+CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::~CaqQueuingParamsEntry()
 {
 }
 
-bool CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::has_data() const
+bool CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| atmvclvci.is_set
 	|| caqqueuingparamsmeanqdepth.is_set;
 }
 
-bool CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::has_operation() const
+bool CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1236,21 +1254,24 @@ bool CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::has_operation
 	|| ydk::is_set(caqqueuingparamsmeanqdepth.yfilter);
 }
 
-std::string CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::get_absolute_path() const
+std::string CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-QOS-MIB:CISCO-ATM-QOS-MIB/caqQueuingParamsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::get_segment_path() const
+std::string CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "caqQueuingParamsEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[atmVclVci='" <<atmvclvci <<"']";
+    path_buffer << "caqQueuingParamsEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(atmvclvci, "atmVclVci");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1263,19 +1284,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqqueuingparamst
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1303,7 +1324,7 @@ void CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::set_value(con
     }
 }
 
-void CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1323,26 +1344,29 @@ void CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::set_filter(co
     }
 }
 
-bool CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "atmVclVci" || name == "caqQueuingParamsMeanQDepth")
         return true;
     return false;
 }
 
-CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclasstable()
+CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassTable()
+    :
+    caqqueuingparamsclassentry(this, {"ifindex", "atmvclvpi", "atmvclvci", "caqqueuingparamsclassindex"})
 {
 
-    yang_name = "caqQueuingParamsClassTable"; yang_parent_name = "CISCO-ATM-QOS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "caqQueuingParamsClassTable"; yang_parent_name = "CISCO-ATM-QOS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMQOSMIB::Caqqueuingparamsclasstable::~Caqqueuingparamsclasstable()
+CISCOATMQOSMIB::CaqQueuingParamsClassTable::~CaqQueuingParamsClassTable()
 {
 }
 
-bool CISCOATMQOSMIB::Caqqueuingparamsclasstable::has_data() const
+bool CISCOATMQOSMIB::CaqQueuingParamsClassTable::has_data() const
 {
-    for (std::size_t index=0; index<caqqueuingparamsclassentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<caqqueuingparamsclassentry.len(); index++)
     {
         if(caqqueuingparamsclassentry[index]->has_data())
             return true;
@@ -1350,9 +1374,9 @@ bool CISCOATMQOSMIB::Caqqueuingparamsclasstable::has_data() const
     return false;
 }
 
-bool CISCOATMQOSMIB::Caqqueuingparamsclasstable::has_operation() const
+bool CISCOATMQOSMIB::CaqQueuingParamsClassTable::has_operation() const
 {
-    for (std::size_t index=0; index<caqqueuingparamsclassentry.size(); index++)
+    for (std::size_t index=0; index<caqqueuingparamsclassentry.len(); index++)
     {
         if(caqqueuingparamsclassentry[index]->has_operation())
             return true;
@@ -1360,21 +1384,21 @@ bool CISCOATMQOSMIB::Caqqueuingparamsclasstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOATMQOSMIB::Caqqueuingparamsclasstable::get_absolute_path() const
+std::string CISCOATMQOSMIB::CaqQueuingParamsClassTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-QOS-MIB:CISCO-ATM-QOS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMQOSMIB::Caqqueuingparamsclasstable::get_segment_path() const
+std::string CISCOATMQOSMIB::CaqQueuingParamsClassTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "caqQueuingParamsClassTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqqueuingparamsclasstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqQueuingParamsClassTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1383,25 +1407,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqqueuingparamsc
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::Caqqueuingparamsclasstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMQOSMIB::CaqQueuingParamsClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "caqQueuingParamsClassEntry")
     {
-        auto c = std::make_shared<CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry>();
+        auto c = std::make_shared<CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry>();
         c->parent = this;
-        caqqueuingparamsclassentry.push_back(c);
+        caqqueuingparamsclassentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::Caqqueuingparamsclasstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqQueuingParamsClassTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : caqqueuingparamsclassentry)
+    for (auto c : caqqueuingparamsclassentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1412,22 +1436,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::Caqqueuingparamsc
     return children;
 }
 
-void CISCOATMQOSMIB::Caqqueuingparamsclasstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMQOSMIB::CaqQueuingParamsClassTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMQOSMIB::Caqqueuingparamsclasstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMQOSMIB::CaqQueuingParamsClassTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMQOSMIB::Caqqueuingparamsclasstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMQOSMIB::CaqQueuingParamsClassTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "caqQueuingParamsClassEntry")
         return true;
     return false;
 }
 
-CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::Caqqueuingparamsclassentry()
+CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::CaqQueuingParamsClassEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -1440,15 +1464,16 @@ CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::Caqqueui
     caqqueuingparamsclassmrkprob{YType::uint32, "caqQueuingParamsClassMrkProb"}
 {
 
-    yang_name = "caqQueuingParamsClassEntry"; yang_parent_name = "caqQueuingParamsClassTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "caqQueuingParamsClassEntry"; yang_parent_name = "caqQueuingParamsClassTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::~Caqqueuingparamsclassentry()
+CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::~CaqQueuingParamsClassEntry()
 {
 }
 
-bool CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::has_data() const
+bool CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| atmvclvci.is_set
@@ -1460,7 +1485,7 @@ bool CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::has
 	|| caqqueuingparamsclassmrkprob.is_set;
 }
 
-bool CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::has_operation() const
+bool CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1474,21 +1499,25 @@ bool CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::has
 	|| ydk::is_set(caqqueuingparamsclassmrkprob.yfilter);
 }
 
-std::string CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::get_absolute_path() const
+std::string CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-QOS-MIB:CISCO-ATM-QOS-MIB/caqQueuingParamsClassTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::get_segment_path() const
+std::string CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "caqQueuingParamsClassEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[atmVclVci='" <<atmvclvci <<"']" <<"[caqQueuingParamsClassIndex='" <<caqqueuingparamsclassindex <<"']";
+    path_buffer << "caqQueuingParamsClassEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(atmvclvci, "atmVclVci");
+    ADD_KEY_TOKEN(caqqueuingparamsclassindex, "caqQueuingParamsClassIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1506,19 +1535,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::Caqqueuingparamsc
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1576,7 +1605,7 @@ void CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::set
     }
 }
 
-void CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1616,7 +1645,7 @@ void CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::set
     }
 }
 
-bool CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "atmVclVci" || name == "caqQueuingParamsClassIndex" || name == "caqQueuingParamsClassRandDrp" || name == "caqQueuingParamsClassTailDrp" || name == "caqQueuingParamsClassMinThre" || name == "caqQueuingParamsClassMaxThre" || name == "caqQueuingParamsClassMrkProb")
         return true;

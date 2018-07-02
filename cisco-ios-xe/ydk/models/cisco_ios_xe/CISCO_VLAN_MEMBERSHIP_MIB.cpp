@@ -13,15 +13,15 @@ namespace CISCO_VLAN_MEMBERSHIP_MIB {
 
 CISCOVLANMEMBERSHIPMIB::CISCOVLANMEMBERSHIPMIB()
     :
-    vmvmps(std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmvmps>())
-	,vmmembership(std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmmembership>())
-	,vmstatistics(std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmstatistics>())
-	,vmstatus(std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmstatus>())
-	,vmvmpstable(std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmvmpstable>())
-	,vmmembershipsummarytable(std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable>())
-	,vmmembershiptable(std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmmembershiptable>())
-	,vmmembershipsummaryexttable(std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable>())
-	,vmvoicevlantable(std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable>())
+    vmvmps(std::make_shared<CISCOVLANMEMBERSHIPMIB::VmVmps>())
+    , vmmembership(std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembership>())
+    , vmstatistics(std::make_shared<CISCOVLANMEMBERSHIPMIB::VmStatistics>())
+    , vmstatus(std::make_shared<CISCOVLANMEMBERSHIPMIB::VmStatus>())
+    , vmvmpstable(std::make_shared<CISCOVLANMEMBERSHIPMIB::VmVmpsTable>())
+    , vmmembershipsummarytable(std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable>())
+    , vmmembershiptable(std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipTable>())
+    , vmmembershipsummaryexttable(std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable>())
+    , vmvoicevlantable(std::make_shared<CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable>())
 {
     vmvmps->parent = this;
     vmmembership->parent = this;
@@ -33,7 +33,7 @@ CISCOVLANMEMBERSHIPMIB::CISCOVLANMEMBERSHIPMIB()
     vmmembershipsummaryexttable->parent = this;
     vmvoicevlantable->parent = this;
 
-    yang_name = "CISCO-VLAN-MEMBERSHIP-MIB"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-VLAN-MEMBERSHIP-MIB"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOVLANMEMBERSHIPMIB::~CISCOVLANMEMBERSHIPMIB()
@@ -42,6 +42,7 @@ CISCOVLANMEMBERSHIPMIB::~CISCOVLANMEMBERSHIPMIB()
 
 bool CISCOVLANMEMBERSHIPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (vmvmps !=  nullptr && vmvmps->has_data())
 	|| (vmmembership !=  nullptr && vmmembership->has_data())
 	|| (vmstatistics !=  nullptr && vmstatistics->has_data())
@@ -89,7 +90,7 @@ std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::get_child_by_name(const std::str
     {
         if(vmvmps == nullptr)
         {
-            vmvmps = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmvmps>();
+            vmvmps = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmVmps>();
         }
         return vmvmps;
     }
@@ -98,7 +99,7 @@ std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::get_child_by_name(const std::str
     {
         if(vmmembership == nullptr)
         {
-            vmmembership = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmmembership>();
+            vmmembership = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembership>();
         }
         return vmmembership;
     }
@@ -107,7 +108,7 @@ std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::get_child_by_name(const std::str
     {
         if(vmstatistics == nullptr)
         {
-            vmstatistics = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmstatistics>();
+            vmstatistics = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmStatistics>();
         }
         return vmstatistics;
     }
@@ -116,7 +117,7 @@ std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::get_child_by_name(const std::str
     {
         if(vmstatus == nullptr)
         {
-            vmstatus = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmstatus>();
+            vmstatus = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmStatus>();
         }
         return vmstatus;
     }
@@ -125,7 +126,7 @@ std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::get_child_by_name(const std::str
     {
         if(vmvmpstable == nullptr)
         {
-            vmvmpstable = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmvmpstable>();
+            vmvmpstable = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmVmpsTable>();
         }
         return vmvmpstable;
     }
@@ -134,7 +135,7 @@ std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::get_child_by_name(const std::str
     {
         if(vmmembershipsummarytable == nullptr)
         {
-            vmmembershipsummarytable = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable>();
+            vmmembershipsummarytable = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable>();
         }
         return vmmembershipsummarytable;
     }
@@ -143,7 +144,7 @@ std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::get_child_by_name(const std::str
     {
         if(vmmembershiptable == nullptr)
         {
-            vmmembershiptable = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmmembershiptable>();
+            vmmembershiptable = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipTable>();
         }
         return vmmembershiptable;
     }
@@ -152,7 +153,7 @@ std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::get_child_by_name(const std::str
     {
         if(vmmembershipsummaryexttable == nullptr)
         {
-            vmmembershipsummaryexttable = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable>();
+            vmmembershipsummaryexttable = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable>();
         }
         return vmmembershipsummaryexttable;
     }
@@ -161,7 +162,7 @@ std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::get_child_by_name(const std::str
     {
         if(vmvoicevlantable == nullptr)
         {
-            vmvoicevlantable = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable>();
+            vmvoicevlantable = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable>();
         }
         return vmvoicevlantable;
     }
@@ -261,7 +262,7 @@ bool CISCOVLANMEMBERSHIPMIB::has_leaf_or_child_of_name(const std::string & name)
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmvmps::Vmvmps()
+CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmps()
     :
     vmvmpsvqpversion{YType::int32, "vmVmpsVQPVersion"},
     vmvmpsretries{YType::int32, "vmVmpsRetries"},
@@ -271,15 +272,16 @@ CISCOVLANMEMBERSHIPMIB::Vmvmps::Vmvmps()
     vmvmpscurrent{YType::str, "vmVmpsCurrent"}
 {
 
-    yang_name = "vmVmps"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmVmps"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmvmps::~Vmvmps()
+CISCOVLANMEMBERSHIPMIB::VmVmps::~VmVmps()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvmps::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmVmps::has_data() const
 {
+    if (is_presence_container) return true;
     return vmvmpsvqpversion.is_set
 	|| vmvmpsretries.is_set
 	|| vmvmpsreconfirminterval.is_set
@@ -288,7 +290,7 @@ bool CISCOVLANMEMBERSHIPMIB::Vmvmps::has_data() const
 	|| vmvmpscurrent.is_set;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvmps::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmVmps::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vmvmpsvqpversion.yfilter)
@@ -299,21 +301,21 @@ bool CISCOVLANMEMBERSHIPMIB::Vmvmps::has_operation() const
 	|| ydk::is_set(vmvmpscurrent.yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmvmps::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmVmps::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmvmps::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmVmps::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vmVmps";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmvmps::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmVmps::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -328,19 +330,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmvmps::g
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmvmps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmVmps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmvmps::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmVmps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmvmps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmVmps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vmVmpsVQPVersion")
     {
@@ -380,7 +382,7 @@ void CISCOVLANMEMBERSHIPMIB::Vmvmps::set_value(const std::string & value_path, c
     }
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmvmps::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmVmps::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vmVmpsVQPVersion")
     {
@@ -408,51 +410,52 @@ void CISCOVLANMEMBERSHIPMIB::Vmvmps::set_filter(const std::string & value_path, 
     }
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvmps::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmVmps::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vmVmpsVQPVersion" || name == "vmVmpsRetries" || name == "vmVmpsReconfirmInterval" || name == "vmVmpsReconfirm" || name == "vmVmpsReconfirmResult" || name == "vmVmpsCurrent")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembership::Vmmembership()
+CISCOVLANMEMBERSHIPMIB::VmMembership::VmMembership()
     :
     vmvlancreationmode{YType::enumeration, "vmVlanCreationMode"}
 {
 
-    yang_name = "vmMembership"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmMembership"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembership::~Vmmembership()
+CISCOVLANMEMBERSHIPMIB::VmMembership::~VmMembership()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembership::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembership::has_data() const
 {
+    if (is_presence_container) return true;
     return vmvlancreationmode.is_set;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembership::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembership::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vmvlancreationmode.yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembership::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembership::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembership::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembership::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vmMembership";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembership::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembership::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -462,19 +465,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmmembership::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembership::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmmembership::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembership::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembership::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmMembership::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vmVlanCreationMode")
     {
@@ -484,7 +487,7 @@ void CISCOVLANMEMBERSHIPMIB::Vmmembership::set_value(const std::string & value_p
     }
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembership::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmMembership::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vmVlanCreationMode")
     {
@@ -492,14 +495,14 @@ void CISCOVLANMEMBERSHIPMIB::Vmmembership::set_filter(const std::string & value_
     }
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembership::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmMembership::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vmVlanCreationMode")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmstatistics::Vmstatistics()
+CISCOVLANMEMBERSHIPMIB::VmStatistics::VmStatistics()
     :
     vmvqpqueries{YType::uint32, "vmVQPQueries"},
     vmvqpresponses{YType::uint32, "vmVQPResponses"},
@@ -511,15 +514,16 @@ CISCOVLANMEMBERSHIPMIB::Vmstatistics::Vmstatistics()
     vminsufficientresources{YType::uint32, "vmInsufficientResources"}
 {
 
-    yang_name = "vmStatistics"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmStatistics"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmstatistics::~Vmstatistics()
+CISCOVLANMEMBERSHIPMIB::VmStatistics::~VmStatistics()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmstatistics::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return vmvqpqueries.is_set
 	|| vmvqpresponses.is_set
 	|| vmvmpschanges.is_set
@@ -530,7 +534,7 @@ bool CISCOVLANMEMBERSHIPMIB::Vmstatistics::has_data() const
 	|| vminsufficientresources.is_set;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmstatistics::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmStatistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vmvqpqueries.yfilter)
@@ -543,21 +547,21 @@ bool CISCOVLANMEMBERSHIPMIB::Vmstatistics::has_operation() const
 	|| ydk::is_set(vminsufficientresources.yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmstatistics::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmStatistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmstatistics::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vmStatistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmstatistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmStatistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -574,19 +578,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmstatist
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmstatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmstatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmstatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vmVQPQueries")
     {
@@ -638,7 +642,7 @@ void CISCOVLANMEMBERSHIPMIB::Vmstatistics::set_value(const std::string & value_p
     }
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmstatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vmVQPQueries")
     {
@@ -674,51 +678,52 @@ void CISCOVLANMEMBERSHIPMIB::Vmstatistics::set_filter(const std::string & value_
     }
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmstatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vmVQPQueries" || name == "vmVQPResponses" || name == "vmVmpsChanges" || name == "vmVQPShutdown" || name == "vmVQPDenied" || name == "vmVQPWrongDomain" || name == "vmVQPWrongVersion" || name == "vmInsufficientResources")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmstatus::Vmstatus()
+CISCOVLANMEMBERSHIPMIB::VmStatus::VmStatus()
     :
     vmnotificationsenabled{YType::boolean, "vmNotificationsEnabled"}
 {
 
-    yang_name = "vmStatus"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmStatus"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmstatus::~Vmstatus()
+CISCOVLANMEMBERSHIPMIB::VmStatus::~VmStatus()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmstatus::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return vmnotificationsenabled.is_set;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmstatus::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmStatus::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vmnotificationsenabled.yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmstatus::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmStatus::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmstatus::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vmStatus";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmstatus::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmStatus::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -728,19 +733,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmstatus:
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmstatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmstatus::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmstatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vmNotificationsEnabled")
     {
@@ -750,7 +755,7 @@ void CISCOVLANMEMBERSHIPMIB::Vmstatus::set_value(const std::string & value_path,
     }
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmstatus::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vmNotificationsEnabled")
     {
@@ -758,26 +763,29 @@ void CISCOVLANMEMBERSHIPMIB::Vmstatus::set_filter(const std::string & value_path
     }
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmstatus::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vmNotificationsEnabled")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpstable()
+CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsTable()
+    :
+    vmvmpsentry(this, {"vmvmpsipaddress"})
 {
 
-    yang_name = "vmVmpsTable"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmVmpsTable"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmvmpstable::~Vmvmpstable()
+CISCOVLANMEMBERSHIPMIB::VmVmpsTable::~VmVmpsTable()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvmpstable::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmVmpsTable::has_data() const
 {
-    for (std::size_t index=0; index<vmvmpsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vmvmpsentry.len(); index++)
     {
         if(vmvmpsentry[index]->has_data())
             return true;
@@ -785,9 +793,9 @@ bool CISCOVLANMEMBERSHIPMIB::Vmvmpstable::has_data() const
     return false;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvmpstable::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmVmpsTable::has_operation() const
 {
-    for (std::size_t index=0; index<vmvmpsentry.size(); index++)
+    for (std::size_t index=0; index<vmvmpsentry.len(); index++)
     {
         if(vmvmpsentry[index]->has_operation())
             return true;
@@ -795,21 +803,21 @@ bool CISCOVLANMEMBERSHIPMIB::Vmvmpstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmvmpstable::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmVmpsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmvmpstable::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmVmpsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vmVmpsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmvmpstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmVmpsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -818,25 +826,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmvmpstab
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmvmpstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmVmpsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vmVmpsEntry")
     {
-        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry>();
+        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry>();
         c->parent = this;
-        vmvmpsentry.push_back(c);
+        vmvmpsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmvmpstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmVmpsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vmvmpsentry)
+    for (auto c : vmvmpsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -847,43 +855,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmvmpstab
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmvmpstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmVmpsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmvmpstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmVmpsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvmpstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmVmpsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vmVmpsEntry")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::Vmvmpsentry()
+CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::VmVmpsEntry()
     :
     vmvmpsipaddress{YType::str, "vmVmpsIpAddress"},
     vmvmpsprimary{YType::boolean, "vmVmpsPrimary"},
     vmvmpsrowstatus{YType::enumeration, "vmVmpsRowStatus"}
 {
 
-    yang_name = "vmVmpsEntry"; yang_parent_name = "vmVmpsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmVmpsEntry"; yang_parent_name = "vmVmpsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::~Vmvmpsentry()
+CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::~VmVmpsEntry()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return vmvmpsipaddress.is_set
 	|| vmvmpsprimary.is_set
 	|| vmvmpsrowstatus.is_set;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vmvmpsipaddress.yfilter)
@@ -891,21 +900,22 @@ bool CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::has_operation() const
 	|| ydk::is_set(vmvmpsrowstatus.yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/vmVmpsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vmVmpsEntry" <<"[vmVmpsIpAddress='" <<vmvmpsipaddress <<"']";
+    path_buffer << "vmVmpsEntry";
+    ADD_KEY_TOKEN(vmvmpsipaddress, "vmVmpsIpAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -917,19 +927,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmvmpstab
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vmVmpsIpAddress")
     {
@@ -951,7 +961,7 @@ void CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::set_value(const std::stri
     }
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vmVmpsIpAddress")
     {
@@ -967,26 +977,29 @@ void CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::set_filter(const std::str
     }
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvmpstable::Vmvmpsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vmVmpsIpAddress" || name == "vmVmpsPrimary" || name == "vmVmpsRowStatus")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummarytable()
+CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryTable()
+    :
+    vmmembershipsummaryentry(this, {"vmmembershipsummaryvlanindex"})
 {
 
-    yang_name = "vmMembershipSummaryTable"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmMembershipSummaryTable"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::~Vmmembershipsummarytable()
+CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::~VmMembershipSummaryTable()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::has_data() const
 {
-    for (std::size_t index=0; index<vmmembershipsummaryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vmmembershipsummaryentry.len(); index++)
     {
         if(vmmembershipsummaryentry[index]->has_data())
             return true;
@@ -994,9 +1007,9 @@ bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::has_data() const
     return false;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::has_operation() const
 {
-    for (std::size_t index=0; index<vmmembershipsummaryentry.size(); index++)
+    for (std::size_t index=0; index<vmmembershipsummaryentry.len(); index++)
     {
         if(vmmembershipsummaryentry[index]->has_operation())
             return true;
@@ -1004,21 +1017,21 @@ bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vmMembershipSummaryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1027,25 +1040,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vmMembershipSummaryEntry")
     {
-        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry>();
+        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry>();
         c->parent = this;
-        vmmembershipsummaryentry.push_back(c);
+        vmmembershipsummaryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vmmembershipsummaryentry)
+    for (auto c : vmmembershipsummaryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1056,43 +1069,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmmembers
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vmMembershipSummaryEntry")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry::Vmmembershipsummaryentry()
+CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::VmMembershipSummaryEntry()
     :
     vmmembershipsummaryvlanindex{YType::int32, "vmMembershipSummaryVlanIndex"},
     vmmembershipsummarymemberports{YType::str, "vmMembershipSummaryMemberPorts"},
     vmmembershipsummarymember2kports{YType::str, "vmMembershipSummaryMember2kPorts"}
 {
 
-    yang_name = "vmMembershipSummaryEntry"; yang_parent_name = "vmMembershipSummaryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmMembershipSummaryEntry"; yang_parent_name = "vmMembershipSummaryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry::~Vmmembershipsummaryentry()
+CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::~VmMembershipSummaryEntry()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return vmmembershipsummaryvlanindex.is_set
 	|| vmmembershipsummarymemberports.is_set
 	|| vmmembershipsummarymember2kports.is_set;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vmmembershipsummaryvlanindex.yfilter)
@@ -1100,21 +1114,22 @@ bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry:
 	|| ydk::is_set(vmmembershipsummarymember2kports.yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/vmMembershipSummaryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vmMembershipSummaryEntry" <<"[vmMembershipSummaryVlanIndex='" <<vmmembershipsummaryvlanindex <<"']";
+    path_buffer << "vmMembershipSummaryEntry";
+    ADD_KEY_TOKEN(vmmembershipsummaryvlanindex, "vmMembershipSummaryVlanIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1126,19 +1141,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vmMembershipSummaryVlanIndex")
     {
@@ -1160,7 +1175,7 @@ void CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry:
     }
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vmMembershipSummaryVlanIndex")
     {
@@ -1176,26 +1191,29 @@ void CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry:
     }
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummarytable::Vmmembershipsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vmMembershipSummaryVlanIndex" || name == "vmMembershipSummaryMemberPorts" || name == "vmMembershipSummaryMember2kPorts")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershiptable()
+CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipTable()
+    :
+    vmmembershipentry(this, {"ifindex"})
 {
 
-    yang_name = "vmMembershipTable"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmMembershipTable"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::~Vmmembershiptable()
+CISCOVLANMEMBERSHIPMIB::VmMembershipTable::~VmMembershipTable()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipTable::has_data() const
 {
-    for (std::size_t index=0; index<vmmembershipentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vmmembershipentry.len(); index++)
     {
         if(vmmembershipentry[index]->has_data())
             return true;
@@ -1203,9 +1221,9 @@ bool CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::has_data() const
     return false;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipTable::has_operation() const
 {
-    for (std::size_t index=0; index<vmmembershipentry.size(); index++)
+    for (std::size_t index=0; index<vmmembershipentry.len(); index++)
     {
         if(vmmembershipentry[index]->has_operation())
             return true;
@@ -1213,21 +1231,21 @@ bool CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembershipTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembershipTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vmMembershipTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembershipTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1236,25 +1254,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vmMembershipEntry")
     {
-        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry>();
+        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry>();
         c->parent = this;
-        vmmembershipentry.push_back(c);
+        vmmembershipentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vmmembershipentry)
+    for (auto c : vmmembershipentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1265,22 +1283,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmmembers
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmMembershipTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmMembershipTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vmMembershipEntry")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::Vmmembershipentry()
+CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::VmMembershipEntry()
     :
     ifindex{YType::str, "ifIndex"},
     vmvlantype{YType::enumeration, "vmVlanType"},
@@ -1292,15 +1310,16 @@ CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::Vmmembershipentry(
     vmvlans4k{YType::str, "vmVlans4k"}
 {
 
-    yang_name = "vmMembershipEntry"; yang_parent_name = "vmMembershipTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmMembershipEntry"; yang_parent_name = "vmMembershipTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::~Vmmembershipentry()
+CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::~VmMembershipEntry()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| vmvlantype.is_set
 	|| vmvlan.is_set
@@ -1311,7 +1330,7 @@ bool CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::has_data() co
 	|| vmvlans4k.is_set;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1324,21 +1343,22 @@ bool CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::has_operation
 	|| ydk::is_set(vmvlans4k.yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/vmMembershipTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vmMembershipEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "vmMembershipEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1355,19 +1375,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1419,7 +1439,7 @@ void CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::set_value(con
     }
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1455,26 +1475,29 @@ void CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::set_filter(co
     }
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "vmVlanType" || name == "vmVlan" || name == "vmPortStatus" || name == "vmVlans" || name == "vmVlans2k" || name == "vmVlans3k" || name == "vmVlans4k")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryexttable()
+CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtTable()
+    :
+    vmmembershipsummaryextentry(this, {"vmmembershipsummaryvlanindex", "vmmembershipportrangeindex"})
 {
 
-    yang_name = "vmMembershipSummaryExtTable"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmMembershipSummaryExtTable"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::~Vmmembershipsummaryexttable()
+CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::~VmMembershipSummaryExtTable()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::has_data() const
 {
-    for (std::size_t index=0; index<vmmembershipsummaryextentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vmmembershipsummaryextentry.len(); index++)
     {
         if(vmmembershipsummaryextentry[index]->has_data())
             return true;
@@ -1482,9 +1505,9 @@ bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::has_data() const
     return false;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::has_operation() const
 {
-    for (std::size_t index=0; index<vmmembershipsummaryextentry.size(); index++)
+    for (std::size_t index=0; index<vmmembershipsummaryextentry.len(); index++)
     {
         if(vmmembershipsummaryextentry[index]->has_operation())
             return true;
@@ -1492,21 +1515,21 @@ bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vmMembershipSummaryExtTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1515,25 +1538,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vmMembershipSummaryExtEntry")
     {
-        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry>();
+        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry>();
         c->parent = this;
-        vmmembershipsummaryextentry.push_back(c);
+        vmmembershipsummaryextentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vmmembershipsummaryextentry)
+    for (auto c : vmmembershipsummaryextentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1544,43 +1567,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmmembers
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vmMembershipSummaryExtEntry")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry::Vmmembershipsummaryextentry()
+CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::VmMembershipSummaryExtEntry()
     :
     vmmembershipsummaryvlanindex{YType::str, "vmMembershipSummaryVlanIndex"},
     vmmembershipportrangeindex{YType::enumeration, "vmMembershipPortRangeIndex"},
     vmmembershipsummaryextports{YType::str, "vmMembershipSummaryExtPorts"}
 {
 
-    yang_name = "vmMembershipSummaryExtEntry"; yang_parent_name = "vmMembershipSummaryExtTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmMembershipSummaryExtEntry"; yang_parent_name = "vmMembershipSummaryExtTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry::~Vmmembershipsummaryextentry()
+CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::~VmMembershipSummaryExtEntry()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return vmmembershipsummaryvlanindex.is_set
 	|| vmmembershipportrangeindex.is_set
 	|| vmmembershipsummaryextports.is_set;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vmmembershipsummaryvlanindex.yfilter)
@@ -1588,21 +1612,23 @@ bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryext
 	|| ydk::is_set(vmmembershipsummaryextports.yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/vmMembershipSummaryExtTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vmMembershipSummaryExtEntry" <<"[vmMembershipSummaryVlanIndex='" <<vmmembershipsummaryvlanindex <<"']" <<"[vmMembershipPortRangeIndex='" <<vmmembershipportrangeindex <<"']";
+    path_buffer << "vmMembershipSummaryExtEntry";
+    ADD_KEY_TOKEN(vmmembershipsummaryvlanindex, "vmMembershipSummaryVlanIndex");
+    ADD_KEY_TOKEN(vmmembershipportrangeindex, "vmMembershipPortRangeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1614,19 +1640,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmmembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vmMembershipSummaryVlanIndex")
     {
@@ -1648,7 +1674,7 @@ void CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryext
     }
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vmMembershipSummaryVlanIndex")
     {
@@ -1664,26 +1690,29 @@ void CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryext
     }
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmmembershipsummaryexttable::Vmmembershipsummaryextentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vmMembershipSummaryVlanIndex" || name == "vmMembershipPortRangeIndex" || name == "vmMembershipSummaryExtPorts")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlantable()
+CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanTable()
+    :
+    vmvoicevlanentry(this, {"ifindex"})
 {
 
-    yang_name = "vmVoiceVlanTable"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmVoiceVlanTable"; yang_parent_name = "CISCO-VLAN-MEMBERSHIP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::~Vmvoicevlantable()
+CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::~VmVoiceVlanTable()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::has_data() const
 {
-    for (std::size_t index=0; index<vmvoicevlanentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vmvoicevlanentry.len(); index++)
     {
         if(vmvoicevlanentry[index]->has_data())
             return true;
@@ -1691,9 +1720,9 @@ bool CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::has_data() const
     return false;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::has_operation() const
 {
-    for (std::size_t index=0; index<vmvoicevlanentry.size(); index++)
+    for (std::size_t index=0; index<vmvoicevlanentry.len(); index++)
     {
         if(vmvoicevlanentry[index]->has_operation())
             return true;
@@ -1701,21 +1730,21 @@ bool CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vmVoiceVlanTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1724,25 +1753,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmvoicevl
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vmVoiceVlanEntry")
     {
-        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry>();
+        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry>();
         c->parent = this;
-        vmvoicevlanentry.push_back(c);
+        vmvoicevlanentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vmvoicevlanentry)
+    for (auto c : vmvoicevlanentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1753,43 +1782,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmvoicevl
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vmVoiceVlanEntry")
         return true;
     return false;
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::Vmvoicevlanentry()
+CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::VmVoiceVlanEntry()
     :
     ifindex{YType::str, "ifIndex"},
     vmvoicevlanid{YType::int32, "vmVoiceVlanId"},
     vmvoicevlancdpverifyenable{YType::boolean, "vmVoiceVlanCdpVerifyEnable"}
 {
 
-    yang_name = "vmVoiceVlanEntry"; yang_parent_name = "vmVoiceVlanTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vmVoiceVlanEntry"; yang_parent_name = "vmVoiceVlanTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::~Vmvoicevlanentry()
+CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::~VmVoiceVlanEntry()
 {
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::has_data() const
+bool CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| vmvoicevlanid.is_set
 	|| vmvoicevlancdpverifyenable.is_set;
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::has_operation() const
+bool CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1797,21 +1827,22 @@ bool CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::has_operation()
 	|| ydk::is_set(vmvoicevlancdpverifyenable.yfilter);
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::get_absolute_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VLAN-MEMBERSHIP-MIB:CISCO-VLAN-MEMBERSHIP-MIB/vmVoiceVlanTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::get_segment_path() const
+std::string CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vmVoiceVlanEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "vmVoiceVlanEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1823,19 +1854,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::Vmvoicevl
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1857,7 +1888,7 @@ void CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::set_value(const
     }
 }
 
-void CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1873,34 +1904,34 @@ void CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::set_filter(cons
     }
 }
 
-bool CISCOVLANMEMBERSHIPMIB::Vmvoicevlantable::Vmvoicevlanentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "vmVoiceVlanId" || name == "vmVoiceVlanCdpVerifyEnable")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmvmps::Vmvmpsreconfirm::ready {1, "ready"};
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmvmps::Vmvmpsreconfirm::execute {2, "execute"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmpsReconfirm::ready {1, "ready"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmpsReconfirm::execute {2, "execute"};
 
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmvmps::Vmvmpsreconfirmresult::other {1, "other"};
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmvmps::Vmvmpsreconfirmresult::inProgress {2, "inProgress"};
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmvmps::Vmvmpsreconfirmresult::success {3, "success"};
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmvmps::Vmvmpsreconfirmresult::noResponse {4, "noResponse"};
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmvmps::Vmvmpsreconfirmresult::noVmps {5, "noVmps"};
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmvmps::Vmvmpsreconfirmresult::noDynamicPort {6, "noDynamicPort"};
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmvmps::Vmvmpsreconfirmresult::noHostConnected {7, "noHostConnected"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmpsReconfirmResult::other {1, "other"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmpsReconfirmResult::inProgress {2, "inProgress"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmpsReconfirmResult::success {3, "success"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmpsReconfirmResult::noResponse {4, "noResponse"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmpsReconfirmResult::noVmps {5, "noVmps"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmpsReconfirmResult::noDynamicPort {6, "noDynamicPort"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmVmps::VmVmpsReconfirmResult::noHostConnected {7, "noHostConnected"};
 
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmmembership::Vmvlancreationmode::automatic {1, "automatic"};
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmmembership::Vmvlancreationmode::manual {2, "manual"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmMembership::VmVlanCreationMode::automatic {1, "automatic"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmMembership::VmVlanCreationMode::manual {2, "manual"};
 
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::Vmvlantype::static_ {1, "static"};
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::Vmvlantype::dynamic {2, "dynamic"};
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::Vmvlantype::multiVlan {3, "multiVlan"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::VmVlanType::static_ {1, "static"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::VmVlanType::dynamic {2, "dynamic"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::VmVlanType::multiVlan {3, "multiVlan"};
 
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::Vmportstatus::inactive {1, "inactive"};
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::Vmportstatus::active {2, "active"};
-const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::Vmmembershiptable::Vmmembershipentry::Vmportstatus::shutdown {3, "shutdown"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::VmPortStatus::inactive {1, "inactive"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::VmPortStatus::active {2, "active"};
+const Enum::YLeaf CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::VmPortStatus::shutdown {3, "shutdown"};
 
 
 }

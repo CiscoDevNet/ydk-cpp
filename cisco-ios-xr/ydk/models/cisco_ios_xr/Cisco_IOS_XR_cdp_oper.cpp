@@ -17,7 +17,7 @@ Cdp::Cdp()
 {
     nodes->parent = this;
 
-    yang_name = "cdp"; yang_parent_name = "Cisco-IOS-XR-cdp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cdp"; yang_parent_name = "Cisco-IOS-XR-cdp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Cdp::~Cdp()
@@ -26,6 +26,7 @@ Cdp::~Cdp()
 
 bool Cdp::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Cdp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Cdp::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "cdp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "cdp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cdp::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Cdp::Nodes::~Nodes()
 
 bool Cdp::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Cdp::Nodes::has_data() const
 
 bool Cdp::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Cdp::Nodes::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Cdp::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,16 +221,16 @@ bool Cdp::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Cdp::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     neighbors(std::make_shared<Cdp::Nodes::Node::Neighbors>())
-	,statistics(std::make_shared<Cdp::Nodes::Node::Statistics>())
-	,interfaces(std::make_shared<Cdp::Nodes::Node::Interfaces>())
+    , statistics(std::make_shared<Cdp::Nodes::Node::Statistics>())
+    , interfaces(std::make_shared<Cdp::Nodes::Node::Interfaces>())
 {
     neighbors->parent = this;
     statistics->parent = this;
     interfaces->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cdp::Nodes::Node::~Node()
@@ -235,6 +239,7 @@ Cdp::Nodes::Node::~Node()
 
 bool Cdp::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (neighbors !=  nullptr && neighbors->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
@@ -260,7 +265,8 @@ std::string Cdp::Nodes::Node::get_absolute_path() const
 std::string Cdp::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -356,14 +362,14 @@ bool Cdp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 Cdp::Nodes::Node::Neighbors::Neighbors()
     :
     details(std::make_shared<Cdp::Nodes::Node::Neighbors::Details>())
-	,devices(std::make_shared<Cdp::Nodes::Node::Neighbors::Devices>())
-	,summaries(std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries>())
+    , devices(std::make_shared<Cdp::Nodes::Node::Neighbors::Devices>())
+    , summaries(std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries>())
 {
     details->parent = this;
     devices->parent = this;
     summaries->parent = this;
 
-    yang_name = "neighbors"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbors"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::~Neighbors()
@@ -372,6 +378,7 @@ Cdp::Nodes::Node::Neighbors::~Neighbors()
 
 bool Cdp::Nodes::Node::Neighbors::has_data() const
 {
+    if (is_presence_container) return true;
     return (details !=  nullptr && details->has_data())
 	|| (devices !=  nullptr && devices->has_data())
 	|| (summaries !=  nullptr && summaries->has_data());
@@ -471,9 +478,11 @@ bool Cdp::Nodes::Node::Neighbors::has_leaf_or_child_of_name(const std::string & 
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Details()
+    :
+    detail(this, {})
 {
 
-    yang_name = "details"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "details"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Details::~Details()
@@ -482,7 +491,8 @@ Cdp::Nodes::Node::Neighbors::Details::~Details()
 
 bool Cdp::Nodes::Node::Neighbors::Details::has_data() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_data())
             return true;
@@ -492,7 +502,7 @@ bool Cdp::Nodes::Node::Neighbors::Details::has_data() const
 
 bool Cdp::Nodes::Node::Neighbors::Details::has_operation() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_operation())
             return true;
@@ -522,7 +532,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::get_child_by_name(
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail>();
         c->parent = this;
-        detail.push_back(c);
+        detail.append(c);
         return c;
     }
 
@@ -534,7 +544,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Deta
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail)
+    for (auto c : detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -564,9 +574,11 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::Detail()
     :
     interface_name{YType::str, "interface-name"},
     device_id{YType::str, "device-id"}
+        ,
+    cdp_neighbor(this, {})
 {
 
-    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::~Detail()
@@ -575,7 +587,8 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::~Detail()
 
 bool Cdp::Nodes::Node::Neighbors::Details::Detail::has_data() const
 {
-    for (std::size_t index=0; index<cdp_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdp_neighbor.len(); index++)
     {
         if(cdp_neighbor[index]->has_data())
             return true;
@@ -586,7 +599,7 @@ bool Cdp::Nodes::Node::Neighbors::Details::Detail::has_data() const
 
 bool Cdp::Nodes::Node::Neighbors::Details::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<cdp_neighbor.size(); index++)
+    for (std::size_t index=0; index<cdp_neighbor.len(); index++)
     {
         if(cdp_neighbor[index]->has_operation())
             return true;
@@ -620,7 +633,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::get_child_
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor>();
         c->parent = this;
-        cdp_neighbor.push_back(c);
+        cdp_neighbor.append(c);
         return c;
     }
 
@@ -632,7 +645,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Deta
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdp_neighbor)
+    for (auto c : cdp_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -687,12 +700,12 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::CdpNeighbor()
     hold_time{YType::uint16, "hold-time"},
     capabilities{YType::str, "capabilities"},
     platform{YType::str, "platform"}
-    	,
+        ,
     detail(std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_>())
 {
     detail->parent = this;
 
-    yang_name = "cdp-neighbor"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cdp-neighbor"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::~CdpNeighbor()
@@ -701,6 +714,7 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::~CdpNeighbor()
 
 bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return receiving_interface_name.is_set
 	|| device_id.is_set
 	|| port_id.is_set
@@ -865,14 +879,14 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::Detail_()
     native_vlan{YType::uint32, "native-vlan"},
     duplex{YType::enumeration, "duplex"},
     system_name{YType::str, "system-name"}
-    	,
+        ,
     network_addresses(std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses>())
-	,protocol_hello_list(std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList>())
+    , protocol_hello_list(std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList>())
 {
     network_addresses->parent = this;
     protocol_hello_list->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "cdp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "cdp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::~Detail_()
@@ -881,6 +895,7 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::~Detail_()
 
 bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| vtp_domain.is_set
 	|| native_vlan.is_set
@@ -1029,9 +1044,11 @@ bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::has_lea
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::NetworkAddresses()
+    :
+    cdp_addr_entry(this, {})
 {
 
-    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::~NetworkAddresses()
@@ -1040,7 +1057,8 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddre
 
 bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::has_data() const
 {
-    for (std::size_t index=0; index<cdp_addr_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdp_addr_entry.len(); index++)
     {
         if(cdp_addr_entry[index]->has_data())
             return true;
@@ -1050,7 +1068,7 @@ bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::Network
 
 bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<cdp_addr_entry.size(); index++)
+    for (std::size_t index=0; index<cdp_addr_entry.len(); index++)
     {
         if(cdp_addr_entry[index]->has_operation())
             return true;
@@ -1080,7 +1098,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry>();
         c->parent = this;
-        cdp_addr_entry.push_back(c);
+        cdp_addr_entry.append(c);
         return c;
     }
 
@@ -1092,7 +1110,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Deta
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdp_addr_entry)
+    for (auto c : cdp_addr_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1124,7 +1142,7 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddre
 {
     address->parent = this;
 
-    yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::~CdpAddrEntry()
@@ -1133,6 +1151,7 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddre
 
 bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -1206,7 +1225,7 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddre
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "cdp-addr-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "cdp-addr-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::~Address()
@@ -1215,6 +1234,7 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddre
 
 bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1305,9 +1325,11 @@ bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::Network
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::ProtocolHelloList()
+    :
+    cdp_prot_hello_entry(this, {})
 {
 
-    yang_name = "protocol-hello-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-hello-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::~ProtocolHelloList()
@@ -1316,7 +1338,8 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHell
 
 bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::has_data() const
 {
-    for (std::size_t index=0; index<cdp_prot_hello_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdp_prot_hello_entry.len(); index++)
     {
         if(cdp_prot_hello_entry[index]->has_data())
             return true;
@@ -1326,7 +1349,7 @@ bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::Protoco
 
 bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::has_operation() const
 {
-    for (std::size_t index=0; index<cdp_prot_hello_entry.size(); index++)
+    for (std::size_t index=0; index<cdp_prot_hello_entry.len(); index++)
     {
         if(cdp_prot_hello_entry[index]->has_operation())
             return true;
@@ -1356,7 +1379,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry>();
         c->parent = this;
-        cdp_prot_hello_entry.push_back(c);
+        cdp_prot_hello_entry.append(c);
         return c;
     }
 
@@ -1368,7 +1391,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Deta
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdp_prot_hello_entry)
+    for (auto c : cdp_prot_hello_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1399,7 +1422,7 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHell
     hello_message{YType::str, "hello-message"}
 {
 
-    yang_name = "cdp-prot-hello-entry"; yang_parent_name = "protocol-hello-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cdp-prot-hello-entry"; yang_parent_name = "protocol-hello-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::~CdpProtHelloEntry()
@@ -1408,6 +1431,7 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHell
 
 bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return hello_message.is_set;
 }
 
@@ -1472,9 +1496,11 @@ bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::Protoco
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Devices()
+    :
+    device(this, {"device_id"})
 {
 
-    yang_name = "devices"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "devices"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::~Devices()
@@ -1483,7 +1509,8 @@ Cdp::Nodes::Node::Neighbors::Devices::~Devices()
 
 bool Cdp::Nodes::Node::Neighbors::Devices::has_data() const
 {
-    for (std::size_t index=0; index<device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<device.len(); index++)
     {
         if(device[index]->has_data())
             return true;
@@ -1493,7 +1520,7 @@ bool Cdp::Nodes::Node::Neighbors::Devices::has_data() const
 
 bool Cdp::Nodes::Node::Neighbors::Devices::has_operation() const
 {
-    for (std::size_t index=0; index<device.size(); index++)
+    for (std::size_t index=0; index<device.len(); index++)
     {
         if(device[index]->has_operation())
             return true;
@@ -1523,7 +1550,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::get_child_by_name(
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device>();
         c->parent = this;
-        device.push_back(c);
+        device.append(c);
         return c;
     }
 
@@ -1535,7 +1562,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : device)
+    for (auto c : device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1564,9 +1591,11 @@ bool Cdp::Nodes::Node::Neighbors::Devices::has_leaf_or_child_of_name(const std::
 Cdp::Nodes::Node::Neighbors::Devices::Device::Device()
     :
     device_id{YType::str, "device-id"}
+        ,
+    cdp_neighbor(this, {})
 {
 
-    yang_name = "device"; yang_parent_name = "devices"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "device"; yang_parent_name = "devices"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::~Device()
@@ -1575,7 +1604,8 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::~Device()
 
 bool Cdp::Nodes::Node::Neighbors::Devices::Device::has_data() const
 {
-    for (std::size_t index=0; index<cdp_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdp_neighbor.len(); index++)
     {
         if(cdp_neighbor[index]->has_data())
             return true;
@@ -1585,7 +1615,7 @@ bool Cdp::Nodes::Node::Neighbors::Devices::Device::has_data() const
 
 bool Cdp::Nodes::Node::Neighbors::Devices::Device::has_operation() const
 {
-    for (std::size_t index=0; index<cdp_neighbor.size(); index++)
+    for (std::size_t index=0; index<cdp_neighbor.len(); index++)
     {
         if(cdp_neighbor[index]->has_operation())
             return true;
@@ -1597,7 +1627,8 @@ bool Cdp::Nodes::Node::Neighbors::Devices::Device::has_operation() const
 std::string Cdp::Nodes::Node::Neighbors::Devices::Device::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "device" <<"[device-id='" <<device_id <<"']";
+    path_buffer << "device";
+    ADD_KEY_TOKEN(device_id, "device-id");
     return path_buffer.str();
 }
 
@@ -1617,7 +1648,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::get_child_
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor>();
         c->parent = this;
-        cdp_neighbor.push_back(c);
+        cdp_neighbor.append(c);
         return c;
     }
 
@@ -1629,7 +1660,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdp_neighbor)
+    for (auto c : cdp_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1674,12 +1705,12 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::CdpNeighbor()
     hold_time{YType::uint16, "hold-time"},
     capabilities{YType::str, "capabilities"},
     platform{YType::str, "platform"}
-    	,
+        ,
     detail(std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail>())
 {
     detail->parent = this;
 
-    yang_name = "cdp-neighbor"; yang_parent_name = "device"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cdp-neighbor"; yang_parent_name = "device"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::~CdpNeighbor()
@@ -1688,6 +1719,7 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::~CdpNeighbor()
 
 bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return receiving_interface_name.is_set
 	|| device_id.is_set
 	|| port_id.is_set
@@ -1852,14 +1884,14 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Detail()
     native_vlan{YType::uint32, "native-vlan"},
     duplex{YType::enumeration, "duplex"},
     system_name{YType::str, "system-name"}
-    	,
+        ,
     network_addresses(std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses>())
-	,protocol_hello_list(std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList>())
+    , protocol_hello_list(std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList>())
 {
     network_addresses->parent = this;
     protocol_hello_list->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "cdp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "cdp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::~Detail()
@@ -1868,6 +1900,7 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::~Detail()
 
 bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| vtp_domain.is_set
 	|| native_vlan.is_set
@@ -2016,9 +2049,11 @@ bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::has_leaf
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::NetworkAddresses()
+    :
+    cdp_addr_entry(this, {})
 {
 
-    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::~NetworkAddresses()
@@ -2027,7 +2062,8 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddres
 
 bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::has_data() const
 {
-    for (std::size_t index=0; index<cdp_addr_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdp_addr_entry.len(); index++)
     {
         if(cdp_addr_entry[index]->has_data())
             return true;
@@ -2037,7 +2073,7 @@ bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkA
 
 bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<cdp_addr_entry.size(); index++)
+    for (std::size_t index=0; index<cdp_addr_entry.len(); index++)
     {
         if(cdp_addr_entry[index]->has_operation())
             return true;
@@ -2067,7 +2103,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry>();
         c->parent = this;
-        cdp_addr_entry.push_back(c);
+        cdp_addr_entry.append(c);
         return c;
     }
 
@@ -2079,7 +2115,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdp_addr_entry)
+    for (auto c : cdp_addr_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2111,7 +2147,7 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddres
 {
     address->parent = this;
 
-    yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::~CdpAddrEntry()
@@ -2120,6 +2156,7 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddres
 
 bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -2193,7 +2230,7 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddres
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "cdp-addr-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "cdp-addr-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::~Address()
@@ -2202,6 +2239,7 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddres
 
 bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -2292,9 +2330,11 @@ bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkA
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::ProtocolHelloList()
+    :
+    cdp_prot_hello_entry(this, {})
 {
 
-    yang_name = "protocol-hello-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-hello-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::~ProtocolHelloList()
@@ -2303,7 +2343,8 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHello
 
 bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::has_data() const
 {
-    for (std::size_t index=0; index<cdp_prot_hello_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdp_prot_hello_entry.len(); index++)
     {
         if(cdp_prot_hello_entry[index]->has_data())
             return true;
@@ -2313,7 +2354,7 @@ bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Protocol
 
 bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::has_operation() const
 {
-    for (std::size_t index=0; index<cdp_prot_hello_entry.size(); index++)
+    for (std::size_t index=0; index<cdp_prot_hello_entry.len(); index++)
     {
         if(cdp_prot_hello_entry[index]->has_operation())
             return true;
@@ -2343,7 +2384,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry>();
         c->parent = this;
-        cdp_prot_hello_entry.push_back(c);
+        cdp_prot_hello_entry.append(c);
         return c;
     }
 
@@ -2355,7 +2396,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdp_prot_hello_entry)
+    for (auto c : cdp_prot_hello_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2386,7 +2427,7 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHello
     hello_message{YType::str, "hello-message"}
 {
 
-    yang_name = "cdp-prot-hello-entry"; yang_parent_name = "protocol-hello-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cdp-prot-hello-entry"; yang_parent_name = "protocol-hello-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::~CdpProtHelloEntry()
@@ -2395,6 +2436,7 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHello
 
 bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return hello_message.is_set;
 }
 
@@ -2459,9 +2501,11 @@ bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Protocol
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summaries()
+    :
+    summary(this, {})
 {
 
-    yang_name = "summaries"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summaries"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::~Summaries()
@@ -2470,7 +2514,8 @@ Cdp::Nodes::Node::Neighbors::Summaries::~Summaries()
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::has_data() const
 {
-    for (std::size_t index=0; index<summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<summary.len(); index++)
     {
         if(summary[index]->has_data())
             return true;
@@ -2480,7 +2525,7 @@ bool Cdp::Nodes::Node::Neighbors::Summaries::has_data() const
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::has_operation() const
 {
-    for (std::size_t index=0; index<summary.size(); index++)
+    for (std::size_t index=0; index<summary.len(); index++)
     {
         if(summary[index]->has_operation())
             return true;
@@ -2510,7 +2555,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::get_child_by_nam
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary>();
         c->parent = this;
-        summary.push_back(c);
+        summary.append(c);
         return c;
     }
 
@@ -2522,7 +2567,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : summary)
+    for (auto c : summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2552,9 +2597,11 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::Summary()
     :
     interface_name{YType::str, "interface-name"},
     device_id{YType::str, "device-id"}
+        ,
+    cdp_neighbor(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::~Summary()
@@ -2563,7 +2610,8 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::~Summary()
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::has_data() const
 {
-    for (std::size_t index=0; index<cdp_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdp_neighbor.len(); index++)
     {
         if(cdp_neighbor[index]->has_data())
             return true;
@@ -2574,7 +2622,7 @@ bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::has_data() const
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<cdp_neighbor.size(); index++)
+    for (std::size_t index=0; index<cdp_neighbor.len(); index++)
     {
         if(cdp_neighbor[index]->has_operation())
             return true;
@@ -2608,7 +2656,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_chi
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor>();
         c->parent = this;
-        cdp_neighbor.push_back(c);
+        cdp_neighbor.append(c);
         return c;
     }
 
@@ -2620,7 +2668,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdp_neighbor)
+    for (auto c : cdp_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2675,12 +2723,12 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::CdpNeighbor()
     hold_time{YType::uint16, "hold-time"},
     capabilities{YType::str, "capabilities"},
     platform{YType::str, "platform"}
-    	,
+        ,
     detail(std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail>())
 {
     detail->parent = this;
 
-    yang_name = "cdp-neighbor"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cdp-neighbor"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::~CdpNeighbor()
@@ -2689,6 +2737,7 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::~CdpNeighbor()
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return receiving_interface_name.is_set
 	|| device_id.is_set
 	|| port_id.is_set
@@ -2853,14 +2902,14 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::Detail()
     native_vlan{YType::uint32, "native-vlan"},
     duplex{YType::enumeration, "duplex"},
     system_name{YType::str, "system-name"}
-    	,
+        ,
     network_addresses(std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses>())
-	,protocol_hello_list(std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList>())
+    , protocol_hello_list(std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList>())
 {
     network_addresses->parent = this;
     protocol_hello_list->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "cdp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "cdp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::~Detail()
@@ -2869,6 +2918,7 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::~Detail()
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| vtp_domain.is_set
 	|| native_vlan.is_set
@@ -3017,9 +3067,11 @@ bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::has_l
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::NetworkAddresses()
+    :
+    cdp_addr_entry(this, {})
 {
 
-    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::~NetworkAddresses()
@@ -3028,7 +3080,8 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAdd
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::has_data() const
 {
-    for (std::size_t index=0; index<cdp_addr_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdp_addr_entry.len(); index++)
     {
         if(cdp_addr_entry[index]->has_data())
             return true;
@@ -3038,7 +3091,7 @@ bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::Netwo
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<cdp_addr_entry.size(); index++)
+    for (std::size_t index=0; index<cdp_addr_entry.len(); index++)
     {
         if(cdp_addr_entry[index]->has_operation())
             return true;
@@ -3068,7 +3121,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry>();
         c->parent = this;
-        cdp_addr_entry.push_back(c);
+        cdp_addr_entry.append(c);
         return c;
     }
 
@@ -3080,7 +3133,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdp_addr_entry)
+    for (auto c : cdp_addr_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3112,7 +3165,7 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAdd
 {
     address->parent = this;
 
-    yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::~CdpAddrEntry()
@@ -3121,6 +3174,7 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAdd
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -3194,7 +3248,7 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAdd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "cdp-addr-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "cdp-addr-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::~Address()
@@ -3203,6 +3257,7 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAdd
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3293,9 +3348,11 @@ bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::Netwo
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::ProtocolHelloList()
+    :
+    cdp_prot_hello_entry(this, {})
 {
 
-    yang_name = "protocol-hello-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-hello-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::~ProtocolHelloList()
@@ -3304,7 +3361,8 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHe
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::has_data() const
 {
-    for (std::size_t index=0; index<cdp_prot_hello_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdp_prot_hello_entry.len(); index++)
     {
         if(cdp_prot_hello_entry[index]->has_data())
             return true;
@@ -3314,7 +3372,7 @@ bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::Proto
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::has_operation() const
 {
-    for (std::size_t index=0; index<cdp_prot_hello_entry.size(); index++)
+    for (std::size_t index=0; index<cdp_prot_hello_entry.len(); index++)
     {
         if(cdp_prot_hello_entry[index]->has_operation())
             return true;
@@ -3344,7 +3402,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry>();
         c->parent = this;
-        cdp_prot_hello_entry.push_back(c);
+        cdp_prot_hello_entry.append(c);
         return c;
     }
 
@@ -3356,7 +3414,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdp_prot_hello_entry)
+    for (auto c : cdp_prot_hello_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3387,7 +3445,7 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHe
     hello_message{YType::str, "hello-message"}
 {
 
-    yang_name = "cdp-prot-hello-entry"; yang_parent_name = "protocol-hello-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cdp-prot-hello-entry"; yang_parent_name = "protocol-hello-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::~CdpProtHelloEntry()
@@ -3396,6 +3454,7 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHe
 
 bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return hello_message.is_set;
 }
 
@@ -3477,7 +3536,7 @@ Cdp::Nodes::Node::Statistics::Statistics()
     open_file_errors{YType::uint32, "open-file-errors"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Statistics::~Statistics()
@@ -3486,6 +3545,7 @@ Cdp::Nodes::Node::Statistics::~Statistics()
 
 bool Cdp::Nodes::Node::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return received_packets.is_set
 	|| received_packets_v1.is_set
 	|| received_packets_v2.is_set
@@ -3719,9 +3779,11 @@ bool Cdp::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std::string &
 }
 
 Cdp::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Interfaces::~Interfaces()
@@ -3730,7 +3792,8 @@ Cdp::Nodes::Node::Interfaces::~Interfaces()
 
 bool Cdp::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -3740,7 +3803,7 @@ bool Cdp::Nodes::Node::Interfaces::has_data() const
 
 bool Cdp::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -3770,7 +3833,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::get_child_by_name(const st
     {
         auto c = std::make_shared<Cdp::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -3782,7 +3845,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Interfaces::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3817,7 +3880,7 @@ Cdp::Nodes::Node::Interfaces::Interface::Interface()
     interface_encaps{YType::str, "interface-encaps"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cdp::Nodes::Node::Interfaces::Interface::~Interface()
@@ -3826,6 +3889,7 @@ Cdp::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool Cdp::Nodes::Node::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_handle.is_set
 	|| basecaps_state.is_set
@@ -3846,7 +3910,8 @@ bool Cdp::Nodes::Node::Interfaces::Interface::has_operation() const
 std::string Cdp::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 

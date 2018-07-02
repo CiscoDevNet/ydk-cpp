@@ -185,7 +185,7 @@ class EsAcl::Active::List::Acls : public ydk::Entity
 
         class Acl; //type: EsAcl::Active::List::Acls::Acl
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_es_acl_oper::EsAcl::Active::List::Acls::Acl> > acl;
+        ydk::YList acl;
         
 }; // EsAcl::Active::List::Acls
 
@@ -233,7 +233,7 @@ class EsAcl::Active::List::Acls::Acl::AclSequenceNumbers : public ydk::Entity
 
         class AclSequenceNumber; //type: EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_es_acl_oper::EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber> > acl_sequence_number;
+        ydk::YList acl_sequence_number;
         
 }; // EsAcl::Active::List::Acls::Acl::AclSequenceNumbers
 
@@ -300,7 +300,7 @@ class EsAcl::Active::OorAcls : public ydk::Entity
 
         class OorAcl; //type: EsAcl::Active::OorAcls::OorAcl
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_es_acl_oper::EsAcl::Active::OorAcls::OorAcl> > oor_acl;
+        ydk::YList oor_acl;
         
 }; // EsAcl::Active::OorAcls
 
@@ -350,7 +350,7 @@ class EsAcl::Active::Usages : public ydk::Entity
 
         class Usage; //type: EsAcl::Active::Usages::Usage
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_es_acl_oper::EsAcl::Active::Usages::Usage> > usage;
+        ydk::YList usage;
         
 }; // EsAcl::Active::Usages
 

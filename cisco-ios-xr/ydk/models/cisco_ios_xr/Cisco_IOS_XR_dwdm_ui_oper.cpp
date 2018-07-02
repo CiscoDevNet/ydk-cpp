@@ -17,7 +17,7 @@ Dwdm::Dwdm()
 {
     ports->parent = this;
 
-    yang_name = "dwdm"; yang_parent_name = "Cisco-IOS-XR-dwdm-ui-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "dwdm"; yang_parent_name = "Cisco-IOS-XR-dwdm-ui-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Dwdm::~Dwdm()
@@ -26,6 +26,7 @@ Dwdm::~Dwdm()
 
 bool Dwdm::has_data() const
 {
+    if (is_presence_container) return true;
     return (ports !=  nullptr && ports->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Dwdm::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Dwdm::Ports::Ports()
+    :
+    port(this, {"name"})
 {
 
-    yang_name = "ports"; yang_parent_name = "dwdm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ports"; yang_parent_name = "dwdm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Dwdm::Ports::~Ports()
@@ -129,7 +132,8 @@ Dwdm::Ports::~Ports()
 
 bool Dwdm::Ports::has_data() const
 {
-    for (std::size_t index=0; index<port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port.len(); index++)
     {
         if(port[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Dwdm::Ports::has_data() const
 
 bool Dwdm::Ports::has_operation() const
 {
-    for (std::size_t index=0; index<port.size(); index++)
+    for (std::size_t index=0; index<port.len(); index++)
     {
         if(port[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Dwdm::Ports::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<Dwdm::Ports::Port>();
         c->parent = this;
-        port.push_back(c);
+        port.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port)
+    for (auto c : port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,16 +221,16 @@ bool Dwdm::Ports::has_leaf_or_child_of_name(const std::string & name) const
 Dwdm::Ports::Port::Port()
     :
     name{YType::str, "name"}
-    	,
+        ,
     prbs(std::make_shared<Dwdm::Ports::Port::Prbs>())
-	,optics(std::make_shared<Dwdm::Ports::Port::Optics>())
-	,info(std::make_shared<Dwdm::Ports::Port::Info>())
+    , optics(std::make_shared<Dwdm::Ports::Port::Optics>())
+    , info(std::make_shared<Dwdm::Ports::Port::Info>())
 {
     prbs->parent = this;
     optics->parent = this;
     info->parent = this;
 
-    yang_name = "port"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Dwdm::Ports::Port::~Port()
@@ -235,6 +239,7 @@ Dwdm::Ports::Port::~Port()
 
 bool Dwdm::Ports::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (prbs !=  nullptr && prbs->has_data())
 	|| (optics !=  nullptr && optics->has_data())
@@ -260,7 +265,8 @@ std::string Dwdm::Ports::Port::get_absolute_path() const
 std::string Dwdm::Ports::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port" <<"[name='" <<name <<"']";
+    path_buffer << "port";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -356,12 +362,12 @@ bool Dwdm::Ports::Port::has_leaf_or_child_of_name(const std::string & name) cons
 Dwdm::Ports::Port::Prbs::Prbs()
     :
     twenty_four_hours_bucket(std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket>())
-	,fifteen_minutes_bucket(std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket>())
+    , fifteen_minutes_bucket(std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket>())
 {
     twenty_four_hours_bucket->parent = this;
     fifteen_minutes_bucket->parent = this;
 
-    yang_name = "prbs"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prbs"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Prbs::~Prbs()
@@ -370,6 +376,7 @@ Dwdm::Ports::Port::Prbs::~Prbs()
 
 bool Dwdm::Ports::Port::Prbs::has_data() const
 {
+    if (is_presence_container) return true;
     return (twenty_four_hours_bucket !=  nullptr && twenty_four_hours_bucket->has_data())
 	|| (fifteen_minutes_bucket !=  nullptr && fifteen_minutes_bucket->has_data());
 }
@@ -458,7 +465,7 @@ Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursBucket()
 {
     twenty_four_hours_statistics->parent = this;
 
-    yang_name = "twenty-four-hours-bucket"; yang_parent_name = "prbs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "twenty-four-hours-bucket"; yang_parent_name = "prbs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::~TwentyFourHoursBucket()
@@ -467,6 +474,7 @@ Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::~TwentyFourHoursBucket()
 
 bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::has_data() const
 {
+    if (is_presence_container) return true;
     return (twenty_four_hours_statistics !=  nullptr && twenty_four_hours_statistics->has_data());
 }
 
@@ -537,9 +545,11 @@ Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::Twent
     :
     is_prbs_enabled{YType::boolean, "is-prbs-enabled"},
     prbs_config_mode{YType::enumeration, "prbs-config-mode"}
+        ,
+    prbs_entry(this, {})
 {
 
-    yang_name = "twenty-four-hours-statistics"; yang_parent_name = "twenty-four-hours-bucket"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "twenty-four-hours-statistics"; yang_parent_name = "twenty-four-hours-bucket"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::~TwentyFourHoursStatistics()
@@ -548,7 +558,8 @@ Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::~Twen
 
 bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::has_data() const
 {
-    for (std::size_t index=0; index<prbs_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prbs_entry.len(); index++)
     {
         if(prbs_entry[index]->has_data())
             return true;
@@ -559,7 +570,7 @@ bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::
 
 bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<prbs_entry.size(); index++)
+    for (std::size_t index=0; index<prbs_entry.len(); index++)
     {
         if(prbs_entry[index]->has_operation())
             return true;
@@ -593,7 +604,7 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFo
     {
         auto c = std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry>();
         c->parent = this;
-        prbs_entry.push_back(c);
+        prbs_entry.append(c);
         return c;
     }
 
@@ -605,7 +616,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prbs_entry)
+    for (auto c : prbs_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -665,7 +676,7 @@ Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsE
     lost_at{YType::str, "lost-at"}
 {
 
-    yang_name = "prbs-entry"; yang_parent_name = "twenty-four-hours-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prbs-entry"; yang_parent_name = "twenty-four-hours-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::~PrbsEntry()
@@ -674,6 +685,7 @@ Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsE
 
 bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return interval_index.is_set
 	|| configured_pattern.is_set
 	|| start_at.is_set
@@ -860,7 +872,7 @@ Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesBucket()
 {
     fifteen_minutes_statistics->parent = this;
 
-    yang_name = "fifteen-minutes-bucket"; yang_parent_name = "prbs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fifteen-minutes-bucket"; yang_parent_name = "prbs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::~FifteenMinutesBucket()
@@ -869,6 +881,7 @@ Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::~FifteenMinutesBucket()
 
 bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::has_data() const
 {
+    if (is_presence_container) return true;
     return (fifteen_minutes_statistics !=  nullptr && fifteen_minutes_statistics->has_data());
 }
 
@@ -939,9 +952,11 @@ Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::Fifteen
     :
     is_prbs_enabled{YType::boolean, "is-prbs-enabled"},
     prbs_config_mode{YType::enumeration, "prbs-config-mode"}
+        ,
+    prbs_entry(this, {})
 {
 
-    yang_name = "fifteen-minutes-statistics"; yang_parent_name = "fifteen-minutes-bucket"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fifteen-minutes-statistics"; yang_parent_name = "fifteen-minutes-bucket"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::~FifteenMinutesStatistics()
@@ -950,7 +965,8 @@ Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::~Fiftee
 
 bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::has_data() const
 {
-    for (std::size_t index=0; index<prbs_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prbs_entry.len(); index++)
     {
         if(prbs_entry[index]->has_data())
             return true;
@@ -961,7 +977,7 @@ bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::ha
 
 bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<prbs_entry.size(); index++)
+    for (std::size_t index=0; index<prbs_entry.len(); index++)
     {
         if(prbs_entry[index]->has_operation())
             return true;
@@ -995,7 +1011,7 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMi
     {
         auto c = std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry>();
         c->parent = this;
-        prbs_entry.push_back(c);
+        prbs_entry.append(c);
         return c;
     }
 
@@ -1007,7 +1023,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenM
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prbs_entry)
+    for (auto c : prbs_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1067,7 +1083,7 @@ Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEnt
     lost_at{YType::str, "lost-at"}
 {
 
-    yang_name = "prbs-entry"; yang_parent_name = "fifteen-minutes-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prbs-entry"; yang_parent_name = "fifteen-minutes-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::~PrbsEntry()
@@ -1076,6 +1092,7 @@ Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEnt
 
 bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return interval_index.is_set
 	|| configured_pattern.is_set
 	|| start_at.is_set
@@ -1262,7 +1279,7 @@ Dwdm::Ports::Port::Optics::Optics()
 {
     wave_info->parent = this;
 
-    yang_name = "optics"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Optics::~Optics()
@@ -1271,6 +1288,7 @@ Dwdm::Ports::Port::Optics::~Optics()
 
 bool Dwdm::Ports::Port::Optics::has_data() const
 {
+    if (is_presence_container) return true;
     return (wave_info !=  nullptr && wave_info->has_data());
 }
 
@@ -1344,7 +1362,7 @@ Dwdm::Ports::Port::Optics::WaveInfo::WaveInfo()
     wave_channel_max{YType::uint32, "wave-channel-max"}
 {
 
-    yang_name = "wave-info"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wave-info"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Optics::WaveInfo::~WaveInfo()
@@ -1353,6 +1371,7 @@ Dwdm::Ports::Port::Optics::WaveInfo::~WaveInfo()
 
 bool Dwdm::Ports::Port::Optics::WaveInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return wave_band.is_set
 	|| wave_channel_min.is_set
 	|| wave_channel_max.is_set;
@@ -1447,13 +1466,13 @@ Dwdm::Ports::Port::Info::Info()
     controller_state{YType::enumeration, "controller-state"},
     transport_admin_state{YType::enumeration, "transport-admin-state"},
     slice_state{YType::boolean, "slice-state"}
-    	,
+        ,
     g709_info(std::make_shared<Dwdm::Ports::Port::Info::G709Info>())
-	,optics_info(std::make_shared<Dwdm::Ports::Port::Info::OpticsInfo>())
-	,tdc_info(std::make_shared<Dwdm::Ports::Port::Info::TdcInfo>())
-	,network_srlg_info(std::make_shared<Dwdm::Ports::Port::Info::NetworkSrlgInfo>())
-	,proactive(std::make_shared<Dwdm::Ports::Port::Info::Proactive>())
-	,signal_log(std::make_shared<Dwdm::Ports::Port::Info::SignalLog>())
+    , optics_info(std::make_shared<Dwdm::Ports::Port::Info::OpticsInfo>())
+    , tdc_info(std::make_shared<Dwdm::Ports::Port::Info::TdcInfo>())
+    , network_srlg_info(std::make_shared<Dwdm::Ports::Port::Info::NetworkSrlgInfo>())
+    , proactive(std::make_shared<Dwdm::Ports::Port::Info::Proactive>())
+    , signal_log(std::make_shared<Dwdm::Ports::Port::Info::SignalLog>())
 {
     g709_info->parent = this;
     optics_info->parent = this;
@@ -1462,7 +1481,7 @@ Dwdm::Ports::Port::Info::Info()
     proactive->parent = this;
     signal_log->parent = this;
 
-    yang_name = "info"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "info"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::~Info()
@@ -1471,6 +1490,7 @@ Dwdm::Ports::Port::Info::~Info()
 
 bool Dwdm::Ports::Port::Info::has_data() const
 {
+    if (is_presence_container) return true;
     return controller_state.is_set
 	|| transport_admin_state.is_set
 	|| slice_state.is_set
@@ -1680,12 +1700,12 @@ Dwdm::Ports::Port::Info::G709Info::G709Info()
     g709_prbs_mode{YType::enumeration, "g709-prbs-mode"},
     g709_prbs_pattern{YType::enumeration, "g709-prbs-pattern"},
     prbs_time_stamp{YType::uint64, "prbs-time-stamp"}
-    	,
+        ,
     fec_mismatch(std::make_shared<Dwdm::Ports::Port::Info::G709Info::FecMismatch>())
-	,ec_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::EcTca>())
-	,uc_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::UcTca>())
-	,otu_info(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo>())
-	,odu_info(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo>())
+    , ec_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::EcTca>())
+    , uc_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::UcTca>())
+    , otu_info(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo>())
+    , odu_info(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo>())
 {
     fec_mismatch->parent = this;
     ec_tca->parent = this;
@@ -1693,7 +1713,7 @@ Dwdm::Ports::Port::Info::G709Info::G709Info()
     otu_info->parent = this;
     odu_info->parent = this;
 
-    yang_name = "g709-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "g709-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::~G709Info()
@@ -1702,6 +1722,7 @@ Dwdm::Ports::Port::Info::G709Info::~G709Info()
 
 bool Dwdm::Ports::Port::Info::G709Info::has_data() const
 {
+    if (is_presence_container) return true;
     return is_g709_enabled.is_set
 	|| is_fec_mode_default.is_set
 	|| fec_mode.is_set
@@ -2126,7 +2147,7 @@ Dwdm::Ports::Port::Info::G709Info::FecMismatch::FecMismatch()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "fec-mismatch"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fec-mismatch"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::FecMismatch::~FecMismatch()
@@ -2135,6 +2156,7 @@ Dwdm::Ports::Port::Info::G709Info::FecMismatch::~FecMismatch()
 
 bool Dwdm::Ports::Port::Info::G709Info::FecMismatch::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -2246,7 +2268,7 @@ Dwdm::Ports::Port::Info::G709Info::EcTca::EcTca()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "ec-tca"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ec-tca"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::EcTca::~EcTca()
@@ -2255,6 +2277,7 @@ Dwdm::Ports::Port::Info::G709Info::EcTca::~EcTca()
 
 bool Dwdm::Ports::Port::Info::G709Info::EcTca::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -2379,7 +2402,7 @@ Dwdm::Ports::Port::Info::G709Info::UcTca::UcTca()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "uc-tca"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uc-tca"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::UcTca::~UcTca()
@@ -2388,6 +2411,7 @@ Dwdm::Ports::Port::Info::G709Info::UcTca::~UcTca()
 
 bool Dwdm::Ports::Port::Info::G709Info::UcTca::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -2507,32 +2531,32 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::OtuInfo()
     :
     bei{YType::uint64, "bei"},
     bip{YType::uint64, "bip"}
-    	,
+        ,
     los(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los>())
-	,lof(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof>())
-	,lom(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom>())
-	,oof(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof>())
-	,oom(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom>())
-	,ais(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais>())
-	,iae(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae>())
-	,bdi(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi>())
-	,tim(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim>())
-	,eoc(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc>())
-	,sf_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer>())
-	,sd_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer>())
-	,prefec_sf_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer>())
-	,prefec_sd_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer>())
-	,bbe_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca>())
-	,es_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca>())
-	,bbe(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe>())
-	,es(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es>())
-	,ses(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses>())
-	,uas(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas>())
-	,fc(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc>())
-	,bber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber>())
-	,esr(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr>())
-	,sesr(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr>())
-	,tti(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti>())
+    , lof(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof>())
+    , lom(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom>())
+    , oof(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof>())
+    , oom(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom>())
+    , ais(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais>())
+    , iae(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae>())
+    , bdi(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi>())
+    , tim(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim>())
+    , eoc(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc>())
+    , sf_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer>())
+    , sd_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer>())
+    , prefec_sf_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer>())
+    , prefec_sd_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer>())
+    , bbe_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca>())
+    , es_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca>())
+    , bbe(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe>())
+    , es(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es>())
+    , ses(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses>())
+    , uas(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas>())
+    , fc(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc>())
+    , bber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber>())
+    , esr(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr>())
+    , sesr(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr>())
+    , tti(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti>())
 {
     los->parent = this;
     lof->parent = this;
@@ -2560,7 +2584,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::OtuInfo()
     sesr->parent = this;
     tti->parent = this;
 
-    yang_name = "otu-info"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "otu-info"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::~OtuInfo()
@@ -2569,6 +2593,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::~OtuInfo()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bei.is_set
 	|| bip.is_set
 	|| (los !=  nullptr && los->has_data())
@@ -3053,7 +3078,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::Los()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "los"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "los"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::~Los()
@@ -3062,6 +3087,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::~Los()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3172,7 +3198,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::Lof()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "lof"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lof"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::~Lof()
@@ -3181,6 +3207,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::~Lof()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3291,7 +3318,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::Lom()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "lom"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lom"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::~Lom()
@@ -3300,6 +3327,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::~Lom()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3410,7 +3438,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::Oof()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "oof"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oof"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::~Oof()
@@ -3419,6 +3447,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::~Oof()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3529,7 +3558,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::Oom()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "oom"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oom"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::~Oom()
@@ -3538,6 +3567,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::~Oom()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3648,7 +3678,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::Ais()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "ais"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ais"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::~Ais()
@@ -3657,6 +3687,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::~Ais()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3767,7 +3798,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::Iae()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "iae"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iae"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::~Iae()
@@ -3776,6 +3807,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::~Iae()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -3886,7 +3918,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::Bdi()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "bdi"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bdi"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::~Bdi()
@@ -3895,6 +3927,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::~Bdi()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -4005,7 +4038,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::Tim()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "tim"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tim"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::~Tim()
@@ -4014,6 +4047,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::~Tim()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -4124,7 +4158,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::Eoc()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "eoc"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eoc"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::~Eoc()
@@ -4133,6 +4167,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::~Eoc()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -4244,7 +4279,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::SfBer()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "sf-ber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sf-ber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::~SfBer()
@@ -4253,6 +4288,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::~SfBer()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -4377,7 +4413,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::SdBer()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "sd-ber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sd-ber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::~SdBer()
@@ -4386,6 +4422,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::~SdBer()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -4510,7 +4547,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::PrefecSfBer()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "prefec-sf-ber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefec-sf-ber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::~PrefecSfBer()
@@ -4519,6 +4556,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::~PrefecSfBer()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -4643,7 +4681,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::PrefecSdBer()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "prefec-sd-ber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefec-sd-ber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::~PrefecSdBer()
@@ -4652,6 +4690,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::~PrefecSdBer()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -4776,7 +4815,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::BbeTca()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "bbe-tca"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bbe-tca"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::~BbeTca()
@@ -4785,6 +4824,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::~BbeTca()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -4909,7 +4949,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::EsTca()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "es-tca"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "es-tca"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::~EsTca()
@@ -4918,6 +4958,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::~EsTca()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -5038,7 +5079,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::Bbe()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "bbe"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bbe"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::~Bbe()
@@ -5047,6 +5088,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::~Bbe()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -5115,7 +5157,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::Es()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "es"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "es"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::~Es()
@@ -5124,6 +5166,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::~Es()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -5192,7 +5235,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::Ses()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "ses"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ses"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::~Ses()
@@ -5201,6 +5244,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::~Ses()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -5269,7 +5313,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::Uas()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "uas"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uas"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::~Uas()
@@ -5278,6 +5322,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::~Uas()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -5346,7 +5391,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::Fc()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "fc"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fc"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::~Fc()
@@ -5355,6 +5400,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::~Fc()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -5423,7 +5469,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::Bber()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "bber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::~Bber()
@@ -5432,6 +5478,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::~Bber()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -5500,7 +5547,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::Esr()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "esr"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esr"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::~Esr()
@@ -5509,6 +5556,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::~Esr()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -5577,7 +5625,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::Sesr()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "sesr"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sesr"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::~Sesr()
@@ -5586,6 +5634,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::~Sesr()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -5683,7 +5732,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::Tti()
     exp_oper_spec_range{YType::str, "exp-oper-spec-range"}
 {
 
-    yang_name = "tti"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tti"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::~Tti()
@@ -5692,6 +5741,7 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::~Tti()
 
 bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_string_type.is_set
 	|| expected_string_type.is_set
 	|| rx_string_type.is_set
@@ -6136,27 +6186,27 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::OduInfo()
     :
     bip{YType::uint64, "bip"},
     bei{YType::uint64, "bei"}
-    	,
+        ,
     oci(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci>())
-	,ais(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais>())
-	,lck(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck>())
-	,bdi(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi>())
-	,eoc(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc>())
-	,ptim(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim>())
-	,tim(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim>())
-	,sf_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer>())
-	,sd_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer>())
-	,bbe_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca>())
-	,es_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca>())
-	,bbe(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe>())
-	,es(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Es>())
-	,ses(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses>())
-	,uas(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas>())
-	,fc(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc>())
-	,bber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber>())
-	,esr(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr>())
-	,sesr(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr>())
-	,tti(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti>())
+    , ais(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais>())
+    , lck(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck>())
+    , bdi(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi>())
+    , eoc(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc>())
+    , ptim(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim>())
+    , tim(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim>())
+    , sf_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer>())
+    , sd_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer>())
+    , bbe_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca>())
+    , es_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca>())
+    , bbe(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe>())
+    , es(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Es>())
+    , ses(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses>())
+    , uas(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas>())
+    , fc(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc>())
+    , bber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber>())
+    , esr(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr>())
+    , sesr(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr>())
+    , tti(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti>())
 {
     oci->parent = this;
     ais->parent = this;
@@ -6179,7 +6229,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::OduInfo()
     sesr->parent = this;
     tti->parent = this;
 
-    yang_name = "odu-info"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-info"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::~OduInfo()
@@ -6188,6 +6238,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::~OduInfo()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bip.is_set
 	|| bei.is_set
 	|| (oci !=  nullptr && oci->has_data())
@@ -6592,7 +6643,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::Oci()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "oci"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oci"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::~Oci()
@@ -6601,6 +6652,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::~Oci()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -6711,7 +6763,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::Ais()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "ais"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ais"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::~Ais()
@@ -6720,6 +6772,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::~Ais()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -6830,7 +6883,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::Lck()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "lck"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lck"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::~Lck()
@@ -6839,6 +6892,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::~Lck()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -6949,7 +7003,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::Bdi()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "bdi"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bdi"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::~Bdi()
@@ -6958,6 +7012,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::~Bdi()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -7068,7 +7123,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::Eoc()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "eoc"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eoc"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::~Eoc()
@@ -7077,6 +7132,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::~Eoc()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -7187,7 +7243,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::Ptim()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "ptim"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ptim"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::~Ptim()
@@ -7196,6 +7252,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::~Ptim()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -7306,7 +7363,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::Tim()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "tim"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tim"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::~Tim()
@@ -7315,6 +7372,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::~Tim()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -7426,7 +7484,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::SfBer()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "sf-ber"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sf-ber"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::~SfBer()
@@ -7435,6 +7493,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::~SfBer()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -7559,7 +7618,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::SdBer()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "sd-ber"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sd-ber"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::~SdBer()
@@ -7568,6 +7627,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::~SdBer()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -7692,7 +7752,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::BbeTca()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "bbe-tca"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bbe-tca"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::~BbeTca()
@@ -7701,6 +7761,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::~BbeTca()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -7825,7 +7886,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::EsTca()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "es-tca"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "es-tca"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::~EsTca()
@@ -7834,6 +7895,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::~EsTca()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::has_data() const
 {
+    if (is_presence_container) return true;
     return reporting_enabled.is_set
 	|| is_detected.is_set
 	|| is_asserted.is_set
@@ -7954,7 +8016,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::Bbe()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "bbe"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bbe"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::~Bbe()
@@ -7963,6 +8025,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::~Bbe()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -8031,7 +8094,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::Es()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "es"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "es"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::~Es()
@@ -8040,6 +8103,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::~Es()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -8108,7 +8172,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::Ses()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "ses"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ses"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::~Ses()
@@ -8117,6 +8181,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::~Ses()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -8185,7 +8250,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::Uas()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "uas"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uas"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::~Uas()
@@ -8194,6 +8259,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::~Uas()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -8262,7 +8328,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::Fc()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "fc"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fc"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::~Fc()
@@ -8271,6 +8337,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::~Fc()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -8339,7 +8406,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::Bber()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "bber"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bber"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::~Bber()
@@ -8348,6 +8415,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::~Bber()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -8416,7 +8484,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::Esr()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "esr"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esr"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::~Esr()
@@ -8425,6 +8493,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::~Esr()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -8493,7 +8562,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::Sesr()
     counter{YType::uint64, "counter"}
 {
 
-    yang_name = "sesr"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sesr"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::~Sesr()
@@ -8502,6 +8571,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::~Sesr()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -8599,7 +8669,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::Tti()
     exp_oper_spec_range{YType::str, "exp-oper-spec-range"}
 {
 
-    yang_name = "tti"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tti"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::~Tti()
@@ -8608,6 +8678,7 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::~Tti()
 
 bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_string_type.is_set
 	|| expected_string_type.is_set
 	|| rx_string_type.is_set
@@ -9091,7 +9162,7 @@ Dwdm::Ports::Port::Info::OpticsInfo::OpticsInfo()
     input_power_fail{YType::uint32, "input-power-fail"}
 {
 
-    yang_name = "optics-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::OpticsInfo::~OpticsInfo()
@@ -9100,6 +9171,7 @@ Dwdm::Ports::Port::Info::OpticsInfo::~OpticsInfo()
 
 bool Dwdm::Ports::Port::Info::OpticsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return optics_type.is_set
 	|| clock_source.is_set
 	|| wave_frequency_progressive_string.is_set
@@ -9668,7 +9740,7 @@ Dwdm::Ports::Port::Info::TdcInfo::TdcInfo()
     is_reroute_control_enabled{YType::boolean, "is-reroute-control-enabled"}
 {
 
-    yang_name = "tdc-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tdc-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::TdcInfo::~TdcInfo()
@@ -9677,6 +9749,7 @@ Dwdm::Ports::Port::Info::TdcInfo::~TdcInfo()
 
 bool Dwdm::Ports::Port::Info::TdcInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tdc_valid.is_set
 	|| major_alarm.is_set
 	|| operation_mode.is_set
@@ -9823,7 +9896,7 @@ Dwdm::Ports::Port::Info::NetworkSrlgInfo::NetworkSrlgInfo()
     network_srlg{YType::uint32, "network-srlg"}
 {
 
-    yang_name = "network-srlg-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-srlg-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::NetworkSrlgInfo::~NetworkSrlgInfo()
@@ -9832,6 +9905,7 @@ Dwdm::Ports::Port::Info::NetworkSrlgInfo::~NetworkSrlgInfo()
 
 bool Dwdm::Ports::Port::Info::NetworkSrlgInfo::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : network_srlg.getYLeafs())
     {
         if(leaf.is_set)
@@ -9935,7 +10009,7 @@ Dwdm::Ports::Port::Info::Proactive::Proactive()
     prefec_thresh_crossed{YType::boolean, "prefec-thresh-crossed"}
 {
 
-    yang_name = "proactive"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "proactive"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::Proactive::~Proactive()
@@ -9944,6 +10018,7 @@ Dwdm::Ports::Port::Info::Proactive::~Proactive()
 
 bool Dwdm::Ports::Port::Info::Proactive::has_data() const
 {
+    if (is_presence_container) return true;
     return proactive_feature.is_set
 	|| proactive_mode.is_set
 	|| proactive_fsm_state.is_set
@@ -10351,7 +10426,7 @@ Dwdm::Ports::Port::Info::SignalLog::SignalLog()
     log_filename{YType::str, "log-filename"}
 {
 
-    yang_name = "signal-log"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "signal-log"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Dwdm::Ports::Port::Info::SignalLog::~SignalLog()
@@ -10360,6 +10435,7 @@ Dwdm::Ports::Port::Info::SignalLog::~SignalLog()
 
 bool Dwdm::Ports::Port::Info::SignalLog::has_data() const
 {
+    if (is_presence_container) return true;
     return is_log_enabled.is_set
 	|| log_filename.is_set;
 }
@@ -10442,7 +10518,7 @@ Vtxp::Vtxp()
 {
     dwdm_vtxp->parent = this;
 
-    yang_name = "vtxp"; yang_parent_name = "Cisco-IOS-XR-dwdm-ui-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vtxp"; yang_parent_name = "Cisco-IOS-XR-dwdm-ui-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Vtxp::~Vtxp()
@@ -10451,6 +10527,7 @@ Vtxp::~Vtxp()
 
 bool Vtxp::has_data() const
 {
+    if (is_presence_container) return true;
     return (dwdm_vtxp !=  nullptr && dwdm_vtxp->has_data());
 }
 
@@ -10548,7 +10625,7 @@ Vtxp::DwdmVtxp::DwdmVtxp()
 {
     port_vtxps->parent = this;
 
-    yang_name = "dwdm-vtxp"; yang_parent_name = "vtxp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dwdm-vtxp"; yang_parent_name = "vtxp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vtxp::DwdmVtxp::~DwdmVtxp()
@@ -10557,6 +10634,7 @@ Vtxp::DwdmVtxp::~DwdmVtxp()
 
 bool Vtxp::DwdmVtxp::has_data() const
 {
+    if (is_presence_container) return true;
     return (port_vtxps !=  nullptr && port_vtxps->has_data());
 }
 
@@ -10631,9 +10709,11 @@ bool Vtxp::DwdmVtxp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Vtxp::DwdmVtxp::PortVtxps::PortVtxps()
+    :
+    port_vtxp(this, {"name"})
 {
 
-    yang_name = "port-vtxps"; yang_parent_name = "dwdm-vtxp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port-vtxps"; yang_parent_name = "dwdm-vtxp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vtxp::DwdmVtxp::PortVtxps::~PortVtxps()
@@ -10642,7 +10722,8 @@ Vtxp::DwdmVtxp::PortVtxps::~PortVtxps()
 
 bool Vtxp::DwdmVtxp::PortVtxps::has_data() const
 {
-    for (std::size_t index=0; index<port_vtxp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_vtxp.len(); index++)
     {
         if(port_vtxp[index]->has_data())
             return true;
@@ -10652,7 +10733,7 @@ bool Vtxp::DwdmVtxp::PortVtxps::has_data() const
 
 bool Vtxp::DwdmVtxp::PortVtxps::has_operation() const
 {
-    for (std::size_t index=0; index<port_vtxp.size(); index++)
+    for (std::size_t index=0; index<port_vtxp.len(); index++)
     {
         if(port_vtxp[index]->has_operation())
             return true;
@@ -10689,7 +10770,7 @@ std::shared_ptr<Entity> Vtxp::DwdmVtxp::PortVtxps::get_child_by_name(const std::
     {
         auto c = std::make_shared<Vtxp::DwdmVtxp::PortVtxps::PortVtxp>();
         c->parent = this;
-        port_vtxp.push_back(c);
+        port_vtxp.append(c);
         return c;
     }
 
@@ -10701,7 +10782,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vtxp::DwdmVtxp::PortVtxps::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_vtxp)
+    for (auto c : port_vtxp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10730,12 +10811,12 @@ bool Vtxp::DwdmVtxp::PortVtxps::has_leaf_or_child_of_name(const std::string & na
 Vtxp::DwdmVtxp::PortVtxps::PortVtxp::PortVtxp()
     :
     name{YType::str, "name"}
-    	,
+        ,
     info(std::make_shared<Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info>())
 {
     info->parent = this;
 
-    yang_name = "port-vtxp"; yang_parent_name = "port-vtxps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port-vtxp"; yang_parent_name = "port-vtxps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vtxp::DwdmVtxp::PortVtxps::PortVtxp::~PortVtxp()
@@ -10744,6 +10825,7 @@ Vtxp::DwdmVtxp::PortVtxps::PortVtxp::~PortVtxp()
 
 bool Vtxp::DwdmVtxp::PortVtxps::PortVtxp::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (info !=  nullptr && info->has_data());
 }
@@ -10765,7 +10847,8 @@ std::string Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_absolute_path() const
 std::string Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-vtxp" <<"[name='" <<name <<"']";
+    path_buffer << "port-vtxp";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10835,7 +10918,7 @@ Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::Info()
     vtxp_enable{YType::boolean, "vtxp-enable"}
 {
 
-    yang_name = "info"; yang_parent_name = "port-vtxp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "info"; yang_parent_name = "port-vtxp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::~Info()
@@ -10844,6 +10927,7 @@ Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::~Info()
 
 bool Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::has_data() const
 {
+    if (is_presence_container) return true;
     return vtxp_enable.is_set;
 }
 
@@ -10907,16 +10991,27 @@ bool Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::has_leaf_or_child_of_name(const 
     return false;
 }
 
-const Enum::YLeaf G709apsByte::pp_no_protect {0, "pp-no-protect"};
-const Enum::YLeaf G709apsByte::pp_no_request {15, "pp-no-request"};
-const Enum::YLeaf G709apsByte::pp_regen_degrade {63, "pp-regen-degrade"};
-const Enum::YLeaf G709apsByte::pp_sig_degrade {175, "pp-sig-degrade"};
-const Enum::YLeaf G709apsByte::pp_remote_main {239, "pp-remote-main"};
-const Enum::YLeaf G709apsByte::pp_aps_unknown {255, "pp-aps-unknown"};
-
 const Enum::YLeaf G709ppintfState::pp_intf_up {0, "pp-intf-up"};
 const Enum::YLeaf G709ppintfState::pp_intf_failing {1, "pp-intf-failing"};
 const Enum::YLeaf G709ppintfState::pp_intf_down {2, "pp-intf-down"};
+
+const Enum::YLeaf G709ppfsmMode::pp_disable {0, "pp-disable"};
+const Enum::YLeaf G709ppfsmMode::pp_default_mode {1, "pp-default-mode"};
+const Enum::YLeaf G709ppfsmMode::pp_graceful_mode {2, "pp-graceful-mode"};
+
+const Enum::YLeaf DwdmControllerState::dwdm_ui_state_up {0, "dwdm-ui-state-up"};
+const Enum::YLeaf DwdmControllerState::dwdm_ui_state_down {1, "dwdm-ui-state-down"};
+const Enum::YLeaf DwdmControllerState::dwdm_ui_state_admin_down {2, "dwdm-ui-state-admin-down"};
+
+const Enum::YLeaf DwdmtasState::tas_oos {0, "tas-oos"};
+const Enum::YLeaf DwdmtasState::tas_is {1, "tas-is"};
+const Enum::YLeaf DwdmtasState::tas_oos_mt {2, "tas-oos-mt"};
+const Enum::YLeaf DwdmtasState::tas_is_cfg {3, "tas-is-cfg"};
+
+const Enum::YLeaf G709prbsMode::mode_source {0, "mode-source"};
+const Enum::YLeaf G709prbsMode::mode_sink {1, "mode-sink"};
+const Enum::YLeaf G709prbsMode::mode_source_sink {2, "mode-source-sink"};
+const Enum::YLeaf G709prbsMode::mode_invalid {3, "mode-invalid"};
 
 const Enum::YLeaf G709ppfsmState::in_active {0, "in-active"};
 const Enum::YLeaf G709ppfsmState::disabled {1, "disabled"};
@@ -10929,38 +11024,6 @@ const Enum::YLeaf G709ppfsmState::local_failed {7, "local-failed"};
 const Enum::YLeaf G709ppfsmState::remote_failed {8, "remote-failed"};
 const Enum::YLeaf G709ppfsmState::main_t_failed {9, "main-t-failed"};
 const Enum::YLeaf G709ppfsmState::regen_failed {10, "regen-failed"};
-
-const Enum::YLeaf G709ppfsmMode::pp_disable {0, "pp-disable"};
-const Enum::YLeaf G709ppfsmMode::pp_default_mode {1, "pp-default-mode"};
-const Enum::YLeaf G709ppfsmMode::pp_graceful_mode {2, "pp-graceful-mode"};
-
-const Enum::YLeaf DwdmWaveChannelOwner::default_ {0, "default"};
-const Enum::YLeaf DwdmWaveChannelOwner::configuration {1, "configuration"};
-const Enum::YLeaf DwdmWaveChannelOwner::gmpls {2, "gmpls"};
-
-const Enum::YLeaf G709efecMode::g975_none {0, "g975-none"};
-const Enum::YLeaf G709efecMode::g975_1_i4 {1, "g975-1-i4"};
-const Enum::YLeaf G709efecMode::g975_1_i7 {2, "g975-1-i7"};
-
-const Enum::YLeaf DwdmtasState::tas_oos {0, "tas-oos"};
-const Enum::YLeaf DwdmtasState::tas_is {1, "tas-is"};
-const Enum::YLeaf DwdmtasState::tas_oos_mt {2, "tas-oos-mt"};
-const Enum::YLeaf DwdmtasState::tas_is_cfg {3, "tas-is-cfg"};
-
-const Enum::YLeaf DwdmControllerState::dwdm_ui_state_up {0, "dwdm-ui-state-up"};
-const Enum::YLeaf DwdmControllerState::dwdm_ui_state_down {1, "dwdm-ui-state-down"};
-const Enum::YLeaf DwdmControllerState::dwdm_ui_state_admin_down {2, "dwdm-ui-state-admin-down"};
-
-const Enum::YLeaf G709prbsMode::mode_source {0, "mode-source"};
-const Enum::YLeaf G709prbsMode::mode_sink {1, "mode-sink"};
-const Enum::YLeaf G709prbsMode::mode_source_sink {2, "mode-source-sink"};
-const Enum::YLeaf G709prbsMode::mode_invalid {3, "mode-invalid"};
-
-const Enum::YLeaf G709prbsPattern::pattern_none {0, "pattern-none"};
-const Enum::YLeaf G709prbsPattern::pattern_null {1, "pattern-null"};
-const Enum::YLeaf G709prbsPattern::pattern_pn11 {2, "pattern-pn11"};
-const Enum::YLeaf G709prbsPattern::pattern_pn23 {3, "pattern-pn23"};
-const Enum::YLeaf G709prbsPattern::pattern_pn31 {4, "pattern-pn31"};
 
 const Enum::YLeaf G709prbsInterval::current_interval {0, "current-interval"};
 const Enum::YLeaf G709prbsInterval::previous_interval {1, "previous-interval"};
@@ -10995,6 +11058,27 @@ const Enum::YLeaf G709prbsInterval::previous_interval29 {29, "previous-interval2
 const Enum::YLeaf G709prbsInterval::previous_interval30 {30, "previous-interval30"};
 const Enum::YLeaf G709prbsInterval::previous_interval31 {31, "previous-interval31"};
 const Enum::YLeaf G709prbsInterval::previous_interval32 {32, "previous-interval32"};
+
+const Enum::YLeaf DwdmWaveChannelOwner::default_ {0, "default"};
+const Enum::YLeaf DwdmWaveChannelOwner::configuration {1, "configuration"};
+const Enum::YLeaf DwdmWaveChannelOwner::gmpls {2, "gmpls"};
+
+const Enum::YLeaf G709efecMode::g975_none {0, "g975-none"};
+const Enum::YLeaf G709efecMode::g975_1_i4 {1, "g975-1-i4"};
+const Enum::YLeaf G709efecMode::g975_1_i7 {2, "g975-1-i7"};
+
+const Enum::YLeaf G709prbsPattern::pattern_none {0, "pattern-none"};
+const Enum::YLeaf G709prbsPattern::pattern_null {1, "pattern-null"};
+const Enum::YLeaf G709prbsPattern::pattern_pn11 {2, "pattern-pn11"};
+const Enum::YLeaf G709prbsPattern::pattern_pn23 {3, "pattern-pn23"};
+const Enum::YLeaf G709prbsPattern::pattern_pn31 {4, "pattern-pn31"};
+
+const Enum::YLeaf G709apsByte::pp_no_protect {0, "pp-no-protect"};
+const Enum::YLeaf G709apsByte::pp_no_request {15, "pp-no-request"};
+const Enum::YLeaf G709apsByte::pp_regen_degrade {63, "pp-regen-degrade"};
+const Enum::YLeaf G709apsByte::pp_sig_degrade {175, "pp-sig-degrade"};
+const Enum::YLeaf G709apsByte::pp_remote_main {239, "pp-remote-main"};
+const Enum::YLeaf G709apsByte::pp_aps_unknown {255, "pp-aps-unknown"};
 
 
 }

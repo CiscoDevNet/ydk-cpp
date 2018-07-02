@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_process_memory_oper {
 
 MemoryUsageProcesses::MemoryUsageProcesses()
+    :
+    memory_usage_process(this, {"pid", "name"})
 {
 
-    yang_name = "memory-usage-processes"; yang_parent_name = "Cisco-IOS-XE-process-memory-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "memory-usage-processes"; yang_parent_name = "Cisco-IOS-XE-process-memory-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MemoryUsageProcesses::~MemoryUsageProcesses()
@@ -23,7 +25,8 @@ MemoryUsageProcesses::~MemoryUsageProcesses()
 
 bool MemoryUsageProcesses::has_data() const
 {
-    for (std::size_t index=0; index<memory_usage_process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<memory_usage_process.len(); index++)
     {
         if(memory_usage_process[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool MemoryUsageProcesses::has_data() const
 
 bool MemoryUsageProcesses::has_operation() const
 {
-    for (std::size_t index=0; index<memory_usage_process.size(); index++)
+    for (std::size_t index=0; index<memory_usage_process.len(); index++)
     {
         if(memory_usage_process[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> MemoryUsageProcesses::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<MemoryUsageProcesses::MemoryUsageProcess>();
         c->parent = this;
-        memory_usage_process.push_back(c);
+        memory_usage_process.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> MemoryUsageProcesses::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : memory_usage_process)
+    for (auto c : memory_usage_process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -138,7 +141,7 @@ MemoryUsageProcesses::MemoryUsageProcess::MemoryUsageProcess()
     ret_buffers{YType::uint32, "ret-buffers"}
 {
 
-    yang_name = "memory-usage-process"; yang_parent_name = "memory-usage-processes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory-usage-process"; yang_parent_name = "memory-usage-processes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MemoryUsageProcesses::MemoryUsageProcess::~MemoryUsageProcess()
@@ -147,6 +150,7 @@ MemoryUsageProcesses::MemoryUsageProcess::~MemoryUsageProcess()
 
 bool MemoryUsageProcesses::MemoryUsageProcess::has_data() const
 {
+    if (is_presence_container) return true;
     return pid.is_set
 	|| name.is_set
 	|| tty.is_set
@@ -180,7 +184,9 @@ std::string MemoryUsageProcesses::MemoryUsageProcess::get_absolute_path() const
 std::string MemoryUsageProcesses::MemoryUsageProcess::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "memory-usage-process" <<"[pid='" <<pid <<"']" <<"[name='" <<name <<"']";
+    path_buffer << "memory-usage-process";
+    ADD_KEY_TOKEN(pid, "pid");
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 

@@ -48,13 +48,13 @@ class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute : publi
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Lisp> lisp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Nd> nd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected> connected; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp> > bgp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp> > eigrp;
+        ydk::YList bgp;
+        ydk::YList eigrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis> isis; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp> iso_igrp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile> mobile; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr> odr; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf> > ospf;
+        ydk::YList ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_> rip; // presence node
         
@@ -358,7 +358,7 @@ class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis :
         class IsisArea; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea
         class RipIsisRedist; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea> > isis_area;
+        ydk::YList isis_area;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist> rip_isis_redist;
         
 }; // Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis
@@ -549,7 +549,7 @@ class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgr
         class IsoigrpList; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList
         class RipMetricRouteMap; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList> > isoigrp_list;
+        ydk::YList isoigrp_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap> rip_metric_route_map;
         
 }; // Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp
@@ -830,7 +830,7 @@ class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf :
         class Match; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match
         class RipMetricRouteMap; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMetricRouteMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Vrf_> > vrf;
+        ydk::YList vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match> match;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMetricRouteMap> rip_metric_route_map;
         
@@ -1320,7 +1320,7 @@ class Native::Ipv6::Router::Rip::DistributeList : public ydk::Entity
 
         class PrefixList; //type: Native::Ipv6::Router::Rip::DistributeList::PrefixList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::DistributeList::PrefixList> > prefix_list;
+        ydk::YList prefix_list;
         
 }; // Native::Ipv6::Router::Rip::DistributeList
 
@@ -1382,13 +1382,13 @@ class Native::Ipv6::Router::Rip::Redistribute : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Lisp> lisp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Nd> nd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Connected> connected; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Bgp> > bgp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Eigrp> > eigrp;
+        ydk::YList bgp;
+        ydk::YList eigrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Isis> isis; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::IsoIgrp> iso_igrp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Mobile> mobile; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Odr> odr; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Ospf> > ospf;
+        ydk::YList ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Rip_> rip; // presence node
         
@@ -1692,7 +1692,7 @@ class Native::Ipv6::Router::Rip::Redistribute::Isis : public ydk::Entity
         class IsisArea; //type: Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea
         class RipIsisRedist; //type: Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea> > isis_area;
+        ydk::YList isis_area;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist> rip_isis_redist;
         
 }; // Native::Ipv6::Router::Rip::Redistribute::Isis
@@ -1883,7 +1883,7 @@ class Native::Ipv6::Router::Rip::Redistribute::IsoIgrp : public ydk::Entity
         class IsoigrpList; //type: Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList
         class RipMetricRouteMap; //type: Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList> > isoigrp_list;
+        ydk::YList isoigrp_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap> rip_metric_route_map;
         
 }; // Native::Ipv6::Router::Rip::Redistribute::IsoIgrp
@@ -2164,7 +2164,7 @@ class Native::Ipv6::Router::Rip::Redistribute::Ospf : public ydk::Entity
         class Match; //type: Native::Ipv6::Router::Rip::Redistribute::Ospf::Match
         class RipMetricRouteMap; //type: Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Ospf::Vrf> > vrf;
+        ydk::YList vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Ospf::Match> match;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap> rip_metric_route_map;
         
@@ -2705,7 +2705,7 @@ class Native::Ipv6::PrefixList : public ydk::Entity
         ydk::YLeaf sequence_number; //type: empty
         class Prefixes; //type: Native::Ipv6::PrefixList::Prefixes
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::PrefixList::Prefixes> > prefixes;
+        ydk::YList prefixes;
         
 }; // Native::Ipv6::PrefixList
 
@@ -2735,7 +2735,7 @@ class Native::Ipv6::PrefixList::Prefixes : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::PrefixList::Prefixes::Permit> permit;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::PrefixList::Prefixes::Deny> deny;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::PrefixList::Prefixes::Seq> > seq;
+        ydk::YList seq;
         
 }; // Native::Ipv6::PrefixList::Prefixes
 
@@ -3045,20 +3045,20 @@ class Native::Vlan : public ydk::Entity
         class Filter; //type: Native::Vlan::Filter
         class Accounting; //type: Native::Vlan::Accounting
         class Internal; //type: Native::Vlan::Internal
-        class Dot1Q; //type: Native::Vlan::Dot1Q
+        class Dot1q; //type: Native::Vlan::Dot1q
         class AccessLog; //type: Native::Vlan::AccessLog
         class Group; //type: Native::Vlan::Group
         class VlanList; //type: Native::Vlan::VlanList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::AccessMap> > access_map;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::Configuration> > configuration;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::Filter> > filter;
+        ydk::YList access_map;
+        ydk::YList configuration;
+        ydk::YList filter;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::Accounting> accounting; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::Internal> internal;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::Dot1Q> dot1q;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::Dot1q> dot1q;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::AccessLog> access_log;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::Group> > group;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::VlanList> > vlan_list;
+        ydk::YList group;
+        ydk::YList vlan_list;
         
 }; // Native::Vlan
 
@@ -3226,7 +3226,7 @@ class Native::Vlan::Configuration::Ip::Flow : public ydk::Entity
 
         class Monitor; //type: Native::Vlan::Configuration::Ip::Flow::Monitor
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::Configuration::Ip::Flow::Monitor> > monitor;
+        ydk::YList monitor;
         
 }; // Native::Vlan::Configuration::Ip::Flow
 
@@ -3460,11 +3460,11 @@ class Native::Vlan::Internal::Allocation : public ydk::Entity
 }; // Native::Vlan::Internal::Allocation
 
 
-class Native::Vlan::Dot1Q : public ydk::Entity
+class Native::Vlan::Dot1q : public ydk::Entity
 {
     public:
-        Dot1Q();
-        ~Dot1Q();
+        Dot1q();
+        ~Dot1q();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3477,14 +3477,14 @@ class Native::Vlan::Dot1Q : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tag; //type: Native::Vlan::Dot1Q::Tag
+        class Tag; //type: Native::Vlan::Dot1q::Tag
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::Dot1Q::Tag> tag;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::Dot1q::Tag> tag;
         
-}; // Native::Vlan::Dot1Q
+}; // Native::Vlan::Dot1q
 
 
-class Native::Vlan::Dot1Q::Tag : public ydk::Entity
+class Native::Vlan::Dot1q::Tag : public ydk::Entity
 {
     public:
         Tag();
@@ -3503,7 +3503,7 @@ class Native::Vlan::Dot1Q::Tag : public ydk::Entity
 
         ydk::YLeaf native; //type: empty
 
-}; // Native::Vlan::Dot1Q::Tag
+}; // Native::Vlan::Dot1q::Tag
 
 
 class Native::Vlan::AccessLog : public ydk::Entity
@@ -3550,7 +3550,7 @@ class Native::Vlan::Group : public ydk::Entity
         ydk::YLeaf name; //type: string
         class VlanList; //type: Native::Vlan::Group::VlanList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vlan::Group::VlanList> > vlan_list;
+        ydk::YList vlan_list;
         
 }; // Native::Vlan::Group
 

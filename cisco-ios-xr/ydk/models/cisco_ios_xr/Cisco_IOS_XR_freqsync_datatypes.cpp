@@ -15,9 +15,6 @@ const Enum::YLeaf FsyncQlOption::option_1 {1, "option-1"};
 const Enum::YLeaf FsyncQlOption::option_2__COMMA___generation_1 {2, "option-2,-generation-1"};
 const Enum::YLeaf FsyncQlOption::option_2__COMMA___generation_2 {3, "option-2,-generation-2"};
 
-const Enum::YLeaf FsyncClock::sync {3, "sync"};
-const Enum::YLeaf FsyncClock::internal {4, "internal"};
-
 const Enum::YLeaf FsyncQlValue::dnu {1, "dnu"};
 const Enum::YLeaf FsyncQlValue::o1_prc {10, "o1-prc"};
 const Enum::YLeaf FsyncQlValue::o1_ssu_a {11, "o1-ssu-a"};
@@ -37,6 +34,19 @@ const Enum::YLeaf FsyncQlValue::o2_g2_tnc {34, "o2-g2-tnc"};
 const Enum::YLeaf FsyncQlValue::o2_g2_st3e {35, "o2-g2-st3e"};
 const Enum::YLeaf FsyncQlValue::o2_g2_smc {36, "o2-g2-smc"};
 const Enum::YLeaf FsyncQlValue::o2_g2_st4 {37, "o2-g2-st4"};
+
+const Enum::YLeaf FsyncClock::sync {3, "sync"};
+const Enum::YLeaf FsyncClock::internal {4, "internal"};
+const Enum::YLeaf FsyncClock::gnss {8, "gnss"};
+
+const Enum::YLeaf GnssConstellation::auto_ {0, "auto"};
+const Enum::YLeaf GnssConstellation::gps {1, "gps"};
+const Enum::YLeaf GnssConstellation::galileo {2, "galileo"};
+const Enum::YLeaf GnssConstellation::bei_dou {3, "bei-dou"};
+const Enum::YLeaf GnssConstellation::qzss {4, "qzss"};
+
+const Enum::YLeaf Gnss1ppsPolarity::positive {0, "positive"};
+const Enum::YLeaf Gnss1ppsPolarity::negative {1, "negative"};
 
 
 }

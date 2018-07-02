@@ -14,14 +14,14 @@ namespace openconfig_lacp {
 Lacp::Lacp()
     :
     config(std::make_shared<Lacp::Config>())
-	,state(std::make_shared<Lacp::State>())
-	,interfaces(std::make_shared<Lacp::Interfaces>())
+    , state(std::make_shared<Lacp::State>())
+    , interfaces(std::make_shared<Lacp::Interfaces>())
 {
     config->parent = this;
     state->parent = this;
     interfaces->parent = this;
 
-    yang_name = "lacp"; yang_parent_name = "openconfig-lacp"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lacp"; yang_parent_name = "openconfig-lacp"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Lacp::~Lacp()
@@ -30,6 +30,7 @@ Lacp::~Lacp()
 
 bool Lacp::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data());
@@ -158,7 +159,7 @@ Lacp::Config::Config()
     system_priority{YType::uint16, "system-priority"}
 {
 
-    yang_name = "config"; yang_parent_name = "lacp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "lacp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lacp::Config::~Config()
@@ -167,6 +168,7 @@ Lacp::Config::~Config()
 
 bool Lacp::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return system_priority.is_set;
 }
 
@@ -242,7 +244,7 @@ Lacp::State::State()
     system_priority{YType::uint16, "system-priority"}
 {
 
-    yang_name = "state"; yang_parent_name = "lacp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "state"; yang_parent_name = "lacp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lacp::State::~State()
@@ -251,6 +253,7 @@ Lacp::State::~State()
 
 bool Lacp::State::has_data() const
 {
+    if (is_presence_container) return true;
     return system_priority.is_set;
 }
 
@@ -322,9 +325,11 @@ bool Lacp::State::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Lacp::Interfaces::Interfaces()
+    :
+    interface(this, {"name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "lacp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "lacp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lacp::Interfaces::~Interfaces()
@@ -333,7 +338,8 @@ Lacp::Interfaces::~Interfaces()
 
 bool Lacp::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -343,7 +349,7 @@ bool Lacp::Interfaces::has_data() const
 
 bool Lacp::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -380,7 +386,7 @@ std::shared_ptr<Entity> Lacp::Interfaces::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Lacp::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -392,7 +398,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lacp::Interfaces::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -421,16 +427,16 @@ bool Lacp::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
 Lacp::Interfaces::Interface::Interface()
     :
     name{YType::str, "name"}
-    	,
+        ,
     config(std::make_shared<Lacp::Interfaces::Interface::Config>())
-	,state(std::make_shared<Lacp::Interfaces::Interface::State>())
-	,members(std::make_shared<Lacp::Interfaces::Interface::Members>())
+    , state(std::make_shared<Lacp::Interfaces::Interface::State>())
+    , members(std::make_shared<Lacp::Interfaces::Interface::Members>())
 {
     config->parent = this;
     state->parent = this;
     members->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lacp::Interfaces::Interface::~Interface()
@@ -439,6 +445,7 @@ Lacp::Interfaces::Interface::~Interface()
 
 bool Lacp::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -464,7 +471,8 @@ std::string Lacp::Interfaces::Interface::get_absolute_path() const
 std::string Lacp::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[name='" <<name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -566,7 +574,7 @@ Lacp::Interfaces::Interface::Config::Config()
     system_priority{YType::uint16, "system-priority"}
 {
 
-    yang_name = "config"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lacp::Interfaces::Interface::Config::~Config()
@@ -575,6 +583,7 @@ Lacp::Interfaces::Interface::Config::~Config()
 
 bool Lacp::Interfaces::Interface::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| interval.is_set
 	|| lacp_mode.is_set
@@ -699,7 +708,7 @@ Lacp::Interfaces::Interface::State::State()
     system_priority{YType::uint16, "system-priority"}
 {
 
-    yang_name = "state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lacp::Interfaces::Interface::State::~State()
@@ -708,6 +717,7 @@ Lacp::Interfaces::Interface::State::~State()
 
 bool Lacp::Interfaces::Interface::State::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| interval.is_set
 	|| lacp_mode.is_set
@@ -824,9 +834,11 @@ bool Lacp::Interfaces::Interface::State::has_leaf_or_child_of_name(const std::st
 }
 
 Lacp::Interfaces::Interface::Members::Members()
+    :
+    member(this, {"interface"})
 {
 
-    yang_name = "members"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "members"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lacp::Interfaces::Interface::Members::~Members()
@@ -835,7 +847,8 @@ Lacp::Interfaces::Interface::Members::~Members()
 
 bool Lacp::Interfaces::Interface::Members::has_data() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_data())
             return true;
@@ -845,7 +858,7 @@ bool Lacp::Interfaces::Interface::Members::has_data() const
 
 bool Lacp::Interfaces::Interface::Members::has_operation() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_operation())
             return true;
@@ -875,7 +888,7 @@ std::shared_ptr<Entity> Lacp::Interfaces::Interface::Members::get_child_by_name(
     {
         auto c = std::make_shared<Lacp::Interfaces::Interface::Members::Member>();
         c->parent = this;
-        member.push_back(c);
+        member.append(c);
         return c;
     }
 
@@ -887,7 +900,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lacp::Interfaces::Interface::Memb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : member)
+    for (auto c : member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -916,12 +929,12 @@ bool Lacp::Interfaces::Interface::Members::has_leaf_or_child_of_name(const std::
 Lacp::Interfaces::Interface::Members::Member::Member()
     :
     interface{YType::str, "interface"}
-    	,
+        ,
     state(std::make_shared<Lacp::Interfaces::Interface::Members::Member::State>())
 {
     state->parent = this;
 
-    yang_name = "member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lacp::Interfaces::Interface::Members::Member::~Member()
@@ -930,6 +943,7 @@ Lacp::Interfaces::Interface::Members::Member::~Member()
 
 bool Lacp::Interfaces::Interface::Members::Member::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| (state !=  nullptr && state->has_data());
 }
@@ -944,7 +958,8 @@ bool Lacp::Interfaces::Interface::Members::Member::has_operation() const
 std::string Lacp::Interfaces::Interface::Members::Member::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "member" <<"[interface='" <<interface <<"']";
+    path_buffer << "member";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -1022,12 +1037,12 @@ Lacp::Interfaces::Interface::Members::Member::State::State()
     oper_key{YType::uint16, "oper-key"},
     partner_id{YType::str, "partner-id"},
     partner_key{YType::uint16, "partner-key"}
-    	,
+        ,
     counters(std::make_shared<Lacp::Interfaces::Interface::Members::Member::State::Counters>())
 {
     counters->parent = this;
 
-    yang_name = "state"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lacp::Interfaces::Interface::Members::Member::State::~State()
@@ -1036,6 +1051,7 @@ Lacp::Interfaces::Interface::Members::Member::State::~State()
 
 bool Lacp::Interfaces::Interface::Members::Member::State::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| activity.is_set
 	|| timeout.is_set
@@ -1255,7 +1271,7 @@ Lacp::Interfaces::Interface::Members::Member::State::Counters::Counters()
     lacp_errors{YType::uint64, "lacp-errors"}
 {
 
-    yang_name = "counters"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lacp::Interfaces::Interface::Members::Member::State::Counters::~Counters()
@@ -1264,6 +1280,7 @@ Lacp::Interfaces::Interface::Members::Member::State::Counters::~Counters()
 
 bool Lacp::Interfaces::Interface::Members::Member::State::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return lacp_in_pkts.is_set
 	|| lacp_out_pkts.is_set
 	|| lacp_rx_errors.is_set
@@ -1392,17 +1409,17 @@ bool Lacp::Interfaces::Interface::Members::Member::State::Counters::has_leaf_or_
     return false;
 }
 
-const Enum::YLeaf LacpActivityType::ACTIVE {0, "ACTIVE"};
-const Enum::YLeaf LacpActivityType::PASSIVE {1, "PASSIVE"};
-
 const Enum::YLeaf LacpTimeoutType::LONG {0, "LONG"};
 const Enum::YLeaf LacpTimeoutType::SHORT {1, "SHORT"};
 
-const Enum::YLeaf LacpSynchronizationType::IN_SYNC {0, "IN_SYNC"};
-const Enum::YLeaf LacpSynchronizationType::OUT_SYNC {1, "OUT_SYNC"};
-
 const Enum::YLeaf LacpPeriodType::FAST {0, "FAST"};
 const Enum::YLeaf LacpPeriodType::SLOW {1, "SLOW"};
+
+const Enum::YLeaf LacpActivityType::ACTIVE {0, "ACTIVE"};
+const Enum::YLeaf LacpActivityType::PASSIVE {1, "PASSIVE"};
+
+const Enum::YLeaf LacpSynchronizationType::IN_SYNC {0, "IN_SYNC"};
+const Enum::YLeaf LacpSynchronizationType::OUT_SYNC {1, "OUT_SYNC"};
 
 
 }

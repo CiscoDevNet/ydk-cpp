@@ -13,18 +13,18 @@ namespace LLDP_MIB {
 
 LLDPMIB::LLDPMIB()
     :
-    lldpconfiguration(std::make_shared<LLDPMIB::Lldpconfiguration>())
-	,lldpstatistics(std::make_shared<LLDPMIB::Lldpstatistics>())
-	,lldplocalsystemdata(std::make_shared<LLDPMIB::Lldplocalsystemdata>())
-	,lldpportconfigtable(std::make_shared<LLDPMIB::Lldpportconfigtable>())
-	,lldpstatstxporttable(std::make_shared<LLDPMIB::Lldpstatstxporttable>())
-	,lldpstatsrxporttable(std::make_shared<LLDPMIB::Lldpstatsrxporttable>())
-	,lldplocporttable(std::make_shared<LLDPMIB::Lldplocporttable>())
-	,lldplocmanaddrtable(std::make_shared<LLDPMIB::Lldplocmanaddrtable>())
-	,lldpremtable(std::make_shared<LLDPMIB::Lldpremtable>())
-	,lldpremmanaddrtable(std::make_shared<LLDPMIB::Lldpremmanaddrtable>())
-	,lldpremunknowntlvtable(std::make_shared<LLDPMIB::Lldpremunknowntlvtable>())
-	,lldpremorgdefinfotable(std::make_shared<LLDPMIB::Lldpremorgdefinfotable>())
+    lldpconfiguration(std::make_shared<LLDPMIB::LldpConfiguration>())
+    , lldpstatistics(std::make_shared<LLDPMIB::LldpStatistics>())
+    , lldplocalsystemdata(std::make_shared<LLDPMIB::LldpLocalSystemData>())
+    , lldpportconfigtable(std::make_shared<LLDPMIB::LldpPortConfigTable>())
+    , lldpstatstxporttable(std::make_shared<LLDPMIB::LldpStatsTxPortTable>())
+    , lldpstatsrxporttable(std::make_shared<LLDPMIB::LldpStatsRxPortTable>())
+    , lldplocporttable(std::make_shared<LLDPMIB::LldpLocPortTable>())
+    , lldplocmanaddrtable(std::make_shared<LLDPMIB::LldpLocManAddrTable>())
+    , lldpremtable(std::make_shared<LLDPMIB::LldpRemTable>())
+    , lldpremmanaddrtable(std::make_shared<LLDPMIB::LldpRemManAddrTable>())
+    , lldpremunknowntlvtable(std::make_shared<LLDPMIB::LldpRemUnknownTLVTable>())
+    , lldpremorgdefinfotable(std::make_shared<LLDPMIB::LldpRemOrgDefInfoTable>())
 {
     lldpconfiguration->parent = this;
     lldpstatistics->parent = this;
@@ -39,7 +39,7 @@ LLDPMIB::LLDPMIB()
     lldpremunknowntlvtable->parent = this;
     lldpremorgdefinfotable->parent = this;
 
-    yang_name = "LLDP-MIB"; yang_parent_name = "LLDP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "LLDP-MIB"; yang_parent_name = "LLDP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 LLDPMIB::~LLDPMIB()
@@ -48,6 +48,7 @@ LLDPMIB::~LLDPMIB()
 
 bool LLDPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (lldpconfiguration !=  nullptr && lldpconfiguration->has_data())
 	|| (lldpstatistics !=  nullptr && lldpstatistics->has_data())
 	|| (lldplocalsystemdata !=  nullptr && lldplocalsystemdata->has_data())
@@ -101,7 +102,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     {
         if(lldpconfiguration == nullptr)
         {
-            lldpconfiguration = std::make_shared<LLDPMIB::Lldpconfiguration>();
+            lldpconfiguration = std::make_shared<LLDPMIB::LldpConfiguration>();
         }
         return lldpconfiguration;
     }
@@ -110,7 +111,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     {
         if(lldpstatistics == nullptr)
         {
-            lldpstatistics = std::make_shared<LLDPMIB::Lldpstatistics>();
+            lldpstatistics = std::make_shared<LLDPMIB::LldpStatistics>();
         }
         return lldpstatistics;
     }
@@ -119,7 +120,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     {
         if(lldplocalsystemdata == nullptr)
         {
-            lldplocalsystemdata = std::make_shared<LLDPMIB::Lldplocalsystemdata>();
+            lldplocalsystemdata = std::make_shared<LLDPMIB::LldpLocalSystemData>();
         }
         return lldplocalsystemdata;
     }
@@ -128,7 +129,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     {
         if(lldpportconfigtable == nullptr)
         {
-            lldpportconfigtable = std::make_shared<LLDPMIB::Lldpportconfigtable>();
+            lldpportconfigtable = std::make_shared<LLDPMIB::LldpPortConfigTable>();
         }
         return lldpportconfigtable;
     }
@@ -137,7 +138,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     {
         if(lldpstatstxporttable == nullptr)
         {
-            lldpstatstxporttable = std::make_shared<LLDPMIB::Lldpstatstxporttable>();
+            lldpstatstxporttable = std::make_shared<LLDPMIB::LldpStatsTxPortTable>();
         }
         return lldpstatstxporttable;
     }
@@ -146,7 +147,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     {
         if(lldpstatsrxporttable == nullptr)
         {
-            lldpstatsrxporttable = std::make_shared<LLDPMIB::Lldpstatsrxporttable>();
+            lldpstatsrxporttable = std::make_shared<LLDPMIB::LldpStatsRxPortTable>();
         }
         return lldpstatsrxporttable;
     }
@@ -155,7 +156,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     {
         if(lldplocporttable == nullptr)
         {
-            lldplocporttable = std::make_shared<LLDPMIB::Lldplocporttable>();
+            lldplocporttable = std::make_shared<LLDPMIB::LldpLocPortTable>();
         }
         return lldplocporttable;
     }
@@ -164,7 +165,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     {
         if(lldplocmanaddrtable == nullptr)
         {
-            lldplocmanaddrtable = std::make_shared<LLDPMIB::Lldplocmanaddrtable>();
+            lldplocmanaddrtable = std::make_shared<LLDPMIB::LldpLocManAddrTable>();
         }
         return lldplocmanaddrtable;
     }
@@ -173,7 +174,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     {
         if(lldpremtable == nullptr)
         {
-            lldpremtable = std::make_shared<LLDPMIB::Lldpremtable>();
+            lldpremtable = std::make_shared<LLDPMIB::LldpRemTable>();
         }
         return lldpremtable;
     }
@@ -182,7 +183,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     {
         if(lldpremmanaddrtable == nullptr)
         {
-            lldpremmanaddrtable = std::make_shared<LLDPMIB::Lldpremmanaddrtable>();
+            lldpremmanaddrtable = std::make_shared<LLDPMIB::LldpRemManAddrTable>();
         }
         return lldpremmanaddrtable;
     }
@@ -191,7 +192,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     {
         if(lldpremunknowntlvtable == nullptr)
         {
-            lldpremunknowntlvtable = std::make_shared<LLDPMIB::Lldpremunknowntlvtable>();
+            lldpremunknowntlvtable = std::make_shared<LLDPMIB::LldpRemUnknownTLVTable>();
         }
         return lldpremunknowntlvtable;
     }
@@ -200,7 +201,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     {
         if(lldpremorgdefinfotable == nullptr)
         {
-            lldpremorgdefinfotable = std::make_shared<LLDPMIB::Lldpremorgdefinfotable>();
+            lldpremorgdefinfotable = std::make_shared<LLDPMIB::LldpRemOrgDefInfoTable>();
         }
         return lldpremorgdefinfotable;
     }
@@ -315,7 +316,7 @@ bool LLDPMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-LLDPMIB::Lldpconfiguration::Lldpconfiguration()
+LLDPMIB::LldpConfiguration::LldpConfiguration()
     :
     lldpmessagetxinterval{YType::int32, "lldpMessageTxInterval"},
     lldpmessagetxholdmultiplier{YType::int32, "lldpMessageTxHoldMultiplier"},
@@ -324,15 +325,16 @@ LLDPMIB::Lldpconfiguration::Lldpconfiguration()
     lldpnotificationinterval{YType::int32, "lldpNotificationInterval"}
 {
 
-    yang_name = "lldpConfiguration"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpConfiguration"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpconfiguration::~Lldpconfiguration()
+LLDPMIB::LldpConfiguration::~LldpConfiguration()
 {
 }
 
-bool LLDPMIB::Lldpconfiguration::has_data() const
+bool LLDPMIB::LldpConfiguration::has_data() const
 {
+    if (is_presence_container) return true;
     return lldpmessagetxinterval.is_set
 	|| lldpmessagetxholdmultiplier.is_set
 	|| lldpreinitdelay.is_set
@@ -340,7 +342,7 @@ bool LLDPMIB::Lldpconfiguration::has_data() const
 	|| lldpnotificationinterval.is_set;
 }
 
-bool LLDPMIB::Lldpconfiguration::has_operation() const
+bool LLDPMIB::LldpConfiguration::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lldpmessagetxinterval.yfilter)
@@ -350,21 +352,21 @@ bool LLDPMIB::Lldpconfiguration::has_operation() const
 	|| ydk::is_set(lldpnotificationinterval.yfilter);
 }
 
-std::string LLDPMIB::Lldpconfiguration::get_absolute_path() const
+std::string LLDPMIB::LldpConfiguration::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpconfiguration::get_segment_path() const
+std::string LLDPMIB::LldpConfiguration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldpConfiguration";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpconfiguration::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpConfiguration::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -378,19 +380,19 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpconfiguration::get_n
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpconfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpconfiguration::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void LLDPMIB::Lldpconfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lldpMessageTxInterval")
     {
@@ -424,7 +426,7 @@ void LLDPMIB::Lldpconfiguration::set_value(const std::string & value_path, const
     }
 }
 
-void LLDPMIB::Lldpconfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lldpMessageTxInterval")
     {
@@ -448,14 +450,14 @@ void LLDPMIB::Lldpconfiguration::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool LLDPMIB::Lldpconfiguration::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpConfiguration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpMessageTxInterval" || name == "lldpMessageTxHoldMultiplier" || name == "lldpReinitDelay" || name == "lldpTxDelay" || name == "lldpNotificationInterval")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpstatistics::Lldpstatistics()
+LLDPMIB::LldpStatistics::LldpStatistics()
     :
     lldpstatsremtableslastchangetime{YType::uint32, "lldpStatsRemTablesLastChangeTime"},
     lldpstatsremtablesinserts{YType::uint32, "lldpStatsRemTablesInserts"},
@@ -464,15 +466,16 @@ LLDPMIB::Lldpstatistics::Lldpstatistics()
     lldpstatsremtablesageouts{YType::uint32, "lldpStatsRemTablesAgeouts"}
 {
 
-    yang_name = "lldpStatistics"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpStatistics"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpstatistics::~Lldpstatistics()
+LLDPMIB::LldpStatistics::~LldpStatistics()
 {
 }
 
-bool LLDPMIB::Lldpstatistics::has_data() const
+bool LLDPMIB::LldpStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return lldpstatsremtableslastchangetime.is_set
 	|| lldpstatsremtablesinserts.is_set
 	|| lldpstatsremtablesdeletes.is_set
@@ -480,7 +483,7 @@ bool LLDPMIB::Lldpstatistics::has_data() const
 	|| lldpstatsremtablesageouts.is_set;
 }
 
-bool LLDPMIB::Lldpstatistics::has_operation() const
+bool LLDPMIB::LldpStatistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lldpstatsremtableslastchangetime.yfilter)
@@ -490,21 +493,21 @@ bool LLDPMIB::Lldpstatistics::has_operation() const
 	|| ydk::is_set(lldpstatsremtablesageouts.yfilter);
 }
 
-std::string LLDPMIB::Lldpstatistics::get_absolute_path() const
+std::string LLDPMIB::LldpStatistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpstatistics::get_segment_path() const
+std::string LLDPMIB::LldpStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldpStatistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpstatistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpStatistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -518,19 +521,19 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpstatistics::get_name
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpstatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpstatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void LLDPMIB::Lldpstatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lldpStatsRemTablesLastChangeTime")
     {
@@ -564,7 +567,7 @@ void LLDPMIB::Lldpstatistics::set_value(const std::string & value_path, const st
     }
 }
 
-void LLDPMIB::Lldpstatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lldpStatsRemTablesLastChangeTime")
     {
@@ -588,14 +591,14 @@ void LLDPMIB::Lldpstatistics::set_filter(const std::string & value_path, YFilter
     }
 }
 
-bool LLDPMIB::Lldpstatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpStatsRemTablesLastChangeTime" || name == "lldpStatsRemTablesInserts" || name == "lldpStatsRemTablesDeletes" || name == "lldpStatsRemTablesDrops" || name == "lldpStatsRemTablesAgeouts")
         return true;
     return false;
 }
 
-LLDPMIB::Lldplocalsystemdata::Lldplocalsystemdata()
+LLDPMIB::LldpLocalSystemData::LldpLocalSystemData()
     :
     lldplocchassisidsubtype{YType::enumeration, "lldpLocChassisIdSubtype"},
     lldplocchassisid{YType::str, "lldpLocChassisId"},
@@ -605,15 +608,16 @@ LLDPMIB::Lldplocalsystemdata::Lldplocalsystemdata()
     lldplocsyscapenabled{YType::bits, "lldpLocSysCapEnabled"}
 {
 
-    yang_name = "lldpLocalSystemData"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpLocalSystemData"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldplocalsystemdata::~Lldplocalsystemdata()
+LLDPMIB::LldpLocalSystemData::~LldpLocalSystemData()
 {
 }
 
-bool LLDPMIB::Lldplocalsystemdata::has_data() const
+bool LLDPMIB::LldpLocalSystemData::has_data() const
 {
+    if (is_presence_container) return true;
     return lldplocchassisidsubtype.is_set
 	|| lldplocchassisid.is_set
 	|| lldplocsysname.is_set
@@ -622,7 +626,7 @@ bool LLDPMIB::Lldplocalsystemdata::has_data() const
 	|| lldplocsyscapenabled.is_set;
 }
 
-bool LLDPMIB::Lldplocalsystemdata::has_operation() const
+bool LLDPMIB::LldpLocalSystemData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lldplocchassisidsubtype.yfilter)
@@ -633,21 +637,21 @@ bool LLDPMIB::Lldplocalsystemdata::has_operation() const
 	|| ydk::is_set(lldplocsyscapenabled.yfilter);
 }
 
-std::string LLDPMIB::Lldplocalsystemdata::get_absolute_path() const
+std::string LLDPMIB::LldpLocalSystemData::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldplocalsystemdata::get_segment_path() const
+std::string LLDPMIB::LldpLocalSystemData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldpLocalSystemData";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldplocalsystemdata::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpLocalSystemData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -662,19 +666,19 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldplocalsystemdata::get
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldplocalsystemdata::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpLocalSystemData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldplocalsystemdata::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpLocalSystemData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void LLDPMIB::Lldplocalsystemdata::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpLocalSystemData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lldpLocChassisIdSubtype")
     {
@@ -710,7 +714,7 @@ void LLDPMIB::Lldplocalsystemdata::set_value(const std::string & value_path, con
     }
 }
 
-void LLDPMIB::Lldplocalsystemdata::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpLocalSystemData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lldpLocChassisIdSubtype")
     {
@@ -738,26 +742,29 @@ void LLDPMIB::Lldplocalsystemdata::set_filter(const std::string & value_path, YF
     }
 }
 
-bool LLDPMIB::Lldplocalsystemdata::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpLocalSystemData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpLocChassisIdSubtype" || name == "lldpLocChassisId" || name == "lldpLocSysName" || name == "lldpLocSysDesc" || name == "lldpLocSysCapSupported" || name == "lldpLocSysCapEnabled")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpportconfigtable::Lldpportconfigtable()
+LLDPMIB::LldpPortConfigTable::LldpPortConfigTable()
+    :
+    lldpportconfigentry(this, {"lldpportconfigportnum"})
 {
 
-    yang_name = "lldpPortConfigTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpPortConfigTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpportconfigtable::~Lldpportconfigtable()
+LLDPMIB::LldpPortConfigTable::~LldpPortConfigTable()
 {
 }
 
-bool LLDPMIB::Lldpportconfigtable::has_data() const
+bool LLDPMIB::LldpPortConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<lldpportconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldpportconfigentry.len(); index++)
     {
         if(lldpportconfigentry[index]->has_data())
             return true;
@@ -765,9 +772,9 @@ bool LLDPMIB::Lldpportconfigtable::has_data() const
     return false;
 }
 
-bool LLDPMIB::Lldpportconfigtable::has_operation() const
+bool LLDPMIB::LldpPortConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<lldpportconfigentry.size(); index++)
+    for (std::size_t index=0; index<lldpportconfigentry.len(); index++)
     {
         if(lldpportconfigentry[index]->has_operation())
             return true;
@@ -775,21 +782,21 @@ bool LLDPMIB::Lldpportconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string LLDPMIB::Lldpportconfigtable::get_absolute_path() const
+std::string LLDPMIB::LldpPortConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpportconfigtable::get_segment_path() const
+std::string LLDPMIB::LldpPortConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldpPortConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpportconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpPortConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -798,25 +805,25 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpportconfigtable::get
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpportconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpPortConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpPortConfigEntry")
     {
-        auto c = std::make_shared<LLDPMIB::Lldpportconfigtable::Lldpportconfigentry>();
+        auto c = std::make_shared<LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry>();
         c->parent = this;
-        lldpportconfigentry.push_back(c);
+        lldpportconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpportconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpPortConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldpportconfigentry)
+    for (auto c : lldpportconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -827,22 +834,22 @@ std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpportconfigtable::get
     return children;
 }
 
-void LLDPMIB::Lldpportconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpPortConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void LLDPMIB::Lldpportconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpPortConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool LLDPMIB::Lldpportconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpPortConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpPortConfigEntry")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::Lldpportconfigentry()
+LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::LldpPortConfigEntry()
     :
     lldpportconfigportnum{YType::int32, "lldpPortConfigPortNum"},
     lldpportconfigadminstatus{YType::enumeration, "lldpPortConfigAdminStatus"},
@@ -850,22 +857,23 @@ LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::Lldpportconfigentry()
     lldpportconfigtlvstxenable{YType::bits, "lldpPortConfigTLVsTxEnable"}
 {
 
-    yang_name = "lldpPortConfigEntry"; yang_parent_name = "lldpPortConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpPortConfigEntry"; yang_parent_name = "lldpPortConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::~Lldpportconfigentry()
+LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::~LldpPortConfigEntry()
 {
 }
 
-bool LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::has_data() const
+bool LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return lldpportconfigportnum.is_set
 	|| lldpportconfigadminstatus.is_set
 	|| lldpportconfignotificationenable.is_set
 	|| lldpportconfigtlvstxenable.is_set;
 }
 
-bool LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::has_operation() const
+bool LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lldpportconfigportnum.yfilter)
@@ -874,21 +882,22 @@ bool LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::has_operation() const
 	|| ydk::is_set(lldpportconfigtlvstxenable.yfilter);
 }
 
-std::string LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::get_absolute_path() const
+std::string LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/lldpPortConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::get_segment_path() const
+std::string LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lldpPortConfigEntry" <<"[lldpPortConfigPortNum='" <<lldpportconfigportnum <<"']";
+    path_buffer << "lldpPortConfigEntry";
+    ADD_KEY_TOKEN(lldpportconfigportnum, "lldpPortConfigPortNum");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -901,19 +910,19 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpportconfigtable::Lld
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lldpPortConfigPortNum")
     {
@@ -939,7 +948,7 @@ void LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::set_value(const std::str
     }
 }
 
-void LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lldpPortConfigPortNum")
     {
@@ -959,26 +968,29 @@ void LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::set_filter(const std::st
     }
 }
 
-bool LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpPortConfigPortNum" || name == "lldpPortConfigAdminStatus" || name == "lldpPortConfigNotificationEnable" || name == "lldpPortConfigTLVsTxEnable")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpstatstxporttable::Lldpstatstxporttable()
+LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortTable()
+    :
+    lldpstatstxportentry(this, {"lldpstatstxportnum"})
 {
 
-    yang_name = "lldpStatsTxPortTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpStatsTxPortTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpstatstxporttable::~Lldpstatstxporttable()
+LLDPMIB::LldpStatsTxPortTable::~LldpStatsTxPortTable()
 {
 }
 
-bool LLDPMIB::Lldpstatstxporttable::has_data() const
+bool LLDPMIB::LldpStatsTxPortTable::has_data() const
 {
-    for (std::size_t index=0; index<lldpstatstxportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldpstatstxportentry.len(); index++)
     {
         if(lldpstatstxportentry[index]->has_data())
             return true;
@@ -986,9 +998,9 @@ bool LLDPMIB::Lldpstatstxporttable::has_data() const
     return false;
 }
 
-bool LLDPMIB::Lldpstatstxporttable::has_operation() const
+bool LLDPMIB::LldpStatsTxPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<lldpstatstxportentry.size(); index++)
+    for (std::size_t index=0; index<lldpstatstxportentry.len(); index++)
     {
         if(lldpstatstxportentry[index]->has_operation())
             return true;
@@ -996,21 +1008,21 @@ bool LLDPMIB::Lldpstatstxporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string LLDPMIB::Lldpstatstxporttable::get_absolute_path() const
+std::string LLDPMIB::LldpStatsTxPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpstatstxporttable::get_segment_path() const
+std::string LLDPMIB::LldpStatsTxPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldpStatsTxPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpstatstxporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpStatsTxPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1019,25 +1031,25 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpstatstxporttable::ge
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpstatstxporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpStatsTxPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpStatsTxPortEntry")
     {
-        auto c = std::make_shared<LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry>();
+        auto c = std::make_shared<LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry>();
         c->parent = this;
-        lldpstatstxportentry.push_back(c);
+        lldpstatstxportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpstatstxporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpStatsTxPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldpstatstxportentry)
+    for (auto c : lldpstatstxportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1048,62 +1060,64 @@ std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpstatstxporttable::ge
     return children;
 }
 
-void LLDPMIB::Lldpstatstxporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpStatsTxPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void LLDPMIB::Lldpstatstxporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpStatsTxPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool LLDPMIB::Lldpstatstxporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpStatsTxPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpStatsTxPortEntry")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::Lldpstatstxportentry()
+LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::LldpStatsTxPortEntry()
     :
     lldpstatstxportnum{YType::int32, "lldpStatsTxPortNum"},
     lldpstatstxportframestotal{YType::uint32, "lldpStatsTxPortFramesTotal"}
 {
 
-    yang_name = "lldpStatsTxPortEntry"; yang_parent_name = "lldpStatsTxPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpStatsTxPortEntry"; yang_parent_name = "lldpStatsTxPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::~Lldpstatstxportentry()
+LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::~LldpStatsTxPortEntry()
 {
 }
 
-bool LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::has_data() const
+bool LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return lldpstatstxportnum.is_set
 	|| lldpstatstxportframestotal.is_set;
 }
 
-bool LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::has_operation() const
+bool LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lldpstatstxportnum.yfilter)
 	|| ydk::is_set(lldpstatstxportframestotal.yfilter);
 }
 
-std::string LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::get_absolute_path() const
+std::string LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/lldpStatsTxPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::get_segment_path() const
+std::string LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lldpStatsTxPortEntry" <<"[lldpStatsTxPortNum='" <<lldpstatstxportnum <<"']";
+    path_buffer << "lldpStatsTxPortEntry";
+    ADD_KEY_TOKEN(lldpstatstxportnum, "lldpStatsTxPortNum");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1114,19 +1128,19 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpstatstxporttable::Ll
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lldpStatsTxPortNum")
     {
@@ -1142,7 +1156,7 @@ void LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::set_value(const std::s
     }
 }
 
-void LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lldpStatsTxPortNum")
     {
@@ -1154,26 +1168,29 @@ void LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::set_filter(const std::
     }
 }
 
-bool LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpStatsTxPortNum" || name == "lldpStatsTxPortFramesTotal")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxporttable()
+LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortTable()
+    :
+    lldpstatsrxportentry(this, {"lldpstatsrxportnum"})
 {
 
-    yang_name = "lldpStatsRxPortTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpStatsRxPortTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpstatsrxporttable::~Lldpstatsrxporttable()
+LLDPMIB::LldpStatsRxPortTable::~LldpStatsRxPortTable()
 {
 }
 
-bool LLDPMIB::Lldpstatsrxporttable::has_data() const
+bool LLDPMIB::LldpStatsRxPortTable::has_data() const
 {
-    for (std::size_t index=0; index<lldpstatsrxportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldpstatsrxportentry.len(); index++)
     {
         if(lldpstatsrxportentry[index]->has_data())
             return true;
@@ -1181,9 +1198,9 @@ bool LLDPMIB::Lldpstatsrxporttable::has_data() const
     return false;
 }
 
-bool LLDPMIB::Lldpstatsrxporttable::has_operation() const
+bool LLDPMIB::LldpStatsRxPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<lldpstatsrxportentry.size(); index++)
+    for (std::size_t index=0; index<lldpstatsrxportentry.len(); index++)
     {
         if(lldpstatsrxportentry[index]->has_operation())
             return true;
@@ -1191,21 +1208,21 @@ bool LLDPMIB::Lldpstatsrxporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string LLDPMIB::Lldpstatsrxporttable::get_absolute_path() const
+std::string LLDPMIB::LldpStatsRxPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpstatsrxporttable::get_segment_path() const
+std::string LLDPMIB::LldpStatsRxPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldpStatsRxPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpstatsrxporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpStatsRxPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1214,25 +1231,25 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpstatsrxporttable::ge
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpstatsrxporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpStatsRxPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpStatsRxPortEntry")
     {
-        auto c = std::make_shared<LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry>();
+        auto c = std::make_shared<LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry>();
         c->parent = this;
-        lldpstatsrxportentry.push_back(c);
+        lldpstatsrxportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpstatsrxporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpStatsRxPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldpstatsrxportentry)
+    for (auto c : lldpstatsrxportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1243,22 +1260,22 @@ std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpstatsrxporttable::ge
     return children;
 }
 
-void LLDPMIB::Lldpstatsrxporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpStatsRxPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void LLDPMIB::Lldpstatsrxporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpStatsRxPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool LLDPMIB::Lldpstatsrxporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpStatsRxPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpStatsRxPortEntry")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::Lldpstatsrxportentry()
+LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::LldpStatsRxPortEntry()
     :
     lldpstatsrxportnum{YType::int32, "lldpStatsRxPortNum"},
     lldpstatsrxportframesdiscardedtotal{YType::uint32, "lldpStatsRxPortFramesDiscardedTotal"},
@@ -1269,15 +1286,16 @@ LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::Lldpstatsrxportentry()
     lldpstatsrxportageoutstotal{YType::uint32, "lldpStatsRxPortAgeoutsTotal"}
 {
 
-    yang_name = "lldpStatsRxPortEntry"; yang_parent_name = "lldpStatsRxPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpStatsRxPortEntry"; yang_parent_name = "lldpStatsRxPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::~Lldpstatsrxportentry()
+LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::~LldpStatsRxPortEntry()
 {
 }
 
-bool LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::has_data() const
+bool LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return lldpstatsrxportnum.is_set
 	|| lldpstatsrxportframesdiscardedtotal.is_set
 	|| lldpstatsrxportframeserrors.is_set
@@ -1287,7 +1305,7 @@ bool LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::has_data() const
 	|| lldpstatsrxportageoutstotal.is_set;
 }
 
-bool LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::has_operation() const
+bool LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lldpstatsrxportnum.yfilter)
@@ -1299,21 +1317,22 @@ bool LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::has_operation() const
 	|| ydk::is_set(lldpstatsrxportageoutstotal.yfilter);
 }
 
-std::string LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::get_absolute_path() const
+std::string LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/lldpStatsRxPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::get_segment_path() const
+std::string LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lldpStatsRxPortEntry" <<"[lldpStatsRxPortNum='" <<lldpstatsrxportnum <<"']";
+    path_buffer << "lldpStatsRxPortEntry";
+    ADD_KEY_TOKEN(lldpstatsrxportnum, "lldpStatsRxPortNum");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1329,19 +1348,19 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpstatsrxporttable::Ll
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lldpStatsRxPortNum")
     {
@@ -1387,7 +1406,7 @@ void LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::set_value(const std::s
     }
 }
 
-void LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lldpStatsRxPortNum")
     {
@@ -1419,26 +1438,29 @@ void LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::set_filter(const std::
     }
 }
 
-bool LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpStatsRxPortNum" || name == "lldpStatsRxPortFramesDiscardedTotal" || name == "lldpStatsRxPortFramesErrors" || name == "lldpStatsRxPortFramesTotal" || name == "lldpStatsRxPortTLVsDiscardedTotal" || name == "lldpStatsRxPortTLVsUnrecognizedTotal" || name == "lldpStatsRxPortAgeoutsTotal")
         return true;
     return false;
 }
 
-LLDPMIB::Lldplocporttable::Lldplocporttable()
+LLDPMIB::LldpLocPortTable::LldpLocPortTable()
+    :
+    lldplocportentry(this, {"lldplocportnum"})
 {
 
-    yang_name = "lldpLocPortTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpLocPortTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldplocporttable::~Lldplocporttable()
+LLDPMIB::LldpLocPortTable::~LldpLocPortTable()
 {
 }
 
-bool LLDPMIB::Lldplocporttable::has_data() const
+bool LLDPMIB::LldpLocPortTable::has_data() const
 {
-    for (std::size_t index=0; index<lldplocportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldplocportentry.len(); index++)
     {
         if(lldplocportentry[index]->has_data())
             return true;
@@ -1446,9 +1468,9 @@ bool LLDPMIB::Lldplocporttable::has_data() const
     return false;
 }
 
-bool LLDPMIB::Lldplocporttable::has_operation() const
+bool LLDPMIB::LldpLocPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<lldplocportentry.size(); index++)
+    for (std::size_t index=0; index<lldplocportentry.len(); index++)
     {
         if(lldplocportentry[index]->has_operation())
             return true;
@@ -1456,21 +1478,21 @@ bool LLDPMIB::Lldplocporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string LLDPMIB::Lldplocporttable::get_absolute_path() const
+std::string LLDPMIB::LldpLocPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldplocporttable::get_segment_path() const
+std::string LLDPMIB::LldpLocPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldpLocPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldplocporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpLocPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1479,25 +1501,25 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldplocporttable::get_na
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldplocporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpLocPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpLocPortEntry")
     {
-        auto c = std::make_shared<LLDPMIB::Lldplocporttable::Lldplocportentry>();
+        auto c = std::make_shared<LLDPMIB::LldpLocPortTable::LldpLocPortEntry>();
         c->parent = this;
-        lldplocportentry.push_back(c);
+        lldplocportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldplocporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpLocPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldplocportentry)
+    for (auto c : lldplocportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1508,22 +1530,22 @@ std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldplocporttable::get_ch
     return children;
 }
 
-void LLDPMIB::Lldplocporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpLocPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void LLDPMIB::Lldplocporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpLocPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool LLDPMIB::Lldplocporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpLocPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpLocPortEntry")
         return true;
     return false;
 }
 
-LLDPMIB::Lldplocporttable::Lldplocportentry::Lldplocportentry()
+LLDPMIB::LldpLocPortTable::LldpLocPortEntry::LldpLocPortEntry()
     :
     lldplocportnum{YType::int32, "lldpLocPortNum"},
     lldplocportidsubtype{YType::enumeration, "lldpLocPortIdSubtype"},
@@ -1531,22 +1553,23 @@ LLDPMIB::Lldplocporttable::Lldplocportentry::Lldplocportentry()
     lldplocportdesc{YType::str, "lldpLocPortDesc"}
 {
 
-    yang_name = "lldpLocPortEntry"; yang_parent_name = "lldpLocPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpLocPortEntry"; yang_parent_name = "lldpLocPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldplocporttable::Lldplocportentry::~Lldplocportentry()
+LLDPMIB::LldpLocPortTable::LldpLocPortEntry::~LldpLocPortEntry()
 {
 }
 
-bool LLDPMIB::Lldplocporttable::Lldplocportentry::has_data() const
+bool LLDPMIB::LldpLocPortTable::LldpLocPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return lldplocportnum.is_set
 	|| lldplocportidsubtype.is_set
 	|| lldplocportid.is_set
 	|| lldplocportdesc.is_set;
 }
 
-bool LLDPMIB::Lldplocporttable::Lldplocportentry::has_operation() const
+bool LLDPMIB::LldpLocPortTable::LldpLocPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lldplocportnum.yfilter)
@@ -1555,21 +1578,22 @@ bool LLDPMIB::Lldplocporttable::Lldplocportentry::has_operation() const
 	|| ydk::is_set(lldplocportdesc.yfilter);
 }
 
-std::string LLDPMIB::Lldplocporttable::Lldplocportentry::get_absolute_path() const
+std::string LLDPMIB::LldpLocPortTable::LldpLocPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/lldpLocPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldplocporttable::Lldplocportentry::get_segment_path() const
+std::string LLDPMIB::LldpLocPortTable::LldpLocPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lldpLocPortEntry" <<"[lldpLocPortNum='" <<lldplocportnum <<"']";
+    path_buffer << "lldpLocPortEntry";
+    ADD_KEY_TOKEN(lldplocportnum, "lldpLocPortNum");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldplocporttable::Lldplocportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpLocPortTable::LldpLocPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1582,19 +1606,19 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldplocporttable::Lldplo
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldplocporttable::Lldplocportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpLocPortTable::LldpLocPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldplocporttable::Lldplocportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpLocPortTable::LldpLocPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void LLDPMIB::Lldplocporttable::Lldplocportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpLocPortTable::LldpLocPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lldpLocPortNum")
     {
@@ -1622,7 +1646,7 @@ void LLDPMIB::Lldplocporttable::Lldplocportentry::set_value(const std::string & 
     }
 }
 
-void LLDPMIB::Lldplocporttable::Lldplocportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpLocPortTable::LldpLocPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lldpLocPortNum")
     {
@@ -1642,26 +1666,29 @@ void LLDPMIB::Lldplocporttable::Lldplocportentry::set_filter(const std::string &
     }
 }
 
-bool LLDPMIB::Lldplocporttable::Lldplocportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpLocPortTable::LldpLocPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpLocPortNum" || name == "lldpLocPortIdSubtype" || name == "lldpLocPortId" || name == "lldpLocPortDesc")
         return true;
     return false;
 }
 
-LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrtable()
+LLDPMIB::LldpLocManAddrTable::LldpLocManAddrTable()
+    :
+    lldplocmanaddrentry(this, {"lldplocmanaddrsubtype", "lldplocmanaddr"})
 {
 
-    yang_name = "lldpLocManAddrTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpLocManAddrTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldplocmanaddrtable::~Lldplocmanaddrtable()
+LLDPMIB::LldpLocManAddrTable::~LldpLocManAddrTable()
 {
 }
 
-bool LLDPMIB::Lldplocmanaddrtable::has_data() const
+bool LLDPMIB::LldpLocManAddrTable::has_data() const
 {
-    for (std::size_t index=0; index<lldplocmanaddrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldplocmanaddrentry.len(); index++)
     {
         if(lldplocmanaddrentry[index]->has_data())
             return true;
@@ -1669,9 +1696,9 @@ bool LLDPMIB::Lldplocmanaddrtable::has_data() const
     return false;
 }
 
-bool LLDPMIB::Lldplocmanaddrtable::has_operation() const
+bool LLDPMIB::LldpLocManAddrTable::has_operation() const
 {
-    for (std::size_t index=0; index<lldplocmanaddrentry.size(); index++)
+    for (std::size_t index=0; index<lldplocmanaddrentry.len(); index++)
     {
         if(lldplocmanaddrentry[index]->has_operation())
             return true;
@@ -1679,21 +1706,21 @@ bool LLDPMIB::Lldplocmanaddrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string LLDPMIB::Lldplocmanaddrtable::get_absolute_path() const
+std::string LLDPMIB::LldpLocManAddrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldplocmanaddrtable::get_segment_path() const
+std::string LLDPMIB::LldpLocManAddrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldpLocManAddrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldplocmanaddrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpLocManAddrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1702,25 +1729,25 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldplocmanaddrtable::get
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldplocmanaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpLocManAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpLocManAddrEntry")
     {
-        auto c = std::make_shared<LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry>();
+        auto c = std::make_shared<LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry>();
         c->parent = this;
-        lldplocmanaddrentry.push_back(c);
+        lldplocmanaddrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldplocmanaddrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpLocManAddrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldplocmanaddrentry)
+    for (auto c : lldplocmanaddrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1731,22 +1758,22 @@ std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldplocmanaddrtable::get
     return children;
 }
 
-void LLDPMIB::Lldplocmanaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpLocManAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void LLDPMIB::Lldplocmanaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpLocManAddrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool LLDPMIB::Lldplocmanaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpLocManAddrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpLocManAddrEntry")
         return true;
     return false;
 }
 
-LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::Lldplocmanaddrentry()
+LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::LldpLocManAddrEntry()
     :
     lldplocmanaddrsubtype{YType::enumeration, "lldpLocManAddrSubtype"},
     lldplocmanaddr{YType::str, "lldpLocManAddr"},
@@ -1757,15 +1784,16 @@ LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::Lldplocmanaddrentry()
     lldpconfigmanaddrportstxenable{YType::str, "lldpConfigManAddrPortsTxEnable"}
 {
 
-    yang_name = "lldpLocManAddrEntry"; yang_parent_name = "lldpLocManAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpLocManAddrEntry"; yang_parent_name = "lldpLocManAddrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::~Lldplocmanaddrentry()
+LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::~LldpLocManAddrEntry()
 {
 }
 
-bool LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::has_data() const
+bool LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return lldplocmanaddrsubtype.is_set
 	|| lldplocmanaddr.is_set
 	|| lldplocmanaddrlen.is_set
@@ -1775,7 +1803,7 @@ bool LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::has_data() const
 	|| lldpconfigmanaddrportstxenable.is_set;
 }
 
-bool LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::has_operation() const
+bool LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lldplocmanaddrsubtype.yfilter)
@@ -1787,21 +1815,23 @@ bool LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::has_operation() const
 	|| ydk::is_set(lldpconfigmanaddrportstxenable.yfilter);
 }
 
-std::string LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::get_absolute_path() const
+std::string LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/lldpLocManAddrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::get_segment_path() const
+std::string LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lldpLocManAddrEntry" <<"[lldpLocManAddrSubtype='" <<lldplocmanaddrsubtype <<"']" <<"[lldpLocManAddr='" <<lldplocmanaddr <<"']";
+    path_buffer << "lldpLocManAddrEntry";
+    ADD_KEY_TOKEN(lldplocmanaddrsubtype, "lldpLocManAddrSubtype");
+    ADD_KEY_TOKEN(lldplocmanaddr, "lldpLocManAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1817,19 +1847,19 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldplocmanaddrtable::Lld
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lldpLocManAddrSubtype")
     {
@@ -1875,7 +1905,7 @@ void LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::set_value(const std::str
     }
 }
 
-void LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lldpLocManAddrSubtype")
     {
@@ -1907,26 +1937,29 @@ void LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::set_filter(const std::st
     }
 }
 
-bool LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpLocManAddrSubtype" || name == "lldpLocManAddr" || name == "lldpLocManAddrLen" || name == "lldpLocManAddrIfSubtype" || name == "lldpLocManAddrIfId" || name == "lldpLocManAddrOID" || name == "lldpConfigManAddrPortsTxEnable")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpremtable::Lldpremtable()
+LLDPMIB::LldpRemTable::LldpRemTable()
+    :
+    lldprementry(this, {"lldpremtimemark", "lldpremlocalportnum", "lldpremindex"})
 {
 
-    yang_name = "lldpRemTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpRemTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpremtable::~Lldpremtable()
+LLDPMIB::LldpRemTable::~LldpRemTable()
 {
 }
 
-bool LLDPMIB::Lldpremtable::has_data() const
+bool LLDPMIB::LldpRemTable::has_data() const
 {
-    for (std::size_t index=0; index<lldprementry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldprementry.len(); index++)
     {
         if(lldprementry[index]->has_data())
             return true;
@@ -1934,9 +1967,9 @@ bool LLDPMIB::Lldpremtable::has_data() const
     return false;
 }
 
-bool LLDPMIB::Lldpremtable::has_operation() const
+bool LLDPMIB::LldpRemTable::has_operation() const
 {
-    for (std::size_t index=0; index<lldprementry.size(); index++)
+    for (std::size_t index=0; index<lldprementry.len(); index++)
     {
         if(lldprementry[index]->has_operation())
             return true;
@@ -1944,21 +1977,21 @@ bool LLDPMIB::Lldpremtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string LLDPMIB::Lldpremtable::get_absolute_path() const
+std::string LLDPMIB::LldpRemTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpremtable::get_segment_path() const
+std::string LLDPMIB::LldpRemTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldpRemTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1967,25 +2000,25 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremtable::get_name_l
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpremtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpRemTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpRemEntry")
     {
-        auto c = std::make_shared<LLDPMIB::Lldpremtable::Lldprementry>();
+        auto c = std::make_shared<LLDPMIB::LldpRemTable::LldpRemEntry>();
         c->parent = this;
-        lldprementry.push_back(c);
+        lldprementry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldprementry)
+    for (auto c : lldprementry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1996,22 +2029,22 @@ std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremtable::get_childr
     return children;
 }
 
-void LLDPMIB::Lldpremtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpRemTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void LLDPMIB::Lldpremtable::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpRemTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool LLDPMIB::Lldpremtable::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpRemTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpRemEntry")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpremtable::Lldprementry::Lldprementry()
+LLDPMIB::LldpRemTable::LldpRemEntry::LldpRemEntry()
     :
     lldpremtimemark{YType::uint32, "lldpRemTimeMark"},
     lldpremlocalportnum{YType::int32, "lldpRemLocalPortNum"},
@@ -2027,15 +2060,16 @@ LLDPMIB::Lldpremtable::Lldprementry::Lldprementry()
     lldpremsyscapenabled{YType::bits, "lldpRemSysCapEnabled"}
 {
 
-    yang_name = "lldpRemEntry"; yang_parent_name = "lldpRemTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpRemEntry"; yang_parent_name = "lldpRemTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpremtable::Lldprementry::~Lldprementry()
+LLDPMIB::LldpRemTable::LldpRemEntry::~LldpRemEntry()
 {
 }
 
-bool LLDPMIB::Lldpremtable::Lldprementry::has_data() const
+bool LLDPMIB::LldpRemTable::LldpRemEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return lldpremtimemark.is_set
 	|| lldpremlocalportnum.is_set
 	|| lldpremindex.is_set
@@ -2050,7 +2084,7 @@ bool LLDPMIB::Lldpremtable::Lldprementry::has_data() const
 	|| lldpremsyscapenabled.is_set;
 }
 
-bool LLDPMIB::Lldpremtable::Lldprementry::has_operation() const
+bool LLDPMIB::LldpRemTable::LldpRemEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lldpremtimemark.yfilter)
@@ -2067,21 +2101,24 @@ bool LLDPMIB::Lldpremtable::Lldprementry::has_operation() const
 	|| ydk::is_set(lldpremsyscapenabled.yfilter);
 }
 
-std::string LLDPMIB::Lldpremtable::Lldprementry::get_absolute_path() const
+std::string LLDPMIB::LldpRemTable::LldpRemEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/lldpRemTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpremtable::Lldprementry::get_segment_path() const
+std::string LLDPMIB::LldpRemTable::LldpRemEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lldpRemEntry" <<"[lldpRemTimeMark='" <<lldpremtimemark <<"']" <<"[lldpRemLocalPortNum='" <<lldpremlocalportnum <<"']" <<"[lldpRemIndex='" <<lldpremindex <<"']";
+    path_buffer << "lldpRemEntry";
+    ADD_KEY_TOKEN(lldpremtimemark, "lldpRemTimeMark");
+    ADD_KEY_TOKEN(lldpremlocalportnum, "lldpRemLocalPortNum");
+    ADD_KEY_TOKEN(lldpremindex, "lldpRemIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremtable::Lldprementry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemTable::LldpRemEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2102,19 +2139,19 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremtable::Lldprement
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpremtable::Lldprementry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpRemTable::LldpRemEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremtable::Lldprementry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemTable::LldpRemEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void LLDPMIB::Lldpremtable::Lldprementry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpRemTable::LldpRemEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lldpRemTimeMark")
     {
@@ -2186,7 +2223,7 @@ void LLDPMIB::Lldpremtable::Lldprementry::set_value(const std::string & value_pa
     }
 }
 
-void LLDPMIB::Lldpremtable::Lldprementry::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpRemTable::LldpRemEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lldpRemTimeMark")
     {
@@ -2238,26 +2275,29 @@ void LLDPMIB::Lldpremtable::Lldprementry::set_filter(const std::string & value_p
     }
 }
 
-bool LLDPMIB::Lldpremtable::Lldprementry::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpRemTable::LldpRemEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpRemTimeMark" || name == "lldpRemLocalPortNum" || name == "lldpRemIndex" || name == "lldpRemChassisIdSubtype" || name == "lldpRemChassisId" || name == "lldpRemPortIdSubtype" || name == "lldpRemPortId" || name == "lldpRemPortDesc" || name == "lldpRemSysName" || name == "lldpRemSysDesc" || name == "lldpRemSysCapSupported" || name == "lldpRemSysCapEnabled")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrtable()
+LLDPMIB::LldpRemManAddrTable::LldpRemManAddrTable()
+    :
+    lldpremmanaddrentry(this, {"lldpremtimemark", "lldpremlocalportnum", "lldpremindex", "lldpremmanaddrsubtype", "lldpremmanaddr"})
 {
 
-    yang_name = "lldpRemManAddrTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpRemManAddrTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpremmanaddrtable::~Lldpremmanaddrtable()
+LLDPMIB::LldpRemManAddrTable::~LldpRemManAddrTable()
 {
 }
 
-bool LLDPMIB::Lldpremmanaddrtable::has_data() const
+bool LLDPMIB::LldpRemManAddrTable::has_data() const
 {
-    for (std::size_t index=0; index<lldpremmanaddrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldpremmanaddrentry.len(); index++)
     {
         if(lldpremmanaddrentry[index]->has_data())
             return true;
@@ -2265,9 +2305,9 @@ bool LLDPMIB::Lldpremmanaddrtable::has_data() const
     return false;
 }
 
-bool LLDPMIB::Lldpremmanaddrtable::has_operation() const
+bool LLDPMIB::LldpRemManAddrTable::has_operation() const
 {
-    for (std::size_t index=0; index<lldpremmanaddrentry.size(); index++)
+    for (std::size_t index=0; index<lldpremmanaddrentry.len(); index++)
     {
         if(lldpremmanaddrentry[index]->has_operation())
             return true;
@@ -2275,21 +2315,21 @@ bool LLDPMIB::Lldpremmanaddrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string LLDPMIB::Lldpremmanaddrtable::get_absolute_path() const
+std::string LLDPMIB::LldpRemManAddrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpremmanaddrtable::get_segment_path() const
+std::string LLDPMIB::LldpRemManAddrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldpRemManAddrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremmanaddrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemManAddrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2298,25 +2338,25 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremmanaddrtable::get
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpremmanaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpRemManAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpRemManAddrEntry")
     {
-        auto c = std::make_shared<LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry>();
+        auto c = std::make_shared<LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry>();
         c->parent = this;
-        lldpremmanaddrentry.push_back(c);
+        lldpremmanaddrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremmanaddrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemManAddrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldpremmanaddrentry)
+    for (auto c : lldpremmanaddrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2327,22 +2367,22 @@ std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremmanaddrtable::get
     return children;
 }
 
-void LLDPMIB::Lldpremmanaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpRemManAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void LLDPMIB::Lldpremmanaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpRemManAddrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool LLDPMIB::Lldpremmanaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpRemManAddrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpRemManAddrEntry")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::Lldpremmanaddrentry()
+LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::LldpRemManAddrEntry()
     :
     lldpremtimemark{YType::str, "lldpRemTimeMark"},
     lldpremlocalportnum{YType::str, "lldpRemLocalPortNum"},
@@ -2354,15 +2394,16 @@ LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::Lldpremmanaddrentry()
     lldpremmanaddroid{YType::str, "lldpRemManAddrOID"}
 {
 
-    yang_name = "lldpRemManAddrEntry"; yang_parent_name = "lldpRemManAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpRemManAddrEntry"; yang_parent_name = "lldpRemManAddrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::~Lldpremmanaddrentry()
+LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::~LldpRemManAddrEntry()
 {
 }
 
-bool LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::has_data() const
+bool LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return lldpremtimemark.is_set
 	|| lldpremlocalportnum.is_set
 	|| lldpremindex.is_set
@@ -2373,7 +2414,7 @@ bool LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::has_data() const
 	|| lldpremmanaddroid.is_set;
 }
 
-bool LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::has_operation() const
+bool LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lldpremtimemark.yfilter)
@@ -2386,21 +2427,26 @@ bool LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::has_operation() const
 	|| ydk::is_set(lldpremmanaddroid.yfilter);
 }
 
-std::string LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::get_absolute_path() const
+std::string LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/lldpRemManAddrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::get_segment_path() const
+std::string LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lldpRemManAddrEntry" <<"[lldpRemTimeMark='" <<lldpremtimemark <<"']" <<"[lldpRemLocalPortNum='" <<lldpremlocalportnum <<"']" <<"[lldpRemIndex='" <<lldpremindex <<"']" <<"[lldpRemManAddrSubtype='" <<lldpremmanaddrsubtype <<"']" <<"[lldpRemManAddr='" <<lldpremmanaddr <<"']";
+    path_buffer << "lldpRemManAddrEntry";
+    ADD_KEY_TOKEN(lldpremtimemark, "lldpRemTimeMark");
+    ADD_KEY_TOKEN(lldpremlocalportnum, "lldpRemLocalPortNum");
+    ADD_KEY_TOKEN(lldpremindex, "lldpRemIndex");
+    ADD_KEY_TOKEN(lldpremmanaddrsubtype, "lldpRemManAddrSubtype");
+    ADD_KEY_TOKEN(lldpremmanaddr, "lldpRemManAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2417,19 +2463,19 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremmanaddrtable::Lld
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lldpRemTimeMark")
     {
@@ -2481,7 +2527,7 @@ void LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::set_value(const std::str
     }
 }
 
-void LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lldpRemTimeMark")
     {
@@ -2517,26 +2563,29 @@ void LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::set_filter(const std::st
     }
 }
 
-bool LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpRemTimeMark" || name == "lldpRemLocalPortNum" || name == "lldpRemIndex" || name == "lldpRemManAddrSubtype" || name == "lldpRemManAddr" || name == "lldpRemManAddrIfSubtype" || name == "lldpRemManAddrIfId" || name == "lldpRemManAddrOID")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlvtable()
+LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVTable()
+    :
+    lldpremunknowntlventry(this, {"lldpremtimemark", "lldpremlocalportnum", "lldpremindex", "lldpremunknowntlvtype"})
 {
 
-    yang_name = "lldpRemUnknownTLVTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpRemUnknownTLVTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpremunknowntlvtable::~Lldpremunknowntlvtable()
+LLDPMIB::LldpRemUnknownTLVTable::~LldpRemUnknownTLVTable()
 {
 }
 
-bool LLDPMIB::Lldpremunknowntlvtable::has_data() const
+bool LLDPMIB::LldpRemUnknownTLVTable::has_data() const
 {
-    for (std::size_t index=0; index<lldpremunknowntlventry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldpremunknowntlventry.len(); index++)
     {
         if(lldpremunknowntlventry[index]->has_data())
             return true;
@@ -2544,9 +2593,9 @@ bool LLDPMIB::Lldpremunknowntlvtable::has_data() const
     return false;
 }
 
-bool LLDPMIB::Lldpremunknowntlvtable::has_operation() const
+bool LLDPMIB::LldpRemUnknownTLVTable::has_operation() const
 {
-    for (std::size_t index=0; index<lldpremunknowntlventry.size(); index++)
+    for (std::size_t index=0; index<lldpremunknowntlventry.len(); index++)
     {
         if(lldpremunknowntlventry[index]->has_operation())
             return true;
@@ -2554,21 +2603,21 @@ bool LLDPMIB::Lldpremunknowntlvtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string LLDPMIB::Lldpremunknowntlvtable::get_absolute_path() const
+std::string LLDPMIB::LldpRemUnknownTLVTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpremunknowntlvtable::get_segment_path() const
+std::string LLDPMIB::LldpRemUnknownTLVTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldpRemUnknownTLVTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremunknowntlvtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemUnknownTLVTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2577,25 +2626,25 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremunknowntlvtable::
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpremunknowntlvtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpRemUnknownTLVTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpRemUnknownTLVEntry")
     {
-        auto c = std::make_shared<LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry>();
+        auto c = std::make_shared<LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry>();
         c->parent = this;
-        lldpremunknowntlventry.push_back(c);
+        lldpremunknowntlventry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremunknowntlvtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemUnknownTLVTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldpremunknowntlventry)
+    for (auto c : lldpremunknowntlventry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2606,22 +2655,22 @@ std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremunknowntlvtable::
     return children;
 }
 
-void LLDPMIB::Lldpremunknowntlvtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpRemUnknownTLVTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void LLDPMIB::Lldpremunknowntlvtable::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpRemUnknownTLVTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool LLDPMIB::Lldpremunknowntlvtable::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpRemUnknownTLVTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpRemUnknownTLVEntry")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::Lldpremunknowntlventry()
+LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::LldpRemUnknownTLVEntry()
     :
     lldpremtimemark{YType::str, "lldpRemTimeMark"},
     lldpremlocalportnum{YType::str, "lldpRemLocalPortNum"},
@@ -2630,15 +2679,16 @@ LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::Lldpremunknowntlventry(
     lldpremunknowntlvinfo{YType::str, "lldpRemUnknownTLVInfo"}
 {
 
-    yang_name = "lldpRemUnknownTLVEntry"; yang_parent_name = "lldpRemUnknownTLVTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpRemUnknownTLVEntry"; yang_parent_name = "lldpRemUnknownTLVTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::~Lldpremunknowntlventry()
+LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::~LldpRemUnknownTLVEntry()
 {
 }
 
-bool LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::has_data() const
+bool LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return lldpremtimemark.is_set
 	|| lldpremlocalportnum.is_set
 	|| lldpremindex.is_set
@@ -2646,7 +2696,7 @@ bool LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::has_data() const
 	|| lldpremunknowntlvinfo.is_set;
 }
 
-bool LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::has_operation() const
+bool LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lldpremtimemark.yfilter)
@@ -2656,21 +2706,25 @@ bool LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::has_operation() co
 	|| ydk::is_set(lldpremunknowntlvinfo.yfilter);
 }
 
-std::string LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::get_absolute_path() const
+std::string LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/lldpRemUnknownTLVTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::get_segment_path() const
+std::string LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lldpRemUnknownTLVEntry" <<"[lldpRemTimeMark='" <<lldpremtimemark <<"']" <<"[lldpRemLocalPortNum='" <<lldpremlocalportnum <<"']" <<"[lldpRemIndex='" <<lldpremindex <<"']" <<"[lldpRemUnknownTLVType='" <<lldpremunknowntlvtype <<"']";
+    path_buffer << "lldpRemUnknownTLVEntry";
+    ADD_KEY_TOKEN(lldpremtimemark, "lldpRemTimeMark");
+    ADD_KEY_TOKEN(lldpremlocalportnum, "lldpRemLocalPortNum");
+    ADD_KEY_TOKEN(lldpremindex, "lldpRemIndex");
+    ADD_KEY_TOKEN(lldpremunknowntlvtype, "lldpRemUnknownTLVType");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2684,19 +2738,19 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremunknowntlvtable::
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lldpRemTimeMark")
     {
@@ -2730,7 +2784,7 @@ void LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::set_value(const st
     }
 }
 
-void LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lldpRemTimeMark")
     {
@@ -2754,26 +2808,29 @@ void LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::set_filter(const s
     }
 }
 
-bool LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpRemTimeMark" || name == "lldpRemLocalPortNum" || name == "lldpRemIndex" || name == "lldpRemUnknownTLVType" || name == "lldpRemUnknownTLVInfo")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfotable()
+LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoTable()
+    :
+    lldpremorgdefinfoentry(this, {"lldpremtimemark", "lldpremlocalportnum", "lldpremindex", "lldpremorgdefinfooui", "lldpremorgdefinfosubtype", "lldpremorgdefinfoindex"})
 {
 
-    yang_name = "lldpRemOrgDefInfoTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpRemOrgDefInfoTable"; yang_parent_name = "LLDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpremorgdefinfotable::~Lldpremorgdefinfotable()
+LLDPMIB::LldpRemOrgDefInfoTable::~LldpRemOrgDefInfoTable()
 {
 }
 
-bool LLDPMIB::Lldpremorgdefinfotable::has_data() const
+bool LLDPMIB::LldpRemOrgDefInfoTable::has_data() const
 {
-    for (std::size_t index=0; index<lldpremorgdefinfoentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldpremorgdefinfoentry.len(); index++)
     {
         if(lldpremorgdefinfoentry[index]->has_data())
             return true;
@@ -2781,9 +2838,9 @@ bool LLDPMIB::Lldpremorgdefinfotable::has_data() const
     return false;
 }
 
-bool LLDPMIB::Lldpremorgdefinfotable::has_operation() const
+bool LLDPMIB::LldpRemOrgDefInfoTable::has_operation() const
 {
-    for (std::size_t index=0; index<lldpremorgdefinfoentry.size(); index++)
+    for (std::size_t index=0; index<lldpremorgdefinfoentry.len(); index++)
     {
         if(lldpremorgdefinfoentry[index]->has_operation())
             return true;
@@ -2791,21 +2848,21 @@ bool LLDPMIB::Lldpremorgdefinfotable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string LLDPMIB::Lldpremorgdefinfotable::get_absolute_path() const
+std::string LLDPMIB::LldpRemOrgDefInfoTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpremorgdefinfotable::get_segment_path() const
+std::string LLDPMIB::LldpRemOrgDefInfoTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lldpRemOrgDefInfoTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremorgdefinfotable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemOrgDefInfoTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2814,25 +2871,25 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremorgdefinfotable::
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpremorgdefinfotable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpRemOrgDefInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpRemOrgDefInfoEntry")
     {
-        auto c = std::make_shared<LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry>();
+        auto c = std::make_shared<LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry>();
         c->parent = this;
-        lldpremorgdefinfoentry.push_back(c);
+        lldpremorgdefinfoentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremorgdefinfotable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemOrgDefInfoTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldpremorgdefinfoentry)
+    for (auto c : lldpremorgdefinfoentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2843,22 +2900,22 @@ std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremorgdefinfotable::
     return children;
 }
 
-void LLDPMIB::Lldpremorgdefinfotable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpRemOrgDefInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void LLDPMIB::Lldpremorgdefinfotable::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpRemOrgDefInfoTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool LLDPMIB::Lldpremorgdefinfotable::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpRemOrgDefInfoTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpRemOrgDefInfoEntry")
         return true;
     return false;
 }
 
-LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::Lldpremorgdefinfoentry()
+LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::LldpRemOrgDefInfoEntry()
     :
     lldpremtimemark{YType::str, "lldpRemTimeMark"},
     lldpremlocalportnum{YType::str, "lldpRemLocalPortNum"},
@@ -2869,15 +2926,16 @@ LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::Lldpremorgdefinfoentry(
     lldpremorgdefinfo{YType::str, "lldpRemOrgDefInfo"}
 {
 
-    yang_name = "lldpRemOrgDefInfoEntry"; yang_parent_name = "lldpRemOrgDefInfoTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldpRemOrgDefInfoEntry"; yang_parent_name = "lldpRemOrgDefInfoTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::~Lldpremorgdefinfoentry()
+LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::~LldpRemOrgDefInfoEntry()
 {
 }
 
-bool LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::has_data() const
+bool LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return lldpremtimemark.is_set
 	|| lldpremlocalportnum.is_set
 	|| lldpremindex.is_set
@@ -2887,7 +2945,7 @@ bool LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::has_data() const
 	|| lldpremorgdefinfo.is_set;
 }
 
-bool LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::has_operation() const
+bool LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lldpremtimemark.yfilter)
@@ -2899,21 +2957,27 @@ bool LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::has_operation() co
 	|| ydk::is_set(lldpremorgdefinfo.yfilter);
 }
 
-std::string LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::get_absolute_path() const
+std::string LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LLDP-MIB:LLDP-MIB/lldpRemOrgDefInfoTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::get_segment_path() const
+std::string LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lldpRemOrgDefInfoEntry" <<"[lldpRemTimeMark='" <<lldpremtimemark <<"']" <<"[lldpRemLocalPortNum='" <<lldpremlocalportnum <<"']" <<"[lldpRemIndex='" <<lldpremindex <<"']" <<"[lldpRemOrgDefInfoOUI='" <<lldpremorgdefinfooui <<"']" <<"[lldpRemOrgDefInfoSubtype='" <<lldpremorgdefinfosubtype <<"']" <<"[lldpRemOrgDefInfoIndex='" <<lldpremorgdefinfoindex <<"']";
+    path_buffer << "lldpRemOrgDefInfoEntry";
+    ADD_KEY_TOKEN(lldpremtimemark, "lldpRemTimeMark");
+    ADD_KEY_TOKEN(lldpremlocalportnum, "lldpRemLocalPortNum");
+    ADD_KEY_TOKEN(lldpremindex, "lldpRemIndex");
+    ADD_KEY_TOKEN(lldpremorgdefinfooui, "lldpRemOrgDefInfoOUI");
+    ADD_KEY_TOKEN(lldpremorgdefinfosubtype, "lldpRemOrgDefInfoSubtype");
+    ADD_KEY_TOKEN(lldpremorgdefinfoindex, "lldpRemOrgDefInfoIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2929,19 +2993,19 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::Lldpremorgdefinfotable::
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lldpRemTimeMark")
     {
@@ -2987,7 +3051,7 @@ void LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::set_value(const st
     }
 }
 
-void LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::set_filter(const std::string & value_path, YFilter yfilter)
+void LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lldpRemTimeMark")
     {
@@ -3019,20 +3083,12 @@ void LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::set_filter(const s
     }
 }
 
-bool LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::has_leaf_or_child_of_name(const std::string & name) const
+bool LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lldpRemTimeMark" || name == "lldpRemLocalPortNum" || name == "lldpRemIndex" || name == "lldpRemOrgDefInfoOUI" || name == "lldpRemOrgDefInfoSubtype" || name == "lldpRemOrgDefInfoIndex" || name == "lldpRemOrgDefInfo")
         return true;
     return false;
 }
-
-const Enum::YLeaf LldpChassisIdSubtype::chassisComponent {1, "chassisComponent"};
-const Enum::YLeaf LldpChassisIdSubtype::interfaceAlias {2, "interfaceAlias"};
-const Enum::YLeaf LldpChassisIdSubtype::portComponent {3, "portComponent"};
-const Enum::YLeaf LldpChassisIdSubtype::macAddress {4, "macAddress"};
-const Enum::YLeaf LldpChassisIdSubtype::networkAddress {5, "networkAddress"};
-const Enum::YLeaf LldpChassisIdSubtype::interfaceName {6, "interfaceName"};
-const Enum::YLeaf LldpChassisIdSubtype::local {7, "local"};
 
 const Enum::YLeaf LldpPortIdSubtype::interfaceAlias {1, "interfaceAlias"};
 const Enum::YLeaf LldpPortIdSubtype::portComponent {2, "portComponent"};
@@ -3042,14 +3098,22 @@ const Enum::YLeaf LldpPortIdSubtype::interfaceName {5, "interfaceName"};
 const Enum::YLeaf LldpPortIdSubtype::agentCircuitId {6, "agentCircuitId"};
 const Enum::YLeaf LldpPortIdSubtype::local {7, "local"};
 
+const Enum::YLeaf LldpChassisIdSubtype::chassisComponent {1, "chassisComponent"};
+const Enum::YLeaf LldpChassisIdSubtype::interfaceAlias {2, "interfaceAlias"};
+const Enum::YLeaf LldpChassisIdSubtype::portComponent {3, "portComponent"};
+const Enum::YLeaf LldpChassisIdSubtype::macAddress {4, "macAddress"};
+const Enum::YLeaf LldpChassisIdSubtype::networkAddress {5, "networkAddress"};
+const Enum::YLeaf LldpChassisIdSubtype::interfaceName {6, "interfaceName"};
+const Enum::YLeaf LldpChassisIdSubtype::local {7, "local"};
+
 const Enum::YLeaf LldpManAddrIfSubtype::unknown {1, "unknown"};
 const Enum::YLeaf LldpManAddrIfSubtype::ifIndex {2, "ifIndex"};
 const Enum::YLeaf LldpManAddrIfSubtype::systemPortNumber {3, "systemPortNumber"};
 
-const Enum::YLeaf LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::Lldpportconfigadminstatus::txOnly {1, "txOnly"};
-const Enum::YLeaf LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::Lldpportconfigadminstatus::rxOnly {2, "rxOnly"};
-const Enum::YLeaf LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::Lldpportconfigadminstatus::txAndRx {3, "txAndRx"};
-const Enum::YLeaf LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::Lldpportconfigadminstatus::disabled {4, "disabled"};
+const Enum::YLeaf LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::LldpPortConfigAdminStatus::txOnly {1, "txOnly"};
+const Enum::YLeaf LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::LldpPortConfigAdminStatus::rxOnly {2, "rxOnly"};
+const Enum::YLeaf LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::LldpPortConfigAdminStatus::txAndRx {3, "txAndRx"};
+const Enum::YLeaf LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::LldpPortConfigAdminStatus::disabled {4, "disabled"};
 
 
 }

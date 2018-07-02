@@ -31,18 +31,18 @@ class CISCOIETFMPLSIDSTD03MIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cmplsidobjects; //type: CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects
+        class CmplsIdObjects; //type: CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_ID_STD_03_MIB::CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects> cmplsidobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_ID_STD_03_MIB::CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects> cmplsidobjects;
         
 }; // CISCOIETFMPLSIDSTD03MIB
 
 
-class CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects : public ydk::Entity
+class CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects : public ydk::Entity
 {
     public:
-        Cmplsidobjects();
-        ~Cmplsidobjects();
+        CmplsIdObjects();
+        ~CmplsIdObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -59,7 +59,7 @@ class CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects : public ydk::Entity
         ydk::YLeaf cmplsicc; //type: binary
         ydk::YLeaf cmplsnodeid; //type: uint32
 
-}; // CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects
+}; // CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects
 
 
 }

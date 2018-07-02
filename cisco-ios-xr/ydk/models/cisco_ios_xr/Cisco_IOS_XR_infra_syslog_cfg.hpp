@@ -490,7 +490,7 @@ class Syslog::HostServer::Vrfs : public ydk::Entity
 
         class Vrf; //type: Syslog::HostServer::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Syslog::HostServer::Vrfs
 
@@ -513,22 +513,22 @@ class Syslog::HostServer::Vrfs::Vrf : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
-        class Ipv6S; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6S
+        class Ipv6s; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6s
         class Hosts; //type: Syslog::HostServer::Vrfs::Vrf::Hosts
-        class Ipv4S; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4S
+        class Ipv4s; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4s
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6S> ipv6s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6s> ipv6s;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Hosts> hosts;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4S> ipv4s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4s> ipv4s;
         
 }; // Syslog::HostServer::Vrfs::Vrf
 
 
-class Syslog::HostServer::Vrfs::Vrf::Ipv6S : public ydk::Entity
+class Syslog::HostServer::Vrfs::Vrf::Ipv6s : public ydk::Entity
 {
     public:
-        Ipv6S();
-        ~Ipv6S();
+        Ipv6s();
+        ~Ipv6s();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -540,14 +540,14 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6
+        class Ipv6; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6> > ipv6;
+        ydk::YList ipv6;
         
-}; // Syslog::HostServer::Vrfs::Vrf::Ipv6S
+}; // Syslog::HostServer::Vrfs::Vrf::Ipv6s
 
 
-class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6 : public ydk::Entity
+class Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -564,18 +564,16 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address; //type: string
-        class Ipv6SeverityPort; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort
-        class Ipv6Discriminator; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator
-        class Ipv6SeverityLevels; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels
+        class Ipv6SeverityPort; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort
+        class Ipv6SeverityLevels; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort> ipv6_severity_port; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator> ipv6_discriminator;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels> ipv6_severity_levels;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort> ipv6_severity_port; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels> ipv6_severity_levels;
         
-}; // Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6
+}; // Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6
 
 
-class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort : public ydk::Entity
+class Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort : public ydk::Entity
 {
     public:
         Ipv6SeverityPort();
@@ -591,39 +589,13 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf severity; //type: int32
-        ydk::YLeaf port; //type: int32
+        ydk::YLeaf severity; //type: uint32
+        ydk::YLeaf port; //type: uint32
 
-}; // Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort
-
-
-class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator : public ydk::Entity
-{
-    public:
-        Ipv6Discriminator();
-        ~Ipv6Discriminator();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nomatch2; //type: string
-        ydk::YLeaf match3; //type: string
-        ydk::YLeaf nomatch3; //type: string
-        ydk::YLeaf match1; //type: string
-        ydk::YLeaf nomatch1; //type: string
-        ydk::YLeaf match2; //type: string
-
-}; // Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator
+}; // Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort
 
 
-class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels : public ydk::Entity
+class Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels : public ydk::Entity
 {
     public:
         Ipv6SeverityLevels();
@@ -639,14 +611,14 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6SeverityLevel; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel
+        class Ipv6SeverityLevel; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel> > ipv6_severity_level;
+        ydk::YList ipv6_severity_level;
         
-}; // Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels
+}; // Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels
 
 
-class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel : public ydk::Entity
+class Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel : public ydk::Entity
 {
     public:
         Ipv6SeverityLevel();
@@ -664,7 +636,7 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6Severi
 
         ydk::YLeaf severity; //type: LogSeverity
 
-}; // Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel
+}; // Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel
 
 
 class Syslog::HostServer::Vrfs::Vrf::Hosts : public ydk::Entity
@@ -685,7 +657,7 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts : public ydk::Entity
 
         class Host; //type: Syslog::HostServer::Vrfs::Vrf::Hosts::Host
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Hosts::Host> > host;
+        ydk::YList host;
         
 }; // Syslog::HostServer::Vrfs::Vrf::Hosts
 
@@ -708,11 +680,9 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts::Host : public ydk::Entity
 
         ydk::YLeaf host_name; //type: string
         class HostNameSeverities; //type: Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities
-        class HostNameDiscriminator; //type: Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator
         class HostSeverityPort; //type: Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities> host_name_severities;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator> host_name_discriminator;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort> host_severity_port; // presence node
         
 }; // Syslog::HostServer::Vrfs::Vrf::Hosts::Host
@@ -736,7 +706,7 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities : public yd
 
         class HostNameSeverity; //type: Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity> > host_name_severity;
+        ydk::YList host_name_severity;
         
 }; // Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities
 
@@ -762,32 +732,6 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSe
 }; // Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity
 
 
-class Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator : public ydk::Entity
-{
-    public:
-        HostNameDiscriminator();
-        ~HostNameDiscriminator();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nomatch2; //type: string
-        ydk::YLeaf match3; //type: string
-        ydk::YLeaf nomatch3; //type: string
-        ydk::YLeaf match1; //type: string
-        ydk::YLeaf nomatch1; //type: string
-        ydk::YLeaf match2; //type: string
-
-}; // Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator
-
-
 class Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort : public ydk::Entity
 {
     public:
@@ -804,17 +748,17 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf severity; //type: int32
-        ydk::YLeaf port; //type: int32
+        ydk::YLeaf severity; //type: uint32
+        ydk::YLeaf port; //type: uint32
 
 }; // Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort
 
 
-class Syslog::HostServer::Vrfs::Vrf::Ipv4S : public ydk::Entity
+class Syslog::HostServer::Vrfs::Vrf::Ipv4s : public ydk::Entity
 {
     public:
-        Ipv4S();
-        ~Ipv4S();
+        Ipv4s();
+        ~Ipv4s();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -826,14 +770,14 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv4; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4
+        class Ipv4; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4> > ipv4;
+        ydk::YList ipv4;
         
-}; // Syslog::HostServer::Vrfs::Vrf::Ipv4S
+}; // Syslog::HostServer::Vrfs::Vrf::Ipv4s
 
 
-class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4 : public ydk::Entity
+class Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -850,18 +794,16 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address; //type: string
-        class Ipv4SeverityLevels; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels
-        class Ipv4SeverityPort; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort
-        class Ipv4Discriminator; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator
+        class Ipv4SeverityLevels; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels
+        class Ipv4SeverityPort; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels> ipv4_severity_levels;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort> ipv4_severity_port; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator> ipv4_discriminator;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels> ipv4_severity_levels;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort> ipv4_severity_port; // presence node
         
-}; // Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4
+}; // Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4
 
 
-class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels : public ydk::Entity
+class Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels : public ydk::Entity
 {
     public:
         Ipv4SeverityLevels();
@@ -877,14 +819,14 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv4SeverityLevel; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel
+        class Ipv4SeverityLevel; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel> > ipv4_severity_level;
+        ydk::YList ipv4_severity_level;
         
-}; // Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels
+}; // Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels
 
 
-class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel : public ydk::Entity
+class Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel : public ydk::Entity
 {
     public:
         Ipv4SeverityLevel();
@@ -902,10 +844,10 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4Severi
 
         ydk::YLeaf severity; //type: LogSeverity
 
-}; // Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel
+}; // Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel
 
 
-class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort : public ydk::Entity
+class Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort : public ydk::Entity
 {
     public:
         Ipv4SeverityPort();
@@ -921,36 +863,10 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf severity; //type: int32
-        ydk::YLeaf port; //type: int32
+        ydk::YLeaf severity; //type: uint32
+        ydk::YLeaf port; //type: uint32
 
-}; // Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort
-
-
-class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator : public ydk::Entity
-{
-    public:
-        Ipv4Discriminator();
-        ~Ipv4Discriminator();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nomatch2; //type: string
-        ydk::YLeaf match3; //type: string
-        ydk::YLeaf nomatch3; //type: string
-        ydk::YLeaf match1; //type: string
-        ydk::YLeaf nomatch1; //type: string
-        ydk::YLeaf match2; //type: string
-
-}; // Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator
+}; // Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort
 
 
 class Syslog::ConsoleLogging : public ydk::Entity
@@ -1024,7 +940,7 @@ class Syslog::Files : public ydk::Entity
 
         class File; //type: Syslog::Files::File
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Files::File> > file;
+        ydk::YList file;
         
 }; // Syslog::Files
 
@@ -1073,8 +989,8 @@ class Syslog::Files::File::FileSpecification : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf path; //type: string
-        ydk::YLeaf max_file_size; //type: int32
-        ydk::YLeaf severity; //type: int32
+        ydk::YLeaf max_file_size; //type: uint32
+        ydk::YLeaf severity; //type: uint32
 
 }; // Syslog::Files::File::FileSpecification
 
@@ -1376,7 +1292,7 @@ class Syslog::SourceInterfaceTable::SourceInterfaceValues : public ydk::Entity
 
         class SourceInterfaceValue; //type: Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue> > source_interface_value;
+        ydk::YList source_interface_value;
         
 }; // Syslog::SourceInterfaceTable::SourceInterfaceValues
 
@@ -1424,7 +1340,7 @@ class Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue:
 
         class SourceInterfaceVrf; //type: Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf> > source_interface_vrf;
+        ydk::YList source_interface_vrf;
         
 }; // Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs
 
@@ -1499,7 +1415,7 @@ class Syslog::AlarmLogger::AlarmFilterStrings : public ydk::Entity
 
         class AlarmFilterString; //type: Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString> > alarm_filter_string;
+        ydk::YList alarm_filter_string;
         
 }; // Syslog::AlarmLogger::AlarmFilterStrings
 
@@ -1572,7 +1488,7 @@ class Syslog::Correlator::Rules : public ydk::Entity
 
         class Rule; //type: Syslog::Correlator::Rules::Rule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule> > rule;
+        ydk::YList rule;
         
 }; // Syslog::Correlator::Rules
 
@@ -1707,7 +1623,7 @@ class Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses : public ydk::
 
         class NonRootCause; //type: Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause> > non_root_cause;
+        ydk::YList non_root_cause;
         
 }; // Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses
 
@@ -1806,7 +1722,7 @@ class Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses : public ydk::Ent
 
         class NonRootCause; //type: Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause> > non_root_cause;
+        ydk::YList non_root_cause;
         
 }; // Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses
 
@@ -1969,7 +1885,7 @@ class Syslog::Correlator::Rules::Rule::AppliedTo::Contexts : public ydk::Entity
 
         class Context; //type: Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context> > context;
+        ydk::YList context;
         
 }; // Syslog::Correlator::Rules::Rule::AppliedTo::Contexts
 
@@ -2013,7 +1929,7 @@ class Syslog::Correlator::Rules::Rule::AppliedTo::Locations : public ydk::Entity
 
         class Location; //type: Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location> > location;
+        ydk::YList location;
         
 }; // Syslog::Correlator::Rules::Rule::AppliedTo::Locations
 
@@ -2058,7 +1974,7 @@ class Syslog::Correlator::RuleSets : public ydk::Entity
 
         class RuleSet; //type: Syslog::Correlator::RuleSets::RuleSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets::RuleSet> > rule_set;
+        ydk::YList rule_set;
         
 }; // Syslog::Correlator::RuleSets
 
@@ -2108,7 +2024,7 @@ class Syslog::Correlator::RuleSets::RuleSet::Rulenames : public ydk::Entity
 
         class Rulename; //type: Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename> > rulename;
+        ydk::YList rulename;
         
 }; // Syslog::Correlator::RuleSets::RuleSet::Rulenames
 
@@ -2178,7 +2094,7 @@ class Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts : public ydk::E
 
         class Context; //type: Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context> > context;
+        ydk::YList context;
         
 }; // Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts
 
@@ -2222,7 +2138,7 @@ class Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations : public ydk::
 
         class Location; //type: Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location> > location;
+        ydk::YList location;
         
 }; // Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations
 
@@ -2291,7 +2207,7 @@ class Syslog::Suppression::Rules : public ydk::Entity
 
         class Rule; //type: Syslog::Suppression::Rules::Rule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression::Rules::Rule> > rule;
+        ydk::YList rule;
         
 }; // Syslog::Suppression::Rules
 
@@ -2366,7 +2282,7 @@ class Syslog::Suppression::Rules::Rule::AppliedTo::Sources : public ydk::Entity
 
         class Source; //type: Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source> > source;
+        ydk::YList source;
         
 }; // Syslog::Suppression::Rules::Rule::AppliedTo::Sources
 
@@ -2410,7 +2326,7 @@ class Syslog::Suppression::Rules::Rule::AlarmCauses : public ydk::Entity
 
         class AlarmCause; //type: Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause> > alarm_cause;
+        ydk::YList alarm_cause;
         
 }; // Syslog::Suppression::Rules::Rule::AlarmCauses
 
@@ -2437,52 +2353,17 @@ class Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause : public ydk::En
 
 }; // Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause
 
-class LoggingTos : public ydk::Enum
+class LogSeverity : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf precedence;
-        static const ydk::Enum::YLeaf dscp;
-
-};
-
-class LoggingDscpValue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf af11;
-        static const ydk::Enum::YLeaf af12;
-        static const ydk::Enum::YLeaf af13;
-        static const ydk::Enum::YLeaf af21;
-        static const ydk::Enum::YLeaf af22;
-        static const ydk::Enum::YLeaf af23;
-        static const ydk::Enum::YLeaf af31;
-        static const ydk::Enum::YLeaf af32;
-        static const ydk::Enum::YLeaf af33;
-        static const ydk::Enum::YLeaf af41;
-        static const ydk::Enum::YLeaf af42;
-        static const ydk::Enum::YLeaf af43;
-        static const ydk::Enum::YLeaf ef;
-        static const ydk::Enum::YLeaf cs1;
-        static const ydk::Enum::YLeaf cs2;
-        static const ydk::Enum::YLeaf cs3;
-        static const ydk::Enum::YLeaf cs4;
-        static const ydk::Enum::YLeaf cs5;
-        static const ydk::Enum::YLeaf cs6;
-        static const ydk::Enum::YLeaf cs7;
-
-};
-
-class LoggingPrecedenceValue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf routine;
-        static const ydk::Enum::YLeaf priority;
-        static const ydk::Enum::YLeaf immediate;
-        static const ydk::Enum::YLeaf flash;
-        static const ydk::Enum::YLeaf flash_override;
+        static const ydk::Enum::YLeaf emergency;
+        static const ydk::Enum::YLeaf alert;
         static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf internet;
-        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf notice;
+        static const ydk::Enum::YLeaf informational;
+        static const ydk::Enum::YLeaf debug;
 
 };
 
@@ -2518,9 +2399,32 @@ class Facility : public ydk::Enum
 
 };
 
-class LoggingDscp : public ydk::Enum
+class LogCollectFrequency : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf weekly;
+        static const ydk::Enum::YLeaf daily;
+
+};
+
+class LoggingPrecedenceValue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf routine;
+        static const ydk::Enum::YLeaf priority;
+        static const ydk::Enum::YLeaf immediate;
+        static const ydk::Enum::YLeaf flash;
+        static const ydk::Enum::YLeaf flash_override;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf internet;
+        static const ydk::Enum::YLeaf network;
+
+};
+
+class LoggingTos : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf precedence;
         static const ydk::Enum::YLeaf dscp;
 
 };
@@ -2547,11 +2451,30 @@ class LoggingPrecedence : public ydk::Enum
 
 };
 
-class TimeInfo : public ydk::Enum
+class LoggingDscpValue : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf af11;
+        static const ydk::Enum::YLeaf af12;
+        static const ydk::Enum::YLeaf af13;
+        static const ydk::Enum::YLeaf af21;
+        static const ydk::Enum::YLeaf af22;
+        static const ydk::Enum::YLeaf af23;
+        static const ydk::Enum::YLeaf af31;
+        static const ydk::Enum::YLeaf af32;
+        static const ydk::Enum::YLeaf af33;
+        static const ydk::Enum::YLeaf af41;
+        static const ydk::Enum::YLeaf af42;
+        static const ydk::Enum::YLeaf af43;
+        static const ydk::Enum::YLeaf ef;
+        static const ydk::Enum::YLeaf cs1;
+        static const ydk::Enum::YLeaf cs2;
+        static const ydk::Enum::YLeaf cs3;
+        static const ydk::Enum::YLeaf cs4;
+        static const ydk::Enum::YLeaf cs5;
+        static const ydk::Enum::YLeaf cs6;
+        static const ydk::Enum::YLeaf cs7;
 
 };
 
@@ -2569,25 +2492,18 @@ class LogMessageSeverity : public ydk::Enum
 
 };
 
-class LogCollectFrequency : public ydk::Enum
+class TimeInfo : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf weekly;
-        static const ydk::Enum::YLeaf daily;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
-class LogSeverity : public ydk::Enum
+class LoggingDscp : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf emergency;
-        static const ydk::Enum::YLeaf alert;
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf error;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf notice;
-        static const ydk::Enum::YLeaf informational;
-        static const ydk::Enum::YLeaf debug;
+        static const ydk::Enum::YLeaf dscp;
 
 };
 

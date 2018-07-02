@@ -6,10 +6,10 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_sysadmin_controllers_0.hpp"
 #include "Cisco_IOS_XR_sysadmin_controllers_1.hpp"
-#include "Cisco_IOS_XR_sysadmin_controllers_4.hpp"
-#include "Cisco_IOS_XR_sysadmin_controllers_6.hpp"
 #include "Cisco_IOS_XR_sysadmin_controllers_2.hpp"
 #include "Cisco_IOS_XR_sysadmin_controllers_3.hpp"
+#include "Cisco_IOS_XR_sysadmin_controllers_4.hpp"
+#include "Cisco_IOS_XR_sysadmin_controllers_6.hpp"
 
 using namespace ydk;
 
@@ -17,9 +17,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_controllers {
 
 Gaspp::Gaspp()
+    :
+    asic(this, {"asic_name"})
 {
 
-    yang_name = "gaspp"; yang_parent_name = "Cisco-IOS-XR-sysadmin-controllers"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "gaspp"; yang_parent_name = "Cisco-IOS-XR-sysadmin-controllers"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Gaspp::~Gaspp()
@@ -28,7 +30,8 @@ Gaspp::~Gaspp()
 
 bool Gaspp::has_data() const
 {
-    for (std::size_t index=0; index<asic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic.len(); index++)
     {
         if(asic[index]->has_data())
             return true;
@@ -38,7 +41,7 @@ bool Gaspp::has_data() const
 
 bool Gaspp::has_operation() const
 {
-    for (std::size_t index=0; index<asic.size(); index++)
+    for (std::size_t index=0; index<asic.len(); index++)
     {
         if(asic[index]->has_operation())
             return true;
@@ -68,7 +71,7 @@ std::shared_ptr<Entity> Gaspp::get_child_by_name(const std::string & child_yang_
     {
         auto c = std::make_shared<Gaspp::Asic>();
         c->parent = this;
-        asic.push_back(c);
+        asic.append(c);
         return c;
     }
 
@@ -80,7 +83,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic)
+    for (auto c : asic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -134,9 +137,11 @@ bool Gaspp::has_leaf_or_child_of_name(const std::string & name) const
 Gaspp::Asic::Asic()
     :
     asic_name{YType::str, "asic-name"}
+        ,
+    instance(this, {"instance_id"})
 {
 
-    yang_name = "asic"; yang_parent_name = "gaspp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "asic"; yang_parent_name = "gaspp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Gaspp::Asic::~Asic()
@@ -145,7 +150,8 @@ Gaspp::Asic::~Asic()
 
 bool Gaspp::Asic::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -155,7 +161,7 @@ bool Gaspp::Asic::has_data() const
 
 bool Gaspp::Asic::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -174,7 +180,8 @@ std::string Gaspp::Asic::get_absolute_path() const
 std::string Gaspp::Asic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic" <<"[asic-name='" <<asic_name <<"']";
+    path_buffer << "asic";
+    ADD_KEY_TOKEN(asic_name, "asic-name");
     return path_buffer.str();
 }
 
@@ -194,7 +201,7 @@ std::shared_ptr<Entity> Gaspp::Asic::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<Gaspp::Asic::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -206,7 +213,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -246,9 +253,13 @@ Gaspp::Asic::Instance::Instance()
     :
     instance_id{YType::uint32, "instance-id"},
     instance_name{YType::str, "instance-name"}
+        ,
+    address(this, {"addr", "size", "entries"})
+    , block_name(this, {"block_nm", "block_num"})
+    , block_number(this, {"block_num"})
 {
 
-    yang_name = "instance"; yang_parent_name = "asic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "asic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::~Instance()
@@ -257,17 +268,18 @@ Gaspp::Asic::Instance::~Instance()
 
 bool Gaspp::Asic::Instance::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<block_name.size(); index++)
+    for (std::size_t index=0; index<block_name.len(); index++)
     {
         if(block_name[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<block_number.size(); index++)
+    for (std::size_t index=0; index<block_number.len(); index++)
     {
         if(block_number[index]->has_data())
             return true;
@@ -278,17 +290,17 @@ bool Gaspp::Asic::Instance::has_data() const
 
 bool Gaspp::Asic::Instance::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<block_name.size(); index++)
+    for (std::size_t index=0; index<block_name.len(); index++)
     {
         if(block_name[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<block_number.size(); index++)
+    for (std::size_t index=0; index<block_number.len(); index++)
     {
         if(block_number[index]->has_operation())
             return true;
@@ -301,7 +313,8 @@ bool Gaspp::Asic::Instance::has_operation() const
 std::string Gaspp::Asic::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[instance-id='" <<instance_id <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(instance_id, "instance-id");
     return path_buffer.str();
 }
 
@@ -322,7 +335,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -330,7 +343,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::BlockName>();
         c->parent = this;
-        block_name.push_back(c);
+        block_name.append(c);
         return c;
     }
 
@@ -338,7 +351,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::BlockNumber>();
         c->parent = this;
-        block_number.push_back(c);
+        block_number.append(c);
         return c;
     }
 
@@ -350,7 +363,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -359,7 +372,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::get_childr
     }
 
     count = 0;
-    for (auto const & c : block_name)
+    for (auto c : block_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -368,7 +381,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::get_childr
     }
 
     count = 0;
-    for (auto const & c : block_number)
+    for (auto c : block_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -420,9 +433,11 @@ Gaspp::Asic::Instance::Address::Address()
     size{YType::uint32, "size"},
     entries{YType::uint32, "entries"},
     width{YType::uint32, "width"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "address"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::Address::~Address()
@@ -431,7 +446,8 @@ Gaspp::Asic::Instance::Address::~Address()
 
 bool Gaspp::Asic::Instance::Address::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -444,7 +460,7 @@ bool Gaspp::Asic::Instance::Address::has_data() const
 
 bool Gaspp::Asic::Instance::Address::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -459,7 +475,10 @@ bool Gaspp::Asic::Instance::Address::has_operation() const
 std::string Gaspp::Asic::Instance::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address" <<"[addr='" <<addr <<"']" <<"[size='" <<size <<"']" <<"[entries='" <<entries <<"']";
+    path_buffer << "address";
+    ADD_KEY_TOKEN(addr, "addr");
+    ADD_KEY_TOKEN(size, "size");
+    ADD_KEY_TOKEN(entries, "entries");
     return path_buffer.str();
 }
 
@@ -482,7 +501,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::Address::get_child_by_name(const 
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::Address::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -494,7 +513,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::Address::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -563,9 +582,11 @@ bool Gaspp::Asic::Instance::Address::has_leaf_or_child_of_name(const std::string
 Gaspp::Asic::Instance::Address::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    direct_data(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::Address::Location::~Location()
@@ -574,7 +595,8 @@ Gaspp::Asic::Instance::Address::Location::~Location()
 
 bool Gaspp::Asic::Instance::Address::Location::has_data() const
 {
-    for (std::size_t index=0; index<direct_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<direct_data.len(); index++)
     {
         if(direct_data[index]->has_data())
             return true;
@@ -584,7 +606,7 @@ bool Gaspp::Asic::Instance::Address::Location::has_data() const
 
 bool Gaspp::Asic::Instance::Address::Location::has_operation() const
 {
-    for (std::size_t index=0; index<direct_data.size(); index++)
+    for (std::size_t index=0; index<direct_data.len(); index++)
     {
         if(direct_data[index]->has_operation())
             return true;
@@ -596,7 +618,8 @@ bool Gaspp::Asic::Instance::Address::Location::has_operation() const
 std::string Gaspp::Asic::Instance::Address::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -616,7 +639,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::Address::Location::get_child_by_n
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::Address::Location::DirectData>();
         c->parent = this;
-        direct_data.push_back(c);
+        direct_data.append(c);
         return c;
     }
 
@@ -628,7 +651,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::Address::L
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : direct_data)
+    for (auto c : direct_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -672,7 +695,7 @@ Gaspp::Asic::Instance::Address::Location::DirectData::DirectData()
     size{YType::uint32, "size"}
 {
 
-    yang_name = "direct_data"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "direct_data"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::Address::Location::DirectData::~DirectData()
@@ -681,6 +704,7 @@ Gaspp::Asic::Instance::Address::Location::DirectData::~DirectData()
 
 bool Gaspp::Asic::Instance::Address::Location::DirectData::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| name.is_set
 	|| value_.is_set
@@ -787,9 +811,11 @@ Gaspp::Asic::Instance::BlockName::BlockName()
     :
     block_nm{YType::str, "block-nm"},
     block_num{YType::uint32, "block-num"}
+        ,
+    register_name(this, {"name"})
 {
 
-    yang_name = "block-name"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block-name"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::BlockName::~BlockName()
@@ -798,7 +824,8 @@ Gaspp::Asic::Instance::BlockName::~BlockName()
 
 bool Gaspp::Asic::Instance::BlockName::has_data() const
 {
-    for (std::size_t index=0; index<register_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<register_name.len(); index++)
     {
         if(register_name[index]->has_data())
             return true;
@@ -809,7 +836,7 @@ bool Gaspp::Asic::Instance::BlockName::has_data() const
 
 bool Gaspp::Asic::Instance::BlockName::has_operation() const
 {
-    for (std::size_t index=0; index<register_name.size(); index++)
+    for (std::size_t index=0; index<register_name.len(); index++)
     {
         if(register_name[index]->has_operation())
             return true;
@@ -822,7 +849,9 @@ bool Gaspp::Asic::Instance::BlockName::has_operation() const
 std::string Gaspp::Asic::Instance::BlockName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "block-name" <<"[block-nm='" <<block_nm <<"']" <<"[block-num='" <<block_num <<"']";
+    path_buffer << "block-name";
+    ADD_KEY_TOKEN(block_nm, "block-nm");
+    ADD_KEY_TOKEN(block_num, "block-num");
     return path_buffer.str();
 }
 
@@ -843,7 +872,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::BlockName::get_child_by_name(cons
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::BlockName::RegisterName>();
         c->parent = this;
-        register_name.push_back(c);
+        register_name.append(c);
         return c;
     }
 
@@ -855,7 +884,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::BlockName:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : register_name)
+    for (auto c : register_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -905,9 +934,11 @@ Gaspp::Asic::Instance::BlockName::RegisterName::RegisterName()
     :
     name{YType::str, "name"},
     register_{YType::uint32, "register"}
+        ,
+    data(this, {})
 {
 
-    yang_name = "register-name"; yang_parent_name = "block-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "register-name"; yang_parent_name = "block-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::BlockName::RegisterName::~RegisterName()
@@ -916,7 +947,8 @@ Gaspp::Asic::Instance::BlockName::RegisterName::~RegisterName()
 
 bool Gaspp::Asic::Instance::BlockName::RegisterName::has_data() const
 {
-    for (std::size_t index=0; index<data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data.len(); index++)
     {
         if(data[index]->has_data())
             return true;
@@ -927,7 +959,7 @@ bool Gaspp::Asic::Instance::BlockName::RegisterName::has_data() const
 
 bool Gaspp::Asic::Instance::BlockName::RegisterName::has_operation() const
 {
-    for (std::size_t index=0; index<data.size(); index++)
+    for (std::size_t index=0; index<data.len(); index++)
     {
         if(data[index]->has_operation())
             return true;
@@ -940,7 +972,8 @@ bool Gaspp::Asic::Instance::BlockName::RegisterName::has_operation() const
 std::string Gaspp::Asic::Instance::BlockName::RegisterName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "register-name" <<"[name='" <<name <<"']";
+    path_buffer << "register-name";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -961,7 +994,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::BlockName::RegisterName::get_chil
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::BlockName::RegisterName::Data>();
         c->parent = this;
-        data.push_back(c);
+        data.append(c);
         return c;
     }
 
@@ -973,7 +1006,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::BlockName:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data)
+    for (auto c : data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1027,7 +1060,7 @@ Gaspp::Asic::Instance::BlockName::RegisterName::Data::Data()
     size{YType::uint32, "size"}
 {
 
-    yang_name = "data"; yang_parent_name = "register-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "register-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::BlockName::RegisterName::Data::~Data()
@@ -1036,6 +1069,7 @@ Gaspp::Asic::Instance::BlockName::RegisterName::Data::~Data()
 
 bool Gaspp::Asic::Instance::BlockName::RegisterName::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| name.is_set
 	|| value_.is_set
@@ -1142,9 +1176,11 @@ Gaspp::Asic::Instance::BlockNumber::BlockNumber()
     :
     block_num{YType::uint32, "block-num"},
     block_nm{YType::str, "block-nm"}
+        ,
+    register_number(this, {"register_"})
 {
 
-    yang_name = "block-number"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block-number"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::BlockNumber::~BlockNumber()
@@ -1153,7 +1189,8 @@ Gaspp::Asic::Instance::BlockNumber::~BlockNumber()
 
 bool Gaspp::Asic::Instance::BlockNumber::has_data() const
 {
-    for (std::size_t index=0; index<register_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<register_number.len(); index++)
     {
         if(register_number[index]->has_data())
             return true;
@@ -1164,7 +1201,7 @@ bool Gaspp::Asic::Instance::BlockNumber::has_data() const
 
 bool Gaspp::Asic::Instance::BlockNumber::has_operation() const
 {
-    for (std::size_t index=0; index<register_number.size(); index++)
+    for (std::size_t index=0; index<register_number.len(); index++)
     {
         if(register_number[index]->has_operation())
             return true;
@@ -1177,7 +1214,8 @@ bool Gaspp::Asic::Instance::BlockNumber::has_operation() const
 std::string Gaspp::Asic::Instance::BlockNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "block-number" <<"[block-num='" <<block_num <<"']";
+    path_buffer << "block-number";
+    ADD_KEY_TOKEN(block_num, "block-num");
     return path_buffer.str();
 }
 
@@ -1198,7 +1236,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::BlockNumber::get_child_by_name(co
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::BlockNumber::RegisterNumber>();
         c->parent = this;
-        register_number.push_back(c);
+        register_number.append(c);
         return c;
     }
 
@@ -1210,7 +1248,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::BlockNumbe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : register_number)
+    for (auto c : register_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1260,9 +1298,12 @@ Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterNumber()
     :
     register_{YType::uint32, "register"},
     register_name{YType::str, "register-name"}
+        ,
+    register_offsets(this, {"reg_start", "num_entries"})
+    , location(this, {"location_name"})
 {
 
-    yang_name = "register-number"; yang_parent_name = "block-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "register-number"; yang_parent_name = "block-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::BlockNumber::RegisterNumber::~RegisterNumber()
@@ -1271,12 +1312,13 @@ Gaspp::Asic::Instance::BlockNumber::RegisterNumber::~RegisterNumber()
 
 bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::has_data() const
 {
-    for (std::size_t index=0; index<register_offsets.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<register_offsets.len(); index++)
     {
         if(register_offsets[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1287,12 +1329,12 @@ bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::has_data() const
 
 bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::has_operation() const
 {
-    for (std::size_t index=0; index<register_offsets.size(); index++)
+    for (std::size_t index=0; index<register_offsets.len(); index++)
     {
         if(register_offsets[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1305,7 +1347,8 @@ bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::has_operation() const
 std::string Gaspp::Asic::Instance::BlockNumber::RegisterNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "register-number" <<"[register='" <<register_ <<"']";
+    path_buffer << "register-number";
+    ADD_KEY_TOKEN(register_, "register");
     return path_buffer.str();
 }
 
@@ -1326,7 +1369,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::BlockNumber::RegisterNumber::get_
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets>();
         c->parent = this;
-        register_offsets.push_back(c);
+        register_offsets.append(c);
         return c;
     }
 
@@ -1334,7 +1377,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::BlockNumber::RegisterNumber::get_
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1346,7 +1389,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::BlockNumbe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : register_offsets)
+    for (auto c : register_offsets.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1355,7 +1398,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::BlockNumbe
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1405,9 +1448,11 @@ Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::RegisterOff
     :
     reg_start{YType::uint32, "reg-start"},
     num_entries{YType::uint32, "num-entries"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "register-offsets"; yang_parent_name = "register-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "register-offsets"; yang_parent_name = "register-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::~RegisterOffsets()
@@ -1416,7 +1461,8 @@ Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::~RegisterOf
 
 bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1427,7 +1473,7 @@ bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::has_da
 
 bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1440,7 +1486,9 @@ bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::has_op
 std::string Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "register-offsets" <<"[reg-start='" <<reg_start <<"']" <<"[num-entries='" <<num_entries <<"']";
+    path_buffer << "register-offsets";
+    ADD_KEY_TOKEN(reg_start, "reg-start");
+    ADD_KEY_TOKEN(num_entries, "num-entries");
     return path_buffer.str();
 }
 
@@ -1461,7 +1509,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Regi
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1473,7 +1521,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::BlockNumbe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1522,9 +1570,11 @@ bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::has_le
 Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    data(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "register-offsets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "register-offsets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::~Location()
@@ -1533,7 +1583,8 @@ Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::~
 
 bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::has_data() const
 {
-    for (std::size_t index=0; index<data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data.len(); index++)
     {
         if(data[index]->has_data())
             return true;
@@ -1543,7 +1594,7 @@ bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Locati
 
 bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::has_operation() const
 {
-    for (std::size_t index=0; index<data.size(); index++)
+    for (std::size_t index=0; index<data.len(); index++)
     {
         if(data[index]->has_operation())
             return true;
@@ -1555,7 +1606,8 @@ bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Locati
 std::string Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -1575,7 +1627,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Regi
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::Data>();
         c->parent = this;
-        data.push_back(c);
+        data.append(c);
         return c;
     }
 
@@ -1587,7 +1639,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::BlockNumbe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data)
+    for (auto c : data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1631,7 +1683,7 @@ Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::D
     size{YType::uint32, "size"}
 {
 
-    yang_name = "data"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::Data::~Data()
@@ -1640,6 +1692,7 @@ Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::D
 
 bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| name.is_set
 	|| value_.is_set
@@ -1745,9 +1798,11 @@ bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Locati
 Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    data(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "register-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "register-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::~Location()
@@ -1756,7 +1811,8 @@ Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::~Location()
 
 bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::has_data() const
 {
-    for (std::size_t index=0; index<data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data.len(); index++)
     {
         if(data[index]->has_data())
             return true;
@@ -1766,7 +1822,7 @@ bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::has_data() co
 
 bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::has_operation() const
 {
-    for (std::size_t index=0; index<data.size(); index++)
+    for (std::size_t index=0; index<data.len(); index++)
     {
         if(data[index]->has_operation())
             return true;
@@ -1778,7 +1834,8 @@ bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::has_operation
 std::string Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -1798,7 +1855,7 @@ std::shared_ptr<Entity> Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Loca
     {
         auto c = std::make_shared<Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::Data>();
         c->parent = this;
-        data.push_back(c);
+        data.append(c);
         return c;
     }
 
@@ -1810,7 +1867,7 @@ std::map<std::string, std::shared_ptr<Entity>> Gaspp::Asic::Instance::BlockNumbe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data)
+    for (auto c : data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1854,7 +1911,7 @@ Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::Data::Data()
     size{YType::uint32, "size"}
 {
 
-    yang_name = "data"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::Data::~Data()
@@ -1863,6 +1920,7 @@ Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::Data::~Data()
 
 bool Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| name.is_set
 	|| value_.is_set
@@ -1971,7 +2029,7 @@ Set::Set()
 {
     controller->parent = this;
 
-    yang_name = "set"; yang_parent_name = "Cisco-IOS-XR-sysadmin-controllers"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "set"; yang_parent_name = "Cisco-IOS-XR-sysadmin-controllers"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Set::~Set()
@@ -1980,6 +2038,7 @@ Set::~Set()
 
 bool Set::has_data() const
 {
+    if (is_presence_container) return true;
     return (controller !=  nullptr && controller->has_data());
 }
 
@@ -2072,9 +2131,11 @@ bool Set::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Set::Controller::Controller()
+    :
+    asic(this, {"asic_name"})
 {
 
-    yang_name = "controller"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Set::Controller::~Controller()
@@ -2083,7 +2144,8 @@ Set::Controller::~Controller()
 
 bool Set::Controller::has_data() const
 {
-    for (std::size_t index=0; index<asic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic.len(); index++)
     {
         if(asic[index]->has_data())
             return true;
@@ -2093,7 +2155,7 @@ bool Set::Controller::has_data() const
 
 bool Set::Controller::has_operation() const
 {
-    for (std::size_t index=0; index<asic.size(); index++)
+    for (std::size_t index=0; index<asic.len(); index++)
     {
         if(asic[index]->has_operation())
             return true;
@@ -2130,7 +2192,7 @@ std::shared_ptr<Entity> Set::Controller::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Set::Controller::Asic>();
         c->parent = this;
-        asic.push_back(c);
+        asic.append(c);
         return c;
     }
 
@@ -2142,7 +2204,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic)
+    for (auto c : asic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2171,9 +2233,11 @@ bool Set::Controller::has_leaf_or_child_of_name(const std::string & name) const
 Set::Controller::Asic::Asic()
     :
     asic_name{YType::str, "asic-name"}
+        ,
+    instance(this, {"instance_ids"})
 {
 
-    yang_name = "asic"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "asic"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Set::Controller::Asic::~Asic()
@@ -2182,7 +2246,8 @@ Set::Controller::Asic::~Asic()
 
 bool Set::Controller::Asic::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -2192,7 +2257,7 @@ bool Set::Controller::Asic::has_data() const
 
 bool Set::Controller::Asic::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -2211,7 +2276,8 @@ std::string Set::Controller::Asic::get_absolute_path() const
 std::string Set::Controller::Asic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic" <<"[asic-name='" <<asic_name <<"']";
+    path_buffer << "asic";
+    ADD_KEY_TOKEN(asic_name, "asic-name");
     return path_buffer.str();
 }
 
@@ -2231,7 +2297,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -2243,7 +2309,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2282,12 +2348,12 @@ bool Set::Controller::Asic::has_leaf_or_child_of_name(const std::string & name) 
 Set::Controller::Asic::Instance::Instance()
     :
     instance_ids{YType::uint32, "instance-ids"}
-    	,
+        ,
     fault_injection(std::make_shared<Set::Controller::Asic::Instance::FaultInjection>())
 {
     fault_injection->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "asic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "asic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::~Instance()
@@ -2296,6 +2362,7 @@ Set::Controller::Asic::Instance::~Instance()
 
 bool Set::Controller::Asic::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_ids.is_set
 	|| (fault_injection !=  nullptr && fault_injection->has_data());
 }
@@ -2310,7 +2377,8 @@ bool Set::Controller::Asic::Instance::has_operation() const
 std::string Set::Controller::Asic::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[instance-ids='" <<instance_ids <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(instance_ids, "instance-ids");
     return path_buffer.str();
 }
 
@@ -2376,9 +2444,11 @@ bool Set::Controller::Asic::Instance::has_leaf_or_child_of_name(const std::strin
 }
 
 Set::Controller::Asic::Instance::FaultInjection::FaultInjection()
+    :
+    module(this, {"module_name"})
 {
 
-    yang_name = "fault-injection"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fault-injection"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::~FaultInjection()
@@ -2387,7 +2457,8 @@ Set::Controller::Asic::Instance::FaultInjection::~FaultInjection()
 
 bool Set::Controller::Asic::Instance::FaultInjection::has_data() const
 {
-    for (std::size_t index=0; index<module.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<module.len(); index++)
     {
         if(module[index]->has_data())
             return true;
@@ -2397,7 +2468,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::has_data() const
 
 bool Set::Controller::Asic::Instance::FaultInjection::has_operation() const
 {
-    for (std::size_t index=0; index<module.size(); index++)
+    for (std::size_t index=0; index<module.len(); index++)
     {
         if(module[index]->has_operation())
             return true;
@@ -2427,7 +2498,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::get_chi
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module>();
         c->parent = this;
-        module.push_back(c);
+        module.append(c);
         return c;
     }
 
@@ -2439,7 +2510,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : module)
+    for (auto c : module.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2468,12 +2539,12 @@ bool Set::Controller::Asic::Instance::FaultInjection::has_leaf_or_child_of_name(
 Set::Controller::Asic::Instance::FaultInjection::Module::Module()
     :
     module_name{YType::str, "module-name"}
-    	,
+        ,
     fault_type(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType>())
 {
     fault_type->parent = this;
 
-    yang_name = "module"; yang_parent_name = "fault-injection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module"; yang_parent_name = "fault-injection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::~Module()
@@ -2482,6 +2553,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::~Module()
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::has_data() const
 {
+    if (is_presence_container) return true;
     return module_name.is_set
 	|| (fault_type !=  nullptr && fault_type->has_data());
 }
@@ -2496,7 +2568,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::has_operation() co
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "module" <<"[module-name='" <<module_name <<"']";
+    path_buffer << "module";
+    ADD_KEY_TOKEN(module_name, "module-name");
     return path_buffer.str();
 }
 
@@ -2564,14 +2637,14 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::has_leaf_or_child_
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::FaultType()
     :
     ecc(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc>())
-	,parity(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity>())
-	,other(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other>())
+    , parity(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity>())
+    , other(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other>())
 {
     ecc->parent = this;
     parity->parent = this;
     other->parent = this;
 
-    yang_name = "fault-type"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fault-type"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::~FaultType()
@@ -2580,6 +2653,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::~FaultType()
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::has_data() const
 {
+    if (is_presence_container) return true;
     return (ecc !=  nullptr && ecc->has_data())
 	|| (parity !=  nullptr && parity->has_data())
 	|| (other !=  nullptr && other->has_data());
@@ -2681,10 +2755,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::has_lea
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Ecc()
     :
     all(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All>())
+    , block_name_lst(this, {"block_name"})
 {
     all->parent = this;
 
-    yang_name = "ecc"; yang_parent_name = "fault-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ecc"; yang_parent_name = "fault-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::~Ecc()
@@ -2693,7 +2768,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::~Ecc()
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::has_data() const
 {
-    for (std::size_t index=0; index<block_name_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<block_name_lst.len(); index++)
     {
         if(block_name_lst[index]->has_data())
             return true;
@@ -2703,7 +2779,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::ha
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::has_operation() const
 {
-    for (std::size_t index=0; index<block_name_lst.size(); index++)
+    for (std::size_t index=0; index<block_name_lst.len(); index++)
     {
         if(block_name_lst[index]->has_operation())
             return true;
@@ -2743,7 +2819,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst>();
         c->parent = this;
-        block_name_lst.push_back(c);
+        block_name_lst.append(c);
         return c;
     }
 
@@ -2760,7 +2836,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     }
 
     count = 0;
-    for (auto const & c : block_name_lst)
+    for (auto c : block_name_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2787,9 +2863,12 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::ha
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::All()
+    :
+    threshold(this, {"num_seconds"})
+    , location(this, {"fit_location_name"})
 {
 
-    yang_name = "all"; yang_parent_name = "ecc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "ecc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::~All()
@@ -2798,12 +2877,13 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::~A
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::has_data() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2813,12 +2893,12 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Al
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::has_operation() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2848,7 +2928,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold>();
         c->parent = this;
-        threshold.push_back(c);
+        threshold.append(c);
         return c;
     }
 
@@ -2856,7 +2936,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2868,7 +2948,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold)
+    for (auto c : threshold.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2877,7 +2957,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2906,9 +2986,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Al
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Threshold()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "threshold"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::~Threshold()
@@ -2917,7 +2999,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Th
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2927,7 +3010,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Al
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2939,7 +3022,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Al
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "threshold" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "threshold";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -2959,7 +3043,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2971,7 +3055,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3012,7 +3096,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Th
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location::~Location()
@@ -3021,6 +3105,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Th
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -3033,7 +3118,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Al
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -3089,7 +3175,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Lo
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location::~Location()
@@ -3098,6 +3184,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Lo
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -3110,7 +3197,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Al
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -3164,16 +3252,16 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Al
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::BlockNameLst()
     :
     block_name{YType::str, "block-name"}
-    	,
+        ,
     one(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One>())
-	,continuous(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous>())
-	,stop(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop>())
+    , continuous(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous>())
+    , stop(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop>())
 {
     one->parent = this;
     continuous->parent = this;
     stop->parent = this;
 
-    yang_name = "block-name-lst"; yang_parent_name = "ecc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block-name-lst"; yang_parent_name = "ecc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::~BlockNameLst()
@@ -3182,6 +3270,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::has_data() const
 {
+    if (is_presence_container) return true;
     return block_name.is_set
 	|| (one !=  nullptr && one->has_data())
 	|| (continuous !=  nullptr && continuous->has_data())
@@ -3200,7 +3289,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "block-name-lst" <<"[block-name='" <<block_name <<"']";
+    path_buffer << "block-name-lst";
+    ADD_KEY_TOKEN(block_name, "block-name");
     return path_buffer.str();
 }
 
@@ -3296,10 +3386,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::One()
     :
     rate(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate>())
+    , location(this, {"fit_location_name"})
 {
     rate->parent = this;
 
-    yang_name = "one"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "one"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::~One()
@@ -3308,7 +3399,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3318,7 +3410,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3358,7 +3450,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3375,7 +3467,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3402,9 +3494,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::Rate()
+    :
+    error_number(this, {"num_errs"})
 {
 
-    yang_name = "rate"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::~Rate()
@@ -3413,7 +3507,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::has_data() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_data())
             return true;
@@ -3423,7 +3518,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::has_operation() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_operation())
             return true;
@@ -3453,7 +3548,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber>();
         c->parent = this;
-        error_number.push_back(c);
+        error_number.append(c);
         return c;
     }
 
@@ -3465,7 +3560,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_number)
+    for (auto c : error_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3494,9 +3589,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::ErrorNumber()
     :
     num_errs{YType::uint32, "num-errs"}
+        ,
+    duration(this, {"num_seconds"})
 {
 
-    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::~ErrorNumber()
@@ -3505,7 +3602,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::has_data() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_data())
             return true;
@@ -3515,7 +3613,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::has_operation() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_operation())
             return true;
@@ -3527,7 +3625,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "error-number" <<"[num-errs='" <<num_errs <<"']";
+    path_buffer << "error-number";
+    ADD_KEY_TOKEN(num_errs, "num-errs");
     return path_buffer.str();
 }
 
@@ -3547,7 +3646,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration>();
         c->parent = this;
-        duration.push_back(c);
+        duration.append(c);
         return c;
     }
 
@@ -3559,7 +3658,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : duration)
+    for (auto c : duration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3598,9 +3697,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Duration()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::~Duration()
@@ -3609,7 +3710,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3619,7 +3721,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3631,7 +3733,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "duration" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "duration";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -3651,7 +3754,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3663,7 +3766,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3704,7 +3807,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::~Location()
@@ -3713,6 +3816,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -3725,7 +3829,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -3781,7 +3886,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location::~Location()
@@ -3790,6 +3895,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -3802,7 +3908,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -3856,10 +3963,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Continuous()
     :
     rate(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate>())
+    , location(this, {"fit_location_name"})
 {
     rate->parent = this;
 
-    yang_name = "continuous"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "continuous"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::~Continuous()
@@ -3868,7 +3976,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3878,7 +3987,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3918,7 +4027,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3935,7 +4044,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3962,9 +4071,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::Rate()
+    :
+    error_number(this, {"num_errs"})
 {
 
-    yang_name = "rate"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::~Rate()
@@ -3973,7 +4084,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::has_data() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_data())
             return true;
@@ -3983,7 +4095,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::has_operation() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_operation())
             return true;
@@ -4013,7 +4125,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber>();
         c->parent = this;
-        error_number.push_back(c);
+        error_number.append(c);
         return c;
     }
 
@@ -4025,7 +4137,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_number)
+    for (auto c : error_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4054,9 +4166,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::ErrorNumber()
     :
     num_errs{YType::uint32, "num-errs"}
+        ,
+    duration(this, {"num_seconds"})
 {
 
-    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::~ErrorNumber()
@@ -4065,7 +4179,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::has_data() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_data())
             return true;
@@ -4075,7 +4190,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::has_operation() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_operation())
             return true;
@@ -4087,7 +4202,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "error-number" <<"[num-errs='" <<num_errs <<"']";
+    path_buffer << "error-number";
+    ADD_KEY_TOKEN(num_errs, "num-errs");
     return path_buffer.str();
 }
 
@@ -4107,7 +4223,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration>();
         c->parent = this;
-        duration.push_back(c);
+        duration.append(c);
         return c;
     }
 
@@ -4119,7 +4235,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : duration)
+    for (auto c : duration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4158,9 +4274,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Duration()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::~Duration()
@@ -4169,7 +4287,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4179,7 +4298,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4191,7 +4310,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "duration" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "duration";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -4211,7 +4331,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4223,7 +4343,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4264,7 +4384,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::~Location()
@@ -4273,6 +4393,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -4285,7 +4406,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -4341,7 +4463,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location::~Location()
@@ -4350,6 +4472,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -4362,7 +4485,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -4414,9 +4538,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Stop()
+    :
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "stop"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::~Stop()
@@ -4425,7 +4551,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4435,7 +4562,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4465,7 +4592,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4477,7 +4604,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4508,7 +4635,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location::~Location()
@@ -4517,6 +4644,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNa
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -4529,7 +4657,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -4583,10 +4712,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::Bl
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Parity()
     :
     all(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All>())
+    , block_name_lst(this, {"block_name"})
 {
     all->parent = this;
 
-    yang_name = "parity"; yang_parent_name = "fault-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parity"; yang_parent_name = "fault-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::~Parity()
@@ -4595,7 +4725,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::~Par
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::has_data() const
 {
-    for (std::size_t index=0; index<block_name_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<block_name_lst.len(); index++)
     {
         if(block_name_lst[index]->has_data())
             return true;
@@ -4605,7 +4736,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::has_operation() const
 {
-    for (std::size_t index=0; index<block_name_lst.size(); index++)
+    for (std::size_t index=0; index<block_name_lst.len(); index++)
     {
         if(block_name_lst[index]->has_operation())
             return true;
@@ -4645,7 +4776,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst>();
         c->parent = this;
-        block_name_lst.push_back(c);
+        block_name_lst.append(c);
         return c;
     }
 
@@ -4662,7 +4793,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     }
 
     count = 0;
-    for (auto const & c : block_name_lst)
+    for (auto c : block_name_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4689,9 +4820,12 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::All()
+    :
+    threshold(this, {"num_seconds"})
+    , location(this, {"fit_location_name"})
 {
 
-    yang_name = "all"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::~All()
@@ -4700,12 +4834,13 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::has_data() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4715,12 +4850,12 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::has_operation() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4750,7 +4885,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold>();
         c->parent = this;
-        threshold.push_back(c);
+        threshold.append(c);
         return c;
     }
 
@@ -4758,7 +4893,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4770,7 +4905,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold)
+    for (auto c : threshold.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4779,7 +4914,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4808,9 +4943,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Threshold()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "threshold"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::~Threshold()
@@ -4819,7 +4956,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4829,7 +4967,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4841,7 +4979,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "threshold" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "threshold";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -4861,7 +5000,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4873,7 +5012,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4914,7 +5053,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All:
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location::~Location()
@@ -4923,6 +5062,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -4935,7 +5075,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -4991,7 +5132,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All:
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location::~Location()
@@ -5000,6 +5141,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -5012,7 +5154,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -5066,16 +5209,16 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::BlockNameLst()
     :
     block_name{YType::str, "block-name"}
-    	,
+        ,
     one(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One>())
-	,continuous(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous>())
-	,stop(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop>())
+    , continuous(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous>())
+    , stop(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop>())
 {
     one->parent = this;
     continuous->parent = this;
     stop->parent = this;
 
-    yang_name = "block-name-lst"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block-name-lst"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::~BlockNameLst()
@@ -5084,6 +5227,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::has_data() const
 {
+    if (is_presence_container) return true;
     return block_name.is_set
 	|| (one !=  nullptr && one->has_data())
 	|| (continuous !=  nullptr && continuous->has_data())
@@ -5102,7 +5246,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "block-name-lst" <<"[block-name='" <<block_name <<"']";
+    path_buffer << "block-name-lst";
+    ADD_KEY_TOKEN(block_name, "block-name");
     return path_buffer.str();
 }
 
@@ -5198,10 +5343,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::One()
     :
     rate(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate>())
+    , location(this, {"fit_location_name"})
 {
     rate->parent = this;
 
-    yang_name = "one"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "one"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::~One()
@@ -5210,7 +5356,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5220,7 +5367,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5260,7 +5407,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5277,7 +5424,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5304,9 +5451,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::Rate()
+    :
+    error_number(this, {"num_errs"})
 {
 
-    yang_name = "rate"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::~Rate()
@@ -5315,7 +5464,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::has_data() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_data())
             return true;
@@ -5325,7 +5475,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::has_operation() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_operation())
             return true;
@@ -5355,7 +5505,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber>();
         c->parent = this;
-        error_number.push_back(c);
+        error_number.append(c);
         return c;
     }
 
@@ -5367,7 +5517,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_number)
+    for (auto c : error_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5396,9 +5546,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::ErrorNumber()
     :
     num_errs{YType::uint32, "num-errs"}
+        ,
+    duration(this, {"num_seconds"})
 {
 
-    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::~ErrorNumber()
@@ -5407,7 +5559,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::has_data() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_data())
             return true;
@@ -5417,7 +5570,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::has_operation() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_operation())
             return true;
@@ -5429,7 +5582,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "error-number" <<"[num-errs='" <<num_errs <<"']";
+    path_buffer << "error-number";
+    ADD_KEY_TOKEN(num_errs, "num-errs");
     return path_buffer.str();
 }
 
@@ -5449,7 +5603,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration>();
         c->parent = this;
-        duration.push_back(c);
+        duration.append(c);
         return c;
     }
 
@@ -5461,7 +5615,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : duration)
+    for (auto c : duration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5500,9 +5654,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Duration()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::~Duration()
@@ -5511,7 +5667,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5521,7 +5678,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5533,7 +5690,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "duration" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "duration";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -5553,7 +5711,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5565,7 +5723,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5606,7 +5764,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::~Location()
@@ -5615,6 +5773,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -5627,7 +5786,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -5683,7 +5843,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location::~Location()
@@ -5692,6 +5852,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -5704,7 +5865,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -5758,10 +5920,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Continuous()
     :
     rate(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate>())
+    , location(this, {"fit_location_name"})
 {
     rate->parent = this;
 
-    yang_name = "continuous"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "continuous"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::~Continuous()
@@ -5770,7 +5933,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5780,7 +5944,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5820,7 +5984,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5837,7 +6001,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5864,9 +6028,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::Rate()
+    :
+    error_number(this, {"num_errs"})
 {
 
-    yang_name = "rate"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::~Rate()
@@ -5875,7 +6041,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::has_data() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_data())
             return true;
@@ -5885,7 +6052,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::has_operation() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_operation())
             return true;
@@ -5915,7 +6082,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber>();
         c->parent = this;
-        error_number.push_back(c);
+        error_number.append(c);
         return c;
     }
 
@@ -5927,7 +6094,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_number)
+    for (auto c : error_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5956,9 +6123,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::ErrorNumber()
     :
     num_errs{YType::uint32, "num-errs"}
+        ,
+    duration(this, {"num_seconds"})
 {
 
-    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::~ErrorNumber()
@@ -5967,7 +6136,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::has_data() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_data())
             return true;
@@ -5977,7 +6147,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::has_operation() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_operation())
             return true;
@@ -5989,7 +6159,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "error-number" <<"[num-errs='" <<num_errs <<"']";
+    path_buffer << "error-number";
+    ADD_KEY_TOKEN(num_errs, "num-errs");
     return path_buffer.str();
 }
 
@@ -6009,7 +6180,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration>();
         c->parent = this;
-        duration.push_back(c);
+        duration.append(c);
         return c;
     }
 
@@ -6021,7 +6192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : duration)
+    for (auto c : duration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6060,9 +6231,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Duration()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::~Duration()
@@ -6071,7 +6244,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6081,7 +6255,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6093,7 +6267,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "duration" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "duration";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -6113,7 +6288,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6125,7 +6300,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6166,7 +6341,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::~Location()
@@ -6175,6 +6350,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -6187,7 +6363,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -6243,7 +6420,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location::~Location()
@@ -6252,6 +6429,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -6264,7 +6442,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -6316,9 +6495,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Stop()
+    :
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "stop"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::~Stop()
@@ -6327,7 +6508,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6337,7 +6519,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6367,7 +6549,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6379,7 +6561,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6410,7 +6592,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location::~Location()
@@ -6419,6 +6601,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::Bloc
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -6431,7 +6614,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -6485,10 +6669,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity:
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Other()
     :
     all(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All>())
+    , block_name_lst(this, {"block_name"})
 {
     all->parent = this;
 
-    yang_name = "other"; yang_parent_name = "fault-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "other"; yang_parent_name = "fault-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::~Other()
@@ -6497,7 +6682,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::~Othe
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::has_data() const
 {
-    for (std::size_t index=0; index<block_name_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<block_name_lst.len(); index++)
     {
         if(block_name_lst[index]->has_data())
             return true;
@@ -6507,7 +6693,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::has_operation() const
 {
-    for (std::size_t index=0; index<block_name_lst.size(); index++)
+    for (std::size_t index=0; index<block_name_lst.len(); index++)
     {
         if(block_name_lst[index]->has_operation())
             return true;
@@ -6547,7 +6733,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst>();
         c->parent = this;
-        block_name_lst.push_back(c);
+        block_name_lst.append(c);
         return c;
     }
 
@@ -6564,7 +6750,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     }
 
     count = 0;
-    for (auto const & c : block_name_lst)
+    for (auto c : block_name_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6591,9 +6777,12 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::All()
+    :
+    threshold(this, {"num_seconds"})
+    , location(this, {"fit_location_name"})
 {
 
-    yang_name = "all"; yang_parent_name = "other"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "other"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::~All()
@@ -6602,12 +6791,13 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::has_data() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6617,12 +6807,12 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::has_operation() const
 {
-    for (std::size_t index=0; index<threshold.size(); index++)
+    for (std::size_t index=0; index<threshold.len(); index++)
     {
         if(threshold[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6652,7 +6842,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold>();
         c->parent = this;
-        threshold.push_back(c);
+        threshold.append(c);
         return c;
     }
 
@@ -6660,7 +6850,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6672,7 +6862,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold)
+    for (auto c : threshold.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6681,7 +6871,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6710,9 +6900,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Threshold()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "threshold"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::~Threshold()
@@ -6721,7 +6913,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6731,7 +6924,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6743,7 +6936,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "threshold" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "threshold";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -6763,7 +6957,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6775,7 +6969,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6816,7 +7010,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location::~Location()
@@ -6825,6 +7019,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -6837,7 +7032,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -6893,7 +7089,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location::~Location()
@@ -6902,6 +7098,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -6914,7 +7111,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -6968,16 +7166,16 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::BlockNameLst()
     :
     block_name{YType::str, "block-name"}
-    	,
+        ,
     one(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One>())
-	,continuous(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous>())
-	,stop(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop>())
+    , continuous(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous>())
+    , stop(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop>())
 {
     one->parent = this;
     continuous->parent = this;
     stop->parent = this;
 
-    yang_name = "block-name-lst"; yang_parent_name = "other"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block-name-lst"; yang_parent_name = "other"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::~BlockNameLst()
@@ -6986,6 +7184,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::has_data() const
 {
+    if (is_presence_container) return true;
     return block_name.is_set
 	|| (one !=  nullptr && one->has_data())
 	|| (continuous !=  nullptr && continuous->has_data())
@@ -7004,7 +7203,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "block-name-lst" <<"[block-name='" <<block_name <<"']";
+    path_buffer << "block-name-lst";
+    ADD_KEY_TOKEN(block_name, "block-name");
     return path_buffer.str();
 }
 
@@ -7100,10 +7300,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::One()
     :
     rate(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate>())
+    , location(this, {"fit_location_name"})
 {
     rate->parent = this;
 
-    yang_name = "one"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "one"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::~One()
@@ -7112,7 +7313,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7122,7 +7324,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7162,7 +7364,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7179,7 +7381,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7206,9 +7408,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::Rate()
+    :
+    error_number(this, {"num_errs"})
 {
 
-    yang_name = "rate"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::~Rate()
@@ -7217,7 +7421,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::has_data() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_data())
             return true;
@@ -7227,7 +7432,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::has_operation() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_operation())
             return true;
@@ -7257,7 +7462,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber>();
         c->parent = this;
-        error_number.push_back(c);
+        error_number.append(c);
         return c;
     }
 
@@ -7269,7 +7474,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_number)
+    for (auto c : error_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7298,9 +7503,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::ErrorNumber()
     :
     num_errs{YType::uint32, "num-errs"}
+        ,
+    duration(this, {"num_seconds"})
 {
 
-    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::~ErrorNumber()
@@ -7309,7 +7516,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::has_data() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_data())
             return true;
@@ -7319,7 +7527,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::has_operation() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_operation())
             return true;
@@ -7331,7 +7539,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "error-number" <<"[num-errs='" <<num_errs <<"']";
+    path_buffer << "error-number";
+    ADD_KEY_TOKEN(num_errs, "num-errs");
     return path_buffer.str();
 }
 
@@ -7351,7 +7560,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration>();
         c->parent = this;
-        duration.push_back(c);
+        duration.append(c);
         return c;
     }
 
@@ -7363,7 +7572,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : duration)
+    for (auto c : duration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7402,9 +7611,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Duration()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::~Duration()
@@ -7413,7 +7624,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7423,7 +7635,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7435,7 +7647,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "duration" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "duration";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -7455,7 +7668,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7467,7 +7680,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7508,7 +7721,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::~Location()
@@ -7517,6 +7730,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -7529,7 +7743,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -7585,7 +7800,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "one"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location::~Location()
@@ -7594,6 +7809,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -7606,7 +7822,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -7660,10 +7877,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Continuous()
     :
     rate(std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate>())
+    , location(this, {"fit_location_name"})
 {
     rate->parent = this;
 
-    yang_name = "continuous"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "continuous"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::~Continuous()
@@ -7672,7 +7890,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7682,7 +7901,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7722,7 +7941,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7739,7 +7958,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7766,9 +7985,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::Rate()
+    :
+    error_number(this, {"num_errs"})
 {
 
-    yang_name = "rate"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::~Rate()
@@ -7777,7 +7998,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::has_data() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_data())
             return true;
@@ -7787,7 +8009,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::has_operation() const
 {
-    for (std::size_t index=0; index<error_number.size(); index++)
+    for (std::size_t index=0; index<error_number.len(); index++)
     {
         if(error_number[index]->has_operation())
             return true;
@@ -7817,7 +8039,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber>();
         c->parent = this;
-        error_number.push_back(c);
+        error_number.append(c);
         return c;
     }
 
@@ -7829,7 +8051,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : error_number)
+    for (auto c : error_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7858,9 +8080,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::ErrorNumber()
     :
     num_errs{YType::uint32, "num-errs"}
+        ,
+    duration(this, {"num_seconds"})
 {
 
-    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-number"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::~ErrorNumber()
@@ -7869,7 +8093,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::has_data() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_data())
             return true;
@@ -7879,7 +8104,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::has_operation() const
 {
-    for (std::size_t index=0; index<duration.size(); index++)
+    for (std::size_t index=0; index<duration.len(); index++)
     {
         if(duration[index]->has_operation())
             return true;
@@ -7891,7 +8116,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "error-number" <<"[num-errs='" <<num_errs <<"']";
+    path_buffer << "error-number";
+    ADD_KEY_TOKEN(num_errs, "num-errs");
     return path_buffer.str();
 }
 
@@ -7911,7 +8137,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration>();
         c->parent = this;
-        duration.push_back(c);
+        duration.append(c);
         return c;
     }
 
@@ -7923,7 +8149,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : duration)
+    for (auto c : duration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7962,9 +8188,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Duration()
     :
     num_seconds{YType::uint32, "num-seconds"}
+        ,
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "error-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::~Duration()
@@ -7973,7 +8201,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7983,7 +8212,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7995,7 +8224,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "duration" <<"[num-seconds='" <<num_seconds <<"']";
+    path_buffer << "duration";
+    ADD_KEY_TOKEN(num_seconds, "num-seconds");
     return path_buffer.str();
 }
 
@@ -8015,7 +8245,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8027,7 +8257,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8068,7 +8298,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "duration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::~Location()
@@ -8077,6 +8307,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -8089,7 +8320,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -8145,7 +8377,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "continuous"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location::~Location()
@@ -8154,6 +8386,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -8166,7 +8399,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -8218,9 +8452,11 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Stop()
+    :
+    location(this, {"fit_location_name"})
 {
 
-    yang_name = "stop"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop"; yang_parent_name = "block-name-lst"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::~Stop()
@@ -8229,7 +8465,8 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8239,7 +8476,7 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8269,7 +8506,7 @@ std::shared_ptr<Entity> Set::Controller::Asic::Instance::FaultInjection::Module:
     {
         auto c = std::make_shared<Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8281,7 +8518,7 @@ std::map<std::string, std::shared_ptr<Entity>> Set::Controller::Asic::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8312,7 +8549,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
     fit_location_name{YType::str, "fit-location-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location::~Location()
@@ -8321,6 +8558,7 @@ Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::Block
 
 bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return fit_location_name.is_set;
 }
 
@@ -8333,7 +8571,8 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 std::string Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[fit-location-name='" <<fit_location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(fit_location_name, "fit-location-name");
     return path_buffer.str();
 }
 
@@ -8387,12 +8626,13 @@ bool Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::
 Controller::Controller()
     :
     fabric(std::make_shared<Controller::Fabric>())
-	,sfe_oper(std::make_shared<Controller::SfeOper>())
-	,oper(std::make_shared<Controller::Oper>())
-	,zen(std::make_shared<Controller::Zen>())
-	,ccc_driver(std::make_shared<Controller::CccDriver>())
-	,switch_(std::make_shared<Controller::Switch>())
-	,fabric_action(std::make_shared<Controller::FabricAction>())
+    , sfe_oper(std::make_shared<Controller::SfeOper>())
+    , asic(this, {"asic_name"})
+    , oper(std::make_shared<Controller::Oper>())
+    , zen(std::make_shared<Controller::Zen>())
+    , ccc_driver(std::make_shared<Controller::CccDriver>())
+    , switch_(std::make_shared<Controller::Switch>())
+    , fabric_action(std::make_shared<Controller::FabricAction>())
 {
     fabric->parent = this;
     sfe_oper->parent = this;
@@ -8402,7 +8642,7 @@ Controller::Controller()
     switch_->parent = this;
     fabric_action->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "Cisco-IOS-XR-sysadmin-controllers"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "Cisco-IOS-XR-sysadmin-controllers"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Controller::~Controller()
@@ -8411,7 +8651,8 @@ Controller::~Controller()
 
 bool Controller::has_data() const
 {
-    for (std::size_t index=0; index<asic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic.len(); index++)
     {
         if(asic[index]->has_data())
             return true;
@@ -8427,7 +8668,7 @@ bool Controller::has_data() const
 
 bool Controller::has_operation() const
 {
-    for (std::size_t index=0; index<asic.size(); index++)
+    for (std::size_t index=0; index<asic.len(); index++)
     {
         if(asic[index]->has_operation())
             return true;
@@ -8482,7 +8723,7 @@ std::shared_ptr<Entity> Controller::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Controller::Asic>();
         c->parent = this;
-        asic.push_back(c);
+        asic.append(c);
         return c;
     }
 
@@ -8549,7 +8790,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::get_children() const
     }
 
     count = 0;
-    for (auto const & c : asic)
+    for (auto c : asic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8628,12 +8869,12 @@ bool Controller::has_leaf_or_child_of_name(const std::string & name) const
 Controller::Fabric::Fabric()
     :
     fabric(std::make_shared<Controller::Fabric::Fabric_>())
-	,oper(std::make_shared<Controller::Fabric::Oper>())
+    , oper(std::make_shared<Controller::Fabric::Oper>())
 {
     fabric->parent = this;
     oper->parent = this;
 
-    yang_name = "fabric"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fabric"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::~Fabric()
@@ -8642,6 +8883,7 @@ Controller::Fabric::~Fabric()
 
 bool Controller::Fabric::has_data() const
 {
+    if (is_presence_container) return true;
     return (fabric !=  nullptr && fabric->has_data())
 	|| (oper !=  nullptr && oper->has_data());
 }
@@ -8734,12 +8976,12 @@ bool Controller::Fabric::has_leaf_or_child_of_name(const std::string & name) con
 Controller::Fabric::Fabric_::Fabric_()
     :
     fsdbagg(std::make_shared<Controller::Fabric::Fabric_::Fsdbagg>())
-	,fgid(std::make_shared<Controller::Fabric::Fabric_::Fgid>())
+    , fgid(std::make_shared<Controller::Fabric::Fabric_::Fgid>())
 {
     fsdbagg->parent = this;
     fgid->parent = this;
 
-    yang_name = "fabric"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fabric"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Fabric_::~Fabric_()
@@ -8748,6 +8990,7 @@ Controller::Fabric::Fabric_::~Fabric_()
 
 bool Controller::Fabric::Fabric_::has_data() const
 {
+    if (is_presence_container) return true;
     return (fsdbagg !=  nullptr && fsdbagg->has_data())
 	|| (fgid !=  nullptr && fgid->has_data());
 }
@@ -8839,11 +9082,12 @@ bool Controller::Fabric::Fabric_::has_leaf_or_child_of_name(const std::string & 
 
 Controller::Fabric::Fabric_::Fsdbagg::Fsdbagg()
     :
-    link(std::make_shared<Controller::Fabric::Fabric_::Fsdbagg::Link>())
+    plane(this, {"plane_id"})
+    , link(std::make_shared<Controller::Fabric::Fabric_::Fsdbagg::Link>())
 {
     link->parent = this;
 
-    yang_name = "fsdbagg"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fsdbagg"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Fabric_::Fsdbagg::~Fsdbagg()
@@ -8852,7 +9096,8 @@ Controller::Fabric::Fabric_::Fsdbagg::~Fsdbagg()
 
 bool Controller::Fabric::Fabric_::Fsdbagg::has_data() const
 {
-    for (std::size_t index=0; index<plane.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<plane.len(); index++)
     {
         if(plane[index]->has_data())
             return true;
@@ -8862,7 +9107,7 @@ bool Controller::Fabric::Fabric_::Fsdbagg::has_data() const
 
 bool Controller::Fabric::Fabric_::Fsdbagg::has_operation() const
 {
-    for (std::size_t index=0; index<plane.size(); index++)
+    for (std::size_t index=0; index<plane.len(); index++)
     {
         if(plane[index]->has_operation())
             return true;
@@ -8900,7 +9145,7 @@ std::shared_ptr<Entity> Controller::Fabric::Fabric_::Fsdbagg::get_child_by_name(
     {
         auto c = std::make_shared<Controller::Fabric::Fabric_::Fsdbagg::Plane>();
         c->parent = this;
-        plane.push_back(c);
+        plane.append(c);
         return c;
     }
 
@@ -8921,7 +9166,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Fabric_::Fsdb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : plane)
+    for (auto c : plane.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8957,9 +9202,12 @@ Controller::Fabric::Fabric_::Fsdbagg::Plane::Plane()
     plane_id{YType::str, "plane_id"},
     shutdown{YType::empty, "shutdown"},
     b2b{YType::empty, "b2b"}
+        ,
+    instance(this, {"instance_id"})
+    , instance_folded(this, {"instance_id"})
 {
 
-    yang_name = "plane"; yang_parent_name = "fsdbagg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "plane"; yang_parent_name = "fsdbagg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Fabric_::Fsdbagg::Plane::~Plane()
@@ -8968,12 +9216,13 @@ Controller::Fabric::Fabric_::Fsdbagg::Plane::~Plane()
 
 bool Controller::Fabric::Fabric_::Fsdbagg::Plane::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<instance_folded.size(); index++)
+    for (std::size_t index=0; index<instance_folded.len(); index++)
     {
         if(instance_folded[index]->has_data())
             return true;
@@ -8985,12 +9234,12 @@ bool Controller::Fabric::Fabric_::Fsdbagg::Plane::has_data() const
 
 bool Controller::Fabric::Fabric_::Fsdbagg::Plane::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<instance_folded.size(); index++)
+    for (std::size_t index=0; index<instance_folded.len(); index++)
     {
         if(instance_folded[index]->has_operation())
             return true;
@@ -9011,7 +9260,8 @@ std::string Controller::Fabric::Fabric_::Fsdbagg::Plane::get_absolute_path() con
 std::string Controller::Fabric::Fabric_::Fsdbagg::Plane::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "plane" <<"[plane_id='" <<plane_id <<"']";
+    path_buffer << "plane";
+    ADD_KEY_TOKEN(plane_id, "plane_id");
     return path_buffer.str();
 }
 
@@ -9033,7 +9283,7 @@ std::shared_ptr<Entity> Controller::Fabric::Fabric_::Fsdbagg::Plane::get_child_b
     {
         auto c = std::make_shared<Controller::Fabric::Fabric_::Fsdbagg::Plane::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -9041,7 +9291,7 @@ std::shared_ptr<Entity> Controller::Fabric::Fabric_::Fsdbagg::Plane::get_child_b
     {
         auto c = std::make_shared<Controller::Fabric::Fabric_::Fsdbagg::Plane::InstanceFolded>();
         c->parent = this;
-        instance_folded.push_back(c);
+        instance_folded.append(c);
         return c;
     }
 
@@ -9053,7 +9303,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Fabric_::Fsdb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9062,7 +9312,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Fabric_::Fsdb
     }
 
     count = 0;
-    for (auto const & c : instance_folded)
+    for (auto c : instance_folded.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9124,7 +9374,7 @@ Controller::Fabric::Fabric_::Fsdbagg::Plane::Instance::Instance()
     location{YType::str, "location"}
 {
 
-    yang_name = "instance"; yang_parent_name = "plane"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "plane"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Fabric_::Fsdbagg::Plane::Instance::~Instance()
@@ -9133,6 +9383,7 @@ Controller::Fabric::Fabric_::Fsdbagg::Plane::Instance::~Instance()
 
 bool Controller::Fabric::Fabric_::Fsdbagg::Plane::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_id.is_set
 	|| location.is_set;
 }
@@ -9147,7 +9398,8 @@ bool Controller::Fabric::Fabric_::Fsdbagg::Plane::Instance::has_operation() cons
 std::string Controller::Fabric::Fabric_::Fsdbagg::Plane::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[instance-id='" <<instance_id <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(instance_id, "instance-id");
     return path_buffer.str();
 }
 
@@ -9215,7 +9467,7 @@ Controller::Fabric::Fabric_::Fsdbagg::Plane::InstanceFolded::InstanceFolded()
     location{YType::str, "location"}
 {
 
-    yang_name = "instance_folded"; yang_parent_name = "plane"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance_folded"; yang_parent_name = "plane"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Fabric_::Fsdbagg::Plane::InstanceFolded::~InstanceFolded()
@@ -9224,6 +9476,7 @@ Controller::Fabric::Fabric_::Fsdbagg::Plane::InstanceFolded::~InstanceFolded()
 
 bool Controller::Fabric::Fabric_::Fsdbagg::Plane::InstanceFolded::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_id.is_set
 	|| location.is_set;
 }
@@ -9238,7 +9491,8 @@ bool Controller::Fabric::Fabric_::Fsdbagg::Plane::InstanceFolded::has_operation(
 std::string Controller::Fabric::Fabric_::Fsdbagg::Plane::InstanceFolded::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance_folded" <<"[instance-id='" <<instance_id <<"']";
+    path_buffer << "instance_folded";
+    ADD_KEY_TOKEN(instance_id, "instance-id");
     return path_buffer.str();
 }
 
@@ -9306,7 +9560,7 @@ Controller::Fabric::Fabric_::Fsdbagg::Link::Link()
 {
     port->parent = this;
 
-    yang_name = "link"; yang_parent_name = "fsdbagg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link"; yang_parent_name = "fsdbagg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Fabric_::Fsdbagg::Link::~Link()
@@ -9315,6 +9569,7 @@ Controller::Fabric::Fabric_::Fsdbagg::Link::~Link()
 
 bool Controller::Fabric::Fabric_::Fsdbagg::Link::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data());
 }
 
@@ -9389,9 +9644,11 @@ bool Controller::Fabric::Fabric_::Fsdbagg::Link::has_leaf_or_child_of_name(const
 }
 
 Controller::Fabric::Fabric_::Fsdbagg::Link::Port::Port()
+    :
+    location(this, {"loc_str"})
 {
 
-    yang_name = "port"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Fabric_::Fsdbagg::Link::Port::~Port()
@@ -9400,7 +9657,8 @@ Controller::Fabric::Fabric_::Fsdbagg::Link::Port::~Port()
 
 bool Controller::Fabric::Fabric_::Fsdbagg::Link::Port::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9410,7 +9668,7 @@ bool Controller::Fabric::Fabric_::Fsdbagg::Link::Port::has_data() const
 
 bool Controller::Fabric::Fabric_::Fsdbagg::Link::Port::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9447,7 +9705,7 @@ std::shared_ptr<Entity> Controller::Fabric::Fabric_::Fsdbagg::Link::Port::get_ch
     {
         auto c = std::make_shared<Controller::Fabric::Fabric_::Fsdbagg::Link::Port::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9459,7 +9717,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Fabric_::Fsdb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9492,7 +9750,7 @@ Controller::Fabric::Fabric_::Fsdbagg::Link::Port::Location::Location()
     maintenance{YType::empty, "maintenance"}
 {
 
-    yang_name = "location"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Fabric_::Fsdbagg::Link::Port::Location::~Location()
@@ -9501,6 +9759,7 @@ Controller::Fabric::Fabric_::Fsdbagg::Link::Port::Location::~Location()
 
 bool Controller::Fabric::Fabric_::Fsdbagg::Link::Port::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return loc_str.is_set
 	|| shutdown.is_set
 	|| maintenance.is_set;
@@ -9524,7 +9783,8 @@ std::string Controller::Fabric::Fabric_::Fsdbagg::Link::Port::Location::get_abso
 std::string Controller::Fabric::Fabric_::Fsdbagg::Link::Port::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc_str='" <<loc_str <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc_str, "loc_str");
     return path_buffer.str();
 }
 
@@ -9603,7 +9863,7 @@ Controller::Fabric::Fabric_::Fgid::Fgid()
 {
     resource->parent = this;
 
-    yang_name = "fgid"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fgid"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Fabric_::Fgid::~Fgid()
@@ -9612,6 +9872,7 @@ Controller::Fabric::Fabric_::Fgid::~Fgid()
 
 bool Controller::Fabric::Fabric_::Fgid::has_data() const
 {
+    if (is_presence_container) return true;
     return (resource !=  nullptr && resource->has_data());
 }
 
@@ -9691,7 +9952,7 @@ Controller::Fabric::Fabric_::Fgid::Resource::Resource()
 {
     sdr->parent = this;
 
-    yang_name = "resource"; yang_parent_name = "fgid"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "resource"; yang_parent_name = "fgid"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Fabric_::Fgid::Resource::~Resource()
@@ -9700,6 +9961,7 @@ Controller::Fabric::Fabric_::Fgid::Resource::~Resource()
 
 bool Controller::Fabric::Fabric_::Fgid::Resource::has_data() const
 {
+    if (is_presence_container) return true;
     return (sdr !=  nullptr && sdr->has_data());
 }
 
@@ -9779,7 +10041,7 @@ Controller::Fabric::Fabric_::Fgid::Resource::Sdr::Sdr()
 {
     allocation->parent = this;
 
-    yang_name = "sdr"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Fabric_::Fgid::Resource::Sdr::~Sdr()
@@ -9788,6 +10050,7 @@ Controller::Fabric::Fabric_::Fgid::Resource::Sdr::~Sdr()
 
 bool Controller::Fabric::Fabric_::Fgid::Resource::Sdr::has_data() const
 {
+    if (is_presence_container) return true;
     return (allocation !=  nullptr && allocation->has_data());
 }
 
@@ -9866,7 +10129,7 @@ Controller::Fabric::Fabric_::Fgid::Resource::Sdr::Allocation::Allocation()
     percent{YType::int32, "percent"}
 {
 
-    yang_name = "allocation"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "allocation"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Fabric_::Fgid::Resource::Sdr::Allocation::~Allocation()
@@ -9875,6 +10138,7 @@ Controller::Fabric::Fabric_::Fgid::Resource::Sdr::Allocation::~Allocation()
 
 bool Controller::Fabric::Fabric_::Fgid::Resource::Sdr::Allocation::has_data() const
 {
+    if (is_presence_container) return true;
     return percent.is_set;
 }
 
@@ -9948,17 +10212,17 @@ bool Controller::Fabric::Fabric_::Fgid::Resource::Sdr::Allocation::has_leaf_or_c
 Controller::Fabric::Oper::Oper()
     :
     cxp(std::make_shared<Controller::Fabric::Oper::Cxp>())
-	,fgid(std::make_shared<Controller::Fabric::Oper::Fgid>())
-	,fsdbagg_active(std::make_shared<Controller::Fabric::Oper::FsdbaggActive>())
-	,fsdbagg_link(std::make_shared<Controller::Fabric::Oper::FsdbaggLink>())
-	,fsdbagg_sfe_asic_type(std::make_shared<Controller::Fabric::Oper::FsdbaggSfeAsicType>())
-	,fsdbagg_standby(std::make_shared<Controller::Fabric::Oper::FsdbaggStandby>())
-	,fab_health(std::make_shared<Controller::Fabric::Oper::FabHealth>())
-	,fsdb_aggregator(std::make_shared<Controller::Fabric::Oper::FsdbAggregator>())
-	,link(std::make_shared<Controller::Fabric::Oper::Link>())
-	,sfe(std::make_shared<Controller::Fabric::Oper::Sfe>())
-	,fsdb_pla(std::make_shared<Controller::Fabric::Oper::FsdbPla>())
-	,fsdb_srvr(std::make_shared<Controller::Fabric::Oper::FsdbSrvr>())
+    , fgid(std::make_shared<Controller::Fabric::Oper::Fgid>())
+    , fsdbagg_active(std::make_shared<Controller::Fabric::Oper::FsdbaggActive>())
+    , fsdbagg_link(std::make_shared<Controller::Fabric::Oper::FsdbaggLink>())
+    , fsdbagg_sfe_asic_type(std::make_shared<Controller::Fabric::Oper::FsdbaggSfeAsicType>())
+    , fsdbagg_standby(std::make_shared<Controller::Fabric::Oper::FsdbaggStandby>())
+    , fab_health(std::make_shared<Controller::Fabric::Oper::FabHealth>())
+    , fsdb_aggregator(std::make_shared<Controller::Fabric::Oper::FsdbAggregator>())
+    , link(std::make_shared<Controller::Fabric::Oper::Link>())
+    , sfe(std::make_shared<Controller::Fabric::Oper::Sfe>())
+    , fsdb_pla(std::make_shared<Controller::Fabric::Oper::FsdbPla>())
+    , fsdb_srvr(std::make_shared<Controller::Fabric::Oper::FsdbSrvr>())
 {
     cxp->parent = this;
     fgid->parent = this;
@@ -9973,7 +10237,7 @@ Controller::Fabric::Oper::Oper()
     fsdb_pla->parent = this;
     fsdb_srvr->parent = this;
 
-    yang_name = "oper"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oper"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::~Oper()
@@ -9982,6 +10246,7 @@ Controller::Fabric::Oper::~Oper()
 
 bool Controller::Fabric::Oper::has_data() const
 {
+    if (is_presence_container) return true;
     return (cxp !=  nullptr && cxp->has_data())
 	|| (fgid !=  nullptr && fgid->has_data())
 	|| (fsdbagg_active !=  nullptr && fsdbagg_active->has_data())
@@ -10234,12 +10499,12 @@ bool Controller::Fabric::Oper::has_leaf_or_child_of_name(const std::string & nam
 Controller::Fabric::Oper::Cxp::Cxp()
     :
     dom(std::make_shared<Controller::Fabric::Oper::Cxp::Dom>())
-	,summary(std::make_shared<Controller::Fabric::Oper::Cxp::Summary>())
+    , summary(std::make_shared<Controller::Fabric::Oper::Cxp::Summary>())
 {
     dom->parent = this;
     summary->parent = this;
 
-    yang_name = "cxp"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cxp"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Cxp::~Cxp()
@@ -10248,6 +10513,7 @@ Controller::Fabric::Oper::Cxp::~Cxp()
 
 bool Controller::Fabric::Oper::Cxp::has_data() const
 {
+    if (is_presence_container) return true;
     return (dom !=  nullptr && dom->has_data())
 	|| (summary !=  nullptr && summary->has_data());
 }
@@ -10338,9 +10604,11 @@ bool Controller::Fabric::Oper::Cxp::has_leaf_or_child_of_name(const std::string 
 }
 
 Controller::Fabric::Oper::Cxp::Dom::Dom()
+    :
+    location(this, {"loc_str"})
 {
 
-    yang_name = "dom"; yang_parent_name = "cxp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dom"; yang_parent_name = "cxp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Cxp::Dom::~Dom()
@@ -10349,7 +10617,8 @@ Controller::Fabric::Oper::Cxp::Dom::~Dom()
 
 bool Controller::Fabric::Oper::Cxp::Dom::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -10359,7 +10628,7 @@ bool Controller::Fabric::Oper::Cxp::Dom::has_data() const
 
 bool Controller::Fabric::Oper::Cxp::Dom::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -10396,7 +10665,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Cxp::Dom::get_child_by_name(co
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Cxp::Dom::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -10408,7 +10677,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Cxp::Do
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10438,9 +10707,11 @@ Controller::Fabric::Oper::Cxp::Dom::Location::Location()
     :
     loc_str{YType::str, "loc_str"},
     description{YType::str, "description"}
+        ,
+    port(this, {"cxp_port"})
 {
 
-    yang_name = "location"; yang_parent_name = "dom"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "dom"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Cxp::Dom::Location::~Location()
@@ -10449,7 +10720,8 @@ Controller::Fabric::Oper::Cxp::Dom::Location::~Location()
 
 bool Controller::Fabric::Oper::Cxp::Dom::Location::has_data() const
 {
-    for (std::size_t index=0; index<port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port.len(); index++)
     {
         if(port[index]->has_data())
             return true;
@@ -10460,7 +10732,7 @@ bool Controller::Fabric::Oper::Cxp::Dom::Location::has_data() const
 
 bool Controller::Fabric::Oper::Cxp::Dom::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port.size(); index++)
+    for (std::size_t index=0; index<port.len(); index++)
     {
         if(port[index]->has_operation())
             return true;
@@ -10480,7 +10752,8 @@ std::string Controller::Fabric::Oper::Cxp::Dom::Location::get_absolute_path() co
 std::string Controller::Fabric::Oper::Cxp::Dom::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc_str='" <<loc_str <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc_str, "loc_str");
     return path_buffer.str();
 }
 
@@ -10501,7 +10774,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Cxp::Dom::Location::get_child_
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Cxp::Dom::Location::Port>();
         c->parent = this;
-        port.push_back(c);
+        port.append(c);
         return c;
     }
 
@@ -10513,7 +10786,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Cxp::Do
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port)
+    for (auto c : port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10724,7 +10997,7 @@ Controller::Fabric::Oper::Cxp::Dom::Location::Port::Port()
     rx_light_in_dbm11{YType::str, "rx_light_in_dBm11"}
 {
 
-    yang_name = "port"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Cxp::Dom::Location::Port::~Port()
@@ -10733,6 +11006,7 @@ Controller::Fabric::Oper::Cxp::Dom::Location::Port::~Port()
 
 bool Controller::Fabric::Oper::Cxp::Dom::Location::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return cxp_port.is_set
 	|| show_port.is_set
 	|| cxp2_display.is_set
@@ -11065,7 +11339,8 @@ bool Controller::Fabric::Oper::Cxp::Dom::Location::Port::has_operation() const
 std::string Controller::Fabric::Oper::Cxp::Dom::Location::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port" <<"[cxp_port='" <<cxp_port <<"']";
+    path_buffer << "port";
+    ADD_KEY_TOKEN(cxp_port, "cxp_port");
     return path_buffer.str();
 }
 
@@ -12877,9 +13152,11 @@ bool Controller::Fabric::Oper::Cxp::Dom::Location::Port::has_leaf_or_child_of_na
 }
 
 Controller::Fabric::Oper::Cxp::Summary::Summary()
+    :
+    rack(this, {"rack_str"})
 {
 
-    yang_name = "summary"; yang_parent_name = "cxp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "cxp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Cxp::Summary::~Summary()
@@ -12888,7 +13165,8 @@ Controller::Fabric::Oper::Cxp::Summary::~Summary()
 
 bool Controller::Fabric::Oper::Cxp::Summary::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -12898,7 +13176,7 @@ bool Controller::Fabric::Oper::Cxp::Summary::has_data() const
 
 bool Controller::Fabric::Oper::Cxp::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -12935,7 +13213,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Cxp::Summary::get_child_by_nam
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Cxp::Summary::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -12947,7 +13225,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Cxp::Su
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12977,9 +13255,11 @@ Controller::Fabric::Oper::Cxp::Summary::Rack::Rack()
     :
     rack_str{YType::str, "rack_str"},
     description{YType::str, "description"}
+        ,
+    split_tbl_flag(this, {"tbl_splt"})
 {
 
-    yang_name = "rack"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Cxp::Summary::Rack::~Rack()
@@ -12988,7 +13268,8 @@ Controller::Fabric::Oper::Cxp::Summary::Rack::~Rack()
 
 bool Controller::Fabric::Oper::Cxp::Summary::Rack::has_data() const
 {
-    for (std::size_t index=0; index<split_tbl_flag.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<split_tbl_flag.len(); index++)
     {
         if(split_tbl_flag[index]->has_data())
             return true;
@@ -12999,7 +13280,7 @@ bool Controller::Fabric::Oper::Cxp::Summary::Rack::has_data() const
 
 bool Controller::Fabric::Oper::Cxp::Summary::Rack::has_operation() const
 {
-    for (std::size_t index=0; index<split_tbl_flag.size(); index++)
+    for (std::size_t index=0; index<split_tbl_flag.len(); index++)
     {
         if(split_tbl_flag[index]->has_operation())
             return true;
@@ -13019,7 +13300,8 @@ std::string Controller::Fabric::Oper::Cxp::Summary::Rack::get_absolute_path() co
 std::string Controller::Fabric::Oper::Cxp::Summary::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack_str='" <<rack_str <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack_str, "rack_str");
     return path_buffer.str();
 }
 
@@ -13040,7 +13322,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Cxp::Summary::Rack::get_child_
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag>();
         c->parent = this;
-        split_tbl_flag.push_back(c);
+        split_tbl_flag.append(c);
         return c;
     }
 
@@ -13052,7 +13334,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Cxp::Su
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : split_tbl_flag)
+    for (auto c : split_tbl_flag.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13101,9 +13383,11 @@ bool Controller::Fabric::Oper::Cxp::Summary::Rack::has_leaf_or_child_of_name(con
 Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SplitTblFlag()
     :
     tbl_splt{YType::uint32, "tbl_splt"}
+        ,
+    smry_per_slot(this, {"slot_no"})
 {
 
-    yang_name = "split_tbl_flag"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "split_tbl_flag"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::~SplitTblFlag()
@@ -13112,7 +13396,8 @@ Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::~SplitTblFlag()
 
 bool Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::has_data() const
 {
-    for (std::size_t index=0; index<smry_per_slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<smry_per_slot.len(); index++)
     {
         if(smry_per_slot[index]->has_data())
             return true;
@@ -13122,7 +13407,7 @@ bool Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::has_data() cons
 
 bool Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::has_operation() const
 {
-    for (std::size_t index=0; index<smry_per_slot.size(); index++)
+    for (std::size_t index=0; index<smry_per_slot.len(); index++)
     {
         if(smry_per_slot[index]->has_operation())
             return true;
@@ -13134,7 +13419,8 @@ bool Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::has_operation()
 std::string Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "split_tbl_flag" <<"[tbl_splt='" <<tbl_splt <<"']";
+    path_buffer << "split_tbl_flag";
+    ADD_KEY_TOKEN(tbl_splt, "tbl_splt");
     return path_buffer.str();
 }
 
@@ -13154,7 +13440,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFl
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SmryPerSlot>();
         c->parent = this;
-        smry_per_slot.push_back(c);
+        smry_per_slot.append(c);
         return c;
     }
 
@@ -13166,7 +13452,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Cxp::Su
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : smry_per_slot)
+    for (auto c : smry_per_slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13231,7 +13517,7 @@ Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SmryPerSlot::SmryPer
     cxp_sts_15{YType::str, "cxp_sts_15"}
 {
 
-    yang_name = "smry_per_slot"; yang_parent_name = "split_tbl_flag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "smry_per_slot"; yang_parent_name = "split_tbl_flag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SmryPerSlot::~SmryPerSlot()
@@ -13240,6 +13526,7 @@ Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SmryPerSlot::~SmryPe
 
 bool Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SmryPerSlot::has_data() const
 {
+    if (is_presence_container) return true;
     return slot_no.is_set
 	|| func_rack_name.is_set
 	|| max_cxp.is_set
@@ -13300,7 +13587,8 @@ bool Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SmryPerSlot::ha
 std::string Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SmryPerSlot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "smry_per_slot" <<"[slot_no='" <<slot_no <<"']";
+    path_buffer << "smry_per_slot";
+    ADD_KEY_TOKEN(slot_no, "slot_no");
     return path_buffer.str();
 }
 
@@ -13618,16 +13906,17 @@ bool Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SmryPerSlot::ha
 Controller::Fabric::Oper::Fgid::Fgid()
     :
     information(std::make_shared<Controller::Fabric::Oper::Fgid::Information>())
-	,resource(std::make_shared<Controller::Fabric::Oper::Fgid::Resource>())
-	,statistics(std::make_shared<Controller::Fabric::Oper::Fgid::Statistics>())
-	,fgid_mgr(std::make_shared<Controller::Fabric::Oper::Fgid::FgidMgr>())
+    , resource(std::make_shared<Controller::Fabric::Oper::Fgid::Resource>())
+    , statistics(std::make_shared<Controller::Fabric::Oper::Fgid::Statistics>())
+    , fgid_mgr(std::make_shared<Controller::Fabric::Oper::Fgid::FgidMgr>())
+    , program_error(this, {"start", "end"})
 {
     information->parent = this;
     resource->parent = this;
     statistics->parent = this;
     fgid_mgr->parent = this;
 
-    yang_name = "fgid"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fgid"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::~Fgid()
@@ -13636,7 +13925,8 @@ Controller::Fabric::Oper::Fgid::~Fgid()
 
 bool Controller::Fabric::Oper::Fgid::has_data() const
 {
-    for (std::size_t index=0; index<program_error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<program_error.len(); index++)
     {
         if(program_error[index]->has_data())
             return true;
@@ -13649,7 +13939,7 @@ bool Controller::Fabric::Oper::Fgid::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::has_operation() const
 {
-    for (std::size_t index=0; index<program_error.size(); index++)
+    for (std::size_t index=0; index<program_error.len(); index++)
     {
         if(program_error[index]->has_operation())
             return true;
@@ -13726,7 +14016,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::get_child_by_name(const 
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::ProgramError>();
         c->parent = this;
-        program_error.push_back(c);
+        program_error.append(c);
         return c;
     }
 
@@ -13758,7 +14048,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::g
     }
 
     count = 0;
-    for (auto const & c : program_error)
+    for (auto c : program_error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13785,9 +14075,11 @@ bool Controller::Fabric::Oper::Fgid::has_leaf_or_child_of_name(const std::string
 }
 
 Controller::Fabric::Oper::Fgid::Information::Information()
+    :
+    id(this, {"fgid_id"})
 {
 
-    yang_name = "information"; yang_parent_name = "fgid"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "information"; yang_parent_name = "fgid"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Information::~Information()
@@ -13796,7 +14088,8 @@ Controller::Fabric::Oper::Fgid::Information::~Information()
 
 bool Controller::Fabric::Oper::Fgid::Information::has_data() const
 {
-    for (std::size_t index=0; index<id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<id.len(); index++)
     {
         if(id[index]->has_data())
             return true;
@@ -13806,7 +14099,7 @@ bool Controller::Fabric::Oper::Fgid::Information::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::Information::has_operation() const
 {
-    for (std::size_t index=0; index<id.size(); index++)
+    for (std::size_t index=0; index<id.len(); index++)
     {
         if(id[index]->has_operation())
             return true;
@@ -13843,7 +14136,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Information::get_child_b
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Information::Id>();
         c->parent = this;
-        id.push_back(c);
+        id.append(c);
         return c;
     }
 
@@ -13855,7 +14148,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : id)
+    for (auto c : id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13886,9 +14179,14 @@ Controller::Fabric::Oper::Fgid::Information::Id::Id()
     fgid_id{YType::int32, "fgid_id"},
     total_asso_fabricq_ids{YType::int32, "total_asso_fabricq_ids"},
     asso_client_info{YType::str, "asso_client_info"}
+        ,
+    hex_bitmaps(this, {"rack_number"})
+    , binary_bitmaps(this, {"rack_number"})
+    , asso_fabricq_ids(this, {"fabricq_id"})
+    , drivers(this, {"rack_number"})
 {
 
-    yang_name = "id"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "id"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Information::Id::~Id()
@@ -13897,22 +14195,23 @@ Controller::Fabric::Oper::Fgid::Information::Id::~Id()
 
 bool Controller::Fabric::Oper::Fgid::Information::Id::has_data() const
 {
-    for (std::size_t index=0; index<hex_bitmaps.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hex_bitmaps.len(); index++)
     {
         if(hex_bitmaps[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<binary_bitmaps.size(); index++)
+    for (std::size_t index=0; index<binary_bitmaps.len(); index++)
     {
         if(binary_bitmaps[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<asso_fabricq_ids.size(); index++)
+    for (std::size_t index=0; index<asso_fabricq_ids.len(); index++)
     {
         if(asso_fabricq_ids[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<drivers.size(); index++)
+    for (std::size_t index=0; index<drivers.len(); index++)
     {
         if(drivers[index]->has_data())
             return true;
@@ -13924,22 +14223,22 @@ bool Controller::Fabric::Oper::Fgid::Information::Id::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::Information::Id::has_operation() const
 {
-    for (std::size_t index=0; index<hex_bitmaps.size(); index++)
+    for (std::size_t index=0; index<hex_bitmaps.len(); index++)
     {
         if(hex_bitmaps[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<binary_bitmaps.size(); index++)
+    for (std::size_t index=0; index<binary_bitmaps.len(); index++)
     {
         if(binary_bitmaps[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<asso_fabricq_ids.size(); index++)
+    for (std::size_t index=0; index<asso_fabricq_ids.len(); index++)
     {
         if(asso_fabricq_ids[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<drivers.size(); index++)
+    for (std::size_t index=0; index<drivers.len(); index++)
     {
         if(drivers[index]->has_operation())
             return true;
@@ -13960,7 +14259,8 @@ std::string Controller::Fabric::Oper::Fgid::Information::Id::get_absolute_path()
 std::string Controller::Fabric::Oper::Fgid::Information::Id::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "id" <<"[fgid_id='" <<fgid_id <<"']";
+    path_buffer << "id";
+    ADD_KEY_TOKEN(fgid_id, "fgid_id");
     return path_buffer.str();
 }
 
@@ -13982,7 +14282,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Information::Id::get_chi
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Information::Id::HexBitmaps>();
         c->parent = this;
-        hex_bitmaps.push_back(c);
+        hex_bitmaps.append(c);
         return c;
     }
 
@@ -13990,7 +14290,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Information::Id::get_chi
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Information::Id::BinaryBitmaps>();
         c->parent = this;
-        binary_bitmaps.push_back(c);
+        binary_bitmaps.append(c);
         return c;
     }
 
@@ -13998,7 +14298,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Information::Id::get_chi
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Information::Id::AssoFabricqIds>();
         c->parent = this;
-        asso_fabricq_ids.push_back(c);
+        asso_fabricq_ids.append(c);
         return c;
     }
 
@@ -14006,7 +14306,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Information::Id::get_chi
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Information::Id::Drivers>();
         c->parent = this;
-        drivers.push_back(c);
+        drivers.append(c);
         return c;
     }
 
@@ -14018,7 +14318,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hex_bitmaps)
+    for (auto c : hex_bitmaps.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14027,7 +14327,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::I
     }
 
     count = 0;
-    for (auto const & c : binary_bitmaps)
+    for (auto c : binary_bitmaps.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14036,7 +14336,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::I
     }
 
     count = 0;
-    for (auto const & c : asso_fabricq_ids)
+    for (auto c : asso_fabricq_ids.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14045,7 +14345,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::I
     }
 
     count = 0;
-    for (auto const & c : drivers)
+    for (auto c : drivers.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14107,7 +14407,7 @@ Controller::Fabric::Oper::Fgid::Information::Id::HexBitmaps::HexBitmaps()
     bitmap{YType::str, "bitmap"}
 {
 
-    yang_name = "hex_bitmaps"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hex_bitmaps"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::Information::Id::HexBitmaps::~HexBitmaps()
@@ -14116,6 +14416,7 @@ Controller::Fabric::Oper::Fgid::Information::Id::HexBitmaps::~HexBitmaps()
 
 bool Controller::Fabric::Oper::Fgid::Information::Id::HexBitmaps::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_number.is_set
 	|| bitmap.is_set;
 }
@@ -14130,7 +14431,8 @@ bool Controller::Fabric::Oper::Fgid::Information::Id::HexBitmaps::has_operation(
 std::string Controller::Fabric::Oper::Fgid::Information::Id::HexBitmaps::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hex_bitmaps" <<"[rack_number='" <<rack_number <<"']";
+    path_buffer << "hex_bitmaps";
+    ADD_KEY_TOKEN(rack_number, "rack_number");
     return path_buffer.str();
 }
 
@@ -14198,7 +14500,7 @@ Controller::Fabric::Oper::Fgid::Information::Id::BinaryBitmaps::BinaryBitmaps()
     bitmap{YType::str, "bitmap"}
 {
 
-    yang_name = "binary_bitmaps"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binary_bitmaps"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::Information::Id::BinaryBitmaps::~BinaryBitmaps()
@@ -14207,6 +14509,7 @@ Controller::Fabric::Oper::Fgid::Information::Id::BinaryBitmaps::~BinaryBitmaps()
 
 bool Controller::Fabric::Oper::Fgid::Information::Id::BinaryBitmaps::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_number.is_set
 	|| bitmap.is_set;
 }
@@ -14221,7 +14524,8 @@ bool Controller::Fabric::Oper::Fgid::Information::Id::BinaryBitmaps::has_operati
 std::string Controller::Fabric::Oper::Fgid::Information::Id::BinaryBitmaps::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "binary_bitmaps" <<"[rack_number='" <<rack_number <<"']";
+    path_buffer << "binary_bitmaps";
+    ADD_KEY_TOKEN(rack_number, "rack_number");
     return path_buffer.str();
 }
 
@@ -14288,7 +14592,7 @@ Controller::Fabric::Oper::Fgid::Information::Id::AssoFabricqIds::AssoFabricqIds(
     fabricq_id{YType::str, "fabricq_id"}
 {
 
-    yang_name = "asso_fabricq_ids"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asso_fabricq_ids"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::Information::Id::AssoFabricqIds::~AssoFabricqIds()
@@ -14297,6 +14601,7 @@ Controller::Fabric::Oper::Fgid::Information::Id::AssoFabricqIds::~AssoFabricqIds
 
 bool Controller::Fabric::Oper::Fgid::Information::Id::AssoFabricqIds::has_data() const
 {
+    if (is_presence_container) return true;
     return fabricq_id.is_set;
 }
 
@@ -14309,7 +14614,8 @@ bool Controller::Fabric::Oper::Fgid::Information::Id::AssoFabricqIds::has_operat
 std::string Controller::Fabric::Oper::Fgid::Information::Id::AssoFabricqIds::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asso_fabricq_ids" <<"[fabricq_id='" <<fabricq_id <<"']";
+    path_buffer << "asso_fabricq_ids";
+    ADD_KEY_TOKEN(fabricq_id, "fabricq_id");
     return path_buffer.str();
 }
 
@@ -14363,9 +14669,11 @@ bool Controller::Fabric::Oper::Fgid::Information::Id::AssoFabricqIds::has_leaf_o
 Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Drivers()
     :
     rack_number{YType::int32, "rack_number"}
+        ,
+    clients(this, {"client_idx"})
 {
 
-    yang_name = "drivers"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drivers"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::Information::Id::Drivers::~Drivers()
@@ -14374,7 +14682,8 @@ Controller::Fabric::Oper::Fgid::Information::Id::Drivers::~Drivers()
 
 bool Controller::Fabric::Oper::Fgid::Information::Id::Drivers::has_data() const
 {
-    for (std::size_t index=0; index<clients.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clients.len(); index++)
     {
         if(clients[index]->has_data())
             return true;
@@ -14384,7 +14693,7 @@ bool Controller::Fabric::Oper::Fgid::Information::Id::Drivers::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::Information::Id::Drivers::has_operation() const
 {
-    for (std::size_t index=0; index<clients.size(); index++)
+    for (std::size_t index=0; index<clients.len(); index++)
     {
         if(clients[index]->has_operation())
             return true;
@@ -14396,7 +14705,8 @@ bool Controller::Fabric::Oper::Fgid::Information::Id::Drivers::has_operation() c
 std::string Controller::Fabric::Oper::Fgid::Information::Id::Drivers::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "drivers" <<"[rack_number='" <<rack_number <<"']";
+    path_buffer << "drivers";
+    ADD_KEY_TOKEN(rack_number, "rack_number");
     return path_buffer.str();
 }
 
@@ -14416,7 +14726,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Information::Id::Drivers
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Clients>();
         c->parent = this;
-        clients.push_back(c);
+        clients.append(c);
         return c;
     }
 
@@ -14428,7 +14738,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clients)
+    for (auto c : clients.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14541,7 +14851,7 @@ Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Clients::Clients()
     asic_35_bitmap{YType::str, "asic_35_bitmap"}
 {
 
-    yang_name = "clients"; yang_parent_name = "drivers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clients"; yang_parent_name = "drivers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Clients::~Clients()
@@ -14550,6 +14860,7 @@ Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Clients::~Clients()
 
 bool Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Clients::has_data() const
 {
+    if (is_presence_container) return true;
     return client_idx.is_set
 	|| show_asic_0.is_set
 	|| asic_0_bitmap.is_set
@@ -14706,7 +15017,8 @@ bool Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Clients::has_oper
 std::string Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Clients::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clients" <<"[client_idx='" <<client_idx <<"']";
+    path_buffer << "clients";
+    ADD_KEY_TOKEN(client_idx, "client_idx");
     return path_buffer.str();
 }
 
@@ -15550,9 +15862,11 @@ bool Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Clients::has_leaf
 }
 
 Controller::Fabric::Oper::Fgid::Resource::Resource()
+    :
+    sdr(this, {"sdr_name"})
 {
 
-    yang_name = "resource"; yang_parent_name = "fgid"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "resource"; yang_parent_name = "fgid"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Resource::~Resource()
@@ -15561,7 +15875,8 @@ Controller::Fabric::Oper::Fgid::Resource::~Resource()
 
 bool Controller::Fabric::Oper::Fgid::Resource::has_data() const
 {
-    for (std::size_t index=0; index<sdr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr.len(); index++)
     {
         if(sdr[index]->has_data())
             return true;
@@ -15571,7 +15886,7 @@ bool Controller::Fabric::Oper::Fgid::Resource::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::Resource::has_operation() const
 {
-    for (std::size_t index=0; index<sdr.size(); index++)
+    for (std::size_t index=0; index<sdr.len(); index++)
     {
         if(sdr[index]->has_operation())
             return true;
@@ -15608,7 +15923,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Resource::get_child_by_n
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Resource::Sdr>();
         c->parent = this;
-        sdr.push_back(c);
+        sdr.append(c);
         return c;
     }
 
@@ -15620,7 +15935,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdr)
+    for (auto c : sdr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15650,9 +15965,11 @@ Controller::Fabric::Oper::Fgid::Resource::Sdr::Sdr()
     :
     sdr_name{YType::str, "sdr_name"},
     description{YType::str, "description"}
+        ,
+    application(this, {"app_name"})
 {
 
-    yang_name = "sdr"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Resource::Sdr::~Sdr()
@@ -15661,7 +15978,8 @@ Controller::Fabric::Oper::Fgid::Resource::Sdr::~Sdr()
 
 bool Controller::Fabric::Oper::Fgid::Resource::Sdr::has_data() const
 {
-    for (std::size_t index=0; index<application.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<application.len(); index++)
     {
         if(application[index]->has_data())
             return true;
@@ -15672,7 +15990,7 @@ bool Controller::Fabric::Oper::Fgid::Resource::Sdr::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::Resource::Sdr::has_operation() const
 {
-    for (std::size_t index=0; index<application.size(); index++)
+    for (std::size_t index=0; index<application.len(); index++)
     {
         if(application[index]->has_operation())
             return true;
@@ -15692,7 +16010,8 @@ std::string Controller::Fabric::Oper::Fgid::Resource::Sdr::get_absolute_path() c
 std::string Controller::Fabric::Oper::Fgid::Resource::Sdr::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdr" <<"[sdr_name='" <<sdr_name <<"']";
+    path_buffer << "sdr";
+    ADD_KEY_TOKEN(sdr_name, "sdr_name");
     return path_buffer.str();
 }
 
@@ -15713,7 +16032,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Resource::Sdr::get_child
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Resource::Sdr::Application>();
         c->parent = this;
-        application.push_back(c);
+        application.append(c);
         return c;
     }
 
@@ -15725,7 +16044,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : application)
+    for (auto c : application.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15775,9 +16094,11 @@ Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::Application()
     :
     app_name{YType::str, "app_name"},
     description{YType::str, "description"}
+        ,
+    ids_range(this, {"id", "elements"})
 {
 
-    yang_name = "application"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::~Application()
@@ -15786,7 +16107,8 @@ Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::~Application()
 
 bool Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::has_data() const
 {
-    for (std::size_t index=0; index<ids_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ids_range.len(); index++)
     {
         if(ids_range[index]->has_data())
             return true;
@@ -15797,7 +16119,7 @@ bool Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::has_data() cons
 
 bool Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::has_operation() const
 {
-    for (std::size_t index=0; index<ids_range.size(); index++)
+    for (std::size_t index=0; index<ids_range.len(); index++)
     {
         if(ids_range[index]->has_operation())
             return true;
@@ -15810,7 +16132,8 @@ bool Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::has_operation()
 std::string Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "application" <<"[app_name='" <<app_name <<"']";
+    path_buffer << "application";
+    ADD_KEY_TOKEN(app_name, "app_name");
     return path_buffer.str();
 }
 
@@ -15831,7 +16154,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Resource::Sdr::Applicati
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange>();
         c->parent = this;
-        ids_range.push_back(c);
+        ids_range.append(c);
         return c;
     }
 
@@ -15843,7 +16166,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ids_range)
+    for (auto c : ids_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15893,9 +16216,11 @@ Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::IdsRange()
     :
     id{YType::int32, "id"},
     elements{YType::int32, "elements"}
+        ,
+    fgid_ids(this, {"fgid_id", "line_idx"})
 {
 
-    yang_name = "ids_range"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ids_range"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::~IdsRange()
@@ -15904,7 +16229,8 @@ Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::~IdsRange(
 
 bool Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::has_data() const
 {
-    for (std::size_t index=0; index<fgid_ids.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fgid_ids.len(); index++)
     {
         if(fgid_ids[index]->has_data())
             return true;
@@ -15915,7 +16241,7 @@ bool Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::has_d
 
 bool Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::has_operation() const
 {
-    for (std::size_t index=0; index<fgid_ids.size(); index++)
+    for (std::size_t index=0; index<fgid_ids.len(); index++)
     {
         if(fgid_ids[index]->has_operation())
             return true;
@@ -15928,7 +16254,9 @@ bool Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::has_o
 std::string Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ids_range" <<"[id='" <<id <<"']" <<"[elements='" <<elements <<"']";
+    path_buffer << "ids_range";
+    ADD_KEY_TOKEN(id, "id");
+    ADD_KEY_TOKEN(elements, "elements");
     return path_buffer.str();
 }
 
@@ -15949,7 +16277,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Resource::Sdr::Applicati
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::FgidIds>();
         c->parent = this;
-        fgid_ids.push_back(c);
+        fgid_ids.append(c);
         return c;
     }
 
@@ -15961,7 +16289,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fgid_ids)
+    for (auto c : fgid_ids.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16015,7 +16343,7 @@ Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::FgidIds::F
     app_name_h{YType::str, "app_name_h"}
 {
 
-    yang_name = "fgid_ids"; yang_parent_name = "ids_range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fgid_ids"; yang_parent_name = "ids_range"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::FgidIds::~FgidIds()
@@ -16024,6 +16352,7 @@ Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::FgidIds::~
 
 bool Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::FgidIds::has_data() const
 {
+    if (is_presence_container) return true;
     return fgid_id.is_set
 	|| line_idx.is_set
 	|| sdr_name_h.is_set
@@ -16042,7 +16371,9 @@ bool Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::FgidI
 std::string Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::FgidIds::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fgid_ids" <<"[fgid_id='" <<fgid_id <<"']" <<"[line_idx='" <<line_idx <<"']";
+    path_buffer << "fgid_ids";
+    ADD_KEY_TOKEN(fgid_id, "fgid_id");
+    ADD_KEY_TOKEN(line_idx, "line_idx");
     return path_buffer.str();
 }
 
@@ -16129,16 +16460,16 @@ bool Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::FgidI
 Controller::Fabric::Oper::Fgid::Statistics::Statistics()
     :
     all(std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::All>())
-	,sdr(std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::Sdr>())
-	,pool(std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::Pool>())
-	,system(std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::System>())
+    , sdr(std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::Sdr>())
+    , pool(std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::Pool>())
+    , system(std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::System>())
 {
     all->parent = this;
     sdr->parent = this;
     pool->parent = this;
     system->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "fgid"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "fgid"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::~Statistics()
@@ -16147,6 +16478,7 @@ Controller::Fabric::Oper::Fgid::Statistics::~Statistics()
 
 bool Controller::Fabric::Oper::Fgid::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (all !=  nullptr && all->has_data())
 	|| (sdr !=  nullptr && sdr->has_data())
 	|| (pool !=  nullptr && pool->has_data())
@@ -16269,9 +16601,13 @@ bool Controller::Fabric::Oper::Fgid::Statistics::has_leaf_or_child_of_name(const
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::All::All()
+    :
+    stats_list(this, {"system_stats"})
+    , sdr_list(this, {"sdr_name"})
+    , pool_list(this, {"pool_id"})
 {
 
-    yang_name = "all"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::All::~All()
@@ -16280,17 +16616,18 @@ Controller::Fabric::Oper::Fgid::Statistics::All::~All()
 
 bool Controller::Fabric::Oper::Fgid::Statistics::All::has_data() const
 {
-    for (std::size_t index=0; index<stats_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stats_list.len(); index++)
     {
         if(stats_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sdr_list.size(); index++)
+    for (std::size_t index=0; index<sdr_list.len(); index++)
     {
         if(sdr_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pool_list.size(); index++)
+    for (std::size_t index=0; index<pool_list.len(); index++)
     {
         if(pool_list[index]->has_data())
             return true;
@@ -16300,17 +16637,17 @@ bool Controller::Fabric::Oper::Fgid::Statistics::All::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::Statistics::All::has_operation() const
 {
-    for (std::size_t index=0; index<stats_list.size(); index++)
+    for (std::size_t index=0; index<stats_list.len(); index++)
     {
         if(stats_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sdr_list.size(); index++)
+    for (std::size_t index=0; index<sdr_list.len(); index++)
     {
         if(sdr_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pool_list.size(); index++)
+    for (std::size_t index=0; index<pool_list.len(); index++)
     {
         if(pool_list[index]->has_operation())
             return true;
@@ -16347,7 +16684,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Statistics::All::get_chi
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::All::StatsList>();
         c->parent = this;
-        stats_list.push_back(c);
+        stats_list.append(c);
         return c;
     }
 
@@ -16355,7 +16692,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Statistics::All::get_chi
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::All::SdrList>();
         c->parent = this;
-        sdr_list.push_back(c);
+        sdr_list.append(c);
         return c;
     }
 
@@ -16363,7 +16700,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Statistics::All::get_chi
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::All::PoolList>();
         c->parent = this;
-        pool_list.push_back(c);
+        pool_list.append(c);
         return c;
     }
 
@@ -16375,7 +16712,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stats_list)
+    for (auto c : stats_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16384,7 +16721,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::S
     }
 
     count = 0;
-    for (auto const & c : sdr_list)
+    for (auto c : sdr_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16393,7 +16730,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::S
     }
 
     count = 0;
-    for (auto const & c : pool_list)
+    for (auto c : pool_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16427,7 +16764,7 @@ Controller::Fabric::Oper::Fgid::Statistics::All::StatsList::StatsList()
     system_hwm_fgids{YType::uint32, "system_hwm_fgids"}
 {
 
-    yang_name = "stats_list"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stats_list"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::All::StatsList::~StatsList()
@@ -16436,6 +16773,7 @@ Controller::Fabric::Oper::Fgid::Statistics::All::StatsList::~StatsList()
 
 bool Controller::Fabric::Oper::Fgid::Statistics::All::StatsList::has_data() const
 {
+    if (is_presence_container) return true;
     return system_stats.is_set
 	|| system_total_fgids.is_set
 	|| system_inuse_fgids.is_set
@@ -16461,7 +16799,8 @@ std::string Controller::Fabric::Oper::Fgid::Statistics::All::StatsList::get_abso
 std::string Controller::Fabric::Oper::Fgid::Statistics::All::StatsList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stats_list" <<"[system_stats='" <<system_stats <<"']";
+    path_buffer << "stats_list";
+    ADD_KEY_TOKEN(system_stats, "system_stats");
     return path_buffer.str();
 }
 
@@ -16552,9 +16891,11 @@ Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::SdrList()
     sdr_total_fgids{YType::uint32, "sdr_total_fgids"},
     sdr_inuse_fgids{YType::uint32, "sdr_inuse_fgids"},
     sdr_hwm_fgids{YType::uint32, "sdr_hwm_fgids"}
+        ,
+    application(this, {"app_name"})
 {
 
-    yang_name = "sdr_list"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr_list"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::~SdrList()
@@ -16563,7 +16904,8 @@ Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::~SdrList()
 
 bool Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::has_data() const
 {
-    for (std::size_t index=0; index<application.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<application.len(); index++)
     {
         if(application[index]->has_data())
             return true;
@@ -16577,7 +16919,7 @@ bool Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::has_operation() const
 {
-    for (std::size_t index=0; index<application.size(); index++)
+    for (std::size_t index=0; index<application.len(); index++)
     {
         if(application[index]->has_operation())
             return true;
@@ -16600,7 +16942,8 @@ std::string Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::get_absolu
 std::string Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdr_list" <<"[sdr_name='" <<sdr_name <<"']";
+    path_buffer << "sdr_list";
+    ADD_KEY_TOKEN(sdr_name, "sdr_name");
     return path_buffer.str();
 }
 
@@ -16624,7 +16967,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Statistics::All::SdrList
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::Application>();
         c->parent = this;
-        application.push_back(c);
+        application.append(c);
         return c;
     }
 
@@ -16636,7 +16979,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : application)
+    for (auto c : application.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16722,7 +17065,7 @@ Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::Application::Applicati
     hwm_fgids{YType::uint32, "hwm_fgids"}
 {
 
-    yang_name = "application"; yang_parent_name = "sdr_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application"; yang_parent_name = "sdr_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::Application::~Application()
@@ -16731,6 +17074,7 @@ Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::Application::~Applicat
 
 bool Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::Application::has_data() const
 {
+    if (is_presence_container) return true;
     return app_name.is_set
 	|| description.is_set
 	|| app_id.is_set
@@ -16753,7 +17097,8 @@ bool Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::Application::has_
 std::string Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::Application::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "application" <<"[app_name='" <<app_name <<"']";
+    path_buffer << "application";
+    ADD_KEY_TOKEN(app_name, "app_name");
     return path_buffer.str();
 }
 
@@ -16870,7 +17215,7 @@ Controller::Fabric::Oper::Fgid::Statistics::All::PoolList::PoolList()
     hwm_fgids{YType::uint32, "hwm_fgids"}
 {
 
-    yang_name = "pool_list"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pool_list"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::All::PoolList::~PoolList()
@@ -16879,6 +17224,7 @@ Controller::Fabric::Oper::Fgid::Statistics::All::PoolList::~PoolList()
 
 bool Controller::Fabric::Oper::Fgid::Statistics::All::PoolList::has_data() const
 {
+    if (is_presence_container) return true;
     return pool_id.is_set
 	|| pool_name.is_set
 	|| pool_type.is_set
@@ -16910,7 +17256,8 @@ std::string Controller::Fabric::Oper::Fgid::Statistics::All::PoolList::get_absol
 std::string Controller::Fabric::Oper::Fgid::Statistics::All::PoolList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pool_list" <<"[pool_id='" <<pool_id <<"']";
+    path_buffer << "pool_list";
+    ADD_KEY_TOKEN(pool_id, "pool_id");
     return path_buffer.str();
 }
 
@@ -17028,9 +17375,11 @@ bool Controller::Fabric::Oper::Fgid::Statistics::All::PoolList::has_leaf_or_chil
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::Sdr::Sdr()
+    :
+    sdr_list(this, {"sdr_name"})
 {
 
-    yang_name = "sdr"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::Sdr::~Sdr()
@@ -17039,7 +17388,8 @@ Controller::Fabric::Oper::Fgid::Statistics::Sdr::~Sdr()
 
 bool Controller::Fabric::Oper::Fgid::Statistics::Sdr::has_data() const
 {
-    for (std::size_t index=0; index<sdr_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_list.len(); index++)
     {
         if(sdr_list[index]->has_data())
             return true;
@@ -17049,7 +17399,7 @@ bool Controller::Fabric::Oper::Fgid::Statistics::Sdr::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::Statistics::Sdr::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_list.size(); index++)
+    for (std::size_t index=0; index<sdr_list.len(); index++)
     {
         if(sdr_list[index]->has_operation())
             return true;
@@ -17086,7 +17436,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Statistics::Sdr::get_chi
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList>();
         c->parent = this;
-        sdr_list.push_back(c);
+        sdr_list.append(c);
         return c;
     }
 
@@ -17098,7 +17448,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdr_list)
+    for (auto c : sdr_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17131,9 +17481,11 @@ Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::SdrList()
     sdr_total_fgids{YType::uint32, "sdr_total_fgids"},
     sdr_inuse_fgids{YType::uint32, "sdr_inuse_fgids"},
     sdr_hwm_fgids{YType::uint32, "sdr_hwm_fgids"}
+        ,
+    application(this, {"app_name"})
 {
 
-    yang_name = "sdr_list"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr_list"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::~SdrList()
@@ -17142,7 +17494,8 @@ Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::~SdrList()
 
 bool Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::has_data() const
 {
-    for (std::size_t index=0; index<application.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<application.len(); index++)
     {
         if(application[index]->has_data())
             return true;
@@ -17156,7 +17509,7 @@ bool Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::has_operation() const
 {
-    for (std::size_t index=0; index<application.size(); index++)
+    for (std::size_t index=0; index<application.len(); index++)
     {
         if(application[index]->has_operation())
             return true;
@@ -17179,7 +17532,8 @@ std::string Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::get_absolu
 std::string Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdr_list" <<"[sdr_name='" <<sdr_name <<"']";
+    path_buffer << "sdr_list";
+    ADD_KEY_TOKEN(sdr_name, "sdr_name");
     return path_buffer.str();
 }
 
@@ -17203,7 +17557,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::Application>();
         c->parent = this;
-        application.push_back(c);
+        application.append(c);
         return c;
     }
 
@@ -17215,7 +17569,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : application)
+    for (auto c : application.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17301,7 +17655,7 @@ Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::Application::Applicati
     hwm_fgids{YType::uint32, "hwm_fgids"}
 {
 
-    yang_name = "application"; yang_parent_name = "sdr_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application"; yang_parent_name = "sdr_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::Application::~Application()
@@ -17310,6 +17664,7 @@ Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::Application::~Applicat
 
 bool Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::Application::has_data() const
 {
+    if (is_presence_container) return true;
     return app_name.is_set
 	|| description.is_set
 	|| app_id.is_set
@@ -17332,7 +17687,8 @@ bool Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::Application::has_
 std::string Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::Application::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "application" <<"[app_name='" <<app_name <<"']";
+    path_buffer << "application";
+    ADD_KEY_TOKEN(app_name, "app_name");
     return path_buffer.str();
 }
 
@@ -17439,9 +17795,11 @@ bool Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::Application::has_
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::Pool::Pool()
+    :
+    pool_list(this, {"pool_id"})
 {
 
-    yang_name = "pool"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pool"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::Pool::~Pool()
@@ -17450,7 +17808,8 @@ Controller::Fabric::Oper::Fgid::Statistics::Pool::~Pool()
 
 bool Controller::Fabric::Oper::Fgid::Statistics::Pool::has_data() const
 {
-    for (std::size_t index=0; index<pool_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pool_list.len(); index++)
     {
         if(pool_list[index]->has_data())
             return true;
@@ -17460,7 +17819,7 @@ bool Controller::Fabric::Oper::Fgid::Statistics::Pool::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::Statistics::Pool::has_operation() const
 {
-    for (std::size_t index=0; index<pool_list.size(); index++)
+    for (std::size_t index=0; index<pool_list.len(); index++)
     {
         if(pool_list[index]->has_operation())
             return true;
@@ -17497,7 +17856,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Statistics::Pool::get_ch
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::Pool::PoolList>();
         c->parent = this;
-        pool_list.push_back(c);
+        pool_list.append(c);
         return c;
     }
 
@@ -17509,7 +17868,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pool_list)
+    for (auto c : pool_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17546,7 +17905,7 @@ Controller::Fabric::Oper::Fgid::Statistics::Pool::PoolList::PoolList()
     hwm_fgids{YType::uint32, "hwm_fgids"}
 {
 
-    yang_name = "pool_list"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pool_list"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::Pool::PoolList::~PoolList()
@@ -17555,6 +17914,7 @@ Controller::Fabric::Oper::Fgid::Statistics::Pool::PoolList::~PoolList()
 
 bool Controller::Fabric::Oper::Fgid::Statistics::Pool::PoolList::has_data() const
 {
+    if (is_presence_container) return true;
     return pool_id.is_set
 	|| pool_name.is_set
 	|| pool_type.is_set
@@ -17586,7 +17946,8 @@ std::string Controller::Fabric::Oper::Fgid::Statistics::Pool::PoolList::get_abso
 std::string Controller::Fabric::Oper::Fgid::Statistics::Pool::PoolList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pool_list" <<"[pool_id='" <<pool_id <<"']";
+    path_buffer << "pool_list";
+    ADD_KEY_TOKEN(pool_id, "pool_id");
     return path_buffer.str();
 }
 
@@ -17704,9 +18065,11 @@ bool Controller::Fabric::Oper::Fgid::Statistics::Pool::PoolList::has_leaf_or_chi
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::System::System()
+    :
+    stats_list(this, {"system_stats"})
 {
 
-    yang_name = "system"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "system"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::System::~System()
@@ -17715,7 +18078,8 @@ Controller::Fabric::Oper::Fgid::Statistics::System::~System()
 
 bool Controller::Fabric::Oper::Fgid::Statistics::System::has_data() const
 {
-    for (std::size_t index=0; index<stats_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stats_list.len(); index++)
     {
         if(stats_list[index]->has_data())
             return true;
@@ -17725,7 +18089,7 @@ bool Controller::Fabric::Oper::Fgid::Statistics::System::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::Statistics::System::has_operation() const
 {
-    for (std::size_t index=0; index<stats_list.size(); index++)
+    for (std::size_t index=0; index<stats_list.len(); index++)
     {
         if(stats_list[index]->has_operation())
             return true;
@@ -17762,7 +18126,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::Statistics::System::get_
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::Statistics::System::StatsList>();
         c->parent = this;
-        stats_list.push_back(c);
+        stats_list.append(c);
         return c;
     }
 
@@ -17774,7 +18138,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stats_list)
+    for (auto c : stats_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17808,7 +18172,7 @@ Controller::Fabric::Oper::Fgid::Statistics::System::StatsList::StatsList()
     system_hwm_fgids{YType::uint32, "system_hwm_fgids"}
 {
 
-    yang_name = "stats_list"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stats_list"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::Statistics::System::StatsList::~StatsList()
@@ -17817,6 +18181,7 @@ Controller::Fabric::Oper::Fgid::Statistics::System::StatsList::~StatsList()
 
 bool Controller::Fabric::Oper::Fgid::Statistics::System::StatsList::has_data() const
 {
+    if (is_presence_container) return true;
     return system_stats.is_set
 	|| system_total_fgids.is_set
 	|| system_inuse_fgids.is_set
@@ -17842,7 +18207,8 @@ std::string Controller::Fabric::Oper::Fgid::Statistics::System::StatsList::get_a
 std::string Controller::Fabric::Oper::Fgid::Statistics::System::StatsList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stats_list" <<"[system_stats='" <<system_stats <<"']";
+    path_buffer << "stats_list";
+    ADD_KEY_TOKEN(system_stats, "system_stats");
     return path_buffer.str();
 }
 
@@ -17927,9 +18293,11 @@ bool Controller::Fabric::Oper::Fgid::Statistics::System::StatsList::has_leaf_or_
 }
 
 Controller::Fabric::Oper::Fgid::FgidMgr::FgidMgr()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "fgid_mgr"; yang_parent_name = "fgid"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fgid_mgr"; yang_parent_name = "fgid"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::FgidMgr::~FgidMgr()
@@ -17938,7 +18306,8 @@ Controller::Fabric::Oper::Fgid::FgidMgr::~FgidMgr()
 
 bool Controller::Fabric::Oper::Fgid::FgidMgr::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -17948,7 +18317,7 @@ bool Controller::Fabric::Oper::Fgid::FgidMgr::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::FgidMgr::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -17985,7 +18354,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::FgidMgr::get_child_by_na
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::FgidMgr::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -17997,7 +18366,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::F
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18026,9 +18395,11 @@ bool Controller::Fabric::Oper::Fgid::FgidMgr::has_leaf_or_child_of_name(const st
 Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "fgid_mgr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "fgid_mgr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::FgidMgr::Trace::~Trace()
@@ -18037,7 +18408,8 @@ Controller::Fabric::Oper::Fgid::FgidMgr::Trace::~Trace()
 
 bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -18047,7 +18419,7 @@ bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -18066,7 +18438,8 @@ std::string Controller::Fabric::Oper::Fgid::FgidMgr::Trace::get_absolute_path() 
 std::string Controller::Fabric::Oper::Fgid::FgidMgr::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -18086,7 +18459,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::FgidMgr::Trace::get_chil
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -18098,7 +18471,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::F
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18137,9 +18510,11 @@ bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::has_leaf_or_child_of_name(c
 Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::~Location()
@@ -18148,7 +18523,8 @@ Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::~Location()
 
 bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -18158,7 +18534,7 @@ bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -18170,7 +18546,8 @@ bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::has_operation() c
 std::string Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -18190,7 +18567,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -18202,7 +18579,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::F
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18241,9 +18618,11 @@ bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::has_leaf_or_child
 Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::~AllOptions()
@@ -18252,7 +18631,8 @@ Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::~AllOption
 
 bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -18262,7 +18642,7 @@ bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::has_d
 
 bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -18274,7 +18654,8 @@ bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::has_o
 std::string Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -18294,7 +18675,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -18306,7 +18687,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::F
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18347,7 +18728,7 @@ Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::TraceBlock
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -18356,6 +18737,7 @@ Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::TraceBlock
 
 bool Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -18423,9 +18805,11 @@ Controller::Fabric::Oper::Fgid::ProgramError::ProgramError()
     :
     start{YType::int32, "start"},
     end{YType::int32, "end"}
+        ,
+    rack(this, {"rack_id"})
 {
 
-    yang_name = "program_error"; yang_parent_name = "fgid"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "program_error"; yang_parent_name = "fgid"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Fgid::ProgramError::~ProgramError()
@@ -18434,7 +18818,8 @@ Controller::Fabric::Oper::Fgid::ProgramError::~ProgramError()
 
 bool Controller::Fabric::Oper::Fgid::ProgramError::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -18445,7 +18830,7 @@ bool Controller::Fabric::Oper::Fgid::ProgramError::has_data() const
 
 bool Controller::Fabric::Oper::Fgid::ProgramError::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -18465,7 +18850,9 @@ std::string Controller::Fabric::Oper::Fgid::ProgramError::get_absolute_path() co
 std::string Controller::Fabric::Oper::Fgid::ProgramError::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "program_error" <<"[start='" <<start <<"']" <<"[end='" <<end <<"']";
+    path_buffer << "program_error";
+    ADD_KEY_TOKEN(start, "start");
+    ADD_KEY_TOKEN(end, "end");
     return path_buffer.str();
 }
 
@@ -18486,7 +18873,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Fgid::ProgramError::get_child_
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Fgid::ProgramError::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -18498,7 +18885,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fgid::P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18555,7 +18942,7 @@ Controller::Fabric::Oper::Fgid::ProgramError::Rack::Rack()
     cmd_not_supported{YType::boolean, "cmd_not_supported"}
 {
 
-    yang_name = "rack"; yang_parent_name = "program_error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rack"; yang_parent_name = "program_error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Fgid::ProgramError::Rack::~Rack()
@@ -18564,6 +18951,7 @@ Controller::Fabric::Oper::Fgid::ProgramError::Rack::~Rack()
 
 bool Controller::Fabric::Oper::Fgid::ProgramError::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_id.is_set
 	|| rack_id_str.is_set
 	|| fgids_in_error.is_set
@@ -18588,7 +18976,8 @@ bool Controller::Fabric::Oper::Fgid::ProgramError::Rack::has_operation() const
 std::string Controller::Fabric::Oper::Fgid::ProgramError::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack_id='" <<rack_id <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack_id, "rack_id");
     return path_buffer.str();
 }
 
@@ -18707,13 +19096,14 @@ bool Controller::Fabric::Oper::Fgid::ProgramError::Rack::has_leaf_or_child_of_na
 
 Controller::Fabric::Oper::FsdbaggActive::FsdbaggActive()
     :
-    bundle(std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle>())
-	,statistics(std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Statistics>())
+    plane(this, {"planeid"})
+    , bundle(std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle>())
+    , statistics(std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Statistics>())
 {
     bundle->parent = this;
     statistics->parent = this;
 
-    yang_name = "fsdbagg_active"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fsdbagg_active"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbaggActive::~FsdbaggActive()
@@ -18722,7 +19112,8 @@ Controller::Fabric::Oper::FsdbaggActive::~FsdbaggActive()
 
 bool Controller::Fabric::Oper::FsdbaggActive::has_data() const
 {
-    for (std::size_t index=0; index<plane.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<plane.len(); index++)
     {
         if(plane[index]->has_data())
             return true;
@@ -18733,7 +19124,7 @@ bool Controller::Fabric::Oper::FsdbaggActive::has_data() const
 
 bool Controller::Fabric::Oper::FsdbaggActive::has_operation() const
 {
-    for (std::size_t index=0; index<plane.size(); index++)
+    for (std::size_t index=0; index<plane.len(); index++)
     {
         if(plane[index]->has_operation())
             return true;
@@ -18772,7 +19163,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbaggActive::get_child_by_na
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Plane>();
         c->parent = this;
-        plane.push_back(c);
+        plane.append(c);
         return c;
     }
 
@@ -18802,7 +19193,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fsdbagg
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : plane)
+    for (auto c : plane.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18871,9 +19262,11 @@ Controller::Fabric::Oper::FsdbaggActive::Plane::Plane()
     asic_internal_drops{YType::uint64, "asic_internal_drops"},
     asic_location_drops{YType::str, "asic_location_drops"},
     ppu_state{YType::str, "ppu_state"}
+        ,
+    asic_internal_error(this, {"asic_number"})
 {
 
-    yang_name = "plane"; yang_parent_name = "fsdbagg_active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "plane"; yang_parent_name = "fsdbagg_active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbaggActive::Plane::~Plane()
@@ -18882,7 +19275,8 @@ Controller::Fabric::Oper::FsdbaggActive::Plane::~Plane()
 
 bool Controller::Fabric::Oper::FsdbaggActive::Plane::has_data() const
 {
-    for (std::size_t index=0; index<asic_internal_error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic_internal_error.len(); index++)
     {
         if(asic_internal_error[index]->has_data())
             return true;
@@ -18922,7 +19316,7 @@ bool Controller::Fabric::Oper::FsdbaggActive::Plane::has_data() const
 
 bool Controller::Fabric::Oper::FsdbaggActive::Plane::has_operation() const
 {
-    for (std::size_t index=0; index<asic_internal_error.size(); index++)
+    for (std::size_t index=0; index<asic_internal_error.len(); index++)
     {
         if(asic_internal_error[index]->has_operation())
             return true;
@@ -18971,7 +19365,8 @@ std::string Controller::Fabric::Oper::FsdbaggActive::Plane::get_absolute_path() 
 std::string Controller::Fabric::Oper::FsdbaggActive::Plane::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "plane" <<"[planeid='" <<planeid <<"']";
+    path_buffer << "plane";
+    ADD_KEY_TOKEN(planeid, "planeid");
     return path_buffer.str();
 }
 
@@ -19021,7 +19416,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbaggActive::Plane::get_chil
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Plane::AsicInternalError>();
         c->parent = this;
-        asic_internal_error.push_back(c);
+        asic_internal_error.append(c);
         return c;
     }
 
@@ -19033,7 +19428,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fsdbagg
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic_internal_error)
+    for (auto c : asic_internal_error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19384,7 +19779,7 @@ Controller::Fabric::Oper::FsdbaggActive::Plane::AsicInternalError::AsicInternalE
     last_asic_internal_error_ts{YType::str, "last_asic_internal_error_ts"}
 {
 
-    yang_name = "asic_internal_error"; yang_parent_name = "plane"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic_internal_error"; yang_parent_name = "plane"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::FsdbaggActive::Plane::AsicInternalError::~AsicInternalError()
@@ -19393,6 +19788,7 @@ Controller::Fabric::Oper::FsdbaggActive::Plane::AsicInternalError::~AsicInternal
 
 bool Controller::Fabric::Oper::FsdbaggActive::Plane::AsicInternalError::has_data() const
 {
+    if (is_presence_container) return true;
     return asic_number.is_set
 	|| asic_location.is_set
 	|| link_crc_error.is_set
@@ -19425,7 +19821,8 @@ bool Controller::Fabric::Oper::FsdbaggActive::Plane::AsicInternalError::has_oper
 std::string Controller::Fabric::Oper::FsdbaggActive::Plane::AsicInternalError::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic_internal_error" <<"[asic_number='" <<asic_number <<"']";
+    path_buffer << "asic_internal_error";
+    ADD_KEY_TOKEN(asic_number, "asic_number");
     return path_buffer.str();
 }
 
@@ -19589,14 +19986,15 @@ bool Controller::Fabric::Oper::FsdbaggActive::Plane::AsicInternalError::has_leaf
 Controller::Fabric::Oper::FsdbaggActive::Bundle::Bundle()
     :
     summary(std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary>())
-	,all(std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::All>())
-	,port(std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::Port>())
+    , all(std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::All>())
+    , port(std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::Port>())
+    , location(this, {"loc_str"})
 {
     summary->parent = this;
     all->parent = this;
     port->parent = this;
 
-    yang_name = "bundle"; yang_parent_name = "fsdbagg_active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle"; yang_parent_name = "fsdbagg_active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbaggActive::Bundle::~Bundle()
@@ -19605,7 +20003,8 @@ Controller::Fabric::Oper::FsdbaggActive::Bundle::~Bundle()
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -19617,7 +20016,7 @@ bool Controller::Fabric::Oper::FsdbaggActive::Bundle::has_data() const
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -19684,7 +20083,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbaggActive::Bundle::get_chi
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -19711,7 +20110,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fsdbagg
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19738,9 +20137,11 @@ bool Controller::Fabric::Oper::FsdbaggActive::Bundle::has_leaf_or_child_of_name(
 }
 
 Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::Summary()
+    :
+    bundle_summary_list(this, {"idx"})
 {
 
-    yang_name = "summary"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::~Summary()
@@ -19749,7 +20150,8 @@ Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::~Summary()
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::has_data() const
 {
-    for (std::size_t index=0; index<bundle_summary_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_summary_list.len(); index++)
     {
         if(bundle_summary_list[index]->has_data())
             return true;
@@ -19759,7 +20161,7 @@ bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::has_data() const
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_summary_list.size(); index++)
+    for (std::size_t index=0; index<bundle_summary_list.len(); index++)
     {
         if(bundle_summary_list[index]->has_operation())
             return true;
@@ -19796,7 +20198,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::BundleSummaryList>();
         c->parent = this;
-        bundle_summary_list.push_back(c);
+        bundle_summary_list.append(c);
         return c;
     }
 
@@ -19808,7 +20210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fsdbagg
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle_summary_list)
+    for (auto c : bundle_summary_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19845,7 +20247,7 @@ Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::BundleSummaryList::Bun
     bports_not_connected{YType::uint32, "bports_not_connected"}
 {
 
-    yang_name = "bundle_summary_list"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle_summary_list"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::BundleSummaryList::~BundleSummaryList()
@@ -19854,6 +20256,7 @@ Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::BundleSummaryList::~Bu
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::BundleSummaryList::has_data() const
 {
+    if (is_presence_container) return true;
     return idx.is_set
 	|| total_bundles.is_set
 	|| down_bundles.is_set
@@ -19885,7 +20288,8 @@ std::string Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::BundleSumm
 std::string Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::BundleSummaryList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle_summary_list" <<"[idx='" <<idx <<"']";
+    path_buffer << "bundle_summary_list";
+    ADD_KEY_TOKEN(idx, "idx");
     return path_buffer.str();
 }
 
@@ -20003,9 +20407,11 @@ bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::BundleSummaryList
 }
 
 Controller::Fabric::Oper::FsdbaggActive::Bundle::All::All()
+    :
+    bundle_all_list(this, {"idx"})
 {
 
-    yang_name = "all"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbaggActive::Bundle::All::~All()
@@ -20014,7 +20420,8 @@ Controller::Fabric::Oper::FsdbaggActive::Bundle::All::~All()
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::All::has_data() const
 {
-    for (std::size_t index=0; index<bundle_all_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_all_list.len(); index++)
     {
         if(bundle_all_list[index]->has_data())
             return true;
@@ -20024,7 +20431,7 @@ bool Controller::Fabric::Oper::FsdbaggActive::Bundle::All::has_data() const
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::All::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_all_list.size(); index++)
+    for (std::size_t index=0; index<bundle_all_list.len(); index++)
     {
         if(bundle_all_list[index]->has_operation())
             return true;
@@ -20061,7 +20468,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbaggActive::Bundle::All::ge
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::All::BundleAllList>();
         c->parent = this;
-        bundle_all_list.push_back(c);
+        bundle_all_list.append(c);
         return c;
     }
 
@@ -20073,7 +20480,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fsdbagg
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle_all_list)
+    for (auto c : bundle_all_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20111,7 +20518,7 @@ Controller::Fabric::Oper::FsdbaggActive::Bundle::All::BundleAllList::BundleAllLi
     bport2{YType::str, "bport2"}
 {
 
-    yang_name = "bundle_all_list"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle_all_list"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbaggActive::Bundle::All::BundleAllList::~BundleAllList()
@@ -20120,6 +20527,7 @@ Controller::Fabric::Oper::FsdbaggActive::Bundle::All::BundleAllList::~BundleAllL
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::All::BundleAllList::has_data() const
 {
+    if (is_presence_container) return true;
     return idx.is_set
 	|| bundle_id.is_set
 	|| oper_state.is_set
@@ -20153,7 +20561,8 @@ std::string Controller::Fabric::Oper::FsdbaggActive::Bundle::All::BundleAllList:
 std::string Controller::Fabric::Oper::FsdbaggActive::Bundle::All::BundleAllList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle_all_list" <<"[idx='" <<idx <<"']";
+    path_buffer << "bundle_all_list";
+    ADD_KEY_TOKEN(idx, "idx");
     return path_buffer.str();
 }
 
@@ -20284,10 +20693,11 @@ bool Controller::Fabric::Oper::FsdbaggActive::Bundle::All::BundleAllList::has_le
 Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Port()
     :
     all(std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All>())
+    , location(this, {"loc_str"})
 {
     all->parent = this;
 
-    yang_name = "port"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::~Port()
@@ -20296,7 +20706,8 @@ Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::~Port()
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -20306,7 +20717,7 @@ bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::has_data() const
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -20353,7 +20764,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::g
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -20370,7 +20781,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fsdbagg
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20398,11 +20809,12 @@ bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::has_leaf_or_child_of
 
 Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::All()
     :
-    statistics(std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics>())
+    bport_all_list(this, {"idx"})
+    , statistics(std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "all"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::~All()
@@ -20411,7 +20823,8 @@ Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::~All()
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::has_data() const
 {
-    for (std::size_t index=0; index<bport_all_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bport_all_list.len(); index++)
     {
         if(bport_all_list[index]->has_data())
             return true;
@@ -20421,7 +20834,7 @@ bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::has_data() cons
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::has_operation() const
 {
-    for (std::size_t index=0; index<bport_all_list.size(); index++)
+    for (std::size_t index=0; index<bport_all_list.len(); index++)
     {
         if(bport_all_list[index]->has_operation())
             return true;
@@ -20459,7 +20872,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::A
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::BportAllList>();
         c->parent = this;
-        bport_all_list.push_back(c);
+        bport_all_list.append(c);
         return c;
     }
 
@@ -20480,7 +20893,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Fsdbagg
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bport_all_list)
+    for (auto c : bport_all_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20520,7 +20933,7 @@ Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::BportAllList::BportA
     down_flags{YType::str, "down_flags"}
 {
 
-    yang_name = "bport_all_list"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bport_all_list"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::BportAllList::~BportAllList()
@@ -20529,6 +20942,7 @@ Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::BportAllList::~Bport
 
 bool Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::BportAllList::has_data() const
 {
+    if (is_presence_container) return true;
     return idx.is_set
 	|| bport_id.is_set
 	|| admin_state.is_set
@@ -20556,7 +20970,8 @@ std::string Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::BportAll
 std::string Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::BportAllList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bport_all_list" <<"[idx='" <<idx <<"']";
+    path_buffer << "bport_all_list";
+    ADD_KEY_TOKEN(idx, "idx");
     return path_buffer.str();
 }
 

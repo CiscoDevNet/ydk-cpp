@@ -14,16 +14,16 @@ namespace Cisco_IOS_XR_man_ipsla_oper {
 Ipsla::Ipsla()
     :
     mpls_data(std::make_shared<Ipsla::MplsData>())
-	,responder(std::make_shared<Ipsla::Responder>())
-	,operation_data(std::make_shared<Ipsla::OperationData>())
-	,application_info(std::make_shared<Ipsla::ApplicationInfo>())
+    , responder(std::make_shared<Ipsla::Responder>())
+    , operation_data(std::make_shared<Ipsla::OperationData>())
+    , application_info(std::make_shared<Ipsla::ApplicationInfo>())
 {
     mpls_data->parent = this;
     responder->parent = this;
     operation_data->parent = this;
     application_info->parent = this;
 
-    yang_name = "ipsla"; yang_parent_name = "Cisco-IOS-XR-man-ipsla-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipsla"; yang_parent_name = "Cisco-IOS-XR-man-ipsla-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipsla::~Ipsla()
@@ -32,6 +32,7 @@ Ipsla::~Ipsla()
 
 bool Ipsla::has_data() const
 {
+    if (is_presence_container) return true;
     return (mpls_data !=  nullptr && mpls_data->has_data())
 	|| (responder !=  nullptr && responder->has_data())
 	|| (operation_data !=  nullptr && operation_data->has_data())
@@ -174,12 +175,12 @@ bool Ipsla::has_leaf_or_child_of_name(const std::string & name) const
 Ipsla::MplsData::MplsData()
     :
     lsp_monitors(std::make_shared<Ipsla::MplsData::LspMonitors>())
-	,discovery(std::make_shared<Ipsla::MplsData::Discovery>())
+    , discovery(std::make_shared<Ipsla::MplsData::Discovery>())
 {
     lsp_monitors->parent = this;
     discovery->parent = this;
 
-    yang_name = "mpls-data"; yang_parent_name = "ipsla"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls-data"; yang_parent_name = "ipsla"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::MplsData::~MplsData()
@@ -188,6 +189,7 @@ Ipsla::MplsData::~MplsData()
 
 bool Ipsla::MplsData::has_data() const
 {
+    if (is_presence_container) return true;
     return (lsp_monitors !=  nullptr && lsp_monitors->has_data())
 	|| (discovery !=  nullptr && discovery->has_data());
 }
@@ -278,9 +280,11 @@ bool Ipsla::MplsData::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitors()
+    :
+    lsp_monitor(this, {"monitor_id"})
 {
 
-    yang_name = "lsp-monitors"; yang_parent_name = "mpls-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lsp-monitors"; yang_parent_name = "mpls-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::MplsData::LspMonitors::~LspMonitors()
@@ -289,7 +293,8 @@ Ipsla::MplsData::LspMonitors::~LspMonitors()
 
 bool Ipsla::MplsData::LspMonitors::has_data() const
 {
-    for (std::size_t index=0; index<lsp_monitor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_monitor.len(); index++)
     {
         if(lsp_monitor[index]->has_data())
             return true;
@@ -299,7 +304,7 @@ bool Ipsla::MplsData::LspMonitors::has_data() const
 
 bool Ipsla::MplsData::LspMonitors::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_monitor.size(); index++)
+    for (std::size_t index=0; index<lsp_monitor.len(); index++)
     {
         if(lsp_monitor[index]->has_operation())
             return true;
@@ -336,7 +341,7 @@ std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::get_child_by_name(const st
     {
         auto c = std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor>();
         c->parent = this;
-        lsp_monitor.push_back(c);
+        lsp_monitor.append(c);
         return c;
     }
 
@@ -348,7 +353,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_monitor)
+    for (auto c : lsp_monitor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -376,17 +381,17 @@ bool Ipsla::MplsData::LspMonitors::has_leaf_or_child_of_name(const std::string &
 
 Ipsla::MplsData::LspMonitors::LspMonitor::LspMonitor()
     :
-    monitor_id{YType::int32, "monitor-id"}
-    	,
+    monitor_id{YType::uint32, "monitor-id"}
+        ,
     state(std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::State>())
-	,operations(std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::Operations>())
-	,scan_queues(std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues>())
+    , operations(std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::Operations>())
+    , scan_queues(std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues>())
 {
     state->parent = this;
     operations->parent = this;
     scan_queues->parent = this;
 
-    yang_name = "lsp-monitor"; yang_parent_name = "lsp-monitors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lsp-monitor"; yang_parent_name = "lsp-monitors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::~LspMonitor()
@@ -395,6 +400,7 @@ Ipsla::MplsData::LspMonitors::LspMonitor::~LspMonitor()
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::has_data() const
 {
+    if (is_presence_container) return true;
     return monitor_id.is_set
 	|| (state !=  nullptr && state->has_data())
 	|| (operations !=  nullptr && operations->has_data())
@@ -420,7 +426,8 @@ std::string Ipsla::MplsData::LspMonitors::LspMonitor::get_absolute_path() const
 std::string Ipsla::MplsData::LspMonitors::LspMonitor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-monitor" <<"[monitor-id='" <<monitor_id <<"']";
+    path_buffer << "lsp-monitor";
+    ADD_KEY_TOKEN(monitor_id, "monitor-id");
     return path_buffer.str();
 }
 
@@ -521,7 +528,7 @@ Ipsla::MplsData::LspMonitors::LspMonitor::State::State()
     lpd_compeletion_time{YType::uint32, "lpd-compeletion-time"}
 {
 
-    yang_name = "state"; yang_parent_name = "lsp-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "lsp-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::State::~State()
@@ -530,6 +537,7 @@ Ipsla::MplsData::LspMonitors::LspMonitor::State::~State()
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::State::has_data() const
 {
+    if (is_presence_container) return true;
     return scan_remaining.is_set
 	|| delete_scan_remaining.is_set
 	|| rediscovery_remaining.is_set
@@ -633,9 +641,11 @@ bool Ipsla::MplsData::LspMonitors::LspMonitor::State::has_leaf_or_child_of_name(
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operations()
+    :
+    operation_(this, {"operation_id"})
 {
 
-    yang_name = "operations"; yang_parent_name = "lsp-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "operations"; yang_parent_name = "lsp-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::Operations::~Operations()
@@ -644,7 +654,8 @@ Ipsla::MplsData::LspMonitors::LspMonitor::Operations::~Operations()
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::has_data() const
 {
-    for (std::size_t index=0; index<operation_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<operation_.len(); index++)
     {
         if(operation_[index]->has_data())
             return true;
@@ -654,7 +665,7 @@ bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::has_data() const
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::has_operation() const
 {
-    for (std::size_t index=0; index<operation_.size(); index++)
+    for (std::size_t index=0; index<operation_.len(); index++)
     {
         if(operation_[index]->has_operation())
             return true;
@@ -684,7 +695,7 @@ std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::ge
     {
         auto c = std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation>();
         c->parent = this;
-        operation_.push_back(c);
+        operation_.append(c);
         return c;
     }
 
@@ -696,7 +707,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::Lsp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : operation_)
+    for (auto c : operation_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -724,15 +735,15 @@ bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::has_leaf_or_child_of_
 
 Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::Operation()
     :
-    operation_id{YType::int32, "operation-id"}
-    	,
+    operation_id{YType::uint32, "operation-id"}
+        ,
     state(std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::State>())
-	,lpd_paths(std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths>())
+    , lpd_paths(std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths>())
 {
     state->parent = this;
     lpd_paths->parent = this;
 
-    yang_name = "operation"; yang_parent_name = "operations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "operation"; yang_parent_name = "operations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::~Operation()
@@ -741,6 +752,7 @@ Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::~Operation()
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_id.is_set
 	|| (state !=  nullptr && state->has_data())
 	|| (lpd_paths !=  nullptr && lpd_paths->has_data());
@@ -757,7 +769,8 @@ bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::has_operat
 std::string Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "operation" <<"[operation-id='" <<operation_id <<"']";
+    path_buffer << "operation";
+    ADD_KEY_TOKEN(operation_id, "operation-id");
     return path_buffer.str();
 }
 
@@ -844,7 +857,7 @@ Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::State::State()
     operation_time{YType::uint64, "operation-time"}
 {
 
-    yang_name = "state"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::State::~State()
@@ -853,6 +866,7 @@ Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::State::~State()
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::State::has_data() const
 {
+    if (is_presence_container) return true;
     return target_address.is_set
 	|| target_mask.is_set
 	|| group_status.is_set
@@ -956,9 +970,11 @@ bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::State::has
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPaths()
+    :
+    lpd_path(this, {"path_index"})
 {
 
-    yang_name = "lpd-paths"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpd-paths"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::~LpdPaths()
@@ -967,7 +983,8 @@ Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::~LpdP
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::has_data() const
 {
-    for (std::size_t index=0; index<lpd_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lpd_path.len(); index++)
     {
         if(lpd_path[index]->has_data())
             return true;
@@ -977,7 +994,7 @@ bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::has_operation() const
 {
-    for (std::size_t index=0; index<lpd_path.size(); index++)
+    for (std::size_t index=0; index<lpd_path.len(); index++)
     {
         if(lpd_path[index]->has_operation())
             return true;
@@ -1007,7 +1024,7 @@ std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Op
     {
         auto c = std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath>();
         c->parent = this;
-        lpd_path.push_back(c);
+        lpd_path.append(c);
         return c;
     }
 
@@ -1019,7 +1036,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::Lsp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lpd_path)
+    for (auto c : lpd_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1047,18 +1064,18 @@ bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::
 
 Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::LpdPath()
     :
-    path_index{YType::int32, "path-index"},
+    path_index{YType::uint32, "path-index"},
     path_status{YType::enumeration, "path-status"},
     operation_time{YType::uint64, "operation-time"},
     response_time{YType::uint32, "response-time"},
     success_count{YType::uint32, "success-count"},
     failure_count{YType::uint32, "failure-count"}
-    	,
+        ,
     path_id(std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::PathId>())
 {
     path_id->parent = this;
 
-    yang_name = "lpd-path"; yang_parent_name = "lpd-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpd-path"; yang_parent_name = "lpd-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::~LpdPath()
@@ -1067,6 +1084,7 @@ Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPa
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::has_data() const
 {
+    if (is_presence_container) return true;
     return path_index.is_set
 	|| path_status.is_set
 	|| operation_time.is_set
@@ -1091,7 +1109,8 @@ bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::
 std::string Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lpd-path" <<"[path-index='" <<path_index <<"']";
+    path_buffer << "lpd-path";
+    ADD_KEY_TOKEN(path_index, "path-index");
     return path_buffer.str();
 }
 
@@ -1219,7 +1238,7 @@ Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPa
     downstream_label{YType::uint32, "downstream-label"}
 {
 
-    yang_name = "path-id"; yang_parent_name = "lpd-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-id"; yang_parent_name = "lpd-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::PathId::~PathId()
@@ -1228,6 +1247,7 @@ Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPa
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::PathId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : downstream_label.getYLeafs())
     {
         if(leaf.is_set)
@@ -1339,9 +1359,11 @@ bool Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueues()
+    :
+    scan_queue(this, {"address"})
 {
 
-    yang_name = "scan-queues"; yang_parent_name = "lsp-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scan-queues"; yang_parent_name = "lsp-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::~ScanQueues()
@@ -1350,7 +1372,8 @@ Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::~ScanQueues()
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::has_data() const
 {
-    for (std::size_t index=0; index<scan_queue.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<scan_queue.len(); index++)
     {
         if(scan_queue[index]->has_data())
             return true;
@@ -1360,7 +1383,7 @@ bool Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::has_data() const
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::has_operation() const
 {
-    for (std::size_t index=0; index<scan_queue.size(); index++)
+    for (std::size_t index=0; index<scan_queue.len(); index++)
     {
         if(scan_queue[index]->has_operation())
             return true;
@@ -1390,7 +1413,7 @@ std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ge
     {
         auto c = std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue>();
         c->parent = this;
-        scan_queue.push_back(c);
+        scan_queue.append(c);
         return c;
     }
 
@@ -1402,7 +1425,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::Lsp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : scan_queue)
+    for (auto c : scan_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1436,7 +1459,7 @@ Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue::ScanQueue()
     entry{YType::enumeration, "entry"}
 {
 
-    yang_name = "scan-queue"; yang_parent_name = "scan-queues"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scan-queue"; yang_parent_name = "scan-queues"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue::~ScanQueue()
@@ -1445,6 +1468,7 @@ Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue::~ScanQueue()
 
 bool Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| target_address.is_set
 	|| target_mask.is_set
@@ -1463,7 +1487,8 @@ bool Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue::has_operat
 std::string Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "scan-queue" <<"[address='" <<address <<"']";
+    path_buffer << "scan-queue";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -1553,7 +1578,7 @@ Ipsla::MplsData::Discovery::Discovery()
 {
     vpn->parent = this;
 
-    yang_name = "discovery"; yang_parent_name = "mpls-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "discovery"; yang_parent_name = "mpls-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::MplsData::Discovery::~Discovery()
@@ -1562,6 +1587,7 @@ Ipsla::MplsData::Discovery::~Discovery()
 
 bool Ipsla::MplsData::Discovery::has_data() const
 {
+    if (is_presence_container) return true;
     return (vpn !=  nullptr && vpn->has_data());
 }
 
@@ -1638,12 +1664,12 @@ bool Ipsla::MplsData::Discovery::has_leaf_or_child_of_name(const std::string & n
 Ipsla::MplsData::Discovery::Vpn::Vpn()
     :
     state(std::make_shared<Ipsla::MplsData::Discovery::Vpn::State>())
-	,nexthops(std::make_shared<Ipsla::MplsData::Discovery::Vpn::Nexthops>())
+    , nexthops(std::make_shared<Ipsla::MplsData::Discovery::Vpn::Nexthops>())
 {
     state->parent = this;
     nexthops->parent = this;
 
-    yang_name = "vpn"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vpn"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::MplsData::Discovery::Vpn::~Vpn()
@@ -1652,6 +1678,7 @@ Ipsla::MplsData::Discovery::Vpn::~Vpn()
 
 bool Ipsla::MplsData::Discovery::Vpn::has_data() const
 {
+    if (is_presence_container) return true;
     return (state !=  nullptr && state->has_data())
 	|| (nexthops !=  nullptr && nexthops->has_data());
 }
@@ -1746,7 +1773,7 @@ Ipsla::MplsData::Discovery::Vpn::State::State()
     refresh_remaining{YType::uint32, "refresh-remaining"}
 {
 
-    yang_name = "state"; yang_parent_name = "vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "state"; yang_parent_name = "vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::MplsData::Discovery::Vpn::State::~State()
@@ -1755,6 +1782,7 @@ Ipsla::MplsData::Discovery::Vpn::State::~State()
 
 bool Ipsla::MplsData::Discovery::Vpn::State::has_data() const
 {
+    if (is_presence_container) return true;
     return refresh_remaining.is_set;
 }
 
@@ -1826,9 +1854,11 @@ bool Ipsla::MplsData::Discovery::Vpn::State::has_leaf_or_child_of_name(const std
 }
 
 Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthops()
+    :
+    nexthop(this, {"address"})
 {
 
-    yang_name = "nexthops"; yang_parent_name = "vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nexthops"; yang_parent_name = "vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::MplsData::Discovery::Vpn::Nexthops::~Nexthops()
@@ -1837,7 +1867,8 @@ Ipsla::MplsData::Discovery::Vpn::Nexthops::~Nexthops()
 
 bool Ipsla::MplsData::Discovery::Vpn::Nexthops::has_data() const
 {
-    for (std::size_t index=0; index<nexthop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nexthop.len(); index++)
     {
         if(nexthop[index]->has_data())
             return true;
@@ -1847,7 +1878,7 @@ bool Ipsla::MplsData::Discovery::Vpn::Nexthops::has_data() const
 
 bool Ipsla::MplsData::Discovery::Vpn::Nexthops::has_operation() const
 {
-    for (std::size_t index=0; index<nexthop.size(); index++)
+    for (std::size_t index=0; index<nexthop.len(); index++)
     {
         if(nexthop[index]->has_operation())
             return true;
@@ -1884,7 +1915,7 @@ std::shared_ptr<Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::get_child_by_
     {
         auto c = std::make_shared<Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop>();
         c->parent = this;
-        nexthop.push_back(c);
+        nexthop.append(c);
         return c;
     }
 
@@ -1896,7 +1927,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::Discovery::Vpn::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nexthop)
+    for (auto c : nexthop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1925,14 +1956,14 @@ bool Ipsla::MplsData::Discovery::Vpn::Nexthops::has_leaf_or_child_of_name(const 
 Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Nexthop()
     :
     address{YType::str, "address"}
-    	,
+        ,
     vrfs(std::make_shared<Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs>())
-	,prefix(std::make_shared<Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Prefix>())
+    , prefix(std::make_shared<Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Prefix>())
 {
     vrfs->parent = this;
     prefix->parent = this;
 
-    yang_name = "nexthop"; yang_parent_name = "nexthops"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nexthop"; yang_parent_name = "nexthops"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::~Nexthop()
@@ -1941,6 +1972,7 @@ Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::~Nexthop()
 
 bool Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| (vrfs !=  nullptr && vrfs->has_data())
 	|| (prefix !=  nullptr && prefix->has_data());
@@ -1964,7 +1996,8 @@ std::string Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::get_absolute_pat
 std::string Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nexthop" <<"[address='" <<address <<"']";
+    path_buffer << "nexthop";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -2044,9 +2077,11 @@ bool Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::has_leaf_or_child_of_na
 }
 
 Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::~Vrfs()
@@ -2055,7 +2090,8 @@ Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::~Vrfs()
 
 bool Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -2065,7 +2101,7 @@ bool Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::has_data() const
 
 bool Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -2095,7 +2131,7 @@ std::shared_ptr<Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs
     {
         auto c = std::make_shared<Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -2107,7 +2143,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::Discovery::Vpn::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2139,7 +2175,7 @@ Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf::Vrf()
     prefix_count{YType::uint32, "prefix-count"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf::~Vrf()
@@ -2148,6 +2184,7 @@ Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf::~Vrf()
 
 bool Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| prefix_count.is_set;
 }
@@ -2162,7 +2199,8 @@ bool Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf::has_operatio
 std::string Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -2230,7 +2268,7 @@ Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Prefix::Prefix()
     target_mask{YType::uint32, "target-mask"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Prefix::~Prefix()
@@ -2239,6 +2277,7 @@ Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Prefix::~Prefix()
 
 bool Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return target_address.is_set
 	|| target_mask.is_set;
 }
@@ -2321,7 +2360,7 @@ Ipsla::Responder::Responder()
 {
     ports->parent = this;
 
-    yang_name = "responder"; yang_parent_name = "ipsla"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "responder"; yang_parent_name = "ipsla"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::Responder::~Responder()
@@ -2330,6 +2369,7 @@ Ipsla::Responder::~Responder()
 
 bool Ipsla::Responder::has_data() const
 {
+    if (is_presence_container) return true;
     return (ports !=  nullptr && ports->has_data());
 }
 
@@ -2404,9 +2444,11 @@ bool Ipsla::Responder::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ipsla::Responder::Ports::Ports()
+    :
+    port(this, {"port"})
 {
 
-    yang_name = "ports"; yang_parent_name = "responder"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ports"; yang_parent_name = "responder"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::Responder::Ports::~Ports()
@@ -2415,7 +2457,8 @@ Ipsla::Responder::Ports::~Ports()
 
 bool Ipsla::Responder::Ports::has_data() const
 {
-    for (std::size_t index=0; index<port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port.len(); index++)
     {
         if(port[index]->has_data())
             return true;
@@ -2425,7 +2468,7 @@ bool Ipsla::Responder::Ports::has_data() const
 
 bool Ipsla::Responder::Ports::has_operation() const
 {
-    for (std::size_t index=0; index<port.size(); index++)
+    for (std::size_t index=0; index<port.len(); index++)
     {
         if(port[index]->has_operation())
             return true;
@@ -2462,7 +2505,7 @@ std::shared_ptr<Entity> Ipsla::Responder::Ports::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Ipsla::Responder::Ports::Port>();
         c->parent = this;
-        port.push_back(c);
+        port.append(c);
         return c;
     }
 
@@ -2474,7 +2517,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::Responder::Ports::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port)
+    for (auto c : port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2513,9 +2556,11 @@ Ipsla::Responder::Ports::Port::Port()
     is_ipsla{YType::boolean, "is-ipsla"},
     drop_counter{YType::uint32, "drop-counter"},
     socket{YType::int32, "socket"}
+        ,
+    sender(this, {})
 {
 
-    yang_name = "port"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::Responder::Ports::Port::~Port()
@@ -2524,7 +2569,8 @@ Ipsla::Responder::Ports::Port::~Port()
 
 bool Ipsla::Responder::Ports::Port::has_data() const
 {
-    for (std::size_t index=0; index<sender.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sender.len(); index++)
     {
         if(sender[index]->has_data())
             return true;
@@ -2544,7 +2590,7 @@ bool Ipsla::Responder::Ports::Port::has_data() const
 
 bool Ipsla::Responder::Ports::Port::has_operation() const
 {
-    for (std::size_t index=0; index<sender.size(); index++)
+    for (std::size_t index=0; index<sender.len(); index++)
     {
         if(sender[index]->has_operation())
             return true;
@@ -2573,7 +2619,8 @@ std::string Ipsla::Responder::Ports::Port::get_absolute_path() const
 std::string Ipsla::Responder::Ports::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port" <<"[port='" <<port <<"']";
+    path_buffer << "port";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -2603,7 +2650,7 @@ std::shared_ptr<Entity> Ipsla::Responder::Ports::Port::get_child_by_name(const s
     {
         auto c = std::make_shared<Ipsla::Responder::Ports::Port::Sender>();
         c->parent = this;
-        sender.push_back(c);
+        sender.append(c);
         return c;
     }
 
@@ -2615,7 +2662,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::Responder::Ports::Port::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sender)
+    for (auto c : sender.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2758,7 +2805,7 @@ Ipsla::Responder::Ports::Port::Sender::Sender()
     last_recv_time{YType::uint64, "last-recv-time"}
 {
 
-    yang_name = "sender"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sender"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::Responder::Ports::Port::Sender::~Sender()
@@ -2767,6 +2814,7 @@ Ipsla::Responder::Ports::Port::Sender::~Sender()
 
 bool Ipsla::Responder::Ports::Port::Sender::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| port.is_set
 	|| last_recv_time.is_set;
@@ -2862,7 +2910,7 @@ Ipsla::OperationData::OperationData()
 {
     operations->parent = this;
 
-    yang_name = "operation-data"; yang_parent_name = "ipsla"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-data"; yang_parent_name = "ipsla"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::OperationData::~OperationData()
@@ -2871,6 +2919,7 @@ Ipsla::OperationData::~OperationData()
 
 bool Ipsla::OperationData::has_data() const
 {
+    if (is_presence_container) return true;
     return (operations !=  nullptr && operations->has_data());
 }
 
@@ -2945,9 +2994,11 @@ bool Ipsla::OperationData::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 Ipsla::OperationData::Operations::Operations()
+    :
+    operation_(this, {"operation_id"})
 {
 
-    yang_name = "operations"; yang_parent_name = "operation-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operations"; yang_parent_name = "operation-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::OperationData::Operations::~Operations()
@@ -2956,7 +3007,8 @@ Ipsla::OperationData::Operations::~Operations()
 
 bool Ipsla::OperationData::Operations::has_data() const
 {
-    for (std::size_t index=0; index<operation_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<operation_.len(); index++)
     {
         if(operation_[index]->has_data())
             return true;
@@ -2966,7 +3018,7 @@ bool Ipsla::OperationData::Operations::has_data() const
 
 bool Ipsla::OperationData::Operations::has_operation() const
 {
-    for (std::size_t index=0; index<operation_.size(); index++)
+    for (std::size_t index=0; index<operation_.len(); index++)
     {
         if(operation_[index]->has_operation())
             return true;
@@ -3003,7 +3055,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::get_child_by_name(cons
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation>();
         c->parent = this;
-        operation_.push_back(c);
+        operation_.append(c);
         return c;
     }
 
@@ -3015,7 +3067,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : operation_)
+    for (auto c : operation_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3043,19 +3095,19 @@ bool Ipsla::OperationData::Operations::has_leaf_or_child_of_name(const std::stri
 
 Ipsla::OperationData::Operations::Operation::Operation()
     :
-    operation_id{YType::int32, "operation-id"}
-    	,
+    operation_id{YType::uint32, "operation-id"}
+        ,
     common(std::make_shared<Ipsla::OperationData::Operations::Operation::Common>())
-	,lpd(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd>())
-	,history(std::make_shared<Ipsla::OperationData::Operations::Operation::History>())
-	,statistics(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics>())
+    , lpd(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd>())
+    , history(std::make_shared<Ipsla::OperationData::Operations::Operation::History>())
+    , statistics(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics>())
 {
     common->parent = this;
     lpd->parent = this;
     history->parent = this;
     statistics->parent = this;
 
-    yang_name = "operation"; yang_parent_name = "operations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation"; yang_parent_name = "operations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::OperationData::Operations::Operation::~Operation()
@@ -3064,6 +3116,7 @@ Ipsla::OperationData::Operations::Operation::~Operation()
 
 bool Ipsla::OperationData::Operations::Operation::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_id.is_set
 	|| (common !=  nullptr && common->has_data())
 	|| (lpd !=  nullptr && lpd->has_data())
@@ -3091,7 +3144,8 @@ std::string Ipsla::OperationData::Operations::Operation::get_absolute_path() con
 std::string Ipsla::OperationData::Operations::Operation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "operation" <<"[operation-id='" <<operation_id <<"']";
+    path_buffer << "operation";
+    ADD_KEY_TOKEN(operation_id, "operation-id");
     return path_buffer.str();
 }
 
@@ -3204,7 +3258,7 @@ Ipsla::OperationData::Operations::Operation::Common::Common()
 {
     operational_state->parent = this;
 
-    yang_name = "common"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Common::~Common()
@@ -3213,6 +3267,7 @@ Ipsla::OperationData::Operations::Operation::Common::~Common()
 
 bool Ipsla::OperationData::Operations::Operation::Common::has_data() const
 {
+    if (is_presence_container) return true;
     return (operational_state !=  nullptr && operational_state->has_data());
 }
 
@@ -3296,7 +3351,7 @@ Ipsla::OperationData::Operations::Operation::Common::OperationalState::Operation
     operation_time{YType::uint64, "operation-time"}
 {
 
-    yang_name = "operational-state"; yang_parent_name = "common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "operational-state"; yang_parent_name = "common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Common::OperationalState::~OperationalState()
@@ -3305,6 +3360,7 @@ Ipsla::OperationData::Operations::Operation::Common::OperationalState::~Operatio
 
 bool Ipsla::OperationData::Operations::Operation::Common::OperationalState::has_data() const
 {
+    if (is_presence_container) return true;
     return modification_time.is_set
 	|| start_time.is_set
 	|| attempt_count.is_set
@@ -3527,12 +3583,12 @@ bool Ipsla::OperationData::Operations::Operation::Common::OperationalState::has_
 Ipsla::OperationData::Operations::Operation::Lpd::Lpd()
     :
     statistics(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics>())
-	,status(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status>())
+    , status(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status>())
 {
     statistics->parent = this;
     status->parent = this;
 
-    yang_name = "lpd"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpd"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::~Lpd()
@@ -3541,6 +3597,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::~Lpd()
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data())
 	|| (status !=  nullptr && status->has_data());
 }
@@ -3626,12 +3683,12 @@ bool Ipsla::OperationData::Operations::Operation::Lpd::has_leaf_or_child_of_name
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Statistics()
     :
     latest(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest>())
-	,aggregated(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated>())
+    , aggregated(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated>())
 {
     latest->parent = this;
     aggregated->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "lpd"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "lpd"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::~Statistics()
@@ -3640,6 +3697,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::~Statistics()
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (latest !=  nullptr && latest->has_data())
 	|| (aggregated !=  nullptr && aggregated->has_data());
 }
@@ -3728,7 +3786,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Latest()
 {
     target->parent = this;
 
-    yang_name = "latest"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "latest"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::~Latest()
@@ -3737,6 +3795,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::~Latest()
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::has_data() const
 {
+    if (is_presence_container) return true;
     return (target !=  nullptr && target->has_data());
 }
 
@@ -3823,12 +3882,12 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::Ta
     timeout_count{YType::uint32, "timeout-count"},
     internal_error_count{YType::uint32, "internal-error-count"},
     unknown_count{YType::uint32, "unknown-count"}
-    	,
+        ,
     target_address(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress>())
 {
     target_address->parent = this;
 
-    yang_name = "target"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::~Target()
@@ -3837,6 +3896,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::~T
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| return_code.is_set
 	|| completion_time_count.is_set
@@ -4142,16 +4202,16 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::Ta
     target_type{YType::enumeration, "target-type"},
     ipv4_address_target{YType::str, "ipv4-address-target"},
     ipv6_address_target{YType::str, "ipv6-address-target"}
-    	,
+        ,
     ipv4_prefix_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PrefixTarget>())
-	,tunnel_id_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::TunnelIdTarget>())
-	,ipv4_pseudowire_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PseudowireTarget>())
+    , tunnel_id_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::TunnelIdTarget>())
+    , ipv4_pseudowire_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PseudowireTarget>())
 {
     ipv4_prefix_target->parent = this;
     tunnel_id_target->parent = this;
     ipv4_pseudowire_target->parent = this;
 
-    yang_name = "target-address"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-address"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::~TargetAddress()
@@ -4160,6 +4220,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::Ta
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return target_type.is_set
 	|| ipv4_address_target.is_set
 	|| ipv6_address_target.is_set
@@ -4303,7 +4364,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::Ta
     mask_length{YType::uint8, "mask-length"}
 {
 
-    yang_name = "ipv4-prefix-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-prefix-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PrefixTarget::~Ipv4PrefixTarget()
@@ -4312,6 +4373,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::Ta
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PrefixTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask_length.is_set;
 }
@@ -4393,7 +4455,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::Ta
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "tunnel-id-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-id-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::TunnelIdTarget::~TunnelIdTarget()
@@ -4402,6 +4464,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::Ta
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::TunnelIdTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_id.is_set;
 }
 
@@ -4471,7 +4534,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::Ta
     virtual_circuit_id{YType::uint32, "virtual-circuit-id"}
 {
 
-    yang_name = "ipv4-pseudowire-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-pseudowire-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PseudowireTarget::~Ipv4PseudowireTarget()
@@ -4480,6 +4543,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::Ta
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PseudowireTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| virtual_circuit_id.is_set;
 }
@@ -4562,7 +4626,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Aggreg
 {
     hours->parent = this;
 
-    yang_name = "aggregated"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregated"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::~Aggregated()
@@ -4571,6 +4635,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::~Aggre
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::has_data() const
 {
+    if (is_presence_container) return true;
     return (hours !=  nullptr && hours->has_data());
 }
 
@@ -4638,9 +4703,11 @@ bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::h
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hours()
+    :
+    hour(this, {"hour_index"})
 {
 
-    yang_name = "hours"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hours"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::~Hours()
@@ -4649,7 +4716,8 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::has_data() const
 {
-    for (std::size_t index=0; index<hour.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hour.len(); index++)
     {
         if(hour[index]->has_data())
             return true;
@@ -4659,7 +4727,7 @@ bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::H
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::has_operation() const
 {
-    for (std::size_t index=0; index<hour.size(); index++)
+    for (std::size_t index=0; index<hour.len(); index++)
     {
         if(hour[index]->has_operation())
             return true;
@@ -4689,7 +4757,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statis
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour>();
         c->parent = this;
-        hour.push_back(c);
+        hour.append(c);
         return c;
     }
 
@@ -4701,7 +4769,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hour)
+    for (auto c : hour.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4729,7 +4797,7 @@ bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::H
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::Hour()
     :
-    hour_index{YType::int32, "hour-index"},
+    hour_index{YType::uint32, "hour-index"},
     start_time{YType::uint64, "start-time"},
     return_code{YType::enumeration, "return-code"},
     completion_time_count{YType::uint32, "completion-time-count"},
@@ -4748,12 +4816,12 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours:
     timeout_count{YType::uint32, "timeout-count"},
     internal_error_count{YType::uint32, "internal-error-count"},
     unknown_count{YType::uint32, "unknown-count"}
-    	,
+        ,
     target_address(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress>())
 {
     target_address->parent = this;
 
-    yang_name = "hour"; yang_parent_name = "hours"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hour"; yang_parent_name = "hours"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::~Hour()
@@ -4762,6 +4830,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::has_data() const
 {
+    if (is_presence_container) return true;
     return hour_index.is_set
 	|| start_time.is_set
 	|| return_code.is_set
@@ -4812,7 +4881,8 @@ bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::H
 std::string Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hour" <<"[hour-index='" <<hour_index <<"']";
+    path_buffer << "hour";
+    ADD_KEY_TOKEN(hour_index, "hour-index");
     return path_buffer.str();
 }
 
@@ -5080,16 +5150,16 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours:
     target_type{YType::enumeration, "target-type"},
     ipv4_address_target{YType::str, "ipv4-address-target"},
     ipv6_address_target{YType::str, "ipv6-address-target"}
-    	,
+        ,
     ipv4_prefix_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PrefixTarget>())
-	,tunnel_id_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::TunnelIdTarget>())
-	,ipv4_pseudowire_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PseudowireTarget>())
+    , tunnel_id_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::TunnelIdTarget>())
+    , ipv4_pseudowire_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PseudowireTarget>())
 {
     ipv4_prefix_target->parent = this;
     tunnel_id_target->parent = this;
     ipv4_pseudowire_target->parent = this;
 
-    yang_name = "target-address"; yang_parent_name = "hour"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-address"; yang_parent_name = "hour"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::~TargetAddress()
@@ -5098,6 +5168,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return target_type.is_set
 	|| ipv4_address_target.is_set
 	|| ipv6_address_target.is_set
@@ -5241,7 +5312,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours:
     mask_length{YType::uint8, "mask-length"}
 {
 
-    yang_name = "ipv4-prefix-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-prefix-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PrefixTarget::~Ipv4PrefixTarget()
@@ -5250,6 +5321,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PrefixTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask_length.is_set;
 }
@@ -5331,7 +5403,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours:
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "tunnel-id-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-id-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::TunnelIdTarget::~TunnelIdTarget()
@@ -5340,6 +5412,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::TunnelIdTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_id.is_set;
 }
 
@@ -5409,7 +5482,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours:
     virtual_circuit_id{YType::uint32, "virtual-circuit-id"}
 {
 
-    yang_name = "ipv4-pseudowire-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-pseudowire-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PseudowireTarget::~Ipv4PseudowireTarget()
@@ -5418,6 +5491,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PseudowireTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| virtual_circuit_id.is_set;
 }
@@ -5497,12 +5571,12 @@ bool Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::H
 Ipsla::OperationData::Operations::Operation::Lpd::Status::Status()
     :
     lpd_paths(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths>())
-	,state(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::State>())
+    , state(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::State>())
 {
     lpd_paths->parent = this;
     state->parent = this;
 
-    yang_name = "status"; yang_parent_name = "lpd"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "status"; yang_parent_name = "lpd"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Status::~Status()
@@ -5511,6 +5585,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::~Status()
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Status::has_data() const
 {
+    if (is_presence_container) return true;
     return (lpd_paths !=  nullptr && lpd_paths->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -5594,9 +5669,11 @@ bool Ipsla::OperationData::Operations::Operation::Lpd::Status::has_leaf_or_child
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPaths()
+    :
+    lpd_path(this, {"path_index"})
 {
 
-    yang_name = "lpd-paths"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpd-paths"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::~LpdPaths()
@@ -5605,7 +5682,8 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::~LpdPaths()
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::has_data() const
 {
-    for (std::size_t index=0; index<lpd_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lpd_path.len(); index++)
     {
         if(lpd_path[index]->has_data())
             return true;
@@ -5615,7 +5693,7 @@ bool Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::has_dat
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::has_operation() const
 {
-    for (std::size_t index=0; index<lpd_path.size(); index++)
+    for (std::size_t index=0; index<lpd_path.len(); index++)
     {
         if(lpd_path[index]->has_operation())
             return true;
@@ -5645,7 +5723,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath>();
         c->parent = this;
-        lpd_path.push_back(c);
+        lpd_path.append(c);
         return c;
     }
 
@@ -5657,7 +5735,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lpd_path)
+    for (auto c : lpd_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5685,14 +5763,14 @@ bool Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::has_lea
 
 Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::LpdPath()
     :
-    path_index{YType::int32, "path-index"},
+    path_index{YType::uint32, "path-index"},
     path_status{YType::enumeration, "path-status"}
-    	,
+        ,
     path_id(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::PathId>())
 {
     path_id->parent = this;
 
-    yang_name = "lpd-path"; yang_parent_name = "lpd-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpd-path"; yang_parent_name = "lpd-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::~LpdPath()
@@ -5701,6 +5779,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::~Lp
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::has_data() const
 {
+    if (is_presence_container) return true;
     return path_index.is_set
 	|| path_status.is_set
 	|| (path_id !=  nullptr && path_id->has_data());
@@ -5717,7 +5796,8 @@ bool Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath
 std::string Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lpd-path" <<"[path-index='" <<path_index <<"']";
+    path_buffer << "lpd-path";
+    ADD_KEY_TOKEN(path_index, "path-index");
     return path_buffer.str();
 }
 
@@ -5801,7 +5881,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::Pat
     downstream_label{YType::uint32, "downstream-label"}
 {
 
-    yang_name = "path-id"; yang_parent_name = "lpd-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-id"; yang_parent_name = "lpd-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::PathId::~PathId()
@@ -5810,6 +5890,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::Pat
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::PathId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : downstream_label.getYLeafs())
     {
         if(leaf.is_set)
@@ -5928,12 +6009,12 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::State::State()
     return_code{YType::enumeration, "return-code"},
     completion_time{YType::uint32, "completion-time"},
     path_count{YType::uint32, "path-count"}
-    	,
+        ,
     target_address(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress>())
 {
     target_address->parent = this;
 
-    yang_name = "state"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Status::State::~State()
@@ -5942,6 +6023,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::State::~State()
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Status::State::has_data() const
 {
+    if (is_presence_container) return true;
     return monitor_id.is_set
 	|| discovery_mode.is_set
 	|| start_time.is_set
@@ -6091,16 +6173,16 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::
     target_type{YType::enumeration, "target-type"},
     ipv4_address_target{YType::str, "ipv4-address-target"},
     ipv6_address_target{YType::str, "ipv6-address-target"}
-    	,
+        ,
     ipv4_prefix_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PrefixTarget>())
-	,tunnel_id_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::TunnelIdTarget>())
-	,ipv4_pseudowire_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PseudowireTarget>())
+    , tunnel_id_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::TunnelIdTarget>())
+    , ipv4_pseudowire_target(std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PseudowireTarget>())
 {
     ipv4_prefix_target->parent = this;
     tunnel_id_target->parent = this;
     ipv4_pseudowire_target->parent = this;
 
-    yang_name = "target-address"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-address"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::~TargetAddress()
@@ -6109,6 +6191,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return target_type.is_set
 	|| ipv4_address_target.is_set
 	|| ipv6_address_target.is_set
@@ -6252,7 +6335,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::
     mask_length{YType::uint8, "mask-length"}
 {
 
-    yang_name = "ipv4-prefix-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-prefix-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PrefixTarget::~Ipv4PrefixTarget()
@@ -6261,6 +6344,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PrefixTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask_length.is_set;
 }
@@ -6342,7 +6426,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "tunnel-id-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-id-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::TunnelIdTarget::~TunnelIdTarget()
@@ -6351,6 +6435,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::TunnelIdTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_id.is_set;
 }
 
@@ -6420,7 +6505,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::
     virtual_circuit_id{YType::uint32, "virtual-circuit-id"}
 {
 
-    yang_name = "ipv4-pseudowire-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-pseudowire-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PseudowireTarget::~Ipv4PseudowireTarget()
@@ -6429,6 +6514,7 @@ Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::
 
 bool Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PseudowireTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| virtual_circuit_id.is_set;
 }
@@ -6508,12 +6594,12 @@ bool Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddr
 Ipsla::OperationData::Operations::Operation::History::History()
     :
     path(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path>())
-	,target(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target>())
+    , target(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target>())
 {
     path->parent = this;
     target->parent = this;
 
-    yang_name = "history"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::~History()
@@ -6522,6 +6608,7 @@ Ipsla::OperationData::Operations::Operation::History::~History()
 
 bool Ipsla::OperationData::Operations::Operation::History::has_data() const
 {
+    if (is_presence_container) return true;
     return (path !=  nullptr && path->has_data())
 	|| (target !=  nullptr && target->has_data());
 }
@@ -6610,7 +6697,7 @@ Ipsla::OperationData::Operations::Operation::History::Path::Path()
 {
     lifes->parent = this;
 
-    yang_name = "path"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::~Path()
@@ -6619,6 +6706,7 @@ Ipsla::OperationData::Operations::Operation::History::Path::~Path()
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return (lifes !=  nullptr && lifes->has_data());
 }
 
@@ -6686,9 +6774,11 @@ bool Ipsla::OperationData::Operations::Operation::History::Path::has_leaf_or_chi
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Lifes()
+    :
+    life(this, {"life_index"})
 {
 
-    yang_name = "lifes"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lifes"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::~Lifes()
@@ -6697,7 +6787,8 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::~Lifes()
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::has_data() const
 {
-    for (std::size_t index=0; index<life.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<life.len(); index++)
     {
         if(life[index]->has_data())
             return true;
@@ -6707,7 +6798,7 @@ bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::has_data
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::has_operation() const
 {
-    for (std::size_t index=0; index<life.size(); index++)
+    for (std::size_t index=0; index<life.len(); index++)
     {
         if(life[index]->has_operation())
             return true;
@@ -6737,7 +6828,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Pa
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life>();
         c->parent = this;
-        life.push_back(c);
+        life.append(c);
         return c;
     }
 
@@ -6749,7 +6840,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : life)
+    for (auto c : life.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6777,13 +6868,13 @@ bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::has_leaf
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Life()
     :
-    life_index{YType::int32, "life-index"}
-    	,
+    life_index{YType::uint32, "life-index"}
+        ,
     buckets(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets>())
 {
     buckets->parent = this;
 
-    yang_name = "life"; yang_parent_name = "lifes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "life"; yang_parent_name = "lifes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::~Life()
@@ -6792,6 +6883,7 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::~Life()
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::has_data() const
 {
+    if (is_presence_container) return true;
     return life_index.is_set
 	|| (buckets !=  nullptr && buckets->has_data());
 }
@@ -6806,7 +6898,8 @@ bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::ha
 std::string Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "life" <<"[life-index='" <<life_index <<"']";
+    path_buffer << "life";
+    ADD_KEY_TOKEN(life_index, "life-index");
     return path_buffer.str();
 }
 
@@ -6872,9 +6965,11 @@ bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::ha
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Buckets()
+    :
+    bucket(this, {"bucket_index"})
 {
 
-    yang_name = "buckets"; yang_parent_name = "life"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "buckets"; yang_parent_name = "life"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::~Buckets()
@@ -6883,7 +6978,8 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::has_data() const
 {
-    for (std::size_t index=0; index<bucket.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bucket.len(); index++)
     {
         if(bucket[index]->has_data())
             return true;
@@ -6893,7 +6989,7 @@ bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Bu
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::has_operation() const
 {
-    for (std::size_t index=0; index<bucket.size(); index++)
+    for (std::size_t index=0; index<bucket.len(); index++)
     {
         if(bucket[index]->has_operation())
             return true;
@@ -6923,7 +7019,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Pa
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket>();
         c->parent = this;
-        bucket.push_back(c);
+        bucket.append(c);
         return c;
     }
 
@@ -6935,7 +7031,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bucket)
+    for (auto c : bucket.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6963,13 +7059,13 @@ bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Bu
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Bucket()
     :
-    bucket_index{YType::int32, "bucket-index"}
-    	,
+    bucket_index{YType::uint32, "bucket-index"}
+        ,
     samples(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples>())
 {
     samples->parent = this;
 
-    yang_name = "bucket"; yang_parent_name = "buckets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bucket"; yang_parent_name = "buckets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::~Bucket()
@@ -6978,6 +7074,7 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::has_data() const
 {
+    if (is_presence_container) return true;
     return bucket_index.is_set
 	|| (samples !=  nullptr && samples->has_data());
 }
@@ -6992,7 +7089,8 @@ bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Bu
 std::string Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bucket" <<"[bucket-index='" <<bucket_index <<"']";
+    path_buffer << "bucket";
+    ADD_KEY_TOKEN(bucket_index, "bucket-index");
     return path_buffer.str();
 }
 
@@ -7058,9 +7156,11 @@ bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Bu
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Samples()
+    :
+    sample(this, {"sample_index"})
 {
 
-    yang_name = "samples"; yang_parent_name = "bucket"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "samples"; yang_parent_name = "bucket"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::~Samples()
@@ -7069,7 +7169,8 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -7079,7 +7180,7 @@ bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Bu
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -7109,7 +7210,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Pa
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -7121,7 +7222,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7149,16 +7250,16 @@ bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Bu
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::Sample()
     :
-    sample_index{YType::int32, "sample-index"},
+    sample_index{YType::uint32, "sample-index"},
     start_time{YType::uint64, "start-time"},
     response_time{YType::uint32, "response-time"},
     return_code{YType::enumeration, "return-code"}
-    	,
+        ,
     target_address(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress>())
 {
     target_address->parent = this;
 
-    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sample"; yang_parent_name = "samples"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::~Sample()
@@ -7167,6 +7268,7 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sample_index.is_set
 	|| start_time.is_set
 	|| response_time.is_set
@@ -7187,7 +7289,8 @@ bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Bu
 std::string Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sample" <<"[sample-index='" <<sample_index <<"']";
+    path_buffer << "sample";
+    ADD_KEY_TOKEN(sample_index, "sample-index");
     return path_buffer.str();
 }
 
@@ -7290,16 +7393,16 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
     target_type{YType::enumeration, "target-type"},
     ipv4_address_target{YType::str, "ipv4-address-target"},
     ipv6_address_target{YType::str, "ipv6-address-target"}
-    	,
+        ,
     ipv4_prefix_target(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PrefixTarget>())
-	,tunnel_id_target(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::TunnelIdTarget>())
-	,ipv4_pseudowire_target(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PseudowireTarget>())
+    , tunnel_id_target(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::TunnelIdTarget>())
+    , ipv4_pseudowire_target(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PseudowireTarget>())
 {
     ipv4_prefix_target->parent = this;
     tunnel_id_target->parent = this;
     ipv4_pseudowire_target->parent = this;
 
-    yang_name = "target-address"; yang_parent_name = "sample"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-address"; yang_parent_name = "sample"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::~TargetAddress()
@@ -7308,6 +7411,7 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return target_type.is_set
 	|| ipv4_address_target.is_set
 	|| ipv6_address_target.is_set
@@ -7451,7 +7555,7 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
     mask_length{YType::uint8, "mask-length"}
 {
 
-    yang_name = "ipv4-prefix-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-prefix-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PrefixTarget::~Ipv4PrefixTarget()
@@ -7460,6 +7564,7 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PrefixTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask_length.is_set;
 }
@@ -7541,7 +7646,7 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "tunnel-id-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-id-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::TunnelIdTarget::~TunnelIdTarget()
@@ -7550,6 +7655,7 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::TunnelIdTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_id.is_set;
 }
 
@@ -7619,7 +7725,7 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
     virtual_circuit_id{YType::uint32, "virtual-circuit-id"}
 {
 
-    yang_name = "ipv4-pseudowire-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-pseudowire-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PseudowireTarget::~Ipv4PseudowireTarget()
@@ -7628,6 +7734,7 @@ Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
 
 bool Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PseudowireTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| virtual_circuit_id.is_set;
 }
@@ -7710,7 +7817,7 @@ Ipsla::OperationData::Operations::Operation::History::Target::Target()
 {
     lifes->parent = this;
 
-    yang_name = "target"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Target::~Target()
@@ -7719,6 +7826,7 @@ Ipsla::OperationData::Operations::Operation::History::Target::~Target()
 
 bool Ipsla::OperationData::Operations::Operation::History::Target::has_data() const
 {
+    if (is_presence_container) return true;
     return (lifes !=  nullptr && lifes->has_data());
 }
 
@@ -7786,9 +7894,11 @@ bool Ipsla::OperationData::Operations::Operation::History::Target::has_leaf_or_c
 }
 
 Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Lifes()
+    :
+    life(this, {"life_index"})
 {
 
-    yang_name = "lifes"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lifes"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Target::Lifes::~Lifes()
@@ -7797,7 +7907,8 @@ Ipsla::OperationData::Operations::Operation::History::Target::Lifes::~Lifes()
 
 bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::has_data() const
 {
-    for (std::size_t index=0; index<life.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<life.len(); index++)
     {
         if(life[index]->has_data())
             return true;
@@ -7807,7 +7918,7 @@ bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::has_da
 
 bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::has_operation() const
 {
-    for (std::size_t index=0; index<life.size(); index++)
+    for (std::size_t index=0; index<life.len(); index++)
     {
         if(life[index]->has_operation())
             return true;
@@ -7837,7 +7948,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Ta
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life>();
         c->parent = this;
-        life.push_back(c);
+        life.append(c);
         return c;
     }
 
@@ -7849,7 +7960,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : life)
+    for (auto c : life.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7877,13 +7988,13 @@ bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::has_le
 
 Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Life()
     :
-    life_index{YType::int32, "life-index"}
-    	,
+    life_index{YType::uint32, "life-index"}
+        ,
     buckets(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets>())
 {
     buckets->parent = this;
 
-    yang_name = "life"; yang_parent_name = "lifes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "life"; yang_parent_name = "lifes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::~Life()
@@ -7892,6 +8003,7 @@ Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::~Life
 
 bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::has_data() const
 {
+    if (is_presence_container) return true;
     return life_index.is_set
 	|| (buckets !=  nullptr && buckets->has_data());
 }
@@ -7906,7 +8018,8 @@ bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::
 std::string Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "life" <<"[life-index='" <<life_index <<"']";
+    path_buffer << "life";
+    ADD_KEY_TOKEN(life_index, "life-index");
     return path_buffer.str();
 }
 
@@ -7972,9 +8085,11 @@ bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::
 }
 
 Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Buckets()
+    :
+    bucket(this, {"bucket_index"})
 {
 
-    yang_name = "buckets"; yang_parent_name = "life"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "buckets"; yang_parent_name = "life"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::~Buckets()
@@ -7983,7 +8098,8 @@ Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Bucke
 
 bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::has_data() const
 {
-    for (std::size_t index=0; index<bucket.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bucket.len(); index++)
     {
         if(bucket[index]->has_data())
             return true;
@@ -7993,7 +8109,7 @@ bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::
 
 bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::has_operation() const
 {
-    for (std::size_t index=0; index<bucket.size(); index++)
+    for (std::size_t index=0; index<bucket.len(); index++)
     {
         if(bucket[index]->has_operation())
             return true;
@@ -8023,7 +8139,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Ta
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket>();
         c->parent = this;
-        bucket.push_back(c);
+        bucket.append(c);
         return c;
     }
 
@@ -8035,7 +8151,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bucket)
+    for (auto c : bucket.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8063,16 +8179,16 @@ bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::
 
 Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::Bucket()
     :
-    bucket_index{YType::int32, "bucket-index"},
+    bucket_index{YType::uint32, "bucket-index"},
     start_time{YType::uint64, "start-time"},
     response_time{YType::uint32, "response-time"},
     return_code{YType::enumeration, "return-code"}
-    	,
+        ,
     target_address(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress>())
 {
     target_address->parent = this;
 
-    yang_name = "bucket"; yang_parent_name = "buckets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bucket"; yang_parent_name = "buckets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::~Bucket()
@@ -8081,6 +8197,7 @@ Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Bucke
 
 bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::has_data() const
 {
+    if (is_presence_container) return true;
     return bucket_index.is_set
 	|| start_time.is_set
 	|| response_time.is_set
@@ -8101,7 +8218,8 @@ bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::
 std::string Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bucket" <<"[bucket-index='" <<bucket_index <<"']";
+    path_buffer << "bucket";
+    ADD_KEY_TOKEN(bucket_index, "bucket-index");
     return path_buffer.str();
 }
 
@@ -8204,16 +8322,16 @@ Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Bucke
     target_type{YType::enumeration, "target-type"},
     ipv4_address_target{YType::str, "ipv4-address-target"},
     ipv6_address_target{YType::str, "ipv6-address-target"}
-    	,
+        ,
     ipv4_prefix_target(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PrefixTarget>())
-	,tunnel_id_target(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::TunnelIdTarget>())
-	,ipv4_pseudowire_target(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PseudowireTarget>())
+    , tunnel_id_target(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::TunnelIdTarget>())
+    , ipv4_pseudowire_target(std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PseudowireTarget>())
 {
     ipv4_prefix_target->parent = this;
     tunnel_id_target->parent = this;
     ipv4_pseudowire_target->parent = this;
 
-    yang_name = "target-address"; yang_parent_name = "bucket"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-address"; yang_parent_name = "bucket"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::~TargetAddress()
@@ -8222,6 +8340,7 @@ Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Bucke
 
 bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return target_type.is_set
 	|| ipv4_address_target.is_set
 	|| ipv6_address_target.is_set
@@ -8365,7 +8484,7 @@ Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Bucke
     mask_length{YType::uint8, "mask-length"}
 {
 
-    yang_name = "ipv4-prefix-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-prefix-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PrefixTarget::~Ipv4PrefixTarget()
@@ -8374,6 +8493,7 @@ Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Bucke
 
 bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PrefixTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask_length.is_set;
 }
@@ -8455,7 +8575,7 @@ Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Bucke
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "tunnel-id-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-id-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::TunnelIdTarget::~TunnelIdTarget()
@@ -8464,6 +8584,7 @@ Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Bucke
 
 bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::TunnelIdTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_id.is_set;
 }
 
@@ -8533,7 +8654,7 @@ Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Bucke
     virtual_circuit_id{YType::uint32, "virtual-circuit-id"}
 {
 
-    yang_name = "ipv4-pseudowire-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-pseudowire-target"; yang_parent_name = "target-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PseudowireTarget::~Ipv4PseudowireTarget()
@@ -8542,6 +8663,7 @@ Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Bucke
 
 bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PseudowireTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| virtual_circuit_id.is_set;
 }
@@ -8621,12 +8743,12 @@ bool Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::
 Ipsla::OperationData::Operations::Operation::Statistics::Statistics()
     :
     latest(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest>())
-	,aggregated(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated>())
+    , aggregated(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated>())
 {
     latest->parent = this;
     aggregated->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::~Statistics()
@@ -8635,6 +8757,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::~Statistics()
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (latest !=  nullptr && latest->has_data())
 	|| (aggregated !=  nullptr && aggregated->has_data());
 }
@@ -8720,14 +8843,14 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::has_leaf_or_child_
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Latest()
     :
     target(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target>())
-	,hops(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops>())
-	,lpd_paths(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths>())
+    , hops(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops>())
+    , lpd_paths(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths>())
 {
     target->parent = this;
     hops->parent = this;
     lpd_paths->parent = this;
 
-    yang_name = "latest"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "latest"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::~Latest()
@@ -8736,6 +8859,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::~Latest()
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::has_data() const
 {
+    if (is_presence_container) return true;
     return (target !=  nullptr && target->has_data())
 	|| (hops !=  nullptr && hops->has_data())
 	|| (lpd_paths !=  nullptr && lpd_paths->has_data());
@@ -8837,12 +8961,12 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::has_leaf_o
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::Target()
     :
     common_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::CommonStats>())
-	,specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats>())
+    , specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats>())
 {
     common_stats->parent = this;
     specific_stats->parent = this;
 
-    yang_name = "target"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::~Target()
@@ -8851,6 +8975,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::~Target
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_stats !=  nullptr && common_stats->has_data())
 	|| (specific_stats !=  nullptr && specific_stats->has_data());
 }
@@ -8955,7 +9080,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::CommonS
     verify_error_count{YType::uint32, "verify-error-count"}
 {
 
-    yang_name = "common-stats"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-stats"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::CommonStats::~CommonStats()
@@ -8964,6 +9089,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::CommonS
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::CommonStats::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_time.is_set
 	|| return_code.is_set
 	|| response_time_count.is_set
@@ -9251,14 +9377,14 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::Co
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::SpecificStats()
     :
     op_type{YType::enumeration, "op-type"}
-    	,
+        ,
     icmp_path_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::IcmpPathJitterStats>())
-	,udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::UdpJitterStats>())
+    , udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::UdpJitterStats>())
 {
     icmp_path_jitter_stats->parent = this;
     udp_jitter_stats->parent = this;
 
-    yang_name = "specific-stats"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "specific-stats"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::~SpecificStats()
@@ -9267,6 +9393,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::Specifi
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::has_data() const
 {
+    if (is_presence_container) return true;
     return op_type.is_set
 	|| (icmp_path_jitter_stats !=  nullptr && icmp_path_jitter_stats->has_data())
 	|| (udp_jitter_stats !=  nullptr && udp_jitter_stats->has_data());
@@ -9393,7 +9520,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::Specifi
     neg_jitter_count{YType::uint32, "neg-jitter-count"}
 {
 
-    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::IcmpPathJitterStats::~IcmpPathJitterStats()
@@ -9402,6 +9529,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::Specifi
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::IcmpPathJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| dest_address.is_set
 	|| hop_address.is_set
@@ -9847,7 +9975,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::Specifi
     one_way_ds_sum2{YType::uint64, "one-way-ds-sum2"}
 {
 
-    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::UdpJitterStats::~UdpJitterStats()
@@ -9856,6 +9984,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::Specifi
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::UdpJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return jitter_in.is_set
 	|| jitter_out.is_set
 	|| packet_loss_sd.is_set
@@ -10427,9 +10556,11 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::Sp
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hops()
+    :
+    hop(this, {"hop_index"})
 {
 
-    yang_name = "hops"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hops"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::~Hops()
@@ -10438,7 +10569,8 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::~Hops()
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::has_data() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_data())
             return true;
@@ -10448,7 +10580,7 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::has_
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::has_operation() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_operation())
             return true;
@@ -10478,7 +10610,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop>();
         c->parent = this;
-        hop.push_back(c);
+        hop.append(c);
         return c;
     }
 
@@ -10490,7 +10622,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hop)
+    for (auto c : hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10518,15 +10650,15 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::has_
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::Hop()
     :
-    hop_index{YType::int32, "hop-index"}
-    	,
+    hop_index{YType::uint32, "hop-index"}
+        ,
     common_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::CommonStats>())
-	,specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats>())
+    , specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats>())
 {
     common_stats->parent = this;
     specific_stats->parent = this;
 
-    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::~Hop()
@@ -10535,6 +10667,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::~Hop
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::has_data() const
 {
+    if (is_presence_container) return true;
     return hop_index.is_set
 	|| (common_stats !=  nullptr && common_stats->has_data())
 	|| (specific_stats !=  nullptr && specific_stats->has_data());
@@ -10551,7 +10684,8 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop:
 std::string Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hop" <<"[hop-index='" <<hop_index <<"']";
+    path_buffer << "hop";
+    ADD_KEY_TOKEN(hop_index, "hop-index");
     return path_buffer.str();
 }
 
@@ -10652,7 +10786,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::Comm
     verify_error_count{YType::uint32, "verify-error-count"}
 {
 
-    yang_name = "common-stats"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-stats"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::CommonStats::~CommonStats()
@@ -10661,6 +10795,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::Comm
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::CommonStats::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_time.is_set
 	|| return_code.is_set
 	|| response_time_count.is_set
@@ -10948,14 +11083,14 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop:
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::SpecificStats()
     :
     op_type{YType::enumeration, "op-type"}
-    	,
+        ,
     icmp_path_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::IcmpPathJitterStats>())
-	,udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::UdpJitterStats>())
+    , udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::UdpJitterStats>())
 {
     icmp_path_jitter_stats->parent = this;
     udp_jitter_stats->parent = this;
 
-    yang_name = "specific-stats"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "specific-stats"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::~SpecificStats()
@@ -10964,6 +11099,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::Spec
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::has_data() const
 {
+    if (is_presence_container) return true;
     return op_type.is_set
 	|| (icmp_path_jitter_stats !=  nullptr && icmp_path_jitter_stats->has_data())
 	|| (udp_jitter_stats !=  nullptr && udp_jitter_stats->has_data());
@@ -11090,7 +11226,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::Spec
     neg_jitter_count{YType::uint32, "neg-jitter-count"}
 {
 
-    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::IcmpPathJitterStats::~IcmpPathJitterStats()
@@ -11099,6 +11235,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::Spec
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::IcmpPathJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| dest_address.is_set
 	|| hop_address.is_set
@@ -11544,7 +11681,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::Spec
     one_way_ds_sum2{YType::uint64, "one-way-ds-sum2"}
 {
 
-    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::UdpJitterStats::~UdpJitterStats()
@@ -11553,6 +11690,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::Spec
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::UdpJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return jitter_in.is_set
 	|| jitter_out.is_set
 	|| packet_loss_sd.is_set
@@ -12124,9 +12262,11 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop:
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPaths()
+    :
+    lpd_path(this, {"path_index"})
 {
 
-    yang_name = "lpd-paths"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpd-paths"; yang_parent_name = "latest"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::~LpdPaths()
@@ -12135,7 +12275,8 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::~LpdP
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::has_data() const
 {
-    for (std::size_t index=0; index<lpd_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lpd_path.len(); index++)
     {
         if(lpd_path[index]->has_data())
             return true;
@@ -12145,7 +12286,7 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::has_operation() const
 {
-    for (std::size_t index=0; index<lpd_path.size(); index++)
+    for (std::size_t index=0; index<lpd_path.len(); index++)
     {
         if(lpd_path[index]->has_operation())
             return true;
@@ -12175,7 +12316,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath>();
         c->parent = this;
-        lpd_path.push_back(c);
+        lpd_path.append(c);
         return c;
     }
 
@@ -12187,7 +12328,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lpd_path)
+    for (auto c : lpd_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12215,14 +12356,14 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::LpdPath()
     :
-    path_index{YType::int32, "path-index"},
+    path_index{YType::uint32, "path-index"},
     return_code{YType::enumeration, "return-code"}
-    	,
+        ,
     path_id(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::PathId>())
 {
     path_id->parent = this;
 
-    yang_name = "lpd-path"; yang_parent_name = "lpd-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpd-path"; yang_parent_name = "lpd-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::~LpdPath()
@@ -12231,6 +12372,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPa
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::has_data() const
 {
+    if (is_presence_container) return true;
     return path_index.is_set
 	|| return_code.is_set
 	|| (path_id !=  nullptr && path_id->has_data());
@@ -12247,7 +12389,8 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::
 std::string Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lpd-path" <<"[path-index='" <<path_index <<"']";
+    path_buffer << "lpd-path";
+    ADD_KEY_TOKEN(path_index, "path-index");
     return path_buffer.str();
 }
 
@@ -12331,7 +12474,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPa
     downstream_label{YType::uint32, "downstream-label"}
 {
 
-    yang_name = "path-id"; yang_parent_name = "lpd-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-id"; yang_parent_name = "lpd-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::PathId::~PathId()
@@ -12340,6 +12483,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPa
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::PathId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : downstream_label.getYLeafs())
     {
         if(leaf.is_set)
@@ -12453,12 +12597,12 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Aggregated()
     :
     enhanced_intervals(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals>())
-	,hours(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours>())
+    , hours(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours>())
 {
     enhanced_intervals->parent = this;
     hours->parent = this;
 
-    yang_name = "aggregated"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregated"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::~Aggregated()
@@ -12467,6 +12611,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::~Aggregated
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::has_data() const
 {
+    if (is_presence_container) return true;
     return (enhanced_intervals !=  nullptr && enhanced_intervals->has_data())
 	|| (hours !=  nullptr && hours->has_data());
 }
@@ -12550,9 +12695,11 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::has_le
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedIntervals()
+    :
+    enhanced_interval(this, {"enhanced_interval"})
 {
 
-    yang_name = "enhanced-intervals"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "enhanced-intervals"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::~EnhancedIntervals()
@@ -12561,7 +12708,8 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedInt
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::has_data() const
 {
-    for (std::size_t index=0; index<enhanced_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<enhanced_interval.len(); index++)
     {
         if(enhanced_interval[index]->has_data())
             return true;
@@ -12571,7 +12719,7 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Enhanc
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<enhanced_interval.size(); index++)
+    for (std::size_t index=0; index<enhanced_interval.len(); index++)
     {
         if(enhanced_interval[index]->has_operation())
             return true;
@@ -12601,7 +12749,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval>();
         c->parent = this;
-        enhanced_interval.push_back(c);
+        enhanced_interval.append(c);
         return c;
     }
 
@@ -12613,7 +12761,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : enhanced_interval)
+    for (auto c : enhanced_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12641,13 +12789,13 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Enhanc
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::EnhancedInterval()
     :
-    enhanced_interval{YType::int32, "enhanced-interval"}
-    	,
+    enhanced_interval{YType::uint32, "enhanced-interval"}
+        ,
     start_times(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes>())
 {
     start_times->parent = this;
 
-    yang_name = "enhanced-interval"; yang_parent_name = "enhanced-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "enhanced-interval"; yang_parent_name = "enhanced-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::~EnhancedInterval()
@@ -12656,6 +12804,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedInt
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return enhanced_interval.is_set
 	|| (start_times !=  nullptr && start_times->has_data());
 }
@@ -12670,7 +12819,8 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Enhanc
 std::string Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "enhanced-interval" <<"[enhanced-interval='" <<enhanced_interval <<"']";
+    path_buffer << "enhanced-interval";
+    ADD_KEY_TOKEN(enhanced_interval, "enhanced-interval");
     return path_buffer.str();
 }
 
@@ -12736,9 +12886,11 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Enhanc
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTimes()
+    :
+    start_time(this, {"interval_start_time"})
 {
 
-    yang_name = "start-times"; yang_parent_name = "enhanced-interval"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start-times"; yang_parent_name = "enhanced-interval"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::~StartTimes()
@@ -12747,7 +12899,8 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedInt
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::has_data() const
 {
-    for (std::size_t index=0; index<start_time.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<start_time.len(); index++)
     {
         if(start_time[index]->has_data())
             return true;
@@ -12757,7 +12910,7 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Enhanc
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::has_operation() const
 {
-    for (std::size_t index=0; index<start_time.size(); index++)
+    for (std::size_t index=0; index<start_time.len(); index++)
     {
         if(start_time[index]->has_operation())
             return true;
@@ -12787,7 +12940,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime>();
         c->parent = this;
-        start_time.push_back(c);
+        start_time.append(c);
         return c;
     }
 
@@ -12799,7 +12952,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : start_time)
+    for (auto c : start_time.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12828,14 +12981,14 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Enhanc
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::StartTime()
     :
     interval_start_time{YType::str, "interval-start-time"}
-    	,
+        ,
     common_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::CommonStats>())
-	,specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats>())
+    , specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats>())
 {
     common_stats->parent = this;
     specific_stats->parent = this;
 
-    yang_name = "start-time"; yang_parent_name = "start-times"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start-time"; yang_parent_name = "start-times"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::~StartTime()
@@ -12844,6 +12997,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedInt
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::has_data() const
 {
+    if (is_presence_container) return true;
     return interval_start_time.is_set
 	|| (common_stats !=  nullptr && common_stats->has_data())
 	|| (specific_stats !=  nullptr && specific_stats->has_data());
@@ -12860,7 +13014,8 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Enhanc
 std::string Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "start-time" <<"[interval-start-time='" <<interval_start_time <<"']";
+    path_buffer << "start-time";
+    ADD_KEY_TOKEN(interval_start_time, "interval-start-time");
     return path_buffer.str();
 }
 
@@ -12961,7 +13116,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedInt
     verify_error_count{YType::uint32, "verify-error-count"}
 {
 
-    yang_name = "common-stats"; yang_parent_name = "start-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-stats"; yang_parent_name = "start-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::CommonStats::~CommonStats()
@@ -12970,6 +13125,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedInt
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::CommonStats::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_time.is_set
 	|| return_code.is_set
 	|| response_time_count.is_set
@@ -13257,14 +13413,14 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Enhanc
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::SpecificStats()
     :
     op_type{YType::enumeration, "op-type"}
-    	,
+        ,
     icmp_path_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::IcmpPathJitterStats>())
-	,udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::UdpJitterStats>())
+    , udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::UdpJitterStats>())
 {
     icmp_path_jitter_stats->parent = this;
     udp_jitter_stats->parent = this;
 
-    yang_name = "specific-stats"; yang_parent_name = "start-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "specific-stats"; yang_parent_name = "start-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::~SpecificStats()
@@ -13273,6 +13429,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedInt
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::has_data() const
 {
+    if (is_presence_container) return true;
     return op_type.is_set
 	|| (icmp_path_jitter_stats !=  nullptr && icmp_path_jitter_stats->has_data())
 	|| (udp_jitter_stats !=  nullptr && udp_jitter_stats->has_data());
@@ -13399,7 +13556,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedInt
     neg_jitter_count{YType::uint32, "neg-jitter-count"}
 {
 
-    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::IcmpPathJitterStats::~IcmpPathJitterStats()
@@ -13408,6 +13565,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedInt
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::IcmpPathJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| dest_address.is_set
 	|| hop_address.is_set
@@ -13853,7 +14011,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedInt
     one_way_ds_sum2{YType::uint64, "one-way-ds-sum2"}
 {
 
-    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::UdpJitterStats::~UdpJitterStats()
@@ -13862,6 +14020,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedInt
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::UdpJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return jitter_in.is_set
 	|| jitter_out.is_set
 	|| packet_loss_sd.is_set
@@ -14433,9 +14592,11 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Enhanc
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hours()
+    :
+    hour(this, {"hour_index"})
 {
 
-    yang_name = "hours"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hours"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::~Hours()
@@ -14444,7 +14605,8 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::~Hou
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::has_data() const
 {
-    for (std::size_t index=0; index<hour.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hour.len(); index++)
     {
         if(hour[index]->has_data())
             return true;
@@ -14454,7 +14616,7 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::has_operation() const
 {
-    for (std::size_t index=0; index<hour.size(); index++)
+    for (std::size_t index=0; index<hour.len(); index++)
     {
         if(hour[index]->has_operation())
             return true;
@@ -14484,7 +14646,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour>();
         c->parent = this;
-        hour.push_back(c);
+        hour.append(c);
         return c;
     }
 
@@ -14496,7 +14658,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hour)
+    for (auto c : hour.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14524,15 +14686,15 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Hour()
     :
-    hour_index{YType::int32, "hour-index"}
-    	,
+    hour_index{YType::uint32, "hour-index"}
+        ,
     distributed(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed>())
-	,non_distributed(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed>())
+    , non_distributed(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed>())
 {
     distributed->parent = this;
     non_distributed->parent = this;
 
-    yang_name = "hour"; yang_parent_name = "hours"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hour"; yang_parent_name = "hours"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::~Hour()
@@ -14541,6 +14703,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::has_data() const
 {
+    if (is_presence_container) return true;
     return hour_index.is_set
 	|| (distributed !=  nullptr && distributed->has_data())
 	|| (non_distributed !=  nullptr && non_distributed->has_data());
@@ -14557,7 +14720,8 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 std::string Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hour" <<"[hour-index='" <<hour_index <<"']";
+    path_buffer << "hour";
+    ADD_KEY_TOKEN(hour_index, "hour-index");
     return path_buffer.str();
 }
 
@@ -14639,12 +14803,12 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Distributed()
     :
     paths(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths>())
-	,target(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target>())
+    , target(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target>())
 {
     paths->parent = this;
     target->parent = this;
 
-    yang_name = "distributed"; yang_parent_name = "hour"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distributed"; yang_parent_name = "hour"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::~Distributed()
@@ -14653,6 +14817,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::has_data() const
 {
+    if (is_presence_container) return true;
     return (paths !=  nullptr && paths->has_data())
 	|| (target !=  nullptr && target->has_data());
 }
@@ -14736,9 +14901,11 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Paths()
+    :
+    path(this, {"path_index"})
 {
 
-    yang_name = "paths"; yang_parent_name = "distributed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "distributed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::~Paths()
@@ -14747,7 +14914,8 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -14757,7 +14925,7 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -14787,7 +14955,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -14799,7 +14967,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14827,13 +14995,13 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Path()
     :
-    path_index{YType::int32, "path-index"}
-    	,
+    path_index{YType::uint32, "path-index"}
+        ,
     hops(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops>())
 {
     hops->parent = this;
 
-    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::~Path()
@@ -14842,6 +15010,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_index.is_set
 	|| (hops !=  nullptr && hops->has_data());
 }
@@ -14856,7 +15025,8 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 std::string Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[path-index='" <<path_index <<"']";
+    path_buffer << "path";
+    ADD_KEY_TOKEN(path_index, "path-index");
     return path_buffer.str();
 }
 
@@ -14922,9 +15092,11 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hops()
+    :
+    hop(this, {"hop_index"})
 {
 
-    yang_name = "hops"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hops"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::~Hops()
@@ -14933,7 +15105,8 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::has_data() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_data())
             return true;
@@ -14943,7 +15116,7 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::has_operation() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_operation())
             return true;
@@ -14973,7 +15146,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop>();
         c->parent = this;
-        hop.push_back(c);
+        hop.append(c);
         return c;
     }
 
@@ -14985,7 +15158,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hop)
+    for (auto c : hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15013,13 +15186,13 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::Hop()
     :
-    hop_index{YType::int32, "hop-index"}
-    	,
+    hop_index{YType::uint32, "hop-index"}
+        ,
     distribution_intervals(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals>())
 {
     distribution_intervals->parent = this;
 
-    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::~Hop()
@@ -15028,6 +15201,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::has_data() const
 {
+    if (is_presence_container) return true;
     return hop_index.is_set
 	|| (distribution_intervals !=  nullptr && distribution_intervals->has_data());
 }
@@ -15042,7 +15216,8 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 std::string Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hop" <<"[hop-index='" <<hop_index <<"']";
+    path_buffer << "hop";
+    ADD_KEY_TOKEN(hop_index, "hop-index");
     return path_buffer.str();
 }
 
@@ -15108,9 +15283,11 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionIntervals()
+    :
+    distribution_interval(this, {"distribution_index"})
 {
 
-    yang_name = "distribution-intervals"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribution-intervals"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::~DistributionIntervals()
@@ -15119,7 +15296,8 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::has_data() const
 {
-    for (std::size_t index=0; index<distribution_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<distribution_interval.len(); index++)
     {
         if(distribution_interval[index]->has_data())
             return true;
@@ -15129,7 +15307,7 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<distribution_interval.size(); index++)
+    for (std::size_t index=0; index<distribution_interval.len(); index++)
     {
         if(distribution_interval[index]->has_operation())
             return true;
@@ -15159,7 +15337,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval>();
         c->parent = this;
-        distribution_interval.push_back(c);
+        distribution_interval.append(c);
         return c;
     }
 
@@ -15171,7 +15349,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : distribution_interval)
+    for (auto c : distribution_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15199,15 +15377,15 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::DistributionInterval()
     :
-    distribution_index{YType::int32, "distribution-index"}
-    	,
+    distribution_index{YType::uint32, "distribution-index"}
+        ,
     common_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::CommonStats>())
-	,specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats>())
+    , specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats>())
 {
     common_stats->parent = this;
     specific_stats->parent = this;
 
-    yang_name = "distribution-interval"; yang_parent_name = "distribution-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribution-interval"; yang_parent_name = "distribution-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::~DistributionInterval()
@@ -15216,6 +15394,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return distribution_index.is_set
 	|| (common_stats !=  nullptr && common_stats->has_data())
 	|| (specific_stats !=  nullptr && specific_stats->has_data());
@@ -15232,7 +15411,8 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 std::string Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "distribution-interval" <<"[distribution-index='" <<distribution_index <<"']";
+    path_buffer << "distribution-interval";
+    ADD_KEY_TOKEN(distribution_index, "distribution-index");
     return path_buffer.str();
 }
 
@@ -15333,7 +15513,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     verify_error_count{YType::uint32, "verify-error-count"}
 {
 
-    yang_name = "common-stats"; yang_parent_name = "distribution-interval"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-stats"; yang_parent_name = "distribution-interval"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::CommonStats::~CommonStats()
@@ -15342,6 +15522,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::CommonStats::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_time.is_set
 	|| return_code.is_set
 	|| response_time_count.is_set
@@ -15629,14 +15810,14 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::SpecificStats()
     :
     op_type{YType::enumeration, "op-type"}
-    	,
+        ,
     icmp_path_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats>())
-	,udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats>())
+    , udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats>())
 {
     icmp_path_jitter_stats->parent = this;
     udp_jitter_stats->parent = this;
 
-    yang_name = "specific-stats"; yang_parent_name = "distribution-interval"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "specific-stats"; yang_parent_name = "distribution-interval"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::~SpecificStats()
@@ -15645,6 +15826,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::has_data() const
 {
+    if (is_presence_container) return true;
     return op_type.is_set
 	|| (icmp_path_jitter_stats !=  nullptr && icmp_path_jitter_stats->has_data())
 	|| (udp_jitter_stats !=  nullptr && udp_jitter_stats->has_data());
@@ -15771,7 +15953,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     neg_jitter_count{YType::uint32, "neg-jitter-count"}
 {
 
-    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::~IcmpPathJitterStats()
@@ -15780,6 +15962,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| dest_address.is_set
 	|| hop_address.is_set
@@ -16225,7 +16408,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     one_way_ds_sum2{YType::uint64, "one-way-ds-sum2"}
 {
 
-    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::~UdpJitterStats()
@@ -16234,6 +16417,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return jitter_in.is_set
 	|| jitter_out.is_set
 	|| packet_loss_sd.is_set
@@ -16810,7 +16994,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 {
     distribution_intervals->parent = this;
 
-    yang_name = "target"; yang_parent_name = "distributed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target"; yang_parent_name = "distributed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::~Target()
@@ -16819,6 +17003,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::has_data() const
 {
+    if (is_presence_container) return true;
     return (distribution_intervals !=  nullptr && distribution_intervals->has_data());
 }
 
@@ -16886,9 +17071,11 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionIntervals()
+    :
+    distribution_interval(this, {"distribution_index"})
 {
 
-    yang_name = "distribution-intervals"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribution-intervals"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::~DistributionIntervals()
@@ -16897,7 +17084,8 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::has_data() const
 {
-    for (std::size_t index=0; index<distribution_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<distribution_interval.len(); index++)
     {
         if(distribution_interval[index]->has_data())
             return true;
@@ -16907,7 +17095,7 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<distribution_interval.size(); index++)
+    for (std::size_t index=0; index<distribution_interval.len(); index++)
     {
         if(distribution_interval[index]->has_operation())
             return true;
@@ -16937,7 +17125,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval>();
         c->parent = this;
-        distribution_interval.push_back(c);
+        distribution_interval.append(c);
         return c;
     }
 
@@ -16949,7 +17137,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : distribution_interval)
+    for (auto c : distribution_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16977,15 +17165,15 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::DistributionInterval()
     :
-    distribution_index{YType::int32, "distribution-index"}
-    	,
+    distribution_index{YType::uint32, "distribution-index"}
+        ,
     common_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::CommonStats>())
-	,specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats>())
+    , specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats>())
 {
     common_stats->parent = this;
     specific_stats->parent = this;
 
-    yang_name = "distribution-interval"; yang_parent_name = "distribution-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribution-interval"; yang_parent_name = "distribution-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::~DistributionInterval()
@@ -16994,6 +17182,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return distribution_index.is_set
 	|| (common_stats !=  nullptr && common_stats->has_data())
 	|| (specific_stats !=  nullptr && specific_stats->has_data());
@@ -17010,7 +17199,8 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 std::string Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "distribution-interval" <<"[distribution-index='" <<distribution_index <<"']";
+    path_buffer << "distribution-interval";
+    ADD_KEY_TOKEN(distribution_index, "distribution-index");
     return path_buffer.str();
 }
 
@@ -17111,7 +17301,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     verify_error_count{YType::uint32, "verify-error-count"}
 {
 
-    yang_name = "common-stats"; yang_parent_name = "distribution-interval"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-stats"; yang_parent_name = "distribution-interval"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::CommonStats::~CommonStats()
@@ -17120,6 +17310,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::CommonStats::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_time.is_set
 	|| return_code.is_set
 	|| response_time_count.is_set
@@ -17407,14 +17598,14 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::SpecificStats()
     :
     op_type{YType::enumeration, "op-type"}
-    	,
+        ,
     icmp_path_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats>())
-	,udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats>())
+    , udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats>())
 {
     icmp_path_jitter_stats->parent = this;
     udp_jitter_stats->parent = this;
 
-    yang_name = "specific-stats"; yang_parent_name = "distribution-interval"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "specific-stats"; yang_parent_name = "distribution-interval"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::~SpecificStats()
@@ -17423,6 +17614,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::has_data() const
 {
+    if (is_presence_container) return true;
     return op_type.is_set
 	|| (icmp_path_jitter_stats !=  nullptr && icmp_path_jitter_stats->has_data())
 	|| (udp_jitter_stats !=  nullptr && udp_jitter_stats->has_data());
@@ -17549,7 +17741,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     neg_jitter_count{YType::uint32, "neg-jitter-count"}
 {
 
-    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::~IcmpPathJitterStats()
@@ -17558,6 +17750,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| dest_address.is_set
 	|| hop_address.is_set
@@ -18003,7 +18196,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     one_way_ds_sum2{YType::uint64, "one-way-ds-sum2"}
 {
 
-    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::~UdpJitterStats()
@@ -18012,6 +18205,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return jitter_in.is_set
 	|| jitter_out.is_set
 	|| packet_loss_sd.is_set
@@ -18585,14 +18779,14 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::NonDistributed()
     :
     target(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target>())
-	,paths(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths>())
-	,lpd_paths(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths>())
+    , paths(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths>())
+    , lpd_paths(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths>())
 {
     target->parent = this;
     paths->parent = this;
     lpd_paths->parent = this;
 
-    yang_name = "non-distributed"; yang_parent_name = "hour"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "non-distributed"; yang_parent_name = "hour"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::~NonDistributed()
@@ -18601,6 +18795,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::has_data() const
 {
+    if (is_presence_container) return true;
     return (target !=  nullptr && target->has_data())
 	|| (paths !=  nullptr && paths->has_data())
 	|| (lpd_paths !=  nullptr && lpd_paths->has_data());
@@ -18702,12 +18897,12 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::Target()
     :
     common_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::CommonStats>())
-	,specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats>())
+    , specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats>())
 {
     common_stats->parent = this;
     specific_stats->parent = this;
 
-    yang_name = "target"; yang_parent_name = "non-distributed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target"; yang_parent_name = "non-distributed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::~Target()
@@ -18716,6 +18911,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_stats !=  nullptr && common_stats->has_data())
 	|| (specific_stats !=  nullptr && specific_stats->has_data());
 }
@@ -18820,7 +19016,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     verify_error_count{YType::uint32, "verify-error-count"}
 {
 
-    yang_name = "common-stats"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-stats"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::CommonStats::~CommonStats()
@@ -18829,6 +19025,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::CommonStats::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_time.is_set
 	|| return_code.is_set
 	|| response_time_count.is_set
@@ -19116,14 +19313,14 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::SpecificStats()
     :
     op_type{YType::enumeration, "op-type"}
-    	,
+        ,
     icmp_path_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::IcmpPathJitterStats>())
-	,udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::UdpJitterStats>())
+    , udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::UdpJitterStats>())
 {
     icmp_path_jitter_stats->parent = this;
     udp_jitter_stats->parent = this;
 
-    yang_name = "specific-stats"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "specific-stats"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::~SpecificStats()
@@ -19132,6 +19329,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::has_data() const
 {
+    if (is_presence_container) return true;
     return op_type.is_set
 	|| (icmp_path_jitter_stats !=  nullptr && icmp_path_jitter_stats->has_data())
 	|| (udp_jitter_stats !=  nullptr && udp_jitter_stats->has_data());
@@ -19258,7 +19456,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     neg_jitter_count{YType::uint32, "neg-jitter-count"}
 {
 
-    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::IcmpPathJitterStats::~IcmpPathJitterStats()
@@ -19267,6 +19465,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::IcmpPathJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| dest_address.is_set
 	|| hop_address.is_set
@@ -19712,7 +19911,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     one_way_ds_sum2{YType::uint64, "one-way-ds-sum2"}
 {
 
-    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::UdpJitterStats::~UdpJitterStats()
@@ -19721,6 +19920,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::UdpJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return jitter_in.is_set
 	|| jitter_out.is_set
 	|| packet_loss_sd.is_set
@@ -20292,9 +20492,11 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Paths()
+    :
+    path(this, {"path_index"})
 {
 
-    yang_name = "paths"; yang_parent_name = "non-distributed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "non-distributed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::~Paths()
@@ -20303,7 +20505,8 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -20313,7 +20516,7 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -20343,7 +20546,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -20355,7 +20558,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20383,13 +20586,13 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Path()
     :
-    path_index{YType::int32, "path-index"}
-    	,
+    path_index{YType::uint32, "path-index"}
+        ,
     hops(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops>())
 {
     hops->parent = this;
 
-    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::~Path()
@@ -20398,6 +20601,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_index.is_set
 	|| (hops !=  nullptr && hops->has_data());
 }
@@ -20412,7 +20616,8 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 std::string Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[path-index='" <<path_index <<"']";
+    path_buffer << "path";
+    ADD_KEY_TOKEN(path_index, "path-index");
     return path_buffer.str();
 }
 
@@ -20478,9 +20683,11 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hops()
+    :
+    hop(this, {"hop_index"})
 {
 
-    yang_name = "hops"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hops"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::~Hops()
@@ -20489,7 +20696,8 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::has_data() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_data())
             return true;
@@ -20499,7 +20707,7 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::has_operation() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_operation())
             return true;
@@ -20529,7 +20737,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop>();
         c->parent = this;
-        hop.push_back(c);
+        hop.append(c);
         return c;
     }
 
@@ -20541,7 +20749,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hop)
+    for (auto c : hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20569,15 +20777,15 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::Hop()
     :
-    hop_index{YType::int32, "hop-index"}
-    	,
+    hop_index{YType::uint32, "hop-index"}
+        ,
     common_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::CommonStats>())
-	,specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats>())
+    , specific_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats>())
 {
     common_stats->parent = this;
     specific_stats->parent = this;
 
-    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::~Hop()
@@ -20586,6 +20794,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::has_data() const
 {
+    if (is_presence_container) return true;
     return hop_index.is_set
 	|| (common_stats !=  nullptr && common_stats->has_data())
 	|| (specific_stats !=  nullptr && specific_stats->has_data());
@@ -20602,7 +20811,8 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 std::string Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hop" <<"[hop-index='" <<hop_index <<"']";
+    path_buffer << "hop";
+    ADD_KEY_TOKEN(hop_index, "hop-index");
     return path_buffer.str();
 }
 
@@ -20703,7 +20913,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     verify_error_count{YType::uint32, "verify-error-count"}
 {
 
-    yang_name = "common-stats"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-stats"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::CommonStats::~CommonStats()
@@ -20712,6 +20922,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::CommonStats::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_time.is_set
 	|| return_code.is_set
 	|| response_time_count.is_set
@@ -20999,14 +21210,14 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::SpecificStats()
     :
     op_type{YType::enumeration, "op-type"}
-    	,
+        ,
     icmp_path_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::IcmpPathJitterStats>())
-	,udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::UdpJitterStats>())
+    , udp_jitter_stats(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::UdpJitterStats>())
 {
     icmp_path_jitter_stats->parent = this;
     udp_jitter_stats->parent = this;
 
-    yang_name = "specific-stats"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "specific-stats"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::~SpecificStats()
@@ -21015,6 +21226,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::has_data() const
 {
+    if (is_presence_container) return true;
     return op_type.is_set
 	|| (icmp_path_jitter_stats !=  nullptr && icmp_path_jitter_stats->has_data())
 	|| (udp_jitter_stats !=  nullptr && udp_jitter_stats->has_data());
@@ -21141,7 +21353,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     neg_jitter_count{YType::uint32, "neg-jitter-count"}
 {
 
-    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp-path-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::IcmpPathJitterStats::~IcmpPathJitterStats()
@@ -21150,6 +21362,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::IcmpPathJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| dest_address.is_set
 	|| hop_address.is_set
@@ -21595,7 +21808,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     one_way_ds_sum2{YType::uint64, "one-way-ds-sum2"}
 {
 
-    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp-jitter-stats"; yang_parent_name = "specific-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::UdpJitterStats::~UdpJitterStats()
@@ -21604,6 +21817,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::UdpJitterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return jitter_in.is_set
 	|| jitter_out.is_set
 	|| packet_loss_sd.is_set
@@ -22175,9 +22389,11 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPaths()
+    :
+    lpd_path(this, {"path_index"})
 {
 
-    yang_name = "lpd-paths"; yang_parent_name = "non-distributed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpd-paths"; yang_parent_name = "non-distributed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::~LpdPaths()
@@ -22186,7 +22402,8 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::has_data() const
 {
-    for (std::size_t index=0; index<lpd_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lpd_path.len(); index++)
     {
         if(lpd_path[index]->has_data())
             return true;
@@ -22196,7 +22413,7 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::has_operation() const
 {
-    for (std::size_t index=0; index<lpd_path.size(); index++)
+    for (std::size_t index=0; index<lpd_path.len(); index++)
     {
         if(lpd_path[index]->has_operation())
             return true;
@@ -22226,7 +22443,7 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     {
         auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath>();
         c->parent = this;
-        lpd_path.push_back(c);
+        lpd_path.append(c);
         return c;
     }
 
@@ -22238,7 +22455,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lpd_path)
+    for (auto c : lpd_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22266,14 +22483,14 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::LpdPath()
     :
-    path_index{YType::int32, "path-index"},
+    path_index{YType::uint32, "path-index"},
     return_code{YType::enumeration, "return-code"}
-    	,
+        ,
     path_id(std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::PathId>())
 {
     path_id->parent = this;
 
-    yang_name = "lpd-path"; yang_parent_name = "lpd-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpd-path"; yang_parent_name = "lpd-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::~LpdPath()
@@ -22282,6 +22499,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::has_data() const
 {
+    if (is_presence_container) return true;
     return path_index.is_set
 	|| return_code.is_set
 	|| (path_id !=  nullptr && path_id->has_data());
@@ -22298,7 +22516,8 @@ bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours:
 std::string Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lpd-path" <<"[path-index='" <<path_index <<"']";
+    path_buffer << "lpd-path";
+    ADD_KEY_TOKEN(path_index, "path-index");
     return path_buffer.str();
 }
 
@@ -22382,7 +22601,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
     downstream_label{YType::uint32, "downstream-label"}
 {
 
-    yang_name = "path-id"; yang_parent_name = "lpd-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-id"; yang_parent_name = "lpd-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::PathId::~PathId()
@@ -22391,6 +22610,7 @@ Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
 bool Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::PathId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : downstream_label.getYLeafs())
     {
         if(leaf.is_set)
@@ -22515,7 +22735,7 @@ Ipsla::ApplicationInfo::ApplicationInfo()
     operation_type{YType::enumeration, "operation-type"}
 {
 
-    yang_name = "application-info"; yang_parent_name = "ipsla"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "application-info"; yang_parent_name = "ipsla"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipsla::ApplicationInfo::~ApplicationInfo()
@@ -22524,6 +22744,7 @@ Ipsla::ApplicationInfo::~ApplicationInfo()
 
 bool Ipsla::ApplicationInfo::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : operation_type.getYLeafs())
     {
         if(leaf.is_set)
@@ -22719,14 +22940,20 @@ bool Ipsla::ApplicationInfo::has_leaf_or_child_of_name(const std::string & name)
     return false;
 }
 
-const Enum::YLeaf OpTypeEnum::icmp_echo {1, "icmp-echo"};
-const Enum::YLeaf OpTypeEnum::icmp_path_jitter {2, "icmp-path-jitter"};
-const Enum::YLeaf OpTypeEnum::icmp_path_echo {4, "icmp-path-echo"};
-const Enum::YLeaf OpTypeEnum::udp_jitter {8, "udp-jitter"};
-const Enum::YLeaf OpTypeEnum::udp_echo {16, "udp-echo"};
-const Enum::YLeaf OpTypeEnum::mpls_lsp_ping {32, "mpls-lsp-ping"};
-const Enum::YLeaf OpTypeEnum::mpls_lsp_trace {64, "mpls-lsp-trace"};
-const Enum::YLeaf OpTypeEnum::mpls_lsp_group {128, "mpls-lsp-group"};
+const Enum::YLeaf IpslaTargetTypeEnum::ipv4_address_target_type {1, "ipv4-address-target-type"};
+const Enum::YLeaf IpslaTargetTypeEnum::ipv4_prefix_target_type {2, "ipv4-prefix-target-type"};
+const Enum::YLeaf IpslaTargetTypeEnum::tunnel_id_target_type {3, "tunnel-id-target-type"};
+const Enum::YLeaf IpslaTargetTypeEnum::ipv4_pseudowire_target_type {4, "ipv4-pseudowire-target-type"};
+const Enum::YLeaf IpslaTargetTypeEnum::ipv6_address_target_type {5, "ipv6-address-target-type"};
+
+const Enum::YLeaf SlaOpTypes::oper_icmp_echo {1, "oper-icmp-echo"};
+const Enum::YLeaf SlaOpTypes::oper_icmp_path_jitter {2, "oper-icmp-path-jitter"};
+const Enum::YLeaf SlaOpTypes::oper_icmp_path_echo {4, "oper-icmp-path-echo"};
+const Enum::YLeaf SlaOpTypes::oper_udp_jitter {8, "oper-udp-jitter"};
+const Enum::YLeaf SlaOpTypes::oper_udp_echo {16, "oper-udp-echo"};
+const Enum::YLeaf SlaOpTypes::oper_mpls_lsp_ping {32, "oper-mpls-lsp-ping"};
+const Enum::YLeaf SlaOpTypes::oper_mpls_lsp_trace {64, "oper-mpls-lsp-trace"};
+const Enum::YLeaf SlaOpTypes::oper_mpls_lsp_group {128, "oper-mpls-lsp-group"};
 
 const Enum::YLeaf IpslaRetCode::ipsla_ret_code_unknown {0, "ipsla-ret-code-unknown"};
 const Enum::YLeaf IpslaRetCode::ipsla_ret_code_ok {1, "ipsla-ret-code-ok"};
@@ -22779,16 +23006,30 @@ const Enum::YLeaf IpslaRetCode::ipsla_ret_code_pending {47, "ipsla-ret-code-pend
 const Enum::YLeaf IpslaRetCode::ipsla_ret_code_invalid_address {48, "ipsla-ret-code-invalid-address"};
 const Enum::YLeaf IpslaRetCode::ipsla_ret_code_max {49, "ipsla-ret-code-max"};
 
+const Enum::YLeaf OpTypeEnum::icmp_echo {1, "icmp-echo"};
+const Enum::YLeaf OpTypeEnum::icmp_path_jitter {2, "icmp-path-jitter"};
+const Enum::YLeaf OpTypeEnum::icmp_path_echo {4, "icmp-path-echo"};
+const Enum::YLeaf OpTypeEnum::udp_jitter {8, "udp-jitter"};
+const Enum::YLeaf OpTypeEnum::udp_echo {16, "udp-echo"};
+const Enum::YLeaf OpTypeEnum::mpls_lsp_ping {32, "mpls-lsp-ping"};
+const Enum::YLeaf OpTypeEnum::mpls_lsp_trace {64, "mpls-lsp-trace"};
+const Enum::YLeaf OpTypeEnum::mpls_lsp_group {128, "mpls-lsp-group"};
+
+const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_unknown {0, "ipsla-lsp-grp-path-status-unknown"};
+const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_up {1, "ipsla-lsp-grp-path-status-up"};
+const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_down {2, "ipsla-lsp-grp-path-status-down"};
+const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_retry {3, "ipsla-lsp-grp-path-status-retry"};
+const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_pending {4, "ipsla-lsp-grp-path-status-pending"};
+
+const Enum::YLeaf IpslaOperStateEnum::ipsla_oper_state_inactive {0, "ipsla-oper-state-inactive"};
+const Enum::YLeaf IpslaOperStateEnum::ipsla_oper_state_pending {1, "ipsla-oper-state-pending"};
+const Enum::YLeaf IpslaOperStateEnum::ipsla_oper_state_active {2, "ipsla-oper-state-active"};
+
 const Enum::YLeaf IpslaMplsLpdDiscoveryModeEnum::ipsla_mpls_lpd_unknown {0, "ipsla-mpls-lpd-unknown"};
 const Enum::YLeaf IpslaMplsLpdDiscoveryModeEnum::ipsla_mpls_lpd_initial_running {1, "ipsla-mpls-lpd-initial-running"};
 const Enum::YLeaf IpslaMplsLpdDiscoveryModeEnum::ipsla_mpls_lpd_initial_complete {2, "ipsla-mpls-lpd-initial-complete"};
 const Enum::YLeaf IpslaMplsLpdDiscoveryModeEnum::ipsla_mpls_lpd_rediscovery_running {3, "ipsla-mpls-lpd-rediscovery-running"};
 const Enum::YLeaf IpslaMplsLpdDiscoveryModeEnum::ipsla_mpls_lpd_rediscovery_complete {4, "ipsla-mpls-lpd-rediscovery-complete"};
-
-const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_unknown {0, "ipsla-mpls-lpd-path-discovery-unknown"};
-const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_ok {1, "ipsla-mpls-lpd-path-discovery-ok"};
-const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_broken {2, "ipsla-mpls-lpd-path-discovery-broken"};
-const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_unexplorable {3, "ipsla-mpls-lpd-path-discovery-unexplorable"};
 
 const Enum::YLeaf IpslaMplsLpdRetCode::ipsla_mpls_lpd_ret_code_unknown {1, "ipsla-mpls-lpd-ret-code-unknown"};
 const Enum::YLeaf IpslaMplsLpdRetCode::ipsla_mpls_lpd_ret_code_no_path {2, "ipsla-mpls-lpd-ret-code-no-path"};
@@ -22799,39 +23040,19 @@ const Enum::YLeaf IpslaMplsLpdRetCode::ipsla_mpls_lpd_ret_code_timeout {6, "ipsl
 const Enum::YLeaf IpslaMplsLpdRetCode::ipsla_mpls_lpd_ret_code_error {7, "ipsla-mpls-lpd-ret-code-error"};
 const Enum::YLeaf IpslaMplsLpdRetCode::ipsla_mpls_lpd_ret_code_ok {8, "ipsla-mpls-lpd-ret-code-ok"};
 
-const Enum::YLeaf IpslaTargetTypeEnum::ipv4_address_target_type {1, "ipv4-address-target-type"};
-const Enum::YLeaf IpslaTargetTypeEnum::ipv4_prefix_target_type {2, "ipv4-prefix-target-type"};
-const Enum::YLeaf IpslaTargetTypeEnum::tunnel_id_target_type {3, "tunnel-id-target-type"};
-const Enum::YLeaf IpslaTargetTypeEnum::ipv4_pseudowire_target_type {4, "ipv4-pseudowire-target-type"};
-const Enum::YLeaf IpslaTargetTypeEnum::ipv6_address_target_type {5, "ipv6-address-target-type"};
-
-const Enum::YLeaf IpslaOperStateEnum::ipsla_oper_state_inactive {0, "ipsla-oper-state-inactive"};
-const Enum::YLeaf IpslaOperStateEnum::ipsla_oper_state_pending {1, "ipsla-oper-state-pending"};
-const Enum::YLeaf IpslaOperStateEnum::ipsla_oper_state_active {2, "ipsla-oper-state-active"};
-
-const Enum::YLeaf IpslaMplsAddDeleteEnum::ipsla_mpls_add_delete_add_q {1, "ipsla-mpls-add-delete-add-q"};
-const Enum::YLeaf IpslaMplsAddDeleteEnum::ipsla_mpls_add_delete_delete_q {2, "ipsla-mpls-add-delete-delete-q"};
-
-const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_unknown {0, "ipsla-lsp-grp-path-status-unknown"};
-const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_up {1, "ipsla-lsp-grp-path-status-up"};
-const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_down {2, "ipsla-lsp-grp-path-status-down"};
-const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_retry {3, "ipsla-lsp-grp-path-status-retry"};
-const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_pending {4, "ipsla-lsp-grp-path-status-pending"};
-
 const Enum::YLeaf IpslaLspGrpStatusEnum::ipsla_lsp_grp_status_unknown {1, "ipsla-lsp-grp-status-unknown"};
 const Enum::YLeaf IpslaLspGrpStatusEnum::ipsla_lsp_grp_status_up {2, "ipsla-lsp-grp-status-up"};
 const Enum::YLeaf IpslaLspGrpStatusEnum::ipsla_lsp_grp_status_partial {3, "ipsla-lsp-grp-status-partial"};
 const Enum::YLeaf IpslaLspGrpStatusEnum::ipsla_lsp_grp_status_down {4, "ipsla-lsp-grp-status-down"};
 const Enum::YLeaf IpslaLspGrpStatusEnum::ipsla_lsp_grp_status_pending {5, "ipsla-lsp-grp-status-pending"};
 
-const Enum::YLeaf SlaOpTypes::oper_icmp_echo {1, "oper-icmp-echo"};
-const Enum::YLeaf SlaOpTypes::oper_icmp_path_jitter {2, "oper-icmp-path-jitter"};
-const Enum::YLeaf SlaOpTypes::oper_icmp_path_echo {4, "oper-icmp-path-echo"};
-const Enum::YLeaf SlaOpTypes::oper_udp_jitter {8, "oper-udp-jitter"};
-const Enum::YLeaf SlaOpTypes::oper_udp_echo {16, "oper-udp-echo"};
-const Enum::YLeaf SlaOpTypes::oper_mpls_lsp_ping {32, "oper-mpls-lsp-ping"};
-const Enum::YLeaf SlaOpTypes::oper_mpls_lsp_trace {64, "oper-mpls-lsp-trace"};
-const Enum::YLeaf SlaOpTypes::oper_mpls_lsp_group {128, "oper-mpls-lsp-group"};
+const Enum::YLeaf IpslaMplsAddDeleteEnum::ipsla_mpls_add_delete_add_q {1, "ipsla-mpls-add-delete-add-q"};
+const Enum::YLeaf IpslaMplsAddDeleteEnum::ipsla_mpls_add_delete_delete_q {2, "ipsla-mpls-add-delete-delete-q"};
+
+const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_unknown {0, "ipsla-mpls-lpd-path-discovery-unknown"};
+const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_ok {1, "ipsla-mpls-lpd-path-discovery-ok"};
+const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_broken {2, "ipsla-mpls-lpd-path-discovery-broken"};
+const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_unexplorable {3, "ipsla-mpls-lpd-path-discovery-unexplorable"};
 
 
 }

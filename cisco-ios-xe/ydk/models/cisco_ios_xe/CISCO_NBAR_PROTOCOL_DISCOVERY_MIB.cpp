@@ -13,14 +13,14 @@ namespace CISCO_NBAR_PROTOCOL_DISCOVERY_MIB {
 
 CISCONBARPROTOCOLDISCOVERYMIB::CISCONBARPROTOCOLDISCOVERYMIB()
     :
-    cnpdnotificationsconfig(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig>())
-	,cnpdstatustable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable>())
-	,cnpdallstatstable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable>())
-	,cnpdtopnconfigtable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable>())
-	,cnpdtopnstatstable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable>())
-	,cnpdthresholdconfigtable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable>())
-	,cnpdthresholdhistorytable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable>())
-	,cnpdsupportedprotocolstable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable>())
+    cnpdnotificationsconfig(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig>())
+    , cnpdstatustable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable>())
+    , cnpdallstatstable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable>())
+    , cnpdtopnconfigtable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable>())
+    , cnpdtopnstatstable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable>())
+    , cnpdthresholdconfigtable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable>())
+    , cnpdthresholdhistorytable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable>())
+    , cnpdsupportedprotocolstable(std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable>())
 {
     cnpdnotificationsconfig->parent = this;
     cnpdstatustable->parent = this;
@@ -31,7 +31,7 @@ CISCONBARPROTOCOLDISCOVERYMIB::CISCONBARPROTOCOLDISCOVERYMIB()
     cnpdthresholdhistorytable->parent = this;
     cnpdsupportedprotocolstable->parent = this;
 
-    yang_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCONBARPROTOCOLDISCOVERYMIB::~CISCONBARPROTOCOLDISCOVERYMIB()
@@ -40,6 +40,7 @@ CISCONBARPROTOCOLDISCOVERYMIB::~CISCONBARPROTOCOLDISCOVERYMIB()
 
 bool CISCONBARPROTOCOLDISCOVERYMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cnpdnotificationsconfig !=  nullptr && cnpdnotificationsconfig->has_data())
 	|| (cnpdstatustable !=  nullptr && cnpdstatustable->has_data())
 	|| (cnpdallstatstable !=  nullptr && cnpdallstatstable->has_data())
@@ -85,7 +86,7 @@ std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::get_child_by_name(const s
     {
         if(cnpdnotificationsconfig == nullptr)
         {
-            cnpdnotificationsconfig = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig>();
+            cnpdnotificationsconfig = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig>();
         }
         return cnpdnotificationsconfig;
     }
@@ -94,7 +95,7 @@ std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::get_child_by_name(const s
     {
         if(cnpdstatustable == nullptr)
         {
-            cnpdstatustable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable>();
+            cnpdstatustable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable>();
         }
         return cnpdstatustable;
     }
@@ -103,7 +104,7 @@ std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::get_child_by_name(const s
     {
         if(cnpdallstatstable == nullptr)
         {
-            cnpdallstatstable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable>();
+            cnpdallstatstable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable>();
         }
         return cnpdallstatstable;
     }
@@ -112,7 +113,7 @@ std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::get_child_by_name(const s
     {
         if(cnpdtopnconfigtable == nullptr)
         {
-            cnpdtopnconfigtable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable>();
+            cnpdtopnconfigtable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable>();
         }
         return cnpdtopnconfigtable;
     }
@@ -121,7 +122,7 @@ std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::get_child_by_name(const s
     {
         if(cnpdtopnstatstable == nullptr)
         {
-            cnpdtopnstatstable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable>();
+            cnpdtopnstatstable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable>();
         }
         return cnpdtopnstatstable;
     }
@@ -130,7 +131,7 @@ std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::get_child_by_name(const s
     {
         if(cnpdthresholdconfigtable == nullptr)
         {
-            cnpdthresholdconfigtable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable>();
+            cnpdthresholdconfigtable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable>();
         }
         return cnpdthresholdconfigtable;
     }
@@ -139,7 +140,7 @@ std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::get_child_by_name(const s
     {
         if(cnpdthresholdhistorytable == nullptr)
         {
-            cnpdthresholdhistorytable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable>();
+            cnpdthresholdhistorytable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable>();
         }
         return cnpdthresholdhistorytable;
     }
@@ -148,7 +149,7 @@ std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::get_child_by_name(const s
     {
         if(cnpdsupportedprotocolstable == nullptr)
         {
-            cnpdsupportedprotocolstable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable>();
+            cnpdsupportedprotocolstable = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable>();
         }
         return cnpdsupportedprotocolstable;
     }
@@ -243,44 +244,45 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::has_leaf_or_child_of_name(const std::string 
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::Cnpdnotificationsconfig()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::CnpdNotificationsConfig()
     :
     cnpdnotificationsenable{YType::boolean, "cnpdNotificationsEnable"}
 {
 
-    yang_name = "cnpdNotificationsConfig"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdNotificationsConfig"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::~Cnpdnotificationsconfig()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::~CnpdNotificationsConfig()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return cnpdnotificationsenable.is_set;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cnpdnotificationsenable.yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnpdNotificationsConfig";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -290,19 +292,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cnpdNotificationsEnable")
     {
@@ -312,7 +314,7 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::set_value(const std
     }
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cnpdNotificationsEnable")
     {
@@ -320,26 +322,29 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::set_filter(const st
     }
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdNotificationsEnable")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatustable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusTable()
+    :
+    cnpdstatusentry(this, {"ifindex"})
 {
 
-    yang_name = "cnpdStatusTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdStatusTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::~Cnpdstatustable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::~CnpdStatusTable()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdstatusentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cnpdstatusentry.len(); index++)
     {
         if(cnpdstatusentry[index]->has_data())
             return true;
@@ -347,9 +352,9 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::has_data() const
     return false;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdstatusentry.size(); index++)
+    for (std::size_t index=0; index<cnpdstatusentry.len(); index++)
     {
         if(cnpdstatusentry[index]->has_operation())
             return true;
@@ -357,21 +362,21 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnpdStatusTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -380,25 +385,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdStatusEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry>();
+        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry>();
         c->parent = this;
-        cnpdstatusentry.push_back(c);
+        cnpdstatusentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cnpdstatusentry)
+    for (auto c : cnpdstatusentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -409,43 +414,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cn
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdStatusEntry")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::Cnpdstatusentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::CnpdStatusEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cnpdstatuspdenable{YType::boolean, "cnpdStatusPdEnable"},
     cnpdstatuslastupdatetime{YType::uint32, "cnpdStatusLastUpdateTime"}
 {
 
-    yang_name = "cnpdStatusEntry"; yang_parent_name = "cnpdStatusTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdStatusEntry"; yang_parent_name = "cnpdStatusTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::~Cnpdstatusentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::~CnpdStatusEntry()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cnpdstatuspdenable.is_set
 	|| cnpdstatuslastupdatetime.is_set;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -453,21 +459,22 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::has_operat
 	|| ydk::is_set(cnpdstatuslastupdatetime.yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/cnpdStatusTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cnpdStatusEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cnpdStatusEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -479,19 +486,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -513,7 +520,7 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::set_value(
     }
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -529,26 +536,29 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::set_filter
     }
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cnpdStatusPdEnable" || name == "cnpdStatusLastUpdateTime")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatstable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsTable()
+    :
+    cnpdallstatsentry(this, {"ifindex", "cnpdallstatsprotocolsindex"})
 {
 
-    yang_name = "cnpdAllStatsTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdAllStatsTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::~Cnpdallstatstable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::~CnpdAllStatsTable()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdallstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cnpdallstatsentry.len(); index++)
     {
         if(cnpdallstatsentry[index]->has_data())
             return true;
@@ -556,9 +566,9 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::has_data() const
     return false;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdallstatsentry.size(); index++)
+    for (std::size_t index=0; index<cnpdallstatsentry.len(); index++)
     {
         if(cnpdallstatsentry[index]->has_operation())
             return true;
@@ -566,21 +576,21 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnpdAllStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -589,25 +599,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdAllStatsEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry>();
+        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry>();
         c->parent = this;
-        cnpdallstatsentry.push_back(c);
+        cnpdallstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cnpdallstatsentry)
+    for (auto c : cnpdallstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -618,22 +628,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cn
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdAllStatsEntry")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::Cnpdallstatsentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::CnpdAllStatsEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cnpdallstatsprotocolsindex{YType::uint32, "cnpdAllStatsProtocolsIndex"},
@@ -650,15 +660,16 @@ CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::Cnpdallstat
     cnpdallstatsoutbitrate{YType::uint32, "cnpdAllStatsOutBitRate"}
 {
 
-    yang_name = "cnpdAllStatsEntry"; yang_parent_name = "cnpdAllStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdAllStatsEntry"; yang_parent_name = "cnpdAllStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::~Cnpdallstatsentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::~CnpdAllStatsEntry()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cnpdallstatsprotocolsindex.is_set
 	|| cnpdallstatsprotocolname.is_set
@@ -674,7 +685,7 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::has_da
 	|| cnpdallstatsoutbitrate.is_set;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -692,21 +703,23 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::has_op
 	|| ydk::is_set(cnpdallstatsoutbitrate.yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/cnpdAllStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cnpdAllStatsEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[cnpdAllStatsProtocolsIndex='" <<cnpdallstatsprotocolsindex <<"']";
+    path_buffer << "cnpdAllStatsEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(cnpdallstatsprotocolsindex, "cnpdAllStatsProtocolsIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -728,19 +741,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -822,7 +835,7 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::set_va
     }
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -878,26 +891,29 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::set_fi
     }
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cnpdAllStatsProtocolsIndex" || name == "cnpdAllStatsProtocolName" || name == "cnpdAllStatsInPkts" || name == "cnpdAllStatsOutPkts" || name == "cnpdAllStatsInBytes" || name == "cnpdAllStatsOutBytes" || name == "cnpdAllStatsHCInPkts" || name == "cnpdAllStatsHCOutPkts" || name == "cnpdAllStatsHCInBytes" || name == "cnpdAllStatsHCOutBytes" || name == "cnpdAllStatsInBitRate" || name == "cnpdAllStatsOutBitRate")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigtable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigTable()
+    :
+    cnpdtopnconfigentry(this, {"cnpdtopnconfigindex"})
 {
 
-    yang_name = "cnpdTopNConfigTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdTopNConfigTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::~Cnpdtopnconfigtable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::~CnpdTopNConfigTable()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdtopnconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cnpdtopnconfigentry.len(); index++)
     {
         if(cnpdtopnconfigentry[index]->has_data())
             return true;
@@ -905,9 +921,9 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::has_data() const
     return false;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdtopnconfigentry.size(); index++)
+    for (std::size_t index=0; index<cnpdtopnconfigentry.len(); index++)
     {
         if(cnpdtopnconfigentry[index]->has_operation())
             return true;
@@ -915,21 +931,21 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnpdTopNConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -938,25 +954,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdTopNConfigEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry>();
+        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry>();
         c->parent = this;
-        cnpdtopnconfigentry.push_back(c);
+        cnpdtopnconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cnpdtopnconfigentry)
+    for (auto c : cnpdtopnconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -967,22 +983,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cn
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdTopNConfigEntry")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::Cnpdtopnconfigentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::CnpdTopNConfigEntry()
     :
     cnpdtopnconfigindex{YType::uint32, "cnpdTopNConfigIndex"},
     cnpdtopnconfigifindex{YType::int32, "cnpdTopNConfigIfIndex"},
@@ -994,15 +1010,16 @@ CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::Cnpdtop
     cnpdtopnconfigstatus{YType::enumeration, "cnpdTopNConfigStatus"}
 {
 
-    yang_name = "cnpdTopNConfigEntry"; yang_parent_name = "cnpdTopNConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdTopNConfigEntry"; yang_parent_name = "cnpdTopNConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::~Cnpdtopnconfigentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::~CnpdTopNConfigEntry()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cnpdtopnconfigindex.is_set
 	|| cnpdtopnconfigifindex.is_set
 	|| cnpdtopnconfigstatsselect.is_set
@@ -1013,7 +1030,7 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::ha
 	|| cnpdtopnconfigstatus.is_set;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cnpdtopnconfigindex.yfilter)
@@ -1026,21 +1043,22 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::ha
 	|| ydk::is_set(cnpdtopnconfigstatus.yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/cnpdTopNConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cnpdTopNConfigEntry" <<"[cnpdTopNConfigIndex='" <<cnpdtopnconfigindex <<"']";
+    path_buffer << "cnpdTopNConfigEntry";
+    ADD_KEY_TOKEN(cnpdtopnconfigindex, "cnpdTopNConfigIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1057,19 +1075,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cnpdTopNConfigIndex")
     {
@@ -1121,7 +1139,7 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::se
     }
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cnpdTopNConfigIndex")
     {
@@ -1157,26 +1175,29 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::se
     }
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdTopNConfigIndex" || name == "cnpdTopNConfigIfIndex" || name == "cnpdTopNConfigStatsSelect" || name == "cnpdTopNConfigSampleTime" || name == "cnpdTopNConfigRequestedSize" || name == "cnpdTopNConfigGrantedSize" || name == "cnpdTopNConfigTime" || name == "cnpdTopNConfigStatus")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatstable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsTable()
+    :
+    cnpdtopnstatsentry(this, {"cnpdtopnconfigindex", "cnpdtopnstatsindex"})
 {
 
-    yang_name = "cnpdTopNStatsTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdTopNStatsTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::~Cnpdtopnstatstable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::~CnpdTopNStatsTable()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdtopnstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cnpdtopnstatsentry.len(); index++)
     {
         if(cnpdtopnstatsentry[index]->has_data())
             return true;
@@ -1184,9 +1205,9 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::has_data() const
     return false;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdtopnstatsentry.size(); index++)
+    for (std::size_t index=0; index<cnpdtopnstatsentry.len(); index++)
     {
         if(cnpdtopnstatsentry[index]->has_operation())
             return true;
@@ -1194,21 +1215,21 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnpdTopNStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1217,25 +1238,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdTopNStatsEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry>();
+        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry>();
         c->parent = this;
-        cnpdtopnstatsentry.push_back(c);
+        cnpdtopnstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cnpdtopnstatsentry)
+    for (auto c : cnpdtopnstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1246,22 +1267,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cn
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdTopNStatsEntry")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::Cnpdtopnstatsentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::CnpdTopNStatsEntry()
     :
     cnpdtopnconfigindex{YType::str, "cnpdTopNConfigIndex"},
     cnpdtopnstatsindex{YType::uint32, "cnpdTopNStatsIndex"},
@@ -1270,15 +1291,16 @@ CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::Cnpdtopns
     cnpdtopnstatshcrate{YType::uint64, "cnpdTopNStatsHCRate"}
 {
 
-    yang_name = "cnpdTopNStatsEntry"; yang_parent_name = "cnpdTopNStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdTopNStatsEntry"; yang_parent_name = "cnpdTopNStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::~Cnpdtopnstatsentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::~CnpdTopNStatsEntry()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cnpdtopnconfigindex.is_set
 	|| cnpdtopnstatsindex.is_set
 	|| cnpdtopnstatsprotocolname.is_set
@@ -1286,7 +1308,7 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::has_
 	|| cnpdtopnstatshcrate.is_set;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cnpdtopnconfigindex.yfilter)
@@ -1296,21 +1318,23 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::has_
 	|| ydk::is_set(cnpdtopnstatshcrate.yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/cnpdTopNStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cnpdTopNStatsEntry" <<"[cnpdTopNConfigIndex='" <<cnpdtopnconfigindex <<"']" <<"[cnpdTopNStatsIndex='" <<cnpdtopnstatsindex <<"']";
+    path_buffer << "cnpdTopNStatsEntry";
+    ADD_KEY_TOKEN(cnpdtopnconfigindex, "cnpdTopNConfigIndex");
+    ADD_KEY_TOKEN(cnpdtopnstatsindex, "cnpdTopNStatsIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1324,19 +1348,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cnpdTopNConfigIndex")
     {
@@ -1370,7 +1394,7 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::set_
     }
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cnpdTopNConfigIndex")
     {
@@ -1394,26 +1418,29 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::set_
     }
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdTopNConfigIndex" || name == "cnpdTopNStatsIndex" || name == "cnpdTopNStatsProtocolName" || name == "cnpdTopNStatsRate" || name == "cnpdTopNStatsHCRate")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigtable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigTable()
+    :
+    cnpdthresholdconfigentry(this, {"cnpdthresholdconfigindex"})
 {
 
-    yang_name = "cnpdThresholdConfigTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdThresholdConfigTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::~Cnpdthresholdconfigtable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::~CnpdThresholdConfigTable()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdthresholdconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cnpdthresholdconfigentry.len(); index++)
     {
         if(cnpdthresholdconfigentry[index]->has_data())
             return true;
@@ -1421,9 +1448,9 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::has_data() const
     return false;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdthresholdconfigentry.size(); index++)
+    for (std::size_t index=0; index<cnpdthresholdconfigentry.len(); index++)
     {
         if(cnpdthresholdconfigentry[index]->has_operation())
             return true;
@@ -1431,21 +1458,21 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::has_operation() co
     return is_set(yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnpdThresholdConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1454,25 +1481,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdThresholdConfigEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry>();
+        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry>();
         c->parent = this;
-        cnpdthresholdconfigentry.push_back(c);
+        cnpdthresholdconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cnpdthresholdconfigentry)
+    for (auto c : cnpdthresholdconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1483,22 +1510,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cn
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdThresholdConfigEntry")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::Cnpdthresholdconfigentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::CnpdThresholdConfigEntry()
     :
     cnpdthresholdconfigindex{YType::uint32, "cnpdThresholdConfigIndex"},
     cnpdthresholdconfigifindex{YType::int32, "cnpdThresholdConfigIfIndex"},
@@ -1513,15 +1540,16 @@ CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentr
     cnpdthresholdconfigstatus{YType::enumeration, "cnpdThresholdConfigStatus"}
 {
 
-    yang_name = "cnpdThresholdConfigEntry"; yang_parent_name = "cnpdThresholdConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdThresholdConfigEntry"; yang_parent_name = "cnpdThresholdConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::~Cnpdthresholdconfigentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::~CnpdThresholdConfigEntry()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cnpdthresholdconfigindex.is_set
 	|| cnpdthresholdconfigifindex.is_set
 	|| cnpdthresholdconfiginterval.is_set
@@ -1535,7 +1563,7 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfi
 	|| cnpdthresholdconfigstatus.is_set;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cnpdthresholdconfigindex.yfilter)
@@ -1551,21 +1579,22 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfi
 	|| ydk::is_set(cnpdthresholdconfigstatus.yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/cnpdThresholdConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cnpdThresholdConfigEntry" <<"[cnpdThresholdConfigIndex='" <<cnpdthresholdconfigindex <<"']";
+    path_buffer << "cnpdThresholdConfigEntry";
+    ADD_KEY_TOKEN(cnpdthresholdconfigindex, "cnpdThresholdConfigIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1585,19 +1614,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cnpdThresholdConfigIndex")
     {
@@ -1667,7 +1696,7 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfi
     }
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cnpdThresholdConfigIndex")
     {
@@ -1715,26 +1744,29 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfi
     }
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdThresholdConfigIndex" || name == "cnpdThresholdConfigIfIndex" || name == "cnpdThresholdConfigInterval" || name == "cnpdThresholdConfigSampleType" || name == "cnpdThresholdConfigProtocol" || name == "cnpdThresholdConfigProtocolAny" || name == "cnpdThresholdConfigStatsSelect" || name == "cnpdThresholdConfigStartup" || name == "cnpdThresholdConfigRising" || name == "cnpdThresholdConfigFalling" || name == "cnpdThresholdConfigStatus")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistorytable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryTable()
+    :
+    cnpdthresholdhistoryentry(this, {"cnpdthresholdhistoryindex"})
 {
 
-    yang_name = "cnpdThresholdHistoryTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdThresholdHistoryTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::~Cnpdthresholdhistorytable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::~CnpdThresholdHistoryTable()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdthresholdhistoryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cnpdthresholdhistoryentry.len(); index++)
     {
         if(cnpdthresholdhistoryentry[index]->has_data())
             return true;
@@ -1742,9 +1774,9 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::has_data() const
     return false;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdthresholdhistoryentry.size(); index++)
+    for (std::size_t index=0; index<cnpdthresholdhistoryentry.len(); index++)
     {
         if(cnpdthresholdhistoryentry[index]->has_operation())
             return true;
@@ -1752,21 +1784,21 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::has_operation() c
     return is_set(yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnpdThresholdHistoryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1775,25 +1807,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdThresholdHistoryEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry>();
+        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry>();
         c->parent = this;
-        cnpdthresholdhistoryentry.push_back(c);
+        cnpdthresholdhistoryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cnpdthresholdhistoryentry)
+    for (auto c : cnpdthresholdhistoryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1804,22 +1836,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cn
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdThresholdHistoryEntry")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::Cnpdthresholdhistoryentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::CnpdThresholdHistoryEntry()
     :
     cnpdthresholdhistoryindex{YType::uint32, "cnpdThresholdHistoryIndex"},
     cnpdthresholdhistoryconfigindex{YType::uint32, "cnpdThresholdHistoryConfigIndex"},
@@ -1830,15 +1862,16 @@ CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryen
     cnpdthresholdhistorystatsselect{YType::enumeration, "cnpdThresholdHistoryStatsSelect"}
 {
 
-    yang_name = "cnpdThresholdHistoryEntry"; yang_parent_name = "cnpdThresholdHistoryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdThresholdHistoryEntry"; yang_parent_name = "cnpdThresholdHistoryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::~Cnpdthresholdhistoryentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::~CnpdThresholdHistoryEntry()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cnpdthresholdhistoryindex.is_set
 	|| cnpdthresholdhistoryconfigindex.is_set
 	|| cnpdthresholdhistoryvalue.is_set
@@ -1848,7 +1881,7 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhist
 	|| cnpdthresholdhistorystatsselect.is_set;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cnpdthresholdhistoryindex.yfilter)
@@ -1860,21 +1893,22 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhist
 	|| ydk::is_set(cnpdthresholdhistorystatsselect.yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/cnpdThresholdHistoryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cnpdThresholdHistoryEntry" <<"[cnpdThresholdHistoryIndex='" <<cnpdthresholdhistoryindex <<"']";
+    path_buffer << "cnpdThresholdHistoryEntry";
+    ADD_KEY_TOKEN(cnpdthresholdhistoryindex, "cnpdThresholdHistoryIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1890,19 +1924,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cnpdThresholdHistoryIndex")
     {
@@ -1948,7 +1982,7 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhist
     }
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cnpdThresholdHistoryIndex")
     {
@@ -1980,26 +2014,29 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhist
     }
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdThresholdHistoryIndex" || name == "cnpdThresholdHistoryConfigIndex" || name == "cnpdThresholdHistoryValue" || name == "cnpdThresholdHistoryType" || name == "cnpdThresholdHistoryTime" || name == "cnpdThresholdHistoryProtocol" || name == "cnpdThresholdHistoryStatsSelect")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolstable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsTable()
+    :
+    cnpdsupportedprotocolsentry(this, {"cnpdsupportedprotocolsindex"})
 {
 
-    yang_name = "cnpdSupportedProtocolsTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdSupportedProtocolsTable"; yang_parent_name = "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::~Cnpdsupportedprotocolstable()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::~CnpdSupportedProtocolsTable()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::has_data() const
 {
-    for (std::size_t index=0; index<cnpdsupportedprotocolsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cnpdsupportedprotocolsentry.len(); index++)
     {
         if(cnpdsupportedprotocolsentry[index]->has_data())
             return true;
@@ -2007,9 +2044,9 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::has_data() cons
     return false;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cnpdsupportedprotocolsentry.size(); index++)
+    for (std::size_t index=0; index<cnpdsupportedprotocolsentry.len(); index++)
     {
         if(cnpdsupportedprotocolsentry[index]->has_operation())
             return true;
@@ -2017,21 +2054,21 @@ bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::has_operation()
     return is_set(yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnpdSupportedProtocolsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2040,25 +2077,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdSupportedProtocolsEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry>();
+        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry>();
         c->parent = this;
-        cnpdsupportedprotocolsentry.push_back(c);
+        cnpdsupportedprotocolsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cnpdsupportedprotocolsentry)
+    for (auto c : cnpdsupportedprotocolsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2069,62 +2106,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cn
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdSupportedProtocolsEntry")
         return true;
     return false;
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry::Cnpdsupportedprotocolsentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::CnpdSupportedProtocolsEntry()
     :
     cnpdsupportedprotocolsindex{YType::uint32, "cnpdSupportedProtocolsIndex"},
     cnpdsupportedprotocolsname{YType::str, "cnpdSupportedProtocolsName"}
 {
 
-    yang_name = "cnpdSupportedProtocolsEntry"; yang_parent_name = "cnpdSupportedProtocolsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnpdSupportedProtocolsEntry"; yang_parent_name = "cnpdSupportedProtocolsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry::~Cnpdsupportedprotocolsentry()
+CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::~CnpdSupportedProtocolsEntry()
 {
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry::has_data() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cnpdsupportedprotocolsindex.is_set
 	|| cnpdsupportedprotocolsname.is_set;
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry::has_operation() const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cnpdsupportedprotocolsindex.yfilter)
 	|| ydk::is_set(cnpdsupportedprotocolsname.yfilter);
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry::get_absolute_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NBAR-PROTOCOL-DISCOVERY-MIB:CISCO-NBAR-PROTOCOL-DISCOVERY-MIB/cnpdSupportedProtocolsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry::get_segment_path() const
+std::string CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cnpdSupportedProtocolsEntry" <<"[cnpdSupportedProtocolsIndex='" <<cnpdsupportedprotocolsindex <<"']";
+    path_buffer << "cnpdSupportedProtocolsEntry";
+    ADD_KEY_TOKEN(cnpdsupportedprotocolsindex, "cnpdSupportedProtocolsIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2135,19 +2174,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cnpdSupportedProtocolsIndex")
     {
@@ -2163,7 +2202,7 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedpr
     }
 }
 
-void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cnpdSupportedProtocolsIndex")
     {
@@ -2175,7 +2214,7 @@ void CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedpr
     }
 }
 
-bool CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnpdSupportedProtocolsIndex" || name == "cnpdSupportedProtocolsName")
         return true;
@@ -2192,15 +2231,15 @@ const Enum::YLeaf CiscoPdDataType::packetCountIn {7, "packetCountIn"};
 const Enum::YLeaf CiscoPdDataType::packetCountOut {8, "packetCountOut"};
 const Enum::YLeaf CiscoPdDataType::packetCountSum {9, "packetCountSum"};
 
-const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::Cnpdthresholdconfigsampletype::absoluteValue {1, "absoluteValue"};
-const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::Cnpdthresholdconfigsampletype::deltaValue {2, "deltaValue"};
+const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::CnpdThresholdConfigSampleType::absoluteValue {1, "absoluteValue"};
+const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::CnpdThresholdConfigSampleType::deltaValue {2, "deltaValue"};
 
-const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::Cnpdthresholdconfigstartup::rising {1, "rising"};
-const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::Cnpdthresholdconfigstartup::falling {2, "falling"};
-const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable::Cnpdthresholdconfigentry::Cnpdthresholdconfigstartup::risingOrFalling {3, "risingOrFalling"};
+const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::CnpdThresholdConfigStartup::rising {1, "rising"};
+const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::CnpdThresholdConfigStartup::falling {2, "falling"};
+const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::CnpdThresholdConfigStartup::risingOrFalling {3, "risingOrFalling"};
 
-const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::Cnpdthresholdhistorytype::risingBreach {1, "risingBreach"};
-const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry::Cnpdthresholdhistorytype::fallingBreach {2, "fallingBreach"};
+const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::CnpdThresholdHistoryType::risingBreach {1, "risingBreach"};
+const Enum::YLeaf CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::CnpdThresholdHistoryType::fallingBreach {2, "fallingBreach"};
 
 
 }

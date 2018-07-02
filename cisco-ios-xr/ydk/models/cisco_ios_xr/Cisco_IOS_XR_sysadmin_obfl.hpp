@@ -59,7 +59,7 @@ class Obfl::ObflMgr : public ydk::Entity
 
         class Trace; //type: Obfl::ObflMgr::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_obfl::Obfl::ObflMgr::Trace> > trace;
+        ydk::YList trace;
         
 }; // Obfl::ObflMgr
 
@@ -84,7 +84,7 @@ class Obfl::ObflMgr::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Obfl::ObflMgr::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_obfl::Obfl::ObflMgr::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Obfl::ObflMgr::Trace
 
@@ -108,7 +108,7 @@ class Obfl::ObflMgr::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Obfl::ObflMgr::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_obfl::Obfl::ObflMgr::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Obfl::ObflMgr::Trace::Location
 
@@ -132,7 +132,7 @@ class Obfl::ObflMgr::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_obfl::Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Obfl::ObflMgr::Trace::Location::AllOptions
 
@@ -177,7 +177,7 @@ class Obfl::ObflShow : public ydk::Entity
 
         class Trace; //type: Obfl::ObflShow::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_obfl::Obfl::ObflShow::Trace> > trace;
+        ydk::YList trace;
         
 }; // Obfl::ObflShow
 
@@ -202,7 +202,7 @@ class Obfl::ObflShow::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Obfl::ObflShow::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_obfl::Obfl::ObflShow::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Obfl::ObflShow::Trace
 
@@ -226,7 +226,7 @@ class Obfl::ObflShow::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Obfl::ObflShow::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_obfl::Obfl::ObflShow::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Obfl::ObflShow::Trace::Location
 
@@ -250,7 +250,7 @@ class Obfl::ObflShow::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_obfl::Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Obfl::ObflShow::Trace::Location::AllOptions
 

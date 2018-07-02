@@ -56,7 +56,7 @@ class ClearBgpInstanceAsGraceful::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpInstanceAsGraceful::Input
 
@@ -106,7 +106,7 @@ class ClearBgpInstanceAs::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpInstanceAs::Input
 
@@ -1705,11 +1705,11 @@ class ClearBgpInstanceBestpathAfiSafiRdIpv4Prefix::Input : public ydk::Entity
 
 }; // ClearBgpInstanceBestpathAfiSafiRdIpv4Prefix::Input
 
-class ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix : public ydk::Entity
+class ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix : public ydk::Entity
 {
     public:
-        ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix();
-        ~ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix();
+        ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix();
+        ~ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1726,14 +1726,14 @@ class ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input
+        class Input; //type: ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_act::ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_act::ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input> input;
         
-}; // ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix
+}; // ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix
 
 
-class ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input : public ydk::Entity
+class ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1755,7 +1755,7 @@ class ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input : public ydk::Entity
         ydk::YLeaf mp2mp; //type: string
         ydk::YLeaf ipv4_prefix; //type: string
 
-}; // ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input
+}; // ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input
 
 class ClearBgpInstanceBestpathAfiSafiVrfIpv4Prefix : public ydk::Entity
 {

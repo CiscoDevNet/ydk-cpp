@@ -17,7 +17,7 @@ Nsr::Nsr()
 {
     process_failure->parent = this;
 
-    yang_name = "nsr"; yang_parent_name = "Cisco-IOS-XR-infra-nsr-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "nsr"; yang_parent_name = "Cisco-IOS-XR-infra-nsr-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Nsr::~Nsr()
@@ -26,6 +26,7 @@ Nsr::~Nsr()
 
 bool Nsr::has_data() const
 {
+    if (is_presence_container) return true;
     return (process_failure !=  nullptr && process_failure->has_data());
 }
 
@@ -122,7 +123,7 @@ Nsr::ProcessFailure::ProcessFailure()
     switchover{YType::empty, "switchover"}
 {
 
-    yang_name = "process-failure"; yang_parent_name = "nsr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process-failure"; yang_parent_name = "nsr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Nsr::ProcessFailure::~ProcessFailure()
@@ -131,6 +132,7 @@ Nsr::ProcessFailure::~ProcessFailure()
 
 bool Nsr::ProcessFailure::has_data() const
 {
+    if (is_presence_container) return true;
     return switchover.is_set;
 }
 

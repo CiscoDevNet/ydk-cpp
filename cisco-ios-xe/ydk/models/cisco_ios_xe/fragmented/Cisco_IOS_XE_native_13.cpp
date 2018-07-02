@@ -5,11 +5,11 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_13.hpp"
-#include "Cisco_IOS_XE_native_18.hpp"
 #include "Cisco_IOS_XE_native_14.hpp"
-#include "Cisco_IOS_XE_native_17.hpp"
-#include "Cisco_IOS_XE_native_16.hpp"
 #include "Cisco_IOS_XE_native_15.hpp"
+#include "Cisco_IOS_XE_native_16.hpp"
+#include "Cisco_IOS_XE_native_17.hpp"
+#include "Cisco_IOS_XE_native_18.hpp"
 
 using namespace ydk;
 
@@ -24,7 +24,7 @@ Native::Vlan::VlanList::PrivateVlan::PrivateVlan()
     isolated{YType::empty, "isolated"}
 {
 
-    yang_name = "private-vlan"; yang_parent_name = "vlan-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "private-vlan"; yang_parent_name = "vlan-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vlan::VlanList::PrivateVlan::~PrivateVlan()
@@ -33,6 +33,7 @@ Native::Vlan::VlanList::PrivateVlan::~PrivateVlan()
 
 bool Native::Vlan::VlanList::PrivateVlan::has_data() const
 {
+    if (is_presence_container) return true;
     return primary.is_set
 	|| association.is_set
 	|| community.is_set
@@ -140,7 +141,7 @@ Native::Vlan::VlanList::Lldp::Lldp()
     run{YType::empty, "run"}
 {
 
-    yang_name = "lldp"; yang_parent_name = "vlan-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp"; yang_parent_name = "vlan-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vlan::VlanList::Lldp::~Lldp()
@@ -149,6 +150,7 @@ Native::Vlan::VlanList::Lldp::~Lldp()
 
 bool Native::Vlan::VlanList::Lldp::has_data() const
 {
+    if (is_presence_container) return true;
     return run.is_set;
 }
 
@@ -215,14 +217,14 @@ bool Native::Vlan::VlanList::Lldp::has_leaf_or_child_of_name(const std::string &
 Native::Mvrp::Mvrp()
     :
     global{YType::empty, "Cisco-IOS-XE-mvrp:global"}
-    	,
+        ,
     mac_learning(std::make_shared<Native::Mvrp::MacLearning>())
-	,vlan(std::make_shared<Native::Mvrp::Vlan>())
+    , vlan(std::make_shared<Native::Mvrp::Vlan>())
 {
     mac_learning->parent = this;
     vlan->parent = this;
 
-    yang_name = "mvrp"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mvrp"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Mvrp::~Mvrp()
@@ -231,6 +233,7 @@ Native::Mvrp::~Mvrp()
 
 bool Native::Mvrp::has_data() const
 {
+    if (is_presence_container) return true;
     return global.is_set
 	|| (mac_learning !=  nullptr && mac_learning->has_data())
 	|| (vlan !=  nullptr && vlan->has_data());
@@ -338,7 +341,7 @@ Native::Mvrp::MacLearning::MacLearning()
     auto_{YType::empty, "auto"}
 {
 
-    yang_name = "mac-learning"; yang_parent_name = "mvrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-learning"; yang_parent_name = "mvrp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Mvrp::MacLearning::~MacLearning()
@@ -347,6 +350,7 @@ Native::Mvrp::MacLearning::~MacLearning()
 
 bool Native::Mvrp::MacLearning::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -422,7 +426,7 @@ Native::Mvrp::Vlan::Vlan()
     create{YType::empty, "create"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "mvrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan"; yang_parent_name = "mvrp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Mvrp::Vlan::~Vlan()
@@ -431,6 +435,7 @@ Native::Mvrp::Vlan::~Vlan()
 
 bool Native::Mvrp::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return create.is_set;
 }
 
@@ -506,7 +511,7 @@ Native::Avb::Avb()
     strict{YType::empty, "Cisco-IOS-XE-avb:strict"}
 {
 
-    yang_name = "avb"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "avb"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Avb::~Avb()
@@ -515,6 +520,7 @@ Native::Avb::~Avb()
 
 bool Native::Avb::has_data() const
 {
+    if (is_presence_container) return true;
     return strict.is_set;
 }
 
@@ -591,14 +597,14 @@ Native::Ptp::Ptp()
     neighbor_propagation_delay_threshold{YType::uint32, "Cisco-IOS-XE-ptp:neighbor-propagation-delay-threshold"},
     priority1{YType::uint8, "Cisco-IOS-XE-ptp:priority1"},
     priority2{YType::uint8, "Cisco-IOS-XE-ptp:priority2"}
-    	,
+        ,
     profile(std::make_shared<Native::Ptp::Profile>())
-	,mode(std::make_shared<Native::Ptp::Mode>())
+    , mode(std::make_shared<Native::Ptp::Mode>())
 {
     profile->parent = this;
     mode->parent = this;
 
-    yang_name = "ptp"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ptp"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ptp::~Ptp()
@@ -607,6 +613,7 @@ Native::Ptp::~Ptp()
 
 bool Native::Ptp::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| neighbor_propagation_delay_threshold.is_set
 	|| priority1.is_set
@@ -753,7 +760,7 @@ Native::Ptp::Profile::Profile()
     dot1as{YType::empty, "dot1as"}
 {
 
-    yang_name = "profile"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ptp::Profile::~Profile()
@@ -762,6 +769,7 @@ Native::Ptp::Profile::~Profile()
 
 bool Native::Ptp::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1as.is_set;
 }
 
@@ -836,12 +844,12 @@ Native::Ptp::Mode::Mode()
     :
     e2etransparent{YType::empty, "e2etransparent"},
     p2ptransparent{YType::empty, "p2ptransparent"}
-    	,
+        ,
     boundary(std::make_shared<Native::Ptp::Mode::Boundary>())
 {
     boundary->parent = this;
 
-    yang_name = "mode"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mode"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ptp::Mode::~Mode()
@@ -850,6 +858,7 @@ Native::Ptp::Mode::~Mode()
 
 bool Native::Ptp::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return e2etransparent.is_set
 	|| p2ptransparent.is_set
 	|| (boundary !=  nullptr && boundary->has_data());
@@ -955,7 +964,7 @@ Native::Ptp::Mode::Boundary::Boundary()
     pdelay_req{YType::empty, "pdelay-req"}
 {
 
-    yang_name = "boundary"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "boundary"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ptp::Mode::Boundary::~Boundary()
@@ -964,6 +973,7 @@ Native::Ptp::Mode::Boundary::~Boundary()
 
 bool Native::Ptp::Mode::Boundary::has_data() const
 {
+    if (is_presence_container) return true;
     return delay_req.is_set
 	|| pdelay_req.is_set;
 }
@@ -1054,7 +1064,7 @@ Native::Cdp::Cdp()
     run{YType::empty, "Cisco-IOS-XE-cdp:run"}
 {
 
-    yang_name = "cdp"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdp"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cdp::~Cdp()
@@ -1063,6 +1073,7 @@ Native::Cdp::~Cdp()
 
 bool Native::Cdp::has_data() const
 {
+    if (is_presence_container) return true;
     return holdtime.is_set
 	|| timer.is_set
 	|| run.is_set;
@@ -1162,11 +1173,11 @@ bool Native::Cdp::has_leaf_or_child_of_name(const std::string & name) const
 Native::Avc::Avc()
     :
     dns_as(std::make_shared<Native::Avc::DnsAs>())
-	,sd_service(nullptr) // presence node
+    , sd_service(nullptr) // presence node
 {
     dns_as->parent = this;
 
-    yang_name = "avc"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "avc"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Avc::~Avc()
@@ -1175,6 +1186,7 @@ Native::Avc::~Avc()
 
 bool Native::Avc::has_data() const
 {
+    if (is_presence_container) return true;
     return (dns_as !=  nullptr && dns_as->has_data())
 	|| (sd_service !=  nullptr && sd_service->has_data());
 }
@@ -1270,7 +1282,7 @@ Native::Avc::DnsAs::DnsAs()
 {
     client->parent = this;
 
-    yang_name = "dns-as"; yang_parent_name = "avc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dns-as"; yang_parent_name = "avc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Avc::DnsAs::~DnsAs()
@@ -1279,6 +1291,7 @@ Native::Avc::DnsAs::~DnsAs()
 
 bool Native::Avc::DnsAs::has_data() const
 {
+    if (is_presence_container) return true;
     return (client !=  nullptr && client->has_data());
 }
 
@@ -1355,11 +1368,11 @@ bool Native::Avc::DnsAs::has_leaf_or_child_of_name(const std::string & name) con
 Native::Avc::DnsAs::Client::Client()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     trusted_domains(nullptr) // presence node
 {
 
-    yang_name = "client"; yang_parent_name = "dns-as"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "dns-as"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Avc::DnsAs::Client::~Client()
@@ -1368,6 +1381,7 @@ Native::Avc::DnsAs::Client::~Client()
 
 bool Native::Avc::DnsAs::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (trusted_domains !=  nullptr && trusted_domains->has_data());
 }
@@ -1459,7 +1473,7 @@ Native::Avc::DnsAs::Client::TrustedDomains::TrustedDomains()
     domain{YType::str, "domain"}
 {
 
-    yang_name = "trusted-domains"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trusted-domains"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Avc::DnsAs::Client::TrustedDomains::~TrustedDomains()
@@ -1468,6 +1482,7 @@ Native::Avc::DnsAs::Client::TrustedDomains::~TrustedDomains()
 
 bool Native::Avc::DnsAs::Client::TrustedDomains::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set;
 }
 
@@ -1541,11 +1556,11 @@ bool Native::Avc::DnsAs::Client::TrustedDomains::has_leaf_or_child_of_name(const
 Native::Avc::SdService::SdService()
     :
     segment{YType::str, "segment"}
-    	,
+        ,
     controller(nullptr) // presence node
 {
 
-    yang_name = "sd-service"; yang_parent_name = "avc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sd-service"; yang_parent_name = "avc"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Avc::SdService::~SdService()
@@ -1554,6 +1569,7 @@ Native::Avc::SdService::~SdService()
 
 bool Native::Avc::SdService::has_data() const
 {
+    if (is_presence_container) return true;
     return segment.is_set
 	|| (controller !=  nullptr && controller->has_data());
 }
@@ -1644,14 +1660,14 @@ Native::Avc::SdService::Controller::Controller()
     :
     dscp{YType::uint8, "dscp"},
     vrf{YType::str, "vrf"}
-    	,
+        ,
     address(std::make_shared<Native::Avc::SdService::Controller::Address>())
-	,destination_ports(std::make_shared<Native::Avc::SdService::Controller::DestinationPorts>())
+    , destination_ports(std::make_shared<Native::Avc::SdService::Controller::DestinationPorts>())
 {
     address->parent = this;
     destination_ports->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "sd-service"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "sd-service"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Avc::SdService::Controller::~Controller()
@@ -1660,6 +1676,7 @@ Native::Avc::SdService::Controller::~Controller()
 
 bool Native::Avc::SdService::Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp.is_set
 	|| vrf.is_set
 	|| (address !=  nullptr && address->has_data())
@@ -1776,9 +1793,11 @@ bool Native::Avc::SdService::Controller::has_leaf_or_child_of_name(const std::st
 }
 
 Native::Avc::SdService::Controller::Address::Address()
+    :
+    ipv4_or_hostname(this, {"ipv4_or_hostname"})
 {
 
-    yang_name = "address"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Avc::SdService::Controller::Address::~Address()
@@ -1787,7 +1806,8 @@ Native::Avc::SdService::Controller::Address::~Address()
 
 bool Native::Avc::SdService::Controller::Address::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_data())
             return true;
@@ -1797,7 +1817,7 @@ bool Native::Avc::SdService::Controller::Address::has_data() const
 
 bool Native::Avc::SdService::Controller::Address::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_operation())
             return true;
@@ -1834,7 +1854,7 @@ std::shared_ptr<Entity> Native::Avc::SdService::Controller::Address::get_child_b
     {
         auto c = std::make_shared<Native::Avc::SdService::Controller::Address::Ipv4OrHostname>();
         c->parent = this;
-        ipv4_or_hostname.push_back(c);
+        ipv4_or_hostname.append(c);
         return c;
     }
 
@@ -1846,7 +1866,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Avc::SdService::Controlle
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_or_hostname)
+    for (auto c : ipv4_or_hostname.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1878,7 +1898,7 @@ Native::Avc::SdService::Controller::Address::Ipv4OrHostname::Ipv4OrHostname()
     ipv4_or_hostname0{YType::str, "ipv4-or-hostname0"}
 {
 
-    yang_name = "ipv4-or-hostname"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-or-hostname"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Avc::SdService::Controller::Address::Ipv4OrHostname::~Ipv4OrHostname()
@@ -1887,6 +1907,7 @@ Native::Avc::SdService::Controller::Address::Ipv4OrHostname::~Ipv4OrHostname()
 
 bool Native::Avc::SdService::Controller::Address::Ipv4OrHostname::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_or_hostname.is_set
 	|| ipv4_or_hostname0.is_set;
 }
@@ -1908,7 +1929,8 @@ std::string Native::Avc::SdService::Controller::Address::Ipv4OrHostname::get_abs
 std::string Native::Avc::SdService::Controller::Address::Ipv4OrHostname::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-or-hostname" <<"[ipv4-or-hostname='" <<ipv4_or_hostname <<"']";
+    path_buffer << "ipv4-or-hostname";
+    ADD_KEY_TOKEN(ipv4_or_hostname, "ipv4-or-hostname");
     return path_buffer.str();
 }
 
@@ -1975,7 +1997,7 @@ Native::Avc::SdService::Controller::DestinationPorts::DestinationPorts()
     sensor_exporter{YType::uint16, "sensor-exporter"}
 {
 
-    yang_name = "destination-ports"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "destination-ports"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Avc::SdService::Controller::DestinationPorts::~DestinationPorts()
@@ -1984,6 +2006,7 @@ Native::Avc::SdService::Controller::DestinationPorts::~DestinationPorts()
 
 bool Native::Avc::SdService::Controller::DestinationPorts::has_data() const
 {
+    if (is_presence_container) return true;
     return sensor_exporter.is_set;
 }
 
@@ -2055,9 +2078,12 @@ bool Native::Avc::SdService::Controller::DestinationPorts::has_leaf_or_child_of_
 }
 
 Native::Policy::Policy()
+    :
+    class_map(this, {"name"})
+    , policy_map(this, {"name"})
 {
 
-    yang_name = "policy"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Policy::~Policy()
@@ -2066,12 +2092,13 @@ Native::Policy::~Policy()
 
 bool Native::Policy::has_data() const
 {
-    for (std::size_t index=0; index<class_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_map.len(); index++)
     {
         if(class_map[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<policy_map.size(); index++)
+    for (std::size_t index=0; index<policy_map.len(); index++)
     {
         if(policy_map[index]->has_data())
             return true;
@@ -2081,12 +2108,12 @@ bool Native::Policy::has_data() const
 
 bool Native::Policy::has_operation() const
 {
-    for (std::size_t index=0; index<class_map.size(); index++)
+    for (std::size_t index=0; index<class_map.len(); index++)
     {
         if(class_map[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<policy_map.size(); index++)
+    for (std::size_t index=0; index<policy_map.len(); index++)
     {
         if(policy_map[index]->has_operation())
             return true;
@@ -2123,7 +2150,7 @@ std::shared_ptr<Entity> Native::Policy::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Native::Policy::ClassMap>();
         c->parent = this;
-        class_map.push_back(c);
+        class_map.append(c);
         return c;
     }
 
@@ -2131,7 +2158,7 @@ std::shared_ptr<Entity> Native::Policy::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Native::Policy::PolicyMap>();
         c->parent = this;
-        policy_map.push_back(c);
+        policy_map.append(c);
         return c;
     }
 
@@ -2143,7 +2170,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_map)
+    for (auto c : class_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2152,7 +2179,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::get_children() co
     }
 
     count = 0;
-    for (auto const & c : policy_map)
+    for (auto c : policy_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2186,14 +2213,14 @@ Native::Policy::ClassMap::ClassMap()
     protocol{YType::enumeration, "protocol"},
     prematch{YType::enumeration, "prematch"},
     description{YType::str, "description"}
-    	,
+        ,
     match(std::make_shared<Native::Policy::ClassMap::Match>())
-	,no_match(std::make_shared<Native::Policy::ClassMap::NoMatch>())
+    , no_match(std::make_shared<Native::Policy::ClassMap::NoMatch>())
 {
     match->parent = this;
     no_match->parent = this;
 
-    yang_name = "class-map"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "class-map"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Policy::ClassMap::~ClassMap()
@@ -2202,6 +2229,7 @@ Native::Policy::ClassMap::~ClassMap()
 
 bool Native::Policy::ClassMap::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| type.is_set
 	|| subscriber.is_set
@@ -2235,7 +2263,8 @@ std::string Native::Policy::ClassMap::get_absolute_path() const
 std::string Native::Policy::ClassMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-policy:class-map" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-policy:class-map";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2399,24 +2428,26 @@ Native::Policy::ClassMap::Match::Match()
     timer{YType::str, "timer"},
     user_role{YType::str, "user-role"},
     username{YType::str, "username"}
-    	,
+        ,
     current_method_priority(std::make_shared<Native::Policy::ClassMap::Match::CurrentMethodPriority>())
-	,application(std::make_shared<Native::Policy::ClassMap::Match::Application>())
-	,access_group(std::make_shared<Native::Policy::ClassMap::Match::AccessGroup>())
-	,destination_address(std::make_shared<Native::Policy::ClassMap::Match::DestinationAddress>())
-	,group_object(std::make_shared<Native::Policy::ClassMap::Match::GroupObject>())
-	,ip(std::make_shared<Native::Policy::ClassMap::Match::Ip>())
-	,mpls(std::make_shared<Native::Policy::ClassMap::Match::Mpls>())
-	,packet(std::make_shared<Native::Policy::ClassMap::Match::Packet>())
-	,protocol(std::make_shared<Native::Policy::ClassMap::Match::Protocol>())
-	,security_group(std::make_shared<Native::Policy::ClassMap::Match::SecurityGroup>())
-	,source_address(std::make_shared<Native::Policy::ClassMap::Match::SourceAddress>())
-	,vlan(std::make_shared<Native::Policy::ClassMap::Match::Vlan>())
-	,authorization_status(std::make_shared<Native::Policy::ClassMap::Match::AuthorizationStatus>())
-	,authorizing_method_priority(std::make_shared<Native::Policy::ClassMap::Match::AuthorizingMethodPriority>())
-	,method(std::make_shared<Native::Policy::ClassMap::Match::Method>())
-	,result_type(std::make_shared<Native::Policy::ClassMap::Match::ResultType>())
-	,not_(std::make_shared<Native::Policy::ClassMap::Match::Not>())
+    , application(std::make_shared<Native::Policy::ClassMap::Match::Application>())
+    , access_group(std::make_shared<Native::Policy::ClassMap::Match::AccessGroup>())
+    , destination_address(std::make_shared<Native::Policy::ClassMap::Match::DestinationAddress>())
+    , group_object(std::make_shared<Native::Policy::ClassMap::Match::GroupObject>())
+    , ip(std::make_shared<Native::Policy::ClassMap::Match::Ip>())
+    , mpls(std::make_shared<Native::Policy::ClassMap::Match::Mpls>())
+    , packet(std::make_shared<Native::Policy::ClassMap::Match::Packet>())
+    , protocol(std::make_shared<Native::Policy::ClassMap::Match::Protocol>())
+    , security_group(std::make_shared<Native::Policy::ClassMap::Match::SecurityGroup>())
+    , service(this, {"efp"})
+    , source_address(std::make_shared<Native::Policy::ClassMap::Match::SourceAddress>())
+    , vlan(std::make_shared<Native::Policy::ClassMap::Match::Vlan>())
+    , activated_service_template(this, {"service_name"})
+    , authorization_status(std::make_shared<Native::Policy::ClassMap::Match::AuthorizationStatus>())
+    , authorizing_method_priority(std::make_shared<Native::Policy::ClassMap::Match::AuthorizingMethodPriority>())
+    , method(std::make_shared<Native::Policy::ClassMap::Match::Method>())
+    , result_type(std::make_shared<Native::Policy::ClassMap::Match::ResultType>())
+    , not_(std::make_shared<Native::Policy::ClassMap::Match::Not>())
 {
     current_method_priority->parent = this;
     application->parent = this;
@@ -2436,7 +2467,7 @@ Native::Policy::ClassMap::Match::Match()
     result_type->parent = this;
     not_->parent = this;
 
-    yang_name = "match"; yang_parent_name = "class-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "class-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::~Match()
@@ -2445,12 +2476,13 @@ Native::Policy::ClassMap::Match::~Match()
 
 bool Native::Policy::ClassMap::Match::has_data() const
 {
-    for (std::size_t index=0; index<service.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service.len(); index++)
     {
         if(service[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<activated_service_template.size(); index++)
+    for (std::size_t index=0; index<activated_service_template.len(); index++)
     {
         if(activated_service_template[index]->has_data())
             return true;
@@ -2536,12 +2568,12 @@ bool Native::Policy::ClassMap::Match::has_data() const
 
 bool Native::Policy::ClassMap::Match::has_operation() const
 {
-    for (std::size_t index=0; index<service.size(); index++)
+    for (std::size_t index=0; index<service.len(); index++)
     {
         if(service[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<activated_service_template.size(); index++)
+    for (std::size_t index=0; index<activated_service_template.len(); index++)
     {
         if(activated_service_template[index]->has_operation())
             return true;
@@ -2782,7 +2814,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::get_child_by_name(const
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Service>();
         c->parent = this;
-        service.push_back(c);
+        service.append(c);
         return c;
     }
 
@@ -2808,7 +2840,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::get_child_by_name(const
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::ActivatedServiceTemplate>();
         c->parent = this;
-        activated_service_template.push_back(c);
+        activated_service_template.append(c);
         return c;
     }
 
@@ -2915,7 +2947,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : service)
+    for (auto c : service.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2934,7 +2966,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : activated_service_template)
+    for (auto c : activated_service_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3256,7 +3288,7 @@ Native::Policy::ClassMap::Match::CurrentMethodPriority::CurrentMethodPriority()
     lt{YType::uint8, "lt"}
 {
 
-    yang_name = "current-method-priority"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "current-method-priority"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::CurrentMethodPriority::~CurrentMethodPriority()
@@ -3265,6 +3297,7 @@ Native::Policy::ClassMap::Match::CurrentMethodPriority::~CurrentMethodPriority()
 
 bool Native::Policy::ClassMap::Match::CurrentMethodPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return eq.is_set
 	|| gt.is_set
 	|| lt.is_set;
@@ -3357,12 +3390,12 @@ bool Native::Policy::ClassMap::Match::CurrentMethodPriority::has_leaf_or_child_o
 Native::Policy::ClassMap::Match::Application::Application()
     :
     application_group(std::make_shared<Native::Policy::ClassMap::Match::Application::ApplicationGroup>())
-	,attribute(std::make_shared<Native::Policy::ClassMap::Match::Application::Attribute>())
+    , attribute(std::make_shared<Native::Policy::ClassMap::Match::Application::Attribute>())
 {
     application_group->parent = this;
     attribute->parent = this;
 
-    yang_name = "application"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Application::~Application()
@@ -3371,6 +3404,7 @@ Native::Policy::ClassMap::Match::Application::~Application()
 
 bool Native::Policy::ClassMap::Match::Application::has_data() const
 {
+    if (is_presence_container) return true;
     return (application_group !=  nullptr && application_group->has_data())
 	|| (attribute !=  nullptr && attribute->has_data());
 }
@@ -3460,7 +3494,7 @@ Native::Policy::ClassMap::Match::Application::ApplicationGroup::ApplicationGroup
     webex_group{YType::empty, "webex-group"}
 {
 
-    yang_name = "application-group"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-group"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Application::ApplicationGroup::~ApplicationGroup()
@@ -3469,6 +3503,7 @@ Native::Policy::ClassMap::Match::Application::ApplicationGroup::~ApplicationGrou
 
 bool Native::Policy::ClassMap::Match::Application::ApplicationGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return telepresence_group.is_set
 	|| vmware_group.is_set
 	|| webex_group.is_set;
@@ -3563,7 +3598,7 @@ Native::Policy::ClassMap::Match::Application::Attribute::Attribute()
     media_type{YType::enumeration, "media-type"}
 {
 
-    yang_name = "attribute"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Application::Attribute::~Attribute()
@@ -3572,6 +3607,7 @@ Native::Policy::ClassMap::Match::Application::Attribute::~Attribute()
 
 bool Native::Policy::ClassMap::Match::Application::Attribute::has_data() const
 {
+    if (is_presence_container) return true;
     return media_type.is_set;
 }
 
@@ -3641,7 +3677,7 @@ Native::Policy::ClassMap::Match::AccessGroup::AccessGroup()
     name{YType::str, "name"}
 {
 
-    yang_name = "access-group"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-group"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::AccessGroup::~AccessGroup()
@@ -3650,6 +3686,7 @@ Native::Policy::ClassMap::Match::AccessGroup::~AccessGroup()
 
 bool Native::Policy::ClassMap::Match::AccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : name.getYLeafs())
     {
         if(leaf.is_set)
@@ -3739,7 +3776,7 @@ Native::Policy::ClassMap::Match::DestinationAddress::DestinationAddress()
     mac{YType::str, "mac"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::DestinationAddress::~DestinationAddress()
@@ -3748,6 +3785,7 @@ Native::Policy::ClassMap::Match::DestinationAddress::~DestinationAddress()
 
 bool Native::Policy::ClassMap::Match::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : mac.getYLeafs())
     {
         if(leaf.is_set)
@@ -3826,7 +3864,7 @@ Native::Policy::ClassMap::Match::GroupObject::GroupObject()
 {
     security->parent = this;
 
-    yang_name = "group-object"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-object"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::GroupObject::~GroupObject()
@@ -3835,6 +3873,7 @@ Native::Policy::ClassMap::Match::GroupObject::~GroupObject()
 
 bool Native::Policy::ClassMap::Match::GroupObject::has_data() const
 {
+    if (is_presence_container) return true;
     return (security !=  nullptr && security->has_data());
 }
 
@@ -3907,7 +3946,7 @@ Native::Policy::ClassMap::Match::GroupObject::Security::Security()
     destination{YType::str, "destination"}
 {
 
-    yang_name = "security"; yang_parent_name = "group-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security"; yang_parent_name = "group-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::GroupObject::Security::~Security()
@@ -3916,6 +3955,7 @@ Native::Policy::ClassMap::Match::GroupObject::Security::~Security()
 
 bool Native::Policy::ClassMap::Match::GroupObject::Security::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : source.getYLeafs())
     {
         if(leaf.is_set)
@@ -4013,9 +4053,11 @@ Native::Policy::ClassMap::Match::Ip::Ip()
     :
     dscp{YType::str, "dscp"},
     precedence{YType::str, "precedence"}
+        ,
+    rtp(this, {"port1", "port2"})
 {
 
-    yang_name = "ip"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Ip::~Ip()
@@ -4024,7 +4066,8 @@ Native::Policy::ClassMap::Match::Ip::~Ip()
 
 bool Native::Policy::ClassMap::Match::Ip::has_data() const
 {
-    for (std::size_t index=0; index<rtp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rtp.len(); index++)
     {
         if(rtp[index]->has_data())
             return true;
@@ -4044,7 +4087,7 @@ bool Native::Policy::ClassMap::Match::Ip::has_data() const
 
 bool Native::Policy::ClassMap::Match::Ip::has_operation() const
 {
-    for (std::size_t index=0; index<rtp.size(); index++)
+    for (std::size_t index=0; index<rtp.len(); index++)
     {
         if(rtp[index]->has_operation())
             return true;
@@ -4090,7 +4133,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Ip::get_child_by_name(c
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Ip::Rtp>();
         c->parent = this;
-        rtp.push_back(c);
+        rtp.append(c);
         return c;
     }
 
@@ -4102,7 +4145,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rtp)
+    for (auto c : rtp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4150,7 +4193,7 @@ Native::Policy::ClassMap::Match::Ip::Rtp::Rtp()
     port2{YType::uint16, "port2"}
 {
 
-    yang_name = "rtp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rtp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Ip::Rtp::~Rtp()
@@ -4159,6 +4202,7 @@ Native::Policy::ClassMap::Match::Ip::Rtp::~Rtp()
 
 bool Native::Policy::ClassMap::Match::Ip::Rtp::has_data() const
 {
+    if (is_presence_container) return true;
     return port1.is_set
 	|| port2.is_set;
 }
@@ -4173,7 +4217,9 @@ bool Native::Policy::ClassMap::Match::Ip::Rtp::has_operation() const
 std::string Native::Policy::ClassMap::Match::Ip::Rtp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rtp" <<"[port1='" <<port1 <<"']" <<"[port2='" <<port2 <<"']";
+    path_buffer << "rtp";
+    ADD_KEY_TOKEN(port1, "port1");
+    ADD_KEY_TOKEN(port2, "port2");
     return path_buffer.str();
 }
 
@@ -4241,7 +4287,7 @@ Native::Policy::ClassMap::Match::Mpls::Mpls()
 {
     experimental->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Mpls::~Mpls()
@@ -4250,6 +4296,7 @@ Native::Policy::ClassMap::Match::Mpls::~Mpls()
 
 bool Native::Policy::ClassMap::Match::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (experimental !=  nullptr && experimental->has_data());
 }
 
@@ -4321,7 +4368,7 @@ Native::Policy::ClassMap::Match::Mpls::Experimental::Experimental()
     topmost{YType::uint8, "topmost"}
 {
 
-    yang_name = "experimental"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "experimental"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Mpls::Experimental::~Experimental()
@@ -4330,6 +4377,7 @@ Native::Policy::ClassMap::Match::Mpls::Experimental::~Experimental()
 
 bool Native::Policy::ClassMap::Match::Mpls::Experimental::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : topmost.getYLeafs())
     {
         if(leaf.is_set)
@@ -4408,7 +4456,7 @@ Native::Policy::ClassMap::Match::Packet::Packet()
 {
     length->parent = this;
 
-    yang_name = "packet"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Packet::~Packet()
@@ -4417,6 +4465,7 @@ Native::Policy::ClassMap::Match::Packet::~Packet()
 
 bool Native::Policy::ClassMap::Match::Packet::has_data() const
 {
+    if (is_presence_container) return true;
     return (length !=  nullptr && length->has_data());
 }
 
@@ -4489,7 +4538,7 @@ Native::Policy::ClassMap::Match::Packet::Length::Length()
     min{YType::uint16, "min"}
 {
 
-    yang_name = "length"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "length"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Packet::Length::~Length()
@@ -4498,6 +4547,7 @@ Native::Policy::ClassMap::Match::Packet::Length::~Length()
 
 bool Native::Policy::ClassMap::Match::Packet::Length::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set;
 }
@@ -4576,11 +4626,12 @@ bool Native::Policy::ClassMap::Match::Packet::Length::has_leaf_or_child_of_name(
 
 Native::Policy::ClassMap::Match::Protocol::Protocol()
     :
-    attribute(std::make_shared<Native::Policy::ClassMap::Match::Protocol::Attribute>())
+    protocols_list(this, {"protocols"})
+    , attribute(std::make_shared<Native::Policy::ClassMap::Match::Protocol::Attribute>())
 {
     attribute->parent = this;
 
-    yang_name = "protocol"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Protocol::~Protocol()
@@ -4589,7 +4640,8 @@ Native::Policy::ClassMap::Match::Protocol::~Protocol()
 
 bool Native::Policy::ClassMap::Match::Protocol::has_data() const
 {
-    for (std::size_t index=0; index<protocols_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocols_list.len(); index++)
     {
         if(protocols_list[index]->has_data())
             return true;
@@ -4599,7 +4651,7 @@ bool Native::Policy::ClassMap::Match::Protocol::has_data() const
 
 bool Native::Policy::ClassMap::Match::Protocol::has_operation() const
 {
-    for (std::size_t index=0; index<protocols_list.size(); index++)
+    for (std::size_t index=0; index<protocols_list.len(); index++)
     {
         if(protocols_list[index]->has_operation())
             return true;
@@ -4630,7 +4682,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Protocol::get_child_by_
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Protocol::ProtocolsList>();
         c->parent = this;
-        protocols_list.push_back(c);
+        protocols_list.append(c);
         return c;
     }
 
@@ -4651,7 +4703,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocols_list)
+    for (auto c : protocols_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4687,7 +4739,7 @@ Native::Policy::ClassMap::Match::Protocol::ProtocolsList::ProtocolsList()
     protocols{YType::str, "protocols"}
 {
 
-    yang_name = "protocols-list"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocols-list"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Protocol::ProtocolsList::~ProtocolsList()
@@ -4696,6 +4748,7 @@ Native::Policy::ClassMap::Match::Protocol::ProtocolsList::~ProtocolsList()
 
 bool Native::Policy::ClassMap::Match::Protocol::ProtocolsList::has_data() const
 {
+    if (is_presence_container) return true;
     return protocols.is_set;
 }
 
@@ -4708,7 +4761,8 @@ bool Native::Policy::ClassMap::Match::Protocol::ProtocolsList::has_operation() c
 std::string Native::Policy::ClassMap::Match::Protocol::ProtocolsList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocols-list" <<"[protocols='" <<protocols <<"']";
+    path_buffer << "protocols-list";
+    ADD_KEY_TOKEN(protocols, "protocols");
     return path_buffer.str();
 }
 
@@ -4760,9 +4814,18 @@ bool Native::Policy::ClassMap::Match::Protocol::ProtocolsList::has_leaf_or_child
 }
 
 Native::Policy::ClassMap::Match::Protocol::Attribute::Attribute()
+    :
+    application_group(this, {"name"})
+    , application_set(this, {"name"})
+    , business_relevance(this, {"name"})
+    , category(this, {"name"})
+    , encrypted(this, {"name"})
+    , sub_category(this, {"name"})
+    , traffic_class(this, {"name"})
+    , tunnel(this, {"name"})
 {
 
-    yang_name = "attribute"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Protocol::Attribute::~Attribute()
@@ -4771,42 +4834,43 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::~Attribute()
 
 bool Native::Policy::ClassMap::Match::Protocol::Attribute::has_data() const
 {
-    for (std::size_t index=0; index<application_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<application_group.len(); index++)
     {
         if(application_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<application_set.size(); index++)
+    for (std::size_t index=0; index<application_set.len(); index++)
     {
         if(application_set[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<business_relevance.size(); index++)
+    for (std::size_t index=0; index<business_relevance.len(); index++)
     {
         if(business_relevance[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<category.size(); index++)
+    for (std::size_t index=0; index<category.len(); index++)
     {
         if(category[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<encrypted.size(); index++)
+    for (std::size_t index=0; index<encrypted.len(); index++)
     {
         if(encrypted[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sub_category.size(); index++)
+    for (std::size_t index=0; index<sub_category.len(); index++)
     {
         if(sub_category[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<traffic_class.size(); index++)
+    for (std::size_t index=0; index<traffic_class.len(); index++)
     {
         if(traffic_class[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_data())
             return true;
@@ -4816,42 +4880,42 @@ bool Native::Policy::ClassMap::Match::Protocol::Attribute::has_data() const
 
 bool Native::Policy::ClassMap::Match::Protocol::Attribute::has_operation() const
 {
-    for (std::size_t index=0; index<application_group.size(); index++)
+    for (std::size_t index=0; index<application_group.len(); index++)
     {
         if(application_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<application_set.size(); index++)
+    for (std::size_t index=0; index<application_set.len(); index++)
     {
         if(application_set[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<business_relevance.size(); index++)
+    for (std::size_t index=0; index<business_relevance.len(); index++)
     {
         if(business_relevance[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<category.size(); index++)
+    for (std::size_t index=0; index<category.len(); index++)
     {
         if(category[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<encrypted.size(); index++)
+    for (std::size_t index=0; index<encrypted.len(); index++)
     {
         if(encrypted[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sub_category.size(); index++)
+    for (std::size_t index=0; index<sub_category.len(); index++)
     {
         if(sub_category[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<traffic_class.size(); index++)
+    for (std::size_t index=0; index<traffic_class.len(); index++)
     {
         if(traffic_class[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_operation())
             return true;
@@ -4881,7 +4945,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Protocol::Attribute::ge
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationGroup>();
         c->parent = this;
-        application_group.push_back(c);
+        application_group.append(c);
         return c;
     }
 
@@ -4889,7 +4953,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Protocol::Attribute::ge
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationSet>();
         c->parent = this;
-        application_set.push_back(c);
+        application_set.append(c);
         return c;
     }
 
@@ -4897,7 +4961,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Protocol::Attribute::ge
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Protocol::Attribute::BusinessRelevance>();
         c->parent = this;
-        business_relevance.push_back(c);
+        business_relevance.append(c);
         return c;
     }
 
@@ -4905,7 +4969,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Protocol::Attribute::ge
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Protocol::Attribute::Category>();
         c->parent = this;
-        category.push_back(c);
+        category.append(c);
         return c;
     }
 
@@ -4913,7 +4977,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Protocol::Attribute::ge
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Protocol::Attribute::Encrypted>();
         c->parent = this;
-        encrypted.push_back(c);
+        encrypted.append(c);
         return c;
     }
 
@@ -4921,7 +4985,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Protocol::Attribute::ge
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Protocol::Attribute::SubCategory>();
         c->parent = this;
-        sub_category.push_back(c);
+        sub_category.append(c);
         return c;
     }
 
@@ -4929,7 +4993,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Protocol::Attribute::ge
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Protocol::Attribute::TrafficClass>();
         c->parent = this;
-        traffic_class.push_back(c);
+        traffic_class.append(c);
         return c;
     }
 
@@ -4937,7 +5001,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Protocol::Attribute::ge
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Protocol::Attribute::Tunnel>();
         c->parent = this;
-        tunnel.push_back(c);
+        tunnel.append(c);
         return c;
     }
 
@@ -4949,7 +5013,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : application_group)
+    for (auto c : application_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4958,7 +5022,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : application_set)
+    for (auto c : application_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4967,7 +5031,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : business_relevance)
+    for (auto c : business_relevance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4976,7 +5040,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : category)
+    for (auto c : category.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4985,7 +5049,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : encrypted)
+    for (auto c : encrypted.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4994,7 +5058,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : sub_category)
+    for (auto c : sub_category.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5003,7 +5067,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : traffic_class)
+    for (auto c : traffic_class.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5012,7 +5076,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : tunnel)
+    for (auto c : tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5043,7 +5107,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationGroup::Applicat
     name{YType::str, "name"}
 {
 
-    yang_name = "application-group"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-group"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationGroup::~ApplicationGroup()
@@ -5052,6 +5116,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationGroup::~Applica
 
 bool Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -5064,7 +5129,8 @@ bool Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationGroup::has
 std::string Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "application-group" <<"[name='" <<name <<"']";
+    path_buffer << "application-group";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5120,7 +5186,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationSet::Applicatio
     name{YType::str, "name"}
 {
 
-    yang_name = "application-set"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-set"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationSet::~ApplicationSet()
@@ -5129,6 +5195,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationSet::~Applicati
 
 bool Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationSet::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -5141,7 +5208,8 @@ bool Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationSet::has_o
 std::string Native::Policy::ClassMap::Match::Protocol::Attribute::ApplicationSet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "application-set" <<"[name='" <<name <<"']";
+    path_buffer << "application-set";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5197,7 +5265,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::BusinessRelevance::Busines
     name{YType::str, "name"}
 {
 
-    yang_name = "business-relevance"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "business-relevance"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Protocol::Attribute::BusinessRelevance::~BusinessRelevance()
@@ -5206,6 +5274,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::BusinessRelevance::~Busine
 
 bool Native::Policy::ClassMap::Match::Protocol::Attribute::BusinessRelevance::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -5218,7 +5287,8 @@ bool Native::Policy::ClassMap::Match::Protocol::Attribute::BusinessRelevance::ha
 std::string Native::Policy::ClassMap::Match::Protocol::Attribute::BusinessRelevance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "business-relevance" <<"[name='" <<name <<"']";
+    path_buffer << "business-relevance";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5274,7 +5344,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::Category::Category()
     name{YType::str, "name"}
 {
 
-    yang_name = "category"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "category"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Protocol::Attribute::Category::~Category()
@@ -5283,6 +5353,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::Category::~Category()
 
 bool Native::Policy::ClassMap::Match::Protocol::Attribute::Category::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -5295,7 +5366,8 @@ bool Native::Policy::ClassMap::Match::Protocol::Attribute::Category::has_operati
 std::string Native::Policy::ClassMap::Match::Protocol::Attribute::Category::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "category" <<"[name='" <<name <<"']";
+    path_buffer << "category";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5351,7 +5423,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::Encrypted::Encrypted()
     name{YType::str, "name"}
 {
 
-    yang_name = "encrypted"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encrypted"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Protocol::Attribute::Encrypted::~Encrypted()
@@ -5360,6 +5432,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::Encrypted::~Encrypted()
 
 bool Native::Policy::ClassMap::Match::Protocol::Attribute::Encrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -5372,7 +5445,8 @@ bool Native::Policy::ClassMap::Match::Protocol::Attribute::Encrypted::has_operat
 std::string Native::Policy::ClassMap::Match::Protocol::Attribute::Encrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "encrypted" <<"[name='" <<name <<"']";
+    path_buffer << "encrypted";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5428,7 +5502,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::SubCategory::SubCategory()
     name{YType::str, "name"}
 {
 
-    yang_name = "sub-category"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-category"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Protocol::Attribute::SubCategory::~SubCategory()
@@ -5437,6 +5511,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::SubCategory::~SubCategory(
 
 bool Native::Policy::ClassMap::Match::Protocol::Attribute::SubCategory::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -5449,7 +5524,8 @@ bool Native::Policy::ClassMap::Match::Protocol::Attribute::SubCategory::has_oper
 std::string Native::Policy::ClassMap::Match::Protocol::Attribute::SubCategory::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sub-category" <<"[name='" <<name <<"']";
+    path_buffer << "sub-category";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5505,7 +5581,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::TrafficClass::TrafficClass
     name{YType::str, "name"}
 {
 
-    yang_name = "traffic-class"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-class"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Protocol::Attribute::TrafficClass::~TrafficClass()
@@ -5514,6 +5590,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::TrafficClass::~TrafficClas
 
 bool Native::Policy::ClassMap::Match::Protocol::Attribute::TrafficClass::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -5526,7 +5603,8 @@ bool Native::Policy::ClassMap::Match::Protocol::Attribute::TrafficClass::has_ope
 std::string Native::Policy::ClassMap::Match::Protocol::Attribute::TrafficClass::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-class" <<"[name='" <<name <<"']";
+    path_buffer << "traffic-class";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5582,7 +5660,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::Tunnel::Tunnel()
     name{YType::str, "name"}
 {
 
-    yang_name = "tunnel"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Protocol::Attribute::Tunnel::~Tunnel()
@@ -5591,6 +5669,7 @@ Native::Policy::ClassMap::Match::Protocol::Attribute::Tunnel::~Tunnel()
 
 bool Native::Policy::ClassMap::Match::Protocol::Attribute::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -5603,7 +5682,8 @@ bool Native::Policy::ClassMap::Match::Protocol::Attribute::Tunnel::has_operation
 std::string Native::Policy::ClassMap::Match::Protocol::Attribute::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel" <<"[name='" <<name <<"']";
+    path_buffer << "tunnel";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5657,12 +5737,12 @@ bool Native::Policy::ClassMap::Match::Protocol::Attribute::Tunnel::has_leaf_or_c
 Native::Policy::ClassMap::Match::SecurityGroup::SecurityGroup()
     :
     destination(std::make_shared<Native::Policy::ClassMap::Match::SecurityGroup::Destination>())
-	,source(std::make_shared<Native::Policy::ClassMap::Match::SecurityGroup::Source>())
+    , source(std::make_shared<Native::Policy::ClassMap::Match::SecurityGroup::Source>())
 {
     destination->parent = this;
     source->parent = this;
 
-    yang_name = "security-group"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security-group"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::SecurityGroup::~SecurityGroup()
@@ -5671,6 +5751,7 @@ Native::Policy::ClassMap::Match::SecurityGroup::~SecurityGroup()
 
 bool Native::Policy::ClassMap::Match::SecurityGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return (destination !=  nullptr && destination->has_data())
 	|| (source !=  nullptr && source->has_data());
 }
@@ -5758,7 +5839,7 @@ Native::Policy::ClassMap::Match::SecurityGroup::Destination::Destination()
     tag{YType::uint16, "tag"}
 {
 
-    yang_name = "destination"; yang_parent_name = "security-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "security-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::SecurityGroup::Destination::~Destination()
@@ -5767,6 +5848,7 @@ Native::Policy::ClassMap::Match::SecurityGroup::Destination::~Destination()
 
 bool Native::Policy::ClassMap::Match::SecurityGroup::Destination::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -5835,7 +5917,7 @@ Native::Policy::ClassMap::Match::SecurityGroup::Source::Source()
     tag{YType::uint16, "tag"}
 {
 
-    yang_name = "source"; yang_parent_name = "security-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "security-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::SecurityGroup::Source::~Source()
@@ -5844,6 +5926,7 @@ Native::Policy::ClassMap::Match::SecurityGroup::Source::~Source()
 
 bool Native::Policy::ClassMap::Match::SecurityGroup::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -5914,7 +5997,7 @@ Native::Policy::ClassMap::Match::Service::Service()
     ethernet{YType::empty, "ethernet"}
 {
 
-    yang_name = "service"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Service::~Service()
@@ -5923,6 +6006,7 @@ Native::Policy::ClassMap::Match::Service::~Service()
 
 bool Native::Policy::ClassMap::Match::Service::has_data() const
 {
+    if (is_presence_container) return true;
     return efp.is_set
 	|| instance.is_set
 	|| ethernet.is_set;
@@ -5939,7 +6023,8 @@ bool Native::Policy::ClassMap::Match::Service::has_operation() const
 std::string Native::Policy::ClassMap::Match::Service::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service" <<"[efp='" <<efp <<"']";
+    path_buffer << "service";
+    ADD_KEY_TOKEN(efp, "efp");
     return path_buffer.str();
 }
 
@@ -6017,7 +6102,7 @@ Native::Policy::ClassMap::Match::SourceAddress::SourceAddress()
     mac{YType::str, "mac"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::SourceAddress::~SourceAddress()
@@ -6026,6 +6111,7 @@ Native::Policy::ClassMap::Match::SourceAddress::~SourceAddress()
 
 bool Native::Policy::ClassMap::Match::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : mac.getYLeafs())
     {
         if(leaf.is_set)
@@ -6104,7 +6190,7 @@ Native::Policy::ClassMap::Match::Vlan::Vlan()
     value_{YType::str, "value"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Vlan::~Vlan()
@@ -6113,6 +6199,7 @@ Native::Policy::ClassMap::Match::Vlan::~Vlan()
 
 bool Native::Policy::ClassMap::Match::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : inner.getYLeafs())
     {
         if(leaf.is_set)
@@ -6211,7 +6298,7 @@ Native::Policy::ClassMap::Match::ActivatedServiceTemplate::ActivatedServiceTempl
     service_name{YType::str, "service-name"}
 {
 
-    yang_name = "activated-service-template"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "activated-service-template"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::ActivatedServiceTemplate::~ActivatedServiceTemplate()
@@ -6220,6 +6307,7 @@ Native::Policy::ClassMap::Match::ActivatedServiceTemplate::~ActivatedServiceTemp
 
 bool Native::Policy::ClassMap::Match::ActivatedServiceTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return service_name.is_set;
 }
 
@@ -6232,7 +6320,8 @@ bool Native::Policy::ClassMap::Match::ActivatedServiceTemplate::has_operation() 
 std::string Native::Policy::ClassMap::Match::ActivatedServiceTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "activated-service-template" <<"[service-name='" <<service_name <<"']";
+    path_buffer << "activated-service-template";
+    ADD_KEY_TOKEN(service_name, "service-name");
     return path_buffer.str();
 }
 
@@ -6289,7 +6378,7 @@ Native::Policy::ClassMap::Match::AuthorizationStatus::AuthorizationStatus()
     unauthorized{YType::empty, "unauthorized"}
 {
 
-    yang_name = "authorization-status"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorization-status"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::AuthorizationStatus::~AuthorizationStatus()
@@ -6298,6 +6387,7 @@ Native::Policy::ClassMap::Match::AuthorizationStatus::~AuthorizationStatus()
 
 bool Native::Policy::ClassMap::Match::AuthorizationStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return authorized.is_set
 	|| unauthorized.is_set;
 }
@@ -6381,7 +6471,7 @@ Native::Policy::ClassMap::Match::AuthorizingMethodPriority::AuthorizingMethodPri
     lt{YType::uint8, "lt"}
 {
 
-    yang_name = "authorizing-method-priority"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorizing-method-priority"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::AuthorizingMethodPriority::~AuthorizingMethodPriority()
@@ -6390,6 +6480,7 @@ Native::Policy::ClassMap::Match::AuthorizingMethodPriority::~AuthorizingMethodPr
 
 bool Native::Policy::ClassMap::Match::AuthorizingMethodPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return eq.is_set
 	|| gt.is_set
 	|| lt.is_set;
@@ -6486,7 +6577,7 @@ Native::Policy::ClassMap::Match::Method::Method()
     webauth{YType::empty, "webauth"}
 {
 
-    yang_name = "method"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Method::~Method()
@@ -6495,6 +6586,7 @@ Native::Policy::ClassMap::Match::Method::~Method()
 
 bool Native::Policy::ClassMap::Match::Method::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1x.is_set
 	|| mab.is_set
 	|| webauth.is_set;
@@ -6592,12 +6684,12 @@ Native::Policy::ClassMap::Match::ResultType::ResultType()
     method_timeout{YType::empty, "method-timeout"},
     none{YType::empty, "none"},
     success{YType::empty, "success"}
-    	,
+        ,
     method(std::make_shared<Native::Policy::ClassMap::Match::ResultType::Method>())
 {
     method->parent = this;
 
-    yang_name = "result-type"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result-type"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::ResultType::~ResultType()
@@ -6606,6 +6698,7 @@ Native::Policy::ClassMap::Match::ResultType::~ResultType()
 
 bool Native::Policy::ClassMap::Match::ResultType::has_data() const
 {
+    if (is_presence_container) return true;
     return aaa_timeout.is_set
 	|| agent_not_found.is_set
 	|| authoritative.is_set
@@ -6752,15 +6845,15 @@ bool Native::Policy::ClassMap::Match::ResultType::has_leaf_or_child_of_name(cons
 
 Native::Policy::ClassMap::Match::ResultType::Method::Method()
     :
-    dot1x(std::make_shared<Native::Policy::ClassMap::Match::ResultType::Method::Dot1X>())
-	,mab(std::make_shared<Native::Policy::ClassMap::Match::ResultType::Method::Mab>())
-	,webauth(std::make_shared<Native::Policy::ClassMap::Match::ResultType::Method::Webauth>())
+    dot1x(std::make_shared<Native::Policy::ClassMap::Match::ResultType::Method::Dot1x>())
+    , mab(std::make_shared<Native::Policy::ClassMap::Match::ResultType::Method::Mab>())
+    , webauth(std::make_shared<Native::Policy::ClassMap::Match::ResultType::Method::Webauth>())
 {
     dot1x->parent = this;
     mab->parent = this;
     webauth->parent = this;
 
-    yang_name = "method"; yang_parent_name = "result-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method"; yang_parent_name = "result-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::ResultType::Method::~Method()
@@ -6769,6 +6862,7 @@ Native::Policy::ClassMap::Match::ResultType::Method::~Method()
 
 bool Native::Policy::ClassMap::Match::ResultType::Method::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot1x !=  nullptr && dot1x->has_data())
 	|| (mab !=  nullptr && mab->has_data())
 	|| (webauth !=  nullptr && webauth->has_data());
@@ -6804,7 +6898,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::ResultType::Method::get
     {
         if(dot1x == nullptr)
         {
-            dot1x = std::make_shared<Native::Policy::ClassMap::Match::ResultType::Method::Dot1X>();
+            dot1x = std::make_shared<Native::Policy::ClassMap::Match::ResultType::Method::Dot1x>();
         }
         return dot1x;
     }
@@ -6867,7 +6961,7 @@ bool Native::Policy::ClassMap::Match::ResultType::Method::has_leaf_or_child_of_n
     return false;
 }
 
-Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::Dot1X()
+Native::Policy::ClassMap::Match::ResultType::Method::Dot1x::Dot1x()
     :
     aaa_timeout{YType::empty, "aaa-timeout"},
     agent_not_found{YType::empty, "agent-not-found"},
@@ -6877,15 +6971,16 @@ Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::Dot1X()
     success{YType::empty, "success"}
 {
 
-    yang_name = "dot1x"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1x"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::~Dot1X()
+Native::Policy::ClassMap::Match::ResultType::Method::Dot1x::~Dot1x()
 {
 }
 
-bool Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::has_data() const
+bool Native::Policy::ClassMap::Match::ResultType::Method::Dot1x::has_data() const
 {
+    if (is_presence_container) return true;
     return aaa_timeout.is_set
 	|| agent_not_found.is_set
 	|| authoritative.is_set
@@ -6894,7 +6989,7 @@ bool Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::has_data() cons
 	|| success.is_set;
 }
 
-bool Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::has_operation() const
+bool Native::Policy::ClassMap::Match::ResultType::Method::Dot1x::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(aaa_timeout.yfilter)
@@ -6905,14 +7000,14 @@ bool Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::has_operation()
 	|| ydk::is_set(success.yfilter);
 }
 
-std::string Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::get_segment_path() const
+std::string Native::Policy::ClassMap::Match::ResultType::Method::Dot1x::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1x";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Policy::ClassMap::Match::ResultType::Method::Dot1x::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6927,19 +7022,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::ClassMap::Match::
 
 }
 
-std::shared_ptr<Entity> Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Policy::ClassMap::Match::ResultType::Method::Dot1x::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::ResultType::Method::Dot1x::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Policy::ClassMap::Match::ResultType::Method::Dot1x::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aaa-timeout")
     {
@@ -6979,7 +7074,7 @@ void Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::set_value(const
     }
 }
 
-void Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Policy::ClassMap::Match::ResultType::Method::Dot1x::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "aaa-timeout")
     {
@@ -7007,7 +7102,7 @@ void Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::set_filter(cons
     }
 }
 
-bool Native::Policy::ClassMap::Match::ResultType::Method::Dot1X::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Policy::ClassMap::Match::ResultType::Method::Dot1x::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "aaa-timeout" || name == "agent-not-found" || name == "authoritative" || name == "method-timeout" || name == "none" || name == "success")
         return true;
@@ -7024,7 +7119,7 @@ Native::Policy::ClassMap::Match::ResultType::Method::Mab::Mab()
     success{YType::empty, "success"}
 {
 
-    yang_name = "mab"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mab"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::ResultType::Method::Mab::~Mab()
@@ -7033,6 +7128,7 @@ Native::Policy::ClassMap::Match::ResultType::Method::Mab::~Mab()
 
 bool Native::Policy::ClassMap::Match::ResultType::Method::Mab::has_data() const
 {
+    if (is_presence_container) return true;
     return aaa_timeout.is_set
 	|| agent_not_found.is_set
 	|| authoritative.is_set
@@ -7171,7 +7267,7 @@ Native::Policy::ClassMap::Match::ResultType::Method::Webauth::Webauth()
     success{YType::empty, "success"}
 {
 
-    yang_name = "webauth"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "webauth"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::ResultType::Method::Webauth::~Webauth()
@@ -7180,6 +7276,7 @@ Native::Policy::ClassMap::Match::ResultType::Method::Webauth::~Webauth()
 
 bool Native::Policy::ClassMap::Match::ResultType::Method::Webauth::has_data() const
 {
+    if (is_presence_container) return true;
     return aaa_timeout.is_set
 	|| agent_not_found.is_set
 	|| authoritative.is_set
@@ -7322,19 +7419,20 @@ Native::Policy::ClassMap::Match::Not::Not()
     precedence{YType::str, "precedence"},
     qos_group{YType::uint16, "qos-group"},
     peer{YType::str, "peer"}
-    	,
+        ,
     current_method_priority(std::make_shared<Native::Policy::ClassMap::Match::Not::CurrentMethodPriority>())
-	,application(std::make_shared<Native::Policy::ClassMap::Match::Not::Application>())
-	,access_group(std::make_shared<Native::Policy::ClassMap::Match::Not::AccessGroup>())
-	,destination_address(std::make_shared<Native::Policy::ClassMap::Match::Not::DestinationAddress>())
-	,group_object(std::make_shared<Native::Policy::ClassMap::Match::Not::GroupObject>())
-	,ip(std::make_shared<Native::Policy::ClassMap::Match::Not::Ip>())
-	,mpls(std::make_shared<Native::Policy::ClassMap::Match::Not::Mpls>())
-	,packet(std::make_shared<Native::Policy::ClassMap::Match::Not::Packet>())
-	,protocol(std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol>())
-	,security_group(std::make_shared<Native::Policy::ClassMap::Match::Not::SecurityGroup>())
-	,source_address(std::make_shared<Native::Policy::ClassMap::Match::Not::SourceAddress>())
-	,vlan(std::make_shared<Native::Policy::ClassMap::Match::Not::Vlan>())
+    , application(std::make_shared<Native::Policy::ClassMap::Match::Not::Application>())
+    , access_group(std::make_shared<Native::Policy::ClassMap::Match::Not::AccessGroup>())
+    , destination_address(std::make_shared<Native::Policy::ClassMap::Match::Not::DestinationAddress>())
+    , group_object(std::make_shared<Native::Policy::ClassMap::Match::Not::GroupObject>())
+    , ip(std::make_shared<Native::Policy::ClassMap::Match::Not::Ip>())
+    , mpls(std::make_shared<Native::Policy::ClassMap::Match::Not::Mpls>())
+    , packet(std::make_shared<Native::Policy::ClassMap::Match::Not::Packet>())
+    , protocol(std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol>())
+    , security_group(std::make_shared<Native::Policy::ClassMap::Match::Not::SecurityGroup>())
+    , service(this, {"efp"})
+    , source_address(std::make_shared<Native::Policy::ClassMap::Match::Not::SourceAddress>())
+    , vlan(std::make_shared<Native::Policy::ClassMap::Match::Not::Vlan>())
 {
     current_method_priority->parent = this;
     application->parent = this;
@@ -7349,7 +7447,7 @@ Native::Policy::ClassMap::Match::Not::Not()
     source_address->parent = this;
     vlan->parent = this;
 
-    yang_name = "not"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "not"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::~Not()
@@ -7358,7 +7456,8 @@ Native::Policy::ClassMap::Match::Not::~Not()
 
 bool Native::Policy::ClassMap::Match::Not::has_data() const
 {
-    for (std::size_t index=0; index<service.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service.len(); index++)
     {
         if(service[index]->has_data())
             return true;
@@ -7423,7 +7522,7 @@ bool Native::Policy::ClassMap::Match::Not::has_data() const
 
 bool Native::Policy::ClassMap::Match::Not::has_operation() const
 {
-    for (std::size_t index=0; index<service.size(); index++)
+    for (std::size_t index=0; index<service.len(); index++)
     {
         if(service[index]->has_operation())
             return true;
@@ -7627,7 +7726,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Not::get_child_by_name(
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Not::Service>();
         c->parent = this;
-        service.push_back(c);
+        service.append(c);
         return c;
     }
 
@@ -7707,7 +7806,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : service)
+    for (auto c : service.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7854,7 +7953,7 @@ Native::Policy::ClassMap::Match::Not::CurrentMethodPriority::CurrentMethodPriori
     lt{YType::uint8, "lt"}
 {
 
-    yang_name = "current-method-priority"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "current-method-priority"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::CurrentMethodPriority::~CurrentMethodPriority()
@@ -7863,6 +7962,7 @@ Native::Policy::ClassMap::Match::Not::CurrentMethodPriority::~CurrentMethodPrior
 
 bool Native::Policy::ClassMap::Match::Not::CurrentMethodPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return eq.is_set
 	|| gt.is_set
 	|| lt.is_set;
@@ -7955,12 +8055,12 @@ bool Native::Policy::ClassMap::Match::Not::CurrentMethodPriority::has_leaf_or_ch
 Native::Policy::ClassMap::Match::Not::Application::Application()
     :
     application_group(std::make_shared<Native::Policy::ClassMap::Match::Not::Application::ApplicationGroup>())
-	,attribute(std::make_shared<Native::Policy::ClassMap::Match::Not::Application::Attribute>())
+    , attribute(std::make_shared<Native::Policy::ClassMap::Match::Not::Application::Attribute>())
 {
     application_group->parent = this;
     attribute->parent = this;
 
-    yang_name = "application"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Application::~Application()
@@ -7969,6 +8069,7 @@ Native::Policy::ClassMap::Match::Not::Application::~Application()
 
 bool Native::Policy::ClassMap::Match::Not::Application::has_data() const
 {
+    if (is_presence_container) return true;
     return (application_group !=  nullptr && application_group->has_data())
 	|| (attribute !=  nullptr && attribute->has_data());
 }
@@ -8058,7 +8159,7 @@ Native::Policy::ClassMap::Match::Not::Application::ApplicationGroup::Application
     webex_group{YType::empty, "webex-group"}
 {
 
-    yang_name = "application-group"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-group"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Application::ApplicationGroup::~ApplicationGroup()
@@ -8067,6 +8168,7 @@ Native::Policy::ClassMap::Match::Not::Application::ApplicationGroup::~Applicatio
 
 bool Native::Policy::ClassMap::Match::Not::Application::ApplicationGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return telepresence_group.is_set
 	|| vmware_group.is_set
 	|| webex_group.is_set;
@@ -8161,7 +8263,7 @@ Native::Policy::ClassMap::Match::Not::Application::Attribute::Attribute()
     media_type{YType::enumeration, "media-type"}
 {
 
-    yang_name = "attribute"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Application::Attribute::~Attribute()
@@ -8170,6 +8272,7 @@ Native::Policy::ClassMap::Match::Not::Application::Attribute::~Attribute()
 
 bool Native::Policy::ClassMap::Match::Not::Application::Attribute::has_data() const
 {
+    if (is_presence_container) return true;
     return media_type.is_set;
 }
 
@@ -8239,7 +8342,7 @@ Native::Policy::ClassMap::Match::Not::AccessGroup::AccessGroup()
     name{YType::str, "name"}
 {
 
-    yang_name = "access-group"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-group"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::AccessGroup::~AccessGroup()
@@ -8248,6 +8351,7 @@ Native::Policy::ClassMap::Match::Not::AccessGroup::~AccessGroup()
 
 bool Native::Policy::ClassMap::Match::Not::AccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : name.getYLeafs())
     {
         if(leaf.is_set)
@@ -8337,7 +8441,7 @@ Native::Policy::ClassMap::Match::Not::DestinationAddress::DestinationAddress()
     mac{YType::str, "mac"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::DestinationAddress::~DestinationAddress()
@@ -8346,6 +8450,7 @@ Native::Policy::ClassMap::Match::Not::DestinationAddress::~DestinationAddress()
 
 bool Native::Policy::ClassMap::Match::Not::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : mac.getYLeafs())
     {
         if(leaf.is_set)
@@ -8424,7 +8529,7 @@ Native::Policy::ClassMap::Match::Not::GroupObject::GroupObject()
 {
     security->parent = this;
 
-    yang_name = "group-object"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-object"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::GroupObject::~GroupObject()
@@ -8433,6 +8538,7 @@ Native::Policy::ClassMap::Match::Not::GroupObject::~GroupObject()
 
 bool Native::Policy::ClassMap::Match::Not::GroupObject::has_data() const
 {
+    if (is_presence_container) return true;
     return (security !=  nullptr && security->has_data());
 }
 
@@ -8505,7 +8611,7 @@ Native::Policy::ClassMap::Match::Not::GroupObject::Security::Security()
     destination{YType::str, "destination"}
 {
 
-    yang_name = "security"; yang_parent_name = "group-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security"; yang_parent_name = "group-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::GroupObject::Security::~Security()
@@ -8514,6 +8620,7 @@ Native::Policy::ClassMap::Match::Not::GroupObject::Security::~Security()
 
 bool Native::Policy::ClassMap::Match::Not::GroupObject::Security::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : source.getYLeafs())
     {
         if(leaf.is_set)
@@ -8611,9 +8718,11 @@ Native::Policy::ClassMap::Match::Not::Ip::Ip()
     :
     dscp{YType::str, "dscp"},
     precedence{YType::str, "precedence"}
+        ,
+    rtp(this, {"port1", "port2"})
 {
 
-    yang_name = "ip"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Ip::~Ip()
@@ -8622,7 +8731,8 @@ Native::Policy::ClassMap::Match::Not::Ip::~Ip()
 
 bool Native::Policy::ClassMap::Match::Not::Ip::has_data() const
 {
-    for (std::size_t index=0; index<rtp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rtp.len(); index++)
     {
         if(rtp[index]->has_data())
             return true;
@@ -8642,7 +8752,7 @@ bool Native::Policy::ClassMap::Match::Not::Ip::has_data() const
 
 bool Native::Policy::ClassMap::Match::Not::Ip::has_operation() const
 {
-    for (std::size_t index=0; index<rtp.size(); index++)
+    for (std::size_t index=0; index<rtp.len(); index++)
     {
         if(rtp[index]->has_operation())
             return true;
@@ -8688,7 +8798,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Not::Ip::get_child_by_n
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Not::Ip::Rtp>();
         c->parent = this;
-        rtp.push_back(c);
+        rtp.append(c);
         return c;
     }
 
@@ -8700,7 +8810,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rtp)
+    for (auto c : rtp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8748,7 +8858,7 @@ Native::Policy::ClassMap::Match::Not::Ip::Rtp::Rtp()
     port2{YType::uint16, "port2"}
 {
 
-    yang_name = "rtp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rtp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Ip::Rtp::~Rtp()
@@ -8757,6 +8867,7 @@ Native::Policy::ClassMap::Match::Not::Ip::Rtp::~Rtp()
 
 bool Native::Policy::ClassMap::Match::Not::Ip::Rtp::has_data() const
 {
+    if (is_presence_container) return true;
     return port1.is_set
 	|| port2.is_set;
 }
@@ -8771,7 +8882,9 @@ bool Native::Policy::ClassMap::Match::Not::Ip::Rtp::has_operation() const
 std::string Native::Policy::ClassMap::Match::Not::Ip::Rtp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rtp" <<"[port1='" <<port1 <<"']" <<"[port2='" <<port2 <<"']";
+    path_buffer << "rtp";
+    ADD_KEY_TOKEN(port1, "port1");
+    ADD_KEY_TOKEN(port2, "port2");
     return path_buffer.str();
 }
 
@@ -8839,7 +8952,7 @@ Native::Policy::ClassMap::Match::Not::Mpls::Mpls()
 {
     experimental->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Mpls::~Mpls()
@@ -8848,6 +8961,7 @@ Native::Policy::ClassMap::Match::Not::Mpls::~Mpls()
 
 bool Native::Policy::ClassMap::Match::Not::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (experimental !=  nullptr && experimental->has_data());
 }
 
@@ -8919,7 +9033,7 @@ Native::Policy::ClassMap::Match::Not::Mpls::Experimental::Experimental()
     topmost{YType::uint8, "topmost"}
 {
 
-    yang_name = "experimental"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "experimental"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Mpls::Experimental::~Experimental()
@@ -8928,6 +9042,7 @@ Native::Policy::ClassMap::Match::Not::Mpls::Experimental::~Experimental()
 
 bool Native::Policy::ClassMap::Match::Not::Mpls::Experimental::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : topmost.getYLeafs())
     {
         if(leaf.is_set)
@@ -9006,7 +9121,7 @@ Native::Policy::ClassMap::Match::Not::Packet::Packet()
 {
     length->parent = this;
 
-    yang_name = "packet"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Packet::~Packet()
@@ -9015,6 +9130,7 @@ Native::Policy::ClassMap::Match::Not::Packet::~Packet()
 
 bool Native::Policy::ClassMap::Match::Not::Packet::has_data() const
 {
+    if (is_presence_container) return true;
     return (length !=  nullptr && length->has_data());
 }
 
@@ -9087,7 +9203,7 @@ Native::Policy::ClassMap::Match::Not::Packet::Length::Length()
     min{YType::uint16, "min"}
 {
 
-    yang_name = "length"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "length"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Packet::Length::~Length()
@@ -9096,6 +9212,7 @@ Native::Policy::ClassMap::Match::Not::Packet::Length::~Length()
 
 bool Native::Policy::ClassMap::Match::Not::Packet::Length::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set;
 }
@@ -9174,11 +9291,12 @@ bool Native::Policy::ClassMap::Match::Not::Packet::Length::has_leaf_or_child_of_
 
 Native::Policy::ClassMap::Match::Not::Protocol::Protocol()
     :
-    attribute(std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol::Attribute>())
+    protocols_list(this, {"protocols"})
+    , attribute(std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol::Attribute>())
 {
     attribute->parent = this;
 
-    yang_name = "protocol"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Protocol::~Protocol()
@@ -9187,7 +9305,8 @@ Native::Policy::ClassMap::Match::Not::Protocol::~Protocol()
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::has_data() const
 {
-    for (std::size_t index=0; index<protocols_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocols_list.len(); index++)
     {
         if(protocols_list[index]->has_data())
             return true;
@@ -9197,7 +9316,7 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::has_data() const
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::has_operation() const
 {
-    for (std::size_t index=0; index<protocols_list.size(); index++)
+    for (std::size_t index=0; index<protocols_list.len(); index++)
     {
         if(protocols_list[index]->has_operation())
             return true;
@@ -9228,7 +9347,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Not::Protocol::get_chil
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol::ProtocolsList>();
         c->parent = this;
-        protocols_list.push_back(c);
+        protocols_list.append(c);
         return c;
     }
 
@@ -9249,7 +9368,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocols_list)
+    for (auto c : protocols_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9285,7 +9404,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::ProtocolsList::ProtocolsList()
     protocols{YType::str, "protocols"}
 {
 
-    yang_name = "protocols-list"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocols-list"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Protocol::ProtocolsList::~ProtocolsList()
@@ -9294,6 +9413,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::ProtocolsList::~ProtocolsList()
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::ProtocolsList::has_data() const
 {
+    if (is_presence_container) return true;
     return protocols.is_set;
 }
 
@@ -9306,7 +9426,8 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::ProtocolsList::has_operatio
 std::string Native::Policy::ClassMap::Match::Not::Protocol::ProtocolsList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocols-list" <<"[protocols='" <<protocols <<"']";
+    path_buffer << "protocols-list";
+    ADD_KEY_TOKEN(protocols, "protocols");
     return path_buffer.str();
 }
 
@@ -9358,9 +9479,18 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::ProtocolsList::has_leaf_or_
 }
 
 Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Attribute()
+    :
+    application_group(this, {"name"})
+    , application_set(this, {"name"})
+    , business_relevance(this, {"name"})
+    , category(this, {"name"})
+    , encrypted(this, {"name"})
+    , sub_category(this, {"name"})
+    , traffic_class(this, {"name"})
+    , tunnel(this, {"name"})
 {
 
-    yang_name = "attribute"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Protocol::Attribute::~Attribute()
@@ -9369,42 +9499,43 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::~Attribute()
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::has_data() const
 {
-    for (std::size_t index=0; index<application_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<application_group.len(); index++)
     {
         if(application_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<application_set.size(); index++)
+    for (std::size_t index=0; index<application_set.len(); index++)
     {
         if(application_set[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<business_relevance.size(); index++)
+    for (std::size_t index=0; index<business_relevance.len(); index++)
     {
         if(business_relevance[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<category.size(); index++)
+    for (std::size_t index=0; index<category.len(); index++)
     {
         if(category[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<encrypted.size(); index++)
+    for (std::size_t index=0; index<encrypted.len(); index++)
     {
         if(encrypted[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sub_category.size(); index++)
+    for (std::size_t index=0; index<sub_category.len(); index++)
     {
         if(sub_category[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<traffic_class.size(); index++)
+    for (std::size_t index=0; index<traffic_class.len(); index++)
     {
         if(traffic_class[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_data())
             return true;
@@ -9414,42 +9545,42 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::has_data() const
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::has_operation() const
 {
-    for (std::size_t index=0; index<application_group.size(); index++)
+    for (std::size_t index=0; index<application_group.len(); index++)
     {
         if(application_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<application_set.size(); index++)
+    for (std::size_t index=0; index<application_set.len(); index++)
     {
         if(application_set[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<business_relevance.size(); index++)
+    for (std::size_t index=0; index<business_relevance.len(); index++)
     {
         if(business_relevance[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<category.size(); index++)
+    for (std::size_t index=0; index<category.len(); index++)
     {
         if(category[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<encrypted.size(); index++)
+    for (std::size_t index=0; index<encrypted.len(); index++)
     {
         if(encrypted[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sub_category.size(); index++)
+    for (std::size_t index=0; index<sub_category.len(); index++)
     {
         if(sub_category[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<traffic_class.size(); index++)
+    for (std::size_t index=0; index<traffic_class.len(); index++)
     {
         if(traffic_class[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_operation())
             return true;
@@ -9479,7 +9610,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Not::Protocol::Attribut
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationGroup>();
         c->parent = this;
-        application_group.push_back(c);
+        application_group.append(c);
         return c;
     }
 
@@ -9487,7 +9618,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Not::Protocol::Attribut
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationSet>();
         c->parent = this;
-        application_set.push_back(c);
+        application_set.append(c);
         return c;
     }
 
@@ -9495,7 +9626,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Not::Protocol::Attribut
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol::Attribute::BusinessRelevance>();
         c->parent = this;
-        business_relevance.push_back(c);
+        business_relevance.append(c);
         return c;
     }
 
@@ -9503,7 +9634,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Not::Protocol::Attribut
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Category>();
         c->parent = this;
-        category.push_back(c);
+        category.append(c);
         return c;
     }
 
@@ -9511,7 +9642,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Not::Protocol::Attribut
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Encrypted>();
         c->parent = this;
-        encrypted.push_back(c);
+        encrypted.append(c);
         return c;
     }
 
@@ -9519,7 +9650,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Not::Protocol::Attribut
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol::Attribute::SubCategory>();
         c->parent = this;
-        sub_category.push_back(c);
+        sub_category.append(c);
         return c;
     }
 
@@ -9527,7 +9658,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Not::Protocol::Attribut
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol::Attribute::TrafficClass>();
         c->parent = this;
-        traffic_class.push_back(c);
+        traffic_class.append(c);
         return c;
     }
 
@@ -9535,7 +9666,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::Match::Not::Protocol::Attribut
     {
         auto c = std::make_shared<Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Tunnel>();
         c->parent = this;
-        tunnel.push_back(c);
+        tunnel.append(c);
         return c;
     }
 
@@ -9547,7 +9678,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : application_group)
+    for (auto c : application_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9556,7 +9687,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : application_set)
+    for (auto c : application_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9565,7 +9696,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : business_relevance)
+    for (auto c : business_relevance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9574,7 +9705,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : category)
+    for (auto c : category.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9583,7 +9714,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : encrypted)
+    for (auto c : encrypted.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9592,7 +9723,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : sub_category)
+    for (auto c : sub_category.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9601,7 +9732,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : traffic_class)
+    for (auto c : traffic_class.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9610,7 +9741,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::Match::
     }
 
     count = 0;
-    for (auto const & c : tunnel)
+    for (auto c : tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9641,7 +9772,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationGroup::App
     name{YType::str, "name"}
 {
 
-    yang_name = "application-group"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-group"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationGroup::~ApplicationGroup()
@@ -9650,6 +9781,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationGroup::~Ap
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -9662,7 +9794,8 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationGroup
 std::string Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "application-group" <<"[name='" <<name <<"']";
+    path_buffer << "application-group";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -9718,7 +9851,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationSet::Appli
     name{YType::str, "name"}
 {
 
-    yang_name = "application-set"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-set"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationSet::~ApplicationSet()
@@ -9727,6 +9860,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationSet::~Appl
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationSet::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -9739,7 +9873,8 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationSet::
 std::string Native::Policy::ClassMap::Match::Not::Protocol::Attribute::ApplicationSet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "application-set" <<"[name='" <<name <<"']";
+    path_buffer << "application-set";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -9795,7 +9930,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::BusinessRelevance::Bu
     name{YType::str, "name"}
 {
 
-    yang_name = "business-relevance"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "business-relevance"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Protocol::Attribute::BusinessRelevance::~BusinessRelevance()
@@ -9804,6 +9939,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::BusinessRelevance::~B
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::BusinessRelevance::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -9816,7 +9952,8 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::BusinessRelevanc
 std::string Native::Policy::ClassMap::Match::Not::Protocol::Attribute::BusinessRelevance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "business-relevance" <<"[name='" <<name <<"']";
+    path_buffer << "business-relevance";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -9872,7 +10009,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Category::Category()
     name{YType::str, "name"}
 {
 
-    yang_name = "category"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "category"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Category::~Category()
@@ -9881,6 +10018,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Category::~Category()
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Category::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -9893,7 +10031,8 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Category::has_op
 std::string Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Category::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "category" <<"[name='" <<name <<"']";
+    path_buffer << "category";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -9949,7 +10088,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Encrypted::Encrypted(
     name{YType::str, "name"}
 {
 
-    yang_name = "encrypted"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encrypted"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Encrypted::~Encrypted()
@@ -9958,6 +10097,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Encrypted::~Encrypted
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Encrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -9970,7 +10110,8 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Encrypted::has_o
 std::string Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Encrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "encrypted" <<"[name='" <<name <<"']";
+    path_buffer << "encrypted";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10026,7 +10167,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::SubCategory::SubCateg
     name{YType::str, "name"}
 {
 
-    yang_name = "sub-category"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-category"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Protocol::Attribute::SubCategory::~SubCategory()
@@ -10035,6 +10176,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::SubCategory::~SubCate
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::SubCategory::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -10047,7 +10189,8 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::SubCategory::has
 std::string Native::Policy::ClassMap::Match::Not::Protocol::Attribute::SubCategory::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sub-category" <<"[name='" <<name <<"']";
+    path_buffer << "sub-category";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10103,7 +10246,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::TrafficClass::Traffic
     name{YType::str, "name"}
 {
 
-    yang_name = "traffic-class"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-class"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Protocol::Attribute::TrafficClass::~TrafficClass()
@@ -10112,6 +10255,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::TrafficClass::~Traffi
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::TrafficClass::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -10124,7 +10268,8 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::TrafficClass::ha
 std::string Native::Policy::ClassMap::Match::Not::Protocol::Attribute::TrafficClass::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-class" <<"[name='" <<name <<"']";
+    path_buffer << "traffic-class";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10180,7 +10325,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Tunnel::Tunnel()
     name{YType::str, "name"}
 {
 
-    yang_name = "tunnel"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Tunnel::~Tunnel()
@@ -10189,6 +10334,7 @@ Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Tunnel::~Tunnel()
 
 bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -10201,7 +10347,8 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Tunnel::has_oper
 std::string Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel" <<"[name='" <<name <<"']";
+    path_buffer << "tunnel";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10255,12 +10402,12 @@ bool Native::Policy::ClassMap::Match::Not::Protocol::Attribute::Tunnel::has_leaf
 Native::Policy::ClassMap::Match::Not::SecurityGroup::SecurityGroup()
     :
     destination(std::make_shared<Native::Policy::ClassMap::Match::Not::SecurityGroup::Destination>())
-	,source(std::make_shared<Native::Policy::ClassMap::Match::Not::SecurityGroup::Source>())
+    , source(std::make_shared<Native::Policy::ClassMap::Match::Not::SecurityGroup::Source>())
 {
     destination->parent = this;
     source->parent = this;
 
-    yang_name = "security-group"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security-group"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::SecurityGroup::~SecurityGroup()
@@ -10269,6 +10416,7 @@ Native::Policy::ClassMap::Match::Not::SecurityGroup::~SecurityGroup()
 
 bool Native::Policy::ClassMap::Match::Not::SecurityGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return (destination !=  nullptr && destination->has_data())
 	|| (source !=  nullptr && source->has_data());
 }
@@ -10356,7 +10504,7 @@ Native::Policy::ClassMap::Match::Not::SecurityGroup::Destination::Destination()
     tag{YType::uint16, "tag"}
 {
 
-    yang_name = "destination"; yang_parent_name = "security-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "security-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::SecurityGroup::Destination::~Destination()
@@ -10365,6 +10513,7 @@ Native::Policy::ClassMap::Match::Not::SecurityGroup::Destination::~Destination()
 
 bool Native::Policy::ClassMap::Match::Not::SecurityGroup::Destination::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -10433,7 +10582,7 @@ Native::Policy::ClassMap::Match::Not::SecurityGroup::Source::Source()
     tag{YType::uint16, "tag"}
 {
 
-    yang_name = "source"; yang_parent_name = "security-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "security-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::SecurityGroup::Source::~Source()
@@ -10442,6 +10591,7 @@ Native::Policy::ClassMap::Match::Not::SecurityGroup::Source::~Source()
 
 bool Native::Policy::ClassMap::Match::Not::SecurityGroup::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -10512,7 +10662,7 @@ Native::Policy::ClassMap::Match::Not::Service::Service()
     ethernet{YType::empty, "ethernet"}
 {
 
-    yang_name = "service"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Service::~Service()
@@ -10521,6 +10671,7 @@ Native::Policy::ClassMap::Match::Not::Service::~Service()
 
 bool Native::Policy::ClassMap::Match::Not::Service::has_data() const
 {
+    if (is_presence_container) return true;
     return efp.is_set
 	|| instance.is_set
 	|| ethernet.is_set;
@@ -10537,7 +10688,8 @@ bool Native::Policy::ClassMap::Match::Not::Service::has_operation() const
 std::string Native::Policy::ClassMap::Match::Not::Service::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service" <<"[efp='" <<efp <<"']";
+    path_buffer << "service";
+    ADD_KEY_TOKEN(efp, "efp");
     return path_buffer.str();
 }
 
@@ -10615,7 +10767,7 @@ Native::Policy::ClassMap::Match::Not::SourceAddress::SourceAddress()
     mac{YType::str, "mac"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::SourceAddress::~SourceAddress()
@@ -10624,6 +10776,7 @@ Native::Policy::ClassMap::Match::Not::SourceAddress::~SourceAddress()
 
 bool Native::Policy::ClassMap::Match::Not::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : mac.getYLeafs())
     {
         if(leaf.is_set)
@@ -10702,7 +10855,7 @@ Native::Policy::ClassMap::Match::Not::Vlan::Vlan()
     value_{YType::str, "value"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "not"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::Match::Not::Vlan::~Vlan()
@@ -10711,6 +10864,7 @@ Native::Policy::ClassMap::Match::Not::Vlan::~Vlan()
 
 bool Native::Policy::ClassMap::Match::Not::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : inner.getYLeafs())
     {
         if(leaf.is_set)
@@ -10822,18 +10976,19 @@ Native::Policy::ClassMap::NoMatch::NoMatch()
     timer{YType::str, "timer"},
     user_role{YType::str, "user-role"},
     username{YType::str, "username"}
-    	,
-    authorization_status(std::make_shared<Native::Policy::ClassMap::NoMatch::AuthorizationStatus>())
-	,authorizing_method_priority(std::make_shared<Native::Policy::ClassMap::NoMatch::AuthorizingMethodPriority>())
-	,method(std::make_shared<Native::Policy::ClassMap::NoMatch::Method>())
-	,result_type(std::make_shared<Native::Policy::ClassMap::NoMatch::ResultType>())
+        ,
+    activated_service_template(this, {"service_name"})
+    , authorization_status(std::make_shared<Native::Policy::ClassMap::NoMatch::AuthorizationStatus>())
+    , authorizing_method_priority(std::make_shared<Native::Policy::ClassMap::NoMatch::AuthorizingMethodPriority>())
+    , method(std::make_shared<Native::Policy::ClassMap::NoMatch::Method>())
+    , result_type(std::make_shared<Native::Policy::ClassMap::NoMatch::ResultType>())
 {
     authorization_status->parent = this;
     authorizing_method_priority->parent = this;
     method->parent = this;
     result_type->parent = this;
 
-    yang_name = "no-match"; yang_parent_name = "class-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-match"; yang_parent_name = "class-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::NoMatch::~NoMatch()
@@ -10842,7 +10997,8 @@ Native::Policy::ClassMap::NoMatch::~NoMatch()
 
 bool Native::Policy::ClassMap::NoMatch::has_data() const
 {
-    for (std::size_t index=0; index<activated_service_template.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<activated_service_template.len(); index++)
     {
         if(activated_service_template[index]->has_data())
             return true;
@@ -10871,7 +11027,7 @@ bool Native::Policy::ClassMap::NoMatch::has_data() const
 
 bool Native::Policy::ClassMap::NoMatch::has_operation() const
 {
-    for (std::size_t index=0; index<activated_service_template.size(); index++)
+    for (std::size_t index=0; index<activated_service_template.len(); index++)
     {
         if(activated_service_template[index]->has_operation())
             return true;
@@ -10937,7 +11093,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::NoMatch::get_child_by_name(con
     {
         auto c = std::make_shared<Native::Policy::ClassMap::NoMatch::ActivatedServiceTemplate>();
         c->parent = this;
-        activated_service_template.push_back(c);
+        activated_service_template.append(c);
         return c;
     }
 
@@ -10985,7 +11141,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::NoMatch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : activated_service_template)
+    for (auto c : activated_service_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11196,7 +11352,7 @@ Native::Policy::ClassMap::NoMatch::ActivatedServiceTemplate::ActivatedServiceTem
     service_name{YType::str, "service-name"}
 {
 
-    yang_name = "activated-service-template"; yang_parent_name = "no-match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "activated-service-template"; yang_parent_name = "no-match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::NoMatch::ActivatedServiceTemplate::~ActivatedServiceTemplate()
@@ -11205,6 +11361,7 @@ Native::Policy::ClassMap::NoMatch::ActivatedServiceTemplate::~ActivatedServiceTe
 
 bool Native::Policy::ClassMap::NoMatch::ActivatedServiceTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return service_name.is_set;
 }
 
@@ -11217,7 +11374,8 @@ bool Native::Policy::ClassMap::NoMatch::ActivatedServiceTemplate::has_operation(
 std::string Native::Policy::ClassMap::NoMatch::ActivatedServiceTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "activated-service-template" <<"[service-name='" <<service_name <<"']";
+    path_buffer << "activated-service-template";
+    ADD_KEY_TOKEN(service_name, "service-name");
     return path_buffer.str();
 }
 
@@ -11274,7 +11432,7 @@ Native::Policy::ClassMap::NoMatch::AuthorizationStatus::AuthorizationStatus()
     unauthorized{YType::empty, "unauthorized"}
 {
 
-    yang_name = "authorization-status"; yang_parent_name = "no-match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorization-status"; yang_parent_name = "no-match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::NoMatch::AuthorizationStatus::~AuthorizationStatus()
@@ -11283,6 +11441,7 @@ Native::Policy::ClassMap::NoMatch::AuthorizationStatus::~AuthorizationStatus()
 
 bool Native::Policy::ClassMap::NoMatch::AuthorizationStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return authorized.is_set
 	|| unauthorized.is_set;
 }
@@ -11366,7 +11525,7 @@ Native::Policy::ClassMap::NoMatch::AuthorizingMethodPriority::AuthorizingMethodP
     lt{YType::uint8, "lt"}
 {
 
-    yang_name = "authorizing-method-priority"; yang_parent_name = "no-match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorizing-method-priority"; yang_parent_name = "no-match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::NoMatch::AuthorizingMethodPriority::~AuthorizingMethodPriority()
@@ -11375,6 +11534,7 @@ Native::Policy::ClassMap::NoMatch::AuthorizingMethodPriority::~AuthorizingMethod
 
 bool Native::Policy::ClassMap::NoMatch::AuthorizingMethodPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return eq.is_set
 	|| gt.is_set
 	|| lt.is_set;
@@ -11471,7 +11631,7 @@ Native::Policy::ClassMap::NoMatch::Method::Method()
     webauth{YType::empty, "webauth"}
 {
 
-    yang_name = "method"; yang_parent_name = "no-match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method"; yang_parent_name = "no-match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::NoMatch::Method::~Method()
@@ -11480,6 +11640,7 @@ Native::Policy::ClassMap::NoMatch::Method::~Method()
 
 bool Native::Policy::ClassMap::NoMatch::Method::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1x.is_set
 	|| mab.is_set
 	|| webauth.is_set;
@@ -11577,12 +11738,12 @@ Native::Policy::ClassMap::NoMatch::ResultType::ResultType()
     method_timeout{YType::empty, "method-timeout"},
     none{YType::empty, "none"},
     success{YType::empty, "success"}
-    	,
+        ,
     method(std::make_shared<Native::Policy::ClassMap::NoMatch::ResultType::Method>())
 {
     method->parent = this;
 
-    yang_name = "result-type"; yang_parent_name = "no-match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result-type"; yang_parent_name = "no-match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::NoMatch::ResultType::~ResultType()
@@ -11591,6 +11752,7 @@ Native::Policy::ClassMap::NoMatch::ResultType::~ResultType()
 
 bool Native::Policy::ClassMap::NoMatch::ResultType::has_data() const
 {
+    if (is_presence_container) return true;
     return aaa_timeout.is_set
 	|| agent_not_found.is_set
 	|| authoritative.is_set
@@ -11737,15 +11899,15 @@ bool Native::Policy::ClassMap::NoMatch::ResultType::has_leaf_or_child_of_name(co
 
 Native::Policy::ClassMap::NoMatch::ResultType::Method::Method()
     :
-    dot1x(std::make_shared<Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X>())
-	,mab(std::make_shared<Native::Policy::ClassMap::NoMatch::ResultType::Method::Mab>())
-	,webauth(std::make_shared<Native::Policy::ClassMap::NoMatch::ResultType::Method::Webauth>())
+    dot1x(std::make_shared<Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x>())
+    , mab(std::make_shared<Native::Policy::ClassMap::NoMatch::ResultType::Method::Mab>())
+    , webauth(std::make_shared<Native::Policy::ClassMap::NoMatch::ResultType::Method::Webauth>())
 {
     dot1x->parent = this;
     mab->parent = this;
     webauth->parent = this;
 
-    yang_name = "method"; yang_parent_name = "result-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method"; yang_parent_name = "result-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::NoMatch::ResultType::Method::~Method()
@@ -11754,6 +11916,7 @@ Native::Policy::ClassMap::NoMatch::ResultType::Method::~Method()
 
 bool Native::Policy::ClassMap::NoMatch::ResultType::Method::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot1x !=  nullptr && dot1x->has_data())
 	|| (mab !=  nullptr && mab->has_data())
 	|| (webauth !=  nullptr && webauth->has_data());
@@ -11789,7 +11952,7 @@ std::shared_ptr<Entity> Native::Policy::ClassMap::NoMatch::ResultType::Method::g
     {
         if(dot1x == nullptr)
         {
-            dot1x = std::make_shared<Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X>();
+            dot1x = std::make_shared<Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x>();
         }
         return dot1x;
     }
@@ -11852,7 +12015,7 @@ bool Native::Policy::ClassMap::NoMatch::ResultType::Method::has_leaf_or_child_of
     return false;
 }
 
-Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::Dot1X()
+Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x::Dot1x()
     :
     aaa_timeout{YType::empty, "aaa-timeout"},
     agent_not_found{YType::empty, "agent-not-found"},
@@ -11862,15 +12025,16 @@ Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::Dot1X()
     success{YType::empty, "success"}
 {
 
-    yang_name = "dot1x"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1x"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::~Dot1X()
+Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x::~Dot1x()
 {
 }
 
-bool Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::has_data() const
+bool Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x::has_data() const
 {
+    if (is_presence_container) return true;
     return aaa_timeout.is_set
 	|| agent_not_found.is_set
 	|| authoritative.is_set
@@ -11879,7 +12043,7 @@ bool Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::has_data() co
 	|| success.is_set;
 }
 
-bool Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::has_operation() const
+bool Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(aaa_timeout.yfilter)
@@ -11890,14 +12054,14 @@ bool Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::has_operation
 	|| ydk::is_set(success.yfilter);
 }
 
-std::string Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::get_segment_path() const
+std::string Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1x";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11912,19 +12076,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::ClassMap::NoMatch
 
 }
 
-std::shared_ptr<Entity> Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aaa-timeout")
     {
@@ -11964,7 +12128,7 @@ void Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::set_value(con
     }
 }
 
-void Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "aaa-timeout")
     {
@@ -11992,7 +12156,7 @@ void Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::set_filter(co
     }
 }
 
-bool Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1X::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Policy::ClassMap::NoMatch::ResultType::Method::Dot1x::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "aaa-timeout" || name == "agent-not-found" || name == "authoritative" || name == "method-timeout" || name == "none" || name == "success")
         return true;
@@ -12009,7 +12173,7 @@ Native::Policy::ClassMap::NoMatch::ResultType::Method::Mab::Mab()
     success{YType::empty, "success"}
 {
 
-    yang_name = "mab"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mab"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::NoMatch::ResultType::Method::Mab::~Mab()
@@ -12018,6 +12182,7 @@ Native::Policy::ClassMap::NoMatch::ResultType::Method::Mab::~Mab()
 
 bool Native::Policy::ClassMap::NoMatch::ResultType::Method::Mab::has_data() const
 {
+    if (is_presence_container) return true;
     return aaa_timeout.is_set
 	|| agent_not_found.is_set
 	|| authoritative.is_set
@@ -12156,7 +12321,7 @@ Native::Policy::ClassMap::NoMatch::ResultType::Method::Webauth::Webauth()
     success{YType::empty, "success"}
 {
 
-    yang_name = "webauth"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "webauth"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::ClassMap::NoMatch::ResultType::Method::Webauth::~Webauth()
@@ -12165,6 +12330,7 @@ Native::Policy::ClassMap::NoMatch::ResultType::Method::Webauth::~Webauth()
 
 bool Native::Policy::ClassMap::NoMatch::ResultType::Method::Webauth::has_data() const
 {
+    if (is_presence_container) return true;
     return aaa_timeout.is_set
 	|| agent_not_found.is_set
 	|| authoritative.is_set
@@ -12301,9 +12467,12 @@ Native::Policy::PolicyMap::PolicyMap()
     protocol{YType::enumeration, "protocol"},
     description{YType::str, "description"},
     sequence_interval{YType::uint16, "sequence-interval"}
+        ,
+    event(this, {"event_type"})
+    , class_(this, {"name"})
 {
 
-    yang_name = "policy-map"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-map"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Policy::PolicyMap::~PolicyMap()
@@ -12312,12 +12481,13 @@ Native::Policy::PolicyMap::~PolicyMap()
 
 bool Native::Policy::PolicyMap::has_data() const
 {
-    for (std::size_t index=0; index<event.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<event.len(); index++)
     {
         if(event[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<class_.size(); index++)
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_data())
             return true;
@@ -12332,12 +12502,12 @@ bool Native::Policy::PolicyMap::has_data() const
 
 bool Native::Policy::PolicyMap::has_operation() const
 {
-    for (std::size_t index=0; index<event.size(); index++)
+    for (std::size_t index=0; index<event.len(); index++)
     {
         if(event[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<class_.size(); index++)
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_operation())
             return true;
@@ -12361,7 +12531,8 @@ std::string Native::Policy::PolicyMap::get_absolute_path() const
 std::string Native::Policy::PolicyMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-policy:policy-map" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-policy:policy-map";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -12386,7 +12557,7 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Policy::PolicyMap::Event>();
         c->parent = this;
-        event.push_back(c);
+        event.append(c);
         return c;
     }
 
@@ -12394,7 +12565,7 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Policy::PolicyMap::Class>();
         c->parent = this;
-        class_.push_back(c);
+        class_.append(c);
         return c;
     }
 
@@ -12406,7 +12577,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : event)
+    for (auto c : event.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12415,7 +12586,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::get_ch
     }
 
     count = 0;
-    for (auto const & c : class_)
+    for (auto c : class_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12505,9 +12676,11 @@ Native::Policy::PolicyMap::Event::Event()
     :
     event_type{YType::enumeration, "event-type"},
     match_type{YType::enumeration, "match-type"}
+        ,
+    class_number(this, {"number"})
 {
 
-    yang_name = "event"; yang_parent_name = "policy-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event"; yang_parent_name = "policy-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Event::~Event()
@@ -12516,7 +12689,8 @@ Native::Policy::PolicyMap::Event::~Event()
 
 bool Native::Policy::PolicyMap::Event::has_data() const
 {
-    for (std::size_t index=0; index<class_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_number.len(); index++)
     {
         if(class_number[index]->has_data())
             return true;
@@ -12527,7 +12701,7 @@ bool Native::Policy::PolicyMap::Event::has_data() const
 
 bool Native::Policy::PolicyMap::Event::has_operation() const
 {
-    for (std::size_t index=0; index<class_number.size(); index++)
+    for (std::size_t index=0; index<class_number.len(); index++)
     {
         if(class_number[index]->has_operation())
             return true;
@@ -12540,7 +12714,8 @@ bool Native::Policy::PolicyMap::Event::has_operation() const
 std::string Native::Policy::PolicyMap::Event::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "event" <<"[event-type='" <<event_type <<"']";
+    path_buffer << "event";
+    ADD_KEY_TOKEN(event_type, "event-type");
     return path_buffer.str();
 }
 
@@ -12561,7 +12736,7 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Event::get_child_by_name(cons
     {
         auto c = std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber>();
         c->parent = this;
-        class_number.push_back(c);
+        class_number.append(c);
         return c;
     }
 
@@ -12573,7 +12748,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Event:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_number)
+    for (auto c : class_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12624,9 +12799,11 @@ Native::Policy::PolicyMap::Event::ClassNumber::ClassNumber()
     number{YType::uint8, "number"},
     class_{YType::str, "class"},
     execution_type{YType::enumeration, "execution-type"}
+        ,
+    action_number(this, {"number"})
 {
 
-    yang_name = "class-number"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-number"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Event::ClassNumber::~ClassNumber()
@@ -12635,7 +12812,8 @@ Native::Policy::PolicyMap::Event::ClassNumber::~ClassNumber()
 
 bool Native::Policy::PolicyMap::Event::ClassNumber::has_data() const
 {
-    for (std::size_t index=0; index<action_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<action_number.len(); index++)
     {
         if(action_number[index]->has_data())
             return true;
@@ -12647,7 +12825,7 @@ bool Native::Policy::PolicyMap::Event::ClassNumber::has_data() const
 
 bool Native::Policy::PolicyMap::Event::ClassNumber::has_operation() const
 {
-    for (std::size_t index=0; index<action_number.size(); index++)
+    for (std::size_t index=0; index<action_number.len(); index++)
     {
         if(action_number[index]->has_operation())
             return true;
@@ -12661,7 +12839,8 @@ bool Native::Policy::PolicyMap::Event::ClassNumber::has_operation() const
 std::string Native::Policy::PolicyMap::Event::ClassNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "class-number" <<"[number='" <<number <<"']";
+    path_buffer << "class-number";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -12683,7 +12862,7 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Event::ClassNumber::get_child
     {
         auto c = std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber>();
         c->parent = this;
-        action_number.push_back(c);
+        action_number.append(c);
         return c;
     }
 
@@ -12695,7 +12874,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Event:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : action_number)
+    for (auto c : action_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12758,13 +12937,13 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::ActionNumber()
     clear_session{YType::empty, "clear-session"},
     authentication_restart{YType::uint16, "authentication-restart"},
     authorize{YType::empty, "authorize"}
-    	,
+        ,
     terminate(std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Terminate>())
-	,resume(std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Resume>())
-	,pause(std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Pause>())
-	,activate(std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Activate>())
-	,authenticate(std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Authenticate>())
-	,map(std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Map>())
+    , resume(std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Resume>())
+    , pause(std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Pause>())
+    , activate(std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Activate>())
+    , authenticate(std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Authenticate>())
+    , map(std::make_shared<Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Map>())
 {
     terminate->parent = this;
     resume->parent = this;
@@ -12773,7 +12952,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::ActionNumber()
     authenticate->parent = this;
     map->parent = this;
 
-    yang_name = "action-number"; yang_parent_name = "class-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action-number"; yang_parent_name = "class-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::~ActionNumber()
@@ -12782,6 +12961,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::~ActionNumber()
 
 bool Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| replace.is_set
 	|| clear_session.is_set
@@ -12814,7 +12994,8 @@ bool Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::has_operation(
 std::string Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "action-number" <<"[number='" <<number <<"']";
+    path_buffer << "action-number";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -13000,7 +13181,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Terminate::Terminat
     webauth{YType::empty, "webauth"}
 {
 
-    yang_name = "terminate"; yang_parent_name = "action-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "terminate"; yang_parent_name = "action-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Terminate::~Terminate()
@@ -13009,6 +13190,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Terminate::~Termina
 
 bool Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Terminate::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1x.is_set
 	|| mab.is_set
 	|| webauth.is_set;
@@ -13103,7 +13285,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Resume::Resume()
     reauthentication{YType::empty, "reauthentication"}
 {
 
-    yang_name = "resume"; yang_parent_name = "action-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resume"; yang_parent_name = "action-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Resume::~Resume()
@@ -13112,6 +13294,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Resume::~Resume()
 
 bool Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Resume::has_data() const
 {
+    if (is_presence_container) return true;
     return reauthentication.is_set;
 }
 
@@ -13180,7 +13363,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Pause::Pause()
     reauthentication{YType::empty, "reauthentication"}
 {
 
-    yang_name = "pause"; yang_parent_name = "action-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pause"; yang_parent_name = "action-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Pause::~Pause()
@@ -13189,6 +13372,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Pause::~Pause()
 
 bool Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Pause::has_data() const
 {
+    if (is_presence_container) return true;
     return reauthentication.is_set;
 }
 
@@ -13257,7 +13441,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Activate::Activate(
     service_template{YType::str, "service-template"}
 {
 
-    yang_name = "activate"; yang_parent_name = "action-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "activate"; yang_parent_name = "action-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Activate::~Activate()
@@ -13266,6 +13450,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Activate::~Activate
 
 bool Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Activate::has_data() const
 {
+    if (is_presence_container) return true;
     return service_template.is_set;
 }
 
@@ -13335,7 +13520,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Authenticate::Authe
 {
     using_->parent = this;
 
-    yang_name = "authenticate"; yang_parent_name = "action-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authenticate"; yang_parent_name = "action-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Authenticate::~Authenticate()
@@ -13344,6 +13529,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Authenticate::~Auth
 
 bool Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Authenticate::has_data() const
 {
+    if (is_presence_container) return true;
     return (using_ !=  nullptr && using_->has_data());
 }
 
@@ -13420,7 +13606,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Authenticate::Using
     parameter_map{YType::str, "parameter-map"}
 {
 
-    yang_name = "using"; yang_parent_name = "authenticate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "using"; yang_parent_name = "authenticate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Authenticate::Using::~Using()
@@ -13429,6 +13615,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Authenticate::Using
 
 bool Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Authenticate::Using::has_data() const
 {
+    if (is_presence_container) return true;
     return method.is_set
 	|| both.is_set
 	|| retries.is_set
@@ -13563,7 +13750,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Map::Map()
 {
     attribute_to_service->parent = this;
 
-    yang_name = "map"; yang_parent_name = "action-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map"; yang_parent_name = "action-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Map::~Map()
@@ -13572,6 +13759,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Map::~Map()
 
 bool Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Map::has_data() const
 {
+    if (is_presence_container) return true;
     return (attribute_to_service !=  nullptr && attribute_to_service->has_data());
 }
 
@@ -13643,7 +13831,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Map::AttributeToSer
     table{YType::str, "table"}
 {
 
-    yang_name = "attribute-to-service"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute-to-service"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Map::AttributeToService::~AttributeToService()
@@ -13652,6 +13840,7 @@ Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Map::AttributeToSer
 
 bool Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber::Map::AttributeToService::has_data() const
 {
+    if (is_presence_container) return true;
     return table.is_set;
 }
 
@@ -13721,18 +13910,19 @@ Native::Policy::PolicyMap::Class::Class()
     type{YType::enumeration, "type"},
     insert_before{YType::str, "insert-before"},
     random_detect{YType::empty, "random-detect"}
-    	,
+        ,
     appnav_policy(std::make_shared<Native::Policy::PolicyMap::Class::AppnavPolicy>())
-	,policy(std::make_shared<Native::Policy::PolicyMap::Class::Policy_>())
-	,pm_policy(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy>())
-	,inspect_police(std::make_shared<Native::Policy::PolicyMap::Class::InspectPolice>())
+    , policy(std::make_shared<Native::Policy::PolicyMap::Class::Policy_>())
+    , pm_policy(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy>())
+    , inspect_police(std::make_shared<Native::Policy::PolicyMap::Class::InspectPolice>())
+    , action_list(this, {"action_type"})
 {
     appnav_policy->parent = this;
     policy->parent = this;
     pm_policy->parent = this;
     inspect_police->parent = this;
 
-    yang_name = "class"; yang_parent_name = "policy-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class"; yang_parent_name = "policy-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::~Class()
@@ -13741,7 +13931,8 @@ Native::Policy::PolicyMap::Class::~Class()
 
 bool Native::Policy::PolicyMap::Class::has_data() const
 {
-    for (std::size_t index=0; index<action_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<action_list.len(); index++)
     {
         if(action_list[index]->has_data())
             return true;
@@ -13758,7 +13949,7 @@ bool Native::Policy::PolicyMap::Class::has_data() const
 
 bool Native::Policy::PolicyMap::Class::has_operation() const
 {
-    for (std::size_t index=0; index<action_list.size(); index++)
+    for (std::size_t index=0; index<action_list.len(); index++)
     {
         if(action_list[index]->has_operation())
             return true;
@@ -13777,7 +13968,8 @@ bool Native::Policy::PolicyMap::Class::has_operation() const
 std::string Native::Policy::PolicyMap::Class::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "class" <<"[name='" <<name <<"']";
+    path_buffer << "class";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -13836,7 +14028,7 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::get_child_by_name(cons
     {
         auto c = std::make_shared<Native::Policy::PolicyMap::Class::ActionList>();
         c->parent = this;
-        action_list.push_back(c);
+        action_list.append(c);
         return c;
     }
 
@@ -13868,7 +14060,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class:
     }
 
     count = 0;
-    for (auto const & c : action_list)
+    for (auto c : action_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13938,9 +14130,11 @@ Native::Policy::PolicyMap::Class::AppnavPolicy::AppnavPolicy()
     :
     monitor_load{YType::enumeration, "monitor-load"},
     pass_through{YType::empty, "pass-through"}
+        ,
+    distribute(this, {"service_node_group"})
 {
 
-    yang_name = "appnav-policy"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "appnav-policy"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::AppnavPolicy::~AppnavPolicy()
@@ -13949,7 +14143,8 @@ Native::Policy::PolicyMap::Class::AppnavPolicy::~AppnavPolicy()
 
 bool Native::Policy::PolicyMap::Class::AppnavPolicy::has_data() const
 {
-    for (std::size_t index=0; index<distribute.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<distribute.len(); index++)
     {
         if(distribute[index]->has_data())
             return true;
@@ -13960,7 +14155,7 @@ bool Native::Policy::PolicyMap::Class::AppnavPolicy::has_data() const
 
 bool Native::Policy::PolicyMap::Class::AppnavPolicy::has_operation() const
 {
-    for (std::size_t index=0; index<distribute.size(); index++)
+    for (std::size_t index=0; index<distribute.len(); index++)
     {
         if(distribute[index]->has_operation())
             return true;
@@ -13994,7 +14189,7 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::AppnavPolicy::get_chil
     {
         auto c = std::make_shared<Native::Policy::PolicyMap::Class::AppnavPolicy::Distribute>();
         c->parent = this;
-        distribute.push_back(c);
+        distribute.append(c);
         return c;
     }
 
@@ -14006,7 +14201,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : distribute)
+    for (auto c : distribute.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14058,7 +14253,7 @@ Native::Policy::PolicyMap::Class::AppnavPolicy::Distribute::Distribute()
     insert_before{YType::str, "insert-before"}
 {
 
-    yang_name = "distribute"; yang_parent_name = "appnav-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribute"; yang_parent_name = "appnav-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::AppnavPolicy::Distribute::~Distribute()
@@ -14067,6 +14262,7 @@ Native::Policy::PolicyMap::Class::AppnavPolicy::Distribute::~Distribute()
 
 bool Native::Policy::PolicyMap::Class::AppnavPolicy::Distribute::has_data() const
 {
+    if (is_presence_container) return true;
     return service_node_group.is_set
 	|| insert_before.is_set;
 }
@@ -14081,7 +14277,8 @@ bool Native::Policy::PolicyMap::Class::AppnavPolicy::Distribute::has_operation()
 std::string Native::Policy::PolicyMap::Class::AppnavPolicy::Distribute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "distribute" <<"[service-node-group='" <<service_node_group <<"']";
+    path_buffer << "distribute";
+    ADD_KEY_TOKEN(service_node_group, "service-node-group");
     return path_buffer.str();
 }
 
@@ -14148,12 +14345,12 @@ Native::Policy::PolicyMap::Class::Policy_::Policy_()
     action{YType::enumeration, "action"},
     log{YType::empty, "log"},
     parameter_map{YType::str, "parameter-map"}
-    	,
+        ,
     dpi(std::make_shared<Native::Policy::PolicyMap::Class::Policy_::Dpi>())
 {
     dpi->parent = this;
 
-    yang_name = "policy"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::Policy_::~Policy_()
@@ -14162,6 +14359,7 @@ Native::Policy::PolicyMap::Class::Policy_::~Policy_()
 
 bool Native::Policy::PolicyMap::Class::Policy_::has_data() const
 {
+    if (is_presence_container) return true;
     return action.is_set
 	|| log.is_set
 	|| parameter_map.is_set
@@ -14273,7 +14471,7 @@ Native::Policy::PolicyMap::Class::Policy_::Dpi::Dpi()
     policy_map{YType::str, "policy-map"}
 {
 
-    yang_name = "dpi"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dpi"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::Policy_::Dpi::~Dpi()
@@ -14282,6 +14480,7 @@ Native::Policy::PolicyMap::Class::Policy_::Dpi::~Dpi()
 
 bool Native::Policy::PolicyMap::Class::Policy_::Dpi::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| policy_map.is_set;
 }
@@ -14361,12 +14560,13 @@ bool Native::Policy::PolicyMap::Class::Policy_::Dpi::has_leaf_or_child_of_name(c
 Native::Policy::PolicyMap::Class::PmPolicy::PmPolicy()
     :
     flow(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::Flow>())
-	,monitor(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::Monitor>())
+    , monitor(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::Monitor>())
+    , react(this, {"id"})
 {
     flow->parent = this;
     monitor->parent = this;
 
-    yang_name = "pm-policy"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pm-policy"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::~PmPolicy()
@@ -14375,7 +14575,8 @@ Native::Policy::PolicyMap::Class::PmPolicy::~PmPolicy()
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::has_data() const
 {
-    for (std::size_t index=0; index<react.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<react.len(); index++)
     {
         if(react[index]->has_data())
             return true;
@@ -14386,7 +14587,7 @@ bool Native::Policy::PolicyMap::Class::PmPolicy::has_data() const
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::has_operation() const
 {
-    for (std::size_t index=0; index<react.size(); index++)
+    for (std::size_t index=0; index<react.len(); index++)
     {
         if(react[index]->has_operation())
             return true;
@@ -14436,7 +14637,7 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::PmPolicy::get_child_by
     {
         auto c = std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::React>();
         c->parent = this;
-        react.push_back(c);
+        react.append(c);
         return c;
     }
 
@@ -14458,7 +14659,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class:
     }
 
     count = 0;
-    for (auto const & c : react)
+    for (auto c : react.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14489,7 +14690,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::Flow::Flow()
     monitor{YType::str, "monitor"}
 {
 
-    yang_name = "flow"; yang_parent_name = "pm-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow"; yang_parent_name = "pm-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::Flow::~Flow()
@@ -14498,6 +14699,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::Flow::~Flow()
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::Flow::has_data() const
 {
+    if (is_presence_container) return true;
     return monitor.is_set;
 }
 
@@ -14567,7 +14769,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Monitor()
 {
     metric->parent = this;
 
-    yang_name = "monitor"; yang_parent_name = "pm-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "monitor"; yang_parent_name = "pm-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::Monitor::~Monitor()
@@ -14576,6 +14778,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::Monitor::~Monitor()
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::Monitor::has_data() const
 {
+    if (is_presence_container) return true;
     return (metric !=  nullptr && metric->has_data());
 }
 
@@ -14648,7 +14851,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Metric()
 {
     rtp->parent = this;
 
-    yang_name = "metric"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::~Metric()
@@ -14657,6 +14860,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::~Metric()
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return (rtp !=  nullptr && rtp->has_data());
 }
 
@@ -14724,9 +14928,11 @@ bool Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::has_leaf_or_ch
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::Rtp()
+    :
+    clock_rate(this, {"number"})
 {
 
-    yang_name = "rtp"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rtp"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::~Rtp()
@@ -14735,7 +14941,8 @@ Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::~Rtp()
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::has_data() const
 {
-    for (std::size_t index=0; index<clock_rate.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clock_rate.len(); index++)
     {
         if(clock_rate[index]->has_data())
             return true;
@@ -14745,7 +14952,7 @@ bool Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::has_data(
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::has_operation() const
 {
-    for (std::size_t index=0; index<clock_rate.size(); index++)
+    for (std::size_t index=0; index<clock_rate.len(); index++)
     {
         if(clock_rate[index]->has_operation())
             return true;
@@ -14775,7 +14982,7 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Met
     {
         auto c = std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::ClockRate>();
         c->parent = this;
-        clock_rate.push_back(c);
+        clock_rate.append(c);
         return c;
     }
 
@@ -14787,7 +14994,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clock_rate)
+    for (auto c : clock_rate.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14819,7 +15026,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::ClockRate::Clo
     frequency{YType::uint32, "frequency"}
 {
 
-    yang_name = "clock-rate"; yang_parent_name = "rtp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-rate"; yang_parent_name = "rtp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::ClockRate::~ClockRate()
@@ -14828,6 +15035,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::ClockRate::~Cl
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::ClockRate::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| frequency.is_set;
 }
@@ -14842,7 +15050,8 @@ bool Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::ClockRate
 std::string Native::Policy::PolicyMap::Class::PmPolicy::Monitor::Metric::Rtp::ClockRate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clock-rate" <<"[number='" <<number <<"']";
+    path_buffer << "clock-rate";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -14909,16 +15118,16 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::React()
     id{YType::uint16, "id"},
     mode{YType::enumeration, "mode"},
     description{YType::str, "description"}
-    	,
+        ,
     action(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::React::Action>())
-	,alarm(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm>())
-	,threshold(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold>())
+    , alarm(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm>())
+    , threshold(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold>())
 {
     action->parent = this;
     alarm->parent = this;
     threshold->parent = this;
 
-    yang_name = "react"; yang_parent_name = "pm-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "react"; yang_parent_name = "pm-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::React::~React()
@@ -14927,6 +15136,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::~React()
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::React::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| mode.is_set
 	|| description.is_set
@@ -14949,7 +15159,8 @@ bool Native::Policy::PolicyMap::Class::PmPolicy::React::has_operation() const
 std::string Native::Policy::PolicyMap::Class::PmPolicy::React::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "react" <<"[id='" <<id <<"']";
+    path_buffer << "react";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -15070,7 +15281,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::Action::Action()
     syslog{YType::empty, "syslog"}
 {
 
-    yang_name = "action"; yang_parent_name = "react"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "react"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::React::Action::~Action()
@@ -15079,6 +15290,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::Action::~Action()
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::React::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return snmp.is_set
 	|| syslog.is_set;
 }
@@ -15158,12 +15370,12 @@ bool Native::Policy::PolicyMap::Class::PmPolicy::React::Action::has_leaf_or_chil
 Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::Alarm()
     :
     severity{YType::enumeration, "severity"}
-    	,
+        ,
     type(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::Type>())
 {
     type->parent = this;
 
-    yang_name = "alarm"; yang_parent_name = "react"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "alarm"; yang_parent_name = "react"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::~Alarm()
@@ -15172,6 +15384,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::~Alarm()
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::has_data() const
 {
+    if (is_presence_container) return true;
     return severity.is_set
 	|| (type !=  nullptr && type->has_data());
 }
@@ -15254,12 +15467,12 @@ bool Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::has_leaf_or_child
 Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::Type::Type()
     :
     discrete{YType::empty, "discrete"}
-    	,
+        ,
     grouped(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::Type::Grouped>())
 {
     grouped->parent = this;
 
-    yang_name = "type"; yang_parent_name = "alarm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "type"; yang_parent_name = "alarm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::Type::~Type()
@@ -15268,6 +15481,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::Type::~Type()
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::Type::has_data() const
 {
+    if (is_presence_container) return true;
     return discrete.is_set
 	|| (grouped !=  nullptr && grouped->has_data());
 }
@@ -15353,7 +15567,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::Type::Grouped::Grouped
     percent{YType::uint8, "percent"}
 {
 
-    yang_name = "grouped"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "grouped"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::Type::Grouped::~Grouped()
@@ -15362,6 +15576,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::Type::Grouped::~Groupe
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::React::Alarm::Type::Grouped::has_data() const
 {
+    if (is_presence_container) return true;
     return count.is_set
 	|| percent.is_set;
 }
@@ -15444,7 +15659,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::Threshold()
 {
     value_->parent = this;
 
-    yang_name = "threshold"; yang_parent_name = "react"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "react"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::~Threshold()
@@ -15453,6 +15668,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::~Threshold()
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return (value_ !=  nullptr && value_->has_data());
 }
 
@@ -15525,12 +15741,12 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::Value::Value()
     gt{YType::str, "gt"},
     le{YType::str, "le"},
     lt{YType::str, "lt"}
-    	,
+        ,
     range(std::make_shared<Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::Value::Range>())
 {
     range->parent = this;
 
-    yang_name = "value"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::Value::~Value()
@@ -15539,6 +15755,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::Value::~Value()
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return ge.is_set
 	|| gt.is_set
 	|| le.is_set
@@ -15663,7 +15880,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::Value::Range::Rang
     high{YType::str, "high"}
 {
 
-    yang_name = "range"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::Value::Range::~Range()
@@ -15672,6 +15889,7 @@ Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::Value::Range::~Ran
 
 bool Native::Policy::PolicyMap::Class::PmPolicy::React::Threshold::Value::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return low.is_set
 	|| high.is_set;
 }
@@ -15754,7 +15972,7 @@ Native::Policy::PolicyMap::Class::InspectPolice::InspectPolice()
 {
     police->parent = this;
 
-    yang_name = "inspect-police"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inspect-police"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::InspectPolice::~InspectPolice()
@@ -15763,6 +15981,7 @@ Native::Policy::PolicyMap::Class::InspectPolice::~InspectPolice()
 
 bool Native::Policy::PolicyMap::Class::InspectPolice::has_data() const
 {
+    if (is_presence_container) return true;
     return (police !=  nullptr && police->has_data());
 }
 
@@ -15835,7 +16054,7 @@ Native::Policy::PolicyMap::Class::InspectPolice::Police::Police()
     burst{YType::uint32, "burst"}
 {
 
-    yang_name = "police"; yang_parent_name = "inspect-police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "inspect-police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::InspectPolice::Police::~Police()
@@ -15844,6 +16063,7 @@ Native::Policy::PolicyMap::Class::InspectPolice::Police::~Police()
 
 bool Native::Policy::PolicyMap::Class::InspectPolice::Police::has_data() const
 {
+    if (is_presence_container) return true;
     return rate.is_set
 	|| burst.is_set;
 }
@@ -15926,29 +16146,29 @@ Native::Policy::PolicyMap::Class::ActionList::ActionList()
     netflow_sampler{YType::str, "netflow-sampler"},
     service_policy{YType::str, "service-policy"},
     trust{YType::enumeration, "trust"}
-    	,
+        ,
     bandwidth(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Bandwidth>())
-	,compression(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Compression>())
-	,estimate(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Estimate>())
-	,forward(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Forward>())
-	,fair_queue(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::FairQueue>())
-	,police_aggregate(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceAggregate>())
-	,police_policy_map(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PolicePolicyMap>())
-	,police_cir_percent(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCirPercent>())
-	,police_rate_unit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRateUnit>())
-	,police_rate_percent(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent>())
-	,police_rate_pdp(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp>())
-	,police_target_bitrate(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceTargetBitrate>())
-	,police_flow(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceFlow>())
-	,police_catalyst(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst>())
-	,police_switch(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch>())
-	,priority(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Priority>())
-	,queue_buffers(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::QueueBuffers>())
-	,queue_limit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::QueueLimit>())
-	,queue_limit_dscp(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp>())
-	,random_detect(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::RandomDetect>())
-	,set(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set>())
-	,shape(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Shape>())
+    , compression(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Compression>())
+    , estimate(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Estimate>())
+    , forward(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Forward>())
+    , fair_queue(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::FairQueue>())
+    , police_aggregate(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceAggregate>())
+    , police_policy_map(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PolicePolicyMap>())
+    , police_cir_percent(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCirPercent>())
+    , police_rate_unit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRateUnit>())
+    , police_rate_percent(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePercent>())
+    , police_rate_pdp(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceRatePdp>())
+    , police_target_bitrate(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceTargetBitrate>())
+    , police_flow(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceFlow>())
+    , police_catalyst(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst>())
+    , police_switch(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch>())
+    , priority(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Priority>())
+    , queue_buffers(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::QueueBuffers>())
+    , queue_limit(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::QueueLimit>())
+    , queue_limit_dscp(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp>())
+    , random_detect(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::RandomDetect>())
+    , set(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Set>())
+    , shape(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Shape>())
 {
     bandwidth->parent = this;
     compression->parent = this;
@@ -15973,7 +16193,7 @@ Native::Policy::PolicyMap::Class::ActionList::ActionList()
     set->parent = this;
     shape->parent = this;
 
-    yang_name = "action-list"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action-list"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::~ActionList()
@@ -15982,6 +16202,7 @@ Native::Policy::PolicyMap::Class::ActionList::~ActionList()
 
 bool Native::Policy::PolicyMap::Class::ActionList::has_data() const
 {
+    if (is_presence_container) return true;
     return action_type.is_set
 	|| netflow_sampler.is_set
 	|| service_policy.is_set
@@ -16044,7 +16265,8 @@ bool Native::Policy::PolicyMap::Class::ActionList::has_operation() const
 std::string Native::Policy::PolicyMap::Class::ActionList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "action-list" <<"[action-type='" <<action_type <<"']";
+    path_buffer << "action-list";
+    ADD_KEY_TOKEN(action_type, "action-type");
     return path_buffer.str();
 }
 
@@ -16440,12 +16662,12 @@ Native::Policy::PolicyMap::Class::ActionList::Bandwidth::Bandwidth()
     :
     bits{YType::uint32, "bits"},
     percent{YType::uint8, "percent"}
-    	,
+        ,
     remaining(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Bandwidth::Remaining>())
 {
     remaining->parent = this;
 
-    yang_name = "bandwidth"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Bandwidth::~Bandwidth()
@@ -16454,6 +16676,7 @@ Native::Policy::PolicyMap::Class::ActionList::Bandwidth::~Bandwidth()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return bits.is_set
 	|| percent.is_set
 	|| (remaining !=  nullptr && remaining->has_data());
@@ -16551,12 +16774,12 @@ Native::Policy::PolicyMap::Class::ActionList::Bandwidth::Remaining::Remaining()
     rem_option{YType::enumeration, "rem-option"},
     percent{YType::uint8, "percent"},
     ratio{YType::uint16, "ratio"}
-    	,
+        ,
     account(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Bandwidth::Remaining::Account>())
 {
     account->parent = this;
 
-    yang_name = "remaining"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remaining"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Bandwidth::Remaining::~Remaining()
@@ -16565,6 +16788,7 @@ Native::Policy::PolicyMap::Class::ActionList::Bandwidth::Remaining::~Remaining()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Bandwidth::Remaining::has_data() const
 {
+    if (is_presence_container) return true;
     return rem_option.is_set
 	|| percent.is_set
 	|| ratio.is_set
@@ -16675,7 +16899,7 @@ Native::Policy::PolicyMap::Class::ActionList::Bandwidth::Remaining::Account::Acc
     user_defined{YType::int32, "user-defined"}
 {
 
-    yang_name = "account"; yang_parent_name = "remaining"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "account"; yang_parent_name = "remaining"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Bandwidth::Remaining::Account::~Account()
@@ -16684,6 +16908,7 @@ Native::Policy::PolicyMap::Class::ActionList::Bandwidth::Remaining::Account::~Ac
 
 bool Native::Policy::PolicyMap::Class::ActionList::Bandwidth::Remaining::Account::has_data() const
 {
+    if (is_presence_container) return true;
     return user_defined.is_set;
 }
 
@@ -16752,7 +16977,7 @@ Native::Policy::PolicyMap::Class::ActionList::Compression::Compression()
     header(nullptr) // presence node
 {
 
-    yang_name = "compression"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "compression"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Compression::~Compression()
@@ -16761,6 +16986,7 @@ Native::Policy::PolicyMap::Class::ActionList::Compression::~Compression()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Compression::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data());
 }
 
@@ -16832,7 +17058,7 @@ Native::Policy::PolicyMap::Class::ActionList::Compression::Header::Header()
     ip{YType::enumeration, "ip"}
 {
 
-    yang_name = "header"; yang_parent_name = "compression"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "compression"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Compression::Header::~Header()
@@ -16841,6 +17067,7 @@ Native::Policy::PolicyMap::Class::ActionList::Compression::Header::~Header()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Compression::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set;
 }
 
@@ -16909,7 +17136,7 @@ Native::Policy::PolicyMap::Class::ActionList::Estimate::Estimate()
     bandwidth(nullptr) // presence node
 {
 
-    yang_name = "estimate"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "estimate"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Estimate::~Estimate()
@@ -16918,6 +17145,7 @@ Native::Policy::PolicyMap::Class::ActionList::Estimate::~Estimate()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Estimate::has_data() const
 {
+    if (is_presence_container) return true;
     return (bandwidth !=  nullptr && bandwidth->has_data());
 }
 
@@ -16987,12 +17215,12 @@ bool Native::Policy::PolicyMap::Class::ActionList::Estimate::has_leaf_or_child_o
 Native::Policy::PolicyMap::Class::ActionList::Estimate::Bandwidth::Bandwidth()
     :
     drop_one_in{YType::uint32, "drop-one-in"}
-    	,
+        ,
     delay_one_in(std::make_shared<Native::Policy::PolicyMap::Class::ActionList::Estimate::Bandwidth::DelayOneIn>())
 {
     delay_one_in->parent = this;
 
-    yang_name = "bandwidth"; yang_parent_name = "estimate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "estimate"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Estimate::Bandwidth::~Bandwidth()
@@ -17001,6 +17229,7 @@ Native::Policy::PolicyMap::Class::ActionList::Estimate::Bandwidth::~Bandwidth()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Estimate::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_one_in.is_set
 	|| (delay_one_in !=  nullptr && delay_one_in->has_data());
 }
@@ -17086,7 +17315,7 @@ Native::Policy::PolicyMap::Class::ActionList::Estimate::Bandwidth::DelayOneIn::D
     milliseconds{YType::uint32, "milliseconds"}
 {
 
-    yang_name = "delay-one-in"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay-one-in"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Estimate::Bandwidth::DelayOneIn::~DelayOneIn()
@@ -17095,6 +17324,7 @@ Native::Policy::PolicyMap::Class::ActionList::Estimate::Bandwidth::DelayOneIn::~
 
 bool Native::Policy::PolicyMap::Class::ActionList::Estimate::Bandwidth::DelayOneIn::has_data() const
 {
+    if (is_presence_container) return true;
     return doi.is_set
 	|| milliseconds.is_set;
 }
@@ -17177,7 +17407,7 @@ Native::Policy::PolicyMap::Class::ActionList::Forward::Forward()
     service_index{YType::uint8, "service-index"}
 {
 
-    yang_name = "forward"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forward"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::Forward::~Forward()
@@ -17186,6 +17416,7 @@ Native::Policy::PolicyMap::Class::ActionList::Forward::~Forward()
 
 bool Native::Policy::PolicyMap::Class::ActionList::Forward::has_data() const
 {
+    if (is_presence_container) return true;
     return service_path.is_set
 	|| service_index.is_set;
 }
@@ -17268,7 +17499,7 @@ Native::Policy::PolicyMap::Class::ActionList::FairQueue::FairQueue()
     queue_limit{YType::uint16, "queue-limit"}
 {
 
-    yang_name = "fair-queue"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::FairQueue::~FairQueue()
@@ -17277,6 +17508,7 @@ Native::Policy::PolicyMap::Class::ActionList::FairQueue::~FairQueue()
 
 bool Native::Policy::PolicyMap::Class::ActionList::FairQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return dynamic_queues.is_set
 	|| queue_limit.is_set;
 }
@@ -17359,7 +17591,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceAggregate::PoliceAggregate()
 {
     police->parent = this;
 
-    yang_name = "police-aggregate"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-aggregate"; yang_parent_name = "action-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Policy::PolicyMap::Class::ActionList::PoliceAggregate::~PoliceAggregate()
@@ -17368,6 +17600,7 @@ Native::Policy::PolicyMap::Class::ActionList::PoliceAggregate::~PoliceAggregate(
 
 bool Native::Policy::PolicyMap::Class::ActionList::PoliceAggregate::has_data() const
 {
+    if (is_presence_container) return true;
     return (police !=  nullptr && police->has_data());
 }
 

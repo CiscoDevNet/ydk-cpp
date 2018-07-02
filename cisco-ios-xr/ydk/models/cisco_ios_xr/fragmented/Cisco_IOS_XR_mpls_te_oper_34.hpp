@@ -13,6 +13,147 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_te_oper {
 
 
+class MplsLcacStandby::Statistics : public ydk::Entity
+{
+    public:
+        Statistics();
+        ~Statistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Summary; //type: MplsLcacStandby::Statistics::Summary
+        class StatsticsLinks; //type: MplsLcacStandby::Statistics::StatsticsLinks
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::Summary> summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::StatsticsLinks> statstics_links;
+        
+}; // MplsLcacStandby::Statistics
+
+
+class MplsLcacStandby::Statistics::Summary : public ydk::Entity
+{
+    public:
+        Summary();
+        ~Summary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf is_role_standby; //type: boolean
+        class PathStatistics; //type: MplsLcacStandby::Statistics::Summary::PathStatistics
+        class ReservationStatistics; //type: MplsLcacStandby::Statistics::Summary::ReservationStatistics
+        class PathStatistics32Bit; //type: MplsLcacStandby::Statistics::Summary::PathStatistics32Bit
+        class ReservationStatistics32Bit; //type: MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::Summary::PathStatistics> path_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::Summary::ReservationStatistics> reservation_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::Summary::PathStatistics32Bit> path_statistics32_bit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit> reservation_statistics32_bit;
+        
+}; // MplsLcacStandby::Statistics::Summary
+
+
+class MplsLcacStandby::Statistics::Summary::PathStatistics : public ydk::Entity
+{
+    public:
+        PathStatistics();
+        ~PathStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf setup_requests; //type: uint16
+        ydk::YLeaf setup_errors; //type: uint16
+        ydk::YLeaf setup_admits; //type: uint16
+        ydk::YLeaf setup_rejects; //type: uint16
+        ydk::YLeaf tear_requests; //type: uint16
+        ydk::YLeaf tear_errors; //type: uint16
+        ydk::YLeaf tear_preempts; //type: uint16
+
+}; // MplsLcacStandby::Statistics::Summary::PathStatistics
+
+
+class MplsLcacStandby::Statistics::Summary::ReservationStatistics : public ydk::Entity
+{
+    public:
+        ReservationStatistics();
+        ~ReservationStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf setup_requests; //type: uint16
+        ydk::YLeaf setup_errors; //type: uint16
+        ydk::YLeaf setup_admits; //type: uint16
+        ydk::YLeaf setup_rejects; //type: uint16
+        ydk::YLeaf tear_requests; //type: uint16
+        ydk::YLeaf tear_errors; //type: uint16
+        ydk::YLeaf tear_preempts; //type: uint16
+
+}; // MplsLcacStandby::Statistics::Summary::ReservationStatistics
+
+
+class MplsLcacStandby::Statistics::Summary::PathStatistics32Bit : public ydk::Entity
+{
+    public:
+        PathStatistics32Bit();
+        ~PathStatistics32Bit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf setup_requests; //type: uint32
+        ydk::YLeaf setup_errors; //type: uint32
+        ydk::YLeaf setup_admits; //type: uint32
+        ydk::YLeaf setup_rejects; //type: uint32
+        ydk::YLeaf tear_requests; //type: uint32
+        ydk::YLeaf tear_errors; //type: uint32
+        ydk::YLeaf tear_preempts; //type: uint32
+
+}; // MplsLcacStandby::Statistics::Summary::PathStatistics32Bit
+
+
 class MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit : public ydk::Entity
 {
     public:
@@ -60,7 +201,7 @@ class MplsLcacStandby::Statistics::StatsticsLinks : public ydk::Entity
 
         class StatsticsLink; //type: MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink> > statstics_link;
+        ydk::YList statstics_link;
         
 }; // MplsLcacStandby::Statistics::StatsticsLinks
 
@@ -391,7 +532,7 @@ class MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks : public yd
 
         class BandwidthAllocationLink; //type: MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink> > bandwidth_allocation_link;
+        ydk::YList bandwidth_allocation_link;
         
 }; // MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks
 
@@ -430,8 +571,8 @@ class MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthA
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon> link_common;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth> upstream_bandwidth;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth> downstream_bandwidth;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold> > flooding_up_threshold;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold> > flooding_down_threshold;
+        ydk::YList flooding_up_threshold;
+        ydk::YList flooding_down_threshold;
         
 }; // MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
@@ -482,9 +623,9 @@ class MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthA
         class FloodedAreas; //type: MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags> link_flags;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup> > shared_risk_link_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor> > interface_switching_capability_descriptor;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas> > flooded_areas;
+        ydk::YList shared_risk_link_group;
+        ydk::YList interface_switching_capability_descriptor;
+        ydk::YList flooded_areas;
         
 }; // MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon
 
@@ -600,8 +741,8 @@ class MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthA
         class BandwidthPool0; //type: MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0
         class BandwidthPool1; //type: MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0> > bandwidth_pool0;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1> > bandwidth_pool1;
+        ydk::YList bandwidth_pool0;
+        ydk::YList bandwidth_pool1;
         
 }; // MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth
 
@@ -678,8 +819,8 @@ class MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthA
         class BandwidthPool0; //type: MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0
         class BandwidthPool1; //type: MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0> > bandwidth_pool0;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1> > bandwidth_pool1;
+        ydk::YList bandwidth_pool0;
+        ydk::YList bandwidth_pool1;
         
 }; // MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth
 
@@ -863,7 +1004,7 @@ class MplsLcacStandby::BfdNeighbors : public ydk::Entity
 
         class BfdNeighbor; //type: MplsLcacStandby::BfdNeighbors::BfdNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BfdNeighbors::BfdNeighbor> > bfd_neighbor;
+        ydk::YList bfd_neighbor;
         
 }; // MplsLcacStandby::BfdNeighbors
 
@@ -888,7 +1029,7 @@ class MplsLcacStandby::BfdNeighbors::BfdNeighbor : public ydk::Entity
         ydk::YLeaf interface_name; //type: string
         class Neighbor; //type: MplsLcacStandby::BfdNeighbors::BfdNeighbor::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BfdNeighbors::BfdNeighbor::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // MplsLcacStandby::BfdNeighbors::BfdNeighbor
 
@@ -958,7 +1099,7 @@ class MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks : public ydk::Ent
 
         class BandwidthAccountLink; //type: MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink> > bandwidth_account_link;
+        ydk::YList bandwidth_account_link;
         
 }; // MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 
@@ -1095,8 +1236,8 @@ class MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccount
         class RsvpTeActiveIntervalSample; //type: MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTeActiveIntervalSample
         class RsvpTePreviousIntervalSample; //type: MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTePreviousIntervalSample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTeActiveIntervalSample> > rsvp_te_active_interval_sample;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTePreviousIntervalSample> > rsvp_te_previous_interval_sample;
+        ydk::YList rsvp_te_active_interval_sample;
+        ydk::YList rsvp_te_previous_interval_sample;
         
 }; // MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory
 
@@ -1174,8 +1315,8 @@ class MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccount
         class SrActiveIntervalSample; //type: MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrActiveIntervalSample
         class SrPreviousIntervalSample; //type: MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrPreviousIntervalSample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrActiveIntervalSample> > sr_active_interval_sample;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrPreviousIntervalSample> > sr_previous_interval_sample;
+        ydk::YList sr_active_interval_sample;
+        ydk::YList sr_previous_interval_sample;
         
 }; // MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory
 
@@ -1251,7 +1392,7 @@ class MplsLcacStandby::LinkSummary : public ydk::Entity
         class AreasSummary; //type: MplsLcacStandby::LinkSummary::AreasSummary
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkSummary::BandwidthAccountSummary> bandwidth_account_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkSummary::AreasSummary> > areas_summary;
+        ydk::YList areas_summary;
         
 }; // MplsLcacStandby::LinkSummary
 
@@ -1278,6 +1419,8 @@ class MplsLcacStandby::LinkSummary::BandwidthAccountSummary : public ydk::Entity
         ydk::YLeaf sample_time_remaining; //type: uint32
         ydk::YLeaf application_interval; //type: uint32
         ydk::YLeaf application_time_remaining; //type: uint32
+        ydk::YLeaf links_count; //type: uint32
+        ydk::YLeaf maximum_links; //type: uint32
 
 }; // MplsLcacStandby::LinkSummary::BandwidthAccountSummary
 
@@ -1381,7 +1524,7 @@ class MplsLcacStandby::LinkInformation::Links : public ydk::Entity
 
         class Link; //type: MplsLcacStandby::LinkInformation::Links::Link
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link> > link;
+        ydk::YList link;
         
 }; // MplsLcacStandby::LinkInformation::Links
 
@@ -1428,11 +1571,11 @@ class MplsLcacStandby::LinkInformation::Links::Link : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::LinkCommon> link_common;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount> bandwidth_account;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::HwOor> hw_oor;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::LinkExtendedAttribute> > link_extended_attribute;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::LinkForwadRefValue> > link_forwad_ref_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::AffinityMap> > affinity_map;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::Areas> > areas;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::Lockout> > lockout;
+        ydk::YList link_extended_attribute;
+        ydk::YList link_forwad_ref_value;
+        ydk::YList affinity_map;
+        ydk::YList areas;
+        ydk::YList lockout;
         
 }; // MplsLcacStandby::LinkInformation::Links::Link
 
@@ -1483,9 +1626,9 @@ class MplsLcacStandby::LinkInformation::Links::Link::LinkCommon : public ydk::En
         class FloodedAreas; //type: MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::FloodedAreas
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::LinkFlags> link_flags;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::SharedRiskLinkGroup> > shared_risk_link_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::InterfaceSwitchingCapabilityDescriptor> > interface_switching_capability_descriptor;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::FloodedAreas> > flooded_areas;
+        ydk::YList shared_risk_link_group;
+        ydk::YList interface_switching_capability_descriptor;
+        ydk::YList flooded_areas;
         
 }; // MplsLcacStandby::LinkInformation::Links::Link::LinkCommon
 
@@ -1713,8 +1856,8 @@ class MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBan
         class RsvpTeActiveIntervalSample; //type: MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTeActiveIntervalSample
         class RsvpTePreviousIntervalSample; //type: MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTePreviousIntervalSample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTeActiveIntervalSample> > rsvp_te_active_interval_sample;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTePreviousIntervalSample> > rsvp_te_previous_interval_sample;
+        ydk::YList rsvp_te_active_interval_sample;
+        ydk::YList rsvp_te_previous_interval_sample;
         
 }; // MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory
 
@@ -1786,8 +1929,8 @@ class MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwid
         class SrActiveIntervalSample; //type: MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrActiveIntervalSample
         class SrPreviousIntervalSample; //type: MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrPreviousIntervalSample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrActiveIntervalSample> > sr_active_interval_sample;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrPreviousIntervalSample> > sr_previous_interval_sample;
+        ydk::YList sr_active_interval_sample;
+        ydk::YList sr_previous_interval_sample;
         
 }; // MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory
 
@@ -1857,7 +2000,7 @@ class MplsLcacStandby::LinkInformation::Links::Link::HwOor : public ydk::Entity
         ydk::YLeaf hw_o_or_green_recovery_time; //type: uint32
         class HwOOrLinkStatistic; //type: MplsLcacStandby::LinkInformation::Links::Link::HwOor::HwOOrLinkStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::HwOor::HwOOrLinkStatistic> > hw_o_or_link_statistic;
+        ydk::YList hw_o_or_link_statistic;
         
 }; // MplsLcacStandby::LinkInformation::Links::Link::HwOor
 
@@ -1953,7 +2096,7 @@ class MplsLcacStandby::LinkInformation::Links::Link::AffinityMap : public ydk::E
         ydk::YLeaf affinity_table_id; //type: TeAffinityTable
         class AffinityExtendedValue; //type: MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::AffinityExtendedValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::AffinityExtendedValue> > affinity_extended_value;
+        ydk::YList affinity_extended_value;
         
 }; // MplsLcacStandby::LinkInformation::Links::Link::AffinityMap
 
@@ -2100,7 +2243,7 @@ class MplsLcacStandby::AdmissionControl::AdmittedTunnels : public ydk::Entity
 
         class AdmittedTunnel; //type: MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel> > admitted_tunnel;
+        ydk::YList admitted_tunnel;
         
 }; // MplsLcacStandby::AdmissionControl::AdmittedTunnels
 
@@ -2123,13 +2266,13 @@ class MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel : publi
         std::string get_absolute_path() const override;
 
         ydk::YLeaf source_address; //type: string
-        ydk::YLeaf destination_port; //type: int32
-        ydk::YLeaf source_port; //type: int32
+        ydk::YLeaf destination_port; //type: uint32
+        ydk::YLeaf source_port; //type: uint32
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf extended_tunnel_id; //type: string
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf ctype; //type: Ctype
-        ydk::YLeaf p2mp_id; //type: int32
+        ydk::YLeaf p2mp_id; //type: uint32
         ydk::YLeaf tunnel_name; //type: string
         ydk::YLeaf bandwidth_state; //type: BandwidthStateEnum
         ydk::YLeaf bandwidth_pool; //type: BandwidthTypeEnum
@@ -2166,7 +2309,7 @@ class MplsLcacStandby::AdmissionControl::LinkInterfaces : public ydk::Entity
 
         class LinkInterface; //type: MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkInterface> > link_interface;
+        ydk::YList link_interface;
         
 }; // MplsLcacStandby::AdmissionControl::LinkInterfaces
 
@@ -2241,7 +2384,7 @@ class MplsLcacStandby::SoftPreemptions : public ydk::Entity
 
         class SoftPreemption; //type: MplsLcacStandby::SoftPreemptions::SoftPreemption
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::SoftPreemptions::SoftPreemption> > soft_preemption;
+        ydk::YList soft_preemption;
         
 }; // MplsLcacStandby::SoftPreemptions
 
@@ -2275,7 +2418,7 @@ class MplsLcacStandby::SoftPreemptions::SoftPreemption : public ydk::Entity
         ydk::YLeaf current_over_subscribed_bandwidth_bc1; //type: uint64
         class CurrentSoftPreemptionLsp; //type: MplsLcacStandby::SoftPreemptions::SoftPreemption::CurrentSoftPreemptionLsp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcacStandby::SoftPreemptions::SoftPreemption::CurrentSoftPreemptionLsp> > current_soft_preemption_lsp;
+        ydk::YList current_soft_preemption_lsp;
         
 }; // MplsLcacStandby::SoftPreemptions::SoftPreemption
 
@@ -2382,7 +2525,7 @@ class MplsLcac::Neighbors : public ydk::Entity
 
         class Neighbor; //type: MplsLcac::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // MplsLcac::Neighbors
 
@@ -2407,7 +2550,7 @@ class MplsLcac::Neighbors::Neighbor : public ydk::Entity
         ydk::YLeaf interface_name; //type: string
         class Neighbor_; //type: MplsLcac::Neighbors::Neighbor::Neighbor_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Neighbors::Neighbor::Neighbor_> > neighbor;
+        ydk::YList neighbor;
         
 }; // MplsLcac::Neighbors::Neighbor
 
@@ -2455,7 +2598,7 @@ class MplsLcac::PreemptionEvents : public ydk::Entity
 
         class PreemptionEvent; //type: MplsLcac::PreemptionEvents::PreemptionEvent
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::PreemptionEvents::PreemptionEvent> > preemption_event;
+        ydk::YList preemption_event;
         
 }; // MplsLcac::PreemptionEvents
 
@@ -2512,7 +2655,7 @@ class MplsLcac::PreemptionEvents::PreemptionEvent : public ydk::Entity
         ydk::YLeaf hard_preempted_tunnels; //type: uint16
         class Lsp; //type: MplsLcac::PreemptionEvents::PreemptionEvent::Lsp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::PreemptionEvents::PreemptionEvent::Lsp> > lsp;
+        ydk::YList lsp;
         
 }; // MplsLcac::PreemptionEvents::PreemptionEvent
 
@@ -2573,7 +2716,7 @@ class MplsLcac::Advertisements : public ydk::Entity
         ydk::YLeaf ds_te_mode; //type: RrrDsteMigrationMode
         class AdvertizedAreas; //type: MplsLcac::Advertisements::AdvertizedAreas
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Advertisements::AdvertizedAreas> > advertized_areas;
+        ydk::YList advertized_areas;
         
 }; // MplsLcac::Advertisements
 
@@ -2601,7 +2744,7 @@ class MplsLcac::Advertisements::AdvertizedAreas : public ydk::Entity
         ydk::YLeaf router_id; //type: string
         class FloodedLink; //type: MplsLcac::Advertisements::AdvertizedAreas::FloodedLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Advertisements::AdvertizedAreas::FloodedLink> > flooded_link;
+        ydk::YList flooded_link;
         
 }; // MplsLcac::Advertisements::AdvertizedAreas
 
@@ -2654,10 +2797,10 @@ class MplsLcac::Advertisements::AdvertizedAreas::FloodedLink : public ydk::Entit
         class TransmittingReservableBandwidth; //type: MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBandwidth
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities> odu_link_capabilities;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ExtendedAffinityAttributeFlag> > extended_affinity_attribute_flag;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::SharedRiskLinkGroup> > shared_risk_link_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ReceivingReservableBandwidth> > receiving_reservable_bandwidth;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBandwidth> > transmitting_reservable_bandwidth;
+        ydk::YList extended_affinity_attribute_flag;
+        ydk::YList shared_risk_link_group;
+        ydk::YList receiving_reservable_bandwidth;
+        ydk::YList transmitting_reservable_bandwidth;
         
 }; // MplsLcac::Advertisements::AdvertizedAreas::FloodedLink
 
@@ -2682,8 +2825,8 @@ class MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilitie
         class MaxLspBandwidth; //type: MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::MaxLspBandwidth
         class OduCapability; //type: MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::MaxLspBandwidth> > max_lsp_bandwidth;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability> > odu_capability;
+        ydk::YList max_lsp_bandwidth;
+        ydk::YList odu_capability;
         
 }; // MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities
 
@@ -3100,7 +3243,7 @@ class MplsLcac::Statistics::StatsticsLinks : public ydk::Entity
 
         class StatsticsLink; //type: MplsLcac::Statistics::StatsticsLinks::StatsticsLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::Statistics::StatsticsLinks::StatsticsLink> > statstics_link;
+        ydk::YList statstics_link;
         
 }; // MplsLcac::Statistics::StatsticsLinks
 
@@ -3431,7 +3574,7 @@ class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks : public ydk::Enti
 
         class BandwidthAllocationLink; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink> > bandwidth_allocation_link;
+        ydk::YList bandwidth_allocation_link;
         
 }; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks
 
@@ -3470,8 +3613,8 @@ class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocati
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon> link_common;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth> upstream_bandwidth;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth> downstream_bandwidth;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold> > flooding_up_threshold;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold> > flooding_down_threshold;
+        ydk::YList flooding_up_threshold;
+        ydk::YList flooding_down_threshold;
         
 }; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
@@ -3522,9 +3665,9 @@ class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocati
         class FloodedAreas; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags> link_flags;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup> > shared_risk_link_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor> > interface_switching_capability_descriptor;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas> > flooded_areas;
+        ydk::YList shared_risk_link_group;
+        ydk::YList interface_switching_capability_descriptor;
+        ydk::YList flooded_areas;
         
 }; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon
 
@@ -3640,8 +3783,8 @@ class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocati
         class BandwidthPool0; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0
         class BandwidthPool1; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0> > bandwidth_pool0;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1> > bandwidth_pool1;
+        ydk::YList bandwidth_pool0;
+        ydk::YList bandwidth_pool1;
         
 }; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth
 
@@ -3718,8 +3861,8 @@ class MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocati
         class BandwidthPool0; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0
         class BandwidthPool1; //type: MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0> > bandwidth_pool0;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1> > bandwidth_pool1;
+        ydk::YList bandwidth_pool0;
+        ydk::YList bandwidth_pool1;
         
 }; // MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth
 
@@ -3903,7 +4046,7 @@ class MplsLcac::BfdNeighbors : public ydk::Entity
 
         class BfdNeighbor; //type: MplsLcac::BfdNeighbors::BfdNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BfdNeighbors::BfdNeighbor> > bfd_neighbor;
+        ydk::YList bfd_neighbor;
         
 }; // MplsLcac::BfdNeighbors
 
@@ -3928,7 +4071,7 @@ class MplsLcac::BfdNeighbors::BfdNeighbor : public ydk::Entity
         ydk::YLeaf interface_name; //type: string
         class Neighbor; //type: MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // MplsLcac::BfdNeighbors::BfdNeighbor
 
@@ -3953,144 +4096,6 @@ class MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor : public ydk::Entity
         ydk::YLeaf is_bfd_up; //type: boolean
 
 }; // MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor
-
-
-class MplsLcac::BandwidthAccount : public ydk::Entity
-{
-    public:
-        BandwidthAccount();
-        ~BandwidthAccount();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class BandwidthAccountLinks; //type: MplsLcac::BandwidthAccount::BandwidthAccountLinks
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAccount::BandwidthAccountLinks> bandwidth_account_links;
-        
-}; // MplsLcac::BandwidthAccount
-
-
-class MplsLcac::BandwidthAccount::BandwidthAccountLinks : public ydk::Entity
-{
-    public:
-        BandwidthAccountLinks();
-        ~BandwidthAccountLinks();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class BandwidthAccountLink; //type: MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink> > bandwidth_account_link;
-        
-}; // MplsLcac::BandwidthAccount::BandwidthAccountLinks
-
-
-class MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink : public ydk::Entity
-{
-    public:
-        BandwidthAccountLink();
-        ~BandwidthAccountLink();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf link_id; //type: string
-        class CommonInfo; //type: MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo
-        class RsvpTeSampleHistory; //type: MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory
-        class SrSampleHistory; //type: MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo> common_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory> rsvp_te_sample_history;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory> sr_sample_history;
-        
-}; // MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink
-
-
-class MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo : public ydk::Entity
-{
-    public:
-        CommonInfo();
-        ~CommonInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_bandwidth_account_enabled; //type: boolean
-        ydk::YLeaf application_enforced; //type: boolean
-        ydk::YLeaf collection_type; //type: BandwidthAccountingCollection
-        ydk::YLeaf sample_time_remaining_timestamp_nanosec; //type: uint64
-        ydk::YLeaf last_sample_collection_timestamp_nanosec; //type: uint64
-        ydk::YLeaf next_sample_collection_nanosec; //type: uint64
-        ydk::YLeaf application_time_remaining_nanosec; //type: uint64
-        ydk::YLeaf last_application_timestamp_nanosec; //type: uint64
-        ydk::YLeaf next_application_timestamp_nanosec; //type: uint64
-        ydk::YLeaf effective_maximum_reservable_bandwidth; //type: uint64
-        class RsvpTeBandwidthUtilization; //type: MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization
-        class SrBandwidthUtilization; //type: MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::SrBandwidthUtilization
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization> rsvp_te_bandwidth_utilization;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::SrBandwidthUtilization> sr_bandwidth_utilization;
-        
-}; // MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo
-
-
-class MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization : public ydk::Entity
-{
-    public:
-        RsvpTeBandwidthUtilization();
-        ~RsvpTeBandwidthUtilization();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf total_link_bandwidth_utilization; //type: uint64
-        ydk::YLeaf rsvp_te_bandwidth_utilization; //type: uint64
-        ydk::YLeaf non_rsvp_te_bandwidth_utilization; //type: uint64
-        ydk::YLeaf rsvp_te_adjusted_bandwidth_utilization; //type: uint64
-        ydk::YLeaf rsvp_te_enforced_bandwidth_utilization; //type: uint64
-
-}; // MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization
 
 
 }

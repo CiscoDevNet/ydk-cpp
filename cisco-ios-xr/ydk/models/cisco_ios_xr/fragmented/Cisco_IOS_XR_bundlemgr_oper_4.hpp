@@ -54,7 +54,7 @@ class BundlesAdjacency::Nodes::Node::Bundles : public ydk::Entity
 
         class Bundle; //type: BundlesAdjacency::Nodes::Node::Bundles::Bundle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node::Bundles::Bundle> > bundle;
+        ydk::YList bundle;
         
 }; // BundlesAdjacency::Nodes::Node::Bundles
 
@@ -109,8 +109,8 @@ class BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo : public ydk::E
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData> load_balance_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member> > member;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface> > sub_interface;
+        ydk::YList member;
+        ydk::YList sub_interface;
         
 }; // BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo
 
@@ -137,7 +137,7 @@ class BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief : public
         ydk::YLeaf total_weight; //type: uint32
         class SubInterface; //type: BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface> > sub_interface;
+        ydk::YList sub_interface;
         
 }; // BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief
 

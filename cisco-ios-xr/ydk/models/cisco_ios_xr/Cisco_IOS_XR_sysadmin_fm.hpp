@@ -33,7 +33,7 @@ class Fm : public ydk::Entity
 
         class Agents; //type: Fm::Agents
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents> > agents;
+        ydk::YList agents;
         
 }; // Fm
 
@@ -121,8 +121,8 @@ class Fm::Agents::FmTable : public ydk::Entity
         class Brief; //type: Fm::Agents::FmTable::Brief
         class Entry; //type: Fm::Agents::FmTable::Entry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Brief> > brief;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry> > entry;
+        ydk::YList brief;
+        ydk::YList entry;
         
 }; // Fm::Agents::FmTable
 
@@ -180,11 +180,11 @@ class Fm::Agents::FmTable::Entry : public ydk::Entity
         class WaitingList; //type: Fm::Agents::FmTable::Entry::WaitingList
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::Detail> detail;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::CausalList> > causal_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::DependencyList> > dependency_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::PropagationList> > propagation_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::NotificationList> > notification_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::EscalationList> > escalation_list;
+        ydk::YList causal_list;
+        ydk::YList dependency_list;
+        ydk::YList propagation_list;
+        ydk::YList notification_list;
+        ydk::YList escalation_list;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::Faults> faults;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::WaitingList> waiting_list;
         
@@ -380,8 +380,8 @@ class Fm::Agents::FmTable::Entry::Faults::Active : public ydk::Entity
         class Brief; //type: Fm::Agents::FmTable::Entry::Faults::Active::Brief
         class Detail; //type: Fm::Agents::FmTable::Entry::Faults::Active::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::Faults::Active::Brief> > brief;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::Faults::Active::Detail> > detail;
+        ydk::YList brief;
+        ydk::YList detail;
         
 }; // Fm::Agents::FmTable::Entry::Faults::Active
 
@@ -465,8 +465,8 @@ class Fm::Agents::FmTable::Entry::Faults::History : public ydk::Entity
         class Brief; //type: Fm::Agents::FmTable::Entry::Faults::History::Brief
         class Detail; //type: Fm::Agents::FmTable::Entry::Faults::History::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::Faults::History::Brief> > brief;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::Faults::History::Detail> > detail;
+        ydk::YList brief;
+        ydk::YList detail;
         
 }; // Fm::Agents::FmTable::Entry::Faults::History
 
@@ -550,8 +550,8 @@ class Fm::Agents::FmTable::Entry::WaitingList : public ydk::Entity
         class Brief; //type: Fm::Agents::FmTable::Entry::WaitingList::Brief
         class Entry_; //type: Fm::Agents::FmTable::Entry::WaitingList::Entry_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::WaitingList::Brief> > brief;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmTable::Entry::WaitingList::Entry_> > entry;
+        ydk::YList brief;
+        ydk::YList entry;
         
 }; // Fm::Agents::FmTable::Entry::WaitingList
 
@@ -630,7 +630,7 @@ class Fm::Agents::FmInternals : public ydk::Entity
 
         class Detail; //type: Fm::Agents::FmInternals::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmInternals::Detail> > detail;
+        ydk::YList detail;
         
 }; // Fm::Agents::FmInternals
 
@@ -666,7 +666,7 @@ class Fm::Agents::FmInternals::Detail : public ydk::Entity
         ydk::YLeaf parser_tag_string; //type: string
         class Rules; //type: Fm::Agents::FmInternals::Detail::Rules
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmInternals::Detail::Rules> > rules;
+        ydk::YList rules;
         
 }; // Fm::Agents::FmInternals::Detail
 
@@ -711,7 +711,7 @@ class Fm::Agents::FmAlarmMapping : public ydk::Entity
 
         class Detail; //type: Fm::Agents::FmAlarmMapping::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmAlarmMapping::Detail> > detail;
+        ydk::YList detail;
         
 }; // Fm::Agents::FmAlarmMapping
 
@@ -759,7 +759,7 @@ class Fm::Agents::FmStatistics : public ydk::Entity
 
         class Detail; //type: Fm::Agents::FmStatistics::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fm::Fm::Agents::FmStatistics::Detail> > detail;
+        ydk::YList detail;
         
 }; // Fm::Agents::FmStatistics
 
@@ -792,6 +792,54 @@ class Fm::Agents::FmStatistics::Detail : public ydk::Entity
 
 }; // Fm::Agents::FmStatistics::Detail
 
+class FmActionT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ISOLATION;
+        static const ydk::Enum::YLeaf MITIGATION;
+        static const ydk::Enum::YLeaf RECOVERY;
+        static const ydk::Enum::YLeaf CORRELATION;
+        static const ydk::Enum::YLeaf ALARM;
+        static const ydk::Enum::YLeaf REPORT;
+
+};
+
+class FmHistoryStateT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf FM_HISTORY_STATE_ACTIVE;
+        static const ydk::Enum::YLeaf FM_HISTORY_STATE_CLEARED;
+        static const ydk::Enum::YLeaf FM_HISTORY_STATE_INVALID;
+
+};
+
+class FmServiceScopeT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf FM_SERVICE_NODE_SCOPE;
+        static const ydk::Enum::YLeaf FM_SERVICE_RACK_SCOPE;
+        static const ydk::Enum::YLeaf FM_SERVICE_SYSTEM_SCOPE;
+
+};
+
+class FmActionResultT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf SUCCESS;
+        static const ydk::Enum::YLeaf FAILURE;
+        static const ydk::Enum::YLeaf NO_OP;
+
+};
+
+class GenericHaRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_ha_role;
+        static const ydk::Enum::YLeaf Active;
+        static const ydk::Enum::YLeaf Standby;
+
+};
+
 class FmFaultStateT : public ydk::Enum
 {
     public:
@@ -817,41 +865,11 @@ class FmFaultSeverityT : public ydk::Enum
 
 };
 
-class FmActionT : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ISOLATION;
-        static const ydk::Enum::YLeaf MITIGATION;
-        static const ydk::Enum::YLeaf RECOVERY;
-        static const ydk::Enum::YLeaf CORRELATION;
-        static const ydk::Enum::YLeaf ALARM;
-        static const ydk::Enum::YLeaf REPORT;
-
-};
-
-class FmActionResultT : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf SUCCESS;
-        static const ydk::Enum::YLeaf FAILURE;
-        static const ydk::Enum::YLeaf NO_OP;
-
-};
-
 class FmRuleEvalResultT : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf SUCCESS;
         static const ydk::Enum::YLeaf FAILURE;
-
-};
-
-class GenericHaRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_ha_role;
-        static const ydk::Enum::YLeaf Active;
-        static const ydk::Enum::YLeaf Standby;
 
 };
 
@@ -862,24 +880,6 @@ class FmCorrelationObjQualifierT : public ydk::Enum
         static const ydk::Enum::YLeaf QUALIFIER_RACK;
         static const ydk::Enum::YLeaf QUALIFIER_SLOT;
         static const ydk::Enum::YLeaf QUALIFIER_OBJECT;
-
-};
-
-class FmHistoryStateT : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf FM_HISTORY_STATE_ACTIVE;
-        static const ydk::Enum::YLeaf FM_HISTORY_STATE_CLEARED;
-        static const ydk::Enum::YLeaf FM_HISTORY_STATE_INVALID;
-
-};
-
-class FmServiceScopeT : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf FM_SERVICE_NODE_SCOPE;
-        static const ydk::Enum::YLeaf FM_SERVICE_RACK_SCOPE;
-        static const ydk::Enum::YLeaf FM_SERVICE_SYSTEM_SCOPE;
 
 };
 

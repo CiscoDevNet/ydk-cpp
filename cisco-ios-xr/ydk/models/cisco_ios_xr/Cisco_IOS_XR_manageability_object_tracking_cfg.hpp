@@ -34,7 +34,7 @@ class ObjectTrackings : public ydk::Entity
 
         class ObjectTracking; //type: ObjectTrackings::ObjectTracking
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking> > object_tracking;
+        ydk::YList object_tracking;
         
 }; // ObjectTrackings
 
@@ -214,7 +214,7 @@ class ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimit
 
         class ThresholdUpValue; //type: ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue> > threshold_up_value;
+        ydk::YList threshold_up_value;
         
 }; // ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues
 
@@ -235,8 +235,8 @@ class ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf up; //type: int32
-        ydk::YLeaf threshold_down; //type: int32
+        ydk::YLeaf up; //type: uint32
+        ydk::YLeaf threshold_down; //type: uint32
 
 }; // ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue
 
@@ -259,7 +259,7 @@ class ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject : pub
 
         class Object; //type: ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object> > object;
+        ydk::YList object;
         
 }; // ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject
 
@@ -281,7 +281,7 @@ class ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Obje
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf object; //type: string
-        ydk::YLeaf object_weight; //type: int32
+        ydk::YLeaf object_weight; //type: uint32
 
 }; // ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object
 
@@ -350,7 +350,7 @@ class ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdL
 
         class ThresholdUpValue; //type: ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue> > threshold_up_value;
+        ydk::YList threshold_up_value;
         
 }; // ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues
 
@@ -371,8 +371,8 @@ class ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdL
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf up; //type: int32
-        ydk::YLeaf threshold_down; //type: int32
+        ydk::YLeaf up; //type: uint32
+        ydk::YLeaf threshold_down; //type: uint32
 
 }; // ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue
 
@@ -395,7 +395,7 @@ class ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject : public 
 
         class Object; //type: ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object> > object;
+        ydk::YList object;
         
 }; // ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject
 
@@ -417,7 +417,7 @@ class ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf object; //type: string
-        ydk::YLeaf object_weight; //type: int32
+        ydk::YLeaf object_weight; //type: uint32
 
 }; // ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object
 
@@ -511,7 +511,7 @@ class ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects : public ydk::
 
         class OrObject; //type: ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject> > or_object;
+        ydk::YList or_object;
         
 }; // ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects
 
@@ -556,7 +556,7 @@ class ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects : public ydk:
 
         class AndObject; //type: ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject> > and_object;
+        ydk::YList and_object;
         
 }; // ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects
 

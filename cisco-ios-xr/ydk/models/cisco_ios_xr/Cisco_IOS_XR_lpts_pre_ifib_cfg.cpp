@@ -11,9 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_lpts_pre_ifib_cfg {
 
-const Enum::YLeaf LptsDynamicFlowConfig::flows_config {0, "flows-config"};
-const Enum::YLeaf LptsDynamicFlowConfig::platform_config {1, "platform-config"};
-
 const Enum::YLeaf LptsPreIFibPrecedenceNumber::critical {5, "critical"};
 const Enum::YLeaf LptsPreIFibPrecedenceNumber::flash {3, "flash"};
 const Enum::YLeaf LptsPreIFibPrecedenceNumber::flash_override {4, "flash-override"};
@@ -22,6 +19,9 @@ const Enum::YLeaf LptsPreIFibPrecedenceNumber::internet {6, "internet"};
 const Enum::YLeaf LptsPreIFibPrecedenceNumber::network {7, "network"};
 const Enum::YLeaf LptsPreIFibPrecedenceNumber::priority {1, "priority"};
 const Enum::YLeaf LptsPreIFibPrecedenceNumber::routine {0, "routine"};
+
+const Enum::YLeaf Lptsafi::ipv4 {1, "ipv4"};
+const Enum::YLeaf Lptsafi::ipv6 {2, "ipv6"};
 
 const Enum::YLeaf LptsFlow::config_default {0, "config-default"};
 const Enum::YLeaf LptsFlow::l2tpv2_fragment {1, "l2tpv2-fragment"};
@@ -121,6 +121,9 @@ const Enum::YLeaf LptsFlow::dhcp6 {94, "dhcp6"};
 const Enum::YLeaf LptsFlow::onepk {95, "onepk"};
 const Enum::YLeaf LptsFlow::exr {96, "exr"};
 const Enum::YLeaf LptsFlow::platform_limit {98, "platform-limit"};
+
+const Enum::YLeaf LptsDynamicFlowConfig::flows_config {0, "flows-config"};
+const Enum::YLeaf LptsDynamicFlowConfig::platform_config {1, "platform-config"};
 
 
 }

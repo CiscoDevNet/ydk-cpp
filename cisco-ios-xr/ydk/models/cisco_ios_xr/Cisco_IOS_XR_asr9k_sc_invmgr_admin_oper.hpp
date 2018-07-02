@@ -57,7 +57,7 @@ class Inventory::Racks : public ydk::Entity
 
         class Rack; //type: Inventory::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack> > rack;
+        ydk::YList rack;
         
 }; // Inventory::Racks
 
@@ -79,7 +79,7 @@ class Inventory::Racks::Rack : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class PowerSupplyShelfs; //type: Inventory::Racks::Rack::PowerSupplyShelfs
         class Slots; //type: Inventory::Racks::Rack::Slots
         class FanTraies; //type: Inventory::Racks::Rack::FanTraies
@@ -113,7 +113,7 @@ class Inventory::Racks::Rack::PowerSupplyShelfs : public ydk::Entity
 
         class PowerSupplyShelf; //type: Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf> > power_supply_shelf;
+        ydk::YList power_supply_shelf;
         
 }; // Inventory::Racks::Rack::PowerSupplyShelfs
 
@@ -134,7 +134,7 @@ class Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class BasicAttributes; //type: Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes> basic_attributes;
@@ -229,7 +229,7 @@ class Inventory::Racks::Rack::Slots : public ydk::Entity
 
         class Slot; //type: Inventory::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot> > slot;
+        ydk::YList slot;
         
 }; // Inventory::Racks::Rack::Slots
 
@@ -250,7 +250,7 @@ class Inventory::Racks::Rack::Slots::Slot : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class Cards; //type: Inventory::Racks::Rack::Slots::Slot::Cards
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::BasicAttributes
 
@@ -278,7 +278,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards : public ydk::Entity
 
         class Card; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card> > card;
+        ydk::YList card;
         
 }; // Inventory::Racks::Rack::Slots::Slot::Cards
 
@@ -299,7 +299,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class SubSlots; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots
         class HwComponents; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents
         class PortSlots; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots
@@ -333,7 +333,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots : public ydk::E
 
         class SubSlot; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot> > sub_slot;
+        ydk::YList sub_slot;
         
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots
 
@@ -354,7 +354,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class Module; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes
 
@@ -409,7 +409,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         class PortSlot; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot> > port_slot;
+        ydk::YList port_slot;
         
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots
 
@@ -430,7 +430,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class Port; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes
 
@@ -775,7 +775,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         class Sensor; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor> > sensor;
+        ydk::YList sensor;
         
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors
 
@@ -796,7 +796,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes> basic_attributes;
@@ -1263,7 +1263,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents : public yd
 
         class HwComponent; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent> > hw_component;
+        ydk::YList hw_component;
         
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents
 
@@ -1284,7 +1284,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class Sensors; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes
 
@@ -1312,7 +1312,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         class Sensor; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor> > sensor;
+        ydk::YList sensor;
         
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors
 
@@ -1333,7 +1333,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes> basic_attributes;
@@ -1653,7 +1653,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots : public ydk::
 
         class PortSlot; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot> > port_slot;
+        ydk::YList port_slot;
         
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots
 
@@ -1674,7 +1674,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class Port; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes
 
@@ -2019,7 +2019,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors : public ydk::En
 
         class Sensor; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor> > sensor;
+        ydk::YList sensor;
         
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors
 
@@ -2040,7 +2040,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes> basic_attributes;
@@ -2507,7 +2507,7 @@ class Inventory::Racks::Rack::FanTraies : public ydk::Entity
 
         class FanTray; //type: Inventory::Racks::Rack::FanTraies::FanTray
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::FanTraies::FanTray> > fan_tray;
+        ydk::YList fan_tray;
         
 }; // Inventory::Racks::Rack::FanTraies
 
@@ -2528,7 +2528,7 @@ class Inventory::Racks::Rack::FanTraies::FanTray : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class BasicAttributes; //type: Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes> basic_attributes;
@@ -2623,7 +2623,7 @@ class Inventory::Racks::Rack::PowerSupplyZones : public ydk::Entity
 
         class PowerSupplyZone; //type: Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone> > power_supply_zone;
+        ydk::YList power_supply_zone;
         
 }; // Inventory::Racks::Rack::PowerSupplyZones
 
@@ -2644,7 +2644,7 @@ class Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class PowerSupplyZoneAttributes; //type: Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes> power_supply_zone_attributes;

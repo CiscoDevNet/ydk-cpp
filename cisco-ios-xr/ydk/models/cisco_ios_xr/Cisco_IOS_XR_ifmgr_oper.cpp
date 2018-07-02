@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ifmgr_oper {
 InterfaceDampening::InterfaceDampening()
     :
     interfaces(std::make_shared<InterfaceDampening::Interfaces>())
-	,nodes(std::make_shared<InterfaceDampening::Nodes>())
+    , nodes(std::make_shared<InterfaceDampening::Nodes>())
 {
     interfaces->parent = this;
     nodes->parent = this;
 
-    yang_name = "interface-dampening"; yang_parent_name = "Cisco-IOS-XR-ifmgr-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "interface-dampening"; yang_parent_name = "Cisco-IOS-XR-ifmgr-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InterfaceDampening::~InterfaceDampening()
@@ -28,6 +28,7 @@ InterfaceDampening::~InterfaceDampening()
 
 bool InterfaceDampening::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data())
 	|| (nodes !=  nullptr && nodes->has_data());
 }
@@ -136,9 +137,11 @@ bool InterfaceDampening::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 InterfaceDampening::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "interface-dampening"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "interface-dampening"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 InterfaceDampening::Interfaces::~Interfaces()
@@ -147,7 +150,8 @@ InterfaceDampening::Interfaces::~Interfaces()
 
 bool InterfaceDampening::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool InterfaceDampening::Interfaces::has_data() const
 
 bool InterfaceDampening::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> InterfaceDampening::Interfaces::get_child_by_name(const 
     {
         auto c = std::make_shared<InterfaceDampening::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -235,12 +239,12 @@ bool InterfaceDampening::Interfaces::has_leaf_or_child_of_name(const std::string
 InterfaceDampening::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     if_dampening(std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening>())
 {
     if_dampening->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 InterfaceDampening::Interfaces::Interface::~Interface()
@@ -249,6 +253,7 @@ InterfaceDampening::Interfaces::Interface::~Interface()
 
 bool InterfaceDampening::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (if_dampening !=  nullptr && if_dampening->has_data());
 }
@@ -270,7 +275,8 @@ std::string InterfaceDampening::Interfaces::Interface::get_absolute_path() const
 std::string InterfaceDampening::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -345,12 +351,13 @@ InterfaceDampening::Interfaces::Interface::IfDampening::IfDampening()
     suppress_threshold{YType::uint32, "suppress-threshold"},
     maximum_suppress_time{YType::uint32, "maximum-suppress-time"},
     restart_penalty{YType::uint32, "restart-penalty"}
-    	,
+        ,
     interface_dampening(std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_>())
+    , capsulation(this, {})
 {
     interface_dampening->parent = this;
 
-    yang_name = "if-dampening"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-dampening"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Interfaces::Interface::IfDampening::~IfDampening()
@@ -359,7 +366,8 @@ InterfaceDampening::Interfaces::Interface::IfDampening::~IfDampening()
 
 bool InterfaceDampening::Interfaces::Interface::IfDampening::has_data() const
 {
-    for (std::size_t index=0; index<capsulation.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<capsulation.len(); index++)
     {
         if(capsulation[index]->has_data())
             return true;
@@ -377,7 +385,7 @@ bool InterfaceDampening::Interfaces::Interface::IfDampening::has_data() const
 
 bool InterfaceDampening::Interfaces::Interface::IfDampening::has_operation() const
 {
-    for (std::size_t index=0; index<capsulation.size(); index++)
+    for (std::size_t index=0; index<capsulation.len(); index++)
     {
         if(capsulation[index]->has_operation())
             return true;
@@ -433,7 +441,7 @@ std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::
     {
         auto c = std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation>();
         c->parent = this;
-        capsulation.push_back(c);
+        capsulation.append(c);
         return c;
     }
 
@@ -450,7 +458,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::I
     }
 
     count = 0;
-    for (auto const & c : capsulation)
+    for (auto c : capsulation.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -565,7 +573,7 @@ InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::Int
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "interface-dampening"; yang_parent_name = "if-dampening"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-dampening"; yang_parent_name = "if-dampening"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::~InterfaceDampening_()
@@ -574,6 +582,7 @@ InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::~In
 
 bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_data() const
 {
+    if (is_presence_container) return true;
     return penalty.is_set
 	|| is_suppressed_enabled.is_set
 	|| seconds_remaining.is_set
@@ -692,12 +701,12 @@ bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_
 InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsulation()
     :
     capsulation_number{YType::str, "capsulation-number"}
-    	,
+        ,
     capsulation_dampening(std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening>())
 {
     capsulation_dampening->parent = this;
 
-    yang_name = "capsulation"; yang_parent_name = "if-dampening"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capsulation"; yang_parent_name = "if-dampening"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::~Capsulation()
@@ -706,6 +715,7 @@ InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::~Capsulatio
 
 bool InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return capsulation_number.is_set
 	|| (capsulation_dampening !=  nullptr && capsulation_dampening->has_data());
 }
@@ -794,7 +804,7 @@ InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsulation
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "capsulation-dampening"; yang_parent_name = "capsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capsulation-dampening"; yang_parent_name = "capsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::~CapsulationDampening()
@@ -803,6 +813,7 @@ InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsulation
 
 bool InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::has_data() const
 {
+    if (is_presence_container) return true;
     return penalty.is_set
 	|| is_suppressed_enabled.is_set
 	|| seconds_remaining.is_set
@@ -919,9 +930,11 @@ bool InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsul
 }
 
 InterfaceDampening::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "interface-dampening"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "interface-dampening"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 InterfaceDampening::Nodes::~Nodes()
@@ -930,7 +943,8 @@ InterfaceDampening::Nodes::~Nodes()
 
 bool InterfaceDampening::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -940,7 +954,7 @@ bool InterfaceDampening::Nodes::has_data() const
 
 bool InterfaceDampening::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -977,7 +991,7 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::get_child_by_name(const std::
     {
         auto c = std::make_shared<InterfaceDampening::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -989,7 +1003,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1018,12 +1032,12 @@ bool InterfaceDampening::Nodes::has_leaf_or_child_of_name(const std::string & na
 InterfaceDampening::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     show(std::make_shared<InterfaceDampening::Nodes::Node::Show>())
 {
     show->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 InterfaceDampening::Nodes::Node::~Node()
@@ -1032,6 +1046,7 @@ InterfaceDampening::Nodes::Node::~Node()
 
 bool InterfaceDampening::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (show !=  nullptr && show->has_data());
 }
@@ -1053,7 +1068,8 @@ std::string InterfaceDampening::Nodes::Node::get_absolute_path() const
 std::string InterfaceDampening::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1124,7 +1140,7 @@ InterfaceDampening::Nodes::Node::Show::Show()
 {
     dampening->parent = this;
 
-    yang_name = "show"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "show"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Nodes::Node::Show::~Show()
@@ -1133,6 +1149,7 @@ InterfaceDampening::Nodes::Node::Show::~Show()
 
 bool InterfaceDampening::Nodes::Node::Show::has_data() const
 {
+    if (is_presence_container) return true;
     return (dampening !=  nullptr && dampening->has_data());
 }
 
@@ -1202,12 +1219,12 @@ bool InterfaceDampening::Nodes::Node::Show::has_leaf_or_child_of_name(const std:
 InterfaceDampening::Nodes::Node::Show::Dampening::Dampening()
     :
     if_handles(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles>())
-	,interfaces(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces>())
+    , interfaces(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces>())
 {
     if_handles->parent = this;
     interfaces->parent = this;
 
-    yang_name = "dampening"; yang_parent_name = "show"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dampening"; yang_parent_name = "show"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::~Dampening()
@@ -1216,6 +1233,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::~Dampening()
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::has_data() const
 {
+    if (is_presence_container) return true;
     return (if_handles !=  nullptr && if_handles->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data());
 }
@@ -1299,9 +1317,11 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::has_leaf_or_child_of_name
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandles()
+    :
+    if_handle(this, {"interface_handle_name"})
 {
 
-    yang_name = "if-handles"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-handles"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::~IfHandles()
@@ -1310,7 +1330,8 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::~IfHandles()
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::has_data() const
 {
-    for (std::size_t index=0; index<if_handle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<if_handle.len(); index++)
     {
         if(if_handle[index]->has_data())
             return true;
@@ -1320,7 +1341,7 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::has_data() con
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::has_operation() const
 {
-    for (std::size_t index=0; index<if_handle.size(); index++)
+    for (std::size_t index=0; index<if_handle.len(); index++)
     {
         if(if_handle[index]->has_operation())
             return true;
@@ -1350,7 +1371,7 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHand
     {
         auto c = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle>();
         c->parent = this;
-        if_handle.push_back(c);
+        if_handle.append(c);
         return c;
     }
 
@@ -1362,7 +1383,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : if_handle)
+    for (auto c : if_handle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1399,12 +1420,13 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::IfHandle(
     suppress_threshold{YType::uint32, "suppress-threshold"},
     maximum_suppress_time{YType::uint32, "maximum-suppress-time"},
     restart_penalty{YType::uint32, "restart-penalty"}
-    	,
+        ,
     interface_dampening(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_>())
+    , capsulation(this, {})
 {
     interface_dampening->parent = this;
 
-    yang_name = "if-handle"; yang_parent_name = "if-handles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-handle"; yang_parent_name = "if-handles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::~IfHandle()
@@ -1413,7 +1435,8 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::~IfHandle
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::has_data() const
 {
-    for (std::size_t index=0; index<capsulation.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<capsulation.len(); index++)
     {
         if(capsulation[index]->has_data())
             return true;
@@ -1432,7 +1455,7 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::has_
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::has_operation() const
 {
-    for (std::size_t index=0; index<capsulation.size(); index++)
+    for (std::size_t index=0; index<capsulation.len(); index++)
     {
         if(capsulation[index]->has_operation())
             return true;
@@ -1453,7 +1476,8 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::has_
 std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "if-handle" <<"[interface-handle-name='" <<interface_handle_name <<"']";
+    path_buffer << "if-handle";
+    ADD_KEY_TOKEN(interface_handle_name, "interface-handle-name");
     return path_buffer.str();
 }
 
@@ -1490,7 +1514,7 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHand
     {
         auto c = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation>();
         c->parent = this;
-        capsulation.push_back(c);
+        capsulation.append(c);
         return c;
     }
 
@@ -1507,7 +1531,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : capsulation)
+    for (auto c : capsulation.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1632,7 +1656,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Interface
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "interface-dampening"; yang_parent_name = "if-handle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-dampening"; yang_parent_name = "if-handle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::~InterfaceDampening_()
@@ -1641,6 +1665,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Interface
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_data() const
 {
+    if (is_presence_container) return true;
     return penalty.is_set
 	|| is_suppressed_enabled.is_set
 	|| seconds_remaining.is_set
@@ -1759,12 +1784,12 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Inte
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::Capsulation()
     :
     capsulation_number{YType::str, "capsulation-number"}
-    	,
+        ,
     capsulation_dampening(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening>())
 {
     capsulation_dampening->parent = this;
 
-    yang_name = "capsulation"; yang_parent_name = "if-handle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capsulation"; yang_parent_name = "if-handle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::~Capsulation()
@@ -1773,6 +1798,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulati
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return capsulation_number.is_set
 	|| (capsulation_dampening !=  nullptr && capsulation_dampening->has_data());
 }
@@ -1861,7 +1887,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulati
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "capsulation-dampening"; yang_parent_name = "capsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capsulation-dampening"; yang_parent_name = "capsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::~CapsulationDampening()
@@ -1870,6 +1896,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulati
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::has_data() const
 {
+    if (is_presence_container) return true;
     return penalty.is_set
 	|| is_suppressed_enabled.is_set
 	|| seconds_remaining.is_set
@@ -1986,9 +2013,11 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Caps
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::~Interfaces()
@@ -1997,7 +2026,8 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::~Interfaces()
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -2007,7 +2037,7 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::has_data() co
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -2037,7 +2067,7 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interf
     {
         auto c = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -2049,7 +2079,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2086,12 +2116,13 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Interfa
     suppress_threshold{YType::uint32, "suppress-threshold"},
     maximum_suppress_time{YType::uint32, "maximum-suppress-time"},
     restart_penalty{YType::uint32, "restart-penalty"}
-    	,
+        ,
     interface_dampening(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_>())
+    , capsulation(this, {})
 {
     interface_dampening->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::~Interface()
@@ -2100,7 +2131,8 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::~Interf
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::has_data() const
 {
-    for (std::size_t index=0; index<capsulation.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<capsulation.len(); index++)
     {
         if(capsulation[index]->has_data())
             return true;
@@ -2119,7 +2151,7 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::ha
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<capsulation.size(); index++)
+    for (std::size_t index=0; index<capsulation.len(); index++)
     {
         if(capsulation[index]->has_operation())
             return true;
@@ -2140,7 +2172,8 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::ha
 std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2177,7 +2210,7 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interf
     {
         auto c = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation>();
         c->parent = this;
-        capsulation.push_back(c);
+        capsulation.append(c);
         return c;
     }
 
@@ -2194,7 +2227,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : capsulation)
+    for (auto c : capsulation.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2319,7 +2352,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Interfa
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "interface-dampening"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-dampening"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::~InterfaceDampening_()
@@ -2328,6 +2361,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Interfa
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_data() const
 {
+    if (is_presence_container) return true;
     return penalty.is_set
 	|| is_suppressed_enabled.is_set
 	|| seconds_remaining.is_set
@@ -2446,12 +2480,12 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::In
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::Capsulation()
     :
     capsulation_number{YType::str, "capsulation-number"}
-    	,
+        ,
     capsulation_dampening(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening>())
 {
     capsulation_dampening->parent = this;
 
-    yang_name = "capsulation"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capsulation"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::~Capsulation()
@@ -2460,6 +2494,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsula
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return capsulation_number.is_set
 	|| (capsulation_dampening !=  nullptr && capsulation_dampening->has_data());
 }
@@ -2548,7 +2583,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsula
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "capsulation-dampening"; yang_parent_name = "capsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capsulation-dampening"; yang_parent_name = "capsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::~CapsulationDampening()
@@ -2557,6 +2592,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsula
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::has_data() const
 {
+    if (is_presence_container) return true;
     return penalty.is_set
 	|| is_suppressed_enabled.is_set
 	|| seconds_remaining.is_set
@@ -2678,7 +2714,7 @@ InterfaceProperties::InterfaceProperties()
 {
     data_nodes->parent = this;
 
-    yang_name = "interface-properties"; yang_parent_name = "Cisco-IOS-XR-ifmgr-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "interface-properties"; yang_parent_name = "Cisco-IOS-XR-ifmgr-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InterfaceProperties::~InterfaceProperties()
@@ -2687,6 +2723,7 @@ InterfaceProperties::~InterfaceProperties()
 
 bool InterfaceProperties::has_data() const
 {
+    if (is_presence_container) return true;
     return (data_nodes !=  nullptr && data_nodes->has_data());
 }
 
@@ -2779,9 +2816,11 @@ bool InterfaceProperties::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 InterfaceProperties::DataNodes::DataNodes()
+    :
+    data_node(this, {"data_node_name"})
 {
 
-    yang_name = "data-nodes"; yang_parent_name = "interface-properties"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-nodes"; yang_parent_name = "interface-properties"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 InterfaceProperties::DataNodes::~DataNodes()
@@ -2790,7 +2829,8 @@ InterfaceProperties::DataNodes::~DataNodes()
 
 bool InterfaceProperties::DataNodes::has_data() const
 {
-    for (std::size_t index=0; index<data_node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_node.len(); index++)
     {
         if(data_node[index]->has_data())
             return true;
@@ -2800,7 +2840,7 @@ bool InterfaceProperties::DataNodes::has_data() const
 
 bool InterfaceProperties::DataNodes::has_operation() const
 {
-    for (std::size_t index=0; index<data_node.size(); index++)
+    for (std::size_t index=0; index<data_node.len(); index++)
     {
         if(data_node[index]->has_operation())
             return true;
@@ -2837,7 +2877,7 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::get_child_by_name(const 
     {
         auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode>();
         c->parent = this;
-        data_node.push_back(c);
+        data_node.append(c);
         return c;
     }
 
@@ -2849,7 +2889,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_node)
+    for (auto c : data_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2878,16 +2918,16 @@ bool InterfaceProperties::DataNodes::has_leaf_or_child_of_name(const std::string
 InterfaceProperties::DataNodes::DataNode::DataNode()
     :
     data_node_name{YType::str, "data-node-name"}
-    	,
+        ,
     locationviews(std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews>())
-	,pq_node_locations(std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations>())
-	,system_view(std::make_shared<InterfaceProperties::DataNodes::DataNode::SystemView>())
+    , pq_node_locations(std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations>())
+    , system_view(std::make_shared<InterfaceProperties::DataNodes::DataNode::SystemView>())
 {
     locationviews->parent = this;
     pq_node_locations->parent = this;
     system_view->parent = this;
 
-    yang_name = "data-node"; yang_parent_name = "data-nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-node"; yang_parent_name = "data-nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 InterfaceProperties::DataNodes::DataNode::~DataNode()
@@ -2896,6 +2936,7 @@ InterfaceProperties::DataNodes::DataNode::~DataNode()
 
 bool InterfaceProperties::DataNodes::DataNode::has_data() const
 {
+    if (is_presence_container) return true;
     return data_node_name.is_set
 	|| (locationviews !=  nullptr && locationviews->has_data())
 	|| (pq_node_locations !=  nullptr && pq_node_locations->has_data())
@@ -2921,7 +2962,8 @@ std::string InterfaceProperties::DataNodes::DataNode::get_absolute_path() const
 std::string InterfaceProperties::DataNodes::DataNode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data-node" <<"[data-node-name='" <<data_node_name <<"']";
+    path_buffer << "data-node";
+    ADD_KEY_TOKEN(data_node_name, "data-node-name");
     return path_buffer.str();
 }
 
@@ -3015,9 +3057,11 @@ bool InterfaceProperties::DataNodes::DataNode::has_leaf_or_child_of_name(const s
 }
 
 InterfaceProperties::DataNodes::DataNode::Locationviews::Locationviews()
+    :
+    locationview(this, {"locationview_name"})
 {
 
-    yang_name = "locationviews"; yang_parent_name = "data-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "locationviews"; yang_parent_name = "data-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceProperties::DataNodes::DataNode::Locationviews::~Locationviews()
@@ -3026,7 +3070,8 @@ InterfaceProperties::DataNodes::DataNode::Locationviews::~Locationviews()
 
 bool InterfaceProperties::DataNodes::DataNode::Locationviews::has_data() const
 {
-    for (std::size_t index=0; index<locationview.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<locationview.len(); index++)
     {
         if(locationview[index]->has_data())
             return true;
@@ -3036,7 +3081,7 @@ bool InterfaceProperties::DataNodes::DataNode::Locationviews::has_data() const
 
 bool InterfaceProperties::DataNodes::DataNode::Locationviews::has_operation() const
 {
-    for (std::size_t index=0; index<locationview.size(); index++)
+    for (std::size_t index=0; index<locationview.len(); index++)
     {
         if(locationview[index]->has_operation())
             return true;
@@ -3066,7 +3111,7 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews:
     {
         auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview>();
         c->parent = this;
-        locationview.push_back(c);
+        locationview.append(c);
         return c;
     }
 
@@ -3078,7 +3123,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : locationview)
+    for (auto c : locationview.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3107,12 +3152,12 @@ bool InterfaceProperties::DataNodes::DataNode::Locationviews::has_leaf_or_child_
 InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Locationview()
     :
     locationview_name{YType::str, "locationview-name"}
-    	,
+        ,
     interfaces(std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces>())
 {
     interfaces->parent = this;
 
-    yang_name = "locationview"; yang_parent_name = "locationviews"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "locationview"; yang_parent_name = "locationviews"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::~Locationview()
@@ -3121,6 +3166,7 @@ InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::~Location
 
 bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::has_data() const
 {
+    if (is_presence_container) return true;
     return locationview_name.is_set
 	|| (interfaces !=  nullptr && interfaces->has_data());
 }
@@ -3135,7 +3181,8 @@ bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::has_
 std::string InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "locationview" <<"[locationview-name='" <<locationview_name <<"']";
+    path_buffer << "locationview";
+    ADD_KEY_TOKEN(locationview_name, "locationview-name");
     return path_buffer.str();
 }
 
@@ -3201,9 +3248,11 @@ bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::has_
 }
 
 InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "locationview"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "locationview"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::~Interfaces()
@@ -3212,7 +3261,8 @@ InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interface
 
 bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -3222,7 +3272,7 @@ bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Inte
 
 bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -3252,7 +3302,7 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews:
     {
         auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -3264,7 +3314,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3308,7 +3358,7 @@ InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interface
     bandwidth{YType::uint32, "bandwidth"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::~Interface()
@@ -3317,6 +3367,7 @@ InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interface
 
 bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface.is_set
 	|| parent_interface.is_set
@@ -3355,7 +3406,8 @@ bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Inte
 std::string InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3550,9 +3602,11 @@ bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Inte
 }
 
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocations()
+    :
+    pq_node_location(this, {"pq_node_name"})
 {
 
-    yang_name = "pq-node-locations"; yang_parent_name = "data-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pq-node-locations"; yang_parent_name = "data-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::~PqNodeLocations()
@@ -3561,7 +3615,8 @@ InterfaceProperties::DataNodes::DataNode::PqNodeLocations::~PqNodeLocations()
 
 bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::has_data() const
 {
-    for (std::size_t index=0; index<pq_node_location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pq_node_location.len(); index++)
     {
         if(pq_node_location[index]->has_data())
             return true;
@@ -3571,7 +3626,7 @@ bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::has_data() const
 
 bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::has_operation() const
 {
-    for (std::size_t index=0; index<pq_node_location.size(); index++)
+    for (std::size_t index=0; index<pq_node_location.len(); index++)
     {
         if(pq_node_location[index]->has_operation())
             return true;
@@ -3601,7 +3656,7 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocation
     {
         auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation>();
         c->parent = this;
-        pq_node_location.push_back(c);
+        pq_node_location.append(c);
         return c;
     }
 
@@ -3613,7 +3668,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pq_node_location)
+    for (auto c : pq_node_location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3642,12 +3697,12 @@ bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::has_leaf_or_chil
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::PqNodeLocation()
     :
     pq_node_name{YType::str, "pq-node-name"}
-    	,
+        ,
     interfaces(std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces>())
 {
     interfaces->parent = this;
 
-    yang_name = "pq-node-location"; yang_parent_name = "pq-node-locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pq-node-location"; yang_parent_name = "pq-node-locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::~PqNodeLocation()
@@ -3656,6 +3711,7 @@ InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::~PqNo
 
 bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::has_data() const
 {
+    if (is_presence_container) return true;
     return pq_node_name.is_set
 	|| (interfaces !=  nullptr && interfaces->has_data());
 }
@@ -3670,7 +3726,8 @@ bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
 std::string InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pq-node-location" <<"[pq-node-name='" <<pq_node_name <<"']";
+    path_buffer << "pq-node-location";
+    ADD_KEY_TOKEN(pq_node_name, "pq-node-name");
     return path_buffer.str();
 }
 
@@ -3736,9 +3793,11 @@ bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
 }
 
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "pq-node-location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "pq-node-location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::~Interfaces()
@@ -3747,7 +3806,8 @@ InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Inter
 
 bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -3757,7 +3817,7 @@ bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
 
 bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -3787,7 +3847,7 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocation
     {
         auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -3799,7 +3859,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3843,7 +3903,7 @@ InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Inter
     bandwidth{YType::uint32, "bandwidth"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::~Interface()
@@ -3852,6 +3912,7 @@ InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Inter
 
 bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface.is_set
 	|| parent_interface.is_set
@@ -3890,7 +3951,8 @@ bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
 std::string InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4090,7 +4152,7 @@ InterfaceProperties::DataNodes::DataNode::SystemView::SystemView()
 {
     interfaces->parent = this;
 
-    yang_name = "system-view"; yang_parent_name = "data-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-view"; yang_parent_name = "data-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceProperties::DataNodes::DataNode::SystemView::~SystemView()
@@ -4099,6 +4161,7 @@ InterfaceProperties::DataNodes::DataNode::SystemView::~SystemView()
 
 bool InterfaceProperties::DataNodes::DataNode::SystemView::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data());
 }
 
@@ -4166,9 +4229,11 @@ bool InterfaceProperties::DataNodes::DataNode::SystemView::has_leaf_or_child_of_
 }
 
 InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "system-view"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "system-view"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::~Interfaces()
@@ -4177,7 +4242,8 @@ InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::~Interfaces()
 
 bool InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -4187,7 +4253,7 @@ bool InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::has_data(
 
 bool InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -4217,7 +4283,7 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::SystemView::In
     {
         auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -4229,7 +4295,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4273,7 +4339,7 @@ InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::Int
     bandwidth{YType::uint32, "bandwidth"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::~Interface()
@@ -4282,6 +4348,7 @@ InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::~In
 
 bool InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface.is_set
 	|| parent_interface.is_set
@@ -4320,7 +4387,8 @@ bool InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface
 std::string InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 

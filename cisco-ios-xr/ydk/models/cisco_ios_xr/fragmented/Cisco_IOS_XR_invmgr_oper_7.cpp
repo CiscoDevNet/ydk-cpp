@@ -17,7 +17,7 @@ Inventory::Racks::Rack::Fantray::Slot::Attributes::FruInfo::CardUpTime::CardUpTi
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Fantray::Slot::Attributes::FruInfo::CardUpTime::~CardUpTime()
@@ -26,6 +26,7 @@ Inventory::Racks::Rack::Fantray::Slot::Attributes::FruInfo::CardUpTime::~CardUpT
 
 bool Inventory::Racks::Rack::Fantray::Slot::Attributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -109,12 +110,12 @@ Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::InvEepromInfo(
     opaque_data_size{YType::uint32, "opaque-data-size"},
     has_eeprom{YType::uint32, "has-eeprom"},
     description{YType::str, "description"}
-    	,
+        ,
     eeprom(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom>())
 {
     eeprom->parent = this;
 
-    yang_name = "inv-eeprom-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inv-eeprom-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::~InvEepromInfo()
@@ -123,6 +124,7 @@ Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::~InvEepromInfo
 
 bool Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return inv_card_type.is_set
 	|| opaque_data.is_set
 	|| opaque_data_size.is_set
@@ -312,12 +314,12 @@ Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Eeprom
     engineer_use{YType::str, "engineer-use"},
     snmpoid{YType::str, "snmpoid"},
     rma_code{YType::str, "rma-code"}
-    	,
+        ,
     rma(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma>())
 {
     rma->parent = this;
 
-    yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::~Eeprom()
@@ -326,6 +328,7 @@ Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::~Eepro
 
 bool Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| idprom_format_rev.is_set
 	|| controller_family.is_set
@@ -1127,7 +1130,7 @@ Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma::R
     rma_history{YType::str, "rma-history"}
 {
 
-    yang_name = "rma"; yang_parent_name = "eeprom"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rma"; yang_parent_name = "eeprom"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma::~Rma()
@@ -1136,6 +1139,7 @@ Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma::~
 
 bool Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma::has_data() const
 {
+    if (is_presence_container) return true;
     return test_history.is_set
 	|| rma_number.is_set
 	|| rma_history.is_set;
@@ -1231,15 +1235,15 @@ Inventory::Racks::Rack::Attributes::Attributes()
     vm_node_id{YType::uint32, "vm-node-id"},
     vm_done{YType::uint32, "vm-done"},
     node_id{YType::uint32, "node-id"}
-    	,
+        ,
     inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Attributes::InvBasicBag>())
-	,env_sensor_info(std::make_shared<Inventory::Racks::Rack::Attributes::EnvSensorInfo>())
-	,pwg_info(std::make_shared<Inventory::Racks::Rack::Attributes::PwgInfo>())
-	,env_sensor_info_xml(std::make_shared<Inventory::Racks::Rack::Attributes::EnvSensorInfoXml>())
-	,inv_asset_bag(std::make_shared<Inventory::Racks::Rack::Attributes::InvAssetBag>())
-	,threshold(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold>())
-	,fru_info(std::make_shared<Inventory::Racks::Rack::Attributes::FruInfo>())
-	,inv_eeprom_info(std::make_shared<Inventory::Racks::Rack::Attributes::InvEepromInfo>())
+    , env_sensor_info(std::make_shared<Inventory::Racks::Rack::Attributes::EnvSensorInfo>())
+    , pwg_info(std::make_shared<Inventory::Racks::Rack::Attributes::PwgInfo>())
+    , env_sensor_info_xml(std::make_shared<Inventory::Racks::Rack::Attributes::EnvSensorInfoXml>())
+    , inv_asset_bag(std::make_shared<Inventory::Racks::Rack::Attributes::InvAssetBag>())
+    , threshold(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold>())
+    , fru_info(std::make_shared<Inventory::Racks::Rack::Attributes::FruInfo>())
+    , inv_eeprom_info(std::make_shared<Inventory::Racks::Rack::Attributes::InvEepromInfo>())
 {
     inv_basic_bag->parent = this;
     env_sensor_info->parent = this;
@@ -1250,7 +1254,7 @@ Inventory::Racks::Rack::Attributes::Attributes()
     fru_info->parent = this;
     inv_eeprom_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::~Attributes()
@@ -1259,6 +1263,7 @@ Inventory::Racks::Rack::Attributes::~Attributes()
 
 bool Inventory::Racks::Rack::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return module_done.is_set
 	|| vm_node_id.is_set
 	|| vm_done.is_set
@@ -1519,7 +1524,7 @@ Inventory::Racks::Rack::Attributes::InvBasicBag::InvBasicBag()
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::InvBasicBag::~InvBasicBag()
@@ -1528,6 +1533,7 @@ Inventory::Racks::Rack::Attributes::InvBasicBag::~InvBasicBag()
 
 bool Inventory::Racks::Rack::Attributes::InvBasicBag::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -1932,7 +1938,7 @@ Inventory::Racks::Rack::Attributes::EnvSensorInfo::EnvSensorInfo()
     update_rate{YType::uint32, "update-rate"}
 {
 
-    yang_name = "env-sensor-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "env-sensor-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::EnvSensorInfo::~EnvSensorInfo()
@@ -1941,6 +1947,7 @@ Inventory::Racks::Rack::Attributes::EnvSensorInfo::~EnvSensorInfo()
 
 bool Inventory::Racks::Rack::Attributes::EnvSensorInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return field_validity_bitmap.is_set
 	|| device_description.is_set
 	|| units.is_set
@@ -2155,7 +2162,7 @@ Inventory::Racks::Rack::Attributes::PwgInfo::PwgInfo()
     power_group_drawn_current{YType::int32, "power-group-drawn-current"}
 {
 
-    yang_name = "pwg-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pwg-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::PwgInfo::~PwgInfo()
@@ -2164,6 +2171,7 @@ Inventory::Racks::Rack::Attributes::PwgInfo::~PwgInfo()
 
 bool Inventory::Racks::Rack::Attributes::PwgInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return power_group_redundancy_mode.is_set
 	|| power_group_power_units.is_set
 	|| power_group_available_current.is_set
@@ -2274,12 +2282,12 @@ Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::EnvSensorInfoXml()
     data_type{YType::enumeration, "data-type"},
     status{YType::enumeration, "status"},
     update_rate{YType::uint32, "update-rate"}
-    	,
+        ,
     threshold(std::make_shared<Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold>())
 {
     threshold->parent = this;
 
-    yang_name = "env-sensor-info-xml"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "env-sensor-info-xml"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::~EnvSensorInfoXml()
@@ -2288,6 +2296,7 @@ Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::~EnvSensorInfoXml()
 
 bool Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| units.is_set
 	|| value_.is_set
@@ -2433,9 +2442,11 @@ bool Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::has_leaf_or_child_of_
 }
 
 Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::Threshold()
+    :
+    threshold_array(this, {})
 {
 
-    yang_name = "threshold"; yang_parent_name = "env-sensor-info-xml"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "env-sensor-info-xml"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::~Threshold()
@@ -2444,7 +2455,8 @@ Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::~Threshold()
 
 bool Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::has_data() const
 {
-    for (std::size_t index=0; index<threshold_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<threshold_array.len(); index++)
     {
         if(threshold_array[index]->has_data())
             return true;
@@ -2454,7 +2466,7 @@ bool Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::has_data()
 
 bool Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::has_operation() const
 {
-    for (std::size_t index=0; index<threshold_array.size(); index++)
+    for (std::size_t index=0; index<threshold_array.len(); index++)
     {
         if(threshold_array[index]->has_operation())
             return true;
@@ -2484,7 +2496,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Th
     {
         auto c = std::make_shared<Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
-        threshold_array.push_back(c);
+        threshold_array.append(c);
         return c;
     }
 
@@ -2496,7 +2508,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attribute
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : threshold_array)
+    for (auto c : threshold_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2530,7 +2542,7 @@ Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray:
     threshold_name{YType::str, "threshold-name"}
 {
 
-    yang_name = "threshold-array"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold-array"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::~ThresholdArray()
@@ -2539,6 +2551,7 @@ Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray:
 
 bool Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_severity.is_set
 	|| threshold_relation.is_set
 	|| threshold_value.is_set
@@ -2652,7 +2665,7 @@ Inventory::Racks::Rack::Attributes::InvAssetBag::InvAssetBag()
     original_equipment_manufacturer_string{YType::str, "original-equipment-manufacturer-string"}
 {
 
-    yang_name = "inv-asset-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inv-asset-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::InvAssetBag::~InvAssetBag()
@@ -2661,6 +2674,7 @@ Inventory::Racks::Rack::Attributes::InvAssetBag::~InvAssetBag()
 
 bool Inventory::Racks::Rack::Attributes::InvAssetBag::has_data() const
 {
+    if (is_presence_container) return true;
     return part_number.is_set
 	|| manufacturer_assembly_number.is_set
 	|| manufacturer_assembly_revision.is_set
@@ -2805,11 +2819,11 @@ bool Inventory::Racks::Rack::Attributes::InvAssetBag::has_leaf_or_child_of_name(
 Inventory::Racks::Rack::Attributes::Threshold::Threshold()
     :
     major_lo(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MajorLo>())
-	,critical_hi(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::CriticalHi>())
-	,minor_hi(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MinorHi>())
-	,major_hi(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MajorHi>())
-	,critical_lo(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::CriticalLo>())
-	,minor_lo(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MinorLo>())
+    , critical_hi(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::CriticalHi>())
+    , minor_hi(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MinorHi>())
+    , major_hi(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MajorHi>())
+    , critical_lo(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::CriticalLo>())
+    , minor_lo(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MinorLo>())
 {
     major_lo->parent = this;
     critical_hi->parent = this;
@@ -2818,7 +2832,7 @@ Inventory::Racks::Rack::Attributes::Threshold::Threshold()
     critical_lo->parent = this;
     minor_lo->parent = this;
 
-    yang_name = "threshold"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::~Threshold()
@@ -2827,6 +2841,7 @@ Inventory::Racks::Rack::Attributes::Threshold::~Threshold()
 
 bool Inventory::Racks::Rack::Attributes::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return (major_lo !=  nullptr && major_lo->has_data())
 	|| (critical_hi !=  nullptr && critical_hi->has_data())
 	|| (minor_hi !=  nullptr && minor_hi->has_data())
@@ -2979,7 +2994,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MajorLo::MajorLo()
 {
     thresh_bag->parent = this;
 
-    yang_name = "major-lo"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "major-lo"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::MajorLo::~MajorLo()
@@ -2988,6 +3003,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MajorLo::~MajorLo()
 
 bool Inventory::Racks::Rack::Attributes::Threshold::MajorLo::has_data() const
 {
+    if (is_presence_container) return true;
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
@@ -3063,7 +3079,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag::ThreshBag()
     threshold_notification_enabled{YType::boolean, "threshold-notification-enabled"}
 {
 
-    yang_name = "thresh-bag"; yang_parent_name = "major-lo"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "thresh-bag"; yang_parent_name = "major-lo"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag::~ThreshBag()
@@ -3072,6 +3088,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag::~ThreshBag()
 
 bool Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_severity.is_set
 	|| threshold_relation.is_set
 	|| threshold_value.is_set
@@ -3193,7 +3210,7 @@ Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::CriticalHi()
 {
     thresh_bag->parent = this;
 
-    yang_name = "critical-hi"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "critical-hi"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::~CriticalHi()
@@ -3202,6 +3219,7 @@ Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::~CriticalHi()
 
 bool Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::has_data() const
 {
+    if (is_presence_container) return true;
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
@@ -3277,7 +3295,7 @@ Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag::ThreshBag(
     threshold_notification_enabled{YType::boolean, "threshold-notification-enabled"}
 {
 
-    yang_name = "thresh-bag"; yang_parent_name = "critical-hi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "thresh-bag"; yang_parent_name = "critical-hi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag::~ThreshBag()
@@ -3286,6 +3304,7 @@ Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag::~ThreshBag
 
 bool Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_severity.is_set
 	|| threshold_relation.is_set
 	|| threshold_value.is_set
@@ -3407,7 +3426,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MinorHi::MinorHi()
 {
     thresh_bag->parent = this;
 
-    yang_name = "minor-hi"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "minor-hi"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::MinorHi::~MinorHi()
@@ -3416,6 +3435,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MinorHi::~MinorHi()
 
 bool Inventory::Racks::Rack::Attributes::Threshold::MinorHi::has_data() const
 {
+    if (is_presence_container) return true;
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
@@ -3491,7 +3511,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag::ThreshBag()
     threshold_notification_enabled{YType::boolean, "threshold-notification-enabled"}
 {
 
-    yang_name = "thresh-bag"; yang_parent_name = "minor-hi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "thresh-bag"; yang_parent_name = "minor-hi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag::~ThreshBag()
@@ -3500,6 +3520,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag::~ThreshBag()
 
 bool Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_severity.is_set
 	|| threshold_relation.is_set
 	|| threshold_value.is_set
@@ -3621,7 +3642,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MajorHi::MajorHi()
 {
     thresh_bag->parent = this;
 
-    yang_name = "major-hi"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "major-hi"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::MajorHi::~MajorHi()
@@ -3630,6 +3651,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MajorHi::~MajorHi()
 
 bool Inventory::Racks::Rack::Attributes::Threshold::MajorHi::has_data() const
 {
+    if (is_presence_container) return true;
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
@@ -3705,7 +3727,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag::ThreshBag()
     threshold_notification_enabled{YType::boolean, "threshold-notification-enabled"}
 {
 
-    yang_name = "thresh-bag"; yang_parent_name = "major-hi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "thresh-bag"; yang_parent_name = "major-hi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag::~ThreshBag()
@@ -3714,6 +3736,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag::~ThreshBag()
 
 bool Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_severity.is_set
 	|| threshold_relation.is_set
 	|| threshold_value.is_set
@@ -3835,7 +3858,7 @@ Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::CriticalLo()
 {
     thresh_bag->parent = this;
 
-    yang_name = "critical-lo"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "critical-lo"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::~CriticalLo()
@@ -3844,6 +3867,7 @@ Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::~CriticalLo()
 
 bool Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::has_data() const
 {
+    if (is_presence_container) return true;
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
@@ -3919,7 +3943,7 @@ Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag::ThreshBag(
     threshold_notification_enabled{YType::boolean, "threshold-notification-enabled"}
 {
 
-    yang_name = "thresh-bag"; yang_parent_name = "critical-lo"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "thresh-bag"; yang_parent_name = "critical-lo"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag::~ThreshBag()
@@ -3928,6 +3952,7 @@ Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag::~ThreshBag
 
 bool Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_severity.is_set
 	|| threshold_relation.is_set
 	|| threshold_value.is_set
@@ -4049,7 +4074,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MinorLo::MinorLo()
 {
     thresh_bag->parent = this;
 
-    yang_name = "minor-lo"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "minor-lo"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::MinorLo::~MinorLo()
@@ -4058,6 +4083,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MinorLo::~MinorLo()
 
 bool Inventory::Racks::Rack::Attributes::Threshold::MinorLo::has_data() const
 {
+    if (is_presence_container) return true;
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
@@ -4133,7 +4159,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag::ThreshBag()
     threshold_notification_enabled{YType::boolean, "threshold-notification-enabled"}
 {
 
-    yang_name = "thresh-bag"; yang_parent_name = "minor-lo"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "thresh-bag"; yang_parent_name = "minor-lo"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag::~ThreshBag()
@@ -4142,6 +4168,7 @@ Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag::~ThreshBag()
 
 bool Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_severity.is_set
 	|| threshold_relation.is_set
 	|| threshold_value.is_set
@@ -4266,14 +4293,14 @@ Inventory::Racks::Rack::Attributes::FruInfo::FruInfo()
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::FruInfo::~FruInfo()
@@ -4282,6 +4309,7 @@ Inventory::Racks::Rack::Attributes::FruInfo::~FruInfo()
 
 bool Inventory::Racks::Rack::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -4461,7 +4489,7 @@ Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::LastOpe
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -4470,6 +4498,7 @@ Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::~LastOp
 
 bool Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -4552,7 +4581,7 @@ Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime::CardUpTime()
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime::~CardUpTime()
@@ -4561,6 +4590,7 @@ Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime::~CardUpTime()
 
 bool Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -4644,12 +4674,12 @@ Inventory::Racks::Rack::Attributes::InvEepromInfo::InvEepromInfo()
     opaque_data_size{YType::uint32, "opaque-data-size"},
     has_eeprom{YType::uint32, "has-eeprom"},
     description{YType::str, "description"}
-    	,
+        ,
     eeprom(std::make_shared<Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom>())
 {
     eeprom->parent = this;
 
-    yang_name = "inv-eeprom-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inv-eeprom-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::InvEepromInfo::~InvEepromInfo()
@@ -4658,6 +4688,7 @@ Inventory::Racks::Rack::Attributes::InvEepromInfo::~InvEepromInfo()
 
 bool Inventory::Racks::Rack::Attributes::InvEepromInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return inv_card_type.is_set
 	|| opaque_data.is_set
 	|| opaque_data_size.is_set
@@ -4847,12 +4878,12 @@ Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Eeprom()
     engineer_use{YType::str, "engineer-use"},
     snmpoid{YType::str, "snmpoid"},
     rma_code{YType::str, "rma-code"}
-    	,
+        ,
     rma(std::make_shared<Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma>())
 {
     rma->parent = this;
 
-    yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::~Eeprom()
@@ -4861,6 +4892,7 @@ Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::~Eeprom()
 
 bool Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| idprom_format_rev.is_set
 	|| controller_family.is_set
@@ -5662,7 +5694,7 @@ Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma::Rma()
     rma_history{YType::str, "rma-history"}
 {
 
-    yang_name = "rma"; yang_parent_name = "eeprom"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rma"; yang_parent_name = "eeprom"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma::~Rma()
@@ -5671,6 +5703,7 @@ Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma::~Rma()
 
 bool Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma::has_data() const
 {
+    if (is_presence_container) return true;
     return test_history.is_set
 	|| rma_number.is_set
 	|| rma_history.is_set;

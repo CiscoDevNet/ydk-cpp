@@ -33,7 +33,7 @@ class CfgHistGl : public ydk::Entity
 
         class RecordType; //type: CfgHistGl::RecordType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType> > record_type;
+        ydk::YList record_type;
         
 }; // CfgHistGl
 
@@ -58,7 +58,7 @@ class CfgHistGl::RecordType : public ydk::Entity
         ydk::YLeaf record_type; //type: string
         class Record; //type: CfgHistGl::RecordType::Record
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record> > record;
+        ydk::YList record;
         
 }; // CfgHistGl::RecordType
 
@@ -79,7 +79,7 @@ class CfgHistGl::RecordType::Record : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf record; //type: int32
+        ydk::YLeaf record; //type: uint32
         ydk::YLeaf timestamp; //type: uint32
         ydk::YLeaf record_type; //type: HistRecord
         class Info; //type: CfgHistGl::RecordType::Record::Info

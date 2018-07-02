@@ -59,7 +59,7 @@ class InterfaceDampening::Interfaces : public ydk::Entity
 
         class Interface; //type: InterfaceDampening::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceDampening::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // InterfaceDampening::Interfaces
 
@@ -117,7 +117,7 @@ class InterfaceDampening::Interfaces::Interface::IfDampening : public ydk::Entit
         class Capsulation; //type: InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_> interface_dampening;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation> > capsulation;
+        ydk::YList capsulation;
         
 }; // InterfaceDampening::Interfaces::Interface::IfDampening
 
@@ -215,7 +215,7 @@ class InterfaceDampening::Nodes : public ydk::Entity
 
         class Node; //type: InterfaceDampening::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceDampening::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // InterfaceDampening::Nodes
 
@@ -311,7 +311,7 @@ class InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles : public ydk::
 
         class IfHandle; //type: InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle> > if_handle;
+        ydk::YList if_handle;
         
 }; // InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles
 
@@ -345,7 +345,7 @@ class InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle : pu
         class Capsulation; //type: InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_> interface_dampening;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation> > capsulation;
+        ydk::YList capsulation;
         
 }; // InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle
 
@@ -442,7 +442,7 @@ class InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces : public ydk:
 
         class Interface; //type: InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces
 
@@ -476,7 +476,7 @@ class InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface : 
         class Capsulation; //type: InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_> interface_dampening;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation> > capsulation;
+        ydk::YList capsulation;
         
 }; // InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface
 
@@ -601,7 +601,7 @@ class InterfaceProperties::DataNodes : public ydk::Entity
 
         class DataNode; //type: InterfaceProperties::DataNodes::DataNode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceProperties::DataNodes::DataNode> > data_node;
+        ydk::YList data_node;
         
 }; // InterfaceProperties::DataNodes
 
@@ -653,7 +653,7 @@ class InterfaceProperties::DataNodes::DataNode::Locationviews : public ydk::Enti
 
         class Locationview; //type: InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview> > locationview;
+        ydk::YList locationview;
         
 }; // InterfaceProperties::DataNodes::DataNode::Locationviews
 
@@ -700,7 +700,7 @@ class InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Int
 
         class Interface; //type: InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces
 
@@ -757,7 +757,7 @@ class InterfaceProperties::DataNodes::DataNode::PqNodeLocations : public ydk::En
 
         class PqNodeLocation; //type: InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation> > pq_node_location;
+        ydk::YList pq_node_location;
         
 }; // InterfaceProperties::DataNodes::DataNode::PqNodeLocations
 
@@ -804,7 +804,7 @@ class InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation:
 
         class Interface; //type: InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces
 
@@ -884,7 +884,7 @@ class InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces : public 
 
         class Interface; //type: InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_oper::InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces
 

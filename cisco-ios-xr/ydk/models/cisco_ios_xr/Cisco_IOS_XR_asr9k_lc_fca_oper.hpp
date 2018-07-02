@@ -57,7 +57,7 @@ class MpaInternal::Nodes : public ydk::Entity
 
         class Node; //type: MpaInternal::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_fca_oper::MpaInternal::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // MpaInternal::Nodes
 
@@ -82,7 +82,7 @@ class MpaInternal::Nodes::Node : public ydk::Entity
         ydk::YLeaf node; //type: string
         class Bay; //type: MpaInternal::Nodes::Node::Bay
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_fca_oper::MpaInternal::Nodes::Node::Bay> > bay;
+        ydk::YList bay;
         
 }; // MpaInternal::Nodes::Node
 
@@ -129,7 +129,7 @@ class MpaInternal::Nodes::Node::Bay::Ifsubsies : public ydk::Entity
 
         class Ifsubsy; //type: MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_fca_oper::MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy> > ifsubsy;
+        ydk::YList ifsubsy;
         
 }; // MpaInternal::Nodes::Node::Bay::Ifsubsies
 
@@ -234,7 +234,7 @@ class Mpa::Nodes : public ydk::Entity
 
         class Node; //type: Mpa::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_fca_oper::Mpa::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Mpa::Nodes
 
@@ -259,7 +259,7 @@ class Mpa::Nodes::Node : public ydk::Entity
         ydk::YLeaf node; //type: string
         class Bay; //type: Mpa::Nodes::Node::Bay
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_fca_oper::Mpa::Nodes::Node::Bay> > bay;
+        ydk::YList bay;
         
 }; // Mpa::Nodes::Node
 
@@ -343,6 +343,17 @@ class Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail : public ydk::Entity
 
 }; // Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail
 
+class SpaResetReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf spa_reset_reason_unknown;
+        static const ydk::Enum::YLeaf spa_reset_reason_manual;
+        static const ydk::Enum::YLeaf spa_reset_reason_fpd_upgrade;
+        static const ydk::Enum::YLeaf spa_reset_reason_audit_fail;
+        static const ydk::Enum::YLeaf spa_reset_reason_failure;
+
+};
+
 class SpaFailureReason : public ydk::Enum
 {
     public:
@@ -354,17 +365,6 @@ class SpaFailureReason : public ydk::Enum
         static const ydk::Enum::YLeaf spa_failure_reason_sw_restart;
         static const ydk::Enum::YLeaf spa_failure_reason_check_fpd;
         static const ydk::Enum::YLeaf spa_failure_reason_read_type;
-
-};
-
-class SpaResetReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf spa_reset_reason_unknown;
-        static const ydk::Enum::YLeaf spa_reset_reason_manual;
-        static const ydk::Enum::YLeaf spa_reset_reason_fpd_upgrade;
-        static const ydk::Enum::YLeaf spa_reset_reason_audit_fail;
-        static const ydk::Enum::YLeaf spa_reset_reason_failure;
 
 };
 

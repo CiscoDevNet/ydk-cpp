@@ -26,16 +26,16 @@ CallHome::CallHome()
     reply_to{YType::str, "reply-to"},
     from{YType::str, "from"},
     active{YType::empty, "active"}
-    	,
+        ,
     mail_servers(std::make_shared<CallHome::MailServers>())
-	,syslog_throttling(std::make_shared<CallHome::SyslogThrottling>())
-	,smart_licensing(std::make_shared<CallHome::SmartLicensing>())
-	,http_proxy(std::make_shared<CallHome::HttpProxy>())
-	,profiles(std::make_shared<CallHome::Profiles>())
-	,alert_groups(std::make_shared<CallHome::AlertGroups>())
-	,data_privacies(std::make_shared<CallHome::DataPrivacies>())
-	,alert_group_config(std::make_shared<CallHome::AlertGroupConfig>())
-	,authorization(std::make_shared<CallHome::Authorization>())
+    , syslog_throttling(std::make_shared<CallHome::SyslogThrottling>())
+    , smart_licensing(std::make_shared<CallHome::SmartLicensing>())
+    , http_proxy(std::make_shared<CallHome::HttpProxy>())
+    , profiles(std::make_shared<CallHome::Profiles>())
+    , alert_groups(std::make_shared<CallHome::AlertGroups>())
+    , data_privacies(std::make_shared<CallHome::DataPrivacies>())
+    , alert_group_config(std::make_shared<CallHome::AlertGroupConfig>())
+    , authorization(std::make_shared<CallHome::Authorization>())
 {
     mail_servers->parent = this;
     syslog_throttling->parent = this;
@@ -47,7 +47,7 @@ CallHome::CallHome()
     alert_group_config->parent = this;
     authorization->parent = this;
 
-    yang_name = "call-home"; yang_parent_name = "Cisco-IOS-XR-call-home-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "call-home"; yang_parent_name = "Cisco-IOS-XR-call-home-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CallHome::~CallHome()
@@ -56,6 +56,7 @@ CallHome::~CallHome()
 
 bool CallHome::has_data() const
 {
+    if (is_presence_container) return true;
     return customer_id.is_set
 	|| phone_number.is_set
 	|| contact_smart_licensing.is_set
@@ -445,9 +446,11 @@ bool CallHome::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 CallHome::MailServers::MailServers()
+    :
+    mail_server(this, {"mail_serv_address"})
 {
 
-    yang_name = "mail-servers"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mail-servers"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::MailServers::~MailServers()
@@ -456,7 +459,8 @@ CallHome::MailServers::~MailServers()
 
 bool CallHome::MailServers::has_data() const
 {
-    for (std::size_t index=0; index<mail_server.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mail_server.len(); index++)
     {
         if(mail_server[index]->has_data())
             return true;
@@ -466,7 +470,7 @@ bool CallHome::MailServers::has_data() const
 
 bool CallHome::MailServers::has_operation() const
 {
-    for (std::size_t index=0; index<mail_server.size(); index++)
+    for (std::size_t index=0; index<mail_server.len(); index++)
     {
         if(mail_server[index]->has_operation())
             return true;
@@ -503,7 +507,7 @@ std::shared_ptr<Entity> CallHome::MailServers::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<CallHome::MailServers::MailServer>();
         c->parent = this;
-        mail_server.push_back(c);
+        mail_server.append(c);
         return c;
     }
 
@@ -515,7 +519,7 @@ std::map<std::string, std::shared_ptr<Entity>> CallHome::MailServers::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mail_server)
+    for (auto c : mail_server.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -547,7 +551,7 @@ CallHome::MailServers::MailServer::MailServer()
     priority{YType::uint32, "priority"}
 {
 
-    yang_name = "mail-server"; yang_parent_name = "mail-servers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mail-server"; yang_parent_name = "mail-servers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::MailServers::MailServer::~MailServer()
@@ -556,6 +560,7 @@ CallHome::MailServers::MailServer::~MailServer()
 
 bool CallHome::MailServers::MailServer::has_data() const
 {
+    if (is_presence_container) return true;
     return mail_serv_address.is_set
 	|| priority.is_set;
 }
@@ -577,7 +582,8 @@ std::string CallHome::MailServers::MailServer::get_absolute_path() const
 std::string CallHome::MailServers::MailServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mail-server" <<"[mail-serv-address='" <<mail_serv_address <<"']";
+    path_buffer << "mail-server";
+    ADD_KEY_TOKEN(mail_serv_address, "mail-serv-address");
     return path_buffer.str();
 }
 
@@ -644,7 +650,7 @@ CallHome::SyslogThrottling::SyslogThrottling()
     active{YType::boolean, "active"}
 {
 
-    yang_name = "syslog-throttling"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "syslog-throttling"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::SyslogThrottling::~SyslogThrottling()
@@ -653,6 +659,7 @@ CallHome::SyslogThrottling::~SyslogThrottling()
 
 bool CallHome::SyslogThrottling::has_data() const
 {
+    if (is_presence_container) return true;
     return active.is_set;
 }
 
@@ -729,7 +736,7 @@ CallHome::SmartLicensing::SmartLicensing()
     active{YType::empty, "active"}
 {
 
-    yang_name = "smart-licensing"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "smart-licensing"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::SmartLicensing::~SmartLicensing()
@@ -738,6 +745,7 @@ CallHome::SmartLicensing::~SmartLicensing()
 
 bool CallHome::SmartLicensing::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| active.is_set;
 }
@@ -827,7 +835,7 @@ CallHome::HttpProxy::HttpProxy()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "http-proxy"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "http-proxy"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::HttpProxy::~HttpProxy()
@@ -836,6 +844,7 @@ CallHome::HttpProxy::~HttpProxy()
 
 bool CallHome::HttpProxy::has_data() const
 {
+    if (is_presence_container) return true;
     return server_address.is_set
 	|| port.is_set;
 }
@@ -920,9 +929,11 @@ bool CallHome::HttpProxy::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 CallHome::Profiles::Profiles()
+    :
+    profile(this, {"profile_name"})
 {
 
-    yang_name = "profiles"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profiles"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::Profiles::~Profiles()
@@ -931,7 +942,8 @@ CallHome::Profiles::~Profiles()
 
 bool CallHome::Profiles::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_data())
             return true;
@@ -941,7 +953,7 @@ bool CallHome::Profiles::has_data() const
 
 bool CallHome::Profiles::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_operation())
             return true;
@@ -978,7 +990,7 @@ std::shared_ptr<Entity> CallHome::Profiles::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<CallHome::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile.append(c);
         return c;
     }
 
@@ -990,7 +1002,7 @@ std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : profile)
+    for (auto c : profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1024,18 +1036,18 @@ CallHome::Profiles::Profile::Profile()
     anonymous{YType::boolean, "anonymous"},
     message_size_limit{YType::uint32, "message-size-limit"},
     active{YType::empty, "active"}
-    	,
+        ,
     report_type(std::make_shared<CallHome::Profiles::Profile::ReportType>())
-	,methods(std::make_shared<CallHome::Profiles::Profile::Methods>())
-	,addresses(std::make_shared<CallHome::Profiles::Profile::Addresses>())
-	,subscribe_alert_group(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup>())
+    , methods(std::make_shared<CallHome::Profiles::Profile::Methods>())
+    , addresses(std::make_shared<CallHome::Profiles::Profile::Addresses>())
+    , subscribe_alert_group(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup>())
 {
     report_type->parent = this;
     methods->parent = this;
     addresses->parent = this;
     subscribe_alert_group->parent = this;
 
-    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::Profiles::Profile::~Profile()
@@ -1044,6 +1056,7 @@ CallHome::Profiles::Profile::~Profile()
 
 bool CallHome::Profiles::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| create.is_set
 	|| message_format.is_set
@@ -1081,7 +1094,8 @@ std::string CallHome::Profiles::Profile::get_absolute_path() const
 std::string CallHome::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[profile-name='" <<profile_name <<"']";
+    path_buffer << "profile";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
@@ -1246,12 +1260,12 @@ bool CallHome::Profiles::Profile::has_leaf_or_child_of_name(const std::string & 
 CallHome::Profiles::Profile::ReportType::ReportType()
     :
     reporting_callhome_data(std::make_shared<CallHome::Profiles::Profile::ReportType::ReportingCallhomeData>())
-	,reporting_licensing_data(std::make_shared<CallHome::Profiles::Profile::ReportType::ReportingLicensingData>())
+    , reporting_licensing_data(std::make_shared<CallHome::Profiles::Profile::ReportType::ReportingLicensingData>())
 {
     reporting_callhome_data->parent = this;
     reporting_licensing_data->parent = this;
 
-    yang_name = "report-type"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "report-type"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::ReportType::~ReportType()
@@ -1260,6 +1274,7 @@ CallHome::Profiles::Profile::ReportType::~ReportType()
 
 bool CallHome::Profiles::Profile::ReportType::has_data() const
 {
+    if (is_presence_container) return true;
     return (reporting_callhome_data !=  nullptr && reporting_callhome_data->has_data())
 	|| (reporting_licensing_data !=  nullptr && reporting_licensing_data->has_data());
 }
@@ -1347,7 +1362,7 @@ CallHome::Profiles::Profile::ReportType::ReportingCallhomeData::ReportingCallhom
     enable{YType::boolean, "enable"}
 {
 
-    yang_name = "reporting-callhome-data"; yang_parent_name = "report-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reporting-callhome-data"; yang_parent_name = "report-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::ReportType::ReportingCallhomeData::~ReportingCallhomeData()
@@ -1356,6 +1371,7 @@ CallHome::Profiles::Profile::ReportType::ReportingCallhomeData::~ReportingCallho
 
 bool CallHome::Profiles::Profile::ReportType::ReportingCallhomeData::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -1424,7 +1440,7 @@ CallHome::Profiles::Profile::ReportType::ReportingLicensingData::ReportingLicens
     enable{YType::boolean, "enable"}
 {
 
-    yang_name = "reporting-licensing-data"; yang_parent_name = "report-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reporting-licensing-data"; yang_parent_name = "report-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::ReportType::ReportingLicensingData::~ReportingLicensingData()
@@ -1433,6 +1449,7 @@ CallHome::Profiles::Profile::ReportType::ReportingLicensingData::~ReportingLicen
 
 bool CallHome::Profiles::Profile::ReportType::ReportingLicensingData::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -1497,9 +1514,11 @@ bool CallHome::Profiles::Profile::ReportType::ReportingLicensingData::has_leaf_o
 }
 
 CallHome::Profiles::Profile::Methods::Methods()
+    :
+    method(this, {"method"})
 {
 
-    yang_name = "methods"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "methods"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::Methods::~Methods()
@@ -1508,7 +1527,8 @@ CallHome::Profiles::Profile::Methods::~Methods()
 
 bool CallHome::Profiles::Profile::Methods::has_data() const
 {
-    for (std::size_t index=0; index<method.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<method.len(); index++)
     {
         if(method[index]->has_data())
             return true;
@@ -1518,7 +1538,7 @@ bool CallHome::Profiles::Profile::Methods::has_data() const
 
 bool CallHome::Profiles::Profile::Methods::has_operation() const
 {
-    for (std::size_t index=0; index<method.size(); index++)
+    for (std::size_t index=0; index<method.len(); index++)
     {
         if(method[index]->has_operation())
             return true;
@@ -1548,7 +1568,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::Methods::get_child_by_name(
     {
         auto c = std::make_shared<CallHome::Profiles::Profile::Methods::Method>();
         c->parent = this;
-        method.push_back(c);
+        method.append(c);
         return c;
     }
 
@@ -1560,7 +1580,7 @@ std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::Meth
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : method)
+    for (auto c : method.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1592,7 +1612,7 @@ CallHome::Profiles::Profile::Methods::Method::Method()
     enable{YType::boolean, "enable"}
 {
 
-    yang_name = "method"; yang_parent_name = "methods"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method"; yang_parent_name = "methods"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::Methods::Method::~Method()
@@ -1601,6 +1621,7 @@ CallHome::Profiles::Profile::Methods::Method::~Method()
 
 bool CallHome::Profiles::Profile::Methods::Method::has_data() const
 {
+    if (is_presence_container) return true;
     return method.is_set
 	|| enable.is_set;
 }
@@ -1615,7 +1636,8 @@ bool CallHome::Profiles::Profile::Methods::Method::has_operation() const
 std::string CallHome::Profiles::Profile::Methods::Method::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "method" <<"[method='" <<method <<"']";
+    path_buffer << "method";
+    ADD_KEY_TOKEN(method, "method");
     return path_buffer.str();
 }
 
@@ -1678,9 +1700,11 @@ bool CallHome::Profiles::Profile::Methods::Method::has_leaf_or_child_of_name(con
 }
 
 CallHome::Profiles::Profile::Addresses::Addresses()
+    :
+    address(this, {"method", "destination_addr"})
 {
 
-    yang_name = "addresses"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addresses"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::Addresses::~Addresses()
@@ -1689,7 +1713,8 @@ CallHome::Profiles::Profile::Addresses::~Addresses()
 
 bool CallHome::Profiles::Profile::Addresses::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -1699,7 +1724,7 @@ bool CallHome::Profiles::Profile::Addresses::has_data() const
 
 bool CallHome::Profiles::Profile::Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -1729,7 +1754,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::Addresses::get_child_by_nam
     {
         auto c = std::make_shared<CallHome::Profiles::Profile::Addresses::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -1741,7 +1766,7 @@ std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::Addr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1774,7 +1799,7 @@ CallHome::Profiles::Profile::Addresses::Address::Address()
     enable{YType::boolean, "enable"}
 {
 
-    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::Addresses::Address::~Address()
@@ -1783,6 +1808,7 @@ CallHome::Profiles::Profile::Addresses::Address::~Address()
 
 bool CallHome::Profiles::Profile::Addresses::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return method.is_set
 	|| destination_addr.is_set
 	|| enable.is_set;
@@ -1799,7 +1825,9 @@ bool CallHome::Profiles::Profile::Addresses::Address::has_operation() const
 std::string CallHome::Profiles::Profile::Addresses::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address" <<"[method='" <<method <<"']" <<"[destination-addr='" <<destination_addr <<"']";
+    path_buffer << "address";
+    ADD_KEY_TOKEN(method, "method");
+    ADD_KEY_TOKEN(destination_addr, "destination-addr");
     return path_buffer.str();
 }
 
@@ -1875,11 +1903,11 @@ bool CallHome::Profiles::Profile::Addresses::Address::has_leaf_or_child_of_name(
 CallHome::Profiles::Profile::SubscribeAlertGroup::SubscribeAlertGroup()
     :
     environment(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Environment>())
-	,configuration(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration>())
-	,snapshot(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot>())
-	,inventory(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory>())
-	,crash(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Crash>())
-	,syslogs(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs>())
+    , configuration(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration>())
+    , snapshot(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot>())
+    , inventory(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory>())
+    , crash(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Crash>())
+    , syslogs(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs>())
 {
     environment->parent = this;
     configuration->parent = this;
@@ -1888,7 +1916,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::SubscribeAlertGroup()
     crash->parent = this;
     syslogs->parent = this;
 
-    yang_name = "subscribe-alert-group"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscribe-alert-group"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::SubscribeAlertGroup::~SubscribeAlertGroup()
@@ -1897,6 +1925,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::~SubscribeAlertGroup()
 
 bool CallHome::Profiles::Profile::SubscribeAlertGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return (environment !=  nullptr && environment->has_data())
 	|| (configuration !=  nullptr && configuration->has_data())
 	|| (snapshot !=  nullptr && snapshot->has_data())
@@ -2048,7 +2077,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Environment::Environment()
     severity{YType::enumeration, "severity"}
 {
 
-    yang_name = "environment"; yang_parent_name = "subscribe-alert-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "environment"; yang_parent_name = "subscribe-alert-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::SubscribeAlertGroup::Environment::~Environment()
@@ -2057,6 +2086,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Environment::~Environment()
 
 bool CallHome::Profiles::Profile::SubscribeAlertGroup::Environment::has_data() const
 {
+    if (is_presence_container) return true;
     return severity.is_set;
 }
 
@@ -2123,12 +2153,12 @@ bool CallHome::Profiles::Profile::SubscribeAlertGroup::Environment::has_leaf_or_
 CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::Configuration()
     :
     subscribe{YType::empty, "subscribe"}
-    	,
+        ,
     periodic(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::Periodic>())
 {
     periodic->parent = this;
 
-    yang_name = "configuration"; yang_parent_name = "subscribe-alert-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configuration"; yang_parent_name = "subscribe-alert-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::~Configuration()
@@ -2137,6 +2167,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::~Configuration(
 
 bool CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return subscribe.is_set
 	|| (periodic !=  nullptr && periodic->has_data());
 }
@@ -2225,7 +2256,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::Periodic::Perio
     minute{YType::uint32, "minute"}
 {
 
-    yang_name = "periodic"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "periodic"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::Periodic::~Periodic()
@@ -2234,6 +2265,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::Periodic::~Peri
 
 bool CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::Periodic::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| day.is_set
 	|| weekday.is_set
@@ -2355,7 +2387,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::Snapshot()
 {
     periodic->parent = this;
 
-    yang_name = "snapshot"; yang_parent_name = "subscribe-alert-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snapshot"; yang_parent_name = "subscribe-alert-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::~Snapshot()
@@ -2364,6 +2396,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::~Snapshot()
 
 bool CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::has_data() const
 {
+    if (is_presence_container) return true;
     return (periodic !=  nullptr && periodic->has_data());
 }
 
@@ -2439,7 +2472,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::Periodic::Periodic()
     minute{YType::uint32, "minute"}
 {
 
-    yang_name = "periodic"; yang_parent_name = "snapshot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "periodic"; yang_parent_name = "snapshot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::Periodic::~Periodic()
@@ -2448,6 +2481,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::Periodic::~Periodic(
 
 bool CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::Periodic::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| day.is_set
 	|| weekday.is_set
@@ -2566,12 +2600,12 @@ bool CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::Periodic::has_l
 CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::Inventory()
     :
     subscribe{YType::empty, "subscribe"}
-    	,
+        ,
     periodic(std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::Periodic>())
 {
     periodic->parent = this;
 
-    yang_name = "inventory"; yang_parent_name = "subscribe-alert-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inventory"; yang_parent_name = "subscribe-alert-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::~Inventory()
@@ -2580,6 +2614,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::~Inventory()
 
 bool CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::has_data() const
 {
+    if (is_presence_container) return true;
     return subscribe.is_set
 	|| (periodic !=  nullptr && periodic->has_data());
 }
@@ -2668,7 +2703,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::Periodic::Periodic(
     minute{YType::uint32, "minute"}
 {
 
-    yang_name = "periodic"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "periodic"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::Periodic::~Periodic()
@@ -2677,6 +2712,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::Periodic::~Periodic
 
 bool CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::Periodic::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| day.is_set
 	|| weekday.is_set
@@ -2797,7 +2833,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Crash::Crash()
     subscribe{YType::empty, "subscribe"}
 {
 
-    yang_name = "crash"; yang_parent_name = "subscribe-alert-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crash"; yang_parent_name = "subscribe-alert-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::SubscribeAlertGroup::Crash::~Crash()
@@ -2806,6 +2842,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Crash::~Crash()
 
 bool CallHome::Profiles::Profile::SubscribeAlertGroup::Crash::has_data() const
 {
+    if (is_presence_container) return true;
     return subscribe.is_set;
 }
 
@@ -2870,9 +2907,11 @@ bool CallHome::Profiles::Profile::SubscribeAlertGroup::Crash::has_leaf_or_child_
 }
 
 CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslogs()
+    :
+    syslog(this, {"syslog_pattern"})
 {
 
-    yang_name = "syslogs"; yang_parent_name = "subscribe-alert-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "syslogs"; yang_parent_name = "subscribe-alert-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::~Syslogs()
@@ -2881,7 +2920,8 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::~Syslogs()
 
 bool CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::has_data() const
 {
-    for (std::size_t index=0; index<syslog.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<syslog.len(); index++)
     {
         if(syslog[index]->has_data())
             return true;
@@ -2891,7 +2931,7 @@ bool CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::has_data() const
 
 bool CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::has_operation() const
 {
-    for (std::size_t index=0; index<syslog.size(); index++)
+    for (std::size_t index=0; index<syslog.len(); index++)
     {
         if(syslog[index]->has_operation())
             return true;
@@ -2921,7 +2961,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslog
     {
         auto c = std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog>();
         c->parent = this;
-        syslog.push_back(c);
+        syslog.append(c);
         return c;
     }
 
@@ -2933,7 +2973,7 @@ std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::Subs
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : syslog)
+    for (auto c : syslog.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2965,7 +3005,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::Syslog()
     severity{YType::enumeration, "severity"}
 {
 
-    yang_name = "syslog"; yang_parent_name = "syslogs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "syslog"; yang_parent_name = "syslogs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::~Syslog()
@@ -2974,6 +3014,7 @@ CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::~Syslog()
 
 bool CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::has_data() const
 {
+    if (is_presence_container) return true;
     return syslog_pattern.is_set
 	|| severity.is_set;
 }
@@ -2988,7 +3029,8 @@ bool CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::has_oper
 std::string CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "syslog" <<"[syslog-pattern='" <<syslog_pattern <<"']";
+    path_buffer << "syslog";
+    ADD_KEY_TOKEN(syslog_pattern, "syslog-pattern");
     return path_buffer.str();
 }
 
@@ -3051,9 +3093,11 @@ bool CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::has_leaf
 }
 
 CallHome::AlertGroups::AlertGroups()
+    :
+    alert_group(this, {"alert_group_name"})
 {
 
-    yang_name = "alert-groups"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alert-groups"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::AlertGroups::~AlertGroups()
@@ -3062,7 +3106,8 @@ CallHome::AlertGroups::~AlertGroups()
 
 bool CallHome::AlertGroups::has_data() const
 {
-    for (std::size_t index=0; index<alert_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alert_group.len(); index++)
     {
         if(alert_group[index]->has_data())
             return true;
@@ -3072,7 +3117,7 @@ bool CallHome::AlertGroups::has_data() const
 
 bool CallHome::AlertGroups::has_operation() const
 {
-    for (std::size_t index=0; index<alert_group.size(); index++)
+    for (std::size_t index=0; index<alert_group.len(); index++)
     {
         if(alert_group[index]->has_operation())
             return true;
@@ -3109,7 +3154,7 @@ std::shared_ptr<Entity> CallHome::AlertGroups::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<CallHome::AlertGroups::AlertGroup>();
         c->parent = this;
-        alert_group.push_back(c);
+        alert_group.append(c);
         return c;
     }
 
@@ -3121,7 +3166,7 @@ std::map<std::string, std::shared_ptr<Entity>> CallHome::AlertGroups::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alert_group)
+    for (auto c : alert_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3154,7 +3199,7 @@ CallHome::AlertGroups::AlertGroup::AlertGroup()
     disable{YType::boolean, "disable"}
 {
 
-    yang_name = "alert-group"; yang_parent_name = "alert-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alert-group"; yang_parent_name = "alert-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::AlertGroups::AlertGroup::~AlertGroup()
@@ -3163,6 +3208,7 @@ CallHome::AlertGroups::AlertGroup::~AlertGroup()
 
 bool CallHome::AlertGroups::AlertGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return alert_group_name.is_set
 	|| enable.is_set
 	|| disable.is_set;
@@ -3186,7 +3232,8 @@ std::string CallHome::AlertGroups::AlertGroup::get_absolute_path() const
 std::string CallHome::AlertGroups::AlertGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alert-group" <<"[alert-group-name='" <<alert_group_name <<"']";
+    path_buffer << "alert-group";
+    ADD_KEY_TOKEN(alert_group_name, "alert-group-name");
     return path_buffer.str();
 }
 
@@ -3260,9 +3307,11 @@ bool CallHome::AlertGroups::AlertGroup::has_leaf_or_child_of_name(const std::str
 }
 
 CallHome::DataPrivacies::DataPrivacies()
+    :
+    data_privacy(this, {"host_name"})
 {
 
-    yang_name = "data-privacies"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-privacies"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::DataPrivacies::~DataPrivacies()
@@ -3271,7 +3320,8 @@ CallHome::DataPrivacies::~DataPrivacies()
 
 bool CallHome::DataPrivacies::has_data() const
 {
-    for (std::size_t index=0; index<data_privacy.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_privacy.len(); index++)
     {
         if(data_privacy[index]->has_data())
             return true;
@@ -3281,7 +3331,7 @@ bool CallHome::DataPrivacies::has_data() const
 
 bool CallHome::DataPrivacies::has_operation() const
 {
-    for (std::size_t index=0; index<data_privacy.size(); index++)
+    for (std::size_t index=0; index<data_privacy.len(); index++)
     {
         if(data_privacy[index]->has_operation())
             return true;
@@ -3318,7 +3368,7 @@ std::shared_ptr<Entity> CallHome::DataPrivacies::get_child_by_name(const std::st
     {
         auto c = std::make_shared<CallHome::DataPrivacies::DataPrivacy>();
         c->parent = this;
-        data_privacy.push_back(c);
+        data_privacy.append(c);
         return c;
     }
 
@@ -3330,7 +3380,7 @@ std::map<std::string, std::shared_ptr<Entity>> CallHome::DataPrivacies::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_privacy)
+    for (auto c : data_privacy.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3362,7 +3412,7 @@ CallHome::DataPrivacies::DataPrivacy::DataPrivacy()
     level{YType::enumeration, "level"}
 {
 
-    yang_name = "data-privacy"; yang_parent_name = "data-privacies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-privacy"; yang_parent_name = "data-privacies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::DataPrivacies::DataPrivacy::~DataPrivacy()
@@ -3371,6 +3421,7 @@ CallHome::DataPrivacies::DataPrivacy::~DataPrivacy()
 
 bool CallHome::DataPrivacies::DataPrivacy::has_data() const
 {
+    if (is_presence_container) return true;
     return host_name.is_set
 	|| level.is_set;
 }
@@ -3392,7 +3443,8 @@ std::string CallHome::DataPrivacies::DataPrivacy::get_absolute_path() const
 std::string CallHome::DataPrivacies::DataPrivacy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data-privacy" <<"[host-name='" <<host_name <<"']";
+    path_buffer << "data-privacy";
+    ADD_KEY_TOKEN(host_name, "host-name");
     return path_buffer.str();
 }
 
@@ -3460,7 +3512,7 @@ CallHome::AlertGroupConfig::AlertGroupConfig()
 {
     snapshot_commands->parent = this;
 
-    yang_name = "alert-group-config"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alert-group-config"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::AlertGroupConfig::~AlertGroupConfig()
@@ -3469,6 +3521,7 @@ CallHome::AlertGroupConfig::~AlertGroupConfig()
 
 bool CallHome::AlertGroupConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (snapshot_commands !=  nullptr && snapshot_commands->has_data());
 }
 
@@ -3543,9 +3596,11 @@ bool CallHome::AlertGroupConfig::has_leaf_or_child_of_name(const std::string & n
 }
 
 CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommands()
+    :
+    snapshot_command(this, {"command"})
 {
 
-    yang_name = "snapshot-commands"; yang_parent_name = "alert-group-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snapshot-commands"; yang_parent_name = "alert-group-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::AlertGroupConfig::SnapshotCommands::~SnapshotCommands()
@@ -3554,7 +3609,8 @@ CallHome::AlertGroupConfig::SnapshotCommands::~SnapshotCommands()
 
 bool CallHome::AlertGroupConfig::SnapshotCommands::has_data() const
 {
-    for (std::size_t index=0; index<snapshot_command.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<snapshot_command.len(); index++)
     {
         if(snapshot_command[index]->has_data())
             return true;
@@ -3564,7 +3620,7 @@ bool CallHome::AlertGroupConfig::SnapshotCommands::has_data() const
 
 bool CallHome::AlertGroupConfig::SnapshotCommands::has_operation() const
 {
-    for (std::size_t index=0; index<snapshot_command.size(); index++)
+    for (std::size_t index=0; index<snapshot_command.len(); index++)
     {
         if(snapshot_command[index]->has_operation())
             return true;
@@ -3601,7 +3657,7 @@ std::shared_ptr<Entity> CallHome::AlertGroupConfig::SnapshotCommands::get_child_
     {
         auto c = std::make_shared<CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand>();
         c->parent = this;
-        snapshot_command.push_back(c);
+        snapshot_command.append(c);
         return c;
     }
 
@@ -3613,7 +3669,7 @@ std::map<std::string, std::shared_ptr<Entity>> CallHome::AlertGroupConfig::Snaps
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : snapshot_command)
+    for (auto c : snapshot_command.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3645,7 +3701,7 @@ CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand::SnapshotCommand()
     active{YType::empty, "active"}
 {
 
-    yang_name = "snapshot-command"; yang_parent_name = "snapshot-commands"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snapshot-command"; yang_parent_name = "snapshot-commands"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand::~SnapshotCommand()
@@ -3654,6 +3710,7 @@ CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand::~SnapshotCommand(
 
 bool CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand::has_data() const
 {
+    if (is_presence_container) return true;
     return command.is_set
 	|| active.is_set;
 }
@@ -3675,7 +3732,8 @@ std::string CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand::get_a
 std::string CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "snapshot-command" <<"[command='" <<command <<"']";
+    path_buffer << "snapshot-command";
+    ADD_KEY_TOKEN(command, "command");
     return path_buffer.str();
 }
 
@@ -3743,7 +3801,7 @@ CallHome::Authorization::Authorization()
     active{YType::empty, "active"}
 {
 
-    yang_name = "authorization"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CallHome::Authorization::~Authorization()
@@ -3752,6 +3810,7 @@ CallHome::Authorization::~Authorization()
 
 bool CallHome::Authorization::has_data() const
 {
+    if (is_presence_container) return true;
     return username.is_set
 	|| active.is_set;
 }
@@ -3835,10 +3894,6 @@ bool CallHome::Authorization::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-const Enum::YLeaf CallHomeMailSendInterval::daily {0, "daily"};
-const Enum::YLeaf CallHomeMailSendInterval::weekly {1, "weekly"};
-const Enum::YLeaf CallHomeMailSendInterval::monthly {2, "monthly"};
-
 const Enum::YLeaf CallHomeDayOfWeek::sunday {0, "sunday"};
 const Enum::YLeaf CallHomeDayOfWeek::monday {1, "monday"};
 const Enum::YLeaf CallHomeDayOfWeek::tuesday {2, "tuesday"};
@@ -3846,6 +3901,14 @@ const Enum::YLeaf CallHomeDayOfWeek::wednesday {3, "wednesday"};
 const Enum::YLeaf CallHomeDayOfWeek::thursday {4, "thursday"};
 const Enum::YLeaf CallHomeDayOfWeek::friday {5, "friday"};
 const Enum::YLeaf CallHomeDayOfWeek::saturday {6, "saturday"};
+
+const Enum::YLeaf DataPrivacyLevel::normal {0, "normal"};
+const Enum::YLeaf DataPrivacyLevel::high {1, "high"};
+const Enum::YLeaf DataPrivacyLevel::host_name {2, "host-name"};
+
+const Enum::YLeaf CallHomeMailSendInterval::daily {0, "daily"};
+const Enum::YLeaf CallHomeMailSendInterval::weekly {1, "weekly"};
+const Enum::YLeaf CallHomeMailSendInterval::monthly {2, "monthly"};
 
 const Enum::YLeaf CallHomeEventSeverity::debugging {0, "debugging"};
 const Enum::YLeaf CallHomeEventSeverity::normal {1, "normal"};
@@ -3864,10 +3927,6 @@ const Enum::YLeaf SnapshotInterval::monthly {2, "monthly"};
 
 const Enum::YLeaf CallHomeTransMethod::email {1, "email"};
 const Enum::YLeaf CallHomeTransMethod::http {2, "http"};
-
-const Enum::YLeaf DataPrivacyLevel::normal {0, "normal"};
-const Enum::YLeaf DataPrivacyLevel::high {1, "high"};
-const Enum::YLeaf DataPrivacyLevel::host_name {2, "host-name"};
 
 
 }

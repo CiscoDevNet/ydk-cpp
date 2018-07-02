@@ -17,7 +17,7 @@ HardwareModule::HardwareModule()
 {
     segment_routing->parent = this;
 
-    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-prm-hwmod-sr-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-prm-hwmod-sr-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HardwareModule::~HardwareModule()
@@ -26,6 +26,7 @@ HardwareModule::~HardwareModule()
 
 bool HardwareModule::has_data() const
 {
+    if (is_presence_container) return true;
     return (segment_routing !=  nullptr && segment_routing->has_data());
 }
 
@@ -123,7 +124,7 @@ HardwareModule::SegmentRouting::SegmentRouting()
 {
     reserve->parent = this;
 
-    yang_name = "segment-routing"; yang_parent_name = "hardware-module"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "segment-routing"; yang_parent_name = "hardware-module"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModule::SegmentRouting::~SegmentRouting()
@@ -132,6 +133,7 @@ HardwareModule::SegmentRouting::~SegmentRouting()
 
 bool HardwareModule::SegmentRouting::has_data() const
 {
+    if (is_presence_container) return true;
     return (reserve !=  nullptr && reserve->has_data());
 }
 
@@ -211,7 +213,7 @@ HardwareModule::SegmentRouting::Reserve::Reserve()
 {
     service_label->parent = this;
 
-    yang_name = "reserve"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reserve"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModule::SegmentRouting::Reserve::~Reserve()
@@ -220,6 +222,7 @@ HardwareModule::SegmentRouting::Reserve::~Reserve()
 
 bool HardwareModule::SegmentRouting::Reserve::has_data() const
 {
+    if (is_presence_container) return true;
     return (service_label !=  nullptr && service_label->has_data());
 }
 
@@ -298,7 +301,7 @@ HardwareModule::SegmentRouting::Reserve::ServiceLabel::ServiceLabel()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "service-label"; yang_parent_name = "reserve"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service-label"; yang_parent_name = "reserve"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModule::SegmentRouting::Reserve::ServiceLabel::~ServiceLabel()
@@ -307,6 +310,7 @@ HardwareModule::SegmentRouting::Reserve::ServiceLabel::~ServiceLabel()
 
 bool HardwareModule::SegmentRouting::Reserve::ServiceLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 

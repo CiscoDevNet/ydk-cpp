@@ -17,7 +17,7 @@ HardwareModuleQosMode::HardwareModuleQosMode()
 {
     nodes->parent = this;
 
-    yang_name = "hardware-module-qos-mode"; yang_parent_name = "Cisco-IOS-XR-asr9k-prm-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hardware-module-qos-mode"; yang_parent_name = "Cisco-IOS-XR-asr9k-prm-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HardwareModuleQosMode::~HardwareModuleQosMode()
@@ -26,6 +26,7 @@ HardwareModuleQosMode::~HardwareModuleQosMode()
 
 bool HardwareModuleQosMode::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool HardwareModuleQosMode::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 HardwareModuleQosMode::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "hardware-module-qos-mode"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "hardware-module-qos-mode"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModuleQosMode::Nodes::~Nodes()
@@ -129,7 +132,8 @@ HardwareModuleQosMode::Nodes::~Nodes()
 
 bool HardwareModuleQosMode::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool HardwareModuleQosMode::Nodes::has_data() const
 
 bool HardwareModuleQosMode::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> HardwareModuleQosMode::Nodes::get_child_by_name(const st
     {
         auto c = std::make_shared<HardwareModuleQosMode::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleQosMode::Nodes::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -221,7 +225,7 @@ HardwareModuleQosMode::Nodes::Node::Node()
     lowburst_enable{YType::empty, "lowburst-enable"}
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModuleQosMode::Nodes::Node::~Node()
@@ -230,6 +234,7 @@ HardwareModuleQosMode::Nodes::Node::~Node()
 
 bool HardwareModuleQosMode::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| child_shaping_disable.is_set
 	|| lowburst_enable.is_set;
@@ -253,7 +258,8 @@ std::string HardwareModuleQosMode::Nodes::Node::get_absolute_path() const
 std::string HardwareModuleQosMode::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -332,7 +338,7 @@ HardwareModuleTcpMssAdjust::HardwareModuleTcpMssAdjust()
 {
     nodes->parent = this;
 
-    yang_name = "hardware-module-tcp-mss-adjust"; yang_parent_name = "Cisco-IOS-XR-asr9k-prm-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hardware-module-tcp-mss-adjust"; yang_parent_name = "Cisco-IOS-XR-asr9k-prm-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HardwareModuleTcpMssAdjust::~HardwareModuleTcpMssAdjust()
@@ -341,6 +347,7 @@ HardwareModuleTcpMssAdjust::~HardwareModuleTcpMssAdjust()
 
 bool HardwareModuleTcpMssAdjust::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -433,9 +440,11 @@ bool HardwareModuleTcpMssAdjust::has_leaf_or_child_of_name(const std::string & n
 }
 
 HardwareModuleTcpMssAdjust::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "hardware-module-tcp-mss-adjust"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "hardware-module-tcp-mss-adjust"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModuleTcpMssAdjust::Nodes::~Nodes()
@@ -444,7 +453,8 @@ HardwareModuleTcpMssAdjust::Nodes::~Nodes()
 
 bool HardwareModuleTcpMssAdjust::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -454,7 +464,7 @@ bool HardwareModuleTcpMssAdjust::Nodes::has_data() const
 
 bool HardwareModuleTcpMssAdjust::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -491,7 +501,7 @@ std::shared_ptr<Entity> HardwareModuleTcpMssAdjust::Nodes::get_child_by_name(con
     {
         auto c = std::make_shared<HardwareModuleTcpMssAdjust::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -503,7 +513,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcpMssAdjust::Nodes
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -532,12 +542,12 @@ bool HardwareModuleTcpMssAdjust::Nodes::has_leaf_or_child_of_name(const std::str
 HardwareModuleTcpMssAdjust::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     nps(std::make_shared<HardwareModuleTcpMssAdjust::Nodes::Node::Nps>())
 {
     nps->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModuleTcpMssAdjust::Nodes::Node::~Node()
@@ -546,6 +556,7 @@ HardwareModuleTcpMssAdjust::Nodes::Node::~Node()
 
 bool HardwareModuleTcpMssAdjust::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (nps !=  nullptr && nps->has_data());
 }
@@ -567,7 +578,8 @@ std::string HardwareModuleTcpMssAdjust::Nodes::Node::get_absolute_path() const
 std::string HardwareModuleTcpMssAdjust::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -633,9 +645,11 @@ bool HardwareModuleTcpMssAdjust::Nodes::Node::has_leaf_or_child_of_name(const st
 }
 
 HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Nps()
+    :
+    np(this, {"np_id"})
 {
 
-    yang_name = "nps"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nps"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleTcpMssAdjust::Nodes::Node::Nps::~Nps()
@@ -644,7 +658,8 @@ HardwareModuleTcpMssAdjust::Nodes::Node::Nps::~Nps()
 
 bool HardwareModuleTcpMssAdjust::Nodes::Node::Nps::has_data() const
 {
-    for (std::size_t index=0; index<np.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<np.len(); index++)
     {
         if(np[index]->has_data())
             return true;
@@ -654,7 +669,7 @@ bool HardwareModuleTcpMssAdjust::Nodes::Node::Nps::has_data() const
 
 bool HardwareModuleTcpMssAdjust::Nodes::Node::Nps::has_operation() const
 {
-    for (std::size_t index=0; index<np.size(); index++)
+    for (std::size_t index=0; index<np.len(); index++)
     {
         if(np[index]->has_operation())
             return true;
@@ -684,7 +699,7 @@ std::shared_ptr<Entity> HardwareModuleTcpMssAdjust::Nodes::Node::Nps::get_child_
     {
         auto c = std::make_shared<HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np>();
         c->parent = this;
-        np.push_back(c);
+        np.append(c);
         return c;
     }
 
@@ -696,7 +711,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcpMssAdjust::Nodes
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : np)
+    for (auto c : np.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -728,7 +743,7 @@ HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::Np()
     adjust_value{YType::uint32, "adjust-value"}
 {
 
-    yang_name = "np"; yang_parent_name = "nps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "np"; yang_parent_name = "nps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::~Np()
@@ -737,6 +752,7 @@ HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::~Np()
 
 bool HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::has_data() const
 {
+    if (is_presence_container) return true;
     return np_id.is_set
 	|| adjust_value.is_set;
 }
@@ -751,7 +767,8 @@ bool HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::has_operation() const
 std::string HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "np" <<"[np-id='" <<np_id <<"']";
+    path_buffer << "np";
+    ADD_KEY_TOKEN(np_id, "np-id");
     return path_buffer.str();
 }
 
@@ -813,15 +830,296 @@ bool HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::has_leaf_or_child_of_name
     return false;
 }
 
+HardwareModuleLoadBalance::HardwareModuleLoadBalance()
+    :
+    bundle(std::make_shared<HardwareModuleLoadBalance::Bundle>())
+{
+    bundle->parent = this;
+
+    yang_name = "hardware-module-load-balance"; yang_parent_name = "Cisco-IOS-XR-asr9k-prm-cfg"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+HardwareModuleLoadBalance::~HardwareModuleLoadBalance()
+{
+}
+
+bool HardwareModuleLoadBalance::has_data() const
+{
+    if (is_presence_container) return true;
+    return (bundle !=  nullptr && bundle->has_data());
+}
+
+bool HardwareModuleLoadBalance::has_operation() const
+{
+    return is_set(yfilter)
+	|| (bundle !=  nullptr && bundle->has_operation());
+}
+
+std::string HardwareModuleLoadBalance::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-prm-cfg:hardware-module-load-balance";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleLoadBalance::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bundle")
+    {
+        if(bundle == nullptr)
+        {
+            bundle = std::make_shared<HardwareModuleLoadBalance::Bundle>();
+        }
+        return bundle;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleLoadBalance::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(bundle != nullptr)
+    {
+        children["bundle"] = bundle;
+    }
+
+    return children;
+}
+
+void HardwareModuleLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModuleLoadBalance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> HardwareModuleLoadBalance::clone_ptr() const
+{
+    return std::make_shared<HardwareModuleLoadBalance>();
+}
+
+std::string HardwareModuleLoadBalance::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string HardwareModuleLoadBalance::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function HardwareModuleLoadBalance::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> HardwareModuleLoadBalance::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool HardwareModuleLoadBalance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle")
+        return true;
+    return false;
+}
+
+HardwareModuleLoadBalance::Bundle::Bundle()
+    :
+    l2_service(std::make_shared<HardwareModuleLoadBalance::Bundle::L2Service>())
+{
+    l2_service->parent = this;
+
+    yang_name = "bundle"; yang_parent_name = "hardware-module-load-balance"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+HardwareModuleLoadBalance::Bundle::~Bundle()
+{
+}
+
+bool HardwareModuleLoadBalance::Bundle::has_data() const
+{
+    if (is_presence_container) return true;
+    return (l2_service !=  nullptr && l2_service->has_data());
+}
+
+bool HardwareModuleLoadBalance::Bundle::has_operation() const
+{
+    return is_set(yfilter)
+	|| (l2_service !=  nullptr && l2_service->has_operation());
+}
+
+std::string HardwareModuleLoadBalance::Bundle::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-prm-cfg:hardware-module-load-balance/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HardwareModuleLoadBalance::Bundle::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bundle";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleLoadBalance::Bundle::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleLoadBalance::Bundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "l2-service")
+    {
+        if(l2_service == nullptr)
+        {
+            l2_service = std::make_shared<HardwareModuleLoadBalance::Bundle::L2Service>();
+        }
+        return l2_service;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleLoadBalance::Bundle::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(l2_service != nullptr)
+    {
+        children["l2-service"] = l2_service;
+    }
+
+    return children;
+}
+
+void HardwareModuleLoadBalance::Bundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModuleLoadBalance::Bundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleLoadBalance::Bundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2-service")
+        return true;
+    return false;
+}
+
+HardwareModuleLoadBalance::Bundle::L2Service::L2Service()
+    :
+    l3_parameters{YType::empty, "l3-parameters"}
+{
+
+    yang_name = "l2-service"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+HardwareModuleLoadBalance::Bundle::L2Service::~L2Service()
+{
+}
+
+bool HardwareModuleLoadBalance::Bundle::L2Service::has_data() const
+{
+    if (is_presence_container) return true;
+    return l3_parameters.is_set;
+}
+
+bool HardwareModuleLoadBalance::Bundle::L2Service::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(l3_parameters.yfilter);
+}
+
+std::string HardwareModuleLoadBalance::Bundle::L2Service::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-prm-cfg:hardware-module-load-balance/bundle/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HardwareModuleLoadBalance::Bundle::L2Service::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2-service";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleLoadBalance::Bundle::L2Service::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (l3_parameters.is_set || is_set(l3_parameters.yfilter)) leaf_name_data.push_back(l3_parameters.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleLoadBalance::Bundle::L2Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleLoadBalance::Bundle::L2Service::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void HardwareModuleLoadBalance::Bundle::L2Service::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "l3-parameters")
+    {
+        l3_parameters = value;
+        l3_parameters.value_namespace = name_space;
+        l3_parameters.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleLoadBalance::Bundle::L2Service::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "l3-parameters")
+    {
+        l3_parameters.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleLoadBalance::Bundle::L2Service::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l3-parameters")
+        return true;
+    return false;
+}
+
 HardwareModuleTcam::HardwareModuleTcam()
     :
     global_profile{YType::enumeration, "global-profile"}
-    	,
+        ,
     nodes(std::make_shared<HardwareModuleTcam::Nodes>())
 {
     nodes->parent = this;
 
-    yang_name = "hardware-module-tcam"; yang_parent_name = "Cisco-IOS-XR-asr9k-prm-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hardware-module-tcam"; yang_parent_name = "Cisco-IOS-XR-asr9k-prm-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HardwareModuleTcam::~HardwareModuleTcam()
@@ -830,6 +1128,7 @@ HardwareModuleTcam::~HardwareModuleTcam()
 
 bool HardwareModuleTcam::has_data() const
 {
+    if (is_presence_container) return true;
     return global_profile.is_set
 	|| (nodes !=  nullptr && nodes->has_data());
 }
@@ -935,9 +1234,11 @@ bool HardwareModuleTcam::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 HardwareModuleTcam::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "hardware-module-tcam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "hardware-module-tcam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModuleTcam::Nodes::~Nodes()
@@ -946,7 +1247,8 @@ HardwareModuleTcam::Nodes::~Nodes()
 
 bool HardwareModuleTcam::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -956,7 +1258,7 @@ bool HardwareModuleTcam::Nodes::has_data() const
 
 bool HardwareModuleTcam::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -993,7 +1295,7 @@ std::shared_ptr<Entity> HardwareModuleTcam::Nodes::get_child_by_name(const std::
     {
         auto c = std::make_shared<HardwareModuleTcam::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -1005,7 +1307,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcam::Nodes::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1037,7 +1339,7 @@ HardwareModuleTcam::Nodes::Node::Node()
     profile{YType::enumeration, "profile"}
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModuleTcam::Nodes::Node::~Node()
@@ -1046,6 +1348,7 @@ HardwareModuleTcam::Nodes::Node::~Node()
 
 bool HardwareModuleTcam::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| profile.is_set;
 }
@@ -1067,7 +1370,8 @@ std::string HardwareModuleTcam::Nodes::Node::get_absolute_path() const
 std::string HardwareModuleTcam::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1132,12 +1436,12 @@ bool HardwareModuleTcam::Nodes::Node::has_leaf_or_child_of_name(const std::strin
 HardwareModuleEfd::HardwareModuleEfd()
     :
     node_all(std::make_shared<HardwareModuleEfd::NodeAll>())
-	,nodes(std::make_shared<HardwareModuleEfd::Nodes>())
+    , nodes(std::make_shared<HardwareModuleEfd::Nodes>())
 {
     node_all->parent = this;
     nodes->parent = this;
 
-    yang_name = "hardware-module-efd"; yang_parent_name = "Cisco-IOS-XR-asr9k-prm-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hardware-module-efd"; yang_parent_name = "Cisco-IOS-XR-asr9k-prm-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HardwareModuleEfd::~HardwareModuleEfd()
@@ -1146,6 +1450,7 @@ HardwareModuleEfd::~HardwareModuleEfd()
 
 bool HardwareModuleEfd::has_data() const
 {
+    if (is_presence_container) return true;
     return (node_all !=  nullptr && node_all->has_data())
 	|| (nodes !=  nullptr && nodes->has_data());
 }
@@ -1257,16 +1562,16 @@ HardwareModuleEfd::NodeAll::NodeAll()
     :
     enable{YType::empty, "enable"},
     mode{YType::enumeration, "mode"}
-    	,
+        ,
     vlan_priority_mask(nullptr) // presence node
-	,ip_precedence(nullptr) // presence node
-	,vlan_cos(nullptr) // presence node
-	,ip_priority_mask(nullptr) // presence node
-	,mpls_priority_mask(nullptr) // presence node
-	,mpls_exp(nullptr) // presence node
+    , ip_precedence(nullptr) // presence node
+    , vlan_cos(nullptr) // presence node
+    , ip_priority_mask(nullptr) // presence node
+    , mpls_priority_mask(nullptr) // presence node
+    , mpls_exp(nullptr) // presence node
 {
 
-    yang_name = "node-all"; yang_parent_name = "hardware-module-efd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-all"; yang_parent_name = "hardware-module-efd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModuleEfd::NodeAll::~NodeAll()
@@ -1275,6 +1580,7 @@ HardwareModuleEfd::NodeAll::~NodeAll()
 
 bool HardwareModuleEfd::NodeAll::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| mode.is_set
 	|| (vlan_priority_mask !=  nullptr && vlan_priority_mask->has_data())
@@ -1466,7 +1772,7 @@ HardwareModuleEfd::NodeAll::VlanPriorityMask::VlanPriorityMask()
     prec7{YType::uint32, "prec7"}
 {
 
-    yang_name = "vlan-priority-mask"; yang_parent_name = "node-all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan-priority-mask"; yang_parent_name = "node-all"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 HardwareModuleEfd::NodeAll::VlanPriorityMask::~VlanPriorityMask()
@@ -1475,6 +1781,7 @@ HardwareModuleEfd::NodeAll::VlanPriorityMask::~VlanPriorityMask()
 
 bool HardwareModuleEfd::NodeAll::VlanPriorityMask::has_data() const
 {
+    if (is_presence_container) return true;
     return prec0.is_set
 	|| prec1.is_set
 	|| prec2.is_set
@@ -1642,7 +1949,7 @@ HardwareModuleEfd::NodeAll::IpPrecedence::IpPrecedence()
     operation_{YType::enumeration, "operation"}
 {
 
-    yang_name = "ip-precedence"; yang_parent_name = "node-all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip-precedence"; yang_parent_name = "node-all"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 HardwareModuleEfd::NodeAll::IpPrecedence::~IpPrecedence()
@@ -1651,6 +1958,7 @@ HardwareModuleEfd::NodeAll::IpPrecedence::~IpPrecedence()
 
 bool HardwareModuleEfd::NodeAll::IpPrecedence::has_data() const
 {
+    if (is_presence_container) return true;
     return precedence.is_set
 	|| operation_.is_set;
 }
@@ -1740,7 +2048,7 @@ HardwareModuleEfd::NodeAll::VlanCos::VlanCos()
     operation_{YType::enumeration, "operation"}
 {
 
-    yang_name = "vlan-cos"; yang_parent_name = "node-all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan-cos"; yang_parent_name = "node-all"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 HardwareModuleEfd::NodeAll::VlanCos::~VlanCos()
@@ -1749,6 +2057,7 @@ HardwareModuleEfd::NodeAll::VlanCos::~VlanCos()
 
 bool HardwareModuleEfd::NodeAll::VlanCos::has_data() const
 {
+    if (is_presence_container) return true;
     return cos.is_set
 	|| operation_.is_set;
 }
@@ -1844,7 +2153,7 @@ HardwareModuleEfd::NodeAll::IpPriorityMask::IpPriorityMask()
     prec7{YType::uint32, "prec7"}
 {
 
-    yang_name = "ip-priority-mask"; yang_parent_name = "node-all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip-priority-mask"; yang_parent_name = "node-all"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 HardwareModuleEfd::NodeAll::IpPriorityMask::~IpPriorityMask()
@@ -1853,6 +2162,7 @@ HardwareModuleEfd::NodeAll::IpPriorityMask::~IpPriorityMask()
 
 bool HardwareModuleEfd::NodeAll::IpPriorityMask::has_data() const
 {
+    if (is_presence_container) return true;
     return prec0.is_set
 	|| prec1.is_set
 	|| prec2.is_set
@@ -2026,7 +2336,7 @@ HardwareModuleEfd::NodeAll::MplsPriorityMask::MplsPriorityMask()
     prec7{YType::uint32, "prec7"}
 {
 
-    yang_name = "mpls-priority-mask"; yang_parent_name = "node-all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls-priority-mask"; yang_parent_name = "node-all"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 HardwareModuleEfd::NodeAll::MplsPriorityMask::~MplsPriorityMask()
@@ -2035,6 +2345,7 @@ HardwareModuleEfd::NodeAll::MplsPriorityMask::~MplsPriorityMask()
 
 bool HardwareModuleEfd::NodeAll::MplsPriorityMask::has_data() const
 {
+    if (is_presence_container) return true;
     return prec0.is_set
 	|| prec1.is_set
 	|| prec2.is_set
@@ -2202,7 +2513,7 @@ HardwareModuleEfd::NodeAll::MplsExp::MplsExp()
     operation_{YType::enumeration, "operation"}
 {
 
-    yang_name = "mpls-exp"; yang_parent_name = "node-all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls-exp"; yang_parent_name = "node-all"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 HardwareModuleEfd::NodeAll::MplsExp::~MplsExp()
@@ -2211,6 +2522,7 @@ HardwareModuleEfd::NodeAll::MplsExp::~MplsExp()
 
 bool HardwareModuleEfd::NodeAll::MplsExp::has_data() const
 {
+    if (is_presence_container) return true;
     return exp.is_set
 	|| operation_.is_set;
 }
@@ -2295,9 +2607,11 @@ bool HardwareModuleEfd::NodeAll::MplsExp::has_leaf_or_child_of_name(const std::s
 }
 
 HardwareModuleEfd::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "hardware-module-efd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "hardware-module-efd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModuleEfd::Nodes::~Nodes()
@@ -2306,7 +2620,8 @@ HardwareModuleEfd::Nodes::~Nodes()
 
 bool HardwareModuleEfd::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -2316,7 +2631,7 @@ bool HardwareModuleEfd::Nodes::has_data() const
 
 bool HardwareModuleEfd::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -2353,7 +2668,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::get_child_by_name(const std::s
     {
         auto c = std::make_shared<HardwareModuleEfd::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -2365,7 +2680,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2396,16 +2711,16 @@ HardwareModuleEfd::Nodes::Node::Node()
     node_name{YType::str, "node-name"},
     enable{YType::empty, "enable"},
     mode{YType::enumeration, "mode"}
-    	,
+        ,
     vlan_priority_mask(nullptr) // presence node
-	,ip_precedence(nullptr) // presence node
-	,vlan_cos(nullptr) // presence node
-	,ip_priority_mask(nullptr) // presence node
-	,mpls_priority_mask(nullptr) // presence node
-	,mpls_exp(nullptr) // presence node
+    , ip_precedence(nullptr) // presence node
+    , vlan_cos(nullptr) // presence node
+    , ip_priority_mask(nullptr) // presence node
+    , mpls_priority_mask(nullptr) // presence node
+    , mpls_exp(nullptr) // presence node
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModuleEfd::Nodes::Node::~Node()
@@ -2414,6 +2729,7 @@ HardwareModuleEfd::Nodes::Node::~Node()
 
 bool HardwareModuleEfd::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| enable.is_set
 	|| mode.is_set
@@ -2449,7 +2765,8 @@ std::string HardwareModuleEfd::Nodes::Node::get_absolute_path() const
 std::string HardwareModuleEfd::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -2618,7 +2935,7 @@ HardwareModuleEfd::Nodes::Node::VlanPriorityMask::VlanPriorityMask()
     prec7{YType::uint32, "prec7"}
 {
 
-    yang_name = "vlan-priority-mask"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-priority-mask"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 HardwareModuleEfd::Nodes::Node::VlanPriorityMask::~VlanPriorityMask()
@@ -2627,6 +2944,7 @@ HardwareModuleEfd::Nodes::Node::VlanPriorityMask::~VlanPriorityMask()
 
 bool HardwareModuleEfd::Nodes::Node::VlanPriorityMask::has_data() const
 {
+    if (is_presence_container) return true;
     return prec0.is_set
 	|| prec1.is_set
 	|| prec2.is_set
@@ -2787,7 +3105,7 @@ HardwareModuleEfd::Nodes::Node::IpPrecedence::IpPrecedence()
     operation_{YType::enumeration, "operation"}
 {
 
-    yang_name = "ip-precedence"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-precedence"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 HardwareModuleEfd::Nodes::Node::IpPrecedence::~IpPrecedence()
@@ -2796,6 +3114,7 @@ HardwareModuleEfd::Nodes::Node::IpPrecedence::~IpPrecedence()
 
 bool HardwareModuleEfd::Nodes::Node::IpPrecedence::has_data() const
 {
+    if (is_presence_container) return true;
     return precedence.is_set
 	|| operation_.is_set;
 }
@@ -2878,7 +3197,7 @@ HardwareModuleEfd::Nodes::Node::VlanCos::VlanCos()
     operation_{YType::enumeration, "operation"}
 {
 
-    yang_name = "vlan-cos"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-cos"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 HardwareModuleEfd::Nodes::Node::VlanCos::~VlanCos()
@@ -2887,6 +3206,7 @@ HardwareModuleEfd::Nodes::Node::VlanCos::~VlanCos()
 
 bool HardwareModuleEfd::Nodes::Node::VlanCos::has_data() const
 {
+    if (is_presence_container) return true;
     return cos.is_set
 	|| operation_.is_set;
 }
@@ -2975,7 +3295,7 @@ HardwareModuleEfd::Nodes::Node::IpPriorityMask::IpPriorityMask()
     prec7{YType::uint32, "prec7"}
 {
 
-    yang_name = "ip-priority-mask"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-priority-mask"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 HardwareModuleEfd::Nodes::Node::IpPriorityMask::~IpPriorityMask()
@@ -2984,6 +3304,7 @@ HardwareModuleEfd::Nodes::Node::IpPriorityMask::~IpPriorityMask()
 
 bool HardwareModuleEfd::Nodes::Node::IpPriorityMask::has_data() const
 {
+    if (is_presence_container) return true;
     return prec0.is_set
 	|| prec1.is_set
 	|| prec2.is_set
@@ -3150,7 +3471,7 @@ HardwareModuleEfd::Nodes::Node::MplsPriorityMask::MplsPriorityMask()
     prec7{YType::uint32, "prec7"}
 {
 
-    yang_name = "mpls-priority-mask"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-priority-mask"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 HardwareModuleEfd::Nodes::Node::MplsPriorityMask::~MplsPriorityMask()
@@ -3159,6 +3480,7 @@ HardwareModuleEfd::Nodes::Node::MplsPriorityMask::~MplsPriorityMask()
 
 bool HardwareModuleEfd::Nodes::Node::MplsPriorityMask::has_data() const
 {
+    if (is_presence_container) return true;
     return prec0.is_set
 	|| prec1.is_set
 	|| prec2.is_set
@@ -3319,7 +3641,7 @@ HardwareModuleEfd::Nodes::Node::MplsExp::MplsExp()
     operation_{YType::enumeration, "operation"}
 {
 
-    yang_name = "mpls-exp"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-exp"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 HardwareModuleEfd::Nodes::Node::MplsExp::~MplsExp()
@@ -3328,6 +3650,7 @@ HardwareModuleEfd::Nodes::Node::MplsExp::~MplsExp()
 
 bool HardwareModuleEfd::Nodes::Node::MplsExp::has_data() const
 {
+    if (is_presence_container) return true;
     return exp.is_set
 	|| operation_.is_set;
 }
@@ -3404,11 +3727,11 @@ bool HardwareModuleEfd::Nodes::Node::MplsExp::has_leaf_or_child_of_name(const st
     return false;
 }
 
-const Enum::YLeaf Asr9kEfdOperation::less_than {2, "less-than"};
-const Enum::YLeaf Asr9kEfdOperation::greater_than_or_equal {3, "greater-than-or-equal"};
-
 const Enum::YLeaf Asr9kEfdMode::only_outer_encap {0, "only-outer-encap"};
 const Enum::YLeaf Asr9kEfdMode::include_inner_encap {1, "include-inner-encap"};
+
+const Enum::YLeaf Asr9kEfdOperation::less_than {2, "less-than"};
+const Enum::YLeaf Asr9kEfdOperation::greater_than_or_equal {3, "greater-than-or-equal"};
 
 const Enum::YLeaf PrmTcamProfile::profile0 {0, "profile0"};
 const Enum::YLeaf PrmTcamProfile::profile1 {1, "profile1"};

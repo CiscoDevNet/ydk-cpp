@@ -14,14 +14,14 @@ namespace openconfig_lldp {
 Lldp::Lldp()
     :
     config(std::make_shared<Lldp::Config>())
-	,state(std::make_shared<Lldp::State>())
-	,interfaces(std::make_shared<Lldp::Interfaces>())
+    , state(std::make_shared<Lldp::State>())
+    , interfaces(std::make_shared<Lldp::Interfaces>())
 {
     config->parent = this;
     state->parent = this;
     interfaces->parent = this;
 
-    yang_name = "lldp"; yang_parent_name = "openconfig-lldp"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lldp"; yang_parent_name = "openconfig-lldp"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Lldp::~Lldp()
@@ -30,6 +30,7 @@ Lldp::~Lldp()
 
 bool Lldp::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data());
@@ -164,7 +165,7 @@ Lldp::Config::Config()
     chassis_id_type{YType::enumeration, "chassis-id-type"}
 {
 
-    yang_name = "config"; yang_parent_name = "lldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "lldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lldp::Config::~Config()
@@ -173,6 +174,7 @@ Lldp::Config::~Config()
 
 bool Lldp::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : suppress_tlv_advertisement.getYLeafs())
     {
         if(leaf.is_set)
@@ -339,12 +341,12 @@ Lldp::State::State()
     system_description{YType::str, "system-description"},
     chassis_id{YType::str, "chassis-id"},
     chassis_id_type{YType::enumeration, "chassis-id-type"}
-    	,
+        ,
     counters(std::make_shared<Lldp::State::Counters>())
 {
     counters->parent = this;
 
-    yang_name = "state"; yang_parent_name = "lldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "state"; yang_parent_name = "lldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lldp::State::~State()
@@ -353,6 +355,7 @@ Lldp::State::~State()
 
 bool Lldp::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : suppress_tlv_advertisement.getYLeafs())
     {
         if(leaf.is_set)
@@ -539,7 +542,7 @@ Lldp::State::Counters::Counters()
     entries_aged_out{YType::uint64, "entries-aged-out"}
 {
 
-    yang_name = "counters"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "counters"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lldp::State::Counters::~Counters()
@@ -548,6 +551,7 @@ Lldp::State::Counters::~Counters()
 
 bool Lldp::State::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return frame_in.is_set
 	|| frame_out.is_set
 	|| frame_error_in.is_set
@@ -723,9 +727,11 @@ bool Lldp::State::Counters::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 Lldp::Interfaces::Interfaces()
+    :
+    interface(this, {"name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "lldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "lldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lldp::Interfaces::~Interfaces()
@@ -734,7 +740,8 @@ Lldp::Interfaces::~Interfaces()
 
 bool Lldp::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -744,7 +751,7 @@ bool Lldp::Interfaces::has_data() const
 
 bool Lldp::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -781,7 +788,7 @@ std::shared_ptr<Entity> Lldp::Interfaces::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Lldp::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -793,7 +800,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -822,16 +829,16 @@ bool Lldp::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
 Lldp::Interfaces::Interface::Interface()
     :
     name{YType::str, "name"}
-    	,
+        ,
     config(std::make_shared<Lldp::Interfaces::Interface::Config>())
-	,state(std::make_shared<Lldp::Interfaces::Interface::State>())
-	,neighbors(std::make_shared<Lldp::Interfaces::Interface::Neighbors>())
+    , state(std::make_shared<Lldp::Interfaces::Interface::State>())
+    , neighbors(std::make_shared<Lldp::Interfaces::Interface::Neighbors>())
 {
     config->parent = this;
     state->parent = this;
     neighbors->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lldp::Interfaces::Interface::~Interface()
@@ -840,6 +847,7 @@ Lldp::Interfaces::Interface::~Interface()
 
 bool Lldp::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -865,7 +873,8 @@ std::string Lldp::Interfaces::Interface::get_absolute_path() const
 std::string Lldp::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[name='" <<name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -964,7 +973,7 @@ Lldp::Interfaces::Interface::Config::Config()
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "config"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Config::~Config()
@@ -973,6 +982,7 @@ Lldp::Interfaces::Interface::Config::~Config()
 
 bool Lldp::Interfaces::Interface::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| enabled.is_set;
 }
@@ -1053,12 +1063,12 @@ Lldp::Interfaces::Interface::State::State()
     :
     name{YType::str, "name"},
     enabled{YType::boolean, "enabled"}
-    	,
+        ,
     counters(std::make_shared<Lldp::Interfaces::Interface::State::Counters>())
 {
     counters->parent = this;
 
-    yang_name = "state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::State::~State()
@@ -1067,6 +1077,7 @@ Lldp::Interfaces::Interface::State::~State()
 
 bool Lldp::Interfaces::Interface::State::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| enabled.is_set
 	|| (counters !=  nullptr && counters->has_data());
@@ -1171,7 +1182,7 @@ Lldp::Interfaces::Interface::State::Counters::Counters()
     frame_error_out{YType::uint64, "frame-error-out"}
 {
 
-    yang_name = "counters"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::State::Counters::~Counters()
@@ -1180,6 +1191,7 @@ Lldp::Interfaces::Interface::State::Counters::~Counters()
 
 bool Lldp::Interfaces::Interface::State::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return frame_in.is_set
 	|| frame_out.is_set
 	|| frame_error_in.is_set
@@ -1335,9 +1347,11 @@ bool Lldp::Interfaces::Interface::State::Counters::has_leaf_or_child_of_name(con
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbors()
+    :
+    neighbor(this, {"id"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbors"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Neighbors::~Neighbors()
@@ -1346,7 +1360,8 @@ Lldp::Interfaces::Interface::Neighbors::~Neighbors()
 
 bool Lldp::Interfaces::Interface::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -1356,7 +1371,7 @@ bool Lldp::Interfaces::Interface::Neighbors::has_data() const
 
 bool Lldp::Interfaces::Interface::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -1386,7 +1401,7 @@ std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::get_child_by_nam
     {
         auto c = std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -1398,7 +1413,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neig
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1427,18 +1442,18 @@ bool Lldp::Interfaces::Interface::Neighbors::has_leaf_or_child_of_name(const std
 Lldp::Interfaces::Interface::Neighbors::Neighbor::Neighbor()
     :
     id{YType::str, "id"}
-    	,
+        ,
     config(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::Config>())
-	,state(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::State>())
-	,custom_tlvs(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs>())
-	,capabilities(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities>())
+    , state(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::State>())
+    , custom_tlvs(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs>())
+    , capabilities(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities>())
 {
     config->parent = this;
     state->parent = this;
     custom_tlvs->parent = this;
     capabilities->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::~Neighbor()
@@ -1447,6 +1462,7 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::~Neighbor()
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -1467,7 +1483,8 @@ bool Lldp::Interfaces::Interface::Neighbors::Neighbor::has_operation() const
 std::string Lldp::Interfaces::Interface::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[id='" <<id <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -1577,7 +1594,7 @@ bool Lldp::Interfaces::Interface::Neighbors::Neighbor::has_leaf_or_child_of_name
 Lldp::Interfaces::Interface::Neighbors::Neighbor::Config::Config()
 {
 
-    yang_name = "config"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::Config::~Config()
@@ -1586,6 +1603,7 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::Config::~Config()
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -1651,7 +1669,7 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::State::State()
     management_address_type{YType::str, "management-address-type"}
 {
 
-    yang_name = "state"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::State::~State()
@@ -1660,6 +1678,7 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::State::~State()
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::State::has_data() const
 {
+    if (is_presence_container) return true;
     return system_name.is_set
 	|| system_description.is_set
 	|| chassis_id.is_set
@@ -1867,9 +1886,11 @@ bool Lldp::Interfaces::Interface::Neighbors::Neighbor::State::has_leaf_or_child_
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::CustomTlvs()
+    :
+    tlv(this, {"type", "oui", "oui_subtype"})
 {
 
-    yang_name = "custom-tlvs"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "custom-tlvs"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::~CustomTlvs()
@@ -1878,7 +1899,8 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::~CustomTlvs()
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::has_data() const
 {
-    for (std::size_t index=0; index<tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tlv.len(); index++)
     {
         if(tlv[index]->has_data())
             return true;
@@ -1888,7 +1910,7 @@ bool Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::has_data() co
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::has_operation() const
 {
-    for (std::size_t index=0; index<tlv.size(); index++)
+    for (std::size_t index=0; index<tlv.len(); index++)
     {
         if(tlv[index]->has_operation())
             return true;
@@ -1918,7 +1940,7 @@ std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Custom
     {
         auto c = std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv>();
         c->parent = this;
-        tlv.push_back(c);
+        tlv.append(c);
         return c;
     }
 
@@ -1930,7 +1952,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neig
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tlv)
+    for (auto c : tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1961,14 +1983,14 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::Tlv()
     type{YType::str, "type"},
     oui{YType::str, "oui"},
     oui_subtype{YType::str, "oui-subtype"}
-    	,
+        ,
     config(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::Config>())
-	,state(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::State>())
+    , state(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "tlv"; yang_parent_name = "custom-tlvs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tlv"; yang_parent_name = "custom-tlvs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::~Tlv()
@@ -1977,6 +1999,7 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::~Tlv()
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| oui.is_set
 	|| oui_subtype.is_set
@@ -1997,7 +2020,10 @@ bool Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::has_oper
 std::string Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tlv" <<"[type='" <<type <<"']" <<"[oui='" <<oui <<"']" <<"[oui-subtype='" <<oui_subtype <<"']";
+    path_buffer << "tlv";
+    ADD_KEY_TOKEN(type, "type");
+    ADD_KEY_TOKEN(oui, "oui");
+    ADD_KEY_TOKEN(oui_subtype, "oui-subtype");
     return path_buffer.str();
 }
 
@@ -2101,7 +2127,7 @@ bool Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::has_leaf
 Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::Config::Config()
 {
 
-    yang_name = "config"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::Config::~Config()
@@ -2110,6 +2136,7 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::Config::~Conf
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2167,7 +2194,7 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::State::State(
     value_{YType::str, "value"}
 {
 
-    yang_name = "state"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::State::~State()
@@ -2176,6 +2203,7 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::State::~State
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::State::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| oui.is_set
 	|| oui_subtype.is_set
@@ -2279,9 +2307,11 @@ bool Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::State::h
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capabilities()
+    :
+    capability(this, {"name"})
 {
 
-    yang_name = "capabilities"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capabilities"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::~Capabilities()
@@ -2290,7 +2320,8 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::~Capabilities()
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::has_data() const
 {
-    for (std::size_t index=0; index<capability.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<capability.len(); index++)
     {
         if(capability[index]->has_data())
             return true;
@@ -2300,7 +2331,7 @@ bool Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::has_data() 
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::has_operation() const
 {
-    for (std::size_t index=0; index<capability.size(); index++)
+    for (std::size_t index=0; index<capability.len(); index++)
     {
         if(capability[index]->has_operation())
             return true;
@@ -2330,7 +2361,7 @@ std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabi
     {
         auto c = std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability>();
         c->parent = this;
-        capability.push_back(c);
+        capability.append(c);
         return c;
     }
 
@@ -2342,7 +2373,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neig
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : capability)
+    for (auto c : capability.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2371,14 +2402,14 @@ bool Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::has_leaf_or
 Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Capability()
     :
     name{YType::identityref, "name"}
-    	,
+        ,
     config(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Config>())
-	,state(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::State>())
+    , state(std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "capability"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capability"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::~Capability()
@@ -2387,6 +2418,7 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::~Cap
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -2403,7 +2435,8 @@ bool Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability:
 std::string Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "capability" <<"[name='" <<name <<"']";
+    path_buffer << "capability";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2485,7 +2518,7 @@ bool Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability:
 Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Config::Config()
 {
 
-    yang_name = "config"; yang_parent_name = "capability"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "capability"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Config::~Config()
@@ -2494,6 +2527,7 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Conf
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2549,7 +2583,7 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Stat
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "state"; yang_parent_name = "capability"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "capability"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::State::~State()
@@ -2558,6 +2592,7 @@ Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Stat
 
 bool Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::State::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| enabled.is_set;
 }

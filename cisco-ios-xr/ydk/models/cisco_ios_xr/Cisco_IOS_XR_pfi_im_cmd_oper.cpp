@@ -14,11 +14,11 @@ namespace Cisco_IOS_XR_pfi_im_cmd_oper {
 Interfaces::Interfaces()
     :
     interface_xr(std::make_shared<Interfaces::InterfaceXr>())
-	,node_type_sets(std::make_shared<Interfaces::NodeTypeSets>())
-	,interface_briefs(std::make_shared<Interfaces::InterfaceBriefs>())
-	,inventory_summary(std::make_shared<Interfaces::InventorySummary>())
-	,interfaces(std::make_shared<Interfaces::Interfaces_>())
-	,interface_summary(std::make_shared<Interfaces::InterfaceSummary>())
+    , node_type_sets(std::make_shared<Interfaces::NodeTypeSets>())
+    , interface_briefs(std::make_shared<Interfaces::InterfaceBriefs>())
+    , inventory_summary(std::make_shared<Interfaces::InventorySummary>())
+    , interfaces(std::make_shared<Interfaces::Interfaces_>())
+    , interface_summary(std::make_shared<Interfaces::InterfaceSummary>())
 {
     interface_xr->parent = this;
     node_type_sets->parent = this;
@@ -27,7 +27,7 @@ Interfaces::Interfaces()
     interfaces->parent = this;
     interface_summary->parent = this;
 
-    yang_name = "interfaces"; yang_parent_name = "Cisco-IOS-XR-pfi-im-cmd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "Cisco-IOS-XR-pfi-im-cmd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Interfaces::~Interfaces()
@@ -36,6 +36,7 @@ Interfaces::~Interfaces()
 
 bool Interfaces::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface_xr !=  nullptr && interface_xr->has_data())
 	|| (node_type_sets !=  nullptr && node_type_sets->has_data())
 	|| (interface_briefs !=  nullptr && interface_briefs->has_data())
@@ -208,9 +209,11 @@ bool Interfaces::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Interfaces::InterfaceXr::InterfaceXr()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interface-xr"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-xr"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::InterfaceXr::~InterfaceXr()
@@ -219,7 +222,8 @@ Interfaces::InterfaceXr::~InterfaceXr()
 
 bool Interfaces::InterfaceXr::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -229,7 +233,7 @@ bool Interfaces::InterfaceXr::has_data() const
 
 bool Interfaces::InterfaceXr::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -266,7 +270,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -278,7 +282,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -339,19 +343,18 @@ Interfaces::InterfaceXr::Interface::Interface()
     transport_mode{YType::enumeration, "transport-mode"},
     fast_shutdown{YType::boolean, "fast-shutdown"},
     if_index{YType::uint32, "if-index"}
-    	,
+        ,
     dampening_information(std::make_shared<Interfaces::InterfaceXr::Interface::DampeningInformation>())
-	,mac_address(std::make_shared<Interfaces::InterfaceXr::Interface::MacAddress>())
-	,burned_in_address(std::make_shared<Interfaces::InterfaceXr::Interface::BurnedInAddress>())
-	,carrier_delay(std::make_shared<Interfaces::InterfaceXr::Interface::CarrierDelay>())
-	,arp_information(std::make_shared<Interfaces::InterfaceXr::Interface::ArpInformation>())
-	,ip_information(std::make_shared<Interfaces::InterfaceXr::Interface::IpInformation>())
-	,encapsulation_information(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation>())
-	,interface_type_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation>())
-	,data_rates(std::make_shared<Interfaces::InterfaceXr::Interface::DataRates>())
-	,interface_statistics(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceStatistics>())
-	,l2_interface_statistics(std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics>())
-	,nv_optical(std::make_shared<Interfaces::InterfaceXr::Interface::NvOptical>())
+    , mac_address(std::make_shared<Interfaces::InterfaceXr::Interface::MacAddress>())
+    , burned_in_address(std::make_shared<Interfaces::InterfaceXr::Interface::BurnedInAddress>())
+    , carrier_delay(std::make_shared<Interfaces::InterfaceXr::Interface::CarrierDelay>())
+    , arp_information(std::make_shared<Interfaces::InterfaceXr::Interface::ArpInformation>())
+    , ip_information(std::make_shared<Interfaces::InterfaceXr::Interface::IpInformation>())
+    , encapsulation_information(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation>())
+    , interface_type_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation>())
+    , data_rates(std::make_shared<Interfaces::InterfaceXr::Interface::DataRates>())
+    , interface_statistics(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceStatistics>())
+    , l2_interface_statistics(std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics>())
 {
     dampening_information->parent = this;
     mac_address->parent = this;
@@ -364,9 +367,8 @@ Interfaces::InterfaceXr::Interface::Interface()
     data_rates->parent = this;
     interface_statistics->parent = this;
     l2_interface_statistics->parent = this;
-    nv_optical->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interface-xr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interface-xr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::InterfaceXr::Interface::~Interface()
@@ -375,6 +377,7 @@ Interfaces::InterfaceXr::Interface::~Interface()
 
 bool Interfaces::InterfaceXr::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_handle.is_set
 	|| interface_type.is_set
@@ -418,8 +421,7 @@ bool Interfaces::InterfaceXr::Interface::has_data() const
 	|| (interface_type_information !=  nullptr && interface_type_information->has_data())
 	|| (data_rates !=  nullptr && data_rates->has_data())
 	|| (interface_statistics !=  nullptr && interface_statistics->has_data())
-	|| (l2_interface_statistics !=  nullptr && l2_interface_statistics->has_data())
-	|| (nv_optical !=  nullptr && nv_optical->has_data());
+	|| (l2_interface_statistics !=  nullptr && l2_interface_statistics->has_data());
 }
 
 bool Interfaces::InterfaceXr::Interface::has_operation() const
@@ -468,8 +470,7 @@ bool Interfaces::InterfaceXr::Interface::has_operation() const
 	|| (interface_type_information !=  nullptr && interface_type_information->has_operation())
 	|| (data_rates !=  nullptr && data_rates->has_operation())
 	|| (interface_statistics !=  nullptr && interface_statistics->has_operation())
-	|| (l2_interface_statistics !=  nullptr && l2_interface_statistics->has_operation())
-	|| (nv_optical !=  nullptr && nv_optical->has_operation());
+	|| (l2_interface_statistics !=  nullptr && l2_interface_statistics->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::get_absolute_path() const
@@ -482,7 +483,8 @@ std::string Interfaces::InterfaceXr::Interface::get_absolute_path() const
 std::string Interfaces::InterfaceXr::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -629,15 +631,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::get_child_by_name(co
         return l2_interface_statistics;
     }
 
-    if(child_yang_name == "nv-optical")
-    {
-        if(nv_optical == nullptr)
-        {
-            nv_optical = std::make_shared<Interfaces::InterfaceXr::Interface::NvOptical>();
-        }
-        return nv_optical;
-    }
-
     return nullptr;
 }
 
@@ -698,11 +691,6 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     if(l2_interface_statistics != nullptr)
     {
         children["l2-interface-statistics"] = l2_interface_statistics;
-    }
-
-    if(nv_optical != nullptr)
-    {
-        children["nv-optical"] = nv_optical;
     }
 
     return children;
@@ -1048,7 +1036,7 @@ void Interfaces::InterfaceXr::Interface::set_filter(const std::string & value_pa
 
 bool Interfaces::InterfaceXr::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dampening-information" || name == "mac-address" || name == "burned-in-address" || name == "carrier-delay" || name == "arp-information" || name == "ip-information" || name == "encapsulation-information" || name == "interface-type-information" || name == "data-rates" || name == "interface-statistics" || name == "l2-interface-statistics" || name == "nv-optical" || name == "interface-name" || name == "interface-handle" || name == "interface-type" || name == "hardware-type-string" || name == "state" || name == "line-state" || name == "encapsulation" || name == "encapsulation-type-string" || name == "mtu" || name == "is-l2-transport-enabled" || name == "state-transition-count" || name == "last-state-transition-time" || name == "is-dampening-enabled" || name == "speed" || name == "crc-length" || name == "is-scramble-enabled" || name == "duplexity" || name == "media-type" || name == "link-type" || name == "in-flow-control" || name == "out-flow-control" || name == "bandwidth" || name == "max-bandwidth" || name == "keepalive" || name == "is-l2-looped" || name == "parent-interface-name" || name == "loopback-configuration" || name == "description" || name == "is-maintenance-enabled" || name == "is-data-inverted" || name == "transport-mode" || name == "fast-shutdown" || name == "if-index")
+    if(name == "dampening-information" || name == "mac-address" || name == "burned-in-address" || name == "carrier-delay" || name == "arp-information" || name == "ip-information" || name == "encapsulation-information" || name == "interface-type-information" || name == "data-rates" || name == "interface-statistics" || name == "l2-interface-statistics" || name == "interface-name" || name == "interface-handle" || name == "interface-type" || name == "hardware-type-string" || name == "state" || name == "line-state" || name == "encapsulation" || name == "encapsulation-type-string" || name == "mtu" || name == "is-l2-transport-enabled" || name == "state-transition-count" || name == "last-state-transition-time" || name == "is-dampening-enabled" || name == "speed" || name == "crc-length" || name == "is-scramble-enabled" || name == "duplexity" || name == "media-type" || name == "link-type" || name == "in-flow-control" || name == "out-flow-control" || name == "bandwidth" || name == "max-bandwidth" || name == "keepalive" || name == "is-l2-looped" || name == "parent-interface-name" || name == "loopback-configuration" || name == "description" || name == "is-maintenance-enabled" || name == "is-data-inverted" || name == "transport-mode" || name == "fast-shutdown" || name == "if-index")
         return true;
     return false;
 }
@@ -1065,7 +1053,7 @@ Interfaces::InterfaceXr::Interface::DampeningInformation::DampeningInformation()
     restart_penalty{YType::uint32, "restart-penalty"}
 {
 
-    yang_name = "dampening-information"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dampening-information"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::DampeningInformation::~DampeningInformation()
@@ -1074,6 +1062,7 @@ Interfaces::InterfaceXr::Interface::DampeningInformation::~DampeningInformation(
 
 bool Interfaces::InterfaceXr::Interface::DampeningInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return penalty.is_set
 	|| is_suppressed_enabled.is_set
 	|| seconds_remaining.is_set
@@ -1233,7 +1222,7 @@ Interfaces::InterfaceXr::Interface::MacAddress::MacAddress()
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::MacAddress::~MacAddress()
@@ -1242,6 +1231,7 @@ Interfaces::InterfaceXr::Interface::MacAddress::~MacAddress()
 
 bool Interfaces::InterfaceXr::Interface::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -1310,7 +1300,7 @@ Interfaces::InterfaceXr::Interface::BurnedInAddress::BurnedInAddress()
     address{YType::str, "address"}
 {
 
-    yang_name = "burned-in-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "burned-in-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::BurnedInAddress::~BurnedInAddress()
@@ -1319,6 +1309,7 @@ Interfaces::InterfaceXr::Interface::BurnedInAddress::~BurnedInAddress()
 
 bool Interfaces::InterfaceXr::Interface::BurnedInAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -1388,7 +1379,7 @@ Interfaces::InterfaceXr::Interface::CarrierDelay::CarrierDelay()
     carrier_delay_down{YType::uint32, "carrier-delay-down"}
 {
 
-    yang_name = "carrier-delay"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "carrier-delay"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::CarrierDelay::~CarrierDelay()
@@ -1397,6 +1388,7 @@ Interfaces::InterfaceXr::Interface::CarrierDelay::~CarrierDelay()
 
 bool Interfaces::InterfaceXr::Interface::CarrierDelay::has_data() const
 {
+    if (is_presence_container) return true;
     return carrier_delay_up.is_set
 	|| carrier_delay_down.is_set;
 }
@@ -1480,7 +1472,7 @@ Interfaces::InterfaceXr::Interface::ArpInformation::ArpInformation()
     arp_is_learning_disabled{YType::boolean, "arp-is-learning-disabled"}
 {
 
-    yang_name = "arp-information"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp-information"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::ArpInformation::~ArpInformation()
@@ -1489,6 +1481,7 @@ Interfaces::InterfaceXr::Interface::ArpInformation::~ArpInformation()
 
 bool Interfaces::InterfaceXr::Interface::ArpInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return arp_timeout.is_set
 	|| arp_type_name.is_set
 	|| arp_is_learning_disabled.is_set;
@@ -1584,7 +1577,7 @@ Interfaces::InterfaceXr::Interface::IpInformation::IpInformation()
     subnet_mask_length{YType::uint32, "subnet-mask-length"}
 {
 
-    yang_name = "ip-information"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-information"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::IpInformation::~IpInformation()
@@ -1593,6 +1586,7 @@ Interfaces::InterfaceXr::Interface::IpInformation::~IpInformation()
 
 bool Interfaces::InterfaceXr::Interface::IpInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| subnet_mask_length.is_set;
 }
@@ -1672,16 +1666,16 @@ bool Interfaces::InterfaceXr::Interface::IpInformation::has_leaf_or_child_of_nam
 Interfaces::InterfaceXr::Interface::EncapsulationInformation::EncapsulationInformation()
     :
     encapsulation_type{YType::enumeration, "encapsulation-type"}
-    	,
+        ,
     frame_relay_information(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation>())
-	,dot1q_information(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation>())
-	,ppp_information(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation>())
+    , dot1q_information(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation>())
+    , ppp_information(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation>())
 {
     frame_relay_information->parent = this;
     dot1q_information->parent = this;
     ppp_information->parent = this;
 
-    yang_name = "encapsulation-information"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation-information"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::EncapsulationInformation::~EncapsulationInformation()
@@ -1690,6 +1684,7 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::~EncapsulationInfo
 
 bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return encapsulation_type.is_set
 	|| (frame_relay_information !=  nullptr && frame_relay_information->has_data())
 	|| (dot1q_information !=  nullptr && dot1q_information->has_data())
@@ -1737,7 +1732,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
     {
         if(dot1q_information == nullptr)
         {
-            dot1q_information = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation>();
+            dot1q_information = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation>();
         }
         return dot1q_information;
     }
@@ -1819,7 +1814,7 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformat
     update_status_sent{YType::uint32, "update-status-sent"}
 {
 
-    yang_name = "frame-relay-information"; yang_parent_name = "encapsulation-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame-relay-information"; yang_parent_name = "encapsulation-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::~FrameRelayInformation()
@@ -1828,6 +1823,7 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformat
 
 bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return fr_encapsulation_type.is_set
 	|| lmi_type.is_set
 	|| lmidlci.is_set
@@ -2060,38 +2056,39 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInf
     return false;
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::Dot1QInformation()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::Dot1qInformation()
     :
-    encapsulation_details(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails>())
+    encapsulation_details(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails>())
 {
     encapsulation_details->parent = this;
 
-    yang_name = "dot1q-information"; yang_parent_name = "encapsulation-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1q-information"; yang_parent_name = "encapsulation-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::~Dot1QInformation()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::~Dot1qInformation()
 {
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::has_data() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return (encapsulation_details !=  nullptr && encapsulation_details->has_data());
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::has_operation() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::has_operation() const
 {
     return is_set(yfilter)
 	|| (encapsulation_details !=  nullptr && encapsulation_details->has_operation());
 }
 
-std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::get_segment_path() const
+std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1q-information";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2100,13 +2097,13 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "encapsulation-details")
     {
         if(encapsulation_details == nullptr)
         {
-            encapsulation_details = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails>();
+            encapsulation_details = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails>();
         }
         return encapsulation_details;
     }
@@ -2114,7 +2111,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2126,22 +2123,22 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     return children;
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::set_filter(const std::string & value_path, YFilter yfilter)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::has_leaf_or_child_of_name(const std::string & name) const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "encapsulation-details")
         return true;
     return false;
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::EncapsulationDetails()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::EncapsulationDetails()
     :
     vlan_encapsulation{YType::enumeration, "vlan-encapsulation"},
     tag{YType::uint16, "tag"},
@@ -2150,24 +2147,25 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::
     dot1ad_tag{YType::uint16, "dot1ad-tag"},
     dot1ad_native_tag{YType::uint16, "dot1ad-native-tag"},
     dot1ad_outer_tag{YType::uint16, "dot1ad-outer-tag"}
-    	,
-    stack(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack>())
-	,service_instance_details(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails>())
-	,dot1ad_dot1q_stack(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack>())
+        ,
+    stack(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack>())
+    , service_instance_details(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails>())
+    , dot1ad_dot1q_stack(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack>())
 {
     stack->parent = this;
     service_instance_details->parent = this;
     dot1ad_dot1q_stack->parent = this;
 
-    yang_name = "encapsulation-details"; yang_parent_name = "dot1q-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation-details"; yang_parent_name = "dot1q-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::~EncapsulationDetails()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::~EncapsulationDetails()
 {
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::has_data() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_encapsulation.is_set
 	|| tag.is_set
 	|| outer_tag.is_set
@@ -2180,7 +2178,7 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
 	|| (dot1ad_dot1q_stack !=  nullptr && dot1ad_dot1q_stack->has_data());
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::has_operation() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vlan_encapsulation.yfilter)
@@ -2195,14 +2193,14 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
 	|| (dot1ad_dot1q_stack !=  nullptr && dot1ad_dot1q_stack->has_operation());
 }
 
-std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::get_segment_path() const
+std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "encapsulation-details";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2218,13 +2216,13 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stack")
     {
         if(stack == nullptr)
         {
-            stack = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack>();
+            stack = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack>();
         }
         return stack;
     }
@@ -2233,7 +2231,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
     {
         if(service_instance_details == nullptr)
         {
-            service_instance_details = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails>();
+            service_instance_details = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails>();
         }
         return service_instance_details;
     }
@@ -2242,7 +2240,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
     {
         if(dot1ad_dot1q_stack == nullptr)
         {
-            dot1ad_dot1q_stack = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack>();
+            dot1ad_dot1q_stack = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack>();
         }
         return dot1ad_dot1q_stack;
     }
@@ -2250,7 +2248,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2272,7 +2270,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     return children;
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlan-encapsulation")
     {
@@ -2318,7 +2316,7 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::set_filter(const std::string & value_path, YFilter yfilter)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vlan-encapsulation")
     {
@@ -2350,47 +2348,48 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::has_leaf_or_child_of_name(const std::string & name) const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stack" || name == "service-instance-details" || name == "dot1ad-dot1q-stack" || name == "vlan-encapsulation" || name == "tag" || name == "outer-tag" || name == "native-tag" || name == "dot1ad-tag" || name == "dot1ad-native-tag" || name == "dot1ad-outer-tag")
         return true;
     return false;
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::Stack()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::Stack()
     :
     outer_tag{YType::uint16, "outer-tag"},
     second_tag{YType::uint16, "second-tag"}
 {
 
-    yang_name = "stack"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stack"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::~Stack()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::~Stack()
 {
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::has_data() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::has_data() const
 {
+    if (is_presence_container) return true;
     return outer_tag.is_set
 	|| second_tag.is_set;
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::has_operation() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(outer_tag.yfilter)
 	|| ydk::is_set(second_tag.yfilter);
 }
 
-std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::get_segment_path() const
+std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stack";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2401,19 +2400,19 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "outer-tag")
     {
@@ -2429,7 +2428,7 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::set_filter(const std::string & value_path, YFilter yfilter)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "outer-tag")
     {
@@ -2441,14 +2440,14 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::has_leaf_or_child_of_name(const std::string & name) const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "outer-tag" || name == "second-tag")
         return true;
     return false;
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::ServiceInstanceDetails()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::ServiceInstanceDetails()
     :
     payload_ethertype{YType::enumeration, "payload-ethertype"},
     tags_popped{YType::uint16, "tags-popped"},
@@ -2457,26 +2456,29 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::
     is_native_preserving{YType::int32, "is-native-preserving"},
     source_mac_match{YType::str, "source-mac-match"},
     destination_mac_match{YType::str, "destination-mac-match"}
-    	,
-    local_traffic_stack(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack>())
+        ,
+    local_traffic_stack(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack>())
+    , tags_to_match(this, {})
+    , pushe(this, {})
 {
     local_traffic_stack->parent = this;
 
-    yang_name = "service-instance-details"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-instance-details"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::~ServiceInstanceDetails()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::~ServiceInstanceDetails()
 {
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::has_data() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::has_data() const
 {
-    for (std::size_t index=0; index<tags_to_match.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tags_to_match.len(); index++)
     {
         if(tags_to_match[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pushe.size(); index++)
+    for (std::size_t index=0; index<pushe.len(); index++)
     {
         if(pushe[index]->has_data())
             return true;
@@ -2491,14 +2493,14 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
 	|| (local_traffic_stack !=  nullptr && local_traffic_stack->has_data());
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::has_operation() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::has_operation() const
 {
-    for (std::size_t index=0; index<tags_to_match.size(); index++)
+    for (std::size_t index=0; index<tags_to_match.len(); index++)
     {
         if(tags_to_match[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pushe.size(); index++)
+    for (std::size_t index=0; index<pushe.len(); index++)
     {
         if(pushe[index]->has_operation())
             return true;
@@ -2514,14 +2516,14 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
 	|| (local_traffic_stack !=  nullptr && local_traffic_stack->has_operation());
 }
 
-std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::get_segment_path() const
+std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "service-instance-details";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2537,37 +2539,37 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-traffic-stack")
     {
         if(local_traffic_stack == nullptr)
         {
-            local_traffic_stack = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack>();
+            local_traffic_stack = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack>();
         }
         return local_traffic_stack;
     }
 
     if(child_yang_name == "tags-to-match")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch>();
+        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch>();
         c->parent = this;
-        tags_to_match.push_back(c);
+        tags_to_match.append(c);
         return c;
     }
 
     if(child_yang_name == "pushe")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe>();
+        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe>();
         c->parent = this;
-        pushe.push_back(c);
+        pushe.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2577,7 +2579,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     }
 
     count = 0;
-    for (auto const & c : tags_to_match)
+    for (auto c : tags_to_match.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2586,7 +2588,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     }
 
     count = 0;
-    for (auto const & c : pushe)
+    for (auto c : pushe.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2597,7 +2599,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     return children;
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "payload-ethertype")
     {
@@ -2643,7 +2645,7 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::set_filter(const std::string & value_path, YFilter yfilter)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "payload-ethertype")
     {
@@ -2675,26 +2677,29 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::has_leaf_or_child_of_name(const std::string & name) const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local-traffic-stack" || name == "tags-to-match" || name == "pushe" || name == "payload-ethertype" || name == "tags-popped" || name == "is-exact-match" || name == "is-native-vlan" || name == "is-native-preserving" || name == "source-mac-match" || name == "destination-mac-match")
         return true;
     return false;
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficStack()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficStack()
+    :
+    local_traffic_tag(this, {})
 {
 
-    yang_name = "local-traffic-stack"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-traffic-stack"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::~LocalTrafficStack()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::~LocalTrafficStack()
 {
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::has_data() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::has_data() const
 {
-    for (std::size_t index=0; index<local_traffic_tag.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_traffic_tag.len(); index++)
     {
         if(local_traffic_tag[index]->has_data())
             return true;
@@ -2702,9 +2707,9 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     return false;
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::has_operation() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::has_operation() const
 {
-    for (std::size_t index=0; index<local_traffic_tag.size(); index++)
+    for (std::size_t index=0; index<local_traffic_tag.len(); index++)
     {
         if(local_traffic_tag[index]->has_operation())
             return true;
@@ -2712,14 +2717,14 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     return is_set(yfilter);
 }
 
-std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_segment_path() const
+std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local-traffic-stack";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2728,25 +2733,25 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-traffic-tag")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag>();
+        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag>();
         c->parent = this;
-        local_traffic_tag.push_back(c);
+        local_traffic_tag.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_traffic_tag)
+    for (auto c : local_traffic_tag.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2757,55 +2762,56 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     return children;
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::set_filter(const std::string & value_path, YFilter yfilter)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::has_leaf_or_child_of_name(const std::string & name) const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local-traffic-tag")
         return true;
     return false;
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::LocalTrafficTag()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::LocalTrafficTag()
     :
     ethertype{YType::enumeration, "ethertype"},
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "local-traffic-tag"; yang_parent_name = "local-traffic-stack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-traffic-tag"; yang_parent_name = "local-traffic-stack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::~LocalTrafficTag()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::~LocalTrafficTag()
 {
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::has_data() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::has_data() const
 {
+    if (is_presence_container) return true;
     return ethertype.is_set
 	|| vlan_id.is_set;
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::has_operation() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ethertype.yfilter)
 	|| ydk::is_set(vlan_id.yfilter);
 }
 
-std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_segment_path() const
+std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local-traffic-tag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2816,19 +2822,19 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ethertype")
     {
@@ -2844,7 +2850,7 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::set_filter(const std::string & value_path, YFilter yfilter)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ethertype")
     {
@@ -2856,29 +2862,32 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::has_leaf_or_child_of_name(const std::string & name) const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ethertype" || name == "vlan-id")
         return true;
     return false;
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::TagsToMatch()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::TagsToMatch()
     :
     ethertype{YType::enumeration, "ethertype"},
     priority{YType::enumeration, "priority"}
+        ,
+    vlan_range(this, {})
 {
 
-    yang_name = "tags-to-match"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tags-to-match"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::~TagsToMatch()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::~TagsToMatch()
 {
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::has_data() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::has_data() const
 {
-    for (std::size_t index=0; index<vlan_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_range.len(); index++)
     {
         if(vlan_range[index]->has_data())
             return true;
@@ -2887,9 +2896,9 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
 	|| priority.is_set;
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::has_operation() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_range.size(); index++)
+    for (std::size_t index=0; index<vlan_range.len(); index++)
     {
         if(vlan_range[index]->has_operation())
             return true;
@@ -2899,14 +2908,14 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
 	|| ydk::is_set(priority.yfilter);
 }
 
-std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_segment_path() const
+std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tags-to-match";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2917,25 +2926,25 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-range")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange>();
+        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange>();
         c->parent = this;
-        vlan_range.push_back(c);
+        vlan_range.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_range)
+    for (auto c : vlan_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2946,7 +2955,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     return children;
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ethertype")
     {
@@ -2962,7 +2971,7 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::set_filter(const std::string & value_path, YFilter yfilter)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ethertype")
     {
@@ -2974,47 +2983,48 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::has_leaf_or_child_of_name(const std::string & name) const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-range" || name == "ethertype" || name == "priority")
         return true;
     return false;
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::VlanRange()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::VlanRange()
     :
     vlan_id_low{YType::uint16, "vlan-id-low"},
     vlan_id_high{YType::uint16, "vlan-id-high"}
 {
 
-    yang_name = "vlan-range"; yang_parent_name = "tags-to-match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-range"; yang_parent_name = "tags-to-match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::~VlanRange()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::~VlanRange()
 {
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::has_data() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id_low.is_set
 	|| vlan_id_high.is_set;
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::has_operation() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vlan_id_low.yfilter)
 	|| ydk::is_set(vlan_id_high.yfilter);
 }
 
-std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_segment_path() const
+std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3025,19 +3035,19 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlan-id-low")
     {
@@ -3053,7 +3063,7 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vlan-id-low")
     {
@@ -3065,47 +3075,48 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-id-low" || name == "vlan-id-high")
         return true;
     return false;
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::Pushe()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::Pushe()
     :
     ethertype{YType::enumeration, "ethertype"},
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "pushe"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pushe"; yang_parent_name = "service-instance-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::~Pushe()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::~Pushe()
 {
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::has_data() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::has_data() const
 {
+    if (is_presence_container) return true;
     return ethertype.is_set
 	|| vlan_id.is_set;
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::has_operation() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ethertype.yfilter)
 	|| ydk::is_set(vlan_id.yfilter);
 }
 
-std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_segment_path() const
+std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pushe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3116,19 +3127,19 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ethertype")
     {
@@ -3144,7 +3155,7 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::set_filter(const std::string & value_path, YFilter yfilter)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ethertype")
     {
@@ -3156,47 +3167,48 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::has_leaf_or_child_of_name(const std::string & name) const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ethertype" || name == "vlan-id")
         return true;
     return false;
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::Dot1AdDot1QStack()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::Dot1adDot1qStack()
     :
     outer_tag{YType::uint16, "outer-tag"},
     second_tag{YType::uint16, "second-tag"}
 {
 
-    yang_name = "dot1ad-dot1q-stack"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1ad-dot1q-stack"; yang_parent_name = "encapsulation-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::~Dot1AdDot1QStack()
+Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::~Dot1adDot1qStack()
 {
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::has_data() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::has_data() const
 {
+    if (is_presence_container) return true;
     return outer_tag.is_set
 	|| second_tag.is_set;
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::has_operation() const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(outer_tag.yfilter)
 	|| ydk::is_set(second_tag.yfilter);
 }
 
-std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::get_segment_path() const
+std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1ad-dot1q-stack";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3207,19 +3219,19 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "outer-tag")
     {
@@ -3235,7 +3247,7 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::set_filter(const std::string & value_path, YFilter yfilter)
+void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "outer-tag")
     {
@@ -3247,7 +3259,7 @@ void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
     }
 }
 
-bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::has_leaf_or_child_of_name(const std::string & name) const
+bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "outer-tag" || name == "second-tag")
         return true;
@@ -3261,9 +3273,11 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::Pp
     keepalive_period{YType::uint32, "keepalive-period"},
     is_mp_bundle_member{YType::int32, "is-mp-bundle-member"},
     is_multilink_open{YType::int32, "is-multilink-open"}
+        ,
+    ncp_info_array(this, {})
 {
 
-    yang_name = "ppp-information"; yang_parent_name = "encapsulation-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp-information"; yang_parent_name = "encapsulation-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::~PppInformation()
@@ -3272,7 +3286,8 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::~P
 
 bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::has_data() const
 {
-    for (std::size_t index=0; index<ncp_info_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ncp_info_array.len(); index++)
     {
         if(ncp_info_array[index]->has_data())
             return true;
@@ -3286,7 +3301,7 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformatio
 
 bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::has_operation() const
 {
-    for (std::size_t index=0; index<ncp_info_array.size(); index++)
+    for (std::size_t index=0; index<ncp_info_array.len(); index++)
     {
         if(ncp_info_array[index]->has_operation())
             return true;
@@ -3326,7 +3341,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray>();
         c->parent = this;
-        ncp_info_array.push_back(c);
+        ncp_info_array.append(c);
         return c;
     }
 
@@ -3338,7 +3353,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ncp_info_array)
+    for (auto c : ncp_info_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3420,7 +3435,7 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::Nc
     ncp_identifier{YType::enumeration, "ncp-identifier"}
 {
 
-    yang_name = "ncp-info-array"; yang_parent_name = "ppp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ncp-info-array"; yang_parent_name = "ppp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::~NcpInfoArray()
@@ -3429,6 +3444,7 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::Nc
 
 bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::has_data() const
 {
+    if (is_presence_container) return true;
     return ncp_state.is_set
 	|| ncp_identifier.is_set;
 }
@@ -3508,16 +3524,16 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformatio
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::InterfaceTypeInformation()
     :
     interface_type_info{YType::enumeration, "interface-type-info"}
-    	,
+        ,
     srp_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation>())
-	,tunnel_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation>())
-	,bundle_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation>())
-	,serial_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation>())
-	,sonet_pos_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation>())
-	,tunnel_gre_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation>())
-	,pseudowire_head_end_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation>())
-	,cem_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation>())
-	,gcc_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation>())
+    , tunnel_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation>())
+    , bundle_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation>())
+    , serial_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation>())
+    , sonet_pos_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation>())
+    , tunnel_gre_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation>())
+    , pseudowire_head_end_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation>())
+    , cem_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation>())
+    , gcc_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation>())
 {
     srp_information->parent = this;
     tunnel_information->parent = this;
@@ -3529,7 +3545,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::InterfaceTypeInfor
     cem_information->parent = this;
     gcc_information->parent = this;
 
-    yang_name = "interface-type-information"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-type-information"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::~InterfaceTypeInformation()
@@ -3538,6 +3554,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::~InterfaceTypeInfo
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_type_info.is_set
 	|| (srp_information !=  nullptr && srp_information->has_data())
 	|| (tunnel_information !=  nullptr && tunnel_information->has_data())
@@ -3748,12 +3765,12 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::has_leaf_or_c
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation()
     :
     srp_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_>())
-	,srp_statistics(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics>())
+    , srp_statistics(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics>())
 {
     srp_information->parent = this;
     srp_statistics->parent = this;
 
-    yang_name = "srp-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srp-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::~SrpInformation()
@@ -3762,6 +3779,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::~S
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return (srp_information !=  nullptr && srp_information->has_data())
 	|| (srp_statistics !=  nullptr && srp_statistics->has_data());
 }
@@ -3847,16 +3865,16 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrpInformation_()
     :
     ips_info(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo>())
-	,topology_info(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo>())
-	,srr_info(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo>())
-	,rate_limit_info(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo>())
+    , topology_info(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo>())
+    , srr_info(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo>())
+    , rate_limit_info(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo>())
 {
     ips_info->parent = this;
     topology_info->parent = this;
     srr_info->parent = this;
     rate_limit_info->parent = this;
 
-    yang_name = "srp-information"; yang_parent_name = "srp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srp-information"; yang_parent_name = "srp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::~SrpInformation_()
@@ -3865,6 +3883,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::has_data() const
 {
+    if (is_presence_container) return true;
     return (ips_info !=  nullptr && ips_info->has_data())
 	|| (topology_info !=  nullptr && topology_info->has_data())
 	|| (srr_info !=  nullptr && srr_info->has_data())
@@ -3982,9 +4001,11 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::IpsInfo()
     :
     is_admin_down{YType::int32, "is-admin-down"}
+        ,
+    local_information(this, {})
 {
 
-    yang_name = "ips-info"; yang_parent_name = "srp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ips-info"; yang_parent_name = "srp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::~IpsInfo()
@@ -3993,7 +4014,8 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::has_data() const
 {
-    for (std::size_t index=0; index<local_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_information.len(); index++)
     {
         if(local_information[index]->has_data())
             return true;
@@ -4003,7 +4025,7 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::has_operation() const
 {
-    for (std::size_t index=0; index<local_information.size(); index++)
+    for (std::size_t index=0; index<local_information.len(); index++)
     {
         if(local_information[index]->has_operation())
             return true;
@@ -4035,7 +4057,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation>();
         c->parent = this;
-        local_information.push_back(c);
+        local_information.append(c);
         return c;
     }
 
@@ -4047,7 +4069,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_information)
+    for (auto c : local_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4088,14 +4110,14 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     mac_address{YType::str, "mac-address"},
     is_inter_card_bus_enabled{YType::int32, "is-inter-card-bus-enabled"},
     wtr_timer_period{YType::uint32, "wtr-timer-period"}
-    	,
+        ,
     side_a(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA>())
-	,side_b(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB>())
+    , side_b(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB>())
 {
     side_a->parent = this;
     side_b->parent = this;
 
-    yang_name = "local-information"; yang_parent_name = "ips-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-information"; yang_parent_name = "ips-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::~LocalInformation()
@@ -4104,6 +4126,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| is_inter_card_bus_enabled.is_set
 	|| wtr_timer_period.is_set
@@ -4245,9 +4268,11 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     tx_ttl{YType::uint32, "tx-ttl"},
     tx_packet_test{YType::int32, "tx-packet-test"},
     delay_keep_alive_trigger{YType::uint32, "delay-keep-alive-trigger"}
+        ,
+    asserted_failure(this, {})
 {
 
-    yang_name = "side-a"; yang_parent_name = "local-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "side-a"; yang_parent_name = "local-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::~SideA()
@@ -4256,7 +4281,8 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::has_data() const
 {
-    for (std::size_t index=0; index<asserted_failure.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asserted_failure.len(); index++)
     {
         if(asserted_failure[index]->has_data())
             return true;
@@ -4283,7 +4309,7 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::has_operation() const
 {
-    for (std::size_t index=0; index<asserted_failure.size(); index++)
+    for (std::size_t index=0; index<asserted_failure.len(); index++)
     {
         if(asserted_failure[index]->has_operation())
             return true;
@@ -4349,7 +4375,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure>();
         c->parent = this;
-        asserted_failure.push_back(c);
+        asserted_failure.append(c);
         return c;
     }
 
@@ -4361,7 +4387,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asserted_failure)
+    for (auto c : asserted_failure.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4577,7 +4603,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     debounced_delay{YType::uint32, "debounced-delay"}
 {
 
-    yang_name = "asserted-failure"; yang_parent_name = "side-a"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asserted-failure"; yang_parent_name = "side-a"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::~AssertedFailure()
@@ -4586,6 +4612,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| reported_state.is_set
 	|| debounced_state.is_set
@@ -4734,9 +4761,11 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     tx_ttl{YType::uint32, "tx-ttl"},
     tx_packet_test{YType::int32, "tx-packet-test"},
     delay_keep_alive_trigger{YType::uint32, "delay-keep-alive-trigger"}
+        ,
+    asserted_failure(this, {})
 {
 
-    yang_name = "side-b"; yang_parent_name = "local-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "side-b"; yang_parent_name = "local-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::~SideB()
@@ -4745,7 +4774,8 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::has_data() const
 {
-    for (std::size_t index=0; index<asserted_failure.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asserted_failure.len(); index++)
     {
         if(asserted_failure[index]->has_data())
             return true;
@@ -4772,7 +4802,7 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::has_operation() const
 {
-    for (std::size_t index=0; index<asserted_failure.size(); index++)
+    for (std::size_t index=0; index<asserted_failure.len(); index++)
     {
         if(asserted_failure[index]->has_operation())
             return true;
@@ -4838,7 +4868,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure>();
         c->parent = this;
-        asserted_failure.push_back(c);
+        asserted_failure.append(c);
         return c;
     }
 
@@ -4850,7 +4880,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asserted_failure)
+    for (auto c : asserted_failure.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5066,7 +5096,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     debounced_delay{YType::uint32, "debounced-delay"}
 {
 
-    yang_name = "asserted-failure"; yang_parent_name = "side-b"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asserted-failure"; yang_parent_name = "side-b"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::~AssertedFailure()
@@ -5075,6 +5105,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| reported_state.is_set
 	|| debounced_state.is_set
@@ -5206,9 +5237,11 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::TopologyInfo()
     :
     is_admin_down{YType::int32, "is-admin-down"}
+        ,
+    local_information(this, {})
 {
 
-    yang_name = "topology-info"; yang_parent_name = "srp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology-info"; yang_parent_name = "srp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::~TopologyInfo()
@@ -5217,7 +5250,8 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::has_data() const
 {
-    for (std::size_t index=0; index<local_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_information.len(); index++)
     {
         if(local_information[index]->has_data())
             return true;
@@ -5227,7 +5261,7 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::has_operation() const
 {
-    for (std::size_t index=0; index<local_information.size(); index++)
+    for (std::size_t index=0; index<local_information.len(); index++)
     {
         if(local_information[index]->has_operation())
             return true;
@@ -5259,7 +5293,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation>();
         c->parent = this;
-        local_information.push_back(c);
+        local_information.append(c);
         return c;
     }
 
@@ -5271,7 +5305,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_information)
+    for (auto c : local_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5314,9 +5348,11 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     time_since_last_topology_packet_received{YType::uint32, "time-since-last-topology-packet-received"},
     time_since_last_topology_change{YType::uint32, "time-since-last-topology-change"},
     number_of_nodes_on_ring{YType::uint16, "number-of-nodes-on-ring"}
+        ,
+    ring_node(this, {})
 {
 
-    yang_name = "local-information"; yang_parent_name = "topology-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-information"; yang_parent_name = "topology-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::~LocalInformation()
@@ -5325,7 +5361,8 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::has_data() const
 {
-    for (std::size_t index=0; index<ring_node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ring_node.len(); index++)
     {
         if(ring_node[index]->has_data())
             return true;
@@ -5339,7 +5376,7 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::has_operation() const
 {
-    for (std::size_t index=0; index<ring_node.size(); index++)
+    for (std::size_t index=0; index<ring_node.len(); index++)
     {
         if(ring_node[index]->has_operation())
             return true;
@@ -5379,7 +5416,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode>();
         c->parent = this;
-        ring_node.push_back(c);
+        ring_node.append(c);
         return c;
     }
 
@@ -5391,7 +5428,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ring_node)
+    for (auto c : ring_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5477,7 +5514,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     node_name{YType::str, "node-name"}
 {
 
-    yang_name = "ring-node"; yang_parent_name = "local-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ring-node"; yang_parent_name = "local-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::~RingNode()
@@ -5486,6 +5523,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::has_data() const
 {
+    if (is_presence_container) return true;
     return hop_count.is_set
 	|| mac_address.is_set
 	|| ipv4_address.is_set
@@ -5618,9 +5656,11 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     :
     is_admin_down{YType::int32, "is-admin-down"},
     is_srr_enabled{YType::int32, "is-srr-enabled"}
+        ,
+    srr_detailed_info(this, {})
 {
 
-    yang_name = "srr-info"; yang_parent_name = "srp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srr-info"; yang_parent_name = "srp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::~SrrInfo()
@@ -5629,7 +5669,8 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::has_data() const
 {
-    for (std::size_t index=0; index<srr_detailed_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<srr_detailed_info.len(); index++)
     {
         if(srr_detailed_info[index]->has_data())
             return true;
@@ -5640,7 +5681,7 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::has_operation() const
 {
-    for (std::size_t index=0; index<srr_detailed_info.size(); index++)
+    for (std::size_t index=0; index<srr_detailed_info.len(); index++)
     {
         if(srr_detailed_info[index]->has_operation())
             return true;
@@ -5674,7 +5715,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo>();
         c->parent = this;
-        srr_detailed_info.push_back(c);
+        srr_detailed_info.append(c);
         return c;
     }
 
@@ -5686,7 +5727,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : srr_detailed_info)
+    for (auto c : srr_detailed_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5750,9 +5791,12 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     wtr_time{YType::uint32, "wtr-time"},
     wtr_timer_remaining_outer_ring{YType::uint32, "wtr-timer-remaining-outer-ring"},
     wtr_timer_remaining_inner_ring{YType::uint32, "wtr-timer-remaining-inner-ring"}
+        ,
+    nodes_on_ring(this, {})
+    , nodes_not_on_ring(this, {})
 {
 
-    yang_name = "srr-detailed-info"; yang_parent_name = "srr-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srr-detailed-info"; yang_parent_name = "srr-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::~SrrDetailedInfo()
@@ -5761,12 +5805,13 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::has_data() const
 {
-    for (std::size_t index=0; index<nodes_on_ring.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nodes_on_ring.len(); index++)
     {
         if(nodes_on_ring[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<nodes_not_on_ring.size(); index++)
+    for (std::size_t index=0; index<nodes_not_on_ring.len(); index++)
     {
         if(nodes_not_on_ring[index]->has_data())
             return true;
@@ -5791,12 +5836,12 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::has_operation() const
 {
-    for (std::size_t index=0; index<nodes_on_ring.size(); index++)
+    for (std::size_t index=0; index<nodes_on_ring.len(); index++)
     {
         if(nodes_on_ring[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<nodes_not_on_ring.size(); index++)
+    for (std::size_t index=0; index<nodes_not_on_ring.len(); index++)
     {
         if(nodes_not_on_ring[index]->has_operation())
             return true;
@@ -5858,7 +5903,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing>();
         c->parent = this;
-        nodes_on_ring.push_back(c);
+        nodes_on_ring.append(c);
         return c;
     }
 
@@ -5866,7 +5911,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing>();
         c->parent = this;
-        nodes_not_on_ring.push_back(c);
+        nodes_not_on_ring.append(c);
         return c;
     }
 
@@ -5878,7 +5923,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nodes_on_ring)
+    for (auto c : nodes_on_ring.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5887,7 +5932,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     }
 
     count = 0;
-    for (auto const & c : nodes_not_on_ring)
+    for (auto c : nodes_not_on_ring.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6084,7 +6129,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     last_announce_received_time{YType::uint32, "last-announce-received-time"}
 {
 
-    yang_name = "nodes-on-ring"; yang_parent_name = "srr-detailed-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nodes-on-ring"; yang_parent_name = "srr-detailed-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::~NodesOnRing()
@@ -6093,6 +6138,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| srr_entry_exits.is_set
 	|| mac_address.is_set
@@ -6245,7 +6291,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     last_announce_received_time{YType::uint32, "last-announce-received-time"}
 {
 
-    yang_name = "nodes-not-on-ring"; yang_parent_name = "srr-detailed-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nodes-not-on-ring"; yang_parent_name = "srr-detailed-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::~NodesNotOnRing()
@@ -6254,6 +6300,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| srr_entry_exits.is_set
 	|| mac_address.is_set
@@ -6398,9 +6445,11 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitInfo()
     :
     is_admin_down{YType::int32, "is-admin-down"}
+        ,
+    rate_limit_detailed_info(this, {})
 {
 
-    yang_name = "rate-limit-info"; yang_parent_name = "srp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate-limit-info"; yang_parent_name = "srp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::~RateLimitInfo()
@@ -6409,7 +6458,8 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::has_data() const
 {
-    for (std::size_t index=0; index<rate_limit_detailed_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rate_limit_detailed_info.len(); index++)
     {
         if(rate_limit_detailed_info[index]->has_data())
             return true;
@@ -6419,7 +6469,7 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::has_operation() const
 {
-    for (std::size_t index=0; index<rate_limit_detailed_info.size(); index++)
+    for (std::size_t index=0; index<rate_limit_detailed_info.len(); index++)
     {
         if(rate_limit_detailed_info[index]->has_operation())
             return true;
@@ -6451,7 +6501,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo>();
         c->parent = this;
-        rate_limit_detailed_info.push_back(c);
+        rate_limit_detailed_info.append(c);
         return c;
     }
 
@@ -6463,7 +6513,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rate_limit_detailed_info)
+    for (auto c : rate_limit_detailed_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6504,7 +6554,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     min_priority_value{YType::uint16, "min-priority-value"}
 {
 
-    yang_name = "rate-limit-detailed-info"; yang_parent_name = "rate-limit-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate-limit-detailed-info"; yang_parent_name = "rate-limit-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::~RateLimitDetailedInfo()
@@ -6513,6 +6563,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return min_priority_value.is_set;
 }
 
@@ -6579,18 +6630,18 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SrpStatistics()
     :
     data_rate_interval{YType::uint32, "data-rate-interval"}
-    	,
+        ,
     side_a_data_rate(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate>())
-	,side_b_data_rate(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate>())
-	,side_a_errors(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors>())
-	,side_b_errors(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors>())
+    , side_b_data_rate(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate>())
+    , side_a_errors(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors>())
+    , side_b_errors(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors>())
 {
     side_a_data_rate->parent = this;
     side_b_data_rate->parent = this;
     side_a_errors->parent = this;
     side_b_errors->parent = this;
 
-    yang_name = "srp-statistics"; yang_parent_name = "srp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srp-statistics"; yang_parent_name = "srp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::~SrpStatistics()
@@ -6599,6 +6650,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return data_rate_interval.is_set
 	|| (side_a_data_rate !=  nullptr && side_a_data_rate->has_data())
 	|| (side_b_data_rate !=  nullptr && side_b_data_rate->has_data())
@@ -6734,7 +6786,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     packet_rate_received{YType::uint32, "packet-rate-received"}
 {
 
-    yang_name = "side-a-data-rate"; yang_parent_name = "srp-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "side-a-data-rate"; yang_parent_name = "srp-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::~SideADataRate()
@@ -6743,6 +6795,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::has_data() const
 {
+    if (is_presence_container) return true;
     return bit_rate_sent.is_set
 	|| packet_rate_sent.is_set
 	|| bit_rate_received.is_set
@@ -6853,7 +6906,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     packet_rate_received{YType::uint32, "packet-rate-received"}
 {
 
-    yang_name = "side-b-data-rate"; yang_parent_name = "srp-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "side-b-data-rate"; yang_parent_name = "srp-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::~SideBDataRate()
@@ -6862,6 +6915,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::has_data() const
 {
+    if (is_presence_container) return true;
     return bit_rate_sent.is_set
 	|| packet_rate_sent.is_set
 	|| bit_rate_received.is_set
@@ -6977,7 +7031,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     framer_aborts_received{YType::uint32, "framer-aborts-received"}
 {
 
-    yang_name = "side-a-errors"; yang_parent_name = "srp-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "side-a-errors"; yang_parent_name = "srp-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::~SideAErrors()
@@ -6986,6 +7040,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::has_data() const
 {
+    if (is_presence_container) return true;
     return error_packets_received.is_set
 	|| crc_errors.is_set
 	|| input_insufficient_resource_events.is_set
@@ -7166,7 +7221,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
     framer_aborts_received{YType::uint32, "framer-aborts-received"}
 {
 
-    yang_name = "side-b-errors"; yang_parent_name = "srp-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "side-b-errors"; yang_parent_name = "srp-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::~SideBErrors()
@@ -7175,6 +7230,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::has_data() const
 {
+    if (is_presence_container) return true;
     return error_packets_received.is_set
 	|| crc_errors.is_set
 	|| input_insufficient_resource_events.is_set
@@ -7352,7 +7408,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation:
     ttl{YType::uint32, "ttl"}
 {
 
-    yang_name = "tunnel-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::~TunnelInformation()
@@ -7361,6 +7417,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation:
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return source_name.is_set
 	|| source_ipv4_address.is_set
 	|| destination_ipv4_address.is_set
@@ -7490,9 +7547,11 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInforma
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::BundleInformation()
+    :
+    member(this, {})
 {
 
-    yang_name = "bundle-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::~BundleInformation()
@@ -7501,7 +7560,8 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::has_data() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_data())
             return true;
@@ -7511,7 +7571,7 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInforma
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::has_operation() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_operation())
             return true;
@@ -7541,7 +7601,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member>();
         c->parent = this;
-        member.push_back(c);
+        member.append(c);
         return c;
     }
 
@@ -7553,7 +7613,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : member)
+    for (auto c : member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7591,18 +7651,18 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
     member_name{YType::str, "member-name"}
-    	,
+        ,
     counters(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters>())
-	,link_data(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData>())
-	,member_mux_data(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData>())
-	,mac_address(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress>())
+    , link_data(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData>())
+    , member_mux_data(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData>())
+    , mac_address(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress>())
 {
     counters->parent = this;
     link_data->parent = this;
     member_mux_data->parent = this;
     mac_address->parent = this;
 
-    yang_name = "member"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::~Member()
@@ -7611,6 +7671,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| port_priority.is_set
 	|| port_number.is_set
@@ -7870,7 +7931,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
     last_cleared_nsec{YType::uint32, "last-cleared-nsec"}
 {
 
-    yang_name = "counters"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::~Counters()
@@ -7879,6 +7940,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return lacpd_us_received.is_set
 	|| lacpd_us_transmitted.is_set
 	|| marker_packets_received.is_set
@@ -8091,7 +8153,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
     partner_port_state{YType::uint8, "partner-port-state"}
 {
 
-    yang_name = "link-data"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-data"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::~LinkData()
@@ -8100,6 +8162,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set
 	|| actor_system_priority.is_set
 	|| actor_system_mac_address.is_set
@@ -8352,12 +8415,12 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
     member_mux_state_reason{YType::enumeration, "member-mux-state-reason"},
     member_state{YType::enumeration, "member-state"},
     mux_state_reason{YType::enumeration, "mux-state-reason"}
-    	,
+        ,
     member_mux_state_reason_data(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData>())
 {
     member_mux_state_reason_data->parent = this;
 
-    yang_name = "member-mux-data"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-mux-data"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::~MemberMuxData()
@@ -8366,6 +8429,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::has_data() const
 {
+    if (is_presence_container) return true;
     return mux_state.is_set
 	|| error.is_set
 	|| member_mux_state_reason.is_set
@@ -8503,7 +8567,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
     severity{YType::enumeration, "severity"}
 {
 
-    yang_name = "member-mux-state-reason-data"; yang_parent_name = "member-mux-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-mux-state-reason-data"; yang_parent_name = "member-mux-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::~MemberMuxStateReasonData()
@@ -8512,6 +8576,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::has_data() const
 {
+    if (is_presence_container) return true;
     return reason_type.is_set
 	|| severity.is_set;
 }
@@ -8593,7 +8658,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::~MacAddress()
@@ -8602,6 +8667,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -8670,7 +8736,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation:
     timeslots{YType::str, "timeslots"}
 {
 
-    yang_name = "serial-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "serial-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::~SerialInformation()
@@ -8679,6 +8745,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation:
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return timeslots.is_set;
 }
 
@@ -8747,7 +8814,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformatio
     aps_state{YType::enumeration, "aps-state"}
 {
 
-    yang_name = "sonet-pos-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet-pos-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::~SonetPosInformation()
@@ -8756,6 +8823,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformatio
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return aps_state.is_set;
 }
 
@@ -8833,14 +8901,14 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformati
     keepalive_state{YType::enumeration, "keepalive-state"},
     df_bit_state{YType::enumeration, "df-bit-state"},
     key_bit_state{YType::enumeration, "key-bit-state"}
-    	,
+        ,
     source_ip_address(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress>())
-	,destination_ip_address(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress>())
+    , destination_ip_address(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress>())
 {
     source_ip_address->parent = this;
     destination_ip_address->parent = this;
 
-    yang_name = "tunnel-gre-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-gre-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::~TunnelGreInformation()
@@ -8849,6 +8917,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformati
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return source_name.is_set
 	|| destination_ip_address_length.is_set
 	|| tunnel_tos.is_set
@@ -9094,7 +9163,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformati
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "source-ip-address"; yang_parent_name = "tunnel-gre-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-ip-address"; yang_parent_name = "tunnel-gre-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::~SourceIpAddress()
@@ -9103,6 +9172,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformati
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -9199,7 +9269,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformati
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "destination-ip-address"; yang_parent_name = "tunnel-gre-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-ip-address"; yang_parent_name = "tunnel-gre-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::~DestinationIpAddress()
@@ -9208,6 +9278,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformati
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -9304,7 +9375,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndI
     internal_label{YType::uint32, "internal-label"}
 {
 
-    yang_name = "pseudowire-head-end-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pseudowire-head-end-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::~PseudowireHeadEndInformation()
@@ -9313,6 +9384,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndI
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_list_name.is_set
 	|| l2_overhead.is_set
 	|| internal_label.is_set;
@@ -9410,7 +9482,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::Ce
     framing{YType::int32, "framing"}
 {
 
-    yang_name = "cem-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cem-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::~CemInformation()
@@ -9419,6 +9491,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::~C
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return timeslots.is_set
 	|| payload.is_set
 	|| dejitter_buffer.is_set
@@ -9527,7 +9600,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::Gc
     sec_state{YType::enumeration, "sec-state"}
 {
 
-    yang_name = "gcc-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "gcc-information"; yang_parent_name = "interface-type-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::~GccInformation()
@@ -9536,6 +9609,7 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::~G
 
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return derived_mode.is_set
 	|| sec_state.is_set;
 }
@@ -9629,7 +9703,7 @@ Interfaces::InterfaceXr::Interface::DataRates::DataRates()
     reliability{YType::uint8, "reliability"}
 {
 
-    yang_name = "data-rates"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-rates"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::DataRates::~DataRates()
@@ -9638,6 +9712,7 @@ Interfaces::InterfaceXr::Interface::DataRates::~DataRates()
 
 bool Interfaces::InterfaceXr::Interface::DataRates::has_data() const
 {
+    if (is_presence_container) return true;
     return input_data_rate.is_set
 	|| input_packet_rate.is_set
 	|| output_data_rate.is_set
@@ -9860,14 +9935,14 @@ bool Interfaces::InterfaceXr::Interface::DataRates::has_leaf_or_child_of_name(co
 Interfaces::InterfaceXr::Interface::InterfaceStatistics::InterfaceStatistics()
     :
     stats_type{YType::enumeration, "stats-type"}
-    	,
+        ,
     full_interface_stats(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats>())
-	,basic_interface_stats(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats>())
+    , basic_interface_stats(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats>())
 {
     full_interface_stats->parent = this;
     basic_interface_stats->parent = this;
 
-    yang_name = "interface-statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceStatistics::~InterfaceStatistics()
@@ -9876,6 +9951,7 @@ Interfaces::InterfaceXr::Interface::InterfaceStatistics::~InterfaceStatistics()
 
 bool Interfaces::InterfaceXr::Interface::InterfaceStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return stats_type.is_set
 	|| (full_interface_stats !=  nullptr && full_interface_stats->has_data())
 	|| (basic_interface_stats !=  nullptr && basic_interface_stats->has_data());
@@ -10011,7 +10087,7 @@ Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::Ful
     seconds_since_packet_sent{YType::uint32, "seconds-since-packet-sent"}
 {
 
-    yang_name = "full-interface-stats"; yang_parent_name = "interface-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "full-interface-stats"; yang_parent_name = "interface-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::~FullInterfaceStats()
@@ -10020,6 +10096,7 @@ Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::~Fu
 
 bool Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::has_data() const
 {
+    if (is_presence_container) return true;
     return packets_received.is_set
 	|| bytes_received.is_set
 	|| packets_sent.is_set
@@ -10558,7 +10635,7 @@ Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::Ba
     seconds_since_packet_sent{YType::uint32, "seconds-since-packet-sent"}
 {
 
-    yang_name = "basic-interface-stats"; yang_parent_name = "interface-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-interface-stats"; yang_parent_name = "interface-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::~BasicInterfaceStats()
@@ -10567,6 +10644,7 @@ Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::~B
 
 bool Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::has_data() const
 {
+    if (is_presence_container) return true;
     return packets_received.is_set
 	|| bytes_received.is_set
 	|| packets_sent.is_set
@@ -10829,12 +10907,14 @@ Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::L2InterfaceStatistics
     :
     stats_type{YType::uint32, "stats-type"},
     contents{YType::enumeration, "contents"}
-    	,
+        ,
     stats_id(std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId>())
+    , block_array(this, {})
+    , element_array(this, {})
 {
     stats_id->parent = this;
 
-    yang_name = "l2-interface-statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2-interface-statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::~L2InterfaceStatistics()
@@ -10843,12 +10923,13 @@ Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::~L2InterfaceStatistic
 
 bool Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::has_data() const
 {
-    for (std::size_t index=0; index<block_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<block_array.len(); index++)
     {
         if(block_array[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<element_array.size(); index++)
+    for (std::size_t index=0; index<element_array.len(); index++)
     {
         if(element_array[index]->has_data())
             return true;
@@ -10860,12 +10941,12 @@ bool Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::has_data() const
 
 bool Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<block_array.size(); index++)
+    for (std::size_t index=0; index<block_array.len(); index++)
     {
         if(block_array[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<element_array.size(); index++)
+    for (std::size_t index=0; index<element_array.len(); index++)
     {
         if(element_array[index]->has_operation())
             return true;
@@ -10909,7 +10990,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray>();
         c->parent = this;
-        block_array.push_back(c);
+        block_array.append(c);
         return c;
     }
 
@@ -10917,7 +10998,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray>();
         c->parent = this;
-        element_array.push_back(c);
+        element_array.append(c);
         return c;
     }
 
@@ -10934,7 +11015,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     }
 
     count = 0;
-    for (auto const & c : block_array)
+    for (auto c : block_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10943,7 +11024,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     }
 
     count = 0;
-    for (auto const & c : element_array)
+    for (auto c : element_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10999,7 +11080,7 @@ Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::StatsId()
     id{YType::uint32, "id"}
 {
 
-    yang_name = "stats-id"; yang_parent_name = "l2-interface-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats-id"; yang_parent_name = "l2-interface-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::~StatsId()
@@ -11008,6 +11089,7 @@ Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::~StatsId()
 
 bool Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::has_data() const
 {
+    if (is_presence_container) return true;
     return id_type.is_set
 	|| unused.is_set
 	|| interface_handle.is_set
@@ -11143,7 +11225,7 @@ Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::BlockArra
     data{YType::str, "data"}
 {
 
-    yang_name = "block-array"; yang_parent_name = "l2-interface-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block-array"; yang_parent_name = "l2-interface-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::~BlockArray()
@@ -11152,6 +11234,7 @@ Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::~BlockArr
 
 bool Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| count.is_set
 	|| data.is_set;
@@ -11244,9 +11327,11 @@ bool Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::has_
 Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::ElementArray()
     :
     key{YType::str, "key"}
+        ,
+    block_array(this, {})
 {
 
-    yang_name = "element-array"; yang_parent_name = "l2-interface-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "element-array"; yang_parent_name = "l2-interface-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::~ElementArray()
@@ -11255,7 +11340,8 @@ Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::~Elemen
 
 bool Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::has_data() const
 {
-    for (std::size_t index=0; index<block_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<block_array.len(); index++)
     {
         if(block_array[index]->has_data())
             return true;
@@ -11265,7 +11351,7 @@ bool Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::ha
 
 bool Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::has_operation() const
 {
-    for (std::size_t index=0; index<block_array.size(); index++)
+    for (std::size_t index=0; index<block_array.len(); index++)
     {
         if(block_array[index]->has_operation())
             return true;
@@ -11297,7 +11383,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
     {
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray>();
         c->parent = this;
-        block_array.push_back(c);
+        block_array.append(c);
         return c;
     }
 
@@ -11309,7 +11395,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : block_array)
+    for (auto c : block_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11352,7 +11438,7 @@ Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockAr
     data{YType::str, "data"}
 {
 
-    yang_name = "block-array"; yang_parent_name = "element-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block-array"; yang_parent_name = "element-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::~BlockArray()
@@ -11361,6 +11447,7 @@ Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockAr
 
 bool Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| count.is_set
 	|| data.is_set;
@@ -11450,87 +11537,12 @@ bool Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::Bl
     return false;
 }
 
-Interfaces::InterfaceXr::Interface::NvOptical::NvOptical()
-    :
-    controller{YType::str, "controller"}
-{
-
-    yang_name = "nv-optical"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Interfaces::InterfaceXr::Interface::NvOptical::~NvOptical()
-{
-}
-
-bool Interfaces::InterfaceXr::Interface::NvOptical::has_data() const
-{
-    return controller.is_set;
-}
-
-bool Interfaces::InterfaceXr::Interface::NvOptical::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(controller.yfilter);
-}
-
-std::string Interfaces::InterfaceXr::Interface::NvOptical::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nv-optical";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interface::NvOptical::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (controller.is_set || is_set(controller.yfilter)) leaf_name_data.push_back(controller.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::NvOptical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::NvOptical::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Interfaces::InterfaceXr::Interface::NvOptical::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "controller")
-    {
-        controller = value;
-        controller.value_namespace = name_space;
-        controller.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Interfaces::InterfaceXr::Interface::NvOptical::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "controller")
-    {
-        controller.yfilter = yfilter;
-    }
-}
-
-bool Interfaces::InterfaceXr::Interface::NvOptical::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "controller")
-        return true;
-    return false;
-}
-
 Interfaces::NodeTypeSets::NodeTypeSets()
+    :
+    node_type_set(this, {})
 {
 
-    yang_name = "node-type-sets"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-type-sets"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::NodeTypeSets::~NodeTypeSets()
@@ -11539,7 +11551,8 @@ Interfaces::NodeTypeSets::~NodeTypeSets()
 
 bool Interfaces::NodeTypeSets::has_data() const
 {
-    for (std::size_t index=0; index<node_type_set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_type_set.len(); index++)
     {
         if(node_type_set[index]->has_data())
             return true;
@@ -11549,7 +11562,7 @@ bool Interfaces::NodeTypeSets::has_data() const
 
 bool Interfaces::NodeTypeSets::has_operation() const
 {
-    for (std::size_t index=0; index<node_type_set.size(); index++)
+    for (std::size_t index=0; index<node_type_set.len(); index++)
     {
         if(node_type_set[index]->has_operation())
             return true;
@@ -11586,7 +11599,7 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet>();
         c->parent = this;
-        node_type_set.push_back(c);
+        node_type_set.append(c);
         return c;
     }
 
@@ -11598,7 +11611,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_type_set)
+    for (auto c : node_type_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11628,12 +11641,12 @@ Interfaces::NodeTypeSets::NodeTypeSet::NodeTypeSet()
     :
     node_name{YType::str, "node-name"},
     type_set_name{YType::enumeration, "type-set-name"}
-    	,
+        ,
     interface_summary(std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary>())
 {
     interface_summary->parent = this;
 
-    yang_name = "node-type-set"; yang_parent_name = "node-type-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-type-set"; yang_parent_name = "node-type-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::NodeTypeSets::NodeTypeSet::~NodeTypeSet()
@@ -11642,6 +11655,7 @@ Interfaces::NodeTypeSets::NodeTypeSet::~NodeTypeSet()
 
 bool Interfaces::NodeTypeSets::NodeTypeSet::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| type_set_name.is_set
 	|| (interface_summary !=  nullptr && interface_summary->has_data());
@@ -11744,10 +11758,11 @@ bool Interfaces::NodeTypeSets::NodeTypeSet::has_leaf_or_child_of_name(const std:
 Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceSummary()
     :
     interface_counts(std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts>())
+    , interface_type(this, {})
 {
     interface_counts->parent = this;
 
-    yang_name = "interface-summary"; yang_parent_name = "node-type-set"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-summary"; yang_parent_name = "node-type-set"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::~InterfaceSummary()
@@ -11756,7 +11771,8 @@ Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::~InterfaceSummary()
 
 bool Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::has_data() const
 {
-    for (std::size_t index=0; index<interface_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_type.len(); index++)
     {
         if(interface_type[index]->has_data())
             return true;
@@ -11766,7 +11782,7 @@ bool Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::has_data() const
 
 bool Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::has_operation() const
 {
-    for (std::size_t index=0; index<interface_type.size(); index++)
+    for (std::size_t index=0; index<interface_type.len(); index++)
     {
         if(interface_type[index]->has_operation())
             return true;
@@ -11813,7 +11829,7 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary:
     {
         auto c = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType>();
         c->parent = this;
-        interface_type.push_back(c);
+        interface_type.append(c);
         return c;
     }
 
@@ -11830,7 +11846,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTyp
     }
 
     count = 0;
-    for (auto const & c : interface_type)
+    for (auto c : interface_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11864,7 +11880,7 @@ Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::Interf
     admin_down_interface_count{YType::uint32, "admin-down-interface-count"}
 {
 
-    yang_name = "interface-counts"; yang_parent_name = "interface-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-counts"; yang_parent_name = "interface-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::~InterfaceCounts()
@@ -11873,6 +11889,7 @@ Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::~Inter
 
 bool Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_count.is_set
 	|| up_interface_count.is_set
 	|| down_interface_count.is_set
@@ -11986,12 +12003,12 @@ Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::Interfac
     :
     interface_type_name{YType::str, "interface-type-name"},
     interface_type_description{YType::str, "interface-type-description"}
-    	,
+        ,
     interface_counts(std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts>())
 {
     interface_counts->parent = this;
 
-    yang_name = "interface-type"; yang_parent_name = "interface-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-type"; yang_parent_name = "interface-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::~InterfaceType()
@@ -12000,6 +12017,7 @@ Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::~Interfa
 
 bool Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_type_name.is_set
 	|| interface_type_description.is_set
 	|| (interface_counts !=  nullptr && interface_counts->has_data());
@@ -12107,7 +12125,7 @@ Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::Interfac
     admin_down_interface_count{YType::uint32, "admin-down-interface-count"}
 {
 
-    yang_name = "interface-counts"; yang_parent_name = "interface-type"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-counts"; yang_parent_name = "interface-type"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::~InterfaceCounts()
@@ -12116,6 +12134,7 @@ Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::Interfac
 
 bool Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_count.is_set
 	|| up_interface_count.is_set
 	|| down_interface_count.is_set
@@ -12226,9 +12245,11 @@ bool Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::Int
 }
 
 Interfaces::InterfaceBriefs::InterfaceBriefs()
+    :
+    interface_brief(this, {"interface_name"})
 {
 
-    yang_name = "interface-briefs"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-briefs"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::InterfaceBriefs::~InterfaceBriefs()
@@ -12237,7 +12258,8 @@ Interfaces::InterfaceBriefs::~InterfaceBriefs()
 
 bool Interfaces::InterfaceBriefs::has_data() const
 {
-    for (std::size_t index=0; index<interface_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_brief.len(); index++)
     {
         if(interface_brief[index]->has_data())
             return true;
@@ -12247,7 +12269,7 @@ bool Interfaces::InterfaceBriefs::has_data() const
 
 bool Interfaces::InterfaceBriefs::has_operation() const
 {
-    for (std::size_t index=0; index<interface_brief.size(); index++)
+    for (std::size_t index=0; index<interface_brief.len(); index++)
     {
         if(interface_brief[index]->has_operation())
             return true;
@@ -12284,7 +12306,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceBriefs::get_child_by_name(const std
     {
         auto c = std::make_shared<Interfaces::InterfaceBriefs::InterfaceBrief>();
         c->parent = this;
-        interface_brief.push_back(c);
+        interface_brief.append(c);
         return c;
     }
 
@@ -12296,7 +12318,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceBriefs::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_brief)
+    for (auto c : interface_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12340,7 +12362,7 @@ Interfaces::InterfaceBriefs::InterfaceBrief::InterfaceBrief()
     bandwidth{YType::uint32, "bandwidth"}
 {
 
-    yang_name = "interface-brief"; yang_parent_name = "interface-briefs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-brief"; yang_parent_name = "interface-briefs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::InterfaceBriefs::InterfaceBrief::~InterfaceBrief()
@@ -12349,6 +12371,7 @@ Interfaces::InterfaceBriefs::InterfaceBrief::~InterfaceBrief()
 
 bool Interfaces::InterfaceBriefs::InterfaceBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface.is_set
 	|| parent_interface.is_set
@@ -12394,7 +12417,8 @@ std::string Interfaces::InterfaceBriefs::InterfaceBrief::get_absolute_path() con
 std::string Interfaces::InterfaceBriefs::InterfaceBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-brief" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-brief";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -12591,10 +12615,11 @@ bool Interfaces::InterfaceBriefs::InterfaceBrief::has_leaf_or_child_of_name(cons
 Interfaces::InventorySummary::InventorySummary()
     :
     interface_counts(std::make_shared<Interfaces::InventorySummary::InterfaceCounts>())
+    , interface_type(this, {})
 {
     interface_counts->parent = this;
 
-    yang_name = "inventory-summary"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inventory-summary"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::InventorySummary::~InventorySummary()
@@ -12603,7 +12628,8 @@ Interfaces::InventorySummary::~InventorySummary()
 
 bool Interfaces::InventorySummary::has_data() const
 {
-    for (std::size_t index=0; index<interface_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_type.len(); index++)
     {
         if(interface_type[index]->has_data())
             return true;
@@ -12613,7 +12639,7 @@ bool Interfaces::InventorySummary::has_data() const
 
 bool Interfaces::InventorySummary::has_operation() const
 {
-    for (std::size_t index=0; index<interface_type.size(); index++)
+    for (std::size_t index=0; index<interface_type.len(); index++)
     {
         if(interface_type[index]->has_operation())
             return true;
@@ -12660,7 +12686,7 @@ std::shared_ptr<Entity> Interfaces::InventorySummary::get_child_by_name(const st
     {
         auto c = std::make_shared<Interfaces::InventorySummary::InterfaceType>();
         c->parent = this;
-        interface_type.push_back(c);
+        interface_type.append(c);
         return c;
     }
 
@@ -12677,7 +12703,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::get
     }
 
     count = 0;
-    for (auto const & c : interface_type)
+    for (auto c : interface_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12711,7 +12737,7 @@ Interfaces::InventorySummary::InterfaceCounts::InterfaceCounts()
     admin_down_interface_count{YType::uint32, "admin-down-interface-count"}
 {
 
-    yang_name = "interface-counts"; yang_parent_name = "inventory-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-counts"; yang_parent_name = "inventory-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::InventorySummary::InterfaceCounts::~InterfaceCounts()
@@ -12720,6 +12746,7 @@ Interfaces::InventorySummary::InterfaceCounts::~InterfaceCounts()
 
 bool Interfaces::InventorySummary::InterfaceCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_count.is_set
 	|| up_interface_count.is_set
 	|| down_interface_count.is_set
@@ -12833,12 +12860,12 @@ Interfaces::InventorySummary::InterfaceType::InterfaceType()
     :
     interface_type_name{YType::str, "interface-type-name"},
     interface_type_description{YType::str, "interface-type-description"}
-    	,
+        ,
     interface_counts(std::make_shared<Interfaces::InventorySummary::InterfaceType::InterfaceCounts>())
 {
     interface_counts->parent = this;
 
-    yang_name = "interface-type"; yang_parent_name = "inventory-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-type"; yang_parent_name = "inventory-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::InventorySummary::InterfaceType::~InterfaceType()
@@ -12847,6 +12874,7 @@ Interfaces::InventorySummary::InterfaceType::~InterfaceType()
 
 bool Interfaces::InventorySummary::InterfaceType::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_type_name.is_set
 	|| interface_type_description.is_set
 	|| (interface_counts !=  nullptr && interface_counts->has_data());
@@ -12954,7 +12982,7 @@ Interfaces::InventorySummary::InterfaceType::InterfaceCounts::InterfaceCounts()
     admin_down_interface_count{YType::uint32, "admin-down-interface-count"}
 {
 
-    yang_name = "interface-counts"; yang_parent_name = "interface-type"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-counts"; yang_parent_name = "interface-type"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::InventorySummary::InterfaceType::InterfaceCounts::~InterfaceCounts()
@@ -12963,6 +12991,7 @@ Interfaces::InventorySummary::InterfaceType::InterfaceCounts::~InterfaceCounts()
 
 bool Interfaces::InventorySummary::InterfaceType::InterfaceCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_count.is_set
 	|| up_interface_count.is_set
 	|| down_interface_count.is_set
@@ -13073,9 +13102,11 @@ bool Interfaces::InventorySummary::InterfaceType::InterfaceCounts::has_leaf_or_c
 }
 
 Interfaces::Interfaces_::Interfaces_()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::Interfaces_::~Interfaces_()
@@ -13084,7 +13115,8 @@ Interfaces::Interfaces_::~Interfaces_()
 
 bool Interfaces::Interfaces_::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -13094,7 +13126,7 @@ bool Interfaces::Interfaces_::has_data() const
 
 bool Interfaces::Interfaces_::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -13131,7 +13163,7 @@ std::shared_ptr<Entity> Interfaces::Interfaces_::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Interfaces::Interfaces_::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -13143,7 +13175,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interfaces_::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13178,7 +13210,7 @@ Interfaces::Interfaces_::Interface::Interface()
     description{YType::str, "description"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::Interfaces_::Interface::~Interface()
@@ -13187,6 +13219,7 @@ Interfaces::Interfaces_::Interface::~Interface()
 
 bool Interfaces::Interfaces_::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface.is_set
 	|| state.is_set
@@ -13214,7 +13247,8 @@ std::string Interfaces::Interfaces_::Interface::get_absolute_path() const
 std::string Interfaces::Interfaces_::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -13312,10 +13346,11 @@ bool Interfaces::Interfaces_::Interface::has_leaf_or_child_of_name(const std::st
 Interfaces::InterfaceSummary::InterfaceSummary()
     :
     interface_counts(std::make_shared<Interfaces::InterfaceSummary::InterfaceCounts>())
+    , interface_type(this, {})
 {
     interface_counts->parent = this;
 
-    yang_name = "interface-summary"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-summary"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::InterfaceSummary::~InterfaceSummary()
@@ -13324,7 +13359,8 @@ Interfaces::InterfaceSummary::~InterfaceSummary()
 
 bool Interfaces::InterfaceSummary::has_data() const
 {
-    for (std::size_t index=0; index<interface_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_type.len(); index++)
     {
         if(interface_type[index]->has_data())
             return true;
@@ -13334,7 +13370,7 @@ bool Interfaces::InterfaceSummary::has_data() const
 
 bool Interfaces::InterfaceSummary::has_operation() const
 {
-    for (std::size_t index=0; index<interface_type.size(); index++)
+    for (std::size_t index=0; index<interface_type.len(); index++)
     {
         if(interface_type[index]->has_operation())
             return true;
@@ -13381,7 +13417,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceSummary::get_child_by_name(const st
     {
         auto c = std::make_shared<Interfaces::InterfaceSummary::InterfaceType>();
         c->parent = this;
-        interface_type.push_back(c);
+        interface_type.append(c);
         return c;
     }
 
@@ -13398,7 +13434,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::get
     }
 
     count = 0;
-    for (auto const & c : interface_type)
+    for (auto c : interface_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13432,7 +13468,7 @@ Interfaces::InterfaceSummary::InterfaceCounts::InterfaceCounts()
     admin_down_interface_count{YType::uint32, "admin-down-interface-count"}
 {
 
-    yang_name = "interface-counts"; yang_parent_name = "interface-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-counts"; yang_parent_name = "interface-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::InterfaceSummary::InterfaceCounts::~InterfaceCounts()
@@ -13441,6 +13477,7 @@ Interfaces::InterfaceSummary::InterfaceCounts::~InterfaceCounts()
 
 bool Interfaces::InterfaceSummary::InterfaceCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_count.is_set
 	|| up_interface_count.is_set
 	|| down_interface_count.is_set
@@ -13554,12 +13591,12 @@ Interfaces::InterfaceSummary::InterfaceType::InterfaceType()
     :
     interface_type_name{YType::str, "interface-type-name"},
     interface_type_description{YType::str, "interface-type-description"}
-    	,
+        ,
     interface_counts(std::make_shared<Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts>())
 {
     interface_counts->parent = this;
 
-    yang_name = "interface-type"; yang_parent_name = "interface-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-type"; yang_parent_name = "interface-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::InterfaceSummary::InterfaceType::~InterfaceType()
@@ -13568,6 +13605,7 @@ Interfaces::InterfaceSummary::InterfaceType::~InterfaceType()
 
 bool Interfaces::InterfaceSummary::InterfaceType::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_type_name.is_set
 	|| interface_type_description.is_set
 	|| (interface_counts !=  nullptr && interface_counts->has_data());
@@ -13675,7 +13713,7 @@ Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::InterfaceCounts()
     admin_down_interface_count{YType::uint32, "admin-down-interface-count"}
 {
 
-    yang_name = "interface-counts"; yang_parent_name = "interface-type"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-counts"; yang_parent_name = "interface-type"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::~InterfaceCounts()
@@ -13684,6 +13722,7 @@ Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::~InterfaceCounts()
 
 bool Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_count.is_set
 	|| up_interface_count.is_set
 	|| down_interface_count.is_set
@@ -13793,27 +13832,54 @@ bool Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::has_leaf_or_c
     return false;
 }
 
-const Enum::YLeaf InterfaceTypeSet::hardware_interfaces {0, "hardware-interfaces"};
+const Enum::YLeaf ImCmdIntfTypeEnum::srp {0, "srp"};
+const Enum::YLeaf ImCmdIntfTypeEnum::tunnel {1, "tunnel"};
+const Enum::YLeaf ImCmdIntfTypeEnum::bundle {2, "bundle"};
+const Enum::YLeaf ImCmdIntfTypeEnum::serial {3, "serial"};
+const Enum::YLeaf ImCmdIntfTypeEnum::sonet_pos {4, "sonet-pos"};
+const Enum::YLeaf ImCmdIntfTypeEnum::tunnel_gre {5, "tunnel-gre"};
+const Enum::YLeaf ImCmdIntfTypeEnum::pseudowire_head_end {6, "pseudowire-head-end"};
+const Enum::YLeaf ImCmdIntfTypeEnum::cem {7, "cem"};
+const Enum::YLeaf ImCmdIntfTypeEnum::gcc {8, "gcc"};
 
-const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
-const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
-const Enum::YLeaf ImStateEnum::im_state_down {2, "im-state-down"};
-const Enum::YLeaf ImStateEnum::im_state_up {3, "im-state-up"};
-const Enum::YLeaf ImStateEnum::im_state_shutdown {4, "im-state-shutdown"};
-const Enum::YLeaf ImStateEnum::im_state_err_disable {5, "im-state-err-disable"};
-const Enum::YLeaf ImStateEnum::im_state_down_immediate {6, "im-state-down-immediate"};
-const Enum::YLeaf ImStateEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
-const Enum::YLeaf ImStateEnum::im_state_down_graceful {8, "im-state-down-graceful"};
-const Enum::YLeaf ImStateEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
-const Enum::YLeaf ImStateEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
-const Enum::YLeaf ImStateEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
-const Enum::YLeaf ImStateEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
-const Enum::YLeaf ImStateEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
-const Enum::YLeaf ImStateEnum::im_state_reset {14, "im-state-reset"};
-const Enum::YLeaf ImStateEnum::im_state_operational {15, "im-state-operational"};
-const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-operational"};
-const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
-const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
+const Enum::YLeaf ImCmdStatsEnum::full {1, "full"};
+const Enum::YLeaf ImCmdStatsEnum::basic {2, "basic"};
+
+const Enum::YLeaf SrpMgmtFailureStateEt::idle_failure_state {0, "idle-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::wait_to_restore_failure_state {1, "wait-to-restore-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::manual_switch_failure_state {2, "manual-switch-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::signal_degrade_failure_state {3, "signal-degrade-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::signal_fail_failure_state {4, "signal-fail-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::forced_switch_failure_state {5, "forced-switch-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::shutdown_failure_state {6, "shutdown-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::invalid_failure_state {7, "invalid-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEt::unknown_failure_state {8, "unknown-failure-state"};
+
+const Enum::YLeaf GccDerState::in_service {0, "in-service"};
+const Enum::YLeaf GccDerState::out_of_service {1, "out-of-service"};
+const Enum::YLeaf GccDerState::maintenance {2, "maintenance"};
+const Enum::YLeaf GccDerState::ais {3, "ais"};
+
+const Enum::YLeaf EfpTagEtype::untagged {0, "untagged"};
+const Enum::YLeaf EfpTagEtype::dot1q {33024, "dot1q"};
+const Enum::YLeaf EfpTagEtype::dot1ad {34984, "dot1ad"};
+
+const Enum::YLeaf TunnelGreMode::unknown {0, "unknown"};
+const Enum::YLeaf TunnelGreMode::gr_eo_ipv4 {1, "gr-eo-ipv4"};
+const Enum::YLeaf TunnelGreMode::gr_eo_ipv6 {2, "gr-eo-ipv6"};
+const Enum::YLeaf TunnelGreMode::mgr_eo_ipv4 {3, "mgr-eo-ipv4"};
+const Enum::YLeaf TunnelGreMode::mgr_eo_ipv6 {4, "mgr-eo-ipv6"};
+const Enum::YLeaf TunnelGreMode::ipv4 {5, "ipv4"};
+const Enum::YLeaf TunnelGreMode::ipv6 {6, "ipv6"};
+
+const Enum::YLeaf GccSecState::normal {0, "normal"};
+const Enum::YLeaf GccSecState::maintenance {1, "maintenance"};
+const Enum::YLeaf GccSecState::ais {2, "ais"};
+
+const Enum::YLeaf SrpMgmtIpsWrapState::idle_wrap_state {0, "idle-wrap-state"};
+const Enum::YLeaf SrpMgmtIpsWrapState::wrapped_state {1, "wrapped-state"};
+const Enum::YLeaf SrpMgmtIpsWrapState::locked_out_wrap_state {2, "locked-out-wrap-state"};
+const Enum::YLeaf SrpMgmtIpsWrapState::unknown_wrap_state {3, "unknown-wrap-state"};
 
 const Enum::YLeaf StatsCounter::stats_counter_rate {0, "stats-counter-rate"};
 const Enum::YLeaf StatsCounter::stats_counter_uint32 {1, "stats-counter-uint32"};
@@ -13835,8 +13901,87 @@ const Enum::YLeaf StatsCounter::stats_counter_comp_accounting {16, "stats-counte
 const Enum::YLeaf StatsCounter::stats_counter_flow {17, "stats-counter-flow"};
 const Enum::YLeaf StatsCounter::stats_counter_comp_flow {18, "stats-counter-comp-flow"};
 
+const Enum::YLeaf SonetApsEt::not_configured {0, "not-configured"};
+const Enum::YLeaf SonetApsEt::working_active {1, "working-active"};
+const Enum::YLeaf SonetApsEt::protect_active {2, "protect-active"};
+const Enum::YLeaf SonetApsEt::working_inactive {3, "working-inactive"};
+const Enum::YLeaf SonetApsEt::protect_inactive {4, "protect-inactive"};
+
+const Enum::YLeaf ImAttrDuplex::im_attr_duplex_unknown {0, "im-attr-duplex-unknown"};
+const Enum::YLeaf ImAttrDuplex::im_attr_duplex_half {1, "im-attr-duplex-half"};
+const Enum::YLeaf ImAttrDuplex::im_attr_duplex_full {2, "im-attr-duplex-full"};
+
+const Enum::YLeaf SrpMgmtIpsPathInd::short_path {0, "short-path"};
+const Enum::YLeaf SrpMgmtIpsPathInd::long_path {1, "long-path"};
+const Enum::YLeaf SrpMgmtIpsPathInd::unknown_path {2, "unknown-path"};
+
+const Enum::YLeaf PppFsmState::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
+
+const Enum::YLeaf EfpTagPriority::priority0 {0, "priority0"};
+const Enum::YLeaf EfpTagPriority::priority1 {1, "priority1"};
+const Enum::YLeaf EfpTagPriority::priority2 {2, "priority2"};
+const Enum::YLeaf EfpTagPriority::priority3 {3, "priority3"};
+const Enum::YLeaf EfpTagPriority::priority4 {4, "priority4"};
+const Enum::YLeaf EfpTagPriority::priority5 {5, "priority5"};
+const Enum::YLeaf EfpTagPriority::priority6 {6, "priority6"};
+const Enum::YLeaf EfpTagPriority::priority7 {7, "priority7"};
+const Enum::YLeaf EfpTagPriority::priority_any {8, "priority-any"};
+
+const Enum::YLeaf ImCmdLoopbackEnum::no_loopback {0, "no-loopback"};
+const Enum::YLeaf ImCmdLoopbackEnum::internal_loopback {1, "internal-loopback"};
+const Enum::YLeaf ImCmdLoopbackEnum::external_loopback {2, "external-loopback"};
+const Enum::YLeaf ImCmdLoopbackEnum::line_loopback {3, "line-loopback"};
+
+const Enum::YLeaf ImCmdFrTypeEnum::frame_relay_cisco {0, "frame-relay-cisco"};
+const Enum::YLeaf ImCmdFrTypeEnum::frame_relay_ietf {1, "frame-relay-ietf"};
+
+const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_auto {0, "lmi-type-auto"};
+const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_ansi {1, "lmi-type-ansi"};
+const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_ccitt {2, "lmi-type-ccitt"};
+const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_cisco {3, "lmi-type-cisco"};
+
+const Enum::YLeaf SrpMgmtSrrFailure::idle_srr_failure {0, "idle-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailure::wait_to_restore_srr_failure {1, "wait-to-restore-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailure::signal_fail_srr_failure {2, "signal-fail-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailure::forced_switch_srr_failure {3, "forced-switch-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailure::unknown_srr_failure {4, "unknown-srr-failure"};
+
+const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
+const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
+const Enum::YLeaf ImStateEnum::im_state_down {2, "im-state-down"};
+const Enum::YLeaf ImStateEnum::im_state_up {3, "im-state-up"};
+const Enum::YLeaf ImStateEnum::im_state_shutdown {4, "im-state-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_err_disable {5, "im-state-err-disable"};
+const Enum::YLeaf ImStateEnum::im_state_down_immediate {6, "im-state-down-immediate"};
+const Enum::YLeaf ImStateEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
+const Enum::YLeaf ImStateEnum::im_state_down_graceful {8, "im-state-down-graceful"};
+const Enum::YLeaf ImStateEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
+const Enum::YLeaf ImStateEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
+const Enum::YLeaf ImStateEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
+const Enum::YLeaf ImStateEnum::im_state_reset {14, "im-state-reset"};
+const Enum::YLeaf ImStateEnum::im_state_operational {15, "im-state-operational"};
+const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-operational"};
+const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
+const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
+
 const Enum::YLeaf StatsTypeContents::stats_type_single {100, "stats-type-single"};
 const Enum::YLeaf StatsTypeContents::stats_type_variable {101, "stats-type-variable"};
+
+const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_off {0, "im-attr-flow-control-off"};
+const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_on {1, "im-attr-flow-control-on"};
+const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_not_sup {2, "im-attr-flow-control-not-sup"};
+const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_priority {3, "im-attr-flow-control-priority"};
 
 const Enum::YLeaf StatsId::stats_id_type_unknown {0, "stats-id-type-unknown"};
 const Enum::YLeaf StatsId::stats_id_type_min {1, "stats-id-type-min"};
@@ -13846,87 +13991,19 @@ const Enum::YLeaf StatsId::stats_id_type_other {4, "stats-id-type-other"};
 const Enum::YLeaf StatsId::stats_id_type_feature {5, "stats-id-type-feature"};
 const Enum::YLeaf StatsId::stats_id_type_max {6, "stats-id-type-max"};
 
-const Enum::YLeaf ImCmdStatsEnum::full {1, "full"};
-const Enum::YLeaf ImCmdStatsEnum::basic {2, "basic"};
-
-const Enum::YLeaf GccSecState::normal {0, "normal"};
-const Enum::YLeaf GccSecState::maintainance {1, "maintainance"};
-const Enum::YLeaf GccSecState::ais {2, "ais"};
-
-const Enum::YLeaf GccDerState::in_service {0, "in-service"};
-const Enum::YLeaf GccDerState::out_of_service {1, "out-of-service"};
-const Enum::YLeaf GccDerState::maintainance {2, "maintainance"};
-const Enum::YLeaf GccDerState::ais {3, "ais"};
-
-const Enum::YLeaf TunnelKeyState::absent {0, "absent"};
-const Enum::YLeaf TunnelKeyState::present {1, "present"};
-
-const Enum::YLeaf TunnelKaDfState::disable {0, "disable"};
-const Enum::YLeaf TunnelKaDfState::enable {1, "enable"};
-
-const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_none {0, "tunl-ip-mode-dir-none"};
-const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_decap {1, "tunl-ip-mode-dir-decap"};
-const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_encap {2, "tunl-ip-mode-dir-encap"};
-const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_max {3, "tunl-ip-mode-dir-max"};
-
-const Enum::YLeaf TunnelGreMode::unknown {0, "unknown"};
-const Enum::YLeaf TunnelGreMode::gr_eo_ipv4 {1, "gr-eo-ipv4"};
-const Enum::YLeaf TunnelGreMode::gr_eo_ipv6 {2, "gr-eo-ipv6"};
-const Enum::YLeaf TunnelGreMode::mgr_eo_ipv4 {3, "mgr-eo-ipv4"};
-const Enum::YLeaf TunnelGreMode::mgr_eo_ipv6 {4, "mgr-eo-ipv6"};
-const Enum::YLeaf TunnelGreMode::ipv4 {5, "ipv4"};
-const Enum::YLeaf TunnelGreMode::ipv6 {6, "ipv6"};
-
 const Enum::YLeaf TunlPfiAfId::tunl_pfi_af_id_none {0, "tunl-pfi-af-id-none"};
 const Enum::YLeaf TunlPfiAfId::tunl_pfi_af_id_ipv4 {2, "tunl-pfi-af-id-ipv4"};
 const Enum::YLeaf TunlPfiAfId::tunl_pfi_af_id_ipv6 {10, "tunl-pfi-af-id-ipv6"};
 
-const Enum::YLeaf SonetApsEt::not_configured {0, "not-configured"};
-const Enum::YLeaf SonetApsEt::working_active {1, "working-active"};
-const Enum::YLeaf SonetApsEt::protect_active {2, "protect-active"};
-const Enum::YLeaf SonetApsEt::working_inactive {3, "working-inactive"};
-const Enum::YLeaf SonetApsEt::protect_inactive {4, "protect-inactive"};
+const Enum::YLeaf TunnelKaDfState::disable {0, "disable"};
+const Enum::YLeaf TunnelKaDfState::enable {1, "enable"};
 
 const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_local {0, "bmd-mbr-local"};
 const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_foreign {1, "bmd-mbr-foreign"};
 const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_unknown {2, "bmd-mbr-unknown"};
 
-const Enum::YLeaf BmMuxreason::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_count {19, "bm-mux-reason-count"};
-
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
-
-const Enum::YLeaf BmSeverity::ok {0, "ok"};
-const Enum::YLeaf BmSeverity::information {1, "information"};
-const Enum::YLeaf BmSeverity::misconfiguration {2, "misconfiguration"};
-const Enum::YLeaf BmSeverity::warning {3, "warning"};
-const Enum::YLeaf BmSeverity::error {5, "error"};
-
-const Enum::YLeaf BmStateReasonTarget::member_reason {0, "member-reason"};
-const Enum::YLeaf BmStateReasonTarget::bundle_reason {1, "bundle-reason"};
+const Enum::YLeaf TunnelKeyState::absent {0, "absent"};
+const Enum::YLeaf TunnelKeyState::present {1, "present"};
 
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_unknown {0, "bm-mbr-state-reason-unknown"};
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_unselectable_unknown {1, "bm-mbr-state-reason-unselectable-unknown"};
@@ -14005,36 +14082,19 @@ const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_timer_running {73, "bm-m
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_client_bundle_ctrl {74, "bm-mbr-state-reason-client-bundle-ctrl"};
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_count {75, "bm-mbr-state-reason-count"};
 
-const Enum::YLeaf BmMuxstate::detached {1, "detached"};
-const Enum::YLeaf BmMuxstate::waiting {2, "waiting"};
-const Enum::YLeaf BmMuxstate::attached {3, "attached"};
-const Enum::YLeaf BmMuxstate::collecting {4, "collecting"};
-const Enum::YLeaf BmMuxstate::distributing {5, "distributing"};
-const Enum::YLeaf BmMuxstate::collecting_distributing {6, "collecting-distributing"};
+const Enum::YLeaf BmSeverity::ok {0, "ok"};
+const Enum::YLeaf BmSeverity::information {1, "information"};
+const Enum::YLeaf BmSeverity::misconfiguration {2, "misconfiguration"};
+const Enum::YLeaf BmSeverity::warning {3, "warning"};
+const Enum::YLeaf BmSeverity::error {5, "error"};
 
-const Enum::YLeaf SrpMgmtSrrFailure::idle_srr_failure {0, "idle-srr-failure"};
-const Enum::YLeaf SrpMgmtSrrFailure::wait_to_restore_srr_failure {1, "wait-to-restore-srr-failure"};
-const Enum::YLeaf SrpMgmtSrrFailure::signal_fail_srr_failure {2, "signal-fail-srr-failure"};
-const Enum::YLeaf SrpMgmtSrrFailure::forced_switch_srr_failure {3, "forced-switch-srr-failure"};
-const Enum::YLeaf SrpMgmtSrrFailure::unknown_srr_failure {4, "unknown-srr-failure"};
-
-const Enum::YLeaf SrpMgmtSrrNodeState::idle_srr_state {0, "idle-srr-state"};
-const Enum::YLeaf SrpMgmtSrrNodeState::discovery_srr_state {1, "discovery-srr-state"};
-const Enum::YLeaf SrpMgmtSrrNodeState::unknown_srr_state {2, "unknown-srr-state"};
-
-const Enum::YLeaf SrpMgmtIpsPathInd::short_path {0, "short-path"};
-const Enum::YLeaf SrpMgmtIpsPathInd::long_path {1, "long-path"};
-const Enum::YLeaf SrpMgmtIpsPathInd::unknown_path {2, "unknown-path"};
-
-const Enum::YLeaf SrpMgmtFailureStateEt::idle_failure_state {0, "idle-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::wait_to_restore_failure_state {1, "wait-to-restore-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::manual_switch_failure_state {2, "manual-switch-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::signal_degrade_failure_state {3, "signal-degrade-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::signal_fail_failure_state {4, "signal-fail-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::forced_switch_failure_state {5, "forced-switch-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::shutdown_failure_state {6, "shutdown-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::invalid_failure_state {7, "invalid-failure-state"};
-const Enum::YLeaf SrpMgmtFailureStateEt::unknown_failure_state {8, "unknown-failure-state"};
+const Enum::YLeaf SrpMgmtIpsReq::idle_ips_request {0, "idle-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReq::wait_to_restore_ips_request {1, "wait-to-restore-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReq::manual_switch_ips_request {2, "manual-switch-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReq::signal_degrade_ips_request {3, "signal-degrade-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReq::signal_fail_ips_request {4, "signal-fail-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReq::forced_switch_ips_request {5, "forced-switch-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReq::unknown_ips_request {6, "unknown-ips-request"};
 
 const Enum::YLeaf SrpMgmtFailureEt::hardware_missing_failure {0, "hardware-missing-failure"};
 const Enum::YLeaf SrpMgmtFailureEt::layer1_admin_state_failure {1, "layer1-admin-state-failure"};
@@ -14045,28 +14105,29 @@ const Enum::YLeaf SrpMgmtFailureEt::mate_problem_failure {5, "mate-problem-failu
 const Enum::YLeaf SrpMgmtFailureEt::side_mismatch_failure {6, "side-mismatch-failure"};
 const Enum::YLeaf SrpMgmtFailureEt::unknown_failure {7, "unknown-failure"};
 
-const Enum::YLeaf SrpMgmtIpsReq::idle_ips_request {0, "idle-ips-request"};
-const Enum::YLeaf SrpMgmtIpsReq::wait_to_restore_ips_request {1, "wait-to-restore-ips-request"};
-const Enum::YLeaf SrpMgmtIpsReq::manual_switch_ips_request {2, "manual-switch-ips-request"};
-const Enum::YLeaf SrpMgmtIpsReq::signal_degrade_ips_request {3, "signal-degrade-ips-request"};
-const Enum::YLeaf SrpMgmtIpsReq::signal_fail_ips_request {4, "signal-fail-ips-request"};
-const Enum::YLeaf SrpMgmtIpsReq::forced_switch_ips_request {5, "forced-switch-ips-request"};
-const Enum::YLeaf SrpMgmtIpsReq::unknown_ips_request {6, "unknown-ips-request"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_unknown {0, "im-attr-transport-mode-unknown"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_lan {1, "im-attr-transport-mode-lan"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_wan {2, "im-attr-transport-mode-wan"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_bt_opu1e {3, "im-attr-transport-mode-otn-bt-opu1e"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_bt_opu2e {4, "im-attr-transport-mode-otn-bt-opu2e"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_opu3 {5, "im-attr-transport-mode-otn-opu3"};
+const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_opu4 {6, "im-attr-transport-mode-otn-opu4"};
 
-const Enum::YLeaf SrpMgmtIpsWrapState::idle_wrap_state {0, "idle-wrap-state"};
-const Enum::YLeaf SrpMgmtIpsWrapState::wrapped_state {1, "wrapped-state"};
-const Enum::YLeaf SrpMgmtIpsWrapState::locked_out_wrap_state {2, "locked-out-wrap-state"};
-const Enum::YLeaf SrpMgmtIpsWrapState::unknown_wrap_state {3, "unknown-wrap-state"};
+const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_none {0, "tunl-ip-mode-dir-none"};
+const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_decap {1, "tunl-ip-mode-dir-decap"};
+const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_encap {2, "tunl-ip-mode-dir-encap"};
+const Enum::YLeaf TunlIpModeDir::tunl_ip_mode_dir_max {3, "tunl-ip-mode-dir-max"};
 
-const Enum::YLeaf ImCmdIntfTypeEnum::srp {0, "srp"};
-const Enum::YLeaf ImCmdIntfTypeEnum::tunnel {1, "tunnel"};
-const Enum::YLeaf ImCmdIntfTypeEnum::bundle {2, "bundle"};
-const Enum::YLeaf ImCmdIntfTypeEnum::serial {3, "serial"};
-const Enum::YLeaf ImCmdIntfTypeEnum::sonet_pos {4, "sonet-pos"};
-const Enum::YLeaf ImCmdIntfTypeEnum::tunnel_gre {5, "tunnel-gre"};
-const Enum::YLeaf ImCmdIntfTypeEnum::pseudowire_head_end {6, "pseudowire-head-end"};
-const Enum::YLeaf ImCmdIntfTypeEnum::cem {7, "cem"};
-const Enum::YLeaf ImCmdIntfTypeEnum::gcc {8, "gcc"};
+const Enum::YLeaf ImCmdEncapsEnum::frame_relay {0, "frame-relay"};
+const Enum::YLeaf ImCmdEncapsEnum::vlan {1, "vlan"};
+const Enum::YLeaf ImCmdEncapsEnum::ppp {2, "ppp"};
+
+const Enum::YLeaf BmMuxstate::detached {1, "detached"};
+const Enum::YLeaf BmMuxstate::waiting {2, "waiting"};
+const Enum::YLeaf BmMuxstate::attached {3, "attached"};
+const Enum::YLeaf BmMuxstate::collecting {4, "collecting"};
+const Enum::YLeaf BmMuxstate::distributing {5, "distributing"};
+const Enum::YLeaf BmMuxstate::collecting_distributing {6, "collecting-distributing"};
 
 const Enum::YLeaf NcpIdent::cdpcp {1, "cdpcp"};
 const Enum::YLeaf NcpIdent::ipcp {2, "ipcp"};
@@ -14075,34 +14136,36 @@ const Enum::YLeaf NcpIdent::ipv6cp {4, "ipv6cp"};
 const Enum::YLeaf NcpIdent::mplscp {5, "mplscp"};
 const Enum::YLeaf NcpIdent::osicp {6, "osicp"};
 
-const Enum::YLeaf PppFsmState::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
 
-const Enum::YLeaf EfpPayloadEtype::payload_ethertype_any {0, "payload-ethertype-any"};
-const Enum::YLeaf EfpPayloadEtype::payload_ethertype_ip {1, "payload-ethertype-ip"};
-const Enum::YLeaf EfpPayloadEtype::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_count {19, "bm-mux-reason-count"};
 
-const Enum::YLeaf EfpTagPriority::priority0 {0, "priority0"};
-const Enum::YLeaf EfpTagPriority::priority1 {1, "priority1"};
-const Enum::YLeaf EfpTagPriority::priority2 {2, "priority2"};
-const Enum::YLeaf EfpTagPriority::priority3 {3, "priority3"};
-const Enum::YLeaf EfpTagPriority::priority4 {4, "priority4"};
-const Enum::YLeaf EfpTagPriority::priority5 {5, "priority5"};
-const Enum::YLeaf EfpTagPriority::priority6 {6, "priority6"};
-const Enum::YLeaf EfpTagPriority::priority7 {7, "priority7"};
-const Enum::YLeaf EfpTagPriority::priority_any {8, "priority-any"};
-
-const Enum::YLeaf EfpTagEtype::untagged {0, "untagged"};
-const Enum::YLeaf EfpTagEtype::dot1q {33024, "dot1q"};
-const Enum::YLeaf EfpTagEtype::dot1ad {34984, "dot1ad"};
+const Enum::YLeaf ImAttrLink::im_attr_link_type_auto {0, "im-attr-link-type-auto"};
+const Enum::YLeaf ImAttrLink::im_attr_link_type_force {1, "im-attr-link-type-force"};
 
 const Enum::YLeaf VlanEncaps::no_encapsulation {0, "no-encapsulation"};
 const Enum::YLeaf VlanEncaps::dot1q {1, "dot1q"};
@@ -14115,38 +14178,14 @@ const Enum::YLeaf VlanEncaps::service_instance {7, "service-instance"};
 const Enum::YLeaf VlanEncaps::dot1ad_dot1q {8, "dot1ad-dot1q"};
 const Enum::YLeaf VlanEncaps::dot1ad_any {9, "dot1ad-any"};
 
-const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_auto {0, "lmi-type-auto"};
-const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_ansi {1, "lmi-type-ansi"};
-const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_ccitt {2, "lmi-type-ccitt"};
-const Enum::YLeaf ImCmdLmiTypeEnum::lmi_type_cisco {3, "lmi-type-cisco"};
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_any {0, "payload-ethertype-any"};
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_ip {1, "payload-ethertype-ip"};
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
 
-const Enum::YLeaf ImCmdFrTypeEnum::frame_relay_cisco {0, "frame-relay-cisco"};
-const Enum::YLeaf ImCmdFrTypeEnum::frame_relay_ietf {1, "frame-relay-ietf"};
+const Enum::YLeaf InterfaceTypeSet::hardware_interfaces {0, "hardware-interfaces"};
 
-const Enum::YLeaf ImCmdEncapsEnum::frame_relay {0, "frame-relay"};
-const Enum::YLeaf ImCmdEncapsEnum::vlan {1, "vlan"};
-const Enum::YLeaf ImCmdEncapsEnum::ppp {2, "ppp"};
-
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_unknown {0, "im-attr-transport-mode-unknown"};
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_lan {1, "im-attr-transport-mode-lan"};
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_wan {2, "im-attr-transport-mode-wan"};
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_bt_opu1e {3, "im-attr-transport-mode-otn-bt-opu1e"};
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_bt_opu2e {4, "im-attr-transport-mode-otn-bt-opu2e"};
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_opu3 {5, "im-attr-transport-mode-otn-opu3"};
-const Enum::YLeaf ImAttrTransportMode::im_attr_transport_mode_otn_opu4 {6, "im-attr-transport-mode-otn-opu4"};
-
-const Enum::YLeaf ImCmdLoopbackEnum::no_loopback {0, "no-loopback"};
-const Enum::YLeaf ImCmdLoopbackEnum::internal_loopback {1, "internal-loopback"};
-const Enum::YLeaf ImCmdLoopbackEnum::external_loopback {2, "external-loopback"};
-const Enum::YLeaf ImCmdLoopbackEnum::line_loopback {3, "line-loopback"};
-
-const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_off {0, "im-attr-flow-control-off"};
-const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_on {1, "im-attr-flow-control-on"};
-const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_not_sup {2, "im-attr-flow-control-not-sup"};
-const Enum::YLeaf ImAttrFlowControl::im_attr_flow_control_priority {3, "im-attr-flow-control-priority"};
-
-const Enum::YLeaf ImAttrLink::im_attr_link_type_auto {0, "im-attr-link-type-auto"};
-const Enum::YLeaf ImAttrLink::im_attr_link_type_force {1, "im-attr-link-type-force"};
+const Enum::YLeaf BmStateReasonTarget::member_reason {0, "member-reason"};
+const Enum::YLeaf BmStateReasonTarget::bundle_reason {1, "bundle-reason"};
 
 const Enum::YLeaf ImAttrMedia::im_attr_media_other {0, "im-attr-media-other"};
 const Enum::YLeaf ImAttrMedia::im_attr_media_unknown {1, "im-attr-media-unknown"};
@@ -14510,11 +14549,10 @@ const Enum::YLeaf ImAttrMedia::im_attr_media_10gbase_cu3m {358, "im-attr-media-1
 const Enum::YLeaf ImAttrMedia::im_attr_media_10gbase_cu5m {359, "im-attr-media-10gbase-cu5m"};
 const Enum::YLeaf ImAttrMedia::im_attr_media_10gbase_acu7m {360, "im-attr-media-10gbase-acu7m"};
 const Enum::YLeaf ImAttrMedia::im_attr_media_10gbase_acu10m {361, "im-attr-media-10gbase-acu10m"};
-const Enum::YLeaf ImAttrMedia::im_attr_media_4x10g_base_lr {362, "im-attr-media-4x10g-base-lr"};
 
-const Enum::YLeaf ImAttrDuplex::im_attr_duplex_unknown {0, "im-attr-duplex-unknown"};
-const Enum::YLeaf ImAttrDuplex::im_attr_duplex_half {1, "im-attr-duplex-half"};
-const Enum::YLeaf ImAttrDuplex::im_attr_duplex_full {2, "im-attr-duplex-full"};
+const Enum::YLeaf SrpMgmtSrrNodeState::idle_srr_state {0, "idle-srr-state"};
+const Enum::YLeaf SrpMgmtSrrNodeState::discovery_srr_state {1, "discovery-srr-state"};
+const Enum::YLeaf SrpMgmtSrrNodeState::unknown_srr_state {2, "unknown-srr-state"};
 
 
 }

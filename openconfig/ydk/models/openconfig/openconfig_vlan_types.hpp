@@ -19,14 +19,14 @@ class TPIDTYPES : public virtual ydk::Identity
 
 }; // TPIDTYPES
 
-class TPID0x8100 : public openconfig::openconfig_vlan_types::TPIDTYPES, virtual ydk::Identity
+class TPID0X9200 : public openconfig::openconfig_vlan_types::TPIDTYPES, virtual ydk::Identity
 {
     public:
-        TPID0x8100();
-        ~TPID0x8100();
+        TPID0X9200();
+        ~TPID0X9200();
 
 
-}; // TPID0x8100
+}; // TPID0X9200
 
 class TPID0x8A88 : public openconfig::openconfig_vlan_types::TPIDTYPES, virtual ydk::Identity
 {
@@ -37,6 +37,15 @@ class TPID0x8A88 : public openconfig::openconfig_vlan_types::TPIDTYPES, virtual 
 
 }; // TPID0x8A88
 
+class TPID0x8100 : public openconfig::openconfig_vlan_types::TPIDTYPES, virtual ydk::Identity
+{
+    public:
+        TPID0x8100();
+        ~TPID0x8100();
+
+
+}; // TPID0x8100
+
 class TPID0x9100 : public openconfig::openconfig_vlan_types::TPIDTYPES, virtual ydk::Identity
 {
     public:
@@ -45,15 +54,6 @@ class TPID0x9100 : public openconfig::openconfig_vlan_types::TPIDTYPES, virtual 
 
 
 }; // TPID0x9100
-
-class TPID0X9200 : public openconfig::openconfig_vlan_types::TPIDTYPES, virtual ydk::Identity
-{
-    public:
-        TPID0X9200();
-        ~TPID0X9200();
-
-
-}; // TPID0X9200
 
 class VlanModeType : public ydk::Enum
 {

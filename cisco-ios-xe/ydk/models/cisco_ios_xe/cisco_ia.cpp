@@ -14,12 +14,12 @@ namespace cisco_ia {
 SyncFrom::SyncFrom()
     :
     input(std::make_shared<SyncFrom::Input>())
-	,output(std::make_shared<SyncFrom::Output>())
+    , output(std::make_shared<SyncFrom::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "sync-from"; yang_parent_name = "cisco-ia"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sync-from"; yang_parent_name = "cisco-ia"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SyncFrom::~SyncFrom()
@@ -28,6 +28,7 @@ SyncFrom::~SyncFrom()
 
 bool SyncFrom::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -141,7 +142,7 @@ SyncFrom::Input::Input()
     ignore_presrv_paths{YType::empty, "ignore-presrv-paths"}
 {
 
-    yang_name = "input"; yang_parent_name = "sync-from"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "sync-from"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SyncFrom::Input::~Input()
@@ -150,6 +151,7 @@ SyncFrom::Input::~Input()
 
 bool SyncFrom::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return sync_defaults.is_set
 	|| ignore_presrv_paths.is_set;
 }
@@ -238,7 +240,7 @@ SyncFrom::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "sync-from"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "sync-from"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SyncFrom::Output::~Output()
@@ -247,6 +249,7 @@ SyncFrom::Output::~Output()
 
 bool SyncFrom::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -323,7 +326,7 @@ SaveConfig::SaveConfig()
 {
     output->parent = this;
 
-    yang_name = "save-config"; yang_parent_name = "cisco-ia"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "save-config"; yang_parent_name = "cisco-ia"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SaveConfig::~SaveConfig()
@@ -332,6 +335,7 @@ SaveConfig::~SaveConfig()
 
 bool SaveConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (output !=  nullptr && output->has_data());
 }
 
@@ -428,7 +432,7 @@ SaveConfig::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "save-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "save-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SaveConfig::Output::~Output()
@@ -437,6 +441,7 @@ SaveConfig::Output::~Output()
 
 bool SaveConfig::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -513,7 +518,7 @@ IsSyncing::IsSyncing()
 {
     output->parent = this;
 
-    yang_name = "is-syncing"; yang_parent_name = "cisco-ia"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "is-syncing"; yang_parent_name = "cisco-ia"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IsSyncing::~IsSyncing()
@@ -522,6 +527,7 @@ IsSyncing::~IsSyncing()
 
 bool IsSyncing::has_data() const
 {
+    if (is_presence_container) return true;
     return (output !=  nullptr && output->has_data());
 }
 
@@ -618,7 +624,7 @@ IsSyncing::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "is-syncing"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "is-syncing"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IsSyncing::Output::~Output()
@@ -627,6 +633,7 @@ IsSyncing::Output::~Output()
 
 bool IsSyncing::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -703,7 +710,7 @@ Checkpoint::Checkpoint()
 {
     output->parent = this;
 
-    yang_name = "checkpoint"; yang_parent_name = "cisco-ia"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "checkpoint"; yang_parent_name = "cisco-ia"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Checkpoint::~Checkpoint()
@@ -712,6 +719,7 @@ Checkpoint::~Checkpoint()
 
 bool Checkpoint::has_data() const
 {
+    if (is_presence_container) return true;
     return (output !=  nullptr && output->has_data());
 }
 
@@ -808,7 +816,7 @@ Checkpoint::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "checkpoint"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "checkpoint"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Checkpoint::Output::~Output()
@@ -817,6 +825,7 @@ Checkpoint::Output::~Output()
 
 bool Checkpoint::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -890,12 +899,12 @@ bool Checkpoint::Output::has_leaf_or_child_of_name(const std::string & name) con
 Revert::Revert()
     :
     input(std::make_shared<Revert::Input>())
-	,output(std::make_shared<Revert::Output>())
+    , output(std::make_shared<Revert::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "revert"; yang_parent_name = "cisco-ia"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "revert"; yang_parent_name = "cisco-ia"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Revert::~Revert()
@@ -904,6 +913,7 @@ Revert::~Revert()
 
 bool Revert::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -1018,7 +1028,7 @@ Revert::Input::Input()
     idle{YType::int16, "idle"}
 {
 
-    yang_name = "input"; yang_parent_name = "revert"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "revert"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Revert::Input::~Input()
@@ -1027,6 +1037,7 @@ Revert::Input::~Input()
 
 bool Revert::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return now.is_set
 	|| timer.is_set
 	|| idle.is_set;
@@ -1128,7 +1139,7 @@ Revert::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "revert"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "revert"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Revert::Output::~Output()
@@ -1137,6 +1148,7 @@ Revert::Output::~Output()
 
 bool Revert::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -1210,12 +1222,12 @@ bool Revert::Output::has_leaf_or_child_of_name(const std::string & name) const
 Rollback::Rollback()
     :
     input(std::make_shared<Rollback::Input>())
-	,output(std::make_shared<Rollback::Output>())
+    , output(std::make_shared<Rollback::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "rollback"; yang_parent_name = "cisco-ia"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "rollback"; yang_parent_name = "cisco-ia"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Rollback::~Rollback()
@@ -1224,6 +1236,7 @@ Rollback::~Rollback()
 
 bool Rollback::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -1340,7 +1353,7 @@ Rollback::Input::Input()
     revert_timer{YType::int16, "revert-timer"}
 {
 
-    yang_name = "input"; yang_parent_name = "rollback"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "rollback"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rollback::Input::~Input()
@@ -1349,6 +1362,7 @@ Rollback::Input::~Input()
 
 bool Rollback::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return target_url.is_set
 	|| verbose.is_set
 	|| nolock.is_set
@@ -1476,7 +1490,7 @@ Rollback::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "rollback"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "rollback"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rollback::Output::~Output()
@@ -1485,6 +1499,7 @@ Rollback::Output::~Output()
 
 bool Rollback::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -1555,23 +1570,15 @@ bool Rollback::Output::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-const Enum::YLeaf CiaSyncType::disabled {0, "disabled"};
-const Enum::YLeaf CiaSyncType::without_defaults {1, "without-defaults"};
-const Enum::YLeaf CiaSyncType::include_defaults {2, "include-defaults"};
-
 const Enum::YLeaf CiaLogLevel::none {0, "none"};
 const Enum::YLeaf CiaLogLevel::error {1, "error"};
 const Enum::YLeaf CiaLogLevel::warning {2, "warning"};
 const Enum::YLeaf CiaLogLevel::information {3, "information"};
 const Enum::YLeaf CiaLogLevel::debug {4, "debug"};
 
-const Enum::YLeaf OnepLogLevel::none {0, "none"};
-const Enum::YLeaf OnepLogLevel::fatal {1, "fatal"};
-const Enum::YLeaf OnepLogLevel::error {2, "error"};
-const Enum::YLeaf OnepLogLevel::warning {3, "warning"};
-const Enum::YLeaf OnepLogLevel::information {4, "information"};
-const Enum::YLeaf OnepLogLevel::debug {5, "debug"};
-const Enum::YLeaf OnepLogLevel::trace {6, "trace"};
+const Enum::YLeaf CiaSyncType::disabled {0, "disabled"};
+const Enum::YLeaf CiaSyncType::without_defaults {1, "without-defaults"};
+const Enum::YLeaf CiaSyncType::include_defaults {2, "include-defaults"};
 
 const Enum::YLeaf SyslogSeverity::none {8, "none"};
 const Enum::YLeaf SyslogSeverity::emergency {0, "emergency"};
@@ -1582,6 +1589,14 @@ const Enum::YLeaf SyslogSeverity::warning {4, "warning"};
 const Enum::YLeaf SyslogSeverity::notice {5, "notice"};
 const Enum::YLeaf SyslogSeverity::info {6, "info"};
 const Enum::YLeaf SyslogSeverity::debug {7, "debug"};
+
+const Enum::YLeaf OnepLogLevel::none {0, "none"};
+const Enum::YLeaf OnepLogLevel::fatal {1, "fatal"};
+const Enum::YLeaf OnepLogLevel::error {2, "error"};
+const Enum::YLeaf OnepLogLevel::warning {3, "warning"};
+const Enum::YLeaf OnepLogLevel::information {4, "information"};
+const Enum::YLeaf OnepLogLevel::debug {5, "debug"};
+const Enum::YLeaf OnepLogLevel::trace {6, "trace"};
 
 
 }

@@ -12,9 +12,16 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_show_inv {
 
 Inventory::Inventory()
+    :
+    location(this, {"loc"})
+    , all(this, {"index_"})
+    , chassis(this, {"index_"})
+    , power(this, {"index_"})
+    , fan(this, {"index_"})
+    , raw(this, {"index_"})
 {
 
-    yang_name = "inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-show-inv"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-show-inv"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Inventory::~Inventory()
@@ -23,32 +30,33 @@ Inventory::~Inventory()
 
 bool Inventory::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<all.size(); index++)
+    for (std::size_t index=0; index<all.len(); index++)
     {
         if(all[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<chassis.size(); index++)
+    for (std::size_t index=0; index<chassis.len(); index++)
     {
         if(chassis[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<power.size(); index++)
+    for (std::size_t index=0; index<power.len(); index++)
     {
         if(power[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<fan.size(); index++)
+    for (std::size_t index=0; index<fan.len(); index++)
     {
         if(fan[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<raw.size(); index++)
+    for (std::size_t index=0; index<raw.len(); index++)
     {
         if(raw[index]->has_data())
             return true;
@@ -58,32 +66,32 @@ bool Inventory::has_data() const
 
 bool Inventory::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<all.size(); index++)
+    for (std::size_t index=0; index<all.len(); index++)
     {
         if(all[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<chassis.size(); index++)
+    for (std::size_t index=0; index<chassis.len(); index++)
     {
         if(chassis[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<power.size(); index++)
+    for (std::size_t index=0; index<power.len(); index++)
     {
         if(power[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<fan.size(); index++)
+    for (std::size_t index=0; index<fan.len(); index++)
     {
         if(fan[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<raw.size(); index++)
+    for (std::size_t index=0; index<raw.len(); index++)
     {
         if(raw[index]->has_operation())
             return true;
@@ -113,7 +121,7 @@ std::shared_ptr<Entity> Inventory::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Inventory::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -121,7 +129,7 @@ std::shared_ptr<Entity> Inventory::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Inventory::All>();
         c->parent = this;
-        all.push_back(c);
+        all.append(c);
         return c;
     }
 
@@ -129,7 +137,7 @@ std::shared_ptr<Entity> Inventory::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Inventory::Chassis>();
         c->parent = this;
-        chassis.push_back(c);
+        chassis.append(c);
         return c;
     }
 
@@ -137,7 +145,7 @@ std::shared_ptr<Entity> Inventory::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Inventory::Power>();
         c->parent = this;
-        power.push_back(c);
+        power.append(c);
         return c;
     }
 
@@ -145,7 +153,7 @@ std::shared_ptr<Entity> Inventory::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Inventory::Fan>();
         c->parent = this;
-        fan.push_back(c);
+        fan.append(c);
         return c;
     }
 
@@ -153,7 +161,7 @@ std::shared_ptr<Entity> Inventory::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Inventory::Raw>();
         c->parent = this;
-        raw.push_back(c);
+        raw.append(c);
         return c;
     }
 
@@ -165,7 +173,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -174,7 +182,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::get_children() const
     }
 
     count = 0;
-    for (auto const & c : all)
+    for (auto c : all.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -183,7 +191,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::get_children() const
     }
 
     count = 0;
-    for (auto const & c : chassis)
+    for (auto c : chassis.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -192,7 +200,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::get_children() const
     }
 
     count = 0;
-    for (auto const & c : power)
+    for (auto c : power.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -201,7 +209,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::get_children() const
     }
 
     count = 0;
-    for (auto const & c : fan)
+    for (auto c : fan.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -210,7 +218,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::get_children() const
     }
 
     count = 0;
-    for (auto const & c : raw)
+    for (auto c : raw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -272,7 +280,7 @@ Inventory::Location::Location()
     index_{YType::uint32, "index"}
 {
 
-    yang_name = "location"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Inventory::Location::~Location()
@@ -281,6 +289,7 @@ Inventory::Location::~Location()
 
 bool Inventory::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return loc.is_set
 	|| name.is_set
 	|| description.is_set
@@ -312,7 +321,8 @@ std::string Inventory::Location::get_absolute_path() const
 std::string Inventory::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc='" <<loc <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc, "loc");
     return path_buffer.str();
 }
 
@@ -440,7 +450,7 @@ Inventory::All::All()
     loc{YType::str, "loc"}
 {
 
-    yang_name = "all"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Inventory::All::~All()
@@ -449,6 +459,7 @@ Inventory::All::~All()
 
 bool Inventory::All::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| name.is_set
 	|| description.is_set
@@ -480,7 +491,8 @@ std::string Inventory::All::get_absolute_path() const
 std::string Inventory::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all" <<"[index='" <<index_ <<"']";
+    path_buffer << "all";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -608,7 +620,7 @@ Inventory::Chassis::Chassis()
     loc{YType::str, "loc"}
 {
 
-    yang_name = "chassis"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "chassis"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Inventory::Chassis::~Chassis()
@@ -617,6 +629,7 @@ Inventory::Chassis::~Chassis()
 
 bool Inventory::Chassis::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| name.is_set
 	|| description.is_set
@@ -648,7 +661,8 @@ std::string Inventory::Chassis::get_absolute_path() const
 std::string Inventory::Chassis::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "chassis" <<"[index='" <<index_ <<"']";
+    path_buffer << "chassis";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -776,7 +790,7 @@ Inventory::Power::Power()
     loc{YType::str, "loc"}
 {
 
-    yang_name = "power"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "power"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Inventory::Power::~Power()
@@ -785,6 +799,7 @@ Inventory::Power::~Power()
 
 bool Inventory::Power::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| name.is_set
 	|| description.is_set
@@ -816,7 +831,8 @@ std::string Inventory::Power::get_absolute_path() const
 std::string Inventory::Power::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "power" <<"[index='" <<index_ <<"']";
+    path_buffer << "power";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -944,7 +960,7 @@ Inventory::Fan::Fan()
     loc{YType::str, "loc"}
 {
 
-    yang_name = "fan"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fan"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Inventory::Fan::~Fan()
@@ -953,6 +969,7 @@ Inventory::Fan::~Fan()
 
 bool Inventory::Fan::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| name.is_set
 	|| description.is_set
@@ -984,7 +1001,8 @@ std::string Inventory::Fan::get_absolute_path() const
 std::string Inventory::Fan::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fan" <<"[index='" <<index_ <<"']";
+    path_buffer << "fan";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -1112,7 +1130,7 @@ Inventory::Raw::Raw()
     loc{YType::str, "loc"}
 {
 
-    yang_name = "raw"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "raw"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Inventory::Raw::~Raw()
@@ -1121,6 +1139,7 @@ Inventory::Raw::~Raw()
 
 bool Inventory::Raw::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| name.is_set
 	|| description.is_set
@@ -1152,7 +1171,8 @@ std::string Inventory::Raw::get_absolute_path() const
 std::string Inventory::Raw::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "raw" <<"[index='" <<index_ <<"']";
+    path_buffer << "raw";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 

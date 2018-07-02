@@ -57,7 +57,7 @@ class SessionMon::Nodes : public ydk::Entity
 
         class Node; //type: SessionMon::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_session_mon_oper::SessionMon::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // SessionMon::Nodes
 
@@ -142,7 +142,7 @@ class SessionMon::Nodes::Node::InterfaceAllStatistics : public ydk::Entity
 
         class InterfaceAllStatistic; //type: SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_session_mon_oper::SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic> > interface_all_statistic;
+        ydk::YList interface_all_statistic;
         
 }; // SessionMon::Nodes::Node::InterfaceAllStatistics
 

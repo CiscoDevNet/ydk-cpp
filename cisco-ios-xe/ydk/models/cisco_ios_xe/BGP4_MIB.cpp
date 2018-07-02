@@ -14,16 +14,16 @@ namespace BGP4_MIB {
 BGP4MIB::BGP4MIB()
     :
     bgp(std::make_shared<BGP4MIB::Bgp>())
-	,bgppeertable(std::make_shared<BGP4MIB::Bgppeertable>())
-	,bgprcvdpathattrtable(std::make_shared<BGP4MIB::Bgprcvdpathattrtable>())
-	,bgp4pathattrtable(std::make_shared<BGP4MIB::Bgp4Pathattrtable>())
+    , bgppeertable(std::make_shared<BGP4MIB::BgpPeerTable>())
+    , bgprcvdpathattrtable(std::make_shared<BGP4MIB::BgpRcvdPathAttrTable>())
+    , bgp4pathattrtable(std::make_shared<BGP4MIB::Bgp4PathAttrTable>())
 {
     bgp->parent = this;
     bgppeertable->parent = this;
     bgprcvdpathattrtable->parent = this;
     bgp4pathattrtable->parent = this;
 
-    yang_name = "BGP4-MIB"; yang_parent_name = "BGP4-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "BGP4-MIB"; yang_parent_name = "BGP4-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 BGP4MIB::~BGP4MIB()
@@ -32,6 +32,7 @@ BGP4MIB::~BGP4MIB()
 
 bool BGP4MIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (bgp !=  nullptr && bgp->has_data())
 	|| (bgppeertable !=  nullptr && bgppeertable->has_data())
 	|| (bgprcvdpathattrtable !=  nullptr && bgprcvdpathattrtable->has_data())
@@ -78,7 +79,7 @@ std::shared_ptr<Entity> BGP4MIB::get_child_by_name(const std::string & child_yan
     {
         if(bgppeertable == nullptr)
         {
-            bgppeertable = std::make_shared<BGP4MIB::Bgppeertable>();
+            bgppeertable = std::make_shared<BGP4MIB::BgpPeerTable>();
         }
         return bgppeertable;
     }
@@ -87,7 +88,7 @@ std::shared_ptr<Entity> BGP4MIB::get_child_by_name(const std::string & child_yan
     {
         if(bgprcvdpathattrtable == nullptr)
         {
-            bgprcvdpathattrtable = std::make_shared<BGP4MIB::Bgprcvdpathattrtable>();
+            bgprcvdpathattrtable = std::make_shared<BGP4MIB::BgpRcvdPathAttrTable>();
         }
         return bgprcvdpathattrtable;
     }
@@ -96,7 +97,7 @@ std::shared_ptr<Entity> BGP4MIB::get_child_by_name(const std::string & child_yan
     {
         if(bgp4pathattrtable == nullptr)
         {
-            bgp4pathattrtable = std::make_shared<BGP4MIB::Bgp4Pathattrtable>();
+            bgp4pathattrtable = std::make_shared<BGP4MIB::Bgp4PathAttrTable>();
         }
         return bgp4pathattrtable;
     }
@@ -178,7 +179,7 @@ BGP4MIB::Bgp::Bgp()
     bgpidentifier{YType::str, "bgpIdentifier"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp"; yang_parent_name = "BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BGP4MIB::Bgp::~Bgp()
@@ -187,6 +188,7 @@ BGP4MIB::Bgp::~Bgp()
 
 bool BGP4MIB::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return bgpversion.is_set
 	|| bgplocalas.is_set
 	|| bgpidentifier.is_set;
@@ -283,19 +285,22 @@ bool BGP4MIB::Bgp::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-BGP4MIB::Bgppeertable::Bgppeertable()
+BGP4MIB::BgpPeerTable::BgpPeerTable()
+    :
+    bgppeerentry(this, {"bgppeerremoteaddr"})
 {
 
-    yang_name = "bgpPeerTable"; yang_parent_name = "BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgpPeerTable"; yang_parent_name = "BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BGP4MIB::Bgppeertable::~Bgppeertable()
+BGP4MIB::BgpPeerTable::~BgpPeerTable()
 {
 }
 
-bool BGP4MIB::Bgppeertable::has_data() const
+bool BGP4MIB::BgpPeerTable::has_data() const
 {
-    for (std::size_t index=0; index<bgppeerentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgppeerentry.len(); index++)
     {
         if(bgppeerentry[index]->has_data())
             return true;
@@ -303,9 +308,9 @@ bool BGP4MIB::Bgppeertable::has_data() const
     return false;
 }
 
-bool BGP4MIB::Bgppeertable::has_operation() const
+bool BGP4MIB::BgpPeerTable::has_operation() const
 {
-    for (std::size_t index=0; index<bgppeerentry.size(); index++)
+    for (std::size_t index=0; index<bgppeerentry.len(); index++)
     {
         if(bgppeerentry[index]->has_operation())
             return true;
@@ -313,21 +318,21 @@ bool BGP4MIB::Bgppeertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string BGP4MIB::Bgppeertable::get_absolute_path() const
+std::string BGP4MIB::BgpPeerTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BGP4-MIB:BGP4-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BGP4MIB::Bgppeertable::get_segment_path() const
+std::string BGP4MIB::BgpPeerTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgpPeerTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgppeertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BGP4MIB::BgpPeerTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -336,25 +341,25 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgppeertable::get_name_l
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::Bgppeertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BGP4MIB::BgpPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgpPeerEntry")
     {
-        auto c = std::make_shared<BGP4MIB::Bgppeertable::Bgppeerentry>();
+        auto c = std::make_shared<BGP4MIB::BgpPeerTable::BgpPeerEntry>();
         c->parent = this;
-        bgppeerentry.push_back(c);
+        bgppeerentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgppeertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::BgpPeerTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgppeerentry)
+    for (auto c : bgppeerentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -365,22 +370,22 @@ std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgppeertable::get_childr
     return children;
 }
 
-void BGP4MIB::Bgppeertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BGP4MIB::BgpPeerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void BGP4MIB::Bgppeertable::set_filter(const std::string & value_path, YFilter yfilter)
+void BGP4MIB::BgpPeerTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool BGP4MIB::Bgppeertable::has_leaf_or_child_of_name(const std::string & name) const
+bool BGP4MIB::BgpPeerTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgpPeerEntry")
         return true;
     return false;
 }
 
-BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeerentry()
+BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerEntry()
     :
     bgppeerremoteaddr{YType::str, "bgpPeerRemoteAddr"},
     bgppeeridentifier{YType::str, "bgpPeerIdentifier"},
@@ -416,15 +421,16 @@ BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeerentry()
     cbgppeerprevstate{YType::enumeration, "CISCO-BGP4-MIB:cbgpPeerPrevState"}
 {
 
-    yang_name = "bgpPeerEntry"; yang_parent_name = "bgpPeerTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgpPeerEntry"; yang_parent_name = "bgpPeerTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BGP4MIB::Bgppeertable::Bgppeerentry::~Bgppeerentry()
+BGP4MIB::BgpPeerTable::BgpPeerEntry::~BgpPeerEntry()
 {
 }
 
-bool BGP4MIB::Bgppeertable::Bgppeerentry::has_data() const
+bool BGP4MIB::BgpPeerTable::BgpPeerEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return bgppeerremoteaddr.is_set
 	|| bgppeeridentifier.is_set
 	|| bgppeerstate.is_set
@@ -459,7 +465,7 @@ bool BGP4MIB::Bgppeertable::Bgppeerentry::has_data() const
 	|| cbgppeerprevstate.is_set;
 }
 
-bool BGP4MIB::Bgppeertable::Bgppeerentry::has_operation() const
+bool BGP4MIB::BgpPeerTable::BgpPeerEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bgppeerremoteaddr.yfilter)
@@ -496,21 +502,22 @@ bool BGP4MIB::Bgppeertable::Bgppeerentry::has_operation() const
 	|| ydk::is_set(cbgppeerprevstate.yfilter);
 }
 
-std::string BGP4MIB::Bgppeertable::Bgppeerentry::get_absolute_path() const
+std::string BGP4MIB::BgpPeerTable::BgpPeerEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BGP4-MIB:BGP4-MIB/bgpPeerTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BGP4MIB::Bgppeertable::Bgppeerentry::get_segment_path() const
+std::string BGP4MIB::BgpPeerTable::BgpPeerEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgpPeerEntry" <<"[bgpPeerRemoteAddr='" <<bgppeerremoteaddr <<"']";
+    path_buffer << "bgpPeerEntry";
+    ADD_KEY_TOKEN(bgppeerremoteaddr, "bgpPeerRemoteAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgppeertable::Bgppeerentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BGP4MIB::BgpPeerTable::BgpPeerEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -551,19 +558,19 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgppeertable::Bgppeerent
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::Bgppeertable::Bgppeerentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BGP4MIB::BgpPeerTable::BgpPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgppeertable::Bgppeerentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::BgpPeerTable::BgpPeerEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void BGP4MIB::Bgppeertable::Bgppeerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BGP4MIB::BgpPeerTable::BgpPeerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bgpPeerRemoteAddr")
     {
@@ -759,7 +766,7 @@ void BGP4MIB::Bgppeertable::Bgppeerentry::set_value(const std::string & value_pa
     }
 }
 
-void BGP4MIB::Bgppeertable::Bgppeerentry::set_filter(const std::string & value_path, YFilter yfilter)
+void BGP4MIB::BgpPeerTable::BgpPeerEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bgpPeerRemoteAddr")
     {
@@ -891,26 +898,29 @@ void BGP4MIB::Bgppeertable::Bgppeerentry::set_filter(const std::string & value_p
     }
 }
 
-bool BGP4MIB::Bgppeertable::Bgppeerentry::has_leaf_or_child_of_name(const std::string & name) const
+bool BGP4MIB::BgpPeerTable::BgpPeerEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgpPeerRemoteAddr" || name == "bgpPeerIdentifier" || name == "bgpPeerState" || name == "bgpPeerAdminStatus" || name == "bgpPeerNegotiatedVersion" || name == "bgpPeerLocalAddr" || name == "bgpPeerLocalPort" || name == "bgpPeerRemotePort" || name == "bgpPeerRemoteAs" || name == "bgpPeerInUpdates" || name == "bgpPeerOutUpdates" || name == "bgpPeerInTotalMessages" || name == "bgpPeerOutTotalMessages" || name == "bgpPeerLastError" || name == "bgpPeerFsmEstablishedTransitions" || name == "bgpPeerFsmEstablishedTime" || name == "bgpPeerConnectRetryInterval" || name == "bgpPeerHoldTime" || name == "bgpPeerKeepAlive" || name == "bgpPeerHoldTimeConfigured" || name == "bgpPeerKeepAliveConfigured" || name == "bgpPeerMinASOriginationInterval" || name == "bgpPeerMinRouteAdvertisementInterval" || name == "bgpPeerInUpdateElapsedTime" || name == "cbgpPeerPrefixAccepted" || name == "cbgpPeerPrefixDenied" || name == "cbgpPeerPrefixLimit" || name == "cbgpPeerPrefixAdvertised" || name == "cbgpPeerPrefixSuppressed" || name == "cbgpPeerPrefixWithdrawn" || name == "cbgpPeerLastErrorTxt" || name == "cbgpPeerPrevState")
         return true;
     return false;
 }
 
-BGP4MIB::Bgprcvdpathattrtable::Bgprcvdpathattrtable()
+BGP4MIB::BgpRcvdPathAttrTable::BgpRcvdPathAttrTable()
+    :
+    bgppathattrentry(this, {"bgppathattrdestnetwork", "bgppathattrpeer"})
 {
 
-    yang_name = "bgpRcvdPathAttrTable"; yang_parent_name = "BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgpRcvdPathAttrTable"; yang_parent_name = "BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BGP4MIB::Bgprcvdpathattrtable::~Bgprcvdpathattrtable()
+BGP4MIB::BgpRcvdPathAttrTable::~BgpRcvdPathAttrTable()
 {
 }
 
-bool BGP4MIB::Bgprcvdpathattrtable::has_data() const
+bool BGP4MIB::BgpRcvdPathAttrTable::has_data() const
 {
-    for (std::size_t index=0; index<bgppathattrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgppathattrentry.len(); index++)
     {
         if(bgppathattrentry[index]->has_data())
             return true;
@@ -918,9 +928,9 @@ bool BGP4MIB::Bgprcvdpathattrtable::has_data() const
     return false;
 }
 
-bool BGP4MIB::Bgprcvdpathattrtable::has_operation() const
+bool BGP4MIB::BgpRcvdPathAttrTable::has_operation() const
 {
-    for (std::size_t index=0; index<bgppathattrentry.size(); index++)
+    for (std::size_t index=0; index<bgppathattrentry.len(); index++)
     {
         if(bgppathattrentry[index]->has_operation())
             return true;
@@ -928,21 +938,21 @@ bool BGP4MIB::Bgprcvdpathattrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string BGP4MIB::Bgprcvdpathattrtable::get_absolute_path() const
+std::string BGP4MIB::BgpRcvdPathAttrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BGP4-MIB:BGP4-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BGP4MIB::Bgprcvdpathattrtable::get_segment_path() const
+std::string BGP4MIB::BgpRcvdPathAttrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgpRcvdPathAttrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgprcvdpathattrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BGP4MIB::BgpRcvdPathAttrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -951,25 +961,25 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgprcvdpathattrtable::ge
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::Bgprcvdpathattrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BGP4MIB::BgpRcvdPathAttrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgpPathAttrEntry")
     {
-        auto c = std::make_shared<BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry>();
+        auto c = std::make_shared<BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry>();
         c->parent = this;
-        bgppathattrentry.push_back(c);
+        bgppathattrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgprcvdpathattrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::BgpRcvdPathAttrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgppathattrentry)
+    for (auto c : bgppathattrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -980,22 +990,22 @@ std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgprcvdpathattrtable::ge
     return children;
 }
 
-void BGP4MIB::Bgprcvdpathattrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BGP4MIB::BgpRcvdPathAttrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void BGP4MIB::Bgprcvdpathattrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void BGP4MIB::BgpRcvdPathAttrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool BGP4MIB::Bgprcvdpathattrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool BGP4MIB::BgpRcvdPathAttrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgpPathAttrEntry")
         return true;
     return false;
 }
 
-BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::Bgppathattrentry()
+BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::BgpPathAttrEntry()
     :
     bgppathattrdestnetwork{YType::str, "bgpPathAttrDestNetwork"},
     bgppathattrpeer{YType::str, "bgpPathAttrPeer"},
@@ -1005,15 +1015,16 @@ BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::Bgppathattrentry()
     bgppathattrinterasmetric{YType::int32, "bgpPathAttrInterASMetric"}
 {
 
-    yang_name = "bgpPathAttrEntry"; yang_parent_name = "bgpRcvdPathAttrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgpPathAttrEntry"; yang_parent_name = "bgpRcvdPathAttrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::~Bgppathattrentry()
+BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::~BgpPathAttrEntry()
 {
 }
 
-bool BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::has_data() const
+bool BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return bgppathattrdestnetwork.is_set
 	|| bgppathattrpeer.is_set
 	|| bgppathattrorigin.is_set
@@ -1022,7 +1033,7 @@ bool BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::has_data() const
 	|| bgppathattrinterasmetric.is_set;
 }
 
-bool BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::has_operation() const
+bool BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bgppathattrdestnetwork.yfilter)
@@ -1033,21 +1044,23 @@ bool BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::has_operation() const
 	|| ydk::is_set(bgppathattrinterasmetric.yfilter);
 }
 
-std::string BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::get_absolute_path() const
+std::string BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BGP4-MIB:BGP4-MIB/bgpRcvdPathAttrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::get_segment_path() const
+std::string BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgpPathAttrEntry" <<"[bgpPathAttrDestNetwork='" <<bgppathattrdestnetwork <<"']" <<"[bgpPathAttrPeer='" <<bgppathattrpeer <<"']";
+    path_buffer << "bgpPathAttrEntry";
+    ADD_KEY_TOKEN(bgppathattrdestnetwork, "bgpPathAttrDestNetwork");
+    ADD_KEY_TOKEN(bgppathattrpeer, "bgpPathAttrPeer");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1062,19 +1075,19 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgprcvdpathattrtable::Bg
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bgpPathAttrDestNetwork")
     {
@@ -1114,7 +1127,7 @@ void BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::set_value(const std::strin
     }
 }
 
-void BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bgpPathAttrDestNetwork")
     {
@@ -1142,26 +1155,29 @@ void BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::set_filter(const std::stri
     }
 }
 
-bool BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgpPathAttrDestNetwork" || name == "bgpPathAttrPeer" || name == "bgpPathAttrOrigin" || name == "bgpPathAttrASPath" || name == "bgpPathAttrNextHop" || name == "bgpPathAttrInterASMetric")
         return true;
     return false;
 }
 
-BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrtable()
+BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrTable()
+    :
+    bgp4pathattrentry(this, {"bgp4pathattripaddrprefix", "bgp4pathattripaddrprefixlen", "bgp4pathattrpeer"})
 {
 
-    yang_name = "bgp4PathAttrTable"; yang_parent_name = "BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp4PathAttrTable"; yang_parent_name = "BGP4-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BGP4MIB::Bgp4Pathattrtable::~Bgp4Pathattrtable()
+BGP4MIB::Bgp4PathAttrTable::~Bgp4PathAttrTable()
 {
 }
 
-bool BGP4MIB::Bgp4Pathattrtable::has_data() const
+bool BGP4MIB::Bgp4PathAttrTable::has_data() const
 {
-    for (std::size_t index=0; index<bgp4pathattrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp4pathattrentry.len(); index++)
     {
         if(bgp4pathattrentry[index]->has_data())
             return true;
@@ -1169,9 +1185,9 @@ bool BGP4MIB::Bgp4Pathattrtable::has_data() const
     return false;
 }
 
-bool BGP4MIB::Bgp4Pathattrtable::has_operation() const
+bool BGP4MIB::Bgp4PathAttrTable::has_operation() const
 {
-    for (std::size_t index=0; index<bgp4pathattrentry.size(); index++)
+    for (std::size_t index=0; index<bgp4pathattrentry.len(); index++)
     {
         if(bgp4pathattrentry[index]->has_operation())
             return true;
@@ -1179,21 +1195,21 @@ bool BGP4MIB::Bgp4Pathattrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string BGP4MIB::Bgp4Pathattrtable::get_absolute_path() const
+std::string BGP4MIB::Bgp4PathAttrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BGP4-MIB:BGP4-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BGP4MIB::Bgp4Pathattrtable::get_segment_path() const
+std::string BGP4MIB::Bgp4PathAttrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp4PathAttrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgp4Pathattrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgp4PathAttrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1202,25 +1218,25 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgp4Pathattrtable::get_n
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::Bgp4Pathattrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BGP4MIB::Bgp4PathAttrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp4PathAttrEntry")
     {
-        auto c = std::make_shared<BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry>();
+        auto c = std::make_shared<BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry>();
         c->parent = this;
-        bgp4pathattrentry.push_back(c);
+        bgp4pathattrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgp4Pathattrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgp4PathAttrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp4pathattrentry)
+    for (auto c : bgp4pathattrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1231,22 +1247,22 @@ std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgp4Pathattrtable::get_c
     return children;
 }
 
-void BGP4MIB::Bgp4Pathattrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BGP4MIB::Bgp4PathAttrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void BGP4MIB::Bgp4Pathattrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void BGP4MIB::Bgp4PathAttrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool BGP4MIB::Bgp4Pathattrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool BGP4MIB::Bgp4PathAttrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgp4PathAttrEntry")
         return true;
     return false;
 }
 
-BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrentry()
+BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrEntry()
     :
     bgp4pathattripaddrprefix{YType::str, "bgp4PathAttrIpAddrPrefix"},
     bgp4pathattripaddrprefixlen{YType::int32, "bgp4PathAttrIpAddrPrefixLen"},
@@ -1264,15 +1280,16 @@ BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrentry()
     bgp4pathattrunknown{YType::str, "bgp4PathAttrUnknown"}
 {
 
-    yang_name = "bgp4PathAttrEntry"; yang_parent_name = "bgp4PathAttrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp4PathAttrEntry"; yang_parent_name = "bgp4PathAttrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::~Bgp4Pathattrentry()
+BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::~Bgp4PathAttrEntry()
 {
 }
 
-bool BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::has_data() const
+bool BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return bgp4pathattripaddrprefix.is_set
 	|| bgp4pathattripaddrprefixlen.is_set
 	|| bgp4pathattrpeer.is_set
@@ -1289,7 +1306,7 @@ bool BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::has_data() const
 	|| bgp4pathattrunknown.is_set;
 }
 
-bool BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::has_operation() const
+bool BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bgp4pathattripaddrprefix.yfilter)
@@ -1308,21 +1325,24 @@ bool BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::has_operation() const
 	|| ydk::is_set(bgp4pathattrunknown.yfilter);
 }
 
-std::string BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::get_absolute_path() const
+std::string BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "BGP4-MIB:BGP4-MIB/bgp4PathAttrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::get_segment_path() const
+std::string BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp4PathAttrEntry" <<"[bgp4PathAttrIpAddrPrefix='" <<bgp4pathattripaddrprefix <<"']" <<"[bgp4PathAttrIpAddrPrefixLen='" <<bgp4pathattripaddrprefixlen <<"']" <<"[bgp4PathAttrPeer='" <<bgp4pathattrpeer <<"']";
+    path_buffer << "bgp4PathAttrEntry";
+    ADD_KEY_TOKEN(bgp4pathattripaddrprefix, "bgp4PathAttrIpAddrPrefix");
+    ADD_KEY_TOKEN(bgp4pathattripaddrprefixlen, "bgp4PathAttrIpAddrPrefixLen");
+    ADD_KEY_TOKEN(bgp4pathattrpeer, "bgp4PathAttrPeer");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1345,19 +1365,19 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgp4Pathattrtable::Bgp4P
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bgp4PathAttrIpAddrPrefix")
     {
@@ -1445,7 +1465,7 @@ void BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::set_value(const std::string 
     }
 }
 
-void BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bgp4PathAttrIpAddrPrefix")
     {
@@ -1505,44 +1525,44 @@ void BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::set_filter(const std::string
     }
 }
 
-bool BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgp4PathAttrIpAddrPrefix" || name == "bgp4PathAttrIpAddrPrefixLen" || name == "bgp4PathAttrPeer" || name == "bgp4PathAttrOrigin" || name == "bgp4PathAttrASPathSegment" || name == "bgp4PathAttrNextHop" || name == "bgp4PathAttrMultiExitDisc" || name == "bgp4PathAttrLocalPref" || name == "bgp4PathAttrAtomicAggregate" || name == "bgp4PathAttrAggregatorAS" || name == "bgp4PathAttrAggregatorAddr" || name == "bgp4PathAttrCalcLocalPref" || name == "bgp4PathAttrBest" || name == "bgp4PathAttrUnknown")
         return true;
     return false;
 }
 
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeerstate::idle {1, "idle"};
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeerstate::connect {2, "connect"};
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeerstate::active {3, "active"};
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeerstate::opensent {4, "opensent"};
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeerstate::openconfirm {5, "openconfirm"};
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeerstate::established {6, "established"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerState::idle {1, "idle"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerState::connect {2, "connect"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerState::active {3, "active"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerState::opensent {4, "opensent"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerState::openconfirm {5, "openconfirm"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerState::established {6, "established"};
 
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeeradminstatus::stop {1, "stop"};
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeeradminstatus::start {2, "start"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerAdminStatus::stop {1, "stop"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerAdminStatus::start {2, "start"};
 
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::none {0, "none"};
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::idle {1, "idle"};
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::connect {2, "connect"};
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::active {3, "active"};
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::opensent {4, "opensent"};
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::openconfirm {5, "openconfirm"};
-const Enum::YLeaf BGP4MIB::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::established {6, "established"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::CbgpPeerPrevState::none {0, "none"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::CbgpPeerPrevState::idle {1, "idle"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::CbgpPeerPrevState::connect {2, "connect"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::CbgpPeerPrevState::active {3, "active"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::CbgpPeerPrevState::opensent {4, "opensent"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::CbgpPeerPrevState::openconfirm {5, "openconfirm"};
+const Enum::YLeaf BGP4MIB::BgpPeerTable::BgpPeerEntry::CbgpPeerPrevState::established {6, "established"};
 
-const Enum::YLeaf BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::Bgppathattrorigin::igp {1, "igp"};
-const Enum::YLeaf BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::Bgppathattrorigin::egp {2, "egp"};
-const Enum::YLeaf BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::Bgppathattrorigin::incomplete {3, "incomplete"};
+const Enum::YLeaf BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::BgpPathAttrOrigin::igp {1, "igp"};
+const Enum::YLeaf BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::BgpPathAttrOrigin::egp {2, "egp"};
+const Enum::YLeaf BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::BgpPathAttrOrigin::incomplete {3, "incomplete"};
 
-const Enum::YLeaf BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrorigin::igp {1, "igp"};
-const Enum::YLeaf BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrorigin::egp {2, "egp"};
-const Enum::YLeaf BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrorigin::incomplete {3, "incomplete"};
+const Enum::YLeaf BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrOrigin::igp {1, "igp"};
+const Enum::YLeaf BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrOrigin::egp {2, "egp"};
+const Enum::YLeaf BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrOrigin::incomplete {3, "incomplete"};
 
-const Enum::YLeaf BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattratomicaggregate::lessSpecificRrouteNotSelected {1, "lessSpecificRrouteNotSelected"};
-const Enum::YLeaf BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattratomicaggregate::lessSpecificRouteSelected {2, "lessSpecificRouteSelected"};
+const Enum::YLeaf BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrAtomicAggregate::lessSpecificRrouteNotSelected {1, "lessSpecificRrouteNotSelected"};
+const Enum::YLeaf BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrAtomicAggregate::lessSpecificRouteSelected {2, "lessSpecificRouteSelected"};
 
-const Enum::YLeaf BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrbest::false_ {1, "false"};
-const Enum::YLeaf BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrbest::true_ {2, "true"};
+const Enum::YLeaf BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrBest::false_ {1, "false"};
+const Enum::YLeaf BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrBest::true_ {2, "true"};
 
 
 }

@@ -144,7 +144,7 @@ class Clear::Controller::Switch::Oper::Fdb : public ydk::Entity
 
         class Location; //type: Clear::Controller::Switch::Oper::Fdb::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::Controller::Switch::Oper::Fdb::Location> > location;
+        ydk::YList location;
         
 }; // Clear::Controller::Switch::Oper::Fdb
 
@@ -216,7 +216,7 @@ class Clear::Controller::Switch::Oper::Mlap::Statistics : public ydk::Entity
 
         class Location; //type: Clear::Controller::Switch::Oper::Mlap::Statistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::Controller::Switch::Oper::Mlap::Statistics::Location> > location;
+        ydk::YList location;
         
 }; // Clear::Controller::Switch::Oper::Mlap::Statistics
 
@@ -288,7 +288,7 @@ class Clear::Controller::Switch::Oper::Sdr::Statistics : public ydk::Entity
 
         class Location; //type: Clear::Controller::Switch::Oper::Sdr::Statistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::Controller::Switch::Oper::Sdr::Statistics::Location> > location;
+        ydk::YList location;
         
 }; // Clear::Controller::Switch::Oper::Sdr::Statistics
 
@@ -336,7 +336,7 @@ class Clear::Controller::Switch::Oper::Statistics : public ydk::Entity
 
         class Location; //type: Clear::Controller::Switch::Oper::Statistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::Controller::Switch::Oper::Statistics::Location> > location;
+        ydk::YList location;
         
 }; // Clear::Controller::Switch::Oper::Statistics
 
@@ -412,7 +412,7 @@ class Clear::Controller::Fabric::Counter : public ydk::Entity
 
         class Plane; //type: Clear::Controller::Fabric::Counter::Plane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::Controller::Fabric::Counter::Plane> > plane;
+        ydk::YList plane;
         
 }; // Clear::Controller::Fabric::Counter
 
@@ -458,7 +458,7 @@ class Clear::Controller::Fabric::ClearStatistics : public ydk::Entity
 
         class Plane; //type: Clear::Controller::Fabric::ClearStatistics::Plane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::Controller::Fabric::ClearStatistics::Plane> > plane;
+        ydk::YList plane;
         
 }; // Clear::Controller::Fabric::ClearStatistics
 
@@ -504,7 +504,7 @@ class Clear::Controller::Fabric::Link : public ydk::Entity
 
         class Rack; //type: Clear::Controller::Fabric::Link::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::Controller::Fabric::Link::Rack> > rack;
+        ydk::YList rack;
         
 }; // Clear::Controller::Fabric::Link
 
@@ -529,7 +529,7 @@ class Clear::Controller::Fabric::Link::Rack : public ydk::Entity
         ydk::YLeaf rack_number; //type: int32
         class Port; //type: Clear::Controller::Fabric::Link::Rack::Port
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::Controller::Fabric::Link::Rack::Port> > port;
+        ydk::YList port;
         
 }; // Clear::Controller::Fabric::Link::Rack
 
@@ -555,7 +555,7 @@ class Clear::Controller::Fabric::Link::Rack::Port : public ydk::Entity
         class Location; //type: Clear::Controller::Fabric::Link::Rack::Port::Location
         class Statistics; //type: Clear::Controller::Fabric::Link::Rack::Port::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::Controller::Fabric::Link::Rack::Port::Location> > location;
+        ydk::YList location;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::Controller::Fabric::Link::Rack::Port::Statistics> statistics;
         
 }; // Clear::Controller::Fabric::Link::Rack::Port
@@ -644,7 +644,7 @@ class Clear::ClearAsicErrorsGrp : public ydk::Entity
 
         class ClearDevice; //type: Clear::ClearAsicErrorsGrp::ClearDevice
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice> > clear_device;
+        ydk::YList clear_device;
         
 }; // Clear::ClearAsicErrorsGrp
 
@@ -670,7 +670,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice : public ydk::Entity
         class Instance; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance
         class AllInstances; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance> > instance;
+        ydk::YList instance;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances> all_instances;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice
@@ -752,7 +752,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe : public ydk::Entity
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Sbe
 
@@ -796,7 +796,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe : public ydk::Entity
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Mbe
 
@@ -840,7 +840,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity : public ydk::Ent
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Parity
 
@@ -884,7 +884,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic : public ydk::En
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Generic
 
@@ -928,7 +928,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc : public ydk::Entity
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Crc
 
@@ -972,7 +972,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset : public ydk::Enti
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Reset
 
@@ -1016,7 +1016,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier : public ydk::En
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Barrier
 
@@ -1060,7 +1060,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected : public ydk:
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Unexpected
 
@@ -1104,7 +1104,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link : public ydk::Entit
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Link
 
@@ -1148,7 +1148,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh : public ydk::
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::OorThresh
 
@@ -1192,7 +1192,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp : public ydk::Entity
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Bp
 
@@ -1236,7 +1236,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io : public ydk::Entity
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Io
 
@@ -1280,7 +1280,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode : public ydk::Enti
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Ucode
 
@@ -1324,7 +1324,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config : public ydk::Ent
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Config
 
@@ -1368,7 +1368,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect : public ydk::E
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Indirect
 
@@ -1412,7 +1412,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr : public ydk::Ent
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Nonerr
 
@@ -1456,7 +1456,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary : public ydk::En
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::Summary
 
@@ -1502,7 +1502,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All : public ydk::Entity
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History> history;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All
 
@@ -1525,7 +1525,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History : public yd
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::Instance::All::History
 
@@ -1647,7 +1647,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe : public ydk::En
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Sbe
 
@@ -1691,7 +1691,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe : public ydk::En
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Mbe
 
@@ -1735,7 +1735,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity : public ydk:
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Parity
 
@@ -1779,7 +1779,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic : public ydk
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Generic
 
@@ -1823,7 +1823,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc : public ydk::En
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Crc
 
@@ -1867,7 +1867,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset : public ydk::
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Reset
 
@@ -1911,7 +1911,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier : public ydk
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Barrier
 
@@ -1955,7 +1955,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected : public 
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Unexpected
 
@@ -1999,7 +1999,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link : public ydk::E
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Link
 
@@ -2043,7 +2043,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh : public y
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::OorThresh
 
@@ -2087,7 +2087,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp : public ydk::Ent
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Bp
 
@@ -2131,7 +2131,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io : public ydk::Ent
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Io
 
@@ -2175,7 +2175,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode : public ydk::
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Ucode
 
@@ -2219,7 +2219,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config : public ydk:
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Config
 
@@ -2263,7 +2263,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect : public yd
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Indirect
 
@@ -2307,7 +2307,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr : public ydk:
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Nonerr
 
@@ -2351,7 +2351,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary : public ydk
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::Summary
 
@@ -2397,7 +2397,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All : public ydk::En
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History> history;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All
 
@@ -2420,7 +2420,7 @@ class Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History : publi
 
         class Location; //type: Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History::Location> > location;
+        ydk::YList location;
         
 }; // Clear::ClearAsicErrorsGrp::ClearDevice::AllInstances::All::History
 
@@ -2510,7 +2510,7 @@ class Clear::Logging::Onboard : public ydk::Entity
 
         class Location; //type: Clear::Logging::Onboard::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_clear::Clear::Logging::Onboard::Location> > location;
+        ydk::YList location;
         
 }; // Clear::Logging::Onboard
 

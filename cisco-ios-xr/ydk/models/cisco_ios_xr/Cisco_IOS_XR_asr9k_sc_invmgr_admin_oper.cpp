@@ -17,7 +17,7 @@ Inventory::Inventory()
 {
     racks->parent = this;
 
-    yang_name = "inventory"; yang_parent_name = "Cisco-IOS-XR-asr9k-sc-invmgr-admin-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "inventory"; yang_parent_name = "Cisco-IOS-XR-asr9k-sc-invmgr-admin-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Inventory::~Inventory()
@@ -26,6 +26,7 @@ Inventory::~Inventory()
 
 bool Inventory::has_data() const
 {
+    if (is_presence_container) return true;
     return (racks !=  nullptr && racks->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Inventory::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Inventory::Racks::Racks()
+    :
+    rack(this, {"number"})
 {
 
-    yang_name = "racks"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "racks"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Inventory::Racks::~Racks()
@@ -129,7 +132,8 @@ Inventory::Racks::~Racks()
 
 bool Inventory::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Inventory::Racks::has_data() const
 
 bool Inventory::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Inventory::Racks::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Inventory::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -216,13 +220,13 @@ bool Inventory::Racks::has_leaf_or_child_of_name(const std::string & name) const
 
 Inventory::Racks::Rack::Rack()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     power_supply_shelfs(std::make_shared<Inventory::Racks::Rack::PowerSupplyShelfs>())
-	,slots(std::make_shared<Inventory::Racks::Rack::Slots>())
-	,fan_traies(std::make_shared<Inventory::Racks::Rack::FanTraies>())
-	,power_supply_zones(std::make_shared<Inventory::Racks::Rack::PowerSupplyZones>())
-	,basic_attributes(std::make_shared<Inventory::Racks::Rack::BasicAttributes>())
+    , slots(std::make_shared<Inventory::Racks::Rack::Slots>())
+    , fan_traies(std::make_shared<Inventory::Racks::Rack::FanTraies>())
+    , power_supply_zones(std::make_shared<Inventory::Racks::Rack::PowerSupplyZones>())
+    , basic_attributes(std::make_shared<Inventory::Racks::Rack::BasicAttributes>())
 {
     power_supply_shelfs->parent = this;
     slots->parent = this;
@@ -230,7 +234,7 @@ Inventory::Racks::Rack::Rack()
     power_supply_zones->parent = this;
     basic_attributes->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Inventory::Racks::Rack::~Rack()
@@ -239,6 +243,7 @@ Inventory::Racks::Rack::~Rack()
 
 bool Inventory::Racks::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (power_supply_shelfs !=  nullptr && power_supply_shelfs->has_data())
 	|| (slots !=  nullptr && slots->has_data())
@@ -268,7 +273,8 @@ std::string Inventory::Racks::Rack::get_absolute_path() const
 std::string Inventory::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[number='" <<number <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -390,9 +396,11 @@ bool Inventory::Racks::Rack::has_leaf_or_child_of_name(const std::string & name)
 }
 
 Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelfs()
+    :
+    power_supply_shelf(this, {"number"})
 {
 
-    yang_name = "power-supply-shelfs"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-supply-shelfs"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::PowerSupplyShelfs::~PowerSupplyShelfs()
@@ -401,7 +409,8 @@ Inventory::Racks::Rack::PowerSupplyShelfs::~PowerSupplyShelfs()
 
 bool Inventory::Racks::Rack::PowerSupplyShelfs::has_data() const
 {
-    for (std::size_t index=0; index<power_supply_shelf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<power_supply_shelf.len(); index++)
     {
         if(power_supply_shelf[index]->has_data())
             return true;
@@ -411,7 +420,7 @@ bool Inventory::Racks::Rack::PowerSupplyShelfs::has_data() const
 
 bool Inventory::Racks::Rack::PowerSupplyShelfs::has_operation() const
 {
-    for (std::size_t index=0; index<power_supply_shelf.size(); index++)
+    for (std::size_t index=0; index<power_supply_shelf.len(); index++)
     {
         if(power_supply_shelf[index]->has_operation())
             return true;
@@ -441,7 +450,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::PowerSupplyShelfs::get_child_by_
     {
         auto c = std::make_shared<Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf>();
         c->parent = this;
-        power_supply_shelf.push_back(c);
+        power_supply_shelf.append(c);
         return c;
     }
 
@@ -453,7 +462,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::PowerSupp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : power_supply_shelf)
+    for (auto c : power_supply_shelf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -481,13 +490,13 @@ bool Inventory::Racks::Rack::PowerSupplyShelfs::has_leaf_or_child_of_name(const 
 
 Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::PowerSupplyShelf()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     basic_attributes(std::make_shared<Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes>())
 {
     basic_attributes->parent = this;
 
-    yang_name = "power-supply-shelf"; yang_parent_name = "power-supply-shelfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-supply-shelf"; yang_parent_name = "power-supply-shelfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::~PowerSupplyShelf()
@@ -496,6 +505,7 @@ Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::~PowerSupplyShelf()
 
 bool Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (basic_attributes !=  nullptr && basic_attributes->has_data());
 }
@@ -510,7 +520,8 @@ bool Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::has_operation(
 std::string Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "power-supply-shelf" <<"[number='" <<number <<"']";
+    path_buffer << "power-supply-shelf";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -581,7 +592,7 @@ Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes::Ba
 {
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "power-supply-shelf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "power-supply-shelf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes::~BasicAttributes()
@@ -590,6 +601,7 @@ Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes::~B
 
 bool Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data());
 }
 
@@ -686,7 +698,7 @@ Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes::Ba
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes::BasicInfo::~BasicInfo()
@@ -695,6 +707,7 @@ Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes::Ba
 
 bool Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -1084,9 +1097,11 @@ bool Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttribute
 }
 
 Inventory::Racks::Rack::Slots::Slots()
+    :
+    slot(this, {"number"})
 {
 
-    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::~Slots()
@@ -1095,7 +1110,8 @@ Inventory::Racks::Rack::Slots::~Slots()
 
 bool Inventory::Racks::Rack::Slots::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -1105,7 +1121,7 @@ bool Inventory::Racks::Rack::Slots::has_data() const
 
 bool Inventory::Racks::Rack::Slots::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -1135,7 +1151,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Slots::get_child_by_name(const s
     {
         auto c = std::make_shared<Inventory::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
@@ -1147,7 +1163,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Slots::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1175,15 +1191,15 @@ bool Inventory::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string 
 
 Inventory::Racks::Rack::Slots::Slot::Slot()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     cards(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards>())
-	,basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::BasicAttributes>())
+    , basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::BasicAttributes>())
 {
     cards->parent = this;
     basic_attributes->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::~Slot()
@@ -1192,6 +1208,7 @@ Inventory::Racks::Rack::Slots::Slot::~Slot()
 
 bool Inventory::Racks::Rack::Slots::Slot::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (cards !=  nullptr && cards->has_data())
 	|| (basic_attributes !=  nullptr && basic_attributes->has_data());
@@ -1208,7 +1225,8 @@ bool Inventory::Racks::Rack::Slots::Slot::has_operation() const
 std::string Inventory::Racks::Rack::Slots::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[number='" <<number <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -1288,9 +1306,11 @@ bool Inventory::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::s
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Cards()
+    :
+    card(this, {"number"})
 {
 
-    yang_name = "cards"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cards"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::~Cards()
@@ -1299,7 +1319,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::~Cards()
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::has_data() const
 {
-    for (std::size_t index=0; index<card.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<card.len(); index++)
     {
         if(card[index]->has_data())
             return true;
@@ -1309,7 +1330,7 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::has_data() const
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::has_operation() const
 {
-    for (std::size_t index=0; index<card.size(); index++)
+    for (std::size_t index=0; index<card.len(); index++)
     {
         if(card[index]->has_operation())
             return true;
@@ -1339,7 +1360,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Slots::Slot::Cards::get_child_by
     {
         auto c = std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card>();
         c->parent = this;
-        card.push_back(c);
+        card.append(c);
         return c;
     }
 
@@ -1351,7 +1372,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Slots::Sl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : card)
+    for (auto c : card.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1379,13 +1400,13 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::has_leaf_or_child_of_name(const
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::Card()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     sub_slots(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots>())
-	,hw_components(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents>())
-	,port_slots(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots>())
-	,sensors(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors>())
-	,basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes>())
+    , hw_components(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents>())
+    , port_slots(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots>())
+    , sensors(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors>())
+    , basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes>())
 {
     sub_slots->parent = this;
     hw_components->parent = this;
@@ -1393,7 +1414,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Card()
     sensors->parent = this;
     basic_attributes->parent = this;
 
-    yang_name = "card"; yang_parent_name = "cards"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card"; yang_parent_name = "cards"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::~Card()
@@ -1402,6 +1423,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::~Card()
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (sub_slots !=  nullptr && sub_slots->has_data())
 	|| (hw_components !=  nullptr && hw_components->has_data())
@@ -1424,7 +1446,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::has_operation() const
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "card" <<"[number='" <<number <<"']";
+    path_buffer << "card";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -1546,9 +1569,11 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::has_leaf_or_child_of_name
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlots()
+    :
+    sub_slot(this, {"number"})
 {
 
-    yang_name = "sub-slots"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-slots"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::~SubSlots()
@@ -1557,7 +1582,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::~SubSlots()
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::has_data() const
 {
-    for (std::size_t index=0; index<sub_slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sub_slot.len(); index++)
     {
         if(sub_slot[index]->has_data())
             return true;
@@ -1567,7 +1593,7 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::has_data() cons
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::has_operation() const
 {
-    for (std::size_t index=0; index<sub_slot.size(); index++)
+    for (std::size_t index=0; index<sub_slot.len(); index++)
     {
         if(sub_slot[index]->has_operation())
             return true;
@@ -1597,7 +1623,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlo
     {
         auto c = std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot>();
         c->parent = this;
-        sub_slot.push_back(c);
+        sub_slot.append(c);
         return c;
     }
 
@@ -1609,7 +1635,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Slots::Sl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sub_slot)
+    for (auto c : sub_slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1637,15 +1663,15 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::has_leaf_or_chi
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::SubSlot()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     module(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module>())
-	,basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes>())
+    , basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes>())
 {
     module->parent = this;
     basic_attributes->parent = this;
 
-    yang_name = "sub-slot"; yang_parent_name = "sub-slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-slot"; yang_parent_name = "sub-slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::~SubSlot()
@@ -1654,6 +1680,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::~SubSlot()
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (module !=  nullptr && module->has_data())
 	|| (basic_attributes !=  nullptr && basic_attributes->has_data());
@@ -1670,7 +1697,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::has_op
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sub-slot" <<"[number='" <<number <<"']";
+    path_buffer << "sub-slot";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -1752,14 +1780,14 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::has_le
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Module()
     :
     port_slots(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots>())
-	,sensors(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors>())
-	,basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes>())
+    , sensors(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors>())
+    , basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes>())
 {
     port_slots->parent = this;
     sensors->parent = this;
     basic_attributes->parent = this;
 
-    yang_name = "module"; yang_parent_name = "sub-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module"; yang_parent_name = "sub-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::~Module()
@@ -1768,6 +1796,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::~Mo
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::has_data() const
 {
+    if (is_presence_container) return true;
     return (port_slots !=  nullptr && port_slots->has_data())
 	|| (sensors !=  nullptr && sensors->has_data())
 	|| (basic_attributes !=  nullptr && basic_attributes->has_data());
@@ -1867,9 +1896,11 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlots()
+    :
+    port_slot(this, {"number"})
 {
 
-    yang_name = "port-slots"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-slots"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::~PortSlots()
@@ -1878,7 +1909,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::has_data() const
 {
-    for (std::size_t index=0; index<port_slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_slot.len(); index++)
     {
         if(port_slot[index]->has_data())
             return true;
@@ -1888,7 +1920,7 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::has_operation() const
 {
-    for (std::size_t index=0; index<port_slot.size(); index++)
+    for (std::size_t index=0; index<port_slot.len(); index++)
     {
         if(port_slot[index]->has_operation())
             return true;
@@ -1918,7 +1950,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlo
     {
         auto c = std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot>();
         c->parent = this;
-        port_slot.push_back(c);
+        port_slot.append(c);
         return c;
     }
 
@@ -1930,7 +1962,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Slots::Sl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_slot)
+    for (auto c : port_slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1958,15 +1990,15 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::PortSlot()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     port(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port>())
-	,basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes>())
+    , basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes>())
 {
     port->parent = this;
     basic_attributes->parent = this;
 
-    yang_name = "port-slot"; yang_parent_name = "port-slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-slot"; yang_parent_name = "port-slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::~PortSlot()
@@ -1975,6 +2007,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (port !=  nullptr && port->has_data())
 	|| (basic_attributes !=  nullptr && basic_attributes->has_data());
@@ -1991,7 +2024,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-slot" <<"[number='" <<number <<"']";
+    path_buffer << "port-slot";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -2076,7 +2110,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 {
     basic_attributes->parent = this;
 
-    yang_name = "port"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::~Port()
@@ -2085,6 +2119,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_attributes !=  nullptr && basic_attributes->has_data());
 }
 
@@ -2154,12 +2189,12 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicAttributes()
     :
     fru_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo>())
-	,basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo>())
+    , basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo>())
 {
     fru_info->parent = this;
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::~BasicAttributes()
@@ -2168,6 +2203,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (fru_info !=  nullptr && fru_info->has_data())
 	|| (basic_info !=  nullptr && basic_info->has_data());
 }
@@ -2259,14 +2295,14 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::~FruInfo()
@@ -2275,6 +2311,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -2454,7 +2491,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -2463,6 +2500,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -2545,7 +2583,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime::~CardUpTime()
@@ -2554,6 +2592,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -2660,7 +2699,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo::~BasicInfo()
@@ -2669,6 +2708,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -3060,12 +3100,12 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicAttributes()
     :
     fru_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo>())
-	,basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo>())
+    , basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo>())
 {
     fru_info->parent = this;
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::~BasicAttributes()
@@ -3074,6 +3114,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (fru_info !=  nullptr && fru_info->has_data())
 	|| (basic_info !=  nullptr && basic_info->has_data());
 }
@@ -3165,14 +3206,14 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::~FruInfo()
@@ -3181,6 +3222,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -3360,7 +3402,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -3369,6 +3411,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -3451,7 +3494,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime::~CardUpTime()
@@ -3460,6 +3503,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -3566,7 +3610,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo::~BasicInfo()
@@ -3575,6 +3619,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -3964,9 +4009,11 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensors()
+    :
+    sensor(this, {"number"})
 {
 
-    yang_name = "sensors"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensors"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::~Sensors()
@@ -3975,7 +4022,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::has_data() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_data())
             return true;
@@ -3985,7 +4033,7 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::has_operation() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_operation())
             return true;
@@ -4015,7 +4063,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlo
     {
         auto c = std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor>();
         c->parent = this;
-        sensor.push_back(c);
+        sensor.append(c);
         return c;
     }
 
@@ -4027,7 +4075,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Slots::Sl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor)
+    for (auto c : sensor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4055,13 +4103,13 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Sensor()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes>())
 {
     basic_attributes->parent = this;
 
-    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::~Sensor()
@@ -4070,6 +4118,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (basic_attributes !=  nullptr && basic_attributes->has_data());
 }
@@ -4084,7 +4133,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor" <<"[number='" <<number <<"']";
+    path_buffer << "sensor";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -4152,12 +4202,12 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicAttributes()
     :
     fru_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo>())
-	,basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo>())
+    , basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo>())
 {
     fru_info->parent = this;
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::~BasicAttributes()
@@ -4166,6 +4216,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (fru_info !=  nullptr && fru_info->has_data())
 	|| (basic_info !=  nullptr && basic_info->has_data());
 }
@@ -4257,14 +4308,14 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sen
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::~FruInfo()
@@ -4273,6 +4324,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -4452,7 +4504,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sen
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -4461,6 +4513,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -4543,7 +4596,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sen
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime::~CardUpTime()
@@ -4552,6 +4605,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -4658,7 +4712,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sen
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo::~BasicInfo()
@@ -4667,6 +4721,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -5058,12 +5113,12 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicAttributes()
     :
     fru_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo>())
-	,basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo>())
+    , basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo>())
 {
     fru_info->parent = this;
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::~BasicAttributes()
@@ -5072,6 +5127,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (fru_info !=  nullptr && fru_info->has_data())
 	|| (basic_info !=  nullptr && basic_info->has_data());
 }
@@ -5163,14 +5219,14 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Bas
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::~FruInfo()
@@ -5179,6 +5235,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -5358,7 +5415,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Bas
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -5367,6 +5424,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -5449,7 +5507,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Bas
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::CardUpTime::~CardUpTime()
@@ -5458,6 +5516,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -5564,7 +5623,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Bas
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo::~BasicInfo()
@@ -5573,6 +5632,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -5964,12 +6024,12 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicAttributes()
     :
     fru_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo>())
-	,basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo>())
+    , basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo>())
 {
     fru_info->parent = this;
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "sub-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "sub-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::~BasicAttributes()
@@ -5978,6 +6038,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttrib
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (fru_info !=  nullptr && fru_info->has_data())
 	|| (basic_info !=  nullptr && basic_info->has_data());
 }
@@ -6069,14 +6130,14 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttrib
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::~FruInfo()
@@ -6085,6 +6146,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttrib
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -6264,7 +6326,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttrib
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -6273,6 +6335,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttrib
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -6355,7 +6418,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttrib
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::CardUpTime::~CardUpTime()
@@ -6364,6 +6427,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttrib
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -6470,7 +6534,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttrib
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo::~BasicInfo()
@@ -6479,6 +6543,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttrib
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -6868,9 +6933,11 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicA
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponents()
+    :
+    hw_component(this, {"number"})
 {
 
-    yang_name = "hw-components"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-components"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::~HwComponents()
@@ -6879,7 +6946,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::~HwComponents()
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::has_data() const
 {
-    for (std::size_t index=0; index<hw_component.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hw_component.len(); index++)
     {
         if(hw_component[index]->has_data())
             return true;
@@ -6889,7 +6957,7 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::has_data() 
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::has_operation() const
 {
-    for (std::size_t index=0; index<hw_component.size(); index++)
+    for (std::size_t index=0; index<hw_component.len(); index++)
     {
         if(hw_component[index]->has_operation())
             return true;
@@ -6919,7 +6987,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComp
     {
         auto c = std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent>();
         c->parent = this;
-        hw_component.push_back(c);
+        hw_component.append(c);
         return c;
     }
 
@@ -6931,7 +6999,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Slots::Sl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hw_component)
+    for (auto c : hw_component.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6959,15 +7027,15 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::has_leaf_or
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::HwComponent()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     sensors(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors>())
-	,basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes>())
+    , basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes>())
 {
     sensors->parent = this;
     basic_attributes->parent = this;
 
-    yang_name = "hw-component"; yang_parent_name = "hw-components"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-component"; yang_parent_name = "hw-components"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::~HwComponent()
@@ -6976,6 +7044,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::~Hw
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (sensors !=  nullptr && sensors->has_data())
 	|| (basic_attributes !=  nullptr && basic_attributes->has_data());
@@ -6992,7 +7061,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hw-component" <<"[number='" <<number <<"']";
+    path_buffer << "hw-component";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -7072,9 +7142,11 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensors()
+    :
+    sensor(this, {"number"})
 {
 
-    yang_name = "sensors"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensors"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::~Sensors()
@@ -7083,7 +7155,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::has_data() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_data())
             return true;
@@ -7093,7 +7166,7 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::has_operation() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_operation())
             return true;
@@ -7123,7 +7196,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComp
     {
         auto c = std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor>();
         c->parent = this;
-        sensor.push_back(c);
+        sensor.append(c);
         return c;
     }
 
@@ -7135,7 +7208,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Slots::Sl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor)
+    for (auto c : sensor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7163,13 +7236,13 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Sensor()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes>())
 {
     basic_attributes->parent = this;
 
-    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::~Sensor()
@@ -7178,6 +7251,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (basic_attributes !=  nullptr && basic_attributes->has_data());
 }
@@ -7192,7 +7266,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor" <<"[number='" <<number <<"']";
+    path_buffer << "sensor";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -7260,12 +7335,12 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicAttributes()
     :
     fru_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo>())
-	,basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo>())
+    , basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo>())
 {
     fru_info->parent = this;
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::~BasicAttributes()
@@ -7274,6 +7349,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (fru_info !=  nullptr && fru_info->has_data())
 	|| (basic_info !=  nullptr && basic_info->has_data());
 }
@@ -7365,14 +7441,14 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sen
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::~FruInfo()
@@ -7381,6 +7457,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -7560,7 +7637,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sen
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -7569,6 +7646,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -7651,7 +7729,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sen
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime::~CardUpTime()
@@ -7660,6 +7738,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -7766,7 +7845,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sen
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo::~BasicInfo()
@@ -7775,6 +7854,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sen
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -8166,12 +8246,12 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicAttributes()
     :
     fru_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo>())
-	,basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo>())
+    , basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo>())
 {
     fru_info->parent = this;
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::~BasicAttributes()
@@ -8180,6 +8260,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (fru_info !=  nullptr && fru_info->has_data())
 	|| (basic_info !=  nullptr && basic_info->has_data());
 }
@@ -8271,14 +8352,14 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Bas
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::~FruInfo()
@@ -8287,6 +8368,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -8466,7 +8548,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Bas
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -8475,6 +8557,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -8557,7 +8640,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Bas
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::CardUpTime::~CardUpTime()
@@ -8566,6 +8649,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -8672,7 +8756,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Bas
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo::~BasicInfo()
@@ -8681,6 +8765,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -9070,9 +9155,11 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlots()
+    :
+    port_slot(this, {"number"})
 {
 
-    yang_name = "port-slots"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-slots"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::~PortSlots()
@@ -9081,7 +9168,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::~PortSlots()
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::has_data() const
 {
-    for (std::size_t index=0; index<port_slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_slot.len(); index++)
     {
         if(port_slot[index]->has_data())
             return true;
@@ -9091,7 +9179,7 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::has_data() con
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::has_operation() const
 {
-    for (std::size_t index=0; index<port_slot.size(); index++)
+    for (std::size_t index=0; index<port_slot.len(); index++)
     {
         if(port_slot[index]->has_operation())
             return true;
@@ -9121,7 +9209,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSl
     {
         auto c = std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot>();
         c->parent = this;
-        port_slot.push_back(c);
+        port_slot.append(c);
         return c;
     }
 
@@ -9133,7 +9221,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Slots::Sl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_slot)
+    for (auto c : port_slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9161,15 +9249,15 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::has_leaf_or_ch
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::PortSlot()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     port(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port>())
-	,basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes>())
+    , basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes>())
 {
     port->parent = this;
     basic_attributes->parent = this;
 
-    yang_name = "port-slot"; yang_parent_name = "port-slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-slot"; yang_parent_name = "port-slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::~PortSlot()
@@ -9178,6 +9266,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::~PortSlot
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (port !=  nullptr && port->has_data())
 	|| (basic_attributes !=  nullptr && basic_attributes->has_data());
@@ -9194,7 +9283,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::has_
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-slot" <<"[number='" <<number <<"']";
+    path_buffer << "port-slot";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -9279,7 +9369,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Por
 {
     basic_attributes->parent = this;
 
-    yang_name = "port"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::~Port()
@@ -9288,6 +9378,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::~Po
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_attributes !=  nullptr && basic_attributes->has_data());
 }
 
@@ -9357,12 +9448,12 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicAttributes()
     :
     fru_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo>())
-	,basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo>())
+    , basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo>())
 {
     fru_info->parent = this;
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::~BasicAttributes()
@@ -9371,6 +9462,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (fru_info !=  nullptr && fru_info->has_data())
 	|| (basic_info !=  nullptr && basic_info->has_data());
 }
@@ -9462,14 +9554,14 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Bas
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::~FruInfo()
@@ -9478,6 +9570,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -9657,7 +9750,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Bas
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -9666,6 +9759,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -9748,7 +9842,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Bas
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime::~CardUpTime()
@@ -9757,6 +9851,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -9863,7 +9958,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Bas
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo::~BasicInfo()
@@ -9872,6 +9967,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Bas
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -10263,12 +10359,12 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicAttributes()
     :
     fru_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo>())
-	,basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo>())
+    , basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo>())
 {
     fru_info->parent = this;
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::~BasicAttributes()
@@ -10277,6 +10373,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttr
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (fru_info !=  nullptr && fru_info->has_data())
 	|| (basic_info !=  nullptr && basic_info->has_data());
 }
@@ -10368,14 +10465,14 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttr
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::~FruInfo()
@@ -10384,6 +10481,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttr
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -10563,7 +10661,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttr
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -10572,6 +10670,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttr
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -10654,7 +10753,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttr
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime::~CardUpTime()
@@ -10663,6 +10762,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttr
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -10769,7 +10869,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttr
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo::~BasicInfo()
@@ -10778,6 +10878,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttr
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -11167,9 +11268,11 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Basi
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensors()
+    :
+    sensor(this, {"number"})
 {
 
-    yang_name = "sensors"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensors"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::~Sensors()
@@ -11178,7 +11281,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::~Sensors()
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::has_data() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_data())
             return true;
@@ -11188,7 +11292,7 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::has_data() const
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::has_operation() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_operation())
             return true;
@@ -11218,7 +11322,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensor
     {
         auto c = std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor>();
         c->parent = this;
-        sensor.push_back(c);
+        sensor.append(c);
         return c;
     }
 
@@ -11230,7 +11334,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Slots::Sl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor)
+    for (auto c : sensor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11258,13 +11362,13 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::has_leaf_or_chil
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Sensor()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     basic_attributes(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes>())
 {
     basic_attributes->parent = this;
 
-    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::~Sensor()
@@ -11273,6 +11377,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::~Sensor()
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (basic_attributes !=  nullptr && basic_attributes->has_data());
 }
@@ -11287,7 +11392,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::has_oper
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor" <<"[number='" <<number <<"']";
+    path_buffer << "sensor";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -11355,12 +11461,12 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::has_leaf
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicAttributes()
     :
     fru_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo>())
-	,basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo>())
+    , basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo>())
 {
     fru_info->parent = this;
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::~BasicAttributes()
@@ -11369,6 +11475,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttribut
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (fru_info !=  nullptr && fru_info->has_data())
 	|| (basic_info !=  nullptr && basic_info->has_data());
 }
@@ -11460,14 +11567,14 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttribut
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::~FruInfo()
@@ -11476,6 +11583,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttribut
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -11655,7 +11763,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttribut
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -11664,6 +11772,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttribut
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -11746,7 +11855,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttribut
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime::~CardUpTime()
@@ -11755,6 +11864,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttribut
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -11861,7 +11971,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttribut
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo::~BasicInfo()
@@ -11870,6 +11980,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttribut
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -12261,12 +12372,12 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAtt
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicAttributes()
     :
     fru_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo>())
-	,basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo>())
+    , basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo>())
 {
     fru_info->parent = this;
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::~BasicAttributes()
@@ -12275,6 +12386,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::~BasicAttribu
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (fru_info !=  nullptr && fru_info->has_data())
 	|| (basic_info !=  nullptr && basic_info->has_data());
 }
@@ -12366,14 +12478,14 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::FruI
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::~FruInfo()
@@ -12382,6 +12494,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::~Fru
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -12561,7 +12674,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::Last
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -12570,6 +12683,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::Last
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -12652,7 +12766,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::Card
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::CardUpTime::~CardUpTime()
@@ -12661,6 +12775,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::Card
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -12767,7 +12882,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo::Ba
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo::~BasicInfo()
@@ -12776,6 +12891,7 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo::~B
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -13167,12 +13283,12 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInf
 Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicAttributes()
     :
     fru_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo>())
-	,basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo>())
+    , basic_info(std::make_shared<Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo>())
 {
     fru_info->parent = this;
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::BasicAttributes::~BasicAttributes()
@@ -13181,6 +13297,7 @@ Inventory::Racks::Rack::Slots::Slot::BasicAttributes::~BasicAttributes()
 
 bool Inventory::Racks::Rack::Slots::Slot::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (fru_info !=  nullptr && fru_info->has_data())
 	|| (basic_info !=  nullptr && basic_info->has_data());
 }
@@ -13272,14 +13389,14 @@ Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::FruInfo()
     card_reset_reason{YType::enumeration, "card-reset-reason"},
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime>())
+    , card_up_time(std::make_shared<Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::~FruInfo()
@@ -13288,6 +13405,7 @@ Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::~FruInfo()
 
 bool Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
 	|| card_operational_state.is_set
@@ -13467,7 +13585,7 @@ Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalSt
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -13476,6 +13594,7 @@ Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalSt
 
 bool Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -13558,7 +13677,7 @@ Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime::CardU
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime::~CardUpTime()
@@ -13567,6 +13686,7 @@ Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime::~Card
 
 bool Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -13673,7 +13793,7 @@ Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::BasicInfo()
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::~BasicInfo()
@@ -13682,6 +13802,7 @@ Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::~BasicInfo()
 
 bool Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -14071,9 +14192,11 @@ bool Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::has_leaf_o
 }
 
 Inventory::Racks::Rack::FanTraies::FanTraies()
+    :
+    fan_tray(this, {"number"})
 {
 
-    yang_name = "fan-traies"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fan-traies"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::FanTraies::~FanTraies()
@@ -14082,7 +14205,8 @@ Inventory::Racks::Rack::FanTraies::~FanTraies()
 
 bool Inventory::Racks::Rack::FanTraies::has_data() const
 {
-    for (std::size_t index=0; index<fan_tray.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fan_tray.len(); index++)
     {
         if(fan_tray[index]->has_data())
             return true;
@@ -14092,7 +14216,7 @@ bool Inventory::Racks::Rack::FanTraies::has_data() const
 
 bool Inventory::Racks::Rack::FanTraies::has_operation() const
 {
-    for (std::size_t index=0; index<fan_tray.size(); index++)
+    for (std::size_t index=0; index<fan_tray.len(); index++)
     {
         if(fan_tray[index]->has_operation())
             return true;
@@ -14122,7 +14246,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::FanTraies::get_child_by_name(con
     {
         auto c = std::make_shared<Inventory::Racks::Rack::FanTraies::FanTray>();
         c->parent = this;
-        fan_tray.push_back(c);
+        fan_tray.append(c);
         return c;
     }
 
@@ -14134,7 +14258,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::FanTraies
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fan_tray)
+    for (auto c : fan_tray.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14162,13 +14286,13 @@ bool Inventory::Racks::Rack::FanTraies::has_leaf_or_child_of_name(const std::str
 
 Inventory::Racks::Rack::FanTraies::FanTray::FanTray()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     basic_attributes(std::make_shared<Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes>())
 {
     basic_attributes->parent = this;
 
-    yang_name = "fan-tray"; yang_parent_name = "fan-traies"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fan-tray"; yang_parent_name = "fan-traies"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::FanTraies::FanTray::~FanTray()
@@ -14177,6 +14301,7 @@ Inventory::Racks::Rack::FanTraies::FanTray::~FanTray()
 
 bool Inventory::Racks::Rack::FanTraies::FanTray::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (basic_attributes !=  nullptr && basic_attributes->has_data());
 }
@@ -14191,7 +14316,8 @@ bool Inventory::Racks::Rack::FanTraies::FanTray::has_operation() const
 std::string Inventory::Racks::Rack::FanTraies::FanTray::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fan-tray" <<"[number='" <<number <<"']";
+    path_buffer << "fan-tray";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -14262,7 +14388,7 @@ Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::BasicAttributes()
 {
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "fan-tray"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "fan-tray"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::~BasicAttributes()
@@ -14271,6 +14397,7 @@ Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::~BasicAttributes()
 
 bool Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data());
 }
 
@@ -14367,7 +14494,7 @@ Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::BasicInfo::BasicInf
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::BasicInfo::~BasicInfo()
@@ -14376,6 +14503,7 @@ Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::BasicInfo::~BasicIn
 
 bool Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set
@@ -14765,9 +14893,11 @@ bool Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::BasicInfo::has
 }
 
 Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZones()
+    :
+    power_supply_zone(this, {"number"})
 {
 
-    yang_name = "power-supply-zones"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-supply-zones"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::PowerSupplyZones::~PowerSupplyZones()
@@ -14776,7 +14906,8 @@ Inventory::Racks::Rack::PowerSupplyZones::~PowerSupplyZones()
 
 bool Inventory::Racks::Rack::PowerSupplyZones::has_data() const
 {
-    for (std::size_t index=0; index<power_supply_zone.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<power_supply_zone.len(); index++)
     {
         if(power_supply_zone[index]->has_data())
             return true;
@@ -14786,7 +14917,7 @@ bool Inventory::Racks::Rack::PowerSupplyZones::has_data() const
 
 bool Inventory::Racks::Rack::PowerSupplyZones::has_operation() const
 {
-    for (std::size_t index=0; index<power_supply_zone.size(); index++)
+    for (std::size_t index=0; index<power_supply_zone.len(); index++)
     {
         if(power_supply_zone[index]->has_operation())
             return true;
@@ -14816,7 +14947,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::PowerSupplyZones::get_child_by_n
     {
         auto c = std::make_shared<Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone>();
         c->parent = this;
-        power_supply_zone.push_back(c);
+        power_supply_zone.append(c);
         return c;
     }
 
@@ -14828,7 +14959,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::PowerSupp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : power_supply_zone)
+    for (auto c : power_supply_zone.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14856,13 +14987,13 @@ bool Inventory::Racks::Rack::PowerSupplyZones::has_leaf_or_child_of_name(const s
 
 Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZone()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     power_supply_zone_attributes(std::make_shared<Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes>())
 {
     power_supply_zone_attributes->parent = this;
 
-    yang_name = "power-supply-zone"; yang_parent_name = "power-supply-zones"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-supply-zone"; yang_parent_name = "power-supply-zones"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::~PowerSupplyZone()
@@ -14871,6 +15002,7 @@ Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::~PowerSupplyZone()
 
 bool Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (power_supply_zone_attributes !=  nullptr && power_supply_zone_attributes->has_data());
 }
@@ -14885,7 +15017,8 @@ bool Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::has_operation() 
 std::string Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "power-supply-zone" <<"[number='" <<number <<"']";
+    path_buffer << "power-supply-zone";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -14956,7 +15089,7 @@ Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttrib
 {
     power_supply_group_info->parent = this;
 
-    yang_name = "power-supply-zone-attributes"; yang_parent_name = "power-supply-zone"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-supply-zone-attributes"; yang_parent_name = "power-supply-zone"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes::~PowerSupplyZoneAttributes()
@@ -14965,6 +15098,7 @@ Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttrib
 
 bool Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (power_supply_group_info !=  nullptr && power_supply_group_info->has_data());
 }
 
@@ -15039,7 +15173,7 @@ Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttrib
     power_group_drawn_current{YType::int32, "power-group-drawn-current"}
 {
 
-    yang_name = "power-supply-group-info"; yang_parent_name = "power-supply-zone-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-supply-group-info"; yang_parent_name = "power-supply-zone-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes::PowerSupplyGroupInfo::~PowerSupplyGroupInfo()
@@ -15048,6 +15182,7 @@ Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttrib
 
 bool Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes::PowerSupplyGroupInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return power_group_redundancy_mode.is_set
 	|| power_group_power_units.is_set
 	|| power_group_available_current.is_set
@@ -15156,7 +15291,7 @@ Inventory::Racks::Rack::BasicAttributes::BasicAttributes()
 {
     basic_info->parent = this;
 
-    yang_name = "basic-attributes"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-attributes"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::BasicAttributes::~BasicAttributes()
@@ -15165,6 +15300,7 @@ Inventory::Racks::Rack::BasicAttributes::~BasicAttributes()
 
 bool Inventory::Racks::Rack::BasicAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data());
 }
 
@@ -15261,7 +15397,7 @@ Inventory::Racks::Rack::BasicAttributes::BasicInfo::BasicInfo()
     unique_id{YType::int32, "unique-id"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Inventory::Racks::Rack::BasicAttributes::BasicInfo::~BasicInfo()
@@ -15270,6 +15406,7 @@ Inventory::Racks::Rack::BasicAttributes::BasicInfo::~BasicInfo()
 
 bool Inventory::Racks::Rack::BasicAttributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| vendor_type.is_set
 	|| name.is_set

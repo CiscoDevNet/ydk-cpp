@@ -32,18 +32,18 @@ class CISCOPINGMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscopingtable; //type: CISCOPINGMIB::Ciscopingtable
+        class CiscoPingTable; //type: CISCOPINGMIB::CiscoPingTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_PING_MIB::CISCOPINGMIB::Ciscopingtable> ciscopingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PING_MIB::CISCOPINGMIB::CiscoPingTable> ciscopingtable;
         
 }; // CISCOPINGMIB
 
 
-class CISCOPINGMIB::Ciscopingtable : public ydk::Entity
+class CISCOPINGMIB::CiscoPingTable : public ydk::Entity
 {
     public:
-        Ciscopingtable();
-        ~Ciscopingtable();
+        CiscoPingTable();
+        ~CiscoPingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -56,18 +56,18 @@ class CISCOPINGMIB::Ciscopingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscopingentry; //type: CISCOPINGMIB::Ciscopingtable::Ciscopingentry
+        class CiscoPingEntry; //type: CISCOPINGMIB::CiscoPingTable::CiscoPingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PING_MIB::CISCOPINGMIB::Ciscopingtable::Ciscopingentry> > ciscopingentry;
+        ydk::YList ciscopingentry;
         
-}; // CISCOPINGMIB::Ciscopingtable
+}; // CISCOPINGMIB::CiscoPingTable
 
 
-class CISCOPINGMIB::Ciscopingtable::Ciscopingentry : public ydk::Entity
+class CISCOPINGMIB::CiscoPingTable::CiscoPingEntry : public ydk::Entity
 {
     public:
-        Ciscopingentry();
-        ~Ciscopingentry();
+        CiscoPingEntry();
+        ~CiscoPingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -98,7 +98,7 @@ class CISCOPINGMIB::Ciscopingtable::Ciscopingentry : public ydk::Entity
         ydk::YLeaf ciscopingentrystatus; //type: RowStatus
         ydk::YLeaf ciscopingvrfname; //type: binary
 
-}; // CISCOPINGMIB::Ciscopingtable::Ciscopingentry
+}; // CISCOPINGMIB::CiscoPingTable::CiscoPingEntry
 
 
 }

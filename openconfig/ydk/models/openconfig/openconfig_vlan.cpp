@@ -12,9 +12,11 @@ namespace openconfig {
 namespace openconfig_vlan {
 
 Vlans::Vlans()
+    :
+    vlan(this, {"vlan_id"})
 {
 
-    yang_name = "vlans"; yang_parent_name = "openconfig-vlan"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vlans"; yang_parent_name = "openconfig-vlan"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Vlans::~Vlans()
@@ -23,7 +25,8 @@ Vlans::~Vlans()
 
 bool Vlans::has_data() const
 {
-    for (std::size_t index=0; index<vlan.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan.len(); index++)
     {
         if(vlan[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Vlans::has_data() const
 
 bool Vlans::has_operation() const
 {
-    for (std::size_t index=0; index<vlan.size(); index++)
+    for (std::size_t index=0; index<vlan.len(); index++)
     {
         if(vlan[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Vlans::get_child_by_name(const std::string & child_yang_
     {
         auto c = std::make_shared<Vlans::Vlan>();
         c->parent = this;
-        vlan.push_back(c);
+        vlan.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlans::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan)
+    for (auto c : vlan.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,16 +132,16 @@ bool Vlans::has_leaf_or_child_of_name(const std::string & name) const
 Vlans::Vlan::Vlan()
     :
     vlan_id{YType::str, "vlan-id"}
-    	,
+        ,
     config(std::make_shared<Vlans::Vlan::Config>())
-	,state(std::make_shared<Vlans::Vlan::State>())
-	,members(std::make_shared<Vlans::Vlan::Members>())
+    , state(std::make_shared<Vlans::Vlan::State>())
+    , members(std::make_shared<Vlans::Vlan::Members>())
 {
     config->parent = this;
     state->parent = this;
     members->parent = this;
 
-    yang_name = "vlan"; yang_parent_name = "vlans"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan"; yang_parent_name = "vlans"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vlans::Vlan::~Vlan()
@@ -147,6 +150,7 @@ Vlans::Vlan::~Vlan()
 
 bool Vlans::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -172,7 +176,8 @@ std::string Vlans::Vlan::get_absolute_path() const
 std::string Vlans::Vlan::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan" <<"[vlan-id='" <<vlan_id <<"']";
+    path_buffer << "vlan";
+    ADD_KEY_TOKEN(vlan_id, "vlan-id");
     return path_buffer.str();
 }
 
@@ -273,7 +278,7 @@ Vlans::Vlan::Config::Config()
     tpid{YType::identityref, "tpid"}
 {
 
-    yang_name = "config"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlans::Vlan::Config::~Config()
@@ -282,6 +287,7 @@ Vlans::Vlan::Config::~Config()
 
 bool Vlans::Vlan::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| name.is_set
 	|| status.is_set
@@ -392,7 +398,7 @@ Vlans::Vlan::State::State()
     tpid{YType::identityref, "tpid"}
 {
 
-    yang_name = "state"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlans::Vlan::State::~State()
@@ -401,6 +407,7 @@ Vlans::Vlan::State::~State()
 
 bool Vlans::Vlan::State::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| name.is_set
 	|| status.is_set
@@ -504,9 +511,11 @@ bool Vlans::Vlan::State::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 Vlans::Vlan::Members::Members()
+    :
+    member(this, {})
 {
 
-    yang_name = "members"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "members"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlans::Vlan::Members::~Members()
@@ -515,7 +524,8 @@ Vlans::Vlan::Members::~Members()
 
 bool Vlans::Vlan::Members::has_data() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_data())
             return true;
@@ -525,7 +535,7 @@ bool Vlans::Vlan::Members::has_data() const
 
 bool Vlans::Vlan::Members::has_operation() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_operation())
             return true;
@@ -555,7 +565,7 @@ std::shared_ptr<Entity> Vlans::Vlan::Members::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Vlans::Vlan::Members::Member>();
         c->parent = this;
-        member.push_back(c);
+        member.append(c);
         return c;
     }
 
@@ -567,7 +577,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : member)
+    for (auto c : member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -599,7 +609,7 @@ Vlans::Vlan::Members::Member::Member()
 {
     interface_ref->parent = this;
 
-    yang_name = "member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlans::Vlan::Members::Member::~Member()
@@ -608,6 +618,7 @@ Vlans::Vlan::Members::Member::~Member()
 
 bool Vlans::Vlan::Members::Member::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface_ref !=  nullptr && interface_ref->has_data());
 }
 
@@ -680,7 +691,7 @@ Vlans::Vlan::Members::Member::InterfaceRef::InterfaceRef()
 {
     state->parent = this;
 
-    yang_name = "interface-ref"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-ref"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlans::Vlan::Members::Member::InterfaceRef::~InterfaceRef()
@@ -689,6 +700,7 @@ Vlans::Vlan::Members::Member::InterfaceRef::~InterfaceRef()
 
 bool Vlans::Vlan::Members::Member::InterfaceRef::has_data() const
 {
+    if (is_presence_container) return true;
     return (state !=  nullptr && state->has_data());
 }
 
@@ -761,7 +773,7 @@ Vlans::Vlan::Members::Member::InterfaceRef::State::State()
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlans::Vlan::Members::Member::InterfaceRef::State::~State()
@@ -770,6 +782,7 @@ Vlans::Vlan::Members::Member::InterfaceRef::State::~State()
 
 bool Vlans::Vlan::Members::Member::InterfaceRef::State::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }

@@ -57,7 +57,7 @@ class SubscriberAccounting::Nodes : public ydk::Entity
 
         class Node; //type: SubscriberAccounting::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // SubscriberAccounting::Nodes
 
@@ -109,7 +109,7 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures : p
 
         class SubscriberAccountingSessionFeature; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature> > subscriber_accounting_session_feature;
+        ydk::YList subscriber_accounting_session_feature;
         
 }; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures
 
@@ -179,7 +179,7 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::Su
         ydk::YLeaf session_timeout_time_remaining; //type: uint32
         class ServiceAccountingFeature; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature> > service_accounting_feature;
+        ydk::YList service_accounting_feature;
         
 }; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData
 
@@ -388,7 +388,7 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures : publ
 
         class SubscriberAccountingFlowFeature; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature> > subscriber_accounting_flow_feature;
+        ydk::YList subscriber_accounting_flow_feature;
         
 }; // SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures
 

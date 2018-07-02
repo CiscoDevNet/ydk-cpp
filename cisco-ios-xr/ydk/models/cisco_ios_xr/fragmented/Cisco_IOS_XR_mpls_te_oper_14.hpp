@@ -15,7 +15,7 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_te_oper {
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::PreviousSetup : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::PreviousSetup : public ydk::Entity
 {
     public:
         PreviousSetup();
@@ -36,10 +36,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::PreviousSetup : pub
         ydk::YLeaf previous_fail_reason; //type: string
         ydk::YLeaf previous_setup_last_error; //type: string
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::PreviousSetup
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::PreviousSetup
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::PreviousGmplsPathProtectSetup : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::PreviousGmplsPathProtectSetup : public ydk::Entity
 {
     public:
         PreviousGmplsPathProtectSetup();
@@ -60,10 +60,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::PreviousGmplsPathPr
         ydk::YLeaf previous_protect_fail_reason; //type: string
         ydk::YLeaf previous_protect_setup_last_error; //type: string
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::PreviousGmplsPathProtectSetup
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::PreviousGmplsPathProtectSetup
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::GmplsOtherSetup : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::GmplsOtherSetup : public ydk::Entity
 {
     public:
         GmplsOtherSetup();
@@ -82,10 +82,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::GmplsOtherSetup : p
         ydk::YLeaf path_option_index; //type: uint32
         ydk::YLeaf other_setup_error; //type: string
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::GmplsOtherSetup
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::GmplsOtherSetup
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::GmplsOtherProtectSetup : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::GmplsOtherProtectSetup : public ydk::Entity
 {
     public:
         GmplsOtherProtectSetup();
@@ -104,10 +104,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::GmplsOtherProtectSe
         ydk::YLeaf path_option_index; //type: uint32
         ydk::YLeaf other_setup_error; //type: string
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::GmplsOtherProtectSetup
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::GmplsOtherProtectSetup
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::StandbySetup : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::StandbySetup : public ydk::Entity
 {
     public:
         StandbySetup();
@@ -126,10 +126,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::StandbySetup : publ
         ydk::YLeaf standby_lsp_uptime; //type: uint32
         ydk::YLeaf standby_setup_timer; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::StandbySetup
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::StandbySetup
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::StandbyReoptSetup : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::StandbyReoptSetup : public ydk::Entity
 {
     public:
         StandbyReoptSetup();
@@ -149,10 +149,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::StandbyReoptSetup :
         ydk::YLeaf reoptimized_setup_timer; //type: uint32
         ydk::YLeaf reoptimized_setup_last_error; //type: string
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::StandbyReoptSetup
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::StandbyReoptSetup
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::LastReOptFail : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::LastReOptFail : public ydk::Entity
 {
     public:
         LastReOptFail();
@@ -172,10 +172,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::LastReOptFail : pub
         ydk::YLeaf re_opt_failed_destination; //type: string
         ydk::YLeaf re_opt_failed_timestamp; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::LastReOptFail
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::LastReOptFail
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::LastStdbyReOptFail : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::LastStdbyReOptFail : public ydk::Entity
 {
     public:
         LastStdbyReOptFail();
@@ -195,10 +195,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::LastStdbyReOptFail 
         ydk::YLeaf re_opt_failed_destination; //type: string
         ydk::YLeaf re_opt_failed_timestamp; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::History::LastStdbyReOptFail
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::History::LastStdbyReOptFail
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::PathProtection : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::PathProtection : public ydk::Entity
 {
     public:
         PathProtection();
@@ -225,14 +225,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::PathProtection : public ydk:
         ydk::YLeaf valid_path_protection_path_option_exists; //type: boolean
         ydk::YLeaf is_path_protect_switch_over_underway; //type: boolean
         ydk::YLeaf reoptimization_time_remaining; //type: uint32
-        class Switchover; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::PathProtection::Switchover
+        class Switchover; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::PathProtection::Switchover
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::PathProtection::Switchover> switchover;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::PathProtection::Switchover> switchover;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::PathProtection
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::PathProtection
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::PathProtection::Switchover : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::PathProtection::Switchover : public ydk::Entity
 {
     public:
         Switchover();
@@ -255,12 +255,12 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::PathProtection::Switchover :
         ydk::YLeaf date_of_error_detection; //type: uint32
         ydk::YLeaf date_of_error_detection_millisec; //type: uint32
         ydk::YLeaf switchover_duration_millisec; //type: uint32
-        ydk::YLeaf path_protection_switchover_reason; //type: TeP2MpS2LDeletionSubcause
+        ydk::YLeaf path_protection_switchover_reason; //type: TeP2mpS2lDeletionSubcause
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::PathProtection::Switchover
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::PathProtection::Switchover
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup : public ydk::Entity
 {
     public:
         AutoBackup();
@@ -287,16 +287,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup : public ydk::Ent
         ydk::YLeaf tunnel_attribute_set_name; //type: string
         ydk::YLeaf is_unused_removal_timer_running; //type: boolean
         ydk::YLeaf unused_removal_remaining_time; //type: uint32
-        class WeightedSrlgInfo; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo
-        class Iep; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep
+        class WeightedSrlgInfo; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo
+        class Iep; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo> weighted_srlg_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep> > iep;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo> weighted_srlg_info;
+        ydk::YList iep;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo : public ydk::Entity
 {
     public:
         WeightedSrlgInfo();
@@ -312,16 +312,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ProtectedInterfaceSrlg; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg
-        class WeightedSrlgHop; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop
+        class ProtectedInterfaceSrlg; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg
+        class WeightedSrlgHop; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg> > protected_interface_srlg;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop> > weighted_srlg_hop;
+        ydk::YList protected_interface_srlg;
+        ydk::YList weighted_srlg_hop;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg : public ydk::Entity
 {
     public:
         ProtectedInterfaceSrlg();
@@ -341,10 +341,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo
         ydk::YLeaf srlg_name; //type: string
         ydk::YLeaf admin_weight; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop : public ydk::Entity
 {
     public:
         WeightedSrlgHop();
@@ -363,14 +363,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo
         ydk::YLeaf from_address; //type: string
         ydk::YLeaf to_address; //type: string
         ydk::YLeaf aggregate_admin_weight; //type: uint64
-        class CommonSrlg; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop::CommonSrlg
+        class CommonSrlg; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop::CommonSrlg
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop::CommonSrlg> > common_srlg;
+        ydk::YList common_srlg;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop::CommonSrlg : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop::CommonSrlg : public ydk::Entity
 {
     public:
         CommonSrlg();
@@ -388,10 +388,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop::CommonSrlg
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop::CommonSrlg
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep : public ydk::Entity
 {
     public:
         Iep();
@@ -408,14 +408,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf path_option_id; //type: uint32
-        class IepHop; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep::IepHop
+        class IepHop; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep::IepHop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep::IepHop> > iep_hop;
+        ydk::YList iep_hop;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep::IepHop : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep::IepHop : public ydk::Entity
 {
     public:
         IepHop();
@@ -435,10 +435,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep::IepHop : pu
         ydk::YLeaf iep_hop_type; //type: MplsTeIepHop
         ydk::YLeaf iep_hop_address; //type: string
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep::IepHop
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoBackup::Iep::IepHop
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoMesh : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoMesh : public ydk::Entity
 {
     public:
         AutoMesh();
@@ -460,10 +460,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoMesh : public ydk::Entit
         ydk::YLeaf remaining_unused_time; //type: uint32
         ydk::YLeaf mesh_group_type; //type: TeMeshgroup
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoMesh
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoMesh
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoPcc : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoPcc : public ydk::Entity
 {
     public:
         AutoPcc();
@@ -487,10 +487,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoPcc : public ydk::Entity
         ydk::YLeaf symbolic_name; //type: string
         ydk::YLeaf operationally_up; //type: boolean
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::AutoPcc
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::AutoPcc
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::PceDelegation : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::PceDelegation : public ydk::Entity
 {
     public:
         PceDelegation();
@@ -511,10 +511,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::PceDelegation : public ydk::
         ydk::YLeaf owner_address; //type: string
         ydk::YLeaf operationally_up; //type: boolean
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::PceDelegation
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::PceDelegation
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::SoftPreemption : public ydk::Entity
 {
     public:
         SoftPreemption();
@@ -533,16 +533,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption : public ydk:
         ydk::YLeaf status; //type: MplsTeSoftPreemptionState
         ydk::YLeaf time_in_preemption_pending; //type: uint16
         ydk::YLeaf preemption_pending_resolution; //type: MplsTeSoftPreemptionResolution
-        class SoftPreemptionCounters; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionCounters
-        class SoftPreemptionPathError; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionPathError
+        class SoftPreemptionCounters; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionCounters
+        class SoftPreemptionPathError; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionPathError
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionCounters> soft_preemption_counters;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionPathError> > soft_preemption_path_error;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionCounters> soft_preemption_counters;
+        ydk::YList soft_preemption_path_error;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::SoftPreemption
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionCounters : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionCounters : public ydk::Entity
 {
     public:
         SoftPreemptionCounters();
@@ -567,10 +567,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreempti
         ydk::YLeaf time_in_preemption_pending_max; //type: uint16
         ydk::YLeaf time_in_preemption_pending_avg; //type: uint16
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionCounters
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionCounters
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionPathError : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionPathError : public ydk::Entity
 {
     public:
         SoftPreemptionPathError();
@@ -589,10 +589,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreempti
         ydk::YLeaf timestamp; //type: uint32
         ydk::YLeaf preempting_link_address; //type: string
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionPathError
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::SoftPreemption::SoftPreemptionPathError
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::WdmUnitunnel : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::WdmUnitunnel : public ydk::Entity
 {
     public:
         WdmUnitunnel();
@@ -621,10 +621,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::WdmUnitunnel : public ydk::E
         ydk::YLeaf label_origin; //type: MplsTeMgmtGmplsLabelOrigin
         ydk::YLeaf srlg_discovery; //type: boolean
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::WdmUnitunnel
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::WdmUnitunnel
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo : public ydk::Entity
 {
     public:
         TransportTunnelInfo();
@@ -641,22 +641,22 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf status_homepath_working; //type: boolean
-        class Otn; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn
-        class StaticUni; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::StaticUni
-        class EgressStaticUni; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni
-        class HomepathEro; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro
-        class DiversityInfo; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::DiversityInfo
+        class Otn; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn
+        class StaticUni; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::StaticUni
+        class EgressStaticUni; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni
+        class HomepathEro; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro
+        class DiversityInfo; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::DiversityInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn> otn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::StaticUni> static_uni;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni> egress_static_uni;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro> > homepath_ero;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::DiversityInfo> > diversity_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn> otn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::StaticUni> static_uni;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni> egress_static_uni;
+        ydk::YList homepath_ero;
+        ydk::YList diversity_info;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn : public ydk::Entity
 {
     public:
         Otn();
@@ -673,14 +673,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf config_bit_rate; //type: uint32
-        class BandwidthCfg; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg
+        class BandwidthCfg; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg> bandwidth_cfg;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg> bandwidth_cfg;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg : public ydk::Entity
 {
     public:
         BandwidthCfg();
@@ -697,18 +697,18 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::Ba
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf odu_level; //type: TeOduLevel
-        class OduFlexCbr; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr
-        class OduFlexGfpFRes; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes
-        class OduFlexGfpFNonRes; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes
+        class OduFlexCbr; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr
+        class OduFlexGfpFRes; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes
+        class OduFlexGfpFNonRes; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr> odu_flex_cbr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes> odu_flex_gfp_f_res;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes> odu_flex_gfp_f_non_res;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr> odu_flex_cbr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes> odu_flex_gfp_f_res;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes> odu_flex_gfp_f_non_res;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr : public ydk::Entity
 {
     public:
         OduFlexCbr();
@@ -727,10 +727,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::Ba
         ydk::YLeaf bit_rate; //type: uint32
         ydk::YLeaf tolerance; //type: uint16
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes : public ydk::Entity
 {
     public:
         OduFlexGfpFRes();
@@ -748,10 +748,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::Ba
 
         ydk::YLeaf bit_rate; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes : public ydk::Entity
 {
     public:
         OduFlexGfpFNonRes();
@@ -769,10 +769,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::Ba
 
         ydk::YLeaf bit_rate; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::StaticUni : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::StaticUni : public ydk::Entity
 {
     public:
         StaticUni();
@@ -800,10 +800,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::StaticU
         ydk::YLeaf term_client_port; //type: string
         ydk::YLeaf term_client_if_handle; //type: string
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::StaticUni
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::StaticUni
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni : public ydk::Entity
 {
     public:
         EgressStaticUni();
@@ -821,16 +821,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressS
 
         ydk::YLeaf local_termination; //type: MplsTeTermination
         ydk::YLeaf remote_uni_type; //type: MplsTeUni
-        class EgressPort; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort
-        class TermEgressPort; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort
+        class EgressPort; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort
+        class TermEgressPort; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort> egress_port;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort> term_egress_port;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort> egress_port;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort> term_egress_port;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort : public ydk::Entity
 {
     public:
         EgressPort();
@@ -846,14 +846,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressS
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class TeAddr; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr
+        class TeAddr; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr> te_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr> te_addr;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr : public ydk::Entity
 {
     public:
         TeAddr();
@@ -871,14 +871,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressS
 
         ydk::YLeaf type; //type: TeAddr
         ydk::YLeaf ipv4_address; //type: string
-        class Ipv4UnnumberedAddress; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress
+        class Ipv4UnnumberedAddress; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress> ipv4_unnumbered_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress> ipv4_unnumbered_address;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress : public ydk::Entity
 {
     public:
         Ipv4UnnumberedAddress();
@@ -897,10 +897,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressS
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf interface_index; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort : public ydk::Entity
 {
     public:
         TermEgressPort();
@@ -916,14 +916,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressS
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class TeAddr; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr
+        class TeAddr; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr> te_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr> te_addr;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr : public ydk::Entity
 {
     public:
         TeAddr();
@@ -941,14 +941,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressS
 
         ydk::YLeaf type; //type: TeAddr
         ydk::YLeaf ipv4_address; //type: string
-        class Ipv4UnnumberedAddress; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress
+        class Ipv4UnnumberedAddress; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress> ipv4_unnumbered_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress> ipv4_unnumbered_address;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress : public ydk::Entity
 {
     public:
         Ipv4UnnumberedAddress();
@@ -967,10 +967,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressS
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf interface_index; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro : public ydk::Entity
 {
     public:
         HomepathEro();
@@ -987,20 +987,20 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Homepat
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ero_type; //type: RsvpMgmtEroSubobj
-        class Ipv4EroSubObject; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::Ipv4EroSubObject
-        class UnnumberedEroSubObject; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject
+        class Ipv4eroSubObject; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::Ipv4eroSubObject
+        class UnnumberedEroSubObject; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::Ipv4EroSubObject> ipv4ero_sub_object;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject> unnumbered_ero_sub_object;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::Ipv4eroSubObject> ipv4ero_sub_object;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject> unnumbered_ero_sub_object;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::Ipv4EroSubObject : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::Ipv4eroSubObject : public ydk::Entity
 {
     public:
-        Ipv4EroSubObject();
-        ~Ipv4EroSubObject();
+        Ipv4eroSubObject();
+        ~Ipv4eroSubObject();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1016,10 +1016,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Homepat
         ydk::YLeaf ero_address; //type: string
         ydk::YLeaf prefix_length; //type: uint8
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::Ipv4EroSubObject
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::Ipv4eroSubObject
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject : public ydk::Entity
 {
     public:
         UnnumberedEroSubObject();
@@ -1040,10 +1040,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Homepat
         ydk::YLeaf ero_router_id; //type: string
         ydk::YLeaf status; //type: RsvpMgmtEroSubobjStatus
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::DiversityInfo : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::DiversityInfo : public ydk::Entity
 {
     public:
         DiversityInfo();
@@ -1061,10 +1061,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::Diversi
 
         ydk::YLeaf tunnel_id; //type: uint16
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::DiversityInfo
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TransportTunnelInfo::DiversityInfo
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::BfdInfo : public ydk::Entity
 {
     public:
         BfdInfo();
@@ -1086,16 +1086,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo : public ydk::Entity
         ydk::YLeaf failure_reason; //type: string
         ydk::YLeaf minimum_session_up_interval; //type: uint32
         ydk::YLeaf maximum_session_up_interval; //type: uint32
-        class EventCounters; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo::EventCounters
-        class DampeningInfo; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo::DampeningInfo
+        class EventCounters; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::BfdInfo::EventCounters
+        class DampeningInfo; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::BfdInfo::DampeningInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo::EventCounters> event_counters;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo::DampeningInfo> > dampening_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::BfdInfo::EventCounters> event_counters;
+        ydk::YList dampening_info;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::BfdInfo
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo::EventCounters : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::BfdInfo::EventCounters : public ydk::Entity
 {
     public:
         EventCounters();
@@ -1121,10 +1121,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo::EventCounters : pub
         ydk::YLeaf session_create_timeout_events; //type: uint32
         ydk::YLeaf session_replay_events; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo::EventCounters
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::BfdInfo::EventCounters
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo::DampeningInfo : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::BfdInfo::DampeningInfo : public ydk::Entity
 {
     public:
         DampeningInfo();
@@ -1145,10 +1145,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo::DampeningInfo : pub
         ydk::YLeaf remained_time; //type: uint32
         ydk::YLeaf backoff_count; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::BfdInfo::DampeningInfo
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::BfdInfo::DampeningInfo
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir : public ydk::Entity
 {
     public:
         OtnBidir();
@@ -1164,16 +1164,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Aps; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps
-        class Restoration; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Restoration
+        class Aps; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps
+        class Restoration; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Restoration
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps> aps;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Restoration> restoration;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps> aps;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Restoration> restoration;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps : public ydk::Entity
 {
     public:
         Aps();
@@ -1191,14 +1191,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps : public ydk::
 
         ydk::YLeaf active_lsp; //type: MplsTeLspMode
         ydk::YLeaf diversity_type; //type: TePpDiversity
-        class ProtectionProfile; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile
+        class ProtectionProfile; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile> protection_profile;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile> protection_profile;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile : public ydk::Entity
 {
     public:
         ProtectionProfile();
@@ -1222,14 +1222,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionPro
         ydk::YLeaf hold_off_time; //type: uint32
         ydk::YLeaf path_prot_profile_type; //type: TePathProtProfile
         ydk::YLeaf restoration_style; //type: TeRestorationStyle
-        class RevertSchedule; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile::RevertSchedule
+        class RevertSchedule; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile::RevertSchedule
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile::RevertSchedule> revert_schedule;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile::RevertSchedule> revert_schedule;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile::RevertSchedule : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile::RevertSchedule : public ydk::Entity
 {
     public:
         RevertSchedule();
@@ -1251,10 +1251,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionPro
         ydk::YLeaf duration; //type: uint32
         ydk::YLeaf max_tries; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile::RevertSchedule
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Aps::ProtectionProfile::RevertSchedule
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Restoration : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Restoration : public ydk::Entity
 {
     public:
         Restoration();
@@ -1274,10 +1274,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Restoration : publ
         ydk::YLeaf diverse_lsp; //type: MplsTeLspMode
         ydk::YLeaf diversity_type; //type: TePpDiversity
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::OtnBidir::Restoration
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::OtnBidir::Restoration
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir : public ydk::Entity
 {
     public:
         Bidir();
@@ -1295,20 +1295,20 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir : public ydk::Entity
 
         ydk::YLeaf reverse_bandwidth; //type: uint32
         ydk::YLeaf reverse_bandwidth_standby; //type: uint32
-        class ReverseEroErrorCurrent; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent
-        class ReverseEroErrorReopt; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt
-        class ReverseEroErrorStandby; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby
-        class ReverseEroErrorStandbyReopt; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt
+        class ReverseEroErrorCurrent; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent
+        class ReverseEroErrorReopt; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt
+        class ReverseEroErrorStandby; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby
+        class ReverseEroErrorStandbyReopt; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent> reverse_ero_error_current;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt> reverse_ero_error_reopt;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby> reverse_ero_error_standby;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt> reverse_ero_error_standby_reopt;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent> reverse_ero_error_current;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt> reverse_ero_error_reopt;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby> reverse_ero_error_standby;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt> reverse_ero_error_standby_reopt;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent : public ydk::Entity
 {
     public:
         ReverseEroErrorCurrent();
@@ -1344,14 +1344,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurren
         ydk::YLeaf path_option_index; //type: uint16
         ydk::YLeaf path_option_type; //type: MtePathOption
         ydk::YLeaf ero_reject_reason; //type: TeRevEroRejectReasons
-        class PathCalculationError; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent::PathCalculationError
+        class PathCalculationError; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent::PathCalculationError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent::PathCalculationError> > path_calculation_error;
+        ydk::YList path_calculation_error;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent::PathCalculationError : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent::PathCalculationError : public ydk::Entity
 {
     public:
         PathCalculationError();
@@ -1371,10 +1371,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurren
         ydk::YLeaf lsp_mode; //type: MplsTeLspMode
         ydk::YLeaf log_time; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent::PathCalculationError
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorCurrent::PathCalculationError
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt : public ydk::Entity
 {
     public:
         ReverseEroErrorReopt();
@@ -1410,14 +1410,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt 
         ydk::YLeaf path_option_index; //type: uint16
         ydk::YLeaf path_option_type; //type: MtePathOption
         ydk::YLeaf ero_reject_reason; //type: TeRevEroRejectReasons
-        class PathCalculationError; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt::PathCalculationError
+        class PathCalculationError; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt::PathCalculationError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt::PathCalculationError> > path_calculation_error;
+        ydk::YList path_calculation_error;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt::PathCalculationError : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt::PathCalculationError : public ydk::Entity
 {
     public:
         PathCalculationError();
@@ -1437,10 +1437,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt:
         ydk::YLeaf lsp_mode; //type: MplsTeLspMode
         ydk::YLeaf log_time; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt::PathCalculationError
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorReopt::PathCalculationError
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby : public ydk::Entity
 {
     public:
         ReverseEroErrorStandby();
@@ -1476,14 +1476,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandb
         ydk::YLeaf path_option_index; //type: uint16
         ydk::YLeaf path_option_type; //type: MtePathOption
         ydk::YLeaf ero_reject_reason; //type: TeRevEroRejectReasons
-        class PathCalculationError; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby::PathCalculationError
+        class PathCalculationError; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby::PathCalculationError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby::PathCalculationError> > path_calculation_error;
+        ydk::YList path_calculation_error;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby::PathCalculationError : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby::PathCalculationError : public ydk::Entity
 {
     public:
         PathCalculationError();
@@ -1503,10 +1503,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandb
         ydk::YLeaf lsp_mode; //type: MplsTeLspMode
         ydk::YLeaf log_time; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby::PathCalculationError
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandby::PathCalculationError
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt : public ydk::Entity
 {
     public:
         ReverseEroErrorStandbyReopt();
@@ -1542,14 +1542,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandb
         ydk::YLeaf path_option_index; //type: uint16
         ydk::YLeaf path_option_type; //type: MtePathOption
         ydk::YLeaf ero_reject_reason; //type: TeRevEroRejectReasons
-        class PathCalculationError; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError
+        class PathCalculationError; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError> > path_calculation_error;
+        ydk::YList path_calculation_error;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError : public ydk::Entity
 {
     public:
         PathCalculationError();
@@ -1569,10 +1569,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandb
         ydk::YLeaf lsp_mode; //type: MplsTeLspMode
         ydk::YLeaf log_time; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet : public ydk::Entity
 {
     public:
         XroAttributeSet();
@@ -1590,14 +1590,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet : public ydk
 
         ydk::YLeaf tunnel_attribute_set_name; //type: string
         ydk::YLeaf tunnel_attribute_set_name_crc32; //type: uint32
-        class AttributeSetUnion; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion
+        class AttributeSetUnion; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion> attribute_set_union;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion> attribute_set_union;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion : public ydk::Entity
 {
     public:
         AttributeSetUnion();
@@ -1614,26 +1614,26 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf tunnel_attribute_set_type; //type: TunnelAttributeSet
-        class AttributeSetPathOption; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption
-        class AttributeSetAutobackup; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup
-        class AttributeSetAutomesh; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh
-        class AttributeSetXro; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro
-        class AttributeSetP2Mpte; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte
-        class AttributeSetApsPp; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp
-        class AttributeSetP2PTe; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe
+        class AttributeSetPathOption; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption
+        class AttributeSetAutobackup; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup
+        class AttributeSetAutomesh; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh
+        class AttributeSetXro; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro
+        class AttributeSetP2mpte; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte
+        class AttributeSetApsPp; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp
+        class AttributeSetP2pTe; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption> attribute_set_path_option;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup> attribute_set_autobackup;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh> attribute_set_automesh;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro> attribute_set_xro;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte> attribute_set_p2mpte;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp> attribute_set_aps_pp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe> attribute_set_p2p_te;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption> attribute_set_path_option;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup> attribute_set_autobackup;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh> attribute_set_automesh;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro> attribute_set_xro;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte> attribute_set_p2mpte;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp> attribute_set_aps_pp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe> attribute_set_p2p_te;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption : public ydk::Entity
 {
     public:
         AttributeSetPathOption();
@@ -1675,20 +1675,22 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf pcebd_source_address; //type: uint32
         ydk::YLeaf pcebd_group_id; //type: uint32
         ydk::YLeaf is_bfd_reverse_pat_configured; //type: boolean
-        class Affinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity
-        class BfdReversePath; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath
-        class TunnelId; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId
-        class VersionInfo; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo
+        ydk::YLeaf is_delay_limit_configured; //type: boolean
+        ydk::YLeaf delay_limit; //type: uint32
+        class Affinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity
+        class BfdReversePath; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath
+        class TunnelId; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId
+        class VersionInfo; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity> affinity;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath> bfd_reverse_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId> > tunnel_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo> > version_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity> affinity;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath> bfd_reverse_path;
+        ydk::YList tunnel_id;
+        ydk::YList version_info;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity : public ydk::Entity
 {
     public:
         Affinity();
@@ -1706,14 +1708,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf affinity_bits; //type: uint32
         ydk::YLeaf affinity_mask; //type: uint32
-        class NamedAffinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity
+        class NamedAffinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity> > named_affinity;
+        ydk::YList named_affinity;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity : public ydk::Entity
 {
     public:
         NamedAffinity();
@@ -1732,16 +1734,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf constraint_type; //type: uint8
         ydk::YLeaf constraint_value; //type: uint32
         ydk::YLeaf forward_ref_value; //type: uint32
-        class ConstraintExtendedValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue
-        class ExtendedForwardRefValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue
+        class ConstraintExtendedValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue
+        class ExtendedForwardRefValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue> > constraint_extended_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue> > extended_forward_ref_value;
+        ydk::YList constraint_extended_value;
+        ydk::YList extended_forward_ref_value;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
 {
     public:
         ConstraintExtendedValue();
@@ -1759,10 +1761,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
 {
     public:
         ExtendedForwardRefValue();
@@ -1780,10 +1782,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath : public ydk::Entity
 {
     public:
         BfdReversePath();
@@ -1802,10 +1804,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf path_type; //type: TeBfdReversePath
         ydk::YLeaf binding_label; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId : public ydk::Entity
 {
     public:
         TunnelId();
@@ -1823,10 +1825,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint16
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo : public ydk::Entity
 {
     public:
         VersionInfo();
@@ -1846,10 +1848,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf generation; //type: uint32
         ydk::YLeaf is_default; //type: boolean
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup : public ydk::Entity
 {
     public:
         AttributeSetAutobackup();
@@ -1873,24 +1875,24 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf is_policyclass_configured; //type: boolean
         ydk::YLeaf is_affinity_configured; //type: boolean
         ydk::YLeaf record_route; //type: boolean
-        class SignalledName; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName
-        class Affinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity
-        class Logging; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging
-        class PolicyClassEntry; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry
-        class TunnelId; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId
-        class ProtectedInterface; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface
+        class SignalledName; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName
+        class Affinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity
+        class Logging; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging
+        class PolicyClassEntry; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry
+        class TunnelId; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId
+        class ProtectedInterface; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName> signalled_name;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity> affinity;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging> logging;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry> > policy_class_entry;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId> > tunnel_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface> > protected_interface;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName> signalled_name;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity> affinity;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging> logging;
+        ydk::YList policy_class_entry;
+        ydk::YList tunnel_id;
+        ydk::YList protected_interface;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName : public ydk::Entity
 {
     public:
         SignalledName();
@@ -1911,10 +1913,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf protected_interface_type; //type: TeSigNameAppend
         ydk::YLeaf is_mp_addresses; //type: boolean
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity : public ydk::Entity
 {
     public:
         Affinity();
@@ -1932,14 +1934,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf affinity_bits; //type: uint32
         ydk::YLeaf affinity_mask; //type: uint32
-        class NamedAffinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity
+        class NamedAffinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity> > named_affinity;
+        ydk::YList named_affinity;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity : public ydk::Entity
 {
     public:
         NamedAffinity();
@@ -1958,16 +1960,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf constraint_type; //type: uint8
         ydk::YLeaf constraint_value; //type: uint32
         ydk::YLeaf forward_ref_value; //type: uint32
-        class ConstraintExtendedValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue
-        class ExtendedForwardRefValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue
+        class ConstraintExtendedValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue
+        class ExtendedForwardRefValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue> > constraint_extended_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue> > extended_forward_ref_value;
+        ydk::YList constraint_extended_value;
+        ydk::YList extended_forward_ref_value;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
 {
     public:
         ConstraintExtendedValue();
@@ -1985,10 +1987,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
 {
     public:
         ExtendedForwardRefValue();
@@ -2006,10 +2008,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging : public ydk::Entity
 {
     public:
         Logging();
@@ -2034,10 +2036,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf lsp_pcalc_failure_logging_enabled; //type: boolean
         ydk::YLeaf all_logging_enabled; //type: boolean
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry : public ydk::Entity
 {
     public:
         PolicyClassEntry();
@@ -2055,10 +2057,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint8
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId : public ydk::Entity
 {
     public:
         TunnelId();
@@ -2076,10 +2078,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint16
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface : public ydk::Entity
 {
     public:
         ProtectedInterface();
@@ -2097,10 +2099,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf protected_interface; //type: string
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh : public ydk::Entity
 {
     public:
         AttributeSetAutomesh();
@@ -2125,6 +2127,7 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf policy_class; //type: uint8
         ydk::YLeaf is_policyclass_configured; //type: boolean
         ydk::YLeaf forward_class; //type: uint32
+        ydk::YLeaf is_forward_class_configured; //type: boolean
         ydk::YLeaf is_affinity_configured; //type: boolean
         ydk::YLeaf fast_reroute; //type: boolean
         ydk::YLeaf frr_node_protection; //type: boolean
@@ -2136,22 +2139,22 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf bandwidth; //type: uint32
         ydk::YLeaf load_share; //type: uint32
         ydk::YLeaf is_interface_bw_configured; //type: boolean
-        class Affinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity
-        class Logging; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging
-        class PolicyClassEntry; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry
-        class MeshGroupId; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId
-        class TunnelId; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::TunnelId
+        class Affinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity
+        class Logging; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging
+        class PolicyClassEntry; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry
+        class MeshGroupId; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId
+        class TunnelId; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::TunnelId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity> affinity;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging> logging;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry> > policy_class_entry;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId> > mesh_group_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::TunnelId> > tunnel_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity> affinity;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging> logging;
+        ydk::YList policy_class_entry;
+        ydk::YList mesh_group_id;
+        ydk::YList tunnel_id;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity : public ydk::Entity
 {
     public:
         Affinity();
@@ -2169,14 +2172,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf affinity_bits; //type: uint32
         ydk::YLeaf affinity_mask; //type: uint32
-        class NamedAffinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity
+        class NamedAffinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity> > named_affinity;
+        ydk::YList named_affinity;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity : public ydk::Entity
 {
     public:
         NamedAffinity();
@@ -2195,16 +2198,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf constraint_type; //type: uint8
         ydk::YLeaf constraint_value; //type: uint32
         ydk::YLeaf forward_ref_value; //type: uint32
-        class ConstraintExtendedValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue
-        class ExtendedForwardRefValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue
+        class ConstraintExtendedValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue
+        class ExtendedForwardRefValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue> > constraint_extended_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue> > extended_forward_ref_value;
+        ydk::YList constraint_extended_value;
+        ydk::YList extended_forward_ref_value;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
 {
     public:
         ConstraintExtendedValue();
@@ -2222,10 +2225,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
 {
     public:
         ExtendedForwardRefValue();
@@ -2243,10 +2246,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging : public ydk::Entity
 {
     public:
         Logging();
@@ -2271,10 +2274,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf lsp_pcalc_failure_logging_enabled; //type: boolean
         ydk::YLeaf all_logging_enabled; //type: boolean
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry : public ydk::Entity
 {
     public:
         PolicyClassEntry();
@@ -2292,10 +2295,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint8
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId : public ydk::Entity
 {
     public:
         MeshGroupId();
@@ -2313,10 +2316,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::TunnelId : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::TunnelId : public ydk::Entity
 {
     public:
         TunnelId();
@@ -2334,10 +2337,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint16
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::TunnelId
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::TunnelId
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro : public ydk::Entity
 {
     public:
         AttributeSetXro();
@@ -2353,14 +2356,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Xro; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro
+        class Xro; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro> xro;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro> xro;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro : public ydk::Entity
 {
     public:
         Xro();
@@ -2377,14 +2380,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf mutual_diversity_flag; //type: boolean
-        class XroSubobject; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject
+        class XroSubobject; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject> > xro_subobject;
+        ydk::YList xro_subobject;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject : public ydk::Entity
 {
     public:
         XroSubobject();
@@ -2401,24 +2404,24 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: TeXroSubobj
-        class Ipv4Subobject; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject
-        class Ipv6Subobject; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject
-        class UnnumberedSubobject; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject
-        class AsSubobject; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject
-        class SrlgSubobject; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject
-        class LspSubobject; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject
+        class Ipv4Subobject; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject
+        class Ipv6Subobject; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject
+        class UnnumberedSubobject; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject
+        class AsSubobject; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject
+        class SrlgSubobject; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject
+        class LspSubobject; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject> ipv4_subobject;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject> ipv6_subobject;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject> unnumbered_subobject;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject> as_subobject;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject> srlg_subobject;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject> lsp_subobject;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject> ipv4_subobject;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject> ipv6_subobject;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject> unnumbered_subobject;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject> as_subobject;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject> srlg_subobject;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject> lsp_subobject;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject : public ydk::Entity
 {
     public:
         Ipv4Subobject();
@@ -2439,10 +2442,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf attribute; //type: TeXroAttribute
         ydk::YLeaf exclusion_type; //type: TeXroExclusion
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject : public ydk::Entity
 {
     public:
         Ipv6Subobject();
@@ -2463,10 +2466,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf attribute; //type: TeXroAttribute
         ydk::YLeaf exclusion_type; //type: TeXroExclusion
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject : public ydk::Entity
 {
     public:
         UnnumberedSubobject();
@@ -2487,10 +2490,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf attribute; //type: TeXroAttribute
         ydk::YLeaf exclusion_type; //type: TeXroExclusion
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject : public ydk::Entity
 {
     public:
         AsSubobject();
@@ -2508,10 +2511,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf as_number; //type: uint16
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject : public ydk::Entity
 {
     public:
         SrlgSubobject();
@@ -2530,10 +2533,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf srlg_id; //type: uint32
         ydk::YLeaf exclusion_type; //type: TeXroExclusion
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject : public ydk::Entity
 {
     public:
         LspSubobject();
@@ -2554,14 +2557,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf penultimate_node_exception; //type: boolean
         ydk::YLeaf destination_node_exception; //type: boolean
         ydk::YLeaf exclusion_type; //type: TeXroExclusion
-        class Fec; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec
+        class Fec; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec> fec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec> fec;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec : public ydk::Entity
 {
     public:
         Fec();
@@ -2582,14 +2585,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf fec_extended_tunnel_id; //type: string
         ydk::YLeaf fec_source; //type: string
         ydk::YLeaf fec_vrf; //type: string
-        class FecDestinationInfo; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo
+        class FecDestinationInfo; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo> fec_destination_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo> fec_destination_info;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo : public ydk::Entity
 {
     public:
         FecDestinationInfo();
@@ -2609,14 +2612,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf p2p_lsp_destination; //type: string
         ydk::YLeaf fec_destination_p2mp_id; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte : public ydk::Entity
 {
     public:
-        AttributeSetP2Mpte();
-        ~AttributeSetP2Mpte();
+        AttributeSetP2mpte();
+        ~AttributeSetP2mpte();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2637,16 +2640,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf dste_class_type; //type: uint8
         ydk::YLeaf is_bandwidth_configured; //type: boolean
         ydk::YLeaf is_affinity_configured; //type: boolean
-        class Affinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity
-        class TunnelId; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::TunnelId
+        class Affinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity
+        class TunnelId; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::TunnelId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity> affinity;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::TunnelId> > tunnel_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity> affinity;
+        ydk::YList tunnel_id;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity : public ydk::Entity
 {
     public:
         Affinity();
@@ -2664,14 +2667,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf affinity_bits; //type: uint32
         ydk::YLeaf affinity_mask; //type: uint32
-        class NamedAffinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity
+        class NamedAffinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity::NamedAffinity
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity> > named_affinity;
+        ydk::YList named_affinity;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity::NamedAffinity : public ydk::Entity
 {
     public:
         NamedAffinity();
@@ -2690,16 +2693,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf constraint_type; //type: uint8
         ydk::YLeaf constraint_value; //type: uint32
         ydk::YLeaf forward_ref_value; //type: uint32
-        class ConstraintExtendedValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity::ConstraintExtendedValue
-        class ExtendedForwardRefValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity::ExtendedForwardRefValue
+        class ConstraintExtendedValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity::NamedAffinity::ConstraintExtendedValue
+        class ExtendedForwardRefValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity::NamedAffinity::ExtendedForwardRefValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity::ConstraintExtendedValue> > constraint_extended_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity::ExtendedForwardRefValue> > extended_forward_ref_value;
+        ydk::YList constraint_extended_value;
+        ydk::YList extended_forward_ref_value;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity::NamedAffinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
 {
     public:
         ConstraintExtendedValue();
@@ -2717,10 +2720,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity::ConstraintExtendedValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity::NamedAffinity::ConstraintExtendedValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
 {
     public:
         ExtendedForwardRefValue();
@@ -2738,10 +2741,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity::ExtendedForwardRefValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::Affinity::NamedAffinity::ExtendedForwardRefValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::TunnelId : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::TunnelId : public ydk::Entity
 {
     public:
         TunnelId();
@@ -2759,10 +2762,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint16
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::TunnelId
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2mpte::TunnelId
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp : public ydk::Entity
 {
     public:
         AttributeSetApsPp();
@@ -2786,14 +2789,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf hold_off_time; //type: uint32
         ydk::YLeaf path_prot_profile_type; //type: TePathProtProfile
         ydk::YLeaf restoration_style; //type: TeRestorationStyle
-        class RevertSchedule; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp::RevertSchedule
+        class RevertSchedule; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp::RevertSchedule
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp::RevertSchedule> revert_schedule;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp::RevertSchedule> revert_schedule;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp::RevertSchedule : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp::RevertSchedule : public ydk::Entity
 {
     public:
         RevertSchedule();
@@ -2815,14 +2818,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf duration; //type: uint32
         ydk::YLeaf max_tries; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp::RevertSchedule
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp::RevertSchedule
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe : public ydk::Entity
 {
     public:
-        AttributeSetP2PTe();
-        ~AttributeSetP2PTe();
+        AttributeSetP2pTe();
+        ~AttributeSetP2pTe();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2835,7 +2838,7 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf is_affinity_configured; //type: boolean
-        ydk::YLeaf path_selection_segment_routing_adjacency_protection; //type: TeS2LSrPathSelection
+        ydk::YLeaf path_selection_segment_routing_adjacency_protection; //type: TeS2lSrPathSelection
         ydk::YLeaf is_path_selection_segment_routing_adjacency_protection_configured; //type: boolean
         ydk::YLeaf path_invalidation_timeout; //type: uint32
         ydk::YLeaf path_selection_invalidation_action; //type: TePathInvalAction
@@ -2861,20 +2864,20 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf is_pcebd_group_id_configured; //type: boolean
         ydk::YLeaf pcebd_source_address; //type: uint32
         ydk::YLeaf pcebd_group_id; //type: uint32
-        class Affinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity
-        class Logging; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Logging
-        class PrependList; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::PrependList
-        class TunnelId; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::TunnelId
+        class Affinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity
+        class Logging; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Logging
+        class PrependList; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::PrependList
+        class TunnelId; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::TunnelId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity> affinity;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Logging> logging;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::PrependList> prepend_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::TunnelId> > tunnel_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity> affinity;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Logging> logging;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::PrependList> prepend_list;
+        ydk::YList tunnel_id;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity : public ydk::Entity
 {
     public:
         Affinity();
@@ -2892,14 +2895,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf affinity_bits; //type: uint32
         ydk::YLeaf affinity_mask; //type: uint32
-        class NamedAffinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity::NamedAffinity
+        class NamedAffinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity::NamedAffinity
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity::NamedAffinity> > named_affinity;
+        ydk::YList named_affinity;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity::NamedAffinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity::NamedAffinity : public ydk::Entity
 {
     public:
         NamedAffinity();
@@ -2918,16 +2921,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf constraint_type; //type: uint8
         ydk::YLeaf constraint_value; //type: uint32
         ydk::YLeaf forward_ref_value; //type: uint32
-        class ConstraintExtendedValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity::NamedAffinity::ConstraintExtendedValue
-        class ExtendedForwardRefValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity::NamedAffinity::ExtendedForwardRefValue
+        class ConstraintExtendedValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity::NamedAffinity::ConstraintExtendedValue
+        class ExtendedForwardRefValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity::NamedAffinity::ExtendedForwardRefValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity::NamedAffinity::ConstraintExtendedValue> > constraint_extended_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity::NamedAffinity::ExtendedForwardRefValue> > extended_forward_ref_value;
+        ydk::YList constraint_extended_value;
+        ydk::YList extended_forward_ref_value;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity::NamedAffinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity::NamedAffinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
 {
     public:
         ConstraintExtendedValue();
@@ -2945,10 +2948,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity::NamedAffinity::ConstraintExtendedValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity::NamedAffinity::ConstraintExtendedValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
 {
     public:
         ExtendedForwardRefValue();
@@ -2966,10 +2969,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Affinity::NamedAffinity::ExtendedForwardRefValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Affinity::NamedAffinity::ExtendedForwardRefValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Logging : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Logging : public ydk::Entity
 {
     public:
         Logging();
@@ -2994,10 +2997,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf lsp_pcalc_failure_logging_enabled; //type: boolean
         ydk::YLeaf all_logging_enabled; //type: boolean
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::Logging
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::Logging
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::PrependList : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::PrependList : public ydk::Entity
 {
     public:
         PrependList();
@@ -3013,14 +3016,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrependEntry; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::PrependList::PrependEntry
+        class PrependEntry; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::PrependList::PrependEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::PrependList::PrependEntry> > prepend_entry;
+        ydk::YList prepend_entry;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::PrependList
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::PrependList
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::PrependList::PrependEntry : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::PrependList::PrependEntry : public ydk::Entity
 {
     public:
         PrependEntry();
@@ -3040,10 +3043,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf next_label; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::PrependList::PrependEntry
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::PrependList::PrependEntry
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::TunnelId : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::TunnelId : public ydk::Entity
 {
     public:
         TunnelId();
@@ -3061,10 +3064,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSe
 
         ydk::YLeaf entry; //type: uint16
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe::TunnelId
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::XroAttributeSet::AttributeSetUnion::AttributeSetP2pTe::TunnelId
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence : public ydk::Entity
 {
     public:
         TeTunnelConvergence();
@@ -3086,14 +3089,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence : public
         ydk::YLeaf convergence_complete_time; //type: uint64
         ydk::YLeaf binding_label_rewrite_time; //type: uint64
         ydk::YLeaf vif_creation_time; //type: uint64
-        class ConvergenceLsp; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence::ConvergenceLsp
+        class ConvergenceLsp; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence::ConvergenceLsp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence::ConvergenceLsp> convergence_lsp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence::ConvergenceLsp> convergence_lsp;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence::ConvergenceLsp : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence::ConvergenceLsp : public ydk::Entity
 {
     public:
         ConvergenceLsp();
@@ -3117,10 +3120,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence::Converg
         ydk::YLeaf tunnel_rewrite; //type: uint64
         ydk::YLeaf creation_time; //type: uint64
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence::ConvergenceLsp
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::TeTunnelConvergence::ConvergenceLsp
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::FlexInfo : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::FlexInfo : public ydk::Entity
 {
     public:
         FlexInfo();
@@ -3147,10 +3150,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::FlexInfo : public ydk::Entit
         ydk::YLeaf lockout_lsp_id; //type: uint16
         ydk::YLeaf origination; //type: FlexLspLockoutOrigination
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::FlexInfo
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::FlexInfo
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination : public ydk::Entity
 {
     public:
         Destination();
@@ -3174,22 +3177,22 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination : public ydk::En
         ydk::YLeaf path_change_time; //type: uint32
         ydk::YLeaf total_uptime; //type: uint32
         ydk::YLeaf s2l_exist; //type: boolean
-        ydk::YLeaf destination_deletion_cause; //type: TeP2MpS2LDeletionCause
-        ydk::YLeaf destination_deletion_sub_cause; //type: TeP2MpS2LDeletionSubcause
+        ydk::YLeaf destination_deletion_cause; //type: TeP2mpS2lDeletionCause
+        ydk::YLeaf destination_deletion_sub_cause; //type: TeP2mpS2lDeletionSubcause
         ydk::YLeaf destination_deletion_timestamp; //type: uint32
         ydk::YLeaf is_inter_area; //type: boolean
-        class InterAreaReoptimization; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::InterAreaReoptimization
-        class PathOptionEntry; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
-        class PathOption; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOption
+        class InterAreaReoptimization; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::InterAreaReoptimization
+        class PathOptionEntry; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
+        class PathOption; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOption
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::InterAreaReoptimization> inter_area_reoptimization;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry> > path_option_entry;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOption> > path_option;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::InterAreaReoptimization> inter_area_reoptimization;
+        ydk::YList path_option_entry;
+        ydk::YList path_option;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::InterAreaReoptimization : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::InterAreaReoptimization : public ydk::Entity
 {
     public:
         InterAreaReoptimization();
@@ -3214,10 +3217,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::InterAreaReopti
         ydk::YLeaf preferred_path_error_node; //type: string
         ydk::YLeaf preferred_tree_error_node; //type: string
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::InterAreaReoptimization
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::InterAreaReoptimization
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry : public ydk::Entity
 {
     public:
         PathOptionEntry();
@@ -3254,22 +3257,22 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf is_segment_routing; //type: boolean
         ydk::YLeaf protected_by_path_option_index; //type: uint32
         ydk::YLeaf restored_from_path_option_index; //type: uint32
-        class AttributeSet; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet
-        class XroAttributeSet; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::XroAttributeSet
-        class PathCalculationError; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::PathCalculationError
-        class RemergeError; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::RemergeError
-        class SignallingError; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::SignallingError
+        class AttributeSet; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet
+        class XroAttributeSet; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::XroAttributeSet
+        class PathCalculationError; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::PathCalculationError
+        class RemergeError; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::RemergeError
+        class SignallingError; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::SignallingError
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet> attribute_set;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::XroAttributeSet> xro_attribute_set;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::PathCalculationError> > path_calculation_error;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::RemergeError> > remerge_error;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::SignallingError> > signalling_error;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet> attribute_set;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::XroAttributeSet> xro_attribute_set;
+        ydk::YList path_calculation_error;
+        ydk::YList remerge_error;
+        ydk::YList signalling_error;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet : public ydk::Entity
 {
     public:
         AttributeSet();
@@ -3287,14 +3290,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf tunnel_attribute_set_name; //type: string
         ydk::YLeaf tunnel_attribute_set_name_crc32; //type: uint32
-        class AttributeSetUnion; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion
+        class AttributeSetUnion; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion> attribute_set_union;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion> attribute_set_union;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion : public ydk::Entity
 {
     public:
         AttributeSetUnion();
@@ -3311,26 +3314,26 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf tunnel_attribute_set_type; //type: TunnelAttributeSet
-        class AttributeSetPathOption; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption
-        class AttributeSetAutobackup; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup
-        class AttributeSetAutomesh; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh
-        class AttributeSetXro; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetXro
-        class AttributeSetP2Mpte; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetP2Mpte
-        class AttributeSetApsPp; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetApsPp
-        class AttributeSetP2PTe; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetP2PTe
+        class AttributeSetPathOption; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption
+        class AttributeSetAutobackup; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup
+        class AttributeSetAutomesh; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh
+        class AttributeSetXro; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetXro
+        class AttributeSetP2mpte; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetP2mpte
+        class AttributeSetApsPp; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetApsPp
+        class AttributeSetP2pTe; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetP2pTe
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption> attribute_set_path_option;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup> attribute_set_autobackup;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh> attribute_set_automesh;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetXro> attribute_set_xro;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetP2Mpte> attribute_set_p2mpte;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetApsPp> attribute_set_aps_pp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetP2PTe> attribute_set_p2p_te;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption> attribute_set_path_option;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup> attribute_set_autobackup;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh> attribute_set_automesh;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetXro> attribute_set_xro;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetP2mpte> attribute_set_p2mpte;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetApsPp> attribute_set_aps_pp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetP2pTe> attribute_set_p2p_te;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption : public ydk::Entity
 {
     public:
         AttributeSetPathOption();
@@ -3372,20 +3375,22 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf pcebd_source_address; //type: uint32
         ydk::YLeaf pcebd_group_id; //type: uint32
         ydk::YLeaf is_bfd_reverse_pat_configured; //type: boolean
-        class Affinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity
-        class BfdReversePath; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath
-        class TunnelId; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId
-        class VersionInfo; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo
+        ydk::YLeaf is_delay_limit_configured; //type: boolean
+        ydk::YLeaf delay_limit; //type: uint32
+        class Affinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity
+        class BfdReversePath; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath
+        class TunnelId; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId
+        class VersionInfo; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity> affinity;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath> bfd_reverse_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId> > tunnel_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo> > version_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity> affinity;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath> bfd_reverse_path;
+        ydk::YList tunnel_id;
+        ydk::YList version_info;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity : public ydk::Entity
 {
     public:
         Affinity();
@@ -3403,14 +3408,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf affinity_bits; //type: uint32
         ydk::YLeaf affinity_mask; //type: uint32
-        class NamedAffinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity
+        class NamedAffinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity> > named_affinity;
+        ydk::YList named_affinity;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity : public ydk::Entity
 {
     public:
         NamedAffinity();
@@ -3429,16 +3434,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf constraint_type; //type: uint8
         ydk::YLeaf constraint_value; //type: uint32
         ydk::YLeaf forward_ref_value; //type: uint32
-        class ConstraintExtendedValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue
-        class ExtendedForwardRefValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue
+        class ConstraintExtendedValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue
+        class ExtendedForwardRefValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue> > constraint_extended_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue> > extended_forward_ref_value;
+        ydk::YList constraint_extended_value;
+        ydk::YList extended_forward_ref_value;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
 {
     public:
         ConstraintExtendedValue();
@@ -3456,10 +3461,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ConstraintExtendedValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
 {
     public:
         ExtendedForwardRefValue();
@@ -3477,10 +3482,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::ExtendedForwardRefValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath : public ydk::Entity
 {
     public:
         BfdReversePath();
@@ -3499,10 +3504,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf path_type; //type: TeBfdReversePath
         ydk::YLeaf binding_label; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId : public ydk::Entity
 {
     public:
         TunnelId();
@@ -3520,10 +3525,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf entry; //type: uint16
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::TunnelId
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo : public ydk::Entity
 {
     public:
         VersionInfo();
@@ -3543,10 +3548,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf generation; //type: uint32
         ydk::YLeaf is_default; //type: boolean
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup : public ydk::Entity
 {
     public:
         AttributeSetAutobackup();
@@ -3570,24 +3575,24 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf is_policyclass_configured; //type: boolean
         ydk::YLeaf is_affinity_configured; //type: boolean
         ydk::YLeaf record_route; //type: boolean
-        class SignalledName; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName
-        class Affinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity
-        class Logging; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging
-        class PolicyClassEntry; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry
-        class TunnelId; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId
-        class ProtectedInterface; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface
+        class SignalledName; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName
+        class Affinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity
+        class Logging; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging
+        class PolicyClassEntry; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry
+        class TunnelId; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId
+        class ProtectedInterface; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName> signalled_name;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity> affinity;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging> logging;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry> > policy_class_entry;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId> > tunnel_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface> > protected_interface;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName> signalled_name;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity> affinity;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging> logging;
+        ydk::YList policy_class_entry;
+        ydk::YList tunnel_id;
+        ydk::YList protected_interface;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName : public ydk::Entity
 {
     public:
         SignalledName();
@@ -3608,10 +3613,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf protected_interface_type; //type: TeSigNameAppend
         ydk::YLeaf is_mp_addresses; //type: boolean
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity : public ydk::Entity
 {
     public:
         Affinity();
@@ -3629,14 +3634,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf affinity_bits; //type: uint32
         ydk::YLeaf affinity_mask; //type: uint32
-        class NamedAffinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity
+        class NamedAffinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity> > named_affinity;
+        ydk::YList named_affinity;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity : public ydk::Entity
 {
     public:
         NamedAffinity();
@@ -3655,16 +3660,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf constraint_type; //type: uint8
         ydk::YLeaf constraint_value; //type: uint32
         ydk::YLeaf forward_ref_value; //type: uint32
-        class ConstraintExtendedValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue
-        class ExtendedForwardRefValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue
+        class ConstraintExtendedValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue
+        class ExtendedForwardRefValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue> > constraint_extended_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue> > extended_forward_ref_value;
+        ydk::YList constraint_extended_value;
+        ydk::YList extended_forward_ref_value;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
 {
     public:
         ConstraintExtendedValue();
@@ -3682,10 +3687,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ConstraintExtendedValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
 {
     public:
         ExtendedForwardRefValue();
@@ -3703,10 +3708,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::ExtendedForwardRefValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging : public ydk::Entity
 {
     public:
         Logging();
@@ -3731,10 +3736,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf lsp_pcalc_failure_logging_enabled; //type: boolean
         ydk::YLeaf all_logging_enabled; //type: boolean
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry : public ydk::Entity
 {
     public:
         PolicyClassEntry();
@@ -3752,10 +3757,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf entry; //type: uint8
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::PolicyClassEntry
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId : public ydk::Entity
 {
     public:
         TunnelId();
@@ -3773,10 +3778,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf entry; //type: uint16
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::TunnelId
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface : public ydk::Entity
 {
     public:
         ProtectedInterface();
@@ -3794,10 +3799,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf protected_interface; //type: string
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh : public ydk::Entity
 {
     public:
         AttributeSetAutomesh();
@@ -3822,6 +3827,7 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf policy_class; //type: uint8
         ydk::YLeaf is_policyclass_configured; //type: boolean
         ydk::YLeaf forward_class; //type: uint32
+        ydk::YLeaf is_forward_class_configured; //type: boolean
         ydk::YLeaf is_affinity_configured; //type: boolean
         ydk::YLeaf fast_reroute; //type: boolean
         ydk::YLeaf frr_node_protection; //type: boolean
@@ -3833,22 +3839,22 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf bandwidth; //type: uint32
         ydk::YLeaf load_share; //type: uint32
         ydk::YLeaf is_interface_bw_configured; //type: boolean
-        class Affinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity
-        class Logging; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging
-        class PolicyClassEntry; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry
-        class MeshGroupId; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId
-        class TunnelId; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::TunnelId
+        class Affinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity
+        class Logging; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging
+        class PolicyClassEntry; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry
+        class MeshGroupId; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId
+        class TunnelId; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::TunnelId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity> affinity;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging> logging;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry> > policy_class_entry;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId> > mesh_group_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::TunnelId> > tunnel_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity> affinity;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging> logging;
+        ydk::YList policy_class_entry;
+        ydk::YList mesh_group_id;
+        ydk::YList tunnel_id;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity : public ydk::Entity
 {
     public:
         Affinity();
@@ -3866,14 +3872,14 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf affinity_bits; //type: uint32
         ydk::YLeaf affinity_mask; //type: uint32
-        class NamedAffinity; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity
+        class NamedAffinity; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity> > named_affinity;
+        ydk::YList named_affinity;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity : public ydk::Entity
 {
     public:
         NamedAffinity();
@@ -3892,16 +3898,16 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf constraint_type; //type: uint8
         ydk::YLeaf constraint_value; //type: uint32
         ydk::YLeaf forward_ref_value; //type: uint32
-        class ConstraintExtendedValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue
-        class ExtendedForwardRefValue; //type: MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue
+        class ConstraintExtendedValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue
+        class ExtendedForwardRefValue; //type: MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue> > constraint_extended_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue> > extended_forward_ref_value;
+        ydk::YList constraint_extended_value;
+        ydk::YList extended_forward_ref_value;
         
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue : public ydk::Entity
 {
     public:
         ConstraintExtendedValue();
@@ -3919,10 +3925,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ConstraintExtendedValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue : public ydk::Entity
 {
     public:
         ExtendedForwardRefValue();
@@ -3940,10 +3946,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::ExtendedForwardRefValue
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging : public ydk::Entity
 {
     public:
         Logging();
@@ -3968,10 +3974,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
         ydk::YLeaf lsp_pcalc_failure_logging_enabled; //type: boolean
         ydk::YLeaf all_logging_enabled; //type: boolean
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry : public ydk::Entity
 {
     public:
         PolicyClassEntry();
@@ -3989,10 +3995,10 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf entry; //type: uint8
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::PolicyClassEntry
 
 
-class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId : public ydk::Entity
+class MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId : public ydk::Entity
 {
     public:
         MeshGroupId();
@@ -4010,7 +4016,7 @@ class MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry
 
         ydk::YLeaf entry; //type: uint32
 
-}; // MplsTe::P2PP2MpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId
+}; // MplsTe::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::PathOptionEntry::AttributeSet::AttributeSetUnion::AttributeSetAutomesh::MeshGroupId
 
 
 }

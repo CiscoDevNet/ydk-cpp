@@ -13,17 +13,17 @@ namespace ETHER_WIS {
 
 ETHERWIS::ETHERWIS()
     :
-    etherwisdevicetable(std::make_shared<ETHERWIS::Etherwisdevicetable>())
-	,etherwissectioncurrenttable(std::make_shared<ETHERWIS::Etherwissectioncurrenttable>())
-	,etherwispathcurrenttable(std::make_shared<ETHERWIS::Etherwispathcurrenttable>())
-	,etherwisfarendpathcurrenttable(std::make_shared<ETHERWIS::Etherwisfarendpathcurrenttable>())
+    etherwisdevicetable(std::make_shared<ETHERWIS::EtherWisDeviceTable>())
+    , etherwissectioncurrenttable(std::make_shared<ETHERWIS::EtherWisSectionCurrentTable>())
+    , etherwispathcurrenttable(std::make_shared<ETHERWIS::EtherWisPathCurrentTable>())
+    , etherwisfarendpathcurrenttable(std::make_shared<ETHERWIS::EtherWisFarEndPathCurrentTable>())
 {
     etherwisdevicetable->parent = this;
     etherwissectioncurrenttable->parent = this;
     etherwispathcurrenttable->parent = this;
     etherwisfarendpathcurrenttable->parent = this;
 
-    yang_name = "ETHER-WIS"; yang_parent_name = "ETHER-WIS"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ETHER-WIS"; yang_parent_name = "ETHER-WIS"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ETHERWIS::~ETHERWIS()
@@ -32,6 +32,7 @@ ETHERWIS::~ETHERWIS()
 
 bool ETHERWIS::has_data() const
 {
+    if (is_presence_container) return true;
     return (etherwisdevicetable !=  nullptr && etherwisdevicetable->has_data())
 	|| (etherwissectioncurrenttable !=  nullptr && etherwissectioncurrenttable->has_data())
 	|| (etherwispathcurrenttable !=  nullptr && etherwispathcurrenttable->has_data())
@@ -69,7 +70,7 @@ std::shared_ptr<Entity> ETHERWIS::get_child_by_name(const std::string & child_ya
     {
         if(etherwisdevicetable == nullptr)
         {
-            etherwisdevicetable = std::make_shared<ETHERWIS::Etherwisdevicetable>();
+            etherwisdevicetable = std::make_shared<ETHERWIS::EtherWisDeviceTable>();
         }
         return etherwisdevicetable;
     }
@@ -78,7 +79,7 @@ std::shared_ptr<Entity> ETHERWIS::get_child_by_name(const std::string & child_ya
     {
         if(etherwissectioncurrenttable == nullptr)
         {
-            etherwissectioncurrenttable = std::make_shared<ETHERWIS::Etherwissectioncurrenttable>();
+            etherwissectioncurrenttable = std::make_shared<ETHERWIS::EtherWisSectionCurrentTable>();
         }
         return etherwissectioncurrenttable;
     }
@@ -87,7 +88,7 @@ std::shared_ptr<Entity> ETHERWIS::get_child_by_name(const std::string & child_ya
     {
         if(etherwispathcurrenttable == nullptr)
         {
-            etherwispathcurrenttable = std::make_shared<ETHERWIS::Etherwispathcurrenttable>();
+            etherwispathcurrenttable = std::make_shared<ETHERWIS::EtherWisPathCurrentTable>();
         }
         return etherwispathcurrenttable;
     }
@@ -96,7 +97,7 @@ std::shared_ptr<Entity> ETHERWIS::get_child_by_name(const std::string & child_ya
     {
         if(etherwisfarendpathcurrenttable == nullptr)
         {
-            etherwisfarendpathcurrenttable = std::make_shared<ETHERWIS::Etherwisfarendpathcurrenttable>();
+            etherwisfarendpathcurrenttable = std::make_shared<ETHERWIS::EtherWisFarEndPathCurrentTable>();
         }
         return etherwisfarendpathcurrenttable;
     }
@@ -171,19 +172,22 @@ bool ETHERWIS::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-ETHERWIS::Etherwisdevicetable::Etherwisdevicetable()
+ETHERWIS::EtherWisDeviceTable::EtherWisDeviceTable()
+    :
+    etherwisdeviceentry(this, {"ifindex"})
 {
 
-    yang_name = "etherWisDeviceTable"; yang_parent_name = "ETHER-WIS"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "etherWisDeviceTable"; yang_parent_name = "ETHER-WIS"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ETHERWIS::Etherwisdevicetable::~Etherwisdevicetable()
+ETHERWIS::EtherWisDeviceTable::~EtherWisDeviceTable()
 {
 }
 
-bool ETHERWIS::Etherwisdevicetable::has_data() const
+bool ETHERWIS::EtherWisDeviceTable::has_data() const
 {
-    for (std::size_t index=0; index<etherwisdeviceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<etherwisdeviceentry.len(); index++)
     {
         if(etherwisdeviceentry[index]->has_data())
             return true;
@@ -191,9 +195,9 @@ bool ETHERWIS::Etherwisdevicetable::has_data() const
     return false;
 }
 
-bool ETHERWIS::Etherwisdevicetable::has_operation() const
+bool ETHERWIS::EtherWisDeviceTable::has_operation() const
 {
-    for (std::size_t index=0; index<etherwisdeviceentry.size(); index++)
+    for (std::size_t index=0; index<etherwisdeviceentry.len(); index++)
     {
         if(etherwisdeviceentry[index]->has_operation())
             return true;
@@ -201,21 +205,21 @@ bool ETHERWIS::Etherwisdevicetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ETHERWIS::Etherwisdevicetable::get_absolute_path() const
+std::string ETHERWIS::EtherWisDeviceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ETHER-WIS:ETHER-WIS/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ETHERWIS::Etherwisdevicetable::get_segment_path() const
+std::string ETHERWIS::EtherWisDeviceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "etherWisDeviceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwisdevicetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisDeviceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -224,25 +228,25 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwisdevicetable::ge
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::Etherwisdevicetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ETHERWIS::EtherWisDeviceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "etherWisDeviceEntry")
     {
-        auto c = std::make_shared<ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry>();
+        auto c = std::make_shared<ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry>();
         c->parent = this;
-        etherwisdeviceentry.push_back(c);
+        etherwisdeviceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwisdevicetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisDeviceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : etherwisdeviceentry)
+    for (auto c : etherwisdeviceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,22 +257,22 @@ std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwisdevicetable::ge
     return children;
 }
 
-void ETHERWIS::Etherwisdevicetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ETHERWIS::EtherWisDeviceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ETHERWIS::Etherwisdevicetable::set_filter(const std::string & value_path, YFilter yfilter)
+void ETHERWIS::EtherWisDeviceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ETHERWIS::Etherwisdevicetable::has_leaf_or_child_of_name(const std::string & name) const
+bool ETHERWIS::EtherWisDeviceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "etherWisDeviceEntry")
         return true;
     return false;
 }
 
-ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdeviceentry()
+ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::EtherWisDeviceEntry()
     :
     ifindex{YType::str, "ifIndex"},
     etherwisdevicetxtestpatternmode{YType::enumeration, "etherWisDeviceTxTestPatternMode"},
@@ -276,22 +280,23 @@ ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdeviceentry()
     etherwisdevicerxtestpatternerrors{YType::uint32, "etherWisDeviceRxTestPatternErrors"}
 {
 
-    yang_name = "etherWisDeviceEntry"; yang_parent_name = "etherWisDeviceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "etherWisDeviceEntry"; yang_parent_name = "etherWisDeviceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::~Etherwisdeviceentry()
+ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::~EtherWisDeviceEntry()
 {
 }
 
-bool ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::has_data() const
+bool ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| etherwisdevicetxtestpatternmode.is_set
 	|| etherwisdevicerxtestpatternmode.is_set
 	|| etherwisdevicerxtestpatternerrors.is_set;
 }
 
-bool ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::has_operation() const
+bool ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -300,21 +305,22 @@ bool ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::has_operation() const
 	|| ydk::is_set(etherwisdevicerxtestpatternerrors.yfilter);
 }
 
-std::string ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::get_absolute_path() const
+std::string ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ETHER-WIS:ETHER-WIS/etherWisDeviceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::get_segment_path() const
+std::string ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "etherWisDeviceEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "etherWisDeviceEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -327,19 +333,19 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwisdevicetable::Et
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -367,7 +373,7 @@ void ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::set_value(const std::st
     }
 }
 
-void ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -387,26 +393,29 @@ void ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::set_filter(const std::s
     }
 }
 
-bool ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "etherWisDeviceTxTestPatternMode" || name == "etherWisDeviceRxTestPatternMode" || name == "etherWisDeviceRxTestPatternErrors")
         return true;
     return false;
 }
 
-ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrenttable()
+ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentTable()
+    :
+    etherwissectioncurrententry(this, {"ifindex"})
 {
 
-    yang_name = "etherWisSectionCurrentTable"; yang_parent_name = "ETHER-WIS"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "etherWisSectionCurrentTable"; yang_parent_name = "ETHER-WIS"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ETHERWIS::Etherwissectioncurrenttable::~Etherwissectioncurrenttable()
+ETHERWIS::EtherWisSectionCurrentTable::~EtherWisSectionCurrentTable()
 {
 }
 
-bool ETHERWIS::Etherwissectioncurrenttable::has_data() const
+bool ETHERWIS::EtherWisSectionCurrentTable::has_data() const
 {
-    for (std::size_t index=0; index<etherwissectioncurrententry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<etherwissectioncurrententry.len(); index++)
     {
         if(etherwissectioncurrententry[index]->has_data())
             return true;
@@ -414,9 +423,9 @@ bool ETHERWIS::Etherwissectioncurrenttable::has_data() const
     return false;
 }
 
-bool ETHERWIS::Etherwissectioncurrenttable::has_operation() const
+bool ETHERWIS::EtherWisSectionCurrentTable::has_operation() const
 {
-    for (std::size_t index=0; index<etherwissectioncurrententry.size(); index++)
+    for (std::size_t index=0; index<etherwissectioncurrententry.len(); index++)
     {
         if(etherwissectioncurrententry[index]->has_operation())
             return true;
@@ -424,21 +433,21 @@ bool ETHERWIS::Etherwissectioncurrenttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ETHERWIS::Etherwissectioncurrenttable::get_absolute_path() const
+std::string ETHERWIS::EtherWisSectionCurrentTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ETHER-WIS:ETHER-WIS/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ETHERWIS::Etherwissectioncurrenttable::get_segment_path() const
+std::string ETHERWIS::EtherWisSectionCurrentTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "etherWisSectionCurrentTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwissectioncurrenttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisSectionCurrentTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -447,25 +456,25 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwissectioncurrentt
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::Etherwissectioncurrenttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ETHERWIS::EtherWisSectionCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "etherWisSectionCurrentEntry")
     {
-        auto c = std::make_shared<ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry>();
+        auto c = std::make_shared<ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry>();
         c->parent = this;
-        etherwissectioncurrententry.push_back(c);
+        etherwissectioncurrententry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwissectioncurrenttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisSectionCurrentTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : etherwissectioncurrententry)
+    for (auto c : etherwissectioncurrententry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -476,43 +485,44 @@ std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwissectioncurrentt
     return children;
 }
 
-void ETHERWIS::Etherwissectioncurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ETHERWIS::EtherWisSectionCurrentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ETHERWIS::Etherwissectioncurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+void ETHERWIS::EtherWisSectionCurrentTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ETHERWIS::Etherwissectioncurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+bool ETHERWIS::EtherWisSectionCurrentTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "etherWisSectionCurrentEntry")
         return true;
     return false;
 }
 
-ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::Etherwissectioncurrententry()
+ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::EtherWisSectionCurrentEntry()
     :
     ifindex{YType::str, "ifIndex"},
     etherwissectioncurrentj0transmitted{YType::str, "etherWisSectionCurrentJ0Transmitted"},
     etherwissectioncurrentj0received{YType::str, "etherWisSectionCurrentJ0Received"}
 {
 
-    yang_name = "etherWisSectionCurrentEntry"; yang_parent_name = "etherWisSectionCurrentTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "etherWisSectionCurrentEntry"; yang_parent_name = "etherWisSectionCurrentTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::~Etherwissectioncurrententry()
+ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::~EtherWisSectionCurrentEntry()
 {
 }
 
-bool ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::has_data() const
+bool ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| etherwissectioncurrentj0transmitted.is_set
 	|| etherwissectioncurrentj0received.is_set;
 }
 
-bool ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::has_operation() const
+bool ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -520,21 +530,22 @@ bool ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::has_ope
 	|| ydk::is_set(etherwissectioncurrentj0received.yfilter);
 }
 
-std::string ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::get_absolute_path() const
+std::string ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ETHER-WIS:ETHER-WIS/etherWisSectionCurrentTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::get_segment_path() const
+std::string ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "etherWisSectionCurrentEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "etherWisSectionCurrentEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -546,19 +557,19 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwissectioncurrentt
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -580,7 +591,7 @@ void ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::set_val
     }
 }
 
-void ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+void ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -596,26 +607,29 @@ void ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::set_fil
     }
 }
 
-bool ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::has_leaf_or_child_of_name(const std::string & name) const
+bool ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "etherWisSectionCurrentJ0Transmitted" || name == "etherWisSectionCurrentJ0Received")
         return true;
     return false;
 }
 
-ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrenttable()
+ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentTable()
+    :
+    etherwispathcurrententry(this, {"ifindex"})
 {
 
-    yang_name = "etherWisPathCurrentTable"; yang_parent_name = "ETHER-WIS"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "etherWisPathCurrentTable"; yang_parent_name = "ETHER-WIS"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ETHERWIS::Etherwispathcurrenttable::~Etherwispathcurrenttable()
+ETHERWIS::EtherWisPathCurrentTable::~EtherWisPathCurrentTable()
 {
 }
 
-bool ETHERWIS::Etherwispathcurrenttable::has_data() const
+bool ETHERWIS::EtherWisPathCurrentTable::has_data() const
 {
-    for (std::size_t index=0; index<etherwispathcurrententry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<etherwispathcurrententry.len(); index++)
     {
         if(etherwispathcurrententry[index]->has_data())
             return true;
@@ -623,9 +637,9 @@ bool ETHERWIS::Etherwispathcurrenttable::has_data() const
     return false;
 }
 
-bool ETHERWIS::Etherwispathcurrenttable::has_operation() const
+bool ETHERWIS::EtherWisPathCurrentTable::has_operation() const
 {
-    for (std::size_t index=0; index<etherwispathcurrententry.size(); index++)
+    for (std::size_t index=0; index<etherwispathcurrententry.len(); index++)
     {
         if(etherwispathcurrententry[index]->has_operation())
             return true;
@@ -633,21 +647,21 @@ bool ETHERWIS::Etherwispathcurrenttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ETHERWIS::Etherwispathcurrenttable::get_absolute_path() const
+std::string ETHERWIS::EtherWisPathCurrentTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ETHER-WIS:ETHER-WIS/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ETHERWIS::Etherwispathcurrenttable::get_segment_path() const
+std::string ETHERWIS::EtherWisPathCurrentTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "etherWisPathCurrentTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwispathcurrenttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisPathCurrentTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -656,25 +670,25 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwispathcurrenttabl
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::Etherwispathcurrenttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ETHERWIS::EtherWisPathCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "etherWisPathCurrentEntry")
     {
-        auto c = std::make_shared<ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry>();
+        auto c = std::make_shared<ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry>();
         c->parent = this;
-        etherwispathcurrententry.push_back(c);
+        etherwispathcurrententry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwispathcurrenttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisPathCurrentTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : etherwispathcurrententry)
+    for (auto c : etherwispathcurrententry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -685,22 +699,22 @@ std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwispathcurrenttabl
     return children;
 }
 
-void ETHERWIS::Etherwispathcurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ETHERWIS::EtherWisPathCurrentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ETHERWIS::Etherwispathcurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+void ETHERWIS::EtherWisPathCurrentTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ETHERWIS::Etherwispathcurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+bool ETHERWIS::EtherWisPathCurrentTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "etherWisPathCurrentEntry")
         return true;
     return false;
 }
 
-ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::Etherwispathcurrententry()
+ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::EtherWisPathCurrentEntry()
     :
     ifindex{YType::str, "ifIndex"},
     etherwispathcurrentstatus{YType::bits, "etherWisPathCurrentStatus"},
@@ -708,22 +722,23 @@ ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::Etherwispathcurren
     etherwispathcurrentj1received{YType::str, "etherWisPathCurrentJ1Received"}
 {
 
-    yang_name = "etherWisPathCurrentEntry"; yang_parent_name = "etherWisPathCurrentTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "etherWisPathCurrentEntry"; yang_parent_name = "etherWisPathCurrentTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::~Etherwispathcurrententry()
+ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::~EtherWisPathCurrentEntry()
 {
 }
 
-bool ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::has_data() const
+bool ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| etherwispathcurrentstatus.is_set
 	|| etherwispathcurrentj1transmitted.is_set
 	|| etherwispathcurrentj1received.is_set;
 }
 
-bool ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::has_operation() const
+bool ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -732,21 +747,22 @@ bool ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::has_operation
 	|| ydk::is_set(etherwispathcurrentj1received.yfilter);
 }
 
-std::string ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::get_absolute_path() const
+std::string ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ETHER-WIS:ETHER-WIS/etherWisPathCurrentTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::get_segment_path() const
+std::string ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "etherWisPathCurrentEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "etherWisPathCurrentEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -759,19 +775,19 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwispathcurrenttabl
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -797,7 +813,7 @@ void ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::set_value(con
     }
 }
 
-void ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+void ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -817,26 +833,29 @@ void ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::set_filter(co
     }
 }
 
-bool ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::has_leaf_or_child_of_name(const std::string & name) const
+bool ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "etherWisPathCurrentStatus" || name == "etherWisPathCurrentJ1Transmitted" || name == "etherWisPathCurrentJ1Received")
         return true;
     return false;
 }
 
-ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrenttable()
+ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentTable()
+    :
+    etherwisfarendpathcurrententry(this, {"ifindex"})
 {
 
-    yang_name = "etherWisFarEndPathCurrentTable"; yang_parent_name = "ETHER-WIS"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "etherWisFarEndPathCurrentTable"; yang_parent_name = "ETHER-WIS"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ETHERWIS::Etherwisfarendpathcurrenttable::~Etherwisfarendpathcurrenttable()
+ETHERWIS::EtherWisFarEndPathCurrentTable::~EtherWisFarEndPathCurrentTable()
 {
 }
 
-bool ETHERWIS::Etherwisfarendpathcurrenttable::has_data() const
+bool ETHERWIS::EtherWisFarEndPathCurrentTable::has_data() const
 {
-    for (std::size_t index=0; index<etherwisfarendpathcurrententry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<etherwisfarendpathcurrententry.len(); index++)
     {
         if(etherwisfarendpathcurrententry[index]->has_data())
             return true;
@@ -844,9 +863,9 @@ bool ETHERWIS::Etherwisfarendpathcurrenttable::has_data() const
     return false;
 }
 
-bool ETHERWIS::Etherwisfarendpathcurrenttable::has_operation() const
+bool ETHERWIS::EtherWisFarEndPathCurrentTable::has_operation() const
 {
-    for (std::size_t index=0; index<etherwisfarendpathcurrententry.size(); index++)
+    for (std::size_t index=0; index<etherwisfarendpathcurrententry.len(); index++)
     {
         if(etherwisfarendpathcurrententry[index]->has_operation())
             return true;
@@ -854,21 +873,21 @@ bool ETHERWIS::Etherwisfarendpathcurrenttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ETHERWIS::Etherwisfarendpathcurrenttable::get_absolute_path() const
+std::string ETHERWIS::EtherWisFarEndPathCurrentTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ETHER-WIS:ETHER-WIS/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ETHERWIS::Etherwisfarendpathcurrenttable::get_segment_path() const
+std::string ETHERWIS::EtherWisFarEndPathCurrentTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "etherWisFarEndPathCurrentTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwisfarendpathcurrenttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisFarEndPathCurrentTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -877,25 +896,25 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwisfarendpathcurre
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::Etherwisfarendpathcurrenttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ETHERWIS::EtherWisFarEndPathCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "etherWisFarEndPathCurrentEntry")
     {
-        auto c = std::make_shared<ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry>();
+        auto c = std::make_shared<ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry>();
         c->parent = this;
-        etherwisfarendpathcurrententry.push_back(c);
+        etherwisfarendpathcurrententry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwisfarendpathcurrenttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisFarEndPathCurrentTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : etherwisfarendpathcurrententry)
+    for (auto c : etherwisfarendpathcurrententry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -906,62 +925,64 @@ std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwisfarendpathcurre
     return children;
 }
 
-void ETHERWIS::Etherwisfarendpathcurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ETHERWIS::EtherWisFarEndPathCurrentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ETHERWIS::Etherwisfarendpathcurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+void ETHERWIS::EtherWisFarEndPathCurrentTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ETHERWIS::Etherwisfarendpathcurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+bool ETHERWIS::EtherWisFarEndPathCurrentTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "etherWisFarEndPathCurrentEntry")
         return true;
     return false;
 }
 
-ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::Etherwisfarendpathcurrententry()
+ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::EtherWisFarEndPathCurrentEntry()
     :
     ifindex{YType::str, "ifIndex"},
     etherwisfarendpathcurrentstatus{YType::bits, "etherWisFarEndPathCurrentStatus"}
 {
 
-    yang_name = "etherWisFarEndPathCurrentEntry"; yang_parent_name = "etherWisFarEndPathCurrentTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "etherWisFarEndPathCurrentEntry"; yang_parent_name = "etherWisFarEndPathCurrentTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::~Etherwisfarendpathcurrententry()
+ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::~EtherWisFarEndPathCurrentEntry()
 {
 }
 
-bool ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::has_data() const
+bool ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| etherwisfarendpathcurrentstatus.is_set;
 }
 
-bool ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::has_operation() const
+bool ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
 	|| ydk::is_set(etherwisfarendpathcurrentstatus.yfilter);
 }
 
-std::string ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::get_absolute_path() const
+std::string ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ETHER-WIS:ETHER-WIS/etherWisFarEndPathCurrentTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::get_segment_path() const
+std::string ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "etherWisFarEndPathCurrentEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "etherWisFarEndPathCurrentEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -972,19 +993,19 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::Etherwisfarendpathcurre
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -998,7 +1019,7 @@ void ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::s
     }
 }
 
-void ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+void ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1010,21 +1031,21 @@ void ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::s
     }
 }
 
-bool ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::has_leaf_or_child_of_name(const std::string & name) const
+bool ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "etherWisFarEndPathCurrentStatus")
         return true;
     return false;
 }
 
-const Enum::YLeaf ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicetxtestpatternmode::none {1, "none"};
-const Enum::YLeaf ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicetxtestpatternmode::squareWave {2, "squareWave"};
-const Enum::YLeaf ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicetxtestpatternmode::prbs31 {3, "prbs31"};
-const Enum::YLeaf ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicetxtestpatternmode::mixedFrequency {4, "mixedFrequency"};
+const Enum::YLeaf ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::EtherWisDeviceTxTestPatternMode::none {1, "none"};
+const Enum::YLeaf ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::EtherWisDeviceTxTestPatternMode::squareWave {2, "squareWave"};
+const Enum::YLeaf ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::EtherWisDeviceTxTestPatternMode::prbs31 {3, "prbs31"};
+const Enum::YLeaf ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::EtherWisDeviceTxTestPatternMode::mixedFrequency {4, "mixedFrequency"};
 
-const Enum::YLeaf ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicerxtestpatternmode::none {1, "none"};
-const Enum::YLeaf ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicerxtestpatternmode::prbs31 {3, "prbs31"};
-const Enum::YLeaf ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicerxtestpatternmode::mixedFrequency {4, "mixedFrequency"};
+const Enum::YLeaf ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::EtherWisDeviceRxTestPatternMode::none {1, "none"};
+const Enum::YLeaf ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::EtherWisDeviceRxTestPatternMode::prbs31 {3, "prbs31"};
+const Enum::YLeaf ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::EtherWisDeviceRxTestPatternMode::mixedFrequency {4, "mixedFrequency"};
 
 
 }

@@ -32,32 +32,32 @@ class MPLSTESTDMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Mplstescalars; //type: MPLSTESTDMIB::Mplstescalars
-        class Mplsteobjects; //type: MPLSTESTDMIB::Mplsteobjects
-        class Mplstunneltable; //type: MPLSTESTDMIB::Mplstunneltable
-        class Mplstunnelhoptable; //type: MPLSTESTDMIB::Mplstunnelhoptable
-        class Mplstunnelresourcetable; //type: MPLSTESTDMIB::Mplstunnelresourcetable
-        class Mplstunnelarhoptable; //type: MPLSTESTDMIB::Mplstunnelarhoptable
-        class Mplstunnelchoptable; //type: MPLSTESTDMIB::Mplstunnelchoptable
-        class Mplstunnelcrldprestable; //type: MPLSTESTDMIB::Mplstunnelcrldprestable
+        class MplsTeScalars; //type: MPLSTESTDMIB::MplsTeScalars
+        class MplsTeObjects; //type: MPLSTESTDMIB::MplsTeObjects
+        class MplsTunnelTable; //type: MPLSTESTDMIB::MplsTunnelTable
+        class MplsTunnelHopTable; //type: MPLSTESTDMIB::MplsTunnelHopTable
+        class MplsTunnelResourceTable; //type: MPLSTESTDMIB::MplsTunnelResourceTable
+        class MplsTunnelARHopTable; //type: MPLSTESTDMIB::MplsTunnelARHopTable
+        class MplsTunnelCHopTable; //type: MPLSTESTDMIB::MplsTunnelCHopTable
+        class MplsTunnelCRLDPResTable; //type: MPLSTESTDMIB::MplsTunnelCRLDPResTable
 
-        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstescalars> mplstescalars;
-        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplsteobjects> mplsteobjects;
-        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunneltable> mplstunneltable;
-        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunnelhoptable> mplstunnelhoptable;
-        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunnelresourcetable> mplstunnelresourcetable;
-        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunnelarhoptable> mplstunnelarhoptable;
-        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunnelchoptable> mplstunnelchoptable;
-        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunnelcrldprestable> mplstunnelcrldprestable;
+        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTeScalars> mplstescalars;
+        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTeObjects> mplsteobjects;
+        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelTable> mplstunneltable;
+        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelHopTable> mplstunnelhoptable;
+        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelResourceTable> mplstunnelresourcetable;
+        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelARHopTable> mplstunnelarhoptable;
+        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelCHopTable> mplstunnelchoptable;
+        std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelCRLDPResTable> mplstunnelcrldprestable;
         
 }; // MPLSTESTDMIB
 
 
-class MPLSTESTDMIB::Mplstescalars : public ydk::Entity
+class MPLSTESTDMIB::MplsTeScalars : public ydk::Entity
 {
     public:
-        Mplstescalars();
-        ~Mplstescalars();
+        MplsTeScalars();
+        ~MplsTeScalars();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -72,18 +72,18 @@ class MPLSTESTDMIB::Mplstescalars : public ydk::Entity
 
         ydk::YLeaf mplstunnelconfigured; //type: uint32
         ydk::YLeaf mplstunnelactive; //type: uint32
-        ydk::YLeaf mplstunneltedistproto; //type: Mplstunneltedistproto
+        ydk::YLeaf mplstunneltedistproto; //type: MplsTunnelTEDistProto
         ydk::YLeaf mplstunnelmaxhops; //type: uint32
         ydk::YLeaf mplstunnelnotificationmaxrate; //type: uint32
 
-}; // MPLSTESTDMIB::Mplstescalars
+}; // MPLSTESTDMIB::MplsTeScalars
 
 
-class MPLSTESTDMIB::Mplsteobjects : public ydk::Entity
+class MPLSTESTDMIB::MplsTeObjects : public ydk::Entity
 {
     public:
-        Mplsteobjects();
-        ~Mplsteobjects();
+        MplsTeObjects();
+        ~MplsTeObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -101,14 +101,14 @@ class MPLSTESTDMIB::Mplsteobjects : public ydk::Entity
         ydk::YLeaf mplstunnelresourceindexnext; //type: uint32
         ydk::YLeaf mplstunnelnotificationenable; //type: boolean
 
-}; // MPLSTESTDMIB::Mplsteobjects
+}; // MPLSTESTDMIB::MplsTeObjects
 
 
-class MPLSTESTDMIB::Mplstunneltable : public ydk::Entity
+class MPLSTESTDMIB::MplsTunnelTable : public ydk::Entity
 {
     public:
-        Mplstunneltable();
-        ~Mplstunneltable();
+        MplsTunnelTable();
+        ~MplsTunnelTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -121,18 +121,18 @@ class MPLSTESTDMIB::Mplstunneltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplstunnelentry; //type: MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry
+        class MplsTunnelEntry; //type: MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry> > mplstunnelentry;
+        ydk::YList mplstunnelentry;
         
-}; // MPLSTESTDMIB::Mplstunneltable
+}; // MPLSTESTDMIB::MplsTunnelTable
 
 
-class MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry : public ydk::Entity
+class MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry : public ydk::Entity
 {
     public:
-        Mplstunnelentry();
-        ~Mplstunnelentry();
+        MplsTunnelEntry();
+        ~MplsTunnelEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -154,12 +154,12 @@ class MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry : public ydk::Entity
         ydk::YLeaf mplstunnelisif; //type: boolean
         ydk::YLeaf mplstunnelifindex; //type: int32
         ydk::YLeaf mplstunnelowner; //type: MplsOwner
-        ydk::YLeaf mplstunnelrole; //type: Mplstunnelrole
+        ydk::YLeaf mplstunnelrole; //type: MplsTunnelRole
         ydk::YLeaf mplstunnelxcpointer; //type: string
-        ydk::YLeaf mplstunnelsignallingproto; //type: Mplstunnelsignallingproto
+        ydk::YLeaf mplstunnelsignallingproto; //type: MplsTunnelSignallingProto
         ydk::YLeaf mplstunnelsetupprio; //type: int32
         ydk::YLeaf mplstunnelholdingprio; //type: int32
-        ydk::YLeaf mplstunnelsessionattributes; //type: Mplstunnelsessionattributes
+        ydk::YLeaf mplstunnelsessionattributes; //type: MplsTunnelSessionAttributes
         ydk::YLeaf mplstunnellocalprotectinuse; //type: boolean
         ydk::YLeaf mplstunnelresourcepointer; //type: string
         ydk::YLeaf mplstunnelprimaryinstance; //type: uint32
@@ -178,8 +178,8 @@ class MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry : public ydk::Entity
         ydk::YLeaf mplstunnellastpathchange; //type: uint32
         ydk::YLeaf mplstunnelcreationtime; //type: uint32
         ydk::YLeaf mplstunnelstatetransitions; //type: uint32
-        ydk::YLeaf mplstunneladminstatus; //type: Mplstunneladminstatus
-        ydk::YLeaf mplstunneloperstatus; //type: Mplstunneloperstatus
+        ydk::YLeaf mplstunneladminstatus; //type: MplsTunnelAdminStatus
+        ydk::YLeaf mplstunneloperstatus; //type: MplsTunnelOperStatus
         ydk::YLeaf mplstunnelrowstatus; //type: RowStatus
         ydk::YLeaf mplstunnelstoragetype; //type: StorageType
         ydk::YLeaf mplstunnelperfpackets; //type: uint32
@@ -187,19 +187,19 @@ class MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry : public ydk::Entity
         ydk::YLeaf mplstunnelperferrors; //type: uint32
         ydk::YLeaf mplstunnelperfbytes; //type: uint32
         ydk::YLeaf mplstunnelperfhcbytes; //type: uint64
-        class Mplstunnelrole;
-        class Mplstunnelsignallingproto;
-        class Mplstunneladminstatus;
-        class Mplstunneloperstatus;
+        class MplsTunnelRole;
+        class MplsTunnelSignallingProto;
+        class MplsTunnelAdminStatus;
+        class MplsTunnelOperStatus;
 
-}; // MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry
+}; // MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry
 
 
-class MPLSTESTDMIB::Mplstunnelhoptable : public ydk::Entity
+class MPLSTESTDMIB::MplsTunnelHopTable : public ydk::Entity
 {
     public:
-        Mplstunnelhoptable();
-        ~Mplstunnelhoptable();
+        MplsTunnelHopTable();
+        ~MplsTunnelHopTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -212,18 +212,18 @@ class MPLSTESTDMIB::Mplstunnelhoptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplstunnelhopentry; //type: MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry
+        class MplsTunnelHopEntry; //type: MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry> > mplstunnelhopentry;
+        ydk::YList mplstunnelhopentry;
         
-}; // MPLSTESTDMIB::Mplstunnelhoptable
+}; // MPLSTESTDMIB::MplsTunnelHopTable
 
 
-class MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry : public ydk::Entity
+class MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry : public ydk::Entity
 {
     public:
-        Mplstunnelhopentry();
-        ~Mplstunnelhopentry();
+        MplsTunnelHopEntry();
+        ~MplsTunnelHopEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -245,23 +245,23 @@ class MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry : public ydk::Entity
         ydk::YLeaf mplstunnelhopasnumber; //type: binary
         ydk::YLeaf mplstunnelhopaddrunnum; //type: binary
         ydk::YLeaf mplstunnelhoplspid; //type: binary
-        ydk::YLeaf mplstunnelhoptype; //type: Mplstunnelhoptype
+        ydk::YLeaf mplstunnelhoptype; //type: MplsTunnelHopType
         ydk::YLeaf mplstunnelhopinclude; //type: boolean
         ydk::YLeaf mplstunnelhoppathoptionname; //type: string
-        ydk::YLeaf mplstunnelhopentrypathcomp; //type: Mplstunnelhopentrypathcomp
+        ydk::YLeaf mplstunnelhopentrypathcomp; //type: MplsTunnelHopEntryPathComp
         ydk::YLeaf mplstunnelhoprowstatus; //type: RowStatus
         ydk::YLeaf mplstunnelhopstoragetype; //type: StorageType
-        class Mplstunnelhoptype;
-        class Mplstunnelhopentrypathcomp;
+        class MplsTunnelHopType;
+        class MplsTunnelHopEntryPathComp;
 
-}; // MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry
+}; // MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry
 
 
-class MPLSTESTDMIB::Mplstunnelresourcetable : public ydk::Entity
+class MPLSTESTDMIB::MplsTunnelResourceTable : public ydk::Entity
 {
     public:
-        Mplstunnelresourcetable();
-        ~Mplstunnelresourcetable();
+        MplsTunnelResourceTable();
+        ~MplsTunnelResourceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -274,18 +274,18 @@ class MPLSTESTDMIB::Mplstunnelresourcetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplstunnelresourceentry; //type: MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry
+        class MplsTunnelResourceEntry; //type: MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry> > mplstunnelresourceentry;
+        ydk::YList mplstunnelresourceentry;
         
-}; // MPLSTESTDMIB::Mplstunnelresourcetable
+}; // MPLSTESTDMIB::MplsTunnelResourceTable
 
 
-class MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry : public ydk::Entity
+class MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry : public ydk::Entity
 {
     public:
-        Mplstunnelresourceentry();
-        ~Mplstunnelresourceentry();
+        MplsTunnelResourceEntry();
+        ~MplsTunnelResourceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -304,20 +304,20 @@ class MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry : public yd
         ydk::YLeaf mplstunnelresourcemaxburstsize; //type: uint32
         ydk::YLeaf mplstunnelresourcemeanburstsize; //type: uint32
         ydk::YLeaf mplstunnelresourceexburstsize; //type: uint32
-        ydk::YLeaf mplstunnelresourcefrequency; //type: Mplstunnelresourcefrequency
+        ydk::YLeaf mplstunnelresourcefrequency; //type: MplsTunnelResourceFrequency
         ydk::YLeaf mplstunnelresourceweight; //type: uint32
         ydk::YLeaf mplstunnelresourcerowstatus; //type: RowStatus
         ydk::YLeaf mplstunnelresourcestoragetype; //type: StorageType
-        class Mplstunnelresourcefrequency;
+        class MplsTunnelResourceFrequency;
 
-}; // MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry
+}; // MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry
 
 
-class MPLSTESTDMIB::Mplstunnelarhoptable : public ydk::Entity
+class MPLSTESTDMIB::MplsTunnelARHopTable : public ydk::Entity
 {
     public:
-        Mplstunnelarhoptable();
-        ~Mplstunnelarhoptable();
+        MplsTunnelARHopTable();
+        ~MplsTunnelARHopTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -330,18 +330,18 @@ class MPLSTESTDMIB::Mplstunnelarhoptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplstunnelarhopentry; //type: MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry
+        class MplsTunnelARHopEntry; //type: MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry> > mplstunnelarhopentry;
+        ydk::YList mplstunnelarhopentry;
         
-}; // MPLSTESTDMIB::Mplstunnelarhoptable
+}; // MPLSTESTDMIB::MplsTunnelARHopTable
 
 
-class MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry : public ydk::Entity
+class MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry : public ydk::Entity
 {
     public:
-        Mplstunnelarhopentry();
-        ~Mplstunnelarhopentry();
+        MplsTunnelARHopEntry();
+        ~MplsTunnelARHopEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -361,14 +361,14 @@ class MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry : public ydk::Ent
         ydk::YLeaf mplstunnelarhopaddrunnum; //type: binary
         ydk::YLeaf mplstunnelarhoplspid; //type: binary
 
-}; // MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry
+}; // MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry
 
 
-class MPLSTESTDMIB::Mplstunnelchoptable : public ydk::Entity
+class MPLSTESTDMIB::MplsTunnelCHopTable : public ydk::Entity
 {
     public:
-        Mplstunnelchoptable();
-        ~Mplstunnelchoptable();
+        MplsTunnelCHopTable();
+        ~MplsTunnelCHopTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -381,18 +381,18 @@ class MPLSTESTDMIB::Mplstunnelchoptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplstunnelchopentry; //type: MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry
+        class MplsTunnelCHopEntry; //type: MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry> > mplstunnelchopentry;
+        ydk::YList mplstunnelchopentry;
         
-}; // MPLSTESTDMIB::Mplstunnelchoptable
+}; // MPLSTESTDMIB::MplsTunnelCHopTable
 
 
-class MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry : public ydk::Entity
+class MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry : public ydk::Entity
 {
     public:
-        Mplstunnelchopentry();
-        ~Mplstunnelchopentry();
+        MplsTunnelCHopEntry();
+        ~MplsTunnelCHopEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -413,17 +413,17 @@ class MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry : public ydk::Entit
         ydk::YLeaf mplstunnelchopasnumber; //type: binary
         ydk::YLeaf mplstunnelchopaddrunnum; //type: binary
         ydk::YLeaf mplstunnelchoplspid; //type: binary
-        ydk::YLeaf mplstunnelchoptype; //type: Mplstunnelchoptype
-        class Mplstunnelchoptype;
+        ydk::YLeaf mplstunnelchoptype; //type: MplsTunnelCHopType
+        class MplsTunnelCHopType;
 
-}; // MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry
+}; // MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry
 
 
-class MPLSTESTDMIB::Mplstunnelcrldprestable : public ydk::Entity
+class MPLSTESTDMIB::MplsTunnelCRLDPResTable : public ydk::Entity
 {
     public:
-        Mplstunnelcrldprestable();
-        ~Mplstunnelcrldprestable();
+        MplsTunnelCRLDPResTable();
+        ~MplsTunnelCRLDPResTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -436,18 +436,18 @@ class MPLSTESTDMIB::Mplstunnelcrldprestable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplstunnelcrldpresentry; //type: MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry
+        class MplsTunnelCRLDPResEntry; //type: MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry> > mplstunnelcrldpresentry;
+        ydk::YList mplstunnelcrldpresentry;
         
-}; // MPLSTESTDMIB::Mplstunnelcrldprestable
+}; // MPLSTESTDMIB::MplsTunnelCRLDPResTable
 
 
-class MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry : public ydk::Entity
+class MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry : public ydk::Entity
 {
     public:
-        Mplstunnelcrldpresentry();
-        ~Mplstunnelcrldpresentry();
+        MplsTunnelCRLDPResEntry();
+        ~MplsTunnelCRLDPResEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -460,20 +460,20 @@ class MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::mplstunnelresourceindex)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::mplstunnelresourceindex)
         ydk::YLeaf mplstunnelresourceindex;
         ydk::YLeaf mplstunnelcrldpresmeanburstsize; //type: uint32
         ydk::YLeaf mplstunnelcrldpresexburstsize; //type: uint32
-        ydk::YLeaf mplstunnelcrldpresfrequency; //type: Mplstunnelcrldpresfrequency
+        ydk::YLeaf mplstunnelcrldpresfrequency; //type: MplsTunnelCRLDPResFrequency
         ydk::YLeaf mplstunnelcrldpresweight; //type: uint32
         ydk::YLeaf mplstunnelcrldpresflags; //type: uint32
         ydk::YLeaf mplstunnelcrldpresrowstatus; //type: RowStatus
         ydk::YLeaf mplstunnelcrldpresstoragetype; //type: StorageType
-        class Mplstunnelcrldpresfrequency;
+        class MplsTunnelCRLDPResFrequency;
 
-}; // MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry
+}; // MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry
 
-class MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelrole : public ydk::Enum
+class MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelRole : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf head;
@@ -483,7 +483,7 @@ class MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelrole : public yd
 
 };
 
-class MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelsignallingproto : public ydk::Enum
+class MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelSignallingProto : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -493,7 +493,7 @@ class MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunnelsignallingproto 
 
 };
 
-class MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneladminstatus : public ydk::Enum
+class MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelAdminStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -502,7 +502,7 @@ class MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneladminstatus : pu
 
 };
 
-class MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneloperstatus : public ydk::Enum
+class MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::MplsTunnelOperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -515,7 +515,7 @@ class MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::Mplstunneloperstatus : pub
 
 };
 
-class MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::Mplstunnelhoptype : public ydk::Enum
+class MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::MplsTunnelHopType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf strict;
@@ -523,7 +523,7 @@ class MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::Mplstunnelhoptype : 
 
 };
 
-class MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::Mplstunnelhopentrypathcomp : public ydk::Enum
+class MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::MplsTunnelHopEntryPathComp : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dynamic;
@@ -531,7 +531,7 @@ class MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::Mplstunnelhopentrypa
 
 };
 
-class MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::Mplstunnelresourcefrequency : public ydk::Enum
+class MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::MplsTunnelResourceFrequency : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unspecified;
@@ -540,7 +540,7 @@ class MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::Mplstunnel
 
 };
 
-class MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::Mplstunnelchoptype : public ydk::Enum
+class MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::MplsTunnelCHopType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf strict;
@@ -548,7 +548,7 @@ class MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::Mplstunnelchoptype
 
 };
 
-class MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::Mplstunnelcrldpresfrequency : public ydk::Enum
+class MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::MplsTunnelCRLDPResFrequency : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unspecified;

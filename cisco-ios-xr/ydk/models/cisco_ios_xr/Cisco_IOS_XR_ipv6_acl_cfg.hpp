@@ -62,7 +62,7 @@ class Ipv6AclAndPrefixList::Prefixes : public ydk::Entity
 
         class Prefix; //type: Ipv6AclAndPrefixList::Prefixes::Prefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_acl_cfg::Ipv6AclAndPrefixList::Prefixes::Prefix> > prefix;
+        ydk::YList prefix;
         
 }; // Ipv6AclAndPrefixList::Prefixes
 
@@ -87,7 +87,7 @@ class Ipv6AclAndPrefixList::Prefixes::Prefix : public ydk::Entity
         ydk::YLeaf name; //type: string
         class PrefixListEntries; //type: Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_acl_cfg::Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries> prefix_list_entries; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_acl_cfg::Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries> prefix_list_entries;
         
 }; // Ipv6AclAndPrefixList::Prefixes::Prefix
 
@@ -110,7 +110,7 @@ class Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries : public ydk::En
 
         class PrefixListEntry; //type: Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_acl_cfg::Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry> > prefix_list_entry;
+        ydk::YList prefix_list_entry;
         
 }; // Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries
 
@@ -190,7 +190,7 @@ class Ipv6AclAndPrefixList::Accesses : public ydk::Entity
 
         class Access; //type: Ipv6AclAndPrefixList::Accesses::Access
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_acl_cfg::Ipv6AclAndPrefixList::Accesses::Access> > access;
+        ydk::YList access;
         
 }; // Ipv6AclAndPrefixList::Accesses
 
@@ -238,7 +238,7 @@ class Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries : public ydk::En
 
         class AccessListEntry; //type: Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_acl_cfg::Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry> > access_list_entry;
+        ydk::YList access_list_entry;
         
 }; // Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries
 
@@ -287,6 +287,7 @@ class Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         class Tcp; //type: Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp
         class PacketLength; //type: Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength
         class TimeToLive; //type: Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive
+        class DSCPValues; //type: Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues
         class NextHop; //type: Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop
         class HeaderFlags; //type: Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::HeaderFlags
 
@@ -298,6 +299,7 @@ class Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_acl_cfg::Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp> tcp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_acl_cfg::Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength> packet_length;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_acl_cfg::Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive> time_to_live;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_acl_cfg::Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues> dscpvalues;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_acl_cfg::Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop> next_hop;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_acl_cfg::Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::HeaderFlags> header_flags;
         
@@ -484,6 +486,29 @@ class Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         ydk::YLeaf time_to_live_max; //type: uint32
 
 }; // Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive
+
+
+class Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues : public ydk::Entity
+{
+    public:
+        DSCPValues();
+        ~DSCPValues();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf dscp_operator; //type: Ipv6AclOperatorEnum
+        ydk::YLeaf dscp_lower; //type: one of uint32, enumeration
+        ydk::YLeaf dscp_upper; //type: one of uint32, enumeration
+
+}; // Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues
 
 
 class Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop : public ydk::Entity

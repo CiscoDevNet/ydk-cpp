@@ -348,7 +348,7 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Pat
 
         class Stack; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack> > stack;
+        ydk::YList stack;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo
 
@@ -425,7 +425,7 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec : publ
         class AdvtAcl; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AllocationAcl> allocation_acl;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl> > advt_acl;
+        ydk::YList advt_acl;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec
 
@@ -694,7 +694,7 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::NeighborBriefs : public ydk::Entity
 
         class NeighborBrief; //type: MplsLdp::Global::Standby::Vrfs::Vrf::NeighborBriefs::NeighborBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::NeighborBriefs::NeighborBrief> > neighbor_brief;
+        ydk::YList neighbor_brief;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::NeighborBriefs
 
@@ -724,7 +724,7 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::NeighborBriefs::NeighborBrief : publi
         class NbrBrAfInfo; //type: MplsLdp::Global::Standby::Vrfs::Vrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::NeighborBriefs::NeighborBrief::Vrf_> vrf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo> > nbr_br_af_info;
+        ydk::YList nbr_br_af_info;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::NeighborBriefs::NeighborBrief
 
@@ -815,7 +815,7 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Backoffs : public ydk::Entity
 
         class Backoff; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Backoffs::Backoff
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Backoffs::Backoff> > backoff;
+        ydk::YList backoff;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Backoffs
 
@@ -912,7 +912,7 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors : public
 
         class HaNeighbor; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor> > ha_neighbor;
+        ydk::YList ha_neighbor;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors
 
@@ -1188,7 +1188,7 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors : publ
 
         class HaNeighbor; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor> > ha_neighbor;
+        ydk::YList ha_neighbor;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors
 
@@ -1323,7 +1323,7 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Parameters : public ydk::Entity
         class AddressFamilyParameter; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Parameters::AddressFamilyParameter
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Parameters::GracefulRestartInformation> graceful_restart_information;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Parameters::AddressFamilyParameter> > address_family_parameter;
+        ydk::YList address_family_parameter;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Parameters
 
@@ -1613,7 +1613,7 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Issu::HaStatistics::HaNeighbors : pub
 
         class HaNeighbor; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Issu::HaStatistics::HaNeighbors::HaNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Issu::HaStatistics::HaNeighbors::HaNeighbor> > ha_neighbor;
+        ydk::YList ha_neighbor;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Issu::HaStatistics::HaNeighbors
 
@@ -1722,7 +1722,7 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::NeighborCapabilities : public ydk::En
 
         class NeighborCapability; //type: MplsLdp::Global::Standby::Vrfs::Vrf::NeighborCapabilities::NeighborCapability
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::NeighborCapabilities::NeighborCapability> > neighbor_capability;
+        ydk::YList neighbor_capability;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::NeighborCapabilities
 
@@ -1748,8 +1748,8 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::NeighborCapabilities::NeighborCapabil
         class Sent; //type: MplsLdp::Global::Standby::Vrfs::Vrf::NeighborCapabilities::NeighborCapability::Sent
         class Received; //type: MplsLdp::Global::Standby::Vrfs::Vrf::NeighborCapabilities::NeighborCapability::Received
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::NeighborCapabilities::NeighborCapability::Sent> > sent;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::NeighborCapabilities::NeighborCapability::Received> > received;
+        ydk::YList sent;
+        ydk::YList received;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::NeighborCapabilities::NeighborCapability
 
@@ -1820,7 +1820,7 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors : public ydk::Entity
 
         class Neighbor; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors
 
@@ -1854,10 +1854,10 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor : public ydk::Ent
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::ProtocolInformation> protocol_information;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::TcpInformation> tcp_information;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformation> detailed_information;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrBoundIpv4AddressInfo> > ldp_nbr_bound_ipv4_address_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrBoundIpv6AddressInfo> > ldp_nbr_bound_ipv6_address_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo> > ldp_nbr_ipv4_adj_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo> > ldp_nbr_ipv6_adj_info;
+        ydk::YList ldp_nbr_bound_ipv4_address_info;
+        ydk::YList ldp_nbr_bound_ipv6_address_info;
+        ydk::YList ldp_nbr_ipv4_adj_info;
+        ydk::YList ldp_nbr_ipv6_adj_info;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor
 
@@ -2036,9 +2036,9 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformat
         class Ipv6DuplicateAddress; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformation::Ipv6DuplicateAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformation::Capabilities> capabilities;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformation::Client> > client;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformation::Ipv4DuplicateAddress> > ipv4_duplicate_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformation::Ipv6DuplicateAddress> > ipv6_duplicate_address;
+        ydk::YList client;
+        ydk::YList ipv4_duplicate_address;
+        ydk::YList ipv6_duplicate_address;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformation
 
@@ -2062,8 +2062,8 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformat
         class Sent; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformation::Capabilities::Sent
         class Received; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformation::Capabilities::Received
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformation::Capabilities::Sent> > sent;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformation::Capabilities::Received> > received;
+        ydk::YList sent;
+        ydk::YList received;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Neighbors::Neighbor::DetailedInformation::Capabilities
 
@@ -2656,7 +2656,7 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Statistics : public ydk::Entity
 
         class Statistic; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Statistics::Statistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Statistics::Statistic> > statistic;
+        ydk::YList statistic;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Statistics
 
@@ -2929,7 +2929,7 @@ class MplsLdp::Global::Active::DefaultVrf::GracefulRestart : public ydk::Entity
         class GracefulRestartableNeighbor; //type: MplsLdp::Global::Active::DefaultVrf::GracefulRestart::GracefulRestartableNeighbor
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::GracefulRestart::Vrf> vrf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::GracefulRestart::GracefulRestartableNeighbor> > graceful_restartable_neighbor;
+        ydk::YList graceful_restartable_neighbor;
         
 }; // MplsLdp::Global::Active::DefaultVrf::GracefulRestart
 
@@ -2988,8 +2988,8 @@ class MplsLdp::Global::Active::DefaultVrf::GracefulRestart::GracefulRestartableN
         class DownNbrAddress; //type: MplsLdp::Global::Active::DefaultVrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::GracefulRestart::GracefulRestartableNeighbor::GrPeer> gr_peer;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrInterface> > down_nbr_interface;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrAddress> > down_nbr_address;
+        ydk::YList down_nbr_interface;
+        ydk::YList down_nbr_address;
         
 }; // MplsLdp::Global::Active::DefaultVrf::GracefulRestart::GracefulRestartableNeighbor
 
@@ -3085,7 +3085,7 @@ class MplsLdp::Global::Active::DefaultVrf::Capabilities : public ydk::Entity
 
         class Capability; //type: MplsLdp::Global::Active::DefaultVrf::Capabilities::Capability
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Capabilities::Capability> > capability;
+        ydk::YList capability;
         
 }; // MplsLdp::Global::Active::DefaultVrf::Capabilities
 
@@ -3107,7 +3107,7 @@ class MplsLdp::Global::Active::DefaultVrf::Capabilities::Capability : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf capability_type; //type: int32
+        ydk::YLeaf capability_type; //type: uint32
         ydk::YLeaf capability_owner; //type: string
         class Capability_; //type: MplsLdp::Global::Active::DefaultVrf::Capabilities::Capability::Capability_
 
@@ -3251,7 +3251,7 @@ class MplsLdp::Global::Active::DefaultVrf::Afs : public ydk::Entity
 
         class Af; //type: MplsLdp::Global::Active::DefaultVrf::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af> > af;
+        ydk::YList af;
         
 }; // MplsLdp::Global::Active::DefaultVrf::Afs
 
@@ -3345,7 +3345,7 @@ class MplsLdp::Global::Active::DefaultVrf::Afs::Af::Bindings : public ydk::Entit
 
         class Binding; //type: MplsLdp::Global::Active::DefaultVrf::Afs::Af::Bindings::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Bindings::Binding> > binding;
+        ydk::YList binding;
         
 }; // MplsLdp::Global::Active::DefaultVrf::Afs::Af::Bindings
 
@@ -3385,9 +3385,9 @@ class MplsLdp::Global::Active::DefaultVrf::Afs::Af::Bindings::Binding : public y
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Bindings::Binding::Vrf> vrf;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Bindings::Binding::PrefixXr> prefix_xr;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Bindings::Binding::RemoteBinding> > remote_binding;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo> > peers_advertised_to;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Bindings::Binding::PeersAcked> > peers_acked;
+        ydk::YList remote_binding;
+        ydk::YList peers_advertised_to;
+        ydk::YList peers_acked;
         
 }; // MplsLdp::Global::Active::DefaultVrf::Afs::Af::Bindings::Binding
 
@@ -3576,7 +3576,7 @@ class MplsLdp::Global::Active::DefaultVrf::Afs::Af::Igp::Syncs : public ydk::Ent
 
         class Sync; //type: MplsLdp::Global::Active::DefaultVrf::Afs::Af::Igp::Syncs::Sync
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Igp::Syncs::Sync> > sync;
+        ydk::YList sync;
         
 }; // MplsLdp::Global::Active::DefaultVrf::Afs::Af::Igp::Syncs
 
@@ -3609,8 +3609,8 @@ class MplsLdp::Global::Active::DefaultVrf::Afs::Af::Igp::Syncs::Sync : public yd
         class GrOnlyPeer; //type: MplsLdp::Global::Active::DefaultVrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Igp::Syncs::Sync::Vrf> vrf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Igp::Syncs::Sync::Peers> > peers;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer> > gr_only_peer;
+        ydk::YList peers;
+        ydk::YList gr_only_peer;
         
 }; // MplsLdp::Global::Active::DefaultVrf::Afs::Af::Igp::Syncs::Sync
 
@@ -3735,7 +3735,7 @@ class MplsLdp::Global::Active::DefaultVrf::Afs::Af::BindingsSummary : public ydk
         class BindAf; //type: MplsLdp::Global::Active::DefaultVrf::Afs::Af::BindingsSummary::BindAf
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::BindingsSummary::Vrf> vrf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::BindingsSummary::BindAf> > bind_af;
+        ydk::YList bind_af;
         
 }; // MplsLdp::Global::Active::DefaultVrf::Afs::Af::BindingsSummary
 
@@ -3806,7 +3806,7 @@ class MplsLdp::Global::Active::DefaultVrf::Afs::Af::Interfaces : public ydk::Ent
 
         class Interface; //type: MplsLdp::Global::Active::DefaultVrf::Afs::Af::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MplsLdp::Global::Active::DefaultVrf::Afs::Af::Interfaces
 
@@ -3839,8 +3839,8 @@ class MplsLdp::Global::Active::DefaultVrf::Afs::Af::Interfaces::Interface : publ
         class AutoConfig; //type: MplsLdp::Global::Active::DefaultVrf::Afs::Af::Interfaces::Interface::AutoConfig
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Interfaces::Interface::Vrf> vrf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Interfaces::Interface::TeMeshGrp> > te_mesh_grp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Interfaces::Interface::AutoConfig> > auto_config;
+        ydk::YList te_mesh_grp;
+        ydk::YList auto_config;
         
 }; // MplsLdp::Global::Active::DefaultVrf::Afs::Af::Interfaces::Interface
 
@@ -3960,7 +3960,7 @@ class MplsLdp::Global::Active::DefaultVrf::Afs::Af::Discovery::LinkHellos : publ
 
         class LinkHello; //type: MplsLdp::Global::Active::DefaultVrf::Afs::Af::Discovery::LinkHellos::LinkHello
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Discovery::LinkHellos::LinkHello> > link_hello;
+        ydk::YList link_hello;
         
 }; // MplsLdp::Global::Active::DefaultVrf::Afs::Af::Discovery::LinkHellos
 
@@ -3991,8 +3991,8 @@ class MplsLdp::Global::Active::DefaultVrf::Afs::Af::Discovery::LinkHellos::LinkH
         class DiscoveryLinkAf; //type: MplsLdp::Global::Active::DefaultVrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Discovery::LinkHellos::LinkHello::Vrf> vrf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation> > hello_information;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Active::DefaultVrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf> > discovery_link_af;
+        ydk::YList hello_information;
+        ydk::YList discovery_link_af;
         
 }; // MplsLdp::Global::Active::DefaultVrf::Afs::Af::Discovery::LinkHellos::LinkHello
 

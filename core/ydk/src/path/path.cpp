@@ -35,13 +35,12 @@
 
 namespace ydk
 {
-static void escape_slashes(std::string& data)
+static void escape_slashes(std::string& data, const char* pattern)
 {
     pcre *re = NULL;
     const char *err_msg;
     int err;
     int offsets[3000];
-    const char* pattern = "'[^\[]+'";
     const char *psubStrMatchStr = NULL;
     unsigned int offset = 0;
     int rc;
@@ -102,7 +101,8 @@ std::vector<std::string> ydk::path::segmentalize(const std::string& path)
     std::vector<std::string> output;
     size_t pos = std::string::npos; // size_t to avoid improbable overflow
     std::string data{path};
-    escape_slashes(data);
+    escape_slashes(data, "'[^\[]+'");
+    escape_slashes(data, "\"[^\[]+\"");
     do
     {
         pos = data.find(token);
@@ -177,12 +177,7 @@ static LYD_FORMAT get_ly_format(ydk::EncodingFormat format)
     LYD_FORMAT scheme = LYD_XML;
     if (format == ydk::EncodingFormat::JSON)
     {
-        ydk::YLOG_DEBUG("Performing decode operation on JSON");
         scheme = LYD_JSON;
-    }
-    else
-    {
-        ydk::YLOG_DEBUG("Performing decode operation on XML");
     }
     return scheme;
 }

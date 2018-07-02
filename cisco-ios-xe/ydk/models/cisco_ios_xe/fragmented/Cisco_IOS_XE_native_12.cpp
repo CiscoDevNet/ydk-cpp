@@ -15,21 +15,24 @@ namespace Cisco_IOS_XE_native {
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Redistribute()
     :
     application(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Application>())
-	,lisp(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Lisp>())
-	,nd(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Nd>())
-	,connected(nullptr) // presence node
-	,isis(nullptr) // presence node
-	,iso_igrp(nullptr) // presence node
-	,mobile(nullptr) // presence node
-	,odr(nullptr) // presence node
-	,static_(nullptr) // presence node
-	,rip(nullptr) // presence node
+    , lisp(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Lisp>())
+    , nd(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Nd>())
+    , connected(nullptr) // presence node
+    , bgp(this, {"as_number"})
+    , eigrp(this, {"as_number"})
+    , isis(nullptr) // presence node
+    , iso_igrp(nullptr) // presence node
+    , mobile(nullptr) // presence node
+    , odr(nullptr) // presence node
+    , ospf(this, {"process_id"})
+    , static_(nullptr) // presence node
+    , rip(nullptr) // presence node
 {
     application->parent = this;
     lisp->parent = this;
     nd->parent = this;
 
-    yang_name = "redistribute"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redistribute"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::~Redistribute()
@@ -38,17 +41,18 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::~Redistribut
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::has_data() const
 {
-    for (std::size_t index=0; index<bgp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp.len(); index++)
     {
         if(bgp[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospf.size(); index++)
+    for (std::size_t index=0; index<ospf.len(); index++)
     {
         if(ospf[index]->has_data())
             return true;
@@ -67,17 +71,17 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::has_dat
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::has_operation() const
 {
-    for (std::size_t index=0; index<bgp.size(); index++)
+    for (std::size_t index=0; index<bgp.len(); index++)
     {
         if(bgp[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospf.size(); index++)
+    for (std::size_t index=0; index<ospf.len(); index++)
     {
         if(ospf[index]->has_operation())
             return true;
@@ -153,7 +157,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Re
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp>();
         c->parent = this;
-        bgp.push_back(c);
+        bgp.append(c);
         return c;
     }
 
@@ -161,7 +165,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Re
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp>();
         c->parent = this;
-        eigrp.push_back(c);
+        eigrp.append(c);
         return c;
     }
 
@@ -205,7 +209,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Re
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf>();
         c->parent = this;
-        ospf.push_back(c);
+        ospf.append(c);
         return c;
     }
 
@@ -255,7 +259,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Addres
     }
 
     count = 0;
-    for (auto const & c : bgp)
+    for (auto c : bgp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -264,7 +268,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Addres
     }
 
     count = 0;
-    for (auto const & c : eigrp)
+    for (auto c : eigrp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -293,7 +297,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Addres
     }
 
     count = 0;
-    for (auto const & c : ospf)
+    for (auto c : ospf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -336,7 +340,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Application:
     route_map{YType::str, "route-map"}
 {
 
-    yang_name = "application"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Application::~Application()
@@ -345,6 +349,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Application:
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Application::has_data() const
 {
+    if (is_presence_container) return true;
     return include_connected.is_set
 	|| metric.is_set
 	|| route_map.is_set;
@@ -441,7 +446,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Lisp::Lisp()
     route_map{YType::str, "route-map"}
 {
 
-    yang_name = "lisp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lisp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Lisp::~Lisp()
@@ -450,6 +455,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Lisp::~Lisp(
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Lisp::has_data() const
 {
+    if (is_presence_container) return true;
     return include_connected.is_set
 	|| metric.is_set
 	|| route_map.is_set;
@@ -546,7 +552,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Nd::Nd()
     route_map{YType::str, "route-map"}
 {
 
-    yang_name = "nd"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nd"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Nd::~Nd()
@@ -555,6 +561,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Nd::~Nd()
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Nd::has_data() const
 {
+    if (is_presence_container) return true;
     return include_connected.is_set
 	|| metric.is_set
 	|| route_map.is_set;
@@ -650,7 +657,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::C
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "connected"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connected"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::~Connected()
@@ -659,6 +666,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::~
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::has_data() const
 {
+    if (is_presence_container) return true;
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
@@ -728,12 +736,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connect
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "connected"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "connected"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::RipMetricRouteMap::~RipMetricRouteMap()
@@ -742,6 +750,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::R
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -827,7 +836,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::R
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::RipMetricRouteMap::Metric::~Metric()
@@ -836,6 +845,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::R
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connected::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -915,12 +925,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Connect
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::Bgp()
     :
     as_number{YType::str, "as-number"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "bgp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::~Bgp()
@@ -929,6 +939,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::~Bgp()
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return as_number.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -943,7 +954,8 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::ha
 std::string Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp" <<"[as-number='" <<as_number <<"']";
+    path_buffer << "bgp";
+    ADD_KEY_TOKEN(as_number, "as-number");
     return path_buffer.str();
 }
 
@@ -1011,12 +1023,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::ha
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::RipMetricRouteMap::~RipMetricRouteMap()
@@ -1025,6 +1037,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::RipMetr
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -1110,7 +1123,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::RipMetr
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::RipMetricRouteMap::Metric::~Metric()
@@ -1119,6 +1132,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::RipMetr
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -1198,12 +1212,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Bgp::Ri
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::Eigrp()
     :
     as_number{YType::uint16, "as-number"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "eigrp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::~Eigrp()
@@ -1212,6 +1226,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::~Eigr
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::has_data() const
 {
+    if (is_presence_container) return true;
     return as_number.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -1226,7 +1241,8 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::
 std::string Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eigrp" <<"[as-number='" <<as_number <<"']";
+    path_buffer << "eigrp";
+    ADD_KEY_TOKEN(as_number, "as-number");
     return path_buffer.str();
 }
 
@@ -1294,12 +1310,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "eigrp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "eigrp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::RipMetricRouteMap::~RipMetricRouteMap()
@@ -1308,6 +1324,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::RipMe
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -1393,7 +1410,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::RipMe
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::RipMetricRouteMap::Metric::~Metric()
@@ -1402,6 +1419,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::RipMe
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -1480,11 +1498,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Eigrp::
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::Isis()
     :
-    rip_isis_redist(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist>())
+    isis_area(this, {"name"})
+    , rip_isis_redist(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist>())
 {
     rip_isis_redist->parent = this;
 
-    yang_name = "isis"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::~Isis()
@@ -1493,7 +1512,8 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::~Isis(
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::has_data() const
 {
-    for (std::size_t index=0; index<isis_area.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<isis_area.len(); index++)
     {
         if(isis_area[index]->has_data())
             return true;
@@ -1503,7 +1523,7 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::h
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::has_operation() const
 {
-    for (std::size_t index=0; index<isis_area.size(); index++)
+    for (std::size_t index=0; index<isis_area.len(); index++)
     {
         if(isis_area[index]->has_operation())
             return true;
@@ -1534,7 +1554,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Re
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea>();
         c->parent = this;
-        isis_area.push_back(c);
+        isis_area.append(c);
         return c;
     }
 
@@ -1555,7 +1575,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Addres
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : isis_area)
+    for (auto c : isis_area.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1589,12 +1609,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::h
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::IsisArea()
     :
     name{YType::str, "name"}
-    	,
+        ,
     rip_isis_redist(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::RipIsisRedist>())
 {
     rip_isis_redist->parent = this;
 
-    yang_name = "isis-area"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis-area"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::~IsisArea()
@@ -1603,6 +1623,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisAr
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (rip_isis_redist !=  nullptr && rip_isis_redist->has_data());
 }
@@ -1617,7 +1638,8 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::I
 std::string Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "isis-area" <<"[name='" <<name <<"']";
+    path_buffer << "isis-area";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1685,12 +1707,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::I
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::RipIsisRedist::RipIsisRedist()
     :
     isis_level_routes{YType::enumeration, "isis-level-routes"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "rip-isis-redist"; yang_parent_name = "isis-area"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-isis-redist"; yang_parent_name = "isis-area"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::RipIsisRedist::~RipIsisRedist()
@@ -1699,6 +1721,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisAr
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::RipIsisRedist::has_data() const
 {
+    if (is_presence_container) return true;
     return isis_level_routes.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -1781,12 +1804,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::I
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "rip-isis-redist"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "rip-isis-redist"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::~RipMetricRouteMap()
@@ -1795,6 +1818,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisAr
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -1880,7 +1904,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisAr
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::~Metric()
@@ -1889,6 +1913,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisAr
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -1968,12 +1993,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::I
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist::RipIsisRedist()
     :
     isis_level_routes{YType::enumeration, "isis-level-routes"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "rip-isis-redist"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-isis-redist"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist::~RipIsisRedist()
@@ -1982,6 +2007,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsi
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist::has_data() const
 {
+    if (is_presence_container) return true;
     return isis_level_routes.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -2064,12 +2090,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::R
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "rip-isis-redist"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "rip-isis-redist"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::~RipMetricRouteMap()
@@ -2078,6 +2104,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsi
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -2163,7 +2190,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsi
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::~Metric()
@@ -2172,6 +2199,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsi
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -2250,11 +2278,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Isis::R
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoIgrp()
     :
-    rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap>())
+    isoigrp_list(this, {"iso_area_tag"})
+    , rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "iso-igrp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iso-igrp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::~IsoIgrp()
@@ -2263,7 +2292,8 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::~Is
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::has_data() const
 {
-    for (std::size_t index=0; index<isoigrp_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<isoigrp_list.len(); index++)
     {
         if(isoigrp_list[index]->has_data())
             return true;
@@ -2273,7 +2303,7 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::has_operation() const
 {
-    for (std::size_t index=0; index<isoigrp_list.size(); index++)
+    for (std::size_t index=0; index<isoigrp_list.len(); index++)
     {
         if(isoigrp_list[index]->has_operation())
             return true;
@@ -2304,7 +2334,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Re
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList>();
         c->parent = this;
-        isoigrp_list.push_back(c);
+        isoigrp_list.append(c);
         return c;
     }
 
@@ -2325,7 +2355,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Addres
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : isoigrp_list)
+    for (auto c : isoigrp_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2359,12 +2389,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList::IsoigrpList()
     :
     iso_area_tag{YType::str, "iso-area-tag"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "isoigrp-list"; yang_parent_name = "iso-igrp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isoigrp-list"; yang_parent_name = "iso-igrp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList::~IsoigrpList()
@@ -2373,6 +2403,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::Iso
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList::has_data() const
 {
+    if (is_presence_container) return true;
     return iso_area_tag.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -2387,7 +2418,8 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp
 std::string Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "isoigrp-list" <<"[iso-area-tag='" <<iso_area_tag <<"']";
+    path_buffer << "isoigrp-list";
+    ADD_KEY_TOKEN(iso_area_tag, "iso-area-tag");
     return path_buffer.str();
 }
 
@@ -2455,12 +2487,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "isoigrp-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "isoigrp-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::~RipMetricRouteMap()
@@ -2469,6 +2501,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::Iso
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -2554,7 +2587,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::Iso
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::~Metric()
@@ -2563,6 +2596,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::Iso
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -2642,12 +2676,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "iso-igrp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "iso-igrp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap::~RipMetricRouteMap()
@@ -2656,6 +2690,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::Rip
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -2741,7 +2776,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::Rip
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::~Metric()
@@ -2750,6 +2785,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::Rip
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -2832,7 +2868,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::Mobi
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "mobile"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mobile"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::~Mobile()
@@ -2841,6 +2877,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::~Mob
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::has_data() const
 {
+    if (is_presence_container) return true;
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
@@ -2910,12 +2947,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile:
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "mobile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "mobile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::RipMetricRouteMap::~RipMetricRouteMap()
@@ -2924,6 +2961,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::RipM
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -3009,7 +3047,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::RipM
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::RipMetricRouteMap::Metric::~Metric()
@@ -3018,6 +3056,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::RipM
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -3100,7 +3139,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::Odr()
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "odr"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odr"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::~Odr()
@@ -3109,6 +3148,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::~Odr()
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::has_data() const
 {
+    if (is_presence_container) return true;
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
@@ -3178,12 +3218,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::ha
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "odr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "odr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::RipMetricRouteMap::~RipMetricRouteMap()
@@ -3192,6 +3232,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::RipMetr
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -3277,7 +3318,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::RipMetr
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::RipMetricRouteMap::Metric::~Metric()
@@ -3286,6 +3327,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::RipMetr
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -3365,14 +3407,15 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr::Ri
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Ospf()
     :
     process_id{YType::uint16, "process-id"}
-    	,
-    match(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match>())
-	,rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMetricRouteMap>())
+        ,
+    vrf(this, {"name"})
+    , match(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match>())
+    , rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMetricRouteMap>())
 {
     match->parent = this;
     rip_metric_route_map->parent = this;
 
-    yang_name = "ospf"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::~Ospf()
@@ -3381,7 +3424,8 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::~Ospf(
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -3393,7 +3437,7 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::h
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -3407,7 +3451,8 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::h
 std::string Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf" <<"[process-id='" <<process_id <<"']";
+    path_buffer << "ospf";
+    ADD_KEY_TOKEN(process_id, "process-id");
     return path_buffer.str();
 }
 
@@ -3427,7 +3472,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Re
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Vrf_>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -3457,7 +3502,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Addres
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3508,7 +3553,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Vrf_::
     name{YType::str, "name"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Vrf_::~Vrf_()
@@ -3517,6 +3562,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Vrf_::
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Vrf_::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -3529,7 +3575,8 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::V
 std::string Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Vrf_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[name='" <<name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -3583,11 +3630,11 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::V
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::Match()
     :
     internal(nullptr) // presence node
-	,external(nullptr) // presence node
-	,nssa_external(nullptr) // presence node
+    , external(nullptr) // presence node
+    , nssa_external(nullptr) // presence node
 {
 
-    yang_name = "match"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::~Match()
@@ -3596,6 +3643,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return (internal !=  nullptr && internal->has_data())
 	|| (external !=  nullptr && external->has_data())
 	|| (nssa_external !=  nullptr && nssa_external->has_data());
@@ -3700,7 +3748,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "internal"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "internal"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::Internal::~Internal()
@@ -3709,6 +3757,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::Internal::has_data() const
 {
+    if (is_presence_container) return true;
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
@@ -3778,12 +3827,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::M
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::~RipMetricRouteMap()
@@ -3792,6 +3841,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -3877,7 +3927,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::~Metric()
@@ -3886,6 +3936,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -3965,12 +4016,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::M
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::External::External()
     :
     external_routes{YType::enumeration, "external-routes"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::External::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "external"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "external"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::External::~External()
@@ -3979,6 +4030,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::External::has_data() const
 {
+    if (is_presence_container) return true;
     return external_routes.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -4061,12 +4113,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::M
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::External::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::External::RipMetricRouteMap::~RipMetricRouteMap()
@@ -4075,6 +4127,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::External::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -4160,7 +4213,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::~Metric()
@@ -4169,6 +4222,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -4248,12 +4302,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::M
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::NssaExternal::NssaExternal()
     :
     nssa_external_routes{YType::enumeration, "nssa-external-routes"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "nssa-external"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa-external"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::NssaExternal::~NssaExternal()
@@ -4262,6 +4316,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::NssaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return nssa_external_routes.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -4344,12 +4399,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::M
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "nssa-external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "nssa-external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::~RipMetricRouteMap()
@@ -4358,6 +4413,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -4443,7 +4499,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::~Metric()
@@ -4452,6 +4508,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match:
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -4531,12 +4588,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::M
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMetricRouteMap::~RipMetricRouteMap()
@@ -4545,6 +4602,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMet
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -4630,7 +4688,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMet
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMetricRouteMap::Metric::~Metric()
@@ -4639,6 +4697,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMet
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -4721,7 +4780,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::Stat
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::~Static()
@@ -4730,6 +4789,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::~Sta
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::has_data() const
 {
+    if (is_presence_container) return true;
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
@@ -4799,12 +4859,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static:
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap::~RipMetricRouteMap()
@@ -4813,6 +4873,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipM
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -4898,7 +4959,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipM
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::~Metric()
@@ -4907,6 +4968,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipM
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -4989,7 +5051,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::Rip_()
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "rip"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::~Rip_()
@@ -4998,6 +5060,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::~Rip_(
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::has_data() const
 {
+    if (is_presence_container) return true;
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
@@ -5067,12 +5130,12 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::h
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::RipMetricRouteMap::~RipMetricRouteMap()
@@ -5081,6 +5144,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::RipMet
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -5166,7 +5230,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::RipMet
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::RipMetricRouteMap::Metric::~Metric()
@@ -5175,6 +5239,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::RipMet
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -5259,7 +5324,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Timers::Timers()
     garbage_collection{YType::uint16, "garbage-collection"}
 {
 
-    yang_name = "timers"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Timers::~Timers()
@@ -5268,6 +5333,7 @@ Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Timers::~Timers()
 
 bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return update.is_set
 	|| timeout.is_set
 	|| holddown.is_set
@@ -5371,9 +5437,11 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Timers::has_leaf_or_c
 }
 
 Native::Ipv6::Router::Rip::DistributeList::DistributeList()
+    :
+    prefix_list(this, {"name"})
 {
 
-    yang_name = "distribute-list"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribute-list"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::DistributeList::~DistributeList()
@@ -5382,7 +5450,8 @@ Native::Ipv6::Router::Rip::DistributeList::~DistributeList()
 
 bool Native::Ipv6::Router::Rip::DistributeList::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_data())
             return true;
@@ -5392,7 +5461,7 @@ bool Native::Ipv6::Router::Rip::DistributeList::has_data() const
 
 bool Native::Ipv6::Router::Rip::DistributeList::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_operation())
             return true;
@@ -5422,7 +5491,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::DistributeList::get_child_by_
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::DistributeList::PrefixList>();
         c->parent = this;
-        prefix_list.push_back(c);
+        prefix_list.append(c);
         return c;
     }
 
@@ -5434,7 +5503,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Distri
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_list)
+    for (auto c : prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5467,7 +5536,7 @@ Native::Ipv6::Router::Rip::DistributeList::PrefixList::PrefixList()
     out{YType::empty, "out"}
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::DistributeList::PrefixList::~PrefixList()
@@ -5476,6 +5545,7 @@ Native::Ipv6::Router::Rip::DistributeList::PrefixList::~PrefixList()
 
 bool Native::Ipv6::Router::Rip::DistributeList::PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| in.is_set
 	|| out.is_set;
@@ -5492,7 +5562,8 @@ bool Native::Ipv6::Router::Rip::DistributeList::PrefixList::has_operation() cons
 std::string Native::Ipv6::Router::Rip::DistributeList::PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list" <<"[name='" <<name <<"']";
+    path_buffer << "prefix-list";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5568,21 +5639,24 @@ bool Native::Ipv6::Router::Rip::DistributeList::PrefixList::has_leaf_or_child_of
 Native::Ipv6::Router::Rip::Redistribute::Redistribute()
     :
     application(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Application>())
-	,lisp(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Lisp>())
-	,nd(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Nd>())
-	,connected(nullptr) // presence node
-	,isis(nullptr) // presence node
-	,iso_igrp(nullptr) // presence node
-	,mobile(nullptr) // presence node
-	,odr(nullptr) // presence node
-	,static_(nullptr) // presence node
-	,rip(nullptr) // presence node
+    , lisp(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Lisp>())
+    , nd(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Nd>())
+    , connected(nullptr) // presence node
+    , bgp(this, {"as_number"})
+    , eigrp(this, {"as_number"})
+    , isis(nullptr) // presence node
+    , iso_igrp(nullptr) // presence node
+    , mobile(nullptr) // presence node
+    , odr(nullptr) // presence node
+    , ospf(this, {"process_id"})
+    , static_(nullptr) // presence node
+    , rip(nullptr) // presence node
 {
     application->parent = this;
     lisp->parent = this;
     nd->parent = this;
 
-    yang_name = "redistribute"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redistribute"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::~Redistribute()
@@ -5591,17 +5665,18 @@ Native::Ipv6::Router::Rip::Redistribute::~Redistribute()
 
 bool Native::Ipv6::Router::Rip::Redistribute::has_data() const
 {
-    for (std::size_t index=0; index<bgp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp.len(); index++)
     {
         if(bgp[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospf.size(); index++)
+    for (std::size_t index=0; index<ospf.len(); index++)
     {
         if(ospf[index]->has_data())
             return true;
@@ -5620,17 +5695,17 @@ bool Native::Ipv6::Router::Rip::Redistribute::has_data() const
 
 bool Native::Ipv6::Router::Rip::Redistribute::has_operation() const
 {
-    for (std::size_t index=0; index<bgp.size(); index++)
+    for (std::size_t index=0; index<bgp.len(); index++)
     {
         if(bgp[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospf.size(); index++)
+    for (std::size_t index=0; index<ospf.len(); index++)
     {
         if(ospf[index]->has_operation())
             return true;
@@ -5706,7 +5781,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::Redistribute::get_child_by_na
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Bgp>();
         c->parent = this;
-        bgp.push_back(c);
+        bgp.append(c);
         return c;
     }
 
@@ -5714,7 +5789,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::Redistribute::get_child_by_na
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Eigrp>();
         c->parent = this;
-        eigrp.push_back(c);
+        eigrp.append(c);
         return c;
     }
 
@@ -5758,7 +5833,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::Redistribute::get_child_by_na
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Ospf>();
         c->parent = this;
-        ospf.push_back(c);
+        ospf.append(c);
         return c;
     }
 
@@ -5808,7 +5883,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Redist
     }
 
     count = 0;
-    for (auto const & c : bgp)
+    for (auto c : bgp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5817,7 +5892,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Redist
     }
 
     count = 0;
-    for (auto const & c : eigrp)
+    for (auto c : eigrp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5846,7 +5921,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Redist
     }
 
     count = 0;
-    for (auto const & c : ospf)
+    for (auto c : ospf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5889,7 +5964,7 @@ Native::Ipv6::Router::Rip::Redistribute::Application::Application()
     route_map{YType::str, "route-map"}
 {
 
-    yang_name = "application"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Application::~Application()
@@ -5898,6 +5973,7 @@ Native::Ipv6::Router::Rip::Redistribute::Application::~Application()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Application::has_data() const
 {
+    if (is_presence_container) return true;
     return include_connected.is_set
 	|| metric.is_set
 	|| route_map.is_set;
@@ -5994,7 +6070,7 @@ Native::Ipv6::Router::Rip::Redistribute::Lisp::Lisp()
     route_map{YType::str, "route-map"}
 {
 
-    yang_name = "lisp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lisp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Lisp::~Lisp()
@@ -6003,6 +6079,7 @@ Native::Ipv6::Router::Rip::Redistribute::Lisp::~Lisp()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Lisp::has_data() const
 {
+    if (is_presence_container) return true;
     return include_connected.is_set
 	|| metric.is_set
 	|| route_map.is_set;
@@ -6099,7 +6176,7 @@ Native::Ipv6::Router::Rip::Redistribute::Nd::Nd()
     route_map{YType::str, "route-map"}
 {
 
-    yang_name = "nd"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nd"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Nd::~Nd()
@@ -6108,6 +6185,7 @@ Native::Ipv6::Router::Rip::Redistribute::Nd::~Nd()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Nd::has_data() const
 {
+    if (is_presence_container) return true;
     return include_connected.is_set
 	|| metric.is_set
 	|| route_map.is_set;
@@ -6203,7 +6281,7 @@ Native::Ipv6::Router::Rip::Redistribute::Connected::Connected()
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "connected"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connected"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Connected::~Connected()
@@ -6212,6 +6290,7 @@ Native::Ipv6::Router::Rip::Redistribute::Connected::~Connected()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Connected::has_data() const
 {
+    if (is_presence_container) return true;
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
@@ -6281,12 +6360,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Connected::has_leaf_or_child_of_na
 Native::Ipv6::Router::Rip::Redistribute::Connected::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Connected::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "connected"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "connected"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Connected::RipMetricRouteMap::~RipMetricRouteMap()
@@ -6295,6 +6374,7 @@ Native::Ipv6::Router::Rip::Redistribute::Connected::RipMetricRouteMap::~RipMetri
 
 bool Native::Ipv6::Router::Rip::Redistribute::Connected::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -6380,7 +6460,7 @@ Native::Ipv6::Router::Rip::Redistribute::Connected::RipMetricRouteMap::Metric::M
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Connected::RipMetricRouteMap::Metric::~Metric()
@@ -6389,6 +6469,7 @@ Native::Ipv6::Router::Rip::Redistribute::Connected::RipMetricRouteMap::Metric::~
 
 bool Native::Ipv6::Router::Rip::Redistribute::Connected::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -6468,12 +6549,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Connected::RipMetricRouteMap::Metr
 Native::Ipv6::Router::Rip::Redistribute::Bgp::Bgp()
     :
     as_number{YType::str, "as-number"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Bgp::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "bgp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Bgp::~Bgp()
@@ -6482,6 +6563,7 @@ Native::Ipv6::Router::Rip::Redistribute::Bgp::~Bgp()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return as_number.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -6496,7 +6578,8 @@ bool Native::Ipv6::Router::Rip::Redistribute::Bgp::has_operation() const
 std::string Native::Ipv6::Router::Rip::Redistribute::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp" <<"[as-number='" <<as_number <<"']";
+    path_buffer << "bgp";
+    ADD_KEY_TOKEN(as_number, "as-number");
     return path_buffer.str();
 }
 
@@ -6564,12 +6647,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Bgp::has_leaf_or_child_of_name(con
 Native::Ipv6::Router::Rip::Redistribute::Bgp::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Bgp::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Bgp::RipMetricRouteMap::~RipMetricRouteMap()
@@ -6578,6 +6661,7 @@ Native::Ipv6::Router::Rip::Redistribute::Bgp::RipMetricRouteMap::~RipMetricRoute
 
 bool Native::Ipv6::Router::Rip::Redistribute::Bgp::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -6663,7 +6747,7 @@ Native::Ipv6::Router::Rip::Redistribute::Bgp::RipMetricRouteMap::Metric::Metric(
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Bgp::RipMetricRouteMap::Metric::~Metric()
@@ -6672,6 +6756,7 @@ Native::Ipv6::Router::Rip::Redistribute::Bgp::RipMetricRouteMap::Metric::~Metric
 
 bool Native::Ipv6::Router::Rip::Redistribute::Bgp::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -6751,12 +6836,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Bgp::RipMetricRouteMap::Metric::ha
 Native::Ipv6::Router::Rip::Redistribute::Eigrp::Eigrp()
     :
     as_number{YType::uint16, "as-number"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Eigrp::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "eigrp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Eigrp::~Eigrp()
@@ -6765,6 +6850,7 @@ Native::Ipv6::Router::Rip::Redistribute::Eigrp::~Eigrp()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Eigrp::has_data() const
 {
+    if (is_presence_container) return true;
     return as_number.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -6779,7 +6865,8 @@ bool Native::Ipv6::Router::Rip::Redistribute::Eigrp::has_operation() const
 std::string Native::Ipv6::Router::Rip::Redistribute::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eigrp" <<"[as-number='" <<as_number <<"']";
+    path_buffer << "eigrp";
+    ADD_KEY_TOKEN(as_number, "as-number");
     return path_buffer.str();
 }
 
@@ -6847,12 +6934,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Eigrp::has_leaf_or_child_of_name(c
 Native::Ipv6::Router::Rip::Redistribute::Eigrp::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Eigrp::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "eigrp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "eigrp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Eigrp::RipMetricRouteMap::~RipMetricRouteMap()
@@ -6861,6 +6948,7 @@ Native::Ipv6::Router::Rip::Redistribute::Eigrp::RipMetricRouteMap::~RipMetricRou
 
 bool Native::Ipv6::Router::Rip::Redistribute::Eigrp::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -6946,7 +7034,7 @@ Native::Ipv6::Router::Rip::Redistribute::Eigrp::RipMetricRouteMap::Metric::Metri
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Eigrp::RipMetricRouteMap::Metric::~Metric()
@@ -6955,6 +7043,7 @@ Native::Ipv6::Router::Rip::Redistribute::Eigrp::RipMetricRouteMap::Metric::~Metr
 
 bool Native::Ipv6::Router::Rip::Redistribute::Eigrp::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -7033,11 +7122,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Eigrp::RipMetricRouteMap::Metric::
 
 Native::Ipv6::Router::Rip::Redistribute::Isis::Isis()
     :
-    rip_isis_redist(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist>())
+    isis_area(this, {"name"})
+    , rip_isis_redist(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist>())
 {
     rip_isis_redist->parent = this;
 
-    yang_name = "isis"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Isis::~Isis()
@@ -7046,7 +7136,8 @@ Native::Ipv6::Router::Rip::Redistribute::Isis::~Isis()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Isis::has_data() const
 {
-    for (std::size_t index=0; index<isis_area.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<isis_area.len(); index++)
     {
         if(isis_area[index]->has_data())
             return true;
@@ -7056,7 +7147,7 @@ bool Native::Ipv6::Router::Rip::Redistribute::Isis::has_data() const
 
 bool Native::Ipv6::Router::Rip::Redistribute::Isis::has_operation() const
 {
-    for (std::size_t index=0; index<isis_area.size(); index++)
+    for (std::size_t index=0; index<isis_area.len(); index++)
     {
         if(isis_area[index]->has_operation())
             return true;
@@ -7087,7 +7178,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::Redistribute::Isis::get_child
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea>();
         c->parent = this;
-        isis_area.push_back(c);
+        isis_area.append(c);
         return c;
     }
 
@@ -7108,7 +7199,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Redist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : isis_area)
+    for (auto c : isis_area.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7142,12 +7233,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Isis::has_leaf_or_child_of_name(co
 Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::IsisArea()
     :
     name{YType::str, "name"}
-    	,
+        ,
     rip_isis_redist(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist>())
 {
     rip_isis_redist->parent = this;
 
-    yang_name = "isis-area"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis-area"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::~IsisArea()
@@ -7156,6 +7247,7 @@ Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::~IsisArea()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (rip_isis_redist !=  nullptr && rip_isis_redist->has_data());
 }
@@ -7170,7 +7262,8 @@ bool Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::has_operation() co
 std::string Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "isis-area" <<"[name='" <<name <<"']";
+    path_buffer << "isis-area";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -7238,12 +7331,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::has_leaf_or_child_
 Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::RipIsisRedist()
     :
     isis_level_routes{YType::enumeration, "isis-level-routes"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "rip-isis-redist"; yang_parent_name = "isis-area"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-isis-redist"; yang_parent_name = "isis-area"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::~RipIsisRedist()
@@ -7252,6 +7345,7 @@ Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::~RipIsis
 
 bool Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::has_data() const
 {
+    if (is_presence_container) return true;
     return isis_level_routes.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -7334,12 +7428,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::has
 Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "rip-isis-redist"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "rip-isis-redist"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::~RipMetricRouteMap()
@@ -7348,6 +7442,7 @@ Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetri
 
 bool Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -7433,7 +7528,7 @@ Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetri
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::~Metric()
@@ -7442,6 +7537,7 @@ Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetri
 
 bool Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -7521,12 +7617,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Isis::IsisArea::RipIsisRedist::Rip
 Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::RipIsisRedist()
     :
     isis_level_routes{YType::enumeration, "isis-level-routes"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "rip-isis-redist"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-isis-redist"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::~RipIsisRedist()
@@ -7535,6 +7631,7 @@ Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::~RipIsisRedist()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::has_data() const
 {
+    if (is_presence_container) return true;
     return isis_level_routes.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -7617,12 +7714,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::has_leaf_or_c
 Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "rip-isis-redist"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "rip-isis-redist"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::~RipMetricRouteMap()
@@ -7631,6 +7728,7 @@ Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap:
 
 bool Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -7716,7 +7814,7 @@ Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap:
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::~Metric()
@@ -7725,6 +7823,7 @@ Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap:
 
 bool Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -7803,11 +7902,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Isis::RipIsisRedist::RipMetricRout
 
 Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoIgrp()
     :
-    rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap>())
+    isoigrp_list(this, {"iso_area_tag"})
+    , rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "iso-igrp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iso-igrp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::~IsoIgrp()
@@ -7816,7 +7916,8 @@ Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::~IsoIgrp()
 
 bool Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::has_data() const
 {
-    for (std::size_t index=0; index<isoigrp_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<isoigrp_list.len(); index++)
     {
         if(isoigrp_list[index]->has_data())
             return true;
@@ -7826,7 +7927,7 @@ bool Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::has_data() const
 
 bool Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::has_operation() const
 {
-    for (std::size_t index=0; index<isoigrp_list.size(); index++)
+    for (std::size_t index=0; index<isoigrp_list.len(); index++)
     {
         if(isoigrp_list[index]->has_operation())
             return true;
@@ -7857,7 +7958,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::get_ch
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList>();
         c->parent = this;
-        isoigrp_list.push_back(c);
+        isoigrp_list.append(c);
         return c;
     }
 
@@ -7878,7 +7979,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Redist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : isoigrp_list)
+    for (auto c : isoigrp_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7912,12 +8013,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::has_leaf_or_child_of_name
 Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::IsoigrpList()
     :
     iso_area_tag{YType::str, "iso-area-tag"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "isoigrp-list"; yang_parent_name = "iso-igrp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isoigrp-list"; yang_parent_name = "iso-igrp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::~IsoigrpList()
@@ -7926,6 +8027,7 @@ Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::~IsoigrpList()
 
 bool Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::has_data() const
 {
+    if (is_presence_container) return true;
     return iso_area_tag.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -7940,7 +8042,8 @@ bool Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::has_operatio
 std::string Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "isoigrp-list" <<"[iso-area-tag='" <<iso_area_tag <<"']";
+    path_buffer << "isoigrp-list";
+    ADD_KEY_TOKEN(iso_area_tag, "iso-area-tag");
     return path_buffer.str();
 }
 
@@ -8008,12 +8111,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::has_leaf_or_
 Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "isoigrp-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "isoigrp-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::~RipMetricRouteMap()
@@ -8022,6 +8125,7 @@ Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap
 
 bool Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -8107,7 +8211,7 @@ Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::~Metric()
@@ -8116,6 +8220,7 @@ Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap
 
 bool Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -8195,12 +8300,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::IsoigrpList::RipMetricRou
 Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "iso-igrp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "iso-igrp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap::~RipMetricRouteMap()
@@ -8209,6 +8314,7 @@ Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap::~RipMetricR
 
 bool Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -8294,7 +8400,7 @@ Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::Met
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::~Metric()
@@ -8303,6 +8409,7 @@ Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::~Me
 
 bool Native::Ipv6::Router::Rip::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -8385,7 +8492,7 @@ Native::Ipv6::Router::Rip::Redistribute::Mobile::Mobile()
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "mobile"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mobile"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Mobile::~Mobile()
@@ -8394,6 +8501,7 @@ Native::Ipv6::Router::Rip::Redistribute::Mobile::~Mobile()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Mobile::has_data() const
 {
+    if (is_presence_container) return true;
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
@@ -8463,12 +8571,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Mobile::has_leaf_or_child_of_name(
 Native::Ipv6::Router::Rip::Redistribute::Mobile::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Mobile::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "mobile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "mobile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Mobile::RipMetricRouteMap::~RipMetricRouteMap()
@@ -8477,6 +8585,7 @@ Native::Ipv6::Router::Rip::Redistribute::Mobile::RipMetricRouteMap::~RipMetricRo
 
 bool Native::Ipv6::Router::Rip::Redistribute::Mobile::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -8562,7 +8671,7 @@ Native::Ipv6::Router::Rip::Redistribute::Mobile::RipMetricRouteMap::Metric::Metr
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Mobile::RipMetricRouteMap::Metric::~Metric()
@@ -8571,6 +8680,7 @@ Native::Ipv6::Router::Rip::Redistribute::Mobile::RipMetricRouteMap::Metric::~Met
 
 bool Native::Ipv6::Router::Rip::Redistribute::Mobile::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -8653,7 +8763,7 @@ Native::Ipv6::Router::Rip::Redistribute::Odr::Odr()
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "odr"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odr"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Odr::~Odr()
@@ -8662,6 +8772,7 @@ Native::Ipv6::Router::Rip::Redistribute::Odr::~Odr()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Odr::has_data() const
 {
+    if (is_presence_container) return true;
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
@@ -8731,12 +8842,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Odr::has_leaf_or_child_of_name(con
 Native::Ipv6::Router::Rip::Redistribute::Odr::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Odr::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "odr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "odr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Odr::RipMetricRouteMap::~RipMetricRouteMap()
@@ -8745,6 +8856,7 @@ Native::Ipv6::Router::Rip::Redistribute::Odr::RipMetricRouteMap::~RipMetricRoute
 
 bool Native::Ipv6::Router::Rip::Redistribute::Odr::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -8830,7 +8942,7 @@ Native::Ipv6::Router::Rip::Redistribute::Odr::RipMetricRouteMap::Metric::Metric(
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Odr::RipMetricRouteMap::Metric::~Metric()
@@ -8839,6 +8951,7 @@ Native::Ipv6::Router::Rip::Redistribute::Odr::RipMetricRouteMap::Metric::~Metric
 
 bool Native::Ipv6::Router::Rip::Redistribute::Odr::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -8918,14 +9031,15 @@ bool Native::Ipv6::Router::Rip::Redistribute::Odr::RipMetricRouteMap::Metric::ha
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Ospf()
     :
     process_id{YType::uint16, "process-id"}
-    	,
-    match(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Ospf::Match>())
-	,rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap>())
+        ,
+    vrf(this, {"name"})
+    , match(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Ospf::Match>())
+    , rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap>())
 {
     match->parent = this;
     rip_metric_route_map->parent = this;
 
-    yang_name = "ospf"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::~Ospf()
@@ -8934,7 +9048,8 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::~Ospf()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -8946,7 +9061,7 @@ bool Native::Ipv6::Router::Rip::Redistribute::Ospf::has_data() const
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -8960,7 +9075,8 @@ bool Native::Ipv6::Router::Rip::Redistribute::Ospf::has_operation() const
 std::string Native::Ipv6::Router::Rip::Redistribute::Ospf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf" <<"[process-id='" <<process_id <<"']";
+    path_buffer << "ospf";
+    ADD_KEY_TOKEN(process_id, "process-id");
     return path_buffer.str();
 }
 
@@ -8980,7 +9096,7 @@ std::shared_ptr<Entity> Native::Ipv6::Router::Rip::Redistribute::Ospf::get_child
     {
         auto c = std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Ospf::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -9010,7 +9126,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Router::Rip::Redist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9061,7 +9177,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Vrf::Vrf()
     name{YType::str, "name"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Vrf::~Vrf()
@@ -9070,6 +9186,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Vrf::~Vrf()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -9082,7 +9199,8 @@ bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Vrf::has_operation() const
 std::string Native::Ipv6::Router::Rip::Redistribute::Ospf::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[name='" <<name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -9136,11 +9254,11 @@ bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Vrf::has_leaf_or_child_of_na
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Match()
     :
     internal(nullptr) // presence node
-	,external(nullptr) // presence node
-	,nssa_external(nullptr) // presence node
+    , external(nullptr) // presence node
+    , nssa_external(nullptr) // presence node
 {
 
-    yang_name = "match"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::~Match()
@@ -9149,6 +9267,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::~Match()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return (internal !=  nullptr && internal->has_data())
 	|| (external !=  nullptr && external->has_data())
 	|| (nssa_external !=  nullptr && nssa_external->has_data());
@@ -9253,7 +9372,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::Internal()
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "internal"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "internal"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::~Internal()
@@ -9262,6 +9381,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::~Internal()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::has_data() const
 {
+    if (is_presence_container) return true;
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
@@ -9331,12 +9451,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::has_leaf_or
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::~RipMetricRouteMap()
@@ -9345,6 +9465,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::RipMetricRouteMa
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -9430,7 +9551,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::RipMetricRouteMa
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::~Metric()
@@ -9439,6 +9560,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::RipMetricRouteMa
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -9518,12 +9640,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::Internal::RipMetricRo
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::External()
     :
     external_routes{YType::enumeration, "external-routes"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "external"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "external"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::~External()
@@ -9532,6 +9654,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::~External()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::has_data() const
 {
+    if (is_presence_container) return true;
     return external_routes.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -9614,12 +9737,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::has_leaf_or
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::RipMetricRouteMap::~RipMetricRouteMap()
@@ -9628,6 +9751,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::RipMetricRouteMa
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -9713,7 +9837,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::RipMetricRouteMa
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::~Metric()
@@ -9722,6 +9846,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::RipMetricRouteMa
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -9801,12 +9926,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::External::RipMetricRo
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::NssaExternal()
     :
     nssa_external_routes{YType::enumeration, "nssa-external-routes"}
-    	,
+        ,
     rip_metric_route_map(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "nssa-external"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa-external"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::~NssaExternal()
@@ -9815,6 +9940,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::~NssaExterna
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return nssa_external_routes.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
@@ -9897,12 +10023,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::has_lea
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "nssa-external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "nssa-external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::~RipMetricRouteMap()
@@ -9911,6 +10037,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::RipMetricRou
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -9996,7 +10123,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::RipMetricRou
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::~Metric()
@@ -10005,6 +10132,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::RipMetricRou
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -10084,12 +10212,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Ospf::Match::NssaExternal::RipMetr
 Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::~RipMetricRouteMap()
@@ -10098,6 +10226,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::~RipMetricRout
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -10183,7 +10312,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::Metric::Metric
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::Metric::~Metric()
@@ -10192,6 +10321,7 @@ Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::Metric::~Metri
 
 bool Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -10274,7 +10404,7 @@ Native::Ipv6::Router::Rip::Redistribute::Static::Static()
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Static::~Static()
@@ -10283,6 +10413,7 @@ Native::Ipv6::Router::Rip::Redistribute::Static::~Static()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Static::has_data() const
 {
+    if (is_presence_container) return true;
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
@@ -10352,12 +10483,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Static::has_leaf_or_child_of_name(
 Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::~RipMetricRouteMap()
@@ -10366,6 +10497,7 @@ Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::~RipMetricRo
 
 bool Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -10451,7 +10583,7 @@ Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric::Metr
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric::~Metric()
@@ -10460,6 +10592,7 @@ Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric::~Met
 
 bool Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -10542,7 +10675,7 @@ Native::Ipv6::Router::Rip::Redistribute::Rip_::Rip_()
 {
     rip_metric_route_map->parent = this;
 
-    yang_name = "rip"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Rip_::~Rip_()
@@ -10551,6 +10684,7 @@ Native::Ipv6::Router::Rip::Redistribute::Rip_::~Rip_()
 
 bool Native::Ipv6::Router::Rip::Redistribute::Rip_::has_data() const
 {
+    if (is_presence_container) return true;
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
@@ -10620,12 +10754,12 @@ bool Native::Ipv6::Router::Rip::Redistribute::Rip_::has_leaf_or_child_of_name(co
 Native::Ipv6::Router::Rip::Redistribute::Rip_::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
-    	,
+        ,
     metric(std::make_shared<Native::Ipv6::Router::Rip::Redistribute::Rip_::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
-    yang_name = "rip-metric-route-map"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-metric-route-map"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Rip_::RipMetricRouteMap::~RipMetricRouteMap()
@@ -10634,6 +10768,7 @@ Native::Ipv6::Router::Rip::Redistribute::Rip_::RipMetricRouteMap::~RipMetricRout
 
 bool Native::Ipv6::Router::Rip::Redistribute::Rip_::RipMetricRouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
@@ -10719,7 +10854,7 @@ Native::Ipv6::Router::Rip::Redistribute::Rip_::RipMetricRouteMap::Metric::Metric
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Redistribute::Rip_::RipMetricRouteMap::Metric::~Metric()
@@ -10728,6 +10863,7 @@ Native::Ipv6::Router::Rip::Redistribute::Rip_::RipMetricRouteMap::Metric::~Metri
 
 bool Native::Ipv6::Router::Rip::Redistribute::Rip_::RipMetricRouteMap::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| transparent.is_set;
 }
@@ -10812,7 +10948,7 @@ Native::Ipv6::Router::Rip::Timers::Timers()
     garbage_collection{YType::uint16, "garbage-collection"}
 {
 
-    yang_name = "timers"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::Router::Rip::Timers::~Timers()
@@ -10821,6 +10957,7 @@ Native::Ipv6::Router::Rip::Timers::~Timers()
 
 bool Native::Ipv6::Router::Rip::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return update.is_set
 	|| timeout.is_set
 	|| holddown.is_set
@@ -10926,12 +11063,12 @@ bool Native::Ipv6::Router::Rip::Timers::has_leaf_or_child_of_name(const std::str
 Native::Ipv6::Spd::Spd()
     :
     mode{YType::enumeration, "mode"}
-    	,
+        ,
     queue(std::make_shared<Native::Ipv6::Spd::Queue>())
 {
     queue->parent = this;
 
-    yang_name = "spd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "spd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ipv6::Spd::~Spd()
@@ -10940,6 +11077,7 @@ Native::Ipv6::Spd::~Spd()
 
 bool Native::Ipv6::Spd::has_data() const
 {
+    if (is_presence_container) return true;
     return mode.is_set
 	|| (queue !=  nullptr && queue->has_data());
 }
@@ -11032,7 +11170,7 @@ Native::Ipv6::Spd::Queue::Queue()
     min_threshold{YType::uint16, "min-threshold"}
 {
 
-    yang_name = "queue"; yang_parent_name = "spd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "queue"; yang_parent_name = "spd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ipv6::Spd::Queue::~Queue()
@@ -11041,6 +11179,7 @@ Native::Ipv6::Spd::Queue::~Queue()
 
 bool Native::Ipv6::Spd::Queue::has_data() const
 {
+    if (is_presence_container) return true;
     return max_threshold.is_set
 	|| min_threshold.is_set;
 }
@@ -11127,9 +11266,11 @@ bool Native::Ipv6::Spd::Queue::has_leaf_or_child_of_name(const std::string & nam
 Native::Ipv6::PrefixList::PrefixList()
     :
     sequence_number{YType::empty, "sequence-number"}
+        ,
+    prefixes(this, {"name"})
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix-list"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ipv6::PrefixList::~PrefixList()
@@ -11138,7 +11279,8 @@ Native::Ipv6::PrefixList::~PrefixList()
 
 bool Native::Ipv6::PrefixList::has_data() const
 {
-    for (std::size_t index=0; index<prefixes.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefixes.len(); index++)
     {
         if(prefixes[index]->has_data())
             return true;
@@ -11148,7 +11290,7 @@ bool Native::Ipv6::PrefixList::has_data() const
 
 bool Native::Ipv6::PrefixList::has_operation() const
 {
-    for (std::size_t index=0; index<prefixes.size(); index++)
+    for (std::size_t index=0; index<prefixes.len(); index++)
     {
         if(prefixes[index]->has_operation())
             return true;
@@ -11187,7 +11329,7 @@ std::shared_ptr<Entity> Native::Ipv6::PrefixList::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Native::Ipv6::PrefixList::Prefixes>();
         c->parent = this;
-        prefixes.push_back(c);
+        prefixes.append(c);
         return c;
     }
 
@@ -11199,7 +11341,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::PrefixList::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefixes)
+    for (auto c : prefixes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11239,14 +11381,15 @@ Native::Ipv6::PrefixList::Prefixes::Prefixes()
     :
     name{YType::str, "name"},
     description{YType::str, "description"}
-    	,
+        ,
     permit(std::make_shared<Native::Ipv6::PrefixList::Prefixes::Permit>())
-	,deny(std::make_shared<Native::Ipv6::PrefixList::Prefixes::Deny>())
+    , deny(std::make_shared<Native::Ipv6::PrefixList::Prefixes::Deny>())
+    , seq(this, {"no"})
 {
     permit->parent = this;
     deny->parent = this;
 
-    yang_name = "prefixes"; yang_parent_name = "prefix-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefixes"; yang_parent_name = "prefix-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ipv6::PrefixList::Prefixes::~Prefixes()
@@ -11255,7 +11398,8 @@ Native::Ipv6::PrefixList::Prefixes::~Prefixes()
 
 bool Native::Ipv6::PrefixList::Prefixes::has_data() const
 {
-    for (std::size_t index=0; index<seq.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<seq.len(); index++)
     {
         if(seq[index]->has_data())
             return true;
@@ -11268,7 +11412,7 @@ bool Native::Ipv6::PrefixList::Prefixes::has_data() const
 
 bool Native::Ipv6::PrefixList::Prefixes::has_operation() const
 {
-    for (std::size_t index=0; index<seq.size(); index++)
+    for (std::size_t index=0; index<seq.len(); index++)
     {
         if(seq[index]->has_operation())
             return true;
@@ -11290,7 +11434,8 @@ std::string Native::Ipv6::PrefixList::Prefixes::get_absolute_path() const
 std::string Native::Ipv6::PrefixList::Prefixes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefixes" <<"[name='" <<name <<"']";
+    path_buffer << "prefixes";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -11329,7 +11474,7 @@ std::shared_ptr<Entity> Native::Ipv6::PrefixList::Prefixes::get_child_by_name(co
     {
         auto c = std::make_shared<Native::Ipv6::PrefixList::Prefixes::Seq>();
         c->parent = this;
-        seq.push_back(c);
+        seq.append(c);
         return c;
     }
 
@@ -11351,7 +11496,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::PrefixList::Prefixe
     }
 
     count = 0;
-    for (auto const & c : seq)
+    for (auto c : seq.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11404,7 +11549,7 @@ Native::Ipv6::PrefixList::Prefixes::Permit::Permit()
     le{YType::uint8, "le"}
 {
 
-    yang_name = "permit"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "permit"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::PrefixList::Prefixes::Permit::~Permit()
@@ -11413,6 +11558,7 @@ Native::Ipv6::PrefixList::Prefixes::Permit::~Permit()
 
 bool Native::Ipv6::PrefixList::Prefixes::Permit::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| ge.is_set
 	|| le.is_set;
@@ -11509,7 +11655,7 @@ Native::Ipv6::PrefixList::Prefixes::Deny::Deny()
     le{YType::uint8, "le"}
 {
 
-    yang_name = "deny"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "deny"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::PrefixList::Prefixes::Deny::~Deny()
@@ -11518,6 +11664,7 @@ Native::Ipv6::PrefixList::Prefixes::Deny::~Deny()
 
 bool Native::Ipv6::PrefixList::Prefixes::Deny::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| ge.is_set
 	|| le.is_set;
@@ -11610,14 +11757,14 @@ bool Native::Ipv6::PrefixList::Prefixes::Deny::has_leaf_or_child_of_name(const s
 Native::Ipv6::PrefixList::Prefixes::Seq::Seq()
     :
     no{YType::uint32, "no"}
-    	,
+        ,
     deny(std::make_shared<Native::Ipv6::PrefixList::Prefixes::Seq::Deny>())
-	,permit(std::make_shared<Native::Ipv6::PrefixList::Prefixes::Seq::Permit>())
+    , permit(std::make_shared<Native::Ipv6::PrefixList::Prefixes::Seq::Permit>())
 {
     deny->parent = this;
     permit->parent = this;
 
-    yang_name = "seq"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "seq"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::PrefixList::Prefixes::Seq::~Seq()
@@ -11626,6 +11773,7 @@ Native::Ipv6::PrefixList::Prefixes::Seq::~Seq()
 
 bool Native::Ipv6::PrefixList::Prefixes::Seq::has_data() const
 {
+    if (is_presence_container) return true;
     return no.is_set
 	|| (deny !=  nullptr && deny->has_data())
 	|| (permit !=  nullptr && permit->has_data());
@@ -11642,7 +11790,8 @@ bool Native::Ipv6::PrefixList::Prefixes::Seq::has_operation() const
 std::string Native::Ipv6::PrefixList::Prefixes::Seq::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "seq" <<"[no='" <<no <<"']";
+    path_buffer << "seq";
+    ADD_KEY_TOKEN(no, "no");
     return path_buffer.str();
 }
 
@@ -11728,7 +11877,7 @@ Native::Ipv6::PrefixList::Prefixes::Seq::Deny::Deny()
     le{YType::uint16, "le"}
 {
 
-    yang_name = "deny"; yang_parent_name = "seq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "deny"; yang_parent_name = "seq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::PrefixList::Prefixes::Seq::Deny::~Deny()
@@ -11737,6 +11886,7 @@ Native::Ipv6::PrefixList::Prefixes::Seq::Deny::~Deny()
 
 bool Native::Ipv6::PrefixList::Prefixes::Seq::Deny::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| ge.is_set
 	|| le.is_set;
@@ -11833,7 +11983,7 @@ Native::Ipv6::PrefixList::Prefixes::Seq::Permit::Permit()
     le{YType::uint16, "le"}
 {
 
-    yang_name = "permit"; yang_parent_name = "seq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "permit"; yang_parent_name = "seq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Ipv6::PrefixList::Prefixes::Seq::Permit::~Permit()
@@ -11842,6 +11992,7 @@ Native::Ipv6::PrefixList::Prefixes::Seq::Permit::~Permit()
 
 bool Native::Ipv6::PrefixList::Prefixes::Seq::Permit::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| ge.is_set
 	|| le.is_set;
@@ -11938,7 +12089,7 @@ Native::Ipv6::Neighbor::Neighbor()
     hardware_address{YType::str, "hardware-address"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ipv6::Neighbor::~Neighbor()
@@ -11947,6 +12098,7 @@ Native::Ipv6::Neighbor::~Neighbor()
 
 bool Native::Ipv6::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| interface.is_set
 	|| hardware_address.is_set;
@@ -11970,7 +12122,9 @@ std::string Native::Ipv6::Neighbor::get_absolute_path() const
 std::string Native::Ipv6::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[address='" <<address <<"']" <<"[interface='" <<interface <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -12049,7 +12203,7 @@ Native::Ipv6::Mld::Mld()
 {
     ssm_map->parent = this;
 
-    yang_name = "mld"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mld"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ipv6::Mld::~Mld()
@@ -12058,6 +12212,7 @@ Native::Ipv6::Mld::~Mld()
 
 bool Native::Ipv6::Mld::has_data() const
 {
+    if (is_presence_container) return true;
     return (ssm_map !=  nullptr && ssm_map->has_data());
 }
 
@@ -12134,14 +12289,14 @@ bool Native::Ipv6::Mld::has_leaf_or_child_of_name(const std::string & name) cons
 Native::Ipv6::Mld::SsmMap::SsmMap()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     query(std::make_shared<Native::Ipv6::Mld::SsmMap::Query>())
-	,static_(std::make_shared<Native::Ipv6::Mld::SsmMap::Static>())
+    , static_(std::make_shared<Native::Ipv6::Mld::SsmMap::Static>())
 {
     query->parent = this;
     static_->parent = this;
 
-    yang_name = "ssm-map"; yang_parent_name = "mld"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssm-map"; yang_parent_name = "mld"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ipv6::Mld::SsmMap::~SsmMap()
@@ -12150,6 +12305,7 @@ Native::Ipv6::Mld::SsmMap::~SsmMap()
 
 bool Native::Ipv6::Mld::SsmMap::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (query !=  nullptr && query->has_data())
 	|| (static_ !=  nullptr && static_->has_data());
@@ -12257,7 +12413,7 @@ Native::Ipv6::Mld::SsmMap::Query::Query()
     dns{YType::empty, "dns"}
 {
 
-    yang_name = "query"; yang_parent_name = "ssm-map"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "query"; yang_parent_name = "ssm-map"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ipv6::Mld::SsmMap::Query::~Query()
@@ -12266,6 +12422,7 @@ Native::Ipv6::Mld::SsmMap::Query::~Query()
 
 bool Native::Ipv6::Mld::SsmMap::Query::has_data() const
 {
+    if (is_presence_container) return true;
     return dns.is_set;
 }
 
@@ -12342,7 +12499,7 @@ Native::Ipv6::Mld::SsmMap::Static::Static()
     source_ip{YType::str, "source-ip"}
 {
 
-    yang_name = "static"; yang_parent_name = "ssm-map"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "static"; yang_parent_name = "ssm-map"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ipv6::Mld::SsmMap::Static::~Static()
@@ -12351,6 +12508,7 @@ Native::Ipv6::Mld::SsmMap::Static::~Static()
 
 bool Native::Ipv6::Mld::SsmMap::Static::has_data() const
 {
+    if (is_presence_container) return true;
     return acl.is_set
 	|| source_ip.is_set;
 }
@@ -12439,7 +12597,7 @@ Native::Ipv6::MulticastRouting::MulticastRouting()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "multicast-routing"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multicast-routing"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Ipv6::MulticastRouting::~MulticastRouting()
@@ -12448,6 +12606,7 @@ Native::Ipv6::MulticastRouting::~MulticastRouting()
 
 bool Native::Ipv6::MulticastRouting::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set;
 }
 
@@ -12523,7 +12682,7 @@ Native::Ipv6::Rip::Rip()
     vrf_mode{YType::enumeration, "vrf-mode"}
 {
 
-    yang_name = "rip"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rip"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Ipv6::Rip::~Rip()
@@ -12532,6 +12691,7 @@ Native::Ipv6::Rip::~Rip()
 
 bool Native::Ipv6::Rip::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_mode.is_set;
 }
 
@@ -12604,16 +12764,21 @@ bool Native::Ipv6::Rip::has_leaf_or_child_of_name(const std::string & name) cons
 
 Native::Vlan::Vlan()
     :
-    accounting(nullptr) // presence node
-	,internal(std::make_shared<Native::Vlan::Internal>())
-	,dot1q(std::make_shared<Native::Vlan::Dot1Q>())
-	,access_log(std::make_shared<Native::Vlan::AccessLog>())
+    access_map(this, {"name"})
+    , configuration(this, {"vlan_id"})
+    , filter(this, {"word"})
+    , accounting(nullptr) // presence node
+    , internal(std::make_shared<Native::Vlan::Internal>())
+    , dot1q(std::make_shared<Native::Vlan::Dot1q>())
+    , access_log(std::make_shared<Native::Vlan::AccessLog>())
+    , group(this, {"name"})
+    , vlan_list(this, {"id"})
 {
     internal->parent = this;
     dot1q->parent = this;
     access_log->parent = this;
 
-    yang_name = "vlan"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Vlan::~Vlan()
@@ -12622,27 +12787,28 @@ Native::Vlan::~Vlan()
 
 bool Native::Vlan::has_data() const
 {
-    for (std::size_t index=0; index<access_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_map.len(); index++)
     {
         if(access_map[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<configuration.size(); index++)
+    for (std::size_t index=0; index<configuration.len(); index++)
     {
         if(configuration[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<filter.size(); index++)
+    for (std::size_t index=0; index<filter.len(); index++)
     {
         if(filter[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<vlan_list.size(); index++)
+    for (std::size_t index=0; index<vlan_list.len(); index++)
     {
         if(vlan_list[index]->has_data())
             return true;
@@ -12655,27 +12821,27 @@ bool Native::Vlan::has_data() const
 
 bool Native::Vlan::has_operation() const
 {
-    for (std::size_t index=0; index<access_map.size(); index++)
+    for (std::size_t index=0; index<access_map.len(); index++)
     {
         if(access_map[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<configuration.size(); index++)
+    for (std::size_t index=0; index<configuration.len(); index++)
     {
         if(configuration[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<filter.size(); index++)
+    for (std::size_t index=0; index<filter.len(); index++)
     {
         if(filter[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<vlan_list.size(); index++)
+    for (std::size_t index=0; index<vlan_list.len(); index++)
     {
         if(vlan_list[index]->has_operation())
             return true;
@@ -12716,7 +12882,7 @@ std::shared_ptr<Entity> Native::Vlan::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Native::Vlan::AccessMap>();
         c->parent = this;
-        access_map.push_back(c);
+        access_map.append(c);
         return c;
     }
 
@@ -12724,7 +12890,7 @@ std::shared_ptr<Entity> Native::Vlan::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Native::Vlan::Configuration>();
         c->parent = this;
-        configuration.push_back(c);
+        configuration.append(c);
         return c;
     }
 
@@ -12732,7 +12898,7 @@ std::shared_ptr<Entity> Native::Vlan::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Native::Vlan::Filter>();
         c->parent = this;
-        filter.push_back(c);
+        filter.append(c);
         return c;
     }
 
@@ -12758,7 +12924,7 @@ std::shared_ptr<Entity> Native::Vlan::get_child_by_name(const std::string & chil
     {
         if(dot1q == nullptr)
         {
-            dot1q = std::make_shared<Native::Vlan::Dot1Q>();
+            dot1q = std::make_shared<Native::Vlan::Dot1q>();
         }
         return dot1q;
     }
@@ -12776,7 +12942,7 @@ std::shared_ptr<Entity> Native::Vlan::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Native::Vlan::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -12784,7 +12950,7 @@ std::shared_ptr<Entity> Native::Vlan::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Native::Vlan::VlanList>();
         c->parent = this;
-        vlan_list.push_back(c);
+        vlan_list.append(c);
         return c;
     }
 
@@ -12796,7 +12962,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Vlan::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access_map)
+    for (auto c : access_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12805,7 +12971,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Vlan::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : configuration)
+    for (auto c : configuration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12814,7 +12980,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Vlan::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : filter)
+    for (auto c : filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12843,7 +13009,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Vlan::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12852,7 +13018,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Vlan::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : vlan_list)
+    for (auto c : vlan_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12883,12 +13049,12 @@ Native::Vlan::AccessMap::AccessMap()
     name{YType::str, "name"},
     value_{YType::uint16, "value"},
     action{YType::enumeration, "action"}
-    	,
+        ,
     match(std::make_shared<Native::Vlan::AccessMap::Match>())
 {
     match->parent = this;
 
-    yang_name = "access-map"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access-map"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Vlan::AccessMap::~AccessMap()
@@ -12897,6 +13063,7 @@ Native::Vlan::AccessMap::~AccessMap()
 
 bool Native::Vlan::AccessMap::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| value_.is_set
 	|| action.is_set
@@ -12922,7 +13089,8 @@ std::string Native::Vlan::AccessMap::get_absolute_path() const
 std::string Native::Vlan::AccessMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-vlan:access-map" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-vlan:access-map";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -13012,12 +13180,12 @@ bool Native::Vlan::AccessMap::has_leaf_or_child_of_name(const std::string & name
 Native::Vlan::AccessMap::Match::Match()
     :
     ipv6(std::make_shared<Native::Vlan::AccessMap::Match::Ipv6>())
-	,ip(std::make_shared<Native::Vlan::AccessMap::Match::Ip>())
+    , ip(std::make_shared<Native::Vlan::AccessMap::Match::Ip>())
 {
     ipv6->parent = this;
     ip->parent = this;
 
-    yang_name = "match"; yang_parent_name = "access-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "access-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vlan::AccessMap::Match::~Match()
@@ -13026,6 +13194,7 @@ Native::Vlan::AccessMap::Match::~Match()
 
 bool Native::Vlan::AccessMap::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv6 !=  nullptr && ipv6->has_data())
 	|| (ip !=  nullptr && ip->has_data());
 }
@@ -13113,7 +13282,7 @@ Native::Vlan::AccessMap::Match::Ipv6::Ipv6()
     address{YType::str, "address"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vlan::AccessMap::Match::Ipv6::~Ipv6()
@@ -13122,6 +13291,7 @@ Native::Vlan::AccessMap::Match::Ipv6::~Ipv6()
 
 bool Native::Vlan::AccessMap::Match::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
@@ -13199,7 +13369,7 @@ Native::Vlan::AccessMap::Match::Ip::Ip()
     address{YType::str, "address"}
 {
 
-    yang_name = "ip"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vlan::AccessMap::Match::Ip::~Ip()
@@ -13208,6 +13378,7 @@ Native::Vlan::AccessMap::Match::Ip::~Ip()
 
 bool Native::Vlan::AccessMap::Match::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
@@ -13283,14 +13454,14 @@ bool Native::Vlan::AccessMap::Match::Ip::has_leaf_or_child_of_name(const std::st
 Native::Vlan::Configuration::Configuration()
     :
     vlan_id{YType::str, "vlan-id"}
-    	,
+        ,
     ip(std::make_shared<Native::Vlan::Configuration::Ip>())
-	,ipv6(std::make_shared<Native::Vlan::Configuration::Ipv6>())
+    , ipv6(std::make_shared<Native::Vlan::Configuration::Ipv6>())
 {
     ip->parent = this;
     ipv6->parent = this;
 
-    yang_name = "configuration"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configuration"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Vlan::Configuration::~Configuration()
@@ -13299,6 +13470,7 @@ Native::Vlan::Configuration::~Configuration()
 
 bool Native::Vlan::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| (ip !=  nullptr && ip->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
@@ -13322,7 +13494,8 @@ std::string Native::Vlan::Configuration::get_absolute_path() const
 std::string Native::Vlan::Configuration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-vlan:configuration" <<"[vlan-id='" <<vlan_id <<"']";
+    path_buffer << "Cisco-IOS-XE-vlan:configuration";
+    ADD_KEY_TOKEN(vlan_id, "vlan-id");
     return path_buffer.str();
 }
 
@@ -13407,7 +13580,7 @@ Native::Vlan::Configuration::Ip::Ip()
 {
     flow->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vlan::Configuration::Ip::~Ip()
@@ -13416,6 +13589,7 @@ Native::Vlan::Configuration::Ip::~Ip()
 
 bool Native::Vlan::Configuration::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (flow !=  nullptr && flow->has_data());
 }
 
@@ -13483,9 +13657,11 @@ bool Native::Vlan::Configuration::Ip::has_leaf_or_child_of_name(const std::strin
 }
 
 Native::Vlan::Configuration::Ip::Flow::Flow()
+    :
+    monitor(this, {"flow_monitor"})
 {
 
-    yang_name = "flow"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vlan::Configuration::Ip::Flow::~Flow()
@@ -13494,7 +13670,8 @@ Native::Vlan::Configuration::Ip::Flow::~Flow()
 
 bool Native::Vlan::Configuration::Ip::Flow::has_data() const
 {
-    for (std::size_t index=0; index<monitor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<monitor.len(); index++)
     {
         if(monitor[index]->has_data())
             return true;
@@ -13504,7 +13681,7 @@ bool Native::Vlan::Configuration::Ip::Flow::has_data() const
 
 bool Native::Vlan::Configuration::Ip::Flow::has_operation() const
 {
-    for (std::size_t index=0; index<monitor.size(); index++)
+    for (std::size_t index=0; index<monitor.len(); index++)
     {
         if(monitor[index]->has_operation())
             return true;
@@ -13534,7 +13711,7 @@ std::shared_ptr<Entity> Native::Vlan::Configuration::Ip::Flow::get_child_by_name
     {
         auto c = std::make_shared<Native::Vlan::Configuration::Ip::Flow::Monitor>();
         c->parent = this;
-        monitor.push_back(c);
+        monitor.append(c);
         return c;
     }
 
@@ -13546,7 +13723,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Vlan::Configuration::Ip::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : monitor)
+    for (auto c : monitor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13579,7 +13756,7 @@ Native::Vlan::Configuration::Ip::Flow::Monitor::Monitor()
     output{YType::empty, "output"}
 {
 
-    yang_name = "monitor"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "monitor"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vlan::Configuration::Ip::Flow::Monitor::~Monitor()
@@ -13588,6 +13765,7 @@ Native::Vlan::Configuration::Ip::Flow::Monitor::~Monitor()
 
 bool Native::Vlan::Configuration::Ip::Flow::Monitor::has_data() const
 {
+    if (is_presence_container) return true;
     return flow_monitor.is_set
 	|| input.is_set
 	|| output.is_set;
@@ -13604,7 +13782,8 @@ bool Native::Vlan::Configuration::Ip::Flow::Monitor::has_operation() const
 std::string Native::Vlan::Configuration::Ip::Flow::Monitor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "monitor" <<"[flow-monitor='" <<flow_monitor <<"']";
+    path_buffer << "monitor";
+    ADD_KEY_TOKEN(flow_monitor, "flow-monitor");
     return path_buffer.str();
 }
 
@@ -13680,12 +13859,12 @@ bool Native::Vlan::Configuration::Ip::Flow::Monitor::has_leaf_or_child_of_name(c
 Native::Vlan::Configuration::Ipv6::Ipv6()
     :
     nd(std::make_shared<Native::Vlan::Configuration::Ipv6::Nd>())
-	,dhcp(std::make_shared<Native::Vlan::Configuration::Ipv6::Dhcp>())
+    , dhcp(std::make_shared<Native::Vlan::Configuration::Ipv6::Dhcp>())
 {
     nd->parent = this;
     dhcp->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vlan::Configuration::Ipv6::~Ipv6()
@@ -13694,6 +13873,7 @@ Native::Vlan::Configuration::Ipv6::~Ipv6()
 
 bool Native::Vlan::Configuration::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (nd !=  nullptr && nd->has_data())
 	|| (dhcp !=  nullptr && dhcp->has_data());
 }
@@ -13781,7 +13961,7 @@ Native::Vlan::Configuration::Ipv6::Nd::Nd()
     suppress(nullptr) // presence node
 {
 
-    yang_name = "nd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vlan::Configuration::Ipv6::Nd::~Nd()
@@ -13790,6 +13970,7 @@ Native::Vlan::Configuration::Ipv6::Nd::~Nd()
 
 bool Native::Vlan::Configuration::Ipv6::Nd::has_data() const
 {
+    if (is_presence_container) return true;
     return (suppress !=  nullptr && suppress->has_data());
 }
 
@@ -13861,7 +14042,7 @@ Native::Vlan::Configuration::Ipv6::Nd::Suppress::Suppress()
     attach_policy{YType::str, "attach-policy"}
 {
 
-    yang_name = "suppress"; yang_parent_name = "nd"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "suppress"; yang_parent_name = "nd"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Vlan::Configuration::Ipv6::Nd::Suppress::~Suppress()
@@ -13870,6 +14051,7 @@ Native::Vlan::Configuration::Ipv6::Nd::Suppress::~Suppress()
 
 bool Native::Vlan::Configuration::Ipv6::Nd::Suppress::has_data() const
 {
+    if (is_presence_container) return true;
     return attach_policy.is_set;
 }
 
@@ -13938,7 +14120,7 @@ Native::Vlan::Configuration::Ipv6::Dhcp::Dhcp()
     guard(nullptr) // presence node
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vlan::Configuration::Ipv6::Dhcp::~Dhcp()
@@ -13947,6 +14129,7 @@ Native::Vlan::Configuration::Ipv6::Dhcp::~Dhcp()
 
 bool Native::Vlan::Configuration::Ipv6::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return (guard !=  nullptr && guard->has_data());
 }
 
@@ -14018,7 +14201,7 @@ Native::Vlan::Configuration::Ipv6::Dhcp::Guard::Guard()
     attach_policy{YType::str, "attach-policy"}
 {
 
-    yang_name = "guard"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "guard"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Vlan::Configuration::Ipv6::Dhcp::Guard::~Guard()
@@ -14027,6 +14210,7 @@ Native::Vlan::Configuration::Ipv6::Dhcp::Guard::~Guard()
 
 bool Native::Vlan::Configuration::Ipv6::Dhcp::Guard::has_data() const
 {
+    if (is_presence_container) return true;
     return attach_policy.is_set;
 }
 
@@ -14096,7 +14280,7 @@ Native::Vlan::Filter::Filter()
     vlan_list{YType::str, "vlan-list"}
 {
 
-    yang_name = "filter"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "filter"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Vlan::Filter::~Filter()
@@ -14105,6 +14289,7 @@ Native::Vlan::Filter::~Filter()
 
 bool Native::Vlan::Filter::has_data() const
 {
+    if (is_presence_container) return true;
     return word.is_set
 	|| vlan_list.is_set;
 }
@@ -14126,7 +14311,8 @@ std::string Native::Vlan::Filter::get_absolute_path() const
 std::string Native::Vlan::Filter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-vlan:filter" <<"[word='" <<word <<"']";
+    path_buffer << "Cisco-IOS-XE-vlan:filter";
+    ADD_KEY_TOKEN(word, "word");
     return path_buffer.str();
 }
 
@@ -14194,7 +14380,7 @@ Native::Vlan::Accounting::Accounting()
     output{YType::empty, "output"}
 {
 
-    yang_name = "accounting"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Vlan::Accounting::~Accounting()
@@ -14203,6 +14389,7 @@ Native::Vlan::Accounting::~Accounting()
 
 bool Native::Vlan::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return input.is_set
 	|| output.is_set;
 }
@@ -14292,7 +14479,7 @@ Native::Vlan::Internal::Internal()
 {
     allocation->parent = this;
 
-    yang_name = "internal"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "internal"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Vlan::Internal::~Internal()
@@ -14301,6 +14488,7 @@ Native::Vlan::Internal::~Internal()
 
 bool Native::Vlan::Internal::has_data() const
 {
+    if (is_presence_container) return true;
     return (allocation !=  nullptr && allocation->has_data());
 }
 
@@ -14379,7 +14567,7 @@ Native::Vlan::Internal::Allocation::Allocation()
     policy{YType::enumeration, "policy"}
 {
 
-    yang_name = "allocation"; yang_parent_name = "internal"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "allocation"; yang_parent_name = "internal"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Vlan::Internal::Allocation::~Allocation()
@@ -14388,6 +14576,7 @@ Native::Vlan::Internal::Allocation::~Allocation()
 
 bool Native::Vlan::Internal::Allocation::has_data() const
 {
+    if (is_presence_container) return true;
     return policy.is_set;
 }
 
@@ -14458,45 +14647,46 @@ bool Native::Vlan::Internal::Allocation::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
-Native::Vlan::Dot1Q::Dot1Q()
+Native::Vlan::Dot1q::Dot1q()
     :
-    tag(std::make_shared<Native::Vlan::Dot1Q::Tag>())
+    tag(std::make_shared<Native::Vlan::Dot1q::Tag>())
 {
     tag->parent = this;
 
-    yang_name = "dot1q"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1q"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Vlan::Dot1Q::~Dot1Q()
+Native::Vlan::Dot1q::~Dot1q()
 {
 }
 
-bool Native::Vlan::Dot1Q::has_data() const
+bool Native::Vlan::Dot1q::has_data() const
 {
+    if (is_presence_container) return true;
     return (tag !=  nullptr && tag->has_data());
 }
 
-bool Native::Vlan::Dot1Q::has_operation() const
+bool Native::Vlan::Dot1q::has_operation() const
 {
     return is_set(yfilter)
 	|| (tag !=  nullptr && tag->has_operation());
 }
 
-std::string Native::Vlan::Dot1Q::get_absolute_path() const
+std::string Native::Vlan::Dot1q::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/vlan/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Vlan::Dot1Q::get_segment_path() const
+std::string Native::Vlan::Dot1q::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-vlan:dot1q";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Vlan::Dot1Q::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Vlan::Dot1q::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14505,13 +14695,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Vlan::Dot1Q::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Native::Vlan::Dot1Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Vlan::Dot1q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tag")
     {
         if(tag == nullptr)
         {
-            tag = std::make_shared<Native::Vlan::Dot1Q::Tag>();
+            tag = std::make_shared<Native::Vlan::Dot1q::Tag>();
         }
         return tag;
     }
@@ -14519,7 +14709,7 @@ std::shared_ptr<Entity> Native::Vlan::Dot1Q::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Vlan::Dot1Q::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Vlan::Dot1q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14531,59 +14721,60 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Vlan::Dot1Q::get_children
     return children;
 }
 
-void Native::Vlan::Dot1Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Vlan::Dot1q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Vlan::Dot1Q::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Vlan::Dot1q::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Vlan::Dot1Q::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Vlan::Dot1q::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tag")
         return true;
     return false;
 }
 
-Native::Vlan::Dot1Q::Tag::Tag()
+Native::Vlan::Dot1q::Tag::Tag()
     :
     native{YType::empty, "native"}
 {
 
-    yang_name = "tag"; yang_parent_name = "dot1q"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tag"; yang_parent_name = "dot1q"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Vlan::Dot1Q::Tag::~Tag()
+Native::Vlan::Dot1q::Tag::~Tag()
 {
 }
 
-bool Native::Vlan::Dot1Q::Tag::has_data() const
+bool Native::Vlan::Dot1q::Tag::has_data() const
 {
+    if (is_presence_container) return true;
     return native.is_set;
 }
 
-bool Native::Vlan::Dot1Q::Tag::has_operation() const
+bool Native::Vlan::Dot1q::Tag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(native.yfilter);
 }
 
-std::string Native::Vlan::Dot1Q::Tag::get_absolute_path() const
+std::string Native::Vlan::Dot1q::Tag::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/vlan/Cisco-IOS-XE-vlan:dot1q/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Vlan::Dot1Q::Tag::get_segment_path() const
+std::string Native::Vlan::Dot1q::Tag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Vlan::Dot1Q::Tag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Vlan::Dot1q::Tag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14593,19 +14784,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Vlan::Dot1Q::Tag::get_nam
 
 }
 
-std::shared_ptr<Entity> Native::Vlan::Dot1Q::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Vlan::Dot1q::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Vlan::Dot1Q::Tag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Vlan::Dot1q::Tag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Vlan::Dot1Q::Tag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Vlan::Dot1q::Tag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "native")
     {
@@ -14615,7 +14806,7 @@ void Native::Vlan::Dot1Q::Tag::set_value(const std::string & value_path, const s
     }
 }
 
-void Native::Vlan::Dot1Q::Tag::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Vlan::Dot1q::Tag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "native")
     {
@@ -14623,7 +14814,7 @@ void Native::Vlan::Dot1Q::Tag::set_filter(const std::string & value_path, YFilte
     }
 }
 
-bool Native::Vlan::Dot1Q::Tag::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Vlan::Dot1q::Tag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "native")
         return true;
@@ -14637,7 +14828,7 @@ Native::Vlan::AccessLog::AccessLog()
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "access-log"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access-log"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Vlan::AccessLog::~AccessLog()
@@ -14646,6 +14837,7 @@ Native::Vlan::AccessLog::~AccessLog()
 
 bool Native::Vlan::AccessLog::has_data() const
 {
+    if (is_presence_container) return true;
     return maxflow.is_set
 	|| ratelimit.is_set
 	|| threshold.is_set;
@@ -14745,9 +14937,11 @@ bool Native::Vlan::AccessLog::has_leaf_or_child_of_name(const std::string & name
 Native::Vlan::Group::Group()
     :
     name{YType::str, "name"}
+        ,
+    vlan_list(this, {"vlan_id"})
 {
 
-    yang_name = "group"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Vlan::Group::~Group()
@@ -14756,7 +14950,8 @@ Native::Vlan::Group::~Group()
 
 bool Native::Vlan::Group::has_data() const
 {
-    for (std::size_t index=0; index<vlan_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_list.len(); index++)
     {
         if(vlan_list[index]->has_data())
             return true;
@@ -14766,7 +14961,7 @@ bool Native::Vlan::Group::has_data() const
 
 bool Native::Vlan::Group::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_list.size(); index++)
+    for (std::size_t index=0; index<vlan_list.len(); index++)
     {
         if(vlan_list[index]->has_operation())
             return true;
@@ -14785,7 +14980,8 @@ std::string Native::Vlan::Group::get_absolute_path() const
 std::string Native::Vlan::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-vlan:group" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-vlan:group";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -14805,7 +15001,7 @@ std::shared_ptr<Entity> Native::Vlan::Group::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Native::Vlan::Group::VlanList>();
         c->parent = this;
-        vlan_list.push_back(c);
+        vlan_list.append(c);
         return c;
     }
 
@@ -14817,7 +15013,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Vlan::Group::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_list)
+    for (auto c : vlan_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14858,7 +15054,7 @@ Native::Vlan::Group::VlanList::VlanList()
     vlan_id{YType::str, "vlan-id"}
 {
 
-    yang_name = "vlan-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Vlan::Group::VlanList::~VlanList()
@@ -14867,6 +15063,7 @@ Native::Vlan::Group::VlanList::~VlanList()
 
 bool Native::Vlan::Group::VlanList::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set;
 }
 
@@ -14879,7 +15076,8 @@ bool Native::Vlan::Group::VlanList::has_operation() const
 std::string Native::Vlan::Group::VlanList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-list" <<"[vlan-id='" <<vlan_id <<"']";
+    path_buffer << "vlan-list";
+    ADD_KEY_TOKEN(vlan_id, "vlan-id");
     return path_buffer.str();
 }
 
@@ -14937,14 +15135,14 @@ Native::Vlan::VlanList::VlanList()
     name{YType::str, "name"},
     state{YType::enumeration, "state"},
     uni_vlan{YType::enumeration, "uni-vlan"}
-    	,
+        ,
     private_vlan(std::make_shared<Native::Vlan::VlanList::PrivateVlan>())
-	,lldp(std::make_shared<Native::Vlan::VlanList::Lldp>())
+    , lldp(std::make_shared<Native::Vlan::VlanList::Lldp>())
 {
     private_vlan->parent = this;
     lldp->parent = this;
 
-    yang_name = "vlan-list"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan-list"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Vlan::VlanList::~VlanList()
@@ -14953,6 +15151,7 @@ Native::Vlan::VlanList::~VlanList()
 
 bool Native::Vlan::VlanList::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| remote_span.is_set
 	|| name.is_set
@@ -14984,7 +15183,8 @@ std::string Native::Vlan::VlanList::get_absolute_path() const
 std::string Native::Vlan::VlanList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-vlan:vlan-list" <<"[id='" <<id <<"']";
+    path_buffer << "Cisco-IOS-XE-vlan:vlan-list";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 

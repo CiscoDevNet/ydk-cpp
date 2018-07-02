@@ -14,11 +14,11 @@ namespace Cisco_IOS_XR_show_fpd_loc_ng_oper {
 ShowFpd::ShowFpd()
     :
     locations(std::make_shared<ShowFpd::Locations>())
-	,hw_module_fpd(std::make_shared<ShowFpd::HwModuleFpd>())
-	,help_locations(std::make_shared<ShowFpd::HelpLocations>())
-	,hw_module_fpd_help_fpd(std::make_shared<ShowFpd::HwModuleFpdHelpFpd>())
-	,package(std::make_shared<ShowFpd::Package>())
-	,location_help(std::make_shared<ShowFpd::LocationHelp>())
+    , hw_module_fpd(std::make_shared<ShowFpd::HwModuleFpd>())
+    , help_locations(std::make_shared<ShowFpd::HelpLocations>())
+    , hw_module_fpd_help_fpd(std::make_shared<ShowFpd::HwModuleFpdHelpFpd>())
+    , package(std::make_shared<ShowFpd::Package>())
+    , location_help(std::make_shared<ShowFpd::LocationHelp>())
 {
     locations->parent = this;
     hw_module_fpd->parent = this;
@@ -27,7 +27,7 @@ ShowFpd::ShowFpd()
     package->parent = this;
     location_help->parent = this;
 
-    yang_name = "show-fpd"; yang_parent_name = "Cisco-IOS-XR-show-fpd-loc-ng-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "show-fpd"; yang_parent_name = "Cisco-IOS-XR-show-fpd-loc-ng-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ShowFpd::~ShowFpd()
@@ -36,6 +36,7 @@ ShowFpd::~ShowFpd()
 
 bool ShowFpd::has_data() const
 {
+    if (is_presence_container) return true;
     return (locations !=  nullptr && locations->has_data())
 	|| (hw_module_fpd !=  nullptr && hw_module_fpd->has_data())
 	|| (help_locations !=  nullptr && help_locations->has_data())
@@ -208,9 +209,11 @@ bool ShowFpd::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 ShowFpd::Locations::Locations()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "locations"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "locations"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowFpd::Locations::~Locations()
@@ -219,7 +222,8 @@ ShowFpd::Locations::~Locations()
 
 bool ShowFpd::Locations::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -229,7 +233,7 @@ bool ShowFpd::Locations::has_data() const
 
 bool ShowFpd::Locations::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -266,7 +270,7 @@ std::shared_ptr<Entity> ShowFpd::Locations::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<ShowFpd::Locations::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -278,7 +282,7 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -307,9 +311,11 @@ bool ShowFpd::Locations::has_leaf_or_child_of_name(const std::string & name) con
 ShowFpd::Locations::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    fpd(this, {"fpd_name"})
 {
 
-    yang_name = "location"; yang_parent_name = "locations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "locations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowFpd::Locations::Location::~Location()
@@ -318,7 +324,8 @@ ShowFpd::Locations::Location::~Location()
 
 bool ShowFpd::Locations::Location::has_data() const
 {
-    for (std::size_t index=0; index<fpd.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fpd.len(); index++)
     {
         if(fpd[index]->has_data())
             return true;
@@ -328,7 +335,7 @@ bool ShowFpd::Locations::Location::has_data() const
 
 bool ShowFpd::Locations::Location::has_operation() const
 {
-    for (std::size_t index=0; index<fpd.size(); index++)
+    for (std::size_t index=0; index<fpd.len(); index++)
     {
         if(fpd[index]->has_operation())
             return true;
@@ -347,7 +354,8 @@ std::string ShowFpd::Locations::Location::get_absolute_path() const
 std::string ShowFpd::Locations::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -367,7 +375,7 @@ std::shared_ptr<Entity> ShowFpd::Locations::Location::get_child_by_name(const st
     {
         auto c = std::make_shared<ShowFpd::Locations::Location::Fpd>();
         c->parent = this;
-        fpd.push_back(c);
+        fpd.append(c);
         return c;
     }
 
@@ -379,7 +387,7 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fpd)
+    for (auto c : fpd.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -418,9 +426,11 @@ bool ShowFpd::Locations::Location::has_leaf_or_child_of_name(const std::string &
 ShowFpd::Locations::Location::Fpd::Fpd()
     :
     fpd_name{YType::str, "fpd-name"}
+        ,
+    fpd_info_detaile(this, {})
 {
 
-    yang_name = "fpd"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fpd"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ShowFpd::Locations::Location::Fpd::~Fpd()
@@ -429,7 +439,8 @@ ShowFpd::Locations::Location::Fpd::~Fpd()
 
 bool ShowFpd::Locations::Location::Fpd::has_data() const
 {
-    for (std::size_t index=0; index<fpd_info_detaile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fpd_info_detaile.len(); index++)
     {
         if(fpd_info_detaile[index]->has_data())
             return true;
@@ -439,7 +450,7 @@ bool ShowFpd::Locations::Location::Fpd::has_data() const
 
 bool ShowFpd::Locations::Location::Fpd::has_operation() const
 {
-    for (std::size_t index=0; index<fpd_info_detaile.size(); index++)
+    for (std::size_t index=0; index<fpd_info_detaile.len(); index++)
     {
         if(fpd_info_detaile[index]->has_operation())
             return true;
@@ -451,7 +462,8 @@ bool ShowFpd::Locations::Location::Fpd::has_operation() const
 std::string ShowFpd::Locations::Location::Fpd::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fpd" <<"[fpd-name='" <<fpd_name <<"']";
+    path_buffer << "fpd";
+    ADD_KEY_TOKEN(fpd_name, "fpd-name");
     return path_buffer.str();
 }
 
@@ -471,7 +483,7 @@ std::shared_ptr<Entity> ShowFpd::Locations::Location::Fpd::get_child_by_name(con
     {
         auto c = std::make_shared<ShowFpd::Locations::Location::Fpd::FpdInfoDetaile>();
         c->parent = this;
-        fpd_info_detaile.push_back(c);
+        fpd_info_detaile.append(c);
         return c;
     }
 
@@ -483,7 +495,7 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Fpd
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fpd_info_detaile)
+    for (auto c : fpd_info_detaile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -531,7 +543,7 @@ ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::FpdInfoDetaile()
     programd_version{YType::str, "programd-version"}
 {
 
-    yang_name = "fpd-info-detaile"; yang_parent_name = "fpd"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fpd-info-detaile"; yang_parent_name = "fpd"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::~FpdInfoDetaile()
@@ -540,6 +552,7 @@ ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::~FpdInfoDetaile()
 
 bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| card_name.is_set
 	|| fpd_name.is_set
@@ -695,9 +708,11 @@ bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_leaf_or_child_of_nam
 }
 
 ShowFpd::HwModuleFpd::HwModuleFpd()
+    :
+    fpd_info_detaile(this, {})
 {
 
-    yang_name = "hw-module-fpd"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hw-module-fpd"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowFpd::HwModuleFpd::~HwModuleFpd()
@@ -706,7 +721,8 @@ ShowFpd::HwModuleFpd::~HwModuleFpd()
 
 bool ShowFpd::HwModuleFpd::has_data() const
 {
-    for (std::size_t index=0; index<fpd_info_detaile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fpd_info_detaile.len(); index++)
     {
         if(fpd_info_detaile[index]->has_data())
             return true;
@@ -716,7 +732,7 @@ bool ShowFpd::HwModuleFpd::has_data() const
 
 bool ShowFpd::HwModuleFpd::has_operation() const
 {
-    for (std::size_t index=0; index<fpd_info_detaile.size(); index++)
+    for (std::size_t index=0; index<fpd_info_detaile.len(); index++)
     {
         if(fpd_info_detaile[index]->has_operation())
             return true;
@@ -753,7 +769,7 @@ std::shared_ptr<Entity> ShowFpd::HwModuleFpd::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<ShowFpd::HwModuleFpd::FpdInfoDetaile>();
         c->parent = this;
-        fpd_info_detaile.push_back(c);
+        fpd_info_detaile.append(c);
         return c;
     }
 
@@ -765,7 +781,7 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HwModuleFpd::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fpd_info_detaile)
+    for (auto c : fpd_info_detaile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -803,7 +819,7 @@ ShowFpd::HwModuleFpd::FpdInfoDetaile::FpdInfoDetaile()
     programd_version{YType::str, "programd-version"}
 {
 
-    yang_name = "fpd-info-detaile"; yang_parent_name = "hw-module-fpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fpd-info-detaile"; yang_parent_name = "hw-module-fpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowFpd::HwModuleFpd::FpdInfoDetaile::~FpdInfoDetaile()
@@ -812,6 +828,7 @@ ShowFpd::HwModuleFpd::FpdInfoDetaile::~FpdInfoDetaile()
 
 bool ShowFpd::HwModuleFpd::FpdInfoDetaile::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| card_name.is_set
 	|| fpd_name.is_set
@@ -974,9 +991,11 @@ bool ShowFpd::HwModuleFpd::FpdInfoDetaile::has_leaf_or_child_of_name(const std::
 }
 
 ShowFpd::HelpLocations::HelpLocations()
+    :
+    help_location(this, {"location_name"})
 {
 
-    yang_name = "help-locations"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "help-locations"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowFpd::HelpLocations::~HelpLocations()
@@ -985,7 +1004,8 @@ ShowFpd::HelpLocations::~HelpLocations()
 
 bool ShowFpd::HelpLocations::has_data() const
 {
-    for (std::size_t index=0; index<help_location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<help_location.len(); index++)
     {
         if(help_location[index]->has_data())
             return true;
@@ -995,7 +1015,7 @@ bool ShowFpd::HelpLocations::has_data() const
 
 bool ShowFpd::HelpLocations::has_operation() const
 {
-    for (std::size_t index=0; index<help_location.size(); index++)
+    for (std::size_t index=0; index<help_location.len(); index++)
     {
         if(help_location[index]->has_operation())
             return true;
@@ -1032,7 +1052,7 @@ std::shared_ptr<Entity> ShowFpd::HelpLocations::get_child_by_name(const std::str
     {
         auto c = std::make_shared<ShowFpd::HelpLocations::HelpLocation>();
         c->parent = this;
-        help_location.push_back(c);
+        help_location.append(c);
         return c;
     }
 
@@ -1044,7 +1064,7 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : help_location)
+    for (auto c : help_location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1073,12 +1093,12 @@ bool ShowFpd::HelpLocations::has_leaf_or_child_of_name(const std::string & name)
 ShowFpd::HelpLocations::HelpLocation::HelpLocation()
     :
     location_name{YType::str, "location-name"}
-    	,
+        ,
     help_fpd(std::make_shared<ShowFpd::HelpLocations::HelpLocation::HelpFpd>())
 {
     help_fpd->parent = this;
 
-    yang_name = "help-location"; yang_parent_name = "help-locations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "help-location"; yang_parent_name = "help-locations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowFpd::HelpLocations::HelpLocation::~HelpLocation()
@@ -1087,6 +1107,7 @@ ShowFpd::HelpLocations::HelpLocation::~HelpLocation()
 
 bool ShowFpd::HelpLocations::HelpLocation::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set
 	|| (help_fpd !=  nullptr && help_fpd->has_data());
 }
@@ -1108,7 +1129,8 @@ std::string ShowFpd::HelpLocations::HelpLocation::get_absolute_path() const
 std::string ShowFpd::HelpLocations::HelpLocation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "help-location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "help-location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -1174,9 +1196,11 @@ bool ShowFpd::HelpLocations::HelpLocation::has_leaf_or_child_of_name(const std::
 }
 
 ShowFpd::HelpLocations::HelpLocation::HelpFpd::HelpFpd()
+    :
+    fpd_name(this, {})
 {
 
-    yang_name = "help-fpd"; yang_parent_name = "help-location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "help-fpd"; yang_parent_name = "help-location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ShowFpd::HelpLocations::HelpLocation::HelpFpd::~HelpFpd()
@@ -1185,7 +1209,8 @@ ShowFpd::HelpLocations::HelpLocation::HelpFpd::~HelpFpd()
 
 bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::has_data() const
 {
-    for (std::size_t index=0; index<fpd_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fpd_name.len(); index++)
     {
         if(fpd_name[index]->has_data())
             return true;
@@ -1195,7 +1220,7 @@ bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::has_data() const
 
 bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::has_operation() const
 {
-    for (std::size_t index=0; index<fpd_name.size(); index++)
+    for (std::size_t index=0; index<fpd_name.len(); index++)
     {
         if(fpd_name[index]->has_operation())
             return true;
@@ -1225,7 +1250,7 @@ std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_child
     {
         auto c = std::make_shared<ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName>();
         c->parent = this;
-        fpd_name.push_back(c);
+        fpd_name.append(c);
         return c;
     }
 
@@ -1237,7 +1262,7 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fpd_name)
+    for (auto c : fpd_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1269,7 +1294,7 @@ ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::FpdName()
     fpd_name{YType::str, "fpd-name"}
 {
 
-    yang_name = "fpd-name"; yang_parent_name = "help-fpd"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fpd-name"; yang_parent_name = "help-fpd"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::~FpdName()
@@ -1278,6 +1303,7 @@ ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::~FpdName()
 
 bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| fpd_name.is_set;
 }
@@ -1355,9 +1381,11 @@ bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::has_leaf_or_child_o
 }
 
 ShowFpd::HwModuleFpdHelpFpd::HwModuleFpdHelpFpd()
+    :
+    fpd_name(this, {})
 {
 
-    yang_name = "hw-module-fpd-help-fpd"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hw-module-fpd-help-fpd"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowFpd::HwModuleFpdHelpFpd::~HwModuleFpdHelpFpd()
@@ -1366,7 +1394,8 @@ ShowFpd::HwModuleFpdHelpFpd::~HwModuleFpdHelpFpd()
 
 bool ShowFpd::HwModuleFpdHelpFpd::has_data() const
 {
-    for (std::size_t index=0; index<fpd_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fpd_name.len(); index++)
     {
         if(fpd_name[index]->has_data())
             return true;
@@ -1376,7 +1405,7 @@ bool ShowFpd::HwModuleFpdHelpFpd::has_data() const
 
 bool ShowFpd::HwModuleFpdHelpFpd::has_operation() const
 {
-    for (std::size_t index=0; index<fpd_name.size(); index++)
+    for (std::size_t index=0; index<fpd_name.len(); index++)
     {
         if(fpd_name[index]->has_operation())
             return true;
@@ -1413,7 +1442,7 @@ std::shared_ptr<Entity> ShowFpd::HwModuleFpdHelpFpd::get_child_by_name(const std
     {
         auto c = std::make_shared<ShowFpd::HwModuleFpdHelpFpd::FpdName>();
         c->parent = this;
-        fpd_name.push_back(c);
+        fpd_name.append(c);
         return c;
     }
 
@@ -1425,7 +1454,7 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HwModuleFpdHelpFpd::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fpd_name)
+    for (auto c : fpd_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1457,7 +1486,7 @@ ShowFpd::HwModuleFpdHelpFpd::FpdName::FpdName()
     fpd_name{YType::str, "fpd-name"}
 {
 
-    yang_name = "fpd-name"; yang_parent_name = "hw-module-fpd-help-fpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fpd-name"; yang_parent_name = "hw-module-fpd-help-fpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowFpd::HwModuleFpdHelpFpd::FpdName::~FpdName()
@@ -1466,6 +1495,7 @@ ShowFpd::HwModuleFpdHelpFpd::FpdName::~FpdName()
 
 bool ShowFpd::HwModuleFpdHelpFpd::FpdName::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| fpd_name.is_set;
 }
@@ -1550,9 +1580,11 @@ bool ShowFpd::HwModuleFpdHelpFpd::FpdName::has_leaf_or_child_of_name(const std::
 }
 
 ShowFpd::Package::Package()
+    :
+    fpd_pkg_data(this, {})
 {
 
-    yang_name = "package"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "package"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowFpd::Package::~Package()
@@ -1561,7 +1593,8 @@ ShowFpd::Package::~Package()
 
 bool ShowFpd::Package::has_data() const
 {
-    for (std::size_t index=0; index<fpd_pkg_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fpd_pkg_data.len(); index++)
     {
         if(fpd_pkg_data[index]->has_data())
             return true;
@@ -1571,7 +1604,7 @@ bool ShowFpd::Package::has_data() const
 
 bool ShowFpd::Package::has_operation() const
 {
-    for (std::size_t index=0; index<fpd_pkg_data.size(); index++)
+    for (std::size_t index=0; index<fpd_pkg_data.len(); index++)
     {
         if(fpd_pkg_data[index]->has_operation())
             return true;
@@ -1608,7 +1641,7 @@ std::shared_ptr<Entity> ShowFpd::Package::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<ShowFpd::Package::FpdPkgData>();
         c->parent = this;
-        fpd_pkg_data.push_back(c);
+        fpd_pkg_data.append(c);
         return c;
     }
 
@@ -1620,7 +1653,7 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Package::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fpd_pkg_data)
+    for (auto c : fpd_pkg_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1656,7 +1689,7 @@ ShowFpd::Package::FpdPkgData::FpdPkgData()
     min_hw_ver{YType::str, "min-hw-ver"}
 {
 
-    yang_name = "fpd-pkg-data"; yang_parent_name = "package"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fpd-pkg-data"; yang_parent_name = "package"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowFpd::Package::FpdPkgData::~FpdPkgData()
@@ -1665,6 +1698,7 @@ ShowFpd::Package::FpdPkgData::~FpdPkgData()
 
 bool ShowFpd::Package::FpdPkgData::has_data() const
 {
+    if (is_presence_container) return true;
     return card_type.is_set
 	|| fpd_desc.is_set
 	|| upgrade_method.is_set
@@ -1801,9 +1835,11 @@ bool ShowFpd::Package::FpdPkgData::has_leaf_or_child_of_name(const std::string &
 }
 
 ShowFpd::LocationHelp::LocationHelp()
+    :
+    location_name(this, {})
 {
 
-    yang_name = "location-help"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location-help"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowFpd::LocationHelp::~LocationHelp()
@@ -1812,7 +1848,8 @@ ShowFpd::LocationHelp::~LocationHelp()
 
 bool ShowFpd::LocationHelp::has_data() const
 {
-    for (std::size_t index=0; index<location_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location_name.len(); index++)
     {
         if(location_name[index]->has_data())
             return true;
@@ -1822,7 +1859,7 @@ bool ShowFpd::LocationHelp::has_data() const
 
 bool ShowFpd::LocationHelp::has_operation() const
 {
-    for (std::size_t index=0; index<location_name.size(); index++)
+    for (std::size_t index=0; index<location_name.len(); index++)
     {
         if(location_name[index]->has_operation())
             return true;
@@ -1859,7 +1896,7 @@ std::shared_ptr<Entity> ShowFpd::LocationHelp::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<ShowFpd::LocationHelp::LocationName>();
         c->parent = this;
-        location_name.push_back(c);
+        location_name.append(c);
         return c;
     }
 
@@ -1871,7 +1908,7 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::LocationHelp::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location_name)
+    for (auto c : location_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1902,7 +1939,7 @@ ShowFpd::LocationHelp::LocationName::LocationName()
     location_name{YType::str, "location-name"}
 {
 
-    yang_name = "location-name"; yang_parent_name = "location-help"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location-name"; yang_parent_name = "location-help"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowFpd::LocationHelp::LocationName::~LocationName()
@@ -1911,6 +1948,7 @@ ShowFpd::LocationHelp::LocationName::~LocationName()
 
 bool ShowFpd::LocationHelp::LocationName::has_data() const
 {
+    if (is_presence_container) return true;
     return location_name.is_set;
 }
 

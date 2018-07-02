@@ -57,7 +57,7 @@ class CfmStatistics::CfmMeps : public ydk::Entity
 
         class CfmMep; //type: CfmStatistics::CfmMeps::CfmMep
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cfm_oper::CfmStatistics::CfmMeps::CfmMep> > cfm_mep;
+        ydk::YList cfm_mep;
         
 }; // CfmStatistics::CfmMeps
 

@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_man_ems_oper {
 Grpc::Grpc()
     :
     statistics(std::make_shared<Grpc::Statistics>())
-	,status(std::make_shared<Grpc::Status>())
+    , status(std::make_shared<Grpc::Status>())
 {
     statistics->parent = this;
     status->parent = this;
 
-    yang_name = "grpc"; yang_parent_name = "Cisco-IOS-XR-man-ems-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "grpc"; yang_parent_name = "Cisco-IOS-XR-man-ems-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Grpc::~Grpc()
@@ -28,6 +28,7 @@ Grpc::~Grpc()
 
 bool Grpc::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data())
 	|| (status !=  nullptr && status->has_data());
 }
@@ -160,7 +161,7 @@ Grpc::Statistics::Statistics()
     ct_action_json_res_sent{YType::uint64, "ct-action-json-res-sent"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "grpc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "grpc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Grpc::Statistics::~Statistics()
@@ -169,6 +170,7 @@ Grpc::Statistics::~Statistics()
 
 bool Grpc::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return ct_show_cmd_txt_req_recv.is_set
 	|| ct_show_cmd_txt_res_sent.is_set
 	|| ct_get_config_req_recv.is_set
@@ -511,7 +513,7 @@ Grpc::Status::Status()
     max_req_total{YType::uint32, "max-req-total"}
 {
 
-    yang_name = "status"; yang_parent_name = "grpc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "status"; yang_parent_name = "grpc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Grpc::Status::~Status()
@@ -520,6 +522,7 @@ Grpc::Status::~Status()
 
 bool Grpc::Status::has_data() const
 {
+    if (is_presence_container) return true;
     return transport.is_set
 	|| address_family.is_set
 	|| tls.is_set

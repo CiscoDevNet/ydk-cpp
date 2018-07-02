@@ -117,10 +117,11 @@ static ydk::EncodingFormat get_real_encoding(EncodingFormat encoding)
 {
     switch(encoding)
     {
-        case XML:
-            return ydk::EncodingFormat::XML;
         case JSON:
             return ydk::EncodingFormat::JSON;
+        case XML:
+        default:
+            return ydk::EncodingFormat::XML;
     }
 }
 
@@ -128,10 +129,11 @@ static ydk::Protocol get_real_protocol(Protocol protocol)
 {
     switch(protocol)
     {
-        case Netconf:
-            return ydk::Protocol::netconf;
         case Restconf:
             return ydk::Protocol::restconf;
+        case Netconf:
+        default:
+            return ydk::Protocol::netconf;
     }
 }
 
@@ -187,16 +189,16 @@ static void handle_error(YDKState* state)
         state->error_type = YDK_MODEL_ERROR;
         handle_error_message(state, e.what());
     }
-    catch (const ydk::YError & e) {
-        state->error_type = YDK_ERROR;
+    catch(const ydk::path::YCodecError & e) {
+        state->error_type = YDK_CODEC_ERROR;
         handle_error_message(state, e.what());
     }
     catch(const ydk::path::YCoreError & e) {
         state->error_type = YDK_CORE_ERROR;
         handle_error_message(state, e.what());
     }
-    catch(const ydk::path::YCodecError & e) {
-        state->error_type = YDK_CODEC_ERROR;
+    catch (const ydk::YError & e) {
+        state->error_type = YDK_ERROR;
         handle_error_message(state, e.what());
     }
 }
@@ -434,6 +436,27 @@ void NetconfServiceProviderFree(ServiceProvider provider)
     {
         delete real_provider;
     }
+}
+
+int NetconfServiceProviderGetNumCapabilities(ServiceProvider provider)
+{
+    ydk::NetconfServiceProvider * real_provider = static_cast<ydk::NetconfServiceProvider*>(provider);
+    if(real_provider != NULL)
+    {
+        return real_provider->get_capabilities().size();
+    }
+    return 0;
+}
+
+const char* NetconfServiceProviderGetCapabilityByIndex(ServiceProvider provider, int index)
+{
+    ydk::NetconfServiceProvider * real_provider = static_cast<ydk::NetconfServiceProvider*>(provider);
+    if(real_provider != NULL)
+    {
+        std::vector<std::string> capabilites = real_provider->get_capabilities();
+        return string_to_array(capabilites[index]);
+    }
+    return "";
 }
 
 ServiceProvider RestconfServiceProviderInitWithRepo(
@@ -869,6 +892,7 @@ LogLevel GetLoggingLevel(void)
 
         case spdlog::level::critical:
         case spdlog::level::err:
+        default:
             return ERROR;
     }
 }

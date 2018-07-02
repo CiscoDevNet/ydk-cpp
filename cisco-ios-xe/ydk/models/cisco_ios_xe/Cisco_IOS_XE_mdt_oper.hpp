@@ -36,8 +36,8 @@ class MdtOperData : public ydk::Entity
         class MdtConnections; //type: MdtOperData::MdtConnections
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_oper::MdtOperData::MdtStreams> mdt_streams;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_oper::MdtOperData::MdtSubscriptions> > mdt_subscriptions;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_oper::MdtOperData::MdtConnections> > mdt_connections;
+        ydk::YList mdt_subscriptions;
+        ydk::YList mdt_connections;
         
 }; // MdtOperData
 
@@ -92,7 +92,7 @@ class MdtOperData::MdtSubscriptions : public ydk::Entity
         class MdtReceivers; //type: MdtOperData::MdtSubscriptions::MdtReceivers
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_oper::MdtOperData::MdtSubscriptions::Base> base;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_oper::MdtOperData::MdtSubscriptions::MdtReceivers> > mdt_receivers;
+        ydk::YList mdt_receivers;
         
 }; // MdtOperData::MdtSubscriptions
 
@@ -181,7 +181,7 @@ class MdtOperData::MdtConnections : public ydk::Entity
         ydk::YLeaf security_profile; //type: string
         class MdtSubConStats; //type: MdtOperData::MdtConnections::MdtSubConStats
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_oper::MdtOperData::MdtConnections::MdtSubConStats> > mdt_sub_con_stats;
+        ydk::YList mdt_sub_con_stats;
         
 }; // MdtOperData::MdtConnections
 
@@ -208,14 +208,6 @@ class MdtOperData::MdtConnections::MdtSubConStats : public ydk::Entity
 
 }; // MdtOperData::MdtConnections::MdtSubConStats
 
-class MdtSubType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf sub_type_dynamic;
-        static const ydk::Enum::YLeaf sub_type_static;
-
-};
-
 class MdtSubState : public ydk::Enum
 {
     public:
@@ -226,16 +218,6 @@ class MdtSubState : public ydk::Enum
 
 };
 
-class MdtReceiverState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rcvr_state_invalid;
-        static const ydk::Enum::YLeaf rcvr_state_disconnected;
-        static const ydk::Enum::YLeaf rcvr_state_connecting;
-        static const ydk::Enum::YLeaf rcvr_state_connected;
-
-};
-
 class MdtConState : public ydk::Enum
 {
     public:
@@ -243,6 +225,24 @@ class MdtConState : public ydk::Enum
         static const ydk::Enum::YLeaf con_state_connecting;
         static const ydk::Enum::YLeaf con_state_pending;
         static const ydk::Enum::YLeaf con_state_disconnecting;
+
+};
+
+class MdtSubType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf sub_type_dynamic;
+        static const ydk::Enum::YLeaf sub_type_static;
+
+};
+
+class MdtReceiverState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rcvr_state_invalid;
+        static const ydk::Enum::YLeaf rcvr_state_disconnected;
+        static const ydk::Enum::YLeaf rcvr_state_connecting;
+        static const ydk::Enum::YLeaf rcvr_state_connected;
 
 };
 

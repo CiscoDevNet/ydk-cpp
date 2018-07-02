@@ -18,14 +18,14 @@ SessionRedundancy::SessionRedundancy()
     source_interface{YType::str, "source-interface"},
     preferred_role{YType::enumeration, "preferred-role"},
     hold_timer{YType::uint32, "hold-timer"}
-    	,
+        ,
     groups(std::make_shared<SessionRedundancy::Groups>())
-	,revertive_timer(std::make_shared<SessionRedundancy::RevertiveTimer>())
+    , revertive_timer(std::make_shared<SessionRedundancy::RevertiveTimer>())
 {
     groups->parent = this;
     revertive_timer->parent = this;
 
-    yang_name = "session-redundancy"; yang_parent_name = "Cisco-IOS-XR-infra-serg-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "session-redundancy"; yang_parent_name = "Cisco-IOS-XR-infra-serg-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SessionRedundancy::~SessionRedundancy()
@@ -34,6 +34,7 @@ SessionRedundancy::~SessionRedundancy()
 
 bool SessionRedundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return redundancy_disable.is_set
 	|| enable.is_set
 	|| source_interface.is_set
@@ -207,9 +208,11 @@ bool SessionRedundancy::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 SessionRedundancy::Groups::Groups()
+    :
+    group(this, {"group_id"})
 {
 
-    yang_name = "groups"; yang_parent_name = "session-redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "session-redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SessionRedundancy::Groups::~Groups()
@@ -218,7 +221,8 @@ SessionRedundancy::Groups::~Groups()
 
 bool SessionRedundancy::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -228,7 +232,7 @@ bool SessionRedundancy::Groups::has_data() const
 
 bool SessionRedundancy::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -265,7 +269,7 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::get_child_by_name(const std::
     {
         auto c = std::make_shared<SessionRedundancy::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -277,7 +281,7 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -314,16 +318,16 @@ SessionRedundancy::Groups::Group::Group()
     access_tracking_object{YType::str, "access-tracking-object"},
     preferred_role{YType::enumeration, "preferred-role"},
     hold_timer{YType::uint32, "hold-timer"}
-    	,
+        ,
     peer(std::make_shared<SessionRedundancy::Groups::Group::Peer>())
-	,revertive_timer(std::make_shared<SessionRedundancy::Groups::Group::RevertiveTimer>())
-	,interface_list(std::make_shared<SessionRedundancy::Groups::Group::InterfaceList>())
+    , revertive_timer(std::make_shared<SessionRedundancy::Groups::Group::RevertiveTimer>())
+    , interface_list(std::make_shared<SessionRedundancy::Groups::Group::InterfaceList>())
 {
     peer->parent = this;
     revertive_timer->parent = this;
     interface_list->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SessionRedundancy::Groups::Group::~Group()
@@ -332,6 +336,7 @@ SessionRedundancy::Groups::Group::~Group()
 
 bool SessionRedundancy::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set
 	|| core_tracking_object.is_set
 	|| disable_tracking_object.is_set
@@ -373,7 +378,8 @@ std::string SessionRedundancy::Groups::Group::get_absolute_path() const
 std::string SessionRedundancy::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-id='" <<group_id <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(group_id, "group-id");
     return path_buffer.str();
 }
 
@@ -560,7 +566,7 @@ SessionRedundancy::Groups::Group::Peer::Peer()
 {
     ipaddress->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SessionRedundancy::Groups::Group::Peer::~Peer()
@@ -569,6 +575,7 @@ SessionRedundancy::Groups::Group::Peer::~Peer()
 
 bool SessionRedundancy::Groups::Group::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipaddress !=  nullptr && ipaddress->has_data());
 }
 
@@ -641,7 +648,7 @@ SessionRedundancy::Groups::Group::Peer::Ipaddress::Ipaddress()
     prefix_string{YType::str, "prefix-string"}
 {
 
-    yang_name = "ipaddress"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipaddress"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SessionRedundancy::Groups::Group::Peer::Ipaddress::~Ipaddress()
@@ -650,6 +657,7 @@ SessionRedundancy::Groups::Group::Peer::Ipaddress::~Ipaddress()
 
 bool SessionRedundancy::Groups::Group::Peer::Ipaddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| prefix_string.is_set;
 }
@@ -732,7 +740,7 @@ SessionRedundancy::Groups::Group::RevertiveTimer::RevertiveTimer()
     value_{YType::uint32, "value"}
 {
 
-    yang_name = "revertive-timer"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "revertive-timer"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SessionRedundancy::Groups::Group::RevertiveTimer::~RevertiveTimer()
@@ -741,6 +749,7 @@ SessionRedundancy::Groups::Group::RevertiveTimer::~RevertiveTimer()
 
 bool SessionRedundancy::Groups::Group::RevertiveTimer::has_data() const
 {
+    if (is_presence_container) return true;
     return max_value.is_set
 	|| value_.is_set;
 }
@@ -820,14 +829,14 @@ bool SessionRedundancy::Groups::Group::RevertiveTimer::has_leaf_or_child_of_name
 SessionRedundancy::Groups::Group::InterfaceList::InterfaceList()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     interface_ranges(std::make_shared<SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges>())
-	,interfaces(std::make_shared<SessionRedundancy::Groups::Group::InterfaceList::Interfaces>())
+    , interfaces(std::make_shared<SessionRedundancy::Groups::Group::InterfaceList::Interfaces>())
 {
     interface_ranges->parent = this;
     interfaces->parent = this;
 
-    yang_name = "interface-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::~InterfaceList()
@@ -836,6 +845,7 @@ SessionRedundancy::Groups::Group::InterfaceList::~InterfaceList()
 
 bool SessionRedundancy::Groups::Group::InterfaceList::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (interface_ranges !=  nullptr && interface_ranges->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data());
@@ -932,9 +942,11 @@ bool SessionRedundancy::Groups::Group::InterfaceList::has_leaf_or_child_of_name(
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRanges()
+    :
+    interface_range(this, {"interface_name", "sub_interface_range_start", "sub_interface_range_end"})
 {
 
-    yang_name = "interface-ranges"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-ranges"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::~InterfaceRanges()
@@ -943,7 +955,8 @@ SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::~InterfaceRang
 
 bool SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_data() const
 {
-    for (std::size_t index=0; index<interface_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_range.len(); index++)
     {
         if(interface_range[index]->has_data())
             return true;
@@ -953,7 +966,7 @@ bool SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_data(
 
 bool SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_operation() const
 {
-    for (std::size_t index=0; index<interface_range.size(); index++)
+    for (std::size_t index=0; index<interface_range.len(); index++)
     {
         if(interface_range[index]->has_operation())
             return true;
@@ -983,7 +996,7 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::Interfa
     {
         auto c = std::make_shared<SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange>();
         c->parent = this;
-        interface_range.push_back(c);
+        interface_range.append(c);
         return c;
     }
 
@@ -995,7 +1008,7 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_range)
+    for (auto c : interface_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1030,7 +1043,7 @@ SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange
     interface_id_range_end{YType::uint32, "interface-id-range-end"}
 {
 
-    yang_name = "interface-range"; yang_parent_name = "interface-ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-range"; yang_parent_name = "interface-ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::~InterfaceRange()
@@ -1039,6 +1052,7 @@ SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange
 
 bool SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| sub_interface_range_start.is_set
 	|| sub_interface_range_end.is_set
@@ -1059,7 +1073,10 @@ bool SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::Interface
 std::string SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-range" <<"[interface-name='" <<interface_name <<"']" <<"[sub-interface-range-start='" <<sub_interface_range_start <<"']" <<"[sub-interface-range-end='" <<sub_interface_range_end <<"']";
+    path_buffer << "interface-range";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    ADD_KEY_TOKEN(sub_interface_range_start, "sub-interface-range-start");
+    ADD_KEY_TOKEN(sub_interface_range_end, "sub-interface-range-end");
     return path_buffer.str();
 }
 
@@ -1155,9 +1172,11 @@ bool SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::Interface
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::Interfaces::~Interfaces()
@@ -1166,7 +1185,8 @@ SessionRedundancy::Groups::Group::InterfaceList::Interfaces::~Interfaces()
 
 bool SessionRedundancy::Groups::Group::InterfaceList::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1176,7 +1196,7 @@ bool SessionRedundancy::Groups::Group::InterfaceList::Interfaces::has_data() con
 
 bool SessionRedundancy::Groups::Group::InterfaceList::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1206,7 +1226,7 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::Interfa
     {
         auto c = std::make_shared<SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1218,7 +1238,7 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1250,7 +1270,7 @@ SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::Interfac
     interface_id{YType::uint32, "interface-id"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::~Interface()
@@ -1259,6 +1279,7 @@ SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::~Interfa
 
 bool SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_id.is_set;
 }
@@ -1273,7 +1294,8 @@ bool SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has
 std::string SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1341,7 +1363,7 @@ SessionRedundancy::RevertiveTimer::RevertiveTimer()
     value_{YType::uint32, "value"}
 {
 
-    yang_name = "revertive-timer"; yang_parent_name = "session-redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "revertive-timer"; yang_parent_name = "session-redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SessionRedundancy::RevertiveTimer::~RevertiveTimer()
@@ -1350,6 +1372,7 @@ SessionRedundancy::RevertiveTimer::~RevertiveTimer()
 
 bool SessionRedundancy::RevertiveTimer::has_data() const
 {
+    if (is_presence_container) return true;
     return max_value.is_set
 	|| value_.is_set;
 }
@@ -1433,11 +1456,11 @@ bool SessionRedundancy::RevertiveTimer::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-const Enum::YLeaf SessionRedundancyGroupRole::master {1, "master"};
-const Enum::YLeaf SessionRedundancyGroupRole::slave {2, "slave"};
-
 const Enum::YLeaf SergAddrFamily::ipv4 {2, "ipv4"};
 const Enum::YLeaf SergAddrFamily::ipv6 {10, "ipv6"};
+
+const Enum::YLeaf SessionRedundancyGroupRole::master {1, "master"};
+const Enum::YLeaf SessionRedundancyGroupRole::slave {2, "slave"};
 
 
 }

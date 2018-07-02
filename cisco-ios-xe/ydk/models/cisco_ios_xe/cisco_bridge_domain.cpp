@@ -14,14 +14,14 @@ namespace cisco_bridge_domain {
 BridgeDomainConfig::BridgeDomainConfig()
     :
     global(std::make_shared<BridgeDomainConfig::Global>())
-	,bridge_groups(std::make_shared<BridgeDomainConfig::BridgeGroups>())
-	,bridge_domains(std::make_shared<BridgeDomainConfig::BridgeDomains>())
+    , bridge_groups(std::make_shared<BridgeDomainConfig::BridgeGroups>())
+    , bridge_domains(std::make_shared<BridgeDomainConfig::BridgeDomains>())
 {
     global->parent = this;
     bridge_groups->parent = this;
     bridge_domains->parent = this;
 
-    yang_name = "bridge-domain-config"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "bridge-domain-config"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 BridgeDomainConfig::~BridgeDomainConfig()
@@ -30,6 +30,7 @@ BridgeDomainConfig::~BridgeDomainConfig()
 
 bool BridgeDomainConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (global !=  nullptr && global->has_data())
 	|| (bridge_groups !=  nullptr && bridge_groups->has_data())
 	|| (bridge_domains !=  nullptr && bridge_domains->has_data());
@@ -157,12 +158,12 @@ BridgeDomainConfig::Global::Global()
     :
     bd_state_notification_enabled{YType::boolean, "bd-state-notification-enabled"},
     bd_state_notification_rate{YType::uint32, "bd-state-notification-rate"}
-    	,
+        ,
     pbb(std::make_shared<BridgeDomainConfig::Global::Pbb>())
 {
     pbb->parent = this;
 
-    yang_name = "global"; yang_parent_name = "bridge-domain-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "bridge-domain-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BridgeDomainConfig::Global::~Global()
@@ -171,6 +172,7 @@ BridgeDomainConfig::Global::~Global()
 
 bool BridgeDomainConfig::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return bd_state_notification_enabled.is_set
 	|| bd_state_notification_rate.is_set
 	|| (pbb !=  nullptr && pbb->has_data());
@@ -275,7 +277,7 @@ BridgeDomainConfig::Global::Pbb::Pbb()
     backbone_src_mac{YType::str, "backbone-src-mac"}
 {
 
-    yang_name = "pbb"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pbb"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BridgeDomainConfig::Global::Pbb::~Pbb()
@@ -284,6 +286,7 @@ BridgeDomainConfig::Global::Pbb::~Pbb()
 
 bool BridgeDomainConfig::Global::Pbb::has_data() const
 {
+    if (is_presence_container) return true;
     return backbone_src_mac.is_set;
 }
 
@@ -355,9 +358,11 @@ bool BridgeDomainConfig::Global::Pbb::has_leaf_or_child_of_name(const std::strin
 }
 
 BridgeDomainConfig::BridgeGroups::BridgeGroups()
+    :
+    bridge_group(this, {"name"})
 {
 
-    yang_name = "bridge-groups"; yang_parent_name = "bridge-domain-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bridge-groups"; yang_parent_name = "bridge-domain-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BridgeDomainConfig::BridgeGroups::~BridgeGroups()
@@ -366,7 +371,8 @@ BridgeDomainConfig::BridgeGroups::~BridgeGroups()
 
 bool BridgeDomainConfig::BridgeGroups::has_data() const
 {
-    for (std::size_t index=0; index<bridge_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bridge_group.len(); index++)
     {
         if(bridge_group[index]->has_data())
             return true;
@@ -376,7 +382,7 @@ bool BridgeDomainConfig::BridgeGroups::has_data() const
 
 bool BridgeDomainConfig::BridgeGroups::has_operation() const
 {
-    for (std::size_t index=0; index<bridge_group.size(); index++)
+    for (std::size_t index=0; index<bridge_group.len(); index++)
     {
         if(bridge_group[index]->has_operation())
             return true;
@@ -413,7 +419,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeGroups::get_child_by_name(cons
     {
         auto c = std::make_shared<BridgeDomainConfig::BridgeGroups::BridgeGroup>();
         c->parent = this;
-        bridge_group.push_back(c);
+        bridge_group.append(c);
         return c;
     }
 
@@ -425,7 +431,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeGroups:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bridge_group)
+    for (auto c : bridge_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -456,7 +462,7 @@ BridgeDomainConfig::BridgeGroups::BridgeGroup::BridgeGroup()
     name{YType::str, "name"}
 {
 
-    yang_name = "bridge-group"; yang_parent_name = "bridge-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bridge-group"; yang_parent_name = "bridge-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BridgeDomainConfig::BridgeGroups::BridgeGroup::~BridgeGroup()
@@ -465,6 +471,7 @@ BridgeDomainConfig::BridgeGroups::BridgeGroup::~BridgeGroup()
 
 bool BridgeDomainConfig::BridgeGroups::BridgeGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -484,7 +491,8 @@ std::string BridgeDomainConfig::BridgeGroups::BridgeGroup::get_absolute_path() c
 std::string BridgeDomainConfig::BridgeGroups::BridgeGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bridge-group" <<"[name='" <<name <<"']";
+    path_buffer << "bridge-group";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -536,9 +544,11 @@ bool BridgeDomainConfig::BridgeGroups::BridgeGroup::has_leaf_or_child_of_name(co
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomains()
+    :
+    bridge_domain(this, {"id"})
 {
 
-    yang_name = "bridge-domains"; yang_parent_name = "bridge-domain-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bridge-domains"; yang_parent_name = "bridge-domain-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BridgeDomainConfig::BridgeDomains::~BridgeDomains()
@@ -547,7 +557,8 @@ BridgeDomainConfig::BridgeDomains::~BridgeDomains()
 
 bool BridgeDomainConfig::BridgeDomains::has_data() const
 {
-    for (std::size_t index=0; index<bridge_domain.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bridge_domain.len(); index++)
     {
         if(bridge_domain[index]->has_data())
             return true;
@@ -557,7 +568,7 @@ bool BridgeDomainConfig::BridgeDomains::has_data() const
 
 bool BridgeDomainConfig::BridgeDomains::has_operation() const
 {
-    for (std::size_t index=0; index<bridge_domain.size(); index++)
+    for (std::size_t index=0; index<bridge_domain.len(); index++)
     {
         if(bridge_domain[index]->has_operation())
             return true;
@@ -594,7 +605,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::get_child_by_name(con
     {
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain>();
         c->parent = this;
-        bridge_domain.push_back(c);
+        bridge_domain.append(c);
         return c;
     }
 
@@ -606,7 +617,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bridge_domain)
+    for (auto c : bridge_domain.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -640,15 +651,15 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::BridgeDomain()
     bd_status_change_notification{YType::boolean, "bd-status-change-notification"},
     mtu{YType::uint16, "mtu"},
     flooding_mode{YType::enumeration, "flooding-mode"}
-    	,
+        ,
     members(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members>())
-	,mac(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac>())
-	,dynamic_arp_inspection(nullptr) // presence node
-	,ip_source_guard(nullptr) // presence node
-	,storm_control(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl>())
-	,igmp_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping>())
-	,mld_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping>())
-	,dhcp_ipv4_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping>())
+    , mac(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac>())
+    , dynamic_arp_inspection(nullptr) // presence node
+    , ip_source_guard(nullptr) // presence node
+    , storm_control(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl>())
+    , igmp_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping>())
+    , mld_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping>())
+    , dhcp_ipv4_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping>())
 {
     members->parent = this;
     mac->parent = this;
@@ -657,7 +668,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::BridgeDomain()
     mld_snooping->parent = this;
     dhcp_ipv4_snooping->parent = this;
 
-    yang_name = "bridge-domain"; yang_parent_name = "bridge-domains"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bridge-domain"; yang_parent_name = "bridge-domains"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::~BridgeDomain()
@@ -666,6 +677,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::~BridgeDomain()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| bridge_group.is_set
 	|| enabled.is_set
@@ -711,7 +723,8 @@ std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::get_absolute_path()
 std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bridge-domain" <<"[id='" <<id <<"']";
+    path_buffer << "bridge-domain";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -931,11 +944,13 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::has_leaf_or_child_of_name(
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::Members()
     :
-    access_pw_member(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember>())
+    ac_member(this, {"interface"})
+    , vfi_member(this, {"interface"})
+    , access_pw_member(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember>())
 {
     access_pw_member->parent = this;
 
-    yang_name = "members"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "members"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::~Members()
@@ -944,12 +959,13 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::~Members()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::has_data() const
 {
-    for (std::size_t index=0; index<ac_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ac_member.len(); index++)
     {
         if(ac_member[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<vfi_member.size(); index++)
+    for (std::size_t index=0; index<vfi_member.len(); index++)
     {
         if(vfi_member[index]->has_data())
             return true;
@@ -959,12 +975,12 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::has_data() const
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::has_operation() const
 {
-    for (std::size_t index=0; index<ac_member.size(); index++)
+    for (std::size_t index=0; index<ac_member.len(); index++)
     {
         if(ac_member[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<vfi_member.size(); index++)
+    for (std::size_t index=0; index<vfi_member.len(); index++)
     {
         if(vfi_member[index]->has_operation())
             return true;
@@ -995,7 +1011,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
     {
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember>();
         c->parent = this;
-        ac_member.push_back(c);
+        ac_member.append(c);
         return c;
     }
 
@@ -1003,7 +1019,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
     {
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember>();
         c->parent = this;
-        vfi_member.push_back(c);
+        vfi_member.append(c);
         return c;
     }
 
@@ -1024,7 +1040,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ac_member)
+    for (auto c : ac_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1033,7 +1049,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains
     }
 
     count = 0;
-    for (auto const & c : vfi_member)
+    for (auto c : vfi_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1067,16 +1083,16 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::has_leaf_or_child
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::AcMember()
     :
     interface{YType::str, "interface"}
-    	,
+        ,
     split_horizon_group(nullptr) // presence node
-	,mac(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac>())
-	,igmp_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping>())
-	,mld_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping>())
-	,dhcp_ipv4_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping>())
-	,flooding(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding>())
-	,storm_control(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl>())
-	,dynamic_arp_inspection(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection>())
-	,ip_source_guard(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard>())
+    , mac(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac>())
+    , igmp_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping>())
+    , mld_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping>())
+    , dhcp_ipv4_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping>())
+    , flooding(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding>())
+    , storm_control(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl>())
+    , dynamic_arp_inspection(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection>())
+    , ip_source_guard(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard>())
 {
     mac->parent = this;
     igmp_snooping->parent = this;
@@ -1087,7 +1103,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::AcMember()
     dynamic_arp_inspection->parent = this;
     ip_source_guard->parent = this;
 
-    yang_name = "ac-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ac-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::~AcMember()
@@ -1096,6 +1112,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::~AcMember()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| (split_horizon_group !=  nullptr && split_horizon_group->has_data())
 	|| (mac !=  nullptr && mac->has_data())
@@ -1126,7 +1143,8 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::has_ope
 std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ac-member" <<"[interface='" <<interface <<"']";
+    path_buffer << "ac-member";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -1308,7 +1326,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizon
     id{YType::uint16, "id"}
 {
 
-    yang_name = "split-horizon-group"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "split-horizon-group"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::~SplitHorizonGroup()
@@ -1317,6 +1335,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizon
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set;
 }
 
@@ -1383,18 +1402,18 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHo
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Mac()
     :
     learning_enabled{YType::boolean, "learning-enabled"}
-    	,
+        ,
     limit(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit>())
-	,aging(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging>())
-	,port_down(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown>())
-	,secure(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure>())
+    , aging(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging>())
+    , port_down(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown>())
+    , secure(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure>())
 {
     limit->parent = this;
     aging->parent = this;
     port_down->parent = this;
     secure->parent = this;
 
-    yang_name = "mac"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::~Mac()
@@ -1403,6 +1422,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::~Mac()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::has_data() const
 {
+    if (is_presence_container) return true;
     return learning_enabled.is_set
 	|| (limit !=  nullptr && limit->has_data())
 	|| (aging !=  nullptr && aging->has_data())
@@ -1537,7 +1557,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit::
     notification{YType::identityref, "notification"}
 {
 
-    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit::~Limit()
@@ -1546,6 +1566,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit::
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum.is_set
 	|| action.is_set
 	|| notification.is_set;
@@ -1641,7 +1662,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "aging"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aging"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::~Aging()
@@ -1650,6 +1671,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::has_data() const
 {
+    if (is_presence_container) return true;
     return time.is_set
 	|| type.is_set;
 }
@@ -1731,7 +1753,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDow
     flush{YType::boolean, "flush"}
 {
 
-    yang_name = "port-down"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-down"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown::~PortDown()
@@ -1740,6 +1762,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDow
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown::has_data() const
 {
+    if (is_presence_container) return true;
     return flush.is_set;
 }
 
@@ -1810,7 +1833,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure:
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "secure"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secure"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure::~Secure()
@@ -1819,6 +1842,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure:
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure::has_data() const
 {
+    if (is_presence_container) return true;
     return action.is_set
 	|| logging.is_set
 	|| enabled.is_set;
@@ -1913,7 +1937,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "igmp-snooping"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igmp-snooping"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::~IgmpSnooping()
@@ -1922,6 +1946,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -1990,7 +2015,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping:
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "mld-snooping"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mld-snooping"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping::~MldSnooping()
@@ -1999,6 +2024,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping:
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -2067,7 +2093,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snoo
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "dhcp-ipv4-snooping"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-ipv4-snooping"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::~DhcpIpv4Snooping()
@@ -2076,6 +2102,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snoo
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -2145,7 +2172,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::Fl
     disabled_unknown_unicast{YType::empty, "disabled-unknown-unicast"}
 {
 
-    yang_name = "flooding"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooding"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::~Flooding()
@@ -2154,6 +2181,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::~F
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::has_data() const
 {
+    if (is_presence_container) return true;
     return disabled.is_set
 	|| disabled_unknown_unicast.is_set;
 }
@@ -2233,9 +2261,11 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Floodin
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::StormControl()
     :
     action{YType::identityref, "action"}
+        ,
+    thresholds(this, {"traffic_class"})
 {
 
-    yang_name = "storm-control"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storm-control"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::~StormControl()
@@ -2244,7 +2274,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::has_data() const
 {
-    for (std::size_t index=0; index<thresholds.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<thresholds.len(); index++)
     {
         if(thresholds[index]->has_data())
             return true;
@@ -2254,7 +2285,7 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormCo
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::has_operation() const
 {
-    for (std::size_t index=0; index<thresholds.size(); index++)
+    for (std::size_t index=0; index<thresholds.len(); index++)
     {
         if(thresholds[index]->has_operation())
             return true;
@@ -2286,7 +2317,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
     {
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds>();
         c->parent = this;
-        thresholds.push_back(c);
+        thresholds.append(c);
         return c;
     }
 
@@ -2298,7 +2329,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : thresholds)
+    for (auto c : thresholds.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2341,7 +2372,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "thresholds"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "thresholds"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds::~Thresholds()
@@ -2350,6 +2381,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_class.is_set
 	|| value_.is_set
 	|| unit.is_set;
@@ -2366,7 +2398,8 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormCo
 std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "thresholds" <<"[traffic-class='" <<traffic_class <<"']";
+    path_buffer << "thresholds";
+    ADD_KEY_TOKEN(traffic_class, "traffic-class");
     return path_buffer.str();
 }
 
@@ -2443,11 +2476,11 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpIn
     :
     logging{YType::boolean, "logging"},
     enable{YType::boolean, "enable"}
-    	,
+        ,
     address_validation(nullptr) // presence node
 {
 
-    yang_name = "dynamic-arp-inspection"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dynamic-arp-inspection"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::~DynamicArpInspection()
@@ -2456,6 +2489,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpIn
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::has_data() const
 {
+    if (is_presence_container) return true;
     return logging.is_set
 	|| enable.is_set
 	|| (address_validation !=  nullptr && address_validation->has_data());
@@ -2555,7 +2589,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpIn
     ipv4{YType::empty, "ipv4"}
 {
 
-    yang_name = "address-validation"; yang_parent_name = "dynamic-arp-inspection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-validation"; yang_parent_name = "dynamic-arp-inspection"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::~AddressValidation()
@@ -2564,6 +2598,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpIn
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::has_data() const
 {
+    if (is_presence_container) return true;
     return dst_mac.is_set
 	|| src_mac.is_set
 	|| ipv4.is_set;
@@ -2659,7 +2694,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuar
     enable{YType::boolean, "enable"}
 {
 
-    yang_name = "ip-source-guard"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-source-guard"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::~IpSourceGuard()
@@ -2668,6 +2703,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuar
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return logging.is_set
 	|| enable.is_set;
 }
@@ -2749,7 +2785,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::VfiMember()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "vfi-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vfi-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::~VfiMember()
@@ -2758,6 +2794,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::~VfiMember(
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -2770,7 +2807,8 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::has_op
 std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vfi-member" <<"[interface='" <<interface <<"']";
+    path_buffer << "vfi-member";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -2822,9 +2860,12 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::has_le
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwMember()
+    :
+    access_pw_if_member(this, {"interface"})
+    , pw_neighbor_spec(this, {"neighbor_ip_address", "vc_id"})
 {
 
-    yang_name = "access-pw-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-pw-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::~AccessPwMember()
@@ -2833,12 +2874,13 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::~Acces
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::has_data() const
 {
-    for (std::size_t index=0; index<access_pw_if_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_pw_if_member.len(); index++)
     {
         if(access_pw_if_member[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pw_neighbor_spec.size(); index++)
+    for (std::size_t index=0; index<pw_neighbor_spec.len(); index++)
     {
         if(pw_neighbor_spec[index]->has_data())
             return true;
@@ -2848,12 +2890,12 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::h
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::has_operation() const
 {
-    for (std::size_t index=0; index<access_pw_if_member.size(); index++)
+    for (std::size_t index=0; index<access_pw_if_member.len(); index++)
     {
         if(access_pw_if_member[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pw_neighbor_spec.size(); index++)
+    for (std::size_t index=0; index<pw_neighbor_spec.len(); index++)
     {
         if(pw_neighbor_spec[index]->has_operation())
             return true;
@@ -2883,7 +2925,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
     {
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember>();
         c->parent = this;
-        access_pw_if_member.push_back(c);
+        access_pw_if_member.append(c);
         return c;
     }
 
@@ -2891,7 +2933,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
     {
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec>();
         c->parent = this;
-        pw_neighbor_spec.push_back(c);
+        pw_neighbor_spec.append(c);
         return c;
     }
 
@@ -2903,7 +2945,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access_pw_if_member)
+    for (auto c : access_pw_if_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2912,7 +2954,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains
     }
 
     count = 0;
-    for (auto const & c : pw_neighbor_spec)
+    for (auto c : pw_neighbor_spec.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2943,7 +2985,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::Access
     interface{YType::str, "interface"}
 {
 
-    yang_name = "access-pw-if-member"; yang_parent_name = "access-pw-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-pw-if-member"; yang_parent_name = "access-pw-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember::~AccessPwIfMember()
@@ -2952,6 +2994,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::Access
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -2964,7 +3007,8 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::A
 std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-pw-if-member" <<"[interface='" <<interface <<"']";
+    path_buffer << "access-pw-if-member";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -3023,16 +3067,16 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     encap_type{YType::identityref, "encap-type"},
     tag_impose_vlan{YType::uint16, "tag-impose-vlan"},
     source_ipv6{YType::str, "source-ipv6"}
-    	,
+        ,
     static_label(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel>())
-	,split_horizon_group(nullptr) // presence node
-	,mac(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac>())
-	,igmp_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping>())
-	,mld_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping>())
-	,dhcp_ipv4_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping>())
-	,flooding(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding>())
-	,storm_control(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl>())
-	,backup(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup>())
+    , split_horizon_group(nullptr) // presence node
+    , mac(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac>())
+    , igmp_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping>())
+    , mld_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping>())
+    , dhcp_ipv4_snooping(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping>())
+    , flooding(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding>())
+    , storm_control(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl>())
+    , backup(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup>())
 {
     static_label->parent = this;
     mac->parent = this;
@@ -3043,7 +3087,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     storm_control->parent = this;
     backup->parent = this;
 
-    yang_name = "pw-neighbor-spec"; yang_parent_name = "access-pw-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pw-neighbor-spec"; yang_parent_name = "access-pw-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::~PwNeighborSpec()
@@ -3052,6 +3096,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_ip_address.is_set
 	|| vc_id.is_set
 	|| pw_class_template.is_set
@@ -3092,7 +3137,9 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::P
 std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pw-neighbor-spec" <<"[neighbor-ip-address='" <<neighbor_ip_address <<"']" <<"[vc-id='" <<vc_id <<"']";
+    path_buffer << "pw-neighbor-spec";
+    ADD_KEY_TOKEN(neighbor_ip_address, "neighbor-ip-address");
+    ADD_KEY_TOKEN(vc_id, "vc-id");
     return path_buffer.str();
 }
 
@@ -3330,7 +3377,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     remote_label{YType::uint32, "remote-label"}
 {
 
-    yang_name = "static-label"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-label"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::~StaticLabel()
@@ -3339,6 +3386,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return local_label.is_set
 	|| remote_label.is_set;
 }
@@ -3420,7 +3468,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     id{YType::uint16, "id"}
 {
 
-    yang_name = "split-horizon-group"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "split-horizon-group"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::~SplitHorizonGroup()
@@ -3429,6 +3477,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set;
 }
 
@@ -3495,18 +3544,18 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::P
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Mac()
     :
     learning_enabled{YType::boolean, "learning-enabled"}
-    	,
+        ,
     limit(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit>())
-	,aging(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging>())
-	,port_down(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown>())
-	,secure(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure>())
+    , aging(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging>())
+    , port_down(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown>())
+    , secure(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure>())
 {
     limit->parent = this;
     aging->parent = this;
     port_down->parent = this;
     secure->parent = this;
 
-    yang_name = "mac"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::~Mac()
@@ -3515,6 +3564,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::has_data() const
 {
+    if (is_presence_container) return true;
     return learning_enabled.is_set
 	|| (limit !=  nullptr && limit->has_data())
 	|| (aging !=  nullptr && aging->has_data())
@@ -3649,7 +3699,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     notification{YType::identityref, "notification"}
 {
 
-    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit::~Limit()
@@ -3658,6 +3708,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum.is_set
 	|| action.is_set
 	|| notification.is_set;
@@ -3753,7 +3804,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "aging"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aging"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::~Aging()
@@ -3762,6 +3813,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::has_data() const
 {
+    if (is_presence_container) return true;
     return time.is_set
 	|| type.is_set;
 }
@@ -3843,7 +3895,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     flush{YType::boolean, "flush"}
 {
 
-    yang_name = "port-down"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-down"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown::~PortDown()
@@ -3852,6 +3904,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown::has_data() const
 {
+    if (is_presence_container) return true;
     return flush.is_set;
 }
 
@@ -3922,7 +3975,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "secure"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secure"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure::~Secure()
@@ -3931,6 +3984,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure::has_data() const
 {
+    if (is_presence_container) return true;
     return action.is_set
 	|| logging.is_set
 	|| enabled.is_set;
@@ -4025,7 +4079,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "igmp-snooping"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igmp-snooping"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::~IgmpSnooping()
@@ -4034,6 +4088,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -4102,7 +4157,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "mld-snooping"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mld-snooping"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping::~MldSnooping()
@@ -4111,6 +4166,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -4179,7 +4235,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "dhcp-ipv4-snooping"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-ipv4-snooping"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::~DhcpIpv4Snooping()
@@ -4188,6 +4244,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -4257,7 +4314,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     disabled_unknown_unicast{YType::empty, "disabled-unknown-unicast"}
 {
 
-    yang_name = "flooding"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooding"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::~Flooding()
@@ -4266,6 +4323,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::has_data() const
 {
+    if (is_presence_container) return true;
     return disabled.is_set
 	|| disabled_unknown_unicast.is_set;
 }
@@ -4345,9 +4403,11 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::P
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::StormControl()
     :
     action{YType::identityref, "action"}
+        ,
+    thresholds(this, {"traffic_class"})
 {
 
-    yang_name = "storm-control"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storm-control"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::~StormControl()
@@ -4356,7 +4416,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::has_data() const
 {
-    for (std::size_t index=0; index<thresholds.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<thresholds.len(); index++)
     {
         if(thresholds[index]->has_data())
             return true;
@@ -4366,7 +4427,7 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::P
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::has_operation() const
 {
-    for (std::size_t index=0; index<thresholds.size(); index++)
+    for (std::size_t index=0; index<thresholds.len(); index++)
     {
         if(thresholds[index]->has_operation())
             return true;
@@ -4398,7 +4459,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
     {
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds>();
         c->parent = this;
-        thresholds.push_back(c);
+        thresholds.append(c);
         return c;
     }
 
@@ -4410,7 +4471,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : thresholds)
+    for (auto c : thresholds.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4453,7 +4514,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "thresholds"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "thresholds"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds::~Thresholds()
@@ -4462,6 +4523,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_class.is_set
 	|| value_.is_set
 	|| unit.is_set;
@@ -4478,7 +4540,8 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::P
 std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "thresholds" <<"[traffic-class='" <<traffic_class <<"']";
+    path_buffer << "thresholds";
+    ADD_KEY_TOKEN(traffic_class, "traffic-class");
     return path_buffer.str();
 }
 
@@ -4558,7 +4621,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
     pw_class_template{YType::str, "pw-class-template"}
 {
 
-    yang_name = "backup"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "pw-neighbor-spec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::~Backup()
@@ -4567,6 +4630,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeig
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_ip_address.is_set
 	|| vc_id.is_set
 	|| pw_class_template.is_set;
@@ -4659,13 +4723,13 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::P
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Mac()
     :
     learning_enabled{YType::boolean, "learning-enabled"}
-    	,
+        ,
     limit(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit>())
-	,aging(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging>())
-	,port_down(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown>())
-	,flooding(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding>())
-	,secure(nullptr) // presence node
-	,static_(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static>())
+    , aging(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging>())
+    , port_down(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown>())
+    , flooding(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding>())
+    , secure(nullptr) // presence node
+    , static_(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static>())
 {
     limit->parent = this;
     aging->parent = this;
@@ -4673,7 +4737,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Mac()
     flooding->parent = this;
     static_->parent = this;
 
-    yang_name = "mac"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::~Mac()
@@ -4682,6 +4746,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::~Mac()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::has_data() const
 {
+    if (is_presence_container) return true;
     return learning_enabled.is_set
 	|| (limit !=  nullptr && limit->has_data())
 	|| (aging !=  nullptr && aging->has_data())
@@ -4848,7 +4913,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::Limit()
     notification{YType::identityref, "notification"}
 {
 
-    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::~Limit()
@@ -4857,6 +4922,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::~Limit()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum.is_set
 	|| action.is_set
 	|| notification.is_set;
@@ -4952,7 +5018,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::Aging()
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "aging"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aging"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::~Aging()
@@ -4961,6 +5027,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::~Aging()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::has_data() const
 {
+    if (is_presence_container) return true;
     return time.is_set
 	|| type.is_set;
 }
@@ -5042,7 +5109,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::PortDown()
     flush{YType::boolean, "flush"}
 {
 
-    yang_name = "port-down"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-down"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::~PortDown()
@@ -5051,6 +5118,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::~PortDown()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::has_data() const
 {
+    if (is_presence_container) return true;
     return flush.is_set;
 }
 
@@ -5120,7 +5188,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::Flooding()
     disabled_unknown_unicast{YType::empty, "disabled-unknown-unicast"}
 {
 
-    yang_name = "flooding"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooding"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::~Flooding()
@@ -5129,6 +5197,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::~Flooding()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::has_data() const
 {
+    if (is_presence_container) return true;
     return disabled.is_set
 	|| disabled_unknown_unicast.is_set;
 }
@@ -5211,7 +5280,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::Secure()
     logging{YType::boolean, "logging"}
 {
 
-    yang_name = "secure"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secure"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::~Secure()
@@ -5220,6 +5289,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::~Secure()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::has_data() const
 {
+    if (is_presence_container) return true;
     return action.is_set
 	|| logging.is_set;
 }
@@ -5297,9 +5367,11 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::has_leaf_or_c
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::Static()
+    :
+    mac_addresses(this, {"mac_addr"})
 {
 
-    yang_name = "static"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::~Static()
@@ -5308,7 +5380,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::~Static()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::has_data() const
 {
-    for (std::size_t index=0; index<mac_addresses.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_addresses.len(); index++)
     {
         if(mac_addresses[index]->has_data())
             return true;
@@ -5318,7 +5391,7 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::has_data() co
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::has_operation() const
 {
-    for (std::size_t index=0; index<mac_addresses.size(); index++)
+    for (std::size_t index=0; index<mac_addresses.len(); index++)
     {
         if(mac_addresses[index]->has_operation())
             return true;
@@ -5348,7 +5421,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::St
     {
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses>();
         c->parent = this;
-        mac_addresses.push_back(c);
+        mac_addresses.append(c);
         return c;
     }
 
@@ -5360,7 +5433,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mac_addresses)
+    for (auto c : mac_addresses.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5392,7 +5465,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::MacA
     drop{YType::boolean, "drop"}
 {
 
-    yang_name = "mac-addresses"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-addresses"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::~MacAddresses()
@@ -5401,6 +5474,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::~Mac
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_addr.is_set
 	|| drop.is_set;
 }
@@ -5415,7 +5489,8 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses:
 std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mac-addresses" <<"[mac-addr='" <<mac_addr <<"']";
+    path_buffer << "mac-addresses";
+    ADD_KEY_TOKEN(mac_addr, "mac-addr");
     return path_buffer.str();
 }
 
@@ -5480,11 +5555,11 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses:
 BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::DynamicArpInspection()
     :
     logging{YType::boolean, "logging"}
-    	,
+        ,
     address_validation(nullptr) // presence node
 {
 
-    yang_name = "dynamic-arp-inspection"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dynamic-arp-inspection"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::~DynamicArpInspection()
@@ -5493,6 +5568,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::~DynamicA
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::has_data() const
 {
+    if (is_presence_container) return true;
     return logging.is_set
 	|| (address_validation !=  nullptr && address_validation->has_data());
 }
@@ -5579,7 +5655,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressVa
     ipv4{YType::empty, "ipv4"}
 {
 
-    yang_name = "address-validation"; yang_parent_name = "dynamic-arp-inspection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-validation"; yang_parent_name = "dynamic-arp-inspection"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::~AddressValidation()
@@ -5588,6 +5664,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressVa
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::has_data() const
 {
+    if (is_presence_container) return true;
     return dst_mac.is_set
 	|| src_mac.is_set
 	|| ipv4.is_set;
@@ -5682,7 +5759,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::IpSourceGuard()
     logging{YType::boolean, "logging"}
 {
 
-    yang_name = "ip-source-guard"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-source-guard"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::~IpSourceGuard()
@@ -5691,6 +5768,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::~IpSourceGuard()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return logging.is_set;
 }
 
@@ -5757,9 +5835,11 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::has_leaf_or
 BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::StormControl()
     :
     action{YType::identityref, "action"}
+        ,
+    thresholds(this, {"traffic_class"})
 {
 
-    yang_name = "storm-control"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storm-control"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::~StormControl()
@@ -5768,7 +5848,8 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::~StormControl()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::has_data() const
 {
-    for (std::size_t index=0; index<thresholds.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<thresholds.len(); index++)
     {
         if(thresholds[index]->has_data())
             return true;
@@ -5778,7 +5859,7 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::has_data() c
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::has_operation() const
 {
-    for (std::size_t index=0; index<thresholds.size(); index++)
+    for (std::size_t index=0; index<thresholds.len(); index++)
     {
         if(thresholds[index]->has_operation())
             return true;
@@ -5810,7 +5891,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::StormCo
     {
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds>();
         c->parent = this;
-        thresholds.push_back(c);
+        thresholds.append(c);
         return c;
     }
 
@@ -5822,7 +5903,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : thresholds)
+    for (auto c : thresholds.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5865,7 +5946,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::Thres
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "thresholds"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "thresholds"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::~Thresholds()
@@ -5874,6 +5955,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::~Thre
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_class.is_set
 	|| value_.is_set
 	|| unit.is_set;
@@ -5890,7 +5972,8 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::
 std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "thresholds" <<"[traffic-class='" <<traffic_class <<"']";
+    path_buffer << "thresholds";
+    ADD_KEY_TOKEN(traffic_class, "traffic-class");
     return path_buffer.str();
 }
 
@@ -5969,7 +6052,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::IgmpSnooping()
     disabled{YType::empty, "disabled"}
 {
 
-    yang_name = "igmp-snooping"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igmp-snooping"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::~IgmpSnooping()
@@ -5978,6 +6061,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::~IgmpSnooping()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| disabled.is_set;
 }
@@ -6059,7 +6143,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::MldSnooping()
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "mld-snooping"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mld-snooping"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::~MldSnooping()
@@ -6068,6 +6152,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::~MldSnooping()
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -6136,7 +6221,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::DhcpIpv4Snoop
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "dhcp-ipv4-snooping"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-ipv4-snooping"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::~DhcpIpv4Snooping()
@@ -6145,6 +6230,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::~DhcpIpv4Snoo
 
 bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -6211,14 +6297,15 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::has_leaf
 BridgeDomainState::BridgeDomainState()
     :
     system_capabilities(std::make_shared<BridgeDomainState::SystemCapabilities>())
-	,module_capabilities(std::make_shared<BridgeDomainState::ModuleCapabilities>())
-	,bridge_domains(std::make_shared<BridgeDomainState::BridgeDomains>())
+    , module_capabilities(std::make_shared<BridgeDomainState::ModuleCapabilities>())
+    , bridge_domains(std::make_shared<BridgeDomainState::BridgeDomains>())
+    , mac_table(this, {"bd_id", "mac_address"})
 {
     system_capabilities->parent = this;
     module_capabilities->parent = this;
     bridge_domains->parent = this;
 
-    yang_name = "bridge-domain-state"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "bridge-domain-state"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 BridgeDomainState::~BridgeDomainState()
@@ -6227,7 +6314,8 @@ BridgeDomainState::~BridgeDomainState()
 
 bool BridgeDomainState::has_data() const
 {
-    for (std::size_t index=0; index<mac_table.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_table.len(); index++)
     {
         if(mac_table[index]->has_data())
             return true;
@@ -6239,7 +6327,7 @@ bool BridgeDomainState::has_data() const
 
 bool BridgeDomainState::has_operation() const
 {
-    for (std::size_t index=0; index<mac_table.size(); index++)
+    for (std::size_t index=0; index<mac_table.len(); index++)
     {
         if(mac_table[index]->has_operation())
             return true;
@@ -6299,7 +6387,7 @@ std::shared_ptr<Entity> BridgeDomainState::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<BridgeDomainState::MacTable>();
         c->parent = this;
-        mac_table.push_back(c);
+        mac_table.append(c);
         return c;
     }
 
@@ -6326,7 +6414,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::get_children()
     }
 
     count = 0;
-    for (auto const & c : mac_table)
+    for (auto c : mac_table.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6387,7 +6475,7 @@ BridgeDomainState::SystemCapabilities::SystemCapabilities()
     max_interflex_if_per_bd{YType::uint32, "max-interflex-if-per-bd"}
 {
 
-    yang_name = "system-capabilities"; yang_parent_name = "bridge-domain-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "system-capabilities"; yang_parent_name = "bridge-domain-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BridgeDomainState::SystemCapabilities::~SystemCapabilities()
@@ -6396,6 +6484,7 @@ BridgeDomainState::SystemCapabilities::~SystemCapabilities()
 
 bool BridgeDomainState::SystemCapabilities::has_data() const
 {
+    if (is_presence_container) return true;
     return max_bd.is_set
 	|| max_ac_per_bd.is_set
 	|| max_pw_per_bd.is_set
@@ -6532,9 +6621,11 @@ bool BridgeDomainState::SystemCapabilities::has_leaf_or_child_of_name(const std:
 }
 
 BridgeDomainState::ModuleCapabilities::ModuleCapabilities()
+    :
+    modules(this, {"name"})
 {
 
-    yang_name = "module-capabilities"; yang_parent_name = "bridge-domain-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "module-capabilities"; yang_parent_name = "bridge-domain-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BridgeDomainState::ModuleCapabilities::~ModuleCapabilities()
@@ -6543,7 +6634,8 @@ BridgeDomainState::ModuleCapabilities::~ModuleCapabilities()
 
 bool BridgeDomainState::ModuleCapabilities::has_data() const
 {
-    for (std::size_t index=0; index<modules.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<modules.len(); index++)
     {
         if(modules[index]->has_data())
             return true;
@@ -6553,7 +6645,7 @@ bool BridgeDomainState::ModuleCapabilities::has_data() const
 
 bool BridgeDomainState::ModuleCapabilities::has_operation() const
 {
-    for (std::size_t index=0; index<modules.size(); index++)
+    for (std::size_t index=0; index<modules.len(); index++)
     {
         if(modules[index]->has_operation())
             return true;
@@ -6590,7 +6682,7 @@ std::shared_ptr<Entity> BridgeDomainState::ModuleCapabilities::get_child_by_name
     {
         auto c = std::make_shared<BridgeDomainState::ModuleCapabilities::Modules>();
         c->parent = this;
-        modules.push_back(c);
+        modules.append(c);
         return c;
     }
 
@@ -6602,7 +6694,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::ModuleCapabili
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : modules)
+    for (auto c : modules.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6640,7 +6732,7 @@ BridgeDomainState::ModuleCapabilities::Modules::Modules()
     max_sh_group_per_bd{YType::uint32, "max-sh-group-per-bd"}
 {
 
-    yang_name = "modules"; yang_parent_name = "module-capabilities"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "modules"; yang_parent_name = "module-capabilities"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BridgeDomainState::ModuleCapabilities::Modules::~Modules()
@@ -6649,6 +6741,7 @@ BridgeDomainState::ModuleCapabilities::Modules::~Modules()
 
 bool BridgeDomainState::ModuleCapabilities::Modules::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| max_mac_per_bd.is_set
 	|| max_pdd_edge_bd.is_set
@@ -6682,7 +6775,8 @@ std::string BridgeDomainState::ModuleCapabilities::Modules::get_absolute_path() 
 std::string BridgeDomainState::ModuleCapabilities::Modules::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "modules" <<"[name='" <<name <<"']";
+    path_buffer << "modules";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -6811,9 +6905,11 @@ bool BridgeDomainState::ModuleCapabilities::Modules::has_leaf_or_child_of_name(c
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomains()
+    :
+    bridge_domain(this, {"id"})
 {
 
-    yang_name = "bridge-domains"; yang_parent_name = "bridge-domain-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bridge-domains"; yang_parent_name = "bridge-domain-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BridgeDomainState::BridgeDomains::~BridgeDomains()
@@ -6822,7 +6918,8 @@ BridgeDomainState::BridgeDomains::~BridgeDomains()
 
 bool BridgeDomainState::BridgeDomains::has_data() const
 {
-    for (std::size_t index=0; index<bridge_domain.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bridge_domain.len(); index++)
     {
         if(bridge_domain[index]->has_data())
             return true;
@@ -6832,7 +6929,7 @@ bool BridgeDomainState::BridgeDomains::has_data() const
 
 bool BridgeDomainState::BridgeDomains::has_operation() const
 {
-    for (std::size_t index=0; index<bridge_domain.size(); index++)
+    for (std::size_t index=0; index<bridge_domain.len(); index++)
     {
         if(bridge_domain[index]->has_operation())
             return true;
@@ -6869,7 +6966,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::get_child_by_name(cons
     {
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain>();
         c->parent = this;
-        bridge_domain.push_back(c);
+        bridge_domain.append(c);
         return c;
     }
 
@@ -6881,7 +6978,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bridge_domain)
+    for (auto c : bridge_domain.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6915,12 +7012,12 @@ BridgeDomainState::BridgeDomains::BridgeDomain::BridgeDomain()
     last_status_change{YType::uint32, "last-status-change"},
     mac_limit_reached{YType::boolean, "mac-limit-reached"},
     p2mp_pw_disabled{YType::boolean, "p2mp-pw-disabled"}
-    	,
+        ,
     members(std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members>())
 {
     members->parent = this;
 
-    yang_name = "bridge-domain"; yang_parent_name = "bridge-domains"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bridge-domain"; yang_parent_name = "bridge-domains"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::~BridgeDomain()
@@ -6929,6 +7026,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::~BridgeDomain()
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| bd_state.is_set
 	|| create_time.is_set
@@ -6960,7 +7058,8 @@ std::string BridgeDomainState::BridgeDomains::BridgeDomain::get_absolute_path() 
 std::string BridgeDomainState::BridgeDomains::BridgeDomain::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bridge-domain" <<"[id='" <<id <<"']";
+    path_buffer << "bridge-domain";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -7081,9 +7180,13 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::has_leaf_or_child_of_name(c
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::Members()
+    :
+    ac_member(this, {"interface"})
+    , vfi_member(this, {"interface"})
+    , access_pw_member(this, {"vc_peer_address", "vc_id"})
 {
 
-    yang_name = "members"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "members"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::~Members()
@@ -7092,17 +7195,18 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::~Members()
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::has_data() const
 {
-    for (std::size_t index=0; index<ac_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ac_member.len(); index++)
     {
         if(ac_member[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<vfi_member.size(); index++)
+    for (std::size_t index=0; index<vfi_member.len(); index++)
     {
         if(vfi_member[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<access_pw_member.size(); index++)
+    for (std::size_t index=0; index<access_pw_member.len(); index++)
     {
         if(access_pw_member[index]->has_data())
             return true;
@@ -7112,17 +7216,17 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::has_data() const
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::has_operation() const
 {
-    for (std::size_t index=0; index<ac_member.size(); index++)
+    for (std::size_t index=0; index<ac_member.len(); index++)
     {
         if(ac_member[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<vfi_member.size(); index++)
+    for (std::size_t index=0; index<vfi_member.len(); index++)
     {
         if(vfi_member[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<access_pw_member.size(); index++)
+    for (std::size_t index=0; index<access_pw_member.len(); index++)
     {
         if(access_pw_member[index]->has_operation())
             return true;
@@ -7152,7 +7256,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
     {
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember>();
         c->parent = this;
-        ac_member.push_back(c);
+        ac_member.append(c);
         return c;
     }
 
@@ -7160,7 +7264,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
     {
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember>();
         c->parent = this;
-        vfi_member.push_back(c);
+        vfi_member.append(c);
         return c;
     }
 
@@ -7168,7 +7272,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
     {
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember>();
         c->parent = this;
-        access_pw_member.push_back(c);
+        access_pw_member.append(c);
         return c;
     }
 
@@ -7180,7 +7284,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ac_member)
+    for (auto c : ac_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7189,7 +7293,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains:
     }
 
     count = 0;
-    for (auto const & c : vfi_member)
+    for (auto c : vfi_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7198,7 +7302,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains:
     }
 
     count = 0;
-    for (auto const & c : access_pw_member)
+    for (auto c : access_pw_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7228,16 +7332,16 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::AcMember()
     :
     interface{YType::str, "interface"},
     static_mac_count{YType::uint32, "static-mac-count"}
-    	,
+        ,
     dai_stats(std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats>())
-	,ipsg_stats(std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats>())
-	,storm_control(std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl>())
+    , ipsg_stats(std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats>())
+    , storm_control(std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl>())
 {
     dai_stats->parent = this;
     ipsg_stats->parent = this;
     storm_control->parent = this;
 
-    yang_name = "ac-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ac-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::~AcMember()
@@ -7246,6 +7350,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::~AcMember()
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| static_mac_count.is_set
 	|| (dai_stats !=  nullptr && dai_stats->has_data())
@@ -7266,7 +7371,8 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::has_oper
 std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ac-member" <<"[interface='" <<interface <<"']";
+    path_buffer << "ac-member";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -7376,7 +7482,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats::Dai
     byte_drops{YType::uint64, "byte-drops"}
 {
 
-    yang_name = "dai-stats"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dai-stats"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats::~DaiStats()
@@ -7385,6 +7491,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats::~Da
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_drops.is_set
 	|| byte_drops.is_set;
 }
@@ -7467,7 +7574,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats::Ip
     byte_drops{YType::uint64, "byte-drops"}
 {
 
-    yang_name = "ipsg-stats"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipsg-stats"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats::~IpsgStats()
@@ -7476,6 +7583,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats::~I
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_drops.is_set
 	|| byte_drops.is_set;
 }
@@ -7553,9 +7661,11 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStat
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::StormControl()
+    :
+    drop_counter(this, {"traffic_class"})
 {
 
-    yang_name = "storm-control"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storm-control"; yang_parent_name = "ac-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::~StormControl()
@@ -7564,7 +7674,8 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl:
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::has_data() const
 {
-    for (std::size_t index=0; index<drop_counter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<drop_counter.len(); index++)
     {
         if(drop_counter[index]->has_data())
             return true;
@@ -7574,7 +7685,7 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormCon
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::has_operation() const
 {
-    for (std::size_t index=0; index<drop_counter.size(); index++)
+    for (std::size_t index=0; index<drop_counter.len(); index++)
     {
         if(drop_counter[index]->has_operation())
             return true;
@@ -7604,7 +7715,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
     {
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter>();
         c->parent = this;
-        drop_counter.push_back(c);
+        drop_counter.append(c);
         return c;
     }
 
@@ -7616,7 +7727,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : drop_counter)
+    for (auto c : drop_counter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7649,7 +7760,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl:
     octate_drops{YType::uint64, "octate-drops"}
 {
 
-    yang_name = "drop-counter"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop-counter"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter::~DropCounter()
@@ -7658,6 +7769,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl:
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_class.is_set
 	|| packet_drops.is_set
 	|| octate_drops.is_set;
@@ -7674,7 +7786,8 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormCon
 std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "drop-counter" <<"[traffic-class='" <<traffic_class <<"']";
+    path_buffer << "drop-counter";
+    ADD_KEY_TOKEN(traffic_class, "traffic-class");
     return path_buffer.str();
 }
 
@@ -7750,12 +7863,12 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormCon
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::VfiMember()
     :
     interface{YType::str, "interface"}
-    	,
+        ,
     flooding(std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding>())
 {
     flooding->parent = this;
 
-    yang_name = "vfi-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vfi-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::~VfiMember()
@@ -7764,6 +7877,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::~VfiMember()
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| (flooding !=  nullptr && flooding->has_data());
 }
@@ -7778,7 +7892,8 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::has_ope
 std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vfi-member" <<"[interface='" <<interface <<"']";
+    path_buffer << "vfi-member";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -7844,9 +7959,11 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::has_lea
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Flooding()
+    :
+    status(this, {"traffic_class"})
 {
 
-    yang_name = "flooding"; yang_parent_name = "vfi-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooding"; yang_parent_name = "vfi-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::~Flooding()
@@ -7855,7 +7972,8 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::~F
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::has_data() const
 {
-    for (std::size_t index=0; index<status.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<status.len(); index++)
     {
         if(status[index]->has_data())
             return true;
@@ -7865,7 +7983,7 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Floodin
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::has_operation() const
 {
-    for (std::size_t index=0; index<status.size(); index++)
+    for (std::size_t index=0; index<status.len(); index++)
     {
         if(status[index]->has_operation())
             return true;
@@ -7895,7 +8013,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
     {
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status>();
         c->parent = this;
-        status.push_back(c);
+        status.append(c);
         return c;
     }
 
@@ -7907,7 +8025,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : status)
+    for (auto c : status.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7939,7 +8057,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::St
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "status"; yang_parent_name = "flooding"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "status"; yang_parent_name = "flooding"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::~Status()
@@ -7948,6 +8066,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::St
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_class.is_set
 	|| enabled.is_set;
 }
@@ -7962,7 +8081,8 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Floodin
 std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "status" <<"[traffic-class='" <<traffic_class <<"']";
+    path_buffer << "status";
+    ADD_KEY_TOKEN(traffic_class, "traffic-class");
     return path_buffer.str();
 }
 
@@ -8028,12 +8148,12 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessP
     :
     vc_peer_address{YType::str, "vc-peer-address"},
     vc_id{YType::str, "vc-id"}
-    	,
+        ,
     flooding(std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding>())
 {
     flooding->parent = this;
 
-    yang_name = "access-pw-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-pw-member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::~AccessPwMember()
@@ -8042,6 +8162,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::~Access
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::has_data() const
 {
+    if (is_presence_container) return true;
     return vc_peer_address.is_set
 	|| vc_id.is_set
 	|| (flooding !=  nullptr && flooding->has_data());
@@ -8058,7 +8179,9 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::ha
 std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-pw-member" <<"[vc-peer-address='" <<vc_peer_address <<"']" <<"[vc-id='" <<vc_id <<"']";
+    path_buffer << "access-pw-member";
+    ADD_KEY_TOKEN(vc_peer_address, "vc-peer-address");
+    ADD_KEY_TOKEN(vc_id, "vc-id");
     return path_buffer.str();
 }
 
@@ -8135,9 +8258,11 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::ha
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Flooding()
+    :
+    status(this, {"traffic_class"})
 {
 
-    yang_name = "flooding"; yang_parent_name = "access-pw-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooding"; yang_parent_name = "access-pw-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::~Flooding()
@@ -8146,7 +8271,8 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Floodin
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::has_data() const
 {
-    for (std::size_t index=0; index<status.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<status.len(); index++)
     {
         if(status[index]->has_data())
             return true;
@@ -8156,7 +8282,7 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Fl
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::has_operation() const
 {
-    for (std::size_t index=0; index<status.size(); index++)
+    for (std::size_t index=0; index<status.len(); index++)
     {
         if(status[index]->has_operation())
             return true;
@@ -8186,7 +8312,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
     {
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status>();
         c->parent = this;
-        status.push_back(c);
+        status.append(c);
         return c;
     }
 
@@ -8198,7 +8324,7 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : status)
+    for (auto c : status.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8230,7 +8356,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Floodin
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "status"; yang_parent_name = "flooding"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "status"; yang_parent_name = "flooding"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status::~Status()
@@ -8239,6 +8365,7 @@ BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Floodin
 
 bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_class.is_set
 	|| enabled.is_set;
 }
@@ -8253,7 +8380,8 @@ bool BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Fl
 std::string BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "status" <<"[traffic-class='" <<traffic_class <<"']";
+    path_buffer << "status";
+    ADD_KEY_TOKEN(traffic_class, "traffic-class");
     return path_buffer.str();
 }
 
@@ -8327,7 +8455,7 @@ BridgeDomainState::MacTable::MacTable()
     location{YType::str, "location"}
 {
 
-    yang_name = "mac-table"; yang_parent_name = "bridge-domain-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-table"; yang_parent_name = "bridge-domain-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BridgeDomainState::MacTable::~MacTable()
@@ -8336,6 +8464,7 @@ BridgeDomainState::MacTable::~MacTable()
 
 bool BridgeDomainState::MacTable::has_data() const
 {
+    if (is_presence_container) return true;
     return bd_id.is_set
 	|| mac_address.is_set
 	|| mac_type.is_set
@@ -8369,7 +8498,9 @@ std::string BridgeDomainState::MacTable::get_absolute_path() const
 std::string BridgeDomainState::MacTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mac-table" <<"[bd-id='" <<bd_id <<"']" <<"[mac-address='" <<mac_address <<"']";
+    path_buffer << "mac-table";
+    ADD_KEY_TOKEN(bd_id, "bd-id");
+    ADD_KEY_TOKEN(mac_address, "mac-address");
     return path_buffer.str();
 }
 
@@ -8500,12 +8631,12 @@ bool BridgeDomainState::MacTable::has_leaf_or_child_of_name(const std::string & 
 ClearBridgeDomain::ClearBridgeDomain()
     :
     input(std::make_shared<ClearBridgeDomain::Input>())
-	,output(std::make_shared<ClearBridgeDomain::Output>())
+    , output(std::make_shared<ClearBridgeDomain::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "clear-bridge-domain"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bridge-domain"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBridgeDomain::~ClearBridgeDomain()
@@ -8514,6 +8645,7 @@ ClearBridgeDomain::~ClearBridgeDomain()
 
 bool ClearBridgeDomain::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -8628,7 +8760,7 @@ ClearBridgeDomain::Input::Input()
     bg_id{YType::str, "bg-id"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bridge-domain"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bridge-domain"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBridgeDomain::Input::~Input()
@@ -8637,6 +8769,7 @@ ClearBridgeDomain::Input::~Input()
 
 bool ClearBridgeDomain::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| bd_id.is_set
 	|| bg_id.is_set;
@@ -8738,7 +8871,7 @@ ClearBridgeDomain::Output::Output()
     errstr{YType::str, "errstr"}
 {
 
-    yang_name = "output"; yang_parent_name = "clear-bridge-domain"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "clear-bridge-domain"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBridgeDomain::Output::~Output()
@@ -8747,6 +8880,7 @@ ClearBridgeDomain::Output::~Output()
 
 bool ClearBridgeDomain::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return errstr.is_set;
 }
 
@@ -8820,12 +8954,12 @@ bool ClearBridgeDomain::Output::has_leaf_or_child_of_name(const std::string & na
 ClearMacAddress::ClearMacAddress()
     :
     input(std::make_shared<ClearMacAddress::Input>())
-	,output(std::make_shared<ClearMacAddress::Output>())
+    , output(std::make_shared<ClearMacAddress::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "clear-mac-address"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-mac-address"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearMacAddress::~ClearMacAddress()
@@ -8834,6 +8968,7 @@ ClearMacAddress::~ClearMacAddress()
 
 bool ClearMacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -8945,12 +9080,12 @@ ClearMacAddress::Input::Input()
     :
     interface{YType::str, "interface"},
     mac_address{YType::str, "mac-address"}
-    	,
+        ,
     bridge_domain(std::make_shared<ClearMacAddress::Input::BridgeDomain>())
 {
     bridge_domain->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-mac-address"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-mac-address"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearMacAddress::Input::~Input()
@@ -8959,6 +9094,7 @@ ClearMacAddress::Input::~Input()
 
 bool ClearMacAddress::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| mac_address.is_set
 	|| (bridge_domain !=  nullptr && bridge_domain->has_data());
@@ -9064,7 +9200,7 @@ ClearMacAddress::Input::BridgeDomain::BridgeDomain()
     bg_id{YType::str, "bg-id"}
 {
 
-    yang_name = "bridge-domain"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bridge-domain"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearMacAddress::Input::BridgeDomain::~BridgeDomain()
@@ -9073,6 +9209,7 @@ ClearMacAddress::Input::BridgeDomain::~BridgeDomain()
 
 bool ClearMacAddress::Input::BridgeDomain::has_data() const
 {
+    if (is_presence_container) return true;
     return bd_id.is_set
 	|| bg_id.is_set;
 }
@@ -9161,7 +9298,7 @@ ClearMacAddress::Output::Output()
     errstr{YType::str, "errstr"}
 {
 
-    yang_name = "output"; yang_parent_name = "clear-mac-address"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "clear-mac-address"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearMacAddress::Output::~Output()
@@ -9170,6 +9307,7 @@ ClearMacAddress::Output::~Output()
 
 bool ClearMacAddress::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return errstr.is_set;
 }
 
@@ -9243,12 +9381,12 @@ bool ClearMacAddress::Output::has_leaf_or_child_of_name(const std::string & name
 CreateParameterizedBridgeDomains::CreateParameterizedBridgeDomains()
     :
     input(std::make_shared<CreateParameterizedBridgeDomains::Input>())
-	,output(std::make_shared<CreateParameterizedBridgeDomains::Output>())
+    , output(std::make_shared<CreateParameterizedBridgeDomains::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "create-parameterized-bridge-domains"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "create-parameterized-bridge-domains"; yang_parent_name = "cisco-bridge-domain"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CreateParameterizedBridgeDomains::~CreateParameterizedBridgeDomains()
@@ -9257,6 +9395,7 @@ CreateParameterizedBridgeDomains::~CreateParameterizedBridgeDomains()
 
 bool CreateParameterizedBridgeDomains::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -9367,9 +9506,11 @@ bool CreateParameterizedBridgeDomains::has_leaf_or_child_of_name(const std::stri
 CreateParameterizedBridgeDomains::Input::Input()
     :
     parameter{YType::enumeration, "parameter"}
+        ,
+    member(this, {"interface"})
 {
 
-    yang_name = "input"; yang_parent_name = "create-parameterized-bridge-domains"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "create-parameterized-bridge-domains"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CreateParameterizedBridgeDomains::Input::~Input()
@@ -9378,7 +9519,8 @@ CreateParameterizedBridgeDomains::Input::~Input()
 
 bool CreateParameterizedBridgeDomains::Input::has_data() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_data())
             return true;
@@ -9388,7 +9530,7 @@ bool CreateParameterizedBridgeDomains::Input::has_data() const
 
 bool CreateParameterizedBridgeDomains::Input::has_operation() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_operation())
             return true;
@@ -9427,7 +9569,7 @@ std::shared_ptr<Entity> CreateParameterizedBridgeDomains::Input::get_child_by_na
     {
         auto c = std::make_shared<CreateParameterizedBridgeDomains::Input::Member>();
         c->parent = this;
-        member.push_back(c);
+        member.append(c);
         return c;
     }
 
@@ -9439,7 +9581,7 @@ std::map<std::string, std::shared_ptr<Entity>> CreateParameterizedBridgeDomains:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : member)
+    for (auto c : member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9480,7 +9622,7 @@ CreateParameterizedBridgeDomains::Input::Member::Member()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "member"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "member"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CreateParameterizedBridgeDomains::Input::Member::~Member()
@@ -9489,6 +9631,7 @@ CreateParameterizedBridgeDomains::Input::Member::~Member()
 
 bool CreateParameterizedBridgeDomains::Input::Member::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -9508,7 +9651,8 @@ std::string CreateParameterizedBridgeDomains::Input::Member::get_absolute_path()
 std::string CreateParameterizedBridgeDomains::Input::Member::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "member" <<"[interface='" <<interface <<"']";
+    path_buffer << "member";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -9564,7 +9708,7 @@ CreateParameterizedBridgeDomains::Output::Output()
     errstr{YType::str, "errstr"}
 {
 
-    yang_name = "output"; yang_parent_name = "create-parameterized-bridge-domains"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "create-parameterized-bridge-domains"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CreateParameterizedBridgeDomains::Output::~Output()
@@ -9573,6 +9717,7 @@ CreateParameterizedBridgeDomains::Output::~Output()
 
 bool CreateParameterizedBridgeDomains::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return errstr.is_set;
 }
 

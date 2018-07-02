@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_subscriber_pppoe_ma_oper {
 Pppoe::Pppoe()
     :
     access_interface_statistics(std::make_shared<Pppoe::AccessInterfaceStatistics>())
-	,nodes(std::make_shared<Pppoe::Nodes>())
+    , nodes(std::make_shared<Pppoe::Nodes>())
 {
     access_interface_statistics->parent = this;
     nodes->parent = this;
 
-    yang_name = "pppoe"; yang_parent_name = "Cisco-IOS-XR-subscriber-pppoe-ma-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "pppoe"; yang_parent_name = "Cisco-IOS-XR-subscriber-pppoe-ma-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Pppoe::~Pppoe()
@@ -28,6 +28,7 @@ Pppoe::~Pppoe()
 
 bool Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return (access_interface_statistics !=  nullptr && access_interface_statistics->has_data())
 	|| (nodes !=  nullptr && nodes->has_data());
 }
@@ -136,9 +137,11 @@ bool Pppoe::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistics()
+    :
+    access_interface_statistic(this, {"interface_name"})
 {
 
-    yang_name = "access-interface-statistics"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access-interface-statistics"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pppoe::AccessInterfaceStatistics::~AccessInterfaceStatistics()
@@ -147,7 +150,8 @@ Pppoe::AccessInterfaceStatistics::~AccessInterfaceStatistics()
 
 bool Pppoe::AccessInterfaceStatistics::has_data() const
 {
-    for (std::size_t index=0; index<access_interface_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_interface_statistic.len(); index++)
     {
         if(access_interface_statistic[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool Pppoe::AccessInterfaceStatistics::has_data() const
 
 bool Pppoe::AccessInterfaceStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<access_interface_statistic.size(); index++)
+    for (std::size_t index=0; index<access_interface_statistic.len(); index++)
     {
         if(access_interface_statistic[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::get_child_by_name(cons
     {
         auto c = std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic>();
         c->parent = this;
-        access_interface_statistic.push_back(c);
+        access_interface_statistic.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pppoe::AccessInterfaceStatistics:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access_interface_statistic)
+    for (auto c : access_interface_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -235,12 +239,12 @@ bool Pppoe::AccessInterfaceStatistics::has_leaf_or_child_of_name(const std::stri
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::AccessInterfaceStatistic()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     packet_counts(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts>())
 {
     packet_counts->parent = this;
 
-    yang_name = "access-interface-statistic"; yang_parent_name = "access-interface-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access-interface-statistic"; yang_parent_name = "access-interface-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::~AccessInterfaceStatistic()
@@ -249,6 +253,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::~AccessInterfaceStat
 
 bool Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (packet_counts !=  nullptr && packet_counts->has_data());
 }
@@ -270,7 +275,8 @@ std::string Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::get_abso
 std::string Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-interface-statistic" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "access-interface-statistic";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -338,13 +344,13 @@ bool Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::has_leaf_or_chi
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PacketCounts()
     :
     padi(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi>())
-	,pado(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado>())
-	,padr(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr>())
-	,pads_success(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSuccess>())
-	,pads_error(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsError>())
-	,padt(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt>())
-	,session_state(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState>())
-	,other(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other>())
+    , pado(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado>())
+    , padr(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr>())
+    , pads_success(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSuccess>())
+    , pads_error(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsError>())
+    , padt(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt>())
+    , session_state(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState>())
+    , other(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other>())
 {
     padi->parent = this;
     pado->parent = this;
@@ -355,7 +361,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Packet
     session_state->parent = this;
     other->parent = this;
 
-    yang_name = "packet-counts"; yang_parent_name = "access-interface-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-counts"; yang_parent_name = "access-interface-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::~PacketCounts()
@@ -364,6 +370,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::~Packe
 
 bool Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return (padi !=  nullptr && padi->has_data())
 	|| (pado !=  nullptr && pado->has_data())
 	|| (padr !=  nullptr && padr->has_data())
@@ -549,7 +556,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi::
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "padi"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "padi"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi::~Padi()
@@ -558,6 +565,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi::
 
 bool Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -654,7 +662,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado::
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "pado"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pado"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado::~Pado()
@@ -663,6 +671,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado::
 
 bool Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -759,7 +768,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr::
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "padr"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "padr"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr::~Padr()
@@ -768,6 +777,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr::
 
 bool Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -864,7 +874,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSu
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "pads-success"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pads-success"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSuccess::~PadsSuccess()
@@ -873,6 +883,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSu
 
 bool Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSuccess::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -969,7 +980,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsEr
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "pads-error"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pads-error"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsError::~PadsError()
@@ -978,6 +989,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsEr
 
 bool Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsError::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -1074,7 +1086,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt::
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "padt"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "padt"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt::~Padt()
@@ -1083,6 +1095,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt::
 
 bool Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -1179,7 +1192,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Sessio
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "session-state"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-state"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState::~SessionState()
@@ -1188,6 +1201,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Sessio
 
 bool Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -1284,7 +1298,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other:
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "other"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "other"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other::~Other()
@@ -1293,6 +1307,7 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other:
 
 bool Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -1383,9 +1398,11 @@ bool Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::O
 }
 
 Pppoe::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pppoe::Nodes::~Nodes()
@@ -1394,7 +1411,8 @@ Pppoe::Nodes::~Nodes()
 
 bool Pppoe::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -1404,7 +1422,7 @@ bool Pppoe::Nodes::has_data() const
 
 bool Pppoe::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -1441,7 +1459,7 @@ std::shared_ptr<Entity> Pppoe::Nodes::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Pppoe::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -1453,7 +1471,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1482,12 +1500,12 @@ bool Pppoe::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Pppoe::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     statistics(std::make_shared<Pppoe::Nodes::Node::Statistics>())
-	,access_interface(std::make_shared<Pppoe::Nodes::Node::AccessInterface>())
-	,interfaces(std::make_shared<Pppoe::Nodes::Node::Interfaces>())
-	,bba_groups(std::make_shared<Pppoe::Nodes::Node::BbaGroups>())
-	,summary_total(std::make_shared<Pppoe::Nodes::Node::SummaryTotal>())
+    , access_interface(std::make_shared<Pppoe::Nodes::Node::AccessInterface>())
+    , interfaces(std::make_shared<Pppoe::Nodes::Node::Interfaces>())
+    , bba_groups(std::make_shared<Pppoe::Nodes::Node::BbaGroups>())
+    , summary_total(std::make_shared<Pppoe::Nodes::Node::SummaryTotal>())
 {
     statistics->parent = this;
     access_interface->parent = this;
@@ -1495,7 +1513,7 @@ Pppoe::Nodes::Node::Node()
     bba_groups->parent = this;
     summary_total->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pppoe::Nodes::Node::~Node()
@@ -1504,6 +1522,7 @@ Pppoe::Nodes::Node::~Node()
 
 bool Pppoe::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (access_interface !=  nullptr && access_interface->has_data())
@@ -1533,7 +1552,8 @@ std::string Pppoe::Nodes::Node::get_absolute_path() const
 std::string Pppoe::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1657,12 +1677,12 @@ bool Pppoe::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) con
 Pppoe::Nodes::Node::Statistics::Statistics()
     :
     packet_counts(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts>())
-	,packet_error_counts(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketErrorCounts>())
+    , packet_error_counts(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketErrorCounts>())
 {
     packet_counts->parent = this;
     packet_error_counts->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Statistics::~Statistics()
@@ -1671,6 +1691,7 @@ Pppoe::Nodes::Node::Statistics::~Statistics()
 
 bool Pppoe::Nodes::Node::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (packet_counts !=  nullptr && packet_counts->has_data())
 	|| (packet_error_counts !=  nullptr && packet_error_counts->has_data());
 }
@@ -1756,13 +1777,13 @@ bool Pppoe::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std::string
 Pppoe::Nodes::Node::Statistics::PacketCounts::PacketCounts()
     :
     padi(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Padi>())
-	,pado(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Pado>())
-	,padr(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Padr>())
-	,pads_success(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess>())
-	,pads_error(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError>())
-	,padt(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Padt>())
-	,session_state(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState>())
-	,other(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Other>())
+    , pado(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Pado>())
+    , padr(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Padr>())
+    , pads_success(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess>())
+    , pads_error(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError>())
+    , padt(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Padt>())
+    , session_state(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState>())
+    , other(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Other>())
 {
     padi->parent = this;
     pado->parent = this;
@@ -1773,7 +1794,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::PacketCounts()
     session_state->parent = this;
     other->parent = this;
 
-    yang_name = "packet-counts"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-counts"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Statistics::PacketCounts::~PacketCounts()
@@ -1782,6 +1803,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::~PacketCounts()
 
 bool Pppoe::Nodes::Node::Statistics::PacketCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return (padi !=  nullptr && padi->has_data())
 	|| (pado !=  nullptr && pado->has_data())
 	|| (padr !=  nullptr && padr->has_data())
@@ -1967,7 +1989,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::Padi::Padi()
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "padi"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "padi"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Statistics::PacketCounts::Padi::~Padi()
@@ -1976,6 +1998,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::Padi::~Padi()
 
 bool Pppoe::Nodes::Node::Statistics::PacketCounts::Padi::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -2072,7 +2095,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::Pado::Pado()
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "pado"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pado"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Statistics::PacketCounts::Pado::~Pado()
@@ -2081,6 +2104,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::Pado::~Pado()
 
 bool Pppoe::Nodes::Node::Statistics::PacketCounts::Pado::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -2177,7 +2201,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::Padr::Padr()
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "padr"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "padr"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Statistics::PacketCounts::Padr::~Padr()
@@ -2186,6 +2210,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::Padr::~Padr()
 
 bool Pppoe::Nodes::Node::Statistics::PacketCounts::Padr::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -2282,7 +2307,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess::PadsSuccess()
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "pads-success"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pads-success"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess::~PadsSuccess()
@@ -2291,6 +2316,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess::~PadsSuccess()
 
 bool Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -2387,7 +2413,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError::PadsError()
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "pads-error"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pads-error"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError::~PadsError()
@@ -2396,6 +2422,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError::~PadsError()
 
 bool Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -2492,7 +2519,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::Padt::Padt()
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "padt"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "padt"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Statistics::PacketCounts::Padt::~Padt()
@@ -2501,6 +2528,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::Padt::~Padt()
 
 bool Pppoe::Nodes::Node::Statistics::PacketCounts::Padt::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -2597,7 +2625,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState::SessionState()
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "session-state"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-state"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState::~SessionState()
@@ -2606,6 +2634,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState::~SessionState()
 
 bool Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -2702,7 +2731,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::Other::Other()
     dropped{YType::uint32, "dropped"}
 {
 
-    yang_name = "other"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "other"; yang_parent_name = "packet-counts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Statistics::PacketCounts::Other::~Other()
@@ -2711,6 +2740,7 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::Other::~Other()
 
 bool Pppoe::Nodes::Node::Statistics::PacketCounts::Other::has_data() const
 {
+    if (is_presence_container) return true;
     return sent.is_set
 	|| received.is_set
 	|| dropped.is_set;
@@ -2856,7 +2886,7 @@ Pppoe::Nodes::Node::Statistics::PacketErrorCounts::PacketErrorCounts()
     packet_on_srg_slave{YType::uint32, "packet-on-srg-slave"}
 {
 
-    yang_name = "packet-error-counts"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-error-counts"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Statistics::PacketErrorCounts::~PacketErrorCounts()
@@ -2865,6 +2895,7 @@ Pppoe::Nodes::Node::Statistics::PacketErrorCounts::~PacketErrorCounts()
 
 bool Pppoe::Nodes::Node::Statistics::PacketErrorCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return no_interface_handle.is_set
 	|| no_packet_payload.is_set
 	|| no_packet_mac_address.is_set
@@ -3597,7 +3628,7 @@ Pppoe::Nodes::Node::AccessInterface::AccessInterface()
 {
     summaries->parent = this;
 
-    yang_name = "access-interface"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-interface"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::AccessInterface::~AccessInterface()
@@ -3606,6 +3637,7 @@ Pppoe::Nodes::Node::AccessInterface::~AccessInterface()
 
 bool Pppoe::Nodes::Node::AccessInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (summaries !=  nullptr && summaries->has_data());
 }
 
@@ -3673,9 +3705,11 @@ bool Pppoe::Nodes::Node::AccessInterface::has_leaf_or_child_of_name(const std::s
 }
 
 Pppoe::Nodes::Node::AccessInterface::Summaries::Summaries()
+    :
+    summary(this, {"interface_name"})
 {
 
-    yang_name = "summaries"; yang_parent_name = "access-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summaries"; yang_parent_name = "access-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::AccessInterface::Summaries::~Summaries()
@@ -3684,7 +3718,8 @@ Pppoe::Nodes::Node::AccessInterface::Summaries::~Summaries()
 
 bool Pppoe::Nodes::Node::AccessInterface::Summaries::has_data() const
 {
-    for (std::size_t index=0; index<summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<summary.len(); index++)
     {
         if(summary[index]->has_data())
             return true;
@@ -3694,7 +3729,7 @@ bool Pppoe::Nodes::Node::AccessInterface::Summaries::has_data() const
 
 bool Pppoe::Nodes::Node::AccessInterface::Summaries::has_operation() const
 {
-    for (std::size_t index=0; index<summary.size(); index++)
+    for (std::size_t index=0; index<summary.len(); index++)
     {
         if(summary[index]->has_operation())
             return true;
@@ -3724,7 +3759,7 @@ std::shared_ptr<Entity> Pppoe::Nodes::Node::AccessInterface::Summaries::get_chil
     {
         auto c = std::make_shared<Pppoe::Nodes::Node::AccessInterface::Summaries::Summary>();
         c->parent = this;
-        summary.push_back(c);
+        summary.append(c);
         return c;
     }
 
@@ -3736,7 +3771,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::AccessInterfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : summary)
+    for (auto c : summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3774,7 +3809,7 @@ Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::Summary()
     incomplete_sessions{YType::uint32, "incomplete-sessions"}
 {
 
-    yang_name = "summary"; yang_parent_name = "summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::~Summary()
@@ -3783,6 +3818,7 @@ Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::~Summary()
 
 bool Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| interface_state.is_set
@@ -3809,7 +3845,8 @@ bool Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::has_operation() co
 std::string Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "summary" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "summary";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3938,9 +3975,11 @@ bool Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::has_leaf_or_child_
 }
 
 Pppoe::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Interfaces::~Interfaces()
@@ -3949,7 +3988,8 @@ Pppoe::Nodes::Node::Interfaces::~Interfaces()
 
 bool Pppoe::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -3959,7 +3999,7 @@ bool Pppoe::Nodes::Node::Interfaces::has_data() const
 
 bool Pppoe::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -3989,7 +4029,7 @@ std::shared_ptr<Entity> Pppoe::Nodes::Node::Interfaces::get_child_by_name(const 
     {
         auto c = std::make_shared<Pppoe::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -4001,7 +4041,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Interfaces::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4040,12 +4080,12 @@ Pppoe::Nodes::Node::Interfaces::Interface::Interface()
     vlan_outer_id{YType::uint16, "vlan-outer-id"},
     vlan_inner_id{YType::uint16, "vlan-inner-id"},
     srg_state{YType::enumeration, "srg-state"}
-    	,
+        ,
     tags(std::make_shared<Pppoe::Nodes::Node::Interfaces::Interface::Tags>())
 {
     tags->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Interfaces::Interface::~Interface()
@@ -4054,6 +4094,7 @@ Pppoe::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool Pppoe::Nodes::Node::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| access_interface_name.is_set
@@ -4088,7 +4129,8 @@ bool Pppoe::Nodes::Node::Interfaces::Interface::has_operation() const
 std::string Pppoe::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4286,12 +4328,12 @@ Pppoe::Nodes::Node::Interfaces::Interface::Tags::Tags()
     dsl_actual_delay_up{YType::uint32, "dsl-actual-delay-up"},
     dsl_max_delay_down{YType::uint32, "dsl-max-delay-down"},
     dsl_actual_delay_down{YType::uint32, "dsl-actual-delay-down"}
-    	,
+        ,
     access_loop_encapsulation(std::make_shared<Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation>())
 {
     access_loop_encapsulation->parent = this;
 
-    yang_name = "tags"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tags"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Interfaces::Interface::Tags::~Tags()
@@ -4300,6 +4342,7 @@ Pppoe::Nodes::Node::Interfaces::Interface::Tags::~Tags()
 
 bool Pppoe::Nodes::Node::Interfaces::Interface::Tags::has_data() const
 {
+    if (is_presence_container) return true;
     return service_name.is_set
 	|| max_payload.is_set
 	|| host_uniq.is_set
@@ -4646,7 +4689,7 @@ Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation::Access
     encaps2{YType::uint8, "encaps2"}
 {
 
-    yang_name = "access-loop-encapsulation"; yang_parent_name = "tags"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-loop-encapsulation"; yang_parent_name = "tags"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation::~AccessLoopEncapsulation()
@@ -4655,6 +4698,7 @@ Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation::~Acces
 
 bool Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return data_link.is_set
 	|| encaps1.is_set
 	|| encaps2.is_set;
@@ -4745,9 +4789,11 @@ bool Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation::h
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroups()
+    :
+    bba_group(this, {"bba_group_name"})
 {
 
-    yang_name = "bba-groups"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bba-groups"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::~BbaGroups()
@@ -4756,7 +4802,8 @@ Pppoe::Nodes::Node::BbaGroups::~BbaGroups()
 
 bool Pppoe::Nodes::Node::BbaGroups::has_data() const
 {
-    for (std::size_t index=0; index<bba_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bba_group.len(); index++)
     {
         if(bba_group[index]->has_data())
             return true;
@@ -4766,7 +4813,7 @@ bool Pppoe::Nodes::Node::BbaGroups::has_data() const
 
 bool Pppoe::Nodes::Node::BbaGroups::has_operation() const
 {
-    for (std::size_t index=0; index<bba_group.size(); index++)
+    for (std::size_t index=0; index<bba_group.len(); index++)
     {
         if(bba_group[index]->has_operation())
             return true;
@@ -4796,7 +4843,7 @@ std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::get_child_by_name(const s
     {
         auto c = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup>();
         c->parent = this;
-        bba_group.push_back(c);
+        bba_group.append(c);
         return c;
     }
 
@@ -4808,7 +4855,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bba_group)
+    for (auto c : bba_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4837,18 +4884,18 @@ bool Pppoe::Nodes::Node::BbaGroups::has_leaf_or_child_of_name(const std::string 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::BbaGroup()
     :
     bba_group_name{YType::str, "bba-group-name"}
-    	,
+        ,
     limit_config(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig>())
-	,limits(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits>())
-	,throttles(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles>())
-	,throttle_config(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig>())
+    , limits(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits>())
+    , throttles(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles>())
+    , throttle_config(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig>())
 {
     limit_config->parent = this;
     limits->parent = this;
     throttles->parent = this;
     throttle_config->parent = this;
 
-    yang_name = "bba-group"; yang_parent_name = "bba-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bba-group"; yang_parent_name = "bba-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::~BbaGroup()
@@ -4857,6 +4904,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::~BbaGroup()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return bba_group_name.is_set
 	|| (limit_config !=  nullptr && limit_config->has_data())
 	|| (limits !=  nullptr && limits->has_data())
@@ -4877,7 +4925,8 @@ bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::has_operation() const
 std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bba-group" <<"[bba-group-name='" <<bba_group_name <<"']";
+    path_buffer << "bba-group";
+    ADD_KEY_TOKEN(bba_group_name, "bba-group-name");
     return path_buffer.str();
 }
 
@@ -4987,17 +5036,17 @@ bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::has_leaf_or_child_of_name(const st
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::LimitConfig()
     :
     card(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card>())
-	,access_intf(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf>())
-	,mac(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac>())
-	,mac_iwf(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf>())
-	,mac_access_interface(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface>())
-	,mac_iwf_access_interface(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface>())
-	,circuit_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId>())
-	,remote_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId>())
-	,circuit_id_and_remote_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId>())
-	,outer_vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId>())
-	,inner_vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId>())
-	,vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId>())
+    , access_intf(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf>())
+    , mac(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac>())
+    , mac_iwf(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf>())
+    , mac_access_interface(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface>())
+    , mac_iwf_access_interface(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface>())
+    , circuit_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId>())
+    , remote_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId>())
+    , circuit_id_and_remote_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId>())
+    , outer_vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId>())
+    , inner_vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId>())
+    , vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId>())
 {
     card->parent = this;
     access_intf->parent = this;
@@ -5012,7 +5061,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::LimitConfig()
     inner_vlan_id->parent = this;
     vlan_id->parent = this;
 
-    yang_name = "limit-config"; yang_parent_name = "bba-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit-config"; yang_parent_name = "bba-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::~LimitConfig()
@@ -5021,6 +5070,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::~LimitConfig()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (card !=  nullptr && card->has_data())
 	|| (access_intf !=  nullptr && access_intf->has_data())
 	|| (mac !=  nullptr && mac->has_data())
@@ -5270,7 +5320,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card::Card()
     radius_override_enabled{YType::int32, "radius-override-enabled"}
 {
 
-    yang_name = "card"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card::~Card()
@@ -5279,6 +5329,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card::~Card()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| threshold.is_set
 	|| radius_override_enabled.is_set;
@@ -5375,7 +5426,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf::AccessIntf()
     radius_override_enabled{YType::int32, "radius-override-enabled"}
 {
 
-    yang_name = "access-intf"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-intf"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf::~AccessIntf()
@@ -5384,6 +5435,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf::~AccessIntf()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| threshold.is_set
 	|| radius_override_enabled.is_set;
@@ -5480,7 +5532,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac::Mac()
     radius_override_enabled{YType::int32, "radius-override-enabled"}
 {
 
-    yang_name = "mac"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac::~Mac()
@@ -5489,6 +5541,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac::~Mac()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| threshold.is_set
 	|| radius_override_enabled.is_set;
@@ -5585,7 +5638,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf::MacIwf()
     radius_override_enabled{YType::int32, "radius-override-enabled"}
 {
 
-    yang_name = "mac-iwf"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-iwf"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf::~MacIwf()
@@ -5594,6 +5647,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf::~MacIwf()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| threshold.is_set
 	|| radius_override_enabled.is_set;
@@ -5690,7 +5744,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface::MacAcc
     radius_override_enabled{YType::int32, "radius-override-enabled"}
 {
 
-    yang_name = "mac-access-interface"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-access-interface"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface::~MacAccessInterface()
@@ -5699,6 +5753,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface::~MacAc
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| threshold.is_set
 	|| radius_override_enabled.is_set;
@@ -5795,7 +5850,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface::Mac
     radius_override_enabled{YType::int32, "radius-override-enabled"}
 {
 
-    yang_name = "mac-iwf-access-interface"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-iwf-access-interface"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface::~MacIwfAccessInterface()
@@ -5804,6 +5859,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface::~Ma
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| threshold.is_set
 	|| radius_override_enabled.is_set;
@@ -5900,7 +5956,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId::CircuitId()
     radius_override_enabled{YType::int32, "radius-override-enabled"}
 {
 
-    yang_name = "circuit-id"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId::~CircuitId()
@@ -5909,6 +5965,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId::~CircuitId()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| threshold.is_set
 	|| radius_override_enabled.is_set;
@@ -6005,7 +6062,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId::RemoteId()
     radius_override_enabled{YType::int32, "radius-override-enabled"}
 {
 
-    yang_name = "remote-id"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId::~RemoteId()
@@ -6014,6 +6071,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId::~RemoteId()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| threshold.is_set
 	|| radius_override_enabled.is_set;
@@ -6110,7 +6168,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId::Circ
     radius_override_enabled{YType::int32, "radius-override-enabled"}
 {
 
-    yang_name = "circuit-id-and-remote-id"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id-and-remote-id"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId::~CircuitIdAndRemoteId()
@@ -6119,6 +6177,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId::~Cir
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| threshold.is_set
 	|| radius_override_enabled.is_set;
@@ -6215,7 +6274,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId::OuterVlanId()
     radius_override_enabled{YType::int32, "radius-override-enabled"}
 {
 
-    yang_name = "outer-vlan-id"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outer-vlan-id"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId::~OuterVlanId()
@@ -6224,6 +6283,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId::~OuterVlanId(
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| threshold.is_set
 	|| radius_override_enabled.is_set;
@@ -6320,7 +6380,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId::InnerVlanId()
     radius_override_enabled{YType::int32, "radius-override-enabled"}
 {
 
-    yang_name = "inner-vlan-id"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inner-vlan-id"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId::~InnerVlanId()
@@ -6329,6 +6389,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId::~InnerVlanId(
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| threshold.is_set
 	|| radius_override_enabled.is_set;
@@ -6425,7 +6486,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId::VlanId()
     radius_override_enabled{YType::int32, "radius-override-enabled"}
 {
 
-    yang_name = "vlan-id"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-id"; yang_parent_name = "limit-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId::~VlanId()
@@ -6434,6 +6495,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId::~VlanId()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| threshold.is_set
 	|| radius_override_enabled.is_set;
@@ -6524,9 +6586,11 @@ bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId::has_leaf_or_c
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limits()
+    :
+    limit(this, {})
 {
 
-    yang_name = "limits"; yang_parent_name = "bba-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limits"; yang_parent_name = "bba-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::~Limits()
@@ -6535,7 +6599,8 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::~Limits()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::has_data() const
 {
-    for (std::size_t index=0; index<limit.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<limit.len(); index++)
     {
         if(limit[index]->has_data())
             return true;
@@ -6545,7 +6610,7 @@ bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::has_data() const
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::has_operation() const
 {
-    for (std::size_t index=0; index<limit.size(); index++)
+    for (std::size_t index=0; index<limit.len(); index++)
     {
         if(limit[index]->has_operation())
             return true;
@@ -6575,7 +6640,7 @@ std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::get_chi
     {
         auto c = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit>();
         c->parent = this;
-        limit.push_back(c);
+        limit.append(c);
         return c;
     }
 
@@ -6587,7 +6652,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::Bb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : limit)
+    for (auto c : limit.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6628,7 +6693,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::Limit()
     override_limit{YType::uint32, "override-limit"}
 {
 
-    yang_name = "limit"; yang_parent_name = "limits"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit"; yang_parent_name = "limits"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::~Limit()
@@ -6637,6 +6702,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::~Limit()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| mac_address.is_set
 	|| iwf.is_set
@@ -6831,9 +6897,11 @@ bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::has_leaf_or_child_o
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttles()
+    :
+    throttle(this, {})
 {
 
-    yang_name = "throttles"; yang_parent_name = "bba-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "throttles"; yang_parent_name = "bba-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::~Throttles()
@@ -6842,7 +6910,8 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::~Throttles()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::has_data() const
 {
-    for (std::size_t index=0; index<throttle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<throttle.len(); index++)
     {
         if(throttle[index]->has_data())
             return true;
@@ -6852,7 +6921,7 @@ bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::has_data() const
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::has_operation() const
 {
-    for (std::size_t index=0; index<throttle.size(); index++)
+    for (std::size_t index=0; index<throttle.len(); index++)
     {
         if(throttle[index]->has_operation())
             return true;
@@ -6882,7 +6951,7 @@ std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::get_
     {
         auto c = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle>();
         c->parent = this;
-        throttle.push_back(c);
+        throttle.append(c);
         return c;
     }
 
@@ -6894,7 +6963,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::Bb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : throttle)
+    for (auto c : throttle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6936,7 +7005,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::Throttle()
     padr_count{YType::uint32, "padr-count"}
 {
 
-    yang_name = "throttle"; yang_parent_name = "throttles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "throttle"; yang_parent_name = "throttles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::~Throttle()
@@ -6945,6 +7014,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::~Throttle()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| mac_address.is_set
 	|| iwf.is_set
@@ -7154,14 +7224,14 @@ bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::has_leaf_or_c
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::ThrottleConfig()
     :
     mac(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac>())
-	,mac_access_interface(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface>())
-	,mac_iwf_access_interface(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface>())
-	,circuit_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId>())
-	,remote_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId>())
-	,circuit_id_and_remote_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId>())
-	,outer_vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId>())
-	,inner_vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId>())
-	,vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId>())
+    , mac_access_interface(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface>())
+    , mac_iwf_access_interface(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface>())
+    , circuit_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId>())
+    , remote_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId>())
+    , circuit_id_and_remote_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId>())
+    , outer_vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId>())
+    , inner_vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId>())
+    , vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId>())
 {
     mac->parent = this;
     mac_access_interface->parent = this;
@@ -7173,7 +7243,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::ThrottleConfig()
     inner_vlan_id->parent = this;
     vlan_id->parent = this;
 
-    yang_name = "throttle-config"; yang_parent_name = "bba-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "throttle-config"; yang_parent_name = "bba-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::~ThrottleConfig()
@@ -7182,6 +7252,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::~ThrottleConfig()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (mac !=  nullptr && mac->has_data())
 	|| (mac_access_interface !=  nullptr && mac_access_interface->has_data())
 	|| (mac_iwf_access_interface !=  nullptr && mac_iwf_access_interface->has_data())
@@ -7383,7 +7454,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac::Mac()
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "mac"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac::~Mac()
@@ -7392,6 +7463,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac::~Mac()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -7488,7 +7560,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface::Mac
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "mac-access-interface"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-access-interface"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface::~MacAccessInterface()
@@ -7497,6 +7569,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface::~Ma
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -7593,7 +7666,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface::
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "mac-iwf-access-interface"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-iwf-access-interface"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface::~MacIwfAccessInterface()
@@ -7602,6 +7675,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface::
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -7698,7 +7772,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId::CircuitId()
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "circuit-id"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId::~CircuitId()
@@ -7707,6 +7781,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId::~CircuitId()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -7803,7 +7878,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId::RemoteId()
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "remote-id"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId::~RemoteId()
@@ -7812,6 +7887,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId::~RemoteId()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -7908,7 +7984,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId::C
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "circuit-id-and-remote-id"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id-and-remote-id"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId::~CircuitIdAndRemoteId()
@@ -7917,6 +7993,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId::~
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -8013,7 +8090,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId::OuterVlanI
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "outer-vlan-id"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outer-vlan-id"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId::~OuterVlanId()
@@ -8022,6 +8099,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId::~OuterVlan
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -8118,7 +8196,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId::InnerVlanI
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "inner-vlan-id"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inner-vlan-id"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId::~InnerVlanId()
@@ -8127,6 +8205,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId::~InnerVlan
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -8223,7 +8302,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId::VlanId()
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "vlan-id"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-id"; yang_parent_name = "throttle-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId::~VlanId()
@@ -8232,6 +8311,7 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId::~VlanId()
 
 bool Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -8335,7 +8415,7 @@ Pppoe::Nodes::Node::SummaryTotal::SummaryTotal()
     pppoema_subscriber_infra_flow_control{YType::uint32, "pppoema-subscriber-infra-flow-control"}
 {
 
-    yang_name = "summary-total"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-total"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppoe::Nodes::Node::SummaryTotal::~SummaryTotal()
@@ -8344,6 +8424,7 @@ Pppoe::Nodes::Node::SummaryTotal::~SummaryTotal()
 
 bool Pppoe::Nodes::Node::SummaryTotal::has_data() const
 {
+    if (is_presence_container) return true;
     return ready_access_interfaces.is_set
 	|| not_ready_access_interfaces.is_set
 	|| complete_sessions.is_set

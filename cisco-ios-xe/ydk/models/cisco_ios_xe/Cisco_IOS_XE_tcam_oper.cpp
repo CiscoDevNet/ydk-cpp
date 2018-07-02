@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_tcam_oper {
 
 TcamDetails::TcamDetails()
+    :
+    tcam_detail(this, {"asic_no", "name"})
 {
 
-    yang_name = "tcam-details"; yang_parent_name = "Cisco-IOS-XE-tcam-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "tcam-details"; yang_parent_name = "Cisco-IOS-XE-tcam-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 TcamDetails::~TcamDetails()
@@ -23,7 +25,8 @@ TcamDetails::~TcamDetails()
 
 bool TcamDetails::has_data() const
 {
-    for (std::size_t index=0; index<tcam_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tcam_detail.len(); index++)
     {
         if(tcam_detail[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool TcamDetails::has_data() const
 
 bool TcamDetails::has_operation() const
 {
-    for (std::size_t index=0; index<tcam_detail.size(); index++)
+    for (std::size_t index=0; index<tcam_detail.len(); index++)
     {
         if(tcam_detail[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> TcamDetails::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<TcamDetails::TcamDetail>();
         c->parent = this;
-        tcam_detail.push_back(c);
+        tcam_detail.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcamDetails::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tcam_detail)
+    for (auto c : tcam_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -136,7 +139,7 @@ TcamDetails::TcamDetail::TcamDetail()
     tcam_entries_used{YType::uint32, "tcam-entries-used"}
 {
 
-    yang_name = "tcam-detail"; yang_parent_name = "tcam-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tcam-detail"; yang_parent_name = "tcam-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TcamDetails::TcamDetail::~TcamDetail()
@@ -145,6 +148,7 @@ TcamDetails::TcamDetail::~TcamDetail()
 
 bool TcamDetails::TcamDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return asic_no.is_set
 	|| name.is_set
 	|| hash_entries_max.is_set
@@ -174,7 +178,9 @@ std::string TcamDetails::TcamDetail::get_absolute_path() const
 std::string TcamDetails::TcamDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tcam-detail" <<"[asic-no='" <<asic_no <<"']" <<"[name='" <<name <<"']";
+    path_buffer << "tcam-detail";
+    ADD_KEY_TOKEN(asic_no, "asic-no");
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 

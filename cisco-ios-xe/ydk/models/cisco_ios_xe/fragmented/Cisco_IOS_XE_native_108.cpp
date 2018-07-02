@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_108.hpp"
-#include "Cisco_IOS_XE_native_109.hpp"
 #include "Cisco_IOS_XE_native_111.hpp"
+#include "Cisco_IOS_XE_native_109.hpp"
 
 using namespace ydk;
 
@@ -19,7 +19,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Bfd()
 {
     local->parent = this;
 
-    yang_name = "bfd"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::PseudowireClass::Monitor::Peer::Bfd::~Bfd()
@@ -28,6 +28,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::~Bfd()
 
 bool Native::PseudowireClass::Monitor::Peer::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return (local !=  nullptr && local->has_data());
 }
 
@@ -100,7 +101,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Local::Local()
 {
     interface->parent = this;
 
-    yang_name = "local"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Monitor::Peer::Bfd::Local::~Local()
@@ -109,6 +110,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Local::~Local()
 
 bool Native::PseudowireClass::Monitor::Peer::Bfd::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface !=  nullptr && interface->has_data());
 }
 
@@ -209,18 +211,18 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::Interface()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::~Interface()
@@ -229,6 +231,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::~Interface()
 
 bool Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -764,7 +767,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::ATMSubinterface::
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::ATMSubinterface::~ATMSubinterface()
@@ -773,6 +776,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::ATMSubinterface::
 
 bool Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -841,7 +845,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::ATMACRsubinterfac
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::ATMACRsubinterface::~ATMACRsubinterface()
@@ -850,6 +854,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::ATMACRsubinterfac
 
 bool Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -918,7 +923,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::LISPSubinterface:
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::LISPSubinterface::~LISPSubinterface()
@@ -927,6 +932,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::LISPSubinterface:
 
 bool Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -995,7 +1001,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::PortChannelSubint
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::PortChannelSubinterface::~PortChannelSubinterface()
@@ -1004,6 +1010,7 @@ Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::PortChannelSubint
 
 bool Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -1070,12 +1077,12 @@ bool Native::PseudowireClass::Monitor::Peer::Bfd::Local::Interface::PortChannelS
 Native::PseudowireClass::PreferredPath::PreferredPath()
     :
     interface(std::make_shared<Native::PseudowireClass::PreferredPath::Interface>())
-	,peer_container(std::make_shared<Native::PseudowireClass::PreferredPath::PeerContainer>())
+    , peer_container(std::make_shared<Native::PseudowireClass::PreferredPath::PeerContainer>())
 {
     interface->parent = this;
     peer_container->parent = this;
 
-    yang_name = "preferred-path"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "preferred-path"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::PreferredPath::~PreferredPath()
@@ -1084,6 +1091,7 @@ Native::PseudowireClass::PreferredPath::~PreferredPath()
 
 bool Native::PseudowireClass::PreferredPath::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface !=  nullptr && interface->has_data())
 	|| (peer_container !=  nullptr && peer_container->has_data());
 }
@@ -1173,7 +1181,7 @@ Native::PseudowireClass::PreferredPath::Interface::Interface()
     disable_fallback{YType::empty, "disable-fallback"}
 {
 
-    yang_name = "interface"; yang_parent_name = "preferred-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "preferred-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::PreferredPath::Interface::~Interface()
@@ -1182,6 +1190,7 @@ Native::PseudowireClass::PreferredPath::Interface::~Interface()
 
 bool Native::PseudowireClass::PreferredPath::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel.is_set
 	|| tunnel_tp.is_set
 	|| disable_fallback.is_set;
@@ -1277,7 +1286,7 @@ Native::PseudowireClass::PreferredPath::PeerContainer::PeerContainer()
     disable_fallback{YType::empty, "disable-fallback"}
 {
 
-    yang_name = "peer-container"; yang_parent_name = "preferred-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-container"; yang_parent_name = "preferred-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::PreferredPath::PeerContainer::~PeerContainer()
@@ -1286,6 +1295,7 @@ Native::PseudowireClass::PreferredPath::PeerContainer::~PeerContainer()
 
 bool Native::PseudowireClass::PreferredPath::PeerContainer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer.is_set
 	|| disable_fallback.is_set;
 }
@@ -1367,7 +1377,7 @@ Native::PseudowireClass::ProtocolMpls::ProtocolMpls()
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "protocol-mpls"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-mpls"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::ProtocolMpls::~ProtocolMpls()
@@ -1376,6 +1386,7 @@ Native::PseudowireClass::ProtocolMpls::~ProtocolMpls()
 
 bool Native::PseudowireClass::ProtocolMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set;
 }
 
@@ -1439,37 +1450,38 @@ bool Native::PseudowireClass::ProtocolMpls::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-Native::PseudowireClass::ProtocolL2Tpv2::ProtocolL2Tpv2()
+Native::PseudowireClass::ProtocolL2tpv2::ProtocolL2tpv2()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "protocol-l2tpv2"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-l2tpv2"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::PseudowireClass::ProtocolL2Tpv2::~ProtocolL2Tpv2()
+Native::PseudowireClass::ProtocolL2tpv2::~ProtocolL2tpv2()
 {
 }
 
-bool Native::PseudowireClass::ProtocolL2Tpv2::has_data() const
+bool Native::PseudowireClass::ProtocolL2tpv2::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set;
 }
 
-bool Native::PseudowireClass::ProtocolL2Tpv2::has_operation() const
+bool Native::PseudowireClass::ProtocolL2tpv2::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::PseudowireClass::ProtocolL2Tpv2::get_segment_path() const
+std::string Native::PseudowireClass::ProtocolL2tpv2::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-l2vpn:protocol-l2tpv2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::PseudowireClass::ProtocolL2Tpv2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::PseudowireClass::ProtocolL2tpv2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1479,19 +1491,19 @@ std::vector<std::pair<std::string, LeafData> > Native::PseudowireClass::Protocol
 
 }
 
-std::shared_ptr<Entity> Native::PseudowireClass::ProtocolL2Tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::PseudowireClass::ProtocolL2tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::PseudowireClass::ProtocolL2Tpv2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::PseudowireClass::ProtocolL2tpv2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::PseudowireClass::ProtocolL2Tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::PseudowireClass::ProtocolL2tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -1501,7 +1513,7 @@ void Native::PseudowireClass::ProtocolL2Tpv2::set_value(const std::string & valu
     }
 }
 
-void Native::PseudowireClass::ProtocolL2Tpv2::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::PseudowireClass::ProtocolL2tpv2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -1509,44 +1521,45 @@ void Native::PseudowireClass::ProtocolL2Tpv2::set_filter(const std::string & val
     }
 }
 
-bool Native::PseudowireClass::ProtocolL2Tpv2::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::PseudowireClass::ProtocolL2tpv2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
     return false;
 }
 
-Native::PseudowireClass::ProtocolL2Tpv3::ProtocolL2Tpv3()
+Native::PseudowireClass::ProtocolL2tpv3::ProtocolL2tpv3()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "protocol-l2tpv3"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-l2tpv3"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::PseudowireClass::ProtocolL2Tpv3::~ProtocolL2Tpv3()
+Native::PseudowireClass::ProtocolL2tpv3::~ProtocolL2tpv3()
 {
 }
 
-bool Native::PseudowireClass::ProtocolL2Tpv3::has_data() const
+bool Native::PseudowireClass::ProtocolL2tpv3::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set;
 }
 
-bool Native::PseudowireClass::ProtocolL2Tpv3::has_operation() const
+bool Native::PseudowireClass::ProtocolL2tpv3::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::PseudowireClass::ProtocolL2Tpv3::get_segment_path() const
+std::string Native::PseudowireClass::ProtocolL2tpv3::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-l2vpn:protocol-l2tpv3";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::PseudowireClass::ProtocolL2Tpv3::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::PseudowireClass::ProtocolL2tpv3::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1556,19 +1569,19 @@ std::vector<std::pair<std::string, LeafData> > Native::PseudowireClass::Protocol
 
 }
 
-std::shared_ptr<Entity> Native::PseudowireClass::ProtocolL2Tpv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::PseudowireClass::ProtocolL2tpv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::PseudowireClass::ProtocolL2Tpv3::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::PseudowireClass::ProtocolL2tpv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::PseudowireClass::ProtocolL2Tpv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::PseudowireClass::ProtocolL2tpv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -1578,7 +1591,7 @@ void Native::PseudowireClass::ProtocolL2Tpv3::set_value(const std::string & valu
     }
 }
 
-void Native::PseudowireClass::ProtocolL2Tpv3::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::PseudowireClass::ProtocolL2tpv3::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -1586,7 +1599,7 @@ void Native::PseudowireClass::ProtocolL2Tpv3::set_filter(const std::string & val
     }
 }
 
-bool Native::PseudowireClass::ProtocolL2Tpv3::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::PseudowireClass::ProtocolL2tpv3::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
@@ -1596,18 +1609,18 @@ bool Native::PseudowireClass::ProtocolL2Tpv3::has_leaf_or_child_of_name(const st
 Native::PseudowireClass::Status::Status()
     :
     decoupled{YType::empty, "decoupled"}
-    	,
+        ,
     admin_down(std::make_shared<Native::PseudowireClass::Status::AdminDown>())
-	,control_plane(std::make_shared<Native::PseudowireClass::Status::ControlPlane>())
-	,peer(std::make_shared<Native::PseudowireClass::Status::Peer>())
-	,redundancy(std::make_shared<Native::PseudowireClass::Status::Redundancy>())
+    , control_plane(std::make_shared<Native::PseudowireClass::Status::ControlPlane>())
+    , peer(std::make_shared<Native::PseudowireClass::Status::Peer>())
+    , redundancy(std::make_shared<Native::PseudowireClass::Status::Redundancy>())
 {
     admin_down->parent = this;
     control_plane->parent = this;
     peer->parent = this;
     redundancy->parent = this;
 
-    yang_name = "status"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "status"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::PseudowireClass::Status::~Status()
@@ -1616,6 +1629,7 @@ Native::PseudowireClass::Status::~Status()
 
 bool Native::PseudowireClass::Status::has_data() const
 {
+    if (is_presence_container) return true;
     return decoupled.is_set
 	|| (admin_down !=  nullptr && admin_down->has_data())
 	|| (control_plane !=  nullptr && control_plane->has_data())
@@ -1748,7 +1762,7 @@ Native::PseudowireClass::Status::AdminDown::AdminDown()
     disconnect{YType::empty, "disconnect"}
 {
 
-    yang_name = "admin-down"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "admin-down"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Status::AdminDown::~AdminDown()
@@ -1757,6 +1771,7 @@ Native::PseudowireClass::Status::AdminDown::~AdminDown()
 
 bool Native::PseudowireClass::Status::AdminDown::has_data() const
 {
+    if (is_presence_container) return true;
     return disconnect.is_set;
 }
 
@@ -1825,7 +1840,7 @@ Native::PseudowireClass::Status::ControlPlane::ControlPlane()
     route_watch{YType::empty, "route-watch"}
 {
 
-    yang_name = "control-plane"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "control-plane"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Status::ControlPlane::~ControlPlane()
@@ -1834,6 +1849,7 @@ Native::PseudowireClass::Status::ControlPlane::~ControlPlane()
 
 bool Native::PseudowireClass::Status::ControlPlane::has_data() const
 {
+    if (is_presence_container) return true;
     return route_watch.is_set;
 }
 
@@ -1903,7 +1919,7 @@ Native::PseudowireClass::Status::Peer::Peer()
 {
     topology->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Status::Peer::~Peer()
@@ -1912,6 +1928,7 @@ Native::PseudowireClass::Status::Peer::~Peer()
 
 bool Native::PseudowireClass::Status::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return (topology !=  nullptr && topology->has_data());
 }
 
@@ -1983,7 +2000,7 @@ Native::PseudowireClass::Status::Peer::Topology::Topology()
     dual_homed{YType::empty, "dual-homed"}
 {
 
-    yang_name = "topology"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Status::Peer::Topology::~Topology()
@@ -1992,6 +2009,7 @@ Native::PseudowireClass::Status::Peer::Topology::~Topology()
 
 bool Native::PseudowireClass::Status::Peer::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return dual_homed.is_set;
 }
 
@@ -2060,7 +2078,7 @@ Native::PseudowireClass::Status::Redundancy::Redundancy()
     master{YType::empty, "master"}
 {
 
-    yang_name = "redundancy"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redundancy"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Status::Redundancy::~Redundancy()
@@ -2069,6 +2087,7 @@ Native::PseudowireClass::Status::Redundancy::~Redundancy()
 
 bool Native::PseudowireClass::Status::Redundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return master.is_set;
 }
 
@@ -2137,7 +2156,7 @@ Native::PseudowireClass::Switching::Switching()
     tlv{YType::empty, "tlv"}
 {
 
-    yang_name = "switching"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switching"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Switching::~Switching()
@@ -2146,6 +2165,7 @@ Native::PseudowireClass::Switching::~Switching()
 
 bool Native::PseudowireClass::Switching::has_data() const
 {
+    if (is_presence_container) return true;
     return tlv.is_set;
 }
 
@@ -2215,7 +2235,7 @@ Native::ControlPlane::ControlPlane()
 {
     service_policy->parent = this;
 
-    yang_name = "control-plane"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "control-plane"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::ControlPlane::~ControlPlane()
@@ -2224,6 +2244,7 @@ Native::ControlPlane::~ControlPlane()
 
 bool Native::ControlPlane::has_data() const
 {
+    if (is_presence_container) return true;
     return (service_policy !=  nullptr && service_policy->has_data());
 }
 
@@ -2303,7 +2324,7 @@ Native::ControlPlane::ServicePolicy::ServicePolicy()
     output{YType::str, "output"}
 {
 
-    yang_name = "service-policy"; yang_parent_name = "control-plane"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service-policy"; yang_parent_name = "control-plane"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ControlPlane::ServicePolicy::~ServicePolicy()
@@ -2312,6 +2333,7 @@ Native::ControlPlane::ServicePolicy::~ServicePolicy()
 
 bool Native::ControlPlane::ServicePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return input.is_set
 	|| output.is_set;
 }
@@ -2401,7 +2423,7 @@ Native::ControlPlaneHost::ControlPlaneHost()
 {
     control_plane->parent = this;
 
-    yang_name = "control-plane-host"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "control-plane-host"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ControlPlaneHost::~ControlPlaneHost()
@@ -2410,6 +2432,7 @@ Native::ControlPlaneHost::~ControlPlaneHost()
 
 bool Native::ControlPlaneHost::has_data() const
 {
+    if (is_presence_container) return true;
     return (control_plane !=  nullptr && control_plane->has_data());
 }
 
@@ -2488,7 +2511,7 @@ Native::ControlPlaneHost::ControlPlane::ControlPlane()
     host(nullptr) // presence node
 {
 
-    yang_name = "control-plane"; yang_parent_name = "control-plane-host"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "control-plane"; yang_parent_name = "control-plane-host"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ControlPlaneHost::ControlPlane::~ControlPlane()
@@ -2497,6 +2520,7 @@ Native::ControlPlaneHost::ControlPlane::~ControlPlane()
 
 bool Native::ControlPlaneHost::ControlPlane::has_data() const
 {
+    if (is_presence_container) return true;
     return (host !=  nullptr && host->has_data());
 }
 
@@ -2571,9 +2595,11 @@ bool Native::ControlPlaneHost::ControlPlane::has_leaf_or_child_of_name(const std
 }
 
 Native::ControlPlaneHost::ControlPlane::Host::Host()
+    :
+    management_interface(this, {"interface_name"})
 {
 
-    yang_name = "host"; yang_parent_name = "control-plane"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "host"; yang_parent_name = "control-plane"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::ControlPlaneHost::ControlPlane::Host::~Host()
@@ -2582,7 +2608,8 @@ Native::ControlPlaneHost::ControlPlane::Host::~Host()
 
 bool Native::ControlPlaneHost::ControlPlane::Host::has_data() const
 {
-    for (std::size_t index=0; index<management_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<management_interface.len(); index++)
     {
         if(management_interface[index]->has_data())
             return true;
@@ -2592,7 +2619,7 @@ bool Native::ControlPlaneHost::ControlPlane::Host::has_data() const
 
 bool Native::ControlPlaneHost::ControlPlane::Host::has_operation() const
 {
-    for (std::size_t index=0; index<management_interface.size(); index++)
+    for (std::size_t index=0; index<management_interface.len(); index++)
     {
         if(management_interface[index]->has_operation())
             return true;
@@ -2629,7 +2656,7 @@ std::shared_ptr<Entity> Native::ControlPlaneHost::ControlPlane::Host::get_child_
     {
         auto c = std::make_shared<Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface>();
         c->parent = this;
-        management_interface.push_back(c);
+        management_interface.append(c);
         return c;
     }
 
@@ -2641,7 +2668,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ControlPlaneHost::Control
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : management_interface)
+    for (auto c : management_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2670,12 +2697,12 @@ bool Native::ControlPlaneHost::ControlPlane::Host::has_leaf_or_child_of_name(con
 Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::ManagementInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     allow(std::make_shared<Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::Allow>())
 {
     allow->parent = this;
 
-    yang_name = "management-interface"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "management-interface"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::~ManagementInterface()
@@ -2684,6 +2711,7 @@ Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::~ManagementIn
 
 bool Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (allow !=  nullptr && allow->has_data());
 }
@@ -2705,7 +2733,8 @@ std::string Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::g
 std::string Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "management-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "management-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2783,7 +2812,7 @@ Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::Allow::Allow(
     tl1{YType::empty, "tl1"}
 {
 
-    yang_name = "allow"; yang_parent_name = "management-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "allow"; yang_parent_name = "management-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::Allow::~Allow()
@@ -2792,6 +2821,7 @@ Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::Allow::~Allow
 
 bool Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::Allow::has_data() const
 {
+    if (is_presence_container) return true;
     return beep.is_set
 	|| ftp.is_set
 	|| http.is_set
@@ -2962,13 +2992,13 @@ bool Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::Allow::h
 Native::Clock::Clock()
     :
     calendar_valid(nullptr) // presence node
-	,summer_time(std::make_shared<Native::Clock::SummerTime>())
-	,timezone(std::make_shared<Native::Clock::Timezone>())
+    , summer_time(std::make_shared<Native::Clock::SummerTime>())
+    , timezone(std::make_shared<Native::Clock::Timezone>())
 {
     summer_time->parent = this;
     timezone->parent = this;
 
-    yang_name = "clock"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clock"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Clock::~Clock()
@@ -2977,6 +3007,7 @@ Native::Clock::~Clock()
 
 bool Native::Clock::has_data() const
 {
+    if (is_presence_container) return true;
     return (calendar_valid !=  nullptr && calendar_valid->has_data())
 	|| (summer_time !=  nullptr && summer_time->has_data())
 	|| (timezone !=  nullptr && timezone->has_data());
@@ -3085,7 +3116,7 @@ bool Native::Clock::has_leaf_or_child_of_name(const std::string & name) const
 Native::Clock::CalendarValid::CalendarValid()
 {
 
-    yang_name = "calendar-valid"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "calendar-valid"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Clock::CalendarValid::~CalendarValid()
@@ -3094,6 +3125,7 @@ Native::Clock::CalendarValid::~CalendarValid()
 
 bool Native::Clock::CalendarValid::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3175,7 +3207,7 @@ Native::Clock::SummerTime::SummerTime()
     recurring_offset{YType::uint16, "recurring-offset"}
 {
 
-    yang_name = "summer-time"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summer-time"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Clock::SummerTime::~SummerTime()
@@ -3184,6 +3216,7 @@ Native::Clock::SummerTime::~SummerTime()
 
 bool Native::Clock::SummerTime::has_data() const
 {
+    if (is_presence_container) return true;
     return zone.is_set
 	|| date.is_set
 	|| start_day.is_set
@@ -3522,7 +3555,7 @@ Native::Clock::Timezone::Timezone()
     minutes{YType::int8, "minutes"}
 {
 
-    yang_name = "timezone"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timezone"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Clock::Timezone::~Timezone()
@@ -3531,6 +3564,7 @@ Native::Clock::Timezone::~Timezone()
 
 bool Native::Clock::Timezone::has_data() const
 {
+    if (is_presence_container) return true;
     return zone.is_set
 	|| offset.is_set
 	|| hours.is_set
@@ -3648,23 +3682,25 @@ Native::Logging::Logging()
     snmp_authfail{YType::empty, "snmp-authfail"},
     buginf{YType::empty, "buginf"},
     userinfo{YType::empty, "userinfo"}
-    	,
-    persistent(nullptr) // presence node
-	,monitor_conf(std::make_shared<Native::Logging::MonitorConf>())
-	,monitor(nullptr) // presence node
-	,buffered(nullptr) // presence node
-	,console_conf(std::make_shared<Native::Logging::ConsoleConf>())
-	,console(nullptr) // presence node
-	,event(std::make_shared<Native::Logging::Event>())
-	,esm(std::make_shared<Native::Logging::Esm>())
-	,history(std::make_shared<Native::Logging::History>())
-	,host(std::make_shared<Native::Logging::Host>())
-	,origin_id(std::make_shared<Native::Logging::OriginId>())
-	,rate_limit_conf(std::make_shared<Native::Logging::RateLimitConf>())
-	,rate_limit(nullptr) // presence node
-	,snmp_trap(std::make_shared<Native::Logging::SnmpTrap>())
-	,trap(nullptr) // presence node
-	,file(std::make_shared<Native::Logging::File>())
+        ,
+    discriminator(this, {"name"})
+    , persistent(nullptr) // presence node
+    , monitor_conf(std::make_shared<Native::Logging::MonitorConf>())
+    , monitor(nullptr) // presence node
+    , buffered(nullptr) // presence node
+    , console_conf(std::make_shared<Native::Logging::ConsoleConf>())
+    , console(nullptr) // presence node
+    , event(std::make_shared<Native::Logging::Event>())
+    , esm(std::make_shared<Native::Logging::Esm>())
+    , history(std::make_shared<Native::Logging::History>())
+    , host(std::make_shared<Native::Logging::Host>())
+    , origin_id(std::make_shared<Native::Logging::OriginId>())
+    , rate_limit_conf(std::make_shared<Native::Logging::RateLimitConf>())
+    , rate_limit(nullptr) // presence node
+    , source_interface(this, {"interface_name"})
+    , snmp_trap(std::make_shared<Native::Logging::SnmpTrap>())
+    , trap(nullptr) // presence node
+    , file(std::make_shared<Native::Logging::File>())
 {
     monitor_conf->parent = this;
     console_conf->parent = this;
@@ -3677,7 +3713,7 @@ Native::Logging::Logging()
     snmp_trap->parent = this;
     file->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::~Logging()
@@ -3686,12 +3722,13 @@ Native::Logging::~Logging()
 
 bool Native::Logging::has_data() const
 {
-    for (std::size_t index=0; index<discriminator.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<discriminator.len(); index++)
     {
         if(discriminator[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<source_interface.size(); index++)
+    for (std::size_t index=0; index<source_interface.len(); index++)
     {
         if(source_interface[index]->has_data())
             return true;
@@ -3722,12 +3759,12 @@ bool Native::Logging::has_data() const
 
 bool Native::Logging::has_operation() const
 {
-    for (std::size_t index=0; index<discriminator.size(); index++)
+    for (std::size_t index=0; index<discriminator.len(); index++)
     {
         if(discriminator[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<source_interface.size(); index++)
+    for (std::size_t index=0; index<source_interface.len(); index++)
     {
         if(source_interface[index]->has_operation())
             return true;
@@ -3792,7 +3829,7 @@ std::shared_ptr<Entity> Native::Logging::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Native::Logging::Discriminator>();
         c->parent = this;
-        discriminator.push_back(c);
+        discriminator.append(c);
         return c;
     }
 
@@ -3917,7 +3954,7 @@ std::shared_ptr<Entity> Native::Logging::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Native::Logging::SourceInterface>();
         c->parent = this;
-        source_interface.push_back(c);
+        source_interface.append(c);
         return c;
     }
 
@@ -3956,7 +3993,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : discriminator)
+    for (auto c : discriminator.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4030,7 +4067,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::get_children() c
     }
 
     count = 0;
-    for (auto const & c : source_interface)
+    for (auto c : source_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4135,12 +4172,12 @@ Native::Logging::Discriminator::Discriminator()
     :
     name{YType::str, "name"},
     severity{YType::str, "severity"}
-    	,
+        ,
     msg_body(std::make_shared<Native::Logging::Discriminator::MsgBody>())
 {
     msg_body->parent = this;
 
-    yang_name = "discriminator"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "discriminator"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Discriminator::~Discriminator()
@@ -4149,6 +4186,7 @@ Native::Logging::Discriminator::~Discriminator()
 
 bool Native::Logging::Discriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| severity.is_set
 	|| (msg_body !=  nullptr && msg_body->has_data());
@@ -4172,7 +4210,8 @@ std::string Native::Logging::Discriminator::get_absolute_path() const
 std::string Native::Logging::Discriminator::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "discriminator" <<"[name='" <<name <<"']";
+    path_buffer << "discriminator";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -4254,7 +4293,7 @@ Native::Logging::Discriminator::MsgBody::MsgBody()
     includes{YType::str, "includes"}
 {
 
-    yang_name = "msg-body"; yang_parent_name = "discriminator"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "msg-body"; yang_parent_name = "discriminator"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Discriminator::MsgBody::~MsgBody()
@@ -4263,6 +4302,7 @@ Native::Logging::Discriminator::MsgBody::~MsgBody()
 
 bool Native::Logging::Discriminator::MsgBody::has_data() const
 {
+    if (is_presence_container) return true;
     return drops.is_set
 	|| includes.is_set;
 }
@@ -4351,7 +4391,7 @@ Native::Logging::Persistent::Persistent()
     protected_{YType::empty, "protected"}
 {
 
-    yang_name = "persistent"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "persistent"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Logging::Persistent::~Persistent()
@@ -4360,6 +4400,7 @@ Native::Logging::Persistent::~Persistent()
 
 bool Native::Logging::Persistent::has_data() const
 {
+    if (is_presence_container) return true;
     return url.is_set
 	|| size.is_set
 	|| filesize.is_set
@@ -4526,7 +4567,7 @@ Native::Logging::MonitorConf::MonitorConf()
     monitor{YType::boolean, "monitor"}
 {
 
-    yang_name = "monitor-conf"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "monitor-conf"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::MonitorConf::~MonitorConf()
@@ -4535,6 +4576,7 @@ Native::Logging::MonitorConf::~MonitorConf()
 
 bool Native::Logging::MonitorConf::has_data() const
 {
+    if (is_presence_container) return true;
     return monitor.is_set;
 }
 
@@ -4608,9 +4650,11 @@ bool Native::Logging::MonitorConf::has_leaf_or_child_of_name(const std::string &
 Native::Logging::Monitor::Monitor()
     :
     severity{YType::str, "severity"}
+        ,
+    discriminator(this, {"name"})
 {
 
-    yang_name = "monitor"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "monitor"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Logging::Monitor::~Monitor()
@@ -4619,7 +4663,8 @@ Native::Logging::Monitor::~Monitor()
 
 bool Native::Logging::Monitor::has_data() const
 {
-    for (std::size_t index=0; index<discriminator.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<discriminator.len(); index++)
     {
         if(discriminator[index]->has_data())
             return true;
@@ -4629,7 +4674,7 @@ bool Native::Logging::Monitor::has_data() const
 
 bool Native::Logging::Monitor::has_operation() const
 {
-    for (std::size_t index=0; index<discriminator.size(); index++)
+    for (std::size_t index=0; index<discriminator.len(); index++)
     {
         if(discriminator[index]->has_operation())
             return true;
@@ -4668,7 +4713,7 @@ std::shared_ptr<Entity> Native::Logging::Monitor::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Native::Logging::Monitor::Discriminator>();
         c->parent = this;
-        discriminator.push_back(c);
+        discriminator.append(c);
         return c;
     }
 
@@ -4680,7 +4725,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::Monitor::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : discriminator)
+    for (auto c : discriminator.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4722,7 +4767,7 @@ Native::Logging::Monitor::Discriminator::Discriminator()
     severity{YType::str, "severity"}
 {
 
-    yang_name = "discriminator"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "discriminator"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Monitor::Discriminator::~Discriminator()
@@ -4731,6 +4776,7 @@ Native::Logging::Monitor::Discriminator::~Discriminator()
 
 bool Native::Logging::Monitor::Discriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| severity.is_set;
 }
@@ -4752,7 +4798,8 @@ std::string Native::Logging::Monitor::Discriminator::get_absolute_path() const
 std::string Native::Logging::Monitor::Discriminator::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "discriminator" <<"[name='" <<name <<"']";
+    path_buffer << "discriminator";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -4818,12 +4865,13 @@ Native::Logging::Buffered::Buffered()
     :
     severity{YType::str, "severity"},
     xxml{YType::uint32, "xxml"}
-    	,
-    size(std::make_shared<Native::Logging::Buffered::Size>())
+        ,
+    discriminator(this, {"name"})
+    , size(std::make_shared<Native::Logging::Buffered::Size>())
 {
     size->parent = this;
 
-    yang_name = "buffered"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "buffered"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Logging::Buffered::~Buffered()
@@ -4832,7 +4880,8 @@ Native::Logging::Buffered::~Buffered()
 
 bool Native::Logging::Buffered::has_data() const
 {
-    for (std::size_t index=0; index<discriminator.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<discriminator.len(); index++)
     {
         if(discriminator[index]->has_data())
             return true;
@@ -4844,7 +4893,7 @@ bool Native::Logging::Buffered::has_data() const
 
 bool Native::Logging::Buffered::has_operation() const
 {
-    for (std::size_t index=0; index<discriminator.size(); index++)
+    for (std::size_t index=0; index<discriminator.len(); index++)
     {
         if(discriminator[index]->has_operation())
             return true;
@@ -4886,7 +4935,7 @@ std::shared_ptr<Entity> Native::Logging::Buffered::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Logging::Buffered::Discriminator>();
         c->parent = this;
-        discriminator.push_back(c);
+        discriminator.append(c);
         return c;
     }
 
@@ -4907,7 +4956,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::Buffered::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : discriminator)
+    for (auto c : discriminator.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4965,7 +5014,7 @@ Native::Logging::Buffered::Discriminator::Discriminator()
     severity{YType::str, "severity"}
 {
 
-    yang_name = "discriminator"; yang_parent_name = "buffered"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "discriminator"; yang_parent_name = "buffered"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Buffered::Discriminator::~Discriminator()
@@ -4974,6 +5023,7 @@ Native::Logging::Buffered::Discriminator::~Discriminator()
 
 bool Native::Logging::Buffered::Discriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| size_value.is_set
 	|| severity.is_set;
@@ -4997,7 +5047,8 @@ std::string Native::Logging::Buffered::Discriminator::get_absolute_path() const
 std::string Native::Logging::Buffered::Discriminator::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "discriminator" <<"[name='" <<name <<"']";
+    path_buffer << "discriminator";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5076,7 +5127,7 @@ Native::Logging::Buffered::Size::Size()
     severity{YType::str, "severity"}
 {
 
-    yang_name = "size"; yang_parent_name = "buffered"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "size"; yang_parent_name = "buffered"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Buffered::Size::~Size()
@@ -5085,6 +5136,7 @@ Native::Logging::Buffered::Size::~Size()
 
 bool Native::Logging::Buffered::Size::has_data() const
 {
+    if (is_presence_container) return true;
     return size_value.is_set
 	|| severity.is_set;
 }
@@ -5173,7 +5225,7 @@ Native::Logging::ConsoleConf::ConsoleConf()
     console{YType::boolean, "console"}
 {
 
-    yang_name = "console-conf"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "console-conf"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::ConsoleConf::~ConsoleConf()
@@ -5182,6 +5234,7 @@ Native::Logging::ConsoleConf::~ConsoleConf()
 
 bool Native::Logging::ConsoleConf::has_data() const
 {
+    if (is_presence_container) return true;
     return console.is_set;
 }
 
@@ -5258,9 +5311,11 @@ Native::Logging::Console::Console()
     guaranteed{YType::empty, "guaranteed"},
     xxml{YType::str, "xxml"},
     severity{YType::str, "severity"}
+        ,
+    discriminator(this, {"name"})
 {
 
-    yang_name = "console"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "console"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Logging::Console::~Console()
@@ -5269,7 +5324,8 @@ Native::Logging::Console::~Console()
 
 bool Native::Logging::Console::has_data() const
 {
-    for (std::size_t index=0; index<discriminator.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<discriminator.len(); index++)
     {
         if(discriminator[index]->has_data())
             return true;
@@ -5282,7 +5338,7 @@ bool Native::Logging::Console::has_data() const
 
 bool Native::Logging::Console::has_operation() const
 {
-    for (std::size_t index=0; index<discriminator.size(); index++)
+    for (std::size_t index=0; index<discriminator.len(); index++)
     {
         if(discriminator[index]->has_operation())
             return true;
@@ -5327,7 +5383,7 @@ std::shared_ptr<Entity> Native::Logging::Console::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Native::Logging::Console::Discriminator>();
         c->parent = this;
-        discriminator.push_back(c);
+        discriminator.append(c);
         return c;
     }
 
@@ -5339,7 +5395,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::Console::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : discriminator)
+    for (auto c : discriminator.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5411,7 +5467,7 @@ Native::Logging::Console::Discriminator::Discriminator()
     severity{YType::str, "severity"}
 {
 
-    yang_name = "discriminator"; yang_parent_name = "console"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "discriminator"; yang_parent_name = "console"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Console::Discriminator::~Discriminator()
@@ -5420,6 +5476,7 @@ Native::Logging::Console::Discriminator::~Discriminator()
 
 bool Native::Logging::Console::Discriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| severity.is_set;
 }
@@ -5441,7 +5498,8 @@ std::string Native::Logging::Console::Discriminator::get_absolute_path() const
 std::string Native::Logging::Console::Discriminator::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "discriminator" <<"[name='" <<name <<"']";
+    path_buffer << "discriminator";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5509,7 +5567,7 @@ Native::Logging::Event::Event()
 {
     link_status->parent = this;
 
-    yang_name = "event"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "event"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Event::~Event()
@@ -5518,6 +5576,7 @@ Native::Logging::Event::~Event()
 
 bool Native::Logging::Event::has_data() const
 {
+    if (is_presence_container) return true;
     return (link_status !=  nullptr && link_status->has_data());
 }
 
@@ -5598,7 +5657,7 @@ Native::Logging::Event::LinkStatus::LinkStatus()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "link-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Event::LinkStatus::~LinkStatus()
@@ -5607,6 +5666,7 @@ Native::Logging::Event::LinkStatus::~LinkStatus()
 
 bool Native::Logging::Event::LinkStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return boot.is_set
 	|| global.is_set
 	|| default_.is_set;
@@ -5708,7 +5768,7 @@ Native::Logging::Esm::Esm()
     config{YType::empty, "config"}
 {
 
-    yang_name = "esm"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "esm"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Esm::~Esm()
@@ -5717,6 +5777,7 @@ Native::Logging::Esm::~Esm()
 
 bool Native::Logging::Esm::has_data() const
 {
+    if (is_presence_container) return true;
     return config.is_set;
 }
 
@@ -5793,7 +5854,7 @@ Native::Logging::History::History()
     severity_level{YType::str, "severity-level"}
 {
 
-    yang_name = "history"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "history"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::History::~History()
@@ -5802,6 +5863,7 @@ Native::Logging::History::~History()
 
 bool Native::Logging::History::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set
 	|| severity_level.is_set;
 }
@@ -5887,11 +5949,15 @@ bool Native::Logging::History::has_leaf_or_child_of_name(const std::string & nam
 
 Native::Logging::Host::Host()
     :
-    ipv6(std::make_shared<Native::Logging::Host::Ipv6>())
+    ipv4_host_list(this, {"ipv4_host"})
+    , ipv4_host_transport_list(this, {"ipv4_host"})
+    , ipv4_host_vrf_list(this, {"ipv4_host", "vrf"})
+    , ipv4_host_vrf_transport_list(this, {"ipv4_host", "vrf"})
+    , ipv6(std::make_shared<Native::Logging::Host::Ipv6>())
 {
     ipv6->parent = this;
 
-    yang_name = "host"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "host"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Host::~Host()
@@ -5900,22 +5966,23 @@ Native::Logging::Host::~Host()
 
 bool Native::Logging::Host::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_host_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_host_list.len(); index++)
     {
         if(ipv4_host_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_host_transport_list.size(); index++)
+    for (std::size_t index=0; index<ipv4_host_transport_list.len(); index++)
     {
         if(ipv4_host_transport_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_host_vrf_list.size(); index++)
+    for (std::size_t index=0; index<ipv4_host_vrf_list.len(); index++)
     {
         if(ipv4_host_vrf_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_host_vrf_transport_list.size(); index++)
+    for (std::size_t index=0; index<ipv4_host_vrf_transport_list.len(); index++)
     {
         if(ipv4_host_vrf_transport_list[index]->has_data())
             return true;
@@ -5925,22 +5992,22 @@ bool Native::Logging::Host::has_data() const
 
 bool Native::Logging::Host::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_host_list.size(); index++)
+    for (std::size_t index=0; index<ipv4_host_list.len(); index++)
     {
         if(ipv4_host_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_host_transport_list.size(); index++)
+    for (std::size_t index=0; index<ipv4_host_transport_list.len(); index++)
     {
         if(ipv4_host_transport_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_host_vrf_list.size(); index++)
+    for (std::size_t index=0; index<ipv4_host_vrf_list.len(); index++)
     {
         if(ipv4_host_vrf_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_host_vrf_transport_list.size(); index++)
+    for (std::size_t index=0; index<ipv4_host_vrf_transport_list.len(); index++)
     {
         if(ipv4_host_vrf_transport_list[index]->has_operation())
             return true;
@@ -5978,7 +6045,7 @@ std::shared_ptr<Entity> Native::Logging::Host::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Native::Logging::Host::Ipv4HostList>();
         c->parent = this;
-        ipv4_host_list.push_back(c);
+        ipv4_host_list.append(c);
         return c;
     }
 
@@ -5986,7 +6053,7 @@ std::shared_ptr<Entity> Native::Logging::Host::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Native::Logging::Host::Ipv4HostTransportList>();
         c->parent = this;
-        ipv4_host_transport_list.push_back(c);
+        ipv4_host_transport_list.append(c);
         return c;
     }
 
@@ -5994,7 +6061,7 @@ std::shared_ptr<Entity> Native::Logging::Host::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Native::Logging::Host::Ipv4HostVrfList>();
         c->parent = this;
-        ipv4_host_vrf_list.push_back(c);
+        ipv4_host_vrf_list.append(c);
         return c;
     }
 
@@ -6002,7 +6069,7 @@ std::shared_ptr<Entity> Native::Logging::Host::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Native::Logging::Host::Ipv4HostVrfTransportList>();
         c->parent = this;
-        ipv4_host_vrf_transport_list.push_back(c);
+        ipv4_host_vrf_transport_list.append(c);
         return c;
     }
 
@@ -6023,7 +6090,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::Host::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_host_list)
+    for (auto c : ipv4_host_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6032,7 +6099,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::Host::get_childr
     }
 
     count = 0;
-    for (auto const & c : ipv4_host_transport_list)
+    for (auto c : ipv4_host_transport_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6041,7 +6108,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::Host::get_childr
     }
 
     count = 0;
-    for (auto const & c : ipv4_host_vrf_list)
+    for (auto c : ipv4_host_vrf_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6050,7 +6117,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::Host::get_childr
     }
 
     count = 0;
-    for (auto const & c : ipv4_host_vrf_transport_list)
+    for (auto c : ipv4_host_vrf_transport_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6086,7 +6153,7 @@ Native::Logging::Host::Ipv4HostList::Ipv4HostList()
     ipv4_host{YType::str, "ipv4-host"}
 {
 
-    yang_name = "ipv4-host-list"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-host-list"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Host::Ipv4HostList::~Ipv4HostList()
@@ -6095,6 +6162,7 @@ Native::Logging::Host::Ipv4HostList::~Ipv4HostList()
 
 bool Native::Logging::Host::Ipv4HostList::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_host.is_set;
 }
 
@@ -6114,7 +6182,8 @@ std::string Native::Logging::Host::Ipv4HostList::get_absolute_path() const
 std::string Native::Logging::Host::Ipv4HostList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-host-list" <<"[ipv4-host='" <<ipv4_host <<"']";
+    path_buffer << "ipv4-host-list";
+    ADD_KEY_TOKEN(ipv4_host, "ipv4-host");
     return path_buffer.str();
 }
 
@@ -6169,12 +6238,12 @@ Native::Logging::Host::Ipv4HostTransportList::Ipv4HostTransportList()
     :
     ipv4_host{YType::str, "ipv4-host"},
     discriminator{YType::str, "discriminator"}
-    	,
+        ,
     transport(std::make_shared<Native::Logging::Host::Ipv4HostTransportList::Transport>())
 {
     transport->parent = this;
 
-    yang_name = "ipv4-host-transport-list"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-host-transport-list"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Host::Ipv4HostTransportList::~Ipv4HostTransportList()
@@ -6183,6 +6252,7 @@ Native::Logging::Host::Ipv4HostTransportList::~Ipv4HostTransportList()
 
 bool Native::Logging::Host::Ipv4HostTransportList::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_host.is_set
 	|| discriminator.is_set
 	|| (transport !=  nullptr && transport->has_data());
@@ -6206,7 +6276,8 @@ std::string Native::Logging::Host::Ipv4HostTransportList::get_absolute_path() co
 std::string Native::Logging::Host::Ipv4HostTransportList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-host-transport-list" <<"[ipv4-host='" <<ipv4_host <<"']";
+    path_buffer << "ipv4-host-transport-list";
+    ADD_KEY_TOKEN(ipv4_host, "ipv4-host");
     return path_buffer.str();
 }
 
@@ -6285,12 +6356,12 @@ bool Native::Logging::Host::Ipv4HostTransportList::has_leaf_or_child_of_name(con
 Native::Logging::Host::Ipv4HostTransportList::Transport::Transport()
     :
     udp(std::make_shared<Native::Logging::Host::Ipv4HostTransportList::Transport::Udp>())
-	,tcp(std::make_shared<Native::Logging::Host::Ipv4HostTransportList::Transport::Tcp>())
+    , tcp(std::make_shared<Native::Logging::Host::Ipv4HostTransportList::Transport::Tcp>())
 {
     udp->parent = this;
     tcp->parent = this;
 
-    yang_name = "transport"; yang_parent_name = "ipv4-host-transport-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "ipv4-host-transport-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Host::Ipv4HostTransportList::Transport::~Transport()
@@ -6299,6 +6370,7 @@ Native::Logging::Host::Ipv4HostTransportList::Transport::~Transport()
 
 bool Native::Logging::Host::Ipv4HostTransportList::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return (udp !=  nullptr && udp->has_data())
 	|| (tcp !=  nullptr && tcp->has_data());
 }
@@ -6386,7 +6458,7 @@ Native::Logging::Host::Ipv4HostTransportList::Transport::Udp::Udp()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "udp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Host::Ipv4HostTransportList::Transport::Udp::~Udp()
@@ -6395,6 +6467,7 @@ Native::Logging::Host::Ipv4HostTransportList::Transport::Udp::~Udp()
 
 bool Native::Logging::Host::Ipv4HostTransportList::Transport::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : port.getYLeafs())
     {
         if(leaf.is_set)
@@ -6472,7 +6545,7 @@ Native::Logging::Host::Ipv4HostTransportList::Transport::Tcp::Tcp()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Host::Ipv4HostTransportList::Transport::Tcp::~Tcp()
@@ -6481,6 +6554,7 @@ Native::Logging::Host::Ipv4HostTransportList::Transport::Tcp::~Tcp()
 
 bool Native::Logging::Host::Ipv4HostTransportList::Transport::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : port.getYLeafs())
     {
         if(leaf.is_set)
@@ -6560,7 +6634,7 @@ Native::Logging::Host::Ipv4HostVrfList::Ipv4HostVrfList()
     discriminator{YType::str, "discriminator"}
 {
 
-    yang_name = "ipv4-host-vrf-list"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-host-vrf-list"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Host::Ipv4HostVrfList::~Ipv4HostVrfList()
@@ -6569,6 +6643,7 @@ Native::Logging::Host::Ipv4HostVrfList::~Ipv4HostVrfList()
 
 bool Native::Logging::Host::Ipv4HostVrfList::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_host.is_set
 	|| vrf.is_set
 	|| discriminator.is_set;
@@ -6592,7 +6667,9 @@ std::string Native::Logging::Host::Ipv4HostVrfList::get_absolute_path() const
 std::string Native::Logging::Host::Ipv4HostVrfList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-host-vrf-list" <<"[ipv4-host='" <<ipv4_host <<"']" <<"[vrf='" <<vrf <<"']";
+    path_buffer << "ipv4-host-vrf-list";
+    ADD_KEY_TOKEN(ipv4_host, "ipv4-host");
+    ADD_KEY_TOKEN(vrf, "vrf");
     return path_buffer.str();
 }
 
@@ -6670,12 +6747,12 @@ Native::Logging::Host::Ipv4HostVrfTransportList::Ipv4HostVrfTransportList()
     ipv4_host{YType::str, "ipv4-host"},
     vrf{YType::str, "vrf"},
     discriminator{YType::str, "discriminator"}
-    	,
+        ,
     transport(std::make_shared<Native::Logging::Host::Ipv4HostVrfTransportList::Transport>())
 {
     transport->parent = this;
 
-    yang_name = "ipv4-host-vrf-transport-list"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-host-vrf-transport-list"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Host::Ipv4HostVrfTransportList::~Ipv4HostVrfTransportList()
@@ -6684,6 +6761,7 @@ Native::Logging::Host::Ipv4HostVrfTransportList::~Ipv4HostVrfTransportList()
 
 bool Native::Logging::Host::Ipv4HostVrfTransportList::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_host.is_set
 	|| vrf.is_set
 	|| discriminator.is_set
@@ -6709,7 +6787,9 @@ std::string Native::Logging::Host::Ipv4HostVrfTransportList::get_absolute_path()
 std::string Native::Logging::Host::Ipv4HostVrfTransportList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-host-vrf-transport-list" <<"[ipv4-host='" <<ipv4_host <<"']" <<"[vrf='" <<vrf <<"']";
+    path_buffer << "ipv4-host-vrf-transport-list";
+    ADD_KEY_TOKEN(ipv4_host, "ipv4-host");
+    ADD_KEY_TOKEN(vrf, "vrf");
     return path_buffer.str();
 }
 
@@ -6799,12 +6879,12 @@ bool Native::Logging::Host::Ipv4HostVrfTransportList::has_leaf_or_child_of_name(
 Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Transport()
     :
     udp(std::make_shared<Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Udp>())
-	,tcp(std::make_shared<Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Tcp>())
+    , tcp(std::make_shared<Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Tcp>())
 {
     udp->parent = this;
     tcp->parent = this;
 
-    yang_name = "transport"; yang_parent_name = "ipv4-host-vrf-transport-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "ipv4-host-vrf-transport-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Host::Ipv4HostVrfTransportList::Transport::~Transport()
@@ -6813,6 +6893,7 @@ Native::Logging::Host::Ipv4HostVrfTransportList::Transport::~Transport()
 
 bool Native::Logging::Host::Ipv4HostVrfTransportList::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return (udp !=  nullptr && udp->has_data())
 	|| (tcp !=  nullptr && tcp->has_data());
 }
@@ -6900,7 +6981,7 @@ Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Udp::Udp()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "udp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Udp::~Udp()
@@ -6909,6 +6990,7 @@ Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Udp::~Udp()
 
 bool Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : port.getYLeafs())
     {
         if(leaf.is_set)
@@ -6986,7 +7068,7 @@ Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Tcp::Tcp()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Tcp::~Tcp()
@@ -6995,6 +7077,7 @@ Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Tcp::~Tcp()
 
 bool Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : port.getYLeafs())
     {
         if(leaf.is_set)
@@ -7068,9 +7151,14 @@ bool Native::Logging::Host::Ipv4HostVrfTransportList::Transport::Tcp::has_leaf_o
 }
 
 Native::Logging::Host::Ipv6::Ipv6()
+    :
+    ipv6_host_list(this, {"ipv6_host"})
+    , ipv6_host_transport_list(this, {"ipv6_host"})
+    , ipv6_host_vrf_list(this, {"ipv6_host", "vrf"})
+    , ipv6_host_vrf_transport_list(this, {"ipv6_host", "vrf"})
 {
 
-    yang_name = "ipv6"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Host::Ipv6::~Ipv6()
@@ -7079,22 +7167,23 @@ Native::Logging::Host::Ipv6::~Ipv6()
 
 bool Native::Logging::Host::Ipv6::has_data() const
 {
-    for (std::size_t index=0; index<ipv6_host_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6_host_list.len(); index++)
     {
         if(ipv6_host_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_host_transport_list.size(); index++)
+    for (std::size_t index=0; index<ipv6_host_transport_list.len(); index++)
     {
         if(ipv6_host_transport_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_host_vrf_list.size(); index++)
+    for (std::size_t index=0; index<ipv6_host_vrf_list.len(); index++)
     {
         if(ipv6_host_vrf_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_host_vrf_transport_list.size(); index++)
+    for (std::size_t index=0; index<ipv6_host_vrf_transport_list.len(); index++)
     {
         if(ipv6_host_vrf_transport_list[index]->has_data())
             return true;
@@ -7104,22 +7193,22 @@ bool Native::Logging::Host::Ipv6::has_data() const
 
 bool Native::Logging::Host::Ipv6::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6_host_list.size(); index++)
+    for (std::size_t index=0; index<ipv6_host_list.len(); index++)
     {
         if(ipv6_host_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_host_transport_list.size(); index++)
+    for (std::size_t index=0; index<ipv6_host_transport_list.len(); index++)
     {
         if(ipv6_host_transport_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_host_vrf_list.size(); index++)
+    for (std::size_t index=0; index<ipv6_host_vrf_list.len(); index++)
     {
         if(ipv6_host_vrf_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_host_vrf_transport_list.size(); index++)
+    for (std::size_t index=0; index<ipv6_host_vrf_transport_list.len(); index++)
     {
         if(ipv6_host_vrf_transport_list[index]->has_operation())
             return true;
@@ -7156,7 +7245,7 @@ std::shared_ptr<Entity> Native::Logging::Host::Ipv6::get_child_by_name(const std
     {
         auto c = std::make_shared<Native::Logging::Host::Ipv6::Ipv6HostList>();
         c->parent = this;
-        ipv6_host_list.push_back(c);
+        ipv6_host_list.append(c);
         return c;
     }
 
@@ -7164,7 +7253,7 @@ std::shared_ptr<Entity> Native::Logging::Host::Ipv6::get_child_by_name(const std
     {
         auto c = std::make_shared<Native::Logging::Host::Ipv6::Ipv6HostTransportList>();
         c->parent = this;
-        ipv6_host_transport_list.push_back(c);
+        ipv6_host_transport_list.append(c);
         return c;
     }
 
@@ -7172,7 +7261,7 @@ std::shared_ptr<Entity> Native::Logging::Host::Ipv6::get_child_by_name(const std
     {
         auto c = std::make_shared<Native::Logging::Host::Ipv6::Ipv6HostVrfList>();
         c->parent = this;
-        ipv6_host_vrf_list.push_back(c);
+        ipv6_host_vrf_list.append(c);
         return c;
     }
 
@@ -7180,7 +7269,7 @@ std::shared_ptr<Entity> Native::Logging::Host::Ipv6::get_child_by_name(const std
     {
         auto c = std::make_shared<Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList>();
         c->parent = this;
-        ipv6_host_vrf_transport_list.push_back(c);
+        ipv6_host_vrf_transport_list.append(c);
         return c;
     }
 
@@ -7192,7 +7281,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::Host::Ipv6::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6_host_list)
+    for (auto c : ipv6_host_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7201,7 +7290,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::Host::Ipv6::get_
     }
 
     count = 0;
-    for (auto const & c : ipv6_host_transport_list)
+    for (auto c : ipv6_host_transport_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7210,7 +7299,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::Host::Ipv6::get_
     }
 
     count = 0;
-    for (auto const & c : ipv6_host_vrf_list)
+    for (auto c : ipv6_host_vrf_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7219,7 +7308,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::Host::Ipv6::get_
     }
 
     count = 0;
-    for (auto const & c : ipv6_host_vrf_transport_list)
+    for (auto c : ipv6_host_vrf_transport_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7250,7 +7339,7 @@ Native::Logging::Host::Ipv6::Ipv6HostList::Ipv6HostList()
     ipv6_host{YType::str, "ipv6-host"}
 {
 
-    yang_name = "ipv6-host-list"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6-host-list"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Host::Ipv6::Ipv6HostList::~Ipv6HostList()
@@ -7259,6 +7348,7 @@ Native::Logging::Host::Ipv6::Ipv6HostList::~Ipv6HostList()
 
 bool Native::Logging::Host::Ipv6::Ipv6HostList::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_host.is_set;
 }
 
@@ -7278,7 +7368,8 @@ std::string Native::Logging::Host::Ipv6::Ipv6HostList::get_absolute_path() const
 std::string Native::Logging::Host::Ipv6::Ipv6HostList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6-host-list" <<"[ipv6-host='" <<ipv6_host <<"']";
+    path_buffer << "ipv6-host-list";
+    ADD_KEY_TOKEN(ipv6_host, "ipv6-host");
     return path_buffer.str();
 }
 
@@ -7333,12 +7424,12 @@ Native::Logging::Host::Ipv6::Ipv6HostTransportList::Ipv6HostTransportList()
     :
     ipv6_host{YType::str, "ipv6-host"},
     discriminator{YType::str, "discriminator"}
-    	,
+        ,
     transport(std::make_shared<Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport>())
 {
     transport->parent = this;
 
-    yang_name = "ipv6-host-transport-list"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6-host-transport-list"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Host::Ipv6::Ipv6HostTransportList::~Ipv6HostTransportList()
@@ -7347,6 +7438,7 @@ Native::Logging::Host::Ipv6::Ipv6HostTransportList::~Ipv6HostTransportList()
 
 bool Native::Logging::Host::Ipv6::Ipv6HostTransportList::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_host.is_set
 	|| discriminator.is_set
 	|| (transport !=  nullptr && transport->has_data());
@@ -7370,7 +7462,8 @@ std::string Native::Logging::Host::Ipv6::Ipv6HostTransportList::get_absolute_pat
 std::string Native::Logging::Host::Ipv6::Ipv6HostTransportList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6-host-transport-list" <<"[ipv6-host='" <<ipv6_host <<"']";
+    path_buffer << "ipv6-host-transport-list";
+    ADD_KEY_TOKEN(ipv6_host, "ipv6-host");
     return path_buffer.str();
 }
 
@@ -7449,12 +7542,12 @@ bool Native::Logging::Host::Ipv6::Ipv6HostTransportList::has_leaf_or_child_of_na
 Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::Transport()
     :
     udp(std::make_shared<Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::Udp>())
-	,tcp(std::make_shared<Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::Tcp>())
+    , tcp(std::make_shared<Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::Tcp>())
 {
     udp->parent = this;
     tcp->parent = this;
 
-    yang_name = "transport"; yang_parent_name = "ipv6-host-transport-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "ipv6-host-transport-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::~Transport()
@@ -7463,6 +7556,7 @@ Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::~Transport()
 
 bool Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return (udp !=  nullptr && udp->has_data())
 	|| (tcp !=  nullptr && tcp->has_data());
 }
@@ -7550,7 +7644,7 @@ Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::Udp::Udp()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "udp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::Udp::~Udp()
@@ -7559,6 +7653,7 @@ Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::Udp::~Udp()
 
 bool Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : port.getYLeafs())
     {
         if(leaf.is_set)
@@ -7636,7 +7731,7 @@ Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::Tcp::Tcp()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::Tcp::~Tcp()
@@ -7645,6 +7740,7 @@ Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::Tcp::~Tcp()
 
 bool Native::Logging::Host::Ipv6::Ipv6HostTransportList::Transport::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : port.getYLeafs())
     {
         if(leaf.is_set)
@@ -7724,7 +7820,7 @@ Native::Logging::Host::Ipv6::Ipv6HostVrfList::Ipv6HostVrfList()
     discriminator{YType::str, "discriminator"}
 {
 
-    yang_name = "ipv6-host-vrf-list"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6-host-vrf-list"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Host::Ipv6::Ipv6HostVrfList::~Ipv6HostVrfList()
@@ -7733,6 +7829,7 @@ Native::Logging::Host::Ipv6::Ipv6HostVrfList::~Ipv6HostVrfList()
 
 bool Native::Logging::Host::Ipv6::Ipv6HostVrfList::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_host.is_set
 	|| vrf.is_set
 	|| discriminator.is_set;
@@ -7756,7 +7853,9 @@ std::string Native::Logging::Host::Ipv6::Ipv6HostVrfList::get_absolute_path() co
 std::string Native::Logging::Host::Ipv6::Ipv6HostVrfList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6-host-vrf-list" <<"[ipv6-host='" <<ipv6_host <<"']" <<"[vrf='" <<vrf <<"']";
+    path_buffer << "ipv6-host-vrf-list";
+    ADD_KEY_TOKEN(ipv6_host, "ipv6-host");
+    ADD_KEY_TOKEN(vrf, "vrf");
     return path_buffer.str();
 }
 
@@ -7834,12 +7933,12 @@ Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Ipv6HostVrfTransportList(
     ipv6_host{YType::str, "ipv6-host"},
     vrf{YType::str, "vrf"},
     discriminator{YType::str, "discriminator"}
-    	,
+        ,
     transport(std::make_shared<Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport>())
 {
     transport->parent = this;
 
-    yang_name = "ipv6-host-vrf-transport-list"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6-host-vrf-transport-list"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::~Ipv6HostVrfTransportList()
@@ -7848,6 +7947,7 @@ Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::~Ipv6HostVrfTransportList
 
 bool Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_host.is_set
 	|| vrf.is_set
 	|| discriminator.is_set
@@ -7873,7 +7973,9 @@ std::string Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::get_absolute_
 std::string Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6-host-vrf-transport-list" <<"[ipv6-host='" <<ipv6_host <<"']" <<"[vrf='" <<vrf <<"']";
+    path_buffer << "ipv6-host-vrf-transport-list";
+    ADD_KEY_TOKEN(ipv6_host, "ipv6-host");
+    ADD_KEY_TOKEN(vrf, "vrf");
     return path_buffer.str();
 }
 
@@ -7963,12 +8065,12 @@ bool Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::has_leaf_or_child_of
 Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::Transport()
     :
     udp(std::make_shared<Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::Udp>())
-	,tcp(std::make_shared<Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::Tcp>())
+    , tcp(std::make_shared<Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::Tcp>())
 {
     udp->parent = this;
     tcp->parent = this;
 
-    yang_name = "transport"; yang_parent_name = "ipv6-host-vrf-transport-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "ipv6-host-vrf-transport-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::~Transport()
@@ -7977,6 +8079,7 @@ Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::~Transport()
 
 bool Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return (udp !=  nullptr && udp->has_data())
 	|| (tcp !=  nullptr && tcp->has_data());
 }
@@ -8064,7 +8167,7 @@ Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::Udp::Udp()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "udp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::Udp::~Udp()
@@ -8073,6 +8176,7 @@ Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::Udp::~Udp()
 
 bool Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : port.getYLeafs())
     {
         if(leaf.is_set)
@@ -8150,7 +8254,7 @@ Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::Tcp::Tcp()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::Tcp::~Tcp()
@@ -8159,6 +8263,7 @@ Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::Tcp::~Tcp()
 
 bool Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList::Transport::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : port.getYLeafs())
     {
         if(leaf.is_set)
@@ -8237,7 +8342,7 @@ Native::Logging::OriginId::OriginId()
     string{YType::str, "string"}
 {
 
-    yang_name = "origin-id"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "origin-id"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::OriginId::~OriginId()
@@ -8246,6 +8351,7 @@ Native::Logging::OriginId::~OriginId()
 
 bool Native::Logging::OriginId::has_data() const
 {
+    if (is_presence_container) return true;
     return type_value.is_set
 	|| string.is_set;
 }
@@ -8334,7 +8440,7 @@ Native::Logging::RateLimitConf::RateLimitConf()
     rate_limit{YType::boolean, "rate-limit"}
 {
 
-    yang_name = "rate-limit-conf"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rate-limit-conf"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::RateLimitConf::~RateLimitConf()
@@ -8343,6 +8449,7 @@ Native::Logging::RateLimitConf::~RateLimitConf()
 
 bool Native::Logging::RateLimitConf::has_data() const
 {
+    if (is_presence_container) return true;
     return rate_limit.is_set;
 }
 
@@ -8415,13 +8522,14 @@ bool Native::Logging::RateLimitConf::has_leaf_or_child_of_name(const std::string
 
 Native::Logging::RateLimit::RateLimit()
     :
-    console(std::make_shared<Native::Logging::RateLimit::Console>())
-	,all(std::make_shared<Native::Logging::RateLimit::All>())
+    ranges(this, {"range"})
+    , console(std::make_shared<Native::Logging::RateLimit::Console>())
+    , all(std::make_shared<Native::Logging::RateLimit::All>())
 {
     console->parent = this;
     all->parent = this;
 
-    yang_name = "rate-limit"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rate-limit"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Logging::RateLimit::~RateLimit()
@@ -8430,7 +8538,8 @@ Native::Logging::RateLimit::~RateLimit()
 
 bool Native::Logging::RateLimit::has_data() const
 {
-    for (std::size_t index=0; index<ranges.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ranges.len(); index++)
     {
         if(ranges[index]->has_data())
             return true;
@@ -8441,7 +8550,7 @@ bool Native::Logging::RateLimit::has_data() const
 
 bool Native::Logging::RateLimit::has_operation() const
 {
-    for (std::size_t index=0; index<ranges.size(); index++)
+    for (std::size_t index=0; index<ranges.len(); index++)
     {
         if(ranges[index]->has_operation())
             return true;
@@ -8480,7 +8589,7 @@ std::shared_ptr<Entity> Native::Logging::RateLimit::get_child_by_name(const std:
     {
         auto c = std::make_shared<Native::Logging::RateLimit::Ranges>();
         c->parent = this;
-        ranges.push_back(c);
+        ranges.append(c);
         return c;
     }
 
@@ -8510,7 +8619,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::RateLimit::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ranges)
+    for (auto c : ranges.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8549,11 +8658,11 @@ bool Native::Logging::RateLimit::has_leaf_or_child_of_name(const std::string & n
 Native::Logging::RateLimit::Ranges::Ranges()
     :
     range{YType::uint16, "range"}
-    	,
+        ,
     except(nullptr) // presence node
 {
 
-    yang_name = "ranges"; yang_parent_name = "rate-limit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ranges"; yang_parent_name = "rate-limit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::RateLimit::Ranges::~Ranges()
@@ -8562,6 +8671,7 @@ Native::Logging::RateLimit::Ranges::~Ranges()
 
 bool Native::Logging::RateLimit::Ranges::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set
 	|| (except !=  nullptr && except->has_data());
 }
@@ -8583,7 +8693,8 @@ std::string Native::Logging::RateLimit::Ranges::get_absolute_path() const
 std::string Native::Logging::RateLimit::Ranges::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ranges" <<"[range='" <<range <<"']";
+    path_buffer << "ranges";
+    ADD_KEY_TOKEN(range, "range");
     return path_buffer.str();
 }
 
@@ -8653,7 +8764,7 @@ Native::Logging::RateLimit::Ranges::Except::Except()
     range{YType::str, "range"}
 {
 
-    yang_name = "except"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "except"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Logging::RateLimit::Ranges::Except::~Except()
@@ -8662,6 +8773,7 @@ Native::Logging::RateLimit::Ranges::Except::~Except()
 
 bool Native::Logging::RateLimit::Ranges::Except::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set;
 }
 
@@ -8727,11 +8839,12 @@ bool Native::Logging::RateLimit::Ranges::Except::has_leaf_or_child_of_name(const
 
 Native::Logging::RateLimit::Console::Console()
     :
-    all(std::make_shared<Native::Logging::RateLimit::Console::All>())
+    ranges(this, {"range"})
+    , all(std::make_shared<Native::Logging::RateLimit::Console::All>())
 {
     all->parent = this;
 
-    yang_name = "console"; yang_parent_name = "rate-limit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "console"; yang_parent_name = "rate-limit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::RateLimit::Console::~Console()
@@ -8740,7 +8853,8 @@ Native::Logging::RateLimit::Console::~Console()
 
 bool Native::Logging::RateLimit::Console::has_data() const
 {
-    for (std::size_t index=0; index<ranges.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ranges.len(); index++)
     {
         if(ranges[index]->has_data())
             return true;
@@ -8750,7 +8864,7 @@ bool Native::Logging::RateLimit::Console::has_data() const
 
 bool Native::Logging::RateLimit::Console::has_operation() const
 {
-    for (std::size_t index=0; index<ranges.size(); index++)
+    for (std::size_t index=0; index<ranges.len(); index++)
     {
         if(ranges[index]->has_operation())
             return true;
@@ -8788,7 +8902,7 @@ std::shared_ptr<Entity> Native::Logging::RateLimit::Console::get_child_by_name(c
     {
         auto c = std::make_shared<Native::Logging::RateLimit::Console::Ranges>();
         c->parent = this;
-        ranges.push_back(c);
+        ranges.append(c);
         return c;
     }
 
@@ -8809,7 +8923,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::RateLimit::Conso
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ranges)
+    for (auto c : ranges.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8843,11 +8957,11 @@ bool Native::Logging::RateLimit::Console::has_leaf_or_child_of_name(const std::s
 Native::Logging::RateLimit::Console::Ranges::Ranges()
     :
     range{YType::uint16, "range"}
-    	,
+        ,
     except(nullptr) // presence node
 {
 
-    yang_name = "ranges"; yang_parent_name = "console"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ranges"; yang_parent_name = "console"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::RateLimit::Console::Ranges::~Ranges()
@@ -8856,6 +8970,7 @@ Native::Logging::RateLimit::Console::Ranges::~Ranges()
 
 bool Native::Logging::RateLimit::Console::Ranges::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set
 	|| (except !=  nullptr && except->has_data());
 }
@@ -8877,7 +8992,8 @@ std::string Native::Logging::RateLimit::Console::Ranges::get_absolute_path() con
 std::string Native::Logging::RateLimit::Console::Ranges::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ranges" <<"[range='" <<range <<"']";
+    path_buffer << "ranges";
+    ADD_KEY_TOKEN(range, "range");
     return path_buffer.str();
 }
 
@@ -8947,7 +9063,7 @@ Native::Logging::RateLimit::Console::Ranges::Except::Except()
     range{YType::str, "range"}
 {
 
-    yang_name = "except"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "except"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Logging::RateLimit::Console::Ranges::Except::~Except()
@@ -8956,6 +9072,7 @@ Native::Logging::RateLimit::Console::Ranges::Except::~Except()
 
 bool Native::Logging::RateLimit::Console::Ranges::Except::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set;
 }
 
@@ -9020,9 +9137,11 @@ bool Native::Logging::RateLimit::Console::Ranges::Except::has_leaf_or_child_of_n
 }
 
 Native::Logging::RateLimit::Console::All::All()
+    :
+    ranges(this, {"range"})
 {
 
-    yang_name = "all"; yang_parent_name = "console"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "console"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::RateLimit::Console::All::~All()
@@ -9031,7 +9150,8 @@ Native::Logging::RateLimit::Console::All::~All()
 
 bool Native::Logging::RateLimit::Console::All::has_data() const
 {
-    for (std::size_t index=0; index<ranges.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ranges.len(); index++)
     {
         if(ranges[index]->has_data())
             return true;
@@ -9041,7 +9161,7 @@ bool Native::Logging::RateLimit::Console::All::has_data() const
 
 bool Native::Logging::RateLimit::Console::All::has_operation() const
 {
-    for (std::size_t index=0; index<ranges.size(); index++)
+    for (std::size_t index=0; index<ranges.len(); index++)
     {
         if(ranges[index]->has_operation())
             return true;
@@ -9078,7 +9198,7 @@ std::shared_ptr<Entity> Native::Logging::RateLimit::Console::All::get_child_by_n
     {
         auto c = std::make_shared<Native::Logging::RateLimit::Console::All::Ranges>();
         c->parent = this;
-        ranges.push_back(c);
+        ranges.append(c);
         return c;
     }
 
@@ -9090,7 +9210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::RateLimit::Conso
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ranges)
+    for (auto c : ranges.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9119,11 +9239,11 @@ bool Native::Logging::RateLimit::Console::All::has_leaf_or_child_of_name(const s
 Native::Logging::RateLimit::Console::All::Ranges::Ranges()
     :
     range{YType::uint16, "range"}
-    	,
+        ,
     except(nullptr) // presence node
 {
 
-    yang_name = "ranges"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ranges"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::RateLimit::Console::All::Ranges::~Ranges()
@@ -9132,6 +9252,7 @@ Native::Logging::RateLimit::Console::All::Ranges::~Ranges()
 
 bool Native::Logging::RateLimit::Console::All::Ranges::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set
 	|| (except !=  nullptr && except->has_data());
 }
@@ -9153,7 +9274,8 @@ std::string Native::Logging::RateLimit::Console::All::Ranges::get_absolute_path(
 std::string Native::Logging::RateLimit::Console::All::Ranges::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ranges" <<"[range='" <<range <<"']";
+    path_buffer << "ranges";
+    ADD_KEY_TOKEN(range, "range");
     return path_buffer.str();
 }
 
@@ -9223,7 +9345,7 @@ Native::Logging::RateLimit::Console::All::Ranges::Except::Except()
     range{YType::str, "range"}
 {
 
-    yang_name = "except"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "except"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Logging::RateLimit::Console::All::Ranges::Except::~Except()
@@ -9232,6 +9354,7 @@ Native::Logging::RateLimit::Console::All::Ranges::Except::~Except()
 
 bool Native::Logging::RateLimit::Console::All::Ranges::Except::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set;
 }
 
@@ -9296,9 +9419,11 @@ bool Native::Logging::RateLimit::Console::All::Ranges::Except::has_leaf_or_child
 }
 
 Native::Logging::RateLimit::All::All()
+    :
+    ranges(this, {"range"})
 {
 
-    yang_name = "all"; yang_parent_name = "rate-limit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "rate-limit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::RateLimit::All::~All()
@@ -9307,7 +9432,8 @@ Native::Logging::RateLimit::All::~All()
 
 bool Native::Logging::RateLimit::All::has_data() const
 {
-    for (std::size_t index=0; index<ranges.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ranges.len(); index++)
     {
         if(ranges[index]->has_data())
             return true;
@@ -9317,7 +9443,7 @@ bool Native::Logging::RateLimit::All::has_data() const
 
 bool Native::Logging::RateLimit::All::has_operation() const
 {
-    for (std::size_t index=0; index<ranges.size(); index++)
+    for (std::size_t index=0; index<ranges.len(); index++)
     {
         if(ranges[index]->has_operation())
             return true;
@@ -9354,7 +9480,7 @@ std::shared_ptr<Entity> Native::Logging::RateLimit::All::get_child_by_name(const
     {
         auto c = std::make_shared<Native::Logging::RateLimit::All::Ranges>();
         c->parent = this;
-        ranges.push_back(c);
+        ranges.append(c);
         return c;
     }
 
@@ -9366,7 +9492,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Logging::RateLimit::All::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ranges)
+    for (auto c : ranges.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9395,11 +9521,11 @@ bool Native::Logging::RateLimit::All::has_leaf_or_child_of_name(const std::strin
 Native::Logging::RateLimit::All::Ranges::Ranges()
     :
     range{YType::uint16, "range"}
-    	,
+        ,
     except(nullptr) // presence node
 {
 
-    yang_name = "ranges"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ranges"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::RateLimit::All::Ranges::~Ranges()
@@ -9408,6 +9534,7 @@ Native::Logging::RateLimit::All::Ranges::~Ranges()
 
 bool Native::Logging::RateLimit::All::Ranges::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set
 	|| (except !=  nullptr && except->has_data());
 }
@@ -9429,7 +9556,8 @@ std::string Native::Logging::RateLimit::All::Ranges::get_absolute_path() const
 std::string Native::Logging::RateLimit::All::Ranges::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ranges" <<"[range='" <<range <<"']";
+    path_buffer << "ranges";
+    ADD_KEY_TOKEN(range, "range");
     return path_buffer.str();
 }
 
@@ -9499,7 +9627,7 @@ Native::Logging::RateLimit::All::Ranges::Except::Except()
     range{YType::str, "range"}
 {
 
-    yang_name = "except"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "except"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Logging::RateLimit::All::Ranges::Except::~Except()
@@ -9508,6 +9636,7 @@ Native::Logging::RateLimit::All::Ranges::Except::~Except()
 
 bool Native::Logging::RateLimit::All::Ranges::Except::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set;
 }
 
@@ -9577,7 +9706,7 @@ Native::Logging::SourceInterface::SourceInterface()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "source-interface"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-interface"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::SourceInterface::~SourceInterface()
@@ -9586,6 +9715,7 @@ Native::Logging::SourceInterface::~SourceInterface()
 
 bool Native::Logging::SourceInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| vrf.is_set;
 }
@@ -9607,7 +9737,8 @@ std::string Native::Logging::SourceInterface::get_absolute_path() const
 std::string Native::Logging::SourceInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "source-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "source-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -9681,7 +9812,7 @@ Native::Logging::SnmpTrap::SnmpTrap()
     warnings{YType::empty, "warnings"}
 {
 
-    yang_name = "snmp-trap"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmp-trap"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::SnmpTrap::~SnmpTrap()
@@ -9690,6 +9821,7 @@ Native::Logging::SnmpTrap::~SnmpTrap()
 
 bool Native::Logging::SnmpTrap::has_data() const
 {
+    if (is_presence_container) return true;
     return alerts.is_set
 	|| critical.is_set
 	|| debugging.is_set
@@ -9857,7 +9989,7 @@ Native::Logging::Trap::Trap()
     severity{YType::str, "severity"}
 {
 
-    yang_name = "trap"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Logging::Trap::~Trap()
@@ -9866,6 +9998,7 @@ Native::Logging::Trap::~Trap()
 
 bool Native::Logging::Trap::has_data() const
 {
+    if (is_presence_container) return true;
     return trap_default.is_set
 	|| severity.is_set;
 }
@@ -9957,7 +10090,7 @@ Native::Logging::File::File()
     severity{YType::str, "severity"}
 {
 
-    yang_name = "file"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "file"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Logging::File::~File()
@@ -9966,6 +10099,7 @@ Native::Logging::File::~File()
 
 bool Native::Logging::File::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| max_size.is_set
 	|| min_size.is_set
@@ -10082,18 +10216,18 @@ Native::Aaa::Aaa()
     max_sessions{YType::uint16, "Cisco-IOS-XE-aaa:max-sessions"},
     password{YType::enumeration, "Cisco-IOS-XE-aaa:password"},
     traceback{YType::enumeration, "Cisco-IOS-XE-aaa:traceback"}
-    	,
+        ,
     group(std::make_shared<Native::Aaa::Group>())
-	,attribute(std::make_shared<Native::Aaa::Attribute>())
-	,authentication(std::make_shared<Native::Aaa::Authentication>())
-	,local(std::make_shared<Native::Aaa::Local>())
-	,authorization(std::make_shared<Native::Aaa::Authorization>())
-	,accounting(std::make_shared<Native::Aaa::Accounting>())
-	,server(std::make_shared<Native::Aaa::Server>())
-	,login(std::make_shared<Native::Aaa::Login>())
-	,memory(std::make_shared<Native::Aaa::Memory>())
-	,policy(std::make_shared<Native::Aaa::Policy>())
-	,route(std::make_shared<Native::Aaa::Route>())
+    , attribute(std::make_shared<Native::Aaa::Attribute>())
+    , authentication(std::make_shared<Native::Aaa::Authentication>())
+    , local(std::make_shared<Native::Aaa::Local>())
+    , authorization(std::make_shared<Native::Aaa::Authorization>())
+    , accounting(std::make_shared<Native::Aaa::Accounting>())
+    , server(std::make_shared<Native::Aaa::Server>())
+    , login(std::make_shared<Native::Aaa::Login>())
+    , memory(std::make_shared<Native::Aaa::Memory>())
+    , policy(std::make_shared<Native::Aaa::Policy>())
+    , route(std::make_shared<Native::Aaa::Route>())
 {
     group->parent = this;
     attribute->parent = this;
@@ -10107,7 +10241,7 @@ Native::Aaa::Aaa()
     policy->parent = this;
     route->parent = this;
 
-    yang_name = "aaa"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aaa"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::~Aaa()
@@ -10116,6 +10250,7 @@ Native::Aaa::~Aaa()
 
 bool Native::Aaa::has_data() const
 {
+    if (is_presence_container) return true;
     return new_model.is_set
 	|| session_id.is_set
 	|| max_sessions.is_set
@@ -10420,7 +10555,7 @@ Native::Aaa::Group::Group()
 {
     server->parent = this;
 
-    yang_name = "group"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Group::~Group()
@@ -10429,6 +10564,7 @@ Native::Aaa::Group::~Group()
 
 bool Native::Aaa::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return (server !=  nullptr && server->has_data());
 }
 
@@ -10503,9 +10639,13 @@ bool Native::Aaa::Group::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 Native::Aaa::Group::Server::Server()
+    :
+    tacacsplus(this, {"name"})
+    , tacacs(this, {"name"})
+    , radius(this, {"name"})
 {
 
-    yang_name = "server"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "server"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Group::Server::~Server()
@@ -10514,17 +10654,18 @@ Native::Aaa::Group::Server::~Server()
 
 bool Native::Aaa::Group::Server::has_data() const
 {
-    for (std::size_t index=0; index<tacacsplus.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tacacsplus.len(); index++)
     {
         if(tacacsplus[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<tacacs.size(); index++)
+    for (std::size_t index=0; index<tacacs.len(); index++)
     {
         if(tacacs[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<radius.size(); index++)
+    for (std::size_t index=0; index<radius.len(); index++)
     {
         if(radius[index]->has_data())
             return true;
@@ -10534,17 +10675,17 @@ bool Native::Aaa::Group::Server::has_data() const
 
 bool Native::Aaa::Group::Server::has_operation() const
 {
-    for (std::size_t index=0; index<tacacsplus.size(); index++)
+    for (std::size_t index=0; index<tacacsplus.len(); index++)
     {
         if(tacacsplus[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<tacacs.size(); index++)
+    for (std::size_t index=0; index<tacacs.len(); index++)
     {
         if(tacacs[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<radius.size(); index++)
+    for (std::size_t index=0; index<radius.len(); index++)
     {
         if(radius[index]->has_operation())
             return true;
@@ -10581,7 +10722,7 @@ std::shared_ptr<Entity> Native::Aaa::Group::Server::get_child_by_name(const std:
     {
         auto c = std::make_shared<Native::Aaa::Group::Server::Tacacsplus>();
         c->parent = this;
-        tacacsplus.push_back(c);
+        tacacsplus.append(c);
         return c;
     }
 
@@ -10589,7 +10730,7 @@ std::shared_ptr<Entity> Native::Aaa::Group::Server::get_child_by_name(const std:
     {
         auto c = std::make_shared<Native::Aaa::Group::Server::Tacacs>();
         c->parent = this;
-        tacacs.push_back(c);
+        tacacs.append(c);
         return c;
     }
 
@@ -10597,7 +10738,7 @@ std::shared_ptr<Entity> Native::Aaa::Group::Server::get_child_by_name(const std:
     {
         auto c = std::make_shared<Native::Aaa::Group::Server::Radius>();
         c->parent = this;
-        radius.push_back(c);
+        radius.append(c);
         return c;
     }
 
@@ -10609,7 +10750,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Group::Server::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tacacsplus)
+    for (auto c : tacacsplus.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10618,7 +10759,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Group::Server::get_c
     }
 
     count = 0;
-    for (auto const & c : tacacs)
+    for (auto c : tacacs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10627,7 +10768,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Group::Server::get_c
     }
 
     count = 0;
-    for (auto const & c : radius)
+    for (auto c : radius.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10656,14 +10797,15 @@ bool Native::Aaa::Group::Server::has_leaf_or_child_of_name(const std::string & n
 Native::Aaa::Group::Server::Tacacsplus::Tacacsplus()
     :
     name{YType::str, "name"}
-    	,
+        ,
     server(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Server_>())
-	,ip(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip>())
+    , server_private(this, {"name"})
+    , ip(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip>())
 {
     server->parent = this;
     ip->parent = this;
 
-    yang_name = "tacacsplus"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tacacsplus"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::~Tacacsplus()
@@ -10672,7 +10814,8 @@ Native::Aaa::Group::Server::Tacacsplus::~Tacacsplus()
 
 bool Native::Aaa::Group::Server::Tacacsplus::has_data() const
 {
-    for (std::size_t index=0; index<server_private.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server_private.len(); index++)
     {
         if(server_private[index]->has_data())
             return true;
@@ -10684,7 +10827,7 @@ bool Native::Aaa::Group::Server::Tacacsplus::has_data() const
 
 bool Native::Aaa::Group::Server::Tacacsplus::has_operation() const
 {
-    for (std::size_t index=0; index<server_private.size(); index++)
+    for (std::size_t index=0; index<server_private.len(); index++)
     {
         if(server_private[index]->has_operation())
             return true;
@@ -10705,7 +10848,8 @@ std::string Native::Aaa::Group::Server::Tacacsplus::get_absolute_path() const
 std::string Native::Aaa::Group::Server::Tacacsplus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tacacsplus" <<"[name='" <<name <<"']";
+    path_buffer << "tacacsplus";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10734,7 +10878,7 @@ std::shared_ptr<Entity> Native::Aaa::Group::Server::Tacacsplus::get_child_by_nam
     {
         auto c = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::ServerPrivate>();
         c->parent = this;
-        server_private.push_back(c);
+        server_private.append(c);
         return c;
     }
 
@@ -10760,7 +10904,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Group::Server::Tacac
     }
 
     count = 0;
-    for (auto const & c : server_private)
+    for (auto c : server_private.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10802,9 +10946,12 @@ bool Native::Aaa::Group::Server::Tacacsplus::has_leaf_or_child_of_name(const std
 }
 
 Native::Aaa::Group::Server::Tacacsplus::Server_::Server_()
+    :
+    name(this, {"name"})
+    , direct(this, {"name"})
 {
 
-    yang_name = "server"; yang_parent_name = "tacacsplus"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server"; yang_parent_name = "tacacsplus"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::Server_::~Server_()
@@ -10813,12 +10960,13 @@ Native::Aaa::Group::Server::Tacacsplus::Server_::~Server_()
 
 bool Native::Aaa::Group::Server::Tacacsplus::Server_::has_data() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<direct.size(); index++)
+    for (std::size_t index=0; index<direct.len(); index++)
     {
         if(direct[index]->has_data())
             return true;
@@ -10828,12 +10976,12 @@ bool Native::Aaa::Group::Server::Tacacsplus::Server_::has_data() const
 
 bool Native::Aaa::Group::Server::Tacacsplus::Server_::has_operation() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<direct.size(); index++)
+    for (std::size_t index=0; index<direct.len(); index++)
     {
         if(direct[index]->has_operation())
             return true;
@@ -10863,7 +11011,7 @@ std::shared_ptr<Entity> Native::Aaa::Group::Server::Tacacsplus::Server_::get_chi
     {
         auto c = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Server_::Name>();
         c->parent = this;
-        name.push_back(c);
+        name.append(c);
         return c;
     }
 
@@ -10871,7 +11019,7 @@ std::shared_ptr<Entity> Native::Aaa::Group::Server::Tacacsplus::Server_::get_chi
     {
         auto c = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Server_::Direct>();
         c->parent = this;
-        direct.push_back(c);
+        direct.append(c);
         return c;
     }
 
@@ -10883,7 +11031,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Group::Server::Tacac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : name)
+    for (auto c : name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10892,7 +11040,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Group::Server::Tacac
     }
 
     count = 0;
-    for (auto const & c : direct)
+    for (auto c : direct.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10923,7 +11071,7 @@ Native::Aaa::Group::Server::Tacacsplus::Server_::Name::Name()
     name{YType::str, "name"}
 {
 
-    yang_name = "name"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "name"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::Server_::Name::~Name()
@@ -10932,6 +11080,7 @@ Native::Aaa::Group::Server::Tacacsplus::Server_::Name::~Name()
 
 bool Native::Aaa::Group::Server::Tacacsplus::Server_::Name::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -10944,7 +11093,8 @@ bool Native::Aaa::Group::Server::Tacacsplus::Server_::Name::has_operation() cons
 std::string Native::Aaa::Group::Server::Tacacsplus::Server_::Name::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "name" <<"[name='" <<name <<"']";
+    path_buffer << "name";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -11000,7 +11150,7 @@ Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::Direct()
     name{YType::str, "name"}
 {
 
-    yang_name = "direct"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "direct"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::~Direct()
@@ -11009,6 +11159,7 @@ Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::~Direct()
 
 bool Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -11021,7 +11172,8 @@ bool Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::has_operation() co
 std::string Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "direct" <<"[name='" <<name <<"']";
+    path_buffer << "direct";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -11077,12 +11229,12 @@ Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::ServerPrivate()
     name{YType::str, "name"},
     port{YType::uint16, "port"},
     timeout{YType::uint16, "timeout"}
-    	,
+        ,
     key(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key>())
 {
     key->parent = this;
 
-    yang_name = "server-private"; yang_parent_name = "tacacsplus"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server-private"; yang_parent_name = "tacacsplus"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::~ServerPrivate()
@@ -11091,6 +11243,7 @@ Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::~ServerPrivate()
 
 bool Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| port.is_set
 	|| timeout.is_set
@@ -11109,7 +11262,8 @@ bool Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::has_operation() cons
 std::string Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "server-private" <<"[name='" <<name <<"']";
+    path_buffer << "server-private";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -11202,7 +11356,7 @@ Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::Key()
     key{YType::str, "key"}
 {
 
-    yang_name = "key"; yang_parent_name = "server-private"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "server-private"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::~Key()
@@ -11211,6 +11365,7 @@ Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::~Key()
 
 bool Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return encryption.is_set
 	|| key.is_set;
 }
@@ -11290,12 +11445,12 @@ bool Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::has_leaf_or_chi
 Native::Aaa::Group::Server::Tacacsplus::Ip::Ip()
     :
     tacacs(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs>())
-	,vrf(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf>())
+    , vrf(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf>())
 {
     tacacs->parent = this;
     vrf->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "tacacsplus"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "tacacsplus"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::Ip::~Ip()
@@ -11304,6 +11459,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::~Ip()
 
 bool Native::Aaa::Group::Server::Tacacsplus::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (tacacs !=  nullptr && tacacs->has_data())
 	|| (vrf !=  nullptr && vrf->has_data());
 }
@@ -11392,7 +11548,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::Tacacs()
 {
     source_interface->parent = this;
 
-    yang_name = "tacacs"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tacacs"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::~Tacacs()
@@ -11401,6 +11557,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::~Tacacs()
 
 bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::has_data() const
 {
+    if (is_presence_container) return true;
     return (source_interface !=  nullptr && source_interface->has_data());
 }
 
@@ -11501,18 +11658,18 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::SourceInter
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "source-interface"; yang_parent_name = "tacacs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-interface"; yang_parent_name = "tacacs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::~SourceInterface()
@@ -11521,6 +11678,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::~SourceInte
 
 bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -12056,7 +12214,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinter
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::~ATMSubinterface()
@@ -12065,6 +12223,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinter
 
 bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -12133,7 +12292,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubin
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::~ATMACRsubinterface()
@@ -12142,6 +12301,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubin
 
 bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -12210,7 +12370,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinte
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::~LISPSubinterface()
@@ -12219,6 +12379,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinte
 
 bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -12287,7 +12448,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannel
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::~PortChannelSubinterface()
@@ -12296,6 +12457,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannel
 
 bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -12364,7 +12526,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::Vrf()
     forwarding{YType::str, "forwarding"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::~Vrf()
@@ -12373,6 +12535,7 @@ Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::~Vrf()
 
 bool Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -12441,7 +12604,7 @@ Native::Aaa::Group::Server::Tacacs::Tacacs()
     name{YType::str, "name"}
 {
 
-    yang_name = "tacacs"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tacacs"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Group::Server::Tacacs::~Tacacs()
@@ -12450,6 +12613,7 @@ Native::Aaa::Group::Server::Tacacs::~Tacacs()
 
 bool Native::Aaa::Group::Server::Tacacs::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -12469,7 +12633,8 @@ std::string Native::Aaa::Group::Server::Tacacs::get_absolute_path() const
 std::string Native::Aaa::Group::Server::Tacacs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tacacs" <<"[name='" <<name <<"']";
+    path_buffer << "tacacs";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -12525,18 +12690,19 @@ Native::Aaa::Group::Server::Radius::Radius()
     name{YType::str, "name"},
     mac_delimiter{YType::enumeration, "mac-delimiter"},
     deadtime{YType::uint16, "deadtime"}
-    	,
+        ,
     server(std::make_shared<Native::Aaa::Group::Server::Radius::Server_>())
-	,subscriber(std::make_shared<Native::Aaa::Group::Server::Radius::Subscriber>())
-	,ip(std::make_shared<Native::Aaa::Group::Server::Radius::Ip>())
-	,load_balance(std::make_shared<Native::Aaa::Group::Server::Radius::LoadBalance>())
+    , subscriber(std::make_shared<Native::Aaa::Group::Server::Radius::Subscriber>())
+    , server_private(this, {"name"})
+    , ip(std::make_shared<Native::Aaa::Group::Server::Radius::Ip>())
+    , load_balance(std::make_shared<Native::Aaa::Group::Server::Radius::LoadBalance>())
 {
     server->parent = this;
     subscriber->parent = this;
     ip->parent = this;
     load_balance->parent = this;
 
-    yang_name = "radius"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "radius"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Group::Server::Radius::~Radius()
@@ -12545,7 +12711,8 @@ Native::Aaa::Group::Server::Radius::~Radius()
 
 bool Native::Aaa::Group::Server::Radius::has_data() const
 {
-    for (std::size_t index=0; index<server_private.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server_private.len(); index++)
     {
         if(server_private[index]->has_data())
             return true;
@@ -12561,7 +12728,7 @@ bool Native::Aaa::Group::Server::Radius::has_data() const
 
 bool Native::Aaa::Group::Server::Radius::has_operation() const
 {
-    for (std::size_t index=0; index<server_private.size(); index++)
+    for (std::size_t index=0; index<server_private.len(); index++)
     {
         if(server_private[index]->has_operation())
             return true;
@@ -12586,7 +12753,8 @@ std::string Native::Aaa::Group::Server::Radius::get_absolute_path() const
 std::string Native::Aaa::Group::Server::Radius::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "radius" <<"[name='" <<name <<"']";
+    path_buffer << "radius";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -12626,7 +12794,7 @@ std::shared_ptr<Entity> Native::Aaa::Group::Server::Radius::get_child_by_name(co
     {
         auto c = std::make_shared<Native::Aaa::Group::Server::Radius::ServerPrivate>();
         c->parent = this;
-        server_private.push_back(c);
+        server_private.append(c);
         return c;
     }
 
@@ -12666,7 +12834,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Group::Server::Radiu
     }
 
     count = 0;
-    for (auto const & c : server_private)
+    for (auto c : server_private.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12733,9 +12901,12 @@ bool Native::Aaa::Group::Server::Radius::has_leaf_or_child_of_name(const std::st
 }
 
 Native::Aaa::Group::Server::Radius::Server_::Server_()
+    :
+    name(this, {"name"})
+    , direct(this, {"name"})
 {
 
-    yang_name = "server"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Server_::~Server_()
@@ -12744,12 +12915,13 @@ Native::Aaa::Group::Server::Radius::Server_::~Server_()
 
 bool Native::Aaa::Group::Server::Radius::Server_::has_data() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<direct.size(); index++)
+    for (std::size_t index=0; index<direct.len(); index++)
     {
         if(direct[index]->has_data())
             return true;
@@ -12759,12 +12931,12 @@ bool Native::Aaa::Group::Server::Radius::Server_::has_data() const
 
 bool Native::Aaa::Group::Server::Radius::Server_::has_operation() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<direct.size(); index++)
+    for (std::size_t index=0; index<direct.len(); index++)
     {
         if(direct[index]->has_operation())
             return true;
@@ -12794,7 +12966,7 @@ std::shared_ptr<Entity> Native::Aaa::Group::Server::Radius::Server_::get_child_b
     {
         auto c = std::make_shared<Native::Aaa::Group::Server::Radius::Server_::Name>();
         c->parent = this;
-        name.push_back(c);
+        name.append(c);
         return c;
     }
 
@@ -12802,7 +12974,7 @@ std::shared_ptr<Entity> Native::Aaa::Group::Server::Radius::Server_::get_child_b
     {
         auto c = std::make_shared<Native::Aaa::Group::Server::Radius::Server_::Direct>();
         c->parent = this;
-        direct.push_back(c);
+        direct.append(c);
         return c;
     }
 
@@ -12814,7 +12986,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Group::Server::Radiu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : name)
+    for (auto c : name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12823,7 +12995,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Group::Server::Radiu
     }
 
     count = 0;
-    for (auto const & c : direct)
+    for (auto c : direct.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12854,7 +13026,7 @@ Native::Aaa::Group::Server::Radius::Server_::Name::Name()
     name{YType::str, "name"}
 {
 
-    yang_name = "name"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "name"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Server_::Name::~Name()
@@ -12863,6 +13035,7 @@ Native::Aaa::Group::Server::Radius::Server_::Name::~Name()
 
 bool Native::Aaa::Group::Server::Radius::Server_::Name::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -12875,7 +13048,8 @@ bool Native::Aaa::Group::Server::Radius::Server_::Name::has_operation() const
 std::string Native::Aaa::Group::Server::Radius::Server_::Name::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "name" <<"[name='" <<name <<"']";
+    path_buffer << "name";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -12933,7 +13107,7 @@ Native::Aaa::Group::Server::Radius::Server_::Direct::Direct()
     acct_port{YType::uint16, "acct-port"}
 {
 
-    yang_name = "direct"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "direct"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Server_::Direct::~Direct()
@@ -12942,6 +13116,7 @@ Native::Aaa::Group::Server::Radius::Server_::Direct::~Direct()
 
 bool Native::Aaa::Group::Server::Radius::Server_::Direct::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| auth_port.is_set
 	|| acct_port.is_set;
@@ -12958,7 +13133,8 @@ bool Native::Aaa::Group::Server::Radius::Server_::Direct::has_operation() const
 std::string Native::Aaa::Group::Server::Radius::Server_::Direct::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "direct" <<"[name='" <<name <<"']";
+    path_buffer << "direct";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -13037,7 +13213,7 @@ Native::Aaa::Group::Server::Radius::Subscriber::Subscriber()
 {
     mac_filtering->parent = this;
 
-    yang_name = "subscriber"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Subscriber::~Subscriber()
@@ -13046,6 +13222,7 @@ Native::Aaa::Group::Server::Radius::Subscriber::~Subscriber()
 
 bool Native::Aaa::Group::Server::Radius::Subscriber::has_data() const
 {
+    if (is_presence_container) return true;
     return (mac_filtering !=  nullptr && mac_filtering->has_data());
 }
 
@@ -13117,7 +13294,7 @@ Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::MacFiltering()
     security_mode{YType::enumeration, "security-mode"}
 {
 
-    yang_name = "mac-filtering"; yang_parent_name = "subscriber"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-filtering"; yang_parent_name = "subscriber"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::~MacFiltering()
@@ -13126,6 +13303,7 @@ Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::~MacFiltering()
 
 bool Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::has_data() const
 {
+    if (is_presence_container) return true;
     return security_mode.is_set;
 }
 
@@ -13196,12 +13374,12 @@ Native::Aaa::Group::Server::Radius::ServerPrivate::ServerPrivate()
     acct_port{YType::uint16, "acct-port"},
     timeout{YType::uint16, "timeout"},
     retransmit{YType::uint8, "retransmit"}
-    	,
+        ,
     key(std::make_shared<Native::Aaa::Group::Server::Radius::ServerPrivate::Key>())
 {
     key->parent = this;
 
-    yang_name = "server-private"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server-private"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::ServerPrivate::~ServerPrivate()
@@ -13210,6 +13388,7 @@ Native::Aaa::Group::Server::Radius::ServerPrivate::~ServerPrivate()
 
 bool Native::Aaa::Group::Server::Radius::ServerPrivate::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| auth_port.is_set
 	|| acct_port.is_set
@@ -13232,7 +13411,8 @@ bool Native::Aaa::Group::Server::Radius::ServerPrivate::has_operation() const
 std::string Native::Aaa::Group::Server::Radius::ServerPrivate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "server-private" <<"[name='" <<name <<"']";
+    path_buffer << "server-private";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -13347,7 +13527,7 @@ Native::Aaa::Group::Server::Radius::ServerPrivate::Key::Key()
     key{YType::str, "key"}
 {
 
-    yang_name = "key"; yang_parent_name = "server-private"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "server-private"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::ServerPrivate::Key::~Key()
@@ -13356,6 +13536,7 @@ Native::Aaa::Group::Server::Radius::ServerPrivate::Key::~Key()
 
 bool Native::Aaa::Group::Server::Radius::ServerPrivate::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return encryption.is_set
 	|| key.is_set;
 }
@@ -13435,12 +13616,12 @@ bool Native::Aaa::Group::Server::Radius::ServerPrivate::Key::has_leaf_or_child_o
 Native::Aaa::Group::Server::Radius::Ip::Ip()
     :
     radius(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_>())
-	,vrf(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Vrf>())
+    , vrf(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Vrf>())
 {
     radius->parent = this;
     vrf->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Ip::~Ip()
@@ -13449,6 +13630,7 @@ Native::Aaa::Group::Server::Radius::Ip::~Ip()
 
 bool Native::Aaa::Group::Server::Radius::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (radius !=  nullptr && radius->has_data())
 	|| (vrf !=  nullptr && vrf->has_data());
 }
@@ -13537,7 +13719,7 @@ Native::Aaa::Group::Server::Radius::Ip::Radius_::Radius_()
 {
     source_interface->parent = this;
 
-    yang_name = "radius"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "radius"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Ip::Radius_::~Radius_()
@@ -13546,6 +13728,7 @@ Native::Aaa::Group::Server::Radius::Ip::Radius_::~Radius_()
 
 bool Native::Aaa::Group::Server::Radius::Ip::Radius_::has_data() const
 {
+    if (is_presence_container) return true;
     return (source_interface !=  nullptr && source_interface->has_data());
 }
 
@@ -13646,18 +13829,18 @@ Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::SourceInterfac
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "source-interface"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-interface"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::~SourceInterface()
@@ -13666,6 +13849,7 @@ Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::~SourceInterfa
 
 bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -14201,7 +14385,7 @@ Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterfac
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::~ATMSubinterface()
@@ -14210,6 +14394,7 @@ Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterfac
 
 bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -14278,7 +14463,7 @@ Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinter
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::~ATMACRsubinterface()
@@ -14287,6 +14472,7 @@ Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinter
 
 bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -14355,7 +14541,7 @@ Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterfa
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::~LISPSubinterface()
@@ -14364,6 +14550,7 @@ Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterfa
 
 bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -14432,7 +14619,7 @@ Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSub
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::~PortChannelSubinterface()
@@ -14441,6 +14628,7 @@ Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSub
 
 bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -14509,7 +14697,7 @@ Native::Aaa::Group::Server::Radius::Ip::Vrf::Vrf()
     forwarding{YType::str, "forwarding"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::Ip::Vrf::~Vrf()
@@ -14518,6 +14706,7 @@ Native::Aaa::Group::Server::Radius::Ip::Vrf::~Vrf()
 
 bool Native::Aaa::Group::Server::Radius::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -14587,7 +14776,7 @@ Native::Aaa::Group::Server::Radius::LoadBalance::LoadBalance()
 {
     method->parent = this;
 
-    yang_name = "load-balance"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-balance"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::LoadBalance::~LoadBalance()
@@ -14596,6 +14785,7 @@ Native::Aaa::Group::Server::Radius::LoadBalance::~LoadBalance()
 
 bool Native::Aaa::Group::Server::Radius::LoadBalance::has_data() const
 {
+    if (is_presence_container) return true;
     return (method !=  nullptr && method->has_data());
 }
 
@@ -14667,7 +14857,7 @@ Native::Aaa::Group::Server::Radius::LoadBalance::Method::Method()
     least_outstanding(nullptr) // presence node
 {
 
-    yang_name = "method"; yang_parent_name = "load-balance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method"; yang_parent_name = "load-balance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Group::Server::Radius::LoadBalance::Method::~Method()
@@ -14676,6 +14866,7 @@ Native::Aaa::Group::Server::Radius::LoadBalance::Method::~Method()
 
 bool Native::Aaa::Group::Server::Radius::LoadBalance::Method::has_data() const
 {
+    if (is_presence_container) return true;
     return (least_outstanding !=  nullptr && least_outstanding->has_data());
 }
 
@@ -14748,7 +14939,7 @@ Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::Least
     ignore_preferred_server{YType::empty, "ignore-preferred-server"}
 {
 
-    yang_name = "least-outstanding"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "least-outstanding"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::~LeastOutstanding()
@@ -14757,6 +14948,7 @@ Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::~Leas
 
 bool Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::has_data() const
 {
+    if (is_presence_container) return true;
     return batch_size.is_set
 	|| ignore_preferred_server.is_set;
 }
@@ -14834,9 +15026,11 @@ bool Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::
 }
 
 Native::Aaa::Attribute::Attribute()
+    :
+    list(this, {"name"})
 {
 
-    yang_name = "attribute"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "attribute"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Attribute::~Attribute()
@@ -14845,7 +15039,8 @@ Native::Aaa::Attribute::~Attribute()
 
 bool Native::Aaa::Attribute::has_data() const
 {
-    for (std::size_t index=0; index<list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<list.len(); index++)
     {
         if(list[index]->has_data())
             return true;
@@ -14855,7 +15050,7 @@ bool Native::Aaa::Attribute::has_data() const
 
 bool Native::Aaa::Attribute::has_operation() const
 {
-    for (std::size_t index=0; index<list.size(); index++)
+    for (std::size_t index=0; index<list.len(); index++)
     {
         if(list[index]->has_operation())
             return true;
@@ -14892,7 +15087,7 @@ std::shared_ptr<Entity> Native::Aaa::Attribute::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Native::Aaa::Attribute::List>();
         c->parent = this;
-        list.push_back(c);
+        list.append(c);
         return c;
     }
 
@@ -14904,7 +15099,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Attribute::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : list)
+    for (auto c : list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14933,12 +15128,12 @@ bool Native::Aaa::Attribute::has_leaf_or_child_of_name(const std::string & name)
 Native::Aaa::Attribute::List::List()
     :
     name{YType::str, "name"}
-    	,
+        ,
     attribute(std::make_shared<Native::Aaa::Attribute::List::Attribute_>())
 {
     attribute->parent = this;
 
-    yang_name = "list"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "list"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Attribute::List::~List()
@@ -14947,6 +15142,7 @@ Native::Aaa::Attribute::List::~List()
 
 bool Native::Aaa::Attribute::List::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (attribute !=  nullptr && attribute->has_data());
 }
@@ -14968,7 +15164,8 @@ std::string Native::Aaa::Attribute::List::get_absolute_path() const
 std::string Native::Aaa::Attribute::List::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "list" <<"[name='" <<name <<"']";
+    path_buffer << "list";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -15039,7 +15236,7 @@ Native::Aaa::Attribute::List::Attribute_::Attribute_()
 {
     type->parent = this;
 
-    yang_name = "attribute"; yang_parent_name = "list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute"; yang_parent_name = "list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Attribute::List::Attribute_::~Attribute_()
@@ -15048,6 +15245,7 @@ Native::Aaa::Attribute::List::Attribute_::~Attribute_()
 
 bool Native::Aaa::Attribute::List::Attribute_::has_data() const
 {
+    if (is_presence_container) return true;
     return (type !=  nullptr && type->has_data());
 }
 
@@ -15121,7 +15319,7 @@ Native::Aaa::Attribute::List::Attribute_::Type::Type()
     tag{YType::uint8, "tag"}
 {
 
-    yang_name = "type"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "type"; yang_parent_name = "attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Attribute::List::Attribute_::Type::~Type()
@@ -15130,6 +15328,7 @@ Native::Aaa::Attribute::List::Attribute_::Type::~Type()
 
 bool Native::Aaa::Attribute::List::Attribute_::Type::has_data() const
 {
+    if (is_presence_container) return true;
     return password.is_set
 	|| mandatory.is_set
 	|| tag.is_set;
@@ -15222,10 +15421,12 @@ bool Native::Aaa::Attribute::List::Attribute_::Type::has_leaf_or_child_of_name(c
 Native::Aaa::Authentication::Authentication()
     :
     attempts(std::make_shared<Native::Aaa::Authentication::Attempts>())
-	,dot1x(std::make_shared<Native::Aaa::Authentication::Dot1X>())
-	,enable(std::make_shared<Native::Aaa::Authentication::Enable>())
-	,eou(std::make_shared<Native::Aaa::Authentication::Eou>())
-	,onep(std::make_shared<Native::Aaa::Authentication::Onep>())
+    , dot1x(std::make_shared<Native::Aaa::Authentication::Dot1x>())
+    , enable(std::make_shared<Native::Aaa::Authentication::Enable>())
+    , eou(std::make_shared<Native::Aaa::Authentication::Eou>())
+    , login(this, {"name"})
+    , onep(std::make_shared<Native::Aaa::Authentication::Onep>())
+    , ppp(this, {"id"})
 {
     attempts->parent = this;
     dot1x->parent = this;
@@ -15233,7 +15434,7 @@ Native::Aaa::Authentication::Authentication()
     eou->parent = this;
     onep->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authentication"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authentication::~Authentication()
@@ -15242,12 +15443,13 @@ Native::Aaa::Authentication::~Authentication()
 
 bool Native::Aaa::Authentication::has_data() const
 {
-    for (std::size_t index=0; index<login.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<login.len(); index++)
     {
         if(login[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ppp.size(); index++)
+    for (std::size_t index=0; index<ppp.len(); index++)
     {
         if(ppp[index]->has_data())
             return true;
@@ -15261,12 +15463,12 @@ bool Native::Aaa::Authentication::has_data() const
 
 bool Native::Aaa::Authentication::has_operation() const
 {
-    for (std::size_t index=0; index<login.size(); index++)
+    for (std::size_t index=0; index<login.len(); index++)
     {
         if(login[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ppp.size(); index++)
+    for (std::size_t index=0; index<ppp.len(); index++)
     {
         if(ppp[index]->has_operation())
             return true;
@@ -15317,7 +15519,7 @@ std::shared_ptr<Entity> Native::Aaa::Authentication::get_child_by_name(const std
     {
         if(dot1x == nullptr)
         {
-            dot1x = std::make_shared<Native::Aaa::Authentication::Dot1X>();
+            dot1x = std::make_shared<Native::Aaa::Authentication::Dot1x>();
         }
         return dot1x;
     }
@@ -15344,7 +15546,7 @@ std::shared_ptr<Entity> Native::Aaa::Authentication::get_child_by_name(const std
     {
         auto c = std::make_shared<Native::Aaa::Authentication::Login>();
         c->parent = this;
-        login.push_back(c);
+        login.append(c);
         return c;
     }
 
@@ -15361,7 +15563,7 @@ std::shared_ptr<Entity> Native::Aaa::Authentication::get_child_by_name(const std
     {
         auto c = std::make_shared<Native::Aaa::Authentication::Ppp>();
         c->parent = this;
-        ppp.push_back(c);
+        ppp.append(c);
         return c;
     }
 
@@ -15393,7 +15595,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authentication::get_
     }
 
     count = 0;
-    for (auto const & c : login)
+    for (auto c : login.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15407,7 +15609,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authentication::get_
     }
 
     count = 0;
-    for (auto const & c : ppp)
+    for (auto c : ppp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15438,7 +15640,7 @@ Native::Aaa::Authentication::Attempts::Attempts()
     login{YType::uint8, "login"}
 {
 
-    yang_name = "attempts"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "attempts"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authentication::Attempts::~Attempts()
@@ -15447,6 +15649,7 @@ Native::Aaa::Authentication::Attempts::~Attempts()
 
 bool Native::Aaa::Authentication::Attempts::has_data() const
 {
+    if (is_presence_container) return true;
     return login.is_set;
 }
 
@@ -15517,22 +15720,24 @@ bool Native::Aaa::Authentication::Attempts::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-Native::Aaa::Authentication::Dot1X::Dot1X()
+Native::Aaa::Authentication::Dot1x::Dot1x()
     :
-    default_(std::make_shared<Native::Aaa::Authentication::Dot1X::Default>())
+    dot1x_list(this, {"name"})
+    , default_(std::make_shared<Native::Aaa::Authentication::Dot1x::Default>())
 {
     default_->parent = this;
 
-    yang_name = "dot1x"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1x"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Aaa::Authentication::Dot1X::~Dot1X()
+Native::Aaa::Authentication::Dot1x::~Dot1x()
 {
 }
 
-bool Native::Aaa::Authentication::Dot1X::has_data() const
+bool Native::Aaa::Authentication::Dot1x::has_data() const
 {
-    for (std::size_t index=0; index<dot1x_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1x_list.len(); index++)
     {
         if(dot1x_list[index]->has_data())
             return true;
@@ -15540,9 +15745,9 @@ bool Native::Aaa::Authentication::Dot1X::has_data() const
     return (default_ !=  nullptr && default_->has_data());
 }
 
-bool Native::Aaa::Authentication::Dot1X::has_operation() const
+bool Native::Aaa::Authentication::Dot1x::has_operation() const
 {
-    for (std::size_t index=0; index<dot1x_list.size(); index++)
+    for (std::size_t index=0; index<dot1x_list.len(); index++)
     {
         if(dot1x_list[index]->has_operation())
             return true;
@@ -15551,21 +15756,21 @@ bool Native::Aaa::Authentication::Dot1X::has_operation() const
 	|| (default_ !=  nullptr && default_->has_operation());
 }
 
-std::string Native::Aaa::Authentication::Dot1X::get_absolute_path() const
+std::string Native::Aaa::Authentication::Dot1x::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Authentication::Dot1X::get_segment_path() const
+std::string Native::Aaa::Authentication::Dot1x::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1x";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authentication::Dot1X::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authentication::Dot1x::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15574,13 +15779,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authentication::Dot1
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Authentication::Dot1X::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Authentication::Dot1x::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1x-list")
     {
-        auto c = std::make_shared<Native::Aaa::Authentication::Dot1X::Dot1XList>();
+        auto c = std::make_shared<Native::Aaa::Authentication::Dot1x::Dot1xList>();
         c->parent = this;
-        dot1x_list.push_back(c);
+        dot1x_list.append(c);
         return c;
     }
 
@@ -15588,7 +15793,7 @@ std::shared_ptr<Entity> Native::Aaa::Authentication::Dot1X::get_child_by_name(co
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Aaa::Authentication::Dot1X::Default>();
+            default_ = std::make_shared<Native::Aaa::Authentication::Dot1x::Default>();
         }
         return default_;
     }
@@ -15596,12 +15801,12 @@ std::shared_ptr<Entity> Native::Aaa::Authentication::Dot1X::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authentication::Dot1X::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authentication::Dot1x::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1x_list)
+    for (auto c : dot1x_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15617,22 +15822,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authentication::Dot1
     return children;
 }
 
-void Native::Aaa::Authentication::Dot1X::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Authentication::Dot1x::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Aaa::Authentication::Dot1X::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Authentication::Dot1x::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Aaa::Authentication::Dot1X::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Authentication::Dot1x::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1x-list" || name == "default")
         return true;
     return false;
 }
 
-Native::Aaa::Authentication::Dot1X::Dot1XList::Dot1XList()
+Native::Aaa::Authentication::Dot1x::Dot1xList::Dot1xList()
     :
     name{YType::str, "name"},
     group{YType::str, "group"},
@@ -15640,22 +15845,23 @@ Native::Aaa::Authentication::Dot1X::Dot1XList::Dot1XList()
     cache{YType::str, "cache"}
 {
 
-    yang_name = "dot1x-list"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1x-list"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Aaa::Authentication::Dot1X::Dot1XList::~Dot1XList()
+Native::Aaa::Authentication::Dot1x::Dot1xList::~Dot1xList()
 {
 }
 
-bool Native::Aaa::Authentication::Dot1X::Dot1XList::has_data() const
+bool Native::Aaa::Authentication::Dot1x::Dot1xList::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| group.is_set
 	|| local.is_set
 	|| cache.is_set;
 }
 
-bool Native::Aaa::Authentication::Dot1X::Dot1XList::has_operation() const
+bool Native::Aaa::Authentication::Dot1x::Dot1xList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
@@ -15664,21 +15870,22 @@ bool Native::Aaa::Authentication::Dot1X::Dot1XList::has_operation() const
 	|| ydk::is_set(cache.yfilter);
 }
 
-std::string Native::Aaa::Authentication::Dot1X::Dot1XList::get_absolute_path() const
+std::string Native::Aaa::Authentication::Dot1x::Dot1xList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:authentication/dot1x/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Authentication::Dot1X::Dot1XList::get_segment_path() const
+std::string Native::Aaa::Authentication::Dot1x::Dot1xList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1x-list" <<"[name='" <<name <<"']";
+    path_buffer << "dot1x-list";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authentication::Dot1X::Dot1XList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authentication::Dot1x::Dot1xList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15691,19 +15898,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authentication::Dot1
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Authentication::Dot1X::Dot1XList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Authentication::Dot1x::Dot1xList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authentication::Dot1X::Dot1XList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authentication::Dot1x::Dot1xList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Aaa::Authentication::Dot1X::Dot1XList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Authentication::Dot1x::Dot1xList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -15731,7 +15938,7 @@ void Native::Aaa::Authentication::Dot1X::Dot1XList::set_value(const std::string 
     }
 }
 
-void Native::Aaa::Authentication::Dot1X::Dot1XList::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Authentication::Dot1x::Dot1xList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -15751,35 +15958,36 @@ void Native::Aaa::Authentication::Dot1X::Dot1XList::set_filter(const std::string
     }
 }
 
-bool Native::Aaa::Authentication::Dot1X::Dot1XList::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Authentication::Dot1x::Dot1xList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "group" || name == "local" || name == "cache")
         return true;
     return false;
 }
 
-Native::Aaa::Authentication::Dot1X::Default::Default()
+Native::Aaa::Authentication::Dot1x::Default::Default()
     :
     group{YType::str, "group"},
     local{YType::empty, "local"},
     cache{YType::str, "cache"}
 {
 
-    yang_name = "default"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Aaa::Authentication::Dot1X::Default::~Default()
+Native::Aaa::Authentication::Dot1x::Default::~Default()
 {
 }
 
-bool Native::Aaa::Authentication::Dot1X::Default::has_data() const
+bool Native::Aaa::Authentication::Dot1x::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| local.is_set
 	|| cache.is_set;
 }
 
-bool Native::Aaa::Authentication::Dot1X::Default::has_operation() const
+bool Native::Aaa::Authentication::Dot1x::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(group.yfilter)
@@ -15787,21 +15995,21 @@ bool Native::Aaa::Authentication::Dot1X::Default::has_operation() const
 	|| ydk::is_set(cache.yfilter);
 }
 
-std::string Native::Aaa::Authentication::Dot1X::Default::get_absolute_path() const
+std::string Native::Aaa::Authentication::Dot1x::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:authentication/dot1x/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Authentication::Dot1X::Default::get_segment_path() const
+std::string Native::Aaa::Authentication::Dot1x::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authentication::Dot1X::Default::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authentication::Dot1x::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15813,19 +16021,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authentication::Dot1
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Authentication::Dot1X::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Authentication::Dot1x::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authentication::Dot1X::Default::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authentication::Dot1x::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Aaa::Authentication::Dot1X::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Authentication::Dot1x::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group")
     {
@@ -15847,7 +16055,7 @@ void Native::Aaa::Authentication::Dot1X::Default::set_value(const std::string & 
     }
 }
 
-void Native::Aaa::Authentication::Dot1X::Default::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Authentication::Dot1x::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "group")
     {
@@ -15863,7 +16071,7 @@ void Native::Aaa::Authentication::Dot1X::Default::set_filter(const std::string &
     }
 }
 
-bool Native::Aaa::Authentication::Dot1X::Default::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Authentication::Dot1x::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "group" || name == "local" || name == "cache")
         return true;
@@ -15876,7 +16084,7 @@ Native::Aaa::Authentication::Enable::Enable()
 {
     default_->parent = this;
 
-    yang_name = "enable"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "enable"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authentication::Enable::~Enable()
@@ -15885,6 +16093,7 @@ Native::Aaa::Authentication::Enable::~Enable()
 
 bool Native::Aaa::Authentication::Enable::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -15966,7 +16175,7 @@ Native::Aaa::Authentication::Enable::Default::Default()
     none{YType::empty, "none"}
 {
 
-    yang_name = "default"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authentication::Enable::Default::~Default()
@@ -15975,6 +16184,7 @@ Native::Aaa::Authentication::Enable::Default::~Default()
 
 bool Native::Aaa::Authentication::Enable::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| enable.is_set
 	|| line.is_set
@@ -16090,7 +16300,7 @@ Native::Aaa::Authentication::Eou::Eou()
 {
     default_->parent = this;
 
-    yang_name = "eou"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eou"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authentication::Eou::~Eou()
@@ -16099,6 +16309,7 @@ Native::Aaa::Authentication::Eou::~Eou()
 
 bool Native::Aaa::Authentication::Eou::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -16178,7 +16389,7 @@ Native::Aaa::Authentication::Eou::Default::Default()
 {
     group->parent = this;
 
-    yang_name = "default"; yang_parent_name = "eou"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "eou"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authentication::Eou::Default::~Default()
@@ -16187,6 +16398,7 @@ Native::Aaa::Authentication::Eou::Default::~Default()
 
 bool Native::Aaa::Authentication::Eou::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (group !=  nullptr && group->has_data());
 }
 
@@ -16265,7 +16477,7 @@ Native::Aaa::Authentication::Eou::Default::Group::Group()
     radius{YType::empty, "radius"}
 {
 
-    yang_name = "group"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authentication::Eou::Default::Group::~Group()
@@ -16274,6 +16486,7 @@ Native::Aaa::Authentication::Eou::Default::Group::~Group()
 
 bool Native::Aaa::Authentication::Eou::Default::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return radius.is_set;
 }
 
@@ -16347,18 +16560,18 @@ bool Native::Aaa::Authentication::Eou::Default::Group::has_leaf_or_child_of_name
 Native::Aaa::Authentication::Login::Login()
     :
     name{YType::str, "name"}
-    	,
+        ,
     a1(std::make_shared<Native::Aaa::Authentication::Login::A1>())
-	,a2(std::make_shared<Native::Aaa::Authentication::Login::A2>())
-	,a3(std::make_shared<Native::Aaa::Authentication::Login::A3>())
-	,a4(std::make_shared<Native::Aaa::Authentication::Login::A4>())
+    , a2(std::make_shared<Native::Aaa::Authentication::Login::A2>())
+    , a3(std::make_shared<Native::Aaa::Authentication::Login::A3>())
+    , a4(std::make_shared<Native::Aaa::Authentication::Login::A4>())
 {
     a1->parent = this;
     a2->parent = this;
     a3->parent = this;
     a4->parent = this;
 
-    yang_name = "login"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "login"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authentication::Login::~Login()
@@ -16367,6 +16580,7 @@ Native::Aaa::Authentication::Login::~Login()
 
 bool Native::Aaa::Authentication::Login::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (a1 !=  nullptr && a1->has_data())
 	|| (a2 !=  nullptr && a2->has_data())
@@ -16394,7 +16608,8 @@ std::string Native::Aaa::Authentication::Login::get_absolute_path() const
 std::string Native::Aaa::Authentication::Login::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "login" <<"[name='" <<name <<"']";
+    path_buffer << "login";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -16514,7 +16729,7 @@ Native::Aaa::Authentication::Login::A1::A1()
     cache{YType::str, "cache"}
 {
 
-    yang_name = "a1"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a1"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authentication::Login::A1::~A1()
@@ -16523,6 +16738,7 @@ Native::Aaa::Authentication::Login::A1::~A1()
 
 bool Native::Aaa::Authentication::Login::A1::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| krb5.is_set
 	|| krb5_telnet.is_set
@@ -16703,7 +16919,7 @@ Native::Aaa::Authentication::Login::A2::A2()
     local_case{YType::empty, "local-case"}
 {
 
-    yang_name = "a2"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a2"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authentication::Login::A2::~A2()
@@ -16712,6 +16928,7 @@ Native::Aaa::Authentication::Login::A2::~A2()
 
 bool Native::Aaa::Authentication::Login::A2::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| cache.is_set
 	|| none.is_set
@@ -16892,7 +17109,7 @@ Native::Aaa::Authentication::Login::A3::A3()
     local_case{YType::empty, "local-case"}
 {
 
-    yang_name = "a3"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a3"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authentication::Login::A3::~A3()
@@ -16901,6 +17118,7 @@ Native::Aaa::Authentication::Login::A3::~A3()
 
 bool Native::Aaa::Authentication::Login::A3::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| cache.is_set
 	|| none.is_set
@@ -17081,7 +17299,7 @@ Native::Aaa::Authentication::Login::A4::A4()
     local_case{YType::empty, "local-case"}
 {
 
-    yang_name = "a4"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a4"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authentication::Login::A4::~A4()
@@ -17090,6 +17308,7 @@ Native::Aaa::Authentication::Login::A4::~A4()
 
 bool Native::Aaa::Authentication::Login::A4::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| cache.is_set
 	|| none.is_set
@@ -17263,7 +17482,7 @@ Native::Aaa::Authentication::Onep::Onep()
 {
     default_->parent = this;
 
-    yang_name = "onep"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "onep"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authentication::Onep::~Onep()
@@ -17272,6 +17491,7 @@ Native::Aaa::Authentication::Onep::~Onep()
 
 bool Native::Aaa::Authentication::Onep::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -17350,7 +17570,7 @@ Native::Aaa::Authentication::Onep::Default::Default()
     local(nullptr) // presence node
 {
 
-    yang_name = "default"; yang_parent_name = "onep"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "onep"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authentication::Onep::Default::~Default()
@@ -17359,6 +17579,7 @@ Native::Aaa::Authentication::Onep::Default::~Default()
 
 bool Native::Aaa::Authentication::Onep::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (local !=  nullptr && local->has_data());
 }
 
@@ -17435,7 +17656,7 @@ bool Native::Aaa::Authentication::Onep::Default::has_leaf_or_child_of_name(const
 Native::Aaa::Authentication::Onep::Default::Local::Local()
 {
 
-    yang_name = "local"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Authentication::Onep::Default::Local::~Local()
@@ -17444,6 +17665,7 @@ Native::Aaa::Authentication::Onep::Default::Local::~Local()
 
 bool Native::Aaa::Authentication::Onep::Default::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -17503,18 +17725,18 @@ bool Native::Aaa::Authentication::Onep::Default::Local::has_leaf_or_child_of_nam
 Native::Aaa::Authentication::Ppp::Ppp()
     :
     id{YType::str, "id"}
-    	,
+        ,
     a1(std::make_shared<Native::Aaa::Authentication::Ppp::A1>())
-	,a2(std::make_shared<Native::Aaa::Authentication::Ppp::A2>())
-	,a3(std::make_shared<Native::Aaa::Authentication::Ppp::A3>())
-	,a4(std::make_shared<Native::Aaa::Authentication::Ppp::A4>())
+    , a2(std::make_shared<Native::Aaa::Authentication::Ppp::A2>())
+    , a3(std::make_shared<Native::Aaa::Authentication::Ppp::A3>())
+    , a4(std::make_shared<Native::Aaa::Authentication::Ppp::A4>())
 {
     a1->parent = this;
     a2->parent = this;
     a3->parent = this;
     a4->parent = this;
 
-    yang_name = "ppp"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ppp"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authentication::Ppp::~Ppp()
@@ -17523,6 +17745,7 @@ Native::Aaa::Authentication::Ppp::~Ppp()
 
 bool Native::Aaa::Authentication::Ppp::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| (a1 !=  nullptr && a1->has_data())
 	|| (a2 !=  nullptr && a2->has_data())
@@ -17550,7 +17773,8 @@ std::string Native::Aaa::Authentication::Ppp::get_absolute_path() const
 std::string Native::Aaa::Authentication::Ppp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ppp" <<"[id='" <<id <<"']";
+    path_buffer << "ppp";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -17668,7 +17892,7 @@ Native::Aaa::Authentication::Ppp::A1::A1()
     cache{YType::str, "cache"}
 {
 
-    yang_name = "a1"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a1"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authentication::Ppp::A1::~A1()
@@ -17677,6 +17901,7 @@ Native::Aaa::Authentication::Ppp::A1::~A1()
 
 bool Native::Aaa::Authentication::Ppp::A1::has_data() const
 {
+    if (is_presence_container) return true;
     return if_needed.is_set
 	|| none.is_set
 	|| krb5.is_set
@@ -17828,7 +18053,7 @@ Native::Aaa::Authentication::Ppp::A2::A2()
     local_case{YType::empty, "local-case"}
 {
 
-    yang_name = "a2"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a2"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authentication::Ppp::A2::~A2()
@@ -17837,6 +18062,7 @@ Native::Aaa::Authentication::Ppp::A2::~A2()
 
 bool Native::Aaa::Authentication::Ppp::A2::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| cache.is_set
 	|| none.is_set
@@ -17968,12 +18194,12 @@ bool Native::Aaa::Authentication::Ppp::A2::has_leaf_or_child_of_name(const std::
 const Enum::YLeaf Native::PseudowireClass::ProtocolMpls::Protocol::ldp {0, "ldp"};
 const Enum::YLeaf Native::PseudowireClass::ProtocolMpls::Protocol::none {1, "none"};
 
-const Enum::YLeaf Native::PseudowireClass::ProtocolL2Tpv2::Protocol::l2tpv2 {0, "l2tpv2"};
-const Enum::YLeaf Native::PseudowireClass::ProtocolL2Tpv2::Protocol::none {1, "none"};
+const Enum::YLeaf Native::PseudowireClass::ProtocolL2tpv2::Protocol::l2tpv2 {0, "l2tpv2"};
+const Enum::YLeaf Native::PseudowireClass::ProtocolL2tpv2::Protocol::none {1, "none"};
 
-const Enum::YLeaf Native::PseudowireClass::ProtocolL2Tpv3::Protocol::l2tpv3 {0, "l2tpv3"};
-const Enum::YLeaf Native::PseudowireClass::ProtocolL2Tpv3::Protocol::l2tpv3ietf {1, "l2tpv3ietf"};
-const Enum::YLeaf Native::PseudowireClass::ProtocolL2Tpv3::Protocol::none {2, "none"};
+const Enum::YLeaf Native::PseudowireClass::ProtocolL2tpv3::Protocol::l2tpv3 {0, "l2tpv3"};
+const Enum::YLeaf Native::PseudowireClass::ProtocolL2tpv3::Protocol::l2tpv3ietf {1, "l2tpv3ietf"};
+const Enum::YLeaf Native::PseudowireClass::ProtocolL2tpv3::Protocol::none {2, "none"};
 
 const Enum::YLeaf Native::Clock::SummerTime::RecurringStart::first {0, "first"};
 const Enum::YLeaf Native::Clock::SummerTime::RecurringStart::last {1, "last"};
@@ -18059,17 +18285,17 @@ const Enum::YLeaf Native::Aaa::Group::Server::Radius::ServerPrivate::Key::Encryp
 const Enum::YLeaf Native::Aaa::Group::Server::Radius::ServerPrivate::Key::Encryption::Y_6 {1, "6"};
 const Enum::YLeaf Native::Aaa::Group::Server::Radius::ServerPrivate::Key::Encryption::Y_7 {2, "7"};
 
-const Enum::YLeaf Native::Aaa::Authentication::Dot1X::Dot1XList::Group::radius {0, "radius"};
-const Enum::YLeaf Native::Aaa::Authentication::Dot1X::Dot1XList::Group::ldap {1, "ldap"};
+const Enum::YLeaf Native::Aaa::Authentication::Dot1x::Dot1xList::Group::radius {0, "radius"};
+const Enum::YLeaf Native::Aaa::Authentication::Dot1x::Dot1xList::Group::ldap {1, "ldap"};
 
-const Enum::YLeaf Native::Aaa::Authentication::Dot1X::Dot1XList::Cache::radius {0, "radius"};
-const Enum::YLeaf Native::Aaa::Authentication::Dot1X::Dot1XList::Cache::ldap {1, "ldap"};
+const Enum::YLeaf Native::Aaa::Authentication::Dot1x::Dot1xList::Cache::radius {0, "radius"};
+const Enum::YLeaf Native::Aaa::Authentication::Dot1x::Dot1xList::Cache::ldap {1, "ldap"};
 
-const Enum::YLeaf Native::Aaa::Authentication::Dot1X::Default::Group::radius {0, "radius"};
-const Enum::YLeaf Native::Aaa::Authentication::Dot1X::Default::Group::ldap {1, "ldap"};
+const Enum::YLeaf Native::Aaa::Authentication::Dot1x::Default::Group::radius {0, "radius"};
+const Enum::YLeaf Native::Aaa::Authentication::Dot1x::Default::Group::ldap {1, "ldap"};
 
-const Enum::YLeaf Native::Aaa::Authentication::Dot1X::Default::Cache::radius {0, "radius"};
-const Enum::YLeaf Native::Aaa::Authentication::Dot1X::Default::Cache::ldap {1, "ldap"};
+const Enum::YLeaf Native::Aaa::Authentication::Dot1x::Default::Cache::radius {0, "radius"};
+const Enum::YLeaf Native::Aaa::Authentication::Dot1x::Default::Cache::ldap {1, "ldap"};
 
 const Enum::YLeaf Native::Aaa::Authentication::Enable::Default::Group::radius {0, "radius"};
 const Enum::YLeaf Native::Aaa::Authentication::Enable::Default::Group::tacacs__PLUS__ {1, "tacacs+"};

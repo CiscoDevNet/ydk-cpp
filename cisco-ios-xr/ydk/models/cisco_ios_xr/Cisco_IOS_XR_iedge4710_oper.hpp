@@ -83,7 +83,7 @@ class Subscriber::Manager::Nodes : public ydk::Entity
 
         class Node; //type: Subscriber::Manager::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Manager::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Subscriber::Manager::Nodes
 
@@ -2421,7 +2421,7 @@ class Subscriber::Session::Nodes : public ydk::Entity
 
         class Node; //type: Subscriber::Session::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Subscriber::Session::Nodes
 
@@ -2493,7 +2493,7 @@ class Subscriber::Session::Nodes::Node::AuthorSummaries : public ydk::Entity
 
         class AuthorSummary; //type: Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary> > author_summary;
+        ydk::YList author_summary;
         
 }; // Subscriber::Session::Nodes::Node::AuthorSummaries
 
@@ -2993,7 +2993,7 @@ class Subscriber::Session::Nodes::Node::MacSummaries : public ydk::Entity
 
         class MacSummary; //type: Subscriber::Session::Nodes::Node::MacSummaries::MacSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::MacSummaries::MacSummary> > mac_summary;
+        ydk::YList mac_summary;
         
 }; // Subscriber::Session::Nodes::Node::MacSummaries
 
@@ -3255,7 +3255,7 @@ class Subscriber::Session::Nodes::Node::InterfaceSummaries : public ydk::Entity
 
         class InterfaceSummary; //type: Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary> > interface_summary;
+        ydk::YList interface_summary;
         
 }; // Subscriber::Session::Nodes::Node::InterfaceSummaries
 
@@ -3517,7 +3517,7 @@ class Subscriber::Session::Nodes::Node::AuthenticationSummaries : public ydk::En
 
         class AuthenticationSummary; //type: Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary> > authentication_summary;
+        ydk::YList authentication_summary;
         
 }; // Subscriber::Session::Nodes::Node::AuthenticationSummaries
 
@@ -3779,7 +3779,7 @@ class Subscriber::Session::Nodes::Node::StateSummaries : public ydk::Entity
 
         class StateSummary; //type: Subscriber::Session::Nodes::Node::StateSummaries::StateSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::StateSummaries::StateSummary> > state_summary;
+        ydk::YList state_summary;
         
 }; // Subscriber::Session::Nodes::Node::StateSummaries
 
@@ -4041,7 +4041,7 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries : public ydk::En
 
         class Ipv4AddressVrfSummary; //type: Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary> > ipv4_address_vrf_summary;
+        ydk::YList ipv4_address_vrf_summary;
         
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries
 
@@ -4304,7 +4304,7 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries : public ydk::Ent
 
         class AddressFamilySummary; //type: Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary> > address_family_summary;
+        ydk::YList address_family_summary;
         
 }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries
 
@@ -4566,7 +4566,7 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries : public ydk::Entity
 
         class UsernameSummary; //type: Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary> > username_summary;
+        ydk::YList username_summary;
         
 }; // Subscriber::Session::Nodes::Node::UsernameSummaries
 
@@ -4828,7 +4828,7 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries : public ydk::E
 
         class AccessInterfaceSummary; //type: Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary> > access_interface_summary;
+        ydk::YList access_interface_summary;
         
 }; // Subscriber::Session::Nodes::Node::AccessInterfaceSummaries
 
@@ -5090,7 +5090,7 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries : public ydk::Entit
 
         class Ipv4AddressSummary; //type: Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary> > ipv4_address_summary;
+        ydk::YList ipv4_address_summary;
         
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressSummaries
 
@@ -5352,7 +5352,7 @@ class Subscriber::Session::Nodes::Node::VrfSummaries : public ydk::Entity
 
         class VrfSummary; //type: Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary> > vrf_summary;
+        ydk::YList vrf_summary;
         
 }; // Subscriber::Session::Nodes::Node::VrfSummaries
 
@@ -5614,7 +5614,7 @@ class Subscriber::Session::Nodes::Node::Sessions : public ydk::Entity
 
         class Session_; //type: Subscriber::Session::Nodes::Node::Sessions::Session_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_> > session;
+        ydk::YList session;
         
 }; // Subscriber::Session::Nodes::Node::Sessions
 
@@ -5676,7 +5676,7 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_ : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting> accounting;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes> user_profile_attributes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes> mobility_attributes;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization> > session_change_of_authorization;
+        ydk::YList session_change_of_authorization;
         
 }; // Subscriber::Session::Nodes::Node::Sessions::Session_
 
@@ -5699,7 +5699,7 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting : public 
 
         class AccountingSession; //type: Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession> > accounting_session;
+        ydk::YList accounting_session;
         
 }; // Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting
 
@@ -5909,7 +5909,7 @@ class IedgeLicenseManager::Nodes : public ydk::Entity
 
         class Node; //type: IedgeLicenseManager::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::IedgeLicenseManager::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // IedgeLicenseManager::Nodes
 
@@ -5962,56 +5962,23 @@ class IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary : public ydk:
 
 }; // IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary
 
-class SubscriberAuthorStateFilterFlag : public ydk::Enum
+class AaaTunnelProto : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf un_authorized;
-        static const ydk::Enum::YLeaf authorized;
-
-};
-
-class SubscriberAddressFamilyFilterFlag : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4_only;
-        static const ydk::Enum::YLeaf ipv6_only;
-        static const ydk::Enum::YLeaf ipv4_all;
-        static const ydk::Enum::YLeaf ipv6_all;
-        static const ydk::Enum::YLeaf dual_all;
-        static const ydk::Enum::YLeaf dual_part_up;
-        static const ydk::Enum::YLeaf dual_up;
-        static const ydk::Enum::YLeaf lac;
-
-};
-
-class SubscriberStateFilterFlag : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf initializing;
-        static const ydk::Enum::YLeaf connecting;
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf activated;
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf disconnecting;
-        static const ydk::Enum::YLeaf end;
-
-};
-
-class SubscriberAuthenStateFilterFlag : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf un_authenticated;
-        static const ydk::Enum::YLeaf authenticated;
-
-};
-
-class IedgeOperSessionAfState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_started;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf up_pending;
-        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf pptp;
+        static const ydk::Enum::YLeaf l2f;
+        static const ydk::Enum::YLeaf l2tp;
+        static const ydk::Enum::YLeaf atmp;
+        static const ydk::Enum::YLeaf vtp;
+        static const ydk::Enum::YLeaf ah;
+        static const ydk::Enum::YLeaf ip_over_ip;
+        static const ydk::Enum::YLeaf minimum_ip_over_ip;
+        static const ydk::Enum::YLeaf esp;
+        static const ydk::Enum::YLeaf gre;
+        static const ydk::Enum::YLeaf bay_dvs;
+        static const ydk::Enum::YLeaf ip_in_ip;
+        static const ydk::Enum::YLeaf vlan;
 
 };
 
@@ -6041,6 +6008,72 @@ class AaaTerminateCause : public ydk::Enum
         static const ydk::Enum::YLeaf reauthorization_failure;
         static const ydk::Enum::YLeaf port_reinitialized;
         static const ydk::Enum::YLeaf admin_disabled;
+
+};
+
+class SubscriberAuthorStateFilterFlag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf un_authorized;
+        static const ydk::Enum::YLeaf authorized;
+
+};
+
+class IedgeOperSessionState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf initialize;
+        static const ydk::Enum::YLeaf connecting;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf activated;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf disconnecting;
+        static const ydk::Enum::YLeaf end;
+
+};
+
+class IedgeOperSessionAfState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_started;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf up_pending;
+        static const ydk::Enum::YLeaf up;
+
+};
+
+class SubscriberStateFilterFlag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf initializing;
+        static const ydk::Enum::YLeaf connecting;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf activated;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf disconnecting;
+        static const ydk::Enum::YLeaf end;
+
+};
+
+class AaaAuthService : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf login;
+        static const ydk::Enum::YLeaf framed;
+        static const ydk::Enum::YLeaf callback_login;
+        static const ydk::Enum::YLeaf callback_framed;
+        static const ydk::Enum::YLeaf outbound;
+        static const ydk::Enum::YLeaf administrator;
+        static const ydk::Enum::YLeaf prompt;
+        static const ydk::Enum::YLeaf authentication_only;
+        static const ydk::Enum::YLeaf callback_nas_prompt;
+        static const ydk::Enum::YLeaf call_check;
+        static const ydk::Enum::YLeaf callback_administrator;
+        static const ydk::Enum::YLeaf voice;
+        static const ydk::Enum::YLeaf fax;
+        static const ydk::Enum::YLeaf modem_relay;
+        static const ydk::Enum::YLeaf eap_over_udp;
 
 };
 
@@ -6078,23 +6111,22 @@ class AaaInterface : public ydk::Enum
 
 };
 
-class AaaTunnelProto : public ydk::Enum
+class SubscriberAuthenStateFilterFlag : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf pptp;
-        static const ydk::Enum::YLeaf l2f;
-        static const ydk::Enum::YLeaf l2tp;
-        static const ydk::Enum::YLeaf atmp;
-        static const ydk::Enum::YLeaf vtp;
-        static const ydk::Enum::YLeaf ah;
-        static const ydk::Enum::YLeaf ip_over_ip;
-        static const ydk::Enum::YLeaf minimum_ip_over_ip;
-        static const ydk::Enum::YLeaf esp;
-        static const ydk::Enum::YLeaf gre;
-        static const ydk::Enum::YLeaf bay_dvs;
-        static const ydk::Enum::YLeaf ip_in_ip;
-        static const ydk::Enum::YLeaf vlan;
+        static const ydk::Enum::YLeaf un_authenticated;
+        static const ydk::Enum::YLeaf authenticated;
+
+};
+
+class IedgeOperSession : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf pppoe;
+        static const ydk::Enum::YLeaf ppp;
+        static const ydk::Enum::YLeaf ip_packet_trigger;
+        static const ydk::Enum::YLeaf ip_packet_dhcp_trigger;
 
 };
 
@@ -6111,41 +6143,6 @@ class AaaTunnelMedium : public ydk::Enum
 
 };
 
-class AaaAuthService : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf login;
-        static const ydk::Enum::YLeaf framed;
-        static const ydk::Enum::YLeaf callback_login;
-        static const ydk::Enum::YLeaf callback_framed;
-        static const ydk::Enum::YLeaf outbound;
-        static const ydk::Enum::YLeaf administrator;
-        static const ydk::Enum::YLeaf prompt;
-        static const ydk::Enum::YLeaf authentication_only;
-        static const ydk::Enum::YLeaf callback_nas_prompt;
-        static const ydk::Enum::YLeaf call_check;
-        static const ydk::Enum::YLeaf callback_administrator;
-        static const ydk::Enum::YLeaf voice;
-        static const ydk::Enum::YLeaf fax;
-        static const ydk::Enum::YLeaf modem_relay;
-        static const ydk::Enum::YLeaf eap_over_udp;
-
-};
-
-class IedgeOperSessionState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf initialize;
-        static const ydk::Enum::YLeaf connecting;
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf activated;
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf disconnecting;
-        static const ydk::Enum::YLeaf end;
-
-};
-
 class IedgePppSub : public ydk::Enum
 {
     public:
@@ -6154,14 +6151,17 @@ class IedgePppSub : public ydk::Enum
 
 };
 
-class IedgeOperSession : public ydk::Enum
+class SubscriberAddressFamilyFilterFlag : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf pppoe;
-        static const ydk::Enum::YLeaf ppp;
-        static const ydk::Enum::YLeaf ip_packet_trigger;
-        static const ydk::Enum::YLeaf ip_packet_dhcp_trigger;
+        static const ydk::Enum::YLeaf ipv4_only;
+        static const ydk::Enum::YLeaf ipv6_only;
+        static const ydk::Enum::YLeaf ipv4_all;
+        static const ydk::Enum::YLeaf ipv6_all;
+        static const ydk::Enum::YLeaf dual_all;
+        static const ydk::Enum::YLeaf dual_part_up;
+        static const ydk::Enum::YLeaf dual_up;
+        static const ydk::Enum::YLeaf lac;
 
 };
 

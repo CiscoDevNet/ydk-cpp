@@ -106,7 +106,7 @@ class TerminalDevice::LogicalChannels : public ydk::Entity
 
         class Channel; //type: TerminalDevice::LogicalChannels::Channel
 
-        std::vector<std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel> > channel;
+        ydk::YList channel;
         
 }; // TerminalDevice::LogicalChannels
 
@@ -555,7 +555,7 @@ class TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments : publ
 
         class Assignment; //type: TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment
 
-        std::vector<std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment> > assignment;
+        ydk::YList assignment;
         
 }; // TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments
 
@@ -664,7 +664,7 @@ class TerminalDevice::OperationalModes : public ydk::Entity
 
         class Mode; //type: TerminalDevice::OperationalModes::Mode
 
-        std::vector<std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::OperationalModes::Mode> > mode;
+        ydk::YList mode;
         
 }; // TerminalDevice::OperationalModes
 

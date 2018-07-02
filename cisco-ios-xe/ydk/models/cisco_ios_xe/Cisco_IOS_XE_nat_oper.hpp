@@ -35,7 +35,7 @@ class NatData : public ydk::Entity
         class IpNatTranslation; //type: NatData::IpNatTranslation
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_nat_oper::NatData::IpNatStatistics> ip_nat_statistics; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_nat_oper::NatData::IpNatTranslation> > ip_nat_translation;
+        ydk::YList ip_nat_translation;
         
 }; // NatData
 

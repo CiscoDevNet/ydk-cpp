@@ -67,7 +67,7 @@ class EtherLinkOam::DiscoveryInfoInterfaces : public ydk::Entity
 
         class DiscoveryInfoInterface; //type: EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface> > discovery_info_interface;
+        ydk::YList discovery_info_interface;
         
 }; // EtherLinkOam::DiscoveryInfoInterfaces
 
@@ -162,7 +162,7 @@ class EtherLinkOam::InterfaceStateInterfaces : public ydk::Entity
 
         class InterfaceStateInterface; //type: EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface> > interface_state_interface;
+        ydk::YList interface_state_interface;
         
 }; // EtherLinkOam::InterfaceStateInterfaces
 
@@ -273,7 +273,7 @@ class EtherLinkOam::RunningConfigInterfaces : public ydk::Entity
 
         class RunningConfigInterface; //type: EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface> > running_config_interface;
+        ydk::YList running_config_interface;
         
 }; // EtherLinkOam::RunningConfigInterfaces
 
@@ -397,7 +397,7 @@ class EtherLinkOam::Nodes : public ydk::Entity
 
         class Node; //type: EtherLinkOam::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // EtherLinkOam::Nodes
 
@@ -488,7 +488,7 @@ class EtherLinkOam::EventLogEntryInterfaces : public ydk::Entity
 
         class EventLogEntryInterface; //type: EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface> > event_log_entry_interface;
+        ydk::YList event_log_entry_interface;
         
 }; // EtherLinkOam::EventLogEntryInterfaces
 
@@ -536,7 +536,7 @@ class EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEnt
 
         class EventLogEntryIndex; //type: EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex> > event_log_entry_index;
+        ydk::YList event_log_entry_index;
         
 }; // EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes
 
@@ -600,7 +600,7 @@ class EtherLinkOam::StatsInterfaces : public ydk::Entity
 
         class StatsInterface; //type: EtherLinkOam::StatsInterfaces::StatsInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::StatsInterfaces::StatsInterface> > stats_interface;
+        ydk::YList stats_interface;
         
 }; // EtherLinkOam::StatsInterfaces
 
@@ -652,14 +652,6 @@ class EtherLinkOam::StatsInterfaces::StatsInterface : public ydk::Entity
 
 }; // EtherLinkOam::StatsInterfaces::StatsInterface
 
-class LogLocation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf log_location_local;
-        static const ydk::Enum::YLeaf log_location_remote;
-
-};
-
 class Log : public ydk::Enum
 {
     public:
@@ -673,35 +665,11 @@ class Log : public ydk::Enum
 
 };
 
-class Action : public ydk::Enum
+class LogLocation : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf no_action;
-        static const ydk::Enum::YLeaf disable_interface;
-        static const ydk::Enum::YLeaf log;
-        static const ydk::Enum::YLeaf efd;
-
-};
-
-class ProtocolState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf protocol_state_inactive;
-        static const ydk::Enum::YLeaf protocol_state_fault;
-        static const ydk::Enum::YLeaf protocol_state_active_send_local;
-        static const ydk::Enum::YLeaf protocol_state_passive_wait;
-        static const ydk::Enum::YLeaf protocol_state_send_local_remote;
-        static const ydk::Enum::YLeaf protocol_state_send_local_remote_ok;
-        static const ydk::Enum::YLeaf protocol_state_send_any;
-
-};
-
-class Mode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf passive;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf dont_care;
+        static const ydk::Enum::YLeaf log_location_local;
+        static const ydk::Enum::YLeaf log_location_remote;
 
 };
 
@@ -730,6 +698,38 @@ class OperationalState : public ydk::Enum
         static const ydk::Enum::YLeaf peering_remotely_rejected;
         static const ydk::Enum::YLeaf operational;
         static const ydk::Enum::YLeaf operational_half_duplex;
+
+};
+
+class Mode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf passive;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf dont_care;
+
+};
+
+class Action : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_action;
+        static const ydk::Enum::YLeaf disable_interface;
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf efd;
+
+};
+
+class ProtocolState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf protocol_state_inactive;
+        static const ydk::Enum::YLeaf protocol_state_fault;
+        static const ydk::Enum::YLeaf protocol_state_active_send_local;
+        static const ydk::Enum::YLeaf protocol_state_passive_wait;
+        static const ydk::Enum::YLeaf protocol_state_send_local_remote;
+        static const ydk::Enum::YLeaf protocol_state_send_local_remote_ok;
+        static const ydk::Enum::YLeaf protocol_state_send_any;
 
 };
 

@@ -17,7 +17,7 @@ ClearOspfv3Routes::ClearOspfv3Routes()
 {
     input->parent = this;
 
-    yang_name = "clear-ospfv3-routes"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-ospfv3-routes"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearOspfv3Routes::~ClearOspfv3Routes()
@@ -26,6 +26,7 @@ ClearOspfv3Routes::~ClearOspfv3Routes()
 
 bool ClearOspfv3Routes::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -120,12 +121,12 @@ bool ClearOspfv3Routes::has_leaf_or_child_of_name(const std::string & name) cons
 ClearOspfv3Routes::Input::Input()
     :
     route{YType::empty, "route"}
-    	,
+        ,
     instance(std::make_shared<ClearOspfv3Routes::Input::Instance>())
 {
     instance->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-ospfv3-routes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-ospfv3-routes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3Routes::Input::~Input()
@@ -134,6 +135,7 @@ ClearOspfv3Routes::Input::~Input()
 
 bool ClearOspfv3Routes::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set
 	|| (instance !=  nullptr && instance->has_data());
 }
@@ -225,7 +227,7 @@ ClearOspfv3Routes::Input::Instance::Instance()
     instance_identifier{YType::str, "instance-identifier"}
 {
 
-    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3Routes::Input::Instance::~Instance()
@@ -234,6 +236,7 @@ ClearOspfv3Routes::Input::Instance::~Instance()
 
 bool ClearOspfv3Routes::Input::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_identifier.is_set;
 }
 
@@ -310,7 +313,7 @@ ClearOspfv3Redistribution::ClearOspfv3Redistribution()
 {
     input->parent = this;
 
-    yang_name = "clear-ospfv3-redistribution"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-ospfv3-redistribution"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearOspfv3Redistribution::~ClearOspfv3Redistribution()
@@ -319,6 +322,7 @@ ClearOspfv3Redistribution::~ClearOspfv3Redistribution()
 
 bool ClearOspfv3Redistribution::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -413,12 +417,12 @@ bool ClearOspfv3Redistribution::has_leaf_or_child_of_name(const std::string & na
 ClearOspfv3Redistribution::Input::Input()
     :
     redistribution{YType::empty, "redistribution"}
-    	,
+        ,
     instance(std::make_shared<ClearOspfv3Redistribution::Input::Instance>())
 {
     instance->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-ospfv3-redistribution"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-ospfv3-redistribution"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3Redistribution::Input::~Input()
@@ -427,6 +431,7 @@ ClearOspfv3Redistribution::Input::~Input()
 
 bool ClearOspfv3Redistribution::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return redistribution.is_set
 	|| (instance !=  nullptr && instance->has_data());
 }
@@ -518,7 +523,7 @@ ClearOspfv3Redistribution::Input::Instance::Instance()
     instance_identifier{YType::str, "instance-identifier"}
 {
 
-    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3Redistribution::Input::Instance::~Instance()
@@ -527,6 +532,7 @@ ClearOspfv3Redistribution::Input::Instance::~Instance()
 
 bool ClearOspfv3Redistribution::Input::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_identifier.is_set;
 }
 
@@ -603,7 +609,7 @@ ClearOspfv3Process::ClearOspfv3Process()
 {
     input->parent = this;
 
-    yang_name = "clear-ospfv3-process"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-ospfv3-process"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearOspfv3Process::~ClearOspfv3Process()
@@ -612,6 +618,7 @@ ClearOspfv3Process::~ClearOspfv3Process()
 
 bool ClearOspfv3Process::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -706,12 +713,12 @@ bool ClearOspfv3Process::has_leaf_or_child_of_name(const std::string & name) con
 ClearOspfv3Process::Input::Input()
     :
     process{YType::empty, "process"}
-    	,
+        ,
     instance(std::make_shared<ClearOspfv3Process::Input::Instance>())
 {
     instance->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-ospfv3-process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-ospfv3-process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3Process::Input::~Input()
@@ -720,6 +727,7 @@ ClearOspfv3Process::Input::~Input()
 
 bool ClearOspfv3Process::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return process.is_set
 	|| (instance !=  nullptr && instance->has_data());
 }
@@ -811,7 +819,7 @@ ClearOspfv3Process::Input::Instance::Instance()
     instance_identifier{YType::str, "instance-identifier"}
 {
 
-    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3Process::Input::Instance::~Instance()
@@ -820,6 +828,7 @@ ClearOspfv3Process::Input::Instance::~Instance()
 
 bool ClearOspfv3Process::Input::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_identifier.is_set;
 }
 
@@ -896,7 +905,7 @@ ClearOspfv3StatisticsNeighbor::ClearOspfv3StatisticsNeighbor()
 {
     input->parent = this;
 
-    yang_name = "clear-ospfv3-statistics-neighbor"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-ospfv3-statistics-neighbor"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearOspfv3StatisticsNeighbor::~ClearOspfv3StatisticsNeighbor()
@@ -905,6 +914,7 @@ ClearOspfv3StatisticsNeighbor::~ClearOspfv3StatisticsNeighbor()
 
 bool ClearOspfv3StatisticsNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -999,12 +1009,12 @@ bool ClearOspfv3StatisticsNeighbor::has_leaf_or_child_of_name(const std::string 
 ClearOspfv3StatisticsNeighbor::Input::Input()
     :
     instance(std::make_shared<ClearOspfv3StatisticsNeighbor::Input::Instance>())
-	,neighbor(std::make_shared<ClearOspfv3StatisticsNeighbor::Input::Neighbor>())
+    , neighbor(std::make_shared<ClearOspfv3StatisticsNeighbor::Input::Neighbor>())
 {
     instance->parent = this;
     neighbor->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-ospfv3-statistics-neighbor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-ospfv3-statistics-neighbor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3StatisticsNeighbor::Input::~Input()
@@ -1013,6 +1023,7 @@ ClearOspfv3StatisticsNeighbor::Input::~Input()
 
 bool ClearOspfv3StatisticsNeighbor::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (instance !=  nullptr && instance->has_data())
 	|| (neighbor !=  nullptr && neighbor->has_data());
 }
@@ -1107,7 +1118,7 @@ ClearOspfv3StatisticsNeighbor::Input::Instance::Instance()
     instance_identifier{YType::str, "instance-identifier"}
 {
 
-    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3StatisticsNeighbor::Input::Instance::~Instance()
@@ -1116,6 +1127,7 @@ ClearOspfv3StatisticsNeighbor::Input::Instance::~Instance()
 
 bool ClearOspfv3StatisticsNeighbor::Input::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_identifier.is_set;
 }
 
@@ -1192,7 +1204,7 @@ ClearOspfv3StatisticsNeighbor::Input::Neighbor::Neighbor()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3StatisticsNeighbor::Input::Neighbor::~Neighbor()
@@ -1201,6 +1213,7 @@ ClearOspfv3StatisticsNeighbor::Input::Neighbor::~Neighbor()
 
 bool ClearOspfv3StatisticsNeighbor::Input::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_id.is_set
 	|| interface_name.is_set;
 }
@@ -1290,7 +1303,7 @@ ClearOspfv3Statistics::ClearOspfv3Statistics()
 {
     input->parent = this;
 
-    yang_name = "clear-ospfv3-statistics"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-ospfv3-statistics"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearOspfv3Statistics::~ClearOspfv3Statistics()
@@ -1299,6 +1312,7 @@ ClearOspfv3Statistics::~ClearOspfv3Statistics()
 
 bool ClearOspfv3Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1395,12 +1409,12 @@ ClearOspfv3Statistics::Input::Input()
     prefix_priority{YType::empty, "prefix-priority"},
     spf{YType::empty, "spf"},
     neighbor{YType::empty, "neighbor"}
-    	,
+        ,
     instance(std::make_shared<ClearOspfv3Statistics::Input::Instance>())
 {
     instance->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-ospfv3-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-ospfv3-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3Statistics::Input::~Input()
@@ -1409,6 +1423,7 @@ ClearOspfv3Statistics::Input::~Input()
 
 bool ClearOspfv3Statistics::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_priority.is_set
 	|| spf.is_set
 	|| neighbor.is_set
@@ -1526,7 +1541,7 @@ ClearOspfv3Statistics::Input::Instance::Instance()
     instance_identifier{YType::str, "instance-identifier"}
 {
 
-    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3Statistics::Input::Instance::~Instance()
@@ -1535,6 +1550,7 @@ ClearOspfv3Statistics::Input::Instance::~Instance()
 
 bool ClearOspfv3Statistics::Input::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_identifier.is_set;
 }
 
@@ -1611,7 +1627,7 @@ ClearOspfv3InstanceVrf::ClearOspfv3InstanceVrf()
 {
     input->parent = this;
 
-    yang_name = "clear-ospfv3-instance-vrf"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-ospfv3-instance-vrf"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::~ClearOspfv3InstanceVrf()
@@ -1620,6 +1636,7 @@ ClearOspfv3InstanceVrf::~ClearOspfv3InstanceVrf()
 
 bool ClearOspfv3InstanceVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1717,7 +1734,7 @@ ClearOspfv3InstanceVrf::Input::Input()
 {
     instance->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-ospfv3-instance-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-ospfv3-instance-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::~Input()
@@ -1726,6 +1743,7 @@ ClearOspfv3InstanceVrf::Input::~Input()
 
 bool ClearOspfv3InstanceVrf::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (instance !=  nullptr && instance->has_data());
 }
 
@@ -1802,16 +1820,16 @@ bool ClearOspfv3InstanceVrf::Input::has_leaf_or_child_of_name(const std::string 
 ClearOspfv3InstanceVrf::Input::Instance::Instance()
     :
     instance_identifier{YType::str, "instance-identifier"}
-    	,
+        ,
     vrf(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::Vrf>())
-	,all(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::All>())
-	,all_inclusive(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::AllInclusive>())
+    , all(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::All>())
+    , all_inclusive(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::AllInclusive>())
 {
     vrf->parent = this;
     all->parent = this;
     all_inclusive->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::~Instance()
@@ -1820,6 +1838,7 @@ ClearOspfv3InstanceVrf::Input::Instance::~Instance()
 
 bool ClearOspfv3InstanceVrf::Input::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_identifier.is_set
 	|| (vrf !=  nullptr && vrf->has_data())
 	|| (all !=  nullptr && all->has_data())
@@ -1944,12 +1963,12 @@ ClearOspfv3InstanceVrf::Input::Instance::Vrf::Vrf()
     process{YType::empty, "process"},
     redistribution{YType::empty, "redistribution"},
     route{YType::empty, "route"}
-    	,
+        ,
     stats(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats>())
 {
     stats->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::Vrf::~Vrf()
@@ -1958,6 +1977,7 @@ ClearOspfv3InstanceVrf::Input::Instance::Vrf::~Vrf()
 
 bool ClearOspfv3InstanceVrf::Input::Instance::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| process.is_set
 	|| redistribution.is_set
@@ -2087,12 +2107,12 @@ ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Stats()
     :
     spf{YType::empty, "spf"},
     prefix_priority{YType::empty, "prefix-priority"}
-    	,
+        ,
     neighbor(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor>())
 {
     neighbor->parent = this;
 
-    yang_name = "stats"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stats"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::~Stats()
@@ -2101,6 +2121,7 @@ ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::~Stats()
 
 bool ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return spf.is_set
 	|| prefix_priority.is_set
 	|| (neighbor !=  nullptr && neighbor->has_data());
@@ -2203,12 +2224,12 @@ bool ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::has_leaf_or_child_of_n
 ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::Neighbor()
     :
     neighbor_id{YType::str, "neighbor-id"}
-    	,
+        ,
     interface(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::Interface>())
 {
     interface->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::~Neighbor()
@@ -2217,6 +2238,7 @@ ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::~Neighbor()
 
 bool ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_id.is_set
 	|| (interface !=  nullptr && interface->has_data());
 }
@@ -2308,7 +2330,7 @@ ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::Interface::Interf
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::Interface::~Interface()
@@ -2317,6 +2339,7 @@ ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::Interface::~Inter
 
 bool ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -2392,12 +2415,12 @@ ClearOspfv3InstanceVrf::Input::Instance::All::All()
     process{YType::empty, "process"},
     redistribution{YType::empty, "redistribution"},
     route{YType::empty, "route"}
-    	,
+        ,
     stats(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::All::Stats>())
 {
     stats->parent = this;
 
-    yang_name = "all"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::All::~All()
@@ -2406,6 +2429,7 @@ ClearOspfv3InstanceVrf::Input::Instance::All::~All()
 
 bool ClearOspfv3InstanceVrf::Input::Instance::All::has_data() const
 {
+    if (is_presence_container) return true;
     return process.is_set
 	|| redistribution.is_set
 	|| route.is_set
@@ -2522,12 +2546,12 @@ ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Stats()
     :
     spf{YType::empty, "spf"},
     prefix_priority{YType::empty, "prefix-priority"}
-    	,
+        ,
     neighbor(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor>())
 {
     neighbor->parent = this;
 
-    yang_name = "stats"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stats"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::All::Stats::~Stats()
@@ -2536,6 +2560,7 @@ ClearOspfv3InstanceVrf::Input::Instance::All::Stats::~Stats()
 
 bool ClearOspfv3InstanceVrf::Input::Instance::All::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return spf.is_set
 	|| prefix_priority.is_set
 	|| (neighbor !=  nullptr && neighbor->has_data());
@@ -2638,12 +2663,12 @@ bool ClearOspfv3InstanceVrf::Input::Instance::All::Stats::has_leaf_or_child_of_n
 ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::Neighbor()
     :
     neighbor_id{YType::str, "neighbor-id"}
-    	,
+        ,
     interface(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::Interface>())
 {
     interface->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::~Neighbor()
@@ -2652,6 +2677,7 @@ ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::~Neighbor()
 
 bool ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_id.is_set
 	|| (interface !=  nullptr && interface->has_data());
 }
@@ -2743,7 +2769,7 @@ ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::Interface::Interf
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::Interface::~Interface()
@@ -2752,6 +2778,7 @@ ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::Interface::~Inter
 
 bool ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -2827,12 +2854,12 @@ ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::AllInclusive()
     process{YType::empty, "process"},
     redistribution{YType::empty, "redistribution"},
     route{YType::empty, "route"}
-    	,
+        ,
     stats(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats>())
 {
     stats->parent = this;
 
-    yang_name = "all-inclusive"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all-inclusive"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::~AllInclusive()
@@ -2841,6 +2868,7 @@ ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::~AllInclusive()
 
 bool ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::has_data() const
 {
+    if (is_presence_container) return true;
     return process.is_set
 	|| redistribution.is_set
 	|| route.is_set
@@ -2957,12 +2985,12 @@ ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Stats()
     :
     spf{YType::empty, "spf"},
     prefix_priority{YType::empty, "prefix-priority"}
-    	,
+        ,
     neighbor(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor>())
 {
     neighbor->parent = this;
 
-    yang_name = "stats"; yang_parent_name = "all-inclusive"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stats"; yang_parent_name = "all-inclusive"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::~Stats()
@@ -2971,6 +2999,7 @@ ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::~Stats()
 
 bool ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return spf.is_set
 	|| prefix_priority.is_set
 	|| (neighbor !=  nullptr && neighbor->has_data());
@@ -3073,12 +3102,12 @@ bool ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::has_leaf_or_c
 ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::Neighbor()
     :
     neighbor_id{YType::str, "neighbor-id"}
-    	,
+        ,
     interface(std::make_shared<ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::Interface>())
 {
     interface->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::~Neighbor()
@@ -3087,6 +3116,7 @@ ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::~Neighbo
 
 bool ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_id.is_set
 	|| (interface !=  nullptr && interface->has_data());
 }
@@ -3178,7 +3208,7 @@ ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::Interfac
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "interface"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::Interface::~Interface()
@@ -3187,6 +3217,7 @@ ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::Interfac
 
 bool ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 

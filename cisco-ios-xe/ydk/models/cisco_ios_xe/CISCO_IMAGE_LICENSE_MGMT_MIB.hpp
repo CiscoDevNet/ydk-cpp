@@ -31,24 +31,24 @@ class CISCOIMAGELICENSEMGMTMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscoimagelicensemgmtmibobjects; //type: CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects
-        class Cilmnotifcntl; //type: CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl
-        class Cilmbootimageleveltable; //type: CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable
-        class Cilmimageleveltolicensemaptable; //type: CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable
+        class CiscoImageLicenseMgmtMIBObjects; //type: CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects
+        class CilmNotifCntl; //type: CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl
+        class CilmBootImageLevelTable; //type: CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable
+        class CilmImageLevelToLicenseMapTable; //type: CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_LICENSE_MGMT_MIB::CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects> ciscoimagelicensemgmtmibobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_LICENSE_MGMT_MIB::CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl> cilmnotifcntl;
-        std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_LICENSE_MGMT_MIB::CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable> cilmbootimageleveltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_LICENSE_MGMT_MIB::CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable> cilmimageleveltolicensemaptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_LICENSE_MGMT_MIB::CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects> ciscoimagelicensemgmtmibobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_LICENSE_MGMT_MIB::CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl> cilmnotifcntl;
+        std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_LICENSE_MGMT_MIB::CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable> cilmbootimageleveltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_LICENSE_MGMT_MIB::CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable> cilmimageleveltolicensemaptable;
         
 }; // CISCOIMAGELICENSEMGMTMIB
 
 
-class CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects : public ydk::Entity
+class CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects : public ydk::Entity
 {
     public:
-        Ciscoimagelicensemgmtmibobjects();
-        ~Ciscoimagelicensemgmtmibobjects();
+        CiscoImageLicenseMgmtMIBObjects();
+        ~CiscoImageLicenseMgmtMIBObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -63,14 +63,14 @@ class CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects : public ydk::En
 
         ydk::YLeaf cilmeulaaccepted; //type: boolean
 
-}; // CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects
+}; // CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects
 
 
-class CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl : public ydk::Entity
+class CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl : public ydk::Entity
 {
     public:
-        Cilmnotifcntl();
-        ~Cilmnotifcntl();
+        CilmNotifCntl();
+        ~CilmNotifCntl();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -85,14 +85,14 @@ class CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl : public ydk::Entity
 
         ydk::YLeaf cilmimagelevelchangednotif; //type: boolean
 
-}; // CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl
+}; // CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl
 
 
-class CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable : public ydk::Entity
+class CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable : public ydk::Entity
 {
     public:
-        Cilmbootimageleveltable();
-        ~Cilmbootimageleveltable();
+        CilmBootImageLevelTable();
+        ~CilmBootImageLevelTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -105,18 +105,18 @@ class CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cilmbootimagelevelentry; //type: CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry
+        class CilmBootImageLevelEntry; //type: CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_LICENSE_MGMT_MIB::CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry> > cilmbootimagelevelentry;
+        ydk::YList cilmbootimagelevelentry;
         
-}; // CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable
+}; // CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable
 
 
-class CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry : public ydk::Entity
+class CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry : public ydk::Entity
 {
     public:
-        Cilmbootimagelevelentry();
-        ~Cilmbootimagelevelentry();
+        CilmBootImageLevelEntry();
+        ~CilmBootImageLevelEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -129,7 +129,7 @@ class CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cilmmodulename; //type: string
         ydk::YLeaf cilmcurrentimagelevel; //type: binary
@@ -140,14 +140,14 @@ class CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry
         ydk::YLeaf cilmnextbootlicensestoreindex; //type: uint32
         ydk::YLeaf cilmnextbootlicenseindex; //type: uint32
 
-}; // CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry
+}; // CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry
 
 
-class CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable : public ydk::Entity
+class CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable : public ydk::Entity
 {
     public:
-        Cilmimageleveltolicensemaptable();
-        ~Cilmimageleveltolicensemaptable();
+        CilmImageLevelToLicenseMapTable();
+        ~CilmImageLevelToLicenseMapTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -160,18 +160,18 @@ class CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cilmimageleveltolicensemapentry; //type: CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry
+        class CilmImageLevelToLicenseMapEntry; //type: CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_LICENSE_MGMT_MIB::CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry> > cilmimageleveltolicensemapentry;
+        ydk::YList cilmimageleveltolicensemapentry;
         
-}; // CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable
+}; // CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable
 
 
-class CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry : public ydk::Entity
+class CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry : public ydk::Entity
 {
     public:
-        Cilmimageleveltolicensemapentry();
-        ~Cilmimageleveltolicensemapentry();
+        CilmImageLevelToLicenseMapEntry();
+        ~CilmImageLevelToLicenseMapEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -184,16 +184,16 @@ class CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimagelevelt
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
-        //type: string (refers to cisco_ios_xe::CISCO_IMAGE_LICENSE_MGMT_MIB::CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::cilmmodulename)
+        //type: string (refers to cisco_ios_xe::CISCO_IMAGE_LICENSE_MGMT_MIB::CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::cilmmodulename)
         ydk::YLeaf cilmmodulename;
         ydk::YLeaf cilmimagelicensemapindex; //type: uint32
         ydk::YLeaf cilmimagelicenseimagelevel; //type: binary
         ydk::YLeaf cilmimagelicensename; //type: binary
         ydk::YLeaf cilmimagelicensepriority; //type: uint32
 
-}; // CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry
+}; // CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry
 
 
 }

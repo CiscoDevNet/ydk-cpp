@@ -158,7 +158,7 @@ class Vrrp::Ipv6::TrackItems : public ydk::Entity
 
         class TrackItem; //type: Vrrp::Ipv6::TrackItems::TrackItem
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::TrackItems::TrackItem> > track_item;
+        ydk::YList track_item;
         
 }; // Vrrp::Ipv6::TrackItems
 
@@ -181,7 +181,7 @@ class Vrrp::Ipv6::TrackItems::TrackItem : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf virtual_router_id; //type: int32
+        ydk::YLeaf virtual_router_id; //type: uint32
         ydk::YLeaf tracked_interface_name; //type: string
         ydk::YLeaf interface; //type: string
         ydk::YLeaf virtual_router_id_xr; //type: uint32
@@ -212,7 +212,7 @@ class Vrrp::Ipv6::VirtualRouters : public ydk::Entity
 
         class VirtualRouter; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter> > virtual_router;
+        ydk::YList virtual_router;
         
 }; // Vrrp::Ipv6::VirtualRouters
 
@@ -235,7 +235,7 @@ class Vrrp::Ipv6::VirtualRouters::VirtualRouter : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf virtual_router_id; //type: int32
+        ydk::YLeaf virtual_router_id; //type: uint32
         ydk::YLeaf interface_name_xr; //type: string
         ydk::YLeaf virtual_router_id_xr; //type: uint32
         ydk::YLeaf version; //type: uint8
@@ -314,10 +314,10 @@ class Vrrp::Ipv6::VirtualRouters::VirtualRouter : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime> resign_sent_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime> resign_received_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress> > ipv6_operational_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress> > ipv6_configured_down_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo> > track_item_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory> > state_change_history;
+        ydk::YList ipv6_operational_address;
+        ydk::YList ipv6_configured_down_address;
+        ydk::YList track_item_info;
+        ydk::YList state_change_history;
         
 }; // Vrrp::Ipv6::VirtualRouters::VirtualRouter
 
@@ -501,7 +501,7 @@ class Vrrp::Ipv6::Interfaces : public ydk::Entity
 
         class Interface; //type: Vrrp::Ipv6::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Vrrp::Ipv6::Interfaces
 
@@ -580,7 +580,7 @@ class Vrrp::Ipv4::Interfaces : public ydk::Entity
 
         class Interface; //type: Vrrp::Ipv4::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Vrrp::Ipv4::Interfaces
 
@@ -631,7 +631,7 @@ class Vrrp::Ipv4::TrackItems : public ydk::Entity
 
         class TrackItem; //type: Vrrp::Ipv4::TrackItems::TrackItem
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::TrackItems::TrackItem> > track_item;
+        ydk::YList track_item;
         
 }; // Vrrp::Ipv4::TrackItems
 
@@ -654,7 +654,7 @@ class Vrrp::Ipv4::TrackItems::TrackItem : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf virtual_router_id; //type: int32
+        ydk::YLeaf virtual_router_id; //type: uint32
         ydk::YLeaf tracked_interface_name; //type: string
         ydk::YLeaf interface; //type: string
         ydk::YLeaf virtual_router_id_xr; //type: uint32
@@ -685,7 +685,7 @@ class Vrrp::Ipv4::VirtualRouters : public ydk::Entity
 
         class VirtualRouter; //type: Vrrp::Ipv4::VirtualRouters::VirtualRouter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter> > virtual_router;
+        ydk::YList virtual_router;
         
 }; // Vrrp::Ipv4::VirtualRouters
 
@@ -708,7 +708,7 @@ class Vrrp::Ipv4::VirtualRouters::VirtualRouter : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf virtual_router_id; //type: int32
+        ydk::YLeaf virtual_router_id; //type: uint32
         ydk::YLeaf interface_name_xr; //type: string
         ydk::YLeaf virtual_router_id_xr; //type: uint32
         ydk::YLeaf version; //type: uint8
@@ -787,10 +787,10 @@ class Vrrp::Ipv4::VirtualRouters::VirtualRouter : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime> resign_sent_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime> resign_received_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress> > ipv6_operational_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress> > ipv6_configured_down_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo> > track_item_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory> > state_change_history;
+        ydk::YList ipv6_operational_address;
+        ydk::YList ipv6_configured_down_address;
+        ydk::YList track_item_info;
+        ydk::YList state_change_history;
         
 }; // Vrrp::Ipv4::VirtualRouters::VirtualRouter
 
@@ -974,7 +974,7 @@ class Vrrp::MgoSessions : public ydk::Entity
 
         class MgoSession; //type: Vrrp::MgoSessions::MgoSession
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::MgoSessions::MgoSession> > mgo_session;
+        ydk::YList mgo_session;
         
 }; // Vrrp::MgoSessions
 
@@ -1004,7 +1004,7 @@ class Vrrp::MgoSessions::MgoSession : public ydk::Entity
         ydk::YLeaf primary_session_state; //type: VrrpBagProtocolState
         class Slave; //type: Vrrp::MgoSessions::MgoSession::Slave
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::MgoSessions::MgoSession::Slave> > slave;
+        ydk::YList slave;
         
 }; // Vrrp::MgoSessions::MgoSession
 
@@ -1030,16 +1030,6 @@ class Vrrp::MgoSessions::MgoSession::Slave : public ydk::Entity
 
 }; // Vrrp::MgoSessions::MgoSession::Slave
 
-class VrrpVmacState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf stored;
-        static const ydk::Enum::YLeaf reserved;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf reserving;
-
-};
-
 class VrrpStateChangeReason : public ydk::Enum
 {
     public:
@@ -1059,13 +1049,30 @@ class VrrpStateChangeReason : public ydk::Enum
 
 };
 
-class VrrpBfdSessionState : public ydk::Enum
+class VrrpVmacState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bfd_state_none;
-        static const ydk::Enum::YLeaf bfd_state_inactive;
-        static const ydk::Enum::YLeaf bfd_state_up;
-        static const ydk::Enum::YLeaf bfd_state_down;
+        static const ydk::Enum::YLeaf stored;
+        static const ydk::Enum::YLeaf reserved;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf reserving;
+
+};
+
+class VrrpBAf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf address_family_ipv4;
+        static const ydk::Enum::YLeaf address_family_ipv6;
+        static const ydk::Enum::YLeaf vrrp_baf_count;
+
+};
+
+class VrrpVipState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf virtual_ip_state_down;
+        static const ydk::Enum::YLeaf virtual_ip_state_up;
 
 };
 
@@ -1078,29 +1085,22 @@ class VrrpProtAuth : public ydk::Enum
 
 };
 
+class VrrpBfdSessionState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bfd_state_none;
+        static const ydk::Enum::YLeaf bfd_state_inactive;
+        static const ydk::Enum::YLeaf bfd_state_up;
+        static const ydk::Enum::YLeaf bfd_state_down;
+
+};
+
 class VrrpBagProtocolState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf state_initial;
         static const ydk::Enum::YLeaf state_backup;
         static const ydk::Enum::YLeaf state_master;
-
-};
-
-class VrrpVipState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf virtual_ip_state_down;
-        static const ydk::Enum::YLeaf virtual_ip_state_up;
-
-};
-
-class VrrpBAf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf address_family_ipv4;
-        static const ydk::Enum::YLeaf address_family_ipv6;
-        static const ydk::Enum::YLeaf vrrp_baf_count;
 
 };
 

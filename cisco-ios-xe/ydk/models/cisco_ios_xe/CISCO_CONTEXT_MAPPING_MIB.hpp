@@ -32,24 +32,24 @@ class CISCOCONTEXTMAPPINGMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ccontextmappingtable; //type: CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable
-        class Ccontextmappingbridgedomaintable; //type: CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable
-        class Ccontextmappingbridgeinstancetable; //type: CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable
-        class Ccontextmappinglicensegrouptable; //type: CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable
+        class CContextMappingTable; //type: CISCOCONTEXTMAPPINGMIB::CContextMappingTable
+        class CContextMappingBridgeDomainTable; //type: CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable
+        class CContextMappingBridgeInstanceTable; //type: CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable
+        class CContextMappingLicenseGroupTable; //type: CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable> ccontextmappingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable> ccontextmappingbridgedomaintable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable> ccontextmappingbridgeinstancetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable> ccontextmappinglicensegrouptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::CContextMappingTable> ccontextmappingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable> ccontextmappingbridgedomaintable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable> ccontextmappingbridgeinstancetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable> ccontextmappinglicensegrouptable;
         
 }; // CISCOCONTEXTMAPPINGMIB
 
 
-class CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable : public ydk::Entity
+class CISCOCONTEXTMAPPINGMIB::CContextMappingTable : public ydk::Entity
 {
     public:
-        Ccontextmappingtable();
-        ~Ccontextmappingtable();
+        CContextMappingTable();
+        ~CContextMappingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -62,18 +62,18 @@ class CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ccontextmappingentry; //type: CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry
+        class CContextMappingEntry; //type: CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry> > ccontextmappingentry;
+        ydk::YList ccontextmappingentry;
         
-}; // CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable
+}; // CISCOCONTEXTMAPPINGMIB::CContextMappingTable
 
 
-class CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry : public ydk::Entity
+class CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry : public ydk::Entity
 {
     public:
-        Ccontextmappingentry();
-        ~Ccontextmappingentry();
+        CContextMappingEntry();
+        ~CContextMappingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -93,14 +93,14 @@ class CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry : publi
         ydk::YLeaf ccontextmappingstoragetype; //type: StorageType
         ydk::YLeaf ccontextmappingrowstatus; //type: RowStatus
 
-}; // CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry
+}; // CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry
 
 
-class CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable : public ydk::Entity
+class CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable : public ydk::Entity
 {
     public:
-        Ccontextmappingbridgedomaintable();
-        ~Ccontextmappingbridgedomaintable();
+        CContextMappingBridgeDomainTable();
+        ~CContextMappingBridgeDomainTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -113,18 +113,18 @@ class CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ccontextmappingbridgedomainentry; //type: CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry
+        class CContextMappingBridgeDomainEntry; //type: CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry> > ccontextmappingbridgedomainentry;
+        ydk::YList ccontextmappingbridgedomainentry;
         
-}; // CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable
+}; // CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable
 
 
-class CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry : public ydk::Entity
+class CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry : public ydk::Entity
 {
     public:
-        Ccontextmappingbridgedomainentry();
-        ~Ccontextmappingbridgedomainentry();
+        CContextMappingBridgeDomainEntry();
+        ~CContextMappingBridgeDomainEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -137,20 +137,20 @@ class CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingb
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::ccontextmappingvacmcontextname)
+        //type: string (refers to cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::ccontextmappingvacmcontextname)
         ydk::YLeaf ccontextmappingvacmcontextname;
         ydk::YLeaf ccontextmappingbridgedomainidentifier; //type: uint32
         ydk::YLeaf ccontextmappingbridgedomainstoragetype; //type: StorageType
         ydk::YLeaf ccontextmappingbridgedomainrowstatus; //type: RowStatus
 
-}; // CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry
+}; // CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry
 
 
-class CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable : public ydk::Entity
+class CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable : public ydk::Entity
 {
     public:
-        Ccontextmappingbridgeinstancetable();
-        ~Ccontextmappingbridgeinstancetable();
+        CContextMappingBridgeInstanceTable();
+        ~CContextMappingBridgeInstanceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -163,18 +163,18 @@ class CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ccontextmappingbridgeinstanceentry; //type: CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry
+        class CContextMappingBridgeInstanceEntry; //type: CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry> > ccontextmappingbridgeinstanceentry;
+        ydk::YList ccontextmappingbridgeinstanceentry;
         
-}; // CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable
+}; // CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable
 
 
-class CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry : public ydk::Entity
+class CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry : public ydk::Entity
 {
     public:
-        Ccontextmappingbridgeinstanceentry();
-        ~Ccontextmappingbridgeinstanceentry();
+        CContextMappingBridgeInstanceEntry();
+        ~CContextMappingBridgeInstanceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -187,20 +187,20 @@ class CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappin
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::ccontextmappingvacmcontextname)
+        //type: string (refers to cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::ccontextmappingvacmcontextname)
         ydk::YLeaf ccontextmappingvacmcontextname;
         ydk::YLeaf ccontextmappingbridgeinstname; //type: string
         ydk::YLeaf ccontextmappingbridgeinststoragetype; //type: StorageType
         ydk::YLeaf ccontextmappingbridgeinstrowstatus; //type: RowStatus
 
-}; // CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry
+}; // CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry
 
 
-class CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable : public ydk::Entity
+class CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable : public ydk::Entity
 {
     public:
-        Ccontextmappinglicensegrouptable();
-        ~Ccontextmappinglicensegrouptable();
+        CContextMappingLicenseGroupTable();
+        ~CContextMappingLicenseGroupTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -213,18 +213,18 @@ class CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ccontextmappinglicensegroupentry; //type: CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry
+        class CContextMappingLicenseGroupEntry; //type: CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry> > ccontextmappinglicensegroupentry;
+        ydk::YList ccontextmappinglicensegroupentry;
         
-}; // CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable
+}; // CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable
 
 
-class CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry : public ydk::Entity
+class CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry : public ydk::Entity
 {
     public:
-        Ccontextmappinglicensegroupentry();
-        ~Ccontextmappinglicensegroupentry();
+        CContextMappingLicenseGroupEntry();
+        ~CContextMappingLicenseGroupEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -237,13 +237,13 @@ class CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappingl
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::ccontextmappingvacmcontextname)
+        //type: string (refers to cisco_ios_xe::CISCO_CONTEXT_MAPPING_MIB::CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::ccontextmappingvacmcontextname)
         ydk::YLeaf ccontextmappingvacmcontextname;
         ydk::YLeaf ccontextmappinglicensegroupname; //type: string
         ydk::YLeaf ccontextmappinglicensegroupstoragetype; //type: StorageType
         ydk::YLeaf ccontextmappinglicensegrouprowstatus; //type: RowStatus
 
-}; // CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry
+}; // CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry
 
 
 }

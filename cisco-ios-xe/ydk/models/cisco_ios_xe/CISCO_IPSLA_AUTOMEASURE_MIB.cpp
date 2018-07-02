@@ -13,17 +13,17 @@ namespace CISCO_IPSLA_AUTOMEASURE_MIB {
 
 CISCOIPSLAAUTOMEASUREMIB::CISCOIPSLAAUTOMEASUREMIB()
     :
-    cipslaautogrouptable(std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable>())
-	,cipslaautogroupdesttable(std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable>())
-	,cipslareacttable(std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable>())
-	,cipslaautogroupschedtable(std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable>())
+    cipslaautogrouptable(std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable>())
+    , cipslaautogroupdesttable(std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable>())
+    , cipslareacttable(std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable>())
+    , cipslaautogroupschedtable(std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable>())
 {
     cipslaautogrouptable->parent = this;
     cipslaautogroupdesttable->parent = this;
     cipslareacttable->parent = this;
     cipslaautogroupschedtable->parent = this;
 
-    yang_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; yang_parent_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; yang_parent_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOIPSLAAUTOMEASUREMIB::~CISCOIPSLAAUTOMEASUREMIB()
@@ -32,6 +32,7 @@ CISCOIPSLAAUTOMEASUREMIB::~CISCOIPSLAAUTOMEASUREMIB()
 
 bool CISCOIPSLAAUTOMEASUREMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cipslaautogrouptable !=  nullptr && cipslaautogrouptable->has_data())
 	|| (cipslaautogroupdesttable !=  nullptr && cipslaautogroupdesttable->has_data())
 	|| (cipslareacttable !=  nullptr && cipslareacttable->has_data())
@@ -69,7 +70,7 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::get_child_by_name(const std::s
     {
         if(cipslaautogrouptable == nullptr)
         {
-            cipslaautogrouptable = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable>();
+            cipslaautogrouptable = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable>();
         }
         return cipslaautogrouptable;
     }
@@ -78,7 +79,7 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::get_child_by_name(const std::s
     {
         if(cipslaautogroupdesttable == nullptr)
         {
-            cipslaautogroupdesttable = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable>();
+            cipslaautogroupdesttable = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable>();
         }
         return cipslaautogroupdesttable;
     }
@@ -87,7 +88,7 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::get_child_by_name(const std::s
     {
         if(cipslareacttable == nullptr)
         {
-            cipslareacttable = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable>();
+            cipslareacttable = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable>();
         }
         return cipslareacttable;
     }
@@ -96,7 +97,7 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::get_child_by_name(const std::s
     {
         if(cipslaautogroupschedtable == nullptr)
         {
-            cipslaautogroupschedtable = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable>();
+            cipslaautogroupschedtable = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable>();
         }
         return cipslaautogroupschedtable;
     }
@@ -171,19 +172,22 @@ bool CISCOIPSLAAUTOMEASUREMIB::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogrouptable()
+CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupTable()
+    :
+    cipslaautogroupentry(this, {"cipslaautogroupname"})
 {
 
-    yang_name = "cipslaAutoGroupTable"; yang_parent_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cipslaAutoGroupTable"; yang_parent_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::~Cipslaautogrouptable()
+CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::~CipslaAutoGroupTable()
 {
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::has_data() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::has_data() const
 {
-    for (std::size_t index=0; index<cipslaautogroupentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cipslaautogroupentry.len(); index++)
     {
         if(cipslaautogroupentry[index]->has_data())
             return true;
@@ -191,9 +195,9 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::has_data() const
     return false;
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::has_operation() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslaautogroupentry.size(); index++)
+    for (std::size_t index=0; index<cipslaautogroupentry.len(); index++)
     {
         if(cipslaautogroupentry[index]->has_operation())
             return true;
@@ -201,21 +205,21 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::get_absolute_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IPSLA-AUTOMEASURE-MIB:CISCO-IPSLA-AUTOMEASURE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::get_segment_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipslaAutoGroupTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -224,25 +228,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslaa
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaAutoGroupEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry>();
+        auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry>();
         c->parent = this;
-        cipslaautogroupentry.push_back(c);
+        cipslaautogroupentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cipslaautogroupentry)
+    for (auto c : cipslaautogroupentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,22 +257,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaa
     return children;
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipslaAutoGroupEntry")
         return true;
     return false;
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::Cipslaautogroupentry()
+CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::CipslaAutoGroupEntry()
     :
     cipslaautogroupname{YType::str, "cipslaAutoGroupName"},
     cipslaautogroupdescription{YType::str, "cipslaAutoGroupDescription"},
@@ -285,15 +289,16 @@ CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::Cipslaauto
     cipslaautogrouprowstatus{YType::enumeration, "cipslaAutoGroupRowStatus"}
 {
 
-    yang_name = "cipslaAutoGroupEntry"; yang_parent_name = "cipslaAutoGroupTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cipslaAutoGroupEntry"; yang_parent_name = "cipslaAutoGroupTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::~Cipslaautogroupentry()
+CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::~CipslaAutoGroupEntry()
 {
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::has_data() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cipslaautogroupname.is_set
 	|| cipslaautogroupdescription.is_set
 	|| cipslaautogroupdestinationname.is_set
@@ -309,7 +314,7 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::has_d
 	|| cipslaautogrouprowstatus.is_set;
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::has_operation() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cipslaautogroupname.yfilter)
@@ -327,21 +332,22 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::has_o
 	|| ydk::is_set(cipslaautogrouprowstatus.yfilter);
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::get_absolute_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IPSLA-AUTOMEASURE-MIB:CISCO-IPSLA-AUTOMEASURE-MIB/cipslaAutoGroupTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::get_segment_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cipslaAutoGroupEntry" <<"[cipslaAutoGroupName='" <<cipslaautogroupname <<"']";
+    path_buffer << "cipslaAutoGroupEntry";
+    ADD_KEY_TOKEN(cipslaautogroupname, "cipslaAutoGroupName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -363,19 +369,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslaa
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cipslaAutoGroupName")
     {
@@ -457,7 +463,7 @@ void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::set_v
     }
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cipslaAutoGroupName")
     {
@@ -513,26 +519,29 @@ void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::set_f
     }
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipslaAutoGroupName" || name == "cipslaAutoGroupDescription" || name == "cipslaAutoGroupDestinationName" || name == "cipslaAutoGroupADDestPort" || name == "cipslaAutoGroupOperTemplateName" || name == "cipslaAutoGroupSchedulerId" || name == "cipslaAutoGroupQoSEnable" || name == "cipslaAutoGroupOperType" || name == "cipslaAutoGroupDestIPADEnable" || name == "cipslaAutoGroupADMeasureRetry" || name == "cipslaAutoGroupADDestIPAgeout" || name == "cipslaAutoGroupStorageType" || name == "cipslaAutoGroupRowStatus")
         return true;
     return false;
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdesttable()
+CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestTable()
+    :
+    cipslaautogroupdestentry(this, {"cipslaautogroupdestname", "cipslaautogroupdestipaddrtype", "cipslaautogroupdestipaddr", "cipslaautogroupdestport"})
 {
 
-    yang_name = "cipslaAutoGroupDestTable"; yang_parent_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cipslaAutoGroupDestTable"; yang_parent_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::~Cipslaautogroupdesttable()
+CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::~CipslaAutoGroupDestTable()
 {
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::has_data() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::has_data() const
 {
-    for (std::size_t index=0; index<cipslaautogroupdestentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cipslaautogroupdestentry.len(); index++)
     {
         if(cipslaautogroupdestentry[index]->has_data())
             return true;
@@ -540,9 +549,9 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::has_data() const
     return false;
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::has_operation() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslaautogroupdestentry.size(); index++)
+    for (std::size_t index=0; index<cipslaautogroupdestentry.len(); index++)
     {
         if(cipslaautogroupdestentry[index]->has_operation())
             return true;
@@ -550,21 +559,21 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::get_absolute_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IPSLA-AUTOMEASURE-MIB:CISCO-IPSLA-AUTOMEASURE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::get_segment_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipslaAutoGroupDestTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -573,25 +582,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslaa
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaAutoGroupDestEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry>();
+        auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry>();
         c->parent = this;
-        cipslaautogroupdestentry.push_back(c);
+        cipslaautogroupdestentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cipslaautogroupdestentry)
+    for (auto c : cipslaautogroupdestentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -602,22 +611,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaa
     return children;
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipslaAutoGroupDestEntry")
         return true;
     return false;
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::Cipslaautogroupdestentry()
+CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::CipslaAutoGroupDestEntry()
     :
     cipslaautogroupdestname{YType::str, "cipslaAutoGroupDestName"},
     cipslaautogroupdestipaddrtype{YType::enumeration, "cipslaAutoGroupDestIpAddrType"},
@@ -627,15 +636,16 @@ CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::Ci
     cipslaautogroupdestrowstatus{YType::enumeration, "cipslaAutoGroupDestRowStatus"}
 {
 
-    yang_name = "cipslaAutoGroupDestEntry"; yang_parent_name = "cipslaAutoGroupDestTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cipslaAutoGroupDestEntry"; yang_parent_name = "cipslaAutoGroupDestTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::~Cipslaautogroupdestentry()
+CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::~CipslaAutoGroupDestEntry()
 {
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::has_data() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cipslaautogroupdestname.is_set
 	|| cipslaautogroupdestipaddrtype.is_set
 	|| cipslaautogroupdestipaddr.is_set
@@ -644,7 +654,7 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentr
 	|| cipslaautogroupdestrowstatus.is_set;
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::has_operation() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cipslaautogroupdestname.yfilter)
@@ -655,21 +665,25 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentr
 	|| ydk::is_set(cipslaautogroupdestrowstatus.yfilter);
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::get_absolute_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IPSLA-AUTOMEASURE-MIB:CISCO-IPSLA-AUTOMEASURE-MIB/cipslaAutoGroupDestTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::get_segment_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cipslaAutoGroupDestEntry" <<"[cipslaAutoGroupDestName='" <<cipslaautogroupdestname <<"']" <<"[cipslaAutoGroupDestIpAddrType='" <<cipslaautogroupdestipaddrtype <<"']" <<"[cipslaAutoGroupDestIpAddr='" <<cipslaautogroupdestipaddr <<"']" <<"[cipslaAutoGroupDestPort='" <<cipslaautogroupdestport <<"']";
+    path_buffer << "cipslaAutoGroupDestEntry";
+    ADD_KEY_TOKEN(cipslaautogroupdestname, "cipslaAutoGroupDestName");
+    ADD_KEY_TOKEN(cipslaautogroupdestipaddrtype, "cipslaAutoGroupDestIpAddrType");
+    ADD_KEY_TOKEN(cipslaautogroupdestipaddr, "cipslaAutoGroupDestIpAddr");
+    ADD_KEY_TOKEN(cipslaautogroupdestport, "cipslaAutoGroupDestPort");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -684,19 +698,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslaa
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cipslaAutoGroupDestName")
     {
@@ -736,7 +750,7 @@ void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentr
     }
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cipslaAutoGroupDestName")
     {
@@ -764,26 +778,29 @@ void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentr
     }
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipslaAutoGroupDestName" || name == "cipslaAutoGroupDestIpAddrType" || name == "cipslaAutoGroupDestIpAddr" || name == "cipslaAutoGroupDestPort" || name == "cipslaAutoGroupDestStorageType" || name == "cipslaAutoGroupDestRowStatus")
         return true;
     return false;
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareacttable()
+CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactTable()
+    :
+    cipslareactentry(this, {"cipslaautogroupopertype", "cipslareactconfigindex", "cipslaautogroupopertemplatename"})
 {
 
-    yang_name = "cipslaReactTable"; yang_parent_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cipslaReactTable"; yang_parent_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::~Cipslareacttable()
+CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::~CipslaReactTable()
 {
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::has_data() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::has_data() const
 {
-    for (std::size_t index=0; index<cipslareactentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cipslareactentry.len(); index++)
     {
         if(cipslareactentry[index]->has_data())
             return true;
@@ -791,9 +808,9 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::has_data() const
     return false;
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::has_operation() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslareactentry.size(); index++)
+    for (std::size_t index=0; index<cipslareactentry.len(); index++)
     {
         if(cipslareactentry[index]->has_operation())
             return true;
@@ -801,21 +818,21 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::get_absolute_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IPSLA-AUTOMEASURE-MIB:CISCO-IPSLA-AUTOMEASURE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::get_segment_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipslaReactTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -824,25 +841,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslar
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaReactEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry>();
+        auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry>();
         c->parent = this;
-        cipslareactentry.push_back(c);
+        cipslareactentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cipslareactentry)
+    for (auto c : cipslareactentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -853,22 +870,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslar
     return children;
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipslaReactEntry")
         return true;
     return false;
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactentry()
+CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactEntry()
     :
     cipslaautogroupopertype{YType::enumeration, "cipslaAutoGroupOperType"},
     cipslareactconfigindex{YType::uint32, "cipslaReactConfigIndex"},
@@ -884,15 +901,16 @@ CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactentry()
     cipslareactrowstatus{YType::enumeration, "cipslaReactRowStatus"}
 {
 
-    yang_name = "cipslaReactEntry"; yang_parent_name = "cipslaReactTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cipslaReactEntry"; yang_parent_name = "cipslaReactTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::~Cipslareactentry()
+CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::~CipslaReactEntry()
 {
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::has_data() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cipslaautogroupopertype.is_set
 	|| cipslareactconfigindex.is_set
 	|| cipslaautogroupopertemplatename.is_set
@@ -907,7 +925,7 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::has_data() co
 	|| cipslareactrowstatus.is_set;
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::has_operation() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cipslaautogroupopertype.yfilter)
@@ -924,21 +942,24 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::has_operation
 	|| ydk::is_set(cipslareactrowstatus.yfilter);
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::get_absolute_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IPSLA-AUTOMEASURE-MIB:CISCO-IPSLA-AUTOMEASURE-MIB/cipslaReactTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::get_segment_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cipslaReactEntry" <<"[cipslaAutoGroupOperType='" <<cipslaautogroupopertype <<"']" <<"[cipslaReactConfigIndex='" <<cipslareactconfigindex <<"']" <<"[cipslaAutoGroupOperTemplateName='" <<cipslaautogroupopertemplatename <<"']";
+    path_buffer << "cipslaReactEntry";
+    ADD_KEY_TOKEN(cipslaautogroupopertype, "cipslaAutoGroupOperType");
+    ADD_KEY_TOKEN(cipslareactconfigindex, "cipslaReactConfigIndex");
+    ADD_KEY_TOKEN(cipslaautogroupopertemplatename, "cipslaAutoGroupOperTemplateName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -959,19 +980,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslar
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cipslaAutoGroupOperType")
     {
@@ -1047,7 +1068,7 @@ void CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::set_value(con
     }
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cipslaAutoGroupOperType")
     {
@@ -1099,26 +1120,29 @@ void CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::set_filter(co
     }
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipslaAutoGroupOperType" || name == "cipslaReactConfigIndex" || name == "cipslaAutoGroupOperTemplateName" || name == "cipslaReactVar" || name == "cipslaReactThresholdType" || name == "cipslaReactActionType" || name == "cipslaReactThresholdRising" || name == "cipslaReactThresholdFalling" || name == "cipslaReactThresholdCountX" || name == "cipslaReactThresholdCountY" || name == "cipslaReactStorageType" || name == "cipslaReactRowStatus")
         return true;
     return false;
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedtable()
+CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedTable()
+    :
+    cipslaautogroupschedentry(this, {"cipslaautogroupschedid"})
 {
 
-    yang_name = "cipslaAutoGroupSchedTable"; yang_parent_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cipslaAutoGroupSchedTable"; yang_parent_name = "CISCO-IPSLA-AUTOMEASURE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::~Cipslaautogroupschedtable()
+CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::~CipslaAutoGroupSchedTable()
 {
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::has_data() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::has_data() const
 {
-    for (std::size_t index=0; index<cipslaautogroupschedentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cipslaautogroupschedentry.len(); index++)
     {
         if(cipslaautogroupschedentry[index]->has_data())
             return true;
@@ -1126,9 +1150,9 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::has_data() const
     return false;
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::has_operation() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::has_operation() const
 {
-    for (std::size_t index=0; index<cipslaautogroupschedentry.size(); index++)
+    for (std::size_t index=0; index<cipslaautogroupschedentry.len(); index++)
     {
         if(cipslaautogroupschedentry[index]->has_operation())
             return true;
@@ -1136,21 +1160,21 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::get_absolute_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IPSLA-AUTOMEASURE-MIB:CISCO-IPSLA-AUTOMEASURE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::get_segment_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipslaAutoGroupSchedTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1159,25 +1183,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslaa
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaAutoGroupSchedEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry>();
+        auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry>();
         c->parent = this;
-        cipslaautogroupschedentry.push_back(c);
+        cipslaautogroupschedentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cipslaautogroupschedentry)
+    for (auto c : cipslaautogroupschedentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1188,22 +1212,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaa
     return children;
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipslaAutoGroupSchedEntry")
         return true;
     return false;
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::Cipslaautogroupschedentry()
+CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::CipslaAutoGroupSchedEntry()
     :
     cipslaautogroupschedid{YType::str, "cipslaAutoGroupSchedId"},
     cipslaautogroupschedperiod{YType::uint32, "cipslaAutoGroupSchedPeriod"},
@@ -1217,15 +1241,16 @@ CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::
     cipslaautogroupschedrowstatus{YType::enumeration, "cipslaAutoGroupSchedRowStatus"}
 {
 
-    yang_name = "cipslaAutoGroupSchedEntry"; yang_parent_name = "cipslaAutoGroupSchedTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cipslaAutoGroupSchedEntry"; yang_parent_name = "cipslaAutoGroupSchedTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::~Cipslaautogroupschedentry()
+CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::~CipslaAutoGroupSchedEntry()
 {
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::has_data() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cipslaautogroupschedid.is_set
 	|| cipslaautogroupschedperiod.is_set
 	|| cipslaautogroupschedinterval.is_set
@@ -1238,7 +1263,7 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupscheden
 	|| cipslaautogroupschedrowstatus.is_set;
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::has_operation() const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cipslaautogroupschedid.yfilter)
@@ -1253,21 +1278,22 @@ bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupscheden
 	|| ydk::is_set(cipslaautogroupschedrowstatus.yfilter);
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::get_absolute_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IPSLA-AUTOMEASURE-MIB:CISCO-IPSLA-AUTOMEASURE-MIB/cipslaAutoGroupSchedTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::get_segment_path() const
+std::string CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cipslaAutoGroupSchedEntry" <<"[cipslaAutoGroupSchedId='" <<cipslaautogroupschedid <<"']";
+    path_buffer << "cipslaAutoGroupSchedEntry";
+    ADD_KEY_TOKEN(cipslaautogroupschedid, "cipslaAutoGroupSchedId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1286,19 +1312,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::Cipslaa
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cipslaAutoGroupSchedId")
     {
@@ -1362,7 +1388,7 @@ void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupscheden
     }
 }
 
-void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cipslaAutoGroupSchedId")
     {
@@ -1406,21 +1432,21 @@ void CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupscheden
     }
 }
 
-bool CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipslaAutoGroupSchedId" || name == "cipslaAutoGroupSchedPeriod" || name == "cipslaAutoGroupSchedInterval" || name == "cipslaAutoGroupSchedLife" || name == "cipslaAutoGroupSchedAgeout" || name == "cipslaAutoGroupSchedMaxInterval" || name == "cipslaAutoGroupSchedMinInterval" || name == "cipslaAutoGroupSchedStartTime" || name == "cipslaAutoGroupSchedStorageType" || name == "cipslaAutoGroupSchedRowStatus")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactthresholdtype::never {1, "never"};
-const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactthresholdtype::immediate {2, "immediate"};
-const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactthresholdtype::consecutive {3, "consecutive"};
-const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactthresholdtype::xOfy {4, "xOfy"};
-const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactthresholdtype::average {5, "average"};
+const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactThresholdType::never {1, "never"};
+const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactThresholdType::immediate {2, "immediate"};
+const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactThresholdType::consecutive {3, "consecutive"};
+const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactThresholdType::xOfy {4, "xOfy"};
+const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactThresholdType::average {5, "average"};
 
-const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactactiontype::none {1, "none"};
-const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactactiontype::notificationOnly {2, "notificationOnly"};
+const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactActionType::none {1, "none"};
+const Enum::YLeaf CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactActionType::notificationOnly {2, "notificationOnly"};
 
 
 }

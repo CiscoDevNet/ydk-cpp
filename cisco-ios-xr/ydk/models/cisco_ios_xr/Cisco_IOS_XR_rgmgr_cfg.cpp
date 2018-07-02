@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_rgmgr_cfg {
 RedundancyGroupManager::RedundancyGroupManager()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     aps(std::make_shared<RedundancyGroupManager::Aps>())
-	,iccp(std::make_shared<RedundancyGroupManager::Iccp>())
+    , iccp(std::make_shared<RedundancyGroupManager::Iccp>())
 {
     aps->parent = this;
     iccp->parent = this;
 
-    yang_name = "redundancy-group-manager"; yang_parent_name = "Cisco-IOS-XR-rgmgr-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "redundancy-group-manager"; yang_parent_name = "Cisco-IOS-XR-rgmgr-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RedundancyGroupManager::~RedundancyGroupManager()
@@ -30,6 +30,7 @@ RedundancyGroupManager::~RedundancyGroupManager()
 
 bool RedundancyGroupManager::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (aps !=  nullptr && aps->has_data())
 	|| (iccp !=  nullptr && iccp->has_data());
@@ -153,12 +154,12 @@ bool RedundancyGroupManager::has_leaf_or_child_of_name(const std::string & name)
 RedundancyGroupManager::Aps::Aps()
     :
     default_redundancy_group(std::make_shared<RedundancyGroupManager::Aps::DefaultRedundancyGroup>())
-	,groups(std::make_shared<RedundancyGroupManager::Aps::Groups>())
+    , groups(std::make_shared<RedundancyGroupManager::Aps::Groups>())
 {
     default_redundancy_group->parent = this;
     groups->parent = this;
 
-    yang_name = "aps"; yang_parent_name = "redundancy-group-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aps"; yang_parent_name = "redundancy-group-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RedundancyGroupManager::Aps::~Aps()
@@ -167,6 +168,7 @@ RedundancyGroupManager::Aps::~Aps()
 
 bool RedundancyGroupManager::Aps::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_redundancy_group !=  nullptr && default_redundancy_group->has_data())
 	|| (groups !=  nullptr && groups->has_data());
 }
@@ -262,7 +264,7 @@ RedundancyGroupManager::Aps::DefaultRedundancyGroup::DefaultRedundancyGroup()
     backup_interface_name{YType::str, "backup-interface-name"}
 {
 
-    yang_name = "default-redundancy-group"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-redundancy-group"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RedundancyGroupManager::Aps::DefaultRedundancyGroup::~DefaultRedundancyGroup()
@@ -271,6 +273,7 @@ RedundancyGroupManager::Aps::DefaultRedundancyGroup::~DefaultRedundancyGroup()
 
 bool RedundancyGroupManager::Aps::DefaultRedundancyGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_address.is_set
 	|| backup_interface_name.is_set;
 }
@@ -355,9 +358,11 @@ bool RedundancyGroupManager::Aps::DefaultRedundancyGroup::has_leaf_or_child_of_n
 }
 
 RedundancyGroupManager::Aps::Groups::Groups()
+    :
+    group(this, {"group_id"})
 {
 
-    yang_name = "groups"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RedundancyGroupManager::Aps::Groups::~Groups()
@@ -366,7 +371,8 @@ RedundancyGroupManager::Aps::Groups::~Groups()
 
 bool RedundancyGroupManager::Aps::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -376,7 +382,7 @@ bool RedundancyGroupManager::Aps::Groups::has_data() const
 
 bool RedundancyGroupManager::Aps::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -413,7 +419,7 @@ std::shared_ptr<Entity> RedundancyGroupManager::Aps::Groups::get_child_by_name(c
     {
         auto c = std::make_shared<RedundancyGroupManager::Aps::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -425,7 +431,7 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::Grou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -454,12 +460,12 @@ bool RedundancyGroupManager::Aps::Groups::has_leaf_or_child_of_name(const std::s
 RedundancyGroupManager::Aps::Groups::Group::Group()
     :
     group_id{YType::uint32, "group-id"}
-    	,
+        ,
     controllers(std::make_shared<RedundancyGroupManager::Aps::Groups::Group::Controllers>())
 {
     controllers->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RedundancyGroupManager::Aps::Groups::Group::~Group()
@@ -468,6 +474,7 @@ RedundancyGroupManager::Aps::Groups::Group::~Group()
 
 bool RedundancyGroupManager::Aps::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set
 	|| (controllers !=  nullptr && controllers->has_data());
 }
@@ -489,7 +496,8 @@ std::string RedundancyGroupManager::Aps::Groups::Group::get_absolute_path() cons
 std::string RedundancyGroupManager::Aps::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-id='" <<group_id <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(group_id, "group-id");
     return path_buffer.str();
 }
 
@@ -555,9 +563,11 @@ bool RedundancyGroupManager::Aps::Groups::Group::has_leaf_or_child_of_name(const
 }
 
 RedundancyGroupManager::Aps::Groups::Group::Controllers::Controllers()
+    :
+    controller(this, {"controller_name"})
 {
 
-    yang_name = "controllers"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "controllers"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RedundancyGroupManager::Aps::Groups::Group::Controllers::~Controllers()
@@ -566,7 +576,8 @@ RedundancyGroupManager::Aps::Groups::Group::Controllers::~Controllers()
 
 bool RedundancyGroupManager::Aps::Groups::Group::Controllers::has_data() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_data())
             return true;
@@ -576,7 +587,7 @@ bool RedundancyGroupManager::Aps::Groups::Group::Controllers::has_data() const
 
 bool RedundancyGroupManager::Aps::Groups::Group::Controllers::has_operation() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_operation())
             return true;
@@ -606,7 +617,7 @@ std::shared_ptr<Entity> RedundancyGroupManager::Aps::Groups::Group::Controllers:
     {
         auto c = std::make_shared<RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller>();
         c->parent = this;
-        controller.push_back(c);
+        controller.append(c);
         return c;
     }
 
@@ -618,7 +629,7 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::Grou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : controller)
+    for (auto c : controller.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -651,7 +662,7 @@ RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::Controller(
     backup_interface_name{YType::str, "backup-interface-name"}
 {
 
-    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::~Controller()
@@ -660,6 +671,7 @@ RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::~Controller
 
 bool RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return controller_name.is_set
 	|| next_hop_address.is_set
 	|| backup_interface_name.is_set;
@@ -676,7 +688,8 @@ bool RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::has_op
 std::string RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "controller" <<"[controller-name='" <<controller_name <<"']";
+    path_buffer << "controller";
+    ADD_KEY_TOKEN(controller_name, "controller-name");
     return path_buffer.str();
 }
 
@@ -755,7 +768,7 @@ RedundancyGroupManager::Iccp::Iccp()
 {
     iccp_groups->parent = this;
 
-    yang_name = "iccp"; yang_parent_name = "redundancy-group-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "iccp"; yang_parent_name = "redundancy-group-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RedundancyGroupManager::Iccp::~Iccp()
@@ -764,6 +777,7 @@ RedundancyGroupManager::Iccp::~Iccp()
 
 bool RedundancyGroupManager::Iccp::has_data() const
 {
+    if (is_presence_container) return true;
     return (iccp_groups !=  nullptr && iccp_groups->has_data());
 }
 
@@ -838,9 +852,11 @@ bool RedundancyGroupManager::Iccp::has_leaf_or_child_of_name(const std::string &
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroups()
+    :
+    iccp_group(this, {"group_number"})
 {
 
-    yang_name = "iccp-groups"; yang_parent_name = "iccp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "iccp-groups"; yang_parent_name = "iccp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::~IccpGroups()
@@ -849,7 +865,8 @@ RedundancyGroupManager::Iccp::IccpGroups::~IccpGroups()
 
 bool RedundancyGroupManager::Iccp::IccpGroups::has_data() const
 {
-    for (std::size_t index=0; index<iccp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<iccp_group.len(); index++)
     {
         if(iccp_group[index]->has_data())
             return true;
@@ -859,7 +876,7 @@ bool RedundancyGroupManager::Iccp::IccpGroups::has_data() const
 
 bool RedundancyGroupManager::Iccp::IccpGroups::has_operation() const
 {
-    for (std::size_t index=0; index<iccp_group.size(); index++)
+    for (std::size_t index=0; index<iccp_group.len(); index++)
     {
         if(iccp_group[index]->has_operation())
             return true;
@@ -896,7 +913,7 @@ std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::get_child_by_n
     {
         auto c = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup>();
         c->parent = this;
-        iccp_group.push_back(c);
+        iccp_group.append(c);
         return c;
     }
 
@@ -908,7 +925,7 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : iccp_group)
+    for (auto c : iccp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -939,18 +956,18 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::IccpGroup()
     group_number{YType::uint32, "group-number"},
     isolation_recovery_delay{YType::uint32, "isolation-recovery-delay"},
     mode{YType::enumeration, "mode"}
-    	,
+        ,
     backbones(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones>())
-	,members(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members>())
-	,mlacp(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp>())
-	,nv_satellite(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite>())
+    , members(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members>())
+    , nv_satellite(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite>())
+    , mlacp(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp>())
 {
     backbones->parent = this;
     members->parent = this;
-    mlacp->parent = this;
     nv_satellite->parent = this;
+    mlacp->parent = this;
 
-    yang_name = "iccp-group"; yang_parent_name = "iccp-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "iccp-group"; yang_parent_name = "iccp-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::~IccpGroup()
@@ -959,13 +976,14 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::~IccpGroup()
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return group_number.is_set
 	|| isolation_recovery_delay.is_set
 	|| mode.is_set
 	|| (backbones !=  nullptr && backbones->has_data())
 	|| (members !=  nullptr && members->has_data())
-	|| (mlacp !=  nullptr && mlacp->has_data())
-	|| (nv_satellite !=  nullptr && nv_satellite->has_data());
+	|| (nv_satellite !=  nullptr && nv_satellite->has_data())
+	|| (mlacp !=  nullptr && mlacp->has_data());
 }
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_operation() const
@@ -976,8 +994,8 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_operation() const
 	|| ydk::is_set(mode.yfilter)
 	|| (backbones !=  nullptr && backbones->has_operation())
 	|| (members !=  nullptr && members->has_operation())
-	|| (mlacp !=  nullptr && mlacp->has_operation())
-	|| (nv_satellite !=  nullptr && nv_satellite->has_operation());
+	|| (nv_satellite !=  nullptr && nv_satellite->has_operation())
+	|| (mlacp !=  nullptr && mlacp->has_operation());
 }
 
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_absolute_path() const
@@ -990,7 +1008,8 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_absolute_pa
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "iccp-group" <<"[group-number='" <<group_number <<"']";
+    path_buffer << "iccp-group";
+    ADD_KEY_TOKEN(group_number, "group-number");
     return path_buffer.str();
 }
 
@@ -1026,15 +1045,6 @@ std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get
         return members;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-bundlemgr-cfg:mlacp")
-    {
-        if(mlacp == nullptr)
-        {
-            mlacp = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp>();
-        }
-        return mlacp;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite")
     {
         if(nv_satellite == nullptr)
@@ -1042,6 +1052,15 @@ std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get
             nv_satellite = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite>();
         }
         return nv_satellite;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-bundlemgr-cfg:mlacp")
+    {
+        if(mlacp == nullptr)
+        {
+            mlacp = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp>();
+        }
+        return mlacp;
     }
 
     return nullptr;
@@ -1061,14 +1080,14 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
         children["members"] = members;
     }
 
-    if(mlacp != nullptr)
-    {
-        children["Cisco-IOS-XR-bundlemgr-cfg:mlacp"] = mlacp;
-    }
-
     if(nv_satellite != nullptr)
     {
         children["Cisco-IOS-XR-icpe-infra-cfg:nv-satellite"] = nv_satellite;
+    }
+
+    if(mlacp != nullptr)
+    {
+        children["Cisco-IOS-XR-bundlemgr-cfg:mlacp"] = mlacp;
     }
 
     return children;
@@ -1114,15 +1133,17 @@ void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::set_filter(const std::
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "backbones" || name == "members" || name == "mlacp" || name == "nv-satellite" || name == "group-number" || name == "isolation-recovery-delay" || name == "mode")
+    if(name == "backbones" || name == "members" || name == "nv-satellite" || name == "mlacp" || name == "group-number" || name == "isolation-recovery-delay" || name == "mode")
         return true;
     return false;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbones()
+    :
+    backbone(this, {"backbone_name"})
 {
 
-    yang_name = "backbones"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backbones"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::~Backbones()
@@ -1131,7 +1152,8 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::~Backbones()
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::has_data() const
 {
-    for (std::size_t index=0; index<backbone.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<backbone.len(); index++)
     {
         if(backbone[index]->has_data())
             return true;
@@ -1141,7 +1163,7 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::has_data() 
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::has_operation() const
 {
-    for (std::size_t index=0; index<backbone.size(); index++)
+    for (std::size_t index=0; index<backbone.len(); index++)
     {
         if(backbone[index]->has_operation())
             return true;
@@ -1171,7 +1193,7 @@ std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Bac
     {
         auto c = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone>();
         c->parent = this;
-        backbone.push_back(c);
+        backbone.append(c);
         return c;
     }
 
@@ -1183,7 +1205,7 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : backbone)
+    for (auto c : backbone.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1214,7 +1236,7 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::Backbo
     backbone_name{YType::str, "backbone-name"}
 {
 
-    yang_name = "backbone"; yang_parent_name = "backbones"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backbone"; yang_parent_name = "backbones"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::~Backbone()
@@ -1223,6 +1245,7 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::~Backb
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::has_data() const
 {
+    if (is_presence_container) return true;
     return backbone_name.is_set;
 }
 
@@ -1235,7 +1258,8 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::h
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "backbone" <<"[backbone-name='" <<backbone_name <<"']";
+    path_buffer << "backbone";
+    ADD_KEY_TOKEN(backbone_name, "backbone-name");
     return path_buffer.str();
 }
 
@@ -1287,9 +1311,11 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::h
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Members()
+    :
+    member(this, {"neighbor_address"})
 {
 
-    yang_name = "members"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "members"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::~Members()
@@ -1298,7 +1324,8 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::~Members()
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::has_data() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_data())
             return true;
@@ -1308,7 +1335,7 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::has_data() co
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::has_operation() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_operation())
             return true;
@@ -1338,7 +1365,7 @@ std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mem
     {
         auto c = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member>();
         c->parent = this;
-        member.push_back(c);
+        member.append(c);
         return c;
     }
 
@@ -1350,7 +1377,7 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : member)
+    for (auto c : member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1381,7 +1408,7 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::Member()
     neighbor_address{YType::str, "neighbor-address"}
 {
 
-    yang_name = "member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::~Member()
@@ -1390,6 +1417,7 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::~Member()
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_address.is_set;
 }
 
@@ -1402,7 +1430,8 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::has_o
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "member" <<"[neighbor-address='" <<neighbor_address <<"']";
+    path_buffer << "member";
+    ADD_KEY_TOKEN(neighbor_address, "neighbor-address");
     return path_buffer.str();
 }
 
@@ -1453,6 +1482,84 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::has_l
     return false;
 }
 
+RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::NvSatellite()
+    :
+    system_mac{YType::str, "system-mac"}
+{
+
+    yang_name = "nv-satellite"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::~NvSatellite()
+{
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_data() const
+{
+    if (is_presence_container) return true;
+    return system_mac.is_set;
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(system_mac.yfilter);
+}
+
+std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (system_mac.is_set || is_set(system_mac.yfilter)) leaf_name_data.push_back(system_mac.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "system-mac")
+    {
+        system_mac = value;
+        system_mac.value_namespace = name_space;
+        system_mac.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-mac")
+    {
+        system_mac.yfilter = yfilter;
+    }
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-mac")
+        return true;
+    return false;
+}
+
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::Mlacp()
     :
     connect_timeout{YType::uint32, "connect-timeout"},
@@ -1461,7 +1568,7 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::Mlacp()
     system_priority{YType::uint32, "system-priority"}
 {
 
-    yang_name = "mlacp"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::~Mlacp()
@@ -1470,6 +1577,7 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::~Mlacp()
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::has_data() const
 {
+    if (is_presence_container) return true;
     return connect_timeout.is_set
 	|| system_mac.is_set
 	|| node.is_set
@@ -1568,83 +1676,6 @@ void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::set_filter(cons
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "connect-timeout" || name == "system-mac" || name == "node" || name == "system-priority")
-        return true;
-    return false;
-}
-
-RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::NvSatellite()
-    :
-    system_mac{YType::str, "system-mac"}
-{
-
-    yang_name = "nv-satellite"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::~NvSatellite()
-{
-}
-
-bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_data() const
-{
-    return system_mac.is_set;
-}
-
-bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(system_mac.yfilter);
-}
-
-std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (system_mac.is_set || is_set(system_mac.yfilter)) leaf_name_data.push_back(system_mac.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "system-mac")
-    {
-        system_mac = value;
-        system_mac.value_namespace = name_space;
-        system_mac.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "system-mac")
-    {
-        system_mac.yfilter = yfilter;
-    }
-}
-
-bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "system-mac")
         return true;
     return false;
 }

@@ -57,7 +57,7 @@ class FabricStats::Nodes : public ydk::Entity
 
         class Node; //type: FabricStats::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // FabricStats::Nodes
 
@@ -105,7 +105,7 @@ class FabricStats::Nodes::Node::Statses : public ydk::Entity
 
         class Stats; //type: FabricStats::Nodes::Node::Statses::Stats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node::Statses::Stats> > stats;
+        ydk::YList stats;
         
 }; // FabricStats::Nodes::Node::Statses
 
@@ -131,7 +131,7 @@ class FabricStats::Nodes::Node::Statses::Stats : public ydk::Entity
         ydk::YLeaf stat_table_name; //type: string
         class StatsTable; //type: FabricStats::Nodes::Node::Statses::Stats::StatsTable
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node::Statses::Stats::StatsTable> > stats_table;
+        ydk::YList stats_table;
         
 }; // FabricStats::Nodes::Node::Statses::Stats
 
@@ -154,7 +154,7 @@ class FabricStats::Nodes::Node::Statses::Stats::StatsTable : public ydk::Entity
 
         class FsiStat; //type: FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat> > fsi_stat;
+        ydk::YList fsi_stat;
         
 }; // FabricStats::Nodes::Node::Statses::Stats::StatsTable
 

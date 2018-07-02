@@ -13,14 +13,14 @@ namespace CISCO_MEDIA_GATEWAY_MIB {
 
 CISCOMEDIAGATEWAYMIB::CISCOMEDIAGATEWAYMIB()
     :
-    cmediagwtable(std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwtable>())
-	,cmgwsignalprotocoltable(std::make_shared<CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable>())
-	,cmediagwipconfigtable(std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable>())
-	,cmediagwdomainnameconfigtable(std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable>())
-	,cmediagwdnsipconfigtable(std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable>())
-	,cmgwliftable(std::make_shared<CISCOMEDIAGATEWAYMIB::Cmgwliftable>())
-	,cmediagwcallcontrolconfigtable(std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable>())
-	,cmediagwrscstatstable(std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable>())
+    cmediagwtable(std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwTable>())
+    , cmgwsignalprotocoltable(std::make_shared<CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable>())
+    , cmediagwipconfigtable(std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable>())
+    , cmediagwdomainnameconfigtable(std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable>())
+    , cmediagwdnsipconfigtable(std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable>())
+    , cmgwliftable(std::make_shared<CISCOMEDIAGATEWAYMIB::CmgwLifTable>())
+    , cmediagwcallcontrolconfigtable(std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable>())
+    , cmediagwrscstatstable(std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable>())
 {
     cmediagwtable->parent = this;
     cmgwsignalprotocoltable->parent = this;
@@ -31,7 +31,7 @@ CISCOMEDIAGATEWAYMIB::CISCOMEDIAGATEWAYMIB()
     cmediagwcallcontrolconfigtable->parent = this;
     cmediagwrscstatstable->parent = this;
 
-    yang_name = "CISCO-MEDIA-GATEWAY-MIB"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-MEDIA-GATEWAY-MIB"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOMEDIAGATEWAYMIB::~CISCOMEDIAGATEWAYMIB()
@@ -40,6 +40,7 @@ CISCOMEDIAGATEWAYMIB::~CISCOMEDIAGATEWAYMIB()
 
 bool CISCOMEDIAGATEWAYMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cmediagwtable !=  nullptr && cmediagwtable->has_data())
 	|| (cmgwsignalprotocoltable !=  nullptr && cmgwsignalprotocoltable->has_data())
 	|| (cmediagwipconfigtable !=  nullptr && cmediagwipconfigtable->has_data())
@@ -85,7 +86,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::get_child_by_name(const std::strin
     {
         if(cmediagwtable == nullptr)
         {
-            cmediagwtable = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwtable>();
+            cmediagwtable = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwTable>();
         }
         return cmediagwtable;
     }
@@ -94,7 +95,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::get_child_by_name(const std::strin
     {
         if(cmgwsignalprotocoltable == nullptr)
         {
-            cmgwsignalprotocoltable = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable>();
+            cmgwsignalprotocoltable = std::make_shared<CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable>();
         }
         return cmgwsignalprotocoltable;
     }
@@ -103,7 +104,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::get_child_by_name(const std::strin
     {
         if(cmediagwipconfigtable == nullptr)
         {
-            cmediagwipconfigtable = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable>();
+            cmediagwipconfigtable = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable>();
         }
         return cmediagwipconfigtable;
     }
@@ -112,7 +113,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::get_child_by_name(const std::strin
     {
         if(cmediagwdomainnameconfigtable == nullptr)
         {
-            cmediagwdomainnameconfigtable = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable>();
+            cmediagwdomainnameconfigtable = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable>();
         }
         return cmediagwdomainnameconfigtable;
     }
@@ -121,7 +122,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::get_child_by_name(const std::strin
     {
         if(cmediagwdnsipconfigtable == nullptr)
         {
-            cmediagwdnsipconfigtable = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable>();
+            cmediagwdnsipconfigtable = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable>();
         }
         return cmediagwdnsipconfigtable;
     }
@@ -130,7 +131,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::get_child_by_name(const std::strin
     {
         if(cmgwliftable == nullptr)
         {
-            cmgwliftable = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmgwliftable>();
+            cmgwliftable = std::make_shared<CISCOMEDIAGATEWAYMIB::CmgwLifTable>();
         }
         return cmgwliftable;
     }
@@ -139,7 +140,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::get_child_by_name(const std::strin
     {
         if(cmediagwcallcontrolconfigtable == nullptr)
         {
-            cmediagwcallcontrolconfigtable = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable>();
+            cmediagwcallcontrolconfigtable = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable>();
         }
         return cmediagwcallcontrolconfigtable;
     }
@@ -148,7 +149,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::get_child_by_name(const std::strin
     {
         if(cmediagwrscstatstable == nullptr)
         {
-            cmediagwrscstatstable = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable>();
+            cmediagwrscstatstable = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable>();
         }
         return cmediagwrscstatstable;
     }
@@ -243,19 +244,22 @@ bool CISCOMEDIAGATEWAYMIB::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwtable()
+CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwTable()
+    :
+    cmediagwentry(this, {"cmgwindex"})
 {
 
-    yang_name = "cMediaGwTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cMediaGwTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwtable::~Cmediagwtable()
+CISCOMEDIAGATEWAYMIB::CMediaGwTable::~CMediaGwTable()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwtable::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwTable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmediagwentry.len(); index++)
     {
         if(cmediagwentry[index]->has_data())
             return true;
@@ -263,9 +267,9 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwtable::has_data() const
     return false;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwtable::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwTable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwentry.len(); index++)
     {
         if(cmediagwentry[index]->has_operation())
             return true;
@@ -273,21 +277,21 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwtable::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwtable::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cMediaGwTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -296,25 +300,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwtab
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry>();
+        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry>();
         c->parent = this;
-        cmediagwentry.push_back(c);
+        cmediagwentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmediagwentry)
+    for (auto c : cmediagwentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -325,22 +329,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwtab
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CMediaGwTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CMediaGwTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cMediaGwEntry")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::Cmediagwentry()
+CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::CMediaGwEntry()
     :
     cmgwindex{YType::int32, "cmgwIndex"},
     cmgwdomainname{YType::str, "cmgwDomainName"},
@@ -354,15 +358,16 @@ CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::Cmediagwentry()
     cmgwv23enabled{YType::boolean, "cmgwV23Enabled"}
 {
 
-    yang_name = "cMediaGwEntry"; yang_parent_name = "cMediaGwTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cMediaGwEntry"; yang_parent_name = "cMediaGwTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::~Cmediagwentry()
+CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::~CMediaGwEntry()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cmgwindex.is_set
 	|| cmgwdomainname.is_set
 	|| cmgwphysicalindex.is_set
@@ -375,7 +380,7 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::has_data() const
 	|| cmgwv23enabled.is_set;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmgwindex.yfilter)
@@ -390,21 +395,22 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::has_operation() const
 	|| ydk::is_set(cmgwv23enabled.yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/cMediaGwTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cMediaGwEntry" <<"[cmgwIndex='" <<cmgwindex <<"']";
+    path_buffer << "cMediaGwEntry";
+    ADD_KEY_TOKEN(cmgwindex, "cmgwIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -423,19 +429,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwtab
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
@@ -499,7 +505,7 @@ void CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::set_value(const std::st
     }
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmgwIndex")
     {
@@ -543,26 +549,29 @@ void CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::set_filter(const std::s
     }
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmgwIndex" || name == "cmgwDomainName" || name == "cmgwPhysicalIndex" || name == "cmgwServiceState" || name == "cmgwAdminState" || name == "cmgwGraceTime" || name == "cmgwVtMappingMode" || name == "cmgwSrcFilterEnabled" || name == "cmgwLawInterceptEnabled" || name == "cmgwV23Enabled")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocoltable()
+CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolTable()
+    :
+    cmgwsignalprotocolentry(this, {"cmgwindex", "cmgwsignalprotocolindex"})
 {
 
-    yang_name = "cmgwSignalProtocolTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmgwSignalProtocolTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::~Cmgwsignalprotocoltable()
+CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::~CmgwSignalProtocolTable()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::has_data() const
 {
-    for (std::size_t index=0; index<cmgwsignalprotocolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmgwsignalprotocolentry.len(); index++)
     {
         if(cmgwsignalprotocolentry[index]->has_data())
             return true;
@@ -570,9 +579,9 @@ bool CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::has_data() const
     return false;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::has_operation() const
 {
-    for (std::size_t index=0; index<cmgwsignalprotocolentry.size(); index++)
+    for (std::size_t index=0; index<cmgwsignalprotocolentry.len(); index++)
     {
         if(cmgwsignalprotocolentry[index]->has_operation())
             return true;
@@ -580,21 +589,21 @@ bool CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cmgwSignalProtocolTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -603,25 +612,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmgwsignalp
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmgwSignalProtocolEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry>();
+        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry>();
         c->parent = this;
-        cmgwsignalprotocolentry.push_back(c);
+        cmgwsignalprotocolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmgwsignalprotocolentry)
+    for (auto c : cmgwsignalprotocolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -632,22 +641,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmgwsignalp
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmgwSignalProtocolEntry")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocolentry()
+CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::CmgwSignalProtocolEntry()
     :
     cmgwindex{YType::str, "cmgwIndex"},
     cmgwsignalprotocolindex{YType::int32, "cmgwSignalProtocolIndex"},
@@ -659,15 +668,16 @@ CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsign
     cmgwsignalprotocolconfigver{YType::str, "cmgwSignalProtocolConfigVer"}
 {
 
-    yang_name = "cmgwSignalProtocolEntry"; yang_parent_name = "cmgwSignalProtocolTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmgwSignalProtocolEntry"; yang_parent_name = "cmgwSignalProtocolTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::~Cmgwsignalprotocolentry()
+CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::~CmgwSignalProtocolEntry()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cmgwindex.is_set
 	|| cmgwsignalprotocolindex.is_set
 	|| cmgwsignalprotocol.is_set
@@ -678,7 +688,7 @@ bool CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::has
 	|| cmgwsignalprotocolconfigver.is_set;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmgwindex.yfilter)
@@ -691,21 +701,23 @@ bool CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::has
 	|| ydk::is_set(cmgwsignalprotocolconfigver.yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/cmgwSignalProtocolTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cmgwSignalProtocolEntry" <<"[cmgwIndex='" <<cmgwindex <<"']" <<"[cmgwSignalProtocolIndex='" <<cmgwsignalprotocolindex <<"']";
+    path_buffer << "cmgwSignalProtocolEntry";
+    ADD_KEY_TOKEN(cmgwindex, "cmgwIndex");
+    ADD_KEY_TOKEN(cmgwsignalprotocolindex, "cmgwSignalProtocolIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -722,19 +734,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmgwsignalp
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
@@ -786,7 +798,7 @@ void CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::set
     }
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmgwIndex")
     {
@@ -822,26 +834,29 @@ void CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::set
     }
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmgwIndex" || name == "cmgwSignalProtocolIndex" || name == "cmgwSignalProtocol" || name == "cmgwSignalProtocolVersion" || name == "cmgwSignalProtocolPort" || name == "cmgwSignalMgcProtocolPort" || name == "cmgwSignalProtocolPreference" || name == "cmgwSignalProtocolConfigVer")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigtable()
+CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigTable()
+    :
+    cmediagwipconfigentry(this, {"cmgwindex", "cmgwipconfigindex"})
 {
 
-    yang_name = "cMediaGwIpConfigTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cMediaGwIpConfigTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::~Cmediagwipconfigtable()
+CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::~CMediaGwIpConfigTable()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwipconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmediagwipconfigentry.len(); index++)
     {
         if(cmediagwipconfigentry[index]->has_data())
             return true;
@@ -849,9 +864,9 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::has_data() const
     return false;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwipconfigentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwipconfigentry.len(); index++)
     {
         if(cmediagwipconfigentry[index]->has_operation())
             return true;
@@ -859,21 +874,21 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cMediaGwIpConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -882,25 +897,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwipc
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwIpConfigEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry>();
+        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry>();
         c->parent = this;
-        cmediagwipconfigentry.push_back(c);
+        cmediagwipconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmediagwipconfigentry)
+    for (auto c : cmediagwipconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -911,22 +926,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwipc
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cMediaGwIpConfigEntry")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::Cmediagwipconfigentry()
+CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::CMediaGwIpConfigEntry()
     :
     cmgwindex{YType::str, "cmgwIndex"},
     cmgwipconfigindex{YType::int32, "cmgwIpConfigIndex"},
@@ -941,15 +956,16 @@ CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::Cmediagwipco
     cmgwipconfigrowstatus{YType::enumeration, "cmgwIpConfigRowStatus"}
 {
 
-    yang_name = "cMediaGwIpConfigEntry"; yang_parent_name = "cMediaGwIpConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cMediaGwIpConfigEntry"; yang_parent_name = "cMediaGwIpConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::~Cmediagwipconfigentry()
+CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::~CMediaGwIpConfigEntry()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cmgwindex.is_set
 	|| cmgwipconfigindex.is_set
 	|| cmgwipconfigifindex.is_set
@@ -963,7 +979,7 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::has_dat
 	|| cmgwipconfigrowstatus.is_set;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmgwindex.yfilter)
@@ -979,21 +995,23 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::has_ope
 	|| ydk::is_set(cmgwipconfigrowstatus.yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/cMediaGwIpConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cMediaGwIpConfigEntry" <<"[cmgwIndex='" <<cmgwindex <<"']" <<"[cmgwIpConfigIndex='" <<cmgwipconfigindex <<"']";
+    path_buffer << "cMediaGwIpConfigEntry";
+    ADD_KEY_TOKEN(cmgwindex, "cmgwIndex");
+    ADD_KEY_TOKEN(cmgwipconfigindex, "cmgwIpConfigIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1013,19 +1031,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwipc
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
@@ -1095,7 +1113,7 @@ void CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::set_val
     }
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmgwIndex")
     {
@@ -1143,26 +1161,29 @@ void CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::set_fil
     }
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmgwIndex" || name == "cmgwIpConfigIndex" || name == "cmgwIpConfigIfIndex" || name == "cmgwIpConfigVpi" || name == "cmgwIpConfigVci" || name == "cmgwIpConfigAddrType" || name == "cmgwIpConfigAddress" || name == "cmgwIpConfigSubnetMask" || name == "cmgwIpConfigDefaultGwIp" || name == "cmgwIpConfigForRemoteMapping" || name == "cmgwIpConfigRowStatus")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigtable()
+CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigTable()
+    :
+    cmediagwdomainnameconfigentry(this, {"cmgwindex", "cmgwconfigdomainnameindex"})
 {
 
-    yang_name = "cMediaGwDomainNameConfigTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cMediaGwDomainNameConfigTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::~Cmediagwdomainnameconfigtable()
+CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::~CMediaGwDomainNameConfigTable()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwdomainnameconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmediagwdomainnameconfigentry.len(); index++)
     {
         if(cmediagwdomainnameconfigentry[index]->has_data())
             return true;
@@ -1170,9 +1191,9 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::has_data() const
     return false;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwdomainnameconfigentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwdomainnameconfigentry.len(); index++)
     {
         if(cmediagwdomainnameconfigentry[index]->has_operation())
             return true;
@@ -1180,21 +1201,21 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cMediaGwDomainNameConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1203,25 +1224,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwdom
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwDomainNameConfigEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry>();
+        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry>();
         c->parent = this;
-        cmediagwdomainnameconfigentry.push_back(c);
+        cmediagwdomainnameconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmediagwdomainnameconfigentry)
+    for (auto c : cmediagwdomainnameconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1232,22 +1253,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwdom
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cMediaGwDomainNameConfigEntry")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::Cmediagwdomainnameconfigentry()
+CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::CMediaGwDomainNameConfigEntry()
     :
     cmgwindex{YType::str, "cmgwIndex"},
     cmgwconfigdomainnameindex{YType::int32, "cmgwConfigDomainNameIndex"},
@@ -1256,15 +1277,16 @@ CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigent
     cmgwconfigdomainnamerowstatus{YType::enumeration, "cmgwConfigDomainNameRowStatus"}
 {
 
-    yang_name = "cMediaGwDomainNameConfigEntry"; yang_parent_name = "cMediaGwDomainNameConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cMediaGwDomainNameConfigEntry"; yang_parent_name = "cMediaGwDomainNameConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::~Cmediagwdomainnameconfigentry()
+CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::~CMediaGwDomainNameConfigEntry()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cmgwindex.is_set
 	|| cmgwconfigdomainnameindex.is_set
 	|| cmgwconfigdomainnameentity.is_set
@@ -1272,7 +1294,7 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconf
 	|| cmgwconfigdomainnamerowstatus.is_set;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmgwindex.yfilter)
@@ -1282,21 +1304,23 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconf
 	|| ydk::is_set(cmgwconfigdomainnamerowstatus.yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/cMediaGwDomainNameConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cMediaGwDomainNameConfigEntry" <<"[cmgwIndex='" <<cmgwindex <<"']" <<"[cmgwConfigDomainNameIndex='" <<cmgwconfigdomainnameindex <<"']";
+    path_buffer << "cMediaGwDomainNameConfigEntry";
+    ADD_KEY_TOKEN(cmgwindex, "cmgwIndex");
+    ADD_KEY_TOKEN(cmgwconfigdomainnameindex, "cmgwConfigDomainNameIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1310,19 +1334,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwdom
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
@@ -1356,7 +1380,7 @@ void CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconf
     }
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmgwIndex")
     {
@@ -1380,26 +1404,29 @@ void CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconf
     }
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmgwIndex" || name == "cmgwConfigDomainNameIndex" || name == "cmgwConfigDomainNameEntity" || name == "cmgwConfigDomainName" || name == "cmgwConfigDomainNameRowStatus")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigtable()
+CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigTable()
+    :
+    cmediagwdnsipconfigentry(this, {"cmgwindex", "cmgwdnsipindex"})
 {
 
-    yang_name = "cMediaGwDnsIpConfigTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cMediaGwDnsIpConfigTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::~Cmediagwdnsipconfigtable()
+CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::~CMediaGwDnsIpConfigTable()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwdnsipconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmediagwdnsipconfigentry.len(); index++)
     {
         if(cmediagwdnsipconfigentry[index]->has_data())
             return true;
@@ -1407,9 +1434,9 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::has_data() const
     return false;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwdnsipconfigentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwdnsipconfigentry.len(); index++)
     {
         if(cmediagwdnsipconfigentry[index]->has_operation())
             return true;
@@ -1417,21 +1444,21 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cMediaGwDnsIpConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1440,25 +1467,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwdns
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwDnsIpConfigEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry>();
+        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry>();
         c->parent = this;
-        cmediagwdnsipconfigentry.push_back(c);
+        cmediagwdnsipconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmediagwdnsipconfigentry)
+    for (auto c : cmediagwdnsipconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1469,22 +1496,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwdns
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cMediaGwDnsIpConfigEntry")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::Cmediagwdnsipconfigentry()
+CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::CMediaGwDnsIpConfigEntry()
     :
     cmgwindex{YType::str, "cmgwIndex"},
     cmgwdnsipindex{YType::int32, "cmgwDnsIpIndex"},
@@ -1494,15 +1521,16 @@ CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::Cmedia
     cmgwdnsiprowstatus{YType::enumeration, "cmgwDnsIpRowStatus"}
 {
 
-    yang_name = "cMediaGwDnsIpConfigEntry"; yang_parent_name = "cMediaGwDnsIpConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cMediaGwDnsIpConfigEntry"; yang_parent_name = "cMediaGwDnsIpConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::~Cmediagwdnsipconfigentry()
+CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::~CMediaGwDnsIpConfigEntry()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cmgwindex.is_set
 	|| cmgwdnsipindex.is_set
 	|| cmgwdnsdomainname.is_set
@@ -1511,7 +1539,7 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::h
 	|| cmgwdnsiprowstatus.is_set;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmgwindex.yfilter)
@@ -1522,21 +1550,23 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::h
 	|| ydk::is_set(cmgwdnsiprowstatus.yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/cMediaGwDnsIpConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cMediaGwDnsIpConfigEntry" <<"[cmgwIndex='" <<cmgwindex <<"']" <<"[cmgwDnsIpIndex='" <<cmgwdnsipindex <<"']";
+    path_buffer << "cMediaGwDnsIpConfigEntry";
+    ADD_KEY_TOKEN(cmgwindex, "cmgwIndex");
+    ADD_KEY_TOKEN(cmgwdnsipindex, "cmgwDnsIpIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1551,19 +1581,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwdns
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
@@ -1603,7 +1633,7 @@ void CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::s
     }
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmgwIndex")
     {
@@ -1631,26 +1661,29 @@ void CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::s
     }
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmgwIndex" || name == "cmgwDnsIpIndex" || name == "cmgwDnsDomainName" || name == "cmgwDnsIpType" || name == "cmgwDnsIp" || name == "cmgwDnsIpRowStatus")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwliftable()
+CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifTable()
+    :
+    cmgwlifentry(this, {"cmgwindex", "cmgwlifnumber"})
 {
 
-    yang_name = "cmgwLifTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmgwLifTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmgwliftable::~Cmgwliftable()
+CISCOMEDIAGATEWAYMIB::CmgwLifTable::~CmgwLifTable()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmgwliftable::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CmgwLifTable::has_data() const
 {
-    for (std::size_t index=0; index<cmgwlifentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmgwlifentry.len(); index++)
     {
         if(cmgwlifentry[index]->has_data())
             return true;
@@ -1658,9 +1691,9 @@ bool CISCOMEDIAGATEWAYMIB::Cmgwliftable::has_data() const
     return false;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmgwliftable::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CmgwLifTable::has_operation() const
 {
-    for (std::size_t index=0; index<cmgwlifentry.size(); index++)
+    for (std::size_t index=0; index<cmgwlifentry.len(); index++)
     {
         if(cmgwlifentry[index]->has_operation())
             return true;
@@ -1668,21 +1701,21 @@ bool CISCOMEDIAGATEWAYMIB::Cmgwliftable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmgwliftable::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CmgwLifTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmgwliftable::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CmgwLifTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cmgwLifTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmgwliftable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CmgwLifTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1691,25 +1724,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmgwliftabl
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmgwliftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CmgwLifTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmgwLifEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry>();
+        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry>();
         c->parent = this;
-        cmgwlifentry.push_back(c);
+        cmgwlifentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmgwliftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CmgwLifTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmgwlifentry)
+    for (auto c : cmgwlifentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1720,22 +1753,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmgwliftabl
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmgwliftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CmgwLifTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmgwliftable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CmgwLifTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmgwliftable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CmgwLifTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmgwLifEntry")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::Cmgwlifentry()
+CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::CmgwLifEntry()
     :
     cmgwindex{YType::str, "cmgwIndex"},
     cmgwlifnumber{YType::uint32, "cmgwLifNumber"},
@@ -1743,22 +1776,23 @@ CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::Cmgwlifentry()
     cmgwlifvoiceifcount{YType::uint32, "cmgwLifVoiceIfCount"}
 {
 
-    yang_name = "cmgwLifEntry"; yang_parent_name = "cmgwLifTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmgwLifEntry"; yang_parent_name = "cmgwLifTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::~Cmgwlifentry()
+CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::~CmgwLifEntry()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cmgwindex.is_set
 	|| cmgwlifnumber.is_set
 	|| cmgwlifpvccount.is_set
 	|| cmgwlifvoiceifcount.is_set;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmgwindex.yfilter)
@@ -1767,21 +1801,23 @@ bool CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::has_operation() const
 	|| ydk::is_set(cmgwlifvoiceifcount.yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/cmgwLifTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cmgwLifEntry" <<"[cmgwIndex='" <<cmgwindex <<"']" <<"[cmgwLifNumber='" <<cmgwlifnumber <<"']";
+    path_buffer << "cmgwLifEntry";
+    ADD_KEY_TOKEN(cmgwindex, "cmgwIndex");
+    ADD_KEY_TOKEN(cmgwlifnumber, "cmgwLifNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1794,19 +1830,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmgwliftabl
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
@@ -1834,7 +1870,7 @@ void CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::set_value(const std::stri
     }
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmgwIndex")
     {
@@ -1854,26 +1890,29 @@ void CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::set_filter(const std::str
     }
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmgwIndex" || name == "cmgwLifNumber" || name == "cmgwLifPvcCount" || name == "cmgwLifVoiceIfCount")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigtable()
+CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigTable()
+    :
+    cmediagwcallcontrolconfigentry(this, {"cmgwindex"})
 {
 
-    yang_name = "cMediaGwCallControlConfigTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cMediaGwCallControlConfigTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::~Cmediagwcallcontrolconfigtable()
+CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::~CMediaGwCallControlConfigTable()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwcallcontrolconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmediagwcallcontrolconfigentry.len(); index++)
     {
         if(cmediagwcallcontrolconfigentry[index]->has_data())
             return true;
@@ -1881,9 +1920,9 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::has_data() const
     return false;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwcallcontrolconfigentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwcallcontrolconfigentry.len(); index++)
     {
         if(cmediagwcallcontrolconfigentry[index]->has_operation())
             return true;
@@ -1891,21 +1930,21 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cMediaGwCallControlConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1914,25 +1953,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwcal
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwCallControlConfigEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry>();
+        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry>();
         c->parent = this;
-        cmediagwcallcontrolconfigentry.push_back(c);
+        cmediagwcallcontrolconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmediagwcallcontrolconfigentry)
+    for (auto c : cmediagwcallcontrolconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1943,22 +1982,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwcal
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cMediaGwCallControlConfigEntry")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcallcontrolconfigentry()
+CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::CMediaGwCallControlConfigEntry()
     :
     cmgwindex{YType::str, "cmgwIndex"},
     cmediagwcccfgcontroltos{YType::uint32, "cMediaGwCcCfgControlTos"},
@@ -1981,15 +2020,16 @@ CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfige
     cmediagwcccfgdefrtpnameprefix{YType::str, "cMediaGwCcCfgDefRtpNamePrefix"}
 {
 
-    yang_name = "cMediaGwCallControlConfigEntry"; yang_parent_name = "cMediaGwCallControlConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cMediaGwCallControlConfigEntry"; yang_parent_name = "cMediaGwCallControlConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::~Cmediagwcallcontrolconfigentry()
+CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::~CMediaGwCallControlConfigEntry()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cmgwindex.is_set
 	|| cmediagwcccfgcontroltos.is_set
 	|| cmediagwcccfgbearertos.is_set
@@ -2011,7 +2051,7 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolco
 	|| cmediagwcccfgdefrtpnameprefix.is_set;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmgwindex.yfilter)
@@ -2035,21 +2075,22 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolco
 	|| ydk::is_set(cmediagwcccfgdefrtpnameprefix.yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/cMediaGwCallControlConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cMediaGwCallControlConfigEntry" <<"[cmgwIndex='" <<cmgwindex <<"']";
+    path_buffer << "cMediaGwCallControlConfigEntry";
+    ADD_KEY_TOKEN(cmgwindex, "cmgwIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2077,19 +2118,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwcal
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
@@ -2207,7 +2248,7 @@ void CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolco
     }
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmgwIndex")
     {
@@ -2287,26 +2328,29 @@ void CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolco
     }
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmgwIndex" || name == "cMediaGwCcCfgControlTos" || name == "cMediaGwCcCfgBearerTos" || name == "cMediaGwCcCfgNtePayload" || name == "cMediaGwCcCfgNsePayload" || name == "cMediaGwCcCfgNseRespTimer" || name == "cMediaGwCcCfgVbdJitterDelayMode" || name == "cMediaGwCcCfgVbdJitterMaxDelay" || name == "cMediaGwCcCfgVbdJitterNomDelay" || name == "cMediaGwCcCfgVbdJitterMinDelay" || name == "cMediaGwCcCfgDefaultTonePlanId" || name == "cMediaGwCcCfgDescrInfoEnabled" || name == "cMediaGwCcCfgDsNamePrefix" || name == "cMediaGwCcCfgRtpNamePrefix" || name == "cMediaGwCcCfgAal1SvcNamePrefix" || name == "cMediaGwCcCfgAal2SvcNamePrefix" || name == "cMediaGwCcCfgClusterEnabled" || name == "cMediaGwCcCfgDefBearerTraffic" || name == "cMediaGwCcCfgDefRtpNamePrefix")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatstable()
+CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsTable()
+    :
+    cmediagwrscstatsentry(this, {"cmgwindex", "cmgwrscstatsindex"})
 {
 
-    yang_name = "cMediaGwRscStatsTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cMediaGwRscStatsTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::~Cmediagwrscstatstable()
+CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::~CMediaGwRscStatsTable()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwrscstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmediagwrscstatsentry.len(); index++)
     {
         if(cmediagwrscstatsentry[index]->has_data())
             return true;
@@ -2314,9 +2358,9 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::has_data() const
     return false;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwrscstatsentry.size(); index++)
+    for (std::size_t index=0; index<cmediagwrscstatsentry.len(); index++)
     {
         if(cmediagwrscstatsentry[index]->has_operation())
             return true;
@@ -2324,21 +2368,21 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cMediaGwRscStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2347,25 +2391,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwrsc
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwRscStatsEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry>();
+        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry>();
         c->parent = this;
-        cmediagwrscstatsentry.push_back(c);
+        cmediagwrscstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmediagwrscstatsentry)
+    for (auto c : cmediagwrscstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2376,22 +2420,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwrsc
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cMediaGwRscStatsEntry")
         return true;
     return false;
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmediagwrscstatsentry()
+CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CMediaGwRscStatsEntry()
     :
     cmgwindex{YType::str, "cmgwIndex"},
     cmgwrscstatsindex{YType::enumeration, "cmgwRscStatsIndex"},
@@ -2401,15 +2445,16 @@ CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmediagwrscs
     cmgwrscsincelastreset{YType::uint32, "cmgwRscSinceLastReset"}
 {
 
-    yang_name = "cMediaGwRscStatsEntry"; yang_parent_name = "cMediaGwRscStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cMediaGwRscStatsEntry"; yang_parent_name = "cMediaGwRscStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::~Cmediagwrscstatsentry()
+CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::~CMediaGwRscStatsEntry()
 {
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::has_data() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cmgwindex.is_set
 	|| cmgwrscstatsindex.is_set
 	|| cmgwrscmaximumutilization.is_set
@@ -2418,7 +2463,7 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::has_dat
 	|| cmgwrscsincelastreset.is_set;
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::has_operation() const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmgwindex.yfilter)
@@ -2429,21 +2474,23 @@ bool CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::has_ope
 	|| ydk::is_set(cmgwrscsincelastreset.yfilter);
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::get_absolute_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MEDIA-GATEWAY-MIB:CISCO-MEDIA-GATEWAY-MIB/cMediaGwRscStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::get_segment_path() const
+std::string CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cMediaGwRscStatsEntry" <<"[cmgwIndex='" <<cmgwindex <<"']" <<"[cmgwRscStatsIndex='" <<cmgwrscstatsindex <<"']";
+    path_buffer << "cMediaGwRscStatsEntry";
+    ADD_KEY_TOKEN(cmgwindex, "cmgwIndex");
+    ADD_KEY_TOKEN(cmgwrscstatsindex, "cmgwRscStatsIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2458,19 +2505,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::Cmediagwrsc
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
@@ -2510,7 +2557,7 @@ void CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::set_val
     }
 }
 
-void CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmgwIndex")
     {
@@ -2538,62 +2585,62 @@ void CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::set_fil
     }
 }
 
-bool CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmgwIndex" || name == "cmgwRscStatsIndex" || name == "cmgwRscMaximumUtilization" || name == "cmgwRscMinimumUtilization" || name == "cmgwRscAverageUtilization" || name == "cmgwRscSinceLastReset")
         return true;
     return false;
 }
 
-const Enum::YLeaf CGwServiceState::inService {1, "inService"};
-const Enum::YLeaf CGwServiceState::forcedOutOfService {2, "forcedOutOfService"};
-const Enum::YLeaf CGwServiceState::gracefulOutOfService {3, "gracefulOutOfService"};
+const Enum::YLeaf CCallControlJitterDelayMode::adaptive {1, "adaptive"};
+const Enum::YLeaf CCallControlJitterDelayMode::fixed {2, "fixed"};
 
 const Enum::YLeaf CGwAdminState::inService {1, "inService"};
 const Enum::YLeaf CGwAdminState::forcedOutOfService {2, "forcedOutOfService"};
 const Enum::YLeaf CGwAdminState::gracefulOutOfService {3, "gracefulOutOfService"};
 
-const Enum::YLeaf CCallControlJitterDelayMode::adaptive {1, "adaptive"};
-const Enum::YLeaf CCallControlJitterDelayMode::fixed {2, "fixed"};
+const Enum::YLeaf CGwServiceState::inService {1, "inService"};
+const Enum::YLeaf CGwServiceState::forcedOutOfService {2, "forcedOutOfService"};
+const Enum::YLeaf CGwServiceState::gracefulOutOfService {3, "gracefulOutOfService"};
 
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::Cmgwvtmappingmode::standard {1, "standard"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::Cmgwvtmappingmode::titan {2, "titan"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::CmgwVtMappingMode::standard {1, "standard"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::CmgwVtMappingMode::titan {2, "titan"};
 
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocol::other {1, "other"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocol::mgcp {2, "mgcp"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocol::h248 {3, "h248"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocol::tgcp {4, "tgcp"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::CmgwSignalProtocol::other {1, "other"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::CmgwSignalProtocol::mgcp {2, "mgcp"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::CmgwSignalProtocol::h248 {3, "h248"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::CmgwSignalProtocol::tgcp {4, "tgcp"};
 
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::Cmgwconfigdomainnameentity::gateway {1, "gateway"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::Cmgwconfigdomainnameentity::dnsServer {2, "dnsServer"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::Cmgwconfigdomainnameentity::mgc {3, "mgc"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::CmgwConfigDomainNameEntity::gateway {1, "gateway"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::CmgwConfigDomainNameEntity::dnsServer {2, "dnsServer"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::CmgwConfigDomainNameEntity::mgc {3, "mgc"};
 
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgclusterenabled::disabled {1, "disabled"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgclusterenabled::enabled {2, "enabled"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgclusterenabled::conditionalEnabled {3, "conditionalEnabled"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::CMediaGwCcCfgClusterEnabled::disabled {1, "disabled"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::CMediaGwCcCfgClusterEnabled::enabled {2, "enabled"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::CMediaGwCcCfgClusterEnabled::conditionalEnabled {3, "conditionalEnabled"};
 
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgdefbearertraffic::ipPvcAal5 {1, "ipPvcAal5"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgdefbearertraffic::atmPvcAal2 {2, "atmPvcAal2"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgdefbearertraffic::atmSvcAal2 {3, "atmSvcAal2"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgdefbearertraffic::atmSvcAal1 {4, "atmSvcAal1"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::CMediaGwCcCfgDefBearerTraffic::ipPvcAal5 {1, "ipPvcAal5"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::CMediaGwCcCfgDefBearerTraffic::atmPvcAal2 {2, "atmPvcAal2"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::CMediaGwCcCfgDefBearerTraffic::atmSvcAal2 {3, "atmSvcAal2"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::CMediaGwCcCfgDefBearerTraffic::atmSvcAal1 {4, "atmSvcAal1"};
 
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::cpu {1, "cpu"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::staticmemory {2, "staticmemory"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::dynamicmemory {3, "dynamicmemory"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::sysmemory {4, "sysmemory"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::commbuffer {5, "commbuffer"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::msgq {6, "msgq"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::atmq {7, "atmq"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::svccongestion {8, "svccongestion"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::rsvpq {9, "rsvpq"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::dspq {10, "dspq"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::h248congestion {11, "h248congestion"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::callpersec {12, "callpersec"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::smallipcbuffer {13, "smallipcbuffer"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::mediumipcbuffer {14, "mediumipcbuffer"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::largeipcbuffer {15, "largeipcbuffer"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::hugeipcbuffer {16, "hugeipcbuffer"};
-const Enum::YLeaf CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::mblkipcbuffer {17, "mblkipcbuffer"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::cpu {1, "cpu"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::staticmemory {2, "staticmemory"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::dynamicmemory {3, "dynamicmemory"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::sysmemory {4, "sysmemory"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::commbuffer {5, "commbuffer"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::msgq {6, "msgq"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::atmq {7, "atmq"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::svccongestion {8, "svccongestion"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::rsvpq {9, "rsvpq"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::dspq {10, "dspq"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::h248congestion {11, "h248congestion"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::callpersec {12, "callpersec"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::smallipcbuffer {13, "smallipcbuffer"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::mediumipcbuffer {14, "mediumipcbuffer"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::largeipcbuffer {15, "largeipcbuffer"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::hugeipcbuffer {16, "hugeipcbuffer"};
+const Enum::YLeaf CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex::mblkipcbuffer {17, "mblkipcbuffer"};
 
 
 }

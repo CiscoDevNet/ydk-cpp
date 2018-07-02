@@ -10,17 +10,16 @@
 #include "Cisco_IOS_XE_native_0.hpp"
 #include "Cisco_IOS_XE_native_18.hpp"
 #include "Cisco_IOS_XE_native_87.hpp"
-#include "Cisco_IOS_XE_native_88.hpp"
 
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::Vlan::ServicePolicy::Type::ServiceChain::Input : public ydk::Entity
+class Native::Interface::Vlan::EtAnalytics : public ydk::Entity
 {
     public:
-        Input();
-        ~Input();
+        EtAnalytics();
+        ~EtAnalytics();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -32,30 +31,9 @@ class Native::Interface::Vlan::ServicePolicy::Type::ServiceChain::Input : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: string
+        ydk::YLeaf enable; //type: empty
 
-}; // Native::Interface::Vlan::ServicePolicy::Type::ServiceChain::Input
-
-
-class Native::Interface::Vlan::ServicePolicy::Type::ServiceChain::Output : public ydk::Entity
-{
-    public:
-        Output();
-        ~Output();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-
-}; // Native::Interface::Vlan::ServicePolicy::Type::ServiceChain::Output
+}; // Native::Interface::Vlan::EtAnalytics
 
 
 class Native::Interface::Vlan::Lisp : public ydk::Entity
@@ -175,11 +153,11 @@ class Native::Interface::Vlan::Lisp::Mobility::Liveness : public ydk::Entity
 }; // Native::Interface::Vlan::Lisp::Mobility::Liveness
 
 
-class Native::Interface::Vlan::Ntp : public ydk::Entity
+class Native::Interface::Vlan::ZoneMember : public ydk::Entity
 {
     public:
-        Ntp();
-        ~Ntp();
+        ZoneMember();
+        ~ZoneMember();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -191,19 +169,41 @@ class Native::Interface::Vlan::Ntp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf broadcast; //type: empty
-        class BroadcastOption; //type: Native::Interface::Vlan::Ntp::BroadcastOption
+        ydk::YLeaf security; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Ntp::BroadcastOption> broadcast_option;
+}; // Native::Interface::Vlan::ZoneMember
+
+
+class Native::Interface::Vlan::Crypto : public ydk::Entity
+{
+    public:
+        Crypto();
+        ~Crypto();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Map; //type: Native::Interface::Vlan::Crypto::Map
+        class Ipsec; //type: Native::Interface::Vlan::Crypto::Ipsec
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Crypto::Map> map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Crypto::Ipsec> ipsec;
         
-}; // Native::Interface::Vlan::Ntp
+}; // Native::Interface::Vlan::Crypto
 
 
-class Native::Interface::Vlan::Ntp::BroadcastOption : public ydk::Entity
+class Native::Interface::Vlan::Crypto::Map : public ydk::Entity
 {
     public:
-        BroadcastOption();
-        ~BroadcastOption();
+        Map();
+        ~Map();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -215,18 +215,18 @@ class Native::Interface::Vlan::Ntp::BroadcastOption : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Broadcast; //type: Native::Interface::Vlan::Ntp::BroadcastOption::Broadcast
+        ydk::YLeaf tag; //type: string
+        ydk::YLeaf redundancy; //type: string
+        ydk::YLeaf stateful; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Ntp::BroadcastOption::Broadcast> broadcast;
-        
-}; // Native::Interface::Vlan::Ntp::BroadcastOption
+}; // Native::Interface::Vlan::Crypto::Map
 
 
-class Native::Interface::Vlan::Ntp::BroadcastOption::Broadcast : public ydk::Entity
+class Native::Interface::Vlan::Crypto::Ipsec : public ydk::Entity
 {
     public:
-        Broadcast();
-        ~Broadcast();
+        Ipsec();
+        ~Ipsec();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -238,9 +238,12 @@ class Native::Interface::Vlan::Ntp::BroadcastOption::Broadcast : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf client; //type: empty
+        ydk::YLeaf df_bit; //type: DfBit
+        ydk::YLeaf fragmentation; //type: Fragmentation
+        class DfBit;
+        class Fragmentation;
 
-}; // Native::Interface::Vlan::Ntp::BroadcastOption::Broadcast
+}; // Native::Interface::Vlan::Crypto::Ipsec
 
 
 class Native::Interface::Vlan::SpanningTree : public ydk::Entity
@@ -272,7 +275,7 @@ class Native::Interface::Vlan::SpanningTree : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::SpanningTree::Bpduguard> bpduguard;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::SpanningTree::Portfast> portfast; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::SpanningTree::Vlan_> > vlan;
+        ydk::YList vlan;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::SpanningTree::Loopguard> loopguard;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::SpanningTree::Mst> mst;
                 class Bpdufilter;
@@ -390,7 +393,7 @@ class Native::Interface::Vlan::SpanningTree::Mst : public ydk::Entity
         ydk::YLeaf pre_standard; //type: empty
         class MstInstance; //type: Native::Interface::Vlan::SpanningTree::Mst::MstInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::SpanningTree::Mst::MstInstance> > mst_instance;
+        ydk::YList mst_instance;
         
 }; // Native::Interface::Vlan::SpanningTree::Mst
 
@@ -418,11 +421,11 @@ class Native::Interface::Vlan::SpanningTree::Mst::MstInstance : public ydk::Enti
 }; // Native::Interface::Vlan::SpanningTree::Mst::MstInstance
 
 
-class Native::Interface::Vlan::Umbrella : public ydk::Entity
+class Native::Interface::Vlan::Ntp : public ydk::Entity
 {
     public:
-        Umbrella();
-        ~Umbrella();
+        Ntp();
+        ~Ntp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -434,17 +437,19 @@ class Native::Interface::Vlan::Umbrella : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf out; //type: empty
-        ydk::YLeaf in; //type: string
+        ydk::YLeaf broadcast; //type: empty
+        class BroadcastOption; //type: Native::Interface::Vlan::Ntp::BroadcastOption
 
-}; // Native::Interface::Vlan::Umbrella
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Ntp::BroadcastOption> broadcast_option;
+        
+}; // Native::Interface::Vlan::Ntp
 
 
-class Native::Interface::Vlan::Utd : public ydk::Entity
+class Native::Interface::Vlan::Ntp::BroadcastOption : public ydk::Entity
 {
     public:
-        Utd();
-        ~Utd();
+        BroadcastOption();
+        ~BroadcastOption();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -456,9 +461,32 @@ class Native::Interface::Vlan::Utd : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: empty
+        class Broadcast; //type: Native::Interface::Vlan::Ntp::BroadcastOption::Broadcast
 
-}; // Native::Interface::Vlan::Utd
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Ntp::BroadcastOption::Broadcast> broadcast;
+        
+}; // Native::Interface::Vlan::Ntp::BroadcastOption
+
+
+class Native::Interface::Vlan::Ntp::BroadcastOption::Broadcast : public ydk::Entity
+{
+    public:
+        Broadcast();
+        ~Broadcast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf client; //type: empty
+
+}; // Native::Interface::Vlan::Ntp::BroadcastOption::Broadcast
 
 
 class Native::Interface::Vlan::PrivateVlan : public ydk::Entity
@@ -501,7 +529,7 @@ class Native::Interface::Vlan::Vrrp : public ydk::Entity
         ydk::YLeaf number; //type: uint8
         class Ip; //type: Native::Interface::Vlan::Vrrp::Ip
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Vrrp::Ip> > ip;
+        ydk::YList ip;
         
 }; // Native::Interface::Vlan::Vrrp
 
@@ -614,7 +642,7 @@ class Native::Interface::Vlan::Glbp : public ydk::Entity
 
         class Range; //type: Native::Interface::Vlan::Glbp::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Glbp::Range> > range;
+        ydk::YList range;
         
 }; // Native::Interface::Vlan::Glbp
 
@@ -738,7 +766,7 @@ class Native::Interface::Vlan::Glbp::Range::Ip : public ydk::Entity
 
         class Ipv4; //type: Native::Interface::Vlan::Glbp::Range::Ip::Ipv4
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Glbp::Range::Ip::Ipv4> > ipv4;
+        ydk::YList ipv4;
         
 }; // Native::Interface::Vlan::Glbp::Range::Ip
 
@@ -827,7 +855,7 @@ class Native::Interface::Vlan::Glbp::Range::Weighting : public ydk::Entity
         class Value; //type: Native::Interface::Vlan::Glbp::Range::Weighting::Value
         class Track; //type: Native::Interface::Vlan::Glbp::Range::Weighting::Track
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Glbp::Range::Weighting::Value> > value_;
+        ydk::YList value_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Glbp::Range::Weighting::Track> track;
         
 }; // Native::Interface::Vlan::Glbp::Range::Weighting
@@ -874,7 +902,7 @@ class Native::Interface::Vlan::Glbp::Range::Weighting::Track : public ydk::Entit
 
         class Range_; //type: Native::Interface::Vlan::Glbp::Range::Weighting::Track::Range_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Glbp::Range::Weighting::Track::Range_> > range;
+        ydk::YList range;
         
 }; // Native::Interface::Vlan::Glbp::Range::Weighting::Track
 
@@ -942,7 +970,7 @@ class Native::Interface::Vlan::Glbp::Range::Timers::Msec : public ydk::Entity
 
         class Range_; //type: Native::Interface::Vlan::Glbp::Range::Timers::Msec::Range_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Glbp::Range::Timers::Msec::Range_> > range;
+        ydk::YList range;
         
 }; // Native::Interface::Vlan::Glbp::Range::Timers::Msec
 
@@ -1362,11 +1390,11 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesCwsTunnel_::Out : public ydk:
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesCwsTunnel_::Out
 
 
-class Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_ : public ydk::Entity
+class Native::Interface::Vlan::CiscoIOSXEInterfacesL2protocolTunnel_ : public ydk::Entity
 {
     public:
-        CiscoIOSXEInterfacesL2ProtocolTunnel_();
-        ~CiscoIOSXEInterfacesL2ProtocolTunnel_();
+        CiscoIOSXEInterfacesL2protocolTunnel_();
+        ~CiscoIOSXEInterfacesL2protocolTunnel_();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1381,16 +1409,16 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_ : public yd
         ydk::YLeaf cdp; //type: empty
         ydk::YLeaf stp; //type: empty
         ydk::YLeaf vtp; //type: empty
-        class DropThreshold; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::DropThreshold
-        class ShutdownThreshold; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::ShutdownThreshold
+        class DropThreshold; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesL2protocolTunnel_::DropThreshold
+        class ShutdownThreshold; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesL2protocolTunnel_::ShutdownThreshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::DropThreshold> drop_threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::ShutdownThreshold> shutdown_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesL2protocolTunnel_::DropThreshold> drop_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesL2protocolTunnel_::ShutdownThreshold> shutdown_threshold;
         
-}; // Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_
+}; // Native::Interface::Vlan::CiscoIOSXEInterfacesL2protocolTunnel_
 
 
-class Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::DropThreshold : public ydk::Entity
+class Native::Interface::Vlan::CiscoIOSXEInterfacesL2protocolTunnel_::DropThreshold : public ydk::Entity
 {
     public:
         DropThreshold();
@@ -1411,10 +1439,10 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::DropThresh
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::DropThreshold
+}; // Native::Interface::Vlan::CiscoIOSXEInterfacesL2protocolTunnel_::DropThreshold
 
 
-class Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::ShutdownThreshold : public ydk::Entity
+class Native::Interface::Vlan::CiscoIOSXEInterfacesL2protocolTunnel_::ShutdownThreshold : public ydk::Entity
 {
     public:
         ShutdownThreshold();
@@ -1435,7 +1463,7 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::ShutdownTh
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::ShutdownThreshold
+}; // Native::Interface::Vlan::CiscoIOSXEInterfacesL2protocolTunnel_::ShutdownThreshold
 
 
 class Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulation_ : public ydk::Entity
@@ -2053,7 +2081,7 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesIp_ : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::HelloInterval> hello_interval;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::HoldTime> hold_time;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Pim> pim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Policy> policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Rip> rip;
@@ -2392,7 +2420,7 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Address : public ydk::En
         class Dhcp; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Address::Dhcp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Address::Primary> primary;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Address::Secondary> > secondary;
+        ydk::YList secondary;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Address::Dhcp> dhcp; // presence node
         
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Address
@@ -2916,7 +2944,7 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::SummaryAddress : public 
 
         class Eigrp; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::SummaryAddress::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::SummaryAddress::Eigrp> > eigrp;
+        ydk::YList eigrp;
         
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::SummaryAddress
 
@@ -3140,7 +3168,7 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_ : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address> address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Nd> nd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Tcp> tcp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::TrafficFilter> > traffic_filter;
+        ydk::YList traffic_filter;
         
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_
 
@@ -3230,8 +3258,8 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address : public ydk::
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address::Dhcp> dhcp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address::Autoconfig> autoconfig; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address::PrefixList> > prefix_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address::LinkLocalAddress> > link_local_address;
+        ydk::YList prefix_list;
+        ydk::YList link_local_address;
         
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address
 
@@ -3525,28 +3553,22 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesMop_ : public ydk::Entity
 
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesMop_
 
-
-class Native::Interface::Vlan::CiscoIOSXEInterfacesInterfaceQos_ : public ydk::Entity
+class Native::Interface::Vlan::Crypto::Ipsec::DfBit : public ydk::Enum
 {
     public:
-        CiscoIOSXEInterfacesInterfaceQos_();
-        ~CiscoIOSXEInterfacesInterfaceQos_();
+        static const ydk::Enum::YLeaf clear;
+        static const ydk::Enum::YLeaf copy;
+        static const ydk::Enum::YLeaf set;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        class Trust; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesInterfaceQos_::Trust
+class Native::Interface::Vlan::Crypto::Ipsec::Fragmentation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf after_encryption;
+        static const ydk::Enum::YLeaf before_encryption;
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesInterfaceQos_::Trust> trust;
-        
-}; // Native::Interface::Vlan::CiscoIOSXEInterfacesInterfaceQos_
+};
 
 class Native::Interface::Vlan::SpanningTree::Bpdufilter : public ydk::Enum
 {

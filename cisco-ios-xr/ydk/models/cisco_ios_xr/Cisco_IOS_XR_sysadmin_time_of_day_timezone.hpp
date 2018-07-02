@@ -109,7 +109,7 @@ class Trace::TimezoneConfig : public ydk::Entity
 
         class Trace_; //type: Trace::TimezoneConfig::Trace_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_time_of_day_timezone::Trace::TimezoneConfig::Trace_> > trace;
+        ydk::YList trace;
         
 }; // Trace::TimezoneConfig
 
@@ -134,7 +134,7 @@ class Trace::TimezoneConfig::Trace_ : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Trace::TimezoneConfig::Trace_::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_time_of_day_timezone::Trace::TimezoneConfig::Trace_::Location> > location;
+        ydk::YList location;
         
 }; // Trace::TimezoneConfig::Trace_
 
@@ -158,7 +158,7 @@ class Trace::TimezoneConfig::Trace_::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Trace::TimezoneConfig::Trace_::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_time_of_day_timezone::Trace::TimezoneConfig::Trace_::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Trace::TimezoneConfig::Trace_::Location
 
@@ -182,7 +182,7 @@ class Trace::TimezoneConfig::Trace_::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_time_of_day_timezone::Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Trace::TimezoneConfig::Trace_::Location::AllOptions
 
@@ -227,7 +227,7 @@ class Trace::TimezoneNotify : public ydk::Entity
 
         class Trace_; //type: Trace::TimezoneNotify::Trace_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_time_of_day_timezone::Trace::TimezoneNotify::Trace_> > trace;
+        ydk::YList trace;
         
 }; // Trace::TimezoneNotify
 
@@ -252,7 +252,7 @@ class Trace::TimezoneNotify::Trace_ : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Trace::TimezoneNotify::Trace_::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_time_of_day_timezone::Trace::TimezoneNotify::Trace_::Location> > location;
+        ydk::YList location;
         
 }; // Trace::TimezoneNotify::Trace_
 
@@ -276,7 +276,7 @@ class Trace::TimezoneNotify::Trace_::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Trace::TimezoneNotify::Trace_::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_time_of_day_timezone::Trace::TimezoneNotify::Trace_::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Trace::TimezoneNotify::Trace_::Location
 
@@ -300,7 +300,7 @@ class Trace::TimezoneNotify::Trace_::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_time_of_day_timezone::Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Trace::TimezoneNotify::Trace_::Location::AllOptions
 

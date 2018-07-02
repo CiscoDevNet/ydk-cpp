@@ -244,7 +244,7 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries : public ydk::Ent
 
         class AddressFamilySummary; //type: Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary> > address_family_summary;
+        ydk::YList address_family_summary;
         
 }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries
 
@@ -506,7 +506,7 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries : public ydk::Entity
 
         class UsernameSummary; //type: Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary> > username_summary;
+        ydk::YList username_summary;
         
 }; // Subscriber::Session::Nodes::Node::UsernameSummaries
 
@@ -768,7 +768,7 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries : public ydk::E
 
         class AccessInterfaceSummary; //type: Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary> > access_interface_summary;
+        ydk::YList access_interface_summary;
         
 }; // Subscriber::Session::Nodes::Node::AccessInterfaceSummaries
 
@@ -1030,7 +1030,7 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries : public ydk::Entit
 
         class Ipv4AddressSummary; //type: Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary> > ipv4_address_summary;
+        ydk::YList ipv4_address_summary;
         
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressSummaries
 
@@ -1292,7 +1292,7 @@ class Subscriber::Session::Nodes::Node::VrfSummaries : public ydk::Entity
 
         class VrfSummary; //type: Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary> > vrf_summary;
+        ydk::YList vrf_summary;
         
 }; // Subscriber::Session::Nodes::Node::VrfSummaries
 
@@ -1554,7 +1554,7 @@ class Subscriber::Session::Nodes::Node::Sessions : public ydk::Entity
 
         class Session_; //type: Subscriber::Session::Nodes::Node::Sessions::Session_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_> > session;
+        ydk::YList session;
         
 }; // Subscriber::Session::Nodes::Node::Sessions
 
@@ -1616,7 +1616,7 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_ : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting> accounting;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes> user_profile_attributes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes> mobility_attributes;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization> > session_change_of_authorization;
+        ydk::YList session_change_of_authorization;
         
 }; // Subscriber::Session::Nodes::Node::Sessions::Session_
 
@@ -1639,7 +1639,7 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting : public 
 
         class AccountingSession; //type: Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession> > accounting_session;
+        ydk::YList accounting_session;
         
 }; // Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting
 
@@ -1849,7 +1849,7 @@ class IedgeLicenseManager::Nodes : public ydk::Entity
 
         class Node; //type: IedgeLicenseManager::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_oper::IedgeLicenseManager::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // IedgeLicenseManager::Nodes
 

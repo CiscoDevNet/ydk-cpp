@@ -14,21 +14,21 @@ namespace RFC1213_MIB {
 RFC1213MIB::RFC1213MIB()
     :
     system(std::make_shared<RFC1213MIB::System>())
-	,interfaces(std::make_shared<RFC1213MIB::Interfaces>())
-	,ip(std::make_shared<RFC1213MIB::Ip>())
-	,icmp(std::make_shared<RFC1213MIB::Icmp>())
-	,tcp(std::make_shared<RFC1213MIB::Tcp>())
-	,udp(std::make_shared<RFC1213MIB::Udp>())
-	,egp(std::make_shared<RFC1213MIB::Egp>())
-	,snmp(std::make_shared<RFC1213MIB::Snmp>())
-	,iftable(std::make_shared<RFC1213MIB::Iftable>())
-	,attable(std::make_shared<RFC1213MIB::Attable>())
-	,ipaddrtable(std::make_shared<RFC1213MIB::Ipaddrtable>())
-	,iproutetable(std::make_shared<RFC1213MIB::Iproutetable>())
-	,ipnettomediatable(std::make_shared<RFC1213MIB::Ipnettomediatable>())
-	,tcpconntable(std::make_shared<RFC1213MIB::Tcpconntable>())
-	,udptable(std::make_shared<RFC1213MIB::Udptable>())
-	,egpneightable(std::make_shared<RFC1213MIB::Egpneightable>())
+    , interfaces(std::make_shared<RFC1213MIB::Interfaces>())
+    , ip(std::make_shared<RFC1213MIB::Ip>())
+    , icmp(std::make_shared<RFC1213MIB::Icmp>())
+    , tcp(std::make_shared<RFC1213MIB::Tcp>())
+    , udp(std::make_shared<RFC1213MIB::Udp>())
+    , egp(std::make_shared<RFC1213MIB::Egp>())
+    , snmp(std::make_shared<RFC1213MIB::Snmp>())
+    , iftable(std::make_shared<RFC1213MIB::IfTable>())
+    , attable(std::make_shared<RFC1213MIB::AtTable>())
+    , ipaddrtable(std::make_shared<RFC1213MIB::IpAddrTable>())
+    , iproutetable(std::make_shared<RFC1213MIB::IpRouteTable>())
+    , ipnettomediatable(std::make_shared<RFC1213MIB::IpNetToMediaTable>())
+    , tcpconntable(std::make_shared<RFC1213MIB::TcpConnTable>())
+    , udptable(std::make_shared<RFC1213MIB::UdpTable>())
+    , egpneightable(std::make_shared<RFC1213MIB::EgpNeighTable>())
 {
     system->parent = this;
     interfaces->parent = this;
@@ -47,7 +47,7 @@ RFC1213MIB::RFC1213MIB()
     udptable->parent = this;
     egpneightable->parent = this;
 
-    yang_name = "RFC1213-MIB"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "RFC1213-MIB"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RFC1213MIB::~RFC1213MIB()
@@ -56,6 +56,7 @@ RFC1213MIB::~RFC1213MIB()
 
 bool RFC1213MIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (system !=  nullptr && system->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
 	|| (ip !=  nullptr && ip->has_data())
@@ -189,7 +190,7 @@ std::shared_ptr<Entity> RFC1213MIB::get_child_by_name(const std::string & child_
     {
         if(iftable == nullptr)
         {
-            iftable = std::make_shared<RFC1213MIB::Iftable>();
+            iftable = std::make_shared<RFC1213MIB::IfTable>();
         }
         return iftable;
     }
@@ -198,7 +199,7 @@ std::shared_ptr<Entity> RFC1213MIB::get_child_by_name(const std::string & child_
     {
         if(attable == nullptr)
         {
-            attable = std::make_shared<RFC1213MIB::Attable>();
+            attable = std::make_shared<RFC1213MIB::AtTable>();
         }
         return attable;
     }
@@ -207,7 +208,7 @@ std::shared_ptr<Entity> RFC1213MIB::get_child_by_name(const std::string & child_
     {
         if(ipaddrtable == nullptr)
         {
-            ipaddrtable = std::make_shared<RFC1213MIB::Ipaddrtable>();
+            ipaddrtable = std::make_shared<RFC1213MIB::IpAddrTable>();
         }
         return ipaddrtable;
     }
@@ -216,7 +217,7 @@ std::shared_ptr<Entity> RFC1213MIB::get_child_by_name(const std::string & child_
     {
         if(iproutetable == nullptr)
         {
-            iproutetable = std::make_shared<RFC1213MIB::Iproutetable>();
+            iproutetable = std::make_shared<RFC1213MIB::IpRouteTable>();
         }
         return iproutetable;
     }
@@ -225,7 +226,7 @@ std::shared_ptr<Entity> RFC1213MIB::get_child_by_name(const std::string & child_
     {
         if(ipnettomediatable == nullptr)
         {
-            ipnettomediatable = std::make_shared<RFC1213MIB::Ipnettomediatable>();
+            ipnettomediatable = std::make_shared<RFC1213MIB::IpNetToMediaTable>();
         }
         return ipnettomediatable;
     }
@@ -234,7 +235,7 @@ std::shared_ptr<Entity> RFC1213MIB::get_child_by_name(const std::string & child_
     {
         if(tcpconntable == nullptr)
         {
-            tcpconntable = std::make_shared<RFC1213MIB::Tcpconntable>();
+            tcpconntable = std::make_shared<RFC1213MIB::TcpConnTable>();
         }
         return tcpconntable;
     }
@@ -243,7 +244,7 @@ std::shared_ptr<Entity> RFC1213MIB::get_child_by_name(const std::string & child_
     {
         if(udptable == nullptr)
         {
-            udptable = std::make_shared<RFC1213MIB::Udptable>();
+            udptable = std::make_shared<RFC1213MIB::UdpTable>();
         }
         return udptable;
     }
@@ -252,7 +253,7 @@ std::shared_ptr<Entity> RFC1213MIB::get_child_by_name(const std::string & child_
     {
         if(egpneightable == nullptr)
         {
-            egpneightable = std::make_shared<RFC1213MIB::Egpneightable>();
+            egpneightable = std::make_shared<RFC1213MIB::EgpNeighTable>();
         }
         return egpneightable;
     }
@@ -398,7 +399,7 @@ RFC1213MIB::System::System()
     sysservices{YType::int32, "sysServices"}
 {
 
-    yang_name = "system"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "system"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RFC1213MIB::System::~System()
@@ -407,6 +408,7 @@ RFC1213MIB::System::~System()
 
 bool RFC1213MIB::System::has_data() const
 {
+    if (is_presence_container) return true;
     return sysdescr.is_set
 	|| sysobjectid.is_set
 	|| sysuptime.is_set
@@ -560,7 +562,7 @@ RFC1213MIB::Interfaces::Interfaces()
     ifnumber{YType::int32, "ifNumber"}
 {
 
-    yang_name = "interfaces"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RFC1213MIB::Interfaces::~Interfaces()
@@ -569,6 +571,7 @@ RFC1213MIB::Interfaces::~Interfaces()
 
 bool RFC1213MIB::Interfaces::has_data() const
 {
+    if (is_presence_container) return true;
     return ifnumber.is_set;
 }
 
@@ -663,7 +666,7 @@ RFC1213MIB::Ip::Ip()
     iproutingdiscards{YType::uint32, "ipRoutingDiscards"}
 {
 
-    yang_name = "ip"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RFC1213MIB::Ip::~Ip()
@@ -672,6 +675,7 @@ RFC1213MIB::Ip::~Ip()
 
 bool RFC1213MIB::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return ipforwarding.is_set
 	|| ipdefaultttl.is_set
 	|| ipinreceives.is_set
@@ -1019,7 +1023,7 @@ RFC1213MIB::Icmp::Icmp()
     icmpoutaddrmaskreps{YType::uint32, "icmpOutAddrMaskReps"}
 {
 
-    yang_name = "icmp"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icmp"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RFC1213MIB::Icmp::~Icmp()
@@ -1028,6 +1032,7 @@ RFC1213MIB::Icmp::~Icmp()
 
 bool RFC1213MIB::Icmp::has_data() const
 {
+    if (is_presence_container) return true;
     return icmpinmsgs.is_set
 	|| icmpinerrors.is_set
 	|| icmpindestunreachs.is_set
@@ -1441,7 +1446,7 @@ RFC1213MIB::Tcp::Tcp()
     tcpoutrsts{YType::uint32, "tcpOutRsts"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tcp"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RFC1213MIB::Tcp::~Tcp()
@@ -1450,6 +1455,7 @@ RFC1213MIB::Tcp::~Tcp()
 
 bool RFC1213MIB::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return tcprtoalgorithm.is_set
 	|| tcprtomin.is_set
 	|| tcprtomax.is_set
@@ -1697,7 +1703,7 @@ RFC1213MIB::Udp::Udp()
     udpoutdatagrams{YType::uint32, "udpOutDatagrams"}
 {
 
-    yang_name = "udp"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udp"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RFC1213MIB::Udp::~Udp()
@@ -1706,6 +1712,7 @@ RFC1213MIB::Udp::~Udp()
 
 bool RFC1213MIB::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return udpindatagrams.is_set
 	|| udpnoports.is_set
 	|| udpinerrors.is_set
@@ -1824,7 +1831,7 @@ RFC1213MIB::Egp::Egp()
     egpas{YType::int32, "egpAs"}
 {
 
-    yang_name = "egp"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "egp"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RFC1213MIB::Egp::~Egp()
@@ -1833,6 +1840,7 @@ RFC1213MIB::Egp::~Egp()
 
 bool RFC1213MIB::Egp::has_data() const
 {
+    if (is_presence_container) return true;
     return egpinmsgs.is_set
 	|| egpinerrors.is_set
 	|| egpoutmsgs.is_set
@@ -1987,7 +1995,7 @@ RFC1213MIB::Snmp::Snmp()
     snmpenableauthentraps{YType::enumeration, "snmpEnableAuthenTraps"}
 {
 
-    yang_name = "snmp"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmp"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RFC1213MIB::Snmp::~Snmp()
@@ -1996,6 +2004,7 @@ RFC1213MIB::Snmp::~Snmp()
 
 bool RFC1213MIB::Snmp::has_data() const
 {
+    if (is_presence_container) return true;
     return snmpinpkts.is_set
 	|| snmpoutpkts.is_set
 	|| snmpinbadversions.is_set
@@ -2417,19 +2426,22 @@ bool RFC1213MIB::Snmp::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-RFC1213MIB::Iftable::Iftable()
+RFC1213MIB::IfTable::IfTable()
+    :
+    ifentry(this, {"ifindex"})
 {
 
-    yang_name = "ifTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Iftable::~Iftable()
+RFC1213MIB::IfTable::~IfTable()
 {
 }
 
-bool RFC1213MIB::Iftable::has_data() const
+bool RFC1213MIB::IfTable::has_data() const
 {
-    for (std::size_t index=0; index<ifentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ifentry.len(); index++)
     {
         if(ifentry[index]->has_data())
             return true;
@@ -2437,9 +2449,9 @@ bool RFC1213MIB::Iftable::has_data() const
     return false;
 }
 
-bool RFC1213MIB::Iftable::has_operation() const
+bool RFC1213MIB::IfTable::has_operation() const
 {
-    for (std::size_t index=0; index<ifentry.size(); index++)
+    for (std::size_t index=0; index<ifentry.len(); index++)
     {
         if(ifentry[index]->has_operation())
             return true;
@@ -2447,21 +2459,21 @@ bool RFC1213MIB::Iftable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RFC1213MIB::Iftable::get_absolute_path() const
+std::string RFC1213MIB::IfTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Iftable::get_segment_path() const
+std::string RFC1213MIB::IfTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ifTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Iftable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IfTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2470,25 +2482,25 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Iftable::get_name_lea
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Iftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::IfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ifEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::Iftable::Ifentry>();
+        auto c = std::make_shared<RFC1213MIB::IfTable::IfEntry>();
         c->parent = this;
-        ifentry.push_back(c);
+        ifentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Iftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IfTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ifentry)
+    for (auto c : ifentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2499,22 +2511,22 @@ std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Iftable::get_children
     return children;
 }
 
-void RFC1213MIB::Iftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::IfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RFC1213MIB::Iftable::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::IfTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RFC1213MIB::Iftable::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::IfTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifEntry")
         return true;
     return false;
 }
 
-RFC1213MIB::Iftable::Ifentry::Ifentry()
+RFC1213MIB::IfTable::IfEntry::IfEntry()
     :
     ifindex{YType::int32, "ifIndex"},
     ifdescr{YType::str, "ifDescr"},
@@ -2540,15 +2552,16 @@ RFC1213MIB::Iftable::Ifentry::Ifentry()
     ifspecific{YType::str, "ifSpecific"}
 {
 
-    yang_name = "ifEntry"; yang_parent_name = "ifTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifEntry"; yang_parent_name = "ifTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Iftable::Ifentry::~Ifentry()
+RFC1213MIB::IfTable::IfEntry::~IfEntry()
 {
 }
 
-bool RFC1213MIB::Iftable::Ifentry::has_data() const
+bool RFC1213MIB::IfTable::IfEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| ifdescr.is_set
 	|| iftype.is_set
@@ -2573,7 +2586,7 @@ bool RFC1213MIB::Iftable::Ifentry::has_data() const
 	|| ifspecific.is_set;
 }
 
-bool RFC1213MIB::Iftable::Ifentry::has_operation() const
+bool RFC1213MIB::IfTable::IfEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2600,21 +2613,22 @@ bool RFC1213MIB::Iftable::Ifentry::has_operation() const
 	|| ydk::is_set(ifspecific.yfilter);
 }
 
-std::string RFC1213MIB::Iftable::Ifentry::get_absolute_path() const
+std::string RFC1213MIB::IfTable::IfEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/ifTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Iftable::Ifentry::get_segment_path() const
+std::string RFC1213MIB::IfTable::IfEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ifEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "ifEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Iftable::Ifentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IfTable::IfEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2645,19 +2659,19 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Iftable::Ifentry::get
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Iftable::Ifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::IfTable::IfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Iftable::Ifentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IfTable::IfEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RFC1213MIB::Iftable::Ifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::IfTable::IfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2793,7 +2807,7 @@ void RFC1213MIB::Iftable::Ifentry::set_value(const std::string & value_path, con
     }
 }
 
-void RFC1213MIB::Iftable::Ifentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::IfTable::IfEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2885,26 +2899,29 @@ void RFC1213MIB::Iftable::Ifentry::set_filter(const std::string & value_path, YF
     }
 }
 
-bool RFC1213MIB::Iftable::Ifentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::IfTable::IfEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "ifDescr" || name == "ifType" || name == "ifMtu" || name == "ifSpeed" || name == "ifPhysAddress" || name == "ifAdminStatus" || name == "ifOperStatus" || name == "ifLastChange" || name == "ifInOctets" || name == "ifInUcastPkts" || name == "ifInNUcastPkts" || name == "ifInDiscards" || name == "ifInErrors" || name == "ifInUnknownProtos" || name == "ifOutOctets" || name == "ifOutUcastPkts" || name == "ifOutNUcastPkts" || name == "ifOutDiscards" || name == "ifOutErrors" || name == "ifOutQLen" || name == "ifSpecific")
         return true;
     return false;
 }
 
-RFC1213MIB::Attable::Attable()
+RFC1213MIB::AtTable::AtTable()
+    :
+    atentry(this, {"atifindex", "atifindex_2", "atnetaddress"})
 {
 
-    yang_name = "atTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Attable::~Attable()
+RFC1213MIB::AtTable::~AtTable()
 {
 }
 
-bool RFC1213MIB::Attable::has_data() const
+bool RFC1213MIB::AtTable::has_data() const
 {
-    for (std::size_t index=0; index<atentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atentry.len(); index++)
     {
         if(atentry[index]->has_data())
             return true;
@@ -2912,9 +2929,9 @@ bool RFC1213MIB::Attable::has_data() const
     return false;
 }
 
-bool RFC1213MIB::Attable::has_operation() const
+bool RFC1213MIB::AtTable::has_operation() const
 {
-    for (std::size_t index=0; index<atentry.size(); index++)
+    for (std::size_t index=0; index<atentry.len(); index++)
     {
         if(atentry[index]->has_operation())
             return true;
@@ -2922,21 +2939,21 @@ bool RFC1213MIB::Attable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RFC1213MIB::Attable::get_absolute_path() const
+std::string RFC1213MIB::AtTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Attable::get_segment_path() const
+std::string RFC1213MIB::AtTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Attable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::AtTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2945,25 +2962,25 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Attable::get_name_lea
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Attable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::AtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::Attable::Atentry>();
+        auto c = std::make_shared<RFC1213MIB::AtTable::AtEntry>();
         c->parent = this;
-        atentry.push_back(c);
+        atentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Attable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::AtTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atentry)
+    for (auto c : atentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2974,22 +2991,22 @@ std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Attable::get_children
     return children;
 }
 
-void RFC1213MIB::Attable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::AtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RFC1213MIB::Attable::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::AtTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RFC1213MIB::Attable::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::AtTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atEntry")
         return true;
     return false;
 }
 
-RFC1213MIB::Attable::Atentry::Atentry()
+RFC1213MIB::AtTable::AtEntry::AtEntry()
     :
     atifindex{YType::int32, "atIfIndex"},
     atifindex_2{YType::int32, "atIfIndex_2"},
@@ -2997,22 +3014,23 @@ RFC1213MIB::Attable::Atentry::Atentry()
     atphysaddress{YType::str, "atPhysAddress"}
 {
 
-    yang_name = "atEntry"; yang_parent_name = "atTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atEntry"; yang_parent_name = "atTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Attable::Atentry::~Atentry()
+RFC1213MIB::AtTable::AtEntry::~AtEntry()
 {
 }
 
-bool RFC1213MIB::Attable::Atentry::has_data() const
+bool RFC1213MIB::AtTable::AtEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return atifindex.is_set
 	|| atifindex_2.is_set
 	|| atnetaddress.is_set
 	|| atphysaddress.is_set;
 }
 
-bool RFC1213MIB::Attable::Atentry::has_operation() const
+bool RFC1213MIB::AtTable::AtEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(atifindex.yfilter)
@@ -3021,21 +3039,24 @@ bool RFC1213MIB::Attable::Atentry::has_operation() const
 	|| ydk::is_set(atphysaddress.yfilter);
 }
 
-std::string RFC1213MIB::Attable::Atentry::get_absolute_path() const
+std::string RFC1213MIB::AtTable::AtEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/atTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Attable::Atentry::get_segment_path() const
+std::string RFC1213MIB::AtTable::AtEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "atEntry" <<"[atIfIndex='" <<atifindex <<"']" <<"[atIfIndex_2='" <<atifindex_2 <<"']" <<"[atNetAddress='" <<atnetaddress <<"']";
+    path_buffer << "atEntry";
+    ADD_KEY_TOKEN(atifindex, "atIfIndex");
+    ADD_KEY_TOKEN(atifindex_2, "atIfIndex_2");
+    ADD_KEY_TOKEN(atnetaddress, "atNetAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Attable::Atentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::AtTable::AtEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3048,19 +3069,19 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Attable::Atentry::get
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Attable::Atentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::AtTable::AtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Attable::Atentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::AtTable::AtEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RFC1213MIB::Attable::Atentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::AtTable::AtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "atIfIndex")
     {
@@ -3088,7 +3109,7 @@ void RFC1213MIB::Attable::Atentry::set_value(const std::string & value_path, con
     }
 }
 
-void RFC1213MIB::Attable::Atentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::AtTable::AtEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "atIfIndex")
     {
@@ -3108,26 +3129,29 @@ void RFC1213MIB::Attable::Atentry::set_filter(const std::string & value_path, YF
     }
 }
 
-bool RFC1213MIB::Attable::Atentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::AtTable::AtEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atIfIndex" || name == "atIfIndex_2" || name == "atNetAddress" || name == "atPhysAddress")
         return true;
     return false;
 }
 
-RFC1213MIB::Ipaddrtable::Ipaddrtable()
+RFC1213MIB::IpAddrTable::IpAddrTable()
+    :
+    ipaddrentry(this, {"ipadentaddr"})
 {
 
-    yang_name = "ipAddrTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipAddrTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Ipaddrtable::~Ipaddrtable()
+RFC1213MIB::IpAddrTable::~IpAddrTable()
 {
 }
 
-bool RFC1213MIB::Ipaddrtable::has_data() const
+bool RFC1213MIB::IpAddrTable::has_data() const
 {
-    for (std::size_t index=0; index<ipaddrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipaddrentry.len(); index++)
     {
         if(ipaddrentry[index]->has_data())
             return true;
@@ -3135,9 +3159,9 @@ bool RFC1213MIB::Ipaddrtable::has_data() const
     return false;
 }
 
-bool RFC1213MIB::Ipaddrtable::has_operation() const
+bool RFC1213MIB::IpAddrTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipaddrentry.size(); index++)
+    for (std::size_t index=0; index<ipaddrentry.len(); index++)
     {
         if(ipaddrentry[index]->has_operation())
             return true;
@@ -3145,21 +3169,21 @@ bool RFC1213MIB::Ipaddrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RFC1213MIB::Ipaddrtable::get_absolute_path() const
+std::string RFC1213MIB::IpAddrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Ipaddrtable::get_segment_path() const
+std::string RFC1213MIB::IpAddrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipAddrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Ipaddrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IpAddrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3168,25 +3192,25 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Ipaddrtable::get_name
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Ipaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::IpAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipAddrEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::Ipaddrtable::Ipaddrentry>();
+        auto c = std::make_shared<RFC1213MIB::IpAddrTable::IpAddrEntry>();
         c->parent = this;
-        ipaddrentry.push_back(c);
+        ipaddrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Ipaddrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IpAddrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipaddrentry)
+    for (auto c : ipaddrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3197,22 +3221,22 @@ std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Ipaddrtable::get_chil
     return children;
 }
 
-void RFC1213MIB::Ipaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::IpAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RFC1213MIB::Ipaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::IpAddrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RFC1213MIB::Ipaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::IpAddrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipAddrEntry")
         return true;
     return false;
 }
 
-RFC1213MIB::Ipaddrtable::Ipaddrentry::Ipaddrentry()
+RFC1213MIB::IpAddrTable::IpAddrEntry::IpAddrEntry()
     :
     ipadentaddr{YType::str, "ipAdEntAddr"},
     ipadentifindex{YType::int32, "ipAdEntIfIndex"},
@@ -3221,15 +3245,16 @@ RFC1213MIB::Ipaddrtable::Ipaddrentry::Ipaddrentry()
     ipadentreasmmaxsize{YType::int32, "ipAdEntReasmMaxSize"}
 {
 
-    yang_name = "ipAddrEntry"; yang_parent_name = "ipAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipAddrEntry"; yang_parent_name = "ipAddrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Ipaddrtable::Ipaddrentry::~Ipaddrentry()
+RFC1213MIB::IpAddrTable::IpAddrEntry::~IpAddrEntry()
 {
 }
 
-bool RFC1213MIB::Ipaddrtable::Ipaddrentry::has_data() const
+bool RFC1213MIB::IpAddrTable::IpAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipadentaddr.is_set
 	|| ipadentifindex.is_set
 	|| ipadentnetmask.is_set
@@ -3237,7 +3262,7 @@ bool RFC1213MIB::Ipaddrtable::Ipaddrentry::has_data() const
 	|| ipadentreasmmaxsize.is_set;
 }
 
-bool RFC1213MIB::Ipaddrtable::Ipaddrentry::has_operation() const
+bool RFC1213MIB::IpAddrTable::IpAddrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipadentaddr.yfilter)
@@ -3247,21 +3272,22 @@ bool RFC1213MIB::Ipaddrtable::Ipaddrentry::has_operation() const
 	|| ydk::is_set(ipadentreasmmaxsize.yfilter);
 }
 
-std::string RFC1213MIB::Ipaddrtable::Ipaddrentry::get_absolute_path() const
+std::string RFC1213MIB::IpAddrTable::IpAddrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/ipAddrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Ipaddrtable::Ipaddrentry::get_segment_path() const
+std::string RFC1213MIB::IpAddrTable::IpAddrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipAddrEntry" <<"[ipAdEntAddr='" <<ipadentaddr <<"']";
+    path_buffer << "ipAddrEntry";
+    ADD_KEY_TOKEN(ipadentaddr, "ipAdEntAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Ipaddrtable::Ipaddrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IpAddrTable::IpAddrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3275,19 +3301,19 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Ipaddrtable::Ipaddren
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Ipaddrtable::Ipaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::IpAddrTable::IpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Ipaddrtable::Ipaddrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IpAddrTable::IpAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RFC1213MIB::Ipaddrtable::Ipaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::IpAddrTable::IpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipAdEntAddr")
     {
@@ -3321,7 +3347,7 @@ void RFC1213MIB::Ipaddrtable::Ipaddrentry::set_value(const std::string & value_p
     }
 }
 
-void RFC1213MIB::Ipaddrtable::Ipaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::IpAddrTable::IpAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipAdEntAddr")
     {
@@ -3345,26 +3371,29 @@ void RFC1213MIB::Ipaddrtable::Ipaddrentry::set_filter(const std::string & value_
     }
 }
 
-bool RFC1213MIB::Ipaddrtable::Ipaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::IpAddrTable::IpAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipAdEntAddr" || name == "ipAdEntIfIndex" || name == "ipAdEntNetMask" || name == "ipAdEntBcastAddr" || name == "ipAdEntReasmMaxSize")
         return true;
     return false;
 }
 
-RFC1213MIB::Iproutetable::Iproutetable()
+RFC1213MIB::IpRouteTable::IpRouteTable()
+    :
+    iprouteentry(this, {"iproutedest"})
 {
 
-    yang_name = "ipRouteTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipRouteTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Iproutetable::~Iproutetable()
+RFC1213MIB::IpRouteTable::~IpRouteTable()
 {
 }
 
-bool RFC1213MIB::Iproutetable::has_data() const
+bool RFC1213MIB::IpRouteTable::has_data() const
 {
-    for (std::size_t index=0; index<iprouteentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<iprouteentry.len(); index++)
     {
         if(iprouteentry[index]->has_data())
             return true;
@@ -3372,9 +3401,9 @@ bool RFC1213MIB::Iproutetable::has_data() const
     return false;
 }
 
-bool RFC1213MIB::Iproutetable::has_operation() const
+bool RFC1213MIB::IpRouteTable::has_operation() const
 {
-    for (std::size_t index=0; index<iprouteentry.size(); index++)
+    for (std::size_t index=0; index<iprouteentry.len(); index++)
     {
         if(iprouteentry[index]->has_operation())
             return true;
@@ -3382,21 +3411,21 @@ bool RFC1213MIB::Iproutetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RFC1213MIB::Iproutetable::get_absolute_path() const
+std::string RFC1213MIB::IpRouteTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Iproutetable::get_segment_path() const
+std::string RFC1213MIB::IpRouteTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipRouteTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Iproutetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IpRouteTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3405,25 +3434,25 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Iproutetable::get_nam
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Iproutetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::IpRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipRouteEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::Iproutetable::Iprouteentry>();
+        auto c = std::make_shared<RFC1213MIB::IpRouteTable::IpRouteEntry>();
         c->parent = this;
-        iprouteentry.push_back(c);
+        iprouteentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Iproutetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IpRouteTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : iprouteentry)
+    for (auto c : iprouteentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3434,22 +3463,22 @@ std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Iproutetable::get_chi
     return children;
 }
 
-void RFC1213MIB::Iproutetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::IpRouteTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RFC1213MIB::Iproutetable::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::IpRouteTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RFC1213MIB::Iproutetable::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::IpRouteTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipRouteEntry")
         return true;
     return false;
 }
 
-RFC1213MIB::Iproutetable::Iprouteentry::Iprouteentry()
+RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteEntry()
     :
     iproutedest{YType::str, "ipRouteDest"},
     iprouteifindex{YType::int32, "ipRouteIfIndex"},
@@ -3466,15 +3495,16 @@ RFC1213MIB::Iproutetable::Iprouteentry::Iprouteentry()
     iprouteinfo{YType::str, "ipRouteInfo"}
 {
 
-    yang_name = "ipRouteEntry"; yang_parent_name = "ipRouteTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipRouteEntry"; yang_parent_name = "ipRouteTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Iproutetable::Iprouteentry::~Iprouteentry()
+RFC1213MIB::IpRouteTable::IpRouteEntry::~IpRouteEntry()
 {
 }
 
-bool RFC1213MIB::Iproutetable::Iprouteentry::has_data() const
+bool RFC1213MIB::IpRouteTable::IpRouteEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return iproutedest.is_set
 	|| iprouteifindex.is_set
 	|| iproutemetric1.is_set
@@ -3490,7 +3520,7 @@ bool RFC1213MIB::Iproutetable::Iprouteentry::has_data() const
 	|| iprouteinfo.is_set;
 }
 
-bool RFC1213MIB::Iproutetable::Iprouteentry::has_operation() const
+bool RFC1213MIB::IpRouteTable::IpRouteEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(iproutedest.yfilter)
@@ -3508,21 +3538,22 @@ bool RFC1213MIB::Iproutetable::Iprouteentry::has_operation() const
 	|| ydk::is_set(iprouteinfo.yfilter);
 }
 
-std::string RFC1213MIB::Iproutetable::Iprouteentry::get_absolute_path() const
+std::string RFC1213MIB::IpRouteTable::IpRouteEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/ipRouteTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Iproutetable::Iprouteentry::get_segment_path() const
+std::string RFC1213MIB::IpRouteTable::IpRouteEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipRouteEntry" <<"[ipRouteDest='" <<iproutedest <<"']";
+    path_buffer << "ipRouteEntry";
+    ADD_KEY_TOKEN(iproutedest, "ipRouteDest");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Iproutetable::Iprouteentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IpRouteTable::IpRouteEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3544,19 +3575,19 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Iproutetable::Iproute
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Iproutetable::Iprouteentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::IpRouteTable::IpRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Iproutetable::Iprouteentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IpRouteTable::IpRouteEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RFC1213MIB::Iproutetable::Iprouteentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::IpRouteTable::IpRouteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipRouteDest")
     {
@@ -3638,7 +3669,7 @@ void RFC1213MIB::Iproutetable::Iprouteentry::set_value(const std::string & value
     }
 }
 
-void RFC1213MIB::Iproutetable::Iprouteentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::IpRouteTable::IpRouteEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipRouteDest")
     {
@@ -3694,26 +3725,29 @@ void RFC1213MIB::Iproutetable::Iprouteentry::set_filter(const std::string & valu
     }
 }
 
-bool RFC1213MIB::Iproutetable::Iprouteentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::IpRouteTable::IpRouteEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipRouteDest" || name == "ipRouteIfIndex" || name == "ipRouteMetric1" || name == "ipRouteMetric2" || name == "ipRouteMetric3" || name == "ipRouteMetric4" || name == "ipRouteNextHop" || name == "ipRouteType" || name == "ipRouteProto" || name == "ipRouteAge" || name == "ipRouteMask" || name == "ipRouteMetric5" || name == "ipRouteInfo")
         return true;
     return false;
 }
 
-RFC1213MIB::Ipnettomediatable::Ipnettomediatable()
+RFC1213MIB::IpNetToMediaTable::IpNetToMediaTable()
+    :
+    ipnettomediaentry(this, {"ipnettomediaifindex", "ipnettomedianetaddress"})
 {
 
-    yang_name = "ipNetToMediaTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipNetToMediaTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Ipnettomediatable::~Ipnettomediatable()
+RFC1213MIB::IpNetToMediaTable::~IpNetToMediaTable()
 {
 }
 
-bool RFC1213MIB::Ipnettomediatable::has_data() const
+bool RFC1213MIB::IpNetToMediaTable::has_data() const
 {
-    for (std::size_t index=0; index<ipnettomediaentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipnettomediaentry.len(); index++)
     {
         if(ipnettomediaentry[index]->has_data())
             return true;
@@ -3721,9 +3755,9 @@ bool RFC1213MIB::Ipnettomediatable::has_data() const
     return false;
 }
 
-bool RFC1213MIB::Ipnettomediatable::has_operation() const
+bool RFC1213MIB::IpNetToMediaTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipnettomediaentry.size(); index++)
+    for (std::size_t index=0; index<ipnettomediaentry.len(); index++)
     {
         if(ipnettomediaentry[index]->has_operation())
             return true;
@@ -3731,21 +3765,21 @@ bool RFC1213MIB::Ipnettomediatable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RFC1213MIB::Ipnettomediatable::get_absolute_path() const
+std::string RFC1213MIB::IpNetToMediaTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Ipnettomediatable::get_segment_path() const
+std::string RFC1213MIB::IpNetToMediaTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipNetToMediaTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Ipnettomediatable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IpNetToMediaTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3754,25 +3788,25 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Ipnettomediatable::ge
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Ipnettomediatable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::IpNetToMediaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipNetToMediaEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::Ipnettomediatable::Ipnettomediaentry>();
+        auto c = std::make_shared<RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry>();
         c->parent = this;
-        ipnettomediaentry.push_back(c);
+        ipnettomediaentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Ipnettomediatable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IpNetToMediaTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipnettomediaentry)
+    for (auto c : ipnettomediaentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3783,22 +3817,22 @@ std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Ipnettomediatable::ge
     return children;
 }
 
-void RFC1213MIB::Ipnettomediatable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::IpNetToMediaTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RFC1213MIB::Ipnettomediatable::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::IpNetToMediaTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RFC1213MIB::Ipnettomediatable::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::IpNetToMediaTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipNetToMediaEntry")
         return true;
     return false;
 }
 
-RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediaentry()
+RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaEntry()
     :
     ipnettomediaifindex{YType::int32, "ipNetToMediaIfIndex"},
     ipnettomedianetaddress{YType::str, "ipNetToMediaNetAddress"},
@@ -3806,22 +3840,23 @@ RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediaentry()
     ipnettomediatype{YType::enumeration, "ipNetToMediaType"}
 {
 
-    yang_name = "ipNetToMediaEntry"; yang_parent_name = "ipNetToMediaTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipNetToMediaEntry"; yang_parent_name = "ipNetToMediaTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::~Ipnettomediaentry()
+RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::~IpNetToMediaEntry()
 {
 }
 
-bool RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::has_data() const
+bool RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipnettomediaifindex.is_set
 	|| ipnettomedianetaddress.is_set
 	|| ipnettomediaphysaddress.is_set
 	|| ipnettomediatype.is_set;
 }
 
-bool RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::has_operation() const
+bool RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipnettomediaifindex.yfilter)
@@ -3830,21 +3865,23 @@ bool RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::has_operation() const
 	|| ydk::is_set(ipnettomediatype.yfilter);
 }
 
-std::string RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::get_absolute_path() const
+std::string RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/ipNetToMediaTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::get_segment_path() const
+std::string RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipNetToMediaEntry" <<"[ipNetToMediaIfIndex='" <<ipnettomediaifindex <<"']" <<"[ipNetToMediaNetAddress='" <<ipnettomedianetaddress <<"']";
+    path_buffer << "ipNetToMediaEntry";
+    ADD_KEY_TOKEN(ipnettomediaifindex, "ipNetToMediaIfIndex");
+    ADD_KEY_TOKEN(ipnettomedianetaddress, "ipNetToMediaNetAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3857,19 +3894,19 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Ipnettomediatable::Ip
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipNetToMediaIfIndex")
     {
@@ -3897,7 +3934,7 @@ void RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::set_value(const std::stri
     }
 }
 
-void RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipNetToMediaIfIndex")
     {
@@ -3917,26 +3954,29 @@ void RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::set_filter(const std::str
     }
 }
 
-bool RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipNetToMediaIfIndex" || name == "ipNetToMediaNetAddress" || name == "ipNetToMediaPhysAddress" || name == "ipNetToMediaType")
         return true;
     return false;
 }
 
-RFC1213MIB::Tcpconntable::Tcpconntable()
+RFC1213MIB::TcpConnTable::TcpConnTable()
+    :
+    tcpconnentry(this, {"tcpconnlocaladdress", "tcpconnlocalport", "tcpconnremaddress", "tcpconnremport"})
 {
 
-    yang_name = "tcpConnTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tcpConnTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Tcpconntable::~Tcpconntable()
+RFC1213MIB::TcpConnTable::~TcpConnTable()
 {
 }
 
-bool RFC1213MIB::Tcpconntable::has_data() const
+bool RFC1213MIB::TcpConnTable::has_data() const
 {
-    for (std::size_t index=0; index<tcpconnentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tcpconnentry.len(); index++)
     {
         if(tcpconnentry[index]->has_data())
             return true;
@@ -3944,9 +3984,9 @@ bool RFC1213MIB::Tcpconntable::has_data() const
     return false;
 }
 
-bool RFC1213MIB::Tcpconntable::has_operation() const
+bool RFC1213MIB::TcpConnTable::has_operation() const
 {
-    for (std::size_t index=0; index<tcpconnentry.size(); index++)
+    for (std::size_t index=0; index<tcpconnentry.len(); index++)
     {
         if(tcpconnentry[index]->has_operation())
             return true;
@@ -3954,21 +3994,21 @@ bool RFC1213MIB::Tcpconntable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RFC1213MIB::Tcpconntable::get_absolute_path() const
+std::string RFC1213MIB::TcpConnTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Tcpconntable::get_segment_path() const
+std::string RFC1213MIB::TcpConnTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcpConnTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Tcpconntable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::TcpConnTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3977,25 +4017,25 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Tcpconntable::get_nam
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Tcpconntable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::TcpConnTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcpConnEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::Tcpconntable::Tcpconnentry>();
+        auto c = std::make_shared<RFC1213MIB::TcpConnTable::TcpConnEntry>();
         c->parent = this;
-        tcpconnentry.push_back(c);
+        tcpconnentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Tcpconntable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::TcpConnTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tcpconnentry)
+    for (auto c : tcpconnentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4006,22 +4046,22 @@ std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Tcpconntable::get_chi
     return children;
 }
 
-void RFC1213MIB::Tcpconntable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::TcpConnTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RFC1213MIB::Tcpconntable::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::TcpConnTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RFC1213MIB::Tcpconntable::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::TcpConnTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcpConnEntry")
         return true;
     return false;
 }
 
-RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnentry()
+RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnEntry()
     :
     tcpconnlocaladdress{YType::str, "tcpConnLocalAddress"},
     tcpconnlocalport{YType::int32, "tcpConnLocalPort"},
@@ -4030,15 +4070,16 @@ RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnentry()
     tcpconnstate{YType::enumeration, "tcpConnState"}
 {
 
-    yang_name = "tcpConnEntry"; yang_parent_name = "tcpConnTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tcpConnEntry"; yang_parent_name = "tcpConnTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Tcpconntable::Tcpconnentry::~Tcpconnentry()
+RFC1213MIB::TcpConnTable::TcpConnEntry::~TcpConnEntry()
 {
 }
 
-bool RFC1213MIB::Tcpconntable::Tcpconnentry::has_data() const
+bool RFC1213MIB::TcpConnTable::TcpConnEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return tcpconnlocaladdress.is_set
 	|| tcpconnlocalport.is_set
 	|| tcpconnremaddress.is_set
@@ -4046,7 +4087,7 @@ bool RFC1213MIB::Tcpconntable::Tcpconnentry::has_data() const
 	|| tcpconnstate.is_set;
 }
 
-bool RFC1213MIB::Tcpconntable::Tcpconnentry::has_operation() const
+bool RFC1213MIB::TcpConnTable::TcpConnEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tcpconnlocaladdress.yfilter)
@@ -4056,21 +4097,25 @@ bool RFC1213MIB::Tcpconntable::Tcpconnentry::has_operation() const
 	|| ydk::is_set(tcpconnstate.yfilter);
 }
 
-std::string RFC1213MIB::Tcpconntable::Tcpconnentry::get_absolute_path() const
+std::string RFC1213MIB::TcpConnTable::TcpConnEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/tcpConnTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Tcpconntable::Tcpconnentry::get_segment_path() const
+std::string RFC1213MIB::TcpConnTable::TcpConnEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tcpConnEntry" <<"[tcpConnLocalAddress='" <<tcpconnlocaladdress <<"']" <<"[tcpConnLocalPort='" <<tcpconnlocalport <<"']" <<"[tcpConnRemAddress='" <<tcpconnremaddress <<"']" <<"[tcpConnRemPort='" <<tcpconnremport <<"']";
+    path_buffer << "tcpConnEntry";
+    ADD_KEY_TOKEN(tcpconnlocaladdress, "tcpConnLocalAddress");
+    ADD_KEY_TOKEN(tcpconnlocalport, "tcpConnLocalPort");
+    ADD_KEY_TOKEN(tcpconnremaddress, "tcpConnRemAddress");
+    ADD_KEY_TOKEN(tcpconnremport, "tcpConnRemPort");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Tcpconntable::Tcpconnentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::TcpConnTable::TcpConnEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4084,19 +4129,19 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Tcpconntable::Tcpconn
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Tcpconntable::Tcpconnentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::TcpConnTable::TcpConnEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Tcpconntable::Tcpconnentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::TcpConnTable::TcpConnEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RFC1213MIB::Tcpconntable::Tcpconnentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::TcpConnTable::TcpConnEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tcpConnLocalAddress")
     {
@@ -4130,7 +4175,7 @@ void RFC1213MIB::Tcpconntable::Tcpconnentry::set_value(const std::string & value
     }
 }
 
-void RFC1213MIB::Tcpconntable::Tcpconnentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::TcpConnTable::TcpConnEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tcpConnLocalAddress")
     {
@@ -4154,26 +4199,29 @@ void RFC1213MIB::Tcpconntable::Tcpconnentry::set_filter(const std::string & valu
     }
 }
 
-bool RFC1213MIB::Tcpconntable::Tcpconnentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::TcpConnTable::TcpConnEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcpConnLocalAddress" || name == "tcpConnLocalPort" || name == "tcpConnRemAddress" || name == "tcpConnRemPort" || name == "tcpConnState")
         return true;
     return false;
 }
 
-RFC1213MIB::Udptable::Udptable()
+RFC1213MIB::UdpTable::UdpTable()
+    :
+    udpentry(this, {"udplocaladdress", "udplocalport"})
 {
 
-    yang_name = "udpTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udpTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Udptable::~Udptable()
+RFC1213MIB::UdpTable::~UdpTable()
 {
 }
 
-bool RFC1213MIB::Udptable::has_data() const
+bool RFC1213MIB::UdpTable::has_data() const
 {
-    for (std::size_t index=0; index<udpentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<udpentry.len(); index++)
     {
         if(udpentry[index]->has_data())
             return true;
@@ -4181,9 +4229,9 @@ bool RFC1213MIB::Udptable::has_data() const
     return false;
 }
 
-bool RFC1213MIB::Udptable::has_operation() const
+bool RFC1213MIB::UdpTable::has_operation() const
 {
-    for (std::size_t index=0; index<udpentry.size(); index++)
+    for (std::size_t index=0; index<udpentry.len(); index++)
     {
         if(udpentry[index]->has_operation())
             return true;
@@ -4191,21 +4239,21 @@ bool RFC1213MIB::Udptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RFC1213MIB::Udptable::get_absolute_path() const
+std::string RFC1213MIB::UdpTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Udptable::get_segment_path() const
+std::string RFC1213MIB::UdpTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "udpTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Udptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::UdpTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4214,25 +4262,25 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Udptable::get_name_le
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Udptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::UdpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udpEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::Udptable::Udpentry>();
+        auto c = std::make_shared<RFC1213MIB::UdpTable::UdpEntry>();
         c->parent = this;
-        udpentry.push_back(c);
+        udpentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Udptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::UdpTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : udpentry)
+    for (auto c : udpentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4243,62 +4291,65 @@ std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Udptable::get_childre
     return children;
 }
 
-void RFC1213MIB::Udptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::UdpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RFC1213MIB::Udptable::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::UdpTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RFC1213MIB::Udptable::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::UdpTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "udpEntry")
         return true;
     return false;
 }
 
-RFC1213MIB::Udptable::Udpentry::Udpentry()
+RFC1213MIB::UdpTable::UdpEntry::UdpEntry()
     :
     udplocaladdress{YType::str, "udpLocalAddress"},
     udplocalport{YType::int32, "udpLocalPort"}
 {
 
-    yang_name = "udpEntry"; yang_parent_name = "udpTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udpEntry"; yang_parent_name = "udpTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Udptable::Udpentry::~Udpentry()
+RFC1213MIB::UdpTable::UdpEntry::~UdpEntry()
 {
 }
 
-bool RFC1213MIB::Udptable::Udpentry::has_data() const
+bool RFC1213MIB::UdpTable::UdpEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return udplocaladdress.is_set
 	|| udplocalport.is_set;
 }
 
-bool RFC1213MIB::Udptable::Udpentry::has_operation() const
+bool RFC1213MIB::UdpTable::UdpEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(udplocaladdress.yfilter)
 	|| ydk::is_set(udplocalport.yfilter);
 }
 
-std::string RFC1213MIB::Udptable::Udpentry::get_absolute_path() const
+std::string RFC1213MIB::UdpTable::UdpEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/udpTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Udptable::Udpentry::get_segment_path() const
+std::string RFC1213MIB::UdpTable::UdpEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "udpEntry" <<"[udpLocalAddress='" <<udplocaladdress <<"']" <<"[udpLocalPort='" <<udplocalport <<"']";
+    path_buffer << "udpEntry";
+    ADD_KEY_TOKEN(udplocaladdress, "udpLocalAddress");
+    ADD_KEY_TOKEN(udplocalport, "udpLocalPort");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Udptable::Udpentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::UdpTable::UdpEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4309,19 +4360,19 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Udptable::Udpentry::g
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Udptable::Udpentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::UdpTable::UdpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Udptable::Udpentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::UdpTable::UdpEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RFC1213MIB::Udptable::Udpentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::UdpTable::UdpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "udpLocalAddress")
     {
@@ -4337,7 +4388,7 @@ void RFC1213MIB::Udptable::Udpentry::set_value(const std::string & value_path, c
     }
 }
 
-void RFC1213MIB::Udptable::Udpentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::UdpTable::UdpEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "udpLocalAddress")
     {
@@ -4349,26 +4400,29 @@ void RFC1213MIB::Udptable::Udpentry::set_filter(const std::string & value_path, 
     }
 }
 
-bool RFC1213MIB::Udptable::Udpentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::UdpTable::UdpEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "udpLocalAddress" || name == "udpLocalPort")
         return true;
     return false;
 }
 
-RFC1213MIB::Egpneightable::Egpneightable()
+RFC1213MIB::EgpNeighTable::EgpNeighTable()
+    :
+    egpneighentry(this, {"egpneighaddr"})
 {
 
-    yang_name = "egpNeighTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "egpNeighTable"; yang_parent_name = "RFC1213-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Egpneightable::~Egpneightable()
+RFC1213MIB::EgpNeighTable::~EgpNeighTable()
 {
 }
 
-bool RFC1213MIB::Egpneightable::has_data() const
+bool RFC1213MIB::EgpNeighTable::has_data() const
 {
-    for (std::size_t index=0; index<egpneighentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<egpneighentry.len(); index++)
     {
         if(egpneighentry[index]->has_data())
             return true;
@@ -4376,9 +4430,9 @@ bool RFC1213MIB::Egpneightable::has_data() const
     return false;
 }
 
-bool RFC1213MIB::Egpneightable::has_operation() const
+bool RFC1213MIB::EgpNeighTable::has_operation() const
 {
-    for (std::size_t index=0; index<egpneighentry.size(); index++)
+    for (std::size_t index=0; index<egpneighentry.len(); index++)
     {
         if(egpneighentry[index]->has_operation())
             return true;
@@ -4386,21 +4440,21 @@ bool RFC1213MIB::Egpneightable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RFC1213MIB::Egpneightable::get_absolute_path() const
+std::string RFC1213MIB::EgpNeighTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Egpneightable::get_segment_path() const
+std::string RFC1213MIB::EgpNeighTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "egpNeighTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Egpneightable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::EgpNeighTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4409,25 +4463,25 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Egpneightable::get_na
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Egpneightable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::EgpNeighTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "egpNeighEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::Egpneightable::Egpneighentry>();
+        auto c = std::make_shared<RFC1213MIB::EgpNeighTable::EgpNeighEntry>();
         c->parent = this;
-        egpneighentry.push_back(c);
+        egpneighentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Egpneightable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::EgpNeighTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : egpneighentry)
+    for (auto c : egpneighentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4438,22 +4492,22 @@ std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Egpneightable::get_ch
     return children;
 }
 
-void RFC1213MIB::Egpneightable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::EgpNeighTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RFC1213MIB::Egpneightable::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::EgpNeighTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RFC1213MIB::Egpneightable::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::EgpNeighTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "egpNeighEntry")
         return true;
     return false;
 }
 
-RFC1213MIB::Egpneightable::Egpneighentry::Egpneighentry()
+RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighEntry()
     :
     egpneighaddr{YType::str, "egpNeighAddr"},
     egpneighstate{YType::enumeration, "egpNeighState"},
@@ -4472,15 +4526,16 @@ RFC1213MIB::Egpneightable::Egpneighentry::Egpneighentry()
     egpneigheventtrigger{YType::enumeration, "egpNeighEventTrigger"}
 {
 
-    yang_name = "egpNeighEntry"; yang_parent_name = "egpNeighTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "egpNeighEntry"; yang_parent_name = "egpNeighTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RFC1213MIB::Egpneightable::Egpneighentry::~Egpneighentry()
+RFC1213MIB::EgpNeighTable::EgpNeighEntry::~EgpNeighEntry()
 {
 }
 
-bool RFC1213MIB::Egpneightable::Egpneighentry::has_data() const
+bool RFC1213MIB::EgpNeighTable::EgpNeighEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return egpneighaddr.is_set
 	|| egpneighstate.is_set
 	|| egpneighas.is_set
@@ -4498,7 +4553,7 @@ bool RFC1213MIB::Egpneightable::Egpneighentry::has_data() const
 	|| egpneigheventtrigger.is_set;
 }
 
-bool RFC1213MIB::Egpneightable::Egpneighentry::has_operation() const
+bool RFC1213MIB::EgpNeighTable::EgpNeighEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(egpneighaddr.yfilter)
@@ -4518,21 +4573,22 @@ bool RFC1213MIB::Egpneightable::Egpneighentry::has_operation() const
 	|| ydk::is_set(egpneigheventtrigger.yfilter);
 }
 
-std::string RFC1213MIB::Egpneightable::Egpneighentry::get_absolute_path() const
+std::string RFC1213MIB::EgpNeighTable::EgpNeighEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RFC1213-MIB:RFC1213-MIB/egpNeighTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RFC1213MIB::Egpneightable::Egpneighentry::get_segment_path() const
+std::string RFC1213MIB::EgpNeighTable::EgpNeighEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "egpNeighEntry" <<"[egpNeighAddr='" <<egpneighaddr <<"']";
+    path_buffer << "egpNeighEntry";
+    ADD_KEY_TOKEN(egpneighaddr, "egpNeighAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Egpneightable::Egpneighentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RFC1213MIB::EgpNeighTable::EgpNeighEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4556,19 +4612,19 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Egpneightable::Egpnei
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Egpneightable::Egpneighentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RFC1213MIB::EgpNeighTable::EgpNeighEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Egpneightable::Egpneighentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::EgpNeighTable::EgpNeighEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RFC1213MIB::Egpneightable::Egpneighentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RFC1213MIB::EgpNeighTable::EgpNeighEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "egpNeighAddr")
     {
@@ -4662,7 +4718,7 @@ void RFC1213MIB::Egpneightable::Egpneighentry::set_value(const std::string & val
     }
 }
 
-void RFC1213MIB::Egpneightable::Egpneighentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RFC1213MIB::EgpNeighTable::EgpNeighEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "egpNeighAddr")
     {
@@ -4726,84 +4782,84 @@ void RFC1213MIB::Egpneightable::Egpneighentry::set_filter(const std::string & va
     }
 }
 
-bool RFC1213MIB::Egpneightable::Egpneighentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RFC1213MIB::EgpNeighTable::EgpNeighEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "egpNeighAddr" || name == "egpNeighState" || name == "egpNeighAs" || name == "egpNeighInMsgs" || name == "egpNeighInErrs" || name == "egpNeighOutMsgs" || name == "egpNeighOutErrs" || name == "egpNeighInErrMsgs" || name == "egpNeighOutErrMsgs" || name == "egpNeighStateUps" || name == "egpNeighStateDowns" || name == "egpNeighIntervalHello" || name == "egpNeighIntervalPoll" || name == "egpNeighMode" || name == "egpNeighEventTrigger")
         return true;
     return false;
 }
 
-const Enum::YLeaf RFC1213MIB::Ip::Ipforwarding::forwarding {1, "forwarding"};
-const Enum::YLeaf RFC1213MIB::Ip::Ipforwarding::not_forwarding {2, "not-forwarding"};
+const Enum::YLeaf RFC1213MIB::Ip::IpForwarding::forwarding {1, "forwarding"};
+const Enum::YLeaf RFC1213MIB::Ip::IpForwarding::not_forwarding {2, "not-forwarding"};
 
-const Enum::YLeaf RFC1213MIB::Tcp::Tcprtoalgorithm::other {1, "other"};
-const Enum::YLeaf RFC1213MIB::Tcp::Tcprtoalgorithm::constant {2, "constant"};
-const Enum::YLeaf RFC1213MIB::Tcp::Tcprtoalgorithm::rsre {3, "rsre"};
-const Enum::YLeaf RFC1213MIB::Tcp::Tcprtoalgorithm::vanj {4, "vanj"};
-const Enum::YLeaf RFC1213MIB::Tcp::Tcprtoalgorithm::rfc2988 {5, "rfc2988"};
+const Enum::YLeaf RFC1213MIB::Tcp::TcpRtoAlgorithm::other {1, "other"};
+const Enum::YLeaf RFC1213MIB::Tcp::TcpRtoAlgorithm::constant {2, "constant"};
+const Enum::YLeaf RFC1213MIB::Tcp::TcpRtoAlgorithm::rsre {3, "rsre"};
+const Enum::YLeaf RFC1213MIB::Tcp::TcpRtoAlgorithm::vanj {4, "vanj"};
+const Enum::YLeaf RFC1213MIB::Tcp::TcpRtoAlgorithm::rfc2988 {5, "rfc2988"};
 
-const Enum::YLeaf RFC1213MIB::Snmp::Snmpenableauthentraps::enabled {1, "enabled"};
-const Enum::YLeaf RFC1213MIB::Snmp::Snmpenableauthentraps::disabled {2, "disabled"};
+const Enum::YLeaf RFC1213MIB::Snmp::SnmpEnableAuthenTraps::enabled {1, "enabled"};
+const Enum::YLeaf RFC1213MIB::Snmp::SnmpEnableAuthenTraps::disabled {2, "disabled"};
 
-const Enum::YLeaf RFC1213MIB::Iftable::Ifentry::Ifadminstatus::up {1, "up"};
-const Enum::YLeaf RFC1213MIB::Iftable::Ifentry::Ifadminstatus::down {2, "down"};
-const Enum::YLeaf RFC1213MIB::Iftable::Ifentry::Ifadminstatus::testing {3, "testing"};
+const Enum::YLeaf RFC1213MIB::IfTable::IfEntry::IfAdminStatus::up {1, "up"};
+const Enum::YLeaf RFC1213MIB::IfTable::IfEntry::IfAdminStatus::down {2, "down"};
+const Enum::YLeaf RFC1213MIB::IfTable::IfEntry::IfAdminStatus::testing {3, "testing"};
 
-const Enum::YLeaf RFC1213MIB::Iftable::Ifentry::Ifoperstatus::up {1, "up"};
-const Enum::YLeaf RFC1213MIB::Iftable::Ifentry::Ifoperstatus::down {2, "down"};
-const Enum::YLeaf RFC1213MIB::Iftable::Ifentry::Ifoperstatus::testing {3, "testing"};
-const Enum::YLeaf RFC1213MIB::Iftable::Ifentry::Ifoperstatus::unknown {4, "unknown"};
-const Enum::YLeaf RFC1213MIB::Iftable::Ifentry::Ifoperstatus::dormant {5, "dormant"};
+const Enum::YLeaf RFC1213MIB::IfTable::IfEntry::IfOperStatus::up {1, "up"};
+const Enum::YLeaf RFC1213MIB::IfTable::IfEntry::IfOperStatus::down {2, "down"};
+const Enum::YLeaf RFC1213MIB::IfTable::IfEntry::IfOperStatus::testing {3, "testing"};
+const Enum::YLeaf RFC1213MIB::IfTable::IfEntry::IfOperStatus::unknown {4, "unknown"};
+const Enum::YLeaf RFC1213MIB::IfTable::IfEntry::IfOperStatus::dormant {5, "dormant"};
 
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iproutetype::other {1, "other"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iproutetype::invalid {2, "invalid"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iproutetype::direct {3, "direct"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iproutetype::indirect {4, "indirect"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteType::other {1, "other"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteType::invalid {2, "invalid"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteType::direct {3, "direct"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteType::indirect {4, "indirect"};
 
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::other {1, "other"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::local {2, "local"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::netmgmt {3, "netmgmt"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::icmp {4, "icmp"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::egp {5, "egp"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::ggp {6, "ggp"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::hello {7, "hello"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::rip {8, "rip"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::is_is {9, "is-is"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::es_is {10, "es-is"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::ciscoIgrp {11, "ciscoIgrp"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::bbnSpfIgp {12, "bbnSpfIgp"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::ospf {13, "ospf"};
-const Enum::YLeaf RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto::bgp {14, "bgp"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::other {1, "other"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::local {2, "local"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::netmgmt {3, "netmgmt"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::icmp {4, "icmp"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::egp {5, "egp"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::ggp {6, "ggp"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::hello {7, "hello"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::rip {8, "rip"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::is_is {9, "is-is"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::es_is {10, "es-is"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::ciscoIgrp {11, "ciscoIgrp"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::bbnSpfIgp {12, "bbnSpfIgp"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::ospf {13, "ospf"};
+const Enum::YLeaf RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto::bgp {14, "bgp"};
 
-const Enum::YLeaf RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype::other {1, "other"};
-const Enum::YLeaf RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype::invalid {2, "invalid"};
-const Enum::YLeaf RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype::dynamic {3, "dynamic"};
-const Enum::YLeaf RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype::static_ {4, "static"};
+const Enum::YLeaf RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType::other {1, "other"};
+const Enum::YLeaf RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType::invalid {2, "invalid"};
+const Enum::YLeaf RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType::dynamic {3, "dynamic"};
+const Enum::YLeaf RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType::static_ {4, "static"};
 
-const Enum::YLeaf RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate::closed {1, "closed"};
-const Enum::YLeaf RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate::listen {2, "listen"};
-const Enum::YLeaf RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate::synSent {3, "synSent"};
-const Enum::YLeaf RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate::synReceived {4, "synReceived"};
-const Enum::YLeaf RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate::established {5, "established"};
-const Enum::YLeaf RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate::finWait1 {6, "finWait1"};
-const Enum::YLeaf RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate::finWait2 {7, "finWait2"};
-const Enum::YLeaf RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate::closeWait {8, "closeWait"};
-const Enum::YLeaf RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate::lastAck {9, "lastAck"};
-const Enum::YLeaf RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate::closing {10, "closing"};
-const Enum::YLeaf RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate::timeWait {11, "timeWait"};
-const Enum::YLeaf RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate::deleteTCB {12, "deleteTCB"};
+const Enum::YLeaf RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState::closed {1, "closed"};
+const Enum::YLeaf RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState::listen {2, "listen"};
+const Enum::YLeaf RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState::synSent {3, "synSent"};
+const Enum::YLeaf RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState::synReceived {4, "synReceived"};
+const Enum::YLeaf RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState::established {5, "established"};
+const Enum::YLeaf RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState::finWait1 {6, "finWait1"};
+const Enum::YLeaf RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState::finWait2 {7, "finWait2"};
+const Enum::YLeaf RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState::closeWait {8, "closeWait"};
+const Enum::YLeaf RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState::lastAck {9, "lastAck"};
+const Enum::YLeaf RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState::closing {10, "closing"};
+const Enum::YLeaf RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState::timeWait {11, "timeWait"};
+const Enum::YLeaf RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState::deleteTCB {12, "deleteTCB"};
 
-const Enum::YLeaf RFC1213MIB::Egpneightable::Egpneighentry::Egpneighstate::idle {1, "idle"};
-const Enum::YLeaf RFC1213MIB::Egpneightable::Egpneighentry::Egpneighstate::acquisition {2, "acquisition"};
-const Enum::YLeaf RFC1213MIB::Egpneightable::Egpneighentry::Egpneighstate::down {3, "down"};
-const Enum::YLeaf RFC1213MIB::Egpneightable::Egpneighentry::Egpneighstate::up {4, "up"};
-const Enum::YLeaf RFC1213MIB::Egpneightable::Egpneighentry::Egpneighstate::cease {5, "cease"};
+const Enum::YLeaf RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighState::idle {1, "idle"};
+const Enum::YLeaf RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighState::acquisition {2, "acquisition"};
+const Enum::YLeaf RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighState::down {3, "down"};
+const Enum::YLeaf RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighState::up {4, "up"};
+const Enum::YLeaf RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighState::cease {5, "cease"};
 
-const Enum::YLeaf RFC1213MIB::Egpneightable::Egpneighentry::Egpneighmode::active {1, "active"};
-const Enum::YLeaf RFC1213MIB::Egpneightable::Egpneighentry::Egpneighmode::passive {2, "passive"};
+const Enum::YLeaf RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighMode::active {1, "active"};
+const Enum::YLeaf RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighMode::passive {2, "passive"};
 
-const Enum::YLeaf RFC1213MIB::Egpneightable::Egpneighentry::Egpneigheventtrigger::start {1, "start"};
-const Enum::YLeaf RFC1213MIB::Egpneightable::Egpneighentry::Egpneigheventtrigger::stop {2, "stop"};
+const Enum::YLeaf RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighEventTrigger::start {1, "start"};
+const Enum::YLeaf RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighEventTrigger::stop {2, "stop"};
 
 
 }

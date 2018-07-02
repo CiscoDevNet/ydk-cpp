@@ -13,21 +13,21 @@ namespace CISCO_PTP_MIB {
 
 CISCOPTPMIB::CISCOPTPMIB()
     :
-    ciscoptpmibsysteminfo(std::make_shared<CISCOPTPMIB::Ciscoptpmibsysteminfo>())
-	,cptpsystemtable(std::make_shared<CISCOPTPMIB::Cptpsystemtable>())
-	,cptpsystemdomaintable(std::make_shared<CISCOPTPMIB::Cptpsystemdomaintable>())
-	,cptpclocknodetable(std::make_shared<CISCOPTPMIB::Cptpclocknodetable>())
-	,cptpclockcurrentdstable(std::make_shared<CISCOPTPMIB::Cptpclockcurrentdstable>())
-	,cptpclockparentdstable(std::make_shared<CISCOPTPMIB::Cptpclockparentdstable>())
-	,cptpclockdefaultdstable(std::make_shared<CISCOPTPMIB::Cptpclockdefaultdstable>())
-	,cptpclockrunningtable(std::make_shared<CISCOPTPMIB::Cptpclockrunningtable>())
-	,cptpclocktimepropertiesdstable(std::make_shared<CISCOPTPMIB::Cptpclocktimepropertiesdstable>())
-	,cptpclocktransdefaultdstable(std::make_shared<CISCOPTPMIB::Cptpclocktransdefaultdstable>())
-	,cptpclockporttable(std::make_shared<CISCOPTPMIB::Cptpclockporttable>())
-	,cptpclockportdstable(std::make_shared<CISCOPTPMIB::Cptpclockportdstable>())
-	,cptpclockportrunningtable(std::make_shared<CISCOPTPMIB::Cptpclockportrunningtable>())
-	,cptpclockporttransdstable(std::make_shared<CISCOPTPMIB::Cptpclockporttransdstable>())
-	,cptpclockportassociatetable(std::make_shared<CISCOPTPMIB::Cptpclockportassociatetable>())
+    ciscoptpmibsysteminfo(std::make_shared<CISCOPTPMIB::CiscoPtpMIBSystemInfo>())
+    , cptpsystemtable(std::make_shared<CISCOPTPMIB::CPtpSystemTable>())
+    , cptpsystemdomaintable(std::make_shared<CISCOPTPMIB::CPtpSystemDomainTable>())
+    , cptpclocknodetable(std::make_shared<CISCOPTPMIB::CPtpClockNodeTable>())
+    , cptpclockcurrentdstable(std::make_shared<CISCOPTPMIB::CPtpClockCurrentDSTable>())
+    , cptpclockparentdstable(std::make_shared<CISCOPTPMIB::CPtpClockParentDSTable>())
+    , cptpclockdefaultdstable(std::make_shared<CISCOPTPMIB::CPtpClockDefaultDSTable>())
+    , cptpclockrunningtable(std::make_shared<CISCOPTPMIB::CPtpClockRunningTable>())
+    , cptpclocktimepropertiesdstable(std::make_shared<CISCOPTPMIB::CPtpClockTimePropertiesDSTable>())
+    , cptpclocktransdefaultdstable(std::make_shared<CISCOPTPMIB::CPtpClockTransDefaultDSTable>())
+    , cptpclockporttable(std::make_shared<CISCOPTPMIB::CPtpClockPortTable>())
+    , cptpclockportdstable(std::make_shared<CISCOPTPMIB::CPtpClockPortDSTable>())
+    , cptpclockportrunningtable(std::make_shared<CISCOPTPMIB::CPtpClockPortRunningTable>())
+    , cptpclockporttransdstable(std::make_shared<CISCOPTPMIB::CPtpClockPortTransDSTable>())
+    , cptpclockportassociatetable(std::make_shared<CISCOPTPMIB::CPtpClockPortAssociateTable>())
 {
     ciscoptpmibsysteminfo->parent = this;
     cptpsystemtable->parent = this;
@@ -45,7 +45,7 @@ CISCOPTPMIB::CISCOPTPMIB()
     cptpclockporttransdstable->parent = this;
     cptpclockportassociatetable->parent = this;
 
-    yang_name = "CISCO-PTP-MIB"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-PTP-MIB"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOPTPMIB::~CISCOPTPMIB()
@@ -54,6 +54,7 @@ CISCOPTPMIB::~CISCOPTPMIB()
 
 bool CISCOPTPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ciscoptpmibsysteminfo !=  nullptr && ciscoptpmibsysteminfo->has_data())
 	|| (cptpsystemtable !=  nullptr && cptpsystemtable->has_data())
 	|| (cptpsystemdomaintable !=  nullptr && cptpsystemdomaintable->has_data())
@@ -113,7 +114,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(ciscoptpmibsysteminfo == nullptr)
         {
-            ciscoptpmibsysteminfo = std::make_shared<CISCOPTPMIB::Ciscoptpmibsysteminfo>();
+            ciscoptpmibsysteminfo = std::make_shared<CISCOPTPMIB::CiscoPtpMIBSystemInfo>();
         }
         return ciscoptpmibsysteminfo;
     }
@@ -122,7 +123,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpsystemtable == nullptr)
         {
-            cptpsystemtable = std::make_shared<CISCOPTPMIB::Cptpsystemtable>();
+            cptpsystemtable = std::make_shared<CISCOPTPMIB::CPtpSystemTable>();
         }
         return cptpsystemtable;
     }
@@ -131,7 +132,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpsystemdomaintable == nullptr)
         {
-            cptpsystemdomaintable = std::make_shared<CISCOPTPMIB::Cptpsystemdomaintable>();
+            cptpsystemdomaintable = std::make_shared<CISCOPTPMIB::CPtpSystemDomainTable>();
         }
         return cptpsystemdomaintable;
     }
@@ -140,7 +141,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpclocknodetable == nullptr)
         {
-            cptpclocknodetable = std::make_shared<CISCOPTPMIB::Cptpclocknodetable>();
+            cptpclocknodetable = std::make_shared<CISCOPTPMIB::CPtpClockNodeTable>();
         }
         return cptpclocknodetable;
     }
@@ -149,7 +150,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpclockcurrentdstable == nullptr)
         {
-            cptpclockcurrentdstable = std::make_shared<CISCOPTPMIB::Cptpclockcurrentdstable>();
+            cptpclockcurrentdstable = std::make_shared<CISCOPTPMIB::CPtpClockCurrentDSTable>();
         }
         return cptpclockcurrentdstable;
     }
@@ -158,7 +159,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpclockparentdstable == nullptr)
         {
-            cptpclockparentdstable = std::make_shared<CISCOPTPMIB::Cptpclockparentdstable>();
+            cptpclockparentdstable = std::make_shared<CISCOPTPMIB::CPtpClockParentDSTable>();
         }
         return cptpclockparentdstable;
     }
@@ -167,7 +168,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpclockdefaultdstable == nullptr)
         {
-            cptpclockdefaultdstable = std::make_shared<CISCOPTPMIB::Cptpclockdefaultdstable>();
+            cptpclockdefaultdstable = std::make_shared<CISCOPTPMIB::CPtpClockDefaultDSTable>();
         }
         return cptpclockdefaultdstable;
     }
@@ -176,7 +177,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpclockrunningtable == nullptr)
         {
-            cptpclockrunningtable = std::make_shared<CISCOPTPMIB::Cptpclockrunningtable>();
+            cptpclockrunningtable = std::make_shared<CISCOPTPMIB::CPtpClockRunningTable>();
         }
         return cptpclockrunningtable;
     }
@@ -185,7 +186,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpclocktimepropertiesdstable == nullptr)
         {
-            cptpclocktimepropertiesdstable = std::make_shared<CISCOPTPMIB::Cptpclocktimepropertiesdstable>();
+            cptpclocktimepropertiesdstable = std::make_shared<CISCOPTPMIB::CPtpClockTimePropertiesDSTable>();
         }
         return cptpclocktimepropertiesdstable;
     }
@@ -194,7 +195,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpclocktransdefaultdstable == nullptr)
         {
-            cptpclocktransdefaultdstable = std::make_shared<CISCOPTPMIB::Cptpclocktransdefaultdstable>();
+            cptpclocktransdefaultdstable = std::make_shared<CISCOPTPMIB::CPtpClockTransDefaultDSTable>();
         }
         return cptpclocktransdefaultdstable;
     }
@@ -203,7 +204,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpclockporttable == nullptr)
         {
-            cptpclockporttable = std::make_shared<CISCOPTPMIB::Cptpclockporttable>();
+            cptpclockporttable = std::make_shared<CISCOPTPMIB::CPtpClockPortTable>();
         }
         return cptpclockporttable;
     }
@@ -212,7 +213,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpclockportdstable == nullptr)
         {
-            cptpclockportdstable = std::make_shared<CISCOPTPMIB::Cptpclockportdstable>();
+            cptpclockportdstable = std::make_shared<CISCOPTPMIB::CPtpClockPortDSTable>();
         }
         return cptpclockportdstable;
     }
@@ -221,7 +222,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpclockportrunningtable == nullptr)
         {
-            cptpclockportrunningtable = std::make_shared<CISCOPTPMIB::Cptpclockportrunningtable>();
+            cptpclockportrunningtable = std::make_shared<CISCOPTPMIB::CPtpClockPortRunningTable>();
         }
         return cptpclockportrunningtable;
     }
@@ -230,7 +231,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpclockporttransdstable == nullptr)
         {
-            cptpclockporttransdstable = std::make_shared<CISCOPTPMIB::Cptpclockporttransdstable>();
+            cptpclockporttransdstable = std::make_shared<CISCOPTPMIB::CPtpClockPortTransDSTable>();
         }
         return cptpclockporttransdstable;
     }
@@ -239,7 +240,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     {
         if(cptpclockportassociatetable == nullptr)
         {
-            cptpclockportassociatetable = std::make_shared<CISCOPTPMIB::Cptpclockportassociatetable>();
+            cptpclockportassociatetable = std::make_shared<CISCOPTPMIB::CPtpClockPortAssociateTable>();
         }
         return cptpclockportassociatetable;
     }
@@ -369,44 +370,45 @@ bool CISCOPTPMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOPTPMIB::Ciscoptpmibsysteminfo::Ciscoptpmibsysteminfo()
+CISCOPTPMIB::CiscoPtpMIBSystemInfo::CiscoPtpMIBSystemInfo()
     :
     cptpsystemprofile{YType::enumeration, "cPtpSystemProfile"}
 {
 
-    yang_name = "ciscoPtpMIBSystemInfo"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoPtpMIBSystemInfo"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Ciscoptpmibsysteminfo::~Ciscoptpmibsysteminfo()
+CISCOPTPMIB::CiscoPtpMIBSystemInfo::~CiscoPtpMIBSystemInfo()
 {
 }
 
-bool CISCOPTPMIB::Ciscoptpmibsysteminfo::has_data() const
+bool CISCOPTPMIB::CiscoPtpMIBSystemInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpsystemprofile.is_set;
 }
 
-bool CISCOPTPMIB::Ciscoptpmibsysteminfo::has_operation() const
+bool CISCOPTPMIB::CiscoPtpMIBSystemInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpsystemprofile.yfilter);
 }
 
-std::string CISCOPTPMIB::Ciscoptpmibsysteminfo::get_absolute_path() const
+std::string CISCOPTPMIB::CiscoPtpMIBSystemInfo::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Ciscoptpmibsysteminfo::get_segment_path() const
+std::string CISCOPTPMIB::CiscoPtpMIBSystemInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoPtpMIBSystemInfo";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Ciscoptpmibsysteminfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CiscoPtpMIBSystemInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -416,19 +418,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Ciscoptpmibsysteminf
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Ciscoptpmibsysteminfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CiscoPtpMIBSystemInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Ciscoptpmibsysteminfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CiscoPtpMIBSystemInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Ciscoptpmibsysteminfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CiscoPtpMIBSystemInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpSystemProfile")
     {
@@ -438,7 +440,7 @@ void CISCOPTPMIB::Ciscoptpmibsysteminfo::set_value(const std::string & value_pat
     }
 }
 
-void CISCOPTPMIB::Ciscoptpmibsysteminfo::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CiscoPtpMIBSystemInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpSystemProfile")
     {
@@ -446,26 +448,29 @@ void CISCOPTPMIB::Ciscoptpmibsysteminfo::set_filter(const std::string & value_pa
     }
 }
 
-bool CISCOPTPMIB::Ciscoptpmibsysteminfo::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CiscoPtpMIBSystemInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpSystemProfile")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpsystemtable::Cptpsystemtable()
+CISCOPTPMIB::CPtpSystemTable::CPtpSystemTable()
+    :
+    cptpsystementry(this, {"cptpdomainindex", "cptpinstanceindex"})
 {
 
-    yang_name = "cPtpSystemTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpSystemTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpsystemtable::~Cptpsystemtable()
+CISCOPTPMIB::CPtpSystemTable::~CPtpSystemTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpsystemtable::has_data() const
+bool CISCOPTPMIB::CPtpSystemTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpsystementry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpsystementry.len(); index++)
     {
         if(cptpsystementry[index]->has_data())
             return true;
@@ -473,9 +478,9 @@ bool CISCOPTPMIB::Cptpsystemtable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpsystemtable::has_operation() const
+bool CISCOPTPMIB::CPtpSystemTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpsystementry.size(); index++)
+    for (std::size_t index=0; index<cptpsystementry.len(); index++)
     {
         if(cptpsystementry[index]->has_operation())
             return true;
@@ -483,21 +488,21 @@ bool CISCOPTPMIB::Cptpsystemtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpsystemtable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpSystemTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpsystemtable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpSystemTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpSystemTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpsystemtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpSystemTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -506,25 +511,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpsystemtable::get
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpsystemtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpSystemTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpSystemEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpsystemtable::Cptpsystementry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry>();
         c->parent = this;
-        cptpsystementry.push_back(c);
+        cptpsystementry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpsystemtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpSystemTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpsystementry)
+    for (auto c : cptpsystementry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -535,22 +540,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpsystemtable::get
     return children;
 }
 
-void CISCOPTPMIB::Cptpsystemtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpSystemTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpsystemtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpSystemTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpsystemtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpSystemTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpSystemEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::Cptpsystementry()
+CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::CPtpSystemEntry()
     :
     cptpdomainindex{YType::uint32, "cPtpDomainIndex"},
     cptpinstanceindex{YType::uint32, "cPtpInstanceIndex"},
@@ -558,22 +563,23 @@ CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::Cptpsystementry()
     cptpdomainclockportphysicalinterfacestotal{YType::uint32, "cPtpDomainClockPortPhysicalInterfacesTotal"}
 {
 
-    yang_name = "cPtpSystemEntry"; yang_parent_name = "cPtpSystemTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpSystemEntry"; yang_parent_name = "cPtpSystemTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::~Cptpsystementry()
+CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::~CPtpSystemEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::has_data() const
+bool CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpdomainindex.is_set
 	|| cptpinstanceindex.is_set
 	|| cptpdomainclockportstotal.is_set
 	|| cptpdomainclockportphysicalinterfacestotal.is_set;
 }
 
-bool CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::has_operation() const
+bool CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpdomainindex.yfilter)
@@ -582,21 +588,23 @@ bool CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::has_operation() const
 	|| ydk::is_set(cptpdomainclockportphysicalinterfacestotal.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpSystemTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpSystemEntry" <<"[cPtpDomainIndex='" <<cptpdomainindex <<"']" <<"[cPtpInstanceIndex='" <<cptpinstanceindex <<"']";
+    path_buffer << "cPtpSystemEntry";
+    ADD_KEY_TOKEN(cptpdomainindex, "cPtpDomainIndex");
+    ADD_KEY_TOKEN(cptpinstanceindex, "cPtpInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -609,19 +617,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpsystemtable::Cpt
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpDomainIndex")
     {
@@ -649,7 +657,7 @@ void CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::set_value(const std::string 
     }
 }
 
-void CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpDomainIndex")
     {
@@ -669,26 +677,29 @@ void CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::set_filter(const std::string
     }
 }
 
-bool CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpDomainIndex" || name == "cPtpInstanceIndex" || name == "cPtpDomainClockPortsTotal" || name == "cPtpDomainClockPortPhysicalInterfacesTotal")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomaintable()
+CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainTable()
+    :
+    cptpsystemdomainentry(this, {"cptpsystemdomainclocktypeindex"})
 {
 
-    yang_name = "cPtpSystemDomainTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpSystemDomainTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpsystemdomaintable::~Cptpsystemdomaintable()
+CISCOPTPMIB::CPtpSystemDomainTable::~CPtpSystemDomainTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpsystemdomaintable::has_data() const
+bool CISCOPTPMIB::CPtpSystemDomainTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpsystemdomainentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpsystemdomainentry.len(); index++)
     {
         if(cptpsystemdomainentry[index]->has_data())
             return true;
@@ -696,9 +707,9 @@ bool CISCOPTPMIB::Cptpsystemdomaintable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpsystemdomaintable::has_operation() const
+bool CISCOPTPMIB::CPtpSystemDomainTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpsystemdomainentry.size(); index++)
+    for (std::size_t index=0; index<cptpsystemdomainentry.len(); index++)
     {
         if(cptpsystemdomainentry[index]->has_operation())
             return true;
@@ -706,21 +717,21 @@ bool CISCOPTPMIB::Cptpsystemdomaintable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpsystemdomaintable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpSystemDomainTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpsystemdomaintable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpSystemDomainTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpSystemDomainTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpsystemdomaintable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpSystemDomainTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -729,25 +740,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpsystemdomaintabl
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpsystemdomaintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpSystemDomainTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpSystemDomainEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry>();
         c->parent = this;
-        cptpsystemdomainentry.push_back(c);
+        cptpsystemdomainentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpsystemdomaintable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpSystemDomainTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpsystemdomainentry)
+    for (auto c : cptpsystemdomainentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -758,62 +769,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpsystemdomaintabl
     return children;
 }
 
-void CISCOPTPMIB::Cptpsystemdomaintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpSystemDomainTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpsystemdomaintable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpSystemDomainTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpsystemdomaintable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpSystemDomainTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpSystemDomainEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::Cptpsystemdomainentry()
+CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::CPtpSystemDomainEntry()
     :
     cptpsystemdomainclocktypeindex{YType::enumeration, "cPtpSystemDomainClockTypeIndex"},
     cptpsystemdomaintotals{YType::uint32, "cPtpSystemDomainTotals"}
 {
 
-    yang_name = "cPtpSystemDomainEntry"; yang_parent_name = "cPtpSystemDomainTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpSystemDomainEntry"; yang_parent_name = "cPtpSystemDomainTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::~Cptpsystemdomainentry()
+CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::~CPtpSystemDomainEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::has_data() const
+bool CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpsystemdomainclocktypeindex.is_set
 	|| cptpsystemdomaintotals.is_set;
 }
 
-bool CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::has_operation() const
+bool CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpsystemdomainclocktypeindex.yfilter)
 	|| ydk::is_set(cptpsystemdomaintotals.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpSystemDomainTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpSystemDomainEntry" <<"[cPtpSystemDomainClockTypeIndex='" <<cptpsystemdomainclocktypeindex <<"']";
+    path_buffer << "cPtpSystemDomainEntry";
+    ADD_KEY_TOKEN(cptpsystemdomainclocktypeindex, "cPtpSystemDomainClockTypeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -824,19 +837,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpsystemdomaintabl
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpSystemDomainClockTypeIndex")
     {
@@ -852,7 +865,7 @@ void CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::set_value(const 
     }
 }
 
-void CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpSystemDomainClockTypeIndex")
     {
@@ -864,26 +877,29 @@ void CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::set_filter(const
     }
 }
 
-bool CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpSystemDomainClockTypeIndex" || name == "cPtpSystemDomainTotals")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodetable()
+CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeTable()
+    :
+    cptpclocknodeentry(this, {"cptpclockdomainindex", "cptpclocktypeindex", "cptpclockinstanceindex"})
 {
 
-    yang_name = "cPtpClockNodeTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockNodeTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclocknodetable::~Cptpclocknodetable()
+CISCOPTPMIB::CPtpClockNodeTable::~CPtpClockNodeTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpclocknodetable::has_data() const
+bool CISCOPTPMIB::CPtpClockNodeTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclocknodeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpclocknodeentry.len(); index++)
     {
         if(cptpclocknodeentry[index]->has_data())
             return true;
@@ -891,9 +907,9 @@ bool CISCOPTPMIB::Cptpclocknodetable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpclocknodetable::has_operation() const
+bool CISCOPTPMIB::CPtpClockNodeTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclocknodeentry.size(); index++)
+    for (std::size_t index=0; index<cptpclocknodeentry.len(); index++)
     {
         if(cptpclocknodeentry[index]->has_operation())
             return true;
@@ -901,21 +917,21 @@ bool CISCOPTPMIB::Cptpclocknodetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclocknodetable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockNodeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclocknodetable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockNodeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpClockNodeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclocknodetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockNodeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -924,25 +940,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclocknodetable::
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocknodetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockNodeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockNodeEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry>();
         c->parent = this;
-        cptpclocknodeentry.push_back(c);
+        cptpclocknodeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocknodetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockNodeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpclocknodeentry)
+    for (auto c : cptpclocknodeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -953,22 +969,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocknodetable::
     return children;
 }
 
-void CISCOPTPMIB::Cptpclocknodetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockNodeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpclocknodetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockNodeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpclocknodetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockNodeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockNodeEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::Cptpclocknodeentry()
+CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::CPtpClockNodeEntry()
     :
     cptpclockdomainindex{YType::uint32, "cPtpClockDomainIndex"},
     cptpclocktypeindex{YType::enumeration, "cPtpClockTypeIndex"},
@@ -985,15 +1001,16 @@ CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::Cptpclocknodeentry()
     cptpclocktodinterface{YType::str, "cPtpClockTODInterface"}
 {
 
-    yang_name = "cPtpClockNodeEntry"; yang_parent_name = "cPtpClockNodeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockNodeEntry"; yang_parent_name = "cPtpClockNodeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::~Cptpclocknodeentry()
+CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::~CPtpClockNodeEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::has_data() const
+bool CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpclockdomainindex.is_set
 	|| cptpclocktypeindex.is_set
 	|| cptpclockinstanceindex.is_set
@@ -1009,7 +1026,7 @@ bool CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::has_data() const
 	|| cptpclocktodinterface.is_set;
 }
 
-bool CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::has_operation() const
+bool CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpclockdomainindex.yfilter)
@@ -1027,21 +1044,24 @@ bool CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::has_operation() const
 	|| ydk::is_set(cptpclocktodinterface.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpClockNodeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpClockNodeEntry" <<"[cPtpClockDomainIndex='" <<cptpclockdomainindex <<"']" <<"[cPtpClockTypeIndex='" <<cptpclocktypeindex <<"']" <<"[cPtpClockInstanceIndex='" <<cptpclockinstanceindex <<"']";
+    path_buffer << "cPtpClockNodeEntry";
+    ADD_KEY_TOKEN(cptpclockdomainindex, "cPtpClockDomainIndex");
+    ADD_KEY_TOKEN(cptpclocktypeindex, "cPtpClockTypeIndex");
+    ADD_KEY_TOKEN(cptpclockinstanceindex, "cPtpClockInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1063,19 +1083,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclocknodetable::
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockDomainIndex")
     {
@@ -1157,7 +1177,7 @@ void CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::set_value(const std::s
     }
 }
 
-void CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpClockDomainIndex")
     {
@@ -1213,26 +1233,29 @@ void CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::set_filter(const std::
     }
 }
 
-bool CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockDomainIndex" || name == "cPtpClockTypeIndex" || name == "cPtpClockInstanceIndex" || name == "cPtpClockInput1ppsEnabled" || name == "cPtpClockInputFrequencyEnabled" || name == "cPtpClockTODEnabled" || name == "cPtpClockOutput1ppsEnabled" || name == "cPtpClockOutput1ppsOffsetEnabled" || name == "cPtpClockOutput1ppsOffsetValue" || name == "cPtpClockOutput1ppsOffsetNegative" || name == "cPtpClockInput1ppsInterface" || name == "cPtpClockOutput1ppsInterface" || name == "cPtpClockTODInterface")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdstable()
+CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSTable()
+    :
+    cptpclockcurrentdsentry(this, {"cptpclockcurrentdsdomainindex", "cptpclockcurrentdsclocktypeindex", "cptpclockcurrentdsinstanceindex"})
 {
 
-    yang_name = "cPtpClockCurrentDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockCurrentDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockcurrentdstable::~Cptpclockcurrentdstable()
+CISCOPTPMIB::CPtpClockCurrentDSTable::~CPtpClockCurrentDSTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockcurrentdstable::has_data() const
+bool CISCOPTPMIB::CPtpClockCurrentDSTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockcurrentdsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpclockcurrentdsentry.len(); index++)
     {
         if(cptpclockcurrentdsentry[index]->has_data())
             return true;
@@ -1240,9 +1263,9 @@ bool CISCOPTPMIB::Cptpclockcurrentdstable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpclockcurrentdstable::has_operation() const
+bool CISCOPTPMIB::CPtpClockCurrentDSTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockcurrentdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockcurrentdsentry.len(); index++)
     {
         if(cptpclockcurrentdsentry[index]->has_operation())
             return true;
@@ -1250,21 +1273,21 @@ bool CISCOPTPMIB::Cptpclockcurrentdstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockcurrentdstable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockCurrentDSTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockcurrentdstable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockCurrentDSTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpClockCurrentDSTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockcurrentdstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockCurrentDSTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1273,25 +1296,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockcurrentdsta
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockcurrentdstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockCurrentDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockCurrentDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry>();
         c->parent = this;
-        cptpclockcurrentdsentry.push_back(c);
+        cptpclockcurrentdsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockcurrentdstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockCurrentDSTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpclockcurrentdsentry)
+    for (auto c : cptpclockcurrentdsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1302,22 +1325,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockcurrentdsta
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockcurrentdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockCurrentDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpclockcurrentdstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockCurrentDSTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpclockcurrentdstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockCurrentDSTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockCurrentDSEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::Cptpclockcurrentdsentry()
+CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::CPtpClockCurrentDSEntry()
     :
     cptpclockcurrentdsdomainindex{YType::uint32, "cPtpClockCurrentDSDomainIndex"},
     cptpclockcurrentdsclocktypeindex{YType::enumeration, "cPtpClockCurrentDSClockTypeIndex"},
@@ -1327,15 +1350,16 @@ CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::Cptpclockcurrentd
     cptpclockcurrentdsmeanpathdelay{YType::str, "cPtpClockCurrentDSMeanPathDelay"}
 {
 
-    yang_name = "cPtpClockCurrentDSEntry"; yang_parent_name = "cPtpClockCurrentDSTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockCurrentDSEntry"; yang_parent_name = "cPtpClockCurrentDSTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::~Cptpclockcurrentdsentry()
+CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::~CPtpClockCurrentDSEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::has_data() const
+bool CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpclockcurrentdsdomainindex.is_set
 	|| cptpclockcurrentdsclocktypeindex.is_set
 	|| cptpclockcurrentdsinstanceindex.is_set
@@ -1344,7 +1368,7 @@ bool CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::has_data() c
 	|| cptpclockcurrentdsmeanpathdelay.is_set;
 }
 
-bool CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::has_operation() const
+bool CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpclockcurrentdsdomainindex.yfilter)
@@ -1355,21 +1379,24 @@ bool CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::has_operatio
 	|| ydk::is_set(cptpclockcurrentdsmeanpathdelay.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpClockCurrentDSTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpClockCurrentDSEntry" <<"[cPtpClockCurrentDSDomainIndex='" <<cptpclockcurrentdsdomainindex <<"']" <<"[cPtpClockCurrentDSClockTypeIndex='" <<cptpclockcurrentdsclocktypeindex <<"']" <<"[cPtpClockCurrentDSInstanceIndex='" <<cptpclockcurrentdsinstanceindex <<"']";
+    path_buffer << "cPtpClockCurrentDSEntry";
+    ADD_KEY_TOKEN(cptpclockcurrentdsdomainindex, "cPtpClockCurrentDSDomainIndex");
+    ADD_KEY_TOKEN(cptpclockcurrentdsclocktypeindex, "cPtpClockCurrentDSClockTypeIndex");
+    ADD_KEY_TOKEN(cptpclockcurrentdsinstanceindex, "cPtpClockCurrentDSInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1384,19 +1411,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockcurrentdsta
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockCurrentDSDomainIndex")
     {
@@ -1436,7 +1463,7 @@ void CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::set_value(co
     }
 }
 
-void CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpClockCurrentDSDomainIndex")
     {
@@ -1464,26 +1491,29 @@ void CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::set_filter(c
     }
 }
 
-bool CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockCurrentDSDomainIndex" || name == "cPtpClockCurrentDSClockTypeIndex" || name == "cPtpClockCurrentDSInstanceIndex" || name == "cPtpClockCurrentDSStepsRemoved" || name == "cPtpClockCurrentDSOffsetFromMaster" || name == "cPtpClockCurrentDSMeanPathDelay")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdstable()
+CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSTable()
+    :
+    cptpclockparentdsentry(this, {"cptpclockparentdsdomainindex", "cptpclockparentdsclocktypeindex", "cptpclockparentdsinstanceindex"})
 {
 
-    yang_name = "cPtpClockParentDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockParentDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockparentdstable::~Cptpclockparentdstable()
+CISCOPTPMIB::CPtpClockParentDSTable::~CPtpClockParentDSTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockparentdstable::has_data() const
+bool CISCOPTPMIB::CPtpClockParentDSTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockparentdsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpclockparentdsentry.len(); index++)
     {
         if(cptpclockparentdsentry[index]->has_data())
             return true;
@@ -1491,9 +1521,9 @@ bool CISCOPTPMIB::Cptpclockparentdstable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpclockparentdstable::has_operation() const
+bool CISCOPTPMIB::CPtpClockParentDSTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockparentdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockparentdsentry.len(); index++)
     {
         if(cptpclockparentdsentry[index]->has_operation())
             return true;
@@ -1501,21 +1531,21 @@ bool CISCOPTPMIB::Cptpclockparentdstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockparentdstable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockParentDSTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockparentdstable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockParentDSTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpClockParentDSTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockparentdstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockParentDSTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1524,25 +1554,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockparentdstab
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockparentdstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockParentDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockParentDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry>();
         c->parent = this;
-        cptpclockparentdsentry.push_back(c);
+        cptpclockparentdsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockparentdstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockParentDSTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpclockparentdsentry)
+    for (auto c : cptpclockparentdsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1553,22 +1583,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockparentdstab
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockparentdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockParentDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpclockparentdstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockParentDSTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpclockparentdstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockParentDSTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockParentDSEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::Cptpclockparentdsentry()
+CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::CPtpClockParentDSEntry()
     :
     cptpclockparentdsdomainindex{YType::uint32, "cPtpClockParentDSDomainIndex"},
     cptpclockparentdsclocktypeindex{YType::enumeration, "cPtpClockParentDSClockTypeIndex"},
@@ -1585,15 +1615,16 @@ CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::Cptpclockparentdsen
     cptpclockparentdsgmclockqualityoffset{YType::uint32, "cPtpClockParentDSGMClockQualityOffset"}
 {
 
-    yang_name = "cPtpClockParentDSEntry"; yang_parent_name = "cPtpClockParentDSTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockParentDSEntry"; yang_parent_name = "cPtpClockParentDSTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::~Cptpclockparentdsentry()
+CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::~CPtpClockParentDSEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::has_data() const
+bool CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpclockparentdsdomainindex.is_set
 	|| cptpclockparentdsclocktypeindex.is_set
 	|| cptpclockparentdsinstanceindex.is_set
@@ -1609,7 +1640,7 @@ bool CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::has_data() con
 	|| cptpclockparentdsgmclockqualityoffset.is_set;
 }
 
-bool CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::has_operation() const
+bool CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpclockparentdsdomainindex.yfilter)
@@ -1627,21 +1658,24 @@ bool CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::has_operation(
 	|| ydk::is_set(cptpclockparentdsgmclockqualityoffset.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpClockParentDSTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpClockParentDSEntry" <<"[cPtpClockParentDSDomainIndex='" <<cptpclockparentdsdomainindex <<"']" <<"[cPtpClockParentDSClockTypeIndex='" <<cptpclockparentdsclocktypeindex <<"']" <<"[cPtpClockParentDSInstanceIndex='" <<cptpclockparentdsinstanceindex <<"']";
+    path_buffer << "cPtpClockParentDSEntry";
+    ADD_KEY_TOKEN(cptpclockparentdsdomainindex, "cPtpClockParentDSDomainIndex");
+    ADD_KEY_TOKEN(cptpclockparentdsclocktypeindex, "cPtpClockParentDSClockTypeIndex");
+    ADD_KEY_TOKEN(cptpclockparentdsinstanceindex, "cPtpClockParentDSInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1663,19 +1697,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockparentdstab
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockParentDSDomainIndex")
     {
@@ -1757,7 +1791,7 @@ void CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::set_value(cons
     }
 }
 
-void CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpClockParentDSDomainIndex")
     {
@@ -1813,26 +1847,29 @@ void CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::set_filter(con
     }
 }
 
-bool CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockParentDSDomainIndex" || name == "cPtpClockParentDSClockTypeIndex" || name == "cPtpClockParentDSInstanceIndex" || name == "cPtpClockParentDSParentPortIdentity" || name == "cPtpClockParentDSParentStats" || name == "cPtpClockParentDSOffset" || name == "cPtpClockParentDSClockPhChRate" || name == "cPtpClockParentDSGMClockIdentity" || name == "cPtpClockParentDSGMClockPriority1" || name == "cPtpClockParentDSGMClockPriority2" || name == "cPtpClockParentDSGMClockQualityClass" || name == "cPtpClockParentDSGMClockQualityAccuracy" || name == "cPtpClockParentDSGMClockQualityOffset")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdstable()
+CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSTable()
+    :
+    cptpclockdefaultdsentry(this, {"cptpclockdefaultdsdomainindex", "cptpclockdefaultdsclocktypeindex", "cptpclockdefaultdsinstanceindex"})
 {
 
-    yang_name = "cPtpClockDefaultDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockDefaultDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockdefaultdstable::~Cptpclockdefaultdstable()
+CISCOPTPMIB::CPtpClockDefaultDSTable::~CPtpClockDefaultDSTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockdefaultdstable::has_data() const
+bool CISCOPTPMIB::CPtpClockDefaultDSTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockdefaultdsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpclockdefaultdsentry.len(); index++)
     {
         if(cptpclockdefaultdsentry[index]->has_data())
             return true;
@@ -1840,9 +1877,9 @@ bool CISCOPTPMIB::Cptpclockdefaultdstable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpclockdefaultdstable::has_operation() const
+bool CISCOPTPMIB::CPtpClockDefaultDSTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockdefaultdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockdefaultdsentry.len(); index++)
     {
         if(cptpclockdefaultdsentry[index]->has_operation())
             return true;
@@ -1850,21 +1887,21 @@ bool CISCOPTPMIB::Cptpclockdefaultdstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockdefaultdstable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockDefaultDSTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockdefaultdstable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockDefaultDSTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpClockDefaultDSTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockdefaultdstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockDefaultDSTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1873,25 +1910,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockdefaultdsta
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockdefaultdstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockDefaultDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockDefaultDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry>();
         c->parent = this;
-        cptpclockdefaultdsentry.push_back(c);
+        cptpclockdefaultdsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockdefaultdstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockDefaultDSTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpclockdefaultdsentry)
+    for (auto c : cptpclockdefaultdsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1902,22 +1939,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockdefaultdsta
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockdefaultdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockDefaultDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpclockdefaultdstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockDefaultDSTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpclockdefaultdstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockDefaultDSTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockDefaultDSEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::Cptpclockdefaultdsentry()
+CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::CPtpClockDefaultDSEntry()
     :
     cptpclockdefaultdsdomainindex{YType::uint32, "cPtpClockDefaultDSDomainIndex"},
     cptpclockdefaultdsclocktypeindex{YType::enumeration, "cPtpClockDefaultDSClockTypeIndex"},
@@ -1932,15 +1969,16 @@ CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::Cptpclockdefaultd
     cptpclockdefaultdsqualityoffset{YType::int32, "cPtpClockDefaultDSQualityOffset"}
 {
 
-    yang_name = "cPtpClockDefaultDSEntry"; yang_parent_name = "cPtpClockDefaultDSTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockDefaultDSEntry"; yang_parent_name = "cPtpClockDefaultDSTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::~Cptpclockdefaultdsentry()
+CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::~CPtpClockDefaultDSEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::has_data() const
+bool CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpclockdefaultdsdomainindex.is_set
 	|| cptpclockdefaultdsclocktypeindex.is_set
 	|| cptpclockdefaultdsinstanceindex.is_set
@@ -1954,7 +1992,7 @@ bool CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::has_data() c
 	|| cptpclockdefaultdsqualityoffset.is_set;
 }
 
-bool CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::has_operation() const
+bool CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpclockdefaultdsdomainindex.yfilter)
@@ -1970,21 +2008,24 @@ bool CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::has_operatio
 	|| ydk::is_set(cptpclockdefaultdsqualityoffset.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpClockDefaultDSTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpClockDefaultDSEntry" <<"[cPtpClockDefaultDSDomainIndex='" <<cptpclockdefaultdsdomainindex <<"']" <<"[cPtpClockDefaultDSClockTypeIndex='" <<cptpclockdefaultdsclocktypeindex <<"']" <<"[cPtpClockDefaultDSInstanceIndex='" <<cptpclockdefaultdsinstanceindex <<"']";
+    path_buffer << "cPtpClockDefaultDSEntry";
+    ADD_KEY_TOKEN(cptpclockdefaultdsdomainindex, "cPtpClockDefaultDSDomainIndex");
+    ADD_KEY_TOKEN(cptpclockdefaultdsclocktypeindex, "cPtpClockDefaultDSClockTypeIndex");
+    ADD_KEY_TOKEN(cptpclockdefaultdsinstanceindex, "cPtpClockDefaultDSInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2004,19 +2045,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockdefaultdsta
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockDefaultDSDomainIndex")
     {
@@ -2086,7 +2127,7 @@ void CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::set_value(co
     }
 }
 
-void CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpClockDefaultDSDomainIndex")
     {
@@ -2134,26 +2175,29 @@ void CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::set_filter(c
     }
 }
 
-bool CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockDefaultDSDomainIndex" || name == "cPtpClockDefaultDSClockTypeIndex" || name == "cPtpClockDefaultDSInstanceIndex" || name == "cPtpClockDefaultDSTwoStepFlag" || name == "cPtpClockDefaultDSClockIdentity" || name == "cPtpClockDefaultDSPriority1" || name == "cPtpClockDefaultDSPriority2" || name == "cPtpClockDefaultDSSlaveOnly" || name == "cPtpClockDefaultDSQualityClass" || name == "cPtpClockDefaultDSQualityAccuracy" || name == "cPtpClockDefaultDSQualityOffset")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningtable()
+CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningTable()
+    :
+    cptpclockrunningentry(this, {"cptpclockrunningdomainindex", "cptpclockrunningclocktypeindex", "cptpclockrunninginstanceindex"})
 {
 
-    yang_name = "cPtpClockRunningTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockRunningTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockrunningtable::~Cptpclockrunningtable()
+CISCOPTPMIB::CPtpClockRunningTable::~CPtpClockRunningTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockrunningtable::has_data() const
+bool CISCOPTPMIB::CPtpClockRunningTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockrunningentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpclockrunningentry.len(); index++)
     {
         if(cptpclockrunningentry[index]->has_data())
             return true;
@@ -2161,9 +2205,9 @@ bool CISCOPTPMIB::Cptpclockrunningtable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpclockrunningtable::has_operation() const
+bool CISCOPTPMIB::CPtpClockRunningTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockrunningentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockrunningentry.len(); index++)
     {
         if(cptpclockrunningentry[index]->has_operation())
             return true;
@@ -2171,21 +2215,21 @@ bool CISCOPTPMIB::Cptpclockrunningtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockrunningtable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockRunningTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockrunningtable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockRunningTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpClockRunningTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockrunningtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockRunningTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2194,25 +2238,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockrunningtabl
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockrunningtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockRunningTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockRunningEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry>();
         c->parent = this;
-        cptpclockrunningentry.push_back(c);
+        cptpclockrunningentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockrunningtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockRunningTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpclockrunningentry)
+    for (auto c : cptpclockrunningentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2223,22 +2267,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockrunningtabl
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockrunningtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockRunningTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpclockrunningtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockRunningTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpclockrunningtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockRunningTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockRunningEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::Cptpclockrunningentry()
+CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::CPtpClockRunningEntry()
     :
     cptpclockrunningdomainindex{YType::uint32, "cPtpClockRunningDomainIndex"},
     cptpclockrunningclocktypeindex{YType::enumeration, "cPtpClockRunningClockTypeIndex"},
@@ -2248,15 +2292,16 @@ CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::Cptpclockrunningentry
     cptpclockrunningpacketsreceived{YType::uint64, "cPtpClockRunningPacketsReceived"}
 {
 
-    yang_name = "cPtpClockRunningEntry"; yang_parent_name = "cPtpClockRunningTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockRunningEntry"; yang_parent_name = "cPtpClockRunningTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::~Cptpclockrunningentry()
+CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::~CPtpClockRunningEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::has_data() const
+bool CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpclockrunningdomainindex.is_set
 	|| cptpclockrunningclocktypeindex.is_set
 	|| cptpclockrunninginstanceindex.is_set
@@ -2265,7 +2310,7 @@ bool CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::has_data() const
 	|| cptpclockrunningpacketsreceived.is_set;
 }
 
-bool CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::has_operation() const
+bool CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpclockrunningdomainindex.yfilter)
@@ -2276,21 +2321,24 @@ bool CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::has_operation() 
 	|| ydk::is_set(cptpclockrunningpacketsreceived.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpClockRunningTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpClockRunningEntry" <<"[cPtpClockRunningDomainIndex='" <<cptpclockrunningdomainindex <<"']" <<"[cPtpClockRunningClockTypeIndex='" <<cptpclockrunningclocktypeindex <<"']" <<"[cPtpClockRunningInstanceIndex='" <<cptpclockrunninginstanceindex <<"']";
+    path_buffer << "cPtpClockRunningEntry";
+    ADD_KEY_TOKEN(cptpclockrunningdomainindex, "cPtpClockRunningDomainIndex");
+    ADD_KEY_TOKEN(cptpclockrunningclocktypeindex, "cPtpClockRunningClockTypeIndex");
+    ADD_KEY_TOKEN(cptpclockrunninginstanceindex, "cPtpClockRunningInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2305,19 +2353,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockrunningtabl
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockRunningDomainIndex")
     {
@@ -2357,7 +2405,7 @@ void CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::set_value(const 
     }
 }
 
-void CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpClockRunningDomainIndex")
     {
@@ -2385,26 +2433,29 @@ void CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::set_filter(const
     }
 }
 
-bool CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockRunningDomainIndex" || name == "cPtpClockRunningClockTypeIndex" || name == "cPtpClockRunningInstanceIndex" || name == "cPtpClockRunningState" || name == "cPtpClockRunningPacketsSent" || name == "cPtpClockRunningPacketsReceived")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdstable()
+CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSTable()
+    :
+    cptpclocktimepropertiesdsentry(this, {"cptpclocktimepropertiesdsdomainindex", "cptpclocktimepropertiesdsclocktypeindex", "cptpclocktimepropertiesdsinstanceindex"})
 {
 
-    yang_name = "cPtpClockTimePropertiesDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockTimePropertiesDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclocktimepropertiesdstable::~Cptpclocktimepropertiesdstable()
+CISCOPTPMIB::CPtpClockTimePropertiesDSTable::~CPtpClockTimePropertiesDSTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpclocktimepropertiesdstable::has_data() const
+bool CISCOPTPMIB::CPtpClockTimePropertiesDSTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclocktimepropertiesdsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpclocktimepropertiesdsentry.len(); index++)
     {
         if(cptpclocktimepropertiesdsentry[index]->has_data())
             return true;
@@ -2412,9 +2463,9 @@ bool CISCOPTPMIB::Cptpclocktimepropertiesdstable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpclocktimepropertiesdstable::has_operation() const
+bool CISCOPTPMIB::CPtpClockTimePropertiesDSTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclocktimepropertiesdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclocktimepropertiesdsentry.len(); index++)
     {
         if(cptpclocktimepropertiesdsentry[index]->has_operation())
             return true;
@@ -2422,21 +2473,21 @@ bool CISCOPTPMIB::Cptpclocktimepropertiesdstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclocktimepropertiesdstable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockTimePropertiesDSTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclocktimepropertiesdstable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockTimePropertiesDSTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpClockTimePropertiesDSTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclocktimepropertiesdstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockTimePropertiesDSTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2445,25 +2496,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclocktimepropert
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocktimepropertiesdstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockTimePropertiesDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockTimePropertiesDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry>();
         c->parent = this;
-        cptpclocktimepropertiesdsentry.push_back(c);
+        cptpclocktimepropertiesdsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocktimepropertiesdstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockTimePropertiesDSTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpclocktimepropertiesdsentry)
+    for (auto c : cptpclocktimepropertiesdsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2474,22 +2525,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocktimepropert
     return children;
 }
 
-void CISCOPTPMIB::Cptpclocktimepropertiesdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockTimePropertiesDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpclocktimepropertiesdstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockTimePropertiesDSTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpclocktimepropertiesdstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockTimePropertiesDSTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockTimePropertiesDSEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::Cptpclocktimepropertiesdsentry()
+CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::CPtpClockTimePropertiesDSEntry()
     :
     cptpclocktimepropertiesdsdomainindex{YType::uint32, "cPtpClockTimePropertiesDSDomainIndex"},
     cptpclocktimepropertiesdsclocktypeindex{YType::enumeration, "cPtpClockTimePropertiesDSClockTypeIndex"},
@@ -2504,15 +2555,16 @@ CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::Cpt
     cptpclocktimepropertiesdssource{YType::enumeration, "cPtpClockTimePropertiesDSSource"}
 {
 
-    yang_name = "cPtpClockTimePropertiesDSEntry"; yang_parent_name = "cPtpClockTimePropertiesDSTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockTimePropertiesDSEntry"; yang_parent_name = "cPtpClockTimePropertiesDSTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::~Cptpclocktimepropertiesdsentry()
+CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::~CPtpClockTimePropertiesDSEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::has_data() const
+bool CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpclocktimepropertiesdsdomainindex.is_set
 	|| cptpclocktimepropertiesdsclocktypeindex.is_set
 	|| cptpclocktimepropertiesdsinstanceindex.is_set
@@ -2526,7 +2578,7 @@ bool CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry
 	|| cptpclocktimepropertiesdssource.is_set;
 }
 
-bool CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::has_operation() const
+bool CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpclocktimepropertiesdsdomainindex.yfilter)
@@ -2542,21 +2594,24 @@ bool CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry
 	|| ydk::is_set(cptpclocktimepropertiesdssource.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpClockTimePropertiesDSTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpClockTimePropertiesDSEntry" <<"[cPtpClockTimePropertiesDSDomainIndex='" <<cptpclocktimepropertiesdsdomainindex <<"']" <<"[cPtpClockTimePropertiesDSClockTypeIndex='" <<cptpclocktimepropertiesdsclocktypeindex <<"']" <<"[cPtpClockTimePropertiesDSInstanceIndex='" <<cptpclocktimepropertiesdsinstanceindex <<"']";
+    path_buffer << "cPtpClockTimePropertiesDSEntry";
+    ADD_KEY_TOKEN(cptpclocktimepropertiesdsdomainindex, "cPtpClockTimePropertiesDSDomainIndex");
+    ADD_KEY_TOKEN(cptpclocktimepropertiesdsclocktypeindex, "cPtpClockTimePropertiesDSClockTypeIndex");
+    ADD_KEY_TOKEN(cptpclocktimepropertiesdsinstanceindex, "cPtpClockTimePropertiesDSInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2576,19 +2631,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclocktimepropert
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockTimePropertiesDSDomainIndex")
     {
@@ -2658,7 +2713,7 @@ void CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry
     }
 }
 
-void CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpClockTimePropertiesDSDomainIndex")
     {
@@ -2706,26 +2761,29 @@ void CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry
     }
 }
 
-bool CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockTimePropertiesDSDomainIndex" || name == "cPtpClockTimePropertiesDSClockTypeIndex" || name == "cPtpClockTimePropertiesDSInstanceIndex" || name == "cPtpClockTimePropertiesDSCurrentUTCOffsetValid" || name == "cPtpClockTimePropertiesDSCurrentUTCOffset" || name == "cPtpClockTimePropertiesDSLeap59" || name == "cPtpClockTimePropertiesDSLeap61" || name == "cPtpClockTimePropertiesDSTimeTraceable" || name == "cPtpClockTimePropertiesDSFreqTraceable" || name == "cPtpClockTimePropertiesDSPTPTimescale" || name == "cPtpClockTimePropertiesDSSource")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdstable()
+CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSTable()
+    :
+    cptpclocktransdefaultdsentry(this, {"cptpclocktransdefaultdsdomainindex", "cptpclocktransdefaultdsinstanceindex"})
 {
 
-    yang_name = "cPtpClockTransDefaultDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockTransDefaultDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclocktransdefaultdstable::~Cptpclocktransdefaultdstable()
+CISCOPTPMIB::CPtpClockTransDefaultDSTable::~CPtpClockTransDefaultDSTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpclocktransdefaultdstable::has_data() const
+bool CISCOPTPMIB::CPtpClockTransDefaultDSTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclocktransdefaultdsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpclocktransdefaultdsentry.len(); index++)
     {
         if(cptpclocktransdefaultdsentry[index]->has_data())
             return true;
@@ -2733,9 +2791,9 @@ bool CISCOPTPMIB::Cptpclocktransdefaultdstable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpclocktransdefaultdstable::has_operation() const
+bool CISCOPTPMIB::CPtpClockTransDefaultDSTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclocktransdefaultdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclocktransdefaultdsentry.len(); index++)
     {
         if(cptpclocktransdefaultdsentry[index]->has_operation())
             return true;
@@ -2743,21 +2801,21 @@ bool CISCOPTPMIB::Cptpclocktransdefaultdstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclocktransdefaultdstable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockTransDefaultDSTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclocktransdefaultdstable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockTransDefaultDSTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpClockTransDefaultDSTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclocktransdefaultdstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockTransDefaultDSTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2766,25 +2824,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclocktransdefaul
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocktransdefaultdstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockTransDefaultDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockTransDefaultDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry>();
         c->parent = this;
-        cptpclocktransdefaultdsentry.push_back(c);
+        cptpclocktransdefaultdsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocktransdefaultdstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockTransDefaultDSTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpclocktransdefaultdsentry)
+    for (auto c : cptpclocktransdefaultdsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2795,22 +2853,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocktransdefaul
     return children;
 }
 
-void CISCOPTPMIB::Cptpclocktransdefaultdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockTransDefaultDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpclocktransdefaultdstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockTransDefaultDSTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpclocktransdefaultdstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockTransDefaultDSTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockTransDefaultDSEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::Cptpclocktransdefaultdsentry()
+CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::CPtpClockTransDefaultDSEntry()
     :
     cptpclocktransdefaultdsdomainindex{YType::uint32, "cPtpClockTransDefaultDSDomainIndex"},
     cptpclocktransdefaultdsinstanceindex{YType::uint32, "cPtpClockTransDefaultDSInstanceIndex"},
@@ -2820,15 +2878,16 @@ CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::Cptpclo
     cptpclocktransdefaultdsprimarydomain{YType::int32, "cPtpClockTransDefaultDSPrimaryDomain"}
 {
 
-    yang_name = "cPtpClockTransDefaultDSEntry"; yang_parent_name = "cPtpClockTransDefaultDSTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockTransDefaultDSEntry"; yang_parent_name = "cPtpClockTransDefaultDSTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::~Cptpclocktransdefaultdsentry()
+CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::~CPtpClockTransDefaultDSEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::has_data() const
+bool CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpclocktransdefaultdsdomainindex.is_set
 	|| cptpclocktransdefaultdsinstanceindex.is_set
 	|| cptpclocktransdefaultdsclockidentity.is_set
@@ -2837,7 +2896,7 @@ bool CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::ha
 	|| cptpclocktransdefaultdsprimarydomain.is_set;
 }
 
-bool CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::has_operation() const
+bool CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpclocktransdefaultdsdomainindex.yfilter)
@@ -2848,21 +2907,23 @@ bool CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::ha
 	|| ydk::is_set(cptpclocktransdefaultdsprimarydomain.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpClockTransDefaultDSTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpClockTransDefaultDSEntry" <<"[cPtpClockTransDefaultDSDomainIndex='" <<cptpclocktransdefaultdsdomainindex <<"']" <<"[cPtpClockTransDefaultDSInstanceIndex='" <<cptpclocktransdefaultdsinstanceindex <<"']";
+    path_buffer << "cPtpClockTransDefaultDSEntry";
+    ADD_KEY_TOKEN(cptpclocktransdefaultdsdomainindex, "cPtpClockTransDefaultDSDomainIndex");
+    ADD_KEY_TOKEN(cptpclocktransdefaultdsinstanceindex, "cPtpClockTransDefaultDSInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2877,19 +2938,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclocktransdefaul
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockTransDefaultDSDomainIndex")
     {
@@ -2929,7 +2990,7 @@ void CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::se
     }
 }
 
-void CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpClockTransDefaultDSDomainIndex")
     {
@@ -2957,26 +3018,29 @@ void CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::se
     }
 }
 
-bool CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockTransDefaultDSDomainIndex" || name == "cPtpClockTransDefaultDSInstanceIndex" || name == "cPtpClockTransDefaultDSClockIdentity" || name == "cPtpClockTransDefaultDSNumOfPorts" || name == "cPtpClockTransDefaultDSDelay" || name == "cPtpClockTransDefaultDSPrimaryDomain")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockporttable::Cptpclockporttable()
+CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortTable()
+    :
+    cptpclockportentry(this, {"cptpclockportdomainindex", "cptpclockportclocktypeindex", "cptpclockportclockinstanceindex", "cptpclockporttableportnumberindex"})
 {
 
-    yang_name = "cPtpClockPortTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockPortTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockporttable::~Cptpclockporttable()
+CISCOPTPMIB::CPtpClockPortTable::~CPtpClockPortTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockporttable::has_data() const
+bool CISCOPTPMIB::CPtpClockPortTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpclockportentry.len(); index++)
     {
         if(cptpclockportentry[index]->has_data())
             return true;
@@ -2984,9 +3048,9 @@ bool CISCOPTPMIB::Cptpclockporttable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpclockporttable::has_operation() const
+bool CISCOPTPMIB::CPtpClockPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockportentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockportentry.len(); index++)
     {
         if(cptpclockportentry[index]->has_operation())
             return true;
@@ -2994,21 +3058,21 @@ bool CISCOPTPMIB::Cptpclockporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockporttable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockporttable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpClockPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3017,25 +3081,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockporttable::
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockPortEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry>();
         c->parent = this;
-        cptpclockportentry.push_back(c);
+        cptpclockportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpclockportentry)
+    for (auto c : cptpclockportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3046,22 +3110,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockporttable::
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpclockporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpclockporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockPortEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::Cptpclockportentry()
+CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::CPtpClockPortEntry()
     :
     cptpclockportdomainindex{YType::uint32, "cPtpClockPortDomainIndex"},
     cptpclockportclocktypeindex{YType::enumeration, "cPtpClockPortClockTypeIndex"},
@@ -3075,15 +3139,16 @@ CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::Cptpclockportentry()
     cptpclockportnumofassociatedports{YType::uint32, "cPtpClockPortNumOfAssociatedPorts"}
 {
 
-    yang_name = "cPtpClockPortEntry"; yang_parent_name = "cPtpClockPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockPortEntry"; yang_parent_name = "cPtpClockPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::~Cptpclockportentry()
+CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::~CPtpClockPortEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::has_data() const
+bool CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpclockportdomainindex.is_set
 	|| cptpclockportclocktypeindex.is_set
 	|| cptpclockportclockinstanceindex.is_set
@@ -3096,7 +3161,7 @@ bool CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::has_data() const
 	|| cptpclockportnumofassociatedports.is_set;
 }
 
-bool CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::has_operation() const
+bool CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpclockportdomainindex.yfilter)
@@ -3111,21 +3176,25 @@ bool CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::has_operation() const
 	|| ydk::is_set(cptpclockportnumofassociatedports.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpClockPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpClockPortEntry" <<"[cPtpClockPortDomainIndex='" <<cptpclockportdomainindex <<"']" <<"[cPtpClockPortClockTypeIndex='" <<cptpclockportclocktypeindex <<"']" <<"[cPtpClockPortClockInstanceIndex='" <<cptpclockportclockinstanceindex <<"']" <<"[cPtpClockPortTablePortNumberIndex='" <<cptpclockporttableportnumberindex <<"']";
+    path_buffer << "cPtpClockPortEntry";
+    ADD_KEY_TOKEN(cptpclockportdomainindex, "cPtpClockPortDomainIndex");
+    ADD_KEY_TOKEN(cptpclockportclocktypeindex, "cPtpClockPortClockTypeIndex");
+    ADD_KEY_TOKEN(cptpclockportclockinstanceindex, "cPtpClockPortClockInstanceIndex");
+    ADD_KEY_TOKEN(cptpclockporttableportnumberindex, "cPtpClockPortTablePortNumberIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3144,19 +3213,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockporttable::
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockPortDomainIndex")
     {
@@ -3220,7 +3289,7 @@ void CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::set_value(const std::s
     }
 }
 
-void CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpClockPortDomainIndex")
     {
@@ -3264,26 +3333,29 @@ void CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::set_filter(const std::
     }
 }
 
-bool CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockPortDomainIndex" || name == "cPtpClockPortClockTypeIndex" || name == "cPtpClockPortClockInstanceIndex" || name == "cPtpClockPortTablePortNumberIndex" || name == "cPtpClockPortName" || name == "cPtpClockPortRole" || name == "cPtpClockPortSyncOneStep" || name == "cPtpClockPortCurrentPeerAddressType" || name == "cPtpClockPortCurrentPeerAddress" || name == "cPtpClockPortNumOfAssociatedPorts")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdstable()
+CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSTable()
+    :
+    cptpclockportdsentry(this, {"cptpclockportdsdomainindex", "cptpclockportdsclocktypeindex", "cptpclockportdsclockinstanceindex", "cptpclockportdsportnumberindex"})
 {
 
-    yang_name = "cPtpClockPortDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockPortDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockportdstable::~Cptpclockportdstable()
+CISCOPTPMIB::CPtpClockPortDSTable::~CPtpClockPortDSTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockportdstable::has_data() const
+bool CISCOPTPMIB::CPtpClockPortDSTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockportdsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpclockportdsentry.len(); index++)
     {
         if(cptpclockportdsentry[index]->has_data())
             return true;
@@ -3291,9 +3363,9 @@ bool CISCOPTPMIB::Cptpclockportdstable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpclockportdstable::has_operation() const
+bool CISCOPTPMIB::CPtpClockPortDSTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockportdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockportdsentry.len(); index++)
     {
         if(cptpclockportdsentry[index]->has_operation())
             return true;
@@ -3301,21 +3373,21 @@ bool CISCOPTPMIB::Cptpclockportdstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockportdstable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockPortDSTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockportdstable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockPortDSTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpClockPortDSTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockportdstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortDSTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3324,25 +3396,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockportdstable
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportdstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockPortDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry>();
         c->parent = this;
-        cptpclockportdsentry.push_back(c);
+        cptpclockportdsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportdstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortDSTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpclockportdsentry)
+    for (auto c : cptpclockportdsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3353,22 +3425,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportdstable
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockportdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockPortDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpclockportdstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockPortDSTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpclockportdstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockPortDSTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockPortDSEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::Cptpclockportdsentry()
+CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::CPtpClockPortDSEntry()
     :
     cptpclockportdsdomainindex{YType::uint32, "cPtpClockPortDSDomainIndex"},
     cptpclockportdsclocktypeindex{YType::enumeration, "cPtpClockPortDSClockTypeIndex"},
@@ -3387,15 +3459,16 @@ CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::Cptpclockportdsentry()
     cptpclockportdsptpversion{YType::int32, "cPtpClockPortDSPTPVersion"}
 {
 
-    yang_name = "cPtpClockPortDSEntry"; yang_parent_name = "cPtpClockPortDSTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockPortDSEntry"; yang_parent_name = "cPtpClockPortDSTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::~Cptpclockportdsentry()
+CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::~CPtpClockPortDSEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::has_data() const
+bool CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpclockportdsdomainindex.is_set
 	|| cptpclockportdsclocktypeindex.is_set
 	|| cptpclockportdsclockinstanceindex.is_set
@@ -3413,7 +3486,7 @@ bool CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::has_data() const
 	|| cptpclockportdsptpversion.is_set;
 }
 
-bool CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::has_operation() const
+bool CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpclockportdsdomainindex.yfilter)
@@ -3433,21 +3506,25 @@ bool CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::has_operation() co
 	|| ydk::is_set(cptpclockportdsptpversion.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpClockPortDSTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpClockPortDSEntry" <<"[cPtpClockPortDSDomainIndex='" <<cptpclockportdsdomainindex <<"']" <<"[cPtpClockPortDSClockTypeIndex='" <<cptpclockportdsclocktypeindex <<"']" <<"[cPtpClockPortDSClockInstanceIndex='" <<cptpclockportdsclockinstanceindex <<"']" <<"[cPtpClockPortDSPortNumberIndex='" <<cptpclockportdsportnumberindex <<"']";
+    path_buffer << "cPtpClockPortDSEntry";
+    ADD_KEY_TOKEN(cptpclockportdsdomainindex, "cPtpClockPortDSDomainIndex");
+    ADD_KEY_TOKEN(cptpclockportdsclocktypeindex, "cPtpClockPortDSClockTypeIndex");
+    ADD_KEY_TOKEN(cptpclockportdsclockinstanceindex, "cPtpClockPortDSClockInstanceIndex");
+    ADD_KEY_TOKEN(cptpclockportdsportnumberindex, "cPtpClockPortDSPortNumberIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3471,19 +3548,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockportdstable
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockPortDSDomainIndex")
     {
@@ -3577,7 +3654,7 @@ void CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::set_value(const st
     }
 }
 
-void CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpClockPortDSDomainIndex")
     {
@@ -3641,26 +3718,29 @@ void CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::set_filter(const s
     }
 }
 
-bool CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockPortDSDomainIndex" || name == "cPtpClockPortDSClockTypeIndex" || name == "cPtpClockPortDSClockInstanceIndex" || name == "cPtpClockPortDSPortNumberIndex" || name == "cPtpClockPortDSName" || name == "cPtpClockPortDSPortIdentity" || name == "cPtpClockPortDSAnnouncementInterval" || name == "cPtpClockPortDSAnnounceRctTimeout" || name == "cPtpClockPortDSSyncInterval" || name == "cPtpClockPortDSMinDelayReqInterval" || name == "cPtpClockPortDSPeerDelayReqInterval" || name == "cPtpClockPortDSDelayMech" || name == "cPtpClockPortDSPeerMeanPathDelay" || name == "cPtpClockPortDSGrantDuration" || name == "cPtpClockPortDSPTPVersion")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningtable()
+CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningTable()
+    :
+    cptpclockportrunningentry(this, {"cptpclockportrunningdomainindex", "cptpclockportrunningclocktypeindex", "cptpclockportrunningclockinstanceindex", "cptpclockportrunningportnumberindex"})
 {
 
-    yang_name = "cPtpClockPortRunningTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockPortRunningTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockportrunningtable::~Cptpclockportrunningtable()
+CISCOPTPMIB::CPtpClockPortRunningTable::~CPtpClockPortRunningTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockportrunningtable::has_data() const
+bool CISCOPTPMIB::CPtpClockPortRunningTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockportrunningentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpclockportrunningentry.len(); index++)
     {
         if(cptpclockportrunningentry[index]->has_data())
             return true;
@@ -3668,9 +3748,9 @@ bool CISCOPTPMIB::Cptpclockportrunningtable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpclockportrunningtable::has_operation() const
+bool CISCOPTPMIB::CPtpClockPortRunningTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockportrunningentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockportrunningentry.len(); index++)
     {
         if(cptpclockportrunningentry[index]->has_operation())
             return true;
@@ -3678,21 +3758,21 @@ bool CISCOPTPMIB::Cptpclockportrunningtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockportrunningtable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockPortRunningTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockportrunningtable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockPortRunningTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpClockPortRunningTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockportrunningtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortRunningTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3701,25 +3781,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockportrunning
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportrunningtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortRunningTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockPortRunningEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry>();
         c->parent = this;
-        cptpclockportrunningentry.push_back(c);
+        cptpclockportrunningentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportrunningtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortRunningTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpclockportrunningentry)
+    for (auto c : cptpclockportrunningentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3730,22 +3810,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportrunning
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockportrunningtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockPortRunningTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpclockportrunningtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockPortRunningTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpclockportrunningtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockPortRunningTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockPortRunningEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::Cptpclockportrunningentry()
+CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::CPtpClockPortRunningEntry()
     :
     cptpclockportrunningdomainindex{YType::uint32, "cPtpClockPortRunningDomainIndex"},
     cptpclockportrunningclocktypeindex{YType::enumeration, "cPtpClockPortRunningClockTypeIndex"},
@@ -3763,15 +3843,16 @@ CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::Cptpclockport
     cptpclockportrunningpacketssent{YType::uint64, "cPtpClockPortRunningPacketsSent"}
 {
 
-    yang_name = "cPtpClockPortRunningEntry"; yang_parent_name = "cPtpClockPortRunningTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockPortRunningEntry"; yang_parent_name = "cPtpClockPortRunningTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::~Cptpclockportrunningentry()
+CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::~CPtpClockPortRunningEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::has_data() const
+bool CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpclockportrunningdomainindex.is_set
 	|| cptpclockportrunningclocktypeindex.is_set
 	|| cptpclockportrunningclockinstanceindex.is_set
@@ -3788,7 +3869,7 @@ bool CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::has_data
 	|| cptpclockportrunningpacketssent.is_set;
 }
 
-bool CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::has_operation() const
+bool CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpclockportrunningdomainindex.yfilter)
@@ -3807,21 +3888,25 @@ bool CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::has_oper
 	|| ydk::is_set(cptpclockportrunningpacketssent.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpClockPortRunningTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpClockPortRunningEntry" <<"[cPtpClockPortRunningDomainIndex='" <<cptpclockportrunningdomainindex <<"']" <<"[cPtpClockPortRunningClockTypeIndex='" <<cptpclockportrunningclocktypeindex <<"']" <<"[cPtpClockPortRunningClockInstanceIndex='" <<cptpclockportrunningclockinstanceindex <<"']" <<"[cPtpClockPortRunningPortNumberIndex='" <<cptpclockportrunningportnumberindex <<"']";
+    path_buffer << "cPtpClockPortRunningEntry";
+    ADD_KEY_TOKEN(cptpclockportrunningdomainindex, "cPtpClockPortRunningDomainIndex");
+    ADD_KEY_TOKEN(cptpclockportrunningclocktypeindex, "cPtpClockPortRunningClockTypeIndex");
+    ADD_KEY_TOKEN(cptpclockportrunningclockinstanceindex, "cPtpClockPortRunningClockInstanceIndex");
+    ADD_KEY_TOKEN(cptpclockportrunningportnumberindex, "cPtpClockPortRunningPortNumberIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3844,19 +3929,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockportrunning
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockPortRunningDomainIndex")
     {
@@ -3944,7 +4029,7 @@ void CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::set_valu
     }
 }
 
-void CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpClockPortRunningDomainIndex")
     {
@@ -4004,26 +4089,29 @@ void CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::set_filt
     }
 }
 
-bool CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockPortRunningDomainIndex" || name == "cPtpClockPortRunningClockTypeIndex" || name == "cPtpClockPortRunningClockInstanceIndex" || name == "cPtpClockPortRunningPortNumberIndex" || name == "cPtpClockPortRunningName" || name == "cPtpClockPortRunningState" || name == "cPtpClockPortRunningRole" || name == "cPtpClockPortRunningInterfaceIndex" || name == "cPtpClockPortRunningIPversion" || name == "cPtpClockPortRunningEncapsulationType" || name == "cPtpClockPortRunningTxMode" || name == "cPtpClockPortRunningRxMode" || name == "cPtpClockPortRunningPacketsReceived" || name == "cPtpClockPortRunningPacketsSent")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdstable()
+CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSTable()
+    :
+    cptpclockporttransdsentry(this, {"cptpclockporttransdsdomainindex", "cptpclockporttransdsinstanceindex", "cptpclockporttransdsportnumberindex"})
 {
 
-    yang_name = "cPtpClockPortTransDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockPortTransDSTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockporttransdstable::~Cptpclockporttransdstable()
+CISCOPTPMIB::CPtpClockPortTransDSTable::~CPtpClockPortTransDSTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockporttransdstable::has_data() const
+bool CISCOPTPMIB::CPtpClockPortTransDSTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockporttransdsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpclockporttransdsentry.len(); index++)
     {
         if(cptpclockporttransdsentry[index]->has_data())
             return true;
@@ -4031,9 +4119,9 @@ bool CISCOPTPMIB::Cptpclockporttransdstable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpclockporttransdstable::has_operation() const
+bool CISCOPTPMIB::CPtpClockPortTransDSTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockporttransdsentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockporttransdsentry.len(); index++)
     {
         if(cptpclockporttransdsentry[index]->has_operation())
             return true;
@@ -4041,21 +4129,21 @@ bool CISCOPTPMIB::Cptpclockporttransdstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockporttransdstable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockPortTransDSTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockporttransdstable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockPortTransDSTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpClockPortTransDSTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockporttransdstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortTransDSTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4064,25 +4152,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockporttransds
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockporttransdstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortTransDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockPortTransDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry>();
         c->parent = this;
-        cptpclockporttransdsentry.push_back(c);
+        cptpclockporttransdsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockporttransdstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortTransDSTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpclockporttransdsentry)
+    for (auto c : cptpclockporttransdsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4093,22 +4181,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockporttransds
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockporttransdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockPortTransDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpclockporttransdstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockPortTransDSTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpclockporttransdstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockPortTransDSTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockPortTransDSEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::Cptpclockporttransdsentry()
+CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::CPtpClockPortTransDSEntry()
     :
     cptpclockporttransdsdomainindex{YType::uint32, "cPtpClockPortTransDSDomainIndex"},
     cptpclockporttransdsinstanceindex{YType::uint32, "cPtpClockPortTransDSInstanceIndex"},
@@ -4119,15 +4207,16 @@ CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::Cptpclockport
     cptpclockporttransdspeermeanpathdelay{YType::str, "cPtpClockPortTransDSPeerMeanPathDelay"}
 {
 
-    yang_name = "cPtpClockPortTransDSEntry"; yang_parent_name = "cPtpClockPortTransDSTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockPortTransDSEntry"; yang_parent_name = "cPtpClockPortTransDSTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::~Cptpclockporttransdsentry()
+CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::~CPtpClockPortTransDSEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::has_data() const
+bool CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpclockporttransdsdomainindex.is_set
 	|| cptpclockporttransdsinstanceindex.is_set
 	|| cptpclockporttransdsportnumberindex.is_set
@@ -4137,7 +4226,7 @@ bool CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::has_data
 	|| cptpclockporttransdspeermeanpathdelay.is_set;
 }
 
-bool CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::has_operation() const
+bool CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpclockporttransdsdomainindex.yfilter)
@@ -4149,21 +4238,24 @@ bool CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::has_oper
 	|| ydk::is_set(cptpclockporttransdspeermeanpathdelay.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpClockPortTransDSTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpClockPortTransDSEntry" <<"[cPtpClockPortTransDSDomainIndex='" <<cptpclockporttransdsdomainindex <<"']" <<"[cPtpClockPortTransDSInstanceIndex='" <<cptpclockporttransdsinstanceindex <<"']" <<"[cPtpClockPortTransDSPortNumberIndex='" <<cptpclockporttransdsportnumberindex <<"']";
+    path_buffer << "cPtpClockPortTransDSEntry";
+    ADD_KEY_TOKEN(cptpclockporttransdsdomainindex, "cPtpClockPortTransDSDomainIndex");
+    ADD_KEY_TOKEN(cptpclockporttransdsinstanceindex, "cPtpClockPortTransDSInstanceIndex");
+    ADD_KEY_TOKEN(cptpclockporttransdsportnumberindex, "cPtpClockPortTransDSPortNumberIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4179,19 +4271,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockporttransds
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockPortTransDSDomainIndex")
     {
@@ -4237,7 +4329,7 @@ void CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::set_valu
     }
 }
 
-void CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpClockPortTransDSDomainIndex")
     {
@@ -4269,26 +4361,29 @@ void CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::set_filt
     }
 }
 
-bool CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockPortTransDSDomainIndex" || name == "cPtpClockPortTransDSInstanceIndex" || name == "cPtpClockPortTransDSPortNumberIndex" || name == "cPtpClockPortTransDSPortIdentity" || name == "cPtpClockPortTransDSlogMinPdelayReqInt" || name == "cPtpClockPortTransDSFaultyFlag" || name == "cPtpClockPortTransDSPeerMeanPathDelay")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociatetable()
+CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateTable()
+    :
+    cptpclockportassociateentry(this, {"cptpclockportcurrentdomainindex", "cptpclockportcurrentclocktypeindex", "cptpclockportcurrentclockinstanceindex", "cptpclockportcurrentportnumberindex", "cptpclockportassociateportindex"})
 {
 
-    yang_name = "cPtpClockPortAssociateTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockPortAssociateTable"; yang_parent_name = "CISCO-PTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockportassociatetable::~Cptpclockportassociatetable()
+CISCOPTPMIB::CPtpClockPortAssociateTable::~CPtpClockPortAssociateTable()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockportassociatetable::has_data() const
+bool CISCOPTPMIB::CPtpClockPortAssociateTable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockportassociateentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cptpclockportassociateentry.len(); index++)
     {
         if(cptpclockportassociateentry[index]->has_data())
             return true;
@@ -4296,9 +4391,9 @@ bool CISCOPTPMIB::Cptpclockportassociatetable::has_data() const
     return false;
 }
 
-bool CISCOPTPMIB::Cptpclockportassociatetable::has_operation() const
+bool CISCOPTPMIB::CPtpClockPortAssociateTable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockportassociateentry.size(); index++)
+    for (std::size_t index=0; index<cptpclockportassociateentry.len(); index++)
     {
         if(cptpclockportassociateentry[index]->has_operation())
             return true;
@@ -4306,21 +4401,21 @@ bool CISCOPTPMIB::Cptpclockportassociatetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockportassociatetable::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockPortAssociateTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockportassociatetable::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockPortAssociateTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cPtpClockPortAssociateTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockportassociatetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortAssociateTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4329,25 +4424,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockportassocia
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportassociatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortAssociateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockPortAssociateEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry>();
+        auto c = std::make_shared<CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry>();
         c->parent = this;
-        cptpclockportassociateentry.push_back(c);
+        cptpclockportassociateentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportassociatetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortAssociateTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cptpclockportassociateentry)
+    for (auto c : cptpclockportassociateentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4358,22 +4453,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportassocia
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockportassociatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockPortAssociateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPTPMIB::Cptpclockportassociatetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockPortAssociateTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPTPMIB::Cptpclockportassociatetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockPortAssociateTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockPortAssociateEntry")
         return true;
     return false;
 }
 
-CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::Cptpclockportassociateentry()
+CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::CPtpClockPortAssociateEntry()
     :
     cptpclockportcurrentdomainindex{YType::uint32, "cPtpClockPortCurrentDomainIndex"},
     cptpclockportcurrentclocktypeindex{YType::enumeration, "cPtpClockPortCurrentClockTypeIndex"},
@@ -4388,15 +4483,16 @@ CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::Cptpclock
     cptpclockportassociateouterrors{YType::uint64, "cPtpClockPortAssociateOutErrors"}
 {
 
-    yang_name = "cPtpClockPortAssociateEntry"; yang_parent_name = "cPtpClockPortAssociateTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cPtpClockPortAssociateEntry"; yang_parent_name = "cPtpClockPortAssociateTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::~Cptpclockportassociateentry()
+CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::~CPtpClockPortAssociateEntry()
 {
 }
 
-bool CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::has_data() const
+bool CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cptpclockportcurrentdomainindex.is_set
 	|| cptpclockportcurrentclocktypeindex.is_set
 	|| cptpclockportcurrentclockinstanceindex.is_set
@@ -4410,7 +4506,7 @@ bool CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::has_
 	|| cptpclockportassociateouterrors.is_set;
 }
 
-bool CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::has_operation() const
+bool CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cptpclockportcurrentdomainindex.yfilter)
@@ -4426,21 +4522,26 @@ bool CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::has_
 	|| ydk::is_set(cptpclockportassociateouterrors.yfilter);
 }
 
-std::string CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::get_absolute_path() const
+std::string CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PTP-MIB:CISCO-PTP-MIB/cPtpClockPortAssociateTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::get_segment_path() const
+std::string CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cPtpClockPortAssociateEntry" <<"[cPtpClockPortCurrentDomainIndex='" <<cptpclockportcurrentdomainindex <<"']" <<"[cPtpClockPortCurrentClockTypeIndex='" <<cptpclockportcurrentclocktypeindex <<"']" <<"[cPtpClockPortCurrentClockInstanceIndex='" <<cptpclockportcurrentclockinstanceindex <<"']" <<"[cPtpClockPortCurrentPortNumberIndex='" <<cptpclockportcurrentportnumberindex <<"']" <<"[cPtpClockPortAssociatePortIndex='" <<cptpclockportassociateportindex <<"']";
+    path_buffer << "cPtpClockPortAssociateEntry";
+    ADD_KEY_TOKEN(cptpclockportcurrentdomainindex, "cPtpClockPortCurrentDomainIndex");
+    ADD_KEY_TOKEN(cptpclockportcurrentclocktypeindex, "cPtpClockPortCurrentClockTypeIndex");
+    ADD_KEY_TOKEN(cptpclockportcurrentclockinstanceindex, "cPtpClockPortCurrentClockInstanceIndex");
+    ADD_KEY_TOKEN(cptpclockportcurrentportnumberindex, "cPtpClockPortCurrentPortNumberIndex");
+    ADD_KEY_TOKEN(cptpclockportassociateportindex, "cPtpClockPortAssociatePortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4460,19 +4561,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::Cptpclockportassocia
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockPortCurrentDomainIndex")
     {
@@ -4542,7 +4643,7 @@ void CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::set_
     }
 }
 
-void CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cPtpClockPortCurrentDomainIndex")
     {
@@ -4590,7 +4691,7 @@ void CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::set_
     }
 }
 
-bool CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cPtpClockPortCurrentDomainIndex" || name == "cPtpClockPortCurrentClockTypeIndex" || name == "cPtpClockPortCurrentClockInstanceIndex" || name == "cPtpClockPortCurrentPortNumberIndex" || name == "cPtpClockPortAssociatePortIndex" || name == "cPtpClockPortAssociateAddressType" || name == "cPtpClockPortAssociateAddress" || name == "cPtpClockPortAssociatePacketsSent" || name == "cPtpClockPortAssociatePacketsReceived" || name == "cPtpClockPortAssociateInErrors" || name == "cPtpClockPortAssociateOutErrors")
         return true;
@@ -4611,9 +4712,30 @@ const Enum::YLeaf ClockPortState::passive {7, "passive"};
 const Enum::YLeaf ClockPortState::uncalibrated {8, "uncalibrated"};
 const Enum::YLeaf ClockPortState::slave {9, "slave"};
 
+const Enum::YLeaf ClockTimeSourceType::atomicClock {16, "atomicClock"};
+const Enum::YLeaf ClockTimeSourceType::gps {32, "gps"};
+const Enum::YLeaf ClockTimeSourceType::terrestrialRadio {48, "terrestrialRadio"};
+const Enum::YLeaf ClockTimeSourceType::ptp {64, "ptp"};
+const Enum::YLeaf ClockTimeSourceType::ntp {80, "ntp"};
+const Enum::YLeaf ClockTimeSourceType::handSet {96, "handSet"};
+const Enum::YLeaf ClockTimeSourceType::other {144, "other"};
+const Enum::YLeaf ClockTimeSourceType::internalOsillator {160, "internalOsillator"};
+
 const Enum::YLeaf ClockProfileType::default_ {1, "default"};
 const Enum::YLeaf ClockProfileType::telecom {2, "telecom"};
 const Enum::YLeaf ClockProfileType::vendorspecific {3, "vendorspecific"};
+
+const Enum::YLeaf ClockRoleType::master {1, "master"};
+const Enum::YLeaf ClockRoleType::slave {2, "slave"};
+
+const Enum::YLeaf ClockType::ordinaryClock {1, "ordinaryClock"};
+const Enum::YLeaf ClockType::boundaryClock {2, "boundaryClock"};
+const Enum::YLeaf ClockType::transparentClock {3, "transparentClock"};
+const Enum::YLeaf ClockType::boundaryNode {4, "boundaryNode"};
+
+const Enum::YLeaf ClockTxModeType::unicast {1, "unicast"};
+const Enum::YLeaf ClockTxModeType::multicast {2, "multicast"};
+const Enum::YLeaf ClockTxModeType::multicastmix {3, "multicastmix"};
 
 const Enum::YLeaf ClockQualityAccuracyType::reserved00 {1, "reserved00"};
 const Enum::YLeaf ClockQualityAccuracyType::nanoSecond25 {32, "nanoSecond25"};
@@ -4637,32 +4759,11 @@ const Enum::YLeaf ClockQualityAccuracyType::secondGreater10 {49, "secondGreater1
 const Enum::YLeaf ClockQualityAccuracyType::unknown {254, "unknown"};
 const Enum::YLeaf ClockQualityAccuracyType::reserved255 {255, "reserved255"};
 
-const Enum::YLeaf ClockRoleType::master {1, "master"};
-const Enum::YLeaf ClockRoleType::slave {2, "slave"};
-
 const Enum::YLeaf ClockStateType::freerun {1, "freerun"};
 const Enum::YLeaf ClockStateType::holdover {2, "holdover"};
 const Enum::YLeaf ClockStateType::acquiring {3, "acquiring"};
 const Enum::YLeaf ClockStateType::frequencyLocked {4, "frequencyLocked"};
 const Enum::YLeaf ClockStateType::phaseAligned {5, "phaseAligned"};
-
-const Enum::YLeaf ClockTimeSourceType::atomicClock {16, "atomicClock"};
-const Enum::YLeaf ClockTimeSourceType::gps {32, "gps"};
-const Enum::YLeaf ClockTimeSourceType::terrestrialRadio {48, "terrestrialRadio"};
-const Enum::YLeaf ClockTimeSourceType::ptp {64, "ptp"};
-const Enum::YLeaf ClockTimeSourceType::ntp {80, "ntp"};
-const Enum::YLeaf ClockTimeSourceType::handSet {96, "handSet"};
-const Enum::YLeaf ClockTimeSourceType::other {144, "other"};
-const Enum::YLeaf ClockTimeSourceType::internalOsillator {160, "internalOsillator"};
-
-const Enum::YLeaf ClockTxModeType::unicast {1, "unicast"};
-const Enum::YLeaf ClockTxModeType::multicast {2, "multicast"};
-const Enum::YLeaf ClockTxModeType::multicastmix {3, "multicastmix"};
-
-const Enum::YLeaf ClockType::ordinaryClock {1, "ordinaryClock"};
-const Enum::YLeaf ClockType::boundaryClock {2, "boundaryClock"};
-const Enum::YLeaf ClockType::transparentClock {3, "transparentClock"};
-const Enum::YLeaf ClockType::boundaryNode {4, "boundaryNode"};
 
 
 }

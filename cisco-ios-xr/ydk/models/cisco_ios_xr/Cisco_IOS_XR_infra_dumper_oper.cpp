@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_infra_dumper_oper {
 Context::Context()
     :
     context_numbers(std::make_shared<Context::ContextNumbers>())
-	,context_locations(std::make_shared<Context::ContextLocations>())
-	,all(std::make_shared<Context::All>())
+    , context_locations(std::make_shared<Context::ContextLocations>())
+    , all(std::make_shared<Context::All>())
 {
     context_numbers->parent = this;
     context_locations->parent = this;
     all->parent = this;
 
-    yang_name = "context"; yang_parent_name = "Cisco-IOS-XR-infra-dumper-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "context"; yang_parent_name = "Cisco-IOS-XR-infra-dumper-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Context::~Context()
@@ -30,6 +30,7 @@ Context::~Context()
 
 bool Context::has_data() const
 {
+    if (is_presence_container) return true;
     return (context_numbers !=  nullptr && context_numbers->has_data())
 	|| (context_locations !=  nullptr && context_locations->has_data())
 	|| (all !=  nullptr && all->has_data());
@@ -154,9 +155,11 @@ bool Context::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Context::ContextNumbers::ContextNumbers()
+    :
+    context_number(this, {"context_num"})
 {
 
-    yang_name = "context-numbers"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "context-numbers"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Context::ContextNumbers::~ContextNumbers()
@@ -165,7 +168,8 @@ Context::ContextNumbers::~ContextNumbers()
 
 bool Context::ContextNumbers::has_data() const
 {
-    for (std::size_t index=0; index<context_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<context_number.len(); index++)
     {
         if(context_number[index]->has_data())
             return true;
@@ -175,7 +179,7 @@ bool Context::ContextNumbers::has_data() const
 
 bool Context::ContextNumbers::has_operation() const
 {
-    for (std::size_t index=0; index<context_number.size(); index++)
+    for (std::size_t index=0; index<context_number.len(); index++)
     {
         if(context_number[index]->has_operation())
             return true;
@@ -212,7 +216,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber>();
         c->parent = this;
-        context_number.push_back(c);
+        context_number.append(c);
         return c;
     }
 
@@ -224,7 +228,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : context_number)
+    for (auto c : context_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,14 +257,14 @@ bool Context::ContextNumbers::has_leaf_or_child_of_name(const std::string & name
 Context::ContextNumbers::ContextNumber::ContextNumber()
     :
     context_num{YType::int32, "context-num"}
-    	,
+        ,
     locations(std::make_shared<Context::ContextNumbers::ContextNumber::Locations>())
-	,all(std::make_shared<Context::ContextNumbers::ContextNumber::All>())
+    , all(std::make_shared<Context::ContextNumbers::ContextNumber::All>())
 {
     locations->parent = this;
     all->parent = this;
 
-    yang_name = "context-number"; yang_parent_name = "context-numbers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "context-number"; yang_parent_name = "context-numbers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Context::ContextNumbers::ContextNumber::~ContextNumber()
@@ -269,6 +273,7 @@ Context::ContextNumbers::ContextNumber::~ContextNumber()
 
 bool Context::ContextNumbers::ContextNumber::has_data() const
 {
+    if (is_presence_container) return true;
     return context_num.is_set
 	|| (locations !=  nullptr && locations->has_data())
 	|| (all !=  nullptr && all->has_data());
@@ -292,7 +297,8 @@ std::string Context::ContextNumbers::ContextNumber::get_absolute_path() const
 std::string Context::ContextNumbers::ContextNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "context-number" <<"[context-num='" <<context_num <<"']";
+    path_buffer << "context-number";
+    ADD_KEY_TOKEN(context_num, "context-num");
     return path_buffer.str();
 }
 
@@ -372,9 +378,11 @@ bool Context::ContextNumbers::ContextNumber::has_leaf_or_child_of_name(const std
 }
 
 Context::ContextNumbers::ContextNumber::Locations::Locations()
+    :
+    location(this, {"node_name"})
 {
 
-    yang_name = "locations"; yang_parent_name = "context-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "locations"; yang_parent_name = "context-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::Locations::~Locations()
@@ -383,7 +391,8 @@ Context::ContextNumbers::ContextNumber::Locations::~Locations()
 
 bool Context::ContextNumbers::ContextNumber::Locations::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -393,7 +402,7 @@ bool Context::ContextNumbers::ContextNumber::Locations::has_data() const
 
 bool Context::ContextNumbers::ContextNumber::Locations::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -423,7 +432,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::get_c
     {
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -435,7 +444,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -464,12 +473,12 @@ bool Context::ContextNumbers::ContextNumber::Locations::has_leaf_or_child_of_nam
 Context::ContextNumbers::ContextNumber::Locations::Location::Location()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     enter(std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location::Enter>())
 {
     enter->parent = this;
 
-    yang_name = "location"; yang_parent_name = "locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::Locations::Location::~Location()
@@ -478,6 +487,7 @@ Context::ContextNumbers::ContextNumber::Locations::Location::~Location()
 
 bool Context::ContextNumbers::ContextNumber::Locations::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (enter !=  nullptr && enter->has_data());
 }
@@ -492,7 +502,8 @@ bool Context::ContextNumbers::ContextNumber::Locations::Location::has_operation(
 std::string Context::ContextNumbers::ContextNumber::Locations::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -558,9 +569,11 @@ bool Context::ContextNumbers::ContextNumber::Locations::Location::has_leaf_or_ch
 }
 
 Context::ContextNumbers::ContextNumber::Locations::Location::Enter::Enter()
+    :
+    crash_info(this, {})
 {
 
-    yang_name = "enter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "enter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::Locations::Location::Enter::~Enter()
@@ -569,7 +582,8 @@ Context::ContextNumbers::ContextNumber::Locations::Location::Enter::~Enter()
 
 bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::has_data() const
 {
-    for (std::size_t index=0; index<crash_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<crash_info.len(); index++)
     {
         if(crash_info[index]->has_data())
             return true;
@@ -579,7 +593,7 @@ bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::has_dat
 
 bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::has_operation() const
 {
-    for (std::size_t index=0; index<crash_info.size(); index++)
+    for (std::size_t index=0; index<crash_info.len(); index++)
     {
         if(crash_info[index]->has_operation())
             return true;
@@ -609,7 +623,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
     {
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo>();
         c->parent = this;
-        crash_info.push_back(c);
+        crash_info.append(c);
         return c;
     }
 
@@ -621,7 +635,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : crash_info)
+    for (auto c : crash_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -650,9 +664,12 @@ bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::has_lea
 Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::CrashInfo()
     :
     node{YType::str, "node"}
+        ,
+    context_info(this, {})
+    , crash_package_information(this, {})
 {
 
-    yang_name = "crash-info"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crash-info"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::~CrashInfo()
@@ -661,12 +678,13 @@ Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::~
 
 bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::has_data() const
 {
-    for (std::size_t index=0; index<context_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<context_info.len(); index++)
     {
         if(context_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<crash_package_information.size(); index++)
+    for (std::size_t index=0; index<crash_package_information.len(); index++)
     {
         if(crash_package_information[index]->has_data())
             return true;
@@ -676,12 +694,12 @@ bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashIn
 
 bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::has_operation() const
 {
-    for (std::size_t index=0; index<context_info.size(); index++)
+    for (std::size_t index=0; index<context_info.len(); index++)
     {
         if(context_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<crash_package_information.size(); index++)
+    for (std::size_t index=0; index<crash_package_information.len(); index++)
     {
         if(crash_package_information[index]->has_operation())
             return true;
@@ -713,7 +731,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
     {
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo>();
         c->parent = this;
-        context_info.push_back(c);
+        context_info.append(c);
         return c;
     }
 
@@ -721,7 +739,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
     {
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::CrashPackageInformation>();
         c->parent = this;
-        crash_package_information.push_back(c);
+        crash_package_information.append(c);
         return c;
     }
 
@@ -733,7 +751,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : context_info)
+    for (auto c : context_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -742,7 +760,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextN
     }
 
     count = 0;
-    for (auto const & c : crash_package_information)
+    for (auto c : crash_package_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -791,9 +809,12 @@ Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::C
     sin_info{YType::str, "sin-info"},
     core_for_process{YType::str, "core-for-process"},
     registers_info{YType::str, "registers-info"}
+        ,
+    stack_trace(this, {})
+    , dll_info(this, {})
 {
 
-    yang_name = "context-info"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "context-info"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::~ContextInfo()
@@ -802,12 +823,13 @@ Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::C
 
 bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::has_data() const
 {
-    for (std::size_t index=0; index<stack_trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stack_trace.len(); index++)
     {
         if(stack_trace[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<dll_info.size(); index++)
+    for (std::size_t index=0; index<dll_info.len(); index++)
     {
         if(dll_info[index]->has_data())
             return true;
@@ -827,12 +849,12 @@ bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashIn
 
 bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::has_operation() const
 {
-    for (std::size_t index=0; index<stack_trace.size(); index++)
+    for (std::size_t index=0; index<stack_trace.len(); index++)
     {
         if(stack_trace[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<dll_info.size(); index++)
+    for (std::size_t index=0; index<dll_info.len(); index++)
     {
         if(dll_info[index]->has_operation())
             return true;
@@ -884,7 +906,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
     {
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::StackTrace>();
         c->parent = this;
-        stack_trace.push_back(c);
+        stack_trace.append(c);
         return c;
     }
 
@@ -892,7 +914,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
     {
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::DllInfo>();
         c->parent = this;
-        dll_info.push_back(c);
+        dll_info.append(c);
         return c;
     }
 
@@ -904,7 +926,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stack_trace)
+    for (auto c : stack_trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -913,7 +935,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextN
     }
 
     count = 0;
-    for (auto const & c : dll_info)
+    for (auto c : dll_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1054,7 +1076,7 @@ Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::C
     stack_trace{YType::uint32, "stack-trace"}
 {
 
-    yang_name = "stack-trace"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stack-trace"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::StackTrace::~StackTrace()
@@ -1063,6 +1085,7 @@ Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::C
 
 bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::StackTrace::has_data() const
 {
+    if (is_presence_container) return true;
     return stack_trace.is_set;
 }
 
@@ -1136,7 +1159,7 @@ Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::C
     version{YType::uint32, "version"}
 {
 
-    yang_name = "dll-info"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dll-info"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::DllInfo::~DllInfo()
@@ -1145,6 +1168,7 @@ Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::C
 
 bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::DllInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| text_addr.is_set
 	|| text_size.is_set
@@ -1279,7 +1303,7 @@ Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::C
     source{YType::str, "source"}
 {
 
-    yang_name = "crash-package-information"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crash-package-information"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::CrashPackageInformation::~CrashPackageInformation()
@@ -1288,6 +1312,7 @@ Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::C
 
 bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::CrashPackageInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| source.is_set;
 }
@@ -1365,9 +1390,11 @@ bool Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashIn
 }
 
 Context::ContextNumbers::ContextNumber::All::All()
+    :
+    crash_info(this, {})
 {
 
-    yang_name = "all"; yang_parent_name = "context-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "context-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::All::~All()
@@ -1376,7 +1403,8 @@ Context::ContextNumbers::ContextNumber::All::~All()
 
 bool Context::ContextNumbers::ContextNumber::All::has_data() const
 {
-    for (std::size_t index=0; index<crash_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<crash_info.len(); index++)
     {
         if(crash_info[index]->has_data())
             return true;
@@ -1386,7 +1414,7 @@ bool Context::ContextNumbers::ContextNumber::All::has_data() const
 
 bool Context::ContextNumbers::ContextNumber::All::has_operation() const
 {
-    for (std::size_t index=0; index<crash_info.size(); index++)
+    for (std::size_t index=0; index<crash_info.len(); index++)
     {
         if(crash_info[index]->has_operation())
             return true;
@@ -1416,7 +1444,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::get_child_b
     {
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::All::CrashInfo>();
         c->parent = this;
-        crash_info.push_back(c);
+        crash_info.append(c);
         return c;
     }
 
@@ -1428,7 +1456,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : crash_info)
+    for (auto c : crash_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1457,9 +1485,12 @@ bool Context::ContextNumbers::ContextNumber::All::has_leaf_or_child_of_name(cons
 Context::ContextNumbers::ContextNumber::All::CrashInfo::CrashInfo()
     :
     node{YType::str, "node"}
+        ,
+    context_info(this, {})
+    , crash_package_information(this, {})
 {
 
-    yang_name = "crash-info"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crash-info"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::All::CrashInfo::~CrashInfo()
@@ -1468,12 +1499,13 @@ Context::ContextNumbers::ContextNumber::All::CrashInfo::~CrashInfo()
 
 bool Context::ContextNumbers::ContextNumber::All::CrashInfo::has_data() const
 {
-    for (std::size_t index=0; index<context_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<context_info.len(); index++)
     {
         if(context_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<crash_package_information.size(); index++)
+    for (std::size_t index=0; index<crash_package_information.len(); index++)
     {
         if(crash_package_information[index]->has_data())
             return true;
@@ -1483,12 +1515,12 @@ bool Context::ContextNumbers::ContextNumber::All::CrashInfo::has_data() const
 
 bool Context::ContextNumbers::ContextNumber::All::CrashInfo::has_operation() const
 {
-    for (std::size_t index=0; index<context_info.size(); index++)
+    for (std::size_t index=0; index<context_info.len(); index++)
     {
         if(context_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<crash_package_information.size(); index++)
+    for (std::size_t index=0; index<crash_package_information.len(); index++)
     {
         if(crash_package_information[index]->has_operation())
             return true;
@@ -1520,7 +1552,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
     {
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo>();
         c->parent = this;
-        context_info.push_back(c);
+        context_info.append(c);
         return c;
     }
 
@@ -1528,7 +1560,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
     {
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::All::CrashInfo::CrashPackageInformation>();
         c->parent = this;
-        crash_package_information.push_back(c);
+        crash_package_information.append(c);
         return c;
     }
 
@@ -1540,7 +1572,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : context_info)
+    for (auto c : context_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1549,7 +1581,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextN
     }
 
     count = 0;
-    for (auto const & c : crash_package_information)
+    for (auto c : crash_package_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1598,9 +1630,12 @@ Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::ContextInfo
     sin_info{YType::str, "sin-info"},
     core_for_process{YType::str, "core-for-process"},
     registers_info{YType::str, "registers-info"}
+        ,
+    stack_trace(this, {})
+    , dll_info(this, {})
 {
 
-    yang_name = "context-info"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "context-info"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::~ContextInfo()
@@ -1609,12 +1644,13 @@ Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::~ContextInf
 
 bool Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::has_data() const
 {
-    for (std::size_t index=0; index<stack_trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stack_trace.len(); index++)
     {
         if(stack_trace[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<dll_info.size(); index++)
+    for (std::size_t index=0; index<dll_info.len(); index++)
     {
         if(dll_info[index]->has_data())
             return true;
@@ -1634,12 +1670,12 @@ bool Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::has_da
 
 bool Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::has_operation() const
 {
-    for (std::size_t index=0; index<stack_trace.size(); index++)
+    for (std::size_t index=0; index<stack_trace.len(); index++)
     {
         if(stack_trace[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<dll_info.size(); index++)
+    for (std::size_t index=0; index<dll_info.len(); index++)
     {
         if(dll_info[index]->has_operation())
             return true;
@@ -1691,7 +1727,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
     {
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::StackTrace>();
         c->parent = this;
-        stack_trace.push_back(c);
+        stack_trace.append(c);
         return c;
     }
 
@@ -1699,7 +1735,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
     {
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::DllInfo>();
         c->parent = this;
-        dll_info.push_back(c);
+        dll_info.append(c);
         return c;
     }
 
@@ -1711,7 +1747,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stack_trace)
+    for (auto c : stack_trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1720,7 +1756,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextN
     }
 
     count = 0;
-    for (auto const & c : dll_info)
+    for (auto c : dll_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1861,7 +1897,7 @@ Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::StackTrace:
     stack_trace{YType::uint32, "stack-trace"}
 {
 
-    yang_name = "stack-trace"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stack-trace"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::StackTrace::~StackTrace()
@@ -1870,6 +1906,7 @@ Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::StackTrace:
 
 bool Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::StackTrace::has_data() const
 {
+    if (is_presence_container) return true;
     return stack_trace.is_set;
 }
 
@@ -1943,7 +1980,7 @@ Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::DllInfo::Dl
     version{YType::uint32, "version"}
 {
 
-    yang_name = "dll-info"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dll-info"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::DllInfo::~DllInfo()
@@ -1952,6 +1989,7 @@ Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::DllInfo::~D
 
 bool Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::DllInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| text_addr.is_set
 	|| text_size.is_set
@@ -2086,7 +2124,7 @@ Context::ContextNumbers::ContextNumber::All::CrashInfo::CrashPackageInformation:
     source{YType::str, "source"}
 {
 
-    yang_name = "crash-package-information"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crash-package-information"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextNumbers::ContextNumber::All::CrashInfo::CrashPackageInformation::~CrashPackageInformation()
@@ -2095,6 +2133,7 @@ Context::ContextNumbers::ContextNumber::All::CrashInfo::CrashPackageInformation:
 
 bool Context::ContextNumbers::ContextNumber::All::CrashInfo::CrashPackageInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| source.is_set;
 }
@@ -2172,9 +2211,11 @@ bool Context::ContextNumbers::ContextNumber::All::CrashInfo::CrashPackageInforma
 }
 
 Context::ContextLocations::ContextLocations()
+    :
+    context_location(this, {"node_name"})
 {
 
-    yang_name = "context-locations"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "context-locations"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Context::ContextLocations::~ContextLocations()
@@ -2183,7 +2224,8 @@ Context::ContextLocations::~ContextLocations()
 
 bool Context::ContextLocations::has_data() const
 {
-    for (std::size_t index=0; index<context_location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<context_location.len(); index++)
     {
         if(context_location[index]->has_data())
             return true;
@@ -2193,7 +2235,7 @@ bool Context::ContextLocations::has_data() const
 
 bool Context::ContextLocations::has_operation() const
 {
-    for (std::size_t index=0; index<context_location.size(); index++)
+    for (std::size_t index=0; index<context_location.len(); index++)
     {
         if(context_location[index]->has_operation())
             return true;
@@ -2230,7 +2272,7 @@ std::shared_ptr<Entity> Context::ContextLocations::get_child_by_name(const std::
     {
         auto c = std::make_shared<Context::ContextLocations::ContextLocation>();
         c->parent = this;
-        context_location.push_back(c);
+        context_location.append(c);
         return c;
     }
 
@@ -2242,7 +2284,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : context_location)
+    for (auto c : context_location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2271,14 +2313,14 @@ bool Context::ContextLocations::has_leaf_or_child_of_name(const std::string & na
 Context::ContextLocations::ContextLocation::ContextLocation()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     numbers(std::make_shared<Context::ContextLocations::ContextLocation::Numbers>())
-	,all(std::make_shared<Context::ContextLocations::ContextLocation::All>())
+    , all(std::make_shared<Context::ContextLocations::ContextLocation::All>())
 {
     numbers->parent = this;
     all->parent = this;
 
-    yang_name = "context-location"; yang_parent_name = "context-locations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "context-location"; yang_parent_name = "context-locations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Context::ContextLocations::ContextLocation::~ContextLocation()
@@ -2287,6 +2329,7 @@ Context::ContextLocations::ContextLocation::~ContextLocation()
 
 bool Context::ContextLocations::ContextLocation::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (numbers !=  nullptr && numbers->has_data())
 	|| (all !=  nullptr && all->has_data());
@@ -2310,7 +2353,8 @@ std::string Context::ContextLocations::ContextLocation::get_absolute_path() cons
 std::string Context::ContextLocations::ContextLocation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "context-location" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "context-location";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -2390,9 +2434,11 @@ bool Context::ContextLocations::ContextLocation::has_leaf_or_child_of_name(const
 }
 
 Context::ContextLocations::ContextLocation::Numbers::Numbers()
+    :
+    number(this, {"context_num"})
 {
 
-    yang_name = "numbers"; yang_parent_name = "context-location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "numbers"; yang_parent_name = "context-location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::Numbers::~Numbers()
@@ -2401,7 +2447,8 @@ Context::ContextLocations::ContextLocation::Numbers::~Numbers()
 
 bool Context::ContextLocations::ContextLocation::Numbers::has_data() const
 {
-    for (std::size_t index=0; index<number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<number.len(); index++)
     {
         if(number[index]->has_data())
             return true;
@@ -2411,7 +2458,7 @@ bool Context::ContextLocations::ContextLocation::Numbers::has_data() const
 
 bool Context::ContextLocations::ContextLocation::Numbers::has_operation() const
 {
-    for (std::size_t index=0; index<number.size(); index++)
+    for (std::size_t index=0; index<number.len(); index++)
     {
         if(number[index]->has_operation())
             return true;
@@ -2441,7 +2488,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::get
     {
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number>();
         c->parent = this;
-        number.push_back(c);
+        number.append(c);
         return c;
     }
 
@@ -2453,7 +2500,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::Contex
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : number)
+    for (auto c : number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2482,12 +2529,12 @@ bool Context::ContextLocations::ContextLocation::Numbers::has_leaf_or_child_of_n
 Context::ContextLocations::ContextLocation::Numbers::Number::Number()
     :
     context_num{YType::int32, "context-num"}
-    	,
+        ,
     enter(std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number::Enter>())
 {
     enter->parent = this;
 
-    yang_name = "number"; yang_parent_name = "numbers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "number"; yang_parent_name = "numbers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::Numbers::Number::~Number()
@@ -2496,6 +2543,7 @@ Context::ContextLocations::ContextLocation::Numbers::Number::~Number()
 
 bool Context::ContextLocations::ContextLocation::Numbers::Number::has_data() const
 {
+    if (is_presence_container) return true;
     return context_num.is_set
 	|| (enter !=  nullptr && enter->has_data());
 }
@@ -2510,7 +2558,8 @@ bool Context::ContextLocations::ContextLocation::Numbers::Number::has_operation(
 std::string Context::ContextLocations::ContextLocation::Numbers::Number::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "number" <<"[context-num='" <<context_num <<"']";
+    path_buffer << "number";
+    ADD_KEY_TOKEN(context_num, "context-num");
     return path_buffer.str();
 }
 
@@ -2576,9 +2625,11 @@ bool Context::ContextLocations::ContextLocation::Numbers::Number::has_leaf_or_ch
 }
 
 Context::ContextLocations::ContextLocation::Numbers::Number::Enter::Enter()
+    :
+    crash_info(this, {})
 {
 
-    yang_name = "enter"; yang_parent_name = "number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "enter"; yang_parent_name = "number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::Numbers::Number::Enter::~Enter()
@@ -2587,7 +2638,8 @@ Context::ContextLocations::ContextLocation::Numbers::Number::Enter::~Enter()
 
 bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::has_data() const
 {
-    for (std::size_t index=0; index<crash_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<crash_info.len(); index++)
     {
         if(crash_info[index]->has_data())
             return true;
@@ -2597,7 +2649,7 @@ bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::has_dat
 
 bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::has_operation() const
 {
-    for (std::size_t index=0; index<crash_info.size(); index++)
+    for (std::size_t index=0; index<crash_info.len(); index++)
     {
         if(crash_info[index]->has_operation())
             return true;
@@ -2627,7 +2679,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
     {
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo>();
         c->parent = this;
-        crash_info.push_back(c);
+        crash_info.append(c);
         return c;
     }
 
@@ -2639,7 +2691,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::Contex
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : crash_info)
+    for (auto c : crash_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2668,9 +2720,12 @@ bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::has_lea
 Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::CrashInfo()
     :
     node{YType::str, "node"}
+        ,
+    context_info(this, {})
+    , crash_package_information(this, {})
 {
 
-    yang_name = "crash-info"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crash-info"; yang_parent_name = "enter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::~CrashInfo()
@@ -2679,12 +2734,13 @@ Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::~
 
 bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::has_data() const
 {
-    for (std::size_t index=0; index<context_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<context_info.len(); index++)
     {
         if(context_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<crash_package_information.size(); index++)
+    for (std::size_t index=0; index<crash_package_information.len(); index++)
     {
         if(crash_package_information[index]->has_data())
             return true;
@@ -2694,12 +2750,12 @@ bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashIn
 
 bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::has_operation() const
 {
-    for (std::size_t index=0; index<context_info.size(); index++)
+    for (std::size_t index=0; index<context_info.len(); index++)
     {
         if(context_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<crash_package_information.size(); index++)
+    for (std::size_t index=0; index<crash_package_information.len(); index++)
     {
         if(crash_package_information[index]->has_operation())
             return true;
@@ -2731,7 +2787,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
     {
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo>();
         c->parent = this;
-        context_info.push_back(c);
+        context_info.append(c);
         return c;
     }
 
@@ -2739,7 +2795,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
     {
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::CrashPackageInformation>();
         c->parent = this;
-        crash_package_information.push_back(c);
+        crash_package_information.append(c);
         return c;
     }
 
@@ -2751,7 +2807,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::Contex
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : context_info)
+    for (auto c : context_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2760,7 +2816,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::Contex
     }
 
     count = 0;
-    for (auto const & c : crash_package_information)
+    for (auto c : crash_package_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2809,9 +2865,12 @@ Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::C
     sin_info{YType::str, "sin-info"},
     core_for_process{YType::str, "core-for-process"},
     registers_info{YType::str, "registers-info"}
+        ,
+    stack_trace(this, {})
+    , dll_info(this, {})
 {
 
-    yang_name = "context-info"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "context-info"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::~ContextInfo()
@@ -2820,12 +2879,13 @@ Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::C
 
 bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::has_data() const
 {
-    for (std::size_t index=0; index<stack_trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stack_trace.len(); index++)
     {
         if(stack_trace[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<dll_info.size(); index++)
+    for (std::size_t index=0; index<dll_info.len(); index++)
     {
         if(dll_info[index]->has_data())
             return true;
@@ -2845,12 +2905,12 @@ bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashIn
 
 bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::has_operation() const
 {
-    for (std::size_t index=0; index<stack_trace.size(); index++)
+    for (std::size_t index=0; index<stack_trace.len(); index++)
     {
         if(stack_trace[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<dll_info.size(); index++)
+    for (std::size_t index=0; index<dll_info.len(); index++)
     {
         if(dll_info[index]->has_operation())
             return true;
@@ -2902,7 +2962,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
     {
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::StackTrace>();
         c->parent = this;
-        stack_trace.push_back(c);
+        stack_trace.append(c);
         return c;
     }
 
@@ -2910,7 +2970,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
     {
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::DllInfo>();
         c->parent = this;
-        dll_info.push_back(c);
+        dll_info.append(c);
         return c;
     }
 
@@ -2922,7 +2982,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::Contex
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stack_trace)
+    for (auto c : stack_trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2931,7 +2991,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::Contex
     }
 
     count = 0;
-    for (auto const & c : dll_info)
+    for (auto c : dll_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3072,7 +3132,7 @@ Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::C
     stack_trace{YType::uint32, "stack-trace"}
 {
 
-    yang_name = "stack-trace"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stack-trace"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::StackTrace::~StackTrace()
@@ -3081,6 +3141,7 @@ Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::C
 
 bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::StackTrace::has_data() const
 {
+    if (is_presence_container) return true;
     return stack_trace.is_set;
 }
 
@@ -3154,7 +3215,7 @@ Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::C
     version{YType::uint32, "version"}
 {
 
-    yang_name = "dll-info"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dll-info"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::DllInfo::~DllInfo()
@@ -3163,6 +3224,7 @@ Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::C
 
 bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::DllInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| text_addr.is_set
 	|| text_size.is_set
@@ -3297,7 +3359,7 @@ Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::C
     source{YType::str, "source"}
 {
 
-    yang_name = "crash-package-information"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crash-package-information"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::CrashPackageInformation::~CrashPackageInformation()
@@ -3306,6 +3368,7 @@ Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::C
 
 bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::CrashPackageInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| source.is_set;
 }
@@ -3383,9 +3446,11 @@ bool Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashIn
 }
 
 Context::ContextLocations::ContextLocation::All::All()
+    :
+    crash_info(this, {})
 {
 
-    yang_name = "all"; yang_parent_name = "context-location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "context-location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::All::~All()
@@ -3394,7 +3459,8 @@ Context::ContextLocations::ContextLocation::All::~All()
 
 bool Context::ContextLocations::ContextLocation::All::has_data() const
 {
-    for (std::size_t index=0; index<crash_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<crash_info.len(); index++)
     {
         if(crash_info[index]->has_data())
             return true;
@@ -3404,7 +3470,7 @@ bool Context::ContextLocations::ContextLocation::All::has_data() const
 
 bool Context::ContextLocations::ContextLocation::All::has_operation() const
 {
-    for (std::size_t index=0; index<crash_info.size(); index++)
+    for (std::size_t index=0; index<crash_info.len(); index++)
     {
         if(crash_info[index]->has_operation())
             return true;
@@ -3434,7 +3500,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::get_chi
     {
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::All::CrashInfo>();
         c->parent = this;
-        crash_info.push_back(c);
+        crash_info.append(c);
         return c;
     }
 
@@ -3446,7 +3512,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::Contex
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : crash_info)
+    for (auto c : crash_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3475,9 +3541,12 @@ bool Context::ContextLocations::ContextLocation::All::has_leaf_or_child_of_name(
 Context::ContextLocations::ContextLocation::All::CrashInfo::CrashInfo()
     :
     node{YType::str, "node"}
+        ,
+    context_info(this, {})
+    , crash_package_information(this, {})
 {
 
-    yang_name = "crash-info"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crash-info"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::All::CrashInfo::~CrashInfo()
@@ -3486,12 +3555,13 @@ Context::ContextLocations::ContextLocation::All::CrashInfo::~CrashInfo()
 
 bool Context::ContextLocations::ContextLocation::All::CrashInfo::has_data() const
 {
-    for (std::size_t index=0; index<context_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<context_info.len(); index++)
     {
         if(context_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<crash_package_information.size(); index++)
+    for (std::size_t index=0; index<crash_package_information.len(); index++)
     {
         if(crash_package_information[index]->has_data())
             return true;
@@ -3501,12 +3571,12 @@ bool Context::ContextLocations::ContextLocation::All::CrashInfo::has_data() cons
 
 bool Context::ContextLocations::ContextLocation::All::CrashInfo::has_operation() const
 {
-    for (std::size_t index=0; index<context_info.size(); index++)
+    for (std::size_t index=0; index<context_info.len(); index++)
     {
         if(context_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<crash_package_information.size(); index++)
+    for (std::size_t index=0; index<crash_package_information.len(); index++)
     {
         if(crash_package_information[index]->has_operation())
             return true;
@@ -3538,7 +3608,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
     {
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo>();
         c->parent = this;
-        context_info.push_back(c);
+        context_info.append(c);
         return c;
     }
 
@@ -3546,7 +3616,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
     {
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::All::CrashInfo::CrashPackageInformation>();
         c->parent = this;
-        crash_package_information.push_back(c);
+        crash_package_information.append(c);
         return c;
     }
 
@@ -3558,7 +3628,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::Contex
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : context_info)
+    for (auto c : context_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3567,7 +3637,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::Contex
     }
 
     count = 0;
-    for (auto const & c : crash_package_information)
+    for (auto c : crash_package_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3616,9 +3686,12 @@ Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::Context
     sin_info{YType::str, "sin-info"},
     core_for_process{YType::str, "core-for-process"},
     registers_info{YType::str, "registers-info"}
+        ,
+    stack_trace(this, {})
+    , dll_info(this, {})
 {
 
-    yang_name = "context-info"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "context-info"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::~ContextInfo()
@@ -3627,12 +3700,13 @@ Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::~Contex
 
 bool Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::has_data() const
 {
-    for (std::size_t index=0; index<stack_trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stack_trace.len(); index++)
     {
         if(stack_trace[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<dll_info.size(); index++)
+    for (std::size_t index=0; index<dll_info.len(); index++)
     {
         if(dll_info[index]->has_data())
             return true;
@@ -3652,12 +3726,12 @@ bool Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::ha
 
 bool Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::has_operation() const
 {
-    for (std::size_t index=0; index<stack_trace.size(); index++)
+    for (std::size_t index=0; index<stack_trace.len(); index++)
     {
         if(stack_trace[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<dll_info.size(); index++)
+    for (std::size_t index=0; index<dll_info.len(); index++)
     {
         if(dll_info[index]->has_operation())
             return true;
@@ -3709,7 +3783,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
     {
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::StackTrace>();
         c->parent = this;
-        stack_trace.push_back(c);
+        stack_trace.append(c);
         return c;
     }
 
@@ -3717,7 +3791,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
     {
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::DllInfo>();
         c->parent = this;
-        dll_info.push_back(c);
+        dll_info.append(c);
         return c;
     }
 
@@ -3729,7 +3803,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::Contex
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stack_trace)
+    for (auto c : stack_trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3738,7 +3812,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::Contex
     }
 
     count = 0;
-    for (auto const & c : dll_info)
+    for (auto c : dll_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3879,7 +3953,7 @@ Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::StackTr
     stack_trace{YType::uint32, "stack-trace"}
 {
 
-    yang_name = "stack-trace"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stack-trace"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::StackTrace::~StackTrace()
@@ -3888,6 +3962,7 @@ Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::StackTr
 
 bool Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::StackTrace::has_data() const
 {
+    if (is_presence_container) return true;
     return stack_trace.is_set;
 }
 
@@ -3961,7 +4036,7 @@ Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::DllInfo
     version{YType::uint32, "version"}
 {
 
-    yang_name = "dll-info"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dll-info"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::DllInfo::~DllInfo()
@@ -3970,6 +4045,7 @@ Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::DllInfo
 
 bool Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::DllInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| text_addr.is_set
 	|| text_size.is_set
@@ -4104,7 +4180,7 @@ Context::ContextLocations::ContextLocation::All::CrashInfo::CrashPackageInformat
     source{YType::str, "source"}
 {
 
-    yang_name = "crash-package-information"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crash-package-information"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Context::ContextLocations::ContextLocation::All::CrashInfo::CrashPackageInformation::~CrashPackageInformation()
@@ -4113,6 +4189,7 @@ Context::ContextLocations::ContextLocation::All::CrashInfo::CrashPackageInformat
 
 bool Context::ContextLocations::ContextLocation::All::CrashInfo::CrashPackageInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| source.is_set;
 }
@@ -4190,9 +4267,11 @@ bool Context::ContextLocations::ContextLocation::All::CrashInfo::CrashPackageInf
 }
 
 Context::All::All()
+    :
+    crash_info(this, {})
 {
 
-    yang_name = "all"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Context::All::~All()
@@ -4201,7 +4280,8 @@ Context::All::~All()
 
 bool Context::All::has_data() const
 {
-    for (std::size_t index=0; index<crash_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<crash_info.len(); index++)
     {
         if(crash_info[index]->has_data())
             return true;
@@ -4211,7 +4291,7 @@ bool Context::All::has_data() const
 
 bool Context::All::has_operation() const
 {
-    for (std::size_t index=0; index<crash_info.size(); index++)
+    for (std::size_t index=0; index<crash_info.len(); index++)
     {
         if(crash_info[index]->has_operation())
             return true;
@@ -4248,7 +4328,7 @@ std::shared_ptr<Entity> Context::All::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Context::All::CrashInfo>();
         c->parent = this;
-        crash_info.push_back(c);
+        crash_info.append(c);
         return c;
     }
 
@@ -4260,7 +4340,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::All::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : crash_info)
+    for (auto c : crash_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4289,9 +4369,12 @@ bool Context::All::has_leaf_or_child_of_name(const std::string & name) const
 Context::All::CrashInfo::CrashInfo()
     :
     node{YType::str, "node"}
+        ,
+    context_info(this, {})
+    , crash_package_information(this, {})
 {
 
-    yang_name = "crash-info"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "crash-info"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Context::All::CrashInfo::~CrashInfo()
@@ -4300,12 +4383,13 @@ Context::All::CrashInfo::~CrashInfo()
 
 bool Context::All::CrashInfo::has_data() const
 {
-    for (std::size_t index=0; index<context_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<context_info.len(); index++)
     {
         if(context_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<crash_package_information.size(); index++)
+    for (std::size_t index=0; index<crash_package_information.len(); index++)
     {
         if(crash_package_information[index]->has_data())
             return true;
@@ -4315,12 +4399,12 @@ bool Context::All::CrashInfo::has_data() const
 
 bool Context::All::CrashInfo::has_operation() const
 {
-    for (std::size_t index=0; index<context_info.size(); index++)
+    for (std::size_t index=0; index<context_info.len(); index++)
     {
         if(context_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<crash_package_information.size(); index++)
+    for (std::size_t index=0; index<crash_package_information.len(); index++)
     {
         if(crash_package_information[index]->has_operation())
             return true;
@@ -4359,7 +4443,7 @@ std::shared_ptr<Entity> Context::All::CrashInfo::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Context::All::CrashInfo::ContextInfo>();
         c->parent = this;
-        context_info.push_back(c);
+        context_info.append(c);
         return c;
     }
 
@@ -4367,7 +4451,7 @@ std::shared_ptr<Entity> Context::All::CrashInfo::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Context::All::CrashInfo::CrashPackageInformation>();
         c->parent = this;
-        crash_package_information.push_back(c);
+        crash_package_information.append(c);
         return c;
     }
 
@@ -4379,7 +4463,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::All::CrashInfo::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : context_info)
+    for (auto c : context_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4388,7 +4472,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::All::CrashInfo::get_chil
     }
 
     count = 0;
-    for (auto const & c : crash_package_information)
+    for (auto c : crash_package_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4437,9 +4521,12 @@ Context::All::CrashInfo::ContextInfo::ContextInfo()
     sin_info{YType::str, "sin-info"},
     core_for_process{YType::str, "core-for-process"},
     registers_info{YType::str, "registers-info"}
+        ,
+    stack_trace(this, {})
+    , dll_info(this, {})
 {
 
-    yang_name = "context-info"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "context-info"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Context::All::CrashInfo::ContextInfo::~ContextInfo()
@@ -4448,12 +4535,13 @@ Context::All::CrashInfo::ContextInfo::~ContextInfo()
 
 bool Context::All::CrashInfo::ContextInfo::has_data() const
 {
-    for (std::size_t index=0; index<stack_trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stack_trace.len(); index++)
     {
         if(stack_trace[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<dll_info.size(); index++)
+    for (std::size_t index=0; index<dll_info.len(); index++)
     {
         if(dll_info[index]->has_data())
             return true;
@@ -4473,12 +4561,12 @@ bool Context::All::CrashInfo::ContextInfo::has_data() const
 
 bool Context::All::CrashInfo::ContextInfo::has_operation() const
 {
-    for (std::size_t index=0; index<stack_trace.size(); index++)
+    for (std::size_t index=0; index<stack_trace.len(); index++)
     {
         if(stack_trace[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<dll_info.size(); index++)
+    for (std::size_t index=0; index<dll_info.len(); index++)
     {
         if(dll_info[index]->has_operation())
             return true;
@@ -4537,7 +4625,7 @@ std::shared_ptr<Entity> Context::All::CrashInfo::ContextInfo::get_child_by_name(
     {
         auto c = std::make_shared<Context::All::CrashInfo::ContextInfo::StackTrace>();
         c->parent = this;
-        stack_trace.push_back(c);
+        stack_trace.append(c);
         return c;
     }
 
@@ -4545,7 +4633,7 @@ std::shared_ptr<Entity> Context::All::CrashInfo::ContextInfo::get_child_by_name(
     {
         auto c = std::make_shared<Context::All::CrashInfo::ContextInfo::DllInfo>();
         c->parent = this;
-        dll_info.push_back(c);
+        dll_info.append(c);
         return c;
     }
 
@@ -4557,7 +4645,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::All::CrashInfo::ContextI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stack_trace)
+    for (auto c : stack_trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4566,7 +4654,7 @@ std::map<std::string, std::shared_ptr<Entity>> Context::All::CrashInfo::ContextI
     }
 
     count = 0;
-    for (auto const & c : dll_info)
+    for (auto c : dll_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4707,7 +4795,7 @@ Context::All::CrashInfo::ContextInfo::StackTrace::StackTrace()
     stack_trace{YType::uint32, "stack-trace"}
 {
 
-    yang_name = "stack-trace"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stack-trace"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Context::All::CrashInfo::ContextInfo::StackTrace::~StackTrace()
@@ -4716,6 +4804,7 @@ Context::All::CrashInfo::ContextInfo::StackTrace::~StackTrace()
 
 bool Context::All::CrashInfo::ContextInfo::StackTrace::has_data() const
 {
+    if (is_presence_container) return true;
     return stack_trace.is_set;
 }
 
@@ -4796,7 +4885,7 @@ Context::All::CrashInfo::ContextInfo::DllInfo::DllInfo()
     version{YType::uint32, "version"}
 {
 
-    yang_name = "dll-info"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dll-info"; yang_parent_name = "context-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Context::All::CrashInfo::ContextInfo::DllInfo::~DllInfo()
@@ -4805,6 +4894,7 @@ Context::All::CrashInfo::ContextInfo::DllInfo::~DllInfo()
 
 bool Context::All::CrashInfo::ContextInfo::DllInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| text_addr.is_set
 	|| text_size.is_set
@@ -4946,7 +5036,7 @@ Context::All::CrashInfo::CrashPackageInformation::CrashPackageInformation()
     source{YType::str, "source"}
 {
 
-    yang_name = "crash-package-information"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "crash-package-information"; yang_parent_name = "crash-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Context::All::CrashInfo::CrashPackageInformation::~CrashPackageInformation()
@@ -4955,6 +5045,7 @@ Context::All::CrashInfo::CrashPackageInformation::~CrashPackageInformation()
 
 bool Context::All::CrashInfo::CrashPackageInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| source.is_set;
 }

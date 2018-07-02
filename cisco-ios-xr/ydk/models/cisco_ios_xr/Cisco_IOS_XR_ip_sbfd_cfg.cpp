@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ip_sbfd_cfg {
 Sbfd::Sbfd()
     :
     remote_target(std::make_shared<Sbfd::RemoteTarget>())
-	,local_discriminator(std::make_shared<Sbfd::LocalDiscriminator>())
+    , local_discriminator(std::make_shared<Sbfd::LocalDiscriminator>())
 {
     remote_target->parent = this;
     local_discriminator->parent = this;
 
-    yang_name = "sbfd"; yang_parent_name = "Cisco-IOS-XR-ip-sbfd-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sbfd"; yang_parent_name = "Cisco-IOS-XR-ip-sbfd-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Sbfd::~Sbfd()
@@ -28,6 +28,7 @@ Sbfd::~Sbfd()
 
 bool Sbfd::has_data() const
 {
+    if (is_presence_container) return true;
     return (remote_target !=  nullptr && remote_target->has_data())
 	|| (local_discriminator !=  nullptr && local_discriminator->has_data());
 }
@@ -138,12 +139,12 @@ bool Sbfd::has_leaf_or_child_of_name(const std::string & name) const
 Sbfd::RemoteTarget::RemoteTarget()
     :
     ipv4_addresses(std::make_shared<Sbfd::RemoteTarget::Ipv4Addresses>())
-	,ipv6_addresses(std::make_shared<Sbfd::RemoteTarget::Ipv6Addresses>())
+    , ipv6_addresses(std::make_shared<Sbfd::RemoteTarget::Ipv6Addresses>())
 {
     ipv4_addresses->parent = this;
     ipv6_addresses->parent = this;
 
-    yang_name = "remote-target"; yang_parent_name = "sbfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote-target"; yang_parent_name = "sbfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::RemoteTarget::~RemoteTarget()
@@ -152,6 +153,7 @@ Sbfd::RemoteTarget::~RemoteTarget()
 
 bool Sbfd::RemoteTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4_addresses !=  nullptr && ipv4_addresses->has_data())
 	|| (ipv6_addresses !=  nullptr && ipv6_addresses->has_data());
 }
@@ -242,9 +244,11 @@ bool Sbfd::RemoteTarget::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Addresses()
+    :
+    ipv4_address(this, {"address"})
 {
 
-    yang_name = "ipv4-addresses"; yang_parent_name = "remote-target"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-addresses"; yang_parent_name = "remote-target"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::RemoteTarget::Ipv4Addresses::~Ipv4Addresses()
@@ -253,7 +257,8 @@ Sbfd::RemoteTarget::Ipv4Addresses::~Ipv4Addresses()
 
 bool Sbfd::RemoteTarget::Ipv4Addresses::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_data())
             return true;
@@ -263,7 +268,7 @@ bool Sbfd::RemoteTarget::Ipv4Addresses::has_data() const
 
 bool Sbfd::RemoteTarget::Ipv4Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_operation())
             return true;
@@ -300,7 +305,7 @@ std::shared_ptr<Entity> Sbfd::RemoteTarget::Ipv4Addresses::get_child_by_name(con
     {
         auto c = std::make_shared<Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address>();
         c->parent = this;
-        ipv4_address.push_back(c);
+        ipv4_address.append(c);
         return c;
     }
 
@@ -312,7 +317,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::RemoteTarget::Ipv4Addresses
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_address)
+    for (auto c : ipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -341,9 +346,11 @@ bool Sbfd::RemoteTarget::Ipv4Addresses::has_leaf_or_child_of_name(const std::str
 Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::Ipv4Address()
     :
     address{YType::str, "address"}
+        ,
+    remote_discriminator(this, {"remote_discriminator"})
 {
 
-    yang_name = "ipv4-address"; yang_parent_name = "ipv4-addresses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-address"; yang_parent_name = "ipv4-addresses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::~Ipv4Address()
@@ -352,7 +359,8 @@ Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::~Ipv4Address()
 
 bool Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::has_data() const
 {
-    for (std::size_t index=0; index<remote_discriminator.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<remote_discriminator.len(); index++)
     {
         if(remote_discriminator[index]->has_data())
             return true;
@@ -362,7 +370,7 @@ bool Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::has_data() const
 
 bool Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::has_operation() const
 {
-    for (std::size_t index=0; index<remote_discriminator.size(); index++)
+    for (std::size_t index=0; index<remote_discriminator.len(); index++)
     {
         if(remote_discriminator[index]->has_operation())
             return true;
@@ -381,7 +389,8 @@ std::string Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::get_absolute_path() 
 std::string Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-address" <<"[address='" <<address <<"']";
+    path_buffer << "ipv4-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -401,7 +410,7 @@ std::shared_ptr<Entity> Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::get_chil
     {
         auto c = std::make_shared<Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator>();
         c->parent = this;
-        remote_discriminator.push_back(c);
+        remote_discriminator.append(c);
         return c;
     }
 
@@ -413,7 +422,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::RemoteTarget::Ipv4Addresses
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : remote_discriminator)
+    for (auto c : remote_discriminator.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -454,7 +463,7 @@ Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator::RemoteDiscr
     remote_discriminator{YType::uint32, "remote-discriminator"}
 {
 
-    yang_name = "remote-discriminator"; yang_parent_name = "ipv4-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-discriminator"; yang_parent_name = "ipv4-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator::~RemoteDiscriminator()
@@ -463,6 +472,7 @@ Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator::~RemoteDisc
 
 bool Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_discriminator.is_set;
 }
 
@@ -475,7 +485,8 @@ bool Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator::has_op
 std::string Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "remote-discriminator" <<"[remote-discriminator='" <<remote_discriminator <<"']";
+    path_buffer << "remote-discriminator";
+    ADD_KEY_TOKEN(remote_discriminator, "remote-discriminator");
     return path_buffer.str();
 }
 
@@ -527,9 +538,11 @@ bool Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator::has_le
 }
 
 Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Addresses()
+    :
+    ipv6_address(this, {"address"})
 {
 
-    yang_name = "ipv6-addresses"; yang_parent_name = "remote-target"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6-addresses"; yang_parent_name = "remote-target"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::RemoteTarget::Ipv6Addresses::~Ipv6Addresses()
@@ -538,7 +551,8 @@ Sbfd::RemoteTarget::Ipv6Addresses::~Ipv6Addresses()
 
 bool Sbfd::RemoteTarget::Ipv6Addresses::has_data() const
 {
-    for (std::size_t index=0; index<ipv6_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6_address.len(); index++)
     {
         if(ipv6_address[index]->has_data())
             return true;
@@ -548,7 +562,7 @@ bool Sbfd::RemoteTarget::Ipv6Addresses::has_data() const
 
 bool Sbfd::RemoteTarget::Ipv6Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6_address.size(); index++)
+    for (std::size_t index=0; index<ipv6_address.len(); index++)
     {
         if(ipv6_address[index]->has_operation())
             return true;
@@ -585,7 +599,7 @@ std::shared_ptr<Entity> Sbfd::RemoteTarget::Ipv6Addresses::get_child_by_name(con
     {
         auto c = std::make_shared<Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address>();
         c->parent = this;
-        ipv6_address.push_back(c);
+        ipv6_address.append(c);
         return c;
     }
 
@@ -597,7 +611,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::RemoteTarget::Ipv6Addresses
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6_address)
+    for (auto c : ipv6_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -626,9 +640,11 @@ bool Sbfd::RemoteTarget::Ipv6Addresses::has_leaf_or_child_of_name(const std::str
 Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::Ipv6Address()
     :
     address{YType::str, "address"}
+        ,
+    remote_discriminator(this, {"remote_discriminator"})
 {
 
-    yang_name = "ipv6-address"; yang_parent_name = "ipv6-addresses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6-address"; yang_parent_name = "ipv6-addresses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::~Ipv6Address()
@@ -637,7 +653,8 @@ Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::~Ipv6Address()
 
 bool Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::has_data() const
 {
-    for (std::size_t index=0; index<remote_discriminator.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<remote_discriminator.len(); index++)
     {
         if(remote_discriminator[index]->has_data())
             return true;
@@ -647,7 +664,7 @@ bool Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::has_data() const
 
 bool Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::has_operation() const
 {
-    for (std::size_t index=0; index<remote_discriminator.size(); index++)
+    for (std::size_t index=0; index<remote_discriminator.len(); index++)
     {
         if(remote_discriminator[index]->has_operation())
             return true;
@@ -666,7 +683,8 @@ std::string Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::get_absolute_path() 
 std::string Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6-address" <<"[address='" <<address <<"']";
+    path_buffer << "ipv6-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -686,7 +704,7 @@ std::shared_ptr<Entity> Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::get_chil
     {
         auto c = std::make_shared<Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator>();
         c->parent = this;
-        remote_discriminator.push_back(c);
+        remote_discriminator.append(c);
         return c;
     }
 
@@ -698,7 +716,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::RemoteTarget::Ipv6Addresses
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : remote_discriminator)
+    for (auto c : remote_discriminator.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -739,7 +757,7 @@ Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator::RemoteDiscr
     remote_discriminator{YType::uint32, "remote-discriminator"}
 {
 
-    yang_name = "remote-discriminator"; yang_parent_name = "ipv6-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-discriminator"; yang_parent_name = "ipv6-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator::~RemoteDiscriminator()
@@ -748,6 +766,7 @@ Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator::~RemoteDisc
 
 bool Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_discriminator.is_set;
 }
 
@@ -760,7 +779,8 @@ bool Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator::has_op
 std::string Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "remote-discriminator" <<"[remote-discriminator='" <<remote_discriminator <<"']";
+    path_buffer << "remote-discriminator";
+    ADD_KEY_TOKEN(remote_discriminator, "remote-discriminator");
     return path_buffer.str();
 }
 
@@ -814,16 +834,16 @@ bool Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator::has_le
 Sbfd::LocalDiscriminator::LocalDiscriminator()
     :
     intf_discriminators(std::make_shared<Sbfd::LocalDiscriminator::IntfDiscriminators>())
-	,dynamic_discriminators(std::make_shared<Sbfd::LocalDiscriminator::DynamicDiscriminators>())
-	,ipv4_discriminators(std::make_shared<Sbfd::LocalDiscriminator::Ipv4Discriminators>())
-	,val32_discriminators(std::make_shared<Sbfd::LocalDiscriminator::Val32Discriminators>())
+    , dynamic_discriminators(std::make_shared<Sbfd::LocalDiscriminator::DynamicDiscriminators>())
+    , ipv4_discriminators(std::make_shared<Sbfd::LocalDiscriminator::Ipv4Discriminators>())
+    , val32_discriminators(std::make_shared<Sbfd::LocalDiscriminator::Val32Discriminators>())
 {
     intf_discriminators->parent = this;
     dynamic_discriminators->parent = this;
     ipv4_discriminators->parent = this;
     val32_discriminators->parent = this;
 
-    yang_name = "local-discriminator"; yang_parent_name = "sbfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-discriminator"; yang_parent_name = "sbfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::LocalDiscriminator::~LocalDiscriminator()
@@ -832,6 +852,7 @@ Sbfd::LocalDiscriminator::~LocalDiscriminator()
 
 bool Sbfd::LocalDiscriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return (intf_discriminators !=  nullptr && intf_discriminators->has_data())
 	|| (dynamic_discriminators !=  nullptr && dynamic_discriminators->has_data())
 	|| (ipv4_discriminators !=  nullptr && ipv4_discriminators->has_data())
@@ -954,9 +975,11 @@ bool Sbfd::LocalDiscriminator::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminators()
+    :
+    intf_discriminator(this, {"interface_name"})
 {
 
-    yang_name = "intf-discriminators"; yang_parent_name = "local-discriminator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "intf-discriminators"; yang_parent_name = "local-discriminator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::LocalDiscriminator::IntfDiscriminators::~IntfDiscriminators()
@@ -965,7 +988,8 @@ Sbfd::LocalDiscriminator::IntfDiscriminators::~IntfDiscriminators()
 
 bool Sbfd::LocalDiscriminator::IntfDiscriminators::has_data() const
 {
-    for (std::size_t index=0; index<intf_discriminator.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<intf_discriminator.len(); index++)
     {
         if(intf_discriminator[index]->has_data())
             return true;
@@ -975,7 +999,7 @@ bool Sbfd::LocalDiscriminator::IntfDiscriminators::has_data() const
 
 bool Sbfd::LocalDiscriminator::IntfDiscriminators::has_operation() const
 {
-    for (std::size_t index=0; index<intf_discriminator.size(); index++)
+    for (std::size_t index=0; index<intf_discriminator.len(); index++)
     {
         if(intf_discriminator[index]->has_operation())
             return true;
@@ -1012,7 +1036,7 @@ std::shared_ptr<Entity> Sbfd::LocalDiscriminator::IntfDiscriminators::get_child_
     {
         auto c = std::make_shared<Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator>();
         c->parent = this;
-        intf_discriminator.push_back(c);
+        intf_discriminator.append(c);
         return c;
     }
 
@@ -1024,7 +1048,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::LocalDiscriminator::IntfDis
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : intf_discriminator)
+    for (auto c : intf_discriminator.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1055,7 +1079,7 @@ Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator::IntfDiscriminat
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "intf-discriminator"; yang_parent_name = "intf-discriminators"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "intf-discriminator"; yang_parent_name = "intf-discriminators"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator::~IntfDiscriminator()
@@ -1064,6 +1088,7 @@ Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator::~IntfDiscrimina
 
 bool Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -1083,7 +1108,8 @@ std::string Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator::get
 std::string Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "intf-discriminator" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "intf-discriminator";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1135,9 +1161,11 @@ bool Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator::has_leaf_o
 }
 
 Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminators()
+    :
+    dynamic_discriminator(this, {"discriminator"})
 {
 
-    yang_name = "dynamic-discriminators"; yang_parent_name = "local-discriminator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dynamic-discriminators"; yang_parent_name = "local-discriminator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::LocalDiscriminator::DynamicDiscriminators::~DynamicDiscriminators()
@@ -1146,7 +1174,8 @@ Sbfd::LocalDiscriminator::DynamicDiscriminators::~DynamicDiscriminators()
 
 bool Sbfd::LocalDiscriminator::DynamicDiscriminators::has_data() const
 {
-    for (std::size_t index=0; index<dynamic_discriminator.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dynamic_discriminator.len(); index++)
     {
         if(dynamic_discriminator[index]->has_data())
             return true;
@@ -1156,7 +1185,7 @@ bool Sbfd::LocalDiscriminator::DynamicDiscriminators::has_data() const
 
 bool Sbfd::LocalDiscriminator::DynamicDiscriminators::has_operation() const
 {
-    for (std::size_t index=0; index<dynamic_discriminator.size(); index++)
+    for (std::size_t index=0; index<dynamic_discriminator.len(); index++)
     {
         if(dynamic_discriminator[index]->has_operation())
             return true;
@@ -1193,7 +1222,7 @@ std::shared_ptr<Entity> Sbfd::LocalDiscriminator::DynamicDiscriminators::get_chi
     {
         auto c = std::make_shared<Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator>();
         c->parent = this;
-        dynamic_discriminator.push_back(c);
+        dynamic_discriminator.append(c);
         return c;
     }
 
@@ -1205,7 +1234,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::LocalDiscriminator::Dynamic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dynamic_discriminator)
+    for (auto c : dynamic_discriminator.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1236,7 +1265,7 @@ Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator::DynamicDi
     discriminator{YType::uint32, "discriminator"}
 {
 
-    yang_name = "dynamic-discriminator"; yang_parent_name = "dynamic-discriminators"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dynamic-discriminator"; yang_parent_name = "dynamic-discriminators"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator::~DynamicDiscriminator()
@@ -1245,6 +1274,7 @@ Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator::~DynamicD
 
 bool Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return discriminator.is_set;
 }
 
@@ -1264,7 +1294,8 @@ std::string Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminato
 std::string Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dynamic-discriminator" <<"[discriminator='" <<discriminator <<"']";
+    path_buffer << "dynamic-discriminator";
+    ADD_KEY_TOKEN(discriminator, "discriminator");
     return path_buffer.str();
 }
 
@@ -1316,9 +1347,11 @@ bool Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator::has_
 }
 
 Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminators()
+    :
+    ipv4_discriminator(this, {"address"})
 {
 
-    yang_name = "ipv4-discriminators"; yang_parent_name = "local-discriminator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-discriminators"; yang_parent_name = "local-discriminator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::LocalDiscriminator::Ipv4Discriminators::~Ipv4Discriminators()
@@ -1327,7 +1360,8 @@ Sbfd::LocalDiscriminator::Ipv4Discriminators::~Ipv4Discriminators()
 
 bool Sbfd::LocalDiscriminator::Ipv4Discriminators::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_discriminator.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_discriminator.len(); index++)
     {
         if(ipv4_discriminator[index]->has_data())
             return true;
@@ -1337,7 +1371,7 @@ bool Sbfd::LocalDiscriminator::Ipv4Discriminators::has_data() const
 
 bool Sbfd::LocalDiscriminator::Ipv4Discriminators::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_discriminator.size(); index++)
+    for (std::size_t index=0; index<ipv4_discriminator.len(); index++)
     {
         if(ipv4_discriminator[index]->has_operation())
             return true;
@@ -1374,7 +1408,7 @@ std::shared_ptr<Entity> Sbfd::LocalDiscriminator::Ipv4Discriminators::get_child_
     {
         auto c = std::make_shared<Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator>();
         c->parent = this;
-        ipv4_discriminator.push_back(c);
+        ipv4_discriminator.append(c);
         return c;
     }
 
@@ -1386,7 +1420,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::LocalDiscriminator::Ipv4Dis
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_discriminator)
+    for (auto c : ipv4_discriminator.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1417,7 +1451,7 @@ Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator::Ipv4Discriminat
     address{YType::str, "address"}
 {
 
-    yang_name = "ipv4-discriminator"; yang_parent_name = "ipv4-discriminators"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-discriminator"; yang_parent_name = "ipv4-discriminators"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator::~Ipv4Discriminator()
@@ -1426,6 +1460,7 @@ Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator::~Ipv4Discrimina
 
 bool Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -1445,7 +1480,8 @@ std::string Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator::get
 std::string Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-discriminator" <<"[address='" <<address <<"']";
+    path_buffer << "ipv4-discriminator";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -1497,9 +1533,11 @@ bool Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator::has_leaf_o
 }
 
 Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminators()
+    :
+    val32_discriminator(this, {"discriminator"})
 {
 
-    yang_name = "val32-discriminators"; yang_parent_name = "local-discriminator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "val32-discriminators"; yang_parent_name = "local-discriminator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::LocalDiscriminator::Val32Discriminators::~Val32Discriminators()
@@ -1508,7 +1546,8 @@ Sbfd::LocalDiscriminator::Val32Discriminators::~Val32Discriminators()
 
 bool Sbfd::LocalDiscriminator::Val32Discriminators::has_data() const
 {
-    for (std::size_t index=0; index<val32_discriminator.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<val32_discriminator.len(); index++)
     {
         if(val32_discriminator[index]->has_data())
             return true;
@@ -1518,7 +1557,7 @@ bool Sbfd::LocalDiscriminator::Val32Discriminators::has_data() const
 
 bool Sbfd::LocalDiscriminator::Val32Discriminators::has_operation() const
 {
-    for (std::size_t index=0; index<val32_discriminator.size(); index++)
+    for (std::size_t index=0; index<val32_discriminator.len(); index++)
     {
         if(val32_discriminator[index]->has_operation())
             return true;
@@ -1555,7 +1594,7 @@ std::shared_ptr<Entity> Sbfd::LocalDiscriminator::Val32Discriminators::get_child
     {
         auto c = std::make_shared<Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator>();
         c->parent = this;
-        val32_discriminator.push_back(c);
+        val32_discriminator.append(c);
         return c;
     }
 
@@ -1567,7 +1606,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::LocalDiscriminator::Val32Di
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : val32_discriminator)
+    for (auto c : val32_discriminator.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1598,7 +1637,7 @@ Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator::Val32Discrimi
     discriminator{YType::uint32, "discriminator"}
 {
 
-    yang_name = "val32-discriminator"; yang_parent_name = "val32-discriminators"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "val32-discriminator"; yang_parent_name = "val32-discriminators"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator::~Val32Discriminator()
@@ -1607,6 +1646,7 @@ Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator::~Val32Discrim
 
 bool Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return discriminator.is_set;
 }
 
@@ -1626,7 +1666,8 @@ std::string Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator::g
 std::string Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "val32-discriminator" <<"[discriminator='" <<discriminator <<"']";
+    path_buffer << "val32-discriminator";
+    ADD_KEY_TOKEN(discriminator, "discriminator");
     return path_buffer.str();
 }
 

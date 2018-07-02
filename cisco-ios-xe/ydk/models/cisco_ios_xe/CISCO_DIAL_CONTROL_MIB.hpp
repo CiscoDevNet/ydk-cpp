@@ -31,22 +31,22 @@ class CISCODIALCONTROLMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cpeerglobalconfiguration; //type: CISCODIALCONTROLMIB::Cpeerglobalconfiguration
-        class Ccallhistorytable; //type: CISCODIALCONTROLMIB::Ccallhistorytable
-        class Ccallhistoryiectable; //type: CISCODIALCONTROLMIB::Ccallhistoryiectable
+        class CPeerGlobalConfiguration; //type: CISCODIALCONTROLMIB::CPeerGlobalConfiguration
+        class CCallHistoryTable; //type: CISCODIALCONTROLMIB::CCallHistoryTable
+        class CCallHistoryIecTable; //type: CISCODIALCONTROLMIB::CCallHistoryIecTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::Cpeerglobalconfiguration> cpeerglobalconfiguration;
-        std::shared_ptr<cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::Ccallhistorytable> ccallhistorytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::Ccallhistoryiectable> ccallhistoryiectable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::CPeerGlobalConfiguration> cpeerglobalconfiguration;
+        std::shared_ptr<cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::CCallHistoryTable> ccallhistorytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::CCallHistoryIecTable> ccallhistoryiectable;
         
 }; // CISCODIALCONTROLMIB
 
 
-class CISCODIALCONTROLMIB::Cpeerglobalconfiguration : public ydk::Entity
+class CISCODIALCONTROLMIB::CPeerGlobalConfiguration : public ydk::Entity
 {
     public:
-        Cpeerglobalconfiguration();
-        ~Cpeerglobalconfiguration();
+        CPeerGlobalConfiguration();
+        ~CPeerGlobalConfiguration();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -59,17 +59,17 @@ class CISCODIALCONTROLMIB::Cpeerglobalconfiguration : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cpeersearchtype; //type: Cpeersearchtype
-        class Cpeersearchtype;
+        ydk::YLeaf cpeersearchtype; //type: CPeerSearchType
+        class CPeerSearchType;
 
-}; // CISCODIALCONTROLMIB::Cpeerglobalconfiguration
+}; // CISCODIALCONTROLMIB::CPeerGlobalConfiguration
 
 
-class CISCODIALCONTROLMIB::Ccallhistorytable : public ydk::Entity
+class CISCODIALCONTROLMIB::CCallHistoryTable : public ydk::Entity
 {
     public:
-        Ccallhistorytable();
-        ~Ccallhistorytable();
+        CCallHistoryTable();
+        ~CCallHistoryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -82,18 +82,18 @@ class CISCODIALCONTROLMIB::Ccallhistorytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ccallhistoryentry; //type: CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry
+        class CCallHistoryEntry; //type: CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry> > ccallhistoryentry;
+        ydk::YList ccallhistoryentry;
         
-}; // CISCODIALCONTROLMIB::Ccallhistorytable
+}; // CISCODIALCONTROLMIB::CCallHistoryTable
 
 
-class CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry : public ydk::Entity
+class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry : public ydk::Entity
 {
     public:
-        Ccallhistoryentry();
-        ~Ccallhistoryentry();
+        CCallHistoryEntry();
+        ~CCallHistoryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -117,28 +117,28 @@ class CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry : public ydk::En
         ydk::YLeaf ccallhistorydisconnecttext; //type: string
         ydk::YLeaf ccallhistoryconnecttime; //type: uint32
         ydk::YLeaf ccallhistorydisconnecttime; //type: uint32
-        ydk::YLeaf ccallhistorycallorigin; //type: Ccallhistorycallorigin
+        ydk::YLeaf ccallhistorycallorigin; //type: CCallHistoryCallOrigin
         ydk::YLeaf ccallhistorychargedunits; //type: uint32
-        ydk::YLeaf ccallhistoryinfotype; //type: Ccallhistoryinfotype
+        ydk::YLeaf ccallhistoryinfotype; //type: CCallHistoryInfoType
         ydk::YLeaf ccallhistorytransmitpackets; //type: uint32
         ydk::YLeaf ccallhistorytransmitbytes; //type: uint32
         ydk::YLeaf ccallhistoryreceivepackets; //type: uint32
         ydk::YLeaf ccallhistoryreceivebytes; //type: uint32
-        ydk::YLeaf ccallhistoryreleasesource; //type: Ccallhistoryreleasesource
-        ydk::YLeaf ccallhistoryreleasesrc; //type: Ccallhistoryreleasesrc
-        class Ccallhistorycallorigin;
-        class Ccallhistoryinfotype;
-        class Ccallhistoryreleasesource;
-        class Ccallhistoryreleasesrc;
+        ydk::YLeaf ccallhistoryreleasesource; //type: CCallHistoryReleaseSource
+        ydk::YLeaf ccallhistoryreleasesrc; //type: CCallHistoryReleaseSrc
+        class CCallHistoryCallOrigin;
+        class CCallHistoryInfoType;
+        class CCallHistoryReleaseSource;
+        class CCallHistoryReleaseSrc;
 
-}; // CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry
+}; // CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry
 
 
-class CISCODIALCONTROLMIB::Ccallhistoryiectable : public ydk::Entity
+class CISCODIALCONTROLMIB::CCallHistoryIecTable : public ydk::Entity
 {
     public:
-        Ccallhistoryiectable();
-        ~Ccallhistoryiectable();
+        CCallHistoryIecTable();
+        ~CCallHistoryIecTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -151,18 +151,18 @@ class CISCODIALCONTROLMIB::Ccallhistoryiectable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ccallhistoryiecentry; //type: CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry
+        class CCallHistoryIecEntry; //type: CISCODIALCONTROLMIB::CCallHistoryIecTable::CCallHistoryIecEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry> > ccallhistoryiecentry;
+        ydk::YList ccallhistoryiecentry;
         
-}; // CISCODIALCONTROLMIB::Ccallhistoryiectable
+}; // CISCODIALCONTROLMIB::CCallHistoryIecTable
 
 
-class CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry : public ydk::Entity
+class CISCODIALCONTROLMIB::CCallHistoryIecTable::CCallHistoryIecEntry : public ydk::Entity
 {
     public:
-        Ccallhistoryiecentry();
-        ~Ccallhistoryiecentry();
+        CCallHistoryIecEntry();
+        ~CCallHistoryIecEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -175,14 +175,14 @@ class CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::ccallhistoryindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::ccallhistoryindex)
         ydk::YLeaf ccallhistoryindex;
         ydk::YLeaf ccallhistoryiecindex; //type: uint32
         ydk::YLeaf ccallhistoryiec; //type: string
 
-}; // CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry
+}; // CISCODIALCONTROLMIB::CCallHistoryIecTable::CCallHistoryIecEntry
 
-class CISCODIALCONTROLMIB::Cpeerglobalconfiguration::Cpeersearchtype : public ydk::Enum
+class CISCODIALCONTROLMIB::CPeerGlobalConfiguration::CPeerSearchType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -191,7 +191,7 @@ class CISCODIALCONTROLMIB::Cpeerglobalconfiguration::Cpeersearchtype : public yd
 
 };
 
-class CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistorycallorigin : public ydk::Enum
+class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::CCallHistoryCallOrigin : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf originate;
@@ -200,7 +200,7 @@ class CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistorycal
 
 };
 
-class CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype : public ydk::Enum
+class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::CCallHistoryInfoType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -216,7 +216,7 @@ class CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinf
 
 };
 
-class CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource : public ydk::Enum
+class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::CCallHistoryReleaseSource : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf callingPartyInPstn;
@@ -232,7 +232,7 @@ class CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryrel
 
 };
 
-class CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc : public ydk::Enum
+class CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::CCallHistoryReleaseSrc : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf callingPartyInPstn;

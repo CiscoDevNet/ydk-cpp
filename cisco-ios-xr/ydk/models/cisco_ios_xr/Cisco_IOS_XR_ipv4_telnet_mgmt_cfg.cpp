@@ -17,7 +17,7 @@ Telnet::Telnet()
 {
     vrfs->parent = this;
 
-    yang_name = "telnet"; yang_parent_name = "Cisco-IOS-XR-ipv4-telnet-mgmt-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "telnet"; yang_parent_name = "Cisco-IOS-XR-ipv4-telnet-mgmt-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Telnet::~Telnet()
@@ -26,6 +26,7 @@ Telnet::~Telnet()
 
 bool Telnet::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrfs !=  nullptr && vrfs->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Telnet::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Telnet::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "telnet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "telnet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Telnet::Vrfs::~Vrfs()
@@ -129,7 +132,8 @@ Telnet::Vrfs::~Vrfs()
 
 bool Telnet::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Telnet::Vrfs::has_data() const
 
 bool Telnet::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Telnet::Vrfs::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Telnet::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Telnet::Vrfs::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool Telnet::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
 Telnet::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     ipv4(std::make_shared<Telnet::Vrfs::Vrf::Ipv4>())
 {
     ipv4->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Telnet::Vrfs::Vrf::~Vrf()
@@ -231,6 +235,7 @@ Telnet::Vrfs::Vrf::~Vrf()
 
 bool Telnet::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (ipv4 !=  nullptr && ipv4->has_data());
 }
@@ -252,7 +257,8 @@ std::string Telnet::Vrfs::Vrf::get_absolute_path() const
 std::string Telnet::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -322,7 +328,7 @@ Telnet::Vrfs::Vrf::Ipv4::Ipv4()
     dscp{YType::uint32, "dscp"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Telnet::Vrfs::Vrf::Ipv4::~Ipv4()
@@ -331,6 +337,7 @@ Telnet::Vrfs::Vrf::Ipv4::~Ipv4()
 
 bool Telnet::Vrfs::Vrf::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp.is_set;
 }
 

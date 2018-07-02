@@ -11,31 +11,32 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_dot1x_oper {
 
-Dot1X::Dot1X()
+Dot1x::Dot1x()
     :
-    statistics(std::make_shared<Dot1X::Statistics>())
-	,nodes(std::make_shared<Dot1X::Nodes>())
-	,session(std::make_shared<Dot1X::Session>())
+    statistics(std::make_shared<Dot1x::Statistics>())
+    , nodes(std::make_shared<Dot1x::Nodes>())
+    , session(std::make_shared<Dot1x::Session>())
 {
     statistics->parent = this;
     nodes->parent = this;
     session->parent = this;
 
-    yang_name = "dot1x"; yang_parent_name = "Cisco-IOS-XR-dot1x-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "dot1x"; yang_parent_name = "Cisco-IOS-XR-dot1x-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
-Dot1X::~Dot1X()
+Dot1x::~Dot1x()
 {
 }
 
-bool Dot1X::has_data() const
+bool Dot1x::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data())
 	|| (nodes !=  nullptr && nodes->has_data())
 	|| (session !=  nullptr && session->has_data());
 }
 
-bool Dot1X::has_operation() const
+bool Dot1x::has_operation() const
 {
     return is_set(yfilter)
 	|| (statistics !=  nullptr && statistics->has_operation())
@@ -43,14 +44,14 @@ bool Dot1X::has_operation() const
 	|| (session !=  nullptr && session->has_operation());
 }
 
-std::string Dot1X::get_segment_path() const
+std::string Dot1x::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dot1x-oper:dot1x";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -59,13 +60,13 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Dot1X::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<Dot1X::Statistics>();
+            statistics = std::make_shared<Dot1x::Statistics>();
         }
         return statistics;
     }
@@ -74,7 +75,7 @@ std::shared_ptr<Entity> Dot1X::get_child_by_name(const std::string & child_yang_
     {
         if(nodes == nullptr)
         {
-            nodes = std::make_shared<Dot1X::Nodes>();
+            nodes = std::make_shared<Dot1x::Nodes>();
         }
         return nodes;
     }
@@ -83,7 +84,7 @@ std::shared_ptr<Entity> Dot1X::get_child_by_name(const std::string & child_yang_
     {
         if(session == nullptr)
         {
-            session = std::make_shared<Dot1X::Session>();
+            session = std::make_shared<Dot1x::Session>();
         }
         return session;
     }
@@ -91,7 +92,7 @@ std::shared_ptr<Entity> Dot1X::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -113,85 +114,86 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::get_children() const
     return children;
 }
 
-void Dot1X::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dot1X::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Dot1X::clone_ptr() const
+std::shared_ptr<Entity> Dot1x::clone_ptr() const
 {
-    return std::make_shared<Dot1X>();
+    return std::make_shared<Dot1x>();
 }
 
-std::string Dot1X::get_bundle_yang_models_location() const
+std::string Dot1x::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string Dot1X::get_bundle_name() const
+std::string Dot1x::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function Dot1X::get_augment_capabilities_function() const
+augment_capabilities_function Dot1x::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> Dot1X::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> Dot1x::get_namespace_identity_lookup() const
 {
     return cisco_ios_xr_namespace_identity_lookup;
 }
 
-bool Dot1X::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "statistics" || name == "nodes" || name == "session")
         return true;
     return false;
 }
 
-Dot1X::Statistics::Statistics()
+Dot1x::Statistics::Statistics()
     :
-    interface_statistics(std::make_shared<Dot1X::Statistics::InterfaceStatistics>())
+    interface_statistics(std::make_shared<Dot1x::Statistics::InterfaceStatistics>())
 {
     interface_statistics->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Dot1X::Statistics::~Statistics()
+Dot1x::Statistics::~Statistics()
 {
 }
 
-bool Dot1X::Statistics::has_data() const
+bool Dot1x::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface_statistics !=  nullptr && interface_statistics->has_data());
 }
 
-bool Dot1X::Statistics::has_operation() const
+bool Dot1x::Statistics::has_operation() const
 {
     return is_set(yfilter)
 	|| (interface_statistics !=  nullptr && interface_statistics->has_operation());
 }
 
-std::string Dot1X::Statistics::get_absolute_path() const
+std::string Dot1x::Statistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dot1x-oper:dot1x/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Dot1X::Statistics::get_segment_path() const
+std::string Dot1x::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Statistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -200,13 +202,13 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Statistics::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Dot1X::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-statistics")
     {
         if(interface_statistics == nullptr)
         {
-            interface_statistics = std::make_shared<Dot1X::Statistics::InterfaceStatistics>();
+            interface_statistics = std::make_shared<Dot1x::Statistics::InterfaceStatistics>();
         }
         return interface_statistics;
     }
@@ -214,7 +216,7 @@ std::shared_ptr<Entity> Dot1X::Statistics::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -226,34 +228,37 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::get_children()
     return children;
 }
 
-void Dot1X::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dot1X::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dot1X::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-statistics")
         return true;
     return false;
 }
 
-Dot1X::Statistics::InterfaceStatistics::InterfaceStatistics()
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistics()
+    :
+    interface_statistic(this, {"name"})
 {
 
-    yang_name = "interface-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Dot1X::Statistics::InterfaceStatistics::~InterfaceStatistics()
+Dot1x::Statistics::InterfaceStatistics::~InterfaceStatistics()
 {
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::has_data() const
+bool Dot1x::Statistics::InterfaceStatistics::has_data() const
 {
-    for (std::size_t index=0; index<interface_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_statistic.len(); index++)
     {
         if(interface_statistic[index]->has_data())
             return true;
@@ -261,9 +266,9 @@ bool Dot1X::Statistics::InterfaceStatistics::has_data() const
     return false;
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::has_operation() const
+bool Dot1x::Statistics::InterfaceStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<interface_statistic.size(); index++)
+    for (std::size_t index=0; index<interface_statistic.len(); index++)
     {
         if(interface_statistic[index]->has_operation())
             return true;
@@ -271,21 +276,21 @@ bool Dot1X::Statistics::InterfaceStatistics::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Dot1X::Statistics::InterfaceStatistics::get_absolute_path() const
+std::string Dot1x::Statistics::InterfaceStatistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dot1x-oper:dot1x/statistics/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Dot1X::Statistics::InterfaceStatistics::get_segment_path() const
+std::string Dot1x::Statistics::InterfaceStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Statistics::InterfaceStatistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStatistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -294,25 +299,25 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Statistics::InterfaceStati
 
 }
 
-std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-statistic")
     {
-        auto c = std::make_shared<Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic>();
+        auto c = std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic>();
         c->parent = this;
-        interface_statistic.push_back(c);
+        interface_statistic.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::InterfaceStatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_statistic)
+    for (auto c : interface_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -323,44 +328,45 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::InterfaceStati
     return children;
 }
 
-void Dot1X::Statistics::InterfaceStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Statistics::InterfaceStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dot1X::Statistics::InterfaceStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Statistics::InterfaceStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Statistics::InterfaceStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-statistic")
         return true;
     return false;
 }
 
-Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::InterfaceStatistic()
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::InterfaceStatistic()
     :
     name{YType::str, "name"},
     interface_name{YType::str, "interface-name"},
     pae{YType::str, "pae"}
-    	,
-    idb(std::make_shared<Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb>())
-	,auth(std::make_shared<Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth>())
-	,supp(std::make_shared<Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp>())
+        ,
+    idb(std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb>())
+    , auth(std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth>())
+    , supp(std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp>())
 {
     idb->parent = this;
     auth->parent = this;
     supp->parent = this;
 
-    yang_name = "interface-statistic"; yang_parent_name = "interface-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-statistic"; yang_parent_name = "interface-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::~InterfaceStatistic()
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::~InterfaceStatistic()
 {
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::has_data() const
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| interface_name.is_set
 	|| pae.is_set
@@ -369,7 +375,7 @@ bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::has_data() cons
 	|| (supp !=  nullptr && supp->has_data());
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::has_operation() const
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
@@ -380,21 +386,22 @@ bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::has_operation()
 	|| (supp !=  nullptr && supp->has_operation());
 }
 
-std::string Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::get_absolute_path() const
+std::string Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dot1x-oper:dot1x/statistics/interface-statistics/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::get_segment_path() const
+std::string Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-statistic" <<"[name='" <<name <<"']";
+    path_buffer << "interface-statistic";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -406,13 +413,13 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Statistics::InterfaceStati
 
 }
 
-std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "idb")
     {
         if(idb == nullptr)
         {
-            idb = std::make_shared<Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb>();
+            idb = std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb>();
         }
         return idb;
     }
@@ -421,7 +428,7 @@ std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::InterfaceStatist
     {
         if(auth == nullptr)
         {
-            auth = std::make_shared<Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth>();
+            auth = std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth>();
         }
         return auth;
     }
@@ -430,7 +437,7 @@ std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::InterfaceStatist
     {
         if(supp == nullptr)
         {
-            supp = std::make_shared<Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp>();
+            supp = std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp>();
         }
         return supp;
     }
@@ -438,7 +445,7 @@ std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::InterfaceStatist
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -460,7 +467,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::InterfaceStati
     return children;
 }
 
-void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -482,7 +489,7 @@ void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::set_value(const
     }
 }
 
-void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -498,35 +505,36 @@ void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::set_filter(cons
     }
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "idb" || name == "auth" || name == "supp" || name == "name" || name == "interface-name" || name == "pae")
         return true;
     return false;
 }
 
-Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::Idb()
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::Idb()
     :
     rx_total{YType::uint32, "rx-total"},
     tx_total{YType::uint32, "tx-total"},
     no_rx_on_intf_down{YType::uint32, "no-rx-on-intf-down"}
 {
 
-    yang_name = "idb"; yang_parent_name = "interface-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idb"; yang_parent_name = "interface-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::~Idb()
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::~Idb()
 {
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::has_data() const
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::has_data() const
 {
+    if (is_presence_container) return true;
     return rx_total.is_set
 	|| tx_total.is_set
 	|| no_rx_on_intf_down.is_set;
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::has_operation() const
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rx_total.yfilter)
@@ -534,14 +542,14 @@ bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::has_operat
 	|| ydk::is_set(no_rx_on_intf_down.yfilter);
 }
 
-std::string Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_segment_path() const
+std::string Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "idb";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -553,19 +561,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Statistics::InterfaceStati
 
 }
 
-std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rx-total")
     {
@@ -587,7 +595,7 @@ void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::set_value(
     }
 }
 
-void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rx-total")
     {
@@ -603,14 +611,14 @@ void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::set_filter
     }
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rx-total" || name == "tx-total" || name == "no-rx-on-intf-down")
         return true;
     return false;
 }
 
-Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::Auth()
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::Auth()
     :
     rx_start{YType::uint32, "rx-start"},
     rx_logoff{YType::uint32, "rx-logoff"},
@@ -625,15 +633,16 @@ Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::Auth()
     tx_total{YType::uint32, "tx-total"}
 {
 
-    yang_name = "auth"; yang_parent_name = "interface-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auth"; yang_parent_name = "interface-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::~Auth()
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::~Auth()
 {
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::has_data() const
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::has_data() const
 {
+    if (is_presence_container) return true;
     return rx_start.is_set
 	|| rx_logoff.is_set
 	|| rx_resp.is_set
@@ -647,7 +656,7 @@ bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::has_data(
 	|| tx_total.is_set;
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::has_operation() const
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rx_start.yfilter)
@@ -663,14 +672,14 @@ bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::has_opera
 	|| ydk::is_set(tx_total.yfilter);
 }
 
-std::string Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_segment_path() const
+std::string Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "auth";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -690,19 +699,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Statistics::InterfaceStati
 
 }
 
-std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rx-start")
     {
@@ -772,7 +781,7 @@ void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::set_value
     }
 }
 
-void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rx-start")
     {
@@ -820,14 +829,14 @@ void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::set_filte
     }
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rx-start" || name == "rx-logoff" || name == "rx-resp" || name == "rx-resp-id" || name == "rx-invalid" || name == "rx-len-err" || name == "rx-my-mac-err" || name == "rx-total" || name == "tx-req" || name == "tx-reqid" || name == "tx-total")
         return true;
     return false;
 }
 
-Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::Supp()
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::Supp()
     :
     rx_req{YType::uint32, "rx-req"},
     rx_invalid{YType::uint32, "rx-invalid"},
@@ -840,15 +849,16 @@ Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::Supp()
     tx_total{YType::uint32, "tx-total"}
 {
 
-    yang_name = "supp"; yang_parent_name = "interface-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "supp"; yang_parent_name = "interface-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::~Supp()
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::~Supp()
 {
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::has_data() const
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::has_data() const
 {
+    if (is_presence_container) return true;
     return rx_req.is_set
 	|| rx_invalid.is_set
 	|| rx_len_err.is_set
@@ -860,7 +870,7 @@ bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::has_data(
 	|| tx_total.is_set;
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::has_operation() const
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rx_req.yfilter)
@@ -874,14 +884,14 @@ bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::has_opera
 	|| ydk::is_set(tx_total.yfilter);
 }
 
-std::string Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_segment_path() const
+std::string Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "supp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -899,19 +909,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Statistics::InterfaceStati
 
 }
 
-std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rx-req")
     {
@@ -969,7 +979,7 @@ void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::set_value
     }
 }
 
-void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rx-req")
     {
@@ -1009,26 +1019,29 @@ void Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::set_filte
     }
 }
 
-bool Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rx-req" || name == "rx-invalid" || name == "rx-len-err" || name == "rx-my-mac-err" || name == "rx-total" || name == "tx-start" || name == "tx-logoff" || name == "tx-resp" || name == "tx-total")
         return true;
     return false;
 }
 
-Dot1X::Nodes::Nodes()
+Dot1x::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Dot1X::Nodes::~Nodes()
+Dot1x::Nodes::~Nodes()
 {
 }
 
-bool Dot1X::Nodes::has_data() const
+bool Dot1x::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -1036,9 +1049,9 @@ bool Dot1X::Nodes::has_data() const
     return false;
 }
 
-bool Dot1X::Nodes::has_operation() const
+bool Dot1x::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -1046,21 +1059,21 @@ bool Dot1X::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Dot1X::Nodes::get_absolute_path() const
+std::string Dot1x::Nodes::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dot1x-oper:dot1x/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Dot1X::Nodes::get_segment_path() const
+std::string Dot1x::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1069,25 +1082,25 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Dot1X::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Dot1X::Nodes::Node>();
+        auto c = std::make_shared<Dot1x::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1098,46 +1111,47 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::get_children() cons
     return children;
 }
 
-void Dot1X::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dot1X::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dot1X::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "node")
         return true;
     return false;
 }
 
-Dot1X::Nodes::Node::Node()
+Dot1x::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
-    dot1x_defaults(std::make_shared<Dot1X::Nodes::Node::Dot1XDefaults>())
-	,statistics(std::make_shared<Dot1X::Nodes::Node::Statistics>())
+        ,
+    dot1x_defaults(std::make_shared<Dot1x::Nodes::Node::Dot1xDefaults>())
+    , statistics(std::make_shared<Dot1x::Nodes::Node::Statistics>())
 {
     dot1x_defaults->parent = this;
     statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Dot1X::Nodes::Node::~Node()
+Dot1x::Nodes::Node::~Node()
 {
 }
 
-bool Dot1X::Nodes::Node::has_data() const
+bool Dot1x::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (dot1x_defaults !=  nullptr && dot1x_defaults->has_data())
 	|| (statistics !=  nullptr && statistics->has_data());
 }
 
-bool Dot1X::Nodes::Node::has_operation() const
+bool Dot1x::Nodes::Node::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
@@ -1145,21 +1159,22 @@ bool Dot1X::Nodes::Node::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
-std::string Dot1X::Nodes::Node::get_absolute_path() const
+std::string Dot1x::Nodes::Node::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dot1x-oper:dot1x/nodes/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Dot1X::Nodes::Node::get_segment_path() const
+std::string Dot1x::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1169,13 +1184,13 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Dot1X::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1x-defaults")
     {
         if(dot1x_defaults == nullptr)
         {
-            dot1x_defaults = std::make_shared<Dot1X::Nodes::Node::Dot1XDefaults>();
+            dot1x_defaults = std::make_shared<Dot1x::Nodes::Node::Dot1xDefaults>();
         }
         return dot1x_defaults;
     }
@@ -1184,7 +1199,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::get_child_by_name(const std::string 
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<Dot1X::Nodes::Node::Statistics>();
+            statistics = std::make_shared<Dot1x::Nodes::Node::Statistics>();
         }
         return statistics;
     }
@@ -1192,7 +1207,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1209,7 +1224,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::get_children(
     return children;
 }
 
-void Dot1X::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
@@ -1219,7 +1234,7 @@ void Dot1X::Nodes::Node::set_value(const std::string & value_path, const std::st
     }
 }
 
-void Dot1X::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "node-name")
     {
@@ -1227,38 +1242,39 @@ void Dot1X::Nodes::Node::set_filter(const std::string & value_path, YFilter yfil
     }
 }
 
-bool Dot1X::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1x-defaults" || name == "statistics" || name == "node-name")
         return true;
     return false;
 }
 
-Dot1X::Nodes::Node::Dot1XDefaults::Dot1XDefaults()
+Dot1x::Nodes::Node::Dot1xDefaults::Dot1xDefaults()
     :
     version{YType::uint32, "version"}
-    	,
-    auth_timers(std::make_shared<Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers>())
-	,supp_timers(std::make_shared<Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers>())
+        ,
+    auth_timers(std::make_shared<Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers>())
+    , supp_timers(std::make_shared<Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers>())
 {
     auth_timers->parent = this;
     supp_timers->parent = this;
 
-    yang_name = "dot1x-defaults"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1x-defaults"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Nodes::Node::Dot1XDefaults::~Dot1XDefaults()
+Dot1x::Nodes::Node::Dot1xDefaults::~Dot1xDefaults()
 {
 }
 
-bool Dot1X::Nodes::Node::Dot1XDefaults::has_data() const
+bool Dot1x::Nodes::Node::Dot1xDefaults::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| (auth_timers !=  nullptr && auth_timers->has_data())
 	|| (supp_timers !=  nullptr && supp_timers->has_data());
 }
 
-bool Dot1X::Nodes::Node::Dot1XDefaults::has_operation() const
+bool Dot1x::Nodes::Node::Dot1xDefaults::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(version.yfilter)
@@ -1266,14 +1282,14 @@ bool Dot1X::Nodes::Node::Dot1XDefaults::has_operation() const
 	|| (supp_timers !=  nullptr && supp_timers->has_operation());
 }
 
-std::string Dot1X::Nodes::Node::Dot1XDefaults::get_segment_path() const
+std::string Dot1x::Nodes::Node::Dot1xDefaults::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1x-defaults";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Dot1XDefaults::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Dot1xDefaults::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1283,13 +1299,13 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Dot1XDefaults
 
 }
 
-std::shared_ptr<Entity> Dot1X::Nodes::Node::Dot1XDefaults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Nodes::Node::Dot1xDefaults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auth-timers")
     {
         if(auth_timers == nullptr)
         {
-            auth_timers = std::make_shared<Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers>();
+            auth_timers = std::make_shared<Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers>();
         }
         return auth_timers;
     }
@@ -1298,7 +1314,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Dot1XDefaults::get_child_by_name(con
     {
         if(supp_timers == nullptr)
         {
-            supp_timers = std::make_shared<Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers>();
+            supp_timers = std::make_shared<Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers>();
         }
         return supp_timers;
     }
@@ -1306,7 +1322,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Dot1XDefaults::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Dot1XDefaults::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Dot1xDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1323,7 +1339,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Dot1XDefaults
     return children;
 }
 
-void Dot1X::Nodes::Node::Dot1XDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Nodes::Node::Dot1xDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "version")
     {
@@ -1333,7 +1349,7 @@ void Dot1X::Nodes::Node::Dot1XDefaults::set_value(const std::string & value_path
     }
 }
 
-void Dot1X::Nodes::Node::Dot1XDefaults::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Nodes::Node::Dot1xDefaults::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "version")
     {
@@ -1341,14 +1357,14 @@ void Dot1X::Nodes::Node::Dot1XDefaults::set_filter(const std::string & value_pat
     }
 }
 
-bool Dot1X::Nodes::Node::Dot1XDefaults::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Nodes::Node::Dot1xDefaults::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "auth-timers" || name == "supp-timers" || name == "version")
         return true;
     return false;
 }
 
-Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::AuthTimers()
+Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::AuthTimers()
     :
     quiet_period{YType::uint32, "quiet-period"},
     tx_period{YType::uint32, "tx-period"},
@@ -1358,15 +1374,16 @@ Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::AuthTimers()
     reauth_period{YType::uint32, "reauth-period"}
 {
 
-    yang_name = "auth-timers"; yang_parent_name = "dot1x-defaults"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auth-timers"; yang_parent_name = "dot1x-defaults"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::~AuthTimers()
+Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::~AuthTimers()
 {
 }
 
-bool Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::has_data() const
+bool Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::has_data() const
 {
+    if (is_presence_container) return true;
     return quiet_period.is_set
 	|| tx_period.is_set
 	|| max_reauth_req.is_set
@@ -1375,7 +1392,7 @@ bool Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::has_data() const
 	|| reauth_period.is_set;
 }
 
-bool Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::has_operation() const
+bool Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quiet_period.yfilter)
@@ -1386,14 +1403,14 @@ bool Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::has_operation() const
 	|| ydk::is_set(reauth_period.yfilter);
 }
 
-std::string Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::get_segment_path() const
+std::string Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "auth-timers";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1408,19 +1425,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Dot1XDefaults
 
 }
 
-std::shared_ptr<Entity> Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quiet-period")
     {
@@ -1460,7 +1477,7 @@ void Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::set_value(const std::string 
     }
 }
 
-void Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quiet-period")
     {
@@ -1488,14 +1505,14 @@ void Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::set_filter(const std::string
     }
 }
 
-bool Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quiet-period" || name == "tx-period" || name == "max-reauth-req" || name == "supp-timeout" || name == "max-req" || name == "reauth-period")
         return true;
     return false;
 }
 
-Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::SuppTimers()
+Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::SuppTimers()
     :
     auth_period{YType::uint32, "auth-period"},
     held_period{YType::uint32, "held-period"},
@@ -1503,22 +1520,23 @@ Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::SuppTimers()
     max_start{YType::uint32, "max-start"}
 {
 
-    yang_name = "supp-timers"; yang_parent_name = "dot1x-defaults"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "supp-timers"; yang_parent_name = "dot1x-defaults"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::~SuppTimers()
+Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::~SuppTimers()
 {
 }
 
-bool Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::has_data() const
+bool Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::has_data() const
 {
+    if (is_presence_container) return true;
     return auth_period.is_set
 	|| held_period.is_set
 	|| start_period.is_set
 	|| max_start.is_set;
 }
 
-bool Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::has_operation() const
+bool Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(auth_period.yfilter)
@@ -1527,14 +1545,14 @@ bool Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::has_operation() const
 	|| ydk::is_set(max_start.yfilter);
 }
 
-std::string Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::get_segment_path() const
+std::string Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "supp-timers";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1547,19 +1565,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Dot1XDefaults
 
 }
 
-std::shared_ptr<Entity> Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auth-period")
     {
@@ -1587,7 +1605,7 @@ void Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::set_value(const std::string 
     }
 }
 
-void Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "auth-period")
     {
@@ -1607,29 +1625,31 @@ void Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::set_filter(const std::string
     }
 }
 
-bool Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "auth-period" || name == "held-period" || name == "start-period" || name == "max-start")
         return true;
     return false;
 }
 
-Dot1X::Nodes::Node::Statistics::Statistics()
+Dot1x::Nodes::Node::Statistics::Statistics()
     :
-    gl_stats(std::make_shared<Dot1X::Nodes::Node::Statistics::GlStats>())
+    gl_stats(std::make_shared<Dot1x::Nodes::Node::Statistics::GlStats>())
+    , if_stats(this, {})
 {
     gl_stats->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Nodes::Node::Statistics::~Statistics()
+Dot1x::Nodes::Node::Statistics::~Statistics()
 {
 }
 
-bool Dot1X::Nodes::Node::Statistics::has_data() const
+bool Dot1x::Nodes::Node::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<if_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<if_stats.len(); index++)
     {
         if(if_stats[index]->has_data())
             return true;
@@ -1637,9 +1657,9 @@ bool Dot1X::Nodes::Node::Statistics::has_data() const
     return (gl_stats !=  nullptr && gl_stats->has_data());
 }
 
-bool Dot1X::Nodes::Node::Statistics::has_operation() const
+bool Dot1x::Nodes::Node::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<if_stats.size(); index++)
+    for (std::size_t index=0; index<if_stats.len(); index++)
     {
         if(if_stats[index]->has_operation())
             return true;
@@ -1648,14 +1668,14 @@ bool Dot1X::Nodes::Node::Statistics::has_operation() const
 	|| (gl_stats !=  nullptr && gl_stats->has_operation());
 }
 
-std::string Dot1X::Nodes::Node::Statistics::get_segment_path() const
+std::string Dot1x::Nodes::Node::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Statistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1664,29 +1684,29 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Statistics::g
 
 }
 
-std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "gl-stats")
     {
         if(gl_stats == nullptr)
         {
-            gl_stats = std::make_shared<Dot1X::Nodes::Node::Statistics::GlStats>();
+            gl_stats = std::make_shared<Dot1x::Nodes::Node::Statistics::GlStats>();
         }
         return gl_stats;
     }
 
     if(child_yang_name == "if-stats")
     {
-        auto c = std::make_shared<Dot1X::Nodes::Node::Statistics::IfStats>();
+        auto c = std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats>();
         c->parent = this;
-        if_stats.push_back(c);
+        if_stats.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1696,7 +1716,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::g
     }
 
     count = 0;
-    for (auto const & c : if_stats)
+    for (auto c : if_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1707,43 +1727,44 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::g
     return children;
 }
 
-void Dot1X::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dot1X::Nodes::Node::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Nodes::Node::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dot1X::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "gl-stats" || name == "if-stats")
         return true;
     return false;
 }
 
-Dot1X::Nodes::Node::Statistics::GlStats::GlStats()
+Dot1x::Nodes::Node::Statistics::GlStats::GlStats()
     :
     tx_total{YType::uint32, "tx-total"},
     rx_total{YType::uint32, "rx-total"},
     rx_no_idb{YType::uint32, "rx-no-idb"}
 {
 
-    yang_name = "gl-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "gl-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Nodes::Node::Statistics::GlStats::~GlStats()
+Dot1x::Nodes::Node::Statistics::GlStats::~GlStats()
 {
 }
 
-bool Dot1X::Nodes::Node::Statistics::GlStats::has_data() const
+bool Dot1x::Nodes::Node::Statistics::GlStats::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_total.is_set
 	|| rx_total.is_set
 	|| rx_no_idb.is_set;
 }
 
-bool Dot1X::Nodes::Node::Statistics::GlStats::has_operation() const
+bool Dot1x::Nodes::Node::Statistics::GlStats::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tx_total.yfilter)
@@ -1751,14 +1772,14 @@ bool Dot1X::Nodes::Node::Statistics::GlStats::has_operation() const
 	|| ydk::is_set(rx_no_idb.yfilter);
 }
 
-std::string Dot1X::Nodes::Node::Statistics::GlStats::get_segment_path() const
+std::string Dot1x::Nodes::Node::Statistics::GlStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "gl-stats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Statistics::GlStats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::GlStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1770,19 +1791,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Statistics::G
 
 }
 
-std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::GlStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::GlStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::GlStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::GlStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Nodes::Node::Statistics::GlStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Nodes::Node::Statistics::GlStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tx-total")
     {
@@ -1804,7 +1825,7 @@ void Dot1X::Nodes::Node::Statistics::GlStats::set_value(const std::string & valu
     }
 }
 
-void Dot1X::Nodes::Node::Statistics::GlStats::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Nodes::Node::Statistics::GlStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tx-total")
     {
@@ -1820,35 +1841,36 @@ void Dot1X::Nodes::Node::Statistics::GlStats::set_filter(const std::string & val
     }
 }
 
-bool Dot1X::Nodes::Node::Statistics::GlStats::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Nodes::Node::Statistics::GlStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tx-total" || name == "rx-total" || name == "rx-no-idb")
         return true;
     return false;
 }
 
-Dot1X::Nodes::Node::Statistics::IfStats::IfStats()
+Dot1x::Nodes::Node::Statistics::IfStats::IfStats()
     :
     interface_name{YType::str, "interface-name"},
     pae{YType::str, "pae"}
-    	,
-    idb(std::make_shared<Dot1X::Nodes::Node::Statistics::IfStats::Idb>())
-	,auth(std::make_shared<Dot1X::Nodes::Node::Statistics::IfStats::Auth>())
-	,supp(std::make_shared<Dot1X::Nodes::Node::Statistics::IfStats::Supp>())
+        ,
+    idb(std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::Idb>())
+    , auth(std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::Auth>())
+    , supp(std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::Supp>())
 {
     idb->parent = this;
     auth->parent = this;
     supp->parent = this;
 
-    yang_name = "if-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Nodes::Node::Statistics::IfStats::~IfStats()
+Dot1x::Nodes::Node::Statistics::IfStats::~IfStats()
 {
 }
 
-bool Dot1X::Nodes::Node::Statistics::IfStats::has_data() const
+bool Dot1x::Nodes::Node::Statistics::IfStats::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| pae.is_set
 	|| (idb !=  nullptr && idb->has_data())
@@ -1856,7 +1878,7 @@ bool Dot1X::Nodes::Node::Statistics::IfStats::has_data() const
 	|| (supp !=  nullptr && supp->has_data());
 }
 
-bool Dot1X::Nodes::Node::Statistics::IfStats::has_operation() const
+bool Dot1x::Nodes::Node::Statistics::IfStats::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
@@ -1866,14 +1888,14 @@ bool Dot1X::Nodes::Node::Statistics::IfStats::has_operation() const
 	|| (supp !=  nullptr && supp->has_operation());
 }
 
-std::string Dot1X::Nodes::Node::Statistics::IfStats::get_segment_path() const
+std::string Dot1x::Nodes::Node::Statistics::IfStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "if-stats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Statistics::IfStats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::IfStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1884,13 +1906,13 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Statistics::I
 
 }
 
-std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::IfStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "idb")
     {
         if(idb == nullptr)
         {
-            idb = std::make_shared<Dot1X::Nodes::Node::Statistics::IfStats::Idb>();
+            idb = std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::Idb>();
         }
         return idb;
     }
@@ -1899,7 +1921,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::IfStats::get_child_by_na
     {
         if(auth == nullptr)
         {
-            auth = std::make_shared<Dot1X::Nodes::Node::Statistics::IfStats::Auth>();
+            auth = std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::Auth>();
         }
         return auth;
     }
@@ -1908,7 +1930,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::IfStats::get_child_by_na
     {
         if(supp == nullptr)
         {
-            supp = std::make_shared<Dot1X::Nodes::Node::Statistics::IfStats::Supp>();
+            supp = std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::Supp>();
         }
         return supp;
     }
@@ -1916,7 +1938,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::IfStats::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::IfStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::IfStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1938,7 +1960,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::I
     return children;
 }
 
-void Dot1X::Nodes::Node::Statistics::IfStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Nodes::Node::Statistics::IfStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -1954,7 +1976,7 @@ void Dot1X::Nodes::Node::Statistics::IfStats::set_value(const std::string & valu
     }
 }
 
-void Dot1X::Nodes::Node::Statistics::IfStats::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Nodes::Node::Statistics::IfStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -1966,35 +1988,36 @@ void Dot1X::Nodes::Node::Statistics::IfStats::set_filter(const std::string & val
     }
 }
 
-bool Dot1X::Nodes::Node::Statistics::IfStats::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Nodes::Node::Statistics::IfStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "idb" || name == "auth" || name == "supp" || name == "interface-name" || name == "pae")
         return true;
     return false;
 }
 
-Dot1X::Nodes::Node::Statistics::IfStats::Idb::Idb()
+Dot1x::Nodes::Node::Statistics::IfStats::Idb::Idb()
     :
     rx_total{YType::uint32, "rx-total"},
     tx_total{YType::uint32, "tx-total"},
     no_rx_on_intf_down{YType::uint32, "no-rx-on-intf-down"}
 {
 
-    yang_name = "idb"; yang_parent_name = "if-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idb"; yang_parent_name = "if-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Nodes::Node::Statistics::IfStats::Idb::~Idb()
+Dot1x::Nodes::Node::Statistics::IfStats::Idb::~Idb()
 {
 }
 
-bool Dot1X::Nodes::Node::Statistics::IfStats::Idb::has_data() const
+bool Dot1x::Nodes::Node::Statistics::IfStats::Idb::has_data() const
 {
+    if (is_presence_container) return true;
     return rx_total.is_set
 	|| tx_total.is_set
 	|| no_rx_on_intf_down.is_set;
 }
 
-bool Dot1X::Nodes::Node::Statistics::IfStats::Idb::has_operation() const
+bool Dot1x::Nodes::Node::Statistics::IfStats::Idb::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rx_total.yfilter)
@@ -2002,14 +2025,14 @@ bool Dot1X::Nodes::Node::Statistics::IfStats::Idb::has_operation() const
 	|| ydk::is_set(no_rx_on_intf_down.yfilter);
 }
 
-std::string Dot1X::Nodes::Node::Statistics::IfStats::Idb::get_segment_path() const
+std::string Dot1x::Nodes::Node::Statistics::IfStats::Idb::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "idb";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Statistics::IfStats::Idb::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::IfStats::Idb::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2021,19 +2044,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Statistics::I
 
 }
 
-std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::IfStats::Idb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::Idb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::IfStats::Idb::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::IfStats::Idb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Nodes::Node::Statistics::IfStats::Idb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Nodes::Node::Statistics::IfStats::Idb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rx-total")
     {
@@ -2055,7 +2078,7 @@ void Dot1X::Nodes::Node::Statistics::IfStats::Idb::set_value(const std::string &
     }
 }
 
-void Dot1X::Nodes::Node::Statistics::IfStats::Idb::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Nodes::Node::Statistics::IfStats::Idb::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rx-total")
     {
@@ -2071,14 +2094,14 @@ void Dot1X::Nodes::Node::Statistics::IfStats::Idb::set_filter(const std::string 
     }
 }
 
-bool Dot1X::Nodes::Node::Statistics::IfStats::Idb::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Nodes::Node::Statistics::IfStats::Idb::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rx-total" || name == "tx-total" || name == "no-rx-on-intf-down")
         return true;
     return false;
 }
 
-Dot1X::Nodes::Node::Statistics::IfStats::Auth::Auth()
+Dot1x::Nodes::Node::Statistics::IfStats::Auth::Auth()
     :
     rx_start{YType::uint32, "rx-start"},
     rx_logoff{YType::uint32, "rx-logoff"},
@@ -2093,15 +2116,16 @@ Dot1X::Nodes::Node::Statistics::IfStats::Auth::Auth()
     tx_total{YType::uint32, "tx-total"}
 {
 
-    yang_name = "auth"; yang_parent_name = "if-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auth"; yang_parent_name = "if-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Nodes::Node::Statistics::IfStats::Auth::~Auth()
+Dot1x::Nodes::Node::Statistics::IfStats::Auth::~Auth()
 {
 }
 
-bool Dot1X::Nodes::Node::Statistics::IfStats::Auth::has_data() const
+bool Dot1x::Nodes::Node::Statistics::IfStats::Auth::has_data() const
 {
+    if (is_presence_container) return true;
     return rx_start.is_set
 	|| rx_logoff.is_set
 	|| rx_resp.is_set
@@ -2115,7 +2139,7 @@ bool Dot1X::Nodes::Node::Statistics::IfStats::Auth::has_data() const
 	|| tx_total.is_set;
 }
 
-bool Dot1X::Nodes::Node::Statistics::IfStats::Auth::has_operation() const
+bool Dot1x::Nodes::Node::Statistics::IfStats::Auth::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rx_start.yfilter)
@@ -2131,14 +2155,14 @@ bool Dot1X::Nodes::Node::Statistics::IfStats::Auth::has_operation() const
 	|| ydk::is_set(tx_total.yfilter);
 }
 
-std::string Dot1X::Nodes::Node::Statistics::IfStats::Auth::get_segment_path() const
+std::string Dot1x::Nodes::Node::Statistics::IfStats::Auth::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "auth";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Statistics::IfStats::Auth::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::IfStats::Auth::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2158,19 +2182,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Statistics::I
 
 }
 
-std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::IfStats::Auth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::Auth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::IfStats::Auth::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::IfStats::Auth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Nodes::Node::Statistics::IfStats::Auth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Nodes::Node::Statistics::IfStats::Auth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rx-start")
     {
@@ -2240,7 +2264,7 @@ void Dot1X::Nodes::Node::Statistics::IfStats::Auth::set_value(const std::string 
     }
 }
 
-void Dot1X::Nodes::Node::Statistics::IfStats::Auth::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Nodes::Node::Statistics::IfStats::Auth::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rx-start")
     {
@@ -2288,14 +2312,14 @@ void Dot1X::Nodes::Node::Statistics::IfStats::Auth::set_filter(const std::string
     }
 }
 
-bool Dot1X::Nodes::Node::Statistics::IfStats::Auth::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Nodes::Node::Statistics::IfStats::Auth::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rx-start" || name == "rx-logoff" || name == "rx-resp" || name == "rx-resp-id" || name == "rx-invalid" || name == "rx-len-err" || name == "rx-my-mac-err" || name == "rx-total" || name == "tx-req" || name == "tx-reqid" || name == "tx-total")
         return true;
     return false;
 }
 
-Dot1X::Nodes::Node::Statistics::IfStats::Supp::Supp()
+Dot1x::Nodes::Node::Statistics::IfStats::Supp::Supp()
     :
     rx_req{YType::uint32, "rx-req"},
     rx_invalid{YType::uint32, "rx-invalid"},
@@ -2308,15 +2332,16 @@ Dot1X::Nodes::Node::Statistics::IfStats::Supp::Supp()
     tx_total{YType::uint32, "tx-total"}
 {
 
-    yang_name = "supp"; yang_parent_name = "if-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "supp"; yang_parent_name = "if-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Nodes::Node::Statistics::IfStats::Supp::~Supp()
+Dot1x::Nodes::Node::Statistics::IfStats::Supp::~Supp()
 {
 }
 
-bool Dot1X::Nodes::Node::Statistics::IfStats::Supp::has_data() const
+bool Dot1x::Nodes::Node::Statistics::IfStats::Supp::has_data() const
 {
+    if (is_presence_container) return true;
     return rx_req.is_set
 	|| rx_invalid.is_set
 	|| rx_len_err.is_set
@@ -2328,7 +2353,7 @@ bool Dot1X::Nodes::Node::Statistics::IfStats::Supp::has_data() const
 	|| tx_total.is_set;
 }
 
-bool Dot1X::Nodes::Node::Statistics::IfStats::Supp::has_operation() const
+bool Dot1x::Nodes::Node::Statistics::IfStats::Supp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rx_req.yfilter)
@@ -2342,14 +2367,14 @@ bool Dot1X::Nodes::Node::Statistics::IfStats::Supp::has_operation() const
 	|| ydk::is_set(tx_total.yfilter);
 }
 
-std::string Dot1X::Nodes::Node::Statistics::IfStats::Supp::get_segment_path() const
+std::string Dot1x::Nodes::Node::Statistics::IfStats::Supp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "supp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Statistics::IfStats::Supp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::IfStats::Supp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2367,19 +2392,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Nodes::Node::Statistics::I
 
 }
 
-std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::IfStats::Supp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::Supp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::IfStats::Supp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::IfStats::Supp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Nodes::Node::Statistics::IfStats::Supp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Nodes::Node::Statistics::IfStats::Supp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rx-req")
     {
@@ -2437,7 +2462,7 @@ void Dot1X::Nodes::Node::Statistics::IfStats::Supp::set_value(const std::string 
     }
 }
 
-void Dot1X::Nodes::Node::Statistics::IfStats::Supp::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Nodes::Node::Statistics::IfStats::Supp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rx-req")
     {
@@ -2477,52 +2502,53 @@ void Dot1X::Nodes::Node::Statistics::IfStats::Supp::set_filter(const std::string
     }
 }
 
-bool Dot1X::Nodes::Node::Statistics::IfStats::Supp::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Nodes::Node::Statistics::IfStats::Supp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rx-req" || name == "rx-invalid" || name == "rx-len-err" || name == "rx-my-mac-err" || name == "rx-total" || name == "tx-start" || name == "tx-logoff" || name == "tx-resp" || name == "tx-total")
         return true;
     return false;
 }
 
-Dot1X::Session::Session()
+Dot1x::Session::Session()
     :
-    interface_sessions(std::make_shared<Dot1X::Session::InterfaceSessions>())
+    interface_sessions(std::make_shared<Dot1x::Session::InterfaceSessions>())
 {
     interface_sessions->parent = this;
 
-    yang_name = "session"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Dot1X::Session::~Session()
+Dot1x::Session::~Session()
 {
 }
 
-bool Dot1X::Session::has_data() const
+bool Dot1x::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface_sessions !=  nullptr && interface_sessions->has_data());
 }
 
-bool Dot1X::Session::has_operation() const
+bool Dot1x::Session::has_operation() const
 {
     return is_set(yfilter)
 	|| (interface_sessions !=  nullptr && interface_sessions->has_operation());
 }
 
-std::string Dot1X::Session::get_absolute_path() const
+std::string Dot1x::Session::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dot1x-oper:dot1x/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Dot1X::Session::get_segment_path() const
+std::string Dot1x::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Session::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Session::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2531,13 +2557,13 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Session::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Dot1X::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-sessions")
     {
         if(interface_sessions == nullptr)
         {
-            interface_sessions = std::make_shared<Dot1X::Session::InterfaceSessions>();
+            interface_sessions = std::make_shared<Dot1x::Session::InterfaceSessions>();
         }
         return interface_sessions;
     }
@@ -2545,7 +2571,7 @@ std::shared_ptr<Entity> Dot1X::Session::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2557,34 +2583,37 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::get_children() co
     return children;
 }
 
-void Dot1X::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dot1X::Session::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Session::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dot1X::Session::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-sessions")
         return true;
     return false;
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSessions()
+Dot1x::Session::InterfaceSessions::InterfaceSessions()
+    :
+    interface_session(this, {"name"})
 {
 
-    yang_name = "interface-sessions"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-sessions"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Dot1X::Session::InterfaceSessions::~InterfaceSessions()
+Dot1x::Session::InterfaceSessions::~InterfaceSessions()
 {
 }
 
-bool Dot1X::Session::InterfaceSessions::has_data() const
+bool Dot1x::Session::InterfaceSessions::has_data() const
 {
-    for (std::size_t index=0; index<interface_session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_session.len(); index++)
     {
         if(interface_session[index]->has_data())
             return true;
@@ -2592,9 +2621,9 @@ bool Dot1X::Session::InterfaceSessions::has_data() const
     return false;
 }
 
-bool Dot1X::Session::InterfaceSessions::has_operation() const
+bool Dot1x::Session::InterfaceSessions::has_operation() const
 {
-    for (std::size_t index=0; index<interface_session.size(); index++)
+    for (std::size_t index=0; index<interface_session.len(); index++)
     {
         if(interface_session[index]->has_operation())
             return true;
@@ -2602,21 +2631,21 @@ bool Dot1X::Session::InterfaceSessions::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Dot1X::Session::InterfaceSessions::get_absolute_path() const
+std::string Dot1x::Session::InterfaceSessions::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dot1x-oper:dot1x/session/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Dot1X::Session::InterfaceSessions::get_segment_path() const
+std::string Dot1x::Session::InterfaceSessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-sessions";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2625,25 +2654,25 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-session")
     {
-        auto c = std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession>();
+        auto c = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession>();
         c->parent = this;
-        interface_session.push_back(c);
+        interface_session.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_session)
+    for (auto c : interface_session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2654,22 +2683,22 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions
     return children;
 }
 
-void Dot1X::Session::InterfaceSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Session::InterfaceSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dot1X::Session::InterfaceSessions::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Session::InterfaceSessions::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dot1X::Session::InterfaceSessions::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Session::InterfaceSessions::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-session")
         return true;
     return false;
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::InterfaceSession()
+Dot1x::Session::InterfaceSessions::InterfaceSession::InterfaceSession()
     :
     name{YType::str, "name"},
     interface_name{YType::str, "interface-name"},
@@ -2677,22 +2706,23 @@ Dot1X::Session::InterfaceSessions::InterfaceSession::InterfaceSession()
     if_handle{YType::str, "if-handle"},
     mac{YType::str, "mac"},
     ethertype{YType::str, "ethertype"}
-    	,
-    intf_info(std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo>())
-	,mka_status_info(std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo>())
+        ,
+    intf_info(std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo>())
+    , mka_status_info(std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo>())
 {
     intf_info->parent = this;
     mka_status_info->parent = this;
 
-    yang_name = "interface-session"; yang_parent_name = "interface-sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-session"; yang_parent_name = "interface-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::~InterfaceSession()
+Dot1x::Session::InterfaceSessions::InterfaceSession::~InterfaceSession()
 {
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::has_data() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| interface_name.is_set
 	|| interface_sname.is_set
@@ -2703,7 +2733,7 @@ bool Dot1X::Session::InterfaceSessions::InterfaceSession::has_data() const
 	|| (mka_status_info !=  nullptr && mka_status_info->has_data());
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::has_operation() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
@@ -2716,21 +2746,22 @@ bool Dot1X::Session::InterfaceSessions::InterfaceSession::has_operation() const
 	|| (mka_status_info !=  nullptr && mka_status_info->has_operation());
 }
 
-std::string Dot1X::Session::InterfaceSessions::InterfaceSession::get_absolute_path() const
+std::string Dot1x::Session::InterfaceSessions::InterfaceSession::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dot1x-oper:dot1x/session/interface-sessions/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Dot1X::Session::InterfaceSessions::InterfaceSession::get_segment_path() const
+std::string Dot1x::Session::InterfaceSessions::InterfaceSession::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-session" <<"[name='" <<name <<"']";
+    path_buffer << "interface-session";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions::InterfaceSession::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions::InterfaceSession::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2745,13 +2776,13 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "intf-info")
     {
         if(intf_info == nullptr)
         {
-            intf_info = std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo>();
+            intf_info = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo>();
         }
         return intf_info;
     }
@@ -2760,7 +2791,7 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::get
     {
         if(mka_status_info == nullptr)
         {
-            mka_status_info = std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo>();
+            mka_status_info = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo>();
         }
         return mka_status_info;
     }
@@ -2768,7 +2799,7 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2785,7 +2816,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions
     return children;
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -2825,7 +2856,7 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::set_value(const std::s
     }
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -2853,34 +2884,35 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::set_filter(const std::
     }
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "intf-info" || name == "mka-status-info" || name == "name" || name == "interface-name" || name == "interface-sname" || name == "if-handle" || name == "mac" || name == "ethertype")
         return true;
     return false;
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::IntfInfo()
+Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::IntfInfo()
     :
     pae{YType::str, "pae"},
     port_status{YType::str, "port-status"},
     dot1x_profile{YType::str, "dot1x-profile"}
-    	,
-    auth_info(std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo>())
-	,supp_info(std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo>())
+        ,
+    auth_info(std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo>())
+    , supp_info(std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo>())
 {
     auth_info->parent = this;
     supp_info->parent = this;
 
-    yang_name = "intf-info"; yang_parent_name = "interface-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "intf-info"; yang_parent_name = "interface-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::~IntfInfo()
+Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::~IntfInfo()
 {
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::has_data() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return pae.is_set
 	|| port_status.is_set
 	|| dot1x_profile.is_set
@@ -2888,7 +2920,7 @@ bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::has_data() c
 	|| (supp_info !=  nullptr && supp_info->has_data());
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::has_operation() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pae.yfilter)
@@ -2898,14 +2930,14 @@ bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::has_operatio
 	|| (supp_info !=  nullptr && supp_info->has_operation());
 }
 
-std::string Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_segment_path() const
+std::string Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "intf-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2917,13 +2949,13 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auth-info")
     {
         if(auth_info == nullptr)
         {
-            auth_info = std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo>();
+            auth_info = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo>();
         }
         return auth_info;
     }
@@ -2932,7 +2964,7 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::Int
     {
         if(supp_info == nullptr)
         {
-            supp_info = std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo>();
+            supp_info = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo>();
         }
         return supp_info;
     }
@@ -2940,7 +2972,7 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::Int
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2957,7 +2989,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions
     return children;
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pae")
     {
@@ -2979,7 +3011,7 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::set_value(co
     }
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pae")
     {
@@ -2995,29 +3027,32 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::set_filter(c
     }
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "auth-info" || name == "supp-info" || name == "pae" || name == "port-status" || name == "dot1x-profile")
         return true;
     return false;
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::AuthInfo()
+Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::AuthInfo()
     :
     reauth{YType::str, "reauth"},
     config_dependency{YType::str, "config-dependency"}
+        ,
+    client(this, {})
 {
 
-    yang_name = "auth-info"; yang_parent_name = "intf-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auth-info"; yang_parent_name = "intf-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::~AuthInfo()
+Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::~AuthInfo()
 {
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::has_data() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -3026,9 +3061,9 @@ bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::ha
 	|| config_dependency.is_set;
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::has_operation() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -3038,14 +3073,14 @@ bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::ha
 	|| ydk::is_set(config_dependency.yfilter);
 }
 
-std::string Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_segment_path() const
+std::string Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "auth-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3056,25 +3091,25 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client>();
+        auto c = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3085,7 +3120,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions
     return children;
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "reauth")
     {
@@ -3101,7 +3136,7 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::se
     }
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "reauth")
     {
@@ -3113,56 +3148,60 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::se
     }
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "client" || name == "reauth" || name == "config-dependency")
         return true;
     return false;
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::Client()
+Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::Client()
     :
     mac{YType::str, "mac"},
     auth_sm_state{YType::str, "auth-sm-state"},
     auth_bend_sm_state{YType::str, "auth-bend-sm-state"},
     time_to_next_reauth{YType::str, "time-to-next-reauth"},
-    last_auth_time{YType::str, "last-auth-time"}
+    last_auth_time{YType::str, "last-auth-time"},
+    last_auth_server{YType::str, "last-auth-server"}
 {
 
-    yang_name = "client"; yang_parent_name = "auth-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "auth-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::~Client()
+Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::~Client()
 {
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::has_data() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return mac.is_set
 	|| auth_sm_state.is_set
 	|| auth_bend_sm_state.is_set
 	|| time_to_next_reauth.is_set
-	|| last_auth_time.is_set;
+	|| last_auth_time.is_set
+	|| last_auth_server.is_set;
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::has_operation() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mac.yfilter)
 	|| ydk::is_set(auth_sm_state.yfilter)
 	|| ydk::is_set(auth_bend_sm_state.yfilter)
 	|| ydk::is_set(time_to_next_reauth.yfilter)
-	|| ydk::is_set(last_auth_time.yfilter);
+	|| ydk::is_set(last_auth_time.yfilter)
+	|| ydk::is_set(last_auth_server.yfilter);
 }
 
-std::string Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_segment_path() const
+std::string Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "client";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3171,24 +3210,25 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions
     if (auth_bend_sm_state.is_set || is_set(auth_bend_sm_state.yfilter)) leaf_name_data.push_back(auth_bend_sm_state.get_name_leafdata());
     if (time_to_next_reauth.is_set || is_set(time_to_next_reauth.yfilter)) leaf_name_data.push_back(time_to_next_reauth.get_name_leafdata());
     if (last_auth_time.is_set || is_set(last_auth_time.yfilter)) leaf_name_data.push_back(last_auth_time.get_name_leafdata());
+    if (last_auth_server.is_set || is_set(last_auth_server.yfilter)) leaf_name_data.push_back(last_auth_server.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac")
     {
@@ -3220,9 +3260,15 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Cl
         last_auth_time.value_namespace = name_space;
         last_auth_time.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "last-auth-server")
+    {
+        last_auth_server = value;
+        last_auth_server.value_namespace = name_space;
+        last_auth_server.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mac")
     {
@@ -3244,31 +3290,38 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Cl
     {
         last_auth_time.yfilter = yfilter;
     }
+    if(value_path == "last-auth-server")
+    {
+        last_auth_server.yfilter = yfilter;
+    }
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mac" || name == "auth-sm-state" || name == "auth-bend-sm-state" || name == "time-to-next-reauth" || name == "last-auth-time")
+    if(name == "mac" || name == "auth-sm-state" || name == "auth-bend-sm-state" || name == "time-to-next-reauth" || name == "last-auth-time" || name == "last-auth-server")
         return true;
     return false;
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::SuppInfo()
+Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::SuppInfo()
     :
     eap_profile{YType::str, "eap-profile"},
     config_dependency{YType::str, "config-dependency"}
+        ,
+    client(this, {})
 {
 
-    yang_name = "supp-info"; yang_parent_name = "intf-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "supp-info"; yang_parent_name = "intf-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::~SuppInfo()
+Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::~SuppInfo()
 {
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::has_data() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -3277,9 +3330,9 @@ bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::ha
 	|| config_dependency.is_set;
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::has_operation() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -3289,14 +3342,14 @@ bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::ha
 	|| ydk::is_set(config_dependency.yfilter);
 }
 
-std::string Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_segment_path() const
+std::string Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "supp-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3307,25 +3360,25 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client>();
+        auto c = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3336,7 +3389,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions
     return children;
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "eap-profile")
     {
@@ -3352,7 +3405,7 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::se
     }
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "eap-profile")
     {
@@ -3364,14 +3417,14 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::se
     }
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "client" || name == "eap-profile" || name == "config-dependency")
         return true;
     return false;
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::Client()
+Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::Client()
     :
     mac{YType::str, "mac"},
     eap_method{YType::str, "eap-method"},
@@ -3380,15 +3433,16 @@ Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client:
     auth_bend_sm_state{YType::str, "auth-bend-sm-state"}
 {
 
-    yang_name = "client"; yang_parent_name = "supp-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "supp-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::~Client()
+Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::~Client()
 {
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::has_data() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return mac.is_set
 	|| eap_method.is_set
 	|| last_auth_time.is_set
@@ -3396,7 +3450,7 @@ bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Cl
 	|| auth_bend_sm_state.is_set;
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::has_operation() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mac.yfilter)
@@ -3406,14 +3460,14 @@ bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Cl
 	|| ydk::is_set(auth_bend_sm_state.yfilter);
 }
 
-std::string Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_segment_path() const
+std::string Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "client";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3427,19 +3481,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac")
     {
@@ -3473,7 +3527,7 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Cl
     }
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mac")
     {
@@ -3497,14 +3551,14 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Cl
     }
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac" || name == "eap-method" || name == "last-auth-time" || name == "auth-sm-state" || name == "auth-bend-sm-state")
         return true;
     return false;
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::MkaStatusInfo()
+Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::MkaStatusInfo()
     :
     tie_break_role{YType::str, "tie-break-role"},
     eap_based_macsec{YType::str, "eap-based-macsec"},
@@ -3513,15 +3567,16 @@ Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::MkaStatusInf
     mka_response_time{YType::str, "mka-response-time"}
 {
 
-    yang_name = "mka-status-info"; yang_parent_name = "interface-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mka-status-info"; yang_parent_name = "interface-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::~MkaStatusInfo()
+Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::~MkaStatusInfo()
 {
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::has_data() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tie_break_role.is_set
 	|| eap_based_macsec.is_set
 	|| mka_start_time.is_set
@@ -3529,7 +3584,7 @@ bool Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::has_dat
 	|| mka_response_time.is_set;
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::has_operation() const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tie_break_role.yfilter)
@@ -3539,14 +3594,14 @@ bool Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::has_ope
 	|| ydk::is_set(mka_response_time.yfilter);
 }
 
-std::string Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_segment_path() const
+std::string Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mka-status-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3560,19 +3615,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tie-break-role")
     {
@@ -3606,7 +3661,7 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::set_val
     }
 }
 
-void Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tie-break-role")
     {
@@ -3630,7 +3685,7 @@ void Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::set_fil
     }
 }
 
-bool Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tie-break-role" || name == "eap-based-macsec" || name == "mka-start-time" || name == "mka-stop-time" || name == "mka-response-time")
         return true;
